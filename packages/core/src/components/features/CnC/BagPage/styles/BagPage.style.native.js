@@ -30,6 +30,11 @@ export const RowSectionStyle = styled.View`
   background: #fff;
 `;
 
+export const BonusPointsWrapper = styled.View`
+  padding-top: ${props => props.theme.spacing.ELEM_SPACING.MED};
+  padding-bottom: ${props => props.theme.spacing.ELEM_SPACING.LRG};
+`;
+
 export const MainSection = styled.View`
   flex: 1;
   background: #f3f3f3;
@@ -43,4 +48,5 @@ export default {
   RowSectionStyle,
   HeadingTextStyle,
   ScrollViewWrapper,
+  BonusPointsWrapper,
 };

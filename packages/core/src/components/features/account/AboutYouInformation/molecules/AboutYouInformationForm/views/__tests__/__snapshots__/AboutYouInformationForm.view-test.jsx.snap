@@ -176,12 +176,12 @@ exports[`AboutYouInformationForm should render correctly 1`] = `
             "withComponent": [Function],
           }
         }
-        data-locator="moreaboutyou-radiooption-0"
+        data-locator="moreaboutyou-radiooption1"
         key="question1"
         name="question1"
         onClick={[Function]}
         selectedValue={false}
-        topPosition="0px"
+        topPosition="-1px"
       >
         <Styled(BodyCopy)
           className={null}
@@ -350,12 +350,12 @@ exports[`AboutYouInformationForm should render correctly 1`] = `
             "withComponent": [Function],
           }
         }
-        data-locator="moreaboutyou-radiooption-1"
+        data-locator="moreaboutyou-radiooption2"
         key="question1"
         name="question1"
         onClick={[Function]}
         selectedValue={false}
-        topPosition="0px"
+        topPosition="-1px"
       >
         <Styled(BodyCopy)
           className={null}
@@ -524,12 +524,12 @@ exports[`AboutYouInformationForm should render correctly 1`] = `
             "withComponent": [Function],
           }
         }
-        data-locator="moreaboutyou-radiooption-2"
+        data-locator="moreaboutyou-radiooption3"
         key="question1"
         name="question1"
         onClick={[Function]}
         selectedValue={true}
-        topPosition="0px"
+        topPosition="-1px"
       >
         <Styled(BodyCopy)
           className={null}
@@ -698,12 +698,12 @@ exports[`AboutYouInformationForm should render correctly 1`] = `
             "withComponent": [Function],
           }
         }
-        data-locator="moreaboutyou-radiooption-3"
+        data-locator="moreaboutyou-radiooption4"
         key="question1"
         name="question1"
         onClick={[Function]}
         selectedValue={false}
-        topPosition="0px"
+        topPosition="-1px"
       >
         <Styled(BodyCopy)
           className={null}
@@ -888,7 +888,7 @@ exports[`AboutYouInformationForm should render correctly 1`] = `
             "withComponent": [Function],
           }
         }
-        data-locator="moreaboutyou-checkboxoption-0"
+        dataLocator="moreaboutyou-checkboxoption1"
         name="question2-option-0"
         onChange={[Function]}
       >
@@ -1054,7 +1054,7 @@ exports[`AboutYouInformationForm should render correctly 1`] = `
             "withComponent": [Function],
           }
         }
-        data-locator="moreaboutyou-checkboxoption-1"
+        dataLocator="moreaboutyou-checkboxoption2"
         name="question2-option-1"
         onChange={[Function]}
       >
@@ -1220,7 +1220,7 @@ exports[`AboutYouInformationForm should render correctly 1`] = `
             "withComponent": [Function],
           }
         }
-        data-locator="moreaboutyou-checkboxoption-2"
+        dataLocator="moreaboutyou-checkboxoption3"
         name="question2-option-2"
         onChange={[Function]}
       >
@@ -1386,7 +1386,7 @@ exports[`AboutYouInformationForm should render correctly 1`] = `
             "withComponent": [Function],
           }
         }
-        data-locator="moreaboutyou-checkboxoption-3"
+        dataLocator="moreaboutyou-checkboxoption4"
         name="question2-option-3"
         onChange={[Function]}
       >
@@ -1552,7 +1552,7 @@ exports[`AboutYouInformationForm should render correctly 1`] = `
             "withComponent": [Function],
           }
         }
-        data-locator="moreaboutyou-checkboxoption-4"
+        dataLocator="moreaboutyou-checkboxoption5"
         name="question2-option-4"
         onChange={[Function]}
       >

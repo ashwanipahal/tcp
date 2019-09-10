@@ -25,4 +25,9 @@ describe('ImageCompVanilla', () => {
     component.setProps({ source: 'foo' });
     expect(component).toMatchSnapshot();
   });
+
+  it('should render lazy load image component', () => {
+    component.setProps({ host: 'lazyload-home' });
+    expect(component.props().host).toEqual('lazyload-home');
+  });
 });
