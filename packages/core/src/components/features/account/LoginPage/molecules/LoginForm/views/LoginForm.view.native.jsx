@@ -129,7 +129,7 @@ class LoginForm extends React.PureComponent<Props> {
                   dataLocator="rememberMe"
                   disabled={false}
                   marginBottom={13}
-                  rightText={labels.login.lbl_login_touch_id}
+                  rightText={getLabelValue(labels, 'lbl_login_touch_id', 'login')}
                 />
               ))}
 
@@ -140,7 +140,7 @@ class LoginForm extends React.PureComponent<Props> {
                 dataLocator="FaceId"
                 disabled={false}
                 marginBottom={13}
-                rightText="Face Id"
+                rightText={getLabelValue(labels, 'lbl_login_face_id', 'login')}
               />
             )}
           </View>
