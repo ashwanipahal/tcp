@@ -123,7 +123,7 @@ class ModuleJ extends React.PureComponent<Props, State> {
             <HeaderContainer layout={layout}>
               <LinkText
                 navigation={navigation}
-                headerText={headerText && []}
+                headerText={headerText}
                 renderComponentInNewLine
                 useStyle
               />
