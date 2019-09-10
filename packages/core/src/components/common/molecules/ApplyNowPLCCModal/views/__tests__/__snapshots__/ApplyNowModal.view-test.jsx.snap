@@ -43,13 +43,11 @@ exports[`ApplyNowModalWrapper component should renders correctly 1`] = `
     font-family: ",
       [Function],
       ";
-    font-weight: ",
-      [Function],
-      ";
+    font-weight: 800;
     border: none;
     margin-bottom: 10px;
     display: block;
-    height: auto;
+    height: 20px;
     font-size: ",
       [Function],
       "px;

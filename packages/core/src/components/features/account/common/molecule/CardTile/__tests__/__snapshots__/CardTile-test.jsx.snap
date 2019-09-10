@@ -674,7 +674,7 @@ exports[`CardTile should render correctly with gift card 1`] = `
           type="hidden"
         />
         <Styled(Button)
-          buttonVariation="variable-width"
+          buttonVariation="sahil-width"
           data-locator="gift-card-checkbalance-btn"
           fill="BLUE"
           onClick={[Function]}
@@ -1111,7 +1111,7 @@ exports[`CardTile should render correctly with notification  gift card 1`] = `
           type="hidden"
         />
         <Styled(Button)
-          buttonVariation="variable-width"
+          buttonVariation="sahil-width"
           data-locator="gift-card-checkbalance-btn"
           fill="BLUE"
           onClick={[Function]}
