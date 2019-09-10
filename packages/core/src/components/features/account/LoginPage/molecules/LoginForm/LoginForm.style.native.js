@@ -55,7 +55,8 @@ const ForgotHeading = props => {
   return `
   ${getTextBaseStyle};
   font-weight: ${typography.fontWeights.semibold};
-  align-self: center;
+  justify-content: center;
+  align-items: center;
   font-size: ${typography.fontSizes.fs16};
   padding:10px 0;
   text-align: center;
@@ -67,10 +68,10 @@ const ForgotDescription = props => {
   const { typography } = theme;
   return `
   ${getTextBaseStyle};
-  align-self: center;
+  text-align: center;
   font-size: ${typography.fontSizes.fs12};
-  padding:10px 0;
-  max-width: 238px;
+  padding: ${props.theme.spacing.ELEM_SPACING.SM} ${props.theme.spacing.ELEM_SPACING.XXXL};
+  width: 100%;
   margin-bottom: 25px;
   `;
 };
