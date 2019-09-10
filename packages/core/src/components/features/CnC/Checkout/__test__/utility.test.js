@@ -42,6 +42,7 @@ const {
   getCreditCardType,
   isOrderHasShipping,
   getAvailableStages,
+  hasPOBox,
 } = Utility;
 
 describe('utility', () => {
@@ -137,7 +138,7 @@ describe('utility', () => {
     expect(getCreditCardType({ cardNumber: 'a2f', cardType: '' })).toBe(null);
   });
   it('getCreditCardType', () => {
-    expect(getCreditCardType({ cardNumber: '', cardType: '' })).toBe(null);
+    expect(getCreditCardType({ cardNumber: '*', cardType: '' })).toBe(null);
   });
   it('redirectToBilling', () => {
     const navigate = jest.fn();
@@ -148,7 +149,7 @@ describe('utility', () => {
     if (isMobileApp()) {
       expect(Router.push).toHaveBeenCalled();
     } else if (navigation) {
-      navigation.navigate('Billing');
+      expect(navigate).toHaveBeenCalledTimes(0);
     }
   });
 
@@ -157,8 +158,14 @@ describe('utility', () => {
     expect(getCreditCardType({ cardNumber: '', cardType: '' })).toBe(null);
     expect(navigate).toHaveBeenCalledTimes(0);
   });
+  it('getCreditCardType', () => {
+    expect(getCreditCardType({})).toBe(null);
+  });
   it('getAvailableStages', () => {
     const cartItems = fromJS({});
     expect(getAvailableStages(cartItems)).toStrictEqual(['', '']);
+  });
+  it('hasPOBox', () => {
+    expect(hasPOBox('dsa', 'dasdas')).toBe(false);
   });
 });
