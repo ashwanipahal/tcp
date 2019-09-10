@@ -49,11 +49,8 @@ export function* addCreditCardSaga({ payload }) {
   } catch (err) {
     let error = {};
     /* istanbul ignore else */
-    if (err instanceof Error) {
-      error = err;
-      console.log('error--------------------', error);
-    }
-
+    error = err;
+    console.log('error--------------------', error);
     return yield put(addCreditCardError(error.response.body.errors[0]));
   }
 }

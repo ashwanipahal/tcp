@@ -1,9 +1,6 @@
 import { fromJS } from 'immutable';
 import AddEditCreditCardReducer from '../AddEditCreditCard.reducer';
-import {
-  addCreditCardSuccess,
-  addCreditCardError,
-} from '../AddEditCreditCard.actions';
+import { addCreditCardSuccess, addCreditCardError } from '../AddEditCreditCard.actions';
 
 describe('AddEditCreditCardReducer reducer', () => {
   it('should return  default state', () => {
@@ -21,13 +18,15 @@ describe('AddEditCreditCardReducer reducer', () => {
       AddEditCreditCardReducer(
         initialState,
         addCreditCardError({
-          error: { userId: '12345' },
+          userId: '12345',
         })
       )
-    ).toEqual({
-      showNotification: true,
-      error: fromJS({ userId: '12345' }),
-    });
+    ).toEqual(
+      fromJS({
+        showNotification: true,
+        error: fromJS({ userId: '12345' }),
+      })
+    );
   });
 
   it('should handle success addCreditCardSuccess', () => {

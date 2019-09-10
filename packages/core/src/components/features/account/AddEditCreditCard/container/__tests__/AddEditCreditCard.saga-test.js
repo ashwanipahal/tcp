@@ -57,14 +57,9 @@ describe('AddEditCreditCard saga', () => {
         ])
       );
       addCreditCardGen.next('1234567890');
-      const putDescriptor = addCreditCardGen.throw(new Error('error')).value;
-      expect(putDescriptor).toEqual(
-        put(
-          addCreditCardError({
-            error: 'error',
-          })
-        )
-      );
+      const putDescriptor = addCreditCardGen.throw({ response: { body: { errors: ['test'] } } })
+        .value;
+      expect(putDescriptor).toEqual(put(addCreditCardError('test')));
     });
   });
 
@@ -114,17 +109,18 @@ describe('AddEditCreditCard saga', () => {
         ])
       );
       addCreditCardGen.next('1234567890');
-      const putDescriptor = addCreditCardGen.throw(new Error('system error')).value;
+      const putDescriptor = addCreditCardGen.throw({ response: { body: { errors: ['test'] } } })
+        .value;
       expect(putDescriptor).toEqual(
         put(
           addCreditCardError({
-            error : {
-              response : {
-                body : {
-                  errors :'system error'
-                }
-              }
-            }
+            error: {
+              response: {
+                body: {
+                  errors: 'system error',
+                },
+              },
+            },
           })
         )
       );
