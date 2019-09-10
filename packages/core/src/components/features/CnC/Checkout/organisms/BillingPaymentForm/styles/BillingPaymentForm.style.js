@@ -114,4 +114,36 @@ export default css`
   .default-payment .CheckBox__text {
     padding-top: ${props => props.theme.spacing.ELEM_SPACING.XXS};
   }
+
+  @media ${props => props.theme.mediaQuery.large} {
+    && .dropdownliBottomBorder {
+      padding: ${props => props.theme.spacing.ELEM_SPACING.SM};
+      position: relative;
+      border: 0px;
+    }
+    &&& .dropdownliBottomBorder::after {
+      position: absolute;
+      content: '';
+      border-bottom: 1px solid ${props => props.theme.colors.BORDER.NORMAL};
+      width: 93%;
+      transform: translateX(-50%);
+      bottom: 2px;
+      left: 50%;
+    }
+    .dropDownTop {
+      background-image: linear-gradient(to bottom, rgba(255, 255, 255, 1), rgba(255, 255, 255, 0));
+      position: absolute;
+      width: 100%;
+      height: ${props => props.theme.spacing.ELEM_SPACING.LRG};
+      z-index: 1;
+    }
+    .dropDownBottom {
+      background-image: linear-gradient(to top, rgba(255, 255, 255, 1), rgba(255, 255, 255, 0));
+      position: absolute;
+      width: 100%;
+      height: ${props => props.theme.spacing.ELEM_SPACING.LRG};
+      bottom: 58px;
+      z-index: 1;
+    }
+  }
 `;

@@ -25,7 +25,7 @@ import CheckoutFooter from '../../../molecules/CheckoutFooter';
 import utility from '../../../util/utility';
 import { CHECKOUT_ROUTES } from '../../../Checkout.constants';
 import Modal from '../../../../../../common/molecules/Modal';
-import DropdownList from '../../../../../../common/molecules/DropdownList';
+import DropdownList from './CreditCardDropdownList.view';
 
 export class BillingPaymentForm extends React.PureComponent {
   static propTypes = {

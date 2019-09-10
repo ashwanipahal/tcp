@@ -1,0 +1,312 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Credit DropdownList component should renders correctly 1`] = `
+<StyledComponent
+  activeTitle="Please select list item"
+  activeValue="activeClassValue"
+  className="sample-class"
+  forwardedComponent={
+    Object {
+      "$$typeof": Symbol(react.forward_ref),
+      "attrs": Array [],
+      "componentStyle": ComponentStyle {
+        "componentId": "sc-bwzfXH",
+        "isStatic": false,
+        "rules": Array [
+          "
+  ",
+          "
+  position: absolute;
+  width: 100%;
+  z-index: 1;
+
+  .dropdownUlBorder {
+    border: 1px solid ",
+          [Function],
+          ";
+    background-color: ",
+          [Function],
+          ";
+  }
+
+  .dropdownliBottomBorder {
+    border-bottom: 1px solid ",
+          [Function],
+          ";
+    padding: ",
+          [Function],
+          ";
+  }
+
+  .dropdownDivOverFlow {
+    overflow-y: scroll;
+    max-height: 230px;
+  }
+
+  .dropdownActiveClass {
+    background-color: ",
+          [Function],
+          ";
+    position: relative;
+  }
+
+  .dropdownActiveIcon {
+    background-image: url(",
+          "/static/images/circle-check.png",
+          ");
+    background-repeat: no-repeat;
+    position: absolute;
+    width: 30px;
+    right: 5px;
+    top: 40%;
+    height: 30px;
+  }
+
+  .dropDownListwrapper {
+    position: relative;
+    padding-bottom: ",
+          [Function],
+          ";
+    border: 1px solid ",
+          [Function],
+          ";
+    background-color: ",
+          [Function],
+          ";
+  }
+
+  .dropdownClassBtn {
+    color: ",
+          [Function],
+          ";
+    background-color: ",
+          [Function],
+          ";
+  }
+
+  .ulBorderWithLastRow {
+    border-bottom: ",
+          [Function],
+          ";
+    width: 100%;
+  }
+
+  .ulBorderWithLastRow li:hover {
+    background: ",
+          [Function],
+          ";
+  }
+
+  .ulBorderWithLastRow li:last-child {
+    position: absolute;
+    width: 93%;
+    height: 42px;
+    padding: ",
+          [Function],
+          ";
+    left: 0;
+    bottom: 0;
+    border-bottom: none;
+  }
+
+  .ulBorderWithLastRow li:last-child:hover {
+    background: none;
+  }
+  ",
+          [Function],
+          ";
+",
+          ";
+",
+        ],
+      },
+      "displayName": "Styled(CreditCardDropdownList)",
+      "foldedComponentIds": Array [],
+      "render": [Function],
+      "styledComponentId": "sc-bwzfXH",
+      "target": [Function],
+      "toString": [Function],
+      "warnTooManyClasses": [Function],
+      "withComponent": [Function],
+    }
+  }
+  forwardedRef={null}
+  optionsMap={
+    Array [
+      Object {
+        "content": <div>
+          <p>
+            Test 1
+          </p>
+        </div>,
+        "title": "Test 1",
+        "value": "1",
+      },
+    ]
+  }
+  selectListTitle="Select from address book"
+/>
+`;
+
+exports[`Credit DropdownList component should renders correctly when optional fields are not present 1`] = `
+<StyledComponent
+  className="sample-class"
+  forwardedComponent={
+    Object {
+      "$$typeof": Symbol(react.forward_ref),
+      "attrs": Array [],
+      "componentStyle": ComponentStyle {
+        "componentId": "sc-bwzfXH",
+        "isStatic": false,
+        "rules": Array [
+          "
+  ",
+          "
+  position: absolute;
+  width: 100%;
+  z-index: 1;
+
+  .dropdownUlBorder {
+    border: 1px solid ",
+          [Function],
+          ";
+    background-color: ",
+          [Function],
+          ";
+  }
+
+  .dropdownliBottomBorder {
+    border-bottom: 1px solid ",
+          [Function],
+          ";
+    padding: ",
+          [Function],
+          ";
+  }
+
+  .dropdownDivOverFlow {
+    overflow-y: scroll;
+    max-height: 230px;
+  }
+
+  .dropdownActiveClass {
+    background-color: ",
+          [Function],
+          ";
+    position: relative;
+  }
+
+  .dropdownActiveIcon {
+    background-image: url(",
+          "/static/images/circle-check.png",
+          ");
+    background-repeat: no-repeat;
+    position: absolute;
+    width: 30px;
+    right: 5px;
+    top: 40%;
+    height: 30px;
+  }
+
+  .dropDownListwrapper {
+    position: relative;
+    padding-bottom: ",
+          [Function],
+          ";
+    border: 1px solid ",
+          [Function],
+          ";
+    background-color: ",
+          [Function],
+          ";
+  }
+
+  .dropdownClassBtn {
+    color: ",
+          [Function],
+          ";
+    background-color: ",
+          [Function],
+          ";
+  }
+
+  .ulBorderWithLastRow {
+    border-bottom: ",
+          [Function],
+          ";
+    width: 100%;
+  }
+
+  .ulBorderWithLastRow li:hover {
+    background: ",
+          [Function],
+          ";
+  }
+
+  .ulBorderWithLastRow li:last-child {
+    position: absolute;
+    width: 93%;
+    height: 42px;
+    padding: ",
+          [Function],
+          ";
+    left: 0;
+    bottom: 0;
+    border-bottom: none;
+  }
+
+  .ulBorderWithLastRow li:last-child:hover {
+    background: none;
+  }
+  ",
+          [Function],
+          ";
+",
+          ";
+",
+        ],
+      },
+      "displayName": "Styled(CreditCardDropdownList)",
+      "foldedComponentIds": Array [],
+      "render": [Function],
+      "styledComponentId": "sc-bwzfXH",
+      "target": [Function],
+      "toString": [Function],
+      "warnTooManyClasses": [Function],
+      "withComponent": [Function],
+    }
+  }
+  forwardedRef={null}
+  optionsMap={
+    Array [
+      Object {
+        "content": <div>
+          <p>
+            Test 1
+          </p>
+        </div>,
+        "title": "Test 1",
+        "value": "1",
+      },
+      Object {
+        "content": <div>
+          <p>
+            Test 2
+          </p>
+        </div>,
+        "title": "Test 2",
+        "value": "2",
+      },
+      Object {
+        "content": <div>
+          <p>
+            Test 3
+          </p>
+        </div>,
+        "title": "Test 3",
+        "value": "",
+      },
+    ]
+  }
+/>
+`;

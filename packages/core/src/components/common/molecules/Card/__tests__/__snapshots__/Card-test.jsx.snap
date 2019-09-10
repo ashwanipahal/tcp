@@ -1,88 +1,110 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`ButtonList component renders correctly without props 1`] = `
-<StyledComponent
-  card=""
-  cardNumber=""
+exports[`Card component renders correctly without props 1`] = `
+<Styled(BodyCopy)
   className=""
-  dataLocatorPrefix=""
-  fontWeight=""
-  forwardedComponent={
-    Object {
-      "$$typeof": Symbol(react.forward_ref),
-      "attrs": Array [],
-      "componentStyle": ComponentStyle {
-        "componentId": "sc-VigVT",
-        "isStatic": false,
-        "rules": Array [
-          "
-  ",
-          "
-  .cardImage-card-number {
-    padding: 7px 10px;
-  }
-  .cardImage-img-wrapper {
-    display: flex;
-    margin-bottom: auto;
-    border: 1px solid ",
-          [Function],
-          ";
-    border-radius: ",
-          [Function],
-          ";
-    background-color: ",
-          [Function],
-          ";
-  }
-  .cardImage-wrapper {
-    display: flex;
-  }
-  .card-title {
-    position: relative;
-    display: flex;
-  }
-  .card-carddefaultbadge {
-    position: absolute;
-    right: 2px;
-  }
-  .hideOnMobile {
-    @media ",
-          [Function],
-          " {
-      display: none;
-    }
-  }
-  .hideOnDesktop {
-    @media ",
-          [Function],
-          " {
-      display: none;
-    }
-    @media ",
-          [Function],
-          " {
-      display: none;
-    }
-  }
-",
-          ";
-",
-        ],
-      },
-      "displayName": "Styled(CardImage)",
-      "foldedComponentIds": Array [],
-      "render": [Function],
-      "styledComponentId": "sc-VigVT",
-      "target": [Function],
-      "toString": [Function],
-      "warnTooManyClasses": [Function],
-      "withComponent": [Function],
-    }
-  }
-  forwardedRef={null}
-  isDefault={false}
-  isMobile={false}
-  labels={Object {}}
-  showAddress={false}
-/>
+  color="text.primary"
+  component="div"
+  fontFamily="primary"
+  fontSize="fs16"
+  fontWeight="regular"
+  letterSpacing="normal"
+  lineHeight="normal"
+  textAlign="left"
+>
+  <Styled(BodyCopy)
+    className="card-title"
+    color="text.primary"
+    component="div"
+    fontFamily="secondary"
+    fontSize={12}
+    fontWeight="regular"
+    letterSpacing="normal"
+    lineHeight="normal"
+    textAlign="left"
+  >
+    <Styled(BodyCopy)
+      className="card-name"
+      color="text.primary"
+      component="p"
+      data-locator=""
+      fontFamily="secondary"
+      fontSize={12}
+      fontWeight=""
+      letterSpacing="normal"
+      lineHeight="normal"
+      textAlign="left"
+    >
+      undefined undefined
+    </Styled(BodyCopy)>
+  </Styled(BodyCopy)>
+  <Styled(BodyCopy)
+    className={null}
+    color="text.primary"
+    component="div"
+    fontFamily="secondary"
+    fontSize={12}
+    fontWeight="regular"
+    letterSpacing="normal"
+    lineHeight="normal"
+    textAlign="left"
+  >
+    <Styled(CardImage)
+      card={
+        Object {
+          "accountNo": "************3743",
+          "addressDetails": Object {
+            "addressLine1": "Dorney Park Road",
+            "addressLine2": "",
+            "city": "Allentown",
+            "country": "US",
+          },
+          "ccBrand": "PLACE CARD",
+          "ccType": "PLACE CARD",
+          "creditCardId": 82596,
+          "defaultInd": false,
+        }
+      }
+      cardNumber=""
+    />
+    <Styled(BodyCopy)
+      className="hideOnDesktop"
+      color="text.primary"
+      component="div"
+      fontFamily="secondary"
+      fontSize={12}
+      fontWeight="regular"
+      letterSpacing="normal"
+      lineHeight="normal"
+      textAlign="right"
+    >
+      <Styled(Button)
+        buttonVariation="variable-width"
+        fill="BLACK"
+      >
+        test
+      </Styled(Button)>
+    </Styled(BodyCopy)>
+  </Styled(BodyCopy)>
+  <Styled(BodyCopy)
+    className="hideOnDesktop"
+    color="text.primary"
+    component="div"
+    fontFamily="primary"
+    fontSize={12}
+    fontWeight="regular"
+    letterSpacing="normal"
+    lineHeight="normal"
+    textAlign="right"
+  >
+    <Styled(Anchor)
+      anchorVariation="primary"
+      className="billing-payment-edit"
+      dataLocator="billing-payment-edit"
+      fontSizeVariation="medium"
+      to="/"
+      underline={true}
+    />
+  </Styled(BodyCopy)>
+</Styled(BodyCopy)>
 `;
