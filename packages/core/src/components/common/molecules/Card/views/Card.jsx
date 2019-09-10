@@ -53,13 +53,11 @@ const getFormattedAddress = (address, dataLocatorPrefix) => {
 
 const getSelectWrapper = (isDefault, labels) => {
   return (
-    !isDefault && (
-      <BodyCopy component="div" textAlign="right" fontFamily="secondary" className="hideOnDesktop">
-        <Button buttonVariation="variable-width" fill="BLACK">
-          {labels.lbl_billing_select}
-        </Button>
-      </BodyCopy>
-    )
+    <BodyCopy component="div" textAlign="right" fontFamily="secondary" className="hideOnDesktop">
+      <Button buttonVariation="variable-width" fill="BLACK">
+        {labels.lbl_billing_select}
+      </Button>
+    </BodyCopy>
   );
 };
 const Card = ({
@@ -71,6 +69,7 @@ const Card = ({
   cardNumber,
   showAddress,
   labels,
+  selectedValue,
 }) =>
   card && (
     <BodyCopy component="div" fontSize="fs16" color="text.primary" className={className}>
@@ -102,7 +101,7 @@ const Card = ({
       ) : (
         <BodyCopy component="div" fontFamily="secondary">
           <CardImage card={card} cardNumber={cardNumber} />
-          {getSelectWrapper(isDefault, labels)}
+          {selectedValue !== card.creditCardId && getSelectWrapper(isDefault, labels)}
         </BodyCopy>
       )}
       {showAddress && getFormattedAddress(card.addressDetails, dataLocatorPrefix)}
@@ -137,12 +136,14 @@ Card.propTypes = {
   cardNumber: PropTypes.string,
   showAddress: PropTypes.bool,
   labels: PropTypes.shape({}).isRequired,
+  selectedValue: PropTypes.string,
 };
 
 Card.defaultProps = {
   isDefault: false,
   cardNumber: '',
   showAddress: false,
+  selectedValue: '',
 };
 
 export default withStyles(Card, CardStyle);

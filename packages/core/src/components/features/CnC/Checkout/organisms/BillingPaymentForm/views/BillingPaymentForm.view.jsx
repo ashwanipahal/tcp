@@ -52,10 +52,10 @@ export class BillingPaymentForm extends React.PureComponent {
 
   handleEditClick = () => {};
 
-  getCardOptions = (cardList, labels) => {
+  getCardOptions = (cardList, labels, onFileCardKey) => {
     let cardOptions = cardList.map(card => ({
       value: card.creditCardId,
-      title: `${card.addressDetails.firstName} ${card.addressDetails.lastName} ${
+      title: `${labels.lbl_billing_creditCardEnd}${card.accountNo.slice(-4)} ${
         card.defaultInd ? `(${labels.lbl_billing_default})` : ''
       }`,
       content: (
@@ -64,6 +64,7 @@ export class BillingPaymentForm extends React.PureComponent {
           isDefault={card.defaultInd}
           cardNumber={`${labels.lbl_billing_creditCardEnd}${card.accountNo.slice(-4)}`}
           labels={labels}
+          selectedValue={onFileCardKey}
         />
       ),
     }));
@@ -181,7 +182,7 @@ export class BillingPaymentForm extends React.PureComponent {
                   id="onFileCardKey"
                   component={CreditCardDropdown}
                   dataLocator="payment-billingaddressdd"
-                  options={this.getCardOptions(creditCardList, labels)}
+                  options={this.getCardOptions(creditCardList, labels, onFileCardKey)}
                   childrenComp={(options, onClickHandler, activeValue, onClose) =>
                     this.getCreditCardDropDown(options, onClickHandler, activeValue, onClose)
                   }

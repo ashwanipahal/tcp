@@ -108,4 +108,10 @@ export default css`
       display: none;
     }
   }
+  .default-payment > label {
+    width: 100%;
+  }
+  .default-payment .CheckBox__text {
+    padding-top: ${props => props.theme.spacing.ELEM_SPACING.XXS};
+  }
 `;
