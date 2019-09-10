@@ -9,23 +9,13 @@ import BAG_PAGE_ACTIONS from '../../../../BagPage/container/BagPage.actions';
 import BagPageSelectors from '../../../../BagPage/container/BagPage.selectors';
 import { setGiftCardError, resetGiftCardError } from '../../../container/Checkout.action';
 
-const getErrorMessage = res => {
-  let errorMessageRecieved = '';
-  errorMessageRecieved =
-    res &&
-    res.errorResponse &&
-    res.errorResponse.errors &&
-    res.errorResponse.errors[0].errorMessage;
-  return errorMessageRecieved;
-};
-
 export function* applyGiftCard(payloadData) {
   const { payload } = payloadData;
   try {
     yield put(resetGiftCardError());
     const res = yield call(addGiftCardPaymentToOrder, payload);
-    if (res.errorResponse && res.errorResponse.errors) {
-      const resErr = getErrorMessage(res);
+    if (res.errorResponse && res.errorMessage) {
+      const resErr = res.errorMessage[Object.keys(res.errorMessage)[0]];
       const errorObject = {
         [payload.creditCardId]: resErr,
       };

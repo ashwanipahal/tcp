@@ -18,6 +18,12 @@ export default {
           arrows: false,
         },
       },
+      {
+        breakpoints: breakpoints.values.sm,
+        settings: {
+          slidesToShow: 1,
+        },
+      },
     ],
   },
 };

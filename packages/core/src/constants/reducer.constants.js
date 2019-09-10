@@ -10,6 +10,7 @@ export const FORM_REDUCER_KEY = 'form';
 export const LOADER_REDUCER_KEY = 'PageLoader';
 export const TOAST_REDUCER_KEY = 'Toast';
 export const RECOMMENDATIONS_REDUCER_KEY = 'Recommendations';
+export const SEARCH_REDUCER_KEY = 'Search';
 
 // Don't Add "Reducer" in the Key - it should be LoginPage, not LoginPageReducer
 

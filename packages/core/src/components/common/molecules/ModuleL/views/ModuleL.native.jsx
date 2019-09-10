@@ -1,7 +1,7 @@
 // @flow
 import React from 'react';
 import { FlatList } from 'react-native';
-import { getLocator, getScreenWidth } from '../../../../../utils/index.native';
+import { getLocator, getScreenWidth, LAZYLOAD_HOST_NAME } from '../../../../../utils/index.native';
 import { Image, BodyCopy, Anchor } from '../../../atoms';
 import PromoBanner from '../../PromoBanner';
 import LinkText from '../../LinkText';
@@ -57,6 +57,7 @@ const renderItem = (item, navigation) => {
           height={127}
           crop={image.crop_m}
           testID={`${getLocator('moduleL_image')}${index + 1}`}
+          host={LAZYLOAD_HOST_NAME.HOME}
         />
         <MessageContainer>
           <BodyCopyContainer width={width}>

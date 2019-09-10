@@ -4,8 +4,12 @@ import { FlatList } from 'react-native';
 
 import Anchor from '../../../atoms/Anchor';
 import BodyCopy from '../../../atoms/BodyCopy';
-import { getScreenWidth } from '../../../../../utils/index.native';
-import { navigateToNestedRoute } from '../../../../../utils/utils.app';
+import {
+  getScreenWidth,
+  navigateToNestedRoute,
+  LAZYLOAD_HOST_NAME,
+} from '../../../../../utils/index.native';
+
 import {
   ImageGridItem,
   ImageWrapper,
@@ -62,6 +66,7 @@ class GetCandid extends React.Component {
       <Touchable accessibilityRole="image">
         <Anchor onPress={this.navigateToPage}>
           <ImageGridItem
+            host={LAZYLOAD_HOST_NAME.HOME}
             key={index.toString()}
             index={index}
             url={image.Url}
