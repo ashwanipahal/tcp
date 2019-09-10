@@ -10,11 +10,11 @@ export default {
           textItems: [
             {
               text: 'Every Length, Style, Color & Size',
-              style: 'style1',
+              style: 'style3',
             },
           ],
           link: {
-            url: '/node/plp/e499bac3-6770-4757-b924-55c837712dfc',
+            url: '/p/',
             text: '',
             title: '',
             target: '',
@@ -29,12 +29,12 @@ export default {
         {
           textItems: [
             {
-              text: 'The Short Shop',
-              style: 'style1',
+              text: 'THE SHORTS SHOP',
+              style: 'style4',
             },
           ],
           link: {
-            url: '/node/plp/e499bac3-6770-4757-b924-55c837712dfc',
+            url: '/p/',
             text: '',
             title: '',
             target: '',
@@ -58,10 +58,10 @@ export default {
             class: '',
           },
           textItems: [
-            {
-              text: 'ALL SHORTS',
-              style: 'text_normal_gray',
-            },
+            // {
+            //   text: 'ALL SHORTS',
+            //   style: 'text_normal_gray',
+            // },
             {
               text: 'ALL SHORTS',
               style: 'large_text_semibold_normal',

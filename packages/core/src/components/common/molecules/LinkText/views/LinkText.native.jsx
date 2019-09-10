@@ -35,6 +35,21 @@ export const bodyCopyStyles = {
       {...props}
     />
   ),
+  // small text with normal font
+  style3: props => (
+    <BodyCopy color="gray.900" fontFamily="primary" fontSize="fs18" textAlign="center" {...props} />
+  ),
+  // large text with bold font
+  style4: props => (
+    <BodyCopy
+      color="gray.900"
+      fontFamily="primary"
+      fontSize="fs32"
+      fontWeight="black"
+      textAlign="center"
+      {...props}
+    />
+  ),
 };
 
 /**
@@ -48,13 +63,15 @@ export const bodyCopyStyles = {
  */
 
 const getTextItems = (textItems, renderComponentInNewLine, useStyle) => {
+  const textItemsSize = textItems.length;
   return (
     textItems &&
     textItems.map(({ text, style }, index) => {
       if (style && useStyle) {
         // use embedded style to render BodyCopy if useStyle is true
         const StyleBodyCopy = style ? bodyCopyStyles[style] : {};
-        const updatedText = renderComponentInNewLine ? `${text}\n` : text;
+        const updatedText =
+          renderComponentInNewLine && index !== textItemsSize - 1 ? `${text}\n` : text;
         return (
           <StyleBodyCopy text={index ? `${updatedText}` : updatedText} key={index.toString()} />
         );
@@ -68,7 +85,7 @@ const LinkText = (props: Props) => {
   const {
     locator,
     type,
-    headerText: [{ textItems, link }],
+    headerText,
     navigation,
     renderComponentInNewLine = false,
     useStyle = false,
@@ -94,15 +111,18 @@ const LinkText = (props: Props) => {
     };
   }
 
-  return (
-    <Anchor url={link.url} navigation={navigation}>
-      <Component
-        {...compProps}
-        text={getTextItems(textItems, renderComponentInNewLine, useStyle)}
-        locator={locator}
-      />
-    </Anchor>
-  );
+  return headerText.map(item => {
+    const { link, textItems } = item;
+    return (
+      <Anchor url={link.url} navigation={navigation}>
+        <Component
+          {...compProps}
+          text={getTextItems(textItems, renderComponentInNewLine, useStyle)}
+          locator={locator}
+        />
+      </Anchor>
+    );
+  });
 };
 
 export default LinkText;
