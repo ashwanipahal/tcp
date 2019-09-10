@@ -14,6 +14,14 @@ let currentAppAPIConfig = null;
 let tcpAPIConfig = null;
 let gymAPIConfig = null;
 
+// Host name to be used for lazyload scrollview
+export const LAZYLOAD_HOST_NAME = {
+  HOME: 'lazyload-home',
+  PLP: 'lazyload-plp',
+  ACCOUNT: 'lazyload-account',
+  WALLET: 'lazyload-wallet',
+};
+
 export const isMobileApp = () => {
   return typeof navigator !== 'undefined' && navigator.product === 'ReactNative';
 };
