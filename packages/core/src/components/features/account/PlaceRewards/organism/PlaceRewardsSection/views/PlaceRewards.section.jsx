@@ -33,7 +33,7 @@ const PlaceRewardsSection = ({ labels, className }) => {
             className="place-rewards__heading"
             data-locator="place-rewards-heading"
           >
-            {labels.myPlaceRewards.ACC_LBL_PLACE_REWARDS_HEADING}
+            {labels.placeRewards.ACC_LBL_PLACE_REWARDS_HEADING}
           </BodyCopy>
         </Col>
       </Row>
@@ -63,7 +63,7 @@ const PlaceRewardsSection = ({ labels, className }) => {
                     component="h4"
                     className="elem-mb-SM elem-ml-SM"
                   >
-                    {labels.myPlaceRewards.lbl_my_rewards_point_balance}
+                    {labels.placeRewards.lbl_my_rewards_point_balance}
                   </BodyCopy>
                 </Col>
               </Row>
@@ -77,7 +77,7 @@ const PlaceRewardsSection = ({ labels, className }) => {
                   className="reward-points-section"
                 >
                   <div className="my-place-reward-section">
-                    <RewardsPoints labels={labels.common} />
+                    <RewardsPoints labels={labels.placeRewards} />
                   </div>
                 </Col>
               </Row>
@@ -106,7 +106,7 @@ const PlaceRewardsSection = ({ labels, className }) => {
                     className="elem-mb-SM elem-ml-SM"
                     data-locator="pointshistorylbl"
                   >
-                    {labels.myPlaceRewards.lbl_my_rewards_points_history}
+                    {labels.placeRewards.lbl_my_rewards_points_history}
                   </BodyCopy>
                 </Col>
               </Row>
@@ -155,12 +155,12 @@ const PlaceRewardsSection = ({ labels, className }) => {
 };
 
 PlaceRewardsSection.propTypes = {
-  labels: PropTypes.shape({ myPlaceRewards: {} }),
+  labels: PropTypes.shape({ placeRewards: {} }),
   className: PropTypes.string,
 };
 
 PlaceRewardsSection.defaultProps = {
-  labels: { myPlaceRewards: { ACC_LBL_PLACE_REWARDS_HEADING: '' } },
+  labels: { placeRewards: { ACC_LBL_PLACE_REWARDS_HEADING: '' } },
   className: '',
 };
 

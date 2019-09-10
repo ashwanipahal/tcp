@@ -112,7 +112,7 @@ class PickUpFormPart extends React.Component {
   };
 
   pickupSubmit = data => {
-    const { onPickupSubmit } = this.props;
+    const { onPickupSubmit, navigation } = this.props;
     const { firstName, lastName, phoneNumber, emailAddress } = data.pickUpContact;
     const { hasAlternatePickup } = data.pickUpAlternate;
     const params = {
@@ -131,6 +131,7 @@ class PickUpFormPart extends React.Component {
         lastName: hasAlternatePickup ? data.pickUpAlternate.lastName : '',
         emailAddress: hasAlternatePickup ? data.pickUpAlternate.emailAddress : '',
       },
+      navigation,
     };
     onPickupSubmit(params);
   };
@@ -177,7 +178,6 @@ class PickUpFormPart extends React.Component {
     if (!dataUpdated) {
       this.updatePickupForm();
     }
-
     return (
       <>
         <CheckoutProgressIndicator
