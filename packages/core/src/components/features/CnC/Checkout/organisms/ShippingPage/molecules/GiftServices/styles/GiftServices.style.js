@@ -5,15 +5,15 @@ export default css`
     width: 83px;
   }
   .shortDesc {
-    font-weight: bold;
-    font-size: 14px;
+    font-weight: ${props => props.theme.fonts.fontWeight.semiBold};
+    font-size: ${props => props.theme.typography.fontSizes.fs14};
   }
   .checkbox-header {
     width: 180px;
     display: flex;
   }
   .TextBox__input {
-    border: 1px solid;
+    border: 1px solid ${props => props.theme.colors.FOOTER.DIVIDER};
     height: 146px;
     padding: 0;
     width: 99%;
@@ -51,7 +51,7 @@ export default css`
     margin-right: 5px;
   }
   .longDesc {
-    font-size: 12px;
+    font-size: ${props => props.theme.typography.fontSizes.fs12};
   }
   .giftServicesDetailsLink {
     text-decoration: underline;

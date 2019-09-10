@@ -48,7 +48,7 @@ class GiftServices extends React.PureComponent {
     });
   };
 
-  getServicesOptions = giftWrapOptions => {
+  getServicesOptions = (giftWrapOptions, labels) => {
     const parsedGiftWrapOptions = JSON.parse(giftWrapOptions);
     const getServicesOptionsMap = parsedGiftWrapOptions.giftOptions;
     const { isGymboreeBrand } = this.state;
@@ -64,7 +64,9 @@ class GiftServices extends React.PureComponent {
                 <div>
                   <span>{servicesMap.name}</span>
                   <span className="price">
-                    {servicesMap.price === '0.00' ? 'FREE' : `$${servicesMap.price}`}
+                    {servicesMap.price === '0.00'
+                      ? labels.tcpOptionPrice1
+                      : `$${servicesMap.price}`}
                   </span>
                 </div>
               </React.Fragment>
@@ -74,7 +76,9 @@ class GiftServices extends React.PureComponent {
                 <div className="shortDesc">
                   <span>{servicesMap.name}</span>
                   <span className="price">
-                    {servicesMap.price === '0.00' ? 'FREE' : `$${servicesMap.price}`}
+                    {servicesMap.price === '0.00'
+                      ? labels.tcpOptionPrice1
+                      : `$${servicesMap.price}`}
                   </span>
                 </div>
                 <div>
@@ -101,7 +105,7 @@ class GiftServices extends React.PureComponent {
 
   render() {
     const { className, labels, giftWrapOptions } = this.props;
-    const giftServicesList = this.getServicesOptions(giftWrapOptions);
+    const giftServicesList = this.getServicesOptions(giftWrapOptions, labels);
     const { detailStatus, isGymboreeBrand, isChecked, message } = this.state;
 
     return (
@@ -263,7 +267,7 @@ class GiftServices extends React.PureComponent {
                 detailStatus: false,
               });
             }}
-            heading="Help Modal"
+            heading={labels.giftServices}
           />
         </div>
       </form>

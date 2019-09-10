@@ -144,7 +144,6 @@ export function* routeToPickupPage(recalc) {
   yield call(utility.routeToPage, CHECKOUT_ROUTES.pickupPage, { recalc });
 }
 export function* addAndSetGiftWrappingOptions(payload) {
-  console.log('lllllll', payload);
   if (payload.hasGiftWrapping) {
     try {
       const res = yield call(addGiftWrappingOption, payload);
