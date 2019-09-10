@@ -5,7 +5,13 @@ import { FilterModalVanilla } from '../views/FilterModal.view';
 describe('FilterModal is shown', () => {
   const props = {
     filters: {},
-    theme: {},
+    theme: {
+      colorPalette: {
+        text: {
+          lightgray: '#eeeeee',
+        },
+      },
+    },
     labelsFilter: {},
   };
   it('should render FilterModal when show is false', () => {
