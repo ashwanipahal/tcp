@@ -23,7 +23,7 @@ export class PersonalInformation extends React.PureComponent {
   render() {
     const {
       labels,
-      handleComponentChange,
+      toggleModalState,
       profileInfoTile,
       userEmail,
       userBirthday,
@@ -56,7 +56,7 @@ export class PersonalInformation extends React.PureComponent {
           <MyProfileTile
             title={labels.lbl_profile_mailing_address}
             ctaTitle={labels.lbl_profile_edit_mailing_info}
-            handleComponentChange={() => handleComponentChange('accountOverviewMobile')}
+            handleComponentChange={() => toggleModalState('mountMailingAddressModal')}
           >
             <Address
               address={address}
@@ -83,7 +83,6 @@ PersonalInformation.propTypes = {
     lbl_profile_personal_information: PropTypes.string,
     lbl_profile_edit_personal_info: PropTypes.string,
   }),
-  handleComponentChange: PropTypes.func.isRequired,
   profileInfoTile: PropTypes.shape({}),
   userBirthday: PropTypes.string,
   userEmail: PropTypes.string,
@@ -91,6 +90,7 @@ PersonalInformation.propTypes = {
   userPhoneNumber: PropTypes.number,
   airMiles: PropTypes.string,
   myPlaceNumber: PropTypes.string,
+  toggleModalState: PropTypes.func.isRequired,
 };
 
 PersonalInformation.defaultProps = {

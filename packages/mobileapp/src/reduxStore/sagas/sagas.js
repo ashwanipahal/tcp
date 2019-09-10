@@ -33,6 +33,7 @@ import ChangePasswordSaga from '@tcp/core/src/components/features/account/Change
 import ProductTabListSaga from '@tcp/core/src/components/common/organisms/ProductTabList/container/ProductTabList.saga';
 import GetCandidSaga from '@tcp/core/src/components/common/molecules/GetCandid/container/GetCandid.saga';
 import GiftCardsSaga from '@tcp/core/src/components/features/CnC/Checkout/organisms/GiftCardsSection/container/GiftCards.saga';
+import MailingAddressSaga from '@tcp/core/src/components/features/account/MyProfile/organism/MailingInformation/container/MailingAddress.saga';
 import HomePageSaga from '../../components/features/content/HomePage/container/HomePage.saga';
 
 export default function* rootSaga() {
@@ -72,5 +73,6 @@ export default function* rootSaga() {
     GetCandidSaga(),
     UpdateProfileSaga(),
     GiftCardsSaga(),
+    MailingAddressSaga(),
   ]);
 }

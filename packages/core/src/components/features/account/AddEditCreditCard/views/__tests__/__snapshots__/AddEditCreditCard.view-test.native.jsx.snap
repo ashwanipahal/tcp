@@ -1,77 +1,134 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
 exports[`AddEditCreditCard component should renders correctly 1`] = `
-<ReduxForm
-  destroyOnUnmount={true}
-  dto={Object {}}
-  enableReinitialize={true}
-  forceUnregisterOnUnmount={false}
-  form="addEditCreditCard"
-  getFormState={[Function]}
-  isEdit={false}
-  keepDirtyOnReinitialize={false}
-  labels={
-    Object {
-      "common": Object {},
-      "paymentGC": Object {},
+<Fragment>
+  <ReduxForm
+    destroyOnUnmount={true}
+    dto={Object {}}
+    enableReinitialize={true}
+    forceUnregisterOnUnmount={false}
+    form="addEditCreditCard"
+    getFormState={[Function]}
+    isEdit={false}
+    keepDirtyOnReinitialize={false}
+    labels={
+      Object {
+        "common": Object {},
+        "paymentGC": Object {},
+      }
     }
-  }
-  onClose={[Function]}
-  onFileAddresskey=""
-  persistentSubmitErrors={false}
-  pure={true}
-  selectedCard={
-    Object {
-      "billingAddressId": 150786,
+    onClose={[Function]}
+    onFileAddresskey=""
+    persistentSubmitErrors={false}
+    pure={true}
+    selectedCard={
+      Object {
+        "billingAddressId": 150786,
+      }
     }
-  }
-  shouldAsyncValidate={[Function]}
-  shouldError={[Function]}
-  shouldValidate={[Function]}
-  shouldWarn={[Function]}
-  submitAsSideEffect={false}
-  touchOnBlur={true}
-  touchOnChange={false}
-  updateCardList={[Function]}
-  updateUnregisteredFields={false}
-  validate={[Function]}
-/>
+    shouldAsyncValidate={[Function]}
+    shouldError={[Function]}
+    shouldValidate={[Function]}
+    shouldWarn={[Function]}
+    submitAsSideEffect={false}
+    touchOnBlur={true}
+    touchOnChange={false}
+    updateCardList={[Function]}
+    updateUnregisteredFields={false}
+    validate={[Function]}
+  />
+</Fragment>
+`;
+
+exports[`AddEditCreditCard component should renders correctly when showCreditCardFields is false 1`] = `
+<Fragment>
+  <Connect(AddressVerification)
+    labels={
+      Object {
+        "addressBook": Object {},
+        "common": Object {},
+        "paymentGC": Object {},
+      }
+    }
+    onError={[Function]}
+    onSuccess={[Function]}
+    toggleAddressModal={false}
+    verifyModalRendered={[Function]}
+  />
+  <ReduxForm
+    addressFormLabels={Object {}}
+    destroyOnUnmount={true}
+    enableReinitialize={true}
+    forceUnregisterOnUnmount={false}
+    form="addEditCreditCard"
+    getFormState={[Function]}
+    initialValues={Object {}}
+    isEdit={false}
+    keepDirtyOnReinitialize={false}
+    labels={
+      Object {
+        "addressBook": Object {},
+        "common": Object {},
+        "paymentGC": Object {},
+      }
+    }
+    mailingAddress={false}
+    onClose={[Function]}
+    onFileAddresskey=""
+    onSubmit={[Function]}
+    persistentSubmitErrors={false}
+    pure={true}
+    shouldAsyncValidate={[Function]}
+    shouldError={[Function]}
+    shouldValidate={[Function]}
+    shouldWarn={[Function]}
+    showCreditCardFields={false}
+    showUserName={true}
+    submitAsSideEffect={false}
+    touchOnBlur={true}
+    touchOnChange={false}
+    updateUnregisteredFields={false}
+    validate={[Function]}
+  />
+</Fragment>
 `;
 
 exports[`AddEditCreditCard component should renders correctly with error message 1`] = `
-<ReduxForm
-  destroyOnUnmount={true}
-  dto={Object {}}
-  enableReinitialize={true}
-  forceUnregisterOnUnmount={false}
-  form="addEditCreditCard"
-  getFormState={[Function]}
-  isEdit={true}
-  keepDirtyOnReinitialize={false}
-  labels={
-    Object {
-      "common": Object {},
-      "paymentGC": Object {},
+<Fragment>
+  <ReduxForm
+    destroyOnUnmount={true}
+    dto={Object {}}
+    enableReinitialize={true}
+    forceUnregisterOnUnmount={false}
+    form="addEditCreditCard"
+    getFormState={[Function]}
+    isEdit={true}
+    keepDirtyOnReinitialize={false}
+    labels={
+      Object {
+        "common": Object {},
+        "paymentGC": Object {},
+      }
     }
-  }
-  onClose={[Function]}
-  onFileAddresskey="150786"
-  persistentSubmitErrors={false}
-  pure={true}
-  selectedCard={
-    Object {
-      "billingAddressId": 150786,
+    onClose={[Function]}
+    onFileAddresskey="150786"
+    persistentSubmitErrors={false}
+    pure={true}
+    selectedCard={
+      Object {
+        "billingAddressId": 150786,
+      }
     }
-  }
-  shouldAsyncValidate={[Function]}
-  shouldError={[Function]}
-  shouldValidate={[Function]}
-  shouldWarn={[Function]}
-  submitAsSideEffect={false}
-  touchOnBlur={true}
-  touchOnChange={false}
-  updateCardList={[Function]}
-  updateUnregisteredFields={false}
-  validate={[Function]}
-/>
+    shouldAsyncValidate={[Function]}
+    shouldError={[Function]}
+    shouldValidate={[Function]}
+    shouldWarn={[Function]}
+    submitAsSideEffect={false}
+    touchOnBlur={true}
+    touchOnChange={false}
+    updateCardList={[Function]}
+    updateUnregisteredFields={false}
+    validate={[Function]}
+  />
+</Fragment>
 `;
