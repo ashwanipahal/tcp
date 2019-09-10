@@ -1,4 +1,4 @@
-import React from 'react';
+import React, {PureComponent} from 'react';
 import PropTypes from 'prop-types';
 import { reduxForm, Field, change } from 'redux-form';
 import TextBox from '@tcp/core/src/components/common/atoms/TextBox';
@@ -24,7 +24,7 @@ import {
   FieldBirthdayTopMarginWrapper,
 } from '../styles/AddEditPersonalInformationForm.native.style';
 
-export class AddEditPersonalInformationForm extends React.PureComponent {
+export class AddEditPersonalInformationForm extends PureComponent {
   constructor(props) {
     super(props);
     const monthArray = [
@@ -133,7 +133,6 @@ export class AddEditPersonalInformationForm extends React.PureComponent {
             />
             <HiddenStateWrapper>
               <Field
-                label=""
                 component={TextBox}
                 title=""
                 type="hidden"

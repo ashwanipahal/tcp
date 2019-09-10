@@ -42,13 +42,9 @@ export class AddEditPersonalInformationContainer extends PureComponent {
   constructor(props) {
     super(props);
     this.yearOptionsMap = getBirthDateOptionMap();
-    const { labels, ...otherProps } = this.props;
-    this.initialValues = this.getInitialValues(otherProps);
-  }
-
-  componentWillMount() {
-    const { messageSateChangeAction } = this.props;
+    const { labels,messageSateChangeAction, ...otherProps } = this.props;
     messageSateChangeAction(null);
+    this.initialValues = this.getInitialValues(otherProps);
   }
 
   componentDidUpdate() {
@@ -180,6 +176,7 @@ export const mapDispatchToProps = dispatch => ({
   },
   toastMessage: errorMessage => {
     dispatch(toastMessageInfo(errorMessage));
+    dispatch(updateProfileError(null));
   },
 });
 
