@@ -57,6 +57,35 @@ const getShowAddressFields = ({ isEditing, isAddNewAddress, modalState, userAddr
   return isEditing || isAddNewAddress || modalState || (userAddresses && userAddresses.size === 0);
 };
 
+const getFieldsValidation = ({ address }) => {
+  let disabledState = false;
+  const {
+    firstName,
+    lastName,
+    addressLine1,
+    addressLine2,
+    city,
+    state,
+    zipCode,
+    country,
+    phoneNumber,
+  } = address;
+  if (
+    !firstName ||
+    !lastName ||
+    !addressLine1 ||
+    !addressLine2 ||
+    !city ||
+    !state ||
+    !zipCode ||
+    !country ||
+    !phoneNumber
+  ) {
+    disabledState = true;
+  }
+  return disabledState;
+};
+
 const propTypes = {
   addressLabels: PropTypes.shape({}).isRequired,
   dispatch: PropTypes.func.isRequired,
@@ -106,4 +135,5 @@ export {
   getShowAddressFields,
   propTypes,
   defaultProps,
+  getFieldsValidation,
 };

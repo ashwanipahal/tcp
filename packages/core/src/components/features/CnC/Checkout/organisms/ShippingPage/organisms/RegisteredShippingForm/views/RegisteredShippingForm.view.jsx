@@ -21,6 +21,7 @@ import {
   getShowAddressFields,
   propTypes,
   defaultProps,
+  getFieldsValidation,
 } from './RegisteredShippingForm.util';
 
 const formName = 'checkoutShipping';
@@ -47,13 +48,15 @@ class RegisteredShippingForm extends React.Component {
   }
 
   setDefaultAddress = ({ defaultAddress }) => {
-    const { dispatch, userAddresses } = this.props;
+    const { dispatch, userAddresses, defaultAddressId, setDefaultAddressId } = this.props;
     if (defaultAddress) {
       dispatch(change(formName, 'onFileAddressKey', defaultAddress.addressId));
     }
     if (!defaultAddress) {
       dispatch(change(formName, 'onFileAddressKey', userAddresses.get(0).addressId));
-      dispatch(change(formName, 'onFileAddressKey', userAddresses.get(0).addressId));
+    }
+    if (defaultAddress && !defaultAddressId) {
+      setDefaultAddressId(defaultAddress.addressId);
     }
   };
 
@@ -118,8 +121,11 @@ class RegisteredShippingForm extends React.Component {
   };
 
   onAddressDropDownChange = value => {
-    const { onFileAddressKey } = this.props;
+    const { onFileAddressKey, dispatch } = this.props;
     if (onFileAddressKey === '' && value !== '') {
+      this.toggleAddNewAddressMode();
+    } else if (!onFileAddressKey) {
+      dispatch(change(formName, 'onFileAddressKey', value));
       this.toggleAddNewAddressMode();
     }
   };
@@ -314,6 +320,15 @@ class RegisteredShippingForm extends React.Component {
     });
   };
 
+  getBtnDisabledState = () => {
+    let disabledState = false;
+    const { modalState, modalType, address } = this.props;
+    if (modalState && modalType === 'add') {
+      disabledState = getFieldsValidation({ address });
+    }
+    return disabledState;
+  };
+
   renderActionButtons = () => {
     const { modalState, labels } = this.props;
     const cancelAction = getCancelAction({
@@ -334,6 +349,7 @@ class RegisteredShippingForm extends React.Component {
               data-locator="edit-shipping-cancel-btn"
               onClick={modalState ? this.saveBtnClickHandler : this.toggleEditingMode}
               className={modalState ? 'elem-mb-MED' : ''}
+              disabled={this.getBtnDisabledState()}
             >
               {modalState
                 ? getLabelValue(labels, 'lbl_shipping_selectShipAdd', 'shipping', 'checkout')

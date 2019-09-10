@@ -238,6 +238,7 @@ class ShippingForm extends React.Component {
       addNewShippingAddress,
       labels,
       shippingAddress,
+      setDefaultAddressId,
     } = this.props;
     const { isEditing, modalType, modalState } = this.state;
     return (
@@ -276,6 +277,7 @@ class ShippingForm extends React.Component {
               addNewShippingAddress={addNewShippingAddress}
               shippingAddress={shippingAddress}
               labels={labels}
+              setDefaultAddressId={setDefaultAddressId}
             />
           )}
           {isGuest && (

@@ -100,7 +100,7 @@ export default class ShippingPage extends React.PureComponent {
       return {
         defaultAddressId:
           defaultAddress && defaultAddress.size > 0
-            ? defaultAddress.addressId
+            ? defaultAddress.get(0) && defaultAddress.get(0).addressId
             : userAddresses.get(0) && userAddresses.get(0).addressId,
       };
     }
@@ -109,6 +109,10 @@ export default class ShippingPage extends React.PureComponent {
     }
     return null;
   }
+
+  setDefaultAddressId = id => {
+    this.setState({ defaultAddressId: id });
+  };
 
   toggleAddNewAddress = () => {
     const { isAddNewAddress } = this.state;
@@ -238,6 +242,7 @@ export default class ShippingPage extends React.PureComponent {
       shippingAddressId,
       setAsDefaultShipping,
       labels,
+      address,
     } = this.props;
 
     const { isAddNewAddress, isEditing, defaultAddressId } = this.state;
@@ -280,6 +285,8 @@ export default class ShippingPage extends React.PureComponent {
             setAsDefaultShipping={setAsDefaultShipping}
             addNewShippingAddress={this.addNewShippingAddress}
             labels={labels}
+            address={address}
+            setDefaultAddressId={this.setDefaultAddressId}
           />
         )}
       </>

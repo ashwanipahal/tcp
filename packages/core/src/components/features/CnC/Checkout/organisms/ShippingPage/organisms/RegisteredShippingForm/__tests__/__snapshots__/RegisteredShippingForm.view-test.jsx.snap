@@ -352,18 +352,6 @@ exports[`RegisteredShippingFormVanilla should render correctly onAddressDropDown
                   Array [
                     Object {
                       "meta": Object {
-                        "field": "onFileAddressKey",
-                        "form": "checkoutShipping",
-                        "persistentSubmitErrors": undefined,
-                        "touch": undefined,
-                      },
-                      "payload": "123",
-                      "type": "@@redux-form/CHANGE",
-                    },
-                  ],
-                  Array [
-                    Object {
-                      "meta": Object {
                         "field": "defaultShipping",
                         "form": "checkoutShipping",
                         "persistentSubmitErrors": undefined,
@@ -375,10 +363,6 @@ exports[`RegisteredShippingFormVanilla should render correctly onAddressDropDown
                   ],
                 ],
                 "results": Array [
-                  Object {
-                    "type": "return",
-                    "value": undefined,
-                  },
                   Object {
                     "type": "return",
                     "value": undefined,
@@ -598,6 +582,7 @@ exports[`RegisteredShippingFormVanilla should render correctly onAddressDropDown
         buttonVariation="fixed-width"
         className=""
         data-locator="edit-shipping-cancel-btn"
+        disabled={false}
         fill="WHITE"
         onClick={[Function]}
         type="button"
@@ -770,24 +755,8 @@ exports[`RegisteredShippingFormVanilla should render correctly with isAddNewAddr
                       "type": "@@redux-form/CHANGE",
                     },
                   ],
-                  Array [
-                    Object {
-                      "meta": Object {
-                        "field": "onFileAddressKey",
-                        "form": "checkoutShipping",
-                        "persistentSubmitErrors": undefined,
-                        "touch": undefined,
-                      },
-                      "payload": undefined,
-                      "type": "@@redux-form/CHANGE",
-                    },
-                  ],
                 ],
                 "results": Array [
-                  Object {
-                    "type": "return",
-                    "value": undefined,
-                  },
                   Object {
                     "type": "return",
                     "value": undefined,
@@ -1292,24 +1261,8 @@ exports[`RegisteredShippingFormVanilla should render correctly with isAddNewAddr
                       "type": "@@redux-form/CHANGE",
                     },
                   ],
-                  Array [
-                    Object {
-                      "meta": Object {
-                        "field": "onFileAddressKey",
-                        "form": "checkoutShipping",
-                        "persistentSubmitErrors": undefined,
-                        "touch": undefined,
-                      },
-                      "payload": undefined,
-                      "type": "@@redux-form/CHANGE",
-                    },
-                  ],
                 ],
                 "results": Array [
-                  Object {
-                    "type": "return",
-                    "value": undefined,
-                  },
                   Object {
                     "type": "return",
                     "value": undefined,
@@ -1814,24 +1767,8 @@ exports[`RegisteredShippingFormVanilla should render correctly with isEditing tr
                       "type": "@@redux-form/CHANGE",
                     },
                   ],
-                  Array [
-                    Object {
-                      "meta": Object {
-                        "field": "onFileAddressKey",
-                        "form": "checkoutShipping",
-                        "persistentSubmitErrors": undefined,
-                        "touch": undefined,
-                      },
-                      "payload": undefined,
-                      "type": "@@redux-form/CHANGE",
-                    },
-                  ],
                 ],
                 "results": Array [
-                  Object {
-                    "type": "return",
-                    "value": undefined,
-                  },
                   Object {
                     "type": "return",
                     "value": undefined,
@@ -2047,6 +1984,7 @@ exports[`RegisteredShippingFormVanilla should render correctly with isEditing tr
         buttonVariation="fixed-width"
         className=""
         data-locator="edit-shipping-cancel-btn"
+        disabled={false}
         fill="WHITE"
         onClick={[Function]}
         type="button"

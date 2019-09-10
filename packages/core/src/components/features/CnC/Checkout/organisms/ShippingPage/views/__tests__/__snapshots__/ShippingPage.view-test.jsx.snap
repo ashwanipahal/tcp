@@ -4,6 +4,12 @@ exports[`Shipping Page should render correctly 1`] = `
 <Fragment>
   <ReduxForm
     addNewShippingAddress={[Function]}
+    address={
+      Object {
+        "addressLine1": "pob",
+        "addressLine2": "",
+      }
+    }
     addressPhoneNo={null}
     defaultShipmentId={null}
     destroyOnUnmount={false}
@@ -39,6 +45,7 @@ exports[`Shipping Page should render correctly 1`] = `
     pure={true}
     selectedShipmentId={null}
     setAsDefaultShipping={false}
+    setDefaultAddressId={[Function]}
     shipmentMethods={
       Array [
         Object {},
@@ -65,6 +72,12 @@ exports[`Shipping Page should render correctly with component did update and get
 <Fragment>
   <ReduxForm
     addNewShippingAddress={[Function]}
+    address={
+      Object {
+        "addressLine1": "pob 123",
+        "addressLine2": "pob",
+      }
+    }
     addressPhoneNo={null}
     defaultAddressId="34789"
     defaultShipmentId={null}
@@ -117,6 +130,7 @@ exports[`Shipping Page should render correctly with component did update and get
     pure={true}
     selectedShipmentId="336"
     setAsDefaultShipping={false}
+    setDefaultAddressId={[Function]}
     shipmentMethods={
       Array [
         Object {},
@@ -159,7 +173,14 @@ exports[`Shipping Page should render correctly with component did update and get
 <Fragment>
   <ReduxForm
     addNewShippingAddress={[Function]}
+    address={
+      Object {
+        "addressLine1": "pob 123",
+        "addressLine2": "pob",
+      }
+    }
     addressPhoneNo={null}
+    defaultAddressId="123"
     defaultShipmentId={null}
     destroyOnUnmount={false}
     enableReinitialize={false}
@@ -171,7 +192,7 @@ exports[`Shipping Page should render correctly with component did update and get
         "address": Object {
           "country": "US",
         },
-        "onFileAddressKey": undefined,
+        "onFileAddressKey": "123",
         "saveToAddressBook": false,
         "shipmentMethods": Object {
           "shippingMethodId": null,
@@ -210,6 +231,7 @@ exports[`Shipping Page should render correctly with component did update and get
     pure={true}
     selectedShipmentId="336"
     setAsDefaultShipping={false}
+    setDefaultAddressId={[Function]}
     shipmentMethods={
       Array [
         Object {},
