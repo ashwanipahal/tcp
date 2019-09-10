@@ -22,6 +22,7 @@ import Loader from '../components/features/content/Loader';
 import { configureStore } from '../reduxStore';
 import ReactAxe from '../utils/react-axe';
 import CHECKOUT_STAGES from './App.constants';
+import { createDataLayer } from '../constants/analytics';
 
 // constants
 import constants from '../constants';
@@ -93,6 +94,9 @@ class TCPWebApp extends App {
       channelId,
       isDevelopment: isDevelopment(),
     });
+
+    // This is where we create the window.trackingData reference
+    global.trackingData = createDataLayer(this.props.store);
   }
 
   componentDidUpdate() {
