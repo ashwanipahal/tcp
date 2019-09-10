@@ -247,5 +247,10 @@ const endpoints = {
     method: 'POST',
     URI: 'v2/account/deleteBirthdaySavings',
   },
+  searchBarApi: {
+    method: 'GET',
+    URI: PRODUCTS_URI.PRODUCTS_AUTOSUGGEST,
+    unbxd: true,
+  },
 };
 export default endpoints;
