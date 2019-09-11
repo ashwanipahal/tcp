@@ -2,6 +2,7 @@
 
 exports[`WalletContainer should render correctly 1`] = `
 <WalletView
+  commonLabels={Object {}}
   labels={Object {}}
 />
 `;

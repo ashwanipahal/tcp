@@ -12,7 +12,7 @@ describe('WalletContainer', () => {
   it('mapStateToProps should return label props', () => {
     const stateProps = mapStateToProps({
       Labels: {
-        account: {
+        global: {
           lbl_profile_name: 'test',
         },
       },
