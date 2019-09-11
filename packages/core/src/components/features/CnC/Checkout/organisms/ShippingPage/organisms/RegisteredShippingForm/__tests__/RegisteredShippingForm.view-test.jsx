@@ -24,6 +24,7 @@ describe('RegisteredShippingFormVanilla', () => {
       ]),
       addressLabels: {},
       shippingLabels: {},
+      setDefaultAddressId: jest.fn(),
     };
     const tree = shallow(<RegisteredShippingFormVanilla {...props} />);
     expect(tree).toMatchSnapshot();

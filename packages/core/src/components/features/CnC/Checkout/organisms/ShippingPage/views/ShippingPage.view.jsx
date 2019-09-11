@@ -97,13 +97,22 @@ export default class ShippingPage extends React.PureComponent {
       (!addEditResponseAddressId || prevDefaultAddress === addEditResponseAddressId)
     ) {
       const defaultAddress = userAddresses.filter(item => item.primary === 'true');
-      return { defaultAddressId: defaultAddress.size > 0 ? defaultAddress.get(0).addressId : '' };
+      return {
+        defaultAddressId:
+          defaultAddress && defaultAddress.size > 0
+            ? defaultAddress.get(0) && defaultAddress.get(0).addressId
+            : userAddresses.get(0) && userAddresses.get(0).addressId,
+      };
     }
     if (addEditResponseAddressId && prevDefaultAddress !== addEditResponseAddressId) {
       return { defaultAddressId: addEditResponseAddressId };
     }
     return null;
   }
+
+  setDefaultAddressId = id => {
+    this.setState({ defaultAddressId: id });
+  };
 
   toggleAddNewAddress = () => {
     const { isAddNewAddress } = this.state;
@@ -233,6 +242,7 @@ export default class ShippingPage extends React.PureComponent {
       shippingAddressId,
       setAsDefaultShipping,
       labels,
+      address,
     } = this.props;
 
     const { isAddNewAddress, isEditing, defaultAddressId } = this.state;
@@ -247,7 +257,7 @@ export default class ShippingPage extends React.PureComponent {
             initialValues={{
               address: { country: getSiteId() && getSiteId().toUpperCase() },
               shipmentMethods: { shippingMethodId: defaultShipmentId },
-              saveToAddressBook: !isGuest && userAddresses && userAddresses.size > 0,
+              saveToAddressBook: !isGuest,
               onFileAddressKey: defaultAddressId,
             }}
             selectedShipmentId={selectedShipmentId}
@@ -275,6 +285,8 @@ export default class ShippingPage extends React.PureComponent {
             setAsDefaultShipping={setAsDefaultShipping}
             addNewShippingAddress={this.addNewShippingAddress}
             labels={labels}
+            address={address}
+            setDefaultAddressId={this.setDefaultAddressId}
           />
         )}
       </>
