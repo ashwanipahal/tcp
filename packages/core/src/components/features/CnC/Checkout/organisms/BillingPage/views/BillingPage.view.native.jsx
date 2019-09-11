@@ -7,6 +7,7 @@ import CheckoutProgressIndicator from '../../../molecules/CheckoutProgressIndica
 import GiftCardsContainer from '../../GiftCardsSection';
 import CnCTemplate from '../../../../common/organism/CnCTemplate';
 import style from '../styles/BillingPage.style.native';
+import CONSTANTS from '../../../Checkout.constants';
 
 const { Container } = style;
 
@@ -20,6 +21,7 @@ class BillingPage extends React.PureComponent {
     navigation: PropTypes.shape({}).isRequired,
     handleSubmit: PropTypes.func.isRequired,
     submitBilling: PropTypes.func.isRequired,
+    orderHasShipping: PropTypes.bool.isRequired,
     availableStages: PropTypes.shape([]).isRequired,
     labels: PropTypes.shape({}).isRequired,
   };
@@ -29,9 +31,16 @@ class BillingPage extends React.PureComponent {
   };
 
   render() {
-    const { navigation, availableStages, labels, handleSubmit, submitBilling } = this.props;
+    const {
+      navigation,
+      availableStages,
+      labels,
+      handleSubmit,
+      submitBilling,
+      orderHasShipping,
+    } = this.props;
 
-    const { header } = labels;
+    const { header, backLinkShipping, backLinkPickup, nextSubmitText } = labels;
 
     return (
       <>
@@ -47,9 +56,17 @@ class BillingPage extends React.PureComponent {
           </Container>
           <CnCTemplate
             navigation={navigation}
-            btnText="NEXT:REVIEW"
+            btnText={nextSubmitText}
             routeToPage=""
             onPress={handleSubmit(submitBilling)}
+            backLinkText={orderHasShipping ? backLinkShipping : backLinkPickup}
+            onBackLinkPress={() =>
+              navigation.navigate(
+                orderHasShipping
+                  ? CONSTANTS.CHECKOUT_ROUTES_NAMES.CHECKOUT_SHIPPING
+                  : CONSTANTS.CHECKOUT_ROUTES_NAMES.CHECKOUT_PICKUP
+              )
+            }
           />
         </ScrollView>
       </>
