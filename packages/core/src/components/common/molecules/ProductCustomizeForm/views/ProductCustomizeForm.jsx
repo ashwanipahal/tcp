@@ -336,6 +336,6 @@ export default connect()(
     form: 'ProductCustomizeForm',
     enableReinitialize: true,
 
-    // a unique identifier for this form
+    // a unique identifier for this form..
   })(withStyles(ProductCustomizeForm, style))
 );
