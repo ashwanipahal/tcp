@@ -25,7 +25,7 @@ describe('ForgotPasswordReducer List reducer', () => {
     ).toEqual(
       fromJS({
         showNotification: true,
-        error: { userId: '12345'},
+        error: { userId: '12345' },
       })
     );
   });

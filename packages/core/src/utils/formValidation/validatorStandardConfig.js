@@ -135,6 +135,12 @@ export const formValidationMessages = {
     dob: 'lbl_err_year_dob',
   },
   orderNumber: 'lbl_err_ordernumber',
+  cvvCode: {
+    required: 'lbl_err_cvvcode_required',
+    cvvNumber: 'lbl_err_cvvcode_cvvnumber',
+    cvvLengthThree: 'lbl_err_cvvcode_cvvlengththree',
+    cvvLengthFour: 'lbl_err_cvvcode_cvvlengthfour',
+  },
   phoneNumberWithAlt: {
     eitherRequired: enterPhoneNumber,
     phone: validPhoneNumber,
@@ -311,6 +317,12 @@ export const formValidationRules = {
   },
   year: {
     dob: true,
+  },
+  cvvCode: {
+    required: true,
+    cvvNumber: true,
+    cvvLengthThree: true,
+    cvvLengthFour: true,
   },
   phoneNumberWithAlt: {
     phone: true,

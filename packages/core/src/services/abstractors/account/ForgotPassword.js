@@ -13,14 +13,15 @@ export const forgotPassword = args => {
       ...args,
     },
   };
-  return executeStatefulAPICall(payload).then(res => {
-    if (!res.body) {
-      throw new Error('res body is null');
-      // TODO - Set API Helper to filter if error exists in response
-    }
-    return res.body.contact || [];
-  })
-  .catch(err => {
+  return executeStatefulAPICall(payload)
+    .then(res => {
+      if (!res.body) {
+        throw new Error('res body is null');
+        // TODO - Set API Helper to filter if error exists in response
+      }
+      return res.body.contact || [];
+    })
+    .catch(err => {
       throw err;
     });
 };

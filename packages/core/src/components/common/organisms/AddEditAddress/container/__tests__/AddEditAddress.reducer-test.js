@@ -8,7 +8,7 @@ describe('AddAddressReducer reducer', () => {
       showNotification: false,
       error: null,
     });
-    expect(AddAddressReducer(initialState, {}))
+    expect(AddAddressReducer(initialState, {}));
   });
   it('should handle failure addAddressFail', () => {
     const initialState = fromJS({
@@ -24,7 +24,7 @@ describe('AddAddressReducer reducer', () => {
       })
     ).toEqual(
       fromJS({
-        error : {  error: 'test error'},
+        error: { error: 'test error' },
         showNotification: true,
       })
     );

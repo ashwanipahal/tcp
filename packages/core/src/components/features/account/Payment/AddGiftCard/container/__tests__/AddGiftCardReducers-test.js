@@ -41,7 +41,14 @@ describe('AddGiftCard Reducer', () => {
         type: ADD_GIFT_CARD_CONSTANTS.ADD_GIFT_CARD_FAILED,
         payload: err,
       })
-    ).toEqual(fromJS({ error: err, showUpdatedNotification: 'error', onAddGiftCardPage: false , showNotification: true }));
+    ).toEqual(
+      fromJS({
+        error: err,
+        showUpdatedNotification: 'error',
+        onAddGiftCardPage: false,
+        showNotification: true,
+      })
+    );
   });
 
   it('should be called on reset show Notification', () => {
