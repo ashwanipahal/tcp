@@ -4,10 +4,12 @@ const DropDownStyle = css`
   height: ${props => props.dropDownStyle.height}px;
   ${props =>
     props.variation === 'primary'
-      ? `border: ${props.dropDownStyle.border}px solid ${props.theme.colors.BUTTON.WHITE.BORDER}`
-      : `border-bottom-width: ${props.dropDownStyle.border}px; border-bottom-color: ${
-          props.theme.colors.BLACK
-        }`};
+      ? `border: ${props.dropDownStyle.border}px solid ${
+          props.theme.colors.BUTTON.WHITE.BORDER
+        }`
+      : `border-bottom-width: ${
+          props.dropDownStyle.border
+        }px; border-bottom-color: ${props.theme.colors.BLACK}`};
   background-color: ${props =>
     props.variation === 'primary'
       ? props.theme.colorPalette.gray[500]
@@ -22,7 +24,9 @@ const Row = styled.TouchableOpacity`
   display: flex;
   flex-direction: row;
   ${props =>
-    props.variation === 'primary' ? 'justify-content: center' : 'justify-content:space-between'};
+    props.variation === 'primary'
+      ? 'justify-content: center'
+      : 'justify-content:space-between'};
   align-items: center;
 `;
 
@@ -37,12 +41,29 @@ const DropDownItemContainer = styled.TouchableHighlight.attrs({
 })`
   padding: ${props => props.theme.spacing.ELEM_SPACING.XXXS};
   background-color: ${props => props.theme.colors.WHITE};
-  justify-content: ${props => (props.variation === 'primary' ? 'flex-start' : 'center')};
+  justify-content: ${props =>
+    props.variation === 'primary' ? 'flex-start' : 'center'};
 `;
 
 const Separator = styled.View`
   background-color: ${props => props.theme.colors.BUTTON.WHITE.BORDER};
   height: 1px;
+`;
+
+const ToastWrapper = styled.Text`
+  border: 1px solid green;
+  color: #fff;
+ display:flex;
+`;
+const ToastText = styled.Text`
+width:300px;
+`;
+
+const ToastCross = styled.Text`
+  border: 1px solid white;
+  position:absolute;
+  right:0;
+  font-size:30px;
 `;
 
 const FlatList = styled.FlatList`
@@ -70,4 +91,7 @@ export {
   Separator,
   FlatList,
   StyledLabel,
+  ToastWrapper,
+  ToastCross,
+  ToastText,
 };

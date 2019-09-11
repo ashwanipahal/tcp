@@ -1,7 +1,13 @@
 import React, { Fragment } from 'react';
 import PropTypes from 'prop-types';
+import { View } from 'react-native';
 import Toast from 'react-native-easy-toast';
 import colors from '@tcp/core/styles/themes/TCP/colors';
+import {
+  ToastWrapper,
+  ToastCross,
+  ToastText,
+} from '../../DropDown/DropDown.style.native';
 
 /**
  * @param {object} props : Props for FPO
@@ -15,6 +21,10 @@ const styles = {
     borderRadius: 0,
     padding: 20,
   },
+};
+
+Toast.prototype.closeIcon = function closeIcon() {
+  return <View>X</View>;
 };
 
 class ToastView extends React.PureComponent {
@@ -31,9 +41,16 @@ class ToastView extends React.PureComponent {
   componentDidUpdate() {
     const { errorMessage, toastMessageReset } = this.props;
     if (errorMessage) {
-      this.toastRef.current.show(`${errorMessage}`, 500, () => {
-        toastMessageReset();
-      });
+      this.toastRef.current.show(
+        <ToastWrapper>
+          <ToastCross>X</ToastCross>
+          <ToastText>{errorMessage}</ToastText>
+        </ToastWrapper>,
+        500,
+        () => {
+          toastMessageReset();
+        }
+      );
     }
   }
 
