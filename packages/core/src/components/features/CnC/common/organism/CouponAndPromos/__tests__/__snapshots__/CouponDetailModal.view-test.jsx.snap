@@ -93,8 +93,8 @@ exports[`Detail Coupon Modal should render correctly 1`] = `
         className="couponModal_print_anchortext"
         dataLocator="couponDetailModal_applied_tAndC"
         fontSize="fs14"
-        onClick={[Function]}
         underline={true}
+        url="https://www.childrensplace.com/us/help-center/#termsAndConditionsli"
       >
         undefined
       </Styled(Anchor)>
@@ -104,8 +104,8 @@ exports[`Detail Coupon Modal should render correctly 1`] = `
         className="couponModal_print_anchortext"
         dataLocator="couponDetailModal_applied_pp"
         fontSize="fs14"
-        onClick={[Function]}
         underline={true}
+        url="https://www.childrensplace.com/us/help-center/#privacyPolicySectionli"
       >
         undefined
       </Styled(Anchor)>
