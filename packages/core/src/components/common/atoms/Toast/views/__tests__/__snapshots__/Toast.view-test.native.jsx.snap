@@ -7,7 +7,7 @@ exports[`Toast msg view render should render correctly 1`] = `
     fadeOutDuration={1000}
     opacity={1}
     position="top"
-    positionValue={20}
+    positionValue={0}
     style={
       Object {
         "backgroundColor": "#000000",
