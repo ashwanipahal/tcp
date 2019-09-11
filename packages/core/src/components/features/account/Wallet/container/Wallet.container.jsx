@@ -2,24 +2,27 @@ import React from 'react';
 import { connect } from 'react-redux';
 import PropTypes from 'prop-types';
 import WalletView from '../views';
-import { getGlobalLabels } from '../../Account/container/Account.selectors';
+import { getGlobalLabels, getCommonLabels } from '../../Account/container/Account.selectors';
 
-export const WalletContainer = ({ labels }) => {
-  return <WalletView labels={labels} />;
+export const WalletContainer = ({ labels, commonLabels }) => {
+  return <WalletView labels={labels} commonLabels={commonLabels} />;
 };
 
 export const mapStateToProps = state => {
   return {
     labels: getGlobalLabels(state),
+    commonLabels: getCommonLabels(state),
   };
 };
 
 WalletContainer.propTypes = {
   labels: PropTypes.shape({}),
+  commonLabels: PropTypes.shape({}),
 };
 
 WalletContainer.defaultProps = {
   labels: {},
+  commonLabels: {},
 };
 
 export default connect(mapStateToProps)(WalletContainer);

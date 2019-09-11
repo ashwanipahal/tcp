@@ -7,7 +7,7 @@ import WalletLayout from '../styles/Wallet.style.native';
 import MyRewards from '../../common/organism/MyRewards';
 import PageHeadingWithLinks from '../../common/molecule/PageHeadingWithLinks';
 
-export const WalletView = ({ labels }) => {
+export const WalletView = ({ labels, commonLabels }) => {
   return (
     <View>
       <ScrollView showsVerticalScrollIndicator={false} keyboardShouldPersistTaps="handled">
@@ -20,7 +20,7 @@ export const WalletView = ({ labels }) => {
               'lbl_my_rewards_program_details',
               'placeRewards'
             )}
-            termsConditionCta={getLabelValue(labels, 'lbl_common_tnc', 'common')}
+            termsConditionCta={getLabelValue(commonLabels, 'lbl_common_tnc')}
           >
             <MyRewards labels={labels} view="all" />
           </PageHeadingWithLinks>
@@ -40,6 +40,7 @@ WalletView.propTypes = {
       lbl_common_tnc: PropTypes.string,
     }),
   }),
+  commonLabels: PropTypes.shape({}),
 };
 
 WalletView.defaultProps = {
@@ -52,6 +53,7 @@ WalletView.defaultProps = {
       lbl_common_tnc: '',
     },
   },
+  commonLabels: {},
 };
 
 export default WalletView;
