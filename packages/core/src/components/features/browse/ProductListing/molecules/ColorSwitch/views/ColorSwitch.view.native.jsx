@@ -55,16 +55,22 @@ const RenderColorItem = (itemObj, selectedColorId, setSelectedColorId, setSelect
   const { item, index } = itemObj;
   const { color } = item;
   const imageUrl = color.imagePath;
+  const colorName = color.name.toLowerCase() || '';
   const { colorProductId } = item;
   const selected =
     (selectedColorId === 'none' && index === 0) || selectedColorId === colorProductId;
+  const accState = selected ? 'selected' : '';
   return (
     <ImageTouchableOpacity
+      // eslint-disable-next-line
+      accessibilityStates={[accState]}
+      accessibilityHint="color switches"
       selected={selected}
+      accessibilityRole="button"
+      accessibilityLabel={colorName}
       onPress={() =>
         onSelectHandler(colorProductId, index, setSelectedColorId, setSelectedColorIndex)
       }
-      accessibilityRole="button"
     >
       {getImageIcon(imageUrl)}
     </ImageTouchableOpacity>
