@@ -712,6 +712,7 @@ function* submitShippingSection({ payload: { navigation, ...formData } }) {
       recalcFlag,
       !(isOrderHasPickup && smsNumberForOrderUpdates)
     );
+    yield call(getAddressList);
     redirectToBilling(navigation);
   } catch (err) {
     // throw getSubmissionError(store, 'submitShippingSection', err);

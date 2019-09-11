@@ -1,6 +1,9 @@
 import ExtendableError from 'es6-error';
 
 const GLOBAL_ERROR = '_error';
+export const ERRORS = {
+  SYSTEM_ERROR: 'Your action could not be completed due to system error',
+};
 
 class ServiceError {
   constructor(errorCodes, errorMessages, networkStatusCode, misc) {

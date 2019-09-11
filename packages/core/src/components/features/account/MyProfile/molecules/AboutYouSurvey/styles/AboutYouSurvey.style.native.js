@@ -21,6 +21,8 @@ export const SurveyWrapper = styled.View`
   text-align: center;
   align-items: center;
   margin: ${props => props.theme.spacing.ELEM_SPACING.LRG}
+    ${props => props.theme.spacing.ELEM_SPACING.XXXS}
+    ${props => props.theme.spacing.LAYOUT_SPACING.XL}
     ${props => props.theme.spacing.ELEM_SPACING.XXXS};
 `;
 

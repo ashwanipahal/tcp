@@ -65,7 +65,6 @@ class HomePageView extends React.PureComponent<Props> {
     } = this.props;
     return (
       <LazyloadScrollView name={LAZYLOAD_HOST_NAME.HOME}>
-        <ModuleJ navigation={navigation} {...moduleJMock.moduleJ.composites} />
         <HomePageSlots slots={slots} modules={modulesMap} navigation={navigation} />
         <ModuleB navigation={navigation} />
         <GetCandid apiConfig={apiConfig} navigation={navigation} />
@@ -76,6 +75,7 @@ class HomePageView extends React.PureComponent<Props> {
           onPress={() => navigation.navigate('ProductListingPageContainer')}
           style={buttonMargin}
         />
+        <ModuleJ navigation={navigation} {...moduleJMock.moduleJ.composites} />
       </LazyloadScrollView>
     );
   }

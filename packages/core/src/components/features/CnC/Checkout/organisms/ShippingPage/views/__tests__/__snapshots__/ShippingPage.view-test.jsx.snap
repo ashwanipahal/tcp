@@ -4,8 +4,13 @@ exports[`Shipping Page should render correctly 1`] = `
 <Fragment>
   <ReduxForm
     addNewShippingAddress={[Function]}
+    address={
+      Object {
+        "addressLine1": "pob",
+        "addressLine2": "",
+      }
+    }
     addressPhoneNo={null}
-    defaultAddressId=""
     defaultShipmentId={null}
     destroyOnUnmount={false}
     enableReinitialize={false}
@@ -17,7 +22,7 @@ exports[`Shipping Page should render correctly 1`] = `
         "address": Object {
           "country": "US",
         },
-        "onFileAddressKey": "",
+        "onFileAddressKey": undefined,
         "saveToAddressBook": false,
         "shipmentMethods": Object {
           "shippingMethodId": null,
@@ -41,6 +46,7 @@ exports[`Shipping Page should render correctly 1`] = `
     pure={true}
     selectedShipmentId={null}
     setAsDefaultShipping={false}
+    setDefaultAddressId={[Function]}
     shipmentMethods={
       Array [
         Object {},
@@ -57,7 +63,7 @@ exports[`Shipping Page should render correctly 1`] = `
     touchOnChange={false}
     updateShippingAddress={[Function]}
     updateUnregisteredFields={false}
-    userAddresses={Array []}
+    userAddresses={Immutable.List []}
     validate={[Function]}
   />
 </Fragment>
@@ -67,6 +73,12 @@ exports[`Shipping Page should render correctly with component did update and get
 <Fragment>
   <ReduxForm
     addNewShippingAddress={[Function]}
+    address={
+      Object {
+        "addressLine1": "pob 123",
+        "addressLine2": "pob",
+      }
+    }
     addressPhoneNo={null}
     defaultAddressId="34789"
     defaultShipmentId={null}
@@ -120,6 +132,7 @@ exports[`Shipping Page should render correctly with component did update and get
     pure={true}
     selectedShipmentId="336"
     setAsDefaultShipping={false}
+    setDefaultAddressId={[Function]}
     shipmentMethods={
       Array [
         Object {},
@@ -162,6 +175,12 @@ exports[`Shipping Page should render correctly with component did update and get
 <Fragment>
   <ReduxForm
     addNewShippingAddress={[Function]}
+    address={
+      Object {
+        "addressLine1": "pob 123",
+        "addressLine2": "pob",
+      }
+    }
     addressPhoneNo={null}
     defaultAddressId="123"
     defaultShipmentId={null}
@@ -215,6 +234,7 @@ exports[`Shipping Page should render correctly with component did update and get
     pure={true}
     selectedShipmentId="336"
     setAsDefaultShipping={false}
+    setDefaultAddressId={[Function]}
     shipmentMethods={
       Array [
         Object {},

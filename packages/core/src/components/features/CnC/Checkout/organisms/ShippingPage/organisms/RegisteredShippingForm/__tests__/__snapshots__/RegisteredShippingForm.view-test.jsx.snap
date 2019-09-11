@@ -44,6 +44,8 @@ exports[`RegisteredShippingFormVanilla should render correctly  1`] = `
                   }
                 }
                 className="address"
+                dataLocatorPrefix=""
+                fontWeight="regular"
                 isDefault={true}
                 showCountry={true}
                 showName={true}
@@ -137,6 +139,7 @@ exports[`RegisteredShippingFormVanilla should render correctly  1`] = `
         address={null}
         className="shipping__address"
         dataLocatorPrefix="address"
+        fontWeight="regular"
         isDefault={false}
         showCountry={true}
         showName={true}
@@ -166,13 +169,12 @@ exports[`RegisteredShippingFormVanilla should render correctly  1`] = `
   <Styled(Row)
     fullBleed={true}
   />
-  <AddEditShippingAddress
+  <Styled(AddEditShippingAddress)
     actionButtons={[Function]}
     addressFields={[Function]}
     defaultOptions={[Function]}
     modalState={false}
     modalType={null}
-    toggleAddEditModal={[Function]}
   />
 </div>
 `;
@@ -182,13 +184,12 @@ exports[`RegisteredShippingFormVanilla should render correctly modalType add 1`]
   className=""
   isEditing={null}
 >
-  <AddEditShippingAddress
+  <Styled(AddEditShippingAddress)
     actionButtons={[Function]}
     addressFields={[Function]}
     defaultOptions={[Function]}
     modalState={true}
     modalType="add"
-    toggleAddEditModal={[Function]}
   />
 </div>
 `;
@@ -198,13 +199,12 @@ exports[`RegisteredShippingFormVanilla should render correctly modalType edit 1`
   className=""
   isEditing={null}
 >
-  <AddEditShippingAddress
+  <Styled(AddEditShippingAddress)
     actionButtons={[Function]}
     addressFields={[Function]}
     defaultOptions={[Function]}
     modalState={true}
     modalType="edit"
-    toggleAddEditModal={[Function]}
   />
 </div>
 `;
@@ -253,12 +253,14 @@ exports[`RegisteredShippingFormVanilla should render correctly onAddressDropDown
                   }
                 }
                 className="address"
-                isDefault={true}
+                dataLocatorPrefix=""
+                fontWeight="regular"
+                isDefault={false}
                 showCountry={true}
                 showName={true}
                 showPhone={true}
               />,
-              "title": "test test (Default)",
+              "title": "test test ",
               "value": "123",
             },
             Object {
@@ -350,7 +352,7 @@ exports[`RegisteredShippingFormVanilla should render correctly onAddressDropDown
                   Array [
                     Object {
                       "meta": Object {
-                        "field": "saveToAddressBook",
+                        "field": "defaultShipping",
                         "form": "checkoutShipping",
                         "persistentSubmitErrors": undefined,
                         "touch": undefined,
@@ -545,7 +547,7 @@ exports[`RegisteredShippingFormVanilla should render correctly onAddressDropDown
             "withComponent": [Function],
           }
         }
-        disabled={false}
+        disabled={true}
         name="defaultShipping"
         showDefaultCheckbox={false}
       >
@@ -580,6 +582,7 @@ exports[`RegisteredShippingFormVanilla should render correctly onAddressDropDown
         buttonVariation="fixed-width"
         className=""
         data-locator="edit-shipping-cancel-btn"
+        disabled={false}
         fill="WHITE"
         onClick={[Function]}
         type="button"
@@ -603,13 +606,12 @@ exports[`RegisteredShippingFormVanilla should render correctly onAddressDropDown
       />
     </Styled(Col)>
   </Styled(Row)>
-  <AddEditShippingAddress
+  <Styled(AddEditShippingAddress)
     actionButtons={[Function]}
     addressFields={[Function]}
     defaultOptions={[Function]}
     modalState={false}
     modalType={null}
-    toggleAddEditModal={[Function]}
   />
 </div>
 `;
@@ -657,6 +659,8 @@ exports[`RegisteredShippingFormVanilla should render correctly with isAddNewAddr
                   }
                 }
                 className="address"
+                dataLocatorPrefix=""
+                fontWeight="regular"
                 isDefault={false}
                 showCountry={true}
                 showName={true}
@@ -933,6 +937,7 @@ exports[`RegisteredShippingFormVanilla should render correctly with isAddNewAddr
           }
         }
         name="saveToAddressBook"
+        onChange={[Function]}
         showDefaultCheckbox={false}
       >
         <Styled(BodyCopy)
@@ -1107,13 +1112,12 @@ exports[`RegisteredShippingFormVanilla should render correctly with isAddNewAddr
       </Field>
     </Styled(Col)>
   </Styled(Row)>
-  <AddEditShippingAddress
+  <Styled(AddEditShippingAddress)
     actionButtons={[Function]}
     addressFields={[Function]}
     defaultOptions={[Function]}
     modalState={false}
     modalType={null}
-    toggleAddEditModal={[Function]}
   />
 </div>
 `;
@@ -1161,6 +1165,8 @@ exports[`RegisteredShippingFormVanilla should render correctly with isAddNewAddr
                   }
                 }
                 className="address"
+                dataLocatorPrefix=""
+                fontWeight="regular"
                 isDefault={false}
                 showCountry={true}
                 showName={true}
@@ -1437,6 +1443,7 @@ exports[`RegisteredShippingFormVanilla should render correctly with isAddNewAddr
           }
         }
         name="saveToAddressBook"
+        onChange={[Function]}
         showDefaultCheckbox={false}
       >
         <Styled(BodyCopy)
@@ -1611,13 +1618,12 @@ exports[`RegisteredShippingFormVanilla should render correctly with isAddNewAddr
       </Field>
     </Styled(Col)>
   </Styled(Row)>
-  <AddEditShippingAddress
+  <Styled(AddEditShippingAddress)
     actionButtons={[Function]}
     addressFields={[Function]}
     defaultOptions={[Function]}
     modalState={false}
     modalType={null}
-    toggleAddEditModal={[Function]}
   />
 </div>
 `;
@@ -1665,6 +1671,8 @@ exports[`RegisteredShippingFormVanilla should render correctly with isEditing tr
                   }
                 }
                 className="address"
+                dataLocatorPrefix=""
+                fontWeight="regular"
                 isDefault={false}
                 showCountry={true}
                 showName={true}
@@ -1941,7 +1949,7 @@ exports[`RegisteredShippingFormVanilla should render correctly with isEditing tr
             "withComponent": [Function],
           }
         }
-        disabled={false}
+        disabled={true}
         name="defaultShipping"
         showDefaultCheckbox={false}
       >
@@ -1976,6 +1984,7 @@ exports[`RegisteredShippingFormVanilla should render correctly with isEditing tr
         buttonVariation="fixed-width"
         className=""
         data-locator="edit-shipping-cancel-btn"
+        disabled={false}
         fill="WHITE"
         onClick={[Function]}
         type="button"
@@ -1999,13 +2008,12 @@ exports[`RegisteredShippingFormVanilla should render correctly with isEditing tr
       />
     </Styled(Col)>
   </Styled(Row)>
-  <AddEditShippingAddress
+  <Styled(AddEditShippingAddress)
     actionButtons={[Function]}
     addressFields={[Function]}
     defaultOptions={[Function]}
     modalState={false}
     modalType={null}
-    toggleAddEditModal={[Function]}
   />
 </div>
 `;
@@ -2047,8 +2055,24 @@ exports[`RegisteredShippingFormVanilla should render correctly with no addresses
                     "type": "@@redux-form/CHANGE",
                   },
                 ],
+                Array [
+                  Object {
+                    "meta": Object {
+                      "field": "defaultShipping",
+                      "form": "checkoutShipping",
+                      "persistentSubmitErrors": undefined,
+                      "touch": undefined,
+                    },
+                    "payload": true,
+                    "type": "@@redux-form/CHANGE",
+                  },
+                ],
               ],
               "results": Array [
+                Object {
+                  "type": "return",
+                  "value": undefined,
+                },
                 Object {
                   "type": "return",
                   "value": undefined,
@@ -2209,6 +2233,7 @@ exports[`RegisteredShippingFormVanilla should render correctly with no addresses
           }
         }
         name="saveToAddressBook"
+        onChange={[Function]}
         showDefaultCheckbox={false}
       >
         <Styled(BodyCopy)
@@ -2383,7 +2408,7 @@ exports[`RegisteredShippingFormVanilla should render correctly with no addresses
       </Field>
     </Styled(Col)>
   </Styled(Row)>
-  <AddEditShippingAddress
+  <Styled(AddEditShippingAddress)
     actionButtons={[Function]}
     addressFields={[Function]}
     defaultOptions={[Function]}
@@ -2447,8 +2472,40 @@ exports[`RegisteredShippingFormVanilla should render correctly with no addresses
                     "type": "@@redux-form/CHANGE",
                   },
                 ],
+                Array [
+                  Object {
+                    "meta": Object {
+                      "field": "defaultShipping",
+                      "form": "checkoutShipping",
+                      "persistentSubmitErrors": undefined,
+                      "touch": undefined,
+                    },
+                    "payload": true,
+                    "type": "@@redux-form/CHANGE",
+                  },
+                ],
+                Array [
+                  Object {
+                    "meta": Object {
+                      "field": "defaultShipping",
+                      "form": "checkoutShipping",
+                      "persistentSubmitErrors": undefined,
+                      "touch": undefined,
+                    },
+                    "payload": false,
+                    "type": "@@redux-form/CHANGE",
+                  },
+                ],
               ],
               "results": Array [
+                Object {
+                  "type": "return",
+                  "value": undefined,
+                },
+                Object {
+                  "type": "return",
+                  "value": undefined,
+                },
                 Object {
                   "type": "return",
                   "value": undefined,
@@ -2609,6 +2666,7 @@ exports[`RegisteredShippingFormVanilla should render correctly with no addresses
           }
         }
         name="saveToAddressBook"
+        onChange={[Function]}
         showDefaultCheckbox={false}
       >
         <Styled(BodyCopy)
@@ -2783,7 +2841,7 @@ exports[`RegisteredShippingFormVanilla should render correctly with no addresses
       </Field>
     </Styled(Col)>
   </Styled(Row)>
-  <AddEditShippingAddress
+  <Styled(AddEditShippingAddress)
     actionButtons={[Function]}
     addressFields={[Function]}
     defaultOptions={[Function]}
@@ -2847,8 +2905,40 @@ exports[`RegisteredShippingFormVanilla should render correctly with no addresses
                     "type": "@@redux-form/CHANGE",
                   },
                 ],
+                Array [
+                  Object {
+                    "meta": Object {
+                      "field": "defaultShipping",
+                      "form": "checkoutShipping",
+                      "persistentSubmitErrors": undefined,
+                      "touch": undefined,
+                    },
+                    "payload": true,
+                    "type": "@@redux-form/CHANGE",
+                  },
+                ],
+                Array [
+                  Object {
+                    "meta": Object {
+                      "field": "defaultShipping",
+                      "form": "checkoutShipping",
+                      "persistentSubmitErrors": undefined,
+                      "touch": undefined,
+                    },
+                    "payload": false,
+                    "type": "@@redux-form/CHANGE",
+                  },
+                ],
               ],
               "results": Array [
+                Object {
+                  "type": "return",
+                  "value": undefined,
+                },
+                Object {
+                  "type": "return",
+                  "value": undefined,
+                },
                 Object {
                   "type": "return",
                   "value": undefined,
@@ -3009,6 +3099,7 @@ exports[`RegisteredShippingFormVanilla should render correctly with no addresses
           }
         }
         name="saveToAddressBook"
+        onChange={[Function]}
         showDefaultCheckbox={false}
       >
         <Styled(BodyCopy)
@@ -3183,13 +3274,12 @@ exports[`RegisteredShippingFormVanilla should render correctly with no addresses
       </Field>
     </Styled(Col)>
   </Styled(Row)>
-  <AddEditShippingAddress
+  <Styled(AddEditShippingAddress)
     actionButtons={[Function]}
     addressFields={[Function]}
     defaultOptions={[Function]}
     modalState={false}
     modalType={null}
-    toggleAddEditModal={[Function]}
   />
 </div>
 `;
@@ -3231,8 +3321,24 @@ exports[`RegisteredShippingFormVanilla should render correctly with no addresses
                     "type": "@@redux-form/CHANGE",
                   },
                 ],
+                Array [
+                  Object {
+                    "meta": Object {
+                      "field": "defaultShipping",
+                      "form": "checkoutShipping",
+                      "persistentSubmitErrors": undefined,
+                      "touch": undefined,
+                    },
+                    "payload": true,
+                    "type": "@@redux-form/CHANGE",
+                  },
+                ],
               ],
               "results": Array [
+                Object {
+                  "type": "return",
+                  "value": undefined,
+                },
                 Object {
                   "type": "return",
                   "value": undefined,
@@ -3393,6 +3499,7 @@ exports[`RegisteredShippingFormVanilla should render correctly with no addresses
           }
         }
         name="saveToAddressBook"
+        onChange={[Function]}
         showDefaultCheckbox={false}
       >
         <Styled(BodyCopy)
@@ -3567,13 +3674,12 @@ exports[`RegisteredShippingFormVanilla should render correctly with no addresses
       </Field>
     </Styled(Col)>
   </Styled(Row)>
-  <AddEditShippingAddress
+  <Styled(AddEditShippingAddress)
     actionButtons={[Function]}
     addressFields={[Function]}
     defaultOptions={[Function]}
     modalState={false}
     modalType={null}
-    toggleAddEditModal={[Function]}
   />
 </div>
 `;

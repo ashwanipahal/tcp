@@ -63,7 +63,9 @@ export class AboutYouSurvey extends React.Component {
     const surveyOptions = question.options;
     question.options = surveyOptions.map(item => {
       const val = item;
-      if (item.id === data) {
+      if (item.id === data && !question.multiSelect) {
+        val.selected = true;
+      } else if (item.id === data && question.multiSelect) {
         val.selected = !item.selected;
       } else if (!question.multiSelect) {
         val.selected = false;
