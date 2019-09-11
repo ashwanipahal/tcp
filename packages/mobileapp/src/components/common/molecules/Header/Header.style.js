@@ -10,7 +10,8 @@ export const Container = styled.View`
   padding-right: ${props => props.theme.spacing.ELEM_SPACING.XS};
   display: flex;
   background: ${props => props.theme.colorPalette.white};
-  margin-bottom: 10px;
+  margin-top: ${props => props.theme.spacing.ELEM_SPACING.XXS};
+  margin-bottom: ${props => props.theme.spacing.ELEM_SPACING.MED};
 `;
 
 export const MessageContainer = styled.View`
