@@ -14,7 +14,7 @@ import {
   getCouponsLabels,
   getCouponFetchingState,
 } from '../../../../../CnC/common/organism/CouponAndPromos/container/Coupon.selectors';
-import getCommonLabels from './MyRewards.selectors';
+import getCommonLabels from '../../../../Account/container/Account.selectors';
 import MyRewards from '../views';
 import CouponDetailModal from '../../../../../CnC/common/organism/CouponAndPromos/views/CouponDetailModal.view';
 import { toastMessageInfo } from '../../../../../../common/atoms/Toast/container/Toast.actions.native';

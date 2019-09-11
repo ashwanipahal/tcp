@@ -5,7 +5,11 @@ export const getLabels = state => {
 };
 
 export const getGlobalLabels = state => {
-  return state.Labels.global;
+  return state.Labels && state.Labels.global;
+};
+
+export const getCommonLabels = state => {
+  return state.Labels && state.Labels.account && state.Labels.account.common;
 };
 
 export const getAccountNavigationState = state => {
