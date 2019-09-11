@@ -3,11 +3,7 @@ import PropTypes from 'prop-types';
 import { View } from 'react-native';
 import Toast from 'react-native-easy-toast';
 import colors from '@tcp/core/styles/themes/TCP/colors';
-import {
-  ToastWrapper,
-  ToastCross,
-  ToastText,
-} from '../../DropDown/DropDown.style.native';
+import { ToastWrapper, ToastCross, ToastText } from './ToastMsg.style.native';
 
 /**
  * @param {object} props : Props for FPO
@@ -21,10 +17,6 @@ const styles = {
     borderRadius: 0,
     padding: 20,
   },
-};
-
-Toast.prototype.closeIcon = function closeIcon() {
-  return <View>X</View>;
 };
 
 class ToastView extends React.PureComponent {
@@ -42,10 +34,12 @@ class ToastView extends React.PureComponent {
     const { errorMessage, toastMessageReset } = this.props;
     if (errorMessage) {
       this.toastRef.current.show(
-        <ToastWrapper>
-          <ToastCross>X</ToastCross>
-          <ToastText>{errorMessage}</ToastText>
-        </ToastWrapper>,
+        <View>
+          <ToastWrapper>
+            <ToastText>{errorMessage}</ToastText>
+            <ToastCross>X</ToastCross>
+          </ToastWrapper>
+        </View>,
         500,
         () => {
           toastMessageReset();
@@ -61,7 +55,7 @@ class ToastView extends React.PureComponent {
           ref={this.toastRef}
           style={styles.ToastStyle}
           position="top"
-          positionValue={20}
+          positionValue={0}
           fadeInDuration={750}
           fadeOutDuration={1000}
           opacity={1}
