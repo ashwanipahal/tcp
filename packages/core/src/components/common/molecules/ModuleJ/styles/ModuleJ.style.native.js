@@ -44,12 +44,16 @@ export const PromoContainer = styled.View`
 `;
 
 export const HeaderContainer = styled.View`
+  align-items: center;
   ${props =>
     props.layout === 'alt'
-      ? ` `
+      ? ` width:100%;
+      `
       : `background:white;
  margin-left:62px;
- margin-right:62px;`};
+ margin-right:62px;
+ width:70%;
+ `};
 `;
 
 export const Border = styled.View`
