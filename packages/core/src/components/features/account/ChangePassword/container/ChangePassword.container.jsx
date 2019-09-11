@@ -2,11 +2,12 @@ import React, { PureComponent } from 'react';
 import { connect } from 'react-redux';
 import PropTypes from 'prop-types';
 import logger from '@tcp/core/src/utils/loggerInstance';
+import { toastMessageInfo } from '@tcp/core/src/components/common/atoms/Toast/container/Toast.actions.native';
 import utils from '../../../../../utils';
 import { getError, getChangePasswordLabels } from './ChangePassword.selectors';
 import { getSuccess } from '../../MyProfile/container/MyProfile.selectors';
 import ChangePasswordComponent from '../views';
-import { changePassword, changePasswordError } from './ChangePassword.actions';
+import { changePassword, changePasswordError, changePasswordReset } from './ChangePassword.actions';
 import { getFormValidationErrorMessages } from '../../Account/container/Account.selectors';
 
 export class ChangePasswordContainer extends PureComponent {
@@ -18,6 +19,8 @@ export class ChangePasswordContainer extends PureComponent {
     labels: PropTypes.shape({}).isRequired,
     onClose: PropTypes.func,
     formErrorMessage: PropTypes.shape({}).isRequired,
+    toastMessage: PropTypes.string.isRequired,
+    resetChangePasswordAction: PropTypes.string.isRequired,
   };
 
   static defaultProps = {
@@ -36,7 +39,7 @@ export class ChangePasswordContainer extends PureComponent {
   }
 
   componentDidUpdate() {
-    const { successMessage } = this.props;
+    const { successMessage, errorMessage, toastMessage, resetChangePasswordAction } = this.props;
     const { onClose } = this.props;
     if (successMessage === 'successMessage') {
       if (this.hasMobileApp()) {
@@ -44,6 +47,10 @@ export class ChangePasswordContainer extends PureComponent {
       } else {
         this.goBackToProfile();
       }
+    }
+    if (this.hasMobileApp() && errorMessage) {
+      toastMessage(errorMessage);
+      resetChangePasswordAction();
     }
   }
 
@@ -86,6 +93,7 @@ export const mapStateToProps = state => ({
   errorMessage: getError(state),
   labels: getChangePasswordLabels(state),
   formErrorMessage: getFormValidationErrorMessages(state),
+  resetChangePasswordAction: PropTypes.func,
 });
 
 export const mapDispatchToProps = dispatch => ({
@@ -94,6 +102,12 @@ export const mapDispatchToProps = dispatch => ({
   },
   messageSateChangeAction: payload => {
     dispatch(changePasswordError(payload));
+  },
+  toastMessage: palyoad => {
+    dispatch(toastMessageInfo(palyoad));
+  },
+  resetChangePasswordAction: () => {
+    dispatch(changePasswordReset());
   },
 });
 

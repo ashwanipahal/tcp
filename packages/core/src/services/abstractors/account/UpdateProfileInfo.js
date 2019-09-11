@@ -1,6 +1,7 @@
 import endpoints from '@tcp/core/src/services/endpoints';
 import { getAPIConfig } from '@tcp/core/src/utils/utils';
 import { executeStatefulAPICall } from '@tcp/core/src/services/handler';
+import { ERRORS } from '@tcp/core/src/utils/errorMessage.util';
 
 const getFormattedError = err => {
   if (err.response && err.response.body) {
@@ -11,8 +12,18 @@ const getFormattedError = err => {
   return 'genericError';
 };
 
+/**
+ * This method is used to extract error message from the response
+ * @param {object} err - Error response object
+ */
 export const errorHandler = err => {
-  throw err.response && err.response.body !== null ? getFormattedError(err) : 'genericError';
+  if (err.response && err.response.body && err.response.body.errors) {
+    throw getFormattedError(err);
+  } else if (err && err.err && err.err.errorMessage) {
+    // eslint-disable-next-line no-underscore-dangle
+    throw err.err.errorMessage._error;
+  }
+  throw new Error(ERRORS.SYSTEM_ERROR);
 };
 
 /**
