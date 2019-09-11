@@ -3,8 +3,10 @@
 exports[`AddEditAddressContainer should render correctly 1`] = `
 <Styled(AddressBook)
   addressFormLabels={Object {}}
+  addressLine1=""
   addressResponse=""
   backToAddressBookClick={[Function]}
+  countryState=""
   currentForm=""
   initialValues={
     Object {
@@ -24,8 +26,11 @@ exports[`AddEditAddressContainer should render correctly 1`] = `
   isEdit={false}
   isMakeDefaultDisabled={false}
   onCancel={[Function]}
+  setAddressLine1={[Function]}
+  setModalHeading={[Function]}
   submitAddressFormAction={[Function]}
   toggleAddressModal={[Function]}
+  verificationResult=""
   verifyAddressAction={[Function]}
 />
 `;

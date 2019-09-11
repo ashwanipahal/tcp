@@ -26,10 +26,13 @@ describe('Cart Item saga', () => {
         productInfo: {},
         itemInfo: {},
         miscInfo: {},
+        orderItems: [],
       },
     };
-    const putDescriptor = getOrderDetailSagaGen.next(res).value;
-    expect(putDescriptor).toEqual(put(BAG_PAGE_ACTIONS.getOrderDetailsComplete(res.orderDetails)));
+    getOrderDetailSagaGen.next(res);
+    expect(getOrderDetailSagaGen.next(res).value).toEqual(
+      put(BAG_PAGE_ACTIONS.getOrderDetailsComplete(res.orderDetails))
+    );
   });
 
   it('should dispatch getCartDataSaga action for success resposnse', () => {
@@ -41,12 +44,15 @@ describe('Cart Item saga', () => {
         productInfo: {},
         itemInfo: {},
         miscInfo: {},
+        orderItems: [],
       },
       coupons: {},
     };
-    let putDescriptor = getCartDataSagaGen.next(res).value;
-    expect(putDescriptor).toEqual(put(BAG_PAGE_ACTIONS.getOrderDetailsComplete(res.orderDetails)));
-    putDescriptor = getCartDataSagaGen.next(res).value;
+    getCartDataSagaGen.next(res);
+    expect(getCartDataSagaGen.next(res).value).toEqual(
+      put(BAG_PAGE_ACTIONS.getOrderDetailsComplete(res.orderDetails))
+    );
+    const putDescriptor = getCartDataSagaGen.next(res).value;
     expect(putDescriptor).toEqual(put(BAG_PAGE_ACTIONS.setCouponsData(res.coupons)));
   });
 });
@@ -98,20 +104,21 @@ describe('removeUnqualifiedItemsAndCheckout Saga', () => {
     let takeLatestDescriptor = generator.next().value;
     expect(takeLatestDescriptor).toEqual(select(BAG_SELECTORS.getUnqualifiedItemsIds));
 
+    takeLatestDescriptor = generator.next();
     takeLatestDescriptor = generator.next().value;
-    expect(takeLatestDescriptor).toEqual(call(checkoutCart, true));
+    expect(takeLatestDescriptor).toEqual(call(checkoutCart, true, undefined));
   });
 });
 
 describe('startCartCheckout Saga', () => {
   it('startCartCheckout effect', () => {
-    const generator = startCartCheckout();
+    const generator = startCartCheckout({});
 
     let takeLatestDescriptor = generator.next().value;
     takeLatestDescriptor = generator.next().value;
-    takeLatestDescriptor = generator.next(false).value;
+    takeLatestDescriptor = generator.next(false, {}).value;
     takeLatestDescriptor = generator.next().value;
-    expect(takeLatestDescriptor).toEqual(call(checkoutCart));
+    expect(takeLatestDescriptor).toEqual(call(checkoutCart, false, undefined, undefined));
   });
 });
 

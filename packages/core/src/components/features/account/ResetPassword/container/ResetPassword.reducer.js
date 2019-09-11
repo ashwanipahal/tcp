@@ -11,7 +11,10 @@ const ResetPasswordReducer = (state = initialState, action) => {
     case constants.RESET_PASSWORD_SUCCESS:
       return state.set('error', null).set('success', action.payload);
     case constants.RESET_PASSWORD_ERROR:
-      return state.set('error', action.payload).set('success', null);
+      return state
+        .set('error', fromJS(action.payload))
+        .set('success', null)
+        .set('showNotification', true);
     case constants.RESET_STATE:
       return state.set('error', null).set('success', null);
     default:

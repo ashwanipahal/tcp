@@ -1,0 +1,97 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`SurveyQuestion should render correctly 1`] = `
+<div
+  className="survey__container "
+>
+  <Styled(Row)
+    centered={true}
+  >
+    <Styled(BodyCopy)
+      className="question-text"
+      color="text.primary"
+      component="p"
+      data-locator=""
+      fontFamily="secondary"
+      fontSize="fs14"
+      fontWeight="regular"
+      letterSpacing="normal"
+      lineHeight="normal"
+      textAlign="left"
+    />
+  </Styled(Row)>
+  <Styled(Row)
+    centered={true}
+  >
+    <Styled(BodyCopy)
+      className="question-text"
+      color="text.primary"
+      component="p"
+      fontFamily="secondary"
+      fontSize="fs13"
+      fontWeight="regular"
+      letterSpacing="normal"
+      lineHeight="normal"
+      textAlign="left"
+    >
+      SELECT ONE
+    </Styled(BodyCopy)>
+  </Styled(Row)>
+  <div
+    className="options__container"
+  >
+    <div
+      className="options"
+    >
+      <Styled(TileOption)
+        clasName="sc-cIShpX dVDvCi sc-fYxtnH fCCVQb sc-gGBfsJ RixGJ sc-bbmXgH kaiKft"
+        className=""
+        isSelected={false}
+        onSelection={[Function]}
+        optionText="Parent"
+        optionValue="shopper1"
+        questionId="question1"
+      />
+    </div>
+    <div
+      className="options"
+    >
+      <Styled(TileOption)
+        clasName="sc-cIShpX dVDvCi sc-fYxtnH fCCVQb sc-gGBfsJ RixGJ sc-bbmXgH kaiKft"
+        className=""
+        isSelected={false}
+        onSelection={[Function]}
+        optionText="Grandparent"
+        optionValue="shopper2"
+        questionId="question1"
+      />
+    </div>
+    <div
+      className="options"
+    >
+      <Styled(TileOption)
+        clasName="sc-cIShpX dVDvCi sc-fYxtnH fCCVQb sc-gGBfsJ RixGJ sc-bbmXgH kaiKft"
+        className=""
+        isSelected={false}
+        onSelection={[Function]}
+        optionText="Gifting for others"
+        optionValue="shopper3"
+        questionId="question1"
+      />
+    </div>
+    <div
+      className="options"
+    >
+      <Styled(TileOption)
+        clasName="sc-cIShpX dVDvCi sc-fYxtnH fCCVQb sc-gGBfsJ RixGJ sc-bbmXgH kaiKft"
+        className=""
+        isSelected={false}
+        onSelection={[Function]}
+        optionText="Prefer not to answer"
+        optionValue="shopper4"
+        questionId="question1"
+      />
+    </div>
+  </div>
+</div>
+`;

@@ -6,9 +6,6 @@ const apiHelper = {
     isUSStore: true,
     siteId: utils.getSiteId(),
   },
-  responseContainsErrors: () => {
-    return false;
-  },
 };
 /** @function This function return that category map from the catrgory path of the product bieng iterated on.
  * @param catPath {Array} It is the array of the category path with which the product can be accessed.
@@ -168,7 +165,7 @@ const getDisplayName = (keyValue, data, index) => {
 /**
  * @function getFacetsMappingFromAPIData
  * @param {Object} filterMap - UNBXD API Response for individual facet
- * @param {Function} getFacetSwatchImgPath - Get Color swatch image for the facet option
+ * @param {Function} getFacetsMappingFromAPIData - Get Color swatch image for the facet option
  */
 const getFacetsMappingFromAPIData = (
   filterMap,
@@ -349,7 +346,7 @@ const getCatMap = (product, bucketingSeqConfig) => {
 const getRequiredL3 = (shouldApplyUnbxdLogic, bucketingSeqConfig, idx) => {
   return shouldApplyUnbxdLogic
     ? bucketingSeqConfig.desiredL3
-    : bucketingSeqConfig.requiredChildren[idx].name;
+    : bucketingSeqConfig.requiredChildren[idx].categoryContent.name;
 };
 const getListPriceResponse = product => {
   return product.min_list_price === product.min_offer_price

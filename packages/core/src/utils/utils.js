@@ -211,6 +211,126 @@ export const formatAddress = address => ({
   phone1: address.phoneNumber,
 });
 
+const MONTH_SHORT_FORMAT = {
+  JAN: 'Jan',
+  FEB: 'Feb',
+  MAR: 'Mar',
+  APR: 'Apr',
+  MAY: 'May',
+  JUN: 'Jun',
+  JUL: 'Jul',
+  AUG: 'Aug',
+  SEP: 'Sep',
+  OCT: 'Oct',
+  NOV: 'Nov',
+  DEC: 'Dec',
+};
+
+export const getBirthDateOptionMap = () => {
+  const monthOptionsMap = [
+    { id: '1', displayName: MONTH_SHORT_FORMAT.JAN },
+    { id: '2', displayName: MONTH_SHORT_FORMAT.FEB },
+    { id: '3', displayName: MONTH_SHORT_FORMAT.MAR },
+    { id: '4', displayName: MONTH_SHORT_FORMAT.APR },
+    { id: '5', displayName: MONTH_SHORT_FORMAT.MAY },
+    { id: '6', displayName: MONTH_SHORT_FORMAT.JUN },
+    { id: '7', displayName: MONTH_SHORT_FORMAT.JUL },
+    { id: '8', displayName: MONTH_SHORT_FORMAT.AUG },
+    { id: '9', displayName: MONTH_SHORT_FORMAT.SEP },
+    { id: '10', displayName: MONTH_SHORT_FORMAT.OCT },
+    { id: '11', displayName: MONTH_SHORT_FORMAT.NOV },
+    { id: '12', displayName: MONTH_SHORT_FORMAT.DEC },
+  ];
+
+  const yearOptionsMap = [];
+  const dayOptionsMap = [];
+  const nowYear = new Date().getFullYear();
+
+  for (let i = 1900; i < nowYear - 17; i += 1) {
+    yearOptionsMap.push({ id: i.toString(), displayName: i.toString() });
+  }
+
+  for (let i = 1; i < 32; i += 1) {
+    if (i <= 9) {
+      i = 0 + i;
+    }
+    dayOptionsMap.push({ id: i.toString(), displayName: i.toString() });
+  }
+
+  return {
+    daysMap: dayOptionsMap,
+    monthsMap: monthOptionsMap,
+    yearsMap: yearOptionsMap,
+  };
+};
+
+/**
+ * @function calculateAge
+ * @param { string } month
+ * @param { string } year
+ * This function will calculate the age based on the month and year of birth and will add 'mo' or 'yo' based on age in months or years
+ *
+ */
+export const calculateAge = (month, year) => {
+  const currentDate = new Date();
+  const currentMonth = currentDate.getMonth() + 1;
+  const currentYear = currentDate.getFullYear();
+  let age = currentYear - year;
+  if (currentYear.toString() === year && month > currentMonth) {
+    return '0 mo';
+  }
+  if (month > currentMonth && age > 0) {
+    age -= 1;
+  }
+  if (age === 0) {
+    if (month > currentMonth) {
+      age = `${12 - month + currentMonth} mo`;
+    } else {
+      age = `${currentMonth - month} mo`;
+    }
+  } else {
+    age += ' yo';
+  }
+  return age;
+};
+
+/**
+ *
+ * @param {object} labelState object in which key needs to be searched
+ * @param {string} labelKey string whose value
+ * @param {string} subCategory label subCategory
+ * @param {string} category label category
+ * This function will return label value if labelKey is present in the object
+ * or labelKey itself if its not present in the labelState.
+ */
+export const getLabelValue = (labelState, labelKey, subCategory, category) => {
+  if (typeof labelState !== 'object' || typeof labelKey !== 'string') {
+    return ''; // for incorrect params return empty string
+  }
+  let labelValue = '';
+
+  // if category is passed, then subCategory should also be present for ex. getLabelValue(labels, 'lbl_success_message', 'payment', 'account'), where labels = [reduxStore].Labels
+  if (
+    category &&
+    typeof labelState[category] === 'object' &&
+    typeof labelState[category][subCategory] === 'object'
+  ) {
+    labelValue = labelState[category][subCategory][labelKey];
+  } else if (subCategory && typeof labelState[subCategory] === 'object') {
+    // in case label object contain category, then only subCategory is needed for ex. get getLabelValue(labels, 'lbl_success_message', 'payment') where labels = [reduxStore].Labels.account
+    labelValue = labelState[subCategory][labelKey];
+  } else {
+    // in case label object contain category & subCategory both, for ex. get getLabelValue(labels, 'lbl_success_message') where labels = [reduxStore].Labels.account.payment
+    labelValue = labelState[labelKey];
+  }
+
+  return typeof labelValue === 'string' ? labelValue : labelKey;
+};
+
+export const generateUniqueKeyUsingLabel = label => {
+  return label.replace(/\s/g, '_');
+};
+
 export default {
   getIconPath,
   getFlagIconPath,
@@ -226,5 +346,8 @@ export default {
   isTCP,
   getAddressFromPlace,
   formatAddress,
+  getLabelValue,
   getCacheKeyForRedis,
+  calculateAge,
+  generateUniqueKeyUsingLabel,
 };

@@ -86,7 +86,7 @@ DamImage.defaultProps = {
     crop_t: '',
     crop_m: '',
   },
-  basePath: 'https://res.cloudinary.com/tcp-dam-test/image/upload',
+  basePath: 'https://test1.theplace.com/image/upload',
   imgPathSplitter: '/upload',
 };
 
@@ -106,7 +106,7 @@ DamImage.propTypes = {
     then further breakpoints
     [
       'c_crop,g_face:center,q_auto:best,w_768',
-      'c_crop,g_face:center,q_auto:best,w_1024',
+      'c_crop,g_face:center,q_auto:best,w_1200',
       'c_crop,g_face:center,q_auto:best,w_1440',
     ]
   */

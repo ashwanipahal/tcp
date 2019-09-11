@@ -17,7 +17,6 @@ const applyBonusPoints = (getBonusDaysData, orderDetails, bonusDayAvailableToday
 const BonusPointsAvailability = ({
   bonusPoints,
   className,
-  enableApplyCta,
   getBonusDaysData,
   orderDetails,
   bonusDayAvailableToday,
@@ -26,13 +25,7 @@ const BonusPointsAvailability = ({
     bonusPoints && (
       <Row>
         {bonusPoints.map((item, index) => {
-          let btnClass = 'bonusPointBtn ';
-          if (!enableApplyCta) {
-            btnClass += `availability-btn ${item.disabled ? 'disable-btn' : ''}`;
-          } else {
-            btnClass += 'availability-btn-active';
-          }
-
+          const btnClass = `bonusPointBtn availability-btn ${item.disabled ? 'disable-btn' : ''}`;
           return (
             <Col
               colSize={{

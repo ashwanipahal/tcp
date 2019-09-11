@@ -51,39 +51,9 @@ exports[`MyRewards should render correctly 1`] = `
         labels={
           Object {
             "common": Object {},
-            "myPlaceRewards": Object {},
+            "placeRewards": Object {},
           }
         }
-      />
-    </Styled(Col)>
-    <Styled(Col)
-      className="anchor-wrapper"
-      colSize={
-        Object {
-          "large": 12,
-          "medium": 8,
-          "small": 6,
-        }
-      }
-    >
-      <Styled(Anchor)
-        anchorVariation="primary"
-        dataLocator="my-rewards-program-details"
-        fontSizeVariation="medium"
-        href="https://www.childrensplace.com/us/content/myplace-rewards-page"
-        noLink={true}
-        target="_blank"
-        underline={true}
-      />
-      <Styled(Anchor)
-        anchorVariation="primary"
-        className="elem-ml-XXL"
-        dataLocator="my-rewards-tnc"
-        fontSizeVariation="medium"
-        href="https://www.childrensplace.com/us/help-center/#termsAndConditionsli"
-        noLink={true}
-        target="_self"
-        underline={true}
       />
     </Styled(Col)>
   </Styled(Row)>

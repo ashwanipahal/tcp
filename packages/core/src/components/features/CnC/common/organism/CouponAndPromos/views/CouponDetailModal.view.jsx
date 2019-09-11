@@ -1,12 +1,20 @@
 import React from 'react';
-import Modal from '../../../../../../common/molecules/Modal';
-import Button from '../../../../../../common/atoms/Button';
-import Anchor from '../../../../../../common/atoms/Anchor';
-import withStyles from '../../../../../../common/hoc/withStyles';
-import styles from '../styles/CouponDetailModal.style';
+import Barcode from '@tcp/core/src/components/common/molecules/Barcode';
+import Modal from '@tcp/core/src/components/common/molecules/Modal';
+import Button from '@tcp/core/src/components/common/atoms/Button';
+import Anchor from '@tcp/core/src/components/common/atoms/Anchor';
+import withStyles from '@tcp/core/src/components/common/hoc/withStyles';
 import { BodyCopy } from '../../../../../../../../styles/themes/TCP/typotheme';
+import styles from '../styles/CouponDetailModal.style';
 
 class CouponDetailModal extends React.PureComponent<Props> {
+  componentDidUpdate() {
+    const { coupon, handleErrorCoupon } = this.props;
+    if (coupon.error) {
+      handleErrorCoupon(coupon);
+    }
+  }
+
   printClick = event => {
     window.print();
     event.preventDefault();
@@ -16,13 +24,26 @@ class CouponDetailModal extends React.PureComponent<Props> {
     event.preventDefault();
   };
 
+  /**
+   * This function is used for apply to bag coupon
+   * can be passed in the component.
+   */
+  handleApplyToBag = () => {
+    const { onApplyCouponToBagFromList, coupon, onRequestClose } = this.props;
+    onApplyCouponToBagFromList({
+      couponCode: coupon.id,
+      id: coupon.id,
+      coupon: coupon.id,
+    });
+    onRequestClose();
+  };
+
   renderModal = () => {
-    const { labels, coupon, className, applyToBag, onRequestClose } = this.props;
+    const { labels, coupon, className } = this.props;
     return (
       <div className={className}>
         <BodyCopy
-          fontWeight="bold"
-          fontFamily="secondaryFontFamily"
+          fontWeight="black"
           className="couponModal_modalTitle"
           data-locator={`couponDetailModal_${coupon.status}_NameLbl`}
         >
@@ -36,20 +57,18 @@ class CouponDetailModal extends React.PureComponent<Props> {
         >
           {`${labels.USE_BY_TEXT} ${coupon.expirationDate}`}
         </BodyCopy>
-        <div
-          className="couponModal_modalbarcode"
+        <BodyCopy
+          component="div"
           data-locator={`couponDetailModal_${coupon.status}_BarCode`}
+          className="couponModal_modalbarcode"
         >
-          {coupon.id}
-        </div>
+          <Barcode value={coupon.id} barcodeId={coupon.id} />
+        </BodyCopy>
         <div className="couponModal_btnWrapper">
           <Button
             buttonVariation="fixed-width"
             fill="BLUE"
-            onClick={() => {
-              onRequestClose();
-              applyToBag(coupon);
-            }}
+            onClick={this.handleApplyToBag}
             className="couponModal_applyToBag couponModal_btn"
             data-locator={`couponDetailModal_${coupon.status}_AddToBagBtn`}
           >
@@ -74,7 +93,7 @@ class CouponDetailModal extends React.PureComponent<Props> {
           className="couponModal_modalLongDesc"
           data-locator={`couponDetailModal_${coupon.status}_LongDesc`}
         >
-          {`${labels.MODAL_LONG_DESCRIPTION}`}
+          {coupon.legalText}
         </BodyCopy>
         <BodyCopy
           fontFamily="secondaryFontFamily"

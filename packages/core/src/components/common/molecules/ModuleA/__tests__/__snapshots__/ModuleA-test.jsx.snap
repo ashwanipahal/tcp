@@ -54,7 +54,7 @@ exports[`ModuleA component should render Gymboree variant correctly 1`] = `
             />,
             "responsive": Array [
               Object {
-                "breakpoint": 1024,
+                "breakpoint": 1200,
                 "settings": Object {
                   "arrows": false,
                 },
@@ -94,6 +94,7 @@ exports[`ModuleA component should render Gymboree variant correctly 1`] = `
           >
             <ForwardRef
               className="link-text-wrapper"
+              color=""
               component="h2"
               dataLocator="moduleA_header_text_0"
               fontSize="fs16"
@@ -211,6 +212,7 @@ exports[`ModuleA component should render Gymboree variant correctly 1`] = `
           >
             <ForwardRef
               className="link-text-wrapper"
+              color=""
               component="h2"
               dataLocator="moduleA_header_text_1"
               fontSize="fs16"
@@ -328,6 +330,7 @@ exports[`ModuleA component should render Gymboree variant correctly 1`] = `
           >
             <ForwardRef
               className="link-text-wrapper"
+              color=""
               component="h2"
               dataLocator="moduleA_header_text_2"
               fontSize="fs16"
@@ -445,6 +448,7 @@ exports[`ModuleA component should render Gymboree variant correctly 1`] = `
           >
             <ForwardRef
               className="link-text-wrapper"
+              color=""
               component="h2"
               dataLocator="moduleA_header_text_3"
               fontSize="fs16"
@@ -690,7 +694,7 @@ exports[`ModuleA component should render TCP or default variant correctly 1`] = 
             />,
             "responsive": Array [
               Object {
-                "breakpoint": 1024,
+                "breakpoint": 1200,
                 "settings": Object {
                   "arrows": false,
                 },
@@ -730,6 +734,7 @@ exports[`ModuleA component should render TCP or default variant correctly 1`] = 
           >
             <ForwardRef
               className="link-text-wrapper"
+              color=""
               component="h2"
               dataLocator="moduleA_header_text_0"
               fontSize="fs16"
@@ -847,6 +852,7 @@ exports[`ModuleA component should render TCP or default variant correctly 1`] = 
           >
             <ForwardRef
               className="link-text-wrapper"
+              color=""
               component="h2"
               dataLocator="moduleA_header_text_1"
               fontSize="fs16"
@@ -964,6 +970,7 @@ exports[`ModuleA component should render TCP or default variant correctly 1`] = 
           >
             <ForwardRef
               className="link-text-wrapper"
+              color=""
               component="h2"
               dataLocator="moduleA_header_text_2"
               fontSize="fs16"
@@ -1081,6 +1088,7 @@ exports[`ModuleA component should render TCP or default variant correctly 1`] = 
           >
             <ForwardRef
               className="link-text-wrapper"
+              color=""
               component="h2"
               dataLocator="moduleA_header_text_3"
               fontSize="fs16"

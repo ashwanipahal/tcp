@@ -17,6 +17,22 @@ describe('AddEditCreditCard component', () => {
     expect(component).toMatchSnapshot();
   });
 
+  it('should renders correctly when showCreditCardFields is false', () => {
+    const props = {
+      labels: {
+        paymentGC: {},
+        common: {},
+        addressBook: {},
+      },
+      selectedCard: {
+        billingAddressId: 150786,
+      },
+      showCreditCardFields: false,
+    };
+    const component = shallow(<AddEditCreditCard {...props} />);
+    expect(component).toMatchSnapshot();
+  });
+
   it('should renders correctly with error message', () => {
     const props = {
       labels: {

@@ -1,3 +1,7 @@
+const ACCEPTED_CREDIT_CARDS = {
+  AMEX: 'AMEX',
+};
+
 function requiredValidator(value, isRequired) {
   return !isRequired || (value || '').toString().length > 0;
 }
@@ -86,7 +90,7 @@ function cardNumberForTypeValidator(value, param, linkedProps) {
     return false;
   }
 
-  const isAmex = linkedProps[0] === 'AMEX';
+  const isAmex = linkedProps[0] === ACCEPTED_CREDIT_CARDS.AMEX;
   const isValidAmex = isAmex && (cleanValue.length === 15 || /[*]{11}\d{4}$/.test(value));
   const isValidNonAmex = !isAmex && (cleanValue.length === 16 || /[*]{12}\d{4}$/.test(value));
 
@@ -156,8 +160,44 @@ function ssnValidator(value) {
 }
 
 function dobValidator(value) {
-  return ['Mm', 'Dd', 'Yyyy'].indexOf(value) === -1;
+  return ['Mm', 'Dd', 'Yyyy', ''].indexOf(value) === -1;
 }
+
+function onlyDigitsValidator(value) {
+  return /^\d+$/.test(value);
+}
+
+function cvvLengthThreeValidator(value, param, linkedProps) {
+  return linkedProps[0] !== ACCEPTED_CREDIT_CARDS.AMEX ? (value || '').length === 3 : true;
+}
+
+function cvvLengthFourValidator(value, param, linkedProps) {
+  return linkedProps[0] === ACCEPTED_CREDIT_CARDS.AMEX ? (value || '').length === 4 : true;
+}
+function eitherRequiredValidator(value, param, linkedPropsValues, linkedFieldsValues) {
+  return (value || linkedFieldsValues[0] || '').length > 0;
+}
+
+function notEqualToValidator(value, linkedFieldsValues) {
+  return value !== linkedFieldsValues[0];
+}
+
+/**
+ * @function - nonSequentialNumberValidator
+ *
+ * @param {*} value  - value to be validated for having non sequestial numbers
+ */
+const nonSequentialNumberValidator = value => {
+  if (!value) {
+    return true;
+  }
+
+  const isInvalid =
+    /^([0-9])(\1\1\1)$/gi.test(value) ||
+    '0123456789012'.indexOf(value) > -1 ||
+    '9876543210987'.indexOf(value) > -1;
+  return !isInvalid;
+};
 
 const validatorMethods = {
   required: requiredValidator,
@@ -187,6 +227,12 @@ const validatorMethods = {
   alphanumeric: alphanumericValidator,
   ssn: ssnValidator,
   dob: dobValidator,
+  eitherRequired: eitherRequiredValidator,
+  notEqualTo: notEqualToValidator,
+  nonSequentialNumber: nonSequentialNumberValidator,
+  cvvNumber: onlyDigitsValidator,
+  cvvLengthThree: cvvLengthThreeValidator,
+  cvvLengthFour: cvvLengthFourValidator,
 };
 
 export default validatorMethods;

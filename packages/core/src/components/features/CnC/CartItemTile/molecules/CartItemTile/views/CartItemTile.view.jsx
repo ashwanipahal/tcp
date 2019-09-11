@@ -8,9 +8,10 @@ import CartItemRadioButtons from '../../CartItemRadioButtons/views/CartItemRadio
 import endpoints from '../../../../../../../service/endpoint';
 import { Image, Row, BodyCopy, Col } from '../../../../../../common/atoms';
 
-import { getIconPath, getLocator } from '../../../../../../../utils';
+import { getIconPath, getLocator, isCanada } from '../../../../../../../utils';
 import getModifiedString from '../../../utils';
 import styles from '../styles/CartItemTile.style';
+import CARTPAGE_CONSTANTS from '../../../CartItemTile.constants';
 
 class CartItemTile extends React.Component {
   constructor(props) {
@@ -98,14 +99,15 @@ class CartItemTile extends React.Component {
   };
 
   getItemDetails = (removeCartItem, productDetail, labels, pageView) => {
+    const { isEdit } = this.state;
     return (
-      <Row className="padding-top-15 padding-bottom-20" fullBleed>
+      <Row className={`padding-top-15 padding-bottom-20 parent-${pageView}`} fullBleed>
         {pageView !== 'myBag' && this.getBossBopisDetailsForMiniBag(productDetail, labels)}
         <Col className="save-for-later-label" colSize={{ small: 1, medium: 1, large: 3 }}>
           {productDetail.miscInfo.availability === 'SOLDOUT' && (
             <BodyCopy
               fontFamily="secondary"
-              className={pageView !== 'myBag' ? 'updateOOSMiniBag' : ''}
+              className={pageView !== 'myBag' ? 'updateOOSMiniBag' : 'updateOOSBag'}
               color="error"
               fontSize="fs12"
               component="span"
@@ -115,10 +117,10 @@ class CartItemTile extends React.Component {
               Remove
             </BodyCopy>
           )}
-          {productDetail.miscInfo.availability === 'UNAVAILABLE' && (
+          {productDetail.miscInfo.availability === 'UNAVAILABLE' && !isEdit && (
             <BodyCopy
               fontFamily="secondary"
-              className={pageView !== 'myBag' ? 'updateOOSMiniBag' : ''}
+              className={pageView !== 'myBag' ? 'updateOOSMiniBag' : 'updateOOSBag'}
               color="error"
               fontSize="fs12"
               component="span"
@@ -159,12 +161,12 @@ class CartItemTile extends React.Component {
     return productDetail.itemInfo.isGiftItem === true ? `${labels.value}:` : `${labels.size}:`;
   };
 
-  getPointsColor = pageView => {
+  getPointsColor = () => {
     const { isPlcc } = this.props;
-    if (isPlcc && pageView === 'myBag') {
-      return 'blue.800';
+    if (isPlcc) {
+      return 'blue.B100';
     }
-    return pageView !== 'myBag' ? 'gray.900' : 'orange.800';
+    return 'orange.800';
   };
 
   getProductItemUpcNumber = (productDetail, pageView) => {
@@ -222,6 +224,14 @@ class CartItemTile extends React.Component {
       : ` ${productDetail.itemInfo.fit}`;
   };
 
+  getUnavailableHeaderClass = () => {
+    const { productDetail } = this.props;
+    if (productDetail.miscInfo.availability === 'UNAVAILABLE') {
+      return 'unavailable-header';
+    }
+    return '';
+  };
+
   // eslint-disable-next-line complexity
   render() {
     const { isEdit } = this.state;
@@ -242,17 +252,25 @@ class CartItemTile extends React.Component {
     };
 
     return (
-      <div className={className}>
-        {productDetail.miscInfo.availability === 'UNAVAILABLE' && (
-          <ItemAvailability errorMsg={labels.itemUnavailable} chooseDiff={labels.chooseDiff} />
-        )}
-        <div className="crossDeleteIcon">
-          <Image
-            alt="closeIcon"
-            className="close-icon-image"
-            src={getIconPath('close-icon')}
-            onClick={() => removeCartItem(productDetail.itemInfo.itemId)}
-          />
+      <div className={`${className} tile-header`}>
+        <div className={this.getUnavailableHeaderClass()}>
+          {productDetail.miscInfo.availability === 'UNAVAILABLE' && (
+            <ItemAvailability
+              className="unavailable-error"
+              errorMsg={labels.itemUnavailable}
+              chooseDiff={labels.chooseDiff}
+            />
+          )}
+          {!isEdit && (
+            <div className={pageView === 'myBag' ? 'crossDeleteIconBag' : 'crossDeleteIconMiniBag'}>
+              <Image
+                alt="closeIcon"
+                className="close-icon-image"
+                src={getIconPath('close-icon')}
+                onClick={() => removeCartItem(productDetail.itemInfo.itemId)}
+              />
+            </div>
+          )}
         </div>
         <Row
           fullBleed
@@ -453,38 +471,48 @@ class CartItemTile extends React.Component {
               </Col>
               {this.getProductPriceList(productDetail, pageView)}
             </Row>
-            <Row className="product-detail-row label-responsive-wrapper">
-              <Col className="label-responsive" colSize={{ large: 3, medium: 3, small: 2 }}>
-                <BodyCopy
-                  fontFamily="secondary"
-                  component="span"
-                  fontSize="fs12"
-                  fontWeight={['extrabold']}
+            {!isCanada() && (
+              <Row className="product-detail-row label-responsive-wrapper">
+                <Col
+                  className="label-responsive label-responsive-price"
+                  colSize={{ large: 3, medium: 3, small: 2 }}
                 >
-                  {`${labels.points}:`}
-                </BodyCopy>
-              </Col>
-              <Col className="value-responsive" colSize={{ small: 2, medium: 3, large: 3 }}>
-                <BodyCopy
-                  fontFamily="secondary"
-                  component="span"
-                  fontSize="fs12"
-                  fontWeight={['extrabold']}
-                  color={this.getPointsColor(pageView)}
-                  dataLocator={getLocator('cart_item_points')}
-                >
-                  {productDetail.itemInfo.myPlacePoints}
-                </BodyCopy>
-              </Col>
-            </Row>
+                  <BodyCopy
+                    fontFamily="secondary"
+                    component="span"
+                    fontSize="fs12"
+                    fontWeight={['extrabold']}
+                  >
+                    {`${labels.points}:`}
+                  </BodyCopy>
+                </Col>
+                <Col className="value-responsive" colSize={{ small: 2, medium: 3, large: 3 }}>
+                  <BodyCopy
+                    fontFamily="secondary"
+                    component="span"
+                    fontSize="fs12"
+                    fontWeight={['extrabold']}
+                    color={this.getPointsColor()}
+                    dataLocator={getLocator('cart_item_points')}
+                  >
+                    {productDetail.itemInfo.myPlacePoints}
+                  </BodyCopy>
+                </Col>
+              </Row>
+            )}
             {this.getItemDetails(removeCartItem, productDetail, labels, pageView)}
           </Col>
         </Row>
-        {pageView === 'myBag' && (
-          <Row fullBleed>
-            <CartItemRadioButtons productDetail={productDetail} labels={labels} />
-          </Row>
-        )}
+        {pageView === 'myBag' &&
+          productDetail.miscInfo.availability !== CARTPAGE_CONSTANTS.AVAILABILITY_SOLDOUT && (
+            <Row fullBleed>
+              <CartItemRadioButtons
+                className="cart-item-radio-buttons"
+                productDetail={productDetail}
+                labels={labels}
+              />
+            </Row>
+          )}
       </div>
     );
   }

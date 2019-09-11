@@ -46,6 +46,14 @@ const endpoints = {
     method: API_METHODS.POST,
     URI: 'v2/account/addAddress',
   },
+  addPaymentInstruction: {
+    method: 'POST',
+    URI: 'v2/checkout/addPaymentInstruction',
+  },
+  deletePaymentInstruction: {
+    method: 'POST',
+    URI: 'v2/checkout/deletePaymentInstruction',
+  },
   updateAddress: {
     method: 'put',
     URI: 'v2/wallet/updateAddress',
@@ -163,6 +171,12 @@ const endpoints = {
     URI: PRODUCTS_URI.PRODUCTS_BY_SEARCH,
     unbxd: true,
   },
+  getProductInfoForTranslationByPartNumber: {
+    method: 'GET',
+    URI: PRODUCTS_URI.PRODUCTS,
+    unbxd: true,
+    unbxdCustom: true,
+  },
   deleteCreditCardOnAccount: {
     method: API_METHODS.POST,
     URI: 'v2/account/deleteCreditCardDetails',
@@ -216,6 +230,31 @@ const endpoints = {
   updateShippingMethodSelection: {
     method: 'PUT',
     URI: 'v2/checkout/updateShippingMethodSelection',
+  },
+  getChildren: {
+    method: API_METHODS.GET,
+    URI: 'v2/account/getBirthdaySavings',
+  },
+  updateUserSurvey: {
+    method: 'PUT',
+    URI: 'v2/account/saveUserSurvey',
+  },
+  updatePaymentInstruction: {
+    method: 'PUT',
+    URI: 'v2/checkout/updatePaymentInstruction',
+  },
+  deleteChild: {
+    method: 'POST',
+    URI: 'v2/account/deleteBirthdaySavings',
+  },
+  addGiftOptions: {
+    method: 'POST',
+    URI: 'v2/checkout/addGiftOptions',
+  },
+  searchBarApi: {
+    method: 'GET',
+    URI: PRODUCTS_URI.PRODUCTS_AUTOSUGGEST,
+    unbxd: true,
   },
 };
 export default endpoints;

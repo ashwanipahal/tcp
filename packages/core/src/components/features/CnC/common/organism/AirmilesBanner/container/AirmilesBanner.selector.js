@@ -1,8 +1,11 @@
+import { getFormSyncErrors, formValueSelector } from 'redux-form';
+
 export const getCollectorNumber = state => {
-  return state.User.getIn(['airmiles', 'accountNumber']) || 0;
+  return state.CartPageReducer.getIn(['orderDetails', 'airmiles', 'accountNumber']) || '';
 };
+
 export const getOfferCode = state => {
-  return state.User.getIn(['airmiles', 'promoOffer']) || 0;
+  return state.CartPageReducer.getIn(['orderDetails', 'airmiles', 'promoId']) || '';
 };
 export const getCartOrderDetails = state => {
   return state.CartPageReducer.get('orderDetails');
@@ -16,6 +19,21 @@ export const getAirmilesBannerData = state => {
     collectorNumber: getCollectorNumber(state),
     offerCode: getOfferCode(state),
   };
+};
+
+export const getSyncError = state => {
+  return {
+    syncError: getFormSyncErrors('AirmilesBanner')(state),
+  };
+};
+
+export const getFormAirmilesNumber = state => {
+  const selector = formValueSelector('AirmilesBanner');
+  return selector(state, 'promoId');
+};
+export const getFormAirmilesOfferCode = state => {
+  const selector = formValueSelector('AirmilesBanner');
+  return selector(state, 'offerCode');
 };
 export const getAirmilesBannerLabels = state => {
   const {

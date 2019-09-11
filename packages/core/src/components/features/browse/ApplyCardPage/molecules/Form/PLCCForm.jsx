@@ -20,14 +20,15 @@ import {
 import { backToHome } from '../../utils/DateOfBirthHelper';
 import StyledPLCCFormWrapper from './styles/PLCCForm.style';
 
-const PLCCForm = ({ dispatch, plccData, handleSubmit, labels }) => {
+const PLCCForm = ({ dispatch, plccData, handleSubmit, labels, isPLCCModalFlow }) => {
   return (
-    <StyledPLCCFormWrapper>
+    <StyledPLCCFormWrapper isPLCCModalFlow={isPLCCModalFlow}>
       <form onSubmit={handleSubmit}>
         <Grid>
-          <CreditCardPageHeader labels={labels} />
+          <CreditCardPageHeader labels={labels} isPLCCModalFlow={isPLCCModalFlow} />
           <Row fullBleed>
             <ReviewCreditCardInformation
+              isPLCCModalFlow={isPLCCModalFlow}
               creditCardHeader={plccData && plccData.credit_card_header}
             />
           </Row>
@@ -87,7 +88,7 @@ const PLCCForm = ({ dispatch, plccData, handleSubmit, labels }) => {
                   fontFamily="secondary"
                   fontWeight="regular"
                 >
-                  {labels.plcc_form_checkbox_text}
+                  {labels && labels.plcc_form_checkbox_text}
                 </BodyCopy>
               </Field>
             </Col>
@@ -101,7 +102,7 @@ const PLCCForm = ({ dispatch, plccData, handleSubmit, labels }) => {
             <Row fullBleed className="submit_plcc_form">
               <Col
                 ignoreGutter={{ small: true }}
-                colSize={{ large: 4, medium: 4, small: 6 }}
+                colSize={{ large: 6, medium: 4, small: 6 }}
                 className="submit_button_plcc_form_container"
               >
                 <Button
@@ -142,17 +143,29 @@ const PLCCForm = ({ dispatch, plccData, handleSubmit, labels }) => {
 };
 
 PLCCForm.propTypes = {
-  plccData: PropTypes.shape({}).isRequired,
+  plccData: PropTypes.shape({
+    credit_card_header: PropTypes.string.isRequired,
+    contact_information_disclaimer: PropTypes.string.isRequired,
+    account_classified_disclaimer: PropTypes.string.isRequired,
+    electronic_consent: PropTypes.string.isRequired,
+    plcc_form_checkbox_text: PropTypes.string.isRequired,
+    plcc_form_submit_button: PropTypes.string.isRequired,
+    plcc_form_nothanks: PropTypes.string.isRequired,
+  }).isRequired,
   dispatch: PropTypes.func.isRequired,
+  isPLCCModalFlow: PropTypes.bool.isRequired,
   handleSubmit: PropTypes.func.isRequired,
-  labels: PropTypes.shape({}).isRequired,
+  labels: PropTypes.shape({
+    plcc_form_checkbox_text: PropTypes.string.isRequired,
+    plcc_form_submit_button: PropTypes.string.isRequired,
+    plcc_form_nothanks: PropTypes.string.isRequired,
+  }).isRequired,
 };
 
 const validateMethod = createValidateMethod(
   getStandardConfig([
     'firstName',
     'lastName',
-    'phoneNumber',
     'addressLine1',
     'addressLine2',
     'city',
@@ -168,6 +181,8 @@ const validateMethod = createValidateMethod(
     'password',
     'confirmPassword',
     'iAgree',
+    'phoneNumberWithAlt',
+    'altPhoneNumber',
   ])
 );
 

@@ -21,4 +21,7 @@ export default css`
       width: calc(25% - 42px);
     }
   }
+  .item-title {
+    width: 100%;
+  }
 `;

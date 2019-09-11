@@ -1,6 +1,7 @@
 import React from 'react';
 import { Modal, StatusBar, SafeAreaView } from 'react-native';
 import LineComp from '@tcp/core/src/components/common/atoms/Line';
+import ToastContainer from '@tcp/core/src/components/common/atoms/Toast/container/Toast.container.native';
 import {
   StyledCrossImage,
   StyledTouchableOpacity,
@@ -47,28 +48,35 @@ const ModalNative = ({ isOpen, children, ...otherProps }: Props) => {
     headingAlign,
     headingFontFamily,
     headerStyle,
+    headingFontWeight,
     fontSize,
     horizontalBar = true,
     borderColor = 'black',
   } = otherProps;
   return (
     <SafeAreaView>
-      <Modal transparent={false} visible={isOpen} animationType={animationType}>
+      <Modal
+        transparent={false}
+        visible={isOpen}
+        animationType={animationType}
+        onRequestClose={onRequestClose}
+      >
+        <ToastContainer />
         <StatusBar hidden />
-        {heading && (
-          <RowWrapper>
+        <RowWrapper>
+          {heading && (
             <ModalHeading>
               <BodyCopy
                 mobileFontFamily={headingFontFamily || 'primary'}
-                fontWeight="extrabold"
+                fontWeight={headingFontWeight || 'extrabold'}
                 textAlign={headingAlign}
                 fontSize={fontSize || 'fs16'}
                 text={heading}
               />
             </ModalHeading>
-            {getCloseIcon({ onRequestClose, headerStyle })}
-          </RowWrapper>
-        )}
+          )}
+          {getCloseIcon({ onRequestClose, headerStyle })}
+        </RowWrapper>
         {horizontalBar ? (
           <LineWrapper>
             <LineComp marginTop={5} borderWidth={2} borderColor={borderColor} />

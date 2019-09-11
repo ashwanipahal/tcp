@@ -11,17 +11,8 @@ import { getIconPath, getLocator, isGymboree } from '../../../../../utils';
 import config from '../ModuleA.config';
 
 const { ctaTypes, CAROUSEL_OPTIONS } = config;
-const isGymboreeModuleA = isGymboree();
 const bigCarrotIcon = 'carousel-big-carrot';
-
-const carouselConfig = {
-  autoplay: true,
-  dataLocatorPlay: getLocator('moduleA_play_button'),
-  dataLocatorPause: getLocator('moduleA_pause_button'),
-  customArrowLeft: getIconPath(bigCarrotIcon),
-  customArrowRight: getIconPath(bigCarrotIcon),
-  dataLocatorCarousel: 'carousel_banner',
-};
+const bigCarrotIconGym = 'carousel-big-carrot-white';
 
 class ModuleA extends React.Component {
   constructor(props) {
@@ -62,6 +53,16 @@ class ModuleA extends React.Component {
     const buttonListCtaType = ctaTypes[ctaType];
     const { isRibbonLeftAligned } = this.state;
     const isLinkList = buttonListCtaType === 'linkCTAList';
+    const carouselIcon = isGymboree() ? bigCarrotIconGym : bigCarrotIcon;
+
+    const carouselConfig = {
+      autoplay: true,
+      dataLocatorPlay: getLocator('moduleA_play_button'),
+      dataLocatorPause: getLocator('moduleA_pause_button'),
+      customArrowLeft: getIconPath(carouselIcon),
+      customArrowRight: getIconPath(carouselIcon),
+      dataLocatorCarousel: 'carousel_banner',
+    };
 
     CAROUSEL_OPTIONS.prevArrow = (
       <button type="button" data-locator="moduleA_left_arrow" className="slick-prev" />
@@ -75,7 +76,7 @@ class ModuleA extends React.Component {
 
     return (
       <Row
-        className={`${className} ${isGymboreeModuleA ? 'gymboree-module-a' : ''} ${
+        className={`${className} ${isGymboree() ? 'gymboree-module-a' : ''} ${
           isRibbonLeftAligned ? 'left-aligned-ribbon' : ''
         } moduleA`}
         fullBleed={{ small: true, medium: true, large: false }}
@@ -110,6 +111,7 @@ class ModuleA extends React.Component {
                         component="h2"
                         fontSize={isLinkList ? ['fs32', 'fs32', 'fs64'] : 'fs16'}
                         headerText={headerText}
+                        color={isGymboree() ? 'white' : ''}
                         className="link-text-wrapper"
                         dataLocator={`${getLocator('moduleA_header_text')}${i}`}
                       />

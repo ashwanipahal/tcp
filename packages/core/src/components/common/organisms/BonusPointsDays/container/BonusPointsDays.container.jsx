@@ -26,9 +26,10 @@ export class BonusPointsDays extends React.Component {
     isBonusPointsEnabled: PropTypes.bool,
     view: PropTypes.string,
     isPlcc: PropTypes.bool,
-    enableApplyCta: PropTypes.bool,
     getAvailableBonusDaysData: PropTypes.func,
     orderId: PropTypes.string,
+    showAccordian: PropTypes.bool,
+    isBagPage: PropTypes.bool,
   };
 
   static defaultProps = {
@@ -41,9 +42,10 @@ export class BonusPointsDays extends React.Component {
     isBonusPointsEnabled: false,
     view: constants.VIEWS.EDIT,
     isPlcc: false,
-    enableApplyCta: false,
     getAvailableBonusDaysData: () => {},
     orderId: '',
+    showAccordian: true,
+    isBagPage: false,
   };
 
   componentDidMount() {
@@ -63,9 +65,10 @@ export class BonusPointsDays extends React.Component {
       isBonusPointsEnabled,
       view,
       isPlcc,
-      enableApplyCta,
       getAvailableBonusDaysData,
       orderId,
+      showAccordian,
+      isBagPage,
     } = this.props;
     return (
       !isCanada() &&
@@ -76,9 +79,10 @@ export class BonusPointsDays extends React.Component {
           bonusDetailsData={bonusDetailsData}
           view={view}
           isPlcc={isPlcc}
-          enableApplyCta={enableApplyCta}
           getBonusDaysData={getAvailableBonusDaysData}
           orderDetails={orderId}
+          showAccordian={showAccordian}
+          isBagPage={isBagPage}
         />
       )
     );

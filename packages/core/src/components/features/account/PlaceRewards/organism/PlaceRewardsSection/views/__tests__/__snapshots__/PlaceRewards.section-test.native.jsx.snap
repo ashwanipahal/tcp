@@ -5,6 +5,7 @@ exports[`MyRewards should render correctly 1`] = `
   className=""
 >
   <ScrollViewMock
+    keyboardShouldPersistTaps="handled"
     showsVerticalScrollIndicator={false}
   >
     <Styled(Text)>
@@ -41,10 +42,10 @@ exports[`MyRewards should render correctly 1`] = `
     <Connect(MyRewardsContainer)
       labels={
         Object {
-          "common": Object {},
-          "myPlaceRewards": Object {},
+          "placeRewards": Object {},
         }
       }
+      showLink={true}
     />
   </ScrollViewMock>
 </View>

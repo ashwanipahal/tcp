@@ -68,7 +68,7 @@ export class AddressOverviewTile extends React.PureComponent<Props> {
             <Anchor
               anchorVariation="primary"
               text={
-                defaultBillingAddress && defaultBillingAddress.length
+                defaultShippingAddress && defaultShippingAddress.length
                   ? labels.lbl_overview_addressBookEdit
                   : labels.lbl_overview_addressBookAdd
               }
@@ -147,7 +147,6 @@ export class AddressOverviewTile extends React.PureComponent<Props> {
             text={labels.lbl_overview_addressBookCTA}
             buttonVariation="variable-width"
             fill="BLUE"
-            color="white"
             onPress={() => handleComponentChange('addressBookMobile')}
           />
         </ButtonWrapperStyle>

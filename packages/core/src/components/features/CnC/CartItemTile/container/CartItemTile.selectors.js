@@ -117,8 +117,8 @@ export const getProductItemUnitPrice = product => {
 
 export const getLabelsCartItemTile = state => {
   const {
-    bag: {
-      addedToBag: {
+    global: {
+      addedToBagModal: {
         lbl_info_color: color,
         lbl_info_size: size,
         lbl_info_Qty: qty,
@@ -126,16 +126,13 @@ export const getLabelsCartItemTile = state => {
         lbl_info_giftDesign: design,
         lbl_info_giftValue: value,
       },
-    },
-  } = state.Labels;
-
-  const {
-    bag: {
-      bagOverview: {
+      cartItemTile: {
         lbl_cartTile_fit: fit,
         lbl_cartTile_points: points,
         lbl_cartTile_cancel: cancel,
         lbl_cartTile_edit: edit,
+        lbl_cartTile_update: update,
+        lbl_cartTile_remove: removeEdit,
         lbl_cartTile_saveForLater: saveForLater,
         lbl_cartTile_productBrandAlt: productBandAlt,
         lbl_cartTile_productImageAlt: productImageAlt,
@@ -146,9 +143,10 @@ export const getLabelsCartItemTile = state => {
         lbl_cartTile_shipToHome: ecomShipping,
         lbl_cartTile_extra: extra,
         lbl_cartTile_off: off,
+        lbl_cartTile_delete: deleteItem,
+      },
+      minibag: {
         lbl_miniBag_problemWithOrder: problemWithOrder,
-        lbl_error_please: pleaseText,
-        lbl_error_remove: remove,
         lbl_miniBag_error: removeSoldOut,
         lbl_miniBag_itemUnavailable: itemUnavailable,
         lbl_miniBag_itemSoldOut: itemSoldOut,
@@ -161,6 +159,12 @@ export const getLabelsCartItemTile = state => {
     },
   } = state.Labels;
 
+  // const {
+  //   bag: {
+  //     bagOverview: { lbl_error_please: pleaseText, lbl_error_remove: remove },
+  //   },
+  // } = state.Labels;
+
   return {
     color,
     size,
@@ -172,6 +176,8 @@ export const getLabelsCartItemTile = state => {
     points,
     cancel,
     edit,
+    update,
+    removeEdit,
     saveForLater,
     productBandAlt,
     productImageAlt,
@@ -183,8 +189,8 @@ export const getLabelsCartItemTile = state => {
     extra,
     off,
     problemWithOrder,
-    pleaseText,
-    remove,
+    // pleaseText,
+    // remove,
     removeSoldOut,
     itemUnavailable,
     itemSoldOut,
@@ -193,6 +199,7 @@ export const getLabelsCartItemTile = state => {
     errorSize,
     updateUnavailable,
     removeSoldoutHeader,
+    deleteItem,
   };
 };
 

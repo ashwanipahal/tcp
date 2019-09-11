@@ -1,22 +1,16 @@
-import { call, takeLatest } from 'redux-saga/effects';
+import { select, takeLatest } from 'redux-saga/effects';
 import { addAirmilesBanner, AddAirmilesBannerSaga } from '../AirmilesBanner.saga';
 import AIRMILES_BANNER_CONSTANTS from '../../AirmilesBanner.constants';
-import addAirmilesBannerApi from '../../../../../../../../services/abstractors/CnC/AirmilesBanner';
+import { getFormAirmilesNumber } from '../AirmilesBanner.selector';
 
 describe('AddAirmilesBanner saga', () => {
   let gen;
-  const payload = {
-    promoId: '12312312312',
-    cardNumber: '',
-    orderId: '2232112',
-  };
 
   beforeEach(() => {
-    gen = addAirmilesBanner({ payload });
+    gen = addAirmilesBanner();
   });
-
-  it('should Add airmilesBanner address', () => {
-    expect(gen.next().value).toEqual(call(addAirmilesBannerApi, payload));
+  it('should get airmilesBanner numbner', () => {
+    expect(gen.next().value).toEqual(select(getFormAirmilesNumber));
   });
 
   it('should test AirmilesBanner', () => {

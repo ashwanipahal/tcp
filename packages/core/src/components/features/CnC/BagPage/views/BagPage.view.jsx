@@ -7,7 +7,6 @@ import Row from '../../../../common/atoms/Row';
 import Col from '../../../../common/atoms/Col';
 import AddedToBagActions from '../../AddedToBagActions';
 import CnCTemplate from '../../common/organism/CnCTemplate';
-import BagConfirmationModal from './BagConfirmationModal.view';
 
 import styles, { addedToBagActionsStyles } from '../styles/BagPage.style';
 
@@ -30,7 +29,7 @@ class BagPageView extends React.PureComponent {
   };
 
   renderActions = () => {
-    const { labels, handleCartCheckout, showAddTobag } = this.props;
+    const { labels, showAddTobag, handleCartCheckout } = this.props;
 
     return (
       <AddedToBagActions
@@ -43,15 +42,7 @@ class BagPageView extends React.PureComponent {
   };
 
   render() {
-    const {
-      className,
-      labels,
-      totalCount,
-      orderItemsCount,
-      showConfirmationModal,
-      closeCheckoutConfirmationModal,
-      removeUnqualifiedItemsAndCheckout,
-    } = this.props;
+    const { className, labels, totalCount, orderItemsCount, isUserLoggedIn, isGuest } = this.props;
     const isNoNEmptyBag = orderItemsCount > 0;
     return (
       <div className={className}>
@@ -66,12 +57,8 @@ class BagPageView extends React.PureComponent {
           leftSection={this.renderLeftSection}
           showLeftSection={isNoNEmptyBag}
           bagActions={this.renderActions}
-        />
-        <BagConfirmationModal
-          labels={labels}
-          isOpen={showConfirmationModal}
-          closeCheckoutConfirmationModal={closeCheckoutConfirmationModal}
-          removeUnqualifiedItemsAndCheckout={removeUnqualifiedItemsAndCheckout}
+          isUserLoggedIn={isUserLoggedIn}
+          isGuest={isGuest}
         />
       </div>
     );
@@ -83,11 +70,10 @@ BagPageView.propTypes = {
   labels: PropTypes.shape({}).isRequired,
   orderItemsCount: PropTypes.number.isRequired,
   totalCount: PropTypes.number.isRequired,
-  handleCartCheckout: PropTypes.func.isRequired,
   showAddTobag: PropTypes.bool.isRequired,
-  showConfirmationModal: PropTypes.bool.isRequired,
-  closeCheckoutConfirmationModal: PropTypes.func.isRequired,
-  removeUnqualifiedItemsAndCheckout: PropTypes.func.isRequired,
+  isUserLoggedIn: PropTypes.bool.isRequired,
+  isGuest: PropTypes.bool.isRequired,
+  handleCartCheckout: PropTypes.func.isRequired,
 };
 
 export default withStyles(BagPageView, styles);

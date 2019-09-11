@@ -12,9 +12,18 @@ import {
   RowSectionStyle,
   HeadingTextStyle,
   ScrollViewWrapper,
+  BonusPointsWrapper,
 } from '../styles/BagPage.style.native';
+import BonusPointsDays from '../../../../common/organisms/BonusPointsDays';
 
-const BagPage = ({ labels, totalCount, showAddTobag, navigation, handleCartCheckout }) => {
+const BagPage = ({
+  labels,
+  totalCount,
+  showAddTobag,
+  navigation,
+  handleCartCheckout,
+  isUserLoggedIn,
+}) => {
   return (
     <>
       <ScrollViewWrapper showAddTobag={showAddTobag}>
@@ -26,6 +35,13 @@ const BagPage = ({ labels, totalCount, showAddTobag, navigation, handleCartCheck
           <RowSectionStyle>
             <OrderLedgerContainer />
           </RowSectionStyle>
+          {isUserLoggedIn && (
+            <RowSectionStyle>
+              <BonusPointsWrapper>
+                <BonusPointsDays isBagPage />
+              </BonusPointsWrapper>
+            </RowSectionStyle>
+          )}
           <RowSectionStyle>
             <AirmilesBanner />
           </RowSectionStyle>
@@ -34,6 +50,7 @@ const BagPage = ({ labels, totalCount, showAddTobag, navigation, handleCartCheck
           </RowSectionStyle>
         </MainSection>
       </ScrollViewWrapper>
+
       <AddedToBagActions
         handleCartCheckout={handleCartCheckout}
         labels={labels}
@@ -49,6 +66,7 @@ BagPage.propTypes = {
   totalCount: PropTypes.number.isRequired,
   showAddTobag: PropTypes.bool.isRequired,
   navigation: PropTypes.shape({}).isRequired,
+  isUserLoggedIn: PropTypes.bool.isRequired,
   handleCartCheckout: PropTypes.func.isRequired,
 };
 

@@ -1,4 +1,5 @@
 // import { createSelector } from 'reselect';
+import { getLabelValue } from '@tcp/core/src/utils';
 import { getCartOrderDetails } from '../../CartItemTile/container/CartItemTile.selectors';
 
 export const getAddedToBagData = state => {
@@ -37,14 +38,33 @@ export const getQuantityValue = state => {
 };
 
 export const getLabelsAddToActions = state => {
-  const {
-    bag: {
-      addedToBag: { lbl_cta_viewBag: viewBag, lbl_cta_checkout: checkout },
-    },
-  } = state.Labels;
   return {
-    viewBag,
-    checkout,
+    viewBag: getLabelValue(state.Labels, 'lbl_cta_viewBag', 'addedToBagModal', 'global'),
+    checkout: getLabelValue(state.Labels, 'lbl_cta_checkout', 'addedToBagModal', 'global'),
+    continueCheckout: getLabelValue(
+      state.Labels,
+      'lbl_checkoutmodal_continueCheckout',
+      'checkoutConfirmation',
+      'global'
+    ),
+    confirmationText: getLabelValue(
+      state.Labels,
+      'lbl_checkoutmodal_confirmation',
+      'checkoutConfirmation',
+      'global'
+    ),
+    editConfirmationText: getLabelValue(
+      state.Labels,
+      'lbl_checkoutmodal_editConfirmation',
+      'checkoutConfirmation',
+      'global'
+    ),
+    backToBag: getLabelValue(
+      state.Labels,
+      'lbl_checkoutmodal_backToBag',
+      'checkoutConfirmation',
+      'global'
+    ),
   };
 };
 

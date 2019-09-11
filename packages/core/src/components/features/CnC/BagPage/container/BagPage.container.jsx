@@ -1,9 +1,11 @@
 import React from 'react';
 import { connect } from 'react-redux';
+import { isGuest as isGuestUser } from '@tcp/core/src/components/features/CnC/Checkout/container/Checkout.selector';
 import BagPageSelector from './BagPage.selectors';
 import BagPage from '../views/BagPage.view';
 import BAG_PAGE_ACTIONS from './BagPage.actions';
 import { getCartOrderList } from '../../CartItemTile/container/CartItemTile.selectors';
+import { getUserLoggedInState } from '../../../account/User/container/User.selectors';
 
 // @flow
 // type Props = {
@@ -33,11 +35,14 @@ export class BagPageContainer extends React.Component<Props> {
       totalCount,
       orderItemsCount,
       navigation,
+      isUserLoggedIn,
       handleCartCheckout,
       showConfirmationModal,
       closeCheckoutConfirmationModal,
       removeUnqualifiedItemsAndCheckout,
+      isGuest,
     } = this.props;
+
     const showAddTobag = false;
     return (
       <BagPage
@@ -45,15 +50,19 @@ export class BagPageContainer extends React.Component<Props> {
         totalCount={totalCount}
         orderItemsCount={orderItemsCount}
         showAddTobag={showAddTobag}
-        handleCartCheckout={handleCartCheckout}
+        navigation={navigation}
+        isUserLoggedIn={isUserLoggedIn}
+        isGuest={isGuest}
         showConfirmationModal={showConfirmationModal}
         closeCheckoutConfirmationModal={closeCheckoutConfirmationModal}
         removeUnqualifiedItemsAndCheckout={removeUnqualifiedItemsAndCheckout}
-        navigation={navigation}
+        handleCartCheckout={handleCartCheckout}
       />
     );
   }
 }
+
+BagPageContainer.getInitActions = () => BAG_PAGE_ACTIONS.initActions;
 
 export const mapDispatchToProps = (dispatch: ({}) => void) => {
   return {
@@ -62,15 +71,6 @@ export const mapDispatchToProps = (dispatch: ({}) => void) => {
     },
     fetchNeedHelpContent: contentIds => {
       dispatch(BAG_PAGE_ACTIONS.fetchModuleX(contentIds));
-    },
-    handleCartCheckout: () => {
-      dispatch(BAG_PAGE_ACTIONS.startCheckout());
-    },
-    closeCheckoutConfirmationModal: () => {
-      dispatch(BAG_PAGE_ACTIONS.closeCheckoutConfirmationModal());
-    },
-    removeUnqualifiedItemsAndCheckout: () => {
-      dispatch(BAG_PAGE_ACTIONS.removeUnqualifiedItemsAndCheckout());
     },
   };
 };
@@ -84,6 +84,8 @@ const mapStateToProps = state => {
     orderItemsCount: size,
     needHelpContentId: BagPageSelector.getNeedHelpContentId(state),
     showConfirmationModal: BagPageSelector.getConfirmationModalFlag(state),
+    isUserLoggedIn: getUserLoggedInState(state),
+    isGuest: isGuestUser(state),
   };
 };
 

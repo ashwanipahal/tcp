@@ -86,9 +86,13 @@ exports[`MyRewards should render correctly 1`] = `
               }
             }
           >
-            <Connect(RewardsPointsContainer)
-              labels={Object {}}
-            />
+            <div
+              className="my-place-reward-section"
+            >
+              <Connect(RewardsPointsContainer)
+                labels={Object {}}
+              />
+            </div>
           </Styled(Col)>
         </Styled(Row)>
       </Styled(Col)>
@@ -185,10 +189,10 @@ exports[`MyRewards should render correctly 1`] = `
   <Connect(MyRewardsContainer)
     labels={
       Object {
-        "common": Object {},
-        "myPlaceRewards": Object {},
+        "placeRewards": Object {},
       }
     }
+    showLink={true}
   />
 </div>
 `;

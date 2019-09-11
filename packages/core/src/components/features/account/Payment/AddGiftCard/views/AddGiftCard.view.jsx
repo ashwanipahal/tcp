@@ -1,4 +1,5 @@
 import React from 'react';
+import PropTypes from 'prop-types';
 import { Heading } from '@tcp/core/styles/themes/TCP/typotheme';
 import Notification from '@tcp/core/src/components/common/molecules/Notification';
 import withStyles from '../../../../../common/hoc/withStyles';
@@ -13,9 +14,20 @@ type Props = {
   addGiftCardResponse: String,
   goBackToPayment: Function,
   labels: Object,
+  formErrorMessage: Object,
 };
 
 class AddGiftCard extends React.PureComponent<Props> {
+  static propTypes = {
+    className: PropTypes.string.isRequired,
+    onAddGiftCardClick: PropTypes.func.isRequired,
+    addGiftCardResponse: PropTypes.shape({}).isRequired,
+    goBackToPayment: PropTypes.func.isRequired,
+    labels: PropTypes.shape({}).isRequired,
+    formErrorMessage: PropTypes.bool.isRequired,
+    showNotification: PropTypes.bool.isRequired,
+  };
+
   render() {
     const {
       onAddGiftCardClick,
@@ -23,6 +35,8 @@ class AddGiftCard extends React.PureComponent<Props> {
       addGiftCardResponse,
       labels,
       goBackToPayment,
+      formErrorMessage,
+      showNotification,
     } = this.props;
     return (
       <div className={className}>
@@ -44,7 +58,7 @@ class AddGiftCard extends React.PureComponent<Props> {
         >
           {labels.paymentGC.lbl_payment_addGiftCard}
         </Heading>
-        {addGiftCardResponse && (
+        {addGiftCardResponse && showNotification && (
           <Notification
             status="error"
             colSize={{ large: 12, medium: 8, small: 6 }}
@@ -55,6 +69,7 @@ class AddGiftCard extends React.PureComponent<Props> {
           onAddGiftCardClick={onAddGiftCardClick}
           labels={labels}
           goBackToPayment={goBackToPayment}
+          formErrorMessage={formErrorMessage}
         />
       </div>
     );

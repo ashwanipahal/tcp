@@ -2,10 +2,12 @@
 
 exports[`Promo Text Banner component renders correctly 1`] = `
 <Styled(Anchor)
+  asPath="http://example.com3367"
   external={0}
   target=""
   text="aaaa"
   title=""
+  to="http://example.com3367"
   url="http://example.com3367"
 >
   <Styled(BodyCopy)

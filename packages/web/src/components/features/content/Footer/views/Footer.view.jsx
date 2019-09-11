@@ -46,89 +46,98 @@ class Footer extends React.Component {
       getOrderDetailAction,
       emailSignup,
       smsSignup,
-      openTrackOrder,
       loginModalMountedState,
       setLoginModalMountState,
       isLoggedIn,
+      linkConfig,
+      footerActionCreator,
     } = props;
     const { showFooterTopCandidateB } = this.state;
 
     return (
       <footer className={className}>
-        {showFooterTopCandidateB ? (
-          <FooterTopCandidateB {...props} />
-        ) : (
-          <FooterTopCandidateA {...props} />
-        )}
-        <EmailSignupModal buttonConfig={emailSignup} />
-        <SmsSignupModal buttonConfig={smsSignup} />
+        <Row className="footer-candidate-wrapper" fullBleed>
+          {showFooterTopCandidateB ? (
+            <FooterTopCandidateB {...props} />
+          ) : (
+            <FooterTopCandidateA {...props} />
+          )}
+          <EmailSignupModal buttonConfig={emailSignup} />
+          <SmsSignupModal buttonConfig={smsSignup} />
+        </Row>
         <Row className="footer-middle mobile" fullBleed>
           <FooterMiddleMobile
             className={className}
             navLinkItems={navLinks}
-            openTrackOrder={openTrackOrder}
             isLoggedIn={isLoggedIn}
+            linkConfig={linkConfig}
+            footerActionCreator={footerActionCreator}
           />
         </Row>
-        <Row className="footer-middle desktop">
-          <FooterMiddleDesktop
-            className={className}
-            navLinks={navLinks}
-            openTrackOrder={openTrackOrder}
-            loginModalMountedState={loginModalMountedState}
-            setLoginModalMountState={setLoginModalMountState}
-            isLoggedIn={isLoggedIn}
-          />
+        <Row className="content-wrapper" fullBleed>
+          <Row className="footer-middle desktop">
+            <FooterMiddleDesktop
+              className={className}
+              navLinks={navLinks}
+              loginModalMountedState={loginModalMountedState}
+              setLoginModalMountState={setLoginModalMountState}
+              isLoggedIn={isLoggedIn}
+              linkConfig={linkConfig}
+              footerActionCreator={footerActionCreator}
+            />
+          </Row>
         </Row>
         <div className="footer-bottom">
-          <Row className="fullbleed-mobile">
-            <Col
-              className="footer-bottom__slot--1 default-offset"
-              colSize={{
-                large: 4,
-                medium: 8,
-                small: 6,
-              }}
-            >
-              <Copyright>{copyrightText}</Copyright>
-              <div className="poc-hide">
-                <Button onClick={getUserInfoAction}>Get Registered User Info</Button>
-                <Button onClick={getOrderDetailAction}>Get Order detail</Button>
-              </div>
-            </Col>
-            <Col
-              className="footer-bottom__slot--2 default-offset"
-              colSize={{
-                large: 6,
-                medium: 8,
-                small: 6,
-              }}
-            >
-              <LegalLinks links={legalLinks} />
-            </Col>
-            <Col
-              className="footer-bottom__slot--3 default-offset"
-              colSize={{
-                large: 2,
-                medium: 8,
-                small: 6,
-              }}
-            >
-              <CountrySelector showInFooter />
-            </Col>
-          </Row>
-          <Row fullBleed>
-            <Col
-              colSize={{
-                large: 12,
-                medium: 8,
-                small: 6,
-              }}
-            >
-              <BodyCopy className="reference-id" fontSize="fs32">
-                {referenceID}
-              </BodyCopy>
-            </Col>
+          <Row className="content-wrapper">
+            <Row className="fullbleed-mobile">
+              <Col
+                className="footer-bottom__slot--1 default-offset"
+                colSize={{
+                  large: 3,
+                  medium: 8,
+                  small: 6,
+                }}
+              >
+                <Copyright>{copyrightText}</Copyright>
+                <div className="poc-hide">
+                  <Button onClick={getUserInfoAction}>Get Registered User Info</Button>
+                  <Button onClick={getOrderDetailAction}>Get Order detail</Button>
+                </div>
+              </Col>
+              <Col
+                className="footer-bottom__slot--2 default-offset"
+                colSize={{
+                  large: 7,
+                  medium: 8,
+                  small: 6,
+                }}
+              >
+                <LegalLinks links={legalLinks} />
+              </Col>
+              <Col
+                className="footer-bottom__slot--3 default-offset"
+                colSize={{
+                  large: 2,
+                  medium: 8,
+                  small: 6,
+                }}
+              >
+                <CountrySelector showInFooter />
+              </Col>
+            </Row>
+            <Row fullBleed>
+              <Col
+                colSize={{
+                  large: 12,
+                  medium: 8,
+                  small: 6,
+                }}
+              >
+                <BodyCopy className="reference-id" fontSize="fs32">
+                  {referenceID}
+                </BodyCopy>
+              </Col>
+            </Row>
           </Row>
         </div>
       </footer>
@@ -150,8 +159,14 @@ Footer.propTypes = {
   getUserInfoAction: PropTypes.func.isRequired,
   getOrderDetailAction: PropTypes.func.isRequired,
   openEmailSignUpModal: PropTypes.func,
-  openTrackOrder: PropTypes.func,
   isLoggedIn: PropTypes.bool,
+  linkConfig: PropTypes.shape({
+    'track-order': PropTypes.func,
+    favorites: PropTypes.func,
+    'log-out': PropTypes.func,
+    'my-account': PropTypes.func,
+  }).isRequired,
+  footerActionCreator: PropTypes.func.isRequired,
 };
 
 Footer.defaultProps = {
@@ -160,7 +175,6 @@ Footer.defaultProps = {
   navLinks: [],
   referenceID: '',
   openEmailSignUpModal: () => {},
-  openTrackOrder: () => null,
   isLoggedIn: false,
 };
 

@@ -17,8 +17,24 @@ const internalEndpoints = {
     link: '/account?id=profile&subSection=edit-personal-info',
     path: profilePath,
   },
+  editAboutYouInfoPage: {
+    link: '/account?id=profile&subSection=edit-aboutyou-info',
+    path: profilePath,
+  },
   profilePage: {
     link: '/account?id=profile',
+    path: profilePath,
+  },
+  paymentPage: {
+    link: '/account?id=payment',
+    path: '/account/payment',
+  },
+  mailingAddressPage: {
+    link: '/account?id=profile&subSection=edit-mailing-address',
+    path: profilePath,
+  },
+  birthdaySavingsPage: {
+    link: '/account?id=profile&subSection=birthday-savings',
     path: profilePath,
   },
 };

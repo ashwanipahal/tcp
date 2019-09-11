@@ -6,7 +6,7 @@ const styles = css`
   .rightAlignedContent {
     position: absolute;
     right: 0;
-    top: ${props => (props.tooltipContent ? '0' : '25px')};
+    top: ${props => (props.tooltipContent ? props.theme.spacing.ELEM_SPACING.XS : '25px')};
     width: 30px;
 
     a {
@@ -32,6 +32,9 @@ const styles = css`
       width: 10px;
       height: 10px;
     }
+  }
+  .show-hide-password {
+    background: ${props => props.theme.colorPalette.white};
   }
 `;
 
