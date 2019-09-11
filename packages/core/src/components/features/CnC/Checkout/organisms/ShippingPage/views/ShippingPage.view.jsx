@@ -11,6 +11,7 @@ export default class ShippingPage extends React.PureComponent {
   static propTypes = {
     addressLabels: PropTypes.shape({}).isRequired,
     isOrderUpdateChecked: PropTypes.bool,
+    isGiftServicesChecked: PropTypes.bool,
     smsSignUpLabels: PropTypes.shape({}).isRequired,
     address: PropTypes.shape({}),
     selectedShipmentId: PropTypes.string,
@@ -40,6 +41,7 @@ export default class ShippingPage extends React.PureComponent {
 
   static defaultProps = {
     isOrderUpdateChecked: false,
+    isGiftServicesChecked: false,
     addressPhoneNumber: null,
     address: null,
     selectedShipmentId: null,
@@ -223,6 +225,7 @@ export default class ShippingPage extends React.PureComponent {
     const {
       addressLabels,
       isOrderUpdateChecked,
+      isGiftServicesChecked,
       smsSignUpLabels,
       addressPhoneNumber,
       selectedShipmentId,
@@ -253,6 +256,7 @@ export default class ShippingPage extends React.PureComponent {
             routeToPickupPage={routeToPickupPage}
             addressLabels={addressLabels}
             isOrderUpdateChecked={isOrderUpdateChecked}
+            isGiftServicesChecked={isGiftServicesChecked}
             smsSignUpLabels={smsSignUpLabels}
             initialValues={{
               address: { country: getSiteId() && getSiteId().toUpperCase() },

@@ -81,6 +81,30 @@ const getNeedHelpContentId = state => {
   return content && content.contentId;
 };
 
+const getDetailsContentTcpId = state => {
+  const { referred = [] } = state.Labels.checkout.shipping;
+  const content = referred.find(label => label.name === 'GiftServicesDetailsTCPModal');
+  return content && content.contentId;
+};
+
+const getDetailsContentGymId = state => {
+  const { referred = [] } = state.Labels.checkout.shipping;
+  const content = referred.find(label => label.name === 'GiftServicesDetailsGYMModal');
+  return content && content.contentId;
+};
+
+const getGiftServicesContentTcpId = state => {
+  const { referred = [] } = state.Labels.checkout.shipping;
+  const contentTCP = referred.find(label => label.name === 'GiftServicesDetailsTCPModal');
+  return contentTCP && contentTCP.contentId;
+};
+
+const getGiftServicesContentGymId = state => {
+  const { referred = [] } = state.Labels.bag.addedToBag;
+  const contentGYM = referred.find(label => label.name === 'GiftServicesDetailsGYMModal');
+  return contentGYM && contentGYM.contentId;
+};
+
 const getFilteredItems = (state, filter) =>
   getOrderItems(state).filter(item => filter(item.getIn(['miscInfo', 'availability'])));
 
@@ -108,4 +132,8 @@ export default {
   getConfirmationModalFlag,
   getFilteredItems,
   getErrorMapping,
+  getDetailsContentGymId,
+  getDetailsContentTcpId,
+  getGiftServicesContentTcpId,
+  getGiftServicesContentGymId,
 };
