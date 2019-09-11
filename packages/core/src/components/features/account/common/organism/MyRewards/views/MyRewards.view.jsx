@@ -159,7 +159,7 @@ MyRewards.defaultProps = {
       lbl_common_tnc: '',
     },
   },
-  commonLabels: '',
+  commonLabels: {},
   className: '',
   coupons: [],
   onViewCouponDetails: () => {},
