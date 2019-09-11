@@ -120,6 +120,36 @@ export const bindAllClassMethodsToThis = (obj, namePrefix = '', isExclude = fals
   }
 };
 
+export const capitalize = string => {
+  return string.replace(/\b\w/g, l => l.toUpperCase());
+};
+
+/**
+ * @method getPromotionalMessage - this function checks whether the user is PLCC or not and
+ *         returns the message respectively
+ * @param isPlcc  boolean value for plcc user
+ * @param {handlers}  the messages containing both plcc user message and non-plcc user message
+ */
+export const getPromotionalMessage = (isPlcc, handlers) => {
+  if (!!handlers.promotionalPLCCMessage || !!handlers.promotionalMessage) {
+    return isPlcc ? handlers.promotionalPLCCMessage : handlers.promotionalMessage;
+  }
+  return null;
+};
+
+export const toTimeString = est => {
+  let hh = est.getHours();
+  let mm = est.getMinutes();
+  const ampm = hh >= 12 ? ' pm' : ' am';
+  hh %= 12;
+  hh = hh > 0 ? hh : 12;
+  mm = mm < 10 ? `0${mm}` : mm;
+  if (hh === 11 && mm === 59 && ampm === ' pm') {
+    return 'Midnight';
+  }
+  return `${hh}:${mm}${ampm}`;
+};
+
 export const isGymboree = () => {
   const { brandId } = getAPIConfig();
   return brandId === API_CONFIG.brandIds.gym;
@@ -332,6 +362,7 @@ export const generateUniqueKeyUsingLabel = label => {
 };
 
 export default {
+  getPromotionalMessage,
   getIconPath,
   getFlagIconPath,
   getLocator,

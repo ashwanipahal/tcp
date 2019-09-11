@@ -132,6 +132,12 @@ exports[`ProductsGridItem component should renders correctly 1`] = `
         fullWidth={true}
       />
     </div>
+    <div>
+      <Styled(FulfillmentSection)
+        onPickupOpenClick={[Function]}
+      />
+      <Connect(PickUpStoreModalView) />
+    </div>
   </div>
 </li>
 `;
