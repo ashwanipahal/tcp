@@ -1,9 +1,12 @@
 const ignorePsuedoCodeDir = [
   '/ProductListing/',
   '/FulfillmentSection/',
+  '/Recommendations/',
   '/PickupStoreModal/',
+  '/StoreSummaryComponents/',
   '/ProductDetail/',
   '/services/abstractors/productListing/',
+  '/services/abstractors/common/recommendations/',
   '/ProductListingPage/',
   '/AddressForm/',
   '/plpDeltaSync/',
