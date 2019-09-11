@@ -73,7 +73,12 @@ const getTextItems = (textItems, renderComponentInNewLine, useStyle) => {
         const updatedText =
           renderComponentInNewLine && index !== textItemsSize - 1 ? `${text}\n` : text;
         return (
-          <StyleBodyCopy text={index ? `${updatedText}` : updatedText} key={index.toString()} />
+          <StyleBodyCopy
+            accessibilityRole="text"
+            accessibilityLabel={updatedText}
+            text={index ? `${updatedText}` : updatedText}
+            key={index.toString()}
+          />
         );
       }
       return <StyledText key={index.toString()}>{index ? ` ${text}` : text}</StyledText>;
