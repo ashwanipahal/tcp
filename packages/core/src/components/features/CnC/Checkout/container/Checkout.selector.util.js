@@ -1,3 +1,5 @@
+import { getFormSyncErrors } from 'redux-form';
+
 const getPickUpContactFormLabels = state => {
   const {
     lbl_pickup_title: title,
@@ -58,4 +60,10 @@ const getPickUpContactFormLabels = state => {
   };
 };
 
-export default getPickUpContactFormLabels;
+const getSyncError = state => {
+  return {
+    syncError: getFormSyncErrors('checkoutShipping')(state),
+  };
+};
+
+export { getSyncError, getPickUpContactFormLabels };
