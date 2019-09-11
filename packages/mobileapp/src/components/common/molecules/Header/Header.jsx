@@ -165,7 +165,6 @@ class Header extends React.PureComponent<Props> {
             </Touchable>
           </CartContainer>
         </Container>
-        {this.renderPromo()}
       </SafeAreaViewStyle>
     );
   }
@@ -174,7 +173,6 @@ class Header extends React.PureComponent<Props> {
 const mapStateToProps = state => {
   return {
     labels: state.Labels.global && state.Labels.global.header,
-    headerPromo: state.Header && state.Header.promoTextBannerCarousel,
   };
 };
 
