@@ -24,6 +24,7 @@ export {
   redirectToPdp,
   getAsPathWithSlug,
   getMappedPageHref,
+  handleGenericKeyDown,
   configurePlpNavigationFromCMSUrl,
   isBopisProduct,
   isBossProduct,
@@ -48,6 +49,10 @@ export {
   formatAddress,
   calculateAge,
   getLabelValue,
+  capitalize,
+  toTimeString,
+  getPromotionalMessage,
   getBirthDateOptionMap,
   generateUniqueKeyUsingLabel,
+  getErrorSelector,
 } from './utils';

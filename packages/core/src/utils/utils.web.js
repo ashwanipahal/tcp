@@ -334,25 +334,19 @@ export const configurePlpNavigationFromCMSUrl = url => {
   return url;
 };
 
-export default {
-  importGraphQLClientDynamically,
-  importGraphQLQueriesDynamically,
-  isProduction,
-  isDevelopment,
-  getObjectValue,
-  createUrlSearchParams,
-  buildUrl,
-  getCreditCardExpirationOptionMap,
-  getSiteId,
-  routerPush,
-  bindAllClassMethodsToThis,
-  scrollPage,
-  getCountriesMap,
-  getCurrenciesMap,
-  getModifiedLanguageCode,
-  siteRedirect,
-  languageRedirect,
-  redirectToPdp,
+/*
+ *
+ * @param {object} event the HTML element's element
+ * @param {number} key key for which the event needs to be triggered
+ * @param {function} method method passed which is to be invoked.
+ * @description this method invokes the parameter method received when respective
+ * keybord key is triggered
+ */
+
+export const handleGenericKeyDown = (event, key, method) => {
+  if (event.keyCode === key) {
+    method();
+  }
 };
 
 const getAPIInfoFromEnv = (apiSiteInfo, processEnv, siteId) => {
@@ -477,4 +471,27 @@ export const sanitizeEntity = string => {
         .replace(/&lsquot;/gi, '"')
         .replace(/%20/gi, ' ')
     : string;
+}
+
+export default {
+  importGraphQLClientDynamically,
+  importGraphQLQueriesDynamically,
+  isProduction,
+  isDevelopment,
+  getObjectValue,
+  createUrlSearchParams,
+  buildUrl,
+  getCreditCardExpirationOptionMap,
+  getSiteId,
+  routerPush,
+  bindAllClassMethodsToThis,
+  scrollPage,
+  getCountriesMap,
+  getCurrenciesMap,
+  getModifiedLanguageCode,
+  siteRedirect,
+  languageRedirect,
+  redirectToPdp,
+  handleGenericKeyDown,
+  sanitizeEntity
 };

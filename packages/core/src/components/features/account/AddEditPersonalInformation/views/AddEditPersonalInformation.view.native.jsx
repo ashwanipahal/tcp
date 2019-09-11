@@ -1,4 +1,5 @@
 import React from 'react';
+import { View, ScrollView } from 'react-native';
 import PropTypes from 'prop-types';
 import AddEditPersonalInformationForm from '../molecules/AddEditPersonalInformationForm';
 
@@ -15,18 +16,22 @@ export const AddEditPersonalInformation = ({
   formErrorMessage,
 }) => {
   return (
-    <AddEditPersonalInformationForm
-      labels={labels}
-      successMessage={successMessage}
-      errorMessage={errorMessage}
-      onSubmit={onSubmit}
-      onCancel={onCancel}
-      birthMonthOptionsMap={birthMonthOptionsMap}
-      birthYearOptionsMap={birthYearOptionsMap}
-      initialValues={initialValues}
-      isEmployee={isEmployee}
-      formErrorMessage={formErrorMessage}
-    />
+    <View>
+      <ScrollView showsVerticalScrollIndicator={false} keyboardShouldPersistTaps="handled">
+        <AddEditPersonalInformationForm
+          labels={labels}
+          successMessage={successMessage}
+          errorMessage={errorMessage}
+          onSubmit={onSubmit}
+          onCancel={onCancel}
+          birthMonthOptionsMap={birthMonthOptionsMap}
+          birthYearOptionsMap={birthYearOptionsMap}
+          initialValues={initialValues}
+          isEmployee={isEmployee}
+          formErrorMessage={formErrorMessage}
+        />
+      </ScrollView>
+    </View>
   );
 };
 

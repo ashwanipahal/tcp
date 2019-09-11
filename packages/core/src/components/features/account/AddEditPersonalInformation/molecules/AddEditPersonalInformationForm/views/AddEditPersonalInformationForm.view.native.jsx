@@ -81,9 +81,7 @@ export class AddEditPersonalInformationForm extends PureComponent {
             label={getLabelValue(labels, 'lbl_profile_personal_info_firstName')}
             name="firstName"
             id="firstName"
-            type="text"
             component={TextBox}
-            maxLength={50}
             dataLocator="editPersonalInfo-firstname"
           />
         </FieldTopMarginWrapper>
@@ -92,9 +90,7 @@ export class AddEditPersonalInformationForm extends PureComponent {
           label={getLabelValue(labels, 'lbl_profile_personal_info_lastName')}
           name="lastName"
           id="lastName"
-          type="text"
           component={TextBox}
-          maxLength={50}
           dataLocator="editPersonalInfo-lastname"
         />
         <Field
@@ -284,5 +280,7 @@ const validateMethod = createValidateMethod(
 export default reduxForm({
   form: AddEditPersonalInfoConstants.ADD_PROFILE_INFORMATION_FORM, // a unique identifier for this form
   enableReinitialize: true,
+  destroyOnUnmount: false,
+  keepDirtyOnReinitialize: true,
   ...validateMethod,
 })(AddEditPersonalInformationForm);
