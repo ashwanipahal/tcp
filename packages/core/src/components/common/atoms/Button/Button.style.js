@@ -188,12 +188,13 @@ const ButtonStyles = css`
         }
 
         @media ${props.theme.mediaQuery.large} {
-          font-size: ${props.theme.typography.fontSizes.fs20};
+          font-size: ${props.theme.typography.fontSizes.fs18};
           font-weight: ${
             props.active
               ? props.theme.typography.fontWeights.extrabold
               : props.theme.typography.fontWeights.semibold
           };
+          letter-spacing: 0px;
         }
       `
       : ''}

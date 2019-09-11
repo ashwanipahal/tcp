@@ -326,4 +326,30 @@ export default css`
       font-size: ${props => props.theme.typography.fontSizes.fs28};
     }
   }
+
+  /*
+  * Module J Promo Banner styles
+  *********************************/
+
+  .moduleJ_text_semibold {
+    display: block;
+    font-family: ${props => props.theme.typography.fonts.primary};
+    font-size: ${props => props.theme.typography.fontSizes.fs20};
+    font-weight: ${props => props.theme.typography.fontWeights.semibold};
+    letter-spacing: ${props => props.theme.typography.letterSpacings.ls222};
+
+    @media ${props => props.theme.mediaQuery.large} {
+      font-size: ${props => props.theme.typography.fontSizes.fs32};
+    }
+  }
+  .moduleJ_text_black {
+    display: block;
+    font-family: ${props => props.theme.typography.fonts.primary};
+    font-size: ${props => props.theme.typography.fontSizes.fs48};
+    font-weight: ${props => props.theme.typography.fontWeights.black};
+
+    @media ${props => props.theme.mediaQuery.large} {
+      font-size: ${props => props.theme.typography.fontSizes.fs64};
+    }
+  }
 `;

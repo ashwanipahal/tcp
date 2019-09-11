@@ -4,7 +4,7 @@ const { breakpoints } = theme;
 
 export default {
   CAROUSEL_OPTIONS: {
-    autoplay: true,
+    autoplay: false,
     arrows: true,
     autoplaySpeed: 2000,
     centerMode: false,
@@ -19,6 +19,7 @@ export default {
         settings: {
           slidesToShow: 4,
           arrows: false,
+          swipeToSlide: true,
         },
       },
       {
@@ -26,6 +27,7 @@ export default {
         settings: {
           slidesToShow: 5,
           arrows: false,
+          swipeToSlide: true,
         },
       },
     ],
@@ -35,6 +37,13 @@ export default {
       'c_fill,g_face,q_80,h_110,w_89',
       'c_fill,g_face,q_80,h_180,w_146',
       'c_fill,g_face,q_80,h_217,w_175',
+    ],
+  },
+  PROMO_IMG_DATA: {
+    imgConfig: [
+      'c_fill,g_face:center,h_158,w_177',
+      'c_fill,g_face:center,h_158,w_177',
+      'c_fill,g_face:center,h_216,w_450',
     ],
   },
 };
