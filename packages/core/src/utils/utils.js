@@ -357,6 +357,21 @@ export const getLabelValue = (labelState, labelKey, subCategory, category) => {
   return typeof labelValue === 'string' ? labelValue : labelKey;
 };
 
+export const getErrorSelector = (state, labels, errorKey) => {
+  const errorParameters = state && state.getIn(['errorParameters', '0']);
+  const errorCode = state && state.get('errorCode');
+  if (
+    (errorParameters && getLabelValue(labels, `${errorKey}_${errorParameters}`)) ||
+    (errorCode && getLabelValue(labels, `${errorKey}_${errorCode}`))
+  ) {
+    if (errorParameters) {
+      return getLabelValue(labels, `${errorKey}_${errorParameters}`);
+    }
+    return getLabelValue(labels, `${errorKey}_${errorCode}`);
+  }
+  return (state && state.getIn(['errorMessage', '_error'])) || getLabelValue(labels, `${errorKey}`);
+};
+
 export const generateUniqueKeyUsingLabel = label => {
   return label.replace(/\s/g, '_');
 };
@@ -381,4 +396,5 @@ export default {
   getCacheKeyForRedis,
   calculateAge,
   generateUniqueKeyUsingLabel,
+  getErrorSelector,
 };
