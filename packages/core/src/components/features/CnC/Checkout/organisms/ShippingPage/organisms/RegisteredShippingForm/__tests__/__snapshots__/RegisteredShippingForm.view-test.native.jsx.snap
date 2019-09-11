@@ -7,6 +7,7 @@ exports[`RegisteredShippingForm should call getBtnDisabledState 1`] = `
   >
     <Styled(View)>
       <AddressFields
+        addressPhoneNo={null}
         disableCountry={true}
         formName="checkoutShipping"
         formSection="address"
@@ -38,6 +39,7 @@ exports[`RegisteredShippingForm should call renderActionBtns 1`] = `
   >
     <Styled(View)>
       <AddressFields
+        addressPhoneNo={null}
         disableCountry={true}
         formName="checkoutShipping"
         formSection="address"
@@ -274,6 +276,7 @@ exports[`RegisteredShippingForm should call save to account change with user Add
   >
     <Styled(View)>
       <AddressFields
+        addressPhoneNo={null}
         disableCountry={true}
         dispatch={
           [MockFunction] {
@@ -282,7 +285,7 @@ exports[`RegisteredShippingForm should call save to account change with user Add
                 Object {
                   "meta": Object {
                     "field": "saveToAddressBook",
-                    "form": undefined,
+                    "form": "checkoutShipping",
                     "persistentSubmitErrors": undefined,
                     "touch": undefined,
                   },
@@ -294,7 +297,7 @@ exports[`RegisteredShippingForm should call save to account change with user Add
                 Object {
                   "meta": Object {
                     "field": "defaultShipping",
-                    "form": undefined,
+                    "form": "checkoutShipping",
                     "persistentSubmitErrors": undefined,
                     "touch": undefined,
                   },
@@ -345,6 +348,7 @@ exports[`RegisteredShippingForm should call shoe default options 1`] = `
   >
     <Styled(View)>
       <AddressFields
+        addressPhoneNo={null}
         disableCountry={true}
         dispatch={[MockFunction]}
         formName="checkoutShipping"
@@ -377,6 +381,7 @@ exports[`RegisteredShippingForm should call shoe default options with modal type
   >
     <Styled(View)>
       <AddressFields
+        addressPhoneNo={null}
         disableCountry={true}
         dispatch={[MockFunction]}
         formName="checkoutShipping"
@@ -850,6 +855,7 @@ exports[`RegisteredShippingForm should render correctly with no addresses and ca
   >
     <Styled(View)>
       <AddressFields
+        addressPhoneNo={null}
         disableCountry={true}
         dispatch={
           [MockFunction] {
@@ -857,7 +863,19 @@ exports[`RegisteredShippingForm should render correctly with no addresses and ca
               Array [
                 Object {
                   "meta": Object {
-                    "form": undefined,
+                    "field": "address.phoneNumber",
+                    "form": "checkoutShipping",
+                    "persistentSubmitErrors": undefined,
+                    "touch": undefined,
+                  },
+                  "payload": "",
+                  "type": "@@redux-form/CHANGE",
+                },
+              ],
+              Array [
+                Object {
+                  "meta": Object {
+                    "form": "checkoutShipping",
                     "sections": Array [
                       "address",
                     ],
@@ -867,6 +885,10 @@ exports[`RegisteredShippingForm should render correctly with no addresses and ca
               ],
             ],
             "results": Array [
+              Object {
+                "type": "return",
+                "value": undefined,
+              },
               Object {
                 "type": "return",
                 "value": undefined,

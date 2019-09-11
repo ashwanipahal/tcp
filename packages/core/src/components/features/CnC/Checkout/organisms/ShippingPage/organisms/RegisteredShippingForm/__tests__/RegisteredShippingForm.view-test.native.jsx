@@ -211,6 +211,7 @@ describe('RegisteredShippingForm', () => {
   it('should call renderActionBtns', () => {
     const props = {
       labels: {},
+      syncErrorsObject: { syncError: {} },
     };
     const tree = shallow(<RegisteredShippingForm {...props} />);
     tree.setState({ modalState: true, modalType: 'add' });
