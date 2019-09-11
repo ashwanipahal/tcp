@@ -140,6 +140,9 @@ export const PICKUP_MODAL_REDUCER_KEY = 'PickupModal';
 export const PICKUP_MODAL_REDUCER_PATTERN = '@@PickupModal-';
 
 export const ADDRESS_VERIFICATION_REDUCER_KEY = 'addressVerification';
+// Gift Services Reducer
+export const GIFT_SERVICES_REDUCER_KEY = 'GiftServices';
+export const GIFT_SERVICES_ACTION_PATTERN = '@@GiftServices-';
 
 export const REDUCER_ACTION_MAPPING = {
   [APPLY_PLCC_REDUCER_KEY]: APPLY_PLCC_ACTION_PATTERN,
