@@ -1,9 +1,13 @@
 import React from 'react';
-import { ScrollView } from 'react-native';
+import { LazyloadScrollView } from 'react-native-lazyload-deux';
 import { Button } from '@tcp/core/src/components/common/atoms';
 import GetCandid from '@tcp/core/src/components/common/molecules/GetCandid/index.native';
+import { LAZYLOAD_HOST_NAME } from '@tcp/core/src/utils';
+
 import PropTypes from 'prop-types';
 import HomePageSlots from '@tcp/core/src/components/common/molecules/HomePageSlots';
+import moduleJMock from '@tcp/core/src/components/common/molecules/ModuleJ/mock';
+
 import {
   ModuleD,
   ModuleH,
@@ -11,6 +15,8 @@ import {
   ModuleL,
   ModuleN,
   ModuleA,
+  ModuleB,
+  ModuleJ,
 } from '@tcp/core/src/components/common/molecules';
 import InitialPropsHOC from '../../../../common/hoc/InitialPropsHOC/InitialPropsHOC';
 
@@ -21,10 +27,11 @@ const modulesMap = {
   moduleL: ModuleL,
   moduleN: ModuleN,
   moduleA: ModuleA,
+  moduleB: ModuleB,
+  moduelJ: ModuleJ,
 };
 
 const buttonMargin = { margin: 30 };
-
 class HomePageView extends React.PureComponent<Props> {
   componentDidMount() {
     this.loadData();
@@ -56,11 +63,12 @@ class HomePageView extends React.PureComponent<Props> {
       navigation,
       screenProps: { apiConfig },
     } = this.props;
-
     return (
-      <ScrollView>
+      <LazyloadScrollView name={LAZYLOAD_HOST_NAME.HOME}>
+        <ModuleJ navigation={navigation} {...moduleJMock.moduleJ.composites} />
         <HomePageSlots slots={slots} modules={modulesMap} navigation={navigation} />
-        <GetCandid apiConfig={apiConfig} />
+        <ModuleB navigation={navigation} />
+        <GetCandid apiConfig={apiConfig} navigation={navigation} />
         <Button
           fullWidth
           buttonVariation="variable-width"
@@ -68,7 +76,7 @@ class HomePageView extends React.PureComponent<Props> {
           onPress={() => navigation.navigate('ProductListingPageContainer')}
           style={buttonMargin}
         />
-      </ScrollView>
+      </LazyloadScrollView>
     );
   }
 }

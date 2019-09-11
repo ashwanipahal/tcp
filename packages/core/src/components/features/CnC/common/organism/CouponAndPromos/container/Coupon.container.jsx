@@ -24,12 +24,13 @@ export class CouponContainer extends React.PureComponent<Props> {
       availableCouponList,
       needHelpRichText,
       handleErrorCoupon,
+      isCheckout,
     } = this.props;
     const updateLabels = { ...labels, NEED_HELP_RICH_TEXT: needHelpRichText };
-
     return (
       <Coupon
         labels={updateLabels}
+        isCheckout={isCheckout}
         isFetching={isFetching}
         handleApplyCoupon={handleApplyCoupon}
         handleApplyCouponFromList={handleApplyCouponFromList}
@@ -44,6 +45,7 @@ export class CouponContainer extends React.PureComponent<Props> {
 
 CouponContainer.propTypes = {
   isFetching: PropTypes.bool.isRequired,
+  isCheckout: PropTypes.bool.isRequired,
   labels: PropTypes.shape.isRequired,
   handleApplyCoupon: PropTypes.func.isRequired,
   handleApplyCouponFromList: PropTypes.func.isRequired,

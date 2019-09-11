@@ -55,11 +55,16 @@ const ModalNative = ({ isOpen, children, ...otherProps }: Props) => {
   } = otherProps;
   return (
     <SafeAreaView>
-      <Modal transparent={false} visible={isOpen} animationType={animationType}>
+      <Modal
+        transparent={false}
+        visible={isOpen}
+        animationType={animationType}
+        onRequestClose={onRequestClose}
+      >
         <ToastContainer />
         <StatusBar hidden />
-        {heading && (
-          <RowWrapper>
+        <RowWrapper>
+          {heading && (
             <ModalHeading>
               <BodyCopy
                 mobileFontFamily={headingFontFamily || 'primary'}
@@ -69,9 +74,9 @@ const ModalNative = ({ isOpen, children, ...otherProps }: Props) => {
                 text={heading}
               />
             </ModalHeading>
-            {getCloseIcon({ onRequestClose, headerStyle })}
-          </RowWrapper>
-        )}
+          )}
+          {getCloseIcon({ onRequestClose, headerStyle })}
+        </RowWrapper>
         {horizontalBar ? (
           <LineWrapper>
             <LineComp marginTop={5} borderWidth={2} borderColor={borderColor} />

@@ -94,7 +94,7 @@ export class Account extends React.PureComponent<Props, State> {
     const { labels, isUserLoggedIn, navigation } = this.props;
     return (
       <StyledKeyboardAvoidingView behavior="padding" enabled keyboardVerticalOffset={82}>
-        <StyledScrollView>
+        <StyledScrollView keyboardShouldPersistTaps="handled">
           <MyAccountLayout
             navData={navDataMobile}
             mainContent={AccountComponentNativeMapping[component]}

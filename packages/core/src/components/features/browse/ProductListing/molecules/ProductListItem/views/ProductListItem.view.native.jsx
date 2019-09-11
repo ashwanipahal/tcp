@@ -1,5 +1,4 @@
 import React, { useState } from 'react';
-import { View } from 'react-native';
 import get from 'lodash/get';
 import PropTypes from 'prop-types';
 import { withTheme } from 'styled-components/native';
@@ -23,7 +22,9 @@ import {
   PromotionalMessage,
   AddToBagContainer,
   PromotionalMessagePostfix,
+  OfferPriceAndFavoriteIconContainer,
 } from '../styles/ProductListItem.style.native';
+import { getFormattedLoyaltyText } from '../../ProductList/utils/productsCommonUtils';
 import CustomButton from '../../../../../../common/atoms/Button';
 import ColorSwitch from '../../ColorSwitch';
 import CustomIcon from '../../../../../../common/atoms/Icon';
@@ -38,15 +39,6 @@ const onAddToBagHandler = (onAddToBag, data) => {
   if (onAddToBag) {
     onAddToBag(data);
   }
-};
-
-// to get loyalty text in desired format
-const getFormatedText = text => {
-  return text
-    .replace(/<[^>]*>/g, '')
-    .replace(/\s+/g, ' ')
-    .trim()
-    .split('on');
 };
 
 const ListItem = props => {
@@ -69,17 +61,14 @@ const ListItem = props => {
   const favoriteIconColor = get(theme, 'colorPalette.gray[600]', '#9b9b9b');
   const favoriteIconSize = get(theme, 'typography.fontSizes.fs21', 21);
   return (
-    <ListContainer>
+    <ListContainer accessible>
       <RenderTopBadge1 text={badge1} />
-      <ImageSection
-        onFavorite={onFavorite}
-        item={item}
-        selectedColorIndex={selectedColorIndex}
-        favoriteIconColor={favoriteIconColor}
-        favoriteIconSize={favoriteIconSize}
-      />
+      <ImageSection item={item} selectedColorIndex={selectedColorIndex} />
       <RenderBadge2 text={badge2} />
       <RenderPricesSection
+        onFavorite={onFavorite}
+        favoriteIconColor={favoriteIconColor}
+        favoriteIconSize={favoriteIconSize}
         miscInfo={miscInfo}
         currencyExchange={currencyExchange}
         currencySymbol={currencySymbol}
@@ -90,14 +79,14 @@ const ListItem = props => {
       <AddToBagContainer>
         <CustomButton
           fill="BLUE"
-          type="submit"
+          type="button"
           buttonVariation="variable-width"
           data-locator=""
           text="ADD TO BAG"
           onPress={() => {
             onAddToBagHandler(onAddToBag, item);
           }}
-          accessibilityLabel="ADD TO BAG"
+          accessibilityLabel="add to bag"
         />
       </AddToBagContainer>
     </ListContainer>
@@ -107,7 +96,7 @@ const ListItem = props => {
 const RenderTopBadge1 = ({ text }) => {
   return (
     <Badge1Container>
-      <Badge1Text accessibilityRole="text" accessibilityLabel={text}>
+      <Badge1Text accessible={text !== ''} accessibilityRole="text" accessibilityLabel={text}>
         {text}
       </Badge1Text>
     </Badge1Container>
@@ -116,40 +105,19 @@ const RenderTopBadge1 = ({ text }) => {
 
 RenderTopBadge1.propTypes = TextProps;
 
-const ImageSection = ({
-  item,
-  onFavorite,
-  selectedColorIndex,
-  favoriteIconColor,
-  favoriteIconSize,
-}) => {
-  return (
-    <View>
-      <ImageCarousel item={item} selectedColorIndex={selectedColorIndex} />
-      <FavoriteIconContainer>
-        <CustomIcon
-          name={ICON_NAME.favorite}
-          size={favoriteIconSize}
-          color={favoriteIconColor}
-          onPress={onFavorite}
-        />
-      </FavoriteIconContainer>
-    </View>
-  );
+const ImageSection = ({ item, selectedColorIndex }) => {
+  return <ImageCarousel item={item} selectedColorIndex={selectedColorIndex} />;
 };
 
 ImageSection.propTypes = {
   item: PropTypes.shape({}).isRequired,
-  onFavorite: PropTypes.func.isRequired,
   selectedColorIndex: PropTypes.number.isRequired,
-  favoriteIconColor: PropTypes.string.isRequired,
-  favoriteIconSize: PropTypes.string.isRequired,
 };
 
 const RenderBadge2 = ({ text }) => {
   return (
     <Badge2Container>
-      <Badge2Text accessibilityRole="text" accessibilityLabel={text}>
+      <Badge2Text accessible={text !== ''} accessibilityRole="text" accessibilityLabel={text}>
         {text}
       </Badge2Text>
     </Badge2Container>
@@ -159,7 +127,14 @@ const RenderBadge2 = ({ text }) => {
 RenderBadge2.propTypes = TextProps;
 
 const RenderPricesSection = values => {
-  const { miscInfo, currencyExchange, currencySymbol } = values;
+  const {
+    miscInfo,
+    currencyExchange,
+    currencySymbol,
+    onFavorite,
+    favoriteIconColor,
+    favoriteIconSize,
+  } = values;
   const { badge3, listPrice, offerPrice } = miscInfo;
   // calculate default list price
   const listPriceForColor = `${currencySymbol}${listPrice * currencyExchange[0].exchangevalue}`;
@@ -167,14 +142,27 @@ const RenderPricesSection = values => {
   const offerPriceForColor = `${currencySymbol}${offerPrice * currencyExchange[0].exchangevalue}`;
   return (
     <PricesSection>
-      <ListPrice accessibilityRole="text" accessibilityLabel={listPriceForColor}>
-        {listPriceForColor}
-      </ListPrice>
+      <OfferPriceAndFavoriteIconContainer>
+        <ListPrice accessibilityRole="text" accessibilityLabel={`list price ${listPriceForColor}`}>
+          {listPriceForColor}
+        </ListPrice>
+        <FavoriteIconContainer accessibilityRole="imagebutton" accessibilityLabel="favorite icon">
+          <CustomIcon
+            name={ICON_NAME.favorite}
+            size={favoriteIconSize}
+            color={favoriteIconColor}
+            onPress={onFavorite}
+          />
+        </FavoriteIconContainer>
+      </OfferPriceAndFavoriteIconContainer>
       <OfferPriceAndBadge3Container>
-        <ListOfferPrice accessibilityRole="text" accessibilityLabel={offerPriceForColor}>
+        <ListOfferPrice
+          accessibilityRole="text"
+          accessibilityLabel={`offer price ${offerPriceForColor}`}
+        >
           {offerPriceForColor}
         </ListOfferPrice>
-        <Badge3Text accessibilityRole="text" accessibilityLabel={badge3}>
+        <Badge3Text accessible={badge3 !== ''} accessibilityRole="text" accessibilityLabel={badge3}>
           {badge3}
         </Badge3Text>
       </OfferPriceAndBadge3Container>
@@ -197,15 +185,12 @@ RenderTitle.propTypes = TextProps;
 const RenderPromotionalMessage = ({ text, isPlcc }) => {
   return (
     <PromotionalMessageContainer>
-      <PromotionalMessage
-        isPlcc={isPlcc}
-        accessibilityRole="text"
-        accessibilityLabel={text}
-        numberOfLines={2}
-      >
-        {text && getFormatedText(text)[0]}
+      <PromotionalMessage isPlcc={isPlcc} accessibilityRole="text" numberOfLines={2}>
+        {text && getFormattedLoyaltyText(text)[0]}
         {text && (
-          <PromotionalMessagePostfix>{` on${getFormatedText(text)[1]}`}</PromotionalMessagePostfix>
+          <PromotionalMessagePostfix>
+            {` on${getFormattedLoyaltyText(text)[1]}`}
+          </PromotionalMessagePostfix>
         )}
       </PromotionalMessage>
     </PromotionalMessageContainer>

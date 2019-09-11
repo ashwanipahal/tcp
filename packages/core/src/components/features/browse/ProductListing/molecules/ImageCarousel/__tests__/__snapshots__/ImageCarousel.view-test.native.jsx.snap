@@ -1,73 +1,34 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
 exports[`ProductAltImages component should renders ListItem correctly 1`] = `
-<StyledNativeComponent
-  forwardedComponent={
+<FlatList
+  data={
+    Array [
+      undefined,
+    ]
+  }
+  disableVirtualization={false}
+  horizontal={true}
+  initialNumToRender={1}
+  initialScrollIndex={0}
+  keyExtractor={[Function]}
+  listKey={[Function]}
+  maxToRenderPerBatch={10}
+  numColumns={1}
+  onEndReachedThreshold={2}
+  onViewableItemsChanged={[Function]}
+  pagingEnabled={true}
+  refreshing={false}
+  removeClippedSubviews={false}
+  renderItem={[Function]}
+  scrollEventThrottle={50}
+  showsHorizontalScrollIndicator={false}
+  updateCellsBatchingPeriod={50}
+  viewabilityConfig={
     Object {
-      "$$typeof": Symbol(react.forward_ref),
-      "_foldedDefaultProps": Object {
-        "item": Object {},
-        "selectedColorIndex": 0,
-      },
-      "attrs": Array [],
-      "displayName": "Styled(ImageCarousel)",
-      "inlineStyle": InlineStyle {
-        "rules": Array [
-          "
-    ",
-          ";
-  ",
-        ],
-      },
-      "render": [Function],
-      "styledComponentId": "StyledNativeComponent",
-      "target": [Function],
-      "withComponent": [Function],
+      "itemVisiblePercentThreshold": 50,
     }
   }
-  forwardedRef={null}
-  imageIndex={0}
-  item={
-    Object {
-      "colorsMap": Array [
-        Object {
-          "color": Object {
-            "imagePath": "/wcsstore/GlobalSAS/images/tcp/products/swatches/3000785_10.jpg",
-            "name": "WHITE",
-          },
-          "colorProductId": "3000785_10",
-          "imageName": "3000785_10",
-          "miscInfo": Object {
-            "badge1": Object {},
-            "badge2": "Extended Sizes",
-            "badge3": "50% OFF",
-            "hasOnModelAltImages": false,
-            "isBopisEligible": true,
-            "isBossEligible": true,
-            "isClearance": "",
-            "keepAlive": false,
-            "listPrice": 16.95,
-            "offerPrice": 8.48,
-            "videoUrl": "",
-          },
-        },
-      ],
-      "imagesByColor": Object {
-        "WHITE": Object {
-          "basicImageUrl": "/wcsstore/GlobalSAS/images/tcp/products/500/3000785_10.jpg",
-          "extraImages": Array [
-            Object {
-              "iconSizeImageUrl": "/wcsstore/GlobalSAS/images/tcp/products/125/3000785_10.jpg",
-              "isOnModalImage": false,
-            },
-          ],
-        },
-      },
-      "productInfo": Object {
-        "name": "tcp",
-      },
-    }
-  }
-  selectedColorIndex={0}
+  windowSize={21}
 />
 `;

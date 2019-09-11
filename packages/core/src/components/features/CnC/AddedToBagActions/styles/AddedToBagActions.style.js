@@ -2,7 +2,7 @@ import { css } from 'styled-components';
 
 const CtaStyle = css`
   display: block;
-  margin: 10px 0;
+  margin-bottom: ${props => props.theme.spacing.ELEM_SPACING.MED};
   .check-out-container {
     margin-top: 10px;
     display: flex;
@@ -16,6 +16,7 @@ const CtaStyle = css`
     background-color: ${props => props.theme.colors.PRIMARY.DARK};
     height: 48px;
   }
+
   .checkout-button {
     padding-top: 10px;
   }

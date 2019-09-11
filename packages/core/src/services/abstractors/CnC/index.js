@@ -17,4 +17,8 @@ export {
   briteVerifyStatusExtraction,
   setShippingMethodAndAddressId,
   addPickupPerson,
+  addPaymentToOrder,
+  updatePaymentOnOrder,
+  addGiftCardPaymentToOrder,
+  removeGiftCard,
 } from './Checkout';

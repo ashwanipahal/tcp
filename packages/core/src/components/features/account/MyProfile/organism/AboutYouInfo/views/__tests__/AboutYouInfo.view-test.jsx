@@ -1,6 +1,6 @@
 import React from 'react';
 import { shallow } from 'enzyme';
-import AboutYouInfo from '../AboutYouInfo.view';
+import { AboutYouInfo } from '../AboutYouInfo.view';
 
 describe('AboutYouInfo', () => {
   it('should render correctly', () => {

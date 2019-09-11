@@ -59,7 +59,7 @@ class FooterTopCandidateA extends React.PureComponent {
     } = this.props;
 
     return (
-      <Grid className="footer_top_candidate_a">
+      <Grid className="footer_top_candidate_a content-wrapper">
         <Row>
           {/* ------------ Email Sign Up starts here ----------------- */}
           <Col
@@ -96,11 +96,12 @@ class FooterTopCandidateA extends React.PureComponent {
               fieldName={emailSignupFieldName}
             />
 
-            {/* TODO: Zeplin has ["fs9","fs9", "fs13"], which is not in guidline using following for now  */}
-            <BodyCopy fontFamily="secondary" textAlign="center" fontSize={['fs10', 'fs10', 'fs12']}>
+            <BodyCopy fontFamily="secondary" textAlign="center" fontSize={['fs9', 'fs9', 'fs12']}>
               <RichText richTextHtml={emailSignupLabels.termsTextLabel} />
             </BodyCopy>
-            <div className="divider hide-in-medium-up" />
+            <div>
+              <div className="divider hide-in-medium-up" />
+            </div>
           </Col>
 
           {/* ---------- Email Signup ends here ---------- */}
@@ -143,8 +144,7 @@ class FooterTopCandidateA extends React.PureComponent {
               }}
             />
 
-            {/* TODO: Zeplin has ["fs9","fs9", "fs13"], which is not in guidline using following for now  */}
-            <BodyCopy fontFamily="secondary" textAlign="center" fontSize={['fs10', 'fs10', 'fs12']}>
+            <BodyCopy fontFamily="secondary" textAlign="center" fontSize={['fs9', 'fs9', 'fs12']}>
               <RichText richTextHtml={smsSignupLabels.termsTextLabel} />
             </BodyCopy>
           </Col>
@@ -169,7 +169,7 @@ class FooterTopCandidateA extends React.PureComponent {
                 <Col
                   className="col-md-half-width"
                   colSize={{
-                    large: 7,
+                    large: 6,
                     medium: 4,
                     small: 7,
                   }}
@@ -188,7 +188,7 @@ class FooterTopCandidateA extends React.PureComponent {
                 </Col>
                 <Col
                   colSize={{
-                    large: 5,
+                    large: 6,
                     medium: 4,
                     small: 6,
                   }}
@@ -244,7 +244,6 @@ class FooterTopCandidateA extends React.PureComponent {
             <SocialMediaLinks {...socialMediaLinks} className="social-media-links" />
           </Col>
         </Row>
-        <div className="divider hide-in-medium-down" />
       </Grid>
     );
   }

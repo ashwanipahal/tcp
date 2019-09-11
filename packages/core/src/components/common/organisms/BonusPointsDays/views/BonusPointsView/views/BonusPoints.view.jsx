@@ -1,5 +1,6 @@
 import React from 'react';
 import PropTypes from 'prop-types';
+import { getLabelValue } from '@tcp/core/src/utils/utils';
 import BonusPointsSection from '../../../organism/BonusPointsSection';
 import BonusPointsReadSection from '../../../organism/BonusPointsReadSection';
 import Modal from '../../../../../molecules/Modal';
@@ -16,20 +17,18 @@ class BonusPointsView extends React.Component {
     className: PropTypes.string,
     view: PropTypes.string,
     isPlcc: PropTypes.bool,
-    enableApplyCta: PropTypes.bool,
     getBonusDaysData: PropTypes.func,
     orderDetails: PropTypes.shape({}),
     showAccordian: PropTypes.bool.isRequired,
   };
 
   static defaultProps = {
-    labels: { myPlaceRewards: { lbl_place_rewards_bonus: '', lbl_place_rewards_points: '' } },
+    labels: {},
     bonusData: {},
     bonusDetailsData: '',
     className: '',
     view: constants.VIEWS.EDIT,
     isPlcc: false,
-    enableApplyCta: false,
     getBonusDaysData: () => {},
     orderDetails: {},
   };
@@ -55,7 +54,6 @@ class BonusPointsView extends React.Component {
       className,
       view,
       isPlcc,
-      enableApplyCta,
       getBonusDaysData,
       orderDetails,
       showAccordian,
@@ -65,7 +63,7 @@ class BonusPointsView extends React.Component {
       <>
         {view === constants.VIEWS.READ && (
           <BonusPointsReadSection
-            labels={labels.myPlaceRewards}
+            labels={labels.account.myPlaceRewards}
             toggleBonusPointsModal={this.toggleBonusPointsModal}
             availableBonusPointDays={bonusData && bonusData.availableBonusPointDays}
             usedBonusPointDays={bonusData && bonusData.usedBonusPointDays}
@@ -75,10 +73,9 @@ class BonusPointsView extends React.Component {
         {view === constants.VIEWS.EDIT && (
           <div className={className}>
             <BonusPointsSection
-              labels={labels}
+              labels={labels && labels.global && labels.global.bonusPoints}
               bonusData={bonusData}
               toggleBonusPointsModal={this.toggleBonusPointsModal}
-              enableApplyCta={enableApplyCta}
               getBonusDaysData={getBonusDaysData}
               orderDetails={orderDetails}
               showAccordian={showAccordian}
@@ -90,9 +87,17 @@ class BonusPointsView extends React.Component {
           onRequestClose={this.toggleBonusPointsModal}
           overlayClassName="TCPModal__Overlay"
           className="TCPModal__Content bonus-details-modal"
-          heading={`${labels.myPlaceRewards.lbl_place_rewards_bonus} ${
-            labels.myPlaceRewards.lbl_place_rewards_points
-          } DETAILS`}
+          heading={`${getLabelValue(
+            labels,
+            'lbl_bonusPoints_placeRewardsBonus',
+            'bonusPoints',
+            'global'
+          )} ${getLabelValue(
+            labels,
+            'lbl_bonusPoints_placeRewardsPoints',
+            'bonusPoints',
+            'global'
+          )} DETAILS`}
           fixedWidth
           maxWidth="704px"
           minHeight="550px"

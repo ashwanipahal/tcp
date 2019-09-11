@@ -4,13 +4,14 @@ import { BonusPointsSectionVanilla } from '../views/BonusPoints.section';
 
 describe('BonusPointsAvailabilityVanilla', () => {
   const labels = {
-    common: { lbl_common_details: '' },
-    myPlaceRewards: {
+    placeRewards: {
       lbl_bonus_points_msg: '',
       lbl_bonus_points_apply_any_day: '',
       lbl_place_rewards_bonus: '',
       lbl_place_rewards_points: '',
       lbl_place_rewards_day: '',
+      lbl_common_details: '',
+      lbl_common_applied_to_order: '',
     },
   };
   const mockedToggleBonusPointsModal = jest.fn();

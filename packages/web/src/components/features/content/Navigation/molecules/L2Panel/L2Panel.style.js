@@ -18,8 +18,8 @@ export default css`
   .shop-by-size-links li {
     cursor: pointer;
     border: 1px solid ${props => props.theme.colorPalette.gray[800]};
-    width: 40px;
-    height: 40px;
+    width: 38px;
+    height: 38px;
     border-radius: 20px 20px;
     align-items: center;
     justify-content: center;
@@ -87,15 +87,24 @@ export default css`
     .l2-nav-category {
       margin: 0;
     }
+    .content-wrapper {
+      margin: 0;
+      width: 100%;
+    }
   }
   @media ${props => props.theme.mediaQuery.mediumOnly} {
     .l2-nav-category {
       margin: 0;
     }
+
+    .content-wrapper {
+      margin: 0;
+      width: 100%;
+    }
   }
   @media ${props => props.theme.mediaQuery.large} {
     display: none;
-    top: 76px;
+    top: 67px;
     box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.25);
 
     .s-display-none {
@@ -155,7 +164,7 @@ export default css`
         display: block;
       }
       li {
-        margin-right: 32px;
+        margin-right: 30px;
       }
     }
     .l2-image-banner {

@@ -14,3 +14,8 @@ export const changePasswordError = payload => ({
   type: constants.CHANGE_PASSWORD_ERROR,
   payload,
 });
+
+export const changePasswordReset = payload => ({
+  type: constants.CHANGE_PASSWORD_RESET,
+  payload,
+});

@@ -1,7 +1,6 @@
 /* eslint-disable extra-rules/no-commented-out-code */
 import React from 'react';
 import PropTypes from 'prop-types';
-import { withRouter } from 'next/router'; //eslint-disable-line
 import CnCTemplate from '../../common/organism/CnCTemplate';
 import PickUpFormPart from '../organisms/PickupPage';
 import ShippingPage from '../organisms/ShippingPage';
@@ -45,7 +44,12 @@ class CheckoutPage extends React.PureComponent {
       onPickupSubmit,
       orderHasShipping,
       routeToPickupPage,
+      updateShippingMethodSelection,
+      updateShippingAddressData,
+      addNewShippingAddressData,
       billingProps,
+      labels,
+      submitBilling,
     } = this.props;
 
     const section = router.query.section || router.query.subSection;
@@ -86,17 +90,28 @@ class CheckoutPage extends React.PureComponent {
             handleSubmit={submitShippingSection}
             loadShipmentMethods={loadShipmentMethods}
             routeToPickupPage={routeToPickupPage}
+            isMobile={isMobile}
+            updateShippingMethodSelection={updateShippingMethodSelection}
+            updateShippingAddressData={updateShippingAddressData}
+            addNewShippingAddressData={addNewShippingAddressData}
+            labels={labels}
           />
         )}
         {currentSection.toLowerCase() === CHECKOUT_STAGES.BILLING && (
-          <BillingPage {...billingProps} orderHasShipping={orderHasShipping} />
+          <BillingPage
+            {...billingProps}
+            orderHasShipping={orderHasShipping}
+            isGuest={isGuest}
+            submitBilling={submitBilling}
+          />
         )}
       </div>
     );
   };
 
   render() {
-    return <CnCTemplate leftSection={this.renderLeftSection} marginTop isCheckoutView />;
+    const { isGuest } = this.props;
+    return <CnCTemplate leftSection={this.renderLeftSection} marginTop isGuest={isGuest} />;
   }
 }
 
@@ -114,6 +129,7 @@ CheckoutPage.propTypes = {
   pickupInitialValues: PropTypes.shape({}).isRequired,
   pickUpLabels: PropTypes.shape({}).isRequired,
   smsSignUpLabels: PropTypes.shape({}).isRequired,
+  labels: PropTypes.shape({}).isRequired,
   router: PropTypes.shape({}).isRequired,
   initialValues: PropTypes.shape({}).isRequired,
   orderHasPickUp: PropTypes.bool.isRequired,
@@ -124,7 +140,11 @@ CheckoutPage.propTypes = {
   cartOrderItems: PropTypes.shape([]).isRequired,
   orderHasShipping: PropTypes.bool.isRequired,
   routeToPickupPage: PropTypes.func.isRequired,
+  updateShippingMethodSelection: PropTypes.func.isRequired,
+  updateShippingAddressData: PropTypes.func.isRequired,
+  addNewShippingAddressData: PropTypes.func.isRequired,
+  submitBilling: PropTypes.func.isRequired,
 };
 
-export default withRouter(CheckoutPage);
+export default CheckoutPage;
 export { CheckoutPage as CheckoutPageVanilla };

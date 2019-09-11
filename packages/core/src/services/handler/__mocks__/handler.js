@@ -5,9 +5,11 @@ import LabelsMock from '../../abstractors/bootstrap/labels/mock';
 import ModuleDMock from '../../abstractors/common/moduleD/mock';
 import ModuleHMock from '../../abstractors/common/moduleH/mock';
 import ModuleDQuery from '../graphQL/queries/moduleD/moduleD.query';
+import unbxdProductMock from '../../abstractors/productListing/mock';
 
-const sendResponse = (data, resolve, reject) =>
+const sendResponse = (data, resolve, reject) => {
   process.nextTick(() => (data ? resolve(data) : reject()));
+};
 
 const processResponse = name => {
   let response = {};
@@ -94,6 +96,19 @@ export const executeExternalAPICall = reqObj => {
         data: {},
       };
     }
+    sendResponse(response, resolve, reject);
+  });
+};
+
+export const executeUnbxdAPICall = reqObj => {
+  return new Promise((resolve, reject) => {
+    let response;
+    if (reqObj.webService) {
+      response = {
+        data: {},
+      };
+    }
+    response.body = unbxdProductMock;
     sendResponse(response, resolve, reject);
   });
 };

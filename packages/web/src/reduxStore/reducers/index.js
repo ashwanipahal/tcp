@@ -37,6 +37,12 @@ import DeviceInfoReducer from '@tcp/core/src/reduxStore/reducers/deviceInfo';
 import ApplyCardReducer from '@tcp/core/src/components/features/browse/ApplyCardPage/container/ApplyCard.reducer';
 import OptimizelyFeaturesReducer from '@tcp/core/src/reduxStore/reducers/optimizelyFeatures';
 import AddMailingAddressReducer from '@tcp/core/src/components/features/account/MyProfile/organism/MailingInformation/container/MailingAddress.reducer';
+import ProductDetailReducer from '@tcp/core/src/components/features/browse/ProductDetail/container/ProductDetail.reducer';
+import ApplyNowModalPLCCReducer from '@tcp/core/src/components/common/molecules/ApplyNowPLCCModal/container/ApplyNowModal.reducer';
+import ProductTabListReducer from '@tcp/core/src/components/common/organisms/ProductTabList/container/ProductTabList.reducer';
+import BirthdaySavingsListReducer from '@tcp/core/src/components/features/account/common/organism/BirthdaySavingsList/container/BirthdaySavingsList.reducer';
+import RecommendationsReducer from '@tcp/core/src/components/common/molecules/Recommendations/container/Recommendations.reducer';
+import SearchBarReducer from '@tcp/web/src/components/features/content/Header/molecules/SearchBar/SearchBar.reducer';
 
 import {
   APICONFIG_REDUCER_KEY,
@@ -85,6 +91,12 @@ import {
   OPTIMIZELY_FEATURES_REDUCER,
   TOAST_REDUCER_KEY,
   MAILING_ADDRESS_REDUCER_KEY,
+  PRODUCT_DETAIL_REDUCER_KEY,
+  APPLY_NOW_MODAL_REDUCER_KEY,
+  PRODUCT_TAB_LIST_REDUCER_KEY,
+  BIRTHDAY_SAVING_LIST_REDUCER_KEY,
+  RECOMMENDATIONS_REDUCER_KEY,
+  SEARCH_REDUCER_KEY,
 } from '@tcp/core/src/constants/reducer.constants';
 import HeaderReducer from '@tcp/core/src/components/common/organisms/Header/container/Header.reducer';
 import FooterReducer from '@tcp/core/src/components/common/organisms/Footer/container/Footer.reducer';
@@ -112,6 +124,11 @@ const filteredAppConfigReducer = createFilteredReducer(ApiConfigReducer, APICONF
 //   SESSIONCONFIG_REDUCER_KEY
 // );
 
+const filteredProductTabListReducer = createFilteredReducer(
+  ProductTabListReducer,
+  PRODUCT_TAB_LIST_REDUCER_KEY
+);
+
 export default combineReducers({
   [APICONFIG_REDUCER_KEY]: filteredAppConfigReducer,
   [APPLY_PLCC_REDUCER_KEY]: ApplyCardReducer,
@@ -124,6 +141,7 @@ export default combineReducers({
   [MODULES_REDUCER_KEY]: ModulesReducer,
   [HOMEPAGE_REDUCER_KEY]: HomePageReducer,
   [LOADER_REDUCER_KEY]: LoaderReducer,
+  [SEARCH_REDUCER_KEY]: SearchBarReducer,
   [PRODUCTLISTINGPAGE_REDUCER_KEY]: filteredProductListingPageReducer,
   [LOGINPAGE_REDUCER_KEY]: LoginPageReducer,
   [FORGOTPASSWORD_REDUCER_KEY]: ForgotPasswordReducer,
@@ -160,4 +178,9 @@ export default combineReducers({
   [TRACK_ORDER_REDUCER_KEY]: TrackOrderReducer,
   [OPTIMIZELY_FEATURES_REDUCER]: OptimizelyFeaturesReducer,
   [MAILING_ADDRESS_REDUCER_KEY]: AddMailingAddressReducer,
+  [PRODUCT_DETAIL_REDUCER_KEY]: ProductDetailReducer,
+  [APPLY_NOW_MODAL_REDUCER_KEY]: ApplyNowModalPLCCReducer,
+  [PRODUCT_TAB_LIST_REDUCER_KEY]: filteredProductTabListReducer,
+  [BIRTHDAY_SAVING_LIST_REDUCER_KEY]: BirthdaySavingsListReducer,
+  [RECOMMENDATIONS_REDUCER_KEY]: RecommendationsReducer,
 });

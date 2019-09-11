@@ -1,5 +1,6 @@
 const dotenv = require('dotenv');
 const path = require('path');
+const logger = require('@tcp/core/src/utils/loggerInstance');
 
 // TODO - Ideally, all this config should be moved to @tcp/core/services/config
 const sites = ['us', 'ca'];
@@ -61,10 +62,7 @@ const settingDeviceConfig = (server, device) => {
  */
 const setEnvConfig = dev => {
   if (dev) {
-    console.log(
-      '************* Using Env Config File Of ' + ENV_CONFIG_FILE_PATH,
-      '  *************'
-    );
+    logger.info('Using Env Config File Of ', ENV_CONFIG_FILE_PATH);
     dotenv.config({
       path: path.resolve(__dirname, `..${path.sep}env${path.sep}${ENV_CONFIG_FILE_PATH}.env`),
     });

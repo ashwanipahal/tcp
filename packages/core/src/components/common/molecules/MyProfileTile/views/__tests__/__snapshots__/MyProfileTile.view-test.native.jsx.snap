@@ -14,17 +14,11 @@ exports[`MyProfileTile should render correctly when all props are present 1`] = 
   <Styled(View)
     spacingStyles="margin-bottom-XXXL"
   />
-  <Styled(CustomButton)
+  <Styled(WithTheme(CustomButton))
     buttonVariation="variable-width"
-    color=""
-    customStyle={Object {}}
-    disableButton={false}
     fill="BLUE"
-    fullWidth=""
-    locator=""
     onPress={[Function]}
     text="Test CTA"
-    url=""
   />
 </Styled(View)>
 `;

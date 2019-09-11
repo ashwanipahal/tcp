@@ -3,6 +3,8 @@ import React from 'react';
 import { Anchor } from '../../../atoms';
 import { BodyCopy, Container, ContainerView } from '../PromoBanner.style.native';
 
+import CurrencyUpPromoBanner from './CurrencyUpPromoBanner';
+
 type Props = {
   ribbonBanner: Array<Object>,
   promoBanner: Array<Object>,
@@ -64,6 +66,7 @@ export const bodyCopyStyles = {
   ),
   percentage_wrapped_large: props => <PercentageStyle {...props} />,
   percentage_wrapped_extra_large: props => <PercentagePinkStyle {...props} />,
+  currency_up_style: props => <CurrencyUpPromoBanner {...props} />,
   small_text_bold: props => (
     <BodyCopy
       fontSize="fs16"
@@ -105,6 +108,64 @@ export const bodyCopyStyles = {
       {...props}
     />
   ),
+  small_text_black: props => (
+    <BodyCopy
+      color="text.primary"
+      fontFamily="primary"
+      fontSize="fs20"
+      fontWeight="black"
+      textAlign="center"
+      lineHeight="20px"
+      letterSpacing="ls1"
+      {...props}
+    />
+  ),
+  small_text_semibold: props => (
+    <BodyCopy
+      color="text.primary"
+      fontFamily="primary"
+      fontSize="fs20"
+      fontWeight="semibold"
+      textAlign="center"
+      lineHeight="20px"
+      letterSpacing="ls2"
+      {...props}
+    />
+  ),
+  large_text_semibold_normal: props => (
+    <BodyCopy
+      color="gray.900"
+      mobilefontFamily="primary"
+      fontSize="fs48"
+      textAlign="center"
+      lineHeight="45px"
+      {...props}
+    />
+  ),
+
+  large_text_semibold_bold: props => (
+    <BodyCopy
+      color="gray.900"
+      mobilefontFamily="primary"
+      fontSize="fs48"
+      textAlign="center"
+      lineHeight="48px"
+      fontWeight="black"
+      {...props}
+    />
+  ),
+  text_normal_gray: props => (
+    <BodyCopy
+      fontSize="fs20"
+      color="gray.900"
+      mobilefontFamily="primary"
+      fontWeight="regular"
+      textAlign="center"
+      letterSpacing="ls2"
+      lineHeight="40px"
+      {...props}
+    />
+  ),
 };
 
 /**
@@ -123,6 +184,7 @@ const PromoBanner = (props: Props) => {
     locator,
     navigation,
     promoBanner: [{ textItems, link }],
+    bannerPosition,
     ...otherProps
   } = props;
 

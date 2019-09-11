@@ -16,20 +16,22 @@ const MyRewards = ({
   className,
   coupons,
   onViewCouponDetails,
-  onApplyCouponToBag,
+  onApplyCouponToBagFromList,
   onRemove,
   isApplyingOrRemovingCoupon,
+  handleErrorCoupon,
   isMobile,
   view,
   showLink,
 }) => {
   const heading =
     view === 'all'
-      ? `${labels.myPlaceRewards.lbl_my_rewards_wallet_heading} (${coupons.size})`
-      : `${labels.myPlaceRewards.lbl_my_rewards_heading} (${coupons.size})`;
+      ? `${labels.placeRewards.lbl_my_rewards_wallet_heading} (${coupons.size})`
+      : `${labels.placeRewards.lbl_my_rewards_heading} (${coupons.size})`;
   const isApplyingCoupon = !!coupons.find(
     coupon => coupon.status === COUPON_STATUS.APPLYING || coupon.status === COUPON_STATUS.REMOVING
   );
+
   return (
     <div className={className}>
       <Row fullBleed>
@@ -71,8 +73,9 @@ const MyRewards = ({
                     labels={labels.common}
                     coupon={coupon}
                     onViewCouponDetails={onViewCouponDetails}
-                    onApplyCouponToBag={onApplyCouponToBag}
+                    onApplyCouponToBagFromList={onApplyCouponToBagFromList}
                     onRemove={onRemove}
+                    handleErrorCoupon={handleErrorCoupon}
                     isDisabled={isApplyingOrRemovingCoupon || isApplyingCoupon}
                     isMobile={isMobile}
                     view={view}
@@ -109,7 +112,7 @@ const MyRewards = ({
               dataLocator="my-rewards-program-details"
               target="_blank"
             >
-              {labels.myPlaceRewards.lbl_my_rewards_program_details}
+              {labels.placeRewards.lbl_my_rewards_program_details}
             </Anchor>
             <Anchor
               fontSizeVariation="medium"
@@ -121,7 +124,7 @@ const MyRewards = ({
               className="elem-ml-XXL"
               target="_self"
             >
-              {labels.common.lbl_common_tnc}
+              {labels.placeRewards.lbl_common_tnc}
             </Anchor>
           </Col>
         )}
@@ -131,12 +134,13 @@ const MyRewards = ({
 };
 
 MyRewards.propTypes = {
-  labels: PropTypes.shape({ common: {}, myPlaceRewards: {} }),
+  labels: PropTypes.shape({ common: {}, placeRewards: {} }),
   className: PropTypes.string,
   coupons: PropTypes.shape([]),
   onViewCouponDetails: PropTypes.func,
-  onApplyCouponToBag: PropTypes.func,
   onRemove: PropTypes.func,
+  onApplyCouponToBagFromList: PropTypes.func,
+  handleErrorCoupon: PropTypes.func,
   isApplyingOrRemovingCoupon: PropTypes.bool,
   isMobile: PropTypes.bool,
   view: PropTypes.string,
@@ -145,19 +149,20 @@ MyRewards.propTypes = {
 
 MyRewards.defaultProps = {
   labels: {
-    common: { lbl_common_tnc: '' },
-    myPlaceRewards: {
+    placeRewards: {
       lbl_my_rewards_program_details: '',
       lbl_my_rewards_shop_now: '',
       ACC_LBL_MY_REWARDS_NO_REWARDS_MSG: '',
       ACC_LBL_MY_REWARDS_HEADING: '',
+      lbl_common_tnc: '',
     },
   },
   className: '',
   coupons: [],
   onViewCouponDetails: () => {},
-  onApplyCouponToBag: () => {},
   onRemove: () => {},
+  onApplyCouponToBagFromList: () => {},
+  handleErrorCoupon: () => {},
   isApplyingOrRemovingCoupon: false,
   isMobile: true,
   view: '',

@@ -41,7 +41,6 @@ exports[`TrackOrderView component should renders correctly 1`] = `
         "trackOrder": Object {},
       }
     }
-    toggleModal={[MockFunction]}
   />
 </Styled(View)>
 `;
@@ -130,7 +129,6 @@ exports[`TrackOrderView component should renders correctly with generic error me
         "trackOrder": Object {},
       }
     }
-    toggleModal={[MockFunction]}
   />
 </Styled(View)>
 `;
@@ -187,7 +185,6 @@ exports[`TrackOrderView component should renders correctly with notification com
         "trackOrder": Object {},
       }
     }
-    toggleModal={[MockFunction]}
   />
 </Styled(View)>
 `;

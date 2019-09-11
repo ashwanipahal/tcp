@@ -2,7 +2,8 @@
 
 exports[`AboutYouInfo should render correctly 1`] = `
 <Styled(AccountOverviewTile)
-  ctaLink="/account/profile"
+  className=""
+  ctaLink="/account?id=profile&subSection=edit-aboutyou-info"
   ctaPath="/account/profile"
   ctaTitle="UPDATE INFO"
   dataLocator="moreaboutyou"
@@ -23,6 +24,7 @@ exports[`AboutYouInfo should render correctly 1`] = `
       fullBleed={true}
     >
       <Styled(Col)
+        className="aboutyou-text"
         colSize={
           Object {
             "large": 12,
@@ -51,6 +53,7 @@ exports[`AboutYouInfo should render correctly 1`] = `
       fullBleed={true}
     >
       <Styled(Col)
+        className="aboutyou-text"
         colSize={
           Object {
             "large": 12,

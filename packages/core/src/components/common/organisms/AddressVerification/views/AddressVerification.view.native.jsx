@@ -38,14 +38,33 @@ export default class AddressVerification extends React.PureComponent {
     this.showOptionalAddressLine = false;
   }
 
-  componentDidUpdate() {
+  componentDidMount() {
     if (this.isValidAddress) {
       this.onConfirm();
-    } else if (this.isError) {
-      const { onError, userAddress } = this.props;
-      onError(userAddress);
-      this.onCloseModal();
     }
+  }
+
+  componentDidUpdate(prevProps) {
+    const { verificationResult, userAddress, onError } = this.props;
+    if (verificationResult !== prevProps.verificationResult) {
+      if (this.isValidAddress) {
+        this.onConfirm();
+      } else if (this.isError) {
+        onError(userAddress);
+      }
+    }
+  }
+
+  componentWillUnmount() {
+    const { resetVerifyAddressAction } = this.props;
+    const { optionalAddressLine } = this.state;
+    if (optionalAddressLine) {
+      this.setState({
+        optionalAddressLine: '',
+      });
+    }
+
+    resetVerifyAddressAction();
   }
 
   onConfirm = () => {
@@ -64,20 +83,17 @@ export default class AddressVerification extends React.PureComponent {
     if (optionalAddressLine) {
       addressPayload.address2 = optionalAddressLine;
     }
+
     onSuccess(addressPayload);
-    this.onCloseModal();
   };
 
-  onCloseModal = () => {
-    const { resetVerifyAddressAction } = this.props;
-    const { optionalAddressLine } = this.state;
-    if (optionalAddressLine) {
-      this.setState({
-        optionalAddressLine: '',
-      });
+  onClose = () => {
+    const { toggleAddressModal, resetVerifyAddressAction } = this.props;
+    if (toggleAddressModal) {
+      toggleAddressModal();
+    } else {
+      resetVerifyAddressAction();
     }
-
-    resetVerifyAddressAction();
   };
 
   getMessage = verificationResult => {
@@ -233,14 +249,20 @@ export default class AddressVerification extends React.PureComponent {
       verificationResult,
       userAddress,
       suggestedAddress,
-      toggleAddressModal,
       labels: { verifyAddressLabels },
+      setModalHeading,
+      verifyModalRendered,
     } = this.props;
     this.updateDisplayFlag(verificationResult, userAddress, suggestedAddress);
-
     if (this.showVerifyModal) {
+      setModalHeading();
+      verifyModalRendered(true);
       return (
-        <ScrollView showsVerticalScrollIndicator={false} {...this.props}>
+        <ScrollView
+          showsVerticalScrollIndicator={false}
+          {...this.props}
+          keyboardShouldPersistTaps="handled"
+        >
           <VerifyAddressWrapper>
             <BodyCopy
               mobilefontFamily={['secondary']}
@@ -269,7 +291,7 @@ export default class AddressVerification extends React.PureComponent {
                   fill="WHITE"
                   text={verifyAddressLabels.editAddress}
                   buttonVariation="variable-width"
-                  onPress={toggleAddressModal}
+                  onPress={this.onClose}
                 />
               </ButtonWrapper>
             </AddressVerificationContainer>
@@ -277,6 +299,7 @@ export default class AddressVerification extends React.PureComponent {
         </ScrollView>
       );
     }
+    verifyModalRendered(false);
     return null;
   }
 }
@@ -296,6 +319,9 @@ AddressVerification.propTypes = {
   onSuccess: PropTypes.func,
   resetVerifyAddressAction: PropTypes.func,
   toggleAddressModal: PropTypes.func,
+  setModalHeading: PropTypes.func,
+  verifyModalRendered: PropTypes.func,
+  isValidAddress: PropTypes.bool,
 };
 
 AddressVerification.defaultProps = {
@@ -313,6 +339,9 @@ AddressVerification.defaultProps = {
   onSuccess: () => {},
   resetVerifyAddressAction: () => {},
   toggleAddressModal: () => {},
+  setModalHeading: () => {},
+  verifyModalRendered: () => {},
+  isValidAddress: false,
 };
 
 export { AddressVerification as AddressVerificationVanilla };

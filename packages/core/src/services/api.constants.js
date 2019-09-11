@@ -10,12 +10,14 @@ export const PRODUCTS_URI = {
   PRODUCTS_BY_OUTFITS: 'tcpproduct/getProductsByOutfits',
   PRODUCTS_VIEW_BY_CATEGORY: 'category',
   PRODUCTS_BY_SEARCH: 'search',
+  PRODUCTS_AUTOSUGGEST: 'autosuggest',
 };
 
 export const graphQLClient = 'graphQL';
 export const defaultCountry = 'USA';
 export const defaultBrand = 'TCP';
 export const defaultChannel = 'Desktop';
+export const MobileChannel = 'Mobile';
 
 export default {
   API_METHODS,
@@ -23,4 +25,5 @@ export default {
   defaultCountry,
   defaultBrand,
   defaultChannel,
+  MobileChannel,
 };

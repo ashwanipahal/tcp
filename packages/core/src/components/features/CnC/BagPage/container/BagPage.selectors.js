@@ -1,4 +1,5 @@
 import { AVAILABILITY } from '../../../../../services/abstractors/CnC/CartItemTile';
+import getErrorList from './Errors.selector';
 
 export const filterProductsBrand = (arr, searchedValue) => {
   const obj = [];
@@ -13,9 +14,8 @@ export const filterProductsBrand = (arr, searchedValue) => {
 
 const getBagPageLabels = state => {
   const {
-    bag: {
-      addedToBag: { lbl_header_addedToBag: addedToBag, lbl_cta_checkout: checkout },
-      bagOverview: {
+    checkout: {
+      bagPage: {
         lbl_header_bag: bagHeading,
         lbl_emptyBag_loggedInMsg: loggedInMsg,
         lbl_emptyBag_notLoggedInMsg: guestUserMsg,
@@ -24,6 +24,9 @@ const getBagPageLabels = state => {
         lbl_emptyBag_inspirationTagLine: tagLine,
         lbl_emptyBag_helperMsg: helperMsg,
       } = {},
+    } = {},
+    global: {
+      addedToBagModal: { lbl_header_addedToBag: addedToBag, lbl_cta_checkout: checkout },
     } = {},
   } = state.Labels;
   return {
@@ -46,11 +49,16 @@ const getTotalItems = state => {
 const getOrderItems = state => {
   return state.CartPageReducer.getIn(['orderDetails', 'orderItems']) || 0;
 };
+
 const getConfirmationModalFlag = state => {
   return {
     showModal: state.CartPageReducer.get('showConfirmationModal'),
     isEditingItem: state.CartPageReducer.get('isEditingItem'),
   };
+};
+
+const getErrorMapping = state => {
+  return getErrorList(state);
 };
 
 const getProductsTypes = state => {
@@ -68,7 +76,7 @@ const getProductsTypes = state => {
 };
 
 const getNeedHelpContentId = state => {
-  const { referred = [] } = state.Labels.bag.addedToBag;
+  const { referred = [] } = state.Labels.global.addedToBagModal;
   const content = referred.find(label => label.name === 'NEED_HELP_DATA');
   return content && content.contentId;
 };
@@ -99,4 +107,5 @@ export default {
   getOOSCount,
   getConfirmationModalFlag,
   getFilteredItems,
+  getErrorMapping,
 };

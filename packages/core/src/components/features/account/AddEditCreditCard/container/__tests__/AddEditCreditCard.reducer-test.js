@@ -4,20 +4,27 @@ import { addCreditCardSuccess, addCreditCardError } from '../AddEditCreditCard.a
 
 describe('AddEditCreditCardReducer reducer', () => {
   it('should return  default state', () => {
-    expect(AddEditCreditCardReducer(undefined, {})).toBeNull();
+    const initialState = fromJS({
+      showNotification: false,
+      error: null,
+    });
+    expect(AddEditCreditCardReducer(initialState, {}));
   });
   it('should handle failure addCreditCardError', () => {
-    const initialState = null;
+    const initialState = fromJS({
+      showNotification: true,
+    });
     expect(
       AddEditCreditCardReducer(
         initialState,
         addCreditCardError({
-          error: 'test error',
+          userId: '12345',
         })
       )
     ).toEqual(
       fromJS({
-        error: 'test error',
+        showNotification: true,
+        error: fromJS({ userId: '12345' }),
       })
     );
   });

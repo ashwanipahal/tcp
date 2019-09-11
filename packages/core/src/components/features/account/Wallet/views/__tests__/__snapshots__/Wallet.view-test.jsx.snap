@@ -5,8 +5,7 @@ exports[`WalletView component should render correctly 1`] = `
   <Connect(MyRewardsContainer)
     labels={
       Object {
-        "common": Object {},
-        "myPlaceRewards": Object {},
+        "placeRewards": Object {},
       }
     }
     view="all"

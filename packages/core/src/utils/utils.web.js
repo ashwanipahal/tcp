@@ -90,12 +90,6 @@ export const routerPush = (href, as, query, siteId = getSiteId()) => {
   return Router.push(relHref, asPath, { query });
 };
 
-export const identifyBrand = () => {
-  const url = 'http://www.thechildrensplace.com/';
-
-  return url.indexOf('thechildrensplace') > -1 ? 'tcp' : 'gymboree';
-};
-
 /**
  * This common function works for finding key in an object.
  * Please refer Account.jsx in core/src/components/features/account/Account/Account.jsx
@@ -183,44 +177,6 @@ export const getCreditCardExpirationOptionMap = () => {
   return {
     monthsMap: expMonthOptionsMap,
     yearsMap: expYearOptionsMap,
-  };
-};
-
-export const getBirthDateOptionMap = () => {
-  const monthOptionsMap = [
-    { id: '1', displayName: MONTH_SHORT_FORMAT.JAN },
-    { id: '2', displayName: MONTH_SHORT_FORMAT.FEB },
-    { id: '3', displayName: MONTH_SHORT_FORMAT.MAR },
-    { id: '4', displayName: MONTH_SHORT_FORMAT.APR },
-    { id: '5', displayName: MONTH_SHORT_FORMAT.MAY },
-    { id: '6', displayName: MONTH_SHORT_FORMAT.JUN },
-    { id: '7', displayName: MONTH_SHORT_FORMAT.JUL },
-    { id: '8', displayName: MONTH_SHORT_FORMAT.AUG },
-    { id: '9', displayName: MONTH_SHORT_FORMAT.SEP },
-    { id: '10', displayName: MONTH_SHORT_FORMAT.OCT },
-    { id: '11', displayName: MONTH_SHORT_FORMAT.NOV },
-    { id: '12', displayName: MONTH_SHORT_FORMAT.DEC },
-  ];
-
-  const yearOptionsMap = [];
-  const dayOptionsMap = [];
-  const nowYear = new Date().getFullYear();
-
-  for (let i = 1900; i < nowYear - 17; i += 1) {
-    yearOptionsMap.push({ id: i.toString(), displayName: i.toString() });
-  }
-
-  for (let i = 1; i < 32; i += 1) {
-    if (i <= 9) {
-      i = 0 + i;
-    }
-    dayOptionsMap.push({ id: i.toString(), displayName: i.toString() });
-  }
-
-  return {
-    daysMap: dayOptionsMap,
-    monthsMap: monthOptionsMap,
-    yearsMap: yearOptionsMap,
   };
 };
 
@@ -340,17 +296,53 @@ export const languageRedirect = (newLanguage, oldLanguage) => {
   }
 };
 
+/**
+ * This function will redirect to PDP from HOMEPAGE
+ * on the basis of productId
+ *
+ * TODO: It can be extended as per requirement
+ * to redirect from other pages also
+ */
+export const redirectToPdp = productId => {
+  if (!window) return null;
+
+  const { href } = window.location;
+  // TODO
+  if (href.includes('/p/')) {
+    return {
+      url: `/p?pid=${productId}`,
+      asPath: `/p/${productId}`,
+    };
+  }
+
+  return {
+    url: `/c?cid=toddler-girl-bottoms`,
+    asPath: `/c/toddler-girl-bottoms`,
+  };
+};
+
+/**
+ * This function configure url for Next/Link using CMS defined url string
+ */
+export const configurePlpNavigationFromCMSUrl = url => {
+  const route = `${ROUTE_PATH.plp}/`;
+  if (url.includes(route)) {
+    const urlItems = url.split(route);
+    const queryParam = urlItems[0];
+    return `${ROUTE_PATH.plp}?cid=${queryParam}`;
+  }
+  return url;
+};
+
 export default {
   importGraphQLClientDynamically,
   importGraphQLQueriesDynamically,
   isProduction,
   isDevelopment,
-  identifyBrand,
   getObjectValue,
   createUrlSearchParams,
   buildUrl,
   getCreditCardExpirationOptionMap,
-  getBirthDateOptionMap,
   getSiteId,
   routerPush,
   bindAllClassMethodsToThis,
@@ -360,6 +352,7 @@ export default {
   getModifiedLanguageCode,
   siteRedirect,
   languageRedirect,
+  redirectToPdp,
 };
 
 const getAPIInfoFromEnv = (apiSiteInfo, processEnv, siteId) => {
@@ -396,11 +389,55 @@ const getGraphQLApiFromEnv = (apiSiteInfo, processEnv, relHostname) => {
   };
 };
 
+/*
+ * @method numericStringToBool
+ * @description this method returns the bool value of string numeric passed
+ * @param {string} str the  string numeric value
+ */
+export const numericStringToBool = str => !!+str;
+
+// Parse boolean out of string true|false
+export const parseBoolean = bool => {
+  return bool === true || bool === '1' || (bool || '').toUpperCase() === 'TRUE';
+};
+
+/**
+ *
+ * @param {object} bossDisabledFlags carries the boss disability flags -
+ * bossCategoryDisabled,
+ * bossProductDisabled
+ * @returns the disability boolean value
+ */
+export const isBossProduct = bossDisabledFlags => {
+  const { bossCategoryDisabled, bossProductDisabled } = bossDisabledFlags;
+  return !(numericStringToBool(bossCategoryDisabled) || numericStringToBool(bossProductDisabled));
+};
+
+/**
+ * @function isBopsProduct
+ * @param {*} isUSStore
+ * @param {*} product
+ * @summary This BOPIS logic is to validate if product/color variant is eligible for BOPIS
+ * product is a color variant object of a product.
+ */
+export const isBopisProduct = (isUSStore, product) => {
+  let isOnlineOnly;
+  if (isUSStore) {
+    isOnlineOnly =
+      (product.TCPWebOnlyFlagUSStore && parseBoolean(product.TCPWebOnlyFlagUSStore)) || false;
+  } else {
+    isOnlineOnly =
+      (product.TCPWebOnlyFlagCanadaStore && parseBoolean(product.TCPWebOnlyFlagCanadaStore)) ||
+      false;
+  }
+  return !isOnlineOnly;
+};
+
 export const createAPIConfig = resLocals => {
   // TODO - Get data from env config - Brand, MellisaKey, BritverifyId, AcquisitionId, Domains, Asset Host, Unbxd Domain;
   // TODO - use isMobile and cookie as well..
 
-  const { siteId, brandId, hostname } = resLocals;
+  const { country, currency, language, siteId, brandId, hostname } = resLocals;
   const isCASite = siteId === API_CONFIG.siteIds.ca;
   const isGYMSite = brandId === API_CONFIG.brandIds.gym;
   const countryConfig = isCASite ? API_CONFIG.CA_CONFIG_OPTIONS : API_CONFIG.US_CONFIG_OPTIONS;
@@ -420,5 +457,8 @@ export const createAPIConfig = resLocals => {
     catalogId,
     isMobile: false,
     cookie: null,
+    country,
+    currency,
+    language,
   };
 };
