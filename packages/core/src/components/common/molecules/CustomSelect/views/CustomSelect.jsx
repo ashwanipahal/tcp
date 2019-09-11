@@ -58,6 +58,10 @@ class CustomSelect extends React.Component<Props> {
     });
   };
 
+  onClose = () => {
+    this.toggleHandler();
+  };
+
   onClickHandler = (e, value, title) => {
     e.stopPropagation();
     const { clickHandler } = this.props;
@@ -67,6 +71,20 @@ class CustomSelect extends React.Component<Props> {
     });
     this.toggleHandler();
     clickHandler(e, value, title);
+  };
+
+  getDropDownListWithChild = () => {
+    const { options, childrenComp } = this.props;
+    const { activeValue } = this.state;
+    return childrenComp !== null ? (
+      childrenComp(options, this.onClickHandler, activeValue, this.onClose)
+    ) : (
+      <DropdownList
+        optionsMap={options}
+        clickHandler={this.onClickHandler}
+        activeValue={activeValue}
+      />
+    );
   };
 
   getDropDownList = () => {
@@ -79,11 +97,7 @@ class CustomSelect extends React.Component<Props> {
         activeValue={activeValue}
       />
     ) : (
-      <DropdownList
-        optionsMap={options}
-        clickHandler={this.onClickHandler}
-        activeValue={activeValue}
-      />
+      this.getDropDownListWithChild()
     );
   };
 
@@ -92,7 +106,7 @@ class CustomSelect extends React.Component<Props> {
     const { className, selectListTitle } = this.props;
     return (
       <BodyCopy component="div" className={`${className} custom-select`}>
-        <span>{`${selectListTitle}:`}</span>
+        {selectListTitle && <span>{`${selectListTitle}:`}</span>}
         <BodyCopy component="div" onClick={this.toggleHandler} className="customSelectTitle">
           {activeTitle}
         </BodyCopy>
@@ -109,6 +123,7 @@ CustomSelect.propTypes = {
   options: PropTypes.shape({}).isRequired,
   activeTitle: PropTypes.string,
   activeValue: PropTypes.string,
+  childrenComp: PropTypes.node,
 };
 
 CustomSelect.defaultProps = {
@@ -117,6 +132,7 @@ CustomSelect.defaultProps = {
   activeTitle: '',
   activeValue: '',
   clickHandler: () => {},
+  childrenComp: null,
 };
 
 export default withStyles(CustomSelect, styles);

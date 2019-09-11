@@ -7,8 +7,6 @@ const CustomImage = props => {
   const { imageSource } = props;
   return (
     <ImageContainer
-      accessibilityRole="image"
-      accessibilityLabel="image"
       source={{
         uri: imageSource,
       }}

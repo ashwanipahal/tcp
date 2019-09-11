@@ -74,6 +74,9 @@ exports[`CreditCardForm component should renders correctly with address dropdown
                     "primary": "true",
                   }
                 }
+                className=""
+                dataLocatorPrefix=""
+                fontWeight="regular"
                 isDefault={true}
                 showCountry={false}
                 showName={true}
@@ -248,6 +251,9 @@ exports[`CreditCardForm component should renders correctly with addressForm 1`] 
                     "primary": "true",
                   }
                 }
+                className=""
+                dataLocatorPrefix=""
+                fontWeight="regular"
                 isDefault={true}
                 showCountry={false}
                 showName={true}
