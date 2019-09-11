@@ -15,7 +15,7 @@ import BonusPointsDays from '../../../molecules/BonusPointsDays';
 import RewardsPoints from '../../../../common/organism/RewardsPoints';
 import PointsHistory from '../../../../common/organism/PointsHistory';
 
-const PlaceRewardsSection = ({ labels, className }) => {
+const PlaceRewardsSection = ({ labels, className, ...otherProps }) => {
   return (
     <View className={className}>
       <ScrollView showsVerticalScrollIndicator={false} keyboardShouldPersistTaps="handled">
@@ -51,7 +51,7 @@ const PlaceRewardsSection = ({ labels, className }) => {
         <StyledViewLargeMargin>
           <Text>FPO</Text>
         </StyledViewLargeMargin>
-        <MyRewards labels={labels} showLink />
+        <MyRewards labels={labels} showLink {...otherProps} />
       </ScrollView>
     </View>
   );
