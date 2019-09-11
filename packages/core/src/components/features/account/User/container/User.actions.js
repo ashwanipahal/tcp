@@ -51,3 +51,10 @@ export const setSurveyAnswers = payload => {
     payload,
   };
 };
+
+export function setUserGeoCoordinates(payload) {
+  return {
+    payload,
+    type: CONSTANTS.SET_GEO_COORDINATES,
+  };
+}

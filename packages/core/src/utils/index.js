@@ -27,6 +27,7 @@ export {
   configurePlpNavigationFromCMSUrl,
   isBopisProduct,
   isBossProduct,
+  sanitizeEntity,
 } from './utils.web';
 
 export {

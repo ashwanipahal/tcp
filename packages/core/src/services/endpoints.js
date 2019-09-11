@@ -256,5 +256,10 @@ const endpoints = {
     URI: PRODUCTS_URI.PRODUCTS_AUTOSUGGEST,
     unbxd: true,
   },
+  // STORE LOCATORS
+  getFavoriteStore: {
+    method: 'GET',
+    URI: 'v2/store/getFavouriteStoreLocation',
+  },
 };
 export default endpoints;

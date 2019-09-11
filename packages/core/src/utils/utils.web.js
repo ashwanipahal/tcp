@@ -462,3 +462,19 @@ export const createAPIConfig = resLocals => {
     language,
   };
 };
+
+export const sanitizeEntity = string => {
+  return string && typeof string === 'string'
+    ? string
+        .replace(/&amp;/gi, '&')
+        .replace(/&quot;/gi, '"')
+        .replace(/&ldquo;/gi, '"')
+        .replace(/&acute;/gi, '"')
+        .replace(/&prime;/gi, '"')
+        .replace(/&bdquo;/gi, '"')
+        .replace(/&ldquot;/gi, '"')
+        .replace(/\\u0027/gi, "'")
+        .replace(/&lsquot;/gi, '"')
+        .replace(/%20/gi, ' ')
+    : string;
+};

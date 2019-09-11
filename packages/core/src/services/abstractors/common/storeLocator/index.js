@@ -1,0 +1,1 @@
+export { getFavoriteStore } from './storeLocator';
