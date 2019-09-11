@@ -16,6 +16,7 @@ import {
   ShippingFormWrapper,
 } from '../styles/ShippingForm.styles.native';
 import CnCTemplate from '../../../../../../common/organism/CnCTemplate';
+import CONSTANTS from '../../../../../Checkout.constants';
 
 const ShippingForm = ({
   shipmentMethods,
@@ -138,10 +139,15 @@ const ShippingForm = ({
       </ShippingFormWrapper>
       <CnCTemplate
         navigation={navigation}
-        btnText="NEXT:BILLING"
+        btnText={getLabelValue(labels, 'lbl_shipping_billingText', 'shipping', 'checkout')}
         routeToPage=""
         onPress={handleSubmit(submitShippingForm)}
         isGuest={isGuest}
+        backLinkText={
+          orderHasPickUp &&
+          getLabelValue(labels, 'lbl_shipping_backLinkText', 'shipping', 'checkout')
+        }
+        onBackLinkPress={() => navigation.navigate(CONSTANTS.CHECKOUT_ROUTES_NAMES.CHECKOUT_PICKUP)}
       />
     </>
   );
