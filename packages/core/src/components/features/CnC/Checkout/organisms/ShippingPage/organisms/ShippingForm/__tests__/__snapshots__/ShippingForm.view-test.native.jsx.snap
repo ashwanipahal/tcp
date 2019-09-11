@@ -47,8 +47,10 @@ exports[`Shipping Form should render correctly 1`] = `
     </FormSection>
   </Styled(View)>
   <CnCCommonTemplate
-    btnText="NEXT:BILLING"
+    backLinkText={false}
+    btnText=""
     isGuest={true}
+    onBackLinkPress={[Function]}
     routeToPage=""
   />
 </Fragment>
@@ -136,8 +138,10 @@ exports[`Shipping Form should render correctly with non us site 1`] = `
     </FormSection>
   </Styled(View)>
   <CnCCommonTemplate
-    btnText="NEXT:BILLING"
+    backLinkText={false}
+    btnText=""
     isGuest={true}
+    onBackLinkPress={[Function]}
     routeToPage=""
   />
 </Fragment>
@@ -155,8 +159,10 @@ exports[`Shipping Form should render correctly with signed in 1`] = `
       formName="checkoutShipping"
       isGuest={false}
       isSaveToAddressBookChecked={false}
+      newUserPhoneNo={null}
       onFileAddressKey={null}
       setAsDefaultShipping={null}
+      shippingAddress={null}
       syncErrorsObject={Object {}}
       updateShippingAddress={[Function]}
       userAddresses={null}
@@ -187,8 +193,10 @@ exports[`Shipping Form should render correctly with signed in 1`] = `
     </FormSection>
   </Styled(View)>
   <CnCCommonTemplate
-    btnText="NEXT:BILLING"
+    backLinkText={false}
+    btnText=""
     isGuest={false}
+    onBackLinkPress={[Function]}
     routeToPage=""
   />
 </Fragment>

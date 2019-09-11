@@ -13,6 +13,7 @@ import { COUPON_STATUS } from '../../../../../../../services/abstractors/CnC/Car
 
 const MyRewards = ({
   labels,
+  commonLabels,
   className,
   coupons,
   onViewCouponDetails,
@@ -70,7 +71,7 @@ const MyRewards = ({
                 return (
                   <DetailedCouponTile
                     key={coupon.id}
-                    labels={labels.common}
+                    labels={commonLabels}
                     coupon={coupon}
                     onViewCouponDetails={onViewCouponDetails}
                     onApplyCouponToBagFromList={onApplyCouponToBagFromList}
@@ -135,6 +136,7 @@ const MyRewards = ({
 
 MyRewards.propTypes = {
   labels: PropTypes.shape({ common: {}, placeRewards: {} }),
+  commonLabels: PropTypes.shape({}),
   className: PropTypes.string,
   coupons: PropTypes.shape([]),
   onViewCouponDetails: PropTypes.func,
@@ -157,6 +159,7 @@ MyRewards.defaultProps = {
       lbl_common_tnc: '',
     },
   },
+  commonLabels: {},
   className: '',
   coupons: [],
   onViewCouponDetails: () => {},

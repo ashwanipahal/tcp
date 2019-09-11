@@ -22,7 +22,6 @@ exports[`AboutYouSurveyModal should render correctly 1`] = `
         "lbl_profile_survey_select_one": "SELECT ONE",
       }
     }
-    setModalMountState={[MockFunction]}
     userSurvey={
       Array [
         Array [

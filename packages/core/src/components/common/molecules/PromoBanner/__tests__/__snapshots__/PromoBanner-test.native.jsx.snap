@@ -830,7 +830,7 @@ exports[`PromoTextBanner native component renders all style correctly 15`] = `
     }
   }
   forwardedRef={null}
-  lineHeight="45px"
+  lineHeight="47px"
   mobilefontFamily="primary"
   textAlign="center"
 />

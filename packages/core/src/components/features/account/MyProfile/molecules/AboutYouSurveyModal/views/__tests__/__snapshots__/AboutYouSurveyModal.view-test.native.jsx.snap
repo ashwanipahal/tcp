@@ -3,11 +3,11 @@
 exports[`AboutYouSurveyModal should render correctly 1`] = `
 <ModalNative
   isOpen={true}
+  onRequestClose={[Function]}
 >
   <SafeAreaView>
     <Styled(View)>
       <Connect(AboutYouSurveyContainer)
-        className="sc-fkyLDJ frNTkL sc-jGxEUC hdIxqp"
         labels={
           Object {
             "lbl_profile_survey_describe_yourself": "How would you best describe yourself?",
@@ -16,7 +16,6 @@ exports[`AboutYouSurveyModal should render correctly 1`] = `
             "lbl_profile_survey_select_one": "SELECT ONE",
           }
         }
-        setModalMountState={[MockFunction]}
         userSurvey={
           Array [
             Array [

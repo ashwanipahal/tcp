@@ -23,6 +23,7 @@ import selectors, {
   getAlternateFormUpdate,
   getSendOrderUpdate,
   getCheckoutStage,
+  getGiftServicesSend,
 } from './Checkout.selector';
 import checkoutUtil from '../util/utility';
 import { getAddEditAddressLabels } from '../../../../common/organisms/AddEditAddress/container/AddEditAddress.selectors';
@@ -51,13 +52,24 @@ const {
   getShippingAddress,
   getCheckoutProgressBarLabels,
   getSyncError,
+  getGiftWrappingValues,
 } = selectors;
 
 export class CheckoutContainer extends React.Component<Props> {
   componentDidMount() {
-    const { initCheckout, needHelpContentId, fetchNeedHelpContent } = this.props;
+    const {
+      initCheckout,
+      needHelpContentId,
+      fetchNeedHelpContent,
+      getGiftServicesContentTcpId,
+      getGiftServicesContentGymId,
+    } = this.props;
     initCheckout();
-    fetchNeedHelpContent([needHelpContentId]);
+    fetchNeedHelpContent([
+      needHelpContentId,
+      getGiftServicesContentTcpId,
+      getGiftServicesContentGymId,
+    ]);
   }
 
   render() {
@@ -76,6 +88,7 @@ export class CheckoutContainer extends React.Component<Props> {
       orderHasPickUp,
       submitShipping,
       isOrderUpdateChecked,
+      isGiftServicesChecked,
       isAlternateUpdateChecked,
       pickUpLabels,
       smsSignUpLabels,
@@ -116,6 +129,7 @@ export class CheckoutContainer extends React.Component<Props> {
         orderHasShipping={orderHasShipping}
         pickupInitialValues={pickupInitialValues}
         isOrderUpdateChecked={isOrderUpdateChecked}
+        isGiftServicesChecked={isGiftServicesChecked}
         isAlternateUpdateChecked={isAlternateUpdateChecked}
         pickUpLabels={pickUpLabels}
         smsSignUpLabels={smsSignUpLabels}
@@ -196,6 +210,7 @@ const mapStateToProps = state => {
     shippingProps: {
       addressLabels: getAddEditAddressLabels(state),
       isOrderUpdateChecked: getShippingSendOrderUpdate(state),
+      isGiftServicesChecked: getGiftWrappingValues(state),
       smsSignUpLabels: getSmsSignUpLabels(state),
       selectedShipmentId: getSelectedShipmentId(state), // selected shipment radio button
       address: getAddressFields(state), // address for fields data
@@ -238,11 +253,14 @@ const mapStateToProps = state => {
     },
     smsSignUpLabels: getSmsSignUpLabels(state),
     isOrderUpdateChecked: getSendOrderUpdate(state),
+    isGiftServicesChecked: getGiftServicesSend(state),
     isAlternateUpdateChecked: getAlternateFormUpdate(state),
     cartOrderItems: BagPageSelector.getOrderItems(state),
     labels: selectors.getLabels(state),
     checkoutProgressBarLabels: getCheckoutProgressBarLabels(state),
     needHelpContentId: BagPageSelector.getNeedHelpContentId(state),
+    getGiftServicesContentTcpId: BagPageSelector.getGiftServicesContentTcpId(state),
+    getGiftServicesContentGymId: BagPageSelector.getGiftServicesContentGymId(state),
   };
 };
 

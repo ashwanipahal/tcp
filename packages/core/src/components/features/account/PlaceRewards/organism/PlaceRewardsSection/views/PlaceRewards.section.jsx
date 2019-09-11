@@ -13,7 +13,7 @@ import RewardsPoints from '../../../../common/organism/RewardsPoints';
 import PointsHistory from '../../../../common/organism/PointsHistory';
 import BonusPointsDays from '../../../molecules/BonusPointsDays';
 
-const PlaceRewardsSection = ({ labels, className }) => {
+const PlaceRewardsSection = ({ labels, className, ...otherProps }) => {
   const isCA = isCanada();
   return (
     <div className={className}>
@@ -149,7 +149,7 @@ const PlaceRewardsSection = ({ labels, className }) => {
           </Col>
         </Row>
       </Row>
-      {!isCA && <MyRewards labels={labels} showLink />}
+      {!isCA && <MyRewards labels={labels} showLink {...otherProps} />}
     </div>
   );
 };

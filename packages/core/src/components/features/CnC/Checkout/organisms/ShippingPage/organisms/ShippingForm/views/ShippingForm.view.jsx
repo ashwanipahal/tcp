@@ -1,6 +1,8 @@
 import React from 'react';
 import { FormSection, reduxForm, Field, change, resetSection } from 'redux-form';
 import BodyCopy from '../../../../../../../../common/atoms/BodyCopy';
+import { Row, Col } from '../../../../../../../../common/atoms';
+
 import InputCheckbox from '../../../../../../../../common/atoms/InputCheckbox';
 import AddressFields from '../../../../../../../../common/molecules/AddressFields';
 import SMSFormFields from '../../../../../../../../common/molecules/SMSFormFields';
@@ -14,6 +16,7 @@ import withStyles from '../../../../../../../../common/hoc/withStyles';
 import RegisteredShippingForm from '../../RegisteredShippingForm';
 import { getLabelValue } from '../../../../../../../../../utils';
 import { propTypes, defaultProps } from './ShippingForm.view.utils';
+import GiftServices from '../../../molecules/GiftServices';
 
 import styles from '../styles/ShippingForm.styles';
 
@@ -220,6 +223,7 @@ class ShippingForm extends React.Component {
       className,
       dispatch,
       isOrderUpdateChecked,
+      isGiftServicesChecked,
       smsSignUpLabels,
       selectedShipmentId,
       addressPhoneNo,
@@ -312,22 +316,38 @@ class ShippingForm extends React.Component {
             </FormSection>
           )}
           {this.renderEmailSignUp()}
-          <FormSection name="shipmentMethods">
-            <div className="shipment-methods-form">
-              <ShipmentMethods
-                shipmentMethods={shipmentMethods}
+
+          <Row fullBleed>
+            <Col colSize={{ small: 6, medium: 8, large: 6 }}>
+              <FormSection name="shipmentMethods">
+                <div className="shipment-methods-form">
+                  <ShipmentMethods
+                    shipmentMethods={shipmentMethods}
+                    formName={formName}
+                    formSection="shipmentMethods"
+                    selectedShipmentId={selectedShipmentId}
+                    shipmentHeader={getLabelValue(
+                      labels,
+                      'lbl_shipping_shipmentHeader',
+                      'shipping',
+                      'checkout'
+                    )}
+                  />
+                </div>
+              </FormSection>
+            </Col>
+            <Col colSize={{ small: 6, medium: 8, large: 6 }}>
+              <GiftServices
+                showDefaultCheckbox={false}
                 formName={formName}
-                formSection="shipmentMethods"
-                selectedShipmentId={selectedShipmentId}
-                shipmentHeader={getLabelValue(
-                  labels,
-                  'lbl_shipping_shipmentHeader',
-                  'shipping',
-                  'checkout'
-                )}
+                formSection="giftServices"
+                variation="secondary"
+                isGiftServicesChecked={isGiftServicesChecked}
+                dispatch={dispatch}
               />
-            </div>
-          </FormSection>
+            </Col>
+          </Row>
+
           <CheckoutFooter
             hideBackLink={!!orderHasPickUp}
             backLinkHandler={routeToPickupPage}

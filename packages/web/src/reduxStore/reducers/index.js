@@ -41,6 +41,7 @@ import ProductDetailReducer from '@tcp/core/src/components/features/browse/Produ
 import ApplyNowModalPLCCReducer from '@tcp/core/src/components/common/molecules/ApplyNowPLCCModal/container/ApplyNowModal.reducer';
 import ProductTabListReducer from '@tcp/core/src/components/common/organisms/ProductTabList/container/ProductTabList.reducer';
 import BirthdaySavingsListReducer from '@tcp/core/src/components/features/account/common/organism/BirthdaySavingsList/container/BirthdaySavingsList.reducer';
+import PickupModalReducer from '@tcp/core/src/components/common/organisms/PickupStoreModal/container/PickUpStoreModal.reducer';
 import RecommendationsReducer from '@tcp/core/src/components/common/molecules/Recommendations/container/Recommendations.reducer';
 import SearchBarReducer from '@tcp/web/src/components/features/content/Header/molecules/SearchBar/SearchBar.reducer';
 
@@ -95,6 +96,7 @@ import {
   APPLY_NOW_MODAL_REDUCER_KEY,
   PRODUCT_TAB_LIST_REDUCER_KEY,
   BIRTHDAY_SAVING_LIST_REDUCER_KEY,
+  PICKUP_MODAL_REDUCER_KEY,
   RECOMMENDATIONS_REDUCER_KEY,
   SEARCH_REDUCER_KEY,
 } from '@tcp/core/src/constants/reducer.constants';
@@ -182,5 +184,6 @@ export default combineReducers({
   [APPLY_NOW_MODAL_REDUCER_KEY]: ApplyNowModalPLCCReducer,
   [PRODUCT_TAB_LIST_REDUCER_KEY]: filteredProductTabListReducer,
   [BIRTHDAY_SAVING_LIST_REDUCER_KEY]: BirthdaySavingsListReducer,
+  [PICKUP_MODAL_REDUCER_KEY]: PickupModalReducer,
   [RECOMMENDATIONS_REDUCER_KEY]: RecommendationsReducer,
 });

@@ -1,4 +1,5 @@
 import PropTypes from 'prop-types';
+import { isEmpty } from 'lodash';
 
 const getSelectedAddress = (addressList, onFileAddressKey) => {
   let selectedAddress = null;
@@ -57,31 +58,15 @@ const getShowAddressFields = ({ isEditing, isAddNewAddress, modalState, userAddr
   return isEditing || isAddNewAddress || modalState || (userAddresses && userAddresses.size === 0);
 };
 
-const getFieldsValidation = ({ address }) => {
+const getFieldsValidation = ({ syncErrorsObject }) => {
   let disabledState = false;
-  const {
-    firstName,
-    lastName,
-    addressLine1,
-    addressLine2,
-    city,
-    state,
-    zipCode,
-    country,
-    phoneNumber,
-  } = address;
-  if (
-    !firstName ||
-    !lastName ||
-    !addressLine1 ||
-    !addressLine2 ||
-    !city ||
-    !state ||
-    !zipCode ||
-    !country ||
-    !phoneNumber
-  ) {
-    disabledState = true;
+  if (syncErrorsObject) {
+    const {
+      syncError: { address: addressErrors },
+    } = syncErrorsObject;
+    if (addressErrors && !isEmpty(addressErrors) && Object.keys(addressErrors).length !== 1) {
+      disabledState = true;
+    }
   }
   return disabledState;
 };
