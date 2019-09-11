@@ -138,7 +138,7 @@ export const bodyCopyStyles = {
       mobilefontFamily="primary"
       fontSize="fs48"
       textAlign="center"
-      lineHeight="45px"
+      lineHeight="47px"
       {...props}
     />
   ),
