@@ -333,6 +333,19 @@ export default css`
   .style4 {
     font-family: ${props => props.theme.typography.fonts.primary};
     font-size: ${props => props.theme.typography.fontSizes.fs48};
+
+    @media ${props => props.theme.mediaQuery.large} {
+      font-size: 86px;
+    }
+  }
+  .style5 {
+    font-family: ${props => props.theme.typography.fonts.primary};
+    font-size: ${props => props.theme.typography.fontSizes.fs48};
+    font-weight: ${props => props.theme.typography.fontWeights.black};
+
+    @media ${props => props.theme.mediaQuery.large} {
+      font-size: 86px;
+    }
   }
   .style10 {
     font-family: ${props => props.theme.typography.fonts.primary};

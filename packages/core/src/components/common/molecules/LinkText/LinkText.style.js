@@ -43,7 +43,6 @@ export default css`
   .style12 {
     font-family: ${props => props.theme.typography.fonts.primary};
     font-size: ${props => props.theme.typography.fontSizes.fs14};
-    padding: 0 ${props => props.theme.spacing.ELEM_SPACING.XL};
 
     @media ${props => props.theme.mediaQuery.large} {
       font-size: ${props => props.theme.typography.fontSizes.fs20};

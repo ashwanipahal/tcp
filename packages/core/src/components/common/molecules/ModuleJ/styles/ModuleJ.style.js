@@ -8,6 +8,10 @@ export default css`
       props.layout !== 'alt' ? props.theme.colorPalette.white : 'none'};
   }
 
+  .moduleJ-topview {
+    position: relative;
+  }
+
   .moduleJ-promo-alt {
     background-color: ${props => (props.bgColor ? props.bgColor : props.theme.colorPalette.white)};
     margin-bottom: ${props => props.theme.spacing.ELEM_SPACING.MED};
@@ -19,8 +23,16 @@ export default css`
     position: absolute;
     margin-top: ${props => props.theme.spacing.ELEM_SPACING.XS};
 
-    @media ${props => props.theme.mediaQuery.medium} {
+    @media ${props => props.theme.mediaQuery.large} {
       margin-top: ${props => props.theme.spacing.ELEM_SPACING.SM};
+    }
+  }
+
+  .moduleJ-promo-header:first-child span {
+    padding: 0 ${props => props.theme.spacing.ELEM_SPACING.SM};
+
+    @media ${props => props.theme.mediaQuery.medium} {
+      margin-top: ${props => props.theme.spacing.ELEM_SPACING.XL};
     }
   }
 
@@ -47,7 +59,7 @@ export default css`
   }
 
   &.layout-alt .moduleJ-promoBanner {
-    margin: 0 auto;
+    margin: ${props => props.theme.spacing.ELEM_SPACING.SM} auto 0;
     width: auto;
   }
 
@@ -72,7 +84,7 @@ export default css`
   }
 
   .moduleJ__carousel-wrapper {
-    margin-top: 27px;
+    margin-top: ${props => props.theme.spacing.ELEM_SPACING.XXS};
 
     .slick-list {
       margin-right: -22%;
@@ -85,6 +97,10 @@ export default css`
         margin-right: auto;
       }
     }
+  }
+
+  &.layout-alt .moduleJ__carousel-wrapper {
+    margin-top: 0;
   }
 
   .moduleJ-image-link {
@@ -110,10 +126,6 @@ export default css`
   }
 
   .moduleJ-cta-btn {
-    margin-top: 24px;
-
-    @media ${props => props.theme.mediaQuery.large} {
-      margin-top: 16px;
-    }
+    margin-top: ${props => props.theme.spacing.ELEM_SPACING.MED};
   }
 `;
