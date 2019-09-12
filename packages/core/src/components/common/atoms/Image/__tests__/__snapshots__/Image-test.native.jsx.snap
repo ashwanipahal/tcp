@@ -2,7 +2,7 @@
 
 exports[`ImageCompVanilla should pass source value 1`] = `
 <Image
-  accessibilityLabel="image"
+  accessibilityLabel=""
   accessibilityRole="image"
   source="foo"
 />
