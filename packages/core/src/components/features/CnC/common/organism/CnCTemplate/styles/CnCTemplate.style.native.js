@@ -44,8 +44,8 @@ export const CheckoutButton = styled.TouchableOpacity`
 export const BonusPointsWrapper = styled.View`
   padding-top: ${props => props.theme.spacing.ELEM_SPACING.MED};
   padding-bottom: ${props => props.theme.spacing.ELEM_SPACING.MED};
-  border-top-width: ${props => props.theme.spacing.ELEM_SPACING.XXXS};
-  border-bottom-width: ${props => props.theme.spacing.ELEM_SPACING.XXXS};
+  border-top-width: ${props => props.theme.spacing.ELEM_SPACING.MED};
+  border-bottom-width: ${props => props.theme.spacing.ELEM_SPACING.MED};
   border-style: solid;
   border-color: ${props => props.theme.colors.PRIMARY.PALEGRAY};
 `;

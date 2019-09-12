@@ -1,6 +1,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import OrderLedgerContainer from '@tcp/core/src/components/features/CnC/common/organism/OrderLedger';
+import { isCanada } from '@tcp/core/src/utils';
 import ProductTileWrapper from '../../CartItemTile/organisms/ProductTileWrapper/container/ProductTileWrapper.container';
 import CouponAndPromos from '../../common/organism/CouponAndPromos';
 import AirmilesBanner from '../../common/organism/AirmilesBanner';
@@ -42,9 +43,11 @@ const BagPage = ({
               </BonusPointsWrapper>
             </RowSectionStyle>
           )}
-          <RowSectionStyle>
-            <AirmilesBanner />
-          </RowSectionStyle>
+          {isCanada() && (
+            <RowSectionStyle>
+              <AirmilesBanner />
+            </RowSectionStyle>
+          )}
           <RowSectionStyle>
             <CouponAndPromos />
           </RowSectionStyle>
