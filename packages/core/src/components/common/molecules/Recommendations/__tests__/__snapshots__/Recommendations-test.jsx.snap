@@ -36,7 +36,7 @@ exports[`N component renders correctly 1`] = `
       <Styled(Carousel)
         carouselConfig={
           Object {
-            "autoplay": true,
+            "autoplay": false,
             "customArrowLeft": "/static/images/right-carousel-carrot.svg",
             "customArrowRight": "/static/images/right-carousel-carrot.svg",
           }
