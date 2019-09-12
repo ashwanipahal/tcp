@@ -1,10 +1,5 @@
 /* eslint-disable extra-rules/no-commented-out-code */
 
-/** @module productsAndItemsPropTypes
- * @summary basic propTypes used for coupons
- *
- * @author Ben
- */
 import { PropTypes } from 'prop-types';
 
 // export const AVAILABILITY = {

@@ -51,7 +51,7 @@ export class AboutYouSurveyContainer extends PureComponent {
     setSurveyAnswersAction(data);
     // Close modal when we have submitted last survey answer
     if (data.answer2 && toggleModal) {
-      toggleModalState();
+      toggleModalState('mountSurveyModal');
     }
   };
 
