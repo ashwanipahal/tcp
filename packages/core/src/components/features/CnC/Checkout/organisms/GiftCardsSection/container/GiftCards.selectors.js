@@ -18,10 +18,15 @@ const getGiftCardErrors = state => {
   return state.Checkout.getIn(['values', 'giftCardError']);
 };
 
+const getShowAddGiftCard = state => {
+  return state.Checkout.getIn(['values', 'showAddGiftCard']) || false;
+};
+
 export default {
   getGrandTotal,
   getAppliedGiftCards,
   getGiftCardsTotal,
   getGiftSectionLabels,
   getGiftCardErrors,
+  getShowAddGiftCard,
 };

@@ -7,6 +7,7 @@ import styles from '../styles/GiftCards.style';
 import { Row, Col, BodyCopy, Button } from '../../../../../../common/atoms';
 import Grid from '../../../../../../common/molecules/Grid';
 import GiftCardTile from '../../../molecules/GiftCardTile';
+import AddGiftCardForm from '../../../../../account/Payment/AddGiftCard/views/AddGiftCardForm';
 
 const GiftCardSectionHeading = (labels, isGiftCardApplied = false) => {
   return (
@@ -24,9 +25,24 @@ const GiftCardSectionHeading = (labels, isGiftCardApplied = false) => {
     </BodyCopy>
   );
 };
-
-const renderAddNewGiftButton = (labels, orderBalanceTotal, appliedGiftCards) => {
-  if (orderBalanceTotal > 0 && appliedGiftCards && appliedGiftCards.size < 5) {
+const renderAddGiftCard = hideAddGiftCard => {
+  const paymentGC1 = {
+    lbl_payment_giftCardNoPlaceholder: 'Gift Card #',
+    lbl_common_backLink: 'Back',
+    lbl_payment_cancelCard: 'Cancel',
+    lbl_payment_addCard: 'Apply',
+    lbl_payment_giftCardPinPlaceholder: 'Pin #',
+  };
+  const labels = { paymentGC: paymentGC1 };
+  return (
+    <BodyCopy tag="div" className="gift-addgiftcard-container">
+      <AddGiftCardForm labels={labels} goBackToPayment={hideAddGiftCard} />
+    </BodyCopy>
+  );
+};
+const renderAddNewGiftButton = (labels, orderBalanceTotal, appliedGiftCards, showAddGiftCard) => {
+  const ok = true;
+  if ((orderBalanceTotal > 0 && appliedGiftCards && appliedGiftCards.size < 5) || ok) {
     return (
       <Row className="elem-mt-LRG elem-mb-LRG">
         <Col
@@ -37,7 +53,7 @@ const renderAddNewGiftButton = (labels, orderBalanceTotal, appliedGiftCards) => 
           }}
         >
           <Button
-            onClick={() => {}}
+            onClick={() => showAddGiftCard()}
             className="new_gift_card_button"
             buttonVariation="variable-width"
             type="submit"
@@ -62,6 +78,9 @@ export const GiftCards = ({
   giftCardErrors,
   orderBalanceTotal,
   className,
+  showAddGiftCard,
+  enableAddGiftCard,
+  hideAddGiftCard,
 }) => {
   return (
     <Grid className={className}>
@@ -132,7 +151,9 @@ export const GiftCards = ({
             ))}
         </Col>
       </Row>
-      {renderAddNewGiftButton(labels, orderBalanceTotal, appliedGiftCards)}
+      {!enableAddGiftCard &&
+        renderAddNewGiftButton(labels, orderBalanceTotal, appliedGiftCards, showAddGiftCard)}
+      {enableAddGiftCard && renderAddGiftCard(hideAddGiftCard)}
     </Grid>
   );
 };
@@ -146,6 +167,9 @@ GiftCards.propTypes = {
   labels: PropTypes.shape({}),
   giftCardErrors: PropTypes.shape({}),
   orderBalanceTotal: PropTypes.number,
+  showAddGiftCard: PropTypes.func.isRequired,
+  enableAddGiftCard: PropTypes.bool,
+  hideAddGiftCard: PropTypes.func.isRequired,
 };
 
 GiftCards.defaultProps = {
@@ -155,6 +179,7 @@ GiftCards.defaultProps = {
   labels: {},
   giftCardErrors: {},
   orderBalanceTotal: 0,
+  enableAddGiftCard: false,
 };
 
 export default withStyles(GiftCards, styles);

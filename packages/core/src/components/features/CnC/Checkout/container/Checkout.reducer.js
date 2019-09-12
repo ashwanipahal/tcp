@@ -49,6 +49,17 @@ const initialState = fromJS({
   },
 });
 
+function uiGiftCardFlagReducer(checkout, action) {
+  switch (action.type) {
+    case CheckoutConstants.CHECKOUT_FLAGS_SET_BILLING_ADD_GIFT_CARD_SHOW:
+      return checkout.setIn(['values', 'showAddGiftCard'], true);
+    case CheckoutConstants.CHECKOUT_FLAGS_SET_BILLING_ADD_GIFT_CARD_HIDE:
+      return checkout.setIn(['values', 'showAddGiftCard'], false);
+    default:
+      return checkout;
+  }
+}
+
 function uiFlagReducer(checkout, action) {
   switch (action.type) {
     // case 'CHECKOUT_FLAGS_SET_STAGE':
@@ -86,6 +97,7 @@ function uiFlagReducer(checkout, action) {
       return checkout.setIn(['values', 'orderBalanceTotal'], action.payload);
     case CheckoutConstants.CHECKOUT_VAlUES_SET_GIFT_WRAP:
       return checkout.CartPageReducer.setIn(['orderDetails', 'checkout', 'giftWrap']);
+
     // case 'CHECKOUT_FLAGS_SET_REVIEW_VISTED':
     //   return merge(uiFlags, { isReviewVisited: action.payload });
     // case 'CHECKOUT_FLAGS_SET_PAYMENT_ERROR':
@@ -106,7 +118,7 @@ function uiFlagReducer(checkout, action) {
     //    return uiFlags;
     //  }
     default:
-      return checkout;
+      return uiGiftCardFlagReducer(checkout, action);
   }
 }
 

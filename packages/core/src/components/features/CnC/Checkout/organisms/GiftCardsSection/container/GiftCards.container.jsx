@@ -5,7 +5,11 @@ import { getGiftCards } from '../../../../../account/Payment/container/Payment.s
 import GiftCard from '../views/GiftCards.view';
 import GiftCardSelector from './GiftCards.selectors';
 import GIFT_CARD_ACTIONS from './GiftCards.action';
-import { setOrderBalanceTotal } from '../../../container/Checkout.action';
+import {
+  setOrderBalanceTotal,
+  setShowGiftCardForm,
+  setHideGiftCardForm,
+} from '../../../container/Checkout.action';
 import { toastMessageInfo } from '../../../../../../common/atoms/Toast/container/Toast.actions.native';
 
 export class GiftCardsContainer extends React.PureComponent<Props> {
@@ -43,6 +47,9 @@ export class GiftCardsContainer extends React.PureComponent<Props> {
       itemOrderGrandTotal,
       itemsGiftCardTotal,
       toastMessage,
+      showAddGiftCard,
+      enableAddGiftCard,
+      hideAddGiftCard,
     } = this.props;
 
     let availableGiftCards = [];
@@ -68,6 +75,9 @@ export class GiftCardsContainer extends React.PureComponent<Props> {
         giftCardErrors={giftCardErrors}
         orderBalanceTotal={orderBalanceTotal}
         toastMessage={toastMessage}
+        showAddGiftCard={showAddGiftCard}
+        enableAddGiftCard={enableAddGiftCard}
+        hideAddGiftCard={hideAddGiftCard}
       />
     );
   }
@@ -90,6 +100,12 @@ export const mapDispatchToProps = dispatch => {
     toastMessage: palyoad => {
       dispatch(toastMessageInfo(palyoad));
     },
+    showAddGiftCard: () => {
+      dispatch(setShowGiftCardForm());
+    },
+    hideAddGiftCard: () => {
+      dispatch(setHideGiftCardForm());
+    },
   };
 };
 
@@ -101,6 +117,7 @@ const mapStateToProps = state => {
     itemsGiftCardTotal: GiftCardSelector.getGiftCardsTotal(state),
     labels: GiftCardSelector.getGiftSectionLabels(state),
     giftCardErrors: GiftCardSelector.getGiftCardErrors(state),
+    enableAddGiftCard: GiftCardSelector.getShowAddGiftCard(state),
   };
 };
 

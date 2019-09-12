@@ -12,6 +12,14 @@ const styles = css`
     font-size: ${props => props.theme.typography.fontSizes.fs16};
     margin-right: ${props => props.theme.spacing.ELEM_SPACING.XS};
   }
+  .gift-addgiftcard-container {
+    .TextBox__input {
+      background-color: ${props => props.theme.colors.PRIMARY.PALEGRAY};
+    }
+    .TextBox__label {
+      font-size: ${props => props.theme.typography.fontSizes.fs16};
+    }
+  }
 `;
 
 export default styles;
