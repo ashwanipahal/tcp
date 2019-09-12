@@ -483,6 +483,19 @@ function isCardNotUpdated(state, cardId) {
   return getBillingValues(state).onFileCardId === cardId;
 }
 
+const getReviewLabels = state => {
+  return {
+    header: getLabelValue(state.Labels, 'lbl_review_title', 'review', 'checkout'),
+    backLinkBilling: getLabelValue(
+      state.Labels,
+      'lbl_review_backLinkBilling',
+      'review',
+      'checkout'
+    ),
+    nextSubmitText: getLabelValue(state.Labels, 'lbl_review_nextSubmit', 'review', 'checkout'),
+  };
+};
+
 export default {
   getRecalcOrderPointsInterval,
   getIsOrderHasShipping,
@@ -532,4 +545,5 @@ export default {
   getCheckoutProgressBarLabels,
   getGiftServicesFormData,
   getGiftServicesSend,
+  getReviewLabels,
 };

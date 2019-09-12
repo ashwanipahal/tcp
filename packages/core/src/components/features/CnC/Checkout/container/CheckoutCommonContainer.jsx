@@ -14,6 +14,7 @@ import {
   addNewShippingAddress,
   submitBillingSection,
   initActions,
+  submitReviewSection,
 } from './Checkout.action';
 
 import CheckoutPage from '../views/CheckoutPage.view';
@@ -52,6 +53,7 @@ const {
   getShippingAddress,
   getCheckoutProgressBarLabels,
   getGiftWrappingValues,
+  getReviewLabels,
 } = selectors;
 
 export class CheckoutContainer extends React.Component<Props> {
@@ -107,6 +109,8 @@ export class CheckoutContainer extends React.Component<Props> {
       labels,
       submitBilling,
       checkoutProgressBarLabels,
+      submitReview,
+      reviewProps,
     } = this.props;
     const availableStages = checkoutUtil.getAvailableStages(
       cartOrderItems,
@@ -148,6 +152,8 @@ export class CheckoutContainer extends React.Component<Props> {
         addNewShippingAddressData={addNewShippingAddressData}
         labels={labels}
         submitBilling={submitBilling}
+        submitReview={submitReview}
+        reviewProps={reviewProps}
       />
     );
   }
@@ -192,6 +198,9 @@ export const mapDispatchToProps = dispatch => {
     },
     fetchNeedHelpContent: contentIds => {
       dispatch(BAG_PAGE_ACTIONS.fetchModuleX(contentIds));
+    },
+    submitReview: payload => {
+      dispatch(submitReviewSection(payload));
     },
   };
 };
@@ -259,6 +268,9 @@ const mapStateToProps = state => {
     needHelpContentId: BagPageSelector.getNeedHelpContentId(state),
     getGiftServicesContentTcpId: BagPageSelector.getGiftServicesContentTcpId(state),
     getGiftServicesContentGymId: BagPageSelector.getGiftServicesContentGymId(state),
+    reviewProps: {
+      labels: getReviewLabels(state),
+    },
   };
 };
 
