@@ -330,9 +330,11 @@ export default css`
   /*
   * Module J Promo Banner styles
   *********************************/
-
+  .style4 {
+    font-family: ${props => props.theme.typography.fonts.primary};
+    font-size: ${props => props.theme.typography.fontSizes.fs48};
+  }
   .style10 {
-    display: block;
     font-family: ${props => props.theme.typography.fonts.primary};
     font-size: ${props => props.theme.typography.fontSizes.fs20};
     font-weight: ${props => props.theme.typography.fontWeights.semibold};
@@ -343,7 +345,6 @@ export default css`
     }
   }
   .style11 {
-    display: block;
     font-family: ${props => props.theme.typography.fonts.primary};
     font-size: ${props => props.theme.typography.fontSizes.fs48};
     font-weight: ${props => props.theme.typography.fontWeights.black};

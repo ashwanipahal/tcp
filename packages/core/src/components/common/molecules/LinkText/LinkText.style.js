@@ -41,28 +41,15 @@ export default css`
 
   /* Module J Heading styles */
   .style12 {
-    background-color: ${props => props.theme.colorPalette.white};
-    display: block;
     font-family: ${props => props.theme.typography.fonts.primary};
     font-size: ${props => props.theme.typography.fontSizes.fs14};
-    position: absolute;
-    margin-top: -18px;
-    left: 50%;
-    transform: translateX(-50%);
-    width: 70%;
-
-    @media ${props => props.theme.mediaQuery.medium} {
-      margin-top: -28px;
-    }
+    padding: 0 ${props => props.theme.spacing.ELEM_SPACING.XL};
 
     @media ${props => props.theme.mediaQuery.large} {
       font-size: ${props => props.theme.typography.fontSizes.fs20};
-      margin-top: -30px;
-      width: 55%;
     }
   }
   .style13 {
-    display: block;
     font-family: ${props => props.theme.typography.fonts.primary};
     font-weight: ${props => props.theme.typography.fontWeights.black};
     font-size: ${props => props.theme.typography.fontSizes.fs32};

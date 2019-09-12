@@ -4,7 +4,7 @@ export default {
     name: 'moduleJ',
     type: 'module',
     composites: {
-      bgColor: '#f53d3d',
+      bgColor: '#d8d8d8',
       headerText: [
         {
           textItems: [

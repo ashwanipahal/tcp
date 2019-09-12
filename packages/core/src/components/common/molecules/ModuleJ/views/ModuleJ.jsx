@@ -25,73 +25,116 @@ class ModuleJ extends React.PureComponent {
   };
 
   render() {
-    const { className, productTabList, mediaLinkedList, headerText, promoBanner } = this.props;
+    const {
+      className,
+      productTabList,
+      mediaLinkedList,
+      headerText,
+      layout,
+      promoBanner,
+    } = this.props;
     const { currentCatId } = this.state;
     const { CAROUSEL_OPTIONS, PROMO_IMG_DATA } = config;
     const data = productTabList ? productTabList[currentCatId] : productTabList;
     return (
-      <Grid className={className}>
-        <Row fullBleed={{ small: true, medium: true }} className="moduleJ-topview">
-          <Col
-            className="moduleJ-topbar"
-            colSize={{
-              small: 6,
-              medium: 8,
-              large: 12,
-            }}
-          />
-          <Col
-            className="moduleJ-promo-image-left"
-            colSize={{
-              small: 0,
-              medium: 2,
-              large: 3,
-            }}
-            hideCol={{
-              small: true,
-            }}
-          >
-            <DamImage
-              imgConfigs={PROMO_IMG_DATA.imgConfig}
-              imgData={{
-                alt: mediaLinkedList[0] && mediaLinkedList[0].image.alt,
-                url: mediaLinkedList[0] && mediaLinkedList[0].image.url,
+      <Grid className={`${className} layout-${layout}`}>
+        {layout !== 'alt' ? (
+          <Row fullBleed={{ small: true, medium: true }} className="moduleJ-topview">
+            <Col
+              className="moduleJ-topbar"
+              colSize={{
+                small: 6,
+                medium: 8,
+                large: 12,
               }}
             />
-          </Col>
-          <Col
-            className="moduleJ-promo"
-            colSize={{
-              small: 6,
-              medium: 4,
-              large: 6,
-            }}
-            ignoreGutter={{
-              small: true,
-            }}
-          >
-            <LinkText component="div" headerText={headerText} className="moduleJ-promo-header" />
-            <PromoBanner promoBanner={promoBanner} className="moduleJ-promoBanner" />
-            <ProductTabList onProductTabChange={this.onTabChange} categoryList={categoryListMock} />
-          </Col>
-          <Col
-            className="moduleJ-promo-image-right"
-            colSize={{
-              small: 6,
-              medium: 2,
-              large: 3,
-            }}
-          >
-            <DamImage
-              className="moduleJ-promo-img"
-              imgConfigs={PROMO_IMG_DATA.imgConfig}
-              imgData={{
-                alt: mediaLinkedList[1] && mediaLinkedList[1].image.alt,
-                url: mediaLinkedList[1] && mediaLinkedList[1].image.url,
+            <Col
+              className="moduleJ-promo-image-left"
+              colSize={{
+                small: 0,
+                medium: 2,
+                large: 3,
               }}
-            />
-          </Col>
-        </Row>
+              hideCol={{
+                small: true,
+              }}
+            >
+              <DamImage
+                imgConfigs={PROMO_IMG_DATA.imgConfig}
+                imgData={{
+                  alt: mediaLinkedList[0] && mediaLinkedList[0].image.alt,
+                  url: mediaLinkedList[0] && mediaLinkedList[0].image.url,
+                }}
+              />
+            </Col>
+            <Col
+              className="moduleJ-promo"
+              colSize={{
+                small: 6,
+                medium: 4,
+                large: 6,
+              }}
+              ignoreGutter={{
+                small: true,
+              }}
+            >
+              <LinkText component="div" headerText={headerText} className="moduleJ-promo-header" />
+              <PromoBanner promoBanner={promoBanner} className="moduleJ-promoBanner" />
+              <ProductTabList
+                onProductTabChange={this.onTabChange}
+                categoryList={categoryListMock}
+              />
+            </Col>
+            <Col
+              className="moduleJ-promo-image-right"
+              colSize={{
+                small: 6,
+                medium: 2,
+                large: 3,
+              }}
+            >
+              <DamImage
+                className="moduleJ-promo-img"
+                imgConfigs={PROMO_IMG_DATA.imgConfig}
+                imgData={{
+                  alt: mediaLinkedList[1] && mediaLinkedList[1].image.alt,
+                  url: mediaLinkedList[1] && mediaLinkedList[1].image.url,
+                }}
+              />
+            </Col>
+          </Row>
+        ) : (
+          <Row fullBleed={{ small: true, medium: true, large: true }} className="moduleJ-topview">
+            <Col
+              className="moduleJ-promo-alt"
+              colSize={{
+                small: 6,
+                medium: 8,
+                large: 12,
+              }}
+              ignoreGutter={{
+                small: true,
+                medium: true,
+                large: true,
+              }}
+            >
+              <LinkText component="div" headerText={headerText} className="moduleJ-promo-header" />
+              <PromoBanner promoBanner={promoBanner} className="moduleJ-promoBanner" />
+            </Col>
+            <Col
+              colSize={{
+                small: 6,
+                medium: 8,
+                large: 12,
+              }}
+            >
+              <ProductTabList
+                onProductTabChange={this.onTabChange}
+                categoryList={categoryListMock}
+              />
+            </Col>
+          </Row>
+        )}
         <Row>
           <Col
             className="moduleJ__carousel-wrapper"
@@ -164,6 +207,7 @@ ModuleJ.defaultProps = {
   productTabList: {},
   mediaLinkedList: [],
   promoBanner: [],
+  layout: 'default',
 };
 
 ModuleJ.propTypes = {
@@ -187,7 +231,10 @@ ModuleJ.propTypes = {
     })
   ),
   promoBanner: PropTypes.arrayOf(PropTypes.shape({})),
+  layout: PropTypes.string,
 };
 
-export default withStyles(errorBoundary(ModuleJ), moduleJStyle);
+const styledModuleJ = withStyles(errorBoundary(ModuleJ), moduleJStyle);
+styledModuleJ.defaultProps = ModuleJ.defaultProps;
+export default styledModuleJ;
 export { ModuleJ as ModuleJVanilla };

@@ -3,12 +3,24 @@ import { css } from 'styled-components';
 export default css`
   margin-top: ${props => props.theme.spacing.LAYOUT_SPACING.MED};
 
+  span {
+    background-color: ${props =>
+      props.layout !== 'alt' ? props.theme.colorPalette.white : 'none'};
+  }
+
+  .moduleJ-promo-alt {
+    background-color: ${props => (props.bgColor ? props.bgColor : props.theme.colorPalette.white)};
+    margin-bottom: ${props => props.theme.spacing.ELEM_SPACING.MED};
+    padding: ${props => props.theme.spacing.ELEM_SPACING.XL} 0;
+  }
+
   .moduleJ-topbar {
     border-top: 3px solid ${props => props.theme.colorPalette.yellow['500']};
-    margin: 0 0 ${props => props.theme.spacing.ELEM_SPACING.XS};
+    position: absolute;
+    margin-top: ${props => props.theme.spacing.ELEM_SPACING.XS};
 
     @media ${props => props.theme.mediaQuery.medium} {
-      margin: 0 0 ${props => props.theme.spacing.ELEM_SPACING.MED};
+      margin-top: ${props => props.theme.spacing.ELEM_SPACING.SM};
     }
   }
 
@@ -22,14 +34,31 @@ export default css`
   }
 
   .moduleJ-promoBanner {
-    margin-bottom: ${props => props.theme.spacing.ELEM_SPACING.SM};
+    margin: 0 auto ${props => props.theme.spacing.ELEM_SPACING.SM};
+    width: 350px;
+
+    @media ${props => props.theme.mediaQuery.medium} {
+      width: 260px;
+    }
+
+    @media ${props => props.theme.mediaQuery.large} {
+      width: 350px;
+    }
+  }
+
+  &.layout-alt .moduleJ-promoBanner {
+    margin: 0 auto;
+    width: auto;
+  }
+
+  .moduleJ-promo-image-left {
+    margin-top: ${props => props.theme.spacing.ELEM_SPACING.LRG};
   }
 
   .moduleJ-promo-image-right {
     margin-top: ${props => props.theme.spacing.ELEM_SPACING.LRG};
 
     @media ${props => props.theme.mediaQuery.medium} {
-      margin-top: 0;
       text-align: right;
     }
   }
