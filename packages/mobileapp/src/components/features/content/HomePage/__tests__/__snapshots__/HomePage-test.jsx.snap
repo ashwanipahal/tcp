@@ -160,7 +160,7 @@ exports[`HomePageView should render correctly 1`] = `
           },
           "textItems": Array [
             Object {
-              "style": "style3",
+              "style": "style12",
               "text": "Every Length, Style, Color & Size",
             },
           ],
@@ -180,8 +180,8 @@ exports[`HomePageView should render correctly 1`] = `
           },
           "textItems": Array [
             Object {
-              "style": "style4",
-              "text": "THE SHOP ALL",
+              "style": "style13",
+              "text": "THE SHORT SHOP",
             },
           ],
         },
@@ -196,7 +196,7 @@ exports[`HomePageView should render correctly 1`] = `
             "crop_m": "",
             "crop_t": "",
             "title": "Boys",
-            "url": "https://res.cloudinary.com/tcp-dam-test/image/upload/v1558543115/ecom/assets/content/tcp/us/home/moduled/US-HP-050519-MINIME1_h9cwcd.jpg",
+            "url": "https://tcp-dam-test-ressh.cloudinary.com/image/upload/v1562731929/Image_14_bp7ih0.jpg",
           },
           "link": Object {
             "action": "",
@@ -214,7 +214,7 @@ exports[`HomePageView should render correctly 1`] = `
             "crop_m": "c_crop,g_face:center,q_auto:best,w_962",
             "crop_t": "c_crop,g_face:center,q_auto:best,w_962",
             "title": "Girls",
-            "url": "https://res.cloudinary.com/tcp-dam-test/image/upload/v1558543115/ecom/assets/content/tcp/us/home/moduled/US-HP-050519-MINIME1_h9cwcd.jpg",
+            "url": "https://tcp-dam-test-ressh.cloudinary.com/image/upload/v1565145744/mod-h-kids_b9ivyr.png",
           },
           "link": Object {
             "action": "",
@@ -245,11 +245,11 @@ exports[`HomePageView should render correctly 1`] = `
           },
           "textItems": Array [
             Object {
-              "style": "large_text_semibold_normal",
+              "style": "style10",
               "text": "ALL SHORTS",
             },
             Object {
-              "style": "large_text_semibold_bold",
+              "style": "style11",
               "text": "60% OFF",
             },
           ],
