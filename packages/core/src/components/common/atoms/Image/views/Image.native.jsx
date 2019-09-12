@@ -35,12 +35,21 @@ const ImageComp = (props: Props) => {
         {...otherProps}
         host={host}
         accessibilityRole="image"
+        accessibilityLabel="image"
         source={{ uri: cropImageUrl(urlVal, cropVal) }}
       />
     );
   }
 
-  return <ImageComponent {...otherProps} host={host} source={source} accessibilityRole="image" />;
+  return (
+    <ImageComponent
+      {...otherProps}
+      host={host}
+      source={source}
+      accessibilityRole="image"
+      accessibilityLabel="image"
+    />
+  );
 };
 
 export default withStyles(ImageComp, style);
