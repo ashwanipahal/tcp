@@ -44,17 +44,17 @@ export default css`
 
   .moduleJ__carousel-wrapper {
     margin-top: 27px;
-  }
 
-  .slick-list {
-    margin-right: -22%;
+    .slick-list {
+      margin-right: -22%;
 
-    @media ${props => props.theme.mediaQuery.medium} {
-      margin-right: -15%;
-    }
+      @media ${props => props.theme.mediaQuery.medium} {
+        margin-right: -15%;
+      }
 
-    @media ${props => props.theme.mediaQuery.large} {
-      margin-right: auto;
+      @media ${props => props.theme.mediaQuery.large} {
+        margin-right: auto;
+      }
     }
   }
 

@@ -17,7 +17,7 @@ export default css`
       padding-right: 0;
     }
 
-    @media ${props => props.theme.mediaQuery.medium} {
+    @media ${props => props.theme.mediaQuery.large} {
       padding: 0 ${props => props.theme.spacing.ELEM_SPACING.XS};
     }
   }
