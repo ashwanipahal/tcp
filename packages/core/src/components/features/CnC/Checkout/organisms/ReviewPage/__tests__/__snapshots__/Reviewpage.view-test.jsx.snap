@@ -5,8 +5,29 @@ exports[`ReviewPageVanilla component should renders correctly props not present 
   <Styled(CheckoutSectionTitleDisplay)
     dataLocator="review-title"
   />
+  <div
+    className="review-billing"
+  />
   <Styled(CheckoutFooter)
     backLinkHandler={[Function]}
+    footerBody={
+      Array [
+        undefined,
+        <ForwardRef
+          dataLocator="termAndConditionText"
+          onClick={[Function]}
+          to="/#"
+          underline={true}
+        />,
+        undefined,
+        <ForwardRef
+          dataLocator="PrivacyText"
+          onClick={[Function]}
+          to="/#"
+          underline={true}
+        />,
+      ]
+    }
     hideBackLink={true}
   />
 </div>
