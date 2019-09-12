@@ -20,3 +20,10 @@ export function getFavoriteStore(payload) {
     type: STORE_LOCATOR_CONSTANTS.GET_FAVORITE_STORE,
   };
 }
+
+export function getSetSuggestedStores (payload) {
+  return {
+    payload,
+    type: STORE_LOCATOR_CONSTANTS.STORES_SET_SUGGESTED_STORES
+  };
+}
