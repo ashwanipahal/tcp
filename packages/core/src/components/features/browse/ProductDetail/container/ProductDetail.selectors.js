@@ -20,12 +20,15 @@ export const getRatingsProductId = state => {
 
 // TODO - This is temporary - fix it by introducing the image carousel and zoom
 export const getDefaultImage = state => {
-  const images =
-    state.ProductDetail.getIn(['currentProduct']) &&
-    state.ProductDetail.getIn(['currentProduct', 'imagesByColor']).toJS();
-  const keysForImage = (images && Object.keys(images)) || [];
+  const firstColor = state.ProductDetail.getIn([
+    'currentProduct',
+    'colorFitsSizesMap',
+    0,
+    'color',
+    'name',
+  ]);
   return (
-    keysForImage.length &&
-    state.ProductDetail.getIn(['currentProduct', 'imagesByColor', keysForImage[0], 'basicImageUrl'])
+    firstColor &&
+    state.ProductDetail.getIn(['currentProduct', 'imagesByColor', firstColor, 'basicImageUrl'])
   );
 };
