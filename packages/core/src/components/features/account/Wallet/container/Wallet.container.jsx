@@ -4,8 +4,8 @@ import PropTypes from 'prop-types';
 import WalletView from '../views';
 import { getGlobalLabels, getCommonLabels } from '../../Account/container/Account.selectors';
 
-export const WalletContainer = ({ labels, commonLabels }) => {
-  return <WalletView labels={labels} commonLabels={commonLabels} />;
+export const WalletContainer = ({ labels, commonLabels, ...props }) => {
+  return <WalletView labels={labels} commonLabels={commonLabels} {...props} />;
 };
 
 export const mapStateToProps = state => {
