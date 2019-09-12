@@ -38,7 +38,7 @@ class Recommendations extends Component {
               options={config.CAROUSEL_OPTIONS}
               inheritedStyles={Carousel}
               carouselConfig={{
-                autoplay: true,
+                autoplay: false,
                 customArrowLeft: getIconPath('carousel-big-carrot'),
                 customArrowRight: getIconPath('carousel-big-carrot'),
               }}
