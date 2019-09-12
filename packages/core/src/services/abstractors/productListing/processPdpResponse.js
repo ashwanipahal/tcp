@@ -99,8 +99,11 @@ const processPdpResponse = ({
     unbxdProdId: baseProduct.uniqueId,
     alternateSizes,
     productId: baseProduct.uniqueId,
-    promotionalMessage: baseProduct.TCPLoyaltyPromotionTextUSStore || '',
-    promotionalPLCCMessage: baseProduct.TCPLoyaltyPLCCPromotionTextUSStore || '',
+    promotionalMessage:
+      baseProduct.TCPLoyaltyPromotionTextUSStore || '<span>Random message 1 on second part</span>',
+    promotionalPLCCMessage:
+      baseProduct.TCPLoyaltyPLCCPromotionTextUSStore ||
+      '<span>Random message 2 on second part</span>',
     long_product_title: baseProduct.long_product_title || '',
     bundleProducts: baseProduct.products || [],
   },
