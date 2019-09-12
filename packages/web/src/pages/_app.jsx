@@ -34,11 +34,6 @@ const Script = dynamic(() => import('../components/common/atoms/Script'), { ssr:
 function AnalyticsScript() {
   return <Script src={process.env.ANALYTICS_SCRIPT_URL} />;
 }
-
-// TODO: Needs to be removed once this feature is enabled in analytics script
-// Recommendation script injection - (adobe.target) API
-const RecommendationsScript = () => <Script src={process.env.RECOMMENDATIONS_SCRIPT_URL} />;
-
 class TCPWebApp extends App {
   constructor(props) {
     super(props);
@@ -192,7 +187,6 @@ class TCPWebApp extends App {
         </ThemeProvider>
         {/* Inject analytics script if enabled */}
         {process.env.ANALYTICS && <AnalyticsScript />}
-        {process.env.RECOMMENDATIONS_SCRIPT_URL && <RecommendationsScript />}
       </Container>
     );
   }

@@ -25,4 +25,16 @@ const GiftCardButtonCal = styled.View`
   padding: ${props => props.theme.spacing.ELEM_SPACING.XS} 0;
 `;
 
-export { PageStyle, Container, GiftCardSectionHeading, GiftCardBody, GiftCardButtonCal };
+const HeadsUpMessage = styled.Text`
+  flex-direction: row;
+  margin-top: ${props => props.theme.spacing.ELEM_SPACING.XS};
+`;
+
+export {
+  PageStyle,
+  Container,
+  GiftCardSectionHeading,
+  GiftCardBody,
+  GiftCardButtonCal,
+  HeadsUpMessage,
+};

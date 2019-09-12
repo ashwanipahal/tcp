@@ -5,7 +5,7 @@ import CustomImage from '../../../atoms/CustomImage';
 import {
   getImagesToDisplay,
   getMapSliceForColorProductId,
-  getProductListToPath,
+  getProductListToPathInMobileApp,
 } from '../../ProductList/utils/productsCommonUtils';
 
 class ImageCarousel extends React.PureComponent {
@@ -40,7 +40,7 @@ class ImageCarousel extends React.PureComponent {
     const { activeSlideIndex } = this.state;
     const { colorsMap, imagesByColor, productInfo } = item;
     const { pdpUrl } = productInfo;
-    const modifiedPdpUrl = getProductListToPath(pdpUrl) || '';
+    const modifiedPdpUrl = getProductListToPathInMobileApp(pdpUrl) || '';
     const { colorProductId } = colorsMap[selectedColorIndex];
     const curentColorEntry = getMapSliceForColorProductId(colorsMap, colorProductId);
     const imageUrls = getImagesToDisplay({
