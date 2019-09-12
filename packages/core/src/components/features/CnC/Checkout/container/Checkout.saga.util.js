@@ -10,17 +10,15 @@ import {
   updateAddressPut,
 } from '../../../../common/organisms/AddEditAddress/container/AddEditAddress.saga';
 import { getAddressList } from '../../../account/AddressBook/container/AddressBook.saga';
-import { setOnFileAddressKey } from './Checkout.action';
+import { setOnFileAddressKey, setGiftWrap } from './Checkout.action';
 import utility from '../util/utility';
 import { CHECKOUT_ROUTES } from '../Checkout.constants';
+import {
+  addGiftWrappingOption,
+  removeGiftWrappingOption,
+} from '../../../../../services/abstractors/CnC/Checkout';
 
-export function* addRegisteredUserAddress({
-  address,
-  phoneNumber,
-  emailAddress,
-  setAsDefault,
-  saveToAccount,
-}) {
+export function* addRegisteredUserAddress({ address, phoneNumber, emailAddress, setAsDefault }) {
   let addOrEditAddressResponse = null;
   const selectedAddressId = yield select(selectors.getOnFileAddressKey);
   const userAddresses = yield select(getAddressListState);
@@ -46,7 +44,7 @@ export function* addRegisteredUserAddress({
           phoneNumber,
           emailAddress,
           primary: `${setAsDefault}`,
-          phone1Publish: `${saveToAccount}`,
+          phone1Publish: 'false',
           fromPage: '',
         },
       },
@@ -144,4 +142,25 @@ export function* addNewShippingAddress({ payload }) {
 
 export function* routeToPickupPage(recalc) {
   yield call(utility.routeToPage, CHECKOUT_ROUTES.pickupPage, { recalc });
+}
+export function* addAndSetGiftWrappingOptions(payload) {
+  if (payload.hasGiftWrapping) {
+    try {
+      const res = yield call(addGiftWrappingOption, payload);
+      if (res) {
+        yield put(setGiftWrap(payload));
+      }
+    } catch (err) {
+      // throw getSubmissionError(store, 'submitShippingSection', err);
+    }
+  } else {
+    try {
+      const res = yield call(removeGiftWrappingOption, payload);
+      if (res) {
+        yield put(setGiftWrap(payload));
+      }
+    } catch (err) {
+      // throw getSubmissionError(store, 'submitShippingSection', err);
+    }
+  }
 }

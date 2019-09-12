@@ -18,6 +18,7 @@ import {
   getLoadedProductsPages,
 } from './ProductListing.selectors';
 import { isPlccUser } from '../../../account/User/container/User.selectors';
+import submitProductListingFiltersForm from './productListingOnSubmitHandler';
 
 class ProductListingContainer extends React.PureComponent {
   componentDidMount() {
@@ -47,6 +48,8 @@ class ProductListingContainer extends React.PureComponent {
       lastLoadedPageNumber,
       labelsFilter,
       categoryId,
+      getProducts,
+      navigation,
       ...otherProps
     } = this.props;
     return (
@@ -66,6 +69,9 @@ class ProductListingContainer extends React.PureComponent {
         labels={labels}
         isLoadingMore={isLoadingMore}
         lastLoadedPageNumber={lastLoadedPageNumber}
+        onSubmit={submitProductListingFiltersForm}
+        getProducts={getProducts}
+        navigation={navigation}
         {...otherProps}
       />
     );

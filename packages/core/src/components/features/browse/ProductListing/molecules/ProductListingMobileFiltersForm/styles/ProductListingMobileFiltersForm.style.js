@@ -7,7 +7,7 @@ export default css`
       width: 120px;
     }
     @media ${props => props.theme.mediaQuery.smallOnly} {
-      width: 96px;
+      width: 95px;
       .item-select {
         padding-left: ${props => props.theme.spacing.ELEM_SPACING.MED};
       }
@@ -135,7 +135,7 @@ export default css`
 
     .size-title {
       @media ${props => props.theme.mediaQuery.smallOnly} {
-        width: 96px;
+        width: 95px;
       }
     }
 

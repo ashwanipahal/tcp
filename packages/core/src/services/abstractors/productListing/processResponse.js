@@ -146,7 +146,6 @@ const getPlpUrlQueryValues = filtersAndSort => {
   routeURL = urlQueryValues === '' ? routeURL.substring(0, routeURL.length - 1) : routeURL;
 
   routerPush(`/c?cid=${urlPathCID}`, routeURL, { shallow: true });
-
   return true;
 };
 
@@ -197,6 +196,7 @@ const processResponse = (
     filtersAndSort,
     l1category
   );
+
   // We will get the avaialable l3 list in L2 page call in bucekting scenario.
   const availableL3List = getAvailableL3List(res.body.facets);
   const availableL3InFilter = getAppliedL3Filters(availableL3List);

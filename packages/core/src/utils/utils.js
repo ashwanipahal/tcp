@@ -120,6 +120,36 @@ export const bindAllClassMethodsToThis = (obj, namePrefix = '', isExclude = fals
   }
 };
 
+export const capitalize = string => {
+  return string.replace(/\b\w/g, l => l.toUpperCase());
+};
+
+/**
+ * @method getPromotionalMessage - this function checks whether the user is PLCC or not and
+ *         returns the message respectively
+ * @param isPlcc  boolean value for plcc user
+ * @param {handlers}  the messages containing both plcc user message and non-plcc user message
+ */
+export const getPromotionalMessage = (isPlcc, handlers) => {
+  if (!!handlers.promotionalPLCCMessage || !!handlers.promotionalMessage) {
+    return isPlcc ? handlers.promotionalPLCCMessage : handlers.promotionalMessage;
+  }
+  return null;
+};
+
+export const toTimeString = est => {
+  let hh = est.getHours();
+  let mm = est.getMinutes();
+  const ampm = hh >= 12 ? ' pm' : ' am';
+  hh %= 12;
+  hh = hh > 0 ? hh : 12;
+  mm = mm < 10 ? `0${mm}` : mm;
+  if (hh === 11 && mm === 59 && ampm === ' pm') {
+    return 'Midnight';
+  }
+  return `${hh}:${mm}${ampm}`;
+};
+
 export const isGymboree = () => {
   const { brandId } = getAPIConfig();
   return brandId === API_CONFIG.brandIds.gym;
@@ -211,6 +241,59 @@ export const formatAddress = address => ({
   phone1: address.phoneNumber,
 });
 
+const MONTH_SHORT_FORMAT = {
+  JAN: 'Jan',
+  FEB: 'Feb',
+  MAR: 'Mar',
+  APR: 'Apr',
+  MAY: 'May',
+  JUN: 'Jun',
+  JUL: 'Jul',
+  AUG: 'Aug',
+  SEP: 'Sep',
+  OCT: 'Oct',
+  NOV: 'Nov',
+  DEC: 'Dec',
+};
+
+export const getBirthDateOptionMap = () => {
+  const monthOptionsMap = [
+    { id: '1', displayName: MONTH_SHORT_FORMAT.JAN },
+    { id: '2', displayName: MONTH_SHORT_FORMAT.FEB },
+    { id: '3', displayName: MONTH_SHORT_FORMAT.MAR },
+    { id: '4', displayName: MONTH_SHORT_FORMAT.APR },
+    { id: '5', displayName: MONTH_SHORT_FORMAT.MAY },
+    { id: '6', displayName: MONTH_SHORT_FORMAT.JUN },
+    { id: '7', displayName: MONTH_SHORT_FORMAT.JUL },
+    { id: '8', displayName: MONTH_SHORT_FORMAT.AUG },
+    { id: '9', displayName: MONTH_SHORT_FORMAT.SEP },
+    { id: '10', displayName: MONTH_SHORT_FORMAT.OCT },
+    { id: '11', displayName: MONTH_SHORT_FORMAT.NOV },
+    { id: '12', displayName: MONTH_SHORT_FORMAT.DEC },
+  ];
+
+  const yearOptionsMap = [];
+  const dayOptionsMap = [];
+  const nowYear = new Date().getFullYear();
+
+  for (let i = 1900; i < nowYear - 17; i += 1) {
+    yearOptionsMap.push({ id: i.toString(), displayName: i.toString() });
+  }
+
+  for (let i = 1; i < 32; i += 1) {
+    if (i <= 9) {
+      i = 0 + i;
+    }
+    dayOptionsMap.push({ id: i.toString(), displayName: i.toString() });
+  }
+
+  return {
+    daysMap: dayOptionsMap,
+    monthsMap: monthOptionsMap,
+    yearsMap: yearOptionsMap,
+  };
+};
+
 /**
  * @function calculateAge
  * @param { string } month
@@ -274,11 +357,27 @@ export const getLabelValue = (labelState, labelKey, subCategory, category) => {
   return typeof labelValue === 'string' ? labelValue : labelKey;
 };
 
+export const getErrorSelector = (state, labels, errorKey) => {
+  const errorParameters = state && state.getIn(['errorParameters', '0']);
+  const errorCode = state && state.get('errorCode');
+  if (
+    (errorParameters && getLabelValue(labels, `${errorKey}_${errorParameters}`)) ||
+    (errorCode && getLabelValue(labels, `${errorKey}_${errorCode}`))
+  ) {
+    if (errorParameters) {
+      return getLabelValue(labels, `${errorKey}_${errorParameters}`);
+    }
+    return getLabelValue(labels, `${errorKey}_${errorCode}`);
+  }
+  return (state && state.getIn(['errorMessage', '_error'])) || getLabelValue(labels, `${errorKey}`);
+};
+
 export const generateUniqueKeyUsingLabel = label => {
   return label.replace(/\s/g, '_');
 };
 
 export default {
+  getPromotionalMessage,
   getIconPath,
   getFlagIconPath,
   getLocator,
@@ -297,4 +396,5 @@ export default {
   getCacheKeyForRedis,
   calculateAge,
   generateUniqueKeyUsingLabel,
+  getErrorSelector,
 };

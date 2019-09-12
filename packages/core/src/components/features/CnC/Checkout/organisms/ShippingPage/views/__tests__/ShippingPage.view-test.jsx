@@ -21,6 +21,7 @@ describe('Shipping Page', () => {
       shipmentMethods: [{}],
       loadShipmentMethods: () => {},
       handleSubmit: () => {},
+      userAddresses: List(),
     };
     const tree = shallow(<ShippingPage {...props} />);
     tree.instance().submitShippingData({ address, shipmentMethods: {}, smsSignUp: {} });

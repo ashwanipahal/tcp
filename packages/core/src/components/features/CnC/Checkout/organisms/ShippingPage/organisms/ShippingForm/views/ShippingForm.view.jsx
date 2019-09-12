@@ -1,6 +1,8 @@
 import React from 'react';
 import { FormSection, reduxForm, Field, change, resetSection } from 'redux-form';
 import BodyCopy from '../../../../../../../../common/atoms/BodyCopy';
+import { Row, Col } from '../../../../../../../../common/atoms';
+
 import InputCheckbox from '../../../../../../../../common/atoms/InputCheckbox';
 import AddressFields from '../../../../../../../../common/molecules/AddressFields';
 import SMSFormFields from '../../../../../../../../common/molecules/SMSFormFields';
@@ -14,6 +16,7 @@ import withStyles from '../../../../../../../../common/hoc/withStyles';
 import RegisteredShippingForm from '../../RegisteredShippingForm';
 import { getLabelValue } from '../../../../../../../../../utils';
 import { propTypes, defaultProps } from './ShippingForm.view.utils';
+import GiftServices from '../../../molecules/GiftServices';
 
 import styles from '../styles/ShippingForm.styles';
 
@@ -23,16 +26,19 @@ class ShippingForm extends React.Component {
   static changeAddressFields(nextProps) {
     const { onFileAddressKey, dispatch, userAddresses, isMobile, shippingAddress } = nextProps;
     let address = {};
+    let isDefaultAddress = false;
     if (userAddresses && userAddresses.size > 0) {
       address = userAddresses.find(add => add.addressId === onFileAddressKey);
       dispatch(change(formName, 'address.addressLine1', address.addressLine[0]));
       dispatch(change(formName, 'address.addressLine2', address.addressLine[1]));
+      isDefaultAddress = address.primary === 'true';
+      if (!isDefaultAddress && userAddresses.size === 1) isDefaultAddress = true;
     } else if (shippingAddress) {
       address = shippingAddress;
       dispatch(change(formName, 'address.addressLine1', address.addressLine1));
       dispatch(change(formName, 'address.addressLine2', address.addressLine2));
+      isDefaultAddress = true;
     }
-    const isDefaultAddress = address.primary === 'true';
     dispatch(change(formName, 'address.firstName', address.firstName));
     dispatch(change(formName, 'address.lastName', address.lastName));
     dispatch(change(formName, 'address.city', address.city));
@@ -60,32 +66,10 @@ class ShippingForm extends React.Component {
   }
 
   componentDidUpdate(prevProps) {
-    const {
-      shipmentMethods: prevShipmentMethods,
-      isSaveToAddressBookChecked: prevSaveToAddressBookChecked,
-      isAddNewAddress: prevAddNewAddress,
-    } = prevProps;
-    const {
-      shipmentMethods: nextShipmentMethods,
-      dispatch,
-      defaultShipmentId,
-      isSaveToAddressBookChecked,
-      isAddNewAddress,
-      isAddNewAddress: nextIsAddNewAddress,
-    } = this.props;
-    const { modalType, modalState } = this.state;
+    const { shipmentMethods: prevShipmentMethods } = prevProps;
+    const { shipmentMethods: nextShipmentMethods, dispatch, defaultShipmentId } = this.props;
     if (prevShipmentMethods && nextShipmentMethods && prevShipmentMethods !== nextShipmentMethods) {
       dispatch(change(formName, 'shipmentMethods.shippingMethodId', defaultShipmentId));
-    }
-    if (
-      prevSaveToAddressBookChecked !== isSaveToAddressBookChecked &&
-      (!isAddNewAddress || (modalType === 'add' && modalState))
-    ) {
-      dispatch(change(formName, 'defaultShipping', isSaveToAddressBookChecked));
-    }
-
-    if (!prevAddNewAddress && nextIsAddNewAddress !== prevAddNewAddress) {
-      dispatch(change(formName, 'saveToAddressBook', nextIsAddNewAddress));
     }
     this.checkPropsOnUpdation(prevProps);
   }
@@ -239,6 +223,7 @@ class ShippingForm extends React.Component {
       className,
       dispatch,
       isOrderUpdateChecked,
+      isGiftServicesChecked,
       smsSignUpLabels,
       selectedShipmentId,
       addressPhoneNo,
@@ -257,6 +242,7 @@ class ShippingForm extends React.Component {
       addNewShippingAddress,
       labels,
       shippingAddress,
+      setDefaultAddressId,
     } = this.props;
     const { isEditing, modalType, modalState } = this.state;
     return (
@@ -295,6 +281,7 @@ class ShippingForm extends React.Component {
               addNewShippingAddress={addNewShippingAddress}
               shippingAddress={shippingAddress}
               labels={labels}
+              setDefaultAddressId={setDefaultAddressId}
             />
           )}
           {isGuest && (
@@ -329,22 +316,38 @@ class ShippingForm extends React.Component {
             </FormSection>
           )}
           {this.renderEmailSignUp()}
-          <FormSection name="shipmentMethods">
-            <div className="shipment-methods-form">
-              <ShipmentMethods
-                shipmentMethods={shipmentMethods}
+
+          <Row fullBleed>
+            <Col colSize={{ small: 6, medium: 8, large: 6 }}>
+              <FormSection name="shipmentMethods">
+                <div className="shipment-methods-form">
+                  <ShipmentMethods
+                    shipmentMethods={shipmentMethods}
+                    formName={formName}
+                    formSection="shipmentMethods"
+                    selectedShipmentId={selectedShipmentId}
+                    shipmentHeader={getLabelValue(
+                      labels,
+                      'lbl_shipping_shipmentHeader',
+                      'shipping',
+                      'checkout'
+                    )}
+                  />
+                </div>
+              </FormSection>
+            </Col>
+            <Col colSize={{ small: 6, medium: 8, large: 6 }}>
+              <GiftServices
+                showDefaultCheckbox={false}
                 formName={formName}
-                formSection="shipmentMethods"
-                selectedShipmentId={selectedShipmentId}
-                shipmentHeader={getLabelValue(
-                  labels,
-                  'lbl_shipping_shipmentHeader',
-                  'shipping',
-                  'checkout'
-                )}
+                formSection="giftServices"
+                variation="secondary"
+                isGiftServicesChecked={isGiftServicesChecked}
+                dispatch={dispatch}
               />
-            </div>
-          </FormSection>
+            </Col>
+          </Row>
+
           <CheckoutFooter
             hideBackLink={!!orderHasPickUp}
             backLinkHandler={routeToPickupPage}

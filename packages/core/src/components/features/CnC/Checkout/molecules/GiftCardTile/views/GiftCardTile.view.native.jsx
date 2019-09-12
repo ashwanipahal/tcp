@@ -86,9 +86,9 @@ export default class GiftCardTile extends React.PureComponent {
     let remainingBalance = '';
     if (isGiftCardApplied) {
       cardEndingIn = cardData.get('endingNumbers');
-      remainingBalance = ` | ${getLabelValue(labels, 'lbl_giftcard_remainingBal')}: ${cardData.get(
-        'remainingBalance'
-      )}`;
+      remainingBalance = ` | ${getLabelValue(labels, 'lbl_giftcard_remainingBal')}: $${cardData
+        .get('remainingBalance')
+        .toFixed(2)}`;
     }
 
     return (

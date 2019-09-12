@@ -1,6 +1,6 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import { FlatList } from 'react-native';
+import { View, FlatList } from 'react-native';
 import CustomImage from '../../../atoms/CustomImage';
 import {
   getImagesToDisplay,
@@ -8,8 +8,35 @@ import {
 } from '../../ProductList/utils/productsCommonUtils';
 
 class ImageCarousel extends React.PureComponent {
+  constructor(props) {
+    super(props);
+    this.state = { activeSlideIndex: 0 };
+  }
+
+  setActiveSlideIndex = index => {
+    const { activeSlideIndex } = this.state;
+    if (index !== activeSlideIndex) {
+      this.setState({
+        activeSlideIndex: index,
+      });
+    }
+  };
+
+  onViewableItemsChanged = ({ changed }) => {
+    const len = (changed && changed.length) || 0;
+    for (let i = 0; i < len; i += 1) {
+      const item = changed[i];
+      const { isViewable, index } = item;
+      if (isViewable) {
+        this.setActiveSlideIndex(index);
+        break;
+      }
+    }
+  };
+
   render() {
     const { item, selectedColorIndex } = this.props;
+    const { activeSlideIndex } = this.state;
     const { colorsMap, imagesByColor } = item;
     const { colorProductId } = colorsMap[selectedColorIndex];
     const curentColorEntry = getMapSliceForColorProductId(colorsMap, colorProductId);
@@ -20,6 +47,10 @@ class ImageCarousel extends React.PureComponent {
     });
     return (
       <FlatList
+        onViewableItemsChanged={this.onViewableItemsChanged}
+        viewabilityConfig={{
+          itemVisiblePercentThreshold: 50,
+        }}
         initialNumToRender={1}
         initialScrollIndex={0}
         refreshing={false}
@@ -28,8 +59,17 @@ class ImageCarousel extends React.PureComponent {
         horizontal
         showsHorizontalScrollIndicator={false}
         listKey={(_, index) => index.toString()}
-        renderItem={imageItem => {
-          return <CustomImage imageSource={imageItem.item} />;
+        renderItem={imgSource => {
+          const { index } = imgSource;
+          return (
+            <View
+              accessible={index === activeSlideIndex}
+              accessibilityRole="image"
+              accessibilityLabel={`product image ${index + 1}`}
+            >
+              <CustomImage imageSource={imgSource.item} />
+            </View>
+          );
         }}
       />
     );

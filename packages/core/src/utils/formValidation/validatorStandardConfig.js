@@ -23,6 +23,12 @@ export const formValidationMessages = {
   country: {
     required: 'lbl_err_country_required',
   },
+  userBirthMonth: {
+    required: 'lbl_err_userbirthdaymonth_required',
+  },
+  userBirthYear: {
+    required: 'lbl_err_userbirthdayyear_required',
+  },
   state: {
     stateRequired: (linkedPropsValues, linkedFieldsValues) =>
       linkedFieldsValues[0] === 'US'
@@ -71,8 +77,8 @@ export const formValidationMessages = {
   cardPin: 'Please enter your gift card pin number',
 
   Email: {
-    required: `lbl_err_giftcardnumber`,
-    validEmail: 'lbl_err_cardpin',
+    required: `lbl_err_email_req`,
+    validEmail: 'lbl_err_email_validemail',
   },
   emailAddress: {
     required: `lbl_err_email_req`,
@@ -129,6 +135,12 @@ export const formValidationMessages = {
     dob: 'lbl_err_year_dob',
   },
   orderNumber: 'lbl_err_ordernumber',
+  cvvCode: {
+    required: 'lbl_err_cvvcode_required',
+    cvvNumber: 'lbl_err_cvvcode_cvvnumber',
+    cvvLengthThree: 'lbl_err_cvvcode_cvvlengththree',
+    cvvLengthFour: 'lbl_err_cvvcode_cvvlengthfour',
+  },
   phoneNumberWithAlt: {
     eitherRequired: enterPhoneNumber,
     phone: validPhoneNumber,
@@ -163,6 +175,13 @@ export const formValidationRules = {
     },
   },
   country: {
+    required: true,
+  },
+
+  userBirthMonth: {
+    required: true,
+  },
+  userBirthYear: {
     required: true,
   },
   firstName: {
@@ -298,6 +317,12 @@ export const formValidationRules = {
   },
   year: {
     dob: true,
+  },
+  cvvCode: {
+    required: true,
+    cvvNumber: true,
+    cvvLengthThree: true,
+    cvvLengthFour: true,
   },
   phoneNumberWithAlt: {
     phone: true,

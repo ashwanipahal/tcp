@@ -1,4 +1,5 @@
 import styled, { css } from 'styled-components/native';
+import { Platform } from 'react-native';
 
 const Container = styled.View`
   width: 100%;
@@ -36,6 +37,14 @@ const ModalContent = styled.View`
   padding-bottom: ${props => props.theme.spacing.ELEM_SPACING.LRG};
 `;
 
+const SortContent = styled.View`
+  background: ${props => props.theme.colorPalette.text.lightgray};
+  width: 100%;
+  padding-bottom: ${Platform.OS === 'ios' ? props => props.theme.spacing.ELEM_SPACING.LRG : '0'};
+  position: absolute;
+  bottom: ${Platform.OS === 'ios' ? '0' : '50%'};
+`;
+
 const ModalTitleContainer = styled.View`
   justify-content: center;
   align-items: center;
@@ -64,4 +73,5 @@ export {
   ModalOverlay,
   ModalContent,
   ModalCloseTouchable,
+  SortContent,
 };

@@ -13,11 +13,20 @@ const ProductListView = ({
   breadCrumbs,
   onPressFilter,
   onPressSort,
+  onSubmit,
+  getProducts,
+  navigation,
   ...otherProps
 }) => {
   return (
     <PageContainer>
-      <FilterModal filters={filters} labelsFilter={labelsFilter} />
+      <FilterModal
+        filters={filters}
+        labelsFilter={labelsFilter}
+        onSubmit={onSubmit}
+        getProducts={getProducts}
+        navigation={navigation}
+      />
       <ProductList products={products} {...otherProps} />
     </PageContainer>
   );
@@ -30,6 +39,9 @@ ProductListView.propTypes = {
   labelsFilter: PropTypes.shape({}),
   onPressFilter: PropTypes.func.isRequired,
   onPressSort: PropTypes.func.isRequired,
+  onSubmit: PropTypes.func.isRequired,
+  getProducts: PropTypes.func.isRequired,
+  navigation: PropTypes.objectOf(PropTypes.oneOfType([PropTypes.string])),
 };
 
 ProductListView.defaultProps = {
@@ -37,6 +49,7 @@ ProductListView.defaultProps = {
   filters: {},
   breadCrumbs: [],
   labelsFilter: {},
+  navigation: {},
 };
 
 export default withStyles(ProductListView, styles);

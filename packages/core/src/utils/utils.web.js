@@ -180,44 +180,6 @@ export const getCreditCardExpirationOptionMap = () => {
   };
 };
 
-export const getBirthDateOptionMap = () => {
-  const monthOptionsMap = [
-    { id: '1', displayName: MONTH_SHORT_FORMAT.JAN },
-    { id: '2', displayName: MONTH_SHORT_FORMAT.FEB },
-    { id: '3', displayName: MONTH_SHORT_FORMAT.MAR },
-    { id: '4', displayName: MONTH_SHORT_FORMAT.APR },
-    { id: '5', displayName: MONTH_SHORT_FORMAT.MAY },
-    { id: '6', displayName: MONTH_SHORT_FORMAT.JUN },
-    { id: '7', displayName: MONTH_SHORT_FORMAT.JUL },
-    { id: '8', displayName: MONTH_SHORT_FORMAT.AUG },
-    { id: '9', displayName: MONTH_SHORT_FORMAT.SEP },
-    { id: '10', displayName: MONTH_SHORT_FORMAT.OCT },
-    { id: '11', displayName: MONTH_SHORT_FORMAT.NOV },
-    { id: '12', displayName: MONTH_SHORT_FORMAT.DEC },
-  ];
-
-  const yearOptionsMap = [];
-  const dayOptionsMap = [];
-  const nowYear = new Date().getFullYear();
-
-  for (let i = 1900; i < nowYear - 17; i += 1) {
-    yearOptionsMap.push({ id: i.toString(), displayName: i.toString() });
-  }
-
-  for (let i = 1; i < 32; i += 1) {
-    if (i <= 9) {
-      i = 0 + i;
-    }
-    dayOptionsMap.push({ id: i.toString(), displayName: i.toString() });
-  }
-
-  return {
-    daysMap: dayOptionsMap,
-    monthsMap: monthOptionsMap,
-    yearsMap: yearOptionsMap,
-  };
-};
-
 /**
  * Calculates browser width and height, and informs the current viewport as per the defined viewport settings
  */
@@ -372,26 +334,19 @@ export const configurePlpNavigationFromCMSUrl = url => {
   return url;
 };
 
-export default {
-  importGraphQLClientDynamically,
-  importGraphQLQueriesDynamically,
-  isProduction,
-  isDevelopment,
-  getObjectValue,
-  createUrlSearchParams,
-  buildUrl,
-  getCreditCardExpirationOptionMap,
-  getBirthDateOptionMap,
-  getSiteId,
-  routerPush,
-  bindAllClassMethodsToThis,
-  scrollPage,
-  getCountriesMap,
-  getCurrenciesMap,
-  getModifiedLanguageCode,
-  siteRedirect,
-  languageRedirect,
-  redirectToPdp,
+/*
+ *
+ * @param {object} event the HTML element's element
+ * @param {number} key key for which the event needs to be triggered
+ * @param {function} method method passed which is to be invoked.
+ * @description this method invokes the parameter method received when respective
+ * keybord key is triggered
+ */
+
+export const handleGenericKeyDown = (event, key, method) => {
+  if (event.keyCode === key) {
+    method();
+  }
 };
 
 const getAPIInfoFromEnv = (apiSiteInfo, processEnv, siteId) => {
@@ -428,6 +383,50 @@ const getGraphQLApiFromEnv = (apiSiteInfo, processEnv, relHostname) => {
   };
 };
 
+/*
+ * @method numericStringToBool
+ * @description this method returns the bool value of string numeric passed
+ * @param {string} str the  string numeric value
+ */
+export const numericStringToBool = str => !!+str;
+
+// Parse boolean out of string true|false
+export const parseBoolean = bool => {
+  return bool === true || bool === '1' || (bool || '').toUpperCase() === 'TRUE';
+};
+
+/**
+ *
+ * @param {object} bossDisabledFlags carries the boss disability flags -
+ * bossCategoryDisabled,
+ * bossProductDisabled
+ * @returns the disability boolean value
+ */
+export const isBossProduct = bossDisabledFlags => {
+  const { bossCategoryDisabled, bossProductDisabled } = bossDisabledFlags;
+  return !(numericStringToBool(bossCategoryDisabled) || numericStringToBool(bossProductDisabled));
+};
+
+/**
+ * @function isBopsProduct
+ * @param {*} isUSStore
+ * @param {*} product
+ * @summary This BOPIS logic is to validate if product/color variant is eligible for BOPIS
+ * product is a color variant object of a product.
+ */
+export const isBopisProduct = (isUSStore, product) => {
+  let isOnlineOnly;
+  if (isUSStore) {
+    isOnlineOnly =
+      (product.TCPWebOnlyFlagUSStore && parseBoolean(product.TCPWebOnlyFlagUSStore)) || false;
+  } else {
+    isOnlineOnly =
+      (product.TCPWebOnlyFlagCanadaStore && parseBoolean(product.TCPWebOnlyFlagCanadaStore)) ||
+      false;
+  }
+  return !isOnlineOnly;
+};
+
 export const createAPIConfig = resLocals => {
   // TODO - Get data from env config - Brand, MellisaKey, BritverifyId, AcquisitionId, Domains, Asset Host, Unbxd Domain;
   // TODO - use isMobile and cookie as well..
@@ -456,4 +455,26 @@ export const createAPIConfig = resLocals => {
     currency,
     language,
   };
+};
+
+export default {
+  importGraphQLClientDynamically,
+  importGraphQLQueriesDynamically,
+  isProduction,
+  isDevelopment,
+  getObjectValue,
+  createUrlSearchParams,
+  buildUrl,
+  getCreditCardExpirationOptionMap,
+  getSiteId,
+  routerPush,
+  bindAllClassMethodsToThis,
+  scrollPage,
+  getCountriesMap,
+  getCurrenciesMap,
+  getModifiedLanguageCode,
+  siteRedirect,
+  languageRedirect,
+  redirectToPdp,
+  handleGenericKeyDown,
 };
