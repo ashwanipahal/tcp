@@ -315,6 +315,7 @@ const getBreadCrumbTrail = breadCrumbs => {
     ? breadCrumbs.map(crumb => ({
         displayName: crumb.displayName,
         urlPathSuffix: crumb.urlPathSuffix,
+        categoryId: crumb.categoryId,
       }))
     : [];
 };
