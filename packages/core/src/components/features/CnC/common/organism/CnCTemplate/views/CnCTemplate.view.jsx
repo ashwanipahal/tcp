@@ -17,6 +17,7 @@ const CnCTemplate = ({
   className,
   header: Header,
   isGuest,
+  showAccordian,
 }) => {
   return (
     <section className={className}>
@@ -38,7 +39,7 @@ const CnCTemplate = ({
               </div>
             )}
             <AirmilesBanner />
-            <CouponAndPromos />
+            <CouponAndPromos showAccordian={showAccordian} />
           </Col>
         )}
       </Row>
@@ -54,12 +55,14 @@ CnCTemplate.propTypes = {
   leftSection: PropTypes.node.isRequired,
   showLeftSection: PropTypes.bool,
   isGuest: PropTypes.bool.isRequired,
+  showAccordian: PropTypes.bool,
 };
 
 CnCTemplate.defaultProps = {
   bagActions: false,
   header: false,
   showLeftSection: true,
+  showAccordian: true,
 };
 
 export default withStyles(CnCTemplate, styles);

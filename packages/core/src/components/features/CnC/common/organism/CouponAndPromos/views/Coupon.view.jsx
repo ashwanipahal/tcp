@@ -1,11 +1,14 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import withStyles from '@tcp/core/src/components/common/hoc/withStyles';
+import BodyCopy from '@tcp/core/src/components/common/atoms/BodyCopy';
+import Col from '@tcp/core/src/components/common/atoms/Col';
 import CouponListSection from '../../../../../../common/organisms/CouponListSection';
 import CouponDetailModal from './CouponDetailModal.view';
 import CouponHelpModal from './CouponHelpModal.view';
 import CouponForm from '../../../molecules/CouponForm';
 import styles from '../styles/Coupon.style';
+import CollapsibleContainer from '../../../../../../common/molecules/CollapsibleContainer';
 
 class CouponView extends React.PureComponent<Props> {
   constructor(props) {
@@ -31,19 +34,37 @@ class CouponView extends React.PureComponent<Props> {
     });
   };
 
-  render() {
-    const {
-      isFetching,
-      labels,
-      handleApplyCoupon,
-      handleApplyCouponFromList,
-      appliedCouponList,
-      availableCouponList,
-      className,
-      handleRemoveCoupon,
-      handleErrorCoupon,
-    } = this.props;
-    const { detailStatus, helpStatus, selectedCoupon } = this.state;
+  getHeader = () => {
+    return (
+      <div className="elem-mb-SM" data-locator="bonuspointsdayhdr">
+        <BodyCopy
+          fontFamily="primary"
+          fontSize={['fs16', 'fs13', 'fs18']}
+          fontWeight="extrabold"
+          component="span"
+          className="elem-mr-XS"
+          color="primary.main"
+        >
+          REWARDS & OFFERS
+        </BodyCopy>
+      </div>
+    );
+  };
+
+  getContent = ({
+    isFetching,
+    labels,
+    handleApplyCoupon,
+    handleApplyCouponFromList,
+    appliedCouponList,
+    availableCouponList,
+    className,
+    handleRemoveCoupon,
+    handleErrorCoupon,
+    detailStatus,
+    helpStatus,
+    selectedCoupon,
+  }) => {
     return (
       <div className={className}>
         <CouponForm
@@ -105,6 +126,58 @@ class CouponView extends React.PureComponent<Props> {
             heading="Help Modal"
           />
         </div>
+      </div>
+    );
+  };
+
+  render() {
+    const {
+      isFetching,
+      labels,
+      handleApplyCoupon,
+      handleApplyCouponFromList,
+      appliedCouponList,
+      availableCouponList,
+      className,
+      handleRemoveCoupon,
+      handleErrorCoupon,
+      showAccordian,
+    } = this.props;
+    const { detailStatus, helpStatus, selectedCoupon } = this.state;
+    const header = this.getHeader({ labels });
+    const body = this.getContent({
+      isFetching,
+      labels,
+      handleApplyCoupon,
+      handleApplyCouponFromList,
+      appliedCouponList,
+      availableCouponList,
+      className,
+      handleRemoveCoupon,
+      handleErrorCoupon,
+      detailStatus,
+      helpStatus,
+      selectedCoupon,
+    });
+    return (
+      <div className={className}>
+        <Col
+          colSize={{
+            large: 12,
+            medium: 8,
+            small: 6,
+          }}
+          ignoreGutter={{ small: true, medium: true }}
+          className={showAccordian ? 'hide-in-large-up' : 'hideAccordian'}
+        >
+          <CollapsibleContainer
+            className={className}
+            header={header}
+            body={body}
+            iconLocator="arrowicon"
+          />
+        </Col>
+        <div className={showAccordian ? 'hide-in-medium-down' : ''}>{body}</div>
       </div>
     );
   }
