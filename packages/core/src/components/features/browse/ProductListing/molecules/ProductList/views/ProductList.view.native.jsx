@@ -31,7 +31,13 @@ class ProductList extends React.PureComponent {
    * @desc This is renderer method of the product tile list
    */
   renderItemList = itemData => {
-    const { isMatchingFamily, currencyExchange, currencySymbol, isPlcc } = this.props;
+    const {
+      isMatchingFamily,
+      currencyExchange,
+      currencySymbol,
+      isPlcc,
+      onGoToPDPPage,
+    } = this.props;
     const { item } = itemData;
     const { colorsMap, productInfo } = item;
     const { promotionalMessage, promotionalPLCCMessage } = productInfo;
@@ -65,6 +71,7 @@ class ProductList extends React.PureComponent {
         onFavorite={this.onFavorite}
         currencyExchange={currencyExchange}
         currencySymbol={currencySymbol}
+        onGoToPDPPage={onGoToPDPPage}
       />
     );
   };
@@ -125,6 +132,7 @@ ProductList.propTypes = {
   isMatchingFamily: PropTypes.bool,
   isPlcc: PropTypes.bool,
   /* eslint-enable */
+  onGoToPDPPage: PropTypes.func.isRequired,
 };
 
 ProductList.defaultProps = {

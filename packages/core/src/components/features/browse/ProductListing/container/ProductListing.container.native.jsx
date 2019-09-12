@@ -31,6 +31,17 @@ class ProductListingContainer extends React.PureComponent {
     getProducts({ URI: 'category', url, ignoreCache: true });
   };
 
+  onGoToPDPPage = pdpUrl => {
+    const { navigation } = this.props;
+    console.tron.log('navigation: ', pdpUrl, navigation);
+
+    navigation.navigate('ProductDetail', {
+      pdpUrl,
+      title: 'test',
+      reset: false,
+    });
+  };
+
   render() {
     const {
       productsBlock,
@@ -72,6 +83,7 @@ class ProductListingContainer extends React.PureComponent {
         onSubmit={submitProductListingFiltersForm}
         getProducts={getProducts}
         navigation={navigation}
+        onGoToPDPPage={this.onGoToPDPPage}
         {...otherProps}
       />
     );

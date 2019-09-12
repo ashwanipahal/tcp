@@ -7,9 +7,10 @@ function* fetchProductDetail({ payload: { productColorId } }) {
   try {
     const state = yield select();
     const productDetail = yield call(getProductInfoById, productColorId, state);
+    console.tron.log('productDetail:', productDetail);
     yield put(setProductDetails({ ...productDetail }));
   } catch (err) {
-    console.log(err);
+    console.tron.log('fetchProductDetail: error', err);
   }
 }
 
