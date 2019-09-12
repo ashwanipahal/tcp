@@ -51,6 +51,7 @@ exports[`Shipping Form should render correctly 1`] = `
       shippingAddressId={null}
       shippingLabels={Object {}}
       smsSignUpLabels={Object {}}
+      syncErrors={Object {}}
       toggleAddEditModal={[Function]}
       toggleIsEditing={[Function]}
       userAddresses={Array []}
