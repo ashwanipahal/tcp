@@ -1,5 +1,6 @@
 // @flow
 import React from 'react';
+import { Text } from 'react-native';
 import { Anchor, BodyCopy, Heading } from '../../../atoms';
 import { StyledText } from '../../../../../../styles/globalStyles/StyledText.style';
 
@@ -22,6 +23,7 @@ export const bodyCopyStyles = {
       fontFamily="primary"
       fontSize="fs12"
       fontWeight="regular"
+      textAlign="center"
       {...props}
     />
   ),
@@ -32,6 +34,7 @@ export const bodyCopyStyles = {
       fontFamily="primary"
       fontSize="fs12"
       fontWeight="extrabold"
+      textAlign="center"
       {...props}
     />
   ),
@@ -69,19 +72,24 @@ const getTextItems = (textItems, renderComponentInNewLine, useStyle) => {
     textItems.map(({ text, style }, index) => {
       if (style && useStyle) {
         // use embedded style to render BodyCopy if useStyle is true
-        const StyleBodyCopy = style ? bodyCopyStyles[style] : {};
+        const StyleBodyCopy = style ? bodyCopyStyles[style] : () => null;
         const updatedText =
           renderComponentInNewLine && index !== textItemsSize - 1 ? `${text}\n` : text;
+
         return (
           <StyleBodyCopy
             accessibilityRole="text"
             accessibilityLabel={updatedText}
-            text={index ? `${updatedText}` : updatedText}
+            text={updatedText}
             key={index.toString()}
           />
         );
       }
-      return <StyledText key={index.toString()}>{index ? ` ${text}` : text}</StyledText>;
+      return (
+        <StyledText accessibilityRole="text" accessibilityLabel={text} key={index.toString()}>
+          {index ? ` ${text}` : text}
+        </StyledText>
+      );
     })
   );
 };
@@ -118,6 +126,13 @@ const LinkText = (props: Props) => {
 
   return headerText.map(item => {
     const { link, textItems } = item;
+    if (useStyle) {
+      return (
+        <Anchor url={link.url} navigation={navigation}>
+          <Text>{getTextItems(textItems, renderComponentInNewLine, useStyle)}</Text>
+        </Anchor>
+      );
+    }
     return (
       <Anchor url={link.url} navigation={navigation}>
         <Component
