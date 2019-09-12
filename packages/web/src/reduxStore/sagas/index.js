@@ -48,6 +48,7 @@ import EmailSignupSaga from '../../components/common/molecules/EmailSignupModal/
 import SmsSignupSaga from '../../components/common/molecules/SmsSignupModal/container/SmsSignupModal.saga';
 import CountrySelectorSaga from '../../components/features/content/Header/molecules/CountrySelector/container/CountrySelector.saga';
 import SearchBarSaga from '../../components/features/content/Header/molecules/SearchBar/SearchBar.saga';
+import StoreLocatorSaga from '@tcp/core/src/components/features/storeLocator/container/StoreLocator.saga';
 
 export default function* rootSaga() {
   yield all([
@@ -99,5 +100,6 @@ export default function* rootSaga() {
     ProductTabListSaga(),
     RecommendationsSaga(),
     BillingPaymentSaga(),
+    StoreLocatorSaga(),
   ]);
 }
