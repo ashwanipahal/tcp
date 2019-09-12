@@ -61,7 +61,7 @@ export const config = {
   },
   CLIENT_SECRET_KEY: {
     pinterest: '4985207481876624718',
-    facebook: '621457808261442',
+    facebook: '2230615430380206',
     instagram: '1e3babbc821c4dd8aa9a644b7bb97f8e',
   },
   PICKUP_TYPE: {

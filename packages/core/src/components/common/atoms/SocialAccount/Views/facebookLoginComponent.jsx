@@ -52,7 +52,7 @@ const facebookSDK = () => {
           accessToken: res.authResponse.accessToken,
           userId: res.authResponse.userID,
         };
-        saveAccountInfo(elem.socialAccount, socialAccInfo, false);
+        //saveAccountInfo(elem.socialAccount, socialAccInfo, false);
       }
     });
   };
@@ -111,10 +111,10 @@ const logoutUser = () => {
         console.log(`expection ${ex}`)
 		}
 		/* istanbul ignore next */
-    saveAccountInfo(elem.socialAccount, {
-        accessToken: '',
-        userId: ''
-    },true)
+    // saveAccountInfo(elem.socialAccount, {
+    //     accessToken: '',
+    //     userId: ''
+    // },true)
 };
 
 export const loginUser = () => {
@@ -127,13 +127,14 @@ export const loginUser = () => {
   // }
 };
 
-const FacebookLoginComponent = (props) => {
+  class FacebookLoginComponent extends React.PureComponent<Props> {
 
   bodyEle = document.getElementsByTagName('body')[0];
   //Destruction with global variables of the file is giving me error that i need to decalre them again. Hence assigning values this way
-  saveAccountInfo = props.saveAccountInfo;
+  saveAccountInfo = this.props.saveAccountInfo;
 
 
+   render() {
     return (
       <div className="social-accounts__CTA" onClick={loginUser} tabIndex="0">
         {/* istanbul ignore next */
@@ -141,6 +142,7 @@ const FacebookLoginComponent = (props) => {
         click here
       </div>
     );
+   }
 }
 
 FacebookLoginComponent.propTypes = {
