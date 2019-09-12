@@ -44,6 +44,7 @@ const ShippingForm = ({
   setAsDefaultShipping,
   defaultAddressId,
   syncErrorsObject,
+  newUserPhoneNo,
 }) => {
   return (
     <>
@@ -66,6 +67,7 @@ const ShippingForm = ({
             setAsDefaultShipping={setAsDefaultShipping}
             defaultAddressId={defaultAddressId}
             syncErrorsObject={syncErrorsObject}
+            newUserPhoneNo={newUserPhoneNo}
           />
         )}
         {isGuest && (
@@ -216,6 +218,7 @@ ShippingForm.propTypes = {
   setAsDefaultShipping: PropTypes.func,
   defaultAddressId: PropTypes.string,
   syncErrorsObject: PropTypes.shape({}),
+  newUserPhoneNo: PropTypes.string,
 };
 
 ShippingForm.defaultProps = {
@@ -235,12 +238,15 @@ ShippingForm.defaultProps = {
   setAsDefaultShipping: null,
   defaultAddressId: null,
   syncErrorsObject: {},
+  newUserPhoneNo: null,
 };
 
 export default reduxForm({
   form: 'checkoutShipping',
   ...validateMethod, // a unique identifier for this form
   destroyOnUnmount: false,
+  enableReinitialize: true,
+  keepDirtyOnReinitialize: true,
 })(ShippingForm);
 
 export { ShippingForm as ShippingFormVanilla };

@@ -88,9 +88,20 @@ export class AddressDropdown extends React.PureComponent<Props> {
     };
   }
 
-  componentDidUpdate() {
+  componentDidUpdate(prevProps) {
     if (this.rowMarker) setTimeout(() => this.calculateDropDownPosition(), 300);
+    const { selectedValue, data } = this.props;
+    if (prevProps.selectedValue !== selectedValue) {
+      const selectedAddress = data.filter(item => item.id === selectedValue);
+      const selectedLabelState =
+        selectedAddress && selectedAddress.length && selectedAddress[0].label;
+      this.updateState({ selectedLabelState });
+    }
   }
+
+  updateState = ({ selectedLabelState }) => {
+    this.setState({ selectedLabelState });
+  };
 
   /**
    * Calculate the dimension and coordinates of drop down

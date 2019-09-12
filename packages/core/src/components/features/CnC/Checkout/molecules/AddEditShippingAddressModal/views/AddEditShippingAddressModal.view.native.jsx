@@ -27,7 +27,7 @@ const AddEditShippingAddress = ({
           : getLabelValue(labels, 'lbl_shipping_editHeading', 'shipping', 'checkout')
       }
     >
-      <ModalWrapper>
+      <ModalWrapper keyboardShouldPersistTaps="handled">
         {addressFields()}
         {defaultOptions()}
         {actionButtons()}

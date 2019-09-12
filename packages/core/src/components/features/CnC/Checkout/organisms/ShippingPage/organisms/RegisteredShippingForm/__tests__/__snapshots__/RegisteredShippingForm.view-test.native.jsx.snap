@@ -121,6 +121,7 @@ exports[`RegisteredShippingForm should call save Btn click handler 1`] = `
     name="onFileAddressKey"
     onValueChange={[Function]}
     selectListTitle="Select from address book"
+    selectedValue="12345"
     showButton={false}
     toggleModal={[Function]}
     variation="secondary"
@@ -149,10 +150,10 @@ exports[`RegisteredShippingForm should call save Btn click handler 1`] = `
       href="#"
       locator=""
       noLink={true}
-      noUnderline={true}
       onPress={[Function]}
       target="_blank"
-      text="edit"
+      text=""
+      underline={true}
       visible={false}
     />
   </Styled(View)>
@@ -223,6 +224,7 @@ exports[`RegisteredShippingForm should call save to account change 1`] = `
     name="onFileAddressKey"
     onValueChange={[Function]}
     selectListTitle="Select from address book"
+    selectedValue="12345"
     showButton={false}
     toggleModal={[Function]}
     variation="secondary"
@@ -251,10 +253,10 @@ exports[`RegisteredShippingForm should call save to account change 1`] = `
       href="#"
       locator=""
       noLink={true}
-      noUnderline={true}
       onPress={[Function]}
       target="_blank"
-      text="edit"
+      text=""
+      underline={true}
       visible={false}
     />
   </Styled(View)>
@@ -386,7 +388,13 @@ exports[`RegisteredShippingForm should call shoe default options with modal type
         dispatch={[MockFunction]}
         formName="checkoutShipping"
         formSection="address"
-        initialValues={Object {}}
+        initialValues={
+          Object {
+            "address": Object {
+              "addressLine1": null,
+            },
+          }
+        }
         isGuest={false}
         showDefaultCheckbox={false}
         showEmailAddress={true}
@@ -462,6 +470,7 @@ exports[`RegisteredShippingForm should render correctly  1`] = `
     name="onFileAddressKey"
     onValueChange={[Function]}
     selectListTitle="Select from address book"
+    selectedValue={null}
     showButton={false}
     toggleModal={[Function]}
     variation="secondary"
@@ -504,10 +513,10 @@ exports[`RegisteredShippingForm should render correctly  1`] = `
       href="#"
       locator=""
       noLink={true}
-      noUnderline={true}
       onPress={[Function]}
       target="_blank"
-      text="edit"
+      text=""
+      underline={true}
       visible={false}
     />
   </Styled(View)>
@@ -569,6 +578,7 @@ exports[`RegisteredShippingForm should render correctly with  addresses and call
     name="onFileAddressKey"
     onValueChange={[Function]}
     selectListTitle="Select from address book"
+    selectedValue={null}
     showButton={false}
     toggleModal={[Function]}
     variation="secondary"
@@ -611,10 +621,10 @@ exports[`RegisteredShippingForm should render correctly with  addresses and call
       href="#"
       locator=""
       noLink={true}
-      noUnderline={true}
       onPress={[Function]}
       target="_blank"
-      text="edit"
+      text=""
+      underline={true}
       visible={false}
     />
   </Styled(View)>
@@ -685,6 +695,7 @@ exports[`RegisteredShippingForm should render correctly with  addresses and call
     name="onFileAddressKey"
     onValueChange={[Function]}
     selectListTitle="Select from address book"
+    selectedValue="1234"
     showButton={false}
     toggleModal={[Function]}
     variation="secondary"
@@ -728,10 +739,10 @@ exports[`RegisteredShippingForm should render correctly with  addresses and call
       href="#"
       locator=""
       noLink={true}
-      noUnderline={true}
       onPress={[Function]}
       target="_blank"
-      text="edit"
+      text=""
+      underline={true}
       visible={false}
     />
   </Styled(View)>
@@ -802,6 +813,7 @@ exports[`RegisteredShippingForm should render correctly with  addresses and call
     name="onFileAddressKey"
     onValueChange={[Function]}
     selectListTitle="Select from address book"
+    selectedValue="12345"
     showButton={false}
     toggleModal={[Function]}
     variation="secondary"
@@ -830,10 +842,10 @@ exports[`RegisteredShippingForm should render correctly with  addresses and call
       href="#"
       locator=""
       noLink={true}
-      noUnderline={true}
       onPress={[Function]}
       target="_blank"
-      text="edit"
+      text=""
+      underline={true}
       visible={false}
     />
   </Styled(View)>
@@ -875,6 +887,30 @@ exports[`RegisteredShippingForm should render correctly with no addresses and ca
               Array [
                 Object {
                   "meta": Object {
+                    "field": "saveToAddressBook",
+                    "form": "checkoutShipping",
+                    "persistentSubmitErrors": undefined,
+                    "touch": undefined,
+                  },
+                  "payload": true,
+                  "type": "@@redux-form/CHANGE",
+                },
+              ],
+              Array [
+                Object {
+                  "meta": Object {
+                    "field": "defaultShipping",
+                    "form": "checkoutShipping",
+                    "persistentSubmitErrors": undefined,
+                    "touch": undefined,
+                  },
+                  "payload": true,
+                  "type": "@@redux-form/CHANGE",
+                },
+              ],
+              Array [
+                Object {
+                  "meta": Object {
                     "form": "checkoutShipping",
                     "sections": Array [
                       "address",
@@ -883,8 +919,48 @@ exports[`RegisteredShippingForm should render correctly with no addresses and ca
                   "type": "@@redux-form/RESET_SECTION",
                 },
               ],
+              Array [
+                Object {
+                  "meta": Object {
+                    "field": "saveToAddressBook",
+                    "form": "checkoutShipping",
+                    "persistentSubmitErrors": undefined,
+                    "touch": undefined,
+                  },
+                  "payload": true,
+                  "type": "@@redux-form/CHANGE",
+                },
+              ],
+              Array [
+                Object {
+                  "meta": Object {
+                    "field": "defaultShipping",
+                    "form": "checkoutShipping",
+                    "persistentSubmitErrors": undefined,
+                    "touch": undefined,
+                  },
+                  "payload": false,
+                  "type": "@@redux-form/CHANGE",
+                },
+              ],
             ],
             "results": Array [
+              Object {
+                "type": "return",
+                "value": undefined,
+              },
+              Object {
+                "type": "return",
+                "value": undefined,
+              },
+              Object {
+                "type": "return",
+                "value": undefined,
+              },
+              Object {
+                "type": "return",
+                "value": undefined,
+              },
               Object {
                 "type": "return",
                 "value": undefined,

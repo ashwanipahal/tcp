@@ -54,7 +54,9 @@ exports[`Shipping Page should render correctly 1`] = `
       }
     }
   />
-  <ScrollViewMock>
+  <ScrollViewMock
+    keyboardShouldPersistTaps="handled"
+  >
     <Styled(View)>
       <CheckoutSectionTitleDisplay
         title=""
@@ -81,7 +83,7 @@ exports[`Shipping Page should render correctly 1`] = `
       addressPhoneNo={null}
       defaultAddressId={null}
       destroyOnUnmount={false}
-      enableReinitialize={false}
+      enableReinitialize={true}
       forceUnregisterOnUnmount={false}
       form="checkoutShipping"
       getFormState={[Function]}
@@ -91,7 +93,6 @@ exports[`Shipping Page should render correctly 1`] = `
             "country": "US",
           },
           "onFileAddressKey": null,
-          "saveToAddressBook": false,
           "shipmentMethods": Object {
             "shippingMethodId": null,
           },
@@ -101,7 +102,7 @@ exports[`Shipping Page should render correctly 1`] = `
       isOrderUpdateChecked={false}
       isSaveToAddressBookChecked={false}
       isUsSite={true}
-      keepDirtyOnReinitialize={false}
+      keepDirtyOnReinitialize={true}
       loadShipmentMethods={[Function]}
       navigation={
         Object {
@@ -152,6 +153,7 @@ exports[`Shipping Page should render correctly 1`] = `
           },
         }
       }
+      newUserPhoneNo={null}
       onFileAddressKey={null}
       orderHasPickUp={false}
       persistentSubmitErrors={false}
@@ -187,7 +189,9 @@ exports[`Shipping Page should render correctly with component did update and get
     activeStage="shipping"
     navigation={null}
   />
-  <ScrollViewMock>
+  <ScrollViewMock
+    keyboardShouldPersistTaps="handled"
+  >
     <Styled(View)>
       <CheckoutSectionTitleDisplay
         title=""
@@ -214,7 +218,7 @@ exports[`Shipping Page should render correctly with component did update and get
       addressPhoneNo={null}
       defaultAddressId="34789"
       destroyOnUnmount={false}
-      enableReinitialize={false}
+      enableReinitialize={true}
       forceUnregisterOnUnmount={false}
       form="checkoutShipping"
       getFormState={[Function]}
@@ -224,7 +228,6 @@ exports[`Shipping Page should render correctly with component did update and get
             "country": "US",
           },
           "onFileAddressKey": "34789",
-          "saveToAddressBook": false,
           "shipmentMethods": Object {
             "shippingMethodId": null,
           },
@@ -234,7 +237,7 @@ exports[`Shipping Page should render correctly with component did update and get
       isOrderUpdateChecked={false}
       isSaveToAddressBookChecked={false}
       isUsSite={true}
-      keepDirtyOnReinitialize={false}
+      keepDirtyOnReinitialize={true}
       loadShipmentMethods={
         [MockFunction] {
           "calls": Array [
@@ -252,6 +255,7 @@ exports[`Shipping Page should render correctly with component did update and get
           ],
         }
       }
+      newUserPhoneNo={null}
       onFileAddressKey={null}
       orderHasPickUp={false}
       persistentSubmitErrors={false}
@@ -303,7 +307,9 @@ exports[`Shipping Page should render correctly with component did update and get
     activeStage="shipping"
     navigation={null}
   />
-  <ScrollViewMock>
+  <ScrollViewMock
+    keyboardShouldPersistTaps="handled"
+  >
     <Styled(View)>
       <CheckoutSectionTitleDisplay
         title=""
@@ -329,7 +335,7 @@ exports[`Shipping Page should render correctly with component did update and get
       }
       addressPhoneNo={null}
       destroyOnUnmount={false}
-      enableReinitialize={false}
+      enableReinitialize={true}
       forceUnregisterOnUnmount={false}
       form="checkoutShipping"
       getFormState={[Function]}
@@ -339,7 +345,6 @@ exports[`Shipping Page should render correctly with component did update and get
             "country": "US",
           },
           "onFileAddressKey": undefined,
-          "saveToAddressBook": false,
           "shipmentMethods": Object {
             "shippingMethodId": null,
           },
@@ -349,7 +354,7 @@ exports[`Shipping Page should render correctly with component did update and get
       isOrderUpdateChecked={false}
       isSaveToAddressBookChecked={false}
       isUsSite={true}
-      keepDirtyOnReinitialize={false}
+      keepDirtyOnReinitialize={true}
       loadShipmentMethods={
         [MockFunction] {
           "calls": Array [
@@ -367,6 +372,7 @@ exports[`Shipping Page should render correctly with component did update and get
           ],
         }
       }
+      newUserPhoneNo={null}
       onFileAddressKey={null}
       orderHasPickUp={false}
       persistentSubmitErrors={false}

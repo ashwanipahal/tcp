@@ -1,5 +1,4 @@
 import React from 'react';
-import PropTypes from 'prop-types';
 import { Field, change, FormSection, resetSection } from 'redux-form';
 import AddressDropdown from '../../../../../../../account/AddEditCreditCard/molecule/AddressDropdown';
 import Address from '../../../../../../../../common/molecules/Address';
@@ -19,6 +18,8 @@ import {
   onSaveBtnClick,
   getFieldsValidation,
   getDefaultShippingDisabledState,
+  nativeDefaultPropTypes,
+  nativePropTypes,
 } from './RegisteredShippingForm.util';
 
 const dropDownStyle = {
@@ -48,6 +49,8 @@ class RegisteredShippingForm extends React.Component {
     const { newUserPhoneNo, dispatch, formName, userAddresses } = this.props;
     if (userAddresses && userAddresses.size === 0) {
       dispatch(change(formName, 'address.phoneNumber', newUserPhoneNo));
+      dispatch(change(formName, 'saveToAddressBook', true));
+      dispatch(change(formName, 'defaultShipping', true));
     }
   }
 
@@ -66,22 +69,17 @@ class RegisteredShippingForm extends React.Component {
   }
 
   getAddressOptions = () => {
-    const { userAddresses, onFileAddressKey } = this.props;
-    const userAddressesLength = userAddresses && userAddresses.size;
+    const { userAddresses } = this.props;
     let addressOptions =
       (userAddresses &&
         userAddresses.map(address => {
-          let defaultId = false;
-          if (address.primary === 'true') {
-            defaultId = true;
-          } else if (onFileAddressKey && !userAddressesLength) {
-            defaultId = address.addressId === onFileAddressKey;
-          }
           return {
             id: address.addressId,
-            label: `${address.firstName} ${address.lastName} ${defaultId ? '(Default)' : ''}`,
+            label: `${address.firstName} ${address.lastName} ${
+              address.primary === 'true' ? '(Default)' : ''
+            }`,
             content: address,
-            primary: defaultId,
+            primary: address.primary === 'true',
           };
         })) ||
       [];
@@ -138,6 +136,8 @@ class RegisteredShippingForm extends React.Component {
   toggleAddressModal = () => {
     const { dispatch, formName } = this.props;
     dispatch(resetSection(formName, 'address'));
+    dispatch(change(formName, 'saveToAddressBook', true));
+    dispatch(change(formName, 'defaultShipping', false));
     this.toggleModal({ type: 'add' });
   };
 
@@ -279,6 +279,7 @@ class RegisteredShippingForm extends React.Component {
 
   renderAddressForm = () => {
     const defaultAddress = this.getSelectedAddress();
+    const { labels, onFileAddressKey } = this.props;
     return (
       <>
         <Field
@@ -297,6 +298,7 @@ class RegisteredShippingForm extends React.Component {
           }}
           variation="secondary"
           showButton={false}
+          selectedValue={onFileAddressKey}
         />
 
         <AddressViewWrapper>
@@ -310,14 +312,14 @@ class RegisteredShippingForm extends React.Component {
             className="elem-mb-SM"
           />
           <Anchor
-            noUnderline
+            underline
             anchorVariation="primary"
             fontSizeVariation="small"
             noLink
             href="#"
             target="_blank"
             dataLocator="shipping-edit-contact-anchor"
-            text="edit"
+            text={getLabelValue(labels, 'lbl_shipping_edit', 'shipping', 'checkout')}
             onPress={this.onEditClick}
           />
         </AddressViewWrapper>
@@ -333,7 +335,18 @@ class RegisteredShippingForm extends React.Component {
       loadShipmentMethods,
       isGuest,
       address,
+      userAddresses,
+      onFileAddressKey,
     } = this.props;
+    const { modalState, modalType } = this.state;
+    let editedAddress = null;
+    let addressLine1 = null;
+    if (userAddresses && userAddresses.size > 0) {
+      editedAddress = userAddresses.find(add => add.addressId === onFileAddressKey);
+    }
+    if (editedAddress) {
+      [addressLine1] = editedAddress.addressLine;
+    }
     return (
       <FormSection name="address">
         <AddressFieldsWrapper>
@@ -349,6 +362,7 @@ class RegisteredShippingForm extends React.Component {
             isGuest={isGuest}
             showEmailAddress
             state={address ? address.state : ''}
+            initialValues={modalState && modalType === 'edit' ? { address: { addressLine1 } } : {}}
           />
         </AddressFieldsWrapper>
       </FormSection>
@@ -380,41 +394,7 @@ class RegisteredShippingForm extends React.Component {
   }
 }
 
-RegisteredShippingForm.propTypes = {
-  addressFormLabels: PropTypes.shape({}).isRequired,
-  dispatch: PropTypes.func.isRequired,
-  smsSignUpLabels: PropTypes.shape({}).isRequired,
-  addressPhoneNo: PropTypes.number,
-  emailSignUpLabels: PropTypes.shape({}).isRequired,
-  isGuest: PropTypes.bool,
-  loadShipmentMethods: PropTypes.func.isRequired,
-  userAddresses: PropTypes.shape([]),
-  onFileAddressKey: PropTypes.string,
-  newUserPhoneNo: PropTypes.number,
-  labels: PropTypes.shape({}).isRequired,
-  shippingAddress: PropTypes.shape({}),
-  address: PropTypes.shape({}),
-  formName: PropTypes.string,
-  updateShippingAddress: PropTypes.func.isRequired,
-  addNewShippingAddress: PropTypes.func.isRequired,
-  syncErrorsObject: PropTypes.shape({}),
-  isSaveToAddressBookChecked: PropTypes.bool,
-  setAsDefaultShipping: PropTypes.bool,
-  defaultAddressId: PropTypes.string,
-};
-RegisteredShippingForm.defaultProps = {
-  addressPhoneNo: null,
-  isGuest: true,
-  userAddresses: [],
-  onFileAddressKey: null,
-  newUserPhoneNo: null,
-  shippingAddress: null,
-  address: null,
-  formName: 'checkoutShipping',
-  syncErrorsObject: {},
-  isSaveToAddressBookChecked: false,
-  setAsDefaultShipping: false,
-  defaultAddressId: null,
-};
+RegisteredShippingForm.propTypes = nativePropTypes;
+RegisteredShippingForm.defaultProps = nativeDefaultPropTypes;
 
 export default RegisteredShippingForm;

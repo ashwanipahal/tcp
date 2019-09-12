@@ -10,7 +10,9 @@ exports[`AddEditShippingAddressModal should render correctly 1`] = `
   overlayClassName="TCPModal__Overlay"
   visible={true}
 >
-  <Styled(View) />
+  <Styled(ScrollViewMock)
+    keyboardShouldPersistTaps="handled"
+  />
 </ModalNative>
 `;
 
@@ -24,6 +26,8 @@ exports[`AddEditShippingAddressModal should render correctly with modalType add 
   overlayClassName="TCPModal__Overlay"
   visible={true}
 >
-  <Styled(View) />
+  <Styled(ScrollViewMock)
+    keyboardShouldPersistTaps="handled"
+  />
 </ModalNative>
 `;

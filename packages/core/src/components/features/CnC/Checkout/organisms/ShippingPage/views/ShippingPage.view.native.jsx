@@ -38,6 +38,7 @@ export default class ShippingPage extends React.Component {
     addNewShippingAddressData: PropTypes.func,
     updateShippingMethodSelection: PropTypes.func.isRequired,
     syncErrors: PropTypes.shape({}),
+    newUserPhoneNo: PropTypes.string,
   };
 
   static defaultProps = {
@@ -58,6 +59,7 @@ export default class ShippingPage extends React.Component {
     updateShippingAddressData: () => {},
     addNewShippingAddressData: () => {},
     syncErrors: {},
+    newUserPhoneNo: null,
   };
 
   constructor(props) {
@@ -220,6 +222,7 @@ export default class ShippingPage extends React.Component {
       address,
       setAsDefaultShipping,
       syncErrors,
+      newUserPhoneNo,
     } = this.props;
 
     const { defaultAddressId } = this.state;
@@ -230,7 +233,7 @@ export default class ShippingPage extends React.Component {
           navigation={navigation}
           availableStages={availableStages}
         />
-        <ScrollView>
+        <ScrollView keyboardShouldPersistTaps="handled">
           <HeaderContainer>
             <CheckoutSectionTitleDisplay
               title={getLabelValue(labels, 'lbl_shipping_header', 'shipping', 'checkout')}
@@ -253,7 +256,6 @@ export default class ShippingPage extends React.Component {
                 address: { country: 'US' },
                 shipmentMethods: { shippingMethodId: defaultShipmentId },
                 onFileAddressKey: defaultAddressId,
-                saveToAddressBook: !isGuest,
               }}
               selectedShipmentId={selectedShipmentId}
               isGuest={isGuest}
@@ -277,6 +279,7 @@ export default class ShippingPage extends React.Component {
               setAsDefaultShipping={setAsDefaultShipping}
               defaultAddressId={defaultAddressId}
               syncErrorsObject={syncErrors}
+              newUserPhoneNo={newUserPhoneNo}
             />
           )}
         </ScrollView>
