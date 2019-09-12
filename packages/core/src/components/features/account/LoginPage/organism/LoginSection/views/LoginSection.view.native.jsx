@@ -55,6 +55,7 @@ class LoginSection extends PureComponent<Props> {
       loginError,
       showLogin,
       setEmailid,
+      getTouchStatus,
     } = this.props;
 
     const { resetPassword } = this.state;
@@ -68,6 +69,7 @@ class LoginSection extends PureComponent<Props> {
               labels={labels}
             />
             <LoginForm
+              getTouchStatus={getTouchStatus}
               setEmailid={setEmailid}
               onSubmit={onSubmit}
               labels={labels}

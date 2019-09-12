@@ -27,12 +27,9 @@ export function* ForgotPassword(action) {
   } catch (err) {
     let error = {};
     /* istanbul ignore else */
-    if (err instanceof Error) {
-      error = err.response;
-    }
-    /* istanbul ignore else */
-    if (error && error.errors) {
-      yield put(userNotAvailable(error));
+    error = err;
+    if (error && error.response) {
+      return yield put(userNotAvailable(error.response.body.errors[0]));
     }
     yield put(getResetPasswordFail({ state: true }));
   }

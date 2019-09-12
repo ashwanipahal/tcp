@@ -153,9 +153,7 @@ const shippingMethodResponseHandler = res => {
     let displayName = tmp[0].indexOf('-') === -1 ? tmp[0].replace('FREE', '- FREE') : tmp[0];
     const shippingMethod = tmp.length > 1 ? `Up To ${tmp[1]}` : '';
 
-    if (price) {
-      displayName = displayName.replace(`$${price[1]}`, '');
-    }
+    if (price) displayName = displayName.replace(`$${price[1]}`, '');
 
     hasDefault = hasDefault || methods[index].defaultShipMode;
     return {
@@ -167,9 +165,7 @@ const shippingMethodResponseHandler = res => {
     };
   });
 
-  if (!hasDefault && methods.length) {
-    resFiltered[0].isDefault = true;
-  }
+  if (!hasDefault && methods.length) resFiltered[0].isDefault = true;
 
   return resFiltered;
 };
@@ -183,22 +179,46 @@ export const getShippingMethods = (state, zipCode, addressField1, addressField2,
   // Note: (2-25, From Melvin Jose): based on his request we're relaxing when state and zipcode is being attached to the header, should values be empty or null we won't be sending them.
   const dynamicHeader = { state, zipCode, addressField1, addressField2 };
   Object.keys(dynamicHeader).forEach(key => {
-    if (!dynamicHeader[key]) {
-      delete dynamicHeader[key];
-    }
+    if (!dynamicHeader[key]) delete dynamicHeader[key];
   });
   const payload = {
     header: dynamicHeader,
     webService: endpoints.getShipmentMethods,
   };
-
   return executeStatefulAPICall(payload)
     .then(shippingMethodResponseHandler)
     .catch(err => {
       throw getFormattedError(err, labels);
     });
 };
-
+export function addGiftWrappingOption(payload) {
+  const payloadArgs = {
+    webService: endpoints.addGiftOptions,
+    body: {
+      orderId: payload.orderId || '.', // '.' means use context one
+      GiftMsg: payload.GiftMsg || '',
+      quantity_0: '1',
+      catEntryId_0: payload.catEntryId,
+    },
+  };
+  return executeStatefulAPICall(payloadArgs).then(res => {
+    return res;
+  });
+}
+export function removeGiftWrappingOption() {
+  const payloadArgs = {
+    webService: endpoints.addGiftOptions,
+    body: {
+      orderId: '.', // '.' means use context one
+      GiftMsg: '',
+      quantity_0: '',
+      catEntryId_0: '',
+    },
+  };
+  return executeStatefulAPICall(payloadArgs).then(res => {
+    return res;
+  });
+}
 export function briteVerifyStatusExtraction(emailAddress) {
   return new Promise(resolve => {
     superagent
@@ -223,7 +243,6 @@ export function briteVerifyStatusExtraction(emailAddress) {
       });
   });
 }
-
 function extractRtpsEligibleAndCode(apiResponse) {
   const response = apiResponse.body.processOLPSResponse;
   const prescreenResponse = (response && response.response) || {};
@@ -233,7 +252,6 @@ function extractRtpsEligibleAndCode(apiResponse) {
     prescreenCode: prescreenResponse.prescreenId || '',
   };
 }
-
 export function setShippingMethodAndAddressId(
   shippingTypeId,
   addressId,
@@ -273,16 +291,8 @@ export function setShippingMethodAndAddressId(
 }
 
 export function addGiftCardPaymentToOrder(args) {
-  const {
-    billingAddressId,
-    orderGrandTotal,
-    cardNumber,
-    cardPin,
-    balance,
-    saveToAccount,
-    nickName,
-    creditCardId,
-  } = args;
+  const { billingAddressId, orderGrandTotal } = args;
+  const { cardNumber, cardPin, balance, saveToAccount, nickName, creditCardId } = args;
   const paymentInstruction = {
     billing_address_id: (billingAddressId || '').toString(),
     piAmount: (orderGrandTotal || '').toString(),
@@ -352,7 +362,6 @@ export function removeGiftCard(paymentId, labels) {
       throw getFormattedError(err, labels);
     });
 }
-
 export function addPaymentToOrder({
   billingAddressId = '',
   orderGrandTotal = '',
@@ -430,24 +439,26 @@ export function addPaymentToOrder({
     },
     webService: endpoints.addPaymentInstruction,
   };
-  console.log({ payload });
-  return executeStatefulAPICall(payload).then(res => {
-    if (responseContainsErrors(res)) {
-      throw new ServiceResponseError(res);
-    }
-    if (res.body && res.body.OosCartItems === 'TRUE') {
-      throw new ServiceResponseError({
-        body: {
-          errorCode: CheckoutConstants.CUSTOM_OOS_ERROR_CODE,
-        },
-      });
-    }
-    return {
-      paymentIds: res.body.paymentInstruction,
-    };
-  });
+  return executeStatefulAPICall(payload)
+    .then(res => {
+      if (responseContainsErrors(res)) {
+        throw new ServiceResponseError(res);
+      }
+      if (res.body && res.body.OosCartItems === 'TRUE') {
+        throw new ServiceResponseError({
+          body: {
+            errorCode: CheckoutConstants.CUSTOM_OOS_ERROR_CODE,
+          },
+        });
+      }
+      return {
+        paymentIds: res.body.paymentInstruction,
+      };
+    })
+    .catch(err => {
+      throw getFormattedError(err);
+    });
 }
-
 export function updatePaymentOnOrder(args) {
   const payload = {
     header: {
@@ -472,7 +483,6 @@ export function updatePaymentOnOrder(args) {
     },
     webService: endpoints.updatePaymentInstruction,
   };
-
   return executeStatefulAPICall(payload).then(res => {
     if (responseContainsErrors(res)) {
       throw new ServiceResponseError(res);
@@ -480,7 +490,6 @@ export function updatePaymentOnOrder(args) {
     return { paymentId: res.body.paymentInstruction[0].piId };
   });
 }
-
 export default {
   getGiftWrappingOptions,
   getCurrentOrderAndCouponsDetails,
@@ -492,4 +501,6 @@ export default {
   removeGiftCard,
   addPaymentToOrder,
   updatePaymentOnOrder,
+  addGiftWrappingOption,
+  removeGiftWrappingOption,
 };

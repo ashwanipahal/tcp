@@ -247,5 +247,14 @@ const endpoints = {
     method: 'POST',
     URI: 'v2/account/deleteBirthdaySavings',
   },
+  addGiftOptions: {
+    method: 'POST',
+    URI: 'v2/checkout/addGiftOptions',
+  },
+  searchBarApi: {
+    method: 'GET',
+    URI: PRODUCTS_URI.PRODUCTS_AUTOSUGGEST,
+    unbxd: true,
+  },
 };
 export default endpoints;

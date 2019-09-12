@@ -5,9 +5,6 @@ exports[`Shipping Form should render correctly 1`] = `
   <Styled(CheckoutSectionTitleDisplay)
     title=""
   />
-  <Styled(CheckoutOrderInfo)
-    isGuest={false}
-  />
   <Styled(BodyCopy)
     className="elem-mb-XS elem-mt-MED hide-on-desktop hide-on-tablet"
     color="text.primary"
@@ -72,22 +69,51 @@ exports[`Shipping Form should render correctly 1`] = `
         variation="secondary"
       />
     </FormSection>
-    <FormSection
-      name="shipmentMethods"
+    <Styled(Row)
+      fullBleed={true}
     >
-      <div
-        className="shipment-methods-form"
+      <Styled(Col)
+        colSize={
+          Object {
+            "large": 6,
+            "medium": 8,
+            "small": 6,
+          }
+        }
       >
-        <Styled(ShipmentMethods)
+        <FormSection
+          name="shipmentMethods"
+        >
+          <div
+            className="shipment-methods-form"
+          >
+            <Styled(ShipmentMethods)
+              formName="checkoutShipping"
+              formSection="shipmentMethods"
+              selectedShipmentId={null}
+              shipmentHeader=""
+              shipmentMethods={null}
+            />
+          </div>
+        </FormSection>
+      </Styled(Col)>
+      <Styled(Col)
+        colSize={
+          Object {
+            "large": 6,
+            "medium": 8,
+            "small": 6,
+          }
+        }
+      >
+        <Connect(GiftServicesContainer)
           formName="checkoutShipping"
-          formSection="shipmentMethods"
-          selectedShipmentId={null}
-          shipmentHeader=""
-          shipmentMethods={null}
+          formSection="giftServices"
+          showDefaultCheckbox={false}
+          variation="secondary"
         />
-      </div>
-    </FormSection>
-    <Styled(CheckoutOrderInfo) />
+      </Styled(Col)>
+    </Styled(Row)>
     <Styled(CheckoutFooter)
       backLinkText=""
       disableNext={false}
@@ -102,9 +128,6 @@ exports[`Shipping Form should render correctly with logged in user 1`] = `
 <Fragment>
   <Styled(CheckoutSectionTitleDisplay)
     title=""
-  />
-  <Styled(CheckoutOrderInfo)
-    isGuest={true}
   />
   <Styled(BodyCopy)
     className="elem-mb-XS elem-mt-MED hide-on-desktop hide-on-tablet"
@@ -152,7 +175,7 @@ exports[`Shipping Form should render correctly with logged in user 1`] = `
               "$$typeof": Symbol(react.forward_ref),
               "attrs": Array [],
               "componentStyle": ComponentStyle {
-                "componentId": "sc-bwzfXH",
+                "componentId": "sc-gZMcBi",
                 "isStatic": false,
                 "rules": Array [
                   "
@@ -269,7 +292,7 @@ exports[`Shipping Form should render correctly with logged in user 1`] = `
               "displayName": "Styled(InputCheckbox)",
               "foldedComponentIds": Array [],
               "render": [Function],
-              "styledComponentId": "sc-bwzfXH",
+              "styledComponentId": "sc-gZMcBi",
               "target": [Function],
               "toString": [Function],
               "warnTooManyClasses": [Function],
@@ -330,22 +353,51 @@ exports[`Shipping Form should render correctly with logged in user 1`] = `
         </div>
       </div>
     </FormSection>
-    <FormSection
-      name="shipmentMethods"
+    <Styled(Row)
+      fullBleed={true}
     >
-      <div
-        className="shipment-methods-form"
+      <Styled(Col)
+        colSize={
+          Object {
+            "large": 6,
+            "medium": 8,
+            "small": 6,
+          }
+        }
       >
-        <Styled(ShipmentMethods)
+        <FormSection
+          name="shipmentMethods"
+        >
+          <div
+            className="shipment-methods-form"
+          >
+            <Styled(ShipmentMethods)
+              formName="checkoutShipping"
+              formSection="shipmentMethods"
+              selectedShipmentId={null}
+              shipmentHeader=""
+              shipmentMethods={null}
+            />
+          </div>
+        </FormSection>
+      </Styled(Col)>
+      <Styled(Col)
+        colSize={
+          Object {
+            "large": 6,
+            "medium": 8,
+            "small": 6,
+          }
+        }
+      >
+        <Connect(GiftServicesContainer)
           formName="checkoutShipping"
-          formSection="shipmentMethods"
-          selectedShipmentId={null}
-          shipmentHeader=""
-          shipmentMethods={null}
+          formSection="giftServices"
+          showDefaultCheckbox={false}
+          variation="secondary"
         />
-      </div>
-    </FormSection>
-    <Styled(CheckoutOrderInfo) />
+      </Styled(Col)>
+    </Styled(Row)>
     <Styled(CheckoutFooter)
       backLinkText=""
       disableNext={false}
@@ -360,9 +412,6 @@ exports[`Shipping Form should render correctly with logged in user having addres
 <Fragment>
   <Styled(CheckoutSectionTitleDisplay)
     title=""
-  />
-  <Styled(CheckoutOrderInfo)
-    isGuest={true}
   />
   <Styled(BodyCopy)
     className="elem-mb-XS elem-mt-MED hide-on-desktop hide-on-tablet"
@@ -578,7 +627,7 @@ exports[`Shipping Form should render correctly with logged in user having addres
               "$$typeof": Symbol(react.forward_ref),
               "attrs": Array [],
               "componentStyle": ComponentStyle {
-                "componentId": "sc-bwzfXH",
+                "componentId": "sc-gZMcBi",
                 "isStatic": false,
                 "rules": Array [
                   "
@@ -695,7 +744,7 @@ exports[`Shipping Form should render correctly with logged in user having addres
               "displayName": "Styled(InputCheckbox)",
               "foldedComponentIds": Array [],
               "render": [Function],
-              "styledComponentId": "sc-bwzfXH",
+              "styledComponentId": "sc-gZMcBi",
               "target": [Function],
               "toString": [Function],
               "warnTooManyClasses": [Function],
@@ -756,28 +805,225 @@ exports[`Shipping Form should render correctly with logged in user having addres
         </div>
       </div>
     </FormSection>
-    <FormSection
-      name="shipmentMethods"
+    <Styled(Row)
+      fullBleed={true}
     >
-      <div
-        className="shipment-methods-form"
-      >
-        <Styled(ShipmentMethods)
-          formName="checkoutShipping"
-          formSection="shipmentMethods"
-          selectedShipmentId={null}
-          shipmentHeader=""
-          shipmentMethods={
-            Array [
-              Object {
-                "id": 123,
-              },
-            ]
+      <Styled(Col)
+        colSize={
+          Object {
+            "large": 6,
+            "medium": 8,
+            "small": 6,
           }
+        }
+      >
+        <FormSection
+          name="shipmentMethods"
+        >
+          <div
+            className="shipment-methods-form"
+          >
+            <Styled(ShipmentMethods)
+              formName="checkoutShipping"
+              formSection="shipmentMethods"
+              selectedShipmentId={null}
+              shipmentHeader=""
+              shipmentMethods={
+                Array [
+                  Object {
+                    "id": 123,
+                  },
+                ]
+              }
+            />
+          </div>
+        </FormSection>
+      </Styled(Col)>
+      <Styled(Col)
+        colSize={
+          Object {
+            "large": 6,
+            "medium": 8,
+            "small": 6,
+          }
+        }
+      >
+        <Connect(GiftServicesContainer)
+          dispatch={
+            [MockFunction] {
+              "calls": Array [
+                Array [
+                  Object {
+                    "meta": Object {
+                      "field": "address.addressLine1",
+                      "form": "checkoutShipping",
+                      "persistentSubmitErrors": undefined,
+                      "touch": undefined,
+                    },
+                    "payload": "addressline 1 hhhhh",
+                    "type": "@@redux-form/CHANGE",
+                  },
+                ],
+                Array [
+                  Object {
+                    "meta": Object {
+                      "field": "address.addressLine2",
+                      "form": "checkoutShipping",
+                      "persistentSubmitErrors": undefined,
+                      "touch": undefined,
+                    },
+                    "payload": "addressline 2 mmmmmmmm",
+                    "type": "@@redux-form/CHANGE",
+                  },
+                ],
+                Array [
+                  Object {
+                    "meta": Object {
+                      "field": "address.firstName",
+                      "form": "checkoutShipping",
+                      "persistentSubmitErrors": undefined,
+                      "touch": undefined,
+                    },
+                    "payload": "test",
+                    "type": "@@redux-form/CHANGE",
+                  },
+                ],
+                Array [
+                  Object {
+                    "meta": Object {
+                      "field": "address.lastName",
+                      "form": "checkoutShipping",
+                      "persistentSubmitErrors": undefined,
+                      "touch": undefined,
+                    },
+                    "payload": "test",
+                    "type": "@@redux-form/CHANGE",
+                  },
+                ],
+                Array [
+                  Object {
+                    "meta": Object {
+                      "field": "address.city",
+                      "form": "checkoutShipping",
+                      "persistentSubmitErrors": undefined,
+                      "touch": undefined,
+                    },
+                    "payload": "test city",
+                    "type": "@@redux-form/CHANGE",
+                  },
+                ],
+                Array [
+                  Object {
+                    "meta": Object {
+                      "field": "address.zipCode",
+                      "form": "checkoutShipping",
+                      "persistentSubmitErrors": undefined,
+                      "touch": undefined,
+                    },
+                    "payload": undefined,
+                    "type": "@@redux-form/CHANGE",
+                  },
+                ],
+                Array [
+                  Object {
+                    "meta": Object {
+                      "field": "address.state",
+                      "form": "checkoutShipping",
+                      "persistentSubmitErrors": undefined,
+                      "touch": undefined,
+                    },
+                    "payload": undefined,
+                    "type": "@@redux-form/CHANGE",
+                  },
+                ],
+                Array [
+                  Object {
+                    "meta": Object {
+                      "field": "address.phoneNumber",
+                      "form": "checkoutShipping",
+                      "persistentSubmitErrors": undefined,
+                      "touch": undefined,
+                    },
+                    "payload": "1234567890",
+                    "type": "@@redux-form/CHANGE",
+                  },
+                ],
+                Array [
+                  Object {
+                    "meta": Object {
+                      "field": "defaultShipping",
+                      "form": "checkoutShipping",
+                      "persistentSubmitErrors": undefined,
+                      "touch": undefined,
+                    },
+                    "payload": true,
+                    "type": "@@redux-form/CHANGE",
+                  },
+                ],
+                Array [
+                  Object {
+                    "meta": Object {
+                      "field": "shipmentMethods.shippingMethodId",
+                      "form": "checkoutShipping",
+                      "persistentSubmitErrors": undefined,
+                      "touch": undefined,
+                    },
+                    "payload": "90113",
+                    "type": "@@redux-form/CHANGE",
+                  },
+                ],
+              ],
+              "results": Array [
+                Object {
+                  "type": "return",
+                  "value": undefined,
+                },
+                Object {
+                  "type": "return",
+                  "value": undefined,
+                },
+                Object {
+                  "type": "return",
+                  "value": undefined,
+                },
+                Object {
+                  "type": "return",
+                  "value": undefined,
+                },
+                Object {
+                  "type": "return",
+                  "value": undefined,
+                },
+                Object {
+                  "type": "return",
+                  "value": undefined,
+                },
+                Object {
+                  "type": "return",
+                  "value": undefined,
+                },
+                Object {
+                  "type": "return",
+                  "value": undefined,
+                },
+                Object {
+                  "type": "return",
+                  "value": undefined,
+                },
+                Object {
+                  "type": "return",
+                  "value": undefined,
+                },
+              ],
+            }
+          }
+          formName="checkoutShipping"
+          formSection="giftServices"
+          showDefaultCheckbox={false}
+          variation="secondary"
         />
-      </div>
-    </FormSection>
-    <Styled(CheckoutOrderInfo) />
+      </Styled(Col)>
+    </Styled(Row)>
     <Styled(CheckoutFooter)
       backLinkText=""
       disableNext={false}
@@ -792,9 +1038,6 @@ exports[`Shipping Form should render correctly with logged in user having addres
 <Fragment>
   <Styled(CheckoutSectionTitleDisplay)
     title=""
-  />
-  <Styled(CheckoutOrderInfo)
-    isGuest={true}
   />
   <Styled(BodyCopy)
     className="elem-mb-XS elem-mt-MED hide-on-desktop hide-on-tablet"
@@ -834,18 +1077,6 @@ exports[`Shipping Form should render correctly with logged in user having addres
                       "touch": undefined,
                     },
                     "payload": "90113",
-                    "type": "@@redux-form/CHANGE",
-                  },
-                ],
-                Array [
-                  Object {
-                    "meta": Object {
-                      "field": "defaultShipping",
-                      "form": "checkoutShipping",
-                      "persistentSubmitErrors": undefined,
-                      "touch": undefined,
-                    },
-                    "payload": true,
                     "type": "@@redux-form/CHANGE",
                   },
                 ],
@@ -1030,10 +1261,6 @@ exports[`Shipping Form should render correctly with logged in user having addres
                   "type": "return",
                   "value": undefined,
                 },
-                Object {
-                  "type": "return",
-                  "value": undefined,
-                },
               ],
             }
           }
@@ -1057,7 +1284,7 @@ exports[`Shipping Form should render correctly with logged in user having addres
               "$$typeof": Symbol(react.forward_ref),
               "attrs": Array [],
               "componentStyle": ComponentStyle {
-                "componentId": "sc-bwzfXH",
+                "componentId": "sc-gZMcBi",
                 "isStatic": false,
                 "rules": Array [
                   "
@@ -1174,7 +1401,7 @@ exports[`Shipping Form should render correctly with logged in user having addres
               "displayName": "Styled(InputCheckbox)",
               "foldedComponentIds": Array [],
               "render": [Function],
-              "styledComponentId": "sc-bwzfXH",
+              "styledComponentId": "sc-gZMcBi",
               "target": [Function],
               "toString": [Function],
               "warnTooManyClasses": [Function],
@@ -1235,28 +1462,256 @@ exports[`Shipping Form should render correctly with logged in user having addres
         </div>
       </div>
     </FormSection>
-    <FormSection
-      name="shipmentMethods"
+    <Styled(Row)
+      fullBleed={true}
     >
-      <div
-        className="shipment-methods-form"
-      >
-        <Styled(ShipmentMethods)
-          formName="checkoutShipping"
-          formSection="shipmentMethods"
-          selectedShipmentId={null}
-          shipmentHeader=""
-          shipmentMethods={
-            Array [
-              Object {
-                "id": 123,
-              },
-            ]
+      <Styled(Col)
+        colSize={
+          Object {
+            "large": 6,
+            "medium": 8,
+            "small": 6,
           }
+        }
+      >
+        <FormSection
+          name="shipmentMethods"
+        >
+          <div
+            className="shipment-methods-form"
+          >
+            <Styled(ShipmentMethods)
+              formName="checkoutShipping"
+              formSection="shipmentMethods"
+              selectedShipmentId={null}
+              shipmentHeader=""
+              shipmentMethods={
+                Array [
+                  Object {
+                    "id": 123,
+                  },
+                ]
+              }
+            />
+          </div>
+        </FormSection>
+      </Styled(Col)>
+      <Styled(Col)
+        colSize={
+          Object {
+            "large": 6,
+            "medium": 8,
+            "small": 6,
+          }
+        }
+      >
+        <Connect(GiftServicesContainer)
+          dispatch={
+            [MockFunction] {
+              "calls": Array [
+                Array [
+                  Object {
+                    "meta": Object {
+                      "field": "shipmentMethods.shippingMethodId",
+                      "form": "checkoutShipping",
+                      "persistentSubmitErrors": undefined,
+                      "touch": undefined,
+                    },
+                    "payload": "90113",
+                    "type": "@@redux-form/CHANGE",
+                  },
+                ],
+                Array [
+                  Object {
+                    "meta": Object {
+                      "field": "onFileAddressKey",
+                      "form": "checkoutShipping",
+                      "persistentSubmitErrors": undefined,
+                      "touch": undefined,
+                    },
+                    "payload": "334",
+                    "type": "@@redux-form/CHANGE",
+                  },
+                ],
+                Array [
+                  Object {
+                    "meta": Object {
+                      "field": "address.addressLine1",
+                      "form": "checkoutShipping",
+                      "persistentSubmitErrors": undefined,
+                      "touch": undefined,
+                    },
+                    "payload": "addressline 1 hhh",
+                    "type": "@@redux-form/CHANGE",
+                  },
+                ],
+                Array [
+                  Object {
+                    "meta": Object {
+                      "field": "address.addressLine2",
+                      "form": "checkoutShipping",
+                      "persistentSubmitErrors": undefined,
+                      "touch": undefined,
+                    },
+                    "payload": "addressline 2 mmm",
+                    "type": "@@redux-form/CHANGE",
+                  },
+                ],
+                Array [
+                  Object {
+                    "meta": Object {
+                      "field": "address.firstName",
+                      "form": "checkoutShipping",
+                      "persistentSubmitErrors": undefined,
+                      "touch": undefined,
+                    },
+                    "payload": "test",
+                    "type": "@@redux-form/CHANGE",
+                  },
+                ],
+                Array [
+                  Object {
+                    "meta": Object {
+                      "field": "address.lastName",
+                      "form": "checkoutShipping",
+                      "persistentSubmitErrors": undefined,
+                      "touch": undefined,
+                    },
+                    "payload": "test",
+                    "type": "@@redux-form/CHANGE",
+                  },
+                ],
+                Array [
+                  Object {
+                    "meta": Object {
+                      "field": "address.city",
+                      "form": "checkoutShipping",
+                      "persistentSubmitErrors": undefined,
+                      "touch": undefined,
+                    },
+                    "payload": "test city",
+                    "type": "@@redux-form/CHANGE",
+                  },
+                ],
+                Array [
+                  Object {
+                    "meta": Object {
+                      "field": "address.zipCode",
+                      "form": "checkoutShipping",
+                      "persistentSubmitErrors": undefined,
+                      "touch": undefined,
+                    },
+                    "payload": undefined,
+                    "type": "@@redux-form/CHANGE",
+                  },
+                ],
+                Array [
+                  Object {
+                    "meta": Object {
+                      "field": "address.state",
+                      "form": "checkoutShipping",
+                      "persistentSubmitErrors": undefined,
+                      "touch": undefined,
+                    },
+                    "payload": undefined,
+                    "type": "@@redux-form/CHANGE",
+                  },
+                ],
+                Array [
+                  Object {
+                    "meta": Object {
+                      "field": "address.phoneNumber",
+                      "form": "checkoutShipping",
+                      "persistentSubmitErrors": undefined,
+                      "touch": undefined,
+                    },
+                    "payload": "1234567890",
+                    "type": "@@redux-form/CHANGE",
+                  },
+                ],
+                Array [
+                  Object {
+                    "meta": Object {
+                      "field": "defaultShipping",
+                      "form": "checkoutShipping",
+                      "persistentSubmitErrors": undefined,
+                      "touch": undefined,
+                    },
+                    "payload": true,
+                    "type": "@@redux-form/CHANGE",
+                  },
+                ],
+                Array [
+                  Object {
+                    "meta": Object {
+                      "form": "checkoutShipping",
+                      "sections": Array [
+                        "address",
+                      ],
+                    },
+                    "type": "@@redux-form/RESET_SECTION",
+                  },
+                ],
+              ],
+              "results": Array [
+                Object {
+                  "type": "return",
+                  "value": undefined,
+                },
+                Object {
+                  "type": "return",
+                  "value": undefined,
+                },
+                Object {
+                  "type": "return",
+                  "value": undefined,
+                },
+                Object {
+                  "type": "return",
+                  "value": undefined,
+                },
+                Object {
+                  "type": "return",
+                  "value": undefined,
+                },
+                Object {
+                  "type": "return",
+                  "value": undefined,
+                },
+                Object {
+                  "type": "return",
+                  "value": undefined,
+                },
+                Object {
+                  "type": "return",
+                  "value": undefined,
+                },
+                Object {
+                  "type": "return",
+                  "value": undefined,
+                },
+                Object {
+                  "type": "return",
+                  "value": undefined,
+                },
+                Object {
+                  "type": "return",
+                  "value": undefined,
+                },
+                Object {
+                  "type": "return",
+                  "value": undefined,
+                },
+              ],
+            }
+          }
+          formName="checkoutShipping"
+          formSection="giftServices"
+          showDefaultCheckbox={false}
+          variation="secondary"
         />
-      </div>
-    </FormSection>
-    <Styled(CheckoutOrderInfo) />
+      </Styled(Col)>
+    </Styled(Row)>
     <Styled(CheckoutFooter)
       backLinkText=""
       disableNext={true}
@@ -1271,9 +1726,6 @@ exports[`Shipping Form should render correctly with logged in user having addres
 <Fragment>
   <Styled(CheckoutSectionTitleDisplay)
     title=""
-  />
-  <Styled(CheckoutOrderInfo)
-    isGuest={true}
   />
   <Styled(BodyCopy)
     className="elem-mb-XS elem-mt-MED hide-on-desktop hide-on-tablet"
@@ -1360,7 +1812,7 @@ exports[`Shipping Form should render correctly with logged in user having addres
               "$$typeof": Symbol(react.forward_ref),
               "attrs": Array [],
               "componentStyle": ComponentStyle {
-                "componentId": "sc-bwzfXH",
+                "componentId": "sc-gZMcBi",
                 "isStatic": false,
                 "rules": Array [
                   "
@@ -1477,7 +1929,7 @@ exports[`Shipping Form should render correctly with logged in user having addres
               "displayName": "Styled(InputCheckbox)",
               "foldedComponentIds": Array [],
               "render": [Function],
-              "styledComponentId": "sc-bwzfXH",
+              "styledComponentId": "sc-gZMcBi",
               "target": [Function],
               "toString": [Function],
               "warnTooManyClasses": [Function],
@@ -1538,26 +1990,94 @@ exports[`Shipping Form should render correctly with logged in user having addres
         </div>
       </div>
     </FormSection>
-    <FormSection
-      name="shipmentMethods"
+    <Styled(Row)
+      fullBleed={true}
     >
-      <div
-        className="shipment-methods-form"
-      >
-        <Styled(ShipmentMethods)
-          formName="checkoutShipping"
-          formSection="shipmentMethods"
-          selectedShipmentId={null}
-          shipmentHeader=""
-          shipmentMethods={
-            Array [
-              Object {},
-            ]
+      <Styled(Col)
+        colSize={
+          Object {
+            "large": 6,
+            "medium": 8,
+            "small": 6,
           }
+        }
+      >
+        <FormSection
+          name="shipmentMethods"
+        >
+          <div
+            className="shipment-methods-form"
+          >
+            <Styled(ShipmentMethods)
+              formName="checkoutShipping"
+              formSection="shipmentMethods"
+              selectedShipmentId={null}
+              shipmentHeader=""
+              shipmentMethods={
+                Array [
+                  Object {},
+                ]
+              }
+            />
+          </div>
+        </FormSection>
+      </Styled(Col)>
+      <Styled(Col)
+        colSize={
+          Object {
+            "large": 6,
+            "medium": 8,
+            "small": 6,
+          }
+        }
+      >
+        <Connect(GiftServicesContainer)
+          dispatch={
+            [MockFunction] {
+              "calls": Array [
+                Array [
+                  Object {
+                    "meta": Object {
+                      "form": "checkoutShipping",
+                      "sections": Array [
+                        "address",
+                      ],
+                    },
+                    "type": "@@redux-form/RESET_SECTION",
+                  },
+                ],
+                Array [
+                  Object {
+                    "meta": Object {
+                      "field": "onFileAddressKey",
+                      "form": "checkoutShipping",
+                      "persistentSubmitErrors": undefined,
+                      "touch": undefined,
+                    },
+                    "payload": "1234",
+                    "type": "@@redux-form/CHANGE",
+                  },
+                ],
+              ],
+              "results": Array [
+                Object {
+                  "type": "return",
+                  "value": undefined,
+                },
+                Object {
+                  "type": "return",
+                  "value": undefined,
+                },
+              ],
+            }
+          }
+          formName="checkoutShipping"
+          formSection="giftServices"
+          showDefaultCheckbox={false}
+          variation="secondary"
         />
-      </div>
-    </FormSection>
-    <Styled(CheckoutOrderInfo) />
+      </Styled(Col)>
+    </Styled(Row)>
     <Styled(CheckoutFooter)
       backLinkText=""
       disableNext={false}

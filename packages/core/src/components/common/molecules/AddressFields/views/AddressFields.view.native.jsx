@@ -18,6 +18,7 @@ import {
   AddressSecondWrapper,
   HiddenAddressLineWrapper,
 } from '../styles/AddressFields.style.native';
+import { HiddenStateWrapper } from '../../../organisms/AddressForm/AddressForm.native.style';
 import {
   countriesOptionsMap,
   CAcountriesStatesTable,
@@ -33,11 +34,19 @@ export class AddressFields extends React.PureComponent {
     formSection: PropTypes.string,
     loadShipmentMethods: PropTypes.func.isRequired,
     disableCountry: PropTypes.bool,
+    showUserName: PropTypes.bool,
+    showPhoneNumber: PropTypes.bool,
+    showEmailAddress: PropTypes.bool,
+    initialValues: PropTypes.shape({}),
   };
 
   static defaultProps = {
     formSection: '',
     disableCountry: false,
+    showUserName: true,
+    showPhoneNumber: true,
+    showEmailAddress: true,
+    initialValues: {},
   };
 
   static addressValidationConfig = getStandardConfig([
@@ -71,19 +80,37 @@ export class AddressFields extends React.PureComponent {
     } = API_CONFIG;
     this.state = {
       country: us.toUpperCase(),
-      dropDownItem: this.UScountriesStates[0].displayName,
+      dropDownItem:
+        this.getInitialState(props.initialValues) || this.UScountriesStates[0].displayName,
     };
 
     this.locationRef = null;
   }
 
+  componentDidMount() {
+    const { country } = this.state;
+    const { dispatch, formName, formSection, initialValues } = this.props;
+    dispatch(change(formName, `${formSection}.country`, country));
+    dispatch(change(formName, `${formSection}.addressLine1`, initialValues.addressLine1));
+  }
+
   handlePlaceSelected = (place, inputValue) => {
     const { dispatch, formName, formSection } = this.props;
     const address = getAddressFromPlace(place, inputValue);
-    dispatch(change(formName, `${formSection ? 'address.' : ''}city`, address.city));
-    dispatch(change(formName, `${formSection ? 'address.' : ''}zipCode`, address.zip));
-    dispatch(change(formName, `${formSection ? 'address.' : ''}state`, address.state));
+    dispatch(change(formName, `${formSection}.city`, address.city));
+    dispatch(change(formName, `${formSection}.zipCode`, address.zip));
+    dispatch(change(formName, `${formSection}.state`, address.state));
+    dispatch(change(formName, `${formSection}.addressLine1`, address.street));
     this.setState({ dropDownItem: address.state });
+    this.locationRef.setAddressText(address.street);
+  };
+
+  getInitialAddressLine1 = initialValues => {
+    return (initialValues && initialValues.address && initialValues.address.addressLine1) || '';
+  };
+
+  getInitialState = initialValues => {
+    return (initialValues && initialValues.address && initialValues.address.state) || '';
   };
 
   changeShipmentMethods = (e, value) => {
@@ -94,28 +121,41 @@ export class AddressFields extends React.PureComponent {
   };
 
   render() {
-    const { addressFormLabels, formSection, dispatch, formName, disableCountry } = this.props;
+    const {
+      addressFormLabels,
+      formSection,
+      dispatch,
+      formName,
+      disableCountry,
+      showUserName,
+      showPhoneNumber,
+      showEmailAddress,
+      initialValues,
+    } = this.props;
     const { dropDownItem, country } = this.state;
     const isCA = country === API_CONFIG.siteIds.ca.toUpperCase();
     return (
       <View>
-        <Field
-          name="firstName"
-          id="firstName"
-          label={addressFormLabels.firstName}
-          type="text"
-          component={TextBox}
-          maxLength={50}
-          dataLocator="addnewaddress-firstname"
-        />
-        <Field
-          id="lastName"
-          name="lastName"
-          label={addressFormLabels.lastName}
-          component={TextBox}
-          dataLocator="addnewaddress-lastname"
-        />
-
+        {showUserName && (
+          <>
+            <Field
+              name="firstName"
+              id="firstName"
+              label={addressFormLabels.firstName}
+              type="text"
+              component={TextBox}
+              maxLength={50}
+              dataLocator="addnewaddress-firstname"
+            />
+            <Field
+              id="lastName"
+              name="lastName"
+              label={addressFormLabels.lastName}
+              component={TextBox}
+              dataLocator="addnewaddress-lastname"
+            />
+          </>
+        )}
         <GooglePlaceInputWrapper>
           <Field
             headerTitle={addressFormLabels.addressLine1}
@@ -131,7 +171,7 @@ export class AddressFields extends React.PureComponent {
             refs={instance => {
               this.locationRef = instance;
             }}
-            // initialValue={addressLine1}
+            initialValue={this.getInitialAddressLine1(initialValues)}
             dataLocator="addnewaddress-addressl1"
             componentRestrictions={{ ...{ country: [country] } }}
           />
@@ -166,8 +206,6 @@ export class AddressFields extends React.PureComponent {
         <StateZipCodeContainer>
           <InputFieldHalf>
             <Field
-              id="state"
-              name="state"
               component={DropDown}
               heading={isCA ? addressFormLabels.province : addressFormLabels.stateLbl}
               dataLocator="addnewaddress-city"
@@ -182,6 +220,9 @@ export class AddressFields extends React.PureComponent {
               dropDownStyle={{ ...dropDownStyle }}
               itemStyle={{ ...itemStyle }}
             />
+            <HiddenStateWrapper>
+              <Field label="" component={TextBox} title="" type="hidden" id="state" name="state" />
+            </HiddenStateWrapper>
           </InputFieldHalf>
           <Separator />
           <InputFieldHalf zipCode>
@@ -216,24 +257,28 @@ export class AddressFields extends React.PureComponent {
           itemStyle={{ ...itemStyle }}
           disabled={disableCountry}
         />
-        <InputFieldPhoneNumber>
+        {showPhoneNumber && (
+          <InputFieldPhoneNumber>
+            <Field
+              id="phoneNumber"
+              name="phoneNumber"
+              label={addressFormLabels.phoneNumber}
+              component={TextBox}
+              dataLocator="addnewaddress-phnumber"
+              type="tel"
+            />
+          </InputFieldPhoneNumber>
+        )}
+        {showEmailAddress && (
           <Field
-            id="phoneNumber"
-            name="phoneNumber"
-            label={addressFormLabels.phoneNumber}
+            label="Email (For Order Updates)"
+            name="emailAddress"
+            id={`${formSection}.emailAddress`}
             component={TextBox}
-            dataLocator="addnewaddress-phnumber"
-            type="tel"
+            dataLocator="email-address-field"
+            enableSuccessCheck={false}
           />
-        </InputFieldPhoneNumber>
-        <Field
-          label="Email (For Order Updates)"
-          name="emailAddress"
-          id={`${formSection}.emailAddress`}
-          component={TextBox}
-          dataLocator="email-address-field"
-          enableSuccessCheck={false}
-        />
+        )}
       </View>
     );
   }

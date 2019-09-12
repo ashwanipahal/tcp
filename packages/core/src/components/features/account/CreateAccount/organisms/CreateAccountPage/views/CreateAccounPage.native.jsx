@@ -36,9 +36,12 @@ class CreateAccounPage extends React.Component {
   constructor(props) {
     super(props);
     this.handleSubmitForm = this.handleSubmitForm.bind(this);
-    this.state = { hideShowPwd: false, confirmHideShowPwd: false };
+    this.state = { hideShowPwd: false, confirmHideShowPwd: false, getTouchStatus: false };
     this.onPwdHideShowClick = this.onPwdHideShowClick.bind(this);
     this.onConfirmPwdHideShowClick = this.onConfirmPwdHideShowClick.bind(this);
+    isSupportedTouch().then(biometryType => {
+      this.setState({ getTouchStatus: biometryType });
+    });
   }
 
   onPwdHideShowClick = value => {
@@ -71,7 +74,7 @@ class CreateAccounPage extends React.Component {
       showForgotPasswordForm,
       showLogin,
     } = this.props;
-    const { hideShowPwd, confirmHideShowPwd } = this.state;
+    const { hideShowPwd, confirmHideShowPwd, getTouchStatus } = this.state;
     return (
       <ScrollView
         showsVerticalScrollIndicator={false}
@@ -96,6 +99,7 @@ class CreateAccounPage extends React.Component {
             </ErrorWrapper>
           )}
           <CreateAccountForm
+            getTouchStatus={getTouchStatus}
             labels={labels}
             handleSubmitForm={this.handleSubmitForm}
             onPwdHideShowClick={this.onPwdHideShowClick}

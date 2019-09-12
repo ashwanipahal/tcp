@@ -19,8 +19,9 @@ export const ResetPasswordForm = ({
   labels,
   pristine,
   successMessage,
-  errorMessage,
   handleSubmit,
+  resetPasswordErrorMessage,
+  showNotification,
 }) => {
   return (
     <form
@@ -37,9 +38,9 @@ export const ResetPasswordForm = ({
           {labels[`lbl_resetPassword_${successMessage}`]}
         </BodyCopy>
       )}
-      {errorMessage && (
+      {resetPasswordErrorMessage && showNotification && (
         <BodyCopy fontSize="fs12" fontWeight="semibold" color="red.500" className="elem-mb-XL">
-          {labels[`lbl_resetPassword_${errorMessage}`]}
+          {resetPasswordErrorMessage}
         </BodyCopy>
       )}
       <Field
@@ -86,9 +87,10 @@ ResetPasswordForm.propTypes = {
   labels: PropTypes.shape({}).isRequired,
   pristine: PropTypes.bool.isRequired,
   successMessage: PropTypes.string.isRequired,
-  errorMessage: PropTypes.string.isRequired,
   handleSubmit: PropTypes.func.isRequired,
   className: PropTypes.string,
+  resetPasswordErrorMessage: PropTypes.string.isRequired,
+  showNotification: PropTypes.bool.isRequired,
 };
 
 ResetPasswordForm.defaultProps = {

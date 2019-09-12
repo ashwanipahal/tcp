@@ -10,7 +10,7 @@ import {
   showUpdatedNotificationState,
 } from '../../../../AddressBook/container/AddressBook.selectors';
 import { getProfileInfoTileData } from '../../../../User/container/User.selectors';
-import { routerPush, isCanada } from '../../../../../../../utils';
+import { routerPush, isCanada, isMobileApp } from '../../../../../../../utils';
 import { getAddEditAddressLabels } from '../../../../../../common/organisms/AddEditAddress/container/AddEditAddress.selectors';
 import { getOnFileAddressKey } from '../../../../AddEditCreditCard/container/AddEditCreditCard.selectors';
 import internalEndpoints from '../../../../common/internalEndpoints';
@@ -22,10 +22,14 @@ export class MailingInformationContainer extends PureComponent {
   }
 
   componentDidUpdate() {
-    const { addressResponse } = this.props;
+    const { addressResponse, onUpdateMailingAddress } = this.props;
     const isSuccess = addressResponse && addressResponse.get('addressId');
     if (isSuccess) {
-      this.backToAddressBookClick();
+      if (!isMobileApp) {
+        this.backToAddressBookClick();
+      } else if (onUpdateMailingAddress) {
+        onUpdateMailingAddress();
+      }
     }
   }
 
@@ -35,10 +39,10 @@ export class MailingInformationContainer extends PureComponent {
         address: {
           firstName: '',
           lastName: '',
+          country: isCanada() ? 'CA' : 'US',
+          addressLine2: '',
         },
         primary: addressList && addressList.size === 0,
-        country: isCanada() ? 'CA' : 'US',
-        addressLine2: '',
       };
     }
     return {
@@ -68,7 +72,7 @@ export class MailingInformationContainer extends PureComponent {
     const payload = Object.assign(payloadParam, {
       email: address.emailAddress,
       phoneNumber: address.phoneNumber,
-      nickName: address.emailAddress.toUpperCase(),
+      nickName: address.emailAddress && address.emailAddress.toUpperCase(),
       primary: address.primary ? 'true' : 'false',
     });
     submitNewAddressFormAction(payload);
@@ -92,7 +96,15 @@ export class MailingInformationContainer extends PureComponent {
   };
 
   render() {
-    const { addressResponse, addressList, address, labels, addressLabels, addressKey } = this.props;
+    const {
+      addressResponse,
+      addressList,
+      address,
+      labels,
+      addressLabels,
+      addressKey,
+      onClose,
+    } = this.props;
     this.initialValues = this.getInitialValues(addressList, address);
     const errorObject = addressResponse && addressResponse.get('errors');
     const errorMessage = errorObject && errorObject.getIn(['0', 'errorKey']);
@@ -116,7 +128,9 @@ export class MailingInformationContainer extends PureComponent {
         pageheading={labels.profile.lbl_profile_heading}
         showCreditCardFields={false}
         showUserName={false}
+        showEmailAddress={false}
         subHeading={labels.profile.lbl_profile_mailing_address}
+        onClose={onClose}
       />
     );
   }
@@ -126,6 +140,7 @@ MailingInformationContainer.defaultProps = {
   addressLabels: {},
   address: null,
   addressKey: '',
+  onClose: () => {},
 };
 
 export const mapDispatchToProps = dispatch => {
@@ -160,6 +175,8 @@ MailingInformationContainer.propTypes = {
   submitNewAddressFormAction: PropTypes.func.isRequired,
   verifyAddressAction: PropTypes.func.isRequired,
   addressKey: PropTypes.string,
+  onUpdateMailingAddress: PropTypes.func.isRequired,
+  onClose: PropTypes.func,
 };
 
 export default connect(

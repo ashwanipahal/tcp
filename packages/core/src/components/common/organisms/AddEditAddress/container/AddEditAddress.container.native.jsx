@@ -79,7 +79,8 @@ export class AddEditAddressContainer extends React.PureComponent<Props> {
     const { resetFormState, toggleAddressModal, currentForm, resetAddressLine1 } = this.props;
     resetFormState();
     if (currentForm === 'VerificationModal') toggleAddressModal();
-    resetAddressLine1();
+
+    if (resetAddressLine1) resetAddressLine1();
   }
 
   getInitialValues = (addressList, address) => {

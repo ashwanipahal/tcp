@@ -59,7 +59,7 @@ class FooterTopCandidateA extends React.PureComponent {
     } = this.props;
 
     return (
-      <Grid className="footer_top_candidate_a">
+      <Grid className="footer_top_candidate_a content-wrapper">
         <Row>
           {/* ------------ Email Sign Up starts here ----------------- */}
           <Col
@@ -244,7 +244,6 @@ class FooterTopCandidateA extends React.PureComponent {
             <SocialMediaLinks {...socialMediaLinks} className="social-media-links" />
           </Col>
         </Row>
-        <div className="divider hide-in-medium-down" />
       </Grid>
     );
   }

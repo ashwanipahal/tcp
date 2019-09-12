@@ -28,4 +28,10 @@ describe('AddGiftCard Reducer', () => {
       getProductSkuInfoSuccess.payload.product.productId
     );
   });
+
+  it('DEFAULT', () => {
+    const newState = CartItemTile(initialState, {});
+
+    expect(newState).toEqual(initialState);
+  });
 });

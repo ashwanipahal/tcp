@@ -5,41 +5,56 @@ export default css`
 
   .moduleJ-topbar {
     border-top: 3px solid ${props => props.theme.colorPalette.yellow['500']};
-    margin-bottom: ${props => props.theme.spacing.ELEM_SPACING.MED};
+    margin: 0 0 ${props => props.theme.spacing.ELEM_SPACING.XS};
+
+    @media ${props => props.theme.mediaQuery.medium} {
+      margin: 0 0 ${props => props.theme.spacing.ELEM_SPACING.MED};
+    }
   }
+
   .moduleJ-promo {
     position: relative;
     text-align: center;
   }
-  .moduleJ-header-text1 {
-    background-color: ${props => props.theme.colorPalette.white};
-    position: absolute;
-    margin-top: -30px;
-    left: 50%;
-    transform: translateX(-50%);
-    width: 82%;
+
+  .link-text {
+    margin-bottom: 0;
   }
-  .moduleJ-header-text2 {
-    height: 58px;
-    letter-spacing: -0.5px;
+
+  .moduleJ-promoBanner {
     margin-bottom: ${props => props.theme.spacing.ELEM_SPACING.SM};
   }
-  .moduleJ-promoBanner {
-    height: 117px;
+
+  .moduleJ-promo-image-right {
+    margin-top: ${props => props.theme.spacing.ELEM_SPACING.LRG};
+
+    @media ${props => props.theme.mediaQuery.medium} {
+      margin-top: 0;
+      text-align: right;
+    }
   }
+
+  .moduleJ-promo-img {
+    width: 100%;
+
+    @media ${props => props.theme.mediaQuery.medium} {
+      width: auto;
+    }
+  }
+
   .moduleJ__carousel-wrapper {
     margin-top: 27px;
+  }
 
-    .slick-list {
-      margin-right: -22%;
+  .slick-list {
+    margin-right: -22%;
 
-      @media ${props => props.theme.mediaQuery.medium} {
-        margin-right: -15%;
-      }
+    @media ${props => props.theme.mediaQuery.medium} {
+      margin-right: -15%;
+    }
 
-      @media ${props => props.theme.mediaQuery.large} {
-        margin-right: auto;
-      }
+    @media ${props => props.theme.mediaQuery.large} {
+      margin-right: auto;
     }
   }
 

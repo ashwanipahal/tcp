@@ -13,6 +13,7 @@ import { COUPON_STATUS } from '../../../../../../../services/abstractors/CnC/Car
 
 const MyRewards = ({
   labels,
+  commonLabels,
   className,
   coupons,
   onViewCouponDetails,
@@ -26,8 +27,8 @@ const MyRewards = ({
 }) => {
   const heading =
     view === 'all'
-      ? `${labels.myPlaceRewards.lbl_my_rewards_wallet_heading} (${coupons.size})`
-      : `${labels.myPlaceRewards.lbl_my_rewards_heading} (${coupons.size})`;
+      ? `${labels.placeRewards.lbl_my_rewards_wallet_heading} (${coupons.size})`
+      : `${labels.placeRewards.lbl_my_rewards_heading} (${coupons.size})`;
   const isApplyingCoupon = !!coupons.find(
     coupon => coupon.status === COUPON_STATUS.APPLYING || coupon.status === COUPON_STATUS.REMOVING
   );
@@ -70,7 +71,7 @@ const MyRewards = ({
                 return (
                   <DetailedCouponTile
                     key={coupon.id}
-                    labels={labels.common}
+                    labels={commonLabels}
                     coupon={coupon}
                     onViewCouponDetails={onViewCouponDetails}
                     onApplyCouponToBagFromList={onApplyCouponToBagFromList}
@@ -112,7 +113,7 @@ const MyRewards = ({
               dataLocator="my-rewards-program-details"
               target="_blank"
             >
-              {labels.myPlaceRewards.lbl_my_rewards_program_details}
+              {labels.placeRewards.lbl_my_rewards_program_details}
             </Anchor>
             <Anchor
               fontSizeVariation="medium"
@@ -124,7 +125,7 @@ const MyRewards = ({
               className="elem-ml-XXL"
               target="_self"
             >
-              {labels.common.lbl_common_tnc}
+              {labels.placeRewards.lbl_common_tnc}
             </Anchor>
           </Col>
         )}
@@ -134,7 +135,8 @@ const MyRewards = ({
 };
 
 MyRewards.propTypes = {
-  labels: PropTypes.shape({ common: {}, myPlaceRewards: {} }),
+  labels: PropTypes.shape({ common: {}, placeRewards: {} }),
+  commonLabels: PropTypes.shape({}),
   className: PropTypes.string,
   coupons: PropTypes.shape([]),
   onViewCouponDetails: PropTypes.func,
@@ -149,14 +151,15 @@ MyRewards.propTypes = {
 
 MyRewards.defaultProps = {
   labels: {
-    common: { lbl_common_tnc: '' },
-    myPlaceRewards: {
+    placeRewards: {
       lbl_my_rewards_program_details: '',
       lbl_my_rewards_shop_now: '',
       ACC_LBL_MY_REWARDS_NO_REWARDS_MSG: '',
       ACC_LBL_MY_REWARDS_HEADING: '',
+      lbl_common_tnc: '',
     },
   },
+  commonLabels: {},
   className: '',
   coupons: [],
   onViewCouponDetails: () => {},

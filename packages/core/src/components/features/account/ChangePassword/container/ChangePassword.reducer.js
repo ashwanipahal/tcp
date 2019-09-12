@@ -12,6 +12,8 @@ const ChangePasswordReducer = (state, action) => {
       return state.set('error', null).set('success', action.payload);
     case constants.CHANGE_PASSWORD_ERROR:
       return state.set('error', action.payload);
+    case constants.CHANGE_PASSWORD_RESET:
+      return state.set('error', null);
     default:
       // TODO: currently when initial state is hydrated on browser, List is getting converted to an JS Array
       if (state instanceof Object) {

@@ -46,7 +46,9 @@ export const addCreditCard = args => {
     .then(res => {
       return res.body;
     })
-    .catch(errorHandler);
+    .catch(err => {
+      throw err;
+    });
 };
 
 export const updateCreditCard = args => {

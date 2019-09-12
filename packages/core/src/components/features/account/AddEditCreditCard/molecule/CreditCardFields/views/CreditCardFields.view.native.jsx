@@ -78,7 +78,7 @@ export class CreditCardFields extends React.PureComponent<Props> {
         <ExpiryContainer>
           <ExpiryMonth>
             <BodyCopy
-              fontFamily="secondary"
+              mobilefontFamily="secondary"
               fontSize="fs10"
               fontWeight="black"
               text={selectedMonth ? labels.paymentGC.lbl_payment_expMonth : ''}
@@ -100,7 +100,7 @@ export class CreditCardFields extends React.PureComponent<Props> {
           </ExpiryMonth>
           <ExpiryYear>
             <BodyCopy
-              fontFamily="secondary"
+              mobilefontFamily="secondary"
               fontSize="fs10"
               fontWeight="black"
               text={selectedYear ? labels.paymentGC.lbl_payment_expYear : ''}

@@ -36,6 +36,7 @@ class CheckoutPage extends React.PureComponent {
       orderHasPickUp,
       submitShippingSection,
       isOrderUpdateChecked,
+      isGiftServicesChecked,
       isAlternateUpdateChecked,
       pickUpLabels,
       smsSignUpLabels,
@@ -73,6 +74,7 @@ class CheckoutPage extends React.PureComponent {
             isSmsUpdatesEnabled={isSmsUpdatesEnabled}
             currentPhoneNumber={currentPhoneNumber}
             isOrderUpdateChecked={isOrderUpdateChecked}
+            isGiftServicesChecked={isGiftServicesChecked}
             isAlternateUpdateChecked={isAlternateUpdateChecked}
             pickUpLabels={pickUpLabels}
             smsSignUpLabels={smsSignUpLabels}
@@ -111,14 +113,7 @@ class CheckoutPage extends React.PureComponent {
 
   render() {
     const { isGuest } = this.props;
-    return (
-      <CnCTemplate
-        leftSection={this.renderLeftSection}
-        marginTop
-        isCheckoutView
-        isGuest={isGuest}
-      />
-    );
+    return <CnCTemplate leftSection={this.renderLeftSection} marginTop isGuest={isGuest} />;
   }
 }
 
@@ -132,6 +127,7 @@ CheckoutPage.propTypes = {
   shippingProps: PropTypes.shape({}).isRequired,
   billingProps: PropTypes.shape({}).isRequired,
   isOrderUpdateChecked: PropTypes.bool.isRequired,
+  isGiftServicesChecked: PropTypes.bool.isRequired,
   isAlternateUpdateChecked: PropTypes.bool.isRequired,
   pickupInitialValues: PropTypes.shape({}).isRequired,
   pickUpLabels: PropTypes.shape({}).isRequired,

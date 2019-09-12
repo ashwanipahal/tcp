@@ -14,9 +14,8 @@ export const filterProductsBrand = (arr, searchedValue) => {
 
 const getBagPageLabels = state => {
   const {
-    bag: {
-      addedToBag: { lbl_header_addedToBag: addedToBag, lbl_cta_checkout: checkout },
-      bagOverview: {
+    checkout: {
+      bagPage: {
         lbl_header_bag: bagHeading,
         lbl_emptyBag_loggedInMsg: loggedInMsg,
         lbl_emptyBag_notLoggedInMsg: guestUserMsg,
@@ -25,6 +24,9 @@ const getBagPageLabels = state => {
         lbl_emptyBag_inspirationTagLine: tagLine,
         lbl_emptyBag_helperMsg: helperMsg,
       } = {},
+    } = {},
+    global: {
+      addedToBagModal: { lbl_header_addedToBag: addedToBag, lbl_cta_checkout: checkout },
     } = {},
   } = state.Labels;
   return {
@@ -74,9 +76,33 @@ const getProductsTypes = state => {
 };
 
 const getNeedHelpContentId = state => {
-  const { referred = [] } = state.Labels.bag.addedToBag;
+  const { referred = [] } = state.Labels.global.addedToBagModal;
   const content = referred.find(label => label.name === 'NEED_HELP_DATA');
   return content && content.contentId;
+};
+
+const getDetailsContentTcpId = state => {
+  const { referred = [] } = state.Labels.checkout.shipping;
+  const content = referred.find(label => label.name === 'GiftServicesDetailsTCPModal');
+  return content && content.contentId;
+};
+
+const getDetailsContentGymId = state => {
+  const { referred = [] } = state.Labels.checkout.shipping;
+  const content = referred.find(label => label.name === 'GiftServicesDetailsGYMModal');
+  return content && content.contentId;
+};
+
+const getGiftServicesContentTcpId = state => {
+  const { referred = [] } = state.Labels.checkout.shipping;
+  const contentTCP = referred.find(label => label.name === 'GiftServicesDetailsTCPModal');
+  return contentTCP && contentTCP.contentId;
+};
+
+const getGiftServicesContentGymId = state => {
+  const { referred = [] } = state.Labels.bag.addedToBag;
+  const contentGYM = referred.find(label => label.name === 'GiftServicesDetailsGYMModal');
+  return contentGYM && contentGYM.contentId;
 };
 
 const getFilteredItems = (state, filter) =>
@@ -106,4 +132,8 @@ export default {
   getConfirmationModalFlag,
   getFilteredItems,
   getErrorMapping,
+  getDetailsContentGymId,
+  getDetailsContentTcpId,
+  getGiftServicesContentTcpId,
+  getGiftServicesContentGymId,
 };

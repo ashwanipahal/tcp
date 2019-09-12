@@ -45,6 +45,7 @@ import {
   addNewShippingAddress,
   addRegisteredUserAddress,
   routeToPickupPage,
+  addAndSetGiftWrappingOptions,
 } from './Checkout.saga.util';
 import submitBilling from './CheckoutBilling.saga';
 
@@ -53,6 +54,7 @@ const {
   getIsOrderHasShipping,
   getShippingDestinationValues,
   getDefaultAddress,
+  getGiftServicesFormData,
   // isUsSite,
   // getIsOrderHasShipping  ,
   // getShippingDestinationValues,
@@ -188,7 +190,7 @@ function* callPickupSubmitMethod(formData) {
 }
 
 function* submitPickupSection({ payload }) {
-  const formData = { ...payload.formData };
+  const formData = { ...payload };
   const { navigation } = payload;
   // let pickupOperator = getPickupOperator(this.store);
   // let storeState = this.store.getState();
@@ -590,15 +592,7 @@ function* submitShippingSection({ payload: { navigation, ...formData } }) {
     // giftWrap,
     method,
     smsInfo,
-    shipTo: {
-      onFileAddressKey,
-      address,
-      setAsDefault,
-      phoneNumber,
-
-      saveToAccount,
-      emailSignup,
-    },
+    shipTo: { onFileAddressKey, address, setAsDefault, phoneNumber, saveToAccount, emailSignup },
   } = formData;
   let {
     shipTo: { emailAddress },
@@ -610,12 +604,10 @@ function* submitShippingSection({ payload: { navigation, ...formData } }) {
     // on registered user entering a new address the email field is not visible -> emailAddress = null
     emailAddress = yield select(getUserEmail);
   }
-
   const isCanadaUser = yield select(isCanada);
   if (!isCanadaUser && isGuestUser) {
     isEmailSignUpAllowed = false;
   }
-
   // let getGiftWrappingValues = yield select(getGiftWrappingValues);
   // let initialGiftWrappingVal = getGiftWrappingValues.hasGiftWrapping;
   // const giftWrappingStoreOptionID = getGiftWrappingValues.optionId;
@@ -627,6 +619,8 @@ function* submitShippingSection({ payload: { navigation, ...formData } }) {
   // ) {
   //   recalcFlag = true;
   // }
+  const giftServicesFormData = yield select(getGiftServicesFormData);
+  yield addAndSetGiftWrappingOptions(giftServicesFormData);
   yield put(setAddressError(null));
   const pendingPromises = [
     // add the requested gift wrap options
@@ -658,6 +652,7 @@ function* submitShippingSection({ payload: { navigation, ...formData } }) {
         },
         false
       );
+      addOrEditAddressRes = { payload: addOrEditAddressRes.body };
     } else {
       // guest user is editing a previously entered shipping address
       addOrEditAddressRes = yield call(
@@ -717,6 +712,7 @@ function* submitShippingSection({ payload: { navigation, ...formData } }) {
       recalcFlag,
       !(isOrderHasPickup && smsNumberForOrderUpdates)
     );
+    yield call(getAddressList);
     redirectToBilling(navigation);
   } catch (err) {
     // throw getSubmissionError(store, 'submitShippingSection', err);

@@ -83,3 +83,4 @@ const MiniBagHeader = ({ labels, className, userName }: Props) => {
   );
 };
 export default withStyles(MiniBagHeader, styles);
+export { MiniBagHeader as MiniBagHeaderVanilla };

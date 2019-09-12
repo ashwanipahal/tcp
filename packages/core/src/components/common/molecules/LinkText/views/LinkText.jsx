@@ -33,7 +33,7 @@ const LinkText = (props: Props) => {
     className,
     type,
     component,
-    headerText: [{ textItems, link }],
+    headerText,
     headingClass,
     color,
     dataLocator,
@@ -58,17 +58,20 @@ const LinkText = (props: Props) => {
     };
   }
 
-  const navigationUrl = link;
-  navigationUrl.to = configurePlpNavigationFromCMSUrl(link.url);
-  navigationUrl.asPath = link.url;
+  return headerText.map(item => {
+    const { link, textItems } = item;
+    const navigationUrl = link;
+    navigationUrl.to = configurePlpNavigationFromCMSUrl(link.url);
+    navigationUrl.asPath = link.url;
 
-  return (
-    <Anchor {...navigationUrl} className={className}>
-      <Component {...compProps} className={`${heading} link-text`}>
-        <TextItems textItems={textItems} />
-      </Component>
-    </Anchor>
-  );
+    return (
+      <Anchor {...navigationUrl} className={className}>
+        <Component {...compProps} className={`${heading} link-text`}>
+          <TextItems textItems={textItems} />
+        </Component>
+      </Anchor>
+    );
+  });
 };
 
 LinkText.defaultProps = {

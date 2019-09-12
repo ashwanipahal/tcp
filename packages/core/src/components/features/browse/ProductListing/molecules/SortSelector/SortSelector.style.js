@@ -25,7 +25,8 @@ export default css`
 
   li.item-select {
     background: ${props => props.theme.colors.ACCORDION.INACTIVE_HEADER} url(${selectedIcon})
-      no-repeat right ${props => props.theme.spacing.ELEM_SPACING.SM};
+      no-repeat right ${props => props.theme.spacing.ELEM_SPACING.SM} top
+      ${props => props.theme.spacing.ELEM_SPACING.SM};
     background-size: 25px 25px;
   }
   .sort-item-list .item-select {

@@ -41,9 +41,9 @@ export default {
   },
   PROMO_IMG_DATA: {
     imgConfig: [
+      'c_fill,g_face:center,h_310,w_375',
       'c_fill,g_face:center,h_158,w_177',
-      'c_fill,g_face:center,h_158,w_177',
-      'c_fill,g_face:center,h_216,w_450',
+      'c_fill,g_face:center,h_215,w_279',
     ],
   },
 };

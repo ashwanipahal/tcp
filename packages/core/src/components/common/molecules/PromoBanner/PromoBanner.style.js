@@ -331,7 +331,7 @@ export default css`
   * Module J Promo Banner styles
   *********************************/
 
-  .moduleJ_text_semibold {
+  .style10 {
     display: block;
     font-family: ${props => props.theme.typography.fonts.primary};
     font-size: ${props => props.theme.typography.fontSizes.fs20};
@@ -342,7 +342,7 @@ export default css`
       font-size: ${props => props.theme.typography.fontSizes.fs32};
     }
   }
-  .moduleJ_text_black {
+  .style11 {
     display: block;
     font-family: ${props => props.theme.typography.fonts.primary};
     font-size: ${props => props.theme.typography.fontSizes.fs48};

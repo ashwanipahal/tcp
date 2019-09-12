@@ -9,6 +9,8 @@ export const PRODUCT_LISTING_REDUCER_KEY = 'ProductListing';
 export const FORM_REDUCER_KEY = 'form';
 export const LOADER_REDUCER_KEY = 'PageLoader';
 export const TOAST_REDUCER_KEY = 'Toast';
+export const RECOMMENDATIONS_REDUCER_KEY = 'Recommendations';
+export const SEARCH_REDUCER_KEY = 'Search';
 
 // Don't Add "Reducer" in the Key - it should be LoginPage, not LoginPageReducer
 
@@ -37,6 +39,7 @@ export const USER_ACTION_PATTERN = '@@User-';
 export const USER_REDUCER_KEY = 'User';
 export const BIRTHDAY_SAVINGS_ACTION_PATTERN = '@@BirthdaySavings';
 export const NAVIGATION_ACTION_PATTERN = '@@Navigation-';
+export const RECOMMENDATIONS_ACTION_PATTERN = '@@Recommendations-';
 
 // acconut page reducer
 export const ACCOUNT_REDUCER_KEY = 'AccountReducer';
@@ -64,6 +67,10 @@ export const ADDEDITCREDITCARD_REDUCER_KEY = 'AddEditCreditCardReducer';
 // ProductListing Page Reducer
 export const PRODUCTLISTINGPAGE_REDUCER_KEY = 'ProductListingPage';
 export const PRODUCTLISTINGPAGE_ACTION_PATTERN = '@@PLP-';
+
+// Product Detail Page Reducer
+export const PRODUCT_DETAIL_REDUCER_KEY = 'ProductDetail';
+export const PRODUCT_DETAIL_ACTION_PATTERN = '@@PDP-';
 
 // Email signup reducer
 export const EMAIL_SIGNUP_REDUCER_KEY = 'EmailSignUp';
@@ -128,6 +135,10 @@ export const BIRTHDAY_SAVING_LIST_REDUCER_KEY = 'BirthdaySavingsList';
 export const APPLY_NOW_MODAL_REDUCER_KEY = 'ApplyNowModal';
 export const APPLY_NOW_MODAL_REDUCER_PATTERN = '@@ApplyNowModal-';
 
+// Gift Services Reducer
+export const GIFT_SERVICES_REDUCER_KEY = 'GiftServices';
+export const GIFT_SERVICES_ACTION_PATTERN = '@@GiftServices-';
+
 export const REDUCER_ACTION_MAPPING = {
   [APPLY_PLCC_REDUCER_KEY]: APPLY_PLCC_ACTION_PATTERN,
   [APICONFIG_REDUCER_KEY]: APICONFIG_ACTION_PATTERN,
@@ -146,11 +157,13 @@ export const REDUCER_ACTION_MAPPING = {
   [TRACK_ORDER_REDUCER_KEY]: TRACK_ORDER_ACTION_PATTERN,
   [CHANGE_PASSWORD_REDUCER_KEY]: CHANGE_PASSWORD_ACTION_PATTERN,
   [UPDATE_PROFILE_REDUCER_KEY]: UPDATE_PROFILE_ACTION_PATTERN,
+  [PRODUCT_DETAIL_REDUCER_KEY]: PRODUCT_DETAIL_ACTION_PATTERN,
   [GET_CANDID_REDUCER_KEY]: GET_CANDID_ACTION_PATTERN,
   [MY_PROFILE_REDUCER_KEY]: MY_PROFILE_ACTION_PATTERN,
   [PRODUCT_TAB_LIST_REDUCER_KEY]: PRODUCT_TAB_LIST_ACTION_PATTERN,
   [NAVIGATION_REDUCER_KEY]: NAVIGATION_ACTION_PATTERN,
   [APPLY_NOW_MODAL_REDUCER_KEY]: APPLY_NOW_MODAL_REDUCER_PATTERN,
+  [RECOMMENDATIONS_REDUCER_KEY]: RECOMMENDATIONS_ACTION_PATTERN,
 };
 
 export const ADDRESS_VERIFICATION_REDUCER_KEY = 'addressVerification';

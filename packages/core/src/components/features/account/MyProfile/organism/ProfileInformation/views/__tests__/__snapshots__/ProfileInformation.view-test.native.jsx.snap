@@ -5,7 +5,11 @@ exports[`ProfileInformation should render correctly 1`] = `
   <ProfileInfoActions
     defaultStore=""
     handleComponentChange={[Function]}
-    labels={Object {}}
+    labels={
+      Object {
+        "profile": Object {},
+      }
+    }
     mailingAddress={Object {}}
     mountSurveyModal={false}
     percentageIncrement={Object {}}
@@ -22,16 +26,25 @@ exports[`ProfileInformation should render correctly 1`] = `
   <PersonalInformation
     airMiles=""
     handleComponentChange={[Function]}
-    labels={Object {}}
+    labels={
+      Object {
+        "profile": Object {},
+      }
+    }
     myPlaceNumber=""
     profileInfoTile={Object {}}
+    toggleModalState={[Function]}
     userBirthday=""
     userEmail=""
     userFullName=""
     userPhoneNumber=""
   />
   <AboutYouInfo
-    labels={Object {}}
+    labels={
+      Object {
+        "profile": Object {},
+      }
+    }
     userSurvey={
       Immutable.Map {
         "answers1": Immutable.List [],
@@ -41,11 +54,19 @@ exports[`ProfileInformation should render correctly 1`] = `
   />
   <ChangePasswordInfo
     handleComponentChange={[Function]}
-    labels={Object {}}
+    labels={
+      Object {
+        "profile": Object {},
+      }
+    }
   />
   <BirthdaySaving
     handleComponentChange={[Function]}
-    labels={Object {}}
+    labels={
+      Object {
+        "profile": Object {},
+      }
+    }
   />
   <Styled(View)>
     <Styled(Anchor)

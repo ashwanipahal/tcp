@@ -3,10 +3,12 @@ import React from 'react';
 import { PropTypes } from 'prop-types';
 import errorBoundary from '@tcp/core/src/components/common/hoc/withErrorBoundary';
 import HomePageSlots from '@tcp/core/src/components/common/molecules/HomePageSlots';
-import GetCandid from '@tcp/core/src/components/common/molecules/GetCandid';
-import ModuleB from '@tcp/core/src/components/common/molecules/ModuleB';
+// import GetCandid from '@tcp/core/src/components/common/molecules/GetCandid';
+// import Recommendations from '@tcp/core/src/components/common/molecules/Recommendations';
+// import ModuleB from '@tcp/core/src/components/common/molecules/ModuleB';
 import ModuleJ from '@tcp/core/src/components/common/molecules/ModuleJ';
-import mock from '@tcp/core/src/services/abstractors/common/moduleB/mock';
+// import mock from '@tcp/core/src/services/abstractors/common/moduleB/mock';
+import moduleJMock from '@tcp/core/src/components/common/molecules/ModuleJ/mock';
 
 const returnModule = mod => mod.default;
 
@@ -22,9 +24,10 @@ const HomePageView = dynamic({
   render: ({ slots }, modules) => {
     return [
       <HomePageSlots slots={slots} modules={modules} />,
-      <ModuleB {...mock} />,
-      <GetCandid />,
-      <ModuleJ />,
+      // <ModuleB {...mock} />,
+      // <GetCandid />,
+      <ModuleJ {...moduleJMock.moduleJ.composites} />,
+      // <Recommendations />,
     ];
   },
 });

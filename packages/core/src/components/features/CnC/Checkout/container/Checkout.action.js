@@ -1,3 +1,5 @@
+import { loadComponentLabelsData } from '@tcp/core/src/reduxStore/actions';
+import { LABELS } from '@tcp/core/src/reduxStore/constants';
 import constants from '../Checkout.constants';
 
 export const initCheckoutAction = () => ({
@@ -276,6 +278,10 @@ export const routeToPickupPage = () => {
   };
 };
 
+// export const initActions = [loadComponentLabelsData({ category: LABELS.checkout })];
+
+export const initActions = [loadComponentLabelsData({ category: LABELS.checkout })];
+
 export const updateShippingAddress = payload => {
   return {
     type: constants.UPDATE_SHIPPING_ADDRESS,
@@ -326,6 +332,13 @@ export const resetGiftCardError = () => {
 export const setOrderBalanceTotal = payload => {
   return {
     type: constants.SET_ORDER_TOTAL,
+    payload,
+  };
+};
+
+export const setGiftWrap = payload => {
+  return {
+    type: 'CHECKOUT_VAlUES_SET_GIFT_WRAP',
     payload,
   };
 };
