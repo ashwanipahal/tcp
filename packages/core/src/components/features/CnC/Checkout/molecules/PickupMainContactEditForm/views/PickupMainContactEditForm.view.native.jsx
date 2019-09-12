@@ -75,6 +75,7 @@ class PickupMainContactEditForm extends React.Component {
 
   render() {
     const { isMobile, formData, isEditing, labels, isReset, handleExitEditModeClick } = this.props;
+    const headerIconStyle = { position: 'absolute', top: -2, left: -50 };
     if (isReset) {
       const { dispatch } = this.props;
       dispatch(resetSection('checkoutPickup', 'pickUpContact'));
@@ -89,6 +90,12 @@ class PickupMainContactEditForm extends React.Component {
             onRequestClose={handleExitEditModeClick}
             heading={labels.titleEditPickup}
             horizontalBar={false}
+            headingAlign="center"
+            fullWidth
+            headerStyle={headerIconStyle}
+            iconType="arrow"
+            headingFontWeight="semibold"
+            fontSize="fs12"
           >
             <ModalContainer>
               <ContactFormFields className="pick-up-input toggle" showPhoneNumber labels={labels} />
