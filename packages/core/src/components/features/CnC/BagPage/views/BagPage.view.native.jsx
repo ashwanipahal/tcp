@@ -38,7 +38,7 @@ const BagPage = ({
           {isUserLoggedIn && (
             <RowSectionStyle>
               <BonusPointsWrapper>
-                <BonusPointsDays isBagPage />
+                <BonusPointsDays isBagPage showAccordian={false} />
               </BonusPointsWrapper>
             </RowSectionStyle>
           )}
