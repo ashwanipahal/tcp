@@ -26,6 +26,6 @@ export default {
     ],
   },
   IMG_DATA: {
-    crops: ['mod_A_img_m', 'mod_A_img_t', 'mod_A_img_d'],
+    crops: ['t_mod_A_img_m', 't_mod_A_img_t', 't_mod_A_img_d'],
   },
 };

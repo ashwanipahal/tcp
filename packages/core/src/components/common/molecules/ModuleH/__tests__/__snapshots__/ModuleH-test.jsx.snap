@@ -238,9 +238,9 @@ exports[`ModuleH component renders correctly 1`] = `
         data-locator="moduleH_composite_image__1"
         imgConfigs={
           Array [
-            "mod_H_img_m",
-            "mod_H_img_t",
-            "mod_H_img_d",
+            "t_mod_H_img_full_m",
+            "t_mod_H_img_full_t",
+            "t_mod_H_img_full_d",
           ]
         }
         imgData={
@@ -256,9 +256,9 @@ exports[`ModuleH component renders correctly 1`] = `
         data-locator="moduleH_composite_image__2"
         imgConfigs={
           Array [
-            "mod_H_img_m",
-            "mod_H_img_t",
-            "mod_H_img_d",
+            "t_mod_H_img_full_m",
+            "t_mod_H_img_full_t",
+            "t_mod_H_img_full_d",
           ]
         }
         imgData={
@@ -274,9 +274,9 @@ exports[`ModuleH component renders correctly 1`] = `
         data-locator="moduleH_composite_image__3"
         imgConfigs={
           Array [
-            "mod_H_img_m",
-            "mod_H_img_t",
-            "mod_H_img_d",
+            "t_mod_H_img_full_m",
+            "t_mod_H_img_full_t",
+            "t_mod_H_img_full_d",
           ]
         }
         imgData={
@@ -292,9 +292,9 @@ exports[`ModuleH component renders correctly 1`] = `
         data-locator="moduleH_composite_image__4"
         imgConfigs={
           Array [
-            "mod_H_img_m",
-            "mod_H_img_t",
-            "mod_H_img_d",
+            "t_mod_H_img_full_m",
+            "t_mod_H_img_full_t",
+            "t_mod_H_img_full_d",
           ]
         }
         imgData={
@@ -310,9 +310,9 @@ exports[`ModuleH component renders correctly 1`] = `
         data-locator="moduleH_composite_image__5"
         imgConfigs={
           Array [
-            "mod_H_img_m",
-            "mod_H_img_t",
-            "mod_H_img_d",
+            "t_mod_H_img_full_m",
+            "t_mod_H_img_full_t",
+            "t_mod_H_img_full_d",
           ]
         }
         imgData={

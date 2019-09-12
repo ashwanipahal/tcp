@@ -18,7 +18,7 @@ export default {
     ],
   },
   IMG_DATA: {
-    imgConfig: ['mod_H_img_m', 'mod_H_img_t', 'mod_H_img_d'],
+    imgConfig: ['t_mod_H_img_full_m', 't_mod_H_img_full_t', 't_mod_H_img_full_d'],
   },
 
   MODULE_H_CTALINKS: {
