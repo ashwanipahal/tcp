@@ -116,7 +116,6 @@ ProductList.propTypes = {
   onAddItemToFavorites: PropTypes.func,
   /** callback for clicks on quickView CTAs. Accepts a generalProductId, colorProductId */
   onQuickViewOpenClick: PropTypes.func,
-  onPickUpOpenClick: PropTypes.func,
   /** callback to trigger when the user chooses to display a different color (used to retrieve prices) */
   onColorChange: PropTypes.func,
   /** When flase, flags that BOPIS is globaly disabled */
@@ -124,6 +123,7 @@ ProductList.propTypes = {
   /* This unbxd request ID will be passed to UNXD product click anlytics as request ID */
   unbxdId: PropTypes.string,
   onProductCardHover: PropTypes.func,
+  onPickUpOpenClick: PropTypes.func,
   isBopisEnabledForClearance: PropTypes.bool,
   onQuickBopisOpenClick: PropTypes.func,
   siblingProperties: PropTypes.shape({

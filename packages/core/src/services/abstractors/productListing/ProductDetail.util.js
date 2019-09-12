@@ -44,7 +44,7 @@ const homeBreadCrumbFactory = () => {
   return [
     {
       displayName: 'Home',
-      pathSuffix: '/home',
+      urlPathSuffix: 'home',
     },
   ];
 };
@@ -153,7 +153,7 @@ function convertMultipleSizeSkusToAlternatives(sizes) {
 const sumBy = (arr, iteratee) => {
   const func = typeof iteratee === 'function' ? iteratee : item => item[iteratee];
 
-  return arr.reduce((acc, item) => acc + func(item), 0);
+  return arr && arr.reduce((acc, item) => acc + func(item), 0);
 };
 
 function getFirstVariant(product) {

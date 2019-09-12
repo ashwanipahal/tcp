@@ -2,8 +2,8 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import PlaceRewardsSection from '../../../organism/PlaceRewardsSection';
 
-const PlaceRewardsView = ({ labels }) => {
-  return <PlaceRewardsSection labels={labels} />;
+const PlaceRewardsView = ({ labels, ...otherProps }) => {
+  return <PlaceRewardsSection labels={labels} {...otherProps} />;
 };
 
 PlaceRewardsView.propTypes = {
