@@ -28,7 +28,19 @@ exports[`PickupMainContactEditFormVanilla component should renders correctly whe
     </Styled(View)>
   </Styled(View)>
   <ModalNative
+    fontSize="fs12"
+    fullWidth={true}
+    headerStyle={
+      Object {
+        "left": -50,
+        "position": "absolute",
+        "top": -2,
+      }
+    }
+    headingAlign="center"
+    headingFontWeight="semibold"
     horizontalBar={false}
+    iconType="arrow"
     isOpen={true}
     onRequestClose={[MockFunction]}
   >
