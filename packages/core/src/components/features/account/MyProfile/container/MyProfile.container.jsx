@@ -26,7 +26,7 @@ const getMyProfileInfoLabels = labels => {
   return (labels && labels.profile) || {};
 };
 
-export class MyProfileContainer extends PureComponent {
+class MyProfileContainer extends PureComponent {
   componentWillUnmount() {
     const { messageSateChangeAction } = this.props;
     messageSateChangeAction(null);
