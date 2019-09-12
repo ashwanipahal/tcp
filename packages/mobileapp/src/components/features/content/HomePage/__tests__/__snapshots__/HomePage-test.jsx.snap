@@ -56,7 +56,7 @@ exports[`HomePageView should render correctly 1`] = `
     text="PLP Page"
   />
   <Connect(ModuleJ)
-    bgColor="#f53d3d"
+    bgColor="#d8d8d8"
     ctaItems={
       Array [
         Object {
