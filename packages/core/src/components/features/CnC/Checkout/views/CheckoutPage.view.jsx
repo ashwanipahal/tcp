@@ -115,7 +115,12 @@ class CheckoutPage extends React.PureComponent {
           />
         )}
         {currentSection.toLowerCase() === CHECKOUT_STAGES.REVIEW && (
-          <ReviewPage {...reviewProps} submitReview={submitReview} />
+          <ReviewPage
+            {...reviewProps}
+            submitReview={submitReview}
+            orderHasPickUp={orderHasPickUp}
+            orderHasShipping={orderHasShipping}
+          />
         )}
       </div>
     );

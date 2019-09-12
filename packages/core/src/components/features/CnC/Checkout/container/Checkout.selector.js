@@ -484,15 +484,20 @@ function isCardNotUpdated(state, cardId) {
 }
 
 const getReviewLabels = state => {
+  const getReviewLabelValue = label => getLabelValue(state.Labels, label, 'review', 'checkout');
   return {
-    header: getLabelValue(state.Labels, 'lbl_review_title', 'review', 'checkout'),
-    backLinkBilling: getLabelValue(
-      state.Labels,
-      'lbl_review_backLinkBilling',
-      'review',
-      'checkout'
-    ),
-    nextSubmitText: getLabelValue(state.Labels, 'lbl_review_nextSubmit', 'review', 'checkout'),
+    header: getLabelValue('lbl_review_title', 'review', 'checkout'),
+    backLinkBilling: getReviewLabelValue('lbl_review_backLinkBilling'),
+    nextSubmitText: getLabelValue('lbl_review_nextSubmit'),
+    applyConditionPreText: getLabelValue('lbl_review_applyConditionPreText'),
+    applyConditionTermsText: getLabelValue('lbl_review_applyConditionTermsText'),
+    applyConditionAndText: getLabelValue('lbl_review_applyConditionAndText'),
+    applyConditionPolicyText: getLabelValue('lbl_review_applyConditionPolicyText'),
+    pickupSectionTitle: getLabelValue('lbl_review_pickupSectionTitle'),
+    shippingSectionTitle: getLabelValue('lbl_review_shippingSectionTitle'),
+    billingSectionTitle: getLabelValue('lbl_review_billingSectionTitle'),
+    ariaLabelReviewPageTitle: getLabelValue('lbl_review_ariaLabelReviewPageTitle'),
+    ariaLabelBackLink: getLabelValue('lbl_review_ariaLabelBackLink'),
   };
 };
 
