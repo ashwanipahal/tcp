@@ -58,14 +58,14 @@ const LinkText = (props: Props) => {
     };
   }
 
-  return headerText.map(item => {
+  return headerText.map((item, index) => {
     const { link, textItems } = item;
     const navigationUrl = link;
     navigationUrl.to = configurePlpNavigationFromCMSUrl(link.url);
     navigationUrl.asPath = link.url;
 
     return (
-      <Anchor {...navigationUrl} className={className}>
+      <Anchor key={index.toString()} {...navigationUrl} className={className}>
         <Component {...compProps} className={`${heading} link-text`}>
           <TextItems textItems={textItems} />
         </Component>

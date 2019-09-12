@@ -168,13 +168,17 @@ ModuleJ.defaultProps = {
 
 ModuleJ.propTypes = {
   className: PropTypes.string,
-  productTabList: PropTypes.shape({
-    [PropTypes.string]: PropTypes.shape({
-      uniqueId: PropTypes.string.isRequired,
-      imageUrl: PropTypes.string.isRequired,
-      seo_token: PropTypes.string,
-    }),
-  }),
+  productTabList: PropTypes.oneOfType(
+    PropTypes.objectOf(
+      PropTypes.arrayOf(
+        PropTypes.shape({
+          uniqueId: PropTypes.string.isRequired,
+          imageUrl: PropTypes.array.isRequired,
+          seo_token: PropTypes.string,
+        })
+      )
+    )
+  ),
   headerText: PropTypes.arrayOf(PropTypes.shape({})),
   mediaLinkedList: PropTypes.arrayOf(
     PropTypes.shape({
