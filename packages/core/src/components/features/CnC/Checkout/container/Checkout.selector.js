@@ -17,7 +17,11 @@ import {
 import constants from '../Checkout.constants';
 import BagPageSelector from '../../BagPage/container/BagPage.selectors';
 import { getAddressListState } from '../../../account/AddressBook/container/AddressBook.selectors';
-import { getPickUpContactFormLabels, getGiftServicesFormData } from './Checkout.selector.util';
+import {
+  getPickUpContactFormLabels,
+  getGiftServicesFormData,
+  getSyncError,
+} from './Checkout.selector.util';
 
 // import { getAddressListState } from '../../../account/AddressBook/container/AddressBook.selectors';
 
@@ -551,4 +555,5 @@ export default {
   getGiftServicesFormData,
   getGiftServicesSend,
   getReviewLabels,
+  getSyncError,
 };

@@ -34,6 +34,7 @@ const propTypes = {
   defaultAddressId: PropTypes.string,
   defaultShipmentId: PropTypes.number,
   labels: PropTypes.shape({}).isRequired,
+  syncErrors: PropTypes.shape({}),
 };
 
 const defaultProps = {
@@ -56,6 +57,7 @@ const defaultProps = {
   isAddNewAddress: false,
   defaultAddressId: null,
   defaultShipmentId: null,
+  syncErrors: {},
 };
 
 export { propTypes, defaultProps };
