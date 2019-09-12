@@ -36,15 +36,8 @@ class CouponView extends React.PureComponent<Props> {
 
   getHeader = () => {
     return (
-      <div className="elem-mb-SM" data-locator="bonuspointsdayhdr">
-        <BodyCopy
-          fontFamily="primary"
-          fontSize={['fs16', 'fs13', 'fs18']}
-          fontWeight="extrabold"
-          component="span"
-          className="elem-mr-XS"
-          color="primary.main"
-        >
+      <div className="elem-mb-SM rewards-header">
+        <BodyCopy fontFamily="secondary" fontSize="fs16" fontWeight="semibold" component="span">
           REWARDS & OFFERS
         </BodyCopy>
       </div>
@@ -160,7 +153,7 @@ class CouponView extends React.PureComponent<Props> {
       selectedCoupon,
     });
     return (
-      <div className={className}>
+      <div className={`${className} coupon-form`}>
         <Col
           colSize={{
             large: 12,

@@ -22,6 +22,21 @@ const styles = css`
       display: none;
     }
   }
+
+  .coupon-form {
+    .collapsible-header {
+      padding-top: 16px;
+      background-color: #ffffff;
+      padding-left: 14px;
+    }
+    .collapsible-icon {
+      top: 24px;
+    }
+  }
+
+  .rewards-header {
+    text-align: left;
+  }
 `;
 
 export default styles;
