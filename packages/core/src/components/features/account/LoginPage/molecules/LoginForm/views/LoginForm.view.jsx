@@ -14,6 +14,7 @@ import PasswordField from '../../../../common/molecule/PasswordField';
 // import Anchor from '../../../../../../common/atoms/Anchor';
 import Recaptcha from '../../../../../../common/molecules/recaptcha/recaptcha';
 import styles from '../styles/LoginForm.styles';
+import {FacebookLoginComponent}  from '../../../../../../common/atoms/SocialAccount/Views/facebookLoginComponent'
 
 class LoginForm extends React.PureComponent<Props> {
   showForgotPasswordForm = e => {
@@ -40,7 +41,9 @@ class LoginForm extends React.PureComponent<Props> {
     } = this.props;
     return (
       <div className={className}>
+          <FacebookLoginComponent />
         <form name="LoginForm" onSubmit={handleSubmit} noValidate className={className}>
+          
           {loginErrorMessage && (
             <BodyCopy fontSize="fs12" fontWeight="semibold" color="red.500" className="elem-mb-XL">
               <RichText className="richTextColor" richTextHtml={loginErrorMessage} />
