@@ -175,9 +175,6 @@ exports[`ModuleK component renders correctly 1`] = `
     font-size: ",
                 [Function],
                 ";
-    padding: 0 ",
-                [Function],
-                ";
 
     @media ",
                 [Function],
