@@ -72,7 +72,7 @@ const getTextItems = (textItems, renderComponentInNewLine, useStyle) => {
     textItems.map(({ text, style }, index) => {
       if (style && useStyle) {
         // use embedded style to render BodyCopy if useStyle is true
-        const StyleBodyCopy = style ? bodyCopyStyles[style] : () => null;
+        const StyleBodyCopy = style ? bodyCopyStyles[style] : {};
         const updatedText =
           renderComponentInNewLine && index !== textItemsSize - 1 ? `${text}\n` : text;
 
