@@ -1,10 +1,10 @@
 import React from 'react';
 import WalletContainer from '@tcp/core/src/components/features/account/Wallet/container/Wallet.container';
 
-const WalletPage = () => {
+const WalletPage = props => {
   return (
     <React.Fragment>
-      <WalletContainer />
+      <WalletContainer {...props} />
     </React.Fragment>
   );
 };
