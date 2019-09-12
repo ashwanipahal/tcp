@@ -17,3 +17,15 @@ export const getDescription = state => {
 export const getRatingsProductId = state => {
   return state.ProductDetail.getIn(['currentProduct', 'ratingsProductId']);
 };
+
+// TODO - This is temporary - fix it by introducing the image carousel and zoom
+export const getDefaultImage = state => {
+  const images =
+    state.ProductDetail.getIn(['currentProduct']) &&
+    state.ProductDetail.getIn(['currentProduct', 'imagesByColor']).toJS();
+  const keysForImage = (images && Object.keys(images)) || [];
+  return (
+    keysForImage.length &&
+    state.ProductDetail.getIn(['currentProduct', 'imagesByColor', keysForImage[0], 'basicImageUrl'])
+  );
+};
