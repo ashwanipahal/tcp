@@ -3,6 +3,7 @@
 exports[`Promo Text Banner component renders correctly 1`] = `
 <Styled(Anchor)
   asPath="http://example.com3367"
+  className=""
   external={0}
   key="0"
   target=""
@@ -14,11 +15,11 @@ exports[`Promo Text Banner component renders correctly 1`] = `
   <Styled(BodyCopy)
     className=" link-text"
     color="text.primary"
-    component="p"
+    component={[Function]}
+    data-locator="_0"
     fontFamily="primary"
     fontSize={12}
     fontWeight="regular"
-    icon={Object {}}
     letterSpacing="normal"
     lineHeight="normal"
     textAlign="left"

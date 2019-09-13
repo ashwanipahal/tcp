@@ -163,7 +163,7 @@ exports[`HomePageView should render correctly 1`] = `
           },
           "textItems": Array [
             Object {
-              "style": "style12",
+              "style": "small_text_normal",
               "text": "Every Length, Style, Color & Size",
             },
           ],
@@ -183,7 +183,7 @@ exports[`HomePageView should render correctly 1`] = `
           },
           "textItems": Array [
             Object {
-              "style": "style13",
+              "style": "medium_text_black",
               "text": "THE SHORT SHOP",
             },
           ],
@@ -248,11 +248,13 @@ exports[`HomePageView should render correctly 1`] = `
           },
           "textItems": Array [
             Object {
-              "style": "style10",
+              "altStyle": "extra_large_text_regular",
+              "style": "medium_text_semibold",
               "text": "ALL SHORTS",
             },
             Object {
-              "style": "style11",
+              "altStyle": "extra_large_text_black",
+              "style": "fixed_medium_text_black",
               "text": "60% OFF",
             },
           ],

@@ -168,7 +168,7 @@ exports[`ModuleK component renders correctly 1`] = `
   }
 
   /* Module J Heading styles */
-  .style12 {
+  .small_text_normal {
     font-family: ",
                 [Function],
                 ";
@@ -184,7 +184,7 @@ exports[`ModuleK component renders correctly 1`] = `
                 ";
     }
   }
-  .style13 {
+  .medium_text_black {
     font-family: ",
                 [Function],
                 ";
