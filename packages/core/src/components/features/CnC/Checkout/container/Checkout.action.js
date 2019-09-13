@@ -342,3 +342,10 @@ export const setGiftWrap = payload => {
     payload,
   };
 };
+
+export const submitReviewSection = payload => {
+  return {
+    type: constants.SUBMIT_REVIEW,
+    payload,
+  };
+};
