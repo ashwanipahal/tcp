@@ -24,6 +24,12 @@ const CheckoutStack = createStackNavigator(
         routeTo: 'BillingPage',
       },
     },
+    CheckoutReview: {
+      screen: Checkout,
+      params: {
+        routeTo: 'ReviewPage',
+      },
+    },
   },
   {
     defaultNavigationOptions: {

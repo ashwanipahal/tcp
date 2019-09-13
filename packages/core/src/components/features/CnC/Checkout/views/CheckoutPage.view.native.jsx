@@ -4,6 +4,7 @@ import CheckoutConstants from '../Checkout.constants';
 import PickupPage from '../organisms/PickupPage';
 import ShippingPage from '../organisms/ShippingPage';
 import BillingPage from '../organisms/BillingPage';
+import ReviewPage from '../organisms/ReviewPage';
 
 export default class CheckoutPage extends React.PureComponent {
   submitShippingSection = data => {
@@ -22,6 +23,7 @@ export default class CheckoutPage extends React.PureComponent {
       navigation,
       shippingProps,
       billingProps,
+      reviewProps,
       orderHasShipping,
       loadShipmentMethods,
       orderHasPickUp,
@@ -35,6 +37,7 @@ export default class CheckoutPage extends React.PureComponent {
       submitBilling,
       // setCheckoutStage,
       onPickupSubmit,
+      submitReview,
     } = this.props;
 
     const { routeTo } = navigation.state.params;
@@ -84,6 +87,16 @@ export default class CheckoutPage extends React.PureComponent {
             submitBilling={submitBilling}
           />
         )}
+        {routeTo.toLowerCase() === CheckoutConstants.CHECKOUT_PAGES_NAMES.REVIEW.toLowerCase() && (
+          <ReviewPage
+            {...reviewProps}
+            navigation={navigation}
+            submitReview={submitReview}
+            availableStages={availableStages}
+            orderHasPickUp={orderHasPickUp}
+            orderHasShipping={orderHasShipping}
+          />
+        )}
       </>
     );
   }
@@ -98,6 +111,7 @@ CheckoutPage.propTypes = {
   currentPhoneNumber: PropTypes.number.isRequired,
   shippingProps: PropTypes.shape({}).isRequired,
   billingProps: PropTypes.shape({}).isRequired,
+  reviewProps: PropTypes.shape({}).isRequired,
   orderHasShipping: PropTypes.bool.isRequired,
   isOrderUpdateChecked: PropTypes.bool.isRequired,
   isAlternateUpdateChecked: PropTypes.bool.isRequired,
@@ -112,6 +126,7 @@ CheckoutPage.propTypes = {
   orderHasPickUp: PropTypes.bool.isRequired,
   submitShippingSection: PropTypes.func.isRequired,
   setCheckoutStage: PropTypes.func.isRequired,
+  submitReview: PropTypes.func.isRequired,
   submitBilling: PropTypes.func.isRequired,
   availableStages: PropTypes.shape([]).isRequired,
   labels: PropTypes.shape({}).isRequired,

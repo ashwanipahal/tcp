@@ -58,7 +58,7 @@ class BillingPage extends React.PureComponent {
             navigation={navigation}
             btnText={nextSubmitText}
             routeToPage=""
-            onPress={handleSubmit(submitBilling)}
+            onPress={handleSubmit(() => submitBilling({ navigation }))}
             backLinkText={orderHasShipping ? backLinkShipping : backLinkPickup}
             onBackLinkPress={() =>
               navigation.navigate(

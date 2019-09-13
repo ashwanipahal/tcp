@@ -289,21 +289,12 @@ const getCurrentPickupFormNumber = createSelector(
 );
 
 const getBillingLabels = state => {
+  const getBillingLabelValue = label => getLabelValue(state.Labels, label, 'billing', 'checkout');
   return {
-    header: getLabelValue(state.Labels, 'lbl_billing_title', 'billing', 'checkout'),
-    backLinkPickup: getLabelValue(
-      state.Labels,
-      'lbl_billing_backLinkPickup',
-      'billing',
-      'checkout'
-    ),
-    backLinkShipping: getLabelValue(
-      state.Labels,
-      'lbl_billing_backLinkShipping',
-      'billing',
-      'checkout'
-    ),
-    nextSubmitText: getLabelValue(state.Labels, 'lbl_billing_nextSubmit', 'billing', 'checkout'),
+    header: getBillingLabelValue('lbl_billing_title'),
+    backLinkPickup: getBillingLabelValue('lbl_billing_backLinkPickup'),
+    backLinkShipping: getBillingLabelValue('lbl_billing_backLinkShipping'),
+    nextSubmitText: getBillingLabelValue('lbl_billing_nextSubmit'),
   };
 };
 
@@ -505,6 +496,15 @@ const getReviewLabels = state => {
   };
 };
 
+// const isVenmoPaymentAvailable = state => false; // TODO Venmo implementation
+
+// const getCurrentOrderId = state => {
+//   return state.CartPageReducer.getIn(['orderDetails', 'orderId']);
+// };
+
+// const getSmsNumberForOrderUpdates = state =>
+//   state.Checkout.getIn(['values', 'smsInfo', 'numberForUpdates']);
+
 export default {
   getRecalcOrderPointsInterval,
   getIsOrderHasShipping,
@@ -556,4 +556,7 @@ export default {
   getGiftServicesSend,
   getReviewLabels,
   getSyncError,
+  // isVenmoPaymentAvailable,
+  // getCurrentOrderId,
+  // getSmsNumberForOrderUpdates,
 };

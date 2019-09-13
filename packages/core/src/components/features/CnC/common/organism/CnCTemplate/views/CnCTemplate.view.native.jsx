@@ -12,7 +12,7 @@ import {
   BackLinkWrapperWrapper,
 } from '../styles/CnCTemplate.style.native';
 
-const CnCCommonTemplate = ({ btnText, onPress, backLinkText, onBackLinkPress }) => {
+const CnCCommonTemplate = ({ btnText, onPress, backLinkText, onBackLinkPress, footerBody }) => {
   return (
     <>
       <View>
@@ -31,6 +31,7 @@ const CnCCommonTemplate = ({ btnText, onPress, backLinkText, onBackLinkPress }) 
             text={btnText}
           />
         </CheckoutButton>
+        {footerBody}
         {!!backLinkText && (
           <TouchableOpacity accessibilityRole="link" onPress={onBackLinkPress}>
             <BackLinkWrapperWrapper>
@@ -45,6 +46,7 @@ const CnCCommonTemplate = ({ btnText, onPress, backLinkText, onBackLinkPress }) 
 };
 CnCCommonTemplate.propTypes = {
   navigation: PropTypes.shape({}).isRequired,
+  footerBody: PropTypes.shape({}).isRequired,
   btnText: PropTypes.string.isRequired,
   onPress: PropTypes.func.isRequired,
   backLinkText: PropTypes.string.isRequired,
