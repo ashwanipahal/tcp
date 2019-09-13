@@ -243,6 +243,7 @@ class ShippingForm extends React.Component {
       labels,
       shippingAddress,
       setDefaultAddressId,
+      syncErrorsObject,
     } = this.props;
     const { isEditing, modalType, modalState } = this.state;
     return (
@@ -282,6 +283,7 @@ class ShippingForm extends React.Component {
               shippingAddress={shippingAddress}
               labels={labels}
               setDefaultAddressId={setDefaultAddressId}
+              syncErrorsObject={syncErrorsObject}
             />
           )}
           {isGuest && (

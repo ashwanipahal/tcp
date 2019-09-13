@@ -18,6 +18,7 @@ const ProductListView = ({
   navigation,
   ...otherProps
 }) => {
+  const title = navigation && navigation.getParam('title');
   return (
     <PageContainer>
       <FilterModal
@@ -27,7 +28,7 @@ const ProductListView = ({
         getProducts={getProducts}
         navigation={navigation}
       />
-      <ProductList products={products} {...otherProps} />
+      <ProductList products={products} title={title} {...otherProps} />
     </PageContainer>
   );
 };

@@ -12,6 +12,7 @@ import {
   DropDownItemContainer,
   Separator,
   FlatList,
+  AddNewAddressWrapper,
 } from '../styles/AddressDropdown.style.native';
 
 const downIcon = require('../../../../../../../assets/carrot-small-down.png');
@@ -35,6 +36,7 @@ export class AddressDropdown extends React.PureComponent<Props> {
     itemStyle: PropTypes.shape({}),
     dropDownStyle: PropTypes.shape({}),
     variation: PropTypes.string,
+    showButton: PropTypes.bool,
   };
 
   static defaultProps = {
@@ -44,6 +46,7 @@ export class AddressDropdown extends React.PureComponent<Props> {
     itemStyle: null,
     dropDownStyle: null,
     variation: 'primary',
+    showButton: true,
   };
 
   constructor(props) {
@@ -85,9 +88,20 @@ export class AddressDropdown extends React.PureComponent<Props> {
     };
   }
 
-  componentDidUpdate() {
+  componentDidUpdate(prevProps) {
     if (this.rowMarker) setTimeout(() => this.calculateDropDownPosition(), 300);
+    const { selectedValue, data } = this.props;
+    if (prevProps.selectedValue !== selectedValue) {
+      const selectedAddress = data.filter(item => item.id === selectedValue);
+      const selectedLabelState =
+        selectedAddress && selectedAddress.length && selectedAddress[0].label;
+      this.updateState({ selectedLabelState });
+    }
   }
+
+  updateState = ({ selectedLabelState }) => {
+    this.setState({ selectedLabelState });
+  };
 
   /**
    * Calculate the dimension and coordinates of drop down
@@ -141,12 +155,30 @@ export class AddressDropdown extends React.PureComponent<Props> {
     this.setState({ flatListHeight: listHeight, flatListTop: listMargin });
   };
 
+  renderButton = ({ item }) => {
+    const { label } = item;
+    const { showButton } = this.props;
+    return showButton ? (
+      <Button
+        fullWidth
+        buttonVariation="variable-width"
+        fill="BLUE"
+        text={label}
+        onPress={this.openAddressBook}
+      />
+    ) : (
+      <AddNewAddressWrapper onPress={this.openAddressBook}>
+        <BodyCopy fontSize="fs14" mobileFontFamily="secondary" fontWeight="black" text={label} />
+      </AddNewAddressWrapper>
+    );
+  };
+
   /**
    * Render drop down item
    */
   dropDownLayout = ({ item }) => {
     const { itemStyle } = this.props;
-    const { label, content } = item;
+    const { content } = item;
     return (
       <DropDownItemContainer onPress={() => this.onDropDownItemClick(item)} style={itemStyle}>
         {item.id ? (
@@ -160,13 +192,7 @@ export class AddressDropdown extends React.PureComponent<Props> {
             showDefaultText={item && item.primary}
           />
         ) : (
-          <Button
-            fullWidth
-            buttonVariation="variable-width"
-            fill="BLUE"
-            text={label}
-            onPress={this.openAddressBook}
-          />
+          this.renderButton({ item })
         )}
       </DropDownItemContainer>
     );
@@ -190,11 +216,16 @@ export class AddressDropdown extends React.PureComponent<Props> {
    * openAddressBook modal
    */
   openAddressBook = () => {
-    const { addAddress } = this.props;
+    const { addAddress, toggleModal } = this.props;
     this.setState({
       dropDownIsOpen: false,
     });
-    addAddress();
+    if (addAddress) {
+      addAddress();
+    }
+    if (toggleModal) {
+      toggleModal({ type: 'add' });
+    }
   };
 
   /**

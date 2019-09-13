@@ -4,7 +4,7 @@ export default {
     name: 'moduleJ',
     type: 'module',
     composites: {
-      bgColor: '#f53d3d',
+      bgColor: '#d8d8d8',
       headerText: [
         {
           textItems: [
@@ -29,7 +29,7 @@ export default {
         {
           textItems: [
             {
-              text: 'THE SHOP ALL',
+              text: 'THE SHORT SHOP',
               style: 'medium_text_black',
             },
           ],
@@ -60,11 +60,13 @@ export default {
           textItems: [
             {
               text: 'ALL SHORTS',
-              style: 'style4',
+              style: 'medium_text_semibold',
+              altStyle: 'extra_large_text_regular',
             },
             {
               text: '60% OFF',
-              style: 'style10',
+              style: 'fixed_medium_text_black',
+              altStyle: 'extra_large_text_black',
             },
           ],
         },
@@ -164,7 +166,7 @@ export default {
         {
           image: {
             url:
-              'https://res.cloudinary.com/tcp-dam-test/image/upload/v1558543115/ecom/assets/content/tcp/us/home/moduled/US-HP-050519-MINIME1_h9cwcd.jpg',
+              'https://tcp-dam-test-ressh.cloudinary.com/image/upload/v1562731929/Image_14_bp7ih0.jpg',
             alt: 'Boys',
             title: 'Boys',
             crop_d: '',
@@ -183,7 +185,7 @@ export default {
         {
           image: {
             url:
-              'https://res.cloudinary.com/tcp-dam-test/image/upload/v1558543115/ecom/assets/content/tcp/us/home/moduled/US-HP-050519-MINIME1_h9cwcd.jpg',
+              'https://tcp-dam-test-ressh.cloudinary.com/image/upload/v1565145744/mod-h-kids_b9ivyr.png',
             alt: 'Girls',
             title: 'Girls',
             crop_d: '',
