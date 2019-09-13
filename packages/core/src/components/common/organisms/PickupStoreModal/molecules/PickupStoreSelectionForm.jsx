@@ -3,7 +3,7 @@ import React from 'react';
 import { PropTypes } from 'prop-types';
 import { reduxForm, Field, propTypes as reduxFormPropTypes } from 'redux-form';
 import createValidateMethod from '../../../../../utils/formValidation/createValidateMethod';
-import { getAddressLocationInfo } from '../../../atoms/GoogleAutoSuggest/AutoCompleteComponent';
+import { getAddressLocationInfo } from '../../../../../utils/addressLocation';
 import {
   getSkuId,
   getVariantId,
