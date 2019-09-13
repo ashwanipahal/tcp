@@ -21,9 +21,16 @@ export function getFavoriteStore(payload) {
   };
 }
 
-export function getSetSuggestedStores (payload) {
+export function getStoresByLatLng(payload) {
   return {
     payload,
-    type: STORE_LOCATOR_CONSTANTS.STORES_SET_SUGGESTED_STORES
+    type: STORE_LOCATOR_CONSTANTS.GET_LOCATION_STORES,
+  };
+}
+
+export function setStoresByLatLng(payload) {
+  return {
+    payload,
+    type: STORE_LOCATOR_CONSTANTS.STORES_SET_SUGGESTED_STORES,
   };
 }

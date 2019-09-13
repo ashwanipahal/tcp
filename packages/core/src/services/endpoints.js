@@ -261,5 +261,9 @@ const endpoints = {
     method: 'GET',
     URI: 'v2/store/getFavouriteStoreLocation',
   },
+  findStoresbyLatitudeandLongitude: {
+    method: 'GET',
+    URI: 'v2/store/findStoresbyLatitudeandLongitude',
+  },
 };
 export default endpoints;
