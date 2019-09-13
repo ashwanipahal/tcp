@@ -19,7 +19,7 @@ export default css`
   }
 
   .moduleJ-topbar {
-    border-top: 3px solid ${props => props.theme.colorPalette.yellow['500']};
+    border-top: 3px solid ${props => props.theme.colorPalette.gray['500']};
     position: absolute;
     margin-top: ${props => props.theme.spacing.ELEM_SPACING.XS};
 

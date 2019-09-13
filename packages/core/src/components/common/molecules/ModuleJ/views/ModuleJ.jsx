@@ -8,7 +8,7 @@ import withStyles from '../../../hoc/withStyles';
 import ProductTabList from '../../../organisms/ProductTabList';
 import categoryListMock from './categoryListMock';
 import moduleJStyle from '../styles/ModuleJ.style';
-import { getIconPath, redirectToPdp } from '../../../../../utils';
+import { getIconPath, getLocator, redirectToPdp } from '../../../../../utils';
 import config from '../moduleJ.config';
 
 class ModuleJ extends React.PureComponent {
@@ -65,6 +65,7 @@ class ModuleJ extends React.PureComponent {
                   alt: mediaLinkedList[0] && mediaLinkedList[0].image.alt,
                   url: mediaLinkedList[0] && mediaLinkedList[0].image.url,
                 }}
+                dataLocator={`${getLocator('moduleJ_promobanner_img')}${1}`}
               />
             </Col>
             <Col
@@ -78,8 +79,17 @@ class ModuleJ extends React.PureComponent {
                 small: true,
               }}
             >
-              <LinkText component="div" headerText={headerText} className="moduleJ-promo-header" />
-              <PromoBanner promoBanner={promoBanner} className="moduleJ-promoBanner" />
+              <LinkText
+                component="div"
+                headerText={headerText}
+                className="moduleJ-promo-header"
+                dataLocator={getLocator('moduleJ_header_text')}
+              />
+              <PromoBanner
+                promoBanner={promoBanner}
+                className="moduleJ-promoBanner"
+                dataLocator={getLocator('moduleJ_promobanner_text')}
+              />
               <ProductTabList
                 onProductTabChange={this.onTabChange}
                 categoryList={categoryListMock}
@@ -100,6 +110,7 @@ class ModuleJ extends React.PureComponent {
                   alt: mediaLinkedList[1] && mediaLinkedList[1].image.alt,
                   url: mediaLinkedList[1] && mediaLinkedList[1].image.url,
                 }}
+                dataLocator={`${getLocator('moduleJ_promobanner_img')}${2}`}
               />
             </Col>
           </Row>
@@ -118,8 +129,17 @@ class ModuleJ extends React.PureComponent {
                 large: true,
               }}
             >
-              <LinkText component="div" headerText={headerText} className="moduleJ-promo-header" />
-              <PromoBanner promoBanner={promoBanner} className="moduleJ-promoBanner" />
+              <LinkText
+                component="div"
+                headerText={headerText}
+                className="moduleJ-promo-header"
+                dataLocator={getLocator('moduleJ_header_text')}
+              />
+              <PromoBanner
+                promoBanner={promoBanner}
+                className="moduleJ-promoBanner"
+                dataLocator={getLocator('moduleJ_promobanner_text')}
+              />
             </Col>
             <Col
               colSize={{
@@ -171,6 +191,7 @@ class ModuleJ extends React.PureComponent {
                         className="moduleJ-image-link"
                         to={redirectToPdp(uniqueId).url}
                         asPath={redirectToPdp(uniqueId).asPath}
+                        dataLocator={`${getLocator('moduleJ_product_image')}${index}`}
                       >
                         <Image src={imageUrl[0]} />
                       </Anchor>
@@ -189,7 +210,12 @@ class ModuleJ extends React.PureComponent {
               large: 2,
             }}
           >
-            <Anchor noLink to="/c/toddler-girl-bottoms" asPath="/c/toddler-girl-bottoms">
+            <Anchor
+              noLink
+              to="/c/toddler-girl-bottoms"
+              asPath="/c/toddler-girl-bottoms"
+              dataLocator={getLocator('moduleJ_cta_btn')}
+            >
               <Button buttonVariation="fixed-width" className="moduleJ-cta-btn">
                 SHOP ALL
               </Button>
