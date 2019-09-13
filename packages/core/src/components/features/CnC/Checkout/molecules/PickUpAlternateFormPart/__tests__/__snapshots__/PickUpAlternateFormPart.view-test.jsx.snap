@@ -156,7 +156,13 @@ exports[`Coupon component should renders correctly when Coupon are not present 1
           color="text.primary"
           component="p"
           fontFamily="secondary"
-          fontSize="fs16"
+          fontSize={
+            Array [
+              "fs14",
+              "fs16",
+              "fs16",
+            ]
+          }
           fontWeight="regular"
           letterSpacing="normal"
           lineHeight="normal"
@@ -324,7 +330,13 @@ exports[`Coupon component should renders correctly when data is present 1`] = `
           color="text.primary"
           component="p"
           fontFamily="secondary"
-          fontSize="fs16"
+          fontSize={
+            Array [
+              "fs14",
+              "fs16",
+              "fs16",
+            ]
+          }
           fontWeight="regular"
           letterSpacing="normal"
           lineHeight="normal"

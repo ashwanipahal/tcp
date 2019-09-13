@@ -30,7 +30,11 @@ class PickUpAlternateFormPart extends React.Component {
               dataLocator="Alternate-checkbox"
               enableSuccessCheck={false}
             >
-              <BodyCopy fontSize="fs16" fontFamily="secondary" fontWeight="regular">
+              <BodyCopy
+                fontSize={['fs14', 'fs16', 'fs16']}
+                fontFamily="secondary"
+                fontWeight="regular"
+              >
                 {labels.alternativeHeading}
               </BodyCopy>
             </Field>

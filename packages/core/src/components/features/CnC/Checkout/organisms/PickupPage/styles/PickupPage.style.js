@@ -39,12 +39,20 @@ const styles = css`
       margin-top: ${props => props.theme.spacing.LAYOUT_SPACING.XXS};
       margin-bottom: ${props => props.theme.spacing.ELEM_SPACING.MED};
     }
+    .container {
+      margin: ${props => props.theme.spacing.LAYOUT_SPACING.XXS};
+      min-height: 419px;
+    }
   }
 
   @media ${props => props.theme.mediaQuery.smallMax} {
     .pickUpContact {
       margin-top: ${props => props.theme.spacing.LAYOUT_SPACING.XXS};
       margin-bottom: ${props => props.theme.spacing.ELEM_SPACING.LRG};
+    }
+    .container {
+      margin: ${props => props.theme.spacing.LAYOUT_SPACING.XXS};
+      min-height: 419px;
     }
   }
 
