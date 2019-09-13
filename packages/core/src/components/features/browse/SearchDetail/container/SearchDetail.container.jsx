@@ -12,9 +12,9 @@ class SearchDetailContainer extends React.PureComponent {
       router: {
         query: { sq },
       },
-      searchResult,
+      fetchSearchResults,
     } = this.props;
-    searchResult(sq);
+    fetchSearchResults(sq);
   }
 
   render() {
@@ -31,7 +31,7 @@ function mapStateToProps(state) {
 
 function mapDispatchToProps(dispatch) {
   return {
-    searchResult: sq => {
+    fetchSearchResults: sq => {
       dispatch(getSearchResult(sq));
     },
   };
@@ -43,12 +43,11 @@ SearchDetailContainer.propTypes = {
       sq: PropTypes.string,
     }),
   }).isRequired,
-  searchResult: PropTypes.string,
+  fetchSearchResults: PropTypes.func.isRequired,
   searchedResult: PropTypes.arrayOf(PropTypes.shape({})),
 };
 
 SearchDetailContainer.defaultProps = {
-  searchResult: '',
   searchedResult: {},
 };
 

@@ -29,7 +29,7 @@ export default css`
       padding: ${props => props.theme.spacing.ELEM_SPACING.SM};
       width: calc(33.3% - 68px);
     }
-    @media only screen and (min-width: 1350px) {
+    @media ${props => props.theme.mediaQuery.large} {
       margin: 0 ${props => props.theme.spacing.ELEM_SPACING.SM}
         ${props => props.theme.spacing.ELEM_SPACING.SM};
       padding: ${props => props.theme.spacing.ELEM_SPACING.SM} 21px;
