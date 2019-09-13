@@ -64,7 +64,7 @@ const UserReducer = (state = initialState, { type, payload }) => {
     case USER_CONSTANTS.SET_CHILDREN:
       return state.set('children', fromJS(payload.children));
     case USER_CONSTANTS.SET_GEO_COORDINATES:
-      return state.setIn(['personalData', 'geoLatLong'], payload.geoLatLong);
+      return state.set('geoLatLong', payload.geoLatLong);
     case USER_CONSTANTS.RESET_USER_INFO:
       return initialState;
     case USER_CONSTANTS.CLEAR_USER_INFO_TTL:
