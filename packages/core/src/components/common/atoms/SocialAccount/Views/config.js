@@ -10,7 +10,7 @@ export const config = {
     REWARDS: 'rewards',
     LOYALTY: 'LOYALTY',
     PLACECASH: 'PLACECASH',
-    PC: 'PLACECASH'
+    PC: 'PLACECASH',
   },
   BARCODE_OPTIONS: {
     font: 'Avenir',
@@ -61,7 +61,7 @@ export const config = {
   },
   CLIENT_SECRET_KEY: {
     pinterest: '4985207481876624718',
-    facebook: '2230615430380206',
+    facebook: '714709582328956',
     instagram: '1e3babbc821c4dd8aa9a644b7bb97f8e',
   },
   PICKUP_TYPE: {
@@ -95,7 +95,7 @@ export const config = {
     accountUrl: '/account/',
     account: 'account',
     PREFERENCE: '/account/my-preference',
-    TWITTER: '/twitter?stage=first'
+    TWITTER: '/twitter?stage=first',
   },
   STORE_SWITCH: {
     OPEN_SELECTION_MODAL: 0,
@@ -108,23 +108,21 @@ export const config = {
     X_UPDATE_DESCRIPTION: 'true',
   },
   PRODUCT_AVAILABILITY_STATUS: {
-    OK: 'OK'
+    OK: 'OK',
   },
-  NON_ECOM_ORDERS: [
-    'USBOPIS', 'CABOPIS', 'USROPIS', 'CAROPIS', 'USBOSS'
-  ],
+  NON_ECOM_ORDERS: ['USBOPIS', 'CABOPIS', 'USROPIS', 'CAROPIS', 'USBOSS'],
   ANALYTICS_MY_PREFERENCES: {
-    "placeRewardsPushConnected": "analytics-place-rewards-push-connected",
-    "placeRewardsPushNotConnected": "analytics-place-rewards-push-not-connected",
-    "placeRewardsSmsConnected": "analytics-place-rewards-sms-connected",
-    "placeRewardsSmsNotConnected": "analytics-place-rewards-sms-not-connected",
-    "marketingPreferenceEmailConnected": "analytics-marketing-preference-email-connected",
-    "marketingPreferenceEmailNotConnected": "analytics-marketing-preference-email-not-connected",
-    "marketingPreferenceSmsConnected": "analytics-marketing-preference-sms-connected",
-    "marketingPreferenceSmsNotConnected": "analytics-marketing-preference-sms-not-connected",
+    placeRewardsPushConnected: 'analytics-place-rewards-push-connected',
+    placeRewardsPushNotConnected: 'analytics-place-rewards-push-not-connected',
+    placeRewardsSmsConnected: 'analytics-place-rewards-sms-connected',
+    placeRewardsSmsNotConnected: 'analytics-place-rewards-sms-not-connected',
+    marketingPreferenceEmailConnected: 'analytics-marketing-preference-email-connected',
+    marketingPreferenceEmailNotConnected: 'analytics-marketing-preference-email-not-connected',
+    marketingPreferenceSmsConnected: 'analytics-marketing-preference-sms-connected',
+    marketingPreferenceSmsNotConnected: 'analytics-marketing-preference-sms-not-connected',
   },
   QUERY_PARAM: {
-    'RECALC_REWARDS': 'recalc'
+    RECALC_REWARDS: 'recalc',
   },
   KEY_CODES: {
     ENTER: 13,
@@ -142,34 +140,34 @@ export const config = {
     PROFILE_INFO_UPDATE: 'personal-information-container',
     PWD_UPDATE: 'change-password-container',
     MY_PLACE_REWARDS_WRAPPER: 'available-rewards',
-    SFL_LIST: 'sfl-header'
+    SFL_LIST: 'sfl-header',
   },
   TCP_SEGMENT: {
-    key: 'tcpSegment'
+    key: 'tcpSegment',
   },
   MBOX_NAMES: {
     BAG_ABTEST_TOP_CAROUSEL: 'bag-abtest-top-carousel',
     BAG_ABTEST_BOTTOM_CAROUSEL: 'bag-abtest-bottom-carousel',
-    BAG_LINES_ITEM_RECS: 'bag-line-item-recs'
+    BAG_LINES_ITEM_RECS: 'bag-line-item-recs',
   },
   REQUEST_TIMEOUT: {
     response: 30000,
-    deadline: 40000
+    deadline: 40000,
   },
   REQUEST_INCREASE_TIMEOUT: {
     response: 60000,
-    deadline: 70000
+    deadline: 70000,
   },
-  PII_FIELDS_USERINFO_API : [
+  PII_FIELDS_USERINFO_API: [
     'lastName',
-    'phone', 
-    'userBirthday', 
+    'phone',
+    'userBirthday',
     'plccCardNumber',
-    'plccCardId', 
+    'plccCardId',
     'profileAddress',
-    'addressBook'
+    'addressBook',
   ],
-  TIMESTAMP_USERPROFILE_DATA_CACHE : 'TIMESTAMP_USER_CACHE',
-  USERPROFILE_DATA_CACHE_KEY : 'USERPROFILE_DATA_CACHE_KEY',
-  TCP_SESSION_ACTIVE: 'tcp_session_active'
+  TIMESTAMP_USERPROFILE_DATA_CACHE: 'TIMESTAMP_USER_CACHE',
+  USERPROFILE_DATA_CACHE_KEY: 'USERPROFILE_DATA_CACHE_KEY',
+  TCP_SESSION_ACTIVE: 'tcp_session_active',
 };

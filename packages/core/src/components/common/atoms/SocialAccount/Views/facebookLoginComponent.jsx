@@ -22,10 +22,12 @@ const openLogin = () => {
     function(response) {
       if (response.status === 'connected') {
         const socialAccInfo = {
+          facebook: 'facebook',
           accessToken: response.authResponse.accessToken,
           userId: response.authResponse.userID,
+          isconnected: false,
         };
-        // saveAccountInfo(elem.socialAccount, socialAccInfo, false);
+        saveAccountInfo({ socialAccInfo });
       } else {
         // The person is not logged into this app or we are unable to tell.
       }
@@ -43,16 +45,12 @@ const facebookSDK = () => {
   /* istanbul ignore next */
   window.onload = function() {
     window.FB.getLoginStatus(function(res) {
-      if (
-        res.authResponse &&
-        res.authResponse.accessToken &&
-        !elem.isConnected
-      ) {
+      if (res.authResponse && res.authResponse.accessToken && !elem.isConnected) {
         const socialAccInfo = {
           accessToken: res.authResponse.accessToken,
           userId: res.authResponse.userID,
         };
-        //saveAccountInfo(elem.socialAccount, socialAccInfo, false);
+        saveAccountInfo(elem.socialAccount, socialAccInfo, false);
       }
     });
   };
@@ -92,29 +90,28 @@ const autoLogin = () => {
   /* After that, the localStorage needs to be reset to ''
   /* so that it doesn't trigger the login modal again
   **/
-  if(window.FB) {
+  if (window.FB) {
     openLogin();
-      //Trigger login modal if not already connected
-      // if (!elem.isConnected) {
-      //     openLogin();
-      // }
-      //setLocalStorage({key: 'auto-open', value: ''});
+    //Trigger login modal if not already connected
+    // if (!elem.isConnected) {
+    //     openLogin();
+    // }
+    //setLocalStorage({key: 'auto-open', value: ''});
   }
-}
-
+};
 
 const logoutUser = () => {
-	/* istanbul ignore next */
-    try{
-        window.FB.logout();
-    } catch(ex) {
-        console.log(`expection ${ex}`)
-		}
-		/* istanbul ignore next */
-    // saveAccountInfo(elem.socialAccount, {
-    //     accessToken: '',
-    //     userId: ''
-    // },true)
+  /* istanbul ignore next */
+  try {
+    window.FB.logout();
+  } catch (ex) {
+    console.log(`expection ${ex}`);
+  }
+  /* istanbul ignore next */
+  // saveAccountInfo(elem.socialAccount, {
+  //     accessToken: '',
+  //     userId: ''
+  // },true)
 };
 
 export const loginUser = () => {
@@ -127,23 +124,19 @@ export const loginUser = () => {
   // }
 };
 
-  class FacebookLoginComponent extends React.PureComponent<Props> {
-
+const FacebookLoginComponent = props => {
   bodyEle = document.getElementsByTagName('body')[0];
   //Destruction with global variables of the file is giving me error that i need to decalre them again. Hence assigning values this way
-  saveAccountInfo = this.props.saveAccountInfo;
+  saveAccountInfo = props.saveSocialAcc;
 
-
-   render() {
-    return (
-      <div className="social-accounts__CTA" onClick={loginUser} tabIndex="0">
-        {/* istanbul ignore next */
-        ReactDOM.createPortal(facebookSDK(), bodyEle)}
-        click here
-      </div>
-    );
-   }
-}
+  return (
+    <div className="social-accounts__CTA" onClick={loginUser} tabIndex="0">
+      {/* istanbul ignore next */
+      ReactDOM.createPortal(facebookSDK(), bodyEle)}
+      click here
+    </div>
+  );
+};
 
 FacebookLoginComponent.propTypes = {
   children: PropTypes.element,

@@ -14,7 +14,6 @@ import PasswordField from '../../../../common/molecule/PasswordField';
 // import Anchor from '../../../../../../common/atoms/Anchor';
 import Recaptcha from '../../../../../../common/molecules/recaptcha/recaptcha';
 import styles from '../styles/LoginForm.styles';
-import { FacebookLoginComponent } from '../../../../../../common/atoms/SocialAccount/Views/facebookLoginComponent';
 
 class LoginForm extends React.PureComponent<Props> {
   showForgotPasswordForm = e => {
@@ -41,24 +40,10 @@ class LoginForm extends React.PureComponent<Props> {
     } = this.props;
     return (
       <div className={className}>
-        <FacebookLoginComponent />
-        <form
-          name="LoginForm"
-          onSubmit={handleSubmit}
-          noValidate
-          className={className}
-        >
+        <form name="LoginForm" onSubmit={handleSubmit} noValidate className={className}>
           {loginErrorMessage && (
-            <BodyCopy
-              fontSize="fs12"
-              fontWeight="semibold"
-              color="red.500"
-              className="elem-mb-XL"
-            >
-              <RichText
-                className="richTextColor"
-                richTextHtml={loginErrorMessage}
-              />
+            <BodyCopy fontSize="fs12" fontWeight="semibold" color="red.500" className="elem-mb-XL">
+              <RichText className="richTextColor" richTextHtml={loginErrorMessage} />
             </BodyCopy>
           )}
           <BodyCopy component="div" className="elem-mb-LRG">
@@ -93,9 +78,7 @@ class LoginForm extends React.PureComponent<Props> {
                 dataLocator="login-remembermecb"
                 className=""
               >
-                <span className="remember-me-text">
-                  {labels.login.lbl_login_rememberMe}
-                </span>
+                <span className="remember-me-text">{labels.login.lbl_login_rememberMe}</span>
                 <span>{labels.login.lbl_login_rememberMeHelpText}</span>
               </Field>
             </BodyCopy>

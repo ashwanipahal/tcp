@@ -256,5 +256,15 @@ const endpoints = {
     URI: PRODUCTS_URI.PRODUCTS_AUTOSUGGEST,
     unbxd: true,
   },
+
+  getSocialAccountsInfo: {
+    method: 'GET',
+    URI: 'v2/account/preferences/socialNew',
+  },
+
+  saveSocialAccountsInfo: {
+    method: 'PUT',
+    URI: 'v2/account/preferences/socialNew',
+  },
 };
 export default endpoints;
