@@ -132,7 +132,7 @@ export const bodyCopyStyles = {
       {...props}
     />
   ),
-  large_text_semibold_normal: props => (
+  style4: props => (
     <BodyCopy
       color="gray.900"
       mobilefontFamily="primary"
@@ -142,8 +142,7 @@ export const bodyCopyStyles = {
       {...props}
     />
   ),
-
-  large_text_semibold_bold: props => (
+  style10: props => (
     <BodyCopy
       color="gray.900"
       mobilefontFamily="primary"
@@ -154,7 +153,7 @@ export const bodyCopyStyles = {
       {...props}
     />
   ),
-  text_normal_gray: props => (
+  style11: props => (
     <BodyCopy
       fontSize="fs20"
       color="gray.900"
@@ -162,10 +161,12 @@ export const bodyCopyStyles = {
       fontWeight="regular"
       textAlign="center"
       letterSpacing="ls2"
-      lineHeight="40px"
+      lineHeight="20px"
       {...props}
     />
   ),
+
+  style16: props => <PercentageStyle2 {...props} />,
 };
 
 /**
@@ -207,6 +208,56 @@ const PromoBanner = (props: Props) => {
       )}
     </ContainerView>,
   ];
+};
+
+/**
+ * This function return the Promobanner Percentage Style
+ * Color is 'Black' and Split by the '%' key. Font size is also small.
+ */
+const PercentageStyle2 = (props: PercentageStyleProps) => {
+  const { text } = props;
+
+  const strArray = text && text.split(' ');
+  const containerStyle = { marginTop: 5 };
+  const bodyCopyStyle = { height: 24, width: 28, marginTop: 0 };
+  const bodyCopyStyle1 = { height: 38, marginTop: 0 };
+  const bodyCopyStyle2 = { height: 20 };
+
+  return (
+    <Container style={containerStyle}>
+      <BodyCopy
+        fontSize="fs48"
+        fontWeight="black"
+        color="text.primary"
+        fontFamily="primary"
+        textAlign="center"
+        lineHeight="48px"
+        style={bodyCopyStyle1}
+        text={strArray && strArray[0]}
+      />
+      <ContainerView>
+        <BodyCopy
+          fontSize="fs28"
+          fontWeight="black"
+          color="text.primary"
+          fontFamily="primary"
+          lineHeight="28px"
+          text={strArray && strArray[1]}
+          style={bodyCopyStyle}
+        />
+        <BodyCopy
+          fontSize="fs18"
+          fontWeight="black"
+          color="text.primary"
+          fontFamily="primary"
+          textAlign="center"
+          lineHeight="18px"
+          text={strArray && strArray[2]}
+          style={bodyCopyStyle2}
+        />
+      </ContainerView>
+    </Container>
+  );
 };
 
 /**

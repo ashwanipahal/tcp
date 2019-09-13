@@ -80,6 +80,13 @@ export default {
   moduleJ_product_image: 'moduleJ_product_image_',
   moduleJ_cta_link: 'moduleJ_cta_links',
 
+  // Module R
+  moduleR_header_text: 'moduleR_header_text',
+  moduleR_promobanner_text: 'moduleR_promobanner_text',
+  moduleR_promobanner_img: 'moduleR_promobanner_img',
+  moduleR_product_image: 'moduleR_product_image_',
+  moduleR_cta_link: 'moduleR_cta_links',
+
   // Added To Bag
   addedtobag_btnviewbag: 'addedtobag-btnviewbag',
   addedtobag_btnpaypal: 'addedtobag-btnpaypal',

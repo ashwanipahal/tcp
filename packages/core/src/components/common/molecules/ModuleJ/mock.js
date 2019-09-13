@@ -10,7 +10,7 @@ export default {
           textItems: [
             {
               text: 'Every Length, Style, Color & Size',
-              style: 'style3',
+              style: 'style12',
             },
           ],
           link: {
@@ -30,7 +30,7 @@ export default {
           textItems: [
             {
               text: 'THE SHOP ALL',
-              style: 'style4',
+              style: 'style13',
             },
           ],
           link: {
@@ -60,11 +60,11 @@ export default {
           textItems: [
             {
               text: 'ALL SHORTS',
-              style: 'large_text_semibold_normal',
+              style: 'style4',
             },
             {
               text: '60% OFF',
-              style: 'large_text_semibold_bold',
+              style: 'style10',
             },
           ],
         },
