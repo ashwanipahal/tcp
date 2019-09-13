@@ -10,7 +10,7 @@ export default {
           textItems: [
             {
               text: 'Every Length, Style, Color & Size',
-              style: 'style12',
+              style: 'small_text_normal',
             },
           ],
           link: {
@@ -30,7 +30,7 @@ export default {
           textItems: [
             {
               text: 'THE SHOP ALL',
-              style: 'style13',
+              style: 'medium_text_black',
             },
           ],
           link: {

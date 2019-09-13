@@ -50,7 +50,18 @@ class ModuleR extends React.PureComponent<Props, State> {
       return { text, catId };
     });
 
+    const divTabsMap = divTabs.reduce((map, item) => {
+      const {
+        category: { cat_id: catId },
+      } = item;
+      const tabsMap = map;
+      tabsMap[catId] = item;
+      return tabsMap;
+    }, {});
+
     const { selectedCategoryId } = this.state;
+    const selectedDivTab = divTabsMap[selectedCategoryId] || {};
+    const selectedSingleCTAButton = selectedDivTab.singleCTAButton;
     let selectedProductList = productTabList[selectedCategoryId] || [];
 
     const promoComponent = (
@@ -84,9 +95,7 @@ class ModuleR extends React.PureComponent<Props, State> {
             useStyle
           />
         </HeaderContainer>
-
         {layout === 'alt' ? promoComponent : null}
-
         <ProductTabListContainer>
           <ProductTabList
             onProductTabChange={this.onProductTabChange}
@@ -94,7 +103,6 @@ class ModuleR extends React.PureComponent<Props, State> {
             navigation={navigation}
           />
         </ProductTabListContainer>
-
         <ImageContainer layout={layout}>
           {selectedProductList.map(productItem => {
             if (productItem.uniqueId) {
@@ -131,15 +139,17 @@ class ModuleR extends React.PureComponent<Props, State> {
           })}
         </ImageContainer>
 
-        <ButtonContainer>
-          {/* TODO: The URL and text will be updated once we have CMS integration */}
-          <Button
-            buttonVariation="variable-width"
-            width="225px"
-            text="SHOP ALL"
-            navigation={navigation}
-          />
-        </ButtonContainer>
+        {selectedSingleCTAButton ? (
+          <ButtonContainer>
+            <Button
+              buttonVariation="variable-width"
+              width="225px"
+              text={selectedSingleCTAButton.text}
+              url={selectedSingleCTAButton.url}
+              navigation={navigation}
+            />
+          </ButtonContainer>
+        ) : null}
       </Container>
     );
   }
@@ -149,7 +159,7 @@ ModuleR.defaultProps = {
   headerText: [],
   productTabList: {},
   navigation: null,
-  layout: 'default',
+  layout: 'alt',
 };
 
 ModuleR.propTypes = {

@@ -1,4 +1,4 @@
-const dummyUrl = '/node/pdp/e499bac3-6770-4757-b924-55c837712dfc';
+const dummyUrl = 'http://www.google.com';
 
 export default {
   moduleR: {
@@ -11,7 +11,7 @@ export default {
           textItems: [
             {
               text: 'THE SHIRT SHOP',
-              style: 'style13',
+              style: 'medium_text_black',
             },
           ],
           link: {
@@ -31,7 +31,7 @@ export default {
       promoBanner: [
         {
           link: {
-            url: '/banner/url',
+            url: dummyUrl,
             text: '',
             title: '',
             target: '',
@@ -41,11 +41,11 @@ export default {
           textItems: [
             {
               text: 'ALL GRAPHIC TEES',
-              style: 'style11',
+              style: 'medium_text_regular',
             },
             {
               text: '60 % OFF',
-              style: 'style16',
+              style: 'percentage_all_wrapped_normal',
             },
           ],
         },
@@ -56,7 +56,7 @@ export default {
             text: 'GIRL',
           },
           category: {
-            cat_id: '49007',
+            cat_id: '47511>49012',
           },
           singleCTAButton: {
             url: dummyUrl,
@@ -72,7 +72,7 @@ export default {
             text: 'TODDLER GIRL',
           },
           category: {
-            cat_id: '49008',
+            cat_id: '47502>47535>54071',
           },
           singleCTAButton: {
             url: dummyUrl,
@@ -88,7 +88,7 @@ export default {
             text: 'BOY',
           },
           category: {
-            cat_id: '49009',
+            cat_id: '47503>47544',
           },
           singleCTAButton: {
             url: dummyUrl,
@@ -104,7 +104,7 @@ export default {
             text: 'TODDLER BOY',
           },
           category: {
-            cat_id: '47525',
+            cat_id: '47501>47526',
           },
           singleCTAButton: {
             url: dummyUrl,

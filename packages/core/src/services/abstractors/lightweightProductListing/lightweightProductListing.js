@@ -29,7 +29,17 @@ const Abstractor = {
     return mock;
   },
   processData: res => {
-    return res.body.response.products;
+    // return res.body.response.products;
+    return res.body.response.products.map(item => {
+      const {
+        imageUrl: [imageUrl],
+      } = item;
+
+      return {
+        ...item,
+        imageUrl: [imageUrl.replace('www.childrensplace.com', 'test4.childrensplace.com')],
+      };
+    });
   },
   // eslint-disable-next-line no-console
   handleError: e => console.log(e),

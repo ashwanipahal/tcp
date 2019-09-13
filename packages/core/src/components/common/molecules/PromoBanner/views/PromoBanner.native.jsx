@@ -153,7 +153,7 @@ export const bodyCopyStyles = {
       {...props}
     />
   ),
-  style11: props => (
+  medium_text_regular: props => (
     <BodyCopy
       fontSize="fs20"
       color="gray.900"
@@ -166,7 +166,7 @@ export const bodyCopyStyles = {
     />
   ),
 
-  style16: props => <PercentageStyle2 {...props} />,
+  percentage_all_wrapped_normal: props => <PercentageStyle2 {...props} />,
 };
 
 /**
