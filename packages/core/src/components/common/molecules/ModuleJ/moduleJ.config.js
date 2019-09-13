@@ -32,5 +32,6 @@ export default {
   },
   IMG_DATA: {
     imgConfig: ['t_mod_J_img_m', 't_mod_J_img_t', 't_mod_J_img_d'],
+    largeImgConfig: ['t_mod_J_img_large_m', 't_mod_J_img_large_t', 't_mod_J_img_large_d'],
   },
 };
