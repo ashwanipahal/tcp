@@ -1,4 +1,3 @@
-/* eslint-disable no-useless-constructor */
 /* istanbul ignore file */
 import React from 'react';
 import PropTypes from 'prop-types';
@@ -25,7 +24,7 @@ import LinkText from '../../LinkText';
 const PRODUCT_IMAGE_WIDTH = 103;
 const PRODUCT_IMAGE_HEIGHT = 127;
 
-class ModuleR extends React.PureComponent<Props, State> {
+class ModuleR extends React.PureComponent {
   constructor(props) {
     super(props);
 
@@ -84,8 +83,6 @@ class ModuleR extends React.PureComponent<Props, State> {
         selectedProductList = selectedProductList.slice(0, 9);
       }
     }
-
-    console.info('----', selectedProductList);
 
     return (
       <Container>
@@ -162,12 +159,14 @@ ModuleR.defaultProps = {
   productTabList: {},
   navigation: null,
   layout: 'default',
+  promoBanner: [],
+  divTabs: [],
 };
 
 ModuleR.propTypes = {
   headerText: PropTypes.arrayOf(
     PropTypes.shape({
-      textItems: PropTypes.object,
+      textItems: PropTypes.array,
       link: PropTypes.object,
       icon: PropTypes.object,
     })
@@ -185,6 +184,19 @@ ModuleR.propTypes = {
   ),
   navigation: PropTypes.shape({}),
   layout: PropTypes.string,
+  promoBanner: PropTypes.arrayOf(
+    PropTypes.shape({
+      textItems: PropTypes.array,
+      link: PropTypes.object,
+    })
+  ),
+  divTabs: PropTypes.arrayOf(
+    PropTypes.shape({
+      text: PropTypes.object,
+      category: PropTypes.object,
+      singleCTAButton: PropTypes.object,
+    })
+  ),
 };
 
 export default ModuleR;
