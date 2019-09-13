@@ -1,12 +1,12 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`Points History Slider View should render Points History Correctly 1`] = `
+exports[`Points History List Page View should render Points History Page Correctly 1`] = `
 <div
   className="className"
 >
   <Styled(Row)
     className="elem-mb-SM elem-mt-SM"
-    fullbleed={true}
+    fullBleed={true}
   >
     <Styled(Col)
       colSize={
@@ -23,7 +23,7 @@ exports[`Points History Slider View should render Points History Correctly 1`] =
         component="p"
         data-locator="pointshistoryorderdatelbl"
         fontFamily="secondary"
-        fontSize="fs12"
+        fontSize="fs16"
         fontWeight="semibold"
         letterSpacing="normal"
         lineHeight="normal"
@@ -47,7 +47,7 @@ exports[`Points History Slider View should render Points History Correctly 1`] =
         component="p"
         data-locator="pointshistorytransactionslbl"
         fontFamily="secondary"
-        fontSize="fs12"
+        fontSize="fs16"
         fontWeight="semibold"
         letterSpacing="normal"
         lineHeight="normal"
@@ -71,7 +71,7 @@ exports[`Points History Slider View should render Points History Correctly 1`] =
         component="p"
         data-locator="pointshistorypointsearnedlbl"
         fontFamily="secondary"
-        fontSize="fs12"
+        fontSize="fs16"
         fontWeight="semibold"
         letterSpacing="normal"
         lineHeight="normal"
@@ -83,7 +83,7 @@ exports[`Points History Slider View should render Points History Correctly 1`] =
   </Styled(Row)>
   <Styled(Row)
     className="elem-mb-SM"
-    fullbleed={true}
+    fullBleed={true}
   >
     <Styled(Col)
       colSize={
@@ -100,8 +100,8 @@ exports[`Points History Slider View should render Points History Correctly 1`] =
         component="p"
         data-locator="pointshistoryorderdate"
         fontFamily="secondary"
-        fontSize="fs12"
-        fontWeight="semibold"
+        fontSize="fs16"
+        fontWeight="regular"
         letterSpacing="normal"
         lineHeight="normal"
         textAlign="left"
@@ -124,8 +124,8 @@ exports[`Points History Slider View should render Points History Correctly 1`] =
         component="p"
         data-locator="pointshistorytransctionmsg"
         fontFamily="secondary"
-        fontSize="fs12"
-        fontWeight="semibold"
+        fontSize="fs16"
+        fontWeight="regular"
         letterSpacing="normal"
         lineHeight="normal"
         textAlign="left"
@@ -148,39 +148,14 @@ exports[`Points History Slider View should render Points History Correctly 1`] =
         component="p"
         data-locator="pointshistorypoints"
         fontFamily="secondary"
-        fontSize="fs12"
-        fontWeight="semibold"
+        fontSize="fs16"
+        fontWeight="regular"
         letterSpacing="normal"
         lineHeight="normal"
-        textAlign="center"
+        textAlign="left"
       >
         5
       </Styled(BodyCopy)>
-    </Styled(Col)>
-  </Styled(Row)>
-  <Styled(Row)
-    className="elem-mt-XXL elem-mt-XXS"
-    fullbleed={true}
-  >
-    <Styled(Col)
-      colSize={
-        Object {
-          "large": 4,
-          "medium": 3,
-          "small": 2,
-        }
-      }
-    >
-      <Styled(Anchor)
-        anchorVariation="primary"
-        asPath="/account/place-rewards/points-history"
-        dataLocator="pointshistorylnk"
-        fontSizeVariation="medium"
-        to="/account?id=place-rewards&&subSection=points-history"
-        underline={true}
-      >
-        Points History
-      </Styled(Anchor)>
     </Styled(Col)>
   </Styled(Row)>
 </div>

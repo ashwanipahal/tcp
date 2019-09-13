@@ -1,0 +1,75 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`PointHistoryPage component should renders correctly 1`] = `
+<Styled(BodyCopy)
+  className=""
+  color="text.primary"
+  component="div"
+  fontFamily="primary"
+  fontSize={12}
+  fontWeight="regular"
+  letterSpacing="normal"
+  lineHeight="normal"
+  textAlign="left"
+>
+  <Styled(BodyCopy)
+    className="elem-mb-LRG"
+    color="text.primary"
+    component="div"
+    fontFamily="primary"
+    fontSize={12}
+    fontWeight="regular"
+    letterSpacing="normal"
+    lineHeight="normal"
+    textAlign="left"
+  >
+    <Styled(Anchor)
+      anchorVariation="secondary"
+      asPath="/account/place-rewards"
+      data-locator="backLink"
+      fontSizeVariation="xlarge"
+      to="/account?id=place-rewards"
+    >
+      <span
+        className="left-arrow"
+      />
+    </Styled(Anchor)>
+  </Styled(BodyCopy)>
+  <Styled(FormPageHeading)
+    className="elem-mb-XL"
+    data-locator="birthdaySavingsLbl"
+  />
+  <Styled(BodyCopy)
+    className="elem-mb-XXL elem-mt-XXL"
+    color="text.primary"
+    component="div"
+    fontFamily="primary"
+    fontSize={12}
+    fontWeight="regular"
+    letterSpacing="normal"
+    lineHeight="normal"
+    textAlign="left"
+  >
+    <Connect(PointsHistoryContainer)
+      labels={Object {}}
+      showFullHistory={true}
+      view="edit"
+    />
+    <Styled(BodyCopy)
+      className="historySectionSeparator elem-mb-XXL elem-mt-XXL"
+      color="text.primary"
+      component="div"
+      fontFamily="primary"
+      fontSize={12}
+      fontWeight="regular"
+      letterSpacing="normal"
+      lineHeight="normal"
+      textAlign="left"
+    />
+  </Styled(BodyCopy)>
+  <HistoryPointsRichText
+    className=""
+    content=""
+  />
+</Styled(BodyCopy)>
+`;
