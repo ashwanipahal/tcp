@@ -47,6 +47,6 @@ export default {
 };
 
 export const IMG_DATA = {
-  imgConfig: ['t_mod_B_img_m', 't_mod_B_img_t', 't_mod_B_img_d'],
-  imgNormalConfig: ['t_mod_B_img_normal_m', 't_mod_B_img_normal_t', 't_mod_B_img_normal_d'],
+  imgOverlayConfig: ['t_mod_B_img_overlay_m', 't_mod_B_img_overlay_t', 't_mod_B_img_overlay_d'],
+  imgDefaultConfig: ['t_mod_B_img_default_m', 't_mod_B_img_default_t', 't_mod_B_img_default_d'],
 };

@@ -31,7 +31,7 @@ export default {
     ],
   },
   IMG_DATA: {
-    imgConfig: ['t_mod_J_img_m', 't_mod_J_img_t', 't_mod_J_img_d'],
-    largeImgConfig: ['t_mod_J_img_large_m', 't_mod_J_img_large_t', 't_mod_J_img_large_d'],
+    productImgConfig: ['t_mod_J_product_m', 't_mod_J_img_product_t', 't_mod_J_img_product_d'],
+    promoImgConfig: ['t_mod_J_img_promo_m', 't_mod_J_img_promo_t', 't_mod_J_img_promo_d'],
   },
 };

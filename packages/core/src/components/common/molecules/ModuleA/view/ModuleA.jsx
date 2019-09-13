@@ -13,7 +13,7 @@ import config from '../ModuleA.config';
 const bigCarrotIcon = 'carousel-big-carrot';
 const bigCarrotIconGym = 'carousel-big-carrot-white';
 
-const { ctaTypes, CAROUSEL_OPTIONS } = config;
+const { ctaTypes, CAROUSEL_OPTIONS, IMG_DATA_TCP, IMG_DATA_GYM } = config;
 
 class ModuleA extends React.Component {
   constructor(props) {
@@ -90,12 +90,13 @@ class ModuleA extends React.Component {
                   promoBanner,
                   ribbonBanner,
                 } = item;
+                const imageConfig = isGymboree() ? IMG_DATA_GYM : IMG_DATA_TCP;
                 return (
                   <div className="banner-slide">
                     <DamImage
                       imgData={linkedImage.image}
                       alt=""
-                      imgConfigs={config.IMG_DATA.crops}
+                      imgConfigs={imageConfig}
                       data-locator={`${getLocator('moduleA_image')}${i}`}
                     />
                     <div className="banner-content">
