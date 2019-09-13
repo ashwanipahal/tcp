@@ -18,7 +18,7 @@ type Props = {
 };
 
 /**
- * ImageComp returns two types of images
+ * DamImage returns two types of images
  * 1. Image from react-native
  * 2. LazyLoadImage - A image to be loaded only when it is visible on screen
  *                  - For an image to be lazy loaded, parent scrollview should be LazyLoadScrollView from react-native-lazyload-deux
