@@ -3,6 +3,8 @@ import { PropTypes } from 'prop-types';
 import withStyles from '../../../../common/hoc/withStyles';
 import SearchListingStyle from '../SearchDetail.style';
 import config from '../searchDetail.constants';
+import ProductsGrid from '../../ProductListing/molecules/ProductsGrid/views';
+import searchedNewResult from '../searchedResults';
 import { Row, Col } from '../../../../common/atoms';
 
 class SearchListingView extends React.PureComponent {
@@ -26,7 +28,14 @@ class SearchListingView extends React.PureComponent {
   };
 
   render() {
-    const { className, searchedResult } = this.props;
+    const {
+      className,
+      searchedResult,
+      products,
+      productsBlock,
+      labels,
+      ...otherProps
+    } = this.props;
     const { SEARCHED_FOR, FILTERS, SORT_BY, SHOW_X_RESULTS, SLP } = config;
     return (
       <div className={className}>
@@ -53,7 +62,16 @@ class SearchListingView extends React.PureComponent {
             <div className="search-list-page">{SLP}</div>
           </Col>
         </Row>
-        <div className="product-tile-wrapper">{this.searchProductsList(searchedResult)}</div>
+        <Row>
+          <Col colSize={{ small: 6, medium: 8, large: 12 }}>
+            <ProductsGrid
+              products={searchedNewResult.data[0]}
+              productsBlock={searchedNewResult.data}
+              labels={labels}
+              {...otherProps}
+            />
+          </Col>
+        </Row>
       </div>
     );
   }
@@ -62,11 +80,17 @@ class SearchListingView extends React.PureComponent {
 SearchListingView.propTypes = {
   className: PropTypes.string,
   searchedResult: PropTypes.arrayOf(PropTypes.shape({})),
+  productsBlock: PropTypes.arrayOf(PropTypes.shape({})),
+  products: PropTypes.arrayOf(PropTypes.shape({})),
+  labels: PropTypes.objectOf(PropTypes.oneOfType([PropTypes.string])),
 };
 
 SearchListingView.defaultProps = {
   className: '',
   searchedResult: {},
+  products: [],
+  productsBlock: [],
+  labels: {},
 };
 
 export default withStyles(SearchListingView, SearchListingStyle);
