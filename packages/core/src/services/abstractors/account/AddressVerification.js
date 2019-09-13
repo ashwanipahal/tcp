@@ -21,6 +21,10 @@ export const getResultType = response => {
     return 'AS01';
   }
 
+  if (result.length === 2 && result[0] === 'AC02') {
+    return 'AC02';
+  }
+
   if (result[0] === 'AE09') {
     return 'AE09';
   }

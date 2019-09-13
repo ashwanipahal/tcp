@@ -108,6 +108,7 @@ exports[`MiniBagBody component renders main component correctly 1`] = `
     >
       Subtotal: undefined112.00
     </Styled(BodyCopy)>
+    <Connect(ApplyNowModalWrapper) />
     <Connect(AddedToBagContainer)
       isEditingItem={false}
       showAddTobag={false}
