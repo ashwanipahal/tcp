@@ -20,7 +20,7 @@ const styles = css`
   .phone-prefix {
     position: absolute;
     top: ${props => props.theme.spacing.LAYOUT_SPACING.XS};
-    z-index: 1;
+    z-index: 0;
   }
   .phone-field {
     left: ${props => props.theme.spacing.LAYOUT_SPACING.SM};

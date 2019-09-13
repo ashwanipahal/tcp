@@ -80,7 +80,15 @@ class RegisteredShippingForm extends React.Component {
       return {
         value: address.addressId,
         title: `${address.firstName} ${address.lastName} ${defaultId ? '(Default)' : ''}`,
-        content: <Address address={address} showPhone isDefault={defaultId} className="address" />,
+        content: (
+          <Address
+            showCountry={false}
+            showPhone={false}
+            address={address}
+            isDefault={defaultId}
+            className="address"
+          />
+        ),
       };
     });
 
