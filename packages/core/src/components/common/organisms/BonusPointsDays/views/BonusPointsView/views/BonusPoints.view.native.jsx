@@ -20,6 +20,7 @@ class BonusPointsView extends React.Component {
     getBonusDaysData: PropTypes.func,
     orderDetails: PropTypes.shape({}),
     isBagPage: PropTypes.bool,
+    showAccordian: PropTypes.bool.isRequired,
   };
 
   static defaultProps = {
@@ -58,6 +59,7 @@ class BonusPointsView extends React.Component {
       getBonusDaysData,
       orderDetails,
       isBagPage,
+      showAccordian,
     } = this.props;
     const { openModalState } = this.state;
     return (
@@ -81,6 +83,7 @@ class BonusPointsView extends React.Component {
             isPlcc={isPlcc}
             isBagPage={isBagPage}
             bagBonusLabels={labels.checkout.bagBonusPoints}
+            showAccordian={showAccordian}
           />
         )}
         <Modal

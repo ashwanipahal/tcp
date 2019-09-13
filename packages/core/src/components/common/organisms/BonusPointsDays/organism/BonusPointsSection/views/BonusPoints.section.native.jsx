@@ -217,6 +217,7 @@ const BonusPointsSection = ({
   isPlcc,
   isBagPage,
   bagBonusLabels,
+  showAccordian,
 }) => {
   const bonusPoints =
     bonusData && createBonusPoints({ bonusData, labels, isBagPage, bagBonusLabels });
@@ -233,7 +234,14 @@ const BonusPointsSection = ({
   });
   return (
     <View>
-      <CollapsibleContainer header={header} body={body} iconLocator="arrowicon" />
+      {showAccordian ? (
+        <CollapsibleContainer header={header} body={body} iconLocator="arrowicon" />
+      ) : (
+        <>
+          {header}
+          {body}
+        </>
+      )}
     </View>
   );
 };
@@ -248,6 +256,7 @@ BonusPointsSection.propTypes = {
   isPlcc: PropTypes.bool,
   isBagPage: PropTypes.bool,
   bagBonusLabels: PropTypes.shape({}),
+  showAccordian: PropTypes.bool,
 };
 
 BonusPointsSection.defaultProps = {
@@ -260,6 +269,7 @@ BonusPointsSection.defaultProps = {
   isPlcc: false,
   isBagPage: false,
   bagBonusLabels: {},
+  showAccordian: true,
 };
 
 getContent.propTypes = {

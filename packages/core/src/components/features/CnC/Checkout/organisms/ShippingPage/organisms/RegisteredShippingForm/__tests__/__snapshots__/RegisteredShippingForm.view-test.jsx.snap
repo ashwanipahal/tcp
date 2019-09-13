@@ -47,9 +47,9 @@ exports[`RegisteredShippingFormVanilla should render correctly  1`] = `
                 dataLocatorPrefix=""
                 fontWeight="regular"
                 isDefault={true}
-                showCountry={true}
+                showCountry={false}
                 showName={true}
-                showPhone={true}
+                showPhone={false}
               />,
               "title": "test test (Default)",
               "value": undefined,
@@ -256,9 +256,9 @@ exports[`RegisteredShippingFormVanilla should render correctly onAddressDropDown
                 dataLocatorPrefix=""
                 fontWeight="regular"
                 isDefault={false}
-                showCountry={true}
+                showCountry={false}
                 showName={true}
-                showPhone={true}
+                showPhone={false}
               />,
               "title": "test test ",
               "value": "123",
@@ -662,9 +662,9 @@ exports[`RegisteredShippingFormVanilla should render correctly with isAddNewAddr
                 dataLocatorPrefix=""
                 fontWeight="regular"
                 isDefault={false}
-                showCountry={true}
+                showCountry={false}
                 showName={true}
-                showPhone={true}
+                showPhone={false}
               />,
               "title": "test test ",
               "value": undefined,
@@ -1168,9 +1168,9 @@ exports[`RegisteredShippingFormVanilla should render correctly with isAddNewAddr
                 dataLocatorPrefix=""
                 fontWeight="regular"
                 isDefault={false}
-                showCountry={true}
+                showCountry={false}
                 showName={true}
-                showPhone={true}
+                showPhone={false}
               />,
               "title": "test test ",
               "value": undefined,
@@ -1674,9 +1674,9 @@ exports[`RegisteredShippingFormVanilla should render correctly with isEditing tr
                 dataLocatorPrefix=""
                 fontWeight="regular"
                 isDefault={false}
-                showCountry={true}
+                showCountry={false}
                 showName={true}
-                showPhone={true}
+                showPhone={false}
               />,
               "title": "test test ",
               "value": undefined,

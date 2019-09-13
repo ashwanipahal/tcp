@@ -35,11 +35,13 @@ export default class CheckoutPage extends React.PureComponent {
       availableStages,
       labels,
       submitBilling,
+      updateShippingMethodSelection,
+      updateShippingAddressData,
+      addNewShippingAddressData,
       // setCheckoutStage,
       onPickupSubmit,
       submitReview,
     } = this.props;
-
     const { routeTo } = navigation.state.params;
     return (
       <>
@@ -73,6 +75,9 @@ export default class CheckoutPage extends React.PureComponent {
             orderHasPickUp={orderHasPickUp}
             handleSubmit={this.submitShippingSection}
             availableStages={availableStages}
+            updateShippingMethodSelection={updateShippingMethodSelection}
+            updateShippingAddressData={updateShippingAddressData}
+            addNewShippingAddressData={addNewShippingAddressData}
             labels={labels}
           />
         )}
@@ -130,4 +135,7 @@ CheckoutPage.propTypes = {
   submitBilling: PropTypes.func.isRequired,
   availableStages: PropTypes.shape([]).isRequired,
   labels: PropTypes.shape({}).isRequired,
+  updateShippingMethodSelection: PropTypes.func.isRequired,
+  updateShippingAddressData: PropTypes.func.isRequired,
+  addNewShippingAddressData: PropTypes.func.isRequired,
 };

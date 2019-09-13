@@ -11,6 +11,8 @@ module.exports = withTM({
   // We can also use something like this if we need entire *.env file usage:
   //    https://github.com/zeit/next.js/blob/canary/examples/with-dotenv/next.config.js
   env: {
+    // TODO: change to process.env.RWD_WEB_PERF_TIMING
+    PERF_TIMING: true,
     // TODO: change to process.env.RWD_WEB_ANALYTICS
     ANALYTICS: true,
     // TODO: change to process.env.RWD_WEB_ANALYTICS_SCRIPT_URL
