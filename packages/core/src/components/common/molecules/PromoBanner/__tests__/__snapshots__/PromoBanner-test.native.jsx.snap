@@ -1004,7 +1004,7 @@ exports[`PromoTextBanner native component renders all style correctly 18`] = `
 />
 `;
 
-exports[`PromoTextBanner native component renders all style correctly 18`] = `
+exports[`PromoTextBanner native component renders all style correctly 19`] = `
 <Styled(View)
   style={
     Object {
