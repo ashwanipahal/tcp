@@ -106,6 +106,8 @@ class ReactTooltip extends React.PureComponent {
       justifyContent: 'center',
       flex: 1,
       padding: 10,
+      borderWidth: isIOS ? 0 : 1,
+      borderColor: colorPalette.black,
     };
   };
 
@@ -125,26 +127,18 @@ class ReactTooltip extends React.PureComponent {
   };
 
   renderContent = withTooltip => {
-    const { popover, withPointer, toggleOnPress, highlightColor, children } = this.props;
+    const { popover, withPointer, toggleOnPress, children } = this.props;
 
     if (!withTooltip) {
       return this.wrapWithPress(toggleOnPress, children);
     }
 
-    const { yOffset, xOffset, elementWidth, elementHeight } = this.state;
     const tooltipStyle = this.getTooltipStyle();
     return (
-      <View>
-        <View
-          style={styles.contentStyle(yOffset, xOffset, highlightColor, elementWidth, elementHeight)}
-        >
-          {children}
-        </View>
-        <View style={styles.shadowBox}>
-          {withPointer && this.renderPointer(tooltipStyle.top)}
-          <View style={tooltipStyle} testID="tooltipPopoverContainer">
-            {popover}
-          </View>
+      <View style={styles.shadowBox}>
+        {withPointer && this.renderPointer(tooltipStyle.top)}
+        <View style={tooltipStyle} testID="tooltipPopoverContainer">
+          {popover}
         </View>
       </View>
     );
@@ -212,13 +206,11 @@ ReactTooltip.propTypes = {
   overlayColor: PropTypes.string,
   withOverlay: PropTypes.bool,
   backgroundColor: PropTypes.string,
-  highlightColor: PropTypes.string,
 };
 
 ReactTooltip.defaultProps = {
   withOverlay: true,
   overlayColor: 'rgba(250, 250, 250, 0.80)',
-  highlightColor: 'transparent',
   withPointer: true,
   toggleOnPress: true,
   height: 96,

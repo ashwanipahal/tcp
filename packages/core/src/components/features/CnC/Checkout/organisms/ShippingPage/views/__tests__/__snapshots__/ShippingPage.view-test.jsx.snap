@@ -58,6 +58,7 @@ exports[`Shipping Page should render correctly 1`] = `
     shouldValidate={[Function]}
     shouldWarn={[Function]}
     submitAsSideEffect={false}
+    syncErrorsObject={Object {}}
     toggleAddNewAddress={[Function]}
     touchOnBlur={true}
     touchOnChange={false}
@@ -144,6 +145,7 @@ exports[`Shipping Page should render correctly with component did update and get
     shouldValidate={[Function]}
     shouldWarn={[Function]}
     submitAsSideEffect={false}
+    syncErrorsObject={Object {}}
     toggleAddNewAddress={[Function]}
     touchOnBlur={true}
     touchOnChange={false}
@@ -246,6 +248,7 @@ exports[`Shipping Page should render correctly with component did update and get
     shouldValidate={[Function]}
     shouldWarn={[Function]}
     submitAsSideEffect={false}
+    syncErrorsObject={Object {}}
     toggleAddNewAddress={[Function]}
     touchOnBlur={true}
     touchOnChange={false}
