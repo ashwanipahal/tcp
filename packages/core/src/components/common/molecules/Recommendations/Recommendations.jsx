@@ -2,10 +2,11 @@ import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import config from './config';
 import { Carousel } from '..';
-import { Image, Anchor, Col, Row, Heading } from '../../atoms';
+import { Col, Row, Heading } from '../../atoms';
 import { getIconPath } from '../../../../utils';
 import withStyles from '../../hoc/withStyles';
 import style from './Recommendations.style';
+import ModuleO from '../ModuleO';
 
 class Recommendations extends Component {
   componentDidMount() {
@@ -14,7 +15,14 @@ class Recommendations extends Component {
   }
 
   render() {
-    const { youMayAlsoLikeLabel, products, className } = this.props;
+    const {
+      youMayAlsoLikeLabel,
+      products,
+      className,
+      loadedProductCount,
+      onPickUpOpenClick,
+      labels,
+    } = this.props;
 
     return (
       <section className={className}>
@@ -44,22 +52,22 @@ class Recommendations extends Component {
               }}
             >
               {products &&
-                products.map((product, index) => {
-                  const { pdpUrl, name, imagePath, listPrice, offerPrice } = product;
+                products.map(product => {
+                  const { generalProductId } = product;
 
                   return (
-                    <Anchor
-                      to={pdpUrl}
-                      key={`${name}_${index.toString()}`}
-                      className="recommended_product"
-                    >
-                      <div className="recommended_product--image">
-                        <Image src={imagePath} />
-                      </div>
-                      <div className="recommended_product--title">{name}</div>
-                      <div className="recommended_product--offerPrice">{offerPrice}</div>
-                      <div className="recommended_product--listPrice">{`Was: ${listPrice}`}</div>
-                    </Anchor>
+                    <React.Fragment>
+                      <ModuleO
+                        loadedProductCount={loadedProductCount}
+                        generalProductId={generalProductId}
+                        item={product}
+                        isPerfectBlock
+                        productsBlock={product}
+                        onPickUpOpenClick={onPickUpOpenClick}
+                        className={`${className} product-list`}
+                        labels={labels}
+                      />
+                    </React.Fragment>
                   );
                 })}
             </Carousel>
@@ -75,6 +83,9 @@ Recommendations.propTypes = {
   youMayAlsoLikeLabel: PropTypes.string.isRequired,
   products: PropTypes.arrayOf(PropTypes.oneOfType(PropTypes.shape({}))).isRequired,
   className: PropTypes.string.isRequired,
+  loadedProductCount: PropTypes.number.isRequired,
+  onPickUpOpenClick: PropTypes.func.isRequired,
+  labels: PropTypes.shape({}).isRequired,
 };
 
 export { Recommendations as RecommendationsVanilla };
