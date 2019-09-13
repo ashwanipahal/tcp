@@ -6,6 +6,8 @@ import { fetchModuleX, submitInstantCardApplication } from './ApplyCard.actions'
 import { isPlccUser } from '../../../account/User/container/User.selectors';
 import { getUserProfileData } from './ApplyCard.selectors';
 import { routerPush } from '../../../../../utils';
+import AddressVerification from '../../../../common/organisms/AddressVerification/container/AddressVerification.container';
+import { verifyAddress } from '../../../../common/organisms/AddressVerification/container/AddressVerification.actions';
 
 class ApplyCardLayoutContainer extends React.Component {
   static propTypes = {
@@ -17,6 +19,16 @@ class ApplyCardLayoutContainer extends React.Component {
     applicationStatus: PropTypes.string.isRequired,
     plccUser: PropTypes.bool.isRequired,
     profileInfo: PropTypes.shape({}).isRequired,
+    verifyAddressAction: PropTypes.func.isRequired,
+  };
+  /**
+   *  @state - formatPayload
+   *
+   *  @member - showAddEditAddressForm - state member that decides whether to show or hide th do verify contact window.
+   */
+
+  state = {
+    showAddEditAddressForm: false,
   };
 
   componentDidMount() {
@@ -27,13 +39,49 @@ class ApplyCardLayoutContainer extends React.Component {
   }
 
   /**
+   *  @fatarrow - formatPayload
+   *  @param - payload - contains payload of plcc form.
+   *
+   *  @description - deals with form final submission.
+   */
+  formatPayload = payload => {
+    const { addressLine1, addressLine2, noCountryZip, primary, ...otherPayload } = payload;
+    return {
+      ...otherPayload,
+      ...{
+        address1: addressLine1,
+        address2: addressLine2,
+        zip: noCountryZip,
+        primary: primary ? 'true' : 'false',
+      },
+    };
+  };
+
+  /**
    *  @fatarrow - submitPLCCForm
    *  @param - formData - contains the data of redux form.
    *
    *  @description - submits for an instant credit card
    */
   submitPLCCForm = formData => {
+    const { verifyAddressAction } = this.props;
+    const formattedFormPayload = Object.assign({}, formData);
+    const formattedPayload = this.formatPayload(formattedFormPayload);
+    if (Object.keys(formattedFormPayload).length) {
+      verifyAddressAction(formattedPayload);
+      this.setState({ showAddEditAddressForm: true, formData });
+    }
+  };
+
+  /**
+   *  @fatarrow - submitForm
+   *
+   *  @description - deals with form final submission.
+   */
+  submitForm = () => {
     const { submitApplication } = this.props;
+    const { formData } = this.state;
+    this.setState({ showAddEditAddressForm: false });
     submitApplication(formData);
   };
 
@@ -46,19 +94,23 @@ class ApplyCardLayoutContainer extends React.Component {
       plccUser,
       profileInfo,
     } = this.props;
+    const { showAddEditAddressForm } = this.state;
     if (plccUser) {
       routerPush('/', '/place-card');
     }
     return (
-      <ApplyCardLayoutView
-        applicationStatus={applicationStatus}
-        labels={labels}
-        plccData={plccData}
-        submitPLCCForm={this.submitPLCCForm}
-        plccUser={plccUser}
-        profileInfo={profileInfo}
-        isPLCCModalFlow={isPLCCModalFlow}
-      />
+      <React.Fragment>
+        <ApplyCardLayoutView
+          applicationStatus={applicationStatus}
+          labels={labels}
+          plccData={plccData}
+          submitPLCCForm={this.submitPLCCForm}
+          plccUser={plccUser}
+          profileInfo={profileInfo}
+          isPLCCModalFlow={isPLCCModalFlow}
+        />
+        {showAddEditAddressForm ? <AddressVerification onSuccess={this.submitForm} /> : null}
+      </React.Fragment>
     );
   }
 }
@@ -81,6 +133,9 @@ export const mapDispatchToProps = dispatch => {
     },
     fetchModuleXContent: contentId => {
       dispatch(fetchModuleX(contentId));
+    },
+    verifyAddressAction: payload => {
+      dispatch(verifyAddress(payload));
     },
   };
 };
