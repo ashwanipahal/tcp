@@ -70,12 +70,6 @@ class ModuleR extends React.PureComponent {
     );
 
     if (selectedProductList.length) {
-      /*
-        Slicing the product as per this module requirement. This will change as currently we
-        don't have an option to configure count of product in the ProductTabList component. Also
-        the products live in state. We might need to move the state to local state of the
-        ProductTabList so that we can hand product list requirement according to the modules requirement.
-      */
       if (layout === 'default') {
         selectedProductList = selectedProductList.slice(0, 8);
         selectedProductList.splice(4, 0, promoComponent);
