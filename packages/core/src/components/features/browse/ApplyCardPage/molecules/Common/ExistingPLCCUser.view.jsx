@@ -1,44 +1,34 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import { Anchor, BodyCopy, Button, Col, Row } from '../../../../../common/atoms';
-import ApplicationInProgressWrapper from './styles/ApplicationInProgress.style';
+import { Anchor, RichText, Button, Col, Row } from '../../../../../common/atoms';
+import ExistingPLCCUserStyle from './styles/ExistingPLCCUser.view.style';
 
 /**
- * @const ApplicationInProgress
+ * @const ExistingPLCCUserView
  *
  * @param - labels
- * @description - showcases application in progress screen.
+ * @param - existingCustomerDetails - existing user information details.
+ * @description - showcases user already holds a plcc card.
  */
 
-const ApplicationInProgress = ({ bagItems, isPLCCModalFlow, labels }) => {
+const ExistingPLCCUserView = ({ bagItems, existingCustomerDetails, labels, isPLCCModalFlow }) => {
   return (
-    <ApplicationInProgressWrapper isPLCCModalFlow={isPLCCModalFlow}>
+    <ExistingPLCCUserStyle isPLCCModalFlow={isPLCCModalFlow}>
       <div className="header-image" />
-      <BodyCopy
-        fontSize="fs22"
-        className="card-InProgress-header"
-        fontFamily="secondary"
-        fontWeight="semibold"
-      >
-        {labels.plcc_form_status}
-      </BodyCopy>
-      <BodyCopy fontSize="fs16" fontFamily="secondary" className="in_progress_status_details">
-        {labels.plcc_form_status_detail}
-      </BodyCopy>
+      <RichText richTextHtml={existingCustomerDetails} className="existing_account_info" />
       {bagItems ? (
         <Row fullBleed className="submit_plcc_form">
           <Col
             ignoreGutter={{ small: true }}
             colSize={{ large: 3, medium: 4, small: 12 }}
-            className="underprogress_checkout_button"
+            className="existing_checkout_button"
           >
             <Anchor asPath="/bag">
               <Button
                 buttonVariation="fixed-width"
                 fill="BLUE"
                 type="submit"
-                className="underprogress_checkout_button"
-                data-locator="submit-plcc-btn"
+                className="existing_checkout_button"
               >
                 {labels.plcc_form_ctc_buttom}
               </Button>
@@ -46,33 +36,33 @@ const ApplicationInProgress = ({ bagItems, isPLCCModalFlow, labels }) => {
           </Col>
         </Row>
       ) : null}
-      <Row fullBleed className="submit_plcc_form">
+      <Row fullBleed className="submit_buttons_set">
         <Col
           ignoreGutter={{ small: true }}
           colSize={{ large: 3, medium: 4, small: 12 }}
-          className="underprogress_continue_button"
+          className="existing_continue_button"
         >
           <Anchor asPath="/home">
             <Button
               buttonVariation="fixed-width"
               fill={!bagItems ? 'BLUE' : 'WHITE'}
               type="submit"
-              className="underprogress_continue_button"
-              data-locator="submit-plcc-btn"
+              className="existing_continue_button"
             >
               {labels.plcc_form_continue_shopping}
             </Button>
           </Anchor>
         </Col>
       </Row>
-    </ApplicationInProgressWrapper>
+    </ExistingPLCCUserStyle>
   );
 };
 
-ApplicationInProgress.propTypes = {
+ExistingPLCCUserView.propTypes = {
   labels: PropTypes.shape({}).isRequired,
+  existingCustomerDetails: PropTypes.string.isRequired,
   isPLCCModalFlow: PropTypes.bool.isRequired,
   bagItems: PropTypes.number.isRequired,
 };
 
-export default ApplicationInProgress;
+export default ExistingPLCCUserView;
