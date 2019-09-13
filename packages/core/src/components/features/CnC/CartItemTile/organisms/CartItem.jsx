@@ -1,6 +1,6 @@
 import React from 'react';
 // eslint-disable-next-line import/no-named-as-default
-import ProductCustomizeForm from '@tcp/web/src/components/features/CnC/MiniBag/molecules/ProductCustomizeForm/ProductCustomizeForm';
+import ProductCustomizeForm from '../../../../common/molecules/ProductCustomizeForm';
 
 // @flow
 

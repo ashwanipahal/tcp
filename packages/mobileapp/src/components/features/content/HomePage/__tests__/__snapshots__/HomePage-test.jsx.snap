@@ -8,14 +8,17 @@ exports[`HomePageView should render correctly 1`] = `
   recycleDistance={5336}
   renderDistance={0}
 >
+  <Styled(View)>
+    <HeaderPromo />
+  </Styled(View)>
   <HomePageSlots
     modules={
       Object {
-        "moduelJ": [Function],
         "moduleA": [Function],
         "moduleB": [Function],
         "moduleD": [Function],
         "moduleH": [Function],
+        "moduleJ": [Function],
         "moduleK": [Function],
         "moduleL": [Function],
         "moduleN": [Function],
@@ -53,7 +56,7 @@ exports[`HomePageView should render correctly 1`] = `
     text="PLP Page"
   />
   <Connect(ModuleJ)
-    bgColor="#f53d3d"
+    bgColor="#d8d8d8"
     ctaItems={
       Array [
         Object {
@@ -160,7 +163,7 @@ exports[`HomePageView should render correctly 1`] = `
           },
           "textItems": Array [
             Object {
-              "style": "style3",
+              "style": "small_text_normal",
               "text": "Every Length, Style, Color & Size",
             },
           ],
@@ -180,8 +183,8 @@ exports[`HomePageView should render correctly 1`] = `
           },
           "textItems": Array [
             Object {
-              "style": "style4",
-              "text": "THE SHOP ALL",
+              "style": "medium_text_black",
+              "text": "THE SHORT SHOP",
             },
           ],
         },
@@ -196,7 +199,7 @@ exports[`HomePageView should render correctly 1`] = `
             "crop_m": "",
             "crop_t": "",
             "title": "Boys",
-            "url": "https://res.cloudinary.com/tcp-dam-test/image/upload/v1558543115/ecom/assets/content/tcp/us/home/moduled/US-HP-050519-MINIME1_h9cwcd.jpg",
+            "url": "https://tcp-dam-test-ressh.cloudinary.com/image/upload/v1562731929/Image_14_bp7ih0.jpg",
           },
           "link": Object {
             "action": "",
@@ -214,7 +217,7 @@ exports[`HomePageView should render correctly 1`] = `
             "crop_m": "c_crop,g_face:center,q_auto:best,w_962",
             "crop_t": "c_crop,g_face:center,q_auto:best,w_962",
             "title": "Girls",
-            "url": "https://res.cloudinary.com/tcp-dam-test/image/upload/v1558543115/ecom/assets/content/tcp/us/home/moduled/US-HP-050519-MINIME1_h9cwcd.jpg",
+            "url": "https://tcp-dam-test-ressh.cloudinary.com/image/upload/v1565145744/mod-h-kids_b9ivyr.png",
           },
           "link": Object {
             "action": "",
@@ -245,11 +248,13 @@ exports[`HomePageView should render correctly 1`] = `
           },
           "textItems": Array [
             Object {
-              "style": "large_text_semibold_normal",
+              "altStyle": "extra_large_text_regular",
+              "style": "medium_text_semibold",
               "text": "ALL SHORTS",
             },
             Object {
-              "style": "large_text_semibold_bold",
+              "altStyle": "extra_large_text_black",
+              "style": "fixed_medium_text_black",
               "text": "60% OFF",
             },
           ],

@@ -1,7 +1,7 @@
 import React from 'react';
 import { shallow } from 'enzyme';
 import { fromJS } from 'immutable';
-import { ProductCustomizeForm } from '@tcp/web/src/components/features/CnC/MiniBag/molecules/ProductCustomizeForm/ProductCustomizeForm';
+import ProductCustomizeForm from '../views/ProductCustomizeForm';
 
 describe('ProductCustomizeForm Component', () => {
   const props = {
@@ -69,13 +69,5 @@ describe('ProductCustomizeForm Component', () => {
   it('ProductCustomizeForm should be defined', () => {
     const component = shallow(<ProductCustomizeForm {...props} {...state} />);
     expect(component).toBeDefined();
-  });
-
-  it('ProductCustomizeForm should render correctly', () => {
-    const component = shallow(<ProductCustomizeForm {...props} {...state} />);
-    component.find('.button-wrapper').simulate('submit', {
-      preventDefault: () => {},
-    });
-    expect(component).toMatchSnapshot();
   });
 });

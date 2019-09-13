@@ -957,17 +957,6 @@ exports[`ContactInformationFormWrapper component should renders correctly 1`] = 
       <Styled(Row)
         fullBleed={true}
       >
-        <Styled(BodyCopy)
-          className="free_dropdown_label columnWrapper"
-          color="text.primary"
-          component="span"
-          fontFamily="secondary"
-          fontSize="fs12"
-          fontWeight="extrabold"
-          letterSpacing="normal"
-          lineHeight="normal"
-          textAlign="left"
-        />
         <Styled(Col)
           className="contact_information_form"
           colSize={
@@ -979,6 +968,17 @@ exports[`ContactInformationFormWrapper component should renders correctly 1`] = 
           }
           key="container_state"
         >
+          <Styled(BodyCopy)
+            className="free_dropdown_label columnWrapper"
+            color="text.primary"
+            component="span"
+            fontFamily="secondary"
+            fontSize="fs12"
+            fontWeight="extrabold"
+            letterSpacing="normal"
+            lineHeight="normal"
+            textAlign="left"
+          />
           <Field
             className="field"
             component={
@@ -1157,7 +1157,7 @@ exports[`ContactInformationFormWrapper component should renders correctly 1`] = 
           />
         </Styled(Col)>
         <Styled(Col)
-          className="contact_information_form label_zip"
+          className="contact_information_form"
           colSize={
             Object {
               "large": 6,

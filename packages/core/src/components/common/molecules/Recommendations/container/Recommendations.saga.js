@@ -4,11 +4,15 @@ import { loadRecommendationsData } from './Recommendations.actions';
 import { FETCH_RECOMMENDATIONS_DATA } from './Recommendations.constants';
 
 function* fetchRecommendationsData() {
-  const result = yield call(RecommendationsAbstractor.getData, {
-    page: 'homepage',
-  });
+  try {
+    const result = yield call(RecommendationsAbstractor.getData, {
+      page: 'homepage',
+    });
 
-  yield put(loadRecommendationsData(result));
+    yield put(loadRecommendationsData(result));
+  } catch (e) {
+    console.log(e);
+  }
 }
 
 function* RecommendationsSaga() {

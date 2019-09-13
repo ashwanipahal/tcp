@@ -92,7 +92,8 @@ export class DetailedCouponTile extends React.Component {
    * This function is used for view coupon deatils
    * can be passed in the component.
    */
-  handleViewCouponDetails = () => {
+  handleViewCouponDetails = e => {
+    e.preventDefault();
     const { onViewCouponDetails, coupon } = this.props;
     onViewCouponDetails(coupon);
   };
@@ -220,7 +221,12 @@ export class DetailedCouponTile extends React.Component {
                     : `${coupon.expirationDate}`}
                 </BodyCopy>
               </BodyCopy>
-              <Anchor fontSizeVariation="large" underline data-locator="myrewards-detailslink">
+              <Anchor
+                fontSizeVariation="large"
+                onClick={this.handleViewCouponDetails}
+                underline
+                data-locator="myrewards-detailslink"
+              >
                 {labels.lbl_coupon_detailsLink}
               </Anchor>
             </BodyCopy>

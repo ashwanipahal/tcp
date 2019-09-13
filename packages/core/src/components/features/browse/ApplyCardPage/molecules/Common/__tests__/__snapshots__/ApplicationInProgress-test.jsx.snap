@@ -2,12 +2,15 @@
 
 exports[`ApplicationInProgress component should renders correctly 1`] = `
 <styled.div>
+  <div
+    className="header-image"
+  />
   <Styled(BodyCopy)
     className="card-InProgress-header"
     color="text.primary"
     component="p"
     fontFamily="secondary"
-    fontSize="fs20"
+    fontSize="fs22"
     fontWeight="semibold"
     letterSpacing="normal"
     lineHeight="normal"
@@ -16,7 +19,7 @@ exports[`ApplicationInProgress component should renders correctly 1`] = `
     in progress
   </Styled(BodyCopy)>
   <Styled(BodyCopy)
-    className={null}
+    className="in_progress_status_details"
     color="text.primary"
     component="p"
     fontFamily="secondary"
@@ -33,46 +36,12 @@ exports[`ApplicationInProgress component should renders correctly 1`] = `
     fullBleed={true}
   >
     <Styled(Col)
-      className="underprogress_checkout_button"
+      className="underprogress_continue_button"
       colSize={
         Object {
-          "large": 4,
+          "large": 3,
           "medium": 4,
-          "small": 6,
-        }
-      }
-      ignoreGutter={
-        Object {
-          "small": true,
-        }
-      }
-    >
-      <Styled(Anchor)
-        asPath="/bag"
-      >
-        <Styled(Button)
-          buttonVariation="fixed-width"
-          className="underprogress_checkout_button"
-          data-locator="submit-plcc-btn"
-          fill="BLUE"
-          type="submit"
-        >
-          continue to checkout
-        </Styled(Button)>
-      </Styled(Anchor)>
-    </Styled(Col)>
-  </Styled(Row)>
-  <Styled(Row)
-    className="submit_plcc_form"
-    fullBleed={true}
-  >
-    <Styled(Col)
-      className="underproress_continue_button"
-      colSize={
-        Object {
-          "large": 4,
-          "medium": 4,
-          "small": 6,
+          "small": 12,
         }
       }
       ignoreGutter={
