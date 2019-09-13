@@ -7,6 +7,7 @@ import { breakpoints } from '../../styles/themes/TCP/mediaQuery';
 import { getAPIConfig, isClient } from './utils';
 import { API_CONFIG } from '../services/config';
 import { defaultCountries, defaultCurrencies } from '../constants/site.constants';
+import { readCookie, setCookie } from './cookie.util';
 import { ROUTING_MAP, ROUTE_PATH } from '../config/route.config';
 
 const MONTH_SHORT_FORMAT = {
@@ -472,34 +473,6 @@ export const sanitizeEntity = string => {
         .replace(/&lsquot;/gi, '"')
         .replace(/%20/gi, ' ')
     : string;
-}
-
-// eslint-disable-next-line complexity
-export const readCookie = (key, cookieString) => {
-  const isBrowser = isClient();
-  try {
-    if (isBrowser && window.satellite && window.satellite.readCookie) {
-      return window.satellite.readCookie(key);
-    }
-    if (isBrowser || cookieString) {
-      const name = `${key}=`;
-      const decodedCookie = decodeURIComponent(cookieString || document.cookie).split(';');
-
-      for (let i = 0; i < decodedCookie.length; i += 1) {
-        let c = decodedCookie[i];
-        while (c.charAt(0) === ' ') {
-          c = c.substring(1);
-        }
-        if (c.indexOf(name) === 0) {
-          return c.substring(name.length, c.length);
-        }
-      }
-      return '';
-    }
-    return false;
-  } catch (error) {
-    return '';
-  }
 };
 
 /**
@@ -507,89 +480,16 @@ export const readCookie = (key, cookieString) => {
  * @param {string} key - Localstorage item key
  * @returns {string} - Localstorage item data
  */
-export const getLocalStorage = key => isClient ? window.localStorage.getItem(key) : readCookie(key);
-
-export const setCookie = (args) => {
-  const {key, value, daysAlive} = args;
-  const isBrowser = isClient();
-
-  if (isBrowser && window.satellite && window.satellite.setCookie) {
-    window.satellite.setCookie(key, value, daysAlive);
-  } else if (isBrowser) {
-    const date = new Date();
-    date.setTime(date.getTime() + (daysAlive * 24 * 60 * 60 * 1000));
-    document.cookie = `${key}=${value};expires=${date.toUTCString()};path=/`;
-  }
-};
+export const getLocalStorage = key =>
+  isClient ? window.localStorage.getItem(key) : readCookie(key);
 
 /**
  * Set key/value data to localstorage
  * @param {Object} arg - Key/Value paired data to be set in localstorage
  */
-export const setLocalStorage = (arg) => {
-  const {key, value} = arg;
+export const setLocalStorage = arg => {
+  const { key, value } = arg;
   return isClient() ? window.localStorage.setItem(key, value) : setCookie(arg);
-};
-
-/**
- * getCacheData - get the cached information
- * @param {object} arg key - window storage object key,
- * objKey - key inside the object which needs to be returned
- */
-export const getCacheData = (key, objKey) => {
-  if (isClient()) {
-    const stringValue = getLocalStorage(key);
-    if (stringValue) {
-      const storedDataObj = JSON.parse(stringValue);
-      // If the key exists and has been set less than 30 days ago
-      if (storedDataObj[objKey] && ((new Date().getTime() - storedDataObj[objKey].timeStamp) < (30 * 24 * 60 * 60 * 1000))) {
-        return storedDataObj[objKey];
-      }
-      // Comes here when the key exists but is expired, delete the key and return false
-      if (storedDataObj[objKey]) {
-        delete storedDataObj[objKey];
-        setLocalStorage({ key, value: JSON.stringify(storedDataObj) });
-      }
-      return false;
-    }
-  }
-  return false;
-};
-
-/**
- * setCacheData - set the data object in the local storage
- * @param {object} arg key - window storage object key,
- * storageKey - address to which the data is mapped,
- * storageValue - object with information related to lat long and country
- */
-export const setCacheData = (arg) => {
-  if (isClient()) {
-    const { key, storageKey, storageValue } = arg;
-    let sessionStorageObj = {};
-    const sessionStorageString = getLocalStorage(key);
-    if (sessionStorageString) {
-      sessionStorageObj = JSON.parse(sessionStorageString);
-      const arrayOfKeys = Object.keys(sessionStorageObj);
-      if (arrayOfKeys.length >= 10) {
-        // Remove the oldest item
-        let keyToRemove = arrayOfKeys[0];
-        let oldestTimeStamp = sessionStorageObj[keyToRemove].timeStamp;
-        for (let i = 1; i < arrayOfKeys.length; i += 1) {
-          const currentObjKey = arrayOfKeys[i];
-          if (sessionStorageObj[currentObjKey].timeStamp < oldestTimeStamp) {
-            oldestTimeStamp = sessionStorageObj[currentObjKey].timeStamp;
-            keyToRemove = currentObjKey;
-          }
-        }
-        delete sessionStorageObj[keyToRemove];
-        // End of removing the oldest item logic
-      }
-    }
-    sessionStorageObj[storageKey] = storageValue;
-    const sessionStorageData = JSON.stringify(sessionStorageObj);
-    return setLocalStorage({ key, value: sessionStorageData });
-  }
-  return false;
 };
 
 export default {
@@ -613,6 +513,6 @@ export default {
   redirectToPdp,
   handleGenericKeyDown,
   sanitizeEntity,
-  getCacheData,
-  setCacheData,
+  getLocalStorage,
+  setLocalStorage,
 };
