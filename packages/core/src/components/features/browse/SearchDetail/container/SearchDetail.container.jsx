@@ -31,8 +31,8 @@ function mapStateToProps(state) {
 
 function mapDispatchToProps(dispatch) {
   return {
-    fetchSearchResults: sq => {
-      dispatch(getSearchResult(sq));
+    fetchSearchResults: searchQuery => {
+      dispatch(getSearchResult(searchQuery));
     },
   };
 }
