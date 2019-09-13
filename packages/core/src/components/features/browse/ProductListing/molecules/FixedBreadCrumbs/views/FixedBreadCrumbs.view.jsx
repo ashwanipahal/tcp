@@ -28,7 +28,7 @@ import { getLocator } from '../../../../../../../utils/utils';
 import FixedBreadCrumbsStyles from '../styles/FixedBreadCrumbs.styles';
 
 const asPathConstructor = url => {
-  return url.replace('?cid=', '/');
+  return url && url.replace('?cid=', '/');
 };
 
 const FixedBreadCrumbs = ({ crumbs, separationChar, className }) => {

@@ -2,7 +2,7 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import { DamImage, Anchor } from '../../../atoms';
 import PromoBanner from '../../PromoBanner';
-import { getLocator } from '../../../../../utils';
+import { getLocator, configurePlpNavigationFromCMSUrl } from '../../../../../utils';
 import { bannerPositionTypes } from '../ModuleB.config';
 
 /**
@@ -28,9 +28,13 @@ const renderPromoBanner = promoBanner => {
  * @param {*} param0
  */
 const renderImage = ([{ image, link }]) => {
+  const navigationUrl = link;
+  navigationUrl.to = configurePlpNavigationFromCMSUrl(link.url);
+  navigationUrl.asPath = link.url;
+
   return (
     <div className="image-container" data-locator={getLocator('moduleB_image')}>
-      <Anchor {...link} className="image-link">
+      <Anchor {...navigationUrl} className="image-link">
         <DamImage imgData={image} className="image" />
       </Anchor>
     </div>

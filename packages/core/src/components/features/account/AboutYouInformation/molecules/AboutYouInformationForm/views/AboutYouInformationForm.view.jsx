@@ -88,9 +88,9 @@ export class AboutYouInformationForm extends React.PureComponent {
                   selectedValue={option.selected}
                   name="question1"
                   checked={option.selected}
-                  data-locator={`moreaboutyou-radiooption-${index}`}
+                  data-locator={`moreaboutyou-radiooption${index + 1}`}
                   onClick={() => this.onSelectOption(true, option.value)}
-                  topPosition="0px"
+                  topPosition="-1px"
                 >
                   <BodyCopy fontSize="fs12" fontFamily="secondary">
                     {option.value}
@@ -118,7 +118,7 @@ export class AboutYouInformationForm extends React.PureComponent {
                 <Field
                   name={`question2-option-${index}`}
                   component={InputCheckbox}
-                  data-locator={`moreaboutyou-checkboxoption-${index}`}
+                  dataLocator={`moreaboutyou-checkboxoption${index + 1}`}
                   checked={option.selected}
                   onChange={() => this.onSelectOption(false, option.value)}
                 >
@@ -133,7 +133,7 @@ export class AboutYouInformationForm extends React.PureComponent {
 
         <Row className="elem-mb-LRG elem-mt-XXL actions-wrapper">
           <Col
-            className="aboutyou_cancel"
+            className="aboutyou_save"
             colSize={{
               large: 3,
               medium: 2,
@@ -142,6 +142,26 @@ export class AboutYouInformationForm extends React.PureComponent {
             offsetLeft={{
               large: 3,
               medium: 1,
+            }}
+          >
+            <Button
+              fill="BLUE"
+              buttonVariation="fixed-width"
+              data-locator="moreaboutyou-savebtn"
+              fullWidth
+              className="elem-mb-XS"
+              disabled={pristine}
+              onClick={this.onUpdate}
+            >
+              {labels.lbl_profile_survey_save}
+            </Button>
+          </Col>
+          <Col
+            className="aboutyou_cancel"
+            colSize={{
+              large: 3,
+              medium: 2,
+              small: 6,
             }}
           >
             <Anchor
@@ -158,26 +178,6 @@ export class AboutYouInformationForm extends React.PureComponent {
                 {labels.lbl_profile_personal_info_cancelCta}
               </Button>
             </Anchor>
-          </Col>
-          <Col
-            className="aboutyou_save"
-            colSize={{
-              large: 3,
-              medium: 2,
-              small: 6,
-            }}
-          >
-            <Button
-              fill="BLUE"
-              buttonVariation="fixed-width"
-              data-locator="moreaboutyou-savebtn"
-              fullWidth
-              className="elem-mb-XS"
-              disabled={pristine}
-              onClick={this.onUpdate}
-            >
-              {labels.lbl_profile_survey_save}
-            </Button>
           </Col>
         </Row>
       </div>

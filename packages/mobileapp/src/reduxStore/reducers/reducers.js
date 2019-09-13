@@ -25,6 +25,10 @@ import ApiConfigReducer from '@tcp/core/src/reduxStore/reducers/apiConfig';
 import ChangePasswordReducer from '@tcp/core/src/components/features/account/ChangePassword/container/ChangePassword.reducer';
 import SessionConfigReducer from '@tcp/core/src/reduxStore/reducers/sessionConfig';
 import GetCandidReducer from '@tcp/core/src/components/common/molecules/GetCandid/container/GetCandid.reducer';
+import AddMailingAddressReducer from '@tcp/core/src/components/features/account/MyProfile/organism/MailingInformation/container/MailingAddress.reducer';
+import UpdateProfileReducer from '@tcp/core/src/components/features/account/AddEditPersonalInformation/container/AddEditPersonalInformation.reducer';
+import MyProfileReducer from '@tcp/core/src/components/features/account/MyProfile/container/MyProfile.reducer';
+import LOGOUT_CONSTANTS from '@tcp/core/src/components/features/account/Logout/LogOut.constants';
 
 import {
   SESSIONCONFIG_REDUCER_KEY,
@@ -60,6 +64,9 @@ import {
   GET_CANDID_REDUCER_KEY,
   TOAST_REDUCER_KEY,
   PRODUCT_TAB_LIST_REDUCER_KEY,
+  MAILING_ADDRESS_REDUCER_KEY,
+  UPDATE_PROFILE_REDUCER_KEY,
+  MY_PROFILE_REDUCER_KEY,
 } from '@tcp/core/src/constants/reducer.constants';
 import HeaderReducer from '@tcp/core/src/components/common/organisms/Header/container/Header.reducer';
 import ModulesReducer from '@tcp/core/src/reduxStore/reducers/modules';
@@ -92,7 +99,7 @@ const filteredAppConfigReducer = createFilteredReducer(ApiConfigReducer, APICONF
 
 const filteredGetCandidReducer = createFilteredReducer(GetCandidReducer, GET_CANDID_REDUCER_KEY);
 
-const rootReducer = combineReducers({
+const appReducer = combineReducers({
   [APICONFIG_REDUCER_KEY]: filteredAppConfigReducer,
   [TOAST_REDUCER_KEY]: ToastMessageReducer,
   [SESSIONCONFIG_REDUCER_KEY]: SessionConfigReducer,
@@ -127,6 +134,17 @@ const rootReducer = combineReducers({
   [TRACK_ORDER_REDUCER_KEY]: TrackOrderReducer,
   [PRODUCT_TAB_LIST_REDUCER_KEY]: filteredProductTabListReducer,
   [GET_CANDID_REDUCER_KEY]: filteredGetCandidReducer,
+  [MAILING_ADDRESS_REDUCER_KEY]: AddMailingAddressReducer,
+  [UPDATE_PROFILE_REDUCER_KEY]: UpdateProfileReducer,
+  [MY_PROFILE_REDUCER_KEY]: MyProfileReducer,
 });
+
+const rootReducer = (state, action) => {
+  if (action.type === LOGOUT_CONSTANTS.USER_LOGOUT) {
+    // eslint-disable-next-line no-param-reassign
+    delete state.CouponsAndPromos; // reset the coupon and promo state
+  }
+  return appReducer(state, action);
+};
 
 export default rootReducer;

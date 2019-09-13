@@ -1,5 +1,6 @@
 import React from 'react';
 import PropTypes from 'prop-types';
+import { getLabelValue } from '@tcp/core/src/utils/utils';
 import BodyCopy from '../../../../../atoms/BodyCopy';
 import Anchor from '../../../../../atoms/Anchor';
 import Row from '../../../../../atoms/Row';
@@ -21,16 +22,16 @@ const getButtonText = ({
   let buttonText = '';
   let dataLocator = '';
   if (isUsed) {
-    buttonText = `${labels.myPlaceRewards.lbl_bonus_points_used_on} ${dateUsed}`;
+    buttonText = `${getLabelValue(labels, 'lbl_bonusPoints_usedOn')} ${dateUsed}`;
     dataLocator = 'usedonbtn';
   } else if (forFutureUse || futureDisabled) {
-    buttonText = labels.myPlaceRewards.lbl_bonus_points_future_use;
+    buttonText = getLabelValue(labels, 'lbl_bonusPoints_futureUse');
     dataLocator = 'availableforfutureusebtn';
   } else if (appliedToBagBonusPointDays) {
-    buttonText = labels.common.lbl_common_applied_to_order;
+    buttonText = getLabelValue(labels, 'lbl_bonusPoints_ctaApplied');
     dataLocator = 'appliedtoorderbtn';
   } else {
-    buttonText = labels.myPlaceRewards.lbl_bonus_points_available_today;
+    buttonText = getLabelValue(labels, 'lbl_bonusPoints_ctaApply');
     dataLocator = 'availabletodaybtn';
   }
   return { buttonText, dataLocator };
@@ -90,7 +91,7 @@ const getHeader = ({ labels }) => {
         color="orange.800"
         className="elem-mr-XS"
       >
-        {labels.myPlaceRewards.lbl_place_rewards_bonus}
+        {getLabelValue(labels, 'lbl_bonusPoints_placeRewardsBonus')}
       </BodyCopy>
       <BodyCopy
         fontFamily="primary"
@@ -100,7 +101,7 @@ const getHeader = ({ labels }) => {
         className="elem-mr-XS"
         color="primary.main"
       >
-        {labels.myPlaceRewards.lbl_place_rewards_points}
+        {getLabelValue(labels, 'lbl_bonusPoints_placeRewardsPoints')}
       </BodyCopy>
       <BodyCopy
         fontFamily="primary"
@@ -109,7 +110,7 @@ const getHeader = ({ labels }) => {
         component="span"
         color="pink.500"
       >
-        {labels.myPlaceRewards.lbl_place_rewards_day}
+        {getLabelValue(labels, 'lbl_bonusPoints_placeRewardsDay')}
       </BodyCopy>
     </div>
   );
@@ -145,7 +146,7 @@ const getContent = ({
             textAlign="center"
             className="apply-any-day-msg"
           >
-            {labels.myPlaceRewards.lbl_bonus_points_apply_any_day}
+            {getLabelValue(labels, 'lbl_bonusPoints_applyAnyDay')}
           </BodyCopy>
           <BodyCopy
             fontFamily="secondary"
@@ -156,7 +157,7 @@ const getContent = ({
             textAlign="center"
             className="availability-msg"
           >
-            {labels.myPlaceRewards.lbl_bonus_points_msg}
+            {getLabelValue(labels, 'lbl_bonusPoints_msg')}
           </BodyCopy>
         </React.Fragment>
       ) : (
@@ -169,7 +170,7 @@ const getContent = ({
           textAlign="center"
           className="availability-msg"
         >
-          {labels.myPlaceRewards.lbl_my_rewards_used_all}
+          {getLabelValue(labels, 'lbl_bonusPoints_myRewardsUsedAll')}
         </BodyCopy>
       )}
       <Row fullBleed>
@@ -195,7 +196,7 @@ const getContent = ({
         className="details-link"
         onClick={e => toggleBonusPointsModal(e)}
       >
-        {labels.common.lbl_common_details}
+        {getLabelValue(labels, 'lbl_bonusPoints_details')}
       </Anchor>
     </React.Fragment>
   );
@@ -249,7 +250,7 @@ const BonusPointsSection = ({
 };
 
 BonusPointsSection.propTypes = {
-  labels: PropTypes.shape({ myPlaceRewards: {} }),
+  labels: PropTypes.shape({ placeRewards: {} }),
   className: PropTypes.string,
   bonusData: PropTypes.shape({}),
   toggleBonusPointsModal: PropTypes.func,
@@ -260,7 +261,7 @@ BonusPointsSection.propTypes = {
 };
 
 BonusPointsSection.defaultProps = {
-  labels: { myPlaceRewards: { lbl_bonus_points_msg: '' } },
+  labels: { placeRewards: { lbl_bonus_points_msg: '' } },
   className: '',
   bonusData: {},
   toggleBonusPointsModal: () => {},
@@ -270,7 +271,7 @@ BonusPointsSection.defaultProps = {
 };
 
 getContent.propTypes = {
-  labels: PropTypes.shape({ myPlaceRewards: {} }),
+  labels: PropTypes.shape({ placeRewards: {} }),
   toggleBonusPointsModal: PropTypes.func,
   bonusPoints: PropTypes.shape([]),
   bonusData: PropTypes.shape({}),
@@ -281,8 +282,11 @@ getContent.propTypes = {
 
 getContent.defaultProps = {
   labels: {
-    myPlaceRewards: { lbl_bonus_points_apply_any_day: '', lbl_bonus_points_msg: '' },
-    common: { lbl_common_details: '' },
+    placeRewards: {
+      lbl_bonus_points_apply_any_day: '',
+      lbl_bonus_points_msg: '',
+      lbl_common_details: '',
+    },
   },
   bonusPoints: [],
   toggleBonusPointsModal: () => {},
@@ -293,15 +297,15 @@ getContent.defaultProps = {
 };
 
 getHeader.propTypes = {
-  labels: PropTypes.shape({ myPlaceRewards: {} }),
+  labels: PropTypes.shape({ placeRewards: {} }),
   orderDetails: PropTypes.shape({}),
 };
 
 getHeader.defaultProps = {
   labels: {
-    myPlaceRewards: {
+    placeRewards: {
       lbl_place_rewards_bonus: '',
-      lbl_place_rewards_points: '',
+      lbl_bonusPoints_placeRewardsPoints: '',
       lbl_place_rewards_day: '',
     },
   },

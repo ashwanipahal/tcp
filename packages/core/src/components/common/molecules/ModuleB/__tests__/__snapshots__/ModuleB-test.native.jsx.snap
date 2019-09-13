@@ -24,7 +24,7 @@ exports[`ModuleNVanilla should match snapshot 1`] = `
                   "target": "",
                   "text": "",
                   "title": "",
-                  "url": "/c/tees",
+                  "url": "/c/girls-denim-bottoms",
                 },
                 "textItems": Array [
                   Object {
@@ -68,7 +68,7 @@ exports[`ModuleNVanilla should match snapshot 1`] = `
                   "target": "",
                   "text": "",
                   "title": "",
-                  "url": "/c/banner/url",
+                  "url": "/c/girls-denim-bottoms",
                 },
                 "textItems": Array [
                   Object {
@@ -93,11 +93,13 @@ exports[`ModuleNVanilla should match snapshot 1`] = `
       locator=""
       onPress={null}
       text=""
-      url="/c/node/product/<uuid>"
+      url="/c/girl-t-shirts"
       visible={false}
     >
       <Styled(ImageComp)
+        alt="Graphic Tees"
         height={413}
+        host="lazyload-home"
         url="https://test5.childrensplace.com/image/upload/c_fill,g_face:center,q_auto:best,w_1410/ecom/assets/content/gym/us/home/modA/gym_hp_090519_us_hwlhjb.png"
         width={726}
       />
@@ -118,7 +120,7 @@ exports[`ModuleNVanilla should match snapshot 1`] = `
               "target": "",
               "text": "Girl",
               "title": "Girl",
-              "url": "/c/girl",
+              "url": "/c/girls-clothing",
             },
             "image": Object {
               "alt": "Girl",
@@ -136,7 +138,7 @@ exports[`ModuleNVanilla should match snapshot 1`] = `
               "target": "",
               "text": "Girl",
               "title": "Girl",
-              "url": "/c/girl",
+              "url": "/c/girls-clothing",
             },
             "image": Object {
               "alt": "Girl",
@@ -154,7 +156,7 @@ exports[`ModuleNVanilla should match snapshot 1`] = `
               "target": "",
               "text": "Toddler Girl",
               "title": "Toddler Girl",
-              "url": "/c/toddler-girl",
+              "url": "/c/toddler-girl-clothes",
             },
             "image": Object {
               "alt": "Girl",
@@ -172,7 +174,7 @@ exports[`ModuleNVanilla should match snapshot 1`] = `
               "target": "",
               "text": "Boy",
               "title": "Boy",
-              "url": "/c/boy",
+              "url": "/c/boys-clothing",
             },
             "image": Object {
               "alt": "Girl",
@@ -190,7 +192,7 @@ exports[`ModuleNVanilla should match snapshot 1`] = `
               "target": "",
               "text": "Toddler Boy",
               "title": "Toddler Boy",
-              "url": "/c/toddler-boy",
+              "url": "/c/toddler-boy-clothes",
             },
             "image": Object {
               "alt": "Girl",
@@ -208,7 +210,7 @@ exports[`ModuleNVanilla should match snapshot 1`] = `
               "target": "",
               "text": "Baby",
               "title": "Baby",
-              "url": "/c/baby",
+              "url": "/c/baby-clothes",
             },
             "image": Object {
               "alt": "Girl",

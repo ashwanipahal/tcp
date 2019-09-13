@@ -5,6 +5,7 @@ import { FACETS_FIELD_KEY } from './productListing.utils';
 import {
   getProductsFilters,
   getTotalProductsCount,
+  getCurrentListingIds,
 } from '../../../components/features/browse/ProductListing/container/ProductListing.selectors';
 
 const getAvailableL3List = facets => {
@@ -145,7 +146,6 @@ const getPlpUrlQueryValues = filtersAndSort => {
   routeURL = urlQueryValues === '' ? routeURL.substring(0, routeURL.length - 1) : routeURL;
 
   routerPush(`/c?cid=${urlPathCID}`, routeURL, { shallow: true });
-
   return true;
 };
 
@@ -196,10 +196,12 @@ const processResponse = (
     filtersAndSort,
     l1category
   );
+
   // We will get the avaialable l3 list in L2 page call in bucekting scenario.
   const availableL3List = getAvailableL3List(res.body.facets);
   const availableL3InFilter = getAppliedL3Filters(availableL3List);
   let totalProductsCount = 0;
+  let productListingCurrentNavIds;
   totalProductsCount = res.body.response.numberOfProducts;
   // This is the scenario when the subsequent L3 calls made in bucekting case. In this scenario we need to send back the filter and count, we cached
   // from the response of page L2 call.
@@ -207,10 +209,11 @@ const processResponse = (
     // TODO - fix this - const { temp : { filters: newFilters, totalProductsCount:newTotalProductsCount }} = this.fetchCachedFilterAndCount();
     const productListingFilters = getProductsFilters(state);
     const productListingTotalCount = getTotalProductsCount(state);
-
+    productListingCurrentNavIds = getCurrentListingIds(state);
     filters = productListingFilters || {};
     totalProductsCount = productListingTotalCount || 0;
   }
+
   // WHY DO WE NEED THIS??
   const unbxdId = res.headers && res.headers['unbxd-request-id'];
   // TODO - fix this - this.setUnbxdId(unbxdId);
@@ -244,7 +247,8 @@ const processResponse = (
     productsInCurrCategory: res.body.response.numberOfProducts,
     unbxdId,
     appliedSortId: sort,
-    currentNavigationIds: processHelpers.getCurrentNavigationIds(res),
+    currentNavigationIds:
+      productListingCurrentNavIds || processHelpers.getCurrentNavigationIds(res),
     breadCrumbTrail: processHelpers.getBreadCrumbTrail(breadCrumbs),
     loadedProductsPages: [[]],
     searchResultSuggestions: processHelpers.getSearchResultsSuggestion(res.body.didYouMean),

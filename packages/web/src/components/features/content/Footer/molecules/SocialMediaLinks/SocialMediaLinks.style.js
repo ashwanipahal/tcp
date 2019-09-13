@@ -3,13 +3,14 @@ import { css } from 'styled-components';
 export default css`
   font-family: ${props => props.theme.fonts.primaryFontBlackFamily};
   display: flex;
-  justify-content: space-between;
+  justify-content: center;
   flex-direction: row;
   text-align: center;
   padding: 12px 0 0;
 
   .social-media-label {
     padding: 15px 0;
+    margin-right: 16px;
   }
   .social-media-icon {
     width: 42px;
@@ -20,6 +21,11 @@ export default css`
   }
   a:last-child {
     margin-right: 0;
+  }
+
+  .social-media-pallete {
+    display: flex;
+    justify-content: center;
   }
 
   @media ${props => props.theme.mediaQuery.medium} {
@@ -36,11 +42,12 @@ export default css`
   @media ${props => props.theme.mediaQuery.large} {
     flex-direction: column;
     padding: 0 0 5px 0;
+
     .social-media-label {
-      padding: 0 0 5px 0;
+      padding: 0 0 12px 0;
       font-size: ${props => props.theme.fonts.fontSize.body.bodytext.copy2}px;
-      line-height: 2;
-      padding-right: 17px;
+      line-height: 0.8;
+      margin-right: 0;
     }
     .social-media-icon {
       width: 50px;

@@ -1,6 +1,7 @@
 import React from 'react';
 import { FormSection, reduxForm, Field } from 'redux-form';
 import { PropTypes } from 'prop-types';
+import { getLabelValue } from '@tcp/core/src/utils/utils';
 import AddressFields from '../../../../../../../../common/molecules/AddressFields';
 import ShipmentMethods from '../../../../../../common/molecules/ShipmentMethods';
 import SMSFormFields from '../../../../../../../../common/molecules/SMSFormFields';
@@ -15,9 +16,9 @@ import {
   ShippingFormWrapper,
 } from '../styles/ShippingForm.styles.native';
 import CnCTemplate from '../../../../../../common/organism/CnCTemplate';
+import CONSTANTS from '../../../../../Checkout.constants';
 
 const ShippingForm = ({
-  shippingLabels,
   shipmentMethods,
   selectedShipmentId,
   dispatch,
@@ -26,13 +27,13 @@ const ShippingForm = ({
   orderHasPickUp,
   smsSignUpLabels,
   isOrderUpdateChecked,
-  emailSignUpLabels,
   addressLabels: { addressFormLabels },
   addressPhoneNo,
   loadShipmentMethods,
   navigation,
   handleSubmit,
   submitShippingForm,
+  labels,
 }) => {
   return (
     <>
@@ -76,7 +77,12 @@ const ShippingForm = ({
                   fontSize="fs14"
                   mobileFontFamily="secondary"
                   fontWeight="regular"
-                  text={emailSignUpLabels.emailSignupHeading}
+                  text={getLabelValue(
+                    labels,
+                    'lbl_pickup_emailSignupHeading',
+                    'pickup',
+                    'checkout'
+                  )}
                 />
               </EmailSignUpWrapper>
               <BodyCopy
@@ -84,13 +90,23 @@ const ShippingForm = ({
                 fontSize="fs12"
                 mobileFontFamily="secondary"
                 fontWeight="regular"
-                text={emailSignUpLabels.emailSignupSubHeading}
+                text={getLabelValue(
+                  labels,
+                  'lbl_pickup_emailSignupSubHeading',
+                  'pickup',
+                  'checkout'
+                )}
               />
               <BodyCopy
                 fontSize="fs12"
                 mobileFontFamily="secondary"
                 fontWeight="regular"
-                text={emailSignUpLabels.emailSignupSubSubHeading}
+                text={getLabelValue(
+                  labels,
+                  'lbl_pickup_emailSignupSubSubHeading',
+                  'pickup',
+                  'checkout'
+                )}
               />
               <Anchor
                 noUnderline
@@ -100,7 +116,7 @@ const ShippingForm = ({
                 href="#"
                 target="_blank"
                 dataLocator="shipping-email-signUp-contact-anchor"
-                text={emailSignUpLabels.emailSignupContact}
+                text={getLabelValue(labels, 'lbl_pickup_emailSignupContact', 'pickup', 'checkout')}
               />
             </EmailSignUpForm>
           </FormSection>
@@ -110,7 +126,12 @@ const ShippingForm = ({
             shipmentMethods={shipmentMethods}
             formName="checkoutShipping"
             formSection="shipmentMethods"
-            shipmentHeader={shippingLabels.shipmentHeader}
+            shipmentHeader={getLabelValue(
+              labels,
+              'lbl_shipping_shipmentHeader',
+              'shipping',
+              'checkout'
+            )}
             selectedShipmentId={selectedShipmentId}
             dispatch={dispatch}
           />
@@ -118,10 +139,15 @@ const ShippingForm = ({
       </ShippingFormWrapper>
       <CnCTemplate
         navigation={navigation}
-        btnText="NEXT:BILLING"
+        btnText={getLabelValue(labels, 'lbl_shipping_billingText', 'shipping', 'checkout')}
         routeToPage=""
         onPress={handleSubmit(submitShippingForm)}
         isGuest={isGuest}
+        backLinkText={
+          orderHasPickUp &&
+          getLabelValue(labels, 'lbl_shipping_backLinkText', 'shipping', 'checkout')
+        }
+        onBackLinkPress={() => navigation.navigate(CONSTANTS.CHECKOUT_ROUTES_NAMES.CHECKOUT_PICKUP)}
       />
     </>
   );
@@ -138,11 +164,10 @@ ShippingForm.propTypes = {
   handleSubmit: PropTypes.func.isRequired,
   dispatch: PropTypes.func.isRequired,
   isOrderUpdateChecked: PropTypes.bool,
-  shippingLabels: PropTypes.shape({}).isRequired,
   smsSignUpLabels: PropTypes.shape({}).isRequired,
   selectedShipmentId: PropTypes.string,
   addressPhoneNo: PropTypes.number,
-  emailSignUpLabels: PropTypes.shape({}).isRequired,
+  labels: PropTypes.shape({}).isRequired,
   isGuest: PropTypes.bool,
   isUsSite: PropTypes.bool,
   orderHasPickUp: PropTypes.bool,

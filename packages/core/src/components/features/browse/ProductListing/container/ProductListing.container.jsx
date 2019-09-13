@@ -5,6 +5,7 @@ import { getFormValues } from 'redux-form';
 import { PropTypes } from 'prop-types';
 import ProductListing from '../views';
 import { getPlpProducts, getMorePlpProducts } from './ProductListing.actions';
+import { openPickupModalWithValues } from '../../../../common/organisms/PickupStoreModal/container/PickUpStoreModal.actions';
 import { processBreadCrumbs, getProductsAndTitleBlocks } from './ProductListing.util';
 import {
   getProductsSelect,
@@ -20,6 +21,7 @@ import {
   getLoadedProductsPages,
   getTotalProductsCount,
   getAppliedFilters,
+  getAppliedSortId,
 } from './ProductListing.selectors';
 import submitProductListingFiltersForm from './productListingOnSubmitHandler';
 import { isPlccUser } from '../../../account/User/container/User.selectors';
@@ -70,6 +72,8 @@ class ProductListingContainer extends React.PureComponent {
       categoryId,
       getProducts,
       onSubmit,
+      onPickUpOpenClick,
+      formValues,
       ...otherProps
     } = this.props;
     return (
@@ -91,6 +95,8 @@ class ProductListingContainer extends React.PureComponent {
         lastLoadedPageNumber={lastLoadedPageNumber}
         getProducts={getProducts}
         onSubmit={onSubmit}
+        onPickUpOpenClick={onPickUpOpenClick}
+        formValues={formValues}
         {...otherProps}
       />
     );
@@ -127,7 +133,8 @@ function mapStateToProps(state) {
     filtersLength,
     initialValues: {
       ...getAppliedFilters(state),
-      sort: '',
+      // TODO - change after site id comes for us or ca
+      sort: getAppliedSortId(state) || '',
     },
     labelsFilter: state.Labels && state.Labels.PLP && state.Labels.PLP.PLP_sort_filter,
     longDescription: getLongDescription(state),
@@ -146,6 +153,9 @@ function mapDispatchToProps(dispatch) {
     getProducts: payload => {
       dispatch(getPlpProducts(payload));
     },
+    onPickUpOpenClick: payload => {
+      dispatch(openPickupModalWithValues(payload));
+    },
     getMoreProducts: payload => {
       dispatch(getMorePlpProducts(payload));
     },
@@ -156,6 +166,7 @@ function mapDispatchToProps(dispatch) {
 
 ProductListingContainer.propTypes = {
   getProducts: PropTypes.func.isRequired,
+  onPickUpOpenClick: PropTypes.func.isRequired,
   getMoreProducts: PropTypes.func.isRequired,
   productsBlock: PropTypes.arrayOf(PropTypes.shape({})),
   categoryId: PropTypes.string.isRequired,
@@ -175,6 +186,9 @@ ProductListingContainer.propTypes = {
   lastLoadedPageNumber: PropTypes.number,
   router: PropTypes.shape({}).isRequired,
   onSubmit: PropTypes.func.isRequired,
+  formValues: PropTypes.shape({
+    sort: PropTypes.string.isRequired,
+  }).isRequired,
 };
 
 ProductListingContainer.defaultProps = {

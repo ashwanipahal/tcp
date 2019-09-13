@@ -6,7 +6,7 @@ import { ModalVanilla } from '../view/Modal';
 describe('Modal Wrapper', () => {
   it('renders <ReactModal>', () => {
     const wrapper = shallow(
-      <ModalVanilla>
+      <ModalVanilla isOpen>
         <div>Modal content</div>
       </ModalVanilla>
     );

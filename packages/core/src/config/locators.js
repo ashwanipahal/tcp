@@ -73,6 +73,13 @@ export default {
   moduleN_image: 'moduleN_image_',
   moduleN_cta_links: 'moduleN_cta_links_',
 
+  // Module J
+  moduleJ_header_text: 'moduleJ_header_text',
+  moduleJ_promobanner_text: 'moduleJ_promobanner_text',
+  moduleJ_promobanner_img: 'moduleJ_promobanner_img',
+  moduleJ_product_image: 'moduleJ_product_image_',
+  moduleJ_cta_link: 'moduleJ_cta_links',
+
   // Added To Bag
   addedtobag_btnviewbag: 'addedtobag-btnviewbag',
   addedtobag_btnpaypal: 'addedtobag-btnpaypal',
@@ -210,4 +217,13 @@ export default {
   plp_left_Nav_L2: 'leftnav-L2-Link',
   plp_left_Nav_L3: 'leftnav-L3-link',
   plp_left_Nav_header: 'products-header-txt',
+
+  // PLP Sort by Options
+  plp_sort_by_text: 'global-sortby-text',
+  plp_sort_recommended: 'sortoption-recommended-option',
+  plp_sort_high_to_low: 'sortoption-Price: High to low-option',
+  plp_sort_low_to_high: 'sortoption-Price: Low to High-option',
+  plp_sort_newest: 'sortoption-Newest-option',
+  plp_sort_favorited: 'sortoption-Most Favorited-option',
+  plp_sort_top_rated: 'sortoption-Top Rated-option',
 };

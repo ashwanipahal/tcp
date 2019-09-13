@@ -11,6 +11,7 @@ exports[`SurveyQuestion should render correctly 1`] = `
       className="question-text"
       color="text.primary"
       component="p"
+      data-locator=""
       fontFamily="secondary"
       fontSize="fs14"
       fontWeight="regular"

@@ -69,7 +69,7 @@ export const ProfileInfoActions = ({
           activityTitle={`+${percentageIncrement.percentageMailingAddress}%`}
           activityCompletionState={getMailingAddressState(mailingAddress, labels)}
           activityDescription={labels.lbl_profile_mailingAddressDescription}
-          handleComponentChange={() => handleComponentChange('accountOverviewMobile')}
+          handleComponentChange={() => toggleModalState('mountMailingAddressModal')}
         />
         <ProfileInfoActionTile
           activityId="favStore"
@@ -93,7 +93,7 @@ export const ProfileInfoActions = ({
           activityTitle={`+${percentageIncrement.percentageUserSurvey}%`}
           activityCompletionState={getAboutYourselfState(userSurvey, labels)}
           activityDescription={labels.lbl_profile_aboutYourselfDescription}
-          handleComponentChange={() => toggleModalState()}
+          handleComponentChange={() => toggleModalState('mountSurveyModal')}
         />
       </ProfileTileWrapper>
       <AboutYouSurveyModal

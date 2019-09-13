@@ -12,15 +12,19 @@ import ProductsOperator from './productsRequestFormatter';
 const instanceProductListing = new Abstractor();
 const operatorInstance = new ProductsOperator();
 
+const getUrl = url => {
+  return url
+    ? {
+        pathname: url,
+      }
+    : window.location;
+};
 export function* fetchPlpProducts({ payload }) {
   try {
     const { url, formData, sortBySelected } = payload;
-    const location = url
-      ? {
-          pathname: url,
-        }
-      : window.location;
+    const location = getUrl(url);
     let state = yield select();
+    yield put(setPlpLoadingState({ isLoadingMore: true }));
     let reqObj = operatorInstance.getProductListingBucketedData(
       state,
       location,
@@ -36,12 +40,7 @@ export function* fetchPlpProducts({ payload }) {
     }
     if (reqObj && reqObj.categoryId) {
       const plpProducts = yield call(instanceProductListing.getProducts, reqObj, state);
-      if (
-        plpProducts &&
-        plpProducts.loadedProductsPages &&
-        plpProducts.loadedProductsPages[0] &&
-        plpProducts.loadedProductsPages[0].length
-      ) {
+      if (plpProducts) {
         operatorInstance.updateBucketingConfig(plpProducts);
         yield put(setListingFirstProductsPage({ ...plpProducts }));
       }
@@ -54,11 +53,12 @@ export function* fetchPlpProducts({ payload }) {
 
 export function* fetchMoreProducts() {
   try {
-    const state = yield select();
+    let state = yield select();
     yield put(setPlpLoadingState({ isLoadingMore: true }));
     const reqObj = operatorInstance.getMoreBucketedProducts(state);
     if (reqObj && reqObj.categoryId) {
-      const plpProducts = yield call(instanceProductListing.getProducts, reqObj);
+      state = yield select();
+      const plpProducts = yield call(instanceProductListing.getProducts, reqObj, state);
       if (
         plpProducts &&
         plpProducts.loadedProductsPages &&

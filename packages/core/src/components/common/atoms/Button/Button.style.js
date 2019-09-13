@@ -1,5 +1,7 @@
 import { css } from 'styled-components';
 
+const darkLinkCategory = 'category-links-dark';
+
 const ButtonStyles = css`
   border: none;
   border-radius: 0;
@@ -43,6 +45,7 @@ const ButtonStyles = css`
       padding: 12px 32px;
     `
       : ''};
+
   ${props =>
     props.buttonVariation === 'category-links-light'
       ? `
@@ -62,7 +65,7 @@ const ButtonStyles = css`
       : ''};
 
   ${props =>
-    props.buttonVariation === 'category-links-dark'
+    props.buttonVariation === darkLinkCategory
       ? `
       min-height: auto;
       color: ${props.theme.colorPalette.white};
@@ -103,7 +106,7 @@ const ButtonStyles = css`
       : ''};
 
   ${props =>
-    props.buttonVariation === 'category-links-dark'
+    props.buttonVariation === darkLinkCategory
       ? `
       &:hover, &:focus {
         background: none;
@@ -136,8 +139,16 @@ const ButtonStyles = css`
       box-shadow: 4px 4px white inset, 6px 6px ${props.theme.colors.PRIMARY.PALEGRAY};
       width: calc(100% - 6px);
       &:hover, &:focus, &:hover:not([disabled]) {
-        background: ${props.theme.colors.PRIMARY.COLOR1};
-        box-shadow: 4px 4px white inset, 6px 6px ${props.theme.colors.PRIMARY.COLOR1};
+        background: ${
+          props.theme.isGymboree
+            ? props.theme.colorPalette.orange[50]
+            : props.theme.colors.PRIMARY.COLOR1
+        };
+        box-shadow: 4px 4px white inset, 6px 6px ${
+          props.theme.isGymboree
+            ? props.theme.colorPalette.orange[50]
+            : props.theme.colors.PRIMARY.COLOR1
+        };
         border: 2px solid ${props.theme.colors.PRIMARY.GRAY};
       }
       @media ${props.theme.mediaQuery.large} {
@@ -145,7 +156,11 @@ const ButtonStyles = css`
         box-shadow: 10px 10px white inset, 12px 12px ${props.theme.colors.PRIMARY.PALEGRAY};
         width: calc(100% - 12px);
         &:hover, &:focus, &:hover:not([disabled]) {
-          box-shadow: 10px 10px white inset, 12px 12px ${props.theme.colors.PRIMARY.COLOR1};
+          box-shadow: 10px 10px white inset, 12px 12px ${
+            props.theme.isGymboree
+              ? props.theme.colorPalette.orange[50]
+              : props.theme.colors.PRIMARY.COLOR1
+          };
         }
       }
     `
@@ -191,7 +206,9 @@ const ButtonStyles = css`
       props.buttonVariation === 'variable-width' ? 'min-height: 45px; padding: 16px 32px;' : ''};
   }
   ${props =>
-    props.theme.isGymboree && props.buttonVariation !== 'mini-nav'
+    props.theme.isGymboree &&
+    props.buttonVariation !== 'mini-nav' &&
+    props.buttonVariation !== darkLinkCategory
       ? `
     border-radius: 25px;
   `
@@ -208,7 +225,7 @@ const ButtonStyles = css`
         padding: 0;
         text-transform: none;
       &:hover {
-        border-bottom: 2px solid ${props.theme.colors.ANCHOR.SECONDARY};
+        border-bottom: 2px solid ${props.theme.colorPalette.primary.main};
         padding-bottom: 4px;
         text-decoration: none;
         border-radius: 0;

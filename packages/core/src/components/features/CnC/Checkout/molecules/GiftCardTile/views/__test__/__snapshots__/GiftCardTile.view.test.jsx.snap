@@ -7,13 +7,16 @@ exports[`GiftCardTileVanilla should render gift card tile 1`] = `
   <div
     className="gift_card_box elem-mb-XS elem-mt-MED"
   >
-    <Styled(Row)>
+    <Styled(Row)
+      className="gift-card-row"
+    >
       <Styled(Col)
+        className="gift-tile-msg-container"
         colSize={
           Object {
-            "large": 9,
-            "medium": 5,
-            "small": 3,
+            "large": 8,
+            "medium": 4,
+            "small": 4,
           }
         }
       >
@@ -32,17 +35,18 @@ exports[`GiftCardTileVanilla should render gift card tile 1`] = `
         </Styled(BodyCopy)>
       </Styled(Col)>
       <Styled(Col)
+        className="gift-action-container"
         colSize={
           Object {
-            "large": 3,
-            "medium": 3,
-            "small": 3,
+            "large": 4,
+            "medium": 4,
+            "small": 2,
           }
         }
       >
         <Styled(Button)
           buttonVariation="variable-width"
-          className="gift_apply_button"
+          className="gift_apply_button gift-action-btn"
           data-locator="gift_apply_button"
           disabled={true}
           fullWidth="true"
@@ -64,13 +68,16 @@ exports[`GiftCardTileVanilla should render gift card tile with 0 order balance 1
   <div
     className="gift_card_box elem-mb-XS elem-mt-MED"
   >
-    <Styled(Row)>
+    <Styled(Row)
+      className="gift-card-row"
+    >
       <Styled(Col)
+        className="gift-tile-msg-container"
         colSize={
           Object {
-            "large": 9,
-            "medium": 5,
-            "small": 3,
+            "large": 8,
+            "medium": 4,
+            "small": 4,
           }
         }
       >
@@ -89,17 +96,18 @@ exports[`GiftCardTileVanilla should render gift card tile with 0 order balance 1
         </Styled(BodyCopy)>
       </Styled(Col)>
       <Styled(Col)
+        className="gift-action-container"
         colSize={
           Object {
-            "large": 3,
-            "medium": 3,
-            "small": 3,
+            "large": 4,
+            "medium": 4,
+            "small": 2,
           }
         }
       >
         <Styled(Button)
           buttonVariation="variable-width"
-          className="gift_apply_button"
+          className="gift_apply_button gift-action-btn"
           data-locator="gift_apply_button"
           disabled={true}
           fullWidth="true"
@@ -121,13 +129,16 @@ exports[`GiftCardTileVanilla should render gift card tile with 100 order balance
   <div
     className="gift_card_box elem-mb-XS elem-mt-MED"
   >
-    <Styled(Row)>
+    <Styled(Row)
+      className="gift-card-row"
+    >
       <Styled(Col)
+        className="gift-tile-msg-container"
         colSize={
           Object {
-            "large": 9,
-            "medium": 5,
-            "small": 3,
+            "large": 8,
+            "medium": 4,
+            "small": 4,
           }
         }
       >
@@ -146,17 +157,18 @@ exports[`GiftCardTileVanilla should render gift card tile with 100 order balance
         </Styled(BodyCopy)>
       </Styled(Col)>
       <Styled(Col)
+        className="gift-action-container"
         colSize={
           Object {
-            "large": 3,
-            "medium": 3,
-            "small": 3,
+            "large": 4,
+            "medium": 4,
+            "small": 2,
           }
         }
       >
         <Styled(Button)
           buttonVariation="variable-width"
-          className="gift_apply_button"
+          className="gift_apply_button gift-action-btn"
           data-locator="gift_apply_button"
           disabled={false}
           fullWidth="true"
@@ -194,13 +206,16 @@ exports[`GiftCardTileVanilla should render gift card tile with errors 1`] = `
         />
       </Styled(Col)>
     </Styled(Row)>
-    <Styled(Row)>
+    <Styled(Row)
+      className="gift-card-row"
+    >
       <Styled(Col)
+        className="gift-tile-msg-container"
         colSize={
           Object {
-            "large": 9,
-            "medium": 5,
-            "small": 3,
+            "large": 8,
+            "medium": 4,
+            "small": 4,
           }
         }
       >
@@ -219,17 +234,18 @@ exports[`GiftCardTileVanilla should render gift card tile with errors 1`] = `
         </Styled(BodyCopy)>
       </Styled(Col)>
       <Styled(Col)
+        className="gift-action-container"
         colSize={
           Object {
-            "large": 3,
-            "medium": 3,
-            "small": 3,
+            "large": 4,
+            "medium": 4,
+            "small": 2,
           }
         }
       >
         <Styled(Button)
           buttonVariation="variable-width"
-          className="gift_apply_button"
+          className="gift_apply_button gift-action-btn"
           data-locator="gift_apply_button"
           disabled={true}
           fullWidth="true"
@@ -251,13 +267,16 @@ exports[`GiftCardTileVanilla should render gift card tile with isGiftCardApplied
   <div
     className="gift_card_box elem-mb-XS elem-mt-MED"
   >
-    <Styled(Row)>
+    <Styled(Row)
+      className="gift-card-row"
+    >
       <Styled(Col)
+        className="gift-tile-msg-container"
         colSize={
           Object {
-            "large": 9,
-            "medium": 5,
-            "small": 3,
+            "large": 8,
+            "medium": 4,
+            "small": 4,
           }
         }
       >
@@ -272,21 +291,22 @@ exports[`GiftCardTileVanilla should render gift card tile with isGiftCardApplied
           lineHeight="normal"
           textAlign="left"
         >
-          lbl_giftcard_endingIn undefined  | lbl_giftcard_remainingBal : undefined
+          lbl_giftcard_endingIn undefined  | lbl_giftcard_remainingBal : $0
         </Styled(BodyCopy)>
       </Styled(Col)>
       <Styled(Col)
+        className="gift-action-container"
         colSize={
           Object {
-            "large": 3,
-            "medium": 3,
-            "small": 3,
+            "large": 4,
+            "medium": 4,
+            "small": 2,
           }
         }
       >
         <Styled(Button)
           buttonVariation="variable-width"
-          className="gift_remove_button"
+          className="gift_remove_button gift-action-btn"
           data-locator="gift_apply_button"
           disabled={false}
           fullWidth="true"

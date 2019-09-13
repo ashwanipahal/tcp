@@ -39,7 +39,7 @@ export default {
               },
             ],
             link: {
-              url: '/c/tees',
+              url: '/c/girls-denim-bottoms',
               text: '',
               title: '',
               target: '',
@@ -55,7 +55,7 @@ export default {
         promoBanner: [
           {
             link: {
-              url: '/c/banner/url',
+              url: '/c/girls-denim-bottoms',
               text: '',
               title: '',
               target: '',
@@ -86,7 +86,7 @@ export default {
               crop_m: 'c_crop,g_face:center,q_auto:best,w_347,h_295',
             },
             link: {
-              url: '/c/node/product/<uuid>',
+              url: '/c/girl-t-shirts',
               text: 'Graphic Tees',
               title: 'Graphic Tees',
               target: '',
@@ -100,7 +100,7 @@ export default {
     ctaItems: [
       {
         button: {
-          url: '/c/girl',
+          url: '/c/girls-clothing',
           text: 'Girl',
           title: 'Girl',
           target: '',
@@ -120,7 +120,7 @@ export default {
 
       {
         button: {
-          url: '/c/girl',
+          url: '/c/girls-clothing',
           text: 'Girl',
           title: 'Girl',
           target: '',
@@ -139,7 +139,7 @@ export default {
       },
       {
         button: {
-          url: '/c/toddler-girl',
+          url: '/c/toddler-girl-clothes',
           text: 'Toddler Girl',
           title: 'Toddler Girl',
           target: '',
@@ -158,7 +158,7 @@ export default {
       },
       {
         button: {
-          url: '/c/boy',
+          url: '/c/boys-clothing',
           text: 'Boy',
           title: 'Boy',
           target: '',
@@ -177,7 +177,7 @@ export default {
       },
       {
         button: {
-          url: '/c/toddler-boy',
+          url: '/c/toddler-boy-clothes',
           text: 'Toddler Boy',
           title: 'Toddler Boy',
           target: '',
@@ -196,7 +196,7 @@ export default {
       },
       {
         button: {
-          url: '/c/baby',
+          url: '/c/baby-clothes',
           text: 'Baby',
           title: 'Baby',
           target: '',

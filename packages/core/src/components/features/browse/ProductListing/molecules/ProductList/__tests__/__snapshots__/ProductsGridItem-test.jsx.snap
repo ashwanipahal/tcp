@@ -12,6 +12,7 @@ exports[`ProductsGridItem component should renders correctly 1`] = `
       className="top-badge-container"
       haveSpace={true}
       isShowBadges={true}
+      text=""
     />
     <Styled(ProductAltImages)
       analyticsData={
@@ -90,6 +91,7 @@ exports[`ProductsGridItem component should renders correctly 1`] = `
       currencySymbol="$"
       hidePrefixListPrice={true}
       listPrice={NaN}
+      merchantTag=""
       offerPrice={NaN}
     />
     <ProductTitle
@@ -129,6 +131,12 @@ exports[`ProductsGridItem component should renders correctly 1`] = `
         dataLocator="global-addtocart-Button"
         fullWidth={true}
       />
+    </div>
+    <div>
+      <Styled(FulfillmentSection)
+        onPickupOpenClick={[Function]}
+      />
+      <Connect(PickUpStoreModalView) />
     </div>
   </div>
 </li>

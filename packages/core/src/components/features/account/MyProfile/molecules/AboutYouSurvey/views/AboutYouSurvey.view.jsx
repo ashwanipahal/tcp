@@ -10,14 +10,17 @@ import { Constants } from '../container/AboutYouSurvey.utils';
 export class AboutYouSurvey extends React.Component {
   constructor(props) {
     super(props);
-    const { userSurveyQuestions } = props;
+    const { userSurveyQuestions, userSurvey } = props;
     const question1 = userSurveyQuestions[0];
     const question2 = userSurveyQuestions[1];
     this.submitDisabled = true;
+    if (userSurvey && userSurvey.getIn(['0', '0'])) {
+      this.submitDisabled = false;
+    }
 
     this.state = {
       question1: {
-        stage: question1.answers.length ? Constants.Stage.Saved : Constants.Stage.New,
+        stage: Constants.Stage.New,
         optionsMap: question1.optionsMap,
         answers: question1.answers,
         options: question1.options,
@@ -47,7 +50,9 @@ export class AboutYouSurvey extends React.Component {
     const surveyOptions = question.options;
     question.options = surveyOptions.map(item => {
       const val = item;
-      if (item.id === data) {
+      if (item.id === data && !question.multiSelect) {
+        val.selected = true;
+      } else if (item.id === data && question.multiSelect) {
         val.selected = !item.selected;
       } else if (!question.multiSelect) {
         val.selected = false;
@@ -56,8 +61,8 @@ export class AboutYouSurvey extends React.Component {
     });
     const selectedAnswers = question.options.filter(item => item.selected);
     question.answers = selectedAnswers.map(item => item.value);
-    this.setState({ [questionId]: question, savedStageSelected: true });
-    this.submitDisabled = false;
+    this.setState({ [questionId]: question, savedStageSelected: false });
+    this.submitDisabled = !question.answers.length;
   };
 
   /**
@@ -82,6 +87,7 @@ export class AboutYouSurvey extends React.Component {
       answer2: question2.answers && question2.answers.length ? question2.answers.join('|') : '',
     };
     saveSurveyData(payload, !updateQuestion1);
+    this.submitDisabled = true;
   };
 
   /**
@@ -92,26 +98,24 @@ export class AboutYouSurvey extends React.Component {
     const selectedQuestion = question1;
     selectedQuestion.stage = Constants.Stage.New;
     this.setState({ question1: selectedQuestion, savedStageSelected: true });
+    this.submitDisabled = false;
   };
 
   render() {
-    const { className, labels, userFirstName, userSurvey } = this.props;
-    const { question1, question2, savedStageSelected } = this.state;
-    let question1Stage = question1.stage;
-    const updatedQuestion1 = question1;
-    const answer1 = userSurvey && userSurvey.getIn(['0', '0']);
-    if (question1.answers.length && !savedStageSelected) {
-      question1Stage = Constants.Stage.Saved;
-    } else if (answer1 && !question1.answers.length) {
-      updatedQuestion1.answers = answer1;
-      question1Stage = Constants.Stage.Saved;
-    }
+    const { className, labels, userFirstName } = this.props;
+    const { question1, question2 } = this.state;
+    const question1Stage = question1.stage;
 
     return (
       <div className={className}>
         <div className="questions-container">
           <Row centered>
-            <BodyCopy fontSize="fs20" fontWeight="black" fontFamily="secondary">
+            <BodyCopy
+              fontSize="fs20"
+              fontWeight="black"
+              fontFamily="secondary"
+              data-locator="moreaboutyou-greetingtext"
+            >
               {`${labels.lbl_profile_survey_hi}, ${userFirstName}`}
             </BodyCopy>
           </Row>
@@ -123,13 +127,18 @@ export class AboutYouSurvey extends React.Component {
                 fontFamily="secondary"
                 component="div"
                 className="title-text"
+                data-locator="moreaboutyou-surveytext"
               >
                 {labels.lbl_profile_survey_header}
               </BodyCopy>
             </Col>
           </Row>
           <Row centered>
-            <Col colSize={{ small: 4, medium: 8, large: 10 }} className="stage-wrapper">
+            <Col
+              colSize={{ small: 4, medium: 8, large: 10 }}
+              className="stage-wrapper"
+              data-locator="moreaboutyou-sequencebanner"
+            >
               <Image
                 alt="Survey Stage"
                 className="star-image"
@@ -156,10 +165,11 @@ export class AboutYouSurvey extends React.Component {
                 <SurveyQuestion
                   labels={labels}
                   className={className}
-                  options={updatedQuestion1.options}
-                  question={updatedQuestion1.statement}
+                  options={question1.options}
+                  question={question1.statement}
                   onSelection={this.onSelection}
                   questionId="question1"
+                  dataLocator="moreaboutyou-s1question"
                 />
               )}
             </Row>
@@ -172,6 +182,7 @@ export class AboutYouSurvey extends React.Component {
                   question={question2.statement}
                   onSelection={this.onSelection}
                   questionId="question2"
+                  dataLocator="moreaboutyou-s2question"
                 />
               )}
             </Row>
@@ -185,6 +196,7 @@ export class AboutYouSurvey extends React.Component {
                 fill="BLUE"
                 className="survey-submit__cta"
                 disabled={this.submitDisabled}
+                data-locator="moreaboutyou-savebtn"
               >
                 {labels.lbl_profile_survey_save}
               </Button>

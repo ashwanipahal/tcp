@@ -9,8 +9,14 @@ import {
   fetchShipmentMethods,
   routeToPickupPage as routeToPickupPageActn,
   getSetCheckoutStage,
+  updateShipmentMethodSelection,
+  updateShippingAddress,
+  addNewShippingAddress,
   submitBillingSection,
+  initActions,
+  submitReviewSection,
 } from './Checkout.action';
+
 import CheckoutPage from '../views/CheckoutPage.view';
 import selectors, {
   isGuest as isGuestUser,
@@ -18,14 +24,16 @@ import selectors, {
   getAlternateFormUpdate,
   getSendOrderUpdate,
   getCheckoutStage,
+  getGiftServicesSend,
 } from './Checkout.selector';
 import checkoutUtil from '../util/utility';
 import { getAddEditAddressLabels } from '../../../../common/organisms/AddEditAddress/container/AddEditAddress.selectors';
 import BagPageSelector from '../../BagPage/container/BagPage.selectors';
+import { getAddressListState } from '../../../account/AddressBook/container/AddressBook.selectors';
+import { getUserPhoneNumber } from '../../../account/User/container/User.selectors';
 import BAG_PAGE_ACTIONS from '../../BagPage/container/BagPage.actions';
 
 const {
-  getShippingLabels,
   getSmsSignUpLabels,
   getSelectedShipmentId,
   getAddressFields,
@@ -37,14 +45,33 @@ const {
   getShipmentMethods,
   getDefaultShipmentID,
   getShippingSendOrderUpdate,
+  getSaveToAddressBook,
+  getOnFileAddressKey,
+  getShippingAddressID,
+  getDefaultShipping,
+  getAddEditResponseAddressId,
+  getShippingAddress,
   getCheckoutProgressBarLabels,
+  getGiftWrappingValues,
+  getReviewLabels,
+  getSyncError,
 } = selectors;
 
 export class CheckoutContainer extends React.Component<Props> {
   componentDidMount() {
-    const { initCheckout, needHelpContentId, fetchNeedHelpContent } = this.props;
+    const {
+      initCheckout,
+      needHelpContentId,
+      fetchNeedHelpContent,
+      getGiftServicesContentTcpId,
+      getGiftServicesContentGymId,
+    } = this.props;
     initCheckout();
-    fetchNeedHelpContent([needHelpContentId]);
+    fetchNeedHelpContent([
+      needHelpContentId,
+      getGiftServicesContentTcpId,
+      getGiftServicesContentGymId,
+    ]);
   }
 
   render() {
@@ -63,6 +90,7 @@ export class CheckoutContainer extends React.Component<Props> {
       orderHasPickUp,
       submitShipping,
       isOrderUpdateChecked,
+      isGiftServicesChecked,
       isAlternateUpdateChecked,
       pickUpLabels,
       smsSignUpLabels,
@@ -76,8 +104,14 @@ export class CheckoutContainer extends React.Component<Props> {
       setCheckoutStage,
       billingProps,
       router,
+      updateShippingMethodSelection,
+      updateShippingAddressData,
+      addNewShippingAddressData,
+      labels,
       submitBilling,
       checkoutProgressBarLabels,
+      submitReview,
+      reviewProps,
     } = this.props;
     const availableStages = checkoutUtil.getAvailableStages(
       cartOrderItems,
@@ -99,6 +133,7 @@ export class CheckoutContainer extends React.Component<Props> {
         orderHasShipping={orderHasShipping}
         pickupInitialValues={pickupInitialValues}
         isOrderUpdateChecked={isOrderUpdateChecked}
+        isGiftServicesChecked={isGiftServicesChecked}
         isAlternateUpdateChecked={isAlternateUpdateChecked}
         pickUpLabels={pickUpLabels}
         smsSignUpLabels={smsSignUpLabels}
@@ -113,11 +148,19 @@ export class CheckoutContainer extends React.Component<Props> {
         setCheckoutStage={setCheckoutStage}
         availableStages={availableStages}
         router={router}
+        updateShippingMethodSelection={updateShippingMethodSelection}
+        updateShippingAddressData={updateShippingAddressData}
+        addNewShippingAddressData={addNewShippingAddressData}
+        labels={labels}
         submitBilling={submitBilling}
+        submitReview={submitReview}
+        reviewProps={reviewProps}
       />
     );
   }
 }
+
+CheckoutContainer.getInitActions = () => initActions;
 
 export const mapDispatchToProps = dispatch => {
   return {
@@ -142,11 +185,23 @@ export const mapDispatchToProps = dispatch => {
     setCheckoutStage: payload => {
       dispatch(getSetCheckoutStage(payload));
     },
+    updateShippingMethodSelection: payload => {
+      dispatch(updateShipmentMethodSelection(payload));
+    },
+    updateShippingAddressData: payload => {
+      dispatch(updateShippingAddress(payload));
+    },
+    addNewShippingAddressData: payload => {
+      dispatch(addNewShippingAddress(payload));
+    },
     submitBilling: payload => {
       dispatch(submitBillingSection(payload));
     },
     fetchNeedHelpContent: contentIds => {
       dispatch(BAG_PAGE_ACTIONS.fetchModuleX(contentIds));
+    },
+    submitReview: payload => {
+      dispatch(submitReviewSection(payload));
     },
   };
 };
@@ -164,14 +219,23 @@ const mapStateToProps = state => {
     shippingProps: {
       addressLabels: getAddEditAddressLabels(state),
       isOrderUpdateChecked: getShippingSendOrderUpdate(state),
-      shippingLabels: getShippingLabels(state),
+      isGiftServicesChecked: getGiftWrappingValues(state),
       smsSignUpLabels: getSmsSignUpLabels(state),
-      selectedShipmentId: getSelectedShipmentId(state),
-      address: getAddressFields(state),
-      addressPhoneNumber: getAddressPhoneNo(state),
+      selectedShipmentId: getSelectedShipmentId(state), // selected shipment radio button
+      address: getAddressFields(state), // address for fields data
+      addressPhoneNumber: getAddressPhoneNo(state), // phone field inside address for section
       emailSignUpLabels: getEmailSignUpLabels(state),
-      shipmentMethods: getShipmentMethods(state),
-      defaultShipmentId: getDefaultShipmentID(state),
+      shipmentMethods: getShipmentMethods(state), // all the shipment methods from api
+      defaultShipmentId: getDefaultShipmentID(state), // default shipment to be shown as selected
+      isSaveToAddressBookChecked: getSaveToAddressBook(state),
+      userAddresses: getAddressListState(state),
+      onFileAddressKey: getOnFileAddressKey(state), // selected address Id in dropdown
+      newUserPhoneNo: getUserPhoneNumber(state), // newly added user phone number to be shown as default in mobile number field in address form
+      shippingAddressId: getShippingAddressID(state), // address user has selected should be shown as selected in dropdown, not the default address
+      setAsDefaultShipping: getDefaultShipping(state),
+      addEditResponseAddressId: getAddEditResponseAddressId(state),
+      shippingAddress: getShippingAddress(state),
+      syncErrors: getSyncError(state),
     },
     billingProps: {
       labels: getBillingLabels(state),
@@ -198,10 +262,17 @@ const mapStateToProps = state => {
     },
     smsSignUpLabels: getSmsSignUpLabels(state),
     isOrderUpdateChecked: getSendOrderUpdate(state),
+    isGiftServicesChecked: getGiftServicesSend(state),
     isAlternateUpdateChecked: getAlternateFormUpdate(state),
     cartOrderItems: BagPageSelector.getOrderItems(state),
+    labels: selectors.getLabels(state),
     checkoutProgressBarLabels: getCheckoutProgressBarLabels(state),
     needHelpContentId: BagPageSelector.getNeedHelpContentId(state),
+    getGiftServicesContentTcpId: BagPageSelector.getGiftServicesContentTcpId(state),
+    getGiftServicesContentGymId: BagPageSelector.getGiftServicesContentGymId(state),
+    reviewProps: {
+      labels: getReviewLabels(state),
+    },
   };
 };
 

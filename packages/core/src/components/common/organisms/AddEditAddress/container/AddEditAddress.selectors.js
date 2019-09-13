@@ -1,9 +1,13 @@
 import { createSelector } from 'reselect';
-import { LOGINPAGE_REDUCER_KEY } from '../../../../../constants/reducer.constants';
+import {
+  LOGINPAGE_REDUCER_KEY,
+  ADDEDITADDRESS_REDUCER_KEY,
+} from '../../../../../constants/reducer.constants';
+import { getLabelValue, getErrorSelector } from '../../../../../utils';
 import { getAddressListState } from '../../../../features/account/AddressBook/container/AddressBook.selectors';
 
 export const getAddressResponse = state => {
-  return state.AddEditAddressReducer;
+  return state[ADDEDITADDRESS_REDUCER_KEY];
 };
 
 export const getUserEmail = state => {
@@ -18,6 +22,29 @@ export const getAddressById = createSelector(
   [getAddressListState, getAddressId],
   (addressList, addressId) => {
     return addressId ? addressList.find(address => address.addressId === addressId) : null;
+  }
+);
+
+export const getLabels = state => state.Labels.global;
+
+export const getAddEditErrorResponse = state => {
+  return state[ADDEDITADDRESS_REDUCER_KEY].get('error');
+};
+
+export const getshowNotification = createSelector(
+  getAddressResponse,
+  resp => resp && resp.get('showNotification')
+);
+
+export const getAddEditLabels = createSelector(
+  getLabels,
+  labels => labels && labels.addEditAddress
+);
+
+export const getAddEditErrorMessage = createSelector(
+  [getAddEditErrorResponse, getAddEditLabels],
+  (state, labels) => {
+    return getErrorSelector(state, labels, 'lbl_addEditAddress_error');
   }
 );
 
@@ -43,11 +70,11 @@ export const getAddEditAddressLabels = state => {
     lbl_addEditAddress_internationalShipping: shipInternationally,
   } = state.Labels.global && state.Labels.global.addEditAddress;
 
-  const {
-    ACC_LBL_ADD_ADDRESS_FORM_HEADING: addNewAddress,
-    ACC_LBL_EDIT_ADDRESS_FORM_HEADING: editAddressLbl,
-    ACC_LBL_VERIFY_YOUR_ADDRESS_HEADER: verifyAddress,
-  } = state.Labels.account && state.Labels.account.addressBook;
+  // const {
+  //   ACC_LBL_ADD_ADDRESS_FORM_HEADING: addNewAddress,
+  //   ACC_LBL_EDIT_ADDRESS_FORM_HEADING: editAddressLbl,
+  //   ACC_LBL_VERIFY_YOUR_ADDRESS_HEADER: verifyAddress,
+  // } = state.Labels.account && state.Labels.account.addressBook;
 
   return {
     addressFormLabels: {
@@ -69,9 +96,24 @@ export const getAddEditAddressLabels = state => {
       editAddress,
       addAddressHeading,
       shipInternationally,
-      editAddressLbl,
-      addNewAddress,
-      verifyAddress,
+      editAddressLbl: getLabelValue(
+        state.Labels,
+        'ACC_LBL_VERIFY_YOUR_ADDRESS_HEADER',
+        'addressBook',
+        'account'
+      ),
+      addNewAddress: getLabelValue(
+        state.Labels,
+        'ACC_LBL_EDIT_ADDRESS_FORM_HEADING',
+        'addressBook',
+        'account'
+      ),
+      verifyAddress: getLabelValue(
+        state.Labels,
+        'ACC_LBL_VERIFY_YOUR_ADDRESS_HEADER',
+        'addressBook',
+        'account'
+      ),
     },
   };
 };

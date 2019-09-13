@@ -4,7 +4,7 @@ import { androidFontStyles } from '../../../../../styles/globalStyles/StyledText
 const StyledCheckBox = styled.View`
   display: flex;
   flex-direction: row;
-  align-items: center;
+  align-items: flex-start;
 `;
 
 const StyledImage = styled.View`

@@ -26,15 +26,11 @@ describe('addAddressGet saga', () => {
       expect(putDescriptor).toEqual(put(addAddressSuccess()));
     });
 
-    it('should dispatch addAddressFail action if response is fail', () => {
-      const errorBody = {};
-      const error = {
-        response: {
-          body: errorBody,
-        },
-      };
-      const putDescriptor = addAddressGetGeneration.throw(error).value;
-      expect(putDescriptor).toEqual(put(addAddressFail(errorBody)));
+    it('should dispatch addAddressFail action if response is fail two', () => {
+      const putDescriptor = addAddressGetGeneration.throw({
+        response: { body: { errors: ['test'] } },
+      }).value;
+      expect(putDescriptor).toEqual(put(addAddressFail('test')));
     });
   });
 
@@ -63,8 +59,8 @@ describe('addAddressGet saga', () => {
     it('should dispatch addAddressFail action if response is fail', () => {
       const errorBody = {};
       const error = {
-        response: {
-          body: errorBody,
+        body: {
+          errors: errorBody,
         },
       };
       const putDescriptor = updateAddressGetGeneration.throw(error).value;

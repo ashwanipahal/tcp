@@ -20,6 +20,7 @@ const initialState = fromJS({
       deviceData: '',
       supportedByBrowser: true,
     },
+    addEditResponseAddressId: null,
     giftCardError: null,
     orderBalanceTotal: 0,
   },
@@ -83,6 +84,8 @@ function uiFlagReducer(checkout, action) {
       return checkout.setIn(['values', 'giftCardError'], null);
     case CheckoutConstants.SET_ORDER_TOTAL:
       return checkout.setIn(['values', 'orderBalanceTotal'], action.payload);
+    case CheckoutConstants.CHECKOUT_VAlUES_SET_GIFT_WRAP:
+      return checkout.CartPageReducer.setIn(['orderDetails', 'checkout', 'giftWrap']);
     // case 'CHECKOUT_FLAGS_SET_REVIEW_VISTED':
     //   return merge(uiFlags, { isReviewVisited: action.payload });
     // case 'CHECKOUT_FLAGS_SET_PAYMENT_ERROR':
@@ -134,6 +137,8 @@ export default function CheckoutReducer(state = initialState, action) {
     //   return merge(orderValues, { giftWrap: action.giftWrap });
     case CheckoutConstants.CHECKOUT_VALUES_SET_SMS_UPDATES:
       return checkout.setIn(['values', 'smsInfo'], { numberForUpdates: action.phoneNumber });
+    case CheckoutConstants.SET_ON_FILE_ADDRESS_KEY:
+      return checkout.setIn(['values', 'addEditResponseAddressId'], action.payload.addressId);
     // case 'CHECKOUT_VALUES_SET_SMS_MARKETING':
     //   return orderValues.setIn(['smsInfo', 'numberForMarketing'], action.phoneNumber);
     // case 'CHECKOUT_VALUES_SET_SELECTED_SHIPPING_PHONE_NUMBER':

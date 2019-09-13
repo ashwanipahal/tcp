@@ -14,116 +14,186 @@ exports[`CouponForm Component AirmilesBanner should render correctly 1`] = `
   </Styled(View)>
   <Styled(View)>
     <Styled(View)>
-      <Field
-        autoCapitalize="none"
-        component={
-          Object {
-            "$$typeof": Symbol(react.forward_ref),
-            "_foldedDefaultProps": Object {
-              "ariaLabel": "input",
-              "dataLocator": "input-field",
-              "enableSuccessCheck": false,
-              "id": "input",
-              "keyboardType": "default",
-              "label": "input",
-              "marginBottom": true,
-              "meta": Object {
-                "error": "",
-                "touched": "",
+      <Styled(View)>
+        <Field
+          autoCapitalize="none"
+          component={
+            Object {
+              "$$typeof": Symbol(react.forward_ref),
+              "_foldedDefaultProps": Object {
+                "ariaLabel": "input",
+                "dataLocator": "input-field",
+                "enableSuccessCheck": false,
+                "id": "input",
+                "keyboardType": "default",
+                "label": "input",
+                "marginBottom": true,
+                "meta": Object {
+                  "error": "",
+                  "touched": "",
+                },
+                "onChangeText": [Function],
+                "secureTextEntry": false,
+                "showErrorIcon": true,
+                "showSuccessCheck": false,
+                "successText": "",
+                "type": "text",
               },
-              "onChangeText": [Function],
-              "secureTextEntry": false,
-              "showErrorIcon": true,
-              "showSuccessCheck": false,
-              "successText": "",
-              "type": "text",
-            },
-            "attrs": Array [],
-            "displayName": "Styled(TextBox)",
-            "inlineStyle": InlineStyle {
-              "rules": Array [
-                "
+              "attrs": Array [],
+              "displayName": "Styled(TextBox)",
+              "inlineStyle": InlineStyle {
+                "rules": Array [
+                  "
     ",
-                "
+                  "
   ",
-                [Function],
-                ";
+                  [Function],
+                  ";
 ",
-                ";
+                  ";
   ",
-              ],
-            },
-            "render": [Function],
-            "styledComponentId": "StyledNativeComponent",
-            "target": [Function],
-            "withComponent": [Function],
+                ],
+              },
+              "render": [Function],
+              "styledComponentId": "StyledNativeComponent",
+              "target": [Function],
+              "withComponent": [Function],
+            }
           }
-        }
-        dataLocator="collectorNumber"
-        id="promoId"
-        label="13131313222"
-        maxLength={11}
-        name="promoId"
-        onBlur={[MockFunction]}
-        type="text"
-        value="13131313222"
-      />
+          dataLocator="collectorNumber"
+          id="promoId"
+          label="13131313222"
+          maxLength={11}
+          name="promoId"
+          onBlur={[MockFunction]}
+          type="text"
+          value="13131313222"
+        />
+      </Styled(View)>
+      <Styled(View)>
+        <ReactTooltip
+          backgroundColor="#fff"
+          height={96}
+          onClose={[Function]}
+          onOpen={[Function]}
+          overlayColor="rgba(250, 250, 250, 0.80)"
+          pointerColor="#fff"
+          popover={
+            <ForwardRef
+              color="gray.900"
+              fontFamily="secondary"
+              fontSize="fs12"
+              fontWeight="regular"
+              text="collectorFlyout"
+            />
+          }
+          toggleOnPress={true}
+          width={240}
+          withOverlay={false}
+          withPointer={true}
+        >
+          <Styled(ImageComp)
+            height={15}
+            source={
+              Object {
+                "testUri": "../../../../core/src/assets/info-icon.png",
+              }
+            }
+            width={15}
+          />
+        </ReactTooltip>
+      </Styled(View)>
     </Styled(View)>
     <Styled(View)>
-      <Field
-        autoCapitalize="none"
-        component={
-          Object {
-            "$$typeof": Symbol(react.forward_ref),
-            "_foldedDefaultProps": Object {
-              "ariaLabel": "input",
-              "dataLocator": "input-field",
-              "enableSuccessCheck": false,
-              "id": "input",
-              "keyboardType": "default",
-              "label": "input",
-              "marginBottom": true,
-              "meta": Object {
-                "error": "",
-                "touched": "",
+      <Styled(View)>
+        <Field
+          autoCapitalize="none"
+          component={
+            Object {
+              "$$typeof": Symbol(react.forward_ref),
+              "_foldedDefaultProps": Object {
+                "ariaLabel": "input",
+                "dataLocator": "input-field",
+                "enableSuccessCheck": false,
+                "id": "input",
+                "keyboardType": "default",
+                "label": "input",
+                "marginBottom": true,
+                "meta": Object {
+                  "error": "",
+                  "touched": "",
+                },
+                "onChangeText": [Function],
+                "secureTextEntry": false,
+                "showErrorIcon": true,
+                "showSuccessCheck": false,
+                "successText": "",
+                "type": "text",
               },
-              "onChangeText": [Function],
-              "secureTextEntry": false,
-              "showErrorIcon": true,
-              "showSuccessCheck": false,
-              "successText": "",
-              "type": "text",
-            },
-            "attrs": Array [],
-            "displayName": "Styled(TextBox)",
-            "inlineStyle": InlineStyle {
-              "rules": Array [
-                "
+              "attrs": Array [],
+              "displayName": "Styled(TextBox)",
+              "inlineStyle": InlineStyle {
+                "rules": Array [
+                  "
     ",
-                "
+                  "
   ",
-                [Function],
-                ";
+                  [Function],
+                  ";
 ",
-                ";
+                  ";
   ",
-              ],
-            },
-            "render": [Function],
-            "styledComponentId": "StyledNativeComponent",
-            "target": [Function],
-            "withComponent": [Function],
+                ],
+              },
+              "render": [Function],
+              "styledComponentId": "StyledNativeComponent",
+              "target": [Function],
+              "withComponent": [Function],
+            }
           }
-        }
-        dataLocator="collectorNumber"
-        id="offerCode"
-        label="124e12e"
-        maxLength={55}
-        name="offerCode"
-        onBlur={[MockFunction]}
-        type="text"
-        value="124e12e"
-      />
+          dataLocator="collectorNumber"
+          id="offerCode"
+          label="124e12e"
+          maxLength={55}
+          name="offerCode"
+          onBlur={[MockFunction]}
+          type="text"
+          value="124e12e"
+        />
+      </Styled(View)>
+      <Styled(View)>
+        <ReactTooltip
+          backgroundColor="#fff"
+          height={96}
+          onClose={[Function]}
+          onOpen={[Function]}
+          overlayColor="rgba(250, 250, 250, 0.80)"
+          pointerColor="#fff"
+          popover={
+            <ForwardRef
+              color="gray.900"
+              fontFamily="secondary"
+              fontSize="fs12"
+              fontWeight="regular"
+              text="offerFlyout"
+            />
+          }
+          toggleOnPress={true}
+          width={240}
+          withOverlay={false}
+          withPointer={true}
+        >
+          <Styled(ImageComp)
+            height={15}
+            source={
+              Object {
+                "testUri": "../../../../core/src/assets/info-icon.png",
+              }
+            }
+            width={15}
+          />
+        </ReactTooltip>
+      </Styled(View)>
     </Styled(View)>
   </Styled(View)>
   <Styled(View)>

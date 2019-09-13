@@ -12,6 +12,8 @@ import Image from '../../../../../../common/atoms/Image';
 import { getLocator } from '../../../../../../../utils';
 import AppliedFiltersList from '../../AppliedFiltersList';
 import { FACETS_FIELD_KEY } from '../../../../../../../services/abstractors/productListing/productListing.utils';
+import SortSelector from '../../SortSelector';
+import config from '../../SortSelector/SortSelector.config';
 import { DESCRIPTION_FILTER } from '../../../container/ProductListing.constants';
 
 /**
@@ -85,6 +87,28 @@ function getFilterOptionsMap(optionsMap) {
   }));
 }
 
+function getSortCustomOptionsMap(sortOptionsMap) {
+  return sortOptionsMap.map(sortOption => ({
+    value: sortOption.id,
+    title: (
+      <BodyCopy
+        component="span"
+        className="sort-item-selected"
+        fontSize="fs13"
+        fontFamily="secondary"
+        fontWeight="extrabold"
+      >
+        {sortOption.displayName}
+      </BodyCopy>
+    ),
+    content: (
+      <BodyCopy component="span" className="sort-title" fontSize="fs14" fontFamily="secondary">
+        {sortOption.displayName}
+      </BodyCopy>
+    ),
+  }));
+}
+
 class ProductListingFiltersForm extends React.Component {
   /**
    * @constructor for this class
@@ -97,6 +121,7 @@ class ProductListingFiltersForm extends React.Component {
       isOpenFilterSection: false,
     };
 
+    this.handleSubmitOnChange = this.handleSubmitOnChange.bind(this);
     this.handleRemoveFilter = this.handleRemoveFilter.bind(this);
     this.handleRemoveAllFilters = this.handleRemoveAllFilters.bind(this);
     this.handleImmediateSubmit = this.handleImmediateSubmit.bind(this);
@@ -197,6 +222,7 @@ class ProductListingFiltersForm extends React.Component {
    * @param {String} filterName - filter names "categoryPath2_uFilter, age_group_uFilter etc"
    * @param {String} facetName - filter names "category, color etc"
    */
+
   renderFilterField(appliedFilterVal, selectedFilters, filterName, facetName) {
     const { filtersMaps, labels } = this.props;
 
@@ -260,7 +286,7 @@ class ProductListingFiltersForm extends React.Component {
    * @function renderDesktop renders the filter view for desktop
    * @param {Object} appliedFilters - filters if already applied
    */
-  renderDesktop(appliedFilters) {
+  renderFilters(appliedFilters) {
     const {
       filtersMaps,
       totalProductsCount,
@@ -268,6 +294,8 @@ class ProductListingFiltersForm extends React.Component {
       colorSeqMap,
       labels,
       className,
+      initialValues,
+      onSubmit,
     } = this.props;
     const filterKeys = Object.keys(filtersMaps);
     return (
@@ -293,6 +321,13 @@ class ProductListingFiltersForm extends React.Component {
 
                 {filtersMaps && this.renderDesktopFilters(filterKeys, appliedFilters)}
               </div>
+              <div className="sort-selector-wrapper">
+                <SortSelector
+                  isMobile={false}
+                  sortSelectOptions={getSortCustomOptionsMap(config)}
+                  onChange={handleSubmit(this.handleSubmitOnChange)}
+                />
+              </div>
             </div>
           )}
           {this.getAppliedFiltersCount() > 0 && (
@@ -306,6 +341,20 @@ class ProductListingFiltersForm extends React.Component {
             />
           )}
         </form>
+        <div className="render-mobile-view">
+          <ProductListingMobileFiltersForm
+            totalProductsCount={totalProductsCount}
+            initialValues={initialValues}
+            filtersMaps={filtersMaps}
+            className={className}
+            labels={labels}
+            onSubmit={onSubmit}
+            handleSubmit={handleSubmit}
+            handleImmediateSubmit={this.handleImmediateSubmit}
+            removeAllFilters={this.handleRemoveAllFilters}
+            handleSubmitOnChange={this.handleSubmitOnChange}
+          />
+        </div>
         {/* {submitting && <Spinner className="loading-more-product">Updating...</Spinner>} */}
       </div>
     );
@@ -352,7 +401,7 @@ class ProductListingFiltersForm extends React.Component {
   }
 
   render() {
-    const { className, labels, totalProductsCount, initialValues, filtersMaps } = this.props;
+    const { initialValues, filtersMaps } = this.props;
 
     const appliedFilters = [];
 
@@ -366,18 +415,7 @@ class ProductListingFiltersForm extends React.Component {
       appliedFilters.push(selectedFacet);
     }
 
-    return (
-      <Fragment>
-        {this.renderDesktop(appliedFilters)}
-        <ProductListingMobileFiltersForm
-          totalProductsCount={totalProductsCount}
-          initialValues={initialValues}
-          filtersMaps={filtersMaps}
-          className={`${className} render-mobile-view`}
-          labels={labels}
-        />
-      </Fragment>
-    );
+    return <Fragment>{this.renderFilters(appliedFilters)}</Fragment>;
   }
 }
 

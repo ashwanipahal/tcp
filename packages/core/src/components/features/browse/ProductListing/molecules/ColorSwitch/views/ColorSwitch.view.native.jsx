@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { FlatList, TouchableOpacity } from 'react-native';
+import { FlatList } from 'react-native';
 import PropTypes from 'prop-types';
 import withStyles from '../../../../../../common/hoc/withStyles.native';
 import {
@@ -7,7 +7,7 @@ import {
   ColorSwitchesContainer,
   ItemSeparatorStyle,
   ImageStyle,
-  SelectedImageStyle,
+  ImageTouchableOpacity,
 } from '../styles/ColorSwitch.style.native';
 
 /**
@@ -24,12 +24,11 @@ const onSelectHandler = (selectedId, index, setSelectedColorId, setSelectedColor
 
 /**
  * @param {String} imageUrl : Image source
- * @param {Object} SelectedImage : Styled component
  * @desc This method paint color image with border
  */
-const getImageIcon = (imageUrl, SelectedImage) => {
+const getImageIcon = imageUrl => {
   return (
-    <SelectedImage
+    <ImageStyle
       source={{
         uri: imageUrl,
       }}
@@ -56,20 +55,25 @@ const RenderColorItem = (itemObj, selectedColorId, setSelectedColorId, setSelect
   const { item, index } = itemObj;
   const { color } = item;
   const imageUrl = color.imagePath;
+  const colorName = color.name.toLowerCase() || '';
   const { colorProductId } = item;
-  const SelectedImage =
-    (selectedColorId === 'none' && index === 0) || selectedColorId === colorProductId
-      ? SelectedImageStyle
-      : ImageStyle;
+  const selected =
+    (selectedColorId === 'none' && index === 0) || selectedColorId === colorProductId;
+  const accState = selected ? 'selected' : '';
   return (
-    <TouchableOpacity
+    <ImageTouchableOpacity
+      // eslint-disable-next-line
+      accessibilityStates={[accState]}
+      accessibilityHint="color switches"
+      selected={selected}
+      accessibilityRole="button"
+      accessibilityLabel={colorName}
       onPress={() =>
         onSelectHandler(colorProductId, index, setSelectedColorId, setSelectedColorIndex)
       }
-      accessibilityRole="button"
     >
-      {getImageIcon(imageUrl, SelectedImage)}
-    </TouchableOpacity>
+      {getImageIcon(imageUrl)}
+    </ImageTouchableOpacity>
   );
 };
 

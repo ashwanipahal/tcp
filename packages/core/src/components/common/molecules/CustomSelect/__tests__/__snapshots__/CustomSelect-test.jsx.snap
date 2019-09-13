@@ -44,9 +44,6 @@ exports[`CustomSelect component should renders correctly when optional fields ar
   lineHeight="normal"
   textAlign="left"
 >
-  <span>
-    :
-  </span>
   <Styled(BodyCopy)
     className="customSelectTitle"
     color="text.primary"

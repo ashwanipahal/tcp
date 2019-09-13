@@ -75,7 +75,7 @@ export const GiftCards = ({
         >
           <BodyCopy
             fontFamily="primary"
-            fontSize="fs24"
+            fontSize="fs26"
             fontWeight="regular"
             data-locator="gift-cards"
             className="elem-mb-XS elem-mt-XXL"
@@ -112,10 +112,10 @@ export const GiftCards = ({
             data-locator="gift-cards"
             className="elem-mb-XS elem-mt-MED"
           >
-            {`${getLabelValue(labels, 'lbl_giftcard_headsUpTitle')} ${getLabelValue(
-              labels,
-              'lbl_giftcard_headsUpMsg'
-            )}`}
+            <span className="headsUpMsgBoldTitle">
+              {getLabelValue(labels, 'lbl_giftcard_headsUpTitle')}
+            </span>
+            {`${getLabelValue(labels, 'lbl_giftcard_headsUpMsg')}`}
           </BodyCopy>
 
           {GiftCardSectionHeading(labels)}

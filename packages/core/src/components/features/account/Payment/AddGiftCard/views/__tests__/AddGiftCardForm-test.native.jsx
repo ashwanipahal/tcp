@@ -21,7 +21,7 @@ describe('Add gift card form component', () => {
     const component = shallow(<AddGiftCardFormVanilla {...props} handleSubmit={handleSubmit} />);
 
     component
-      .find('Styled(CustomButton)')
+      .find('Styled(WithTheme(CustomButton))')
       .at(0)
       .simulate('press');
     expect(handleSubmit).toHaveBeenCalledTimes(1);
