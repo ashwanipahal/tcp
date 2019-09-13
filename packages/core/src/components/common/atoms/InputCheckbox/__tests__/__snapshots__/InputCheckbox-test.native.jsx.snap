@@ -17,7 +17,7 @@ exports[`InputCheckbox component should render correctly 1`] = `
         height="25px"
         source={
           Object {
-            "testUri": "../../../../core/src/assets/store-locator-checked.png",
+            "testUri": "../../../../core/src/assets/store-locator-check.png",
           }
         }
         width="25px"
