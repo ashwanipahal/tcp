@@ -56,7 +56,7 @@ export default {
             text: 'GIRL',
           },
           category: {
-            cat_id: '47511>49012',
+            cat_id: '49007',
           },
           singleCTAButton: {
             url: dummyUrl,

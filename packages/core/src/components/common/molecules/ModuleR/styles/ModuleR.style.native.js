@@ -9,7 +9,7 @@ export const Container = styled.View`
 
 export const HeaderContainer = styled.View`
   align-items: center;
-  margin-bottom: 10px;
+  margin-bottom: 5px;
 `;
 
 export const PromoContainer = styled.View`

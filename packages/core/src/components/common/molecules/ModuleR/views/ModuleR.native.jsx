@@ -85,6 +85,8 @@ class ModuleR extends React.PureComponent<Props, State> {
       }
     }
 
+    console.info('----', selectedProductList);
+
     return (
       <Container>
         <HeaderContainer>
@@ -159,7 +161,7 @@ ModuleR.defaultProps = {
   headerText: [],
   productTabList: {},
   navigation: null,
-  layout: 'alt',
+  layout: 'default',
 };
 
 ModuleR.propTypes = {

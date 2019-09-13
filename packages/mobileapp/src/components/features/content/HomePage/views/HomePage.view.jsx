@@ -73,7 +73,6 @@ class HomePageView extends React.PureComponent<Props> {
         <HeaderPromoContainer>
           <HeaderPromo headerPromo={headerPromo} />
         </HeaderPromoContainer>
-        <ModuleR navigation={navigation} {...moduleRMock.moduleR.composites} />
         <HomePageSlots slots={slots} modules={modulesMap} navigation={navigation} />
         <ModuleB navigation={navigation} />
         <GetCandid apiConfig={apiConfig} navigation={navigation} />
@@ -85,6 +84,7 @@ class HomePageView extends React.PureComponent<Props> {
           style={buttonMargin}
         />
         <ModuleJ navigation={navigation} {...moduleJMock.moduleJ.composites} />
+        <ModuleR navigation={navigation} {...moduleRMock.moduleR.composites} />
       </LazyloadScrollView>
     );
   }

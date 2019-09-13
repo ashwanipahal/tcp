@@ -11,6 +11,129 @@ exports[`HomePageView should render correctly 1`] = `
   <Styled(View)>
     <HeaderPromo />
   </Styled(View)>
+  <Connect(ModuleR)
+    divTabs={
+      Array [
+        Object {
+          "category": Object {
+            "cat_id": "47511>49012",
+          },
+          "singleCTAButton": Object {
+            "action": "",
+            "external": 0,
+            "target": "",
+            "text": "SHOP ALL",
+            "title": "SHOP ALL",
+            "url": "http://www.google.com",
+          },
+          "text": Object {
+            "text": "GIRL",
+          },
+        },
+        Object {
+          "category": Object {
+            "cat_id": "47502>47535>54071",
+          },
+          "singleCTAButton": Object {
+            "action": "",
+            "external": 0,
+            "target": "",
+            "text": "SHOP ALL",
+            "title": "SHOP ALL",
+            "url": "http://www.google.com",
+          },
+          "text": Object {
+            "text": "TODDLER GIRL",
+          },
+        },
+        Object {
+          "category": Object {
+            "cat_id": "47503>47544",
+          },
+          "singleCTAButton": Object {
+            "action": "",
+            "external": 0,
+            "target": "",
+            "text": "SHOP ALL",
+            "title": "SHOP ALL",
+            "url": "http://www.google.com",
+          },
+          "text": Object {
+            "text": "BOY",
+          },
+        },
+        Object {
+          "category": Object {
+            "cat_id": "47501>47526",
+          },
+          "singleCTAButton": Object {
+            "action": "",
+            "external": 0,
+            "target": "",
+            "text": "SHOP ALL",
+            "title": "SHOP ALL",
+            "url": "http://www.google.com",
+          },
+          "text": Object {
+            "text": "TODDLER BOY",
+          },
+        },
+      ]
+    }
+    headerText={
+      Array [
+        Object {
+          "icon": Object {
+            "icon": "",
+            "placement": "",
+          },
+          "link": Object {
+            "action": "",
+            "external": 0,
+            "target": "",
+            "text": "",
+            "title": "",
+            "url": "http://www.google.com",
+          },
+          "textItems": Array [
+            Object {
+              "style": "medium_text_black",
+              "text": "THE SHIRT SHOP",
+            },
+          ],
+        },
+      ]
+    }
+    navigation={
+      Object {
+        "getParam": [Function],
+      }
+    }
+    promoBanner={
+      Array [
+        Object {
+          "link": Object {
+            "action": "",
+            "external": 0,
+            "target": "",
+            "text": "",
+            "title": "",
+            "url": "http://www.google.com",
+          },
+          "textItems": Array [
+            Object {
+              "style": "medium_text_regular",
+              "text": "ALL GRAPHIC TEES",
+            },
+            Object {
+              "style": "percentage_all_wrapped_normal",
+              "text": "60 % OFF",
+            },
+          ],
+        },
+      ]
+    }
+  />
   <HomePageSlots
     modules={
       Object {
@@ -163,7 +286,7 @@ exports[`HomePageView should render correctly 1`] = `
           },
           "textItems": Array [
             Object {
-              "style": "style3",
+              "style": "small_text_normal",
               "text": "Every Length, Style, Color & Size",
             },
           ],
@@ -183,7 +306,7 @@ exports[`HomePageView should render correctly 1`] = `
           },
           "textItems": Array [
             Object {
-              "style": "style4",
+              "style": "medium_text_black",
               "text": "THE SHOP ALL",
             },
           ],
@@ -248,11 +371,11 @@ exports[`HomePageView should render correctly 1`] = `
           },
           "textItems": Array [
             Object {
-              "style": "large_text_semibold_normal",
+              "style": "style4",
               "text": "ALL SHORTS",
             },
             Object {
-              "style": "large_text_semibold_bold",
+              "style": "style10",
               "text": "60% OFF",
             },
           ],

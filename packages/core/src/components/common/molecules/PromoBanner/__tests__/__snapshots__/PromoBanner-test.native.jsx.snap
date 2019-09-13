@@ -943,7 +943,7 @@ exports[`PromoTextBanner native component renders all style correctly 17`] = `
   }
   forwardedRef={null}
   letterSpacing="ls2"
-  lineHeight="40px"
+  lineHeight="20px"
   mobilefontFamily="primary"
   textAlign="center"
 />
