@@ -2,6 +2,7 @@ import styled from 'styled-components';
 
 export default styled.div`
   padding-top: 24px;
+
   @media ${props => props.theme.mediaQuery.large}{
       padding-right: ${props =>
         props.isPLCCModalFlow ? `0px` : props.theme.spacing.LAYOUT_SPACING.XXL};
@@ -24,31 +25,23 @@ export default styled.div`
     margin: ${props => props.theme.spacing.ELEM_SPACING.LRG} 0px;
   }
 
-  .in_progress_status_details {
+  .existing_account_info {
     padding: ${props => props.theme.spacing.ELEM_SPACING.LRG} 0 ${props =>
   props.theme.spacing.ELEM_SPACING.LRG} 0;
-    text-align: center;
-    @media ${props => props.theme.mediaQuery.large}{
-      padding: 5px ${props => (props.isPLCCModalFlow ? `88px` : `234px`)} 24px;
-    }
-    @media ${props => props.theme.mediaQuery.medium} and ${props =>
-  props.theme.mediaQuery.largeMax}{
-      padding: 5px 70px 24px;
-    }
   }
 
-  .submit_plcc_form {
+  .submit_buttons_set {
     justify-content: space-around;
   }
 
-  .underprogress_checkout_button {
+  .existing_checkout_button {
     margin: 0px 0px
       ${props => props.theme.spacing.ELEM_SPACING.XS} 0px;
     font-weight: normal;
-    width: ${props => (props.isPLCCModalFlow ? `300px` : ``)};
+    width:  ${props => (props.isPLCCModalFlow ? `300px` : ``)};
   }
 
-  .underprogress_continue_button {
+  .existing_continue_button {
     margin: 0px 0px ${props => props.theme.spacing.ELEM_SPACING.LRG} 0px;
     font-weight: normal;
     width:  ${props => (props.isPLCCModalFlow ? `300px` : ``)};
@@ -63,4 +56,27 @@ export default styled.div`
     object-fit: contain;
     margin: auto;
     }
+
+  .existing_plcc_enquiry {
+    font-family: ${props => props.theme.typography.fonts.secondary};
+    text-align: center;
+    @media ${props => props.theme.mediaQuery.large} {
+      padding: 0 186px;
+    }
+  }  
+
+  .existing_user_info_text2 {
+    text-align: center;
+    padding-top: ${props => props.theme.spacing.ELEM_SPACING.LRG};
+    @media ${props => props.theme.mediaQuery.large}{
+      padding: ${props => props.theme.spacing.ELEM_SPACING.LRG} ${props =>
+  props.isPLCCModalFlow ? `147px` : `337px`} 0px;
+    }
+
+    @media ${props => props.theme.mediaQuery.medium} and ${props =>
+  props.theme.mediaQuery.largeMax}{
+      padding: ${props => props.theme.spacing.ELEM_SPACING.LRG} ${props =>
+  props.theme.spacing.LAYOUT_SPACING.XXL} 0px;
+    }
+  }
 `;
