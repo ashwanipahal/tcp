@@ -4,9 +4,10 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import { LAZYLOAD_HOST_NAME } from '@tcp/core/src/utils';
 
-import { Button, Anchor, Image } from '../../../atoms';
+import { Button, Anchor, DamImage } from '../../../atoms';
 import { getLocator } from '../../../../../utils';
 import { Carousel } from '../..';
+import config from '../moduleJ.config';
 
 import {
   Container,
@@ -99,6 +100,8 @@ class ModuleJ extends React.PureComponent<Props, State> {
       headerText,
       promoBanner,
     } = this.props;
+    const { IMG_DATA } = config;
+
     const selectedProductList = productTabList[selectedCategoryId] || [];
 
     const selectedProductCarouselList = selectedProductList.reduce(
@@ -143,11 +146,12 @@ class ModuleJ extends React.PureComponent<Props, State> {
         </ProductTabListContainer>
         <ImageContainer layout={layout}>
           <Anchor navigation={navigation} url={mediaLinkedList[1] && mediaLinkedList[1].link.url}>
-            <Image
+            <DamImage
               url={mediaLinkedList[1] && mediaLinkedList[1].image.url}
               height="300px"
               width="100%"
               alt={mediaLinkedList[1] && mediaLinkedList[1].image.alt}
+              imageConfig={IMG_DATA.imgConfig[0]}
             />
           </Anchor>
         </ImageContainer>

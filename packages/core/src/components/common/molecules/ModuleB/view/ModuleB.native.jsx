@@ -2,7 +2,7 @@
 // @flow
 import React from 'react';
 import ButtonList from '../../ButtonList';
-import { Image, Anchor } from '../../../atoms';
+import { DamImage, Anchor } from '../../../atoms';
 import LinkText from '../../LinkText';
 import PromoBanner from '../../PromoBanner';
 import { getScreenWidth, LAZYLOAD_HOST_NAME } from '../../../../../utils/index.native';
@@ -106,7 +106,7 @@ const renderImageComponent = (item, navigation) => {
         ? renderHeaderAndBanner(item, navigation)
         : null}
       <Anchor url={link.url} navigation={navigation}>
-        <Image
+        <DamImage
           width={MODULE_WIDTH}
           height={moduleHeight}
           url={image.url}

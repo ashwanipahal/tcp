@@ -5,7 +5,7 @@ import { View } from 'react-native';
 import PropTypes from 'prop-types';
 import ButtonList from '../../ButtonList';
 import Carousel from '../../Carousel';
-import { Image } from '../../../atoms';
+import { DamImage } from '../../../atoms';
 import LinkText from '../../LinkText';
 import PromoBanner from '../../PromoBanner';
 import { isGymboree, getScreenWidth, LAZYLOAD_HOST_NAME } from '../../../../../utils/index.native';
@@ -58,7 +58,7 @@ const ribbonView = ({ ribbonBanner, navigation, position }) => {
     <ContainerView>
       {ribbonBanner && (
         <PromoRibbonWrapper viewdirection={position}>
-          <Image {...ribbonConfig} />
+          <DamImage {...ribbonConfig} />
           <MessageContainer>
             <PromoBanner
               promoBanner={ribbonBanner}
@@ -96,7 +96,7 @@ const renderView = (item, navigation, position) => {
 
   return (
     <ContainerView>
-      <Image
+      <DamImage
         width={MODULE_WIDTH}
         height={isGymboree() ? MODULE_GYM_HEIGHT : MODULE_TCP_HEIGHT}
         url={image.url}

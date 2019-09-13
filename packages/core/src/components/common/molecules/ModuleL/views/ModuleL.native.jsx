@@ -2,7 +2,7 @@
 import React from 'react';
 import { FlatList } from 'react-native';
 import { getLocator, getScreenWidth, LAZYLOAD_HOST_NAME } from '../../../../../utils/index.native';
-import { Image, BodyCopy, Anchor } from '../../../atoms';
+import { DamImage, BodyCopy, Anchor } from '../../../atoms';
 import PromoBanner from '../../PromoBanner';
 import LinkText from '../../LinkText';
 import {
@@ -53,7 +53,7 @@ const renderItem = (item, navigation) => {
       testID={`${getLocator('moduleL_tiles')}${index + 1}`}
     >
       <ChildContainer bgClass={item.item.class.class}>
-        <Image
+        <DamImage
           url={image.url}
           height={127}
           crop={image.crop_m}

@@ -2,7 +2,7 @@
 import React from 'react';
 import { FlatList } from 'react-native';
 import { getLocator, getScreenWidth, LAZYLOAD_HOST_NAME } from '../../../../../utils/index.native';
-import { Anchor, Button, Image } from '../../../atoms';
+import { Anchor, Button, DamImage } from '../../../atoms';
 import PromoBanner from '../../PromoBanner';
 import { ButtonWrapper, Tile, Wrapper } from '../ModuleD.style.native';
 import spacing from '../../../../../../styles/themes/TCP/spacing';
@@ -37,7 +37,7 @@ const renderItem = (item, navigation) => {
   return (
     <Tile tileIndex={index} key={index.toString()}>
       <Anchor url={link.url} navigation={navigation}>
-        <Image
+        <DamImage
           alt={image.alt}
           testID={`${getLocator('moduleD_image')}${index + 1}`}
           url={image.url}

@@ -96,7 +96,7 @@ exports[`ModuleNVanilla should match snapshot 1`] = `
       url="/c/girl-t-shirts"
       visible={false}
     >
-      <Styled(ImageComp)
+      <Styled(DamImage)
         alt="Graphic Tees"
         height={413}
         host="lazyload-home"
