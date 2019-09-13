@@ -5,6 +5,7 @@ exports[`LinkText component renders correctly 1`] = `
   accessibilityLabel=""
   anchorVariation=""
   customStyle={Object {}}
+  key="0"
   locator=""
   onPress={null}
   text=""
