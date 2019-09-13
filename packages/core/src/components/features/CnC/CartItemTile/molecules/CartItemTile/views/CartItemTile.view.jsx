@@ -200,20 +200,9 @@ class CartItemTile extends React.Component {
           fontWeight={['extrabold']}
         >
           {pageView === 'myBag'
-            ? `$${productDetail.itemInfo.unitOfferPrice.toFixed(2)}`
+            ? `$${productDetail.itemInfo.itemUnitPrice.toFixed(2)}`
             : `$${productDetail.itemInfo.price.toFixed(2)}`}
         </BodyCopy>
-        {pageView === 'myBag' && productDetail.itemInfo.itemPrice !== productDetail.itemInfo.price && (
-          <BodyCopy
-            color="gray.800"
-            className="list-price"
-            fontFamily="secondary"
-            component="span"
-            fontSize="fs12"
-          >
-            {`$${productDetail.itemInfo.itemUnitPrice.toFixed(2)}`}
-          </BodyCopy>
-        )}
       </Col>
     );
   };
