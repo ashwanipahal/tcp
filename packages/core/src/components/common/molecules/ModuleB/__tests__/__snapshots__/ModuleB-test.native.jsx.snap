@@ -97,6 +97,7 @@ exports[`ModuleNVanilla should match snapshot 1`] = `
       visible={false}
     >
       <Styled(ImageComp)
+        alt="Graphic Tees"
         height={413}
         host="lazyload-home"
         url="https://test5.childrensplace.com/image/upload/c_fill,g_face:center,q_auto:best,w_1410/ecom/assets/content/gym/us/home/modA/gym_hp_090519_us_hwlhjb.png"

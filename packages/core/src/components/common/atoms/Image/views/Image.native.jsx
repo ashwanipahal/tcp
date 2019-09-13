@@ -12,6 +12,7 @@ type Props = {
   url: string,
   crop: string,
   host: string,
+  alt: string,
 };
 
 /**
@@ -23,7 +24,7 @@ type Props = {
  *                  - value of host prop should be same as parent LazyLoadScrollView
  */
 const ImageComp = (props: Props) => {
-  const { url, crop, source, host, ...otherProps } = props;
+  const { url, crop, source, host, alt, ...otherProps } = props;
   const cropVal = crop || '';
   const urlVal = url || '';
   const sourceVal = source || '';
@@ -35,12 +36,21 @@ const ImageComp = (props: Props) => {
         {...otherProps}
         host={host}
         accessibilityRole="image"
+        accessibilityLabel="image"
         source={{ uri: cropImageUrl(urlVal, cropVal) }}
       />
     );
   }
 
-  return <ImageComponent {...otherProps} host={host} source={source} accessibilityRole="image" />;
+  return (
+    <ImageComponent
+      {...otherProps}
+      host={host}
+      source={source}
+      accessibilityRole="image"
+      accessibilityLabel={alt || ''}
+    />
+  );
 };
 
 export default withStyles(ImageComp, style);

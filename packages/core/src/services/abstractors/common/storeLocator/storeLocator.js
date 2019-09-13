@@ -3,6 +3,8 @@ import { formatPhoneNumber } from '../../../../utils/formValidation/phoneNumber'
 import { parseStoreHours } from '../../../../utils/parseStoreHours';
 import { sanitizeEntity } from '../../../../utils';
 import endpoints from '../../../endpoints';
+import { getSuggestedStoreById } from '../../../../components/features/storeLocator/container/StoreLocator.selectors';
+import { getPersonalDataState } from '../../../../components/features/account/User/container/User.selectors';
 
 const DEFAULT_RADIUS = 75;
 const STORE_TYPES = {
@@ -174,7 +176,12 @@ export const storeResponseParser = (storeDetails, configs = { requestedQuantity:
       }
 
   */
-export const getFavoriteStore = (skuId = null, { lat, long } = {}, variantId, quantity) => {
+export const getFavoriteStore = ({
+  skuId = null,
+  geoLatLang: { lat, long } = {},
+  variantId,
+  quantity,
+}) => {
   const payloadData = {
     header: {
       action: 'get',
@@ -240,6 +247,38 @@ export const getLocationStores = ({
         errorHandler({ errorCode: 'NO_STORES_FOUND' });
       }
       return fetchedStores.map(storeResponseParser);
+    })
+    .catch(errorHandler);
+};
+
+export const setFavoriteStore = (storeId, state) => {
+  const personalDataState = getPersonalDataState(state);
+  const userId = personalDataState.get('userId');
+
+  const suggestedStore = getSuggestedStoreById(state, storeId);
+  const favStore = suggestedStore && {
+    ...suggestedStore,
+    timeStamp: new Date().getTime(),
+    basicInfo: {
+      ...suggestedStore.basicInfo,
+      isDefault: 1,
+    },
+  };
+
+  const payloadData = {
+    header: {
+      action: 'add',
+      fromPage: 'StoreLocator',
+      userId: userId,
+      storeLocId: storeId,
+    },
+    body: {},
+    webService: endpoints.setFavoriteStore,
+  };
+
+  return executeStatefulAPICall(payloadData)
+    .then(res => {
+      return favStore;
     })
     .catch(errorHandler);
 };

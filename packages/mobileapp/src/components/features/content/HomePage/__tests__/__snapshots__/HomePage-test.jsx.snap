@@ -8,14 +8,17 @@ exports[`HomePageView should render correctly 1`] = `
   recycleDistance={5336}
   renderDistance={0}
 >
+  <Styled(View)>
+    <HeaderPromo />
+  </Styled(View)>
   <HomePageSlots
     modules={
       Object {
-        "moduelJ": [Function],
         "moduleA": [Function],
         "moduleB": [Function],
         "moduleD": [Function],
         "moduleH": [Function],
+        "moduleJ": [Function],
         "moduleK": [Function],
         "moduleL": [Function],
         "moduleN": [Function],
