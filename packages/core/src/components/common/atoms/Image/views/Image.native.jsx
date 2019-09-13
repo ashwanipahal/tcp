@@ -5,7 +5,6 @@ import { LazyloadImage } from 'react-native-lazyload-deux';
 
 import withStyles from '../../../hoc/withStyles.native';
 import style from '../Image.style';
-import { cropImageUrl } from '../../../../../utils/index.native';
 
 type Props = {
   source: string,
@@ -27,11 +26,9 @@ type Props = {
  */
 const ImageComp = (props: Props) => {
   const { url, crop, source, host, imgConfigs, alt, ...otherProps } = props;
-  const cropVal = crop || '';
   const urlVal = url || '';
   const sourceVal = source || '';
   const ImageComponent = host ? LazyloadImage : Image;
-  const imgConfigsVal = imgConfigs || '';
   if (sourceVal === '') {
     return (
       <ImageComponent
@@ -39,7 +36,7 @@ const ImageComp = (props: Props) => {
         host={host}
         accessibilityRole="image"
         accessibilityLabel={alt || ''}
-        source={{ uri: cropImageUrl(urlVal, cropVal, imgConfigsVal) }}
+        source={{ uri: urlVal }}
       />
     );
   }
