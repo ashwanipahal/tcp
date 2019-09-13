@@ -505,6 +505,15 @@ const getReviewLabels = state => {
   };
 };
 
+export const getVenmoData = state => {
+  return state[CHECKOUT_REDUCER_KEY].getIn(['values', 'venmoData']);
+};
+
+export const getVenmoClientTokenData = createSelector(
+  getVenmoData,
+  state => state && state.get('venmoClientTokenData')
+);
+
 export default {
   getRecalcOrderPointsInterval,
   getIsOrderHasShipping,
@@ -556,4 +565,6 @@ export default {
   getGiftServicesSend,
   getReviewLabels,
   getSyncError,
+  getVenmoData,
+  getVenmoClientTokenData,
 };

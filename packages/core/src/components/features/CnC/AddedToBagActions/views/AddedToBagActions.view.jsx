@@ -1,5 +1,6 @@
 import React from 'react';
 import PropTypes from 'prop-types';
+import VenmoPaymentButton from '@tcp/core/src/components/common/atoms/VenmoPaymentButton';
 import Button from '../../../../common/atoms/Button';
 import withStyles from '../../../../common/hoc/withStyles';
 import OpenLoginModal from '../../../account/LoginPage/views/LoginModal';
@@ -68,6 +69,7 @@ class AddedToBagActions extends React.PureComponent<Props> {
           </Row>
         )}
         <Row className="checkout-button">
+          <VenmoPaymentButton className={className} />
           <PayPalButton className="payPal-button" />
           <Button
             data-locator={getLocator('addedtobag_btncheckout')}

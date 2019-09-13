@@ -12,6 +12,7 @@ import {
   briteVerifyStatusExtraction,
   setShippingMethodAndAddressId,
   addPickupPerson,
+  getVenmoToken,
 } from '../../../../../services/abstractors/CnC/index';
 import selectors, { isGuest } from './Checkout.selector';
 import { getUserEmail } from '../../../account/User/container/User.selectors';
@@ -27,6 +28,8 @@ import {
   setAddressError,
   setSmsNumberForUpdates,
   emailSignupStatus,
+  getVenmoClientTokenSuccess,
+  getVenmoClientTokenError,
 } from './Checkout.action';
 import BAG_PAGE_ACTIONS from '../../BagPage/container/BagPage.actions';
 import BagPageSelectors from '../../BagPage/container/BagPage.selectors';
@@ -723,6 +726,15 @@ export function* submitBillingSection(payload) {
   yield call(submitBilling, payload, loadUpdatedCheckoutValues);
 }
 
+export function* getVenmoClientTokenSaga(payload) {
+  try {
+    const response = yield call(getVenmoToken, payload.payload);
+    yield put(getVenmoClientTokenSuccess(response));
+  } catch (ex) {
+    yield put(getVenmoClientTokenError({ error: 'Error' }));
+  }
+}
+
 export function* CheckoutSaga() {
   yield takeLatest(CONSTANTS.INIT_CHECKOUT, initCheckout);
   yield takeLatest('CHECKOUT_SET_CART_DATA', storeUpdatedCheckoutValues);
@@ -737,5 +749,6 @@ export function* CheckoutSaga() {
   );
   yield takeLatest(CONSTANTS.UPDATE_SHIPPING_ADDRESS, updateShippingAddress);
   yield takeLatest(CONSTANTS.ADD_NEW_SHIPPING_ADDRESS, addNewShippingAddress);
+  yield takeLatest(CONSTANTS.GET_VENMO_CLIENT_TOKEN, getVenmoClientTokenSaga);
 }
 export default CheckoutSaga;

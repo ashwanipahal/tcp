@@ -349,3 +349,31 @@ export const submitReviewSection = payload => {
     payload,
   };
 };
+
+export const getVenmoClientToken = payload => {
+  return {
+    type: constants.GET_VENMO_CLIENT_TOKEN,
+    payload,
+  };
+};
+
+export const getVenmoClientTokenSuccess = payload => {
+  return {
+    type: constants.GET_VENMO_CLIENT_TOKEN_SUCCESS,
+    payload,
+  };
+};
+
+export const getVenmoClientTokenError = payload => {
+  return {
+    type: constants.GET_VENMO_CLIENT_TOKEN_ERROR,
+    payload,
+  };
+};
+
+export const setVenmoPaymentInProgress = payload => {
+  return {
+    type: constants.SET_VENMO_PAYMENT_INPROGRESS,
+    payload,
+  };
+};
