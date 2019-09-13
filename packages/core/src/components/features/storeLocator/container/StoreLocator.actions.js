@@ -1,3 +1,4 @@
+/* istanbul ignore file */
 import STORE_LOCATOR_CONSTANTS from './StoreLocator.constants';
 
 export function getSetDefaultStoreActn(payload) {

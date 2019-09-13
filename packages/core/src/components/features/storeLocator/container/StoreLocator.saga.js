@@ -1,4 +1,5 @@
-import { call, takeLatest, put } from 'redux-saga/effects';
+import { call, takeLatest, put, select } from 'redux-saga/effects';
+/* istanbul ignore file */
 import { validateReduxCache } from '../../../../utils/cache.util';
 import STORE_LOCATOR_CONSTANTS from './StoreLocator.constants';
 import {
@@ -21,6 +22,7 @@ export function* getFavoriteStoreSaga({ payload }) {
     } else {
       yield put(getSetDefaultStoreActn(res));
     }
+    return yield;
   } catch (err) {
     return yield null;
   }
@@ -42,6 +44,7 @@ export function* setFavoriteStoreSaga({ payload }) {
     if (res) {
       yield put(getSetDefaultStoreActn(res));
     }
+    return yield;
   } catch (err) {
     return yield null;
   }

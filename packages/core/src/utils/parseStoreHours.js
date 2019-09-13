@@ -1,34 +1,34 @@
 import { parseDate } from './parseDate';
-import { toTimeString } from './formatTime';
+import toTimeString from './formatTime';
 
 export function parseStoreHours(hoursOfOperation) {
   let carryOverClosingHour;
-  let result = [];
+  const result = [];
   hoursOfOperation.map(day => {
     // store was opened on the previous date and closing today,
     // so we need to push it as the first opening time of today
     if (carryOverClosingHour) {
-      let date = carryOverClosingHour.split(' ')[0];
+      const date = carryOverClosingHour.split(' ')[0];
       day.availability.unshift({
-        from: date + ' 00:00:00',
+        from: `${date} 00:00:00`,
         to: carryOverClosingHour,
       });
       carryOverClosingHour = null;
     }
 
-    let parsableFromDate = day.availability[0].from.replace('T', ' ');
-    let parsableToDate = day.availability[day.availability.length - 1].to.replace('T', ' ');
-    let fromDate = parseDate(parsableFromDate);
-    let toDate = parseDate(parsableToDate);
+    // const parsableFromDate = day.availability[0].from.replace('T', ' ');
+    // const parsableToDate = day.availability[day.availability.length - 1].to.replace('T', ' ');
+    // const fromDate = parseDate(parsableFromDate);
+    // let toDate = parseDate(parsableToDate);
 
-    let storeHours = {
+    const storeHours = {
       dayName: day.nick.toUpperCase() || '',
       openIntervals: day.availability.map(availability => {
-        let parsableFromDate = availability.from.replace('T', ' ');
+        const parsableFromDate = availability.from.replace('T', ' ');
         let parsableToDate = availability.to.replace('T', ' ');
-        let fromDate = parseDate(parsableFromDate);
-        let toDate = parseDate(parsableToDate);
-        let isSameDay =
+        const fromDate = parseDate(parsableFromDate);
+        const toDate = parseDate(parsableToDate);
+        const isSameDay =
           fromDate.getFullYear() === toDate.getFullYear() &&
           fromDate.getMonth() === toDate.getMonth() &&
           fromDate.getDate() === toDate.getDate();
@@ -37,13 +37,8 @@ export function parseStoreHours(hoursOfOperation) {
           // save carry over for next day
           carryOverClosingHour = parsableToDate;
           // set closing hour at 23.59.59 of today
-          parsableToDate =
-            fromDate.getFullYear() +
-            '-' +
-            (fromDate.getMonth() + 1) +
-            '-' +
-            fromDate.getDate() +
-            ' 23:59:59';
+          parsableToDate = `${fromDate.getFullYear()}-${fromDate.getMonth() +
+            1}-${fromDate.getDate()} 23:59:59`;
         }
 
         return {
@@ -53,15 +48,15 @@ export function parseStoreHours(hoursOfOperation) {
       }),
       isClosed: day.availability[0].status === 'closed',
     };
-
     result.push(storeHours);
+    return null;
   });
 
   return result;
 }
 
 export function parseStoreOpeningAndClosingTimes(store) {
-  let openingClosingTimes = {
+  const openingClosingTimes = {
     todayOpeningTime: null,
     todayClosingTime: null,
     tomorrowOpeningTime: null,
@@ -69,7 +64,7 @@ export function parseStoreOpeningAndClosingTimes(store) {
   };
 
   try {
-    let hours = JSON.parse(store.shippingAddressDetails.storeHours);
+    const hours = JSON.parse(store.shippingAddressDetails.storeHours);
     openingClosingTimes.todayOpeningTime = toTimeString(
       parseDate(hours.storeHours[0].availability[0].from)
     );

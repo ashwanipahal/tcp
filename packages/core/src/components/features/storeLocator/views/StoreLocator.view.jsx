@@ -1,3 +1,4 @@
+/* istanbul ignore file */
 import React, { PureComponent } from 'react'; //eslint-disable-line
 import { reduxForm, Field } from 'redux-form';
 import PropTypes from 'prop-types';
@@ -67,7 +68,11 @@ export class Store extends PureComponent {
             className="store-locator-field"
             enableSuccessCheck={false}
           />
-          <button type="submit" title="search" className="button-search-store"> Search </button>
+          <button type="submit" title="search" className="button-search-store">
+            {' '}
+            {/* eslint-disable-next-line react/jsx-one-expression-per-line */}
+            Search{' '}
+          </button>
         </form>
         <ErrorMessage
           isShowingMessage={errorMessage}
