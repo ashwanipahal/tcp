@@ -1,9 +1,7 @@
 import { executeStatefulAPICall } from '../../../handler';
 import { formatPhoneNumber } from '../../../../utils/formValidation/phoneNumber';
 import { parseStoreHours } from '../../../../utils/parseStoreHours';
-import { sanitizeEntity, isClient } from '../../../../utils';
-import { getLocalStorage, setLocalStorage } from '../../../../utils/utils.web';
-import { requireNamedOnlineModule } from '../../../../utils/resourceLoader';
+import { sanitizeEntity } from '../../../../utils';
 import endpoints from '../../../endpoints';
 
 const DEFAULT_RADIUS = 75;
@@ -208,29 +206,6 @@ export const getFavoriteStore = (skuId = null, { lat, long } = {}, variantId, qu
     })
     .catch(errorHandler);
 };
-
-export const getAddressLocationInfo = address =>
-  requireNamedOnlineModule('google.maps').then(() => {
-    // eslint-disable-next-line no-undef
-    const geocoder = new google.maps.Geocoder();
-    return new Promise((resolve, reject) => {
-      geocoder.geocode({ address }, (results, status) => {
-        if (status === 'OK') {
-          const country = results[0].address_components.find(component => {
-            return component.types && component.types.find(type => type === 'country');
-          });
-          const storeDataObject = {
-            lat: results[0].geometry.location.lat(),
-            lng: results[0].geometry.location.lng(),
-            country: country && country.short_name,
-          };
-          resolve(storeDataObject);
-        } else {
-          reject(status);
-        }
-      });
-    });
-  });
 
 /**
  * @function getLocationStores

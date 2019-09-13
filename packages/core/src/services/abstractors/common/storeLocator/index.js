@@ -1,1 +1,1 @@
-export { getFavoriteStore, getLocationStores, getAddressLocationInfo } from './storeLocator';
+export { getFavoriteStore, getLocationStores } from './storeLocator';
