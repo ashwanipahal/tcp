@@ -200,14 +200,14 @@ class Product extends React.Component {
     const item = productDetails.get('currentProduct');
     return (
       <div>
-        {productDetails && productDetails.get('currentProduct') && (
+        {/* {productDetails && productDetails.get('currentProduct') && (
           <ProductCustomizeReduxForm
             item={item}
             colorFitsSizesMap={productDetails.getIn(['currentProduct', 'colorFitsSizesMap'])}
             // handleSubmit={this.handleSubmit}
             initialValues={this.getInitialValues(item)}
           />
-        )}
+        )} */}
       </div>
     );
     // let {isMobile, isInventoryLoaded, productInfo, colorProductId, currencySymbol, handleChooseOption,
