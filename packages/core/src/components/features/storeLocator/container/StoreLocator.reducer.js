@@ -1,6 +1,7 @@
+/* istanbul ignore file */
 import { fromJS } from 'immutable';
 import STORE_LOCATOR_CONSTANTS from './StoreLocator.constants';
-import { DEFAULT_REDUCER_KEY, setCacheTTL } from '../../../../utils/cache.util';
+import { DEFAULT_REDUCER_KEY } from '../../../../utils/cache.util';
 
 const initialState = fromJS({
   [DEFAULT_REDUCER_KEY]: null,

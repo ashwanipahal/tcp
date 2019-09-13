@@ -1,3 +1,4 @@
+/* istanbul ignore file */
 import React, { PureComponent } from 'react'; //eslint-disable-line
 import { reduxForm, Field } from 'redux-form';
 import PropTypes from 'prop-types';
@@ -45,6 +46,7 @@ export class Store extends PureComponent {
         INITIAL_STORE_LIMIT
       );
     }
+    return null;
   };
 
   render() {
