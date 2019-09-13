@@ -166,6 +166,47 @@ exports[`ModuleK component renders correctly 1`] = `
       letter-spacing: 2.42px;
     }
   }
+
+  /* Module J Heading styles */
+  .small_text_normal {
+    font-family: ",
+                [Function],
+                ";
+    font-size: ",
+                [Function],
+                ";
+
+    @media ",
+                [Function],
+                " {
+      font-size: ",
+                [Function],
+                ";
+    }
+  }
+  .medium_text_black {
+    font-family: ",
+                [Function],
+                ";
+    font-weight: ",
+                [Function],
+                ";
+    font-size: ",
+                [Function],
+                ";
+    letter-spacing: -0.5px;
+    margin-bottom: ",
+                [Function],
+                ";
+
+    @media ",
+                [Function],
+                " {
+      font-size: ",
+                [Function],
+                ";
+    }
+  }
 ",
                 ";
 ",
@@ -481,6 +522,9 @@ exports[`ModuleK component renders correctly 1`] = `
   }
   ",
                 [Function],
+                "
+  ",
+                [Function],
                 ";
 ",
                 ";
@@ -538,7 +582,7 @@ exports[`ModuleK component renders correctly 1`] = `
             />,
             "responsive": Array [
               Object {
-                "breakpoint": 1024,
+                "breakpoint": 1200,
                 "settings": Object {
                   "arrows": false,
                 },

@@ -16,7 +16,8 @@ const CnCTemplate = ({
   showLeftSection,
   className,
   header: Header,
-  isCheckoutView,
+  isGuest,
+  showAccordian,
 }) => {
   return (
     <section className={className}>
@@ -29,15 +30,18 @@ const CnCTemplate = ({
           <LeftSection />
         </Col>
         {showLeftSection && (
-          <Col
-            colSize={{ small: 6, medium: 3, large: 4 }}
-            className={`right-sec ${isCheckoutView ? 'hide-mobile' : ''}`}
-          >
+          <Col colSize={{ small: 6, medium: 3, large: 4 }} className="right-sec">
             <OrderLedgerContainer />
             {BagActions && <BagActions />}
-            <div className="bonusPointsDaysWrapper">
-              <BonusPointsDays showAccordian={false} enableApplyCta />
-            </div>
+            {!isGuest && (
+              <div
+                className={`${
+                  showAccordian ? 'bonusPointsDaysWrapperAccordian' : 'bonusPointsDaysWrapper'
+                } elem-mb-MED`}
+              >
+                <BonusPointsDays showAccordian={showAccordian} enableApplyCta />
+              </div>
+            )}
             <AirmilesBanner />
             <CouponAndPromos />
           </Col>
@@ -54,14 +58,15 @@ CnCTemplate.propTypes = {
   header: PropTypes.oneOfType([PropTypes.bool, PropTypes.node]),
   leftSection: PropTypes.node.isRequired,
   showLeftSection: PropTypes.bool,
-  isCheckoutView: PropTypes.bool,
+  isGuest: PropTypes.bool.isRequired,
+  showAccordian: PropTypes.bool,
 };
 
 CnCTemplate.defaultProps = {
   bagActions: false,
   header: false,
   showLeftSection: true,
-  isCheckoutView: false,
+  showAccordian: true,
 };
 
 export default withStyles(CnCTemplate, styles);

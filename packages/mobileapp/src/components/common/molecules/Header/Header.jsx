@@ -2,7 +2,6 @@ import React from 'react';
 import { connect } from 'react-redux';
 import { BodyCopy } from '@tcp/core/src/components/common/atoms';
 import { getLocator } from '@tcp/core/src/utils';
-import HeaderPromo from '../HeaderPromo/HeaderPromo';
 import { readCookieMobileApp } from '../../../../utils/utils';
 import {
   Container,
@@ -16,14 +15,12 @@ import {
   BackgroundView,
   CartIconView,
   ImageColor,
-  HeaderPromoContainer,
   Touchable,
 } from './Header.style';
 
 // @flow
 type Props = {
   labels: object,
-  headerPromo: Array,
   navigation: object,
 };
 
@@ -62,7 +59,7 @@ class Header extends React.PureComponent<Props> {
 
     cartValuePromise.then(res => {
       this.setState({
-        cartVal: parseInt(res, 10),
+        cartVal: parseInt(res || 0, 10),
       });
     });
   }
@@ -75,18 +72,6 @@ class Header extends React.PureComponent<Props> {
     this.setState({
       isDownIcon: !isDownIcon,
     });
-  };
-
-  renderPromo = () => {
-    const { headerPromo } = this.props;
-    if (headerPromo) {
-      return (
-        <HeaderPromoContainer>
-          <HeaderPromo headerPromo={headerPromo} />
-        </HeaderPromoContainer>
-      );
-    }
-    return null;
   };
 
   render() {
@@ -165,7 +150,6 @@ class Header extends React.PureComponent<Props> {
             </Touchable>
           </CartContainer>
         </Container>
-        {this.renderPromo()}
       </SafeAreaViewStyle>
     );
   }
@@ -174,7 +158,6 @@ class Header extends React.PureComponent<Props> {
 const mapStateToProps = state => {
   return {
     labels: state.Labels.global && state.Labels.global.header,
-    headerPromo: state.Header && state.Header.promoTextBannerCarousel,
   };
 };
 

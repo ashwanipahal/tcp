@@ -1,6 +1,7 @@
 import endpoints from '@tcp/core/src/services/endpoints';
 import { getAPIConfig } from '@tcp/core/src/utils/utils';
 import { executeStatefulAPICall } from '@tcp/core/src/services/handler';
+import { ERRORS } from '@tcp/core/src/utils/errorMessage.util';
 
 const getFormattedError = err => {
   if (err.response && err.response.body) {
@@ -11,8 +12,18 @@ const getFormattedError = err => {
   return 'genericError';
 };
 
+/**
+ * This method is used to extract error message from the response
+ * @param {object} err - Error response object
+ */
 export const errorHandler = err => {
-  throw err.response && err.response.body !== null ? getFormattedError(err) : 'genericError';
+  if (err.response && err.response.body && err.response.body.errors) {
+    throw getFormattedError(err);
+  } else if (err && err.err && err.err.errorMessage) {
+    // eslint-disable-next-line no-underscore-dangle
+    throw err.err.errorMessage._error;
+  }
+  throw new Error(ERRORS.SYSTEM_ERROR);
 };
 
 /**
@@ -60,6 +71,66 @@ export const UpdateProfileInfo = args => {
   return executeStatefulAPICall(payload, errorHandler).then(() => {
     return 'successMessage';
   });
+};
+
+/**
+ * @function getChildren
+ * @summary this function will make an API call to fetch children's birthday information
+ */
+export const getChildren = () => {
+  const payload = {
+    webService: endpoints.getChildren,
+  };
+
+  return executeStatefulAPICall(payload)
+    .then(res => {
+      // We are doing parseInt(child.childBirthdayMonth).toString() beacuse we use this value to index a table and backend can send it with a leading Zero like 02
+      return res.body.childBirthdayInfo.map(
+        ({ childName, childBirthdayYear, childBirthdayMonth, childGender, childId }) => ({
+          name: childName,
+          birthYear: childBirthdayYear,
+          birthMonth: parseInt(childBirthdayMonth, 10).toString(),
+          gender: childGender,
+          childId,
+        })
+      );
+    })
+    .catch(err => {
+      throw err;
+    });
+};
+
+/**
+ * @function deleteChild
+ * @summary
+ * @param {type} paramName -
+ * @return TDB
+ */
+export const deleteChild = args => {
+  const d = new Date();
+  const payload = {
+    body: {
+      firstName: args.parentFirstName,
+      lastName: args.parentLastName,
+      timestamp: `${d.getFullYear()}-${d.getMonth()}-${d.getDate()} ${d.getHours()}:${d.getMinutes()}:${d.getSeconds()}.${d.getMilliseconds()}`,
+      childDetails: [
+        {
+          childId: args.childId,
+          childName: args.childName,
+          birthMonth: args.birthMonth,
+          birthYear: args.birthYear,
+          gender: args.gender,
+        },
+      ],
+    },
+    webService: endpoints.deleteChild,
+  };
+
+  return executeStatefulAPICall(payload)
+    .then(res => res.body)
+    .catch(err => {
+      throw err;
+    });
 };
 
 /**

@@ -13,6 +13,21 @@ exports[`CheckoutProgressIndicator component should renders correctly props not 
         }
       />
       <Styled(View) />
+      <Styled(View)>
+        <Styled(Anchor)
+          accessibilityLabel=""
+          anchorVariation="primary"
+          customStyle={Object {}}
+          dataLocator=""
+          fontFamily="secondary"
+          fontSizeVariation="large"
+          fontWeightVariation="active"
+          locator=""
+          onPress={[Function]}
+          text="pickup"
+          visible={false}
+        />
+      </Styled(View)>
     </Styled(View)>
     <Styled(View)>
       <Styled(Image)
@@ -24,94 +39,21 @@ exports[`CheckoutProgressIndicator component should renders correctly props not 
         }
       />
       <Styled(View) />
-    </Styled(View)>
-    <Styled(View)>
-      <Styled(Image)
-        data-locator="global_headerpanelbagicon"
-        source={
-          Object {
-            "testUri": "../../../../core/src/assets/checkout-tick.png",
-          }
-        }
-      />
-      <Styled(View) />
-    </Styled(View)>
-    <Styled(View)>
-      <Styled(Image)
-        data-locator="global_headerpanelbagicon"
-        source={
-          Object {
-            "testUri": "../../../../core/src/assets/checkout-tick.png",
-          }
-        }
-      />
-      <Styled(View) />
-    </Styled(View)>
-  </Styled(View)>
-  <Styled(View)>
-    <Styled(View)>
-      <Styled(Anchor)
-        accessibilityLabel=""
-        anchorVariation="primary"
-        customStyle={Object {}}
-        dataLocator=""
-        fontFamily="secondary"
-        fontSizeVariation="large"
-        fontWeightVariation="active"
-        locator=""
-        onPress={[Function]}
-        text="pickup"
-        to="/#"
-        visible={false}
-      />
-    </Styled(View)>
-    <Styled(View)>
-      <Styled(Anchor)
-        accessibilityLabel=""
-        anchorVariation="primary"
-        customStyle={Object {}}
-        dataLocator=""
-        fontFamily="secondary"
-        fontSizeVariation="large"
-        fontWeightVariation="active"
-        locator=""
-        onPress={[Function]}
-        text="shipping"
-        to="/#"
-        visible={false}
-      />
-    </Styled(View)>
-    <Styled(View)>
-      <Styled(Anchor)
-        accessibilityLabel=""
-        anchorVariation="primary"
-        customStyle={Object {}}
-        dataLocator=""
-        fontFamily="secondary"
-        fontSizeVariation="large"
-        fontWeightVariation="active"
-        locator=""
-        onPress={[Function]}
-        text="billing"
-        to="/#"
-        visible={false}
-      />
-    </Styled(View)>
-    <Styled(View)>
-      <Styled(Anchor)
-        accessibilityLabel=""
-        anchorVariation="primary"
-        customStyle={Object {}}
-        dataLocator=""
-        fontFamily="secondary"
-        fontSizeVariation="large"
-        fontWeightVariation="active"
-        locator=""
-        onPress={[Function]}
-        text="review"
-        to="/#"
-        visible={false}
-      />
+      <Styled(View)>
+        <Styled(Anchor)
+          accessibilityLabel=""
+          anchorVariation="primary"
+          customStyle={Object {}}
+          dataLocator=""
+          fontFamily="secondary"
+          fontSizeVariation="large"
+          fontWeightVariation="active"
+          locator=""
+          onPress={[Function]}
+          text="shipping"
+          visible={false}
+        />
+      </Styled(View)>
     </Styled(View)>
   </Styled(View)>
 </Styled(View)>

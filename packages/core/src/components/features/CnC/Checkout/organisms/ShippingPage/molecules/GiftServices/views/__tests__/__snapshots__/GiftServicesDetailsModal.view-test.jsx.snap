@@ -1,0 +1,205 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`GiftServices component renders correctly 1`] = `
+<StyledComponent
+  forwardedComponent={
+    Object {
+      "$$typeof": Symbol(react.forward_ref),
+      "attrs": Array [],
+      "componentStyle": ComponentStyle {
+        "componentId": "sc-cSHVUG",
+        "isStatic": false,
+        "rules": Array [
+          "
+  ",
+          "
+  .brand-image {
+    width: 83px;
+  }
+  .shortDesc {
+    font-weight: ",
+          [Function],
+          ";
+    font-size: ",
+          [Function],
+          ";
+  }
+  .checkbox-header {
+    width: 180px;
+    display: flex;
+  }
+  .TextBox__input {
+    border: 1px solid ",
+          [Function],
+          ";
+    height: 146px;
+    padding: 0;
+    width: 99%;
+  }
+  .addReceipt {
+    padding-top: 10px;
+    margin-left: 35px;
+  }
+  .giftServicesContainer {
+    p {
+      width: 100%;
+    }
+    margin-left: 35px;
+  }
+  .messageTextWrapper {
+    margin-left: ",
+          [Function],
+          ";
+    margin-top: ",
+          [Function],
+          ";
+    margin-right: ",
+          [Function],
+          ";
+    width: calc(100% - 26px);
+    padding-bottom: 6px;
+  }
+  .priceDropdown {
+    margin-left: 120px;
+  }
+  .giftServicesField {
+    display: inline-block;
+    width: 142px;
+  }
+
+  .dropdownliBottomBorder {
+    height: 71px;
+    cursor: pointer;
+    padding-top: 2px;
+    padding-bottom: 0px;
+  }
+  .price {
+    float: right;
+    margin-right: 5px;
+  }
+  .longDesc {
+    font-size: ",
+          [Function],
+          ";
+  }
+  .giftServicesDetailsLink {
+    text-decoration: underline;
+    cursor: pointer;
+    padding-top: 3px;
+  }
+
+  .phone-field-wrapper {
+    width: auto;
+    margin-left: -12px;
+    padding-right: 15px;
+  }
+
+  .normal-select-box {
+    padding-top: 5px;
+  }
+
+  .custom-select {
+    width: 100%;
+    font-family: ",
+          [Function],
+          ";
+    > span {
+      display: none;
+    }
+  }
+
+  .giftServicesModal {
+    @media ",
+          [Function],
+          " {
+      height: 90%;
+    }
+  }
+
+  .customSelectTitle {
+    font-family: ",
+          [Function],
+          ";
+    font-size: ",
+          [Function],
+          "px;
+  }
+
+  .dropdownDivOverFlow {
+    div {
+      font-family: ",
+          [Function],
+          ";
+    }
+    .dropdownUlBorder {
+      width: auto;
+      border: 1px solid ",
+          [Function],
+          ";
+    }
+    .dropdownActiveClass {
+      background-color: ",
+          [Function],
+          ";
+      div {
+        color: ",
+          [Function],
+          ";
+        font-family: ",
+          [Function],
+          ";
+      }
+      span {
+        font-family: ",
+          [Function],
+          ";
+      }
+      .dropdownActiveIcon {
+        display: none;
+      }
+    }
+  }
+
+  .gymImage {
+    @media ",
+          [Function],
+          " {
+      margin-top: 8px;
+    }
+  }
+
+  .gift-message {
+    width: 99%;
+    height: 146px;
+    resize: none;
+    font-size: ",
+          [Function],
+          "px;
+    margin-bottom: ",
+          [Function],
+          ";
+  }
+",
+          ";
+",
+        ],
+      },
+      "displayName": "Styled(GiftServicesDetailsModal)",
+      "foldedComponentIds": Array [],
+      "render": [Function],
+      "styledComponentId": "sc-cSHVUG",
+      "target": [Function],
+      "toString": [Function],
+      "warnTooManyClasses": [Function],
+      "withComponent": [Function],
+    }
+  }
+  forwardedRef={null}
+  isOpen={true}
+  labels={
+    Object {
+      "DETAILS_RICH_TEXT": "DETAILS_RICH_TEXT",
+    }
+  }
+/>
+`;

@@ -1,6 +1,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import { View } from 'react-native';
+import { getLabelValue } from '@tcp/core/src/utils/utils';
 import BonusPointsSection from '../../../organism/BonusPointsSection';
 import BonusPointsReadSection from '../../../organism/BonusPointsReadSection';
 import Modal from '../../../../../molecules/Modal';
@@ -16,15 +17,22 @@ class BonusPointsView extends React.Component {
     className: PropTypes.string,
     isPlcc: PropTypes.bool,
     view: PropTypes.string,
+    getBonusDaysData: PropTypes.func,
+    orderDetails: PropTypes.shape({}),
+    isBagPage: PropTypes.bool,
+    showAccordian: PropTypes.bool.isRequired,
   };
 
   static defaultProps = {
-    labels: { myPlaceRewards: { lbl_place_rewards_bonus: '', lbl_place_rewards_points: '' } },
+    labels: {},
     bonusData: {},
     bonusDetailsData: '',
     className: '',
     isPlcc: false,
     view: constants.VIEWS.EDIT,
+    getBonusDaysData: () => {},
+    orderDetails: {},
+    isBagPage: false,
   };
 
   constructor(props) {
@@ -41,13 +49,24 @@ class BonusPointsView extends React.Component {
   };
 
   render() {
-    const { labels, bonusData, bonusDetailsData, className, view, isPlcc } = this.props;
+    const {
+      labels,
+      bonusData,
+      bonusDetailsData,
+      className,
+      view,
+      isPlcc,
+      getBonusDaysData,
+      orderDetails,
+      isBagPage,
+      showAccordian,
+    } = this.props;
     const { openModalState } = this.state;
     return (
       <View className={className}>
         {view === constants.VIEWS.READ && (
           <BonusPointsReadSection
-            labels={labels.myPlaceRewards}
+            labels={labels.account.myPlaceRewards}
             toggleBonusPointsModal={this.toggleBonusPointsModal}
             availableBonusPointDays={bonusData && bonusData.availableBonusPointDays}
             usedBonusPointDays={bonusData && bonusData.usedBonusPointDays}
@@ -56,17 +75,31 @@ class BonusPointsView extends React.Component {
         )}
         {view !== constants.VIEWS.READ && (
           <BonusPointsSection
-            labels={labels}
+            labels={labels.global.bonusPoints}
             bonusData={bonusData}
             toggleBonusPointsModal={this.toggleBonusPointsModal}
+            getBonusDaysData={getBonusDaysData}
+            orderDetails={orderDetails}
+            isPlcc={isPlcc}
+            isBagPage={isBagPage}
+            bagBonusLabels={labels.checkout.bagBonusPoints}
+            showAccordian={showAccordian}
           />
         )}
         <Modal
           isOpen={openModalState}
           onRequestClose={this.toggleBonusPointsModal}
-          heading={`${labels.myPlaceRewards.lbl_place_rewards_bonus} ${
-            labels.myPlaceRewards.lbl_place_rewards_points
-          } DETAILS`}
+          heading={`${getLabelValue(
+            labels,
+            'lbl_bonusPoints_placeRewardsBonus',
+            'bonusPoints',
+            'global'
+          )} ${getLabelValue(
+            labels,
+            'lbl_bonusPoints_placeRewardsPoints',
+            'bonusPoints',
+            'global'
+          )} DETAILS`}
           headingAlign="left"
           headingFontFamily="secondary"
         >

@@ -31,7 +31,7 @@ exports[`MiniBagBody component renders main component correctly 1`] = `
         >
           <Styled(Anchor)
             anchorVariation="primary"
-            asPath="/Bag"
+            asPath="/bag"
             dataLocator="addressbook-makedefault"
             fontSizeVariation="medium"
             to="/bag"
@@ -108,6 +108,7 @@ exports[`MiniBagBody component renders main component correctly 1`] = `
     >
       Subtotal: undefined112.00
     </Styled(BodyCopy)>
+    <Connect(ApplyNowModalWrapper) />
     <Connect(AddedToBagContainer)
       isEditingItem={false}
       showAddTobag={false}

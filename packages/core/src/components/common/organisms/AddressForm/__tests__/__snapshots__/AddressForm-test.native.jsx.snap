@@ -18,6 +18,7 @@ exports[`AddressForm component should render correctly with default address 1`] 
             "error": "",
             "touched": "",
           },
+          "onChangeText": [Function],
           "secureTextEntry": false,
           "showErrorIcon": true,
           "showSuccessCheck": false,
@@ -68,6 +69,7 @@ exports[`AddressForm component should render correctly with default address 1`] 
             "error": "",
             "touched": "",
           },
+          "onChangeText": [Function],
           "secureTextEntry": false,
           "showErrorIcon": true,
           "showSuccessCheck": false,
@@ -113,7 +115,7 @@ exports[`AddressForm component should render correctly with default address 1`] 
       dataLocator="addnewaddress-addressl1"
       headerTitle=""
       initialValue=""
-      onEndEditing={[Function]}
+      onChangeText={[Function]}
       onValueChange={[Function]}
       refs={[Function]}
     />
@@ -135,6 +137,7 @@ exports[`AddressForm component should render correctly with default address 1`] 
               "error": "",
               "touched": "",
             },
+            "onChangeText": [Function],
             "secureTextEntry": false,
             "showErrorIcon": true,
             "showSuccessCheck": false,
@@ -186,6 +189,7 @@ exports[`AddressForm component should render correctly with default address 1`] 
               "error": "",
               "touched": "",
             },
+            "onChangeText": [Function],
             "secureTextEntry": false,
             "showErrorIcon": true,
             "showSuccessCheck": false,
@@ -235,6 +239,7 @@ exports[`AddressForm component should render correctly with default address 1`] 
             "error": "",
             "touched": "",
           },
+          "onChangeText": [Function],
           "secureTextEntry": false,
           "showErrorIcon": true,
           "showSuccessCheck": false,
@@ -664,6 +669,7 @@ exports[`AddressForm component should render correctly with default address 1`] 
                   "error": "",
                   "touched": "",
                 },
+                "onChangeText": [Function],
                 "secureTextEntry": false,
                 "showErrorIcon": true,
                 "showSuccessCheck": false,
@@ -719,6 +725,7 @@ exports[`AddressForm component should render correctly with default address 1`] 
                 "error": "",
                 "touched": "",
               },
+              "onChangeText": [Function],
               "secureTextEntry": false,
               "showErrorIcon": true,
               "showSuccessCheck": false,
@@ -845,6 +852,7 @@ exports[`AddressForm component should render correctly with default address 1`] 
             "error": "",
             "touched": "",
           },
+          "onChangeText": [Function],
           "secureTextEntry": false,
           "showErrorIcon": true,
           "showSuccessCheck": false,
@@ -890,32 +898,21 @@ exports[`AddressForm component should render correctly with default address 1`] 
     />
   </Styled(View)>
   <Styled(View)>
-    <Styled(CustomButton)
+    <Styled(WithTheme(CustomButton))
       buttonVariation="variable-width"
       color="white"
-      customStyle={Object {}}
-      disableButton={false}
       fill="BLUE"
-      fullWidth=""
-      locator=""
       onPress={[MockFunction]}
       text=""
       type="submit"
-      url=""
     />
   </Styled(View)>
   <Styled(View)>
-    <Styled(CustomButton)
+    <Styled(WithTheme(CustomButton))
       buttonVariation="variable-width"
-      color=""
-      customStyle={Object {}}
-      disableButton={false}
       fill="WHITE"
-      fullWidth=""
-      locator=""
       onPress={[Function]}
       text=""
-      url=""
     />
   </Styled(View)>
 </Styled(View)>
@@ -939,6 +936,7 @@ exports[`AddressForm component should renders correctly 1`] = `
             "error": "",
             "touched": "",
           },
+          "onChangeText": [Function],
           "secureTextEntry": false,
           "showErrorIcon": true,
           "showSuccessCheck": false,
@@ -989,6 +987,7 @@ exports[`AddressForm component should renders correctly 1`] = `
             "error": "",
             "touched": "",
           },
+          "onChangeText": [Function],
           "secureTextEntry": false,
           "showErrorIcon": true,
           "showSuccessCheck": false,
@@ -1034,7 +1033,7 @@ exports[`AddressForm component should renders correctly 1`] = `
       dataLocator="addnewaddress-addressl1"
       headerTitle=""
       initialValue=""
-      onEndEditing={[Function]}
+      onChangeText={[Function]}
       onValueChange={[Function]}
       refs={[Function]}
     />
@@ -1056,6 +1055,7 @@ exports[`AddressForm component should renders correctly 1`] = `
               "error": "",
               "touched": "",
             },
+            "onChangeText": [Function],
             "secureTextEntry": false,
             "showErrorIcon": true,
             "showSuccessCheck": false,
@@ -1107,6 +1107,7 @@ exports[`AddressForm component should renders correctly 1`] = `
               "error": "",
               "touched": "",
             },
+            "onChangeText": [Function],
             "secureTextEntry": false,
             "showErrorIcon": true,
             "showSuccessCheck": false,
@@ -1156,6 +1157,7 @@ exports[`AddressForm component should renders correctly 1`] = `
             "error": "",
             "touched": "",
           },
+          "onChangeText": [Function],
           "secureTextEntry": false,
           "showErrorIcon": true,
           "showSuccessCheck": false,
@@ -1585,6 +1587,7 @@ exports[`AddressForm component should renders correctly 1`] = `
                   "error": "",
                   "touched": "",
                 },
+                "onChangeText": [Function],
                 "secureTextEntry": false,
                 "showErrorIcon": true,
                 "showSuccessCheck": false,
@@ -1640,6 +1643,7 @@ exports[`AddressForm component should renders correctly 1`] = `
                 "error": "",
                 "touched": "",
               },
+              "onChangeText": [Function],
               "secureTextEntry": false,
               "showErrorIcon": true,
               "showSuccessCheck": false,
@@ -1766,6 +1770,7 @@ exports[`AddressForm component should renders correctly 1`] = `
             "error": "",
             "touched": "",
           },
+          "onChangeText": [Function],
           "secureTextEntry": false,
           "showErrorIcon": true,
           "showSuccessCheck": false,
@@ -1809,32 +1814,21 @@ exports[`AddressForm component should renders correctly 1`] = `
     />
   </Styled(View)>
   <Styled(View)>
-    <Styled(CustomButton)
+    <Styled(WithTheme(CustomButton))
       buttonVariation="variable-width"
       color="white"
-      customStyle={Object {}}
-      disableButton={false}
       fill="BLUE"
-      fullWidth=""
-      locator=""
       onPress={[MockFunction]}
       text=""
       type="submit"
-      url=""
     />
   </Styled(View)>
   <Styled(View)>
-    <Styled(CustomButton)
+    <Styled(WithTheme(CustomButton))
       buttonVariation="variable-width"
-      color=""
-      customStyle={Object {}}
-      disableButton={false}
       fill="WHITE"
-      fullWidth=""
-      locator=""
       onPress={[Function]}
       text=""
-      url=""
     />
   </Styled(View)>
 </Styled(View)>

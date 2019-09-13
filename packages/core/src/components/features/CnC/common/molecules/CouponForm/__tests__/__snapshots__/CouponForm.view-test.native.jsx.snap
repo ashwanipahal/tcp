@@ -39,26 +39,20 @@ exports[`CouponForm Component CouponForm should render correctly 1`] = `
           type="text"
         />
       </Styled(View)>
-      <Styled(CustomButton)
+      <Styled(WithTheme(CustomButton))
         buttonVariation="variable-width"
-        color=""
-        customStyle={Object {}}
         data-locator="coupon_submit_btn"
-        disableButton={false}
         external={true}
         fill="WHITE"
-        fullWidth=""
-        locator=""
         onPress={[Function]}
         style={
           Object {
             "height": 42,
-            "width": 104,
+            "width": 114,
           }
         }
         text="Apply"
         type="submit"
-        url=""
       />
     </Styled(View)>
   </Styled(View)>

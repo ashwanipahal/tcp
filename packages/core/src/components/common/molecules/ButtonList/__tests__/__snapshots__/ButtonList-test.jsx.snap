@@ -14,16 +14,16 @@ exports[`ButtonList component renders correctly 1`] = `
           "link": Object {
             "external": 0,
             "target": "",
-            "text": "Alt",
-            "title": "Alt",
-            "url": "/toddler-boy",
+            "text": "Girl",
+            "title": "Girl",
+            "url": "/girl",
           },
         }
       }
       dataLocator={
         Object {
-          "cta": "0",
-          "image": "moduleN_cta_links_0",
+          "cta": "moduleN_cta_links_0",
+          "image": "0",
         }
       }
       fill=""
@@ -52,16 +52,16 @@ exports[`ButtonList component renders correctly 1`] = `
           "link": Object {
             "external": 0,
             "target": "",
-            "text": "Alt",
-            "title": "Alt",
-            "url": "/toddler-boy",
+            "text": "Toddler Girl",
+            "title": "Toddler Girl",
+            "url": "/toddler-girl",
           },
         }
       }
       dataLocator={
         Object {
-          "cta": "1",
-          "image": "moduleN_cta_links_1",
+          "cta": "moduleN_cta_links_1",
+          "image": "1",
         }
       }
       fill=""
@@ -90,16 +90,16 @@ exports[`ButtonList component renders correctly 1`] = `
           "link": Object {
             "external": 0,
             "target": "",
-            "text": "Alt",
-            "title": "Alt",
-            "url": "/toddler-boy",
+            "text": "Boy",
+            "title": "Boy",
+            "url": "/boy",
           },
         }
       }
       dataLocator={
         Object {
-          "cta": "2",
-          "image": "moduleN_cta_links_2",
+          "cta": "moduleN_cta_links_2",
+          "image": "2",
         }
       }
       fill=""
@@ -128,16 +128,16 @@ exports[`ButtonList component renders correctly 1`] = `
           "link": Object {
             "external": 0,
             "target": "",
-            "text": "Alt",
-            "title": "Alt",
-            "url": "/toddler-boy",
+            "text": "Toddler Boy",
+            "title": "Tod Boy",
+            "url": "/toddler-boy2",
           },
         }
       }
       dataLocator={
         Object {
-          "cta": "3",
-          "image": "moduleN_cta_links_3",
+          "cta": "moduleN_cta_links_3",
+          "image": "3",
         }
       }
       fill=""
@@ -166,16 +166,16 @@ exports[`ButtonList component renders correctly 1`] = `
           "link": Object {
             "external": 0,
             "target": "",
-            "text": "Alt",
-            "title": "Alt",
+            "text": "Baby",
+            "title": "Baby",
             "url": "/toddler-boy",
           },
         }
       }
       dataLocator={
         Object {
-          "cta": "4",
-          "image": "moduleN_cta_links_4",
+          "cta": "moduleN_cta_links_4",
+          "image": "4",
         }
       }
       fill=""
@@ -212,8 +212,8 @@ exports[`ButtonList component renders correctly 1`] = `
       }
       dataLocator={
         Object {
-          "cta": "5",
-          "image": "moduleN_cta_links_5",
+          "cta": "moduleN_cta_links_5",
+          "image": "5",
         }
       }
       fill=""
@@ -251,16 +251,16 @@ exports[`ButtonList component renders correctly for Dual Variation 1`] = `
           "link": Object {
             "external": 0,
             "target": "",
-            "text": "Alt",
-            "title": "Alt",
-            "url": "/toddler-boy",
+            "text": "Girl",
+            "title": "Girl",
+            "url": "/girl",
           },
         }
       }
       dataLocator={
         Object {
-          "cta": "moduleB_image_0",
-          "image": "moduleB_cta_links_0",
+          "cta": "moduleB_cta_links_0",
+          "image": "moduleB_image_0",
         }
       }
       fill=""
@@ -289,16 +289,16 @@ exports[`ButtonList component renders correctly for Dual Variation 1`] = `
           "link": Object {
             "external": 0,
             "target": "",
-            "text": "Alt",
-            "title": "Alt",
-            "url": "/toddler-boy",
+            "text": "Toddler Girl",
+            "title": "Toddler Girl",
+            "url": "/toddler-girl",
           },
         }
       }
       dataLocator={
         Object {
-          "cta": "moduleB_image_1",
-          "image": "moduleB_cta_links_1",
+          "cta": "moduleB_cta_links_1",
+          "image": "moduleB_image_1",
         }
       }
       fill=""
@@ -327,16 +327,16 @@ exports[`ButtonList component renders correctly for Dual Variation 1`] = `
           "link": Object {
             "external": 0,
             "target": "",
-            "text": "Alt",
-            "title": "Alt",
-            "url": "/toddler-boy",
+            "text": "Boy",
+            "title": "Boy",
+            "url": "/boy",
           },
         }
       }
       dataLocator={
         Object {
-          "cta": "moduleB_image_2",
-          "image": "moduleB_cta_links_2",
+          "cta": "moduleB_cta_links_2",
+          "image": "moduleB_image_2",
         }
       }
       fill=""
@@ -365,16 +365,16 @@ exports[`ButtonList component renders correctly for Dual Variation 1`] = `
           "link": Object {
             "external": 0,
             "target": "",
-            "text": "Alt",
-            "title": "Alt",
-            "url": "/toddler-boy",
+            "text": "Toddler Boy",
+            "title": "Tod Boy",
+            "url": "/toddler-boy2",
           },
         }
       }
       dataLocator={
         Object {
-          "cta": "moduleB_image_3",
-          "image": "moduleB_cta_links_3",
+          "cta": "moduleB_cta_links_3",
+          "image": "moduleB_image_3",
         }
       }
       fill=""
@@ -403,16 +403,16 @@ exports[`ButtonList component renders correctly for Dual Variation 1`] = `
           "link": Object {
             "external": 0,
             "target": "",
-            "text": "Alt",
-            "title": "Alt",
+            "text": "Baby",
+            "title": "Baby",
             "url": "/toddler-boy",
           },
         }
       }
       dataLocator={
         Object {
-          "cta": "moduleB_image_4",
-          "image": "moduleB_cta_links_4",
+          "cta": "moduleB_cta_links_4",
+          "image": "moduleB_image_4",
         }
       }
       fill=""
@@ -449,8 +449,8 @@ exports[`ButtonList component renders correctly for Dual Variation 1`] = `
       }
       dataLocator={
         Object {
-          "cta": "moduleB_image_5",
-          "image": "moduleB_cta_links_5",
+          "cta": "moduleB_cta_links_5",
+          "image": "moduleB_image_5",
         }
       }
       fill=""
@@ -579,6 +579,7 @@ exports[`ButtonList component renders correctly for Dual Variation 1`] = `
       ]
     }
     className=" additional-button-list hide-on-small-viewport"
+    dataLocatorItemPrefix="moduleB_cta_links_"
     dropdownLabel="Shop Now"
   />
 </Fragment>
@@ -597,16 +598,16 @@ exports[`ButtonList component renders correctly for image cta List 1`] = `
           "link": Object {
             "external": 0,
             "target": "",
-            "text": "Alt",
-            "title": "Alt",
-            "url": "/toddler-boy",
+            "text": "Girl",
+            "title": "Girl",
+            "url": "/girl",
           },
         }
       }
       dataLocator={
         Object {
-          "cta": "moduleN_image_0",
-          "image": "moduleN_cta_links_0",
+          "cta": "moduleN_cta_links_0",
+          "image": "moduleN_image_0",
         }
       }
       fill=""
@@ -634,16 +635,16 @@ exports[`ButtonList component renders correctly for image cta List 1`] = `
           "link": Object {
             "external": 0,
             "target": "",
-            "text": "Alt",
-            "title": "Alt",
-            "url": "/toddler-boy",
+            "text": "Toddler Girl",
+            "title": "Toddler Girl",
+            "url": "/toddler-girl",
           },
         }
       }
       dataLocator={
         Object {
-          "cta": "moduleN_image_1",
-          "image": "moduleN_cta_links_1",
+          "cta": "moduleN_cta_links_1",
+          "image": "moduleN_image_1",
         }
       }
       fill=""
@@ -671,16 +672,16 @@ exports[`ButtonList component renders correctly for image cta List 1`] = `
           "link": Object {
             "external": 0,
             "target": "",
-            "text": "Alt",
-            "title": "Alt",
-            "url": "/toddler-boy",
+            "text": "Boy",
+            "title": "Boy",
+            "url": "/boy",
           },
         }
       }
       dataLocator={
         Object {
-          "cta": "moduleN_image_2",
-          "image": "moduleN_cta_links_2",
+          "cta": "moduleN_cta_links_2",
+          "image": "moduleN_image_2",
         }
       }
       fill=""
@@ -708,16 +709,16 @@ exports[`ButtonList component renders correctly for image cta List 1`] = `
           "link": Object {
             "external": 0,
             "target": "",
-            "text": "Alt",
-            "title": "Alt",
-            "url": "/toddler-boy",
+            "text": "Toddler Boy",
+            "title": "Tod Boy",
+            "url": "/toddler-boy2",
           },
         }
       }
       dataLocator={
         Object {
-          "cta": "moduleN_image_3",
-          "image": "moduleN_cta_links_3",
+          "cta": "moduleN_cta_links_3",
+          "image": "moduleN_image_3",
         }
       }
       fill=""
@@ -745,16 +746,16 @@ exports[`ButtonList component renders correctly for image cta List 1`] = `
           "link": Object {
             "external": 0,
             "target": "",
-            "text": "Alt",
-            "title": "Alt",
+            "text": "Baby",
+            "title": "Baby",
             "url": "/toddler-boy",
           },
         }
       }
       dataLocator={
         Object {
-          "cta": "moduleN_image_4",
-          "image": "moduleN_cta_links_4",
+          "cta": "moduleN_cta_links_4",
+          "image": "moduleN_image_4",
         }
       }
       fill=""
@@ -790,8 +791,8 @@ exports[`ButtonList component renders correctly for image cta List 1`] = `
       }
       dataLocator={
         Object {
-          "cta": "moduleN_image_5",
-          "image": "moduleN_cta_links_5",
+          "cta": "moduleN_cta_links_5",
+          "image": "moduleN_image_5",
         }
       }
       fill=""
@@ -829,16 +830,16 @@ exports[`ButtonList component renders correctly for scroll cta buttons 1`] = `
           "link": Object {
             "external": 0,
             "target": "",
-            "text": "Alt",
-            "title": "Alt",
-            "url": "/toddler-boy",
+            "text": "Girl",
+            "title": "Girl",
+            "url": "/girl",
           },
         }
       }
       dataLocator={
         Object {
-          "cta": "0",
-          "image": "moduleN_cta_links_0",
+          "cta": "moduleN_cta_links_0",
+          "image": "0",
         }
       }
       fill=""
@@ -867,16 +868,16 @@ exports[`ButtonList component renders correctly for scroll cta buttons 1`] = `
           "link": Object {
             "external": 0,
             "target": "",
-            "text": "Alt",
-            "title": "Alt",
-            "url": "/toddler-boy",
+            "text": "Toddler Girl",
+            "title": "Toddler Girl",
+            "url": "/toddler-girl",
           },
         }
       }
       dataLocator={
         Object {
-          "cta": "1",
-          "image": "moduleN_cta_links_1",
+          "cta": "moduleN_cta_links_1",
+          "image": "1",
         }
       }
       fill=""
@@ -905,16 +906,16 @@ exports[`ButtonList component renders correctly for scroll cta buttons 1`] = `
           "link": Object {
             "external": 0,
             "target": "",
-            "text": "Alt",
-            "title": "Alt",
-            "url": "/toddler-boy",
+            "text": "Boy",
+            "title": "Boy",
+            "url": "/boy",
           },
         }
       }
       dataLocator={
         Object {
-          "cta": "2",
-          "image": "moduleN_cta_links_2",
+          "cta": "moduleN_cta_links_2",
+          "image": "2",
         }
       }
       fill=""
@@ -943,16 +944,16 @@ exports[`ButtonList component renders correctly for scroll cta buttons 1`] = `
           "link": Object {
             "external": 0,
             "target": "",
-            "text": "Alt",
-            "title": "Alt",
-            "url": "/toddler-boy",
+            "text": "Toddler Boy",
+            "title": "Tod Boy",
+            "url": "/toddler-boy2",
           },
         }
       }
       dataLocator={
         Object {
-          "cta": "3",
-          "image": "moduleN_cta_links_3",
+          "cta": "moduleN_cta_links_3",
+          "image": "3",
         }
       }
       fill=""
@@ -981,16 +982,16 @@ exports[`ButtonList component renders correctly for scroll cta buttons 1`] = `
           "link": Object {
             "external": 0,
             "target": "",
-            "text": "Alt",
-            "title": "Alt",
+            "text": "Baby",
+            "title": "Baby",
             "url": "/toddler-boy",
           },
         }
       }
       dataLocator={
         Object {
-          "cta": "4",
-          "image": "moduleN_cta_links_4",
+          "cta": "moduleN_cta_links_4",
+          "image": "4",
         }
       }
       fill=""
@@ -1027,8 +1028,8 @@ exports[`ButtonList component renders correctly for scroll cta buttons 1`] = `
       }
       dataLocator={
         Object {
-          "cta": "5",
-          "image": "moduleN_cta_links_5",
+          "cta": "moduleN_cta_links_5",
+          "image": "5",
         }
       }
       fill=""
@@ -1066,16 +1067,16 @@ exports[`ButtonList component renders correctly with props for stacked CTA butto
           "link": Object {
             "external": 0,
             "target": "",
-            "text": "Alt",
-            "title": "Alt",
-            "url": "/toddler-boy",
+            "text": "Girl",
+            "title": "Girl",
+            "url": "/girl",
           },
         }
       }
       dataLocator={
         Object {
-          "cta": "0",
-          "image": "moduleN_cta_links_0",
+          "cta": "moduleN_cta_links_0",
+          "image": "0",
         }
       }
       fill=""
@@ -1104,16 +1105,16 @@ exports[`ButtonList component renders correctly with props for stacked CTA butto
           "link": Object {
             "external": 0,
             "target": "",
-            "text": "Alt",
-            "title": "Alt",
-            "url": "/toddler-boy",
+            "text": "Toddler Girl",
+            "title": "Toddler Girl",
+            "url": "/toddler-girl",
           },
         }
       }
       dataLocator={
         Object {
-          "cta": "1",
-          "image": "moduleN_cta_links_1",
+          "cta": "moduleN_cta_links_1",
+          "image": "1",
         }
       }
       fill=""
@@ -1142,16 +1143,16 @@ exports[`ButtonList component renders correctly with props for stacked CTA butto
           "link": Object {
             "external": 0,
             "target": "",
-            "text": "Alt",
-            "title": "Alt",
-            "url": "/toddler-boy",
+            "text": "Boy",
+            "title": "Boy",
+            "url": "/boy",
           },
         }
       }
       dataLocator={
         Object {
-          "cta": "2",
-          "image": "moduleN_cta_links_2",
+          "cta": "moduleN_cta_links_2",
+          "image": "2",
         }
       }
       fill=""
@@ -1180,16 +1181,16 @@ exports[`ButtonList component renders correctly with props for stacked CTA butto
           "link": Object {
             "external": 0,
             "target": "",
-            "text": "Alt",
-            "title": "Alt",
-            "url": "/toddler-boy",
+            "text": "Toddler Boy",
+            "title": "Tod Boy",
+            "url": "/toddler-boy2",
           },
         }
       }
       dataLocator={
         Object {
-          "cta": "3",
-          "image": "moduleN_cta_links_3",
+          "cta": "moduleN_cta_links_3",
+          "image": "3",
         }
       }
       fill=""
@@ -1218,16 +1219,16 @@ exports[`ButtonList component renders correctly with props for stacked CTA butto
           "link": Object {
             "external": 0,
             "target": "",
-            "text": "Alt",
-            "title": "Alt",
+            "text": "Baby",
+            "title": "Baby",
             "url": "/toddler-boy",
           },
         }
       }
       dataLocator={
         Object {
-          "cta": "4",
-          "image": "moduleN_cta_links_4",
+          "cta": "moduleN_cta_links_4",
+          "image": "4",
         }
       }
       fill=""
@@ -1264,8 +1265,8 @@ exports[`ButtonList component renders correctly with props for stacked CTA butto
       }
       dataLocator={
         Object {
-          "cta": "5",
-          "image": "moduleN_cta_links_5",
+          "cta": "moduleN_cta_links_5",
+          "image": "5",
         }
       }
       fill=""
@@ -1303,9 +1304,9 @@ exports[`ButtonList component renders correctly without props 1`] = `
           "link": Object {
             "external": 0,
             "target": "",
-            "text": "Alt",
-            "title": "Alt",
-            "url": "/toddler-boy",
+            "text": "Girl",
+            "title": "Girl",
+            "url": "/girl",
           },
         }
       }
@@ -1341,9 +1342,9 @@ exports[`ButtonList component renders correctly without props 1`] = `
           "link": Object {
             "external": 0,
             "target": "",
-            "text": "Alt",
-            "title": "Alt",
-            "url": "/toddler-boy",
+            "text": "Toddler Girl",
+            "title": "Toddler Girl",
+            "url": "/toddler-girl",
           },
         }
       }
@@ -1379,9 +1380,9 @@ exports[`ButtonList component renders correctly without props 1`] = `
           "link": Object {
             "external": 0,
             "target": "",
-            "text": "Alt",
-            "title": "Alt",
-            "url": "/toddler-boy",
+            "text": "Boy",
+            "title": "Boy",
+            "url": "/boy",
           },
         }
       }
@@ -1417,9 +1418,9 @@ exports[`ButtonList component renders correctly without props 1`] = `
           "link": Object {
             "external": 0,
             "target": "",
-            "text": "Alt",
-            "title": "Alt",
-            "url": "/toddler-boy",
+            "text": "Toddler Boy",
+            "title": "Tod Boy",
+            "url": "/toddler-boy2",
           },
         }
       }
@@ -1455,8 +1456,8 @@ exports[`ButtonList component renders correctly without props 1`] = `
           "link": Object {
             "external": 0,
             "target": "",
-            "text": "Alt",
-            "title": "Alt",
+            "text": "Baby",
+            "title": "Baby",
             "url": "/toddler-boy",
           },
         }

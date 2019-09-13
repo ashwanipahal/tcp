@@ -15,15 +15,18 @@ const getModifiedString = (labels, totalItems) => {
   );
 };
 
-const showUserPoints = userPoints => {
+const showPoints = userPoints => {
   return userPoints !== 0 && !isCanada();
 };
 
-const showItemPoints = itemPoints => {
-  return itemPoints !== 0 && !isCanada();
+const getPointsColor = isPlcc => {
+  if (isPlcc) {
+    return 'blue.B100';
+  }
+  return 'orange.800';
 };
 
-const AddedToBagViewPoints = ({ className, pointsSummary, labels }) => {
+const AddedToBagViewPoints = ({ className, pointsSummary, labels, isPlcc }) => {
   const {
     itemPrice,
     itemPoints,
@@ -44,7 +47,7 @@ const AddedToBagViewPoints = ({ className, pointsSummary, labels }) => {
           {`$${itemPrice || 0}`}
         </Col>
       </Row>
-      {showItemPoints(itemPoints) && (
+      {showPoints(userPoints) && (
         <Row>
           <Col colSize={{ large: 9, small: 4, medium: 6 }}>
             <BodyCopy fontFamily="secondary" fontWeight="extrabold">
@@ -56,7 +59,7 @@ const AddedToBagViewPoints = ({ className, pointsSummary, labels }) => {
               data-locator="addedtobag-pointsonitem"
               fontFamily="secondary"
               className="text-value"
-              color="orange.800"
+              color={getPointsColor(isPlcc)}
               fontWeight="extrabold"
             >
               {itemPoints || 0}
@@ -77,7 +80,7 @@ const AddedToBagViewPoints = ({ className, pointsSummary, labels }) => {
           {`$${bagSubTotal || 0}`}
         </Col>
       </Row>
-      {showUserPoints(userPoints) && (
+      {showPoints(userPoints) && (
         <Row className="row-padding">
           <Col colSize={{ large: 9, small: 4, medium: 6 }}>
             <BodyCopy fontFamily="secondary" fontWeight="extrabold">
@@ -89,7 +92,7 @@ const AddedToBagViewPoints = ({ className, pointsSummary, labels }) => {
               data-locator="addedtobag-totalrewardpoints"
               fontFamily="secondary"
               className="text-value"
-              color="orange.800"
+              color={getPointsColor(isPlcc)}
               fontWeight="extrabold"
             >
               {userPoints || 0}
@@ -109,7 +112,7 @@ const AddedToBagViewPoints = ({ className, pointsSummary, labels }) => {
               data-locator="addedtobag-totalpointsnextreward"
               fontFamily="secondary"
               className="text-value"
-              color="orange.800"
+              color={getPointsColor(isPlcc)}
               fontWeight="extrabold"
             >
               {pointsToNextReward || 0}
@@ -125,6 +128,7 @@ AddedToBagViewPoints.propTypes = {
   className: PropTypes.string.isRequired,
   pointsSummary: PropTypes.shape.isRequired,
   labels: PropTypes.shape.isRequired,
+  isPlcc: PropTypes.bool.isRequired,
 };
 
 export default withStyles(AddedToBagViewPoints, styles);

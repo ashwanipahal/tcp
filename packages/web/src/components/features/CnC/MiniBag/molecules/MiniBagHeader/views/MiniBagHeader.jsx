@@ -39,6 +39,7 @@ const MiniBagHeader = ({
               <Anchor fontSizeVariation="large" anchorVariation="primary" noLink to="">
                 {labels.createAccount}
               </Anchor>
+              <BodyCopy component="span" fontSize="fs10" className="separator" />
               <Anchor
                 className="rightLink"
                 fontSizeVariation="large"
@@ -53,7 +54,7 @@ const MiniBagHeader = ({
               <BodyCopy
                 className="userName"
                 component="span"
-                fontSize="fs16"
+                fontSize="fs14"
                 fontWeight="extrabold"
                 textAlign="left"
                 fontFamily="secondary"
@@ -63,7 +64,7 @@ const MiniBagHeader = ({
               <BodyCopy
                 className="pointsRewards"
                 component="span"
-                fontSize="fs15"
+                fontSize="fs13"
                 fontFamily="secondary"
                 fontWeight="semibold"
                 textAlign="left"

@@ -64,7 +64,7 @@ exports[`FilterModal is shown should render FilterModal 1`] = `
             buttonVariation="fixed-width"
             className="gallery-button-left"
             data-locator="view_gallery_button"
-            onClick={[MockFunction]}
+            onClick={[Function]}
             type="button"
           />
         </Styled(Col)>
@@ -80,9 +80,9 @@ exports[`FilterModal is shown should render FilterModal 1`] = `
           <Styled(Button)
             buttonVariation="fixed-width"
             className="gallery-button-left"
-            data-locator="view_gallery_button"
+            data-locator="plp_filter_apply_button"
             fill="BLACK"
-            type="button"
+            type="submit"
           />
         </Styled(Col)>
       </Styled(Row)>
@@ -155,7 +155,7 @@ exports[`FilterModal is shown should render FilterModal when show is false 1`] =
             buttonVariation="fixed-width"
             className="gallery-button-left"
             data-locator="view_gallery_button"
-            onClick={[MockFunction]}
+            onClick={[Function]}
             type="button"
           />
         </Styled(Col)>
@@ -171,9 +171,9 @@ exports[`FilterModal is shown should render FilterModal when show is false 1`] =
           <Styled(Button)
             buttonVariation="fixed-width"
             className="gallery-button-left"
-            data-locator="view_gallery_button"
+            data-locator="plp_filter_apply_button"
             fill="BLACK"
-            type="button"
+            type="submit"
           />
         </Styled(Col)>
       </Styled(Row)>

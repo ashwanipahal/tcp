@@ -1,6 +1,6 @@
 import React from 'react';
 import { View, ScrollView } from 'react-native';
-import { Field, reduxForm, FormSection } from 'redux-form';
+import { Field, reduxForm, FormSection, change, initialize } from 'redux-form';
 import PropTypes from 'prop-types';
 import Button from '@tcp/core/src/components/common/atoms/Button';
 import withStyles from '../../../../../../common/hoc/withStyles';
@@ -26,6 +26,7 @@ import {
   CheckBoxTextWrapper,
   CheckBoxSubWrapper,
   TextWrapper,
+  PickUpHeading,
 } from '../styles/PickupPage.style.native';
 import ErrorMessage from '../../../../common/molecules/ErrorMessage';
 import ContactFormFields from '../../../molecules/ContactFormFields';
@@ -39,11 +40,35 @@ const formName = 'checkoutPickup';
 class PickUpFormPart extends React.Component {
   constructor(props) {
     super(props);
-    this.state = { isEditing: false, isReset: false };
+    this.state = {
+      isEditing: false,
+      dataUpdated: false,
+      pickUpContact: {
+        firstName: '',
+        lastName: '',
+        phoneNumber: '',
+        emailAddress: '',
+      },
+    };
   }
 
-  handleEditModeChange = isEditing => {
-    this.setState({ isEditing, isReset: false });
+  handleEditModeChange = (isEditing, pickUpContact) => {
+    if (pickUpContact) {
+      this.setState({
+        isEditing,
+        dataUpdated: true,
+        pickUpContact: {
+          firstName: pickUpContact.firstName,
+          lastName: pickUpContact.lastName,
+          phoneNumber: pickUpContact.phoneNumber,
+          emailAddress: pickUpContact.emailAddress,
+        },
+      });
+    } else {
+      this.setState({
+        isEditing,
+      });
+    }
   };
 
   onEditMainContactSubmit = () => {
@@ -51,22 +76,86 @@ class PickUpFormPart extends React.Component {
   };
 
   handleExitEditModeClick = () => {
-    this.setState({ isEditing: false, isReset: true });
+    const { dispatch } = this.props;
+    const { pickUpContact } = this.state;
+    dispatch(change('checkoutPickup', `pickUpContact.firstName`, pickUpContact.firstName));
+    dispatch(change('checkoutPickup', `pickUpContact.lastName`, pickUpContact.lastName));
+    dispatch(change('checkoutPickup', `pickUpContact.phoneNumber`, pickUpContact.phoneNumber));
+    dispatch(change('checkoutPickup', `pickUpContact.emailAddress`, pickUpContact.emailAddress));
+    this.setState({ isEditing: false });
   };
 
   SaveAndCancelButton = () => {
-    const { pickUpLabels } = this.props;
+    const { pickUpLabels, handleSubmit } = this.props;
     return (
       <View>
         <Button
           buttonVariation="variable-width"
           text={pickUpLabels.btnCancel}
-          onPress={this.handleExitEditModeClick}
+          onClick={this.handleExitEditModeClick}
         />
-        <Button buttonVariation="variable-width" text={pickUpLabels.btnUpdate} onPress={() => {}} />
+        <Button
+          buttonVariation="variable-width"
+          text={pickUpLabels.btnUpdate}
+          onPress={handleSubmit(this.pickupEditSubmit)}
+        />
       </View>
     );
   };
+
+  pickupEditSubmit = value => {
+    const { pickUpContact } = value;
+    this.setState({
+      dataUpdated: true,
+    });
+    this.handleEditModeChange(false, pickUpContact);
+  };
+
+  pickupSubmit = data => {
+    const { onPickupSubmit, navigation } = this.props;
+    const { firstName, lastName, phoneNumber, emailAddress } = data.pickUpContact;
+    const { hasAlternatePickup } = data.pickUpAlternate;
+    const params = {
+      pickUpContact: {
+        firstName,
+        lastName,
+        phoneNumber,
+        emailAddress,
+        smsInfo: {
+          wantsSmsOrderUpdates: data.smsSignUp.sendOrderUpdate,
+        },
+      },
+      hasAlternatePickup,
+      pickUpAlternate: {
+        firstName: hasAlternatePickup ? data.pickUpAlternate.firstName : '',
+        lastName: hasAlternatePickup ? data.pickUpAlternate.lastName : '',
+        emailAddress: hasAlternatePickup ? data.pickUpAlternate.emailAddress : '',
+      },
+      navigation,
+    };
+    onPickupSubmit(params);
+  };
+
+  updatePickupForm() {
+    const { pickupInitialValues, dispatch } = this.props;
+    const { pickUpContact } = this.state;
+    if (
+      pickupInitialValues &&
+      pickupInitialValues.pickUpContact &&
+      (pickupInitialValues.pickUpContact.firstName !== pickUpContact.firstName ||
+        pickupInitialValues.pickUpContact.lastName !== pickUpContact.lastName ||
+        pickupInitialValues.pickUpContact.phoneNumber !== pickUpContact.phoneNumber)
+    ) {
+      const pickUpContactUpdate = {
+        firstName: pickupInitialValues.pickUpContact.firstName,
+        lastName: pickupInitialValues.pickUpContact.lastName,
+        phoneNumber: pickupInitialValues.pickUpContact.phoneNumber,
+        emailAddress: pickupInitialValues.pickUpContact.emailAddress,
+      };
+      dispatch(initialize('checkoutPickup', pickupInitialValues));
+      this.setState({ pickUpContact: pickUpContactUpdate });
+    }
+  }
 
   render() {
     const {
@@ -79,18 +168,23 @@ class PickUpFormPart extends React.Component {
       currentPhoneNumber,
       isOrderUpdateChecked,
       isAlternateUpdateChecked,
-      initialValues,
       isSmsUpdatesEnabled,
       dispatch,
       handleSubmit,
       navigation,
-      onPickUpSubmit,
+      availableStages,
     } = this.props;
-    const { isEditing, isReset } = this.state;
-
+    const { isEditing, pickUpContact, dataUpdated } = this.state;
+    if (!dataUpdated) {
+      this.updatePickupForm();
+    }
     return (
       <>
-        <CheckoutProgressIndicator activeStage="pickup" navigation={navigation} />
+        <CheckoutProgressIndicator
+          activeStage="pickup"
+          navigation={navigation}
+          availableStages={availableStages}
+        />
         <ScrollView>
           <Container>
             <PickupError>
@@ -103,10 +197,16 @@ class PickUpFormPart extends React.Component {
               />
             </PickupError>
             <PickupContainer>
-              <CheckoutSectionTitleDisplay title={pickUpLabels.title} dataLocator="pickup-title" />
+              {isGuest && <PickUpHeading>{pickUpLabels.pickupContactText}</PickUpHeading>}
+              {!isGuest && (
+                <CheckoutSectionTitleDisplay
+                  title={pickUpLabels.title}
+                  dataLocator="pickup-title"
+                />
+              )}
               <PickUpForm>
                 <FormSection name="pickUpContact">
-                  {!isGuest ? (
+                  {isGuest ? (
                     <ContactFormFields
                       className="pickup-contact-guest-form"
                       showEmailAddress
@@ -116,16 +216,15 @@ class PickUpFormPart extends React.Component {
                   ) : (
                     <PickupMainContactEditForm
                       dispatch={dispatch}
+                      labels={pickUpLabels}
+                      handleSubmit={handleSubmit}
                       isMobile={isMobile}
                       isEditing={isEditing}
                       className="pickup-contact-guest-form"
                       showPhoneNumber
-                      formData={initialValues}
-                      isReset={isReset}
-                      labels={pickUpLabels}
-                      onSubmit={this.onEditMainContactSubmit}
+                      formData={pickUpContact}
                       onEditModeChange={this.handleEditModeChange}
-                      onClose={this.handleExitEditModeClick}
+                      handleExitEditModeClick={this.handleExitEditModeClick}
                     />
                   )}
                 </FormSection>
@@ -139,6 +238,10 @@ class PickUpFormPart extends React.Component {
                       formSection="smsSignUp"
                       altInitValue={currentPhoneNumber}
                       labels={smsSignUpLabels}
+                      showDefaultCheckbox={false}
+                      variation="secondary"
+                      dispatch={dispatch}
+                      addressPhoneNo={currentPhoneNumber}
                     />
                   </FormSection>
                 </SmsSignUpForm>
@@ -196,6 +299,7 @@ class PickUpFormPart extends React.Component {
                   </CheckBoxSubWrapper>
                 </EmailSignupForm>
               )}
+
               <PickUpAlternateForm>
                 <FormSection name="pickUpAlternate">
                   <PickUpAlternateFormPart
@@ -214,7 +318,8 @@ class PickUpFormPart extends React.Component {
             navigation={navigation}
             btnText="NEXT:SHIPPING"
             routeToPage="ShippingPage"
-            onPress={handleSubmit(onPickUpSubmit)}
+            isGuest={isGuest}
+            onPress={handleSubmit(this.pickupSubmit)}
           />
         </ScrollView>
       </>
@@ -233,15 +338,16 @@ PickUpFormPart.propTypes = {
   currentPhoneNumber: PropTypes.string,
   pickUpLabels: PropTypes.shape({}).isRequired,
   smsSignUpLabels: PropTypes.shape({}).isRequired,
-  initialValues: PropTypes.shape({}).isRequired,
+  pickupInitialValues: PropTypes.shape({}).isRequired,
   dispatch: PropTypes.func.isRequired,
   handleSubmit: PropTypes.func.isRequired,
+  onPickupSubmit: PropTypes.func.isRequired,
   navigation: PropTypes.shape({}).isRequired,
-  onPickUpSubmit: PropTypes.func.isRequired,
+  availableStages: PropTypes.shape([]).isRequired,
 };
 
 PickUpFormPart.defaultProps = {
-  isGuest: false,
+  isGuest: true,
   isMobile: false,
   isUsSite: false,
   isSmsUpdatesEnabled: false,

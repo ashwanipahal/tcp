@@ -105,6 +105,9 @@ exports[`AddressOverviewTile component should render correctly 1`] = `
               "xcont_isDefaultBilling": "true",
             }
           }
+          className=""
+          dataLocatorPrefix=""
+          fontWeight="regular"
           isDefault={false}
           showCountry={false}
           showName={true}
@@ -199,6 +202,9 @@ exports[`AddressOverviewTile component should render correctly 1`] = `
               "xcont_isDefaultBilling": "true",
             }
           }
+          className=""
+          dataLocatorPrefix=""
+          fontWeight="regular"
           isDefault={false}
           showCountry={false}
           showName={true}

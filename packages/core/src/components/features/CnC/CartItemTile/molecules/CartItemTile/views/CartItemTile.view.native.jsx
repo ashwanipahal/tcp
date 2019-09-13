@@ -44,6 +44,26 @@ const getItemStatus = (productDetail, labels) => {
   }
   return <></>;
 };
+const getCartRadioButtons = (
+  productDetail,
+  labels,
+  itemIndex,
+  openedTile,
+  setSelectedProductTile
+) => {
+  if (productDetail.miscInfo.availability !== CARTPAGE_CONSTANTS.AVAILABILITY_SOLDOUT) {
+    return (
+      <CartItemRadioButtons
+        productDetail={productDetail}
+        labels={labels}
+        index={itemIndex}
+        openedTile={openedTile}
+        setSelectedProductTile={setSelectedProductTile}
+      />
+    );
+  }
+  return <></>;
+};
 const getEditError = (productDetail, labels) => {
   if (productDetail.miscInfo.availability === 'UNAVAILABLE') {
     return (
@@ -160,7 +180,7 @@ class ProductInformation extends React.Component {
                 )}
               </View>
               {!productDetail.itemInfo.isGiftItem &&
-                (productDetail.itemInfo.isGiftItem === 'TCP' ? (
+                (productDetail.itemInfo.itemBrand === 'TCP' ? (
                   <ImageBrandStyle
                     data-locator={getLocator('cart_item_brand_logo')}
                     source={tcpImage}
@@ -316,13 +336,13 @@ class ProductInformation extends React.Component {
               </EditButton>
             </ProductDescription>
           </OuterContainer>
-          <CartItemRadioButtons
-            productDetail={productDetail}
-            labels={labels}
-            index={itemIndex}
-            openedTile={openedTile}
-            setSelectedProductTile={setSelectedProductTile}
-          />
+          {getCartRadioButtons(
+            productDetail,
+            labels,
+            itemIndex,
+            openedTile,
+            setSelectedProductTile
+          )}
         </MainWrapper>
       </Swipeable>
     );

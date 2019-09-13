@@ -1,4 +1,4 @@
-import { call, put, takeLatest, select } from 'redux-saga/effects';
+import { call, put, takeEvery, select } from 'redux-saga/effects';
 import labelAbstractor from '../../services/abstractors/bootstrap/labels';
 import GLOBAL_CONSTANTS, { LABELS } from '../constants';
 import { LABEL_REDUCER_KEY } from '../../constants/reducer.constants';
@@ -37,7 +37,7 @@ function* fetchComponentLabel(action) {
 }
 
 function* LabelsSaga() {
-  yield takeLatest(GLOBAL_CONSTANTS.LOAD_COMPONENT_LABELS_DATA, fetchComponentLabel);
+  yield takeEvery(GLOBAL_CONSTANTS.LOAD_COMPONENT_LABELS_DATA, fetchComponentLabel);
 }
 
 export default LabelsSaga;

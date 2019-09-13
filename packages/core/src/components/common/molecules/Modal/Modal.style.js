@@ -23,7 +23,7 @@ const ModalStyle = css`
     width: ${props => (props.fixedWidth ? '100%' : '')};
     width: ${props => (props.widthConfig ? props.widthConfig.small : '')};
     @media ${props => props.theme.mediaQuery.medium} {
-      height: auto;
+      height: ${props => (props.heightConfig ? props.heightConfig.height : 'auto')};
       max-width: ${props => (props.fixedWidth ? props.maxWidth : '')};
       min-height: ${props => (props.fixedWidth ? props.minHeight : '')};
       width: ${props => (props.widthConfig ? props.widthConfig.medium : '')};
@@ -33,13 +33,14 @@ const ModalStyle = css`
       min-height: ${props => (props.heightConfig ? props.heightConfig.minHeight : '')};
       height: ${props => (props.heightConfig ? props.heightConfig.height : 'auto')};
       max-height: ${props => (props.heightConfig ? props.heightConfig.maxHeight : '')};
-      display: table;
     }
   }
   .Modal_Heading {
     border-bottom: 3px solid ${props => props.theme.colors.BLACK};
     margin-bottom: ${props => props.theme.spacing.ELEM_SPACING.XL};
     margin-top: 0;
+    height: 20px;
+    font-weight: 800;
     padding-bottom: ${props => props.theme.spacing.ELEM_SPACING.MED};
     @media ${props => props.theme.mediaQuery.medium} {
       display: none;
@@ -48,6 +49,7 @@ const ModalStyle = css`
   .alignTop {
     top: 25px;
   }
+
   ${props => (props.inheritedStyles ? props.inheritedStyles : '')};
 `;
 export default ModalStyle;

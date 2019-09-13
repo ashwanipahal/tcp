@@ -82,6 +82,7 @@ exports[`AutoCompleteComponent Native should render correctly 1`] = `
           "borderBottomWidth": 1,
           "height": 40,
           "paddingBottom": 0,
+          "paddingLeft": 0,
           "paddingTop": 16,
         },
         "textInputContainer": Object {
@@ -93,6 +94,7 @@ exports[`AutoCompleteComponent Native should render correctly 1`] = `
     textInputHide={false}
     textInputProps={
       Object {
+        "onChangeText": [Function],
         "onEndEditing": [Function],
         "onFocus": [Function],
         "onSubmitEditing": [Function],

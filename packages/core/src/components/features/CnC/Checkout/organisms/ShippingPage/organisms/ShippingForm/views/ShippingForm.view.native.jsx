@@ -1,6 +1,7 @@
 import React from 'react';
 import { FormSection, reduxForm, Field } from 'redux-form';
 import { PropTypes } from 'prop-types';
+import { getLabelValue } from '@tcp/core/src/utils/utils';
 import AddressFields from '../../../../../../../../common/molecules/AddressFields';
 import ShipmentMethods from '../../../../../../common/molecules/ShipmentMethods';
 import SMSFormFields from '../../../../../../../../common/molecules/SMSFormFields';
@@ -15,9 +16,10 @@ import {
   ShippingFormWrapper,
 } from '../styles/ShippingForm.styles.native';
 import CnCTemplate from '../../../../../../common/organism/CnCTemplate';
+import RegisteredShippingFormView from '../../RegisteredShippingForm/views/RegisteredShippingForm.view.native';
+import CONSTANTS from '../../../../../Checkout.constants';
 
 const ShippingForm = ({
-  shippingLabels,
   shipmentMethods,
   selectedShipmentId,
   dispatch,
@@ -26,101 +28,162 @@ const ShippingForm = ({
   orderHasPickUp,
   smsSignUpLabels,
   isOrderUpdateChecked,
-  emailSignUpLabels,
   addressLabels: { addressFormLabels },
   addressPhoneNo,
   loadShipmentMethods,
   navigation,
   handleSubmit,
   submitShippingForm,
+  labels,
+  userAddresses,
+  onFileAddressKey,
+  isSaveToAddressBookChecked,
+  updateShippingAddress,
+  addNewShippingAddress,
+  address,
+  setAsDefaultShipping,
+  defaultAddressId,
+  syncErrorsObject,
+  newUserPhoneNo,
 }) => {
   return (
-    <ShippingFormWrapper>
-      <FormSection name="address">
-        <AddressFields
-          addressFormLabels={addressFormLabels}
-          showDefaultCheckbox={false}
-          formName="checkoutShipping"
-          formSection="address"
-          dispatch={dispatch}
-          addressPhoneNo={addressPhoneNo}
-          loadShipmentMethods={loadShipmentMethods}
-          disableCountry
-        />
-      </FormSection>
-      {!orderHasPickUp && isUsSite && (
-        <FormSection name="smsSignUp">
-          <SMSFormFields
-            labels={smsSignUpLabels}
-            showDefaultCheckbox={false}
+    <>
+      <ShippingFormWrapper>
+        {!isGuest && (
+          <RegisteredShippingFormView
+            labels={labels}
+            userAddresses={userAddresses}
+            addressFormLabels={addressFormLabels}
             formName="checkoutShipping"
-            formSection="smsSignUp"
-            isOrderUpdateChecked={isOrderUpdateChecked}
             dispatch={dispatch}
             addressPhoneNo={addressPhoneNo}
+            loadShipmentMethods={loadShipmentMethods}
+            onFileAddressKey={onFileAddressKey}
+            isSaveToAddressBookChecked={isSaveToAddressBookChecked}
+            updateShippingAddress={updateShippingAddress}
+            addNewShippingAddress={addNewShippingAddress}
+            address={address}
+            isGuest={isGuest}
+            setAsDefaultShipping={setAsDefaultShipping}
+            defaultAddressId={defaultAddressId}
+            syncErrorsObject={syncErrorsObject}
+            newUserPhoneNo={newUserPhoneNo}
           />
-        </FormSection>
-      )}
-      {!orderHasPickUp && isGuest && !isUsSite && (
-        <FormSection name="emailSignUp">
-          <EmailSignUpForm>
-            <EmailSignUpWrapper>
-              <Field
-                dataLocator="signUp-checkbox-field"
-                name="sendEmailSignup"
-                component={InputCheckbox}
-              />
+        )}
+        {isGuest && (
+          <FormSection name="address">
+            <AddressFields
+              addressFormLabels={addressFormLabels}
+              showDefaultCheckbox={false}
+              formName="checkoutShipping"
+              formSection="address"
+              dispatch={dispatch}
+              addressPhoneNo={addressPhoneNo}
+              loadShipmentMethods={loadShipmentMethods}
+              disableCountry
+            />
+          </FormSection>
+        )}
+        {!orderHasPickUp && isUsSite && (
+          <FormSection name="smsSignUp">
+            <SMSFormFields
+              labels={smsSignUpLabels}
+              showDefaultCheckbox={false}
+              formName="checkoutShipping"
+              formSection="smsSignUp"
+              isOrderUpdateChecked={isOrderUpdateChecked}
+              dispatch={dispatch}
+              addressPhoneNo={addressPhoneNo}
+            />
+          </FormSection>
+        )}
+        {!orderHasPickUp && isGuest && !isUsSite && (
+          <FormSection name="emailSignUp">
+            <EmailSignUpForm>
+              <EmailSignUpWrapper>
+                <Field
+                  dataLocator="signUp-checkbox-field"
+                  name="sendEmailSignup"
+                  component={InputCheckbox}
+                />
+                <BodyCopy
+                  dataLocator="shipping-email-signUp-heading-lbl"
+                  fontSize="fs14"
+                  mobileFontFamily="secondary"
+                  fontWeight="regular"
+                  text={getLabelValue(
+                    labels,
+                    'lbl_pickup_emailSignupHeading',
+                    'pickup',
+                    'checkout'
+                  )}
+                />
+              </EmailSignUpWrapper>
               <BodyCopy
-                dataLocator="shipping-email-signUp-heading-lbl"
-                fontSize="fs14"
+                dataLocator="shipping-email-signUp-sub-heading-text"
+                fontSize="fs12"
                 mobileFontFamily="secondary"
                 fontWeight="regular"
-                text={emailSignUpLabels.emailSignupHeading}
+                text={getLabelValue(
+                  labels,
+                  'lbl_pickup_emailSignupSubHeading',
+                  'pickup',
+                  'checkout'
+                )}
               />
-            </EmailSignUpWrapper>
-            <BodyCopy
-              dataLocator="shipping-email-signUp-sub-heading-text"
-              fontSize="fs12"
-              mobileFontFamily="secondary"
-              fontWeight="regular"
-              text={emailSignUpLabels.emailSignupSubHeading}
-            />
-            <BodyCopy
-              fontSize="fs12"
-              mobileFontFamily="secondary"
-              fontWeight="regular"
-              text={emailSignUpLabels.emailSignupSubSubHeading}
-            />
-            <Anchor
-              noUnderline
-              anchorVariation="primary"
-              fontSizeVariation="small"
-              noLink
-              href="#"
-              target="_blank"
-              dataLocator="shipping-email-signUp-contact-anchor"
-              text={emailSignUpLabels.emailSignupContact}
-            />
-          </EmailSignUpForm>
+              <BodyCopy
+                fontSize="fs12"
+                mobileFontFamily="secondary"
+                fontWeight="regular"
+                text={getLabelValue(
+                  labels,
+                  'lbl_pickup_emailSignupSubSubHeading',
+                  'pickup',
+                  'checkout'
+                )}
+              />
+              <Anchor
+                noUnderline
+                anchorVariation="primary"
+                fontSizeVariation="small"
+                noLink
+                href="#"
+                target="_blank"
+                dataLocator="shipping-email-signUp-contact-anchor"
+                text={getLabelValue(labels, 'lbl_pickup_emailSignupContact', 'pickup', 'checkout')}
+              />
+            </EmailSignUpForm>
+          </FormSection>
+        )}
+        <FormSection name="shipmentMethods">
+          <ShipmentMethods
+            shipmentMethods={shipmentMethods}
+            formName="checkoutShipping"
+            formSection="shipmentMethods"
+            shipmentHeader={getLabelValue(
+              labels,
+              'lbl_shipping_shipmentHeader',
+              'shipping',
+              'checkout'
+            )}
+            selectedShipmentId={selectedShipmentId}
+            dispatch={dispatch}
+          />
         </FormSection>
-      )}
-      <FormSection name="shipmentMethods">
-        <ShipmentMethods
-          shipmentMethods={shipmentMethods}
-          formName="checkoutShipping"
-          formSection="shipmentMethods"
-          shipmentHeader={shippingLabels.shipmentHeader}
-          selectedShipmentId={selectedShipmentId}
-          dispatch={dispatch}
-        />
-      </FormSection>
+      </ShippingFormWrapper>
       <CnCTemplate
         navigation={navigation}
-        btnText="NEXT:BILLING"
+        btnText={getLabelValue(labels, 'lbl_shipping_billingText', 'shipping', 'checkout')}
         routeToPage=""
         onPress={handleSubmit(submitShippingForm)}
+        isGuest={isGuest}
+        backLinkText={
+          orderHasPickUp &&
+          getLabelValue(labels, 'lbl_shipping_backLinkText', 'shipping', 'checkout')
+        }
+        onBackLinkPress={() => navigation.navigate(CONSTANTS.CHECKOUT_ROUTES_NAMES.CHECKOUT_PICKUP)}
       />
-    </ShippingFormWrapper>
+    </>
   );
 };
 
@@ -135,11 +198,10 @@ ShippingForm.propTypes = {
   handleSubmit: PropTypes.func.isRequired,
   dispatch: PropTypes.func.isRequired,
   isOrderUpdateChecked: PropTypes.bool,
-  shippingLabels: PropTypes.shape({}).isRequired,
   smsSignUpLabels: PropTypes.shape({}).isRequired,
   selectedShipmentId: PropTypes.string,
   addressPhoneNo: PropTypes.number,
-  emailSignUpLabels: PropTypes.shape({}).isRequired,
+  labels: PropTypes.shape({}).isRequired,
   isGuest: PropTypes.bool,
   isUsSite: PropTypes.bool,
   orderHasPickUp: PropTypes.bool,
@@ -147,6 +209,16 @@ ShippingForm.propTypes = {
   loadShipmentMethods: PropTypes.func.isRequired,
   navigation: PropTypes.shape({}).isRequired,
   submitShippingForm: PropTypes.func.isRequired,
+  userAddresses: PropTypes.shape([]),
+  onFileAddressKey: PropTypes.string,
+  isSaveToAddressBookChecked: PropTypes.bool,
+  updateShippingAddress: PropTypes.func,
+  addNewShippingAddress: PropTypes.func,
+  address: PropTypes.shape({}),
+  setAsDefaultShipping: PropTypes.func,
+  defaultAddressId: PropTypes.string,
+  syncErrorsObject: PropTypes.shape({}),
+  newUserPhoneNo: PropTypes.string,
 };
 
 ShippingForm.defaultProps = {
@@ -157,12 +229,24 @@ ShippingForm.defaultProps = {
   isUsSite: true,
   orderHasPickUp: false,
   shipmentMethods: null,
+  userAddresses: null,
+  onFileAddressKey: null,
+  isSaveToAddressBookChecked: false,
+  updateShippingAddress: () => {},
+  addNewShippingAddress: () => {},
+  address: null,
+  setAsDefaultShipping: null,
+  defaultAddressId: null,
+  syncErrorsObject: {},
+  newUserPhoneNo: null,
 };
 
 export default reduxForm({
   form: 'checkoutShipping',
   ...validateMethod, // a unique identifier for this form
   destroyOnUnmount: false,
+  enableReinitialize: true,
+  keepDirtyOnReinitialize: true,
 })(ShippingForm);
 
 export { ShippingForm as ShippingFormVanilla };

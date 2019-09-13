@@ -8,7 +8,7 @@ import Carousel from '../../Carousel';
 import { Image } from '../../../atoms';
 import LinkText from '../../LinkText';
 import PromoBanner from '../../PromoBanner';
-import { isGymboree, getScreenWidth } from '../../../../../utils/index.native';
+import { isGymboree, getScreenWidth, LAZYLOAD_HOST_NAME } from '../../../../../utils/index.native';
 import {
   Container,
   ButtonContainer,
@@ -100,6 +100,7 @@ const renderView = (item, navigation, position) => {
         width={MODULE_WIDTH}
         height={isGymboree() ? MODULE_GYM_HEIGHT : MODULE_TCP_HEIGHT}
         url={image.url}
+        host={LAZYLOAD_HOST_NAME.HOME}
       />
       <HeaderWrapper>
         <HeaderComponent>

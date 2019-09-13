@@ -1,5 +1,5 @@
 /* eslint-disable extra-rules/no-commented-out-code */
-
+import { getLabelValue } from '@tcp/core/src/utils';
 import {
   getSetCurrentOrderIdActn,
   getSetCartActn,
@@ -24,6 +24,11 @@ import {
   getSetAirmilesPromoIdActn,
   getSetAirmilesAccountActn,
 } from '../container/Checkout.action';
+import CardConstants from '../../../account/AddEditCreditCard/container/AddEditCreditCard.constants';
+import { isMobileApp, routerPush } from '../../../../../utils';
+import CONSTANTS, { CHECKOUT_ROUTES } from '../Checkout.constants';
+
+const { CREDIT_CARDS_BIN_RANGES, ACCEPTED_CREDIT_CARDS } = CardConstants;
 
 const getOrderPointsRecalcFlag = (/* recalcRewards, recalcOrderPointsInterval */) => {
   // let recalcVal = recalcRewards;
@@ -62,16 +67,16 @@ const updateCartInfo = (cartInfo, isUpdateCartItems) => {
     getSetPointsAndRewardsActn(getRewardPoints),
     setCartTotalAfterPLCCDiscount(cartInfo.cartTotalAfterPLCCDiscount),
   ];
-
+  /* istanbul ignore else */
   if (isUpdateCartItems) {
     actions.push(getSetCartActn(cartInfo.orderItems));
     actions.push(getSetCartStoreActn(cartInfo.stores));
   }
-
+  /* istanbul ignore else */
   if (cartInfo.uiFlags) {
     actions.push(getSetIsPayPalEnabledActn(cartInfo.uiFlags.isPaypalEnabled));
   }
-
+  /* istanbul ignore else */
   if (cartInfo.airmiles) {
     actions.push(getSetAirmilesPromoIdActn(cartInfo.airmiles.promoId));
     actions.push(getSetAirmilesAccountActn(cartInfo.airmiles.accountNumber));
@@ -95,13 +100,77 @@ const hasPOBox = (addressLine1 = '', addressLine2 = '') => {
   );
 };
 
+const isOrderHasShipping = cartItems => {
+  return cartItems && cartItems.filter(item => !item.getIn(['miscInfo', 'store'])).size;
+};
+
 const isOrderHasPickup = cartItems => {
   return cartItems && cartItems.filter(item => !!item.getIn(['miscInfo', 'store'])).size;
 };
+
+const getAvailableStages = (cartItems, checkoutProgressBarLabels) => {
+  const result = [
+    getLabelValue(checkoutProgressBarLabels, 'billingLabel'),
+    getLabelValue(checkoutProgressBarLabels, 'reviewLabel'),
+  ];
+  /* istanbul ignore else */
+  if (isOrderHasShipping(cartItems)) {
+    result.unshift(getLabelValue(checkoutProgressBarLabels, 'shippingLabel'));
+  }
+  /* istanbul ignore else */
+  if (isOrderHasPickup(cartItems)) {
+    result.unshift(getLabelValue(checkoutProgressBarLabels, 'pickupLabel'));
+  }
+  return result;
+};
+
+const routeToPage = (dataObj, ...others) => {
+  const { to, asPath } = dataObj;
+  routerPush(to, asPath, ...others);
+};
+
+function getCreditCardType({ cardNumber = '', cardType } = {}) {
+  if (cardNumber.length === 0) {
+    return null;
+  }
+  const keys = Object.keys(CREDIT_CARDS_BIN_RANGES);
+  for (let i = 0; i < keys.length; i += 1) {
+    const type = keys[i];
+    const cartRangeType = CREDIT_CARDS_BIN_RANGES[type];
+    let currentRange = 0;
+    const rangesCount = cartRangeType.length;
+    for (; currentRange < rangesCount; currentRange += 1) {
+      const { from, to } = cartRangeType[currentRange];
+      const prefixLength = from.toString().length;
+      const prefix = cardNumber.substr(0, prefixLength);
+
+      if (prefix >= from && prefix <= to) {
+        return ACCEPTED_CREDIT_CARDS[type];
+      }
+    }
+  }
+  if (cardType && cardNumber.substr(0, 1) === '*') {
+    return cardType.toUpperCase();
+  }
+  return null;
+}
+
+function redirectToBilling(navigation) {
+  if (!isMobileApp()) {
+    routeToPage(CHECKOUT_ROUTES.billingPage);
+  } else if (navigation) {
+    navigation.navigate(CONSTANTS.CHECKOUT_ROUTES_NAMES.CHECKOUT_BILLING);
+  }
+}
 
 export default {
   getOrderPointsRecalcFlag,
   updateCartInfo,
   hasPOBox,
   isOrderHasPickup,
+  getAvailableStages,
+  routeToPage,
+  getCreditCardType,
+  redirectToBilling,
+  isOrderHasShipping,
 };

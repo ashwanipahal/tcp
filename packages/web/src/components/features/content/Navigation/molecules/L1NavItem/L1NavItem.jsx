@@ -7,6 +7,10 @@ import { getViewportInfo } from '@tcp/core/src/utils';
 import PromoBadge from '../PromoBadge';
 import style from './L1NavItem.style';
 
+const HideDrawerContext = React.createContext({});
+const HideDrawerProvider = HideDrawerContext.Provider;
+export const HideDrawerConsumer = HideDrawerContext.Consumer;
+
 /**
  * This function highlights clearance links in red color on the base of id in unbxd
  * @param {*} id
@@ -26,6 +30,10 @@ class L1NavItem extends React.PureComponent {
         hovered: !e.target.classList.contains('l1-overlay'),
       });
     }
+  };
+
+  hideL2Nav = () => {
+    this.setState({ hovered: false });
   };
 
   onMouseLeave = () => {
@@ -65,7 +73,7 @@ class L1NavItem extends React.PureComponent {
 
   render() {
     const {
-      categoryContent: { id, name, description, mainCategory, url },
+      categoryContent: { id, name, description, mainCategory, url, asPath },
       className,
       dataLocator,
       index,
@@ -93,38 +101,46 @@ class L1NavItem extends React.PureComponent {
 
     return (
       <React.Fragment>
-        <BodyCopy
-          component="li"
-          // className={`${className} ${classForHovered} nav-bar-l1-item ${classToShowOnlyOnApp}`}
-          className={`${className} ${classForHovered} nav-bar-l1-item`}
-          fontFamily="secondary"
-          fontSize={['fs13', 'fs13', 'fs15']}
-          fontWeight="semibold"
-          color="text.hint"
-          lineHeight="lh115"
-          data-locator={dataLocator}
-          tabIndex={0}
-          onMouseOver={this.onHover}
-          onFocus={this.onHover}
-          onMouseOut={this.onMouseLeave}
-          onBlur={this.onMouseLeave}
-          {...others}
+        <HideDrawerProvider
+          value={{
+            hideL2Nav: this.hideL2Nav,
+          }}
         >
-          <Anchor to={url} onClick={this.openNavigationDrawer(hasL2)}>
-            <div className="nav-bar-l1-content" role="button" tabIndex={0}>
-              <span className={`nav-bar-item-label ${classForRedContent}`}>{name}</span>
-              <span
-                className={`nav-bar-item-content ${description ? 'nav-bar-item-sizes-range' : ''}`}
-                data-locator={description ? `sizesrange_label_${index}` : `promo_badge_${index}`}
-              >
-                {description || (promoBadge && <PromoBadge data={promoBadge} />) || ``}
-              </span>
-              <span className="icon-arrow" />
-            </div>
-          </Anchor>
-          {(hovered || this.childRendered) && children}
-          <div className={`${className} l1-overlay ${classForHovered}`} />
-        </BodyCopy>
+          <BodyCopy
+            component="li"
+            // className={`${className} ${classForHovered} nav-bar-l1-item ${classToShowOnlyOnApp}`}
+            className={`${className} ${classForHovered} nav-bar-l1-item`}
+            fontFamily="secondary"
+            fontSize={['fs13', 'fs13', 'fs15']}
+            fontWeight="semibold"
+            color="text.hint"
+            lineHeight="lh115"
+            data-locator={dataLocator}
+            tabIndex={0}
+            onMouseOver={this.onHover}
+            onFocus={this.onHover}
+            onMouseOut={this.onMouseLeave}
+            onBlur={this.onMouseLeave}
+            {...others}
+          >
+            <Anchor to={url} asPath={asPath} onClick={this.openNavigationDrawer(hasL2)}>
+              <div className="nav-bar-l1-content" role="button" tabIndex={0}>
+                <span className={`nav-bar-item-label ${classForRedContent}`}>{name}</span>
+                <span
+                  className={`nav-bar-item-content ${
+                    description ? 'nav-bar-item-sizes-range' : ''
+                  }`}
+                  data-locator={description ? `sizesrange_label_${index}` : `promo_badge_${index}`}
+                >
+                  {description || (promoBadge && <PromoBadge data={promoBadge} />) || ``}
+                </span>
+                <span className="icon-arrow" />
+              </div>
+            </Anchor>
+            {(hovered || this.childRendered) && children}
+            <div className={`${className} l1-overlay ${classForHovered}`} />
+          </BodyCopy>
+        </HideDrawerProvider>
       </React.Fragment>
     );
   }

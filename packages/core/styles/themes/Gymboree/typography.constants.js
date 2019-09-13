@@ -17,7 +17,9 @@ export const LETTER_SPACINGS = {
   ls167: '1.67px',
   ls317: '3.17px',
   ls4: '4px',
-
+  ls1: '1px',
+  ls2: '2px',
+  ls071: '0.71px',
   normal: 'normal',
 };
 

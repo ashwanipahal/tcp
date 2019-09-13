@@ -1,11 +1,12 @@
 import { connect } from 'react-redux';
 import { fetchCandidData } from './GetCandid.actions';
 import GetCandidView from '../views/GetCandid.native';
-import { getCandidData } from './GetCandid.selectors';
+import { getCandidData, getLabels } from './GetCandid.selectors';
 
 const mapStateToProps = state => {
   return {
     candidData: getCandidData(state),
+    labels: getLabels(state),
   };
 };
 

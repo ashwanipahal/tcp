@@ -4,21 +4,39 @@ import Modal from '@tcp/core/src/components/common/molecules/Modal';
 import Button from '@tcp/core/src/components/common/atoms/Button';
 import Anchor from '@tcp/core/src/components/common/atoms/Anchor';
 import withStyles from '@tcp/core/src/components/common/hoc/withStyles';
+import endpoints from '@tcp/core/src/components/features/account/common/externalEndpoints';
 import { BodyCopy } from '../../../../../../../../styles/themes/TCP/typotheme';
 import styles from '../styles/CouponDetailModal.style';
 
 class CouponDetailModal extends React.PureComponent<Props> {
+  componentDidUpdate() {
+    const { coupon, handleErrorCoupon } = this.props;
+    if (coupon.error) {
+      handleErrorCoupon(coupon);
+    }
+  }
+
   printClick = event => {
     window.print();
     event.preventDefault();
   };
 
-  tAndCClick = event => {
-    event.preventDefault();
+  /**
+   * This function is used for apply to bag coupon
+   * can be passed in the component.
+   */
+  handleApplyToBag = () => {
+    const { onApplyCouponToBagFromList, coupon, onRequestClose } = this.props;
+    onApplyCouponToBagFromList({
+      couponCode: coupon.id,
+      id: coupon.id,
+      coupon: coupon.id,
+    });
+    onRequestClose();
   };
 
   renderModal = () => {
-    const { labels, coupon, className, applyToBag, onRequestClose } = this.props;
+    const { labels, coupon, className } = this.props;
     return (
       <div className={className}>
         <BodyCopy
@@ -47,10 +65,7 @@ class CouponDetailModal extends React.PureComponent<Props> {
           <Button
             buttonVariation="fixed-width"
             fill="BLUE"
-            onClick={() => {
-              onRequestClose();
-              applyToBag(coupon);
-            }}
+            onClick={this.handleApplyToBag}
             className="couponModal_applyToBag couponModal_btn"
             data-locator={`couponDetailModal_${coupon.status}_AddToBagBtn`}
           >
@@ -88,7 +103,7 @@ class CouponDetailModal extends React.PureComponent<Props> {
             anchorVariation="primary"
             fontSize="fs14"
             dataLocator={`couponDetailModal_${coupon.status}_tAndC`}
-            onClick={this.tAndCClick}
+            url={endpoints.termsAndConditionsPage}
             className="couponModal_print_anchortext"
           >
             {`${labels.TERMS_AND_CONDITIONS}`}
@@ -100,7 +115,7 @@ class CouponDetailModal extends React.PureComponent<Props> {
             anchorVariation="primary"
             fontSize="fs14"
             dataLocator={`couponDetailModal_${coupon.status}_pp`}
-            onClick={this.tAndCClick}
+            url={endpoints.privacyPolicyPage}
             className="couponModal_print_anchortext"
           >
             {`${labels.PRIVACY_POLICY}`}

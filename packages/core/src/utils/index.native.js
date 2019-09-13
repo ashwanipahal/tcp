@@ -15,6 +15,8 @@ export {
   createAPIConfig,
   switchAPIConfig,
   isAndroid,
+  getPixelRatio,
+  LAZYLOAD_HOST_NAME,
 } from './utils.app';
 
 export { default, getSiteId } from './utils.app';
@@ -34,4 +36,8 @@ export {
   getAddressFromPlace,
   formatAddress,
   getLabelValue,
+  capitalize,
+  toTimeString,
+  getPromotionalMessage,
+  getBirthDateOptionMap,
 } from './utils';

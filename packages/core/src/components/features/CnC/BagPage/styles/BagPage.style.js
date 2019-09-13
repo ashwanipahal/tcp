@@ -7,7 +7,9 @@ const styles = css`
     background: #fff;
   }
   .order-summary {
-    margin: 16px 0;
+    @media ${props => props.theme.mediaQuery.medium} {
+      margin: 16px 0;
+    }
   }
 
   .checkout-button {
@@ -26,14 +28,17 @@ const styles = css`
 
   .bag-header {
     margin: 0;
-    padding: 40px 0 20px;
+    padding: 20px 0 20px;
     @media ${props => props.theme.mediaQuery.smallOnly} {
       text-align: center;
-      border-bottom: 2px solid ${props => props.theme.colorPalette.primary.dark};
+      border-bottom: 2px solid ${props => props.theme.colors.TEXT.DARKERGRAY};
       padding: 13px 0 22px;
       margin: 0;
       font-size: 18px;
       font-weight: 800;
+    }
+    @media ${props => props.theme.mediaQuery.medium} {
+      padding-left: 3px;
     }
   }
 `;

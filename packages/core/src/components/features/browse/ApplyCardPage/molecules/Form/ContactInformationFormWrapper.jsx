@@ -164,21 +164,21 @@ class ContactInformationFormWrapper extends React.Component {
             />
           </Col>
           <Col colSize={{ small: 6, medium: 4, large: 6 }} className="columnWrapper">
-            <BodyCopy
-              component="span"
-              fontSize="fs12"
-              fontFamily="secondary"
-              fontWeight="extrabold"
-              className="free_dropdown_label"
-            >
-              {labels.plcc_form_state}
-            </BodyCopy>
             <Row fullBleed>
               <Col
                 className="contact_information_form"
                 key="container_state"
                 colSize={{ large: 6, medium: 4, small: 3 }}
               >
+                <BodyCopy
+                  component="span"
+                  fontSize="fs12"
+                  fontFamily="secondary"
+                  fontWeight="extrabold"
+                  className="free_dropdown_label columnWrapper"
+                >
+                  {labels.plcc_form_state}
+                </BodyCopy>
                 <Field
                   id="state"
                   name="statewocountry"

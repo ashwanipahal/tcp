@@ -24,17 +24,19 @@ type Props = {
 };
 
 const closeIcon = require('../../../../../assets/close.png');
+const arrowIcon = require('../../../../../assets/carrot-large-left.png');
 
 type CloseIconProps = {
   onRequestClose: Function,
   headerStyle: Object,
+  iconType: String,
 };
 
-const getCloseIcon = ({ onRequestClose, headerStyle }: CloseIconProps) => {
+const getCloseIcon = ({ onRequestClose, headerStyle, iconType }: CloseIconProps) => {
   return (
     <ImageWrapper style={headerStyle}>
       <StyledTouchableOpacity onPress={onRequestClose}>
-        <StyledCrossImage source={closeIcon} />
+        <StyledCrossImage source={iconType === 'arrow' ? arrowIcon : closeIcon} />
       </StyledTouchableOpacity>
     </ImageWrapper>
   );
@@ -52,15 +54,22 @@ const ModalNative = ({ isOpen, children, ...otherProps }: Props) => {
     fontSize,
     horizontalBar = true,
     borderColor = 'black',
+    iconType,
+    fullWidth,
   } = otherProps;
   return (
     <SafeAreaView>
-      <Modal transparent={false} visible={isOpen} animationType={animationType}>
+      <Modal
+        transparent={false}
+        visible={isOpen}
+        animationType={animationType}
+        onRequestClose={onRequestClose}
+      >
         <ToastContainer />
         <StatusBar hidden />
-        {heading && (
-          <RowWrapper>
-            <ModalHeading>
+        <RowWrapper>
+          {heading && (
+            <ModalHeading fullWidth={fullWidth}>
               <BodyCopy
                 mobileFontFamily={headingFontFamily || 'primary'}
                 fontWeight={headingFontWeight || 'extrabold'}
@@ -69,9 +78,9 @@ const ModalNative = ({ isOpen, children, ...otherProps }: Props) => {
                 text={heading}
               />
             </ModalHeading>
-            {getCloseIcon({ onRequestClose, headerStyle })}
-          </RowWrapper>
-        )}
+          )}
+          {getCloseIcon({ onRequestClose, headerStyle, iconType })}
+        </RowWrapper>
         {horizontalBar ? (
           <LineWrapper>
             <LineComp marginTop={5} borderWidth={2} borderColor={borderColor} />

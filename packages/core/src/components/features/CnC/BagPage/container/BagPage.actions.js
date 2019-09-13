@@ -1,3 +1,6 @@
+import { loadComponentLabelsData } from '@tcp/core/src/reduxStore/actions';
+import { LABELS } from '@tcp/core/src/reduxStore/constants';
+
 import BAGPAGE_CONSTANTS from '../BagPage.constants';
 
 const getOrderDetails = () => {
@@ -20,10 +23,10 @@ const getOrderDetailsComplete = payload => {
   };
 };
 
-const startCheckout = isEditingItem => {
+const startCheckout = payload => {
   return {
     type: BAGPAGE_CONSTANTS.START_BAG_CHECKOUT,
-    isEditingItem,
+    payload,
   };
 };
 
@@ -82,9 +85,10 @@ const setModuleX = payload => {
   };
 };
 
-const removeUnqualifiedItemsAndCheckout = () => {
+const removeUnqualifiedItemsAndCheckout = navigation => {
   return {
     type: BAGPAGE_CONSTANTS.REMOVE_UNQUALIFIED_AND_CHECKOUT,
+    navigation,
   };
 };
 
@@ -100,6 +104,8 @@ const routeForCheckout = () => {
     type: BAGPAGE_CONSTANTS.ROUTE_FOR_CART_CHECKOUT,
   };
 };
+
+const initActions = [loadComponentLabelsData({ category: LABELS.checkout })];
 
 export default {
   getOrderDetails,
@@ -117,4 +123,5 @@ export default {
   setCartItemsUpdating,
   setItemUnavailable,
   routeForCheckout,
+  initActions,
 };

@@ -81,6 +81,7 @@ class AddressForm extends React.PureComponent {
       dispatch,
       addressLine1,
       initialValues,
+      setModalHeading,
     } = this.props;
     const { dropDownItem, country } = this.state;
     const disabledProps = {
@@ -90,6 +91,7 @@ class AddressForm extends React.PureComponent {
       disabledProps.isChecked = true;
       disabledProps.disabled = true;
     }
+    setModalHeading(); // set modal heading
     return (
       <AddAddressWrapper>
         <Field
@@ -116,10 +118,10 @@ class AddressForm extends React.PureComponent {
             onValueChange={(data, inputValue) => {
               this.handlePlaceSelected(data, inputValue);
             }}
-            onEndEditing={text => {
+            onChangeText={text => {
               setTimeout(() => {
                 dispatch(change('AddressForm', 'addressLine1', text));
-              }, 1000);
+              });
             }}
             refs={instance => {
               this.locationRef = instance;
@@ -291,6 +293,7 @@ AddressForm.propTypes = {
   }),
   addressLine1: PropTypes.string,
   countryState: PropTypes.string,
+  setModalHeading: PropTypes.func,
 };
 
 AddressForm.defaultProps = {
@@ -320,6 +323,7 @@ AddressForm.defaultProps = {
   },
   addressLine1: '',
   countryState: '',
+  setModalHeading: () => {},
 };
 
 const validateMethod = createValidateMethod(

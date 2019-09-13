@@ -178,11 +178,13 @@ class TCPWebApp extends App {
               <Header />
               <CheckoutHeader />
               <Loader />
-              <div id="overlayWrapper">
-                <div id="overlayComponent" />
-                <Component {...pageProps} />
-                <Footer />
+              <div className="content-wrapper">
+                <div id="overlayWrapper">
+                  <div id="overlayComponent" />
+                  <Component {...pageProps} />
+                </div>
               </div>
+              <Footer />
             </Grid>
           </Provider>
         </ThemeProvider>

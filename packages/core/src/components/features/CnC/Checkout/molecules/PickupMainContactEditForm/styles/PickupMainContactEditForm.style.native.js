@@ -25,6 +25,7 @@ const PickupEditHeader = styled.View`
 
 const EditAnchor = styled.View`
   margin-left: 44px;
+  font-size: ${props => props.theme.typography.fontSizes.fs12};
 `;
 
 export { Style, ModalContainer, ModalHeading, PickupEditHeader, EditAnchor };

@@ -19,7 +19,10 @@ class CustomSelect extends React.Component<Props> {
   }
 
   componentDidMount() {
-    this.customSelect = document.querySelector('.custom-select');
+    const { customSelectClassName } = this.props;
+    this.customSelect = document.querySelector(
+      customSelectClassName ? `.${customSelectClassName}` : '.custom-select'
+    );
     window.addEventListener('click', this.closeDropdownIfClickOutside);
   }
 
@@ -58,6 +61,10 @@ class CustomSelect extends React.Component<Props> {
     });
   };
 
+  onClose = () => {
+    this.toggleHandler();
+  };
+
   onClickHandler = (e, value, title) => {
     e.stopPropagation();
     const { clickHandler } = this.props;
@@ -67,6 +74,20 @@ class CustomSelect extends React.Component<Props> {
     });
     this.toggleHandler();
     clickHandler(e, value, title);
+  };
+
+  getDropDownListWithChild = () => {
+    const { options, childrenComp } = this.props;
+    const { activeValue } = this.state;
+    return childrenComp !== null ? (
+      childrenComp(options, this.onClickHandler, activeValue, this.onClose)
+    ) : (
+      <DropdownList
+        optionsMap={options}
+        clickHandler={this.onClickHandler}
+        activeValue={activeValue}
+      />
+    );
   };
 
   getDropDownList = () => {
@@ -79,20 +100,16 @@ class CustomSelect extends React.Component<Props> {
         activeValue={activeValue}
       />
     ) : (
-      <DropdownList
-        optionsMap={options}
-        clickHandler={this.onClickHandler}
-        activeValue={activeValue}
-      />
+      this.getDropDownListWithChild()
     );
   };
 
   render() {
     const { toggle, activeTitle } = this.state;
-    const { className, selectListTitle } = this.props;
+    const { className, selectListTitle, customSelectClassName } = this.props;
     return (
-      <BodyCopy component="div" className={`${className} custom-select`}>
-        <span>{`${selectListTitle}:`}</span>
+      <BodyCopy component="div" className={`${className} custom-select ${customSelectClassName}`}>
+        {selectListTitle && <span>{`${selectListTitle}:`}</span>}
         <BodyCopy component="div" onClick={this.toggleHandler} className="customSelectTitle">
           {activeTitle}
         </BodyCopy>
@@ -105,18 +122,22 @@ class CustomSelect extends React.Component<Props> {
 CustomSelect.propTypes = {
   className: PropTypes.string,
   selectListTitle: PropTypes.string,
+  customSelectClassName: PropTypes.string,
   clickHandler: PropTypes.func,
   options: PropTypes.shape({}).isRequired,
   activeTitle: PropTypes.string,
   activeValue: PropTypes.string,
+  childrenComp: PropTypes.node,
 };
 
 CustomSelect.defaultProps = {
   className: '',
   selectListTitle: '',
+  customSelectClassName: '',
   activeTitle: '',
   activeValue: '',
   clickHandler: () => {},
+  childrenComp: null,
 };
 
 export default withStyles(CustomSelect, styles);
