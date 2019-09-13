@@ -4,15 +4,17 @@ import PropTypes from 'prop-types';
 import BodyCopy from '@tcp/core/src/components/common/atoms/BodyCopy';
 import OrderLedgerContainer from '../../OrderLedger';
 import CouponAndPromos from '../../CouponAndPromos';
+import BonusPointsDays from '../../../../../../common/organisms/BonusPointsDays';
 import {
   ButtonWrapper,
   CheckoutButton,
   BackLinkText,
   BackIcon,
   BackLinkWrapperWrapper,
+  BonusPointsWrapper,
 } from '../styles/CnCTemplate.style.native';
 
-const CnCCommonTemplate = ({ btnText, onPress, backLinkText, onBackLinkPress }) => {
+const CnCCommonTemplate = ({ btnText, onPress, backLinkText, onBackLinkPress, isGuest }) => {
   return (
     <>
       <View>
@@ -21,6 +23,11 @@ const CnCCommonTemplate = ({ btnText, onPress, backLinkText, onBackLinkPress }) 
       <View>
         <OrderLedgerContainer />
       </View>
+      {!isGuest && (
+        <BonusPointsWrapper>
+          <BonusPointsDays />
+        </BonusPointsWrapper>
+      )}
       <ButtonWrapper>
         <CheckoutButton onPress={onPress}>
           <BodyCopy
@@ -49,6 +56,7 @@ CnCCommonTemplate.propTypes = {
   onPress: PropTypes.func.isRequired,
   backLinkText: PropTypes.string.isRequired,
   onBackLinkPress: PropTypes.func.isRequired,
+  isGuest: PropTypes.func.isRequired,
 };
 
 export default CnCCommonTemplate;
