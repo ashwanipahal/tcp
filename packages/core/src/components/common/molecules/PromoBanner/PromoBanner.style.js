@@ -330,7 +330,7 @@ export default css`
   /*
   * Module J Promo Banner styles
   *********************************/
-  .style4 {
+  .extra_large_text_regular {
     font-family: ${props => props.theme.typography.fonts.primary};
     font-size: ${props => props.theme.typography.fontSizes.fs48};
 
@@ -338,7 +338,7 @@ export default css`
       font-size: 86px;
     }
   }
-  .style5 {
+  .extra_large_text_black {
     font-family: ${props => props.theme.typography.fonts.primary};
     font-size: ${props => props.theme.typography.fontSizes.fs48};
     font-weight: ${props => props.theme.typography.fontWeights.black};
@@ -347,23 +347,19 @@ export default css`
       font-size: 86px;
     }
   }
-  .style10 {
+  .medium_text_semibold {
     font-family: ${props => props.theme.typography.fonts.primary};
-    font-size: ${props => props.theme.typography.fontSizes.fs20};
+    font-size: ${props => props.theme.typography.fontSizes.fs32};
     font-weight: ${props => props.theme.typography.fontWeights.semibold};
     letter-spacing: ${props => props.theme.typography.letterSpacings.ls222};
 
     @media ${props => props.theme.mediaQuery.large} {
-      font-size: ${props => props.theme.typography.fontSizes.fs32};
-    }
-  }
-  .style11 {
-    font-family: ${props => props.theme.typography.fonts.primary};
-    font-size: ${props => props.theme.typography.fontSizes.fs48};
-    font-weight: ${props => props.theme.typography.fontWeights.black};
-
-    @media ${props => props.theme.mediaQuery.large} {
       font-size: ${props => props.theme.typography.fontSizes.fs64};
     }
+  }
+  .fixed_medium_text_black {
+    font-family: ${props => props.theme.typography.fonts.primary};
+    font-size: ${props => props.theme.typography.fontSizes.fs64};
+    font-weight: ${props => props.theme.typography.fontWeights.black};
   }
 `;

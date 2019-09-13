@@ -8,17 +8,17 @@ export default css`
       props.layout !== 'alt' ? props.theme.colorPalette.white : 'none'};
   }
 
-  .moduleJ-topview {
+  .topview {
     position: relative;
   }
 
-  .moduleJ-promo-alt {
+  .promo-alt {
     background-color: ${props => (props.bgColor ? props.bgColor : props.theme.colorPalette.white)};
     margin-bottom: ${props => props.theme.spacing.ELEM_SPACING.MED};
     padding: ${props => props.theme.spacing.ELEM_SPACING.XL} 0;
   }
 
-  .moduleJ-topbar {
+  .topbar {
     border-top: 3px solid ${props => props.theme.colorPalette.gray['500']};
     position: absolute;
     margin-top: ${props => props.theme.spacing.ELEM_SPACING.XS};
@@ -28,7 +28,7 @@ export default css`
     }
   }
 
-  .moduleJ-promo-header:first-child span {
+  .promo-header:first-child span {
     padding: 0 ${props => props.theme.spacing.ELEM_SPACING.SM};
 
     @media ${props => props.theme.mediaQuery.medium} {
@@ -36,7 +36,24 @@ export default css`
     }
   }
 
-  .moduleJ-promo {
+  .promo-header-wrapper {
+    ${props =>
+      !props.promoBanner
+        ? `
+      margin-bottom: ${props.theme.spacing.ELEM_SPACING.LRG};
+
+      @media ${props.theme.mediaQuery.medium} {
+        margin-bottom: 92px;
+      }
+
+      @media ${props.theme.mediaQuery.large} {
+        margin-bottom: 130px;
+      }
+    `
+        : ``};
+  }
+
+  .promo {
     position: relative;
     text-align: center;
   }
@@ -45,29 +62,29 @@ export default css`
     margin-bottom: 0;
   }
 
-  .moduleJ-promoBanner {
+  .promoBanner {
     margin: 0 auto ${props => props.theme.spacing.ELEM_SPACING.SM};
     width: 350px;
 
     @media ${props => props.theme.mediaQuery.medium} {
-      width: 260px;
+      width: 310px;
     }
 
     @media ${props => props.theme.mediaQuery.large} {
-      width: 350px;
+      width: 440px;
     }
   }
 
-  &.layout-alt .moduleJ-promoBanner {
+  &.layout-alt .promoBanner {
     margin: ${props => props.theme.spacing.ELEM_SPACING.SM} auto 0;
     width: auto;
   }
 
-  .moduleJ-promo-image-left {
+  .promo-image-left {
     margin-top: ${props => props.theme.spacing.ELEM_SPACING.LRG};
   }
 
-  .moduleJ-promo-image-right {
+  .promo-image-right {
     margin-top: ${props => props.theme.spacing.ELEM_SPACING.LRG};
 
     @media ${props => props.theme.mediaQuery.medium} {
@@ -75,7 +92,7 @@ export default css`
     }
   }
 
-  .moduleJ-promo-img {
+  .promo-img {
     width: 100%;
 
     @media ${props => props.theme.mediaQuery.medium} {
@@ -103,7 +120,7 @@ export default css`
     margin-top: 0;
   }
 
-  .moduleJ-image-link {
+  .image-link {
     display: flex;
     align-items: center;
     width: 89px;
@@ -125,7 +142,7 @@ export default css`
     }
   }
 
-  .moduleJ-cta-btn {
+  .cta-btn {
     margin-top: ${props => props.theme.spacing.ELEM_SPACING.MED};
   }
 `;

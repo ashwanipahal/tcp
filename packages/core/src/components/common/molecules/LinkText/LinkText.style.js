@@ -40,7 +40,7 @@ export default css`
   }
 
   /* Module J Heading styles */
-  .style12 {
+  .small_text_normal {
     font-family: ${props => props.theme.typography.fonts.primary};
     font-size: ${props => props.theme.typography.fontSizes.fs14};
 
@@ -48,7 +48,7 @@ export default css`
       font-size: ${props => props.theme.typography.fontSizes.fs20};
     }
   }
-  .style13 {
+  .medium_text_black {
     font-family: ${props => props.theme.typography.fonts.primary};
     font-weight: ${props => props.theme.typography.fontWeights.black};
     font-size: ${props => props.theme.typography.fontSizes.fs32};

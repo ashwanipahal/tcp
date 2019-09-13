@@ -10,7 +10,7 @@ export default {
           textItems: [
             {
               text: 'Every Length, Style, Color & Size',
-              style: 'style12',
+              style: 'small_text_normal',
             },
           ],
           link: {
@@ -30,7 +30,7 @@ export default {
           textItems: [
             {
               text: 'THE SHORT SHOP',
-              style: 'style13',
+              style: 'medium_text_black',
             },
           ],
           link: {
@@ -60,11 +60,13 @@ export default {
           textItems: [
             {
               text: 'ALL SHORTS',
-              style: 'style10',
+              style: 'medium_text_semibold',
+              altStyle: 'extra_large_text_regular',
             },
             {
               text: '60% OFF',
-              style: 'style11',
+              style: 'fixed_medium_text_black',
+              altStyle: 'extra_large_text_black',
             },
           ],
         },

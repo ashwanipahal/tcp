@@ -39,9 +39,9 @@ class ModuleJ extends React.PureComponent {
     return (
       <Grid className={`${className} layout-${layout}`}>
         {layout !== 'alt' ? (
-          <Row fullBleed={{ small: true, medium: true }} className="moduleJ-topview">
+          <Row fullBleed={{ small: true, medium: true }} className="topview">
             <Col
-              className="moduleJ-topbar"
+              className="topbar"
               colSize={{
                 small: 6,
                 medium: 8,
@@ -49,7 +49,7 @@ class ModuleJ extends React.PureComponent {
               }}
             />
             <Col
-              className="moduleJ-promo-image-left"
+              className="promo-image-left"
               colSize={{
                 small: 0,
                 medium: 2,
@@ -69,7 +69,7 @@ class ModuleJ extends React.PureComponent {
               />
             </Col>
             <Col
-              className="moduleJ-promo"
+              className="promo"
               colSize={{
                 small: 6,
                 medium: 4,
@@ -79,24 +79,28 @@ class ModuleJ extends React.PureComponent {
                 small: true,
               }}
             >
-              <LinkText
-                component="div"
-                headerText={headerText}
-                className="moduleJ-promo-header"
-                dataLocator={getLocator('moduleJ_header_text')}
-              />
-              <PromoBanner
-                promoBanner={promoBanner}
-                className="moduleJ-promoBanner"
-                dataLocator={getLocator('moduleJ_promobanner_text')}
-              />
+              <div className="promo-header-wrapper">
+                <LinkText
+                  component="div"
+                  headerText={headerText}
+                  className="promo-header"
+                  dataLocator={getLocator('moduleJ_header_text')}
+                />
+              </div>
+              {promoBanner && (
+                <PromoBanner
+                  promoBanner={promoBanner}
+                  className="promoBanner"
+                  dataLocator={getLocator('moduleJ_promobanner_text')}
+                />
+              )}
               <ProductTabList
                 onProductTabChange={this.onTabChange}
                 categoryList={categoryListMock}
               />
             </Col>
             <Col
-              className="moduleJ-promo-image-right"
+              className="promo-image-right"
               colSize={{
                 small: 6,
                 medium: 2,
@@ -104,7 +108,7 @@ class ModuleJ extends React.PureComponent {
               }}
             >
               <DamImage
-                className="moduleJ-promo-img"
+                className="promo-img"
                 imgConfigs={PROMO_IMG_DATA.imgConfig}
                 imgData={{
                   alt: mediaLinkedList[1] && mediaLinkedList[1].image.alt,
@@ -115,9 +119,9 @@ class ModuleJ extends React.PureComponent {
             </Col>
           </Row>
         ) : (
-          <Row fullBleed={{ small: true, medium: true, large: true }} className="moduleJ-topview">
+          <Row fullBleed={{ small: true, medium: true, large: true }} className="topview">
             <Col
-              className="moduleJ-promo-alt"
+              className="promo-alt"
               colSize={{
                 small: 6,
                 medium: 8,
@@ -132,14 +136,16 @@ class ModuleJ extends React.PureComponent {
               <LinkText
                 component="div"
                 headerText={headerText}
-                className="moduleJ-promo-header"
+                className="promo-header"
                 dataLocator={getLocator('moduleJ_header_text')}
               />
-              <PromoBanner
-                promoBanner={promoBanner}
-                className="moduleJ-promoBanner"
-                dataLocator={getLocator('moduleJ_promobanner_text')}
-              />
+              {promoBanner && (
+                <PromoBanner
+                  promoBanner={promoBanner}
+                  className="promoBanner"
+                  dataLocator={getLocator('moduleJ_promobanner_text')}
+                />
+              )}
             </Col>
             <Col
               colSize={{
@@ -188,7 +194,7 @@ class ModuleJ extends React.PureComponent {
                   return (
                     <div key={index.toString()}>
                       <Anchor
-                        className="moduleJ-image-link"
+                        className="image-link"
                         to={redirectToPdp(uniqueId).url}
                         asPath={redirectToPdp(uniqueId).asPath}
                         dataLocator={`${getLocator('moduleJ_product_image')}${index}`}
@@ -216,7 +222,7 @@ class ModuleJ extends React.PureComponent {
               asPath="/c/toddler-girl-bottoms"
               dataLocator={getLocator('moduleJ_cta_btn')}
             >
-              <Button buttonVariation="fixed-width" className="moduleJ-cta-btn">
+              <Button buttonVariation="fixed-width" className="cta-btn">
                 SHOP ALL
               </Button>
             </Anchor>
