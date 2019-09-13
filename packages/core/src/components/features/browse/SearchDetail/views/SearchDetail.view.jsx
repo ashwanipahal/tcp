@@ -4,7 +4,6 @@ import withStyles from '../../../../common/hoc/withStyles';
 import SearchListingStyle from '../SearchDetail.style';
 import config from '../searchDetail.constants';
 import ProductsGrid from '../../ProductListing/molecules/ProductsGrid/views';
-import searchedNewResult from '../searchedResults';
 import { Row, Col } from '../../../../common/atoms';
 
 class SearchListingView extends React.PureComponent {
@@ -36,6 +35,7 @@ class SearchListingView extends React.PureComponent {
       labels,
       ...otherProps
     } = this.props;
+    console.log('productsBlock', productsBlock);
     const { SEARCHED_FOR, FILTERS, SORT_BY, SHOW_X_RESULTS, SLP } = config;
     return (
       <div className={className}>
@@ -64,12 +64,7 @@ class SearchListingView extends React.PureComponent {
         </Row>
         <Row>
           <Col colSize={{ small: 6, medium: 8, large: 12 }}>
-            <ProductsGrid
-              products={searchedNewResult.data[0]}
-              productsBlock={searchedNewResult.data}
-              labels={labels}
-              {...otherProps}
-            />
+            <ProductsGrid productsBlock={productsBlock} labels={labels} {...otherProps} />
           </Col>
         </Row>
       </div>

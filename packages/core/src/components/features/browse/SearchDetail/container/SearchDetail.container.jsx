@@ -1,7 +1,9 @@
+/* eslint-disable */
 import React from 'react';
 import { connect } from 'react-redux';
 import { withRouter } from 'next/router'; //eslint-disable-line
 import { PropTypes } from 'prop-types';
+import { isClient } from '../../../../../utils/index';
 import SearchDetail from '../views/SearchDetail.view';
 import getSearchedResult from './SearchDetail.selectors';
 import {
@@ -27,19 +29,23 @@ import {
 import { isPlccUser } from '../../../account/User/container/User.selectors';
 import submitProductListingFiltersForm from '../../ProductListing/container/productListingOnSubmitHandler';
 import { getSearchResult } from '../../../../../../../web/src/components/features/content/Header/molecules/SearchBar/SearchBar.actions';
+import searchedNewResult from '../searchedResults';
 
 class SearchDetailContainer extends React.PureComponent {
   componentDidMount() {
-    const {
-      router: {
-        query: { sq },
-      },
-      fetchSearchResults,
-    } = this.props;
-    fetchSearchResults(sq);
+    // const {
+    //   router: {
+    //     query: { sq },
+    //   },
+    //   fetchSearchResults,
+    // } = this.props;
+    // fetchSearchResults(sq);
   }
 
   render() {
+    if (!isClient()) {
+      return <div>Blank</div>;
+    }
     const {
       productsBlock,
       products,
@@ -62,10 +68,12 @@ class SearchDetailContainer extends React.PureComponent {
       searchedResult,
       ...otherProps
     } = this.props;
+    console.log('productBlocks ___ ', productsBlock);
     return (
       <SearchDetail
-        searchedResult={searchedResult}
+        searchedResult={searchedNewResult}
         products={products}
+        productsBlock={productsBlock}
         labels={labels}
         {...otherProps}
       />
@@ -74,7 +82,7 @@ class SearchDetailContainer extends React.PureComponent {
 }
 
 function mapStateToProps(state) {
-  const productBlocks = getLoadedProductsPages(state);
+  const productBlocks = searchedNewResult;
   const appliedFilters = getAppliedFilters(state);
 
   // eslint-disable-next-line
@@ -89,32 +97,32 @@ function mapStateToProps(state) {
 
   return {
     productsBlock: getProductsAndTitleBlocks(state, productBlocks),
-    products: getProductsSelect(state),
-    filters: getProductsFilters(state),
-    currentNavIds: state.ProductListing && state.ProductListing.get('currentNavigationIds'),
-    categoryId: getCategoryId(state),
-    navTree: getNavigationTree(state),
-    breadCrumbs: processBreadCrumbs(
-      state.ProductListing && state.ProductListing.get('breadCrumbTrail')
-    ),
-    loadedProductCount: getLoadedProductsCount(state),
-    unbxdId: getUnbxdId(state),
-    totalProductsCount: getTotalProductsCount(state),
-    filtersLength,
-    initialValues: {
-      ...getAppliedFilters(state),
-      // TODO - change after site id comes for us or ca
-      sort: getAppliedSortId(state) || '',
-    },
-    labelsFilter: state.Labels && state.Labels.PLP && state.Labels.PLP.PLP_sort_filter,
-    longDescription: getLongDescription(state),
-    labels: getLabelsProductListing(state),
-    isLoadingMore: getIsLoadingMore(state),
-    lastLoadedPageNumber: getLastLoadedPageNumber(state),
-    onSubmit: submitProductListingFiltersForm,
-    // formValues: getFormValues('filter-form')(state),
-    isPlcc: isPlccUser(state),
-    searchedResult: getSearchedResult(state),
+    products: productBlocks[0],
+    // filters: getProductsFilters(state),
+    // currentNavIds: state.ProductListing && state.ProductListing.get('currentNavigationIds'),
+    // categoryId: getCategoryId(state),
+    // navTree: getNavigationTree(state),
+    // breadCrumbs: processBreadCrumbs(
+    //   state.ProductListing && state.ProductListing.get('breadCrumbTrail')
+    // ),
+    // loadedProductCount: getLoadedProductsCount(state),
+    // unbxdId: getUnbxdId(state),
+    // totalProductsCount: getTotalProductsCount(state),
+    // filtersLength,
+    // initialValues: {
+    //   ...getAppliedFilters(state),
+    //   // TODO - change after site id comes for us or ca
+    //   sort: getAppliedSortId(state) || '',
+    // },
+    // labelsFilter: state.Labels && state.Labels.PLP && state.Labels.PLP.PLP_sort_filter,
+    // longDescription: getLongDescription(state),
+    // labels: getLabelsProductListing(state),
+    // isLoadingMore: getIsLoadingMore(state),
+    // lastLoadedPageNumber: getLastLoadedPageNumber(state),
+    // onSubmit: submitProductListingFiltersForm,
+    // // formValues: getFormValues('filter-form')(state),
+    // isPlcc: isPlccUser(state),
+    // searchedResult: getSearchedResult(state),
   };
 }
 
