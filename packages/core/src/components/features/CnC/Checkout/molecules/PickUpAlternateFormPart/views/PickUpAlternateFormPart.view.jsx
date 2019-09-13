@@ -39,14 +39,16 @@ class PickUpAlternateFormPart extends React.Component {
               </BodyCopy>
             </Field>
             {showNoteOnToggle && (
-              <BodyCopy
-                fontSize="fs12"
-                fontFamily="secondary"
-                fontWeight="regular"
-                className="alterNativeSubText"
-              >
-                {labels.alternativeSubHeading}
-              </BodyCopy>
+              <div className="alterSubText">
+                <BodyCopy
+                  fontSize="fs12"
+                  fontFamily="secondary"
+                  fontWeight="regular"
+                  className="alterNativeSubText"
+                >
+                  {labels.alternativeSubHeading}
+                </BodyCopy>
+              </div>
             )}
           </Col>
         </Row>

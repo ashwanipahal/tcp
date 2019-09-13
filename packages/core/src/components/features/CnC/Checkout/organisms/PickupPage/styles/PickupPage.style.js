@@ -40,8 +40,7 @@ const styles = css`
       margin-bottom: ${props => props.theme.spacing.ELEM_SPACING.MED};
     }
     .container {
-      margin: ${props => props.theme.spacing.LAYOUT_SPACING.XXS};
-      min-height: 419px;
+      margin: 0px;
     }
   }
 
@@ -51,8 +50,7 @@ const styles = css`
       margin-bottom: ${props => props.theme.spacing.ELEM_SPACING.LRG};
     }
     .container {
-      margin: ${props => props.theme.spacing.LAYOUT_SPACING.XXS};
-      min-height: 419px;
+      margin: 0px;
     }
   }
 

@@ -343,17 +343,21 @@ exports[`Coupon component should renders correctly when data is present 1`] = `
           textAlign="left"
         />
       </Field>
-      <Styled(BodyCopy)
-        className="alterNativeSubText"
-        color="text.primary"
-        component="p"
-        fontFamily="secondary"
-        fontSize="fs12"
-        fontWeight="regular"
-        letterSpacing="normal"
-        lineHeight="normal"
-        textAlign="left"
-      />
+      <div
+        className="alterSubText"
+      >
+        <Styled(BodyCopy)
+          className="alterNativeSubText"
+          color="text.primary"
+          component="p"
+          fontFamily="secondary"
+          fontSize="fs12"
+          fontWeight="regular"
+          letterSpacing="normal"
+          lineHeight="normal"
+          textAlign="left"
+        />
+      </div>
     </Styled(Col)>
   </Styled(Row)>
   <Styled(ContactFormFields)
