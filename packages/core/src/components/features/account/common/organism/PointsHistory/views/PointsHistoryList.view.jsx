@@ -1,12 +1,14 @@
 import React from 'react';
 import PropTypes from 'prop-types';
+import withStyles from '@tcp/core/src/components/common/hoc/withStyles';
+import styles from '../styles/PointsHistoryList.view.style';
 import { Row, Col, BodyCopy } from '../../../../../../common/atoms';
 
 /**
  * @function RewardsPointsView The RewardsPointsView component will provide slider for account drawer
  */
 
-const PointsHistory = ({ className, labels, pointHistory }) => {
+const PointsHistoryList = ({ className, labels, pointHistory }) => {
   return (
     <div className={className}>
       {pointHistory && pointHistory.length && (
@@ -15,7 +17,7 @@ const PointsHistory = ({ className, labels, pointHistory }) => {
             <BodyCopy
               data-locator="pointshistoryorderdatelbl"
               fontFamily="secondary"
-              fontSize="fs16"
+              className="list-fontsizes"
               fontWeight="semibold"
             >
               {labels.lbl_common_order_date}
@@ -25,7 +27,7 @@ const PointsHistory = ({ className, labels, pointHistory }) => {
             <BodyCopy
               data-locator="pointshistorytransactionslbl"
               fontFamily="secondary"
-              fontSize="fs16"
+              className="list-fontsizes"
               fontWeight="semibold"
             >
               {labels.lbl_common_transaction}
@@ -36,7 +38,7 @@ const PointsHistory = ({ className, labels, pointHistory }) => {
               data-locator="pointshistorypointsearnedlbl"
               component="p"
               fontFamily="secondary"
-              fontSize="fs16"
+              className="list-fontsizes"
               fontWeight="semibold"
             >
               {labels.lbl_common_points_earned}
@@ -52,7 +54,7 @@ const PointsHistory = ({ className, labels, pointHistory }) => {
               <BodyCopy
                 data-locator="pointshistoryorderdate"
                 fontFamily="secondary"
-                fontSize="fs16"
+                className="list-fontsizes"
                 fontWeight="regular"
               >
                 {pointHistoryRow.transactionDate}
@@ -62,7 +64,7 @@ const PointsHistory = ({ className, labels, pointHistory }) => {
               <BodyCopy
                 data-locator="pointshistorytransctionmsg"
                 fontFamily="secondary"
-                fontSize="fs16"
+                className="list-fontsizes"
                 fontWeight="regular"
               >
                 {pointHistoryRow.transactionTypeName}
@@ -72,7 +74,7 @@ const PointsHistory = ({ className, labels, pointHistory }) => {
               <BodyCopy
                 data-locator="pointshistorypoints"
                 fontFamily="secondary"
-                fontSize="fs16"
+                className="list-fontsizes"
                 fontWeight="regular"
               >
                 {pointHistoryRow.pointsEarned}
@@ -95,7 +97,7 @@ const PointsHistory = ({ className, labels, pointHistory }) => {
   );
 };
 
-PointsHistory.propTypes = {
+PointsHistoryList.propTypes = {
   className: PropTypes.string,
   pointHistory: PropTypes.shape({}).isRequired,
   labels: PropTypes.shape({
@@ -106,7 +108,7 @@ PointsHistory.propTypes = {
   }),
 };
 
-PointsHistory.defaultProps = {
+PointsHistoryList.defaultProps = {
   className: '',
   labels: {
     lbl_common_order_date: '',
@@ -116,4 +118,4 @@ PointsHistory.defaultProps = {
   },
 };
 
-export default PointsHistory;
+export default withStyles(PointsHistoryList, styles);

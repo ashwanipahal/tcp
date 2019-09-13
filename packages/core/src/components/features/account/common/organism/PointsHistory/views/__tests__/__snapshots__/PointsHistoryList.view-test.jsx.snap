@@ -1,162 +1,74 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
 exports[`Points History List Page View should render Points History Page Correctly 1`] = `
-<div
+<StyledComponent
   className="className"
->
-  <Styled(Row)
-    className="elem-mb-SM elem-mt-SM"
-    fullBleed={true}
-  >
-    <Styled(Col)
-      colSize={
-        Object {
-          "large": 3,
-          "medium": 2,
-          "small": 2,
-        }
-      }
-    >
-      <Styled(BodyCopy)
-        className={null}
-        color="text.primary"
-        component="p"
-        data-locator="pointshistoryorderdatelbl"
-        fontFamily="secondary"
-        fontSize="fs16"
-        fontWeight="semibold"
-        letterSpacing="normal"
-        lineHeight="normal"
-        textAlign="left"
-      >
-        08/08/19
-      </Styled(BodyCopy)>
-    </Styled(Col)>
-    <Styled(Col)
-      colSize={
-        Object {
-          "large": 4,
-          "medium": 3,
-          "small": 2,
-        }
-      }
-    >
-      <Styled(BodyCopy)
-        className={null}
-        color="text.primary"
-        component="p"
-        data-locator="pointshistorytransactionslbl"
-        fontFamily="secondary"
-        fontSize="fs16"
-        fontWeight="semibold"
-        letterSpacing="normal"
-        lineHeight="normal"
-        textAlign="left"
-      >
-        Credit
-      </Styled(BodyCopy)>
-    </Styled(Col)>
-    <Styled(Col)
-      colSize={
-        Object {
-          "large": 3,
-          "medium": 3,
-          "small": 2,
-        }
-      }
-    >
-      <Styled(BodyCopy)
-        className={null}
-        color="text.primary"
-        component="p"
-        data-locator="pointshistorypointsearnedlbl"
-        fontFamily="secondary"
-        fontSize="fs16"
-        fontWeight="semibold"
-        letterSpacing="normal"
-        lineHeight="normal"
-        textAlign="left"
-      >
-        5
-      </Styled(BodyCopy)>
-    </Styled(Col)>
-  </Styled(Row)>
-  <Styled(Row)
-    className="elem-mb-SM"
-    fullBleed={true}
-  >
-    <Styled(Col)
-      colSize={
-        Object {
-          "large": 3,
-          "medium": 2,
-          "small": 2,
-        }
-      }
-    >
-      <Styled(BodyCopy)
-        className={null}
-        color="text.primary"
-        component="p"
-        data-locator="pointshistoryorderdate"
-        fontFamily="secondary"
-        fontSize="fs16"
-        fontWeight="regular"
-        letterSpacing="normal"
-        lineHeight="normal"
-        textAlign="left"
-      >
-        08/08/19
-      </Styled(BodyCopy)>
-    </Styled(Col)>
-    <Styled(Col)
-      colSize={
-        Object {
-          "large": 4,
-          "medium": 3,
-          "small": 2,
-        }
-      }
-    >
-      <Styled(BodyCopy)
-        className={null}
-        color="text.primary"
-        component="p"
-        data-locator="pointshistorytransctionmsg"
-        fontFamily="secondary"
-        fontSize="fs16"
-        fontWeight="regular"
-        letterSpacing="normal"
-        lineHeight="normal"
-        textAlign="left"
-      >
-        AddBirthDate
-      </Styled(BodyCopy)>
-    </Styled(Col)>
-    <Styled(Col)
-      colSize={
-        Object {
-          "large": 3,
-          "medium": 3,
-          "small": 2,
-        }
-      }
-    >
-      <Styled(BodyCopy)
-        className={null}
-        color="text.primary"
-        component="p"
-        data-locator="pointshistorypoints"
-        fontFamily="secondary"
-        fontSize="fs16"
-        fontWeight="regular"
-        letterSpacing="normal"
-        lineHeight="normal"
-        textAlign="left"
-      >
-        5
-      </Styled(BodyCopy)>
-    </Styled(Col)>
-  </Styled(Row)>
-</div>
+  forwardedComponent={
+    Object {
+      "$$typeof": Symbol(react.forward_ref),
+      "attrs": Array [],
+      "componentStyle": ComponentStyle {
+        "componentId": "sc-gqjmRU",
+        "isStatic": false,
+        "rules": Array [
+          "
+  ",
+          "
+  .list-fontsizes {
+    font-size: ",
+          [Function],
+          ";
+    @media ",
+          [Function],
+          " {
+      font-size: ",
+          [Function],
+          ";
+    }
+    @media ",
+          [Function],
+          " {
+      font-size: ",
+          [Function],
+          ";
+    }
+  }
+",
+          ";
+",
+        ],
+      },
+      "displayName": "Styled(PointsHistoryList)",
+      "foldedComponentIds": Array [],
+      "render": [Function],
+      "styledComponentId": "sc-gqjmRU",
+      "target": [Function],
+      "toString": [Function],
+      "warnTooManyClasses": [Function],
+      "withComponent": [Function],
+    }
+  }
+  forwardedRef={null}
+  labels={
+    Object {
+      "lbl_common_order_date": "08/08/19",
+      "lbl_common_points_earned": "5",
+      "lbl_common_points_history": "Points History",
+      "lbl_common_transaction": "Credit",
+    }
+  }
+  pointHistory={
+    Array [
+      Object {
+        "pointAwardedDate": "08/08/19",
+        "pointTransactionType": "Credit",
+        "pointsEarned": 5,
+        "transactionDate": "08/08/19",
+        "transactionType": "non-transactional",
+        "transactionTypeName": "AddBirthDate",
+      },
+    ]
+  }
+  showFullHistory={true}
+/>
 `;

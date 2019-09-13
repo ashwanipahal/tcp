@@ -4,18 +4,23 @@ const styles = css`
   .historySectionSeparator {
     border-bottom: 1px solid ${props => props.theme.colors.BORDER.NORMAL};
   }
-
+  .caps-heading {
+    text-transform: uppercase;
+  }
   .point-history-content {
     font-family: ${props => props.theme.fonts.secondaryFontFamily};
     font-size: ${props => props.theme.typography.fontSizes.fs16};
     padding-bottom: ${props => props.theme.spacing.ELEM_SPACING.LRG};
     > h3 {
-      font-weight: ${props => props.theme.fonts.fontWeight.black};
+      font-weight: ${props => props.theme.fonts.fontWeight.bold};
       font-family: ${props => props.theme.fonts.secondaryFontFamily};
       font-size: ${props => props.theme.typography.fontSizes.fs16};
     }
     > p {
       margin: ${props => props.theme.spacing.ELEM_SPACING.LRG} 0;
+    }
+    a {
+      color: ${props => props.theme.colors.ANCHOR.PRIMARY};
     }
     .no-bm {
       margin-bottom: 0;
