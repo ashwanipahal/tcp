@@ -2,6 +2,8 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import ProductGridItem from '../../../features/browse/ProductListing/molecules/ProductList/views/ProductsGridItem';
 import { isMobileApp } from '../../../../utils';
+import withStyles from '../../hoc/withStyles';
+import style from './ModuleO.style';
 
 const ModuleO = props => {
   const {
@@ -26,9 +28,11 @@ const ModuleO = props => {
     isEvenElement,
     gridIndex,
     labels,
+    className,
   } = props;
   return (
     <ProductGridItem
+      className={className}
       isMobile={isMobileApp()}
       loadedProductCount={loadedProductCount}
       key={generalProductId}
@@ -59,7 +63,7 @@ const ModuleO = props => {
       siblingProperties={siblingProperties}
       isEvenElement={isEvenElement}
       gridIndex={gridIndex}
-      isPLPredesign // isPLPredesign should always be true, because this code is taken from existing project(MRT) and this filed has many condition to run the new code correctly and this and if we remove this line we need to change the many existing files.
+      isPLPredesign
       isKeepAliveKillSwitch={false}
       labels={labels}
     />
@@ -86,14 +90,15 @@ ModuleO.propTypes = {
   isBopisEnabled: PropTypes.bool,
   sequenceNumber: PropTypes.number.isRequired,
   unbxdId: PropTypes.string,
-  onProductCardHover: PropTypes.string,
-  isBopisEnabledForClearance: PropTypes.string,
-  isPlcc: PropTypes.string,
+  onProductCardHover: PropTypes.func,
+  isBopisEnabledForClearance: PropTypes.bool,
+  isPlcc: PropTypes.bool,
   onQuickBopisOpenClick: PropTypes.func,
   siblingProperties: PropTypes.shape({}),
   isEvenElement: PropTypes.bool,
   gridIndex: PropTypes.number,
   labels: PropTypes.shape({}).isRequired,
+  className: PropTypes.string.isRequired,
 };
 
 ModuleO.defaultProps = {
@@ -119,4 +124,5 @@ ModuleO.defaultProps = {
   gridIndex: 0,
 };
 
-export default ModuleO;
+export { ModuleO as ModuleOVanilla };
+export default withStyles(ModuleO, style);

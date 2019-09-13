@@ -70,4 +70,6 @@ export default {
   'chat-orange': '/static/images/chat-orange.svg',
   'search-icon': '/static/images/search-icon.svg',
   'search-close-icon': '/static/images/search-close-icon.svg',
+  'carrot-left-xl': '/static/images/left-carousel-caret.svg',
+  'carrot-right-xl': '/static/images/right-carousel-caret.svg',
 };

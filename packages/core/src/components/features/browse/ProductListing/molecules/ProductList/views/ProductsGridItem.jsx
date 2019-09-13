@@ -143,6 +143,7 @@ class ProductsGridItem extends React.PureComponent {
     } = this.props;
     return colorsMap.length >= 1 ? (
       <ProductColorChipWrapper
+        className="color-chips-container"
         onChipClick={this.handleChangeColor}
         maxVisibleItems={5}
         selectedColorId={curentColorEntry.color.name}
@@ -343,6 +344,7 @@ class ProductsGridItem extends React.PureComponent {
             />
           }
           <ProductAltImages
+            className="product-image-container"
             pdpUrl={pdpUrl}
             videoUrl={videoUrl}
             loadedProductCount={loadedProductCount}
@@ -361,7 +363,7 @@ class ProductsGridItem extends React.PureComponent {
             keepAlive={isKeepAlive}
           />
           {
-            <Row fullBleed>
+            <Row fullBleed className="product-wishlist-container">
               <Col colSize={{ small: 4, medium: 6, large: 10 }}>
                 <BodyCopy
                   dataLocator={getLocator('global_Extended_sizes_text')}

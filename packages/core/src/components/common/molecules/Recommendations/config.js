@@ -11,18 +11,19 @@ export default {
     dotsClass: 'slick-dots',
     swipe: true,
     slidesToShow: 4,
+    slideToScroll: 1,
     responsive: [
       {
         breakpoint: breakpoints.values.lg - 1,
         settings: {
-          slidesToShow: 3,
+          slidesToShow: 3.25,
         },
       },
       {
         breakpoint: breakpoints.values.sm - 1,
         settings: {
           arrows: false,
-          slidesToShow: 1,
+          slidesToShow: 2.3,
         },
       },
     ],

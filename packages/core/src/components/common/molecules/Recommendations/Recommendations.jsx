@@ -3,6 +3,7 @@ import PropTypes from 'prop-types';
 import config from './config';
 import { Carousel } from '..';
 import { Col, Row, Heading } from '../../atoms';
+import ButtonCTA from '../ButtonCTA';
 import { getIconPath } from '../../../../utils';
 import withStyles from '../../hoc/withStyles';
 import style from './Recommendations.style';
@@ -22,11 +23,19 @@ class Recommendations extends Component {
       loadedProductCount,
       onPickUpOpenClick,
       labels,
+      priceOnly,
+      buttonConfig,
     } = this.props;
+
+    const priceOnlyClass = priceOnly ? 'price-only' : '';
 
     return (
       <section className={className}>
-        <Heading variant="h4" className="recommendations-header" textAlign="center">
+        <Heading
+          variant="h4"
+          className={`recommendations-header ${priceOnlyClass}`}
+          textAlign="center"
+        >
           {youMayAlsoLikeLabel}
         </Heading>
         <Row fullBleed>
@@ -47,25 +56,27 @@ class Recommendations extends Component {
               inheritedStyles={Carousel}
               carouselConfig={{
                 autoplay: true,
-                customArrowLeft: getIconPath('carousel-big-carrot'),
-                customArrowRight: getIconPath('carousel-big-carrot'),
+                customArrowLeft: getIconPath('carrot-left-xl'),
+                customArrowRight: getIconPath('carrot-right-xl'),
               }}
             >
               {products &&
-                products.map(product => {
+                products.map((product, index) => {
                   const { generalProductId } = product;
 
                   return (
                     <React.Fragment>
                       <ModuleO
+                        key={`recommended_products_${index.toString()}`}
                         loadedProductCount={loadedProductCount}
                         generalProductId={generalProductId}
                         item={product}
                         isPerfectBlock
                         productsBlock={product}
                         onPickUpOpenClick={onPickUpOpenClick}
-                        className={`${className} product-list`}
+                        className={`${className} product-list ${priceOnlyClass}`}
                         labels={labels}
+                        sequenceNumber={index + 1}
                       />
                     </React.Fragment>
                   );
@@ -73,6 +84,23 @@ class Recommendations extends Component {
             </Carousel>
           </Col>
         </Row>
+        {buttonConfig && (
+          <div className="recommendaton-cta-container">
+            <ButtonCTA
+              className="recommendation-cta"
+              uniqueKey="recommendation-button"
+              ctaInfo={{
+                ctaVariation: 'fixed-width',
+                link: {
+                  url: buttonConfig.url,
+                  target: buttonConfig.target,
+                  title: buttonConfig.title,
+                  text: buttonConfig.text,
+                },
+              }}
+            />
+          </div>
+        )}
       </section>
     );
   }
@@ -86,6 +114,13 @@ Recommendations.propTypes = {
   loadedProductCount: PropTypes.number.isRequired,
   onPickUpOpenClick: PropTypes.func.isRequired,
   labels: PropTypes.shape({}).isRequired,
+  priceOnly: PropTypes.bool,
+  buttonConfig: PropTypes.shape({}),
+};
+
+Recommendations.defaultProps = {
+  priceOnly: false,
+  buttonConfig: false,
 };
 
 export { Recommendations as RecommendationsVanilla };

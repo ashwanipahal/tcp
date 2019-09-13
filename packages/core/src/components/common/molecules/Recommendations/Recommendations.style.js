@@ -3,43 +3,56 @@ import { css } from 'styled-components';
 export default css`
   .recommendations-header {
     text-align: center;
+    margin: 32px 0 16px 0;
+  }
+
+  .recommendaton-cta-container {
+    text-align: center;
+    margin-top: 16px;
   }
 
   .slick-arrow {
     z-index: 1;
+    top: 30%;
   }
 
-  .recommended_product {
-    display: block;
-  }
-
-  .recommended_product--image {
-    height: 267px;
-    position: relative;
-    img {
-      position: absolute;
-      top: 50%;
-      left: 50%;
-      transform: translate3d(-50%, -50%, 0);
+  .price-only {
+    .slick-arrow {
+      top: 40%;
     }
-    margin-bottom: 5px;
   }
 
-  .recommended_product--title {
-    color: ${props => props.theme.colorPalette.gray[900]};
-    font-weight: ${props => props.theme.typography.fontWeights.semibold};
-    font-size: ${props => props.theme.typography.fontSizes.fs16};
-    padding-top: 10px;
+  .slick-prev,
+  .slick-next {
+    transform: inherit;
+    width: 15px;
+    height: 52px;
   }
 
-  .recommended_product--offerPrice {
-    padding-top: 5px;
-    color: ${props => props.theme.colorPalette.red[500]};
-    font-size: ${props => props.theme.typography.fontSizes.fs18};
+  .slick-prev {
+    left: -25px;
   }
 
-  .recommended_product--listPrice {
-    font-size: ${props => props.theme.typography.fontSizes.fs12};
-    color: ${props => props.theme.colorPalette.gray[100]};
+  .slick-next {
+    right: -25px;
+  }
+
+  .recommendation-cta {
+    width: 225px;
+  }
+
+  @media ${props => props.theme.mediaQuery.medium} {
+    .recommendation-cta {
+      width: 162px;
+    }
+  }
+
+  @media ${props => props.theme.mediaQuery.large} {
+    .recommendation-header {
+      margin: 48px 0 16px 0;
+    }
+    .recommendation-cta {
+      width: 210px;
+    }
   }
 `;

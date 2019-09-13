@@ -169,6 +169,7 @@ const RecommendationsAbstractor = {
         return processResponse(res, null, {
           getFacetSwatchImgPath: RecommendationsAbstractor.getFacetSwatchImgPath,
           getImgPath: RecommendationsAbstractor.getImgPath,
+          isRecommendationView: true,
         });
       })
       .then(res => {

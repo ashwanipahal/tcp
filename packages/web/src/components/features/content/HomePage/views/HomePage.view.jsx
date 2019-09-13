@@ -24,7 +24,14 @@ const HomePageView = dynamic({
       <HomePageSlots slots={slots} modules={modules} />,
       <ModuleB {...mock} />,
       <GetCandid />,
-      <Recommendations />,
+      <Recommendations
+        priceOnly
+        buttonConfig={{
+          url: '/test',
+          title: 'test',
+          text: 'Shop Now',
+        }}
+      />,
     ];
   },
 });
