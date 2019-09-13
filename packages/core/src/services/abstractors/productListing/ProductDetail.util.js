@@ -44,7 +44,7 @@ const homeBreadCrumbFactory = () => {
   return [
     {
       displayName: 'Home',
-      pathSuffix: '/home',
+      urlPathSuffix: 'home',
     },
   ];
 };

@@ -23,9 +23,7 @@ const argvOptions = () => {
 const defaultThreshold = {
   performance: 20,
   accessibility: 20,
-  // 'best-practices': 20,
   seo: 20,
-  pwa: 20,
 };
 
 const options = {

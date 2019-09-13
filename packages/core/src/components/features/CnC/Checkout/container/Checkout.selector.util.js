@@ -1,4 +1,4 @@
-import { formValueSelector } from 'redux-form';
+import { formValueSelector, getFormSyncErrors } from 'redux-form';
 
 const getPickUpContactFormLabels = state => {
   const {
@@ -69,4 +69,10 @@ const getGiftServicesFormData = state => {
   };
 };
 
-export { getPickUpContactFormLabels, getGiftServicesFormData };
+const getSyncError = state => {
+  return {
+    syncError: getFormSyncErrors('checkoutShipping')(state),
+  };
+};
+
+export { getPickUpContactFormLabels, getGiftServicesFormData, getSyncError };
