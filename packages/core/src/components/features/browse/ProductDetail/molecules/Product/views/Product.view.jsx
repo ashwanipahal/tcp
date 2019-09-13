@@ -1,4 +1,5 @@
 /* eslint-disable */
+import React from 'react';
 import PropTypes from 'prop-types';
 import ProductCustomizeReduxForm from '../../ProductCustomizeForm/ProductCustomizeForm';
 import ProductPrice from '../../ProductPrice/ProductPrice';

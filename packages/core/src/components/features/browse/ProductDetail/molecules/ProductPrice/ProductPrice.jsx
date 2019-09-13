@@ -7,6 +7,7 @@ import { PromotionalMessage } from '../../../ProductListing/molecules/ProductLis
 import { getPromotionalMessage } from '../../../../../../utils';
 import { BodyCopy } from '../../../../../common/atoms';
 import withStyles from '../../../../../common/hoc/withStyles';
+import productPriceStyle from './ProductPrice.style';
 
 const getExchangeValue = currencyExchange => {
   return currencyExchange && currencyExchange[0] && currencyExchange[0].exchangevalue;
@@ -36,6 +37,7 @@ class ProductPrice extends React.Component {
     promotionalPLCCMessage: PropTypes.string,
     badge2: PropTypes.shape({}),
     favIconContainer: PropTypes.shape({}),
+    className: PropTypes.string,
   };
 
   static defaultProps = {
@@ -48,11 +50,13 @@ class ProductPrice extends React.Component {
     highListPrice: '',
     badge2: null,
     favIconContainer: null,
+    className: '',
   };
 
   getPriceMarkUp = () => {
     let { listPrice, offerPrice, highOfferPrice, highListPrice } = this.props;
     const {
+      className,
       currencySymbol,
       currencyExchange,
       priceCurrency /* , isBundleProduct, isBundleList */,
@@ -72,7 +76,7 @@ class ProductPrice extends React.Component {
       (highOfferPrice && highOfferPrice !== highListPrice);
     if (showBothPrice) {
       return (
-        <React.Fragment>
+        <div className={`${className}`}>
           <BodyCopy
             className="price-item actual-price"
             fontSize="fs22"
@@ -95,7 +99,7 @@ class ProductPrice extends React.Component {
             {listPrice.toFixed(2)}
             {listPricePostFix}
           </BodyCopy>
-        </React.Fragment>
+        </div>
       );
     }
     if (offerPrice) {
@@ -139,12 +143,16 @@ class ProductPrice extends React.Component {
       // isInternationalShipping,
       // isBundleProduct,
       badge2,
+      className,
       // isBundleList,
     } = this.props;
 
-    console.log('promotionalMessage', promotionalMessage);
     return (
-      <section className="product-price-container" itemScope itemType="https://schema.org/Offer">
+      <section
+        className={`${className} product-price-container`}
+        itemScope
+        itemType="https://schema.org/Offer"
+      >
         <div>
           {this.getPriceMarkUp()}
           {badge2 && <span className="bundle-badge-container">{badge2}</span>}
@@ -173,4 +181,4 @@ class ProductPrice extends React.Component {
   }
 }
 
-export default withStyles(ProductPrice);
+export default withStyles(ProductPrice, productPriceStyle);
