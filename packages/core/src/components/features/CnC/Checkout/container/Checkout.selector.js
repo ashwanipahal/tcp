@@ -514,6 +514,84 @@ function getVenmoClientTokenData(state) {
   return venmoData && venmoData.venmoClientTokenData;
 }
 
+function isVenmoPaymentInProgress(state) {
+  return state.checkout.uiFlags && state.checkout.uiFlags.venmoPaymentInProgress;
+}
+
+/**
+ * Mainly used to check for Venmo nonce expiry
+ * @param state
+ */
+function isNonceNotExpired(state) {
+  const venmoData = getVenmoData(state);
+  const expiry = constants.VENMO_NONCE_EXPIRY_TIMEOUT;
+  const {
+    nonce,
+    timestamp,
+    venmoClientTokenData: { venmoPaymentTokenAvailable },
+  } = venmoData || { venmoClientTokenData: {} };
+  return venmoPaymentTokenAvailable === 'TRUE' || (nonce && Date.now() - timestamp <= expiry);
+}
+
+function isVenmoPaymentToken(state) {
+  const venmoData = getVenmoData(state);
+  return (
+    (venmoData && venmoData.mode === VenmoPaymentButton.modes.PAYMENT_TOKEN) ||
+    (venmoData &&
+      venmoData.venmoClientTokenData &&
+      venmoData.venmoClientTokenData.mode === VenmoPaymentButton.modes.PAYMENT_TOKEN)
+  );
+}
+
+function isVenmoNonceActive(state) {
+  const venmoData = getVenmoData(state);
+  const venmoPaymentInProgress = isVenmoPaymentInProgress(state);
+  return (
+    venmoData &&
+    (venmoData.nonce || isVenmoPaymentToken(state)) &&
+    venmoPaymentInProgress &&
+    isNonceNotExpired(state)
+  );
+}
+
+function isVenmoPaymentAvailable(state) {
+  const venmoData = getVenmoData(state);
+  const venmoPaymentInProgress = isVenmoPaymentInProgress(state);
+  return venmoData && (venmoData.nonce || isVenmoPaymentToken(state)) && venmoPaymentInProgress;
+}
+
+function isVenmoMessageDisplayed(state) {
+  const hasShippingCaptured =
+    state.checkout.values.shipping && state.checkout.values.shipping.onFileAddressId;
+  const hasPickupCaptured =
+    state.checkout.values.pickUpContact && state.checkout.values.pickUpContact.firstName;
+  return (
+    hasPickupCaptured ||
+    hasShippingCaptured ||
+    (state.checkout.uiFlags && state.checkout.uiFlags.venmoInformationMessageDisplayed)
+  );
+}
+
+function getVenmoUserEmail(state) {
+  const pickupValues = getPickupValues(state);
+  return (
+    getUserEmail(state) ||
+    (state.checkout.values.shipping && state.checkout.values.shipping.emailAddress) ||
+    (pickupValues && pickupValues.emailAddress) ||
+    (state.user.personalData.contactInfo && state.user.personalData.contactInfo.emailAddress)
+  );
+}
+
+function isDefaultAddressUsed(state) {
+  const shippingAddress = checkoutStoreView.getShippingDestinationValues(state);
+  return (
+    shippingAddress &&
+    !shippingAddress.onFileAddressId &&
+    isGuest(state) &&
+    isVenmoNonceActive(state)
+  );
+}
+
 export default {
   getRecalcOrderPointsInterval,
   getIsOrderHasShipping,

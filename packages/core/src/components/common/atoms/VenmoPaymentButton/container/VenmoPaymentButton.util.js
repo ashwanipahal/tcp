@@ -1,5 +1,10 @@
 export const constants = { VENMO_NONCE_EXPIRY_TIMEOUT: 3 * 1000 * 60 * 60 }; // THREE HOURS,
 
+export const modes = {
+  CLIENT_TOKEN: 'client_token',
+  PAYMENT_TOKEN: 'payment_token',
+};
+
 export const VENMO_USER_STATES = {
   GUEST: 'G',
   REGISTERED: 'R',

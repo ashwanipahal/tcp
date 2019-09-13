@@ -143,6 +143,6 @@
     "reselect": "^4.0.0",
     "styled-components": "^4.2.0",
     "vanilla-lazyload": "^12.0.0",
-    "braintree-web": "3.52.0"
+    "braintree-web": "3.40.0"
   }
 }
