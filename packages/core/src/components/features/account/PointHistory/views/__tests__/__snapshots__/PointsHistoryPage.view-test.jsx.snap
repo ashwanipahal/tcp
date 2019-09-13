@@ -67,8 +67,7 @@ exports[`PointHistoryPage component should renders correctly 1`] = `
       textAlign="left"
     />
   </Styled(BodyCopy)>
-  <HistoryPointsRichText
-    className=""
+  <Styled(HistoryPointsRichText)
     content=""
   />
 </Styled(BodyCopy)>

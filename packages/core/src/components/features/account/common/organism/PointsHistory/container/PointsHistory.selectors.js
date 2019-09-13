@@ -9,12 +9,11 @@ export const getPointHistoryState = state => {
 export const getPointHistoryRichTextContentId = state => {
   let pointHistoryRichTextContentId;
   if (
-    state.Labels.account.myPlaceRewards &&
-    Array.isArray(state.Labels.account.myPlaceRewards.referred)
+    state.Labels.global.placeRewards &&
+    Array.isArray(state.Labels.global.placeRewards.referred)
   ) {
-    state.Labels.account.myPlaceRewards.referred.forEach(label => {
-      if (label.name === 'Bonus Points Days Details')
-        pointHistoryRichTextContentId = label.contentId;
+    state.Labels.global.placeRewards.referred.forEach(label => {
+      if (label.name === 'Point History Content') pointHistoryRichTextContentId = label.contentId;
     });
   }
   return pointHistoryRichTextContentId;
