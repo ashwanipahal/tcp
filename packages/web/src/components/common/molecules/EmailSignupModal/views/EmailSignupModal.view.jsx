@@ -1,7 +1,7 @@
 import React, { Fragment } from 'react';
 import { Field, reduxForm } from 'redux-form';
 import PropTypes from 'prop-types';
-import { Button, Col, Row, Image, TextBox, DamImage } from '@tcp/core/src/components/common/atoms';
+import { Button, Col, Row, TextBox, DamImage } from '@tcp/core/src/components/common/atoms';
 import BodyCopy from '@tcp/core/src/components/common/atoms/BodyCopy';
 import { Grid, Modal } from '@tcp/core/src/components/common/molecules';
 import withStyles from '@tcp/core/src/components/common/hoc/withStyles';
@@ -112,7 +112,11 @@ class EmailSignupModal extends React.PureComponent {
                   hideCol={{ small: true, medium: true }}
                   className="img-wrapper"
                 >
-                  <Image alt={formViewConfig.imageAltText} src={formViewConfig.imageSrc} />
+                  <DamImage
+                    alt={formViewConfig.imageAltText}
+                    imgConfigs={IMG_DATA.imgConfig}
+                    imgData={formViewConfig.imageSrc}
+                  />
                 </Col>
                 <Col colSize={{ small: 6, medium: 8, large: 8 }} ignoreGutter={{ large: true }}>
                   <SignupConfirm formViewConfig={formViewConfig} susbscriptionType="email" />
