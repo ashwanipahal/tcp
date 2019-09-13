@@ -77,12 +77,21 @@ class AddressForm extends React.PureComponent {
       isEdit,
       isMakeDefaultDisabled,
       onCancel,
-      invalid,
       handleSubmit,
       dispatch,
       addressLine1,
+      initialValues,
+      setModalHeading,
     } = this.props;
     const { dropDownItem, country } = this.state;
+    const disabledProps = {
+      isChecked: initialValues.primary,
+    };
+    if (isMakeDefaultDisabled) {
+      disabledProps.isChecked = true;
+      disabledProps.disabled = true;
+    }
+    setModalHeading(); // set modal heading
     return (
       <AddAddressWrapper>
         <Field
@@ -109,10 +118,10 @@ class AddressForm extends React.PureComponent {
             onValueChange={(data, inputValue) => {
               this.handlePlaceSelected(data, inputValue);
             }}
-            onEndEditing={text => {
+            onChangeText={text => {
               setTimeout(() => {
                 dispatch(change('AddressForm', 'addressLine1', text));
-              }, 1000);
+              });
             }}
             refs={instance => {
               this.locationRef = instance;
@@ -227,8 +236,7 @@ class AddressForm extends React.PureComponent {
             name="primary"
             component={InputCheckbox}
             dataLocator="addnewaddress-city"
-            isChecked={isMakeDefaultDisabled}
-            disabled={isMakeDefaultDisabled}
+            {...disabledProps}
             rightText={addressFormLabels.setDefaultMsg}
           />
         </SetDefaultShippingWrapper>
@@ -238,7 +246,6 @@ class AddressForm extends React.PureComponent {
             fill="BLUE"
             type="submit"
             color="white"
-            disabled={invalid}
             onPress={handleSubmit}
             buttonVariation="variable-width"
             text={isEdit ? addressFormLabels.update : addressFormLabels.addAddress}
@@ -279,7 +286,6 @@ AddressForm.propTypes = {
   isMakeDefaultDisabled: PropTypes.bool.isRequired,
   onCancel: PropTypes.func,
   handleSubmit: PropTypes.func,
-  invalid: PropTypes.func,
   initialValues: PropTypes.shape({
     state: PropTypes.string,
     country: PropTypes.string,
@@ -287,6 +293,7 @@ AddressForm.propTypes = {
   }),
   addressLine1: PropTypes.string,
   countryState: PropTypes.string,
+  setModalHeading: PropTypes.func,
 };
 
 AddressForm.defaultProps = {
@@ -308,7 +315,6 @@ AddressForm.defaultProps = {
   },
   dispatch: () => {},
   onCancel: () => {},
-  invalid: () => {},
   handleSubmit: () => {},
   initialValues: {
     state: '',
@@ -317,6 +323,7 @@ AddressForm.defaultProps = {
   },
   addressLine1: '',
   countryState: '',
+  setModalHeading: () => {},
 };
 
 const validateMethod = createValidateMethod(

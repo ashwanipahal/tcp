@@ -16,6 +16,9 @@ exports[`AddressOption component should renders correctly with input 1`] = `
   />
   <Address
     address={Object {}}
+    className=""
+    dataLocatorPrefix=""
+    fontWeight="regular"
     isDefault={false}
     showCountry={false}
     showName={true}
@@ -30,6 +33,9 @@ exports[`AddressOption component should renders correctly without input 1`] = `
 >
   <Address
     address={Object {}}
+    className=""
+    dataLocatorPrefix=""
+    fontWeight="regular"
     isDefault={false}
     showCountry={false}
     showName={true}

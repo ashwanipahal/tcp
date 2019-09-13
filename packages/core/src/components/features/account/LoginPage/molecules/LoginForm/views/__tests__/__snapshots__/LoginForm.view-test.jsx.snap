@@ -234,6 +234,11 @@ exports[`LoginForm component should renders correctly 1`] = `
       height: 10px;
     }
   }
+  .show-hide-password {
+    background: ",
+                [Function],
+                ";
+  }
 ",
                 ";
 ",
@@ -253,6 +258,11 @@ exports[`LoginForm component should renders correctly 1`] = `
         enableSuccessCheck={false}
         errorDataLocator="login-passworderror"
         id="password"
+        labels={
+          Object {
+            "login": Object {},
+          }
+        }
         name="password"
         showSuccessCheck={false}
       />
@@ -280,7 +290,7 @@ exports[`LoginForm component should renders correctly 1`] = `
                   "
   ",
                   "
-  display: inline-flex;
+  display: block;
   align-items: ",
                   [Function],
                   ";
@@ -302,6 +312,8 @@ exports[`LoginForm component should renders correctly 1`] = `
     margin-right: ",
                   [Function],
                   ";
+    display: inline-block;
+    vertical-align: top;
   }
 
   & .CheckBox__input:before {
@@ -345,7 +357,8 @@ exports[`LoginForm component should renders correctly 1`] = `
   }
 
   & .CheckBox__text {
-    width: calc(100% - 25px);
+    width: calc(100% - 45px);
+    display: inline-block;
   }
 
   & .CheckBox__text a {
@@ -363,13 +376,20 @@ exports[`LoginForm component should renders correctly 1`] = `
   & .Checkbox__error {
     display: flex;
     flex-direction: row;
+    padding-left: ",
+                  [Function],
+                  ";
   }
   & .warning-icon {
     background: transparent url('/static/images/circle-alert-fill.svg') no-repeat 0 0;
     background-size: contain;
     border: none;
-    height: 15px;
-    width: 15px;
+    height: ",
+                  [Function],
+                  ";
+    width: ",
+                  [Function],
+                  ";
     margin-right: 4px;
     margin-top: 2px;
   }
@@ -691,6 +711,11 @@ exports[`LoginForm component should renders correctly with error 1`] = `
       height: 10px;
     }
   }
+  .show-hide-password {
+    background: ",
+                [Function],
+                ";
+  }
 ",
                 ";
 ",
@@ -710,6 +735,12 @@ exports[`LoginForm component should renders correctly with error 1`] = `
         enableSuccessCheck={false}
         errorDataLocator="login-passworderror"
         id="password"
+        labels={
+          Object {
+            "login": Object {},
+            "registration": Object {},
+          }
+        }
         name="password"
         showSuccessCheck={false}
       />
@@ -737,7 +768,7 @@ exports[`LoginForm component should renders correctly with error 1`] = `
                   "
   ",
                   "
-  display: inline-flex;
+  display: block;
   align-items: ",
                   [Function],
                   ";
@@ -759,6 +790,8 @@ exports[`LoginForm component should renders correctly with error 1`] = `
     margin-right: ",
                   [Function],
                   ";
+    display: inline-block;
+    vertical-align: top;
   }
 
   & .CheckBox__input:before {
@@ -802,7 +835,8 @@ exports[`LoginForm component should renders correctly with error 1`] = `
   }
 
   & .CheckBox__text {
-    width: calc(100% - 25px);
+    width: calc(100% - 45px);
+    display: inline-block;
   }
 
   & .CheckBox__text a {
@@ -820,13 +854,20 @@ exports[`LoginForm component should renders correctly with error 1`] = `
   & .Checkbox__error {
     display: flex;
     flex-direction: row;
+    padding-left: ",
+                  [Function],
+                  ";
   }
   & .warning-icon {
     background: transparent url('/static/images/circle-alert-fill.svg') no-repeat 0 0;
     background-size: contain;
     border: none;
-    height: 15px;
-    width: 15px;
+    height: ",
+                  [Function],
+                  ";
+    width: ",
+                  [Function],
+                  ";
     margin-right: 4px;
     margin-top: 2px;
   }

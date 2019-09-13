@@ -24,6 +24,7 @@ export const GooglePlacesInput = props => {
     onSubmitEditing,
     onEndEditing,
     refs,
+    onChangeText,
   } = props;
   const [focussed, setFocussed] = useState(false);
   const onFocus = () => {
@@ -68,6 +69,9 @@ export const GooglePlacesInput = props => {
           onEndEditing: text => {
             onEndEditing(text.nativeEvent.text);
           },
+          onChangeText: text => {
+            onChangeText(text);
+          },
         }}
         styles={{
           textInputContainer,
@@ -97,6 +101,7 @@ GooglePlacesInput.propTypes = {
   onSubmitEditing: PropTypes.func,
   onEndEditing: PropTypes.func,
   refs: PropTypes.func,
+  onChangeText: PropTypes.func,
 };
 
 GooglePlacesInput.defaultProps = {
@@ -109,6 +114,7 @@ GooglePlacesInput.defaultProps = {
   onSubmitEditing: () => {},
   onEndEditing: () => {},
   refs: () => {},
+  onChangeText: () => {},
 };
 
 export default GooglePlacesInput;

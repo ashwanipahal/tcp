@@ -52,6 +52,25 @@ class InputCheckBox extends React.Component {
     };
   }
 
+  componentDidUpdate() {
+    const { isChecked: currentState } = this.state;
+    const { isChecked, input } = this.props;
+    if (currentState !== isChecked) {
+      this.updateState({ isChecked, input });
+    }
+  }
+
+  updateState = ({ isChecked, input }) => {
+    this.setState(
+      {
+        isChecked,
+      },
+      () => {
+        input.onChange(isChecked);
+      }
+    );
+  };
+
   onClick = () => {
     const { isChecked } = this.state;
     const { onClick, id, input } = this.props;
@@ -101,7 +120,9 @@ class InputCheckBox extends React.Component {
           pointerEvents={disabled ? 'none' : 'auto'}
         >
           {!hideCheckboxIcon && this.genCheckedIcon()}
-          <StyledText inputVariation={inputVariation}>{rightText && this.renderRight()}</StyledText>
+          {rightText && (
+            <StyledText inputVariation={inputVariation}>{this.renderRight()}</StyledText>
+          )}
         </StyledCheckBox>
         <Fragment>
           {isError ? (

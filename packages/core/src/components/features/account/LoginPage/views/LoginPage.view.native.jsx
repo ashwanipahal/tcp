@@ -15,6 +15,18 @@ import {
 } from '../container/loginUtils/keychain.utils.native';
 
 class LoginView extends React.PureComponent {
+  constructor(props) {
+    super(props);
+
+    this.state = {
+      setEmailid: '',
+      getTouchStatus: false,
+    };
+    isSupportedTouch().then(biometryType => {
+      this.setState({ getTouchStatus: biometryType });
+    });
+  }
+
   componentDidMount() {
     const { onSubmit } = this.props;
     getUserLoginDetails().then(credentials => {
@@ -22,6 +34,7 @@ class LoginView extends React.PureComponent {
         emailAddress: credentials.username,
         password: credentials.password,
       };
+      this.setState({ setEmailid: credentials.username });
       if (credentials) {
         isSupportedTouch().then(techAvailable => {
           if (techAvailable) {
@@ -40,10 +53,11 @@ class LoginView extends React.PureComponent {
     const { onSubmit } = this.props;
     resetTouchPassword();
     setUserLoginDetails(formdata.emailAddress, formdata.password);
+
     onSubmit(formdata);
 
-    isSupportedTouch().then(touchAvailable => {
-      if (touchAvailable && formdata.userTouchId) {
+    isSupportedTouch().then(biometryType => {
+      if (biometryType && (formdata.userTouchId || formdata.FaceId)) {
         touchIDCheck();
       }
     });
@@ -69,9 +83,12 @@ class LoginView extends React.PureComponent {
       showCheckoutModal,
       showLogin,
     } = this.props;
+    const { setEmailid, getTouchStatus } = this.state;
     return (
-      <ScrollViewStyle>
+      <ScrollViewStyle keyboardShouldPersistTaps="handled">
         <LoginSection
+          getTouchStatus={getTouchStatus}
+          setEmailid={setEmailid}
           onSubmit={this.onSubmitHandler}
           labels={labels}
           loginError={loginError}

@@ -32,5 +32,11 @@ export default css`
         font-size: ${props => props.theme.fonts.fontSize.body.bodytext.copy3}px;
       }
     }
+    @media ${props => props.theme.mediaQuery.mediumMax} {
+      margin-left: 22px;
+    }
+    @media ${props => props.theme.mediaQuery.mediumOnly} {
+      margin-left: 28px;
+    }
   }
 `;

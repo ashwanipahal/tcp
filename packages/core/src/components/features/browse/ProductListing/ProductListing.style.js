@@ -2,11 +2,10 @@ import { css } from 'styled-components';
 
 export default css`
   .bread-crumb,
-  .promo-area,
   .filter-area,
   .product-list {
     background: #d8d8d8;
-    padding: 20px 0;
+    padding: 20px 0 17px;
     margin: 5px 0;
   }
   .bread-crumb,
@@ -36,12 +35,37 @@ export default css`
   }
 
   .render-mobile-view {
+    width: auto;
+    padding: 0;
+
     @media ${props => props.theme.mediaQuery.large} {
       display: none;
+    }
+    @media ${props => props.theme.mediaQuery.smallOnly} {
+      .filter-row {
+        width: auto;
+      }
     }
   }
 
   .filter-section {
     margin-top: 50px;
+  }
+
+  .count-section {
+    position: relative;
+    font-size: ${props => props.theme.typography.fontSizes.fs14};
+    font-family: ${props => props.theme.typography.fonts.secondary};
+    font-weight: ${props => props.theme.typography.fontWeights.semibold};
+  }
+
+  .items-count-content-number {
+    font-weight: ${props => props.theme.typography.fontWeights.black};
+    padding: ${props => props.theme.spacing.ELEM_SPACING.XXS};
+  }
+
+  .items-count-content {
+    position: absolute;
+    right: 0;
   }
 `;

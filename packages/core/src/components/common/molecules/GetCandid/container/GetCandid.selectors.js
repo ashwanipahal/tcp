@@ -7,3 +7,8 @@ export const getCandidState = state => {
 export const getCandidData = state => {
   return getCandidState(state).get('candidData');
 };
+
+export const getLabels = state => {
+  const { modules: { getCandid } = {} } = state.Labels;
+  return getCandid;
+};

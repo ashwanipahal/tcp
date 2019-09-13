@@ -157,17 +157,11 @@ exports[`ProfileInfoTile component should render correctly 1`] = `
     />
   </Styled(View)>
   <Styled(View)>
-    <Styled(CustomButton)
+    <Styled(WithTheme(CustomButton))
       buttonVariation="variable-width"
-      color=""
-      customStyle={Object {}}
-      disableButton={false}
       fill="BLUE"
-      fullWidth=""
-      locator=""
       onPress={[Function]}
       text=""
-      url=""
     />
   </Styled(View)>
 </Styled(View)>

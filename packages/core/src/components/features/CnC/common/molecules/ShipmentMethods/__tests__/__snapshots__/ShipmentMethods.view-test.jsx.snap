@@ -85,6 +85,13 @@ exports[`Shipping Page should render correctly 1`] = `
                 [Function],
                 "
     }
+    @media ",
+                [Function],
+                "{
+      ",
+                [Function],
+                "
+      }
   }
 
   .radio-button-checked:after {
@@ -232,6 +239,13 @@ exports[`Shipping Page should render correctly 1`] = `
                 [Function],
                 "
     }
+    @media ",
+                [Function],
+                "{
+      ",
+                [Function],
+                "
+      }
   }
 
   .radio-button-checked:after {

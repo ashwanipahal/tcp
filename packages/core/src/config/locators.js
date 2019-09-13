@@ -49,6 +49,13 @@ export default {
   moduleA_cta_links: 'moduleA_cta_links_',
   moduleA_cta_image: 'moduleA_cta_image_',
   carousel_banner: 'carousel_banner',
+  // Module B
+  moduleB_header_text: 'moduleB_header_text',
+  moduleB_promo_banner_text: 'moduleB_promo_banner',
+  moduleB_image: 'moduleB_image_01',
+  moduleB_cta_image: 'moduleB_cta_image_',
+  moduleB_cta_links: 'moduleB_cta_links_',
+  moduleB_dropdown: 'moduleB_shop_now_dropdown',
   // Module L
   moduleL_header_text: 'moduleL_header_text',
   moduleL_title: 'moduleL_title_',
@@ -65,6 +72,14 @@ export default {
   moduleN_promobanner_img: 'moduleN_promobanner_img',
   moduleN_image: 'moduleN_image_',
   moduleN_cta_links: 'moduleN_cta_links_',
+
+  // Module J
+  moduleJ_header_text: 'moduleJ_header_text',
+  moduleJ_promobanner_text: 'moduleJ_promobanner_text',
+  moduleJ_promobanner_img: 'moduleJ_promobanner_img_',
+  moduleJ_product_image: 'moduleJ_product_image_',
+  moduleJ_cta_link: 'moduleJ_cta_links_',
+  moduleJ_cta_btn: 'moduleJ_cta_btn',
 
   // Added To Bag
   addedtobag_btnviewbag: 'addedtobag-btnviewbag',
@@ -190,4 +205,26 @@ export default {
   plcc_SSN: 'plcc_SSN',
   plcc_submit_btn: 'plcc_submit_btn',
   plcc_back_btn: 'plcc_back_btn',
+  plcc_apply_now_close_btn: 'plcc_apply_now_close_btn',
+  plcc_apply_btn: 'plcc_apply_btn',
+  plcc_apply_now_modal: 'plcc_apply_now_modal',
+
+  // BreadCrumbs Locators
+  breadCrumb_L1_Category: 'breadcrumb-L1-link',
+  breadCrumb_L2_Category: 'breadcrumb-L2-link',
+  breadCrumb_L3_Category: 'breadcrumb-L3-link',
+
+  // CLP Navigation Locators
+  plp_left_Nav_L2: 'leftnav-L2-Link',
+  plp_left_Nav_L3: 'leftnav-L3-link',
+  plp_left_Nav_header: 'products-header-txt',
+
+  // PLP Sort by Options
+  plp_sort_by_text: 'global-sortby-text',
+  plp_sort_recommended: 'sortoption-recommended-option',
+  plp_sort_high_to_low: 'sortoption-Price: High to low-option',
+  plp_sort_low_to_high: 'sortoption-Price: Low to High-option',
+  plp_sort_newest: 'sortoption-Newest-option',
+  plp_sort_favorited: 'sortoption-Most Favorited-option',
+  plp_sort_top_rated: 'sortoption-Top Rated-option',
 };

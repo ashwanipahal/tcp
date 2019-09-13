@@ -12,6 +12,7 @@ import {
   DropDownItemContainer,
   Separator,
   FlatList,
+  AddNewAddressWrapper,
 } from '../styles/AddressDropdown.style.native';
 
 const downIcon = require('../../../../../../../assets/carrot-small-down.png');
@@ -35,6 +36,7 @@ export class AddressDropdown extends React.PureComponent<Props> {
     itemStyle: PropTypes.shape({}),
     dropDownStyle: PropTypes.shape({}),
     variation: PropTypes.string,
+    showButton: PropTypes.bool,
   };
 
   static defaultProps = {
@@ -44,6 +46,7 @@ export class AddressDropdown extends React.PureComponent<Props> {
     itemStyle: null,
     dropDownStyle: null,
     variation: 'primary',
+    showButton: true,
   };
 
   constructor(props) {
@@ -66,7 +69,7 @@ export class AddressDropdown extends React.PureComponent<Props> {
 
     let selectedLabelState;
     const defaultSelectedValue = data && data.length && data[0].label; // If nothing falls under any condition then this value will be selected.
-    if (selectedValue) {
+    if (selectedValue !== null) {
       const selectedAddress = data.filter(item => item.id === selectedValue);
       selectedLabelState =
         selectedAddress && selectedAddress.length ? selectedAddress[0].label : defaultSelectedValue;
@@ -81,13 +84,24 @@ export class AddressDropdown extends React.PureComponent<Props> {
       selectedLabelState,
       top: 0,
       flatListTop: 0,
-      flatListBottom: 0,
+      flatListHeight: 0,
     };
   }
 
-  componentDidUpdate() {
+  componentDidUpdate(prevProps) {
     if (this.rowMarker) setTimeout(() => this.calculateDropDownPosition(), 300);
+    const { selectedValue, data } = this.props;
+    if (prevProps.selectedValue !== selectedValue) {
+      const selectedAddress = data.filter(item => item.id === selectedValue);
+      const selectedLabelState =
+        selectedAddress && selectedAddress.length && selectedAddress[0].label;
+      this.updateState({ selectedLabelState });
+    }
   }
+
+  updateState = ({ selectedLabelState }) => {
+    this.setState({ selectedLabelState });
+  };
 
   /**
    * Calculate the dimension and coordinates of drop down
@@ -95,12 +109,11 @@ export class AddressDropdown extends React.PureComponent<Props> {
   calculateDropDownPosition = () => {
     if (!this.rowMarker) return;
     this.rowMarker.measure((x, y, width, height, pageX, pageY) => {
-      this.rowFrame = { x: pageX, y: height + pageY, width, height };
-
+      const { data, itemStyle, dropDownStyle } = this.props;
+      this.rowFrame = { x: pageX, y: dropDownStyle.height + pageY, width, height };
       const windowHeight = getScreenHeight();
 
       // calculate the list height
-      const { data, itemStyle } = this.props;
       const calculateHeight = data.length * itemStyle.height;
 
       // checking bottom space
@@ -113,13 +126,51 @@ export class AddressDropdown extends React.PureComponent<Props> {
       const topMargin = {
         top: showInBottom ? this.rowFrame.y : Math.max(0, this.rowFrame.y - calculateHeight),
       };
-      this.setState({ top: topMargin.top });
-      if (showInBottom) {
-        this.setState({ flatListBottom: 300 });
-      } else if (calculateHeight > windowHeight) {
-        this.setState({ flatListTop: 120, flatListBottom: 200 });
-      }
+
+      const dH = windowHeight - pageY - height;
+      this.setDropDownPosition(topMargin, dH, showInBottom, calculateHeight, windowHeight);
     });
+  };
+
+  /**
+   * Set drop down position
+   */
+  setDropDownPosition = (topMargin, dH, showInBottom, calculateHeight, windowHeight) => {
+    this.setState({ top: topMargin.top });
+    let listMargin = 0;
+    let listHeight = 0;
+
+    if (showInBottom) {
+      if (calculateHeight > dH) {
+        listHeight = dH;
+      } else {
+        listHeight = calculateHeight;
+      }
+    } else if (calculateHeight > windowHeight) {
+      listMargin = 100;
+      listHeight = (windowHeight * 3) / 4;
+    } else {
+      listHeight = calculateHeight;
+    }
+    this.setState({ flatListHeight: listHeight, flatListTop: listMargin });
+  };
+
+  renderButton = ({ item }) => {
+    const { label } = item;
+    const { showButton } = this.props;
+    return showButton ? (
+      <Button
+        fullWidth
+        buttonVariation="variable-width"
+        fill="BLUE"
+        text={label}
+        onPress={this.openAddressBook}
+      />
+    ) : (
+      <AddNewAddressWrapper onPress={this.openAddressBook}>
+        <BodyCopy fontSize="fs14" mobileFontFamily="secondary" fontWeight="black" text={label} />
+      </AddNewAddressWrapper>
+    );
   };
 
   /**
@@ -127,7 +178,7 @@ export class AddressDropdown extends React.PureComponent<Props> {
    */
   dropDownLayout = ({ item }) => {
     const { itemStyle } = this.props;
-    const { label, content } = item;
+    const { content } = item;
     return (
       <DropDownItemContainer onPress={() => this.onDropDownItemClick(item)} style={itemStyle}>
         {item.id ? (
@@ -141,13 +192,7 @@ export class AddressDropdown extends React.PureComponent<Props> {
             showDefaultText={item && item.primary}
           />
         ) : (
-          <Button
-            fullWidth
-            buttonVariation="variable-width"
-            fill="BLUE"
-            text={label}
-            onPress={this.openAddressBook}
-          />
+          this.renderButton({ item })
         )}
       </DropDownItemContainer>
     );
@@ -171,11 +216,16 @@ export class AddressDropdown extends React.PureComponent<Props> {
    * openAddressBook modal
    */
   openAddressBook = () => {
-    const { addAddress } = this.props;
+    const { addAddress, toggleModal } = this.props;
     this.setState({
       dropDownIsOpen: false,
     });
-    addAddress();
+    if (addAddress) {
+      addAddress();
+    }
+    if (toggleModal) {
+      toggleModal({ type: 'add' });
+    }
   };
 
   /**
@@ -210,12 +260,12 @@ export class AddressDropdown extends React.PureComponent<Props> {
 
   render() {
     const { data, dropDownStyle, labels } = this.props;
-    const { dropDownIsOpen, selectedLabelState, top, flatListTop, flatListBottom } = this.state;
+    const { dropDownIsOpen, selectedLabelState, top, flatListTop, flatListHeight } = this.state;
     return (
       <View style={dropDownStyle}>
         <Row
           {...this.props}
-          onStartShouldSetResponder={this.openDropDown}
+          onPress={this.openDropDown}
           ref={ref => {
             this.rowMarker = ref;
           }}
@@ -245,10 +295,9 @@ export class AddressDropdown extends React.PureComponent<Props> {
             onPress={this.closeDropDown}
             activeOpacity={1}
             style={{
-              width: this.rowFrame.width,
               left: this.rowFrame.x,
               height: getScreenHeight(),
-              marginTop: flatListTop,
+              paddingTop: flatListTop,
             }}
           >
             <OverLayView
@@ -257,7 +306,7 @@ export class AddressDropdown extends React.PureComponent<Props> {
               }}
               style={{
                 top,
-                marginBottom: flatListBottom,
+                width: this.rowFrame.width,
               }}
             >
               {dropDownIsOpen && (
@@ -266,6 +315,7 @@ export class AddressDropdown extends React.PureComponent<Props> {
                   renderItem={this.dropDownLayout}
                   keyExtractor={item => item.id}
                   bounces={false}
+                  style={{ height: flatListHeight }}
                   ItemSeparatorComponent={() => <Separator />}
                 />
               )}

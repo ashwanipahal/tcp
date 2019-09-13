@@ -5,6 +5,8 @@ import { isCanada } from '../../../../../../utils';
 
 jest.mock('../../../../../../utils', () => ({
   isCanada: jest.fn(),
+  isClient: jest.fn(),
+  getIconPath: jest.fn(),
 }));
 
 describe('BonusPointsDaysContainer', () => {

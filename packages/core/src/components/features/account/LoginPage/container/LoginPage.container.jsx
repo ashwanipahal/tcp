@@ -51,9 +51,13 @@ class LoginPageContainer extends React.PureComponent {
   }
 
   componentWillUnmount() {
-    const { resetLoginState, loginError } = this.props;
+    const { resetLoginState, loginError, resetAccountOverViewState } = this.props;
     if (loginError) {
       resetLoginState();
+    }
+
+    if (resetAccountOverViewState) {
+      resetAccountOverViewState();
     }
   }
 
@@ -150,6 +154,7 @@ LoginPageContainer.propTypes = {
   formErrorMessage: PropTypes.shape({}).isRequired,
   showCheckoutModal: PropTypes.func.isRequired,
   showLogin: PropTypes.func.isRequired,
+  resetAccountOverViewState: PropTypes.func,
 };
 
 LoginPageContainer.defaultProps = {
@@ -164,6 +169,7 @@ LoginPageContainer.defaultProps = {
   navigation: {},
   currentForm: '',
   queryParams: {},
+  resetAccountOverViewState: () => {},
 };
 
 const mapDispatchToProps = (dispatch, props) => {

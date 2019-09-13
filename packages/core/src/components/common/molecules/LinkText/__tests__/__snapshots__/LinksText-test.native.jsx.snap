@@ -5,6 +5,7 @@ exports[`LinkText component renders correctly 1`] = `
   accessibilityLabel=""
   anchorVariation=""
   customStyle={Object {}}
+  key="0"
   locator=""
   onPress={null}
   text=""
@@ -52,12 +53,18 @@ exports[`LinkText component renders correctly 1`] = `
     }
     text={
       Array [
-        <Text>
+        <ForwardRef
+          accessibilityLabel="UNICORNS"
+          accessibilityRole="text"
+        >
           UNICORNS
-        </Text>,
-        <Text>
+        </ForwardRef>,
+        <ForwardRef
+          accessibilityLabel=", DINOS & MORE!"
+          accessibilityRole="text"
+        >
            , DINOS & MORE!
-        </Text>,
+        </ForwardRef>,
       ]
     }
   />

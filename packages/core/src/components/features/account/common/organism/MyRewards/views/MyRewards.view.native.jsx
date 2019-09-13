@@ -5,6 +5,7 @@ import { View } from 'react-native';
 import Carousel from '@tcp/core/src/components/common/molecules/Carousel';
 import { getScreenWidth } from '@tcp/core/src/utils';
 import { ViewWithSpacing } from '@tcp/core/src/components/common/atoms/styledWrapper';
+import ToastContainer from '@tcp/core/src/components/common/atoms/Toast/container/Toast.container.native';
 import { UrlHandler } from '../../../../../../../utils/utils.app';
 import {
   CouponHeading,
@@ -15,6 +16,7 @@ import endpoints from '../../../externalEndpoints';
 import Anchor from '../../../../../../common/atoms/Anchor';
 import DetailedCouponTile from '../../../molecule/DetailedCouponTile';
 import EmptyRewards from '../../../molecule/EmptyRewards';
+import CouponDetailModal from '../../../../../CnC/common/organism/CouponAndPromos/views/CouponDetailModal.view.native';
 import { COUPON_STATUS } from '../../../../../../../services/abstractors/CnC/CartItemTile';
 
 /**
@@ -35,10 +37,11 @@ class MyRewards extends PureComponent {
    */
   renderView = ({ item }) => {
     const {
-      labels,
+      commonLabels,
       coupons,
       onViewCouponDetails,
-      onApplyCouponToBag,
+      onApplyCouponToBagFromList,
+      toastMessage,
       onRemove,
       isApplyingOrRemovingCoupon,
     } = this.props;
@@ -48,10 +51,11 @@ class MyRewards extends PureComponent {
     return (
       <DetailedCouponTile
         key={item.id}
-        labels={labels.common}
+        labels={commonLabels}
         coupon={item}
         onViewCouponDetails={onViewCouponDetails}
-        onApplyCouponToBag={onApplyCouponToBag}
+        onApplyCouponToBagFromList={onApplyCouponToBagFromList}
+        toastMessage={toastMessage}
         onRemove={onRemove}
         isDisabled={isApplyingOrRemovingCoupon || isApplyingCoupon}
         className="elem-mb-LRG"
@@ -60,10 +64,28 @@ class MyRewards extends PureComponent {
   };
 
   render() {
-    const { labels, showLink, coupons } = this.props;
-    const heading = `${labels.myPlaceRewards.lbl_my_rewards_heading} (${coupons.size})`;
+    const {
+      labels,
+      showLink,
+      navigation,
+      coupons,
+      couponsLabels,
+      selectedCoupon,
+      ...otherProps
+    } = this.props;
+    const heading = `${labels.placeRewards.lbl_my_rewards_heading} (${coupons.size})`;
+    const isSelected = selectedCoupon !== null;
     return (
       <View>
+        <ToastContainer />
+        {selectedCoupon && (
+          <CouponDetailModal
+            labels={couponsLabels}
+            openState={isSelected}
+            coupon={selectedCoupon}
+            {...otherProps}
+          />
+        )}
         <ViewWithSpacing spacingStyles="margin-bottom-LRG margin-top-LRG">
           <CouponHeading>
             <BodyCopy
@@ -90,7 +112,7 @@ class MyRewards extends PureComponent {
             />
           </View>
         ) : (
-          <EmptyRewards labels={labels} />
+          <EmptyRewards navigation={navigation} labels={labels} />
         )}
         {showLink && (
           <StyledAnchorWrapper>
@@ -102,7 +124,7 @@ class MyRewards extends PureComponent {
               }}
               anchorVariation="primary"
               dataLocator="my-rewards-program-details"
-              text={labels.myPlaceRewards.lbl_my_rewards_program_details}
+              text={labels.placeRewards.lbl_my_rewards_program_details}
             />
             <AnchorLeftMargin>
               <Anchor
@@ -114,7 +136,7 @@ class MyRewards extends PureComponent {
                 }}
                 anchorVariation="primary"
                 dataLocator="my-rewards-tnc"
-                text={labels.common.lbl_common_tnc}
+                text={labels.placeRewards.lbl_common_tnc}
               />
             </AnchorLeftMargin>
           </StyledAnchorWrapper>
@@ -125,29 +147,39 @@ class MyRewards extends PureComponent {
 }
 
 MyRewards.propTypes = {
-  labels: PropTypes.shape({ common: {}, myPlaceRewards: {} }),
+  labels: PropTypes.shape({ placeRewards: {} }),
+  commonLabels: PropTypes.shape({}),
   coupons: PropTypes.shape([]),
   onViewCouponDetails: PropTypes.func,
-  onApplyCouponToBag: PropTypes.func,
+  onApplyCouponToBagFromList: PropTypes.func,
   onRemove: PropTypes.func,
+  toastMessage: PropTypes.func,
   isApplyingOrRemovingCoupon: PropTypes.bool,
   showLink: PropTypes.bool,
+  selectedCoupon: PropTypes.shape({}),
+  couponsLabels: PropTypes.shape({}),
+  navigation: PropTypes.shape({}),
 };
 
 MyRewards.defaultProps = {
   labels: {
-    common: { lbl_common_tnc: '' },
-    myPlaceRewards: {
+    placeRewards: {
       lbl_my_rewards_program_details: '',
       lbl_my_rewards_heading: '',
+      lbl_common_tnc: '',
     },
   },
+  commonLabels: {},
   coupons: [],
   onViewCouponDetails: () => {},
-  onApplyCouponToBag: () => {},
+  onApplyCouponToBagFromList: () => {},
   onRemove: () => {},
+  toastMessage: () => {},
   isApplyingOrRemovingCoupon: false,
   showLink: false,
+  selectedCoupon: {},
+  couponsLabels: {},
+  navigation: {},
 };
 
 export default MyRewards;

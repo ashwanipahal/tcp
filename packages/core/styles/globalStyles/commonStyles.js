@@ -10,9 +10,13 @@ export default css`
     -webkit-font-smoothing: antialiased;
     -moz-osx-font-smoothing: grayscale;
     width: 100%;
-    max-width: ${breakpoints.xlarge};
     margin: 0 auto;
     position: relative;
+  }
+
+  .content-wrapper {
+    max-width: ${breakpoints.xlarge};
+    margin: 0 auto;
   }
 
   .no-scroll {
@@ -23,6 +27,9 @@ export default css`
 
   .ReactModal__Body--open {
     overflow: hidden;
+    .pac-container {
+      z-index: ${props => props.theme.zindex.zGoogleAutosuggest};
+    }
   }
 
   input[type='text']::-ms-clear {

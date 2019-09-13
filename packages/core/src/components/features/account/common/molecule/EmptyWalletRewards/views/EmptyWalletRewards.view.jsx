@@ -22,7 +22,7 @@ export const EmptyWalletRewards = ({ labels }) => {
         }}
       >
         <BodyCopy fontFamily="secondary" fontSize="fs14" fontWeight="regular">
-          {labels.myPlaceRewards.ACC_LBL_MY_REWARDS_NO_REWARDS_MSG}
+          {labels.placeRewards.ACC_LBL_MY_REWARDS_NO_REWARDS_MSG}
         </BodyCopy>
       </Col>
       <Col
@@ -41,7 +41,7 @@ export const EmptyWalletRewards = ({ labels }) => {
           onClick={goToHomePage}
           data-locator="my-rewards-shop-now-btn"
         >
-          {labels.myPlaceRewards.lbl_my_rewards_shop_now}
+          {labels.placeRewards.lbl_my_rewards_shop_now}
         </Button>
       </Col>
     </>
@@ -50,7 +50,7 @@ export const EmptyWalletRewards = ({ labels }) => {
 
 EmptyWalletRewards.propTypes = {
   labels: PropTypes.shape({
-    myPlaceRewards: {
+    placeRewards: {
       lbl_my_rewards_shop_now: PropTypes.string,
       ACC_LBL_MY_REWARDS_NO_REWARDS_MSG: PropTypes.string,
     },
@@ -59,7 +59,7 @@ EmptyWalletRewards.propTypes = {
 
 EmptyWalletRewards.defaultProps = {
   labels: {
-    myPlaceRewards: {
+    placeRewards: {
       lbl_my_rewards_shop_now: '',
       ACC_LBL_MY_REWARDS_NO_REWARDS_MSG: '',
     },

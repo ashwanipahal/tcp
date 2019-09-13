@@ -1,110 +1,121 @@
-// @flow
 import React from 'react';
 import { PropTypes } from 'prop-types';
-import { Anchor, Button, DamImage, BodyCopy } from '../../../atoms';
+import ButtonCTA from '../../ButtonCTA';
+import ImageTextCTA from '../../ImageTextCTA';
 import withStyles from '../../../hoc/withStyles';
-import ButtonListStyle from '../ButtonList.style';
 import config from '../ButtonList.config';
+import ButtonListStyle from '../ButtonList.style';
+import DropDownButton from '../../DropDownButton';
+import { generateUniqueKeyUsingLabel } from '../../../../../utils';
 
-type Props = {
-  buttonsData: [],
+// Class to wrap button text
+const wrappedTextClass = ' wrapped-button-text';
+
+/**
+ * StackedButtonCTA variation css class config
+ * @param {*} length number of buttons
+ */
+const getStackedCTAConfig = length => {
+  const stackedCTAConfig = config.stackedCTAList;
+  stackedCTAConfig.compWrapper = `stacked-button-list-wrapper ${
+    length > stackedCTAConfig.MAX_NUM_OF_BUTTONS_IN_A_ROW ? wrappedTextClass : ''
+  }`;
+  return stackedCTAConfig;
 };
 
 /**
- * @desc This method getImageCTA generates button list.
- * This component uses Anchor and DamImage atoms to render button list
- * ImageCTAList: Buttons are wrapped inside an anchor which makes image clickable.
- * The image and a text for that image comes as a button list.
+ * ScrollButtonCTA variation css class config
+ * @param {*} length number of buttons
  */
+const getScrollCTAConfig = length => {
+  const scrollCTAConfig = config.scrollCTAList;
+  scrollCTAConfig.compWrapper = `scroll-button-list-wrapper ${
+    length < scrollCTAConfig.MIN_NO_OF_BUTTONS_TO_SCROLL ? ' no-scrollable-cta' : ''
+  } ${length > scrollCTAConfig.MAX_NUM_OF_BUTTONS_IN_A_ROW ? wrappedTextClass : ''}`;
+  return scrollCTAConfig;
+};
 
-const getImageCTA = item => {
-  const { className, buttonListVariation, dataLocatorDivisionImages, dataLocatorTextCta } = item;
+/**
+ * ImageCTA variation css class config
+ * @param {*} length number of buttons
+ */
+const getImageCTAConfig = length => {
+  const imageCTAConfig = config.imageCTAList;
+  imageCTAConfig.compWrapper = `scroll-button-list-wrapper ${
+    length < imageCTAConfig.MIN_NO_OF_BUTTONS_TO_SCROLL ? ' no-scrollable-cta' : ''
+  } ${length > imageCTAConfig.MAX_NUM_OF_BUTTONS_IN_A_ROW ? wrappedTextClass : ''}`;
+  return imageCTAConfig;
+};
 
+/**
+ * LinkCTA variation css class config
+ */
+const getLinkCTAConfig = () => {
+  return config.linkCTAList;
+};
+
+/**
+ * Renders Drop Down Button CTA variation
+ * @param {*} properties Properties required for Drop Down Button
+ * @param {*} parentClass Class passed from parent component
+ */
+const renderDropDownButton = (properties, parentClass) => {
+  const {
+    className,
+    buttonsData,
+    dropdownLabel,
+    dataLocatorDropDown,
+    dataLocatorTextCta,
+  } = properties;
   return (
-    <div className={`${config[buttonListVariation].className} div-image-wrapper`}>
-      {item.buttonsData.map((data, index) => {
-        const { image, button = {} } = data;
-
-        return (
-          <div className="img-wrapper">
-            <div>
-              <Anchor
-                key={index.toString()}
-                href={button.url}
-                target={button.target}
-                title={button.title}
-                fontSizeVariation="large"
-                fontWeightVariation="active"
-                dataLocator={`${dataLocatorTextCta}${index}`}
-              >
-                {image && (
-                  <DamImage
-                    imgData={image}
-                    className={className}
-                    data-locator={`${dataLocatorDivisionImages}${index}`}
-                  />
-                )}
-                <BodyCopy
-                  fontWeight="extrabold"
-                  fontSize="fs13"
-                  className="image-comp"
-                  fontFamily="secondary"
-                  textAlign="center"
-                >
-                  {button.text}
-                </BodyCopy>
-              </Anchor>
-            </div>
-          </div>
-        );
-      })}
-    </div>
+    <DropDownButton
+      className={`${className} ${parentClass}`}
+      buttonsData={buttonsData}
+      dropdownLabel={dropdownLabel}
+      dataLocator={dataLocatorDropDown}
+      dataLocatorItemPrefix={dataLocatorTextCta}
+    />
   );
 };
 
 /**
- * @desc This method getButtonCTA generates button list. The three variations of buttonlist are:
- * This component uses Anchor and Button atoms to render button list
- * 1. stackedCTAList: Buttons are in the stacked form.
-
- * 2. scrollCTAList: In the web view, peek appears for the next button to slide.
- * The user can slide from left to right to see the next buttons.
-
- * 3. linkCTAList: Category list buttons with bottom border, just like link with underline
+ * This function returns button list variation config
  */
+const getButtonListConfig = (variation, length) => {
+  switch (variation) {
+    case config.buttonListVariations.STACKED_CTA:
+      return getStackedCTAConfig(length);
+    case config.buttonListVariations.LINK_CTA:
+      return getLinkCTAConfig();
+    case config.buttonListVariations.SCROLL_CTA:
+      return getScrollCTAConfig(length);
+    case config.buttonListVariations.IMAGE_CTA:
+      return getImageCTAConfig(length);
+    case config.buttonListVariations.DROPDOWN_CTA:
+      return {
+        buttonListComponent: renderDropDownButton,
+      };
+    default:
+      return {};
+  }
+};
 
-const getButtonCTA = data => {
-  const {
-    className,
-    buttonsData,
-    buttonListVariation,
-    buttonVariation,
-    dataLocatorTextCta,
-    ...otherProps
-  } = data;
+/**
+ * This function renders additional button list when dual variation is passed to Button List component
+ * @param {*} variation variation name
+ * @param {*} properties Props for the variation
+ * @param {Object} display determines to show this additional button list on different view ports
+ */
+const renderAdditionalButtonList = (variation, properties, display) => {
+  const buttonListConfig = getButtonListConfig(variation);
+  const { buttonListComponent } = buttonListConfig;
 
-  return buttonsData.map((item, index) => {
-    const { button = {} } = item;
-    const key = button.title && button.title.replace(/\s/g, '_');
-    return (
-      <Anchor
-        key={key}
-        className={className}
-        href={button.url}
-        target={button.target}
-        title={button.title}
-      >
-        <Button
-          className={`${config[buttonListVariation].className}-class`}
-          buttonVariation={buttonVariation}
-          data-locator={`${dataLocatorTextCta}${index}`}
-          {...otherProps}
-        >
-          {button.text}
-        </Button>
-      </Anchor>
-    );
-  });
+  let displayClass = '';
+  if (display.large && display.medium && !display.small) {
+    displayClass = 'additional-button-list hide-on-small-viewport';
+  }
+
+  return buttonListComponent(properties, displayClass);
 };
 
 /**
@@ -112,83 +123,77 @@ const getButtonCTA = data => {
  * @desc This is a buttonlist component. There are four variations of buttons:
  * Based on the buttonListVariation, we render 4 different variations of the buttonList.
  */
-
-const ButtonList = (props: Props) => {
+const ButtonList = props => {
   const {
-    buttonsData,
-    buttonListVariation,
-    fill,
     className,
+    buttonListVariation,
+    dualVariation,
+    buttonsData,
     dataLocatorDivisionImages,
     dataLocatorTextCta,
+    fill,
   } = props;
-  const stackCTAProps = config.stackedCTAList.compProps;
-  const linkCTAProps = config.linkCTAList.compProps;
-  const scrollCTAProps = config.scrollCTAList.compProps;
-  const imageCTAProps = config.imageCTAList.compProps;
-  const wrappedTextClass = ' wrapped-button-text';
 
-  let component = null;
-  let compWrapper = '';
-  let compProps = {};
+  const buttonListConfig = getButtonListConfig(buttonListVariation, buttonsData.length);
+  const { compClassName, ctaInfo, compWrapper } = buttonListConfig;
 
-  if (buttonListVariation === 'stackedCTAList') {
-    compWrapper = `button-list-wrapper stacked-button-list-wrapper ${
-      buttonsData.length > 5 ? wrappedTextClass : ''
-    }`;
-    compProps = {
-      ...stackCTAProps,
-      fill,
-      buttonsData,
-      buttonListVariation,
-      dataLocatorTextCta,
-    };
-    component = getButtonCTA(compProps);
-  }
-
-  if (buttonListVariation === 'linkCTAList') {
-    compWrapper = 'button-list-wrapper link-button-list-wrapper';
-    compProps = {
-      ...linkCTAProps,
-      buttonsData,
-      buttonListVariation,
-      dataLocatorTextCta,
-    };
-    component = getButtonCTA(compProps);
-  }
-
-  if (buttonListVariation === 'scrollCTAList') {
-    compWrapper = `button-list-wrapper scroll-button-list-wrapper ${
-      buttonsData.length < 3 ? ' no-scrollable-cta' : ''
-    } ${buttonsData.length > 5 ? wrappedTextClass : ''}`;
-    compProps = {
-      ...scrollCTAProps,
-      buttonsData,
-      fill,
-      buttonListVariation,
-      dataLocatorTextCta,
-    };
-    component = getButtonCTA(compProps);
-  }
-
+  let Component = ButtonCTA;
   if (buttonListVariation === 'imageCTAList') {
-    compWrapper = `button-list-wrapper scroll-button-list-wrapper ${
-      buttonsData.length < 4 ? ' no-scrollable-cta' : ''
-    } ${buttonsData.length > 5 ? wrappedTextClass : ''}`;
-    compProps = {
-      buttonListVariation,
-      dataLocatorDivisionImages,
-      dataLocatorTextCta,
-      buttonsData,
-      ...imageCTAProps,
-    };
-    component = getImageCTA(compProps);
+    Component = ImageTextCTA;
   }
 
-  return <div className={`${className} ${compWrapper}`}>{component}</div>;
+  let hideOnDesktopClassname = '';
+  if (dualVariation && dualVariation.name) {
+    hideOnDesktopClassname = 'is-tablet-hidden';
+  }
+
+  return (
+    <React.Fragment>
+      <div className={`${className} button-list-wrapper ${compWrapper} ${hideOnDesktopClassname}`}>
+        {buttonsData.map((item, index) => {
+          const { button = {}, image } = item;
+          const compProps = {
+            className: `${compClassName}-class`,
+            ctaInfo: {
+              ...ctaInfo,
+              link: button,
+            },
+            fill,
+            image,
+          };
+
+          // Code to generate unique key
+          const key = button.title && generateUniqueKeyUsingLabel(button.title);
+
+          return (
+            <Component
+              uniqueKey={key}
+              dataLocator={{
+                image: `${dataLocatorDivisionImages}${index}`,
+                cta: `${dataLocatorTextCta}${index}`,
+              }}
+              {...compProps}
+              fontWeight="extrabold"
+              fontSize="fs13"
+              fontFamily="secondary"
+              textAlign="center"
+            />
+          );
+        })}
+      </div>
+      {dualVariation &&
+        dualVariation.name &&
+        renderAdditionalButtonList(dualVariation.name, props, dualVariation.displayProps)}
+    </React.Fragment>
+  );
 };
 
 ButtonList.defaultProps = {
+  dualVariation: {
+    small: false,
+    medium: true,
+    large: true,
+  },
   buttonListVariation: 'stackedCTAList',
   className: '',
   dataLocatorDivisionImages: '',
@@ -197,6 +202,15 @@ ButtonList.defaultProps = {
 };
 
 ButtonList.propTypes = {
+  dualVariation: PropTypes.shape({
+    name: PropTypes.string,
+    displayProps: PropTypes.shape({
+      small: PropTypes.bool,
+      medium: PropTypes.bool,
+      large: PropTypes.bool,
+    }),
+  }),
+  buttonsData: PropTypes.shape([]).isRequired,
   buttonListVariation: PropTypes.oneOf([
     'stackedCTAList',
     'linkCTAList',

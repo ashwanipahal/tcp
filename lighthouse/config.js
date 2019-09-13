@@ -1,4 +1,5 @@
 const { argv } = require('optimist');
+const logger = require('../packages/core/src/utils/loggerInstance');
 
 /**
  * @summary This is to process the options argument
@@ -14,8 +15,7 @@ const argvOptions = () => {
       argvOptionObject[key] = value;
     });
   } catch (err) {
-    // eslint-disable-next-line no-console
-    console.log('error: ', err);
+    logger.error(err);
   }
   return argvOptionObject;
 };
@@ -23,9 +23,7 @@ const argvOptions = () => {
 const defaultThreshold = {
   performance: 20,
   accessibility: 20,
-  // 'best-practices': 20,
   seo: 20,
-  pwa: 20,
 };
 
 const options = {

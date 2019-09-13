@@ -41,6 +41,8 @@ const SelectBox = ({
   disabled,
   ...otherProps
 }: Props): Node => {
+  const errorMessagea11yLbl = `selectbox__error__${name}`;
+
   return (
     <div className={className}>
       <select
@@ -53,6 +55,7 @@ const SelectBox = ({
         data-locator={dataLocator}
         {...otherProps}
         disabled={disabled}
+        aria-describedby={errorMessagea11yLbl}
       >
         {!input.value && placeholder && <option value="">{placeholder}</option>}
         {options &&
@@ -85,6 +88,7 @@ const SelectBox = ({
             fontWeight="extrabold"
             role="alert"
             aria-live="assertive"
+            id={errorMessagea11yLbl}
           >
             {error}
           </BodyCopy>

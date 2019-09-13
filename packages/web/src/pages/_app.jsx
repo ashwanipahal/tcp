@@ -23,6 +23,7 @@ import { configureStore } from '../reduxStore';
 import ReactAxe from '../utils/react-axe';
 import CHECKOUT_STAGES from './App.constants';
 import { createDataLayer } from '../constants/analytics';
+import RenderPerf from '../components/common/molecules/RenderPerf';
 
 // constants
 import constants from '../constants';
@@ -44,7 +45,6 @@ const RouteTracker = dynamic(() => import('../components/common/atoms/RouteTrack
 function AnalyticsScript() {
   return <Script src={process.env.ANALYTICS_SCRIPT_URL} />;
 }
-
 class TCPWebApp extends App {
   constructor(props) {
     super(props);
@@ -181,6 +181,8 @@ class TCPWebApp extends App {
     }
     return (
       <Container>
+        {/* TODO: Remove, this is for testing only */}
+        <RenderPerf.Mark name="app_render_start" />
         <ThemeProvider theme={this.theme}>
           <Provider store={store}>
             <GlobalStyle />
@@ -189,11 +191,13 @@ class TCPWebApp extends App {
               <Header />
               <CheckoutHeader />
               <Loader />
-              <div id="overlayWrapper">
-                <div id="overlayComponent" />
-                <Component {...pageProps} />
-                <Footer />
+              <div className="content-wrapper">
+                <div id="overlayWrapper">
+                  <div id="overlayComponent" />
+                  <Component {...pageProps} />
+                </div>
               </div>
+              <Footer />
             </Grid>
           </Provider>
         </ThemeProvider>
@@ -204,6 +208,8 @@ class TCPWebApp extends App {
             <RouteTracker />
           </>
         )}
+        {/* TODO: Remove, this is for testing only */}
+        <RenderPerf.Measure name="app_render" start="app_render_start" />
       </Container>
     );
   }

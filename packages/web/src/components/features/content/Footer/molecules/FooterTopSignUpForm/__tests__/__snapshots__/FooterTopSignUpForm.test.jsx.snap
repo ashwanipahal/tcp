@@ -205,6 +205,7 @@ exports[`FooterTopSignUpFormVanilla component renders correctly 1`] = `
       >
         <Styled(Button)
           buttonVariation="fixed-width"
+          className="candidate_a_form_button"
           data-locator="email_submit_btn"
           disabled={true}
           onClick={[Function]}

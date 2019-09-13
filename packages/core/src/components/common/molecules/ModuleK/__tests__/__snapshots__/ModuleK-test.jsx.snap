@@ -99,7 +99,7 @@ exports[`ModuleK component renders correctly 1`] = `
             "$$typeof": Symbol(react.forward_ref),
             "attrs": Array [],
             "componentStyle": ComponentStyle {
-              "componentId": "sc-kEYyzF",
+              "componentId": "sc-kkGfuU",
               "isStatic": false,
               "rules": Array [
                 "
@@ -166,6 +166,47 @@ exports[`ModuleK component renders correctly 1`] = `
       letter-spacing: 2.42px;
     }
   }
+
+  /* Module J Heading styles */
+  .small_text_normal {
+    font-family: ",
+                [Function],
+                ";
+    font-size: ",
+                [Function],
+                ";
+
+    @media ",
+                [Function],
+                " {
+      font-size: ",
+                [Function],
+                ";
+    }
+  }
+  .medium_text_black {
+    font-family: ",
+                [Function],
+                ";
+    font-weight: ",
+                [Function],
+                ";
+    font-size: ",
+                [Function],
+                ";
+    letter-spacing: -0.5px;
+    margin-bottom: ",
+                [Function],
+                ";
+
+    @media ",
+                [Function],
+                " {
+      font-size: ",
+                [Function],
+                ";
+    }
+  }
 ",
                 ";
 ",
@@ -180,10 +221,10 @@ exports[`ModuleK component renders correctly 1`] = `
             },
             "displayName": "Styled(Styled(LinkText))",
             "foldedComponentIds": Array [
-              "sc-dxgOiQ",
+              "sc-ckVGcZ",
             ],
             "render": [Function],
-            "styledComponentId": "sc-kEYyzF",
+            "styledComponentId": "sc-kkGfuU",
             "target": [Function],
             "toString": [Function],
             "warnTooManyClasses": [Function],
@@ -225,7 +266,7 @@ exports[`ModuleK component renders correctly 1`] = `
             "$$typeof": Symbol(react.forward_ref),
             "attrs": Array [],
             "componentStyle": ComponentStyle {
-              "componentId": "sc-hMqMXs",
+              "componentId": "sc-kEYyzF",
               "isStatic": false,
               "rules": Array [
                 "
@@ -481,6 +522,9 @@ exports[`ModuleK component renders correctly 1`] = `
   }
   ",
                 [Function],
+                "
+  ",
+                [Function],
                 ";
 ",
                 ";
@@ -507,10 +551,10 @@ exports[`ModuleK component renders correctly 1`] = `
             },
             "displayName": "Styled(Styled(Carousel))",
             "foldedComponentIds": Array [
-              "sc-jTzLTM",
+              "sc-fjdhpX",
             ],
             "render": [Function],
-            "styledComponentId": "sc-hMqMXs",
+            "styledComponentId": "sc-kEYyzF",
             "target": [Function],
             "toString": [Function],
             "warnTooManyClasses": [Function],
@@ -538,7 +582,7 @@ exports[`ModuleK component renders correctly 1`] = `
             />,
             "responsive": Array [
               Object {
-                "breakpoint": 1024,
+                "breakpoint": 1200,
                 "settings": Object {
                   "arrows": false,
                 },

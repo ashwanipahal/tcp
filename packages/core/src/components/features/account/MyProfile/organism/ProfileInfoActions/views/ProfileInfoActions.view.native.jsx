@@ -3,6 +3,7 @@ import PropTypes from 'prop-types';
 import MyProfileTile from '@tcp/core/src/components/common/molecules/MyProfileTile';
 import BodyCopy from '@tcp/core/src/components/common/atoms/BodyCopy';
 import { BodyCopyWithSpacing } from '@tcp/core/src/components/common/atoms/styledWrapper';
+import AboutYouSurveyModal from '@tcp/core/src/components/features/account/MyProfile/molecules/AboutYouSurveyModal';
 import ProfileInfoActionTile from '../../../molecules/ProfileInfoActionTile';
 import ProfileProgress from '../../../molecules/ProfileProgress';
 import {
@@ -32,6 +33,8 @@ export const ProfileInfoActions = ({
   userSurvey,
   percentageIncrement,
   handleComponentChange,
+  mountSurveyModal,
+  toggleModalState,
 }) => {
   return (
     <MyProfileTile>
@@ -66,7 +69,7 @@ export const ProfileInfoActions = ({
           activityTitle={`+${percentageIncrement.percentageMailingAddress}%`}
           activityCompletionState={getMailingAddressState(mailingAddress, labels)}
           activityDescription={labels.lbl_profile_mailingAddressDescription}
-          handleComponentChange={() => handleComponentChange('accountOverviewMobile')}
+          handleComponentChange={() => toggleModalState('mountMailingAddressModal')}
         />
         <ProfileInfoActionTile
           activityId="favStore"
@@ -90,9 +93,15 @@ export const ProfileInfoActions = ({
           activityTitle={`+${percentageIncrement.percentageUserSurvey}%`}
           activityCompletionState={getAboutYourselfState(userSurvey, labels)}
           activityDescription={labels.lbl_profile_aboutYourselfDescription}
-          handleComponentChange={() => handleComponentChange('accountOverviewMobile')}
+          handleComponentChange={() => toggleModalState('mountSurveyModal')}
         />
       </ProfileTileWrapper>
+      <AboutYouSurveyModal
+        openState={mountSurveyModal}
+        labels={labels}
+        toggleModalState={toggleModalState}
+        userSurvey={userSurvey}
+      />
     </MyProfileTile>
   );
 };
@@ -106,6 +115,8 @@ ProfileInfoActions.propTypes = {
   userSurvey: PropTypes.shape([]),
   percentageIncrement: PropTypes.shape({}),
   handleComponentChange: PropTypes.func.isRequired,
+  mountSurveyModal: PropTypes.bool,
+  toggleModalState: PropTypes.func,
 };
 
 ProfileInfoActions.defaultProps = {
@@ -124,6 +135,8 @@ ProfileInfoActions.defaultProps = {
     percentageUserBirthday: '20',
     percentageUserSurvey: '20',
   },
+  mountSurveyModal: false,
+  toggleModalState: () => {},
 };
 
 export default ProfileInfoActions;

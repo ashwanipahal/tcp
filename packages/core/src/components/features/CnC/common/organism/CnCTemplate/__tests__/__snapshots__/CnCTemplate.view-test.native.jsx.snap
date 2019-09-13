@@ -1,0 +1,30 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`CnCCommonTemplate Page should render correctly 1`] = `
+<Fragment>
+  <View>
+    <Connect(CouponContainer)
+      isCheckout={true}
+    />
+  </View>
+  <View>
+    <Connect(OrderLedgerContainer) />
+  </View>
+  <Styled(View)>
+    <Connect(BonusPointsDays) />
+  </Styled(View)>
+  <Styled(View)>
+    <Styled(TouchableOpacity)
+      onPress={[MockFunction]}
+    >
+      <Styled(BodyCopy)
+        color="white"
+        fontFamily="secondary"
+        fontSize="fs13"
+        fontWeight="extrabold"
+        text="Shipping"
+      />
+    </Styled(TouchableOpacity)>
+  </Styled(View)>
+</Fragment>
+`;

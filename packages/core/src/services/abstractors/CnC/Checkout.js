@@ -1,5 +1,6 @@
 /* eslint-disable extra-rules/no-commented-out-code */
 import superagent from 'superagent';
+import logger from '@tcp/core/src/utils/loggerInstance';
 import jsonp from 'superagent-jsonp';
 import { executeStatefulAPICall } from '../../handler';
 import endpoints from '../../endpoints';
@@ -10,9 +11,18 @@ import {
   getFormattedError,
 } from '../../../utils/errorMessage.util';
 import { getAPIConfig } from '../../../utils';
+import CheckoutConstants from '../../../components/features/CnC/Checkout/Checkout.constants';
 
 const BV_API_KEY = 'e50ab0a9-ac0b-436b-9932-2a74b9486436';
 
+export const CREDIT_CARDS_PAYMETHODID = {
+  'PLACE CARD': 'ADSPlaceCard',
+  VISA: 'COMPASSVISA',
+  AMEX: 'COMPASSAMEX',
+  MC: 'COMPASSMASTERCARD',
+  DISC: 'COMPASSDISCOVER',
+  VENMO: 'VENMO',
+};
 export const getGiftWrappingOptions = () => {
   const payload = {
     webService: endpoints.giftOptionsCmd,
@@ -72,7 +82,7 @@ export const addPickupPerson = args => {
       return { addressId: res.body.addressId };
     })
     .catch(err => {
-      console.log(err);
+      logger.error(err);
     });
 };
 
@@ -143,9 +153,7 @@ const shippingMethodResponseHandler = res => {
     let displayName = tmp[0].indexOf('-') === -1 ? tmp[0].replace('FREE', '- FREE') : tmp[0];
     const shippingMethod = tmp.length > 1 ? `Up To ${tmp[1]}` : '';
 
-    if (price) {
-      displayName = displayName.replace(`$${price[1]}`, '');
-    }
+    if (price) displayName = displayName.replace(`$${price[1]}`, '');
 
     hasDefault = hasDefault || methods[index].defaultShipMode;
     return {
@@ -157,14 +165,12 @@ const shippingMethodResponseHandler = res => {
     };
   });
 
-  if (!hasDefault && methods.length) {
-    resFiltered[0].isDefault = true;
-  }
+  if (!hasDefault && methods.length) resFiltered[0].isDefault = true;
 
   return resFiltered;
 };
 
-export const getShippingMethods = (state, zipCode, addressField1, addressField2) => {
+export const getShippingMethods = (state, zipCode, addressField1, addressField2, labels) => {
   // Note: (2-25, From Melvin Jose): based on his request we're relaxing when state and zipcode is being attached to the header, should values be empty or null we won't be sending them.
   // if (this.activeGetShippingMethodsRequest && this.activeGetShippingMethodsRequest.abort) {
   //   this.activeGetShippingMethodsRequest.abort();
@@ -173,22 +179,46 @@ export const getShippingMethods = (state, zipCode, addressField1, addressField2)
   // Note: (2-25, From Melvin Jose): based on his request we're relaxing when state and zipcode is being attached to the header, should values be empty or null we won't be sending them.
   const dynamicHeader = { state, zipCode, addressField1, addressField2 };
   Object.keys(dynamicHeader).forEach(key => {
-    if (!dynamicHeader[key]) {
-      delete dynamicHeader[key];
-    }
+    if (!dynamicHeader[key]) delete dynamicHeader[key];
   });
   const payload = {
     header: dynamicHeader,
     webService: endpoints.getShipmentMethods,
   };
-
   return executeStatefulAPICall(payload)
     .then(shippingMethodResponseHandler)
     .catch(err => {
-      throw getFormattedError(err);
+      throw getFormattedError(err, labels);
     });
 };
-
+export function addGiftWrappingOption(payload) {
+  const payloadArgs = {
+    webService: endpoints.addGiftOptions,
+    body: {
+      orderId: payload.orderId || '.', // '.' means use context one
+      GiftMsg: payload.GiftMsg || '',
+      quantity_0: '1',
+      catEntryId_0: payload.catEntryId,
+    },
+  };
+  return executeStatefulAPICall(payloadArgs).then(res => {
+    return res;
+  });
+}
+export function removeGiftWrappingOption() {
+  const payloadArgs = {
+    webService: endpoints.addGiftOptions,
+    body: {
+      orderId: '.', // '.' means use context one
+      GiftMsg: '',
+      quantity_0: '',
+      catEntryId_0: '',
+    },
+  };
+  return executeStatefulAPICall(payloadArgs).then(res => {
+    return res;
+  });
+}
 export function briteVerifyStatusExtraction(emailAddress) {
   return new Promise(resolve => {
     superagent
@@ -213,7 +243,6 @@ export function briteVerifyStatusExtraction(emailAddress) {
       });
   });
 }
-
 function extractRtpsEligibleAndCode(apiResponse) {
   const response = apiResponse.body.processOLPSResponse;
   const prescreenResponse = (response && response.response) || {};
@@ -223,12 +252,12 @@ function extractRtpsEligibleAndCode(apiResponse) {
     prescreenCode: prescreenResponse.prescreenId || '',
   };
 }
-
 export function setShippingMethodAndAddressId(
   shippingTypeId,
   addressId,
   verifyPrescreen,
-  transVibesSmsPhoneNo
+  transVibesSmsPhoneNo,
+  labels
 ) {
   const payload = {
     body: {
@@ -257,10 +286,210 @@ export function setShippingMethodAndAddressId(
       }
     })
     .catch(err => {
-      throw getFormattedError(err);
+      throw getFormattedError(err, labels);
     });
 }
 
+export function addGiftCardPaymentToOrder(args) {
+  const { billingAddressId, orderGrandTotal } = args;
+  const { cardNumber, cardPin, balance, saveToAccount, nickName, creditCardId } = args;
+  const paymentInstruction = {
+    billing_address_id: (billingAddressId || '').toString(),
+    piAmount: (orderGrandTotal || '').toString(),
+    payMethodId: 'GiftCard',
+    cc_brand: 'GC',
+    account: (cardNumber || '').toString(),
+    account_pin: (cardPin || '').toString(),
+    balance: balance || null,
+  };
+
+  const headerValue = {
+    isRest: 'true',
+    identifier: 'true',
+    savePayment: saveToAccount ? 'true' : 'false', // save to account for registered users
+    nickName: nickName || `${'Billing_'}${new Date().getTime().toString()}`,
+  };
+
+  if (creditCardId) {
+    paymentInstruction.creditCardId = (creditCardId || '').toString();
+  }
+
+  const payload = {
+    header: headerValue,
+    body: {
+      paymentInstruction: [paymentInstruction],
+    },
+    webService: endpoints.addPaymentInstruction,
+  };
+
+  return executeStatefulAPICall(payload)
+    .then(res => {
+      if (res.body && res.body.OosCartItems === 'TRUE') {
+        throw new ServiceResponseError({
+          body: {
+            errorCode: 'API_CART_OOS_ITEM',
+          },
+        });
+      } else {
+        return {
+          success: true,
+          paymentIds: res.body.paymentInstruction,
+        };
+      }
+    })
+    .catch(err => {
+      return err;
+    });
+}
+
+export function removeGiftCard(paymentId, labels) {
+  const payload = {
+    body: {
+      piIds: paymentId,
+    },
+    webService: endpoints.deletePaymentInstruction,
+  };
+
+  return executeStatefulAPICall(payload)
+    .then(res => {
+      if (responseContainsErrors(res)) {
+        throw new ServiceResponseError(res);
+      } else {
+        return res.body;
+      }
+    })
+    .catch(err => {
+      throw getFormattedError(err, labels);
+    });
+}
+export function addPaymentToOrder({
+  billingAddressId = '',
+  orderGrandTotal = '',
+  cardType,
+  cardNumber = '',
+  monthExpire = '',
+  yearExpire = '',
+  setAsDefault,
+  saveToAccount,
+  nickName,
+  onFileCardId = '',
+  cvv = '',
+}) {
+  const paymentInstruction = {
+    billing_address_id: billingAddressId.toString(),
+    piAmount: orderGrandTotal.toString(),
+    payMethodId: CREDIT_CARDS_PAYMETHODID[cardType],
+    cc_brand: cardType,
+    account: cardNumber.toString(),
+    expire_month: monthExpire.toString(), // PLCC doesn't require exp
+    expire_year: yearExpire.toString(), // PLCC doesn't require exp
+    isDefault: (!!setAsDefault).toString(),
+  };
+  const apiConfig = getAPIConfig();
+  const header = {
+    isRest: 'true',
+    identifier: 'true',
+    savePayment: saveToAccount ? 'true' : 'false', // save to account for registered users
+    nickName: nickName || `Billing_${apiConfig.storeId}_${new Date().getTime().toString()}`,
+  };
+
+  if (onFileCardId) {
+    paymentInstruction.creditCardId = onFileCardId.toString();
+  }
+
+  if (cvv) {
+    paymentInstruction.cc_cvc = cvv.toString(); // PLCC doesn't require exp
+  }
+
+  // Venmo Support
+  // const { venmoData, saveVenmoTokenIntoProfile } = args;
+  // if (venmoData && venmoData.details && venmoData.details.username) {
+  //   const {
+  //     nonce,
+  //     details: { username },
+  //   } = venmoData;
+  //   const {
+  //     // eslint-disable-next-line camelcase
+  //     billing_address_id,
+  //     piAmount,
+  //     payMethodId,
+  //     cc_brand,
+  //   } = paymentInstruction;
+  //   paymentInstruction = {
+  //     billing_address_id,
+  //     piAmount,
+  //     payMethodId,
+  //     cc_brand,
+  //     account: nonce || '',
+  //     isDefault: 'false', // DTN-4190
+  //   };
+  //   header.savePayment = 'false';
+  //   if (nonce) {
+  //     paymentInstruction.venmo_user_id = username;
+  //     paymentInstruction.save_venmo_token_into_profile = saveVenmoTokenIntoProfile
+  //       ? 'true'
+  //       : 'false';
+  //   }
+  // }
+
+  const payload = {
+    header,
+    body: {
+      paymentInstruction: [paymentInstruction],
+    },
+    webService: endpoints.addPaymentInstruction,
+  };
+  return executeStatefulAPICall(payload)
+    .then(res => {
+      if (responseContainsErrors(res)) {
+        throw new ServiceResponseError(res);
+      }
+      if (res.body && res.body.OosCartItems === 'TRUE') {
+        throw new ServiceResponseError({
+          body: {
+            errorCode: CheckoutConstants.CUSTOM_OOS_ERROR_CODE,
+          },
+        });
+      }
+      return {
+        paymentIds: res.body.paymentInstruction,
+      };
+    })
+    .catch(err => {
+      throw getFormattedError(err);
+    });
+}
+export function updatePaymentOnOrder(args) {
+  const payload = {
+    header: {
+      savePayment: args.saveToAccount ? 'true' : 'false',
+    },
+    body: {
+      prescreen: true, // as per backend, DT-19753 & DT-19757, we are to pass this so they can run pre-screen function
+      paymentInstruction: [
+        {
+          expire_month: args.monthExpire ? args.monthExpire.toString() : '',
+          piAmount: args.orderGrandTotal ? args.orderGrandTotal.toString() : '',
+          payMethodId: CREDIT_CARDS_PAYMETHODID[args.cardType],
+          cc_brand: args.cardType,
+          expire_year: args.yearExpire ? args.yearExpire.toString() : '',
+          account: args.cardNumber,
+          piId: args.paymentId,
+          cc_cvc: args.cvv,
+          billing_address_id: args.billingAddressId,
+          isDefault: (!!args.setAsDefault).toString(),
+        },
+      ],
+    },
+    webService: endpoints.updatePaymentInstruction,
+  };
+  return executeStatefulAPICall(payload).then(res => {
+    if (responseContainsErrors(res)) {
+      throw new ServiceResponseError(res);
+    }
+    return { paymentId: res.body.paymentInstruction[0].piId };
+  });
+}
 export default {
   getGiftWrappingOptions,
   getCurrentOrderAndCouponsDetails,
@@ -268,4 +497,10 @@ export default {
   briteVerifyStatusExtraction,
   setShippingMethodAndAddressId,
   addPickupPerson,
+  addGiftCardPaymentToOrder,
+  removeGiftCard,
+  addPaymentToOrder,
+  updatePaymentOnOrder,
+  addGiftWrappingOption,
+  removeGiftWrappingOption,
 };

@@ -1,7 +1,9 @@
 const lighthouse = require('lighthouse');
+const fs = require('fs');
 const chromeLauncher = require('chrome-launcher');
 const { argv } = require('optimist');
 const { defaultThreshold, options, configuration } = require('./config');
+const logger = require('../packages/core/src/utils/loggerInstance');
 
 /**
  * @summary This is to evaluate the web url
@@ -9,8 +11,27 @@ const { defaultThreshold, options, configuration } = require('./config');
  */
 const launchChromeAndRunLighthouse = async () => {
   const chrome = await chromeLauncher.launch({ chromeFlags: options.chromeFlags });
-  const results = await lighthouse(argv.url, { ...options, port: chrome.port }, configuration);
+  const { url } = argv;
+  const results = await lighthouse(url, { ...options, port: chrome.port }, configuration);
+  const { report } = await lighthouse(
+    url,
+    { ...options, output: 'html', port: chrome.port },
+    configuration
+  );
   await chrome.kill();
+  const path = url.substring(url.lastIndexOf('/') + 1);
+  const reportDirectory = './lighthouse/reports';
+  const reportPath = `${reportDirectory}/report-${path}.html`;
+  if (!fs.existsSync(reportDirectory)) {
+    fs.mkdirSync(reportDirectory);
+  }
+  fs.createWriteStream(reportPath);
+  fs.writeFileSync(reportPath, report, err => {
+    if (err) {
+      logger.error(err);
+    }
+    logger.error(`Report generated under -- ${reportPath}`);
+  });
   return results.lhr;
 };
 
@@ -32,12 +53,10 @@ const processResults = results => {
       status = status && itemStatus;
       categoryStatus[item] = itemStatus;
 
-      // eslint-disable-next-line no-console
-      console.log(`${item} --> score: ${categoryScore} | threshold: ${threshold}`);
+      logger.error(`${item} --> score: ${categoryScore} | threshold: ${threshold}`);
     });
   } catch (err) {
-    // eslint-disable-next-line no-console
-    console.log('error: ', err);
+    logger.error(err);
     status = false;
   }
   return process.exit(Number(!status));

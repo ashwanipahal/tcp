@@ -15,8 +15,7 @@ exports[`Detail Coupon Modal should render correctly 1`] = `
     <Styled(BodyStyle)
       className="couponModal_modalTitle"
       data-locator="couponDetailModal_applied_NameLbl"
-      fontFamily="secondaryFontFamily"
-      fontWeight="bold"
+      fontWeight="black"
     >
       $10 OFF On $80
     </Styled(BodyStyle)>
@@ -28,12 +27,30 @@ exports[`Detail Coupon Modal should render correctly 1`] = `
     >
       undefined 8/10/19
     </Styled(BodyStyle)>
-    <div
+    <Styled(BodyStyle)
       className="couponModal_modalbarcode"
+      component="div"
       data-locator="couponDetailModal_applied_BarCode"
     >
-      Y00105578
-    </div>
+      <Barcode
+        background="#ffffff"
+        barcodeId="Y00105578"
+        displayValue={true}
+        font="Nunito"
+        fontOptions=""
+        fontSize={20}
+        format="CODE128"
+        height={100}
+        lineColor="#000000"
+        margin={10}
+        renderer="svg"
+        textAlign="center"
+        textMargin={2}
+        textPosition="bottom"
+        value="Y00105578"
+        width={2}
+      />
+    </Styled(BodyStyle)>
     <div
       className="couponModal_btnWrapper"
     >
@@ -63,7 +80,7 @@ exports[`Detail Coupon Modal should render correctly 1`] = `
       data-locator="couponDetailModal_applied_LongDesc"
       fontFamily="secondaryFontFamily"
     >
-      undefined
+      $10 OFF On $50
     </Styled(BodyStyle)>
     <Styled(BodyStyle)
       className="couponModal_modalShortDesc"
@@ -76,8 +93,8 @@ exports[`Detail Coupon Modal should render correctly 1`] = `
         className="couponModal_print_anchortext"
         dataLocator="couponDetailModal_applied_tAndC"
         fontSize="fs14"
-        onClick={[Function]}
         underline={true}
+        url="https://www.childrensplace.com/us/help-center/#termsAndConditionsli"
       >
         undefined
       </Styled(Anchor)>
@@ -87,8 +104,8 @@ exports[`Detail Coupon Modal should render correctly 1`] = `
         className="couponModal_print_anchortext"
         dataLocator="couponDetailModal_applied_pp"
         fontSize="fs14"
-        onClick={[Function]}
         underline={true}
+        url="https://www.childrensplace.com/us/help-center/#privacyPolicySectionli"
       >
         undefined
       </Styled(Anchor)>

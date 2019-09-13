@@ -27,8 +27,10 @@ exports[`AddEditAddressContainer should render correctly 1`] = `
   isMakeDefaultDisabled={false}
   onCancel={[Function]}
   setAddressLine1={[Function]}
+  setModalHeading={[Function]}
   submitAddressFormAction={[Function]}
   toggleAddressModal={[Function]}
+  verificationResult=""
   verifyAddressAction={[Function]}
 />
 `;

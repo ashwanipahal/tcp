@@ -33,6 +33,9 @@ const styles = css`
       height: 10px;
     }
   }
+  .show-hide-password {
+    background: ${props => props.theme.colorPalette.white};
+  }
 `;
 
 export default styles;

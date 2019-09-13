@@ -28,8 +28,10 @@ exports[`AddedToBag Component AddedToBag should render correctly 1`] = `
       <Connect(AddedToBagViewPointsContainer)
         labels={Object {}}
       />
-      <AddedToBagActions
+      <Connect(AddedToBagContainer)
+        closeModal={[Function]}
         labels={Object {}}
+        navigation={null}
         showAddTobag={true}
       />
       <Styled(BossBanner)

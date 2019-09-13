@@ -2,7 +2,7 @@
 
 exports[`HeaderPromo component renders correctly for desktop 1`] = `
 <div
-  className="header-promo__container header-promo-desktop"
+  className="header-promo__container header-promo-desktop content-wrapper"
 >
   <Styled(Row)
     centered={true}
@@ -215,7 +215,7 @@ exports[`HeaderPromo component renders correctly for desktop 1`] = `
 
 exports[`HeaderPromo component renders correctly for mobile 1`] = `
 <div
-  className="header-promo__container header-promo-mobile"
+  className="header-promo__container header-promo-mobile content-wrapper"
 >
   <Styled(Carousel)
     carouselConfig={

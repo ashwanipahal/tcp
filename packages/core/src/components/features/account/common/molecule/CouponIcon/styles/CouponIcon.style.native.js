@@ -5,11 +5,20 @@ const IconText = styled.View`
   justify-content: center;
   align-items: center;
   height: ${props => props.theme.spacing.ELEM_SPACING.XXL};
+  width: 28%;
   padding: ${props => props.theme.spacing.ELEM_SPACING.XS};
-  background-color: ${props =>
+  ${props =>
     props.type === COUPON_REDEMPTION_TYPE.PLACECASH
-      ? props.theme.colorPalette.green[300]
-      : props.theme.colorPalette.orange[800]};
+      ? ` background: ${props.theme.colorPalette.green[300]};`
+      : ''};
+  ${props =>
+    props.type === COUPON_REDEMPTION_TYPE.SAVING
+      ? ` background: ${props.theme.colorPalette.purple};`
+      : ''};
+  ${props =>
+    props.type === COUPON_REDEMPTION_TYPE.REWARDS
+      ? ` background: ${props.theme.colorPalette.orange[800]};`
+      : ''};
 `;
 
 export default IconText;

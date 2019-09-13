@@ -10,6 +10,8 @@ export const Container = styled.View`
   padding-right: ${props => props.theme.spacing.ELEM_SPACING.XS};
   display: flex;
   background: ${props => props.theme.colorPalette.white};
+  margin-top: ${props => props.theme.spacing.ELEM_SPACING.XXS};
+  margin-bottom: ${props => props.theme.spacing.ELEM_SPACING.MED};
 `;
 
 export const MessageContainer = styled.View`
@@ -64,9 +66,15 @@ export const CartIconView = styled.Image`
   margin-left: ${props => props.theme.spacing.ELEM_SPACING.XXS};
 `;
 
-export const TextStyle = { position: 'absolute', marginTop: 18, paddingRight: 5.6 };
+export const TextStyle = {
+  position: 'absolute',
+  marginTop: 18,
+  paddingRight: 5.6,
+};
 
-export const ImageColor = { tintColor: 'gray' };
+export const ImageColor = {
+  tintColor: 'gray',
+};
 
 export const HeaderPromoContainer = styled.View`
   height: 45px;
@@ -96,7 +104,7 @@ export const CheckoutHeaderTextSection = styled.View`
   display: flex;
   flex-direction: row;
   flex-wrap: wrap;
-  border-bottom-color: ${props => props.theme.colorPalette.gray[600]};
+  border-bottom-color: ${props => props.theme.colorPalette.gray[500]};
   border-bottom-width: 1;
 `;
 

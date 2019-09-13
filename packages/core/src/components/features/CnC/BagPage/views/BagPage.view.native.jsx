@@ -1,6 +1,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import OrderLedgerContainer from '@tcp/core/src/components/features/CnC/common/organism/OrderLedger';
+import { isCanada } from '@tcp/core/src/utils';
 import ProductTileWrapper from '../../CartItemTile/organisms/ProductTileWrapper/container/ProductTileWrapper.container';
 import CouponAndPromos from '../../common/organism/CouponAndPromos';
 import AirmilesBanner from '../../common/organism/AirmilesBanner';
@@ -12,9 +13,18 @@ import {
   RowSectionStyle,
   HeadingTextStyle,
   ScrollViewWrapper,
+  BonusPointsWrapper,
 } from '../styles/BagPage.style.native';
+import BonusPointsDays from '../../../../common/organisms/BonusPointsDays';
 
-const BagPage = ({ labels, totalCount, showAddTobag, navigation, handleCartCheckout }) => {
+const BagPage = ({
+  labels,
+  totalCount,
+  showAddTobag,
+  navigation,
+  handleCartCheckout,
+  isUserLoggedIn,
+}) => {
   return (
     <>
       <ScrollViewWrapper showAddTobag={showAddTobag}>
@@ -26,9 +36,18 @@ const BagPage = ({ labels, totalCount, showAddTobag, navigation, handleCartCheck
           <RowSectionStyle>
             <OrderLedgerContainer />
           </RowSectionStyle>
-          <RowSectionStyle>
-            <AirmilesBanner />
-          </RowSectionStyle>
+          {isUserLoggedIn && (
+            <RowSectionStyle>
+              <BonusPointsWrapper>
+                <BonusPointsDays isBagPage showAccordian={false} />
+              </BonusPointsWrapper>
+            </RowSectionStyle>
+          )}
+          {isCanada() && (
+            <RowSectionStyle>
+              <AirmilesBanner />
+            </RowSectionStyle>
+          )}
           <RowSectionStyle>
             <CouponAndPromos />
           </RowSectionStyle>
@@ -50,6 +69,7 @@ BagPage.propTypes = {
   totalCount: PropTypes.number.isRequired,
   showAddTobag: PropTypes.bool.isRequired,
   navigation: PropTypes.shape({}).isRequired,
+  isUserLoggedIn: PropTypes.bool.isRequired,
   handleCartCheckout: PropTypes.func.isRequired,
 };
 

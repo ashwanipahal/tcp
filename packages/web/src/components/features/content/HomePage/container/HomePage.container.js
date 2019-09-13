@@ -4,6 +4,7 @@ import HomePageView from '../views/HomePage.view';
 
 HomePageView.pageInfo = {
   name: 'homepage',
+  modules: ['labels', 'header', 'footer', 'navigation'],
 };
 HomePageView.getInitActions = () => initActions;
 

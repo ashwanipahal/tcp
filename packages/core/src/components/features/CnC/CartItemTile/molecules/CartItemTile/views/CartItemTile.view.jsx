@@ -1,9 +1,9 @@
 /* eslint-disable max-lines */
 import React from 'react';
 import PropTypes from 'prop-types';
-import ProductEditForm from '@tcp/web/src/components/features/CnC/MiniBag/molecules/ProductCustomizeForm/ProductCustomizeForm';
 import ItemAvailability from '@tcp/core/src/components/features/CnC/common/molecules/ItemAvailability';
 import withStyles from '@tcp/core/src/components/common/hoc/withStyles';
+import ProductEditForm from '../../../../../../common/molecules/ProductCustomizeForm';
 import CartItemRadioButtons from '../../CartItemRadioButtons/views/CartItemRadioButtons.view';
 import endpoints from '../../../../../../../service/endpoint';
 import { Image, Row, BodyCopy, Col } from '../../../../../../common/atoms';
@@ -11,6 +11,7 @@ import { Image, Row, BodyCopy, Col } from '../../../../../../common/atoms';
 import { getIconPath, getLocator, isCanada } from '../../../../../../../utils';
 import getModifiedString from '../../../utils';
 import styles from '../styles/CartItemTile.style';
+import CARTPAGE_CONSTANTS from '../../../CartItemTile.constants';
 
 class CartItemTile extends React.Component {
   constructor(props) {
@@ -163,7 +164,7 @@ class CartItemTile extends React.Component {
   getPointsColor = () => {
     const { isPlcc } = this.props;
     if (isPlcc) {
-      return 'blue.800';
+      return 'blue.B100';
     }
     return 'orange.800';
   };
@@ -260,14 +261,16 @@ class CartItemTile extends React.Component {
               chooseDiff={labels.chooseDiff}
             />
           )}
-          <div className={pageView === 'myBag' ? 'crossDeleteIconBag' : 'crossDeleteIconMiniBag'}>
-            <Image
-              alt="closeIcon"
-              className="close-icon-image"
-              src={getIconPath('close-icon')}
-              onClick={() => removeCartItem(productDetail.itemInfo.itemId)}
-            />
-          </div>
+          {!isEdit && (
+            <div className={pageView === 'myBag' ? 'crossDeleteIconBag' : 'crossDeleteIconMiniBag'}>
+              <Image
+                alt="closeIcon"
+                className="close-icon-image"
+                src={getIconPath('close-icon')}
+                onClick={() => removeCartItem(productDetail.itemInfo.itemId)}
+              />
+            </div>
+          )}
         </div>
         <Row
           fullBleed
@@ -500,11 +503,16 @@ class CartItemTile extends React.Component {
             {this.getItemDetails(removeCartItem, productDetail, labels, pageView)}
           </Col>
         </Row>
-        {pageView === 'myBag' && (
-          <Row fullBleed>
-            <CartItemRadioButtons productDetail={productDetail} labels={labels} />
-          </Row>
-        )}
+        {pageView === 'myBag' &&
+          productDetail.miscInfo.availability !== CARTPAGE_CONSTANTS.AVAILABILITY_SOLDOUT && (
+            <Row fullBleed>
+              <CartItemRadioButtons
+                className="cart-item-radio-buttons"
+                productDetail={productDetail}
+                labels={labels}
+              />
+            </Row>
+          )}
       </div>
     );
   }

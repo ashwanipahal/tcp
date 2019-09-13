@@ -1,0 +1,55 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`TileOption should render correctly 1`] = `
+<div
+  className=""
+>
+  <div
+    className="tile-container"
+    data-locator=""
+    onClick={[Function]}
+    role="presentation"
+  >
+    <Styled(BodyCopy)
+      className="tile-text"
+      color="text.primary"
+      component="p"
+      fontFamily="secondary"
+      fontSize="fs14"
+      fontWeight="regular"
+      letterSpacing="normal"
+      lineHeight="normal"
+      textAlign="left"
+    >
+      Parent
+    </Styled(BodyCopy)>
+  </div>
+</div>
+`;
+
+exports[`TileOption should render with selected tile 1`] = `
+<div
+  className=""
+>
+  <div
+    className="tile-container selected"
+    data-locator=""
+    onClick={[Function]}
+    role="presentation"
+  >
+    <Styled(BodyCopy)
+      className="tile-text"
+      color="text.primary"
+      component="p"
+      fontFamily="secondary"
+      fontSize="fs14"
+      fontWeight="regular"
+      letterSpacing="normal"
+      lineHeight="normal"
+      textAlign="left"
+    >
+      Parent
+    </Styled(BodyCopy)>
+  </div>
+</div>
+`;

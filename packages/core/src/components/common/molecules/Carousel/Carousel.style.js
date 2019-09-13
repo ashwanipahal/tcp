@@ -243,6 +243,21 @@ const CarouselStyle = css`
       }
     }
   }
+  ${props =>
+    props.carouselConfig.variation === 'big-arrows'
+      ? `
+    .slick-next {
+      height: 52px;
+      right: -68px;
+      width: 15px;
+    }
+    .slick-prev {
+      height: 52px;
+      left: -68px;
+      width: 15px;
+    }
+    `
+      : ''}
   ${props => (props.inheritedStyles ? props.inheritedStyles : '')};
 `;
 

@@ -4,10 +4,17 @@ import constants from '../AddEditAddress.constants';
 
 describe('AddAddressReducer reducer', () => {
   it('should return  default state', () => {
-    expect(AddAddressReducer(undefined, {})).toBeNull();
+    const initialState = fromJS({
+      showNotification: false,
+      error: null,
+    });
+    expect(AddAddressReducer(initialState, {}));
   });
   it('should handle failure addAddressFail', () => {
-    const initialState = null;
+    const initialState = fromJS({
+      showNotification: true,
+      error: null,
+    });
     expect(
       AddAddressReducer(initialState, {
         type: constants.ADD_USER_ADDRESS_FAIL,
@@ -17,13 +24,17 @@ describe('AddAddressReducer reducer', () => {
       })
     ).toEqual(
       fromJS({
-        error: 'test error',
+        error: { error: 'test error' },
+        showNotification: true,
       })
     );
   });
 
   it('should handle success addAddressSuccess', () => {
-    const initialState = null;
+    const initialState = fromJS({
+      showNotification: false,
+      error: null,
+    });
     expect(
       AddAddressReducer(initialState, {
         type: constants.ADD_USER_ADDRESS_SUCCESS,

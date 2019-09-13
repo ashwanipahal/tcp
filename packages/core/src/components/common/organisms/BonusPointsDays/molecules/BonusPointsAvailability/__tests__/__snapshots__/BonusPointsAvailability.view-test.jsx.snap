@@ -132,7 +132,7 @@ exports[`BonusPointsAvailabilityVanilla should render correctly with enableApply
   >
     <Styled(Button)
       buttonVariation="fixed-width"
-      className="bonusPointBtn availability-btn-active"
+      className="bonusPointBtn availability-btn "
       color="black"
       id={0}
       onClick={[Function]}
