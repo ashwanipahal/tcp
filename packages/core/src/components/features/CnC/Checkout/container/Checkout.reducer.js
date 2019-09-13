@@ -94,8 +94,10 @@ function uiFlagReducer(checkout, action) {
     case CheckoutConstants.CHECKOUT_VAlUES_SET_GIFT_WRAP:
       return checkout.CartPageReducer.setIn(['orderDetails', 'checkout', 'giftWrap']);
     case CheckoutConstants.GET_VENMO_CLIENT_TOKEN_SUCCESS:
-      return checkout.setIn(['values', 'venmoData'], fromJS(action.payload));
+      return checkout.setIn(['values', 'venmoData'], action.payload);
     case CheckoutConstants.GET_VENMO_CLIENT_TOKEN_ERROR:
+      return checkout.setIn(['values', 'venmoData'], action.payload);
+    case CheckoutConstants.SET_VENMO_DATA:
       return checkout.setIn(['values', 'venmoData'], action.payload);
     case CheckoutConstants.SET_VENMO_PAYMENT_INPROGRESS:
       return checkout.setIn(['uiFlags', 'venmoPaymentInProgress'], action.payload);

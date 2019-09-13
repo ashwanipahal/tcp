@@ -2,12 +2,15 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
 import selectors from '@tcp/core/src/components/features/CnC/Checkout/container/Checkout.selector';
-import { getVenmoClientToken } from '@tcp/core/src/components/features/CnC/Checkout/container/Checkout.action';
+import {
+  getVenmoClientToken,
+  setVenmoData,
+} from '@tcp/core/src/components/features/CnC/Checkout/container/Checkout.action';
 import { getCartOrderId } from '@tcp/core/src/components/features/CnC/CartItemTile/container/CartItemTile.selectors';
 import VenmoPaymentButton from '../views';
 import { isVenmoNonceNotExpired, VENMO_USER_STATES } from './VenmoPaymentButton.util';
 
-export class VenmoPaymentButtonContainer extends React.PureComponent<Props> {
+export class VenmoPaymentButtonContainer extends React.Component<Props> {
   componentWillMount() {
     this.fetchVenmoClientToken();
   }
@@ -30,9 +33,14 @@ export class VenmoPaymentButtonContainer extends React.PureComponent<Props> {
     }
   };
 
+  setVenmoData = data => {
+    const { venmoClientTokenData, setVenmoDataAction } = this.props;
+    setVenmoDataAction({ venmoClientTokenData, ...data });
+  };
+
   render() {
     const { ...otherProps } = this.props;
-    return <React.Fragment />;
+    return <VenmoPaymentButton setVenmoData={this.setVenmoData} {...otherProps} />;
   }
 }
 
@@ -70,6 +78,7 @@ const mapStateToProps = state => {
     authorizationKey,
     isNonceNotExpired,
     venmoData,
+    venmoClientTokenData,
     // Dispatchable functions
     // setVenmoData,
   };
@@ -78,6 +87,7 @@ const mapStateToProps = state => {
 const mapDispatchToProps = dispatch => ({
   // setVenmoPaymentInProgress: data => dispatch(selectors.setVenmoPaymentInProgress(data)),
   getVenmoPaymentTokenAction: data => dispatch(getVenmoClientToken(data)),
+  setVenmoDataAction: data => dispatch(setVenmoData(data)),
 });
 
 export default connect(

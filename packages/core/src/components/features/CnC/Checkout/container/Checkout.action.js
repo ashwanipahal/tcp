@@ -371,6 +371,13 @@ export const getVenmoClientTokenError = payload => {
   };
 };
 
+export const setVenmoData = payload => {
+  return {
+    type: constants.SET_VENMO_DATA,
+    payload,
+  };
+};
+
 export const setVenmoPaymentInProgress = payload => {
   return {
     type: constants.SET_VENMO_PAYMENT_INPROGRESS,

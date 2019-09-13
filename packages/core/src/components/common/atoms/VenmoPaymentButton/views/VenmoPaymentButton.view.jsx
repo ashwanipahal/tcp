@@ -312,30 +312,29 @@ export class VenmoPaymentButton extends Component {
     }
   };
 
-  render = () => {
+  render() {
     const { mobile, venmoData, mode, enabled } = this.props;
     const { hasVenmoError } = this.state;
     const { supportedByBrowser } = venmoData || {};
     return (
-      enabled &&
-      mobile &&
-      supportedByBrowser &&
-      (!hasVenmoError || mode === VenmoPaymentButton.modes.PAYMENT_TOKEN) &&
-      // Do not show button if there's no authorization key when in client token mode
-      (this.canCallVenmoApi() ||
-        // Show button, but do not call Venmo api.
-        mode === VenmoPaymentButton.modes.PAYMENT_TOKEN) && (
-        <button
-          type="button"
-          onClick={this.handleVenmoClick}
-          ref={this.setVenmoButtonRef}
-          aria-label="Venmo Payment Button"
-        >
-          Venmo
-        </button>
-      )
+      <React.Fragment>
+        {enabled &&
+        mobile &&
+        supportedByBrowser &&
+        (!hasVenmoError || mode === VenmoPaymentButton.modes.PAYMENT_TOKEN) && // Do not show button if there's no authorization key when in client token mode
+          (this.canCallVenmoApi() || mode === VenmoPaymentButton.modes.PAYMENT_TOKEN) && (
+            <button
+              type="button"
+              onClick={this.handleVenmoClick}
+              ref={this.setVenmoButtonRef}
+              aria-label="Venmo Payment Button"
+            >
+              Venmo
+            </button>
+          )}
+      </React.Fragment>
     );
-  };
+  }
 }
 
 export default VenmoPaymentButton;

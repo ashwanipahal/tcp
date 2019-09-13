@@ -509,10 +509,10 @@ export const getVenmoData = state => {
   return state[CHECKOUT_REDUCER_KEY].getIn(['values', 'venmoData']);
 };
 
-export const getVenmoClientTokenData = createSelector(
-  getVenmoData,
-  state => state && state.get('venmoClientTokenData')
-);
+function getVenmoClientTokenData(state) {
+  const venmoData = getVenmoData(state);
+  return venmoData && venmoData.venmoClientTokenData;
+}
 
 export default {
   getRecalcOrderPointsInterval,
