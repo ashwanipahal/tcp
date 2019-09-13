@@ -36,7 +36,7 @@ const ProductBasicInfo = props => {
 
   return (
     <div className="product-details-header-container">
-      <BadgeItem className="inline-badge-item" text={badge || 'Dummy Badge'} />
+      <BadgeItem className="inline-badge-item" text={badge} />
       <div className="information-container">
         {typeof pdpUrl === 'string' ? (
           <Anchor to={pdpUrl} className="product-link-title">
@@ -45,14 +45,17 @@ const ProductBasicInfo = props => {
         ) : (
           title
         )}
+        {/* TODO - fix it with bundle product requirement */}
         {/* {!isBundleProduct && !isGiftCard && isRatingsVisible && <ProductRating ratingsProductId={ratingsProductId} /> } */}
         <ProductRating ratingsProductId={ratingsProductId} />
       </div>
+      {/* TODO - the favourite functionality needs to be implemented here */}
       {/* {!isBundleProduct && !isGiftCard && (
           <FavoriteButtonContainer isActiveHoverMessage uniqueId={uniqueId} favoritedCount={colorSlice.favoritedCount}
             generalProductId={generalProductId} colorProductId={colorSlice.colorProductId} skuId={skuId} quantity={quantity}
             isInDefaultWishlist={isInDefaultWishlist} isShowFavoriteCount={isShowFavoriteCount} />
         )} */}
+      {/* TODO - fix it with bundle product requirement */}
       {/* {!isBundleProduct && !isMobile && keepAlive && <div className="oos-message">OUT OF STOCK</div>} */}
     </div>
   );

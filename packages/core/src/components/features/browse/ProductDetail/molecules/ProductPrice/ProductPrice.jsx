@@ -166,6 +166,7 @@ class ProductPrice extends React.Component {
         <meta itemProp="priceCurrency" content={priceCurrency} />
         <link itemProp="availability" href="http://schema.org/InStock" />
 
+        {/* TODO - bundle logic check */}
         {/* {!isBundleProduct && !(isBundleList) && !isCanada && !isInternationalShipping && */}
         {promotionalMessage && (
           <PromotionalMessage
