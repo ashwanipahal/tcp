@@ -2,6 +2,7 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import { requireNamedOnlineModule } from '../../../../../utils/resourceLoader';
 import { getLocator } from '../../../../../utils';
+// import { getPaypalPaymentSettings } from '../../../../features/CnC/Checkout/container/Checkout.selector';
 
 class PayPalButton extends React.Component {
   componentDidMount() {
@@ -24,7 +25,28 @@ class PayPalButton extends React.Component {
         return '';
       },
       onAuthorize: () => {
-        return '';
+        // const {
+        //   tcpOrderId,
+        //   centinelRequestPage,
+        //   centinelPayload,
+        //   centinelOrderId,
+        // } = getPaypalPaymentSettings(this.store.getState());
+        // return this.vendorServiceAbstractors
+        //   .paypalAuthorization(tcpOrderId, centinelRequestPage, centinelPayload, centinelOrderId)
+        //   .then(() => {
+        //     getRoutingOperator(this.store).gotoPage(
+        //       PAGES.checkout,
+        //       { queryValues: { [PAYPAL_REDIRECT_PARAM]: 'true' } },
+        //       true
+        //     );
+        //   })
+        //   .catch(err => {
+        //     getRoutingOperator(this.store).gotoPage(
+        //       PAGES.cart,
+        //       { queryValues: { error: err.errorCodes } },
+        //       true
+        //     );
+        //   });
       },
       // onCancel: this.clearPaypalSettings,
       onError: () => {

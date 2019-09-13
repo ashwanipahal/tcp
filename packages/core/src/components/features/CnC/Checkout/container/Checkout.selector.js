@@ -487,6 +487,10 @@ function isCardNotUpdated(state, cardId) {
   return getBillingValues(state).onFileCardId === cardId;
 }
 
+const getPaypalPaymentSettings = state => {
+  return state.Checkout.getIn(['options', 'paypalPaymentSettings']);
+};
+
 export default {
   getRecalcOrderPointsInterval,
   getIsOrderHasShipping,
@@ -537,4 +541,5 @@ export default {
   getGiftServicesFormData,
   getGiftServicesSend,
   getSyncError,
+  getPaypalPaymentSettings,
 };

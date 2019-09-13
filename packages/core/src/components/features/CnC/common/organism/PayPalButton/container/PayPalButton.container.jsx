@@ -1,22 +1,15 @@
-import React from 'react';
-// import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
 
 import PayPalButton from '../../../../../../common/atoms/PaypalButton';
+// import { initalizePayPalButton } from '../../../../Checkout/container/Checkout.saga';
 
-export class PayPalButtonContainer extends React.PureComponent<Props> {
-  render() {
-    return <PayPalButton />;
-  }
-}
-
-PayPalButtonContainer.propTypes = {};
-
+// eslint-disable-next-line no-unused-vars
 export const mapStateToProps = state => ({
-  isFetching: state,
+  // initalizePayPalButton: storeOperators.checkoutOperator.initalizePayPalButton,
+  // abandonPaypal: storeOperators.checkoutOperator.abandonPaypalCheckout,
 });
 
 export default connect(
   mapStateToProps,
   null
-)(PayPalButtonContainer);
+)(PayPalButton);
