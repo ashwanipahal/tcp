@@ -72,7 +72,7 @@ class ProductsDynamicAbstractor {
         facetValue.length > 0 &&
         facetKey.indexOf('uFilter') > -1
       ) {
-        facetValue = facetValue.map(facet => `${facetKey}:"${facet}"`);
+        facetValue = facetValue.map(facet => `${facetKey}:"${encodeURIComponent(facet)}"`);
         query += facetValue.length > 0 ? (query ? '&filter=' : '') + facetValue.join(' OR ') : '';
       }
     });
