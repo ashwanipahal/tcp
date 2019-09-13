@@ -32,3 +32,7 @@ export const getDefaultImage = state => {
     state.ProductDetail.getIn(['currentProduct', 'imagesByColor', firstColor, 'basicImageUrl'])
   );
 };
+
+export const getCurrentProduct = state => {
+  return state.ProductDetail.get('currentProduct');
+};

@@ -15,6 +15,53 @@ export const isCanada = () => {
   return siteId === API_CONFIG.siteIds.ca;
 };
 
+const getStatusCodeRes = (returnCode, body, args) => {
+  if (returnCode) {
+    const { address } = body;
+    switch (body.returnCode) {
+      case '02':
+        return { status: 'PENDING' };
+      case '04':
+        return { status: 'TIMEOUT' };
+      case '01':
+        return {
+          onFileCardId: body.xCardId.toString(),
+          cardNumber: body.cardNumber,
+          cardType: 'PLACE CARD',
+          isExpirationRequired: false,
+          isCVVRequired: false,
+          isDefault: false,
+
+          address: address && {
+            firstName: address.firstName,
+            lastName: address.lastName,
+            addressLine1: address.address1,
+            addressLine2: address.address2,
+            zipCode: address.zipCode,
+            state: address.state,
+            city: address.city,
+            country: address.country,
+          },
+
+          emailAddress: args.emailAddress,
+          phoneNumber: body.phoneNumber || args.phoneNumber,
+
+          status: body.returnCode === '01' ? 'APPROVED' : 'EXISTING', // error code 03 = EXISTING but if we got to this point we assume! that the status is always exisiting if returnCode !== 1
+          creditLimit: parseFloat(body.creditLimit.toString().replace(/\$/gi, '')),
+          // apr: parseFloat(credit.apr),
+          couponCode: body.couponCode,
+          savingAmount: parseFloat(body.savingAmount.replace(/\$/gi, '')) || 0,
+          discount: parseFloat(body.percentOff), // '30%' but we'll need to calculate on it, so parseFloat
+        };
+      case '13007':
+        return { status: 'INVALID_PRESCREEN_CODE' };
+      default:
+        return { status: 'ERROR' };
+    }
+  }
+  return false;
+};
+
 const applyInstantCard = args => {
   const payload = {
     // Overriding 'application/json' - specific to processWIC
@@ -31,13 +78,14 @@ const applyInstantCard = args => {
       city: args.city,
       state: args.statewocountry,
       zipCode: args.noCountryZip,
+      emailAddress: args.emailAddress,
       country: getSiteId(),
       ssn: args.ssNumber,
       prescreenId: args.preScreenCode,
-      mobilePhoneNumber: args.phoneNumber,
-      phoneNumber: args.alternatePhone,
+      mobilePhoneNumber: args.phoneNumberWithAlt,
+      phoneNumber: args.altPhoneNumber,
       birthdayDate: `${args.month}${args.date}${args.year}`,
-      userId: args.userId || -1002,
+      userId: -1002,
     },
   };
   return executeStatefulAPICall(payload)
@@ -49,17 +97,7 @@ const applyInstantCard = args => {
       }
       const body = res.body && res.body.response ? res.body.response : res.body;
       const returnCode = body.returnCode || body.errorCode;
-      if (returnCode) {
-        switch (body.returnCode) {
-          case '02':
-            return { status: 'PENDING' };
-          case '04':
-            return { status: 'TIMEOUT' };
-          default:
-            return { status: 'ERROR' };
-        }
-      }
-      return true;
+      return getStatusCodeRes(returnCode, body, args);
     })
     .catch(errorHandler);
 };
