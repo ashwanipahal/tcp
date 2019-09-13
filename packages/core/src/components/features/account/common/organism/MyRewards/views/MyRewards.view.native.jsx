@@ -37,7 +37,7 @@ class MyRewards extends PureComponent {
    */
   renderView = ({ item }) => {
     const {
-      labels,
+      commonLabels,
       coupons,
       onViewCouponDetails,
       onApplyCouponToBagFromList,
@@ -51,7 +51,7 @@ class MyRewards extends PureComponent {
     return (
       <DetailedCouponTile
         key={item.id}
-        labels={labels.common}
+        labels={commonLabels}
         coupon={item}
         onViewCouponDetails={onViewCouponDetails}
         onApplyCouponToBagFromList={onApplyCouponToBagFromList}
@@ -64,7 +64,15 @@ class MyRewards extends PureComponent {
   };
 
   render() {
-    const { labels, showLink, coupons, couponsLabels, selectedCoupon, ...otherProps } = this.props;
+    const {
+      labels,
+      showLink,
+      navigation,
+      coupons,
+      couponsLabels,
+      selectedCoupon,
+      ...otherProps
+    } = this.props;
     const heading = `${labels.placeRewards.lbl_my_rewards_heading} (${coupons.size})`;
     const isSelected = selectedCoupon !== null;
     return (
@@ -104,7 +112,7 @@ class MyRewards extends PureComponent {
             />
           </View>
         ) : (
-          <EmptyRewards labels={labels} />
+          <EmptyRewards navigation={navigation} labels={labels} />
         )}
         {showLink && (
           <StyledAnchorWrapper>
@@ -140,6 +148,7 @@ class MyRewards extends PureComponent {
 
 MyRewards.propTypes = {
   labels: PropTypes.shape({ placeRewards: {} }),
+  commonLabels: PropTypes.shape({}),
   coupons: PropTypes.shape([]),
   onViewCouponDetails: PropTypes.func,
   onApplyCouponToBagFromList: PropTypes.func,
@@ -149,6 +158,7 @@ MyRewards.propTypes = {
   showLink: PropTypes.bool,
   selectedCoupon: PropTypes.shape({}),
   couponsLabels: PropTypes.shape({}),
+  navigation: PropTypes.shape({}),
 };
 
 MyRewards.defaultProps = {
@@ -159,6 +169,7 @@ MyRewards.defaultProps = {
       lbl_common_tnc: '',
     },
   },
+  commonLabels: {},
   coupons: [],
   onViewCouponDetails: () => {},
   onApplyCouponToBagFromList: () => {},
@@ -168,6 +179,7 @@ MyRewards.defaultProps = {
   showLink: false,
   selectedCoupon: {},
   couponsLabels: {},
+  navigation: {},
 };
 
 export default MyRewards;

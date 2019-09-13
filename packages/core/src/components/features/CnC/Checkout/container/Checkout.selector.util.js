@@ -1,3 +1,5 @@
+import { formValueSelector, getFormSyncErrors } from 'redux-form';
+
 const getPickUpContactFormLabels = state => {
   const {
     lbl_pickup_title: title,
@@ -58,4 +60,19 @@ const getPickUpContactFormLabels = state => {
   };
 };
 
-export default getPickUpContactFormLabels;
+const getGiftServicesFormData = state => {
+  const selector = formValueSelector('GiftServices');
+  return {
+    catEntryId: selector(state, 'optionId'),
+    hasGiftWrapping: selector(state, 'hasGiftWrapping'),
+    GiftMsg: selector(state, 'message'),
+  };
+};
+
+const getSyncError = state => {
+  return {
+    syncError: getFormSyncErrors('checkoutShipping')(state),
+  };
+};
+
+export { getPickUpContactFormLabels, getGiftServicesFormData, getSyncError };

@@ -1,4 +1,5 @@
 import PropTypes from 'prop-types';
+import { isEmpty } from 'lodash';
 
 const getSelectedAddress = (addressList, onFileAddressKey) => {
   let selectedAddress = null;
@@ -11,19 +12,21 @@ const getSelectedAddress = (addressList, onFileAddressKey) => {
 const getDefaultShippingDisabledState = ({
   isEditing,
   isSaveToAddressBookChecked,
-  isAddNewAddress,
   modalState,
   modalType,
+  userAddresses,
 }) => {
-  let defaultShippingDisabled = !isEditing && !(modalState && modalType === 'edit');
-  if (isAddNewAddress) {
-    if (!isSaveToAddressBookChecked) {
-      defaultShippingDisabled = true;
-    } else {
-      defaultShippingDisabled = false;
-    }
-  } else if (modalState && modalType === 'add') {
-    defaultShippingDisabled = false;
+  let defaultShippingDisabled = false;
+  if (
+    (userAddresses &&
+      userAddresses.size === 1 &&
+      (isEditing || (modalState && modalType === 'edit'))) ||
+    !isSaveToAddressBookChecked
+  ) {
+    defaultShippingDisabled = true;
+  }
+  if (isSaveToAddressBookChecked && (userAddresses && userAddresses.size === 0)) {
+    defaultShippingDisabled = true;
   }
   return defaultShippingDisabled;
 };
@@ -53,6 +56,19 @@ const getCancelAction = ({ modalState, modalType, toggleAddEditModal, toggleEdit
 
 const getShowAddressFields = ({ isEditing, isAddNewAddress, modalState, userAddresses }) => {
   return isEditing || isAddNewAddress || modalState || (userAddresses && userAddresses.size === 0);
+};
+
+const getFieldsValidation = ({ syncErrorsObject }) => {
+  let disabledState = false;
+  if (syncErrorsObject) {
+    const {
+      syncError: { address: addressErrors },
+    } = syncErrorsObject;
+    if (addressErrors && !isEmpty(addressErrors) && Object.keys(addressErrors).length !== 1) {
+      disabledState = true;
+    }
+  }
+  return disabledState;
 };
 
 const propTypes = {
@@ -104,4 +120,5 @@ export {
   getShowAddressFields,
   propTypes,
   defaultProps,
+  getFieldsValidation,
 };

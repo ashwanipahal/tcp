@@ -44,7 +44,7 @@ class GiftCardTile extends React.PureComponent {
           onClick={() => {
             handleRemoveGiftCard(cardData.get('id'));
           }}
-          className="gift_remove_button"
+          className="gift_remove_button gift-action-btn"
           buttonVariation="variable-width"
           type="submit"
           data-locator="gift_apply_button"
@@ -61,7 +61,7 @@ class GiftCardTile extends React.PureComponent {
         onClick={() => {
           applyExistingGiftCardToOrder(cardData);
         }}
-        className="gift_apply_button"
+        className="gift_apply_button gift-action-btn"
         buttonVariation="variable-width"
         type="submit"
         data-locator="gift_apply_button"
@@ -99,23 +99,25 @@ class GiftCardTile extends React.PureComponent {
     let cardEndingIn = cardData.accountNo !== undefined ? cardData.accountNo.substr(-4) : '';
     let remainingBalance = '';
     if (isGiftCardApplied) {
+      const remainingBalanceValue = cardData.get('remainingBalance');
       cardEndingIn = cardData.get('endingNumbers');
-      remainingBalance = ` | ${getLabelValue(labels, 'lbl_giftcard_remainingBal')} : ${cardData.get(
-        'remainingBalance'
-      )}`;
+      remainingBalance = ` | ${getLabelValue(labels, 'lbl_giftcard_remainingBal')} : $${
+        typeof remainingBalanceValue !== 'undefined' ? remainingBalanceValue.toFixed(2) : 0
+      }`;
     }
     return (
       <div className={className}>
         <div className="gift_card_box elem-mb-XS elem-mt-MED">
           {this.renderGiftCardError()}
 
-          <Row>
+          <Row className="gift-card-row">
             <Col
               colSize={{
-                small: 3,
-                medium: 5,
-                large: 9,
+                small: 4,
+                medium: 4,
+                large: 8,
               }}
+              className="gift-tile-msg-container"
             >
               <BodyCopy
                 fontFamily="secondary"
@@ -131,10 +133,11 @@ class GiftCardTile extends React.PureComponent {
             </Col>
             <Col
               colSize={{
-                small: 3,
-                medium: 3,
-                large: 3,
+                small: 2,
+                medium: 4,
+                large: 4,
               }}
+              className="gift-action-container"
             >
               {this.renderApplyRemoveBtn()}
             </Col>

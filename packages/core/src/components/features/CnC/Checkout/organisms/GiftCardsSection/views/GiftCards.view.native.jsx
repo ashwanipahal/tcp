@@ -8,6 +8,7 @@ import {
   Container,
   GiftCardBody,
   GiftCardButtonCal,
+  HeadsUpMessage,
 } from '../styles/GiftCards.style.native';
 import { BodyCopyWithSpacing } from '../../../../../../common/atoms/styledWrapper';
 import GiftCardTileView from '../../../molecules/GiftCardTile';
@@ -68,7 +69,7 @@ class GiftCards extends React.PureComponent {
           <BodyCopyWithSpacing
             text={getLabelValue(labels, 'lbl_giftcard_appliedCards')}
             fontSize="fs16"
-            fontWeight="regular"
+            fontWeight="extrabold"
             fontFamily="secondary"
             spacingStyles="margin-bottom-MED"
             color="gray.900"
@@ -91,24 +92,31 @@ class GiftCards extends React.PureComponent {
               );
             })}
 
-          <BodyCopyWithSpacing
-            text={`${getLabelValue(labels, 'lbl_giftcard_headsUpTitle')} ${getLabelValue(
-              labels,
-              'lbl_giftcard_headsUpMsg'
-            )}`}
-            fontSize="fs16"
-            fontWeight="regular"
-            fontFamily="primary"
-            spacingStyles="margin-bottom-MED margin-top-MED"
-            color="gray.900"
-          />
+          <HeadsUpMessage>
+            <BodyCopyWithSpacing
+              text={`${getLabelValue(labels, 'lbl_giftcard_headsUpTitle')} `}
+              fontSize="fs16"
+              fontWeight="semibold"
+              fontFamily="secondary"
+              spacingStyles="margin-bottom-MED margin-top-MED"
+              color="gray.900"
+            />
+            <BodyCopyWithSpacing
+              text={getLabelValue(labels, 'lbl_giftcard_headsUpMsg')}
+              fontSize="fs16"
+              fontWeight="regular"
+              fontFamily="primary"
+              spacingStyles="margin-left-SM"
+              color="gray.900"
+            />
+          </HeadsUpMessage>
 
           <BodyCopyWithSpacing
             text={getLabelValue(labels, 'lbl_giftcard_availableCards')}
             fontSize="fs16"
-            fontWeight="regular"
+            fontWeight="extrabold"
             fontFamily="secondary"
-            spacingStyles="margin-bottom-MED"
+            spacingStyles="margin-bottom-MED margin-top-MED"
             color="gray.900"
           />
 

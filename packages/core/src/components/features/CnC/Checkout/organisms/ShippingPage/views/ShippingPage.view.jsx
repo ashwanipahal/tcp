@@ -11,6 +11,7 @@ export default class ShippingPage extends React.PureComponent {
   static propTypes = {
     addressLabels: PropTypes.shape({}).isRequired,
     isOrderUpdateChecked: PropTypes.bool,
+    isGiftServicesChecked: PropTypes.bool,
     smsSignUpLabels: PropTypes.shape({}).isRequired,
     address: PropTypes.shape({}),
     selectedShipmentId: PropTypes.string,
@@ -36,10 +37,12 @@ export default class ShippingPage extends React.PureComponent {
     saveToAddressBook: PropTypes.bool,
     updateShippingAddressData: PropTypes.func.isRequired,
     labels: PropTypes.shape({}).isRequired,
+    syncErrors: PropTypes.shape({}),
   };
 
   static defaultProps = {
     isOrderUpdateChecked: false,
+    isGiftServicesChecked: false,
     addressPhoneNumber: null,
     address: null,
     selectedShipmentId: null,
@@ -56,6 +59,7 @@ export default class ShippingPage extends React.PureComponent {
     shippingAddressId: null,
     setAsDefaultShipping: false,
     saveToAddressBook: false,
+    syncErrors: {},
   };
 
   constructor(props) {
@@ -97,13 +101,22 @@ export default class ShippingPage extends React.PureComponent {
       (!addEditResponseAddressId || prevDefaultAddress === addEditResponseAddressId)
     ) {
       const defaultAddress = userAddresses.filter(item => item.primary === 'true');
-      return { defaultAddressId: defaultAddress.size > 0 ? defaultAddress.get(0).addressId : '' };
+      return {
+        defaultAddressId:
+          defaultAddress && defaultAddress.size > 0
+            ? defaultAddress.get(0) && defaultAddress.get(0).addressId
+            : userAddresses.get(0) && userAddresses.get(0).addressId,
+      };
     }
     if (addEditResponseAddressId && prevDefaultAddress !== addEditResponseAddressId) {
       return { defaultAddressId: addEditResponseAddressId };
     }
     return null;
   }
+
+  setDefaultAddressId = id => {
+    this.setState({ defaultAddressId: id });
+  };
 
   toggleAddNewAddress = () => {
     const { isAddNewAddress } = this.state;
@@ -214,6 +227,7 @@ export default class ShippingPage extends React.PureComponent {
     const {
       addressLabels,
       isOrderUpdateChecked,
+      isGiftServicesChecked,
       smsSignUpLabels,
       addressPhoneNumber,
       selectedShipmentId,
@@ -233,6 +247,8 @@ export default class ShippingPage extends React.PureComponent {
       shippingAddressId,
       setAsDefaultShipping,
       labels,
+      address,
+      syncErrors,
     } = this.props;
 
     const { isAddNewAddress, isEditing, defaultAddressId } = this.state;
@@ -243,11 +259,12 @@ export default class ShippingPage extends React.PureComponent {
             routeToPickupPage={routeToPickupPage}
             addressLabels={addressLabels}
             isOrderUpdateChecked={isOrderUpdateChecked}
+            isGiftServicesChecked={isGiftServicesChecked}
             smsSignUpLabels={smsSignUpLabels}
             initialValues={{
               address: { country: getSiteId() && getSiteId().toUpperCase() },
               shipmentMethods: { shippingMethodId: defaultShipmentId },
-              saveToAddressBook: !isGuest && userAddresses && userAddresses.size > 0,
+              saveToAddressBook: !isGuest,
               onFileAddressKey: defaultAddressId,
             }}
             selectedShipmentId={selectedShipmentId}
@@ -275,6 +292,9 @@ export default class ShippingPage extends React.PureComponent {
             setAsDefaultShipping={setAsDefaultShipping}
             addNewShippingAddress={this.addNewShippingAddress}
             labels={labels}
+            address={address}
+            setDefaultAddressId={this.setDefaultAddressId}
+            syncErrorsObject={syncErrors}
           />
         )}
       </>

@@ -13,8 +13,8 @@ exports[`PickUpFormPart component should renders correctly props not present 1`]
       <Connect(GiftCardsContainer) />
     </Styled(View)>
     <CnCCommonTemplate
-      btnText="NEXT:REVIEW"
       navigation={Object {}}
+      onBackLinkPress={[Function]}
       routeToPage=""
     />
   </ScrollViewMock>

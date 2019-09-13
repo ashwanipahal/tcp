@@ -1,8 +1,35 @@
 import styled from 'styled-components/native';
 
+import { Image } from '../../../atoms';
+
 export const Container = styled.View`
   width: 100%;
   margin-bottom: ${props => props.theme.spacing.LAYOUT_SPACING.SM};
+`;
+
+export const ImageSlidesWrapper = styled.View`
+  height: 142px;
+`;
+
+export const ImageSlideWrapper = styled.View`
+  flex-direction: row;
+`;
+
+export const StyledImage = styled(Image)`
+  /* stylelint-disable-next-line */
+  resize-mode: contain;
+`;
+
+export const ImageItemWrapper = styled.View`
+  flex-direction: row;
+  margin: ${props =>
+    props.isFullMargin
+      ? `${props.theme.spacing.ELEM_SPACING.MED}`
+      : `${props.theme.spacing.ELEM_SPACING.MED} ${props.theme.spacing.ELEM_SPACING.XS}`};
+`;
+
+export const ButtonContainer = styled.View`
+  align-items: center;
 `;
 
 export const Wrapper = styled.View`
@@ -17,12 +44,16 @@ export const PromoContainer = styled.View`
 `;
 
 export const HeaderContainer = styled.View`
+  align-items: center;
   ${props =>
     props.layout === 'alt'
-      ? ` `
+      ? ` width:100%;
+      `
       : `background:white;
  margin-left:62px;
- margin-right:62px;`};
+ margin-right:62px;
+ width:70%;
+ `};
 `;
 
 export const Border = styled.View`
@@ -59,6 +90,11 @@ export const ProductTabListContainer = styled.View`
 
 export default {
   Container,
+  ImageItemWrapper,
+  ButtonContainer,
+  ImageSlidesWrapper,
+  ImageSlideWrapper,
+  StyledImage,
   PromoContainer,
   ImageContainer,
   MessageContainer,

@@ -73,8 +73,8 @@ const Address = ({
   showCountry,
   isDefault,
   showName,
-}) =>
-  address && (
+}) => {
+  return address ? (
     <BodyCopy component="div" fontSize="fs14" color="text.primary" className={className}>
       {showName && (
         <BodyCopy
@@ -102,7 +102,8 @@ const Address = ({
         </BodyCopy>
       )}
     </BodyCopy>
-  );
+  ) : null;
+};
 
 Address.propTypes = {
   address: PropTypes.shape({}),
@@ -120,6 +121,10 @@ Address.defaultProps = {
   showCountry: true,
   isDefault: false,
   showName: true,
+  address: null,
+  className: '',
+  dataLocatorPrefix: '',
+  fontWeight: 'regular',
 };
 
 export default Address;

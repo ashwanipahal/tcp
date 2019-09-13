@@ -5,6 +5,7 @@ import CnCTemplate from '../../common/organism/CnCTemplate';
 import PickUpFormPart from '../organisms/PickupPage';
 import ShippingPage from '../organisms/ShippingPage';
 import BillingPage from '../organisms/BillingPage';
+import ReviewPage from '../organisms/ReviewPage';
 import CHECKOUT_STAGES from '../../../../../../../web/src/pages/App.constants';
 // import CheckoutProgressUtils from '../../../../../../../web/src/components/features/content/CheckoutProgressIndicator/utils/utils';
 
@@ -22,6 +23,15 @@ class CheckoutPage extends React.PureComponent {
   // CheckoutProgressUtils.routeToStage(requestedStage, cartOrderItems, false, currentStage);
   // }
 
+  getFormLoad = (pickupInitialValues, isGuest) => {
+    return !!(
+      isGuest ||
+      (pickupInitialValues &&
+        pickupInitialValues.pickUpContact &&
+        pickupInitialValues.pickUpContact.firstName)
+    );
+  };
+
   renderLeftSection = () => {
     const {
       router,
@@ -36,6 +46,7 @@ class CheckoutPage extends React.PureComponent {
       orderHasPickUp,
       submitShippingSection,
       isOrderUpdateChecked,
+      isGiftServicesChecked,
       isAlternateUpdateChecked,
       pickUpLabels,
       smsSignUpLabels,
@@ -50,16 +61,13 @@ class CheckoutPage extends React.PureComponent {
       billingProps,
       labels,
       submitBilling,
+      reviewProps,
+      submitReview,
     } = this.props;
 
     const section = router.query.section || router.query.subSection;
     const currentSection = section || CHECKOUT_STAGES.SHIPPING;
-    const isFormLoad = !!(
-      isGuest ||
-      (pickupInitialValues &&
-        pickupInitialValues.pickUpContact &&
-        pickupInitialValues.pickUpContact.firstName)
-    );
+    const isFormLoad = this.getFormLoad(pickupInitialValues, isGuest);
     return (
       <div>
         {currentSection.toLowerCase() === CHECKOUT_STAGES.PICKUP && isFormLoad && (
@@ -73,6 +81,7 @@ class CheckoutPage extends React.PureComponent {
             isSmsUpdatesEnabled={isSmsUpdatesEnabled}
             currentPhoneNumber={currentPhoneNumber}
             isOrderUpdateChecked={isOrderUpdateChecked}
+            isGiftServicesChecked={isGiftServicesChecked}
             isAlternateUpdateChecked={isAlternateUpdateChecked}
             pickUpLabels={pickUpLabels}
             smsSignUpLabels={smsSignUpLabels}
@@ -105,6 +114,14 @@ class CheckoutPage extends React.PureComponent {
             submitBilling={submitBilling}
           />
         )}
+        {currentSection.toLowerCase() === CHECKOUT_STAGES.REVIEW && (
+          <ReviewPage
+            {...reviewProps}
+            submitReview={submitReview}
+            orderHasPickUp={orderHasPickUp}
+            orderHasShipping={orderHasShipping}
+          />
+        )}
       </div>
     );
   };
@@ -125,6 +142,7 @@ CheckoutPage.propTypes = {
   shippingProps: PropTypes.shape({}).isRequired,
   billingProps: PropTypes.shape({}).isRequired,
   isOrderUpdateChecked: PropTypes.bool.isRequired,
+  isGiftServicesChecked: PropTypes.bool.isRequired,
   isAlternateUpdateChecked: PropTypes.bool.isRequired,
   pickupInitialValues: PropTypes.shape({}).isRequired,
   pickUpLabels: PropTypes.shape({}).isRequired,
@@ -132,6 +150,8 @@ CheckoutPage.propTypes = {
   labels: PropTypes.shape({}).isRequired,
   router: PropTypes.shape({}).isRequired,
   initialValues: PropTypes.shape({}).isRequired,
+  reviewProps: PropTypes.shape({}).isRequired,
+  submitReview: PropTypes.func.isRequired,
   orderHasPickUp: PropTypes.bool.isRequired,
   navigation: PropTypes.shape({}).isRequired,
   submitShippingSection: PropTypes.func.isRequired,

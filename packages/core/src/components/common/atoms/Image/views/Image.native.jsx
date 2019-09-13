@@ -14,6 +14,7 @@ type Props = {
   imgConfigs: string,
   alt: string,
   host: string,
+  alt: string,
 };
 
 /**
@@ -43,7 +44,15 @@ const ImageComp = (props: Props) => {
     );
   }
 
-  return <ImageComponent {...otherProps} host={host} source={source} accessibilityRole="image" />;
+  return (
+    <ImageComponent
+      {...otherProps}
+      host={host}
+      source={source}
+      accessibilityRole="image"
+      accessibilityLabel={alt || ''}
+    />
+  );
 };
 
 export default withStyles(ImageComp, style);

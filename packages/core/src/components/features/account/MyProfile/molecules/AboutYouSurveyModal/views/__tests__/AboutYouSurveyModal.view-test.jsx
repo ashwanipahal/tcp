@@ -21,11 +21,4 @@ describe('AboutYouSurveyModal', () => {
     const tree = shallow(<AboutYouSurveyModalVanilla {...props} />);
     expect(tree).toMatchSnapshot();
   });
-
-  it('calling onClose method', () => {
-    const tree = shallow(<AboutYouSurveyModalVanilla {...props} />);
-    const componentInstance = tree.instance();
-    componentInstance.onClose();
-    expect(props.setModalMountState).toBeCalled();
-  });
 });

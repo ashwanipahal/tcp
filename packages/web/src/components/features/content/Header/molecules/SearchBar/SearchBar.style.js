@@ -62,6 +62,11 @@ export default css`
     background-color: ${props => props.theme.colors.WHITE};
   }
 
+  .boxHead {
+    font-size: 13px;
+    font-weight: 600;
+  }
+
   .trendingBox .trendingBoxHead,
   .recentBox .recentBoxHead,
   .matchLinkBox .matchLinkBoxHead,
@@ -72,11 +77,28 @@ export default css`
     padding: 0px ${props => props.theme.spacing.ELEM_SPACING.SM};
   }
 
-  .trendingBox .trendingBoxBody,
-  .recentBox .recentBoxBody,
-  .matchLinkBox .matchLinkBoxBody,
-  .matchProductBox .matchProductBody {
+  .trendingBox .trendingBoxBody {
     padding: ${props => props.theme.spacing.ELEM_SPACING.XS};
+  }
+
+  .matchLinkBox .matchLinkBoxBody {
+    padding: ${props => props.theme.spacing.ELEM_SPACING.XS}
+      ${props => props.theme.spacing.ELEM_SPACING.XXL};
+  }
+
+  .recentBox .recentBoxBody {
+    padding: ${props => props.theme.spacing.ELEM_SPACING.XS}
+      ${props => props.theme.spacing.ELEM_SPACING.XXL}
+      ${props => props.theme.spacing.ELEM_SPACING.LRG};
+  }
+  .matchProductBox .matchProductBody {
+    padding: ${props => props.theme.spacing.APP_LAYOUT_SPACING.SM};
+  }
+
+  .matchProductBox .matchProductBody ul {
+    display: flex;
+    justify-content: space-between;
+    width: 100%;
   }
 
   .trendingBoxBody ul li {
@@ -90,29 +112,24 @@ export default css`
     border-radius: 20px;
     padding: 0px 10px;
     text-align: center;
-    margin: 6px;
+    line-height: 40px;
+    margin: 6px 5px;
   }
 
   li.recentTag {
-    height: 39px;
+    height: 35px;
     color: ${props => props.theme.colors.ACCORDION.TEXT};
-    padding: 0px ${props => props.theme.spacing.ELEM_SPACING.XS};
-    margin: ${props => props.theme.spacing.ELEM_SPACING.XS};
   }
 
   li.linkName {
-    height: 39px;
+    height: 40px;
     color: ${props => props.theme.colors.ACCORDION.TEXT};
-    padding: 0px ${props => props.theme.spacing.ELEM_SPACING.XS};
-    margin: 6px;
   }
 
   li.productBox {
-    width: 81px;
+    width: 24%;
     height: 81px;
     border: solid 1px ${props => props.theme.colors.PRIMARY.DARK};
     background-color: ${props => props.theme.colors.PRIMARY.GRAY};
-    margin: ${props => props.theme.spacing.ELEM_SPACING.XXS};
-    display: inline-block;
   }
 `;

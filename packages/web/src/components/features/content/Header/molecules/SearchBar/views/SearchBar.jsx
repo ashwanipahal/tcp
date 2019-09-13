@@ -105,44 +105,44 @@ class SearchBar extends React.PureComponent {
                 {!showProduct ? (
                   <div className="suggestionBox">
                     <div className="trendingBox">
-                      <BodyCopy className="trendingBoxHead">
+                      <BodyCopy fontFamily="secondary" className="boxHead trendingBoxHead">
                         {getLabelValue(labels, 'lbl_search_whats_trending')}
                       </BodyCopy>
-                      <BodyCopy
-                        className="trendingBoxBody"
-                        fontFamily="Nunito"
-                        fontSize="15px"
-                        lineHeight="39"
-                        component="div"
-                      >
+                      <BodyCopy className="trendingBoxBody" lineHeight="39" component="div">
                         <ul>
                           {searchData.trending.map(item => {
                             return (
-                              <li key={item.id} className="tagName">
+                              <BodyCopy
+                                component="li"
+                                fontSize="fs14"
+                                fontFamily="secondary"
+                                key={item.id}
+                                className="tagName"
+                              >
                                 {item.text}
-                              </li>
+                              </BodyCopy>
                             );
                           })}
                         </ul>
                       </BodyCopy>
                     </div>
                     <div className="recentBox">
-                      <BodyCopy className="recentBoxHead">
+                      <BodyCopy fontFamily="secondary" className="boxHead recentBoxHead">
                         {getLabelValue(labels, 'lbl_search_recent_search')}
                       </BodyCopy>
-                      <BodyCopy
-                        component="div"
-                        className="recentBoxBody"
-                        fontFamily="Nunito"
-                        fontSize="15px"
-                        lineHeight="39"
-                      >
+                      <BodyCopy component="div" className="recentBoxBody" lineHeight="39">
                         <ul>
                           {searchData.recent.map(item => {
                             return (
-                              <li key={item.id} className="recentTag">
+                              <BodyCopy
+                                component="li"
+                                fontFamily="secondary"
+                                fontSize="fs14"
+                                key={item.id}
+                                className="recentTag"
+                              >
                                 {item.text}
-                              </li>
+                              </BodyCopy>
                             );
                           })}
                         </ul>
@@ -152,41 +152,35 @@ class SearchBar extends React.PureComponent {
                 ) : (
                   <div className="matchBox">
                     <div className="matchLinkBox">
-                      <BodyCopy className="matchLinkBoxHead">
+                      <BodyCopy fontFamily="secondary" className="boxHead matchLinkBoxHead">
                         {getLabelValue(labels, 'lbl_search_looking_for')}
                       </BodyCopy>
-                      <BodyCopy
-                        component="div"
-                        className="matchLinkBoxBody"
-                        fontFamily="Nunito"
-                        fontSize="15px"
-                        lineHeight="39"
-                      >
+                      <BodyCopy component="div" className="matchLinkBoxBody" lineHeight="39">
                         <ul>
                           {searchData.looking.map(item => {
                             return (
-                              <li key={item.id} className="linkName">
+                              <BodyCopy
+                                component="li"
+                                fontFamily="secondary"
+                                fontSize="fs14"
+                                key={item.id}
+                                className="linkName"
+                              >
                                 {item.text}
-                              </li>
+                              </BodyCopy>
                             );
                           })}
                         </ul>
                       </BodyCopy>
                     </div>
                     <div className="matchProductBox">
-                      <BodyCopy className="matchProductHead">
+                      <BodyCopy fontFamily="secondary" className="boxHead matchProductHead">
                         {getLabelValue(labels, 'lbl_search_product_matches')}
                       </BodyCopy>
-                      <BodyCopy
-                        className="matchProductBody"
-                        fontFamily="Nunito"
-                        fontSize="15px"
-                        lineHeight="39"
-                        component="div"
-                      >
+                      <BodyCopy className="matchProductBody" lineHeight="39" component="div">
                         <ul>
                           {searchData.products.map(item => {
-                            return <li key={item.id} className="productBox" />;
+                            return <BodyCopy component="li" key={item.id} className="productBox" />;
                           })}
                         </ul>
                       </BodyCopy>

@@ -12,12 +12,10 @@ module.exports = withTM({
   //    https://github.com/zeit/next.js/blob/canary/examples/with-dotenv/next.config.js
   env: {
     // TODO: change to process.env.RWD_WEB_ANALYTICS
-    ANALYTICS: false,
+    ANALYTICS: true,
     // TODO: change to process.env.RWD_WEB_ANALYTICS_SCRIPT_URL
     ANALYTICS_SCRIPT_URL:
       '//assets.adobedtm.com/launch-EN35cf63837e524037bc099142d8051c4b-development.min.js',
-    RECOMMENDATIONS_SCRIPT_URL:
-      '//assets.adobedtm.com/launch-ENa4f0e1904eeb44009a0c294d5d84d94c-development.min.js',
   },
   webpack(config, { isServer }) {
     const newConfig = config;
