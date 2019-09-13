@@ -6,7 +6,7 @@ import { AutoCompleteComponent } from '@tcp/core/src/components/common/atoms/Goo
 import withStyles from '../../../common/hoc/withStyles';
 import ErrorMessage from '../../../common/hoc/ErrorMessage';
 import { INITIAL_STORE_LIMIT } from '../StoreLocator.constants';
-import { getAddressLocationInfo } from '../../../../services/abstractors/common/storeLocator';
+import { getAddressLocationInfo } from '../../../../utils/addressLocation';
 import styles from '../styles/Store.style';
 
 export class Store extends PureComponent {
@@ -35,39 +35,44 @@ export class Store extends PureComponent {
     loadStoresByLatLng(Promise.resolve({ lat: lat(), lng: lng() }), INITIAL_STORE_LIMIT);
   };
 
-  handleSubmit = formData => {
+  onSubmit = formData => {
     const { submitting, loadStoresByLatLng } = this.props;
     if (!submitting) {
       this.setState({ errorNotFound: null });
       return loadStoresByLatLng(
-        getAddressLocationInfo(formData.addressLocation).catch(() =>
+        getAddressLocationInfo(formData.storeAddressLocator).catch(() =>
           this.setState({ errorNotFound: true })
         ),
         INITIAL_STORE_LIMIT
       );
     }
-    return null;
+    return false;
   };
 
   render() {
-    const { className, selectedCountry, error } = this.props;
+    const { className, selectedCountry, error, handleSubmit } = this.props;
     const { errorNotFound } = this.state;
     const errorMessage = errorNotFound ? 'Please enter a valid address and try again.' : error;
 
     return (
       <div className={className}>
-        <form onSubmit={this.handleSubmit} noValidate>
+        <form onSubmit={handleSubmit(this.onSubmit)} noValidate>
           <Field
-            id="storeLocator"
+            id="storeAddressLocator"
             placeholder="type"
             component={AutoCompleteComponent}
-            name="storeLocator"
+            name="storeAddressLocator"
             onPlaceSelected={this.handlePlaceSelected}
             componentRestrictions={Object.assign({}, { country: [selectedCountry] })}
-            dataLocator="storeLocator"
+            dataLocator="storeAddressLocator"
             className="store-locator-field"
             enableSuccessCheck={false}
           />
+          <button type="submit" title="search" className="button-search-store">
+            {' '}
+            {/* eslint-disable-next-line react/jsx-one-expression-per-line */}
+            Search{' '}
+          </button>
         </form>
         <ErrorMessage
           isShowingMessage={errorMessage}
@@ -86,6 +91,7 @@ Store.propTypes = {
   loadStoresByLatLng: PropTypes.func.isRequired,
   submitting: PropTypes.bool,
   error: PropTypes.bool.isRequired,
+  handleSubmit: PropTypes.func.isRequired,
 };
 
 Store.defaultProps = {
