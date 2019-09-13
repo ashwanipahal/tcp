@@ -111,6 +111,7 @@ const renderImageComponent = (item, navigation) => {
           height={moduleHeight}
           url={image.url}
           host={LAZYLOAD_HOST_NAME.HOME}
+          alt={image.alt}
         />
       </Anchor>
       {bannerPosition === bannerPositionTypes.bottom

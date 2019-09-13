@@ -147,6 +147,7 @@ class ModuleJ extends React.PureComponent<Props, State> {
               url={mediaLinkedList[1] && mediaLinkedList[1].image.url}
               height="300px"
               width="100%"
+              alt={mediaLinkedList[1] && mediaLinkedList[1].image.alt}
             />
           </Anchor>
         </ImageContainer>
