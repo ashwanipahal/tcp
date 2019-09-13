@@ -170,6 +170,7 @@ exports[`Shipping Page should render correctly 1`] = `
       touchOnBlur={true}
       touchOnChange={false}
       updateUnregisteredFields={false}
+      validate={[Function]}
     />
   </ScrollViewMock>
 </Fragment>
