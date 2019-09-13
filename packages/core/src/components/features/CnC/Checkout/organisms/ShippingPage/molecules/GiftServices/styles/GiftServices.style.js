@@ -117,3 +117,11 @@ export default css`
     }
   }
 `;
+
+export const modalStyles = css`
+  div.TCPModal__InnerContent {
+    @media ${props => props.theme.mediaQuery.large} {
+      max-width: 810px;
+    }
+  }
+`;

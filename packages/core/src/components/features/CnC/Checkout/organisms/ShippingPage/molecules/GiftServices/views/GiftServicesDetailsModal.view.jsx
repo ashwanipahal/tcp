@@ -2,7 +2,7 @@ import React from 'react';
 import Modal from '../../../../../../../../common/molecules/Modal';
 import { RichText } from '../../../../../../../../common/atoms';
 import withStyles from '../../../../../../../../common/hoc/withStyles';
-import styles from '../styles/GiftServices.style';
+import styles, { modalStyles } from '../styles/GiftServices.style';
 
 class GiftServicesDetailsModal extends React.PureComponent<Props> {
   render() {
@@ -18,6 +18,7 @@ class GiftServicesDetailsModal extends React.PureComponent<Props> {
         heightConfig={{ height: '90%' }}
         closeIconDataLocator="details-cross-icon"
         fixedWidth
+        inheritedStyles={modalStyles}
       >
         <RichText richTextHtml={labels.DETAILS_RICH_TEXT} />
       </Modal>

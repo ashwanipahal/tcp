@@ -87,6 +87,7 @@ class DeleteCardModal extends React.Component<Props> {
             {...this.props}
           />
         )}
+
         {ccType === 'VENMO' && (
           <VenmoCardModalInfo
             getAccNumbr={getAccNumbr}

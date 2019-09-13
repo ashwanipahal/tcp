@@ -87,6 +87,7 @@ exports[`MyRewards should render correctly 1`] = `
         "placeRewards": Object {},
       }
     }
+    navigation={Object {}}
   />
 </View>
 `;

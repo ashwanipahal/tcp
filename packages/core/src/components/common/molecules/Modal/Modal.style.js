@@ -39,6 +39,8 @@ const ModalStyle = css`
     border-bottom: 3px solid ${props => props.theme.colors.BLACK};
     margin-bottom: ${props => props.theme.spacing.ELEM_SPACING.XL};
     margin-top: 0;
+    height: 20px;
+    font-weight: 800;
     padding-bottom: ${props => props.theme.spacing.ELEM_SPACING.MED};
     @media ${props => props.theme.mediaQuery.medium} {
       display: none;

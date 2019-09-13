@@ -17,12 +17,15 @@ exports[`Wallet should render correctly 1`] = `
         termsConditionCta="lbl_common_tnc"
       >
         <Connect(MyRewardsContainer)
+          heading="test"
           labels={
             Object {
               "common": Object {},
               "myPlaceRewards": Object {},
             }
           }
+          programDetailsCta="test"
+          termsConditionCta="test"
           view="all"
         />
       </PageHeadingWithLinks>

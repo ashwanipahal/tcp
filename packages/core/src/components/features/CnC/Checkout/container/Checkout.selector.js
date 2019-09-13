@@ -18,9 +18,9 @@ import constants from '../Checkout.constants';
 import BagPageSelector from '../../BagPage/container/BagPage.selectors';
 import { getAddressListState } from '../../../account/AddressBook/container/AddressBook.selectors';
 import {
-  getSyncError,
   getPickUpContactFormLabels,
   getGiftServicesFormData,
+  getSyncError,
 } from './Checkout.selector.util';
 
 // import { getAddressListState } from '../../../account/AddressBook/container/AddressBook.selectors';
@@ -487,6 +487,24 @@ function isCardNotUpdated(state, cardId) {
   return getBillingValues(state).onFileCardId === cardId;
 }
 
+const getReviewLabels = state => {
+  const getReviewLabelValue = label => getLabelValue(state.Labels, label, 'review', 'checkout');
+  return {
+    header: getReviewLabelValue('lbl_review_title'),
+    backLinkBilling: getReviewLabelValue('lbl_review_backLinkBilling'),
+    nextSubmitText: getReviewLabelValue('lbl_review_nextSubmit'),
+    applyConditionPreText: getReviewLabelValue('lbl_review_applyConditionPreText'),
+    applyConditionTermsText: getReviewLabelValue('lbl_review_applyConditionTermsText'),
+    applyConditionAndText: getReviewLabelValue('lbl_review_applyConditionAndText'),
+    applyConditionPolicyText: getReviewLabelValue('lbl_review_applyConditionPolicyText'),
+    pickupSectionTitle: getReviewLabelValue('lbl_review_pickupSectionTitle'),
+    shippingSectionTitle: getReviewLabelValue('lbl_review_shippingSectionTitle'),
+    billingSectionTitle: getReviewLabelValue('lbl_review_billingSectionTitle'),
+    ariaLabelReviewPageTitle: getReviewLabelValue('lbl_review_ariaLabelReviewPageTitle'),
+    ariaLabelBackLink: getReviewLabelValue('lbl_review_ariaLabelBackLink'),
+  };
+};
+
 export default {
   getRecalcOrderPointsInterval,
   getIsOrderHasShipping,
@@ -537,4 +555,5 @@ export default {
   getSyncError,
   getGiftServicesFormData,
   getGiftServicesSend,
+  getReviewLabels,
 };
