@@ -552,8 +552,8 @@ export default {
   isCardNotUpdated,
   getDetailedCreditCardById,
   getCheckoutProgressBarLabels,
+  getSyncError,
   getGiftServicesFormData,
   getGiftServicesSend,
   getReviewLabels,
-  getSyncError,
 };

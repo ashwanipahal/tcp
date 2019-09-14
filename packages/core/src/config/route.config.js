@@ -62,6 +62,12 @@ const ROUTES_LIST = [
     params: ['pid'],
   },
   {
+    noSlugPath: 'search',
+    path: '/search/:sq',
+    resolver: '/SearchDetail',
+    params: ['sq'],
+  },
+  {
     noSlugPath: 'place-card',
     path: '/place-card',
     resolver: '/WebInstantCredit',
