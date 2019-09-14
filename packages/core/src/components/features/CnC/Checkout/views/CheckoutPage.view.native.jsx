@@ -44,8 +44,9 @@ export default class CheckoutPage extends React.PureComponent {
     } = this.props;
     const { routeTo } = navigation.state.params;
     const currentRoute = routeTo.toLowerCase();
+    const { PICKUP, SHIPPING, BILLING, REVIEW } = CheckoutConstants.CHECKOUT_PAGES_NAMES;
     switch (currentRoute) {
-      case CheckoutConstants.CHECKOUT_PAGES_NAMES.PICKUP.toLowerCase():
+      case PICKUP.toLowerCase():
         return (
           <PickupPage
             isGuest={isGuest}
@@ -65,7 +66,7 @@ export default class CheckoutPage extends React.PureComponent {
             availableStages={availableStages}
           />
         );
-      case CheckoutConstants.CHECKOUT_PAGES_NAMES.SHIPPING.toLowerCase():
+      case SHIPPING.toLowerCase():
         return (
           <ShippingPage
             {...shippingProps}
@@ -82,7 +83,7 @@ export default class CheckoutPage extends React.PureComponent {
             labels={labels}
           />
         );
-      case CheckoutConstants.CHECKOUT_PAGES_NAMES.BILLING.toLowerCase():
+      case BILLING.toLowerCase():
         return (
           <BillingPage
             {...billingProps}
@@ -94,7 +95,7 @@ export default class CheckoutPage extends React.PureComponent {
             submitBilling={submitBilling}
           />
         );
-      case CheckoutConstants.CHECKOUT_PAGES_NAMES.REVIEW.toLowerCase():
+      case REVIEW.toLowerCase():
         return (
           <ReviewPage
             {...reviewProps}
