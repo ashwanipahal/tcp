@@ -12,7 +12,7 @@ export default class CheckoutPage extends React.PureComponent {
     submitShippingSection({ ...data, navigation });
   };
 
-  render() {
+  getCurrentPage = () => {
     const {
       isGuest,
       isMobile,
@@ -43,9 +43,10 @@ export default class CheckoutPage extends React.PureComponent {
       submitReview,
     } = this.props;
     const { routeTo } = navigation.state.params;
-    return (
-      <>
-        {routeTo.toLowerCase() === CheckoutConstants.CHECKOUT_PAGES_NAMES.PICKUP.toLowerCase() && (
+    const currentRoute = routeTo.toLowerCase();
+    switch (currentRoute) {
+      case CheckoutConstants.CHECKOUT_PAGES_NAMES.PICKUP.toLowerCase():
+        return (
           <PickupPage
             isGuest={isGuest}
             isMobile={isMobile}
@@ -63,9 +64,9 @@ export default class CheckoutPage extends React.PureComponent {
             navigation={navigation}
             availableStages={availableStages}
           />
-        )}
-        {routeTo.toLowerCase() ===
-          CheckoutConstants.CHECKOUT_PAGES_NAMES.SHIPPING.toLowerCase() && (
+        );
+      case CheckoutConstants.CHECKOUT_PAGES_NAMES.SHIPPING.toLowerCase():
+        return (
           <ShippingPage
             {...shippingProps}
             loadShipmentMethods={loadShipmentMethods}
@@ -80,8 +81,9 @@ export default class CheckoutPage extends React.PureComponent {
             addNewShippingAddressData={addNewShippingAddressData}
             labels={labels}
           />
-        )}
-        {routeTo.toLowerCase() === CheckoutConstants.CHECKOUT_PAGES_NAMES.BILLING.toLowerCase() && (
+        );
+      case CheckoutConstants.CHECKOUT_PAGES_NAMES.BILLING.toLowerCase():
+        return (
           <BillingPage
             {...billingProps}
             orderHasShipping={orderHasShipping}
@@ -91,8 +93,9 @@ export default class CheckoutPage extends React.PureComponent {
             availableStages={availableStages}
             submitBilling={submitBilling}
           />
-        )}
-        {routeTo.toLowerCase() === CheckoutConstants.CHECKOUT_PAGES_NAMES.REVIEW.toLowerCase() && (
+        );
+      case CheckoutConstants.CHECKOUT_PAGES_NAMES.REVIEW.toLowerCase():
+        return (
           <ReviewPage
             {...reviewProps}
             navigation={navigation}
@@ -101,9 +104,14 @@ export default class CheckoutPage extends React.PureComponent {
             orderHasPickUp={orderHasPickUp}
             orderHasShipping={orderHasShipping}
           />
-        )}
-      </>
-    );
+        );
+      default:
+        return null;
+    }
+  };
+
+  render() {
+    return <>{this.getCurrentPage()}</>;
   }
 }
 

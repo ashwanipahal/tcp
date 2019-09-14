@@ -496,15 +496,6 @@ const getReviewLabels = state => {
   };
 };
 
-// const isVenmoPaymentAvailable = state => false; // TODO Venmo implementation
-
-// const getCurrentOrderId = state => {
-//   return state.CartPageReducer.getIn(['orderDetails', 'orderId']);
-// };
-
-// const getSmsNumberForOrderUpdates = state =>
-//   state.Checkout.getIn(['values', 'smsInfo', 'numberForUpdates']);
-
 export default {
   getRecalcOrderPointsInterval,
   getIsOrderHasShipping,
@@ -556,7 +547,4 @@ export default {
   getGiftServicesFormData,
   getGiftServicesSend,
   getReviewLabels,
-  // isVenmoPaymentAvailable,
-  // getCurrentOrderId,
-  // getSmsNumberForOrderUpdates,
 };
