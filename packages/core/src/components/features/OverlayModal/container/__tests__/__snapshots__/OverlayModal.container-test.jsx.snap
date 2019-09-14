@@ -6,6 +6,7 @@ exports[`OverlayModal Container should render correctly 1`] = `
   color={null}
   component={null}
   componentProps={Object {}}
+  isCondensedHeaderOpen={false}
   isLoggedIn={false}
   openState={false}
   variation="primary"
