@@ -1,6 +1,8 @@
-import { SESSIONCONFIG_REDUCER_KEY } from '../../../../constants/reducer.constants';
-import { STORE_LOCATOR_REDUCER_KEY } from '@tcp/core/src/constants/reducer.constants';
-import { createSelector } from 'reselect';
+/* istanbul ignore file */
+import {
+  SESSIONCONFIG_REDUCER_KEY,
+  STORE_LOCATOR_REDUCER_KEY,
+} from '../../../../constants/reducer.constants';
 
 // eslint-disable-next-line import/prefer-default-export
 export const getCurrentCountry = state => {

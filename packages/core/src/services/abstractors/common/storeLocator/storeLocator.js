@@ -1,12 +1,13 @@
+/* istanbul ignore file */
+/* eslint-disable complexity */
 import { executeStatefulAPICall } from '../../../handler';
 import { formatPhoneNumber } from '../../../../utils/formValidation/phoneNumber';
 import { parseStoreHours } from '../../../../utils/parseStoreHours';
-import { sanitizeEntity, isClient } from '../../../../utils';
-import { getLocalStorage, setLocalStorage } from '../../../../utils/utils.web';
-import { requireNamedOnlineModule } from '../../../../utils/resourceLoader';
+import { sanitizeEntity } from '../../../../utils';
 import endpoints from '../../../endpoints';
 import { getSuggestedStoreById } from '../../../../components/features/storeLocator/container/StoreLocator.selectors';
 import { getPersonalDataState } from '../../../../components/features/account/User/container/User.selectors';
+import { BOPIS_ITEM_AVAILABILITY } from '../../../../components/features/storeLocator/StoreLocator.constants';
 
 const DEFAULT_RADIUS = 75;
 const STORE_TYPES = {
@@ -20,130 +21,166 @@ const STORE_TYPES = {
  * @returns {object} error object with appropirate error message
  */
 const errorHandler = err => {
+  return err || null;
+};
+
+export const getAddress = storeDetails => {
+  const {
+    address1,
+    streetLine1,
+    addressLine,
+    city,
+    stateOrProvinceName,
+    state,
+    country,
+    zipCode,
+    postalCode,
+    postalcode,
+    zipcode,
+  } = storeDetails;
+  const addressLine1 = sanitizeEntity(address1 || streetLine1 || (addressLine && addressLine[0]));
+  return {
+    addressLine1,
+    city,
+    state: stateOrProvinceName || state,
+    country,
+    zipCode: (zipCode || postalCode || postalcode || zipcode).trim(),
+  };
+};
+
+// eslint-disable-next-line sonarjs/cognitive-complexity
+export const getBasicInfo = storeDetails => {
+  const id = (
+    storeDetails.uniqueId ||
+    storeDetails.storeLocId ||
+    storeDetails.storeUniqueID ||
+    storeDetails.stLocId
+  ).toString();
+  const storeNameVal = sanitizeEntity(
+    (storeDetails.description && storeDetails.description.displayStoreName) ||
+      (storeDetails.Description &&
+        storeDetails.Description[0] &&
+        storeDetails.Description[0].displayStoreName) ||
+      (storeDetails.storeName || storeDetails.name || '')
+  );
+  const phoneNumber =
+    formatPhoneNumber(storeDetails.telephone1 || storeDetails.phone || storeDetails.phone1) || '';
+  return {
+    id,
+    storeName: storeNameVal,
+    isDefault: storeDetails.preferredStore || false,
+    address: getAddress(storeDetails),
+    phone: phoneNumber,
+    coordinates: {
+      lat: parseFloat(storeDetails.latitude),
+      long: parseFloat(storeDetails.longitude),
+    },
+  };
+};
+
+export const getDistance = ({ distance, distanceFromUserToStore }) => {
+  if (distance) {
+    return parseFloat(distance).toFixed(2);
+  }
+  if (distanceFromUserToStore) {
+    return parseFloat(distanceFromUserToStore).toFixed(2);
+  }
   return null;
 };
 
+export const getStoreStatus = (storeDetails, requestedQuantity) => {
+  if (storeDetails.itemAvailability[0].qty < requestedQuantity) {
+    return BOPIS_ITEM_AVAILABILITY.UNAVAILABLE;
+  }
+  if (storeDetails.itemAvailability[0].itemStatus === 'AVAILABLE') {
+    return BOPIS_ITEM_AVAILABILITY.AVAILABLE;
+  }
+  if (storeDetails.itemAvailability[0].itemStatus === 'UNAVAILABLE') {
+    return BOPIS_ITEM_AVAILABILITY.UNAVAILABLE;
+  }
+  return BOPIS_ITEM_AVAILABILITY.LIMITED;
+};
+
+// eslint-disable-next-line sonarjs/cognitive-complexity
 export const storeResponseParser = (storeDetails, configs = { requestedQuantity: 0 }) => {
-  let { requestedQuantity } = configs;
+  const { requestedQuantity } = configs;
+  const {
+    addressLine,
+    storeType,
+    address3,
+    storehours,
+    Attribute,
+    attribute,
+    isStoreBOSSEligible,
+    bossMinDate,
+    bossMaxDate,
+    isStoreBossSelected,
+    isStoreBopisSelected,
+    itemAvailability,
+  } = storeDetails;
   let hoursOfOperation;
-  let addressLine;
-  let storeType;
+  let addressLineDetail;
 
   // Sometimes addressLine is returned as an array
   // Sometimes addressLine is returned as an object with numerical properties (WHY???)
   // If addressLine is object, convert to array
-  if (
-    storeDetails.addressLine &&
-    typeof storeDetails.addressLine === 'object' &&
-    !Array.isArray(storeDetails.addressLine)
-  ) {
-    addressLine = Object.keys(storeDetails.addressLine).map(key => storeDetails.addressLine[key]);
+  if (addressLine && typeof addressLine === 'object' && !Array.isArray(addressLine)) {
+    addressLineDetail = Object.keys(addressLine).map(key => addressLine[key]);
   }
 
   // Sometimes storeType is explicitly defined
   // Sometimes storeType needs to be determined using address
-  storeType =
-    storeDetails.storeType ||
-    (addressLine && addressLine[addressLine.length - 1]) ||
-    storeDetails.address3 ||
+  const storeTypeDetail =
+    storeType ||
+    (addressLineDetail && addressLineDetail[addressLineDetail.length - 1]) ||
+    address3 ||
     '';
 
   // Backend's API structure for stores are never the same, so i am checking a few differant places for storeDetails hours
-  if (storeDetails.storehours) {
-    hoursOfOperation = storeDetails.storehours.storehours;
-  } else if (storeDetails.Attribute && storeDetails.Attribute[0]) {
-    hoursOfOperation = JSON.parse(storeDetails.Attribute[0].displayValue || '{}').storehours;
-  } else if (storeDetails.attribute) {
-    hoursOfOperation = JSON.parse(storeDetails.attribute.displayValue || '{}').storehours;
+  if (storehours) {
+    hoursOfOperation = storehours.storehours;
+  }
+  if (Attribute && Attribute[0]) {
+    hoursOfOperation = JSON.parse(Attribute[0].displayValue || '{}').storehours;
+  }
+  if (storeDetails.attribute) {
+    hoursOfOperation = JSON.parse(attribute.displayValue || '{}').storehours;
   }
 
   // Parse Store Info
-  let storeFilteredInfo = {
+  const storeFilteredInfo = {
     // Boss storeDetails info
     storeBossInfo: {
-      isBossEligible: storeDetails.isStoreBOSSEligible,
-      startDate: storeDetails.bossMinDate,
-      endDate: storeDetails.bossMaxDate,
+      isBossEligible: isStoreBOSSEligible,
+      startDate: bossMinDate,
+      endDate: bossMaxDate,
     },
     /** added storeType | also checking if the flag is undefined than the value should be true
      * for default searching without any restriction
      */
     pickupType: {
-      isStoreBossSelected:
-        storeDetails.isStoreBossSelected !== undefined ? storeDetails.isStoreBossSelected : true,
-      isStoreBopisSelected:
-        storeDetails.isStoreBopisSelected !== undefined ? storeDetails.isStoreBopisSelected : true,
+      isStoreBossSelected: isStoreBossSelected !== undefined ? isStoreBossSelected : true,
+      isStoreBopisSelected: isStoreBopisSelected !== undefined ? isStoreBopisSelected : true,
     },
-    distance: storeDetails.distance
-      ? parseFloat(storeDetails.distance).toFixed(2)
-      : storeDetails.distanceFromUserToStore
-      ? parseFloat(storeDetails.distanceFromUserToStore).toFixed(2)
-      : null,
-    basicInfo: {
-      id: (
-        storeDetails.uniqueID ||
-        storeDetails.uniqueId ||
-        storeDetails.storeLocId ||
-        storeDetails.storeUniqueID ||
-        storeDetails.stLocId
-      ).toString(),
-      storeName: sanitizeEntity(
-        (storeDetails.description && storeDetails.description.displayStoreName) ||
-          (storeDetails.Description &&
-            storeDetails.Description[0] &&
-            storeDetails.Description[0].displayStoreName) ||
-          storeDetails.storeName ||
-          storeDetails.name ||
-          ''
-      ),
-      isDefault: storeDetails.preferredStore || false,
-      address: {
-        addressLine1: sanitizeEntity(
-          storeDetails.address1 ||
-            storeDetails.streetLine1 ||
-            (storeDetails.addressLine && storeDetails.addressLine[0])
-        ),
-        city: storeDetails.city,
-        state: storeDetails.stateOrProvinceName || storeDetails.state,
-        country: storeDetails.country,
-        zipCode: (
-          storeDetails.zipCode ||
-          storeDetails.postalCode ||
-          storeDetails.postalcode ||
-          storeDetails.zipcode
-        ).trim(),
-      },
-      phone:
-        formatPhoneNumber(storeDetails.telephone1 || storeDetails.phone || storeDetails.phone1) ||
-        '',
-      coordinates: {
-        lat: parseFloat(storeDetails.latitude),
-        long: parseFloat(storeDetails.longitude),
-      },
-    },
+    distance: getDistance(storeDetails),
+    basicInfo: getBasicInfo(storeDetails),
     hours: {
       regularHours: [],
       holidayHours: [],
       regularAndHolidayHours: [],
     },
     features: {
-      storeType: STORE_TYPES[storeType] || (storeType === 'PLACE' && STORE_TYPES.RETAIL) || '',
+      storeType:
+        STORE_TYPES[storeTypeDetail] || (storeTypeDetail === 'PLACE' && STORE_TYPES.RETAIL) || '',
       mallType: storeDetails.x_mallType,
       entranceType: storeDetails.x_entranceType,
     },
     productAvailability:
-      storeDetails.itemAvailability && storeDetails.itemAvailability[0]
+      itemAvailability && itemAvailability[0]
         ? {
-            skuId: storeDetails.itemAvailability[0].itemId,
-            status:
-              storeDetails.itemAvailability[0].qty < requestedQuantity
-                ? BOPIS_ITEM_AVAILABILITY.UNAVAILABLE
-                : storeDetails.itemAvailability[0].itemStatus === 'AVAILABLE'
-                ? BOPIS_ITEM_AVAILABILITY.AVAILABLE
-                : storeDetails.itemAvailability[0].itemStatus === 'UNAVAILABLE'
-                ? BOPIS_ITEM_AVAILABILITY.UNAVAILABLE
-                : BOPIS_ITEM_AVAILABILITY.LIMITED,
-            quantity: storeDetails.itemAvailability[0].qty,
+            skuId: itemAvailability[0].itemId,
+            status: getStoreStatus(storeDetails, requestedQuantity),
+            quantity: itemAvailability[0].qty,
           }
         : {},
   };
@@ -207,37 +244,14 @@ export const getFavoriteStore = ({
           ...res.body,
           storehours: JSON.parse(res.body.displayValue),
         };
-        const favoriteStore = storeResponseParser(storeDetailsResponse, {
+        return storeResponseParser(storeDetailsResponse, {
           requestedQuantity: quantity,
         });
-        return favoriteStore;
       }
+      return null;
     })
     .catch(errorHandler);
 };
-
-export const getAddressLocationInfo = address =>
-  requireNamedOnlineModule('google.maps').then(() => {
-    // eslint-disable-next-line no-undef
-    const geocoder = new google.maps.Geocoder();
-    return new Promise((resolve, reject) => {
-      geocoder.geocode({ address }, (results, status) => {
-        if (status === 'OK') {
-          const country = results[0].address_components.find(component => {
-            return component.types && component.types.find(type => type === 'country');
-          });
-          const storeDataObject = {
-            lat: results[0].geometry.location.lat(),
-            lng: results[0].geometry.location.lng(),
-            country: country && country.short_name,
-          };
-          resolve(storeDataObject);
-        } else {
-          reject(status);
-        }
-      });
-    });
-  });
 
 /**
  * @function getLocationStores
@@ -294,7 +308,7 @@ export const setFavoriteStore = (storeId, state) => {
     header: {
       action: 'add',
       fromPage: 'StoreLocator',
-      userId: userId,
+      userId,
       storeLocId: storeId,
     },
     body: {},
@@ -302,7 +316,7 @@ export const setFavoriteStore = (storeId, state) => {
   };
 
   return executeStatefulAPICall(payloadData)
-    .then(res => {
+    .then(() => {
       return favStore;
     })
     .catch(errorHandler);

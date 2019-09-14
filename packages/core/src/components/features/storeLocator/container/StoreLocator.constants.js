@@ -1,3 +1,4 @@
+// eslint-disable-next-line import/prefer-default-export
 import { STORE_LOCATOR_ACTION_PATTERN } from '@tcp/core/src/constants/reducer.constants';
 
 export default {

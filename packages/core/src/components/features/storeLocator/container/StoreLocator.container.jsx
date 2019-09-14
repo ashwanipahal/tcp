@@ -1,3 +1,4 @@
+/* istanbul ignore file */
 import React, { PureComponent } from 'react';
 import { connect } from 'react-redux';
 import { withRouter } from 'next/router'; //eslint-disable-line
