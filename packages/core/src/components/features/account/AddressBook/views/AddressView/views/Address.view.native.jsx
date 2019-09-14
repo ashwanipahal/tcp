@@ -58,7 +58,7 @@ export class AddressView extends React.Component {
   setSelectedAddress = address => {
     this.setState({
       selectedAddress: address,
-      addressLine1: address.addressLine[0],
+      addressLine1: address && address.addressLine[0],
       countryState: address.state,
     });
   };

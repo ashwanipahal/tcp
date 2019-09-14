@@ -28,6 +28,9 @@ export function* addAddressGet({ payload }, addToAddressBook = true) {
     }
     return yield put(addAddressFail(res.body));
   } catch (err) {
+    if (!addToAddressBook) {
+      throw err;
+    }
     let error = {};
     /* istanbul ignore else */
     error = err;

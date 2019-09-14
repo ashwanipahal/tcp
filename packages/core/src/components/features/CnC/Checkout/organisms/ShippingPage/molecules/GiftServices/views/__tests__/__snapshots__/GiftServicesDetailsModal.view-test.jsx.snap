@@ -47,8 +47,17 @@ exports[`GiftServices component renders correctly 1`] = `
     margin-left: 35px;
   }
   .messageTextWrapper {
-    width: 92%;
-    margin: 29px 0 6px 17px;
+    margin-left: ",
+          [Function],
+          ";
+    margin-top: ",
+          [Function],
+          ";
+    margin-right: ",
+          [Function],
+          ";
+    width: calc(100% - 26px);
+    padding-bottom: 6px;
   }
   .priceDropdown {
     margin-left: 120px;
@@ -157,6 +166,18 @@ exports[`GiftServices component renders correctly 1`] = `
           " {
       margin-top: 8px;
     }
+  }
+
+  .gift-message {
+    width: 99%;
+    height: 146px;
+    resize: none;
+    font-size: ",
+          [Function],
+          "px;
+    margin-bottom: ",
+          [Function],
+          ";
   }
 ",
           ";
