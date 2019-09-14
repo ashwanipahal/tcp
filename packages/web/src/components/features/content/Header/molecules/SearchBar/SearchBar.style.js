@@ -60,6 +60,36 @@ export default css`
     z-index: 100000;
     position: relative;
     background-color: ${props => props.theme.colors.WHITE};
+    overflow-y: auto;
+  }
+
+  .condensed-search {
+    position: fixed;
+    top: 65px;
+    right: 0;
+    z-index: 1;
+    width: 337px;
+
+    @media ${props => props.theme.mediaQuery.large} {
+      right: 12em;
+    }
+  }
+
+  .header-search {
+    width: 300px;
+    position: absolute;
+    float: right;
+    top: 108px;
+    z-index: 2;
+
+    @media ${props => props.theme.mediaQuery.mediumOnly} {
+      right: 5em;
+      top: 66px;
+    }
+
+    @media ${props => props.theme.mediaQuery.large} {
+      right: 11em;
+    }
   }
 
   .boxHead {

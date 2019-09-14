@@ -10,7 +10,6 @@ import Navigation from '../../../Navigation';
 import BrandLogo from '../../../../../common/atoms/BrandLogo';
 import config from '../../config';
 import { keyboard } from '../../../../../../constants/constants';
-import SearchBar from '../SearchBar/index';
 import style from './HeaderMiddleNav.style';
 
 /**
@@ -28,18 +27,12 @@ class HeaderMiddleNav extends React.PureComponent {
     super(props);
     const { isLoggedIn, cartItemCount } = props;
     this.state = {
-      isSearchOpen: false,
       isOpenMiniBagModal: false,
       userNameClick: true,
       triggerLoginCreateAccount: true,
       isLoggedIn: isLoggedIn || false,
       cartItemCount,
     };
-    this.setSearchState = this.setSearchState.bind(this);
-  }
-
-  setSearchState(currentStatus, cb = null) {
-    this.setState({ isSearchOpen: currentStatus }, cb ? cb() : () => {});
   }
 
   static getDerivedStateFromProps(nextProps, prevState) {
@@ -94,6 +87,9 @@ class HeaderMiddleNav extends React.PureComponent {
       navigationDrawer,
       openOverlay,
       userName,
+      isCondensedHeaderOpen,
+      setSearchState,
+      isSearchOpen,
     } = this.props;
     const brand = getBrand();
     const {
@@ -101,7 +97,6 @@ class HeaderMiddleNav extends React.PureComponent {
       userNameClick,
       triggerLoginCreateAccount,
       cartItemCount,
-      isSearchOpen,
     } = this.state;
 
     return (
@@ -160,7 +155,7 @@ class HeaderMiddleNav extends React.PureComponent {
                 medium: 8,
                 small: 6,
               }}
-              className={`textRight header-middle-login-section ${isSearchOpen && 'flexbox'}`}
+              className="textRight header-middle-login-section"
             >
               {userName ? (
                 <React.Fragment>
@@ -201,10 +196,14 @@ class HeaderMiddleNav extends React.PureComponent {
                   </React.Fragment>
                 )
               )}
-              <SearchBar
-                className={!isSearchOpen && 'rightLink'}
-                setSearchState={this.setSearchState}
-                isSearchOpen={isSearchOpen}
+
+              <Image
+                alt="search"
+                className="rightLink search-image icon"
+                onClick={setSearchState}
+                src={getIconPath(`${isCondensedHeaderOpen ? 'search-icon-blue' : 'search-icon'}`)}
+                data-locator="close-icon"
+                height="25px"
               />
               <Anchor
                 to=""
@@ -242,6 +241,7 @@ class HeaderMiddleNav extends React.PureComponent {
         >
           <Col
             className="header-middle-nav-bar"
+            id="header-middle-nav-bar"
             colSize={{
               large: 12,
               medium: 8,
@@ -252,6 +252,7 @@ class HeaderMiddleNav extends React.PureComponent {
               openNavigationDrawer={navigationDrawer.open}
               closeNavigationDrawer={!navigationDrawer.open}
               closeNav={closeNavigationDrawer}
+              isCondensedHeaderOpen={isCondensedHeaderOpen}
             />
           </Col>
         </Row>
@@ -272,8 +273,11 @@ HeaderMiddleNav.propTypes = {
   closeNavigationDrawer: PropTypes.func.isRequired,
   userName: PropTypes.string.isRequired,
   openOverlay: PropTypes.func.isRequired,
+  setSearchState: PropTypes.func.isRequired,
   isLoggedIn: PropTypes.bool.isRequired,
   cartItemCount: PropTypes.func.isRequired,
+  isCondensedHeaderOpen: PropTypes.bool.isRequired,
+  isSearchOpen: PropTypes.bool.isRequired,
 };
 
 HeaderMiddleNav.defaultProps = {

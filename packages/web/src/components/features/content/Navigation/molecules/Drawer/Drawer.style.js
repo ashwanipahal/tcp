@@ -39,6 +39,7 @@ export default css`
   .is-hidden {
     display: none;
   }
+
   .tcp-drawer__isOpen {
     display: block;
     position: absolute;
@@ -47,6 +48,10 @@ export default css`
     left: ${props => (props.position && props.position.left) || 0};
     width: 100%;
     height: ${props => props.height || `auto`};
+  }
+  .tcp-condensed-drawer {
+    position: fixed;
+    top: 62px;
   }
   .tcp-drawer-content {
     width: ${props => props.width.small || `100%`};
@@ -59,6 +64,10 @@ export default css`
   @media ${props => props.theme.mediaQuery.medium} {
     .tcp-drawer__isOpen {
       top: ${props => (props.position && props.position.topMedium) || 0};
+    }
+    .tcp-condensed-drawer {
+      position: fixed;
+      top: 62px;
     }
     .tcp-drawer-content {
       width: ${props => props.width.medium || `100%`};

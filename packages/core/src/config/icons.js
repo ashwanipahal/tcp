@@ -42,8 +42,10 @@ export default {
   'fav-icon': '/static/images/heart.png',
   'empty-fav-icon': '/static/images/empty-heart.png',
   'cart-icon': '/static/images/bag.png',
+  'cart-icon-blue': '/static/images/bag-icon-blue.svg',
   'alert-triangle': '/static/images/alert-triangle.png',
   'user-icon': '/static/images/user-icon.png',
+  'user-icon-blue': '/static/images/user-icon-blue.svg',
   'selected-item': '/static/images/selected-item.svg',
   'selected-item-check-no-circle': '/static/images/circle-check-no-circle.svg',
   'checkout-tick': '/static/images/checkout-tick.svg',
@@ -69,5 +71,6 @@ export default {
   'chat-blue': '/static/images/chat.svg',
   'chat-orange': '/static/images/chat-orange.svg',
   'search-icon': '/static/images/search-icon.svg',
+  'search-icon-blue': '/static/images/search-icon-blue.svg',
   'search-close-icon': '/static/images/search-close-icon.svg',
 };

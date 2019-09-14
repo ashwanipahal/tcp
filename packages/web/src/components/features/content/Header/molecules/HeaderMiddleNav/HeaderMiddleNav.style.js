@@ -6,10 +6,6 @@ export default css`
   position: relative;
   text-align: center;
 
-  .flexbox {
-    display: flex;
-  }
-
   .hamburger-menu {
     cursor: pointer;
     width: 22px;
@@ -44,6 +40,9 @@ export default css`
     margin-left: ${props => props.theme.spacing.ELEM_SPACING.SM};
     padding-left: ${props => props.theme.spacing.ELEM_SPACING.SM};
     min-width: ${props => props.theme.spacing.ELEM_SPACING.XXXL};
+  }
+  .search-image {
+    padding-top: 5px;
   }
   .cartCount {
     background: ${props =>

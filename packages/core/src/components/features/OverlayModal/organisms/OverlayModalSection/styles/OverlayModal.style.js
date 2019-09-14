@@ -35,6 +35,14 @@ const StyledModal = css`
       height: 100%;
     }
   }
+  .condensed-overlay {
+    overflow-y: unset;
+    @media ${props => props.theme.mediaQuery.medium} {
+      position: fixed;
+      top: 67px;
+      width: 374px;
+    }
+  }
   .modal__bar {
     position: absolute;
     height: 8px;
@@ -53,6 +61,13 @@ const StyledModal = css`
     position: absolute;
     top: -10px;
     z-index: 99;
+  }
+  .condensed-modal-triangle {
+    left: 140px !important;
+
+    @media ${props => props.theme.mediaQuery.mediumOnly} {
+      left: 277px !important;
+    }
   }
   .modal__closeIcon {
     background: transparent url('/static/images/modal-close.svg') no-repeat 0 0;
