@@ -91,7 +91,7 @@ const autoLogin = () => {
   /* so that it doesn't trigger the login modal again
   **/
   if (window.FB) {
-    openLogin();
+    // openLogin();
     //Trigger login modal if not already connected
     // if (!elem.isConnected) {
     //     openLogin();
@@ -112,16 +112,22 @@ const logoutUser = () => {
   //     accessToken: '',
   //     userId: ''
   // },true)
+  const socialAccInfo = {
+    facebook: 'facebook',
+    accessToken: '',
+    userId: '',
+    isconnected: true,
+  };
+  saveAccountInfo({ socialAccInfo });
 };
 
 export const loginUser = () => {
   /* istanbul ignore next */
-  openLogin();
-  // if (elem.isConnected) {
-  //   logoutUser();
-  // } else {
-  //   openLogin();
-  // }
+  if (false) {
+    logoutUser();
+  } else {
+    openLogin();
+  }
 };
 
 const FacebookLoginComponent = props => {
@@ -130,10 +136,13 @@ const FacebookLoginComponent = props => {
   saveAccountInfo = props.saveSocialAcc;
 
   return (
-    <div className="social-accounts__CTA" onClick={loginUser} tabIndex="0">
-      {/* istanbul ignore next */
-      ReactDOM.createPortal(facebookSDK(), bodyEle)}
-      click here
+    <div>
+      <div className="social-accounts__CTA" onClick={loginUser} tabIndex="0">
+        {/* istanbul ignore next */
+        ReactDOM.createPortal(facebookSDK(), bodyEle)}
+        click here
+      </div>
+      <div onClick={logoutUser}>logoutUser</div>
     </div>
   );
 };

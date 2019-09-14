@@ -1,7 +1,7 @@
 import React from 'react';
 import { connect } from 'react-redux';
 import { socialAccountLoad, savesocialAccount } from './Social.actions';
-import { FacebookLoginComponent } from '../Views/facebookLoginComponent';
+import Socialview from '../Views/Social.view';
 
 class SocialContainer extends React.PureComponent {
   componentDidMount() {
@@ -11,7 +11,7 @@ class SocialContainer extends React.PureComponent {
 
   render() {
     const { socialLoad, saveSocialAcc } = this.props;
-    return <FacebookLoginComponent saveSocialAcc={saveSocialAcc} socialLoad={socialLoad} />;
+    return <Socialview saveSocialAcc={saveSocialAcc} socialLoad={socialLoad} />;
   }
 }
 

@@ -6,13 +6,11 @@ import Image from '../../../../../../common/atoms/Image';
 import { getIconPath } from '../../../../../../../utils';
 import Anchor from '../../../../../../common/atoms/Anchor';
 import BodyCopy from '../../../../../../common/atoms/BodyCopy';
-import SocialContainer from '../../../../../../common/atoms/SocialAccount/container/Social.container';
 
 const AccountDrawerHeading = props => {
   const { className, labels, userName, closedOverlay } = props;
   return (
     <div className={`${className} elem-pl-MED elem-pr-MED elem-pt-LRG elem-pb-LRG`}>
-      <SocialContainer />
       <span>
         <Image src={getIconPath('user-icon')} />
         <span className="userName">
