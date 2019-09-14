@@ -125,6 +125,7 @@ exports[`#ThemeWrapper.container should render correctly 1`] = `
         "BLACK": "#000000",
         "BORDER": Object {
           "BLUE": "#2e6a91",
+          "LIGHT": "#c3c3c3",
           "NORMAL": "#979797",
         },
         "BRAND": Object {
