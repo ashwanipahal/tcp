@@ -1,25 +1,24 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`ProductDetailView component should renders correctly 1`] = `
+exports[`CustomImage component should renders CustomImage correctly 1`] = `
 <StyledNativeComponent
-  currentProduct={
-    Object {
-      "name": "",
-      "shortDescription": "",
-    }
-  }
   forwardedComponent={
     Object {
       "$$typeof": Symbol(react.forward_ref),
       "_foldedDefaultProps": Object {
-        "currentProduct": Object {},
+        "imageSource": "",
       },
       "attrs": Array [],
-      "displayName": "Styled(ProductDetailView)",
+      "displayName": "Styled(CustomImage)",
       "inlineStyle": InlineStyle {
         "rules": Array [
           "
     ",
+          "
+  ",
+          [Function],
+          "
+",
           ";
   ",
         ],
@@ -31,6 +30,6 @@ exports[`ProductDetailView component should renders correctly 1`] = `
     }
   }
   forwardedRef={null}
-  selectedColorProductId=""
+  imageSource=""
 />
 `;
