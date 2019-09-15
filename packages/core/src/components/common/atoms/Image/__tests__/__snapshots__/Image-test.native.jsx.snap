@@ -4,6 +4,7 @@ exports[`ImageCompVanilla should pass source value 1`] = `
 <Image
   accessibilityLabel=""
   accessibilityRole="image"
+  host=""
   source="foo"
 />
 `;
@@ -12,6 +13,7 @@ exports[`ImageCompVanilla should render correctly 1`] = `
 <Image
   accessibilityLabel=""
   accessibilityRole="image"
+  host=""
   source={
     Object {
       "uri": "",
