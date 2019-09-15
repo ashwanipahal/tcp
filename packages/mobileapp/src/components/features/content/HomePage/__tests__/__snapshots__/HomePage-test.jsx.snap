@@ -16,6 +16,7 @@ exports[`HomePageView should render correctly 1`] = `
       Object {
         "moduleA": [Function],
         "moduleB": [Function],
+        "moduleD": [Function],
         "moduleH": [Function],
         "moduleJ": [Function],
         "moduleK": [Function],
