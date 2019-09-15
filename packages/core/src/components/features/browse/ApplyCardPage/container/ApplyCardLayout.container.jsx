@@ -28,14 +28,17 @@ class ApplyCardLayoutContainer extends React.Component {
     userId: PropTypes.string.isRequired,
   };
   /**
-   *  @state - formatPayload
+   *  @function - constructor
    *
-   *  @member - showAddEditAddressForm - state member that decides whether to show or hide th do verify contact window.
+   *  @state - showAddEditAddressForm - state member that decides whether to show or hide th do verify contact window.
    */
 
-  state = {
-    showAddEditAddressForm: false,
-  };
+  constructor(props) {
+    super(props);
+    this.state = {
+      showAddEditAddressForm: false,
+    };
+  }
 
   componentDidMount() {
     const { plccData, fetchModuleXContent, fetchBagItems, labels } = this.props;
@@ -72,9 +75,9 @@ class ApplyCardLayoutContainer extends React.Component {
    */
   submitPLCCForm = formData => {
     const { verifyAddressAction } = this.props;
-    const formattedFormPayload = Object.assign({}, formData);
-    const formattedPayload = this.formatPayload(formattedFormPayload);
-    if (Object.keys(formattedFormPayload).length) {
+    const payload = Object.assign({}, formData);
+    const formattedPayload = this.formatPayload(payload);
+    if (Object.keys(formattedPayload).length) {
       verifyAddressAction(formattedPayload);
       this.setState({ showAddEditAddressForm: true, formData });
     }
