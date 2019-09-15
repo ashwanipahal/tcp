@@ -110,7 +110,7 @@ const mapStateToProps = state => {
   };
 };
 
-const mapDispatchToProps = dispatch => ({
+export const mapDispatchToProps = dispatch => ({
   setVenmoPaymentInProgress: data => dispatch(setVenmoPaymentInProgress(data)),
   getVenmoPaymentTokenAction: data => dispatch(getVenmoClientToken(data)),
   setVenmoDataAction: data => dispatch(setVenmoData(data)),

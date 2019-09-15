@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import { string, func, bool, shape, oneOf } from 'prop-types';
+import { Image } from '@tcp/core/src/components/common/atoms';
 import { client, venmo, dataCollector } from 'braintree-web';
 import { getIconPath } from '@tcp/core/src/utils/utils';
 import withStyles from '@tcp/core/src/components/common/hoc/withStyles';
@@ -43,14 +44,17 @@ export class VenmoPaymentButton extends Component {
   fetchVenmoNonce = () => {
     const { setVenmoData } = this.props;
     // we must check to verify that remembered users are authenticated and OOS are not in bag
-    return venmoInstance
-      .tokenize()
-      .then(this.handleVenmoSuccess)
-      .catch(this.handleVenmoError)
-      .finally(() => {
-        setVenmoData({ loading: false });
-        this.disableVenmoButton(false);
-      });
+    return (
+      venmoInstance &&
+      venmoInstance
+        .tokenize()
+        .then(this.handleVenmoSuccess)
+        .catch(this.handleVenmoError)
+        .finally(() => {
+          setVenmoData({ loading: false });
+          this.disableVenmoButton(false);
+        })
+    );
   };
 
   // Logic will go here for in some cases, we may not want to display an error message
@@ -204,13 +208,12 @@ export class VenmoPaymentButton extends Component {
           (!hasVenmoError || mode === modes.PAYMENT_TOKEN) &&
           (this.canCallVenmoApi() || mode === modes.PAYMENT_TOKEN) && (
             <button
-              type="button"
               onClick={this.handleVenmoClick}
               ref={this.setVenmoButtonRef}
               className="venmo-button"
               aria-label="Venmo Payment Button"
             >
-              <img src={venmoIcon} alt="Venmo Payment Button" />
+              <Image src={venmoIcon} alt="Venmo Payment Button" className="venmo-image" />
             </button>
           )}
       </div>
