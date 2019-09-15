@@ -41,6 +41,11 @@ export default css`
     width: 225px;
   }
 
+  .slick-list,
+  .slick-track {
+    padding: 0 20% 0 0;
+  }
+
   @media ${props => props.theme.mediaQuery.medium} {
     .recommendation-cta {
       width: 162px;

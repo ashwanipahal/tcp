@@ -66,7 +66,6 @@ class Recommendations extends Component {
               options={config.CAROUSEL_OPTIONS}
               inheritedStyles={Carousel}
               carouselConfig={{
-                autoplay: true,
                 customArrowLeft: getIconPath('carrot-left-xl'),
                 customArrowRight: getIconPath('carrot-right-xl'),
               }}
@@ -76,20 +75,18 @@ class Recommendations extends Component {
                   const { generalProductId } = product;
 
                   return (
-                    <React.Fragment>
-                      <ModuleO
-                        key={`recommended_products_${index.toString()}`}
-                        loadedProductCount={loadedProductCount}
-                        generalProductId={generalProductId}
-                        item={product}
-                        isPerfectBlock
-                        productsBlock={product}
-                        onPickUpOpenClick={onPickUpOpenClick}
-                        className={`${className} product-list ${priceOnlyClass}`}
-                        labels={labels}
-                        sequenceNumber={index + 1}
-                      />
-                    </React.Fragment>
+                    <ModuleO
+                      key={`recommended_products_${index.toString()}`}
+                      loadedProductCount={loadedProductCount}
+                      generalProductId={generalProductId}
+                      item={product}
+                      isPerfectBlock
+                      productsBlock={product}
+                      onPickUpOpenClick={onPickUpOpenClick}
+                      className={`${className} product-list ${priceOnlyClass}`}
+                      labels={labels}
+                      sequenceNumber={index + 1}
+                    />
                   );
                 })}
             </Carousel>
