@@ -8,7 +8,9 @@ import { ViewWithSpacing } from '@tcp/core/src/components/common/atoms/styledWra
 import Modal from '@tcp/core/src/components/common/molecules/Modal';
 import { UrlHandler } from '@tcp/core/src/utils/utils.app';
 import { getLabelValue } from '@tcp/core/src/utils';
+import RNPrint from 'react-native-print';
 import endpoints from '../../../../../account/common/externalEndpoints';
+
 import {
   StyledModalWrapper,
   Horizontal,
@@ -17,6 +19,7 @@ import {
 } from '../styles/CouponDetailModal.style.native';
 import { COUPON_REDEMPTION_TYPE } from '../../../../../../../services/abstractors/CnC/CartItemTile';
 import BodyCopy from '../../../../../../common/atoms/BodyCopy';
+import getMarkupForPrint from './CouponDetailPrintHTMLModal';
 
 class CouponDetailModal extends React.PureComponent<Props> {
   componentDidUpdate() {
@@ -69,6 +72,19 @@ class CouponDetailModal extends React.PureComponent<Props> {
       ? getLabelValue(labels, 'SEE_REDEEM_DATES')
       : getLabelValue(labels, 'APPLY_TO_BAG');
   };
+
+  /**
+   * This function is to print HTML
+   * @param {obj} - labels
+   * @param {obj} - coupon
+   * @param {string} - addToBagCTALabel
+   */
+  async printHTML(coupon, labels, addToBagCTALabel) {
+    // const uri = await this.refs.viewShot.capture();
+    await RNPrint.print({
+      html: getMarkupForPrint(coupon, labels, addToBagCTALabel, this.showValidity(), ''),
+    });
+  }
 
   render() {
     const { openState, onRequestClose, coupon, isDisabled, labels } = this.props;
@@ -129,6 +145,7 @@ class CouponDetailModal extends React.PureComponent<Props> {
               dataLocator={`couponDetailModal_${coupon.status}_printAch`}
               text={getLabelValue(labels, 'PRINT_ANCHOR_TEXT')}
               class="clickhere"
+              onPress={() => this.printHTML(coupon, labels, addToBagCTALabel, this.showValidity())}
             />
             <PrivacyContent data-locator={`couponDetailModal_${coupon.status}_LongDesc`}>
               <HTML html={coupon.legalText} />

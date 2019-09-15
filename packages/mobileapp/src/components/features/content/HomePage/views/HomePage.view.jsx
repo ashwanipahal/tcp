@@ -8,7 +8,7 @@ import PropTypes from 'prop-types';
 import HomePageSlots from '@tcp/core/src/components/common/molecules/HomePageSlots';
 import moduleJMock from '@tcp/core/src/components/common/molecules/ModuleJ/mock';
 import {
-  ModuleD,
+  // ModuleD,
   ModuleH,
   ModuleK,
   ModuleL,
@@ -22,7 +22,7 @@ import HeaderPromo from '../../../../common/molecules/HeaderPromo';
 import { HeaderPromoContainer } from '../HomePage.style';
 
 const modulesMap = {
-  moduleD: ModuleD,
+  //  moduleD: ModuleD,
   moduleH: ModuleH,
   moduleK: ModuleK,
   moduleL: ModuleL,
