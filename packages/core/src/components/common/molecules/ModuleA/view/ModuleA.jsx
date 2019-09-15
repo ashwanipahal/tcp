@@ -8,7 +8,7 @@ import errorBoundary from '../../../hoc/withErrorBoundary';
 import { PromoBanner, ButtonList } from '../..';
 import { getIconPath, getLocator, isGymboree } from '../../../../../utils';
 
-import config from '../ModuleA.config';
+import config from '../config';
 
 const bigCarrotIcon = 'carousel-big-carrot';
 const bigCarrotIconGym = 'carousel-big-carrot-white';

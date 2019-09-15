@@ -9,7 +9,7 @@ import ProductTabList from '../../../organisms/ProductTabList';
 import categoryListMock from './categoryListMock';
 import moduleJStyle from '../styles/ModuleJ.style';
 import { getIconPath, redirectToPdp } from '../../../../../utils';
-import config from '../moduleJ.config';
+import config from '../config';
 
 class ModuleJ extends React.PureComponent {
   constructor(props) {

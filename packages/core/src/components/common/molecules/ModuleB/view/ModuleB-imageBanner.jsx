@@ -3,7 +3,7 @@ import PropTypes from 'prop-types';
 import { DamImage, Anchor } from '../../../atoms';
 import PromoBanner from '../../PromoBanner';
 import { getLocator, configurePlpNavigationFromCMSUrl } from '../../../../../utils';
-import { bannerPositionTypes, IMG_DATA } from '../ModuleB.config';
+import { bannerPositionTypes, IMG_DATA } from '../config';
 
 /**
  * This function renders Promo Banner and Header Text
