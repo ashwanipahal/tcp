@@ -22,6 +22,20 @@ const getShowAddGiftCard = state => {
   return state.Checkout.getIn(['values', 'showAddGiftCard']) || false;
 };
 
+const getAddGiftCardErrors = state => {
+  return state.Checkout.getIn(['values', 'addGiftCardError']);
+};
+
+const getAddGiftCardResponse = state => {
+  return state.Checkout.getIn(['values', 'addGiftCardResponse']);
+};
+
+const getIsRecapchaEnabled = state => {
+  return (
+    (state.session && state.session.siteDetails && state.session.siteDetails.isRecapchaEnabled) ||
+    true
+  );
+};
 export default {
   getGrandTotal,
   getAppliedGiftCards,
@@ -29,4 +43,7 @@ export default {
   getGiftSectionLabels,
   getGiftCardErrors,
   getShowAddGiftCard,
+  getAddGiftCardErrors,
+  getIsRecapchaEnabled,
+  getAddGiftCardResponse,
 };

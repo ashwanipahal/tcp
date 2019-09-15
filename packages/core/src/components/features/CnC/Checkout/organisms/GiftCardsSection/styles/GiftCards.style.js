@@ -16,9 +16,47 @@ const styles = css`
     .TextBox__input {
       background-color: ${props => props.theme.colors.PRIMARY.PALEGRAY};
     }
-    .TextBox__label {
-      font-size: ${props => props.theme.typography.fontSizes.fs16};
-    }
+  }
+  .error-box {
+    font-family: ${props => props.theme.typography.fonts.secondary};
+    font-size: ${props => props.theme.typography.fontSizes.fs10};
+    line-height: ${props => props.theme.typography.lineHeights.normal};
+    color: ${props => props.theme.colors.NOTIFICATION.ERROR};
+    border: 1px solid ${props => props.theme.colors.NOTIFICATION.ERROR};
+    text-align: center;
+    display: block;
+    position: relative;
+    margin: 0 auto 6px;
+  }
+
+  .error-box .error-icon {
+    font-size: 0;
+    position: absolute;
+    top: -${props => props.theme.spacing.ELEM_SPACING.SM};
+    left: calc(50% - 11px);
+    padding: 3px;
+    display: inline-block;
+    background: transparent url(/static/images/circle-alert-fill.svg) no-repeat 0 0;
+    background-size: contain;
+    border: none;
+    height: 14px;
+    width: 13px;
+  }
+
+  && .CheckBox__text {
+    display: inline-block;
+    vertical-align: bottom;
+  }
+  .savetoaccount > label {
+    width: 100%;
+  }
+
+  && .card__btn > button,
+  && .card__btn--medium > button,
+  .new_gift_card_button,
+  .error-box {
+    padding: ${props => props.theme.spacing.ELEM_SPACING.SM}
+      ${props => props.theme.spacing.APP_LAYOUT_SPACING.XS};
   }
 `;
 

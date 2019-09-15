@@ -9,6 +9,8 @@ import Grid from '../../../../../../common/molecules/Grid';
 import GiftCardTile from '../../../molecules/GiftCardTile';
 import AddGiftCardForm from '../../../../../account/Payment/AddGiftCard/views/AddGiftCardForm';
 
+import ErrorMessage from '../../../../../../common/hoc/ErrorMessage';
+
 const GiftCardSectionHeading = (labels, isGiftCardApplied = false) => {
   return (
     <BodyCopy
@@ -25,7 +27,33 @@ const GiftCardSectionHeading = (labels, isGiftCardApplied = false) => {
     </BodyCopy>
   );
 };
-const renderAddGiftCard = hideAddGiftCard => {
+
+const renderAddGiftCardError = getAddGiftCardError => {
+  if (getAddGiftCardError) {
+    return (
+      <Row fullBleed>
+        <Col ignoreGutter={{ small: true }} colSize={{ small: 6, medium: 6, large: 6 }}>
+          <ErrorMessage
+            isShowingMessage
+            errorId="addNew"
+            error={getAddGiftCardError}
+            withoutErrorDataAttribute
+          />
+        </Col>
+      </Row>
+    );
+  }
+  return null;
+};
+
+const renderAddGiftCard = (
+  hideAddGiftCard,
+  onAddGiftCardClick,
+  formErrorMessage,
+  getAddGiftCardError,
+  isGuestUser,
+  isRecapchaEnabled
+) => {
   const paymentGC1 = {
     lbl_payment_giftCardNoPlaceholder: 'Gift Card #',
     lbl_common_backLink: 'Back',
@@ -35,14 +63,33 @@ const renderAddGiftCard = hideAddGiftCard => {
   };
   const labels = { paymentGC: paymentGC1 };
   return (
-    <BodyCopy tag="div" className="gift-addgiftcard-container">
-      <AddGiftCardForm labels={labels} goBackToPayment={hideAddGiftCard} />
-    </BodyCopy>
+    <Row className="gift-card-container elem-mb-LRG">
+      <Col
+        colSize={{
+          small: 6,
+          medium: 8,
+          large: 12,
+        }}
+      >
+        <BodyCopy component="div" className="gift-addgiftcard-container">
+          {renderAddGiftCardError(getAddGiftCardError)}
+          <AddGiftCardForm
+            labels={labels}
+            goBackToPayment={hideAddGiftCard}
+            onAddGiftCardClick={onAddGiftCardClick}
+            formErrorMessage={formErrorMessage}
+            saveToAccountEnabled={!isGuestUser}
+            isRecapchaEnabled={isRecapchaEnabled}
+            addGiftCardError={getAddGiftCardError}
+            isRow
+          />
+        </BodyCopy>
+      </Col>
+    </Row>
   );
 };
 const renderAddNewGiftButton = (labels, orderBalanceTotal, appliedGiftCards, showAddGiftCard) => {
-  const ok = true;
-  if ((orderBalanceTotal > 0 && appliedGiftCards && appliedGiftCards.size < 5) || ok) {
+  if (orderBalanceTotal > 0 && appliedGiftCards && appliedGiftCards.size < 5) {
     return (
       <Row className="elem-mt-LRG elem-mb-LRG">
         <Col
@@ -81,6 +128,11 @@ export const GiftCards = ({
   showAddGiftCard,
   enableAddGiftCard,
   hideAddGiftCard,
+  onAddGiftCardClick,
+  formErrorMessage,
+  getAddGiftCardError,
+  isGuestUser,
+  isRecapchaEnabled,
 }) => {
   return (
     <Grid className={className}>
@@ -153,7 +205,15 @@ export const GiftCards = ({
       </Row>
       {!enableAddGiftCard &&
         renderAddNewGiftButton(labels, orderBalanceTotal, appliedGiftCards, showAddGiftCard)}
-      {enableAddGiftCard && renderAddGiftCard(hideAddGiftCard)}
+      {enableAddGiftCard &&
+        renderAddGiftCard(
+          hideAddGiftCard,
+          onAddGiftCardClick,
+          formErrorMessage,
+          getAddGiftCardError,
+          isGuestUser,
+          isRecapchaEnabled
+        )}
     </Grid>
   );
 };
@@ -170,6 +230,11 @@ GiftCards.propTypes = {
   showAddGiftCard: PropTypes.func.isRequired,
   enableAddGiftCard: PropTypes.bool,
   hideAddGiftCard: PropTypes.func.isRequired,
+  onAddGiftCardClick: PropTypes.func.isRequired,
+  formErrorMessage: PropTypes.shape({}),
+  getAddGiftCardError: PropTypes.func.isRequired,
+  isGuestUser: PropTypes.bool,
+  isRecapchaEnabled: PropTypes.bool,
 };
 
 GiftCards.defaultProps = {
@@ -180,6 +245,9 @@ GiftCards.defaultProps = {
   giftCardErrors: {},
   orderBalanceTotal: 0,
   enableAddGiftCard: false,
+  formErrorMessage: '',
+  isGuestUser: false,
+  isRecapchaEnabled: false,
 };
 
 export default withStyles(GiftCards, styles);

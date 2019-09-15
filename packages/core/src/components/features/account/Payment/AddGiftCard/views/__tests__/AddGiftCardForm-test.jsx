@@ -23,6 +23,7 @@ describe('Add gift card form component', () => {
     component.instance().handleSubmit({
       cardPin: 'foo',
       giftCardNumber: 'foo',
+      recaptchaToken: 'wedseweweeeeeeeec',
     });
     expect(props.onAddGiftCardClick).toHaveBeenCalled();
   });
@@ -34,6 +35,7 @@ describe('Add gift card form component', () => {
     component.instance().handleSubmit({
       cardPin: 'foo',
       giftCardNumber: 'foo',
+      recaptchaToken: 'wedseweweeeeeeeec',
     });
     expect(props.onAddGiftCardClick).toHaveBeenCalled();
   });

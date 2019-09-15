@@ -93,31 +93,6 @@ exports[`GiftCardsVanilla should render gift card tile 1`] = `
       </Styled(BodyCopy)>
     </Styled(Col)>
   </Styled(Row)>
-  <Styled(Row)
-    className="elem-mt-LRG elem-mb-LRG"
-  >
-    <Styled(Col)
-      colSize={
-        Object {
-          "large": 3,
-          "medium": 4,
-          "small": 4,
-        }
-      }
-    >
-      <Styled(Button)
-        buttonVariation="variable-width"
-        className="new_gift_card_button"
-        data-locator="gift_apply_button"
-        disabled={false}
-        fullWidth="true"
-        onClick={[Function]}
-        type="submit"
-      >
-        lbl_giftcard_newGiftCard
-      </Styled(Button)>
-    </Styled(Col)>
-  </Styled(Row)>
 </Styled(Grid)>
 `;
 
@@ -214,31 +189,6 @@ exports[`GiftCardsVanilla should render gift card tile with 0 order balance 1`] 
       </Styled(BodyCopy)>
     </Styled(Col)>
   </Styled(Row)>
-  <Styled(Row)
-    className="elem-mt-LRG elem-mb-LRG"
-  >
-    <Styled(Col)
-      colSize={
-        Object {
-          "large": 3,
-          "medium": 4,
-          "small": 4,
-        }
-      }
-    >
-      <Styled(Button)
-        buttonVariation="variable-width"
-        className="new_gift_card_button"
-        data-locator="gift_apply_button"
-        disabled={false}
-        fullWidth="true"
-        onClick={[Function]}
-        type="submit"
-      >
-        lbl_giftcard_newGiftCard
-      </Styled(Button)>
-    </Styled(Col)>
-  </Styled(Row)>
 </Styled(Grid)>
 `;
 
@@ -333,31 +283,6 @@ exports[`GiftCardsVanilla should render gift card tile with 100 order balance 1`
       >
         lbl_giftcard_availableCards
       </Styled(BodyCopy)>
-    </Styled(Col)>
-  </Styled(Row)>
-  <Styled(Row)
-    className="elem-mt-LRG elem-mb-LRG"
-  >
-    <Styled(Col)
-      colSize={
-        Object {
-          "large": 3,
-          "medium": 4,
-          "small": 4,
-        }
-      }
-    >
-      <Styled(Button)
-        buttonVariation="variable-width"
-        className="new_gift_card_button"
-        data-locator="gift_apply_button"
-        disabled={false}
-        fullWidth="true"
-        onClick={[Function]}
-        type="submit"
-      >
-        lbl_giftcard_newGiftCard
-      </Styled(Button)>
     </Styled(Col)>
   </Styled(Row)>
 </Styled(Grid)>

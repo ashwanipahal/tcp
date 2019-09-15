@@ -22,6 +22,7 @@ exports[`Add gift card component should render component correctly if add gift i
     forceUnregisterOnUnmount={false}
     form="AddGiftCardForm"
     getFormState={[Function]}
+    isRecapchaEnabled={true}
     keepDirtyOnReinitialize={false}
     labels={
       Object {
@@ -67,6 +68,7 @@ exports[`Add gift card component should render component correctly if add gift i
     forceUnregisterOnUnmount={false}
     form="AddGiftCardForm"
     getFormState={[Function]}
+    isRecapchaEnabled={true}
     keepDirtyOnReinitialize={false}
     labels={
       Object {

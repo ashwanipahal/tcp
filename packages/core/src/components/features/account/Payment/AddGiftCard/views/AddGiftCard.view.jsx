@@ -70,6 +70,7 @@ class AddGiftCard extends React.PureComponent<Props> {
           labels={labels}
           goBackToPayment={goBackToPayment}
           formErrorMessage={formErrorMessage}
+          isRecapchaEnabled
         />
       </div>
     );
