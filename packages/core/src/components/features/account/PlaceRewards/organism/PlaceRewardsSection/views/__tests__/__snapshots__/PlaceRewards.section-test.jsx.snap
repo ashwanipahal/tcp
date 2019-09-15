@@ -180,9 +180,7 @@ exports[`MyRewards should render correctly 1`] = `
           }
         }
       >
-        <FPO
-          text=""
-        />
+        <Connect(EarnExtraPointsTileContainer) />
       </Styled(Col)>
     </Styled(Row)>
   </Styled(Row)>

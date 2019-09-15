@@ -1,0 +1,8 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`EarnExtraPointsTileContainer View should render EarnExtraPointsTileContainer Correctly 1`] = `
+<Styled(EarnExtraPointsTile)
+  labels={Object {}}
+  waysToEarn={[Function]}
+/>
+`;
