@@ -34,7 +34,13 @@ type Props = {
 };
 
 class AddGiftCardForm extends React.PureComponent<Props> {
-  // eslint-disable-next-line react/sort-comp
+  componentDidUpdate(prevProps) {
+    const { addGiftCardError } = this.props;
+    if (addGiftCardError !== prevProps.addGiftCardError) {
+      this.resetReCaptcha();
+    }
+  }
+
   handleSubmit = (data: { giftCardNumber: string, cardPin: string, recaptchaToken: string }) => {
     const { onAddGiftCardClick, submitting } = this.props;
     if (submitting) return;
@@ -45,13 +51,6 @@ class AddGiftCardForm extends React.PureComponent<Props> {
     }
     onAddGiftCardClick(data);
   };
-
-  componentDidUpdate(prevProps) {
-    const { addGiftCardError } = this.props;
-    if (addGiftCardError !== prevProps.addGiftCardError) {
-      this.resetReCaptcha();
-    }
-  }
 
   handleRecaptchaVerify = (token: string) => {
     const { change } = this.props;
@@ -139,6 +138,50 @@ class AddGiftCardForm extends React.PureComponent<Props> {
     );
   };
 
+  getColSize = isRow => {
+    return isRow ? { small: 3, medium: 3, large: 3 } : { small: 4, medium: 3, large: 2 };
+  };
+
+  renderButtons = (isRow, labels, submitting) => {
+    return (
+      <>
+        <Col
+          ignoreGutter={{ small: true }}
+          colSize={this.getColSize(isRow)}
+          className="card__btn"
+          offsetLeft={!isRow ? { small: 1, medium: 1, large: 1 } : null}
+          offsetRight={!isRow ? { small: 1, medium: 1, large: 0 } : null}
+        >
+          <Button
+            buttonVariation="fixed-width"
+            type="button"
+            data-locator="gift-card-cancelbtn"
+            onClick={this.onCancelClick}
+          >
+            {labels.paymentGC.lbl_payment_cancelCard}
+          </Button>
+        </Col>
+        <Col
+          ignoreGutter={{ small: true }}
+          colSize={this.getColSize(isRow)}
+          className="card__btn--medium"
+          offsetLeft={!isRow ? { small: 1, medium: 0, large: 0 } : null}
+          offsetRight={{ small: 1, medium: 0, large: 0 }}
+        >
+          <Button
+            buttonVariation="fixed-width"
+            fill="BLUE"
+            type="submit"
+            data-locator="gift-card-addcardbtn"
+            disabled={submitting}
+          >
+            {labels.paymentGC.lbl_payment_addCard}
+          </Button>
+        </Col>
+      </>
+    );
+  };
+
   render() {
     const { handleSubmit, labels, submitting, isRow } = this.props;
     return (
@@ -146,7 +189,7 @@ class AddGiftCardForm extends React.PureComponent<Props> {
         <Row fullBleed className="elem-mb-MED">
           <Col
             ignoreGutter={{ small: true }}
-            colSize={{ small: 6, medium: isRow ? 6 : 4, large: isRow ? 6 : 4 }}
+            colSize={{ small: 6, medium: isRow ? 10 : 4, large: isRow ? 6 : 4 }}
           >
             <Field
               placeholder={labels.paymentGC.lbl_payment_giftCardNoPlaceholder}
@@ -171,7 +214,7 @@ class AddGiftCardForm extends React.PureComponent<Props> {
         </Row>
         {isRow && (
           <Row fullBleed className="elem-mb-XL">
-            <Col ignoreGutter={{ small: true }} colSize={{ small: 6, medium: 2, large: 6 }}>
+            <Col ignoreGutter={{ small: true }} colSize={{ small: 6, medium: 10, large: 6 }}>
               <Field
                 placeholder={labels.paymentGC.lbl_payment_giftCardPinPlaceholder}
                 name="cardPin"
@@ -205,39 +248,8 @@ class AddGiftCardForm extends React.PureComponent<Props> {
               </div>
             </Col>
           )}
-          <Col
-            ignoreGutter={{ small: true }}
-            colSize={{ small: 4, medium: 3, large: isRow ? 3 : 2 }}
-            className="card__btn"
-            offsetLeft={!isRow ? { small: 1, medium: 1, large: 1 } : null}
-            offsetRight={{ small: 1, medium: 1, large: 0 }}
-          >
-            <Button
-              buttonVariation="fixed-width"
-              type="button"
-              data-locator="gift-card-cancelbtn"
-              onClick={this.onCancelClick}
-            >
-              {labels.paymentGC.lbl_payment_cancelCard}
-            </Button>
-          </Col>
-          <Col
-            ignoreGutter={{ small: true }}
-            colSize={{ small: 4, medium: 3, large: isRow ? 3 : 2 }}
-            className="card__btn--medium"
-            offsetLeft={isRow ? { small: 1, medium: 0, large: 0 } : null}
-            offsetRight={{ small: 1, medium: 0, large: 0 }}
-          >
-            <Button
-              buttonVariation="fixed-width"
-              fill="BLUE"
-              type="submit"
-              data-locator="gift-card-addcardbtn"
-              disabled={submitting}
-            >
-              {labels.paymentGC.lbl_payment_addCard}
-            </Button>
-          </Col>
+
+          {this.renderButtons(isRow, labels, submitting)}
         </Row>
       </form>
     );

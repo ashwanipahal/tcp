@@ -457,7 +457,13 @@ exports[`Add gift card form component should render component correctly 1`] = `
           "small": true,
         }
       }
-      offsetLeft={null}
+      offsetLeft={
+        Object {
+          "large": 0,
+          "medium": 0,
+          "small": 1,
+        }
+      }
       offsetRight={
         Object {
           "large": 0,

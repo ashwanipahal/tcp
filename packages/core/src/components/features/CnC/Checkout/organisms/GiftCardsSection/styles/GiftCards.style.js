@@ -58,6 +58,25 @@ const styles = css`
     padding: ${props => props.theme.spacing.ELEM_SPACING.SM}
       ${props => props.theme.spacing.APP_LAYOUT_SPACING.XS};
   }
+
+  && .card__btn--medium {
+    margin-left: ${props => props.theme.spacing.ELEM_SPACING.MED};
+  }
+
+  .recaptcha {
+    @media ${props => props.theme.mediaQuery.smallOnly} {
+      transform: scale(0.7);
+      position: relative;
+      left: -31px;
+      margin-top: -25px;
+    }
+    @media ${props => props.theme.mediaQuery.medium} {
+      transform: scale(0.9);
+      position: relative;
+      left: -5px;
+      margin-top: -15px;
+    }
+  }
 `;
 
 export default styles;
