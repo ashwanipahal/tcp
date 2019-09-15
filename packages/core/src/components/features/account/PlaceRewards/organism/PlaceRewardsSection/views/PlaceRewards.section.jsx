@@ -10,7 +10,7 @@ import styles from '../styles/PlaceRewards.section.style';
 import MyRewards from '../../../../common/organism/MyRewards';
 import RewardsPoints from '../../../../common/organism/RewardsPoints';
 import PointsHistory from '../../../../common/organism/PointsHistory';
-import PointsHistoryContainer from '../../../../common/organism/EarnExtraPointsTile';
+import EarnExtraPointsTileContainer from '../../../../common/organism/EarnExtraPointsTile';
 import BonusPointsDays from '../../../molecules/BonusPointsDays';
 
 const PlaceRewardsSection = ({ labels, className, ...otherProps }) => {
@@ -137,16 +137,18 @@ const PlaceRewardsSection = ({ labels, className, ...otherProps }) => {
               <BonusPointsDays />
             </div>
           </Col>
-          <Col
-            colSize={{
-              small: 6,
-              large: 6,
-              medium: 4,
-            }}
-            className="place-rewards-col4"
-          >
-            <PointsHistoryContainer />
-          </Col>
+          {!isCA && (
+            <Col
+              colSize={{
+                small: 6,
+                large: 6,
+                medium: 4,
+              }}
+              className="place-rewards-col4"
+            >
+              <EarnExtraPointsTileContainer />
+            </Col>
+          )}
         </Row>
       </Row>
       {!isCA && <MyRewards labels={labels} showLink {...otherProps} />}
