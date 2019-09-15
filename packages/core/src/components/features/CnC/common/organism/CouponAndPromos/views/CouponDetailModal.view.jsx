@@ -59,7 +59,9 @@ class CouponDetailModal extends React.PureComponent<Props> {
           data-locator={`couponDetailModal_${coupon.status}_BarCode`}
           className="couponModal_modalbarcode"
         >
-          <Barcode value={coupon.id} barcodeId={coupon.id} />
+          <BodyCopy component="div" className="modalbarcode">
+            <Barcode className="elem-mt-MED elem-mb-MED" value={coupon.id} barcodeId={coupon.id} />
+          </BodyCopy>
         </BodyCopy>
         <div className="couponModal_btnWrapper">
           <Button

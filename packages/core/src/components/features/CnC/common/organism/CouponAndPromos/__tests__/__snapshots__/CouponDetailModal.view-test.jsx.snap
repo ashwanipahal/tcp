@@ -32,24 +32,30 @@ exports[`Detail Coupon Modal should render correctly 1`] = `
       component="div"
       data-locator="couponDetailModal_applied_BarCode"
     >
-      <Barcode
-        background="#ffffff"
-        barcodeId="Y00105578"
-        displayValue={true}
-        font="Nunito"
-        fontOptions=""
-        fontSize={20}
-        format="CODE128"
-        height={100}
-        lineColor="#000000"
-        margin={10}
-        renderer="svg"
-        textAlign="center"
-        textMargin={2}
-        textPosition="bottom"
-        value="Y00105578"
-        width={2}
-      />
+      <Styled(BodyStyle)
+        className="modalbarcode"
+        component="div"
+      >
+        <Barcode
+          background="#ffffff"
+          barcodeId="Y00105578"
+          className="elem-mt-MED elem-mb-MED"
+          displayValue={true}
+          font="Nunito"
+          fontOptions=""
+          fontSize={20}
+          format="CODE128"
+          height={100}
+          lineColor="#000000"
+          margin={10}
+          renderer="svg"
+          textAlign="center"
+          textMargin={2}
+          textPosition="bottom"
+          value="Y00105578"
+          width={2}
+        />
+      </Styled(BodyStyle)>
     </Styled(BodyStyle)>
     <div
       className="couponModal_btnWrapper"
