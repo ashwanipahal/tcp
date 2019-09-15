@@ -283,3 +283,7 @@ export const isBOSSProductOOSQtyMismatched = (colorFitsSizesMap, selectedSKu) =>
 export const getProductListToPath = str => {
   return `/p?pid=${str.split('/p/')[1]}`;
 };
+
+export const getProductListToPathInMobileApp = str => {
+  return `${str.split('/p/')[1]}`;
+};

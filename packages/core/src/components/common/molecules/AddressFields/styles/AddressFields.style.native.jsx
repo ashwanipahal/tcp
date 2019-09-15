@@ -78,7 +78,7 @@ const AddressSecondWrapper = styled.View`
 `;
 
 const HiddenAddressLineWrapper = styled.View`
-  margin-top: -${props => props.theme.spacing.ELEM_SPACING.LRG};
+  margin-top: -${props => props.theme.spacing.ELEM_SPACING.MED};
 `;
 
 export {
