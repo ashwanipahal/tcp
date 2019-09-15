@@ -1,8 +1,11 @@
 import PropTypes from 'prop-types';
 import { isEmpty } from 'lodash';
 
-const getSelectedAddress = (addressList, onFileAddressKey) => {
+const getSelectedAddress = (addressList, onFileAddressKey, shippingAddressId) => {
   let selectedAddress = null;
+  if (shippingAddressId) {
+    selectedAddress = addressList.find(add => add.addressId === shippingAddressId);
+  }
   if (onFileAddressKey) {
     selectedAddress = addressList.find(add => add.addressId === onFileAddressKey);
   }

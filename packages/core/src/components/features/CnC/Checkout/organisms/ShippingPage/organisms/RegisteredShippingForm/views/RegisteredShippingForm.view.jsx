@@ -68,14 +68,11 @@ class RegisteredShippingForm extends React.Component {
   };
 
   getAddressOptions = () => {
-    const { userAddresses, shippingAddressId, labels } = this.props;
-    const userAddressesLength = userAddresses && userAddresses.size;
+    const { userAddresses, labels } = this.props;
     let addressOptions = userAddresses.map(address => {
       let defaultId = false;
       if (address.primary === 'true') {
         defaultId = true;
-      } else if (shippingAddressId && !userAddressesLength) {
-        defaultId = address.addressId === shippingAddressId;
       }
       return {
         value: address.addressId,
