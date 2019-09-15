@@ -11,7 +11,7 @@ type Props = {
   source: string,
   url: string,
   crop: string,
-  imgConfigs: string,
+  imgConfig: string,
   alt: string,
   host: string,
   alt: string,
@@ -26,11 +26,11 @@ type Props = {
  *                  - value of host prop should be same as parent LazyLoadScrollView
  */
 const DamImage = (props: Props) => {
-  const { url, crop, source, host, imgConfigs, alt, ...otherProps } = props;
+  const { url, crop, source, host, imgConfig, alt, ...otherProps } = props;
   const cropVal = crop || '';
   const urlVal = url || '';
   const ImageComponent = host ? LazyloadImage : Image;
-  const imgConfigsVal = imgConfigs || '';
+  const imgConfigsVal = imgConfig || '';
 
   return (
     <ImageComponent
