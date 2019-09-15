@@ -5,9 +5,10 @@ import selectors from '@tcp/core/src/components/features/CnC/Checkout/container/
 import {
   getVenmoClientToken,
   setVenmoData,
+  setVenmoPaymentInProgress,
 } from '@tcp/core/src/components/features/CnC/Checkout/container/Checkout.action';
-import logger from '@tcp/core/src/utils/loggerInstance';
 import { getCartOrderId } from '@tcp/core/src/components/features/CnC/CartItemTile/container/CartItemTile.selectors';
+import logger from '@tcp/core/src/utils/loggerInstance';
 import VenmoPaymentButton from '../views';
 import { isVenmoNonceNotExpired, VENMO_USER_STATES, modes } from './VenmoPaymentButton.util';
 
@@ -17,14 +18,11 @@ export class VenmoPaymentButtonContainer extends React.Component<Props> {
   }
 
   fetchVenmoClientToken = () => {
-    //const state = this.store.getState();
-    const isMobile = true; //this.getIsMobile(state);
+    const { isMobile, isGuest, orderId } = this.props;
     // Todo: Add Kill switch logic
     if (isMobile) {
       let userState = '';
-      const orderId = '12345'; //getCartOrderId(state);
-      if (true) {
-        // Retrieve guest token but change after user TCP authenticates.
+      if (isGuest) {
         userState = VENMO_USER_STATES.GUEST;
       } else {
         userState = VENMO_USER_STATES.REGISTERED;
@@ -40,12 +38,10 @@ export class VenmoPaymentButtonContainer extends React.Component<Props> {
   };
 
   onVenmoPaymentButtonClick = mode => {
-    debugger;
     logger.info(mode);
   };
 
   onVenmoPaymentButtonError = e => {
-    debugger;
     logger.error(e);
   };
 
@@ -71,35 +67,26 @@ VenmoPaymentButton.defaultProps = {
 };
 
 const mapStateToProps = state => {
-  // const {
-  //   setVenmoData,
-  //   openAuthLoginForCheckoutModal,
-  //   removeOOSItems,
-  // } = storeOperators.checkoutOperator;
-  const mobile = true; //selectors.getIsMobile();
-  const venmoData = selectors.getVenmoData(state);
   const venmoClientTokenData = selectors.getVenmoClientTokenData(state);
   const { venmoSecurityToken: authorizationKey, venmoPaymentTokenAvailable } =
     venmoClientTokenData || {};
   const mode = venmoPaymentTokenAvailable === 'TRUE' ? modes.PAYMENT_TOKEN : modes.CLIENT_TOKEN;
-  const enabled = true; // This will be handled with the venmo killswitch
-  const isNonceNotExpired = isVenmoNonceNotExpired(state);
   return {
-    enabled,
-    mobile,
+    enabled: true, // Todo: This will be handled with the venmo killswitch
+    isMobile: selectors.getIsMobile(),
     mode,
     authorizationKey,
-    isNonceNotExpired,
-    venmoData,
+    isNonceNotExpired: isVenmoNonceNotExpired(state),
+    venmoData: selectors.getVenmoData(state),
     venmoClientTokenData,
     allowNewBrowserTab: true,
-    // Dispatchable functions
-    // setVenmoData,
+    isGuest: selectors.isGuest(state),
+    orderId: getCartOrderId(state),
   };
 };
 
 const mapDispatchToProps = dispatch => ({
-  // setVenmoPaymentInProgress: data => dispatch(selectors.setVenmoPaymentInProgress(data)),
+  setVenmoPaymentInProgress: data => dispatch(setVenmoPaymentInProgress(data)),
   getVenmoPaymentTokenAction: data => dispatch(getVenmoClientToken(data)),
   setVenmoDataAction: data => dispatch(setVenmoData(data)),
 });

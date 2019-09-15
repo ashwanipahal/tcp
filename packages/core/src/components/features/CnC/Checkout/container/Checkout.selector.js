@@ -2,6 +2,7 @@
 import { formValueSelector } from 'redux-form';
 import { createSelector } from 'reselect';
 import { CHECKOUT_REDUCER_KEY } from '@tcp/core/src/constants/reducer.constants';
+import { modes } from '@tcp/core/src/components/common/atoms/VenmoPaymentButton/container/VenmoPaymentButton.util';
 
 /* eslint-disable extra-rules/no-commented-out-code */
 import { getAPIConfig, isMobileApp, getViewportInfo, getLabelValue } from '../../../../../utils';
@@ -536,10 +537,10 @@ function isNonceNotExpired(state) {
 function isVenmoPaymentToken(state) {
   const venmoData = getVenmoData(state);
   return (
-    (venmoData && venmoData.mode === VenmoPaymentButton.modes.PAYMENT_TOKEN) ||
+    (venmoData && venmoData.mode === modes.PAYMENT_TOKEN) ||
     (venmoData &&
       venmoData.venmoClientTokenData &&
-      venmoData.venmoClientTokenData.mode === VenmoPaymentButton.modes.PAYMENT_TOKEN)
+      venmoData.venmoClientTokenData.mode === modes.PAYMENT_TOKEN)
   );
 }
 
@@ -583,7 +584,7 @@ function getVenmoUserEmail(state) {
 }
 
 function isDefaultAddressUsed(state) {
-  const shippingAddress = checkoutStoreView.getShippingDestinationValues(state);
+  const shippingAddress = getShippingDestinationValues(state);
   return (
     shippingAddress &&
     !shippingAddress.onFileAddressId &&
@@ -645,4 +646,9 @@ export default {
   getSyncError,
   getVenmoData,
   getVenmoClientTokenData,
+  isVenmoPaymentAvailable,
+  isVenmoMessageDisplayed,
+  isVenmoNonceActive,
+  getVenmoUserEmail,
+  isDefaultAddressUsed,
 };

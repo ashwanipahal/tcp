@@ -69,7 +69,7 @@ class AddedToBagActions extends React.PureComponent<Props> {
           </Row>
         )}
         <Row className="checkout-button">
-          <VenmoPaymentButton className={className} />
+          <VenmoPaymentButton className="venmo-container" />
           <PayPalButton className="payPal-button" />
           <Button
             data-locator={getLocator('addedtobag_btncheckout')}

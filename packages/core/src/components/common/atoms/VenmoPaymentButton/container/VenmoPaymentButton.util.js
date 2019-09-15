@@ -1,4 +1,7 @@
-export const constants = { VENMO_NONCE_EXPIRY_TIMEOUT: 3 * 1000 * 60 * 60 }; // THREE HOURS,
+export const constants = {
+  VENMO_NONCE_EXPIRY_TIMEOUT: 3 * 1000 * 60 * 60, // Three hours nonce expiry time
+  VENMO_CANCELED: 'VENMO_CANCELED',
+};
 
 export const modes = {
   CLIENT_TOKEN: 'client_token',
@@ -14,7 +17,6 @@ export const noop = () => {};
 
 /**
  * Runs promises in a serial in lieu of parallel like in Promises.all()
- *
  * @param funcs
  * @return {*}
  */

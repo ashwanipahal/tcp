@@ -3,76 +3,13 @@ import { string, func, bool, shape, oneOf, arrayOf } from 'prop-types';
 import { client, venmo, dataCollector } from 'braintree-web';
 import { getIconPath } from '@tcp/core/src/utils/utils';
 import withStyles from '@tcp/core/src/components/common/hoc/withStyles';
-import { noop, runPromisesInSerial, modes } from '../container/VenmoPaymentButton.util';
+import logger from '@tcp/core/src/utils/loggerInstance';
+import { noop, modes, constants } from '../container/VenmoPaymentButton.util';
 import styles from '../styles/VenmoPaymentButton.style';
 
-let venmoInstance = null; // Live past the React component lifecycle.
+let venmoInstance = null;
 
 export class VenmoPaymentButton extends Component {
-  static propTypes = {
-    enabled: bool,
-
-    authorizationKey: string,
-
-    mode: oneOf([modes.CLIENT_TOKEN, modes.PAYMENT_TOKEN]),
-
-    setVenmoData: func,
-
-    allowNewBrowserTab: bool,
-
-    mobile: bool,
-
-    venmoData: shape({
-      deviceData: string,
-
-      /**
-       * Do not enable Venmo button if device does not supported for opening Venmo in same tab.
-       */
-      supportedByBrowser: bool,
-
-      /**
-       * Indicates that TCP is fetching data via the Brain Tree SDK
-       */
-      loading: bool,
-
-      details: shape({
-        username: string,
-      }),
-
-      nonce: string,
-
-      type: string,
-
-      error: shape({
-        code: string,
-        message: string,
-        name: string,
-      }),
-    }),
-    prePromises: arrayOf(shape({})),
-    onVenmoPaymentButtonClick: func,
-    onVenmoPaymentButtonError: func,
-    setVenmoPaymentInProgress: func,
-    isNonceNotExpired: bool,
-  };
-
-  static defaultProps = {
-    enabled: false,
-    authorizationKey: '',
-    setVenmoData: noop,
-    allowNewBrowserTab: false,
-    mobile: false,
-    venmoData: {
-      supportedByBrowser: true,
-    },
-    mode: modes.CLIENT_TOKEN,
-    prePromises: [Promise.resolve],
-    onVenmoPaymentButtonClick: noop,
-    onVenmoPaymentButtonError: noop,
-    setVenmoPaymentInProgress: noop,
-    isNonceNotExpired: true,
-  };
-
   constructor(props) {
     super(props);
     this.venmoButtonRef = null;
@@ -101,10 +38,9 @@ export class VenmoPaymentButton extends Component {
   };
 
   // Logic will go here for in some cases, we may not want to display an error message
-  handleVenmoClickedError = e => console.error('Venmo', 'Promises Error', e);
+  handleVenmoClickedError = e => logger.error('Venmo', 'Promises Error', e);
 
   handleVenmoInstanceError = err => {
-    debugger;
     const { hasVenmoError } = this.state;
     if (!hasVenmoError) {
       this.setState({ hasVenmoError: true });
@@ -116,14 +52,12 @@ export class VenmoPaymentButton extends Component {
     const {
       setVenmoData,
       onVenmoPaymentButtonClick,
-      prePromises,
       mode,
       isNonceNotExpired,
       setVenmoPaymentInProgress,
     } = this.props;
-    debugger;
     setVenmoData({ loading: true, error: null });
-    // setVenmoPaymentInProgress(true);
+    setVenmoPaymentInProgress(true);
     if (venmoInstance && this.canCallVenmoApi()) {
       this.venmoButtonRef.disable = true;
       this.fetchVenmoNonce();
@@ -135,7 +69,6 @@ export class VenmoPaymentButton extends Component {
   };
 
   handleVenmoSuccess = payload => {
-    debugger;
     const { setVenmoData, mode, onVenmoPaymentButtonClick } = this.props;
     const successData = { ...payload, error: null, timestamp: Date.now() };
     setVenmoData(successData);
@@ -145,8 +78,7 @@ export class VenmoPaymentButton extends Component {
   handleVenmoError = ({ code, message, name }) => {
     const { setVenmoData, onVenmoPaymentButtonError } = this.props;
     const errorData = { nonce: '', error: { code, message, name } };
-    // DTN-4609-suppressing error when user cancels
-    if (code !== 'VENMO_CANCELED') {
+    if (code !== constants.VENMO_CANCELED) {
       setVenmoData(errorData);
       onVenmoPaymentButtonError(errorData);
       // Suppress error message
@@ -168,13 +100,13 @@ export class VenmoPaymentButton extends Component {
     const {
       mode,
       authorizationKey,
-      mobile,
+      isMobile,
       enabled,
       venmoData: { nonce },
       setVenmoData,
       isNonceNotExpired,
     } = this.props;
-    if (!mobile) return; // Do not process requests if not mobile.
+    if (!isMobile) return; // Do not process requests if not mobile.
     if (nonce && isNonceNotExpired) {
       this.setState({ hasVenmoError: false });
       setVenmoData({ loading: false });
@@ -192,9 +124,9 @@ export class VenmoPaymentButton extends Component {
       authorizationKey: authorization,
       setVenmoData,
       allowNewBrowserTab,
-      mobile,
+      isMobile,
     } = this.props;
-    if (!mobile) return; // Do not process requests if not mobile.
+    if (!isMobile) return; // Do not process requests if not mobile.
     if (this.canCallVenmoApi()) {
       setVenmoData({ loading: true });
       client
@@ -212,8 +144,7 @@ export class VenmoPaymentButton extends Component {
           ])
             .then(([venmoInstanceRef, dataCollectorInstanceRef]) => {
               venmoInstance = venmoInstanceRef;
-              debugger;
-              if (venmoInstance.isBrowserSupported() || true) {
+              if (venmoInstance.isBrowserSupported()) {
                 const { deviceData } = dataCollectorInstanceRef;
                 if (deviceData) {
                   const deviceDataValue = JSON.parse(deviceData);
@@ -224,7 +155,7 @@ export class VenmoPaymentButton extends Component {
                   this.setState({ hasVenmoError: false });
                 }
               } else {
-                console.error('Opening Venmo in the same tab is not supported by this browser');
+                logger.error('Opening Venmo in the same tab is not supported by this browser');
                 setVenmoData({ supportedByBrowser: false });
               }
             })
@@ -241,7 +172,7 @@ export class VenmoPaymentButton extends Component {
   };
 
   render() {
-    const { mobile, venmoData, mode, enabled, className } = this.props;
+    const { isMobile, venmoData, mode, enabled, className } = this.props;
     const { hasVenmoError } = this.state;
     const { supportedByBrowser } = venmoData || {};
     const venmoIcon = getIconPath('venmo-button');
@@ -251,7 +182,7 @@ export class VenmoPaymentButton extends Component {
           type="button"
           onClick={this.handleVenmoClick}
           ref={this.setVenmoButtonRef}
-          className="VenmoPaymentButton"
+          className="venmo-button"
           aria-label="Venmo Payment Button"
         >
           <img src={venmoIcon} alt="Venmo Payment Button" />
@@ -260,6 +191,50 @@ export class VenmoPaymentButton extends Component {
     );
   }
 }
+
+VenmoPaymentButton.propTypes = {
+  enabled: bool,
+  authorizationKey: string,
+  mode: oneOf([modes.CLIENT_TOKEN, modes.PAYMENT_TOKEN]),
+  setVenmoData: func,
+  allowNewBrowserTab: bool,
+  isMobile: bool,
+  venmoData: shape({
+    deviceData: string,
+    supportedByBrowser: bool,
+    loading: bool,
+    details: shape({
+      username: string,
+    }),
+    nonce: string,
+    type: string,
+    error: shape({
+      code: string,
+      message: string,
+      name: string,
+    }),
+  }),
+  onVenmoPaymentButtonClick: func,
+  onVenmoPaymentButtonError: func,
+  setVenmoPaymentInProgress: func,
+  isNonceNotExpired: bool,
+};
+
+VenmoPaymentButton.defaultProps = {
+  enabled: false,
+  authorizationKey: '',
+  setVenmoData: noop,
+  allowNewBrowserTab: false,
+  isMobile: false,
+  venmoData: {
+    supportedByBrowser: true,
+  },
+  mode: modes.CLIENT_TOKEN,
+  onVenmoPaymentButtonClick: noop,
+  onVenmoPaymentButtonError: noop,
+  setVenmoPaymentInProgress: noop,
+  isNonceNotExpired: true,
+};
 
 export default withStyles(VenmoPaymentButton, styles);
 export { VenmoPaymentButton as VenmoPaymentButtonVanilla };
