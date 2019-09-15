@@ -132,16 +132,11 @@ export class VenmoPaymentButton extends Component {
       setVenmoData,
       isNonceNotExpired,
     } = this.props;
-    if (!isMobile) return; // Do not process requests if not mobile.
-    if (nonce && isNonceNotExpired) {
+    if (isMobile && nonce && isNonceNotExpired) {
       this.setState({ hasVenmoError: false });
       setVenmoData({ loading: false });
-      return;
-    }
-    if (mode === modes.CLIENT_TOKEN && enabled) {
-      if (authorizationKey) {
-        this.setupVenmoInstance();
-      }
+    } else if (isMobile && mode === modes.CLIENT_TOKEN && enabled && authorizationKey) {
+      this.setupVenmoInstance();
     }
   };
 
@@ -160,38 +155,34 @@ export class VenmoPaymentButton extends Component {
       setVenmoData({ loading: true });
       client
         .create({ authorization })
-        .then(client => {
+        .then(clientInstance => {
           return Promise.all([
             venmo.create({
-              client,
+              client: clientInstance,
               allowNewBrowserTab,
             }),
             dataCollector.create({
-              client,
+              client: clientInstance,
               paypal: true,
             }),
-          ])
-            .then(([venmoInstanceRef, dataCollectorInstanceRef]) => {
-              venmoInstance = venmoInstanceRef;
-              if (venmoInstance.isBrowserSupported()) {
-                const { deviceData } = dataCollectorInstanceRef;
-                if (deviceData) {
-                  const deviceDataValue = JSON.parse(deviceData);
-                  setVenmoData({
-                    deviceData: deviceDataValue.correlation_id,
-                    supportedByBrowser: true,
-                  });
-                  this.setState({ hasVenmoError: false });
-                }
-              } else {
-                logger.error('Opening Venmo in the same tab is not supported by this browser');
-                setVenmoData({ supportedByBrowser: false });
-              }
-            })
-            .catch(err => this.handleVenmoInstanceError(err))
-            .finally(() => {
-              setVenmoData({ loading: false });
-            });
+          ]);
+        })
+        .then(([venmoInstanceRef, dataCollectorInstanceRef]) => {
+          venmoInstance = venmoInstanceRef;
+          if (venmoInstance.isBrowserSupported()) {
+            const { deviceData } = dataCollectorInstanceRef;
+            if (deviceData) {
+              const deviceDataValue = JSON.parse(deviceData);
+              setVenmoData({
+                deviceData: deviceDataValue.correlation_id,
+                supportedByBrowser: true,
+              });
+              this.setState({ hasVenmoError: false });
+            }
+          } else {
+            logger.error('Opening Venmo in the same tab is not supported by this browser');
+            setVenmoData({ supportedByBrowser: false });
+          }
         })
         .catch(err => this.handleVenmoInstanceError(err))
         .finally(() => {

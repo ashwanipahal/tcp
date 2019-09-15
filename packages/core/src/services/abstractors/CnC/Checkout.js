@@ -2,7 +2,6 @@
 import superagent from 'superagent';
 import logger from '@tcp/core/src/utils/loggerInstance';
 import jsonp from 'superagent-jsonp';
-import { VENMO_USER_STATES } from '@tcp/core/src/components/common/atoms/VenmoPaymentButton/container/VenmoPaymentButton.util';
 import { executeStatefulAPICall } from '../../handler';
 import endpoints from '../../endpoints';
 import { getCurrentOrderFormatter } from './CartItemTile';
@@ -492,43 +491,6 @@ export function updatePaymentOnOrder(args) {
   });
 }
 
-const getFormattedData = res => {
-  const {
-    userState,
-    venmoCustomerIdAvailable,
-    venmoIsDefaultPaymentType,
-    venmoPaymentTokenAvailable,
-    venmoSecurityToken,
-  } = res;
-  return {
-    venmoClientTokenData: {
-      userState,
-      venmoCustomerIdAvailable,
-      venmoIsDefaultPaymentType,
-      venmoPaymentTokenAvailable,
-      venmoSecurityToken,
-    },
-  };
-};
-
-export const getVenmoToken = ({ userState, orderId }) => {
-  const payload = {
-    header: {
-      orderId,
-      userState,
-    },
-    webService: endpoints.getVenmoClientToken,
-  };
-  return executeStatefulAPICall(payload)
-    .then(res => {
-      const massagedData = getFormattedData(res.body);
-      return massagedData || {};
-    })
-    .catch(err => {
-      throw err;
-    });
-};
-
 export default {
   getGiftWrappingOptions,
   getCurrentOrderAndCouponsDetails,
@@ -542,5 +504,4 @@ export default {
   updatePaymentOnOrder,
   addGiftWrappingOption,
   removeGiftWrappingOption,
-  getVenmoToken,
 };

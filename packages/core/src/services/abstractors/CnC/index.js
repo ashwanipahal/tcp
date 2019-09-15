@@ -21,5 +21,5 @@ export {
   updatePaymentOnOrder,
   addGiftCardPaymentToOrder,
   removeGiftCard,
-  getVenmoToken,
 } from './Checkout';
+export { getVenmoToken } from './venmo';
