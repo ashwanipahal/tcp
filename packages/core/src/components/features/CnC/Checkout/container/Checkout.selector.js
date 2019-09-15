@@ -2,7 +2,10 @@
 import { formValueSelector } from 'redux-form';
 import { createSelector } from 'reselect';
 import { CHECKOUT_REDUCER_KEY } from '@tcp/core/src/constants/reducer.constants';
-import { modes } from '@tcp/core/src/components/common/atoms/VenmoPaymentButton/container/VenmoPaymentButton.util';
+import {
+  modes,
+  constants as venmoConstants,
+} from '@tcp/core/src/components/common/atoms/VenmoPaymentButton/container/VenmoPaymentButton.util';
 
 /* eslint-disable extra-rules/no-commented-out-code */
 import { getAPIConfig, isMobileApp, getViewportInfo, getLabelValue } from '../../../../../utils';
@@ -514,14 +517,13 @@ function isVenmoPaymentInProgress(state) {
  * Mainly used to check for Venmo nonce expiry
  * @param state
  */
-function isNonceNotExpired(state) {
+function isVenmoNonceNotExpired(state) {
   const venmoData = getVenmoData(state);
-  const expiry = constants.VENMO_NONCE_EXPIRY_TIMEOUT;
-  const {
-    nonce,
-    timestamp,
-    venmoClientTokenData: { venmoPaymentTokenAvailable },
-  } = venmoData || { venmoClientTokenData: {} };
+  const expiry = venmoConstants.VENMO_NONCE_EXPIRY_TIMEOUT;
+  const { nonce, timestamp, venmoClientTokenData } = venmoData;
+  const venmoPaymentTokenAvailable = venmoClientTokenData
+    ? venmoClientTokenData.venmoPaymentTokenAvailable
+    : false;
   return venmoPaymentTokenAvailable === 'TRUE' || (nonce && Date.now() - timestamp <= expiry);
 }
 
@@ -542,7 +544,7 @@ function isVenmoNonceActive(state) {
     venmoData &&
     (venmoData.nonce || isVenmoPaymentToken(state)) &&
     venmoPaymentInProgress &&
-    isNonceNotExpired(state)
+    isVenmoNonceNotExpired(state)
   );
 }
 
@@ -642,4 +644,5 @@ export default {
   isVenmoNonceActive,
   getVenmoUserEmail,
   isDefaultAddressUsed,
+  isVenmoNonceNotExpired,
 };

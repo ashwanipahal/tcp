@@ -26,19 +26,3 @@ export const runPromisesInSerial = funcs =>
       promise.then(results => Promise.resolve(func()).then(result => [...results, result])),
     Promise.resolve([])
   );
-
-/**
- * Mainly used to check for Venmo nonce expiry
- * @param state
- */
-export function isVenmoNonceNotExpired() {
-  return true;
-  // const venmoData = getVenmoData(state);
-  // const expiry = constants.VENMO_NONCE_EXPIRY_TIMEOUT;
-  // const {
-  //   nonce,
-  //   timestamp,
-  //   venmoClientTokenData: { venmoPaymentTokenAvailable },
-  // } = venmoData || { venmoClientTokenData: {} };
-  // return venmoPaymentTokenAvailable === 'TRUE' || (nonce && Date.now() - timestamp <= expiry);
-}

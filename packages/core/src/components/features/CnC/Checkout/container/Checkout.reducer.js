@@ -26,6 +26,7 @@ const initialState = fromJS({
       },
       deviceData: '',
       supportedByBrowser: true,
+      loading: false,
     },
     addEditResponseAddressId: null,
     giftCardError: null,

@@ -10,13 +10,16 @@ import {
 import { getCartOrderId } from '@tcp/core/src/components/features/CnC/CartItemTile/container/CartItemTile.selectors';
 import logger from '@tcp/core/src/utils/loggerInstance';
 import VenmoPaymentButton from '../views';
-import { isVenmoNonceNotExpired, VENMO_USER_STATES, modes } from './VenmoPaymentButton.util';
+import { VENMO_USER_STATES, modes } from './VenmoPaymentButton.util';
 
 export class VenmoPaymentButtonContainer extends React.Component<Props> {
   componentWillMount() {
     this.fetchVenmoClientToken();
   }
 
+  /**
+   * Fetch venmo token details from the backend api. This is used to create instance of venmo and for authorization
+   */
   fetchVenmoClientToken = () => {
     const { isMobile, isGuest, orderId } = this.props;
     // Todo: Add Kill switch logic
@@ -32,15 +35,37 @@ export class VenmoPaymentButtonContainer extends React.Component<Props> {
     }
   };
 
+  /**
+   * This method is used for set venmo data in the checkout redux store.
+   * @param {object} data - venmo reducer data to store
+   */
   setVenmoData = data => {
-    const { venmoClientTokenData, setVenmoDataAction } = this.props;
-    setVenmoDataAction({ venmoClientTokenData, ...data });
+    const {
+      venmoClientTokenData,
+      setVenmoDataAction,
+      venmoData: { nonce, deviceData, supportedByBrowser, loading },
+    } = this.props;
+    setVenmoDataAction({
+      venmoClientTokenData,
+      nonce,
+      deviceData,
+      supportedByBrowser,
+      loading,
+      ...data,
+    });
   };
 
+  /**
+   * This method is called once venmo token and authorization is successfull and user has to procced to next steps of checkout/review
+   * @param {string} mode - guest or registered user mode
+   */
   onVenmoPaymentButtonClick = mode => {
     logger.info(mode);
   };
 
+  /**
+   * This method is called once we get error or user interupted the venmo authorization flow.
+   */
   onVenmoPaymentButtonError = e => {
     logger.error(e);
   };
@@ -76,7 +101,7 @@ const mapStateToProps = state => {
     isMobile: selectors.getIsMobile(),
     mode,
     authorizationKey,
-    isNonceNotExpired: isVenmoNonceNotExpired(state),
+    isNonceNotExpired: selectors.isVenmoNonceNotExpired(state),
     venmoData: selectors.getVenmoData(state),
     venmoClientTokenData,
     allowNewBrowserTab: true,

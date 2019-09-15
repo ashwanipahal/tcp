@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { string, func, bool, shape, oneOf, arrayOf } from 'prop-types';
+import { string, func, bool, shape, oneOf } from 'prop-types';
 import { client, venmo, dataCollector } from 'braintree-web';
 import { getIconPath } from '@tcp/core/src/utils/utils';
 import withStyles from '@tcp/core/src/components/common/hoc/withStyles';
@@ -27,6 +27,19 @@ export class VenmoPaymentButton extends Component {
     this.venmoButtonRef = target;
   };
 
+  /**
+   * Disable venmo cta when venmo is already initiated
+   * @params {bool} flag - enable/disable venmo cta
+   */
+  disableVenmoButton = flag => {
+    if (this.venmoButtonRef) {
+      this.venmoButtonRef.disable = flag;
+    }
+  };
+
+  /**
+   * This method is to initiate a venmo app and fetch a nonce on successfull venmo app authorization
+   */
   fetchVenmoNonce = () => {
     const { setVenmoData } = this.props;
     // we must check to verify that remembered users are authenticated and OOS are not in bag
@@ -34,7 +47,10 @@ export class VenmoPaymentButton extends Component {
       .tokenize()
       .then(this.handleVenmoSuccess)
       .catch(this.handleVenmoError)
-      .finally(() => setVenmoData({ loading: false }));
+      .finally(() => {
+        setVenmoData({ loading: false });
+        this.disableVenmoButton(false);
+      });
   };
 
   // Logic will go here for in some cases, we may not want to display an error message
@@ -58,16 +74,20 @@ export class VenmoPaymentButton extends Component {
     } = this.props;
     setVenmoData({ loading: true, error: null });
     setVenmoPaymentInProgress(true);
-    if (venmoInstance && this.canCallVenmoApi()) {
+    if (venmoInstance && !isNonceNotExpired && this.canCallVenmoApi()) {
       this.venmoButtonRef.disable = true;
       this.fetchVenmoNonce();
-      this.venmoButtonRef.disable = false;
     } else {
       onVenmoPaymentButtonClick(mode, e);
       setVenmoData({ loading: false });
+      this.disableVenmoButton(false);
     }
   };
 
+  /**
+   * This callback method is called once venmo app authorization is successfull.
+   * @param {object} payload - response from the venmo authorization interface.
+   */
   handleVenmoSuccess = payload => {
     const { setVenmoData, mode, onVenmoPaymentButtonClick } = this.props;
     const successData = { ...payload, error: null, timestamp: Date.now() };
@@ -75,6 +95,12 @@ export class VenmoPaymentButton extends Component {
     onVenmoPaymentButtonClick(mode);
   };
 
+  /**
+   * This callback methos is called if we get any error or user is not authorized from the app.
+   * @param {object} code - error code from the venmo plugin
+   * @param {string} message - error message
+   * @param {string} name - name of the venmo user tring to authenticate
+   */
   handleVenmoError = ({ code, message, name }) => {
     const { setVenmoData, onVenmoPaymentButtonError } = this.props;
     const errorData = { nonce: '', error: { code, message, name } };
@@ -111,7 +137,7 @@ export class VenmoPaymentButton extends Component {
       this.setState({ hasVenmoError: false });
       setVenmoData({ loading: false });
       return;
-    } // TODO: We must defer this to prevent button from displaying.
+    }
     if (mode === modes.CLIENT_TOKEN && enabled) {
       if (authorizationKey) {
         this.setupVenmoInstance();
@@ -119,6 +145,9 @@ export class VenmoPaymentButton extends Component {
     }
   };
 
+  /**
+   * This method with instantiate the venmo button to commence authorization of the venmo app
+   */
   setupVenmoInstance = () => {
     const {
       authorizationKey: authorization,
@@ -178,21 +207,28 @@ export class VenmoPaymentButton extends Component {
     const venmoIcon = getIconPath('venmo-button');
     return (
       <div className={className}>
-        <button
-          type="button"
-          onClick={this.handleVenmoClick}
-          ref={this.setVenmoButtonRef}
-          className="venmo-button"
-          aria-label="Venmo Payment Button"
-        >
-          <img src={venmoIcon} alt="Venmo Payment Button" />
-        </button>
+        {enabled &&
+          isMobile &&
+          supportedByBrowser &&
+          (!hasVenmoError || mode === modes.PAYMENT_TOKEN) &&
+          (this.canCallVenmoApi() || mode === modes.PAYMENT_TOKEN) && (
+            <button
+              type="button"
+              onClick={this.handleVenmoClick}
+              ref={this.setVenmoButtonRef}
+              className="venmo-button"
+              aria-label="Venmo Payment Button"
+            >
+              <img src={venmoIcon} alt="Venmo Payment Button" />
+            </button>
+          )}
       </div>
     );
   }
 }
 
 VenmoPaymentButton.propTypes = {
+  className: string,
   enabled: bool,
   authorizationKey: string,
   mode: oneOf([modes.CLIENT_TOKEN, modes.PAYMENT_TOKEN]),
@@ -221,6 +257,7 @@ VenmoPaymentButton.propTypes = {
 };
 
 VenmoPaymentButton.defaultProps = {
+  className: '',
   enabled: false,
   authorizationKey: '',
   setVenmoData: noop,
@@ -233,7 +270,7 @@ VenmoPaymentButton.defaultProps = {
   onVenmoPaymentButtonClick: noop,
   onVenmoPaymentButtonError: noop,
   setVenmoPaymentInProgress: noop,
-  isNonceNotExpired: true,
+  isNonceNotExpired: false,
 };
 
 export default withStyles(VenmoPaymentButton, styles);
