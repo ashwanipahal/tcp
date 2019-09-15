@@ -14,6 +14,8 @@ import {
   addAddressGet,
   updateAddressPut,
 } from '../../../../common/organisms/AddEditAddress/container/AddEditAddress.saga';
+import CONSTANTS, { CHECKOUT_ROUTES } from '../Checkout.constants';
+import { isMobileApp } from '../../../../../utils';
 
 const {
   getIsPaymentDisabled,
@@ -174,23 +176,31 @@ function* submitBillingData(formData, address, loadUpdatedCheckoutValues) {
 
 export default function* submitBilling(payload = {}, loadUpdatedCheckoutValues) {
   try {
-    const { payload: formData = {} } = payload;
-    formData.phoneNumber = formData.phoneNumber || '';
-    const {
-      addressLine1: address1,
-      addressLine2: address2,
-      city,
-      country,
-      firstName,
-      lastName,
-      state,
-      zipCode: zip,
-    } = formData.address;
-    const address = { address1, address2, city, country, firstName, lastName, state, zip };
-    yield put(getSetIsBillingVisitedActn(true)); // flag that billing section was visited by the user
-    const isPaymentDisabled = yield select(getIsPaymentDisabled);
-    if (!isPaymentDisabled) {
-      yield call(submitBillingData, formData, address, loadUpdatedCheckoutValues);
+    // TODO need to remove as it is temp fix to deliver review page for app
+    const { payload: { navigation, ...formData } = {} } = payload;
+    if (!isMobileApp()) {
+      formData.phoneNumber = formData.phoneNumber || '';
+      const {
+        addressLine1: address1,
+        addressLine2: address2,
+        city,
+        country,
+        firstName,
+        lastName,
+        state,
+        zipCode: zip,
+      } = formData.address;
+      const address = { address1, address2, city, country, firstName, lastName, state, zip };
+      yield put(getSetIsBillingVisitedActn(true)); // flag that billing section was visited by the user
+      const isPaymentDisabled = yield select(getIsPaymentDisabled);
+      if (!isPaymentDisabled) {
+        yield call(submitBillingData, formData, address, loadUpdatedCheckoutValues);
+      }
+    }
+    if (!isMobileApp()) {
+      utility.routeToPage(CHECKOUT_ROUTES.reviewPage);
+    } else if (navigation) {
+      navigation.navigate(CONSTANTS.CHECKOUT_ROUTES_NAMES.CHECKOUT_REVIEW);
     }
   } catch (e) {
     // submitBillingError(store, e);
