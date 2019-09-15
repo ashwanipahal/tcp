@@ -11,6 +11,7 @@ import {
   getDescription,
   getRatingsProductId,
   getDefaultImage,
+  getCurrentCurrency,
 } from './ProductDetail.selectors';
 
 class ProductListingContainer extends React.PureComponent {
@@ -42,6 +43,7 @@ class ProductListingContainer extends React.PureComponent {
       longDescription,
       ratingsProductId,
       defaultImage,
+      currency,
       ...otherProps
     } = this.props;
     return (
@@ -52,6 +54,7 @@ class ProductListingContainer extends React.PureComponent {
         ratingsProductId={ratingsProductId}
         otherProps={otherProps}
         defaultImage={defaultImage}
+        currency={currency}
       />
     );
   }
@@ -66,6 +69,7 @@ function mapStateToProps(state) {
     ratingsProductId: getRatingsProductId(state),
     // This is just to check if the product is correct
     defaultImage: getDefaultImage(state),
+    currency: getCurrentCurrency(state),
   };
 }
 
@@ -89,6 +93,7 @@ ProductListingContainer.propTypes = {
     }),
   }).isRequired,
   defaultImage: PropTypes.string,
+  currency: PropTypes.string,
 };
 
 ProductListingContainer.defaultProps = {
@@ -97,6 +102,7 @@ ProductListingContainer.defaultProps = {
   longDescription: '',
   ratingsProductId: '',
   defaultImage: '',
+  currency: '',
 };
 
 export default withRouter(

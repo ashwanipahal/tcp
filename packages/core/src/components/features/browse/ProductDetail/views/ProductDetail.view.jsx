@@ -7,7 +7,13 @@ import Product from '../molecules/Product/views/Product.view';
 import FixedBreadCrumbs from '../../ProductListing/molecules/FixedBreadCrumbs/views';
 import ProductImages from '../../../../common/organisms/ProductImages';
 
-const ProductDetailView = ({ className, productDetails, longDescription, breadCrumbs }) => {
+const ProductDetailView = ({
+  className,
+  productDetails,
+  longDescription,
+  breadCrumbs,
+  currency,
+}) => {
   const productImagesProps = {
     isZoomEnabled: true,
     images: [
@@ -41,6 +47,7 @@ const ProductDetailView = ({ className, productDetails, longDescription, breadCr
     isThumbnailListVisible: true,
     productName: 'Girls Uniform Active Shorts',
   };
+
   return (
     <div className={className}>
       <Row>
@@ -63,7 +70,7 @@ const ProductDetailView = ({ className, productDetails, longDescription, breadCr
           className="product-detail-section"
           colSize={{ small: 6, medium: 4, large: 5 }}
         >
-          <Product productDetails={productDetails} />
+          <Product productDetails={productDetails} currencySymbol={currency} />
         </Col>
       </Row>
       <Row className="placeholder">
@@ -113,6 +120,7 @@ ProductDetailView.propTypes = {
   longDescription: PropTypes.string,
   breadCrumbs: PropTypes.shape({}),
   defaultImage: PropTypes.string,
+  currency: PropTypes.string,
 };
 
 ProductDetailView.defaultProps = {
@@ -121,6 +129,7 @@ ProductDetailView.defaultProps = {
   longDescription: '',
   breadCrumbs: {},
   defaultImage: '',
+  currency: '',
 };
 
 export default withStyles(ProductDetailView, ProductDetailStyle);
