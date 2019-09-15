@@ -6,21 +6,58 @@ import CheckoutProgressIndicator from '../../../molecules/CheckoutProgressIndica
 import CnCTemplate from '../../../../common/organism/CnCTemplate';
 import style from '../styles/ReviewPage.style.native';
 import CONSTANTS from '../../../Checkout.constants';
+import { BodyCopy } from '../../../../../../common/atoms';
 
-const { Container } = style;
+const { Container, TextSection, FooterTextContainer, FooterLink } = style;
 
 class ReviewPage extends React.PureComponent {
   static propTypes = {
     navigation: PropTypes.shape({}).isRequired,
     labels: PropTypes.shape({}).isRequired,
-    submitReview: PropTypes.func.isRequired,
+    orderHasShipping: PropTypes.bool.isRequired,
+    orderHasPickUp: PropTypes.bool.isRequired,
     availableStages: PropTypes.func.isRequired,
+    submitReview: PropTypes.func.isRequired,
+  };
+
+  renderFooter = () => {
+    const {
+      labels: {
+        applyConditionPreText,
+        applyConditionTermsText,
+        applyConditionAndText,
+        applyConditionPolicyText,
+      },
+    } = this.props;
+
+    return (
+      <FooterTextContainer>
+        <BodyCopy mobilefontFamily={['secondary']} fontSize="fs12" text={applyConditionPreText} />
+        <FooterLink>{applyConditionTermsText}</FooterLink>
+        <BodyCopy mobilefontFamily={['secondary']} fontSize="fs12" text={applyConditionAndText} />
+        <FooterLink>{applyConditionPolicyText}</FooterLink>
+      </FooterTextContainer>
+    );
   };
 
   render() {
-    const { navigation, labels, submitReview, availableStages } = this.props;
+    const {
+      navigation,
+      labels,
+      submitReview,
+      availableStages,
+      orderHasShipping,
+      orderHasPickUp,
+    } = this.props;
 
-    const { header, backLinkBilling, nextSubmitText } = labels;
+    const {
+      header,
+      backLinkBilling,
+      nextSubmitText,
+      pickupSectionTitle,
+      shippingSectionTitle,
+      billingSectionTitle,
+    } = labels;
 
     return (
       <>
@@ -32,6 +69,9 @@ class ReviewPage extends React.PureComponent {
         <ScrollView>
           <Container>
             <CheckoutSectionTitleDisplay title={header} />
+            {!!orderHasPickUp && <TextSection>{pickupSectionTitle}</TextSection>}
+            {!!orderHasShipping && <TextSection>{shippingSectionTitle}</TextSection>}
+            <TextSection>{billingSectionTitle}</TextSection>
           </Container>
           <CnCTemplate
             navigation={navigation}
@@ -42,6 +82,7 @@ class ReviewPage extends React.PureComponent {
             onBackLinkPress={() =>
               navigation.navigate(CONSTANTS.CHECKOUT_ROUTES_NAMES.CHECKOUT_REVIEW)
             }
+            footerBody={this.renderFooter()}
           />
         </ScrollView>
       </>

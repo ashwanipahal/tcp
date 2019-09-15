@@ -14,7 +14,7 @@ const StyledTouchableOpacity = styled.TouchableOpacity`
 
 const ModalHeading = styled.Text`
   padding-bottom: ${props => props.theme.spacing.ELEM_SPACING.SM};
-  width: 80%;
+  width: ${props => (props.fullWidth ? '100%' : '80%')};
 `;
 
 const LineWrapper = styled.View`
