@@ -5,14 +5,42 @@ import withStyles from '../../../../common/hoc/withStyles';
 import ProductDetailStyle from '../ProductDetail.style';
 import Product from '../molecules/Product/views/Product.view';
 import FixedBreadCrumbs from '../../ProductListing/molecules/FixedBreadCrumbs/views';
+import ProductImages from '../../../../common/organisms/ProductImages';
 
-const ProductDetailView = ({
-  className,
-  productDetails,
-  longDescription,
-  breadCrumbs,
-  defaultImage,
-}) => {
+const ProductDetailView = ({ className, productDetails, longDescription, breadCrumbs }) => {
+  const productImagesProps = {
+    isZoomEnabled: true,
+    images: [
+      {
+        isOnModalImage: false,
+        iconSizeImageUrl:
+          'https://test4.childrensplace.com/wcsstore/GlobalSAS/images/tcp/products/125/2082931_IV.jpg',
+        listingSizeImageUrl:
+          'https://test4.childrensplace.com/wcsstore/GlobalSAS/images/tcp/products/380/2082931_IV.jpg',
+        regularSizeImageUrl:
+          'https://test4.childrensplace.com/wcsstore/GlobalSAS/images/tcp/products/500/2082931_IV.jpg',
+        bigSizeImageUrl:
+          'https://test4.childrensplace.com/wcsstore/GlobalSAS/images/tcp/products/900/2082931_IV.jpg',
+        superSizeImageUrl:
+          'https://test4.childrensplace.com/wcsstore/GlobalSAS/images/tcp/products/900/2082931_IV.jpg',
+      },
+      {
+        isOnModalImage: false,
+        iconSizeImageUrl:
+          'https://test4.childrensplace.com/wcsstore/GlobalSAS/images/tcp/products/125/2082931_IV-1.jpg',
+        listingSizeImageUrl:
+          'https://test4.childrensplace.com/wcsstore/GlobalSAS/images/tcp/products/380/2082931_IV-1.jpg',
+        regularSizeImageUrl:
+          'https://test4.childrensplace.com/wcsstore/GlobalSAS/images/tcp/products/500/2082931_IV-1.jpg',
+        bigSizeImageUrl:
+          'https://test4.childrensplace.com/wcsstore/GlobalSAS/images/tcp/products/900/2082931_IV-1.jpg',
+        superSizeImageUrl:
+          'https://test4.childrensplace.com/wcsstore/GlobalSAS/images/tcp/products/900/2082931_IV-1.jpg',
+      },
+    ],
+    isThumbnailListVisible: true,
+    productName: 'Girls Uniform Active Shorts',
+  };
   return (
     <div className={className}>
       <Row>
@@ -27,14 +55,14 @@ const ProductDetailView = ({
         </Col>
       </Row>
       <Row>
-        <Col colSize={{ small: 6, medium: 8, large: 1 }}>
-          <div className="side-tile">MINI TILE PDP</div>
+        <Col className="product-image-wrapper" colSize={{ small: 6, medium: 4, large: 7 }}>
+          <ProductImages {...productImagesProps} />
         </Col>
-        <Col colSize={{ small: 6, medium: 8, large: 6 }}>
-          <div className="product-image-carousel">PRODUCT IMAGE CAROUSEL SECTION</div>
-          <img src={defaultImage} alt="product" />
-        </Col>
-        <Col colSize={{ small: 6, medium: 8, large: 5 }}>
+        <Col
+          id="productDetailsSection"
+          className="product-detail-section"
+          colSize={{ small: 6, medium: 4, large: 5 }}
+        >
           <Product productDetails={productDetails} />
         </Col>
       </Row>

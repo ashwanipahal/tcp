@@ -213,7 +213,7 @@ const ButtonStyles = css`
     border-radius: 25px;
   `
       : ``}
-  ${props => (props.inheritedStyles ? props.inheritedStyles : '')};
+
   ${props =>
     props.link
       ? `
@@ -238,6 +238,7 @@ const ButtonStyles = css`
       }
   `
       : ``}
+      ${props => (props.inheritedStyles ? props.inheritedStyles : '')};
 `;
 
 export default ButtonStyles;

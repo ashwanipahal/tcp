@@ -1,0 +1,21 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Thumbnail component should renders correctly 1`] = `
+<li
+  className=""
+  isSelected={true}
+>
+  <Styled(Anchor)
+    aria-label="Thumbnail image 1 of 2. Click or Enter on this Icon to display large view of the Image"
+    className="image-wrapper selected-image"
+    onClick={[Function]}
+  >
+    <Styled(Image)
+      alt=""
+      itemProp="thumbnailUrl"
+      src=""
+      title=""
+    />
+  </Styled(Anchor)>
+</li>
+`;
