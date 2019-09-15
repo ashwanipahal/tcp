@@ -2,20 +2,10 @@
 import React from 'react';
 import { Image } from 'react-native';
 import { LazyloadImage } from 'react-native-lazyload-deux';
-
+import PropTypes from 'prop-types';
 import withStyles from '../../../hoc/withStyles.native';
 import style from '../DamImage.styles';
 import { cropImageUrl } from '../../../../../utils/index.native';
-
-type Props = {
-  source: string,
-  url: string,
-  crop: string,
-  imgConfig: string,
-  alt: string,
-  host: string,
-  alt: string,
-};
 
 /**
  * DamImage returns two types of images
@@ -41,6 +31,24 @@ const DamImage = (props: Props) => {
       source={{ uri: cropImageUrl(urlVal, cropVal, imgConfigsVal) }}
     />
   );
+};
+
+DamImage.propTypes = {
+  source: PropTypes.string,
+  crop: PropTypes.string,
+  imgConfig: PropTypes.string,
+  url: PropTypes.string,
+  host: PropTypes.string,
+  alt: PropTypes.string,
+};
+
+DamImage.defaultProps = {
+  source: '',
+  crop: '',
+  imgConfig: '',
+  url: '',
+  host: '',
+  alt: '',
 };
 
 export default withStyles(DamImage, style);

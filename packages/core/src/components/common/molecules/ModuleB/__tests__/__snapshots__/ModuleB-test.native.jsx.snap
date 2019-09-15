@@ -98,8 +98,11 @@ exports[`ModuleNVanilla should match snapshot 1`] = `
     >
       <Styled(DamImage)
         alt="Graphic Tees"
+        crop=""
         height={413}
         host="lazyload-home"
+        imgConfig=""
+        source=""
         url="https://test5.childrensplace.com/image/upload/c_fill,g_face:center,q_auto:best,w_1410/ecom/assets/content/gym/us/home/modA/gym_hp_090519_us_hwlhjb.png"
         width={726}
       />
