@@ -25,12 +25,8 @@ const HomePageView = dynamic({
       <ModuleB {...mock} />,
       <GetCandid />,
       <Recommendations
-        priceOnly
-        buttonConfig={{
-          url: '/test',
-          title: 'test',
-          text: 'Shop Now',
-        }}
+        // priceOnly
+        showButton
       />,
     ];
   },

@@ -5,10 +5,10 @@ exports[`N component renders correctly 1`] = `
   className="test class"
 >
   <Styled(Heading)
-    className="recommendations-header"
+    className="recommendations-header "
     color="text.primary"
     component={null}
-    dataLocator=""
+    dataLocator="moduleO_header_text"
     textAlign="center"
     variant="h4"
   >
@@ -37,8 +37,8 @@ exports[`N component renders correctly 1`] = `
         carouselConfig={
           Object {
             "autoplay": true,
-            "customArrowLeft": "/static/images/right-carousel-carrot.svg",
-            "customArrowRight": "/static/images/right-carousel-carrot.svg",
+            "customArrowLeft": "/static/images/left-carousel-caret.svg",
+            "customArrowRight": "/static/images/right-carousel-caret.svg",
           }
         }
         inheritedStyles={
@@ -329,55 +329,62 @@ exports[`N component renders correctly 1`] = `
             "dots": false,
             "dotsClass": "slick-dots",
             "fade": false,
+            "nextArrow": <button
+              className="slick-prev"
+              data-locator="moduleO_right_arrow"
+              type="button"
+            />,
+            "prevArrow": <button
+              className="slick-prev"
+              data-locator="moduleO_left_arrow"
+              type="button"
+            />,
             "responsive": Array [
               Object {
                 "breakpoint": 1199,
                 "settings": Object {
-                  "slidesToShow": 3,
+                  "slidesToShow": 3.25,
                 },
               },
               Object {
                 "breakpoint": 767,
                 "settings": Object {
                   "arrows": false,
-                  "slidesToShow": 1,
+                  "slidesToShow": 2.3,
                 },
               },
             ],
+            "slideToScroll": 1,
             "slidesToShow": 4,
             "speed": 1000,
             "swipe": true,
           }
         }
       >
-        <Styled(Anchor)
-          className="recommended_product"
-          key="Girls Sequin Unicorn Parka Jacket_0"
-          to="/us/p/Girls-Long-Sleeve-Sequin-Unicorn-Faux-Fur-Lined-Hooded-Parka-Jacket-3003346-32DE"
-        >
-          <div
-            className="recommended_product--image"
-          >
-            <Styled(Image)
-              src="https://www.childrensplace.com/wcsstore/GlobalSAS/images/tcp/products/500/3003346_32DE.jpg"
-            />
-          </div>
-          <div
-            className="recommended_product--title"
-          >
-            Girls Sequin Unicorn Parka Jacket
-          </div>
-          <div
-            className="recommended_product--offerPrice"
-          >
-            74.95
-          </div>
-          <div
-            className="recommended_product--listPrice"
-          >
-            Was: 74.95
-          </div>
-        </Styled(Anchor)>
+        <Styled(ModuleO)
+          className="test class product-list "
+          isPerfectBlock={true}
+          item={
+            Object {
+              "imagePath": "https://www.childrensplace.com/wcsstore/GlobalSAS/images/tcp/products/500/3003346_32DE.jpg",
+              "listPrice": "74.95",
+              "name": "Girls Sequin Unicorn Parka Jacket",
+              "offerPrice": "74.95",
+              "pdpUrl": "/us/p/Girls-Long-Sleeve-Sequin-Unicorn-Faux-Fur-Lined-Hooded-Parka-Jacket-3003346-32DE",
+            }
+          }
+          key="recommended_products_0"
+          productsBlock={
+            Object {
+              "imagePath": "https://www.childrensplace.com/wcsstore/GlobalSAS/images/tcp/products/500/3003346_32DE.jpg",
+              "listPrice": "74.95",
+              "name": "Girls Sequin Unicorn Parka Jacket",
+              "offerPrice": "74.95",
+              "pdpUrl": "/us/p/Girls-Long-Sleeve-Sequin-Unicorn-Faux-Fur-Lined-Hooded-Parka-Jacket-3003346-32DE",
+            }
+          }
+          sequenceNumber={1}
+        />
       </Styled(Carousel)>
     </Styled(Col)>
   </Styled(Row)>

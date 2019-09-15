@@ -24,10 +24,20 @@ class Recommendations extends Component {
       onPickUpOpenClick,
       labels,
       priceOnly,
-      buttonConfig,
+      showButton,
+      ctaText,
+      ctaTitle,
+      ctaUrl,
     } = this.props;
 
     const priceOnlyClass = priceOnly ? 'price-only' : '';
+
+    config.CAROUSEL_OPTIONS.prevArrow = (
+      <button type="button" data-locator="moduleO_left_arrow" className="slick-prev" />
+    );
+    config.CAROUSEL_OPTIONS.nextArrow = (
+      <button type="button" data-locator="moduleO_right_arrow" className="slick-prev" />
+    );
 
     return (
       <section className={className}>
@@ -35,6 +45,7 @@ class Recommendations extends Component {
           variant="h4"
           className={`recommendations-header ${priceOnlyClass}`}
           textAlign="center"
+          dataLocator="moduleO_header_text"
         >
           {youMayAlsoLikeLabel}
         </Heading>
@@ -84,18 +95,20 @@ class Recommendations extends Component {
             </Carousel>
           </Col>
         </Row>
-        {buttonConfig && (
+        {showButton && (
           <div className="recommendaton-cta-container">
             <ButtonCTA
               className="recommendation-cta"
               uniqueKey="recommendation-button"
+              dataLocator={{
+                cta: 'moduleO_cta_btn',
+              }}
               ctaInfo={{
                 ctaVariation: 'fixed-width',
                 link: {
-                  url: buttonConfig.url,
-                  target: buttonConfig.target,
-                  title: buttonConfig.title,
-                  text: buttonConfig.text,
+                  url: ctaUrl,
+                  title: ctaTitle,
+                  text: ctaText,
                 },
               }}
             />
@@ -115,12 +128,18 @@ Recommendations.propTypes = {
   onPickUpOpenClick: PropTypes.func.isRequired,
   labels: PropTypes.shape({}).isRequired,
   priceOnly: PropTypes.bool,
-  buttonConfig: PropTypes.shape({}),
+  showButton: PropTypes.bool,
+  ctaText: PropTypes.string,
+  ctaTitle: PropTypes.string,
+  ctaUrl: PropTypes.string,
 };
 
 Recommendations.defaultProps = {
   priceOnly: false,
-  buttonConfig: false,
+  showButton: false,
+  ctaText: '',
+  ctaTitle: '',
+  ctaUrl: '',
 };
 
 export { Recommendations as RecommendationsVanilla };
