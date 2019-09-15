@@ -24,9 +24,15 @@ class PaginationDots extends React.PureComponent {
     const dots = [];
 
     for (let i = 0; i < numberOfDots; i += 1) {
+      const accState = i === selectedIndex ? 'selected' : '';
       dots.push(
         <DotTouchableOpacity key={i} onPress={() => this.onPageChange(i)}>
           <DotComp
+            // eslint-disable-next-line
+            accessibilityStates={[accState]}
+            accessibilityHint="pagination"
+            accessibilityRole="button"
+            accessibilityLabel={`page${i + 1}`}
             selected={i === selectedIndex}
             size={size}
             selectedSize={selectedSize}

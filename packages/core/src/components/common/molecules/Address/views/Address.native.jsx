@@ -1,4 +1,5 @@
 import React from 'react';
+import PropTypes from 'prop-types';
 import { View } from 'react-native';
 import BodyCopy from '../../../atoms/BodyCopy';
 
@@ -107,8 +108,8 @@ const Address = ({
   customStyle,
   showName,
   showDefaultText,
-}: Props) =>
-  address && (
+}: Props) => {
+  return address ? (
     <View>
       {showName && getNameFromAddress(address, customStyle, showDefaultText)}
       {address.addressLine
@@ -145,7 +146,14 @@ const Address = ({
         />
       )}
     </View>
-  );
+  ) : null;
+};
+
+Address.propTypes = {
+  showName: PropTypes.bool,
+  customStyle: PropTypes.shape({}),
+  showDefaultText: PropTypes.bool,
+};
 
 Address.defaultProps = {
   showPhone: true,
