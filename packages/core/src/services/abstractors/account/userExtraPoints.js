@@ -25,13 +25,13 @@ export const getExtraPointsActivityList = () => {
   // return promise
   return executeStatefulAPICall(payload)
     .then(res => {
-      const { activityList } = res.body.activityList;
+      const { activityList } = res.body;
       let extraPoints = [];
       let filteredExtraPoints = [];
 
       // parsing api respone and pushing into extraPoints
       extraPoints =
-        activityList &&
+        res.body.activityList &&
         activityList.map(item => {
           let activity;
           let extraPointsResult = {};
