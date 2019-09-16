@@ -119,6 +119,10 @@ const getUnavailableCount = state =>
 
 const getOOSCount = state => getFilteredItems(state, type => type === AVAILABILITY.SOLDOUT).size;
 
+const getCurrentOrderId = state => {
+  return state.CartPageReducer.getIn(['orderDetails', 'orderId']) || 0;
+};
+
 export default {
   getBagPageLabels,
   getTotalItems,
@@ -136,4 +140,5 @@ export default {
   getDetailsContentTcpId,
   getGiftServicesContentTcpId,
   getGiftServicesContentGymId,
+  getCurrentOrderId,
 };

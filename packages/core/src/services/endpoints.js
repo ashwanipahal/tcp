@@ -256,5 +256,13 @@ const endpoints = {
     URI: PRODUCTS_URI.PRODUCTS_AUTOSUGGEST,
     unbxd: true,
   },
+  paypalLookUp: {
+    method: 'GET',
+    URI: 'v2/checkout/TCPPayPalCCLookUpRESTCmd',
+  },
+  paypalAuth: {
+    method: 'GET',
+    URI: 'v2/checkout/TCPPayPalCCAuthenticationRESTCmd',
+  },
 };
 export default endpoints;

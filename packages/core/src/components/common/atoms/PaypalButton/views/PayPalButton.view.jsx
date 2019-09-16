@@ -24,30 +24,7 @@ class PayPalButton extends React.Component {
       payment: () => {
         return '';
       },
-      onAuthorize: () => {
-        // const {
-        //   tcpOrderId,
-        //   centinelRequestPage,
-        //   centinelPayload,
-        //   centinelOrderId,
-        // } = getPaypalPaymentSettings(this.store.getState());
-        // return this.vendorServiceAbstractors
-        //   .paypalAuthorization(tcpOrderId, centinelRequestPage, centinelPayload, centinelOrderId)
-        //   .then(() => {
-        //     getRoutingOperator(this.store).gotoPage(
-        //       PAGES.checkout,
-        //       { queryValues: { [PAYPAL_REDIRECT_PARAM]: 'true' } },
-        //       true
-        //     );
-        //   })
-        //   .catch(err => {
-        //     getRoutingOperator(this.store).gotoPage(
-        //       PAGES.cart,
-        //       { queryValues: { error: err.errorCodes } },
-        //       true
-        //     );
-        //   });
-      },
+      onAuthorize: () => {},
       // onCancel: this.clearPaypalSettings,
       onError: () => {
         throw new Error();
@@ -58,11 +35,13 @@ class PayPalButton extends React.Component {
   };
 
   renderPayPalButton = () => {
-    const { containerId } = this.props;
+    const { containerId, height, initalizePayPalButton, isQualifedOrder } = this.props;
     const element = document.querySelector(`#${containerId}`);
     if (element && !element.hasChildNodes()) {
-      this.initializePayPalButton({
+      initalizePayPalButton({
         containerId,
+        height,
+        isQualifedOrder,
       });
     }
   };
@@ -90,6 +69,7 @@ PayPalButton.defaultProps = {
     tagline: false,
     height: 48,
   },
+  height: 48,
 };
 
 PayPalButton.propTypes = {
@@ -97,6 +77,9 @@ PayPalButton.propTypes = {
   locale: PropTypes.string,
   style: PropTypes.shape,
   containerId: PropTypes.string,
+  height: PropTypes.number,
+  initalizePayPalButton: PropTypes.func.isRequired,
+  isQualifedOrder: PropTypes.bool.isRequired,
 };
 
 export default PayPalButton;

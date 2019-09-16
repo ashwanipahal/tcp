@@ -49,6 +49,15 @@ const initialState = fromJS({
   },
 });
 
+function paypalReducer(checkout, action) {
+  switch (action.type) {
+    case CheckoutConstants.CHECKOUT_ORDER_OPTIONS_SET_PAYPAL_PAYMENT:
+      return checkout.setIn(['options', 'paypalPaymentSettings'], action.paypalPaymentSettings);
+    default:
+      return checkout;
+  }
+}
+
 function uiFlagReducer(checkout, action) {
   switch (action.type) {
     // case 'CHECKOUT_FLAGS_SET_STAGE':
@@ -106,7 +115,7 @@ function uiFlagReducer(checkout, action) {
     //    return uiFlags;
     //  }
     default:
-      return checkout;
+      return paypalReducer(checkout, action);
   }
 }
 
@@ -157,10 +166,11 @@ export default function CheckoutReducer(state = initialState, action) {
     //   );
     case CheckoutConstants.CHECKOUT_ORDER_OPTIONS_SET_SHIPPING:
       return checkout.setIn(['options', 'shippingMethods'], action.shippingMethods);
+    // case CheckoutConstants.CHECKOUT_ORDER_OPTIONS_SET_PAYPAL_PAYMENT:
+    //   return checkout.setIn(['options', 'shippingMethods'], action.shippingMethods);
     // case 'CHECKOUT_ORDER_OPTIONS_SET_GIFT_WRAP':
     //   return merge(orderOptions, { giftWrapOptions: action.giftWrapOptions });
-    // case 'CHECKOUT_ORDER_OPTIONS_SET_PAYPAL_PAYMENT':
-    //   return merge(orderOptions, { paypalPaymentSettings: action.paypalPaymentSettings });
+
     // case 'CHECKOUT_ORDER_OPTIONS_SET_INTL_URL':
     //   return merge(orderOptions, { internationalUrl: action.internationalUrl });
     default:

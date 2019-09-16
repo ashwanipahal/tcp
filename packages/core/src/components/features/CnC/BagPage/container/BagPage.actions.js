@@ -105,6 +105,20 @@ const routeForCheckout = () => {
   };
 };
 
+const paypalAuthorization = payload => {
+  return {
+    type: BAGPAGE_CONSTANTS.AUTHORIZATION_PAYPAL_CHECKOUT,
+    payload,
+  };
+};
+
+const startPaypalCheckout = payload => {
+  return {
+    type: BAGPAGE_CONSTANTS.START_PAYPAL_CHECKOUT,
+    payload,
+  };
+};
+
 const initActions = [loadComponentLabelsData({ category: LABELS.checkout })];
 
 export default {
@@ -124,4 +138,6 @@ export default {
   setItemUnavailable,
   routeForCheckout,
   initActions,
+  paypalAuthorization,
+  startPaypalCheckout,
 };
