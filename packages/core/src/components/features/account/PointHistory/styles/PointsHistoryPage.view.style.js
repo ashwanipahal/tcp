@@ -1,12 +1,10 @@
 import { css } from 'styled-components';
 
 const styles = css`
-  .historySectionSeparator {
+  .history-section-separator {
     border-bottom: 1px solid ${props => props.theme.colors.BORDER.NORMAL};
   }
-  .caps-heading {
-    text-transform: uppercase;
-  }
+
   .point-history-content {
     font-family: ${props => props.theme.fonts.secondaryFontFamily};
     font-size: ${props => props.theme.typography.fontSizes.fs16};

@@ -30,9 +30,9 @@ export const PointsHistoryPageView = props => {
         </Anchor>
       </BodyCopy>
       <FormPageHeading
-        className="elem-mb-XL caps-heading"
-        heading={labels.lbl_common_points_history}
-        data-locator="birthdaySavingsLbl"
+        className="elem-mb-XL"
+        heading={labels.lbl_common_points_history_heading}
+        data-locator="historyPointsLbl"
       />
       <BodyCopy component="div" className="elem-mb-XXL elem-mt-XXL elem-pb-MED">
         <BodyCopy
@@ -46,7 +46,10 @@ export const PointsHistoryPageView = props => {
         </BodyCopy>
         <PointsHistoryList view="edit" labels={labels} showFullHistory />
       </BodyCopy>
-      <BodyCopy component="div" className="historySectionSeparator elem-mb-XXL elem-mt-XXL" />
+      <BodyCopy
+        component="div"
+        className="history-section-separator hide-on-mobile elem-mb-XXL elem-mt-XXL"
+      />
       <HistoryPointsRichTextComponent content={richTextContent} />
     </BodyCopy>
   );

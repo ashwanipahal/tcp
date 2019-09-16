@@ -36,8 +36,8 @@ exports[`PointHistoryPage component should renders correctly 1`] = `
     </Styled(Anchor)>
   </Styled(BodyCopy)>
   <Styled(FormPageHeading)
-    className="elem-mb-XL caps-heading"
-    data-locator="birthdaySavingsLbl"
+    className="elem-mb-XL"
+    data-locator="historyPointsLbl"
   />
   <Styled(BodyCopy)
     className="elem-mb-XXL elem-mt-XXL elem-pb-MED"
@@ -68,7 +68,7 @@ exports[`PointHistoryPage component should renders correctly 1`] = `
     />
   </Styled(BodyCopy)>
   <Styled(BodyCopy)
-    className="historySectionSeparator elem-mb-XXL elem-mt-XXL"
+    className="history-section-separator hide-on-mobile elem-mb-XXL elem-mt-XXL"
     color="text.primary"
     component="div"
     fontFamily="primary"
