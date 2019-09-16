@@ -256,5 +256,9 @@ const endpoints = {
     URI: PRODUCTS_URI.PRODUCTS_AUTOSUGGEST,
     unbxd: true,
   },
+  getStoreandProductInventoryInfo: {
+    method: 'GET',
+    URI: 'v2/vendor/getStoreAndProductInventoryInfo',
+  },
 };
 export default endpoints;

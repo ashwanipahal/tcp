@@ -29,6 +29,11 @@ export default css`
   }
   .dropdown-button {
     background: ${props => props.theme.colorPalette.gray[300]};
+
+    &.is-open {
+      border-bottom-left-radius: 0;
+      border-bottom-right-radius: 0;
+    }
   }
   .dropdown-button:hover,
   .dropdown-button:focus {

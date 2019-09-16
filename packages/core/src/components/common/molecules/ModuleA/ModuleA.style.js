@@ -7,7 +7,6 @@ const StyledLinkText = styled(LinkText)`
 
   .link-text {
     margin-bottom: 0;
-    font-size: ${props => props.theme.typography.fontSizes.fs48};
   }
 `;
 

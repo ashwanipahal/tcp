@@ -12,6 +12,7 @@ import ChangePassword from '../ChangePassword';
 import AddEditPersonalInformationContainer from '../AddEditPersonalInformation';
 import AboutYouInformationContainer from '../AboutYouInformation';
 import BirthdaySavingsPage from '../BirthdaySavingsPage';
+import PointHistoryPage from '../PointHistory';
 
 const AccountComponentMapping = {
   'address-book': AddressBook,
@@ -30,6 +31,7 @@ const AccountComponentMapping = {
   'birthday-savings': BirthdaySavingsPage,
   'edit-mailing-address': MailingInformationContainer,
   'edit-aboutyou-info': AboutYouInformationContainer,
+  'points-history': PointHistoryPage,
 };
 
 export default AccountComponentMapping;

@@ -4,7 +4,7 @@ import { resetUserInfo } from '../../User/container/User.actions';
 import { closeOverlayModal } from '../../../OverlayModal/container/OverlayModal.actions';
 import { routerPush, isMobileApp, scrollPage } from '../../../../../utils';
 import { LogoutApplication } from '../../../../../services/abstractors/account';
-import { resetWalletAppState } from './LogOut.actions';
+import { resetWalletAppState } from '../../../CnC/common/organism/CouponAndPromos/container/Coupon.actions';
 
 export function* logoutSaga() {
   try {
