@@ -156,7 +156,7 @@ export const bodyCopyStyles = {
       {...props}
     />
   ),
-  text_normal_gray: props => (
+  medium_text_regular: props => (
     <BodyCopy
       fontSize="fs20"
       color="gray.900"
@@ -164,10 +164,12 @@ export const bodyCopyStyles = {
       fontWeight="regular"
       textAlign="center"
       letterSpacing="ls2"
-      lineHeight="40px"
+      lineHeight="20px"
       {...props}
     />
   ),
+
+  percentage_all_wrapped_normal: props => <PercentageAllWrappedNormal {...props} />,
 };
 
 /**
@@ -213,7 +215,57 @@ const PromoBanner = (props: Props) => {
 
 /**
  * This function return the Promobanner Percentage Style
- * Color is 'White' and Split by the '%' key .
+ * Color is 'Black' and Split by the space ' ' key. Font size is also small.
+ */
+const PercentageAllWrappedNormal = (props: PercentageStyleProps) => {
+  const { text } = props;
+
+  const strArray = text && text.split(' ');
+  const containerStyle = { marginTop: 5 };
+  const bodyCopyStyle = { height: 24, width: 28, marginTop: 0 };
+  const bodyCopyStyle1 = { height: 38, marginTop: 0 };
+  const bodyCopyStyle2 = { height: 20 };
+
+  return (
+    <Container style={containerStyle}>
+      <BodyCopy
+        fontSize="fs48"
+        fontWeight="black"
+        color="text.primary"
+        fontFamily="primary"
+        textAlign="center"
+        lineHeight="48px"
+        style={bodyCopyStyle1}
+        text={strArray && strArray[0]}
+      />
+      <ContainerView>
+        <BodyCopy
+          fontSize="fs28"
+          fontWeight="black"
+          color="text.primary"
+          fontFamily="primary"
+          lineHeight="28px"
+          text={strArray && strArray[1]}
+          style={bodyCopyStyle}
+        />
+        <BodyCopy
+          fontSize="fs18"
+          fontWeight="black"
+          color="text.primary"
+          fontFamily="primary"
+          textAlign="center"
+          lineHeight="18px"
+          text={strArray && strArray[2]}
+          style={bodyCopyStyle2}
+        />
+      </ContainerView>
+    </Container>
+  );
+};
+
+/**
+ * This function return the Promobanner Percentage Style
+ * Color is 'White' and Split by the space ' ' key .
  */
 const PercentageStyle = (props: PercentageStyleProps) => {
   const { text } = props;
@@ -260,7 +312,7 @@ const PercentageStyle = (props: PercentageStyleProps) => {
 
 /**
  * This function return the Promobanner Percentage Style
- * Color is 'Pink' and Split by the '%' key .
+ * Color is 'Pink' and Split by the space ' ' key .
  */
 const PercentagePinkStyle = (props: PercentageStyleProps) => {
   const { text } = props;

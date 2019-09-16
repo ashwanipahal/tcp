@@ -5,7 +5,6 @@ import ApplyCardLayoutView from '../views/ApplyCardLayout.View';
 import { fetchModuleX, submitInstantCardApplication } from './ApplyCard.actions';
 import { isPlccUser } from '../../../account/User/container/User.selectors';
 import { getUserProfileData, getUserId, getBagItemsSize, isGuest } from './ApplyCard.selectors';
-import { routerPush } from '../../../../../utils';
 import AddressVerification from '../../../../common/organisms/AddressVerification/container/AddressVerification.container';
 import { verifyAddress } from '../../../../common/organisms/AddressVerification/container/AddressVerification.actions';
 import BAG_PAGE_ACTIONS from '../../../CnC/BagPage/container/BagPage.actions';
@@ -112,9 +111,6 @@ class ApplyCardLayoutContainer extends React.Component {
       profileInfo,
     } = this.props;
     const { showAddEditAddressForm } = this.state;
-    if (plccUser) {
-      routerPush('/', '/place-card');
-    }
     return (
       <React.Fragment>
         <ApplyCardLayoutView

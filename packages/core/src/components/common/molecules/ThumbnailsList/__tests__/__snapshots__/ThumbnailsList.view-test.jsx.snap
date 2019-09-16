@@ -1,0 +1,36 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`ThumbnailsList component should renders correctly 1`] = `
+<ul>
+  <li>
+    <Styled(Thumbnail)
+      image={
+        Object {
+          "id": 0,
+          "name": undefined,
+          "thumbnailPath": undefined,
+        }
+      }
+      index={0}
+      isSelected={true}
+      onClick={[MockFunction]}
+      totalCount={2}
+    />
+  </li>
+  <li>
+    <Styled(Thumbnail)
+      image={
+        Object {
+          "id": 1,
+          "name": undefined,
+          "thumbnailPath": undefined,
+        }
+      }
+      index={1}
+      isSelected={false}
+      onClick={[MockFunction]}
+      totalCount={2}
+    />
+  </li>
+</ul>
+`;
