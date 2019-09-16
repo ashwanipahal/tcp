@@ -33,13 +33,12 @@ exports[`Detail Coupon Modal should render correctly 1`] = `
       data-locator="couponDetailModal_applied_BarCode"
     >
       <Styled(BodyStyle)
-        className="modalbarcode"
+        className="elem-mt-MED elem-mb-MED"
         component="div"
       >
         <Barcode
           background="#ffffff"
           barcodeId="Y00105578"
-          className="elem-mt-MED elem-mb-MED"
           displayValue={true}
           font="Nunito"
           fontOptions=""
@@ -86,7 +85,9 @@ exports[`Detail Coupon Modal should render correctly 1`] = `
       data-locator="couponDetailModal_applied_LongDesc"
       fontFamily="secondaryFontFamily"
     >
-      $10 OFF On $50
+      <Styled(RichText)
+        richTextHtml="$10 OFF On $50"
+      />
     </Styled(BodyStyle)>
     <Styled(BodyStyle)
       className="couponModal_modalShortDesc"

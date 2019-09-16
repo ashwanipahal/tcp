@@ -68,12 +68,6 @@ const CouponDetailModalStyle = css`
       }
     }
   }
-
-  .modalbarcode {
-    margin-top: ${props => props.theme.spacing.ELEM_SPACING.MED};
-    margin-bottom: ${props => props.theme.spacing.ELEM_SPACING.MED};
-  }
-
   .couponModal_print {
     text-align: center;
   }
