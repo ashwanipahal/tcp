@@ -5,5 +5,5 @@ export const getSflMaxCount = state => {
 };
 
 export const getSaveForLaterSwitch = state => {
-  return parseBoolean(state.session.getIn(['siteDetails', 'IS_SAVE_FOR_LATER_ENABLED']) || true);
+  return parseBoolean(state.session.getIn(['siteDetails', 'IS_SAVE_FOR_LATER_ENABLED']));
 };
