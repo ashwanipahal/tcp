@@ -1,3 +1,4 @@
+/* istanbul ignore file */
 import { parseDate } from './parseDate';
 import toTimeString from './formatTime';
 

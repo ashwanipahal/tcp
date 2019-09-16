@@ -1,3 +1,4 @@
+/* istanbul ignore file */
 const toTimeString = est => {
   let hh = est.getHours();
   let mm = est.getMinutes();

@@ -1,5 +1,5 @@
-import { call, takeLatest, put, select } from 'redux-saga/effects';
 /* istanbul ignore file */
+import { call, takeLatest, put, select } from 'redux-saga/effects';
 import { validateReduxCache } from '../../../../utils/cache.util';
 import STORE_LOCATOR_CONSTANTS from './StoreLocator.constants';
 import {

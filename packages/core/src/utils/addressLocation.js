@@ -1,3 +1,4 @@
+/* istanbul ignore file */
 import { getCacheData, setCacheData } from './localCache.util';
 import { requireNamedOnlineModule } from './resourceLoader';
 

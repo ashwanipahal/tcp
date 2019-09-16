@@ -1,3 +1,4 @@
+/* istanbul ignore file */
 /* eslint-disable sonarjs/cognitive-complexity */
 import { isClient } from './utils';
 import { getValueFromAsyncStorage, setValueInAsyncStorage } from './utils.app';
