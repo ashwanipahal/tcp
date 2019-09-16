@@ -11,9 +11,7 @@ exports[`Recommendations Module O price only variation Recommendations Module O 
     dataLocator="moduleO_header_text"
     textAlign="center"
     variant="h4"
-  >
-    You May Also Like
-  </Styled(Heading)>
+  />
   <Styled(Row)
     fullBleed={true}
   >
@@ -344,6 +342,7 @@ exports[`Recommendations Module O price only variation Recommendations Module O 
                 "breakpoint": 1199,
                 "settings": Object {
                   "arrows": false,
+                  "slidesToScroll": 3,
                   "slidesToShow": 4,
                 },
               },
@@ -351,11 +350,12 @@ exports[`Recommendations Module O price only variation Recommendations Module O 
                 "breakpoint": 767,
                 "settings": Object {
                   "arrows": false,
+                  "slidesToScroll": 2,
                   "slidesToShow": 3,
                 },
               },
             ],
-            "slideToScroll": 1,
+            "slidesToScroll": 4,
             "slidesToShow": 4,
             "speed": 1000,
             "swipe": true,
@@ -403,9 +403,7 @@ exports[`Recommendations Module O show button variation Recommendations Module O
     dataLocator="moduleO_header_text"
     textAlign="center"
     variant="h4"
-  >
-    You May Also Like
-  </Styled(Heading)>
+  />
   <Styled(Row)
     fullBleed={true}
   >
@@ -736,6 +734,7 @@ exports[`Recommendations Module O show button variation Recommendations Module O
                 "breakpoint": 1199,
                 "settings": Object {
                   "arrows": false,
+                  "slidesToScroll": 3,
                   "slidesToShow": 4,
                 },
               },
@@ -743,11 +742,12 @@ exports[`Recommendations Module O show button variation Recommendations Module O
                 "breakpoint": 767,
                 "settings": Object {
                   "arrows": false,
+                  "slidesToScroll": 2,
                   "slidesToShow": 3,
                 },
               },
             ],
-            "slideToScroll": 1,
+            "slidesToScroll": 4,
             "slidesToShow": 4,
             "speed": 1000,
             "swipe": true,
@@ -818,9 +818,7 @@ exports[`Recommendations component renders correctly 1`] = `
     dataLocator="moduleO_header_text"
     textAlign="center"
     variant="h4"
-  >
-    You May Also Like
-  </Styled(Heading)>
+  />
   <Styled(Row)
     fullBleed={true}
   >
@@ -1151,6 +1149,7 @@ exports[`Recommendations component renders correctly 1`] = `
                 "breakpoint": 1199,
                 "settings": Object {
                   "arrows": false,
+                  "slidesToScroll": 3,
                   "slidesToShow": 4,
                 },
               },
@@ -1158,11 +1157,12 @@ exports[`Recommendations component renders correctly 1`] = `
                 "breakpoint": 767,
                 "settings": Object {
                   "arrows": false,
+                  "slidesToScroll": 2,
                   "slidesToShow": 3,
                 },
               },
             ],
-            "slideToScroll": 1,
+            "slidesToScroll": 4,
             "slidesToShow": 4,
             "speed": 1000,
             "swipe": true,
