@@ -46,6 +46,7 @@ export {
   getCacheKeyForRedis,
   getAddressFromPlace,
   formatAddress,
+  formatPhone,
   calculateAge,
   getLabelValue,
   capitalize,

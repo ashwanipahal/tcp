@@ -12,8 +12,8 @@ import {
   getFavoriteStoreZipcode,
   getFavoriteStoreCity,
 } from '../../../../User/container/User.selectors';
-import getMyFavoriteStoreLabels from './MyFavoriteStore.selector';
-import getMyFavoriteStoreAction from './MyFavoriteStore.actions';
+import { getCommonLabels } from '../../../../Account/container/Account.selectors';
+import { getMyFavoriteStoreAction, resetMyFavoriteStoreAction } from './MyFavoriteStore.actions';
 
 export class MyFavoriteStoreContainer extends PureComponent {
   componentDidMount() {
@@ -23,20 +23,10 @@ export class MyFavoriteStoreContainer extends PureComponent {
     }
   }
 
-  formatPhone = phone => {
-    if (phone) return `(${phone.slice(0, 3)})-${phone.slice(3, 6)}-${phone.slice(6, 15)}`;
-    return '';
-  };
-
-  capitalizeFirstLetter = string => {
-    if (string)
-      return string
-        .toLowerCase()
-        .split(' ')
-        .map(s => s.charAt(0).toUpperCase() + s.substring(1))
-        .join(' ');
-    return '';
-  };
+  componentWillUnmount() {
+    const { resetMyFavoriteStoreDetails } = this.props;
+    resetMyFavoriteStoreDetails();
+  }
 
   render() {
     const {
@@ -54,12 +44,12 @@ export class MyFavoriteStoreContainer extends PureComponent {
       <MyFavoriteStore
         defaultStore={defaultStore}
         labels={labels}
-        favStoreName={this.capitalizeFirstLetter(favStoreName)}
-        favStoreAddress={this.capitalizeFirstLetter(favStoreAddress)}
+        favStoreName={favStoreName}
+        favStoreAddress={favStoreAddress}
         favStoreState={favStoreState}
-        favStoreCity={this.capitalizeFirstLetter(favStoreCity)}
+        favStoreCity={favStoreCity}
         favStoreZipcode={favStoreZipcode}
-        favStorePhone={this.formatPhone(favStorePhone)}
+        favStorePhone={favStorePhone}
       />
     );
   }
@@ -86,19 +76,22 @@ MyFavoriteStoreContainer.propTypes = {
   favStoreCity: PropTypes.string,
   favStoreZipcode: PropTypes.string,
   favStorePhone: PropTypes.string,
-
   getMyFavoriteStoreDetails: PropTypes.func.isRequired,
+  resetMyFavoriteStoreDetails: PropTypes.func.isRequired,
 };
 
 export const mapDispatchToProps = dispatch => ({
   getMyFavoriteStoreDetails: () => {
     dispatch(getMyFavoriteStoreAction());
   },
+  resetMyFavoriteStoreDetails: () => {
+    dispatch(resetMyFavoriteStoreAction());
+  },
 });
 
 function mapStateToProps(state) {
   return {
-    labels: getMyFavoriteStoreLabels(state),
+    labels: getCommonLabels(state),
     favoriteStoreDetails: getFavoriteStore(state),
     favStoreName: getFavoriteStoreName(state),
     favStoreAddress: getFavoriteStoreAddress(state),

@@ -1,29 +1,5 @@
 import endpoints from '@tcp/core/src/services/endpoints';
 import { executeStatefulAPICall } from '@tcp/core/src/services/handler';
-import { ERRORS } from '@tcp/core/src/utils/errorMessage.util';
-
-const getFormattedError = err => {
-  if (err.response && err.response.body) {
-    return err.response.body.errors[0]
-      ? err.response.body.errors[0].errorKey
-      : err.response.body.errorKey;
-  }
-  return 'genericError';
-};
-
-/**
- * This method is used to extract error message from the response
- * @param {object} err - Error response object
- */
-export const errorHandler = err => {
-  if (err.response && err.response.body && err.response.body.errors) {
-    throw getFormattedError(err);
-  } else if (err && err.err && err.err.errorMessage) {
-    // eslint-disable-next-line no-underscore-dangle
-    throw err.err.errorMessage._error;
-  }
-  throw new Error(ERRORS.SYSTEM_ERROR);
-};
 
 /**
  * @function getFavoriteStore
@@ -33,7 +9,7 @@ export const errorHandler = err => {
  * @return empty object if you do not have a default store else you will get back
  */
 
-export const getFavoriteStore = (skuId = null, { lat, long } = {}, variantId) => {
+const getFavoriteStore = (skuId = null, { lat, long } = {}, variantId) => {
   const payload = {
     header: {
       action: 'get',
@@ -62,3 +38,5 @@ export const getFavoriteStore = (skuId = null, { lat, long } = {}, variantId) =>
       throw err;
     });
 };
+
+export default getFavoriteStore;

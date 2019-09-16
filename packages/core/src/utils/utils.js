@@ -241,6 +241,11 @@ export const formatAddress = address => ({
   phone1: address.phoneNumber,
 });
 
+export const formatPhone = phone => {
+  if (phone) return `(${phone.slice(0, 3)})-${phone.slice(3, 6)}-${phone.slice(6, 15)}`;
+  return '';
+};
+
 const MONTH_SHORT_FORMAT = {
   JAN: 'Jan',
   FEB: 'Feb',
@@ -392,6 +397,7 @@ export default {
   isTCP,
   getAddressFromPlace,
   formatAddress,
+  formatPhone,
   getLabelValue,
   getCacheKeyForRedis,
   calculateAge,

@@ -2,7 +2,7 @@ import { call, takeLatest, put } from 'redux-saga/effects';
 import logger from '@tcp/core/src/utils/loggerInstance';
 import CONSTANTS from '../MyFavoriteStore.constants';
 import { setFavoriteStore } from '../../../../User/container/User.actions';
-import { getFavoriteStore } from '../../../../../../../services/abstractors/account/MyFavoriteStore';
+import getFavoriteStore from '../../../../../../../services/abstractors/account/MyFavoriteStore';
 
 /**
  * @function getMyFavoriteStoreSaga

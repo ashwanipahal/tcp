@@ -23,6 +23,9 @@ exports[`MyFavoriteStore Component MyFavoriteStore should render correctly 1`] =
   .favStoreData {
     padding: 0;
   }
+  .capFirstLetter{
+    text-transform: capitalize;
+  }
 ",
           ";
 ",

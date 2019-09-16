@@ -4,19 +4,10 @@ import Row from '../../../../../../common/atoms/Row';
 import Col from '../../../../../../common/atoms/Col';
 import BodyCopy from '../../../../../../common/atoms/BodyCopy';
 import MyProfileTile from '../../../../../../common/molecules/MyProfileTile';
+import { getLabelValue, formatPhone } from '../../../../../../../utils';
 import withStyles from '../../../../../../common/hoc/withStyles';
 import styles from '../styles/MyFavoriteStore.style';
 
-// const capitalizeFirstLetter=(string)=> {
-//   if(string)
-//   return string.toLowerCase().split(' ').map((s) => s.charAt(0).toUpperCase() + s.substring(1)).join(' ');
-//   return ''
-// }
-//  const formatPhone=(phone)=>{
-//    if(phone)
-//    return `(${phone.slice(0,3)})-${phone.slice(3,6)}-${phone.slice(6,15)}`
-//    return ''
-//  }
 const MyFavoriteStore = ({
   labels,
   defaultStore,
@@ -31,60 +22,62 @@ const MyFavoriteStore = ({
   return (
     <MyProfileTile
       className={className}
-      title={labels.myFavoriteStore}
-      ctaTitle={defaultStore ? labels.updateFavoriteStore : labels.addAStore}
+      title={getLabelValue(labels, 'lbl_common_myFavoriteStore')}
+      ctaTitle={
+        defaultStore
+          ? getLabelValue(labels, 'lbl_common_updateFavoriteStore')
+          : getLabelValue(labels, 'lbl_common_addAStore')
+      }
       ctaPath="/account/profile"
       ctaLink="/account?id=profile&subSection=change-password"
-      dataLocator="pi-changepassword"
+      dataLocator="myFavStoreLbl"
     >
-      <BodyCopy component="div">
-        <Row fullBleed>
-          <Col
-            colSize={{
-              small: 6,
-              medium: 8,
-              large: 12,
-            }}
+      <Row fullBleed>
+        <Col
+          colSize={{
+            small: 6,
+            medium: 8,
+            large: 12,
+          }}
+        >
+          <BodyCopy
+            className="elem-pb-SM favStoreData capFirstLetter"
+            fontSize="fs16"
+            data-locator="storeName"
+            fontFamily="secondary"
+            component="p"
           >
-            <BodyCopy
-              className="elem-pb-SM favStoreData"
-              fontSize="fs16"
-              data-locator="pi-passwordtextheader"
-              fontFamily="secondary"
-              component="p"
-            >
-              {favStoreName}
-            </BodyCopy>
-            <BodyCopy
-              className="elem-pb-SM favStoreData"
-              fontSize="fs16"
-              data-locator="pi-passwordtextheader"
-              fontFamily="secondary"
-              component="p"
-            >
-              {favStoreAddress}
-            </BodyCopy>
-            <BodyCopy
-              className="elem-pb-SM favStoreData"
-              fontSize="fs16"
-              data-locator="pi-passwordtextheader"
-              fontFamily="secondary"
-              component="p"
-            >
-              {`${favStoreCity}, ${favStoreState} ${favStoreZipcode}`}
-            </BodyCopy>
-            <BodyCopy
-              className="elem-pb-SM favStoreData"
-              fontSize="fs16"
-              data-locator="pi-passwordtextheader"
-              fontFamily="secondary"
-              component="p"
-            >
-              {favStorePhone}
-            </BodyCopy>
-          </Col>
-        </Row>
-      </BodyCopy>
+            {favStoreName}
+          </BodyCopy>
+          <BodyCopy
+            className="elem-pb-SM favStoreData capFirstLetter"
+            fontSize="fs16"
+            data-locator="storeAddress"
+            fontFamily="secondary"
+            component="p"
+          >
+            {favStoreAddress}
+          </BodyCopy>
+          <BodyCopy
+            className="elem-pb-SM favStoreData capFirstLetter"
+            fontSize="fs16"
+            data-locator="storeCityDetails"
+            fontFamily="secondary"
+            component="p"
+          >
+            {`${favStoreCity}, ${favStoreState} ${favStoreZipcode}`}
+          </BodyCopy>
+          <BodyCopy
+            className="elem-pb-SM favStoreData"
+            fontSize="fs16"
+            data-locator="storePhoneNumber"
+            fontFamily="secondary"
+            component="p"
+          >
+            {formatPhone(favStorePhone)}
+          </BodyCopy>
+        </Col>
+      </Row>
     </MyProfileTile>
   );
 };
