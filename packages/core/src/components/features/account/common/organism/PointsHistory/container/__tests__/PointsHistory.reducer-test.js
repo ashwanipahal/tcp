@@ -2,8 +2,8 @@ import { Map, fromJS } from 'immutable';
 import PointsHistoryReducer from '../PointsHistory.reducer';
 import POINTSHISTORY_CONSTANTS from '../../PointsHistory.constants';
 
-describe('Account Navigation reducer', () => {
-  it('should return empty Account Navigation as default state', () => {
+describe('Point History reducer', () => {
+  it('should return empty Point History as default state', () => {
     expect(PointsHistoryReducer(undefined, {}).get('pointsHistoryData')).toBeNull();
   });
 
@@ -31,5 +31,18 @@ describe('Account Navigation reducer', () => {
       payload,
     });
     expect(updatedState.get('pointsHistoryData')).toEqual(payload);
+  });
+
+  it('should return point history rich text', () => {
+    const initialState = fromJS({});
+    const updatedState = initialState.set('pointsHistoryRichText', '<div></div>');
+    expect(
+      PointsHistoryReducer(initialState, {
+        type: POINTSHISTORY_CONSTANTS.SET_MODULEX_CONTENT,
+        payload: {
+          richText: '<div></div>',
+        },
+      })
+    ).toEqual(updatedState);
   });
 });

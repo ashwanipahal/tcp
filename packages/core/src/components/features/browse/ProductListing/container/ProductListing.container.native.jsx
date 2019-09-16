@@ -9,13 +9,14 @@ import {
   getNavigationTree,
   getLoadedProductsCount,
   getUnbxdId,
-  getProductsFilters,
   getCategoryId,
   getLabelsProductListing,
   getLongDescription,
   getIsLoadingMore,
   getLastLoadedPageNumber,
   getLoadedProductsPages,
+  getAppliedFilters,
+  updateAppliedFiltersInState,
 } from './ProductListing.selectors';
 import { isPlccUser } from '../../../account/User/container/User.selectors';
 import submitProductListingFiltersForm from './productListingOnSubmitHandler';
@@ -89,7 +90,7 @@ class ProductListingContainer extends React.PureComponent {
 }
 
 function mapStateToProps(state) {
-  const appliedFilters = state.ProductListing.appliedFiltersIds;
+  const appliedFilters = getAppliedFilters(state);
   const productBlocks = getLoadedProductsPages(state);
 
   // eslint-disable-next-line
@@ -102,10 +103,12 @@ function mapStateToProps(state) {
     }
   }
 
+  const filters = updateAppliedFiltersInState(state);
+
   return {
     productsBlock: getProductsAndTitleBlocks(state, productBlocks),
     products: getProductsSelect(state),
-    filters: getProductsFilters(state),
+    filters,
     currentNavIds: state.ProductListing && state.ProductListing.get('currentNavigationIds'),
     categoryId: getCategoryId(state),
     navTree: getNavigationTree(state),
