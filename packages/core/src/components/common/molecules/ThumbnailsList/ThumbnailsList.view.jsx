@@ -7,18 +7,20 @@ const ThumbnailsList = props => {
   return (
     <ul>
       {images.map((image, index) => (
-        <Thumbnail
-          key={image.imageUrl}
-          image={{
-            name: image.imageName,
-            thumbnailPath: image.imageUrl,
-            id: index,
-          }}
-          isSelected={selectedImageIndex === index}
-          onClick={onThumbnailClick}
-          totalCount={images.length}
-          index={index}
-        />
+        <li>
+          <Thumbnail
+            key={image.imageUrl}
+            image={{
+              name: image.imageName,
+              thumbnailPath: image.imageUrl,
+              id: index,
+            }}
+            isSelected={selectedImageIndex === index}
+            onClick={onThumbnailClick}
+            totalCount={images.length}
+            index={index}
+          />
+        </li>
       ))}
     </ul>
   );

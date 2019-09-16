@@ -14,11 +14,11 @@ export default css`
   }
   .enlarged-image-container {
     position: relative;
-    z-index: 100;
+    z-index: ${props => props.theme.zindex.zEnlargedImage};
   }
   .enlarged-image {
     position: absolute;
-    z-index: 100;
+    z-index: ${props => props.theme.zindex.zEnlargedImage};
     height: 100%;
     margin-left: 90px;
     img {

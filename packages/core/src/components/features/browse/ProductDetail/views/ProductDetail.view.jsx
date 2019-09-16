@@ -7,6 +7,40 @@ import Product from '../molecules/Product/views/Product.view';
 import FixedBreadCrumbs from '../../ProductListing/molecules/FixedBreadCrumbs/views';
 import ProductImages from '../../../../common/organisms/ProductImages';
 
+const productImagesProps = {
+  isZoomEnabled: true,
+  images: [
+    {
+      isOnModalImage: false,
+      iconSizeImageUrl:
+        'https://test4.childrensplace.com/wcsstore/GlobalSAS/images/tcp/products/125/2082931_IV.jpg',
+      listingSizeImageUrl:
+        'https://test4.childrensplace.com/wcsstore/GlobalSAS/images/tcp/products/380/2082931_IV.jpg',
+      regularSizeImageUrl:
+        'https://test4.childrensplace.com/wcsstore/GlobalSAS/images/tcp/products/500/2082931_IV.jpg',
+      bigSizeImageUrl:
+        'https://test4.childrensplace.com/wcsstore/GlobalSAS/images/tcp/products/900/2082931_IV.jpg',
+      superSizeImageUrl:
+        'https://test4.childrensplace.com/wcsstore/GlobalSAS/images/tcp/products/900/2082931_IV.jpg',
+    },
+    {
+      isOnModalImage: false,
+      iconSizeImageUrl:
+        'https://test4.childrensplace.com/wcsstore/GlobalSAS/images/tcp/products/125/2082931_IV-1.jpg',
+      listingSizeImageUrl:
+        'https://test4.childrensplace.com/wcsstore/GlobalSAS/images/tcp/products/380/2082931_IV-1.jpg',
+      regularSizeImageUrl:
+        'https://test4.childrensplace.com/wcsstore/GlobalSAS/images/tcp/products/500/2082931_IV-1.jpg',
+      bigSizeImageUrl:
+        'https://test4.childrensplace.com/wcsstore/GlobalSAS/images/tcp/products/900/2082931_IV-1.jpg',
+      superSizeImageUrl:
+        'https://test4.childrensplace.com/wcsstore/GlobalSAS/images/tcp/products/900/2082931_IV-1.jpg',
+    },
+  ],
+  isThumbnailListVisible: true,
+  productName: 'Girls Uniform Active Shorts',
+};
+
 const ProductDetailView = ({
   className,
   productDetails,
@@ -14,40 +48,6 @@ const ProductDetailView = ({
   breadCrumbs,
   currency,
 }) => {
-  const productImagesProps = {
-    isZoomEnabled: true,
-    images: [
-      {
-        isOnModalImage: false,
-        iconSizeImageUrl:
-          'https://test4.childrensplace.com/wcsstore/GlobalSAS/images/tcp/products/125/2082931_IV.jpg',
-        listingSizeImageUrl:
-          'https://test4.childrensplace.com/wcsstore/GlobalSAS/images/tcp/products/380/2082931_IV.jpg',
-        regularSizeImageUrl:
-          'https://test4.childrensplace.com/wcsstore/GlobalSAS/images/tcp/products/500/2082931_IV.jpg',
-        bigSizeImageUrl:
-          'https://test4.childrensplace.com/wcsstore/GlobalSAS/images/tcp/products/900/2082931_IV.jpg',
-        superSizeImageUrl:
-          'https://test4.childrensplace.com/wcsstore/GlobalSAS/images/tcp/products/900/2082931_IV.jpg',
-      },
-      {
-        isOnModalImage: false,
-        iconSizeImageUrl:
-          'https://test4.childrensplace.com/wcsstore/GlobalSAS/images/tcp/products/125/2082931_IV-1.jpg',
-        listingSizeImageUrl:
-          'https://test4.childrensplace.com/wcsstore/GlobalSAS/images/tcp/products/380/2082931_IV-1.jpg',
-        regularSizeImageUrl:
-          'https://test4.childrensplace.com/wcsstore/GlobalSAS/images/tcp/products/500/2082931_IV-1.jpg',
-        bigSizeImageUrl:
-          'https://test4.childrensplace.com/wcsstore/GlobalSAS/images/tcp/products/900/2082931_IV-1.jpg',
-        superSizeImageUrl:
-          'https://test4.childrensplace.com/wcsstore/GlobalSAS/images/tcp/products/900/2082931_IV-1.jpg',
-      },
-    ],
-    isThumbnailListVisible: true,
-    productName: 'Girls Uniform Active Shorts',
-  };
-
   return (
     <div className={className}>
       <Row>

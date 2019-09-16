@@ -1,5 +1,6 @@
 import React from 'react';
 import PropTypes from 'prop-types';
+import ExecutionEnvironment from 'exenv';
 import ReactImageMagnify from 'react-image-magnify';
 import withStyles from '../../hoc/withStyles';
 import styles from './ProductDetailImage.style';
@@ -7,7 +8,7 @@ import styles from './ProductDetailImage.style';
 const ProductDetailImage = props => {
   const { imageName, imageUrl, zoomImageUrl, className } = props;
   let productSectionWidth;
-  if (typeof window !== 'undefined') {
+  if (ExecutionEnvironment.canUseDOM) {
     productSectionWidth =
       document.getElementById('productDetailsSection') &&
       document.getElementById('productDetailsSection').offsetWidth;

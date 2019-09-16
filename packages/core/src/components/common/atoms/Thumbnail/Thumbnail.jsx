@@ -33,20 +33,20 @@ class Thumbnail extends React.Component {
     this.handleClick = this.handleClick.bind(this);
   }
 
-  handleClick = e => {
+  handleClick(e) {
     e.preventDefault();
     const {
       onClick,
       image: { id },
     } = this.props;
     return onClick && onClick(id);
-  };
+  }
 
   render() {
     const { image, isSelected, index, totalCount, className } = this.props;
 
     return (
-      <li isSelected={isSelected} className={className}>
+      <div isSelected={isSelected} className={className}>
         <Anchor
           aria-label={`Thumbnail image ${index +
             1} of ${totalCount}. Click or Enter on this Icon to ${'display large view of the Image'}`}
@@ -60,7 +60,7 @@ class Thumbnail extends React.Component {
             itemProp="thumbnailUrl"
           />
         </Anchor>
-      </li>
+      </div>
     );
   }
 }
