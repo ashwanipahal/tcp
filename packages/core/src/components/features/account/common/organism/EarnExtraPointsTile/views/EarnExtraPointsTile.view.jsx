@@ -9,6 +9,7 @@ import { getLabelValue } from '@tcp/core/src/utils/utils';
 import styles from '../styles/EarnExtraPointsTile.style';
 import carouselConfig from '../EarnExtraPointsTile.config';
 import DetailedEarnExtraPointsTile from '../../../molecule/DetailedEarnExtraPointsTile';
+import EARNEXTRAPOINTS_CONSTANTS from '../EarnExtraPointsTile.constants';
 
 const onClickHandler = () => {
   return routerPush(internalEndpoints.profilePage.link, internalEndpoints.profilePage.path);
@@ -19,7 +20,7 @@ const onClickHandler = () => {
  */
 
 const EarnExtraPointsTile = ({ className, labels, waysToEarn }) => {
-  if (waysToEarn && waysToEarn.length > 8) {
+  if (waysToEarn && waysToEarn.length > EARNEXTRAPOINTS_CONSTANTS.MAX_TILE_COUNT) {
     carouselConfig.dots = false;
   }
 

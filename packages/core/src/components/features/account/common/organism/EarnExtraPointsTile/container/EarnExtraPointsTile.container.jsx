@@ -40,12 +40,12 @@ const mapStateToProps = state => {
 EarnExtraPointsTileContainer.propTypes = {
   getEarnExtraPointsListAction: PropTypes.func.isRequired,
   labels: PropTypes.shape({}),
-  waysToEarn: PropTypes.shape({}),
+  waysToEarn: PropTypes.shape([]),
 };
 
 EarnExtraPointsTileContainer.defaultProps = {
   labels: {},
-  waysToEarn: PropTypes.shape({}),
+  waysToEarn: [],
 };
 
 export default connect(
