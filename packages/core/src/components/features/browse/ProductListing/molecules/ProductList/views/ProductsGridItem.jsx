@@ -1,9 +1,8 @@
 /* eslint-disable extra-rules/no-commented-out-code */
 import React from 'react';
 import productGridItemPropTypes from '../propTypes/ProductGridItemPropTypes';
-import Button from '../../../../../../common/atoms/Button';
+// import Button from '../../../../../../common/atoms/Button';
 import FulfillmentSection from '../../../../../../common/organisms/FulfillmentSection';
-import PickupStoreModal from '../../../../../../common/organisms/PickupStoreModal';
 import { getLocator } from '../../../../../../../utils';
 import { getImagesToDisplay, getMapSliceForColorProductId } from '../utils/productsCommonUtils';
 // import { ProductRating } from './ProductRating';
@@ -400,7 +399,7 @@ class ProductsGridItem extends React.PureComponent {
             promotionalMessageModified,
             promotionalPLCCMessageModified
           )}
-          <div>
+          {/* <div>
             <Button
               className="added-to-bag"
               fullWidth
@@ -409,10 +408,12 @@ class ProductsGridItem extends React.PureComponent {
             >
               {labels.addToBag}
             </Button>
-          </div>
+          </div> */}
           <div>
-            <FulfillmentSection onPickupOpenClick={this.handlePickupOpenClick} />
-            <PickupStoreModal />
+            <FulfillmentSection
+              buttonLabel={labels.addToBag}
+              onPickupOpenClick={this.handlePickupOpenClick}
+            />
           </div>
 
           {/* {error && <ErrorMessage error={error} />} */}

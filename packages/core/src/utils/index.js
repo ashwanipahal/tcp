@@ -54,4 +54,7 @@ export {
   getBirthDateOptionMap,
   generateUniqueKeyUsingLabel,
   getErrorSelector,
+  sanitizeEntity,
+  formatPhone,
+  parseStoreHours,
 } from './utils';
