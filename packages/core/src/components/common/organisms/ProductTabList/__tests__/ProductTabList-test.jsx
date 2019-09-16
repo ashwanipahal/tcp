@@ -7,10 +7,14 @@ describe('ProductTabList', () => {
     const getProductTabListData = jest.fn();
     shallow(
       <ProductTabList
-        categoryList={[
+        tabItems={[
           {
-            text: 'test',
-            catId: '2',
+            text: {
+              text: 'test',
+            },
+            category: {
+              cat_id: '2',
+            },
           },
         ]}
         getProductTabListData={getProductTabListData}
@@ -27,10 +31,14 @@ describe('ProductTabList', () => {
         productTabList={{
           '2': {},
         }}
-        categoryList={[
+        tabItems={[
           {
-            text: 'test',
-            catId: '2',
+            text: {
+              text: 'test',
+            },
+            category: {
+              cat_id: '2',
+            },
           },
         ]}
         getProductTabListData={getProductTabListData}
@@ -43,9 +51,11 @@ describe('ProductTabList', () => {
     const getProductTabListData = jest.fn();
     shallow(
       <ProductTabList
-        categoryList={[
+        tabItems={[
           {
-            text: 'test',
+            text: {
+              text: 'test',
+            },
           },
         ]}
         getProductTabListData={getProductTabListData}
