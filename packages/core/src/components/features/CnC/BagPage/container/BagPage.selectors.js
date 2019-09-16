@@ -119,6 +119,10 @@ const getUnavailableCount = state =>
 
 const getOOSCount = state => getFilteredItems(state, type => type === AVAILABILITY.SOLDOUT).size;
 
+const getCurrentCurrency = state => {
+  return state.session.getIn(['siteDetails', 'currency']);
+};
+
 export default {
   getBagPageLabels,
   getTotalItems,
@@ -136,4 +140,5 @@ export default {
   getDetailsContentTcpId,
   getGiftServicesContentTcpId,
   getGiftServicesContentGymId,
+  getCurrentCurrency,
 };

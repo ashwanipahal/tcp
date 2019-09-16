@@ -145,6 +145,12 @@ describe('#CartItemTile selector', () => {
             lbl_minibag_errorRemoveSoldoutHeader: 'minibag',
           },
         },
+        checkout: {
+          bagPage: {
+            lbl_sfl_actionLink: 'saveForLaterLink',
+            lbl_sfl_maxLimitError: 'sflMaxLimitError',
+          },
+        },
       },
     };
     expect(getLabelsCartItemTile(productState)).toEqual({
@@ -180,6 +186,8 @@ describe('#CartItemTile selector', () => {
       update: 'update',
       updateUnavailable: 'minibag',
       value: 'Value',
+      saveForLaterLink: 'saveForLaterLink',
+      sflMaxLimitError: 'sflMaxLimitError',
     });
   });
 });

@@ -89,6 +89,7 @@ exports[`MiniBag template should render correctly 1`] = `
     currencySymbol=""
     isCartItemsUpdating={true}
     labels={Object {}}
+    savedforLaterQty={0}
     subTotal=""
     userName=""
   />

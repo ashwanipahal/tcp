@@ -3,10 +3,11 @@ import PropTypes from 'prop-types';
 import { withRouter } from 'next/router'; //eslint-disable-line
 import Modal from '@tcp/core/src/components/common/molecules/Modal';
 import withStyles from '@tcp/core/src/components/common/hoc/withStyles';
-import { getCartItemCount } from '@tcp/core/src/utils/cookie.util';
+import { getCartItemCount, getSflItemCount } from '@tcp/core/src/utils/cookie.util';
 import styles, { modalStyles } from '../styles/MiniBag.style';
 import MiniBagHeader from '../molecules/MiniBagHeader/views/MiniBagHeader';
 import MiniBagBody from '../molecules/MiniBagBody/views/MiniBagBody';
+import { getSiteId } from '../../../../../../../core/src/utils/utils.web';
 
 const renderMiniBagHeader = (labels, cartItemCount, userName, currentPoints, totalRewards) => {
   return (
@@ -21,6 +22,13 @@ const renderMiniBagHeader = (labels, cartItemCount, userName, currentPoints, tot
 };
 
 class MiniBag extends React.Component {
+  constructor(props) {
+    super(props);
+    this.state = {
+      country: getSiteId() && getSiteId().toUpperCase(),
+    };
+  }
+
   componentWillReceiveProps({ router: nextRouter }) {
     const { router, onRequestClose } = this.props;
     /* istanbul ignore else */
@@ -41,8 +49,12 @@ class MiniBag extends React.Component {
       currentPoints,
       totalRewards,
       isCartItemsUpdating,
+      isCartItemSFL,
+      cartItemSflError,
     } = this.props;
+    const { country } = this.state;
     const cartItemCount = getCartItemCount();
+    const sflItemsCount = getSflItemCount(country);
     return (
       <Modal
         isOpen={openState}
@@ -66,6 +78,9 @@ class MiniBag extends React.Component {
           subTotal={subTotal}
           currencySymbol={currencySymbol}
           isCartItemsUpdating={isCartItemsUpdating}
+          savedforLaterQty={sflItemsCount}
+          isCartItemSFL={isCartItemSFL}
+          cartItemSflError={cartItemSflError}
         />
       </Modal>
     );
@@ -84,6 +99,8 @@ MiniBag.propTypes = {
   currentPoints: PropTypes.string.isRequired,
   totalRewards: PropTypes.string.isRequired,
   isCartItemsUpdating: PropTypes.bool.isRequired,
+  isCartItemSFL: PropTypes.bool.isRequired,
+  cartItemSflError: PropTypes.string.isRequired,
 };
 
 export default withRouter(withStyles(MiniBag, styles));

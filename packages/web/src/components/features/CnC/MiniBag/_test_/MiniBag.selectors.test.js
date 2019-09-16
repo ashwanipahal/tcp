@@ -28,6 +28,12 @@ describe('#MiniBag Selectors', () => {
       },
       addedToBagModal: { lbl_footer_continueShopping: 'continueShopping' },
     },
+    checkout: {
+      bagPage: {
+        lbl_sfl_viewsfl: '',
+        bl_sfl_actionSuccess: '',
+      },
+    },
   };
 
   const CartPageState = fromJS({
@@ -73,6 +79,8 @@ describe('#MiniBag Selectors', () => {
       viewBag: '',
       viewSaveForLater: '',
       yourShoppingBag: '',
+      viewSfl: '',
+      sflSuccess: '',
     });
   });
 

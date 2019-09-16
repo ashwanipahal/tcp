@@ -99,6 +99,14 @@ export const getProductItemUpcNumber = product => {
   return product.getIn(['productInfo', 'upc']);
 };
 
+export const getGeneralProdId = product => {
+  return product.getIn(['productInfo', 'generalProductId']);
+};
+
+export const getProductSkuId = product => {
+  return product.getIn(['productInfo', 'skuId']);
+};
+
 export const getProductItemPrice = product => {
   return product.getIn(['itemInfo', 'listPrice']);
 };
@@ -157,6 +165,9 @@ export const getLabelsCartItemTile = state => {
         lbl_minibag_errorRemoveSoldoutHeader: removeSoldoutHeader,
       },
     },
+    checkout: {
+      bagPage: { lbl_sfl_actionLink: saveForLaterLink, lbl_sfl_maxLimitError: sflMaxLimitError },
+    },
   } = state.Labels;
 
   // const {
@@ -200,6 +211,8 @@ export const getLabelsCartItemTile = state => {
     updateUnavailable,
     removeSoldoutHeader,
     deleteItem,
+    saveForLaterLink,
+    sflMaxLimitError,
   };
 };
 
@@ -226,6 +239,8 @@ export const getProductDetails = tile => {
       itemPartNumber: getProductItemPartNumber(tile),
       variantNo: getVariantNumber(tile),
       upc: getProductItemUpcNumber(tile),
+      generalProductId: getGeneralProdId(tile),
+      skuId: getProductSkuId(tile),
     },
     miscInfo: {
       badge: getProductBadge(tile),

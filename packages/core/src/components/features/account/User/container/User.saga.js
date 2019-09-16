@@ -15,6 +15,7 @@ export function* getUserInfoSaga() {
   try {
     const response = yield call(getProfile, {
       pageId: 'myAccount',
+      source: 'login',
     });
     const siteId = getSiteId();
     const { CA_CONFIG_OPTIONS: apiConfig, sites } = API_CONFIG;
