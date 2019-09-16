@@ -2,7 +2,7 @@ import React from 'react';
 import Barcode from '@tcp/core/src/components/common/molecules/Barcode';
 import Modal from '@tcp/core/src/components/common/molecules/Modal';
 import Button from '@tcp/core/src/components/common/atoms/Button';
-import Anchor from '@tcp/core/src/components/common/atoms/Anchor';
+import { Anchor, RichText } from '@tcp/core/src/components/common/atoms';
 import withStyles from '@tcp/core/src/components/common/hoc/withStyles';
 import endpoints from '@tcp/core/src/components/features/account/common/externalEndpoints';
 import { BodyCopy } from '../../../../../../../../styles/themes/TCP/typotheme';
@@ -59,7 +59,9 @@ class CouponDetailModal extends React.PureComponent<Props> {
           data-locator={`couponDetailModal_${coupon.status}_BarCode`}
           className="couponModal_modalbarcode"
         >
-          <Barcode value={coupon.id} barcodeId={coupon.id} />
+          <BodyCopy component="div" className="elem-mt-MED elem-mb-MED">
+            <Barcode value={coupon.id} barcodeId={coupon.id} />
+          </BodyCopy>
         </BodyCopy>
         <div className="couponModal_btnWrapper">
           <Button
@@ -90,7 +92,7 @@ class CouponDetailModal extends React.PureComponent<Props> {
           className="couponModal_modalLongDesc"
           data-locator={`couponDetailModal_${coupon.status}_LongDesc`}
         >
-          {coupon.legalText}
+          <RichText richTextHtml={coupon.legalText} />
         </BodyCopy>
         <BodyCopy
           fontFamily="secondaryFontFamily"

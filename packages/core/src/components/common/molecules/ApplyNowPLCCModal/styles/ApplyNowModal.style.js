@@ -7,6 +7,9 @@ export const modalStyles = css`
 
   .TCPModal__InnerContent {
     text-align: center;
+    && {
+      padding: 21px;
+    }
     > h2 {
       ::after {
         content: '§';
@@ -65,8 +68,7 @@ export const modalStyles = css`
   }
 
   .header__greeting {
-    margin: 9px 9px;
-    width: 353px;
+    margin: 9px 0px;
   }
 
   .header-image {

@@ -23,12 +23,15 @@ An online account has been created with your email! Click here to reset your pas
   <Styled(View)>
     <Styled(View)>
       <Styled(ImageComp)
+        alt=""
         height={60}
+        host=""
         source={
           Object {
             "testUri": "../../../../core/src/assets/my-place-rewards.png",
           }
         }
+        url=""
         width={186}
       />
     </Styled(View)>
