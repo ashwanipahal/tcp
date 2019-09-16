@@ -63,6 +63,7 @@ exports[`Earn Extra Points Tile component  should render Earn Extra Points Tile 
     <Styled(Carousel)
       carouselConfig={
         Object {
+          "arrow": "small",
           "customArrowLeft": "/static/images/smallright.svg",
           "customArrowRight": "/static/images/smallright.svg",
           "type": "light",
@@ -80,6 +81,7 @@ exports[`Earn Extra Points Tile component  should render Earn Extra Points Tile 
           "fade": false,
           "focusOnSelect": true,
           "infinite": false,
+          "initialSlide": 0,
           "responsive": Array [
             Object {
               "breakpoint": 1200,
