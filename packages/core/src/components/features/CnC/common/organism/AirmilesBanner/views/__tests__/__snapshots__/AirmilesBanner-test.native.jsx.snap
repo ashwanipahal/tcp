@@ -93,12 +93,15 @@ exports[`CouponForm Component AirmilesBanner should render correctly 1`] = `
           withPointer={true}
         >
           <Styled(ImageComp)
+            alt=""
             height={15}
+            host=""
             source={
               Object {
                 "testUri": "../../../../core/src/assets/info-icon.png",
               }
             }
+            url=""
             width={15}
           />
         </ReactTooltip>
@@ -184,12 +187,15 @@ exports[`CouponForm Component AirmilesBanner should render correctly 1`] = `
           withPointer={true}
         >
           <Styled(ImageComp)
+            alt=""
             height={15}
+            host=""
             source={
               Object {
                 "testUri": "../../../../core/src/assets/info-icon.png",
               }
             }
+            url=""
             width={15}
           />
         </ReactTooltip>

@@ -5,7 +5,7 @@ import { View } from 'react-native';
 import PropTypes from 'prop-types';
 import ButtonList from '../../ButtonList';
 import Carousel from '../../Carousel';
-import { Image } from '../../../atoms';
+import { DamImage, Image } from '../../../atoms';
 import LinkText from '../../LinkText';
 import PromoBanner from '../../PromoBanner';
 import { isGymboree, getScreenWidth, LAZYLOAD_HOST_NAME } from '../../../../../utils/index.native';
@@ -40,7 +40,7 @@ const ribbonLeftImage = require('../../../../../assets/module-a-ribbon-left.png'
 const ribbonRightImage = require('../../../../../assets/module-a-ribbon-right.png');
 
 // TODO: keys will be changed once we get the actual data from CMS
-const { ctaTypes } = config;
+const { ctaTypes, IMG_DATA_TCP, IMG_DATA_GYM } = config;
 
 const ribbonView = ({ ribbonBanner, navigation, position }) => {
   let ribbonConfig = {
@@ -96,11 +96,13 @@ const renderView = (item, navigation, position) => {
 
   return (
     <ContainerView>
-      <Image
+      <DamImage
         width={MODULE_WIDTH}
         height={isGymboree() ? MODULE_GYM_HEIGHT : MODULE_TCP_HEIGHT}
         url={image.url}
         host={LAZYLOAD_HOST_NAME.HOME}
+        crop={image.crop_m}
+        imgConfig={isGymboree() ? IMG_DATA_GYM.crops[0] : IMG_DATA_TCP.crops[0]}
       />
       <HeaderWrapper>
         <HeaderComponent>
