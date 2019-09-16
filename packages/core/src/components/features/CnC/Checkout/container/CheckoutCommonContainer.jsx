@@ -52,9 +52,9 @@ const {
   getAddEditResponseAddressId,
   getShippingAddress,
   getCheckoutProgressBarLabels,
+  getSyncError,
   getGiftWrappingValues,
   getReviewLabels,
-  getSyncError,
 } = selectors;
 
 export class CheckoutContainer extends React.Component<Props> {

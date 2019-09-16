@@ -11,6 +11,9 @@ exports[`CnCCommonTemplate Page should render correctly 1`] = `
     <Connect(OrderLedgerContainer) />
   </View>
   <Styled(View)>
+    <Connect(BonusPointsDays) />
+  </Styled(View)>
+  <Styled(View)>
     <Styled(TouchableOpacity)
       onPress={[MockFunction]}
     >
