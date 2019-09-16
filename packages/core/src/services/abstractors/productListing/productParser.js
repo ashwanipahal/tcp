@@ -245,6 +245,11 @@ const isBopisProductDisabled = product => {
     extractAttributeValue(product, processHelpers.getProductAttributes().bossCategoryDisabled) || 0
   );
 };
+
+/**
+ * This function returns product part no or product id if product part no does not exists
+ * @param {Object} product
+ */
 const getGeneralProductId = product => {
   return product.prodpartno || product.generalProductId;
 };
