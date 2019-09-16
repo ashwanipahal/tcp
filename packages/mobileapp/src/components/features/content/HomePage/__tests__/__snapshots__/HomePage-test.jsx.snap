@@ -275,7 +275,7 @@ exports[`HomePageView should render correctly 1`] = `
             "target": "",
             "text": "SHOP ALL",
             "title": "SHOP ALL",
-            "url": "http://www.google.com",
+            "url": "http://www.childrensplace.com",
           },
           "text": Object {
             "text": "GIRL",
@@ -291,7 +291,7 @@ exports[`HomePageView should render correctly 1`] = `
             "target": "",
             "text": "SHOP ALL",
             "title": "SHOP ALL",
-            "url": "http://www.google.com",
+            "url": "http://www.childrensplace.com",
           },
           "text": Object {
             "text": "TODDLER GIRL",
@@ -307,7 +307,7 @@ exports[`HomePageView should render correctly 1`] = `
             "target": "",
             "text": "SHOP ALL",
             "title": "SHOP ALL",
-            "url": "http://www.google.com",
+            "url": "http://www.childrensplace.com",
           },
           "text": Object {
             "text": "BOY",
@@ -323,7 +323,7 @@ exports[`HomePageView should render correctly 1`] = `
             "target": "",
             "text": "SHOP ALL",
             "title": "SHOP ALL",
-            "url": "http://www.google.com",
+            "url": "http://www.childrensplace.com",
           },
           "text": Object {
             "text": "TODDLER BOY",
@@ -344,7 +344,7 @@ exports[`HomePageView should render correctly 1`] = `
             "target": "",
             "text": "",
             "title": "",
-            "url": "http://www.google.com",
+            "url": "http://www.childrensplace.com",
           },
           "textItems": Array [
             Object {
@@ -369,7 +369,7 @@ exports[`HomePageView should render correctly 1`] = `
             "target": "",
             "text": "",
             "title": "",
-            "url": "http://www.google.com",
+            "url": "http://www.childrensplace.com",
           },
           "textItems": Array [
             Object {
