@@ -124,6 +124,7 @@ exports[`CreditCardForm component should renders correctly with address dropdown
                 fontWeight="regular"
                 isDefault={true}
                 showCountry={false}
+                showDefault={true}
                 showName={true}
                 showPhone={false}
               />,
@@ -346,6 +347,7 @@ exports[`CreditCardForm component should renders correctly with addressForm 1`] 
                 fontWeight="regular"
                 isDefault={true}
                 showCountry={false}
+                showDefault={true}
                 showName={true}
                 showPhone={false}
               />,

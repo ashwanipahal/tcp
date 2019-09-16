@@ -3,43 +3,59 @@ import { css } from 'styled-components';
 export default css`
   .recommendations-header {
     text-align: center;
+    margin: 32px 0 16px 0;
   }
 
-  .slick-arrow {
-    z-index: 1;
+  .recommendaton-cta-container {
+    text-align: center;
+    margin-top: 16px;
   }
 
-  .recommended_product {
-    display: block;
-  }
-
-  .recommended_product--image {
-    height: 267px;
-    position: relative;
-    img {
-      position: absolute;
-      top: 50%;
-      left: 50%;
-      transform: translate3d(-50%, -50%, 0);
+  .price-only {
+    .slick-arrow {
+      top: 40%;
     }
-    margin-bottom: 5px;
   }
 
-  .recommended_product--title {
-    color: ${props => props.theme.colorPalette.gray[900]};
-    font-weight: ${props => props.theme.typography.fontWeights.semibold};
-    font-size: ${props => props.theme.typography.fontSizes.fs16};
-    padding-top: 10px;
+  &.recommendations-tile {
+    .slick-arrow {
+      z-index: ${props => props.theme.zindex.zPLPFilterDropDown};
+      top: 30%;
+      transform: inherit;
+    }
+
+    .slick-list {
+      margin-right: -33%;
+    }
   }
 
-  .recommended_product--offerPrice {
-    padding-top: 5px;
-    color: ${props => props.theme.colorPalette.red[500]};
-    font-size: ${props => props.theme.typography.fontSizes.fs18};
+  .recommendation-cta {
+    width: 225px;
   }
 
-  .recommended_product--listPrice {
-    font-size: ${props => props.theme.typography.fontSizes.fs12};
-    color: ${props => props.theme.colorPalette.gray[100]};
+  @media ${props => props.theme.mediaQuery.medium} {
+    .recommendation-cta {
+      width: 162px;
+    }
+    &.recommendations-tile {
+      .slick-list {
+        margin-right: -20%;
+      }
+    }
+  }
+
+  @media ${props => props.theme.mediaQuery.large} {
+    .recommendations-header {
+      margin: 48px 0 16px 0;
+      font-size: 32px;
+    }
+    .recommendation-cta {
+      width: 210px;
+    }
+    &.recommendations-tile {
+      .slick-list {
+        margin-right: 0;
+      }
+    }
   }
 `;

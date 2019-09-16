@@ -6,7 +6,7 @@ const CouponDetailModalStyle = css`
   }
 
   .couponModal_btnWrapper {
-    width: 170px;
+    width: 225px;
     margin: 0 auto;
   }
   .couponModal_btn {
@@ -31,6 +31,7 @@ const CouponDetailModalStyle = css`
   }
   .couponModal_modalTitle {
     text-align: center;
+    margin-top: ${props => props.theme.spacing.ELEM_SPACING.MED};
     padding: 0 ${props => props.theme.spacing.ELEM_SPACING.XXL};
     margin-bottom: ${props => props.theme.spacing.ELEM_SPACING.MED};
     font-size: ${props => props.theme.typography.fontSizes.fs40};
@@ -53,10 +54,13 @@ const CouponDetailModalStyle = css`
     color: ${props => props.theme.colors.BLACK};
     border-top: 1px solid ${props => props.theme.colors.PRIMARY.GRAY};
     border-bottom: 1px solid ${props => props.theme.colors.PRIMARY.GRAY};
+    margin-top: ${props => props.theme.spacing.ELEM_SPACING.MED};
+    margin-bottom: ${props => props.theme.spacing.ELEM_SPACING.MED};
     text-align: center;
     width: 100%;
     svg {
       width: 50%;
+      height: 80px;
     }
     @media ${props => props.theme.mediaQuery.smallOnly} {
       svg {

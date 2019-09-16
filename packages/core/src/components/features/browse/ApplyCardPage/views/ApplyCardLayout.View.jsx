@@ -23,7 +23,7 @@ const getApplyCardLayoutView = (
   profileInfo,
   approvedPLCCData
 ) => {
-  if (plccUser || applicationStatus === constants.APPLICATION_STATE_EXISTING) {
+  if (applicationStatus === constants.APPLICATION_STATE_EXISTING) {
     return (
       <ExistingPLCCUserView
         bagItems={bagItems}

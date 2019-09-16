@@ -1,4 +1,4 @@
-import { fromJS } from 'immutable';
+import { fromJS, List } from 'immutable';
 import COUPON_CONSTANTS from '../Coupon.constants';
 import BAGPAGE_CONSTANTS from '../../../../BagPage/BagPage.constants';
 import CouponReducer from '../container/Coupon.reducer';
@@ -122,5 +122,17 @@ describe('Coupon Reducer', () => {
     });
 
     expect(newState.get('isFetching')).toEqual(false);
+  });
+
+  it('RESET_COUPON_STATE', () => {
+    const resetCouponStateAction = {
+      type: COUPON_CONSTANTS.RESET_COUPON_STATE,
+    };
+
+    const newState = CouponReducer(initialState, {
+      ...resetCouponStateAction,
+    });
+
+    expect(newState.get('couponsAndOffers')).toEqual(List([]));
   });
 });

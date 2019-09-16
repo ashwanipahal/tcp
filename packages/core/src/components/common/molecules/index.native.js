@@ -10,6 +10,7 @@ import PromoBanner from './PromoBanner';
 import ModuleA from './ModuleA';
 import ModuleB from './ModuleB';
 import ModuleJ from './ModuleJ';
+import ModuleR from './ModuleR';
 import ButtonTabs from './ButtonTabs';
 
 export {
@@ -25,5 +26,6 @@ export {
   ModuleA,
   ModuleB,
   ModuleJ,
+  ModuleR,
   ButtonTabs,
 };
