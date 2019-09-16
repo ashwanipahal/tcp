@@ -114,7 +114,7 @@ export class BillingPaymentForm extends React.PureComponent {
         message={this.getCVVInfoRichText({ cvvCodeRichText })}
         aligned="right"
       >
-        <Image className="tcp_carousel__play tooltip" src={getIconPath('info-icon')} />
+        <Image height="15" width="15" src={getIconPath('info-icon')} />
       </ReactTooltip>
     );
   };
@@ -169,7 +169,7 @@ export class BillingPaymentForm extends React.PureComponent {
         </Heading>
         {creditCardList && creditCardList.size > 0 && labels && (
           <>
-            <Row fullBleed className="elem-mb-XL">
+            <Row fullBleed className="elem-mb-XL elem-mt-MED">
               <Col
                 colSize={{
                   large: 6,
@@ -194,7 +194,7 @@ export class BillingPaymentForm extends React.PureComponent {
             <BodyCopy component="div" fontFamily="secondary" className="billing-payment-details">
               <BodyCopy
                 fontFamily="primary"
-                fontSize="fs28"
+                fontSize="fs26"
                 fontWeight="regular"
                 data-locator="billing-payment-details"
                 className="elem-mb-XS"
@@ -334,10 +334,10 @@ export class BillingPaymentForm extends React.PureComponent {
           <div className="payment-container">
             <BodyCopy
               fontFamily="primary"
-              fontSize="fs28"
+              fontSize="fs26"
               fontWeight="regular"
               data-locator="billing-details"
-              className="elem-mb-XS elem-mt-XL"
+              className="elem-mb-LRG elem-mt-XL"
             >
               {labels.lbl_billing_paymentMethodTitle}
             </BodyCopy>
