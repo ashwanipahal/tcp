@@ -74,6 +74,11 @@ export const getTotalProductsCount = createSelector(
   products => products && products.get('totalProductsCount')
 );
 
+export const getCurrentSearchForText = createSelector(
+  getProductListingState,
+  products => products && products.get('currentListingSearchForText')
+);
+
 export const getAppliedFilters = createSelector(
   getProductListingState,
   products => products && products.get('appliedFiltersIds')

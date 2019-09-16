@@ -24,6 +24,7 @@ import {
   getLoadedProductsPages,
   getTotalProductsCount,
   getProductsSelect,
+  getCurrentSearchForText,
 } from '../container/SearchDetail.selectors';
 
 import { isPlccUser } from '../../../account/User/container/User.selectors';
@@ -65,7 +66,7 @@ class SearchDetailContainer extends React.PureComponent {
       getProducts,
       onSubmit,
       onPickUpOpenClick,
-      searchedResult,
+      searchedText,
       ...otherProps
     } = this.props;
     return (
@@ -74,6 +75,7 @@ class SearchDetailContainer extends React.PureComponent {
         productsBlock={productsBlock}
         totalProductsCount={totalProductsCount}
         labels={labels}
+        searchedText={searchedText}
         {...otherProps}
       />
     );
@@ -103,6 +105,7 @@ function mapStateToProps(state) {
     unbxdId: getUnbxdId(state),
     totalProductsCount: getTotalProductsCount(state),
     navTree: getNavigationTree(state),
+    searchedText: getCurrentSearchForText(state),
     filtersLength,
     initialValues: {
       ...getAppliedFilters(state),
