@@ -34,8 +34,9 @@ exports[`Recommendations Module O price only variation Recommendations Module O 
       <Styled(Carousel)
         carouselConfig={
           Object {
-            "customArrowLeft": "/static/images/left-carousel-caret.svg",
-            "customArrowRight": "/static/images/right-carousel-caret.svg",
+            "customArrowLeft": "/static/images/left-carousel-carrot.svg",
+            "customArrowRight": "/static/images/right-carousel-carrot.svg",
+            "variation": "big-arrows",
           }
         }
         inheritedStyles={
@@ -426,8 +427,9 @@ exports[`Recommendations Module O show button variation Recommendations Module O
       <Styled(Carousel)
         carouselConfig={
           Object {
-            "customArrowLeft": "/static/images/left-carousel-caret.svg",
-            "customArrowRight": "/static/images/right-carousel-caret.svg",
+            "customArrowLeft": "/static/images/left-carousel-carrot.svg",
+            "customArrowRight": "/static/images/right-carousel-carrot.svg",
+            "variation": "big-arrows",
           }
         }
         inheritedStyles={
@@ -841,8 +843,9 @@ exports[`Recommendations component renders correctly 1`] = `
       <Styled(Carousel)
         carouselConfig={
           Object {
-            "customArrowLeft": "/static/images/left-carousel-caret.svg",
-            "customArrowRight": "/static/images/right-carousel-caret.svg",
+            "customArrowLeft": "/static/images/left-carousel-carrot.svg",
+            "customArrowRight": "/static/images/right-carousel-carrot.svg",
+            "variation": "big-arrows",
           }
         }
         inheritedStyles={
