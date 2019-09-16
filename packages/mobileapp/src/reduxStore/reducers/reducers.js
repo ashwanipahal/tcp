@@ -28,7 +28,6 @@ import GetCandidReducer from '@tcp/core/src/components/common/molecules/GetCandi
 import AddMailingAddressReducer from '@tcp/core/src/components/features/account/MyProfile/organism/MailingInformation/container/MailingAddress.reducer';
 import UpdateProfileReducer from '@tcp/core/src/components/features/account/AddEditPersonalInformation/container/AddEditPersonalInformation.reducer';
 import MyProfileReducer from '@tcp/core/src/components/features/account/MyProfile/container/MyProfile.reducer';
-import LOGOUT_CONSTANTS from '@tcp/core/src/components/features/account/Logout/LogOut.constants';
 import ProductDetailReducer from '@tcp/core/src/components/features/browse/ProductDetail/container/ProductDetail.reducer';
 
 import {
@@ -106,7 +105,7 @@ const filteredAppConfigReducer = createFilteredReducer(ApiConfigReducer, APICONF
 
 const filteredGetCandidReducer = createFilteredReducer(GetCandidReducer, GET_CANDID_REDUCER_KEY);
 
-const appReducer = combineReducers({
+const rootReducer = combineReducers({
   [APICONFIG_REDUCER_KEY]: filteredAppConfigReducer,
   [TOAST_REDUCER_KEY]: ToastMessageReducer,
   [SESSIONCONFIG_REDUCER_KEY]: SessionConfigReducer,
@@ -146,13 +145,5 @@ const appReducer = combineReducers({
   [UPDATE_PROFILE_REDUCER_KEY]: UpdateProfileReducer,
   [MY_PROFILE_REDUCER_KEY]: MyProfileReducer,
 });
-
-const rootReducer = (state, action) => {
-  if (action.type === LOGOUT_CONSTANTS.USER_LOGOUT) {
-    // eslint-disable-next-line no-param-reassign
-    delete state.CouponsAndPromos; // reset the coupon and promo state
-  }
-  return appReducer(state, action);
-};
 
 export default rootReducer;

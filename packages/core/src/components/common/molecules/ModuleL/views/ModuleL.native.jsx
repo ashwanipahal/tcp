@@ -2,7 +2,7 @@
 import React from 'react';
 import { FlatList } from 'react-native';
 import { getLocator, getScreenWidth, LAZYLOAD_HOST_NAME } from '../../../../../utils/index.native';
-import { Image, BodyCopy, Anchor } from '../../../atoms';
+import { DamImage, BodyCopy, Anchor } from '../../../atoms';
 import PromoBanner from '../../PromoBanner';
 import LinkText from '../../LinkText';
 import {
@@ -13,6 +13,7 @@ import {
   LinkContainer,
   ListContainer,
 } from '../ModuleL.styles.native';
+import config from '../config';
 
 type Props = {
   imageGrid: Array<Object>,
@@ -52,11 +53,13 @@ const renderItem = (item, navigation) => {
       testID={`${getLocator('moduleL_tiles')}${index + 1}`}
     >
       <ChildContainer bgClass={item.item.class.class}>
-        <Image
+        <DamImage
           url={image.url}
           height={127}
           crop={image.crop_m}
           testID={`${getLocator('moduleL_image')}${index + 1}`}
+          imgConfig={config.IMG_DATA.crops[0]}
+          alt={image.alt}
           host={LAZYLOAD_HOST_NAME.HOME}
         />
         <MessageContainer>
