@@ -14,15 +14,3 @@ export const VENMO_USER_STATES = {
 };
 
 export const noop = () => {};
-
-/**
- * Runs promises in a serial in lieu of parallel like in Promises.all()
- * @param funcs
- * @return {*}
- */
-export const runPromisesInSerial = funcs =>
-  funcs.reduce(
-    (promise, func) =>
-      promise.then(results => Promise.resolve(func()).then(result => [...results, result])),
-    Promise.resolve([])
-  );
