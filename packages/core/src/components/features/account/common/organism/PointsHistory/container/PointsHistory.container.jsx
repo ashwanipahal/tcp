@@ -18,11 +18,11 @@ export class PointsHistoryContainer extends React.PureComponent {
    * @return   {[Object]} JSX of the component
    */
   render() {
-    const { labels, pointHistory, showFullHistory } = this.props;
+    const { labels, pointHistory, showFullHistory, ...otherprops } = this.props;
     if (showFullHistory) {
       return <PointsHistoryList pointHistory={pointHistory} labels={labels} />;
     }
-    return <PointsHistory pointHistory={pointHistory} labels={labels} />;
+    return <PointsHistory pointHistory={pointHistory} labels={labels} {...otherprops} />;
   }
 }
 
