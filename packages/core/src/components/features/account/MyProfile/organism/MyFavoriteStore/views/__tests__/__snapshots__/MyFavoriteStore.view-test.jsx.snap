@@ -1,0 +1,50 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`MyFavoriteStore Component MyFavoriteStore should render correctly 1`] = `
+<StyledComponent
+  defaultStore="123"
+  favStoreAddress="123 Street"
+  favStoreCity="NY"
+  favStoreName="TCP"
+  favStorePhone="2343434343"
+  favStoreState="CA"
+  favStoreZipcode="23424"
+  forwardedComponent={
+    Object {
+      "$$typeof": Symbol(react.forward_ref),
+      "attrs": Array [],
+      "componentStyle": ComponentStyle {
+        "componentId": "sc-EHOje",
+        "isStatic": true,
+        "rules": Array [
+          "
+  ",
+          "
+
+  .favStoreData {
+        padding:0;
+  }
+",
+          ";
+",
+        ],
+      },
+      "displayName": "Styled(MyFavoriteStore)",
+      "foldedComponentIds": Array [],
+      "render": [Function],
+      "styledComponentId": "sc-EHOje",
+      "target": [Function],
+      "toString": [Function],
+      "warnTooManyClasses": [Function],
+      "withComponent": [Function],
+    }
+  }
+  forwardedRef={null}
+  labels={
+    Object {
+      "myFavoriteStore": "My Fav store",
+      "updateFavoriteStore": "Update store",
+    }
+  }
+/>
+`;
