@@ -184,7 +184,7 @@ export const navigateToPage = (url, navigation) => {
        * /p/Rainbow--The-Birthday-Girl--Graphic-Tee-2098277-10
        * If url starts with “/p” → Create and navigate to a page in stack for Products (Blank page with a Text - “Product List”)
        */
-      return navigate('ProductListing', {
+      return navigate('ProductLanding', {
         product: title,
       });
     case URL_PATTERN.CATEGORY_LANDING:
