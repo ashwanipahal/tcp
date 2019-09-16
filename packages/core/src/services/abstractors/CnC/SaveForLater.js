@@ -26,7 +26,9 @@ export function formatSflItems(sflResponse, imageGenerator, currencyCode, isCana
         productPartNumber: item.productInfo && item.productInfo.productPartNumber,
         skuId: isGiftCard ? item.productId : item.itemCatentryId.toString(),
         name: sanitizeEntity(item.productInfo.productName),
-        imagePath: imageGenerator(item.productInfo.productPartNumber).productImages[500],
+        imagePath: imageGenerator(item.productInfo.productPartNumber)
+          ? imageGenerator(item.productInfo.productPartNumber).productImages[500]
+          : '',
         size: sizeAndFit ? sizeAndFit.TCPSize : item.itemUnitDstPrice, // giftCard Size is its price
         fit: sizeAndFit ? sizeAndFit.TCPFit : null, // no fit for gift cards
         pdpUrl: item.productUrl.replace(/&amp;/g, '&'),
@@ -34,7 +36,9 @@ export function formatSflItems(sflResponse, imageGenerator, currencyCode, isCana
           name: item.productInfo.productColor
             ? item.productInfo.productColor
             : item.productInfo.productName,
-          imagePath: imageGenerator(item.productInfo.productThumbnail).colorSwatch,
+          imagePath: imageGenerator(item.productInfo.productThumbnail)
+            ? imageGenerator(item.productInfo.productThumbnail).colorSwatch
+            : '',
         },
         isGiftCard: isGiftCard,
         colorFitSizeDisplayNames: isGiftCard ? { color: 'Design', size: 'Value' } : {},
