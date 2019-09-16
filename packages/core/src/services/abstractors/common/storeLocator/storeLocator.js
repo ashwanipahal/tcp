@@ -1,5 +1,3 @@
-/* istanbul ignore file */
-/* eslint-disable complexity */
 import { executeStatefulAPICall } from '../../../handler';
 import { formatPhoneNumber } from '../../../../utils/formValidation/phoneNumber';
 import { parseStoreHours } from '../../../../utils/parseStoreHours';
@@ -48,7 +46,16 @@ export const getAddress = storeDetails => {
   };
 };
 
-// eslint-disable-next-line sonarjs/cognitive-complexity
+export const getStoreNameVal = storeDetails => {
+  return sanitizeEntity(
+    (storeDetails.description && storeDetails.description.displayStoreName) ||
+      (storeDetails.Description &&
+        storeDetails.Description[0] &&
+        storeDetails.Description[0].displayStoreName) ||
+      (storeDetails.storeName || storeDetails.name || '')
+  );
+};
+
 export const getBasicInfo = storeDetails => {
   const id = (
     storeDetails.uniqueId ||
@@ -56,13 +63,7 @@ export const getBasicInfo = storeDetails => {
     storeDetails.storeUniqueID ||
     storeDetails.stLocId
   ).toString();
-  const storeNameVal = sanitizeEntity(
-    (storeDetails.description && storeDetails.description.displayStoreName) ||
-      (storeDetails.Description &&
-        storeDetails.Description[0] &&
-        storeDetails.Description[0].displayStoreName) ||
-      (storeDetails.storeName || storeDetails.name || '')
-  );
+  const storeNameVal = getStoreNameVal(storeDetails);
   const phoneNumber =
     formatPhoneNumber(storeDetails.telephone1 || storeDetails.phone || storeDetails.phone1) || '';
   return {
@@ -88,6 +89,15 @@ export const getDistance = ({ distance, distanceFromUserToStore }) => {
   return null;
 };
 
+export const getStoreTypeDetail = ({ storeType, addressLineDetail, address3 }) => {
+  return (
+    storeType ||
+    (addressLineDetail && addressLineDetail[addressLineDetail.length - 1]) ||
+    address3 ||
+    ''
+  );
+};
+
 export const getStoreStatus = (storeDetails, requestedQuantity) => {
   if (storeDetails.itemAvailability[0].qty < requestedQuantity) {
     return BOPIS_ITEM_AVAILABILITY.UNAVAILABLE;
@@ -101,7 +111,39 @@ export const getStoreStatus = (storeDetails, requestedQuantity) => {
   return BOPIS_ITEM_AVAILABILITY.LIMITED;
 };
 
-// eslint-disable-next-line sonarjs/cognitive-complexity
+export const getStoreParameters = ({
+  storehours,
+  Attribute,
+  storeDetails,
+  addressLine,
+  attribute,
+}) => {
+  let hoursOfOperation;
+  let addressLineDetail;
+
+  // Sometimes addressLine is returned as an array
+  // Sometimes addressLine is returned as an object with numerical properties (WHY???)
+  // If addressLine is object, convert to array
+  if (addressLine && typeof addressLine === 'object' && !Array.isArray(addressLine)) {
+    addressLineDetail = Object.keys(addressLine).map(key => addressLine[key]);
+  }
+
+  // Backend's API structure for stores are never the same, so i am checking a few differant places for storeDetails hours
+  if (storehours) {
+    hoursOfOperation = storehours.storehours;
+  }
+  if (Attribute && Attribute[0]) {
+    hoursOfOperation = JSON.parse(Attribute[0].displayValue || '{}').storehours;
+  }
+  if (storeDetails.attribute) {
+    hoursOfOperation = JSON.parse(attribute.displayValue || '{}').storehours;
+  }
+  return {
+    addressLineDetail,
+    hoursOfOperation,
+  };
+};
+
 export const storeResponseParser = (storeDetails, configs = { requestedQuantity: 0 }) => {
   const { requestedQuantity } = configs;
   const {
@@ -118,34 +160,18 @@ export const storeResponseParser = (storeDetails, configs = { requestedQuantity:
     isStoreBopisSelected,
     itemAvailability,
   } = storeDetails;
-  let hoursOfOperation;
-  let addressLineDetail;
 
-  // Sometimes addressLine is returned as an array
-  // Sometimes addressLine is returned as an object with numerical properties (WHY???)
-  // If addressLine is object, convert to array
-  if (addressLine && typeof addressLine === 'object' && !Array.isArray(addressLine)) {
-    addressLineDetail = Object.keys(addressLine).map(key => addressLine[key]);
-  }
+  const { hoursOfOperation, addressLineDetail } = getStoreParameters({
+    storehours,
+    Attribute,
+    storeDetails,
+    addressLine,
+    attribute,
+  });
 
   // Sometimes storeType is explicitly defined
   // Sometimes storeType needs to be determined using address
-  const storeTypeDetail =
-    storeType ||
-    (addressLineDetail && addressLineDetail[addressLineDetail.length - 1]) ||
-    address3 ||
-    '';
-
-  // Backend's API structure for stores are never the same, so i am checking a few differant places for storeDetails hours
-  if (storehours) {
-    hoursOfOperation = storehours.storehours;
-  }
-  if (Attribute && Attribute[0]) {
-    hoursOfOperation = JSON.parse(Attribute[0].displayValue || '{}').storehours;
-  }
-  if (storeDetails.attribute) {
-    hoursOfOperation = JSON.parse(attribute.displayValue || '{}').storehours;
-  }
+  const storeTypeDetail = getStoreTypeDetail({ storeType, addressLineDetail, address3 });
 
   // Parse Store Info
   const storeFilteredInfo = {
