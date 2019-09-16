@@ -449,11 +449,12 @@ export const formatPhone = (phoneNum, hyphenFormat) => {
   return phone;
 };
 
-export function parseStoreHours(hoursOfOperation) {
+export const parseStoreHours = hoursOfOperation => {
   let carryOverClosingHour;
   const result = [];
-  // eslint-disable-next-line
-  for (let day of hoursOfOperation) {
+  const keysOfHoursOfOperation = Object.keys(hoursOfOperation);
+  keysOfHoursOfOperation.forEach(key => {
+    const day = hoursOfOperation[key];
     // store was opened on the previous date and closing today,
     // so we need to push it as the first opening time of today
     if (carryOverClosingHour) {
@@ -465,14 +466,8 @@ export function parseStoreHours(hoursOfOperation) {
       carryOverClosingHour = null;
     }
 
-    // const parsableFromDate = day.availability[0].from.replace('T', ' ');
-    // const parsableToDate = day.availability[day.availability.length - 1].to.replace('T', ' ');
-    // const fromDate = parseDate(parsableFromDate);
-    // const toDate = parseDate(parsableToDate);
-
     const storeHours = {
       dayName: day.nick.toUpperCase() || '',
-      // eslint-disable-next-line
       openIntervals: day.availability.map(availability => {
         const parsableFromDate = availability.from.replace('T', ' ');
         let parsableToDate = availability.to.replace('T', ' ');
@@ -500,10 +495,10 @@ export function parseStoreHours(hoursOfOperation) {
     };
 
     result.push(storeHours);
-  }
+  });
 
   return result;
-}
+};
 
 export default {
   getPromotionalMessage,

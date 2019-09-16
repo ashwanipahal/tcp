@@ -1,4 +1,4 @@
-/* eslint-disable */
+/* eslint-disable extra-rules/no-commented-out-code */
 import { executeStatefulAPICall } from '../../handler';
 import endpoints from '../../endpoints';
 import { sanitizeEntity, formatPhone, parseStoreHours } from '../../../utils';
@@ -14,35 +14,20 @@ export const STORE_TYPES = {
   OUTLET: 'Outlet',
 };
 
-/** @function storeAPIParser
- *   @summary This is the main function that should be used when trying to parse backends apis that return store information
- *   @param {Object} store - The store object exactly how backend sends it in their API
- *   @param {Object} configs - options to apply, somtimes we want some conditionaly set values
- *   @param {Number} configs.requestedQuantity - if passed this will affect a store's product status flag if not passed we will take the as its status from the API, (itemAvailability.qty < requestedQuantity) ? AVAILABILITY.UNAVAILABLE : AVAILABILITY.OK
- */
+const shouldFetchAddressLine = store => {
+  return (
+    store.addressLine && typeof store.addressLine === 'object' && !Array.isArray(store.addressLine)
+  );
+};
 
-// eslint-disable-next-line
-function storeAPIParser(store, configs = { requestedQuantity: 0 }) {
-  const { requestedQuantity } = configs;
+const fetchStoreType = (store, addressLine) => {
+  return (
+    store.storeType || (addressLine && addressLine[addressLine.length - 1]) || store.address3 || ''
+  );
+};
+
+const getHoursOfOperation = store => {
   let hoursOfOperation;
-  let addressLine;
-
-  // Sometimes addressLine is returned as an array
-  // Sometimes addressLine is returned as an object with numerical properties (WHY???)
-  // If addressLine is object, convert to array
-  if (
-    store.addressLine &&
-    typeof store.addressLine === 'object' &&
-    !Array.isArray(store.addressLine)
-  ) {
-    addressLine = Object.keys(store.addressLine).map(key => store.addressLine[key]);
-  }
-
-  // Sometimes storeType is explicitly defined
-  // Sometimes storeType needs to be determined using address
-  const storeType =
-    store.storeType || (addressLine && addressLine[addressLine.length - 1]) || store.address3 || '';
-
   // Backend's API structure for stores are never the same, so i am checking a few differant places for store hours
   if (store.storehours) {
     hoursOfOperation = store.storehours.storehours;
@@ -51,6 +36,117 @@ function storeAPIParser(store, configs = { requestedQuantity: 0 }) {
   } else if (store.attribute) {
     hoursOfOperation = JSON.parse(store.attribute.displayValue || '{}').storehours;
   }
+  return hoursOfOperation;
+};
+
+const getStoreType = storeType => {
+  return STORE_TYPES[storeType] || (storeType === 'PLACE' && STORE_TYPES.RETAIL) || '';
+};
+
+const basicInfoId = store => {
+  return (
+    store.uniqueID ||
+    store.uniqueId ||
+    store.storeLocId ||
+    store.storeUniqueID ||
+    store.stLocId
+  ).toString();
+};
+
+const getIsDefault = preferredStore => {
+  return preferredStore || false;
+};
+
+const getStoreAddress = store => {
+  return store.address1 || store.streetLine1 || (store.addressLine && store.addressLine[0]);
+};
+
+const getState = store => {
+  return store.stateOrProvinceName || store.state;
+};
+
+const getZipcode = store => {
+  return (store.zipCode || store.postalCode || store.postalcode || store.zipcode).trim();
+};
+
+const getStoreName = store => {
+  return (
+    (store.description && store.description.displayStoreName) ||
+    (store.Description && store.Description[0] && store.Description[0].displayStoreName) ||
+    store.storeName ||
+    store.name ||
+    ''
+  );
+};
+const getBasicInfo = store => {
+  return {
+    id: basicInfoId(store),
+    storeName: sanitizeEntity(getStoreName(store)),
+    isDefault: getIsDefault(store.preferredStore),
+    address: {
+      addressLine1: sanitizeEntity(getStoreAddress(store)),
+      city: store.city,
+      state: getState(store),
+      country: store.country,
+      zipCode: getZipcode(store),
+    },
+    phone: formatPhone(store.telephone1 || store.phone || store.phone1) || '',
+    coordinates: {
+      lat: parseFloat(store.latitude),
+      long: parseFloat(store.longitude),
+    },
+  };
+};
+
+const getProductAvailability = (store, altProductAvailability1, requestedQuantity) => {
+  return store.itemAvailability && store.itemAvailability[0]
+    ? {
+        skuId: store.itemAvailability[0].itemId,
+        status:
+          store.itemAvailability[0].qty < requestedQuantity
+            ? BOPIS_ITEM_AVAILABILITY.UNAVAILABLE
+            : altProductAvailability1,
+        quantity: store.itemAvailability[0].qty,
+      }
+    : {};
+};
+
+/** @function storeAPIParser
+ *   @summary This is the main function that should be used when trying to parse backends apis that return store information
+ *   @param {Object} store - The store object exactly how backend sends it in their API
+ *   @param {Object} configs - options to apply, somtimes we want some conditionaly set values
+ *   @param {Number} configs.requestedQuantity - if passed this will affect a store's product status flag if not passed we will take the as its status from the API, (itemAvailability.qty < requestedQuantity) ? AVAILABILITY.UNAVAILABLE : AVAILABILITY.OK
+ */
+
+function storeAPIParser(store, configs = { requestedQuantity: 0 }) {
+  const { requestedQuantity } = configs;
+  let addressLine;
+
+  // Sometimes addressLine is returned as an array
+  // Sometimes addressLine is returned as an object with numerical properties (WHY???)
+  // If addressLine is object, convert to array
+  if (shouldFetchAddressLine(store)) {
+    addressLine = Object.keys(store.addressLine).map(key => store.addressLine[key]);
+  }
+
+  // Sometimes storeType is explicitly defined
+  // Sometimes storeType needs to be determined using address
+  const storeType = fetchStoreType(store, addressLine);
+  const hoursOfOperation = getHoursOfOperation(store);
+
+  const distanceAlt = store.distanceFromUserToStore
+    ? parseFloat(store.distanceFromUserToStore).toFixed(2)
+    : null;
+
+  const altProductAvailability2 =
+    store.itemAvailability[0].itemStatus === 'UNAVAILABLE'
+      ? BOPIS_ITEM_AVAILABILITY.UNAVAILABLE
+      : BOPIS_ITEM_AVAILABILITY.LIMITED;
+
+  const altProductAvailability1 =
+    store.itemAvailability[0].itemStatus === 'AVAILABLE'
+      ? BOPIS_ITEM_AVAILABILITY.AVAILABLE
+      : altProductAvailability2;
 
   // Parse Store Info
   const storeFilteredInfo = {
@@ -69,67 +165,19 @@ function storeAPIParser(store, configs = { requestedQuantity: 0 }) {
       isStoreBopisSelected:
         store.isStoreBopisSelected !== undefined ? store.isStoreBopisSelected : true,
     },
-    distance: store.distance
-      ? parseFloat(store.distance).toFixed(2)
-      : store.distanceFromUserToStore
-      ? parseFloat(store.distanceFromUserToStore).toFixed(2)
-      : null,
-    basicInfo: {
-      id: (
-        store.uniqueID ||
-        store.uniqueId ||
-        store.storeLocId ||
-        store.storeUniqueID ||
-        store.stLocId
-      ).toString(),
-      storeName: sanitizeEntity(
-        (store.description && store.description.displayStoreName) ||
-          (store.Description && store.Description[0] && store.Description[0].displayStoreName) ||
-          store.storeName ||
-          store.name ||
-          ''
-      ),
-      isDefault: store.preferredStore || false,
-      address: {
-        addressLine1: sanitizeEntity(
-          store.address1 || store.streetLine1 || (store.addressLine && store.addressLine[0])
-        ),
-        city: store.city,
-        state: store.stateOrProvinceName || store.state,
-        country: store.country,
-        zipCode: (store.zipCode || store.postalCode || store.postalcode || store.zipcode).trim(),
-      },
-      phone: formatPhone(store.telephone1 || store.phone || store.phone1) || '',
-      coordinates: {
-        lat: parseFloat(store.latitude),
-        long: parseFloat(store.longitude),
-      },
-    },
+    distance: store.distance ? parseFloat(store.distance).toFixed(2) : distanceAlt,
+    basicInfo: getBasicInfo(store),
     hours: {
       regularHours: [],
       holidayHours: [],
       regularAndHolidayHours: [],
     },
     features: {
-      storeType: STORE_TYPES[storeType] || (storeType === 'PLACE' && STORE_TYPES.RETAIL) || '',
+      storeType: getStoreType(storeType),
       mallType: store.x_mallType,
       entranceType: store.x_entranceType,
     },
-    productAvailability:
-      store.itemAvailability && store.itemAvailability[0]
-        ? {
-            skuId: store.itemAvailability[0].itemId,
-            status:
-              store.itemAvailability[0].qty < requestedQuantity
-                ? BOPIS_ITEM_AVAILABILITY.UNAVAILABLE
-                : store.itemAvailability[0].itemStatus === 'AVAILABLE'
-                ? BOPIS_ITEM_AVAILABILITY.AVAILABLE
-                : store.itemAvailability[0].itemStatus === 'UNAVAILABLE'
-                ? BOPIS_ITEM_AVAILABILITY.UNAVAILABLE
-                : BOPIS_ITEM_AVAILABILITY.LIMITED,
-            quantity: store.itemAvailability[0].qty,
-          }
-        : {},
+    productAvailability: getProductAvailability(store, altProductAvailability1, requestedQuantity),
   };
 
   // Parse Store Hours
