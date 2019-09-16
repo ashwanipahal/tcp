@@ -4,7 +4,11 @@ import CustomImage from '../views/CustomImage.view.native';
 
 describe('CustomImage component', () => {
   const props = {
-    imageSource: '',
+    source: null,
+    url: null,
+    width: 100, // sample default value
+    height: 100, // sample default value
+    resizeMode: 'contain',
   };
   it('should renders CustomImage correctly', () => {
     const component = shallow(<CustomImage {...props} />);
