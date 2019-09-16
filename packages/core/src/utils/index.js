@@ -48,5 +48,6 @@ export {
   calculateAge,
   getLabelValue,
   getBirthDateOptionMap,
+  childOptionsMap,
   generateUniqueKeyUsingLabel,
 } from './utils';

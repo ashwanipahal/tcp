@@ -6,12 +6,14 @@ import Col from '@tcp/core/src/components/common/atoms/Col';
 import BodyCopy from '@tcp/core/src/components/common/atoms/BodyCopy';
 import Button from '@tcp/core/src/components/common/atoms/Button';
 import withStyles from '@tcp/core/src/components/common/hoc/withStyles';
+import { getBirthDateOptionMap, childOptionsMap } from '@tcp/core/src/utils';
 import Notification from '@tcp/core/src/components/common/molecules/Notification';
 import styles from '../styles/BirthdaySavingsList.style';
 import BirthdayCardComponent from '../../../molecule/BirthdayCard';
 import EmptyBirthdayCard from '../../../molecule/EmptyBirthdayCard';
 import constants from '../BirthdaySavingsList.constants';
 import { getLabelValue } from '../../../../../../../utils';
+import AddChildBirthdayForm from '../../../molecule/AddChild';
 
 /**
  * Functional component to render Birthday Saving Info Message
@@ -45,6 +47,7 @@ export class BirthdaySavingsList extends PureComponent {
     super(props);
     this.state = {
       removeModal: false,
+      addModal: false,
       activeChild: null,
     };
   }
@@ -53,6 +56,7 @@ export class BirthdaySavingsList extends PureComponent {
     const { status } = this.props;
     if (status === 'success' && status !== prevProps.status) {
       this.closeRemoveModal();
+      this.closeAddModal();
     }
   }
 
@@ -119,6 +123,27 @@ export class BirthdaySavingsList extends PureComponent {
   };
 
   /**
+   * @function showRemoveModal
+   * @description This function will handle showing of remove Children Birthday Confirmation Modal
+   * @param {object} activeChild Current active children information to be removed
+   */
+  showAddModal = () => {
+    this.setState({
+      addModal: true,
+    });
+  };
+
+  /**
+   * @function closeRemoveModal
+   * @description This function will handle closing of remove Children Birthday Confirmation Modal
+   */
+  closeAddModal = () => {
+    this.setState({
+      addModal: false,
+    });
+  };
+
+  /**
    * @function removeBirthdayHandler
    * @description This function will call removeBirthday prop with required params
    * @param {object} activeChild Current active children information to be removed
@@ -129,9 +154,20 @@ export class BirthdaySavingsList extends PureComponent {
   };
 
   render() {
-    const { labels, childrenBirthdays, view, className, status, message } = this.props;
+    const {
+      labels,
+      childrenBirthdays,
+      view,
+      className,
+      status,
+      message,
+      addChildBirthday,
+    } = this.props;
     const isEditMode = view === 'edit';
-    const { removeModal, activeChild } = this.state;
+    const { removeModal, activeChild, addModal } = this.state;
+    const yearOptionsMap = getBirthDateOptionMap();
+    const childOptions = childOptionsMap();
+
     if (isEditMode || (childrenBirthdays && childrenBirthdays.size > 0)) {
       const birthdays = childrenBirthdays
         ? childrenBirthdays.setSize(constants.MAX_BIRTHDAY_CARDS)
@@ -165,7 +201,11 @@ export class BirthdaySavingsList extends PureComponent {
                       removeBirthday={this.showRemoveModal}
                     />
                   ) : (
-                    <EmptyBirthdayCard labels={labels} view={view} />
+                    <EmptyBirthdayCard
+                      labels={labels}
+                      view={view}
+                      addBirthday={this.showAddModal}
+                    />
                   )}
                 </Col>
               );
@@ -212,6 +252,17 @@ export class BirthdaySavingsList extends PureComponent {
               </Row>
             </div>
           )}
+          {addModal && (
+            <AddChildBirthdayForm
+              birthMonthOptionsMap={yearOptionsMap.monthsMap}
+              birthYearOptionsMap={childOptions.yearsMap}
+              timestamp={new Date()}
+              childOptions={childOptions.genderMap}
+              closeAddModal={this.closeAddModal}
+              onSubmit={addChildBirthday}
+              addChildBirthdayLabels={labels}
+            />
+          )}
         </div>
       );
     }
@@ -227,6 +278,7 @@ BirthdaySavingsList.propTypes = {
   removeBirthday: PropTypes.func,
   status: PropTypes.string,
   message: PropTypes.string,
+  addChildBirthday: PropTypes.func,
 };
 
 BirthdaySavingsList.defaultProps = {
@@ -235,6 +287,7 @@ BirthdaySavingsList.defaultProps = {
   removeBirthday: () => {},
   status: '',
   message: '',
+  addChildBirthday: () => {},
 };
 
 export default withStyles(BirthdaySavingsList, styles);

@@ -35,7 +35,7 @@ const internalEndpoints = {
   },
   birthdaySavingsPage: {
     link: '/account?id=profile&subSection=birthday-savings',
-    path: profilePath,
+    path: `${profilePath}/birthday-savings`,
   },
 };
 

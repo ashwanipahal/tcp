@@ -5,6 +5,17 @@ const validExpirationDate = 'lbl_err_validexpirationedate';
 const ssnMessage = 'lbl_err_ssnumber_ssn';
 
 export const formValidationMessages = {
+  gender: {
+    required: 'lbl_err_gender_required',
+  },
+  childName: {
+    nonEmpty: 'lbl_err_name_nonempty',
+    name: 'lbl_err_name_name',
+    maxLength: 'lbl_err_name_maxlength',
+  },
+  acceptAddChildAgreement: {
+    required: 'lbl_err_accept_tna_required',
+  },
   addressLine1: {
     required: validStreetAddress,
     address: 'lbl_err_addressline1_address',
@@ -154,6 +165,17 @@ export const formValidationMessages = {
 };
 
 export const formValidationRules = {
+  gender: {
+    required: true,
+  },
+  childName: {
+    nonEmpty: true,
+    name: true,
+    maxLength: 50,
+  },
+  acceptAddChildAgreement: {
+    required: true,
+  },
   addressLine1: {
     required: true,
     address: true,

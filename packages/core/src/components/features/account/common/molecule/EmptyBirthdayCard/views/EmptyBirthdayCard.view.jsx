@@ -12,7 +12,7 @@ import styles from '../styles/EmptyBirthdayCard.style';
  * @param { string } props.view
  * @param { object } props.labels
  */
-export const EmptyBirthdayCard = ({ className, view, labels }) => {
+export const EmptyBirthdayCard = ({ className, view, labels, addBirthday }) => {
   return (
     <BodyCopy component="div" className={className} textAlign="center">
       {view === 'edit' && (
@@ -20,7 +20,15 @@ export const EmptyBirthdayCard = ({ className, view, labels }) => {
           <BodyCopy component="span" fontSize="fs14" className="elem-mr-XXS">
             +
           </BodyCopy>
-          <Anchor underline fontSizeVariation="large" data-locator="addAChildLnk">
+          <Anchor
+            underline
+            fontSizeVariation="large"
+            anchorVariation="primary"
+            data-locator="addAChildLnk"
+            handleLinkClick={addBirthday}
+            noLink
+            to="#"
+          >
             {labels.lbl_profile_addChildBirthdayCta}
           </Anchor>
         </div>
@@ -33,10 +41,12 @@ EmptyBirthdayCard.propTypes = {
   className: PropTypes.string.isRequired,
   labels: PropTypes.shape({}).isRequired,
   view: PropTypes.oneOf(['read', 'edit']),
+  addBirthday: PropTypes.func,
 };
 
 EmptyBirthdayCard.defaultProps = {
   view: 'edit',
+  addBirthday: () => {},
 };
 
 export default withStyles(EmptyBirthdayCard, styles);

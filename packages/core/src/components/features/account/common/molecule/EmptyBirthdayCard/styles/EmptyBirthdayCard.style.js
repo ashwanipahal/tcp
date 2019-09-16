@@ -8,6 +8,10 @@ const styles = css`
   align-items: center;
   justify-content: space-around;
   height: ${constants.BIRTHDAY_CARD_HEIGHT};
+
+  .emptyBirthdayCard--active {
+    background-color: red;
+  }
 `;
 
 export default styles;
