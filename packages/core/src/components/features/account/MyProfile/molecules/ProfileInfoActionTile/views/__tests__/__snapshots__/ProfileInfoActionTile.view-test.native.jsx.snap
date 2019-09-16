@@ -6,9 +6,11 @@ exports[`ProfileInfoActionTile should render correctly 1`] = `
 >
   <Styled(Styled(ImageComp))
     alt="test"
+    host=""
     resizeMode="contain"
     source="/test"
     title="test"
+    url=""
   />
   <View>
     <Styled(BodyCopy)
@@ -32,18 +34,22 @@ exports[`ProfileInfoActionTile should render correctly when activityCompletionSt
 >
   <Styled(Styled(ImageComp))
     alt="test"
+    host=""
     source={
       Object {
         "testUri": "../../../../core/src/assets/done.png",
       }
     }
     title="test"
+    url=""
   />
   <Styled(Styled(ImageComp))
     alt="test"
+    host=""
     resizeMode="contain"
     source="/test"
     title="test"
+    url=""
   />
   <View>
     <Styled(BodyCopy)

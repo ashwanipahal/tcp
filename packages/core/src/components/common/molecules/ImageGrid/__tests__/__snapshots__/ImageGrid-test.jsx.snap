@@ -25,13 +25,6 @@ exports[`Image grid component renders correctly 1`] = `
       >
         <WithTheme(DamImage)
           data-locator="moduleK_image__1"
-          imgConfigs={
-            Array [
-              "ar_1:1,q_80,w_384",
-              "ar_1:1,q_80,w_300",
-              "ar_1:1,q_80,w_360",
-            ]
-          }
           imgData={
             Object {
               "alt": "dinos",
@@ -63,13 +56,6 @@ exports[`Image grid component renders correctly 1`] = `
       >
         <WithTheme(DamImage)
           data-locator="moduleK_image__2"
-          imgConfigs={
-            Array [
-              "ar_1:1,q_80,w_384",
-              "ar_1:1,q_80,w_300",
-              "ar_1:1,q_80,w_360",
-            ]
-          }
           imgData={
             Object {
               "alt": "",
@@ -101,13 +87,6 @@ exports[`Image grid component renders correctly 1`] = `
       >
         <WithTheme(DamImage)
           data-locator="moduleK_image__3"
-          imgConfigs={
-            Array [
-              "ar_1:1,q_80,w_384",
-              "ar_1:1,q_80,w_300",
-              "ar_1:1,q_80,w_360",
-            ]
-          }
           imgData={
             Object {
               "alt": "",
@@ -139,13 +118,6 @@ exports[`Image grid component renders correctly 1`] = `
       >
         <WithTheme(DamImage)
           data-locator="moduleK_image__4"
-          imgConfigs={
-            Array [
-              "ar_1:1,q_80,w_384",
-              "ar_1:1,q_80,w_300",
-              "ar_1:1,q_80,w_360",
-            ]
-          }
           imgData={
             Object {
               "alt": "",
