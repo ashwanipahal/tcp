@@ -13,8 +13,8 @@ const styles = css`
           : props.theme.colorPalette.blue[500]};
 
     @media ${props => props.theme.mediaQuery.medium} {
-      margin-left: ${props => props.theme.spacing.ELEM_SPACING.XXL};
-      margin-right: ${props => props.theme.spacing.ELEM_SPACING.XXL};
+      margin-left: ${props => props.theme.spacing.LAYOUT_SPACING.XL};
+      margin-right: ${props => props.theme.spacing.LAYOUT_SPACING.XL};
     }
     @media ${props => props.theme.mediaQuery.large} {
       margin-left: ${props => props.theme.spacing.LAYOUT_SPACING.LRG};
