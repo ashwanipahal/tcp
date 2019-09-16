@@ -33,13 +33,12 @@ const styles = css`
   .earnExtraPointsTileImage {
     margin-top: ${props => props.theme.spacing.LAYOUT_SPACING.MED};
     height: 100px;
-    position: relative;
+    text-align: center;
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
     img {
-      position: absolute;
-      top: 50%;
-      left: 50%;
       height: 60px;
-      transform: translate3d(-50%, -50%, 0);
     }
     margin-bottom: 5px;
   }

@@ -137,18 +137,16 @@ const PlaceRewardsSection = ({ labels, className, ...otherProps }) => {
               <BonusPointsDays />
             </div>
           </Col>
-          {!isCA && (
-            <Col
-              colSize={{
-                small: 6,
-                large: 6,
-                medium: 4,
-              }}
-              className="place-rewards-col4"
-            >
-              <EarnExtraPointsTileContainer />
-            </Col>
-          )}
+          <Col
+            colSize={{
+              small: 6,
+              large: 6,
+              medium: 4,
+            }}
+            className="place-rewards-col4"
+          >
+            <EarnExtraPointsTileContainer />
+          </Col>
         </Row>
       </Row>
       {!isCA && <MyRewards labels={labels} showLink {...otherProps} />}

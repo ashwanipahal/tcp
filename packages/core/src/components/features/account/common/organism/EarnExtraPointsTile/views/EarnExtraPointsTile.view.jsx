@@ -5,6 +5,7 @@ import withStyles from '@tcp/core/src/components/common/hoc/withStyles';
 import { BodyCopy, Row, Col, Anchor } from '@tcp/core/src/components/common/atoms';
 import { routerPush, getIconPath } from '@tcp/core/src/utils';
 import internalEndpoints from '@tcp/core/src/components/features/account/common/internalEndpoints';
+import { getLabelValue } from '@tcp/core/src/utils/utils';
 import styles from '../styles/EarnExtraPointsTile.style';
 import carouselConfig from '../EarnExtraPointsTile.config';
 import DetailedEarnExtraPointsTile from '../../../molecule/DetailedEarnExtraPointsTile';
@@ -14,7 +15,7 @@ const onClickHandler = () => {
 };
 
 /**
- * @function RewardsPointsView The RewardsPointsView component will provide slider for account drawer
+ * @function EarnExtraPointsTile The EarnExtraPointsTile component will provide Carousel with tiles data
  */
 
 const EarnExtraPointsTile = ({ className, labels, waysToEarn }) => {
@@ -33,7 +34,7 @@ const EarnExtraPointsTile = ({ className, labels, waysToEarn }) => {
             fontFamily="secondary"
             data-locator="earnExtraPointsHeading"
           >
-            {labels.lbl_common_earnExtraPoints}
+            {getLabelValue(labels, 'lbl_common_earnExtraPoints')}
           </BodyCopy>
         </Col>
         <Col colSize={{ large: 2, medium: 2, small: 2 }} className="textRight">
@@ -43,7 +44,7 @@ const EarnExtraPointsTile = ({ className, labels, waysToEarn }) => {
             data-locator="earnExtraPointsViewAll"
             underline
           >
-            {labels.lbl_common_viewAll}
+            {getLabelValue(labels, 'lbl_common_viewAll')}
           </Anchor>
         </Col>
       </Row>

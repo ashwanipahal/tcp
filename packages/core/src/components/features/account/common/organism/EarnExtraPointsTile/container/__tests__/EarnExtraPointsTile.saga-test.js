@@ -12,7 +12,6 @@ describe('Earn Extra Points Saga', () => {
       earnExtraPointsGen.next();
     });
 
-    // TODO - Rewrite Test cases to include Integration testing of Saga and Abstractor
     it('should dispatch setEarnExtraPointsList action for success resposnse', () => {
       const response = {};
       const putDescriptor = earnExtraPointsGen.next(response).value;
