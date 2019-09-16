@@ -99,6 +99,7 @@ const ModuleB = props => {
             dataLocatorTextCta={getLocator('moduleB_cta_links')}
             dropdownLabel={expandableTitle}
             {...buttonListProps}
+            noCurve
           />
         </Col>
       </Row>

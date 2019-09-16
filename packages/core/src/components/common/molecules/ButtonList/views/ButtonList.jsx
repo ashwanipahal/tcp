@@ -132,6 +132,7 @@ const ButtonList = props => {
     dataLocatorDivisionImages,
     dataLocatorTextCta,
     fill,
+    noCurve = false,
   } = props;
 
   const buttonListConfig = getButtonListConfig(buttonListVariation, buttonsData.length);
@@ -177,6 +178,7 @@ const ButtonList = props => {
               fontSize="fs13"
               fontFamily="secondary"
               textAlign="center"
+              noCurve={noCurve}
             />
           );
         })}
@@ -199,6 +201,7 @@ ButtonList.defaultProps = {
   dataLocatorDivisionImages: '',
   dataLocatorTextCta: '',
   fill: '',
+  noCurve: false,
 };
 
 ButtonList.propTypes = {
@@ -221,6 +224,7 @@ ButtonList.propTypes = {
   dataLocatorDivisionImages: PropTypes.string,
   dataLocatorTextCta: PropTypes.string,
   fill: PropTypes.string,
+  noCurve: PropTypes.bool,
 };
 
 export default withStyles(ButtonList, ButtonListStyle);

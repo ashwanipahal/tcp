@@ -133,7 +133,10 @@ const createLinks = (
           const hasSubCategories = subCategories && subCategories.length > 0;
 
           return (
-            <li data-locator={`l2_col_${categoryIndex}_link_${currentIndex}`}>
+            <li
+              data-locator={`l2_col_${categoryIndex}_link_${currentIndex}`}
+              className="l2-nav-linklist"
+            >
               <Anchor
                 asPath={asPath}
                 to={url}

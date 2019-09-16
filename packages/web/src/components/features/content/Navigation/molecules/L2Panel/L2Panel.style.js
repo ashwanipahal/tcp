@@ -27,8 +27,15 @@ export default css`
     margin-bottom: 16px;
   }
   .shop-by-size-links li:hover {
-    border: solid 1px ${props => props.theme.colorPalette.blue[800]};
-    background-color: ${props => props.theme.colorPalette.blue[100]};
+    border: solid 1px
+      ${props =>
+        props.theme.isGymboree
+          ? props.theme.colorPalette.orange[800]
+          : props.theme.colorPalette.blue[800]};
+    background-color: ${props =>
+      props.theme.isGymboree
+        ? props.theme.colorPalette.orange[100]
+        : props.theme.colorPalette.blue[100]};
   }
   .l2-image-banner {
     display: none;
@@ -65,7 +72,10 @@ export default css`
   .l2-nav-category-heading {
     margin: 0;
     padding: 18px 14px 17px 14px;
-    background-color: ${props => props.theme.colorPalette.blue[50]};
+    background-color: ${props =>
+      props.theme.isGymboree
+        ? props.theme.colorPalette.orange[50]
+        : props.theme.colorPalette.blue[50]};
   }
 
   .s-display-none {
@@ -150,6 +160,19 @@ export default css`
       }
       ul.half-width {
         width: 50%;
+      }
+      .nav-bar-item-label:hover {
+        width: auto;
+        border-bottom: 2px solid
+          ${props =>
+            props.theme.isGymboree
+              ? props.theme.colorPalette.primary.main
+              : props.theme.colors.ANCHOR.SECONDARY};
+        padding-bottom: 4px;
+        text-decoration: none;
+      }
+      .l2-nav-linklist {
+        height: 46px;
       }
     }
     .l2-nav-link {

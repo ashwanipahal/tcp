@@ -108,6 +108,7 @@ export default css`
     margin: 0;
     color: ${props => props.theme.colors.WHITE};
     font-family: ${props => props.theme.secondaryFontFamily};
+    margin-top: -5px;
   }
 
   .footer_top_candidate_a_social_links {
@@ -198,13 +199,6 @@ export default css`
     }
     &.navigation-footer .hide-in-medium-up {
       display: block;
-    }
-    .candidate_a_inline_container_button button{
-       padding: 12px 20px;
-       width: 100%;
-    }
-    .footer_top_candidate_a .candidate_a_inline_container_button {
-      text-align: right;
     }
   }
   @media ${props => props.theme.mediaQuery.large} {

@@ -1,5 +1,22 @@
 import { css } from 'styled-components';
 
+const cartItemMargin = item => {
+  let marginBottom = '-7px';
+  if (item && item.length > 0) {
+    switch (item.length) {
+      case 2:
+        marginBottom = '-9px';
+        break;
+      case 3:
+        marginBottom = '-14px';
+        break;
+      default:
+        break;
+    }
+  }
+  return marginBottom;
+};
+
 export default css`
   box-sizing: border-box;
   padding: 14px 0;
@@ -42,7 +59,7 @@ export default css`
     border-left: 1px solid ${props => props.theme.colorPalette.gray[500]};
     box-sizing: border-box;
     margin-left: ${props => props.theme.spacing.ELEM_SPACING.SM};
-    padding-left: ${props => props.theme.spacing.ELEM_SPACING.SM};
+    padding-left: ${props => props.theme.spacing.ELEM_SPACING.XS};
     min-width: ${props => props.theme.spacing.ELEM_SPACING.XXXL};
   }
   .cartCount {
@@ -52,7 +69,7 @@ export default css`
         : props.theme.colorPalette.blue['800']};
     color: ${props => props.theme.colors.WHITE};
     border-radius: 8px;
-    margin: 1px 0px 0px -8px;
+    margin: 1px 0px 0px ${props => cartItemMargin(props.cartItemCount)};
     padding: 2px 6px;
   }
   @media ${props => props.theme.mediaQuery.mediumMax} {
