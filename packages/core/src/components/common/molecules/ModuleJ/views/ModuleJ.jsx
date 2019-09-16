@@ -65,7 +65,7 @@ class ModuleJ extends React.PureComponent {
                   alt: mediaLinkedList[0] && mediaLinkedList[0].image.alt,
                   url: mediaLinkedList[0] && mediaLinkedList[0].image.url,
                 }}
-                dataLocator={`${getLocator('moduleJ_promobanner_img')}${1}`}
+                data-locator={`${getLocator('moduleJ_promobanner_img')}${1}`}
               />
             </Col>
             <Col
@@ -97,6 +97,7 @@ class ModuleJ extends React.PureComponent {
               <ProductTabList
                 onProductTabChange={this.onTabChange}
                 categoryList={categoryListMock}
+                dataLocator={getLocator('moduleJ_cta_link')}
               />
             </Col>
             <Col
@@ -114,7 +115,7 @@ class ModuleJ extends React.PureComponent {
                   alt: mediaLinkedList[1] && mediaLinkedList[1].image.alt,
                   url: mediaLinkedList[1] && mediaLinkedList[1].image.url,
                 }}
-                dataLocator={`${getLocator('moduleJ_promobanner_img')}${2}`}
+                data-locator={`${getLocator('moduleJ_promobanner_img')}${2}`}
               />
             </Col>
           </Row>

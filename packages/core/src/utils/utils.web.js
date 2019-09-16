@@ -306,18 +306,11 @@ export const languageRedirect = (newLanguage, oldLanguage) => {
 export const redirectToPdp = (productId, seoToken) => {
   if (!window) return null;
 
-  const { href } = window.location;
-  // TODO
-  if (href.includes('/p/')) {
-    return {
-      url: `/p?pid=${seoToken - productId}`,
-      asPath: `/p/${seoToken - productId}`,
-    };
-  }
+  const params = seoToken ? `${seoToken}-${productId}` : productId;
 
   return {
-    url: `/p?${seoToken - productId}`,
-    asPath: `/p/${seoToken - productId}`,
+    url: `/p?${params}`,
+    asPath: `/p/${params}`,
   };
 };
 

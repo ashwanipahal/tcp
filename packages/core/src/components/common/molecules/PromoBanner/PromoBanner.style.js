@@ -378,52 +378,54 @@ export default css`
     }
   }
 
-  .percentage_wrapped_large {
+  /*
+  * TODO: Update this class name in CMS
+  */
+  .percentage_wrapped_xl_black {
     color: ${props => props.theme.colorPalette.black};
-    width: auto;
+    display: inline-block;
+    font-family: ${props => props.theme.typography.fonts.primary};
+    font-size: ${props => props.theme.typography.fontSizes.fs48};
+    font-weight: ${props => props.theme.typography.fontWeights.black};
     text-align: center;
+    transform: translateX(-18px);
 
-    .percentage_wrapped_large-0 {
-      font-family: ${props => props.theme.typography.fonts.primary};
-      font-size: ${props => props.theme.typography.fontSizes.fs48};
-    }
-
-    .percentage_wrapped_large-1 {
+    .percentage_wrapped_xl_black-1 {
       font-size: ${props => props.theme.typography.fontSizes.fs28};
       position: absolute;
-      top: 2px;
+      top: ${props => props.theme.spacing.ELEM_SPACING.XXS};
     }
 
-    .percentage_wrapped_large-2 {
+    .percentage_wrapped_xl_black-2 {
       font-size: ${props => props.theme.typography.fontSizes.fs18};
       position: absolute;
-      bottom: 4px;
+      bottom: ${props => props.theme.spacing.ELEM_SPACING.XS};
     }
 
     @media ${props => props.theme.mediaQuery.medium} {
-      transform: translateX(-58px);
+      transform: translateX(-50px);
 
-      .percentage_wrapped_large-0 {
+      .percentage_wrapped_xl_black-0 {
         font-size: 152px;
       }
 
-      .percentage_wrapped_large-1 {
+      .percentage_wrapped_xl_black-1 {
         font-size: 88px;
-        top: ${props => props.theme.spacing.ELEM_SPACING.SM};
+        top: ${props => props.theme.spacing.ELEM_SPACING.MED};
       }
 
-      .percentage_wrapped_large-2 {
+      .percentage_wrapped_xl_black-2 {
         font-size: ${props => props.theme.typography.fontSizes.fs48};
-        bottom: ${props => props.theme.spacing.ELEM_SPACING.MED};
+        bottom: ${props => props.theme.spacing.ELEM_SPACING.LRG};
       }
     }
 
     @media ${props => props.theme.mediaQuery.large} {
-      .percentage_wrapped_large-1 {
+      .percentage_wrapped_xl_black-1 {
         top: ${props => props.theme.spacing.ELEM_SPACING.MED};
       }
 
-      .percentage_wrapped_large-2 {
+      .percentage_wrapped_xl_black-2 {
         bottom: ${props => props.theme.spacing.ELEM_SPACING.LRG};
       }
     }

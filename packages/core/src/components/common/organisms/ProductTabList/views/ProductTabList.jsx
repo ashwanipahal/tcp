@@ -36,7 +36,7 @@ class ProductTabList extends React.PureComponent {
   }
 
   render() {
-    const { categoryList } = this.props;
+    const { categoryList, dataLocator } = this.props;
     const { selectedCategoryId } = this.state;
     const buttonTabItems = categoryList.map(item => ({
       id: item.catId,
@@ -48,6 +48,7 @@ class ProductTabList extends React.PureComponent {
         selectedTabId={selectedCategoryId}
         onTabChange={this.onButtonTabChange}
         tabs={buttonTabItems}
+        dataLocator={dataLocator}
       />
     );
   }
@@ -58,6 +59,7 @@ ProductTabList.defaultProps = {
   categoryList: [],
   productTabList: {},
   onProductTabChange: () => {},
+  dataLocator: '',
 };
 
 ProductTabList.propTypes = {
@@ -77,6 +79,7 @@ ProductTabList.propTypes = {
     ),
   }),
   onProductTabChange: PropTypes.func,
+  dataLocator: PropTypes.string,
 };
 
 export default ProductTabList;

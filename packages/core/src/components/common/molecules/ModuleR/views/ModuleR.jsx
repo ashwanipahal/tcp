@@ -8,7 +8,7 @@ import { Grid, LinkText, PromoBanner } from '../..';
 import ProductTabList from '../../../organisms/ProductTabList';
 import { getLocator, redirectToPdp } from '../../../../../utils';
 import { mediaQuery } from '../../../../../../styles/themes/TCP/mediaQuery';
-import moduleRStyle from '../styles/ModuleR.style';
+import moduleRStyle, { ImageGridCol } from '../styles/ModuleR.style';
 
 class ModuleR extends React.PureComponent {
   constructor(props) {
@@ -19,6 +19,9 @@ class ModuleR extends React.PureComponent {
     };
   }
 
+  /*
+    This method is to update the state with selected category Id.
+  */
   onProductTabChange = catId => {
     this.setState({
       selectedCategoryId: catId,
@@ -30,7 +33,9 @@ class ModuleR extends React.PureComponent {
   */
   getPromoComponent = () => {
     const { promoBanner } = this.props;
-    return <PromoBanner promoBanner={promoBanner} />;
+    return (
+      <PromoBanner promoBanner={promoBanner} dataLocator={getLocator('moduleR_promobanner_text')} />
+    );
   };
 
   /*
@@ -66,17 +71,27 @@ class ModuleR extends React.PureComponent {
     return productsList;
   };
 
-  render() {
-    const { className, productTabList, headerText, divTabs, layout } = this.props;
-    const categoryList = divTabs.map(item => {
+  /*
+    This method is to get the list of category items coming from CMS
+  */
+  getCategoryList() {
+    const { divTabs } = this.props;
+
+    return divTabs.map(item => {
       const {
         category: { cat_id: catId },
         text: { text },
       } = item;
       return { text, catId };
     });
+  }
 
-    const divTabsMap = divTabs.reduce((map, item) => {
+  /*
+    This method is to get the list of tabs data coming from CMS
+  */
+  getDivTabMap() {
+    const { divTabs } = this.props;
+    return divTabs.reduce((map, item) => {
       const {
         category: { cat_id: catId },
       } = item;
@@ -84,9 +99,56 @@ class ModuleR extends React.PureComponent {
       tabsMap[catId] = item;
       return tabsMap;
     }, {});
+  }
 
+  getImageGrid = selectedProductList => {
+    return (
+      <Row className="image-items-container">
+        {selectedProductList.map((productItem, index) => {
+          if (productItem.uniqueId) {
+            const {
+              seo_token: seoToken,
+              uniqueId,
+              imageUrl: [imageUrl],
+            } = productItem;
+            return (
+              <ImageGridCol
+                key={uniqueId}
+                imageIndex={index}
+                colSize={{
+                  small: 2,
+                  medium: 2,
+                  large: 2,
+                }}
+              >
+                <Anchor
+                  to={redirectToPdp(uniqueId, seoToken).url}
+                  asPath={redirectToPdp(uniqueId, seoToken).asPath}
+                  dataLocator={`${getLocator('moduleR_product_image')}${index}`}
+                >
+                  <Image src={imageUrl} />
+                </Anchor>
+              </ImageGridCol>
+            );
+          }
+          return (
+            <Col
+              key={index.toString()}
+              className="image-item-wrapper"
+              colSize={{ small: 2, medium: 4, large: 4 }}
+            >
+              {productItem}
+            </Col>
+          );
+        })}
+      </Row>
+    );
+  };
+
+  render() {
+    const { className, productTabList, headerText, layout } = this.props;
+    const divTabsMap = this.getDivTabMap();
     const promoComponent = this.getPromoComponent();
-
     const { selectedCategoryId } = this.state;
     const selectedDivTab = divTabsMap[selectedCategoryId] || {};
     const selectedSingleCTAButton = selectedDivTab.singleCTAButton;
@@ -110,6 +172,7 @@ class ModuleR extends React.PureComponent {
               component="div"
               headerText={headerText}
               className="promo-header"
+              headingClass="moduleR-promo-header"
               dataLocator={getLocator('moduleR_header_text')}
             />
           </Col>
@@ -123,51 +186,12 @@ class ModuleR extends React.PureComponent {
           >
             <ProductTabList
               onProductTabChange={this.onProductTabChange}
-              categoryList={categoryList}
+              categoryList={this.getCategoryList()}
+              dataLocator={getLocator('moduleR_cta_link')}
             />
           </Col>
         </Row>
-        <Row className="image-items-container">
-          {selectedProductList.map((productItem, index) => {
-            if (productItem.uniqueId) {
-              const {
-                seo_token: seoToken,
-                uniqueId,
-                imageUrl: [imageUrl],
-                productItemIndex,
-              } = productItem;
-              return (
-                <Col
-                  key={uniqueId}
-                  className="image-item-wrapper"
-                  colSize={{
-                    small: 2,
-                    medium: 2,
-                    large: 2,
-                  }}
-                >
-                  <Anchor
-                    noLink
-                    to={redirectToPdp(uniqueId, seoToken).url}
-                    asPath={redirectToPdp(uniqueId, seoToken).asPath}
-                    locator={`${getLocator('moduleR_product_image')}${productItemIndex}`}
-                  >
-                    <Image src={imageUrl} />
-                  </Anchor>
-                </Col>
-              );
-            }
-            return (
-              <Col
-                key={index.toString()}
-                className="image-item-wrapper"
-                colSize={{ small: 2, medium: 4, large: 4 }}
-              >
-                {productItem}
-              </Col>
-            );
-          })}
-        </Row>
+        {this.getImageGrid(selectedProductList)}
         <Row centered>
           <Col
             className="button-wrapper"
