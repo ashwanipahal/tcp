@@ -36,7 +36,7 @@ const PRODUCT_IMAGE_GUTTER = 16;
 const PRODUCT_IMAGE_PER_SLIDE = 4;
 const MODULE_HEIGHT = 142;
 const MODULE_WIDTH = (PRODUCT_IMAGE_WIDTH + PRODUCT_IMAGE_GUTTER) * PRODUCT_IMAGE_PER_SLIDE;
-
+const { IMG_DATA } = config;
 class ModuleJ extends React.PureComponent<Props, State> {
   constructor(props) {
     super(props);
@@ -81,6 +81,7 @@ class ModuleJ extends React.PureComponent<Props, State> {
                   url={imageUrl}
                   height={PRODUCT_IMAGE_HEIGHT}
                   width={PRODUCT_IMAGE_WIDTH}
+                  imageConfig={IMG_DATA.productImgConfig[0]}
                 />
               </Anchor>
             </ImageItemWrapper>
@@ -100,7 +101,6 @@ class ModuleJ extends React.PureComponent<Props, State> {
       headerText,
       promoBanner,
     } = this.props;
-    const { IMG_DATA } = config;
 
     const selectedProductList = productTabList[selectedCategoryId] || [];
 
@@ -151,7 +151,7 @@ class ModuleJ extends React.PureComponent<Props, State> {
               height="300px"
               width="100%"
               alt={mediaLinkedList[1] && mediaLinkedList[1].image.alt}
-              imageConfig={IMG_DATA.imgConfig[0]}
+              imageConfig={IMG_DATA.promoImgConfig[0]}
             />
           </Anchor>
         </ImageContainer>

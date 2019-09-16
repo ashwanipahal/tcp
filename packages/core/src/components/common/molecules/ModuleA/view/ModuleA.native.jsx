@@ -40,7 +40,7 @@ const ribbonLeftImage = require('../../../../../assets/module-a-ribbon-left.png'
 const ribbonRightImage = require('../../../../../assets/module-a-ribbon-right.png');
 
 // TODO: keys will be changed once we get the actual data from CMS
-const { ctaTypes } = config;
+const { ctaTypes, IMG_DATA_TCP, IMG_DATA_GYM } = config;
 
 const ribbonView = ({ ribbonBanner, navigation, position }) => {
   let ribbonConfig = {
@@ -101,6 +101,7 @@ const renderView = (item, navigation, position) => {
         height={isGymboree() ? MODULE_GYM_HEIGHT : MODULE_TCP_HEIGHT}
         url={image.url}
         host={LAZYLOAD_HOST_NAME.HOME}
+        imageConfig={isGymboree() ? IMG_DATA_GYM.crops[0] : IMG_DATA_TCP.crops[0]}
       />
       <HeaderWrapper>
         <HeaderComponent>
