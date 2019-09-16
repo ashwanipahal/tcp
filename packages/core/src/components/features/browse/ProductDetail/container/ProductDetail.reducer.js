@@ -18,7 +18,7 @@ const ProductDetailReducer = (state = initialState, action) => {
   switch (action.type) {
     case PRODUCTDETAIL_CONSTANTS.SET_PRODUCT_DETAILS:
       return state
-        .set('currentProduct', fromJS(action.payload.product))
+        .set('currentProduct', action.payload.product)
         .set('breadCrumbs', action.payload.breadCrumbs);
     default:
       return getDefaultState(state);

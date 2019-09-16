@@ -1,4 +1,5 @@
 import { all } from 'redux-saga/effects';
+import SearchPageSaga from '@tcp/core/src/components/features/browse/SearchDetail/container/SearchDetail.saga';
 import ProductListingPageSaga from '@tcp/core/src/components/features/browse/ProductListingPage/container/ProductListingPage.saga';
 import LoginPageSaga from '@tcp/core/src/components/features/account/LoginPage/container/LoginPage.saga';
 import UserSaga from '@tcp/core/src/components/features/account/User/container/User.saga';
@@ -99,5 +100,6 @@ export default function* rootSaga() {
     ProductTabListSaga(),
     RecommendationsSaga(),
     BillingPaymentSaga(),
+    SearchPageSaga(),
   ]);
 }

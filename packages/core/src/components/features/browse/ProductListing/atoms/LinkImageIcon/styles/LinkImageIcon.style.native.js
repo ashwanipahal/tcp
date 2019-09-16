@@ -13,7 +13,7 @@ const getImageStyle = props => {
 const getImageBorderStyle = props => {
   const { theme, selected, width, height, borderWidth, borderRadius } = props;
   const { colorPalette } = theme;
-  const borderColor = selected ? colorPalette.gray[900] : colorPalette.gray[1100];
+  const borderColor = selected ? colorPalette.gray[900] : colorPalette.gray[1300];
   return `
     align-items: center;
     justify-content: center;

@@ -55,3 +55,9 @@ export const clearCouponTTL = () => {
     type: COUPON_CONSTANTS.CLEAR_COUPON_TTL,
   };
 };
+
+export const resetWalletAppState = () => {
+  return {
+    type: COUPON_CONSTANTS.RESET_COUPON_STATE,
+  };
+};

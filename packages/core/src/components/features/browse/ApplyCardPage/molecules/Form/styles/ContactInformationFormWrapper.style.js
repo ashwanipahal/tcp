@@ -6,18 +6,6 @@ export default styled.div`
     line-height: 1;
   }
 
-  .label_zip {
-    @media ${props => props.theme.mediaQuery.small} and ${props =>
-  props.theme.mediaQuery.mediumMax}{
-      margin-left: ${props => props.theme.spacing.ELEM_SPACING.MED};
-    }
-
-    @media ${props => props.theme.mediaQuery.medium} and ${props =>
-  props.theme.mediaQuery.largeMax}{
-      margin-left: ${props => props.theme.spacing.ELEM_SPACING.SM};
-    }
-  }
-
   .columnWrapper {
     margin-top: ${props => props.theme.spacing.ELEM_SPACING.XS};
   }

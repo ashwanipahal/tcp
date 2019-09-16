@@ -5,19 +5,16 @@ import { withRouter } from 'next/router'; //eslint-disable-line
 import { PropTypes } from 'prop-types';
 import { isClient } from '../../../../../utils/index';
 import SearchDetail from '../views/SearchDetail.view';
-import getSearchedResult from './SearchDetail.selectors';
-import {
-  processBreadCrumbs,
-  getProductsAndTitleBlocks,
-} from '../../ProductListing/container/ProductListing.util';
+import { getSlpProducts } from './SearchDetail.actions';
+import { getProductsAndTitleBlocks } from './SearchDetail.util';
 import {
   getProductsSelect,
-  getNavigationTree,
   getLoadedProductsCount,
   getUnbxdId,
   getProductsFilters,
   getCategoryId,
   getLabelsProductListing,
+  getNavigationTree,
   getLongDescription,
   getIsLoadingMore,
   getLastLoadedPageNumber,
@@ -33,13 +30,14 @@ import searchedNewResult from '../searchedResults';
 
 class SearchDetailContainer extends React.PureComponent {
   componentDidMount() {
-    // const {
-    //   router: {
-    //     query: { sq },
-    //   },
-    //   fetchSearchResults,
-    // } = this.props;
-    // fetchSearchResults(sq);
+    const {
+      router: {
+        query: { sq },
+        asPath,
+      },
+      getProducts,
+    } = this.props;
+    getProducts({ URI: 'search', asPath, sq, ignoreCache: true });
   }
 
   render() {
@@ -97,39 +95,32 @@ function mapStateToProps(state) {
 
   return {
     productsBlock: getProductsAndTitleBlocks(state, productBlocks),
-    products: productBlocks[0],
-    // filters: getProductsFilters(state),
-    // currentNavIds: state.ProductListing && state.ProductListing.get('currentNavigationIds'),
-    // categoryId: getCategoryId(state),
-    // navTree: getNavigationTree(state),
-    // breadCrumbs: processBreadCrumbs(
-    //   state.ProductListing && state.ProductListing.get('breadCrumbTrail')
-    // ),
-    // loadedProductCount: getLoadedProductsCount(state),
-    // unbxdId: getUnbxdId(state),
-    // totalProductsCount: getTotalProductsCount(state),
-    // filtersLength,
-    // initialValues: {
-    //   ...getAppliedFilters(state),
-    //   // TODO - change after site id comes for us or ca
-    //   sort: getAppliedSortId(state) || '',
-    // },
-    // labelsFilter: state.Labels && state.Labels.PLP && state.Labels.PLP.PLP_sort_filter,
-    // longDescription: getLongDescription(state),
-    // labels: getLabelsProductListing(state),
-    // isLoadingMore: getIsLoadingMore(state),
-    // lastLoadedPageNumber: getLastLoadedPageNumber(state),
-    // onSubmit: submitProductListingFiltersForm,
-    // // formValues: getFormValues('filter-form')(state),
-    // isPlcc: isPlccUser(state),
-    // searchedResult: getSearchedResult(state),
+    products: getProductsSelect(state),
+    filters: getProductsFilters(state),
+    categoryId: getCategoryId(state),
+    loadedProductCount: getLoadedProductsCount(state),
+    unbxdId: getUnbxdId(state),
+    totalProductsCount: getTotalProductsCount(state),
+    navTree: getNavigationTree(state),
+    filtersLength,
+    initialValues: {
+      ...getAppliedFilters(state),
+      // TODO - change after site id comes for us or ca
+      sort: getAppliedSortId(state) || '',
+    },
+    labelsFilter: state.Labels && state.Labels.PLP && state.Labels.PLP.PLP_sort_filter,
+    longDescription: getLongDescription(state),
+    labels: getLabelsProductListing(state),
+    isLoadingMore: getIsLoadingMore(state),
+    lastLoadedPageNumber: getLastLoadedPageNumber(state),
+    currentNavIds: state.ProductListing && state.ProductListing.get('currentNavigationIds'),
   };
 }
 
 function mapDispatchToProps(dispatch) {
   return {
-    fetchSearchResults: searchQuery => {
-      dispatch(getSearchResult(searchQuery));
+    getProducts: payload => {
+      dispatch(getSlpProducts(payload));
     },
   };
 }
@@ -140,46 +131,21 @@ SearchDetailContainer.propTypes = {
       sq: PropTypes.string,
     }),
   }).isRequired,
-  fetchSearchResults: PropTypes.func.isRequired,
-  searchedResult: PropTypes.arrayOf(PropTypes.shape({})),
   getProducts: PropTypes.func.isRequired,
-  onPickUpOpenClick: PropTypes.func.isRequired,
-  getMoreProducts: PropTypes.func.isRequired,
-  productsBlock: PropTypes.arrayOf(PropTypes.shape({})),
-  categoryId: PropTypes.string.isRequired,
-  products: PropTypes.arrayOf(PropTypes.shape({})),
-  currentNavIds: PropTypes.arrayOf(PropTypes.shape({})),
   navTree: PropTypes.shape({}),
-  breadCrumbs: PropTypes.arrayOf(PropTypes.shape({})),
   filters: PropTypes.shape({}),
-  totalProductsCount: PropTypes.string,
   filtersLength: PropTypes.shape({}),
   initialValues: PropTypes.shape({}),
-  longDescription: PropTypes.string,
-  navigation: PropTypes.shape({}).isRequired,
-  labels: PropTypes.objectOf(PropTypes.oneOfType([PropTypes.string])),
-  labelsFilter: PropTypes.objectOf(PropTypes.oneOfType([PropTypes.string])),
-  isLoadingMore: PropTypes.bool,
-  lastLoadedPageNumber: PropTypes.number,
-  onSubmit: PropTypes.func.isRequired,
+  formValues: PropTypes.shape({
+    sort: PropTypes.string.isRequired,
+  }).isRequired,
 };
 
 SearchDetailContainer.defaultProps = {
-  searchedResult: {},
-  products: [],
-  productsBlock: [],
-  currentNavIds: [],
   navTree: {},
-  breadCrumbs: [],
   filters: {},
-  totalProductsCount: '0',
   filtersLength: {},
   initialValues: {},
-  longDescription: '',
-  labels: {},
-  labelsFilter: {},
-  isLoadingMore: false,
-  lastLoadedPageNumber: 0,
 };
 
 export default withRouter(
