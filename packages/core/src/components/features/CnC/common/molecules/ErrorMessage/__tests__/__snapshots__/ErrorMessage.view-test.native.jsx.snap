@@ -4,6 +4,8 @@ exports[`ErrorMessage Component ErrorMessage should render correctly 1`] = `
 <Fragment>
   <Styled(View)>
     <Styled(ImageComp)
+      alt=""
+      host=""
       source={
         Object {
           "testUri": "../../../../core/src/assets/alert-triangle.png",
@@ -19,6 +21,7 @@ exports[`ErrorMessage Component ErrorMessage should render correctly 1`] = `
           "width": 13,
         }
       }
+      url=""
     />
     <Styled(BodyCopy)
       color="error"

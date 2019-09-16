@@ -173,8 +173,10 @@ exports[`Points History Slider View should render Points History Correctly 1`] =
     >
       <Styled(Anchor)
         anchorVariation="primary"
+        asPath="/account/place-rewards/points-history"
         dataLocator="pointshistorylnk"
         fontSizeVariation="medium"
+        to="/account?id=place-rewards&&subSection=points-history"
         underline={true}
       >
         Points History
