@@ -27,7 +27,7 @@ const HomePageView = dynamic({
       <ModuleB {...mock} />,
       <ModuleJ {...moduleJMock.moduleJ.composites} />,
       <GetCandid />,
-      <Recommendations priceOnly />,
+      <Recommendations />,
     ];
   },
 });
