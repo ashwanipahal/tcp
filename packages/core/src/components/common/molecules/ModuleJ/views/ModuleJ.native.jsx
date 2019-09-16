@@ -151,7 +151,7 @@ class ModuleJ extends React.PureComponent<Props, State> {
               height="300px"
               width="100%"
               alt={mediaLinkedList[1] && mediaLinkedList[1].image.alt}
-              imageConfig={IMG_DATA.promoImgConfig[0]}
+              imgConfig={IMG_DATA.promoImgConfig[0]}
             />
           </Anchor>
         </ImageContainer>

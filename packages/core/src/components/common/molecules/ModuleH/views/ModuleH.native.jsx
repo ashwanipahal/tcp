@@ -63,7 +63,7 @@ class ModuleH extends React.PureComponent<Props, State> {
         height={MODULE_HEIGHT}
         width={MODULE_WIDTH}
         alt={image.alt}
-        imageConfigs={config.IMG_DATA.imgConfig[0]}
+        imgConfig={config.IMG_DATA.imgConfig[0]}
       />
     );
   };

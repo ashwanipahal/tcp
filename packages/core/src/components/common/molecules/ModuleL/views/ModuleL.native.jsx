@@ -58,7 +58,7 @@ const renderItem = (item, navigation) => {
           height={127}
           crop={image.crop_m}
           testID={`${getLocator('moduleL_image')}${index + 1}`}
-          imageConfigs={config.IMG_DATA.crops[0]}
+          imgConfig={config.IMG_DATA.crops[0]}
           alt={image.alt}
           host={LAZYLOAD_HOST_NAME.HOME}
         />

@@ -45,7 +45,7 @@ const renderItem = (item, navigation) => {
           height={imageSize}
           marginBottom={parseInt(spacing.ELEM_SPACING.XS, 10)}
           width={imageSize}
-          imgConfigs={config.IMG_DATA_2.imgConfig[0]}
+          imgConfig={config.IMG_DATA_2.imgConfig[0]}
           host={LAZYLOAD_HOST_NAME.HOME}
         />
       </Anchor>

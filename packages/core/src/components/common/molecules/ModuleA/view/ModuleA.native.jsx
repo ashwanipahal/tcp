@@ -101,7 +101,8 @@ const renderView = (item, navigation, position) => {
         height={isGymboree() ? MODULE_GYM_HEIGHT : MODULE_TCP_HEIGHT}
         url={image.url}
         host={LAZYLOAD_HOST_NAME.HOME}
-        imageConfig={isGymboree() ? IMG_DATA_GYM.crops[0] : IMG_DATA_TCP.crops[0]}
+        crop={image.crop_m}
+        imgConfig={isGymboree() ? IMG_DATA_GYM.crops[0] : IMG_DATA_TCP.crops[0]}
       />
       <HeaderWrapper>
         <HeaderComponent>

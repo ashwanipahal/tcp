@@ -20,7 +20,7 @@ const DamImage = (props: Props) => {
   const cropVal = crop || '';
   const urlVal = url || '';
   const ImageComponent = host ? LazyloadImage : Image;
-  const imgConfigsVal = imgConfig || '';
+  const namedTransformation = imgConfig || '';
 
   return (
     <ImageComponent
@@ -28,7 +28,7 @@ const DamImage = (props: Props) => {
       host={host}
       accessibilityRole="image"
       accessibilityLabel={alt || ''}
-      source={{ uri: cropImageUrl(urlVal, cropVal, imgConfigsVal) }}
+      source={{ uri: cropImageUrl(urlVal, cropVal, namedTransformation) }}
     />
   );
 };

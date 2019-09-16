@@ -106,7 +106,11 @@ export const importGraphQLQueriesDynamically = query => {
         resolve(require('../services/handler/graphQL/queries/xappConfig'));
         break;
       default:
-        importMoreGraphQLQueries({ query, resolve, reject });
+        importMoreGraphQLQueries({
+          query,
+          resolve,
+          reject,
+        });
     }
   });
 };
@@ -180,7 +184,9 @@ export const navigateToPage = (url, navigation) => {
        * /p/Rainbow--The-Birthday-Girl--Graphic-Tee-2098277-10
        * If url starts with “/p” → Create and navigate to a page in stack for Products (Blank page with a Text - “Product List”)
        */
-      return navigate('ProductLanding', { product: title });
+      return navigate('ProductListing', {
+        product: title,
+      });
     case URL_PATTERN.CATEGORY_LANDING:
       /**
        * /c/* - If url starts with “/c” (* can be anything in url) → Select “CATEGORY_LANDING” tab in tabbar and Open CATEGORY_LANDING page
@@ -234,18 +240,29 @@ export const getScreenHeight = () => {
  * @function cropImageUrl function appends or replaces the cropping value in the URL
  * @param {string} url the image url
  * @param {string} crop the crop parameter
+ * @param {string} namedTransformation the namedTransformation parameter
  * @return {string} function returns new Url with the crop value
  */
-export const cropImageUrl = (url, crop, imgConfigsVal) => {
-  const [urlPath = '', urlData = ''] = url && url.split('/upload');
-  const imgPath = urlPath && urlPath.replace(/^\//, '');
-  if (urlPath && crop) {
-    return `${imgPath}/upload/${crop}/${urlData.replace(/^\//, '')}`;
+export const cropImageUrl = (url, crop, namedTransformation) => {
+  const basePath = 'https://test1.theplace.com/image/upload';
+  let URL = url;
+
+  // Image path transformation in case of absolute image URL
+  if (/^http/.test(url)) {
+    const [urlPath = '', urlData = ''] = url && url.split('/upload');
+    const imgPath = urlPath && urlPath.replace(/^\//, '');
+    if (urlPath && crop) {
+      URL = `${imgPath}/upload/${crop}/${urlData.replace(/^\//, '')}`;
+    }
+    if (namedTransformation) {
+      URL = `${imgPath}/upload/${namedTransformation}/${urlData.replace(/^\//, '')}`;
+    }
+  } else {
+    // Image path transformation in case of relative image URL
+    URL = `${basePath}/${namedTransformation}/url`;
   }
-  if (imgConfigsVal) {
-    return `${imgPath}/upload/${imgConfigsVal}/${urlData.replace(/^\//, '')}`;
-  }
-  return url;
+
+  return URL;
 };
 
 /**
@@ -297,7 +314,11 @@ export const resetNavigationStack = navigation => {
     StackActions.reset({
       index: 0,
       key: null,
-      actions: [NavigationActions.navigate({ routeName: 'Home' })],
+      actions: [
+        NavigationActions.navigate({
+          routeName: 'Home',
+        }),
+      ],
     })
   );
 };

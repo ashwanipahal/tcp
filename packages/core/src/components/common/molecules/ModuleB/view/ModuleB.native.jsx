@@ -113,7 +113,7 @@ const renderImageComponent = (item, navigation) => {
           host={LAZYLOAD_HOST_NAME.HOME}
           alt={image.alt}
           crop={image.crop_m}
-          imageConfig={
+          imgConfig={
             bannerPosition === bannerPositionTypes.overlay
               ? IMG_DATA.imgOverlayConfig[0]
               : IMG_DATA.imgDefaultConfig[0]
