@@ -99,7 +99,7 @@ exports[`ModuleK component renders correctly 1`] = `
             "$$typeof": Symbol(react.forward_ref),
             "attrs": Array [],
             "componentStyle": ComponentStyle {
-              "componentId": "sc-iAyFgw",
+              "componentId": "sc-kkGfuU",
               "isStatic": false,
               "rules": Array [
                 "
@@ -221,10 +221,10 @@ exports[`ModuleK component renders correctly 1`] = `
             },
             "displayName": "Styled(Styled(LinkText))",
             "foldedComponentIds": Array [
-              "sc-jKJlTe",
+              "sc-ckVGcZ",
             ],
             "render": [Function],
-            "styledComponentId": "sc-iAyFgw",
+            "styledComponentId": "sc-kkGfuU",
             "target": [Function],
             "toString": [Function],
             "warnTooManyClasses": [Function],
@@ -266,7 +266,7 @@ exports[`ModuleK component renders correctly 1`] = `
             "$$typeof": Symbol(react.forward_ref),
             "attrs": Array [],
             "componentStyle": ComponentStyle {
-              "componentId": "sc-kkGfuU",
+              "componentId": "sc-kEYyzF",
               "isStatic": false,
               "rules": Array [
                 "
@@ -551,10 +551,10 @@ exports[`ModuleK component renders correctly 1`] = `
             },
             "displayName": "Styled(Styled(Carousel))",
             "foldedComponentIds": Array [
-              "sc-jzJRlG",
+              "sc-fjdhpX",
             ],
             "render": [Function],
-            "styledComponentId": "sc-kkGfuU",
+            "styledComponentId": "sc-kEYyzF",
             "target": [Function],
             "toString": [Function],
             "warnTooManyClasses": [Function],

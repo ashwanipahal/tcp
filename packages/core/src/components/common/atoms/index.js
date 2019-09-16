@@ -13,7 +13,6 @@ import SelectBox from './Select';
 import LabeledRadioButton from './LabeledRadioButton';
 import TextItems from './TextItems';
 import InputCheckBox from './InputCheckbox';
-import VenmoPaymentButton from './VenmoPaymentButton';
 
 export {
   Anchor,
@@ -31,5 +30,4 @@ export {
   SelectBox,
   LabeledRadioButton,
   TextItems,
-  VenmoPaymentButton,
 };

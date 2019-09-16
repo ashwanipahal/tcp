@@ -853,7 +853,7 @@ exports[`Recommendations component renders correctly 1`] = `
             "$$typeof": Symbol(react.forward_ref),
             "attrs": Array [],
             "componentStyle": ComponentStyle {
-              "componentId": "sc-jzJRlG",
+              "componentId": "sc-fjdhpX",
               "isStatic": false,
               "rules": Array [
                 "
@@ -1121,7 +1121,7 @@ exports[`Recommendations component renders correctly 1`] = `
             "displayName": "Styled(Carousel)",
             "foldedComponentIds": Array [],
             "render": [Function],
-            "styledComponentId": "sc-jzJRlG",
+            "styledComponentId": "sc-fjdhpX",
             "target": [Function],
             "toString": [Function],
             "warnTooManyClasses": [Function],
