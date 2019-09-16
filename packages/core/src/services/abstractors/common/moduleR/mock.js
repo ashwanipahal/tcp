@@ -1,4 +1,4 @@
-const dummyUrl = 'http://www.google.com';
+const dummyUrl = 'http://www.childrensplace.com';
 
 export default {
   moduleR: {

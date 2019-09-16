@@ -169,7 +169,7 @@ export const bodyCopyStyles = {
     />
   ),
 
-  percentage_all_wrapped_normal: props => <PercentageStyle2 {...props} />,
+  percentage_all_wrapped_normal: props => <PercentageAllWrappedNormal {...props} />,
 };
 
 /**
@@ -215,9 +215,9 @@ const PromoBanner = (props: Props) => {
 
 /**
  * This function return the Promobanner Percentage Style
- * Color is 'Black' and Split by the '%' key. Font size is also small.
+ * Color is 'Black' and Split by the space ' ' key. Font size is also small.
  */
-const PercentageStyle2 = (props: PercentageStyleProps) => {
+const PercentageAllWrappedNormal = (props: PercentageStyleProps) => {
   const { text } = props;
 
   const strArray = text && text.split(' ');
@@ -265,7 +265,7 @@ const PercentageStyle2 = (props: PercentageStyleProps) => {
 
 /**
  * This function return the Promobanner Percentage Style
- * Color is 'White' and Split by the '%' key .
+ * Color is 'White' and Split by the space ' ' key .
  */
 const PercentageStyle = (props: PercentageStyleProps) => {
   const { text } = props;
@@ -312,7 +312,7 @@ const PercentageStyle = (props: PercentageStyleProps) => {
 
 /**
  * This function return the Promobanner Percentage Style
- * Color is 'Pink' and Split by the '%' key .
+ * Color is 'Pink' and Split by the space ' ' key .
  */
 const PercentagePinkStyle = (props: PercentageStyleProps) => {
   const { text } = props;
