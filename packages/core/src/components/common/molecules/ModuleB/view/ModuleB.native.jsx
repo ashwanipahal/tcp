@@ -2,7 +2,7 @@
 // @flow
 import React from 'react';
 import ButtonList from '../../ButtonList';
-import { Image, Anchor } from '../../../atoms';
+import { DamImage, Anchor } from '../../../atoms';
 import LinkText from '../../LinkText';
 import PromoBanner from '../../PromoBanner';
 import { getScreenWidth, LAZYLOAD_HOST_NAME } from '../../../../../utils/index.native';
@@ -17,7 +17,7 @@ import {
   SeparatorView,
   MainContainerView,
 } from '../ModuleB.style.native';
-import { ctaTypes, bannerPositionTypes } from '../ModuleB.config';
+import { ctaTypes, bannerPositionTypes, IMG_DATA } from '../config';
 import mock from '../../../../../services/abstractors/common/moduleB/mock';
 
 /**
@@ -106,11 +106,18 @@ const renderImageComponent = (item, navigation) => {
         ? renderHeaderAndBanner(item, navigation)
         : null}
       <Anchor url={link.url} navigation={navigation}>
-        <Image
+        <DamImage
           width={MODULE_WIDTH}
           height={moduleHeight}
           url={image.url}
           host={LAZYLOAD_HOST_NAME.HOME}
+          alt={image.alt}
+          crop={image.crop_m}
+          imgConfig={
+            bannerPosition === bannerPositionTypes.overlay
+              ? IMG_DATA.imgOverlayConfig[0]
+              : IMG_DATA.imgDefaultConfig[0]
+          }
         />
       </Anchor>
       {bannerPosition === bannerPositionTypes.bottom

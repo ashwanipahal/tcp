@@ -15,6 +15,9 @@ describe('Checkout Selectors', () => {
         },
         defaultShipping: true,
       },
+      syncErrors: {
+        address: {},
+      },
     },
     checkoutPickup: {
       values: {
@@ -23,6 +26,16 @@ describe('Checkout Selectors', () => {
       },
     },
   };
+  it('#getSyncError', () => {
+    const state = {
+      form: FormState,
+    };
+    expect(CHECKOUT_SELECTORS.getSyncError(state)).toEqual({
+      syncError: {
+        address: {},
+      },
+    });
+  });
   it('#getAddressPhoneNo', () => {
     const state = {
       form: FormState,

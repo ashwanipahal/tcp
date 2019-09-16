@@ -6,6 +6,7 @@ import UserSaga from '@tcp/core/src/components/features/account/User/container/U
 import LogOutPageSaga from '@tcp/core/src/components/features/account/Logout/container/LogOut.saga';
 import ForgotPasswordSaga from '@tcp/core/src/components/features/account/ForgotPassword/container/ForgotPassword.saga';
 import ProductListingSaga from '@tcp/core/src/components/features/browse/ProductListing/container/ProductListing.saga';
+import ProductDetailSaga from '@tcp/core/src/components/features/browse/ProductDetail/container/ProductDetail.saga';
 import PaymentSaga from '@tcp/core/src/components/features/account/Payment/container/Payment.saga';
 import UpdateProfileSaga from '@tcp/core/src/components/features/account/AddEditPersonalInformation/container/AddEditPersonalInformation.saga';
 import AddEditAddressSaga from '@tcp/core/src/components/common/organisms/AddEditAddress/container/AddEditAddress.saga';
@@ -78,5 +79,6 @@ export default function* rootSaga() {
     GiftCardsSaga(),
     MailingAddressSaga(),
     SearchPageSaga(),
+    ProductDetailSaga(),
   ]);
 }

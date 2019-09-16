@@ -1,6 +1,6 @@
 import React from 'react';
 import { shallow } from 'enzyme';
-import ImageCarousel from '../views/ImageCarousel.view.native';
+import { ImageCarouselVanilla } from '../views/ImageCarousel.view.native';
 
 describe('ProductAltImages component', () => {
   const props = {
@@ -41,12 +41,13 @@ describe('ProductAltImages component', () => {
       },
       productInfo: {
         name: 'tcp',
+        pdpUrl: '/p/Girls-Uniform-Short-Sleeve-Ruffle-Pique-Polo-2044391-10',
       },
     },
     imageIndex: 0,
   };
   it('should renders ListItem correctly', () => {
-    const component = shallow(<ImageCarousel {...props} />);
+    const component = shallow(<ImageCarouselVanilla {...props} />);
     expect(component).toMatchSnapshot();
   });
 });

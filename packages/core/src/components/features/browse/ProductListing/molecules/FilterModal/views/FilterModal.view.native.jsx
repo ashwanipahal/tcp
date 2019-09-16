@@ -78,13 +78,52 @@ class FilterModal extends React.PureComponent {
     this.setSortModalVisibilityState(true);
   };
 
-  handleClick = selectedValue => {
+  /**
+   * @function applyFilterAndSort
+   * This method applies filters and sort stored in current instance of FilterModal
+   *
+   * @memberof FilterModal
+   */
+  applyFilterAndSort = () => {
     const { onSubmit, getProducts, navigation } = this.props;
     const url = navigation && navigation.getParam('url');
+    let filterData = {};
+
+    if (this.filters) {
+      // restore filters if available
+      filterData = { ...this.filters };
+    }
+
+    if (this.sortValue) {
+      // restore sort if available
+      filterData = { ...filterData, sort: this.sortValue };
+    }
+    onSubmit(filterData, false, getProducts, url);
+    this.setModalVisibilityState(false);
+  };
+
+  /**
+   * @function handleClick
+   * This method is called with selected sort value when sort is applied
+   *
+   * @memberof FilterModal
+   */
+  handleClick = selectedValue => {
     const { language } = this.state;
     const sortValue = Platform.OS === 'ios' ? language : selectedValue;
-    onSubmit({ sort: sortValue }, false, getProducts, url);
-    this.setModalVisibilityState(false);
+    this.sortValue = sortValue;
+    this.applyFilterAndSort();
+  };
+
+  /**
+   * @function applyFilters
+   * This method is called with selected filters when filter is applied
+   *
+   * @memberof FilterModal
+   */
+  applyFilters = filters => {
+    this.filters = filters;
+    this.applyFilterAndSort();
   };
 
   render() {
@@ -125,8 +164,12 @@ class FilterModal extends React.PureComponent {
                     />
                   </ModalCloseTouchable>
                 </ModalTitleContainer>
-
-                <Filters labelsFilter={labelsFilter} filters={filters} />
+                <Filters
+                  name="filters"
+                  labelsFilter={labelsFilter}
+                  filters={filters}
+                  onSubmit={this.applyFilters}
+                />
               </ModalContent>
             )}
 
