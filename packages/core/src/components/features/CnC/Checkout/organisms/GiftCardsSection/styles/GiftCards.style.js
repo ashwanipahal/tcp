@@ -5,6 +5,7 @@ const styles = css`
     background-color: ${props => props.theme.colors.BLACK};
     color: ${props => props.theme.colors.WHITE};
     font-size: ${props => props.theme.typography.fontSizes.fs14};
+    font-weight: ${props => props.theme.fonts.fontWeight.semiBold};
   }
   .headsUpMsgBoldTitle {
     font-family: ${props => props.theme.typography.fonts.secondaryFontSemilBoldFamily};
@@ -33,7 +34,7 @@ const styles = css`
     font-size: 0;
     position: absolute;
     top: -${props => props.theme.spacing.ELEM_SPACING.SM};
-    left: calc(50% - 11px);
+    transform: translateX(250%);
     padding: 3px;
     display: inline-block;
     background: transparent url(/static/images/circle-alert-fill.svg) no-repeat 0 0;

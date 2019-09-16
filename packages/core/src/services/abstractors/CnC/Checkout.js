@@ -493,8 +493,8 @@ export function updatePaymentOnOrder(args) {
 }
 
 export function addGiftCard(args) {
-  const { saveToAccount, nickName, billingAddressId } = args;
-  const { giftcardAccountNumber, giftcardPin, recaptchaToken } = args;
+  const { saveToAccount, nickName, billingAddressId, cardType } = args;
+  const { giftcardAccountNumber, giftcardPin, recaptchaToken, labels } = args;
 
   const headerValue = {
     isRest: 'true',
@@ -507,7 +507,7 @@ export function addGiftCard(args) {
     payMethodId: 'GiftCard',
     piAmount: '1.00', // needs to be less then the total on the giftcard. Some IBM needed peramiter.
     billing_address_id: billingAddressId,
-    cc_brand: 'GC',
+    cc_brand: cardType,
     account: giftcardAccountNumber,
     account_pin: giftcardPin,
     'recapture-response': recaptchaToken,
@@ -538,7 +538,7 @@ export function addGiftCard(args) {
     })
     .catch(err => {
       const error = getFormattedError(err);
-      error.errorMessage = error.errorMessage || { _error: 'Oops... an error occured' };
+      error.errorMessage = error.errorMessage || { _error: labels.default_error };
       return error;
     });
 }

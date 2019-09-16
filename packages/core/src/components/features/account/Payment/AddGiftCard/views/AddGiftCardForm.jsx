@@ -1,4 +1,3 @@
-/* eslint-disable react/no-unused-prop-types */
 import React from 'react';
 import { Field, reduxForm } from 'redux-form';
 import TextBox from '../../../../../common/atoms/TextBox';

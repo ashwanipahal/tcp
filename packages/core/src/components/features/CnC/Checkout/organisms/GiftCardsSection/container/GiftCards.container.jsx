@@ -57,13 +57,15 @@ export class GiftCardsContainer extends React.PureComponent<Props> {
   };
 
   submitGiftCardData = data => {
-    const { handleSubmit } = this.props;
+    const { handleSubmit, labels } = this.props;
     handleSubmit({
       giftcardAccountNumber: data.giftCardNumber,
       giftcardPin: data.cardPin,
       billingAddressId: data.billingAddressId,
       recaptchaToken: data.recaptchaToken,
       saveToAccount: data.saveToAccount,
+      cardType: 'GC',
+      labels,
     });
   };
 
