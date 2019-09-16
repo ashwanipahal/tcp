@@ -32,3 +32,11 @@ export const getDefaultImage = state => {
     state.ProductDetail.getIn(['currentProduct', 'imagesByColor', firstColor, 'basicImageUrl'])
   );
 };
+
+export const getCurrentCurrency = state => {
+  return state.session.getIn(['siteDetails', 'currency']);
+};
+
+export const getCurrentProduct = state => {
+  return state.ProductDetail.get('currentProduct');
+};

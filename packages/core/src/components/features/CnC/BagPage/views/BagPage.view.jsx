@@ -59,6 +59,7 @@ class BagPageView extends React.PureComponent {
           bagActions={this.renderActions}
           isUserLoggedIn={isUserLoggedIn}
           isGuest={isGuest}
+          showAccordian={false}
         />
       </div>
     );

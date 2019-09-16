@@ -99,6 +99,8 @@ const PointsHistory = ({ className, labels, pointHistory }) => {
             fontSizeVariation="medium"
             underline
             anchorVariation="primary"
+            to="/account?id=place-rewards&&subSection=points-history"
+            asPath="/account/place-rewards/points-history"
           >
             {labels.lbl_common_points_history}
           </Anchor>

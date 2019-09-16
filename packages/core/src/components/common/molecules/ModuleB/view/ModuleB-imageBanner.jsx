@@ -3,7 +3,7 @@ import PropTypes from 'prop-types';
 import { DamImage, Anchor } from '../../../atoms';
 import PromoBanner from '../../PromoBanner';
 import { getLocator, configurePlpNavigationFromCMSUrl } from '../../../../../utils';
-import { bannerPositionTypes } from '../ModuleB.config';
+import { bannerPositionTypes, IMG_DATA } from '../config';
 
 /**
  * This function renders Promo Banner and Header Text
@@ -35,7 +35,7 @@ const renderImage = ([{ image, link }]) => {
   return (
     <div className="image-container" data-locator={getLocator('moduleB_image')}>
       <Anchor {...navigationUrl} className="image-link">
-        <DamImage imgData={image} className="image" />
+        <DamImage imgData={image} className="image" imageConfig={IMG_DATA.imgOverlayConfig[0]} />
       </Anchor>
     </div>
   );

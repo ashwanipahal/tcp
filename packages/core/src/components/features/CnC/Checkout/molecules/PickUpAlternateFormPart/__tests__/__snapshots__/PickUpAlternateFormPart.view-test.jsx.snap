@@ -156,7 +156,13 @@ exports[`Coupon component should renders correctly when Coupon are not present 1
           color="text.primary"
           component="p"
           fontFamily="secondary"
-          fontSize="fs16"
+          fontSize={
+            Array [
+              "fs14",
+              "fs16",
+              "fs16",
+            ]
+          }
           fontWeight="regular"
           letterSpacing="normal"
           lineHeight="normal"
@@ -324,24 +330,34 @@ exports[`Coupon component should renders correctly when data is present 1`] = `
           color="text.primary"
           component="p"
           fontFamily="secondary"
-          fontSize="fs16"
+          fontSize={
+            Array [
+              "fs14",
+              "fs16",
+              "fs16",
+            ]
+          }
           fontWeight="regular"
           letterSpacing="normal"
           lineHeight="normal"
           textAlign="left"
         />
       </Field>
-      <Styled(BodyCopy)
-        className="alterNativeSubText"
-        color="text.primary"
-        component="p"
-        fontFamily="secondary"
-        fontSize="fs12"
-        fontWeight="regular"
-        letterSpacing="normal"
-        lineHeight="normal"
-        textAlign="left"
-      />
+      <div
+        className="alterSubText"
+      >
+        <Styled(BodyCopy)
+          className="alterNativeSubText"
+          color="text.primary"
+          component="p"
+          fontFamily="secondary"
+          fontSize="fs12"
+          fontWeight="regular"
+          letterSpacing="normal"
+          lineHeight="normal"
+          textAlign="left"
+        />
+      </div>
     </Styled(Col)>
   </Styled(Row)>
   <Styled(ContactFormFields)

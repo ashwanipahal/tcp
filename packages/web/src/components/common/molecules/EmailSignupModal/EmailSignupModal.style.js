@@ -40,7 +40,12 @@ const EmailSignupModalStyle = css`
       padding: 0;
     }
     .img-wrapper {
-      display: block;
+      display: flex;
+      width: 300px;
+      margin-right: 0;
+    }
+    .img-wrapper + div {
+      width: calc(100% - 300px);
     }
     .button-container {
       bottom: 24px;
