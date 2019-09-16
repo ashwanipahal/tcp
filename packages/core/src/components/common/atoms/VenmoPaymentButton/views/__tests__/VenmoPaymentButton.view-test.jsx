@@ -63,6 +63,7 @@ describe('Venmo Payment Button', () => {
     const componentInstance = tree.instance();
     componentInstance.setupVenmoInstance(true);
     expect(tree.state('hasVenmoError')).toBeTruthy();
+    expect(props.setVenmoData).not.toHaveBeenCalled();
   });
 
   it('calling handleVenmoSuccess method', () => {
@@ -91,11 +92,27 @@ describe('Venmo Payment Button', () => {
     const componentInstance = tree.instance();
     componentInstance.handleVenmoClick();
     expect(props.setVenmoPaymentInProgress).toBeCalled();
+    expect(props.onVenmoPaymentButtonClick).toBeCalled();
   });
 
   it('calling canCallVenmoApi method', () => {
     const tree = shallow(<VenmoPaymentButtonVanilla {...props} />);
     const componentInstance = tree.instance();
     expect(componentInstance.canCallVenmoApi()).toEqual(false);
+  });
+
+  it('calling fetchVenmoNonce method', () => {
+    const venmoInstance = jest.fn();
+    const tree = shallow(<VenmoPaymentButtonVanilla {...props} />);
+    const componentInstance = tree.instance();
+    componentInstance.fetchVenmoNonce();
+    expect(venmoInstance).not.toBeCalled();
+    expect(props.setVenmoData).toBeCalled();
+  });
+
+  it('calling disableVenmoButton method', () => {
+    const tree = shallow(<VenmoPaymentButtonVanilla {...props} />);
+    const componentInstance = tree.instance();
+    expect(componentInstance.disableVenmoButton()).toEqual(undefined);
   });
 });
