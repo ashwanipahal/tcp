@@ -12,6 +12,12 @@ const getSelectedAddress = (addressList, onFileAddressKey, shippingAddressId) =>
   return selectedAddress;
 };
 
+const setDefaultShippingValue = ({ userAddresses, dispatch, change, formName }) => {
+  if (userAddresses && userAddresses.size === 0) {
+    dispatch(change(formName, 'defaultShipping', true));
+  }
+};
+
 const getDefaultShippingDisabledState = ({
   isEditing,
   isSaveToAddressBookChecked,
@@ -164,4 +170,5 @@ export {
   getFieldsValidation,
   nativePropTypes,
   nativeDefaultPropTypes,
+  setDefaultShippingValue,
 };
