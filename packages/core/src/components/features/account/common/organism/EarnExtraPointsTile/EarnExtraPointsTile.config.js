@@ -4,6 +4,7 @@ const CAROUSEL_OPTIONS = {
   autoplay: false,
   arrows: true,
   autoplaySpeed: 4000,
+  infinite: false,
   fade: false,
   speed: 1000,
   dots: true,

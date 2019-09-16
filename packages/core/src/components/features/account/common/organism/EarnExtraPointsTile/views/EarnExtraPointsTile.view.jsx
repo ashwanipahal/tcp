@@ -3,7 +3,7 @@ import PropTypes from 'prop-types';
 import Carousel from '@tcp/core/src/components/common/molecules/Carousel';
 import withStyles from '@tcp/core/src/components/common/hoc/withStyles';
 import { BodyCopy, Row, Col, Anchor } from '@tcp/core/src/components/common/atoms';
-import { routerPush } from '@tcp/core/src/utils';
+import { routerPush, getIconPath } from '@tcp/core/src/utils';
 import internalEndpoints from '@tcp/core/src/components/features/account/common/internalEndpoints';
 import styles from '../styles/EarnExtraPointsTile.style';
 import carouselConfig from '../EarnExtraPointsTile.config';
@@ -50,7 +50,11 @@ const EarnExtraPointsTile = ({ className, labels, waysToEarn }) => {
       <BodyCopy component="div" textAlign="center" className="earnExtraPointsWrapper">
         <Carousel
           options={carouselConfig}
-          carouselConfig={{ type: 'light', arrow: 'small' }}
+          carouselConfig={{
+            customArrowLeft: getIconPath('smallright'),
+            customArrowRight: getIconPath('smallright'),
+            type: 'light',
+          }}
           carouselTheme="dark"
           className={className}
         >
