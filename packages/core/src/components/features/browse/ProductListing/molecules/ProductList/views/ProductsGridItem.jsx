@@ -278,7 +278,7 @@ class ProductsGridItem extends React.PureComponent {
       unbxdId,
       labels,
       dataLocatorImages,
-      // dataLocatorBag,
+      dataLocatorBag,
     } = this.props;
 
     // eslint-disable-next-line camelcase
@@ -342,10 +342,10 @@ class ProductsGridItem extends React.PureComponent {
 
     const videoUrl = this.getVideoUrl(curentColorEntry);
 
-    // let dataLocatorAddToBag;
-    // if (dataLocatorBag) {
-    //   dataLocatorAddToBag = `${dataLocatorBag}_${sqnNmb - 1}`;
-    // }
+    let dataLocatorAddToBag;
+    if (dataLocatorBag) {
+      dataLocatorAddToBag = `${dataLocatorBag}_${sqnNmb - 1}`;
+    }
 
     return (
       <li
