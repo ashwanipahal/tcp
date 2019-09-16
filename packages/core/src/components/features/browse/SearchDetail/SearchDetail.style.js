@@ -17,23 +17,33 @@ export default css`
   display: flex;
   flex-wrap: wrap;
   .product-tile {
-    border: 1px solid ${props => props.theme.colors.TEXT.DARKERGRAY};
     display: inline-block;
-    padding: ${props => props.theme.spacing.ELEM_SPACING.SM} 10px;
-    margin: 0 ${props => props.theme.spacing.ELEM_SPACING.XS} 6px
-      ${props => props.theme.spacing.ELEM_SPACING.XS};
+    padding: ${props => props.theme.spacing.ELEM_SPACING.SM} 20px 0 0;
     text-align: center;
-    width: calc(50% - 38px);
+    width: calc(50% - 10px);
     @media ${props => props.theme.mediaQuery.medium} {
-      margin: 0 20px ${props => props.theme.spacing.ELEM_SPACING.SM};
-      padding: ${props => props.theme.spacing.ELEM_SPACING.SM};
-      width: calc(33.3% - 68px);
+      padding: ${props => props.theme.spacing.ELEM_SPACING.SM} 35px 0
+        ${props => props.theme.spacing.ELEM_SPACING.SM};
+      width: calc(33.3% - 36px);
     }
     @media ${props => props.theme.mediaQuery.large} {
-      margin: 0 ${props => props.theme.spacing.ELEM_SPACING.SM}
-        ${props => props.theme.spacing.ELEM_SPACING.SM};
-      padding: ${props => props.theme.spacing.ELEM_SPACING.SM} 21px;
-      width: calc(20% - 70px);
+      padding: ${props => props.theme.spacing.ELEM_SPACING.SM} 26px 0 0;
+      width: calc(20% - 21px);
+    }
+  }
+  @media ${props => props.theme.mediaQuery.smallOnly} {
+    .product-tile:nth-child(2n) {
+      padding-right: 0;
+    }
+  }
+  @media ${props => props.theme.mediaQuery.mediumOnly} {
+    .product-tile:nth-child(3n) {
+      padding-right: 0;
+    }
+  }
+  @media ${props => props.theme.mediaQuery.largeOnly} {
+    .product-tile:nth-child(5n) {
+      padding-right: 0;
     }
   }
   .item-title {
