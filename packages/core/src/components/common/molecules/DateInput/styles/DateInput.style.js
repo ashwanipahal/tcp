@@ -77,7 +77,7 @@ const DateInput = css`
   .react-datepicker__day-name {
     background-color: ${props => props.theme.colorPalette.white};
     border-radius: 50%;
-    color: #1c1c1c;
+    color: ${props => props.theme.colorPalette.gray[900]};
     display: inline-block;
     height: 38px;
     line-height: 38px;
@@ -91,7 +91,7 @@ const DateInput = css`
   }
 
   .react-datepicker__day-name {
-    font-weight: 800;
+    font-weight: ${props => props.theme.typography.fontWeights.extrabold};
   }
 
   .react-datepicker__day--selected {
@@ -101,11 +101,11 @@ const DateInput = css`
 
   .react-datepicker__day--disabled {
     color: ${props => props.theme.colorPalette.gray[600]};
-    cursor: none;
+    cursor: default;
   }
 
   .react-datepicker__day--disabled:hover {
-    background-color: none;
+    background-color: transparent;
   }
 
   .react-datepicker__triangle {
