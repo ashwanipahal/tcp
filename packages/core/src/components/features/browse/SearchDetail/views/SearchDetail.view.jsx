@@ -8,11 +8,19 @@ import { Row, Col } from '../../../../common/atoms';
 import LoadedProductsCount from '../../ProductListing/molecules/LoadedProductsCount/views';
 import errorBoundary from '../../../../common/hoc/withErrorBoundary';
 import { BodyCopy } from '../../../../../../styles/themes/TCP/typotheme';
+import ProductListingFiltersForm from '../../ProductListing/molecules/ProductListingFiltersForm';
 
 class SearchListingView extends React.PureComponent {
   render() {
     const {
       className,
+      filters,
+      filtersLength,
+      formValues,
+      getProducts,
+      initialValues,
+      labelsFilter,
+      onSubmit,
       products,
       productsBlock,
       labels,
@@ -20,7 +28,7 @@ class SearchListingView extends React.PureComponent {
       searchedText,
       ...otherProps
     } = this.props;
-    const { SEARCHED_FOR, FILTERS, SORT_BY } = config;
+    const { SEARCHED_FOR } = config;
     return (
       <div className={className}>
         <Row>
@@ -31,12 +39,18 @@ class SearchListingView extends React.PureComponent {
             </BodyCopy>
           </Col>
         </Row>
-        <Row className="placeholder">
+        <Row>
           <Col colSize={{ small: 3, medium: 4, large: 6 }}>
-            <div className="filter">{FILTERS}</div>
-          </Col>
-          <Col colSize={{ small: 3, medium: 4, large: 6 }}>
-            <div className="sort-by">{SORT_BY}</div>
+            <ProductListingFiltersForm
+              filtersMaps={filters}
+              totalProductsCount={totalProductsCount}
+              initialValues={initialValues}
+              filtersLength={filtersLength}
+              labels={labelsFilter}
+              onSubmit={onSubmit}
+              formValues={formValues}
+              getProducts={getProducts}
+            />
           </Col>
         </Row>
         <Row>
@@ -61,6 +75,15 @@ class SearchListingView extends React.PureComponent {
 
 SearchListingView.propTypes = {
   className: PropTypes.string,
+  filters: PropTypes.shape({}),
+  filtersLength: PropTypes.shape({}),
+  formValues: PropTypes.shape({
+    sort: PropTypes.string.isRequired,
+  }).isRequired,
+  getProducts: PropTypes.func.isRequired,
+  initialValues: PropTypes.shape({}),
+  labelsFilter: PropTypes.objectOf(PropTypes.oneOfType([PropTypes.string])),
+  onSubmit: PropTypes.func.isRequired,
   productsBlock: PropTypes.arrayOf(PropTypes.shape({})),
   products: PropTypes.arrayOf(PropTypes.shape({})),
   labels: PropTypes.objectOf(PropTypes.oneOfType([PropTypes.string])),
@@ -70,6 +93,10 @@ SearchListingView.propTypes = {
 
 SearchListingView.defaultProps = {
   className: '',
+  filters: {},
+  filtersLength: {},
+  initialValues: {},
+  labelsFilter: {},
   products: [],
   productsBlock: [],
   labels: {},

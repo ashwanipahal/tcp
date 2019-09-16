@@ -2,6 +2,7 @@
 import React from 'react';
 import { connect } from 'react-redux';
 import { withRouter } from 'next/router'; //eslint-disable-line
+import { getFormValues } from 'redux-form';
 import { PropTypes } from 'prop-types';
 import { isClient } from '../../../../../utils/index';
 import SearchDetail from '../views/SearchDetail.view';
@@ -9,7 +10,6 @@ import { getSlpProducts } from './SearchDetail.actions';
 import { getProductsAndTitleBlocks } from '../container/SearchDetail.util';
 import {
   getUnbxdId,
-  getProductsFilters,
   getCategoryId,
   getLabelsProductListing,
   getNavigationTree,
@@ -22,6 +22,7 @@ import {
 import {
   getLoadedProductsCount,
   getLoadedProductsPages,
+  getProductsFilters,
   getTotalProductsCount,
   getProductsSelect,
   getCurrentSearchForText,
@@ -48,6 +49,7 @@ class SearchDetailContainer extends React.PureComponent {
       return <div>Blank</div>;
     }
     const {
+      formValues,
       productsBlock,
       products,
       currentNavIds,
@@ -71,10 +73,17 @@ class SearchDetailContainer extends React.PureComponent {
     } = this.props;
     return (
       <SearchDetail
+        filters={filters}
+        formValues={formValues}
+        filtersLength={filtersLength}
+        getProducts={getProducts}
+        initialValues={initialValues}
+        onSubmit={onSubmit}
         products={products}
         productsBlock={productsBlock}
         totalProductsCount={totalProductsCount}
         labels={labels}
+        labelsFilter={labelsFilter}
         searchedText={searchedText}
         {...otherProps}
       />
@@ -117,6 +126,8 @@ function mapStateToProps(state) {
     labels: getLabelsProductListing(state),
     isLoadingMore: getIsLoadingMore(state),
     lastLoadedPageNumber: getLastLoadedPageNumber(state),
+    formValues: getFormValues('filter-form')(state),
+    onSubmit: submitProductListingFiltersForm,
     currentNavIds: state.ProductListing && state.ProductListing.get('currentNavigationIds'),
   };
 }
@@ -143,6 +154,7 @@ SearchDetailContainer.propTypes = {
   formValues: PropTypes.shape({
     sort: PropTypes.string.isRequired,
   }).isRequired,
+  onSubmit: PropTypes.func.isRequired,
 };
 
 SearchDetailContainer.defaultProps = {
