@@ -166,7 +166,7 @@ export default css`
       }
     }
     @media ${props => props.theme.mediaQuery.mediumOnly} {
-      .candidate_a_inline_container_button button {
+      .refer_a_friend_desktop .candidate_a_inline_container_button button {
         width: auto;
       }
       .footer_top_candidate_a .candidate_a_inline_container_button {
@@ -207,10 +207,6 @@ export default css`
     }
     &.navigation-footer .hide-in-medium-up {
       display: block;
-    }
-    .candidate_a_inline_container_button button{
-      padding: 12px 20px;
-      width: 100%;
     }
     .footer_top_candidate_a .candidate_a_inline_container_button {
       text-align: right;
@@ -268,9 +264,12 @@ export default css`
       font-size: 15px;
       line-height: 1.67;
     }
+  }
 
-    .refer_a_friend_desktop .candidate_a_inline_container_button button {
-       width: auto;
+  @media ${props => props.theme.mediaQuery.mediumOnly} {
+    .candidate_a_inline_container_button button{
+      padding: 12px 20px;
+      width: 100%;
     }
   }
 

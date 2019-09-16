@@ -153,7 +153,7 @@ const ButtonList = props => {
         {buttonsData.map((item, index) => {
           const { button = {}, image } = item;
           const compProps = {
-            className: `${compClassName}-class$`,
+            className: `${compClassName}-class`,
             ctaInfo: {
               ...ctaInfo,
               link: button,

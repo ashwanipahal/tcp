@@ -171,7 +171,6 @@ export default css`
           props.theme.isGymboree
             ? props.theme.colorPalette.primary.main
             : props.theme.colors.ANCHOR.SECONDARY};
-        text-decoration: none;
       }
     }
     .l2-nav-link {
