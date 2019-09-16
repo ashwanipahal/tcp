@@ -251,6 +251,10 @@ const endpoints = {
     method: 'POST',
     URI: 'v2/account/deleteBirthdaySavings',
   },
+  addChild: {
+    method: 'POST',
+    URI: 'v2/account/addBirthdaySavings',
+  },
   addGiftOptions: {
     method: 'POST',
     URI: 'v2/checkout/addGiftOptions',

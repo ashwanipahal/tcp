@@ -36,6 +36,7 @@ exports[`BirthdaySavingsList component should renders correctly when childrenBir
       key="card_0"
     >
       <Styled(EmptyBirthdayCard)
+        addBirthday={[Function]}
         labels={
           Object {
             "lbl_profile_birthday_saving_info": "Add up to 4 kids’ birthdays to your account and receive special savings during their birthday month!",
@@ -65,6 +66,7 @@ exports[`BirthdaySavingsList component should renders correctly when childrenBir
       key="card_1"
     >
       <Styled(EmptyBirthdayCard)
+        addBirthday={[Function]}
         labels={
           Object {
             "lbl_profile_birthday_saving_info": "Add up to 4 kids’ birthdays to your account and receive special savings during their birthday month!",
@@ -94,6 +96,7 @@ exports[`BirthdaySavingsList component should renders correctly when childrenBir
       key="card_2"
     >
       <Styled(EmptyBirthdayCard)
+        addBirthday={[Function]}
         labels={
           Object {
             "lbl_profile_birthday_saving_info": "Add up to 4 kids’ birthdays to your account and receive special savings during their birthday month!",
@@ -123,6 +126,7 @@ exports[`BirthdaySavingsList component should renders correctly when childrenBir
       key="card_3"
     >
       <Styled(EmptyBirthdayCard)
+        addBirthday={[Function]}
         labels={
           Object {
             "lbl_profile_birthday_saving_info": "Add up to 4 kids’ birthdays to your account and receive special savings during their birthday month!",
@@ -197,6 +201,7 @@ exports[`BirthdaySavingsList component should renders correctly when childrenBir
       key="card_1"
     >
       <Styled(EmptyBirthdayCard)
+        addBirthday={[Function]}
         labels={
           Object {
             "lbl_profile_birthday_saving_info": "Add up to 4 kids’ birthdays to your account and receive special savings during their birthday month!",
@@ -226,6 +231,7 @@ exports[`BirthdaySavingsList component should renders correctly when childrenBir
       key="card_2"
     >
       <Styled(EmptyBirthdayCard)
+        addBirthday={[Function]}
         labels={
           Object {
             "lbl_profile_birthday_saving_info": "Add up to 4 kids’ birthdays to your account and receive special savings during their birthday month!",
@@ -255,6 +261,7 @@ exports[`BirthdaySavingsList component should renders correctly when childrenBir
       key="card_3"
     >
       <Styled(EmptyBirthdayCard)
+        addBirthday={[Function]}
         labels={
           Object {
             "lbl_profile_birthday_saving_info": "Add up to 4 kids’ birthdays to your account and receive special savings during their birthday month!",
