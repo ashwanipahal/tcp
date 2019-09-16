@@ -6,6 +6,7 @@ import { Col, Row, Heading } from '../../atoms';
 import ButtonCTA from '../ButtonCTA';
 import { getIconPath } from '../../../../utils';
 import withStyles from '../../hoc/withStyles';
+import errorBoundary from '../../hoc/withErrorBoundary';
 import style from './Recommendations.style';
 import ModuleO from '../ModuleO';
 
@@ -145,4 +146,4 @@ Recommendations.defaultProps = {
 };
 
 export { Recommendations as RecommendationsVanilla };
-export default withStyles(Recommendations, style);
+export default withStyles(errorBoundary(Recommendations), style);

@@ -27,16 +27,14 @@ class BillingPage extends React.PureComponent {
       <div className={className}>
         <CheckoutSectionTitleDisplay title={header} dataLocator="billing-title" />
         <GiftCardsContainer />
-        <div className="payment-container">
-          <BillingPaymentForm
-            handleSubmit={submitBilling}
-            orderHasShipping={orderHasShipping}
-            isGuest={isGuest}
-            backLinkPickup={backLinkPickup}
-            backLinkShipping={backLinkShipping}
-            nextSubmitText={nextSubmitText}
-          />
-        </div>
+        <BillingPaymentForm
+          handleSubmit={submitBilling}
+          orderHasShipping={orderHasShipping}
+          isGuest={isGuest}
+          backLinkPickup={backLinkPickup}
+          backLinkShipping={backLinkShipping}
+          nextSubmitText={nextSubmitText}
+        />
       </div>
     );
   }

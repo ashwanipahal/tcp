@@ -131,6 +131,8 @@ exports[`ProductsGridItem component should renders correctly 1`] = `
     <PromotionalMessage />
     <div>
       <Styled(FulfillmentSection)
+        btnClassName="added-to-bag"
+        dataLocator="global-addtocart-Button"
         onPickupOpenClick={[Function]}
       />
     </div>

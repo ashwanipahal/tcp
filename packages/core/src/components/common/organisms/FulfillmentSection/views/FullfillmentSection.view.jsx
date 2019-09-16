@@ -21,14 +21,15 @@ class FulfillmentSection extends React.Component {
   };
 
   render() {
-    const { className, buttonLabel } = this.props;
+    const { className, buttonLabel, dataLocator, btnClassName } = this.props;
     return (
       <React.Fragment>
         <Button
-          className={`${className} fulfillment-section`}
+          className={`${className} ${btnClassName} fulfillment-section`}
           fullWidth
           buttonVariation="fixed-width"
           onClick={this.openModal}
+          dataLocator={dataLocator}
         >
           {buttonLabel}
         </Button>
@@ -42,11 +43,15 @@ FulfillmentSection.propTypes = {
   onPickupOpenClick: PropTypes.func.isRequired,
   className: PropTypes.string,
   buttonLabel: PropTypes.string,
+  dataLocator: PropTypes.string,
+  btnClassName: PropTypes.string,
 };
 
 FulfillmentSection.defaultProps = {
   className: '',
   buttonLabel: '',
+  dataLocator: '',
+  btnClassName: '',
 };
 
 export default withStyles(FulfillmentSection, styles);
