@@ -436,6 +436,8 @@ class ProductsGridItem extends React.PureComponent {
           </div> */}
           <div>
             <FulfillmentSection
+              btnClassName="added-to-bag"
+              dataLocator={dataLocatorAddToBag || getLocator('global_addtocart_Button')}
               buttonLabel={labels.addToBag}
               onPickupOpenClick={this.handlePickupOpenClick}
             />
