@@ -21,6 +21,7 @@ class ImageCarousel extends React.PureComponent {
     this.state = { activeSlideIndex: 0 };
   }
 
+  // this method set current visible image
   setActiveSlideIndex = index => {
     const { activeSlideIndex } = this.state;
     if (index !== activeSlideIndex) {
@@ -30,6 +31,7 @@ class ImageCarousel extends React.PureComponent {
     }
   };
 
+  // this method when swipe image and return changed view
   onViewableItemsChanged = ({ changed }) => {
     const len = (changed && changed.length) || 0;
     for (let i = 0; i < len; i += 1) {
@@ -42,6 +44,7 @@ class ImageCarousel extends React.PureComponent {
     }
   };
 
+  // this method call when tap on the pagination dots and navigate to clicked image
   onPageChange = dotClickedIndex => {
     this.flatListRef.scrollToIndex({ animated: true, index: dotClickedIndex });
   };

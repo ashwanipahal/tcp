@@ -1,38 +1,14 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
 exports[`CustomImage component should renders CustomImage correctly 1`] = `
-<StyledNativeComponent
-  forwardedComponent={
-    Object {
-      "$$typeof": Symbol(react.forward_ref),
-      "_foldedDefaultProps": Object {
-        "height": 100,
-        "resizeMode": "contain",
-        "source": null,
-        "url": null,
-        "width": 100,
-      },
-      "attrs": Array [],
-      "displayName": "Styled(CustomImage)",
-      "inlineStyle": InlineStyle {
-        "rules": Array [
-          "
-    ",
-          ";
-  ",
-        ],
-      },
-      "render": [Function],
-      "styledComponentId": "StyledNativeComponent",
-      "target": [Function],
-      "withComponent": [Function],
-    }
-  }
-  forwardedRef={null}
+<Styled(Image)
   height={100}
   resizeMode="contain"
-  source={null}
-  url={null}
+  source={
+    Object {
+      "url": null,
+    }
+  }
   width={100}
 />
 `;

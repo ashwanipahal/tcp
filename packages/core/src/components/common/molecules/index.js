@@ -12,7 +12,6 @@ import ModuleN from './ModuleN';
 import PromoBanner from './PromoBanner';
 import LinkText from './LinkText';
 import ImageGrid from './ImageGrid';
-import PaginationDots from './PaginationDots';
 
 export {
   AccordionHeader,
@@ -29,5 +28,4 @@ export {
   PromoBanner,
   LinkText,
   ImageGrid,
-  PaginationDots,
 };

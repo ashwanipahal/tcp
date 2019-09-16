@@ -1,6 +1,6 @@
 import React from 'react';
 import { shallow } from 'enzyme';
-import CustomImage from '../views/CustomImage.view.native';
+import { CustomImageVanilla } from '../views/CustomImage.view.native';
 
 describe('CustomImage component', () => {
   const props = {
@@ -11,7 +11,7 @@ describe('CustomImage component', () => {
     resizeMode: 'contain',
   };
   it('should renders CustomImage correctly', () => {
-    const component = shallow(<CustomImage {...props} />);
+    const component = shallow(<CustomImageVanilla {...props} />);
     expect(component).toMatchSnapshot();
   });
 });

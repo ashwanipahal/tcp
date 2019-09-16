@@ -26,8 +26,8 @@ CustomImage.propTypes = {
 CustomImage.defaultProps = {
   source: null,
   url: null,
-  width: 100, // sample default value
-  height: 100, // sample default value
+  width: 347, // sample default value as per the pdp
+  height: 427, // sample default value as per the pdp
   resizeMode: 'contain',
 };
 
