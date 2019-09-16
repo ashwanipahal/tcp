@@ -63,7 +63,9 @@ class AddGiftCardForm extends React.PureComponent<Props> {
   };
 
   resetReCaptcha = () => {
-    this.recaptcha.reset();
+    if (this.recaptcha) {
+      this.recaptcha.reset();
+    }
     this.handleRecaptchaExpired();
     const { untouch } = this.props;
     untouch('recaptchaToken');
@@ -130,7 +132,6 @@ class AddGiftCardForm extends React.PureComponent<Props> {
               fontWeight="regular"
             >
               {labels.lbl_payment_saveToAccount}
-              Save gift card balance to my account
             </BodyCopy>
           </Field>
         </Row>
