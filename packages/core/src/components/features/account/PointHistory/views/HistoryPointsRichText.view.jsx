@@ -5,7 +5,7 @@ import withStyles from '@tcp/core/src/components/common/hoc/withStyles';
 import styles from '../styles/PointsHistoryPage.view.style';
 
 export const HistoryPointsRichText = ({ content, className }) => {
-  return <RichText richTextHtml={content} className={`${className} point-history-content`} />;
+  return <RichText richTextHtml={content} className={className} />;
 };
 
 HistoryPointsRichText.propTypes = {
