@@ -70,6 +70,7 @@ describe('Venmo Payment Button', () => {
     const tree = shallow(<VenmoPaymentButtonVanilla {...props} />);
     const componentInstance = tree.instance();
     componentInstance.handleVenmoSuccess({ nonce: 'encryptedtext' });
+    expect(props.setVenmoData).toBeCalled();
     expect(props.onVenmoPaymentButtonClick).toBeCalled();
   });
 
@@ -83,16 +84,38 @@ describe('Venmo Payment Button', () => {
   it('calling handleVenmoInstanceError method', () => {
     const tree = shallow(<VenmoPaymentButtonVanilla {...props} />);
     const componentInstance = tree.instance();
+    tree.setState({ hasVenmoError: true });
     componentInstance.handleVenmoInstanceError({ code: 'error code 400' });
     expect(tree.state('hasVenmoError')).toBeTruthy();
+  });
+
+  it('calling handleVenmoInstanceError method without error arg', () => {
+    const tree = shallow(<VenmoPaymentButtonVanilla {...props} />);
+    const componentInstance = tree.instance();
+    tree.setState({ hasVenmoError: false });
+    const handleVenmoClickedError = jest.spyOn(componentInstance, 'handleVenmoClickedError');
+    componentInstance.handleVenmoInstanceError();
+    expect(tree.state('hasVenmoError')).toBe(true);
+    expect(handleVenmoClickedError).toHaveBeenCalled();
   });
 
   it('calling handleVenmoClick method', () => {
     const tree = shallow(<VenmoPaymentButtonVanilla {...props} />);
     const componentInstance = tree.instance();
+    componentInstance.canCallVenmoApi = jest.fn();
     componentInstance.handleVenmoClick();
+    expect(componentInstance.canCallVenmoApi).not.toBeCalled();
     expect(props.setVenmoPaymentInProgress).toBeCalled();
     expect(props.onVenmoPaymentButtonClick).toBeCalled();
+  });
+
+  it('calling handleVenmoClick method with venmo nonce', () => {
+    const tree = shallow(<VenmoPaymentButtonVanilla {...props} />);
+    const componentInstance = tree.instance();
+    const fetchVenmoNonce = jest.spyOn(componentInstance, 'fetchVenmoNonce');
+    componentInstance.handleVenmoClick();
+    expect(props.setVenmoPaymentInProgress).toBeCalled();
+    expect(fetchVenmoNonce).not.toBeCalled();
   });
 
   it('calling canCallVenmoApi method', () => {
