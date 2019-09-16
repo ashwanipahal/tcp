@@ -1,4 +1,5 @@
 const profilePath = '/account/profile';
+const placeRewardsPath = '/account/place-rewards';
 
 const internalEndpoints = {
   myWalletPage: {
@@ -36,6 +37,14 @@ const internalEndpoints = {
   birthdaySavingsPage: {
     link: '/account?id=profile&subSection=birthday-savings',
     path: profilePath,
+  },
+  placeRewardsPage: {
+    link: '/account?id=place-rewards',
+    path: placeRewardsPath,
+  },
+  pointsHistoryPage: {
+    link: '/account?id=place-rewards&subSection=points-history',
+    path: placeRewardsPath,
   },
 };
 

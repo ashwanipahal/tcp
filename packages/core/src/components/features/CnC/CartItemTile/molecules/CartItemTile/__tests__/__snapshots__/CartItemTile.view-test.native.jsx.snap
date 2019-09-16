@@ -52,13 +52,16 @@ exports[`CartItemTile common component renders correctly 1`] = `
       <ForwardRef>
         <View>
           <ForwardRef
+            alt=""
             data-locator="cartItemEditLink"
             height="58px"
+            host=""
             source={
               Object {
                 "testUri": "../../../../core/src/assets/edit-icon.png",
               }
             }
+            url=""
             width="58px"
           />
           <ForwardRef />
@@ -67,13 +70,16 @@ exports[`CartItemTile common component renders correctly 1`] = `
           onPress={[Function]}
         >
           <ForwardRef
+            alt=""
             data-locator="cartItemEditLink"
             height="58px"
+            host=""
             source={
               Object {
                 "testUri": "../../../../core/src/assets/delete.png",
               }
             }
+            url=""
             width="58px"
           />
           <ForwardRef />

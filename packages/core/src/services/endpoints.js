@@ -260,5 +260,9 @@ const endpoints = {
     method: 'GET',
     URI: 'v2/venmo/getVenmoClientToken',
   },
+  getStoreandProductInventoryInfo: {
+    method: 'GET',
+    URI: 'v2/vendor/getStoreAndProductInventoryInfo',
+  },
 };
 export default endpoints;

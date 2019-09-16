@@ -50,7 +50,7 @@ LinkImageIcon.defaultProps = {
   height: 23,
   resizeMode: 'contain',
   borderWidth: 1,
-  borderRadius: 12.5,
+  borderRadius: 12,
   onPress: null,
 };
 
