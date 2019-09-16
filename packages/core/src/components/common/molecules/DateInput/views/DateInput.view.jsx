@@ -6,6 +6,10 @@ import withStyles from '../../../hoc/withStyles';
 import TextBox from '../../../atoms/TextBox';
 import styles from '../styles/DateInput.style';
 
+/**
+ * React component to render DateInput form field.
+ * Used https://github.com/Hacker0x01/react-datepicker to render datePicker component
+ */
 export class DateInput extends PureComponent {
   static propTypes = {
     className: PropTypes.string,
@@ -24,11 +28,19 @@ export class DateInput extends PureComponent {
     },
   };
 
+  /**
+   * @function
+   * Will call redux-form field onChange prop to update redux form state
+   */
   onChangeHandler = date => {
     const { input } = this.props;
     input.onChange(formatDate(date));
   };
 
+  /**
+   * @function
+   * Will get selected date object from formatted date
+   */
   getSelectedDate = dateInput => {
     if (dateInput && isValidDate(new Date(dateInput))) {
       return new Date(dateInput);
