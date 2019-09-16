@@ -199,6 +199,7 @@ class AddGiftCardForm extends React.PureComponent<Props> {
               component={TextBox}
               maxLength={50}
               dataLocator="gift-card-cardnumberfield"
+              className="giftCardNumber"
             />
           </Col>
           {!isRow && (
@@ -222,6 +223,7 @@ class AddGiftCardForm extends React.PureComponent<Props> {
                 type="tel"
                 component={TextBox}
                 dataLocator="gift-card-pinnumberfield"
+                className="cardPin"
               />
             </Col>
           </Row>

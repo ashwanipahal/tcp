@@ -77,6 +77,14 @@ const styles = css`
       margin-top: -15px;
     }
   }
+  .cardPin .TextBox__label,
+  .giftCardNumber .TextBox__label {
+    font-size: ${props => props.theme.typography.fontSizes.fs16};
+    font-weight: ${props => props.theme.typography.fontWeights.semibold};
+  }
+  input:not([value='']) ~ .TextBox__label {
+    font-size: ${props => props.theme.typography.fontSizes.fs10};
+  }
 `;
 
 export default styles;
