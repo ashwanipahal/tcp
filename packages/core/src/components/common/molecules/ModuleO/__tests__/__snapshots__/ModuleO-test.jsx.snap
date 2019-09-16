@@ -1,72 +1,74 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
 exports[`Module O component renders correctly 1`] = `
-<Styled(ProductsGridItem)
-  className="test"
-  currencyExchange={
-    Array [
-      Object {
-        "exchangevalue": 1,
-      },
-    ]
-  }
-  currencySymbol=""
-  dataLocatorBag="moduleO_add_to_bag_btn"
-  dataLocatorImages="moduleO_image"
-  dataLocatorPrice="moduleO_price"
-  gridIndex={0}
-  hideImageCarousel={true}
-  isBopisEnabled={false}
-  isBopisEnabledForClearance={false}
-  isBossClearanceProductEnabled={true}
-  isBossEnabled={true}
-  isCanada={false}
-  isEvenElement={false}
-  isInternationalShipping={false}
-  isKeepAliveKillSwitch={false}
-  isMatchingFamily={false}
-  isMobile={false}
-  isOnModelImgDisplay={false}
-  isPLPShowPickupCTA={false}
-  isPLPredesign={true}
-  isPlcc={false}
-  isProductsGridCTAView={true}
-  isShowQuickView={false}
-  isShowVideoOnPlp={false}
-  item={
-    Object {
-      "colorsMap": Array [
+<ul>
+  <Styled(ProductsGridItem)
+    className="test"
+    currencyExchange={
+      Array [
         Object {
-          "color": Object {
-            "name": "",
-          },
-          "colorProductId": "",
-          "miscInfo": Object {},
+          "exchangevalue": 1,
         },
-      ],
-      "imagesByColor": Object {},
-      "miscInfo": Object {},
-      "productInfo": Object {},
-      "sqnNmbr": 123,
+      ]
     }
-  }
-  key="sfsdsdgsfgds"
-  labels={Object {}}
-  loadedProductCount={4}
-  onAddItemToFavorites={[Function]}
-  onColorChange={[Function]}
-  onPickUpOpenClick={[Function]}
-  onProductCardHover={[Function]}
-  onQuickBopisOpenClick={[Function]}
-  onQuickViewOpenClick={[Function]}
-  siblingProperties={
-    Object {
-      "colorMap": Array [],
-      "promotionalMessage": "",
-      "promotionalPLCCMessage": "",
+    currencySymbol=""
+    dataLocatorBag="moduleO_add_to_bag_btn"
+    dataLocatorImages="moduleO_image"
+    dataLocatorPrice="moduleO_price"
+    gridIndex={0}
+    hideImageCarousel={true}
+    isBopisEnabled={false}
+    isBopisEnabledForClearance={false}
+    isBossClearanceProductEnabled={true}
+    isBossEnabled={true}
+    isCanada={false}
+    isEvenElement={false}
+    isInternationalShipping={false}
+    isKeepAliveKillSwitch={false}
+    isMatchingFamily={false}
+    isMobile={false}
+    isOnModelImgDisplay={false}
+    isPLPShowPickupCTA={false}
+    isPLPredesign={true}
+    isPlcc={false}
+    isProductsGridCTAView={true}
+    isShowQuickView={false}
+    isShowVideoOnPlp={false}
+    item={
+      Object {
+        "colorsMap": Array [
+          Object {
+            "color": Object {
+              "name": "",
+            },
+            "colorProductId": "",
+            "miscInfo": Object {},
+          },
+        ],
+        "imagesByColor": Object {},
+        "miscInfo": Object {},
+        "productInfo": Object {},
+        "sqnNmbr": 123,
+      }
     }
-  }
-  sqnNmbr={12312}
-  unbxdId="fc0d2287-4a11-4739-98b4-1e2fd91016c4"
-/>
+    key="sfsdsdgsfgds"
+    labels={Object {}}
+    loadedProductCount={4}
+    onAddItemToFavorites={[Function]}
+    onColorChange={[Function]}
+    onPickUpOpenClick={[Function]}
+    onProductCardHover={[Function]}
+    onQuickBopisOpenClick={[Function]}
+    onQuickViewOpenClick={[Function]}
+    siblingProperties={
+      Object {
+        "colorMap": Array [],
+        "promotionalMessage": "",
+        "promotionalPLCCMessage": "",
+      }
+    }
+    sqnNmbr={12312}
+    unbxdId="fc0d2287-4a11-4739-98b4-1e2fd91016c4"
+  />
+</ul>
 `;
