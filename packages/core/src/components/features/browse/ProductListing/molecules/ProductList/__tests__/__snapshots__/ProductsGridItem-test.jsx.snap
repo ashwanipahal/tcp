@@ -136,7 +136,6 @@ exports[`ProductsGridItem component should renders correctly 1`] = `
       <Styled(FulfillmentSection)
         onPickupOpenClick={[Function]}
       />
-      <Connect(PickUpStoreModalView) />
     </div>
   </div>
 </li>
