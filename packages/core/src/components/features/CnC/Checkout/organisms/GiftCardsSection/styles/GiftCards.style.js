@@ -34,7 +34,8 @@ const styles = css`
     font-size: 0;
     position: absolute;
     top: -${props => props.theme.spacing.ELEM_SPACING.SM};
-    transform: translateX(250%);
+    left: 50%;
+    transform: translateX(-50%);
     padding: 3px;
     display: inline-block;
     background: transparent url(/static/images/circle-alert-fill.svg) no-repeat 0 0;

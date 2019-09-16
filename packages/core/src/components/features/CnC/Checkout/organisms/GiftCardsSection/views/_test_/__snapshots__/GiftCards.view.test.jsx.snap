@@ -654,8 +654,8 @@ exports[`GiftCardsVanilla should render gift card tile with 100 order balance wi
           enableReinitialize={true}
           forceUnregisterOnUnmount={false}
           form="AddGiftCardForm"
-          formErrorMessage=""
           getFormState={[Function]}
+          isLoading={false}
           isRecapchaEnabled={false}
           isRow={true}
           keepDirtyOnReinitialize={false}

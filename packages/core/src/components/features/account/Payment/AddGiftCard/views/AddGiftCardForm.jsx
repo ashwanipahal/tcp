@@ -27,7 +27,7 @@ type Props = {
   isRow: Boolean,
   saveToAccountEnabled: Boolean,
   isRecapchaEnabled: Boolean,
-  submitting: Boolean,
+  isLoading: Boolean,
   addGiftCardError: string,
   untouch: Function,
 };
@@ -41,13 +41,7 @@ class AddGiftCardForm extends React.PureComponent<Props> {
   }
 
   handleSubmit = (data: { giftCardNumber: string, cardPin: string, recaptchaToken: string }) => {
-    const { onAddGiftCardClick, submitting } = this.props;
-    if (submitting) return;
-
-    if (!data.recaptchaToken) {
-      this.handleRecaptchaExpired();
-      return;
-    }
+    const { onAddGiftCardClick } = this.props;
     onAddGiftCardClick(data);
   };
 
@@ -142,7 +136,7 @@ class AddGiftCardForm extends React.PureComponent<Props> {
     return isRow ? { small: 3, medium: 3, large: 3 } : { small: 4, medium: 3, large: 2 };
   };
 
-  renderButtons = (isRow, labels, submitting) => {
+  renderButtons = (isRow, labels, isLoading) => {
     return (
       <>
         <Col
@@ -173,7 +167,7 @@ class AddGiftCardForm extends React.PureComponent<Props> {
             fill="BLUE"
             type="submit"
             data-locator="gift-card-addcardbtn"
-            disabled={submitting}
+            disabled={isLoading}
           >
             {labels.lbl_payment_addCard}
           </Button>
@@ -183,7 +177,7 @@ class AddGiftCardForm extends React.PureComponent<Props> {
   };
 
   render() {
-    const { handleSubmit, labels, submitting, isRow } = this.props;
+    const { handleSubmit, labels, isLoading, isRow } = this.props;
     return (
       <form onSubmit={handleSubmit(this.handleSubmit.bind(this))}>
         <Row fullBleed className="elem-mb-MED">
@@ -251,7 +245,7 @@ class AddGiftCardForm extends React.PureComponent<Props> {
             </Col>
           )}
 
-          {this.renderButtons(isRow, labels, submitting)}
+          {this.renderButtons(isRow, labels, isLoading)}
         </Row>
       </form>
     );

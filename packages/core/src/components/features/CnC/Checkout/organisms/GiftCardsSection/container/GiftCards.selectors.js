@@ -36,6 +36,10 @@ const getIsRecapchaEnabled = state => {
     true
   );
 };
+
+const getIsLoading = state => {
+  return state.Checkout.getIn(['uiFlags', 'isLoadingShippingMethods']);
+};
 export default {
   getGrandTotal,
   getAppliedGiftCards,
@@ -46,4 +50,5 @@ export default {
   getAddGiftCardErrors,
   getIsRecapchaEnabled,
   getAddGiftCardResponse,
+  getIsLoading,
 };

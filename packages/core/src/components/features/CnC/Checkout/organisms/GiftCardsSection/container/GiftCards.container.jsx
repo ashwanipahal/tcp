@@ -84,6 +84,7 @@ export class GiftCardsContainer extends React.PureComponent<Props> {
       hideAddGiftCard,
       getAddGiftCardError,
       isRecapchaEnabled,
+      isLoading,
     } = this.props;
 
     let availableGiftCards = [];
@@ -116,6 +117,7 @@ export class GiftCardsContainer extends React.PureComponent<Props> {
         getAddGiftCardError={getAddGiftCardError}
         isGuestUser={isGuestUser}
         isRecapchaEnabled={isRecapchaEnabled}
+        isLoading={isLoading}
       />
     );
   }
@@ -167,6 +169,7 @@ const mapStateToProps = state => {
     giftCardBalance: checkbalanceValue(state),
     isRecapchaEnabled: GiftCardSelector.getIsRecapchaEnabled(state),
     addGiftCardResponse: GiftCardSelector.getAddGiftCardResponse(state),
+    isLoading: GiftCardSelector.getIsLoading(state),
   };
 };
 

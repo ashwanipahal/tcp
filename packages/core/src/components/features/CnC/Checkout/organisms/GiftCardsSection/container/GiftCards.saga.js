@@ -14,6 +14,7 @@ import {
   addGiftCardFailure,
   addGiftCardSuccess,
   resetAddGiftCard,
+  setIsLoadingShippingMethods,
 } from '../../../container/Checkout.action';
 
 export function* applyGiftCard(payloadData) {
@@ -50,13 +51,16 @@ export function* addGiftCardFromBilling(payloadData) {
   const { payload } = payloadData;
   try {
     yield put(resetAddGiftCard());
+    yield put(setIsLoadingShippingMethods(true));
     const response = yield call(addGiftCard, payload);
     if (response && response.success) {
+      yield put(setIsLoadingShippingMethods(false));
       yield put(addGiftCardSuccess());
       yield put(BAG_PAGE_ACTIONS.getCartData());
     }
     if (response.errorMessage) {
       const resErr = response.errorMessage[Object.keys(response.errorMessage)[0]];
+      yield put(setIsLoadingShippingMethods(false));
       yield put(addGiftCardFailure(resErr));
     }
   } catch (err) {

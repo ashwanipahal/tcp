@@ -49,11 +49,11 @@ const renderAddGiftCardError = getAddGiftCardError => {
 const renderAddGiftCard = (
   hideAddGiftCard,
   onAddGiftCardClick,
-  formErrorMessage,
   getAddGiftCardError,
   isGuestUser,
   isRecapchaEnabled,
-  labels
+  labels,
+  isLoading
 ) => {
   return (
     <Row className="gift-card-container elem-mb-LRG">
@@ -70,11 +70,11 @@ const renderAddGiftCard = (
             labels={labels}
             goBackToPayment={hideAddGiftCard}
             onAddGiftCardClick={onAddGiftCardClick}
-            formErrorMessage={formErrorMessage}
             saveToAccountEnabled={!isGuestUser}
             isRecapchaEnabled={isRecapchaEnabled}
             addGiftCardError={getAddGiftCardError}
             isRow
+            isLoading={isLoading}
           />
         </BodyCopy>
       </Col>
@@ -122,10 +122,10 @@ export const GiftCards = ({
   enableAddGiftCard,
   hideAddGiftCard,
   onAddGiftCardClick,
-  formErrorMessage,
   getAddGiftCardError,
   isGuestUser,
   isRecapchaEnabled,
+  isLoading,
 }) => {
   return (
     <Grid className={className}>
@@ -202,11 +202,11 @@ export const GiftCards = ({
         renderAddGiftCard(
           hideAddGiftCard,
           onAddGiftCardClick,
-          formErrorMessage,
           getAddGiftCardError,
           isGuestUser,
           isRecapchaEnabled,
-          labels
+          labels,
+          isLoading
         )}
     </Grid>
   );
@@ -229,6 +229,7 @@ GiftCards.propTypes = {
   getAddGiftCardError: PropTypes.func.isRequired,
   isGuestUser: PropTypes.bool,
   isRecapchaEnabled: PropTypes.bool,
+  isLoading: PropTypes.bool,
 };
 
 GiftCards.defaultProps = {
@@ -242,6 +243,7 @@ GiftCards.defaultProps = {
   formErrorMessage: '',
   isGuestUser: false,
   isRecapchaEnabled: false,
+  isLoading: false,
 };
 
 export default withStyles(GiftCards, styles);
