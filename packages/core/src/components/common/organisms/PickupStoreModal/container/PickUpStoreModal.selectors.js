@@ -55,14 +55,14 @@ export const getIsRadialInventoryEnabled = state => {
 export const getIsBossEnabled = state => {
   return (
     state[SESSIONCONFIG_REDUCER_KEY] &&
-    state[SESSIONCONFIG_REDUCER_KEY].getIn(['siteDetails', 'isBossEnabled'])
+    state[SESSIONCONFIG_REDUCER_KEY].getIn(['siteDetails', 'IS_BOSS_ENABLED'])
   );
 };
 
 export const getIsBopisEnabled = state => {
   return (
     state[SESSIONCONFIG_REDUCER_KEY] &&
-    state[SESSIONCONFIG_REDUCER_KEY].getIn(['siteDetails', 'isBopisEnabled'])
+    state[SESSIONCONFIG_REDUCER_KEY].getIn(['siteDetails', 'IS_BOPIS_ENABLED'])
   );
 };
 

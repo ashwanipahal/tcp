@@ -3,7 +3,6 @@ import React from 'react';
 import productGridItemPropTypes from '../propTypes/ProductGridItemPropTypes';
 import Button from '../../../../../../common/atoms/Button';
 import FulfillmentSection from '../../../../../../common/organisms/FulfillmentSection';
-import PickupStoreModal from '../../../../../../common/organisms/PickupStoreModal';
 import { getLocator } from '../../../../../../../utils';
 import { getImagesToDisplay, getMapSliceForColorProductId } from '../utils/productsCommonUtils';
 // import { ProductRating } from './ProductRating';
@@ -412,7 +411,6 @@ class ProductsGridItem extends React.PureComponent {
           </div>
           <div>
             <FulfillmentSection onPickupOpenClick={this.handlePickupOpenClick} />
-            <PickupStoreModal />
           </div>
 
           {/* {error && <ErrorMessage error={error} />} */}

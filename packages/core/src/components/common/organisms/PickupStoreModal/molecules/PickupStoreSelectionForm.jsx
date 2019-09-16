@@ -1,4 +1,6 @@
 /* eslint-disable max-lines */
+/* eslint-disable */
+
 import React from 'react';
 import { PropTypes } from 'prop-types';
 import { reduxForm, Field, propTypes as reduxFormPropTypes } from 'redux-form';
@@ -14,7 +16,11 @@ import {
 import Spinner from '../atoms/Spinner';
 import Button from '../../../atoms/Button';
 import BodyCopy from '../../../atoms/BodyCopy';
-import { PICKUP_LABELS, BOPIS_ITEM_AVAILABILITY } from '../PickUpStoreModal.constants';
+import {
+  PICKUP_LABELS,
+  BOPIS_ITEM_AVAILABILITY,
+  DEFAULT_STORE,
+} from '../PickUpStoreModal.constants';
 import { minStoreCount } from '../PickUpStoreModal.config';
 import LabeledInput from '../../../atoms/LabeledInput';
 import LabeledSelect from '../../../atoms/LabeledSelect';
@@ -98,7 +104,6 @@ class _PickupStoreSelectionForm extends React.Component {
     };
     this.onSearch = this.onSearch.bind(this);
     this.untouch = this.untouch.bind(this);
-    this.isShowDistanceForFavorite = false;
     this.preferredStore = null;
     this.isAutoSearchTrigerred = false;
   }
@@ -200,10 +205,11 @@ class _PickupStoreSelectionForm extends React.Component {
   }
 
   getPreferredStoreData(defaultStore) {
-    this.preferredStore =
-      defaultStore && defaultStore.basicInfo && defaultStore.basicInfo.isDefault
-        ? defaultStore
-        : null;
+    this.preferredStore = DEFAULT_STORE;
+    // TODO -- Need to change this code as well...
+    // defaultStore && defaultStore.basicInfo && defaultStore.basicInfo.isDefault
+    //   ? defaultStore
+    //   : null;
     return (
       this.preferredStore &&
       this.preferredStore.productAvailability &&
@@ -222,7 +228,7 @@ class _PickupStoreSelectionForm extends React.Component {
 
     /**
      * @var allowBossMsgOnCart
-     * The varialbe handles the condition to show boss warning msg on cart page.
+     * The variable handles the condition to show boss warning msg on cart page.
      * @param allowBossStoreSearch carries the condition when boss item on cart is
      * selected for changing or toggling the store.
      */
@@ -251,25 +257,6 @@ class _PickupStoreSelectionForm extends React.Component {
       return SAME_STORE_BOPIS_BOPIS;
     }
     return SELECT_STORE;
-  };
-
-  /**
-   * @method handleStoreSelect
-   * @description this method sets the selected store
-   * For desktop it adds the item to cart
-   */
-  handleStoreSelect = (storeId, isBoss) => {
-    //  TODO - May be we need similar check to cater different functionality of mobile web -
-    //  Setting default value as false for now..
-    const { isMobile = false } = this.props;
-    this.setState({
-      selectedStoreId: storeId,
-      isBossSelected: isBoss,
-      isShowMessage: !isMobile,
-    });
-    if (!isMobile) {
-      this.handleAddTobag(storeId, isBoss);
-    }
   };
 
   /**
@@ -363,12 +350,12 @@ class _PickupStoreSelectionForm extends React.Component {
       initialValues,
     } = this.props;
     let isRadialBossEnabled = isBossCtaEnabled;
-    if (isRadialInventoryEnabled) {
-      isRadialBossEnabled =
-        !isBOSSProductOOSQtyMismatched(colorFitsSizesMap, initialValues) && isBossCtaEnabled;
-    } else {
-      isRadialBossEnabled = !isProductOOS(colorFitsSizesMap, initialValues) && isBossCtaEnabled;
-    }
+    // if (isRadialInventoryEnabled) {
+    //   isRadialBossEnabled =
+    //     !isBOSSProductOOSQtyMismatched(colorFitsSizesMap, initialValues) && isBossCtaEnabled;
+    // } else {
+    //   isRadialBossEnabled = !isProductOOS(colorFitsSizesMap, initialValues) && isBossCtaEnabled;
+    // }
     return isRadialBossEnabled;
   }
 
@@ -461,7 +448,7 @@ class _PickupStoreSelectionForm extends React.Component {
       !anyTouched && (
         <PickupStoreListContainer
           isShoppingBag={isShoppingBag}
-          onStoreSelect={this.handleStoreSelect}
+          onStoreSelect={this.handleAddTobag}
           isResultOfSearchingInCartStores={isSearchOnlyInCartStores}
           onCancel={onCloseClick}
           sameStore={sameStore}
@@ -513,7 +500,7 @@ class _PickupStoreSelectionForm extends React.Component {
               sameStore={sameStore}
               isShoppingBag={isShoppingBag}
               store={this.preferredStore}
-              onStoreSelect={this.handleStoreSelect}
+              onStoreSelect={this.handleAddTobag}
               isBopisSelected={
                 this.preferredStore.basicInfo.id === selectedStoreId && !isBossSelected
               }
@@ -530,18 +517,17 @@ class _PickupStoreSelectionForm extends React.Component {
               isBossCtaEnabled={isBossCtaEnabled && isBossEnabled}
               updateCartItemStore={updateCartItemStore}
               buttonLabel={buttonLabel}
-              isShowDistance={this.isShowDistanceForFavorite}
               isGiftCard={isGiftCard}
             />
           </div>
         )}
-        {this.displayStoreSearchForm(showStoreSearching)}
+        {/* {this.displayStoreSearchForm(showStoreSearching)}
         {this.displayStoreListItems({
           isBossCtaEnabled,
           buttonLabel,
           sameStore,
         })}
-        {this.displayErrorCopy()}
+        {this.displayErrorCopy()} */}
       </React.Fragment>
     );
   }
@@ -572,11 +558,11 @@ class _PickupStoreSelectionForm extends React.Component {
     } = this.props;
 
     return (
-      <form onSubmit={handleSubmit(this.onSearch)} className="bopis-product-container">
+      <form onSubmit={handleSubmit(this.onSearch)}>
         {isPickUpWarningModal && (
           <BodyCopy className="item-unavailable">{PICKUP_LABELS.ITEM_UNAVAILABLE}</BodyCopy>
         )}
-        <PickupProductFormPart
+        {/* <PickupProductFormPart
           colorFitSizeDisplayNames={colorFitSizeDisplayNames}
           colorFitsSizesMap={colorFitsSizesMap}
           name={name}
@@ -597,7 +583,7 @@ class _PickupStoreSelectionForm extends React.Component {
           isHasPlcc={isPlcc}
           currencySymbol={currencySymbol}
           isInternationalShipping={isInternationalShipping}
-        />
+        /> */}
         {!isPickUpWarningModal && this.displayStoreSearchComp()}
       </form>
     );

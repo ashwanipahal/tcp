@@ -3,8 +3,8 @@ import { PICKUP_MODAL_ACTIONS_CONSTANTS } from '../PickUpStoreModal.constants';
 
 const initialState = fromJS({
   isModalOpen: false, // TODO - Set ErrorBoundary in PICKUP Modal and .. Change it to default as false
-  isBopisCtaEnabled: false,
-  isBossCtaEnabled: false,
+  isBopisCtaEnabled: true,
+  isBossCtaEnabled: true,
   isPickUpWarningModal: false,
   openSkuSelectionForm: false,
   generalProductId: null,
@@ -16,8 +16,8 @@ const initialState = fromJS({
 const mergePickupModalState = (state, payload) => {
   const defaultPayload = {
     isModalOpen: true,
-    isBopisCtaEnabled: false,
-    isBossCtaEnabled: false,
+    isBopisCtaEnabled: true,
+    isBossCtaEnabled: true,
     isPickUpWarningModal: false,
     openSkuSelectionForm: false,
     colorProductId: payload.generalProductId,

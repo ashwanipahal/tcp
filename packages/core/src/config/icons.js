@@ -42,6 +42,7 @@ export default {
   'fav-icon': '/static/images/heart.png',
   'empty-fav-icon': '/static/images/empty-heart.png',
   'cart-icon': '/static/images/bag.png',
+  'marker-icon': '/static/images/marker-icon.png',
   'alert-triangle': '/static/images/alert-triangle.png',
   'user-icon': '/static/images/user-icon.png',
   'selected-item': '/static/images/selected-item.svg',
