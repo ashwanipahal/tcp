@@ -30,6 +30,7 @@ exports[`Earn Extra Points Tile component  should render Earn Extra Points Tile 
       </Styled(BodyCopy)>
     </Styled(Col)>
     <Styled(Col)
+      className="textRight"
       colSize={
         Object {
           "large": 2,

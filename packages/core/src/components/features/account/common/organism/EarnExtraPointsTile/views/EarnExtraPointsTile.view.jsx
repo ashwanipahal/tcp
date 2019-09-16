@@ -36,7 +36,7 @@ const EarnExtraPointsTile = ({ className, labels, waysToEarn }) => {
             {labels.lbl_common_earnExtraPoints}
           </BodyCopy>
         </Col>
-        <Col colSize={{ large: 2, medium: 2, small: 2 }}>
+        <Col colSize={{ large: 2, medium: 2, small: 2 }} className="textRight">
           <Anchor
             fontSizeVariation="medium"
             anchorVariation="primary"

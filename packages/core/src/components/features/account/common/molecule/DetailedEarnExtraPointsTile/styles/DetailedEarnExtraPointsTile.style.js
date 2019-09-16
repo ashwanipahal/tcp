@@ -4,6 +4,8 @@ const styles = css`
   .tileWrapper {
     border: 1px solid ${props => props.theme.colorPalette.gray[300]};
     background: ${props => props.theme.colors.WHITE};
+    margin-left: ${props => props.theme.spacing.LAYOUT_SPACING.MED};
+    margin-right: ${props => props.theme.spacing.LAYOUT_SPACING.MED};
     box-shadow: 0 0 10px 0 rgba(0, 0, 0, 0.12);
     cursor: pointer;
     border-bottom: 2px solid
@@ -24,6 +26,8 @@ const styles = css`
 
   .earnPointDesc {
     margin-bottom: ${props => props.theme.spacing.LAYOUT_SPACING.LRG};
+    padding-left: ${props => props.theme.spacing.ELEM_SPACING.XS};
+    padding-right: ${props => props.theme.spacing.ELEM_SPACING.XS};
   }
 
   .earnExtraPointsTileImage {
