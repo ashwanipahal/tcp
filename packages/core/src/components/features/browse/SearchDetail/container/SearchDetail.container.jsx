@@ -6,7 +6,7 @@ import { PropTypes } from 'prop-types';
 import { isClient } from '../../../../../utils/index';
 import SearchDetail from '../views/SearchDetail.view';
 import { getSlpProducts } from './SearchDetail.actions';
-import { getProductsAndTitleBlocks } from './SearchDetail.util';
+import { getProductsAndTitleBlocks } from '../../ProductListing/container/ProductListing.util';
 import {
   getUnbxdId,
   getProductsFilters,
