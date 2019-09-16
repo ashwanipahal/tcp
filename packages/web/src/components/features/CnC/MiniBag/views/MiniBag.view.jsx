@@ -72,6 +72,7 @@ class MiniBag extends React.Component {
         closeIconLeftAligned
       >
         <MiniBagBody
+          closeMiniBag={onRequestClose}
           labels={labels}
           cartItemCount={cartItemCount}
           userName={userName}

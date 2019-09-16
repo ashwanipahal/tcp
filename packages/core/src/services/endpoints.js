@@ -272,6 +272,10 @@ const endpoints = {
     method: 'POST',
     URI: SAVE_FOR_LATER,
   },
+  getMyFavoriteStore: {
+    method: API_METHODS.GET,
+    URI: 'v2/store/getFavouriteStoreLocation?latitude&longitude&catEntryId&itemPartNumber',
+  },
   getStoreandProductInventoryInfo: {
     method: 'GET',
     URI: 'v2/vendor/getStoreAndProductInventoryInfo',
