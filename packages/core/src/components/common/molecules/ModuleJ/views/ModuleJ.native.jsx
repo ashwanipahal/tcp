@@ -7,7 +7,7 @@ import { LAZYLOAD_HOST_NAME } from '@tcp/core/src/utils';
 import { Button, Anchor, DamImage } from '../../../atoms';
 import { getLocator } from '../../../../../utils';
 import { Carousel } from '../..';
-import config from '../moduleJ.config';
+import config from '../config';
 
 import {
   Container,

@@ -2,10 +2,18 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import { Anchor } from '../../atoms';
 import { Wrapper, ImageGridContainer, ImageGridItem } from './ImageGrid.style.native';
-import config from './config';
 
 const ImageGrid = props => {
-  const { mediaList, imgWidth, column, gutter, imgHeight, dataLocator, navigation } = props;
+  const {
+    mediaList,
+    imgWidth,
+    column,
+    gutter,
+    imgHeight,
+    dataLocator,
+    navigation,
+    IMG_DATA,
+  } = props;
   return (
     <Wrapper>
       <ImageGridContainer width={imgWidth * column + gutter}>
@@ -21,7 +29,7 @@ const ImageGrid = props => {
                   gutter={gutter}
                   url={image.url}
                   alt={image.alt || image.title}
-                  imgConfigs={config.IMG_DATA.imgConfig[0]}
+                  imgConfigs={IMG_DATA.imgConfig[0]}
                 />
               </Anchor>
             );
@@ -39,6 +47,7 @@ ImageGrid.defaultProps = {
   gutter: 18,
   dataLocator: 'image_grid',
   navigation: null,
+  IMG_DATA: {},
 };
 
 ImageGrid.propTypes = {
@@ -55,6 +64,7 @@ ImageGrid.propTypes = {
   gutter: PropTypes.number,
   dataLocator: PropTypes.string,
   navigation: PropTypes.shape({}),
+  IMG_DATA: PropTypes.shape({}),
 };
 
 export default ImageGrid;
