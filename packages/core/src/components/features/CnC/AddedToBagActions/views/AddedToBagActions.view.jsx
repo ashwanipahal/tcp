@@ -14,10 +14,14 @@ import BagConfirmationModal from '../../BagPage/views/BagConfirmationModal.view'
 
 class AddedToBagActions extends React.PureComponent<Props> {
   routeToCheckout = e => {
-    const { routeForBagCheckout } = this.props;
+    const { routeForBagCheckout, closeCheckoutModalMountState, closeMiniBag } = this.props;
     if (e) {
       e.preventDefault();
     }
+    if (closeMiniBag) {
+      closeMiniBag(false, false);
+    }
+    closeCheckoutModalMountState({ state: false });
     routeForBagCheckout();
   };
 
