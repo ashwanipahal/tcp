@@ -96,6 +96,10 @@ class ProductsGridItem extends React.PureComponent {
       : undefined;
   }
 
+  /**
+   * This function returns array of images for carousal and also decides whether to show image carousal or not
+   * @param {*} imageUrls
+   */
   getImageCarouselOptions(imageUrls) {
     const { hideImageCarousel } = this.props;
 

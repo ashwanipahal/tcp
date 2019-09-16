@@ -12,12 +12,13 @@ export default {
     dotsClass: 'slick-dots',
     swipe: true,
     slidesToShow: 4,
-    slideToScroll: 1,
+    slidesToScroll: 4,
     responsive: [
       {
         breakpoint: breakpoints.values.lg - 1,
         settings: {
           slidesToShow: 4,
+          slidesToScroll: 3,
           arrows: false,
         },
       },
@@ -26,6 +27,7 @@ export default {
         settings: {
           arrows: false,
           slidesToShow: 3,
+          slidesToScroll: 2,
         },
       },
     ],

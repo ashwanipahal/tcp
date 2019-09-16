@@ -17,7 +17,7 @@ class Recommendations extends Component {
 
   render() {
     const {
-      youMayAlsoLikeLabel,
+      headerLabel,
       products,
       className,
       loadedProductCount,
@@ -49,7 +49,7 @@ class Recommendations extends Component {
               textAlign="center"
               dataLocator="moduleO_header_text"
             >
-              {youMayAlsoLikeLabel}
+              {headerLabel}
             </Heading>
             <Row fullBleed>
               <Col
@@ -122,7 +122,7 @@ class Recommendations extends Component {
 
 Recommendations.propTypes = {
   loadRecommendations: PropTypes.func.isRequired,
-  youMayAlsoLikeLabel: PropTypes.string.isRequired,
+  headerLabel: PropTypes.string.isRequired,
   products: PropTypes.arrayOf(PropTypes.oneOfType(PropTypes.shape({}))).isRequired,
   className: PropTypes.string.isRequired,
   loadedProductCount: PropTypes.number.isRequired,

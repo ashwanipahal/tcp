@@ -19,11 +19,11 @@ export default css`
 
   &.recommendations-tile {
     .slick-arrow {
-      z-index: 1;
+      z-index: ${props => props.theme.zindex.zPLPFilterDropDown};
       top: 30%;
       transform: inherit;
-      width: 15px !important;
-      height: 52px !important;
+      width: 15px;
+      height: 52px;
     }
 
     .slick-prev {
