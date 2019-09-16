@@ -2,6 +2,26 @@ import { css } from 'styled-components';
 
 const darkLinkCategory = 'category-links-dark';
 
+const getShape = props => {
+  const {
+    theme: { isGymboree },
+    noCurve,
+    noCurveMobile,
+  } = props;
+
+  if (isGymboree && noCurveMobile) {
+    return `
+    border-radius: 25.5px;
+    @media ${props.theme.mediaQuery.smallOnly} {
+      border-radius: 0;
+    }`;
+  }
+  if (isGymboree && !noCurve) {
+    return `border-radius: 25.5px;`;
+  }
+  return ``;
+};
+
 const ButtonStyles = css`
   border: none;
   border-radius: 0;
@@ -209,9 +229,7 @@ const ButtonStyles = css`
     props.theme.isGymboree &&
     props.buttonVariation !== 'mini-nav' &&
     props.buttonVariation !== darkLinkCategory
-      ? `
-    border-radius: 25px;
-  `
+      ? getShape(props)
       : ``}
   ${props => (props.inheritedStyles ? props.inheritedStyles : '')};
   ${props =>
@@ -225,7 +243,12 @@ const ButtonStyles = css`
         padding: 0;
         text-transform: none;
       &:hover {
-        border-bottom: 2px solid ${props.theme.colorPalette.primary.main};
+        border-bottom: 2px solid
+        ${
+          props.theme.isGymboree
+            ? props.theme.colorPalette.primary.main
+            : props.theme.colors.ANCHOR.SECONDARY
+        };
         padding-bottom: 4px;
         text-decoration: none;
         border-radius: 0;

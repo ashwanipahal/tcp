@@ -277,6 +277,7 @@ exports[`ButtonList component renders correctly for Dual Variation 1`] = `
           "url": "https://res.cloudinary.com/tcp-dam-test/image/upload/q_auto:best/v1558543115/ecom/assets/content/tcp/us/home/moduled/US-HP-050519-MINIME1_h9cwcd.jpg",
         }
       }
+      noCurveMobile={true}
       textAlign="center"
       uniqueKey="Girl"
     />
@@ -315,6 +316,7 @@ exports[`ButtonList component renders correctly for Dual Variation 1`] = `
           "url": "https://res.cloudinary.com/tcp-dam-test/image/upload/v1558543115/ecom/assets/content/tcp/us/home/moduled/US-HP-050519-MINIME3_vmfhnu.jpg",
         }
       }
+      noCurveMobile={true}
       textAlign="center"
       uniqueKey="Toddler_Girl"
     />
@@ -353,6 +355,7 @@ exports[`ButtonList component renders correctly for Dual Variation 1`] = `
           "url": "https://res.cloudinary.com/tcp-dam-test/image/upload/v1558543115/ecom/assets/content/tcp/us/home/moduled/US-HP-050519-MINIME1_h9cwcd.jpg",
         }
       }
+      noCurveMobile={true}
       textAlign="center"
       uniqueKey="Boy"
     />
@@ -391,6 +394,7 @@ exports[`ButtonList component renders correctly for Dual Variation 1`] = `
           "url": "https://res.cloudinary.com/tcp-dam-test/image/upload/v1558543115/ecom/assets/content/tcp/us/home/moduled/US-HP-050519-MINIME3_vmfhnu.jpg",
         }
       }
+      noCurveMobile={true}
       textAlign="center"
       uniqueKey="Tod_Boy"
     />
@@ -429,6 +433,7 @@ exports[`ButtonList component renders correctly for Dual Variation 1`] = `
           "url": "https://res.cloudinary.com/tcp-dam-test/image/upload/v1558543115/ecom/assets/content/tcp/us/home/moduled/US-HP-050519-MINIME1_h9cwcd.jpg",
         }
       }
+      noCurveMobile={true}
       textAlign="center"
       uniqueKey="Baby"
     />
@@ -467,6 +472,7 @@ exports[`ButtonList component renders correctly for Dual Variation 1`] = `
           "url": "https://res.cloudinary.com/tcp-dam-test/image/upload/v1558543115/ecom/assets/content/tcp/us/home/moduled/US-HP-050519-MINIME1_h9cwcd.jpg",
         }
       }
+      noCurveMobile={true}
       textAlign="center"
       uniqueKey="Alt"
     />
@@ -1093,6 +1099,7 @@ exports[`ButtonList component renders correctly with props for stacked CTA butto
           "url": "https://res.cloudinary.com/tcp-dam-test/image/upload/q_auto:best/v1558543115/ecom/assets/content/tcp/us/home/moduled/US-HP-050519-MINIME1_h9cwcd.jpg",
         }
       }
+      noCurveMobile={true}
       textAlign="center"
       uniqueKey="Girl"
     />
@@ -1131,6 +1138,7 @@ exports[`ButtonList component renders correctly with props for stacked CTA butto
           "url": "https://res.cloudinary.com/tcp-dam-test/image/upload/v1558543115/ecom/assets/content/tcp/us/home/moduled/US-HP-050519-MINIME3_vmfhnu.jpg",
         }
       }
+      noCurveMobile={true}
       textAlign="center"
       uniqueKey="Toddler_Girl"
     />
@@ -1169,6 +1177,7 @@ exports[`ButtonList component renders correctly with props for stacked CTA butto
           "url": "https://res.cloudinary.com/tcp-dam-test/image/upload/v1558543115/ecom/assets/content/tcp/us/home/moduled/US-HP-050519-MINIME1_h9cwcd.jpg",
         }
       }
+      noCurveMobile={true}
       textAlign="center"
       uniqueKey="Boy"
     />
@@ -1207,6 +1216,7 @@ exports[`ButtonList component renders correctly with props for stacked CTA butto
           "url": "https://res.cloudinary.com/tcp-dam-test/image/upload/v1558543115/ecom/assets/content/tcp/us/home/moduled/US-HP-050519-MINIME3_vmfhnu.jpg",
         }
       }
+      noCurveMobile={true}
       textAlign="center"
       uniqueKey="Tod_Boy"
     />
@@ -1245,6 +1255,7 @@ exports[`ButtonList component renders correctly with props for stacked CTA butto
           "url": "https://res.cloudinary.com/tcp-dam-test/image/upload/v1558543115/ecom/assets/content/tcp/us/home/moduled/US-HP-050519-MINIME1_h9cwcd.jpg",
         }
       }
+      noCurveMobile={true}
       textAlign="center"
       uniqueKey="Baby"
     />
@@ -1283,6 +1294,7 @@ exports[`ButtonList component renders correctly with props for stacked CTA butto
           "url": "https://res.cloudinary.com/tcp-dam-test/image/upload/v1558543115/ecom/assets/content/tcp/us/home/moduled/US-HP-050519-MINIME1_h9cwcd.jpg",
         }
       }
+      noCurveMobile={true}
       textAlign="center"
       uniqueKey="Alt"
     />
@@ -1330,6 +1342,7 @@ exports[`ButtonList component renders correctly without props 1`] = `
           "url": "https://res.cloudinary.com/tcp-dam-test/image/upload/q_auto:best/v1558543115/ecom/assets/content/tcp/us/home/moduled/US-HP-050519-MINIME1_h9cwcd.jpg",
         }
       }
+      noCurveMobile={true}
       textAlign="center"
       uniqueKey="Girl"
     />
@@ -1368,6 +1381,7 @@ exports[`ButtonList component renders correctly without props 1`] = `
           "url": "https://res.cloudinary.com/tcp-dam-test/image/upload/v1558543115/ecom/assets/content/tcp/us/home/moduled/US-HP-050519-MINIME3_vmfhnu.jpg",
         }
       }
+      noCurveMobile={true}
       textAlign="center"
       uniqueKey="Toddler_Girl"
     />
@@ -1406,6 +1420,7 @@ exports[`ButtonList component renders correctly without props 1`] = `
           "url": "https://res.cloudinary.com/tcp-dam-test/image/upload/v1558543115/ecom/assets/content/tcp/us/home/moduled/US-HP-050519-MINIME1_h9cwcd.jpg",
         }
       }
+      noCurveMobile={true}
       textAlign="center"
       uniqueKey="Boy"
     />
@@ -1444,6 +1459,7 @@ exports[`ButtonList component renders correctly without props 1`] = `
           "url": "https://res.cloudinary.com/tcp-dam-test/image/upload/v1558543115/ecom/assets/content/tcp/us/home/moduled/US-HP-050519-MINIME3_vmfhnu.jpg",
         }
       }
+      noCurveMobile={true}
       textAlign="center"
       uniqueKey="Tod_Boy"
     />
@@ -1482,6 +1498,7 @@ exports[`ButtonList component renders correctly without props 1`] = `
           "url": "https://res.cloudinary.com/tcp-dam-test/image/upload/v1558543115/ecom/assets/content/tcp/us/home/moduled/US-HP-050519-MINIME1_h9cwcd.jpg",
         }
       }
+      noCurveMobile={true}
       textAlign="center"
       uniqueKey="Baby"
     />
@@ -1520,6 +1537,7 @@ exports[`ButtonList component renders correctly without props 1`] = `
           "url": "https://res.cloudinary.com/tcp-dam-test/image/upload/v1558543115/ecom/assets/content/tcp/us/home/moduled/US-HP-050519-MINIME1_h9cwcd.jpg",
         }
       }
+      noCurveMobile={true}
       textAlign="center"
       uniqueKey="Alt"
     />
