@@ -26,10 +26,10 @@ class ProductList extends React.PureComponent {
   // eslint-disable-next-line
   onFavorite = item => {};
 
-  onOpenPDPPageHandler = pdpUrl => {
+  onOpenPDPPageHandler = (pdpUrl, selectedColorIndex) => {
     const { title, onGoToPDPPage } = this.props;
     if (onGoToPDPPage) {
-      onGoToPDPPage(title, pdpUrl);
+      onGoToPDPPage(title, pdpUrl, selectedColorIndex);
     }
   };
 
