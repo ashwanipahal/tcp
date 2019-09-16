@@ -5,7 +5,6 @@ import { Wrapper, ImageGridContainer, ImageGridItem } from './ImageGrid.style.na
 
 const ImageGrid = props => {
   const { mediaList, imgWidth, column, gutter, imgHeight, dataLocator, navigation } = props;
-
   return (
     <Wrapper>
       <ImageGridContainer width={imgWidth * column + gutter}>
