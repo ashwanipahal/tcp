@@ -17,7 +17,7 @@ import {
   SeparatorView,
   MainContainerView,
 } from '../ModuleB.style.native';
-import { ctaTypes, bannerPositionTypes } from '../ModuleB.config';
+import { ctaTypes, bannerPositionTypes } from '../config';
 import mock from '../../../../../services/abstractors/common/moduleB/mock';
 
 /**

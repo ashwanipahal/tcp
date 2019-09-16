@@ -38,6 +38,8 @@ export class AddressFields extends React.PureComponent {
     showPhoneNumber: PropTypes.bool,
     showEmailAddress: PropTypes.bool,
     initialValues: PropTypes.shape({}),
+    isGuest: PropTypes.bool,
+    state: PropTypes.string,
   };
 
   static defaultProps = {
@@ -47,6 +49,8 @@ export class AddressFields extends React.PureComponent {
     showPhoneNumber: true,
     showEmailAddress: true,
     initialValues: {},
+    isGuest: true,
+    state: '',
   };
 
   static addressValidationConfig = getStandardConfig([
@@ -72,7 +76,7 @@ export class AddressFields extends React.PureComponent {
         displayName: 'Select',
       },
     ];
-
+    const { state } = props;
     this.CAcountriesStates = [...selectArray, ...CAcountriesStatesTable];
     this.UScountriesStates = [...selectArray, ...UScountriesStatesTable];
     const {
@@ -81,7 +85,7 @@ export class AddressFields extends React.PureComponent {
     this.state = {
       country: us.toUpperCase(),
       dropDownItem:
-        this.getInitialState(props.initialValues) || this.UScountriesStates[0].displayName,
+        this.getInitialState(props.initialValues) || state || this.UScountriesStates[0].displayName,
     };
 
     this.locationRef = null;
@@ -131,6 +135,7 @@ export class AddressFields extends React.PureComponent {
       showPhoneNumber,
       showEmailAddress,
       initialValues,
+      isGuest,
     } = this.props;
     const { dropDownItem, country } = this.state;
     const isCA = country === API_CONFIG.siteIds.ca.toUpperCase();
@@ -269,7 +274,7 @@ export class AddressFields extends React.PureComponent {
             />
           </InputFieldPhoneNumber>
         )}
-        {showEmailAddress && (
+        {showEmailAddress && isGuest && (
           <Field
             label="Email (For Order Updates)"
             name="emailAddress"
