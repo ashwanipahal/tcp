@@ -52,16 +52,9 @@ const renderAddGiftCard = (
   formErrorMessage,
   getAddGiftCardError,
   isGuestUser,
-  isRecapchaEnabled
+  isRecapchaEnabled,
+  labels
 ) => {
-  const paymentGC1 = {
-    lbl_payment_giftCardNoPlaceholder: 'Gift Card #',
-    lbl_common_backLink: 'Back',
-    lbl_payment_cancelCard: 'Cancel',
-    lbl_payment_addCard: 'Apply',
-    lbl_payment_giftCardPinPlaceholder: 'Pin #',
-  };
-  const labels = { paymentGC: paymentGC1 };
   return (
     <Row className="gift-card-container elem-mb-LRG">
       <Col
@@ -212,7 +205,8 @@ export const GiftCards = ({
           formErrorMessage,
           getAddGiftCardError,
           isGuestUser,
-          isRecapchaEnabled
+          isRecapchaEnabled,
+          labels
         )}
     </Grid>
   );

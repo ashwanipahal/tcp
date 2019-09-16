@@ -129,7 +129,7 @@ class AddGiftCardForm extends React.PureComponent<Props> {
               fontFamily="secondary"
               fontWeight="regular"
             >
-              {labels.paymentGC.lbl_payment_saveToAccount}
+              {labels.lbl_payment_saveToAccount}
               Save gift card balance to my account
             </BodyCopy>
           </Field>
@@ -158,7 +158,7 @@ class AddGiftCardForm extends React.PureComponent<Props> {
             data-locator="gift-card-cancelbtn"
             onClick={this.onCancelClick}
           >
-            {labels.paymentGC.lbl_payment_cancelCard}
+            {labels.lbl_payment_cancelCard}
           </Button>
         </Col>
         <Col
@@ -175,7 +175,7 @@ class AddGiftCardForm extends React.PureComponent<Props> {
             data-locator="gift-card-addcardbtn"
             disabled={submitting}
           >
-            {labels.paymentGC.lbl_payment_addCard}
+            {labels.lbl_payment_addCard}
           </Button>
         </Col>
       </>
@@ -192,7 +192,7 @@ class AddGiftCardForm extends React.PureComponent<Props> {
             colSize={{ small: 6, medium: isRow ? 10 : 4, large: isRow ? 6 : 4 }}
           >
             <Field
-              placeholder={labels.paymentGC.lbl_payment_giftCardNoPlaceholder}
+              placeholder={labels.lbl_payment_giftCardNoPlaceholder}
               name="giftCardNumber"
               type="tel"
               component={TextBox}
@@ -203,7 +203,7 @@ class AddGiftCardForm extends React.PureComponent<Props> {
           {!isRow && (
             <Col ignoreGutter={{ small: true }} colSize={{ small: 6, medium: 2, large: 3 }}>
               <Field
-                placeholder={labels.paymentGC.lbl_payment_giftCardPinPlaceholder}
+                placeholder={labels.lbl_payment_giftCardPinPlaceholder}
                 name="cardPin"
                 type="tel"
                 component={TextBox}
@@ -216,7 +216,7 @@ class AddGiftCardForm extends React.PureComponent<Props> {
           <Row fullBleed className="elem-mb-XL">
             <Col ignoreGutter={{ small: true }} colSize={{ small: 6, medium: 10, large: 6 }}>
               <Field
-                placeholder={labels.paymentGC.lbl_payment_giftCardPinPlaceholder}
+                placeholder={labels.lbl_payment_giftCardPinPlaceholder}
                 name="cardPin"
                 type="tel"
                 component={TextBox}
@@ -240,10 +240,10 @@ class AddGiftCardForm extends React.PureComponent<Props> {
                   className="card__msg--bold elem-mb-XS"
                   dataLocator="git-card-headertext"
                 >
-                  {labels.paymentGC.lbl_payment_giftCardMessageHeading}
+                  {labels.lbl_payment_giftCardMessageHeading}
                 </BodyCopy>
                 <BodyCopy tag="p" className="card__msg" dataLocator="git-card-messagetext">
-                  {labels.paymentGC.lbl_payment_giftCardMessageDescription}
+                  {labels.lbl_payment_giftCardMessageDescription}
                 </BodyCopy>
               </div>
             </Col>

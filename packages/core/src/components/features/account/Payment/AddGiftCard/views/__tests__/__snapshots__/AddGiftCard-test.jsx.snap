@@ -24,12 +24,7 @@ exports[`Add gift card component should render component correctly if add gift i
     getFormState={[Function]}
     isRecapchaEnabled={true}
     keepDirtyOnReinitialize={false}
-    labels={
-      Object {
-        "common": Object {},
-        "paymentGC": Object {},
-      }
-    }
+    labels={Object {}}
     onAddGiftCardClick={[MockFunction]}
     persistentSubmitErrors={false}
     pure={true}
@@ -70,12 +65,7 @@ exports[`Add gift card component should render component correctly if add gift i
     getFormState={[Function]}
     isRecapchaEnabled={true}
     keepDirtyOnReinitialize={false}
-    labels={
-      Object {
-        "common": Object {},
-        "paymentGC": Object {},
-      }
-    }
+    labels={Object {}}
     onAddGiftCardClick={[MockFunction]}
     persistentSubmitErrors={false}
     pure={true}
