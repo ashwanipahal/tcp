@@ -1,0 +1,7 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`ImageCarouselVanilla component should renders ImageCarouselVanilla correctly 1`] = `
+<Text>
+  Loading...
+</Text>
+`;

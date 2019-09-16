@@ -4,7 +4,7 @@ import Row from '../../../../../../common/atoms/Row';
 import Col from '../../../../../../common/atoms/Col';
 import BodyCopy from '../../../../../../common/atoms/BodyCopy';
 import MyProfileTile from '../../../../../../common/molecules/MyProfileTile';
-import { getLabelValue, formatPhone } from '../../../../../../../utils';
+import { getLabelValue, formatPhoneNumber } from '../../../../../../../utils';
 import withStyles from '../../../../../../common/hoc/withStyles';
 import styles from '../styles/MyFavoriteStore.style';
 
@@ -74,7 +74,7 @@ const MyFavoriteStore = ({
             fontFamily="secondary"
             component="p"
           >
-            {formatPhone(favStorePhone)}
+            {formatPhoneNumber(favStorePhone)}
           </BodyCopy>
         </Col>
       </Row>

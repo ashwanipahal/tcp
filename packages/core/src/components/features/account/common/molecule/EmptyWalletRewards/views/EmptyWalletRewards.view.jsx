@@ -4,6 +4,8 @@ import BodyCopy from '@tcp/core/src/components/common/atoms/BodyCopy';
 import Col from '@tcp/core/src/components/common/atoms/Col';
 import Button from '@tcp/core/src/components/common/atoms/Button';
 import utils from '@tcp/core/src/utils';
+import withStyles from '@tcp/core/src/components/common/hoc/withStyles';
+import styles from '../styles/EmptyWalletRewards.styles';
 import internalEndpoints from '../../../internalEndpoints';
 
 const goToHomePage = () => {
@@ -11,9 +13,9 @@ const goToHomePage = () => {
   return null;
 };
 
-export const EmptyWalletRewards = ({ labels }) => {
+export const EmptyWalletRewards = ({ labels, className }) => {
   return (
-    <>
+    <BodyCopy className={className}>
       <Col
         colSize={{
           small: 6,
@@ -31,10 +33,9 @@ export const EmptyWalletRewards = ({ labels }) => {
           large: 2,
           medium: 3,
         }}
-        className="layout-mb-XXL"
       >
         <Button
-          className="elem-mt-XL"
+          className="elem-mt-XL shopNowButton"
           buttonVariation="fixed-width"
           fill="BLUE"
           color="white"
@@ -44,7 +45,7 @@ export const EmptyWalletRewards = ({ labels }) => {
           {labels.placeRewards.lbl_my_rewards_shop_now}
         </Button>
       </Col>
-    </>
+    </BodyCopy>
   );
 };
 
@@ -55,6 +56,7 @@ EmptyWalletRewards.propTypes = {
       ACC_LBL_MY_REWARDS_NO_REWARDS_MSG: PropTypes.string,
     },
   }),
+  className: PropTypes.string,
 };
 
 EmptyWalletRewards.defaultProps = {
@@ -64,6 +66,7 @@ EmptyWalletRewards.defaultProps = {
       ACC_LBL_MY_REWARDS_NO_REWARDS_MSG: '',
     },
   },
+  className: '',
 };
 
-export default EmptyWalletRewards;
+export default withStyles(EmptyWalletRewards, styles);

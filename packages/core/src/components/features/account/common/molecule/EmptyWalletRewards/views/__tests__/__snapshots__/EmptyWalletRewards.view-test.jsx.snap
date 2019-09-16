@@ -1,7 +1,17 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
 exports[`EmptyWalletRewards should render correctly 1`] = `
-<Fragment>
+<Styled(BodyCopy)
+  className=""
+  color="text.primary"
+  component="p"
+  fontFamily="primary"
+  fontSize={12}
+  fontWeight="regular"
+  letterSpacing="normal"
+  lineHeight="normal"
+  textAlign="left"
+>
   <Styled(Col)
     colSize={
       Object {
@@ -26,7 +36,6 @@ exports[`EmptyWalletRewards should render correctly 1`] = `
     </Styled(BodyCopy)>
   </Styled(Col)>
   <Styled(Col)
-    className="layout-mb-XXL"
     colSize={
       Object {
         "large": 2,
@@ -37,7 +46,7 @@ exports[`EmptyWalletRewards should render correctly 1`] = `
   >
     <Styled(Button)
       buttonVariation="fixed-width"
-      className="elem-mt-XL"
+      className="elem-mt-XL shopNowButton"
       color="white"
       data-locator="my-rewards-shop-now-btn"
       fill="BLUE"
@@ -46,5 +55,5 @@ exports[`EmptyWalletRewards should render correctly 1`] = `
       shop now
     </Styled(Button)>
   </Styled(Col)>
-</Fragment>
+</Styled(BodyCopy)>
 `;

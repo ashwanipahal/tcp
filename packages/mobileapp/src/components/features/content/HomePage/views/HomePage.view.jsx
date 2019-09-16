@@ -7,6 +7,8 @@ import { LAZYLOAD_HOST_NAME } from '@tcp/core/src/utils';
 import PropTypes from 'prop-types';
 import HomePageSlots from '@tcp/core/src/components/common/molecules/HomePageSlots';
 import moduleJMock from '@tcp/core/src/components/common/molecules/ModuleJ/mock';
+import moduleRMock from '@tcp/core/src/services/abstractors/common/moduleR/mock';
+
 import {
   ModuleD,
   ModuleH,
@@ -16,6 +18,7 @@ import {
   ModuleA,
   ModuleB,
   ModuleJ,
+  ModuleR,
 } from '@tcp/core/src/components/common/molecules';
 import InitialPropsHOC from '../../../../common/hoc/InitialPropsHOC/InitialPropsHOC';
 import HeaderPromo from '../../../../common/molecules/HeaderPromo';
@@ -81,6 +84,7 @@ class HomePageView extends React.PureComponent<Props> {
           style={buttonMargin}
         />
         <ModuleJ navigation={navigation} {...moduleJMock.moduleJ.composites} />
+        <ModuleR navigation={navigation} {...moduleRMock.moduleR.composites} />
       </LazyloadScrollView>
     );
   }

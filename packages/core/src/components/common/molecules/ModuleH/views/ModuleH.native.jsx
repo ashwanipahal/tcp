@@ -1,5 +1,5 @@
 import React from 'react';
-import { Image, BodyCopy, Heading, Anchor } from '../../../atoms';
+import { DamImage, BodyCopy, Heading, Anchor } from '../../../atoms';
 import { getLocator, getScreenWidth, getPixelRatio } from '../../../../../utils/index.native';
 import { Carousel } from '../..';
 import config from '../config';
@@ -55,13 +55,15 @@ class ModuleH extends React.PureComponent<Props, State> {
   renderItem = ({ item, index }) => {
     const { image } = item;
     return (
-      <Image
+      <DamImage
         key={index.toString()}
         crop={image.crop_m}
         url={image.url}
         testID={`${getLocator('moduleH_composite_image')}${index + 1}`}
         height={MODULE_HEIGHT}
         width={MODULE_WIDTH}
+        alt={image.alt}
+        imgConfig={config.IMG_DATA.imgConfig[0]}
       />
     );
   };
