@@ -10,7 +10,7 @@ import SignupConfirm from '../../SignupConfirm';
 import SignupFormIntro from '../../SignupFormIntro';
 
 import signupWrapperStyle from '../EmailSignupModal.style';
-import config from '../config';
+import config from '../Config';
 
 class EmailSignupModal extends React.PureComponent {
   constructor(props) {
