@@ -7,13 +7,9 @@
  */
 const glob = require('glob');
 const path = require('path');
-const replace = require('replace-in-file');
+const { atomActions } = require('./plop/utils/atomActions');
 
 module.exports = function plopCli(plop) {
-  // Component Path Base
-  const componentPathBase =
-    './packages/{{componentPackageType}}/src/components/{{componentSrcType}}/{{containerName}}/{{componentType}}/{{pascalCase componentName}}';
-
   // The types of packages in the monorepo
   const packageChoices = [
     { value: 'core', name: 'Core' },
@@ -23,7 +19,7 @@ module.exports = function plopCli(plop) {
 
   // Source types
   const sourceChoices = [
-    { value: 'feature', name: 'Feature' },
+    { value: 'features', name: 'Features' },
     { value: 'common', name: 'Common' },
   ];
 
@@ -61,13 +57,13 @@ module.exports = function plopCli(plop) {
           glob
             .sync(`./packages/${ans.componentPackageType}/src/components/features/*`)
             .map(f => path.basename(f)),
-        when: ans => ans.componentSrcType === 'feature',
+        when: ans => ans.componentSrcType === 'features',
       },
       {
         type: 'confirm',
         name: 'createNewContainer',
         message: 'Dou you want to create new container?',
-        when: ans => ans.componentSrcType === 'feature',
+        when: ans => ans.componentSrcType === 'features',
       },
       {
         type: 'rawlist',
@@ -81,13 +77,13 @@ module.exports = function plopCli(plop) {
               }/*`
             )
             .map(f => path.basename(f)),
-        when: ans => !ans.createNewContainer && ans.componentSrcType === 'feature',
+        when: ans => !ans.createNewContainer && ans.componentSrcType === 'features',
       },
       {
         type: 'input',
-        name: 'containerName',
+        name: 'componentContainerName',
         message: 'Container Name',
-        when: ans => ans.createNewContainer && ans.componentSrcType === 'feature',
+        when: ans => ans.createNewContainer && ans.componentSrcType === 'features',
       },
       {
         type: 'rawlist',
@@ -102,74 +98,13 @@ module.exports = function plopCli(plop) {
       },
     ], // array of inquirer prompts
     actions: data => {
-      const actions = [];
-      const atomActions = [
-        // Add all the template files to the dest folder
-        'Copying test files...',
-        {
-          type: 'add',
-          path: `${componentPathBase}/__tests__/{{pascalCase componentName}}-test.jsx`,
-          templateFile: './plop-templates/atom/__tests__/MyComponent-test.jsx',
-        },
-        {
-          type: 'add',
-          path: `${componentPathBase}/__tests__/{{pascalCase componentName}}-test.native.jsx`,
-          templateFile: './plop-templates/atom/__tests__/MyComponent-test.native.jsx',
-        },
-        'Copying style files..',
-        {
-          type: 'add',
-          path: `${componentPathBase}/styles/{{pascalCase componentName}}.style.js`,
-          templateFile: './plop-templates/atom/styles/MyComponent.style.js',
-        },
-        {
-          type: 'add',
-          path: `${componentPathBase}/styles/{{pascalCase componentName}}.style.native.js`,
-          templateFile: './plop-templates/atom/styles/MyComponent.style.native.js',
-        },
-        'Copying view files..',
-        {
-          type: 'add',
-          path: `${componentPathBase}/views/{{pascalCase componentName}}.jsx`,
-          templateFile: './plop-templates/atom/views/MyComponent.jsx',
-        },
-        {
-          type: 'add',
-          path: `${componentPathBase}/views/{{pascalCase componentName}}.native.jsx`,
-          templateFile: './plop-templates/atom/views/MyComponent.native.jsx',
-        },
-        {
-          type: 'add',
-          path: `${componentPathBase}/views/index.js`,
-          templateFile: './plop-templates/atom/views/index.js',
-        },
-        {
-          type: 'add',
-          path: `${componentPathBase}/index.js`,
-          templateFile: './plop-templates/atom/index.js',
-        },
-        'Modifying the files...',
-        ans =>
-          replace({
-            files: `./packages/${ans.componentPackageType}/src/components/${ans.componentSrcType}/${
-              ans.containerName
-            }/${ans.componentType}/**/*.*`,
-            from: /MyComponent/g,
-            to: 'bar',
-          })
-            .then(results => {
-              console.log('Replacement results:', results);
-            })
-            .catch(error => {
-              console.error('Error occurred:', error);
-            }),
-      ];
+      let actions = [];
       if (
         data.componentType === 'atoms' ||
         data.componentType === 'molecules' ||
         data.componentType === 'organisms'
       ) {
-        actions.push(atomActions);
+        actions = [...actions, ...atomActions];
       }
       return actions;
     }, // array of actions

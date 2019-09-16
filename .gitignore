@@ -41,3 +41,7 @@ release
 packages/mobileapp/android/.project
 packages/mobileapp/android/app/.project
 yarn-error.log
+
+# Test Components
+TestComponent
+TestContainer
