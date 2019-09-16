@@ -1,0 +1,8 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`PointsHistoryPage container should render correctly 1`] = `
+<Styled(PointsHistoryPageView)
+  labels={Object {}}
+  richTextContent=""
+/>
+`;
