@@ -21,6 +21,8 @@ const PointsHistoryReducer = (state = initialState, action) => {
       return state
         .set('pointsHistoryData', action.payload)
         .set(DEFAULT_REDUCER_KEY, setCacheTTL(POINTSHISTORY_CONSTANTS.GET_POINTSHISTORY_LIST_TTL));
+    case POINTSHISTORY_CONSTANTS.SET_MODULEX_CONTENT:
+      return state.set('pointsHistoryRichText', action.payload.richText);
     default:
       return getDefaultState(state);
   }
