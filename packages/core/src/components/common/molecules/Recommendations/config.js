@@ -17,18 +17,15 @@ export default {
       {
         breakpoint: breakpoints.values.lg - 1,
         settings: {
-          slidesToShow: 3.25,
-          autoplay: false,
-          infinite: false,
+          slidesToShow: 4,
+          arrows: false,
         },
       },
       {
         breakpoint: breakpoints.values.sm - 1,
         settings: {
           arrows: false,
-          autoplay: false,
-          slidesToShow: 2.3,
-          infinite: false,
+          slidesToShow: 3,
         },
       },
     ],

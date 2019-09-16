@@ -17,11 +17,10 @@ export default css`
   }
   .product-image-container {
     a {
-      height: 185px;
+      min-height: 185px;
       overflow: hidden;
       position: relative;
       display: block;
-      background: #d8d8d8;
     }
     img {
       position: absolute;
@@ -38,7 +37,7 @@ export default css`
     margin: 0 12px;
     .product-image-container {
       a {
-        height: 267px;
+        min-height: 267px;
       }
     }
   }
@@ -47,7 +46,7 @@ export default css`
     margin: 0 20px;
     .product-image-container {
       a {
-        height: 325px;
+        min-height: 259px;
       }
     }
   }

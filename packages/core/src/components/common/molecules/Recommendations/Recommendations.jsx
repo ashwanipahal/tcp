@@ -40,76 +40,80 @@ class Recommendations extends Component {
     );
 
     return (
-      <section className={className}>
-        <Heading
-          variant="h4"
-          className={`recommendations-header ${priceOnlyClass}`}
-          textAlign="center"
-          dataLocator="moduleO_header_text"
-        >
-          {youMayAlsoLikeLabel}
-        </Heading>
-        <Row fullBleed>
-          <Col
-            colSize={{
-              small: 6,
-              medium: 8,
-              large: 10,
-            }}
-            offsetLeft={{
-              small: 0,
-              medium: 0,
-              large: 1,
-            }}
-          >
-            <Carousel
-              options={config.CAROUSEL_OPTIONS}
-              inheritedStyles={Carousel}
-              carouselConfig={{
-                customArrowLeft: getIconPath('carrot-left-xl'),
-                customArrowRight: getIconPath('carrot-right-xl'),
-              }}
+      <section className={`${className} recommendations-tile`}>
+        {products && (
+          <React.Fragment>
+            <Heading
+              variant="h4"
+              className={`recommendations-header ${priceOnlyClass}`}
+              textAlign="center"
+              dataLocator="moduleO_header_text"
             >
-              {products &&
-                products.map((product, index) => {
-                  const { generalProductId } = product;
+              {youMayAlsoLikeLabel}
+            </Heading>
+            <Row fullBleed>
+              <Col
+                colSize={{
+                  small: 6,
+                  medium: 8,
+                  large: 10,
+                }}
+                offsetLeft={{
+                  small: 0,
+                  medium: 0,
+                  large: 1,
+                }}
+              >
+                <Carousel
+                  options={config.CAROUSEL_OPTIONS}
+                  inheritedStyles={Carousel}
+                  carouselConfig={{
+                    customArrowLeft: getIconPath('carrot-left-xl'),
+                    customArrowRight: getIconPath('carrot-right-xl'),
+                  }}
+                >
+                  {products &&
+                    products.map((product, index) => {
+                      const { generalProductId } = product;
 
-                  return (
-                    <ModuleO
-                      key={`recommended_products_${index.toString()}`}
-                      loadedProductCount={loadedProductCount}
-                      generalProductId={generalProductId}
-                      item={product}
-                      isPerfectBlock
-                      productsBlock={product}
-                      onPickUpOpenClick={onPickUpOpenClick}
-                      className={`${className} product-list ${priceOnlyClass}`}
-                      labels={labels}
-                      sequenceNumber={index + 1}
-                    />
-                  );
-                })}
-            </Carousel>
-          </Col>
-        </Row>
-        {showButton && (
-          <div className="recommendaton-cta-container">
-            <ButtonCTA
-              className="recommendation-cta"
-              uniqueKey="recommendation-button"
-              dataLocator={{
-                cta: 'moduleO_cta_btn',
-              }}
-              ctaInfo={{
-                ctaVariation: 'fixed-width',
-                link: {
-                  url: ctaUrl,
-                  title: ctaTitle,
-                  text: ctaText,
-                },
-              }}
-            />
-          </div>
+                      return (
+                        <ModuleO
+                          key={`recommended_products_${index.toString()}`}
+                          loadedProductCount={loadedProductCount}
+                          generalProductId={generalProductId}
+                          item={product}
+                          isPerfectBlock
+                          productsBlock={product}
+                          onPickUpOpenClick={onPickUpOpenClick}
+                          className={`${className} product-list ${priceOnlyClass}`}
+                          labels={labels}
+                          sequenceNumber={index + 1}
+                        />
+                      );
+                    })}
+                </Carousel>
+              </Col>
+            </Row>
+            {showButton && (
+              <div className="recommendaton-cta-container">
+                <ButtonCTA
+                  className="recommendation-cta"
+                  uniqueKey="recommendation-button"
+                  dataLocator={{
+                    cta: 'moduleO_cta_btn',
+                  }}
+                  ctaInfo={{
+                    ctaVariation: 'fixed-width',
+                    link: {
+                      url: ctaUrl,
+                      title: ctaTitle,
+                      text: ctaText,
+                    },
+                  }}
+                />
+              </div>
+            )}
+          </React.Fragment>
         )}
       </section>
     );
