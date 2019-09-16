@@ -104,6 +104,10 @@ class ProductsDynamicAbstractor {
     logger.error(e);
   };
 
+  getPlpOrSlpEndpoint = isSearch => {
+    return isSearch ? endpoints.getProductsBySearchTerm : endpoints.getProductviewbyCategory;
+  };
+
   getProducts = (reqObj, state) => {
     const {
       seoKeywordOrCategoryIdOrSearchTerm,
@@ -149,8 +153,9 @@ class ProductsDynamicAbstractor {
         fields:
           'alt_img,style_partno,giftcard,TCPProductIndUSStore,TCPFitMessageUSSstore,TCPFit,TCPWebOnlyFlagUSStore,TCPWebOnlyFlagCanadaStore,TCPSwatchesUSStore,top_rated,TCPSwatchesCanadaStore,product_name,TCPColor,imagename,productid,uniqueId,favoritedcount,TCPBazaarVoiceReviewCount,categoryPath3_fq,categoryPath3,categoryPath3_catMap,categoryPath2_catMap,product_short_description,min_list_price,min_offer_price,TCPBazaarVoiceRating,seo_token,prodpartno,banner,facets,auxdescription,list_of_attributes,numberOfProducts,redirect,searchMetaData,didYouMean,TCPLoyaltyPromotionTextUSStore,TCPLoyaltyPLCCPromotionTextUSStore,TcpBossCategoryDisabled,TcpBossProductDisabled,long_product_title,TCPOutOfStockFlagUSStore,TCPOutOfStockFlagCanadaStore,product_type,products,low_offer_price,high_offer_price,low_list_price,high_list_price',
       },
-      webService: endpoints.getProductviewbyCategory, // TODO - existing code - webService: isSearch ? endpoints.getProductsBySearchTerm : endpoints.getProductviewbyCategory
+      webService: this.getPlpOrSlpEndpoint(isSearch),
     };
+
     if (!isSearch) {
       payload.body.pagetype = 'boolean';
       if (categoryId) {
