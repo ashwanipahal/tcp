@@ -22,7 +22,7 @@ exports[`Shipping Page should render correctly 1`] = `
         "address": Object {
           "country": "US",
         },
-        "onFileAddressKey": undefined,
+        "onFileAddressKey": null,
         "saveToAddressBook": false,
         "shipmentMethods": Object {
           "shippingMethodId": null,
@@ -52,6 +52,7 @@ exports[`Shipping Page should render correctly 1`] = `
         Object {},
       ]
     }
+    shippingAddress={null}
     shippingAddressId={null}
     shouldAsyncValidate={[Function]}
     shouldError={[Function]}
@@ -93,7 +94,7 @@ exports[`Shipping Page should render correctly with component did update and get
         "address": Object {
           "country": "US",
         },
-        "onFileAddressKey": "34789",
+        "onFileAddressKey": null,
         "saveToAddressBook": false,
         "shipmentMethods": Object {
           "shippingMethodId": null,
@@ -139,6 +140,7 @@ exports[`Shipping Page should render correctly with component did update and get
         Object {},
       ]
     }
+    shippingAddress={null}
     shippingAddressId={null}
     shouldAsyncValidate={[Function]}
     shouldError={[Function]}
@@ -196,7 +198,7 @@ exports[`Shipping Page should render correctly with component did update and get
         "address": Object {
           "country": "US",
         },
-        "onFileAddressKey": "123",
+        "onFileAddressKey": null,
         "saveToAddressBook": false,
         "shipmentMethods": Object {
           "shippingMethodId": null,
@@ -242,6 +244,7 @@ exports[`Shipping Page should render correctly with component did update and get
         Object {},
       ]
     }
+    shippingAddress={null}
     shippingAddressId={null}
     shouldAsyncValidate={[Function]}
     shouldError={[Function]}

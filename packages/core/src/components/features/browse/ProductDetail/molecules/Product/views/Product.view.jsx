@@ -2,6 +2,13 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import ProductCustomizeReduxForm from '../../ProductCustomizeForm/ProductCustomizeForm';
+import ProductPrice from '../../ProductPrice/ProductPrice';
+import ProductBasicInfo from '../../ProductBasicInfo/ProductBasicInfo';
+import {
+  getPrices,
+  getPricesWithRange,
+  getMapSliceForColorProductId,
+} from '../../../../ProductListing/molecules/ProductList/utils/productsCommonUtils';
 
 class Product extends React.Component {
   // static propTypes = {
@@ -196,18 +203,63 @@ class Product extends React.Component {
   }
 
   render() {
-    const { productDetails } = this.props;
-    const item = productDetails.get('currentProduct');
+    const {
+      productDetails,
+      colorProductId,
+      currencySymbol,
+      priceCurrency,
+      currencyExchange,
+      isCanada,
+      isHasPlcc,
+      isInternationalShipping,
+      badge1,
+      isKeepAlive,
+    } = this.props;
+    const productInfo = productDetails.get('currentProduct');
+    if (!productInfo) {
+      return <div />; // TODO - maybe add loader later
+    }
+    const { promotionalMessage, promotionalPLCCMessage } = productInfo;
+    const colorProduct =
+      productInfo && getMapSliceForColorProductId(productInfo.colorFitsSizesMap, colorProductId);
+    const prices = productInfo && getPrices(productInfo, colorProduct.color.name);
+    // if(isShowPriceRange) {
+    //   const { fit, size } = addToBagFormValues;
+    //   prices = getPricesWithRange(productInfo, colorProduct.color.name, fit, size, isSelectedSizeDisabled);
+    // }
+
     return (
       <div>
-        {productDetails && productDetails.get('currentProduct') && (
-          <ProductCustomizeReduxForm
-            item={item}
-            colorFitsSizesMap={productDetails.getIn(['currentProduct', 'colorFitsSizesMap'])}
-            // handleSubmit={this.handleSubmit}
-            initialValues={this.getInitialValues(item)}
-          />
-        )}
+        <ProductBasicInfo
+          keepAlive={isKeepAlive}
+          badge={badge1}
+          productInfo={productInfo}
+          // {...addToBagFormValues}
+          isShowFavoriteCount
+          currencySymbol={currencySymbol}
+          priceCurrency={priceCurrency}
+          currencyExchange={currencyExchange}
+          isRatingsVisible
+          isCanada={isCanada}
+          isPlcc={isHasPlcc}
+          isInternationalShipping={isInternationalShipping}
+          // TODO - Since the product price range is dependent on the SKU, it can be shown only after the SKU form is added
+          // isShowPriceRange={isShowPriceRange}
+          // isSelectedSizeDisabled={isSelectedSizeDisabled}
+        />
+        <ProductPrice
+          currencySymbol={currencySymbol}
+          priceCurrency={priceCurrency}
+          currencyExchange={currencyExchange}
+          isItemPartNumberVisible={false}
+          itemPartNumber={colorProduct.colorDisplayId}
+          {...prices}
+          promotionalMessage={promotionalMessage}
+          isCanada={isCanada}
+          promotionalPLCCMessage={promotionalPLCCMessage}
+          isPlcc={isHasPlcc}
+          isInternationalShipping={isInternationalShipping}
+        />
       </div>
     );
     // let {isMobile, isInventoryLoaded, productInfo, colorProductId, currencySymbol, handleChooseOption,

@@ -39,11 +39,14 @@ exports[`Animated Brand Change Icon Native should render correctly 1`] = `
       onPress={[Function]}
     >
       <Styled(ImageComp)
+        alt=""
+        host=""
         source={
           Object {
             "testUri": "../../../src/assets/images/tcp/tcpPeekABoo.png",
           }
         }
+        url=""
       />
     </Styled(TouchableOpacity)>
   </AnimatedComponent>
@@ -79,11 +82,14 @@ exports[`Animated Brand Change Icon Native should render correctly 1`] = `
       onPress={[Function]}
     >
       <Styled(ImageComp)
+        alt=""
+        host=""
         source={
           Object {
             "testUri": "../../../src/assets/images/gymboree/gymboreePeekABoo.png",
           }
         }
+        url=""
       />
     </Styled(TouchableOpacity)>
   </AnimatedComponent>

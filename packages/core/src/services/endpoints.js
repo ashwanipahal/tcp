@@ -264,5 +264,9 @@ const endpoints = {
     method: 'GET',
     URI: 'v2/checkout/TCPPayPalCCAuthenticationRESTCmd',
   },
+  getStoreandProductInventoryInfo: {
+    method: 'GET',
+    URI: 'v2/vendor/getStoreAndProductInventoryInfo',
+  },
 };
 export default endpoints;

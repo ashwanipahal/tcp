@@ -1,5 +1,9 @@
 import { fromJS } from 'immutable';
-import { getPointHistoryState, getCommonLabels } from '../PointsHistory.selectors';
+import {
+  getPointHistoryState,
+  getCommonLabels,
+  getPointHistoryRichTextSelector,
+} from '../PointsHistory.selectors';
 
 describe('#pointsHistoryData selector', () => {
   it('#getPointHistoryState should return pointsHistoryDataReduer state', () => {
@@ -23,5 +27,17 @@ describe('#pointsHistoryData selector', () => {
       },
     };
     expect(getCommonLabels(state)).toMatchObject({});
+  });
+
+  it('#getPointHistoryRichTextSelector should return Rich Text', () => {
+    const historyData = fromJS({
+      pointsHistoryRichText: '<h1>New Module X</h1><p>Module X content</p>',
+    });
+    const state = {
+      pointHistoryReducer: historyData,
+    };
+    expect(getPointHistoryRichTextSelector(state)).toEqual(
+      '<h1>New Module X</h1><p>Module X content</p>'
+    );
   });
 });

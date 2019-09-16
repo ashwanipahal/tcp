@@ -30,7 +30,8 @@ class ModuleK extends React.PureComponent<Props, State> {
   render() {
     const { headerText, masonryGrid, className } = this.props;
 
-    const { CAROUSEL_OPTIONS } = config;
+    const { CAROUSEL_OPTIONS, IMG_DATA } = config;
+
     CAROUSEL_OPTIONS.prevArrow = (
       <button type="button" data-locator="moduleK_left_arrow" className="slick-prev" />
     );
@@ -103,6 +104,7 @@ class ModuleK extends React.PureComponent<Props, State> {
                       dataLocator={`${getLocator('moduleK_image')}${index + 1}`}
                       dataLocatorContainer={`${getLocator('moduleK_image_set')}${index + 1}`}
                       promo={checkPromo}
+                      imgConfigs={IMG_DATA.imgConfig}
                     />
                     <Col
                       colSize={{

@@ -1,8 +1,9 @@
 /* eslint-disable no-underscore-dangle */
 import { readCookie } from '../../../../utils/cookie.util';
-import { isBopisProduct, isBossProduct, getSiteId } from '../../../../utils';
+import { getSiteId } from '../../../../utils';
 import { executeUnbxdAPICall } from '../../../handler';
 import logger from '../../../../utils/loggerInstance';
+import processResponse from '../../productListing/processResponse';
 
 const RecommendationsAbstractor = {
   isUSStore: getSiteId() === 'us',
@@ -104,7 +105,43 @@ const RecommendationsAbstractor = {
   handleValidationError: e => {
     logger.error(e);
   },
+  getOriginImgHostSetting: () => {
+    return 'https://test4.childrensplace.com';
+  },
+  getSwatchImgPath: (id, excludeExtension) => {
+    const imgHostDomain = RecommendationsAbstractor.getOriginImgHostSetting();
+    return `${imgHostDomain}/wcsstore/GlobalSAS/images/tcp/products/swatches/${id}${
+      excludeExtension ? '' : '.jpg'
+    }`;
+  },
+  getProductImgPath: (id, excludeExtension) => {
+    const imgHostDomain = RecommendationsAbstractor.getOriginImgHostSetting();
 
+    return {
+      125: `${imgHostDomain}/wcsstore/GlobalSAS/images/tcp/products/125/${id}${
+        excludeExtension ? '' : '.jpg'
+      }`,
+      380: `${imgHostDomain}/wcsstore/GlobalSAS/images/tcp/products/380/${id}${
+        excludeExtension ? '' : '.jpg'
+      }`,
+      500: `${imgHostDomain}/wcsstore/GlobalSAS/images/tcp/products/500/${id}${
+        excludeExtension ? '' : '.jpg'
+      }`,
+      900: `${imgHostDomain}/wcsstore/GlobalSAS/images/tcp/products/900/${id}${
+        excludeExtension ? '' : '.jpg'
+      }`,
+    };
+  },
+  getImgPath: (id, excludeExtension) => {
+    return {
+      colorSwatch: RecommendationsAbstractor.getSwatchImgPath(id, excludeExtension),
+      productImages: RecommendationsAbstractor.getProductImgPath(id, excludeExtension),
+    };
+  },
+  getFacetSwatchImgPath: id => {
+    const imgHostDomain = RecommendationsAbstractor.getOriginImgHostSetting();
+    return `${imgHostDomain}/wcsstore/GlobalSAS/images/tcp/category/color-swatches/${id}.gif`;
+  },
   /*
    * @function getProductsPrices
    * @summary Auxiliar method to retrieve prices for product recommendations. It returns prices for specific product ids
@@ -117,7 +154,7 @@ const RecommendationsAbstractor = {
       body: {
         id: productIds.join(','),
         fields:
-          'min_offer_price,min_list_price,TCPWebOnlyFlagUSStore,TcpBossCategoryDisabled,TcpBossProductDisabled,TCPProductIndUSStore,TCPProductIndCanadaStore',
+          'alt_img,style_partno,giftcard,TCPProductIndUSStore,TCPWebOnlyFlagUSStore,TCPWebOnlyFlagCanadaStore,TCPFitMessageUSSstore,TCPFit,product_name,TCPColor,top_rated,imagename,productid,uniqueId,favoritedcount,TCPBazaarVoiceReviewCount,categoryPath3_catMap,categoryPath2_catMap,product_short_description,style_long_description,min_list_price,min_offer_price,TCPBazaarVoiceRating,product_long_description,seo_token,variantCount,prodpartno,variants,v_tcpfit,v_qty,v_tcpsize,style_name,v_item_catentry_id,v_listprice,v_offerprice,v_qty,variantId,auxdescription,list_of_attributes,additional_styles,TCPLoyaltyPromotionTextUSStore,TCPLoyaltyPLCCPromotionTextUSStore,v_variant, low_offer_price, high_offer_price, low_list_price, high_list_price,long_product_title,TCPOutOfStockFlagUSStore,TCPOutOfStockFlagCanadaStore',
       },
       webService: {
         method: 'GET',
@@ -129,34 +166,23 @@ const RecommendationsAbstractor = {
 
     return executeUnbxdAPICall(payload)
       .then(res => {
+        return processResponse(res, null, {
+          getFacetSwatchImgPath: RecommendationsAbstractor.getFacetSwatchImgPath,
+          getImgPath: RecommendationsAbstractor.getImgPath,
+          isRecommendationView: true,
+        });
+      })
+      .then(res => {
         const price = {};
-        if (res.body && res.body.response) {
-          res.body.response.products.forEach(product => {
-            price[product.uniqueId] = {
-              listPrice:
-                (product.min_list_price === product.min_offer_price
-                  ? product.min_offer_price
-                  : product.min_list_price) || 0,
-              offerPrice: product.min_offer_price || 0,
-              isBopisEligible: isBopisProduct(RecommendationsAbstractor.isUSStore, product),
-              isBossEligible: isBossProduct({
-                bossCategoryDisabled: product.TcpBossCategoryDisabled,
-                bossProductDisabled: product.TcpBossProductDisabled,
-              }),
-              clearanceItem: RecommendationsAbstractor.isUSStore
-                ? product.TCPProductIndUSStore === 'Clearance'
-                : product.TCPProductIndCanadaStore === 'Clearance',
-            };
-          });
-        }
+        res.loadedProductsPages[0].forEach(product => {
+          price[product.productInfo.uniqueId] = {
+            ...product,
+          };
+        });
         return price;
       })
       .catch(err => {
-        // if (err && ((err.status >= 400 && err.status <= 404) || err.status === 500) && isClient()) {
-        // TODO - handle it - window.location.href = getErrorPagePath(this.apiHelper._configOptions.siteId);
-        // }
         RecommendationsAbstractor.handleValidationError(err);
-        // TODO - handle it - throw this.apiHelper.getFormattedError(err);
       });
   },
 };

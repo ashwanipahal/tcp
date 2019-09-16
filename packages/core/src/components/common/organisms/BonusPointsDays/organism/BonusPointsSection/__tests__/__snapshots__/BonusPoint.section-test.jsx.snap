@@ -108,6 +108,7 @@ exports[`BonusPointsAvailabilityVanilla should render correctly available_today 
               />
             </ForwardRef>
           </ForwardRef>
+          <Connect(ApplyNowModalWrapper) />
           <ForwardRef
             anchorVariation="primary"
             className="details-link"
@@ -337,6 +338,7 @@ exports[`BonusPointsAvailabilityVanilla should render correctly available_today 
         />
       </Styled(Col)>
     </Styled(Row)>
+    <Connect(ApplyNowModalWrapper) />
     <Styled(Anchor)
       anchorVariation="primary"
       className="details-link"
@@ -470,6 +472,7 @@ exports[`BonusPointsAvailabilityVanilla should render correctly with applied to 
               />
             </ForwardRef>
           </ForwardRef>
+          <Connect(ApplyNowModalWrapper) />
           <ForwardRef
             anchorVariation="primary"
             className="details-link"
@@ -709,6 +712,7 @@ exports[`BonusPointsAvailabilityVanilla should render correctly with applied to 
         />
       </Styled(Col)>
     </Styled(Row)>
+    <Connect(ApplyNowModalWrapper) />
     <Styled(Anchor)
       anchorVariation="primary"
       className="details-link"
@@ -842,6 +846,7 @@ exports[`BonusPointsAvailabilityVanilla should render correctly with future Use 
               />
             </ForwardRef>
           </ForwardRef>
+          <Connect(ApplyNowModalWrapper) />
           <ForwardRef
             anchorVariation="primary"
             className="details-link"
@@ -1081,6 +1086,7 @@ exports[`BonusPointsAvailabilityVanilla should render correctly with future Use 
         />
       </Styled(Col)>
     </Styled(Row)>
+    <Connect(ApplyNowModalWrapper) />
     <Styled(Anchor)
       anchorVariation="primary"
       className="details-link"
@@ -1214,6 +1220,7 @@ exports[`BonusPointsAvailabilityVanilla should render correctly with futureDisab
               />
             </ForwardRef>
           </ForwardRef>
+          <Connect(ApplyNowModalWrapper) />
           <ForwardRef
             anchorVariation="primary"
             className="details-link"
@@ -1453,6 +1460,7 @@ exports[`BonusPointsAvailabilityVanilla should render correctly with futureDisab
         />
       </Styled(Col)>
     </Styled(Row)>
+    <Connect(ApplyNowModalWrapper) />
     <Styled(Anchor)
       anchorVariation="primary"
       className="details-link"
@@ -1554,6 +1562,7 @@ exports[`BonusPointsAvailabilityVanilla should render correctly with isUsed 1`] 
               />
             </ForwardRef>
           </ForwardRef>
+          <Connect(ApplyNowModalWrapper) />
           <ForwardRef
             anchorVariation="primary"
             className="details-link"
@@ -1763,6 +1772,7 @@ exports[`BonusPointsAvailabilityVanilla should render correctly with isUsed 1`] 
         />
       </Styled(Col)>
     </Styled(Row)>
+    <Connect(ApplyNowModalWrapper) />
     <Styled(Anchor)
       anchorVariation="primary"
       className="details-link"

@@ -65,12 +65,15 @@ exports[`AccountOverview component should render correctly 1`] = `
     />
     <Styled(View)>
       <Styled(ImageComp)
+        alt=""
         height={18}
+        host=""
         source={
           Object {
             "testUri": "../../../src/assets/images/filled-heart.png",
           }
         }
+        url=""
         width={20}
       />
     </Styled(View)>

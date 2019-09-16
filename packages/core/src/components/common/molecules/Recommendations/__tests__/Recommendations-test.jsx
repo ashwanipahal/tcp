@@ -18,13 +18,35 @@ const props = {
   className: 'test class',
 };
 
-describe('N component', () => {
+describe('Recommendations component', () => {
   let RecommendationsComp;
 
   beforeEach(() => {
     RecommendationsComp = shallow(<Recommendations {...props} />);
   });
   it('renders correctly', () => {
+    expect(RecommendationsComp).toMatchSnapshot();
+  });
+});
+
+describe('Recommendations Module O price only variation', () => {
+  let RecommendationsComp;
+
+  beforeEach(() => {
+    RecommendationsComp = shallow(<Recommendations priceOnly {...props} />);
+  });
+  it('Recommendations Module O price only variation renders correctly', () => {
+    expect(RecommendationsComp).toMatchSnapshot();
+  });
+});
+
+describe('Recommendations Module O show button variation', () => {
+  let RecommendationsComp;
+
+  beforeEach(() => {
+    RecommendationsComp = shallow(<Recommendations showButton {...props} />);
+  });
+  it('Recommendations Module O show button variation renders correctly', () => {
     expect(RecommendationsComp).toMatchSnapshot();
   });
 });

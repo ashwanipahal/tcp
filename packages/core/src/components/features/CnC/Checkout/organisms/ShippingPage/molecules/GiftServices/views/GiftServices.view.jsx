@@ -13,7 +13,6 @@ import BodyCopy from '../../../../../../../../common/atoms/BodyCopy';
 import Image from '../../../../../../../../common/atoms/Image';
 import { isGymboree, getIconPath, getLocator } from '../../../../../../../../../utils';
 import GiftServicesDetailsModal from './GiftServicesDetailsModal.view';
-import TextBox from '../../../../../../../../common/atoms/TextBox';
 
 class GiftServices extends React.PureComponent {
   constructor(props) {
@@ -103,10 +102,27 @@ class GiftServices extends React.PureComponent {
     }
   };
 
+  getActiveTitle = (options, value) => {
+    const selectedOption = options.find(o => o.value === value);
+    if (!selectedOption) {
+      const defaultOption = options.find(o => o.value === 'standard');
+      return defaultOption && defaultOption.title;
+    }
+    return selectedOption && selectedOption.title;
+  };
+
   render() {
     const { className, labels, giftWrapOptions } = this.props;
     const giftServicesList = this.getServicesOptions(giftWrapOptions, labels);
     const { detailStatus, isGymboreeBrand, isChecked, message } = this.state;
+    const maxLength = max => value => {
+      let v;
+      const result = value.length > max;
+      if (result === false) {
+        v = value;
+      }
+      return v;
+    };
 
     return (
       <form className={className} noValidate>
@@ -209,9 +225,20 @@ class GiftServices extends React.PureComponent {
                     <div className="color-selector">
                       <Field
                         width={87}
-                        id="color"
+                        id="optionId"
                         name="optionId"
-                        component={CustomSelect}
+                        component={({ options, input, selectListTitle }) => {
+                          return (
+                            <CustomSelect
+                              options={options}
+                              activeValue={input.value}
+                              activeTitle={this.getActiveTitle(options, input.value)}
+                              clickHandler={(e, value) => input.onChange(value)}
+                              selectListTitle={selectListTitle}
+                              customSelectClassName="gift-services-drop-down"
+                            />
+                          );
+                        }}
                         options={giftServicesList}
                         dataLocator="addnewaddress-state"
                         clickHandler={this.giftServiceChanged}
@@ -224,7 +251,7 @@ class GiftServices extends React.PureComponent {
                 <Col colSize={{ small: 3, medium: 4, large: 6 }}>
                   <BodyCopy
                     color="gray.900"
-                    fontSize="fs12"
+                    fontSize="fs13"
                     fontFamily="secondary"
                     textAlign="left"
                   >
@@ -248,12 +275,11 @@ class GiftServices extends React.PureComponent {
                   <Field
                     name="message"
                     value={message}
+                    normalize={maxLength(100)}
                     id="message"
-                    type="text"
-                    component={TextBox}
-                    maxLength={100}
+                    component="textarea"
                     dataLocator="gift-message"
-                    enableSuccessCheck={false}
+                    className="gift-message"
                   />
                 </Col>
               </Row>

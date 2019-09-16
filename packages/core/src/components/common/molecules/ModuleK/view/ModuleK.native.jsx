@@ -3,6 +3,7 @@ import PropTypes from 'prop-types';
 import { getScreenWidth } from '@tcp/core/src/utils';
 import Button from '../../../atoms/Button';
 import LinkText from '../../LinkText';
+import config from '../config';
 
 import {
   MainWrapper,
@@ -23,7 +24,7 @@ class ModuleK extends React.PureComponent {
    */
   renderCarouselSlide = ({ item }, navigation) => {
     const { mediaLinkedList, slideIndex, promoBanner, singleCTAButton } = item;
-
+    const { IMG_DATA } = config;
     return (
       <React.Fragment>
         <HeaderWrapper>
@@ -42,6 +43,7 @@ class ModuleK extends React.PureComponent {
             testID={`moduleK_image_${slideIndex}`}
             mediaList={mediaLinkedList}
             navigation={navigation}
+            IMG_DATA={IMG_DATA}
           />
         )}
         {singleCTAButton && (

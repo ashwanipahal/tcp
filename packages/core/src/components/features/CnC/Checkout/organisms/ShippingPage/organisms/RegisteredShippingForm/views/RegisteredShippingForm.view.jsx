@@ -22,7 +22,9 @@ import {
   propTypes,
   defaultProps,
   getFieldsValidation,
+  setDefaultShippingValue,
 } from './RegisteredShippingForm.util';
+import Badge from '../../../../../../../../common/atoms/Badge';
 
 const formName = 'checkoutShipping';
 class RegisteredShippingForm extends React.Component {
@@ -44,7 +46,7 @@ class RegisteredShippingForm extends React.Component {
       const defaultAddress = userAddresses.find(address => address.primary === 'true');
       this.setDefaultAddress({ defaultAddress });
     }
-    this.setDefaultShippingValue();
+    setDefaultShippingValue({ userAddresses, dispatch, change, formName });
   }
 
   setDefaultAddress = ({ defaultAddress }) => {
@@ -60,27 +62,37 @@ class RegisteredShippingForm extends React.Component {
     }
   };
 
-  setDefaultShippingValue = () => {
-    const { userAddresses, dispatch } = this.props;
-    if (userAddresses && userAddresses.size === 0) {
-      dispatch(change(formName, 'defaultShipping', true));
-    }
-  };
-
   getAddressOptions = () => {
-    const { userAddresses, shippingAddressId, labels } = this.props;
-    const userAddressesLength = userAddresses && userAddresses.size;
+    const { userAddresses, labels, isAddNewAddress } = this.props;
     let addressOptions = userAddresses.map(address => {
       let defaultId = false;
       if (address.primary === 'true') {
         defaultId = true;
-      } else if (shippingAddressId && !userAddressesLength) {
-        defaultId = address.addressId === shippingAddressId;
       }
       return {
         value: address.addressId,
         title: `${address.firstName} ${address.lastName} ${defaultId ? '(Default)' : ''}`,
-        content: <Address address={address} showPhone isDefault={defaultId} className="address" />,
+        content: (
+          <div className="address-wrapper">
+            <Address
+              showCountry={false}
+              showPhone={false}
+              address={address}
+              isDefault={defaultId}
+              className="address"
+              showDefault={false}
+            />
+            {address.primary === 'true' && (
+              <Badge
+                showCheckmark
+                dataLocator="shipping-defshippinglabel"
+                className="default-badge"
+              >
+                {getLabelValue(labels, 'lbl_shipping_default', 'shipping', 'checkout')}
+              </Badge>
+            )}
+          </div>
+        ),
       };
     });
 
@@ -88,15 +100,15 @@ class RegisteredShippingForm extends React.Component {
       value: '',
       title: 'Add New Address',
       content: (
-        <BodyCopy
-          fontSize="fs14"
-          fontFamily="secondary"
-          fontWeight="black"
-          className="add-address"
+        <Button
+          fullWidth
+          buttonVariation="variable-width"
+          fill="BLACK"
           onClick={this.toggleAddNewAddressMode}
+          disabled={isAddNewAddress}
         >
           {getLabelValue(labels, 'lbl_shipping_addNewAddress', 'shipping', 'checkout')}
-        </BodyCopy>
+        </Button>
       ),
     });
     return addressOptions;
@@ -400,7 +412,6 @@ class RegisteredShippingForm extends React.Component {
 }
 
 RegisteredShippingForm.propTypes = propTypes;
-
 RegisteredShippingForm.defaultProps = defaultProps;
 
 export default withStyles(RegisteredShippingForm, styles);

@@ -349,3 +349,10 @@ export const getSetIsPaypalPaymentSettings = paypalPaymentSettings => {
     paypalPaymentSettings,
   };
 };
+
+export const submitReviewSection = payload => {
+  return {
+    type: constants.SUBMIT_REVIEW,
+    payload,
+  };
+};
