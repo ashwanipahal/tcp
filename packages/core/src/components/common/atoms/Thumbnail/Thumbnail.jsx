@@ -44,7 +44,6 @@ class Thumbnail extends React.Component {
 
   render() {
     const { image, isSelected, index, totalCount, className } = this.props;
-
     return (
       <div isSelected={isSelected} className={className}>
         <Anchor
