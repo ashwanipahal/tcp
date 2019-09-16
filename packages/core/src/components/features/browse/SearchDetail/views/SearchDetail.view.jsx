@@ -6,23 +6,21 @@ import config from '../searchDetail.constants';
 import ProductsGrid from '../../ProductListing/molecules/ProductsGrid/views';
 import { Row, Col } from '../../../../common/atoms';
 import LoadedProductsCount from '../../ProductListing/molecules/LoadedProductsCount/views';
-import Grid from '../../../../common/molecules/Grid';
 import errorBoundary from '../../../../common/hoc/withErrorBoundary';
 
 class SearchListingView extends React.PureComponent {
   render() {
     const {
       className,
-      searchedResult,
       products,
       productsBlock,
       labels,
+      totalProductsCount,
       ...otherProps
     } = this.props;
     const { SEARCHED_FOR, FILTERS, SORT_BY } = config;
-    const productsCount = 4;
     return (
-      <Grid className={className}>
+      <div className={className}>
         <Row className="placeholder">
           <Col colSize={{ small: 6, medium: 8, large: 12 }}>
             <div className="promo-area-1">{SEARCHED_FOR}</div>
@@ -38,33 +36,33 @@ class SearchListingView extends React.PureComponent {
         </Row>
         <Row>
           <Col colSize={{ small: 6, medium: 8, large: 12 }}>
-            <LoadedProductsCount totalProductsCount={productsCount} />
+            <LoadedProductsCount totalProductsCount={totalProductsCount} />
           </Col>
         </Row>
         <Row>
           <Col colSize={{ small: 6, medium: 8, large: 12 }}>
-            <ProductsGrid productsBlock={productsBlock} labels={labels} {...otherProps} />
+            <ProductsGrid productsBlock={productsBlock} products={products} {...otherProps} />
           </Col>
         </Row>
-      </Grid>
+      </div>
     );
   }
 }
 
 SearchListingView.propTypes = {
   className: PropTypes.string,
-  searchedResult: PropTypes.arrayOf(PropTypes.shape({})),
   productsBlock: PropTypes.arrayOf(PropTypes.shape({})),
   products: PropTypes.arrayOf(PropTypes.shape({})),
   labels: PropTypes.objectOf(PropTypes.oneOfType([PropTypes.string])),
+  totalProductsCount: PropTypes.number,
 };
 
 SearchListingView.defaultProps = {
   className: '',
-  searchedResult: {},
   products: [],
   productsBlock: [],
   labels: {},
+  totalProductsCount: 0,
 };
 
 export default withStyles(errorBoundary(SearchListingView), SearchListingStyle);

@@ -8,8 +8,6 @@ import SearchDetail from '../views/SearchDetail.view';
 import { getSlpProducts } from './SearchDetail.actions';
 import { getProductsAndTitleBlocks } from './SearchDetail.util';
 import {
-  getProductsSelect,
-  getLoadedProductsCount,
   getUnbxdId,
   getProductsFilters,
   getCategoryId,
@@ -18,15 +16,19 @@ import {
   getLongDescription,
   getIsLoadingMore,
   getLastLoadedPageNumber,
-  getLoadedProductsPages,
-  getTotalProductsCount,
   getAppliedFilters,
   getAppliedSortId,
 } from '../../ProductListing/container/ProductListing.selectors';
+import {
+  getLoadedProductsCount,
+  getLoadedProductsPages,
+  getTotalProductsCount,
+  getProductsSelect,
+} from '../container/SearchDetail.selectors';
+
 import { isPlccUser } from '../../../account/User/container/User.selectors';
 import submitProductListingFiltersForm from '../../ProductListing/container/productListingOnSubmitHandler';
 import { getSearchResult } from '../../../../../../../web/src/components/features/content/Header/molecules/SearchBar/SearchBar.actions';
-import searchedNewResult from '../searchedResults';
 
 class SearchDetailContainer extends React.PureComponent {
   componentDidMount() {
@@ -66,12 +68,11 @@ class SearchDetailContainer extends React.PureComponent {
       searchedResult,
       ...otherProps
     } = this.props;
-    console.log('productBlocks ___ ', productsBlock);
     return (
       <SearchDetail
-        searchedResult={searchedNewResult}
         products={products}
         productsBlock={productsBlock}
+        totalProductsCount={totalProductsCount}
         labels={labels}
         {...otherProps}
       />
@@ -80,7 +81,7 @@ class SearchDetailContainer extends React.PureComponent {
 }
 
 function mapStateToProps(state) {
-  const productBlocks = searchedNewResult;
+  const productBlocks = getLoadedProductsPages(state);
   const appliedFilters = getAppliedFilters(state);
 
   // eslint-disable-next-line
