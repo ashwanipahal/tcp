@@ -17,7 +17,7 @@ import {
   SeparatorView,
   MainContainerView,
 } from '../ModuleB.style.native';
-import { ctaTypes, bannerPositionTypes } from '../ModuleB.config';
+import { ctaTypes, bannerPositionTypes } from '../config';
 import mock from '../../../../../services/abstractors/common/moduleB/mock';
 
 /**
@@ -111,6 +111,7 @@ const renderImageComponent = (item, navigation) => {
           height={moduleHeight}
           url={image.url}
           host={LAZYLOAD_HOST_NAME.HOME}
+          alt={image.alt}
         />
       </Anchor>
       {bannerPosition === bannerPositionTypes.bottom

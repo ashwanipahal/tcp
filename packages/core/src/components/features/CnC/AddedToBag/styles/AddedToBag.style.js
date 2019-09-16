@@ -22,9 +22,7 @@ export const modalStyles = css`
       border: none;
       margin-bottom: 0;
       padding: 0;
-      @media ${props => props.theme.mediaQuery.medium} {
-        display: block;
-      }
+      display: inline;
     }
   }
 `;

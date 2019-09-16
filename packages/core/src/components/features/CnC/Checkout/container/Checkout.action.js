@@ -342,6 +342,12 @@ export const setGiftWrap = payload => {
     payload,
   };
 };
+export const submitReviewSection = payload => {
+  return {
+    type: constants.SUBMIT_REVIEW,
+    payload,
+  };
+};
 
 export const setShowGiftCardForm = payload => {
   return {

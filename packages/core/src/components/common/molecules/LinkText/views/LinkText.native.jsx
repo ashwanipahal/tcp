@@ -1,5 +1,6 @@
 // @flow
 import React from 'react';
+import { Text } from 'react-native';
 import { Anchor, BodyCopy, Heading } from '../../../atoms';
 import { StyledText } from '../../../../../../styles/globalStyles/StyledText.style';
 
@@ -22,6 +23,7 @@ export const bodyCopyStyles = {
       fontFamily="primary"
       fontSize="fs12"
       fontWeight="regular"
+      textAlign="center"
       {...props}
     />
   ),
@@ -32,15 +34,16 @@ export const bodyCopyStyles = {
       fontFamily="primary"
       fontSize="fs12"
       fontWeight="extrabold"
+      textAlign="center"
       {...props}
     />
   ),
   // small text with normal font
-  style3: props => (
+  small_text_normal: props => (
     <BodyCopy color="gray.900" fontFamily="primary" fontSize="fs14" textAlign="center" {...props} />
   ),
   // large text with bold font
-  style4: props => (
+  medium_text_black: props => (
     <BodyCopy
       color="gray.900"
       fontFamily="primary"
@@ -72,11 +75,21 @@ const getTextItems = (textItems, renderComponentInNewLine, useStyle) => {
         const StyleBodyCopy = style ? bodyCopyStyles[style] : {};
         const updatedText =
           renderComponentInNewLine && index !== textItemsSize - 1 ? `${text}\n` : text;
+
         return (
-          <StyleBodyCopy text={index ? `${updatedText}` : updatedText} key={index.toString()} />
+          <StyleBodyCopy
+            accessibilityRole="text"
+            accessibilityLabel={updatedText}
+            text={updatedText}
+            key={index.toString()}
+          />
         );
       }
-      return <StyledText key={index.toString()}>{index ? ` ${text}` : text}</StyledText>;
+      return (
+        <StyledText accessibilityRole="text" accessibilityLabel={text} key={index.toString()}>
+          {index ? ` ${text}` : text}
+        </StyledText>
+      );
     })
   );
 };
@@ -111,10 +124,17 @@ const LinkText = (props: Props) => {
     };
   }
 
-  return headerText.map(item => {
+  return headerText.map((item, index) => {
     const { link, textItems } = item;
+    if (useStyle) {
+      return (
+        <Anchor url={link.url} navigation={navigation}>
+          <Text>{getTextItems(textItems, renderComponentInNewLine, useStyle)}</Text>
+        </Anchor>
+      );
+    }
     return (
-      <Anchor url={link.url} navigation={navigation}>
+      <Anchor key={index.toString()} url={link.url} navigation={navigation}>
         <Component
           {...compProps}
           text={getTextItems(textItems, renderComponentInNewLine, useStyle)}
