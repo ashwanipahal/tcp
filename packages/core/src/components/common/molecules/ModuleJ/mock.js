@@ -93,7 +93,7 @@ export default {
         {
           image: {
             url:
-              'https://res.cloudinary.com/tcp-dam-test/image/upload/v1558543115/ecom/assets/content/tcp/us/home/moduled/US-HP-050519-MINIME3_vmfhnu.jpg',
+              'https://test5.childrensplace.com/image/upload/v1558543115/ecom/assets/content/tcp/us/home/moduled/US-HP-050519-MINIME3_vmfhnu.jpg',
             alt: 'Toddler Girl alt',
             title: 'Toddler Girl title',
             crop_d: '',
@@ -128,7 +128,7 @@ export default {
         {
           image: {
             url:
-              'https://res.cloudinary.com/tcp-dam-test/image/upload/v1558543115/ecom/assets/content/tcp/us/home/moduled/US-HP-050519-MINIME3_vmfhnu.jpg',
+              'https://test5.childrensplace.com/image/upload/v1558543115/ecom/assets/content/tcp/us/home/moduled/US-HP-050519-MINIME3_vmfhnu.jpg',
             alt: 'Toddler Boy alt',
             title: 'Tod Boy title',
             crop_d: '',
@@ -165,8 +165,7 @@ export default {
       mediaLinkedList: [
         {
           image: {
-            url:
-              'https://tcp-dam-test-ressh.cloudinary.com/image/upload/v1562731929/Image_14_bp7ih0.jpg',
+            url: 'https://test5.childrensplace.com/image/upload/v1562731929/Image_14_bp7ih0.jpg',
             alt: 'Boys',
             title: 'Boys',
             crop_d: '',
@@ -184,8 +183,7 @@ export default {
         },
         {
           image: {
-            url:
-              'https://tcp-dam-test-ressh.cloudinary.com/image/upload/v1565145744/mod-h-kids_b9ivyr.png',
+            url: 'https://test5.childrensplace.com/image/upload/v1565145744/mod-h-kids_b9ivyr.png',
             alt: 'Girls',
             title: 'Girls',
             crop_d: '',

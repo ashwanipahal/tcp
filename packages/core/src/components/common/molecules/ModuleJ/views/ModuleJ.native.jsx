@@ -4,9 +4,10 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import { LAZYLOAD_HOST_NAME } from '@tcp/core/src/utils';
 
-import { Button, Anchor, Image } from '../../../atoms';
+import { Button, Anchor, DamImage } from '../../../atoms';
 import { getLocator } from '../../../../../utils';
 import { Carousel } from '../..';
+import config from '../config';
 
 import {
   Container,
@@ -35,7 +36,7 @@ const PRODUCT_IMAGE_GUTTER = 16;
 const PRODUCT_IMAGE_PER_SLIDE = 4;
 const MODULE_HEIGHT = 142;
 const MODULE_WIDTH = (PRODUCT_IMAGE_WIDTH + PRODUCT_IMAGE_GUTTER) * PRODUCT_IMAGE_PER_SLIDE;
-
+const { IMG_DATA } = config;
 class ModuleJ extends React.PureComponent<Props, State> {
   constructor(props) {
     super(props);
@@ -80,6 +81,7 @@ class ModuleJ extends React.PureComponent<Props, State> {
                   url={imageUrl}
                   height={PRODUCT_IMAGE_HEIGHT}
                   width={PRODUCT_IMAGE_WIDTH}
+                  imageConfig={IMG_DATA.productImgConfig[0]}
                 />
               </Anchor>
             </ImageItemWrapper>
@@ -99,6 +101,7 @@ class ModuleJ extends React.PureComponent<Props, State> {
       headerText,
       promoBanner,
     } = this.props;
+
     const selectedProductList = productTabList[selectedCategoryId] || [];
 
     const selectedProductCarouselList = selectedProductList.reduce(
@@ -143,11 +146,12 @@ class ModuleJ extends React.PureComponent<Props, State> {
         </ProductTabListContainer>
         <ImageContainer layout={layout}>
           <Anchor navigation={navigation} url={mediaLinkedList[1] && mediaLinkedList[1].link.url}>
-            <Image
+            <DamImage
               url={mediaLinkedList[1] && mediaLinkedList[1].image.url}
               height="300px"
               width="100%"
               alt={mediaLinkedList[1] && mediaLinkedList[1].image.alt}
+              imgConfig={IMG_DATA.promoImgConfig[0]}
             />
           </Anchor>
         </ImageContainer>

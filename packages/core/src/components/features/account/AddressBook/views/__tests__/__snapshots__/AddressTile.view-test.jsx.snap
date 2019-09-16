@@ -37,6 +37,7 @@ exports[`AddressTile component should renders correctly 1`] = `
           fontWeight="extrabold"
           isDefault={false}
           showCountry={true}
+          showDefault={true}
           showName={true}
           showPhone={true}
         />

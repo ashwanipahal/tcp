@@ -46,6 +46,7 @@ export {
   getCacheKeyForRedis,
   getAddressFromPlace,
   formatAddress,
+  formatPhoneNumber,
   calculateAge,
   getLabelValue,
   capitalize,
@@ -56,4 +57,7 @@ export {
   getErrorSelector,
   formatDate,
   isValidDate,
+  sanitizeEntity,
+  formatPhone,
+  parseStoreHours,
 } from './utils';
