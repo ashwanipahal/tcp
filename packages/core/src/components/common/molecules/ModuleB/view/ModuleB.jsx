@@ -4,7 +4,7 @@ import ImageBanner from './ModuleB-imageBanner';
 import ButtonList from '../../ButtonList';
 import { Row, Col } from '../../../atoms';
 import { getLocator } from '../../../../../utils';
-import { ctaTypes, ctaTypeProps, MODULE_WIDTH_HALF } from '../ModuleB.config';
+import { ctaTypes, ctaTypeProps, MODULE_WIDTH_HALF } from '../config';
 import withStyles from '../../../hoc/withStyles';
 import style from '../ModuleB.style';
 

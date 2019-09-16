@@ -24,7 +24,7 @@ import {
   HeaderView,
   PromoRibbonWrapper,
 } from '../ModuleA.style.native';
-import config from '../../ModuleN/ModuleN.config';
+import config from '../config';
 
 /**
  * Module height and width.
