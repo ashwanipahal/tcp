@@ -4,13 +4,14 @@ import { BodyCopy } from '../../../../../../common/atoms';
 import { PointHistoryView, PointView, PointTransView } from '../styles/PointHistory.style';
 
 /**
- * @function RewardsPointsList The RewardsPointsList to show poitns history list
+ * @function PointsHistory The PointsHistory to show points history list
  */
 
 const PointsHistory = ({ labels, pointHistory }) => {
+  const pointHistoryLen = pointHistory.length;
   return (
     <React.Fragment>
-      {pointHistory && pointHistory.length && (
+      {pointHistoryLen > 0 && (
         <PointHistoryView>
           <PointView>
             <BodyCopy text={labels.lbl_common_order_date} fontFamily="secondary" fontSize="fs12" />
@@ -29,8 +30,7 @@ const PointsHistory = ({ labels, pointHistory }) => {
         </PointHistoryView>
       )}
 
-      {pointHistory &&
-        pointHistory.length &&
+      {pointHistoryLen > 0 &&
         pointHistory.map(pointHistoryRow => (
           <PointHistoryView>
             <PointView>
@@ -61,7 +61,7 @@ const PointsHistory = ({ labels, pointHistory }) => {
           </PointHistoryView>
         ))}
 
-      {!pointHistory && (
+      {pointHistoryLen === 0 && (
         <BodyCopy
           text={labels.lbl_common_points_history_nopoints}
           fontFamily="secondary"
@@ -74,7 +74,7 @@ const PointsHistory = ({ labels, pointHistory }) => {
 };
 
 PointsHistory.propTypes = {
-  pointHistory: PropTypes.shape({ length: PropTypes.string }).isRequired,
+  pointHistory: PropTypes.shape([]),
   labels: PropTypes.shape({
     lbl_common_order_date: PropTypes.string,
     lbl_common_transaction: PropTypes.string,
@@ -84,6 +84,7 @@ PointsHistory.propTypes = {
 };
 
 PointsHistory.defaultProps = {
+  pointHistory: [],
   labels: {
     lbl_common_order_date: '',
     lbl_common_transaction: '',
