@@ -161,18 +161,17 @@ export default css`
       ul.half-width {
         width: 50%;
       }
+      .nav-bar-item-label {
+        border-bottom: 2px solid ${props => props.theme.colorPalette.white};
+        padding-bottom: 4px;
+      }
       .nav-bar-item-label:hover {
         width: auto;
-        border-bottom: 2px solid
-          ${props =>
-            props.theme.isGymboree
-              ? props.theme.colorPalette.primary.main
-              : props.theme.colors.ANCHOR.SECONDARY};
-        padding-bottom: 4px;
+        border-color: ${props =>
+          props.theme.isGymboree
+            ? props.theme.colorPalette.primary.main
+            : props.theme.colors.ANCHOR.SECONDARY};
         text-decoration: none;
-      }
-      .l2-nav-linklist {
-        height: 46px;
       }
     }
     .l2-nav-link {

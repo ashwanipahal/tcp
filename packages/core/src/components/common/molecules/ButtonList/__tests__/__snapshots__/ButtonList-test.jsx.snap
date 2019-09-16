@@ -6,7 +6,7 @@ exports[`ButtonList component renders correctly 1`] = `
     className=" button-list-wrapper link-button-list-wrapper "
   >
     <ButtonCTA
-      className="link-button-wrapper-class"
+      className="link-button-wrapper-class$"
       ctaInfo={
         Object {
           "className": "link-button",
@@ -40,12 +40,11 @@ exports[`ButtonList component renders correctly 1`] = `
           "url": "https://res.cloudinary.com/tcp-dam-test/image/upload/q_auto:best/v1558543115/ecom/assets/content/tcp/us/home/moduled/US-HP-050519-MINIME1_h9cwcd.jpg",
         }
       }
-      noCurve={false}
       textAlign="center"
       uniqueKey="Girl"
     />
     <ButtonCTA
-      className="link-button-wrapper-class"
+      className="link-button-wrapper-class$"
       ctaInfo={
         Object {
           "className": "link-button",
@@ -79,12 +78,11 @@ exports[`ButtonList component renders correctly 1`] = `
           "url": "https://res.cloudinary.com/tcp-dam-test/image/upload/v1558543115/ecom/assets/content/tcp/us/home/moduled/US-HP-050519-MINIME3_vmfhnu.jpg",
         }
       }
-      noCurve={false}
       textAlign="center"
       uniqueKey="Toddler_Girl"
     />
     <ButtonCTA
-      className="link-button-wrapper-class"
+      className="link-button-wrapper-class$"
       ctaInfo={
         Object {
           "className": "link-button",
@@ -118,12 +116,11 @@ exports[`ButtonList component renders correctly 1`] = `
           "url": "https://res.cloudinary.com/tcp-dam-test/image/upload/v1558543115/ecom/assets/content/tcp/us/home/moduled/US-HP-050519-MINIME1_h9cwcd.jpg",
         }
       }
-      noCurve={false}
       textAlign="center"
       uniqueKey="Boy"
     />
     <ButtonCTA
-      className="link-button-wrapper-class"
+      className="link-button-wrapper-class$"
       ctaInfo={
         Object {
           "className": "link-button",
@@ -157,12 +154,11 @@ exports[`ButtonList component renders correctly 1`] = `
           "url": "https://res.cloudinary.com/tcp-dam-test/image/upload/v1558543115/ecom/assets/content/tcp/us/home/moduled/US-HP-050519-MINIME3_vmfhnu.jpg",
         }
       }
-      noCurve={false}
       textAlign="center"
       uniqueKey="Tod_Boy"
     />
     <ButtonCTA
-      className="link-button-wrapper-class"
+      className="link-button-wrapper-class$"
       ctaInfo={
         Object {
           "className": "link-button",
@@ -196,12 +192,11 @@ exports[`ButtonList component renders correctly 1`] = `
           "url": "https://res.cloudinary.com/tcp-dam-test/image/upload/v1558543115/ecom/assets/content/tcp/us/home/moduled/US-HP-050519-MINIME1_h9cwcd.jpg",
         }
       }
-      noCurve={false}
       textAlign="center"
       uniqueKey="Baby"
     />
     <ButtonCTA
-      className="link-button-wrapper-class"
+      className="link-button-wrapper-class$"
       ctaInfo={
         Object {
           "className": "link-button",
@@ -235,7 +230,6 @@ exports[`ButtonList component renders correctly 1`] = `
           "url": "https://res.cloudinary.com/tcp-dam-test/image/upload/v1558543115/ecom/assets/content/tcp/us/home/moduled/US-HP-050519-MINIME1_h9cwcd.jpg",
         }
       }
-      noCurve={false}
       textAlign="center"
       uniqueKey="Alt"
     />
@@ -249,7 +243,7 @@ exports[`ButtonList component renders correctly for Dual Variation 1`] = `
     className=" button-list-wrapper stacked-button-list-wrapper  wrapped-button-text is-tablet-hidden"
   >
     <ButtonCTA
-      className="stacked-cta-wrapper-class"
+      className="stacked-cta-wrapper-class$"
       ctaInfo={
         Object {
           "className": "stacked-button",
@@ -283,12 +277,12 @@ exports[`ButtonList component renders correctly for Dual Variation 1`] = `
           "url": "https://res.cloudinary.com/tcp-dam-test/image/upload/q_auto:best/v1558543115/ecom/assets/content/tcp/us/home/moduled/US-HP-050519-MINIME1_h9cwcd.jpg",
         }
       }
-      noCurve={false}
+      noCurveMobile={true}
       textAlign="center"
       uniqueKey="Girl"
     />
     <ButtonCTA
-      className="stacked-cta-wrapper-class"
+      className="stacked-cta-wrapper-class$"
       ctaInfo={
         Object {
           "className": "stacked-button",
@@ -322,12 +316,12 @@ exports[`ButtonList component renders correctly for Dual Variation 1`] = `
           "url": "https://res.cloudinary.com/tcp-dam-test/image/upload/v1558543115/ecom/assets/content/tcp/us/home/moduled/US-HP-050519-MINIME3_vmfhnu.jpg",
         }
       }
-      noCurve={false}
+      noCurveMobile={true}
       textAlign="center"
       uniqueKey="Toddler_Girl"
     />
     <ButtonCTA
-      className="stacked-cta-wrapper-class"
+      className="stacked-cta-wrapper-class$"
       ctaInfo={
         Object {
           "className": "stacked-button",
@@ -361,12 +355,12 @@ exports[`ButtonList component renders correctly for Dual Variation 1`] = `
           "url": "https://res.cloudinary.com/tcp-dam-test/image/upload/v1558543115/ecom/assets/content/tcp/us/home/moduled/US-HP-050519-MINIME1_h9cwcd.jpg",
         }
       }
-      noCurve={false}
+      noCurveMobile={true}
       textAlign="center"
       uniqueKey="Boy"
     />
     <ButtonCTA
-      className="stacked-cta-wrapper-class"
+      className="stacked-cta-wrapper-class$"
       ctaInfo={
         Object {
           "className": "stacked-button",
@@ -400,12 +394,12 @@ exports[`ButtonList component renders correctly for Dual Variation 1`] = `
           "url": "https://res.cloudinary.com/tcp-dam-test/image/upload/v1558543115/ecom/assets/content/tcp/us/home/moduled/US-HP-050519-MINIME3_vmfhnu.jpg",
         }
       }
-      noCurve={false}
+      noCurveMobile={true}
       textAlign="center"
       uniqueKey="Tod_Boy"
     />
     <ButtonCTA
-      className="stacked-cta-wrapper-class"
+      className="stacked-cta-wrapper-class$"
       ctaInfo={
         Object {
           "className": "stacked-button",
@@ -439,12 +433,12 @@ exports[`ButtonList component renders correctly for Dual Variation 1`] = `
           "url": "https://res.cloudinary.com/tcp-dam-test/image/upload/v1558543115/ecom/assets/content/tcp/us/home/moduled/US-HP-050519-MINIME1_h9cwcd.jpg",
         }
       }
-      noCurve={false}
+      noCurveMobile={true}
       textAlign="center"
       uniqueKey="Baby"
     />
     <ButtonCTA
-      className="stacked-cta-wrapper-class"
+      className="stacked-cta-wrapper-class$"
       ctaInfo={
         Object {
           "className": "stacked-button",
@@ -478,7 +472,7 @@ exports[`ButtonList component renders correctly for Dual Variation 1`] = `
           "url": "https://res.cloudinary.com/tcp-dam-test/image/upload/v1558543115/ecom/assets/content/tcp/us/home/moduled/US-HP-050519-MINIME1_h9cwcd.jpg",
         }
       }
-      noCurve={false}
+      noCurveMobile={true}
       textAlign="center"
       uniqueKey="Alt"
     />
@@ -603,7 +597,7 @@ exports[`ButtonList component renders correctly for image cta List 1`] = `
     className=" button-list-wrapper scroll-button-list-wrapper   wrapped-button-text "
   >
     <ImageTextCTA
-      className="scroll-cta-wrapper-class"
+      className="scroll-cta-wrapper-class$"
       ctaInfo={
         Object {
           "className": "image-cta",
@@ -636,12 +630,11 @@ exports[`ButtonList component renders correctly for image cta List 1`] = `
           "url": "https://res.cloudinary.com/tcp-dam-test/image/upload/q_auto:best/v1558543115/ecom/assets/content/tcp/us/home/moduled/US-HP-050519-MINIME1_h9cwcd.jpg",
         }
       }
-      noCurve={false}
       textAlign="center"
       uniqueKey="Girl"
     />
     <ImageTextCTA
-      className="scroll-cta-wrapper-class"
+      className="scroll-cta-wrapper-class$"
       ctaInfo={
         Object {
           "className": "image-cta",
@@ -674,12 +667,11 @@ exports[`ButtonList component renders correctly for image cta List 1`] = `
           "url": "https://res.cloudinary.com/tcp-dam-test/image/upload/v1558543115/ecom/assets/content/tcp/us/home/moduled/US-HP-050519-MINIME3_vmfhnu.jpg",
         }
       }
-      noCurve={false}
       textAlign="center"
       uniqueKey="Toddler_Girl"
     />
     <ImageTextCTA
-      className="scroll-cta-wrapper-class"
+      className="scroll-cta-wrapper-class$"
       ctaInfo={
         Object {
           "className": "image-cta",
@@ -712,12 +704,11 @@ exports[`ButtonList component renders correctly for image cta List 1`] = `
           "url": "https://res.cloudinary.com/tcp-dam-test/image/upload/v1558543115/ecom/assets/content/tcp/us/home/moduled/US-HP-050519-MINIME1_h9cwcd.jpg",
         }
       }
-      noCurve={false}
       textAlign="center"
       uniqueKey="Boy"
     />
     <ImageTextCTA
-      className="scroll-cta-wrapper-class"
+      className="scroll-cta-wrapper-class$"
       ctaInfo={
         Object {
           "className": "image-cta",
@@ -750,12 +741,11 @@ exports[`ButtonList component renders correctly for image cta List 1`] = `
           "url": "https://res.cloudinary.com/tcp-dam-test/image/upload/v1558543115/ecom/assets/content/tcp/us/home/moduled/US-HP-050519-MINIME3_vmfhnu.jpg",
         }
       }
-      noCurve={false}
       textAlign="center"
       uniqueKey="Tod_Boy"
     />
     <ImageTextCTA
-      className="scroll-cta-wrapper-class"
+      className="scroll-cta-wrapper-class$"
       ctaInfo={
         Object {
           "className": "image-cta",
@@ -788,12 +778,11 @@ exports[`ButtonList component renders correctly for image cta List 1`] = `
           "url": "https://res.cloudinary.com/tcp-dam-test/image/upload/v1558543115/ecom/assets/content/tcp/us/home/moduled/US-HP-050519-MINIME1_h9cwcd.jpg",
         }
       }
-      noCurve={false}
       textAlign="center"
       uniqueKey="Baby"
     />
     <ImageTextCTA
-      className="scroll-cta-wrapper-class"
+      className="scroll-cta-wrapper-class$"
       ctaInfo={
         Object {
           "className": "image-cta",
@@ -826,7 +815,6 @@ exports[`ButtonList component renders correctly for image cta List 1`] = `
           "url": "https://res.cloudinary.com/tcp-dam-test/image/upload/v1558543115/ecom/assets/content/tcp/us/home/moduled/US-HP-050519-MINIME1_h9cwcd.jpg",
         }
       }
-      noCurve={false}
       textAlign="center"
       uniqueKey="Alt"
     />
@@ -840,7 +828,7 @@ exports[`ButtonList component renders correctly for scroll cta buttons 1`] = `
     className=" button-list-wrapper scroll-button-list-wrapper   wrapped-button-text "
   >
     <ButtonCTA
-      className="scroll-cta-wrapper-class"
+      className="scroll-cta-wrapper-class$"
       ctaInfo={
         Object {
           "className": "scroll-button",
@@ -874,12 +862,11 @@ exports[`ButtonList component renders correctly for scroll cta buttons 1`] = `
           "url": "https://res.cloudinary.com/tcp-dam-test/image/upload/q_auto:best/v1558543115/ecom/assets/content/tcp/us/home/moduled/US-HP-050519-MINIME1_h9cwcd.jpg",
         }
       }
-      noCurve={false}
       textAlign="center"
       uniqueKey="Girl"
     />
     <ButtonCTA
-      className="scroll-cta-wrapper-class"
+      className="scroll-cta-wrapper-class$"
       ctaInfo={
         Object {
           "className": "scroll-button",
@@ -913,12 +900,11 @@ exports[`ButtonList component renders correctly for scroll cta buttons 1`] = `
           "url": "https://res.cloudinary.com/tcp-dam-test/image/upload/v1558543115/ecom/assets/content/tcp/us/home/moduled/US-HP-050519-MINIME3_vmfhnu.jpg",
         }
       }
-      noCurve={false}
       textAlign="center"
       uniqueKey="Toddler_Girl"
     />
     <ButtonCTA
-      className="scroll-cta-wrapper-class"
+      className="scroll-cta-wrapper-class$"
       ctaInfo={
         Object {
           "className": "scroll-button",
@@ -952,12 +938,11 @@ exports[`ButtonList component renders correctly for scroll cta buttons 1`] = `
           "url": "https://res.cloudinary.com/tcp-dam-test/image/upload/v1558543115/ecom/assets/content/tcp/us/home/moduled/US-HP-050519-MINIME1_h9cwcd.jpg",
         }
       }
-      noCurve={false}
       textAlign="center"
       uniqueKey="Boy"
     />
     <ButtonCTA
-      className="scroll-cta-wrapper-class"
+      className="scroll-cta-wrapper-class$"
       ctaInfo={
         Object {
           "className": "scroll-button",
@@ -991,12 +976,11 @@ exports[`ButtonList component renders correctly for scroll cta buttons 1`] = `
           "url": "https://res.cloudinary.com/tcp-dam-test/image/upload/v1558543115/ecom/assets/content/tcp/us/home/moduled/US-HP-050519-MINIME3_vmfhnu.jpg",
         }
       }
-      noCurve={false}
       textAlign="center"
       uniqueKey="Tod_Boy"
     />
     <ButtonCTA
-      className="scroll-cta-wrapper-class"
+      className="scroll-cta-wrapper-class$"
       ctaInfo={
         Object {
           "className": "scroll-button",
@@ -1030,12 +1014,11 @@ exports[`ButtonList component renders correctly for scroll cta buttons 1`] = `
           "url": "https://res.cloudinary.com/tcp-dam-test/image/upload/v1558543115/ecom/assets/content/tcp/us/home/moduled/US-HP-050519-MINIME1_h9cwcd.jpg",
         }
       }
-      noCurve={false}
       textAlign="center"
       uniqueKey="Baby"
     />
     <ButtonCTA
-      className="scroll-cta-wrapper-class"
+      className="scroll-cta-wrapper-class$"
       ctaInfo={
         Object {
           "className": "scroll-button",
@@ -1069,7 +1052,6 @@ exports[`ButtonList component renders correctly for scroll cta buttons 1`] = `
           "url": "https://res.cloudinary.com/tcp-dam-test/image/upload/v1558543115/ecom/assets/content/tcp/us/home/moduled/US-HP-050519-MINIME1_h9cwcd.jpg",
         }
       }
-      noCurve={false}
       textAlign="center"
       uniqueKey="Alt"
     />
@@ -1083,7 +1065,7 @@ exports[`ButtonList component renders correctly with props for stacked CTA butto
     className=" button-list-wrapper stacked-button-list-wrapper  wrapped-button-text "
   >
     <ButtonCTA
-      className="stacked-cta-wrapper-class"
+      className="stacked-cta-wrapper-class$"
       ctaInfo={
         Object {
           "className": "stacked-button",
@@ -1117,12 +1099,12 @@ exports[`ButtonList component renders correctly with props for stacked CTA butto
           "url": "https://res.cloudinary.com/tcp-dam-test/image/upload/q_auto:best/v1558543115/ecom/assets/content/tcp/us/home/moduled/US-HP-050519-MINIME1_h9cwcd.jpg",
         }
       }
-      noCurve={false}
+      noCurveMobile={true}
       textAlign="center"
       uniqueKey="Girl"
     />
     <ButtonCTA
-      className="stacked-cta-wrapper-class"
+      className="stacked-cta-wrapper-class$"
       ctaInfo={
         Object {
           "className": "stacked-button",
@@ -1156,12 +1138,12 @@ exports[`ButtonList component renders correctly with props for stacked CTA butto
           "url": "https://res.cloudinary.com/tcp-dam-test/image/upload/v1558543115/ecom/assets/content/tcp/us/home/moduled/US-HP-050519-MINIME3_vmfhnu.jpg",
         }
       }
-      noCurve={false}
+      noCurveMobile={true}
       textAlign="center"
       uniqueKey="Toddler_Girl"
     />
     <ButtonCTA
-      className="stacked-cta-wrapper-class"
+      className="stacked-cta-wrapper-class$"
       ctaInfo={
         Object {
           "className": "stacked-button",
@@ -1195,12 +1177,12 @@ exports[`ButtonList component renders correctly with props for stacked CTA butto
           "url": "https://res.cloudinary.com/tcp-dam-test/image/upload/v1558543115/ecom/assets/content/tcp/us/home/moduled/US-HP-050519-MINIME1_h9cwcd.jpg",
         }
       }
-      noCurve={false}
+      noCurveMobile={true}
       textAlign="center"
       uniqueKey="Boy"
     />
     <ButtonCTA
-      className="stacked-cta-wrapper-class"
+      className="stacked-cta-wrapper-class$"
       ctaInfo={
         Object {
           "className": "stacked-button",
@@ -1234,12 +1216,12 @@ exports[`ButtonList component renders correctly with props for stacked CTA butto
           "url": "https://res.cloudinary.com/tcp-dam-test/image/upload/v1558543115/ecom/assets/content/tcp/us/home/moduled/US-HP-050519-MINIME3_vmfhnu.jpg",
         }
       }
-      noCurve={false}
+      noCurveMobile={true}
       textAlign="center"
       uniqueKey="Tod_Boy"
     />
     <ButtonCTA
-      className="stacked-cta-wrapper-class"
+      className="stacked-cta-wrapper-class$"
       ctaInfo={
         Object {
           "className": "stacked-button",
@@ -1273,12 +1255,12 @@ exports[`ButtonList component renders correctly with props for stacked CTA butto
           "url": "https://res.cloudinary.com/tcp-dam-test/image/upload/v1558543115/ecom/assets/content/tcp/us/home/moduled/US-HP-050519-MINIME1_h9cwcd.jpg",
         }
       }
-      noCurve={false}
+      noCurveMobile={true}
       textAlign="center"
       uniqueKey="Baby"
     />
     <ButtonCTA
-      className="stacked-cta-wrapper-class"
+      className="stacked-cta-wrapper-class$"
       ctaInfo={
         Object {
           "className": "stacked-button",
@@ -1312,7 +1294,7 @@ exports[`ButtonList component renders correctly with props for stacked CTA butto
           "url": "https://res.cloudinary.com/tcp-dam-test/image/upload/v1558543115/ecom/assets/content/tcp/us/home/moduled/US-HP-050519-MINIME1_h9cwcd.jpg",
         }
       }
-      noCurve={false}
+      noCurveMobile={true}
       textAlign="center"
       uniqueKey="Alt"
     />
@@ -1326,7 +1308,7 @@ exports[`ButtonList component renders correctly without props 1`] = `
     className=" button-list-wrapper stacked-button-list-wrapper  wrapped-button-text "
   >
     <ButtonCTA
-      className="stacked-cta-wrapper-class"
+      className="stacked-cta-wrapper-class$"
       ctaInfo={
         Object {
           "className": "stacked-button",
@@ -1360,12 +1342,12 @@ exports[`ButtonList component renders correctly without props 1`] = `
           "url": "https://res.cloudinary.com/tcp-dam-test/image/upload/q_auto:best/v1558543115/ecom/assets/content/tcp/us/home/moduled/US-HP-050519-MINIME1_h9cwcd.jpg",
         }
       }
-      noCurve={false}
+      noCurveMobile={true}
       textAlign="center"
       uniqueKey="Girl"
     />
     <ButtonCTA
-      className="stacked-cta-wrapper-class"
+      className="stacked-cta-wrapper-class$"
       ctaInfo={
         Object {
           "className": "stacked-button",
@@ -1399,12 +1381,12 @@ exports[`ButtonList component renders correctly without props 1`] = `
           "url": "https://res.cloudinary.com/tcp-dam-test/image/upload/v1558543115/ecom/assets/content/tcp/us/home/moduled/US-HP-050519-MINIME3_vmfhnu.jpg",
         }
       }
-      noCurve={false}
+      noCurveMobile={true}
       textAlign="center"
       uniqueKey="Toddler_Girl"
     />
     <ButtonCTA
-      className="stacked-cta-wrapper-class"
+      className="stacked-cta-wrapper-class$"
       ctaInfo={
         Object {
           "className": "stacked-button",
@@ -1438,12 +1420,12 @@ exports[`ButtonList component renders correctly without props 1`] = `
           "url": "https://res.cloudinary.com/tcp-dam-test/image/upload/v1558543115/ecom/assets/content/tcp/us/home/moduled/US-HP-050519-MINIME1_h9cwcd.jpg",
         }
       }
-      noCurve={false}
+      noCurveMobile={true}
       textAlign="center"
       uniqueKey="Boy"
     />
     <ButtonCTA
-      className="stacked-cta-wrapper-class"
+      className="stacked-cta-wrapper-class$"
       ctaInfo={
         Object {
           "className": "stacked-button",
@@ -1477,12 +1459,12 @@ exports[`ButtonList component renders correctly without props 1`] = `
           "url": "https://res.cloudinary.com/tcp-dam-test/image/upload/v1558543115/ecom/assets/content/tcp/us/home/moduled/US-HP-050519-MINIME3_vmfhnu.jpg",
         }
       }
-      noCurve={false}
+      noCurveMobile={true}
       textAlign="center"
       uniqueKey="Tod_Boy"
     />
     <ButtonCTA
-      className="stacked-cta-wrapper-class"
+      className="stacked-cta-wrapper-class$"
       ctaInfo={
         Object {
           "className": "stacked-button",
@@ -1516,12 +1498,12 @@ exports[`ButtonList component renders correctly without props 1`] = `
           "url": "https://res.cloudinary.com/tcp-dam-test/image/upload/v1558543115/ecom/assets/content/tcp/us/home/moduled/US-HP-050519-MINIME1_h9cwcd.jpg",
         }
       }
-      noCurve={false}
+      noCurveMobile={true}
       textAlign="center"
       uniqueKey="Baby"
     />
     <ButtonCTA
-      className="stacked-cta-wrapper-class"
+      className="stacked-cta-wrapper-class$"
       ctaInfo={
         Object {
           "className": "stacked-button",
@@ -1555,7 +1537,7 @@ exports[`ButtonList component renders correctly without props 1`] = `
           "url": "https://res.cloudinary.com/tcp-dam-test/image/upload/v1558543115/ecom/assets/content/tcp/us/home/moduled/US-HP-050519-MINIME1_h9cwcd.jpg",
         }
       }
-      noCurve={false}
+      noCurveMobile={true}
       textAlign="center"
       uniqueKey="Alt"
     />

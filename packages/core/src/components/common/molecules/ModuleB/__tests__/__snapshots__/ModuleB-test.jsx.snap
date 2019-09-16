@@ -248,7 +248,6 @@ exports[`ModuleB component should render TCP or default variant correctly 1`] = 
             "name": "dropdownButtonCTA",
           }
         }
-        noCurve={true}
       />
     </Styled(Col)>
   </Styled(Row)>

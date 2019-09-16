@@ -6,8 +6,16 @@ const getShape = props => {
   const {
     theme: { isGymboree },
     noCurve,
+    noCurveMobile,
   } = props;
 
+  if (isGymboree && noCurveMobile) {
+    return `
+    border-radius: 25.5px;
+    @media ${props.theme.mediaQuery.smallOnly} {
+      border-radius: 0;
+    }`;
+  }
   if (isGymboree && !noCurve) {
     return `border-radius: 25.5px;`;
   }

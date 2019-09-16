@@ -1,20 +1,24 @@
 import { css } from 'styled-components';
 
-const cartItemMargin = item => {
-  let marginBottom = '-7px';
-  if (item && item.length > 0) {
-    switch (item.length) {
+/**
+ * @function to return margin left for bag count icon
+ * @param {string} cartItemCount - no of items in cart
+ */
+const cartItemMargin = cartItemCount => {
+  let marginLeft = '-7px';
+  if (cartItemCount && cartItemCount.length > 0) {
+    switch (cartItemCount.length) {
       case 2:
-        marginBottom = '-9px';
+        marginLeft = '-9px';
         break;
       case 3:
-        marginBottom = '-14px';
+        marginLeft = '-14px';
         break;
       default:
         break;
     }
   }
-  return marginBottom;
+  return marginLeft;
 };
 
 export default css`

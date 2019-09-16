@@ -165,6 +165,14 @@ export default css`
         padding: 24px 0;
       }
     }
+    @media ${props => props.theme.mediaQuery.mediumOnly} {
+      .candidate_a_inline_container_button button {
+        width: auto;
+      }
+      .footer_top_candidate_a .candidate_a_inline_container_button {
+        text-align: center;
+      }
+    }
   }
 
   .footer-bottom {
@@ -199,6 +207,13 @@ export default css`
     }
     &.navigation-footer .hide-in-medium-up {
       display: block;
+    }
+    .candidate_a_inline_container_button button{
+      padding: 12px 20px;
+      width: 100%;
+    }
+    .footer_top_candidate_a .candidate_a_inline_container_button {
+      text-align: right;
     }
   }
   @media ${props => props.theme.mediaQuery.large} {

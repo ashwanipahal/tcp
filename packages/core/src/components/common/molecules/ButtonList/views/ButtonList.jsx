@@ -132,11 +132,10 @@ const ButtonList = props => {
     dataLocatorDivisionImages,
     dataLocatorTextCta,
     fill,
-    noCurve = false,
   } = props;
 
   const buttonListConfig = getButtonListConfig(buttonListVariation, buttonsData.length);
-  const { compClassName, ctaInfo, compWrapper } = buttonListConfig;
+  const { compClassName, ctaInfo, compWrapper, noCurveMobile } = buttonListConfig;
 
   let Component = ButtonCTA;
   if (buttonListVariation === 'imageCTAList') {
@@ -154,13 +153,14 @@ const ButtonList = props => {
         {buttonsData.map((item, index) => {
           const { button = {}, image } = item;
           const compProps = {
-            className: `${compClassName}-class`,
+            className: `${compClassName}-class$`,
             ctaInfo: {
               ...ctaInfo,
               link: button,
             },
             fill,
             image,
+            noCurveMobile,
           };
 
           // Code to generate unique key
@@ -178,7 +178,6 @@ const ButtonList = props => {
               fontSize="fs13"
               fontFamily="secondary"
               textAlign="center"
-              noCurve={noCurve}
             />
           );
         })}
@@ -201,7 +200,6 @@ ButtonList.defaultProps = {
   dataLocatorDivisionImages: '',
   dataLocatorTextCta: '',
   fill: '',
-  noCurve: false,
 };
 
 ButtonList.propTypes = {
@@ -224,7 +222,6 @@ ButtonList.propTypes = {
   dataLocatorDivisionImages: PropTypes.string,
   dataLocatorTextCta: PropTypes.string,
   fill: PropTypes.string,
-  noCurve: PropTypes.bool,
 };
 
 export default withStyles(ButtonList, ButtonListStyle);
