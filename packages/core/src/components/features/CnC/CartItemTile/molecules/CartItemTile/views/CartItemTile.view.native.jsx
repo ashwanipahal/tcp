@@ -180,7 +180,7 @@ class ProductInformation extends React.Component {
                 )}
               </View>
               {!productDetail.itemInfo.isGiftItem &&
-                (productDetail.itemInfo.isGiftItem === 'TCP' ? (
+                (productDetail.itemInfo.itemBrand === 'TCP' ? (
                   <ImageBrandStyle
                     data-locator={getLocator('cart_item_brand_logo')}
                     source={tcpImage}

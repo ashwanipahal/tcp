@@ -10,49 +10,52 @@ import ApplicationInProgressWrapper from './styles/ApplicationInProgress.style';
  * @description - showcases application in progress screen.
  */
 
-const ApplicationInProgress = ({ labels }) => {
+const ApplicationInProgress = ({ bagItems, isPLCCModalFlow, labels }) => {
   return (
-    <ApplicationInProgressWrapper>
+    <ApplicationInProgressWrapper isPLCCModalFlow={isPLCCModalFlow}>
+      <div className="header-image" />
       <BodyCopy
-        fontSize="fs20"
+        fontSize="fs22"
         className="card-InProgress-header"
         fontFamily="secondary"
         fontWeight="semibold"
       >
         {labels.plcc_form_status}
       </BodyCopy>
-      <BodyCopy fontSize="fs16" fontFamily="secondary">
+      <BodyCopy fontSize="fs16" fontFamily="secondary" className="in_progress_status_details">
         {labels.plcc_form_status_detail}
       </BodyCopy>
+      {bagItems ? (
+        <Row fullBleed className="submit_plcc_form">
+          <Col
+            ignoreGutter={{ small: true }}
+            colSize={{ large: 3, medium: 4, small: 12 }}
+            className="underprogress_checkout_button"
+          >
+            <Anchor asPath="/bag">
+              <Button
+                buttonVariation="fixed-width"
+                fill="BLUE"
+                type="submit"
+                className="underprogress_checkout_button"
+                data-locator="submit-plcc-btn"
+              >
+                {labels.plcc_form_ctc_buttom}
+              </Button>
+            </Anchor>
+          </Col>
+        </Row>
+      ) : null}
       <Row fullBleed className="submit_plcc_form">
         <Col
           ignoreGutter={{ small: true }}
-          colSize={{ large: 4, medium: 4, small: 6 }}
-          className="underprogress_checkout_button"
-        >
-          <Anchor asPath="/bag">
-            <Button
-              buttonVariation="fixed-width"
-              fill="BLUE"
-              type="submit"
-              className="underprogress_checkout_button"
-              data-locator="submit-plcc-btn"
-            >
-              {labels.plcc_form_ctc_buttom}
-            </Button>
-          </Anchor>
-        </Col>
-      </Row>
-      <Row fullBleed className="submit_plcc_form">
-        <Col
-          ignoreGutter={{ small: true }}
-          colSize={{ large: 4, medium: 4, small: 6 }}
-          className="underproress_continue_button"
+          colSize={{ large: 3, medium: 4, small: 12 }}
+          className="underprogress_continue_button"
         >
           <Anchor asPath="/home">
             <Button
               buttonVariation="fixed-width"
-              fill="BLUE"
+              fill={!bagItems ? 'BLUE' : 'WHITE'}
               type="submit"
               className="underprogress_continue_button"
               data-locator="submit-plcc-btn"
@@ -68,6 +71,8 @@ const ApplicationInProgress = ({ labels }) => {
 
 ApplicationInProgress.propTypes = {
   labels: PropTypes.shape({}).isRequired,
+  isPLCCModalFlow: PropTypes.bool.isRequired,
+  bagItems: PropTypes.number.isRequired,
 };
 
 export default ApplicationInProgress;

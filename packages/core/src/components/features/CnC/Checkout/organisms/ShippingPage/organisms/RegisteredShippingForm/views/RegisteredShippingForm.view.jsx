@@ -80,7 +80,15 @@ class RegisteredShippingForm extends React.Component {
       return {
         value: address.addressId,
         title: `${address.firstName} ${address.lastName} ${defaultId ? '(Default)' : ''}`,
-        content: <Address address={address} showPhone isDefault={defaultId} className="address" />,
+        content: (
+          <Address
+            showCountry={false}
+            showPhone={false}
+            address={address}
+            isDefault={defaultId}
+            className="address"
+          />
+        ),
       };
     });
 
@@ -322,9 +330,9 @@ class RegisteredShippingForm extends React.Component {
 
   getBtnDisabledState = () => {
     let disabledState = false;
-    const { modalState, modalType, address } = this.props;
-    if (modalState && modalType === 'add') {
-      disabledState = getFieldsValidation({ address });
+    const { modalState, syncErrorsObject } = this.props;
+    if (modalState) {
+      disabledState = getFieldsValidation({ syncErrorsObject });
     }
     return disabledState;
   };
