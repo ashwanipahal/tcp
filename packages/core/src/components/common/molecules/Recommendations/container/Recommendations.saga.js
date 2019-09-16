@@ -11,6 +11,7 @@ function* fetchRecommendationsData() {
 
     yield put(loadRecommendationsData(result));
   } catch (e) {
+    // eslint-disable-next-line no-console
     console.log(e);
   }
 }

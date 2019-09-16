@@ -14,7 +14,7 @@ const props = {
       offerPrice: '74.95',
     },
   ],
-  youMayAlsoLikeLabel: 'You May Also Like',
+  headerLabel: 'You May Also Like',
   className: 'test class',
 };
 
@@ -22,7 +22,7 @@ describe('Recommendations component', () => {
   let RecommendationsComp;
 
   beforeEach(() => {
-    RecommendationsComp = shallow(<Recommendations {...props} />);
+    RecommendationsComp = shallow(<Recommendations variations="moduleO" {...props} />);
   });
   it('renders correctly', () => {
     expect(RecommendationsComp).toMatchSnapshot();
@@ -33,7 +33,7 @@ describe('Recommendations Module O price only variation', () => {
   let RecommendationsComp;
 
   beforeEach(() => {
-    RecommendationsComp = shallow(<Recommendations priceOnly {...props} />);
+    RecommendationsComp = shallow(<Recommendations variations="moduleO" priceOnly {...props} />);
   });
   it('Recommendations Module O price only variation renders correctly', () => {
     expect(RecommendationsComp).toMatchSnapshot();
@@ -44,9 +44,20 @@ describe('Recommendations Module O show button variation', () => {
   let RecommendationsComp;
 
   beforeEach(() => {
-    RecommendationsComp = shallow(<Recommendations showButton {...props} />);
+    RecommendationsComp = shallow(<Recommendations variations="moduleO" showButton {...props} />);
   });
   it('Recommendations Module O show button variation renders correctly', () => {
+    expect(RecommendationsComp).toMatchSnapshot();
+  });
+});
+
+describe('Recommendations Module P variation', () => {
+  let RecommendationsComp;
+
+  beforeEach(() => {
+    RecommendationsComp = shallow(<Recommendations variations="moduleP" showButton {...props} />);
+  });
+  it('Recommendations Module P variation renders correctly', () => {
     expect(RecommendationsComp).toMatchSnapshot();
   });
 });

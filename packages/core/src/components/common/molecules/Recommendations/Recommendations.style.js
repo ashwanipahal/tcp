@@ -29,6 +29,12 @@ export default css`
     }
   }
 
+  .moduleP-variation {
+    .slick-arrow {
+      top: 25%;
+    }
+  }
+
   .recommendation-cta {
     width: 225px;
   }

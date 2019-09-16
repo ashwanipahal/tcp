@@ -32,4 +32,11 @@ export default {
       },
     ],
   },
+  params: {
+    moduleO: {
+      dataLocator: 'moduleO_header_text',
+      dataLocatorCTA: 'moduleO_cta_btn',
+    },
+    moduleP: {},
+  },
 };
