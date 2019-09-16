@@ -177,7 +177,6 @@ export class DetailedCouponTile extends React.Component {
     const addToBagCTALabel = this.getAddToBagCtaLabel(labels, coupon.isStarted, isPlaceCash);
     const colorPallete = createThemeColorPalette();
     const overlapSiblings = this.showOverlap();
-    debugger;
     return (
       <TileWrapper>
         <TileContentWrapper isError={coupon.error}>
