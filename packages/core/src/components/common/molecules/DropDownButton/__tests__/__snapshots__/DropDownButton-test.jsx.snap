@@ -161,8 +161,8 @@ exports[`DropDownButton component renders correctly 1`] = `
           ";
 
     &.is-open {
-      border-bottom-left-radius : 0;
-      border-bottom-right-radius : 0;
+      border-bottom-left-radius: 0;
+      border-bottom-right-radius: 0;
     }
   }
   .dropdown-button:hover,
