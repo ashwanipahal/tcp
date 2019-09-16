@@ -7,6 +7,7 @@ import withStyles from '../../../hoc/withStyles';
 import { Grid, LinkText, PromoBanner } from '../..';
 import ProductTabList from '../../../organisms/ProductTabList';
 import { getLocator, redirectToPdp } from '../../../../../utils';
+import { mediaQuery } from '../../../../../../styles/themes/TCP/mediaQuery';
 import moduleRStyle from '../styles/ModuleR.style';
 
 class ModuleR extends React.PureComponent {
@@ -24,8 +25,49 @@ class ModuleR extends React.PureComponent {
     });
   };
 
+  /*
+    This method is to return the promo banner component.
+  */
+  getPromoComponent = () => {
+    const { promoBanner } = this.props;
+    return <PromoBanner promoBanner={promoBanner} />;
+  };
+
+  /*
+    Slicing the product as per this module requirement. This will change as currently we
+    don't have an option to configure count of product in the ProductTabList component. Also
+    the products live in state. We might need to move the state to local state of the
+    ProductTabList so that we can hand product list requirement according to the modules requirement.
+  */
+  getSelectedProductList = selectedProductList => {
+    const { layout } = this.props;
+    const promoComponent = this.getPromoComponent();
+    let productsList = selectedProductList;
+
+    if (layout === 'default') {
+      if (window.matchMedia(mediaQuery.smallMax).matches) {
+        productsList = productsList.slice(0, 8);
+        productsList.splice(4, 0, promoComponent);
+      } else if (window.matchMedia(mediaQuery.mediumMax).matches) {
+        productsList = productsList.slice(0, 10);
+        productsList.splice(5, 0, promoComponent);
+      } else {
+        productsList = productsList.slice(0, 16);
+        productsList.splice(8, 0, promoComponent);
+      }
+    } else if (window.matchMedia(mediaQuery.smallMax).matches) {
+      productsList = productsList.slice(0, 9);
+    } else if (window.matchMedia(mediaQuery.mediumMax).matches) {
+      productsList = productsList.slice(0, 12);
+    } else {
+      productsList = productsList.slice(0, 18);
+    }
+
+    return productsList;
+  };
+
   render() {
-    const { className, productTabList, headerText, promoBanner, divTabs, layout } = this.props;
+    const { className, productTabList, headerText, divTabs, layout } = this.props;
     const categoryList = divTabs.map(item => {
       const {
         category: { cat_id: catId },
@@ -43,26 +85,15 @@ class ModuleR extends React.PureComponent {
       return tabsMap;
     }, {});
 
+    const promoComponent = this.getPromoComponent();
+
     const { selectedCategoryId } = this.state;
     const selectedDivTab = divTabsMap[selectedCategoryId] || {};
     const selectedSingleCTAButton = selectedDivTab.singleCTAButton;
     let selectedProductList = productTabList[selectedCategoryId] || [];
 
-    const promoComponent = <PromoBanner promoBanner={promoBanner} />;
-
     if (selectedProductList.length) {
-      /*
-        Slicing the product as per this module requirement. This will change as currently we
-        don't have an option to configure count of product in the ProductTabList component. Also
-        the products live in state. We might need to move the state to local state of the
-        ProductTabList so that we can hand product list requirement according to the modules requirement.
-      */
-      if (layout === 'default') {
-        selectedProductList = selectedProductList.slice(0, 8);
-        selectedProductList.splice(4, 0, promoComponent);
-      } else {
-        selectedProductList = selectedProductList.slice(0, 9);
-      }
+      selectedProductList = this.getSelectedProductList(selectedProductList);
     }
 
     return (
@@ -97,7 +128,7 @@ class ModuleR extends React.PureComponent {
           </Col>
         </Row>
         <Row className="image-items-container">
-          {selectedProductList.map(productItem => {
+          {selectedProductList.map((productItem, index) => {
             if (productItem.uniqueId) {
               const {
                 seo_token: seoToken,
@@ -127,7 +158,11 @@ class ModuleR extends React.PureComponent {
               );
             }
             return (
-              <Col className="image-item-wrapper" colSize={{ small: 2, medium: 2, large: 2 }}>
+              <Col
+                key={index.toString()}
+                className="image-item-wrapper"
+                colSize={{ small: 2, medium: 4, large: 4 }}
+              >
                 {productItem}
               </Col>
             );

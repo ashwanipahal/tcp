@@ -10,8 +10,22 @@ export default css`
   .image-item-wrapper {
     margin-top: ${props => props.theme.spacing.ELEM_SPACING.SM};
 
-    &:nth-child(3n) {
-      margin-right: 0;
+    @media ${props => props.theme.mediaQuery.smallMax} {
+      &:nth-child(3n) {
+        margin-right: 0;
+      }
+    }
+
+    @media ${props => props.theme.mediaQuery.mediumMax} {
+      &:nth-child(4n) {
+        margin-right: 0;
+      }
+    }
+
+    @media ${props => props.theme.mediaQuery.large} {
+      &:nth-child(6n) {
+        margin-right: 0;
+      }
     }
   }
 

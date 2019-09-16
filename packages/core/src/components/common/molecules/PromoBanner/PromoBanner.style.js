@@ -372,13 +372,21 @@ export default css`
     font-weight: ${props => props.theme.typography.fontWeights.semibold};
     line-height: ${props => props.theme.typography.lineHeights.lh107};
     letter-spacing: ${props => props.theme.typography.letterSpacings.ls1};
+
+    @media ${props => props.theme.mediaQuery.medium} {
+      font-size: ${props => props.theme.typography.fontSizes.fs32};
+    }
   }
 
   .percentage_wrapped_large {
     color: ${props => props.theme.colorPalette.black};
-    font-family: ${props => props.theme.typography.fonts.primary};
-    font-size: ${props => props.theme.typography.fontSizes.fs48};
     width: auto;
+    text-align: center;
+
+    .percentage_wrapped_large-0 {
+      font-family: ${props => props.theme.typography.fonts.primary};
+      font-size: ${props => props.theme.typography.fontSizes.fs48};
+    }
 
     .percentage_wrapped_large-1 {
       font-size: ${props => props.theme.typography.fontSizes.fs28};
@@ -390,6 +398,34 @@ export default css`
       font-size: ${props => props.theme.typography.fontSizes.fs18};
       position: absolute;
       bottom: 4px;
+    }
+
+    @media ${props => props.theme.mediaQuery.medium} {
+      transform: translateX(-58px);
+
+      .percentage_wrapped_large-0 {
+        font-size: 152px;
+      }
+
+      .percentage_wrapped_large-1 {
+        font-size: 88px;
+        top: ${props => props.theme.spacing.ELEM_SPACING.SM};
+      }
+
+      .percentage_wrapped_large-2 {
+        font-size: ${props => props.theme.typography.fontSizes.fs48};
+        bottom: ${props => props.theme.spacing.ELEM_SPACING.MED};
+      }
+    }
+
+    @media ${props => props.theme.mediaQuery.large} {
+      .percentage_wrapped_large-1 {
+        top: ${props => props.theme.spacing.ELEM_SPACING.MED};
+      }
+
+      .percentage_wrapped_large-2 {
+        bottom: ${props => props.theme.spacing.ELEM_SPACING.LRG};
+      }
     }
   }
 `;
