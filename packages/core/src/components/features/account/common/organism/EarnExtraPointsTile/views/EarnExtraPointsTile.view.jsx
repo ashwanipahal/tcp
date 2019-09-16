@@ -53,6 +53,7 @@ const EarnExtraPointsTile = ({ className, labels, waysToEarn }) => {
           carouselConfig={{
             customArrowLeft: getIconPath('smallright'),
             customArrowRight: getIconPath('smallright'),
+            arrow: 'small',
             type: 'light',
           }}
           carouselTheme="dark"

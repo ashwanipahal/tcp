@@ -4,8 +4,8 @@ const styles = css`
   .tileWrapper {
     border: 1px solid ${props => props.theme.colorPalette.gray[300]};
     background: ${props => props.theme.colors.WHITE};
-    margin-left: ${props => props.theme.spacing.LAYOUT_SPACING.MED};
-    margin-right: ${props => props.theme.spacing.LAYOUT_SPACING.MED};
+    margin-left: ${props => props.theme.spacing.ELEM_SPACING.SM};
+    margin-right: ${props => props.theme.spacing.ELEM_SPACING.SM};
     box-shadow: 0 0 10px 0 rgba(0, 0, 0, 0.12);
     cursor: pointer;
     border-bottom: 2px solid
@@ -15,12 +15,12 @@ const styles = css`
           : props.theme.colorPalette.blue[500]};
 
     @media ${props => props.theme.mediaQuery.medium} {
-      margin-left: ${props => props.theme.spacing.LAYOUT_SPACING.XL};
-      margin-right: ${props => props.theme.spacing.LAYOUT_SPACING.XL};
+      margin-left: ${props => props.theme.spacing.LAYOUT_SPACING.MED};
+      margin-right: ${props => props.theme.spacing.LAYOUT_SPACING.MED};
     }
     @media ${props => props.theme.mediaQuery.large} {
-      margin-left: ${props => props.theme.spacing.LAYOUT_SPACING.LRG};
-      margin-right: ${props => props.theme.spacing.LAYOUT_SPACING.LRG};
+      margin-left: ${props => props.theme.spacing.ELEM_SPACING.XXL};
+      margin-right: ${props => props.theme.spacing.ELEM_SPACING.XXL};
     }
   }
 

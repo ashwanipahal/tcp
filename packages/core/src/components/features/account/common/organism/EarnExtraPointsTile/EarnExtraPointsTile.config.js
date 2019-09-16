@@ -5,6 +5,7 @@ const CAROUSEL_OPTIONS = {
   arrows: true,
   autoplaySpeed: 4000,
   infinite: false,
+  initialSlide: 0,
   fade: false,
   speed: 1000,
   dots: true,
