@@ -25,7 +25,7 @@ const Abstractor = {
         if (i === 2) {
           hrefUrlVal = `${hrefUrlVal}?id=${resVal}`;
         } else {
-          hrefUrlVal = `${hrefUrlVal}&${resVal}`;
+          hrefUrlVal = `${hrefUrlVal}&&subSection=${resVal}`;
         }
       }
     }
