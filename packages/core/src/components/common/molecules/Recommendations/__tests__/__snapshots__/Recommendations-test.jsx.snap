@@ -46,7 +46,7 @@ exports[`N component renders correctly 1`] = `
             "$$typeof": Symbol(react.forward_ref),
             "attrs": Array [],
             "componentStyle": ComponentStyle {
-              "componentId": "sc-fjdhpX",
+              "componentId": "sc-jzJRlG",
               "isStatic": false,
               "rules": Array [
                 "
@@ -314,7 +314,7 @@ exports[`N component renders correctly 1`] = `
             "displayName": "Styled(Carousel)",
             "foldedComponentIds": Array [],
             "render": [Function],
-            "styledComponentId": "sc-fjdhpX",
+            "styledComponentId": "sc-jzJRlG",
             "target": [Function],
             "toString": [Function],
             "warnTooManyClasses": [Function],

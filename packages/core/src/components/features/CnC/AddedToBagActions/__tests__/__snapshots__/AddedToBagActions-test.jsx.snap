@@ -36,6 +36,9 @@ exports[`AddedToBagActions component AddedToBagActions component renders correct
   <Styled(Row)
     className="checkout-button"
   >
+    <Connect(VenmoPaymentButtonContainer)
+      className="venmo-container"
+    />
     <PayPalButton
       className="payPal-button"
       containerId="paypal-button-container"
