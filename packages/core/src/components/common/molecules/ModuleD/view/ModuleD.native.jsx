@@ -100,24 +100,28 @@ const ModuleD = (props: Props) => {
         />
       )}
 
-      <FlatList
-        numColumns={2}
-        data={smallCompImage}
-        keyExtractor={keyExtractor}
-        renderItem={item => renderItem(item, navigation)}
-      />
-
-      <ButtonWrapper>
-        <Button
-          width="225px"
-          accessibilityLabel={singleCTAButton.title}
-          buttonVariation="variable-width"
-          text={singleCTAButton.text}
-          testID={getLocator('moduleD_button')}
-          url={singleCTAButton.url}
-          navigation={navigation}
+      {smallCompImage && (
+        <FlatList
+          numColumns={2}
+          data={smallCompImage}
+          keyExtractor={keyExtractor}
+          renderItem={item => renderItem(item, navigation)}
         />
-      </ButtonWrapper>
+      )}
+
+      {singleCTAButton && (
+        <ButtonWrapper>
+          <Button
+            width="225px"
+            accessibilityLabel={singleCTAButton.title}
+            buttonVariation="variable-width"
+            text={singleCTAButton.text}
+            testID={getLocator('moduleD_button')}
+            url={singleCTAButton.url}
+            navigation={navigation}
+          />
+        </ButtonWrapper>
+      )}
     </Wrapper>
   );
 };

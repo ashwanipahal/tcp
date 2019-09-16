@@ -12,6 +12,7 @@ const ProductDetailView = ({
   longDescription,
   breadCrumbs,
   defaultImage,
+  currency,
 }) => {
   return (
     <div className={className}>
@@ -35,7 +36,7 @@ const ProductDetailView = ({
           <img src={defaultImage} alt="product" />
         </Col>
         <Col colSize={{ small: 6, medium: 8, large: 5 }}>
-          <Product productDetails={productDetails} />
+          <Product productDetails={productDetails} currencySymbol={currency} />
         </Col>
       </Row>
       <Row className="placeholder">
@@ -85,6 +86,7 @@ ProductDetailView.propTypes = {
   longDescription: PropTypes.string,
   breadCrumbs: PropTypes.shape({}),
   defaultImage: PropTypes.string,
+  currency: PropTypes.string,
 };
 
 ProductDetailView.defaultProps = {
@@ -93,6 +95,7 @@ ProductDetailView.defaultProps = {
   longDescription: '',
   breadCrumbs: {},
   defaultImage: '',
+  currency: '',
 };
 
 export default withStyles(ProductDetailView, ProductDetailStyle);

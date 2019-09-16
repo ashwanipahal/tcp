@@ -36,6 +36,7 @@ import {
   onEditModeChangeAction,
   getSetIsBillingVisitedActn,
   submitBillingSection,
+  setGiftCardError,
 } from '../container/Checkout.action';
 
 describe('#chekcoutActions', () => {
@@ -238,6 +239,12 @@ describe('#chekcoutActions', () => {
     expect(submitBillingSection()).toEqual({
       payload: undefined,
       type: 'SUBMIT_BILLING_SECTION',
+    });
+  });
+  it('setGiftCardError', () => {
+    expect(setGiftCardError()).toEqual({
+      type: 'SET_GIFTCARD_ERROR',
+      payload: undefined,
     });
   });
 });

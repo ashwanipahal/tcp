@@ -29,8 +29,11 @@ export default css`
     margin-left: 35px;
   }
   .messageTextWrapper {
-    width: 92%;
-    margin: 29px 0 6px 17px;
+    margin-left: ${props => props.theme.spacing.ELEM_SPACING.SM};
+    margin-top: ${props => props.theme.spacing.LAYOUT_SPACING.MED};
+    margin-right: ${props => props.theme.spacing.ELEM_SPACING.SM};
+    width: calc(100% - 26px);
+    padding-bottom: 6px;
   }
   .priceDropdown {
     margin-left: 120px;
@@ -115,6 +118,14 @@ export default css`
     @media ${props => props.theme.mediaQuery.small} {
       margin-top: 8px;
     }
+  }
+
+  .gift-message {
+    width: 99%;
+    height: 146px;
+    resize: none;
+    font-size: ${props => props.theme.fonts.fontSize.textbox}px;
+    margin-bottom: ${props => props.theme.spacing.ELEM_SPACING.XL};
   }
 `;
 

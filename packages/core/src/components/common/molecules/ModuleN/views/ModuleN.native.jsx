@@ -11,7 +11,7 @@ import {
   ContainerView,
   DivImageCTAContainer,
 } from '../ModuleN.styles.native';
-import config from '../ModuleN.config';
+import config from '../config';
 
 /**
  * @param {object} props : Props for Module N multi type of banner list, button list, header text.

@@ -1,7 +1,7 @@
 import React, { Fragment } from 'react';
 import { Field, reduxForm, SubmissionError } from 'redux-form';
 import PropTypes from 'prop-types';
-import { Button, Col, Row, Image, TextBox } from '@tcp/core/src/components/common/atoms';
+import { Button, Col, Row, TextBox, DamImage } from '@tcp/core/src/components/common/atoms';
 import BodyCopy from '@tcp/core/src/components/common/atoms/BodyCopy';
 import { formatPhoneNumber } from '@tcp/core/src/utils/formValidation/phoneNumber';
 import { Grid, Modal } from '@tcp/core/src/components/common/molecules';
@@ -10,6 +10,7 @@ import SignupConfirm from '../../SignupConfirm';
 import SignupFormIntro from '../../SignupFormIntro';
 
 import smsSignupModalStyle from '../SmsSignupModal.style';
+import config from '../Config';
 
 class SmsSignupModal extends React.PureComponent {
   constructor(props) {
@@ -102,6 +103,8 @@ class SmsSignupModal extends React.PureComponent {
     } = this.props;
     const { validationStarted = false } = this.state;
 
+    const { IMG_DATA } = config;
+
     return (
       <Fragment>
         <Modal
@@ -133,7 +136,11 @@ class SmsSignupModal extends React.PureComponent {
                   hideCol={{ small: true, medium: true }}
                   className="img-wrapper"
                 >
-                  <Image alt={formViewConfig.imageAltText} src={formViewConfig.imageSrc} />
+                  <DamImage
+                    alt={formViewConfig.imageAltText}
+                    imgConfigs={IMG_DATA.imgConfig}
+                    imgData={formViewConfig.imageSrc}
+                  />
                 </Col>
                 <Col colSize={{ small: 6, medium: 8, large: 8 }} ignoreGutter={{ large: true }}>
                   <SignupConfirm formViewConfig={formViewConfig} susbscriptionType="sms" />
@@ -165,7 +172,11 @@ class SmsSignupModal extends React.PureComponent {
                     hideCol={{ small: true, medium: true }}
                     className="img-wrapper"
                   >
-                    <Image alt={formViewConfig.imageAltText} src={formViewConfig.imageSrc} />
+                    <DamImage
+                      alt={formViewConfig.imageAltText}
+                      imgConfigs={IMG_DATA.imgConfig}
+                      imgData={formViewConfig.imageSrc}
+                    />
                   </Col>
                   <Col colSize={{ small: 6, medium: 8, large: 8 }}>
                     <SignupFormIntro formViewConfig={formViewConfig} />

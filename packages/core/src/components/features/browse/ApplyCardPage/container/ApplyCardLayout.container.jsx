@@ -6,6 +6,8 @@ import { fetchModuleX, submitInstantCardApplication } from './ApplyCard.actions'
 import { isPlccUser } from '../../../account/User/container/User.selectors';
 import { getUserProfileData, getUserId, getBagItemsSize, isGuest } from './ApplyCard.selectors';
 import { routerPush } from '../../../../../utils';
+import AddressVerification from '../../../../common/organisms/AddressVerification/container/AddressVerification.container';
+import { verifyAddress } from '../../../../common/organisms/AddressVerification/container/AddressVerification.actions';
 import BAG_PAGE_ACTIONS from '../../../CnC/BagPage/container/BagPage.actions';
 
 class ApplyCardLayoutContainer extends React.Component {
@@ -19,11 +21,24 @@ class ApplyCardLayoutContainer extends React.Component {
     plccUser: PropTypes.bool.isRequired,
     bagItems: PropTypes.number.isRequired,
     profileInfo: PropTypes.shape({}).isRequired,
+    verifyAddressAction: PropTypes.func.isRequired,
     fetchBagItems: PropTypes.func.isRequired,
     approvedPLCCData: PropTypes.shape({}).isRequired,
     isGuestUser: PropTypes.bool.isRequired,
     userId: PropTypes.string.isRequired,
   };
+  /**
+   *  @function - constructor
+   *
+   *  @state - showAddEditAddressForm - state member that decides whether to show or hide th do verify contact window.
+   */
+
+  constructor(props) {
+    super(props);
+    this.state = {
+      showAddEditAddressForm: false,
+    };
+  }
 
   componentDidMount() {
     const { plccData, fetchModuleXContent, fetchBagItems, labels } = this.props;
@@ -34,14 +49,50 @@ class ApplyCardLayoutContainer extends React.Component {
   }
 
   /**
+   *  @fatarrow - formatPayload
+   *  @param - payload - contains payload of plcc form.
+   *
+   *  @description - deals with form final submission.
+   */
+  formatPayload = payload => {
+    const { addressLine1, addressLine2, noCountryZip, primary, ...otherPayload } = payload;
+    return {
+      ...otherPayload,
+      ...{
+        address1: addressLine1,
+        address2: addressLine2,
+        zip: noCountryZip,
+        primary: primary ? 'true' : 'false',
+      },
+    };
+  };
+
+  /**
    *  @fatarrow - submitPLCCForm
    *  @param - formData - contains the data of redux form.
    *
    *  @description - submits for an instant credit card
    */
   submitPLCCForm = formData => {
+    const { verifyAddressAction } = this.props;
+    const payload = Object.assign({}, formData);
+    const formattedPayload = this.formatPayload(payload);
+    if (Object.keys(formattedPayload).length) {
+      verifyAddressAction(formattedPayload);
+      this.setState({ showAddEditAddressForm: true, formData });
+    }
+  };
+
+  /**
+   *  @fatarrow - submitForm
+   *
+   *  @description - deals with form final submission.
+   */
+  submitForm = () => {
     const { submitApplication, userId } = this.props;
-    const userData = formData;
+    const { formData } = this.state;
+    this.setState({ showAddEditAddressForm: false });
+    const userData = Object.assign({}, formData);
     if (userData) {
       userData.userId = userId;
     }
@@ -60,22 +111,26 @@ class ApplyCardLayoutContainer extends React.Component {
       plccUser,
       profileInfo,
     } = this.props;
+    const { showAddEditAddressForm } = this.state;
     if (plccUser) {
       routerPush('/', '/place-card');
     }
     return (
-      <ApplyCardLayoutView
-        applicationStatus={applicationStatus}
-        labels={labels}
-        plccData={plccData}
-        bagItems={bagItems}
-        isGuest={isGuestUser}
-        submitPLCCForm={this.submitPLCCForm}
-        approvedPLCCData={approvedPLCCData}
-        plccUser={plccUser}
-        profileInfo={profileInfo}
-        isPLCCModalFlow={isPLCCModalFlow}
-      />
+      <React.Fragment>
+        <ApplyCardLayoutView
+          applicationStatus={applicationStatus}
+          labels={labels}
+          plccData={plccData}
+          bagItems={bagItems}
+          isGuest={isGuestUser}
+          submitPLCCForm={this.submitPLCCForm}
+          approvedPLCCData={approvedPLCCData}
+          plccUser={plccUser}
+          profileInfo={profileInfo}
+          isPLCCModalFlow={isPLCCModalFlow}
+        />
+        {showAddEditAddressForm ? <AddressVerification onSuccess={this.submitForm} /> : null}
+      </React.Fragment>
     );
   }
 }
@@ -102,6 +157,9 @@ export const mapDispatchToProps = dispatch => {
     },
     fetchModuleXContent: contentId => {
       dispatch(fetchModuleX(contentId));
+    },
+    verifyAddressAction: payload => {
+      dispatch(verifyAddress(payload));
     },
     fetchBagItems: () => {
       dispatch(BAG_PAGE_ACTIONS.getOrderDetails());
