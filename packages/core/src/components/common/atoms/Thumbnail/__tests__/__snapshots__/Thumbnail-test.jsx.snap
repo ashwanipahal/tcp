@@ -1,7 +1,7 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
 exports[`Thumbnail component should renders correctly 1`] = `
-<li
+<div
   className=""
   isSelected={true}
 >
@@ -17,5 +17,5 @@ exports[`Thumbnail component should renders correctly 1`] = `
       title=""
     />
   </Styled(Anchor)>
-</li>
+</div>
 `;

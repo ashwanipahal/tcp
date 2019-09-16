@@ -2,31 +2,35 @@
 
 exports[`ThumbnailsList component should renders correctly 1`] = `
 <ul>
-  <Styled(Thumbnail)
-    image={
-      Object {
-        "id": 0,
-        "name": undefined,
-        "thumbnailPath": undefined,
+  <li>
+    <Styled(Thumbnail)
+      image={
+        Object {
+          "id": 0,
+          "name": undefined,
+          "thumbnailPath": undefined,
+        }
       }
-    }
-    index={0}
-    isSelected={true}
-    onClick={[MockFunction]}
-    totalCount={2}
-  />
-  <Styled(Thumbnail)
-    image={
-      Object {
-        "id": 1,
-        "name": undefined,
-        "thumbnailPath": undefined,
+      index={0}
+      isSelected={true}
+      onClick={[MockFunction]}
+      totalCount={2}
+    />
+  </li>
+  <li>
+    <Styled(Thumbnail)
+      image={
+        Object {
+          "id": 1,
+          "name": undefined,
+          "thumbnailPath": undefined,
+        }
       }
-    }
-    index={1}
-    isSelected={false}
-    onClick={[MockFunction]}
-    totalCount={2}
-  />
+      index={1}
+      isSelected={false}
+      onClick={[MockFunction]}
+      totalCount={2}
+    />
+  </li>
 </ul>
 `;
