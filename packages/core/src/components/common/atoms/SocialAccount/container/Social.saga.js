@@ -4,7 +4,7 @@
 
 import { call, takeLatest, put } from 'redux-saga/effects';
 import SOCIAL_LOAD from '../social.constants';
-import { savesocialAccount, currentSocialInfo } from './Social.actions';
+import { savesocialAccount, currentSocialInfo, socialAccountLoad } from './Social.actions';
 import {
   getSocialAccountsInformation,
   saveSocialAccountsInfo,

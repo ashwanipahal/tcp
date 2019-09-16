@@ -3,12 +3,15 @@ import React from 'react';
 import ReactDOM from 'react-dom';
 import { PropTypes } from 'prop-types';
 import { config } from '../Views/config';
+import ImageComp from '../../Image';
+import { getIconPath } from '../../../../../utils';
 // import {setLocalStorage, getLocalStorage} from 'util/localStorageManagement';
 
 let bodyEle;
 let elem;
 let saveAccountInfo;
 let children;
+let loadsocial;
 
 /**
  * @function openLogin This function calls the Method of login for facebook and open up the dialog window where user sign in.
@@ -28,6 +31,7 @@ const openLogin = () => {
           isconnected: false,
         };
         saveAccountInfo({ socialAccInfo });
+        loadsocial();
       } else {
         // The person is not logged into this app or we are unable to tell.
       }
@@ -119,11 +123,12 @@ const logoutUser = () => {
     isconnected: true,
   };
   saveAccountInfo({ socialAccInfo });
+  loadsocial();
 };
 
 export const loginUser = () => {
   /* istanbul ignore next */
-  if (false) {
+  if (elem[0].isConnected) {
     logoutUser();
   } else {
     openLogin();
@@ -134,16 +139,30 @@ const FacebookLoginComponent = props => {
   bodyEle = document.getElementsByTagName('body')[0];
   //Destruction with global variables of the file is giving me error that i need to decalre them again. Hence assigning values this way
   saveAccountInfo = props.saveSocialAcc;
+  elem = props.loginStatus;
+  loadsocial = props.socialLoad;
 
   return (
-    <div>
-      <div className="social-accounts__CTA" onClick={loginUser} tabIndex="0">
-        {/* istanbul ignore next */
-        ReactDOM.createPortal(facebookSDK(), bodyEle)}
-        click here
-      </div>
-      <div onClick={logoutUser}>logoutUser</div>
-    </div>
+    <React.Fragment>
+      {!elem[0].isConnected && (
+        <div className="social-accounts__CTA" onClick={loginUser} tabIndex="0">
+          {/* istanbul ignore next */
+          ReactDOM.createPortal(facebookSDK(), bodyEle)}
+          +
+        </div>
+      )}
+      {elem[0].isConnected && (
+        <div onClick={logoutUser}>
+          <ImageComp
+            width={15}
+            height={15}
+            src={getIconPath('close-icon')}
+            className="elem-mb-LRG"
+            data-locator="close-icon"
+          />
+        </div>
+      )}
+    </React.Fragment>
   );
 };
 

@@ -6,9 +6,10 @@ const socialAccountLoad = () => {
   };
 };
 
-const currentSocialInfo = () => {
+const currentSocialInfo = payload => {
   return {
     type: SOCIAL_CONSTANTS.SOCIAL_LOAD_DATA,
+    payload,
   };
 };
 

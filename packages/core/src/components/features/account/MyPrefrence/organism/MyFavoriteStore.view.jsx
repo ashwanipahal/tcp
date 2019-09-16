@@ -11,6 +11,7 @@ import Anchor from '../../../../common/atoms/Anchor';
 import InputCheckbox from '../../../../common/atoms/InputCheckbox';
 import { getIconPath } from '../../../../../utils';
 import SocialContainer from '../../../../common/atoms/SocialAccount/container/Social.container';
+import { config } from '../../../../common/atoms/SocialAccount/Views/config';
 
 class MyFavoriteStore extends React.PureComponent {
   render() {
@@ -56,8 +57,8 @@ class MyFavoriteStore extends React.PureComponent {
               fontWeight="extrabold"
             >
               {labels.lbl_prefrence_social_account}
-              <SocialContainer />
             </BodyCopy>
+            <SocialContainer view={config.VIEW_MODE.read} />
           </Col>
         </Row>
 

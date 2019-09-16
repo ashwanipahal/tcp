@@ -1,6 +1,7 @@
 import React from 'react';
 import { connect } from 'react-redux';
 import { socialAccountLoad, savesocialAccount } from './Social.actions';
+import { getsocialDataOnLoadState } from './Social.selectors';
 import Socialview from '../Views/Social.view';
 
 class SocialContainer extends React.PureComponent {
@@ -10,8 +11,15 @@ class SocialContainer extends React.PureComponent {
   }
 
   render() {
-    const { socialLoad, saveSocialAcc } = this.props;
-    return <Socialview saveSocialAcc={saveSocialAcc} socialLoad={socialLoad} />;
+    const { socialLoad, saveSocialAcc, getSocialLoad, view } = this.props;
+    return (
+      <Socialview
+        getSocialLoad={getSocialLoad}
+        view={view}
+        saveSocialAcc={saveSocialAcc}
+        socialLoad={socialLoad}
+      />
+    );
   }
 }
 
@@ -28,8 +36,10 @@ const mapDispatchToProps = dispatch => {
   };
 };
 
-const mapStateToProps = () => {
-  return {};
+const mapStateToProps = state => {
+  return {
+    getSocialLoad: getsocialDataOnLoadState(state),
+  };
 };
 
 export default connect(
