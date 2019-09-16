@@ -25,7 +25,11 @@
 
 import TrackingEvent from './TrackingEvent';
 
-export function trackPageView(eventDef) {
+function EventDefinition(action /* , prevState, nextState */) {
+  return { ...action.payload };
+}
+
+export function trackPageView(eventDef = EventDefinition) {
   return (...args) => {
     const { name } = eventDef(...args);
     return TrackingEvent({
@@ -36,7 +40,7 @@ export function trackPageView(eventDef) {
   };
 }
 
-export function trackClick(eventDef) {
+export function trackClick(eventDef = EventDefinition) {
   return (...args) => {
     const { name } = eventDef(...args);
     return TrackingEvent({
@@ -47,7 +51,7 @@ export function trackClick(eventDef) {
   };
 }
 
-export function trackServiceResponse(eventDef) {
+export function trackServiceResponse(eventDef = EventDefinition) {
   return (...args) => {
     const { name } = eventDef(...args);
     return TrackingEvent({

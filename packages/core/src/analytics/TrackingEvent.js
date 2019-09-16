@@ -7,14 +7,11 @@
  * flexibility we might need.
  *
  * @example
- * const myEvent = TrackingEvent({
- *   eventName: "foo",
- * })
- *
- * myEvent.hitType;      // "event"
- * myEvent.eventName;    // "foo"
- * myEvent.customEvents; // []
- * myEvent.products;     // []
+ * const myEvent = TrackingEvent({ eventName: "foo" })
+ * myEvent.hitType      // "event"
+ * myEvent.eventName    // "foo"
+ * myEvent.customEvents // []
+ * myEvent.products     // []
  */
 
 const descriptors = {
