@@ -71,11 +71,13 @@ exports[`ModuleA component should render Gymboree variant correctly 1`] = `
             alt=""
             data-locator="moduleA_image_0"
             imgConfigs={
-              Array [
-                "c_fill,g_face:center,q_auto:best,h_622,w_750",
-                "c_fill,g_face:center,q_auto:best,h_406,w_768",
-                "c_fill,g_face:center,q_auto:best,h_474,w_1410",
-              ]
+              Object {
+                "crops": Array [
+                  "t_mod_A_img_m",
+                  "t_mod_A_img_t",
+                  "t_mod_A_img_d",
+                ],
+              }
             }
             imgData={
               Object {
@@ -189,11 +191,13 @@ exports[`ModuleA component should render Gymboree variant correctly 1`] = `
             alt=""
             data-locator="moduleA_image_1"
             imgConfigs={
-              Array [
-                "c_fill,g_face:center,q_auto:best,h_622,w_750",
-                "c_fill,g_face:center,q_auto:best,h_406,w_768",
-                "c_fill,g_face:center,q_auto:best,h_474,w_1410",
-              ]
+              Object {
+                "crops": Array [
+                  "t_mod_A_img_m",
+                  "t_mod_A_img_t",
+                  "t_mod_A_img_d",
+                ],
+              }
             }
             imgData={
               Object {
@@ -307,11 +311,13 @@ exports[`ModuleA component should render Gymboree variant correctly 1`] = `
             alt=""
             data-locator="moduleA_image_2"
             imgConfigs={
-              Array [
-                "c_fill,g_face:center,q_auto:best,h_622,w_750",
-                "c_fill,g_face:center,q_auto:best,h_406,w_768",
-                "c_fill,g_face:center,q_auto:best,h_474,w_1410",
-              ]
+              Object {
+                "crops": Array [
+                  "t_mod_A_img_m",
+                  "t_mod_A_img_t",
+                  "t_mod_A_img_d",
+                ],
+              }
             }
             imgData={
               Object {
@@ -425,11 +431,13 @@ exports[`ModuleA component should render Gymboree variant correctly 1`] = `
             alt=""
             data-locator="moduleA_image_3"
             imgConfigs={
-              Array [
-                "c_fill,g_face:center,q_auto:best,h_622,w_750",
-                "c_fill,g_face:center,q_auto:best,h_406,w_768",
-                "c_fill,g_face:center,q_auto:best,h_474,w_1410",
-              ]
+              Object {
+                "crops": Array [
+                  "t_mod_A_img_m",
+                  "t_mod_A_img_t",
+                  "t_mod_A_img_d",
+                ],
+              }
             }
             imgData={
               Object {
@@ -710,11 +718,13 @@ exports[`ModuleA component should render TCP or default variant correctly 1`] = 
             alt=""
             data-locator="moduleA_image_0"
             imgConfigs={
-              Array [
-                "c_fill,g_face:center,q_auto:best,h_622,w_750",
-                "c_fill,g_face:center,q_auto:best,h_406,w_768",
-                "c_fill,g_face:center,q_auto:best,h_474,w_1410",
-              ]
+              Object {
+                "crops": Array [
+                  "t_mod_A_img_m",
+                  "t_mod_A_img_t",
+                  "t_mod_A_img_d",
+                ],
+              }
             }
             imgData={
               Object {
@@ -828,11 +838,13 @@ exports[`ModuleA component should render TCP or default variant correctly 1`] = 
             alt=""
             data-locator="moduleA_image_1"
             imgConfigs={
-              Array [
-                "c_fill,g_face:center,q_auto:best,h_622,w_750",
-                "c_fill,g_face:center,q_auto:best,h_406,w_768",
-                "c_fill,g_face:center,q_auto:best,h_474,w_1410",
-              ]
+              Object {
+                "crops": Array [
+                  "t_mod_A_img_m",
+                  "t_mod_A_img_t",
+                  "t_mod_A_img_d",
+                ],
+              }
             }
             imgData={
               Object {
@@ -946,11 +958,13 @@ exports[`ModuleA component should render TCP or default variant correctly 1`] = 
             alt=""
             data-locator="moduleA_image_2"
             imgConfigs={
-              Array [
-                "c_fill,g_face:center,q_auto:best,h_622,w_750",
-                "c_fill,g_face:center,q_auto:best,h_406,w_768",
-                "c_fill,g_face:center,q_auto:best,h_474,w_1410",
-              ]
+              Object {
+                "crops": Array [
+                  "t_mod_A_img_m",
+                  "t_mod_A_img_t",
+                  "t_mod_A_img_d",
+                ],
+              }
             }
             imgData={
               Object {
@@ -1064,11 +1078,13 @@ exports[`ModuleA component should render TCP or default variant correctly 1`] = 
             alt=""
             data-locator="moduleA_image_3"
             imgConfigs={
-              Array [
-                "c_fill,g_face:center,q_auto:best,h_622,w_750",
-                "c_fill,g_face:center,q_auto:best,h_406,w_768",
-                "c_fill,g_face:center,q_auto:best,h_474,w_1410",
-              ]
+              Object {
+                "crops": Array [
+                  "t_mod_A_img_m",
+                  "t_mod_A_img_t",
+                  "t_mod_A_img_d",
+                ],
+              }
             }
             imgData={
               Object {

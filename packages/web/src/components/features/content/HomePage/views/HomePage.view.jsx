@@ -28,8 +28,8 @@ const HomePageView = dynamic({
       <ModuleR {...moduleRMock.moduleR.composites} />,
       <HomePageSlots slots={slots} modules={modules} />,
       <ModuleB {...mock} />,
-      <GetCandid />,
       <ModuleJ {...moduleJMock.moduleJ.composites} />,
+      <GetCandid />,
       <Recommendations />,
     ];
   },

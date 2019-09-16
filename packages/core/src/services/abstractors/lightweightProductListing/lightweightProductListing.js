@@ -29,14 +29,16 @@ const Abstractor = {
     return mock;
   },
   processData: res => {
-    // return res.body.response.products;
     return res.body.response.products.map(item => {
       const {
         imageUrl: [imageUrl],
+        seo_token: seoToken,
+        uniqueId,
       } = item;
 
       return {
         ...item,
+        pdpUrl: `/p/${seoToken || uniqueId}`,
         /*
            In Android, the images are not loading with www.childrensplace.com domain due to
            some security issue.

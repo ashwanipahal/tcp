@@ -8,8 +8,8 @@ import withStyles from '../../../hoc/withStyles';
 import ProductTabList from '../../../organisms/ProductTabList';
 import categoryListMock from './categoryListMock';
 import moduleJStyle from '../styles/ModuleJ.style';
-import { getIconPath, getLocator, redirectToPdp } from '../../../../../utils';
-import config from '../moduleJ.config';
+import { getIconPath, redirectToPdp, getLocator } from '../../../../../utils';
+import config from '../config';
 
 class ModuleJ extends React.PureComponent {
   constructor(props) {

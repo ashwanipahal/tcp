@@ -5,5 +5,6 @@ import Anchor from './Anchor';
 import BodyCopy from './BodyCopy';
 import Heading from './Heading';
 import LabeledRadioButton from './LabeledRadioButton';
+import DamImage from './DamImage';
 
-export { Button, Image, RichText, Anchor, BodyCopy, Heading, LabeledRadioButton };
+export { Button, Image, RichText, Anchor, BodyCopy, Heading, LabeledRadioButton, DamImage };
