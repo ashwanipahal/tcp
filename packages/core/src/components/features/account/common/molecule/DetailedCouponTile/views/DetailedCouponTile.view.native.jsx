@@ -132,6 +132,7 @@ export class DetailedCouponTile extends React.Component {
    */
   showOverlay = () => {
     const { coupon, labels } = this.props;
+
     if (coupon.status === COUPON_STATUS.APPLIED) {
       return (
         <Fragment>
@@ -176,10 +177,10 @@ export class DetailedCouponTile extends React.Component {
     const addToBagCTALabel = this.getAddToBagCtaLabel(labels, coupon.isStarted, isPlaceCash);
     const colorPallete = createThemeColorPalette();
     const overlapSiblings = this.showOverlap();
-
+    debugger;
     return (
       <TileWrapper>
-        <TileContentWrapper>
+        <TileContentWrapper isError={coupon.error}>
           {this.showOverlay()}
           {coupon.isExpiring && (
             <Notification>

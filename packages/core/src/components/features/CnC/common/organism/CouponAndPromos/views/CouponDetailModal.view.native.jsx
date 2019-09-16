@@ -9,6 +9,7 @@ import Modal from '@tcp/core/src/components/common/molecules/Modal';
 import { UrlHandler } from '@tcp/core/src/utils/utils.app';
 import { getLabelValue } from '@tcp/core/src/utils';
 import RNPrint from 'react-native-print';
+import ViewShot from 'react-native-view-shot';
 import endpoints from '../../../../../account/common/externalEndpoints';
 
 import {
@@ -80,9 +81,9 @@ class CouponDetailModal extends React.PureComponent<Props> {
    * @param {string} - addToBagCTALabel
    */
   async printHTML(coupon, labels, addToBagCTALabel) {
-    // const uri = await this.refs.viewShot.capture();
+    const uri = await this.refs.viewShot.capture();
     await RNPrint.print({
-      html: getMarkupForPrint(coupon, labels, addToBagCTALabel, this.showValidity(), ''),
+      html: getMarkupForPrint(coupon, labels, addToBagCTALabel, this.showValidity(), uri),
     });
   }
 
@@ -123,7 +124,9 @@ class CouponDetailModal extends React.PureComponent<Props> {
             </ViewWithSpacing>
             <Horizontal />
             <View data-locator={`couponDetailModal_${coupon.status}_BarCode`}>
-              <Barcode value={coupon.id} height="50" />
+              <ViewShot ref="viewShot" options={{ format: 'png', quality: 0.9, result: 'base64' }}>
+                <Barcode value={coupon.id} height="50" />
+              </ViewShot>
             </View>
             <Horizontal />
             <ViewWithSpacing spacingStyles="margin-bottom-LRG">
