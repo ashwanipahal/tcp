@@ -576,16 +576,6 @@ function getVenmoUserEmail(state) {
   );
 }
 
-function isDefaultAddressUsed(state) {
-  const shippingAddress = getShippingDestinationValues(state);
-  return (
-    shippingAddress &&
-    !shippingAddress.onFileAddressId &&
-    isGuest(state) &&
-    isVenmoNonceActive(state)
-  );
-}
-
 export default {
   getRecalcOrderPointsInterval,
   getIsOrderHasShipping,
@@ -643,6 +633,5 @@ export default {
   isVenmoMessageDisplayed,
   isVenmoNonceActive,
   getVenmoUserEmail,
-  isDefaultAddressUsed,
   isVenmoNonceNotExpired,
 };
