@@ -40,6 +40,7 @@ export const USER_REDUCER_KEY = 'User';
 export const BIRTHDAY_SAVINGS_ACTION_PATTERN = '@@BirthdaySavings';
 export const NAVIGATION_ACTION_PATTERN = '@@Navigation-';
 export const RECOMMENDATIONS_ACTION_PATTERN = '@@Recommendations-';
+export const MY_FAVORITE_STORE_ACTION_PATTERN = '@@MyFavoriteStore';
 export const SEARCH_REDUCER_ACTION_PATTERN = '@@Search-';
 
 // acconut page reducer
@@ -144,6 +145,8 @@ export const ADDRESS_VERIFICATION_REDUCER_KEY = 'addressVerification';
 // Gift Services Reducer
 export const GIFT_SERVICES_REDUCER_KEY = 'GiftServices';
 export const GIFT_SERVICES_ACTION_PATTERN = '@@GiftServices-';
+
+export const MY_FAVORITE_STORE_REDUCER_KEY = 'MyFavoriteStore';
 
 export const REDUCER_ACTION_MAPPING = {
   [APPLY_PLCC_REDUCER_KEY]: APPLY_PLCC_ACTION_PATTERN,
