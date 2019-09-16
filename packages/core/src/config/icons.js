@@ -37,6 +37,7 @@ export default {
   'circle-check-fill': '/static/images/circle-check-fill.png',
   'circle-error-fill': '/static/images/circle-error-fill.png',
   'carousel-big-carrot': '/static/images/right-carousel-carrot.svg',
+  'carousel-big-carrot-left': '/static/images/left-carousel-carrot.svg',
   'carousel-big-carrot-white': '/static/images/right-carousel-carrot-white.svg',
   // TODO - Remove the fav_icon when the vector Icons would be implemented
   'fav-icon': '/static/images/heart.png',
@@ -70,6 +71,4 @@ export default {
   'chat-orange': '/static/images/chat-orange.svg',
   'search-icon': '/static/images/search-icon.svg',
   'search-close-icon': '/static/images/search-close-icon.svg',
-  'carrot-left-xl': '/static/images/left-carousel-caret.svg',
-  'carrot-right-xl': '/static/images/right-carousel-caret.svg',
 };

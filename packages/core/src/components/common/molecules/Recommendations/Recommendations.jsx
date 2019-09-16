@@ -68,8 +68,9 @@ class Recommendations extends Component {
                   options={config.CAROUSEL_OPTIONS}
                   inheritedStyles={Carousel}
                   carouselConfig={{
-                    customArrowLeft: getIconPath('carrot-left-xl'),
-                    customArrowRight: getIconPath('carrot-right-xl'),
+                    variation: 'big-arrows',
+                    customArrowLeft: getIconPath('carousel-big-carrot-left'),
+                    customArrowRight: getIconPath('carousel-big-carrot'),
                   }}
                 >
                   {products &&

@@ -22,16 +22,6 @@ export default css`
       z-index: ${props => props.theme.zindex.zPLPFilterDropDown};
       top: 30%;
       transform: inherit;
-      width: 15px;
-      height: 52px;
-    }
-
-    .slick-prev {
-      left: -25px;
-    }
-
-    .slick-next {
-      right: -25px;
     }
 
     .slick-list {
