@@ -6,7 +6,6 @@ import { Carousel, Grid, LinkText, PromoBanner } from '../..';
 import errorBoundary from '../../../hoc/withErrorBoundary';
 import withStyles from '../../../hoc/withStyles';
 import ProductTabList from '../../../organisms/ProductTabList';
-import categoryListMock from './categoryListMock';
 import moduleJStyle from '../styles/ModuleJ.style';
 import { getIconPath, redirectToPdp, getLocator } from '../../../../../utils';
 import config from '../config';
@@ -17,12 +16,42 @@ class ModuleJ extends React.PureComponent {
 
     this.state = {
       currentCatId: '',
+      currentTabItem: {},
     };
   }
 
-  onTabChange = catId => {
-    this.setState({ currentCatId: catId });
+  onTabChange = (catId, tabItem) => {
+    this.setState({ currentCatId: catId, currentTabItem: tabItem });
   };
+
+  getCurrentCtaButton() {
+    const { currentTabItem: { singleCTAButton: currentSingleCTAButton } = {} } = this.state;
+
+    return currentSingleCTAButton ? (
+      <Row centered>
+        <Col
+          colSize={{
+            small: 4,
+            medium: 2,
+            large: 2,
+          }}
+        >
+          <Anchor
+            noLink
+            to={currentSingleCTAButton.url}
+            target={currentSingleCTAButton.target}
+            title={currentSingleCTAButton.title}
+            asPath={currentSingleCTAButton.url}
+            dataLocator={getLocator('moduleJ_cta_btn')}
+          >
+            <Button buttonVariation="fixed-width" className="cta-btn">
+              {currentSingleCTAButton.text}
+            </Button>
+          </Anchor>
+        </Col>
+      </Row>
+    ) : null;
+  }
 
   render() {
     const {
@@ -32,10 +61,14 @@ class ModuleJ extends React.PureComponent {
       headerText,
       layout,
       promoBanner,
+      divTabs,
     } = this.props;
+
     const { currentCatId } = this.state;
+
     const { CAROUSEL_OPTIONS, PROMO_IMG_DATA } = config;
     const data = productTabList ? productTabList[currentCatId] : productTabList;
+
     return (
       <Grid className={`${className} layout-${layout}`}>
         {layout !== 'alt' ? (
@@ -94,10 +127,7 @@ class ModuleJ extends React.PureComponent {
                   dataLocator={getLocator('moduleJ_promobanner_text')}
                 />
               )}
-              <ProductTabList
-                onProductTabChange={this.onTabChange}
-                categoryList={categoryListMock}
-              />
+              <ProductTabList onProductTabChange={this.onTabChange} tabItems={divTabs} />
             </Col>
             <Col
               className="promo-image-right"
@@ -154,10 +184,7 @@ class ModuleJ extends React.PureComponent {
                 large: 12,
               }}
             >
-              <ProductTabList
-                onProductTabChange={this.onTabChange}
-                categoryList={categoryListMock}
-              />
+              <ProductTabList onProductTabChange={this.onTabChange} tabItems={divTabs} />
             </Col>
           </Row>
         )}
@@ -208,26 +235,8 @@ class ModuleJ extends React.PureComponent {
             ) : null}
           </Col>
         </Row>
-        <Row centered>
-          <Col
-            colSize={{
-              small: 4,
-              medium: 2,
-              large: 2,
-            }}
-          >
-            <Anchor
-              noLink
-              to="/c/toddler-girl-bottoms"
-              asPath="/c/toddler-girl-bottoms"
-              dataLocator={getLocator('moduleJ_cta_btn')}
-            >
-              <Button buttonVariation="fixed-width" className="cta-btn">
-                SHOP ALL
-              </Button>
-            </Anchor>
-          </Col>
-        </Row>
+
+        {this.getCurrentCtaButton()}
       </Grid>
     );
   }
@@ -240,6 +249,7 @@ ModuleJ.defaultProps = {
   mediaLinkedList: [],
   promoBanner: [],
   layout: 'default',
+  divTabs: [],
 };
 
 ModuleJ.propTypes = {
@@ -264,6 +274,13 @@ ModuleJ.propTypes = {
   ),
   promoBanner: PropTypes.arrayOf(PropTypes.shape({})),
   layout: PropTypes.string,
+  divTabs: PropTypes.arrayOf(
+    PropTypes.shape({
+      text: PropTypes.object,
+      category: PropTypes.object,
+      singleCTAButton: PropTypes.object,
+    })
+  ),
 };
 
 const styledModuleJ = withStyles(errorBoundary(ModuleJ), moduleJStyle);

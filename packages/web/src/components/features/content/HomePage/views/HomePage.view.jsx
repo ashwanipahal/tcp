@@ -6,9 +6,7 @@ import HomePageSlots from '@tcp/core/src/components/common/molecules/HomePageSlo
 import GetCandid from '@tcp/core/src/components/common/molecules/GetCandid';
 import Recommendations from '@tcp/core/src/components/common/molecules/Recommendations';
 import ModuleB from '@tcp/core/src/components/common/molecules/ModuleB';
-import ModuleJ from '@tcp/core/src/components/common/molecules/ModuleJ';
 import mock from '@tcp/core/src/services/abstractors/common/moduleB/mock';
-import moduleJMock from '@tcp/core/src/components/common/molecules/ModuleJ/mock';
 
 const returnModule = mod => mod.default;
 
@@ -20,12 +18,12 @@ const HomePageView = dynamic({
     moduleL: () => import('@tcp/core/src/components/common/molecules/ModuleL').then(returnModule),
     moduleA: () => import('@tcp/core/src/components/common/molecules/ModuleA').then(returnModule),
     moduleN: () => import('@tcp/core/src/components/common/molecules/ModuleN').then(returnModule),
+    moduleJ: () => import('@tcp/core/src/components/common/molecules/ModuleJ').then(returnModule),
   }),
   render: ({ slots }, modules) => {
     return [
       <HomePageSlots slots={slots} modules={modules} />,
       <ModuleB {...mock} />,
-      <ModuleJ {...moduleJMock.moduleJ.composites} />,
       <GetCandid />,
       <Recommendations />,
     ];

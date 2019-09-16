@@ -26,7 +26,6 @@ import {
 } from '../styles/ModuleJ.style.native';
 
 import ProductTabList from '../../../organisms/ProductTabList';
-import categoryListMock from './categoryListMock';
 import PromoBanner from '../../PromoBanner';
 import LinkText from '../../LinkText';
 
@@ -43,12 +42,14 @@ class ModuleJ extends React.PureComponent<Props, State> {
 
     this.state = {
       selectedCategoryId: null,
+      selectedTabItem: {},
     };
   }
 
-  onProductTabChange = catId => {
+  onProductTabChange = (catId, tabItem) => {
     this.setState({
       selectedCategoryId: catId,
+      selectedTabItem: tabItem,
     });
   };
 
@@ -92,7 +93,10 @@ class ModuleJ extends React.PureComponent<Props, State> {
   };
 
   render() {
-    const { selectedCategoryId } = this.state;
+    const {
+      selectedCategoryId,
+      selectedTabItem: { singleCTAButton: selectedSingleCTAButton } = {},
+    } = this.state;
     const {
       productTabList,
       navigation,
@@ -100,6 +104,7 @@ class ModuleJ extends React.PureComponent<Props, State> {
       mediaLinkedList,
       headerText,
       promoBanner,
+      divTabs,
     } = this.props;
 
     const selectedProductList = productTabList[selectedCategoryId] || [];
@@ -140,7 +145,7 @@ class ModuleJ extends React.PureComponent<Props, State> {
         <ProductTabListContainer>
           <ProductTabList
             onProductTabChange={this.onProductTabChange}
-            categoryList={categoryListMock}
+            tabItems={divTabs}
             navigation={navigation}
           />
         </ProductTabListContainer>
@@ -170,15 +175,18 @@ class ModuleJ extends React.PureComponent<Props, State> {
             />
           ) : null}
         </ImageSlidesWrapper>
-        <ButtonContainer>
-          {/* TODO: The URL and text will be updated once we have CMS integration */}
-          <Button
-            buttonVariation="variable-width"
-            width="225px"
-            text="SHOP ALL"
-            navigation={navigation}
-          />
-        </ButtonContainer>
+
+        {selectedSingleCTAButton ? (
+          <ButtonContainer>
+            <Button
+              buttonVariation="variable-width"
+              width="225px"
+              text={selectedSingleCTAButton.text}
+              url={selectedSingleCTAButton.url}
+              navigation={navigation}
+            />
+          </ButtonContainer>
+        ) : null}
       </Container>
     );
   }
@@ -188,7 +196,8 @@ ModuleJ.defaultProps = {
   productTabList: {},
   navigation: null,
   mediaLinkedList: [],
-  layout: 'alt',
+  layout: 'default',
+  divTabs: [],
 };
 
 ModuleJ.propTypes = {
@@ -209,6 +218,13 @@ ModuleJ.propTypes = {
     PropTypes.shape({
       image: PropTypes.object,
       link: PropTypes.object,
+    })
+  ),
+  divTabs: PropTypes.arrayOf(
+    PropTypes.shape({
+      text: PropTypes.object,
+      category: PropTypes.object,
+      singleCTAButton: PropTypes.object,
     })
   ),
 };

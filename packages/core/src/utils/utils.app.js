@@ -63,6 +63,10 @@ export const importMoreGraphQLQueries = ({ query, resolve, reject }) => {
       // eslint-disable-next-line global-require
       resolve(require('../services/handler/graphQL/queries/moduleB'));
       break;
+    case 'moduleJ':
+      // eslint-disable-next-line global-require
+      resolve(require('../services/handler/graphQL/queries/moduleJ'));
+      break;
     default:
       reject();
       break;
