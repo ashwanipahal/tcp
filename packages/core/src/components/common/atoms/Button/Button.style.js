@@ -231,7 +231,7 @@ const ButtonStyles = css`
     props.buttonVariation !== darkLinkCategory
       ? getShape(props)
       : ``}
-  ${props => (props.inheritedStyles ? props.inheritedStyles : '')};
+
   ${props =>
     props.link
       ? `
@@ -261,6 +261,7 @@ const ButtonStyles = css`
       }
   `
       : ``}
+      ${props => (props.inheritedStyles ? props.inheritedStyles : '')};
 `;
 
 export default ButtonStyles;
