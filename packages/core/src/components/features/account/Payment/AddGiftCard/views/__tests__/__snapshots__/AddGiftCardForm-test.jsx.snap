@@ -21,6 +21,7 @@ exports[`Add gift card form component should render component correctly 1`] = `
       }
     >
       <Field
+        className="giftCardNumber"
         component={
           Object {
             "$$typeof": Symbol(react.forward_ref),
