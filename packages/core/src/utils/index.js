@@ -54,4 +54,6 @@ export {
   getBirthDateOptionMap,
   generateUniqueKeyUsingLabel,
   getErrorSelector,
+  formatDate,
+  isValidDate,
 } from './utils';

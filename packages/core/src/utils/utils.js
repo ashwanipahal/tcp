@@ -150,6 +150,21 @@ export const toTimeString = est => {
   return `${hh}:${mm}${ampm}`;
 };
 
+export const formatDate = date => {
+  const month = `0${date.getMonth() + 1}`.substr(-2);
+  const dateStr = `0${date.getDate()}`.substr(-2);
+  const year = date
+    .getFullYear()
+    .toString()
+    .substr(-2);
+  return `${month}/${dateStr}/${year}`;
+};
+
+/* eslint-disable no-restricted-globals */
+export const isValidDate = date => {
+  return date instanceof Date && !isNaN(date);
+};
+
 export const isGymboree = () => {
   const { brandId } = getAPIConfig();
   return brandId === API_CONFIG.brandIds.gym;
@@ -397,4 +412,6 @@ export default {
   calculateAge,
   generateUniqueKeyUsingLabel,
   getErrorSelector,
+  isValidDate,
+  formatDate,
 };
