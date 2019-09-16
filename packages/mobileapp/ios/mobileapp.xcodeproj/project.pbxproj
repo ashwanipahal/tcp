@@ -53,6 +53,24 @@
 		557DAD6C230E61520083E52C /* libReactNativeConfig.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 557DAD5B230E60D60083E52C /* libReactNativeConfig.a */; };
 		6D66792DBE54465ABA2EA17A /* libRNCAsyncStorage.a in Frameworks */ = {isa = PBXBuildFile; fileRef = DBE09961D87A420784523FFB /* libRNCAsyncStorage.a */; };
 		74DE318A0518475FA96C5BBA /* libRNCookieManagerIOS.a in Frameworks */ = {isa = PBXBuildFile; fileRef = B31492B436BA4064AC5AF57E /* libRNCookieManagerIOS.a */; };
+		79538AC8232FBC4F00908A8B /* libRNPrint.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 79F6C9C8232D1F3700795511 /* libRNPrint.a */; };
+		79538AC9232FBC4F00908A8B /* libRNViewShot.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 79F8EC93232E8A6000143FE8 /* libRNViewShot.a */; };
+		79538ACA232FBC5E00908A8B /* libRNPrint.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 79F6C9C8232D1F3700795511 /* libRNPrint.a */; };
+		79538ACB232FBC5E00908A8B /* libRNViewShot.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 79F8EC93232E8A6000143FE8 /* libRNViewShot.a */; };
+		79538ACC232FBD0600908A8B /* libRNPrint.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 79F6C9C8232D1F3700795511 /* libRNPrint.a */; };
+		79538ACD232FBD0600908A8B /* libRNViewShot.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 79F8EC93232E8A6000143FE8 /* libRNViewShot.a */; };
+		79538ACE232FBD1200908A8B /* libRNPrint.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 79F6C9C8232D1F3700795511 /* libRNPrint.a */; };
+		79538ACF232FBD1200908A8B /* libRNViewShot.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 79F8EC93232E8A6000143FE8 /* libRNViewShot.a */; };
+		79538AD0232FBD1E00908A8B /* libRNPrint.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 79F6C9C8232D1F3700795511 /* libRNPrint.a */; };
+		79538AD1232FBD1E00908A8B /* libRNViewShot.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 79F8EC93232E8A6000143FE8 /* libRNViewShot.a */; };
+		79538AD2232FBD2900908A8B /* libRNPrint.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 79F6C9C8232D1F3700795511 /* libRNPrint.a */; };
+		79538AD3232FBD2900908A8B /* libRNViewShot.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 79F8EC93232E8A6000143FE8 /* libRNViewShot.a */; };
+		79538AD4232FBD3900908A8B /* libRNPrint.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 79F6C9C8232D1F3700795511 /* libRNPrint.a */; };
+		79538AD5232FBD3900908A8B /* libRNViewShot.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 79F8EC93232E8A6000143FE8 /* libRNViewShot.a */; };
+		79538AD6232FBD4600908A8B /* libRNPrint.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 79F6C9C8232D1F3700795511 /* libRNPrint.a */; };
+		79538AD7232FBD4600908A8B /* libRNViewShot.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 79F8EC93232E8A6000143FE8 /* libRNViewShot.a */; };
+		79538AD8232FBD5000908A8B /* libRNPrint.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 79F6C9C8232D1F3700795511 /* libRNPrint.a */; };
+		79538AD9232FBD5000908A8B /* libRNViewShot.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 79F8EC93232E8A6000143FE8 /* libRNViewShot.a */; };
 		8007DC4A904D4561AB40A306 /* libReactNativeConfig-tvOS.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 75F3F78905354C238B4F93B7 /* libReactNativeConfig-tvOS.a */; };
 		832341BD1AAA6AB300B99B32 /* libRCTText.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 832341B51AAA6A8300B99B32 /* libRCTText.a */; };
 		83A83FCA9B434106AB5BF528 /* libRNViewShot.a in Frameworks */ = {isa = PBXBuildFile; fileRef = A5713CC2B55449EB928CCC0D /* libRNViewShot.a */; };
@@ -359,7 +377,6 @@
 		ECA9863B3E004048A680216B /* libRNGestureHandler.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 13AC52E32AE04B1A8348407B /* libRNGestureHandler.a */; };
 		ED297163215061F000B7C4FE /* JavaScriptCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = ED297162215061F000B7C4FE /* JavaScriptCore.framework */; };
 		ED2971652150620600B7C4FE /* JavaScriptCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = ED2971642150620600B7C4FE /* JavaScriptCore.framework */; };
-		F4514F00E22C45498FF5F3A4 /* RNPrintTests.xctest in Frameworks */ = {isa = PBXBuildFile; fileRef = 50AB8DFE34DC4806B742658F /* RNPrintTests.xctest */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -876,7 +893,6 @@
 				C98BEA06FFE64D828BF894FF /* libReactNativeConfig.a in Frameworks */,
 				74DE318A0518475FA96C5BBA /* libRNCookieManagerIOS.a in Frameworks */,
 				88D920B9A8254B34A2630B69 /* libRNPrint.a in Frameworks */,
-				F4514F00E22C45498FF5F3A4 /* RNPrintTests.xctest in Frameworks */,
 				83A83FCA9B434106AB5BF528 /* libRNViewShot.a in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -912,6 +928,8 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				79538AC8232FBC4F00908A8B /* libRNPrint.a in Frameworks */,
+				79538AC9232FBC4F00908A8B /* libRNViewShot.a in Frameworks */,
 				1668AB1C231EAA8100F75A14 /* libART.a in Frameworks */,
 				C1106A3123100BAB00AE8B39 /* libRNCookieManagerIOS.a in Frameworks */,
 				84677B92230BF6F3001F5301 /* libTouchID.a in Frameworks */,
@@ -941,6 +959,8 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				79538ACA232FBC5E00908A8B /* libRNPrint.a in Frameworks */,
+				79538ACB232FBC5E00908A8B /* libRNViewShot.a in Frameworks */,
 				1668AB1D231EAA9500F75A14 /* libART.a in Frameworks */,
 				C1106A6323100BB900AE8B39 /* libRNCookieManagerIOS.a in Frameworks */,
 				84677A5B230BCD44001F5301 /* libRNCNetInfo.a in Frameworks */,
@@ -970,6 +990,8 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				79538ACC232FBD0600908A8B /* libRNPrint.a in Frameworks */,
+				79538ACD232FBD0600908A8B /* libRNViewShot.a in Frameworks */,
 				1668AB1E231EAA9F00F75A14 /* libART.a in Frameworks */,
 				C1106A6423100BC000AE8B39 /* libRNCookieManagerIOS.a in Frameworks */,
 				84677A88230BCDAF001F5301 /* libRNCNetInfo.a in Frameworks */,
@@ -999,6 +1021,8 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				79538ACE232FBD1200908A8B /* libRNPrint.a in Frameworks */,
+				79538ACF232FBD1200908A8B /* libRNViewShot.a in Frameworks */,
 				1668AB1F231EAAA900F75A14 /* libART.a in Frameworks */,
 				C1106A6523100BC800AE8B39 /* libRNCookieManagerIOS.a in Frameworks */,
 				84677AB5230BCE0A001F5301 /* libRNCNetInfo.a in Frameworks */,
@@ -1028,6 +1052,8 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				79538AD2232FBD2900908A8B /* libRNPrint.a in Frameworks */,
+				79538AD3232FBD2900908A8B /* libRNViewShot.a in Frameworks */,
 				1668AB21231EC92300F75A14 /* libART.a in Frameworks */,
 				C1106A6723100BDA00AE8B39 /* libRNCookieManagerIOS.a in Frameworks */,
 				557DAD69230E61350083E52C /* libReactNativeConfig.a in Frameworks */,
@@ -1057,6 +1083,8 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				79538AD4232FBD3900908A8B /* libRNPrint.a in Frameworks */,
+				79538AD5232FBD3900908A8B /* libRNViewShot.a in Frameworks */,
 				1668AB22231EC92B00F75A14 /* libART.a in Frameworks */,
 				C1106A6823100BE200AE8B39 /* libRNCookieManagerIOS.a in Frameworks */,
 				557DAD6A230E61400083E52C /* libReactNativeConfig.a in Frameworks */,
@@ -1086,6 +1114,8 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				79538AD6232FBD4600908A8B /* libRNPrint.a in Frameworks */,
+				79538AD7232FBD4600908A8B /* libRNViewShot.a in Frameworks */,
 				1668AB23231EC93400F75A14 /* libART.a in Frameworks */,
 				C1106A6923100BE900AE8B39 /* libRNCookieManagerIOS.a in Frameworks */,
 				557DAD6B230E61490083E52C /* libReactNativeConfig.a in Frameworks */,
@@ -1115,6 +1145,8 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				79538AD8232FBD5000908A8B /* libRNPrint.a in Frameworks */,
+				79538AD9232FBD5000908A8B /* libRNViewShot.a in Frameworks */,
 				1668AB24231EC93D00F75A14 /* libART.a in Frameworks */,
 				C1106A6A23100BF100AE8B39 /* libRNCookieManagerIOS.a in Frameworks */,
 				557DAD6C230E61520083E52C /* libReactNativeConfig.a in Frameworks */,
@@ -1144,6 +1176,8 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				79538AD0232FBD1E00908A8B /* libRNPrint.a in Frameworks */,
+				79538AD1232FBD1E00908A8B /* libRNViewShot.a in Frameworks */,
 				1668AB20231EC91A00F75A14 /* libART.a in Frameworks */,
 				C1106A6623100BD200AE8B39 /* libRNCookieManagerIOS.a in Frameworks */,
 				557DAD68230E61010083E52C /* libReactNativeConfig.a in Frameworks */,
