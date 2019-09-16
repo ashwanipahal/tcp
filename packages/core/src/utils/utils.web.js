@@ -303,21 +303,21 @@ export const languageRedirect = (newLanguage, oldLanguage) => {
  * TODO: It can be extended as per requirement
  * to redirect from other pages also
  */
-export const redirectToPdp = productId => {
+export const redirectToPdp = (productId, seoToken) => {
   if (!window) return null;
 
   const { href } = window.location;
   // TODO
   if (href.includes('/p/')) {
     return {
-      url: `/p?pid=${productId}`,
-      asPath: `/p/${productId}`,
+      url: `/p?pid=${seoToken - productId}`,
+      asPath: `/p/${seoToken - productId}`,
     };
   }
 
   return {
-    url: `/c?cid=toddler-girl-bottoms`,
-    asPath: `/c/toddler-girl-bottoms`,
+    url: `/p?${seoToken - productId}`,
+    asPath: `/p/${seoToken - productId}`,
   };
 };
 

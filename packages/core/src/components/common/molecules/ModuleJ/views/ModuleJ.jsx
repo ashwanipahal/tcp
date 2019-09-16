@@ -37,7 +37,7 @@ class ModuleJ extends React.PureComponent {
     const { CAROUSEL_OPTIONS, PROMO_IMG_DATA } = config;
     const data = productTabList ? productTabList[currentCatId] : productTabList;
     return (
-      <Grid className={`${className} layout-${layout}`}>
+      <Grid className={`${className} moduleJ layout-${layout}`}>
         {layout !== 'alt' ? (
           <Row fullBleed={{ small: true, medium: true }} className="topview">
             <Col

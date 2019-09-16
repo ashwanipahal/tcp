@@ -1,4 +1,3 @@
-/* eslint-disable no-useless-constructor */
 /* istanbul ignore file */
 import React from 'react';
 import PropTypes from 'prop-types';
@@ -25,7 +24,7 @@ import LinkText from '../../LinkText';
 const PRODUCT_IMAGE_WIDTH = 103;
 const PRODUCT_IMAGE_HEIGHT = 127;
 
-class ModuleR extends React.PureComponent<Props, State> {
+class ModuleR extends React.PureComponent {
   constructor(props) {
     super(props);
 

@@ -362,4 +362,34 @@ export default css`
     font-size: ${props => props.theme.typography.fontSizes.fs64};
     font-weight: ${props => props.theme.typography.fontWeights.black};
   }
+
+  /*
+  * Module R Promo Banner styles
+  *********************************/
+  .medium_text_regular {
+    font-family: ${props => props.theme.typography.fonts.primary};
+    font-size: ${props => props.theme.typography.fontSizes.fs20};
+    font-weight: ${props => props.theme.typography.fontWeights.semibold};
+    line-height: ${props => props.theme.typography.lineHeights.lh107};
+    letter-spacing: ${props => props.theme.typography.letterSpacings.ls1};
+  }
+
+  .percentage_wrapped_large {
+    color: ${props => props.theme.colorPalette.black};
+    font-family: ${props => props.theme.typography.fonts.primary};
+    font-size: ${props => props.theme.typography.fontSizes.fs48};
+    width: auto;
+
+    .percentage_wrapped_large-1 {
+      font-size: ${props => props.theme.typography.fontSizes.fs28};
+      position: absolute;
+      top: 2px;
+    }
+
+    .percentage_wrapped_large-2 {
+      font-size: ${props => props.theme.typography.fontSizes.fs18};
+      position: absolute;
+      bottom: 4px;
+    }
+  }
 `;
