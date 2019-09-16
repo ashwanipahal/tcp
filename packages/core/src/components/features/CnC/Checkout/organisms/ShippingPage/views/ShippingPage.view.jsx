@@ -37,6 +37,8 @@ export default class ShippingPage extends React.PureComponent {
     saveToAddressBook: PropTypes.bool,
     updateShippingAddressData: PropTypes.func.isRequired,
     labels: PropTypes.shape({}).isRequired,
+    syncErrors: PropTypes.shape({}),
+    shippingAddress: PropTypes.shape({}),
   };
 
   static defaultProps = {
@@ -58,6 +60,8 @@ export default class ShippingPage extends React.PureComponent {
     shippingAddressId: null,
     setAsDefaultShipping: false,
     saveToAddressBook: false,
+    syncErrors: {},
+    shippingAddress: null,
   };
 
   constructor(props) {
@@ -246,6 +250,8 @@ export default class ShippingPage extends React.PureComponent {
       setAsDefaultShipping,
       labels,
       address,
+      syncErrors,
+      shippingAddress,
     } = this.props;
 
     const { isAddNewAddress, isEditing, defaultAddressId } = this.state;
@@ -262,7 +268,7 @@ export default class ShippingPage extends React.PureComponent {
               address: { country: getSiteId() && getSiteId().toUpperCase() },
               shipmentMethods: { shippingMethodId: defaultShipmentId },
               saveToAddressBook: !isGuest,
-              onFileAddressKey: defaultAddressId,
+              onFileAddressKey: shippingAddressId,
             }}
             selectedShipmentId={selectedShipmentId}
             checkPOBoxAddress={this.checkPOBoxAddress}
@@ -291,6 +297,8 @@ export default class ShippingPage extends React.PureComponent {
             labels={labels}
             address={address}
             setDefaultAddressId={this.setDefaultAddressId}
+            syncErrorsObject={syncErrors}
+            shippingAddress={shippingAddress}
           />
         )}
       </>

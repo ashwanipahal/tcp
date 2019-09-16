@@ -7,6 +7,9 @@ export const modalStyles = css`
 
   .TCPModal__InnerContent {
     text-align: center;
+    && {
+      padding: 21px;
+    }
     > h2 {
       ::after {
         content: '§';
@@ -65,8 +68,7 @@ export const modalStyles = css`
   }
 
   .header__greeting {
-    margin: 9px 9px;
-    width: 353px;
+    margin: 9px 0px;
   }
 
   .header-image {
@@ -102,7 +104,7 @@ export const modalStyles = css`
   }
 
   .rewards__benefits {
-    margin: 21px 0 0 9px;
+    margin: 21px 0 0 21px;
     > li {
       font-size: ${props => props.theme.fonts.fontSize.body.large.secondary}px;
       width: 355px;
@@ -117,12 +119,6 @@ export const modalStyles = css`
         vertical-align: -25%;
       }
     }
-  }
-
-  /* This css is for list coming from module X */
-  .benefit_list {
-    font-size: ${props => props.theme.typography.fontSizes.fs14};
-    font-weight: ${props => props.theme.typography.fontWeights.semibold};
   }
 
   .footerLinks {

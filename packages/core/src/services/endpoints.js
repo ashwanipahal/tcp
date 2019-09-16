@@ -272,5 +272,9 @@ const endpoints = {
     method: 'POST',
     URI: SAVE_FOR_LATER,
   },
+  getStoreandProductInventoryInfo: {
+    method: 'GET',
+    URI: 'v2/vendor/getStoreAndProductInventoryInfo',
+  },
 };
 export default endpoints;

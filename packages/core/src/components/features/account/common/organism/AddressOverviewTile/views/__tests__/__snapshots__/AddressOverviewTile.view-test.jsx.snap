@@ -110,6 +110,7 @@ exports[`AddressOverviewTile component should render correctly 1`] = `
           fontWeight="regular"
           isDefault={false}
           showCountry={false}
+          showDefault={true}
           showName={true}
           showPhone={true}
         />
@@ -207,6 +208,7 @@ exports[`AddressOverviewTile component should render correctly 1`] = `
           fontWeight="regular"
           isDefault={false}
           showCountry={false}
+          showDefault={true}
           showName={true}
           showPhone={true}
         />

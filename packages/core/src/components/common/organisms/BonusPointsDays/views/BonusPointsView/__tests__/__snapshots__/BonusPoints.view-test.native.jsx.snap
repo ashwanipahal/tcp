@@ -19,6 +19,7 @@ exports[`BonusPointsView should render correctly 1`] = `
       }
     }
     orderDetails={Object {}}
+    showAccordian={true}
     toggleBonusPointsModal={[Function]}
   />
   <ModalNative

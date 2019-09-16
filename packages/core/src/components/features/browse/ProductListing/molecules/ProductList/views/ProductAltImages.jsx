@@ -30,6 +30,7 @@ class ProductAltImages extends React.PureComponent {
     loadedProductCount: PropTypes.number.isRequired,
     isPLPredesign: PropTypes.bool.isRequired,
     className: PropTypes.string.isRequired,
+    dataLocator: PropTypes.string,
   };
 
   static defaultProps = {
@@ -37,6 +38,7 @@ class ProductAltImages extends React.PureComponent {
     analyticsData: {},
     videoUrl: PropTypes.string,
     isShowVideoOnPlp: PropTypes.bool,
+    dataLocator: '',
   };
 
   nodes = {};
@@ -231,6 +233,7 @@ class ProductAltImages extends React.PureComponent {
       loadedProductCount,
       analyticsData,
       className,
+      dataLocator,
     } = this.props;
     const { currentIndex } = this.state;
     const unbxdData = analyticsData || {};
@@ -250,6 +253,7 @@ class ProductAltImages extends React.PureComponent {
           unbxdparam_sku={unbxdData && unbxdData.pId}
           unbxdparam_prank={unbxdData && unbxdData.prank}
           inheritedStyles={imageAnchorInheritedStyles}
+          dataLocator={dataLocator}
         >
           <img src={imageUrls[0]} alt={productName} itemProp="contentUrl" />
         </Anchor>
@@ -280,6 +284,7 @@ class ProductAltImages extends React.PureComponent {
           unbxdparam_sku={unbxdData && unbxdData.pId}
           unbxdparam_prank={unbxdData && unbxdData.prank}
           inheritedStyles={imageAnchorInheritedStyles}
+          dataLocator={dataLocator}
         >
           <img
             src={imageUrls[currentIndex]}

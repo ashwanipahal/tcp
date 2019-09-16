@@ -6,6 +6,7 @@ import BillingPaymentForm from '../views';
 import CreditCardSelector from './CreditCard.selectors';
 import constants from './CreditCard.constants';
 import BAG_PAGE_ACTIONS from '../../../../BagPage/container/BagPage.actions';
+import CheckoutSelectors from '../../../container/Checkout.selector';
 
 export class GiftCardsContainer extends React.PureComponent<Props> {
   constructor(props) {
@@ -97,6 +98,7 @@ export class GiftCardsContainer extends React.PureComponent<Props> {
       backLinkShipping,
       nextSubmitText,
       formErrorMessage,
+      isPaymentDisabled,
     } = this.props;
     if (cvvCodeInfoContentId) {
       getCVVCodeInfo([cvvCodeInfoContentId]);
@@ -119,6 +121,7 @@ export class GiftCardsContainer extends React.PureComponent<Props> {
         backLinkShipping={backLinkShipping}
         nextSubmitText={nextSubmitText}
         formErrorMessage={formErrorMessage}
+        isPaymentDisabled={isPaymentDisabled}
       />
     );
   }
@@ -144,6 +147,7 @@ const mapStateToProps = (state, ownProps) => {
     cvvCodeInfoContentId: CreditCardSelector.getCVVCodeInfoContentId(state),
     cvvCodeRichText: CreditCardSelector.getCVVCodeRichTextSelector(state),
     formErrorMessage: CreditCardSelector.getFormValidationErrorMessages(state),
+    isPaymentDisabled: CheckoutSelectors.getIsPaymentDisabled(state),
   };
 };
 

@@ -12,6 +12,7 @@ const ADDRESS_VERIFICATION_CONSTANTS = {
   },
   VERIFY_ADDRESS_STATUS_MAP: {
     AS01: 'valid',
+    AC02: 'valid',
     AE09: 'apartmentMissing',
     AE10: 'invalidError',
     AE11: 'invalidError',

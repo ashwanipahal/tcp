@@ -45,3 +45,8 @@ export default {
     IMAGE_CTA: 'divImageCTACarousel',
   },
 };
+
+export const IMG_DATA = {
+  imgOverlayConfig: ['t_mod_B_img_overlay_m', 't_mod_B_img_overlay_t', 't_mod_B_img_overlay_d'],
+  imgDefaultConfig: ['t_mod_B_img_default_m', 't_mod_B_img_default_t', 't_mod_B_img_default_d'],
+};

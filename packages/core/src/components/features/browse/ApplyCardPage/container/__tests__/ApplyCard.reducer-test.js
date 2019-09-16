@@ -25,11 +25,13 @@ describe('ApplyCardReducer', () => {
   it('should trigger RESPONSE_INSTANT_CARD_APPLICATION action', () => {
     const submitPLCCApplication = {
       type: constants.RESPONSE_INSTANT_CARD_APPLICATION,
-      payload: { status: 'PENDING' },
+      payload: { applicationStatus: 'PENDING' },
     };
 
     const mockResponse = {
-      applicationStatus: 'PENDING',
+      approvedPLCCData: {
+        applicationStatus: 'PENDING',
+      },
     };
     expect(ApplyCardReducer({}, submitPLCCApplication)).toEqual(mockResponse);
   });
