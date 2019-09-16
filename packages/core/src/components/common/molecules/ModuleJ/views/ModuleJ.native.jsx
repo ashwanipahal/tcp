@@ -147,6 +147,7 @@ class ModuleJ extends React.PureComponent<Props, State> {
               url={mediaLinkedList[1] && mediaLinkedList[1].image.url}
               height="300px"
               width="100%"
+              alt={mediaLinkedList[1] && mediaLinkedList[1].image.alt}
             />
           </Anchor>
         </ImageContainer>
@@ -187,13 +188,17 @@ ModuleJ.defaultProps = {
 };
 
 ModuleJ.propTypes = {
-  productTabList: PropTypes.shape({
-    [PropTypes.string]: PropTypes.shape({
-      uniqueId: PropTypes.string.isRequired,
-      imageUrl: PropTypes.string.isRequired,
-      seo_token: PropTypes.string,
-    }),
-  }),
+  productTabList: PropTypes.oneOfType(
+    PropTypes.objectOf(
+      PropTypes.arrayOf(
+        PropTypes.shape({
+          uniqueId: PropTypes.string.isRequired,
+          imageUrl: PropTypes.array.isRequired,
+          seo_token: PropTypes.string,
+        })
+      )
+    )
+  ),
   navigation: PropTypes.shape({}),
   layout: PropTypes.string,
   mediaLinkedList: PropTypes.arrayOf(

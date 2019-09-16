@@ -126,7 +126,7 @@ exports[`ApplyNowModalWrapper component should renders correctly 1`] = `
   }
 
   .rewards__benefits {
-    margin: 21px 0 0 9px;
+    margin: 21px 0 0 21px;
     > li {
       font-size: ",
       [Function],
@@ -143,16 +143,6 @@ exports[`ApplyNowModalWrapper component should renders correctly 1`] = `
         vertical-align: -25%;
       }
     }
-  }
-
-  /* This css is for list coming from module X */
-  .benefit_list {
-    font-size: ",
-      [Function],
-      ";
-    font-weight: ",
-      [Function],
-      ";
   }
 
   .footerLinks {

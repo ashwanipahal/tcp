@@ -4,14 +4,22 @@ import { Row, Col, RichText } from '../../../../common/atoms';
 import withStyles from '../../../../common/hoc/withStyles';
 import ProductDetailStyle from '../ProductDetail.style';
 import Product from '../molecules/Product/views/Product.view';
+import FixedBreadCrumbs from '../../ProductListing/molecules/FixedBreadCrumbs/views';
 
-const ProductDetailView = ({ className, productDetails, longDescription }) => {
+const ProductDetailView = ({
+  className,
+  productDetails,
+  longDescription,
+  breadCrumbs,
+  defaultImage,
+  currency,
+}) => {
   return (
     <div className={className}>
-      <Row className="placeholder">
+      <Row>
         <Col colSize={{ small: 6, medium: 8, large: 12 }}>
-          <div className="promo-area-1">BREAD CRUMB</div>
-          {/* {breadCrumbs && <FixedBreadCrumbs crumbs={breadCrumbs} separationChar=">" />} */}
+          {/* <div className="promo-area-1">BREAD CRUMB</div> */}
+          {breadCrumbs && <FixedBreadCrumbs crumbs={breadCrumbs} separationChar=">" />}
         </Col>
       </Row>
       <Row className="placeholder">
@@ -25,9 +33,10 @@ const ProductDetailView = ({ className, productDetails, longDescription }) => {
         </Col>
         <Col colSize={{ small: 6, medium: 8, large: 6 }}>
           <div className="product-image-carousel">PRODUCT IMAGE CAROUSEL SECTION</div>
+          <img src={defaultImage} alt="product" />
         </Col>
         <Col colSize={{ small: 6, medium: 8, large: 5 }}>
-          <Product productDetails={productDetails} />
+          <Product productDetails={productDetails} currencySymbol={currency} />
         </Col>
       </Row>
       <Row className="placeholder">
@@ -75,12 +84,18 @@ ProductDetailView.propTypes = {
   className: PropTypes.string,
   productDetails: PropTypes.shape({}),
   longDescription: PropTypes.string,
+  breadCrumbs: PropTypes.shape({}),
+  defaultImage: PropTypes.string,
+  currency: PropTypes.string,
 };
 
 ProductDetailView.defaultProps = {
   className: '',
   productDetails: {},
   longDescription: '',
+  breadCrumbs: {},
+  defaultImage: '',
+  currency: '',
 };
 
 export default withStyles(ProductDetailView, ProductDetailStyle);
