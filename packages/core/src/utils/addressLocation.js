@@ -1,8 +1,6 @@
-/* istanbul ignore file */
 import { getCacheData, setCacheData } from './localCache.util';
 import { requireNamedOnlineModule } from './resourceLoader';
 
-// eslint-disable-next-line import/prefer-default-export
 export const getAddressLocationInfo = address => {
   const googleApiStoredDataObj = getCacheData('geocode-response', address);
   if (googleApiStoredDataObj) {

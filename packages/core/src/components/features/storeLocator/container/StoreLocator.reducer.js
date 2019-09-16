@@ -1,4 +1,3 @@
-/* istanbul ignore file */
 import { fromJS } from 'immutable';
 import STORE_LOCATOR_CONSTANTS from './StoreLocator.constants';
 import { DEFAULT_REDUCER_KEY } from '../../../../utils/cache.util';

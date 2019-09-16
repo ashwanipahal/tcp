@@ -1,4 +1,3 @@
-/* istanbul ignore file */
 import React, { PureComponent } from 'react';
 import { connect } from 'react-redux';
 import { withRouter } from 'next/router'; //eslint-disable-line
@@ -13,6 +12,7 @@ export class StoreLocator extends PureComponent {
     latLngPromise.then(({ lat, lng }) =>
       fetchStoresByLatLng({ coordinates: { lat, lng }, maxItems, radius })
     );
+    return false;
   };
 
   render() {
@@ -24,7 +24,7 @@ StoreLocator.propTypes = {
   fetchStoresByLatLng: PropTypes.func.isRequired,
 };
 
-const mapDispatchToProps = dispatch => {
+export const mapDispatchToProps = dispatch => {
   return {
     fetchStoresByLatLng: storeConfig => dispatch(getStoresByLatLng(storeConfig)),
   };

@@ -1,5 +1,3 @@
-/* istanbul ignore file */
-/* eslint-disable sonarjs/cognitive-complexity */
 import { isClient } from './utils';
 import { getLocalStorage, setLocalStorage } from './utils.web';
 
@@ -36,6 +34,7 @@ export const getCacheData = (key, objKey) => {
  * storageKey - address to which the data is mapped,
  * storageValue - object with information related to lat long and country
  */
+// eslint-disable-next-line sonarjs/cognitive-complexity
 export const setCacheData = arg => {
   if (isClient()) {
     const { key, storageKey, storageValue } = arg;

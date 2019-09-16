@@ -1,4 +1,3 @@
-/* istanbul ignore file */
 import {
   SESSIONCONFIG_REDUCER_KEY,
   STORE_LOCATOR_REDUCER_KEY,
