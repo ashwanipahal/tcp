@@ -17,7 +17,7 @@ import {
   SeparatorView,
   MainContainerView,
 } from '../ModuleB.style.native';
-import { ctaTypes, bannerPositionTypes } from '../config';
+import { ctaTypes, bannerPositionTypes, IMG_DATA } from '../config';
 import mock from '../../../../../services/abstractors/common/moduleB/mock';
 
 /**
@@ -112,6 +112,12 @@ const renderImageComponent = (item, navigation) => {
           url={image.url}
           host={LAZYLOAD_HOST_NAME.HOME}
           alt={image.alt}
+          crop={image.crop_m}
+          imageConfig={
+            bannerPosition === bannerPositionTypes.overlay
+              ? IMG_DATA.imgOverlayConfig[0]
+              : IMG_DATA.imgDefaultConfig[0]
+          }
         />
       </Anchor>
       {bannerPosition === bannerPositionTypes.bottom
