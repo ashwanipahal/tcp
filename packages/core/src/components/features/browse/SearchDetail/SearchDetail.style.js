@@ -28,7 +28,7 @@ export default css`
     }
     @media ${props => props.theme.mediaQuery.large} {
       padding: ${props => props.theme.spacing.ELEM_SPACING.SM} 26px 0 0;
-      width: calc(20% - 21px);
+      width: calc(20% - 26px);
     }
   }
   @media ${props => props.theme.mediaQuery.smallOnly} {
