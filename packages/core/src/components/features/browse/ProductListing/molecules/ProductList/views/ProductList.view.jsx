@@ -62,7 +62,7 @@ const ProductList = props => {
             {item}
           </h2>
         ) : (
-          <div className="product-tile">
+          <div className="product-tile search-product-tile">
             <ProductsGridItem
               isMobile={isMobileApp()}
               loadedProductCount={loadedProductCount}

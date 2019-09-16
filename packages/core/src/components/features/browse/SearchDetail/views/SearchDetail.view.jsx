@@ -5,27 +5,11 @@ import SearchListingStyle from '../SearchDetail.style';
 import config from '../searchDetail.constants';
 import ProductsGrid from '../../ProductListing/molecules/ProductsGrid/views';
 import { Row, Col } from '../../../../common/atoms';
+import LoadedProductsCount from '../../ProductListing/molecules/LoadedProductsCount/views';
+import Grid from '../../../../common/molecules/Grid';
+import errorBoundary from '../../../../common/hoc/withErrorBoundary';
 
 class SearchListingView extends React.PureComponent {
-  searchProductsList = searchedResult => {
-    return (
-      searchedResult.length &&
-      searchedResult.map(item => {
-        return (
-          <div className="product-tile">
-            <div>
-              <img src={item.imageUrl} alt={item.product_name} />
-              {item.min_list_price && <p>{`$ ${item.min_list_price}`}</p>}
-              <p>{item.id}</p>
-              <p>{item.color}</p>
-              <p>{item.product_name}</p>
-            </div>
-          </div>
-        );
-      })
-    );
-  };
-
   render() {
     const {
       className,
@@ -35,10 +19,10 @@ class SearchListingView extends React.PureComponent {
       labels,
       ...otherProps
     } = this.props;
-    console.log('productsBlock', productsBlock);
-    const { SEARCHED_FOR, FILTERS, SORT_BY, SHOW_X_RESULTS, SLP } = config;
+    const { SEARCHED_FOR, FILTERS, SORT_BY } = config;
+    const productsCount = 4;
     return (
-      <div className={className}>
+      <Grid className={className}>
         <Row className="placeholder">
           <Col colSize={{ small: 6, medium: 8, large: 12 }}>
             <div className="promo-area-1">{SEARCHED_FOR}</div>
@@ -52,14 +36,9 @@ class SearchListingView extends React.PureComponent {
             <div className="sort-by">{SORT_BY}</div>
           </Col>
         </Row>
-        <Row className="placeholder">
+        <Row>
           <Col colSize={{ small: 6, medium: 8, large: 12 }}>
-            <div className="showing-results">{SHOW_X_RESULTS}</div>
-          </Col>
-        </Row>
-        <Row className="placeholder">
-          <Col colSize={{ small: 6, medium: 8, large: 12 }}>
-            <div className="search-list-page">{SLP}</div>
+            <LoadedProductsCount totalProductsCount={productsCount} />
           </Col>
         </Row>
         <Row>
@@ -67,7 +46,7 @@ class SearchListingView extends React.PureComponent {
             <ProductsGrid productsBlock={productsBlock} labels={labels} {...otherProps} />
           </Col>
         </Row>
-      </div>
+      </Grid>
     );
   }
 }
@@ -88,4 +67,5 @@ SearchListingView.defaultProps = {
   labels: {},
 };
 
-export default withStyles(SearchListingView, SearchListingStyle);
+export default withStyles(errorBoundary(SearchListingView), SearchListingStyle);
+export { SearchListingView as SearchListingViewVanilla };
