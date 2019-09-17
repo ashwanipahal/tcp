@@ -238,7 +238,7 @@ export function* startPaypalCheckout({ payload }) {
   try {
     const orderId = yield select(BAG_SELECTORS.getCurrentOrderId);
     // const fromPage = false ? 'AjaxOrderItemDisplayView' : 'OrderBillingView';
-    const fromPage = 'OrderBillingView';
+    const fromPage = 'AjaxOrderItemDisplayView';
     const res = yield call(startPaypalCheckoutAPI, orderId, fromPage);
     if (res) {
       yield put(getSetIsPaypalPaymentSettings(res));

@@ -1,7 +1,7 @@
 import React from 'react';
 import { connect } from 'react-redux';
 import { withRouter } from 'next/router'; //eslint-disable-line
-import PayPalButton from '../../../../../../common/atoms/PaypalButton';
+import PayPalButton from '../organism/PaypalButton';
 import bagPageActions from '../../../../BagPage/container/BagPage.actions';
 import { getSetIsPaypalPaymentSettings } from '../../../../Checkout/container/Checkout.action';
 import { ServiceResponseError } from '../../../../../../../utils/errorMessage.util';
