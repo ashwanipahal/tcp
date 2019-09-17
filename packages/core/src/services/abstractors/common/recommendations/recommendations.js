@@ -41,12 +41,16 @@ const RecommendationsAbstractor = {
         recommendations.map(recommendation => recommendation.generalProductId)
       ).then(prices => {
         return {
-          products: recommendations.map(recommendation => {
-            return {
-              ...recommendation,
-              ...prices[recommendation.generalProductId],
-            };
-          }),
+          products: recommendations
+            .filter(recommendation => {
+              return typeof prices[recommendation.generalProductId] !== 'undefined';
+            })
+            .map(recommendation => {
+              return {
+                ...recommendation,
+                ...prices[recommendation.generalProductId],
+              };
+            }),
           mainTitle: title,
         };
       })

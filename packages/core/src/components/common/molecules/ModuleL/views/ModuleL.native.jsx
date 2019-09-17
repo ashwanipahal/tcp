@@ -43,16 +43,17 @@ const keyExtractor = (_, index) => index.toString();
 
 const renderItem = (item, navigation) => {
   const {
-    item: { image, link },
+    item: { image, link, color = {} },
     index,
   } = item;
+
   return (
     <Anchor
       url={link.url}
       navigation={navigation}
       testID={`${getLocator('moduleL_tiles')}${index + 1}`}
     >
-      <ChildContainer bgClass={item.item.class.class}>
+      <ChildContainer bgClass={color.color}>
         <DamImage
           url={image.url}
           height={127}

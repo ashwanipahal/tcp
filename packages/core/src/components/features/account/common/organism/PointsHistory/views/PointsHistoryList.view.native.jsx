@@ -8,7 +8,7 @@ import { PointHistoryView, PointView, PointTransView } from '../styles/PointHist
  */
 
 const PointsHistory = ({ labels, pointHistory }) => {
-  const pointHistoryLen = pointHistory.length;
+  const pointHistoryLen = pointHistory && pointHistory.length;
   return (
     <React.Fragment>
       {pointHistoryLen > 0 && (
@@ -61,7 +61,7 @@ const PointsHistory = ({ labels, pointHistory }) => {
           </PointHistoryView>
         ))}
 
-      {pointHistoryLen === 0 && (
+      {!pointHistory && (
         <BodyCopy
           text={labels.lbl_common_points_history_nopoints}
           fontFamily="secondary"

@@ -23,4 +23,5 @@ export {
   removeGiftCard,
   submitOrder,
   requestPersonalizedCoupons,
+  addGiftCard,
 } from './Checkout';
