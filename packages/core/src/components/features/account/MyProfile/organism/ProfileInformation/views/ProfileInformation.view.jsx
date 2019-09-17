@@ -124,21 +124,6 @@ class ProfileInformation extends React.PureComponent {
         </Row>
 
         <Row fullBleed className="elem-pt-LRG">
-          {userSurvey && userSurvey.getIn(['0', '0']) && (
-            <Col
-              colSize={{
-                small: 6,
-                medium: 4,
-                large: 6,
-              }}
-              ignoreGutter={{
-                small: true,
-              }}
-              className="profileInfoCol elem-mb-XL"
-            >
-              <AboutYouInfo labels={labels} userSurvey={userSurvey} />
-            </Col>
-          )}
           <Col
             colSize={{
               small: 6,
@@ -151,6 +136,20 @@ class ProfileInformation extends React.PureComponent {
             className="profileInfoCol elem-mb-XL"
           >
             <ChangePasswordInfo labels={labels} />
+          </Col>
+
+          <Col
+            colSize={{
+              small: 6,
+              medium: 4,
+              large: 6,
+            }}
+            ignoreGutter={{
+              small: true,
+            }}
+            className="profileInfoCol elem-mb-XL"
+          >
+            <BirthdaySaving labels={labels} childrenBirthdays={childrenBirthdays} />
           </Col>
         </Row>
 
@@ -178,19 +177,21 @@ class ProfileInformation extends React.PureComponent {
               <MyFavoriteStore labels={labels} defaultStore={defaultStore} />
             </Col>
           )}
-          <Col
-            colSize={{
-              small: 6,
-              medium: 4,
-              large: 6,
-            }}
-            ignoreGutter={{
-              small: true,
-            }}
-            className="profileInfoCol elem-mb-XL"
-          >
-            <BirthdaySaving labels={labels} childrenBirthdays={childrenBirthdays} />
-          </Col>
+          {userSurvey && userSurvey.getIn(['0', '0']) && (
+            <Col
+              colSize={{
+                small: 6,
+                medium: 4,
+                large: 6,
+              }}
+              ignoreGutter={{
+                small: true,
+              }}
+              className="profileInfoCol elem-mb-XL"
+            >
+              <AboutYouInfo labels={labels} userSurvey={userSurvey} />
+            </Col>
+          )}
         </Row>
         <Row fullBleed className="elem-pb-MED">
           <Col

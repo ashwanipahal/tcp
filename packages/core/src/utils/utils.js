@@ -386,7 +386,7 @@ export const getLabelValue = (labelState, labelKey, subCategory, category) => {
 
 export const getErrorSelector = (state, labels, errorKey) => {
   const errorParameters = state && state.getIn(['errorParameters', '0']);
-  const errorCode = state && state.get('errorCode');
+  const errorCode = state && state.get('errorKey');
   if (
     (errorParameters && getLabelValue(labels, `${errorKey}_${errorParameters}`)) ||
     (errorCode && getLabelValue(labels, `${errorKey}_${errorCode}`))

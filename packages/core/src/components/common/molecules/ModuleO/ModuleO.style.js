@@ -11,7 +11,6 @@ export default css`
   .product-wishlist-container,
   .product-title-container,
   .color-chips-container,
-  .fulfillment-section,
   .loyalty-text-container {
     display: none;
   }

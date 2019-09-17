@@ -1,18 +1,23 @@
 import { connect } from 'react-redux';
-import { fetchRecommendationsData } from './Recommendations.actions';
-import RecommendationsView from '../Recommendations';
-import { getLabelValue } from '../../../../../utils';
-import { openPickupModalWithValues } from '../../../organisms/PickupStoreModal/container/PickUpStoreModal.actions';
+import { getLabelValue } from '@tcp/core/src/utils';
+import { openPickupModalWithValues } from '@tcp/core/src/components/common/organisms/PickupStoreModal/container/PickUpStoreModal.actions';
+import { fetchRecommendationsData } from '@tcp/core/src/components/common/molecules/Recommendations/container/Recommendations.actions';
 import {
   getProducts,
   getLoadedProductsCount,
   getLabelsProductListing,
-} from './Recommendations.selector';
+} from '@tcp/core/src/components/common/molecules/Recommendations/container/Recommendations.selector';
+import RecommendationsView from '../Recommendations';
 
-const mapStateToProps = state => {
+const mapStateToProps = (state, ownProps) => {
   return {
     products: getProducts(state),
-    headerLabel: getLabelValue(state.Labels, 'HEADER_LABEL', 'recommendations', 'global'),
+    moduleOHeaderLabel:
+      ownProps.headerLabel ||
+      getLabelValue(state.Labels, 'MODULE_O_HEADER_LABEL', 'recommendations', 'global'),
+    modulePHeaderLabel:
+      ownProps.headerLabel ||
+      getLabelValue(state.Labels, 'MODULE_P_HEADER_LABEL', 'recommendations', 'global'),
     ctaText: getLabelValue(state.Labels, 'CTA_TEXT', 'recommendations', 'global'),
     ctaTitle: getLabelValue(state.Labels, 'CTA_TITLE', 'recommendations', 'global'),
     ctaUrl: getLabelValue(state.Labels, 'CTA_URL', 'recommendations', 'global'),

@@ -29,6 +29,22 @@ export default {
                 text: 'MORE FITS.',
                 style: 'style1',
               },
+            ],
+            link: {
+              url: '/c/girls-denim-bottoms',
+              text: '',
+              title: '',
+              target: '',
+              external: 0,
+              action: '',
+            },
+            icon: {
+              icon: '',
+              placement: '',
+            },
+          },
+          {
+            textItems: [
               {
                 text: 'SLIM, PLUS & HUSKY',
                 style: 'style2',
