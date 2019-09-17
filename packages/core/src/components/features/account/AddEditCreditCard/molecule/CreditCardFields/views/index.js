@@ -1,1 +1,1 @@
-export { default } from './CreditCardFields.view';
+export { default } from './CreditCardFields.view.native';

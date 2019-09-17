@@ -39,6 +39,16 @@ exports[`MiniBagBody component renders main component correctly 1`] = `
           >
             View bag(1)
           </Styled(Anchor)>
+          <Styled(Anchor)
+            anchorVariation="primary"
+            className="elem-ml-MED"
+            data-locator="cartitem-saveforlater"
+            fontSizeVariation="medium"
+            noLink={true}
+            underline={true}
+          >
+            undefined(undefined)
+          </Styled(Anchor)>
         </Styled(BodyCopy)>
       </Styled(Col)>
     </Styled(Row)>
