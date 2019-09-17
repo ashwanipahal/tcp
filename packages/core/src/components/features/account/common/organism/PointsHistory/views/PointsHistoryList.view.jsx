@@ -76,6 +76,7 @@ const PointsHistoryList = ({ className, labels, pointHistory }) => {
                 fontFamily="secondary"
                 className="list-fontsizes"
                 fontWeight="regular"
+                textAlign="center"
               >
                 {pointHistoryRow.pointsEarned}
               </BodyCopy>

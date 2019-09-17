@@ -9,6 +9,7 @@ const ignorePsuedoCodeDir = [
   '/StoreSummaryComponents/',
   '/ProductDetail/',
   '/SearchDetail/',
+  '/OutfitDetail/',
   '/services/abstractors/productListing/',
   '/services/abstractors/common/recommendations/',
   '/ProductListingPage/',
