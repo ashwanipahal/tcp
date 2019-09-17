@@ -69,7 +69,7 @@ const PromoBanner = props => {
             if (
               style === 'percentage_wrapped_extra_large' ||
               style === 'percentage_wrapped_large' ||
-              style === 'percentage_wrapped_xl_black'
+              style === 'percentage_all_wrapped_normal'
             ) {
               const percentageTexts = text.split(' ');
               promoText = (

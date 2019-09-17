@@ -381,7 +381,7 @@ export default css`
   /*
   * TODO: Update this class name in CMS
   */
-  .percentage_wrapped_xl_black {
+  .percentage_all_wrapped_normal {
     color: ${props => props.theme.colorPalette.black};
     display: inline-block;
     font-family: ${props => props.theme.typography.fonts.primary};
@@ -390,13 +390,13 @@ export default css`
     text-align: center;
     transform: translateX(-18px);
 
-    .percentage_wrapped_xl_black-1 {
+    .percentage_all_wrapped_normal-1 {
       font-size: ${props => props.theme.typography.fontSizes.fs28};
       position: absolute;
       top: ${props => props.theme.spacing.ELEM_SPACING.XXS};
     }
 
-    .percentage_wrapped_xl_black-2 {
+    .percentage_all_wrapped_normal-2 {
       font-size: ${props => props.theme.typography.fontSizes.fs18};
       position: absolute;
       bottom: ${props => props.theme.spacing.ELEM_SPACING.XS};
@@ -405,27 +405,27 @@ export default css`
     @media ${props => props.theme.mediaQuery.medium} {
       transform: translateX(-50px);
 
-      .percentage_wrapped_xl_black-0 {
+      .percentage_all_wrapped_normal-0 {
         font-size: 152px;
       }
 
-      .percentage_wrapped_xl_black-1 {
+      .percentage_all_wrapped_normal-1 {
         font-size: 88px;
         top: ${props => props.theme.spacing.ELEM_SPACING.MED};
       }
 
-      .percentage_wrapped_xl_black-2 {
+      .percentage_all_wrapped_normal-2 {
         font-size: ${props => props.theme.typography.fontSizes.fs48};
         bottom: ${props => props.theme.spacing.ELEM_SPACING.LRG};
       }
     }
 
     @media ${props => props.theme.mediaQuery.large} {
-      .percentage_wrapped_xl_black-1 {
+      .percentage_all_wrapped_normal-1 {
         top: ${props => props.theme.spacing.ELEM_SPACING.MED};
       }
 
-      .percentage_wrapped_xl_black-2 {
+      .percentage_all_wrapped_normal-2 {
         bottom: ${props => props.theme.spacing.ELEM_SPACING.LRG};
       }
     }

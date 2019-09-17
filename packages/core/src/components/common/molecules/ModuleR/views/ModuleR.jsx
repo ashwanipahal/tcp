@@ -10,21 +10,31 @@ import { getLocator, redirectToPdp } from '../../../../../utils';
 import { mediaQuery } from '../../../../../../styles/themes/TCP/mediaQuery';
 import moduleRStyle, { ImageGridCol } from '../styles/ModuleR.style';
 
+/**
+ * @class ModuleR - global reusable component will display featured
+ * category module with category links and featured product images
+ * This component is plug and play at any given slot in layout by passing required data
+ * @param {productTabList} productTabList the list of data for tabs
+ * @param {headerText} headerText the list of data for header
+ * @param {promoBanner} promoBanner promo banner data
+ */
 class ModuleR extends React.PureComponent {
   constructor(props) {
     super(props);
 
     this.state = {
       selectedCategoryId: null,
+      currentTabItem: {},
     };
   }
 
   /*
     This method is to update the state with selected category Id.
   */
-  onProductTabChange = catId => {
+  onProductTabChange = (catId, tabItem) => {
     this.setState({
       selectedCategoryId: catId,
+      currentTabItem: tabItem,
     });
   };
 
@@ -72,35 +82,8 @@ class ModuleR extends React.PureComponent {
   };
 
   /*
-    This method is to get the list of category items coming from CMS
+    This method is to return the Image grid item
   */
-  getCategoryList() {
-    const { divTabs } = this.props;
-
-    return divTabs.map(item => {
-      const {
-        category: { cat_id: catId },
-        text: { text },
-      } = item;
-      return { text, catId };
-    });
-  }
-
-  /*
-    This method is to get the list of tabs data coming from CMS
-  */
-  getDivTabMap() {
-    const { divTabs } = this.props;
-    return divTabs.reduce((map, item) => {
-      const {
-        category: { cat_id: catId },
-      } = item;
-      const tabsMap = map;
-      tabsMap[catId] = item;
-      return tabsMap;
-    }, {});
-  }
-
   getImageGrid = selectedProductList => {
     return (
       <Row className="image-items-container">
@@ -145,13 +128,41 @@ class ModuleR extends React.PureComponent {
     );
   };
 
+  getCurrentCTAButton() {
+    const { currentTabItem: { singleCTAButton: currentSingleCTAButton } = {} } = this.state;
+
+    return currentSingleCTAButton ? (
+      <Row centered>
+        <Col
+          className="button-wrapper"
+          colSize={{
+            small: 4,
+            medium: 2,
+            large: 2,
+          }}
+        >
+          {currentSingleCTAButton ? (
+            <Anchor
+              noLink
+              to={currentSingleCTAButton.url}
+              target={currentSingleCTAButton.target}
+              asPath={currentSingleCTAButton.url}
+              dataLocator={getLocator('moduleR_cta_btn')}
+            >
+              <Button buttonVariation="fixed-width" className="cta-btn">
+                {currentSingleCTAButton.text}
+              </Button>
+            </Anchor>
+          ) : null}
+        </Col>
+      </Row>
+    ) : null;
+  }
+
   render() {
-    const { className, productTabList, headerText, layout } = this.props;
-    const divTabsMap = this.getDivTabMap();
+    const { className, divTabs, productTabList, headerText, layout } = this.props;
     const promoComponent = this.getPromoComponent();
     const { selectedCategoryId } = this.state;
-    const selectedDivTab = divTabsMap[selectedCategoryId] || {};
-    const selectedSingleCTAButton = selectedDivTab.singleCTAButton;
     let selectedProductList = productTabList[selectedCategoryId] || [];
 
     if (selectedProductList.length) {
@@ -168,13 +179,15 @@ class ModuleR extends React.PureComponent {
               large: 12,
             }}
           >
-            <LinkText
-              component="div"
-              headerText={headerText}
-              className="promo-header"
-              headingClass="moduleR-promo-header"
-              dataLocator={getLocator('moduleR_header_text')}
-            />
+            {headerText ? (
+              <LinkText
+                component="div"
+                headerText={headerText}
+                className="promo-header"
+                headingClass="moduleR-promo-header"
+                dataLocator={getLocator('moduleR_header_text')}
+              />
+            ) : null}
           </Col>
           {layout === 'alt' ? <div className="promo-wrapper">{promoComponent}</div> : null}
           <Col
@@ -186,35 +199,13 @@ class ModuleR extends React.PureComponent {
           >
             <ProductTabList
               onProductTabChange={this.onProductTabChange}
-              categoryList={this.getCategoryList()}
+              tabItems={divTabs}
               dataLocator={getLocator('moduleR_cta_link')}
             />
           </Col>
         </Row>
         {this.getImageGrid(selectedProductList)}
-        <Row centered>
-          <Col
-            className="button-wrapper"
-            colSize={{
-              small: 4,
-              medium: 2,
-              large: 2,
-            }}
-          >
-            {selectedSingleCTAButton ? (
-              <Anchor
-                noLink
-                to="/c/toddler-girl-bottoms"
-                asPath="/c/toddler-girl-bottoms"
-                dataLocator={getLocator('moduleR_cta_btn')}
-              >
-                <Button buttonVariation="fixed-width" className="cta-btn">
-                  {selectedSingleCTAButton.text}
-                </Button>
-              </Anchor>
-            ) : null}
-          </Col>
-        </Row>
+        {this.getCurrentCTAButton()}
       </Grid>
     );
   }

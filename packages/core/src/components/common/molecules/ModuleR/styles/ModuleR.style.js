@@ -45,6 +45,10 @@ export default css`
     margin: 0 auto;
   }
 
+  .image-item-wrapper {
+    margin-top: ${props => props.theme.spacing.ELEM_SPACING.SM};
+  }
+
   .button-wrapper {
     margin-top: ${props => props.theme.spacing.ELEM_SPACING.MED};
   }

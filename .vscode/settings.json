@@ -1,3 +1,11 @@
 {
-  "javascript.validate.enable": false
+  "javascript.validate.enable": false,
+  "atlascode.jira.workingSite": {
+    "baseUrlSuffix": "atlassian.net"
+  },
+  "atlascode.jira.workingProject": {
+    "id": "12775",
+    "name": "Responsive Web Design",
+    "key": "RWD"
+  }
 }
