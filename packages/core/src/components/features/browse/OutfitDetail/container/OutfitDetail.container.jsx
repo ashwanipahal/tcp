@@ -1,25 +1,33 @@
 import React from 'react';
 import { connect } from 'react-redux';
+import { PropTypes } from 'prop-types';
 import { withRouter } from 'next/router'; // eslint-disable-line
 import OutfitDetail from '../views/index';
+import getLabels from './OutfitDetail.selectors';
 
 class OutfitListingContainer extends React.PureComponent {
   componentDidMount() {}
 
   render() {
-    return <OutfitDetail />;
+    const { labels } = this.props;
+    return <OutfitDetail labels={labels} />;
   }
 }
 
-function mapStateToProps() {}
+const mapStateToProps = state => {
+  return {
+    labels: getLabels(state),
+  };
+};
 
 function mapDispatchToProps() {}
 
+OutfitListingContainer.propTypes = {
+  labels: PropTypes.objectOf(PropTypes.oneOfType([PropTypes.string])),
+};
+
 OutfitListingContainer.defaultProps = {
-  productDetails: [],
-  breadCrumbs: {},
-  longDescription: '',
-  ratingsProductId: '',
+  labels: {},
 };
 
 export default withRouter(
