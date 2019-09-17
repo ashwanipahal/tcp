@@ -268,6 +268,10 @@ const endpoints = {
     URI: PRODUCTS_URI.PRODUCTS_AUTOSUGGEST,
     unbxd: true,
   },
+  getVenmoClientToken: {
+    method: 'GET',
+    URI: 'v2/venmo/getVenmoClientToken',
+  },
   getAllSfl: {
     method: 'GET',
     URI: SAVE_FOR_LATER,

@@ -5,9 +5,11 @@ import selectors from './Checkout.selector';
 import {
   setShippingMethodAndAddressId,
   briteVerifyStatusExtraction,
+  getVenmoToken,
 } from '../../../../../services/abstractors/CnC/index';
 import endpoints from '../../../../../service/endpoint';
 import emailSignupAbstractor from '../../../../../services/abstractors/common/EmailSmsSignup/EmailSmsSignup';
+
 import { getUserEmail } from '../../../account/User/container/User.selectors';
 import { getAddressListState } from '../../../account/AddressBook/container/AddressBook.selectors';
 import {
@@ -15,7 +17,13 @@ import {
   updateAddressPut,
 } from '../../../../common/organisms/AddEditAddress/container/AddEditAddress.saga';
 import { getAddressList } from '../../../account/AddressBook/container/AddressBook.saga';
-import { setOnFileAddressKey, setGiftWrap, emailSignupStatus } from './Checkout.action';
+import {
+  setOnFileAddressKey,
+  setGiftWrap,
+  getVenmoClientTokenSuccess,
+  getVenmoClientTokenError,
+  emailSignupStatus,
+} from './Checkout.action';
 import utility from '../util/utility';
 import { CHECKOUT_ROUTES } from '../Checkout.constants';
 import {
@@ -204,5 +212,14 @@ export function* validateAndSubmitEmailSignup(emailAddress, field1) {
   if (emailAddress) {
     const statusCode = call(briteVerifyStatusExtraction, emailAddress);
     yield subscribeEmailAddress({ payload: emailAddress }, statusCode, field1);
+  }
+}
+
+export function* getVenmoClientTokenSaga(payload) {
+  try {
+    const response = yield call(getVenmoToken, payload.payload);
+    yield put(getVenmoClientTokenSuccess(response));
+  } catch (ex) {
+    yield put(getVenmoClientTokenError({ error: 'Error' }));
   }
 }
