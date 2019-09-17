@@ -334,12 +334,8 @@ function* submitOrderForProcessing(/* formData */) {
   //   );
   //   pendingPromises.push(runPromisesInSerial(localPromises));
   // }
-  try {
-    yield all(pendingPromises);
-    yield call(submitOrderProcessing);
-  } catch (err) {
-    this.orderSubmitErrorHandler(err);
-  }
+  yield all(pendingPromises);
+  yield call(submitOrderProcessing);
 }
 
 export default submitOrderForProcessing;

@@ -715,7 +715,7 @@ const getUserDetailForGC = (billingAddress, orderConfirmationDetails, addressDet
 };
 
 const updateOrderDetail = ({
-  orderConfirmationDetails1,
+  orderConfirmationDetails: orderConfirmationDetails1,
   orderSummary,
   shipping,
   sthOrderPlaced,
