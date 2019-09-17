@@ -42,4 +42,8 @@ export default {
       dataLocatorCTA: 'moduleP_cta_btn',
     },
   },
+  variations: {
+    moduleO: 'moduleO',
+    moduleP: 'moduleP',
+  },
 };

@@ -7,7 +7,6 @@ import { Col, Row, Heading } from '@tcp/core/src/components/common/atoms';
 import ButtonCTA from '@tcp/core/src/components/common/molecules/ButtonCTA';
 import { getIconPath } from '@tcp/core/src/utils';
 import withStyles from '@tcp/core/src/components/common/hoc/withStyles';
-import withLazyLoad from '@tcp/core/src/components/common/hoc/withLazyLoad';
 import errorBoundary from '@tcp/core/src/components/common/hoc/withErrorBoundary';
 import config from './config';
 import style from './Recommendations.style';
@@ -23,9 +22,9 @@ const RecommendationComponentVariation = dynamic(
     }),
     render: (dynamicComponentProps, { ModuleO, ModuleP }) => {
       switch (dynamicComponentProps.variation) {
-        case 'moduleO':
+        case config.variations.moduleO:
           return <ModuleO {...dynamicComponentProps} />;
-        case 'moduleP':
+        case config.variations.moduleP:
           return <ModuleP {...dynamicComponentProps} />;
         default:
           return <ModuleO {...dynamicComponentProps} />;
@@ -48,7 +47,8 @@ class Recommendations extends Component {
 
   renderRecommendationVariation(variation) {
     const {
-      headerLabel,
+      moduleOHeaderLabel,
+      modulePHeaderLabel,
       products,
       className,
       loadedProductCount,
@@ -63,6 +63,7 @@ class Recommendations extends Component {
 
     const priceOnlyClass = priceOnly ? 'price-only' : '';
     const params = config.params[variation];
+    const headerLabel = config.variations.moduleO ? moduleOHeaderLabel : modulePHeaderLabel;
 
     return (
       products && (
@@ -168,7 +169,8 @@ class Recommendations extends Component {
 
 Recommendations.propTypes = {
   loadRecommendations: PropTypes.func.isRequired,
-  headerLabel: PropTypes.string.isRequired,
+  moduleOHeaderLabel: PropTypes.string.isRequired,
+  modulePHeaderLabel: PropTypes.string.isRequired,
   products: PropTypes.arrayOf(PropTypes.oneOfType(PropTypes.shape({}))).isRequired,
   className: PropTypes.string.isRequired,
   loadedProductCount: PropTypes.number.isRequired,
@@ -192,4 +194,4 @@ Recommendations.defaultProps = {
 };
 
 export { Recommendations as RecommendationsVanilla };
-export default withStyles(errorBoundary(withLazyLoad(Recommendations)), style);
+export default withStyles(errorBoundary(Recommendations), style);
