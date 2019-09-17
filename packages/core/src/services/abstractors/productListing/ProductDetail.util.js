@@ -70,7 +70,7 @@ const breadCrumbFactory = state => {
 
 const routingInfoStoreView = {
   getOriginImgHostSetting: () => {
-    return 'https://www.childrensplace.com';
+    return 'https://test4.childrensplace.com';
   },
 };
 
