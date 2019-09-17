@@ -16,7 +16,7 @@ describe('StoreLocatorReducer', () => {
       type: STORE_LOCATOR_CONSTANTS.STORES_SET_SUGGESTED_STORES,
       payload: suggestedStores,
     };
-    const storeSuggestedStore = StoreLocatorReducer(fromJS(suggestedStores), action);
+    const storeSuggestedStore = StoreLocatorReducer(state, action);
     expect(storeSuggestedStore.get('suggestedStores')).toBe(suggestedStores);
   });
 });
