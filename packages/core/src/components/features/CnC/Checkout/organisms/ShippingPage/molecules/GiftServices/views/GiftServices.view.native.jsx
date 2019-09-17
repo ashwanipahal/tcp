@@ -1,6 +1,6 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import { View } from 'react-native';
+import { View, Text } from 'react-native';
 import { Field, change } from 'redux-form';
 import Anchor from '@tcp/core/src/components/common/atoms/Anchor';
 import DropDown from '@tcp/core/src/components/common/atoms/DropDown/views/DropDown.native';
@@ -18,7 +18,7 @@ import {
   PriceWrapper,
   ImageBrandStyle,
   RadioButtonWrapperInner,
-  // StyledGiftDetails
+  StyledGiftDetails,
 } from '../styles/GiftServices.style.native';
 import InputCheckbox from '../../../../../../../../common/atoms/InputCheckbox';
 import LabeledRadioButton from '../../../../../../../../common/atoms/LabeledRadioButton';
@@ -44,14 +44,16 @@ class GiftServices extends React.PureComponent {
 
   handleChange = () => {
     const { isChecked } = this.state;
-    const { dispatch } = this.props;
+    const { dispatch, giftWrapOptions } = this.props;
     this.setState({
       isChecked: !isChecked,
       message: '',
     });
+    const parsedDefaultSelectedGiftService = JSON.parse(giftWrapOptions);
+    const defaultSelectedGiftService = parsedDefaultSelectedGiftService.giftOptions[0].catEntryId;
     if (!isChecked && dispatch) {
       dispatch(change('GiftServices', `message`, ''));
-      dispatch(change('GiftServices', `optionId`, 'standard'));
+      dispatch(change('GiftServices', `optionId`, defaultSelectedGiftService));
     }
   };
 
@@ -63,49 +65,56 @@ class GiftServices extends React.PureComponent {
   };
 
   getServicesOptions = (giftWrapOptions, labels) => {
+    const gymboreeBrandName = 'GYM';
+    const tcpBrandName = 'TCP';
     const parsedGiftWrapOptions = JSON.parse(giftWrapOptions);
     const getServicesOptionsMap = parsedGiftWrapOptions.giftOptions;
     const { isGymboreeBrand } = this.state;
-    const brand = isGymboreeBrand ? 'GYM' : 'TCP';
+    const { currencySymbol } = this.props;
+    const brand = isGymboreeBrand ? gymboreeBrandName : tcpBrandName;
+    const labelComponent = servicesMap => hideLongDescription => (
+      <>
+        <ServiceDetailWrapper>
+          <View>
+            <BodyCopy
+              dataLocator="add-gift-services-details-lbl"
+              fontSize="fs16"
+              mobileFontFamily="secondary"
+              fontWeight="semibold"
+              text={servicesMap.name}
+              textAlign="left"
+            />
+          </View>
+          <PriceWrapper>
+            <BodyCopy
+              dataLocator="add-gift-services-details-lbl"
+              fontSize="fs16"
+              mobileFontFamily="secondary"
+              fontWeight="semibold"
+              text={
+                parseInt(servicesMap.price, 10) === 0
+                  ? labels.tcpOptionPrice1
+                  : `${currencySymbol}${servicesMap.price}`
+              }
+              textAlign="right"
+            />
+          </PriceWrapper>
+        </ServiceDetailWrapper>
+        {!hideLongDescription && (
+          <StyledGiftDetails>
+            <Text>{servicesMap.longDescription}</Text>
+          </StyledGiftDetails>
+        )}
+      </>
+    );
+
     return (
       getServicesOptionsMap &&
       getServicesOptionsMap
         .filter(servicesMap => servicesMap.itemBrand === brand || servicesMap.itemBrand === 'ALL')
         .map(servicesMap => {
           return {
-            label: (
-              <>
-                <ServiceDetailWrapper>
-                  <View>
-                    <BodyCopy
-                      dataLocator="add-gift-services-details-lbl"
-                      fontSize="fs16"
-                      mobileFontFamily="secondary"
-                      fontWeight="semibold"
-                      text={servicesMap.name}
-                      textAlign="left"
-                    />
-                  </View>
-                  <PriceWrapper>
-                    <BodyCopy
-                      dataLocator="add-gift-services-details-lbl"
-                      fontSize="fs16"
-                      mobileFontFamily="secondary"
-                      fontWeight="semibold"
-                      text={
-                        servicesMap.price === '0.00'
-                          ? labels.tcpOptionPrice1
-                          : `$${servicesMap.price}`
-                      }
-                      textAlign="right"
-                    />
-                  </PriceWrapper>
-                </ServiceDetailWrapper>
-                {/* <StyledGiftDetails>
-                  <Text>{servicesMap.longDescription}</Text>
-                </StyledGiftDetails> */}
-              </>
-            ),
+            label: labelComponent(servicesMap),
             value: servicesMap.catEntryId,
           };
         })
@@ -129,6 +138,7 @@ class GiftServices extends React.PureComponent {
   getSelectedGiftService = (giftWrapOptions, catEntryId, labels) => {
     const parsedGiftWrapOptions = JSON.parse(giftWrapOptions);
     const getServicesOptionsMap = parsedGiftWrapOptions.giftOptions;
+    const { currencySymbol } = this.props;
     return (
       getServicesOptionsMap &&
       getServicesOptionsMap
@@ -155,9 +165,9 @@ class GiftServices extends React.PureComponent {
                       mobileFontFamily="secondary"
                       fontWeight="semibold"
                       text={
-                        servicesMap.price === '0.00'
+                        parseInt(servicesMap.price, 10) === 0
                           ? labels.tcpOptionPrice1
-                          : `$${servicesMap.price}`
+                          : `${currencySymbol}${servicesMap.price}`
                       }
                       textAlign="right"
                     />
@@ -177,7 +187,6 @@ class GiftServices extends React.PureComponent {
     const dropDownStyle = {
       height: 30,
       border: 2,
-      borderColor: '#1a1a1a',
     };
     const itemStyle = {
       height: 90,
@@ -185,7 +194,6 @@ class GiftServices extends React.PureComponent {
       paddingRight: 10,
       color: 'black',
       border: 2,
-      borderColor: '#1a1a1a',
     };
     const { detailStatus, isGymboreeBrand, isChecked, message, selectedGiftService } = this.state;
     return (
@@ -324,6 +332,7 @@ GiftServices.propTypes = {
   dispatch: PropTypes.func,
   giftWrapOptions: PropTypes.shape({}).isRequired,
   initialValues: PropTypes.shape({}),
+  currencySymbol: PropTypes.string.isRequired,
 };
 
 GiftServices.defaultProps = {

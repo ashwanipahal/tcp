@@ -173,7 +173,7 @@ class DropDown extends React.PureComponent<Props> {
     }
     return (
       <DropDownItemContainer onPress={() => this.onDropDownItemClick(item)} style={itemStyle}>
-        {typeof label !== 'object' ? (
+        {typeof label !== 'function' ? (
           <BodyCopy
             mobileFontFamily="secondary"
             fontSize="fs13"
@@ -183,7 +183,7 @@ class DropDown extends React.PureComponent<Props> {
             text={label}
           />
         ) : (
-          <View>{label}</View>
+          <View>{label()}</View>
         )}
       </DropDownItemContainer>
     );
@@ -242,7 +242,7 @@ class DropDown extends React.PureComponent<Props> {
           pointerEvents={disabled ? 'none' : 'auto'}
         >
           <HeaderContainer>
-            {typeof selectedLabelState !== 'object' ? (
+            {typeof selectedLabelState !== 'function' ? (
               <BodyCopy
                 mobileFontFamily="secondary"
                 fontSize="fs13"
@@ -252,7 +252,7 @@ class DropDown extends React.PureComponent<Props> {
                 text={selectedLabelState}
               />
             ) : (
-              <SelectedLabelView>{selectedLabelState}</SelectedLabelView>
+              <SelectedLabelView>{selectedLabelState(true)}</SelectedLabelView>
             )}
           </HeaderContainer>
           <Image source={dropDownIsOpen ? upIcon : downIcon} />

@@ -48,7 +48,7 @@ const AddMessageWrapper = styled.View`
 const InputBoxWrapper = styled.TextInput`
   height: 146px;
   width: 100%;
-  border: 1px solid #c3c3c3;
+  border: 1px solid ${props => props.theme.colors.FOOTER.DIVIDER};
 `;
 
 const ServiceDetailWrapper = styled.View`
