@@ -90,7 +90,7 @@ exports[`HomePageView should render correctly 1`] = `
             "crop_m": "",
             "crop_t": "",
             "title": "Toddler Girl title",
-            "url": "https://res.cloudinary.com/tcp-dam-test/image/upload/v1558543115/ecom/assets/content/tcp/us/home/moduled/US-HP-050519-MINIME3_vmfhnu.jpg",
+            "url": "https://test5.childrensplace.com/image/upload/v1558543115/ecom/assets/content/tcp/us/home/moduled/US-HP-050519-MINIME3_vmfhnu.jpg",
           },
         },
         Object {
@@ -124,7 +124,7 @@ exports[`HomePageView should render correctly 1`] = `
             "crop_m": "",
             "crop_t": "",
             "title": "Tod Boy title",
-            "url": "https://res.cloudinary.com/tcp-dam-test/image/upload/v1558543115/ecom/assets/content/tcp/us/home/moduled/US-HP-050519-MINIME3_vmfhnu.jpg",
+            "url": "https://test5.childrensplace.com/image/upload/v1558543115/ecom/assets/content/tcp/us/home/moduled/US-HP-050519-MINIME3_vmfhnu.jpg",
           },
         },
         Object {
@@ -199,7 +199,7 @@ exports[`HomePageView should render correctly 1`] = `
             "crop_m": "",
             "crop_t": "",
             "title": "Boys",
-            "url": "https://tcp-dam-test-ressh.cloudinary.com/image/upload/v1562731929/Image_14_bp7ih0.jpg",
+            "url": "https://test5.childrensplace.com/image/upload/v1562731929/Image_14_bp7ih0.jpg",
           },
           "link": Object {
             "action": "",
@@ -217,7 +217,7 @@ exports[`HomePageView should render correctly 1`] = `
             "crop_m": "c_crop,g_face:center,q_auto:best,w_962",
             "crop_t": "c_crop,g_face:center,q_auto:best,w_962",
             "title": "Girls",
-            "url": "https://tcp-dam-test-ressh.cloudinary.com/image/upload/v1565145744/mod-h-kids_b9ivyr.png",
+            "url": "https://test5.childrensplace.com/image/upload/v1565145744/mod-h-kids_b9ivyr.png",
           },
           "link": Object {
             "action": "",

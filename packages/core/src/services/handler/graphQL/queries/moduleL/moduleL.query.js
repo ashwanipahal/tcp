@@ -43,8 +43,8 @@ const buildQuery = ({ slot, contentId }) => `
       }
 
       imageGrid {
-        class {
-          class
+        color {
+          color
         }
         image {
           url

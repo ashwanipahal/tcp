@@ -1,8 +1,36 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
 exports[`ProductDetailView component should renders correctly 1`] = `
-<View>
-  <Text />
-  <Text />
-</View>
+<StyledNativeComponent
+  currentProduct={
+    Object {
+      "name": "",
+      "shortDescription": "",
+    }
+  }
+  forwardedComponent={
+    Object {
+      "$$typeof": Symbol(react.forward_ref),
+      "_foldedDefaultProps": Object {
+        "currentProduct": Object {},
+      },
+      "attrs": Array [],
+      "displayName": "Styled(ProductDetailView)",
+      "inlineStyle": InlineStyle {
+        "rules": Array [
+          "
+    ",
+          ";
+  ",
+        ],
+      },
+      "render": [Function],
+      "styledComponentId": "StyledNativeComponent",
+      "target": [Function],
+      "withComponent": [Function],
+    }
+  }
+  forwardedRef={null}
+  selectedColorProductId=""
+/>
 `;
