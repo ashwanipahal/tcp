@@ -35,61 +35,90 @@ exports[`PointHistoryPage component should renders correctly 1`] = `
       />
     </Styled(Anchor)>
   </Styled(BodyCopy)>
-  <Styled(PageHeadingWithLinks)>
+  <Styled(FormPageHeading)
+    className="elem-mb-XL"
+    data-locator="historyPointsLbl"
+  />
+  <Styled(BodyCopy)
+    className="elem-mb-XXL elem-mt-XXL elem-pb-MED"
+    color="text.primary"
+    component="div"
+    fontFamily="primary"
+    fontSize={12}
+    fontWeight="regular"
+    letterSpacing="normal"
+    lineHeight="normal"
+    textAlign="left"
+  >
     <Styled(BodyCopy)
-      className="elem-pb-XXL"
+      className="hide-on-desktop hide-on-tablet elem-mb-LRG"
       color="text.primary"
-      component="div"
-      fontFamily="primary"
-      fontSize={12}
-      fontWeight="regular"
+      component="p"
+      fontFamily="secondary"
+      fontSize="fs16"
+      fontWeight="extrabold"
       letterSpacing="normal"
       lineHeight="normal"
       textAlign="left"
+    />
+    <Connect(PointsHistoryContainer)
+      labels={Object {}}
+      showFullHistory={true}
+      view="edit"
+    />
+  </Styled(BodyCopy)>
+  <Styled(BodyCopy)
+    className="history-section-separator hide-on-mobile elem-mb-XXL elem-mt-XXL"
+    color="text.primary"
+    component="div"
+    fontFamily="primary"
+    fontSize={12}
+    fontWeight="regular"
+    letterSpacing="normal"
+    lineHeight="normal"
+    textAlign="left"
+  />
+  <Styled(HistoryPointsRichText)
+    content=""
+  />
+  <Styled(Row)
+    className="elem-pt-XXL"
+  >
+    <Styled(Col)
+      className="anchor-wrapper"
+      colSize={
+        Object {
+          "large": 12,
+          "medium": 8,
+          "small": 6,
+        }
+      }
+      offsetLeft={
+        Object {
+          "large": 4,
+          "medium": 2,
+          "small": 1,
+        }
+      }
     >
-      <Styled(BodyCopy)
-        className="elem-mb-XXL elem-mt-XXL elem-pb-MED"
-        color="text.primary"
-        component="div"
-        fontFamily="primary"
-        fontSize={12}
-        fontWeight="regular"
-        letterSpacing="normal"
-        lineHeight="normal"
-        textAlign="left"
-      >
-        <Styled(BodyCopy)
-          className="hide-on-desktop hide-on-tablet elem-mb-LRG"
-          color="text.primary"
-          component="p"
-          fontFamily="secondary"
-          fontSize="fs16"
-          fontWeight="extrabold"
-          letterSpacing="normal"
-          lineHeight="normal"
-          textAlign="left"
-        />
-        <Connect(PointsHistoryContainer)
-          labels={Object {}}
-          showFullHistory={true}
-          view="edit"
-        />
-      </Styled(BodyCopy)>
-      <Styled(BodyCopy)
-        className="history-section-separator hide-on-mobile elem-mb-XXL elem-mt-XXL"
-        color="text.primary"
-        component="div"
-        fontFamily="primary"
-        fontSize={12}
-        fontWeight="regular"
-        letterSpacing="normal"
-        lineHeight="normal"
-        textAlign="left"
+      <Styled(Anchor)
+        anchorVariation="primary"
+        dataLocator="program_details_cta"
+        fontSizeVariation="large"
+        href="https://www.childrensplace.com/us/content/myplace-rewards-page"
+        noLink={true}
+        underline={true}
       />
-      <Styled(HistoryPointsRichText)
-        content=""
+      <Styled(Anchor)
+        anchorVariation="primary"
+        className="elem-ml-XL"
+        dataLocator="terms_condition_cta"
+        fontSizeVariation="large"
+        href="https://www.childrensplace.com/us/help-center/#termsAndConditionsli"
+        noLink={true}
+        underline={true}
       />
-    </Styled(BodyCopy)>
-  </Styled(PageHeadingWithLinks)>
+    </Styled(Col)>
+  </Styled(Row)>
 </Styled(BodyCopy)>
 `;
