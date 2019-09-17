@@ -5,10 +5,21 @@ import { CondensedHeaderVanilla } from '../CondensedHeader';
 
 utils.getBrand = jest.fn().mockReturnValue('tcp');
 
+const props = {
+  labels: {
+    accessibility: {
+      accountIconButton: 'Account',
+      cartIconButton: 'cart',
+      hamburgerMenu: 'menu',
+      searchIconButton: 'search',
+    },
+  },
+};
+
 describe('<CondensedHeaderVanilla />', () => {
   let Wrapper = '';
   beforeEach(() => {
-    Wrapper = shallow(<CondensedHeaderVanilla />);
+    Wrapper = shallow(<CondensedHeaderVanilla {...props} />);
   });
 
   test('Should match snapshot correctly', () => {

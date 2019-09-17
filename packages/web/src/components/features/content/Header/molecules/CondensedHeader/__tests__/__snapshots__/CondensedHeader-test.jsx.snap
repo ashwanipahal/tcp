@@ -1,6 +1,6 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`<CondensedHeaderVanilla /> Should match snapshot 1`] = `
+exports[`<CondensedHeaderVanilla /> Should match snapshot correctly 1`] = `
 <Fragment>
   <Styled(Row)
     className="undefined condensed-header content-wrapper"
@@ -21,7 +21,7 @@ exports[`<CondensedHeaderVanilla /> Should match snapshot 1`] = `
         imgSrc="/static/images/tcp-logo.svg"
       />
       <Styled(Image)
-        alt="hamburger-menu"
+        alt="menu"
         className="hamburger-menu"
         data-locator="menu_bar_icon"
         onClick={[Function]}
@@ -88,7 +88,7 @@ exports[`<CondensedHeaderVanilla /> Should match snapshot 1`] = `
         onClick={[Function]}
       >
         <Styled(Image)
-          alt="account"
+          alt="Account"
           className="rightLink"
           data-locator="user-icon"
           src="/static/images/user-icon-blue.svg"
@@ -101,10 +101,10 @@ exports[`<CondensedHeaderVanilla /> Should match snapshot 1`] = `
         id="cartIcon"
         noLink={true}
         onClick={[Function]}
-        to=""
+        to="#"
       >
         <Styled(Image)
-          alt="Product"
+          alt="cart"
           className="product-image"
           data-locator="addedtobag-bag-icon"
           src="/static/images/bag-icon-blue.svg"
@@ -131,5 +131,3 @@ exports[`<CondensedHeaderVanilla /> Should match snapshot 1`] = `
   />
 </Fragment>
 `;
-
-exports[`<CondensedHeaderVanilla /> Should match snapshot correctly 1`] = `""`;
