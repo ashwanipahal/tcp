@@ -129,7 +129,6 @@ export class BirthdaySavingsList extends PureComponent {
    * @description This function will handle showing of add Children Birthday Confirmation Modal
    */
   showAddModal = activeChild => {
-    this.getActiveChildOffset();
     this.setState({
       addModal: true,
       activeChild,
@@ -163,14 +162,18 @@ export class BirthdaySavingsList extends PureComponent {
     });
   };
 
-  getActiveChildOffset = () => {
+  getActiveChildOffset = selectedIndex => {
     if (document) {
-      const selector = document.querySelector('.emptyBirthdayCard__active');
-      const activeRect = selector && selector.getBoundingClientRect();
-      const { x, width } = activeRect;
-      return (x + width) / 2;
+      const birthdayList = document.querySelector('.birthdayList');
+      if (birthdayList && birthdayList.children[selectedIndex]) {
+        const t = birthdayList.children[selectedIndex];
+        return {
+          top: t.offsetTop + t.offsetHeight + 30,
+          left: t.offsetLeft + t.offsetWidth / 2,
+        };
+      }
     }
-    return 0;
+    return null;
   };
 
   render() {
@@ -201,7 +204,7 @@ export class BirthdaySavingsList extends PureComponent {
               <InfoMessage labels={labels} />
             </>
           )}
-          <Row fullBleed className="elem-mb-XS">
+          <Row fullBleed className="elem-mb-XS birthdayList">
             {birthdays.map((birthday, index) => {
               return (
                 <Col
@@ -284,7 +287,7 @@ export class BirthdaySavingsList extends PureComponent {
               closeAddModal={this.closeAddModal}
               onSubmit={addChildBirthday}
               addChildBirthdayLabels={labels}
-              offset={this.getActiveChildOffset()}
+              offset={this.getActiveChildOffset(selectedChild)}
             />
           )}
         </div>

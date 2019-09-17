@@ -1,6 +1,11 @@
 import { css } from 'styled-components';
 
 const styles = css`
+  position: absolute;
+  left: 0;
+  top: ${props => (props.offset ? `${props.offset.top}px` : 0)};
+  z-index: 1;
+
   input {
     background-color: ${props => props.theme.colorPalette.gray[500]};
   }
@@ -81,8 +86,8 @@ const styles = css`
 
   .addChildBirthdayTip {
     position: absolute;
-    left: ${props => props.offset};
-    top: ${props => props.theme.spacing.ELEM_SPACING.MED};
+    left: ${props => (props.offset ? `${props.offset.left - 11}px` : 0)};
+    top: -22px;
     width: 22px;
     height: 22px;
     transform: rotate(-315deg);
