@@ -2,11 +2,14 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import BodyCopy from '@tcp/core/src/components/common/atoms/BodyCopy';
 import Anchor from '@tcp/core/src/components/common/atoms/Anchor';
+import Row from '@tcp/core/src/components/common/atoms/Row';
+import Col from '@tcp/core/src/components/common/atoms/Col';
 import withStyles from '@tcp/core/src/components/common/hoc/withStyles';
 import styles from '../styles/PointsHistoryPage.view.style';
 import FormPageHeading from '../../common/molecule/FormPageHeading';
 import PointsHistoryList from '../../common/organism/PointsHistory';
 import internalEndpoints from '../../common/internalEndpoints';
+import externalEndpoints from '../../common/externalEndpoints';
 import HistoryPointsRichTextComponent from './HistoryPointsRichText.view';
 
 /**
@@ -51,6 +54,43 @@ export const PointsHistoryPageView = props => {
         className="history-section-separator hide-on-mobile elem-mb-XXL elem-mt-XXL"
       />
       <HistoryPointsRichTextComponent content={richTextContent} />
+      <Row className="elem-pt-XXL">
+        <Col
+          colSize={{
+            small: 6,
+            large: 12,
+            medium: 8,
+          }}
+          offsetLeft={{
+            small: 1,
+            large: 4,
+            medium: 2,
+          }}
+          className="anchor-wrapper"
+        >
+          <Anchor
+            fontSizeVariation="large"
+            underline
+            noLink
+            href={externalEndpoints.myPlaceRewardsPage}
+            anchorVariation="primary"
+            dataLocator="program_details_cta"
+          >
+            {labels.lbl_points_history_program_details}
+          </Anchor>
+          <Anchor
+            fontSizeVariation="large"
+            underline
+            noLink
+            href={externalEndpoints.termsAndConditionsPage}
+            anchorVariation="primary"
+            dataLocator="terms_condition_cta"
+            className="elem-ml-XL"
+          >
+            {labels.lbl_common_tnc}
+          </Anchor>
+        </Col>
+      </Row>
     </BodyCopy>
   );
 };

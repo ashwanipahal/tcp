@@ -8,6 +8,29 @@ exports[`CheckoutProgressIndicator component should renders correctly props not 
     dataLocator="billing-title"
   />
   <Connect(GiftCardsContainer) />
+  <div
+    className="payment-container"
+  >
+    <Connect(GiftCardsContainer)
+      cvvCodeRichText={null}
+      labels={Object {}}
+    />
+  </div>
+</div>
+`;
+
+exports[`CheckoutProgressIndicator component should renders correctly props not present and is Guest user 1`] = `
+<div
+  className=""
+>
+  <Styled(CheckoutSectionTitleDisplay)
+    dataLocator="billing-title"
+  />
   <Connect(GiftCardsContainer) />
+  <Connect(GuestBillingContainer)
+    cvvCodeRichText={null}
+    labels={Object {}}
+    shippingAddress={null}
+  />
 </div>
 `;

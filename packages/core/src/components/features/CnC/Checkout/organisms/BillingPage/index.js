@@ -1,1 +1,1 @@
-export { default } from './views/BillingPage.view';
+export { default } from './container';

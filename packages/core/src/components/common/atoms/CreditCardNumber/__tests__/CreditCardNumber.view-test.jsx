@@ -1,13 +1,13 @@
 import React from 'react';
 import { shallow } from 'enzyme';
-import { CreditCardNumber } from '../CreditCardNumber.view';
+import { CreditCardNumberVanilla } from '../views/CreditCardNumber.view';
 
 describe('CreditCardNumber component', () => {
   it('should renders correctly when cardType is present', () => {
     const props = {
       cardType: 'VISA',
     };
-    const component = shallow(<CreditCardNumber {...props} />);
+    const component = shallow(<CreditCardNumberVanilla {...props} />);
     expect(component).toMatchSnapshot();
   });
 
@@ -15,7 +15,7 @@ describe('CreditCardNumber component', () => {
     const props = {
       cardType: '',
     };
-    const component = shallow(<CreditCardNumber {...props} />);
+    const component = shallow(<CreditCardNumberVanilla {...props} />);
     expect(component).toMatchSnapshot();
   });
 });
