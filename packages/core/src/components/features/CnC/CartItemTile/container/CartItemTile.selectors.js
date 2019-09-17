@@ -1,3 +1,5 @@
+import { getLabelValue } from '@tcp/core/src/utils';
+
 export const getCartOrderList = state => {
   // needs to do it with get method.
   return state.CartPageReducer.getIn(['orderDetails', 'orderItems']);
@@ -165,10 +167,15 @@ export const getLabelsCartItemTile = state => {
         lbl_minibag_errorRemoveSoldoutHeader: removeSoldoutHeader,
       },
     },
-    checkout: {
-      bagPage: { lbl_sfl_actionLink: saveForLaterLink, lbl_sfl_maxLimitError: sflMaxLimitError },
-    },
   } = state.Labels;
+
+  const saveForLaterLink = getLabelValue(state.Labels, 'lbl_sfl_actionLink', 'bagPage', 'checkout');
+  const sflMaxLimitError = getLabelValue(
+    state.Labels,
+    'lbl_sfl_maxLimitError',
+    'bagPage',
+    'checkout'
+  );
 
   // const {
   //   bag: {

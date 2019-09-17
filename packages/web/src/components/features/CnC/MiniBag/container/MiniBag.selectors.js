@@ -55,5 +55,6 @@ export const getLabelsMiniBag = state => {
     ),
     viewSfl: getLabelValue(state.Labels, 'lbl_sfl_viewsfl', 'bagPage', 'checkout'),
     sflSuccess: getLabelValue(state.Labels, 'bl_sfl_actionSuccess', 'bagPage', 'checkout'),
+    tickIcon: getLabelValue(state.Labels, 'lbl_sfl_success_tickIcon', 'bagPage', 'checkout'),
   };
 };

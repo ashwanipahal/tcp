@@ -256,7 +256,7 @@ export function* addItemToSFL({ payload }) {
         yield put(getUserInfo());
       }
       yield put(removeCartItem(itemId));
-      yield delay(5000);
+      yield delay(BAGPAGE_CONSTANTS.ITEM_SFL_SUCCESS_MSG_TIMEOUT);
       yield put(BAG_PAGE_ACTIONS.setCartItemsSFL(false));
     }
   } catch (err) {

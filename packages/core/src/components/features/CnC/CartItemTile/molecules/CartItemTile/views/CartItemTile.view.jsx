@@ -69,14 +69,10 @@ class CartItemTile extends React.Component {
     const userInfoRequired = isGenricGuest && isGenricGuest.get('userId') && isCondense; // Flag to check if getRegisteredUserInfo required after SflList
 
     if (sflItemsCount >= sflMaxCount) {
-      setCartItemsSflError(labels.sflMaxLimitError);
-      setTimeout(() => {
-        setCartItemsSflError(null);
-      }, 5000);
-      return;
+      return setCartItemsSflError(labels.sflMaxLimitError);
     }
     const payloadData = { itemId, catEntryId, userInfoRequired };
-    addItemToSflList({ ...payloadData });
+    return addItemToSflList({ ...payloadData });
   };
 
   handleSubmit = (itemId, skuId, quantity, itemPartNumber, variantNo) => {
@@ -161,20 +157,21 @@ class CartItemTile extends React.Component {
             </BodyCopy>
           )}
           {// eslint-disable-next-line
-          productDetail.miscInfo.availability === 'OK' && isShowSaveForLater && (
-            <BodyCopy
-              fontFamily="secondary"
-              fontSize="fs12"
-              component="div"
-              fontWeight={['semibold']}
-              dataLocator="saveForLaterLink"
-              onClick={() => {
-                this.handleMoveItemtoSaveList();
-              }}
-            >
-              <u>{labels.saveForLaterLink}</u>
-            </BodyCopy>
-          )}
+          productDetail.miscInfo.availability === CARTPAGE_CONSTANTS.AVAILABILITY_OK &&
+            isShowSaveForLater && (
+              <BodyCopy
+                fontFamily="secondary"
+                fontSize="fs12"
+                component="div"
+                fontWeight={['semibold']}
+                dataLocator="saveForLaterLink"
+                onClick={() => {
+                  this.handleMoveItemtoSaveList();
+                }}
+              >
+                <u>{labels.saveForLaterLink}</u>
+              </BodyCopy>
+            )}
         </Col>
         {pageView === 'myBag' && (
           <BodyCopy

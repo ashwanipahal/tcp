@@ -49,7 +49,7 @@ class MiniBagBody extends React.PureComponent {
         <Row className="mainWrapper">
           <Col className="deleteMsg" colSize={{ small: 6, medium: 8, large: 12 }}>
             <Image
-              alt="closeIcon"
+              alt={labels.tickIcon}
               className="tick-icon-image"
               src={getIconPath('active_icon')}
               height={12}

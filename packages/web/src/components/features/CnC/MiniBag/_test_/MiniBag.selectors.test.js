@@ -32,6 +32,7 @@ describe('#MiniBag Selectors', () => {
       bagPage: {
         lbl_sfl_viewsfl: '',
         bl_sfl_actionSuccess: '',
+        lbl_sfl_success_tickIcon: '',
       },
     },
   };
@@ -81,6 +82,7 @@ describe('#MiniBag Selectors', () => {
       yourShoppingBag: '',
       viewSfl: '',
       sflSuccess: '',
+      tickIcon: '',
     });
   });
 
