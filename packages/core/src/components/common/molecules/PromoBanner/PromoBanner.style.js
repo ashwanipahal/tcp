@@ -390,7 +390,7 @@ export default css`
     font-weight: ${props => props.theme.typography.fontWeights.black};
     text-align: center;
     transform: translateX(-18px);
-    margin-top: ${props => props.theme.spacing.ELEM_SPACING.XS};
+    margin-top: -${props => props.theme.spacing.ELEM_SPACING.XS};
 
     .percentage_all_wrapped_normal-1 {
       font-size: ${props => props.theme.typography.fontSizes.fs28};
@@ -424,6 +424,8 @@ export default css`
     }
 
     @media ${props => props.theme.mediaQuery.large} {
+      margin-top: -${props => props.theme.spacing.ELEM_SPACING.MED};
+
       .percentage_all_wrapped_normal-1 {
         top: ${props => props.theme.spacing.ELEM_SPACING.MED};
       }
