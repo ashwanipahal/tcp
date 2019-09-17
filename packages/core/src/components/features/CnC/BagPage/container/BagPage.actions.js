@@ -105,6 +105,27 @@ const routeForCheckout = () => {
   };
 };
 
+const addItemToSflList = payload => {
+  return {
+    type: BAGPAGE_CONSTANTS.ADD_ITEM_SAVE_FOR_LATER,
+    payload,
+  };
+};
+
+const setCartItemsSFL = payload => {
+  return {
+    payload,
+    type: BAGPAGE_CONSTANTS.CART_ITEMS_SET_SFL,
+  };
+};
+
+const setCartItemsSflError = payload => {
+  return {
+    payload,
+    type: BAGPAGE_CONSTANTS.CART_ITEMS_SET_SFL_ERROR,
+  };
+};
+
 const initActions = [loadComponentLabelsData({ category: LABELS.checkout })];
 
 export default {
@@ -124,4 +145,7 @@ export default {
   setItemUnavailable,
   routeForCheckout,
   initActions,
+  addItemToSflList,
+  setCartItemsSFL,
+  setCartItemsSflError,
 };

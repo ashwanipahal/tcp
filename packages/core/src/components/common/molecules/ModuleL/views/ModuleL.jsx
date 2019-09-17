@@ -25,7 +25,7 @@ type Props = {
 const renderTiles = tiles => {
   return tiles.map((tile, index) => {
     return (
-      <ModuleLTile key={index.toString()} index={index} tileData={tile} tileColor={tile.class} />
+      <ModuleLTile key={index.toString()} index={index} tileData={tile} tileColor={tile.color} />
     );
   });
 };

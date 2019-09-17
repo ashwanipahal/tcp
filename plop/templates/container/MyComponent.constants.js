@@ -1,0 +1,6 @@
+// TBD: Update constants for container components with contextual ones
+export default {
+  MY_COMPONENT_TEST_ACTION: 'MY_COMPONENT_TEST_ACTION',
+  MY_COMPONENT_TEST_ACTION_ONE: 'MY_COMPONENT_TEST_ACTION_1',
+  MY_COMPONENT_TEST_ACTION_TWO: 'MY_COMPONENT_TEST_ACTION_2',
+};
