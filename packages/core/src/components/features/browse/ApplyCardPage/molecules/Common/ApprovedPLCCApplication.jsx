@@ -74,20 +74,12 @@ const getCouponCodeBody = (approvedPLCCData, labels = {}, plccData = {}) => {
         </Col>
       </Row>
       <Row fullBleed className="centered">
-        <Col
-          ignoreGutter={{ small: true }}
-          colSize={{ large: 8, medium: 8, small: 12 }}
-          className="existing_continue_button"
-        >
+        <Col ignoreGutter={{ small: true }} colSize={{ large: 8, medium: 8, small: 12 }}>
           <RichText richTextHtml={plccData && plccData.plcc_approved_ps} />
         </Col>
       </Row>
       <Row fullBleed className="centered">
-        <Col
-          ignoreGutter={{ small: true }}
-          colSize={{ large: 8, medium: 8, small: 12 }}
-          className="existing_continue_button"
-        >
+        <Col ignoreGutter={{ small: true }} colSize={{ large: 8, medium: 8, small: 12 }}>
           <hr className="horizontal_divider" />
         </Col>
       </Row>
@@ -146,7 +138,11 @@ const totalSavingsFooterContainer = (
       ) : null}
       <Row fullBleed className="submit_buttons_set">
         <Col
-          className={`${!bagItems ? 'no_bag_items_continue' : ''}`}
+          className={`${
+            !bagItems
+              ? 'no_bag_items_continue existing_checkout_button'
+              : 'existing_checkout_button'
+          }`}
           ignoreGutter={{ small: true }}
           colSize={{ large: 3, medium: 4, small: 12 }}
         >
