@@ -64,6 +64,8 @@ const UserReducer = (state = initialState, { type, payload }) => {
         .set(DEFAULT_REDUCER_KEY, setCacheTTL(USER_CONSTANTS.GET_USER_INFO_TTL));
     case USER_CONSTANTS.SET_CHILDREN:
       return state.set('children', fromJS(payload.children));
+    case USER_CONSTANTS.SET_GEO_COORDINATES:
+      return state.set('geoLatLong', payload.geoLatLong);
     case USER_CONSTANTS.SET_FAVORITE_STORE:
       return state.set(
         'favoriteStore',

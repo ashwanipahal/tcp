@@ -260,6 +260,19 @@ const endpoints = {
     URI: PRODUCTS_URI.PRODUCTS_AUTOSUGGEST,
     unbxd: true,
   },
+  // STORE LOCATORS
+  getFavoriteStore: {
+    method: 'GET',
+    URI: 'v2/store/getFavouriteStoreLocation',
+  },
+  findStoresByCoordinates: {
+    method: 'GET',
+    URI: 'v2/store/findStoresbyLatitudeandLongitude',
+  },
+  setFavoriteStore: {
+    method: 'POST',
+    URI: 'v2/store/addFavouriteStoreLocation',
+  },
   getMyFavoriteStore: {
     method: API_METHODS.GET,
     URI: 'v2/store/getFavouriteStoreLocation?latitude&longitude&catEntryId&itemPartNumber',

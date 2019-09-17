@@ -1,11 +1,13 @@
+/* eslint-disable max-lines */
 // eslint-disable-next-line import/no-unresolved
 import Router from 'next/router';
 import { ENV_PRODUCTION, ENV_DEVELOPMENT } from '../constants/env.config';
 import icons from '../config/icons';
 import { breakpoints } from '../../styles/themes/TCP/mediaQuery';
-import { getAPIConfig } from './utils';
+import { getAPIConfig, isClient } from './utils';
 import { API_CONFIG } from '../services/config';
 import { defaultCountries, defaultCurrencies } from '../constants/site.constants';
+import { readCookie, setCookie } from './cookie.util';
 import { ROUTING_MAP, ROUTE_PATH } from '../config/route.config';
 
 const MONTH_SHORT_FORMAT = {
@@ -457,6 +459,39 @@ export const createAPIConfig = resLocals => {
   };
 };
 
+export const sanitizeEntity = string => {
+  return string && typeof string === 'string'
+    ? string
+        .replace(/&amp;/gi, '&')
+        .replace(/&quot;/gi, '"')
+        .replace(/&ldquo;/gi, '"')
+        .replace(/&acute;/gi, '"')
+        .replace(/&prime;/gi, '"')
+        .replace(/&bdquo;/gi, '"')
+        .replace(/&ldquot;/gi, '"')
+        .replace(/\\u0027/gi, "'")
+        .replace(/&lsquot;/gi, '"')
+        .replace(/%20/gi, ' ')
+    : string;
+};
+
+/**
+ * Returns data stored in localstorage
+ * @param {string} key - Localstorage item key
+ * @returns {string} - Localstorage item data
+ */
+export const getLocalStorage = key =>
+  isClient ? window.localStorage.getItem(key) : readCookie(key);
+
+/**
+ * Set key/value data to localstorage
+ * @param {Object} arg - Key/Value paired data to be set in localstorage
+ */
+export const setLocalStorage = arg => {
+  const { key, value } = arg;
+  return isClient() ? window.localStorage.setItem(key, value) : setCookie(arg);
+};
+
 export default {
   importGraphQLClientDynamically,
   importGraphQLQueriesDynamically,
@@ -477,4 +512,7 @@ export default {
   languageRedirect,
   redirectToPdp,
   handleGenericKeyDown,
+  sanitizeEntity,
+  getLocalStorage,
+  setLocalStorage,
 };
