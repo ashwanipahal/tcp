@@ -24,7 +24,25 @@ class EarnExtraPointsTile extends PureComponent {
   };
 
   render() {
-    const { labels, waysToEarn } = this.props;
+    const { labels } = this.props;
+
+    const waysToEarn = [
+      {
+        activityCode: 'AppDownload',
+        activityTitle: 'Earn 5 Points',
+        description: 'Download & Log in to our App',
+        displayOrder: 1,
+        iconImage: '/wcsstore/static/images/download-app.jpg',
+      },
+      {
+        activityCode: 'AppDownload',
+        activityTitle: 'Earn 5 Points',
+        description: 'Download & Log in to our App',
+        displayOrder: 1,
+        iconImage: '/wcsstore/static/images/download-app.jpg',
+      },
+    ];
+
     return (
       <View>
         <EarnExtraPointsHeading>
@@ -47,7 +65,7 @@ class EarnExtraPointsTile extends PureComponent {
         <EarnExtraPointsWrapper>
           <View>
             <Carousel
-              data={waysToEarn.toArray()}
+              data={waysToEarn}
               renderItem={this.renderView}
               height={MODULE_HEIGHT}
               width={MODULE_WIDTH}
@@ -64,7 +82,6 @@ class EarnExtraPointsTile extends PureComponent {
 }
 
 EarnExtraPointsTile.propTypes = {
-  waysToEarn: PropTypes.shape([]),
   labels: PropTypes.shape({
     lbl_common_earnExtraPoints: PropTypes.string,
     lbl_common_viewAll: PropTypes.string,
@@ -72,7 +89,6 @@ EarnExtraPointsTile.propTypes = {
 };
 
 EarnExtraPointsTile.defaultProps = {
-  waysToEarn: [],
   labels: {
     lbl_common_earnExtraPoints: '',
     lbl_common_viewAll: '',
