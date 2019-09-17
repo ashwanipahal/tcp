@@ -1,0 +1,108 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`ProductImages component should renders correctly 1`] = `
+<div
+  className=""
+>
+  <div
+    className="preview-and-social-media-icons"
+  >
+    <ThumbnailsList
+      images={
+        Array [
+          Object {
+            "imageName": "Girls Uniform Active Shorts",
+            "imageUrl": "https://test4.childrensplace.com/wcsstore/GlobalSAS/images/tcp/products/125/2082931_IV.jpg",
+          },
+          Object {
+            "imageName": "Girls Uniform Active Shorts",
+            "imageUrl": "https://test4.childrensplace.com/wcsstore/GlobalSAS/images/tcp/products/125/2082931_IV-1.jpg",
+          },
+        ]
+      }
+      onThumbnailClick={[Function]}
+      selectedImageIndex={0}
+    />
+  </div>
+  <div
+    className="main-image-container-wrap"
+  >
+    <div
+      className="main-image-container"
+    >
+      <Styled(Carousel)
+        carouselConfig={
+          Object {
+            "autoplay": false,
+            "customArrowLeft": "/static/images/right-carousel-carrot.svg",
+            "customArrowRight": "/static/images/right-carousel-carrot.svg",
+          }
+        }
+        inheritedStyles={
+          Array [
+            "
+  .slick-next {
+    height: 39px;
+    right: -20px;
+    width: 19px;
+  }
+  .slick-prev {
+    height: 38px;
+    left: -20px;
+    width: 19px;
+  }
+  .slick-disabled {
+    display: none !important;
+  }
+",
+          ]
+        }
+        options={
+          Object {
+            "arrows": true,
+            "autoplay": false,
+            "dots": false,
+            "dotsClass": "slick-dots",
+            "fade": false,
+            "infinite": false,
+            "responsive": Array [
+              Object {
+                "breakpoint": 1199,
+                "settings": Object {
+                  "arrows": false,
+                  "dots": true,
+                },
+              },
+            ],
+            "slidesToShow": 1,
+            "speed": 1000,
+            "swipe": true,
+          }
+        }
+        sliderImageIndex={0}
+      >
+        <Styled(ProductDetailImage)
+          imageName="Girls Uniform Active Shorts"
+          imageUrl="https://test4.childrensplace.com/wcsstore/GlobalSAS/images/tcp/products/900/2082931_IV.jpg"
+          isZoomEnabled={true}
+          zoomImageUrl="https://test4.childrensplace.com/wcsstore/GlobalSAS/images/tcp/products/900/2082931_IV.jpg"
+        />
+        <Styled(ProductDetailImage)
+          imageName="Girls Uniform Active Shorts"
+          imageUrl="https://test4.childrensplace.com/wcsstore/GlobalSAS/images/tcp/products/900/2082931_IV-1.jpg"
+          isZoomEnabled={true}
+          zoomImageUrl="https://test4.childrensplace.com/wcsstore/GlobalSAS/images/tcp/products/900/2082931_IV-1.jpg"
+        />
+      </Styled(Carousel)>
+    </div>
+    <div
+      className="enlarged-image-container"
+    >
+      <div
+        className="enlarged-image"
+        id="portal"
+      />
+    </div>
+  </div>
+</div>
+`;

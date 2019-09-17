@@ -46,7 +46,7 @@ class DropDownButton extends React.PureComponent {
       <div className={`${className} dropdown-button-wrapper`}>
         <div className="dropdown-button-container">
           <Button
-            className="dropdown-button"
+            className={`dropdown-button ${classToOpen}`}
             buttonVariation="fixed-width"
             data-locator={dataLocator}
             onClick={this.togglePanel}
@@ -65,6 +65,7 @@ class DropDownButton extends React.PureComponent {
                 dataLocator: {
                   cta: `${dataLocatorItemPrefix}${index}`,
                 },
+                noCurve: true,
               };
               // Code to generate unique key
               const key = button.title && generateUniqueKeyUsingLabel(button.title);

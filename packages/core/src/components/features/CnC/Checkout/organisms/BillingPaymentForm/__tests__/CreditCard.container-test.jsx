@@ -74,12 +74,6 @@ describe('GiftCardsContainer Container', () => {
       dispatchProps.getCardListAction();
       expect(dispatch.mock.calls).toHaveLength(1);
     });
-    it('should return an action getCVVCodeInfo which will call dispatch function on execution', () => {
-      const dispatch = jest.fn();
-      const dispatchProps = mapDispatchToProps(dispatch);
-      dispatchProps.getCVVCodeInfo();
-      expect(dispatch.mock.calls).toHaveLength(1);
-    });
 
     it('should render getSelectedCard view section', () => {
       instance.getSelectedCard(card, 1);
