@@ -1,0 +1,24 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`ForgotPasswordView component should renders correctly 1`] = `
+<Fragment>
+  <section
+    className=""
+    data-selector="analytics-social-account"
+  >
+    <h3
+      className="social-accounts__title"
+      data-locator="socialAccountsLbl"
+    >
+      Social Accounts
+    </h3>
+    <p
+      className="social-accounts__subTitle"
+      data-locator="linkAccountTxt"
+    >
+      Link your social accounts to earn extra points!
+    </p>
+    <ul />
+  </section>
+</Fragment>
+`;

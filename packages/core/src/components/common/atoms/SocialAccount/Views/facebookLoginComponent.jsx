@@ -1,17 +1,14 @@
-/*eslint-disable */
 import React from 'react';
 import ReactDOM from 'react-dom';
 import { PropTypes } from 'prop-types';
-import { config } from '../Views/config';
+import { config } from './config';
 import ImageComp from '../../Image';
 import { getIconPath } from '../../../../../utils';
-// import {setLocalStorage, getLocalStorage} from 'util/localStorageManagement';
+import BodyCopy from '../../BodyCopy';
 
 let bodyEle;
 let elem;
 let saveAccountInfo;
-let children;
-let loadsocial;
 
 /**
  * @function openLogin This function calls the Method of login for facebook and open up the dialog window where user sign in.
@@ -22,7 +19,7 @@ let loadsocial;
 const openLogin = () => {
   /* istanbul ignore next */
   window.FB.login(
-    function(response) {
+    response => {
       if (response.status === 'connected') {
         const socialAccInfo = {
           facebook: 'facebook',
@@ -46,8 +43,8 @@ const openLogin = () => {
  */
 const facebookSDK = () => {
   /* istanbul ignore next */
-  window.onload = function() {
-    window.FB.getLoginStatus(function(res) {
+  window.onload = () => {
+    window.FB.getLoginStatus(res => {
       if (res.authResponse && res.authResponse.accessToken && !elem.isConnected) {
         const socialAccInfo = {
           accessToken: res.authResponse.accessToken,
@@ -57,8 +54,16 @@ const facebookSDK = () => {
       }
     });
   };
+
   /* istanbul ignore next */
-  window.fbAsyncInit = function() {
+  const autoLogin = () => {
+    if (window.FB && elem[0].isConnected) {
+      openLogin();
+    }
+  };
+
+  /* istanbul ignore next */
+  window.fbAsyncInit = () => {
     window.FB.init({
       appId: config.CLIENT_SECRET_KEY.facebook,
       autoLogAppEvents: true,
@@ -68,17 +73,18 @@ const facebookSDK = () => {
       cookie: true,
     });
   };
+  /* istanbul ignore next */
   return (
+    /*eslint-disable */
     <script>
       {(function(d, s, id, body) {
-        let js;
-        let fjs = d.createElement(s);
+        const fjs = d.createElement(s);
         fjs.id = 'facebook';
         body.appendChild(fjs);
         if (d.getElementById(id)) {
           return;
         }
-        js = d.createElement(s);
+        const js = d.createElement(s);
         js.id = id;
         js.onload = autoLogin;
         js.src = config.SOCIAL_SDK.facebook;
@@ -88,21 +94,6 @@ const facebookSDK = () => {
   );
 };
 
-const autoLogin = () => {
-  /** If auto-open for facebook is set, the login modal will open
-  /* After that, the localStorage needs to be reset to ''
-  /* so that it doesn't trigger the login modal again
-  **/
-  if (window.FB && elem[0].isConnected) {
-    openLogin();
-    //Trigger login modal if not already connected
-    // if (!elem.isConnected) {
-    //     openLogin();
-    // }
-    //setLocalStorage({key: 'auto-open', value: ''});
-  }
-};
-
 const logoutUser = () => {
   /* istanbul ignore next */
   try {
@@ -110,11 +101,6 @@ const logoutUser = () => {
   } catch (ex) {
     console.log(`expection ${ex}`);
   }
-  /* istanbul ignore next */
-  // saveAccountInfo(elem.socialAccount, {
-  //     accessToken: '',
-  //     userId: ''
-  // },true)
   const socialAccInfo = {
     facebook: 'facebook',
     accessToken: '',
@@ -124,9 +110,9 @@ const logoutUser = () => {
   saveAccountInfo({ socialAccInfo });
 };
 
-export const loginUser = elem => {
+const loginUser = element => {
   /* istanbul ignore next */
-  if (elem.isConnected) {
+  if (element.isConnected) {
     logoutUser();
   } else {
     openLogin();
@@ -134,50 +120,52 @@ export const loginUser = elem => {
 };
 
 const FacebookLoginComponent = props => {
-  bodyEle = document.getElementsByTagName('body')[0];
+  /*eslint-disable */
   //Destruction with global variables of the file is giving me error that i need to decalre them again. Hence assigning values this way
+  bodyEle = document.getElementsByTagName('body')[0];
   saveAccountInfo = props.saveSocialAcc;
   elem = props.loginStatus;
-  loadsocial = props.socialLoad;
 
   return (
     <React.Fragment>
-      {elem.map((elem, index) => {
-        return (
-          <React.Fragment>
-            {!(elem.socialAccount === 'facebook' && elem.isConnected) && (
-              <div
-                className="social-accounts__align social_accounts_cross_plus-icon"
-                onClick={elem => loginUser(elem)}
-                tabIndex="0"
-              >
-                {ReactDOM.createPortal(facebookSDK(), bodyEle)}
-                <ImageComp
-                  className="social-account-icon"
-                  width={10}
-                  height={10}
-                  src={getIconPath('plus-icon')}
-                  data-locator="facebookPlusIcon"
-                />
-              </div>
-            )}
-            {elem.socialAccount === 'facebook' && elem.isConnected && (
-              <div
-                className="social-accounts__align social_accounts_cross_plus-icon"
-                onClick={logoutUser}
-              >
-                <ImageComp
-                  className="social-account-icon"
-                  width={10}
-                  height={10}
-                  src={getIconPath('close-icon')}
-                  data-locator="facebookCrossIcon"
-                />
-              </div>
-            )}
-          </React.Fragment>
-        );
-      })}
+      {elem &&
+        elem.length &&
+        elem.map(element => {
+          return (
+            <React.Fragment>
+              {!(element.socialAccount === 'facebook' && element.isConnected) && (
+                <BodyCopy
+                  className="social-accounts__align social_accounts_cross_plus-icon"
+                  onClick={() => loginUser(element)}
+                  tabIndex="0"
+                >
+                  {ReactDOM.createPortal(facebookSDK(), bodyEle)}
+                  <ImageComp
+                    className="social-account-icon"
+                    width={10}
+                    height={10}
+                    src={getIconPath('plus-icon')}
+                    data-locator="facebookPlusIcon"
+                  />
+                </BodyCopy>
+              )}
+              {element.socialAccount === 'facebook' && element.isConnected && (
+                <BodyCopy
+                  className="social-accounts__align social_accounts_cross_plus-icon"
+                  onClick={logoutUser}
+                >
+                  <ImageComp
+                    className="social-account-icon"
+                    width={10}
+                    height={10}
+                    src={getIconPath('close-icon')}
+                    data-locator="facebookCrossIcon"
+                  />
+                </BodyCopy>
+              )}
+            </React.Fragment>
+          );
+        })}
     </React.Fragment>
   );
 };

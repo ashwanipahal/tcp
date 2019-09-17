@@ -40,7 +40,8 @@ class Socialview extends React.PureComponent {
 
   renderAccountsInformation = (accounts, saveSocialAcc) => {
     return accounts.map((elem, index) => {
-      const isSocialAccount = config.SOCIAL_ACCOUNTS[elem.socialAccount.toLocaleLowerCase()];
+      const isSocialAccount =
+        config && config.SOCIAL_ACCOUNTS[elem.socialAccount.toLocaleLowerCase()];
       return (
         <li className="social-accounts__infoList" key={index.toString()}>
           <span
@@ -77,8 +78,6 @@ class Socialview extends React.PureComponent {
         });
       }
     });
-
-    console.log('accountsInfo----------------------', accountsInfo);
     this.socialAccounts = accountsInfo;
   };
 
@@ -97,10 +96,7 @@ class Socialview extends React.PureComponent {
           <p className="social-accounts__subTitle" data-locator="linkAccountTxt">
             Link your social accounts to earn extra points!
           </p>
-          <ul>
-            {this.renderAccountsInformation(this.socialAccounts, saveSocialAcc)}
-            {/* <FacebookLoginComponent socialAccounts={this.socialAccounts} saveSocialAcc={saveSocialAcc} /> */}
-          </ul>
+          <ul>{this.renderAccountsInformation(this.socialAccounts, saveSocialAcc)}</ul>
         </section>
       </React.Fragment>
     );
