@@ -1,4 +1,4 @@
-import { API_METHODS, PRODUCTS_URI } from './api.constants';
+import { API_METHODS, PRODUCTS_URI, SAVE_FOR_LATER } from './api.constants';
 
 const endpoints = {
   graphQL: {
@@ -259,6 +259,22 @@ const endpoints = {
     method: 'GET',
     URI: PRODUCTS_URI.PRODUCTS_AUTOSUGGEST,
     unbxd: true,
+  },
+  getAllSfl: {
+    method: 'GET',
+    URI: SAVE_FOR_LATER,
+  },
+  updateSflItem: {
+    method: 'PUT',
+    URI: SAVE_FOR_LATER,
+  },
+  deleteSflItem: {
+    method: 'DELETE',
+    URI: SAVE_FOR_LATER,
+  },
+  addSflItem: {
+    method: 'POST',
+    URI: SAVE_FOR_LATER,
   },
   getMyFavoriteStore: {
     method: API_METHODS.GET,

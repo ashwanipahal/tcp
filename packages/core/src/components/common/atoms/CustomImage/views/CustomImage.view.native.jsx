@@ -10,7 +10,7 @@ const CustomImage = props => {
       width={width}
       height={height}
       resizeMode={resizeMode}
-      source={!source ? { url } : source}
+      source={!source ? { uri: url } : source}
     />
   );
 };
