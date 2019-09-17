@@ -11,12 +11,12 @@ exports[`ButtonList component renders correctly without props 1`] = `
     className="payment-container"
   >
     <Styled(BodyCopy)
-      className="elem-mb-XS elem-mt-XL"
+      className="elem-mb-LRG elem-mt-XL"
       color="text.primary"
       component="p"
       data-locator="billing-details"
       fontFamily="primary"
-      fontSize="fs28"
+      fontSize="fs26"
       fontWeight="regular"
       letterSpacing="normal"
       lineHeight="normal"
@@ -58,7 +58,7 @@ exports[`ButtonList component renders correctly without props 1`] = `
       Select from card on file
     </Styled(Heading)>
     <Styled(Row)
-      className="elem-mb-XL"
+      className="elem-mb-XL elem-mt-MED"
       fullBleed={true}
     >
       <Styled(Col)
@@ -127,6 +127,7 @@ exports[`ButtonList component renders correctly without props 1`] = `
               Object {
                 "content": <ForwardRef
                   buttonVariation="variable-width"
+                  className="addCreditCardBtn"
                   fill="BLACK"
                   fullWidth={true}
                 >
@@ -158,7 +159,7 @@ exports[`ButtonList component renders correctly without props 1`] = `
         component="p"
         data-locator="billing-payment-details"
         fontFamily="primary"
-        fontSize="fs28"
+        fontSize="fs26"
         fontWeight="regular"
         letterSpacing="normal"
         lineHeight="normal"
@@ -412,8 +413,9 @@ exports[`ButtonList component renders correctly without props 1`] = `
               }
             >
               <Styled(Image)
-                className="tcp_carousel__play tooltip"
+                height="15"
                 src="/static/images/info-icon.png"
+                width="15"
               />
             </Styled(ReactTooltip)>
           </span>
@@ -635,12 +637,12 @@ exports[`ButtonList component renders correctly without props 2`] = `
     className="payment-container"
   >
     <Styled(BodyCopy)
-      className="elem-mb-XS elem-mt-XL"
+      className="elem-mb-LRG elem-mt-XL"
       color="text.primary"
       component="p"
       data-locator="billing-details"
       fontFamily="primary"
-      fontSize="fs28"
+      fontSize="fs26"
       fontWeight="regular"
       letterSpacing="normal"
       lineHeight="normal"
@@ -682,7 +684,7 @@ exports[`ButtonList component renders correctly without props 2`] = `
       Select from card on file
     </Styled(Heading)>
     <Styled(Row)
-      className="elem-mb-XL"
+      className="elem-mb-XL elem-mt-MED"
       fullBleed={true}
     >
       <Styled(Col)
@@ -751,6 +753,7 @@ exports[`ButtonList component renders correctly without props 2`] = `
               Object {
                 "content": <ForwardRef
                   buttonVariation="variable-width"
+                  className="addCreditCardBtn"
                   fill="BLACK"
                   fullWidth={true}
                 >
@@ -782,7 +785,7 @@ exports[`ButtonList component renders correctly without props 2`] = `
         component="p"
         data-locator="billing-payment-details"
         fontFamily="primary"
-        fontSize="fs28"
+        fontSize="fs26"
         fontWeight="regular"
         letterSpacing="normal"
         lineHeight="normal"
@@ -1036,8 +1039,9 @@ exports[`ButtonList component renders correctly without props 2`] = `
               }
             >
               <Styled(Image)
-                className="tcp_carousel__play tooltip"
+                height="15"
                 src="/static/images/info-icon.png"
+                width="15"
               />
             </Styled(ReactTooltip)>
           </span>

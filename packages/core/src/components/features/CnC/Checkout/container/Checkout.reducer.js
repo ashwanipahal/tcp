@@ -58,6 +58,27 @@ function paypalReducer(checkout, action) {
   }
 }
 
+function uiGiftCardFlagReducer(checkout, action) {
+  switch (action.type) {
+    case CheckoutConstants.CHECKOUT_FLAGS_SET_BILLING_ADD_GIFT_CARD_SHOW:
+      return checkout
+        .setIn(['values', 'addGiftCardError'], null)
+        .setIn(['values', 'showAddGiftCard'], true);
+    case CheckoutConstants.CHECKOUT_FLAGS_SET_BILLING_ADD_GIFT_CARD_HIDE:
+      return checkout.setIn(['values', 'showAddGiftCard'], false);
+    case CheckoutConstants.ADD_GIFT_CARD_SUCCESS:
+      return checkout.setIn(['values', 'addGiftCardResponse'], 'success');
+    case CheckoutConstants.ADD_GIFT_CARD_FAILED:
+      return checkout.setIn(['values', 'addGiftCardError'], fromJS(action.payload));
+    case CheckoutConstants.RESET_ADD_GIFT_CARD:
+      return checkout.setIn(['values', 'addGiftCardError'], null);
+    case CheckoutConstants.RESET_ADD_GIFT_CARD_SUCCESS:
+      return checkout.setIn(['values', 'addGiftCardResponse'], null);
+    default:
+      return paypalReducer(checkout, action);
+  }
+}
+
 function uiFlagReducer(checkout, action) {
   switch (action.type) {
     // case 'CHECKOUT_FLAGS_SET_STAGE':
@@ -95,6 +116,7 @@ function uiFlagReducer(checkout, action) {
       return checkout.setIn(['values', 'orderBalanceTotal'], action.payload);
     case CheckoutConstants.CHECKOUT_VAlUES_SET_GIFT_WRAP:
       return checkout.CartPageReducer.setIn(['orderDetails', 'checkout', 'giftWrap']);
+
     // case 'CHECKOUT_FLAGS_SET_REVIEW_VISTED':
     //   return merge(uiFlags, { isReviewVisited: action.payload });
     // case 'CHECKOUT_FLAGS_SET_PAYMENT_ERROR':
@@ -115,7 +137,7 @@ function uiFlagReducer(checkout, action) {
     //    return uiFlags;
     //  }
     default:
-      return paypalReducer(checkout, action);
+      return uiGiftCardFlagReducer(checkout, action);
   }
 }
 
