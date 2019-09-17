@@ -121,7 +121,7 @@ export default css`
     padding-top: ${props => props.theme.spacing.ELEM_SPACING.XXS};
   }
 
-  @media ${props => props.theme.mediaQuery.large} {
+  @media ${props => props.theme.mediaQuery.large}, ${props => props.theme.mediaQuery.medium} {
     && .dropdownliBottomBorder {
       padding: ${props => props.theme.spacing.ELEM_SPACING.SM};
       position: relative;
@@ -150,6 +150,18 @@ export default css`
       height: ${props => props.theme.spacing.ELEM_SPACING.LRG};
       bottom: 58px;
       z-index: 1;
+      margin-bottom: 6px;
+    }
+
+    && ul:last-child li:last-child::after {
+      border-bottom: 0px;
+    }
+    && ul:last-child li:nth-child(1)::after {
+      border-bottom: 0px;
+    }
+    .ulBorderWithLastRow li:last-child {
+      padding: 0px ${props => props.theme.spacing.ELEM_SPACING.MED}
+        ${props => props.theme.spacing.ELEM_SPACING.LRG};
     }
   }
   .payment-container {
@@ -158,5 +170,9 @@ export default css`
   }
   .payment-paypal-container {
     padding: ${props => props.theme.spacing.APP_LAYOUT_SPACING.SM};
+  }
+  .addCreditCardBtn {
+    padding: 0px ${props => props.theme.spacing.ELEM_SPACING.XL};
+    min-height: 42px;
   }
 `;
