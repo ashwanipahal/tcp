@@ -1,10 +1,11 @@
 import { configure } from '@storybook/react';
-import '../styles/index';
 
 // automatically import all files ending in *.stories.js
-const req = require.context('../stories', true, /\.stories\.js$/);
+const reqRoot = require.context('../stories', true, /\.stories\.jsx?$/);
+const reqPkgs = require.context('../packages', true, /\.stories\.jsx?$/);
 function loadStories() {
-  req.keys().forEach(filename => req(filename));
+  reqRoot.keys().forEach(filename => reqRoot(filename));
+  reqPkgs.keys().forEach(filename => reqPkgs(filename));
 }
 
 configure(loadStories, module);
