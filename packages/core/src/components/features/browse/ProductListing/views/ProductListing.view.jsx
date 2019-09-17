@@ -31,6 +31,7 @@ const ProductListView = ({
   formValues,
   getProducts,
   onSubmit,
+  sortLabels,
   ...otherProps
 }) => {
   return (
@@ -68,6 +69,7 @@ const ProductListView = ({
                 onSubmit={onSubmit}
                 formValues={formValues}
                 getProducts={getProducts}
+                sortLabels={sortLabels}
               />
             </div>
           </Col>
@@ -122,6 +124,7 @@ ProductListView.propTypes = {
   getProducts: PropTypes.func,
   onSubmit: PropTypes.func,
   formValues: PropTypes.shape({}).isRequired,
+  sortLabels: PropTypes.arrayOf(PropTypes.shape({})),
 };
 
 ProductListView.defaultProps = {
@@ -138,6 +141,7 @@ ProductListView.defaultProps = {
   categoryId: '',
   labels: {},
   labelsFilter: {},
+  sortLabels: [],
 };
 
 export default withStyles(ProductListView, ProductListingStyle);
