@@ -17,6 +17,14 @@ export default css`
     }
   }
 
+  .no-carousel-container {
+    display: flex;
+    justify-content: center;
+    ul {
+      width: 149px;
+    }
+  }
+
   &.recommendations-tile {
     .slick-arrow {
       z-index: ${props => props.theme.zindex.zPLPFilterDropDown};
@@ -48,6 +56,11 @@ export default css`
         margin-right: -20%;
       }
     }
+    .no-carousel-container {
+      ul {
+        width: 214px;
+      }
+    }
   }
 
   @media ${props => props.theme.mediaQuery.large} {
@@ -61,6 +74,11 @@ export default css`
     &.recommendations-tile {
       .slick-list {
         margin-right: 0;
+      }
+    }
+    .no-carousel-container {
+      ul {
+        width: 261px;
       }
     }
   }

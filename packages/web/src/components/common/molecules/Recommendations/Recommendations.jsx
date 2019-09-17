@@ -1,5 +1,4 @@
 import React, { Component } from 'react';
-// eslint-disable-next-line
 import dynamic from 'next/dynamic';
 import PropTypes from 'prop-types';
 import { Carousel } from '@tcp/core/src/components/common/molecules';
@@ -45,15 +44,44 @@ class Recommendations extends Component {
     window.removeEventListener('load', loadRecommendations);
   }
 
-  renderRecommendationVariation(variation) {
+  loadVariation(variation) {
     const {
-      moduleOHeaderLabel,
-      modulePHeaderLabel,
       products,
       className,
       loadedProductCount,
       onPickUpOpenClick,
       labels,
+      priceOnly,
+    } = this.props;
+
+    const priceOnlyClass = priceOnly ? 'price-only' : '';
+
+    return products.map((product, index) => {
+      const { generalProductId } = product;
+
+      return (
+        <RecommendationComponentVariation
+          key={`recommended_products_${variation}_${generalProductId}`}
+          loadedProductCount={loadedProductCount}
+          generalProductId={generalProductId}
+          item={product}
+          isPerfectBlock
+          productsBlock={product}
+          onPickUpOpenClick={onPickUpOpenClick}
+          className={`${className} product-list ${priceOnlyClass}`}
+          labels={labels}
+          sequenceNumber={index + 1}
+          variation={variation}
+        />
+      );
+    });
+  }
+
+  renderRecommendationVariation(variation) {
+    const {
+      moduleOHeaderLabel,
+      modulePHeaderLabel,
+      products,
       priceOnly,
       showButton,
       ctaText,
@@ -89,36 +117,24 @@ class Recommendations extends Component {
                 large: 1,
               }}
             >
-              <Carousel
-                className={`${variation}-variation`}
-                options={config.CAROUSEL_OPTIONS}
-                inheritedStyles={Carousel}
-                carouselConfig={{
-                  variation: 'big-arrows',
-                  customArrowLeft: getIconPath('carousel-big-carrot-left'),
-                  customArrowRight: getIconPath('carousel-big-carrot'),
-                }}
-              >
-                {products.map((product, index) => {
-                  const { generalProductId } = product;
-
-                  return (
-                    <RecommendationComponentVariation
-                      key={`recommended_products_${variation}_${generalProductId}`}
-                      loadedProductCount={loadedProductCount}
-                      generalProductId={generalProductId}
-                      item={product}
-                      isPerfectBlock
-                      productsBlock={product}
-                      onPickUpOpenClick={onPickUpOpenClick}
-                      className={`${className} product-list ${priceOnlyClass}`}
-                      labels={labels}
-                      sequenceNumber={index + 1}
-                      variation={variation}
-                    />
-                  );
-                })}
-              </Carousel>
+              {products.length >= 4 ? (
+                <Carousel
+                  className={`${variation}-variation`}
+                  options={config.CAROUSEL_OPTIONS}
+                  inheritedStyles={Carousel}
+                  carouselConfig={{
+                    variation: 'big-arrows',
+                    customArrowLeft: getIconPath('carousel-big-carrot-left'),
+                    customArrowRight: getIconPath('carousel-big-carrot'),
+                  }}
+                >
+                  {this.loadVariation(variation)}
+                </Carousel>
+              ) : (
+                <div className={`no-carousel-container ${variation}-variation`}>
+                  {this.loadVariation(variation)}
+                </div>
+              )}
             </Col>
           </Row>
           {showButton && (
