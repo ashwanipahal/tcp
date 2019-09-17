@@ -2,7 +2,7 @@ import React from 'react';
 import { shallow } from 'enzyme';
 import { List } from 'immutable';
 import { CreditCardForm } from '../CreditCardForm.view';
-import CreditCardFields from '../../../../molecule/CreditCardFields';
+import CreditCardFields from '../../../../../../../common/molecules/CreditCardFields';
 
 describe('CreditCardForm component', () => {
   it('should renders correctly with address dropdown', () => {

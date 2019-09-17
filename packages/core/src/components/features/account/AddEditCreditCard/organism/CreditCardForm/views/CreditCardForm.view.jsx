@@ -7,13 +7,45 @@ import getStandardConfig from '../../../../../../../utils/formValidation/validat
 import Row from '../../../../../../common/atoms/Row';
 import Col from '../../../../../../common/atoms/Col';
 import Button from '../../../../../../common/atoms/Button';
+import CreditCardFields from '../../../../../../common/molecules/CreditCardFields';
 import constants from '../../../container/AddEditCreditCard.constants';
-import CreditCardFields from '../../../molecule/CreditCardFields';
 import { Heading } from '../../../../../../common/atoms';
 import AddressDropdown from '../../../molecule/AddressDropdown';
 import AddressFields from '../../../../../../common/molecules/AddressFields';
 import Address from '../../../../../../common/molecules/Address';
 import styles from '../styles/CreditCardForm.style';
+import { getLabelValue } from '../../../../../../../utils';
+
+const creditCardProps = {
+  cardNumbProps: {
+    colSize: {
+      small: 6,
+      medium: 8,
+      large: 6,
+    },
+  },
+  expMonthProps: {
+    colSize: {
+      small: 6,
+      medium: 2,
+      large: 3,
+    },
+  },
+  expYearProps: {
+    colSize: {
+      small: 6,
+      medium: 2,
+      large: 3,
+    },
+  },
+  cardNumberInnerProps: {
+    colSize: {
+      small: 6,
+      medium: 4,
+      large: 12,
+    },
+  },
+};
 
 export class CreditCardForm extends React.PureComponent {
   static propTypes = {
@@ -80,6 +112,15 @@ export class CreditCardForm extends React.PureComponent {
     return addressList.find(add => add.addressId === onFileAddresskey);
   };
 
+  getCreditFieldLabels = () => {
+    const { labels } = this.props;
+    return {
+      creditCardNumber: getLabelValue(labels, 'lbl_payment_cardNumber', 'paymentGC'),
+      expMonth: getLabelValue(labels, 'lbl_payment_expMonth', 'paymentGC'),
+      expYear: getLabelValue(labels, 'lbl_payment_expYear', 'paymentGC'),
+    };
+  };
+
   render() {
     const {
       className,
@@ -109,10 +150,17 @@ export class CreditCardForm extends React.PureComponent {
       }
       return subheading;
     };
-
     return (
       <form name={constants.FORM_NAME} noValidate onSubmit={handleSubmit} className={className}>
-        {showCreditCardFields && <CreditCardFields {...this.props} />}
+        {showCreditCardFields && (
+          <CreditCardFields
+            {...this.props}
+            {...creditCardProps}
+            creditFieldLabels={this.getCreditFieldLabels()}
+            cardNumberWrapper
+            showCvv={false}
+          />
+        )}
         <Heading
           component="h3"
           variant="listMenu"
