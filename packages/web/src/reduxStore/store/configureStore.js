@@ -1,12 +1,11 @@
 import { createStore, applyMiddleware, compose } from 'redux';
-import logger from '@tcp/core/src/utils/loggerInstance';
 import { composeWithDevTools } from 'redux-devtools-extension';
 import createSagaMiddleware from 'redux-saga';
 import { cacheEnhancerMiddleware } from '@tcp/core/src/utils/cache.util';
 import { setStoreRef } from '@tcp/core/src/utils/store.utils';
-import createAnalyticsMiddleware from '@tcp/core/src/reduxStore/middlewares/analytics';
 import globalSagas from '../sagas';
 import globalReducers from '../reducers';
+import createAnalyticsMiddleware from '../middlewares/analytics';
 
 const configureStore = preloadedState => {
   /**
@@ -14,12 +13,7 @@ const configureStore = preloadedState => {
    */
 
   const sagaMiddleware = createSagaMiddleware();
-
-  const analyticsMiddleware = createAnalyticsMiddleware(action => {
-    // TODO: Replace with actual tracking utility
-    logger.info('tracking', action);
-  });
-
+  const analyticsMiddleware = createAnalyticsMiddleware();
   const enhancers = [
     applyMiddleware(analyticsMiddleware, sagaMiddleware),
     cacheEnhancerMiddleware(),

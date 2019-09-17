@@ -3,7 +3,7 @@
  * @description hooks to use within components that need to make tracking calls.
  */
 
-// Note: useDispatch can only be called during hook execution.
+// Note: useDispatch() can only be called during hook execution.
 import { useDispatch } from 'react-redux';
 import { trackPageView, trackClick } from './actions';
 
