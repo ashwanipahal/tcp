@@ -25,6 +25,7 @@ import {
   getTotalProductsCount,
   getProductsSelect,
   getCurrentSearchForText,
+  getLabels,
 } from '../container/SearchDetail.selectors';
 
 import { isPlccUser } from '../../../account/User/container/User.selectors';
@@ -64,6 +65,7 @@ class SearchDetailContainer extends React.PureComponent {
       onSubmit,
       onPickUpOpenClick,
       searchedText,
+      slpLabels,
       ...otherProps
     } = this.props;
     return (
@@ -72,6 +74,7 @@ class SearchDetailContainer extends React.PureComponent {
         productsBlock={productsBlock}
         totalProductsCount={totalProductsCount}
         labels={labels}
+        slpLabels={slpLabels}
         searchedText={searchedText}
         {...otherProps}
       />
@@ -115,6 +118,7 @@ function mapStateToProps(state) {
     isLoadingMore: getIsLoadingMore(state),
     lastLoadedPageNumber: getLastLoadedPageNumber(state),
     currentNavIds: state.ProductListing && state.ProductListing.get('currentNavigationIds'),
+    slpLabels: getLabels(state),
   };
 }
 

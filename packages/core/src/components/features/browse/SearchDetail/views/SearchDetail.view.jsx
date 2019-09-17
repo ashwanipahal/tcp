@@ -16,15 +16,16 @@ const SearchListingView = ({
   labels,
   totalProductsCount,
   searchedText,
+  slpLabels,
   ...otherProps
 }) => {
-  const { SEARCHED_FOR, FILTERS, SORT_BY } = config;
+  const { FILTERS, SORT_BY } = config;
   return (
     <div className={className}>
       <Row>
         <Col colSize={{ small: 6, medium: 8, large: 12 }}>
           <BodyCopy fontSize="fs14" component="div" fontFamily="secondary" fontWeight="regular">
-            {SEARCHED_FOR}
+            {slpLabels.lbl_searched_for}
             <span className="searched-label">{`"${searchedText}"`}</span>
           </BodyCopy>
         </Col>
@@ -39,7 +40,10 @@ const SearchListingView = ({
       </Row>
       <Row>
         <Col colSize={{ small: 6, medium: 8, large: 12 }}>
-          <LoadedProductsCount totalProductsCount={totalProductsCount} />
+          <LoadedProductsCount
+            totalProductsCount={totalProductsCount}
+            showingItemsLabel={slpLabels}
+          />
         </Col>
       </Row>
       <Row>
@@ -65,6 +69,7 @@ SearchListingView.propTypes = {
   labels: PropTypes.objectOf(PropTypes.oneOfType([PropTypes.string])),
   totalProductsCount: PropTypes.number,
   searchedText: PropTypes.string,
+  slpLabels: PropTypes.objectOf(PropTypes.oneOfType([PropTypes.string])),
 };
 
 SearchListingView.defaultProps = {
@@ -74,6 +79,7 @@ SearchListingView.defaultProps = {
   labels: {},
   totalProductsCount: 0,
   searchedText: '',
+  slpLabels: {},
 };
 
 export default withStyles(errorBoundary(SearchListingView), SearchListingStyle);

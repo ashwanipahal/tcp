@@ -32,6 +32,7 @@ const ProductListView = ({
   formValues,
   getProducts,
   onSubmit,
+  slpLabels,
   ...otherProps
 }) => {
   return (
@@ -73,7 +74,10 @@ const ProductListView = ({
             </div>
           </Col>
           <Col colSize={{ small: 6, medium: 8, large: 12 }}>
-            <LoadedProductsCount totalProductsCount={totalProductsCount} />
+            <LoadedProductsCount
+              totalProductsCount={totalProductsCount}
+              showingItemsLabel={slpLabels}
+            />
           </Col>
           <Col colSize={{ small: 6, medium: 8, large: 12 }}>
             <ProductsGrid productsBlock={productsBlock} labels={labels} {...otherProps} />
@@ -113,6 +117,7 @@ ProductListView.propTypes = {
   getProducts: PropTypes.func,
   onSubmit: PropTypes.func,
   formValues: PropTypes.shape({}).isRequired,
+  slpLabels: PropTypes.objectOf(PropTypes.oneOfType([PropTypes.string])),
 };
 
 ProductListView.defaultProps = {
@@ -129,6 +134,7 @@ ProductListView.defaultProps = {
   categoryId: '',
   labels: {},
   labelsFilter: {},
+  slpLabels: {},
 };
 
 export default withStyles(ProductListView, ProductListingStyle);
