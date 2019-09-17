@@ -55,11 +55,11 @@ class ModuleR extends React.PureComponent {
     ProductTabList so that we can hand product list requirement according to the modules requirement.
   */
   getSelectedProductList = selectedProductList => {
-    const { bannerPosition } = this.props;
+    const { promoBanner, bannerPosition } = this.props;
     const promoComponent = this.getPromoComponent();
     let productsList = selectedProductList;
 
-    if (bannerPosition === 'center') {
+    if (promoBanner && bannerPosition === 'center') {
       if (window.matchMedia(mediaQuery.smallMax).matches) {
         productsList = productsList.slice(0, 8);
         productsList.splice(4, 0, promoComponent);
@@ -171,39 +171,25 @@ class ModuleR extends React.PureComponent {
 
     return (
       <Grid className={`${className} moduleR`}>
-        <Row>
-          <Col
-            colSize={{
-              small: 6,
-              medium: 8,
-              large: 12,
-            }}
-          >
-            {headerText ? (
-              <LinkText
-                component="div"
-                headerText={headerText}
-                className="promo-header"
-                headingClass="moduleR-promo-header"
-                dataLocator={getLocator('moduleR_header_text')}
-              />
-            ) : null}
-          </Col>
-          {bannerPosition === 'top' ? <div className="promo-wrapper">{promoComponent}</div> : null}
-          <Col
-            colSize={{
-              small: 6,
-              medium: 8,
-              large: 12,
-            }}
-          >
-            <ProductTabList
-              onProductTabChange={this.onProductTabChange}
-              tabItems={divTabs}
-              dataLocator={getLocator('moduleR_cta_link')}
+        <div>
+          {headerText ? (
+            <LinkText
+              component="div"
+              headerText={headerText}
+              className="promo-header"
+              headingClass="moduleR-promo-header"
+              dataLocator={getLocator('moduleR_header_text')}
             />
-          </Col>
-        </Row>
+          ) : null}
+        </div>
+        {bannerPosition === 'top' ? <div className="promo-wrapper">{promoComponent}</div> : null}
+        <div>
+          <ProductTabList
+            onProductTabChange={this.onProductTabChange}
+            tabItems={divTabs}
+            dataLocator={getLocator('moduleR_cta_link')}
+          />
+        </div>
         {this.getImageGrid(selectedProductList)}
         {this.getCurrentCTAButton()}
       </Grid>

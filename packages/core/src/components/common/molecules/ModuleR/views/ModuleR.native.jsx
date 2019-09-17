@@ -135,7 +135,7 @@ class ModuleR extends React.PureComponent {
        On the case of alt layout we will only show only images so sliced 9 images.
     */
     if (selectedProductList.length) {
-      if (bannerPosition === 'center') {
+      if (promoBanner && bannerPosition === 'center') {
         selectedProductList = selectedProductList.slice(0, 8);
         selectedProductList.splice(4, 0, promoComponentContainer);
       } else {
