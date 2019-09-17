@@ -1,7 +1,5 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import CapitalizeEachWord from '../styles/MyFavoriteStore.style.native';
-import withStyles from '../../../../../../common/hoc/withStyles.native';
 import BodyCopy from '../../../../../../common/atoms/BodyCopy';
 import { getLabelValue, formatPhoneNumber } from '../../../../../../../utils';
 import MyProfileTile from '../../../../../../common/molecules/MyProfileTile';
@@ -26,19 +24,11 @@ const MyFavoriteStore = ({
           ? getLabelValue(labels, 'lbl_common_updateFavoriteStore')
           : getLabelValue(labels, 'lbl_common_addAStore')
       }
-      ctaPath="/account/profile"
-      ctaLink="/account?id=profile&subSection=change-password"
       dataLocator="myFavStoreLbl"
     >
-      <CapitalizeEachWord>
-        <BodyCopy fontSize="fs16" text={favStoreName} />
-      </CapitalizeEachWord>
-      <CapitalizeEachWord>
-        <BodyCopy fontSize="fs16" text={favStoreAddress} />
-      </CapitalizeEachWord>
-      <CapitalizeEachWord>
-        <BodyCopy fontSize="fs16" text={`${favStoreCity}, ${favStoreState} ${favStoreZipcode}`} />
-      </CapitalizeEachWord>
+      <BodyCopy fontSize="fs16" text={favStoreName} />
+      <BodyCopy fontSize="fs16" text={favStoreAddress} />
+      <BodyCopy fontSize="fs16" text={`${favStoreCity}, ${favStoreState} ${favStoreZipcode}`} />
       <BodyCopy fontSize="fs16" text={formatPhoneNumber(favStorePhone)} />
     </MyProfileTile>
   );
@@ -67,4 +57,4 @@ MyFavoriteStore.defaultProps = {
   className: '',
 };
 
-export default withStyles(MyFavoriteStore);
+export default MyFavoriteStore;
