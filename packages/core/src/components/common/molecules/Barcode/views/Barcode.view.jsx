@@ -5,6 +5,11 @@ import JsBarcode from 'jsbarcode';
 import PropTypes from 'prop-types';
 
 class Barcode extends PureComponent {
+  constructor(props) {
+    super(props);
+    this.barCodeRef = React.createRef();
+  }
+
   componentDidMount() {
     this.update();
   }
@@ -15,7 +20,7 @@ class Barcode extends PureComponent {
 
   update = () => {
     const { value } = this.props;
-    const renderElement = document.querySelector(`#${value}`);
+    const renderElement = this.barCodeRef.current;
     try {
       JsBarcode(renderElement, value, Object.assign({}, this.props));
     } catch (e) {
@@ -27,13 +32,13 @@ class Barcode extends PureComponent {
   render() {
     const { barcodeId, renderer, value } = this.props;
     if (renderer === 'svg') {
-      return <svg id={barcodeId} />;
+      return <svg ref={this.barCodeRef} id={barcodeId} />;
     }
     if (renderer === 'canvas') {
-      return <canvas id={barcodeId} />;
+      return <canvas ref={this.barCodeRef} id={barcodeId} />;
     }
     if (renderer === 'img') {
-      return <img id={barcodeId} alt={value} />;
+      return <img ref={this.barCodeRef} id={barcodeId} alt={value} />;
     }
 
     return null;

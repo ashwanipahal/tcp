@@ -10,10 +10,11 @@ export default css`
   }
   .sort-filter-label {
     display: none;
+    padding-right: ${props => props.theme.spacing.ELEM_SPACING.SM};
   }
   .sort-item-selected {
     display: inline-block;
-    width: 88px;
+    width: 100px;
     white-space: nowrap;
     overflow: hidden;
     text-overflow: ellipsis;
