@@ -2,6 +2,9 @@
 
 exports[`PayPalButton component PayPalButton component renders correctly 1`] = `
 <div>
+  <Styled(ErrorMessage)
+    error="Error"
+  />
   <div
     className=""
     data-locator="addedtobag-btnpaypal"

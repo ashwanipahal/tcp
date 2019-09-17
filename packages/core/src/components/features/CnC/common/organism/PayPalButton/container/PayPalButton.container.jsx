@@ -8,12 +8,7 @@ import { ServiceResponseError } from '../../../../../../../utils/errorMessage.ut
 
 export class PayPalButtonContainer extends React.PureComponent<Props> {
   initalizePayPalButton = data => {
-    const {
-      startPaypalCheckout,
-      paypalAuthorizationHandle,
-      clearPaypalSettings,
-      isQualifedOrder,
-    } = this.props;
+    const { startPaypalCheckout, paypalAuthorizationHandle, clearPaypalSettings } = this.props;
     const { containerId, height } = data;
     const options = {
       locale: 'en_US',
@@ -27,7 +22,7 @@ export class PayPalButtonContainer extends React.PureComponent<Props> {
       },
       funding: {
         // eslint-disable-next-line no-undef
-        disallowed: [paypal.FUNDING.CREDIT],
+        disallowed: [paypal && paypal.FUNDING.CREDIT],
       },
       env: 'sandbox',
       payment: () => {
@@ -37,11 +32,6 @@ export class PayPalButtonContainer extends React.PureComponent<Props> {
       onCancel: clearPaypalSettings,
       onError: error => {
         throw new ServiceResponseError(error);
-      },
-      validate: actions => {
-        if (isQualifedOrder) {
-          actions.disable();
-        }
       },
     };
     window.paypal.Button.render(options, `#${containerId}`);
@@ -64,7 +54,7 @@ export const mapStateToProps = state => ({
   isQualifedOrder: false,
 });
 
-const mapDispatchToProps = dispatch => {
+export const mapDispatchToProps = dispatch => {
   return {
     startPaypalCheckout: payload => {
       dispatch(bagPageActions.startPaypalCheckout(payload));
