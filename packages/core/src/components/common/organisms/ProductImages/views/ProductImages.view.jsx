@@ -55,7 +55,8 @@ class ProductImages extends React.Component {
     this.setState({ currentImageIndex: imageIndex });
   };
 
-  handleShowFullSizeModalClick() {
+  handleShowFullSizeModalClick(e) {
+    e.preventDefault();
     this.setState({ isFullSizeModalOpen: true });
   }
 

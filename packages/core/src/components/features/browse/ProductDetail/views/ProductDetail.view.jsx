@@ -6,40 +6,10 @@ import ProductDetailStyle from '../ProductDetail.style';
 import Product from '../molecules/Product/views/Product.view';
 import FixedBreadCrumbs from '../../ProductListing/molecules/FixedBreadCrumbs/views';
 import ProductImages from '../../../../common/organisms/ProductImages';
-
-const productImagesProps = {
-  isZoomEnabled: true,
-  images: [
-    {
-      isOnModalImage: false,
-      iconSizeImageUrl:
-        'https://test4.childrensplace.com/wcsstore/GlobalSAS/images/tcp/products/125/2082931_IV.jpg',
-      listingSizeImageUrl:
-        'https://test4.childrensplace.com/wcsstore/GlobalSAS/images/tcp/products/380/2082931_IV.jpg',
-      regularSizeImageUrl:
-        'https://test4.childrensplace.com/wcsstore/GlobalSAS/images/tcp/products/500/2082931_IV.jpg',
-      bigSizeImageUrl:
-        'https://test4.childrensplace.com/wcsstore/GlobalSAS/images/tcp/products/900/2082931_IV.jpg',
-      superSizeImageUrl:
-        'https://test4.childrensplace.com/wcsstore/GlobalSAS/images/tcp/products/900/2082931_IV.jpg',
-    },
-    {
-      isOnModalImage: false,
-      iconSizeImageUrl:
-        'https://test4.childrensplace.com/wcsstore/GlobalSAS/images/tcp/products/125/2082931_IV-1.jpg',
-      listingSizeImageUrl:
-        'https://test4.childrensplace.com/wcsstore/GlobalSAS/images/tcp/products/380/2082931_IV-1.jpg',
-      regularSizeImageUrl:
-        'https://test4.childrensplace.com/wcsstore/GlobalSAS/images/tcp/products/500/2082931_IV-1.jpg',
-      bigSizeImageUrl:
-        'https://test4.childrensplace.com/wcsstore/GlobalSAS/images/tcp/products/900/2082931_IV-1.jpg',
-      superSizeImageUrl:
-        'https://test4.childrensplace.com/wcsstore/GlobalSAS/images/tcp/products/900/2082931_IV-1.jpg',
-    },
-  ],
-  isThumbnailListVisible: true,
-  productName: 'Girls Uniform Active Shorts',
-};
+import {
+  getImagesToDisplay,
+  getMapSliceForColorProductId,
+} from '../../ProductListing/molecules/ProductList/utils/productsCommonUtils';
 
 const ProductDetailView = ({
   className,
@@ -47,7 +17,23 @@ const ProductDetailView = ({
   longDescription,
   breadCrumbs,
   currency,
+  productInfo,
 }) => {
+  let imagesToDisplay = [];
+  if (Object.keys(productInfo).length !== 0 && productInfo.constructor === Object) {
+    const colorProduct = getMapSliceForColorProductId(
+      productInfo.colorFitsSizesMap,
+      /* colorProductId would not be hard coded and it will be replaced in near future when it done */
+      productInfo.colorFitsSizesMap[0].colorProductId
+    );
+    imagesToDisplay = getImagesToDisplay({
+      imagesByColor: productInfo.imagesByColor,
+      curentColorEntry: colorProduct,
+      isAbTestActive: false,
+      isFullSet: true,
+    });
+  }
+
   return (
     <div className={className}>
       <Row>
@@ -63,7 +49,14 @@ const ProductDetailView = ({
       </Row>
       <Row>
         <Col className="product-image-wrapper" colSize={{ small: 6, medium: 4, large: 7 }}>
-          <ProductImages {...productImagesProps} />
+          {!!imagesToDisplay.length && (
+            <ProductImages
+              productName={productInfo.name}
+              isThumbnailListVisible
+              images={imagesToDisplay}
+              isZoomEnabled
+            />
+          )}
         </Col>
         <Col
           id="productDetailsSection"
@@ -117,9 +110,9 @@ const ProductDetailView = ({
 ProductDetailView.propTypes = {
   className: PropTypes.string,
   productDetails: PropTypes.shape({}),
+  productInfo: PropTypes.shape({}),
   longDescription: PropTypes.string,
   breadCrumbs: PropTypes.shape({}),
-  defaultImage: PropTypes.string,
   currency: PropTypes.string,
 };
 
@@ -128,8 +121,8 @@ ProductDetailView.defaultProps = {
   productDetails: {},
   longDescription: '',
   breadCrumbs: {},
-  defaultImage: '',
   currency: '',
+  productInfo: {},
 };
 
 export default withStyles(ProductDetailView, ProductDetailStyle);
