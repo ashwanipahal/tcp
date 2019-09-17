@@ -20,6 +20,8 @@ import PickupSkuSelectionForm from '../molecules/PickupSkuSelectionForm';
 import PickupStoreSelectionForm, {
   DISTANCES_MAP_PROP_TYPE,
 } from '../molecules/PickupStoreSelectionForm';
+// import withStyles from "../../../hoc/withStyles";
+// import styles from '../styles/PickUpStoreModal.style';
 
 const ERRORS_MAP = require('../../../../../services/handler/stateful/errorResponseMapping/index.json');
 
@@ -335,7 +337,7 @@ class PickUpStoreModalView extends React.Component {
     return currentColorEntry && currentColorEntry.hasFits;
   }
 
-  renderNormal() {
+  renderModal() {
     const {
       isPreferredStoreError,
       isShowExtendedSizesNotification,
@@ -478,10 +480,12 @@ class PickUpStoreModalView extends React.Component {
         widthConfig={{ small: '375px', medium: '600px', large: '704px' }}
         heightConfig={{ minHeight: '534px', height: '620', maxHeight: '650' }}
       >
-        {this.renderNormal()}
+        {this.renderModal()}
       </Modal>
     ) : null;
   }
 }
 
+export { PickUpStoreModalView as PickUpStoreModalViewVanilla };
+// export default withStyles(PickUpStoreModalView, styles);
 export default PickUpStoreModalView;

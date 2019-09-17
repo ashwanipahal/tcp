@@ -20,8 +20,13 @@ import styles from '../styles/PickupStoreListItem.style';
 
 const displayStoreDetailsAnchor = () => {
   return (
-    <Anchor noLink underline>
-      <BodyCopy fontFamily="secondary" color="text.primary" fontSize="fs12" className="elem-mt-LRG">
+    <Anchor noLink underline className="StoreDetailsAnchor">
+      <BodyCopy
+        fontFamily="secondary"
+        color="text.primary"
+        fontSize="fs12"
+        className="elem-pb-SM elem-pt-LRG"
+      >
         {STORE_DETAILS_LABELS.STORE_DETAILS}
       </BodyCopy>
     </Anchor>
@@ -183,14 +188,11 @@ class PickupStoreListItem extends React.Component {
 
   displayPickupCTA(showBopisCTA, showBossCTA, buttonLabel) {
     return showBopisCTA || showBossCTA ? (
-      <Button
-        buttonVariation="fixed-width"
-        onClick={this.handleStoreSelect}
-        fill="BLACK"
-        className="elem-mt-SM"
-      >
-        {buttonLabel}
-      </Button>
+      <div className="pickupCTAWrapper elem-mt-SM">
+        <Button buttonVariation="fixed-width" onClick={this.handleStoreSelect} fill="BLACK">
+          {buttonLabel}
+        </Button>
+      </div>
     ) : null;
   }
 
@@ -211,55 +213,49 @@ class PickupStoreListItem extends React.Component {
   }) {
     const { FAVORITE_STORE } = STORE_DETAILS_LABELS;
     return (
-      <div className="StoreListItemWrapper">
-        <Row fullBleed className="minHeight">
-          <Col
-            ignoreGutter={{ small: true }}
-            colSize={{ large: 5, medium: 4, small: 3 }}
-            // className="storeDetailsWrapper"
-          >
-            {displayFavoriteStore(basicInfo, FAVORITE_STORE)}
-            {displayStoreTitle(basicInfo)}
-            {displayDistance(distance)}
-            {displayStoreAddress(address)}
-            {displayStoreDetailsAnchor()}
-          </Col>
-          <Col colSize={{ large: 7, medium: 4, small: 3 }} className="pickupButtonsWrapper">
-            {showBossCTA && (
-              <React.Fragment>
-                <PickupRadioBtn
-                  className="PickupRadioBtn"
-                  radioGroupName="PICKUP-BTN"
-                  isSelected={isBossSelected}
-                  {...BossCtaProps}
-                  handleClick={this.handlePickupRadioBtn}
-                  buttonLabel={PICKUP_CTA_LABELS.boss}
-                />
-                {addToCartError && isBossSelected && <BodyCopy>{addToCartError}</BodyCopy>}
-              </React.Fragment>
-            )}
-            {showBossCTA && showBopisCTA && (
-              <div className="hide-on-mobile elem-mt-SM pickupBtnDivider" />
-            )}
-            {showBopisCTA && (
-              <React.Fragment>
-                <PickupRadioBtn
-                  className="PickupRadioBtn"
-                  radioGroupName="PICKUP-BTN"
-                  isSelected={isBopisSelected}
-                  {...BopisCtaProps}
-                  handleClick={this.handlePickupRadioBtn}
-                  buttonLabel={PICKUP_CTA_LABELS.bopis}
-                />
-                {addToCartError && isBopisSelected && <BodyCopy>{addToCartError}</BodyCopy>}
-              </React.Fragment>
-            )}
+      <Row fullBleed className="elem-mt-XXS storeItemWrapper">
+        <Col ignoreGutter={{ small: true }} colSize={{ large: 5, medium: 3, small: 3 }}>
+          {displayFavoriteStore(basicInfo, FAVORITE_STORE)}
+          {displayStoreTitle(basicInfo)}
+          {displayDistance(distance)}
+          {displayStoreAddress(address)}
+          {displayStoreDetailsAnchor()}
+        </Col>
+        <Col colSize={{ large: 7, medium: 5, small: 3 }} className="pickupButtonsWrapper">
+          {showBossCTA && (
+            <React.Fragment>
+              <PickupRadioBtn
+                className="PickupRadioBtn"
+                radioGroupName="PICKUP-BTN"
+                isSelected={isBossSelected}
+                {...BossCtaProps}
+                handleClick={this.handlePickupRadioBtn}
+                buttonLabel={PICKUP_CTA_LABELS.boss}
+              />
+              {addToCartError && isBossSelected && <BodyCopy>{addToCartError}</BodyCopy>}
+            </React.Fragment>
+          )}
+          {showBossCTA && showBopisCTA && (
+            <div className="hide-on-mobile elem-mt-SM pickupBtnDivider" />
+          )}
+          {showBopisCTA && (
+            <React.Fragment>
+              <PickupRadioBtn
+                className="PickupRadioBtn"
+                radioGroupName="PICKUP-BTN"
+                isSelected={isBopisSelected}
+                {...BopisCtaProps}
+                handleClick={this.handlePickupRadioBtn}
+                buttonLabel={PICKUP_CTA_LABELS.bopis}
+              />
+              {addToCartError && isBopisSelected && <BodyCopy>{addToCartError}</BodyCopy>}
+            </React.Fragment>
+          )}
 
-            {this.displayPickupCTA(showBopisCTA, showBossCTA, buttonLabel)}
-            {displayStoreUnavailable(showBopisCTA, showBossCTA)}
-          </Col>
-        </Row>
-      </div>
+          {this.displayPickupCTA(showBopisCTA, showBossCTA, buttonLabel)}
+          {displayStoreUnavailable(showBopisCTA, showBossCTA)}
+        </Col>
+      </Row>
     );
   }
 

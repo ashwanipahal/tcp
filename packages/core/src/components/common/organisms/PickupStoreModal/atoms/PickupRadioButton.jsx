@@ -5,7 +5,7 @@ import BodyCopy from '../../../atoms/BodyCopy';
 
 const PickStoreDetails = buttonLabel => {
   return (
-    <BodyCopy fontSize="fs14" fontFamily="secondary" className="elem-mb-XXS">
+    <BodyCopy fontSize="fs14" fontFamily="secondary">
       {buttonLabel}
     </BodyCopy>
   );
@@ -21,20 +21,25 @@ const PickStoreBOPISExtraDetails = buttonLabel => {
 
 const PickStoreBOSSExtraDetails = buttonLabel => {
   return (
-    <span>
-      <BodyCopy as="span" fontSize="fs10" fontFamily="secondary" color="text.darkgray">
+    <BodyCopy>
+      <BodyCopy
+        as="span"
+        fontSize={['fs12', 'fs10']}
+        fontFamily="secondary"
+        color={['text.primary', 'text.darkgray']}
+      >
         {`${buttonLabel} `}
       </BodyCopy>
       <BodyCopy
         as="span"
-        fontSize="fs10"
         fontFamily="secondary"
-        fontWeight="extrabold"
-        color="text.darkgray"
+        fontSize={['fs12', 'fs10']}
+        fontWeight={['regular', 'extrabold']}
+        color={['text.primary', 'text.darkgray']}
       >
         {buttonLabel}
       </BodyCopy>
-    </span>
+    </BodyCopy>
   );
 };
 
