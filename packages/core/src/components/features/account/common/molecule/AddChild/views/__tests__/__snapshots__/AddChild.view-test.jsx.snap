@@ -44,7 +44,7 @@ exports[`AddChildBirthday component should renders correctly 1`] = `
             className={null}
             color="gray.900"
             component="p"
-            data-locator="childInfoLbl"
+            dataLocator="childInfoLbl"
             fontFamily="secondary"
             fontSize="fs16"
             fontWeight="black"
@@ -223,7 +223,7 @@ exports[`AddChildBirthday component should renders correctly 1`] = `
                 "withComponent": [Function],
               }
             }
-            data-locator="childNameField"
+            dataLocator="childNameField"
             id="childName"
             name="childName"
             type="text"
@@ -366,7 +366,7 @@ exports[`AddChildBirthday component should renders correctly 1`] = `
                   "withComponent": [Function],
                 }
               }
-              data-locator="childBirthdayMonthDD"
+              dataLocator="childBirthdayMonthDD"
               id="userBirthMonth"
               name="userBirthMonth"
               options={
@@ -534,7 +534,7 @@ exports[`AddChildBirthday component should renders correctly 1`] = `
                   "withComponent": [Function],
                 }
               }
-              data-locator="childBirthdayYearDD"
+              dataLocator="childBirthdayYearDD"
               id="userBirthYear"
               name="userBirthYear"
               options={
@@ -626,7 +626,7 @@ exports[`AddChildBirthday component should renders correctly 1`] = `
             className={null}
             color="gray.900"
             component="p"
-            data-locator="childGenderLbl"
+            dataLocator="childGenderLbl"
             fontFamily="secondary"
             fontSize="fs10"
             fontWeight="black"
@@ -746,7 +746,7 @@ exports[`AddChildBirthday component should renders correctly 1`] = `
                 "withComponent": [Function],
               }
             }
-            data-locator="childGenderDD"
+            dataLocator="childGenderDD"
             enableSuccessCheck={true}
             id="gender"
             name="gender"
@@ -986,7 +986,7 @@ exports[`AddChildBirthday component should renders correctly 1`] = `
                 "withComponent": [Function],
               }
             }
-            data-locator="firstNameField"
+            dataLocator="firstNameField"
             id="firstName"
             name="firstName"
             type="text"
@@ -1164,7 +1164,7 @@ exports[`AddChildBirthday component should renders correctly 1`] = `
                 "withComponent": [Function],
               }
             }
-            data-locator="lastNameField"
+            dataLocator="lastNameField"
             id="lastName"
             name="lastName"
             type="text"
@@ -1336,7 +1336,7 @@ exports[`AddChildBirthday component should renders correctly 1`] = `
                 "withComponent": [Function],
               }
             }
-            data-locator="tnccb"
+            dataLocator="tnccb"
             id="acceptAddChildAgreement"
             name="acceptAddChildAgreement"
           >
@@ -1417,7 +1417,7 @@ exports[`AddChildBirthday component should renders correctly 1`] = `
       >
         <Styled(Button)
           buttonVariation="fixed-width"
-          data-locator="cancelChildFormBtn"
+          dataLocator="cancelChildFormBtn"
           fill="WHITE"
           onClick={[MockFunction]}
         />
@@ -1441,7 +1441,7 @@ exports[`AddChildBirthday component should renders correctly 1`] = `
       >
         <Styled(Button)
           buttonVariation="fixed-width"
-          data-locator="SaveChildFormBtn"
+          dataLocator="SaveChildFormBtn"
           fill="BLUE"
           type="submit"
         />
