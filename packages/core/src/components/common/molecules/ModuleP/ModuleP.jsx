@@ -114,7 +114,7 @@ ModuleP.defaultProps = {
   onPickUpOpenClick: () => {},
   onColorChange: () => {},
   isBopisEnabled: false,
-  unbxdId: 'fc0d2287-4a11-4739-98b4-1e2fd91016c4',
+  unbxdId: '',
   onProductCardHover: () => {},
   isBopisEnabledForClearance: false,
   onQuickBopisOpenClick: () => {},
