@@ -1,6 +1,41 @@
 import { css } from 'styled-components';
 
 const styles = css`
+  .imageSize {
+    width: 60px;
+    height: 60px;
+    margin-left: ${props => props.theme.spacing.ELEM_SPACING.SM};
+    background-size: contain;
+    background-repeat: no-repeat;
+  }
+  .AppDownload {
+    background-image: url('/static/images/download-app.png');
+  }
+  .ProductReview {
+    background-image: url('/static/images/review.png');
+  }
+  .FacebookLink {
+    background-image: url('/static/images/facebook.png');
+  }
+  .InstagramLink {
+    background-image: url('/static/images/instagram.png');
+  }
+  .ChildProfile {
+    background-image: url('/static/images/child-birthday-profile.png');
+  }
+  .SMSOptIn {
+    background-image: url('/static/images/sms.png');
+  }
+  .AddMailingAddress {
+    background-image: url('/static/images/mailingAddress.png');
+  }
+  .AddFavoriteStore {
+    background-image: url('/static/images/store.png');
+  }
+  .AddShopperType {
+    background-image: url('/static/images/survey.png');
+  }
+
   .tileWrapper {
     border: 1px solid ${props => props.theme.colorPalette.gray[300]};
     background: ${props => props.theme.colors.WHITE};
@@ -32,15 +67,11 @@ const styles = css`
 
   .earnExtraPointsTileImage {
     margin-top: ${props => props.theme.spacing.LAYOUT_SPACING.MED};
-    height: 100px;
+    height: ${props => props.theme.spacing.LAYOUT_SPACING.XL};
     text-align: center;
     display: flex;
     justify-content: space-around;
     align-items: center;
-    img {
-      height: 60px;
-    }
-    margin-bottom: 5px;
   }
 `;
 
