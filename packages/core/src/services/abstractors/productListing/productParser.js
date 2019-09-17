@@ -245,6 +245,15 @@ const isBopisProductDisabled = product => {
     extractAttributeValue(product, processHelpers.getProductAttributes().bossCategoryDisabled) || 0
   );
 };
+
+/**
+ * This function returns product part no or product id if product part no does not exists
+ * @param {Object} product
+ */
+const getGeneralProductId = product => {
+  return product.prodpartno || product.generalProductId;
+};
+
 export const parseProductInfo = (
   productArr,
   {
@@ -358,9 +367,10 @@ export const parseProductInfo = (
   }
   response.loadedProductsPages[0].push({
     productInfo: {
-      generalProductId: product.prodpartno,
+      generalProductId: getGeneralProductId(product),
       name: product.product_name,
-      pdpUrl: `/p/${product.seo_token || uniqueId}`,
+      pdpUrl: `/p/${product.seo_token}`,
+      uniqueId: product.uniqueId,
       shortDescription: product.product_short_description,
       longDescription: product.product_short_description,
       // Meeting with Varun for alignment of this value.

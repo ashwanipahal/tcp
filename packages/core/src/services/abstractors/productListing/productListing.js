@@ -198,6 +198,7 @@ class ProductsDynamicAbstractor {
           isOutfitPage,
           searchTerm,
           sort,
+          filterSortView: Object.keys(filtersAndSort).length > 0,
         })
       )
       .catch(err => {

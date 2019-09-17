@@ -6,12 +6,17 @@ export default css`
   }
 
   .items-count-content-number {
-    font-weight: ${props => props.theme.typography.fontWeights.black};
     padding: ${props => props.theme.spacing.ELEM_SPACING.XXS};
+    font-size: ${props => props.theme.typography.fontSizes.fs16};
+    font-weight: ${props => props.theme.typography.fontWeights.extrabold};
+
+    @media ${props => props.theme.mediaQuery.large} {
+      font-size: ${props => props.theme.typography.fontSizes.fs14};
+    }
   }
 
   .items-count-content {
     position: absolute;
-    right: 0;
+    right: 15px;
   }
 `;

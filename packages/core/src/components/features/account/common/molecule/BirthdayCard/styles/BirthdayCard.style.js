@@ -9,6 +9,7 @@ const styles = css`
   height: ${constants.BIRTHDAY_CARD_HEIGHT};
 
   .closeIcon {
+    cursor: pointer;
     position: absolute;
     right: 12px;
     top: 12px;

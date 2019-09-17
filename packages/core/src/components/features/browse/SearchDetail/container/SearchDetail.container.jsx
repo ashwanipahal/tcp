@@ -26,6 +26,7 @@ import {
   getTotalProductsCount,
   getProductsSelect,
   getCurrentSearchForText,
+  getLabels,
 } from '../container/SearchDetail.selectors';
 
 import { isPlccUser } from '../../../account/User/container/User.selectors';
@@ -45,9 +46,6 @@ class SearchDetailContainer extends React.PureComponent {
   }
 
   render() {
-    if (!isClient()) {
-      return <div>Blank</div>;
-    }
     const {
       formValues,
       productsBlock,
@@ -69,6 +67,7 @@ class SearchDetailContainer extends React.PureComponent {
       onSubmit,
       onPickUpOpenClick,
       searchedText,
+      slpLabels,
       ...otherProps
     } = this.props;
     return (
@@ -84,6 +83,7 @@ class SearchDetailContainer extends React.PureComponent {
         totalProductsCount={totalProductsCount}
         labels={labels}
         labelsFilter={labelsFilter}
+        slpLabels={slpLabels}
         searchedText={searchedText}
         {...otherProps}
       />
@@ -129,6 +129,7 @@ function mapStateToProps(state) {
     formValues: getFormValues('filter-form')(state),
     onSubmit: submitProductListingFiltersForm,
     currentNavIds: state.ProductListing && state.ProductListing.get('currentNavigationIds'),
+    slpLabels: getLabels(state),
   };
 }
 

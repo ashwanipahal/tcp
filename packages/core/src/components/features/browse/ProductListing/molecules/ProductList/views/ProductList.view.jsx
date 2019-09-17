@@ -52,9 +52,7 @@ const ProductList = props => {
         } else if (isGridItem(item)) {
           gridIndex += 1;
         }
-        if (window) {
-          window.gridIndex = gridIndex;
-        }
+        window.gridIndex = gridIndex;
         return typeof item === 'string' ? (
           /* id={isShowPLPId && (categoryNameTop +`-`+item).replace(/ /g, '-')} */
 

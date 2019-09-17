@@ -7,8 +7,10 @@ import style from '../LoadedProductsCount.style';
 
 class LoadedProductsCount extends React.PureComponent {
   render() {
-    const { className, totalProductsCount } = this.props;
-
+    const { className, totalProductsCount, showingItemsLabel } = this.props;
+    const showingXItems = showingItemsLabel.lbl_showing_x_items;
+    const ItemLabel = showingItemsLabel.lbl_item;
+    const ItemsLabel = showingItemsLabel.lbl_items;
     return (
       <BodyCopy
         className={`${className} count-section`}
@@ -19,11 +21,11 @@ class LoadedProductsCount extends React.PureComponent {
       >
         {totalProductsCount > 0 && (
           <span className="items-count-content">
-            Showing
+            {showingXItems}
             <span className="items-count-content-number">
               {totalProductsCount > 0 ? totalProductsCount : 0}
             </span>
-            {totalProductsCount > 1 ? 'Items' : 'Item'}
+            <span>{totalProductsCount > 1 ? ItemsLabel : ItemLabel}</span>
           </span>
         )}
       </BodyCopy>
@@ -34,11 +36,13 @@ class LoadedProductsCount extends React.PureComponent {
 LoadedProductsCount.propTypes = {
   className: PropTypes.string,
   totalProductsCount: PropTypes.number,
+  showingItemsLabel: PropTypes.objectOf(PropTypes.oneOfType([PropTypes.string])),
 };
 
 LoadedProductsCount.defaultProps = {
   className: '',
   totalProductsCount: 0,
+  showingItemsLabel: {},
 };
 
 export default withStyles(errorBoundary(LoadedProductsCount), style);

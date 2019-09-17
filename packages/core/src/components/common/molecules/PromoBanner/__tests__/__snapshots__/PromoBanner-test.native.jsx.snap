@@ -998,10 +998,64 @@ exports[`PromoTextBanner native component renders all style correctly 18`] = `
   }
   forwardedRef={null}
   letterSpacing="ls2"
-  lineHeight="40px"
+  lineHeight="20px"
   mobilefontFamily="primary"
   textAlign="center"
 />
+`;
+
+exports[`PromoTextBanner native component renders all style correctly 19`] = `
+<Styled(View)
+  style={
+    Object {
+      "marginTop": 5,
+    }
+  }
+>
+  <Styled(Styled(BodyCopy))
+    color="text.primary"
+    fontFamily="primary"
+    fontSize="fs48"
+    fontWeight="black"
+    lineHeight="48px"
+    style={
+      Object {
+        "height": 38,
+        "marginTop": 0,
+      }
+    }
+    textAlign="center"
+  />
+  <Styled(View)>
+    <Styled(Styled(BodyCopy))
+      color="text.primary"
+      fontFamily="primary"
+      fontSize="fs28"
+      fontWeight="black"
+      lineHeight="28px"
+      style={
+        Object {
+          "height": 24,
+          "marginTop": 0,
+          "width": 28,
+        }
+      }
+    />
+    <Styled(Styled(BodyCopy))
+      color="text.primary"
+      fontFamily="primary"
+      fontSize="fs18"
+      fontWeight="black"
+      lineHeight="18px"
+      style={
+        Object {
+          "height": 20,
+        }
+      }
+      textAlign="center"
+    />
+  </Styled(View)>
+</Styled(View)>
 `;
 
 exports[`PromoTextBanner native component renders correctly 1`] = `
