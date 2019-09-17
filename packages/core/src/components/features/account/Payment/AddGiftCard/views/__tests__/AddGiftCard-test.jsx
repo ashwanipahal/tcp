@@ -11,6 +11,7 @@ describe('Add gift card component', () => {
       },
       addGiftCardResponse: 'success',
       onAddGiftCardClick: jest.fn(),
+      isRecapchaEnabled: true,
     };
     const component = shallow(<AddGiftCardVanilla {...props} />);
     expect(component).toMatchSnapshot();
