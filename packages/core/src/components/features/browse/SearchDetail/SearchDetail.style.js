@@ -29,6 +29,9 @@ export default css`
       width: calc(20% - 21px);
     }
   }
+  .container-price {
+    text-align: left;
+  }
   @media ${props => props.theme.mediaQuery.smallOnly} {
     .product-list {
       .search-product-tile:nth-child(2n) {
