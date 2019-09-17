@@ -1004,7 +1004,7 @@ exports[`AddEditPersonalInformationForm component should renders correctly in in
         </Styled(Col)>
       </Styled(Row)>
       <Styled(BodyCopy)
-        className={null}
+        className="elem-mt-XS"
         color="text.primary"
         component="p"
         fontFamily="secondary"
@@ -2237,7 +2237,7 @@ exports[`AddEditPersonalInformationForm component should renders correctly with 
         </Styled(Col)>
       </Styled(Row)>
       <Styled(BodyCopy)
-        className={null}
+        className="elem-mt-XS"
         color="text.primary"
         component="p"
         fontFamily="secondary"
