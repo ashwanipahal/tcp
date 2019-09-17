@@ -1,0 +1,53 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`AddNewCCForm should render correctly 1`] = `
+<Styled(CreditCardFields)
+  cardNumbProps={
+    Object {
+      "colSize": Object {
+        "large": 6,
+        "medium": 8,
+        "small": 6,
+      },
+    }
+  }
+  cardType={null}
+  creditFieldLabels={
+    Object {
+      "creditCardNumber": "lbl_billing_cardNumber",
+      "cvvCode": "lbl_billing_cvvCode",
+      "expMonth": "lbl_billing_expMonth",
+      "expYear": "lbl_billing_expYear",
+    }
+  }
+  cvvError={null}
+  cvvProps={
+    Object {
+      "colSize": Object {
+        "large": 2,
+        "medium": 2,
+        "small": 2,
+      },
+    }
+  }
+  expMonthProps={
+    Object {
+      "colSize": Object {
+        "large": 2,
+        "medium": 3,
+        "small": 2,
+      },
+    }
+  }
+  expYearProps={
+    Object {
+      "colSize": Object {
+        "large": 2,
+        "medium": 3,
+        "small": 2,
+      },
+    }
+  }
+  variation="secondary"
+/>
+`;

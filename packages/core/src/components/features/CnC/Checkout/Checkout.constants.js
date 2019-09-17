@@ -9,7 +9,8 @@ const CONSTANTS = {
   },
 
   CHECKOUT: 'checkout',
-
+  CREDIT_CARD_CVV_INFO_LABEL: 'cvv_info',
+  PAYMENT_METHOD_CREDIT_CARD: 'creditCard',
   ADDREESS_TYPE: {
     SHIPPING: 'Shipping',
     BILLING: 'Billing',
