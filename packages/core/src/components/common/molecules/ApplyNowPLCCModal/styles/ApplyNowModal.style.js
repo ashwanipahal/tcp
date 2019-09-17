@@ -7,9 +7,7 @@ export const modalStyles = css`
 
   .TCPModal__InnerContent {
     text-align: center;
-    && {
-      padding: 21px;
-    }
+    padding: 21px !important;
     > h2 {
       ::after {
         content: '§';
@@ -104,7 +102,6 @@ export const modalStyles = css`
   }
 
   .rewards__benefits {
-    margin: 21px 0 0 21px;
     > li {
       font-size: ${props => props.theme.fonts.fontSize.body.large.secondary}px;
       width: 355px;
@@ -124,9 +121,7 @@ export const modalStyles = css`
   .footerLinks {
     display: flex;
     margin-top: 38px;
-    > span {
-      padding-left: 67px;
-    }
+    justify-content: center;
     padding-bottom: 33px;
     @media ${props => props.theme.mediaQuery.medium} {
       padding: 0px;

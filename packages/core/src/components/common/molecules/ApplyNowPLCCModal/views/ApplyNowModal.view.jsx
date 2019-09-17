@@ -114,7 +114,11 @@ const StyledApplyNowModal = ({
         >
           {getLabelValue(labels, 'apply_now_benefits_header')}
         </BodyCopy>
-        <RichText className="rewards__benefits" richTextHtml={plccBenefitsList} />
+        <Row>
+          <Col ignoreGutter={{ small: true }} colSize={{ large: 10, medium: 8, small: 6 }}>
+            <RichText className="rewards__benefits" richTextHtml={plccBenefitsList} />
+          </Col>
+        </Row>
         <div className="footerLinks">
           <BodyCopy component="span" fontSize="fs12" fontFamily="secondary">
             {getLabelValue(labels, 'apply_now_links_text')}

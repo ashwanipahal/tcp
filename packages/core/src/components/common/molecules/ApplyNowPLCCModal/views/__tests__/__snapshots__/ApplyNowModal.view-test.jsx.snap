@@ -16,9 +16,7 @@ exports[`ApplyNowModalWrapper component should renders correctly 1`] = `
 
   .TCPModal__InnerContent {
     text-align: center;
-    && {
-      padding: 21px;
-    }
+    padding: 21px !important;
     > h2 {
       ::after {
         content: '§';
@@ -128,7 +126,6 @@ exports[`ApplyNowModalWrapper component should renders correctly 1`] = `
   }
 
   .rewards__benefits {
-    margin: 21px 0 0 21px;
     > li {
       font-size: ",
       [Function],
@@ -150,9 +147,7 @@ exports[`ApplyNowModalWrapper component should renders correctly 1`] = `
   .footerLinks {
     display: flex;
     margin-top: 38px;
-    > span {
-      padding-left: 67px;
-    }
+    justify-content: center;
     padding-bottom: 33px;
     @media ",
       [Function],
@@ -313,9 +308,26 @@ exports[`ApplyNowModalWrapper component should renders correctly 1`] = `
     >
       apply_now_benefits_header
     </Styled(BodyCopy)>
-    <Styled(RichText)
-      className="rewards__benefits"
-    />
+    <Styled(Row)>
+      <Styled(Col)
+        colSize={
+          Object {
+            "large": 10,
+            "medium": 8,
+            "small": 6,
+          }
+        }
+        ignoreGutter={
+          Object {
+            "small": true,
+          }
+        }
+      >
+        <Styled(RichText)
+          className="rewards__benefits"
+        />
+      </Styled(Col)>
+    </Styled(Row)>
     <div
       className="footerLinks"
     >
