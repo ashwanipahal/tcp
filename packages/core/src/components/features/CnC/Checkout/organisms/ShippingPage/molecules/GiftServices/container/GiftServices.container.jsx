@@ -23,6 +23,7 @@ class GiftServicesContainer extends React.PureComponent {
     const optionId = giftWrap ? giftWrap.get('optionId') : '';
     const message = giftWrap ? giftWrap.get('message') : '';
     const hasGiftWrapping = !!giftWrap.size;
+    const brand = giftWrap ? giftWrap.get('brand') : '';
     const updateLabels = { ...labels, DETAILS_RICH_TEXT: detailsRichText };
     return (
       <GiftServices
@@ -32,7 +33,7 @@ class GiftServicesContainer extends React.PureComponent {
         isGiftServicesChecked={giftWrap.size}
         formSection={formSection}
         giftWrapOptions={giftWrapOptions}
-        initialValues={{ optionId, message, hasGiftWrapping }}
+        initialValues={{ optionId, message, hasGiftWrapping, brand }}
       />
     );
   }

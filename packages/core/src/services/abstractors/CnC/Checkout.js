@@ -199,6 +199,7 @@ export function addGiftWrappingOption(payload) {
       GiftMsg: payload.GiftMsg || '',
       quantity_0: '1',
       catEntryId_0: payload.catEntryId,
+      brand: payload.brand,
     },
   };
   return executeStatefulAPICall(payloadArgs).then(res => {
