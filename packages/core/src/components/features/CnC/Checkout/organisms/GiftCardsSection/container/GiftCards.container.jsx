@@ -17,6 +17,7 @@ import {
 } from '../../../container/Checkout.action';
 import { toastMessageInfo } from '../../../../../../common/atoms/Toast/container/Toast.actions.native';
 import { getFormValidationErrorMessages } from '../../../../../account/Account/container/Account.selectors';
+import CHECKOUT_CONSTANTS from '../../../Checkout.constants';
 
 export class GiftCardsContainer extends React.PureComponent<Props> {
   componentWillMount() {
@@ -64,7 +65,7 @@ export class GiftCardsContainer extends React.PureComponent<Props> {
       billingAddressId: data.billingAddressId,
       recaptchaToken: data.recaptchaToken,
       saveToAccount: data.saveToAccount,
-      cardType: 'GC',
+      cardType: CHECKOUT_CONSTANTS.PAYMENT_CARD_TYPE.GC,
       labels,
     });
   };

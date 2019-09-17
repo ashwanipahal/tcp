@@ -127,6 +127,7 @@ exports[`ButtonList component renders correctly without props 1`] = `
               Object {
                 "content": <ForwardRef
                   buttonVariation="variable-width"
+                  className="addCreditCardBtn"
                   fill="BLACK"
                   fullWidth={true}
                 >
@@ -752,6 +753,7 @@ exports[`ButtonList component renders correctly without props 2`] = `
               Object {
                 "content": <ForwardRef
                   buttonVariation="variable-width"
+                  className="addCreditCardBtn"
                   fill="BLACK"
                   fullWidth={true}
                 >

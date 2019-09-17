@@ -155,6 +155,8 @@ export default css`
   .payment-container {
     margin-top: ${props => props.theme.spacing.ELEM_SPACING.XXL};
     border-top: 1px solid ${props => props.theme.colors.TEXT.DARKGRAY};
-    min-height: 198px;
+  }
+  .payment-paypal-container {
+    padding: ${props => props.theme.spacing.APP_LAYOUT_SPACING.SM};
   }
 `;

@@ -75,7 +75,12 @@ export class BillingPaymentForm extends React.PureComponent {
       value: '',
       title: labels.lbl_billing_addCreditHeading,
       content: (
-        <Button fullWidth buttonVariation="variable-width" fill="BLACK">
+        <Button
+          className="addCreditCardBtn"
+          fullWidth
+          buttonVariation="variable-width"
+          fill="BLACK"
+        >
           {labels.lbl_billing_addCreditBtn}
         </Button>
       ),
@@ -122,24 +127,26 @@ export class BillingPaymentForm extends React.PureComponent {
   getCreditCardDropDown = (options, onClickHandler, activeValue, onClose) => {
     return (
       <>
-        <Modal
-          fixedWidth
-          heading="SELECT CARD"
-          overlayClassName="TCPModal__Overlay"
-          className="TCPModal__Content_Modal hideOnDesktop"
-          onRequestClose={onClose}
-          maxWidth="450px"
-          minHeight="643px"
-          shouldCloseOnOverlayClick={false}
-          isOpen
-        >
-          <DropdownList
-            optionsMap={options}
-            clickHandler={onClickHandler}
-            activeValue={activeValue}
-            className="custom-select-dropDownList"
-          />
-        </Modal>
+        <div className="hideOnDesktop">
+          <Modal
+            fixedWidth
+            heading="SELECT CARD"
+            overlayClassName="TCPModal__Overlay"
+            className="TCPModal__Content_Modal"
+            onRequestClose={onClose}
+            maxWidth="450px"
+            minHeight="643px"
+            shouldCloseOnOverlayClick={false}
+            isOpen
+          >
+            <DropdownList
+              optionsMap={options}
+              clickHandler={onClickHandler}
+              activeValue={activeValue}
+              className="custom-select-dropDownList"
+            />
+          </Modal>
+        </div>
         <DropdownList
           optionsMap={options}
           clickHandler={onClickHandler}
@@ -342,15 +349,17 @@ export class BillingPaymentForm extends React.PureComponent {
               {labels.lbl_billing_paymentMethodTitle}
             </BodyCopy>
             <PaymentMethods labels={labels} />
-            {paymentMethodId === constants.PAYMENT_METHOD_CREDIT_CARD
-              ? this.getCreditCardWrapper({
-                  labels,
-                  creditCardList,
-                  selectedCard,
-                  cvvCodeRichText,
-                  onFileCardKey,
-                })
-              : null}
+            {paymentMethodId === constants.PAYMENT_METHOD_CREDIT_CARD ? (
+              this.getCreditCardWrapper({
+                labels,
+                creditCardList,
+                selectedCard,
+                cvvCodeRichText,
+                onFileCardKey,
+              })
+            ) : (
+              <div className="payment-paypal-container" />
+            )}
           </div>
         )}
         <CheckoutFooter
