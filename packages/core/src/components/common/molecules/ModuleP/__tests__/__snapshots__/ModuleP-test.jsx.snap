@@ -1,6 +1,6 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`Module O component renders correctly 1`] = `
+exports[`Module P component renders correctly 1`] = `
 <ul>
   <Styled(ProductsGridItem)
     className="test"
@@ -12,11 +12,10 @@ exports[`Module O component renders correctly 1`] = `
       ]
     }
     currencySymbol=""
-    dataLocatorBag="moduleO_add_to_bag_btn"
-    dataLocatorImages="moduleO_image"
-    dataLocatorPrice="moduleO_price"
+    dataLocatorBag="moduleP_add_to_bag_btn"
+    dataLocatorImages="moduleP_image"
+    dataLocatorPrice="moduleP_price"
     gridIndex={0}
-    hideImageCarousel={true}
     isBopisEnabled={false}
     isBopisEnabledForClearance={false}
     isBossClearanceProductEnabled={true}

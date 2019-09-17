@@ -3,9 +3,9 @@ import PropTypes from 'prop-types';
 import ProductGridItem from '../../../features/browse/ProductListing/molecules/ProductList/views/ProductsGridItem';
 import { isMobileApp } from '../../../../utils';
 import withStyles from '../../hoc/withStyles';
-import style from './ModuleO.style';
+import style from './ModuleP.style';
 
-const ModuleO = props => {
+const ModuleP = props => {
   const {
     loadedProductCount,
     generalProductId,
@@ -67,16 +67,15 @@ const ModuleO = props => {
         isPLPredesign
         isKeepAliveKillSwitch={false}
         labels={labels}
-        dataLocatorImages="moduleO_image"
-        dataLocatorBag="moduleO_add_to_bag_btn"
-        dataLocatorPrice="moduleO_price"
-        hideImageCarousel
+        dataLocatorImages="moduleP_image"
+        dataLocatorBag="moduleP_add_to_bag_btn"
+        dataLocatorPrice="moduleP_price"
       />
     </ul>
   );
 };
 
-ModuleO.propTypes = {
+ModuleP.propTypes = {
   loadedProductCount: PropTypes.number.isRequired,
   generalProductId: PropTypes.string.isRequired,
   item: PropTypes.shape({}).isRequired,
@@ -107,7 +106,7 @@ ModuleO.propTypes = {
   className: PropTypes.string.isRequired,
 };
 
-ModuleO.defaultProps = {
+ModuleP.defaultProps = {
   showQuickViewForProductId: '',
   currencySymbol: '',
   onAddItemToFavorites: () => {},
@@ -130,5 +129,5 @@ ModuleO.defaultProps = {
   gridIndex: 0,
 };
 
-export { ModuleO as ModuleOVanilla };
-export default withStyles(ModuleO, style);
+export { ModuleP as ModulePVanilla };
+export default withStyles(ModuleP, style);
