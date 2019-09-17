@@ -8,6 +8,7 @@ import {
   startCartCheckout,
   removeUnqualifiedItemsAndCheckout,
   checkoutCart,
+  addItemToSFL,
 } from '../container/BagPage.saga';
 import BAG_PAGE_ACTIONS from '../container/BagPage.actions';
 import BAGPAGE_CONSTANTS from '../BagPage.constants';
@@ -139,5 +140,21 @@ describe('checkoutCart Saga', () => {
     let takeLatestDescriptor = generator.next(true).value;
     takeLatestDescriptor = generator.next().value;
     expect(takeLatestDescriptor).toEqual(put(setCheckoutModalMountedState({ state: true })));
+  });
+});
+
+describe('Bag SFL Saga', () => {
+  it('add item to sfl', () => {
+    const res = {
+      errorResponse: null,
+    };
+    const generator = addItemToSFL({});
+
+    let takeLatestDescriptor = generator.next().value;
+    takeLatestDescriptor = generator.next().value;
+    takeLatestDescriptor = generator.next().value;
+    takeLatestDescriptor = generator.next(res).value;
+    takeLatestDescriptor = generator.next(res).value;
+    expect(takeLatestDescriptor).toEqual(put(BAG_PAGE_ACTIONS.setCartItemsSFL(true)));
   });
 });

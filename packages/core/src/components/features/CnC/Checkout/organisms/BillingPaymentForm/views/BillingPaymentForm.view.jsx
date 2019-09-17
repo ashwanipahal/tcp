@@ -14,18 +14,16 @@ import Card from '../../../../../../common/molecules/Card';
 import Row from '../../../../../../common/atoms/Row';
 import Col from '../../../../../../common/atoms/Col';
 import Button from '../../../../../../common/atoms/Button';
-import { Heading, Image } from '../../../../../../common/atoms';
+import { Heading } from '../../../../../../common/atoms';
 import constants from '../container/CreditCard.constants';
 import Anchor from '../../../../../../common/atoms/Anchor';
 import CardImage from '../../../../../../common/molecules/Card/views/CardImage';
-import ReactTooltip from '../../../../../../common/atoms/ReactToolTip';
-import { getIconPath } from '../../../../../../../utils';
-import RichText from '../../../../../../common/atoms/RichText';
 import CheckoutFooter from '../../../molecules/CheckoutFooter';
 import utility from '../../../util/utility';
 import { CHECKOUT_ROUTES } from '../../../Checkout.constants';
 import Modal from '../../../../../../common/molecules/Modal';
 import DropdownList from './CreditCardDropdownList.view';
+import getCvvInfo from '../../../molecules/CVVInfo';
 
 export class BillingPaymentForm extends React.PureComponent {
   static propTypes = {
@@ -101,28 +99,6 @@ export class BillingPaymentForm extends React.PureComponent {
         card.ccType !== constants.ACCEPTED_CREDIT_CARDS.GIFT_CARD &&
         card.ccType !== constants.ACCEPTED_CREDIT_CARDS.VENMO
     );
-
-  getCVVInfoRichText = ({ cvvCodeRichText }) => {
-    return (
-      <RichText
-        richTextHtml={cvvCodeRichText}
-        className="cvv-code-info"
-        dataLocator="bonus-points-details"
-      />
-    );
-  };
-
-  getCvvInfo = ({ cvvCodeRichText }) => {
-    return (
-      <ReactTooltip
-        fontFamily="secondary"
-        message={this.getCVVInfoRichText({ cvvCodeRichText })}
-        aligned="right"
-      >
-        <Image height="15" width="15" src={getIconPath('info-icon')} />
-      </ReactTooltip>
-    );
-  };
 
   getCreditCardDropDown = (options, onClickHandler, activeValue, onClose) => {
     return (
@@ -266,9 +242,7 @@ export class BillingPaymentForm extends React.PureComponent {
                     enableSuccessCheck={false}
                   />
                   <span className="hide-show show-hide-icons">
-                    <span className="info-icon-img-wrapper">
-                      {this.getCvvInfo({ cvvCodeRichText })}
-                    </span>
+                    <span className="info-icon-img-wrapper">{getCvvInfo({ cvvCodeRichText })}</span>
                   </span>
                 </Col>
               )}

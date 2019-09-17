@@ -407,15 +407,15 @@ exports[`ButtonList component renders correctly without props 1`] = `
               message={
                 <ForwardRef
                   className="cvv-code-info"
-                  dataLocator="bonus-points-details"
+                  dataLocator="cvv-code-info"
                   richTextHtml={null}
                 />
               }
             >
               <Styled(Image)
-                height="15"
+                height="10"
                 src="/static/images/info-icon.png"
-                width="15"
+                width="10"
               />
             </Styled(ReactTooltip)>
           </span>
@@ -1033,15 +1033,15 @@ exports[`ButtonList component renders correctly without props 2`] = `
               message={
                 <ForwardRef
                   className="cvv-code-info"
-                  dataLocator="bonus-points-details"
+                  dataLocator="cvv-code-info"
                   richTextHtml={null}
                 />
               }
             >
               <Styled(Image)
-                height="15"
+                height="10"
                 src="/static/images/info-icon.png"
-                width="15"
+                width="10"
               />
             </Styled(ReactTooltip)>
           </span>
