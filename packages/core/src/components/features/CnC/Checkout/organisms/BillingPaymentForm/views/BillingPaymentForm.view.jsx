@@ -41,6 +41,7 @@ export class BillingPaymentForm extends React.PureComponent {
     backLinkPickup: PropTypes.string.isRequired,
     backLinkShipping: PropTypes.string.isRequired,
     nextSubmitText: PropTypes.string.isRequired,
+    isPaymentDisabled: PropTypes.bool,
   };
 
   static defaultProps = {
@@ -48,6 +49,7 @@ export class BillingPaymentForm extends React.PureComponent {
     onFileCardKey: '',
     cvvCodeRichText: null,
     orderHasShipping: false,
+    isPaymentDisabled: false,
   };
 
   handleEditClick = () => {};
@@ -322,31 +324,35 @@ export class BillingPaymentForm extends React.PureComponent {
       backLinkPickup,
       backLinkShipping,
       nextSubmitText,
+      isPaymentDisabled,
     } = this.props;
     const creditCardList = this.getCreditCardList(cardList);
     const selectedCard = onFileCardKey ? this.getSelectedCard(cardList, onFileCardKey) : '';
-
     return (
       <form name={constants.FORM_NAME} noValidate className={className} onSubmit={handleSubmit}>
-        <BodyCopy
-          fontFamily="primary"
-          fontSize="fs28"
-          fontWeight="regular"
-          data-locator="billing-details"
-          className="elem-mb-XS elem-mt-MED"
-        >
-          {labels.lbl_billing_paymentMethodTitle}
-        </BodyCopy>
-        <PaymentMethods labels={labels} />
-        {paymentMethodId === constants.PAYMENT_METHOD_CREDIT_CARD
-          ? this.getCreditCardWrapper({
-              labels,
-              creditCardList,
-              selectedCard,
-              cvvCodeRichText,
-              onFileCardKey,
-            })
-          : null}
+        {!isPaymentDisabled && (
+          <div className="payment-container">
+            <BodyCopy
+              fontFamily="primary"
+              fontSize="fs28"
+              fontWeight="regular"
+              data-locator="billing-details"
+              className="elem-mb-XS elem-mt-XL"
+            >
+              {labels.lbl_billing_paymentMethodTitle}
+            </BodyCopy>
+            <PaymentMethods labels={labels} />
+            {paymentMethodId === constants.PAYMENT_METHOD_CREDIT_CARD
+              ? this.getCreditCardWrapper({
+                  labels,
+                  creditCardList,
+                  selectedCard,
+                  cvvCodeRichText,
+                  onFileCardKey,
+                })
+              : null}
+          </div>
+        )}
         <CheckoutFooter
           hideBackLink
           backLinkHandler={() => utility.routeToPage(CHECKOUT_ROUTES.shippingPage)}

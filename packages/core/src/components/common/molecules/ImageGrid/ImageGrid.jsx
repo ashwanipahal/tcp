@@ -3,7 +3,6 @@ import React from 'react';
 import { Anchor, Col, DamImage, Row } from '../../atoms';
 import withStyles from '../../hoc/withStyles';
 import style from './ImageGrid.style';
-import config from './config';
 
 type Props = {
   mediaLinkedList: Object[],
@@ -13,6 +12,7 @@ type Props = {
   className: string,
   dataLocator?: string,
   dataLocatorContainer: string,
+  imageConfig: Object[],
 };
 
 /**
@@ -47,7 +47,16 @@ const gridReducer = (accumulator, currentValue, currentIndex, list) => {
  * @param {*} props
  */
 const ImageGrid = (props: Props) => {
-  const { mediaLinkedList, colD, colT, colM, className, dataLocator, dataLocatorContainer } = props;
+  const {
+    mediaLinkedList,
+    colD,
+    colT,
+    colM,
+    className,
+    dataLocator,
+    dataLocatorContainer,
+    imageConfig,
+  } = props;
 
   const colSize = {
     small: 6 / colM,
@@ -75,7 +84,7 @@ const ImageGrid = (props: Props) => {
                 <Anchor {...link}>
                   <DamImage
                     data-locator={`${dataLocator}_${index + 1}`}
-                    imgConfigs={config.IMG_DATA.imgConfig}
+                    imgConfigs={imageConfig}
                     imgData={image}
                   />
                 </Anchor>

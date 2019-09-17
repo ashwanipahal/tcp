@@ -56,7 +56,7 @@ exports[`HomePageView should render correctly 1`] = `
     text="PLP Page"
   />
   <Connect(ModuleJ)
-    bgColor="#f53d3d"
+    bgColor="#d8d8d8"
     ctaItems={
       Array [
         Object {
@@ -90,7 +90,7 @@ exports[`HomePageView should render correctly 1`] = `
             "crop_m": "",
             "crop_t": "",
             "title": "Toddler Girl title",
-            "url": "https://res.cloudinary.com/tcp-dam-test/image/upload/v1558543115/ecom/assets/content/tcp/us/home/moduled/US-HP-050519-MINIME3_vmfhnu.jpg",
+            "url": "https://test5.childrensplace.com/image/upload/v1558543115/ecom/assets/content/tcp/us/home/moduled/US-HP-050519-MINIME3_vmfhnu.jpg",
           },
         },
         Object {
@@ -124,7 +124,7 @@ exports[`HomePageView should render correctly 1`] = `
             "crop_m": "",
             "crop_t": "",
             "title": "Tod Boy title",
-            "url": "https://res.cloudinary.com/tcp-dam-test/image/upload/v1558543115/ecom/assets/content/tcp/us/home/moduled/US-HP-050519-MINIME3_vmfhnu.jpg",
+            "url": "https://test5.childrensplace.com/image/upload/v1558543115/ecom/assets/content/tcp/us/home/moduled/US-HP-050519-MINIME3_vmfhnu.jpg",
           },
         },
         Object {
@@ -163,7 +163,7 @@ exports[`HomePageView should render correctly 1`] = `
           },
           "textItems": Array [
             Object {
-              "style": "style3",
+              "style": "small_text_normal",
               "text": "Every Length, Style, Color & Size",
             },
           ],
@@ -183,8 +183,8 @@ exports[`HomePageView should render correctly 1`] = `
           },
           "textItems": Array [
             Object {
-              "style": "style4",
-              "text": "THE SHOP ALL",
+              "style": "medium_text_black",
+              "text": "THE SHORT SHOP",
             },
           ],
         },
@@ -199,7 +199,7 @@ exports[`HomePageView should render correctly 1`] = `
             "crop_m": "",
             "crop_t": "",
             "title": "Boys",
-            "url": "https://res.cloudinary.com/tcp-dam-test/image/upload/v1558543115/ecom/assets/content/tcp/us/home/moduled/US-HP-050519-MINIME1_h9cwcd.jpg",
+            "url": "https://test5.childrensplace.com/image/upload/v1562731929/Image_14_bp7ih0.jpg",
           },
           "link": Object {
             "action": "",
@@ -217,7 +217,7 @@ exports[`HomePageView should render correctly 1`] = `
             "crop_m": "c_crop,g_face:center,q_auto:best,w_962",
             "crop_t": "c_crop,g_face:center,q_auto:best,w_962",
             "title": "Girls",
-            "url": "https://res.cloudinary.com/tcp-dam-test/image/upload/v1558543115/ecom/assets/content/tcp/us/home/moduled/US-HP-050519-MINIME1_h9cwcd.jpg",
+            "url": "https://test5.childrensplace.com/image/upload/v1565145744/mod-h-kids_b9ivyr.png",
           },
           "link": Object {
             "action": "",
@@ -248,12 +248,137 @@ exports[`HomePageView should render correctly 1`] = `
           },
           "textItems": Array [
             Object {
-              "style": "large_text_semibold_normal",
+              "altStyle": "extra_large_text_regular",
+              "style": "medium_text_semibold",
               "text": "ALL SHORTS",
             },
             Object {
-              "style": "large_text_semibold_bold",
+              "altStyle": "extra_large_text_black",
+              "style": "fixed_medium_text_black",
               "text": "60% OFF",
+            },
+          ],
+        },
+      ]
+    }
+  />
+  <Connect(ModuleR)
+    divTabs={
+      Array [
+        Object {
+          "category": Object {
+            "cat_id": "49007",
+          },
+          "singleCTAButton": Object {
+            "action": "",
+            "external": 0,
+            "target": "",
+            "text": "SHOP ALL",
+            "title": "SHOP ALL",
+            "url": "http://www.childrensplace.com",
+          },
+          "text": Object {
+            "text": "GIRL",
+          },
+        },
+        Object {
+          "category": Object {
+            "cat_id": "47502>47535>54071",
+          },
+          "singleCTAButton": Object {
+            "action": "",
+            "external": 0,
+            "target": "",
+            "text": "SHOP ALL",
+            "title": "SHOP ALL",
+            "url": "http://www.childrensplace.com",
+          },
+          "text": Object {
+            "text": "TODDLER GIRL",
+          },
+        },
+        Object {
+          "category": Object {
+            "cat_id": "47503>47544",
+          },
+          "singleCTAButton": Object {
+            "action": "",
+            "external": 0,
+            "target": "",
+            "text": "SHOP ALL",
+            "title": "SHOP ALL",
+            "url": "http://www.childrensplace.com",
+          },
+          "text": Object {
+            "text": "BOY",
+          },
+        },
+        Object {
+          "category": Object {
+            "cat_id": "47501>47526",
+          },
+          "singleCTAButton": Object {
+            "action": "",
+            "external": 0,
+            "target": "",
+            "text": "SHOP ALL",
+            "title": "SHOP ALL",
+            "url": "http://www.childrensplace.com",
+          },
+          "text": Object {
+            "text": "TODDLER BOY",
+          },
+        },
+      ]
+    }
+    headerText={
+      Array [
+        Object {
+          "icon": Object {
+            "icon": "",
+            "placement": "",
+          },
+          "link": Object {
+            "action": "",
+            "external": 0,
+            "target": "",
+            "text": "",
+            "title": "",
+            "url": "http://www.childrensplace.com",
+          },
+          "textItems": Array [
+            Object {
+              "style": "medium_text_black",
+              "text": "THE SHIRT SHOP",
+            },
+          ],
+        },
+      ]
+    }
+    navigation={
+      Object {
+        "getParam": [Function],
+      }
+    }
+    promoBanner={
+      Array [
+        Object {
+          "link": Object {
+            "action": "",
+            "external": 0,
+            "target": "",
+            "text": "",
+            "title": "",
+            "url": "http://www.childrensplace.com",
+          },
+          "textItems": Array [
+            Object {
+              "style": "medium_text_regular",
+              "text": "ALL GRAPHIC TEES",
+            },
+            Object {
+              "style": "percentage_all_wrapped_normal",
+              "text": "60 % OFF",
             },
           ],
         },

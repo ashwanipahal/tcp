@@ -3,14 +3,23 @@
 exports[`PointsHistoryContainer View should render PointsHistory container Correctly 1`] = `
 <PointsHistory
   className=""
+  getPointsHistoryAction={[Function]}
   labels={[Function]}
   pointHistory={[Function]}
+  router={
+    Object {
+      "query": Object {
+        "id": "addressBook",
+      },
+    }
+  }
 />
 `;
 
 exports[`PointsHistoryContainer View should render PointsHistoryContainer Correctly 1`] = `
 <PointsHistory
   className=""
+  getPointsHistoryAction={[Function]}
   labels={[Function]}
   pointHistory={[Function]}
 />

@@ -4,6 +4,10 @@ export default styled.div`
   background-color: none;
   padding: 0px 14px;
 
+  @media ${props => props.theme.mediaQuery.medium} {
+    padding: 0px ${props => (props.isPLCCModalFlow ? `0px` : `39px`)};
+  }
+
   @media ${props => props.theme.mediaQuery.large} {
     padding-left: ${props => (props.isPLCCModalFlow ? `0px` : `200px`)};
   }
@@ -55,6 +59,9 @@ export default styled.div`
     padding: 36px 0px 36px 0px;
     text-underline-position: under;
     text-decoration: underline;
+    > div {
+      cursor: pointer;
+    }
   }
 
   .no_thanks_link_wrapper {

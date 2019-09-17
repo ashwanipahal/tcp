@@ -8,10 +8,6 @@ exports[`CheckoutProgressIndicator component should renders correctly props not 
     dataLocator="billing-title"
   />
   <Connect(GiftCardsContainer) />
-  <div
-    className="payment-container"
-  >
-    <Connect(GiftCardsContainer) />
-  </div>
+  <Connect(GiftCardsContainer) />
 </div>
 `;
