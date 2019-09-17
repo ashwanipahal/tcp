@@ -9,10 +9,6 @@ export const modalStyles = css`
     padding: 21px;
   }
 
-  &&&.inner_content {
-    padding: 21px;
-  }
-
   .TCPModal__InnerContent {
     text-align: center;
     > h2 {

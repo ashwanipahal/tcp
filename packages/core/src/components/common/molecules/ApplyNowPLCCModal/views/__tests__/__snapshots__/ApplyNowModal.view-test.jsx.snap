@@ -18,10 +18,6 @@ exports[`ApplyNowModalWrapper component should renders correctly 1`] = `
     padding: 21px;
   }
 
-  &&&.inner_content {
-    padding: 21px;
-  }
-
   .TCPModal__InnerContent {
     text-align: center;
     > h2 {
