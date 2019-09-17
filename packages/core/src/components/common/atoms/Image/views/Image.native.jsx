@@ -1,18 +1,10 @@
 // @flow
 import React from 'react';
+import PropTypes from 'prop-types';
 import { Image } from 'react-native';
 import { LazyloadImage } from 'react-native-lazyload-deux';
-
 import withStyles from '../../../hoc/withStyles.native';
 import style from '../Image.style';
-import { cropImageUrl } from '../../../../../utils/index.native';
-
-type Props = {
-  source: string,
-  url: string,
-  crop: string,
-  host: string,
-};
 
 /**
  * ImageComp returns two types of images
@@ -23,24 +15,45 @@ type Props = {
  *                  - value of host prop should be same as parent LazyLoadScrollView
  */
 const ImageComp = (props: Props) => {
-  const { url, crop, source, host, ...otherProps } = props;
-  const cropVal = crop || '';
+  const { url, source, host, alt, ...otherProps } = props;
   const urlVal = url || '';
   const sourceVal = source || '';
   const ImageComponent = host ? LazyloadImage : Image;
-
   if (sourceVal === '') {
     return (
       <ImageComponent
         {...otherProps}
         host={host}
         accessibilityRole="image"
-        source={{ uri: cropImageUrl(urlVal, cropVal) }}
+        accessibilityLabel={alt || ''}
+        source={{ uri: urlVal }}
       />
     );
   }
 
-  return <ImageComponent {...otherProps} host={host} source={source} accessibilityRole="image" />;
+  return (
+    <ImageComponent
+      {...otherProps}
+      host={host}
+      source={source}
+      accessibilityRole="image"
+      accessibilityLabel={alt || ''}
+    />
+  );
+};
+
+ImageComp.propTypes = {
+  source: PropTypes.string,
+  url: PropTypes.string,
+  host: PropTypes.string,
+  alt: PropTypes.string,
+};
+
+ImageComp.defaultProps = {
+  source: '',
+  url: '',
+  host: '',
+  alt: '',
 };
 
 export default withStyles(ImageComp, style);

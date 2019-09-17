@@ -114,9 +114,9 @@ exports[`ModuleD component renders correctly 1`] = `
             data-locator="moduleD_image_1"
             imgConfigs={
               Array [
-                "ar_1:1,q_80,w_164",
-                "ar_1:1,q_80,w_162",
-                "ar_1:1,q_80,w_330",
+                "t_mod_D_img4_m",
+                "t_mod_D_img4_t",
+                "t_mod_D_img4_d",
               ]
             }
             imgData={
@@ -174,9 +174,9 @@ exports[`ModuleD component renders correctly 1`] = `
             data-locator="moduleD_image_2"
             imgConfigs={
               Array [
-                "ar_1:1,q_80,w_164",
-                "ar_1:1,q_80,w_162",
-                "ar_1:1,q_80,w_330",
+                "t_mod_D_img4_m",
+                "t_mod_D_img4_t",
+                "t_mod_D_img4_d",
               ]
             }
             imgData={
@@ -232,9 +232,9 @@ exports[`ModuleD component renders correctly 1`] = `
             data-locator="moduleD_image_3"
             imgConfigs={
               Array [
-                "ar_1:1,q_80,w_164",
-                "ar_1:1,q_80,w_162",
-                "ar_1:1,q_80,w_330",
+                "t_mod_D_img4_m",
+                "t_mod_D_img4_t",
+                "t_mod_D_img4_d",
               ]
             }
             imgData={
@@ -295,9 +295,9 @@ exports[`ModuleD component renders correctly 1`] = `
             data-locator="moduleD_image_4"
             imgConfigs={
               Array [
-                "ar_1:1,q_80,w_164",
-                "ar_1:1,q_80,w_162",
-                "ar_1:1,q_80,w_330",
+                "t_mod_D_img4_m",
+                "t_mod_D_img4_t",
+                "t_mod_D_img4_d",
               ]
             }
             imgData={

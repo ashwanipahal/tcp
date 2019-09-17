@@ -91,14 +91,14 @@ const getQueryString = (keyValuePairs = {}) => {
 };
 // eslint-disable-next-line sonarjs/cognitive-complexity
 const getPlpUrlQueryValues = filtersAndSort => {
-  const { sort } = filtersAndSort;
-
   // NOTE: these are parameters on query string we don't handle (nor we need to)
   // just pass them to the abstractor
   let urlQueryValues = {};
   let routeURL = '?';
 
   if (filtersAndSort) {
+    const { sort } = filtersAndSort;
+
     Object.keys(filtersAndSort).forEach(key => {
       if (filtersAndSort[key].length > 0) {
         if (key.toLowerCase() === FACETS_FIELD_KEY.sort) {
@@ -146,7 +146,6 @@ const getPlpUrlQueryValues = filtersAndSort => {
   routeURL = urlQueryValues === '' ? routeURL.substring(0, routeURL.length - 1) : routeURL;
 
   routerPush(`/c?cid=${urlPathCID}`, routeURL, { shallow: true });
-
   return true;
 };
 
@@ -167,6 +166,7 @@ const processResponse = (
     isOutfitPage,
     searchTerm,
     sort,
+    isRecommendationView,
   }
 ) => {
   const scrollPoint = isClient() ? window.sessionStorage.getItem('SCROLL_POINT') : 0;
@@ -180,7 +180,7 @@ const processResponse = (
     window.location.href = res.body.redirect.value;
   }
 
-  if (!isMobileApp()) {
+  if (!isMobileApp() && !isRecommendationView) {
     getPlpUrlQueryValues(filtersAndSort);
   }
 
@@ -197,6 +197,7 @@ const processResponse = (
     filtersAndSort,
     l1category
   );
+
   // We will get the avaialable l3 list in L2 page call in bucekting scenario.
   const availableL3List = getAvailableL3List(res.body.facets);
   const availableL3InFilter = getAppliedL3Filters(availableL3List);

@@ -67,16 +67,16 @@ const updateCartInfo = (cartInfo, isUpdateCartItems) => {
     getSetPointsAndRewardsActn(getRewardPoints),
     setCartTotalAfterPLCCDiscount(cartInfo.cartTotalAfterPLCCDiscount),
   ];
-
+  /* istanbul ignore else */
   if (isUpdateCartItems) {
     actions.push(getSetCartActn(cartInfo.orderItems));
     actions.push(getSetCartStoreActn(cartInfo.stores));
   }
-
+  /* istanbul ignore else */
   if (cartInfo.uiFlags) {
     actions.push(getSetIsPayPalEnabledActn(cartInfo.uiFlags.isPaypalEnabled));
   }
-
+  /* istanbul ignore else */
   if (cartInfo.airmiles) {
     actions.push(getSetAirmilesPromoIdActn(cartInfo.airmiles.promoId));
     actions.push(getSetAirmilesAccountActn(cartInfo.airmiles.accountNumber));
@@ -113,9 +113,11 @@ const getAvailableStages = (cartItems, checkoutProgressBarLabels) => {
     getLabelValue(checkoutProgressBarLabels, 'billingLabel'),
     getLabelValue(checkoutProgressBarLabels, 'reviewLabel'),
   ];
+  /* istanbul ignore else */
   if (isOrderHasShipping(cartItems)) {
     result.unshift(getLabelValue(checkoutProgressBarLabels, 'shippingLabel'));
   }
+  /* istanbul ignore else */
   if (isOrderHasPickup(cartItems)) {
     result.unshift(getLabelValue(checkoutProgressBarLabels, 'pickupLabel'));
   }
@@ -170,4 +172,5 @@ export default {
   routeToPage,
   getCreditCardType,
   redirectToBilling,
+  isOrderHasShipping,
 };

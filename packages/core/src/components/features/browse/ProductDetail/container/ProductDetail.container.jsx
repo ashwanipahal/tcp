@@ -10,6 +10,8 @@ import {
   getBreadCrumbs,
   getDescription,
   getRatingsProductId,
+  getDefaultImage,
+  getCurrentCurrency,
 } from './ProductDetail.selectors';
 
 class ProductListingContainer extends React.PureComponent {
@@ -22,7 +24,16 @@ class ProductListingContainer extends React.PureComponent {
     } = this.props;
 
     // TODO - fix this to extract the product ID from the page.
-    getDetails({ productColorId: pid });
+    const id = pid && pid.split('-');
+    let productId = id && id.length > 1 ? `${id[id.length - 2]}_${id[id.length - 1]}` : pid;
+    if (
+      (id.indexOf('Gift') > -1 || id.indexOf('gift') > -1) &&
+      (id.indexOf('Card') > -1 || id.indexOf('card') > -1)
+    ) {
+      productId = 'gift';
+    }
+
+    getDetails({ productColorId: productId });
   }
 
   render() {
@@ -31,6 +42,8 @@ class ProductListingContainer extends React.PureComponent {
       breadCrumbs,
       longDescription,
       ratingsProductId,
+      defaultImage,
+      currency,
       ...otherProps
     } = this.props;
     return (
@@ -40,6 +53,8 @@ class ProductListingContainer extends React.PureComponent {
         longDescription={longDescription}
         ratingsProductId={ratingsProductId}
         otherProps={otherProps}
+        defaultImage={defaultImage}
+        currency={currency}
       />
     );
   }
@@ -52,6 +67,9 @@ function mapStateToProps(state) {
     breadCrumbs: getBreadCrumbs(state),
     longDescription: getDescription(state),
     ratingsProductId: getRatingsProductId(state),
+    // This is just to check if the product is correct
+    defaultImage: getDefaultImage(state),
+    currency: getCurrentCurrency(state),
   };
 }
 
@@ -74,13 +92,17 @@ ProductListingContainer.propTypes = {
       pid: PropTypes.string,
     }),
   }).isRequired,
+  defaultImage: PropTypes.string,
+  currency: PropTypes.string,
 };
 
 ProductListingContainer.defaultProps = {
   productDetails: [],
-  breadCrumbs: {},
+  breadCrumbs: null,
   longDescription: '',
   ratingsProductId: '',
+  defaultImage: '',
+  currency: '',
 };
 
 export default withRouter(

@@ -11,13 +11,13 @@ module.exports = withTM({
   // We can also use something like this if we need entire *.env file usage:
   //    https://github.com/zeit/next.js/blob/canary/examples/with-dotenv/next.config.js
   env: {
+    // TODO: change to process.env.RWD_WEB_PERF_TIMING
+    PERF_TIMING: true,
     // TODO: change to process.env.RWD_WEB_ANALYTICS
-    ANALYTICS: false,
+    ANALYTICS: true,
     // TODO: change to process.env.RWD_WEB_ANALYTICS_SCRIPT_URL
     ANALYTICS_SCRIPT_URL:
       '//assets.adobedtm.com/launch-EN35cf63837e524037bc099142d8051c4b-development.min.js',
-    RECOMMENDATIONS_SCRIPT_URL:
-      '//assets.adobedtm.com/launch-ENa4f0e1904eeb44009a0c294d5d84d94c-development.min.js',
   },
   webpack(config, { isServer }) {
     const newConfig = config;

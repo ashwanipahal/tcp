@@ -7,6 +7,7 @@ import { LAZYLOAD_HOST_NAME } from '@tcp/core/src/utils';
 import PropTypes from 'prop-types';
 import HomePageSlots from '@tcp/core/src/components/common/molecules/HomePageSlots';
 import moduleJMock from '@tcp/core/src/components/common/molecules/ModuleJ/mock';
+import moduleRMock from '@tcp/core/src/services/abstractors/common/moduleR/mock';
 
 import {
   ModuleD,
@@ -17,8 +18,11 @@ import {
   ModuleA,
   ModuleB,
   ModuleJ,
+  ModuleR,
 } from '@tcp/core/src/components/common/molecules';
 import InitialPropsHOC from '../../../../common/hoc/InitialPropsHOC/InitialPropsHOC';
+import HeaderPromo from '../../../../common/molecules/HeaderPromo';
+import { HeaderPromoContainer } from '../HomePage.style';
 
 const modulesMap = {
   moduleD: ModuleD,
@@ -28,7 +32,7 @@ const modulesMap = {
   moduleN: ModuleN,
   moduleA: ModuleA,
   moduleB: ModuleB,
-  moduelJ: ModuleJ,
+  moduleJ: ModuleJ,
 };
 
 const buttonMargin = { margin: 30 };
@@ -62,9 +66,13 @@ class HomePageView extends React.PureComponent<Props> {
       slots,
       navigation,
       screenProps: { apiConfig },
+      headerPromo,
     } = this.props;
     return (
       <LazyloadScrollView name={LAZYLOAD_HOST_NAME.HOME}>
+        <HeaderPromoContainer>
+          <HeaderPromo headerPromo={headerPromo} />
+        </HeaderPromoContainer>
         <HomePageSlots slots={slots} modules={modulesMap} navigation={navigation} />
         <ModuleB navigation={navigation} />
         <GetCandid apiConfig={apiConfig} navigation={navigation} />
@@ -76,6 +84,7 @@ class HomePageView extends React.PureComponent<Props> {
           style={buttonMargin}
         />
         <ModuleJ navigation={navigation} {...moduleJMock.moduleJ.composites} />
+        <ModuleR navigation={navigation} {...moduleRMock.moduleR.composites} />
       </LazyloadScrollView>
     );
   }

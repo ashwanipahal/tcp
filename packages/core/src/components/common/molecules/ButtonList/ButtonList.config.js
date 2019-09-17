@@ -6,6 +6,7 @@ export default {
       ctaVariation: 'fixed-width',
     },
     MAX_NUM_OF_BUTTONS_IN_A_ROW: 5,
+    noCurveMobile: true,
   },
   scrollCTAList: {
     compClassName: 'scroll-cta-wrapper',

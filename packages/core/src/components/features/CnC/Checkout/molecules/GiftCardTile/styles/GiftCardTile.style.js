@@ -31,7 +31,6 @@ const styles = css`
       width: 177px;
     }
     @media ${props => props.theme.mediaQuery.large} {
-      width: 195px;
       padding: ${props => props.theme.spacing.ELEM_SPACING.SM}
         ${props => props.theme.spacing.ELEM_SPACING.XL};
     }

@@ -16,6 +16,7 @@ import {
   ShippingFormWrapper,
 } from '../styles/ShippingForm.styles.native';
 import CnCTemplate from '../../../../../../common/organism/CnCTemplate';
+import RegisteredShippingFormView from '../../RegisteredShippingForm/views/RegisteredShippingForm.view.native';
 import CONSTANTS from '../../../../../Checkout.constants';
 
 const ShippingForm = ({
@@ -34,22 +35,55 @@ const ShippingForm = ({
   handleSubmit,
   submitShippingForm,
   labels,
+  userAddresses,
+  onFileAddressKey,
+  isSaveToAddressBookChecked,
+  updateShippingAddress,
+  addNewShippingAddress,
+  address,
+  setAsDefaultShipping,
+  defaultAddressId,
+  syncErrorsObject,
+  newUserPhoneNo,
 }) => {
   return (
     <>
       <ShippingFormWrapper>
-        <FormSection name="address">
-          <AddressFields
+        {!isGuest && (
+          <RegisteredShippingFormView
+            labels={labels}
+            userAddresses={userAddresses}
             addressFormLabels={addressFormLabels}
-            showDefaultCheckbox={false}
             formName="checkoutShipping"
-            formSection="address"
             dispatch={dispatch}
             addressPhoneNo={addressPhoneNo}
             loadShipmentMethods={loadShipmentMethods}
-            disableCountry
+            onFileAddressKey={onFileAddressKey}
+            isSaveToAddressBookChecked={isSaveToAddressBookChecked}
+            updateShippingAddress={updateShippingAddress}
+            addNewShippingAddress={addNewShippingAddress}
+            address={address}
+            isGuest={isGuest}
+            setAsDefaultShipping={setAsDefaultShipping}
+            defaultAddressId={defaultAddressId}
+            syncErrorsObject={syncErrorsObject}
+            newUserPhoneNo={newUserPhoneNo}
           />
-        </FormSection>
+        )}
+        {isGuest && (
+          <FormSection name="address">
+            <AddressFields
+              addressFormLabels={addressFormLabels}
+              showDefaultCheckbox={false}
+              formName="checkoutShipping"
+              formSection="address"
+              dispatch={dispatch}
+              addressPhoneNo={addressPhoneNo}
+              loadShipmentMethods={loadShipmentMethods}
+              disableCountry
+            />
+          </FormSection>
+        )}
         {!orderHasPickUp && isUsSite && (
           <FormSection name="smsSignUp">
             <SMSFormFields
@@ -175,6 +209,16 @@ ShippingForm.propTypes = {
   loadShipmentMethods: PropTypes.func.isRequired,
   navigation: PropTypes.shape({}).isRequired,
   submitShippingForm: PropTypes.func.isRequired,
+  userAddresses: PropTypes.shape([]),
+  onFileAddressKey: PropTypes.string,
+  isSaveToAddressBookChecked: PropTypes.bool,
+  updateShippingAddress: PropTypes.func,
+  addNewShippingAddress: PropTypes.func,
+  address: PropTypes.shape({}),
+  setAsDefaultShipping: PropTypes.func,
+  defaultAddressId: PropTypes.string,
+  syncErrorsObject: PropTypes.shape({}),
+  newUserPhoneNo: PropTypes.string,
 };
 
 ShippingForm.defaultProps = {
@@ -185,12 +229,24 @@ ShippingForm.defaultProps = {
   isUsSite: true,
   orderHasPickUp: false,
   shipmentMethods: null,
+  userAddresses: null,
+  onFileAddressKey: null,
+  isSaveToAddressBookChecked: false,
+  updateShippingAddress: () => {},
+  addNewShippingAddress: () => {},
+  address: null,
+  setAsDefaultShipping: null,
+  defaultAddressId: null,
+  syncErrorsObject: {},
+  newUserPhoneNo: null,
 };
 
 export default reduxForm({
   form: 'checkoutShipping',
   ...validateMethod, // a unique identifier for this form
   destroyOnUnmount: false,
+  enableReinitialize: true,
+  keepDirtyOnReinitialize: true,
 })(ShippingForm);
 
 export { ShippingForm as ShippingFormVanilla };

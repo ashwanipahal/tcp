@@ -16,6 +16,9 @@ exports[`ApplyNowModalWrapper component should renders correctly 1`] = `
 
   .TCPModal__InnerContent {
     text-align: center;
+    && {
+      padding: 21px;
+    }
     > h2 {
       ::after {
         content: '§';
@@ -90,8 +93,7 @@ exports[`ApplyNowModalWrapper component should renders correctly 1`] = `
   }
 
   .header__greeting {
-    margin: 9px 9px;
-    width: 353px;
+    margin: 9px 0px;
   }
 
   .header-image {
@@ -126,7 +128,7 @@ exports[`ApplyNowModalWrapper component should renders correctly 1`] = `
   }
 
   .rewards__benefits {
-    margin: 21px 0 0 9px;
+    margin: 21px 0 0 21px;
     > li {
       font-size: ",
       [Function],
@@ -143,16 +145,6 @@ exports[`ApplyNowModalWrapper component should renders correctly 1`] = `
         vertical-align: -25%;
       }
     }
-  }
-
-  /* This css is for list coming from module X */
-  .benefit_list {
-    font-size: ",
-      [Function],
-      ";
-    font-weight: ",
-      [Function],
-      ";
   }
 
   .footerLinks {
@@ -176,7 +168,7 @@ exports[`ApplyNowModalWrapper component should renders correctly 1`] = `
     ]
   }
   isOpen={true}
-  maxWidth="458px"
+  maxWidth="464px"
   minHeight="746px"
   overlayClassName="TCPModal__Overlay"
   shouldCloseOnOverlayClick={false}

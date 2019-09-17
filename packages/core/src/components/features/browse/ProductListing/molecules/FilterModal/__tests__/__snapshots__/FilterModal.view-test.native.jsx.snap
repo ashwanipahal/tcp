@@ -49,6 +49,8 @@ exports[`FilterModal is shown should render FilterModal when show is false 1`] =
         <Styled(WithTheme(Filters))
           filters={Object {}}
           labelsFilter={Object {}}
+          name="filters"
+          onSubmit={[Function]}
         />
       </Styled(View)>
     </Styled(SafeAreaView)>
