@@ -2,15 +2,15 @@ import React, { Component } from 'react';
 // eslint-disable-next-line
 import dynamic from 'next/dynamic';
 import PropTypes from 'prop-types';
+import { Carousel } from '@tcp/core/src/components/common/molecules';
+import { Col, Row, Heading } from '@tcp/core/src/components/common/atoms';
+import ButtonCTA from '@tcp/core/src/components/common/molecules/ButtonCTA';
+import { getIconPath } from '@tcp/core/src/utils';
+import withStyles from '@tcp/core/src/components/common/hoc/withStyles';
+import withLazyLoad from '@tcp/core/src/components/common/hoc/withLazyLoad';
+import errorBoundary from '@tcp/core/src/components/common/hoc/withErrorBoundary';
 import config from './config';
-import { Carousel } from '..';
-import { Col, Row, Heading } from '../../atoms';
-import ButtonCTA from '../ButtonCTA';
-import { getIconPath } from '../../../../utils';
-import withStyles from '../../hoc/withStyles';
-import errorBoundary from '../../hoc/withErrorBoundary';
 import style from './Recommendations.style';
-import withLazyLoad from '../../hoc/withLazyLoad';
 
 /**
  * This method loads different variations for Recommendation Module dynamically
@@ -18,8 +18,8 @@ import withLazyLoad from '../../hoc/withLazyLoad';
 const RecommendationComponentVariation = dynamic(
   {
     modules: () => ({
-      ModuleO: import('../ModuleO').then(mod => mod.default),
-      ModuleP: import('../ModuleP').then(mod => mod.default),
+      ModuleO: import('@tcp/core/src/components/common/molecules/ModuleO').then(mod => mod.default),
+      ModuleP: import('@tcp/core/src/components/common/molecules/ModuleP').then(mod => mod.default),
     }),
     render: (dynamicComponentProps, { ModuleO, ModuleP }) => {
       switch (dynamicComponentProps.variation) {
