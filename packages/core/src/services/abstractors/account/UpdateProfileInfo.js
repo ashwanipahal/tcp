@@ -149,8 +149,8 @@ export const addChildBirthday = args => {
       childDetails: [
         {
           childName: args.childName,
-          birthMonth: args.birthMonth,
-          birthYear: args.birthYear,
+          birthMonth: args.userBirthMonth,
+          birthYear: args.userBirthYear,
           gender: args.gender,
         },
       ],
