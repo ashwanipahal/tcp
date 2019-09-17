@@ -342,6 +342,14 @@ export const setGiftWrap = payload => {
     payload,
   };
 };
+
+export const getSetIsPaypalPaymentSettings = paypalPaymentSettings => {
+  return {
+    type: constants.CHECKOUT_ORDER_OPTIONS_SET_PAYPAL_PAYMENT,
+    paypalPaymentSettings,
+  };
+};
+
 export const submitReviewSection = payload => {
   return {
     type: constants.SUBMIT_REVIEW,

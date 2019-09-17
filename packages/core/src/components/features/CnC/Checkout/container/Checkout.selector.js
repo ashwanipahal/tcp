@@ -478,6 +478,9 @@ function isCardNotUpdated(state, cardId) {
   return getBillingValues(state).onFileCardId === cardId;
 }
 
+const getPaypalPaymentSettings = state => {
+  return state.Checkout.getIn(['options', 'paypalPaymentSettings']);
+};
 const getReviewLabels = state => {
   const getReviewLabelValue = label => getLabelValue(state.Labels, label, 'review', 'checkout');
   return {
@@ -546,5 +549,6 @@ export default {
   getSyncError,
   getGiftServicesFormData,
   getGiftServicesSend,
+  getPaypalPaymentSettings,
   getReviewLabels,
 };
