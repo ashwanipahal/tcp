@@ -40,6 +40,54 @@ exports[`GiftServices component should renders correctly props not present 1`] =
       mobileFontFamily="secondary"
     />
   </Styled(View)>
+  <GiftServicesDetailsModal
+    labels={Object {}}
+    onRequestClose={[Function]}
+    openState={false}
+  />
+</Styled(View)>
+`;
+
+exports[`GiftServices component should renders correctly props not present 2`] = `
+<Styled(View)>
+  <Styled(View)>
+    <Styled(View)>
+      <Field
+        component={[Function]}
+        dataLocator="hide-show-checkbox"
+        enableSuccessCheck={false}
+        name="hasGiftWrapping"
+        onChange={[Function]}
+      />
+      <Styled(BodyCopy)
+        fontFamily="secondary"
+        fontSize="fs14"
+        fontWeight="extrabold"
+      />
+    </Styled(View)>
+    <Styled(View)>
+      <Styled(Anchor)
+        accessibilityLabel=""
+        anchorVariation="primary"
+        customStyle={Object {}}
+        fontFamily="secondary"
+        fontSizeVariation="medium"
+        locator=""
+        onPress={[Function]}
+        text=""
+        underline={true}
+        visible={false}
+      />
+    </Styled(View)>
+  </Styled(View)>
+  <Styled(View)>
+    <Styled(BodyCopy)
+      dataLocator="add-gift-services-details-lbl"
+      fontSize="fs14"
+      fontWeight="regular"
+      mobileFontFamily="secondary"
+    />
+  </Styled(View)>
   <View>
     <Styled(View)>
       <Styled(BodyCopy)
@@ -176,54 +224,6 @@ exports[`GiftServices component should renders correctly props not present 1`] =
       type="text"
     />
   </View>
-  <GiftServicesDetailsModal
-    labels={Object {}}
-    onRequestClose={[Function]}
-    openState={false}
-  />
-</Styled(View)>
-`;
-
-exports[`GiftServices component should renders correctly props not present 2`] = `
-<Styled(View)>
-  <Styled(View)>
-    <Styled(View)>
-      <Field
-        component={[Function]}
-        dataLocator="hide-show-checkbox"
-        enableSuccessCheck={false}
-        name="hasGiftWrapping"
-        onChange={[Function]}
-      />
-      <Styled(BodyCopy)
-        fontFamily="secondary"
-        fontSize="fs14"
-        fontWeight="extrabold"
-      />
-    </Styled(View)>
-    <Styled(View)>
-      <Styled(Anchor)
-        accessibilityLabel=""
-        anchorVariation="primary"
-        customStyle={Object {}}
-        fontFamily="secondary"
-        fontSizeVariation="medium"
-        locator=""
-        onPress={[Function]}
-        text=""
-        underline={true}
-        visible={false}
-      />
-    </Styled(View)>
-  </Styled(View)>
-  <Styled(View)>
-    <Styled(BodyCopy)
-      dataLocator="add-gift-services-details-lbl"
-      fontSize="fs14"
-      fontWeight="regular"
-      mobileFontFamily="secondary"
-    />
-  </Styled(View)>
   <GiftServicesDetailsModal
     labels={Object {}}
     onRequestClose={[Function]}

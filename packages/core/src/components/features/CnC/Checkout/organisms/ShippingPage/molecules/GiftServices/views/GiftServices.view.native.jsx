@@ -36,7 +36,7 @@ class GiftServices extends React.PureComponent {
     this.state = {
       detailStatus: false,
       isGymboreeBrand: isGymboree(),
-      isChecked: isGiftServicesChecked,
+      isChecked: !isGiftServicesChecked,
       message: initialValues.message,
       selectedGiftService: 'standard',
     };
