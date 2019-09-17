@@ -1,8 +1,6 @@
 import { css } from 'styled-components';
 
 export default css`
-  display: none;
-
   &.show-condensed-header {
     display: block;
     box-sizing: border-box;
@@ -11,8 +9,8 @@ export default css`
     left: 50%;
     transform: translateX(-50%);
     top: 0;
-    z-index: 4;
-    background-color: #ffffff;
+    z-index: ${props => props.theme.zindex.zCondensedHeader};
+    background-color: ${props => props.theme.colorPalette.white};
     text-align: center;
     width: 100%;
     @media ${props => props.theme.mediaQuery.large} {

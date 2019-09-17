@@ -11,7 +11,7 @@ const propTypes = {
   ModalContent: PropTypes.node.isRequired,
   color: PropTypes.shape({}),
   componentProps: PropTypes.shape({}).isRequired,
-  isCondensedHeaderOpen: PropTypes.bool.isRequired,
+  showCondensedHeader: PropTypes.bool.isRequired,
 };
 
 const defaultProps = {
@@ -129,14 +129,14 @@ class OverlayModal extends React.Component {
       color,
       componentProps,
       component,
-      isCondensedHeaderOpen,
+      showCondensedHeader,
     } = this.props;
 
     return (
       <div className={className} id="modalWrapper" color={color} ref={this.setModalRef}>
         <div
           id="dialogContent"
-          className={`dialog__content ${isCondensedHeaderOpen && 'condensed-overlay'}`}
+          className={`dialog__content ${showCondensedHeader && 'condensed-overlay'}`}
         >
           <button
             className={`modal__closeIcon hide-on-tablet hide-on-desktop ${
@@ -145,7 +145,7 @@ class OverlayModal extends React.Component {
             onClick={this.closeModal}
           />
           <div
-            className={`modal__triangle hide-on-mobile ${isCondensedHeaderOpen &&
+            className={`modal__triangle hide-on-mobile ${showCondensedHeader &&
               'condensed-modal-triangle'}`}
             id="modalTriangle"
           />

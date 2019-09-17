@@ -48,7 +48,7 @@ const Drawer = props => {
     renderOverlay,
     drawerFooter,
     hideNavigationFooter,
-    isCondensedHeaderOpen,
+    showCondensedHeader,
   } = props;
 
   let openDrawer = open;
@@ -62,7 +62,7 @@ const Drawer = props => {
     showOverlay();
   }
   const classToOpen = openDrawer ? 'tcp-drawer__isOpen' : '';
-  const condensedHeader = isCondensedHeaderOpen && 'tcp-condensed-drawer';
+  const condensedHeader = showCondensedHeader && 'tcp-condensed-drawer';
   const classToHideOnViewports = hideOnViewport({ small, medium, large });
   const classToShowOnViewports = showOnViewport({ small, medium, large });
 
@@ -101,7 +101,7 @@ Drawer.propTypes = {
   renderOverlay: PropTypes.bool,
   drawerFooter: PropTypes.element,
   hideNavigationFooter: PropTypes.bool,
-  isCondensedHeaderOpen: PropTypes.bool.isRequired,
+  showCondensedHeader: PropTypes.bool.isRequired,
 };
 
 Drawer.defaultProps = {

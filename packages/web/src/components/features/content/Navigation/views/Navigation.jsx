@@ -12,7 +12,7 @@ const Navigation = props => {
     className,
     closeNavigationDrawer,
     hideNavigationFooter,
-    isCondensedHeaderOpen,
+    showCondensedHeader,
   } = props;
   return (
     <Drawer
@@ -27,14 +27,14 @@ const Navigation = props => {
         large: '100%',
       }}
       position={{
-        top: !isCondensedHeaderOpen ? '155px' : '316px',
+        top: !showCondensedHeader ? '155px' : '316px',
         left: 0,
         topMedium: '111px',
       }}
       renderOverlay
       drawerFooter={Footer}
       hideNavigationFooter={hideNavigationFooter}
-      isCondensedHeaderOpen={isCondensedHeaderOpen}
+      showCondensedHeader={showCondensedHeader}
     >
       <nav className={`${className} navigation nav-bar`}>
         <NavBar {...props} />
@@ -48,7 +48,7 @@ Navigation.propTypes = {
   closeNavigationDrawer: PropTypes.bool.isRequired,
   className: PropTypes.string.isRequired,
   hideNavigationFooter: PropTypes.bool.isRequired,
-  isCondensedHeaderOpen: PropTypes.bool.isRequired,
+  showCondensedHeader: PropTypes.bool.isRequired,
 };
 
 export { Navigation as NavigationVanilla };

@@ -63,10 +63,10 @@ const StyledModal = css`
     z-index: 99;
   }
   .condensed-modal-triangle {
-    left: 140px !important;
+    left: 127px !important;
 
     @media ${props => props.theme.mediaQuery.mediumOnly} {
-      left: 277px !important;
+      left: 265px !important;
     }
   }
   .modal__closeIcon {

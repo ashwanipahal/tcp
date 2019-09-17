@@ -21,7 +21,7 @@ const propTypes = {
   plccUser: PropTypes.bool.isRequired,
   componentProps: PropTypes.shape({}),
   isLoggedIn: PropTypes.bool,
-  isCondensedHeaderOpen: PropTypes.bool,
+  showCondensedHeader: PropTypes.bool,
 };
 
 const defaultProps = {
@@ -32,7 +32,7 @@ const defaultProps = {
   closeOverlay: () => {},
   componentProps: {},
   isLoggedIn: false,
-  isCondensedHeaderOpen: false,
+  showCondensedHeader: false,
 };
 
 export const OverlayModal = ({
@@ -44,7 +44,7 @@ export const OverlayModal = ({
   componentProps,
   plccUser,
   isLoggedIn,
-  isCondensedHeaderOpen,
+  showCondensedHeader,
 }) => {
   return (
     <OverlayModalComponent
@@ -56,7 +56,7 @@ export const OverlayModal = ({
       componentProps={componentProps}
       plccUser={plccUser}
       isLoggedIn={isLoggedIn}
-      isCondensedHeaderOpen={isCondensedHeaderOpen}
+      showCondensedHeader={showCondensedHeader}
     />
   );
 };

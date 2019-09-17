@@ -87,7 +87,7 @@ class HeaderMiddleNav extends React.PureComponent {
       navigationDrawer,
       openOverlay,
       userName,
-      isCondensedHeaderOpen,
+      showCondensedHeader,
       setSearchState,
       isSearchOpen,
     } = this.props;
@@ -201,7 +201,7 @@ class HeaderMiddleNav extends React.PureComponent {
                 alt="search"
                 className="rightLink search-image icon"
                 onClick={setSearchState}
-                src={getIconPath(`${isCondensedHeaderOpen ? 'search-icon-blue' : 'search-icon'}`)}
+                src={getIconPath(`${showCondensedHeader ? 'search-icon-blue' : 'search-icon'}`)}
                 data-locator="close-icon"
                 height="25px"
               />
@@ -252,7 +252,7 @@ class HeaderMiddleNav extends React.PureComponent {
               openNavigationDrawer={navigationDrawer.open}
               closeNavigationDrawer={!navigationDrawer.open}
               closeNav={closeNavigationDrawer}
-              isCondensedHeaderOpen={isCondensedHeaderOpen}
+              showCondensedHeader={showCondensedHeader}
             />
           </Col>
         </Row>
@@ -276,7 +276,7 @@ HeaderMiddleNav.propTypes = {
   setSearchState: PropTypes.func.isRequired,
   isLoggedIn: PropTypes.bool.isRequired,
   cartItemCount: PropTypes.func.isRequired,
-  isCondensedHeaderOpen: PropTypes.bool.isRequired,
+  showCondensedHeader: PropTypes.bool.isRequired,
   isSearchOpen: PropTypes.bool.isRequired,
 };
 

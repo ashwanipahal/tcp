@@ -7,4 +7,5 @@ export default {
   zModal: 1300,
   zModule: 200,
   zPLPFilterDropDown: 9,
+  zCondensedHeader: 4,
 };

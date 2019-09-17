@@ -68,7 +68,7 @@ class SearchBar extends React.PureComponent {
   };
 
   render() {
-    const { className, searchResults, labels, isSearchOpen, isCondensedHeaderOpen } = this.props;
+    const { className, searchResults, labels, isSearchOpen, showCondensedHeader } = this.props;
 
     const { showProduct } = this.state;
 
@@ -79,7 +79,7 @@ class SearchBar extends React.PureComponent {
           {isSearchOpen && (
             <div
               className={`searchWrapper ${
-                isCondensedHeaderOpen ? 'condensed-search' : 'header-search'
+                showCondensedHeader ? 'condensed-search' : 'header-search'
               }`}
             >
               <div className="searchbar">
@@ -205,7 +205,7 @@ SearchBar.propTypes = {
   startSearch: PropTypes.func.isRequired,
   setSearchState: PropTypes.func.isRequired,
   isSearchOpen: PropTypes.bool,
-  isCondensedHeaderOpen: PropTypes.bool,
+  showCondensedHeader: PropTypes.bool,
   searchResults: PropTypes.shape({
     trends: PropTypes.shape({}),
     categories: PropTypes.shape({}),
@@ -221,7 +221,7 @@ SearchBar.propTypes = {
 
 SearchBar.defaultProps = {
   isSearchOpen: false,
-  isCondensedHeaderOpen: false,
+  showCondensedHeader: false,
   searchResults: {
     trends: {},
     categories: {},

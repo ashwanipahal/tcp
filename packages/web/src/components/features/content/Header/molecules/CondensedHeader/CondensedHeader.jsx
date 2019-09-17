@@ -82,9 +82,9 @@ class CondensedHeader extends React.PureComponent {
       navigationDrawer,
       openOverlay,
       userName,
-      isCondensedHeaderOpen,
-      isSearchOpen,
+      showCondensedHeader,
       setSearchState,
+      labels,
     } = this.props;
     const brand = getBrand();
     const {
@@ -93,7 +93,12 @@ class CondensedHeader extends React.PureComponent {
       triggerLoginCreateAccount,
       cartItemCount,
     } = this.state;
-
+    const {
+      accountIconButton,
+      cartIconButton,
+      hamburgerMenu,
+      searchIconButton,
+    } = labels.accessibility;
     return (
       <React.Fragment>
         <Row className={`${className} condensed-header content-wrapper`}>
@@ -116,7 +121,7 @@ class CondensedHeader extends React.PureComponent {
                   ? '/static/images/mobile-close-dark.svg'
                   : '/static/images/grey-menu.svg'
               }
-              alt="hamburger-menu"
+              alt={hamburgerMenu}
               tabIndex="0"
               className="hamburger-menu"
               onClick={handleNavigationDrawer(
@@ -170,10 +175,10 @@ class CondensedHeader extends React.PureComponent {
             }}
           >
             <Image
-              alt="search"
+              alt={searchIconButton}
               className="search-image icon`"
               onClick={setSearchState}
-              src={getIconPath(`${isCondensedHeaderOpen ? 'search-icon-blue' : 'search-icon'}`)}
+              src={getIconPath(`${showCondensedHeader ? 'search-icon-blue' : 'search-icon'}`)}
               data-locator="search-icon"
               height="25px"
             />
@@ -190,27 +195,25 @@ class CondensedHeader extends React.PureComponent {
                 </BodyCopy>
               </React.Fragment>
             ) : (
-              !isSearchOpen && (
-                <Anchor
-                  href="#"
-                  noLink
-                  id="condensedLogin"
-                  className="leftLink"
-                  onClick={e => this.onLinkClick({ e, openOverlay, triggerLoginCreateAccount })}
-                  fontSizeVariation="large"
-                  anchorVariation="primary"
-                >
-                  <Image
-                    alt="account"
-                    className="rightLink"
-                    src={getIconPath('user-icon-blue')}
-                    data-locator="user-icon"
-                  />
-                </Anchor>
-              )
+              <Anchor
+                href="#"
+                noLink
+                id="condensedLogin"
+                className="leftLink"
+                onClick={e => this.onLinkClick({ e, openOverlay, triggerLoginCreateAccount })}
+                fontSizeVariation="large"
+                anchorVariation="primary"
+              >
+                <Image
+                  alt={accountIconButton}
+                  className="rightLink"
+                  src={getIconPath('user-icon-blue')}
+                  data-locator="user-icon"
+                />
+              </Anchor>
             )}
             <Anchor
-              to=""
+              to="#"
               id="cartIcon"
               className="rightLink"
               onClick={e => this.toggleMiniBagModal({ e, isOpen: true })}
@@ -219,7 +222,7 @@ class CondensedHeader extends React.PureComponent {
               noLink
             >
               <Image
-                alt="Product"
+                alt={cartIconButton}
                 className="product-image"
                 src={getIconPath('cart-icon-blue')}
                 data-locator="addedtobag-bag-icon"
@@ -247,16 +250,23 @@ class CondensedHeader extends React.PureComponent {
 
 CondensedHeader.propTypes = {
   className: PropTypes.string.isRequired,
-  navigationDrawer: PropTypes.shape({}),
+  navigationDrawer: PropTypes.shape({
+    open: PropTypes.bool.isRequired,
+  }),
   openNavigationDrawer: PropTypes.func.isRequired,
   closeNavigationDrawer: PropTypes.func.isRequired,
   userName: PropTypes.string.isRequired,
   openOverlay: PropTypes.func.isRequired,
   isLoggedIn: PropTypes.bool.isRequired,
   cartItemCount: PropTypes.func.isRequired,
-  isSearchOpen: PropTypes.bool.isRequired,
-  isCondensedHeaderOpen: PropTypes.bool.isRequired,
+  showCondensedHeader: PropTypes.bool.isRequired,
   setSearchState: PropTypes.func.isRequired,
+  labels: PropTypes.shape({
+    isOpenMiniBagModal: PropTypes.string.isRequired,
+    userNameClick: PropTypes.string.isRequired,
+    triggerLoginCreateAccount: PropTypes.string.isRequired,
+    cartItemCount: PropTypes.string.isRequired,
+  }).isRequired,
 };
 
 CondensedHeader.defaultProps = {

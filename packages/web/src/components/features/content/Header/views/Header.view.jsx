@@ -1,5 +1,6 @@
 import React from 'react';
 import { PropTypes } from 'prop-types';
+import throttle from 'lodash/throttle';
 import withStyles from '@tcp/core/src/components/common/hoc/withStyles';
 import OverlayModal from '@tcp/core/src/components/features/OverlayModal';
 import TrackOrder from '@tcp/core/src/components/features/account/TrackOrder';
@@ -9,17 +10,28 @@ import style from '../Header.style';
 import SearchBar from '../molecules/SearchBar/index';
 
 class Header extends React.PureComponent {
-  constructor(props) {
-    super(props);
-    this.state = {
-      isCondensedHeaderOpen: false,
-      isSearchOpen: false,
-    };
-  }
+  state = {
+    showCondensedHeader: false,
+    isSearchOpen: false,
+  };
+
+  throttledOnScroll = throttle(this.handleScroll, 100);
 
   componentDidMount() {
-    window.onscroll = () => this.handleScroll();
+    this.addScrollListener();
   }
+
+  componentWillUnmount() {
+    this.removeScrollListener();
+  }
+
+  addScrollListener = () => {
+    window.addEventListener('scroll', this.throttledOnScroll);
+  };
+
+  removeScrollListener = () => {
+    window.removeEventListener('scroll', this.throttledOnScroll);
+  };
 
   setSearchState = (currentStatus, cb = null) => {
     this.setState({ isSearchOpen: currentStatus }, cb ? cb() : () => {});
@@ -28,19 +40,29 @@ class Header extends React.PureComponent {
   handleScroll = () => {
     const header = document.getElementById('header-middle-nav-bar');
     const sticky = header && header.offsetTop;
-    window.addEventListener('scroll', () => {
-      const condensedHeader = document.getElementsByClassName('condensed-header')[0];
-      if (
-        (getViewportInfo().isDesktop && window.pageYOffset > sticky + 64) ||
-        (!getViewportInfo().isDesktop && window.pageYOffset > sticky)
-      ) {
-        condensedHeader.classList.add('show-condensed-header');
-        this.setState({ isCondensedHeaderOpen: true });
-      } else {
-        condensedHeader.classList.remove('show-condensed-header');
-        this.setState({ isCondensedHeaderOpen: false });
-      }
-    });
+    const condensedHeader = document.getElementsByClassName('condensed-header')[0];
+    /**
+     * Note:
+     * 1. Condensed header is 'stuck' if scrolled past Navigation bar
+     * and scrolling direction is down
+     * 2. Condensed header is 'unstuck' when scrolling up till Navigation bar get visible
+     */
+    if (
+      (getViewportInfo().isDesktop && window.pageYOffset > sticky + 64) ||
+      (!getViewportInfo().isDesktop && window.pageYOffset > sticky)
+    ) {
+      this.setState({ showCondensedHeader: true }, () => {
+        if (condensedHeader) {
+          condensedHeader.classList.add('show-condensed-header');
+        }
+      });
+    } else {
+      this.setState({ showCondensedHeader: false }, () => {
+        if (condensedHeader) {
+          condensedHeader.classList.remove('show-condensed-header');
+        }
+      });
+    }
   };
 
   render() {
@@ -63,7 +85,7 @@ class Header extends React.PureComponent {
 
     const { isSearchOpen } = this.state;
 
-    const { isCondensedHeaderOpen } = this.state;
+    const { showCondensedHeader } = this.state;
     return (
       <header className={className}>
         <HeaderTopNav
@@ -84,28 +106,32 @@ class Header extends React.PureComponent {
           isLoggedIn={isLoggedIn}
           cartItemCount={cartItemCount}
           totalItems={totalItems}
-          isCondensedHeaderOpen={isCondensedHeaderOpen}
+          showCondensedHeader={showCondensedHeader}
           setSearchState={this.setSearchState}
           isSearchOpen={isSearchOpen}
         />
-        <CondensedHeader
-          openNavigationDrawer={openNavigationDrawer}
-          closeNavigationDrawer={closeNavigationDrawer}
-          navigationDrawer={navigationDrawer}
-          userName={userName}
-          openOverlay={openOverlay}
-          isLoggedIn={isLoggedIn}
-          cartItemCount={cartItemCount}
-          totalItems={totalItems}
-          isCondensedHeaderOpen={isCondensedHeaderOpen}
-          setSearchState={this.setSearchState}
-          isSearchOpen={isSearchOpen}
-        />
+        {showCondensedHeader && (
+          <CondensedHeader
+            openNavigationDrawer={openNavigationDrawer}
+            closeNavigationDrawer={closeNavigationDrawer}
+            navigationDrawer={navigationDrawer}
+            userName={userName}
+            openOverlay={openOverlay}
+            isLoggedIn={isLoggedIn}
+            cartItemCount={cartItemCount}
+            totalItems={totalItems}
+            showCondensedHeader={showCondensedHeader}
+            setSearchState={this.setSearchState}
+            isSearchOpen={isSearchOpen}
+            labels={labels}
+          />
+        )}
+
         <SearchBar
           className={!isSearchOpen && 'rightLink'}
           setSearchState={this.setSearchState}
           isSearchOpen={isSearchOpen}
-          isCondensedHeaderOpen={isCondensedHeaderOpen}
+          showCondensedHeader={showCondensedHeader}
         />
         <HeaderPromo
           mobileMarkup
@@ -113,7 +139,7 @@ class Header extends React.PureComponent {
           dataPromo={headerPromoArea}
         />
         <HeaderPromo className="header__promo-area--desktop" dataPromo={headerPromoArea} />
-        <OverlayModal isCondensedHeaderOpen={isCondensedHeaderOpen} />
+        <OverlayModal showCondensedHeader={showCondensedHeader} />
         <TrackOrder />
       </header>
     );
