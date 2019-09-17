@@ -22,6 +22,10 @@ const errorHandler = err => {
   return err || null;
 };
 
+/**
+ * @function getAddress - returns the store address section
+ * @param {*} storeDetails - server response
+ */
 export const getAddress = storeDetails => {
   const {
     address1,
@@ -46,6 +50,10 @@ export const getAddress = storeDetails => {
   };
 };
 
+/**
+ * @function getStoreNameVal - returns the store name
+ * @param {Object} storeDetails - server response
+ */
 export const getStoreNameVal = storeDetails => {
   return sanitizeEntity(
     (storeDetails.description && storeDetails.description.displayStoreName) ||
@@ -56,6 +64,10 @@ export const getStoreNameVal = storeDetails => {
   );
 };
 
+/**
+ * @function getBasicInfo - parse the server response and only returns the store basic info
+ * @param {Object} storeDetails - server response
+ */
 export const getBasicInfo = storeDetails => {
   const id = (
     storeDetails.uniqueId ||
@@ -79,6 +91,11 @@ export const getBasicInfo = storeDetails => {
   };
 };
 
+/**
+ * @function getDistance returns the distance
+ * @param {*} distance
+ * @param {*}  distanceFromUserToStore - user distance from store
+ */
 export const getDistance = ({ distance, distanceFromUserToStore }) => {
   if (distance) {
     return parseFloat(distance).toFixed(2);
@@ -89,6 +106,10 @@ export const getDistance = ({ distance, distanceFromUserToStore }) => {
   return null;
 };
 
+/**
+ * @function getStoreTypeDetail - return the store type
+ * @param {Object} - server response
+ */
 export const getStoreTypeDetail = ({ storeType, addressLineDetail, address3 }) => {
   return (
     storeType ||
@@ -98,6 +119,11 @@ export const getStoreTypeDetail = ({ storeType, addressLineDetail, address3 }) =
   );
 };
 
+/**
+ * @function getStoreStatus - store status whether Available, UnAvailable or limited.
+ * @param {object} storeDetails - server response
+ * @param {Number} requestedQuantity - quantity
+ */
 export const getStoreStatus = (storeDetails, requestedQuantity) => {
   if (storeDetails.itemAvailability[0].qty < requestedQuantity) {
     return BOPIS_ITEM_AVAILABILITY.UNAVAILABLE;
@@ -111,6 +137,10 @@ export const getStoreStatus = (storeDetails, requestedQuantity) => {
   return BOPIS_ITEM_AVAILABILITY.LIMITED;
 };
 
+/**
+ * @function getStoreParameters - return the store details
+ * @param {Object} - server response
+ */
 export const getStoreParameters = ({
   storehours,
   Attribute,
@@ -144,6 +174,11 @@ export const getStoreParameters = ({
   };
 };
 
+/**
+ * @function storeResponseParser - to parse the server response and pass it UI components
+ * @param {Object} storeDetails - Server response
+ * @param {Object} configs - config data
+ */
 export const storeResponseParser = (storeDetails, configs = { requestedQuantity: 0 }) => {
   const { requestedQuantity } = configs;
   const {
@@ -316,6 +351,11 @@ export const getLocationStores = ({
     .catch(errorHandler);
 };
 
+/**
+ * @function setFavoriteStore - API to set the favorite store based on user interaction with the stores.
+ * @param {String} storeId - id of the favorite store
+ * @param {map} state - current state tree.
+ */
 export const setFavoriteStore = (storeId, state) => {
   const personalDataState = getPersonalDataState(state);
   const userId = personalDataState.get('userId');
