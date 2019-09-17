@@ -33,7 +33,7 @@ const StyledApplyNowModal = ({
       dataLocator={getLocator('plcc_apply_now_modal')}
       dataLocatorHeader={getLocator('plcc_apply_now_close_btn')}
       maxWidth="464px"
-      minHeight="746px"
+      minHeight="646px"
       inheritedStyles={modalStyles}
       shouldCloseOnOverlayClick={false}
     >
@@ -114,11 +114,7 @@ const StyledApplyNowModal = ({
         >
           {getLabelValue(labels, 'apply_now_benefits_header')}
         </BodyCopy>
-        <Row>
-          <Col ignoreGutter={{ small: true }} colSize={{ large: 10, medium: 8, small: 6 }}>
-            <RichText className="rewards__benefits" richTextHtml={plccBenefitsList} />
-          </Col>
-        </Row>
+        <RichText className="rewards__benefits" richTextHtml={plccBenefitsList} />
         <div className="footerLinks">
           <BodyCopy component="span" fontSize="fs12" fontFamily="secondary">
             {getLabelValue(labels, 'apply_now_links_text')}

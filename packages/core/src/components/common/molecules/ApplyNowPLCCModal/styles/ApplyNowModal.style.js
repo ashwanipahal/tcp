@@ -102,6 +102,9 @@ export const modalStyles = css`
   }
 
   .rewards__benefits {
+    @media ${props => props.theme.mediaQuery.medium} {
+      margin-left: 6px;
+    }
     > li {
       font-size: ${props => props.theme.fonts.fontSize.body.large.secondary}px;
       width: 355px;

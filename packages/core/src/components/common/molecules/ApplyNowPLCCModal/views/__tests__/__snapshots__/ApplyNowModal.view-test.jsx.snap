@@ -126,6 +126,11 @@ exports[`ApplyNowModalWrapper component should renders correctly 1`] = `
   }
 
   .rewards__benefits {
+    @media ",
+      [Function],
+      " {
+      margin-left: 6px;
+    }
     > li {
       font-size: ",
       [Function],
@@ -164,7 +169,7 @@ exports[`ApplyNowModalWrapper component should renders correctly 1`] = `
   }
   isOpen={true}
   maxWidth="464px"
-  minHeight="746px"
+  minHeight="646px"
   overlayClassName="TCPModal__Overlay"
   shouldCloseOnOverlayClick={false}
 >
@@ -308,26 +313,9 @@ exports[`ApplyNowModalWrapper component should renders correctly 1`] = `
     >
       apply_now_benefits_header
     </Styled(BodyCopy)>
-    <Styled(Row)>
-      <Styled(Col)
-        colSize={
-          Object {
-            "large": 10,
-            "medium": 8,
-            "small": 6,
-          }
-        }
-        ignoreGutter={
-          Object {
-            "small": true,
-          }
-        }
-      >
-        <Styled(RichText)
-          className="rewards__benefits"
-        />
-      </Styled(Col)>
-    </Styled(Row)>
+    <Styled(RichText)
+      className="rewards__benefits"
+    />
     <div
       className="footerLinks"
     >
