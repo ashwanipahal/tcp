@@ -46,15 +46,16 @@ const renderAddGiftCardError = getAddGiftCardError => {
   return null;
 };
 
-const renderAddGiftCard = (
+const renderAddGiftCard = ({
   hideAddGiftCard,
   onAddGiftCardClick,
   getAddGiftCardError,
   isGuestUser,
   isRecapchaEnabled,
   labels,
-  isLoading
-) => {
+  isLoading,
+  onClearError,
+}) => {
   return (
     <Row className="gift-card-container elem-mb-LRG">
       <Col
@@ -75,6 +76,7 @@ const renderAddGiftCard = (
             addGiftCardError={getAddGiftCardError}
             isRow
             isLoading={isLoading}
+            onClearError={onClearError}
           />
         </BodyCopy>
       </Col>
@@ -126,6 +128,7 @@ export const GiftCards = ({
   isGuestUser,
   isRecapchaEnabled,
   isLoading,
+  onClearError,
 }) => {
   return (
     <Grid className={className}>
@@ -199,17 +202,29 @@ export const GiftCards = ({
       {!enableAddGiftCard &&
         renderAddNewGiftButton(labels, orderBalanceTotal, appliedGiftCards, showAddGiftCard)}
       {enableAddGiftCard &&
-        renderAddGiftCard(
+        renderAddGiftCard({
           hideAddGiftCard,
           onAddGiftCardClick,
           getAddGiftCardError,
           isGuestUser,
           isRecapchaEnabled,
           labels,
-          isLoading
-        )}
+          isLoading,
+          onClearError,
+        })}
     </Grid>
   );
+};
+
+renderAddGiftCard.propTypes = {
+  hideAddGiftCard: PropTypes.func.isRequired,
+  onAddGiftCardClick: PropTypes.func.isRequired,
+  getAddGiftCardError: PropTypes.func.isRequired,
+  onClearError: PropTypes.func.isRequired,
+  isGuestUser: PropTypes.bool.isRequired,
+  isRecapchaEnabled: PropTypes.bool.isRequired,
+  labels: PropTypes.shape({}).isRequired,
+  isLoading: PropTypes.bool.isRequired,
 };
 
 GiftCards.propTypes = {
@@ -230,6 +245,7 @@ GiftCards.propTypes = {
   isGuestUser: PropTypes.bool,
   isRecapchaEnabled: PropTypes.bool,
   isLoading: PropTypes.bool,
+  onClearError: PropTypes.func.isRequired,
 };
 
 GiftCards.defaultProps = {
