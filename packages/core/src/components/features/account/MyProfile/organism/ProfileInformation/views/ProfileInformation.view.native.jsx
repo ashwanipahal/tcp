@@ -8,6 +8,7 @@ import ProfileInfoActions from '../../ProfileInfoActions';
 import PersonalInformation from '../../PersonalInformation';
 import ChangePasswordInfo from '../../ChangePasswordInfo';
 import BirthdaySaving from '../../BirthdaySaving';
+import MyFavoriteStore from '../../MyFavoriteStore';
 import { StyledAnchorWrapper, AnchorLeftMargin } from '../../../../common/styledWrapper';
 import endpoints from '../../../../common/externalEndpoints';
 import AboutYouInfo from '../../AboutYouInfo';
@@ -84,6 +85,7 @@ export class ProfileInformation extends React.PureComponent {
           <AboutYouInfo labels={labels} userSurvey={userSurvey} />
         )}
         <ChangePasswordInfo labels={labels} handleComponentChange={handleComponentChange} />
+        {!!defaultStore && <MyFavoriteStore defaultStore={defaultStore} />}
         <BirthdaySaving labels={labels} handleComponentChange={handleComponentChange} />
         <StyledAnchorWrapper>
           <Anchor

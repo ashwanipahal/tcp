@@ -1,0 +1,45 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`MyFavoriteStore Component MyFavoriteStore should render correctly 1`] = `
+<StyledNativeComponent
+  className=""
+  defaultStore="118012"
+  favStoreAddress="471-485 Fulton Street"
+  favStoreCity="Brooklyn"
+  favStoreName="Fulton Street"
+  favStorePhone="7124311408"
+  favStoreState="NY"
+  favStoreZipcode="11201"
+  forwardedComponent={
+    Object {
+      "$$typeof": Symbol(react.forward_ref),
+      "_foldedDefaultProps": Object {
+        "className": "",
+        "defaultStore": "",
+        "favStoreAddress": "",
+        "favStoreCity": "",
+        "favStoreName": "",
+        "favStorePhone": "",
+        "favStoreState": "",
+        "favStoreZipcode": "",
+      },
+      "attrs": Array [],
+      "displayName": "Styled(MyFavoriteStore)",
+      "inlineStyle": InlineStyle {
+        "rules": Array [
+          "
+    ",
+          ";
+  ",
+        ],
+      },
+      "render": [Function],
+      "styledComponentId": "StyledNativeComponent",
+      "target": [Function],
+      "withComponent": [Function],
+    }
+  }
+  forwardedRef={null}
+  labels={Object {}}
+/>
+`;
