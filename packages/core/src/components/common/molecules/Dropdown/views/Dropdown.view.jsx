@@ -117,33 +117,26 @@ class Dropdown extends React.PureComponent {
 
   itemLists = (nav, activeComponent) => {
     return (
-      <>
-        <BodyCopy
-          component="div"
-          role="button"
-          textAlign="center"
-          onClick={e => this.onClickHandler(e, nav)}
-          tabIndex={-1}
-          fontWeight="extrabold"
-          fontSize="fs14"
-        >
-          <Anchor asPath={nav.url} className="dropdownAnchorColor" to={nav.href}>
-            <li
-              key={nav.id}
-              className={`dropDownLists ${
-                activeComponent === nav.component ? 'dropdownActiveClass' : ''
-              }`}
-            >
-              {this.getDisplayName(nav.displayName)}
-            </li>
-          </Anchor>
-        </BodyCopy>
-        {/*
-          This should not be the part of dropdown component. Dropdown should always work on flat data not on nested data.
-          nav.subSections &&
-          nav.subSections.map(subSection => this.subMenuList(subSection, activeComponent))
-        */}
-      </>
+      <BodyCopy
+        component="div"
+        role="button"
+        textAlign="center"
+        onClick={e => this.onClickHandler(e, nav)}
+        tabIndex={-1}
+        fontWeight="extrabold"
+        fontSize="fs14"
+      >
+        <Anchor asPath={nav.url} className="dropdownAnchorColor" to={nav.href}>
+          <li
+            key={nav.id}
+            className={`dropDownLists ${
+              activeComponent === nav.component ? 'dropdownActiveClass' : ''
+            }`}
+          >
+            {this.getDisplayName(nav.displayName)}
+          </li>
+        </Anchor>
+      </BodyCopy>
     );
   };
 
