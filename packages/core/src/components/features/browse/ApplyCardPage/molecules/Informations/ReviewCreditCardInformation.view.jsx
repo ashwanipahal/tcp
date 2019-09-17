@@ -16,7 +16,7 @@ const ReviewCreditCardInformation = ({ isPLCCModalFlow = false, creditCardHeader
         className="rewards_card_logo"
         key="container_header_image"
         isPLCCModalFlow={isPLCCModalFlow}
-        colSize={{ large: 2, medium: 2, small: 6 }}
+        colSize={{ large: isPLCCModalFlow ? 4 : 3, medium: isPLCCModalFlow ? 3 : 4, small: 6 }}
       >
         <BodyCopy
           component="div"
@@ -28,7 +28,7 @@ const ReviewCreditCardInformation = ({ isPLCCModalFlow = false, creditCardHeader
       <Col
         className="rewards_card_instruction"
         key="container_header_text_plcc"
-        colSize={{ large: 8, medium: 5, small: 6 }}
+        colSize={{ large: 8, medium: 6, small: 6 }}
       >
         <RichText richTextHtml={creditCardHeader} dataLocator="creditCardHeader" />
       </Col>

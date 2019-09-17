@@ -13,6 +13,7 @@ import ChangePassword from '../ChangePassword';
 import AddEditPersonalInformationContainer from '../AddEditPersonalInformation';
 import AboutYouInformationContainer from '../AboutYouInformation';
 import BirthdaySavingsPage from '../BirthdaySavingsPage';
+import PointHistoryPage from '../PointHistory';
 
 const AccountComponentMapping = {
   'address-book': AddressBook,
@@ -32,6 +33,7 @@ const AccountComponentMapping = {
   'edit-mailing-address': MailingInformationContainer,
   'edit-aboutyou-info': AboutYouInformationContainer,
   'my-preference': MyPrefrenceContainer,
+  'points-history': PointHistoryPage,
 };
 
 export default AccountComponentMapping;

@@ -1,6 +1,20 @@
 import React from 'react';
 import { shallow } from 'enzyme';
+import { fromJS } from 'immutable';
 import { GiftCardsContainer, mapDispatchToProps } from '../GiftCards.container';
+
+const appliedGiftCardList = [
+  {
+    creditCardId: 123,
+    name: 'test',
+    onFileCardId: 123,
+  },
+  {
+    creditCardId: 124,
+    name: 'test',
+    onFileCardId: 124,
+  },
+];
 
 describe('Gift Cards Container', () => {
   const props = {
@@ -8,12 +22,17 @@ describe('Gift Cards Container', () => {
     giftCardErrors: {},
     itemOrderGrandTotal: 100,
     itemsGiftCardTotal: 50,
-    giftCardList: {},
     getCardListAction: jest.fn(),
     handleApplyGiftCard: jest.fn(),
     handleRemoveGiftCard: jest.fn(),
     handleSetOrderBalanceTotal: jest.fn(),
     toastMessage: jest.fn(),
+    addGiftCardResponse: 'success',
+    hideAddGiftCard: jest.fn(),
+    resetAddGiftCardAction: jest.fn(),
+    handleSubmit: jest.fn(),
+    appliedGiftCards: fromJS(appliedGiftCardList),
+    giftCardList: appliedGiftCardList,
   };
 
   it('should render Gift Card view section', () => {
@@ -70,6 +89,37 @@ describe('Gift Cards Container', () => {
       const dispatchProps = mapDispatchToProps(dispatch);
       dispatchProps.toastMessage();
       expect(dispatch.mock.calls).toHaveLength(1);
+    });
+    it('#showAddGiftCard', () => {
+      const dispatch = jest.fn();
+      const dispatchProps = mapDispatchToProps(dispatch);
+      dispatchProps.showAddGiftCard();
+      expect(dispatch.mock.calls).toHaveLength(1);
+    });
+    it('#hideAddGiftCard', () => {
+      const dispatch = jest.fn();
+      const dispatchProps = mapDispatchToProps(dispatch);
+      dispatchProps.hideAddGiftCard();
+      expect(dispatch.mock.calls).toHaveLength(1);
+    });
+    it('#handleSubmit', () => {
+      const dispatch = jest.fn();
+      const dispatchProps = mapDispatchToProps(dispatch);
+      const data = { cardPin: 'foo', giftCardNumber: 'foo', recaptchaToken: 'wedseweweeeeeeeec' };
+      dispatchProps.handleSubmit(data);
+      expect(dispatch.mock.calls).toHaveLength(1);
+    });
+    it('#resetAddGiftCardAction', () => {
+      const dispatch = jest.fn();
+      const dispatchProps = mapDispatchToProps(dispatch);
+      dispatchProps.resetAddGiftCardAction();
+      expect(dispatch.mock.calls).toHaveLength(1);
+    });
+    it('submitGiftCardData to be called', () => {
+      const component = shallow(<GiftCardsContainer {...props} />);
+      const data = { cardPin: 'foo', giftCardNumber: 'foo', recaptchaToken: 'wedseweweeeeeeeec' };
+      component.instance().submitGiftCardData(data);
+      expect(component).toBeDefined();
     });
   });
 });

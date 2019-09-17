@@ -275,6 +275,7 @@ exports[`ModuleB component should render banner bottom variation 1`] = `
     >
       <WithTheme(DamImage)
         className="image"
+        imageConfig="t_mod_B_img_overlay_m"
         imgData={
           Object {
             "alt": "Graphic Tees",
@@ -378,6 +379,7 @@ exports[`ModuleB component should render banner overlay variation 1`] = `
     >
       <WithTheme(DamImage)
         className="image"
+        imageConfig="t_mod_B_img_overlay_m"
         imgData={
           Object {
             "alt": "Graphic Tees",
@@ -547,6 +549,7 @@ exports[`ModuleB component should render banner top alt variation 1`] = `
     >
       <WithTheme(DamImage)
         className="image"
+        imageConfig="t_mod_B_img_overlay_m"
         imgData={
           Object {
             "alt": "Graphic Tees",
@@ -650,6 +653,7 @@ exports[`ModuleB component should render banner top variation 1`] = `
     >
       <WithTheme(DamImage)
         className="image"
+        imageConfig="t_mod_B_img_overlay_m"
         imgData={
           Object {
             "alt": "Graphic Tees",

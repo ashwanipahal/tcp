@@ -83,6 +83,7 @@ exports[`CardTile should render correctly with amex card 1`] = `
             fontWeight="normal"
             isDefault={false}
             showCountry={false}
+            showDefault={true}
             showName={true}
             showPhone={false}
           />
@@ -211,6 +212,7 @@ exports[`CardTile should render correctly with delete gift  card 1`] = `
             fontWeight="normal"
             isDefault={false}
             showCountry={false}
+            showDefault={true}
             showName={true}
             showPhone={false}
           />
@@ -358,6 +360,7 @@ exports[`CardTile should render correctly with discover card 1`] = `
             fontWeight="normal"
             isDefault={false}
             showCountry={false}
+            showDefault={true}
             showName={true}
             showPhone={false}
           />
@@ -785,6 +788,7 @@ exports[`CardTile should render correctly with master card 1`] = `
             fontWeight="normal"
             isDefault={false}
             showCountry={false}
+            showDefault={true}
             showName={true}
             showPhone={false}
           />
@@ -1207,6 +1211,7 @@ exports[`CardTile should render correctly with plcc card 1`] = `
             fontWeight="normal"
             isDefault={false}
             showCountry={false}
+            showDefault={true}
             showName={true}
             showPhone={false}
           />
@@ -1447,6 +1452,7 @@ exports[`CardTile should render correctly with visa card 1`] = `
             fontWeight="normal"
             isDefault={false}
             showCountry={false}
+            showDefault={true}
             showName={true}
             showPhone={false}
           />

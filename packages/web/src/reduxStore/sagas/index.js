@@ -34,6 +34,7 @@ import CheckoutSaga from '@tcp/core/src/components/features/CnC/Checkout/contain
 import BagPageSaga from '@tcp/core/src/components/features/CnC/BagPage/container/BagPage.saga';
 import TrackOrderSaga from '@tcp/core/src/components/features/account/TrackOrder/container/TrackOrder.saga';
 import PointsHistorySaga from '@tcp/core/src/components/features/account/common/organism/PointsHistory/container/PointsHistory.saga';
+import EarnExtraPointsSaga from '@tcp/core/src/components/features/account/common/organism/EarnExtraPointsTile/container/EarnExtraPointsTile.saga';
 import AddAirmilesBannerSaga from '@tcp/core/src/components/features/CnC/common/organism/AirmilesBanner/container/AirmilesBanner.saga';
 import ApplyCreditCardSaga, {
   SubmitInstantCardApplication,
@@ -44,6 +45,8 @@ import GiftCardsSaga from '@tcp/core/src/components/features/CnC/Checkout/organi
 import MailingAddressSaga from '@tcp/core/src/components/features/account/MyProfile/organism/MailingInformation/container/MailingAddress.saga';
 import ProductTabListSaga from '@tcp/core/src/components/common/organisms/ProductTabList/container/ProductTabList.saga';
 import RecommendationsSaga from '@tcp/core/src/components/common/molecules/Recommendations/container/Recommendations.saga';
+import MyFavoriteStoreSaga from '@tcp/core/src/components/features/account/MyProfile/organism/MyFavoriteStore/container/MyFavoriteStore.saga';
+import PickupStoreSaga from '@tcp/core/src/components/common/organisms/PickupStoreModal/container/PickUpStoreModal.saga';
 import HomePageSaga from '../../components/features/content/HomePage/container/HomePage.saga';
 import EmailSignupSaga from '../../components/common/molecules/EmailSignupModal/container/EmailSignupModal.saga';
 import SmsSignupSaga from '../../components/common/molecules/SmsSignupModal/container/SmsSignupModal.saga';
@@ -89,6 +92,7 @@ export default function* rootSaga() {
     AccountHeaderSaga(),
     CountrySelectorSaga(),
     PointsHistorySaga(),
+    EarnExtraPointsSaga(),
     ResetPasswordSaga(),
     ApplyCreditCardSaga(),
     ChangePasswordSaga(),
@@ -101,5 +105,7 @@ export default function* rootSaga() {
     RecommendationsSaga(),
     BillingPaymentSaga(),
     SocialAccountSaga(),
+    MyFavoriteStoreSaga(),
+    PickupStoreSaga(),
   ]);
 }
