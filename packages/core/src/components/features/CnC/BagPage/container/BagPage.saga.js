@@ -230,8 +230,7 @@ export function* removeUnqualifiedItemsAndCheckout({ navigation } = {}) {
   yield call(checkoutCart, true, navigation);
 }
 
-export function* addItemToSFL({ payload }) {
-  const { itemId, catEntryId, userInfoRequired } = payload;
+export function* addItemToSFL({ payload: { itemId, catEntryId, userInfoRequired } = {} } = {}) {
   const isRememberedUser = yield select(isRemembered);
   const isRegistered = yield select(getUserLoggedInState);
   const countryCurrency = yield select(BAG_SELECTORS.getCurrentCurrency);
