@@ -60,9 +60,9 @@ export class StoreLocatorView extends PureComponent {
   };
 
   render() {
-    const { className, selectedCountry, error, handleSubmit } = this.props;
+    const { className, selectedCountry, error, handleSubmit, searchLabel, errorLabel } = this.props;
     const { errorNotFound } = this.state;
-    const errorMessage = errorNotFound ? 'Please enter a valid address and try again.' : error;
+    const errorMessage = errorNotFound ? errorLabel : error;
 
     return (
       <div className={className}>
@@ -79,9 +79,7 @@ export class StoreLocatorView extends PureComponent {
             enableSuccessCheck={false}
           />
           <button type="submit" title="search" className="button-search-store">
-            {' '}
-            {/* eslint-disable-next-line react/jsx-one-expression-per-line */}
-            Search{' '}
+            {searchLabel}
           </button>
         </form>
         <ErrorMessage
@@ -102,6 +100,8 @@ StoreLocatorView.propTypes = {
   submitting: PropTypes.bool,
   error: PropTypes.bool.isRequired,
   handleSubmit: PropTypes.func.isRequired,
+  searchLabel: PropTypes.string.isRequired,
+  errorLabel: PropTypes.string.isRequired,
 };
 
 StoreLocatorView.defaultProps = {
