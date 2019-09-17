@@ -22,6 +22,7 @@ exports[`HomePageView should render correctly 1`] = `
         "moduleK": [Function],
         "moduleL": [Function],
         "moduleN": [Function],
+        "moduleR": [Function],
       }
     }
     navigation={
@@ -256,129 +257,6 @@ exports[`HomePageView should render correctly 1`] = `
               "altStyle": "extra_large_text_black",
               "style": "fixed_medium_text_black",
               "text": "60% OFF",
-            },
-          ],
-        },
-      ]
-    }
-  />
-  <Connect(ModuleR)
-    divTabs={
-      Array [
-        Object {
-          "category": Object {
-            "cat_id": "49007",
-          },
-          "singleCTAButton": Object {
-            "action": "",
-            "external": 0,
-            "target": "",
-            "text": "SHOP ALL",
-            "title": "SHOP ALL",
-            "url": "http://www.childrensplace.com",
-          },
-          "text": Object {
-            "text": "GIRL",
-          },
-        },
-        Object {
-          "category": Object {
-            "cat_id": "47502>47535>54071",
-          },
-          "singleCTAButton": Object {
-            "action": "",
-            "external": 0,
-            "target": "",
-            "text": "SHOP ALL",
-            "title": "SHOP ALL",
-            "url": "http://www.childrensplace.com",
-          },
-          "text": Object {
-            "text": "TODDLER GIRL",
-          },
-        },
-        Object {
-          "category": Object {
-            "cat_id": "47503>47544",
-          },
-          "singleCTAButton": Object {
-            "action": "",
-            "external": 0,
-            "target": "",
-            "text": "SHOP ALL",
-            "title": "SHOP ALL",
-            "url": "http://www.childrensplace.com",
-          },
-          "text": Object {
-            "text": "BOY",
-          },
-        },
-        Object {
-          "category": Object {
-            "cat_id": "47501>47526",
-          },
-          "singleCTAButton": Object {
-            "action": "",
-            "external": 0,
-            "target": "",
-            "text": "SHOP ALL",
-            "title": "SHOP ALL",
-            "url": "http://www.childrensplace.com",
-          },
-          "text": Object {
-            "text": "TODDLER BOY",
-          },
-        },
-      ]
-    }
-    headerText={
-      Array [
-        Object {
-          "icon": Object {
-            "icon": "",
-            "placement": "",
-          },
-          "link": Object {
-            "action": "",
-            "external": 0,
-            "target": "",
-            "text": "",
-            "title": "",
-            "url": "http://www.childrensplace.com",
-          },
-          "textItems": Array [
-            Object {
-              "style": "medium_text_black",
-              "text": "THE SHIRT SHOP",
-            },
-          ],
-        },
-      ]
-    }
-    navigation={
-      Object {
-        "getParam": [Function],
-      }
-    }
-    promoBanner={
-      Array [
-        Object {
-          "link": Object {
-            "action": "",
-            "external": 0,
-            "target": "",
-            "text": "",
-            "title": "",
-            "url": "http://www.childrensplace.com",
-          },
-          "textItems": Array [
-            Object {
-              "style": "medium_text_regular",
-              "text": "ALL GRAPHIC TEES",
-            },
-            Object {
-              "style": "percentage_wrapped_xl_black",
-              "text": "60 % OFF",
             },
           ],
         },
