@@ -20,14 +20,18 @@ export function* getUserInfoSaga() {
     const siteId = getSiteId();
     const { CA_CONFIG_OPTIONS: apiConfig, sites } = API_CONFIG;
 
-    yield all([
-      put(setUserInfo(response)),
-      put(setAddressList(response.contactList)),
-      put(setCountry(response.country)),
-      put(setCurrency(response.currency)),
-      put(setLanguage(response.language)),
-    ]);
-    const { country } = response;
+    yield all([put(setUserInfo(response)), put(setAddressList(response.contactList))]);
+    const { country, currency, language } = response;
+    if (country) {
+      yield put(setCountry(country));
+    }
+    if (currency) {
+      yield put(setCurrency(currency));
+    }
+    if (language) {
+      yield put(setLanguage(language));
+    }
+
     if (country === sites.ca.toUpperCase() && siteId !== apiConfig.siteId) {
       routerPush(window.location, '/home', null, siteId);
     }

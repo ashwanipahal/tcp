@@ -12,6 +12,7 @@ import ModuleB from './ModuleB';
 import ModuleJ from './ModuleJ';
 import ModuleR from './ModuleR';
 import ButtonTabs from './ButtonTabs';
+import Grid from './Grid';
 
 export {
   Carousel,
@@ -28,4 +29,5 @@ export {
   ModuleJ,
   ModuleR,
   ButtonTabs,
+  Grid,
 };

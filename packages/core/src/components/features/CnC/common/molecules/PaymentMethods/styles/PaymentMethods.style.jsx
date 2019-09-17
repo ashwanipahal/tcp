@@ -5,7 +5,9 @@ const styles = css`
     box-sizing: border-box;
     border: 1px solid ${props => props.theme.colorPalette.gray[600]};
     background: ${props => props.theme.colors.WHITE};
-    padding: 8px;
+    padding: 11px 8px;
+    margin-right: 30px;
+    width: calc(50% - ${props => props.theme.spacing.ELEM_SPACING.LRG});
     @media ${props => props.theme.mediaQuery.smallMax} {
       margin: 0px;
       padding: 5px 0px;

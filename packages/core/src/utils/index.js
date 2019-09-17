@@ -55,6 +55,8 @@ export {
   getBirthDateOptionMap,
   generateUniqueKeyUsingLabel,
   getErrorSelector,
+  formatDate,
+  isValidDate,
   sanitizeEntity,
   formatPhone,
   parseStoreHours,

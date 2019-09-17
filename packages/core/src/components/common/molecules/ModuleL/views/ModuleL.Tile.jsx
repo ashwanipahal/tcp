@@ -19,13 +19,13 @@ const colSize = { ...config.COL_SIZE_TILE };
  * @function ModuleLTile This function renders tiles for carousel
  * @param {tileData} tileData Accepts image, link and styled object and index
  */
-const ModuleLTile = ({ tileData: { image, link, styled }, index, tileColor }: Props) => {
+const ModuleLTile = ({ tileData: { image, link, styled }, index, tileColor = {} }: Props) => {
   return (
     <Anchor {...link}>
       <Row>
         <Col
           colSize={colSize}
-          className={`moduleL__tile moduleL__${tileColor.class}`}
+          className={`moduleL__tile moduleL__${tileColor.color}`}
           data-locator={`${getLocator('moduleL_tiles')}${index + 1}`}
         >
           <DamImage
