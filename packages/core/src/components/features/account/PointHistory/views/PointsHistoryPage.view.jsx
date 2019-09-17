@@ -4,7 +4,7 @@ import BodyCopy from '@tcp/core/src/components/common/atoms/BodyCopy';
 import Anchor from '@tcp/core/src/components/common/atoms/Anchor';
 import withStyles from '@tcp/core/src/components/common/hoc/withStyles';
 import styles from '../styles/PointsHistoryPage.view.style';
-import FormPageHeading from '../../common/molecule/FormPageHeading';
+import PageHeadingWithLinks from '../../common/molecule/PageHeadingWithLinks';
 import PointsHistoryList from '../../common/organism/PointsHistory';
 import internalEndpoints from '../../common/internalEndpoints';
 import HistoryPointsRichTextComponent from './HistoryPointsRichText.view';
@@ -29,28 +29,31 @@ export const PointsHistoryPageView = props => {
           {labels.lbl_common_backLink}
         </Anchor>
       </BodyCopy>
-      <FormPageHeading
-        className="elem-mb-XL"
+      <PageHeadingWithLinks
         heading={labels.lbl_common_points_history_heading}
-        data-locator="historyPointsLbl"
-      />
-      <BodyCopy component="div" className="elem-mb-XXL elem-mt-XXL elem-pb-MED">
-        <BodyCopy
-          component="p"
-          fontFamily="secondary"
-          fontSize="fs16"
-          fontWeight="extrabold"
-          className="hide-on-desktop hide-on-tablet elem-mb-LRG"
-        >
-          {labels.lbl_common_points_history}
+        programDetailsCta={labels.lbl_points_history_program_details}
+        termsConditionCta={labels.lbl_common_tnc}
+      >
+        <BodyCopy component="div" className="elem-pb-XXL">
+          <BodyCopy component="div" className="elem-mb-XXL elem-mt-XXL elem-pb-MED">
+            <BodyCopy
+              component="p"
+              fontFamily="secondary"
+              fontSize="fs16"
+              fontWeight="extrabold"
+              className="hide-on-desktop hide-on-tablet elem-mb-LRG"
+            >
+              {labels.lbl_common_points_history}
+            </BodyCopy>
+            <PointsHistoryList view="edit" labels={labels} showFullHistory />
+          </BodyCopy>
+          <BodyCopy
+            component="div"
+            className="history-section-separator hide-on-mobile elem-mb-XXL elem-mt-XXL"
+          />
+          <HistoryPointsRichTextComponent content={richTextContent} />
         </BodyCopy>
-        <PointsHistoryList view="edit" labels={labels} showFullHistory />
-      </BodyCopy>
-      <BodyCopy
-        component="div"
-        className="history-section-separator hide-on-mobile elem-mb-XXL elem-mt-XXL"
-      />
-      <HistoryPointsRichTextComponent content={richTextContent} />
+      </PageHeadingWithLinks>
     </BodyCopy>
   );
 };

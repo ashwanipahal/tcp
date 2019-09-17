@@ -35,51 +35,61 @@ exports[`PointHistoryPage component should renders correctly 1`] = `
       />
     </Styled(Anchor)>
   </Styled(BodyCopy)>
-  <Styled(FormPageHeading)
-    className="elem-mb-XL"
-    data-locator="historyPointsLbl"
-  />
-  <Styled(BodyCopy)
-    className="elem-mb-XXL elem-mt-XXL elem-pb-MED"
-    color="text.primary"
-    component="div"
-    fontFamily="primary"
-    fontSize={12}
-    fontWeight="regular"
-    letterSpacing="normal"
-    lineHeight="normal"
-    textAlign="left"
-  >
+  <Styled(PageHeadingWithLinks)>
     <Styled(BodyCopy)
-      className="hide-on-desktop hide-on-tablet elem-mb-LRG"
+      className="elem-pb-XXL"
       color="text.primary"
-      component="p"
-      fontFamily="secondary"
-      fontSize="fs16"
-      fontWeight="extrabold"
+      component="div"
+      fontFamily="primary"
+      fontSize={12}
+      fontWeight="regular"
       letterSpacing="normal"
       lineHeight="normal"
       textAlign="left"
-    />
-    <Connect(PointsHistoryContainer)
-      labels={Object {}}
-      showFullHistory={true}
-      view="edit"
-    />
-  </Styled(BodyCopy)>
-  <Styled(BodyCopy)
-    className="history-section-separator hide-on-mobile elem-mb-XXL elem-mt-XXL"
-    color="text.primary"
-    component="div"
-    fontFamily="primary"
-    fontSize={12}
-    fontWeight="regular"
-    letterSpacing="normal"
-    lineHeight="normal"
-    textAlign="left"
-  />
-  <Styled(HistoryPointsRichText)
-    content=""
-  />
+    >
+      <Styled(BodyCopy)
+        className="elem-mb-XXL elem-mt-XXL elem-pb-MED"
+        color="text.primary"
+        component="div"
+        fontFamily="primary"
+        fontSize={12}
+        fontWeight="regular"
+        letterSpacing="normal"
+        lineHeight="normal"
+        textAlign="left"
+      >
+        <Styled(BodyCopy)
+          className="hide-on-desktop hide-on-tablet elem-mb-LRG"
+          color="text.primary"
+          component="p"
+          fontFamily="secondary"
+          fontSize="fs16"
+          fontWeight="extrabold"
+          letterSpacing="normal"
+          lineHeight="normal"
+          textAlign="left"
+        />
+        <Connect(PointsHistoryContainer)
+          labels={Object {}}
+          showFullHistory={true}
+          view="edit"
+        />
+      </Styled(BodyCopy)>
+      <Styled(BodyCopy)
+        className="history-section-separator hide-on-mobile elem-mb-XXL elem-mt-XXL"
+        color="text.primary"
+        component="div"
+        fontFamily="primary"
+        fontSize={12}
+        fontWeight="regular"
+        letterSpacing="normal"
+        lineHeight="normal"
+        textAlign="left"
+      />
+      <Styled(HistoryPointsRichText)
+        content=""
+      />
+    </Styled(BodyCopy)>
+  </Styled(PageHeadingWithLinks)>
 </Styled(BodyCopy)>
 `;
