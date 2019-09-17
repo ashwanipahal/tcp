@@ -1,18 +1,20 @@
 import { useEffect } from 'react';
 // TODO: Find out why useRouter causes an error.
 import { withRouter } from 'next/router';
-import { trackPageViewed } from '../../../../utils/analytics';
+import { usePageTracking } from '@tcp/core/src/analytics';
 
 function RouteTracker({ router }) {
+  const track = usePageTracking();
+
   useEffect(() => {
     // Track current route on mount
-    trackPageViewed(router.asPath);
+    track(router.asPath);
 
     // Track future route changes
-    router.events.on('routeChangeComplete', trackPageViewed);
+    router.events.on('routeChangeComplete', track);
 
     // Stop tracking route changes on unmount
-    return () => router.events.off('routeChangeComplete', trackPageViewed);
+    return () => router.events.off('routeChangeComplete', track);
   }, []);
 
   return null;

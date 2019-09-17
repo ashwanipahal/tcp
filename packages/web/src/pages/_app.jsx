@@ -1,6 +1,5 @@
 import React from 'react';
 import App, { Container } from 'next/app';
-import dynamic from 'next/dynamic';
 import { Provider } from 'react-redux';
 import { ThemeProvider } from 'styled-components';
 import withRedux from 'next-redux-wrapper';
@@ -23,23 +22,12 @@ import { configureStore } from '../reduxStore';
 import ReactAxe from '../utils/react-axe';
 import CHECKOUT_STAGES from './App.constants';
 import { createDataLayer } from '../constants/analytics';
+import Script from '../components/common/atoms/Script';
 import RenderPerf from '../components/common/molecules/RenderPerf';
+import RouteTracker from '../components/common/atoms/RouteTracker';
 
 // constants
 import constants from '../constants';
-
-// Script injection component
-// This is lazy-loaded so we inject it after SSR
-const Script = dynamic(() => import('../components/common/atoms/Script'), {
-  ssr: false,
-  loading: () => null,
-});
-
-// Route tracker analytics component
-const RouteTracker = dynamic(() => import('../components/common/atoms/RouteTracker'), {
-  ssr: false,
-  loading: () => null,
-});
 
 // Analytics script injection
 function AnalyticsScript() {
@@ -199,15 +187,12 @@ class TCPWebApp extends App {
               </div>
               <Footer />
             </Grid>
+            {/* Inject route tracker if analytics is enabled. Must be within store provider. */}
+            {process.env.ANALYTICS && <RouteTracker />}
           </Provider>
         </ThemeProvider>
-        {/* Inject analytics logic if enabled */}
-        {process.env.ANALYTICS && (
-          <>
-            <AnalyticsScript />
-            <RouteTracker />
-          </>
-        )}
+        {/* Inject analytics script if analytics is enabled. */}
+        {process.env.ANALYTICS && <AnalyticsScript />}
         {/* TODO: Remove, this is for testing only */}
         <RenderPerf.Measure name="app_render" start="app_render_start" />
       </Container>

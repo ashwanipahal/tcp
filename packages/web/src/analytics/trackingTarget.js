@@ -8,7 +8,10 @@ function lib() {
   const satellite = global._satellite;
   if (!satellite) {
     console.warn('Analytics library is undefined.');
-    return {};
+    return {
+      // TODO: Figure out if we want to mock this or not
+      track() {},
+    };
   }
   return satellite;
 }
