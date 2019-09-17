@@ -117,10 +117,14 @@ const getUnqualifiedItemsIds = state =>
 const getUnavailableCount = state =>
   getFilteredItems(state, type => type === AVAILABILITY.UNAVAILABLE).size;
 
-const getOOSCount = state => getFilteredItems(state, type => type === AVAILABILITY.SOLDOUT).size;
-
 const getCurrentOrderId = state => {
   return state.CartPageReducer.getIn(['orderDetails', 'orderId']) || 0;
+};
+
+const getOOSCount = state => getFilteredItems(state, type => type === AVAILABILITY.SOLDOUT).size;
+
+const getCurrentCurrency = state => {
+  return state.session.getIn(['siteDetails', 'currency']);
 };
 
 export default {
@@ -135,10 +139,11 @@ export default {
   getOOSCount,
   getConfirmationModalFlag,
   getFilteredItems,
+  getCurrentOrderId,
   getErrorMapping,
   getDetailsContentGymId,
   getDetailsContentTcpId,
   getGiftServicesContentTcpId,
   getGiftServicesContentGymId,
-  getCurrentOrderId,
+  getCurrentCurrency,
 };

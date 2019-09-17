@@ -4,8 +4,13 @@ import BagPageReducer from '../container/BagPage.reducer';
 
 describe('BagPage Reducer', () => {
   const initialState = {
-    orderDetails: { orderItems: [] },
+    orderDetails: { orderItems: [], orderId: '1234' },
     errors: false,
+    uiFlags: {
+      isItemMovedToSflList: false,
+      cartItemSflError: null,
+      isCartItemsUpdating: fromJS({}),
+    },
   };
   const initialStateMutated = fromJS(initialState);
 
@@ -78,6 +83,42 @@ describe('BagPage Reducer', () => {
     const newState = BagPageReducer(initialStateMutated, {
       type: BAGPAGE_CONSTANTS.SET_ITEM_OOS,
       payload: '123',
+    });
+
+    expect(newState).toEqual(initialStateMutated);
+  });
+
+  it('CART_ITEMS_SET_SFL', () => {
+    const newState = BagPageReducer(initialStateMutated, {
+      type: BAGPAGE_CONSTANTS.CART_ITEMS_SET_SFL,
+      payload: false,
+    });
+
+    expect(newState).toEqual(initialStateMutated);
+  });
+
+  it('CART_ITEMS_SET_SFL_ERROR', () => {
+    const newState = BagPageReducer(initialStateMutated, {
+      type: BAGPAGE_CONSTANTS.CART_ITEMS_SET_SFL_ERROR,
+      payload: null,
+    });
+
+    expect(newState).toEqual(initialStateMutated);
+  });
+
+  it('CART_ITEMS_SET_UPDATING', () => {
+    const newState = BagPageReducer(initialStateMutated, {
+      type: BAGPAGE_CONSTANTS.CART_ITEMS_SET_UPDATING,
+      payload: fromJS({}),
+    });
+
+    expect(newState).toEqual(initialStateMutated);
+  });
+
+  it('CART_SUMMARY_SET_ORDER_ID', () => {
+    const newState = BagPageReducer(initialStateMutated, {
+      type: 'CART_SUMMARY_SET_ORDER_ID',
+      orderId: '1234',
     });
 
     expect(newState).toEqual(initialStateMutated);

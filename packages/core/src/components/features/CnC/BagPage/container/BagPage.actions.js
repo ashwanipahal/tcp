@@ -105,6 +105,13 @@ const routeForCheckout = () => {
   };
 };
 
+const startPaypalCheckout = payload => {
+  return {
+    type: BAGPAGE_CONSTANTS.START_PAYPAL_CHECKOUT,
+    payload,
+  };
+};
+
 const paypalAuthorization = payload => {
   return {
     type: BAGPAGE_CONSTANTS.AUTHORIZATION_PAYPAL_CHECKOUT,
@@ -112,10 +119,24 @@ const paypalAuthorization = payload => {
   };
 };
 
-const startPaypalCheckout = payload => {
+const addItemToSflList = payload => {
   return {
-    type: BAGPAGE_CONSTANTS.START_PAYPAL_CHECKOUT,
+    type: BAGPAGE_CONSTANTS.ADD_ITEM_SAVE_FOR_LATER,
     payload,
+  };
+};
+
+const setCartItemsSFL = payload => {
+  return {
+    payload,
+    type: BAGPAGE_CONSTANTS.CART_ITEMS_SET_SFL,
+  };
+};
+
+const setCartItemsSflError = payload => {
+  return {
+    payload,
+    type: BAGPAGE_CONSTANTS.CART_ITEMS_SET_SFL_ERROR,
   };
 };
 
@@ -134,10 +155,13 @@ export default {
   removeUnqualifiedItemsAndCheckout,
   openCheckoutConfirmationModal,
   setItemOOS,
+  paypalAuthorization,
+  startPaypalCheckout,
   setCartItemsUpdating,
   setItemUnavailable,
   routeForCheckout,
   initActions,
-  paypalAuthorization,
-  startPaypalCheckout,
+  addItemToSflList,
+  setCartItemsSFL,
+  setCartItemsSflError,
 };
