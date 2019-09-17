@@ -2,7 +2,6 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import { BodyCopy } from '@tcp/core/src/components/common/atoms';
 import withStyles from '@tcp/core/src/components/common/hoc/withStyles';
-// import { getAPIConfig } from '@tcp/core/src/utils';
 import styles from '../styles/DetailedEarnExtraPointsTile.style';
 
 export class DetailedEarnExtraPointsTile extends React.PureComponent {
@@ -21,8 +20,6 @@ export class DetailedEarnExtraPointsTile extends React.PureComponent {
 
   render() {
     const { className, waysToEarnRow, onClickHandler } = this.props;
-    // const imageHost = getAPIConfig().assetHost;
-
     return (
       <BodyCopy component="div" className={className}>
         <BodyCopy component="div" className="tileWrapper" onClick={onClickHandler}>
