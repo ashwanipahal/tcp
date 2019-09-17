@@ -1,4 +1,4 @@
-import { breakpoints } from '../../../../../styles/themes/TCP/mediaQuery';
+import { breakpoints } from '@tcp/core/styles/themes/TCP/mediaQuery';
 
 export default {
   CAROUSEL_OPTIONS: {
@@ -31,5 +31,19 @@ export default {
         },
       },
     ],
+  },
+  params: {
+    moduleO: {
+      dataLocator: 'moduleO_header_text',
+      dataLocatorCTA: 'moduleO_cta_btn',
+    },
+    moduleP: {
+      dataLocator: 'moduleP_header_text',
+      dataLocatorCTA: 'moduleP_cta_btn',
+    },
+  },
+  variations: {
+    moduleO: 'moduleO',
+    moduleP: 'moduleP',
   },
 };

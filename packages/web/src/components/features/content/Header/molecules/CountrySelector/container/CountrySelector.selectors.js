@@ -65,9 +65,7 @@ export const getNoteContent = state => {
 };
 
 export const getModuleXContentId = state => {
-  const {
-    global: { countrySelector },
-  } = state.Labels;
+  const { global: { countrySelector } = {} } = state.Labels;
   let content;
   if (countrySelector) {
     const { referred = [] } = countrySelector;
