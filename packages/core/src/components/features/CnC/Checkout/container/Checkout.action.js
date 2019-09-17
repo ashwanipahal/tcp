@@ -352,7 +352,7 @@ export const getSetIsPaypalPaymentSettings = paypalPaymentSettings => {
 
 export const submitReviewSection = payload => {
   return {
-    type: constants.SUBMIT_REVIEW,
+    type: constants.SUBMIT_REVIEW_SECTION,
     payload,
   };
 };
@@ -391,6 +391,7 @@ export const resetAddGiftCard = payload => {
     payload,
   };
 };
+
 export const resetAddGiftCardSuccess = payload => {
   return {
     type: constants.RESET_ADD_GIFT_CARD_SUCCESS,
