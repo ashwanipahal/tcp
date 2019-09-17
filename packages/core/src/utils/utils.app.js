@@ -106,7 +106,11 @@ export const importGraphQLQueriesDynamically = query => {
         resolve(require('../services/handler/graphQL/queries/xappConfig'));
         break;
       default:
-        importMoreGraphQLQueries({ query, resolve, reject });
+        importMoreGraphQLQueries({
+          query,
+          resolve,
+          reject,
+        });
     }
   });
 };
@@ -168,24 +172,34 @@ const getLandingPage = url => {
  * @param {function} navigation
  * Returns navigation to the parsed URL based on  the url param
  */
-export const navigateToPage = (url, navigation) => {
+export const navigateToPage = (url, navigation, donotlookup) => {
+  console.info('donotlookup---', donotlookup);
   const { URL_PATTERN } = config;
   const { navigate } = navigation;
   const category = getLandingPage(url);
   const text = url.split('/');
-  const title = text[text.length - 1].replace(/[\W_]+/g, ' ');
+  const titleSplitValue = text[text.length - 1].replace(/[\W_]+/g, ' ');
+  const setLookupValue = donotlookup;
   switch (category) {
     case URL_PATTERN.PRODUCT_LIST:
       /**
        * /p/Rainbow--The-Birthday-Girl--Graphic-Tee-2098277-10
        * If url starts with “/p” → Create and navigate to a page in stack for Products (Blank page with a Text - “Product List”)
        */
-      return navigate('ProductLanding', { product: title });
+      return navigate('ProductLanding', {
+        product: titleSplitValue,
+      });
+
     case URL_PATTERN.CATEGORY_LANDING:
       /**
        * /c/* - If url starts with “/c” (* can be anything in url) → Select “CATEGORY_LANDING” tab in tabbar and Open CATEGORY_LANDING page
        */
-      return navigate('ProductLanding');
+      return navigate('ProductListing', {
+        url,
+        title: titleSplitValue,
+        reset: true,
+        donotlookup: setLookupValue,
+      });
     default:
       return null;
   }
@@ -294,7 +308,11 @@ export const resetNavigationStack = navigation => {
     StackActions.reset({
       index: 0,
       key: null,
-      actions: [NavigationActions.navigate({ routeName: 'Home' })],
+      actions: [
+        NavigationActions.navigate({
+          routeName: 'Home',
+        }),
+      ],
     })
   );
 };

@@ -23,12 +23,16 @@ import submitProductListingFiltersForm from './productListingOnSubmitHandler';
 
 class ProductListingContainer extends React.PureComponent {
   componentDidMount() {
+    console.info('Call ProductListingContainer');
     this.makeApiCall();
   }
 
   makeApiCall = () => {
     const { getProducts, navigation } = this.props;
     const url = navigation && navigation.getParam('url');
+    const donotLookUp = navigation && navigation.getParam('donotlookup');
+    console.info('Call ProductListingContainer url ---', url);
+    console.info('Call ProductListingContainer donotLookUp ---', donotLookUp);
     getProducts({ URI: 'category', url, ignoreCache: true });
   };
 

@@ -17,6 +17,7 @@ type Props = {
   locator?: string,
   onPress?: Function,
   accessibilityLabel?: string,
+  donotlookup?: boolean,
 };
 
 const Icon = require('../../../../../assets/carrot-small-rights.png');
@@ -34,15 +35,15 @@ const Anchor = ({
   locator,
   onPress,
   accessibilityLabel,
+  donotlookup,
   ...otherProps
 }: Props) => {
   const { url, navigation } = otherProps;
-
   const openUrl = () => {
     if (validateExternalUrl(url)) {
       UrlHandler(url);
     } else {
-      navigateToPage(url, navigation);
+      navigateToPage(url, navigation, donotlookup);
     }
   };
 
@@ -88,6 +89,7 @@ Anchor.defaultProps = {
   locator: '',
   onPress: null,
   accessibilityLabel: '',
+  donotlookup: false,
 };
 
 export default withStyles(Anchor, AnchorStyles);
