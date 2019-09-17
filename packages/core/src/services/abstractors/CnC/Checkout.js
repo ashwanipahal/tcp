@@ -1,19 +1,27 @@
+/* eslint-disable max-lines */
 /* eslint-disable extra-rules/no-commented-out-code */
 import superagent from 'superagent';
 import logger from '@tcp/core/src/utils/loggerInstance';
 import jsonp from 'superagent-jsonp';
 import { executeStatefulAPICall } from '../../handler';
 import endpoints from '../../endpoints';
-import { getCurrentOrderFormatter } from './CartItemTile';
+import { getCurrentOrderFormatter, flatCurrencyToCents } from './CartItemTile';
 import {
   responseContainsErrors,
   ServiceResponseError,
   getFormattedError,
 } from '../../../utils/errorMessage.util';
-import { getAPIConfig } from '../../../utils';
+import { getAPIConfig, capitalize, toTimeString } from '../../../utils';
+import { parseDate } from '../../../utils/parseDate';
 import CheckoutConstants from '../../../components/features/CnC/Checkout/Checkout.constants';
 
 const BV_API_KEY = 'e50ab0a9-ac0b-436b-9932-2a74b9486436';
+
+const ORDER_ITEM_TYPE = {
+  BOSS: 'BOSS',
+  BOPIS: 'BOPIS',
+  ECOM: 'ECOM',
+};
 
 export const CREDIT_CARDS_PAYMETHODID = {
   'PLACE CARD': 'ADSPlaceCard',
@@ -459,6 +467,7 @@ export function addPaymentToOrder({
       throw getFormattedError(err);
     });
 }
+
 export function updatePaymentOnOrder(args) {
   const payload = {
     header: {
@@ -490,6 +499,400 @@ export function updatePaymentOnOrder(args) {
     return { paymentId: res.body.paymentInstruction[0].piId };
   });
 }
+
+const getStateTax = orderSummary => {
+  let stateTax = 0;
+  if (orderSummary.salesTax && orderSummary.salesTax.salesTax) {
+    Object.keys(orderSummary.salesTax.salesTax).forEach(country => {
+      Object.keys(orderSummary.salesTax.salesTax[country]).forEach(state => {
+        stateTax += parseFloat(orderSummary.salesTax.salesTax[country][state]);
+      });
+    });
+  }
+  return stateTax;
+};
+
+function parseStoreOpeningAndClosingTimes(store) {
+  const openingClosingTimes = {
+    todayOpeningTime: null,
+    todayClosingTime: null,
+    tomorrowOpeningTime: null,
+    tomorrowClosingTime: null,
+  };
+
+  try {
+    const hours = JSON.parse(store.shippingAddressDetails.storeHours);
+    openingClosingTimes.todayOpeningTime = toTimeString(
+      parseDate(hours.storeHours[0].availability[0].from)
+    );
+    openingClosingTimes.todayClosingTime = toTimeString(
+      parseDate(hours.storeHours[0].availability[0].to)
+    );
+    openingClosingTimes.tomorrowOpeningTime = toTimeString(
+      parseDate(hours.storeHours[1].availability[0].from)
+    );
+    openingClosingTimes.tomorrowClosingTime = toTimeString(
+      parseDate(hours.storeHours[1].availability[0].to)
+    );
+  } catch (error) {
+    return openingClosingTimes;
+  }
+
+  return openingClosingTimes;
+}
+
+const getCouponTotal = orderDetails => {
+  let total = 0;
+  if (orderDetails.OrderLevelPromos && orderDetails.OrderLevelPromos.explicit) {
+    Object.keys(orderDetails.OrderLevelPromos.explicit).forEach(item => {
+      Object.keys(item).forEach(promoCode => {
+        total += Math.abs(flatCurrencyToCents(item[promoCode].price));
+      });
+    });
+  }
+  return total;
+};
+
+export function submitOrder(orderId, smsOrderInfo, currentLanguage, venmoPayloadData = {}) {
+  const payload = {
+    body: {
+      orderId: orderId || '.',
+      isRest: 'true',
+      transVibesSmsPhoneNo: smsOrderInfo,
+      chosenLocale: currentLanguage,
+      ...venmoPayloadData,
+      // DT-33656 Perfomance -addCheckout/ getOrderDetails - Avoid Store Locator aggregation
+      // locStore: 'True'  // NOTE: MS geniuses require this flag to avoid parsing reponses as when a store info is expected.
+    },
+    webService: endpoints.checkout,
+  };
+  return executeStatefulAPICall(payload, false, {
+    response: 60000,
+    deadline: 70000,
+  })
+    .then(res => {
+      if (responseContainsErrors(res)) {
+        throw new ServiceResponseError(res);
+      }
+      const orderSummary = res.body.addCheckoutResponse
+        ? res.body.addCheckoutResponse.orderSummaryJson
+        : res.body.orderSummaryJson;
+      const orderDetails = orderSummary.orderDetailsResponse || orderSummary;
+      const hadMixedOderData =
+        orderSummary &&
+        orderSummary.mixOrderDetails &&
+        orderSummary.mixOrderDetails.data &&
+        orderSummary.mixOrderDetails.data.length > 0;
+      const onlineOrder = hadMixedOderData
+        ? orderSummary.mixOrderDetails.data.find(address => address.orderType === 'ECOM') || {}
+        : {};
+      const shipping = onlineOrder.shippingAddressDetails || null;
+      const addressDetails = hadMixedOderData
+        ? orderSummary.mixOrderDetails.data[0].shippingAddressDetails
+        : {};
+
+      const sthOrderId = onlineOrder ? onlineOrder.subOrderId : null;
+      const sthTotalOrder = onlineOrder.piAmount ? flatCurrencyToCents(onlineOrder.piAmount) : null;
+      const sthItemCount = onlineOrder.itemsCount
+        ? flatCurrencyToCents(onlineOrder.itemsCount)
+        : null;
+      const sthOrderPlaced = parseDate(orderSummary.placedOrderTime);
+      const apiConfig = getAPIConfig();
+      const trackinLinkPrefix = `/shop/TCPOrderLookUp?catalogId=${apiConfig.catalogId}&langId=${
+        apiConfig.langId
+      }&storeId=${apiConfig.storeId}`;
+      const sthLinkOrder = `${trackinLinkPrefix}&shipmentTypeId=1&forSearch=1&orderId=${sthOrderId}&emailId=${encodeURIComponent(
+        (shipping || addressDetails).encryptedEmail1
+      ) || ''}`;
+
+      const stateTax = getStateTax(orderSummary);
+      let paymentList = [];
+      if (orderDetails.paymentsList && orderDetails.paymentsList.length) {
+        paymentList = orderDetails.paymentsList.map(
+          ({ authorizedAmount, paymentMethod, plccHash = '', venmoUserId = '' }) => ({
+            authorizedAmount,
+            paymentMethod,
+            plccHash,
+            venmoUserId,
+          })
+        );
+      }
+
+      const orderItems =
+        orderDetails.orderItems && orderDetails.orderItems.length ? orderDetails.orderItems : [];
+      // FIXME: cleanup, info repeated in some nodes
+      // FIXME: cleanup. we should only store information relevant to confirmation page.
+      const orderConfirmationDetails = {
+        summary: {
+          itemsTotal: orderSummary.orderSubTotal,
+          itemsCount: orderSummary.cartCount,
+          couponsTotal: 0,
+          giftWrappingTotal: 0, // FIXME: retrieve value from response
+          giftCardsTotal: flatCurrencyToCents(orderSummary.totalGiftCardAmount) || 0,
+          savingsTotal: Math.abs(flatCurrencyToCents(orderSummary.orderDiscountAmount) || 0),
+          taxesTotal: flatCurrencyToCents(orderSummary.shippingTax) + stateTax,
+          shippingTotal: flatCurrencyToCents(orderSummary.finalShippingCharge),
+          valueOfEarnedPcCoupons: parseInt(orderSummary.valueOfEarnedPcCoupons, 10) || 0,
+          subTotal: flatCurrencyToCents(orderSummary.orderSubTotalBeforeDiscount),
+          grandTotal: orderSummary.grandTotal,
+        },
+
+        isOrderPending: orderSummary.orderStatus === 'V',
+
+        holdDate: null,
+        totalsByFullfillmentCenterMap:
+          orderSummary.mixOrderDetails.mixCart !== 'ECOM'
+            ? orderSummary.mixOrderDetails.data
+                .filter(
+                  store =>
+                    store.orderType === ORDER_ITEM_TYPE.BOPIS ||
+                    store.orderType === ORDER_ITEM_TYPE.BOSS
+                )
+                .map(store => {
+                  const summary = store;
+                  const bopisOrderTrackLink = `${trackinLinkPrefix}&shipmentTypeId=1&forSearch=1&orderId=${
+                    summary.subOrderId
+                  }&emailId=${encodeURIComponent(summary.shippingAddressDetails.encryptedEmail1) ||
+                    ''}`;
+
+                  const {
+                    todayOpeningTime,
+                    todayClosingTime,
+                    tomorrowOpeningTime,
+                    tomorrowClosingTime,
+                  } = parseStoreOpeningAndClosingTimes(store);
+
+                  return {
+                    id: store.shippingAddressDetails.stLocId.toString(),
+                    storeName: capitalize(store.shippingAddressDetails.storeName),
+                    address: {
+                      addressLine1: store.shippingAddressDetails.addressLine1,
+                      addressLine2: store.shippingAddressDetails.addressLine2,
+                      city: store.shippingAddressDetails.city,
+                      state: store.shippingAddressDetails.state,
+                      zipCode: (store.shippingAddressDetails.zipCode || '').trim(),
+                      country: store.shippingAddressDetails.country,
+                    },
+                    phoneNumber: (store.shippingAddressDetails.phone1 || '').trim(),
+                    productsCount: parseInt(summary.itemsCount, 10),
+
+                    todayOpenRange: `${todayOpeningTime} - ${todayClosingTime}`,
+                    tomorrowOpenRange: `${tomorrowOpeningTime} - ${tomorrowClosingTime}`,
+
+                    orderDate: parseDate(orderDetails.placedOrderTime),
+                    orderNumber: summary.subOrderId,
+                    // TODO: legacy link, remove
+                    orderLink: bopisOrderTrackLink,
+                    orderTotal: flatCurrencyToCents(summary.piAmount),
+
+                    emailAddress: summary.shippingAddressDetails.email1,
+                    encryptedEmailAddress: encodeURIComponent(
+                      summary.shippingAddressDetails.encryptedEmail1
+                    ),
+                    bossMaxDate: store.shippingAddressDetails.bossMaxDate || null,
+                    bossMinDate: store.shippingAddressDetails.bossMinDate || null,
+                    orderType: store.orderType,
+                  };
+                })
+            : null,
+
+        orderDetails: {
+          date: parseDate(orderDetails.placedOrderTime),
+          orderNumber: onlineOrder ? onlineOrder.subOrderId : '[NOT_AVAILABLE]',
+          trackingLink: sthLinkOrder,
+          orderTotal: orderSummary.grandTotal,
+        },
+        rewardedPoints: orderDetails.estimatedPointsEarned,
+        isElectiveBonus: orderDetails.isElectiveBonus,
+        currencyCode: orderDetails.currencyCode,
+        orderItems,
+        paymentsList: paymentList,
+      };
+
+      if (orderDetails.airMiles) {
+        orderConfirmationDetails.airmiles = {
+          accountNumber: orderDetails.airMiles.airMilesAccount,
+          promoId: orderDetails.airMiles.airMilesDeal,
+        };
+      }
+
+      orderConfirmationDetails.summary.couponsTotal += getCouponTotal(orderDetails);
+
+      orderConfirmationDetails.summary.savingsTotal -=
+        orderConfirmationDetails.summary.couponsTotal;
+
+      if (orderConfirmationDetails.summary.savingsTotal < 0) {
+        orderConfirmationDetails.summary.savingsTotal = 0;
+      }
+
+      if (orderSummary.giftWrapItem && orderSummary.giftWrapItem.length) {
+        orderConfirmationDetails.summary.giftWrappingTotal = flatCurrencyToCents(
+          orderSummary.giftWrapItem[0].totalPrice
+        );
+        orderConfirmationDetails.summary.subTotal -=
+          orderConfirmationDetails.summary.giftWrappingTotal;
+      }
+
+      if (shipping) {
+        orderConfirmationDetails.shipping = {
+          address: {
+            firstName: shipping.firstName,
+            lastName: shipping.lastName,
+          },
+          emailAddress: shipping.email1,
+          encryptedEmailAddress: encodeURIComponent(shipping.encryptedEmail1),
+
+          // STH only settings (not necesarely the totals)
+          orderDate: sthOrderPlaced,
+          // TODO: legacy order link, remove
+          orderLink: sthLinkOrder,
+          orderTotal: sthTotalOrder,
+          itemsCount: sthItemCount,
+        };
+      }
+
+      // Information needed for guest user registration on confirmation page
+      orderConfirmationDetails.userDetails = {
+        emailAddress:
+          (shipping || addressDetails).email1 ||
+          (orderConfirmationDetails.shipping
+            ? orderConfirmationDetails.shipping.emailAddress
+            : null),
+        encryptedEmailAddress:
+          encodeURIComponent((shipping || addressDetails).encryptedEmail1) ||
+          (orderConfirmationDetails.shipping
+            ? orderConfirmationDetails.shipping.encryptedEmailAddress
+            : null),
+      };
+
+      orderDetails.paymentsList.forEach(payment => {
+        if (payment.cardType !== 'GC' && payment.billingAddressDetails) {
+          const billingAddress = payment.billingAddressDetails;
+          orderConfirmationDetails.userDetails = {
+            firstName: billingAddress.firstName || '',
+            lastName: billingAddress.lastName || '',
+            zipCode: (billingAddress.zipCode || '').trim(),
+            // emailAddress: billingAddress.email || orderConfirmationDetails.userDetails.emailAddress,
+            emailAddress: orderConfirmationDetails.userDetails.emailAddress || billingAddress.email, // use the shipping email address
+            encryptedEmailAddress:
+              orderConfirmationDetails.userDetails.encryptedEmailAddress ||
+              encodeURIComponent(billingAddress.encryptedEmail),
+            phoneNumber: billingAddress.phone1 || addressDetails.phone1,
+          };
+        }
+      });
+
+      // FIXME: should come from backend / variable days
+      const holdDate = parseDate(orderDetails.placedOrderTime);
+      holdDate.setDate(holdDate.getDate() + 4);
+      orderConfirmationDetails.holdDate = holdDate;
+      // removeLocalStorage(VENMO_STORAGE_KEY); // TODO Remove the key
+      // removeLocalStorage(VENMO_INPROGRESS_KEY);
+      return orderConfirmationDetails;
+    })
+    .catch(err => {
+      throw getFormattedError(err);
+    });
+}
+
+export function requestPersonalizedCoupons({
+  orderNumber,
+  emailAddress,
+  locationId,
+  couponList = [],
+  isElectiveBonus,
+  currencyCode,
+  payments = [],
+  cartItems = [],
+}) {
+  const cartItemList = cartItems.map(item => ({
+    price: item.itemUnitDstPrice,
+    orderItemId: item.orderItemId,
+    itemUnitPrice: item.itemUnitPrice,
+    transactionType: 'PURCHASE',
+    quantity: item.qty,
+    product: {
+      skuNumber: item.variantNo,
+    },
+  }));
+
+  const paymentsList = payments.map(payment => {
+    const temp = {
+      authorizedAmount: payment.authorizedAmount,
+      paymentMethod: payment.paymentMethod,
+    };
+    // Checking if the PLCC hash has some value only then sending this parameter in header else
+    // back end code will break, as usual.
+    if (payment.plccHash) {
+      temp.plccHash = payment.plccHash;
+    }
+    return temp;
+  });
+  const couponsList = couponList.map(coupon => ({
+    couponCode: coupon.id,
+  }));
+
+  const payload = {
+    body: {
+      personalizedOffersRequest: {
+        externalTransactionId: orderNumber,
+        scenario: '1006', // hard coded as per backend
+        order: {
+          isElectiveBonus,
+          currencyCode,
+          store: {
+            location: locationId,
+          },
+          customer: {
+            customerLookupType: '1003',
+            customerLookupId: emailAddress,
+          },
+          coupon: couponsList,
+          lineItem: cartItemList,
+        },
+        paymentsList,
+      },
+    },
+    webService: endpoints.personalizedCoupons,
+  };
+
+  return executeStatefulAPICall(payload)
+    .then(res => {
+      /**
+       * Scenarios Summary:
+       * Coupons data is recieved in personalizedOffersResponse, Brierly is recieved in orderResponse
+       * When ODM service is down, Back end is sending error of ODM in personalizedOffersResponse, and orderResponse is still available
+       * When WCS is down/fails, error is recieved in root of response
+       */
+
+      // When WCS is down, (both personalizedOffersResponse and orderResponse are not available), error recieved in root of response
+      if (responseContainsErrors(res)) {
+        throw new ServiceResponseError(res);
+      }
+
+      const responseObj = {};
+
+      // when ODM(enabled)/personalizedOffersResponse is available
+      if (
+        res.body.personalizedOffersResponse &&
+        !responseContainsErrors(res.body.personalizedOffersResponse)
+      ) {
+        Object.assign(responseObj, {
+          personalizedOffersResponse: res.body.personalizedOffersResponse,
+        });
+      }
+
+      // When orderResponse/BrierleyPointsData is available
+      if (res.body.orderResponse) {
+        Object.assign(responseObj, { orderResponse: res.body.orderResponse });
+      }
+      return responseObj;
+    })
+    .catch(err => {
+      throw getFormattedError(err);
+    });
+}
+
 export default {
   getGiftWrappingOptions,
   getCurrentOrderAndCouponsDetails,
@@ -503,4 +906,6 @@ export default {
   updatePaymentOnOrder,
   addGiftWrappingOption,
   removeGiftWrappingOption,
+  submitOrder,
+  requestPersonalizedCoupons,
 };
