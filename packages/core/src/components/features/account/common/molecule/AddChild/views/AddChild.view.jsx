@@ -4,13 +4,13 @@ import { Field, reduxForm } from 'redux-form';
 import SelectBox from '@tcp/core/src/components/common/atoms/Select';
 import withStyles from '@tcp/core/src/components/common/hoc/withStyles';
 import InputCheckbox from '@tcp/core/src/components/common/atoms/InputCheckbox';
-import Row from '../../../../../../common/atoms/Row';
-import TextBox from '../../../../../../common/atoms/TextBox';
-import Button from '../../../../../../common/atoms/Button';
-import BodyCopy from '../../../../../../common/atoms/BodyCopy';
-import Anchor from '../../../../../../common/atoms/Anchor';
+import Row from '@tcp/core/src/components/common/atoms/Row';
+import TextBox from '@tcp/core/src/components/common/atoms/TextBox';
+import Button from '@tcp/core/src/components/common/atoms/Button';
+import BodyCopy from '@tcp/core/src/components/common/atoms/BodyCopy';
+import Anchor from '@tcp/core/src/components/common/atoms/Anchor';
+import Col from '@tcp/core/src/components/common/atoms/Col';
 import styles from '../styles/AddChild.style';
-import Col from '../../../../../../common/atoms/Col';
 import createValidateMethod from '../../../../../../../utils/formValidation/createValidateMethod';
 import getStandardConfig from '../../../../../../../utils/formValidation/validatorStandardConfig';
 import endpoints from '../../../externalEndpoints';
@@ -52,10 +52,10 @@ export class AddChildBirthdayForm extends React.PureComponent {
     return (
       <form className={className} onSubmit={handleSubmit}>
         <div className="addChildBirthdayTip" />
-        <Row fullBleed className="addChildBirthday__heading">
+        <Row fullBleed className="formHeading">
           <Col
             colSize={{ small: 6, medium: 4, large: 5 }}
-            className="addChildBirthday__childInfo"
+            className="childInfo"
             ignoreGutter={{ medium: true }}
           >
             <Row fullBleed className="elem-mb-LRG">
@@ -144,7 +144,7 @@ export class AddChildBirthdayForm extends React.PureComponent {
             colSize={{ small: 6, medium: 4, large: 5 }}
             offsetRight={{ small: 0, medium: 0, large: 1 }}
             offsetLeft={{ small: 0, medium: 0, large: 1 }}
-            className="addChildBirthday__parentInfo"
+            className="parentInfo"
           >
             <Row fullBleed className="elem-mb-LRG">
               <Col colSize={{ small: 6, medium: 8, large: 12 }}>
@@ -172,7 +172,7 @@ export class AddChildBirthdayForm extends React.PureComponent {
               </Col>
               <Col
                 colSize={{ small: 3, medium: 8, large: 12 }}
-                className="addChildBirthday__lastName"
+                className="lastName"
                 ignoreGutter={{ small: true, medium: true }}
               >
                 <Field
@@ -184,10 +184,7 @@ export class AddChildBirthdayForm extends React.PureComponent {
                   dataLocator="lastNameField"
                 />
               </Col>
-              <Col
-                colSize={{ small: 6, medium: 8, large: 12 }}
-                className="addChildBirthday__timestamp"
-              >
+              <Col colSize={{ small: 6, medium: 8, large: 12 }} className="timestamp">
                 <BodyCopy fontFamily="secondary" fontSize="fs14" data-locator="timeStampLbl">
                   {`${addChildBirthdayLabels.lbl_add_child_timestamp} ${timestamp.toLocaleString(
                     'en-US',
@@ -215,11 +212,7 @@ export class AddChildBirthdayForm extends React.PureComponent {
                 </Field>
               </Col>
 
-              <Col
-                colSize={{ small: 6, medium: 8, large: 12 }}
-                fullBleed
-                className="addChildBirthday_privacy"
-              >
+              <Col colSize={{ small: 6, medium: 8, large: 12 }} fullBleed className="privacy">
                 <BodyCopy
                   component="span"
                   fontSize="fs14"
@@ -237,25 +230,11 @@ export class AddChildBirthdayForm extends React.PureComponent {
             </Row>
           </Col>
 
-          <Row fullBleed className="addChildBirthday__btn">
-            <Col
-              colSize={{ small: 6, medium: 3, large: 4 }}
-              offsetLeft={{ small: 0, medium: 1, large: 2 }}
-              className="addChildBirthday__cancel"
-            >
-              <Button
-                buttonVariation="fixed-width"
-                fill="WHITE"
-                onClick={closeAddModal}
-                dataLocator="cancelChildFormBtn"
-              >
-                {addChildBirthdayLabels.lbl_add_child_cancel}
-              </Button>
-            </Col>
+          <Row fullBleed className="buttons">
             <Col
               colSize={{ small: 6, medium: 3, large: 4 }}
               offsetRight={{ small: 0, medium: 1, large: 2 }}
-              className="addChildBirthday__submit"
+              className="submitBtn"
             >
               <Button
                 buttonVariation="fixed-width"
@@ -265,6 +244,20 @@ export class AddChildBirthdayForm extends React.PureComponent {
                 dataLocator="SaveChildFormBtn"
               >
                 {addChildBirthdayLabels.lbl_add_child_save}
+              </Button>
+            </Col>
+            <Col
+              colSize={{ small: 6, medium: 3, large: 4 }}
+              offsetLeft={{ small: 0, medium: 1, large: 2 }}
+              className="cancelBtn"
+            >
+              <Button
+                buttonVariation="fixed-width"
+                fill="WHITE"
+                onClick={closeAddModal}
+                dataLocator="cancelChildFormBtn"
+              >
+                {addChildBirthdayLabels.lbl_add_child_cancel}
               </Button>
             </Col>
           </Row>

@@ -14,7 +14,7 @@ exports[`BirthdaySavingsList component should renders correctly when childrenBir
     }
   />
   <Styled(Row)
-    className="elem-mb-XS"
+    className="elem-mb-XS birthdayList"
     fullBleed={true}
   >
     <Styled(Col)
@@ -167,7 +167,7 @@ exports[`BirthdaySavingsList component should renders correctly when childrenBir
     }
   />
   <Styled(Row)
-    className="elem-mb-XS"
+    className="elem-mb-XS birthdayList"
     fullBleed={true}
   >
     <Styled(Col)

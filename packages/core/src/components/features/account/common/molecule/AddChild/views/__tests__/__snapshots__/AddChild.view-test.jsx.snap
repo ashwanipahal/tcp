@@ -9,11 +9,11 @@ exports[`AddChildBirthday component should renders correctly 1`] = `
     className="addChildBirthdayTip"
   />
   <Styled(Row)
-    className="addChildBirthday__heading"
+    className="formHeading"
     fullBleed={true}
   >
     <Styled(Col)
-      className="addChildBirthday__childInfo"
+      className="childInfo"
       colSize={
         Object {
           "large": 5,
@@ -767,7 +767,7 @@ exports[`AddChildBirthday component should renders correctly 1`] = `
       </Styled(Row)>
     </Styled(Col)>
     <Styled(Col)
-      className="addChildBirthday__parentInfo"
+      className="parentInfo"
       colSize={
         Object {
           "large": 5,
@@ -993,7 +993,7 @@ exports[`AddChildBirthday component should renders correctly 1`] = `
           />
         </Styled(Col)>
         <Styled(Col)
-          className="addChildBirthday__lastName"
+          className="lastName"
           colSize={
             Object {
               "large": 12,
@@ -1171,7 +1171,7 @@ exports[`AddChildBirthday component should renders correctly 1`] = `
           />
         </Styled(Col)>
         <Styled(Col)
-          className="addChildBirthday__timestamp"
+          className="timestamp"
           colSize={
             Object {
               "large": 12,
@@ -1357,7 +1357,7 @@ exports[`AddChildBirthday component should renders correctly 1`] = `
           </Field>
         </Styled(Col)>
         <Styled(Col)
-          className="addChildBirthday_privacy"
+          className="privacy"
           colSize={
             Object {
               "large": 12,
@@ -1395,35 +1395,11 @@ exports[`AddChildBirthday component should renders correctly 1`] = `
       </Styled(Row)>
     </Styled(Col)>
     <Styled(Row)
-      className="addChildBirthday__btn"
+      className="buttons"
       fullBleed={true}
     >
       <Styled(Col)
-        className="addChildBirthday__cancel"
-        colSize={
-          Object {
-            "large": 4,
-            "medium": 3,
-            "small": 6,
-          }
-        }
-        offsetLeft={
-          Object {
-            "large": 2,
-            "medium": 1,
-            "small": 0,
-          }
-        }
-      >
-        <Styled(Button)
-          buttonVariation="fixed-width"
-          dataLocator="cancelChildFormBtn"
-          fill="WHITE"
-          onClick={[MockFunction]}
-        />
-      </Styled(Col)>
-      <Styled(Col)
-        className="addChildBirthday__submit"
+        className="submitBtn"
         colSize={
           Object {
             "large": 4,
@@ -1444,6 +1420,30 @@ exports[`AddChildBirthday component should renders correctly 1`] = `
           dataLocator="SaveChildFormBtn"
           fill="BLUE"
           type="submit"
+        />
+      </Styled(Col)>
+      <Styled(Col)
+        className="cancelBtn"
+        colSize={
+          Object {
+            "large": 4,
+            "medium": 3,
+            "small": 6,
+          }
+        }
+        offsetLeft={
+          Object {
+            "large": 2,
+            "medium": 1,
+            "small": 0,
+          }
+        }
+      >
+        <Styled(Button)
+          buttonVariation="fixed-width"
+          dataLocator="cancelChildFormBtn"
+          fill="WHITE"
+          onClick={[MockFunction]}
         />
       </Styled(Col)>
     </Styled(Row)>

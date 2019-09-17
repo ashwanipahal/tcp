@@ -1,4 +1,3 @@
-/* eslint-disable */
 import React from 'react';
 import { shallow } from 'enzyme';
 import { getBirthDateOptionMap, childOptionsMap } from '@tcp/core/src/utils';

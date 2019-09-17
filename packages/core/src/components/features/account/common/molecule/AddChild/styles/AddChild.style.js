@@ -9,40 +9,40 @@ const styles = css`
   input {
     background-color: ${props => props.theme.colorPalette.gray[500]};
   }
-  @media ${props => props.theme.mediaQuery.smallMax} {
-    .addChildBirthday__cancel {
-      order: 2;
-    }
 
-    .addChildBirthday__submit {
-      order: 1;
-      margin-bottom: ${props => props.theme.spacing.ELEM_SPACING.MED};
+  .submitBtn {
+    margin-bottom: ${props => props.theme.spacing.ELEM_SPACING.MED};
+    @media ${props => props.theme.mediaQuery.medium} {
+      margin-left: ${props => props.theme.spacing.ELEM_SPACING.SM};
+      order: 2;
     }
   }
 
-  .addChildBirthday__childInfo {
-    @media ${props => props.theme.mediaQuery.large} {
-      margin-left: ${props => props.theme.spacing.ELEM_SPACING.XS};
+  .cancelBtn {
+    @media ${props => props.theme.mediaQuery.medium} {
+      order: 1;
+      margin-right: ${props => props.theme.spacing.ELEM_SPACING.SM};
     }
+  }
+
+  .childInfo {
     @media ${props => props.theme.mediaQuery.medium} {
       margin-left: ${props => props.theme.spacing.ELEM_SPACING.XS};
     }
-    @media ${props => props.theme.mediaQuery.smallOnly} {
-      margin-left: ${props => props.theme.spacing.ELEM_SPACING.XXS};
-      margin-right: ${props => props.theme.spacing.ELEM_SPACING.XXS};
-    }
+    margin-left: ${props => props.theme.spacing.ELEM_SPACING.XXS};
+    margin-right: ${props => props.theme.spacing.ELEM_SPACING.XXS};
   }
 
-  .addChildBirthday__parentInfo {
+  .parentInfo {
+    @media ${props => props.theme.mediaQuery.smallOnly} {
+      margin-left: ${props => props.theme.spacing.ELEM_SPACING.XXS};
+    }
     @media ${props => props.theme.mediaQuery.mediumOnly} {
       margin-left: ${props => props.theme.spacing.ELEM_SPACING.SM};
     }
-    @media ${props => props.theme.mediaQuery.smallOnly} {
-      margin-left: ${props => props.theme.spacing.ELEM_SPACING.XXS};
-    }
   }
 
-  .addChildBirthday__btn {
+  .buttons {
     @media ${props => props.theme.mediaQuery.smallOnly} {
       margin-left: ${props => props.theme.spacing.ELEM_SPACING.XXS};
       margin-right: ${props => props.theme.spacing.ELEM_SPACING.XXS};
@@ -50,14 +50,14 @@ const styles = css`
     margin-top: ${props => props.theme.spacing.ELEM_SPACING.XXXL};
   }
 
-  .addChildBirthday__heading {
+  .formHeading {
     padding-top: ${props => props.theme.spacing.ELEM_SPACING.XXL};
     padding-bottom: ${props => props.theme.spacing.ELEM_SPACING.XL};
     background-color: ${props => props.theme.colorPalette.gray[500]};
     margin-top: -${props => props.theme.spacing.ELEM_SPACING.SM};
   }
 
-  .addChildBirthday__lastName {
+  .lastName {
     @media ${props => props.theme.mediaQuery.medium} {
       margin-top: 40px;
     }
@@ -66,12 +66,12 @@ const styles = css`
     }
   }
 
-  .addChildBirthday_privacy {
+  .privacy {
     margin: ${props => props.theme.spacing.ELEM_SPACING.XS} 0 0
       ${props => props.theme.spacing.ELEM_SPACING.XXL};
   }
 
-  .addChildBirthday__timestamp {
+  .timestamp {
     height: 60px;
     display: flex;
     align-items: flex-end;
