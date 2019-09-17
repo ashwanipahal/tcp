@@ -38,7 +38,8 @@
     "lint:web": "yarn eslint:web && yarn stylelint:web",
     "lint:app": "yarn eslint:app && yarn stylelint:app",
     "generate-esdoc": "./node_modules/.bin/esdoc -c .esdoc.json",
-    "lighthouse": "node ./lighthouse"
+    "lighthouse": "node ./lighthouse",
+    "plop": "plop"
   },
   "devDependencies": {
     "@types/enzyme": "^3.9.3",

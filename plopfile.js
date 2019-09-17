@@ -12,6 +12,7 @@ const changeCase = require('change-case');
 const { atomActions } = require('./plop/utils/atomActions');
 const { containerActions } = require('./plop/utils/containerActions');
 const { featureActions } = require('./plop/utils/featureActions');
+const { hocActions } = require('./plop/utils/hocActions');
 
 module.exports = function plopCli(plop) {
   // The types of packages in the monorepo
@@ -153,12 +154,28 @@ module.exports = function plopCli(plop) {
         name: 'componentName',
         message: 'Component Name',
         validate: ans => ans === changeCase.pascal(ans) || 'Component name should be pascal cased!',
+        when: ans => ans.componentType !== 'hoc',
+      },
+      {
+        type: 'input',
+        name: 'hocName',
+        message: 'HOC Name',
+        validate: ans => {
+          if (/^with/.test(ans) && changeCase.camel(ans)) {
+            return true;
+          }
+          return 'HOC name should be camel cased and starts with `with`!';
+        },
+        when: ans => ans.componentType === 'hoc',
       },
     ], // array of inquirer prompts
     actions: data => {
       let actions = [];
       if (data.createNewContainer) {
         actions = [...actions, ...containerActions];
+      }
+      if (data.componentType === 'hoc') {
+        actions = [...actions, ...hocActions];
       }
       if (
         data.componentType === 'atoms' ||
