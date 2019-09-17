@@ -16,7 +16,7 @@ export const getCacheData = (key, objKey) => {
         storedDataObj[objKey] &&
         new Date().getTime() - storedDataObj[objKey].timeStamp < 30 * 24 * 60 * 60 * 1000
       ) {
-        return storedDataObj[objKey];
+        return new Promise(resolve => resolve(storedDataObj[objKey]));
       }
       // Comes here when the key exists but is expired, delete the key and return false
       if (storedDataObj[objKey]) {
@@ -63,7 +63,9 @@ export const setCacheData = arg => {
     }
     sessionStorageObj[storageKey] = storageValue;
     const sessionStorageData = JSON.stringify(sessionStorageObj);
-    return setLocalStorage({ key, value: JSON.stringify(sessionStorageData) });
+    return new Promise(resolve =>
+      resolve(setLocalStorage({ key, value: JSON.stringify(sessionStorageData) }))
+    );
   }
   return false;
 };
