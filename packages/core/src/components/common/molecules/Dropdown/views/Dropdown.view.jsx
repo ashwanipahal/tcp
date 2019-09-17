@@ -138,8 +138,11 @@ class Dropdown extends React.PureComponent {
             </li>
           </Anchor>
         </BodyCopy>
-        {nav.subSections &&
-          nav.subSections.map(subSection => this.subMenuList(subSection, activeComponent))}
+        {/*
+          This should not be the part of dropdown component. Dropdown should always work on flat data not on nested data.
+          nav.subSections &&
+          nav.subSections.map(subSection => this.subMenuList(subSection, activeComponent))
+        */}
       </>
     );
   };
