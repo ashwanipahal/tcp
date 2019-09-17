@@ -43,7 +43,7 @@ const RecommendationsAbstractor = {
         return {
           products: recommendations
             .filter(recommendation => {
-              return prices[recommendation.generalProductId] !== 'undefined';
+              return typeof prices[recommendation.generalProductId] !== 'undefined';
             })
             .map(recommendation => {
               return {
