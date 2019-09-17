@@ -62,7 +62,8 @@ export default css`
     }
   }
 
-  .currency_up_style {
+  .currency_up_style,
+  .style10 {
     display: inline-flex;
     justify-content: center;
 
@@ -73,22 +74,26 @@ export default css`
     .col-2 {
       flex-direction: column;
     }
-    .currency_up_style-0 {
+    .currency_up_style-0,
+    .style10-0 {
       font-size: ${props => props.theme.typography.fontSizes.fs28};
       font-weight: ${props => props.theme.typography.fontWeights.black};
       line-height: 1.3;
     }
-    .currency_up_style-1 {
+    .currency_up_style-1,
+    .style10-1 {
       line-height: 0.85;
       font-size: 86px;
       font-weight: 900;
     }
-    .currency_up_style-2 {
+    .currency_up_style-2,
+    .style10-2 {
       font-size: 48px;
       font-weight: ${props => props.theme.typography.fontWeights.black};
       line-height: 1;
     }
-    .currency_up_style-3 {
+    .currency_up_style-3,
+    .style10-3 {
       font-size: ${props => props.theme.typography.fontSizes.fs28};
       font-weight: ${props => props.theme.typography.fontWeights.black};
       line-height: 0.6;
@@ -102,22 +107,26 @@ export default css`
       .col-2 {
         flex-direction: column;
       }
-      .currency_up_style-0 {
+      .currency_up_style-0,
+      .style10-0 {
         font-size: ${props => props.theme.typography.fontSizes.fs38};
         font-weight: ${props => props.theme.typography.fontWeights.black};
         line-height: 1.3;
       }
-      .currency_up_style-1 {
+      .currency_up_style-1,
+      .style10-1 {
         line-height: 0.8;
         font-size: 118px;
         font-weight: ${props => props.theme.typography.fontWeights.black};
       }
-      .currency_up_style-2 {
+      .currency_up_style-2,
+      .style10-2 {
         font-size: 66px;
         font-weight: ${props => props.theme.typography.fontWeights.black};
         line-height: 1;
       }
-      .currency_up_style-3 {
+      .currency_up_style-3,
+      .style10-3 {
         font-size: ${props => props.theme.typography.fontSizes.fs40};
         font-weight: ${props => props.theme.typography.fontWeights.black};
         line-height: 0.6;
