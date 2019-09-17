@@ -64,7 +64,7 @@ export class AddChildBirthdayForm extends React.PureComponent {
                   fontSize="fs16"
                   fontWeight="black"
                   color="gray.900"
-                  data-locator="childInfoLbl"
+                  dataLocator="childInfoLbl"
                 >
                   {addChildBirthdayLabels.lbl_add_child_child_information}
                 </BodyCopy>
@@ -78,7 +78,7 @@ export class AddChildBirthdayForm extends React.PureComponent {
                   id="childName"
                   type="text"
                   component={TextBox}
-                  data-locator="childNameField"
+                  dataLocator="childNameField"
                 />
               </Col>
               <Col colSize={{ small: 6, medium: 8, large: 12 }} className="elem-mt-LRG">
@@ -100,7 +100,7 @@ export class AddChildBirthdayForm extends React.PureComponent {
                     id="userBirthMonth"
                     component={SelectBox}
                     options={birthMonthOptionsMap}
-                    data-locator="childBirthdayMonthDD"
+                    dataLocator="childBirthdayMonthDD"
                   />
                 </Col>
                 <Col colSize={{ small: 3, medium: 4, large: 6 }}>
@@ -110,7 +110,7 @@ export class AddChildBirthdayForm extends React.PureComponent {
                     id="userBirthYear"
                     component={SelectBox}
                     options={birthYearOptionsMap}
-                    data-locator="childBirthdayYearDD"
+                    dataLocator="childBirthdayYearDD"
                   />
                 </Col>
               </Row>
@@ -120,7 +120,7 @@ export class AddChildBirthdayForm extends React.PureComponent {
                   fontSize="fs10"
                   fontWeight="black"
                   color="gray.900"
-                  data-locator="childGenderLbl"
+                  dataLocator="childGenderLbl"
                 >
                   {addChildBirthdayLabels.lbl_add_child_gender_heading}
                 </BodyCopy>
@@ -132,7 +132,7 @@ export class AddChildBirthdayForm extends React.PureComponent {
                   id="gender"
                   component={SelectBox}
                   options={childOptions}
-                  data-locator="childGenderDD"
+                  dataLocator="childGenderDD"
                   enableSuccessCheck
                 />
               </Col>
@@ -166,7 +166,7 @@ export class AddChildBirthdayForm extends React.PureComponent {
                   id="firstName"
                   type="text"
                   component={TextBox}
-                  data-locator="firstNameField"
+                  dataLocator="firstNameField"
                 />
               </Col>
               <Col
@@ -180,7 +180,7 @@ export class AddChildBirthdayForm extends React.PureComponent {
                   id="lastName"
                   type="text"
                   component={TextBox}
-                  data-locator="lastNameField"
+                  dataLocator="lastNameField"
                 />
               </Col>
               <Col
@@ -200,7 +200,7 @@ export class AddChildBirthdayForm extends React.PureComponent {
                   name="acceptAddChildAgreement"
                   id="acceptAddChildAgreement"
                   component={InputCheckbox}
-                  data-locator="tnccb"
+                  dataLocator="tnccb"
                 >
                   <BodyCopy
                     component="span"
@@ -256,7 +256,7 @@ export class AddChildBirthdayForm extends React.PureComponent {
                 buttonVariation="fixed-width"
                 fill="WHITE"
                 onClick={closeAddModal}
-                data-locator="cancelChildFormBtn"
+                dataLocator="cancelChildFormBtn"
               >
                 {addChildBirthdayLabels.lbl_add_child_cancel}
               </Button>
@@ -271,7 +271,7 @@ export class AddChildBirthdayForm extends React.PureComponent {
                 disabled={invalid}
                 type="submit"
                 fill="BLUE"
-                data-locator="SaveChildFormBtn"
+                dataLocator="SaveChildFormBtn"
               >
                 {addChildBirthdayLabels.lbl_add_child_save}
               </Button>
