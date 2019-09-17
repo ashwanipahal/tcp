@@ -67,7 +67,7 @@ const styles = css`
 
   .earnExtraPointsTileImage {
     margin-top: ${props => props.theme.spacing.LAYOUT_SPACING.MED};
-    height: ${props => props.theme.spacing.LAYOUT_SPACING.XL};
+    height: 96px;
     text-align: center;
     display: flex;
     justify-content: space-around;
