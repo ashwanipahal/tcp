@@ -1,0 +1,182 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`ProductAddToBagVanilla native should render correctly should match snapshot 1`] = `
+<View
+  colorList={Array []}
+  fitList={Array []}
+  quantityList={Array []}
+  selectedColor={null}
+  selectedFit={null}
+  selectedSize={null}
+  sizeList={Array []}
+>
+  <Field
+    component={
+      Object {
+        "$$typeof": Symbol(react.forward_ref),
+        "_foldedDefaultProps": Object {
+          "componentWidth": 80,
+          "data": Array [],
+          "itemNameKey": "",
+          "itemValue": "",
+          "keyExtractor": null,
+          "renderItem": null,
+          "selectItem": null,
+          "selectedItem": null,
+          "separatorWidth": 8,
+        },
+        "attrs": Array [],
+        "displayName": "Styled(ProductVariantSelector)",
+        "inlineStyle": InlineStyle {
+          "rules": Array [
+            "
+    ",
+            "
+  margin-bottom: 33px;
+",
+            ";
+  ",
+          ],
+        },
+        "render": [Function],
+        "styledComponentId": "StyledNativeComponent",
+        "target": [Function],
+        "withComponent": [Function],
+      }
+    }
+    componentWidth={30}
+    data={Array []}
+    id="color"
+    itemValue=""
+    name={null}
+    renderItem={[Function]}
+    selectedItem={null}
+    separatorWidth={16}
+    title="COLOR"
+  />
+  <Field
+    component={
+      Object {
+        "$$typeof": Symbol(react.forward_ref),
+        "_foldedDefaultProps": Object {
+          "componentWidth": 80,
+          "data": Array [],
+          "itemNameKey": "",
+          "itemValue": "",
+          "keyExtractor": null,
+          "renderItem": null,
+          "selectItem": null,
+          "selectedItem": null,
+          "separatorWidth": 8,
+        },
+        "attrs": Array [],
+        "displayName": "Styled(ProductVariantSelector)",
+        "inlineStyle": InlineStyle {
+          "rules": Array [
+            "
+    ",
+            "
+  margin-bottom: 33px;
+",
+            ";
+  ",
+          ],
+        },
+        "render": [Function],
+        "styledComponentId": "StyledNativeComponent",
+        "target": [Function],
+        "withComponent": [Function],
+      }
+    }
+    data={Array []}
+    id="fit"
+    itemNameKey="fitNameVal"
+    itemValue=""
+    name={null}
+    selectedItem={null}
+    title="FIT"
+  />
+  <Field
+    component={
+      Object {
+        "$$typeof": Symbol(react.forward_ref),
+        "_foldedDefaultProps": Object {
+          "componentWidth": 80,
+          "data": Array [],
+          "itemNameKey": "",
+          "itemValue": "",
+          "keyExtractor": null,
+          "renderItem": null,
+          "selectItem": null,
+          "selectedItem": null,
+          "separatorWidth": 8,
+        },
+        "attrs": Array [],
+        "displayName": "Styled(ProductVariantSelector)",
+        "inlineStyle": InlineStyle {
+          "rules": Array [
+            "
+    ",
+            "
+  margin-bottom: 33px;
+",
+            ";
+  ",
+          ],
+        },
+        "render": [Function],
+        "styledComponentId": "StyledNativeComponent",
+        "target": [Function],
+        "withComponent": [Function],
+      }
+    }
+    data={Array []}
+    id="size"
+    itemNameKey="sizeName"
+    itemValue=""
+    name={null}
+    selectedItem={null}
+    title="SIZE"
+  />
+  <Styled(View)>
+    <Styled(BodyCopy)
+      color="gray.900"
+      fontSize="fs14"
+      fontWeight="black"
+      mobileFontFamily="secondary"
+      text="QUANTITY: "
+    />
+    <Styled(DropDown)
+      bounces={false}
+      data={Array []}
+      dropDownStyle={
+        Object {
+          "border": 1,
+          "height": 18,
+          "marginLeft": 8,
+          "width": 48,
+        }
+      }
+      itemStyle={
+        Object {
+          "color": "gray.900",
+          "height": 25,
+        }
+      }
+      onValueChange={[Function]}
+      selectedValue="1"
+      variation="secondary"
+    />
+  </Styled(View)>
+  <Styled(WithTheme(CustomButton))
+    buttonVariation="variable-width"
+    color="white"
+    fill="BLUE"
+    fontFamily="secondary"
+    fontSize="fs13"
+    fontWeight="extrabold"
+    onPress={[Function]}
+    text="ADD TO BAG"
+  />
+</View>
+`;

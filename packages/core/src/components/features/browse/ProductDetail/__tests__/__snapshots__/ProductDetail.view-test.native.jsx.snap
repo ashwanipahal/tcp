@@ -4,5 +4,6 @@ exports[`ProductDetailView component should renders correctly 1`] = `
 <View>
   <Text />
   <Text />
+  <ProductAddToBagContainer />
 </View>
 `;
