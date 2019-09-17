@@ -500,24 +500,24 @@ const getReviewLabels = state => {
   };
 };
 
-export const getVenmoData = state => {
+const getVenmoData = state => {
   return state[CHECKOUT_REDUCER_KEY].getIn(['values', 'venmoData']);
 };
 
-function getVenmoClientTokenData(state) {
+const getVenmoClientTokenData = state => {
   const venmoData = getVenmoData(state);
   return venmoData && venmoData.venmoClientTokenData;
-}
+};
 
-function isVenmoPaymentInProgress(state) {
-  return state.checkout.uiFlags && state.checkout.uiFlags.venmoPaymentInProgress;
-}
+const isVenmoPaymentInProgress = state => {
+  return state[CHECKOUT_REDUCER_KEY].getIn(['uiFlags', 'venmoPaymentInProgress']);
+};
 
 /**
  * Mainly used to check for Venmo nonce expiry
  * @param state
  */
-function isVenmoNonceNotExpired(state) {
+const isVenmoNonceNotExpired = state => {
   const venmoData = getVenmoData(state);
   const expiry = venmoConstants.VENMO_NONCE_EXPIRY_TIMEOUT;
   const { nonce, timestamp, venmoClientTokenData } = venmoData;
@@ -525,9 +525,9 @@ function isVenmoNonceNotExpired(state) {
     ? venmoClientTokenData.venmoPaymentTokenAvailable
     : false;
   return venmoPaymentTokenAvailable === 'TRUE' || (nonce && Date.now() - timestamp <= expiry);
-}
+};
 
-function isVenmoPaymentToken(state) {
+const isVenmoPaymentToken = state => {
   const venmoData = getVenmoData(state);
   return (
     (venmoData && venmoData.mode === modes.PAYMENT_TOKEN) ||
@@ -535,9 +535,9 @@ function isVenmoPaymentToken(state) {
       venmoData.venmoClientTokenData &&
       venmoData.venmoClientTokenData.mode === modes.PAYMENT_TOKEN)
   );
-}
+};
 
-function isVenmoNonceActive(state) {
+const isVenmoNonceActive = state => {
   const venmoData = getVenmoData(state);
   const venmoPaymentInProgress = isVenmoPaymentInProgress(state);
   return (
@@ -546,7 +546,7 @@ function isVenmoNonceActive(state) {
     venmoPaymentInProgress &&
     isVenmoNonceNotExpired(state)
   );
-}
+};
 
 function isVenmoPaymentAvailable(state) {
   const venmoData = getVenmoData(state);
@@ -634,4 +634,6 @@ export default {
   isVenmoNonceActive,
   getVenmoUserEmail,
   isVenmoNonceNotExpired,
+  isVenmoPaymentInProgress,
+  isVenmoPaymentToken,
 };

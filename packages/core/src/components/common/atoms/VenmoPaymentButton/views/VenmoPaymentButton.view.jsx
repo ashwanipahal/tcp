@@ -1,10 +1,10 @@
 import React, { Component } from 'react';
 import { string, func, bool, shape, oneOf } from 'prop-types';
-import { Image } from '@tcp/core/src/components/common/atoms';
 import { client, venmo, dataCollector } from 'braintree-web';
-import { getIconPath } from '@tcp/core/src/utils/utils';
-import withStyles from '@tcp/core/src/components/common/hoc/withStyles';
-import logger from '@tcp/core/src/utils/loggerInstance';
+import Image from '../../Image/views/Image';
+import { getIconPath } from '../../../../../utils/utils';
+import withStyles from '../../../hoc/withStyles';
+import logger from '../../../../../utils/loggerInstance';
 import { noop, modes, constants } from '../container/VenmoPaymentButton.util';
 import styles from '../styles/VenmoPaymentButton.style';
 
@@ -184,7 +184,6 @@ export class VenmoPaymentButton extends Component {
               this.setState({ hasVenmoError: false });
             }
           } else {
-            logger.error('Opening Venmo in the same tab is not supported by this browser');
             setVenmoData({ supportedByBrowser: false });
           }
         })

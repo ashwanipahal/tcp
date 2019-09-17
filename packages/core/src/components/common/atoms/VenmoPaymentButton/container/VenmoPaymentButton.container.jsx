@@ -1,18 +1,20 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
-import selectors from '@tcp/core/src/components/features/CnC/Checkout/container/Checkout.selector';
+import selectors, {
+  isGuest as isGuestUser,
+} from '../../../../features/CnC/Checkout/container/Checkout.selector';
 import {
   getVenmoClientToken,
   setVenmoData,
   setVenmoPaymentInProgress,
-} from '@tcp/core/src/components/features/CnC/Checkout/container/Checkout.action';
-import { getCartOrderId } from '@tcp/core/src/components/features/CnC/CartItemTile/container/CartItemTile.selectors';
-import logger from '@tcp/core/src/utils/loggerInstance';
+} from '../../../../features/CnC/Checkout/container/Checkout.action';
+import { getCartOrderId } from '../../../../features/CnC/CartItemTile/container/CartItemTile.selectors';
+import logger from '../../../../../utils/loggerInstance';
 import VenmoPaymentButton from '../views';
 import { VENMO_USER_STATES, modes } from './VenmoPaymentButton.util';
 
-export class VenmoPaymentButtonContainer extends React.Component<Props> {
+export class VenmoPaymentButtonContainer extends React.PureComponent<Props> {
   componentWillMount() {
     this.fetchVenmoClientToken();
   }
@@ -105,7 +107,7 @@ const mapStateToProps = state => {
     venmoData: selectors.getVenmoData(state),
     venmoClientTokenData,
     allowNewBrowserTab: true,
-    isGuest: selectors.isGuest(state),
+    isGuest: isGuestUser(state),
     orderId: getCartOrderId(state),
   };
 };
