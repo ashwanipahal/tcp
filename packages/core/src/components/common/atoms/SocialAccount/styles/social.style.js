@@ -5,7 +5,7 @@ import { css } from 'styled-components';
 const socialStyle = css`
   .social-accounts__infoList {
     display: flex;
-    padding: 15px 0;  
+    padding: 15px 0;
   }
   .Facebook-icon--enable {
     width: 50px;
@@ -21,7 +21,19 @@ const socialStyle = css`
   .social-accounts__align {
     display: flex;
     align-items: center;
-    padding-left:20px;
+    padding-left: 20px;
+  }
+  .social_accounts_cross_plus-icon {
+    position: relative;
+    z-index: 1000;
+    width: 165px;
+    right: 160px;
+    text-align: right;
+    cursor: pointer;
+  }
+  .social-account-icon {
+    position: absolute;
+    right: 0;
   }
 `;
 

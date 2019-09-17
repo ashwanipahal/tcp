@@ -48,11 +48,7 @@ const facebookSDK = () => {
   /* istanbul ignore next */
   window.onload = function() {
     window.FB.getLoginStatus(function(res) {
-      if (
-        res.authResponse &&
-        res.authResponse.accessToken &&
-        !elem.isConnected
-      ) {
+      if (res.authResponse && res.authResponse.accessToken && !elem.isConnected) {
         const socialAccInfo = {
           accessToken: res.authResponse.accessToken,
           userId: res.authResponse.userID,
@@ -128,7 +124,7 @@ const logoutUser = () => {
   saveAccountInfo({ socialAccInfo });
 };
 
-export const loginUser = (elem) => {
+export const loginUser = elem => {
   /* istanbul ignore next */
   if (elem.isConnected) {
     logoutUser();
@@ -149,38 +145,38 @@ const FacebookLoginComponent = props => {
       {elem.map((elem, index) => {
         return (
           <React.Fragment>
-          {
-          !(elem.socialAccount === 'facebook' && elem.isConnected) && (
-            <div
-              className="social-accounts__align"
-              onClick={elem => loginUser(elem)}
-              tabIndex="0"
-            >
-           
-              {ReactDOM.createPortal(facebookSDK(), bodyEle)}
-              <ImageComp
-                width={15}
-                height={15}
-                src={getIconPath('plus-icon')}
-                data-locator="plus-icon"
-              />
-            </div>
-          )
-        }
-        {
-          elem.socialAccount === 'facebook' && elem.isConnected && (
-            <div className="social-accounts__align" onClick={logoutUser}>
-              <ImageComp
-                width={15}
-                height={15}
-                src={getIconPath('close-icon')}
-                data-locator="close-icon"
-              />
-            </div>
-          )
-        }
+            {!(elem.socialAccount === 'facebook' && elem.isConnected) && (
+              <div
+                className="social-accounts__align social_accounts_cross_plus-icon"
+                onClick={elem => loginUser(elem)}
+                tabIndex="0"
+              >
+                {ReactDOM.createPortal(facebookSDK(), bodyEle)}
+                <ImageComp
+                  className="social-account-icon"
+                  width={10}
+                  height={10}
+                  src={getIconPath('plus-icon')}
+                  data-locator="facebookPlusIcon"
+                />
+              </div>
+            )}
+            {elem.socialAccount === 'facebook' && elem.isConnected && (
+              <div
+                className="social-accounts__align social_accounts_cross_plus-icon"
+                onClick={logoutUser}
+              >
+                <ImageComp
+                  className="social-account-icon"
+                  width={10}
+                  height={10}
+                  src={getIconPath('close-icon')}
+                  data-locator="facebookCrossIcon"
+                />
+              </div>
+            )}
           </React.Fragment>
-        )
+        );
       })}
     </React.Fragment>
   );

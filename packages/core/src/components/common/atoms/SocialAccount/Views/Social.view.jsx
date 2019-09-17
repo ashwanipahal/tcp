@@ -40,11 +40,11 @@ class Socialview extends React.PureComponent {
 
   renderAccountsInformation = (accounts, saveSocialAcc) => {
     return accounts.map((elem, index) => {
-      const isSocialAccount =
-        config.SOCIAL_ACCOUNTS[elem.socialAccount.toLocaleLowerCase()];
+      const isSocialAccount = config.SOCIAL_ACCOUNTS[elem.socialAccount.toLocaleLowerCase()];
       return (
         <li className="social-accounts__infoList" key={index.toString()}>
           <span
+            data-locator={!elem.isConnected ? 'facebookDisabledIcon' : 'facebookEnabledIcon'}
             className={`${isSocialAccount}-icon--${
               elem.isConnected ? 'enable' : 'disable'
             } social-accounts__social-icon`}
@@ -54,15 +54,13 @@ class Socialview extends React.PureComponent {
             fontFamily="secondary"
             textAlign="center"
             className="social-accounts__align"
+            data-locator={elem.isConnected ? 'facebookConnectedTxt' : 'connectFacebokTxt'}
           >
             {elem.isConnected
               ? `${config.SOCIAL_ACCOUNTS[elem.socialAccount]} Connected`
               : `Connect to ${config.SOCIAL_ACCOUNTS[elem.socialAccount]}`}
           </BodyCopy>
-          {this.renderSocialLogins(
-            loginComponents[isSocialAccount],
-            saveSocialAcc
-          )}
+          {this.renderSocialLogins(loginComponents[isSocialAccount], saveSocialAcc)}
         </li>
       );
     });
@@ -85,11 +83,7 @@ class Socialview extends React.PureComponent {
   };
 
   render() {
-    const {
-      saveSocialAcc,
-      getSocialLoad,
-      className,
-    } = this.props;
+    const { saveSocialAcc, getSocialLoad, className } = this.props;
     if (Object.keys(getSocialLoad).length) {
       this.refactorSocialDetails(getSocialLoad);
     }
@@ -97,8 +91,10 @@ class Socialview extends React.PureComponent {
     return (
       <React.Fragment>
         <section className={className} data-selector="analytics-social-account">
-          <h3 className="social-accounts__title">Social Accounts</h3>
-          <p className="social-accounts__subTitle">
+          <h3 className="social-accounts__title" data-locator="socialAccountsLbl">
+            Social Accounts
+          </h3>
+          <p className="social-accounts__subTitle" data-locator="linkAccountTxt">
             Link your social accounts to earn extra points!
           </p>
           <ul>
