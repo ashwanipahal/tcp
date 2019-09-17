@@ -4,6 +4,7 @@ exports[`ProductAddToBagVanilla native should render correctly should match snap
 <View
   colorList={Array []}
   fitList={Array []}
+  plpLabels={Object {}}
   quantityList={Array []}
   selectedColor={null}
   selectedFit={null}
@@ -176,7 +177,6 @@ exports[`ProductAddToBagVanilla native should render correctly should match snap
     fontSize="fs13"
     fontWeight="extrabold"
     onPress={[Function]}
-    text="ADD TO BAG"
   />
 </View>
 `;

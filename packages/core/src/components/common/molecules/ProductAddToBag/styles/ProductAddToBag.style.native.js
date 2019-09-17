@@ -1,13 +1,13 @@
 import styled, { css } from 'styled-components';
 
 const styles = css`
-  margin: 25px 14px 0px;
+  margin-top: ${props => props.theme.spacing.LAYOUT_SPACING.XS};
 `;
 
 export const RowViewContainer = styled.View`
   flex-direction: row;
   align-items: center;
-  margin-bottom: 40px;
+  margin-bottom: ${props => props.theme.spacing.ELEM_SPACING.XXL};
 `;
 
 export const dropDownStyle = {

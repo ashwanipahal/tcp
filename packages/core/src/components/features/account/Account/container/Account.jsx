@@ -79,6 +79,7 @@ export class Account extends React.PureComponent {
         <MyAccountLayout
           mainContent={AccountComponentMapping[componentToLoad]}
           active={activeComponent}
+          activeSubComponent={componentToLoad}
           navData={navData}
           router={router}
           labels={labels}

@@ -21,4 +21,5 @@ export {
   updatePaymentOnOrder,
   addGiftCardPaymentToOrder,
   removeGiftCard,
+  addGiftCard,
 } from './Checkout';

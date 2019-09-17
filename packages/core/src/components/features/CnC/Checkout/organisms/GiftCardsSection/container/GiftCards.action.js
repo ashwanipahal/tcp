@@ -14,7 +14,15 @@ const removeGiftCard = payload => {
   };
 };
 
+const addGiftCard = payload => {
+  return {
+    type: GIFTCARD_CONSTANTS.ADD_GIFT_CARD,
+    payload,
+  };
+};
+
 export default {
   applyGiftCard,
   removeGiftCard,
+  addGiftCard,
 };

@@ -164,7 +164,7 @@ class ProductAddToBagContainer extends React.PureComponent<Props> {
    * @memberof ProductAddToBagContainer
    */
   render() {
-    const { colorFitsSizesMap } = this.props;
+    const { colorFitsSizesMap, plpLabels } = this.props;
     const { selectedColor, selectedFit, selectedSize } = this.state;
     return (
       <ProductAddToBag
@@ -178,6 +178,7 @@ class ProductAddToBagContainer extends React.PureComponent<Props> {
         selectedFit={selectedFit}
         selectedSize={selectedSize}
         quantityList={this.getQuantityList()}
+        plpLabels={plpLabels}
       />
     );
   }

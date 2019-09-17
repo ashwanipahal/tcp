@@ -83,12 +83,15 @@ class ProductAddToBag extends React.PureComponent<Props> {
    * @memberof ProductAddToBag
    */
   renderAddToBagButton = () => {
+    const {
+      plpLabels: { addToBag },
+    } = this.props;
     return (
       <Button
         color="white"
         fill="BLUE"
         buttonVariation="variable-width"
-        text="ADD TO BAG"
+        text={addToBag}
         fontSize="fs13"
         fontWeight="extrabold"
         fontFamily="secondary"
@@ -167,6 +170,7 @@ ProductAddToBag.propTypes = {
   selectedFit: PropTypes.instanceOf(Object),
   selectedSize: PropTypes.instanceOf(Object),
   quantityList: PropTypes.arrayOf(Object),
+  plpLabels: PropTypes.instanceOf(Object),
 };
 
 ProductAddToBag.defaultProps = {
@@ -177,6 +181,7 @@ ProductAddToBag.defaultProps = {
   selectedFit: null,
   selectedSize: null,
   quantityList: [],
+  plpLabels: {},
 };
 
 /* export view with redux form */
