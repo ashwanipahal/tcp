@@ -10,7 +10,13 @@ import Panel from '../../../../common/molecules/Panel';
 import PaymentTile from '../../common/organism/PaymentTile';
 import CustomButton from '../../../../common/atoms/Button';
 import AddressOverviewTile from '../../common/organism/AddressOverviewTile';
-import { UnderlineStyle, ImageWrapper, FavtWrapper } from '../styles/AccountOverview.style.native';
+import { ApplyCardLayout } from '../../../browse/ApplyCardPage/views/ApplyCardLayout.View.native';
+import {
+  UnderlineStyle,
+  ImageWrapper,
+  FavtWrapper,
+  TouchableView,
+} from '../styles/AccountOverview.style.native';
 import LogOutPageContainer from '../../Logout/container/LogOut.container';
 import ModalNative from '../../../../common/molecules/Modal';
 import BodyCopy from '../../../../common/atoms/BodyCopy';
@@ -37,6 +43,7 @@ class AccountOverview extends PureComponent<Props> {
         login: '',
         createAccount: '',
         favorites: '',
+        applyCard: false,
       },
     };
   }
@@ -98,6 +105,13 @@ class AccountOverview extends PureComponent<Props> {
     }));
   };
 
+  toggleApplyCard = () => {
+    const { applyCard } = this.state;
+    this.setState({
+      applyCard: !applyCard,
+    });
+  };
+
   resetAccountOverViewState = () => {
     this.setState({
       showModal: false,
@@ -127,7 +141,7 @@ class AccountOverview extends PureComponent<Props> {
 
   render() {
     const { isUserLoggedIn, labels, commonLabels, handleComponentChange, navigation } = this.props;
-    const { showModal, getComponentId } = this.state;
+    const { showModal, getComponentId, applyCard } = this.state;
     const modalHeaderLbl = this.getModalHeader(getComponentId, labels);
     const viewContainerStyle = { marginTop: 15 };
     const colorPallete = createThemeColorPalette();
@@ -264,13 +278,15 @@ class AccountOverview extends PureComponent<Props> {
               </ImageWrapper>
             </FavtWrapper>
             <UnderlineStyle />
-
+            <TouchableView onPress={this.toggleApplyCard} />
+            {applyCard && <ApplyCardLayout />}
             <Panel
               title={labels.lbl_overview_apply_today}
               isVariationTypeLink
               handleComponentChange={handleComponentChange}
               isCardApply
             />
+
             <Panel title={labels.lbl_overview_manage_creditCard} isVariationTypeLink />
 
             <UnderlineStyle />
