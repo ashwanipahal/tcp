@@ -1,0 +1,59 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Points History List Page View should render Points History Page Correctly 1`] = `
+<Fragment>
+  <Styled(View)>
+    <Styled(View)>
+      <Styled(BodyCopy)
+        fontFamily="secondary"
+        fontSize="fs12"
+        text="08/08/19"
+      />
+    </Styled(View)>
+    <Styled(View)>
+      <Styled(BodyCopy)
+        fontFamily="secondary"
+        fontSize="fs12"
+        text="Credit"
+      />
+    </Styled(View)>
+    <Styled(View)>
+      <Styled(BodyCopy)
+        component="p"
+        fontFamily="secondary"
+        fontSize="fs12"
+        text="5"
+      />
+    </Styled(View)>
+  </Styled(View)>
+  <Styled(View)>
+    <Styled(View)>
+      <Styled(BodyCopy)
+        fontFamily="secondary"
+        fontSize="fs12"
+        fontWeight="regular"
+        text="08/08/19"
+      />
+    </Styled(View)>
+    <Styled(View)>
+      <Styled(BodyCopy)
+        fontFamily="secondary"
+        fontSize="fs12"
+        fontWeight="regular"
+        text="AddBirthDate"
+      />
+    </Styled(View)>
+    <Styled(View)>
+      <Styled(BodyCopy)
+        fontFamily="secondary"
+        fontSize="fs12"
+        fontWeight="regular"
+        text={5}
+        textAlign="left"
+      />
+    </Styled(View)>
+  </Styled(View)>
+</Fragment>
+`;
+
+exports[`Points History List Page View should render Points History Page Correctly if no PointHistory data is available 1`] = `<Fragment />`;

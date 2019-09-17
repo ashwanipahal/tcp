@@ -5,7 +5,13 @@ import {
   getCurrencySymbol,
 } from '@tcp/core/src/components/features/CnC/common/organism/OrderLedger/container/orderLedger.selector';
 import MiniBagView from '../views/MiniBag.view';
-import { getLabelsMiniBag, getTotalItemCount, getIsCartItemsUpdating } from './MiniBag.selectors';
+import {
+  getLabelsMiniBag,
+  getTotalItemCount,
+  getIsCartItemsUpdating,
+  getIsCartItemsSFL,
+  getCartItemsSflError,
+} from './MiniBag.selectors';
 import {
   getCurrentPointsState,
   getTotalRewardsState,
@@ -23,6 +29,8 @@ type Props = {
   currentPoints: any,
   totalRewards: any,
   isCartItemsUpdating: any,
+  isCartItemSFL: any,
+  cartItemSflError: any,
 };
 export class MiniBagContainer extends React.Component<Props> {
   constructor(props) {
@@ -47,6 +55,8 @@ export class MiniBagContainer extends React.Component<Props> {
       currentPoints,
       totalRewards,
       isCartItemsUpdating,
+      isCartItemSFL,
+      cartItemSflError,
     } = this.props;
     return (
       <MiniBagView
@@ -60,6 +70,8 @@ export class MiniBagContainer extends React.Component<Props> {
         currentPoints={currentPoints}
         totalRewards={totalRewards}
         isCartItemsUpdating={isCartItemsUpdating}
+        isCartItemSFL={isCartItemSFL}
+        cartItemSflError={cartItemSflError}
       />
     );
   }
@@ -73,6 +85,8 @@ const mapStateToProps = state => {
     currentPoints: getCurrentPointsState(state),
     totalRewards: getTotalRewardsState(state),
     isCartItemsUpdating: getIsCartItemsUpdating(state),
+    isCartItemSFL: getIsCartItemsSFL(state),
+    cartItemSflError: getCartItemsSflError(state),
   };
 };
 export default connect(mapStateToProps)(MiniBagContainer);

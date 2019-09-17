@@ -34,11 +34,11 @@ export const MainContainerView = styled.View`
 export const ContainerView = styled.View``;
 
 export const Border = styled.View`
-  height: 1px;
+  height: 0.5px;
   background: ${props =>
     props.background === 'text'
       ? props.theme.colors.BUTTON.WHITE.BORDER
-      : props.theme.colors.BUTTON.WHITE.TEXT};
+      : props.theme.colorPalette.gray[700]};
 `;
 
 export const DivImageCTAContainer = styled.View``;

@@ -12,3 +12,17 @@ export const setPointsHistoryList = pointsHistoryData => {
     payload: pointsHistoryData,
   };
 };
+
+export const fetchModuleX = payload => {
+  return {
+    payload,
+    type: POINTSHISTORY_CONSTANTS.FETCH_MODULEX_CONTENT,
+  };
+};
+
+export const setModuleX = payload => {
+  return {
+    payload,
+    type: POINTSHISTORY_CONSTANTS.SET_MODULEX_CONTENT,
+  };
+};

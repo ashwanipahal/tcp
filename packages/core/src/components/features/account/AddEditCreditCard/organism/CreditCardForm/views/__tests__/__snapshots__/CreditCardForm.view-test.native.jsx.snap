@@ -353,11 +353,13 @@ exports[`CreditCardForm component should renders correctly in mailingAddress vie
             formName="addEditCreditCard"
             formSection="address"
             initialValues={Object {}}
+            isGuest={true}
             labels={Object {}}
             showDefaultCheckbox={false}
             showEmailAddress={true}
             showPhoneNumber={false}
             showUserName={true}
+            state=""
           />
         </FormSection>
       </Styled(View)>

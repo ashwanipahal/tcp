@@ -28,44 +28,51 @@ exports[`RegisteredShippingFormVanilla should render correctly  1`] = `
         options={
           Immutable.List [
             Object {
-              "content": <Address
-                address={
-                  Object {
-                    "addressLine": Array [
-                      "addressline 1",
-                      "addressline 2",
-                    ],
-                    "city": "test city",
-                    "country": "test country",
-                    "firstName": "test",
-                    "lastName": "test",
-                    "phone1": "1234567890",
-                    "primary": "true",
+              "content": <div
+                className="address-wrapper"
+              >
+                <Address
+                  address={
+                    Object {
+                      "addressLine": Array [
+                        "addressline 1",
+                        "addressline 2",
+                      ],
+                      "city": "test city",
+                      "country": "test country",
+                      "firstName": "test",
+                      "lastName": "test",
+                      "phone1": "1234567890",
+                      "primary": "true",
+                    }
                   }
-                }
-                className="address"
-                dataLocatorPrefix=""
-                fontWeight="regular"
-                isDefault={true}
-                showCountry={true}
-                showName={true}
-                showPhone={true}
-              />,
+                  className="address"
+                  dataLocatorPrefix=""
+                  fontWeight="regular"
+                  isDefault={true}
+                  showCountry={false}
+                  showDefault={false}
+                  showName={true}
+                  showPhone={false}
+                />
+                <ForwardRef
+                  className="default-badge"
+                  dataLocator="shipping-defshippinglabel"
+                  showCheckmark={true}
+                >
+                  
+                </ForwardRef>
+              </div>,
               "title": "test test (Default)",
               "value": undefined,
             },
             Object {
               "content": <ForwardRef
-                className="add-address"
-                color="text.primary"
-                component="p"
-                fontFamily="secondary"
-                fontSize="fs14"
-                fontWeight="black"
-                letterSpacing="normal"
-                lineHeight="normal"
+                buttonVariation="variable-width"
+                disabled={false}
+                fill="BLACK"
+                fullWidth={true}
                 onClick={[Function]}
-                textAlign="left"
               >
                 
               </ForwardRef>,
@@ -142,6 +149,7 @@ exports[`RegisteredShippingFormVanilla should render correctly  1`] = `
         fontWeight="regular"
         isDefault={false}
         showCountry={true}
+        showDefault={true}
         showName={true}
         showPhone={true}
       />
@@ -237,44 +245,44 @@ exports[`RegisteredShippingFormVanilla should render correctly onAddressDropDown
         options={
           Immutable.List [
             Object {
-              "content": <Address
-                address={
-                  Object {
-                    "addressId": "123",
-                    "addressLine": Array [
-                      "addressline 1 hhh",
-                      "addressline 2 mmm",
-                    ],
-                    "city": "test city",
-                    "country": "test country hhh",
-                    "firstName": "test",
-                    "lastName": "test",
-                    "phone1": "1234567890",
+              "content": <div
+                className="address-wrapper"
+              >
+                <Address
+                  address={
+                    Object {
+                      "addressId": "123",
+                      "addressLine": Array [
+                        "addressline 1 hhh",
+                        "addressline 2 mmm",
+                      ],
+                      "city": "test city",
+                      "country": "test country hhh",
+                      "firstName": "test",
+                      "lastName": "test",
+                      "phone1": "1234567890",
+                    }
                   }
-                }
-                className="address"
-                dataLocatorPrefix=""
-                fontWeight="regular"
-                isDefault={false}
-                showCountry={true}
-                showName={true}
-                showPhone={true}
-              />,
+                  className="address"
+                  dataLocatorPrefix=""
+                  fontWeight="regular"
+                  isDefault={false}
+                  showCountry={false}
+                  showDefault={false}
+                  showName={true}
+                  showPhone={false}
+                />
+              </div>,
               "title": "test test ",
               "value": "123",
             },
             Object {
               "content": <ForwardRef
-                className="add-address"
-                color="text.primary"
-                component="p"
-                fontFamily="secondary"
-                fontSize="fs14"
-                fontWeight="black"
-                letterSpacing="normal"
-                lineHeight="normal"
+                buttonVariation="variable-width"
+                disabled={false}
+                fill="BLACK"
+                fullWidth={true}
                 onClick={[Function]}
-                textAlign="left"
               >
                 
               </ForwardRef>,
@@ -644,43 +652,43 @@ exports[`RegisteredShippingFormVanilla should render correctly with isAddNewAddr
         options={
           Immutable.List [
             Object {
-              "content": <Address
-                address={
-                  Object {
-                    "addressLine": Array [
-                      "addressline 1ttt",
-                      "addressline 2bbb",
-                    ],
-                    "city": "test city",
-                    "country": "test country abc",
-                    "firstName": "test",
-                    "lastName": "test",
-                    "phone1": "1234567890",
+              "content": <div
+                className="address-wrapper"
+              >
+                <Address
+                  address={
+                    Object {
+                      "addressLine": Array [
+                        "addressline 1ttt",
+                        "addressline 2bbb",
+                      ],
+                      "city": "test city",
+                      "country": "test country abc",
+                      "firstName": "test",
+                      "lastName": "test",
+                      "phone1": "1234567890",
+                    }
                   }
-                }
-                className="address"
-                dataLocatorPrefix=""
-                fontWeight="regular"
-                isDefault={false}
-                showCountry={true}
-                showName={true}
-                showPhone={true}
-              />,
+                  className="address"
+                  dataLocatorPrefix=""
+                  fontWeight="regular"
+                  isDefault={false}
+                  showCountry={false}
+                  showDefault={false}
+                  showName={true}
+                  showPhone={false}
+                />
+              </div>,
               "title": "test test ",
               "value": undefined,
             },
             Object {
               "content": <ForwardRef
-                className="add-address"
-                color="text.primary"
-                component="p"
-                fontFamily="secondary"
-                fontSize="fs14"
-                fontWeight="black"
-                letterSpacing="normal"
-                lineHeight="normal"
+                buttonVariation="variable-width"
+                disabled={true}
+                fill="BLACK"
+                fullWidth={true}
                 onClick={[Function]}
-                textAlign="left"
               >
                 
               </ForwardRef>,
@@ -1150,43 +1158,43 @@ exports[`RegisteredShippingFormVanilla should render correctly with isAddNewAddr
         options={
           Immutable.List [
             Object {
-              "content": <Address
-                address={
-                  Object {
-                    "addressLine": Array [
-                      "addressline 1ttt",
-                      "addressline 2bbb",
-                    ],
-                    "city": "test city",
-                    "country": "test country abc",
-                    "firstName": "test",
-                    "lastName": "test",
-                    "phone1": "1234567890",
+              "content": <div
+                className="address-wrapper"
+              >
+                <Address
+                  address={
+                    Object {
+                      "addressLine": Array [
+                        "addressline 1ttt",
+                        "addressline 2bbb",
+                      ],
+                      "city": "test city",
+                      "country": "test country abc",
+                      "firstName": "test",
+                      "lastName": "test",
+                      "phone1": "1234567890",
+                    }
                   }
-                }
-                className="address"
-                dataLocatorPrefix=""
-                fontWeight="regular"
-                isDefault={false}
-                showCountry={true}
-                showName={true}
-                showPhone={true}
-              />,
+                  className="address"
+                  dataLocatorPrefix=""
+                  fontWeight="regular"
+                  isDefault={false}
+                  showCountry={false}
+                  showDefault={false}
+                  showName={true}
+                  showPhone={false}
+                />
+              </div>,
               "title": "test test ",
               "value": undefined,
             },
             Object {
               "content": <ForwardRef
-                className="add-address"
-                color="text.primary"
-                component="p"
-                fontFamily="secondary"
-                fontSize="fs14"
-                fontWeight="black"
-                letterSpacing="normal"
-                lineHeight="normal"
+                buttonVariation="variable-width"
+                disabled={true}
+                fill="BLACK"
+                fullWidth={true}
                 onClick={[Function]}
-                textAlign="left"
               >
                 
               </ForwardRef>,
@@ -1656,43 +1664,43 @@ exports[`RegisteredShippingFormVanilla should render correctly with isEditing tr
         options={
           Immutable.List [
             Object {
-              "content": <Address
-                address={
-                  Object {
-                    "addressLine": Array [
-                      "addressline 1tttttt",
-                      "addressline 2bbbbbbb",
-                    ],
-                    "city": "test city",
-                    "country": "test country abcccc",
-                    "firstName": "test",
-                    "lastName": "test",
-                    "phone1": "1234567890",
+              "content": <div
+                className="address-wrapper"
+              >
+                <Address
+                  address={
+                    Object {
+                      "addressLine": Array [
+                        "addressline 1tttttt",
+                        "addressline 2bbbbbbb",
+                      ],
+                      "city": "test city",
+                      "country": "test country abcccc",
+                      "firstName": "test",
+                      "lastName": "test",
+                      "phone1": "1234567890",
+                    }
                   }
-                }
-                className="address"
-                dataLocatorPrefix=""
-                fontWeight="regular"
-                isDefault={false}
-                showCountry={true}
-                showName={true}
-                showPhone={true}
-              />,
+                  className="address"
+                  dataLocatorPrefix=""
+                  fontWeight="regular"
+                  isDefault={false}
+                  showCountry={false}
+                  showDefault={false}
+                  showName={true}
+                  showPhone={false}
+                />
+              </div>,
               "title": "test test ",
               "value": undefined,
             },
             Object {
               "content": <ForwardRef
-                className="add-address"
-                color="text.primary"
-                component="p"
-                fontFamily="secondary"
-                fontSize="fs14"
-                fontWeight="black"
-                letterSpacing="normal"
-                lineHeight="normal"
+                buttonVariation="variable-width"
+                disabled={false}
+                fill="BLACK"
+                fullWidth={true}
                 onClick={[Function]}
-                textAlign="left"
               >
                 
               </ForwardRef>,

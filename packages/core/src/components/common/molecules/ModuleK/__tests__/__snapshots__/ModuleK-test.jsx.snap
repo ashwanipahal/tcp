@@ -166,6 +166,47 @@ exports[`ModuleK component renders correctly 1`] = `
       letter-spacing: 2.42px;
     }
   }
+
+  /* Module J Heading styles */
+  .small_text_normal {
+    font-family: ",
+                [Function],
+                ";
+    font-size: ",
+                [Function],
+                ";
+
+    @media ",
+                [Function],
+                " {
+      font-size: ",
+                [Function],
+                ";
+    }
+  }
+  .medium_text_black {
+    font-family: ",
+                [Function],
+                ";
+    font-weight: ",
+                [Function],
+                ";
+    font-size: ",
+                [Function],
+                ";
+    letter-spacing: -0.5px;
+    margin-bottom: ",
+                [Function],
+                ";
+
+    @media ",
+                [Function],
+                " {
+      font-size: ",
+                [Function],
+                ";
+    }
+  }
 ",
                 ";
 ",
@@ -584,6 +625,13 @@ exports[`ModuleK component renders correctly 1`] = `
           colM={2}
           dataLocator="moduleK_image_1"
           dataLocatorContainer="moduleK_image_set_1"
+          imgConfigs={
+            Array [
+              "t_mod_K_img_m",
+              "t_mod_K_img_t",
+              "t_mod_K_img_d",
+            ]
+          }
           mediaLinkedList={
             Array [
               Object {
@@ -707,6 +755,13 @@ exports[`ModuleK component renders correctly 1`] = `
           colM={2}
           dataLocator="moduleK_image_2"
           dataLocatorContainer="moduleK_image_set_2"
+          imgConfigs={
+            Array [
+              "t_mod_K_img_m",
+              "t_mod_K_img_t",
+              "t_mod_K_img_d",
+            ]
+          }
           mediaLinkedList={
             Array [
               Object {

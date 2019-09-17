@@ -52,9 +52,9 @@ const {
   getAddEditResponseAddressId,
   getShippingAddress,
   getCheckoutProgressBarLabels,
+  getSyncError,
   getGiftWrappingValues,
   getReviewLabels,
-  getSyncError,
 } = selectors;
 
 export class CheckoutContainer extends React.Component<Props> {
@@ -239,6 +239,7 @@ const mapStateToProps = state => {
     },
     billingProps: {
       labels: getBillingLabels(state),
+      shippingAddress: getShippingAddress(state),
     },
     // isAddressVerifyModalOpen: addressesStoreView.isVerifyAddressModalOpen(state),
     // onPickupSubmit: storeOperators.checkoutFormOperator.submitPickupSection,

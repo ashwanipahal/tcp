@@ -39,11 +39,11 @@ export const bodyCopyStyles = {
     />
   ),
   // small text with normal font
-  style3: props => (
+  small_text_normal: props => (
     <BodyCopy color="gray.900" fontFamily="primary" fontSize="fs14" textAlign="center" {...props} />
   ),
   // large text with bold font
-  style4: props => (
+  medium_text_black: props => (
     <BodyCopy
       color="gray.900"
       fontFamily="primary"
@@ -124,7 +124,7 @@ const LinkText = (props: Props) => {
     };
   }
 
-  return headerText.map(item => {
+  return headerText.map((item, index) => {
     const { link, textItems } = item;
     if (useStyle) {
       return (
@@ -134,7 +134,7 @@ const LinkText = (props: Props) => {
       );
     }
     return (
-      <Anchor url={link.url} navigation={navigation}>
+      <Anchor key={index.toString()} url={link.url} navigation={navigation}>
         <Component
           {...compProps}
           text={getTextItems(textItems, renderComponentInNewLine, useStyle)}
