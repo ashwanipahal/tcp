@@ -22,14 +22,14 @@ export function getFavoriteStore(payload) {
   };
 }
 
-export function getStoresByLatLng(payload) {
+export function getStoresByCoordinates(payload) {
   return {
     payload,
     type: STORE_LOCATOR_CONSTANTS.GET_LOCATION_STORES,
   };
 }
 
-export function setStoresByLatLng(payload) {
+export function setStoresByCoordinates(payload) {
   return {
     payload,
     type: STORE_LOCATOR_CONSTANTS.STORES_SET_SUGGESTED_STORES,

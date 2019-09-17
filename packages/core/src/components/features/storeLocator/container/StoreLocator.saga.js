@@ -4,7 +4,7 @@ import STORE_LOCATOR_CONSTANTS from './StoreLocator.constants';
 import {
   getSetDefaultStoreActn,
   getSetGeoDefaultStoreActn,
-  setStoresByLatLng,
+  setStoresByCoordinates,
 } from './StoreLocator.actions';
 import {
   getFavoriteStore,
@@ -30,7 +30,7 @@ export function* getFavoriteStoreSaga({ payload }) {
 export function* fetchLocationStoresSaga({ payload }) {
   try {
     const res = yield call(getLocationStores, payload);
-    yield put(setStoresByLatLng(res));
+    yield put(setStoresByCoordinates(res));
   } catch (err) {
     yield null;
   }

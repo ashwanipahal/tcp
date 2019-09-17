@@ -7,18 +7,18 @@ import withStyles from '../../../common/hoc/withStyles';
 import ErrorMessage from '../../../common/hoc/ErrorMessage';
 import { INITIAL_STORE_LIMIT } from '../StoreLocator.constants';
 import { getAddressLocationInfo } from '../../../../utils/addressLocation';
-import styles from '../styles/Store.style';
+import styles from '../styles/StoreLocator.style';
 
-export class Store extends PureComponent {
+export class StoreLocatorView extends PureComponent {
   state = {
     errorNotFound: null,
   };
 
   componentDidMount() {
     if (navigator.geolocation) {
-      const { loadStoresByLatLng } = this.props;
+      const { loadStoresByCoordinates } = this.props;
       navigator.geolocation.getCurrentPosition(pos => {
-        loadStoresByLatLng(
+        loadStoresByCoordinates(
           Promise.resolve({ lat: pos.coords.latitude, lng: pos.coords.longitude }),
           INITIAL_STORE_LIMIT
         );
@@ -26,20 +26,30 @@ export class Store extends PureComponent {
     }
   }
 
-  handlePlaceSelected = place => {
-    const { loadStoresByLatLng, submitting } = this.props;
-    if ((!place.geometry && !place.location) || submitting) {
+  /**
+   * @function handleLocationSelection function to fetch the location coordinates.
+   * @param {object} selectedLocation - selected location details
+   * @param {object} geometry - The geometry details of the selected location
+   * @param {object} location - The location details of the selected location
+   */
+  handleLocationSelection = ({ geometry, location }) => {
+    const { loadStoresByCoordinates, submitting } = this.props;
+    if ((!geometry && !location) || submitting) {
       return;
     }
-    const { lat, lng } = place.geometry ? place.geometry.location : place.location;
-    loadStoresByLatLng(Promise.resolve({ lat: lat(), lng: lng() }), INITIAL_STORE_LIMIT);
+    const { lat, lng } = geometry ? geometry.location : location;
+    loadStoresByCoordinates(Promise.resolve({ lat: lat(), lng: lng() }), INITIAL_STORE_LIMIT);
   };
 
+  /**
+   * @function onSubmit function to handle the form submit
+   * @param {object} formData - form input data
+   */
   onSubmit = formData => {
-    const { submitting, loadStoresByLatLng } = this.props;
+    const { submitting, loadStoresByCoordinates } = this.props;
     if (!submitting) {
       this.setState({ errorNotFound: null });
-      return loadStoresByLatLng(
+      return loadStoresByCoordinates(
         getAddressLocationInfo(formData.storeAddressLocator).catch(() =>
           this.setState({ errorNotFound: true })
         ),
@@ -62,7 +72,7 @@ export class Store extends PureComponent {
             placeholder="type"
             component={AutoCompleteComponent}
             name="storeAddressLocator"
-            onPlaceSelected={this.handlePlaceSelected}
+            onPlaceSelected={this.handleLocationSelection}
             componentRestrictions={Object.assign({}, { country: [selectedCountry] })}
             dataLocator="storeAddressLocator"
             className="store-locator-field"
@@ -85,22 +95,22 @@ export class Store extends PureComponent {
   }
 }
 
-Store.propTypes = {
+StoreLocatorView.propTypes = {
   className: PropTypes.string.isRequired,
   selectedCountry: PropTypes.string.isRequired,
-  loadStoresByLatLng: PropTypes.func.isRequired,
+  loadStoresByCoordinates: PropTypes.func.isRequired,
   submitting: PropTypes.bool,
   error: PropTypes.bool.isRequired,
   handleSubmit: PropTypes.func.isRequired,
 };
 
-Store.defaultProps = {
+StoreLocatorView.defaultProps = {
   submitting: false,
 };
 
 export default reduxForm({
-  form: 'Store',
+  form: 'StoreLocatorView',
   enableReinitialize: true,
-})(withStyles(Store, styles));
+})(withStyles(StoreLocatorView, styles));
 
-export { Store as StoreViewVanilla };
+export { StoreLocatorView as StoreViewVanilla };

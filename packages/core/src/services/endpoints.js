@@ -261,7 +261,7 @@ const endpoints = {
     method: 'GET',
     URI: 'v2/store/getFavouriteStoreLocation',
   },
-  findStoresbyLatitudeandLongitude: {
+  findStoresByCoordinates: {
     method: 'GET',
     URI: 'v2/store/findStoresbyLatitudeandLongitude',
   },

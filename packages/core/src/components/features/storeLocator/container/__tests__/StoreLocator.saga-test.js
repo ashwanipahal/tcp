@@ -1,14 +1,12 @@
 import { call, put } from 'redux-saga/effects';
 import { fetchLocationStoresSaga } from '../StoreLocator.saga';
 import suggestedStores from '../__mocks__/suggestedStore';
-import { setStoresByLatLng } from '../StoreLocator.actions';
+import { setStoresByCoordinates } from '../StoreLocator.actions';
+import { getLocationStores } from '../../../../../services/abstractors/common/storeLocator';
 
 jest.mock('../../../../../services/abstractors/common/storeLocator', () => ({
   getLocationStores: jest.fn(),
 }));
-
-/* eslint-disable-next-line import/first */
-import { getLocationStores } from '../../../../../services/abstractors/common/storeLocator';
 
 describe('Store Locator saga', () => {
   describe('fetchLocationStoresSaga', () => {
@@ -25,7 +23,7 @@ describe('Store Locator saga', () => {
     test('default', () => {
       const returnValue = call(getLocationStores, payload);
       expect(generator.next().value).toEqual(returnValue);
-      expect(generator.next().value).toEqual(put(setStoresByLatLng()));
+      expect(generator.next().value).toEqual(put(setStoresByCoordinates()));
     });
 
     test('error', () => {

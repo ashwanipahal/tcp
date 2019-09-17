@@ -1,12 +1,10 @@
 import { getLocationStores } from '../storeLocator';
 import mockStoreByLatLngData, { mockLocResponse } from '../__mocks__/locationStores';
+import { executeStatefulAPICall } from '../../../../handler';
 
 jest.mock('../../../../handler', () => ({
   executeStatefulAPICall: jest.fn(),
 }));
-
-/* eslint-disable-next-line import/first */
-import { executeStatefulAPICall } from '../../../../handler';
 
 describe('Store Locator Abstractor', () => {
   test('getLocationStores', () => {

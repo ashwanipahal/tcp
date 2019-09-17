@@ -296,7 +296,7 @@ export const getLocationStores = ({
       maxItems,
     },
     body: {},
-    webService: endpoints.findStoresbyLatitudeandLongitude,
+    webService: endpoints.findStoresByCoordinates,
   };
   return executeStatefulAPICall(payload)
     .then(res => {
