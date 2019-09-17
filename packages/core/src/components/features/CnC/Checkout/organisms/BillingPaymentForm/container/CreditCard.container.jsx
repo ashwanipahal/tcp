@@ -5,6 +5,7 @@ import { getCardListState } from '../../../../../account/Payment/container/Payme
 import BillingPaymentForm from '../views';
 import CreditCardSelector from './CreditCard.selectors';
 import constants from './CreditCard.constants';
+import CheckoutSelectors from '../../../container/Checkout.selector';
 
 export class GiftCardsContainer extends React.PureComponent<Props> {
   constructor(props) {
@@ -94,6 +95,7 @@ export class GiftCardsContainer extends React.PureComponent<Props> {
       backLinkShipping,
       nextSubmitText,
       formErrorMessage,
+      isPaymentDisabled,
     } = this.props;
     this.initialValues = this.getInitialValues(this.getCreditCardDefault(cardList));
     return (
@@ -111,6 +113,7 @@ export class GiftCardsContainer extends React.PureComponent<Props> {
         backLinkShipping={backLinkShipping}
         nextSubmitText={nextSubmitText}
         formErrorMessage={formErrorMessage}
+        isPaymentDisabled={isPaymentDisabled}
       />
     );
   }
@@ -130,6 +133,7 @@ const mapStateToProps = (state, ownProps) => {
     onFileCardKey: CreditCardSelector.getOnFileCardKey(state, ownProps),
     paymentMethodId: CreditCardSelector.getPaymentMethodId(state, ownProps),
     formErrorMessage: CreditCardSelector.getFormValidationErrorMessages(state),
+    isPaymentDisabled: CheckoutSelectors.getIsPaymentDisabled(state),
   };
 };
 

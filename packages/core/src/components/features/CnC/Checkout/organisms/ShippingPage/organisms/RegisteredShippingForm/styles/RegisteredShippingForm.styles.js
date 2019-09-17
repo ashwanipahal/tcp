@@ -1,96 +1,37 @@
 import { css } from 'styled-components';
 
 const styles = css`
+  margin-top: ${props => props.theme.spacing.ELEM_SPACING.MED};
   .address-dropDown {
     margin-bottom: ${props => props.theme.spacing.ELEM_SPACING.MED};
     @media ${props => props.theme.mediaQuery.medium} {
       margin-bottom: ${props => props.theme.spacing.ELEM_SPACING.LRG};
     }
     pointer-events: ${props => (props.isEditing ? 'none' : 'auto')};
-    .dropDownListwrapper {
-      padding-bottom: 51px;
-    }
     .address {
-      font-size: ${props => props.theme.fonts.fontSize.body.bodytext.copy2}px;
       font-family: ${props => props.theme.typography.fonts.secondary};
       color: ${props => props.theme.colors.PRIMARY.DARK};
     }
-    .dropdownDivOverFlow {
-      overflow-y: auto;
+    .address-wrapper {
+      display: flex;
+      flex-direction: row;
+      justify-content: space-between;
+    }
+    .default-badge {
+      height: 13px;
     }
   }
 
-  .add-address {
-    cursor: pointer;
-  }
-
-  .dropdownActiveClass {
-    background-color: ${props => props.theme.colorPalette.gray[900]};
-    .address {
-      color: ${props => props.theme.colorPalette.white};
-    }
-    .add-address {
-      color: ${props => props.theme.colorPalette.white};
-    }
+  li.dropdownActiveClass:nth-last-of-type(1) {
+    background-color: ${props => props.theme.colorPalette.white};
   }
 
   .dropdownActiveIcon {
     display: none;
   }
 
-  .dropDownListwrapper li {
+  .add-address {
     cursor: pointer;
-  }
-
-  .ulBorderWithLastRow li:last-child {
-    height: auto;
-    border-top: 1px solid ${props => props.theme.colorPalette.gray[600]};
-    cursor: pointer;
-  }
-
-  .ulBorderWithLastRow li:hover {
-    background-color: ${props => props.theme.colorPalette.gray[900]};
-    .address .add-address {
-      color: ${props => props.theme.colorPalette.white};
-    }
-  }
-
-  .ulBorderWithLastRow li:last-child:hover {
-    background-color: ${props => props.theme.colorPalette.gray[900]};
-    .add-address {
-      color: ${props => props.theme.colorPalette.white};
-    }
-  }
-
-  .ulBorderWithLastRow li:hover:not(.dropdownActiveClass) {
-    background-color: ${props => props.theme.colorPalette.white};
-    .address .add-address {
-      color: ${props => props.theme.colorPalette.black};
-    }
-  }
-
-  .ulBorderWithLastRow li:last-child:hover:not(.dropdownActiveClass) {
-    background-color: ${props => props.theme.colorPalette.white};
-    .add-address {
-      color: ${props => props.theme.colorPalette.black};
-    }
-  }
-
-  .custom-select {
-    margin-top: ${props => props.theme.spacing.ELEM_SPACING.SM};
-    span {
-      font-size: ${props => props.theme.typography.fontSizes.fs10};
-      font-family: ${props => props.theme.typography.fonts.secondary};
-      font-weight: ${props => props.theme.typography.fontWeights.black};
-    }
-  }
-
-  .customSelectTitle {
-    margin-top: 0;
-    padding-top: 0;
-    font-size: ${props => props.theme.fonts.fontSize.listmenu.large}px;
-    font-family: ${props => props.theme.typography.fonts.secondary};
-    color: ${props => props.theme.colors.PRIMARY.DARK};
   }
 
   .default-shipping {

@@ -57,6 +57,10 @@ const getFormattedAddress = (address, dataLocatorPrefix) => {
   );
 };
 
+const getUserName = ({ address, isDefault, showDefault }) => {
+  return `${address.firstName} ${address.lastName}${isDefault && showDefault ? ' (Default)' : ''}`;
+};
+
 /**
  * @function Address The address component will render an address
  * that is constructed from the address prop passed.
@@ -73,6 +77,7 @@ const Address = ({
   showCountry,
   isDefault,
   showName,
+  showDefault,
 }) => {
   return address ? (
     <BodyCopy component="div" fontSize="fs14" color="text.primary" className={className}>
@@ -84,7 +89,7 @@ const Address = ({
           className="addressTile__name address"
           data-locator={dataLocatorPrefix ? `${dataLocatorPrefix}-fullname` : ''}
         >
-          {`${address.firstName} ${address.lastName}${isDefault ? ' (Default)' : ''}`}
+          {getUserName({ address, isDefault, showDefault })}
         </BodyCopy>
       )}
       {address.addressLine
@@ -114,6 +119,7 @@ Address.propTypes = {
   showCountry: PropTypes.bool,
   isDefault: PropTypes.bool,
   showName: PropTypes.bool,
+  showDefault: PropTypes.bool,
 };
 
 Address.defaultProps = {
@@ -125,6 +131,7 @@ Address.defaultProps = {
   className: '',
   dataLocatorPrefix: '',
   fontWeight: 'regular',
+  showDefault: true,
 };
 
 export default Address;

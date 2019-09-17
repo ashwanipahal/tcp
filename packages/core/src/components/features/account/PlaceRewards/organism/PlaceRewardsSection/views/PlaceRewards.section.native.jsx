@@ -43,7 +43,7 @@ const PlaceRewardsSection = ({ labels, className, ...otherProps }) => {
               text={labels.placeRewards.lbl_my_rewards_points_history}
             />
           </StyledHeading>
-          <PointsHistory />
+          <PointsHistory {...otherProps} />
         </StyledView>
         <StyledView>
           <BonusPointsDays />

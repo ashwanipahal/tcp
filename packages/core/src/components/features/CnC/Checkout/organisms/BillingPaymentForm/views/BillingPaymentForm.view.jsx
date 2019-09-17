@@ -39,6 +39,7 @@ export class BillingPaymentForm extends React.PureComponent {
     backLinkPickup: PropTypes.string.isRequired,
     backLinkShipping: PropTypes.string.isRequired,
     nextSubmitText: PropTypes.string.isRequired,
+    isPaymentDisabled: PropTypes.bool,
   };
 
   static defaultProps = {
@@ -46,6 +47,7 @@ export class BillingPaymentForm extends React.PureComponent {
     onFileCardKey: '',
     cvvCodeRichText: null,
     orderHasShipping: false,
+    isPaymentDisabled: false,
   };
 
   handleEditClick = () => {};
@@ -71,7 +73,12 @@ export class BillingPaymentForm extends React.PureComponent {
       value: '',
       title: labels.lbl_billing_addCreditHeading,
       content: (
-        <Button fullWidth buttonVariation="variable-width" fill="BLACK">
+        <Button
+          className="addCreditCardBtn"
+          fullWidth
+          buttonVariation="variable-width"
+          fill="BLACK"
+        >
           {labels.lbl_billing_addCreditBtn}
         </Button>
       ),
@@ -96,24 +103,26 @@ export class BillingPaymentForm extends React.PureComponent {
   getCreditCardDropDown = (options, onClickHandler, activeValue, onClose) => {
     return (
       <>
-        <Modal
-          fixedWidth
-          heading="SELECT CARD"
-          overlayClassName="TCPModal__Overlay"
-          className="TCPModal__Content_Modal hideOnDesktop"
-          onRequestClose={onClose}
-          maxWidth="450px"
-          minHeight="643px"
-          shouldCloseOnOverlayClick={false}
-          isOpen
-        >
-          <DropdownList
-            optionsMap={options}
-            clickHandler={onClickHandler}
-            activeValue={activeValue}
-            className="custom-select-dropDownList"
-          />
-        </Modal>
+        <div className="hideOnDesktop">
+          <Modal
+            fixedWidth
+            heading="SELECT CARD"
+            overlayClassName="TCPModal__Overlay"
+            className="TCPModal__Content_Modal"
+            onRequestClose={onClose}
+            maxWidth="450px"
+            minHeight="643px"
+            shouldCloseOnOverlayClick={false}
+            isOpen
+          >
+            <DropdownList
+              optionsMap={options}
+              clickHandler={onClickHandler}
+              activeValue={activeValue}
+              className="custom-select-dropDownList"
+            />
+          </Modal>
+        </div>
         <DropdownList
           optionsMap={options}
           clickHandler={onClickHandler}
@@ -143,7 +152,7 @@ export class BillingPaymentForm extends React.PureComponent {
         </Heading>
         {creditCardList && creditCardList.size > 0 && labels && (
           <>
-            <Row fullBleed className="elem-mb-XL">
+            <Row fullBleed className="elem-mb-XL elem-mt-MED">
               <Col
                 colSize={{
                   large: 6,
@@ -168,7 +177,7 @@ export class BillingPaymentForm extends React.PureComponent {
             <BodyCopy component="div" fontFamily="secondary" className="billing-payment-details">
               <BodyCopy
                 fontFamily="primary"
-                fontSize="fs28"
+                fontSize="fs26"
                 fontWeight="regular"
                 data-locator="billing-payment-details"
                 className="elem-mb-XS"
@@ -296,31 +305,37 @@ export class BillingPaymentForm extends React.PureComponent {
       backLinkPickup,
       backLinkShipping,
       nextSubmitText,
+      isPaymentDisabled,
     } = this.props;
     const creditCardList = this.getCreditCardList(cardList);
     const selectedCard = onFileCardKey ? this.getSelectedCard(cardList, onFileCardKey) : '';
-
     return (
       <form name={constants.FORM_NAME} noValidate className={className} onSubmit={handleSubmit}>
-        <BodyCopy
-          fontFamily="primary"
-          fontSize="fs28"
-          fontWeight="regular"
-          data-locator="billing-details"
-          className="elem-mb-XS elem-mt-MED"
-        >
-          {labels.lbl_billing_paymentMethodTitle}
-        </BodyCopy>
-        <PaymentMethods labels={labels} />
-        {paymentMethodId === constants.PAYMENT_METHOD_CREDIT_CARD
-          ? this.getCreditCardWrapper({
-              labels,
-              creditCardList,
-              selectedCard,
-              cvvCodeRichText,
-              onFileCardKey,
-            })
-          : null}
+        {!isPaymentDisabled && (
+          <div className="payment-container">
+            <BodyCopy
+              fontFamily="primary"
+              fontSize="fs26"
+              fontWeight="regular"
+              data-locator="billing-details"
+              className="elem-mb-LRG elem-mt-XL"
+            >
+              {labels.lbl_billing_paymentMethodTitle}
+            </BodyCopy>
+            <PaymentMethods labels={labels} />
+            {paymentMethodId === constants.PAYMENT_METHOD_CREDIT_CARD ? (
+              this.getCreditCardWrapper({
+                labels,
+                creditCardList,
+                selectedCard,
+                cvvCodeRichText,
+                onFileCardKey,
+              })
+            ) : (
+              <div className="payment-paypal-container" />
+            )}
+          </div>
+        )}
         <CheckoutFooter
           hideBackLink
           backLinkHandler={() => utility.routeToPage(CHECKOUT_ROUTES.shippingPage)}

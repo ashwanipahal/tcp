@@ -25,8 +25,8 @@ const HomePageView = dynamic({
     return [
       <HomePageSlots slots={slots} modules={modules} />,
       <ModuleB {...mock} />,
-      <GetCandid />,
       <ModuleJ {...moduleJMock.moduleJ.composites} />,
+      <GetCandid />,
       <Recommendations />,
     ];
   },
