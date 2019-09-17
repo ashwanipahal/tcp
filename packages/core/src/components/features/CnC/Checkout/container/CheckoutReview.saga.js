@@ -108,6 +108,51 @@ function* loadPersonalizedCoupons(
   }
 }
 
+export function* submitOrderProcessing(orderId, smsOrderInfo, currentLanguage) {
+  // return reviewOrder().then((res) => {
+  const venmoPayloadData = {};
+  // if (venmoPaymentMethodApplied) {
+  // const { nonce: venmoNonce, deviceData: venmo_device_data } = checkoutStoreView.getVenmoData(
+  //   state
+  // );
+  // const email = checkoutStoreView.getVenmoUserEmail(state);
+  // venmoPayloadData = {
+  //   venmoNonce,
+  //   venmo_device_data,
+  //   email,
+  // };
+  // }
+
+  const res = yield submitOrder(orderId, smsOrderInfo, currentLanguage, venmoPayloadData);
+  // const cartItems = yield select(BagPageSelectors.getOrderItems);
+  // const vendorId =
+  //   cartItems.size > 0 && cartItems.getIn(['0', 'miscInfo', 'vendorColorDisplayId']);
+  yield call(loadPersonalizedCoupons, res, orderId);
+  yield put(setCouponList(res));
+  const email = res.userDetails ? res.userDetails.emailAddress : res.shipping.emailAddress;
+  const isCaSite = yield call(isCanada);
+  const isGuestUser = yield select(isGuest);
+  if (isGuestUser && !isCaSite && email) {
+    yield call(validateAndSubmitEmailSignup, email, 'us_guest_checkout');
+  }
+
+  utility.routeToPage(CHECKOUT_ROUTES.confirmationPage);
+  // this.store.dispatch(getSetOrderProductDetails(cartItems));
+  // getCartOperator(this.store).clearCart();
+  // getUserOperator(this.store).setUserBasicInfo();
+  // getCouponsAndPromosFormOperator(this.store).burstCache();
+  // getProductsOperator(this.store).loadProductRecommendations(
+  //   RECOMMENDATIONS_SECTIONS.CHECKOUT,
+  //   vendorId
+  // );
+  // this.store.dispatch(setVenmoPaymentConfirmationDisplayed(venmoPaymentMethodApplied));
+  // getCartOperator(this.store)
+  // .loadSflItemsCount()
+  // .catch(err => {
+  //   logErrorAndServerThrow(this.store, 'loadSflItemsCount', err);
+  // });
+}
+
 function* submitOrderForProcessing(/* formData */) {
   const orderId = yield select(getCurrentOrderId);
   const smsOrderInfo = yield select(getSmsNumberForBillingOrderUpdates);
@@ -116,50 +161,6 @@ function* submitOrderForProcessing(/* formData */) {
   // const isPaymentDisabled = yield select(getIsPaymentDisabled);
   // const venmoPaymentMethodApplied = venmoPaymentAvailable && !isPaymentDisabled;
 
-  function* submitOrderProcessing() {
-    // return reviewOrder().then((res) => {
-    const venmoPayloadData = {};
-    // if (venmoPaymentMethodApplied) {
-    // const { nonce: venmoNonce, deviceData: venmo_device_data } = checkoutStoreView.getVenmoData(
-    //   state
-    // );
-    // const email = checkoutStoreView.getVenmoUserEmail(state);
-    // venmoPayloadData = {
-    //   venmoNonce,
-    //   venmo_device_data,
-    //   email,
-    // };
-    // }
-
-    const res = yield submitOrder(orderId, smsOrderInfo, currentLanguage, venmoPayloadData);
-    // const cartItems = yield select(BagPageSelectors.getOrderItems);
-    // const vendorId =
-    //   cartItems.size > 0 && cartItems.getIn(['0', 'miscInfo', 'vendorColorDisplayId']);
-    yield call(loadPersonalizedCoupons, res, orderId);
-    yield put(setCouponList(res));
-    const email = res.userDetails ? res.userDetails.emailAddress : res.shipping.emailAddress;
-    const isCaSite = yield call(isCanada);
-    const isGuestUser = yield select(isGuest);
-    if (isGuestUser && !isCaSite && email) {
-      yield call(validateAndSubmitEmailSignup, email, 'us_guest_checkout');
-    }
-
-    utility.routeToPage(CHECKOUT_ROUTES.confirmationPage);
-    // this.store.dispatch(getSetOrderProductDetails(cartItems));
-    // getCartOperator(this.store).clearCart();
-    // getUserOperator(this.store).setUserBasicInfo();
-    // getCouponsAndPromosFormOperator(this.store).burstCache();
-    // getProductsOperator(this.store).loadProductRecommendations(
-    //   RECOMMENDATIONS_SECTIONS.CHECKOUT,
-    //   vendorId
-    // );
-    // this.store.dispatch(setVenmoPaymentConfirmationDisplayed(venmoPaymentMethodApplied));
-    // getCartOperator(this.store)
-    // .loadSflItemsCount()
-    // .catch(err => {
-    //   logErrorAndServerThrow(this.store, 'loadSflItemsCount', err);
-    // });
-  }
   const pendingPromises = [];
   // if (checkoutStoreView.isExpressCheckout(state)) {
   //   // if express checkout
@@ -335,7 +336,7 @@ function* submitOrderForProcessing(/* formData */) {
   //   pendingPromises.push(runPromisesInSerial(localPromises));
   // }
   yield all(pendingPromises);
-  yield call(submitOrderProcessing);
+  yield call(submitOrderProcessing, orderId, smsOrderInfo, currentLanguage);
 }
 
 export default submitOrderForProcessing;
