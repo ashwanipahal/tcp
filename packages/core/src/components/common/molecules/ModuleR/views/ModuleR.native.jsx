@@ -54,10 +54,10 @@ class ModuleR extends React.PureComponent {
      in the selectedProductList in order to render in the grid.
   */
   getImageGrid = selectedProductList => {
-    const { layout, navigation } = this.props;
+    const { bannerPosition, navigation } = this.props;
 
     return (
-      <ImageContainer layout={layout}>
+      <ImageContainer layout={bannerPosition}>
         {selectedProductList.map(productItem => {
           // check if productItem is not a PromoBanner component. Else render the promon banner
           if (productItem.uniqueId) {
@@ -113,7 +113,14 @@ class ModuleR extends React.PureComponent {
   }
 
   render() {
-    const { navigation, divTabs, productTabList, headerText, promoBanner, layout } = this.props;
+    const {
+      navigation,
+      divTabs,
+      productTabList,
+      headerText,
+      promoBanner,
+      bannerPosition,
+    } = this.props;
     const { selectedCategoryId } = this.state;
     let selectedProductList = productTabList[selectedCategoryId] || [];
 
@@ -128,7 +135,7 @@ class ModuleR extends React.PureComponent {
        On the case of alt layout we will only show only images so sliced 9 images.
     */
     if (selectedProductList.length) {
-      if (layout === 'default') {
+      if (bannerPosition === 'center') {
         selectedProductList = selectedProductList.slice(0, 8);
         selectedProductList.splice(4, 0, promoComponentContainer);
       } else {
@@ -146,7 +153,7 @@ class ModuleR extends React.PureComponent {
             useStyle
           />
         </HeaderContainer>
-        {layout === 'alt' ? promoComponentContainer : null}
+        {bannerPosition === 'top' ? promoComponentContainer : null}
         <ProductTabListContainer>
           <ProductTabList
             onProductTabChange={this.onProductTabChange}
@@ -166,7 +173,7 @@ ModuleR.defaultProps = {
   headerText: [],
   productTabList: {},
   navigation: null,
-  layout: 'alt',
+  bannerPosition: 'center',
   promoBanner: [],
   divTabs: [],
 };
@@ -191,7 +198,7 @@ ModuleR.propTypes = {
     )
   ),
   navigation: PropTypes.shape({}),
-  layout: PropTypes.string,
+  bannerPosition: PropTypes.string,
   promoBanner: PropTypes.arrayOf(
     PropTypes.shape({
       textItems: PropTypes.array,

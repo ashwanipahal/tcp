@@ -367,6 +367,7 @@ export default css`
   * Module R Promo Banner styles
   *********************************/
   .medium_text_regular {
+    display: block;
     font-family: ${props => props.theme.typography.fonts.primary};
     font-size: ${props => props.theme.typography.fontSizes.fs20};
     font-weight: ${props => props.theme.typography.fontWeights.semibold};

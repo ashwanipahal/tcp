@@ -55,11 +55,11 @@ class ModuleR extends React.PureComponent {
     ProductTabList so that we can hand product list requirement according to the modules requirement.
   */
   getSelectedProductList = selectedProductList => {
-    const { layout } = this.props;
+    const { bannerPosition } = this.props;
     const promoComponent = this.getPromoComponent();
     let productsList = selectedProductList;
 
-    if (layout === 'default') {
+    if (bannerPosition === 'center') {
       if (window.matchMedia(mediaQuery.smallMax).matches) {
         productsList = productsList.slice(0, 8);
         productsList.splice(4, 0, promoComponent);
@@ -160,7 +160,7 @@ class ModuleR extends React.PureComponent {
   }
 
   render() {
-    const { className, divTabs, productTabList, headerText, layout } = this.props;
+    const { className, divTabs, productTabList, headerText, bannerPosition } = this.props;
     const promoComponent = this.getPromoComponent();
     const { selectedCategoryId } = this.state;
     let selectedProductList = productTabList[selectedCategoryId] || [];
@@ -189,7 +189,7 @@ class ModuleR extends React.PureComponent {
               />
             ) : null}
           </Col>
-          {layout === 'alt' ? <div className="promo-wrapper">{promoComponent}</div> : null}
+          {bannerPosition === 'top' ? <div className="promo-wrapper">{promoComponent}</div> : null}
           <Col
             colSize={{
               small: 6,
@@ -217,7 +217,7 @@ ModuleR.defaultProps = {
   headerText: [],
   productTabList: {},
   promoBanner: [],
-  layout: 'default',
+  bannerPosition: 'center',
 };
 
 ModuleR.propTypes = {
@@ -255,7 +255,7 @@ ModuleR.propTypes = {
       })
     )
   ),
-  layout: PropTypes.string,
+  bannerPosition: PropTypes.string,
 };
 
 export default withStyles(ModuleR, moduleRStyle);
