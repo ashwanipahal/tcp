@@ -29,6 +29,7 @@ export default class ShippingPage extends React.Component {
     navigation: PropTypes.shape({}).isRequired,
     handleSubmit: PropTypes.func.isRequired,
     availableStages: PropTypes.shape([]).isRequired,
+    isGiftServicesChecked: PropTypes.bool,
   };
 
   static defaultProps = {
@@ -41,6 +42,7 @@ export default class ShippingPage extends React.Component {
     orderHasPickUp: false,
     shipmentMethods: null,
     defaultShipmentId: null,
+    isGiftServicesChecked: false,
   };
 
   componentDidUpdate(prevProps) {
@@ -115,6 +117,7 @@ export default class ShippingPage extends React.Component {
       navigation,
       availableStages,
       labels,
+      isGiftServicesChecked,
     } = this.props;
 
     return (
@@ -159,6 +162,7 @@ export default class ShippingPage extends React.Component {
               navigation={navigation}
               submitShippingForm={this.submitShippingForm}
               labels={labels}
+              isGiftServicesChecked={isGiftServicesChecked}
             />
           )}
         </ScrollView>

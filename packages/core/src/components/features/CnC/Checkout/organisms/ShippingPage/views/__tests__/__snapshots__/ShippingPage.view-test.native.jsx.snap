@@ -91,6 +91,7 @@ exports[`Shipping Page should render correctly 1`] = `
           },
         }
       }
+      isGiftServicesChecked={false}
       isGuest={true}
       isOrderUpdateChecked={false}
       isUsSite={true}

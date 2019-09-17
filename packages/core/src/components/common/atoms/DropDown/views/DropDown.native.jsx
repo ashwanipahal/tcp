@@ -13,6 +13,7 @@ import {
   Separator,
   FlatList,
   StyledLabel,
+  SelectedLabelView,
 } from '../DropDown.style.native';
 
 const downIcon = require('../../../../../assets/carrot-small-down.png');
@@ -172,14 +173,18 @@ class DropDown extends React.PureComponent<Props> {
     }
     return (
       <DropDownItemContainer onPress={() => this.onDropDownItemClick(item)} style={itemStyle}>
-        <BodyCopy
-          mobileFontFamily="secondary"
-          fontSize="fs13"
-          textAlign={variation === 'primary' ? 'center' : ''}
-          color={itemStyle.color}
-          fontWeight="semibold"
-          text={label}
-        />
+        {typeof label !== 'object' ? (
+          <BodyCopy
+            mobileFontFamily="secondary"
+            fontSize="fs13"
+            textAlign={variation === 'primary' ? 'center' : ''}
+            color={itemStyle.color}
+            fontWeight="semibold"
+            text={label}
+          />
+        ) : (
+          <View>{label}</View>
+        )}
       </DropDownItemContainer>
     );
   };
@@ -237,14 +242,18 @@ class DropDown extends React.PureComponent<Props> {
           pointerEvents={disabled ? 'none' : 'auto'}
         >
           <HeaderContainer>
-            <BodyCopy
-              mobileFontFamily="secondary"
-              fontSize="fs13"
-              textAlign="center"
-              color="gray.800"
-              fontWeight="semibold"
-              text={selectedLabelState}
-            />
+            {typeof selectedLabelState !== 'object' ? (
+              <BodyCopy
+                mobileFontFamily="secondary"
+                fontSize="fs13"
+                textAlign="center"
+                color="gray.800"
+                fontWeight="semibold"
+                text={selectedLabelState}
+              />
+            ) : (
+              <SelectedLabelView>{selectedLabelState}</SelectedLabelView>
+            )}
           </HeaderContainer>
           <Image source={dropDownIsOpen ? upIcon : downIcon} />
         </Row>

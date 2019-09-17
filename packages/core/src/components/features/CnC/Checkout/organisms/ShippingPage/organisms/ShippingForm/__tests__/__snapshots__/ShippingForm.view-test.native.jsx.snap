@@ -43,6 +43,15 @@ exports[`Shipping Form should render correctly 1`] = `
         shipmentMethods={null}
       />
     </FormSection>
+    <FormSection
+      name="giftServices"
+    >
+      <Connect(GiftServicesContainer)
+        formSection="giftServices"
+        showDefaultCheckbox={false}
+        variation="secondary"
+      />
+    </FormSection>
   </Styled(View)>
   <CnCCommonTemplate
     backLinkText={false}
