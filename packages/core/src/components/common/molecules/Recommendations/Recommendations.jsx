@@ -7,8 +7,23 @@ import ButtonCTA from '../ButtonCTA';
 import { getIconPath } from '../../../../utils';
 import withStyles from '../../hoc/withStyles';
 import style from './Recommendations.style';
-import ModuleO from '../ModuleO';
-import ModuleP from '../ModuleP';
+
+const RecommendationComponentVariation = {
+  modules: {
+    ModuleO: import('../ModuleO').then(mod => mod.default),
+    ModuleP: import('../ModuleP').then(mod => mod.default),
+  },
+  render: (dynamicComponentProps, { ModuleO, ModuleP }) => {
+    switch (dynamicComponentProps.variation) {
+      case 'moduleO':
+        return <ModuleO {...dynamicComponentProps} />;
+      case 'moduleP':
+        return <ModuleP {...dynamicComponentProps} />;
+      default:
+        return <ModuleO {...dynamicComponentProps} />;
+    }
+  },
+};
 
 class Recommendations extends Component {
   componentDidMount() {
@@ -31,18 +46,8 @@ class Recommendations extends Component {
       ctaUrl,
     } = this.props;
 
-    let priceOnlyClass = '';
-    let RecommendationComponent;
+    const priceOnlyClass = priceOnly ? 'price-only' : '';
     const params = config.params[variation];
-
-    if (variation === 'moduleO') {
-      priceOnlyClass = priceOnly ? 'price-only' : '';
-      RecommendationComponent = ModuleO;
-    }
-
-    if (variation === 'moduleP') {
-      RecommendationComponent = ModuleP;
-    }
 
     return (
       products && (
@@ -82,8 +87,8 @@ class Recommendations extends Component {
                   const { generalProductId } = product;
 
                   return (
-                    <RecommendationComponent
-                      key={`recommended_products_${variation}_${index.toString()}`}
+                    <RecommendationComponentVariation
+                      key={`recommended_products_${variation}_${generalProductId}`}
                       loadedProductCount={loadedProductCount}
                       generalProductId={generalProductId}
                       item={product}
@@ -93,6 +98,7 @@ class Recommendations extends Component {
                       className={`${className} product-list ${priceOnlyClass}`}
                       labels={labels}
                       sequenceNumber={index + 1}
+                      variation={variation}
                     />
                   );
                 })}
@@ -100,7 +106,7 @@ class Recommendations extends Component {
             </Col>
           </Row>
           {showButton && (
-            <div className="recommendaton-cta-container">
+            <div className="recommendation-cta-container">
               <ButtonCTA
                 className="recommendation-cta"
                 uniqueKey="recommendation-button"

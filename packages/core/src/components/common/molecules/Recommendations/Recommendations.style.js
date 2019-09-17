@@ -6,7 +6,7 @@ export default css`
     margin: 32px 0 16px 0;
   }
 
-  .recommendaton-cta-container {
+  .recommendation-cta-container {
     text-align: center;
     margin-top: 16px;
   }
