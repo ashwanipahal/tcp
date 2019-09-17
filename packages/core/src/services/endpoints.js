@@ -119,6 +119,10 @@ const endpoints = {
     method: 'put',
     URI: 'v2/account/updatesAccountDataForRegisteredUser',
   },
+  getExtraPoints: {
+    method: 'GET',
+    URI: 'v2/account/points/waysToEarn',
+  },
   getGifCardBalance: {
     method: API_METHODS.POST,
     URI: 'v2/wallet/getGiftCardBalance',
@@ -255,6 +259,10 @@ const endpoints = {
     method: 'GET',
     URI: PRODUCTS_URI.PRODUCTS_AUTOSUGGEST,
     unbxd: true,
+  },
+  getMyFavoriteStore: {
+    method: API_METHODS.GET,
+    URI: 'v2/store/getFavouriteStoreLocation?latitude&longitude&catEntryId&itemPartNumber',
   },
   getStoreandProductInventoryInfo: {
     method: 'GET',
