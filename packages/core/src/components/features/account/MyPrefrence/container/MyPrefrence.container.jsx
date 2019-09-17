@@ -4,7 +4,7 @@ import { connect } from 'react-redux';
 import MyPrefrence from '../views/MyPrefrence.view';
 
 const getMyPrefrenceLabels = labels => {
-  return (labels && labels.myPrefrence) || {};
+  return (labels && labels.preferences) || {};
 };
 
 class MyPrefrenceContainer extends PureComponent {

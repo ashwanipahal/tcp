@@ -1,5 +1,6 @@
 import React from 'react';
 import PropTypes from 'prop-types';
+import { getLabelValue } from '@tcp/core/src/utils/utils';
 import { Field, reduxForm } from 'redux-form';
 import Row from '../../../../common/atoms/Row';
 import Col from '../../../../common/atoms/Col';
@@ -36,7 +37,7 @@ class MyFavoriteStore extends React.PureComponent {
               fontSize="fs16"
               fontWeight="extrabold"
             >
-              {labels.lbl_prefrence_favorite_store}
+              {getLabelValue(labels, 'lbl_prefrence_favorite_store')}
             </BodyCopy>
           </Col>
           <Col
@@ -56,7 +57,7 @@ class MyFavoriteStore extends React.PureComponent {
               fontSize="fs16"
               fontWeight="extrabold"
             >
-              {labels.lbl_prefrence_social_account}
+              {getLabelValue(labels, 'lbl_prefrence_social_account')}
             </BodyCopy>
             <SocialContainer view={config.VIEW_MODE.read} />
           </Col>
@@ -89,14 +90,14 @@ class MyFavoriteStore extends React.PureComponent {
               fontSize="fs16"
               fontWeight="extrabold"
             >
-              {labels.lbl_prefrence_rewards_prefrence}
+              {getLabelValue(labels, 'lbl_prefrence_rewards_prefrence')}
             </BodyCopy>
 
             <BodyCopy fontSize="fs16" fontFamily="secondary">
-              {labels.lbl_prefrence_access_buy_online_pickup}
+              {getLabelValue(labels, 'lbl_prefrence_access_buy_online_pickup')}
             </BodyCopy>
             <BodyCopy fontSize="fs16" fontFamily="secondary">
-              {labels.lbl_prefrence_not_added_fvt_store}
+              {getLabelValue(labels, 'lbl_prefrence_not_added_fvt_store')}
             </BodyCopy>
           </Col>
           <Col
@@ -129,7 +130,7 @@ class MyFavoriteStore extends React.PureComponent {
                     fontWeight="extrabold"
                     component="div"
                   >
-                    {labels.lbl_prefrence_app_text}
+                    {getLabelValue(labels, 'lbl_prefrence_app_text')}
                     <Image src={getIconPath('empty-fav-icon')} />
                   </BodyCopy>
 
@@ -141,7 +142,7 @@ class MyFavoriteStore extends React.PureComponent {
                   >
                     <BodyCopy fontSize="fs14" fontFamily="secondary" component="span">
                       {' '}
-                      {labels.lbl_prefrence_tcp_label}
+                      {getLabelValue(labels, 'lbl_prefrence_tcp_label')}
                     </BodyCopy>
                   </Field>
                   <Field
@@ -151,7 +152,7 @@ class MyFavoriteStore extends React.PureComponent {
                     className="InputCheckbox"
                   >
                     <BodyCopy fontSize="fs14" fontFamily="secondary" component="span">
-                      {labels.lbl_prefrence_gym_label}
+                      {getLabelValue(labels, 'lbl_prefrence_gym_label')}
                     </BodyCopy>
                   </Field>
                 </Col>
@@ -172,7 +173,7 @@ class MyFavoriteStore extends React.PureComponent {
                     component="div"
                     fontWeight="extrabold"
                   >
-                    {labels.lbl_prefrence_text_text}
+                    {getLabelValue(labels, 'lbl_prefrence_text_text')}
                     <Image src={getIconPath('empty-fav-icon')} />
                   </BodyCopy>
 
@@ -183,8 +184,7 @@ class MyFavoriteStore extends React.PureComponent {
                     className="InputCheckbox"
                   >
                     <BodyCopy fontSize="fs14" fontFamily="secondary" component="span">
-                      {' '}
-                      {labels.lbl_prefrence_tcp_label}
+                      {getLabelValue(labels, 'lbl_prefrence_tcp_label')}
                     </BodyCopy>
                   </Field>
                   <Field
@@ -194,7 +194,7 @@ class MyFavoriteStore extends React.PureComponent {
                     className="InputCheckbox"
                   >
                     <BodyCopy fontSize="fs14" fontFamily="secondary" component="span">
-                      {labels.lbl_prefrence_gym_label}
+                      {getLabelValue(labels, 'lbl_prefrence_gym_label')}
                     </BodyCopy>
                   </Field>
                 </Col>
@@ -222,7 +222,7 @@ class MyFavoriteStore extends React.PureComponent {
                 target="_blank"
                 className="favtPageLink"
               >
-                {labels.lbl_prefrence_program_details}
+                {getLabelValue(labels, 'lbl_prefrence_program_details')}
               </Anchor>
               <Anchor
                 url="learn_more_link"
@@ -232,7 +232,7 @@ class MyFavoriteStore extends React.PureComponent {
                 target="_blank"
                 className="favtPageLink"
               >
-                {labels.lbl_prefrence_term_codition}
+                {getLabelValue(labels, 'lbl_prefrence_term_codition')}
               </Anchor>
             </BodyCopy>
           </Col>
