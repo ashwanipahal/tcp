@@ -18,14 +18,14 @@ describe('StoreLocator Container', () => {
 
   test('fetchStoresByLatLng should be called', () => {
     const latLngPromise = new Promise(resolve => resolve({ lat: 77, lng: 20 }));
-    const loadStoresByLatLngFn = tree.instance().loadStoresByLatLng(latLngPromise, 10, 5);
-    expect(loadStoresByLatLngFn).toBeFalsy();
+    const loadStoresByCoordinatesFn = tree.instance().loadStoresByCoordinates(latLngPromise, 10, 5);
+    expect(loadStoresByCoordinatesFn).toBeFalsy();
   });
 
   test('should return an action fetchStoresByLatLng which will call dispatch function on execution', () => {
     const dispatch = jest.fn();
     const dispatchProps = mapDispatchToProps(dispatch);
-    dispatchProps.fetchStoresByLatLng();
+    dispatchProps.fetchStoresByCoordinates();
     expect(dispatch.mock.calls).toHaveLength(1);
   });
 });
