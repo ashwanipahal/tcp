@@ -3,7 +3,12 @@ import { connect } from 'react-redux';
 import { PropTypes } from 'prop-types';
 import ProductDetail from '../views';
 import { getProductDetails } from './ProductDetail.actions';
-import { getNavTree, getBreadCrumbs, getCurrentProduct } from './ProductDetail.selectors';
+import {
+  getNavTree,
+  getBreadCrumbs,
+  getCurrentProduct,
+  getPlpLabels,
+} from './ProductDetail.selectors';
 
 class ProductDetailContainer extends React.PureComponent {
   selectedColorProductId;
@@ -31,13 +36,14 @@ class ProductDetailContainer extends React.PureComponent {
   }
 
   render() {
-    const { currentProduct, breadCrumbs, navTree } = this.props;
+    const { currentProduct, breadCrumbs, navTree, plpLabels } = this.props;
     return (
       <ProductDetail
         currentProduct={currentProduct}
         breadCrumbs={breadCrumbs}
         navTree={navTree}
         selectedColorProductId={this.selectedColorProductId}
+        plpLabels={plpLabels}
       />
     );
   }
@@ -48,6 +54,7 @@ function mapStateToProps(state) {
     navTree: getNavTree(state),
     currentProduct: getCurrentProduct(state),
     breadCrumbs: getBreadCrumbs(state),
+    plpLabels: getPlpLabels(state),
   };
 }
 
@@ -65,12 +72,14 @@ ProductDetailContainer.propTypes = {
   breadCrumbs: PropTypes.shape({}),
   navigation: PropTypes.shape({}).isRequired,
   navTree: PropTypes.shape({}),
+  plpLabels: PropTypes.shape({}),
 };
 
 ProductDetailContainer.defaultProps = {
   currentProduct: {},
   breadCrumbs: {},
   navTree: {},
+  plpLabels: {},
 };
 
 export default connect(
