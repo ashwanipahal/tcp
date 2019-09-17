@@ -1,6 +1,18 @@
 import React from 'react';
 import { shallow } from 'enzyme';
+import { List } from 'immutable';
 import { GiftCardsVanilla } from '../GiftCards.view';
+
+const appliedGiftCardList = [
+  {
+    creditCardId: 123,
+    name: 'test',
+  },
+  {
+    creditCardId: 123,
+    name: 'test',
+  },
+];
 
 describe('GiftCardsVanilla', () => {
   const props = {
@@ -9,7 +21,10 @@ describe('GiftCardsVanilla', () => {
     handleRemoveGiftCard: jest.fn(),
     className: 'test',
     cardData: { creditCardId: 123, name: 'test' },
-    appliedGiftCards: { creditCardId: 123, name: 'test' },
+    appliedGiftCards: new List(appliedGiftCardList),
+    giftCardList: new List(appliedGiftCardList),
+    getAddGiftCardError: 'Duplicate card',
+    enableAddGiftCard: false,
   };
 
   it('should render gift card tile', () => {
@@ -23,6 +38,11 @@ describe('GiftCardsVanilla', () => {
   });
 
   it('should render gift card tile with 100 order balance', () => {
+    const component = shallow(<GiftCardsVanilla orderBalanceTotal={100} {...props} />);
+    expect(component).toMatchSnapshot();
+  });
+  it('should render gift card tile with 100 order balance with enableAddGiftCard ', () => {
+    props.enableAddGiftCard = true;
     const component = shallow(<GiftCardsVanilla orderBalanceTotal={100} {...props} />);
     expect(component).toMatchSnapshot();
   });

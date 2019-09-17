@@ -54,7 +54,8 @@ export class AddEditPersonalInformationContainer extends PureComponent {
         onRequestClose();
       } else this.goBackToProfile();
     }
-    if (errorMessage) {
+
+    if (errorMessage && isMobileApp()) {
       toastMessage(errorMessage);
     }
   }

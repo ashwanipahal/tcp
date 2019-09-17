@@ -32,10 +32,11 @@ const StyledApplyNowModal = ({
       className={`${className} TCPModal__Content`}
       dataLocator={getLocator('plcc_apply_now_modal')}
       dataLocatorHeader={getLocator('plcc_apply_now_close_btn')}
-      maxWidth="458px"
-      minHeight="746px"
+      maxWidth="464px"
+      minHeight="646px"
       inheritedStyles={modalStyles}
       shouldCloseOnOverlayClick={false}
+      innerContentClassName="innerContent"
     >
       <div className="Modal__Content__Wrapper">
         <Row fullBleed className="submit_plcc_form">

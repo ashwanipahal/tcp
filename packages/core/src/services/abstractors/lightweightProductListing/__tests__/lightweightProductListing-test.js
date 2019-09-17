@@ -2,7 +2,16 @@ import productListTabsAbstractor from '../lightweightProductListing';
 import * as handler from '../../../handler/handler';
 import mock from '../mock';
 
-const mockResponse = mock.body.response.products;
+const mockResponse = mock.body.response.products.map(item => {
+  const {
+    imageUrl: [imageUrl],
+  } = item;
+
+  return {
+    ...item,
+    imageUrl: [imageUrl.replace('www.childrensplace.com', 'test4.childrensplace.com')],
+  };
+});
 
 describe('ProductListTabsAbstractor', () => {
   it('Should fetch and return processed product tab list', () => {

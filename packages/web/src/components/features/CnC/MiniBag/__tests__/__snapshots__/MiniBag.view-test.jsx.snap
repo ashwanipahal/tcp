@@ -86,9 +86,26 @@ exports[`MiniBag template should render correctly 1`] = `
 >
   <Styled(MiniBagBody)
     cartItemCount={0}
+    closeMiniBag={
+      [MockFunction] {
+        "calls": Array [
+          Array [
+            false,
+            true,
+          ],
+        ],
+        "results": Array [
+          Object {
+            "type": "return",
+            "value": undefined,
+          },
+        ],
+      }
+    }
     currencySymbol=""
     isCartItemsUpdating={true}
     labels={Object {}}
+    savedforLaterQty={0}
     subTotal=""
     userName=""
   />

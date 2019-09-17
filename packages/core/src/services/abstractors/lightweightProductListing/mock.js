@@ -34,78 +34,93 @@ export default {
       products: [
         {
           uniqueId: '3003260_IV_00193511187480',
-          alt_img:
-            '{"3003260_IV": "3003260_IV-1.jpg", "3003260_698": "3003260_698-1.jpg", "3003260_01": "3003260_01-1.jpg", "3003260_054": "3003260_054-1.jpg"}',
+          imageUrl: [
+            'https://www.childrensplace.com/wcsstore/GlobalSAS/images/tcp/products/500/3002973_1359.jpg',
+          ],
         },
         {
           uniqueId: '3003260_IV_00193511187473',
-          alt_img:
-            '{"3003260_IV": "3003260_IV-1.jpg", "3003260_698": "3003260_698-1.jpg", "3003260_01": "3003260_01-1.jpg", "3003260_054": "3003260_054-1.jpg"}',
+          imageUrl: [
+            'https://www.childrensplace.com/wcsstore/GlobalSAS/images/tcp/products/500/3002973_1359.jpg',
+          ],
         },
         {
           uniqueId: '3003260_IV_00193511187466',
-          alt_img:
-            '{"3003260_IV": "3003260_IV-1.jpg", "3003260_698": "3003260_698-1.jpg", "3003260_01": "3003260_01-1.jpg", "3003260_054": "3003260_054-1.jpg"}',
+          imageUrl: [
+            'https://www.childrensplace.com/wcsstore/GlobalSAS/images/tcp/products/500/3002973_1359.jpg',
+          ],
         },
         {
           uniqueId: '3003260_IV_00193511187459',
-          alt_img:
-            '{"3003260_IV": "3003260_IV-1.jpg", "3003260_698": "3003260_698-1.jpg", "3003260_01": "3003260_01-1.jpg", "3003260_054": "3003260_054-1.jpg"}',
+          imageUrl: [
+            'https://www.childrensplace.com/wcsstore/GlobalSAS/images/tcp/products/500/3002973_1359.jpg',
+          ],
         },
         {
           uniqueId: '3003260_IV_00193511187442',
-          alt_img:
-            '{"3003260_IV": "3003260_IV-1.jpg", "3003260_698": "3003260_698-1.jpg", "3003260_01": "3003260_01-1.jpg", "3003260_054": "3003260_054-1.jpg"}',
+          imageUrl: [
+            'https://www.childrensplace.com/wcsstore/GlobalSAS/images/tcp/products/500/3002973_1359.jpg',
+          ],
         },
         {
           uniqueId: '3003260_IV_00193511187435',
-          alt_img:
-            '{"3003260_IV": "3003260_IV-1.jpg", "3003260_698": "3003260_698-1.jpg", "3003260_01": "3003260_01-1.jpg", "3003260_054": "3003260_054-1.jpg"}',
+          imageUrl: [
+            'https://www.childrensplace.com/wcsstore/GlobalSAS/images/tcp/products/500/3002973_1359.jpg',
+          ],
         },
         {
           uniqueId: '3003260_IV',
-          alt_img:
-            '{"3003260_IV": "3003260_IV-1.jpg", "3003260_698": "3003260_698-1.jpg", "3003260_01": "3003260_01-1.jpg", "3003260_054": "3003260_054-1.jpg"}',
+          imageUrl: [
+            'https://www.childrensplace.com/wcsstore/GlobalSAS/images/tcp/products/500/3002973_1359.jpg',
+          ],
         },
         {
           uniqueId: '3003260_698_00193511187428',
-          alt_img:
-            '{"3003260_IV": "3003260_IV-1.jpg", "3003260_698": "3003260_698-1.jpg", "3003260_01": "3003260_01-1.jpg", "3003260_054": "3003260_054-1.jpg"}',
+          imageUrl: [
+            'https://www.childrensplace.com/wcsstore/GlobalSAS/images/tcp/products/500/3002973_1359.jpg',
+          ],
         },
         {
           uniqueId: '3003260_698_00193511187411',
-          alt_img:
-            '{"3003260_IV": "3003260_IV-1.jpg", "3003260_698": "3003260_698-1.jpg", "3003260_01": "3003260_01-1.jpg", "3003260_054": "3003260_054-1.jpg"}',
+          imageUrl: [
+            'https://www.childrensplace.com/wcsstore/GlobalSAS/images/tcp/products/500/3002973_1359.jpg',
+          ],
         },
         {
           uniqueId: '3003260_698_00193511187404',
-          alt_img:
-            '{"3003260_IV": "3003260_IV-1.jpg", "3003260_698": "3003260_698-1.jpg", "3003260_01": "3003260_01-1.jpg", "3003260_054": "3003260_054-1.jpg"}',
+          imageUrl: [
+            'https://www.childrensplace.com/wcsstore/GlobalSAS/images/tcp/products/500/3002973_1359.jpg',
+          ],
         },
         {
           uniqueId: '3003260_698_00193511187398',
-          alt_img:
-            '{"3003260_IV": "3003260_IV-1.jpg", "3003260_698": "3003260_698-1.jpg", "3003260_01": "3003260_01-1.jpg", "3003260_054": "3003260_054-1.jpg"}',
+          imageUrl: [
+            'https://www.childrensplace.com/wcsstore/GlobalSAS/images/tcp/products/500/3002973_1359.jpg',
+          ],
         },
         {
           uniqueId: '3003260_698_00193511187381',
-          alt_img:
-            '{"3003260_IV": "3003260_IV-1.jpg", "3003260_698": "3003260_698-1.jpg", "3003260_01": "3003260_01-1.jpg", "3003260_054": "3003260_054-1.jpg"}',
+          imageUrl: [
+            'https://www.childrensplace.com/wcsstore/GlobalSAS/images/tcp/products/500/3002973_1359.jpg',
+          ],
         },
         {
           uniqueId: '3003260_698_00193511187374',
-          alt_img:
-            '{"3003260_IV": "3003260_IV-1.jpg", "3003260_698": "3003260_698-1.jpg", "3003260_01": "3003260_01-1.jpg", "3003260_054": "3003260_054-1.jpg"}',
+          imageUrl: [
+            'https://www.childrensplace.com/wcsstore/GlobalSAS/images/tcp/products/500/3002973_1359.jpg',
+          ],
         },
         {
           uniqueId: '3003260_698',
-          alt_img:
-            '{"3003260_IV": "3003260_IV-1.jpg", "3003260_698": "3003260_698-1.jpg", "3003260_01": "3003260_01-1.jpg", "3003260_054": "3003260_054-1.jpg"}',
+          imageUrl: [
+            'https://www.childrensplace.com/wcsstore/GlobalSAS/images/tcp/products/500/3002973_1359.jpg',
+          ],
         },
         {
           uniqueId: '3003260_054_00193511187367',
-          alt_img:
-            '{"3003260_IV": "3003260_IV-1.jpg", "3003260_698": "3003260_698-1.jpg", "3003260_01": "3003260_01-1.jpg", "3003260_054": "3003260_054-1.jpg"}',
+          imageUrl: [
+            'https://www.childrensplace.com/wcsstore/GlobalSAS/images/tcp/products/500/3002973_1359.jpg',
+          ],
         },
       ],
     },

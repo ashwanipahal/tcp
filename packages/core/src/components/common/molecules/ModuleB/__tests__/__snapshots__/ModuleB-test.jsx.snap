@@ -63,6 +63,22 @@ exports[`ModuleB component should render TCP or default variant correctly 1`] = 
                     "style": "style1",
                     "text": "MORE FITS.",
                   },
+                ],
+              },
+              Object {
+                "icon": Object {
+                  "icon": "",
+                  "placement": "",
+                },
+                "link": Object {
+                  "action": "",
+                  "external": 0,
+                  "target": "",
+                  "text": "",
+                  "title": "",
+                  "url": "/c/girls-denim-bottoms",
+                },
+                "textItems": Array [
                   Object {
                     "style": "style2",
                     "text": "SLIM, PLUS & HUSKY",
@@ -275,6 +291,7 @@ exports[`ModuleB component should render banner bottom variation 1`] = `
     >
       <WithTheme(DamImage)
         className="image"
+        imageConfig="t_mod_B_img_overlay_m"
         imgData={
           Object {
             "alt": "Graphic Tees",
@@ -316,6 +333,22 @@ exports[`ModuleB component should render banner bottom variation 1`] = `
               "style": "style1",
               "text": "MORE FITS.",
             },
+          ],
+        },
+        Object {
+          "icon": Object {
+            "icon": "",
+            "placement": "",
+          },
+          "link": Object {
+            "action": "",
+            "external": 0,
+            "target": "",
+            "text": "",
+            "title": "",
+            "url": "/c/girls-denim-bottoms",
+          },
+          "textItems": Array [
             Object {
               "style": "style2",
               "text": "SLIM, PLUS & HUSKY",
@@ -378,6 +411,7 @@ exports[`ModuleB component should render banner overlay variation 1`] = `
     >
       <WithTheme(DamImage)
         className="image"
+        imageConfig="t_mod_B_img_overlay_m"
         imgData={
           Object {
             "alt": "Graphic Tees",
@@ -419,6 +453,22 @@ exports[`ModuleB component should render banner overlay variation 1`] = `
               "style": "style1",
               "text": "MORE FITS.",
             },
+          ],
+        },
+        Object {
+          "icon": Object {
+            "icon": "",
+            "placement": "",
+          },
+          "link": Object {
+            "action": "",
+            "external": 0,
+            "target": "",
+            "text": "",
+            "title": "",
+            "url": "/c/girls-denim-bottoms",
+          },
+          "textItems": Array [
             Object {
               "style": "style2",
               "text": "SLIM, PLUS & HUSKY",
@@ -492,6 +542,22 @@ exports[`ModuleB component should render banner top alt variation 1`] = `
               "style": "style1",
               "text": "MORE FITS.",
             },
+          ],
+        },
+        Object {
+          "icon": Object {
+            "icon": "",
+            "placement": "",
+          },
+          "link": Object {
+            "action": "",
+            "external": 0,
+            "target": "",
+            "text": "",
+            "title": "",
+            "url": "/c/girls-denim-bottoms",
+          },
+          "textItems": Array [
             Object {
               "style": "style2",
               "text": "SLIM, PLUS & HUSKY",
@@ -547,6 +613,7 @@ exports[`ModuleB component should render banner top alt variation 1`] = `
     >
       <WithTheme(DamImage)
         className="image"
+        imageConfig="t_mod_B_img_overlay_m"
         imgData={
           Object {
             "alt": "Graphic Tees",
@@ -595,6 +662,22 @@ exports[`ModuleB component should render banner top variation 1`] = `
               "style": "style1",
               "text": "MORE FITS.",
             },
+          ],
+        },
+        Object {
+          "icon": Object {
+            "icon": "",
+            "placement": "",
+          },
+          "link": Object {
+            "action": "",
+            "external": 0,
+            "target": "",
+            "text": "",
+            "title": "",
+            "url": "/c/girls-denim-bottoms",
+          },
+          "textItems": Array [
             Object {
               "style": "style2",
               "text": "SLIM, PLUS & HUSKY",
@@ -650,6 +733,7 @@ exports[`ModuleB component should render banner top variation 1`] = `
     >
       <WithTheme(DamImage)
         className="image"
+        imageConfig="t_mod_B_img_overlay_m"
         imgData={
           Object {
             "alt": "Graphic Tees",

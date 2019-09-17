@@ -4,11 +4,11 @@ import { PropTypes } from 'prop-types';
 import errorBoundary from '@tcp/core/src/components/common/hoc/withErrorBoundary';
 import HomePageSlots from '@tcp/core/src/components/common/molecules/HomePageSlots';
 import GetCandid from '@tcp/core/src/components/common/molecules/GetCandid';
-import Recommendations from '@tcp/core/src/components/common/molecules/Recommendations';
 import ModuleB from '@tcp/core/src/components/common/molecules/ModuleB';
 import ModuleJ from '@tcp/core/src/components/common/molecules/ModuleJ';
 import mock from '@tcp/core/src/services/abstractors/common/moduleB/mock';
 import moduleJMock from '@tcp/core/src/components/common/molecules/ModuleJ/mock';
+import Recommendations from '../../../../common/molecules/Recommendations';
 
 const returnModule = mod => mod.default;
 
@@ -25,9 +25,9 @@ const HomePageView = dynamic({
     return [
       <HomePageSlots slots={slots} modules={modules} />,
       <ModuleB {...mock} />,
-      <GetCandid />,
       <ModuleJ {...moduleJMock.moduleJ.composites} />,
-      <Recommendations />,
+      <GetCandid />,
+      <Recommendations variations="moduleO,moduleP" />,
     ];
   },
 });

@@ -16,9 +16,25 @@ describe('#Added to bag Selectors', () => {
     },
   });
 
+  const Checkout = fromJS({
+    values: {
+      giftCardError: '',
+      showAddGiftCard: false,
+      addGiftCardError: '',
+      addGiftCardResponse: '',
+    },
+  });
+
+  const session = {
+    siteDetails: {
+      isRecapchaEnabled: true,
+    },
+  };
   const state = {
     Labels: GiftCardState,
     CartPageReducer,
+    Checkout,
+    session,
   };
 
   it('#getGiftSectionLabels should return lables', () => {
@@ -37,5 +53,24 @@ describe('#Added to bag Selectors', () => {
 
   it('#getAppliedGiftCards', () => {
     expect(GIFTCARD_SELECTORS.getAppliedGiftCards(state)).toEqual(fromJS([]));
+  });
+
+  it('#getGiftCardErrors', () => {
+    expect(GIFTCARD_SELECTORS.getGiftCardErrors(state)).toEqual('');
+  });
+
+  it('#getShowAddGiftCard', () => {
+    expect(GIFTCARD_SELECTORS.getShowAddGiftCard(state)).toEqual(false);
+  });
+
+  it('#getAddGiftCardErrors', () => {
+    expect(GIFTCARD_SELECTORS.getAddGiftCardErrors(state)).toEqual('');
+  });
+
+  it('#getAddGiftCardResponse', () => {
+    expect(GIFTCARD_SELECTORS.getAddGiftCardResponse(state)).toEqual('');
+  });
+  it('#getIsRecapchaEnabled', () => {
+    expect(GIFTCARD_SELECTORS.getIsRecapchaEnabled(state)).toEqual(true);
   });
 });

@@ -8,4 +8,9 @@ describe('CheckoutProgressIndicator component', () => {
     const component = shallow(<BillingPageVanilla {...props} />);
     expect(component).toMatchSnapshot();
   });
+  it('should renders correctly props not present and is Guest user', () => {
+    const props = { labels: {}, isGuest: true };
+    const component = shallow(<BillingPageVanilla {...props} />);
+    expect(component).toMatchSnapshot();
+  });
 });

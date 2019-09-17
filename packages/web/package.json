@@ -4,6 +4,7 @@
   "private": true,
   "scripts": {
     "start": "node ./server",
+    "debug": "nodemon --inspect ./server",
     "build": "next build ./src"
   },
   "dependencies": {
