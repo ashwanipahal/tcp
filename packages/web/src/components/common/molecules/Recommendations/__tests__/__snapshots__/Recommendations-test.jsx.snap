@@ -11,9 +11,7 @@ exports[`Recommendations Module O price only variation Recommendations Module O 
     dataLocator="moduleO_header_text"
     textAlign="center"
     variant="h4"
-  >
-    You May Also Like
-  </Styled(Heading)>
+  />
   <Styled(Row)
     fullBleed={true}
   >
@@ -408,9 +406,7 @@ exports[`Recommendations Module O show button variation Recommendations Module O
     dataLocator="moduleO_header_text"
     textAlign="center"
     variant="h4"
-  >
-    You May Also Like
-  </Styled(Heading)>
+  />
   <Styled(Row)
     fullBleed={true}
   >
@@ -828,9 +824,7 @@ exports[`Recommendations Module O variation renders correctly 1`] = `
     dataLocator="moduleO_header_text"
     textAlign="center"
     variant="h4"
-  >
-    You May Also Like
-  </Styled(Heading)>
+  />
   <Styled(Row)
     fullBleed={true}
   >
@@ -1225,9 +1219,7 @@ exports[`Recommendations Module P variation Recommendations Module P variation r
     dataLocator="moduleP_header_text"
     textAlign="center"
     variant="h4"
-  >
-    You May Also Like
-  </Styled(Heading)>
+  />
   <Styled(Row)
     fullBleed={true}
   >
