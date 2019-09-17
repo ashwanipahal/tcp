@@ -9,7 +9,7 @@ describe('GiftServices component', () => {
       isGiftServicesChecked: true,
       labels: {},
       dispatch: jest.fn(),
-      giftWrapOptions: {},
+      giftWrapOptions: '{}',
       initialValues: {},
     };
     const component = shallow(<GiftServices {...props} />);
@@ -20,7 +20,7 @@ describe('GiftServices component', () => {
       isGiftServicesChecked: false,
       labels: {},
       dispatch: jest.fn(),
-      giftWrapOptions: {},
+      giftWrapOptions: '{}',
       initialValues: {},
     };
     const component = shallow(<GiftServices {...props} />);
