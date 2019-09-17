@@ -1,4 +1,6 @@
-import { getLabelValue } from '../utils';
+import { getLabelValue, formatDate, isValidDate } from '../utils';
+
+const formattedDate = '01/01/1970';
 
 describe('getLabelValue', () => {
   const labelState = {
@@ -47,5 +49,24 @@ describe('getLabelValue', () => {
   it('should return label key if subcategory is incorrectly passed', () => {
     const label = getLabelValue(labelState.account, 'lbl_last_name', 'lbl_last_name');
     expect(label).toBe('lbl_last_name');
+  });
+});
+
+describe('formatDate', () => {
+  it('should format the date correctly in mm/dd/yy', () => {
+    const date = new Date(formattedDate);
+    expect(formatDate(date)).toEqual(formattedDate);
+  });
+});
+
+describe('isvalidDate', () => {
+  it('should return true for valid date', () => {
+    const date = new Date(formattedDate);
+    expect(isValidDate(date)).toBeTruthy();
+  });
+
+  it('should return false for invalid date', () => {
+    const date = new Date('');
+    expect(isValidDate(date)).toBeFalsy();
   });
 });
