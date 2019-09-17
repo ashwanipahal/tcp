@@ -14,9 +14,7 @@ export default css`
     margin: 0 ${props => props.theme.spacing.ELEM_SPACING.SM}
       ${props => props.theme.spacing.ELEM_SPACING.SM};
   }
-  display: flex;
-  flex-wrap: wrap;
-  .product-tile {
+  .product-list .search-product-tile {
     display: inline-block;
     padding: ${props => props.theme.spacing.ELEM_SPACING.SM} 20px 0 0;
     text-align: center;
@@ -28,22 +26,28 @@ export default css`
     }
     @media ${props => props.theme.mediaQuery.large} {
       padding: ${props => props.theme.spacing.ELEM_SPACING.SM} 26px 0 0;
-      width: calc(20% - 26px);
+      width: calc(20% - 21px);
     }
   }
   @media ${props => props.theme.mediaQuery.smallOnly} {
-    .product-tile:nth-child(2n) {
-      padding-right: 0;
+    .product-list {
+      .search-product-tile:nth-child(2n) {
+        padding-right: 0;
+      }
     }
   }
   @media ${props => props.theme.mediaQuery.mediumOnly} {
-    .product-tile:nth-child(3n) {
-      padding-right: 0;
+    .product-list {
+      .search-product-tile:nth-child(3n) {
+        padding-right: 0;
+      }
     }
   }
-  @media ${props => props.theme.mediaQuery.largeOnly} {
-    .product-tile:nth-child(5n) {
-      padding-right: 0;
+  @media ${props => props.theme.mediaQuery.large} {
+    .product-list {
+      .search-product-tile:nth-child(5n) {
+        padding-right: 0;
+      }
     }
   }
   .item-title {

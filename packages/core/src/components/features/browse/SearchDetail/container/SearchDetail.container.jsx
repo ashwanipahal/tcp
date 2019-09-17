@@ -44,9 +44,6 @@ class SearchDetailContainer extends React.PureComponent {
   }
 
   render() {
-    if (!isClient()) {
-      return <div>Blank</div>;
-    }
     const {
       productsBlock,
       products,
