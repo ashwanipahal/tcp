@@ -9,12 +9,6 @@ const SET_SLP_SEARCHTERM_STATE = `${SEARCH_REDUCER_ACTION_PATTERN}SET_SLP_SEARCH
 export const PRODUCTS_PER_LOAD = 20; // TODO - change this to config value. the number of products to load on each call to BE (as the user scrolls)
 export const DESCRIPTION_FILTER = 'auxdescription_uFilter';
 
-export const routingInfoStoreView = {
-  getOriginImgHostSetting: () => {
-    return 'https://test4.childrensplace.com';
-  },
-};
-
 const SLP_CONSTANTS = {
   SET_PRODUCTS,
   FETCH_SLP_PRODUCTS,
