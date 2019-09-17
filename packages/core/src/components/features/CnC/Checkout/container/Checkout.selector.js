@@ -2,6 +2,10 @@
 import { formValueSelector } from 'redux-form';
 import { createSelector } from 'reselect';
 import { CHECKOUT_REDUCER_KEY } from '@tcp/core/src/constants/reducer.constants';
+import {
+  modes,
+  constants as venmoConstants,
+} from '@tcp/core/src/components/common/atoms/VenmoPaymentButton/container/VenmoPaymentButton.util';
 
 /* eslint-disable extra-rules/no-commented-out-code */
 import { getAPIConfig, isMobileApp, getViewportInfo, getLabelValue } from '../../../../../utils';
@@ -499,6 +503,82 @@ const getReviewLabels = state => {
   };
 };
 
+const getVenmoData = state => {
+  return state[CHECKOUT_REDUCER_KEY].getIn(['values', 'venmoData']);
+};
+
+const getVenmoClientTokenData = state => {
+  const venmoData = getVenmoData(state);
+  return venmoData && venmoData.venmoClientTokenData;
+};
+
+const isVenmoPaymentInProgress = state => {
+  return state[CHECKOUT_REDUCER_KEY].getIn(['uiFlags', 'venmoPaymentInProgress']);
+};
+
+/**
+ * Mainly used to check for Venmo nonce expiry
+ * @param state
+ */
+const isVenmoNonceNotExpired = state => {
+  const venmoData = getVenmoData(state);
+  const expiry = venmoConstants.VENMO_NONCE_EXPIRY_TIMEOUT;
+  const { nonce, timestamp, venmoClientTokenData } = venmoData;
+  const venmoPaymentTokenAvailable = venmoClientTokenData
+    ? venmoClientTokenData.venmoPaymentTokenAvailable
+    : false;
+  return venmoPaymentTokenAvailable === 'TRUE' || (nonce && Date.now() - timestamp <= expiry);
+};
+
+const isVenmoPaymentToken = state => {
+  const venmoData = getVenmoData(state);
+  return (
+    (venmoData && venmoData.mode === modes.PAYMENT_TOKEN) ||
+    (venmoData &&
+      venmoData.venmoClientTokenData &&
+      venmoData.venmoClientTokenData.mode === modes.PAYMENT_TOKEN)
+  );
+};
+
+const isVenmoNonceActive = state => {
+  const venmoData = getVenmoData(state);
+  const venmoPaymentInProgress = isVenmoPaymentInProgress(state);
+  return (
+    venmoData &&
+    (venmoData.nonce || isVenmoPaymentToken(state)) &&
+    venmoPaymentInProgress &&
+    isVenmoNonceNotExpired(state)
+  );
+};
+
+function isVenmoPaymentAvailable(state) {
+  const venmoData = getVenmoData(state);
+  const venmoPaymentInProgress = isVenmoPaymentInProgress(state);
+  return venmoData && (venmoData.nonce || isVenmoPaymentToken(state)) && venmoPaymentInProgress;
+}
+
+function isVenmoMessageDisplayed(state) {
+  const hasShippingCaptured =
+    state.checkout.values.shipping && state.checkout.values.shipping.onFileAddressId;
+  const hasPickupCaptured =
+    state.checkout.values.pickUpContact && state.checkout.values.pickUpContact.firstName;
+  return (
+    hasPickupCaptured ||
+    hasShippingCaptured ||
+    (state.checkout.uiFlags && state.checkout.uiFlags.venmoInformationMessageDisplayed)
+  );
+}
+
+function getVenmoUserEmail(state) {
+  const pickupValues = getPickupValues(state);
+  return (
+    getUserEmail(state) ||
+    (state.checkout.values.shipping && state.checkout.values.shipping.emailAddress) ||
+    (pickupValues && pickupValues.emailAddress) ||
+    (state.user.personalData.contactInfo && state.user.personalData.contactInfo.emailAddress)
+  );
+}
+
 export default {
   getRecalcOrderPointsInterval,
   getIsOrderHasShipping,
@@ -551,4 +631,13 @@ export default {
   getGiftServicesSend,
   getPaypalPaymentSettings,
   getReviewLabels,
+  getVenmoData,
+  getVenmoClientTokenData,
+  isVenmoPaymentAvailable,
+  isVenmoMessageDisplayed,
+  isVenmoNonceActive,
+  getVenmoUserEmail,
+  isVenmoNonceNotExpired,
+  isVenmoPaymentInProgress,
+  isVenmoPaymentToken,
 };
