@@ -3,11 +3,15 @@
  * A Plop JS based generator to create components in TCP project
  * Types of generators:
  * - Component
+ * - Container
  * - Feature
  */
 const glob = require('glob');
 const path = require('path');
+const changeCase = require('change-case');
 const { atomActions } = require('./plop/utils/atomActions');
+const { containerActions } = require('./plop/utils/containerActions');
+const { featureActions } = require('./plop/utils/featureActions');
 
 module.exports = function plopCli(plop) {
   // The types of packages in the monorepo
@@ -31,8 +35,63 @@ module.exports = function plopCli(plop) {
     { value: 'organisms', name: 'Organism' },
   ];
 
-  // create your generators here
-  plop.setGenerator('Component', {
+  const getFeatures = ans =>
+    glob
+      .sync(`./packages/${ans.componentPackageType}/src/components/features/*`)
+      .map(f => path.basename(f));
+
+  // Create your generators here
+
+  // Create feature generator
+  plop.setGenerator('Create Feature', {
+    description: 'Create a new feature in core/web/mobile-app.',
+    prompts: [
+      {
+        type: 'rawlist',
+        name: 'featurePackageType',
+        message: 'In which package are you creating the feature?',
+        choices: packageChoices,
+        default: 0,
+      },
+      {
+        type: 'input',
+        name: 'featureName',
+        message: 'Feature Name',
+        validate: ans => ans === changeCase.camel(ans) || 'Feature name should be camel cased!',
+      },
+    ], // array of inquirer prompts
+    actions: [...featureActions], // array of actions
+  });
+
+  // Create container generator
+  plop.setGenerator('Create Container', {
+    description: 'Create a React/React Native container following the TCP guidelines',
+    prompts: [
+      {
+        type: 'rawlist',
+        name: 'componentPackageType',
+        message: 'In which package are you creating the container?',
+        choices: packageChoices,
+        default: 0,
+      },
+      {
+        type: 'rawlist',
+        name: 'componentFeatureName',
+        message: 'Which feature does the container belong to?',
+        choices: getFeatures,
+      },
+      {
+        type: 'input',
+        name: 'componentContainerName',
+        message: 'Container Name',
+        validate: ans => ans === changeCase.pascal(ans) || 'Container name should be pascal cased!',
+      },
+    ], // array of inquirer prompts
+    actions: [...containerActions], // array of actions
+  });
+
+  // Create component generator
+  plop.setGenerator('Create Component', {
     description: 'Create a React/React Native component following the TCP guidelines',
     prompts: [
       {
@@ -53,10 +112,7 @@ module.exports = function plopCli(plop) {
         type: 'rawlist',
         name: 'componentFeatureName',
         message: 'Which feature does it belong to?',
-        choices: ans =>
-          glob
-            .sync(`./packages/${ans.componentPackageType}/src/components/features/*`)
-            .map(f => path.basename(f)),
+        choices: getFeatures,
         when: ans => ans.componentSrcType === 'features',
       },
       {
@@ -83,6 +139,7 @@ module.exports = function plopCli(plop) {
         type: 'input',
         name: 'componentContainerName',
         message: 'Container Name',
+        validate: ans => ans === changeCase.pascal(ans) || 'Container name should be pascal cased!',
         when: ans => ans.createNewContainer && ans.componentSrcType === 'features',
       },
       {
@@ -95,10 +152,14 @@ module.exports = function plopCli(plop) {
         type: 'input',
         name: 'componentName',
         message: 'Component Name',
+        validate: ans => ans === changeCase.pascal(ans) || 'Component name should be pascal cased!',
       },
     ], // array of inquirer prompts
     actions: data => {
       let actions = [];
+      if (data.createNewContainer) {
+        actions = [...actions, ...containerActions];
+      }
       if (
         data.componentType === 'atoms' ||
         data.componentType === 'molecules' ||
