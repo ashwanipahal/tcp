@@ -76,7 +76,7 @@ export default css`
     color: ${props => props.theme.colors.WHITE};
     border-radius: 8px;
     margin: 1px 0px 0px ${props => cartItemMargin(props.cartItemCount)};
-    padding: 2px 6px;
+    padding: 2px 5px;
   }
   .favIcon {
     margin-right: ${props => props.theme.spacing.ELEM_SPACING.XS};
