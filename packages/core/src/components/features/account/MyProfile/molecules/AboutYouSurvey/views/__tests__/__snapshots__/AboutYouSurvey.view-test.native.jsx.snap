@@ -33,12 +33,14 @@ exports[`AboutYouSurvey should render SurveyQuestion correctly 1`] = `
         <Styled(ImageComp)
           alt="Survey Stage"
           height="26px"
+          host=""
           onClick={[Function]}
           source={
             Object {
               "testUri": "../../../src/assets/images/star-filled.png",
             }
           }
+          url=""
           width="26px"
         />
       </Styled(TouchableOpacity)>
@@ -46,22 +48,26 @@ exports[`AboutYouSurvey should render SurveyQuestion correctly 1`] = `
       <Styled(ImageComp)
         alt="Survey Stage"
         height="26px"
+        host=""
         source={
           Object {
             "testUri": "../../../src/assets/images/star.png",
           }
         }
+        url=""
         width="26px"
       />
       <Styled(View) />
       <Styled(ImageComp)
         alt="Survey Stage"
         height="26px"
+        host=""
         source={
           Object {
             "testUri": "../../../src/assets/images/circle-check.png",
           }
         }
+        url=""
         width="26px"
       />
     </Styled(View)>
@@ -140,12 +146,14 @@ exports[`AboutYouSurvey should render correctly 1`] = `
         <Styled(ImageComp)
           alt="Survey Stage"
           height="26px"
+          host=""
           onClick={[Function]}
           source={
             Object {
               "testUri": "../../../src/assets/images/star-filled.png",
             }
           }
+          url=""
           width="26px"
         />
       </Styled(TouchableOpacity)>
@@ -153,22 +161,26 @@ exports[`AboutYouSurvey should render correctly 1`] = `
       <Styled(ImageComp)
         alt="Survey Stage"
         height="26px"
+        host=""
         source={
           Object {
             "testUri": "../../../src/assets/images/star.png",
           }
         }
+        url=""
         width="26px"
       />
       <Styled(View) />
       <Styled(ImageComp)
         alt="Survey Stage"
         height="26px"
+        host=""
         source={
           Object {
             "testUri": "../../../src/assets/images/circle-check.png",
           }
         }
+        url=""
         width="26px"
       />
     </Styled(View)>

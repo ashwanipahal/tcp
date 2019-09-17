@@ -15,6 +15,7 @@ exports[`ProductAltImages component should renders renderVideoContent correctly 
   </button>
   <Styled(Anchor)
     asPath="url"
+    dataLocator=""
     handleLinkClick={[Function]}
     inheritedStyles={
       Array [

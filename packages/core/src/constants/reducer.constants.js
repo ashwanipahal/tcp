@@ -40,6 +40,7 @@ export const USER_REDUCER_KEY = 'User';
 export const BIRTHDAY_SAVINGS_ACTION_PATTERN = '@@BirthdaySavings';
 export const NAVIGATION_ACTION_PATTERN = '@@Navigation-';
 export const RECOMMENDATIONS_ACTION_PATTERN = '@@Recommendations-';
+export const MY_FAVORITE_STORE_ACTION_PATTERN = '@@MyFavoriteStore';
 export const SEARCH_REDUCER_ACTION_PATTERN = '@@Search-';
 
 // acconut page reducer
@@ -100,6 +101,10 @@ export const LOGOUT_ACTION_PATTERN = '@@logout-';
 export const POINTS_HISTORY_REDUCER_KEY = 'pointHistoryReducer';
 export const POINTS_HISTORY_ACTION_PATTERN = '@@pointHistory-';
 
+// Earn extra points reducer
+export const EARNEXTRAPOINTS_REDUCER_KEY = 'earnExtraPointsReducer';
+export const EARNEXTRAPOINTS_ACTION_PATTERN = '@@earnExtraPoints-';
+
 export const RESET_PASSWORD_REDUCER_KEY = 'ResetPassword';
 export const RESET_PASSWORD_ACTION_PATTERN = '@@ResetPassword-';
 export const TRACK_ORDER_REDUCER_KEY = 'TrackOrderReducer';
@@ -148,6 +153,7 @@ export const GIFT_SERVICES_ACTION_PATTERN = '@@GiftServices-';
 // Store Locator Reducer
 export const STORE_LOCATOR_REDUCER_KEY = 'StoreLocatorReducer';
 export const STORE_LOCATOR_ACTION_PATTERN = '@@StoreLocator-';
+export const MY_FAVORITE_STORE_REDUCER_KEY = 'MyFavoriteStore';
 
 export const REDUCER_ACTION_MAPPING = {
   [APPLY_PLCC_REDUCER_KEY]: APPLY_PLCC_ACTION_PATTERN,
@@ -162,6 +168,7 @@ export const REDUCER_ACTION_MAPPING = {
   [CREATE_ACCOUNT_REDUCER_KEY]: CREATE_ACCOUNT_ACTION_PATTERN,
   [LOGOUT_REDUCER_KEY]: LOGOUT_ACTION_PATTERN,
   [POINTS_HISTORY_REDUCER_KEY]: POINTS_HISTORY_ACTION_PATTERN,
+  [EARNEXTRAPOINTS_REDUCER_KEY]: EARNEXTRAPOINTS_ACTION_PATTERN,
   [RESET_PASSWORD_REDUCER_KEY]: RESET_PASSWORD_ACTION_PATTERN,
   [COUNTRY_SELECTOR_REDUCER_KEY]: COUNTRY_SELECTOR_ACTION_PATTERN,
   [TRACK_ORDER_REDUCER_KEY]: TRACK_ORDER_ACTION_PATTERN,

@@ -2,11 +2,28 @@
 
 exports[`Gift Cards Container should render Gift Card view section 1`] = `
 <Styled(GiftCards)
+  appliedGiftCards={
+    Immutable.List [
+      Immutable.Map {
+        "creditCardId": 123,
+        "name": "test",
+        "onFileCardId": 123,
+      },
+      Immutable.Map {
+        "creditCardId": 124,
+        "name": "test",
+        "onFileCardId": 124,
+      },
+    ]
+  }
   applyExistingGiftCardToOrder={[Function]}
   giftCardErrors={Object {}}
   giftCardList={Array []}
   handleRemoveGiftCard={[MockFunction]}
+  hideAddGiftCard={[MockFunction]}
+  isGuestUser={[Function]}
   labels={Object {}}
+  onAddGiftCardClick={[Function]}
   orderBalanceTotal={50}
   toastMessage={[MockFunction]}
 />

@@ -13,6 +13,10 @@ export const getUserGeoCoordinates = state => {
   return state[USER_REDUCER_KEY].get('geoLatLong');
 };
 
+export const getFavoriteStore = state => {
+  return state[USER_REDUCER_KEY].get('favoriteStore');
+};
+
 export const getAirmilesDataState = state => {
   return state[USER_REDUCER_KEY].get('airmiles');
 };
@@ -135,6 +139,36 @@ export const getAirmilesDetails = createSelector(
 export const getMyPlaceNumber = createSelector(
   getRewardsState,
   state => state && state.get('accountNumber')
+);
+
+export const getFavoriteStoreName = createSelector(
+  getFavoriteStore,
+  state => state && state.get('name')
+);
+
+export const getFavoriteStoreAddress = createSelector(
+  getFavoriteStore,
+  state => state && state.get('address')
+);
+
+export const getFavoriteStorePhone = createSelector(
+  getFavoriteStore,
+  state => state && state.get('phone')
+);
+
+export const getFavoriteStoreState = createSelector(
+  getFavoriteStore,
+  state => state && state.get('state')
+);
+
+export const getFavoriteStoreZipcode = createSelector(
+  getFavoriteStore,
+  state => state && state.get('zipCode')
+);
+
+export const getFavoriteStoreCity = createSelector(
+  getFavoriteStore,
+  state => state && state.get('city')
 );
 
 const userAddressData = (mailingAddress, addressTemp) => {

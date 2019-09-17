@@ -6,7 +6,7 @@ import endpoints from '../../endpoints';
  * Abstractor layer for loading Product List Tabs data
  */
 const Abstractor = {
-  getData: ({ categoryId, rows = 15, fields = 'imageUrl,seo_token' }) => {
+  getData: ({ categoryId, rows = 18, fields = 'imageUrl,seo_token' }) => {
     const payload = {
       body: {
         start: 0,
@@ -29,7 +29,24 @@ const Abstractor = {
     return mock;
   },
   processData: res => {
-    return res.body.response.products;
+    return res.body.response.products.map(item => {
+      const {
+        imageUrl: [imageUrl],
+        seo_token: seoToken,
+        uniqueId,
+      } = item;
+
+      return {
+        ...item,
+        pdpUrl: `/p/${seoToken || uniqueId}`,
+        /*
+           In Android, the images are not loading with www.childrensplace.com domain due to
+           some security issue.
+           TODO: This should be removed once we start getting CDN URL from the unbxd.
+        */
+        imageUrl: [imageUrl.replace('www.childrensplace.com', 'test4.childrensplace.com')],
+      };
+    });
   },
   // eslint-disable-next-line no-console
   handleError: e => console.log(e),

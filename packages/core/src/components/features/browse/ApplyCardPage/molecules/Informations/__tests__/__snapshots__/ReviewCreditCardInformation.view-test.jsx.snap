@@ -8,8 +8,8 @@ exports[`ReviewCreditCardInformation component should renders correctly 1`] = `
     className="rewards_card_logo"
     colSize={
       Object {
-        "large": 2,
-        "medium": 2,
+        "large": 3,
+        "medium": 4,
         "small": 6,
       }
     }
@@ -35,7 +35,7 @@ exports[`ReviewCreditCardInformation component should renders correctly 1`] = `
     colSize={
       Object {
         "large": 8,
-        "medium": 5,
+        "medium": 6,
         "small": 6,
       }
     }
@@ -57,8 +57,8 @@ exports[`ReviewCreditCardInformation component should renders correctly when no 
     className="rewards_card_logo"
     colSize={
       Object {
-        "large": 2,
-        "medium": 2,
+        "large": 3,
+        "medium": 4,
         "small": 6,
       }
     }
@@ -84,7 +84,7 @@ exports[`ReviewCreditCardInformation component should renders correctly when no 
     colSize={
       Object {
         "large": 8,
-        "medium": 5,
+        "medium": 6,
         "small": 6,
       }
     }

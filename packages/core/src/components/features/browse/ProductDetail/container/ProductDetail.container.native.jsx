@@ -6,6 +6,14 @@ import { getProductDetails } from './ProductDetail.actions';
 import { getNavTree, getBreadCrumbs, getCurrentProduct } from './ProductDetail.selectors';
 
 class ProductDetailContainer extends React.PureComponent {
+  selectedColorProductId;
+
+  constructor(props) {
+    super(props);
+    const { navigation } = props;
+    this.selectedColorProductId = navigation && navigation.getParam('selectedColorProductId');
+  }
+
   componentDidMount() {
     const { getDetails, navigation } = this.props;
     const pid = (navigation && navigation.getParam('pdpUrl')) || '';
@@ -25,7 +33,12 @@ class ProductDetailContainer extends React.PureComponent {
   render() {
     const { currentProduct, breadCrumbs, navTree } = this.props;
     return (
-      <ProductDetail currentProduct={currentProduct} breadCrumbs={breadCrumbs} navTree={navTree} />
+      <ProductDetail
+        currentProduct={currentProduct}
+        breadCrumbs={breadCrumbs}
+        navTree={navTree}
+        selectedColorProductId={this.selectedColorProductId}
+      />
     );
   }
 }

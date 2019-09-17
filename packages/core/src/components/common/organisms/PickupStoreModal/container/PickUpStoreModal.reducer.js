@@ -39,6 +39,8 @@ const PickupModalReducer = (state = initialState, action) => {
       return state.set('isModalOpen', action.payload.isModalOpen);
     case PICKUP_MODAL_ACTIONS_CONSTANTS.PICKUP_MODAL_OPEN:
       return state.merge(mergePickupModalState(state, action.payload));
+    case PICKUP_MODAL_ACTIONS_CONSTANTS.SET_BOPIS_STORES:
+      return state.set('suggestedStores', action.payload.stores);
     default:
       if (state instanceof Object) {
         return fromJS(state);

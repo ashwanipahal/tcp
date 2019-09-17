@@ -9,6 +9,7 @@ const initialState = fromJS({
   rewards: null,
   survey: null,
   children: null,
+  favoriteStore: null,
 });
 
 const UserReducer = (state = initialState, { type, payload }) => {
@@ -65,6 +66,18 @@ const UserReducer = (state = initialState, { type, payload }) => {
       return state.set('children', fromJS(payload.children));
     case USER_CONSTANTS.SET_GEO_COORDINATES:
       return state.set('geoLatLong', payload.geoLatLong);
+    case USER_CONSTANTS.SET_FAVORITE_STORE:
+      return state.set(
+        'favoriteStore',
+        fromJS({
+          name: payload.favoriteStore.name,
+          address: payload.favoriteStore.address1,
+          phone: payload.favoriteStore.phone,
+          state: payload.favoriteStore.state,
+          zipCode: payload.favoriteStore.zipCode,
+          city: payload.favoriteStore.city,
+        })
+      );
     case USER_CONSTANTS.RESET_USER_INFO:
       return initialState;
     case USER_CONSTANTS.CLEAR_USER_INFO_TTL:

@@ -28,7 +28,6 @@ export {
   configurePlpNavigationFromCMSUrl,
   isBopisProduct,
   isBossProduct,
-  sanitizeEntity,
 } from './utils.web';
 
 export {
@@ -47,6 +46,7 @@ export {
   getCacheKeyForRedis,
   getAddressFromPlace,
   formatAddress,
+  formatPhoneNumber,
   calculateAge,
   getLabelValue,
   capitalize,
@@ -55,4 +55,9 @@ export {
   getBirthDateOptionMap,
   generateUniqueKeyUsingLabel,
   getErrorSelector,
+  formatDate,
+  isValidDate,
+  sanitizeEntity,
+  formatPhone,
+  parseStoreHours,
 } from './utils';

@@ -38,6 +38,17 @@ export const setUserChildren = payload => {
   };
 };
 
+/**
+ * @function setFavoriteStore
+ * @param { object } payload
+ * Action creator for setting fav store
+ */
+export const setFavoriteStore = payload => {
+  return {
+    type: CONSTANTS.SET_FAVORITE_STORE,
+    payload,
+  };
+};
 export const setSurveyQuestions = payload => {
   return {
     type: CONSTANTS.SET_SURVEY_QUESTIONS,

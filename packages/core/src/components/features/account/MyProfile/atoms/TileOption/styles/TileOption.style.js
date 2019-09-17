@@ -2,6 +2,7 @@ import { css } from 'styled-components';
 
 const styles = css`
   .tile-container {
+    cursor: pointer;
     display: flex;
     align-items: center;
     justify-content: center;

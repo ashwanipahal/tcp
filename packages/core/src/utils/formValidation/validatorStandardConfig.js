@@ -73,8 +73,8 @@ export const formValidationMessages = {
     required: validExpirationDate,
     expiration: validExpirationDate,
   },
-  giftCardNumber: 'Please enter a valid gift card number',
-  cardPin: 'Please enter your gift card pin number',
+  giftCardNumber: 'lbl_err_giftcardnumber',
+  cardPin: 'lbl_err_cardpin',
 
   Email: {
     required: `lbl_err_email_req`,
