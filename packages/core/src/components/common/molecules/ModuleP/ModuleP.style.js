@@ -5,15 +5,7 @@ export default css`
   .product-image-container {
     a {
       min-height: 185px;
-      overflow: hidden;
-      position: relative;
       display: block;
-    }
-    img {
-      position: absolute;
-      top: 50%;
-      left: 50%;
-      transform: translate3d(-50%, -50%, 0);
     }
   }
   .container-price {
@@ -24,7 +16,7 @@ export default css`
   }
 
   @media ${props => props.theme.mediaQuery.large} {
-    margin: 0 12px;
+    margin: 0 ${props => props.theme.spacing.SM};
     .product-image-container {
       a {
         min-height: 267px;
@@ -33,7 +25,7 @@ export default css`
   }
 
   @media ${props => props.theme.mediaQuery.large} {
-    margin: 0 20px;
+    margin: 0 ${props => props.theme.spacing.APP_LAYOUT_SPACING.XS};
     .product-image-container {
       a {
         min-height: 259px;
