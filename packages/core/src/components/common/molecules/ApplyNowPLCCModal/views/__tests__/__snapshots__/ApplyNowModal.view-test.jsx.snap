@@ -14,9 +14,16 @@ exports[`ApplyNowModalWrapper component should renders correctly 1`] = `
     margin-right: 5px;
   }
 
+  div.TCPModal__InnerContent.innerContent {
+    padding: 21px;
+  }
+
+  &&&.inner_content {
+    padding: 21px;
+  }
+
   .TCPModal__InnerContent {
     text-align: center;
-    padding: 21px !important;
     > h2 {
       ::after {
         content: '§';
@@ -154,11 +161,6 @@ exports[`ApplyNowModalWrapper component should renders correctly 1`] = `
     margin-top: 38px;
     justify-content: center;
     padding-bottom: 33px;
-    @media ",
-      [Function],
-      " {
-      padding: 0px;
-    }
   }
 
   .footerLink {
@@ -167,6 +169,7 @@ exports[`ApplyNowModalWrapper component should renders correctly 1`] = `
 ",
     ]
   }
+  innerContentClassName="innerContent"
   isOpen={true}
   maxWidth="464px"
   minHeight="646px"

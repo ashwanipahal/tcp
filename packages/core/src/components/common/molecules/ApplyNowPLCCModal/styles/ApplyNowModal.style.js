@@ -5,9 +5,16 @@ export const modalStyles = css`
     margin-right: 5px;
   }
 
+  div.TCPModal__InnerContent.innerContent {
+    padding: 21px;
+  }
+
+  &&&.inner_content {
+    padding: 21px;
+  }
+
   .TCPModal__InnerContent {
     text-align: center;
-    padding: 21px !important;
     > h2 {
       ::after {
         content: '§';
@@ -126,9 +133,6 @@ export const modalStyles = css`
     margin-top: 38px;
     justify-content: center;
     padding-bottom: 33px;
-    @media ${props => props.theme.mediaQuery.medium} {
-      padding: 0px;
-    }
   }
 
   .footerLink {

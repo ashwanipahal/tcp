@@ -36,6 +36,7 @@ const StyledApplyNowModal = ({
       minHeight="646px"
       inheritedStyles={modalStyles}
       shouldCloseOnOverlayClick={false}
+      innerContentClassName="innerContent"
     >
       <div className="Modal__Content__Wrapper">
         <Row fullBleed className="submit_plcc_form">
