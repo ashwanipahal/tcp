@@ -33,7 +33,7 @@ export function getProductInfo(item, imageGenerator) {
         : '',
     },
     isGiftCard,
-    colorFitSizeDisplayNames: isGiftCard ? { color: 'Design', size: 'Value' } : {},
+    colorFitSizeDisplayNames: isGiftCard ? true : {}, // To Do when consuming this data { color: 'Design', size: 'Value' }
   };
 }
 
