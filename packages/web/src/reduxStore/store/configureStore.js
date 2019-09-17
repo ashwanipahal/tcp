@@ -13,11 +13,14 @@ const configureStore = preloadedState => {
    */
 
   const sagaMiddleware = createSagaMiddleware();
-  const analyticsMiddleware = createAnalyticsMiddleware();
-  const enhancers = [
-    applyMiddleware(analyticsMiddleware, sagaMiddleware),
-    cacheEnhancerMiddleware(),
+
+  const middlewares = [
+    sagaMiddleware,
+    // Use analytics middleware conditionally
+    process.env.ANALYTICS && createAnalyticsMiddleware(),
   ];
+
+  const enhancers = [applyMiddleware(...middlewares), cacheEnhancerMiddleware()];
 
   // Choose compose method depending upon environment and platform
   const composeEnhancers =
