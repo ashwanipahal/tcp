@@ -81,5 +81,44 @@ exports[`PointHistoryPage component should renders correctly 1`] = `
   <Styled(HistoryPointsRichText)
     content=""
   />
+  <Styled(Row)
+    className="elem-pt-XXL"
+  >
+    <Styled(Col)
+      className="anchor-wrapper"
+      colSize={
+        Object {
+          "large": 12,
+          "medium": 8,
+          "small": 6,
+        }
+      }
+      offsetLeft={
+        Object {
+          "large": 4,
+          "medium": 2,
+          "small": 1,
+        }
+      }
+    >
+      <Styled(Anchor)
+        anchorVariation="primary"
+        dataLocator="program_details_cta"
+        fontSizeVariation="large"
+        href="https://www.childrensplace.com/us/content/myplace-rewards-page"
+        noLink={true}
+        underline={true}
+      />
+      <Styled(Anchor)
+        anchorVariation="primary"
+        className="elem-ml-XL"
+        dataLocator="terms_condition_cta"
+        fontSizeVariation="large"
+        href="https://www.childrensplace.com/us/help-center/#termsAndConditionsli"
+        noLink={true}
+        underline={true}
+      />
+    </Styled(Col)>
+  </Styled(Row)>
 </Styled(BodyCopy)>
 `;

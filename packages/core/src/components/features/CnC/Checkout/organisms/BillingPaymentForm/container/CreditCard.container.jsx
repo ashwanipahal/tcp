@@ -5,7 +5,6 @@ import { getCardListState } from '../../../../../account/Payment/container/Payme
 import BillingPaymentForm from '../views';
 import CreditCardSelector from './CreditCard.selectors';
 import constants from './CreditCard.constants';
-import BAG_PAGE_ACTIONS from '../../../../BagPage/container/BagPage.actions';
 import CheckoutSelectors from '../../../container/Checkout.selector';
 
 export class GiftCardsContainer extends React.PureComponent<Props> {
@@ -89,8 +88,6 @@ export class GiftCardsContainer extends React.PureComponent<Props> {
       labels,
       onFileCardKey,
       paymentMethodId,
-      getCVVCodeInfo,
-      cvvCodeInfoContentId,
       cvvCodeRichText,
       orderHasShipping,
       isGuest,
@@ -100,9 +97,6 @@ export class GiftCardsContainer extends React.PureComponent<Props> {
       formErrorMessage,
       isPaymentDisabled,
     } = this.props;
-    if (cvvCodeInfoContentId) {
-      getCVVCodeInfo([cvvCodeInfoContentId]);
-    }
     this.initialValues = this.getInitialValues(this.getCreditCardDefault(cardList));
     return (
       <BillingPaymentForm
@@ -111,8 +105,6 @@ export class GiftCardsContainer extends React.PureComponent<Props> {
         onFileCardKey={onFileCardKey}
         initialValues={this.initialValues}
         paymentMethodId={paymentMethodId}
-        getCVVCodeInfo={getCVVCodeInfo}
-        cvvCodeInfoContentId={cvvCodeInfoContentId}
         cvvCodeRichText={cvvCodeRichText}
         onSubmit={this.submitBillingData}
         orderHasShipping={orderHasShipping}
@@ -132,20 +124,14 @@ export const mapDispatchToProps = dispatch => {
     getCardListAction: () => {
       dispatch(getCardList());
     },
-    getCVVCodeInfo: contentIds => {
-      dispatch(BAG_PAGE_ACTIONS.fetchModuleX(contentIds));
-    },
   };
 };
 
 const mapStateToProps = (state, ownProps) => {
   return {
     cardList: getCardListState(state),
-    labels: CreditCardSelector.getCreditCardLabels(state),
     onFileCardKey: CreditCardSelector.getOnFileCardKey(state, ownProps),
     paymentMethodId: CreditCardSelector.getPaymentMethodId(state, ownProps),
-    cvvCodeInfoContentId: CreditCardSelector.getCVVCodeInfoContentId(state),
-    cvvCodeRichText: CreditCardSelector.getCVVCodeRichTextSelector(state),
     formErrorMessage: CreditCardSelector.getFormValidationErrorMessages(state),
     isPaymentDisabled: CheckoutSelectors.getIsPaymentDisabled(state),
   };

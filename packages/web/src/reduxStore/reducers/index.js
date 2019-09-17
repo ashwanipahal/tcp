@@ -45,6 +45,7 @@ import BirthdaySavingsListReducer from '@tcp/core/src/components/features/accoun
 import PickupModalReducer from '@tcp/core/src/components/common/organisms/PickupStoreModal/container/PickUpStoreModal.reducer';
 import RecommendationsReducer from '@tcp/core/src/components/common/molecules/Recommendations/container/Recommendations.reducer';
 import SearchBarReducer from '@tcp/web/src/components/features/content/Header/molecules/SearchBar/SearchBar.reducer';
+import MyFavoriteStoreReducer from '@tcp/core/src/components/features/account/MyProfile/organism/MyFavoriteStore/container/MyFavoriteStore.reducer';
 
 import {
   APICONFIG_REDUCER_KEY,
@@ -80,6 +81,7 @@ import {
   BONUS_POINTS_DAYS_REDUCER_KEY,
   COUPON_REDUCER_KEY,
   AIRMILES_BANNER_REDUCER_KEY,
+  MY_FAVORITE_STORE_REDUCER_KEY,
   ACCOUNTHEADER_REDUCER_KEY,
   POINTS_HISTORY_REDUCER_KEY,
   EARNEXTRAPOINTS_REDUCER_KEY,
@@ -171,6 +173,7 @@ export default combineReducers({
   [BONUS_POINTS_DAYS_REDUCER_KEY]: BonusPointsDaysReducer,
   [COUPON_REDUCER_KEY]: CouponsReducer,
   [AIRMILES_BANNER_REDUCER_KEY]: AirmilesBannerReducer,
+  [MY_FAVORITE_STORE_REDUCER_KEY]: MyFavoriteStoreReducer,
   [ACCOUNTHEADER_REDUCER_KEY]: AccountHeaderReducer,
   [POINTS_HISTORY_REDUCER_KEY]: PointsHistoryReducer,
   [EARNEXTRAPOINTS_REDUCER_KEY]: EarnExtraPointsReducer,

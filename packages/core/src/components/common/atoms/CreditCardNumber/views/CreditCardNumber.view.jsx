@@ -1,9 +1,10 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import withStyles from '@tcp/core/src/components/common/hoc/withStyles';
-import { TextBox, Image } from '../../../../../../common/atoms';
-import BodyCopy from '../../../../../../common/atoms/BodyCopy/views/BodyCopy';
-import { getIconPath } from '../../../../../../../utils';
+import withStyles from '../../../hoc/withStyles';
+import TextBox from '../../TextBox';
+import Image from '../../Image';
+import BodyCopy from '../../BodyCopy';
+import { getIconPath } from '../../../../../utils';
 import styles from '../styles/CreditCardNumber.style';
 
 const getCardTypeImgUrl = cardType => {
@@ -25,3 +26,4 @@ CreditCardNumber.propTypes = {
 };
 
 export default withStyles(CreditCardNumber, styles);
+export { CreditCardNumber as CreditCardNumberVanilla };

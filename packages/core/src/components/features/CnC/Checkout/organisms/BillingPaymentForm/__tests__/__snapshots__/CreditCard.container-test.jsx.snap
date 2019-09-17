@@ -19,47 +19,11 @@ exports[`GiftCardsContainer Container should render CheckoutPage view section 1`
       },
     ]
   }
-  cvvCodeInfoContentId="1"
   cvvCodeRichText={Object {}}
   destroyOnUnmount={true}
   enableReinitialize={true}
   forceUnregisterOnUnmount={false}
   form="checkoutBilling"
-  getCVVCodeInfo={
-    [MockFunction] {
-      "calls": Array [
-        Array [
-          Array [
-            "1",
-          ],
-        ],
-        Array [
-          Array [
-            "1",
-          ],
-        ],
-        Array [
-          Array [
-            "1",
-          ],
-        ],
-      ],
-      "results": Array [
-        Object {
-          "type": "return",
-          "value": undefined,
-        },
-        Object {
-          "type": "return",
-          "value": undefined,
-        },
-        Object {
-          "type": "return",
-          "value": undefined,
-        },
-      ],
-    }
-  }
   getFormState={[Function]}
   initialValues={
     Object {

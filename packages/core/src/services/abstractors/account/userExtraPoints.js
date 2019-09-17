@@ -31,7 +31,7 @@ export const getExtraPointsActivityList = () => {
 
       // parsing api respone and pushing into extraPoints
       extraPoints =
-        res.body.activityList &&
+        activityList &&
         activityList.map(item => {
           let activity;
           let extraPointsResult = {};
