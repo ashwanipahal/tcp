@@ -80,7 +80,7 @@ const styles = css`
       display: none;
     }
   }
-  @media ${props => props.theme.mediaQuery.large} {
+  @media ${props => props.theme.mediaQuery.large}, ${props => props.theme.mediaQuery.medium} {
     .payment-method-box:nth-child(2) {
       margin-right: 0;
     }

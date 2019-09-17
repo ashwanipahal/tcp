@@ -8,6 +8,7 @@ const ignorePsuedoCodeDir = [
   '/PickupStoreModal/',
   '/StoreSummaryComponents/',
   '/ProductDetail/',
+  '/OutfitDetail/',
   '/services/abstractors/productListing/',
   '/services/abstractors/common/recommendations/',
   '/ProductListingPage/',
