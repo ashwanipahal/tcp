@@ -10,12 +10,13 @@ import style from '../Header.style';
 import SearchBar from '../molecules/SearchBar/index';
 
 class Header extends React.PureComponent {
-  state = {
-    showCondensedHeader: false,
-    isSearchOpen: false,
-  };
-
-  throttledOnScroll = throttle(this.handleScroll, 100);
+  constructor(props) {
+    super(props);
+    this.state = {
+      showCondensedHeader: false,
+      isSearchOpen: false,
+    };
+  }
 
   componentDidMount() {
     this.addScrollListener();
@@ -64,6 +65,9 @@ class Header extends React.PureComponent {
       });
     }
   };
+
+  // eslint-disable-next-line
+  throttledOnScroll = throttle(this.handleScroll, 100);
 
   render() {
     const {

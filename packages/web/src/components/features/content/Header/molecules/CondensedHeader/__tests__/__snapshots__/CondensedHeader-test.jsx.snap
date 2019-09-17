@@ -131,3 +131,5 @@ exports[`<CondensedHeaderVanilla /> Should match snapshot 1`] = `
   />
 </Fragment>
 `;
+
+exports[`<CondensedHeaderVanilla /> Should match snapshot correctly 1`] = `""`;
