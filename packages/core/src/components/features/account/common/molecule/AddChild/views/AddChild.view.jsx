@@ -13,6 +13,7 @@ import styles from '../styles/AddChild.style';
 import Col from '../../../../../../common/atoms/Col';
 import createValidateMethod from '../../../../../../../utils/formValidation/createValidateMethod';
 import getStandardConfig from '../../../../../../../utils/formValidation/validatorStandardConfig';
+import endpoints from '../../../externalEndpoints';
 
 export class AddChildBirthdayForm extends React.PureComponent {
   static propTypes = {
@@ -225,20 +226,10 @@ export class AddChildBirthdayForm extends React.PureComponent {
                   fontFamily="secondary"
                   fontWeight="semibold"
                 >
-                  <Anchor
-                    underline
-                    noLink
-                    to="https://www.childrensplace.com/us/help-center/#policies"
-                    data-locator="privacyLnk"
-                  >
+                  <Anchor underline noLink to={endpoints.policiesPage} data-locator="privacyLnk">
                     {addChildBirthdayLabels.lbl_add_child_privacy}
                   </Anchor>
-                  <Anchor
-                    underline
-                    noLink
-                    to="https://www.childrensplace.com/us/help-center/#faq"
-                    data-locator="faqLnk"
-                  >
+                  <Anchor underline noLink to={endpoints.faqPage} data-locator="faqLnk">
                     {addChildBirthdayLabels.lbl_add_child_faq}
                   </Anchor>
                 </BodyCopy>
