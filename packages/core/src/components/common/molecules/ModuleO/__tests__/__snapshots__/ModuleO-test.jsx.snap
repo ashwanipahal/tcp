@@ -68,7 +68,7 @@ exports[`Module O component renders correctly 1`] = `
       }
     }
     sqnNmbr={12312}
-    unbxdId="fc0d2287-4a11-4739-98b4-1e2fd91016c4"
+    unbxdId=""
   />
 </ul>
 `;

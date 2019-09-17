@@ -6,7 +6,7 @@ export default css`
     margin: 32px 0 16px 0;
   }
 
-  .recommendaton-cta-container {
+  .recommendation-cta-container {
     text-align: center;
     margin-top: 16px;
   }
@@ -14,6 +14,14 @@ export default css`
   .price-only {
     .slick-arrow {
       top: 40%;
+    }
+  }
+
+  .no-carousel-container {
+    display: flex;
+    justify-content: center;
+    ul {
+      width: 149px;
     }
   }
 
@@ -26,6 +34,12 @@ export default css`
 
     .slick-list {
       margin-right: -33%;
+    }
+  }
+
+  .moduleP-variation {
+    .slick-arrow {
+      top: 25%;
     }
   }
 
@@ -42,6 +56,11 @@ export default css`
         margin-right: -20%;
       }
     }
+    .no-carousel-container {
+      ul {
+        width: 214px;
+      }
+    }
   }
 
   @media ${props => props.theme.mediaQuery.large} {
@@ -55,6 +74,11 @@ export default css`
     &.recommendations-tile {
       .slick-list {
         margin-right: 0;
+      }
+    }
+    .no-carousel-container {
+      ul {
+        width: 261px;
       }
     }
   }
