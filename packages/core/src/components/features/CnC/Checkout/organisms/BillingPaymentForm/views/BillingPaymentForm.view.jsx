@@ -312,7 +312,7 @@ export class BillingPaymentForm extends React.PureComponent {
     return (
       <form name={constants.FORM_NAME} noValidate className={className} onSubmit={handleSubmit}>
         {!isPaymentDisabled && (
-          <div className="payment-container">
+          <div>
             <BodyCopy
               fontFamily="primary"
               fontSize="fs26"
