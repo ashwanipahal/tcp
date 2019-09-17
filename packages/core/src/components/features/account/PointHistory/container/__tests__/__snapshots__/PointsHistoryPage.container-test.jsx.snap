@@ -2,7 +2,9 @@
 
 exports[`PointsHistoryPage container should render correctly 1`] = `
 <Styled(PointsHistoryPageView)
+  getRichText={[Function]}
   labels={Object {}}
+  pointHistoryContentId=""
   richTextContent=""
 />
 `;

@@ -135,7 +135,7 @@ const ButtonList = props => {
   } = props;
 
   const buttonListConfig = getButtonListConfig(buttonListVariation, buttonsData.length);
-  const { compClassName, ctaInfo, compWrapper } = buttonListConfig;
+  const { compClassName, ctaInfo, compWrapper, noCurveMobile } = buttonListConfig;
 
   let Component = ButtonCTA;
   if (buttonListVariation === 'imageCTAList') {
@@ -160,6 +160,7 @@ const ButtonList = props => {
             },
             fill,
             image,
+            noCurveMobile,
           };
 
           // Code to generate unique key

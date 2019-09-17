@@ -1,12 +1,12 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import withStyles from '@tcp/core/src/components/common/hoc/withStyles';
 import { Field } from 'redux-form';
 import { Col, Row, TextBox } from '../../../atoms';
 import Select from '../../../atoms/Select';
 import CreditCardNumber from '../../../atoms/CreditCardNumber';
 import { getCreditCardExpirationOptionMap } from '../../../../../utils';
 import styles from '../styles/CreditCardFields.styles';
+import withStyles from '../../../hoc/withStyles';
 
 const CardNumberField = ({ cardTypeImgUrl, cardType, isPLCCEnabled, creditFieldLabels }) => {
   return (

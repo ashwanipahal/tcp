@@ -21,8 +21,24 @@ export const closePickupModal = payload => {
   };
 };
 
+export const getBopisStoresActn = payload => {
+  return {
+    payload,
+    type: PICKUP_MODAL_ACTIONS_CONSTANTS.GET_BOPIS_STORES,
+  };
+};
+
+export const setBopisStores = payload => {
+  return {
+    payload,
+    type: PICKUP_MODAL_ACTIONS_CONSTANTS.SET_BOPIS_STORES,
+  };
+};
+
 export default {
   togglePickupModal,
   closePickupModal,
   openPickupModalWithValues,
+  getBopisStoresActn,
+  setBopisStores,
 };
