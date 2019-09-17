@@ -6,6 +6,7 @@ import BillingPaymentForm from '../../BillingPaymentForm';
 import styles from '../styles/BillingPage.style';
 import GiftCardsContainer from '../../GiftCardsSection';
 import GuestBillingForm from '../../GuestBillingForm';
+import { getLabelValue } from '../../../../../../../utils';
 
 class BillingPage extends React.PureComponent {
   static propTypes = {
@@ -16,12 +17,26 @@ class BillingPage extends React.PureComponent {
     isGuest: PropTypes.bool.isRequired,
     shippingAddress: PropTypes.shape({}),
     cvvCodeRichText: PropTypes.string,
+    addressLabels: PropTypes.shape({}),
+    billingData: PropTypes.shape({}),
   };
 
   static defaultProps = {
     className: '',
     shippingAddress: null,
     cvvCodeRichText: null,
+    addressLabels: null,
+    billingData: {},
+  };
+
+  getFooterLabels = () => {
+    const { labels } = this.props;
+    return {
+      header: getLabelValue(labels, 'lbl_billing_title'),
+      backLinkPickup: getLabelValue(labels, 'lbl_billing_backLinkPickup'),
+      backLinkShipping: getLabelValue(labels, 'lbl_billing_backLinkShipping'),
+      nextSubmitText: getLabelValue(labels, 'lbl_billing_nextSubmit'),
+    };
   };
 
   render() {
@@ -33,9 +48,10 @@ class BillingPage extends React.PureComponent {
       submitBilling,
       shippingAddress,
       cvvCodeRichText,
+      addressLabels,
+      billingData,
     } = this.props;
-    const { header, backLinkPickup, backLinkShipping, nextSubmitText } = labels;
-
+    const { header, backLinkPickup, backLinkShipping, nextSubmitText } = this.getFooterLabels();
     return (
       <div className={className}>
         <CheckoutSectionTitleDisplay title={header} dataLocator="billing-title" />
@@ -58,6 +74,13 @@ class BillingPage extends React.PureComponent {
             shippingAddress={shippingAddress}
             cvvCodeRichText={cvvCodeRichText}
             labels={labels}
+            isGuest={isGuest}
+            addressLabels={addressLabels}
+            backLinkPickup={backLinkPickup}
+            backLinkShipping={backLinkShipping}
+            nextSubmitText={nextSubmitText}
+            orderHasShipping={orderHasShipping}
+            billingData={billingData}
           />
         )}
       </div>

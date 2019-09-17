@@ -7,10 +7,14 @@ import AddNewCCForm from '../../AddNewCCForm';
 import cvvInfo from '../../../molecules/CVVInfo';
 import PaymentMethods from '../../../../common/molecules/PaymentMethods';
 import BodyCopy from '../../../../../../common/atoms/BodyCopy';
-import CONSTANTS from '../../../Checkout.constants';
+import CONSTANTS, { CHECKOUT_ROUTES } from '../../../Checkout.constants';
 import { getLabelValue } from '../../../../../../../utils';
+import CheckoutBillingAddress from '../../CheckoutBillingAddress';
+import AddressFields from '../../../../../../common/molecules/AddressFields';
+import CheckoutFooter from '../../../molecules/CheckoutFooter';
+import utility from '../../../util/utility';
 
-class GuestBillingForm extends React.PureComponent {
+class GuestBillingForm extends React.Component {
   static propTypes = {
     dispatch: PropTypes.func.isRequired,
     shippingAddress: PropTypes.shape({}),
@@ -19,6 +23,15 @@ class GuestBillingForm extends React.PureComponent {
     syncErrorsObj: PropTypes.shape({}),
     labels: PropTypes.shape({}),
     paymentMethodId: PropTypes.string,
+    orderHasShipping: PropTypes.bool,
+    addressLabels: PropTypes.shape({}).isRequired,
+    isGuest: PropTypes.bool,
+    isSameAsShippingChecked: PropTypes.bool,
+    nextSubmitText: PropTypes.string,
+    backLinkShipping: PropTypes.string,
+    backLinkPickup: PropTypes.string,
+    handleSubmit: PropTypes.func.isRequired,
+    billingData: PropTypes.shape({}),
   };
 
   static defaultProps = {
@@ -28,6 +41,13 @@ class GuestBillingForm extends React.PureComponent {
     syncErrorsObj: null,
     labels: {},
     paymentMethodId: null,
+    orderHasShipping: true,
+    isGuest: true,
+    isSameAsShippingChecked: true,
+    billingData: {},
+    nextSubmitText: '',
+    backLinkShipping: '',
+    backLinkPickup: '',
   };
 
   componentDidUpdate(prevProp) {
@@ -40,14 +60,31 @@ class GuestBillingForm extends React.PureComponent {
   }
 
   render() {
-    const { cvvCodeRichText, cardType, syncErrorsObj, labels, paymentMethodId } = this.props;
+    const {
+      cvvCodeRichText,
+      cardType,
+      syncErrorsObj,
+      labels,
+      paymentMethodId,
+      isGuest,
+      orderHasShipping,
+      addressLabels,
+      dispatch,
+      shippingAddress,
+      isSameAsShippingChecked,
+      nextSubmitText,
+      backLinkShipping,
+      backLinkPickup,
+      handleSubmit,
+      billingData,
+    } = this.props;
     let cvvError;
     if (syncErrorsObj) {
       cvvError = syncErrorsObj.syncError.cvvCode;
     }
 
     return (
-      <form name="checkoutBilling">
+      <form name="checkoutBilling" onSubmit={handleSubmit}>
         <BodyCopy
           fontFamily="primary"
           fontSize="fs28"
@@ -58,22 +95,41 @@ class GuestBillingForm extends React.PureComponent {
           {getLabelValue(labels, 'lbl_billing_paymentMethodTitle')}
         </BodyCopy>
         <PaymentMethods labels={labels} />
-        <div className="elem-mt-LRG">
+        <div className="elem-mt-LRG elem-pb-XL     ">
           {paymentMethodId === CONSTANTS.PAYMENT_METHOD_CREDIT_CARD ? (
-            <AddNewCCForm
-              cvvInfo={cvvInfo({ cvvCodeRichText })}
-              cardType={cardType}
-              cvvError={cvvError}
-              labels={labels}
-            />
+            <>
+              <AddNewCCForm
+                cvvInfo={cvvInfo({ cvvCodeRichText })}
+                cardType={cardType}
+                cvvError={cvvError}
+                labels={labels}
+              />
+              <CheckoutBillingAddress
+                isGuest={isGuest}
+                orderHasShipping={orderHasShipping}
+                addressLabels={addressLabels}
+                dispatch={dispatch}
+                shippingAddress={shippingAddress}
+                isSameAsShippingChecked={isSameAsShippingChecked}
+                labels={labels}
+                billingData={billingData}
+              />
+            </>
           ) : null}
         </div>
+        <CheckoutFooter
+          hideBackLink
+          backLinkHandler={() => utility.routeToPage(CHECKOUT_ROUTES.shippingPage)}
+          nextButtonText={nextSubmitText}
+          backLinkText={orderHasShipping ? backLinkShipping : backLinkPickup}
+        />
       </form>
     );
   }
 }
 
 const validateMethod = createValidateMethod({
+  address: AddressFields.addressValidationConfig,
   ...getStandardConfig(['cardNumber', 'cvvCode', 'expYear', 'expMonth']),
 });
 export default reduxForm({

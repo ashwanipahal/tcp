@@ -99,7 +99,7 @@ function* getAddressData(formData) {
 function* submitBillingData(formData, address, loadUpdatedCheckoutValues) {
   let res;
   let cardDetails;
-  let updatePaymentRequired = true;
+  const updatePaymentRequired = true;
   const isGuestUser = yield select(isGuest);
   if (formData.address.sameAsShipping) {
     const shippingDetails = yield select(getShippingDestinationValues);
@@ -144,9 +144,7 @@ function* submitBillingData(formData, address, loadUpdatedCheckoutValues) {
       },
       { profileUpdate: false }
     );
-    res = res.payload;
   } else {
-    updatePaymentRequired = false;
     res = yield call(
       addAddressGet,
       {
@@ -161,6 +159,7 @@ function* submitBillingData(formData, address, loadUpdatedCheckoutValues) {
       },
       false
     );
+    res = res.body;
   }
   if (updatePaymentRequired) {
     yield call(

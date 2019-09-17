@@ -60,12 +60,7 @@ export const CreditCardFields = ({
       </Col>
       {isExpirationRequired && (
         <React.Fragment>
-          <Col
-            {...expMonthProps}
-            ignoreGutter={{
-              small: true,
-            }}
-          >
+          <Col {...expMonthProps}>
             <Field
               placeholder={creditFieldLabels.expMonth}
               name="expMonth"

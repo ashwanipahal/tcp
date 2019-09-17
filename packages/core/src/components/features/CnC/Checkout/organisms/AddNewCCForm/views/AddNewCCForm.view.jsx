@@ -24,6 +24,9 @@ const creditCardProps = {
       medium: 3,
       large: 2,
     },
+    ignoreGutter: {
+      small: false,
+    },
   },
   cvvProps: {
     colSize: {
