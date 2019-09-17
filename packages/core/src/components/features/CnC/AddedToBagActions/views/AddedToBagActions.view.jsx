@@ -5,7 +5,7 @@ import Button from '../../../../common/atoms/Button';
 import withStyles from '../../../../common/hoc/withStyles';
 import OpenLoginModal from '../../../account/LoginPage/views/LoginModal';
 import style from '../styles/AddedToBagActions.style';
-import PayPalButton from '../../../../common/atoms/PaypalButton';
+import PayPalButton from '../../common/organism/PayPalButton';
 import Row from '../../../../common/atoms/Row';
 import Col from '../../../../common/atoms/Col';
 import BodyCopy from '../../../../common/atoms/BodyCopy';
