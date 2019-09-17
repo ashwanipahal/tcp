@@ -1,26 +1,5 @@
 import { css } from 'styled-components';
 
-/**
- * @function to return margin left for bag count icon
- * @param {string} cartItemCount - no of items in cart
- */
-const cartItemMargin = cartItemCount => {
-  let marginLeft = '-7px';
-  if (cartItemCount && cartItemCount.length > 0) {
-    switch (cartItemCount.length) {
-      case 2:
-        marginLeft = '-9px';
-        break;
-      case 3:
-        marginLeft = '-14px';
-        break;
-      default:
-        break;
-    }
-  }
-  return marginLeft;
-};
-
 export default css`
   box-sizing: border-box;
   padding: 14px 0;
@@ -73,7 +52,7 @@ export default css`
         : props.theme.colorPalette.blue['800']};
     color: ${props => props.theme.colors.WHITE};
     border-radius: 8px;
-    margin: 1px 0px 0px ${props => cartItemMargin(props.cartItemCount)};
+    margin: 1px 0px 0px -9px;
     padding: 2px 6px;
   }
   @media ${props => props.theme.mediaQuery.mediumMax} {

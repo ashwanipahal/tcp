@@ -6,8 +6,8 @@ import { css } from 'styled-components';
  */
 const cartItemMargin = cartItemCount => {
   let marginLeft = '-7px';
-  if (cartItemCount && cartItemCount.length > 0) {
-    switch (cartItemCount.length) {
+  if (cartItemCount && cartItemCount.toString().length > 0) {
+    switch (cartItemCount.toString().length) {
       case 2:
         marginLeft = '-9px';
         break;
