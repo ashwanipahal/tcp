@@ -22,8 +22,10 @@ export class PointsHistoryPageContainer extends React.PureComponent {
    * @return   {[Object]} JSX of the component
    */
   render() {
-    const { labels, pointHistoryRichText } = this.props;
-    return <PointsHistoryPage richTextContent={pointHistoryRichText} labels={labels} />;
+    const { labels, pointHistoryRichText, ...otherprops } = this.props;
+    return (
+      <PointsHistoryPage richTextContent={pointHistoryRichText} labels={labels} {...otherprops} />
+    );
   }
 }
 

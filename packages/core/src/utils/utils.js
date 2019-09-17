@@ -1,9 +1,11 @@
+/* eslint-disable max-lines */
 import icons from '../config/icons';
 import locators from '../config/locators';
 import flagIcons from '../config/flagIcons';
 import { API_CONFIG } from '../services/config';
 import { getStoreRef, resetStoreRef } from './store.utils';
 import { APICONFIG_REDUCER_KEY } from '../constants/reducer.constants';
+import { parseDate } from './parseDate';
 
 // setting the apiConfig subtree of whole state in variable; Do we really need it ?
 let apiConfig = null;
@@ -150,6 +152,26 @@ export const toTimeString = est => {
   return `${hh}:${mm}${ampm}`;
 };
 
+/**
+ * This function will format the Date in mm/dd/yy format
+ * @param {object} date to be formatted
+ */
+export const formatDate = date => {
+  const month = `0${date.getMonth() + 1}`.substr(-2);
+  const dateStr = `0${date.getDate()}`.substr(-2);
+  const year = date.getFullYear().toString();
+  return `${month}/${dateStr}/${year}`;
+};
+
+/**
+ * This function will check for valid date
+ * @param {object} date to be check
+ */
+/* eslint-disable no-restricted-globals */
+export const isValidDate = date => {
+  return date instanceof Date && !isNaN(date);
+};
+
 export const isGymboree = () => {
   const { brandId } = getAPIConfig();
   return brandId === API_CONFIG.brandIds.gym;
@@ -240,6 +262,11 @@ export const formatAddress = address => ({
   zipCode: address.zip,
   phone1: address.phoneNumber,
 });
+
+export const formatPhoneNumber = phone => {
+  if (phone) return `(${phone.slice(0, 3)})-${phone.slice(3, 6)}-${phone.slice(6, 15)}`;
+  return '';
+};
 
 const MONTH_SHORT_FORMAT = {
   JAN: 'Jan',
@@ -359,7 +386,7 @@ export const getLabelValue = (labelState, labelKey, subCategory, category) => {
 
 export const getErrorSelector = (state, labels, errorKey) => {
   const errorParameters = state && state.getIn(['errorParameters', '0']);
-  const errorCode = state && state.get('errorCode');
+  const errorCode = state && state.get('errorKey');
   if (
     (errorParameters && getLabelValue(labels, `${errorKey}_${errorParameters}`)) ||
     (errorCode && getLabelValue(labels, `${errorKey}_${errorCode}`))
@@ -374,6 +401,128 @@ export const getErrorSelector = (state, labels, errorKey) => {
 
 export const generateUniqueKeyUsingLabel = label => {
   return label.replace(/\s/g, '_');
+};
+
+export const sanitizeEntity = string => {
+  return string && typeof string === 'string'
+    ? string
+        .replace(/&amp;/gi, '&')
+        .replace(/&quot;/gi, '"')
+        .replace(/&ldquo;/gi, '"')
+        .replace(/&acute;/gi, '"')
+        .replace(/&prime;/gi, '"')
+        .replace(/&bdquo;/gi, '"')
+        .replace(/&ldquot;/gi, '"')
+        .replace(/\\u0027/gi, "'")
+        .replace(/&lsquot;/gi, '"')
+        .replace(/%20/gi, ' ')
+    : string;
+};
+
+export const checkPhone = phone => {
+  return (
+    phone
+      .replace('(', '')
+      .replace(')', '')
+      .replace('-', '')
+      .replace(' ', '')
+      .trim() || phone
+  );
+};
+
+export const formatPhone = (phoneNum, hyphenFormat) => {
+  let phone = phoneNum;
+  let countryCode = '';
+  if (typeof phone === 'number') {
+    phone = phone.toString();
+  }
+
+  phone = checkPhone(phone);
+
+  if (hyphenFormat && phone.length === 11) {
+    countryCode = phone.substr(0, 1);
+    phone = phone.substr(1); // Skip the first number for the phone number as it is the code
+  }
+  if (phone.length === 10) {
+    const arrayPhone = [];
+    let prefix;
+    for (let i = 0; i < phone.length; i += 1) {
+      arrayPhone.push(phone.substr(i, 1));
+    }
+    if (hyphenFormat) {
+      prefix = `${arrayPhone[0]} ${arrayPhone[1]} ${arrayPhone[2]}-`;
+    } else {
+      prefix = `( ${arrayPhone[0]} ${arrayPhone[1]} ${arrayPhone[2]} + )`;
+    }
+
+    const sufix = `${arrayPhone[3]}
+      ${arrayPhone[4]}
+      ${arrayPhone[5]}
+      -
+      ${arrayPhone[6]}
+      ${arrayPhone[7]}
+      ${arrayPhone[8]}
+      ${arrayPhone[9]}`;
+    if (hyphenFormat) {
+      phone = (countryCode ? `${countryCode}-` : '') + prefix + sufix;
+    } else {
+      phone = `${prefix} ${sufix}`;
+    }
+    return phone;
+  }
+
+  return phone;
+};
+
+export const parseStoreHours = hoursOfOperation => {
+  let carryOverClosingHour;
+  const result = [];
+  const keysOfHoursOfOperation = Object.keys(hoursOfOperation);
+  keysOfHoursOfOperation.forEach(key => {
+    const day = hoursOfOperation[key];
+    // store was opened on the previous date and closing today,
+    // so we need to push it as the first opening time of today
+    if (carryOverClosingHour) {
+      const date = carryOverClosingHour.split(' ')[0];
+      day.availability.unshift({
+        from: `${date} 00:00:00`,
+        to: carryOverClosingHour,
+      });
+      carryOverClosingHour = null;
+    }
+
+    const storeHours = {
+      dayName: day.nick.toUpperCase() || '',
+      openIntervals: day.availability.map(availability => {
+        const parsableFromDate = availability.from.replace('T', ' ');
+        let parsableToDate = availability.to.replace('T', ' ');
+        const fromDate = parseDate(parsableFromDate);
+        const toDate = parseDate(parsableToDate);
+        const isSameDay =
+          fromDate.getFullYear() === toDate.getFullYear() &&
+          fromDate.getMonth() === toDate.getMonth() &&
+          fromDate.getDate() === toDate.getDate();
+
+        if (!isSameDay) {
+          // save carry over for next day
+          carryOverClosingHour = parsableToDate;
+          // set closing hour at 23.59.59 of today
+          parsableToDate = `${fromDate.getFullYear()}  - ${fromDate.getMonth() +
+            1} - ${fromDate.getDate()} 23:59:59`;
+        }
+
+        return {
+          fromHour: parsableFromDate,
+          toHour: parsableToDate,
+        };
+      }),
+      isClosed: day.availability[0].status === 'closed',
+    };
+
+    result.push(storeHours);
+  });
+
+  return result;
 };
 
 export default {
@@ -392,9 +541,13 @@ export default {
   isTCP,
   getAddressFromPlace,
   formatAddress,
+  formatPhoneNumber,
   getLabelValue,
   getCacheKeyForRedis,
   calculateAge,
   generateUniqueKeyUsingLabel,
   getErrorSelector,
+  isValidDate,
+  formatDate,
+  parseStoreHours,
 };

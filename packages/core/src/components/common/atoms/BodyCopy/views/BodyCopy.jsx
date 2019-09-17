@@ -16,10 +16,11 @@ const BodyCopy = props => {
     letterSpacing,
     textAlign,
     color,
+    dataLocator,
     ...others
   } = props;
   return (
-    <Component className={className} {...others}>
+    <Component className={className} data-locator={dataLocator} {...others}>
       {children}
     </Component>
   );

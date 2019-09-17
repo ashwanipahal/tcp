@@ -73,8 +73,8 @@ export const formValidationMessages = {
     required: validExpirationDate,
     expiration: validExpirationDate,
   },
-  giftCardNumber: 'Please enter a valid gift card number',
-  cardPin: 'Please enter your gift card pin number',
+  giftCardNumber: 'lbl_err_giftcardnumber',
+  cardPin: 'lbl_err_cardpin',
 
   Email: {
     required: `lbl_err_email_req`,
@@ -321,8 +321,13 @@ export const formValidationRules = {
   cvvCode: {
     required: true,
     cvvNumber: true,
-    cvvLengthThree: true,
-    cvvLengthFour: true,
+    cvvLengthThree: {
+      linkedProps: ['cardType'],
+    },
+    // amex validation, validates length === 4 only if type is amex, otherwise it passes validation
+    cvvLengthFour: {
+      linkedProps: ['cardType'],
+    },
   },
   phoneNumberWithAlt: {
     phone: true,
