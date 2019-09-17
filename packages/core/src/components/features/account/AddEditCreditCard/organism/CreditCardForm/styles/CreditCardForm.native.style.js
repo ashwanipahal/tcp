@@ -5,7 +5,7 @@ const CreditCardContainer = styled.View`
 `;
 
 const AddressWrapper = styled.View`
-  margin-top: ${props => props.theme.spacing.ELEM_SPACING.XXXL};
+  margin-top: ${props => props.theme.spacing.ELEM_SPACING.LRG};
 `;
 
 const ActionsWrapper = styled.View`
