@@ -149,7 +149,9 @@ export const mapDispatchToProps = dispatch => ({
   },
   toastMessage: coupon => {
     dispatch(toastMessageInfo(coupon.error));
-    dispatch(setError({ msg: null, couponCode: coupon.id }));
+    setTimeout(() => {
+      dispatch(setError({ msg: null, couponCode: coupon.id }));
+    }, 1500);
   },
 });
 
