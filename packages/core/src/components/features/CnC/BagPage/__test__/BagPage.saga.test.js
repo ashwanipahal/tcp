@@ -8,6 +8,9 @@ import {
   startCartCheckout,
   removeUnqualifiedItemsAndCheckout,
   checkoutCart,
+  routeForCartCheckout,
+  startPaypalCheckout,
+  authorizePayPalPayment,
 } from '../container/BagPage.saga';
 import BAG_PAGE_ACTIONS from '../container/BagPage.actions';
 import BAGPAGE_CONSTANTS from '../BagPage.constants';
@@ -78,6 +81,9 @@ describe('Bag page Saga', () => {
       BAGPAGE_CONSTANTS.REMOVE_UNQUALIFIED_AND_CHECKOUT,
       removeUnqualifiedItemsAndCheckout
     );
+    expectValue(BAGPAGE_CONSTANTS.ROUTE_FOR_CART_CHECKOUT, routeForCartCheckout);
+    expectValue(BAGPAGE_CONSTANTS.START_PAYPAL_CHECKOUT, startPaypalCheckout);
+    expectValue(BAGPAGE_CONSTANTS.AUTHORIZATION_PAYPAL_CHECKOUT, authorizePayPalPayment);
   });
 });
 
