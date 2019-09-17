@@ -6,6 +6,9 @@ export default css`
   .preview-and-social-media-icons {
     display: none;
   }
+  .resize-text {
+    display: inline-flex;
+  }
   .main-image-container-wrap {
     width: 100%;
     margin-bottom: 30px;

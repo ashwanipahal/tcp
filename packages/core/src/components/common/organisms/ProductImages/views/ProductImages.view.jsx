@@ -1,9 +1,11 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import Immutable from 'seamless-immutable';
+import { Anchor } from '../../../atoms';
 import withStyles from '../../../hoc/withStyles';
 import config from '../config';
 import ThumbnailsList from '../../../molecules/ThumbnailsList';
+import FullSizeImageWithQuickViewModal from '../../../../features/browse/ProductDetail/molecules/FullSizeImageWithQuickViewModal/views/FullSizeImageWithQuickViewModal.view';
 import Carousel from '../../../molecules/Carousel';
 import styles, { carousalStyle } from '../styles/ProductImages.style';
 import ProductDetailImage from '../../../molecules/ProductDetailImage';
@@ -33,21 +35,33 @@ class ProductImages extends React.Component {
     /** Flags if the zoom should be enabled */
     isZoomEnabled: PropTypes.bool.isRequired,
     className: PropTypes.string,
+    isFullSizeVisible: PropTypes.bool,
   };
 
   state = {
     currentImageIndex: 0,
+    isFullSizeModalOpen: false,
   };
 
   constructor(props) {
     super(props);
 
     this.handleThumbnailClick = this.handleThumbnailClick.bind(this);
+    this.handleShowFullSizeModalClick = this.handleShowFullSizeModalClick.bind(this);
+    this.handleCloseFullSizeModalClick = this.handleCloseFullSizeModalClick.bind(this);
   }
 
   handleThumbnailClick = imageIndex => {
     this.setState({ currentImageIndex: imageIndex });
   };
+
+  handleShowFullSizeModalClick() {
+    this.setState({ isFullSizeModalOpen: true });
+  }
+
+  handleCloseFullSizeModalClick() {
+    this.setState({ isFullSizeModalOpen: false });
+  }
 
   render() {
     const {
@@ -55,10 +69,10 @@ class ProductImages extends React.Component {
       images,
       isShowBigSizeImages,
       isZoomEnabled,
-
+      isFullSizeVisible,
       className,
     } = this.props;
-    const { currentImageIndex } = this.state;
+    const { currentImageIndex, isFullSizeModalOpen } = this.state;
 
     const thumbnailImagesPaths = Immutable.asMutable(
       images.map(image => ({
@@ -79,34 +93,54 @@ class ProductImages extends React.Component {
         </div>
         <div className="main-image-container-wrap">
           <div className="main-image-container">
-            <Carousel
-              options={config.CAROUSEL_OPTIONS}
-              inheritedStyles={carousalStyle}
-              sliderImageIndex={currentImageIndex}
-              carouselConfig={{
-                autoplay: false,
-                customArrowLeft: getIconPath('carousel-big-carrot'),
-                customArrowRight: getIconPath('carousel-big-carrot'),
-              }}
-            >
-              {images &&
-                images.map(image => {
-                  const { superSizeImageUrl } = image;
-                  return (
-                    <ProductDetailImage
-                      imageUrl={image && image[imageSizePropertyName]}
-                      zoomImageUrl={superSizeImageUrl}
-                      imageName={productName}
-                      isZoomEnabled={isZoomEnabled}
-                    />
-                  );
-                })}
-            </Carousel>
+            {
+              <Carousel
+                options={config.CAROUSEL_OPTIONS}
+                inheritedStyles={carousalStyle}
+                sliderImageIndex={currentImageIndex}
+                carouselConfig={{
+                  autoplay: false,
+                  customArrowLeft: getIconPath('carousel-big-carrot'),
+                  customArrowRight: getIconPath('carousel-big-carrot'),
+                }}
+              >
+                {images &&
+                  images.map(image => {
+                    const { superSizeImageUrl } = image;
+                    return (
+                      <ProductDetailImage
+                        imageUrl={image && image[imageSizePropertyName]}
+                        zoomImageUrl={superSizeImageUrl}
+                        imageName={productName}
+                        isZoomEnabled={isZoomEnabled}
+                      />
+                    );
+                  })}
+              </Carousel>
+            }
+            {isFullSizeVisible && (
+              <Anchor
+                className="resize-text"
+                aria-label="view full size image"
+                onClick={this.handleShowFullSizeModalClick}
+              >
+                Full Size
+              </Anchor>
+            )}
           </div>
+
           <div className="enlarged-image-container">
             <div id="portal" className="enlarged-image" />
           </div>
         </div>
+
+        {isFullSizeModalOpen && (
+          <FullSizeImageWithQuickViewModal
+            onCloseClick={this.handleCloseFullSizeModalClick}
+            images={images}
+            isThumbnailListVisible
+          />
+        )}
       </div>
     );
   }
@@ -114,7 +148,8 @@ class ProductImages extends React.Component {
 
 ProductImages.defaultProps = {
   className: '',
-  isShowBigSizeImages: true,
+  isShowBigSizeImages: false,
+  isFullSizeVisible: true,
 };
 
 export default withStyles(ProductImages, styles);
