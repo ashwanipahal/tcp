@@ -23,46 +23,46 @@ export const formattedPdpRes = {
     imagesByColor: {
       WHITE: {
         basicImageUrl:
-          'https://www.childrensplace.com/wcsstore/GlobalSAS/images/tcp/products/500/3003099_32E5.jpg',
+          'https://test4.childrensplace.com/wcsstore/GlobalSAS/images/tcp/products/500/3003099_32E5.jpg',
         extraImages: [
           {
             isOnModalImage: false,
             iconSizeImageUrl:
-              'https://www.childrensplace.com/wcsstore/GlobalSAS/images/tcp/products/125/3003099_32E5.jpg',
+              'https://test4.childrensplace.com/wcsstore/GlobalSAS/images/tcp/products/125/3003099_32E5.jpg',
             listingSizeImageUrl:
-              'https://www.childrensplace.com/wcsstore/GlobalSAS/images/tcp/products/380/3003099_32E5.jpg',
+              'https://test4.childrensplace.com/wcsstore/GlobalSAS/images/tcp/products/380/3003099_32E5.jpg',
             regularSizeImageUrl:
-              'https://www.childrensplace.com/wcsstore/GlobalSAS/images/tcp/products/500/3003099_32E5.jpg',
+              'https://test4.childrensplace.com/wcsstore/GlobalSAS/images/tcp/products/500/3003099_32E5.jpg',
             bigSizeImageUrl:
-              'https://www.childrensplace.com/wcsstore/GlobalSAS/images/tcp/products/900/3003099_32E5.jpg',
+              'https://test4.childrensplace.com/wcsstore/GlobalSAS/images/tcp/products/900/3003099_32E5.jpg',
             superSizeImageUrl:
-              'https://www.childrensplace.com/wcsstore/GlobalSAS/images/tcp/products/900/3003099_32E5.jpg',
+              'https://test4.childrensplace.com/wcsstore/GlobalSAS/images/tcp/products/900/3003099_32E5.jpg',
           },
           {
             isOnModalImage: false,
             iconSizeImageUrl:
-              'https://www.childrensplace.com/wcsstore/GlobalSAS/images/tcp/products/125/3003099_32E5-1.jpg',
+              'https://test4.childrensplace.com/wcsstore/GlobalSAS/images/tcp/products/125/3003099_32E5-1.jpg',
             listingSizeImageUrl:
-              'https://www.childrensplace.com/wcsstore/GlobalSAS/images/tcp/products/380/3003099_32E5-1.jpg',
+              'https://test4.childrensplace.com/wcsstore/GlobalSAS/images/tcp/products/380/3003099_32E5-1.jpg',
             regularSizeImageUrl:
-              'https://www.childrensplace.com/wcsstore/GlobalSAS/images/tcp/products/500/3003099_32E5-1.jpg',
+              'https://test4.childrensplace.com/wcsstore/GlobalSAS/images/tcp/products/500/3003099_32E5-1.jpg',
             bigSizeImageUrl:
-              'https://www.childrensplace.com/wcsstore/GlobalSAS/images/tcp/products/900/3003099_32E5-1.jpg',
+              'https://test4.childrensplace.com/wcsstore/GlobalSAS/images/tcp/products/900/3003099_32E5-1.jpg',
             superSizeImageUrl:
-              'https://www.childrensplace.com/wcsstore/GlobalSAS/images/tcp/products/900/3003099_32E5-1.jpg',
+              'https://test4.childrensplace.com/wcsstore/GlobalSAS/images/tcp/products/900/3003099_32E5-1.jpg',
           },
           {
             isOnModalImage: false,
             iconSizeImageUrl:
-              'https://www.childrensplace.com/wcsstore/GlobalSAS/images/tcp/products/125/3003099_32E5-2.jpg',
+              'https://test4.childrensplace.com/wcsstore/GlobalSAS/images/tcp/products/125/3003099_32E5-2.jpg',
             listingSizeImageUrl:
-              'https://www.childrensplace.com/wcsstore/GlobalSAS/images/tcp/products/380/3003099_32E5-2.jpg',
+              'https://test4.childrensplace.com/wcsstore/GlobalSAS/images/tcp/products/380/3003099_32E5-2.jpg',
             regularSizeImageUrl:
-              'https://www.childrensplace.com/wcsstore/GlobalSAS/images/tcp/products/500/3003099_32E5-2.jpg',
+              'https://test4.childrensplace.com/wcsstore/GlobalSAS/images/tcp/products/500/3003099_32E5-2.jpg',
             bigSizeImageUrl:
-              'https://www.childrensplace.com/wcsstore/GlobalSAS/images/tcp/products/900/3003099_32E5-2.jpg',
+              'https://test4.childrensplace.com/wcsstore/GlobalSAS/images/tcp/products/900/3003099_32E5-2.jpg',
             superSizeImageUrl:
-              'https://www.childrensplace.com/wcsstore/GlobalSAS/images/tcp/products/900/3003099_32E5-2.jpg',
+              'https://test4.childrensplace.com/wcsstore/GlobalSAS/images/tcp/products/900/3003099_32E5-2.jpg',
           },
         ],
       },
@@ -72,7 +72,7 @@ export const formattedPdpRes = {
         color: {
           name: 'WHITE',
           imagePath:
-            'https://www.childrensplace.com/wcsstore/GlobalSAS/images/tcp/products/swatches/3003099_32E5.jpg',
+            'https://test4.childrensplace.com/wcsstore/GlobalSAS/images/tcp/products/swatches/3003099_32E5.jpg',
           family: 'WHITE',
         },
         pdpUrl: '/p/3003099_32E5',
