@@ -411,9 +411,9 @@ exports[`ButtonList component renders correctly without props 1`] = `
               }
             >
               <Styled(Image)
-                height="10"
+                height="15"
                 src="/static/images/info-icon.png"
-                width="10"
+                width="15"
               />
             </Styled(ReactTooltip)>
           </span>
@@ -1035,9 +1035,9 @@ exports[`ButtonList component renders correctly without props 2`] = `
               }
             >
               <Styled(Image)
-                height="10"
+                height="15"
                 src="/static/images/info-icon.png"
-                width="10"
+                width="15"
               />
             </Styled(ReactTooltip)>
           </span>
