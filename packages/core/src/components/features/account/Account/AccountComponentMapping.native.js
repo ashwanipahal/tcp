@@ -4,6 +4,7 @@ import PlaceRewardsContainer from '../PlaceRewards/container/PlaceRewards.contai
 import AccountOverviewViewContainer from '../AccountOverview/container/AccountOverview.container';
 import MyProfile from '../MyProfile/container/MyProfile.container';
 import Wallet from '../Wallet/container/Wallet.container';
+import PointHistoryPage from '../PointHistory';
 
 const AccountComponentNativeMapping = {
   addressBookMobile: AddressBookMobile,
@@ -12,6 +13,7 @@ const AccountComponentNativeMapping = {
   accountOverview: AccountOverviewViewContainer,
   profile: MyProfile,
   myWalletPageMobile: Wallet,
+  pointHistoryPageMobile: PointHistoryPage,
 };
 
 export default AccountComponentNativeMapping;

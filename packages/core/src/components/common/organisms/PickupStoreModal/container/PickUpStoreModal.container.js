@@ -4,13 +4,16 @@ import * as PickupSelectors from './PickUpStoreModal.selectors';
 import { maxAllowedStoresInCart, distancesMap } from '../PickUpStoreModal.config';
 import { PICKUP_HEADING } from '../PickUpStoreModal.constants';
 import { isCanada } from '../../../../../utils';
-import { closePickupModal } from './PickUpStoreModal.actions';
+import { closePickupModal, getBopisStoresActn } from './PickUpStoreModal.actions';
 import errorBoundary from '../../../hoc/withErrorBoundary';
 
 export const mapDispatchToProps = dispatch => {
   return {
     closePickupModal: payload => {
       dispatch(closePickupModal(payload));
+    },
+    onSearchAreaStoresSubmit: (skuId, quantity, distance, locationPromise, variantId) => {
+      dispatch(getBopisStoresActn({ skuId, quantity, distance, locationPromise, variantId }));
     },
   };
 };

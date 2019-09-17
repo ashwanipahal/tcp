@@ -1,0 +1,14 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`CustomImage component should renders CustomImage correctly 1`] = `
+<Styled(Image)
+  height={100}
+  resizeMode="contain"
+  source={
+    Object {
+      "url": null,
+    }
+  }
+  width={100}
+/>
+`;
