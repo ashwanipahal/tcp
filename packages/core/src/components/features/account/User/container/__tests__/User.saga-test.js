@@ -14,9 +14,6 @@ describe('User saga', () => {
     it('should dispatch setUserInfo action for success resposnse', () => {
       const response = {
         firstName: 'test',
-        country: 'US',
-        currency: 'USD',
-        language: 'es',
       };
       const putDescriptor = gen.next(response).value;
       expect(putDescriptor).toEqual(
