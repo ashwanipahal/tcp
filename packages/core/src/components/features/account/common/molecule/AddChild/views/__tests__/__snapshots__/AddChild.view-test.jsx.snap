@@ -5,16 +5,25 @@ exports[`AddChildBirthday component should renders correctly 1`] = `
   className="any"
   onSubmit={[MockFunction]}
 >
+  <div
+    className="addChildBirthdayTip"
+  />
   <Styled(Row)
     className="addChildBirthday__heading"
     fullBleed={true}
   >
     <Styled(Col)
+      className="addChildBirthday__childInfo"
       colSize={
         Object {
           "large": 5,
           "medium": 4,
           "small": 6,
+        }
+      }
+      ignoreGutter={
+        Object {
+          "medium": true,
         }
       }
     >
@@ -358,8 +367,8 @@ exports[`AddChildBirthday component should renders correctly 1`] = `
                 }
               }
               data-locator="childBirthdayMonthDD"
-              id="birthMonth"
-              name="birthMonth"
+              id="userBirthMonth"
+              name="userBirthMonth"
               options={
                 Array [
                   Object {
@@ -526,8 +535,8 @@ exports[`AddChildBirthday component should renders correctly 1`] = `
                 }
               }
               data-locator="childBirthdayYearDD"
-              id="birthYear"
-              name="birthYear"
+              id="userBirthYear"
+              name="userBirthYear"
               options={
                 Array [
                   Object {
@@ -758,6 +767,7 @@ exports[`AddChildBirthday component should renders correctly 1`] = `
       </Styled(Row)>
     </Styled(Col)>
     <Styled(Col)
+      className="addChildBirthday__parentInfo"
       colSize={
         Object {
           "large": 5,
@@ -989,6 +999,12 @@ exports[`AddChildBirthday component should renders correctly 1`] = `
               "large": 12,
               "medium": 8,
               "small": 3,
+            }
+          }
+          ignoreGutter={
+            Object {
+              "medium": true,
+              "small": true,
             }
           }
         >
@@ -1321,8 +1337,8 @@ exports[`AddChildBirthday component should renders correctly 1`] = `
               }
             }
             data-locator="tnccb"
-            id="agreeTermAndConditions"
-            name="agreeTermAndConditions"
+            id="acceptAddChildAgreement"
+            name="acceptAddChildAgreement"
           >
             <Styled(BodyCopy)
               className={null}
@@ -1379,7 +1395,7 @@ exports[`AddChildBirthday component should renders correctly 1`] = `
       </Styled(Row)>
     </Styled(Col)>
     <Styled(Row)
-      className="elem-mt-XXXL"
+      className="addChildBirthday__btn"
       fullBleed={true}
     >
       <Styled(Col)

@@ -50,8 +50,13 @@ export class AddChildBirthdayForm extends React.PureComponent {
     } = this.props;
     return (
       <form className={className} onSubmit={handleSubmit}>
+        <div className="addChildBirthdayTip" />
         <Row fullBleed className="addChildBirthday__heading">
-          <Col colSize={{ small: 6, medium: 4, large: 5 }}>
+          <Col
+            colSize={{ small: 6, medium: 4, large: 5 }}
+            className="addChildBirthday__childInfo"
+            ignoreGutter={{ medium: true }}
+          >
             <Row fullBleed className="elem-mb-LRG">
               <Col colSize={{ small: 6, medium: 8, large: 12 }}>
                 <BodyCopy
@@ -91,8 +96,8 @@ export class AddChildBirthdayForm extends React.PureComponent {
                 <Col colSize={{ small: 3, medium: 4, large: 6 }}>
                   <Field
                     placeholder={addChildBirthdayLabels.lbl_add_child_birthday_month}
-                    name="birthMonth"
-                    id="birthMonth"
+                    name="userBirthMonth"
+                    id="userBirthMonth"
                     component={SelectBox}
                     options={birthMonthOptionsMap}
                     data-locator="childBirthdayMonthDD"
@@ -101,8 +106,8 @@ export class AddChildBirthdayForm extends React.PureComponent {
                 <Col colSize={{ small: 3, medium: 4, large: 6 }}>
                   <Field
                     placeholder={addChildBirthdayLabels.lbl_add_child_birthday_year}
-                    name="birthYear"
-                    id="birthYear"
+                    name="userBirthYear"
+                    id="userBirthYear"
                     component={SelectBox}
                     options={birthYearOptionsMap}
                     data-locator="childBirthdayYearDD"
@@ -138,6 +143,7 @@ export class AddChildBirthdayForm extends React.PureComponent {
             colSize={{ small: 6, medium: 4, large: 5 }}
             offsetRight={{ small: 0, medium: 0, large: 1 }}
             offsetLeft={{ small: 0, medium: 0, large: 1 }}
+            className="addChildBirthday__parentInfo"
           >
             <Row fullBleed className="elem-mb-LRG">
               <Col colSize={{ small: 6, medium: 8, large: 12 }}>
@@ -166,6 +172,7 @@ export class AddChildBirthdayForm extends React.PureComponent {
               <Col
                 colSize={{ small: 3, medium: 8, large: 12 }}
                 className="addChildBirthday__lastName"
+                ignoreGutter={{ small: true, medium: true }}
               >
                 <Field
                   placeholder={addChildBirthdayLabels.lbl_add_child_last_name}
@@ -190,8 +197,8 @@ export class AddChildBirthdayForm extends React.PureComponent {
 
               <Col colSize={{ small: 6, medium: 8, large: 12 }} fullBleed className="elem-mt-LRG">
                 <Field
-                  name="agreeTermAndConditions"
-                  id="agreeTermAndConditions"
+                  name="acceptAddChildAgreement"
+                  id="acceptAddChildAgreement"
                   component={InputCheckbox}
                   data-locator="tnccb"
                 >
@@ -239,7 +246,7 @@ export class AddChildBirthdayForm extends React.PureComponent {
             </Row>
           </Col>
 
-          <Row fullBleed className="elem-mt-XXXL">
+          <Row fullBleed className="addChildBirthday__btn">
             <Col
               colSize={{ small: 6, medium: 3, large: 4 }}
               offsetLeft={{ small: 0, medium: 1, large: 2 }}
@@ -278,12 +285,12 @@ export class AddChildBirthdayForm extends React.PureComponent {
 
 const validateMethod = createValidateMethod(
   getStandardConfig([
-    'agreeTermAndConditions',
+    'acceptAddChildAgreement',
     'childName',
     'firstName',
     'lastName',
-    { birthMonth: 'userBirthMonth' },
-    { birthYear: 'userBirthYear' },
+    'userBirthMonth',
+    'userBirthYear',
     'gender',
   ])
 );

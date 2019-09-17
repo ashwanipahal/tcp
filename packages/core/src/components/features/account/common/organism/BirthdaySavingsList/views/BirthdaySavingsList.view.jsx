@@ -49,6 +49,7 @@ export class BirthdaySavingsList extends PureComponent {
       removeModal: false,
       addModal: false,
       activeChild: null,
+      selectedChild: -1,
     };
   }
 
@@ -109,6 +110,7 @@ export class BirthdaySavingsList extends PureComponent {
       removeModal: true,
       activeChild,
     });
+    this.closeAddModal();
   };
 
   /**
@@ -123,23 +125,25 @@ export class BirthdaySavingsList extends PureComponent {
   };
 
   /**
-   * @function showRemoveModal
-   * @description This function will handle showing of remove Children Birthday Confirmation Modal
-   * @param {object} activeChild Current active children information to be removed
+   * @function showAddModal
+   * @description This function will handle showing of add Children Birthday Confirmation Modal
    */
-  showAddModal = () => {
+  showAddModal = activeChild => {
+    this.getActiveChildOffset();
     this.setState({
       addModal: true,
+      activeChild,
     });
   };
 
   /**
-   * @function closeRemoveModal
-   * @description This function will handle closing of remove Children Birthday Confirmation Modal
+   * @function closeAddModal
+   * @description This function will handle closing of add Children Birthday Confirmation Modal
    */
   closeAddModal = () => {
     this.setState({
       addModal: false,
+      selectedChild: -1,
     });
   };
 
@@ -153,6 +157,22 @@ export class BirthdaySavingsList extends PureComponent {
     removeBirthday(activeChild);
   };
 
+  toggleSelectedChild = index => {
+    this.setState({
+      selectedChild: index,
+    });
+  };
+
+  getActiveChildOffset = () => {
+    if (document) {
+      const selector = document.querySelector('.emptyBirthdayCard__active');
+      const activeRect = selector && selector.getBoundingClientRect();
+      const { x, width } = activeRect;
+      return (x + width) / 2;
+    }
+    return 0;
+  };
+
   render() {
     const {
       labels,
@@ -164,7 +184,7 @@ export class BirthdaySavingsList extends PureComponent {
       addChildBirthday,
     } = this.props;
     const isEditMode = view === 'edit';
-    const { removeModal, activeChild, addModal } = this.state;
+    const { removeModal, activeChild, addModal, selectedChild } = this.state;
     const yearOptionsMap = getBirthDateOptionMap();
     const childOptions = childOptionsMap();
 
@@ -202,9 +222,12 @@ export class BirthdaySavingsList extends PureComponent {
                     />
                   ) : (
                     <EmptyBirthdayCard
+                      id={index}
                       labels={labels}
                       view={view}
-                      addBirthday={this.showAddModal}
+                      showAddModal={this.showAddModal}
+                      toggleSelectedChild={this.toggleSelectedChild}
+                      active={selectedChild}
                     />
                   )}
                 </Col>
@@ -261,6 +284,7 @@ export class BirthdaySavingsList extends PureComponent {
               closeAddModal={this.closeAddModal}
               onSubmit={addChildBirthday}
               addChildBirthdayLabels={labels}
+              offset={this.getActiveChildOffset()}
             />
           )}
         </div>
