@@ -67,7 +67,6 @@ describe('Bag page Saga', () => {
 
     let takeLatestDescriptor;
     function expectValue(action, value) {
-      generator.next();
       takeLatestDescriptor = generator.next().value;
       expect(takeLatestDescriptor).toEqual(takeLatest(action, value));
     }
@@ -82,9 +81,10 @@ describe('Bag page Saga', () => {
       removeUnqualifiedItemsAndCheckout
     );
     expectValue(BAGPAGE_CONSTANTS.ROUTE_FOR_CART_CHECKOUT, routeForCartCheckout);
+    expectValue(BAGPAGE_CONSTANTS.ADD_ITEM_SAVE_FOR_LATER, addItemToSFL);
+    expectValue(BAGPAGE_CONSTANTS.START_BAG_CHECKOUT, startCartCheckout);
     expectValue(BAGPAGE_CONSTANTS.START_PAYPAL_CHECKOUT, startPaypalCheckout);
     expectValue(BAGPAGE_CONSTANTS.AUTHORIZATION_PAYPAL_CHECKOUT, authorizePayPalPayment);
-    expectValue(BAGPAGE_CONSTANTS.START_BAG_CHECKOUT, startCartCheckout);
   });
 });
 
