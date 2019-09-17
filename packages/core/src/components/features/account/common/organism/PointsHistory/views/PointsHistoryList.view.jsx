@@ -119,3 +119,4 @@ PointsHistoryList.defaultProps = {
 };
 
 export default withStyles(PointsHistoryList, styles);
+export { PointsHistoryList as PointsHistoryListVanilla };

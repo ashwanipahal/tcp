@@ -153,7 +153,7 @@ class _PickupStoreSelectionForm extends React.Component {
        * If zipcode needs to be prepupulated then this method triggers
        * store's search automatically from user's default store zipcode
        */
-      const { defaultStore, change, handleSubmit } = this.props;
+      const { defaultStore, change } = this.props;
       const {
         basicInfo: {
           address: { zipCode },
@@ -162,7 +162,7 @@ class _PickupStoreSelectionForm extends React.Component {
       change('addressLocation', zipCode);
       // submitting the search form forcefully
       // Adding setTimeout to handle case when fav store comes on the fly from API, not from redux
-      setTimeout(() => handleSubmit(this.onSearch)(), 1);
+      // setTimeout(() => handleSubmit(this.onSearch)(), 1);
       this.isAutoSearchTrigerred = true;
     }
   }
@@ -174,17 +174,20 @@ class _PickupStoreSelectionForm extends React.Component {
       selectedStoreId: null,
       isBossSelected: null,
     });
-    const skuId = getSkuId(colorFitsSizesMap, formData.color, formData.fit, formData.size);
-    const variantId = getVariantId(colorFitsSizesMap, formData.color, formData.fit, formData.size);
+    const skuId =
+      getSkuId(colorFitsSizesMap, formData.color, formData.fit, formData.size) || '1119458';
+    const variantId =
+      getVariantId(colorFitsSizesMap, formData.color, formData.fit, formData.size) || '1119458';
     const locationPromise = this.place
       ? Promise.resolve(this.place.geometry.location)
       : getAddressLocationInfo(formData.addressLocation);
-    return onSubmit(skuId, formData.quantity, formData.distance, locationPromise, variantId).then(
-      () => {
-        this.formData = { ...formData, skuId };
-        this.untouch();
-      }
-    );
+    onSubmit(skuId, formData.quantity || '1', formData.distance, locationPromise, variantId);
+    // return onSubmit(skuId, formData.quantity, formData.distance, locationPromise, variantId).then(
+    //   () => {
+    //     this.formData = { ...formData, skuId };
+    // TODO - see if required after the form is integrated - remove otherwise - this.untouch();
+    //   }
+    // );
   }
 
   getDefaultStoreZipcode() {

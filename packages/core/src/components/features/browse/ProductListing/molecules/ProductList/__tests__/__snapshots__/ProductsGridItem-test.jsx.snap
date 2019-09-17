@@ -22,6 +22,7 @@ exports[`ProductsGridItem component should renders correctly 1`] = `
           "requestId": "",
         }
       }
+      className="product-image-container"
       colorsMap={
         Array [
           Object {
@@ -33,6 +34,7 @@ exports[`ProductsGridItem component should renders correctly 1`] = `
           },
         ]
       }
+      dataLocator="undefined_122"
       imageUrls={Array []}
       isMobile={false}
       isPLPredesign={false}
@@ -42,6 +44,7 @@ exports[`ProductsGridItem component should renders correctly 1`] = `
       videoUrl=""
     />
     <Styled(Row)
+      className="product-wishlist-container"
       fullBleed={true}
     >
       <Styled(Col)
@@ -89,6 +92,7 @@ exports[`ProductsGridItem component should renders correctly 1`] = `
     </Styled(Row)>
     <ProductPricesSection
       currencySymbol="$"
+      dataLocator="undefined_122"
       hidePrefixListPrice={true}
       listPrice={NaN}
       merchantTag=""
@@ -105,6 +109,7 @@ exports[`ProductsGridItem component should renders correctly 1`] = `
       loadedProductCount={12}
     />
     <Styled(ProductColorChipWrapper)
+      className="color-chips-container"
       colorsMap={
         Array [
           Object {
@@ -125,15 +130,9 @@ exports[`ProductsGridItem component should renders correctly 1`] = `
     />
     <PromotionalMessage />
     <div>
-      <Styled(Button)
-        buttonVariation="fixed-width"
-        className="added-to-bag"
-        dataLocator="global-addtocart-Button"
-        fullWidth={true}
-      />
-    </div>
-    <div>
       <Styled(FulfillmentSection)
+        btnClassName="added-to-bag"
+        dataLocator="global-addtocart-Button"
         onPickupOpenClick={[Function]}
       />
     </div>

@@ -589,6 +589,7 @@ exports[`#ThemeWrapper.container should render correctly 1`] = `
       },
       "zindex": Object {
         "zDrawer": 1200,
+        "zEnlargedImage": 100,
         "zGoogleAutosuggest": 100000,
         "zLoader": 1000,
         "zModal": 1300,

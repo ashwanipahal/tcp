@@ -45,6 +45,7 @@ export class AddedToBagContainer extends React.Component<Props> {
       removeUnqualifiedItemsAndCheckout,
       orderHasPickup,
       closeModal,
+      closeMiniBag,
     } = this.props;
     const onClickViewBag = () => {
       utility.routeToPage(CHECKOUT_ROUTES.bagPage);
@@ -68,6 +69,7 @@ export class AddedToBagContainer extends React.Component<Props> {
         removeUnqualifiedItemsAndCheckout={removeUnqualifiedItemsAndCheckout}
         orderHasPickup={orderHasPickup}
         closeModal={closeModal}
+        closeMiniBag={closeMiniBag}
       />
     );
   }
