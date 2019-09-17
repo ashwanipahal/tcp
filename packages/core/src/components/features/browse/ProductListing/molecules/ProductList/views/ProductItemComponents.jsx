@@ -53,12 +53,13 @@ export function ProductTitle(values) {
 /* NOTE: As per DT-29548, isMobile condition is not valid. "Offer" price should be shown below "List" price (always) */
 /* NOTE: DT-27216, if offerPrice and listPrice are the same, just offerPrice should be shown (and will be black) */
 export function ProductPricesSection(props) {
-  const { currencySymbol, listPrice, offerPrice, merchantTag } = props;
+  const { currencySymbol, listPrice, offerPrice, merchantTag, dataLocator } = props;
+
   return (
     <div className="container-price">
       {offerPrice && (
         <BodyCopy
-          dataLocator={getLocator('global_Price_text')}
+          dataLocator={dataLocator || getLocator('global_Price_text')}
           color="red.500"
           fontWeight="extrabold"
           fontFamily="secondary"
@@ -199,6 +200,7 @@ ProductPricesSection.defaultProps = {
   listPrice: 0,
   offerPrice: 0,
   merchantTag: '',
+  dataLocator: '',
 };
 
 ProductPricesSection.propTypes = {
@@ -206,4 +208,5 @@ ProductPricesSection.propTypes = {
   listPrice: PropTypes.number,
   offerPrice: PropTypes.number,
   merchantTag: PropTypes.string,
+  dataLocator: PropTypes.string,
 };

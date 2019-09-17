@@ -31,6 +31,7 @@ class MiniBagBody extends React.PureComponent {
       subTotal,
       currencySymbol,
       isCartItemsUpdating,
+      closeMiniBag,
     } = this.props;
     const { isDeleting, isUpdating } = isCartItemsUpdating;
     return (
@@ -114,7 +115,11 @@ class MiniBagBody extends React.PureComponent {
                 {`${labels.subTotal}: ${currencySymbol}${subTotal.toFixed(2) || 0}`}
               </BodyCopy>
               <ApplyNowModal />
-              <AddedToBagActions showAddTobag={false} isEditingItem={this.isEditing} />
+              <AddedToBagActions
+                showAddTobag={false}
+                isEditingItem={this.isEditing}
+                closeMiniBag={closeMiniBag}
+              />
               <AirmilesBanner />
             </div>
           </React.Fragment>
@@ -144,6 +149,7 @@ MiniBagBody.propTypes = {
   subTotal: PropTypes.number.isRequired,
   cartItemCount: PropTypes.number.isRequired,
   currencySymbol: PropTypes.string.isRequired,
+  closeMiniBag: PropTypes.func.isRequired,
 };
 
 export default withStyles(MiniBagBody, styles);

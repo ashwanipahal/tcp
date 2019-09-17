@@ -1,7 +1,9 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
 exports[`My Account Layout View should render MyAccountLayoutView Correctly 1`] = `
-<div>
+<div
+  className=""
+>
   <Styled(Row)
     className="elem-mb-XL"
   >
@@ -14,7 +16,9 @@ exports[`My Account Layout View should render MyAccountLayoutView Correctly 1`] 
         }
       }
     >
-      <Connect(AccountHeaderContainer) />
+      <Connect(AccountHeaderContainer)
+        labels={Object {}}
+      />
     </Styled(Col)>
   </Styled(Row)>
   <Styled(Row)
@@ -35,6 +39,7 @@ exports[`My Account Layout View should render MyAccountLayoutView Correctly 1`] 
       }
     >
       <Styled(Dropdown)
+        active=""
         isUpperCase={true}
         options={
           Array [
@@ -127,6 +132,8 @@ exports[`My Account Layout View should render MyAccountLayoutView Correctly 1`] 
       }
     >
       <Styled(MyAccountLeftNav)
+        active=""
+        activeSubComponent=""
         navData={
           Array [
             Object {
@@ -214,7 +221,10 @@ exports[`My Account Layout View should render MyAccountLayoutView Correctly 1`] 
         }
       }
     >
-      <mockConstructor />
+      <mockConstructor
+        labels={Object {}}
+        router={Object {}}
+      />
     </Styled(Col)>
   </Styled(Row)>
 </div>

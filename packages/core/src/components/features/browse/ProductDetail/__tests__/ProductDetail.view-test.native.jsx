@@ -5,6 +5,7 @@ import ProductDetailView from '../views/ProductDetail.view.native';
 describe('ProductDetailView component', () => {
   it('should renders correctly', () => {
     const props = {
+      selectedColorProductId: '',
       currentProduct: {
         name: '',
         shortDescription: '',

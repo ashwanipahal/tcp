@@ -7,7 +7,7 @@ exports[`ProfileInformation component should render correctly 1`] = `
       "$$typeof": Symbol(react.forward_ref),
       "attrs": Array [],
       "componentStyle": ComponentStyle {
-        "componentId": "sc-hSdWYo",
+        "componentId": "sc-eHgmQL",
         "isStatic": false,
         "rules": Array [
           "
@@ -50,7 +50,7 @@ exports[`ProfileInformation component should render correctly 1`] = `
       "displayName": "Styled(ProfileInformation)",
       "foldedComponentIds": Array [],
       "render": [Function],
-      "styledComponentId": "sc-hSdWYo",
+      "styledComponentId": "sc-eHgmQL",
       "target": [Function],
       "toString": [Function],
       "warnTooManyClasses": [Function],

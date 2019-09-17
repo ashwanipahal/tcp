@@ -94,7 +94,7 @@ exports[`HeaderMiddleNav component renders correctly 1`] = `
             alt="Product"
             className="product-image"
             data-locator="addedtobag-bag-icon"
-            src="/static/images/bag.png"
+            src="/static/images/bag.svg"
           />
           <Styled(BodyCopy)
             className="cartCount"
@@ -239,7 +239,7 @@ exports[`HeaderMiddleNav component renders correctly when props dont change 1`] 
             alt="Product"
             className="product-image"
             data-locator="addedtobag-bag-icon"
-            src="/static/images/bag.png"
+            src="/static/images/bag.svg"
           />
           <Styled(BodyCopy)
             className="cartCount"

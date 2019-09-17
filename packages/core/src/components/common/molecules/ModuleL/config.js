@@ -38,10 +38,6 @@ export default {
     large: 12,
   },
   IMG_DATA: {
-    crops: [
-      'c_fill,g_center,q_80,h_127,w_103',
-      'c_fill,g_center,q_80,h_200,w_162',
-      'c_fill,g_center,q_80,h_260,w_210',
-    ],
+    crops: ['t_mod_L_img_m', 't_mod_L_img_t', 't_mod_L_img_d'],
   },
 };

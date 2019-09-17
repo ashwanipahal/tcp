@@ -66,7 +66,7 @@ class ImageCarousel extends React.PureComponent {
           const { index } = imgSource;
           return (
             <TouchableOpacity
-              onPress={() => onGoToPDPPage(modifiedPdpUrl)}
+              onPress={() => onGoToPDPPage(modifiedPdpUrl, colorProductId)}
               accessible={index === activeSlideIndex}
               accessibilityRole="image"
               accessibilityLabel={`product image ${index + 1}`}

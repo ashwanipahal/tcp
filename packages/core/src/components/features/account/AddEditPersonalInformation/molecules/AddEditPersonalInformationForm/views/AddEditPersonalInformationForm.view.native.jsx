@@ -280,7 +280,5 @@ const validateMethod = createValidateMethod(
 export default reduxForm({
   form: AddEditPersonalInfoConstants.ADD_PROFILE_INFORMATION_FORM, // a unique identifier for this form
   enableReinitialize: true,
-  destroyOnUnmount: false,
-  keepDirtyOnReinitialize: true,
   ...validateMethod,
 })(AddEditPersonalInformationForm);

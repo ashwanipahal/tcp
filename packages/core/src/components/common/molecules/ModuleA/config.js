@@ -25,11 +25,10 @@ export default {
       },
     ],
   },
-  IMG_DATA: {
-    crops: [
-      'c_fill,g_face:center,q_auto:best,h_622,w_750',
-      'c_fill,g_face:center,q_auto:best,h_406,w_768',
-      'c_fill,g_face:center,q_auto:best,h_474,w_1410',
-    ],
+  IMG_DATA_TCP: {
+    crops: ['t_mod_A_img_m', 't_mod_A_img_t', 't_mod_A_img_d'],
+  },
+  IMG_DATA_GYM: {
+    crops: ['t_mod_A_GYM_img_m', 't_mod_A_GYM_img_t', 't_mod_A_GYM_img_d'],
   },
 };
