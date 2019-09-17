@@ -152,6 +152,26 @@ export const toTimeString = est => {
   return `${hh}:${mm}${ampm}`;
 };
 
+/**
+ * This function will format the Date in mm/dd/yy format
+ * @param {object} date to be formatted
+ */
+export const formatDate = date => {
+  const month = `0${date.getMonth() + 1}`.substr(-2);
+  const dateStr = `0${date.getDate()}`.substr(-2);
+  const year = date.getFullYear().toString();
+  return `${month}/${dateStr}/${year}`;
+};
+
+/**
+ * This function will check for valid date
+ * @param {object} date to be check
+ */
+/* eslint-disable no-restricted-globals */
+export const isValidDate = date => {
+  return date instanceof Date && !isNaN(date);
+};
+
 export const isGymboree = () => {
   const { brandId } = getAPIConfig();
   return brandId === API_CONFIG.brandIds.gym;
@@ -527,5 +547,7 @@ export default {
   calculateAge,
   generateUniqueKeyUsingLabel,
   getErrorSelector,
+  isValidDate,
+  formatDate,
   parseStoreHours,
 };
