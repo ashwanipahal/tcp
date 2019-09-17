@@ -1,6 +1,5 @@
 import { executeStatefulAPICall } from '../../handler';
 import endpoints from '../../endpoints';
-import { getAPIConfig } from '../../../utils';
 
 const getSocialAccountsInformation = () => {
   const payload = {
@@ -31,12 +30,12 @@ const saveSocialAccountsInfo = arg => {
   };
 
   return executeStatefulAPICall(payload)
-    .then(res => {
-      if (!res.body) {
+    .then(response => {
+      if (!response.body) {
         throw new Error('res body is null');
         // TODO - Set API Helper to filter if error exists in response
       }
-      return res || [];
+      return response.body || [];
     })
     .catch(err => {
       throw err;

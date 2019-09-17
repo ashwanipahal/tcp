@@ -5,6 +5,7 @@ import { css } from 'styled-components';
 const socialStyle = css`
   .social-accounts__infoList {
     display: flex;
+    padding: 15px 0;  
   }
   .Facebook-icon--enable {
     width: 50px;
@@ -17,8 +18,10 @@ const socialStyle = css`
     background: url('/static/images/facebook-fade@2x.png') no-repeat;
   }
 
-  .social-accounts__infoText {
+  .social-accounts__align {
     display: flex;
+    align-items: center;
+    padding-left:20px;
   }
 `;
 

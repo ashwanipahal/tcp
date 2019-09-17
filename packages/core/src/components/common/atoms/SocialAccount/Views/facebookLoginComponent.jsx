@@ -31,7 +31,6 @@ const openLogin = () => {
           isconnected: false,
         };
         saveAccountInfo({ socialAccInfo });
-        loadsocial();
       } else {
         // The person is not logged into this app or we are unable to tell.
       }
@@ -49,7 +48,11 @@ const facebookSDK = () => {
   /* istanbul ignore next */
   window.onload = function() {
     window.FB.getLoginStatus(function(res) {
-      if (res.authResponse && res.authResponse.accessToken && !elem.isConnected) {
+      if (
+        res.authResponse &&
+        res.authResponse.accessToken &&
+        !elem.isConnected
+      ) {
         const socialAccInfo = {
           accessToken: res.authResponse.accessToken,
           userId: res.authResponse.userID,
@@ -94,8 +97,8 @@ const autoLogin = () => {
   /* After that, the localStorage needs to be reset to ''
   /* so that it doesn't trigger the login modal again
   **/
-  if (window.FB) {
-    // openLogin();
+  if (window.FB && elem[0].isConnected) {
+    openLogin();
     //Trigger login modal if not already connected
     // if (!elem.isConnected) {
     //     openLogin();
@@ -123,12 +126,11 @@ const logoutUser = () => {
     isconnected: true,
   };
   saveAccountInfo({ socialAccInfo });
-  loadsocial();
 };
 
-export const loginUser = () => {
+export const loginUser = (elem) => {
   /* istanbul ignore next */
-  if (elem[0].isConnected) {
+  if (elem.isConnected) {
     logoutUser();
   } else {
     openLogin();
@@ -144,24 +146,42 @@ const FacebookLoginComponent = props => {
 
   return (
     <React.Fragment>
-      {!elem[0].isConnected && (
-        <div className="social-accounts__CTA" onClick={loginUser} tabIndex="0">
-          {/* istanbul ignore next */
-          ReactDOM.createPortal(facebookSDK(), bodyEle)}
-          +
-        </div>
-      )}
-      {elem[0].isConnected && (
-        <div onClick={logoutUser}>
-          <ImageComp
-            width={15}
-            height={15}
-            src={getIconPath('close-icon')}
-            className="elem-mb-LRG"
-            data-locator="close-icon"
-          />
-        </div>
-      )}
+      {elem.map((elem, index) => {
+        return (
+          <React.Fragment>
+          {
+          !(elem.socialAccount === 'facebook' && elem.isConnected) && (
+            <div
+              className="social-accounts__align"
+              onClick={elem => loginUser(elem)}
+              tabIndex="0"
+            >
+           
+              {ReactDOM.createPortal(facebookSDK(), bodyEle)}
+              <ImageComp
+                width={15}
+                height={15}
+                src={getIconPath('plus-icon')}
+                data-locator="plus-icon"
+              />
+            </div>
+          )
+        }
+        {
+          elem.socialAccount === 'facebook' && elem.isConnected && (
+            <div className="social-accounts__align" onClick={logoutUser}>
+              <ImageComp
+                width={15}
+                height={15}
+                src={getIconPath('close-icon')}
+                data-locator="close-icon"
+              />
+            </div>
+          )
+        }
+          </React.Fragment>
+        )
+      })}
     </React.Fragment>
   );
 };

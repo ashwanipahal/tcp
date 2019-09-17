@@ -4,7 +4,7 @@
 
 import { call, takeLatest, put } from 'redux-saga/effects';
 import SOCIAL_LOAD from '../social.constants';
-import { savesocialAccount, currentSocialInfo, socialAccountLoad } from './Social.actions';
+import { currentSocialInfo } from './Social.actions';
 import {
   getSocialAccountsInformation,
   saveSocialAccountsInfo,
@@ -33,7 +33,8 @@ export function* savesocialAccounts({ payload }) {
     const res = yield call(saveSocialAccountsInfo, body);
     /* istanbul ignore else */
     if (res) {
-      yield put(savesocialAccount(res));
+      yield put(currentSocialInfo(res));
+      // yield put(savesocialAccount(res));
     }
   } catch (err) {
     console.log('err', err);

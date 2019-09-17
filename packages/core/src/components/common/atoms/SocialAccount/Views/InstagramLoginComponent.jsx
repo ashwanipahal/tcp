@@ -1,3 +1,4 @@
+/*eslint-disable */
 /**
  * @module InstagramLoginComponent
  * @description this module is used for login to instagram account.

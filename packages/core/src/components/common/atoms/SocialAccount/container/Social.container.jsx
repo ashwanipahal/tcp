@@ -1,21 +1,27 @@
 import React from 'react';
+import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
 import { socialAccountLoad, savesocialAccount } from './Social.actions';
 import { getsocialDataOnLoadState } from './Social.selectors';
 import Socialview from '../Views/Social.view';
 
 class SocialContainer extends React.PureComponent {
+  static propTypes = {
+    socialLoad: PropTypes.shape({}).isRequired,
+    saveSocialAcc: PropTypes.shape({}).isRequired,
+    getSocialLoad: PropTypes.shape({}).isRequired,
+  };
+
   componentDidMount() {
     const { socialLoad } = this.props;
     socialLoad();
   }
 
   render() {
-    const { socialLoad, saveSocialAcc, getSocialLoad, view } = this.props;
+    const { socialLoad, saveSocialAcc, getSocialLoad } = this.props;
     return (
       <Socialview
         getSocialLoad={getSocialLoad}
-        view={view}
         saveSocialAcc={saveSocialAcc}
         socialLoad={socialLoad}
       />

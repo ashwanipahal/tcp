@@ -1,25 +1,33 @@
 import React from 'react';
+import PropTypes from 'prop-types';
 import { FacebookLoginComponent } from './facebookLoginComponent';
 import { config } from './config';
 import socialStyle from '../styles/social.style';
 import withStyles from '../../../hoc/withStyles';
+import BodyCopy from '../../BodyCopy';
 
 const loginComponents = {
   Facebook: FacebookLoginComponent,
 };
 
-export class Socialview extends React.PureComponent {
+class Socialview extends React.PureComponent {
+  static propTypes = {
+    className: PropTypes.string,
+    socialLoad: PropTypes.shape({}).isRequired,
+    saveSocialAcc: PropTypes.shape({}).isRequired,
+    getSocialLoad: PropTypes.shape({}).isRequired,
+  };
+
+  static defaultProps = {
+    className: '',
+  };
+
   constructor() {
     super();
     this.socialAccounts = [];
-    this.state = {
-      isModalOpen: false,
-      currSocialAcc: '',
-      points: '',
-    };
   }
 
-  renderSocialLogins = (Component, saveSocialAcc, loginStatus) => {
+  renderSocialLogins = (Component, saveSocialAcc) => {
     const { socialLoad } = this.props;
     return (
       <Component
@@ -32,7 +40,8 @@ export class Socialview extends React.PureComponent {
 
   renderAccountsInformation = (accounts, saveSocialAcc) => {
     return accounts.map((elem, index) => {
-      const isSocialAccount = config.SOCIAL_ACCOUNTS[elem.socialAccount.toLocaleLowerCase()];
+      const isSocialAccount =
+        config.SOCIAL_ACCOUNTS[elem.socialAccount.toLocaleLowerCase()];
       return (
         <li className="social-accounts__infoList" key={index.toString()}>
           <span
@@ -40,29 +49,28 @@ export class Socialview extends React.PureComponent {
               elem.isConnected ? 'enable' : 'disable'
             } social-accounts__social-icon`}
           />
-          <span className="social-accounts__infoText">
+          <BodyCopy
+            fontSize="fs16"
+            fontFamily="secondary"
+            textAlign="center"
+            className="social-accounts__align"
+          >
             {elem.isConnected
               ? `${config.SOCIAL_ACCOUNTS[elem.socialAccount]} Connected`
               : `Connect to ${config.SOCIAL_ACCOUNTS[elem.socialAccount]}`}
-          </span>
-          {this.renderSocialLogins(loginComponents[isSocialAccount], saveSocialAcc)}
+          </BodyCopy>
+          {this.renderSocialLogins(
+            loginComponents[isSocialAccount],
+            saveSocialAcc
+          )}
         </li>
       );
     });
   };
 
   refactorSocialDetails = accounts => {
-    debugger;
     const accountsInfo = [];
-    for (const prop in accounts) {
-      /**
-       * if condition @description -
-       * In edit view its needed to render every social account no matter
-       * if its connected or not.
-       * In read view its needed to render only the connected accounts
-       * So, the conditions are in a way that it creates array different for read
-       * and edit view
-       */
+    Object.keys(accounts).forEach(prop => {
       if (prop === 'facebook') {
         accountsInfo.push({
           socialAccount: config.SOCIAL_ACCOUNTS_INFO[prop],
@@ -70,13 +78,18 @@ export class Socialview extends React.PureComponent {
           hasUserId: accounts[prop].userId,
         });
       }
-    }
+    });
+
     console.log('accountsInfo----------------------', accountsInfo);
     this.socialAccounts = accountsInfo;
   };
 
   render() {
-    const { saveSocialAcc, socialLoad, getSocialLoad, view, className } = this.props;
+    const {
+      saveSocialAcc,
+      getSocialLoad,
+      className,
+    } = this.props;
     if (Object.keys(getSocialLoad).length) {
       this.refactorSocialDetails(getSocialLoad);
     }
