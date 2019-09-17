@@ -2,9 +2,9 @@ import { css } from 'styled-components';
 
 export default css`
   .cardDropdownHeading {
-    top: 25px;
+    top: ${props => props.theme.spacing.APP_LAYOUT_SPACING.SM};
     position: relative;
-    font-size: 10px;
+    font-size: ${props => props.theme.typography.fontSizes.fs10};
     font-weight: ${props => props.theme.typography.fontWeights.extrabold};
   }
   .billing-payment-details {
@@ -37,7 +37,7 @@ export default css`
   }
   .info-icon-img-wrapper {
     display: inline-block;
-    width: 10px;
+    width: 15px;
   }
   .position-relative {
     position: relative;
@@ -48,7 +48,7 @@ export default css`
     width: 30px;
   }
   .show-hide-icons {
-    top: 3px;
+    top: ${props => props.theme.spacing.ELEM_SPACING.XXXS};
   }
   @media ${props => props.theme.mediaQuery.smallMax} {
     .billing-payment-card-info {
@@ -57,11 +57,17 @@ export default css`
   }
   .cvvCode {
     width: 90px;
-    @media ${props => props.theme.mediaQuery.large} {
-      width: 125px;
-    }
+    bottom: ${props => props.theme.spacing.APP_LAYOUT_SPACING.XXS};
     .TextBox__input {
       background-color: ${props => props.theme.colors.PRIMARY.PALEGRAY};
+    }
+    .TextBox__label {
+      font-weight: ${props => props.theme.typography.fontWeights.extrabold};
+      top: ${props => props.theme.spacing.ELEM_SPACING.XXS};
+      font-size: ${props => props.theme.typography.fontSizes.fs10};
+    }
+    .warning-icon {
+      width: ${props => props.theme.typography.fontSizes.fs36};
     }
   }
 
@@ -124,7 +130,7 @@ export default css`
     &&& .dropdownliBottomBorder::after {
       position: absolute;
       content: '';
-      border-bottom: 1px solid ${props => props.theme.colors.BORDER.NORMAL};
+      border-bottom: 1px solid ${props => props.theme.colors.PRIMARY.LIGHTGRAY};
       width: 93%;
       transform: translateX(-50%);
       bottom: 2px;
@@ -149,5 +155,8 @@ export default css`
   .payment-container {
     margin-top: ${props => props.theme.spacing.ELEM_SPACING.XXL};
     border-top: 1px solid ${props => props.theme.colors.TEXT.DARKGRAY};
+  }
+  .payment-paypal-container {
+    padding: ${props => props.theme.spacing.APP_LAYOUT_SPACING.SM};
   }
 `;
