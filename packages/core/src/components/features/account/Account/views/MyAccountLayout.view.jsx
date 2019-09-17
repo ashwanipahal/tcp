@@ -1,4 +1,5 @@
-import React from 'react'; //eslint-disable-line
+import React from 'react';
+import PropTypes from 'prop-types';
 import Row from '../../../../common/atoms/Row';
 import Col from '../../../../common/atoms/Col';
 import MyAccountLeftNav from './MyAccountLeftNav.view';
@@ -7,16 +8,6 @@ import styles from '../styles/MyAccountContainer.style';
 import Dropdown from '../../../../common/molecules/Dropdown';
 import AccountHeader from '../../common/organism/AccountHeader';
 
-// @flow
-type Props = {
-  navData: Array<Object>,
-  mainContent: Function,
-  active: string,
-  className: string,
-  router: object,
-  labels: object,
-};
-
 /**
  * @function MyAccountLayoutView The AccountLayout component will provide a list of left
  * navigationLinks and the component associated with it
@@ -24,8 +15,16 @@ type Props = {
  * @param {navData} navData The list of links in the left nav as config object
  * @param {mainContent} mainContent The component to be rendered on the right side
  */
-const MyAccountLayoutView = (props: Props) => {
-  const { navData, mainContent: MainContent, active, className, router, labels } = props;
+const MyAccountLayoutView = props => {
+  const {
+    navData,
+    mainContent: MainContent,
+    active,
+    activeSubComponent,
+    className,
+    router,
+    labels,
+  } = props;
   return (
     <div className={className}>
       <Row className="elem-mb-XL">
@@ -40,7 +39,11 @@ const MyAccountLayoutView = (props: Props) => {
       </Row>
       <Row>
         <Col colSize={{ large: 2, medium: 8, small: 6 }} className="is-visible-nav">
-          <MyAccountLeftNav navData={navData} active={active} />
+          <MyAccountLeftNav
+            navData={navData}
+            active={active}
+            activeSubComponent={activeSubComponent}
+          />
         </Col>
         <Col colSize={{ large: 10, medium: 8, small: 6 }}>
           <MainContent router={router} labels={labels} />
@@ -48,6 +51,26 @@ const MyAccountLayoutView = (props: Props) => {
       </Row>
     </div>
   );
+};
+
+MyAccountLayoutView.propTypes = {
+  navData: PropTypes.shape([]),
+  mainContent: PropTypes.func,
+  active: PropTypes.string,
+  activeSubComponent: PropTypes.string,
+  className: PropTypes.string,
+  router: PropTypes.shape({}),
+  labels: PropTypes.shape({}),
+};
+
+MyAccountLayoutView.defaultProps = {
+  navData: [],
+  mainContent: () => {},
+  active: '',
+  activeSubComponent: '',
+  className: '',
+  router: {},
+  labels: {},
 };
 
 export default withStyles(MyAccountLayoutView, styles);

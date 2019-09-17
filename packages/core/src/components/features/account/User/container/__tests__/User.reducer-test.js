@@ -11,6 +11,7 @@ describe('User reducer', () => {
     rewards: null,
     survey: null,
     children: null,
+    favoriteStore: null,
   });
 
   it('should return default state', () => {
@@ -63,6 +64,10 @@ describe('User reducer', () => {
         })
       );
       expect(updatedState.getIn(['children', '0', 'childId'])).toEqual('12345');
+    });
+
+    it('setting favorite store correctly', () => {
+      expect(state.getIn(['favoriteStore', 'name'])).toEqual(payload.name);
     });
   });
 });

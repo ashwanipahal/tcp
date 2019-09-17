@@ -17,7 +17,7 @@ const SaveButtonWrapper = styled.View`
 
 const CancelButtonWrapper = styled.View`
   margin-top: ${props => props.theme.spacing.ELEM_SPACING.MED};
-  margin-bottom: ${props => props.theme.spacing.ELEM_SPACING.MED};
+  margin-bottom: ${props => props.theme.spacing.ELEM_SPACING.XL};
 `;
 
 const AddEditInfoWrapper = styled.View`

@@ -1,4 +1,4 @@
-import React from 'react'; //eslint-disable-line
+import React from 'react';
 import Anchor from '../../../../common/atoms/Anchor';
 import withStyles from '../../../../common/hoc/withStyles';
 import styles from '../styles/MyAccountLayout.style';
@@ -8,6 +8,7 @@ type Props = {
   navData: Array<Object>,
   active: String,
   className: String,
+  activeSubComponent: String,
 };
 
 type NavProps = {
@@ -17,6 +18,7 @@ type NavProps = {
 
 type SubSectionProps = {
   nav: Object,
+  activeSubComponent: String,
 };
 
 /**
@@ -24,15 +26,15 @@ type SubSectionProps = {
  * @param {nav} nav Each Link data is passed in nav Object
  * NOTE:-  Used the next Link, will change it to atom Anchor once the as attribute in common Achor Atom gets resolved
  */
-const getNavLink = ({ nav, active }: NavProps) => {
+const getNavLink = ({ nav, active }: NavProps, selectedSubNav) => {
   const selectedNav = active === nav.component;
   return (
     <Anchor
       asPath={nav.url}
       to={nav.href}
-      anchorVariation={selectedNav ? 'primary' : 'grayed'}
+      anchorVariation={selectedNav || selectedSubNav ? 'primary' : 'grayed'}
       fontSizeVariation="large"
-      fontWeightVariation={selectedNav && 'active'}
+      fontWeightVariation={selectedNav || selectedSubNav ? 'active' : ''}
     >
       {nav.displayName}
     </Anchor>
@@ -43,13 +45,14 @@ const getNavLink = ({ nav, active }: NavProps) => {
  * @function renderSubSections This function renders each subSection link present in the left nav
  * @param {nav} nav Each Link data is passed in nav Object
  */
-const renderSubSections = ({ nav }: SubSectionProps) => {
+const renderSubSections = ({ nav, activeSubComponent }: SubSectionProps) => {
   return (
     <ul className="nav-sub-section">
       {nav.subSections.map(subSection => {
+        const selectedSubNav = subSection.component === activeSubComponent;
         return (
           <li id={subSection.id} key={subSection.id} className="nav-link-wrapper">
-            {getNavLink({ nav: subSection })}
+            {getNavLink({ nav: subSection }, selectedSubNav)}
           </li>
         );
       })}
@@ -64,7 +67,7 @@ const renderSubSections = ({ nav }: SubSectionProps) => {
  * @param {navData} navData The list of links in the left nav as config object
  * @param {mainContent} mainContent The component to be rendered on the right side
  */
-const MyAccountLeftNav = ({ navData, active, className }: Props) => {
+const MyAccountLeftNav = ({ navData, active, className, activeSubComponent }: Props) => {
   return (
     <React.Fragment>
       <ul className={className}>
@@ -76,7 +79,7 @@ const MyAccountLeftNav = ({ navData, active, className }: Props) => {
                 {active === nav.component &&
                   nav.subSections &&
                   nav.subSections.length !== 0 &&
-                  renderSubSections({ nav })}
+                  renderSubSections({ nav, activeSubComponent })}
               </li>
             );
           })}

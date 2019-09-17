@@ -3,6 +3,7 @@
 exports[`Account View should render Account Correctly 1`] = `
 <Styled(MyAccountLayoutView)
   active="accountOverview"
+  activeSubComponent="accountOverview"
   labels={Object {}}
   navData={Array []}
   router={
@@ -18,6 +19,7 @@ exports[`Account View should render Account Correctly 1`] = `
 exports[`Account View should render Account container Correctly 1`] = `
 <Styled(MyAccountLayoutView)
   active="addressBook"
+  activeSubComponent="addressBook"
   labels={Object {}}
   navData={Array []}
   router={

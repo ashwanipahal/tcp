@@ -11,8 +11,8 @@ const PhoneFieldWrapper = styled.View`
 `;
 
 const StyledText = styled.Text`
-  margin-top: ${props => props.theme.spacing.ELEM_SPACING.MED};
-  margin-right: ${props => props.theme.spacing.ELEM_SPACING.XS};
+  margin-top: ${props => props.theme.spacing.ELEM_SPACING.LRG};
+  margin-right: ${props => props.theme.spacing.ELEM_SPACING.XXS};
 `;
 
 const StyledCheckbox = styled.View`

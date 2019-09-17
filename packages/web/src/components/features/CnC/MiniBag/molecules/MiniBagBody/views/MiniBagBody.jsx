@@ -11,6 +11,7 @@ import ProductTileWrapper from '@tcp/core/src/components/features/CnC/CartItemTi
 import AirmilesBanner from '@tcp/core/src/components/features/CnC/common/organism/AirmilesBanner';
 import AddedToBagActions from '@tcp/core/src/components/features/CnC/AddedToBagActions';
 import { CHECKOUT_ROUTES } from '@tcp/core/src/components/features/CnC/Checkout/Checkout.constants';
+import ApplyNowModal from '@tcp/core/src/components/common/molecules/ApplyNowPLCCModal';
 import styles from '../styles/MiniBagBody.style';
 import EmptyMiniBag from '../../EmptyMiniBag/views/EmptyMiniBag';
 
@@ -30,6 +31,7 @@ class MiniBagBody extends React.PureComponent {
       subTotal,
       currencySymbol,
       isCartItemsUpdating,
+      closeMiniBag,
     } = this.props;
     const { isDeleting, isUpdating } = isCartItemsUpdating;
     return (
@@ -107,13 +109,20 @@ class MiniBagBody extends React.PureComponent {
           )}
         </BodyCopy>
         {cartItemCount ? (
-          <div className="miniBagFooter">
-            <BodyCopy tag="span" fontSize="fs14" fontWeight="semibold" className="subTotal">
-              {`${labels.subTotal}: ${currencySymbol}${subTotal.toFixed(2) || 0}`}
-            </BodyCopy>
-            <AddedToBagActions showAddTobag={false} isEditingItem={this.isEditing} />
-            <AirmilesBanner />
-          </div>
+          <React.Fragment>
+            <div className="miniBagFooter">
+              <BodyCopy tag="span" fontSize="fs14" fontWeight="semibold" className="subTotal">
+                {`${labels.subTotal}: ${currencySymbol}${subTotal.toFixed(2) || 0}`}
+              </BodyCopy>
+              <ApplyNowModal />
+              <AddedToBagActions
+                showAddTobag={false}
+                isEditingItem={this.isEditing}
+                closeMiniBag={closeMiniBag}
+              />
+              <AirmilesBanner />
+            </div>
+          </React.Fragment>
         ) : (
           <div className="miniBagFooter">
             <BodyCopy
@@ -140,6 +149,7 @@ MiniBagBody.propTypes = {
   subTotal: PropTypes.number.isRequired,
   cartItemCount: PropTypes.number.isRequired,
   currencySymbol: PropTypes.string.isRequired,
+  closeMiniBag: PropTypes.func.isRequired,
 };
 
 export default withStyles(MiniBagBody, styles);

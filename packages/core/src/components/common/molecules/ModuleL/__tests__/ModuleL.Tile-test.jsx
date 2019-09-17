@@ -7,7 +7,7 @@ import { DamImage } from '../../../atoms';
 describe('ModuleL Header component', () => {
   let ModuleLTileComp;
   const styledTile = {
-    class: 'red',
+    color: 'red',
   };
 
   beforeEach(() => {

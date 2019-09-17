@@ -342,3 +342,50 @@ export const setGiftWrap = payload => {
     payload,
   };
 };
+export const submitReviewSection = payload => {
+  return {
+    type: constants.SUBMIT_REVIEW,
+    payload,
+  };
+};
+
+export const setShowGiftCardForm = payload => {
+  return {
+    type: constants.CHECKOUT_FLAGS_SET_BILLING_ADD_GIFT_CARD_SHOW,
+    payload,
+  };
+};
+
+export const setHideGiftCardForm = payload => {
+  return {
+    type: constants.CHECKOUT_FLAGS_SET_BILLING_ADD_GIFT_CARD_HIDE,
+    payload,
+  };
+};
+
+export const addGiftCardFailure = payload => {
+  return {
+    type: constants.ADD_GIFT_CARD_FAILED,
+    payload,
+  };
+};
+
+export const addGiftCardSuccess = payload => {
+  return {
+    type: constants.ADD_GIFT_CARD_SUCCESS,
+    payload,
+  };
+};
+
+export const resetAddGiftCard = payload => {
+  return {
+    type: constants.RESET_ADD_GIFT_CARD,
+    payload,
+  };
+};
+export const resetAddGiftCardSuccess = payload => {
+  return {
+    type: constants.RESET_ADD_GIFT_CARD_SUCCESS,
+    payload,
+  };
+};

@@ -53,6 +53,7 @@ const ListItem = props => {
     theme,
     currencySymbol,
     isPlcc,
+    onGoToPDPPage,
   } = props;
   const [selectedColorIndex, setSelectedColorIndex] = useState(0);
   const { productInfo, colorsMap } = item;
@@ -63,7 +64,11 @@ const ListItem = props => {
   return (
     <ListContainer accessible>
       <RenderTopBadge1 text={badge1} />
-      <ImageSection item={item} selectedColorIndex={selectedColorIndex} />
+      <ImageSection
+        item={item}
+        selectedColorIndex={selectedColorIndex}
+        onGoToPDPPage={onGoToPDPPage}
+      />
       <RenderBadge2 text={badge2} />
       <RenderPricesSection
         onFavorite={onFavorite}
@@ -105,13 +110,20 @@ const RenderTopBadge1 = ({ text }) => {
 
 RenderTopBadge1.propTypes = TextProps;
 
-const ImageSection = ({ item, selectedColorIndex }) => {
-  return <ImageCarousel item={item} selectedColorIndex={selectedColorIndex} />;
+const ImageSection = ({ item, selectedColorIndex, onGoToPDPPage }) => {
+  return (
+    <ImageCarousel
+      item={item}
+      selectedColorIndex={selectedColorIndex}
+      onGoToPDPPage={onGoToPDPPage}
+    />
+  );
 };
 
 ImageSection.propTypes = {
   item: PropTypes.shape({}).isRequired,
   selectedColorIndex: PropTypes.number.isRequired,
+  onGoToPDPPage: PropTypes.func.isRequired,
 };
 
 const RenderBadge2 = ({ text }) => {
@@ -210,6 +222,7 @@ ListItem.propTypes = {
   isPlcc: PropTypes.bool,
   currencyExchange: PropTypes.arrayOf(PropTypes.shape({})).isRequired,
   currencySymbol: PropTypes.string.isRequired,
+  onGoToPDPPage: PropTypes.func.isRequired,
 };
 
 ListItem.defaultProps = {

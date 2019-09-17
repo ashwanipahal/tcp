@@ -14,6 +14,7 @@ import {
   addNewShippingAddress,
   submitBillingSection,
   initActions,
+  submitReviewSection,
 } from './Checkout.action';
 
 import CheckoutPage from '../views/CheckoutPage.view';
@@ -51,7 +52,9 @@ const {
   getAddEditResponseAddressId,
   getShippingAddress,
   getCheckoutProgressBarLabels,
+  getSyncError,
   getGiftWrappingValues,
+  getReviewLabels,
 } = selectors;
 
 export class CheckoutContainer extends React.Component<Props> {
@@ -107,6 +110,8 @@ export class CheckoutContainer extends React.Component<Props> {
       labels,
       submitBilling,
       checkoutProgressBarLabels,
+      submitReview,
+      reviewProps,
     } = this.props;
     const availableStages = checkoutUtil.getAvailableStages(
       cartOrderItems,
@@ -148,6 +153,8 @@ export class CheckoutContainer extends React.Component<Props> {
         addNewShippingAddressData={addNewShippingAddressData}
         labels={labels}
         submitBilling={submitBilling}
+        submitReview={submitReview}
+        reviewProps={reviewProps}
       />
     );
   }
@@ -193,6 +200,9 @@ export const mapDispatchToProps = dispatch => {
     fetchNeedHelpContent: contentIds => {
       dispatch(BAG_PAGE_ACTIONS.fetchModuleX(contentIds));
     },
+    submitReview: payload => {
+      dispatch(submitReviewSection(payload));
+    },
   };
 };
 
@@ -225,9 +235,11 @@ const mapStateToProps = state => {
       setAsDefaultShipping: getDefaultShipping(state),
       addEditResponseAddressId: getAddEditResponseAddressId(state),
       shippingAddress: getShippingAddress(state),
+      syncErrors: getSyncError(state),
     },
     billingProps: {
       labels: getBillingLabels(state),
+      shippingAddress: getShippingAddress(state),
     },
     // isAddressVerifyModalOpen: addressesStoreView.isVerifyAddressModalOpen(state),
     // onPickupSubmit: storeOperators.checkoutFormOperator.submitPickupSection,
@@ -259,6 +271,9 @@ const mapStateToProps = state => {
     needHelpContentId: BagPageSelector.getNeedHelpContentId(state),
     getGiftServicesContentTcpId: BagPageSelector.getGiftServicesContentTcpId(state),
     getGiftServicesContentGymId: BagPageSelector.getGiftServicesContentGymId(state),
+    reviewProps: {
+      labels: getReviewLabels(state),
+    },
   };
 };
 
