@@ -22,6 +22,7 @@ const HomePageView = dynamic({
     moduleN: () => import('@tcp/core/src/components/common/molecules/ModuleN').then(returnModule),
   }),
   render: ({ slots }, modules) => {
+    console.log(slots);
     return [
       <HomePageSlots slots={slots} modules={modules} />,
       <ModuleB {...mock} />,
