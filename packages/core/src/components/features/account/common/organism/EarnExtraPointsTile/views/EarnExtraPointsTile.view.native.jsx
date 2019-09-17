@@ -1,62 +1,69 @@
-import React from 'react';
+import React, { PureComponent } from 'react';
 import PropTypes from 'prop-types';
 import { View } from 'react-native';
-import withStyles from '@tcp/core/src/components/common/hoc/withStyles';
 import { BodyCopy, Anchor } from '@tcp/core/src/components/common/atoms';
-import { routerPush } from '@tcp/core/src/utils';
-import internalEndpoints from '@tcp/core/src/components/features/account/common/internalEndpoints';
-import styles from '../styles/EarnExtraPointsTile.style';
+import { getScreenWidth } from '@tcp/core/src/utils';
+import Carousel from '@tcp/core/src/components/common/molecules/Carousel';
 import DetailedEarnExtraPointsTile from '../../../molecule/DetailedEarnExtraPointsTile';
-
-const onClickHandler = () => {
-  return routerPush(internalEndpoints.profilePage.link, internalEndpoints.profilePage.path);
-};
+import {
+  EarnExtraPointsHeading,
+  EarnExtraPointsWrapper,
+} from '../styles/EarnExtraPointsTile.style.native';
 
 /**
- * @function RewardsPointsView The RewardsPointsView component will provide slider for account drawer
+ * Module height and width.
+ * Height is fixed for mobile
+ * Width can vary as per device width.
  */
+const MODULE_HEIGHT = 220;
+const MODULE_WIDTH = getScreenWidth() - 30;
 
-const EarnExtraPointsTile = ({ className, labels, waysToEarn }) => {
-  return (
-    <View>
-      <div className={className}>
-        <BodyCopy
-          component="div"
-          fontSize="fs16"
-          fontWeight="extrabold"
-          fontFamily="secondary"
-          data-locator="earnExtraPointsHeading"
-        >
-          {labels.lbl_common_earnExtraPoints}
-        </BodyCopy>
-        <Anchor
-          fontSizeVariation="medium"
-          anchorVariation="primary"
-          data-locator="earnExtraPointsViewAll"
-          underline
-        >
-          {labels.lbl_common_viewAll}
-        </Anchor>
-        <BodyCopy component="div" textAlign="center" className="earnExtraPointsWrapper">
-          {waysToEarn &&
-            waysToEarn.map((item, index) => {
-              return (
-                <DetailedEarnExtraPointsTile
-                  key={index.toString()}
-                  waysToEarnRow={item}
-                  onClickHandler={onClickHandler}
-                  labels={labels}
-                />
-              );
-            })}
-        </BodyCopy>
-      </div>
-    </View>
-  );
-};
+class EarnExtraPointsTile extends PureComponent {
+  renderView = ({ item, labels }) => {
+    return <DetailedEarnExtraPointsTile key={item.id} waysToEarnRow={item} labels={labels} />;
+  };
+
+  render() {
+    const { labels, waysToEarn } = this.props;
+    return (
+      <View>
+        <EarnExtraPointsHeading>
+          <BodyCopy
+            component="div"
+            fontSize="fs16"
+            fontWeight="extrabold"
+            fontFamily="secondary"
+            text={labels.lbl_common_earnExtraPoints}
+            data-locator="earnExtraPointsHeading"
+          />
+          <Anchor
+            fontSizeVariation="medium"
+            anchorVariation="primary"
+            text={labels.lbl_common_viewAll}
+            data-locator="earnExtraPointsViewAll"
+            underline
+          />
+        </EarnExtraPointsHeading>
+        <EarnExtraPointsWrapper>
+          <View>
+            <Carousel
+              data={waysToEarn.toArray()}
+              renderItem={this.renderView}
+              height={MODULE_HEIGHT}
+              width={MODULE_WIDTH}
+              variation="show-arrow"
+              showDots
+              darkArrow
+              autoplay={false}
+            />
+          </View>
+        </EarnExtraPointsWrapper>
+      </View>
+    );
+  }
+}
 
 EarnExtraPointsTile.propTypes = {
-  className: PropTypes.string,
   waysToEarn: PropTypes.shape([]),
   labels: PropTypes.shape({
     lbl_common_earnExtraPoints: PropTypes.string,
@@ -65,7 +72,6 @@ EarnExtraPointsTile.propTypes = {
 };
 
 EarnExtraPointsTile.defaultProps = {
-  className: '',
   waysToEarn: [],
   labels: {
     lbl_common_earnExtraPoints: '',
@@ -73,5 +79,4 @@ EarnExtraPointsTile.defaultProps = {
   },
 };
 
-export default withStyles(EarnExtraPointsTile, styles);
-export { EarnExtraPointsTile as EarnExtraPointsTileVanilla };
+export default EarnExtraPointsTile;

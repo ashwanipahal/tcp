@@ -17,7 +17,24 @@ const onClickHandler = () => {
  * @function RewardsPointsView The RewardsPointsView component will provide slider for account drawer
  */
 
-const EarnExtraPointsTile = ({ className, labels, waysToEarn }) => {
+const EarnExtraPointsTile = ({ className, labels }) => {
+  const waysToEarn = [
+    {
+      activityCode: 'AppDownload',
+      activityTitle: 'Earn 5 Points',
+      description: 'Download & Log in to our App',
+      displayOrder: 1,
+      iconImage: '/wcsstore/static/images/download-app.jpg',
+    },
+    {
+      activityCode: 'AppDownload',
+      activityTitle: 'Earn 5 Points',
+      description: 'Download & Log in to our App',
+      displayOrder: 1,
+      iconImage: '/wcsstore/static/images/download-app.jpg',
+    },
+  ];
+
   if (waysToEarn && waysToEarn.length > 8) {
     carouselConfig.dots = false;
   }
@@ -78,7 +95,6 @@ const EarnExtraPointsTile = ({ className, labels, waysToEarn }) => {
 
 EarnExtraPointsTile.propTypes = {
   className: PropTypes.string,
-  waysToEarn: PropTypes.shape([]),
   labels: PropTypes.shape({
     lbl_common_earnExtraPoints: PropTypes.string,
     lbl_common_viewAll: PropTypes.string,
@@ -87,7 +103,6 @@ EarnExtraPointsTile.propTypes = {
 
 EarnExtraPointsTile.defaultProps = {
   className: '',
-  waysToEarn: [],
   labels: {
     lbl_common_earnExtraPoints: '',
     lbl_common_viewAll: '',

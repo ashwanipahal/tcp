@@ -3,5 +3,5 @@ export const getCommonLabels = state => {
 };
 
 export const getEarnExtraPointsDataState = state => {
-  return state.earnExtraPointsReducer.get('earnExtraPointsData');
+  return state.earnExtraPointsReducer && state.earnExtraPointsReducer.get('earnExtraPointsData');
 };
