@@ -1,86 +1,63 @@
-/* eslint-disable */
-
 import React from 'react';
 import PropTypes from 'prop-types';
+import withStyles from '../../../../../../common/hoc/withStyles';
+import styles, { customHeaderStyle } from '../styles/FullSizeImageWithQuickViewModal.style';
 import Modal from '../../../../../../common/molecules/Modal';
-// import { ProductColorChipsSelector } from 'views/components/product/formDetails/ProductColorChipsSelector.jsx';
 import ProductImages from '../../../../../../common/organisms/ProductImages';
-// import { ModalHeaderDisplayContainer } from 'views/components/modal/ModalHeaderDisplayContainer.jsx';
-// import { PRODUCT_INFO_PROP_TYPE_SHAPE } from 'views/components/common/propTypes/productsAndItemsPropTypes.js';
-// import { ShadowField } from 'reduxStore/util/ShadowField.jsx';
 
-export default class FullSizeImageWithQuickViewModal extends React.Component {
-  static propTypes = {
-    /** information of the product whose images to show */
-    // productInfo: PRODUCT_INFO_PROP_TYPE_SHAPE.isRequired,
+const FullSizeImageWithQuickViewModal = props => {
+  const { isMobile, onCloseClick, name, isThumbnailListVisible, images } = props;
+  return (
+    <Modal
+      isOpen
+      onRequestClose={onCloseClick}
+      overlayClassName="TCPModal__Overlay"
+      className="TCPModal__Content"
+      heading={name}
+      fixedWidth
+      widthConfig={{ small: '375px', medium: '1000px', large: '1200px' }}
+      heightConfig={{ height: '95%' }}
+      inheritedStyles={customHeaderStyle}
+    >
+      <div className="overlay-content">
+        <ProductImages
+          productName={name}
+          isMobile={isMobile}
+          images={images}
+          isShowBigSizeImages
+          isFullSizeVisible={false}
+          isFullSizeForTab
+          isZoomEnabled={false}
+          isThumbnailListVisible={isThumbnailListVisible}
+        />
+      </div>
+    </Modal>
+  );
+};
 
-    /** list of images of the product */
-    images: PropTypes.arrayOf(
-      PropTypes.shape({
-        iconSizeImageUrl: PropTypes.string.isRequired,
-        regularSizeImageUrl: PropTypes.string.isRequired,
-        bigSizeImageUrl: PropTypes.string.isRequired,
-        superSizeImageUrl: PropTypes.string.isRequired,
-      })
-    ).isRequired,
+FullSizeImageWithQuickViewModal.propTypes = {
+  images: PropTypes.arrayOf(
+    PropTypes.shape({
+      iconSizeImageUrl: PropTypes.string.isRequired,
+      regularSizeImageUrl: PropTypes.string.isRequired,
+      bigSizeImageUrl: PropTypes.string.isRequired,
+      superSizeImageUrl: PropTypes.string.isRequired,
+    })
+  ).isRequired,
 
-    /** The from and field name holding the currently selected color we need to track */
-    colorFormName: PropTypes.string,
-    colorFieldName: PropTypes.string,
+  /** function to call to close this modal */
+  onCloseClick: PropTypes.func.isRequired,
 
-    /** function to call to close this modal */
-    onCloseClick: PropTypes.func.isRequired,
+  /** Flags if the thumnails should be visible. */
+  isThumbnailListVisible: PropTypes.bool,
+  isMobile: PropTypes.bool,
+  name: PropTypes.string.isRequired,
+};
 
-    /** Whether to render for mobile. */
-    isMobile: PropTypes.bool.isRequired,
+FullSizeImageWithQuickViewModal.defaultProps = {
+  isMobile: true,
+  isThumbnailListVisible: true,
+};
 
-    /**
-     * Function to call when the color has changed. The function will receive
-     * the new color's name as it's only parameter.
-     */
-    onColorChange: PropTypes.func,
-
-    /** Flags if the thumnails should be visible. */
-    isThumbnailListVisible: PropTypes.bool,
-    videoUrl: PropTypes.string,
-    isShowVideoOnPdp: PropTypes.bool,
-  };
-
-  render() {
-    let {
-      isMobile,
-      onCloseClick,
-      // productInfo,
-      isThumbnailListVisible,
-      onColorChange,
-      colorFormName,
-      colorFieldName,
-      images,
-    } = this.props;
-    return (
-      <Modal
-        isOpen
-        onRequestClose={onCloseClick}
-        heading={'Modal Heading'}
-        overlayClassName="TCPModal__Overlay"
-        className="TCPModal__Content"
-        fixedWidth
-        widthConfig={{ small: '375px', medium: '1000x', large: '1200px' }}
-        heightConfig={{ height: '95%' }}
-      >
-        <div className="overlay-content">
-          <ProductImages
-            productName="Dummy Product"
-            isMobile={false}
-            images={images}
-            isShowBigSizeImages
-            isFullSizeVisible={false}
-            isShowBigSizeImages
-            isZoomEnabled={false}
-            isThumbnailListVisible={isThumbnailListVisible}
-          />
-        </div>
-      </Modal>
-    );
-  }
-}
+export default withStyles(FullSizeImageWithQuickViewModal, styles);
+export { FullSizeImageWithQuickViewModal as FullSizeImageWithQuickViewModalVanilla };

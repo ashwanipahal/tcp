@@ -2,12 +2,35 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import ExecutionEnvironment from 'exenv';
 import ReactImageMagnify from 'react-image-magnify';
-import Image from '../../atoms/Image';
+import { Image, Anchor } from '../../atoms';
 import withStyles from '../../hoc/withStyles';
 import styles from './ProductDetailImage.style';
 
+const getNonZoomImage = (isMobile, imageUrl, imageName, onOpenSimpleFullSize) => {
+  return !isMobile ? (
+    <Image
+      className="full-size-desktop-image"
+      src={imageUrl}
+      alt={imageName}
+      itemProp="contentUrl"
+    />
+  ) : (
+    <Anchor aria-label="view full size image" onClick={onOpenSimpleFullSize}>
+      <Image src={imageUrl} alt={imageName} itemProp="contentUrl" />
+    </Anchor>
+  );
+};
+
 const ProductDetailImage = props => {
-  const { imageName, imageUrl, zoomImageUrl, className, isZoomEnabled } = props;
+  const {
+    imageName,
+    imageUrl,
+    zoomImageUrl,
+    className,
+    isZoomEnabled,
+    onOpenSimpleFullSize,
+    isMobile,
+  } = props;
   let productSectionWidth;
   if (ExecutionEnvironment.canUseDOM) {
     productSectionWidth =
@@ -16,7 +39,7 @@ const ProductDetailImage = props => {
   }
   return (
     <div itemScope itemType="http://schema.org/ImageObject" className={className} title={imageName}>
-      {isZoomEnabled ? (
+      {isZoomEnabled && !isMobile ? (
         <ReactImageMagnify
           {...{
             enlargedImagePortalId: 'portal',
@@ -38,7 +61,7 @@ const ProductDetailImage = props => {
           }}
         />
       ) : (
-        <Image src={imageUrl} alt={imageName} itemProp="contentUrl" />
+        getNonZoomImage(isMobile, imageUrl, imageName, onOpenSimpleFullSize)
       )}
     </div>
   );
@@ -49,18 +72,21 @@ ProductDetailImage.propTypes = {
 
   /** the image url */
   imageUrl: PropTypes.string.isRequired,
+  isMobile: PropTypes.bool.isRequired,
 
   /** zoom image url */
   zoomImageUrl: PropTypes.string.isRequired,
 
   className: PropTypes.string,
   isZoomEnabled: PropTypes.bool,
+  onOpenSimpleFullSize: PropTypes.func,
 };
 
 ProductDetailImage.defaultProps = {
   className: '',
   imageName: '',
   isZoomEnabled: true,
+  onOpenSimpleFullSize: () => {},
 };
 
 export default withStyles(ProductDetailImage, styles);

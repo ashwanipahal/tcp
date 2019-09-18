@@ -1,8 +1,10 @@
 import React from 'react';
 import PropTypes from 'prop-types';
+import ExecutionEnvironment from 'exenv';
 import { Row, Col, RichText } from '../../../../common/atoms';
 import withStyles from '../../../../common/hoc/withStyles';
 import ProductDetailStyle from '../ProductDetail.style';
+import { breakpoints } from '../../../../../../styles/themes/TCP/mediaQuery';
 import Product from '../molecules/Product/views/Product.view';
 import FixedBreadCrumbs from '../../ProductListing/molecules/FixedBreadCrumbs/views';
 import ProductImages from '../../../../common/organisms/ProductImages';
@@ -19,6 +21,8 @@ const ProductDetailView = ({
   currency,
   productInfo,
 }) => {
+  const isWeb =
+    ExecutionEnvironment.canUseDOM && document.body.offsetWidth >= breakpoints.values.lg;
   let imagesToDisplay = [];
   if (Object.keys(productInfo).length !== 0 && productInfo.constructor === Object) {
     const colorProduct = getMapSliceForColorProductId(
@@ -52,7 +56,7 @@ const ProductDetailView = ({
           {!!imagesToDisplay.length && (
             <ProductImages
               productName={productInfo.name}
-              isThumbnailListVisible
+              isThumbnailListVisible={isWeb}
               images={imagesToDisplay}
               isZoomEnabled
             />

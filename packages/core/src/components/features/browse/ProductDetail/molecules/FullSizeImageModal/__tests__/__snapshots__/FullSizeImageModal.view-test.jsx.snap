@@ -1,0 +1,25 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`FullSizeImageModal component should renders correctly 1`] = `
+<Styled(Modal)
+  className=" TCPModal__Content"
+  fixedWidth={true}
+  isOpen={true}
+  onRequestClose={[MockFunction]}
+  overlayClassName="TCPModal__Overlay"
+>
+  <div
+    className="overlay-content"
+  >
+    <figure
+      className=" image-zoom "
+      onTouchStart={[Function]}
+    >
+      <Styled(Image)
+        alt=""
+        src=""
+      />
+    </figure>
+  </div>
+</Styled(Modal)>
+`;

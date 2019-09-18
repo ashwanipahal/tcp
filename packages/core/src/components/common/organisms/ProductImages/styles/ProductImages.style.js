@@ -4,17 +4,20 @@ export default css`
   display: flex;
   justify-content: space-between;
   .preview-and-social-media-icons {
-    display: none;
+    width: 100px;
   }
   .resize-text {
-    display: inline-flex;
+    position: absolute;
+    display: none;
   }
+
   .main-image-container-wrap {
     width: 100%;
     margin-bottom: 30px;
     display: flex;
     flex-direction: row;
   }
+
   .enlarged-image-container {
     position: relative;
     z-index: ${props => props.theme.zindex.zEnlargedImage};
@@ -34,6 +37,7 @@ export default css`
   }
   .main-image-container {
     width: 100%;
+    position: relative;
   }
 
   @media ${props => props.theme.mediaQuery.medium} {
@@ -41,16 +45,25 @@ export default css`
       width: 100%;
       margin-right: 30px;
     }
+    .main-image-container-wrap-full-size {
+      width: calc(100% - 146px);
+      margin-left: 40px;
+      margin-right: 16px;
+    }
+    .resize-text {
+      display: inline-flex;
+    }
   }
   @media ${props => props.theme.mediaQuery.large} {
-    .preview-and-social-media-icons {
-      width: 100px;
-      display: block;
-    }
     .main-image-container-wrap {
       width: calc(100% - 280px);
       margin-left: 90px;
       margin-right: 90px;
+    }
+    .main-image-container-wrap-full-size {
+      width: calc(100% - 195px);
+      margin-left: 65px;
+      margin-right: 40px;
     }
   }
 `;
