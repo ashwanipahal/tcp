@@ -52,6 +52,7 @@ const styles = css`
     @media ${props => props.theme.mediaQuery.medium} {
       margin-left: ${props => props.theme.spacing.LAYOUT_SPACING.MED};
       margin-right: ${props => props.theme.spacing.LAYOUT_SPACING.MED};
+      min-height: 277px;
     }
     @media ${props => props.theme.mediaQuery.large} {
       margin-left: ${props => props.theme.spacing.ELEM_SPACING.XXL};

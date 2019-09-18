@@ -1,12 +1,34 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import { BodyCopy, Image } from '@tcp/core/src/components/common/atoms';
-import { getAPIConfig } from '@tcp/core/src/utils';
+import { BodyCopy } from '@tcp/core/src/components/common/atoms';
 import {
   TileWrapper,
   EarnPointDesc,
   EarnExtraPointsTileImage,
+  ImageSize,
 } from '../styles/DetailedEarnExtraPointsTile.style.native';
+
+const AppDownloadImage = require('../../../../../../../assets/download-app.png');
+const ProductReviewImage = require('../../../../../../../assets/review.png');
+const FacebookLinkImage = require('../../../../../../../assets/facebook.png');
+const InstagramLinkImage = require('../../../../../../../assets/instagram.png');
+const ChildProfileImage = require('../../../../../../../assets/child-birthday-profile.png');
+const SMSOptInImage = require('../../../../../../../assets/sms.png');
+const AddMailingAddressImage = require('../../../../../../../assets/mailingAddress.png');
+const AddFavoriteStoreImage = require('../../../../../../../assets/store.png');
+const AddShopperTypeImage = require('../../../../../../../assets/survey.png');
+
+const sourceMap = {
+  AppDownload: AppDownloadImage,
+  ProductReview: ProductReviewImage,
+  FacebookLink: FacebookLinkImage,
+  InstagramLink: InstagramLinkImage,
+  ChildProfile: ChildProfileImage,
+  SMSOptIn: SMSOptInImage,
+  AddMailingAddress: AddMailingAddressImage,
+  AddFavoriteStore: AddFavoriteStoreImage,
+  AddShopperType: AddShopperTypeImage,
+};
 
 export class DetailedEarnExtraPointsTile extends React.PureComponent {
   static propTypes = {
@@ -21,15 +43,11 @@ export class DetailedEarnExtraPointsTile extends React.PureComponent {
 
   render() {
     const { waysToEarnRow } = this.props;
-    const imageHost = getAPIConfig().assetHost;
 
     return (
       <TileWrapper>
         <EarnExtraPointsTileImage>
-          <Image
-            source={`${imageHost}${waysToEarnRow.iconImage}`}
-            data-locator={`earnExtraPointsImage_${waysToEarnRow.activityCode}`}
-          />
+          <ImageSize source={sourceMap[waysToEarnRow.activityCode]} />
         </EarnExtraPointsTileImage>
         <BodyCopy
           component="p"

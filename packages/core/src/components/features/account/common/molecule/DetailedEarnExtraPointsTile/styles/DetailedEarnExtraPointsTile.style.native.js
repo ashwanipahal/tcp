@@ -1,5 +1,11 @@
 import styled from 'styled-components/native';
 
+const ImageSize = styled.Image`
+  height: '60px';
+  margin-left: '12px';
+  width: '60px';
+`;
+
 const TileWrapper = styled.View`
   border: 1px solid ${props => props.theme.colorPalette.gray[300]};
   background: ${props => props.theme.colors.WHITE};
@@ -20,15 +26,11 @@ const EarnPointDesc = styled.View`
 
 const EarnExtraPointsTileImage = styled.View`
   margin-top: ${props => props.theme.spacing.LAYOUT_SPACING.MED};
-  height: 100px;
+  height: 96px;
   text-align: center;
   display: flex;
   justify-content: space-around;
   align-items: center;
-  img {
-    height: 60px;
-  }
-  margin-bottom: 5px;
 `;
 
-export { TileWrapper, EarnPointDesc, EarnExtraPointsTileImage };
+export { TileWrapper, EarnPointDesc, EarnExtraPointsTileImage, ImageSize };

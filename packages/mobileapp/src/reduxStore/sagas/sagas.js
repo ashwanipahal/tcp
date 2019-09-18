@@ -24,6 +24,7 @@ import GiftCardBalanceSaga from '@tcp/core/src/components/features/account/Payme
 import BagPageSaga from '@tcp/core/src/components/features/CnC/BagPage/container/BagPage.saga';
 import DeleteCardSaga from '@tcp/core/src/components/features/account/Payment/container/DeleteCard.saga';
 import PointsHistorySaga from '@tcp/core/src/components/features/account/common/organism/PointsHistory/container/PointsHistory.saga';
+import EarnExtraPointsSaga from '@tcp/core/src/components/features/account/common/organism/EarnExtraPointsTile/container/EarnExtraPointsTile.saga';
 import CouponSaga from '@tcp/core/src/components/features/CnC/common/organism/CouponAndPromos/container/Coupon.saga';
 import CheckoutSaga from '@tcp/core/src/components/features/CnC/Checkout/container/Checkout.saga';
 import AddEditCreditCardSaga from '@tcp/core/src/components/features/account/AddEditCreditCard/container/AddEditCreditCard.saga';
@@ -64,6 +65,7 @@ export default function* rootSaga() {
     CouponSaga(),
     DeleteCardSaga(),
     PointsHistorySaga(),
+    EarnExtraPointsSaga(),
     ProductListingSaga(),
     AddEditCreditCardSaga(),
     UserSaga(),
