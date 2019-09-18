@@ -1,9 +1,4 @@
-const StoreLocatorReducer = (state = {}, action) => {
-  switch (action.type) {
-    default:
-      return state;
-  }
-};
+const StoreLocatorReducer = state => state;
 
 import React from 'react';
 import { Provider as ReduxProvider } from 'react-redux';

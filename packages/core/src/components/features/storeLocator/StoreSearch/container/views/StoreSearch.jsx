@@ -84,18 +84,20 @@ export class StoreSearch extends PureComponent {
       labels,
       searchIcon,
       markerIcon,
+      gymSelected,
+      outletSelected,
     } = this.props;
     const { errorNotFound } = this.state;
     const {
-      errorLabel = 'there is an error in the input',
-      storeSearchPlaceholder = 'ZIP or city, state',
-      findStoreHeading = 'Find a Store',
-      gymboreeStores = 'Gymboree',
-      outletStores = 'Only Outlet Stores',
-      currentLocation = 'Use my current location',
-      viewMap = 'View Map',
-      allUSCAStores = 'All US & Canada Stores',
-      internationalStores = 'International Stores',
+      errorLabel,
+      storeSearchPlaceholder,
+      findStoreHeading,
+      gymboreeStores,
+      outletStores,
+      currentLocation,
+      viewMap,
+      allUSCAStores,
+      internationalStores,
     } = labels;
     const errorMessage = errorNotFound ? errorLabel : error;
 
@@ -104,11 +106,13 @@ export class StoreSearch extends PureComponent {
         name: 'gymboreeStoreOption',
         dataLocator: 'gymboree-store-option',
         storeLabel: gymboreeStores,
+        checked: gymSelected,
       },
       {
         name: 'outletOption',
         dataLocator: 'only-outlet-option',
         storeLabel: outletStores,
+        checked: outletSelected,
       },
     ];
 
@@ -189,7 +193,7 @@ export class StoreSearch extends PureComponent {
                 <Col colSize={{ large: 12, medium: 4, small: 6 }}>
                   <div className="searchFormBody">
                     <ul className="storeOptionList">
-                      {storeOptionsConfig.map(({ name, dataLocator, storeLabel }) => (
+                      {storeOptionsConfig.map(({ name, dataLocator, storeLabel, checked }) => (
                         <li className="storeOptions">
                           <Field
                             name={name}
@@ -197,6 +201,7 @@ export class StoreSearch extends PureComponent {
                             dataLocator={dataLocator}
                             enableSuccessCheck={false}
                             onChange={this.onSelectStore}
+                            checked={checked}
                           >
                             <BodyCopy
                               fontSize={['fs12', 'fs12', 'fs12']}
@@ -239,11 +244,15 @@ StoreSearch.propTypes = {
   labels: PropTypes.objectOf(PropTypes.string),
   searchIcon: PropTypes.string.isRequired,
   markerIcon: PropTypes.string.isRequired,
+  gymSelected: PropTypes.bool,
+  outletSelected: PropTypes.bool,
 };
 
 StoreSearch.defaultProps = {
   submitting: false,
   labels: {},
+  gymSelected: false,
+  outletSelected: false,
 };
 
 export default reduxForm({
