@@ -13,6 +13,7 @@ import CheckoutBillingAddress from '../../CheckoutBillingAddress';
 import AddressFields from '../../../../../../common/molecules/AddressFields';
 import CheckoutFooter from '../../../molecules/CheckoutFooter';
 import utility from '../../../util/utility';
+import CREDIT_CARD_CONSTANTS from '../../BillingPaymentForm/container/CreditCard.constants';
 
 class GuestBillingForm extends React.Component {
   static propTypes = {
@@ -59,6 +60,11 @@ class GuestBillingForm extends React.Component {
     }
   }
 
+  getExpirationRequiredFlag = () => {
+    const { cardType } = this.props;
+    return !cardType || cardType !== CREDIT_CARD_CONSTANTS.ACCEPTED_CREDIT_CARDS.PLACE_CARD;
+  };
+
   render() {
     const {
       cvvCodeRichText,
@@ -82,7 +88,7 @@ class GuestBillingForm extends React.Component {
     if (syncErrorsObj) {
       cvvError = syncErrorsObj.syncError.cvvCode;
     }
-
+    const isExpirationRequired = this.getExpirationRequiredFlag();
     return (
       <form name="checkoutBilling" onSubmit={handleSubmit}>
         <BodyCopy
@@ -95,7 +101,7 @@ class GuestBillingForm extends React.Component {
           {getLabelValue(labels, 'lbl_billing_paymentMethodTitle')}
         </BodyCopy>
         <PaymentMethods labels={labels} />
-        <div className="elem-mt-LRG elem-pb-XL     ">
+        <div className="elem-mt-LRG elem-pb-XL">
           {paymentMethodId === CONSTANTS.PAYMENT_METHOD_CREDIT_CARD ? (
             <>
               <AddNewCCForm
@@ -103,6 +109,8 @@ class GuestBillingForm extends React.Component {
                 cardType={cardType}
                 cvvError={cvvError}
                 labels={labels}
+                formName="checkoutBilling"
+                isExpirationRequired={isExpirationRequired}
               />
               <CheckoutBillingAddress
                 isGuest={isGuest}
@@ -113,6 +121,7 @@ class GuestBillingForm extends React.Component {
                 isSameAsShippingChecked={isSameAsShippingChecked}
                 labels={labels}
                 billingData={billingData}
+                formName="checkoutBilling"
               />
             </>
           ) : null}

@@ -6,7 +6,6 @@ import BillingPaymentForm from '../../BillingPaymentForm';
 import styles from '../styles/BillingPage.style';
 import GiftCardsContainer from '../../GiftCardsSection';
 import GuestBillingForm from '../../GuestBillingForm';
-import { getLabelValue } from '../../../../../../../utils';
 
 class BillingPage extends React.PureComponent {
   static propTypes = {
@@ -19,6 +18,7 @@ class BillingPage extends React.PureComponent {
     cvvCodeRichText: PropTypes.string,
     addressLabels: PropTypes.shape({}),
     billingData: PropTypes.shape({}),
+    userAddresses: PropTypes.shape({}),
   };
 
   static defaultProps = {
@@ -27,16 +27,7 @@ class BillingPage extends React.PureComponent {
     cvvCodeRichText: null,
     addressLabels: null,
     billingData: {},
-  };
-
-  getFooterLabels = () => {
-    const { labels } = this.props;
-    return {
-      header: getLabelValue(labels, 'lbl_billing_title'),
-      backLinkPickup: getLabelValue(labels, 'lbl_billing_backLinkPickup'),
-      backLinkShipping: getLabelValue(labels, 'lbl_billing_backLinkShipping'),
-      nextSubmitText: getLabelValue(labels, 'lbl_billing_nextSubmit'),
-    };
+    userAddresses: null,
   };
 
   render() {
@@ -50,8 +41,9 @@ class BillingPage extends React.PureComponent {
       cvvCodeRichText,
       addressLabels,
       billingData,
+      userAddresses,
     } = this.props;
-    const { header, backLinkPickup, backLinkShipping, nextSubmitText } = this.getFooterLabels();
+    const { header, backLinkPickup, backLinkShipping, nextSubmitText } = labels;
     return (
       <div className={className}>
         <CheckoutSectionTitleDisplay title={header} dataLocator="billing-title" />
@@ -67,6 +59,10 @@ class BillingPage extends React.PureComponent {
               nextSubmitText={nextSubmitText}
               cvvCodeRichText={cvvCodeRichText}
               labels={labels}
+              billingData={billingData}
+              addressLabels={addressLabels}
+              shippingAddress={shippingAddress}
+              userAddresses={userAddresses}
             />
           </div>
         ) : (

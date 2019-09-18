@@ -18,6 +18,7 @@ import {
   setGiftWrap,
   getVenmoClientTokenSuccess,
   getVenmoClientTokenError,
+  setSmsNumberForUpdates,
 } from './Checkout.action';
 import utility from '../util/utility';
 import { CHECKOUT_ROUTES } from '../Checkout.constants';
@@ -180,4 +181,16 @@ export function* getVenmoClientTokenSaga(payload) {
   } catch (ex) {
     yield put(getVenmoClientTokenError({ error: 'Error' }));
   }
+}
+export function* saveLocalSmsInfo(smsInfo = {}) {
+  let returnVal;
+  const { wantsSmsOrderUpdates, smsUpdateNumber } = smsInfo;
+  if (smsUpdateNumber) {
+    if (wantsSmsOrderUpdates) {
+      returnVal = yield call(setSmsNumberForUpdates, smsUpdateNumber);
+    } else {
+      returnVal = yield call(setSmsNumberForUpdates(null));
+    }
+  }
+  return returnVal;
 }

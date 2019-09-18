@@ -242,6 +242,7 @@ const mapStateToProps = state => {
       labels: getBillingLabels(state),
       shippingAddress: getShippingAddress(state),
       billingData: getBillingValues(state),
+      userAddresses: getAddressListState(state),
     },
     // isAddressVerifyModalOpen: addressesStoreView.isVerifyAddressModalOpen(state),
     // onPickupSubmit: storeOperators.checkoutFormOperator.submitPickupSection,

@@ -1,7 +1,7 @@
 import React from 'react';
 import { shallow } from 'enzyme';
 import { List } from 'immutable';
-import { GiftCardsContainer, mapDispatchToProps } from '../container/CreditCard.container';
+import { GiftCardsContainer } from '../container/CreditCard.container';
 import BillingPaymentForm from '../views';
 
 describe('GiftCardsContainer Container', () => {
@@ -68,13 +68,6 @@ describe('GiftCardsContainer Container', () => {
   });
 
   describe('#mapDispatchToProps', () => {
-    it('should return an action getCardListAction which will call dispatch function on execution', () => {
-      const dispatch = jest.fn();
-      const dispatchProps = mapDispatchToProps(dispatch);
-      dispatchProps.getCardListAction();
-      expect(dispatch.mock.calls).toHaveLength(1);
-    });
-
     it('should render getSelectedCard view section', () => {
       instance.getSelectedCard(card, 1);
     });
