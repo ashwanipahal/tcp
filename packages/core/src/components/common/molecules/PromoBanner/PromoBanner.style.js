@@ -371,4 +371,77 @@ export default css`
     font-size: ${props => props.theme.typography.fontSizes.fs64};
     font-weight: ${props => props.theme.typography.fontWeights.black};
   }
+
+  /*
+  * Module R Promo Banner styles
+  *********************************/
+  .medium_text_regular {
+    display: block;
+    font-family: ${props => props.theme.typography.fonts.primary};
+    font-size: ${props => props.theme.typography.fontSizes.fs20};
+    font-weight: ${props => props.theme.typography.fontWeights.semibold};
+    line-height: ${props => props.theme.typography.lineHeights.lh107};
+    letter-spacing: ${props => props.theme.typography.letterSpacings.ls1};
+
+    @media ${props => props.theme.mediaQuery.medium} {
+      font-size: ${props => props.theme.typography.fontSizes.fs32};
+    }
+  }
+
+  /*
+  * TODO: Update this class name in CMS
+  */
+  .percentage_all_wrapped_normal {
+    color: ${props => props.theme.colorPalette.black};
+    display: inline-block;
+    font-family: ${props => props.theme.typography.fonts.primary};
+    font-size: ${props => props.theme.typography.fontSizes.fs48};
+    font-weight: ${props => props.theme.typography.fontWeights.black};
+    text-align: center;
+    transform: translateX(-18px);
+    margin-top: -${props => props.theme.spacing.ELEM_SPACING.XS};
+
+    .percentage_all_wrapped_normal-1 {
+      font-size: ${props => props.theme.typography.fontSizes.fs28};
+      position: absolute;
+      top: ${props => props.theme.spacing.ELEM_SPACING.XXS};
+    }
+
+    .percentage_all_wrapped_normal-2 {
+      font-size: ${props => props.theme.typography.fontSizes.fs18};
+      position: absolute;
+      bottom: ${props => props.theme.spacing.ELEM_SPACING.XS};
+    }
+
+    @media ${props => props.theme.mediaQuery.medium} {
+      margin-top: -${props => props.theme.spacing.ELEM_SPACING.XL};
+      transform: translateX(-50px);
+
+      .percentage_all_wrapped_normal-0 {
+        font-size: 152px;
+      }
+
+      .percentage_all_wrapped_normal-1 {
+        font-size: 88px;
+        top: ${props => props.theme.spacing.ELEM_SPACING.MED};
+      }
+
+      .percentage_all_wrapped_normal-2 {
+        font-size: ${props => props.theme.typography.fontSizes.fs48};
+        bottom: ${props => props.theme.spacing.ELEM_SPACING.LRG};
+      }
+    }
+
+    @media ${props => props.theme.mediaQuery.large} {
+      margin-top: -${props => props.theme.spacing.ELEM_SPACING.MED};
+
+      .percentage_all_wrapped_normal-1 {
+        top: ${props => props.theme.spacing.ELEM_SPACING.MED};
+      }
+
+      .percentage_all_wrapped_normal-2 {
+        bottom: ${props => props.theme.spacing.ELEM_SPACING.LRG};
+      }
+    }
+  }
 `;
