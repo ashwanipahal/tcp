@@ -4,6 +4,7 @@ import ExecutionEnvironment from 'exenv';
 import { Row, Col, RichText } from '../../../../common/atoms';
 import withStyles from '../../../../common/hoc/withStyles';
 import ProductDetailStyle from '../ProductDetail.style';
+import { PRODUCT_INFO_PROP_TYPE_SHAPE } from '../../ProductListing/molecules/ProductList/propTypes/productsAndItemsPropTypes';
 import { breakpoints } from '../../../../../../styles/themes/TCP/mediaQuery';
 import Product from '../molecules/Product/views/Product.view';
 import FixedBreadCrumbs from '../../ProductListing/molecules/FixedBreadCrumbs/views';
@@ -24,7 +25,7 @@ const ProductDetailView = ({
   const isWeb =
     ExecutionEnvironment.canUseDOM && document.body.offsetWidth >= breakpoints.values.lg;
   let imagesToDisplay = [];
-  if (Object.keys(productInfo).length !== 0 && productInfo.constructor === Object) {
+  if (Object.keys(productInfo).length !== 0) {
     const colorProduct = getMapSliceForColorProductId(
       productInfo.colorFitsSizesMap,
       /* colorProductId would not be hard coded and it will be replaced in near future when it done */
@@ -53,14 +54,14 @@ const ProductDetailView = ({
       </Row>
       <Row>
         <Col className="product-image-wrapper" colSize={{ small: 6, medium: 4, large: 7 }}>
-          {!!imagesToDisplay.length && (
+          {imagesToDisplay.length > 0 ? (
             <ProductImages
               productName={productInfo.name}
               isThumbnailListVisible={isWeb}
               images={imagesToDisplay}
               isZoomEnabled
             />
-          )}
+          ) : null}
         </Col>
         <Col
           id="productDetailsSection"
@@ -114,7 +115,7 @@ const ProductDetailView = ({
 ProductDetailView.propTypes = {
   className: PropTypes.string,
   productDetails: PropTypes.shape({}),
-  productInfo: PropTypes.shape({}),
+  productInfo: PRODUCT_INFO_PROP_TYPE_SHAPE,
   longDescription: PropTypes.string,
   breadCrumbs: PropTypes.shape({}),
   currency: PropTypes.string,

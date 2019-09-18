@@ -70,21 +70,17 @@ class ProductImages extends React.Component {
     super(props);
 
     this.handleThumbnailClick = this.handleThumbnailClick.bind(this);
-    this.handleShowFullSizeModalClick = this.handleShowFullSizeModalClick.bind(this);
-    this.handleCloseFullSizeModalClick = this.handleCloseFullSizeModalClick.bind(this);
+    this.handleShowHideFullSizeModalClick = this.handleShowHideFullSizeModalClick.bind(this);
   }
 
   handleThumbnailClick = imageIndex => {
     this.setState({ currentImageIndex: imageIndex });
   };
 
-  handleShowFullSizeModalClick(e) {
+  handleShowHideFullSizeModalClick(e) {
     e.preventDefault();
-    this.setState({ isFullSizeModalOpen: true });
-  }
-
-  handleCloseFullSizeModalClick() {
-    this.setState({ isFullSizeModalOpen: false });
+    const { isFullSizeModalOpen } = this.state;
+    this.setState({ isFullSizeModalOpen: !isFullSizeModalOpen });
   }
 
   render() {
@@ -148,7 +144,7 @@ class ProductImages extends React.Component {
                         zoomImageUrl={superSizeImageUrl}
                         imageName={productName}
                         isZoomEnabled={isZoomEnabled}
-                        onOpenSimpleFullSize={this.handleShowFullSizeModalClick}
+                        onOpenSimpleFullSize={this.handleShowHideFullSizeModalClick}
                         isMobile={isMobile}
                         isFullSizeModalOpen={isFullSizeModalOpen}
                       />
@@ -160,7 +156,7 @@ class ProductImages extends React.Component {
               <Anchor
                 className="resize-text"
                 aria-label="view full size image"
-                onClick={this.handleShowFullSizeModalClick}
+                onClick={this.handleShowHideFullSizeModalClick}
               >
                 Full Size
               </Anchor>
@@ -177,11 +173,11 @@ class ProductImages extends React.Component {
             <FullSizeImageModal
               name={productName}
               image={images[currentImageIndex] && images[currentImageIndex][imageSizePropertyName]}
-              onCloseClick={this.handleCloseFullSizeModalClick}
+              onCloseClick={this.handleShowHideFullSizeModalClick}
             />
           ) : (
             <FullSizeImageWithQuickViewModal
-              onCloseClick={this.handleCloseFullSizeModalClick}
+              onCloseClick={this.handleShowHideFullSizeModalClick}
               images={images}
               isMobile={isMobile}
               name={productName}
