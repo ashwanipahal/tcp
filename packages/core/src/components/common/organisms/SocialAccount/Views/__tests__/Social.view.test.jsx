@@ -9,6 +9,7 @@ describe('ForgotPasswordView component', () => {
     const props = {
       saveSocialAcc: {},
       getSocialAcc: { test: test },
+      labels: {},
     };
     const component = shallow(<SocialviewVanilla {...props} />);
     expect(component).toMatchSnapshot();
