@@ -38,11 +38,11 @@ const StyledModal = css`
   .condensed-overlay {
     overflow-y: unset;
     position: fixed;
-    top: 63px;
+    top: 0;
     width: 374px;
 
-    @media ${props => props.theme.mediaQuery.large} {
-      top: 71px;
+    @media ${props => props.theme.mediaQuery.medium} {
+      top: 64px;
     }
   }
   .modal__bar {
@@ -65,10 +65,10 @@ const StyledModal = css`
     z-index: 99;
   }
   .condensed-modal-triangle {
-    left: 265px !important;
+    left: 281px !important;
 
     @media ${props => props.theme.mediaQuery.large} {
-      left: 166px !important;
+      left: 180px !important;
     }
   }
   .modal__closeIcon {

@@ -101,142 +101,144 @@ class CondensedHeader extends React.PureComponent {
     } = labels.accessibility;
     return (
       <React.Fragment>
-        <Row className={`${className} condensed-header content-wrapper`}>
-          <Col
-            colSize={{
-              large: 2,
-              medium: 1,
-              small: 1,
-            }}
-          >
-            <BrandLogo
-              alt={config[brand].alt}
-              className="brand-logo-left"
-              dataLocator={config[brand].dataLocator}
-              imgSrc={config[brand].imgSrc}
-            />
-            <Image
-              src={
-                navigationDrawer.open
-                  ? '/static/images/mobile-close-dark.svg'
-                  : '/static/images/grey-menu.svg'
-              }
-              alt={hamburgerMenu}
-              tabIndex="0"
-              className="hamburger-menu"
-              onClick={handleNavigationDrawer(
-                openNavigationDrawer,
-                closeNavigationDrawer,
-                navigationDrawer.open
-              )}
-              onKeyDown={e =>
-                this.handleKeyDown(
-                  e,
+        <Row className={`${className} condensed-header`}>
+          <Row className="content-wrapper">
+            <Col
+              colSize={{
+                large: 2,
+                medium: 1,
+                small: 1,
+              }}
+            >
+              <BrandLogo
+                alt={config[brand].alt}
+                className="brand-logo-left"
+                dataLocator={config[brand].dataLocator}
+                imgSrc={config[brand].imgSrc}
+              />
+              <Image
+                src={
+                  navigationDrawer.open
+                    ? '/static/images/mobile-close-dark.svg'
+                    : '/static/images/grey-menu.svg'
+                }
+                alt={hamburgerMenu}
+                tabIndex="0"
+                className="hamburger-menu"
+                onClick={handleNavigationDrawer(
                   openNavigationDrawer,
                   closeNavigationDrawer,
                   navigationDrawer.open
-                )
-              }
-              data-locator={navigationDrawer.open ? 'L1_menu_close_Btn' : 'menu_bar_icon'}
-            />
-          </Col>
-          <Col
-            className="navigation"
-            colSize={{
-              large: 8,
-              medium: 2,
-              small: 2,
-            }}
-            offsetLeft={{
-              medium: 2,
-            }}
-          >
-            <BrandLogo
-              alt={config[brand].alt}
-              className="brand-logo-middle"
-              dataLocator={config[brand].dataLocator}
-              imgSrc={config[brand].imgSrc}
-            />
-            <Navigation
-              openNavigationDrawer={navigationDrawer.open}
-              closeNavigationDrawer={!navigationDrawer.open}
-              closeNav={closeNavigationDrawer}
-            />
-          </Col>
-          <Col
-            className="condensed-icons"
-            colSize={{
-              large: 2,
-              medium: 2,
-              small: 3,
-            }}
-            offsetLeft={{
-              medium: 1,
-            }}
-          >
-            <Image
-              alt={searchIconButton}
-              className="search-image icon`"
-              onClick={setSearchState}
-              src={getIconPath(`${showCondensedHeader ? 'search-icon-blue' : 'search-icon'}`)}
-              data-locator="search-icon"
-              height="25px"
-            />
-
-            {userName ? (
-              <React.Fragment>
-                <BodyCopy
-                  id="accountDrawer"
-                  textAlign="right"
-                  className="username"
-                  onClick={e => this.onLinkClick({ e, openOverlay, userNameClick })}
-                >
-                  {`Hi, ${userName}`}
-                </BodyCopy>
-              </React.Fragment>
-            ) : (
-              <Anchor
-                href="#"
-                noLink
-                id="condensedLogin"
-                className="leftLink"
-                onClick={e => this.onLinkClick({ e, openOverlay, triggerLoginCreateAccount })}
-                fontSizeVariation="large"
-                anchorVariation="primary"
-              >
-                <Image
-                  alt={accountIconButton}
-                  className="rightLink"
-                  src={getIconPath('user-icon-blue')}
-                  data-locator="user-icon"
-                />
-              </Anchor>
-            )}
-            <Anchor
-              to="#"
-              id="cartIcon"
-              className="rightLink"
-              onClick={e => this.toggleMiniBagModal({ e, isOpen: true })}
-              fontSizeVariation="small"
-              anchorVariation="primary"
-              noLink
+                )}
+                onKeyDown={e =>
+                  this.handleKeyDown(
+                    e,
+                    openNavigationDrawer,
+                    closeNavigationDrawer,
+                    navigationDrawer.open
+                  )
+                }
+                data-locator={navigationDrawer.open ? 'L1_menu_close_Btn' : 'menu_bar_icon'}
+              />
+            </Col>
+            <Col
+              className="navigation"
+              colSize={{
+                large: 8,
+                medium: 2,
+                small: 2,
+              }}
+              offsetLeft={{
+                medium: 2,
+              }}
+            >
+              <BrandLogo
+                alt={config[brand].alt}
+                className="brand-logo-middle"
+                dataLocator={config[brand].dataLocator}
+                imgSrc={config[brand].imgSrc}
+              />
+              <Navigation
+                openNavigationDrawer={navigationDrawer.open}
+                closeNavigationDrawer={!navigationDrawer.open}
+                closeNav={closeNavigationDrawer}
+              />
+            </Col>
+            <Col
+              className="condensed-icons"
+              colSize={{
+                large: 2,
+                medium: 2,
+                small: 3,
+              }}
+              offsetLeft={{
+                medium: 1,
+              }}
             >
               <Image
-                alt={cartIconButton}
-                className="product-image"
-                src={getIconPath('cart-icon-blue')}
-                data-locator="addedtobag-bag-icon"
+                alt={searchIconButton}
+                className="search-image icon`"
+                onClick={setSearchState}
+                src={getIconPath(`${showCondensedHeader ? 'search-icon-blue' : 'search-icon'}`)}
+                data-locator="search-icon"
+                height="25px"
               />
-              <BodyCopy
-                className="cartCount"
-                component="span"
-                fontWeight="semibold"
-                fontSize="fs10"
+
+              {userName ? (
+                <React.Fragment>
+                  <BodyCopy
+                    id="accountDrawer"
+                    textAlign="right"
+                    className="username"
+                    onClick={e => this.onLinkClick({ e, openOverlay, userNameClick })}
+                  >
+                    {`Hi, ${userName}`}
+                  </BodyCopy>
+                </React.Fragment>
+              ) : (
+                <Anchor
+                  href="#"
+                  noLink
+                  id="condensedLogin"
+                  className="leftLink"
+                  onClick={e => this.onLinkClick({ e, openOverlay, triggerLoginCreateAccount })}
+                  fontSizeVariation="large"
+                  anchorVariation="primary"
+                >
+                  <Image
+                    alt={accountIconButton}
+                    className="rightLink"
+                    src={getIconPath('user-icon-blue')}
+                    data-locator="user-icon"
+                  />
+                </Anchor>
+              )}
+              <Anchor
+                to="#"
+                id="cartIcon"
+                className="rightLink"
+                onClick={e => this.toggleMiniBagModal({ e, isOpen: true })}
+                fontSizeVariation="small"
+                anchorVariation="primary"
+                noLink
               >
-                {cartItemCount || 0}
-              </BodyCopy>
-            </Anchor>
-          </Col>
+                <Image
+                  alt={cartIconButton}
+                  className="product-image"
+                  src={getIconPath('cart-icon-blue')}
+                  data-locator="addedtobag-bag-icon"
+                />
+                <BodyCopy
+                  className="cartCount"
+                  component="span"
+                  fontWeight="semibold"
+                  fontSize="fs10"
+                >
+                  {cartItemCount || 0}
+                </BodyCopy>
+              </Anchor>
+            </Col>
+          </Row>
         </Row>
         <MiniBagContainer
           isOpen={isOpenMiniBagModal}

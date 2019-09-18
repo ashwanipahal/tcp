@@ -4,18 +4,19 @@ export default css`
   &.show-condensed-header {
     display: block;
     box-sizing: border-box;
-    padding: 14px 14px;
+    padding: 14px 0;
     position: fixed;
-    left: 50%;
-    transform: translateX(-50%);
+    left: 0;
+    right: 0;
     top: 0;
     z-index: ${props => props.theme.zindex.zCondensedHeader};
     background-color: ${props => props.theme.colorPalette.white};
     text-align: center;
     width: 100%;
+    margin: 0;
     @media ${props => props.theme.mediaQuery.large} {
       padding: 0 14px;
-      padding-top: 12px;
+      border-bottom: 1px solid ${props => props.theme.colorPalette.gray[1400]};
     }
 
     @media ${props => props.theme.mediaQuery.mediumOnly} {
@@ -24,6 +25,14 @@ export default css`
 
     .nav-bar-l1 {
       overflow-x: hidden;
+
+      @media ${props => props.theme.mediaQuery.large} {
+        padding-top: 26px;
+      }
+    }
+
+    .navigation {
+      position: unset;
     }
 
     .nav-bar-l1-content {
@@ -78,6 +87,7 @@ export default css`
     text-align: left;
     @media ${props => props.theme.mediaQuery.large} {
       display: block;
+      padding-top: 16px;
       img {
         width: 115px;
         height: 41px;
@@ -110,20 +120,24 @@ export default css`
   }
 
   .condensed-icons{
+    text-align: right;
+    @media ${props => props.theme.mediaQuery.mediumOnly} {
+      padding-left: 30px;
+    }
     @media ${props => props.theme.mediaQuery.large} {
-      text-align: right;
+      padding-top: 23px;
     }
   }
   .l1-overlay.is-open {
-    top: 43px;
+    top: 70px;
   }
 
   .is-open {
     .nav-bar-l2 {
       @media ${props => props.theme.mediaQuery.large} {
         display: block;
-        left: -26%;
-        width: 152%;
+        left: -40%;
+        width: 180%;
         top: 100%;
       }
     }
@@ -131,7 +145,8 @@ export default css`
   .nav-bar-item-label {
     font-size: 13px;
   }
-  &.condensed-border{
+
+  .condensed-border{
     @media ${props => props.theme.mediaQuery.large} {
       position: fixed;
       top: 70px;

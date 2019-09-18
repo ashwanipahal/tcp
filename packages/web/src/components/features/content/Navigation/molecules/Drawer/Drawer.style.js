@@ -51,7 +51,7 @@ export default css`
   }
   .tcp-condensed-drawer {
     position: fixed;
-    top: 62px;
+    top: 58px;
   }
   .tcp-drawer-content {
     width: ${props => props.width.small || `100%`};
