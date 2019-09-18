@@ -24,17 +24,19 @@ type Props = {
 };
 
 const closeIcon = require('../../../../../assets/close.png');
+const arrowIcon = require('../../../../../assets/carrot-large-left.png');
 
 type CloseIconProps = {
   onRequestClose: Function,
   headerStyle: Object,
+  iconType: String,
 };
 
-const getCloseIcon = ({ onRequestClose, headerStyle }: CloseIconProps) => {
+const getCloseIcon = ({ onRequestClose, headerStyle, iconType }: CloseIconProps) => {
   return (
     <ImageWrapper style={headerStyle}>
       <StyledTouchableOpacity onPress={onRequestClose}>
-        <StyledCrossImage source={closeIcon} />
+        <StyledCrossImage source={iconType === 'arrow' ? arrowIcon : closeIcon} />
       </StyledTouchableOpacity>
     </ImageWrapper>
   );
@@ -52,6 +54,8 @@ const ModalNative = ({ isOpen, children, ...otherProps }: Props) => {
     fontSize,
     horizontalBar = true,
     borderColor = 'black',
+    iconType,
+    fullWidth,
   } = otherProps;
   return (
     <SafeAreaView>
@@ -65,7 +69,7 @@ const ModalNative = ({ isOpen, children, ...otherProps }: Props) => {
         <StatusBar hidden />
         <RowWrapper>
           {heading && (
-            <ModalHeading>
+            <ModalHeading fullWidth={fullWidth}>
               <BodyCopy
                 mobileFontFamily={headingFontFamily || 'primary'}
                 fontWeight={headingFontWeight || 'extrabold'}
@@ -75,7 +79,7 @@ const ModalNative = ({ isOpen, children, ...otherProps }: Props) => {
               />
             </ModalHeading>
           )}
-          {getCloseIcon({ onRequestClose, headerStyle })}
+          {getCloseIcon({ onRequestClose, headerStyle, iconType })}
         </RowWrapper>
         {horizontalBar ? (
           <LineWrapper>

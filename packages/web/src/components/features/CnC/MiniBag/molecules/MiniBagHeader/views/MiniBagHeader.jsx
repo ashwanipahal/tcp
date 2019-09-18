@@ -90,7 +90,7 @@ const MiniBagHeader = ({
           <Image
             alt="Product"
             className="product-image"
-            src={getIconPath('cart-icon')}
+            src={getIconPath(`cart-icon-${cartItemCount ? cartItemCount.toString().length : 1}`)}
             data-locator="addedtobag-bag-icon"
           />
           <BodyCopy

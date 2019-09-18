@@ -294,9 +294,8 @@ export default css`
   .parent- {
     padding-bottom: 0px;
     .save-for-later-label {
-      right: -57px;
-      position: absolute;
-      bottom: 17px;
+      float: right;
+      cursor: pointer;
     }
   }
 

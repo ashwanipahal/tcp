@@ -93,7 +93,7 @@ export const ProfileInfoActions = ({
           activityTitle={`+${percentageIncrement.percentageUserSurvey}%`}
           activityCompletionState={getAboutYourselfState(userSurvey, labels)}
           activityDescription={labels.lbl_profile_aboutYourselfDescription}
-          handleComponentChange={() => toggleModalState()}
+          handleComponentChange={() => toggleModalState('mountSurveyModal')}
         />
       </ProfileTileWrapper>
       <AboutYouSurveyModal

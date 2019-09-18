@@ -1,3 +1,4 @@
+/* eslint-disable max-lines */
 /* eslint-disable extra-rules/no-commented-out-code */
 import superagent from 'superagent';
 import logger from '@tcp/core/src/utils/loggerInstance';
@@ -199,6 +200,7 @@ export function addGiftWrappingOption(payload) {
       GiftMsg: payload.GiftMsg || '',
       quantity_0: '1',
       catEntryId_0: payload.catEntryId,
+      brand: payload.brand,
     },
   };
   return executeStatefulAPICall(payloadArgs).then(res => {
@@ -490,6 +492,58 @@ export function updatePaymentOnOrder(args) {
     return { paymentId: res.body.paymentInstruction[0].piId };
   });
 }
+
+export function addGiftCard(args) {
+  const { saveToAccount, nickName, billingAddressId, cardType } = args;
+  const { giftcardAccountNumber, giftcardPin, recaptchaToken, labels } = args;
+
+  const headerValue = {
+    isRest: 'true',
+    identifier: 'true',
+    savePayment: saveToAccount ? 'true' : 'false', // save to account for registered users
+    nickName: nickName || `${'Billing_'}${new Date().getTime().toString()}`,
+  };
+
+  const paymentInstruction = {
+    payMethodId: 'GiftCard',
+    piAmount: '1.00', // needs to be less then the total on the giftcard. Some IBM needed peramiter.
+    billing_address_id: billingAddressId,
+    cc_brand: cardType,
+    account: giftcardAccountNumber,
+    account_pin: giftcardPin,
+    'recapture-response': recaptchaToken,
+  };
+
+  const payload = {
+    header: headerValue,
+    body: {
+      paymentInstruction: [paymentInstruction],
+    },
+    webService: endpoints.addPaymentInstruction,
+  };
+
+  return executeStatefulAPICall(payload)
+    .then(res => {
+      if (res.body && res.body.OosCartItems === 'TRUE') {
+        throw new ServiceResponseError({
+          body: {
+            errorCode: 'API_CART_OOS_ITEM',
+          },
+        });
+      } else {
+        return {
+          success: true,
+          paymentId: res.body.paymentInstruction[0].piId,
+        };
+      }
+    })
+    .catch(err => {
+      const error = getFormattedError(err);
+      error.errorMessage = error.errorMessage || { _error: labels.default_error };
+      return error;
+    });
+}
+
 export default {
   getGiftWrappingOptions,
   getCurrentOrderAndCouponsDetails,
@@ -503,4 +557,5 @@ export default {
   updatePaymentOnOrder,
   addGiftWrappingOption,
   removeGiftWrappingOption,
+  addGiftCard,
 };

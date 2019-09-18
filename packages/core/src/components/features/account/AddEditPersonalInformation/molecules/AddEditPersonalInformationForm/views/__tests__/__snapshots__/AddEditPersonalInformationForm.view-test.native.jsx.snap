@@ -50,9 +50,7 @@ exports[`AddEditPersonalInformationForm component should renders correctly in in
       dataLocator="editPersonalInfo-firstname"
       id="firstName"
       label="lbl_profile_personal_info_firstName"
-      maxLength={50}
       name="firstName"
-      type="text"
     />
   </Styled(View)>
   <Field
@@ -102,9 +100,7 @@ exports[`AddEditPersonalInformationForm component should renders correctly in in
     dataLocator="editPersonalInfo-lastname"
     id="lastName"
     label="lbl_profile_personal_info_lastName"
-    maxLength={50}
     name="lastName"
-    type="text"
   />
   <Field
     component={

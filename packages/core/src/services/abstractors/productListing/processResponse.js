@@ -91,14 +91,14 @@ const getQueryString = (keyValuePairs = {}) => {
 };
 // eslint-disable-next-line sonarjs/cognitive-complexity
 const getPlpUrlQueryValues = filtersAndSort => {
-  const { sort } = filtersAndSort;
-
   // NOTE: these are parameters on query string we don't handle (nor we need to)
   // just pass them to the abstractor
   let urlQueryValues = {};
   let routeURL = '?';
 
   if (filtersAndSort) {
+    const { sort } = filtersAndSort;
+
     Object.keys(filtersAndSort).forEach(key => {
       if (filtersAndSort[key].length > 0) {
         if (key.toLowerCase() === FACETS_FIELD_KEY.sort) {
@@ -166,6 +166,7 @@ const processResponse = (
     isOutfitPage,
     searchTerm,
     sort,
+    filterSortView,
   }
 ) => {
   const scrollPoint = isClient() ? window.sessionStorage.getItem('SCROLL_POINT') : 0;
@@ -179,7 +180,7 @@ const processResponse = (
     window.location.href = res.body.redirect.value;
   }
 
-  if (!isMobileApp()) {
+  if (!isMobileApp() && filterSortView) {
     getPlpUrlQueryValues(filtersAndSort);
   }
 

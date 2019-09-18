@@ -1,0 +1,34 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`BillingPageContainer should render correctly 1`] = `
+<ReduxForm
+  cardType={null}
+  cvvCodeRichText=""
+  destroyOnUnmount={true}
+  enableReinitialize={true}
+  forceUnregisterOnUnmount={false}
+  form="checkoutBilling"
+  getFormState={[Function]}
+  initialValues={
+    Object {
+      "paymentMethodId": "creditCard",
+    }
+  }
+  keepDirtyOnReinitialize={false}
+  labels={Object {}}
+  paymentMethodId={null}
+  persistentSubmitErrors={false}
+  pure={true}
+  shippingAddress={null}
+  shouldAsyncValidate={[Function]}
+  shouldError={[Function]}
+  shouldValidate={[Function]}
+  shouldWarn={[Function]}
+  submitAsSideEffect={false}
+  syncErrorsObj={null}
+  touchOnBlur={true}
+  touchOnChange={false}
+  updateUnregisteredFields={false}
+  validate={[Function]}
+/>
+`;

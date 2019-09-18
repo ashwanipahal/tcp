@@ -64,7 +64,15 @@ class MyRewards extends PureComponent {
   };
 
   render() {
-    const { labels, showLink, coupons, couponsLabels, selectedCoupon, ...otherProps } = this.props;
+    const {
+      labels,
+      showLink,
+      navigation,
+      coupons,
+      couponsLabels,
+      selectedCoupon,
+      ...otherProps
+    } = this.props;
     const heading = `${labels.placeRewards.lbl_my_rewards_heading} (${coupons.size})`;
     const isSelected = selectedCoupon !== null;
     return (
@@ -104,7 +112,7 @@ class MyRewards extends PureComponent {
             />
           </View>
         ) : (
-          <EmptyRewards labels={labels} />
+          <EmptyRewards navigation={navigation} labels={labels} />
         )}
         {showLink && (
           <StyledAnchorWrapper>
@@ -150,6 +158,7 @@ MyRewards.propTypes = {
   showLink: PropTypes.bool,
   selectedCoupon: PropTypes.shape({}),
   couponsLabels: PropTypes.shape({}),
+  navigation: PropTypes.shape({}),
 };
 
 MyRewards.defaultProps = {
@@ -170,6 +179,7 @@ MyRewards.defaultProps = {
   showLink: false,
   selectedCoupon: {},
   couponsLabels: {},
+  navigation: {},
 };
 
 export default MyRewards;

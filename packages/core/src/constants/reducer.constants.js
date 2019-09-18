@@ -41,6 +41,12 @@ export const BIRTHDAY_SAVINGS_ACTION_PATTERN = '@@BirthdaySavings';
 export const NAVIGATION_ACTION_PATTERN = '@@Navigation-';
 export const RECOMMENDATIONS_ACTION_PATTERN = '@@Recommendations-';
 
+// search listing page reducer
+export const SLP_PAGE_REDUCER_KEY = 'SearchListingPage';
+export const SEARCH_REDUCER_ACTION_PATTERN = '@@SLP-';
+
+export const MY_FAVORITE_STORE_ACTION_PATTERN = '@@MyFavoriteStore';
+
 // acconut page reducer
 export const ACCOUNT_REDUCER_KEY = 'AccountReducer';
 export const ACCOUNT_ACTION_PATTERN = '@@Account-';
@@ -58,7 +64,7 @@ export const APICONFIG_REDUCER_KEY = 'APIConfig';
 export const APICONFIG_ACTION_PATTERN = '@@APICONFIG-';
 
 // set api config reducer
-export const SESSIONCONFIG_REDUCER_KEY = 'Session';
+export const SESSIONCONFIG_REDUCER_KEY = 'session';
 export const SESSIONCONFIG_ACTION_PATTERN = '@@SessionConfig-';
 
 // Add/Update Credit Card reducer
@@ -99,6 +105,10 @@ export const LOGOUT_ACTION_PATTERN = '@@logout-';
 export const POINTS_HISTORY_REDUCER_KEY = 'pointHistoryReducer';
 export const POINTS_HISTORY_ACTION_PATTERN = '@@pointHistory-';
 
+// Earn extra points reducer
+export const EARNEXTRAPOINTS_REDUCER_KEY = 'earnExtraPointsReducer';
+export const EARNEXTRAPOINTS_ACTION_PATTERN = '@@earnExtraPoints-';
+
 export const RESET_PASSWORD_REDUCER_KEY = 'ResetPassword';
 export const RESET_PASSWORD_ACTION_PATTERN = '@@ResetPassword-';
 export const TRACK_ORDER_REDUCER_KEY = 'TrackOrderReducer';
@@ -135,9 +145,16 @@ export const BIRTHDAY_SAVING_LIST_REDUCER_KEY = 'BirthdaySavingsList';
 export const APPLY_NOW_MODAL_REDUCER_KEY = 'ApplyNowModal';
 export const APPLY_NOW_MODAL_REDUCER_PATTERN = '@@ApplyNowModal-';
 
+// Toggle Pickup modal..
+export const PICKUP_MODAL_REDUCER_KEY = 'PickupModal';
+export const PICKUP_MODAL_REDUCER_PATTERN = '@@PickupModal-';
+
+export const ADDRESS_VERIFICATION_REDUCER_KEY = 'addressVerification';
 // Gift Services Reducer
 export const GIFT_SERVICES_REDUCER_KEY = 'GiftServices';
 export const GIFT_SERVICES_ACTION_PATTERN = '@@GiftServices-';
+
+export const MY_FAVORITE_STORE_REDUCER_KEY = 'MyFavoriteStore';
 
 export const REDUCER_ACTION_MAPPING = {
   [APPLY_PLCC_REDUCER_KEY]: APPLY_PLCC_ACTION_PATTERN,
@@ -152,6 +169,7 @@ export const REDUCER_ACTION_MAPPING = {
   [CREATE_ACCOUNT_REDUCER_KEY]: CREATE_ACCOUNT_ACTION_PATTERN,
   [LOGOUT_REDUCER_KEY]: LOGOUT_ACTION_PATTERN,
   [POINTS_HISTORY_REDUCER_KEY]: POINTS_HISTORY_ACTION_PATTERN,
+  [EARNEXTRAPOINTS_REDUCER_KEY]: EARNEXTRAPOINTS_ACTION_PATTERN,
   [RESET_PASSWORD_REDUCER_KEY]: RESET_PASSWORD_ACTION_PATTERN,
   [COUNTRY_SELECTOR_REDUCER_KEY]: COUNTRY_SELECTOR_ACTION_PATTERN,
   [TRACK_ORDER_REDUCER_KEY]: TRACK_ORDER_ACTION_PATTERN,
@@ -163,7 +181,7 @@ export const REDUCER_ACTION_MAPPING = {
   [PRODUCT_TAB_LIST_REDUCER_KEY]: PRODUCT_TAB_LIST_ACTION_PATTERN,
   [NAVIGATION_REDUCER_KEY]: NAVIGATION_ACTION_PATTERN,
   [APPLY_NOW_MODAL_REDUCER_KEY]: APPLY_NOW_MODAL_REDUCER_PATTERN,
+  [PICKUP_MODAL_REDUCER_KEY]: PICKUP_MODAL_REDUCER_PATTERN,
   [RECOMMENDATIONS_REDUCER_KEY]: RECOMMENDATIONS_ACTION_PATTERN,
+  [SLP_PAGE_REDUCER_KEY]: SEARCH_REDUCER_ACTION_PATTERN,
 };
-
-export const ADDRESS_VERIFICATION_REDUCER_KEY = 'addressVerification';

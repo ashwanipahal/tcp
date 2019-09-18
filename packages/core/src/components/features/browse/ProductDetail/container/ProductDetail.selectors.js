@@ -17,3 +17,43 @@ export const getDescription = state => {
 export const getRatingsProductId = state => {
   return state.ProductDetail.getIn(['currentProduct', 'ratingsProductId']);
 };
+
+export const getPlpLabels = state => {
+  if (!state.Labels || !state.Labels.PLP)
+    return {
+      addToBag: '',
+    };
+
+  const {
+    PLP: {
+      plpTiles: { lbl_add_to_bag: addToBag },
+    },
+  } = state.Labels;
+
+  return {
+    addToBag,
+  };
+};
+
+// TODO - This is temporary - fix it by introducing the image carousel and zoom
+export const getDefaultImage = state => {
+  const firstColor = state.ProductDetail.getIn([
+    'currentProduct',
+    'colorFitsSizesMap',
+    0,
+    'color',
+    'name',
+  ]);
+  return (
+    firstColor &&
+    state.ProductDetail.getIn(['currentProduct', 'imagesByColor', firstColor, 'basicImageUrl'])
+  );
+};
+
+export const getCurrentCurrency = state => {
+  return state.session.getIn(['siteDetails', 'currency']);
+};
+
+export const getCurrentProduct = state => {
+  return state.ProductDetail.get('currentProduct');
+};

@@ -29,6 +29,17 @@ export default class ShippingPage extends React.Component {
     navigation: PropTypes.shape({}).isRequired,
     handleSubmit: PropTypes.func.isRequired,
     availableStages: PropTypes.shape([]).isRequired,
+    isGiftServicesChecked: PropTypes.bool,
+    userAddresses: PropTypes.shape([]),
+    onFileAddressKey: PropTypes.string,
+    isSaveToAddressBookChecked: PropTypes.bool,
+    setAsDefaultShipping: PropTypes.bool,
+    saveToAddressBook: PropTypes.bool,
+    updateShippingAddressData: PropTypes.func,
+    addNewShippingAddressData: PropTypes.func,
+    updateShippingMethodSelection: PropTypes.func.isRequired,
+    syncErrors: PropTypes.shape({}),
+    newUserPhoneNo: PropTypes.string,
   };
 
   static defaultProps = {
@@ -41,11 +52,48 @@ export default class ShippingPage extends React.Component {
     orderHasPickUp: false,
     shipmentMethods: null,
     defaultShipmentId: null,
+    isGiftServicesChecked: false,
+    userAddresses: null,
+    onFileAddressKey: null,
+    isSaveToAddressBookChecked: false,
+    setAsDefaultShipping: false,
+    saveToAddressBook: false,
+    updateShippingAddressData: () => {},
+    addNewShippingAddressData: () => {},
+    syncErrors: {},
+    newUserPhoneNo: null,
   };
 
+  constructor(props) {
+    super(props);
+    this.state = {
+      defaultAddressId: null,
+    };
+  }
+
+  static getDerivedStateFromProps(nextProps, prevState) {
+    const { defaultAddress: prevDefaultAddress } = prevState;
+    const { userAddresses, addEditResponseAddressId } = nextProps;
+    if (
+      userAddresses &&
+      (!addEditResponseAddressId || prevDefaultAddress === addEditResponseAddressId)
+    ) {
+      const defaultAddress = userAddresses.filter(item => item.primary === 'true');
+      return {
+        defaultAddressId: defaultAddress
+          ? defaultAddress.addressId
+          : userAddresses.get(0).addressId,
+      };
+    }
+    if (addEditResponseAddressId && prevDefaultAddress !== addEditResponseAddressId) {
+      return { defaultAddressId: addEditResponseAddressId };
+    }
+    return null;
+  }
+
   componentDidUpdate(prevProps) {
-    const { address } = this.props;
-    const { address: prevAddress } = prevProps;
+    const { address, selectedShipmentId, updateShippingMethodSelection } = this.props;
+    const { address: prevAddress, selectedShipmentId: prevSelectedShipmentId } = prevProps;
     if (address && prevAddress) {
       const {
         address: { addressLine1, addressLine2 },
@@ -60,40 +108,95 @@ export default class ShippingPage extends React.Component {
       ) {
         loadShipmentMethods({ formName: 'checkoutShipping' });
       }
+      if (selectedShipmentId !== prevSelectedShipmentId) {
+        updateShippingMethodSelection({ id: selectedShipmentId });
+      }
     }
   }
 
   submitShippingForm = data => {
-    const { address, shipmentMethods, smsSignUp } = data;
+    const {
+      address,
+      shipmentMethods,
+      onFileAddressKey,
+      defaultShipping,
+      saveToAddressBook,
+      smsSignUp = {},
+    } = data;
+    const { isGuest, userAddresses } = this.props;
+    const { isAddNewAddress } = this.state;
+    let shipAddress = address;
+    if (!isGuest && userAddresses && userAddresses.size > 0 && !isAddNewAddress) {
+      shipAddress = userAddresses.find(item => item.addressId === onFileAddressKey);
+      if (shipAddress) {
+        const { addressLine } = shipAddress;
+        const [addressLine1, addressLine2] = addressLine;
+        shipAddress.addressLine1 = addressLine1;
+        shipAddress.addressLine2 = addressLine2;
+      }
+    }
     const { handleSubmit } = this.props;
     handleSubmit({
       method: {
         shippingMethodId: shipmentMethods.shippingMethodId,
       },
       shipTo: {
-        address: {
-          addressLine1: address.addressLine1,
-          addressLine2: address.addressLine2,
-          city: address.city,
-          country: address.country,
-          firstName: address.firstName,
-          lastName: address.lastName,
-          isCommercialAddress: false,
-          state: address.state,
-          zipCode: address.zipCode,
-        },
-        addressId: undefined,
-        emailAddress: address.emailAddress,
-
+        address: shipAddress,
+        addressId: shipAddress.addressId,
+        emailAddress: shipAddress.emailAddress,
         emailSignup: true,
-        onFileAddressKey: undefined,
-        phoneNumber: address.phoneNumber,
-        saveToAccount: address.saveToAccount || true,
-        setAsDefault: address.isDefault || true,
+        onFileAddressKey,
+        phoneNumber: shipAddress.phoneNumber,
+        saveToAccount: saveToAddressBook,
+        setAsDefault: defaultShipping || shipAddress.primary === 'true',
       },
       smsInfo: {
         smsUpdateNumber: smsSignUp.phoneNumber,
         wantsSmsOrderUpdates: smsSignUp.sendOrderUpdate,
+      },
+    });
+  };
+
+  updateShippingAddress = () => {
+    const {
+      address,
+      onFileAddressKey,
+      setAsDefaultShipping,
+      saveToAddressBook,
+      updateShippingAddressData,
+    } = this.props;
+    updateShippingAddressData({
+      shipTo: {
+        address,
+        addressId: address.addressId,
+        emailAddress: address.emailAddress,
+        emailSignup: true,
+        onFileAddressKey,
+        phoneNumber: address.phoneNumber,
+        saveToAccount: saveToAddressBook,
+        setAsDefault: setAsDefaultShipping,
+      },
+    });
+  };
+
+  addNewShippingAddress = () => {
+    const {
+      address,
+      onFileAddressKey,
+      setAsDefaultShipping,
+      saveToAddressBook,
+      addNewShippingAddressData,
+    } = this.props;
+    addNewShippingAddressData({
+      shipTo: {
+        address,
+        addressId: address.addressId,
+        emailAddress: address.emailAddress,
+        emailSignup: true,
+        onFileAddressKey,
+        phoneNumber: address.phoneNumber,
+        saveToAccount: saveToAddressBook,
+        setAsDefault: setAsDefaultShipping,
       },
     });
   };
@@ -115,8 +218,17 @@ export default class ShippingPage extends React.Component {
       navigation,
       availableStages,
       labels,
+      isGiftServicesChecked,
+      userAddresses,
+      onFileAddressKey,
+      isSaveToAddressBookChecked,
+      address,
+      setAsDefaultShipping,
+      syncErrors,
+      newUserPhoneNo,
     } = this.props;
 
+    const { defaultAddressId } = this.state;
     return (
       <>
         <CheckoutProgressIndicator
@@ -124,7 +236,7 @@ export default class ShippingPage extends React.Component {
           navigation={navigation}
           availableStages={availableStages}
         />
-        <ScrollView>
+        <ScrollView keyboardShouldPersistTaps="handled">
           <HeaderContainer>
             <CheckoutSectionTitleDisplay
               title={getLabelValue(labels, 'lbl_shipping_header', 'shipping', 'checkout')}
@@ -144,7 +256,9 @@ export default class ShippingPage extends React.Component {
             <ShippingForm
               shipmentMethods={shipmentMethods}
               initialValues={{
+                address: { country: 'US' },
                 shipmentMethods: { shippingMethodId: defaultShipmentId },
+                onFileAddressKey: defaultAddressId,
               }}
               selectedShipmentId={selectedShipmentId}
               isGuest={isGuest}
@@ -159,6 +273,17 @@ export default class ShippingPage extends React.Component {
               navigation={navigation}
               submitShippingForm={this.submitShippingForm}
               labels={labels}
+              isGiftServicesChecked={isGiftServicesChecked}
+              userAddresses={userAddresses}
+              onFileAddressKey={onFileAddressKey}
+              isSaveToAddressBookChecked={isSaveToAddressBookChecked}
+              updateShippingAddress={this.updateShippingAddress}
+              addNewShippingAddress={this.addNewShippingAddress}
+              address={address}
+              setAsDefaultShipping={setAsDefaultShipping}
+              defaultAddressId={defaultAddressId}
+              syncErrorsObject={syncErrors}
+              newUserPhoneNo={newUserPhoneNo}
             />
           )}
         </ScrollView>

@@ -163,7 +163,7 @@
     },
     {
       "name": "RWD_APP_GRAPHQL_API_ENDPOINT_GYM",
-      "value": "https://test5.gymboree.com"
+      "value": "https://47vqlpw4m5bxdphy2adv4tknhq.appsync-api.us-east-2.amazonaws.com"
     },
     {
       "name": "RWD_APP_GRAPHQL_API_AUTH_TYPE_GYM",
@@ -171,7 +171,7 @@
     },
     {
       "name": "RWD_APP_GRAPHQL_API_KEY_GYM",
-      "value": "da2-mf3uaes3nncszkdir7t4dfj4ya"
+      "value": "da2-6fg7esay7nck7fgyaj6likgzfy"
     },
     {
       "name": "RWD_APP_CANDID_API_KEY_GYM",
@@ -264,7 +264,7 @@
       "destinationType": "groups",
       "destinations": [
         "00000000-0000-0000-0000-000000000000",
-        "6a3ae460-49b3-499b-9548-88244e01cffa"
+        "cc3601ed-18f9-4549-8058-a89a3d5c8730"
       ],
       "isSilent": false
     },

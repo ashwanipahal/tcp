@@ -81,9 +81,7 @@ export class AddEditPersonalInformationForm extends PureComponent {
             label={getLabelValue(labels, 'lbl_profile_personal_info_firstName')}
             name="firstName"
             id="firstName"
-            type="text"
             component={TextBox}
-            maxLength={50}
             dataLocator="editPersonalInfo-firstname"
           />
         </FieldTopMarginWrapper>
@@ -92,9 +90,7 @@ export class AddEditPersonalInformationForm extends PureComponent {
           label={getLabelValue(labels, 'lbl_profile_personal_info_lastName')}
           name="lastName"
           id="lastName"
-          type="text"
           component={TextBox}
-          maxLength={50}
           dataLocator="editPersonalInfo-lastname"
         />
         <Field

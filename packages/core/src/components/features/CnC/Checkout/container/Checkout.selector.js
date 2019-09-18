@@ -2,6 +2,10 @@
 import { formValueSelector } from 'redux-form';
 import { createSelector } from 'reselect';
 import { CHECKOUT_REDUCER_KEY } from '@tcp/core/src/constants/reducer.constants';
+import {
+  modes,
+  constants as venmoConstants,
+} from '@tcp/core/src/components/common/atoms/VenmoPaymentButton/container/VenmoPaymentButton.util';
 
 /* eslint-disable extra-rules/no-commented-out-code */
 import { getAPIConfig, isMobileApp, getViewportInfo, getLabelValue } from '../../../../../utils';
@@ -17,7 +21,11 @@ import {
 import constants from '../Checkout.constants';
 import BagPageSelector from '../../BagPage/container/BagPage.selectors';
 import { getAddressListState } from '../../../account/AddressBook/container/AddressBook.selectors';
-import { getPickUpContactFormLabels, getGiftServicesFormData } from './Checkout.selector.util';
+import {
+  getPickUpContactFormLabels,
+  getGiftServicesFormData,
+  getSyncError,
+} from './Checkout.selector.util';
 
 // import { getAddressListState } from '../../../account/AddressBook/container/AddressBook.selectors';
 
@@ -285,21 +293,12 @@ const getCurrentPickupFormNumber = createSelector(
 );
 
 const getBillingLabels = state => {
+  const getBillingLabelValue = label => getLabelValue(state.Labels, label, 'billing', 'checkout');
   return {
-    header: getLabelValue(state.Labels, 'lbl_billing_title', 'billing', 'checkout'),
-    backLinkPickup: getLabelValue(
-      state.Labels,
-      'lbl_billing_backLinkPickup',
-      'billing',
-      'checkout'
-    ),
-    backLinkShipping: getLabelValue(
-      state.Labels,
-      'lbl_billing_backLinkShipping',
-      'billing',
-      'checkout'
-    ),
-    nextSubmitText: getLabelValue(state.Labels, 'lbl_billing_nextSubmit', 'billing', 'checkout'),
+    header: getBillingLabelValue('lbl_billing_title'),
+    backLinkPickup: getBillingLabelValue('lbl_billing_backLinkPickup'),
+    backLinkShipping: getBillingLabelValue('lbl_billing_backLinkShipping'),
+    nextSubmitText: getBillingLabelValue('lbl_billing_nextSubmit'),
   };
 };
 
@@ -483,6 +482,103 @@ function isCardNotUpdated(state, cardId) {
   return getBillingValues(state).onFileCardId === cardId;
 }
 
+const getPaypalPaymentSettings = state => {
+  return state.Checkout.getIn(['options', 'paypalPaymentSettings']);
+};
+const getReviewLabels = state => {
+  const getReviewLabelValue = label => getLabelValue(state.Labels, label, 'review', 'checkout');
+  return {
+    header: getReviewLabelValue('lbl_review_title'),
+    backLinkBilling: getReviewLabelValue('lbl_review_backLinkBilling'),
+    nextSubmitText: getReviewLabelValue('lbl_review_nextSubmit'),
+    applyConditionPreText: getReviewLabelValue('lbl_review_applyConditionPreText'),
+    applyConditionTermsText: getReviewLabelValue('lbl_review_applyConditionTermsText'),
+    applyConditionAndText: getReviewLabelValue('lbl_review_applyConditionAndText'),
+    applyConditionPolicyText: getReviewLabelValue('lbl_review_applyConditionPolicyText'),
+    pickupSectionTitle: getReviewLabelValue('lbl_review_pickupSectionTitle'),
+    shippingSectionTitle: getReviewLabelValue('lbl_review_shippingSectionTitle'),
+    billingSectionTitle: getReviewLabelValue('lbl_review_billingSectionTitle'),
+    ariaLabelReviewPageTitle: getReviewLabelValue('lbl_review_ariaLabelReviewPageTitle'),
+    ariaLabelBackLink: getReviewLabelValue('lbl_review_ariaLabelBackLink'),
+  };
+};
+
+const getVenmoData = state => {
+  return state[CHECKOUT_REDUCER_KEY].getIn(['values', 'venmoData']);
+};
+
+const getVenmoClientTokenData = state => {
+  const venmoData = getVenmoData(state);
+  return venmoData && venmoData.venmoClientTokenData;
+};
+
+const isVenmoPaymentInProgress = state => {
+  return state[CHECKOUT_REDUCER_KEY].getIn(['uiFlags', 'venmoPaymentInProgress']);
+};
+
+/**
+ * Mainly used to check for Venmo nonce expiry
+ * @param state
+ */
+const isVenmoNonceNotExpired = state => {
+  const venmoData = getVenmoData(state);
+  const expiry = venmoConstants.VENMO_NONCE_EXPIRY_TIMEOUT;
+  const { nonce, timestamp, venmoClientTokenData } = venmoData;
+  const venmoPaymentTokenAvailable = venmoClientTokenData
+    ? venmoClientTokenData.venmoPaymentTokenAvailable
+    : false;
+  return venmoPaymentTokenAvailable === 'TRUE' || (nonce && Date.now() - timestamp <= expiry);
+};
+
+const isVenmoPaymentToken = state => {
+  const venmoData = getVenmoData(state);
+  return (
+    (venmoData && venmoData.mode === modes.PAYMENT_TOKEN) ||
+    (venmoData &&
+      venmoData.venmoClientTokenData &&
+      venmoData.venmoClientTokenData.mode === modes.PAYMENT_TOKEN)
+  );
+};
+
+const isVenmoNonceActive = state => {
+  const venmoData = getVenmoData(state);
+  const venmoPaymentInProgress = isVenmoPaymentInProgress(state);
+  return (
+    venmoData &&
+    (venmoData.nonce || isVenmoPaymentToken(state)) &&
+    venmoPaymentInProgress &&
+    isVenmoNonceNotExpired(state)
+  );
+};
+
+function isVenmoPaymentAvailable(state) {
+  const venmoData = getVenmoData(state);
+  const venmoPaymentInProgress = isVenmoPaymentInProgress(state);
+  return venmoData && (venmoData.nonce || isVenmoPaymentToken(state)) && venmoPaymentInProgress;
+}
+
+function isVenmoMessageDisplayed(state) {
+  const hasShippingCaptured =
+    state.checkout.values.shipping && state.checkout.values.shipping.onFileAddressId;
+  const hasPickupCaptured =
+    state.checkout.values.pickUpContact && state.checkout.values.pickUpContact.firstName;
+  return (
+    hasPickupCaptured ||
+    hasShippingCaptured ||
+    (state.checkout.uiFlags && state.checkout.uiFlags.venmoInformationMessageDisplayed)
+  );
+}
+
+function getVenmoUserEmail(state) {
+  const pickupValues = getPickupValues(state);
+  return (
+    getUserEmail(state) ||
+    (state.checkout.values.shipping && state.checkout.values.shipping.emailAddress) ||
+    (pickupValues && pickupValues.emailAddress) ||
+    (state.user.personalData.contactInfo && state.user.personalData.contactInfo.emailAddress)
+  );
+}
+
 export default {
   getRecalcOrderPointsInterval,
   getIsOrderHasShipping,
@@ -530,6 +626,18 @@ export default {
   isCardNotUpdated,
   getDetailedCreditCardById,
   getCheckoutProgressBarLabels,
+  getSyncError,
   getGiftServicesFormData,
   getGiftServicesSend,
+  getPaypalPaymentSettings,
+  getReviewLabels,
+  getVenmoData,
+  getVenmoClientTokenData,
+  isVenmoPaymentAvailable,
+  isVenmoMessageDisplayed,
+  isVenmoNonceActive,
+  getVenmoUserEmail,
+  isVenmoNonceNotExpired,
+  isVenmoPaymentInProgress,
+  isVenmoPaymentToken,
 };

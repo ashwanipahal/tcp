@@ -74,7 +74,6 @@ exports[`CouponForm Component AirmilesBanner should render correctly 1`] = `
         <ReactTooltip
           backgroundColor="#fff"
           height={96}
-          highlightColor="transparent"
           onClose={[Function]}
           onOpen={[Function]}
           overlayColor="rgba(250, 250, 250, 0.80)"
@@ -94,12 +93,15 @@ exports[`CouponForm Component AirmilesBanner should render correctly 1`] = `
           withPointer={true}
         >
           <Styled(ImageComp)
+            alt=""
             height={15}
+            host=""
             source={
               Object {
                 "testUri": "../../../../core/src/assets/info-icon.png",
               }
             }
+            url=""
             width={15}
           />
         </ReactTooltip>
@@ -166,7 +168,6 @@ exports[`CouponForm Component AirmilesBanner should render correctly 1`] = `
         <ReactTooltip
           backgroundColor="#fff"
           height={96}
-          highlightColor="transparent"
           onClose={[Function]}
           onOpen={[Function]}
           overlayColor="rgba(250, 250, 250, 0.80)"
@@ -186,12 +187,15 @@ exports[`CouponForm Component AirmilesBanner should render correctly 1`] = `
           withPointer={true}
         >
           <Styled(ImageComp)
+            alt=""
             height={15}
+            host=""
             source={
               Object {
                 "testUri": "../../../../core/src/assets/info-icon.png",
               }
             }
+            url=""
             width={15}
           />
         </ReactTooltip>

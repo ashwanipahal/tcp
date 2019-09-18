@@ -7,7 +7,7 @@ import PromoBanner from '../../PromoBanner';
 import { getLocator } from '../../../../../utils';
 import withStyles from '../../../hoc/withStyles';
 import { Row, Col } from '../../../atoms';
-import config from '../ModuleN.config';
+import config from '../config';
 import errorBoundary from '../../../hoc/withErrorBoundary';
 
 const { ctaTypes } = config;

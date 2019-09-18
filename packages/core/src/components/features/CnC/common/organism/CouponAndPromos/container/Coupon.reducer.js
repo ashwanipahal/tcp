@@ -48,6 +48,8 @@ const CouponReducer = (state = initialState, action) => {
             : promo;
         })
       );
+    case COUPON_CONSTANTS.RESET_COUPON_STATE:
+      return state.set('couponsAndOffers', List([]));
     default:
       return getDefaultState(state);
   }

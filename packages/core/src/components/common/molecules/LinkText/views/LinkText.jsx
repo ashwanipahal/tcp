@@ -1,21 +1,9 @@
-// @flow
 import React from 'react';
+import PropTypes from 'prop-types';
 import { Anchor, Heading, BodyCopy, TextItems } from '../../../atoms';
 import withStyles from '../../../hoc/withStyles';
 import LinkTextStyle from '../LinkText.style';
 import { configurePlpNavigationFromCMSUrl } from '../../../../../utils';
-
-type Props = {
-  type: String,
-  component: String,
-  headerText: Object[],
-  link: Object,
-  icon?: Object,
-  className: string,
-  dataLocator: string,
-  headingClass: string,
-  color?: string,
-};
 
 /**
  * This component creates a link with styled text
@@ -28,12 +16,12 @@ type Props = {
  *
  * [TODO] Can configure icon in heading at start|middle|last
  */
-const LinkText = (props: Props) => {
+const LinkText = props => {
   const {
     className,
     type,
     component,
-    headerText: [{ textItems, link }],
+    headerText,
     headingClass,
     color,
     dataLocator,
@@ -58,22 +46,50 @@ const LinkText = (props: Props) => {
     };
   }
 
-  const navigationUrl = link;
-  navigationUrl.to = configurePlpNavigationFromCMSUrl(link.url);
-  navigationUrl.asPath = link.url;
-
   return (
-    <Anchor {...navigationUrl} className={className}>
-      <Component {...compProps} className={`${heading} link-text`}>
-        <TextItems textItems={textItems} />
-      </Component>
-    </Anchor>
+    <div className={className}>
+      {headerText.map((item, index) => {
+        const { link, textItems } = item;
+        const navigationUrl = link;
+        navigationUrl.to = configurePlpNavigationFromCMSUrl(link.url);
+        navigationUrl.asPath = link.url;
+
+        if (type === 'heading') {
+          compProps.dataLocator = `${compProps.dataLocator}_${index}`;
+        } else {
+          compProps['data-locator'] = `${compProps['data-locator']}_${index}`;
+        }
+
+        return (
+          <Anchor key={index.toString()} {...navigationUrl}>
+            <Component {...compProps} className={`${heading} link-text`}>
+              <TextItems textItems={textItems} />
+            </Component>
+          </Anchor>
+        );
+      })}
+    </div>
   );
 };
 
 LinkText.defaultProps = {
-  icon: {},
+  type: '',
+  component: () => null,
+  headerText: [],
+  className: '',
+  dataLocator: '',
+  headingClass: '',
   color: '',
+};
+
+LinkText.propTypes = {
+  type: PropTypes.string,
+  component: PropTypes.elementType,
+  headerText: PropTypes.arrayOf(PropTypes.shape({})),
+  className: PropTypes.string,
+  dataLocator: PropTypes.string,
+  headingClass: PropTypes.string,
+  color: PropTypes.string,
 };
 
 export default withStyles(LinkText, LinkTextStyle);

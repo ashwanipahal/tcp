@@ -1,13 +1,11 @@
-const cropParam = 'ar_1:1,q_80';
-
 export default {
   IMG_DATA_2: {
-    imgConfig: [`${cropParam},w_164`, `${cropParam},w_258`, `${cropParam},w_450`],
+    imgConfig: [`t_mod_D_img2_m`, `t_mod_D_img2_t`, `t_mod_D_img2_d`],
   },
   IMG_DATA_4: {
-    imgConfig: [`${cropParam},w_164`, `${cropParam},w_162`, `${cropParam},w_330`],
+    imgConfig: [`t_mod_D_img4_m`, `t_mod_D_img4_t`, `t_mod_D_img4_d`],
   },
   IMG_DATA_6: {
-    imgConfig: [`${cropParam},w_164`, `${cropParam},w_162`, `${cropParam},w_210`],
+    imgConfig: [`t_mod_D_img6_m`, `t_mod_D_img6_t`, `t_mod_D_img6_d`],
   },
 };

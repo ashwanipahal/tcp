@@ -12,12 +12,15 @@ exports[`CollapsibleContainer should render correctly 1`] = `
       arrowPos={null}
     >
       <Styled(ImageComp)
+        alt=""
         height={6}
+        host=""
         source={
           Object {
             "testUri": "../../../../core/src/assets/carrot-small-down.png",
           }
         }
+        url=""
         width={10}
       />
     </Styled(View)>
@@ -44,12 +47,15 @@ exports[`CollapsibleContainer should render correctly with getExpandedState and 
       arrowPos={null}
     >
       <Styled(ImageComp)
+        alt=""
         height={6}
+        host=""
         source={
           Object {
             "testUri": "../../../../core/src/assets/carrot-small-down.png",
           }
         }
+        url=""
         width={10}
       />
     </Styled(View)>
