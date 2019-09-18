@@ -28,6 +28,7 @@ export const BOPIS_ITEM_AVAILABILITY = {
 };
 
 export const ITEM_AVAILABILITY_MESSAGES = {
+  GET_IT_BY: 'Get it by',
   AVAILABLE: 'Available',
   LIMITED: 'Limited Availability',
   UNAVAILABLE: 'Unavailable',
@@ -206,7 +207,7 @@ export const DEFAULT_STORE = {
   productAvailability: {
     variantNo: '2044391020',
     quantity: 0,
-    status: 'Out of Stock',
+    status: 'LIMITED',
     storeId: '0715',
   },
   timeStamp: 1568281373404,

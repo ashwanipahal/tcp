@@ -1,9 +1,7 @@
-/* eslint-disable */
-
 import React from 'react';
 import { PropTypes } from 'prop-types';
 import { STORE_SUMMARY_PROP_TYPES } from '../../../PickUpStoreModal.proptypes';
-import { Anchor, BodyCopy, Button, Row, Col, Image } from '../../../../../atoms';
+import { Anchor, BodyCopy, Button, Image } from '../../../../../atoms';
 import PickupRadioBtn from '../../../atoms/PickupRadioButton';
 // import {ButtonTooltip} from 'views/components/tooltip/ButtonTooltip.jsx';
 import { parseDate } from '../../../../../../../utils/parseDate';
@@ -35,7 +33,7 @@ const displayStoreDetailsAnchor = () => {
 
 const displayFavoriteStore = (basicInfo, label) => {
   return basicInfo.isDefault ? (
-    <div className="favStore elem-mt-MED elem-mb-SM">
+    <div className="favStore elem-mt-SM elem-mb-SM">
       <Image
         alt="Favorite Store"
         className="marker-icon elem-pr-XXXS"
@@ -55,7 +53,13 @@ const displayFavoriteStore = (basicInfo, label) => {
 
 const displayStoreUnavailable = (showBopisCTA, showBossCTA) => {
   const { STORE_UNAVAILABLE } = STORE_DETAILS_LABELS;
-  return !showBopisCTA && !showBossCTA ? <BodyCopy>{STORE_UNAVAILABLE}</BodyCopy> : null;
+  return !showBopisCTA && !showBossCTA ? (
+    <div className="storeUnavailable">
+      <BodyCopy fontFamily="secondary" color="text.primary" fontSize="fs14">
+        {STORE_UNAVAILABLE}
+      </BodyCopy>
+    </div>
+  ) : null;
 };
 
 const displayStoreAddress = address => {
@@ -128,11 +132,14 @@ class PickupStoreListItem extends React.Component {
     /** store id that was selected */
     selectedStoreId: PropTypes.number.isRequired,
 
-    isGiftCard: PropTypes.bool.isRequired,
     isBopisCtaEnabled: PropTypes.bool.isRequired,
     isBossCtaEnabled: PropTypes.bool.isRequired,
     buttonLabel: PropTypes.string.isRequired,
-    updateCartItemStore: PropTypes.bool.isRequired,
+    className: PropTypes.string,
+  };
+
+  static defaultProps = {
+    className: '',
   };
 
   constructor(props) {
@@ -208,29 +215,29 @@ class PickupStoreListItem extends React.Component {
     BopisCtaProps,
     buttonLabel,
     addToCartError,
-    updateCartItemStore,
-    isGiftCard,
   }) {
     const { FAVORITE_STORE } = STORE_DETAILS_LABELS;
     return (
-      <Row fullBleed className="elem-mt-XXS storeItemWrapper">
-        <Col ignoreGutter={{ small: true }} colSize={{ large: 5, medium: 3, small: 3 }}>
+      <div className="elem-mt-XXS storeListItemWrapper">
+        <div className="storeInfoWrapper">
           {displayFavoriteStore(basicInfo, FAVORITE_STORE)}
-          {displayStoreTitle(basicInfo)}
-          {displayDistance(distance)}
-          {displayStoreAddress(address)}
-          {displayStoreDetailsAnchor()}
-        </Col>
-        <Col colSize={{ large: 7, medium: 5, small: 3 }} className="pickupButtonsWrapper">
+          <div className="storeAddressWrapper">
+            {displayStoreTitle(basicInfo)}
+            {displayDistance(distance)}
+            {displayStoreAddress(address)}
+            {displayStoreDetailsAnchor()}
+          </div>
+        </div>
+        <div colSize={{ large: 7, medium: 5, small: 3.2 }} className="pickupButtonsWrapper">
           {showBossCTA && (
             <React.Fragment>
               <PickupRadioBtn
                 className="PickupRadioBtn"
                 radioGroupName="PICKUP-BTN"
                 isSelected={isBossSelected}
-                {...BossCtaProps}
+                isBossPickupButton
                 handleClick={this.handlePickupRadioBtn}
-                buttonLabel={PICKUP_CTA_LABELS.boss}
+                BossCtaProps={BossCtaProps}
               />
               {addToCartError && isBossSelected && <BodyCopy>{addToCartError}</BodyCopy>}
             </React.Fragment>
@@ -244,9 +251,8 @@ class PickupStoreListItem extends React.Component {
                 className="PickupRadioBtn"
                 radioGroupName="PICKUP-BTN"
                 isSelected={isBopisSelected}
-                {...BopisCtaProps}
+                BopisCtaProps={BopisCtaProps}
                 handleClick={this.handlePickupRadioBtn}
-                buttonLabel={PICKUP_CTA_LABELS.bopis}
               />
               {addToCartError && isBopisSelected && <BodyCopy>{addToCartError}</BodyCopy>}
             </React.Fragment>
@@ -254,8 +260,8 @@ class PickupStoreListItem extends React.Component {
 
           {this.displayPickupCTA(showBopisCTA, showBossCTA, buttonLabel)}
           {displayStoreUnavailable(showBopisCTA, showBossCTA)}
-        </Col>
-      </Row>
+        </div>
+      </div>
     );
   }
 
@@ -278,16 +284,18 @@ class PickupStoreListItem extends React.Component {
       isBopisCtaEnabled,
       isBossCtaEnabled,
       buttonLabel,
-      updateCartItemStore,
-      isGiftCard,
       className,
     } = this.props;
 
     const BopisCtaProps = {
-      status: ITEM_AVAILABILITY_MESSAGES[status],
-      ...getDateInformation(),
+      buttonLabel: PICKUP_CTA_LABELS.bopis,
+      status:
+        status === BOPIS_ITEM_AVAILABILITY.LIMITED ? ITEM_AVAILABILITY_MESSAGES.LIMITED : null,
+      pickupDate: { ...getDateInformation() },
     };
     const BossCtaProps = {
+      buttonLabel: PICKUP_CTA_LABELS.boss,
+      pickupLabel: ITEM_AVAILABILITY_MESSAGES.GET_IT_BY,
       startDate: { ...getDateInformation(storeBossInfo.startDate, true) },
       endDate: { ...getDateInformation(storeBossInfo.endDate, true) },
     };
@@ -295,7 +303,7 @@ class PickupStoreListItem extends React.Component {
     const pickupTypeBOPIS = !sameStore ? pickupType.isStoreBopisSelected : true;
     const pickupTypeBOSS = !sameStore ? pickupType.isStoreBossSelected : true;
 
-    const showBopisCTA = true; // TODO - parseBoolean(isBopisAvailable) && pickupTypeBOPIS && isBopisCtaEnabled;
+    const showBopisCTA = parseBoolean(isBopisAvailable) && pickupTypeBOPIS && isBopisCtaEnabled;
     const showBossCTA = parseBoolean(isBossAvailable) && pickupTypeBOSS && isBossCtaEnabled;
     const { storeClosingTimeToday, storeClosingTimeTomorrow } = this.getStoreCloseTime();
 
@@ -318,8 +326,6 @@ class PickupStoreListItem extends React.Component {
           buttonLabel,
           addToCartError,
           selectedStoreId,
-          updateCartItemStore,
-          isGiftCard,
         })}
       </div>
     );

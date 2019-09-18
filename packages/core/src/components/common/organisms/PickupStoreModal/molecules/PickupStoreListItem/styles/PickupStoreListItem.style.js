@@ -3,14 +3,31 @@ import { css } from 'styled-components';
 export default css`
   border: 1px solid ${props => props.theme.colorPalette.gray['800']};
   padding: 0 15px 12px 10px;
+  margin-top: ${props => props.theme.spacing.ELEM_SPACING.MED};
+  margin-bottom: ${props => props.theme.spacing.ELEM_SPACING.MED};
   @media ${props => props.theme.mediaQuery.medium} {
-    padding: 5px 30px 16px 30px;
+    padding: 0px 30px 16px 30px;
   }
-  .storeItemWrapper {
+  .storeListItemWrapper {
     min-height: 138px;
     @media ${props => props.theme.mediaQuery.medium} {
       min-height: 176px;
     }
+    display: flex;
+  }
+  .storeInfoWrapper {
+    display: flex;
+    flex-direction: column;
+    width: 44%;
+    @media ${props => props.theme.mediaQuery.medium} {
+      width: 40%;
+    }
+  }
+  .pickupButtonsWrapper {
+    display: flex;
+    flex-direction: column;
+    flex-grow: 1;
+    justify-content: center;
   }
   .pickupCTAWrapper {
     margin-left: ${props => props.theme.spacing.ELEM_SPACING.SM};
@@ -22,17 +39,32 @@ export default css`
     padding-left: ${props => props.theme.spacing.ELEM_SPACING.XXL};
     padding-top: ${props => props.theme.spacing.ELEM_SPACING.SM};
   }
-  .pickupButtonsWrapper {
+  .storeInfoWrapper div:nth-child(2) {
+    justify-content: normal;
+    margin-top: 0px;
+  }
+  .storeAddressWrapper {
+    margin-top: ${props => props.theme.spacing.ELEM_SPACING.XS};
     display: flex;
+    flex-grow: 1;
     flex-direction: column;
     justify-content: center;
-    flex-grow: 1;
   }
   .pickupBtnDivider {
     border-bottom: 1px solid ${props => props.theme.colorPalette.gray['800']};
   }
   .favStore {
     display: flex;
+  }
+  .storeUnavailable {
+    margin: 0 auto;
+    width: 109px;
+    @media ${props => props.theme.mediaQuery.mediumOnly} {
+      width: 184px;
+    }
+    @media ${props => props.theme.mediaQuery.large} {
+      width: 240px;
+    }
   }
   .marker-icon {
     width: 17px;
