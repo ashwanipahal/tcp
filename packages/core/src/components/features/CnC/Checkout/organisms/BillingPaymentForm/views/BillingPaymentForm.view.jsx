@@ -21,7 +21,6 @@ import CardImage from '../../../../../../common/molecules/Card/views/CardImage';
 import CheckoutFooter from '../../../molecules/CheckoutFooter';
 import utility from '../../../util/utility';
 import { CHECKOUT_ROUTES } from '../../../Checkout.constants';
-import Modal from '../../../../../../common/molecules/Modal';
 import DropdownList from './CreditCardDropdownList.view';
 import getCvvInfo from '../../../molecules/CVVInfo';
 
@@ -100,36 +99,14 @@ export class BillingPaymentForm extends React.PureComponent {
         card.ccType !== constants.ACCEPTED_CREDIT_CARDS.VENMO
     );
 
-  getCreditCardDropDown = (options, onClickHandler, activeValue, onClose) => {
+  getCreditCardDropDown = (options, onClickHandler, activeValue) => {
     return (
-      <>
-        <div className="hideOnDesktop">
-          <Modal
-            fixedWidth
-            heading="SELECT CARD"
-            overlayClassName="TCPModal__Overlay"
-            className="TCPModal__Content_Modal"
-            onRequestClose={onClose}
-            maxWidth="450px"
-            minHeight="643px"
-            shouldCloseOnOverlayClick={false}
-            isOpen
-          >
-            <DropdownList
-              optionsMap={options}
-              clickHandler={onClickHandler}
-              activeValue={activeValue}
-              className="custom-select-dropDownList"
-            />
-          </Modal>
-        </div>
-        <DropdownList
-          optionsMap={options}
-          clickHandler={onClickHandler}
-          activeValue={activeValue}
-          className="custom-select-dropDownList hideOnMobile"
-        />
-      </>
+      <DropdownList
+        optionsMap={options}
+        clickHandler={onClickHandler}
+        activeValue={activeValue}
+        className="custom-select-dropDownList"
+      />
     );
   };
 
@@ -312,7 +289,7 @@ export class BillingPaymentForm extends React.PureComponent {
     return (
       <form name={constants.FORM_NAME} noValidate className={className} onSubmit={handleSubmit}>
         {!isPaymentDisabled && (
-          <div className="payment-container">
+          <div>
             <BodyCopy
               fontFamily="primary"
               fontSize="fs26"

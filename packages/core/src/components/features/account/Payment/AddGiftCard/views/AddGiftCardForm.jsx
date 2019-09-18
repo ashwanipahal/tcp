@@ -30,6 +30,7 @@ type Props = {
   isLoading: Boolean,
   addGiftCardError: string,
   untouch: Function,
+  onClearError: Function,
 };
 
 class AddGiftCardForm extends React.PureComponent<Props> {
@@ -99,6 +100,7 @@ class AddGiftCardForm extends React.PureComponent<Props> {
               type="hidden"
               name="recaptchaToken"
               className="card__hidden"
+              onChange={this.handleChange}
             />
           </div>
         </div>
@@ -117,6 +119,7 @@ class AddGiftCardForm extends React.PureComponent<Props> {
             name="saveToAccount"
             component={InputCheckbox}
             className="save-to-account"
+            onChange={this.handleChange}
           >
             <BodyCopy
               dataLocator="gift-card-sav-to-account-heading-lbl"
@@ -176,6 +179,13 @@ class AddGiftCardForm extends React.PureComponent<Props> {
     );
   };
 
+  handleChange = () => {
+    const { onClearError, addGiftCardError } = this.props;
+    if (addGiftCardError) {
+      onClearError();
+    }
+  };
+
   render() {
     const { handleSubmit, labels, isLoading, isRow } = this.props;
     return (
@@ -193,6 +203,7 @@ class AddGiftCardForm extends React.PureComponent<Props> {
               maxLength={50}
               dataLocator="gift-card-cardnumberfield"
               className="giftCardNumber"
+              onChange={this.handleChange}
             />
           </Col>
           {!isRow && (
@@ -203,6 +214,7 @@ class AddGiftCardForm extends React.PureComponent<Props> {
                 type="tel"
                 component={TextBox}
                 dataLocator="gift-card-pinnumberfield"
+                onChange={this.handleChange}
               />
             </Col>
           )}
@@ -217,6 +229,7 @@ class AddGiftCardForm extends React.PureComponent<Props> {
                 component={TextBox}
                 dataLocator="gift-card-pinnumberfield"
                 className="cardPin"
+                onChange={this.handleChange}
               />
             </Col>
           </Row>

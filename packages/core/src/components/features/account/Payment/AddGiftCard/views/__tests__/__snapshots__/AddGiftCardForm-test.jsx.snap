@@ -180,6 +180,7 @@ exports[`Add gift card form component should render component correctly 1`] = `
         dataLocator="gift-card-cardnumberfield"
         maxLength={50}
         name="giftCardNumber"
+        onChange={[Function]}
         type="tel"
       />
     </Styled(Col)>
@@ -355,6 +356,7 @@ exports[`Add gift card form component should render component correctly 1`] = `
         }
         dataLocator="gift-card-pinnumberfield"
         name="cardPin"
+        onChange={[Function]}
         type="tel"
       />
     </Styled(Col)>
