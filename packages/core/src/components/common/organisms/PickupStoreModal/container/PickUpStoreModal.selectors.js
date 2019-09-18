@@ -32,7 +32,10 @@ export const getGeoDefaultStore = state => {
 
 // NOTE: used for store locator to populate store geo-location search
 export const getSuggestedStores = state => {
-  return (state.stores && state.stores.suggestedStores) || [];
+  return (
+    (state[PICKUP_MODAL_REDUCER_KEY] && state[PICKUP_MODAL_REDUCER_KEY].get('suggestedStores')) ||
+    []
+  );
 };
 
 export const getOrderConfirmation = state => {
@@ -55,14 +58,14 @@ export const getIsRadialInventoryEnabled = state => {
 export const getIsBossEnabled = state => {
   return (
     state[SESSIONCONFIG_REDUCER_KEY] &&
-    state[SESSIONCONFIG_REDUCER_KEY].getIn(['siteDetails', 'isBossEnabled'])
+    state[SESSIONCONFIG_REDUCER_KEY].getIn(['siteDetails', 'IS_BOSS_ENABLED'])
   );
 };
 
 export const getIsBopisEnabled = state => {
   return (
     state[SESSIONCONFIG_REDUCER_KEY] &&
-    state[SESSIONCONFIG_REDUCER_KEY].getIn(['siteDetails', 'isBopisEnabled'])
+    state[SESSIONCONFIG_REDUCER_KEY].getIn(['siteDetails', 'IS_BOPIS_ENABLED'])
   );
 };
 

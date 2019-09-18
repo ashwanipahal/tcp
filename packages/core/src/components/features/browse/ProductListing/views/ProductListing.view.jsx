@@ -5,6 +5,7 @@ import { Row, Col } from '../../../../common/atoms';
 import ProductsGrid from '../molecules/ProductsGrid/views';
 import GlobalNavigationMenuDesktopL2 from '../molecules/GlobalNavigationMenuDesktopL2/views';
 import withStyles from '../../../../common/hoc/withStyles';
+import PickupStoreModal from '../../../../common/organisms/PickupStoreModal';
 
 import ProductListingStyle from '../ProductListing.style';
 
@@ -97,6 +98,7 @@ const ProductListView = ({
           </Col>
         </Col>
       </Row>
+      <PickupStoreModal />
     </div>
   );
 };

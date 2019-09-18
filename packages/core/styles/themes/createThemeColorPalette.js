@@ -17,6 +17,7 @@ function createThemeColorPalette(colors = {}) {
       disabled: gray[500],
       hint: gray[600],
       lightgray: gray[300],
+      darkgray: gray[800],
     },
   } = colors;
 

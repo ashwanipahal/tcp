@@ -1,4 +1,5 @@
 /* eslint-disable max-lines */
+
 import React from 'react';
 import { PropTypes } from 'prop-types';
 import { reduxForm, Field, propTypes as reduxFormPropTypes } from 'redux-form';
@@ -98,7 +99,6 @@ class _PickupStoreSelectionForm extends React.Component {
     };
     this.onSearch = this.onSearch.bind(this);
     this.untouch = this.untouch.bind(this);
-    this.isShowDistanceForFavorite = false;
     this.preferredStore = null;
     this.isAutoSearchTrigerred = false;
   }
@@ -170,9 +170,9 @@ class _PickupStoreSelectionForm extends React.Component {
       isBossSelected: null,
     });
     const skuId =
-      getSkuId(colorFitsSizesMap, formData.color, formData.fit, formData.size) || '1119458';
+      getSkuId(colorFitsSizesMap, formData.color, formData.fit, formData.size) || '452001';
     const variantId =
-      getVariantId(colorFitsSizesMap, formData.color, formData.fit, formData.size) || '1119458';
+      getVariantId(colorFitsSizesMap, formData.color, formData.fit, formData.size) || '452001';
     const locationPromise = this.place
       ? Promise.resolve(this.place.geometry.location)
       : getAddressLocationInfo(formData.addressLocation);
@@ -207,6 +207,7 @@ class _PickupStoreSelectionForm extends React.Component {
       defaultStore && defaultStore.basicInfo && defaultStore.basicInfo.isDefault
         ? defaultStore
         : null;
+    // - this.preferredStore = DEFAULT_STORE
     return (
       this.preferredStore &&
       this.preferredStore.productAvailability &&
@@ -225,7 +226,7 @@ class _PickupStoreSelectionForm extends React.Component {
 
     /**
      * @var allowBossMsgOnCart
-     * The varialbe handles the condition to show boss warning msg on cart page.
+     * The variable handles the condition to show boss warning msg on cart page.
      * @param allowBossStoreSearch carries the condition when boss item on cart is
      * selected for changing or toggling the store.
      */
@@ -254,25 +255,6 @@ class _PickupStoreSelectionForm extends React.Component {
       return SAME_STORE_BOPIS_BOPIS;
     }
     return SELECT_STORE;
-  };
-
-  /**
-   * @method handleStoreSelect
-   * @description this method sets the selected store
-   * For desktop it adds the item to cart
-   */
-  handleStoreSelect = (storeId, isBoss) => {
-    //  TODO - May be we need similar check to cater different functionality of mobile web -
-    //  Setting default value as false for now..
-    const { isMobile = false } = this.props;
-    this.setState({
-      selectedStoreId: storeId,
-      isBossSelected: isBoss,
-      isShowMessage: !isMobile,
-    });
-    if (!isMobile) {
-      this.handleAddTobag(storeId, isBoss);
-    }
   };
 
   /**
@@ -365,7 +347,7 @@ class _PickupStoreSelectionForm extends React.Component {
       colorFitsSizesMap,
       initialValues,
     } = this.props;
-    let isRadialBossEnabled = isBossCtaEnabled;
+    let isRadialBossEnabled;
     if (isRadialInventoryEnabled) {
       isRadialBossEnabled =
         !isBOSSProductOOSQtyMismatched(colorFitsSizesMap, initialValues) && isBossCtaEnabled;
@@ -452,37 +434,36 @@ class _PickupStoreSelectionForm extends React.Component {
       allowBossStoreSearch,
       defaultStore,
       bopisChangeStore,
-      anyTouched,
       isBopisEnabled,
       isGiftCard,
+      cartBopisStoresList,
     } = this.props;
     const { selectedStoreId, isBossSelected, isShowMessage } = this.state;
 
     return submitting ? (
       <Spinner />
     ) : (
-      !anyTouched && (
-        <PickupStoreListContainer
-          isShoppingBag={isShoppingBag}
-          onStoreSelect={this.handleStoreSelect}
-          isResultOfSearchingInCartStores={isSearchOnlyInCartStores}
-          onCancel={onCloseClick}
-          sameStore={sameStore}
-          selectedStoreId={selectedStoreId}
-          isBossSelected={isBossSelected}
-          addToCartError={isShowMessage ? addToCartError : ''}
-          isBopisCtaEnabled={isBopisCtaEnabled}
-          isBossCtaEnabled={isBossCtaEnabled}
-          isBossEnabled={isBossEnabled}
-          isBopisEnabled={isBopisEnabled}
-          allowBossStoreSearch={allowBossStoreSearch}
-          bopisChangeStore={bopisChangeStore}
-          updateCartItemStore={updateCartItemStore}
-          buttonLabel={buttonLabel}
-          isGiftCard={isGiftCard}
-          defaultStore={defaultStore}
-        />
-      )
+      <PickupStoreListContainer
+        isShoppingBag={isShoppingBag}
+        onStoreSelect={this.handleAddTobag}
+        isResultOfSearchingInCartStores={isSearchOnlyInCartStores}
+        onCancel={onCloseClick}
+        sameStore={sameStore}
+        selectedStoreId={selectedStoreId}
+        isBossSelected={isBossSelected}
+        addToCartError={isShowMessage ? addToCartError : ''}
+        isBopisCtaEnabled={isBopisCtaEnabled}
+        isBossCtaEnabled={isBossCtaEnabled}
+        isBossEnabled={isBossEnabled}
+        isBopisEnabled={isBopisEnabled}
+        allowBossStoreSearch={allowBossStoreSearch}
+        bopisChangeStore={bopisChangeStore}
+        updateCartItemStore={updateCartItemStore}
+        buttonLabel={buttonLabel}
+        isGiftCard={isGiftCard}
+        defaultStore={defaultStore}
+        cartBopisStoresList={cartBopisStoresList}
+      />
     );
   }
 
@@ -516,7 +497,7 @@ class _PickupStoreSelectionForm extends React.Component {
               sameStore={sameStore}
               isShoppingBag={isShoppingBag}
               store={this.preferredStore}
-              onStoreSelect={this.handleStoreSelect}
+              onStoreSelect={this.handleAddTobag}
               isBopisSelected={
                 this.preferredStore.basicInfo.id === selectedStoreId && !isBossSelected
               }
@@ -533,7 +514,6 @@ class _PickupStoreSelectionForm extends React.Component {
               isBossCtaEnabled={isBossCtaEnabled && isBossEnabled}
               updateCartItemStore={updateCartItemStore}
               buttonLabel={buttonLabel}
-              isShowDistance={this.isShowDistanceForFavorite}
               isGiftCard={isGiftCard}
             />
           </div>
@@ -575,32 +555,34 @@ class _PickupStoreSelectionForm extends React.Component {
     } = this.props;
 
     return (
-      <form onSubmit={handleSubmit(this.onSearch)} className="bopis-product-container">
+      <form onSubmit={handleSubmit(this.onSearch)}>
         {isPickUpWarningModal && (
           <BodyCopy className="item-unavailable">{PICKUP_LABELS.ITEM_UNAVAILABLE}</BodyCopy>
         )}
-        <PickupProductFormPart
-          colorFitSizeDisplayNames={colorFitSizeDisplayNames}
-          colorFitsSizesMap={colorFitsSizesMap}
-          name={name}
-          isShowExtendedSizesNotification={isShowExtendedSizesNotification}
-          isPreferredStoreError={isPreferredStoreError}
-          onEditSku={onEditSku}
-          listPrice={listPrice}
-          offerPrice={offerPrice}
-          imagePath={imagePath}
-          change={change}
-          touch={touch}
-          isDisabledSubmitButton={submitting}
-          promotionalMessage={promotionalMessage}
-          initialValues={initialValues}
-          promotionalPLCCMessage={promotionalPLCCMessage}
-          isPickUpWarningModal={isPickUpWarningModal}
-          isCanada={isCanada}
-          isHasPlcc={isPlcc}
-          currencySymbol={currencySymbol}
-          isInternationalShipping={isInternationalShipping}
-        />
+        {
+          <PickupProductFormPart
+            colorFitSizeDisplayNames={colorFitSizeDisplayNames}
+            colorFitsSizesMap={colorFitsSizesMap}
+            name={name}
+            isShowExtendedSizesNotification={isShowExtendedSizesNotification}
+            isPreferredStoreError={isPreferredStoreError}
+            onEditSku={onEditSku}
+            listPrice={listPrice}
+            offerPrice={offerPrice}
+            imagePath={imagePath}
+            change={change}
+            touch={touch}
+            isDisabledSubmitButton={submitting}
+            promotionalMessage={promotionalMessage}
+            initialValues={initialValues}
+            promotionalPLCCMessage={promotionalPLCCMessage}
+            isPickUpWarningModal={isPickUpWarningModal}
+            isCanada={isCanada}
+            isHasPlcc={isPlcc}
+            currencySymbol={currencySymbol}
+            isInternationalShipping={isInternationalShipping}
+          />
+        }
         {!isPickUpWarningModal && this.displayStoreSearchComp()}
       </form>
     );
