@@ -14,7 +14,7 @@ import style from '../ModuleB.style';
  * @param {*} ctaType
  */
 const getButtonListVariation = ctaType => {
-  const buttonTypes = ctaTypes;
+  const buttonTypes = Object.assign({}, ctaTypes);
   return buttonTypes[ctaType];
 };
 
@@ -23,7 +23,7 @@ const getButtonListVariation = ctaType => {
  * @param {*} ctaType
  */
 const getButtonListVariationProps = ctaType => {
-  const buttonTypeProps = ctaTypeProps;
+  const buttonTypeProps = Object.assign({}, ctaTypeProps);
   return buttonTypeProps[ctaType];
 };
 
@@ -66,6 +66,8 @@ const ModuleB = props => {
   if (ctaItems.length < 3) {
     buttonListProps.dualVariation = null;
   }
+
+  console.log(buttonListProps);
 
   const imageBannerProps = {
     bannerPosition,

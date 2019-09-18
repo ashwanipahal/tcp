@@ -155,9 +155,17 @@ const ModuleB = (props: Props) => {
 
   const ctaType = ctaTypes[ctaItemsType];
 
+  let bannerPositionInterpreted = bannerPosition;
+  if (bannerPosition === 'topAlt') {
+    bannerPositionInterpreted = 'top';
+  }
+
   return largeCompImage ? (
     <Container>
-      {renderImageComponent({ item: largeCompImage[0], bannerPosition }, navigation)}
+      {renderImageComponent(
+        { item: largeCompImage[0], bannerPosition: bannerPositionInterpreted },
+        navigation
+      )}
 
       {ctaType === 'imageCTAList' && (
         <DivImageCTAContainer>
