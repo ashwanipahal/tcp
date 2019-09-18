@@ -33,9 +33,6 @@ export default css`
   }
 
   .render-desktop-view {
-    .filtered-by-section {
-      margin-left: 0;
-    }
     display: none;
 
     @media ${props => props.theme.mediaQuery.large} {

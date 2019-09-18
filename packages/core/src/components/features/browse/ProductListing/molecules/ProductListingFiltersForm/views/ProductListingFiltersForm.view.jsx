@@ -332,7 +332,7 @@ class ProductListingFiltersForm extends React.Component {
               </div>
             </div>
           )}
-          <Row className="filtered-by-section">
+          <Row fullBleed className="filtered-by-section">
             <Col colSize={{ small: 0, medium: 0, large: 10 }}>
               {this.getAppliedFiltersCount() > 0 && (
                 <AppliedFiltersList

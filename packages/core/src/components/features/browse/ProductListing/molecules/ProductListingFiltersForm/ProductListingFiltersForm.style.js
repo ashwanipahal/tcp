@@ -73,9 +73,4 @@ export default css`
       border-bottom: none;
     }
   }
-  .render-desktop-view {
-    .filtered-by-section {
-      margin-left: 0;
-    }
-  }
 `;

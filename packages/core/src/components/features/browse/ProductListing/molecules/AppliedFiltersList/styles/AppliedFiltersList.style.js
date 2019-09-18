@@ -16,6 +16,7 @@ export default css`
       width: 90px;
       margin-top: 7px;
       font-size: ${props => props.theme.fonts.fontSize.listmenu.large}px;
+      font-family: ${props => props.theme.typography.fonts.secondary};
       letter-spacing: 0;
       line-height: 1.42;
       display: inline-block;
