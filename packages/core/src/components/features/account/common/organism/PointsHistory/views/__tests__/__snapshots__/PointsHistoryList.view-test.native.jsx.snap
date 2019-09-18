@@ -5,51 +5,60 @@ exports[`Points History List Page View should render Points History Page Correct
   <Styled(View)>
     <Styled(View)>
       <Styled(BodyCopy)
+        color="#1a1a1a"
         fontFamily="secondary"
         fontSize="fs12"
+        fontWeight="semibold"
         text="08/08/19"
       />
     </Styled(View)>
     <Styled(View)>
       <Styled(BodyCopy)
+        color="#1a1a1a"
         fontFamily="secondary"
         fontSize="fs12"
+        fontWeight="semibold"
         text="Credit"
       />
     </Styled(View)>
     <Styled(View)>
       <Styled(BodyCopy)
-        component="p"
+        color="#1a1a1a"
         fontFamily="secondary"
         fontSize="fs12"
+        fontWeight="semibold"
         text="5"
+        textAlign="center"
       />
     </Styled(View)>
   </Styled(View)>
   <Styled(View)>
     <Styled(View)>
       <Styled(BodyCopy)
+        color="#1a1a1a"
         fontFamily="secondary"
         fontSize="fs12"
-        fontWeight="regular"
+        fontWeight="semibold"
         text="08/08/19"
       />
     </Styled(View)>
     <Styled(View)>
       <Styled(BodyCopy)
+        color="#1a1a1a"
         fontFamily="secondary"
         fontSize="fs12"
-        fontWeight="regular"
+        fontWeight="semibold"
         text="AddBirthDate"
       />
     </Styled(View)>
     <Styled(View)>
       <Styled(BodyCopy)
+        color="#1a1a1a"
         fontFamily="secondary"
         fontSize="fs12"
-        fontWeight="regular"
+        fontWeight="semibold"
         text={5}
-        textAlign="left"
+        textAlign="center"
       />
     </Styled(View)>
   </Styled(View)>

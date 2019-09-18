@@ -32,7 +32,10 @@ export const getGeoDefaultStore = state => {
 
 // NOTE: used for store locator to populate store geo-location search
 export const getSuggestedStores = state => {
-  return (state.stores && state.stores.suggestedStores) || [];
+  return (
+    (state[PICKUP_MODAL_REDUCER_KEY] && state[PICKUP_MODAL_REDUCER_KEY].get('suggestedStores')) ||
+    []
+  );
 };
 
 export const getOrderConfirmation = state => {

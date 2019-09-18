@@ -15,6 +15,7 @@ import {
   EmailSignUpForm,
   ShippingFormWrapper,
 } from '../styles/ShippingForm.styles.native';
+import GiftServices from '../../../molecules/GiftServices';
 import CnCTemplate from '../../../../../../common/organism/CnCTemplate';
 import RegisteredShippingFormView from '../../RegisteredShippingForm/views/RegisteredShippingForm.view.native';
 import CONSTANTS from '../../../../../Checkout.constants';
@@ -34,6 +35,7 @@ const ShippingForm = ({
   navigation,
   handleSubmit,
   submitShippingForm,
+  isGiftServicesChecked,
   labels,
   userAddresses,
   onFileAddressKey,
@@ -170,6 +172,15 @@ const ShippingForm = ({
             dispatch={dispatch}
           />
         </FormSection>
+        <FormSection name="giftServices">
+          <GiftServices
+            showDefaultCheckbox={false}
+            formSection="giftServices"
+            variation="secondary"
+            isGiftServicesChecked={isGiftServicesChecked}
+            dispatch={dispatch}
+          />
+        </FormSection>
       </ShippingFormWrapper>
       <CnCTemplate
         navigation={navigation}
@@ -209,6 +220,7 @@ ShippingForm.propTypes = {
   loadShipmentMethods: PropTypes.func.isRequired,
   navigation: PropTypes.shape({}).isRequired,
   submitShippingForm: PropTypes.func.isRequired,
+  isGiftServicesChecked: PropTypes.bool.isRequired,
   userAddresses: PropTypes.shape([]),
   onFileAddressKey: PropTypes.string,
   isSaveToAddressBookChecked: PropTypes.bool,

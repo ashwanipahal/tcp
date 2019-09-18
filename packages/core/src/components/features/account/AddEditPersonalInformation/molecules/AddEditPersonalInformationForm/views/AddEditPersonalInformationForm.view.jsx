@@ -123,7 +123,7 @@ export const AddEditPersonalInformationForm = ({
               />
             </Col>
           </Row>
-          <BodyCopy fontFamily="secondary" fontSize="fs12">
+          <BodyCopy className="elem-mt-XS" fontFamily="secondary" fontSize="fs12">
             {labels.lbl_profile_celebration_birthday}
           </BodyCopy>
         </Col>
@@ -273,7 +273,8 @@ const validateMethod = createValidateMethod(
     'associateId',
     'airMilesAccountNumber',
     'Email',
-    { userBirthMonth: 'userDateOfBirth' },
+    'userBirthMonth',
+    'userBirthYear',
   ])
 );
 

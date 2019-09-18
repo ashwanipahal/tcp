@@ -35,6 +35,7 @@ export {
   isGymboree,
   getAddressFromPlace,
   formatAddress,
+  formatPhoneNumber,
   getLabelValue,
   capitalize,
   toTimeString,

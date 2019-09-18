@@ -37,7 +37,6 @@ const Anchor = ({
   ...otherProps
 }: Props) => {
   const { url, navigation } = otherProps;
-
   const openUrl = () => {
     if (validateExternalUrl(url)) {
       UrlHandler(url);

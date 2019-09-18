@@ -27,10 +27,14 @@ export default css`
   .banner-top-variation,
   .banner-top-alt-variation,
   .banner-bottom-variation {
+    .promo-banner-header {
+      display: none;
+    }
     .image-container {
       height: 295px;
     }
   }
+
   .banner-top-variation,
   .banner-top-alt-variation {
     .promo-banner {
@@ -50,7 +54,8 @@ export default css`
     }
     .promo-banner {
       width: 186px;
-      padding-bottom: 5px;
+      opacity: 0.9;
+      padding-bottom: 10px;
       position: absolute;
       top: 50%;
       left: 50%;
@@ -60,6 +65,9 @@ export default css`
     .small_text_black {
       line-height: 1;
       letter-spacing: 1px;
+    }
+    .small_text_black {
+      padding-bottom: 5px;
     }
   }
 
@@ -114,6 +122,7 @@ export default css`
     .banner-overlay-variation {
       .promo-banner {
         width: 270px;
+        padding-bottom: 15px;
       }
       .image-container {
         height: 735px;
@@ -122,6 +131,9 @@ export default css`
       .small_text_black {
         line-height: 1;
         letter-spacing: 1px;
+      }
+      .small_text_black {
+        display: inline-block;
       }
     }
   }
