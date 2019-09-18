@@ -6,6 +6,7 @@ import ProductDetailStyle from '../ProductDetail.style';
 import Product from '../molecules/Product/views/Product.view';
 import FixedBreadCrumbs from '../../ProductListing/molecules/FixedBreadCrumbs/views';
 import ProductImages from '../../../../common/organisms/ProductImages';
+import ProductAddToBagContainer from '../../../../common/molecules/ProductAddToBag';
 
 const productImagesProps = {
   isZoomEnabled: true,
@@ -47,7 +48,9 @@ const ProductDetailView = ({
   longDescription,
   breadCrumbs,
   currency,
+  plpLabels,
 }) => {
+  const currentProduct = productDetails && productDetails.get('currentProduct');
   return (
     <div className={className}>
       <Row>
@@ -71,6 +74,9 @@ const ProductDetailView = ({
           colSize={{ small: 6, medium: 4, large: 5 }}
         >
           <Product productDetails={productDetails} currencySymbol={currency} />
+          {currentProduct && (
+            <ProductAddToBagContainer currentProduct={currentProduct} plpLabels={plpLabels} />
+          )}
         </Col>
       </Row>
       <Row className="placeholder">
@@ -121,6 +127,9 @@ ProductDetailView.propTypes = {
   breadCrumbs: PropTypes.shape({}),
   defaultImage: PropTypes.string,
   currency: PropTypes.string,
+  plpLabels: PropTypes.shape({
+    lbl_sort: PropTypes.string,
+  }),
 };
 
 ProductDetailView.defaultProps = {
@@ -130,6 +139,9 @@ ProductDetailView.defaultProps = {
   breadCrumbs: {},
   defaultImage: '',
   currency: '',
+  plpLabels: {
+    lbl_sort: '',
+  },
 };
 
 export default withStyles(ProductDetailView, ProductDetailStyle);

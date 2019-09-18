@@ -26,12 +26,22 @@ export const getPlpLabels = state => {
 
   const {
     PLP: {
-      plpTiles: { lbl_add_to_bag: addToBag },
+      plpTiles: {
+        lbl_add_to_bag: addToBag,
+        lbl_pdp_size_error: errorMessage,
+        lbl_pdp_size: size,
+        lbl_pdp_fit: fit,
+        lbl_pdp_color: color,
+      },
     },
   } = state.Labels;
 
   return {
     addToBag,
+    errorMessage,
+    size,
+    fit,
+    color,
   };
 };
 
