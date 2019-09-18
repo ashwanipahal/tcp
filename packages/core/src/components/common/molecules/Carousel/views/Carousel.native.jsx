@@ -299,8 +299,8 @@ class SnapCarousel extends React.PureComponent<Props, State> {
               <Icon source={iconTypeNext} />
             </TouchableView>
             <Carousel
-              {...carouselConfig}
               {...defaults}
+              {...carouselConfig}
               data={data}
               onSnapToItem={this.onSnapToItemHandler}
               renderItem={renderItem}
