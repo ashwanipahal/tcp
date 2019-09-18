@@ -6,7 +6,7 @@ const crossIcon = getIconPath('cross-icon');
 export default css`
   &.applied-filters-sorting-container {
     width: 100%;
-    padding: 10px 0 15px;
+    padding: 0 0 15px;
     left: auto;
     margin: 0;
     display: flex;
@@ -23,6 +23,7 @@ export default css`
     }
 
     .applied-filter-list {
+      display: inline;
       position: relative;
       width: calc(100% - 90px);
       padding: 0;
