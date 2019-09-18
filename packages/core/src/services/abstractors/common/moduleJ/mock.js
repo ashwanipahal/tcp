@@ -7,11 +7,20 @@ export default {
     type: 'module',
     composites: {
       bgColor: '#d8d8d8',
+      layout: 'default',
       headerText: [
         {
           textItems: [
             {
-              text: 'Every Length, Style, Color & Size',
+              text: 'Every Length, ',
+              style: 'small_text_normal',
+            },
+            {
+              text: 'Style, ',
+              style: 'small_text_normal',
+            },
+            {
+              text: ' Color & Size',
               style: 'small_text_normal',
             },
           ],
@@ -62,13 +71,14 @@ export default {
           textItems: [
             {
               text: 'ALL SHORTS',
+              text2: 'ALL UNIFORMS',
               style: 'medium_text_semibold',
-              altStyle: 'extra_large_text_regular',
+              style2: 'extra_large_text_regular',
             },
             {
               text: '60% OFF',
               style: 'fixed_medium_text_black',
-              altStyle: 'extra_large_text_black',
+              style2: 'extra_large_text_black',
             },
           ],
         },
@@ -130,14 +140,7 @@ export default {
           category: {
             cat_id: '47501>47526',
           },
-          singleCTAButton: {
-            url: dummyUrl,
-            text: 'SHOP ALL',
-            title: 'SHOP ALL',
-            target: '',
-            external: 0,
-            action: '',
-          },
+          singleCTAButton: null,
         },
       ],
 

@@ -15,17 +15,6 @@ type PercentageStyleProps = {
   text: string,
 };
 
-const PromoStyleBlack = props => (
-  <BodyCopy
-    color="gray.900"
-    mobilefontFamily="primary"
-    fontSize="fs48"
-    textAlign="center"
-    lineHeight="47px"
-    {...props}
-  />
-);
-
 /* bodyCopyStyles is a array of BodyCopy component with key of style1,style2,style3 etc.
     The keys are coming from CMS */
 export const bodyCopyStyles = {
@@ -143,15 +132,45 @@ export const bodyCopyStyles = {
       {...props}
     />
   ),
-  medium_text_semibold: PromoStyleBlack,
-  extra_large_text_black: PromoStyleBlack,
-  fixed_medium_text_black: props => (
+  medium_text_semibold: props => (
+    <BodyCopy
+      color="gray.900"
+      mobilefontFamily="primary"
+      fontSize="fs32"
+      textAlign="center"
+      lineHeight="47px"
+      letterSpacing="ls2"
+      {...props}
+    />
+  ),
+  extra_large_text_black: props => (
     <BodyCopy
       color="gray.900"
       mobilefontFamily="primary"
       fontSize="fs48"
       textAlign="center"
-      lineHeight="48px"
+      lineHeight="47px"
+      fontWeight="black"
+      {...props}
+    />
+  ),
+  extra_large_text_regular: props => (
+    <BodyCopy
+      color="gray.900"
+      mobilefontFamily="primary"
+      fontSize="fs48"
+      textAlign="center"
+      lineHeight="47px"
+      {...props}
+    />
+  ),
+  fixed_medium_text_black: props => (
+    <BodyCopy
+      color="gray.900"
+      mobilefontFamily="primary"
+      fontSize="fs64"
+      textAlign="center"
+      lineHeight="64px"
       fontWeight="black"
       {...props}
     />

@@ -57,7 +57,8 @@ export const HeaderContainer = styled.View`
 `;
 
 export const SecondHeaderContainer = styled.View`
-  margin-bottom: ${props => props.theme.spacing.ELEM_SPACING.SM};
+  ${props =>
+    props.layout === 'alt' ? `margin-bottom: ${props.theme.spacing.ELEM_SPACING.SM};` : ''};
 `;
 
 export const Border = styled.View`
