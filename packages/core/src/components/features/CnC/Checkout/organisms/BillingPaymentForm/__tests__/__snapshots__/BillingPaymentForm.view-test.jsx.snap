@@ -3,7 +3,7 @@
 exports[`ButtonList component renders correctly without props 1`] = `
 <form
   className=""
-  name="checkoutBilling"
+  name="checkoutBillingPayment"
   noValidate={true}
   onSubmit={[MockFunction]}
 >
@@ -627,7 +627,7 @@ exports[`ButtonList component renders correctly without props 1`] = `
 exports[`ButtonList component renders correctly without props 2`] = `
 <form
   className=""
-  name="checkoutBilling"
+  name="checkoutBillingPayment"
   noValidate={true}
   onSubmit={[MockFunction]}
 >
