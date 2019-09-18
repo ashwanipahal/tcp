@@ -1,6 +1,5 @@
 /* eslint-disable extra-rules/no-commented-out-code */
 import { call, all, select } from 'redux-saga/effects';
-import { getCurrentLanguage } from '@tcp/web/src/components/features/content/Header/molecules/CountrySelector/container/CountrySelector.selectors';
 // import { getUserEmail } from '../../../account/User/container/User.selectors';
 import { isCanada } from '../../../../../utils/utils';
 // import { addAddress } from '../../../../../services/abstractors/account/AddEditAddress';
@@ -10,7 +9,7 @@ import {
 } from '../../../../../services/abstractors/CnC/index';
 import selectors, { isGuest } from './Checkout.selector';
 import utility from '../util/utility';
-import { CHECKOUT_ROUTES } from '../Checkout.constants';
+import constants, { CHECKOUT_ROUTES } from '../Checkout.constants';
 import { validateAndSubmitEmailSignup } from './Checkout.saga.util';
 import { getAppliedCouponListState } from '../../common/organism/CouponAndPromos/container/Coupon.selectors';
 
@@ -19,6 +18,7 @@ const {
   getCurrentOrderId,
   getSmsNumberForBillingOrderUpdates,
   // getIsPaymentDisabled,
+  getCurrentLanguage,
 } = selectors;
 
 // function extractCouponInfo(personalizedOffersResponse) {
@@ -69,11 +69,11 @@ export function* loadPersonalizedCoupons(
   const isCaSite = yield call(isCanada);
   const isUsSite = !isCaSite;
   const couponList = yield select(getAppliedCouponListState);
-
+  const { US_LOCATION_ID, CA_LOCATION_ID } = constants;
   const { personalizedOffersResponse, orderResponse } = yield call(requestPersonalizedCoupons, {
     orderNumber,
     emailAddress,
-    locationId: isUsSite ? '0180' : '3180',
+    locationId: isUsSite ? US_LOCATION_ID : CA_LOCATION_ID,
     couponList: couponList.map(val => ({ id: val.get('id') })),
     isElectiveBonus,
     currencyCode,

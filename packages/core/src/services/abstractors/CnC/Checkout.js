@@ -617,11 +617,11 @@ const getOrderConfirmationDetails = ({
       grandTotal: orderSummary.grandTotal,
     },
 
-    isOrderPending: orderSummary.orderStatus === 'V',
+    isOrderPending: orderSummary.orderStatus === CheckoutConstants.REVIEW_ORDER_STATUS,
 
     holdDate: null,
     totalsByFullfillmentCenterMap:
-      orderSummary.mixOrderDetails.mixCart !== 'ECOM'
+      orderSummary.mixOrderDetails.mixCart !== CheckoutConstants.ECOM
         ? orderSummary.mixOrderDetails.data
             .filter(
               store =>
@@ -678,7 +678,7 @@ const getOrderConfirmationDetails = ({
 
     orderDetails: {
       date: parseDate(orderDetails.placedOrderTime),
-      orderNumber: onlineOrder ? onlineOrder.subOrderId : '[NOT_AVAILABLE]',
+      orderNumber: onlineOrder ? onlineOrder.subOrderId : CheckoutConstants.NOT_AVAILABLE,
       trackingLink: sthLinkOrder,
       orderTotal: orderSummary.grandTotal,
     },
@@ -774,10 +774,12 @@ const handleSubmitOrderResponse = res => {
   const sthItemCount = flatCurrencyToCents(onlineOrder.itemsCount);
   const sthOrderPlaced = parseDate(orderSummary.placedOrderTime);
   const apiConfig = getAPIConfig();
-  const trackingLinkPrefix = `/shop/TCPOrderLookUp?catalogId=${apiConfig.catalogId}&langId=${
-    apiConfig.langId
-  }&storeId=${apiConfig.storeId}`;
-  const sthLinkOrder = `${trackingLinkPrefix}&shipmentTypeId=1&forSearch=1&orderId=${sthOrderId}&emailId=${encodeURIComponent(
+  const trackingLinkPrefix = `${CheckoutConstants.TRACKING_LINK_PREFIX_CONSTANT}?catalogId=${
+    apiConfig.catalogId
+  }&langId=${apiConfig.langId}&storeId=${apiConfig.storeId}`;
+  const sthLinkOrder = `${trackingLinkPrefix}&shipmentTypeId=${
+    CheckoutConstants.SHIPMENT_TYPE_ID
+  }&forSearch=${CheckoutConstants.FOR_SEARCH}&orderId=${sthOrderId}&emailId=${encodeURIComponent(
     (shipping || addressDetails).encryptedEmail1
   ) || ''}`;
 
@@ -913,7 +915,7 @@ export function requestPersonalizedCoupons({
     body: {
       personalizedOffersRequest: {
         externalTransactionId: orderNumber,
-        scenario: '1006', // hard coded as per backend
+        scenario: CheckoutConstants.COUPON_SCENARIO_CODE, // hard coded as per backend
         order: {
           isElectiveBonus,
           currencyCode,
@@ -921,7 +923,7 @@ export function requestPersonalizedCoupons({
             location: locationId,
           },
           customer: {
-            customerLookupType: '1003',
+            customerLookupType: CheckoutConstants.COUPON_CUSTOMER_LOOKUP_TYPE,
             customerLookupId: emailAddress,
           },
           coupon: couponsList,

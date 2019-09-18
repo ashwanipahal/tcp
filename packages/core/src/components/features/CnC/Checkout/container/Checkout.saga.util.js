@@ -1,6 +1,7 @@
 /* eslint-disable extra-rules/no-commented-out-code */
-import logger from '@tcp/core/src/utils/loggerInstance';
 import { call, put, select } from 'redux-saga/effects';
+import logger from '../../../../../utils/loggerInstance';
+import { getAPIConfig } from '../../../../../utils';
 import selectors from './Checkout.selector';
 import {
   setShippingMethodAndAddressId,
@@ -9,7 +10,6 @@ import {
 } from '../../../../../services/abstractors/CnC/index';
 import endpoints from '../../../../../service/endpoint';
 import emailSignupAbstractor from '../../../../../services/abstractors/common/EmailSmsSignup/EmailSmsSignup';
-
 import { getUserEmail } from '../../../account/User/container/User.selectors';
 import { getAddressListState } from '../../../account/AddressBook/container/AddressBook.selectors';
 import {
@@ -25,7 +25,7 @@ import {
   emailSignupStatus,
 } from './Checkout.action';
 import utility from '../util/utility';
-import { CHECKOUT_ROUTES } from '../Checkout.constants';
+import constants, { CHECKOUT_ROUTES } from '../Checkout.constants';
 import {
   addGiftWrappingOption,
   removeGiftWrappingOption,
@@ -180,14 +180,15 @@ export function* addAndSetGiftWrappingOptions(payload) {
 
 export function* subscribeEmailAddress(emailObj, status, field1) {
   try {
+    const { storeId, langId, catalogId } = getAPIConfig();
     const payloadObject = {
-      storeId: 10151,
-      catalogId: 10551,
-      langId: '-1',
+      storeId,
+      catalogId,
+      langId,
       emailaddr: emailObj.payload,
       URL: 'email-confirmation',
       response: `${status}:::false:false`,
-      registrationType: '10',
+      registrationType: constants.EMAIL_REGISTRATION_TYPE_CONSTANT,
     };
 
     if (field1) {
@@ -197,9 +198,9 @@ export function* subscribeEmailAddress(emailObj, status, field1) {
     const { baseURI, relURI, method } = endpoints.addEmailSignup;
     const params = {
       payload: JSON.stringify(payloadObject),
-      langId: -1,
-      storeId: 10151,
-      catalogId: 10551,
+      langId,
+      storeId,
+      catalogId,
     };
     const res = yield call(emailSignupAbstractor.subscribeEmail, baseURI, relURI, params, method);
     yield put(emailSignupStatus({ subscription: res }));

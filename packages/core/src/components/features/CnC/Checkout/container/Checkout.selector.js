@@ -585,6 +585,10 @@ function getVenmoUserEmail(state) {
   );
 }
 
+const getCurrentLanguage = state => {
+  return state.CountrySelector.get('language') || constants.DEFAULT_LANGUAGE;
+};
+
 export default {
   getRecalcOrderPointsInterval,
   getIsOrderHasShipping,
@@ -648,4 +652,5 @@ export default {
   isVenmoNonceNotExpired,
   isVenmoPaymentInProgress,
   isVenmoPaymentToken,
+  getCurrentLanguage,
 };
