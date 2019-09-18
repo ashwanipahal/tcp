@@ -1,6 +1,7 @@
-import { getLabelValue, formatDate, isValidDate } from '../utils';
+import { getLabelValue, formatDate, isValidDate, formatPhoneNumber } from '../utils';
 
 const formattedDate = '01/01/1970';
+const formattedPhoneNumber = '(718)-243-1150';
 
 describe('getLabelValue', () => {
   const labelState = {
@@ -68,5 +69,12 @@ describe('isvalidDate', () => {
   it('should return false for invalid date', () => {
     const date = new Date('');
     expect(isValidDate(date)).toBeFalsy();
+  });
+});
+
+describe('formatPhoneNumner', () => {
+  it('should format the phone number correctly with area code in brackets', () => {
+    const phone = formatPhoneNumber('7182431150');
+    expect(phone).toBe(formattedPhoneNumber);
   });
 });
