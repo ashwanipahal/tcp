@@ -29,7 +29,7 @@ exports[`ProductListingFiltersForm is shown should render ProductListingFiltersF
             tabIndex={0}
             textAlign="center"
           >
-            undefined:
+            undefined
           </Styled(BodyCopy)>
           <Field
             allowMultipleSelections={true}
@@ -2473,25 +2473,55 @@ exports[`ProductListingFiltersForm is shown should render ProductListingFiltersF
           />
         </div>
       </div>
-      <Styled(AppliedFiltersList)
-        appliedFilters={
-          Array [
-            Array [],
-            Array [
-              Object {
-                "displayName": "Shoes & Accessories",
-                "facetName": "categoryPath2_uFilter",
-                "id": "Shoes & Accessories",
-              },
-            ],
-          ]
-        }
-        auxColorMap={Object {}}
-        className=""
-        labels={Object {}}
-        onRemoveFilter={[Function]}
-        removeAllFilters={[Function]}
-      />
+      <Styled(Row)
+        className="filtered-by-section"
+        fullBleed={true}
+      >
+        <Styled(Col)
+          colSize={
+            Object {
+              "large": 10,
+              "medium": 0,
+              "small": 0,
+            }
+          }
+        >
+          <Styled(AppliedFiltersList)
+            appliedFilters={
+              Array [
+                Array [],
+                Array [
+                  Object {
+                    "displayName": "Shoes & Accessories",
+                    "facetName": "categoryPath2_uFilter",
+                    "id": "Shoes & Accessories",
+                  },
+                ],
+              ]
+            }
+            auxColorMap={Object {}}
+            className=""
+            labels={Object {}}
+            onRemoveFilter={[Function]}
+            removeAllFilters={[Function]}
+            totalProductsCount="34"
+          />
+        </Styled(Col)>
+        <Styled(Col)
+          colSize={
+            Object {
+              "large": 2,
+              "medium": 8,
+              "small": 6,
+            }
+          }
+        >
+          <Styled(LoadedProductsCount)
+            showingItemsLabel={Object {}}
+            totalProductsCount="34"
+          />
+        </Styled(Col)>
+      </Styled(Row)>
     </form>
     <div
       className="render-mobile-view"

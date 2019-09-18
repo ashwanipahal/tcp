@@ -70,10 +70,11 @@ const ProductListView = ({
                 onSubmit={onSubmit}
                 formValues={formValues}
                 getProducts={getProducts}
+                slpLabels={slpLabels}
               />
             </div>
           </Col>
-          <Col colSize={{ small: 6, medium: 8, large: 12 }}>
+          <Col colSize={{ small: 6, medium: 8, large: 12 }} className="show-count-section">
             <LoadedProductsCount
               totalProductsCount={totalProductsCount}
               showingItemsLabel={slpLabels}
