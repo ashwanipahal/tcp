@@ -50,7 +50,7 @@ const PlaceRewardsSection = ({ labels, className, ...otherProps }) => {
           <BonusPointsDays />
         </StyledView>
         <StyledViewLargeMargin>
-          <EarnExtraPointsTileContainer />
+          <EarnExtraPointsTileContainer {...otherProps} />
         </StyledViewLargeMargin>
         <MyRewards labels={labels} showLink {...otherProps} />
       </ScrollView>

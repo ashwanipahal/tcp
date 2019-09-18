@@ -24,12 +24,20 @@ const MODULE_WIDTH = getScreenWidth() - 30;
  */
 
 class EarnExtraPointsTile extends PureComponent {
-  renderView = ({ item, labels }) => {
-    return <DetailedEarnExtraPointsTile key={item.id} waysToEarnRow={item} labels={labels} />;
+  renderView = ({ item }) => {
+    const { labels, ...otherProps } = this.props;
+    return (
+      <DetailedEarnExtraPointsTile
+        key={item.id}
+        waysToEarnRow={item}
+        labels={labels}
+        {...otherProps}
+      />
+    );
   };
 
   render() {
-    const { labels, waysToEarn } = this.props;
+    const { labels, waysToEarn, handleComponentChange } = this.props;
 
     return (
       <View>
@@ -47,6 +55,7 @@ class EarnExtraPointsTile extends PureComponent {
             anchorVariation="primary"
             text={getLabelValue(labels, 'lbl_common_viewAll')}
             data-locator="earnExtraPointsViewAll"
+            onPress={() => handleComponentChange('accountOverviewMobile')}
             underline
           />
         </EarnExtraPointsHeading>
@@ -75,6 +84,7 @@ class EarnExtraPointsTile extends PureComponent {
 
 EarnExtraPointsTile.propTypes = {
   waysToEarn: PropTypes.shape([]),
+  handleComponentChange: PropTypes.func,
   labels: PropTypes.shape({
     lbl_common_earnExtraPoints: PropTypes.string,
     lbl_common_viewAll: PropTypes.string,
@@ -83,6 +93,7 @@ EarnExtraPointsTile.propTypes = {
 
 EarnExtraPointsTile.defaultProps = {
   waysToEarn: [],
+  handleComponentChange: () => {},
   labels: {
     lbl_common_earnExtraPoints: '',
     lbl_common_viewAll: '',

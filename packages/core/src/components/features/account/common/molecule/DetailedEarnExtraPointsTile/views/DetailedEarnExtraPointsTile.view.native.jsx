@@ -1,6 +1,6 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import { BodyCopy } from '@tcp/core/src/components/common/atoms';
+import { BodyCopy, Anchor } from '@tcp/core/src/components/common/atoms';
 import {
   TileWrapper,
   EarnPointDesc,
@@ -33,42 +33,46 @@ const sourceMap = {
 export class DetailedEarnExtraPointsTile extends React.PureComponent {
   static propTypes = {
     labels: PropTypes.shape({}),
+    handleComponentChange: PropTypes.func,
     waysToEarnRow: PropTypes.shape({}),
   };
 
   static defaultProps = {
     labels: {},
+    handleComponentChange: () => {},
     waysToEarnRow: {},
   };
 
   render() {
-    const { waysToEarnRow } = this.props;
+    const { waysToEarnRow, handleComponentChange } = this.props;
 
     return (
       <TileWrapper>
-        <EarnExtraPointsTileImage>
-          <ImageSize source={sourceMap[waysToEarnRow.activityCode]} />
-        </EarnExtraPointsTileImage>
-        <BodyCopy
-          component="p"
-          fontSize="fs16"
-          fontWeight="black"
-          fontFamily="secondary"
-          textAlign="center"
-          text={waysToEarnRow.activityTitle}
-          data-locator={`earnExtraPointsActivityTitle_${waysToEarnRow.activityCode}`}
-        />
-        <EarnPointDesc>
+        <Anchor onPress={() => handleComponentChange('accountOverviewMobile')}>
+          <EarnExtraPointsTileImage>
+            <ImageSize source={sourceMap[waysToEarnRow.activityCode]} />
+          </EarnExtraPointsTileImage>
           <BodyCopy
             component="p"
             fontSize="fs16"
-            fontWeight="regular"
+            fontWeight="black"
             fontFamily="secondary"
             textAlign="center"
-            text={waysToEarnRow.description}
-            data-locator={`earnExtraPointsDescription_${waysToEarnRow.activityCode}`}
+            text={waysToEarnRow.activityTitle}
+            data-locator={`earnExtraPointsActivityTitle_${waysToEarnRow.activityCode}`}
           />
-        </EarnPointDesc>
+          <EarnPointDesc>
+            <BodyCopy
+              component="p"
+              fontSize="fs16"
+              fontWeight="regular"
+              fontFamily="secondary"
+              textAlign="center"
+              text={waysToEarnRow.description}
+              data-locator={`earnExtraPointsDescription_${waysToEarnRow.activityCode}`}
+            />
+          </EarnPointDesc>
+        </Anchor>
       </TileWrapper>
     );
   }
