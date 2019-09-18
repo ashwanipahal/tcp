@@ -300,5 +300,13 @@ const endpoints = {
     method: 'GET',
     URI: 'v2/vendor/getStoreAndProductInventoryInfo',
   },
+  checkout: {
+    method: 'POST',
+    URI: 'v2/checkout/addCheckout',
+  },
+  personalizedCoupons: {
+    method: 'POST',
+    URI: 'v2/coupons/getOffers',
+  },
 };
 export default endpoints;

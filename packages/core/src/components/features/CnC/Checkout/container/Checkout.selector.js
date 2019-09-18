@@ -503,6 +503,12 @@ const getReviewLabels = state => {
   };
 };
 
+const getCurrentOrderId = state => {
+  return state.CartPageReducer.getIn(['orderDetails', 'orderId']);
+};
+
+const getSmsNumberForBillingOrderUpdates = state =>
+  state.Checkout.getIn(['values', 'smsInfo', 'numberForUpdates']);
 const getVenmoData = state => {
   return state[CHECKOUT_REDUCER_KEY].getIn(['values', 'venmoData']);
 };
@@ -579,6 +585,10 @@ function getVenmoUserEmail(state) {
   );
 }
 
+const getCurrentLanguage = state => {
+  return state.CountrySelector.get('language') || constants.DEFAULT_LANGUAGE;
+};
+
 export default {
   getRecalcOrderPointsInterval,
   getIsOrderHasShipping,
@@ -631,6 +641,8 @@ export default {
   getGiftServicesSend,
   getPaypalPaymentSettings,
   getReviewLabels,
+  getCurrentOrderId,
+  getSmsNumberForBillingOrderUpdates,
   getVenmoData,
   getVenmoClientTokenData,
   isVenmoPaymentAvailable,
@@ -640,4 +652,5 @@ export default {
   isVenmoNonceNotExpired,
   isVenmoPaymentInProgress,
   isVenmoPaymentToken,
+  getCurrentLanguage,
 };
