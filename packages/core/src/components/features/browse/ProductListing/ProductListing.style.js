@@ -39,7 +39,11 @@ export default css`
       display: block;
     }
   }
-
+  .show-count-section {
+    @media ${props => props.theme.mediaQuery.large} {
+      display: none;
+    }
+  }
   .render-mobile-view {
     width: auto;
     padding: 0;

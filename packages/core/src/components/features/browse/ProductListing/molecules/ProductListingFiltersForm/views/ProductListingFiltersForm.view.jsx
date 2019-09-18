@@ -15,6 +15,7 @@ import { FACETS_FIELD_KEY } from '../../../../../../../services/abstractors/prod
 import SortSelector from '../../SortSelector';
 import config from '../../SortSelector/SortSelector.config';
 import { DESCRIPTION_FILTER } from '../../../container/ProductListing.constants';
+import LoadedProductsCount from '../../LoadedProductsCount/views';
 
 /**
  * @function getColorFilterOptionsMap This handles to render the desktop filter fields of color
@@ -342,22 +343,14 @@ class ProductListingFiltersForm extends React.Component {
                   className={className}
                   labels={labels}
                   totalProductsCount={totalProductsCount}
-                  showingItemsLabel={showingItemsLabel}
                 />
               )}
             </Col>
             <Col colSize={{ small: 6, medium: 8, large: 2 }}>
-              <div className="count-section">
-                {totalProductsCount > 0 && (
-                  <span className="items-count-content">
-                    Showing
-                    <span className="items-count-content-number">
-                      {totalProductsCount > 0 ? totalProductsCount : 0}
-                    </span>
-                    {totalProductsCount > 1 ? 'Items' : 'Item'}
-                  </span>
-                )}
-              </div>
+              <LoadedProductsCount
+                totalProductsCount={totalProductsCount}
+                showingItemsLabel={showingItemsLabel}
+              />
             </Col>
           </Row>
         </form>
