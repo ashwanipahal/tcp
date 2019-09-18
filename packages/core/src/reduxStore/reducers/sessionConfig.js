@@ -22,6 +22,8 @@ const SessionConfigReducer = (state = initialState, action) => {
   switch (action.type) {
     case GLOBAL_CONSTANTS.SET_XAPP_CONFIG:
       return state.set('siteDetails', mergedSiteDetails(state, action.payload));
+    case GLOBAL_CONSTANTS.SET_BOSS_BOPIS_FLAGS:
+      return state.set('siteDetails', mergedSiteDetails(state, action.payload));
     case GLOBAL_CONSTANTS.SET_COUNTRY:
       return state.setIn(['siteDetails', 'country'], action.payload);
     case GLOBAL_CONSTANTS.SET_CURRENCY:
