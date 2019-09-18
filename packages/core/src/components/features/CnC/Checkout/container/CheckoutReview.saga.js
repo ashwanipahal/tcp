@@ -1,5 +1,5 @@
 /* eslint-disable extra-rules/no-commented-out-code */
-import { call, put, all, select } from 'redux-saga/effects';
+import { call, all, select } from 'redux-saga/effects';
 import { getCurrentLanguage } from '@tcp/web/src/components/features/content/Header/molecules/CountrySelector/container/CountrySelector.selectors';
 // import { getUserEmail } from '../../../account/User/container/User.selectors';
 import { isCanada } from '../../../../../utils/utils';
@@ -13,7 +13,6 @@ import utility from '../util/utility';
 import { CHECKOUT_ROUTES } from '../Checkout.constants';
 import { validateAndSubmitEmailSignup } from './Checkout.saga.util';
 import { getAppliedCouponListState } from '../../common/organism/CouponAndPromos/container/Coupon.selectors';
-import { setCouponList } from '../../common/organism/CouponAndPromos/container/Coupon.actions';
 
 const {
   // isVenmoPaymentAvailable,
@@ -57,7 +56,7 @@ const {
 //   }
 // }
 
-function* loadPersonalizedCoupons(
+export function* loadPersonalizedCoupons(
   {
     isElectiveBonus,
     currencyCode,
@@ -122,13 +121,12 @@ export function* submitOrderProcessing(orderId, smsOrderInfo, currentLanguage) {
   //   email,
   // };
   // }
-
-  const res = yield submitOrder(orderId, smsOrderInfo, currentLanguage, venmoPayloadData);
+  const res = yield call(submitOrder, orderId, smsOrderInfo, currentLanguage, venmoPayloadData);
   // const cartItems = yield select(BagPageSelectors.getOrderItems);
   // const vendorId =
   //   cartItems.size > 0 && cartItems.getIn(['0', 'miscInfo', 'vendorColorDisplayId']);
   yield call(loadPersonalizedCoupons, res, orderId);
-  yield put(setCouponList(res));
+  // yield put(setCouponList(res));
   const email = res.userDetails ? res.userDetails.emailAddress : res.shipping.emailAddress;
   const isCaSite = yield call(isCanada);
   const isGuestUser = yield select(isGuest);
