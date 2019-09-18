@@ -4,7 +4,6 @@ import { PropTypes } from 'prop-types';
 import errorBoundary from '@tcp/core/src/components/common/hoc/withErrorBoundary';
 import HomePageSlots from '@tcp/core/src/components/common/molecules/HomePageSlots';
 import GetCandid from '@tcp/core/src/components/common/molecules/GetCandid';
-import Recommendations from '../../../../common/molecules/Recommendations';
 
 const returnModule = mod => mod.default;
 
@@ -18,11 +17,7 @@ const HomePageView = dynamic({
     moduleN: () => import('@tcp/core/src/components/common/molecules/ModuleN').then(returnModule),
   }),
   render: ({ slots }, modules) => {
-    return [
-      <HomePageSlots slots={slots} modules={modules} />,
-      <GetCandid />,
-      <Recommendations variations="moduleO,moduleP" />,
-    ];
+    return [<HomePageSlots slots={slots} modules={modules} />, <GetCandid />];
   },
 });
 
