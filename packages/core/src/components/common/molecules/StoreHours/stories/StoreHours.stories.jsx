@@ -1,6 +1,7 @@
 import React from 'react';
 import { storiesOf } from '@storybook/react';
 import tcpTheme from '@tcp/core/styles/themes/TCP';
+import gmyTheme from '@tcp/core/styles/themes/Gymboree';
 import StoreHours from '../views/StoreHours';
 
 const storeTiming = [
@@ -82,9 +83,19 @@ storiesOf('StoreHours', module)
       storeTiming={storeTiming}
     />
   ))
-  .add('With Meta', () => (
+  .add('With Meta - TCP', () => (
     <StoreHours
       theme={tcpTheme}
+      title="Store Hours"
+      defaultOpen={true}
+      noDataMsg="No Data found!"
+      storeTiming={storeTiming}
+      storeMeta={storeMeta}
+    />
+  ))
+  .add('With Meta - Gymboree', () => (
+    <StoreHours
+      theme={gmyTheme}
       title="Store Hours"
       defaultOpen={true}
       noDataMsg="No Data found!"

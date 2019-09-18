@@ -1,10 +1,14 @@
 import React from 'react';
-import { shallow } from 'enzyme';
+import { shallow, mount } from 'enzyme';
+import theme from '@tcp/core/styles/themes/TCP';
 import StoreHours from '../views/StoreHours';
 
 describe('StoreHours component', () => {
   it('StoreHours component renders correctly without props', () => {
-    const component = shallow(<StoreHours />);
+    const props = {
+      theme,
+    };
+    const component = shallow(<StoreHours {...props} />);
     expect(component).toMatchSnapshot();
   });
 
@@ -17,10 +21,16 @@ describe('StoreHours component', () => {
           label: 'Test',
           value: 'Test',
         },
+        {
+          id: 2,
+          label: 'Test',
+          value: 'Test',
+        },
       ],
       title: 'Store Hours',
+      theme,
     };
-    const component = shallow(<StoreHours {...props} />);
+    const component = mount(<StoreHours {...props} />);
     expect(component).toMatchSnapshot();
   });
 
@@ -42,8 +52,9 @@ describe('StoreHours component', () => {
         },
       ],
       title: 'Store Hours',
+      theme,
     };
-    const component = shallow(<StoreHours {...props} />);
+    const component = mount(<StoreHours {...props} />);
     expect(component).toMatchSnapshot();
   });
 });
