@@ -134,7 +134,7 @@ const LinkText = (props: Props) => {
       );
     }
     return (
-      <Anchor key={index.toString()} url={link.url} navigation={navigation} donotlookup>
+      <Anchor key={index.toString()} url={link.url} navigation={navigation}>
         <Component
           {...compProps}
           text={getTextItems(textItems, renderComponentInNewLine, useStyle)}

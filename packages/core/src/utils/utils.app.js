@@ -176,14 +176,12 @@ const getLandingPage = url => {
  * @param {function} navigation
  * Returns navigation to the parsed URL based on  the url param
  */
-export const navigateToPage = (url, navigation, donotlookup) => {
-  console.info('donotlookup---', donotlookup);
+export const navigateToPage = (url, navigation) => {
   const { URL_PATTERN } = config;
   const { navigate } = navigation;
   const category = getLandingPage(url);
   const text = url.split('/');
   const titleSplitValue = text[text.length - 1].replace(/[\W_]+/g, ' ');
-  const setLookupValue = donotlookup;
   switch (category) {
     case URL_PATTERN.PRODUCT_LIST:
       /**
@@ -202,7 +200,6 @@ export const navigateToPage = (url, navigation, donotlookup) => {
         url,
         title: titleSplitValue,
         reset: true,
-        donotlookup: setLookupValue,
       });
     default:
       return null;
