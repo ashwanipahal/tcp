@@ -13,6 +13,7 @@ import endpoints from '../../../../common/externalEndpoints';
 import AboutYouInfo from '../../AboutYouInfo';
 import MailingInformationContainer from '../../MailingInformation';
 import ModalNative from '../../../../../../common/molecules/Modal';
+import BirthdaySavingsPage from '../../../../BirthdaySavingsPage';
 
 export class ProfileInformation extends React.PureComponent {
   constructor(props) {
@@ -20,6 +21,7 @@ export class ProfileInformation extends React.PureComponent {
     this.state = {
       mountSurveyModal: false,
       mountMailingAddressModal: false,
+      mountAddChildModal: false,
     };
   }
 
@@ -33,6 +35,10 @@ export class ProfileInformation extends React.PureComponent {
 
   toggleMailingAddressModal = () => {
     this.toggleModalState('mountMailingAddressModal');
+  };
+
+  toggleAddChildModal = () => {
+    this.toggleModalState('mountAddChildModal');
   };
 
   render() {
@@ -53,7 +59,7 @@ export class ProfileInformation extends React.PureComponent {
       userSurvey,
       percentageIncrement,
     } = this.props;
-    const { mountSurveyModal, mountMailingAddressModal } = this.state;
+    const { mountSurveyModal, mountMailingAddressModal, mountAddChildModal } = this.state;
     return (
       <>
         <ProfileInfoActions
@@ -85,7 +91,11 @@ export class ProfileInformation extends React.PureComponent {
         )}
         <ChangePasswordInfo labels={labels} handleComponentChange={handleComponentChange} />
         {!!defaultStore && <MyFavoriteStore defaultStore={defaultStore} />}
-        <BirthdaySaving labels={labels} handleComponentChange={handleComponentChange} />
+        <BirthdaySaving labels={labels} handleComponentChange={this.toggleAddChildModal} />
+        <BirthdaySavingsPage
+          mountAddChildModal={mountAddChildModal}
+          handleComponentChange={this.toggleAddChildModal}
+        />
         <StyledAnchorWrapper>
           <Anchor
             fontSizeVariation="medium"
