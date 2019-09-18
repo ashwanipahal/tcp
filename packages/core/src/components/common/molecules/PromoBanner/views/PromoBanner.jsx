@@ -69,7 +69,8 @@ const PromoBanner = props => {
             /* this need to be fixed once we have 5 items for module A or unlimited textItems creation in CMS */
             if (
               style === 'percentage_wrapped_extra_large' ||
-              style === 'percentage_wrapped_large'
+              style === 'percentage_wrapped_large' ||
+              style === 'percentage_all_wrapped_normal'
             ) {
               const percentageTexts = text.split(' ');
               promoText = (
