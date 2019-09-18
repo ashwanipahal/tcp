@@ -46,3 +46,6 @@ yarn-error.log
 TestComponent
 TestContainer
 withTest
+
+#storybook
+storybook-static
