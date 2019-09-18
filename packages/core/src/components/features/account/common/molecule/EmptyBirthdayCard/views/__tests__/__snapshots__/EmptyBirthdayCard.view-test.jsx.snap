@@ -1,50 +1,159 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
 exports[`EmptyBirthdayCard should render correctly for edit view 1`] = `
-<Styled(BodyCopy)
+<StyledComponent
   className="test"
-  color="text.primary"
-  component="div"
-  fontFamily="primary"
-  fontSize={12}
-  fontWeight="regular"
-  letterSpacing="normal"
-  lineHeight="normal"
-  textAlign="center"
->
-  <div>
-    <Styled(BodyCopy)
-      className="elem-mr-XXS"
-      color="text.primary"
-      component="span"
-      fontFamily="primary"
-      fontSize="fs14"
-      fontWeight="regular"
-      letterSpacing="normal"
-      lineHeight="normal"
-      textAlign="left"
-    >
-      +
-    </Styled(BodyCopy)>
-    <Styled(Anchor)
-      data-locator="addAChildLnk"
-      fontSizeVariation="large"
-      underline={true}
-    />
-  </div>
-</Styled(BodyCopy)>
+  forwardedComponent={
+    Object {
+      "$$typeof": Symbol(react.forward_ref),
+      "attrs": Array [],
+      "componentStyle": ComponentStyle {
+        "componentId": "sc-htpNat",
+        "isStatic": false,
+        "rules": Array [
+          "
+  ",
+          "
+  .emptyBirthdayCard {
+    border: ",
+          [Function],
+          ";
+    display: flex;
+    align-items: center;
+    justify-content: space-around;
+    height: ",
+          "66px",
+          ";
+  }
+
+  .emptyBirthdayCard__active {
+    background-color: ",
+          [Function],
+          ";
+  }
+",
+          ";
+",
+        ],
+      },
+      "displayName": "Styled(EmptyBirthdayCard)",
+      "foldedComponentIds": Array [],
+      "render": [Function],
+      "styledComponentId": "sc-htpNat",
+      "target": [Function],
+      "toString": [Function],
+      "warnTooManyClasses": [Function],
+      "withComponent": [Function],
+    }
+  }
+  forwardedRef={null}
+  labels={Object {}}
+  view="edit"
+/>
 `;
 
 exports[`EmptyBirthdayCard should render correctly for read view as well 1`] = `
-<Styled(BodyCopy)
+<StyledComponent
   className="test"
-  color="text.primary"
-  component="div"
-  fontFamily="primary"
-  fontSize={12}
-  fontWeight="regular"
-  letterSpacing="normal"
-  lineHeight="normal"
-  textAlign="center"
+  forwardedComponent={
+    Object {
+      "$$typeof": Symbol(react.forward_ref),
+      "attrs": Array [],
+      "componentStyle": ComponentStyle {
+        "componentId": "sc-htpNat",
+        "isStatic": false,
+        "rules": Array [
+          "
+  ",
+          "
+  .emptyBirthdayCard {
+    border: ",
+          [Function],
+          ";
+    display: flex;
+    align-items: center;
+    justify-content: space-around;
+    height: ",
+          "66px",
+          ";
+  }
+
+  .emptyBirthdayCard__active {
+    background-color: ",
+          [Function],
+          ";
+  }
+",
+          ";
+",
+        ],
+      },
+      "displayName": "Styled(EmptyBirthdayCard)",
+      "foldedComponentIds": Array [],
+      "render": [Function],
+      "styledComponentId": "sc-htpNat",
+      "target": [Function],
+      "toString": [Function],
+      "warnTooManyClasses": [Function],
+      "withComponent": [Function],
+    }
+  }
+  forwardedRef={null}
+  labels={Object {}}
+  view="read"
+/>
+`;
+
+exports[`EmptyBirthdayCard should render correctly for selected box 1`] = `
+<StyledComponent
+  active={1}
+  className="test"
+  forwardedComponent={
+    Object {
+      "$$typeof": Symbol(react.forward_ref),
+      "attrs": Array [],
+      "componentStyle": ComponentStyle {
+        "componentId": "sc-htpNat",
+        "isStatic": false,
+        "rules": Array [
+          "
+  ",
+          "
+  .emptyBirthdayCard {
+    border: ",
+          [Function],
+          ";
+    display: flex;
+    align-items: center;
+    justify-content: space-around;
+    height: ",
+          "66px",
+          ";
+  }
+
+  .emptyBirthdayCard__active {
+    background-color: ",
+          [Function],
+          ";
+  }
+",
+          ";
+",
+        ],
+      },
+      "displayName": "Styled(EmptyBirthdayCard)",
+      "foldedComponentIds": Array [],
+      "render": [Function],
+      "styledComponentId": "sc-htpNat",
+      "target": [Function],
+      "toString": [Function],
+      "warnTooManyClasses": [Function],
+      "withComponent": [Function],
+    }
+  }
+  forwardedRef={null}
+  id={1}
+  labels={Object {}}
+  view="read"
 />
 `;

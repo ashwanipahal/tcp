@@ -36,6 +36,14 @@ const styles = css`
     background-image: url('/static/images/survey.png');
   }
 
+  .FeedbackSurvey {
+    background-image: url('/static/images/oval.svg');
+  }
+
+  .TwitterLink {
+    background-image: url('/static/images/twitter.png');
+  }
+
   .tileWrapper {
     border: 1px solid ${props => props.theme.colorPalette.gray[300]};
     background: ${props => props.theme.colors.WHITE};

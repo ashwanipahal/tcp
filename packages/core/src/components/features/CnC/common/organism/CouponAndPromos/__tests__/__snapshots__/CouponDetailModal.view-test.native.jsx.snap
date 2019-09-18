@@ -42,11 +42,22 @@ exports[`Detail Coupon Modal should render correctly 1`] = `
       <View
         data-locator="couponDetailModal_applied_BarCode"
       >
-        <BarcodeView
-          format="CODE128"
-          height="50"
-          value="Y00105578"
-        />
+        <ScreenViewShot
+          options={
+            Object {
+              "format": "png",
+              "quality": 0.9,
+              "result": "base64",
+            }
+          }
+          setScreenViewShotRef={[Function]}
+        >
+          <BarcodeView
+            format="CODE128"
+            height="50"
+            value="Y00105578"
+          />
+        </ScreenViewShot>
       </View>
       <Styled(View) />
       <Styled(View)
@@ -69,7 +80,7 @@ exports[`Detail Coupon Modal should render correctly 1`] = `
         dataLocator="couponDetailModal_applied_printAch"
         fontSizeVariation="large"
         locator=""
-        onPress={null}
+        onPress={[Function]}
         text="PRINT_ANCHOR_TEXT"
         underlineBlue={true}
         visible={false}
