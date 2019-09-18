@@ -67,11 +67,7 @@ const ModuleB = props => {
   const buttonListProps = getButtonListVariationProps(ctaType);
   const colSize = getColSize(moduleWidth);
 
-  if (ctaItems.length < 3) {
-    buttonListProps.dualVariation = null;
-  } else {
-    buttonListProps.dualVariation = ctaTypeProps[ctaType];
-  }
+  const dualVariation = ctaItems.length < 3 ? null : buttonListProps.dualVariation;
 
   const imageBannerProps = {
     bannerPosition,
@@ -105,7 +101,7 @@ const ModuleB = props => {
             dataLocatorDivisionImages={getLocator('moduleB_cta_image')}
             dataLocatorTextCta={getLocator('moduleB_cta_links')}
             dropdownLabel={expandableTitle}
-            {...buttonListProps}
+            dualVariation={dualVariation}
           />
         </Col>
       </Row>
