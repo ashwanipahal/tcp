@@ -37,10 +37,12 @@ const StyledModal = css`
   }
   .condensed-overlay {
     overflow-y: unset;
-    @media ${props => props.theme.mediaQuery.medium} {
-      position: fixed;
-      top: 67px;
-      width: 374px;
+    position: fixed;
+    top: 63px;
+    width: 374px;
+
+    @media ${props => props.theme.mediaQuery.large} {
+      top: 71px;
     }
   }
   .modal__bar {
@@ -63,10 +65,10 @@ const StyledModal = css`
     z-index: 99;
   }
   .condensed-modal-triangle {
-    left: 127px !important;
+    left: 265px !important;
 
-    @media ${props => props.theme.mediaQuery.mediumOnly} {
-      left: 265px !important;
+    @media ${props => props.theme.mediaQuery.large} {
+      left: 166px !important;
     }
   }
   .modal__closeIcon {

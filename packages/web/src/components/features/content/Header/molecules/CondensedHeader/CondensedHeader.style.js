@@ -15,24 +15,25 @@ export default css`
     width: 100%;
     @media ${props => props.theme.mediaQuery.large} {
       padding: 0 14px;
+      padding-top: 12px;
     }
 
     @media ${props => props.theme.mediaQuery.mediumOnly} {
       padding: 14px 0;
     }
 
+    .nav-bar-l1 {
+      overflow-x: hidden;
+    }
+
     .nav-bar-l1-content {
       padding-top: 0;
-      line-height: 1.7;
+      line-height: 2;
     }
 
     .tcp-drawer__isOpen{
       top: 316px;
     }
-  }
-
-  .navigation {
-    overflow: hidden;
   }
 
   .hamburger-menu {
@@ -74,10 +75,13 @@ export default css`
 
   .brand-logo-left {
     display: none;
+    text-align: left;
     @media ${props => props.theme.mediaQuery.large} {
       display: block;
-      width: 115px;
-      height: 41px;
+      img {
+        width: 115px;
+        height: 41px;
+      }
     }
   }
 
@@ -107,9 +111,36 @@ export default css`
 
   .condensed-icons{
     @media ${props => props.theme.mediaQuery.large} {
-      position: relative;
-      top: 50%;
-      transform: translateY(-50%);
+      text-align: right;
     }
+  }
+  .l1-overlay.is-open {
+    top: 43px;
+  }
+
+  .is-open {
+    .nav-bar-l2 {
+      @media ${props => props.theme.mediaQuery.large} {
+        display: block;
+        left: -26%;
+        width: 152%;
+        top: 100%;
+      }
+    }
+  }
+  .nav-bar-item-label {
+    font-size: 13px;
+  }
+  &.condensed-border{
+    @media ${props => props.theme.mediaQuery.large} {
+      position: fixed;
+      top: 70px;
+      left: -50%;
+      width: 200%;
+      z-index: ${props => props.theme.zindex.zCondensedHeader};
+      height: 1px;
+      background-color: ${props => props.theme.colorPalette.gray[1400]};
+    }
+
   }
 `;

@@ -65,13 +65,20 @@ export default css`
 
   .condensed-search {
     position: fixed;
-    top: 65px;
-    right: 0;
-    z-index: 1;
-    width: 337px;
+    z-index: ${props => props.theme.zindex.zCondensedHeaderSearch};
+    top: 14px;
+    width: 300px;
+
+    @media ${props => props.theme.mediaQuery.smallOnly} {
+      left: 0;
+    }
+    @media ${props => props.theme.mediaQuery.mediumOnly} {
+      right: 5em;
+    }
 
     @media ${props => props.theme.mediaQuery.large} {
-      right: 12em;
+      right: 11em;
+      top: 14px;
     }
   }
 

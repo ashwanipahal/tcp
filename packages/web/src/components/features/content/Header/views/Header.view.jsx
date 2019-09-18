@@ -41,7 +41,6 @@ class Header extends React.PureComponent {
   handleScroll = () => {
     const header = document.getElementById('header-middle-nav-bar');
     const sticky = header && header.offsetTop;
-    const condensedHeader = document.getElementsByClassName('condensed-header')[0];
     /**
      * Note:
      * 1. Condensed header is 'stuck' if scrolled past Navigation bar
@@ -53,16 +52,11 @@ class Header extends React.PureComponent {
       (!getViewportInfo().isDesktop && window.pageYOffset > sticky)
     ) {
       this.setState({ showCondensedHeader: true }, () => {
-        if (condensedHeader) {
-          condensedHeader.classList.add('show-condensed-header');
-        }
+        const condensedHeader = document.getElementsByClassName('condensed-header')[0];
+        condensedHeader.classList.add('show-condensed-header');
       });
     } else {
-      this.setState({ showCondensedHeader: false }, () => {
-        if (condensedHeader) {
-          condensedHeader.classList.remove('show-condensed-header');
-        }
-      });
+      this.setState({ showCondensedHeader: false });
     }
   };
 

@@ -243,6 +243,7 @@ class CondensedHeader extends React.PureComponent {
           toggleMiniBagModal={this.toggleMiniBagModal}
           userName={userName}
         />
+        <Row className={`${className} condensed-border`} />
       </React.Fragment>
     );
   }

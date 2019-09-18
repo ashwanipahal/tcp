@@ -8,5 +8,6 @@ export default {
   zModule: 200,
   zEnlargedImage: 100,
   zPLPFilterDropDown: 9,
-  zCondensedHeader: 4,
+  zCondensedHeader: 100,
+  zCondensedHeaderSearch: 200,
 };
