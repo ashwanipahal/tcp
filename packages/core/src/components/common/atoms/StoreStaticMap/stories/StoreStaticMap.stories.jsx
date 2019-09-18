@@ -47,9 +47,6 @@ StoreStaticMapTest.defaultProps = {
 const config = { googleApiKey: 'AIzaSyCzOG6DZLR-haS8xvPOr73KkIWPMBbTVI8' };
 
 storiesOf('StoreStaticMap', module)
-  .add('GoogleMap-NoProps', () => {
-    return <StoreStaticMap />;
-  })
   .add('GoogleMap-StoreList', () => {
     return (
       <StoreStaticMap storesList={list} isMobile={getViewportInfo().isMobile} config={config} />
