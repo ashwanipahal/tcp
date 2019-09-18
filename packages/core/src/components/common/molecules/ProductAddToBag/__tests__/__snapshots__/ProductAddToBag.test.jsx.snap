@@ -229,7 +229,7 @@ exports[`ProductAddToBagVanilla should render correctly should match snapshot 1`
       height: 30px;
       vertical-align: middle;
 
-      input[type=\\"radio\\"] {
+      input[type='radio'] {
         left: 0px;
         z-index: 1;
         width: 100%;
@@ -245,7 +245,7 @@ exports[`ProductAddToBagVanilla should render correctly should match snapshot 1`
 
       @media ",
                     [Function],
-                    "{
+                    " {
         width: 23px;
         height: 23px;
       }
@@ -271,7 +271,7 @@ exports[`ProductAddToBagVanilla should render correctly should match snapshot 1`
 
       @media ",
                     [Function],
-                    "{
+                    " {
         width: 23px;
         height: 23px;
       }
@@ -287,7 +287,7 @@ exports[`ProductAddToBagVanilla should render correctly should match snapshot 1`
 
       @media ",
                     [Function],
-                    "{
+                    " {
         width: 19px;
         height: 19px;
       }
@@ -295,7 +295,7 @@ exports[`ProductAddToBagVanilla should render correctly should match snapshot 1`
 
     @media ",
                     [Function],
-                    "{
+                    " {
       width: 23px;
       height: 23px;
     }
@@ -343,74 +343,74 @@ exports[`ProductAddToBagVanilla should render correctly should match snapshot 1`
                     "
   ",
                     "
-.size-and-fit-detail-container {
-  .size-and-fit-detail-title-msg{
-    font-size: ",
+  .size-and-fit-detail-container {
+    .size-and-fit-detail-title-msg {
+      font-size: ",
                     [Function],
                     "px;
-    font-weight: ",
+      font-weight: ",
                     [Function],
                     ";
-    margin-left: 25px;
-    vertical-align: middle;
-  }
-}
-
-.size-and-fit-detail-items-list {
-  margin-top: ",
-                    [Function],
-                    ";
-  width: calc(100% + 10px);
-  position: relative;
-  left: -5px;
-}
-
-/* Radio Button for size */
-.size-and-fit-detail-item {
-  padding: 0px;
-  margin: 5px;
-  cursor: pointer;
-
-  .input-radio-title {
-    padding: 5px ",
-                    [Function],
-                    ";
-    border: solid 1px #e3e3e3;
-    display: inline-block;
-    text-transform: capitalize;
-    font-size: ",
-                    [Function],
-                    "px;
-    border-radius: 6px;
-    margin-bottom: ",
-                    [Function],
-                    ";
-  }
-
-  &.item-disabled-option .input-radio-title {
-    color: #e3e3e3;
-    cursor: initial;
-  }
-
-  .input-radio-icon-unchecked,
-  .input-radio-icon-checked {
-    width: auto;
-    height: auto;
-    top: auto;
-    position: absolute;
-    vertical-align: middle;
-
-    input {
-      -webkit-appearance: none;
-    }
-
-    &:before,
-    &:after {
-      display: none;
+      margin-left: 25px;
+      vertical-align: middle;
     }
   }
 
-  .input-radio-icon-checked + .input-radio-title {
+  .size-and-fit-detail-items-list {
+    margin-top: ",
+                    [Function],
+                    ";
+    width: calc(100% + 10px);
+    position: relative;
+    left: -5px;
+  }
+
+  /* Radio Button for size */
+  .size-and-fit-detail-item {
+    padding: 0px;
+    margin: 5px;
+    cursor: pointer;
+
+    .input-radio-title {
+      padding: 5px ",
+                    [Function],
+                    ";
+      border: solid 1px #e3e3e3;
+      display: inline-block;
+      text-transform: capitalize;
+      font-size: ",
+                    [Function],
+                    "px;
+      border-radius: 6px;
+      margin-bottom: ",
+                    [Function],
+                    ";
+    }
+
+    &.item-disabled-option .input-radio-title {
+      color: #e3e3e3;
+      cursor: initial;
+    }
+
+    .input-radio-icon-unchecked,
+    .input-radio-icon-checked {
+      width: auto;
+      height: auto;
+      top: auto;
+      position: absolute;
+      vertical-align: middle;
+
+      input {
+        -webkit-appearance: none;
+      }
+
+      &:before,
+      &:after {
+        display: none;
+      }
+    }
+
+    .input-radio-icon-checked + .input-radio-title {
       background: ",
                     [Function],
                     ";
@@ -421,7 +421,7 @@ exports[`ProductAddToBagVanilla should render correctly should match snapshot 1`
                     [Function],
                     ";
     }
-}
+  }
 ",
                     ";
 ",
@@ -724,7 +724,7 @@ exports[`ProductAddToBagVanilla should render correctly should match snapshot wi
       height: 30px;
       vertical-align: middle;
 
-      input[type=\\"radio\\"] {
+      input[type='radio'] {
         left: 0px;
         z-index: 1;
         width: 100%;
@@ -740,7 +740,7 @@ exports[`ProductAddToBagVanilla should render correctly should match snapshot wi
 
       @media ",
                     [Function],
-                    "{
+                    " {
         width: 23px;
         height: 23px;
       }
@@ -766,7 +766,7 @@ exports[`ProductAddToBagVanilla should render correctly should match snapshot wi
 
       @media ",
                     [Function],
-                    "{
+                    " {
         width: 23px;
         height: 23px;
       }
@@ -782,7 +782,7 @@ exports[`ProductAddToBagVanilla should render correctly should match snapshot wi
 
       @media ",
                     [Function],
-                    "{
+                    " {
         width: 19px;
         height: 19px;
       }
@@ -790,7 +790,7 @@ exports[`ProductAddToBagVanilla should render correctly should match snapshot wi
 
     @media ",
                     [Function],
-                    "{
+                    " {
       width: 23px;
       height: 23px;
     }
@@ -838,74 +838,74 @@ exports[`ProductAddToBagVanilla should render correctly should match snapshot wi
                     "
   ",
                     "
-.size-and-fit-detail-container {
-  .size-and-fit-detail-title-msg{
-    font-size: ",
+  .size-and-fit-detail-container {
+    .size-and-fit-detail-title-msg {
+      font-size: ",
                     [Function],
                     "px;
-    font-weight: ",
+      font-weight: ",
                     [Function],
                     ";
-    margin-left: 25px;
-    vertical-align: middle;
-  }
-}
-
-.size-and-fit-detail-items-list {
-  margin-top: ",
-                    [Function],
-                    ";
-  width: calc(100% + 10px);
-  position: relative;
-  left: -5px;
-}
-
-/* Radio Button for size */
-.size-and-fit-detail-item {
-  padding: 0px;
-  margin: 5px;
-  cursor: pointer;
-
-  .input-radio-title {
-    padding: 5px ",
-                    [Function],
-                    ";
-    border: solid 1px #e3e3e3;
-    display: inline-block;
-    text-transform: capitalize;
-    font-size: ",
-                    [Function],
-                    "px;
-    border-radius: 6px;
-    margin-bottom: ",
-                    [Function],
-                    ";
-  }
-
-  &.item-disabled-option .input-radio-title {
-    color: #e3e3e3;
-    cursor: initial;
-  }
-
-  .input-radio-icon-unchecked,
-  .input-radio-icon-checked {
-    width: auto;
-    height: auto;
-    top: auto;
-    position: absolute;
-    vertical-align: middle;
-
-    input {
-      -webkit-appearance: none;
-    }
-
-    &:before,
-    &:after {
-      display: none;
+      margin-left: 25px;
+      vertical-align: middle;
     }
   }
 
-  .input-radio-icon-checked + .input-radio-title {
+  .size-and-fit-detail-items-list {
+    margin-top: ",
+                    [Function],
+                    ";
+    width: calc(100% + 10px);
+    position: relative;
+    left: -5px;
+  }
+
+  /* Radio Button for size */
+  .size-and-fit-detail-item {
+    padding: 0px;
+    margin: 5px;
+    cursor: pointer;
+
+    .input-radio-title {
+      padding: 5px ",
+                    [Function],
+                    ";
+      border: solid 1px #e3e3e3;
+      display: inline-block;
+      text-transform: capitalize;
+      font-size: ",
+                    [Function],
+                    "px;
+      border-radius: 6px;
+      margin-bottom: ",
+                    [Function],
+                    ";
+    }
+
+    &.item-disabled-option .input-radio-title {
+      color: #e3e3e3;
+      cursor: initial;
+    }
+
+    .input-radio-icon-unchecked,
+    .input-radio-icon-checked {
+      width: auto;
+      height: auto;
+      top: auto;
+      position: absolute;
+      vertical-align: middle;
+
+      input {
+        -webkit-appearance: none;
+      }
+
+      &:before,
+      &:after {
+        display: none;
+      }
+    }
+
+    .input-radio-icon-checked + .input-radio-title {
       background: ",
                     [Function],
                     ";
@@ -916,7 +916,7 @@ exports[`ProductAddToBagVanilla should render correctly should match snapshot wi
                     [Function],
                     ";
     }
-}
+  }
 ",
                     ";
 ",
