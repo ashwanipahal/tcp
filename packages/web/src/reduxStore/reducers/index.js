@@ -45,7 +45,7 @@ import BirthdaySavingsListReducer from '@tcp/core/src/components/features/accoun
 import PickupModalReducer from '@tcp/core/src/components/common/organisms/PickupStoreModal/container/PickUpStoreModal.reducer';
 import RecommendationsReducer from '@tcp/core/src/components/common/molecules/Recommendations/container/Recommendations.reducer';
 import SearchBarReducer from '@tcp/web/src/components/features/content/Header/molecules/SearchBar/SearchBar.reducer';
-import StoreLocatorReducer from '@tcp/core/src/components/features/storeLocator/container/StoreLocator.reducer';
+import StoreLocatorReducer from '@tcp/core/src/components/features/storeLocator/StoreSearch/container/StoreSearch.reducer';
 import SearchPageReducer from '@tcp/core/src/components/features/browse/SearchDetail/container/SearchDetail.reducer';
 import MyFavoriteStoreReducer from '@tcp/core/src/components/features/account/MyProfile/organism/MyFavoriteStore/container/MyFavoriteStore.reducer';
 
