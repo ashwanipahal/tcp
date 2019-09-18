@@ -14,7 +14,8 @@ import style from '../ModuleB.style';
  * @param {*} ctaType
  */
 const getButtonListVariation = ctaType => {
-  return ctaTypes[ctaType];
+  const buttonTypes = ctaTypes;
+  return buttonTypes[ctaType];
 };
 
 /**
@@ -22,7 +23,8 @@ const getButtonListVariation = ctaType => {
  * @param {*} ctaType
  */
 const getButtonListVariationProps = ctaType => {
-  return ctaTypeProps[ctaType];
+  const buttonTypeProps = ctaTypeProps;
+  return buttonTypeProps[ctaType];
 };
 
 /**
