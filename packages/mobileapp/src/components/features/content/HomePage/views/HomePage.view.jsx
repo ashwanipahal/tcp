@@ -74,7 +74,6 @@ class HomePageView extends React.PureComponent<Props> {
           <HeaderPromo headerPromo={headerPromo} />
         </HeaderPromoContainer>
         <HomePageSlots slots={slots} modules={modulesMap} navigation={navigation} />
-        <ModuleB navigation={navigation} />
         <GetCandid apiConfig={apiConfig} navigation={navigation} />
         <Button
           fullWidth
