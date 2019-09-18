@@ -4,6 +4,7 @@ import ProductListingPageContainer from '@tcp/core/src/components/features/brows
 import BagPage from '@tcp/core/src/components/features/CnC/BagPage';
 import LoginPageContainer from '@tcp/core/src/components/features/account/LoginPage';
 import GetCandidGallery from '@tcp/core/src/components/common/molecules/GetCandidGallery/views/GetCandidGallery.native';
+import ProductListingPage from '@tcp/core/src/components/features/browse/ProductListing';
 import Home from '../components/features/content/HomePage';
 import account from '../components/features/account/account';
 import NavBarIcon from '../components/common/atoms/NavBarIcon';
@@ -35,6 +36,7 @@ const HomeStack = createStackNavigator(
         return getNewHeader(navigation);
       },
     },
+    ProductListingPage,
   },
   {
     defaultNavigationOptions: {

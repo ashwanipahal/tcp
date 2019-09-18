@@ -342,9 +342,24 @@ export const setGiftWrap = payload => {
     payload,
   };
 };
+
+export const getSetIsPaypalPaymentSettings = paypalPaymentSettings => {
+  return {
+    type: constants.CHECKOUT_ORDER_OPTIONS_SET_PAYPAL_PAYMENT,
+    paypalPaymentSettings,
+  };
+};
+
 export const submitReviewSection = payload => {
   return {
     type: constants.SUBMIT_REVIEW,
+    payload,
+  };
+};
+
+export const getVenmoClientToken = payload => {
+  return {
+    type: constants.GET_VENMO_CLIENT_TOKEN,
     payload,
   };
 };
@@ -356,9 +371,23 @@ export const setShowGiftCardForm = payload => {
   };
 };
 
+export const getVenmoClientTokenSuccess = payload => {
+  return {
+    type: constants.GET_VENMO_CLIENT_TOKEN_SUCCESS,
+    payload,
+  };
+};
+
 export const setHideGiftCardForm = payload => {
   return {
     type: constants.CHECKOUT_FLAGS_SET_BILLING_ADD_GIFT_CARD_HIDE,
+    payload,
+  };
+};
+
+export const getVenmoClientTokenError = payload => {
+  return {
+    type: constants.GET_VENMO_CLIENT_TOKEN_ERROR,
     payload,
   };
 };
@@ -370,9 +399,23 @@ export const addGiftCardFailure = payload => {
   };
 };
 
+export const setVenmoData = payload => {
+  return {
+    type: constants.SET_VENMO_DATA,
+    payload,
+  };
+};
+
 export const addGiftCardSuccess = payload => {
   return {
     type: constants.ADD_GIFT_CARD_SUCCESS,
+    payload,
+  };
+};
+
+export const setVenmoPaymentInProgress = payload => {
+  return {
+    type: constants.SET_VENMO_PAYMENT_INPROGRESS,
     payload,
   };
 };
@@ -383,6 +426,7 @@ export const resetAddGiftCard = payload => {
     payload,
   };
 };
+
 export const resetAddGiftCardSuccess = payload => {
   return {
     type: constants.RESET_ADD_GIFT_CARD_SUCCESS,

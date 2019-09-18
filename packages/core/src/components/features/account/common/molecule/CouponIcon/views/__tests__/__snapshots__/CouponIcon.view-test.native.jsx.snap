@@ -10,6 +10,7 @@ exports[`CouponIcon should render correctly 1`] = `
     fontSize="fs14"
     fontWeight="black"
     text="reward"
+    textAlign="center"
   />
 </Styled(View)>
 `;

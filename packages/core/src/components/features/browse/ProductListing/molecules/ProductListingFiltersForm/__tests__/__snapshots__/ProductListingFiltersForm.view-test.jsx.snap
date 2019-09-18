@@ -2305,9 +2305,7 @@ exports[`ProductListingFiltersForm is shown should render ProductListingFiltersF
                     letterSpacing="normal"
                     lineHeight="normal"
                     textAlign="left"
-                  >
-                    Recommended
-                  </ForwardRef>,
+                  />,
                   "title": <ForwardRef
                     className="sort-item-selected"
                     color="text.primary"
@@ -2318,9 +2316,7 @@ exports[`ProductListingFiltersForm is shown should render ProductListingFiltersF
                     letterSpacing="normal"
                     lineHeight="normal"
                     textAlign="left"
-                  >
-                    Recommended
-                  </ForwardRef>,
+                  />,
                   "value": "",
                 },
                 Object {
@@ -2334,9 +2330,7 @@ exports[`ProductListingFiltersForm is shown should render ProductListingFiltersF
                     letterSpacing="normal"
                     lineHeight="normal"
                     textAlign="left"
-                  >
-                    Price: High to Low
-                  </ForwardRef>,
+                  />,
                   "title": <ForwardRef
                     className="sort-item-selected"
                     color="text.primary"
@@ -2347,9 +2341,7 @@ exports[`ProductListingFiltersForm is shown should render ProductListingFiltersF
                     letterSpacing="normal"
                     lineHeight="normal"
                     textAlign="left"
-                  >
-                    Price: High to Low
-                  </ForwardRef>,
+                  />,
                   "value": "min_offer_price desc",
                 },
                 Object {
@@ -2363,9 +2355,7 @@ exports[`ProductListingFiltersForm is shown should render ProductListingFiltersF
                     letterSpacing="normal"
                     lineHeight="normal"
                     textAlign="left"
-                  >
-                    Price: Low to High
-                  </ForwardRef>,
+                  />,
                   "title": <ForwardRef
                     className="sort-item-selected"
                     color="text.primary"
@@ -2376,9 +2366,7 @@ exports[`ProductListingFiltersForm is shown should render ProductListingFiltersF
                     letterSpacing="normal"
                     lineHeight="normal"
                     textAlign="left"
-                  >
-                    Price: Low to High
-                  </ForwardRef>,
+                  />,
                   "value": "min_offer_price asc",
                 },
                 Object {
@@ -2392,9 +2380,7 @@ exports[`ProductListingFiltersForm is shown should render ProductListingFiltersF
                     letterSpacing="normal"
                     lineHeight="normal"
                     textAlign="left"
-                  >
-                    Newest
-                  </ForwardRef>,
+                  />,
                   "title": <ForwardRef
                     className="sort-item-selected"
                     color="text.primary"
@@ -2405,9 +2391,7 @@ exports[`ProductListingFiltersForm is shown should render ProductListingFiltersF
                     letterSpacing="normal"
                     lineHeight="normal"
                     textAlign="left"
-                  >
-                    Newest
-                  </ForwardRef>,
+                  />,
                   "value": "newest_score desc",
                 },
                 Object {
@@ -2421,9 +2405,7 @@ exports[`ProductListingFiltersForm is shown should render ProductListingFiltersF
                     letterSpacing="normal"
                     lineHeight="normal"
                     textAlign="left"
-                  >
-                    Most Favorited
-                  </ForwardRef>,
+                  />,
                   "title": <ForwardRef
                     className="sort-item-selected"
                     color="text.primary"
@@ -2434,9 +2416,7 @@ exports[`ProductListingFiltersForm is shown should render ProductListingFiltersF
                     letterSpacing="normal"
                     lineHeight="normal"
                     textAlign="left"
-                  >
-                    Most Favorited
-                  </ForwardRef>,
+                  />,
                   "value": "favoritedcount desc",
                 },
                 Object {
@@ -2450,9 +2430,7 @@ exports[`ProductListingFiltersForm is shown should render ProductListingFiltersF
                     letterSpacing="normal"
                     lineHeight="normal"
                     textAlign="left"
-                  >
-                    Top Rated
-                  </ForwardRef>,
+                  />,
                   "title": <ForwardRef
                     className="sort-item-selected"
                     color="text.primary"
@@ -2463,9 +2441,7 @@ exports[`ProductListingFiltersForm is shown should render ProductListingFiltersF
                     letterSpacing="normal"
                     lineHeight="normal"
                     textAlign="left"
-                  >
-                    Top Rated
-                  </ForwardRef>,
+                  />,
                   "value": "TCPBazaarVoiceRating desc",
                 },
               ]
@@ -2491,6 +2467,7 @@ exports[`ProductListingFiltersForm is shown should render ProductListingFiltersF
         labels={Object {}}
         onRemoveFilter={[Function]}
         removeAllFilters={[Function]}
+        sortLabels={Array []}
       />
     </form>
     <div
@@ -2929,6 +2906,7 @@ exports[`ProductListingFiltersForm is shown should render ProductListingFiltersF
         labels={Object {}}
         onSubmit={[MockFunction]}
         removeAllFilters={[Function]}
+        sortLabels={Array []}
         totalProductsCount="34"
       />
     </div>

@@ -11,7 +11,6 @@ import ProductTileWrapper from '@tcp/core/src/components/features/CnC/CartItemTi
 import AirmilesBanner from '@tcp/core/src/components/features/CnC/common/organism/AirmilesBanner';
 import AddedToBagActions from '@tcp/core/src/components/features/CnC/AddedToBagActions';
 import { CHECKOUT_ROUTES } from '@tcp/core/src/components/features/CnC/Checkout/Checkout.constants';
-import ApplyNowModal from '@tcp/core/src/components/common/molecules/ApplyNowPLCCModal';
 import ErrorMessage from '../../../../../../../../../core/src/components/features/CnC/common/molecules/ErrorMessage';
 import styles from '../styles/MiniBagBody.style';
 import EmptyMiniBag from '../../EmptyMiniBag/views/EmptyMiniBag';
@@ -174,7 +173,6 @@ class MiniBagBody extends React.PureComponent {
               <BodyCopy tag="span" fontSize="fs14" fontWeight="semibold" className="subTotal">
                 {`${labels.subTotal}: ${currencySymbol}${subTotal.toFixed(2) || 0}`}
               </BodyCopy>
-              <ApplyNowModal />
               <AddedToBagActions
                 showAddTobag={false}
                 isEditingItem={this.isEditing}

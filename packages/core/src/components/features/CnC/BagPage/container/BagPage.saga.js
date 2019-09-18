@@ -9,10 +9,15 @@ import {
   getUnqualifiedItems,
   removeItem,
   getProductInfoForTranslationData,
+  startPaypalCheckoutAPI,
+  paypalAuthorizationAPI,
 } from '../../../../../services/abstractors/CnC';
 
 import BAG_PAGE_ACTIONS from './BagPage.actions';
-import { checkoutSetCartData } from '../../Checkout/container/Checkout.action';
+import {
+  checkoutSetCartData,
+  getSetIsPaypalPaymentSettings,
+} from '../../Checkout/container/Checkout.action';
 import BAG_SELECTORS from './BagPage.selectors';
 import { getModuleX } from '../../../../../services/abstractors/common/moduleX';
 import { getUserLoggedInState } from '../../../account/User/container/User.selectors';
@@ -24,6 +29,9 @@ import { addItemToSflList } from '../../../../../services/abstractors/CnC/SaveFo
 import { removeCartItem } from '../../CartItemTile/container/CartItemTile.actions';
 import { imageGenerator } from '../../../../../services/abstractors/CnC/CartItemTile';
 import { getUserInfo } from '../../../account/User/container/User.actions';
+
+// external helper function
+const PAYPAL_REDIRECT_PARAM = 'isPaypalPostBack';
 
 export const filterProductsBrand = (arr, searchedValue) => {
   const obj = [];
@@ -220,6 +228,43 @@ export function* startCartCheckout({
   }
 }
 
+export function* startPaypalCheckout({ payload }) {
+  const { resolve, reject } = payload;
+  try {
+    const orderId = yield select(BAG_SELECTORS.getCurrentOrderId);
+    // const fromPage = false ? 'AjaxOrderItemDisplayView' : 'OrderBillingView';
+    const fromPage = 'AjaxOrderItemDisplayView';
+    const res = yield call(startPaypalCheckoutAPI, orderId, fromPage);
+    if (res) {
+      yield put(getSetIsPaypalPaymentSettings(res));
+      resolve(res.paypalInContextToken);
+    }
+  } catch (e) {
+    reject(e);
+  }
+}
+
+export function* authorizePayPalPayment() {
+  const { tcpOrderId, centinelRequestPage, centinelPayload, centinelOrderId } = yield select(
+    checkoutSelectors.getPaypalPaymentSettings
+  );
+  const res = yield call(
+    paypalAuthorizationAPI,
+    tcpOrderId,
+    centinelRequestPage,
+    centinelPayload,
+    centinelOrderId
+  );
+  if (res) {
+    // redirect
+    utility.routeToPage(
+      CHECKOUT_ROUTES.reviewPage,
+      { queryValues: { [PAYPAL_REDIRECT_PARAM]: 'true' } },
+      true
+    );
+  }
+}
+
 export function* removeUnqualifiedItemsAndCheckout({ navigation } = {}) {
   const unqualifiedItemsIds = yield select(BAG_SELECTORS.getUnqualifiedItemsIds);
   if (unqualifiedItemsIds && unqualifiedItemsIds.size > 0) {
@@ -267,13 +312,16 @@ export function* BagPageSaga() {
   yield takeLatest(BAGPAGE_CONSTANTS.GET_ORDER_DETAILS, getOrderDetailSaga);
   yield takeLatest(BAGPAGE_CONSTANTS.GET_CART_DATA, getCartDataSaga);
   yield takeLatest(BAGPAGE_CONSTANTS.FETCH_MODULEX_CONTENT, fetchModuleX);
-  yield takeLatest(BAGPAGE_CONSTANTS.START_BAG_CHECKOUT, startCartCheckout);
+
   yield takeLatest(
     BAGPAGE_CONSTANTS.REMOVE_UNQUALIFIED_AND_CHECKOUT,
     removeUnqualifiedItemsAndCheckout
   );
   yield takeLatest(BAGPAGE_CONSTANTS.ROUTE_FOR_CART_CHECKOUT, routeForCartCheckout);
   yield takeLatest(BAGPAGE_CONSTANTS.ADD_ITEM_SAVE_FOR_LATER, addItemToSFL);
+  yield takeLatest(BAGPAGE_CONSTANTS.START_BAG_CHECKOUT, startCartCheckout);
+  yield takeLatest(BAGPAGE_CONSTANTS.START_PAYPAL_CHECKOUT, startPaypalCheckout);
+  yield takeLatest(BAGPAGE_CONSTANTS.AUTHORIZATION_PAYPAL_CHECKOUT, authorizePayPalPayment);
 }
 
 export default BagPageSaga;

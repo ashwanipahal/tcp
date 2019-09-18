@@ -3,6 +3,7 @@
 exports[`PointHistoryPage component should renders correctly 1`] = `
 <ScrollViewMock>
   <Styled(Styled(BodyCopy))
+    dataLocator="points_history_subheading"
     fontFamily="secondary"
     fontSize="fs16"
     fontWeight="extrabold"
@@ -14,7 +15,9 @@ exports[`PointHistoryPage component should renders correctly 1`] = `
     showFullHistory={true}
     view="edit"
   />
-  <Styled(View)>
+  <Styled(View)
+    dataLocator="points_history_rte"
+  >
     <RichText
       domStorageEnabled={false}
       javaScriptEnabled={false}
@@ -25,7 +28,7 @@ exports[`PointHistoryPage component should renders correctly 1`] = `
       }
       style={
         Object {
-          "minHeight": 640,
+          "minHeight": 600,
         }
       }
       thirdPartyCookiesEnabled={false}
@@ -37,7 +40,7 @@ exports[`PointHistoryPage component should renders correctly 1`] = `
       anchorVariation="primary"
       customStyle={Object {}}
       dataLocator="my-rewards-program-details"
-      fontSizeVariation="large"
+      fontSizeVariation="medium"
       locator=""
       onPress={[Function]}
       text="lbl_points_history_program_details"
