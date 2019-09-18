@@ -31,6 +31,19 @@ exports[`Selectbox component renders correctly 1`] = `
       Canada
     </option>
   </select>
+  <Styled(BodyCopy)
+    className="select__label"
+    color="text.primary"
+    component="p"
+    fontFamily="secondary"
+    fontSize="fs12"
+    fontWeight="regular"
+    letterSpacing="normal"
+    lineHeight="normal"
+    textAlign="left"
+  >
+    placeholder
+  </Styled(BodyCopy)>
   <div
     className="SelectBox__error"
   >
@@ -73,6 +86,19 @@ exports[`Selectbox component renders correctly with disabled props 1`] = `
       Canada
     </option>
   </select>
+  <Styled(BodyCopy)
+    className="select__label"
+    color="text.primary"
+    component="p"
+    fontFamily="secondary"
+    fontSize="fs12"
+    fontWeight="regular"
+    letterSpacing="normal"
+    lineHeight="normal"
+    textAlign="left"
+  >
+    placeholder
+  </Styled(BodyCopy)>
   <div
     className="SelectBox__error"
   >
@@ -120,6 +146,19 @@ exports[`Selectbox component renders correctly with touched and error 1`] = `
       Canada
     </option>
   </select>
+  <Styled(BodyCopy)
+    className="select__label"
+    color="text.primary"
+    component="p"
+    fontFamily="secondary"
+    fontSize="fs12"
+    fontWeight="regular"
+    letterSpacing="normal"
+    lineHeight="normal"
+    textAlign="left"
+  >
+    first name for user
+  </Styled(BodyCopy)>
   <div
     className="SelectBox__error"
   >
@@ -178,17 +217,6 @@ exports[`Selectbox component renders correctly with touched and warning 1`] = `
       Canada
     </option>
   </select>
-  <Styled(BodyCopy)
-    className="select__label"
-    color="text.primary"
-    component="p"
-    fontFamily="secondary"
-    fontSize="fs12"
-    fontWeight="regular"
-    letterSpacing="normal"
-    lineHeight="normal"
-    textAlign="left"
-  />
   <div
     className="SelectBox__error"
   >
