@@ -1,5 +1,7 @@
 import { css } from 'styled-components';
 
+// TODO: Remove style10 when currency_up_style is added to CMS
+
 export default css`
   font-family: ${props => props.theme.typography.fonts.primary};
   text-align: center;
