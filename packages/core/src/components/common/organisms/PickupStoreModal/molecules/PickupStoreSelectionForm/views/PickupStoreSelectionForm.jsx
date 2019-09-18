@@ -403,7 +403,7 @@ class _PickupStoreSelectionForm extends React.Component {
           {PICKUP_LABELS.FIND_STORE}
         </BodyCopy>
         <Row fullBleed>
-          <Col colSize={{ small: 6, medium: 3, large: 6 }}>
+          <Col colSize={{ small: 6, medium: 4, large: 6 }}>
             <Field
               name="addressLocation"
               id="addressLocation"
@@ -413,11 +413,11 @@ class _PickupStoreSelectionForm extends React.Component {
               enableSuccessCheck={false}
             />
           </Col>
-          <Col colSize={{ small: 2, medium: 3, large: 3 }}>
+          <Col colSize={{ small: 2, medium: 2, large: 3 }}>
             <Field
               name="distance"
               component={SelectBox}
-              placeholder="Distance"
+              title="Distance"
               options={distancesMap}
               className="distance-input"
             />

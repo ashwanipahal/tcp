@@ -13,6 +13,8 @@ export function* getPickupStores(arg) {
   } = arg;
   // Reset the bopis store data
   yield put(setBopisStores({}));
+  // Reset error message
+  yield put(setStoreSearchError(''));
   try {
     const locationRes = yield call(getLatLng, payload);
     const { errorMessage, location } = locationRes;

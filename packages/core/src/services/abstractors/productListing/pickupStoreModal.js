@@ -1,4 +1,3 @@
-/* eslint-disable extra-rules/no-commented-out-code */
 import { executeStatefulAPICall } from '../../handler';
 import endpoints from '../../endpoints';
 import { sanitizeEntity, formatPhone, parseStoreHours, isCanada } from '../../../utils';

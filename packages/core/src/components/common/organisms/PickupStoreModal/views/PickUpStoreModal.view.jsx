@@ -18,8 +18,6 @@ import {
 import { SKU_DETAILS } from '../PickUpStoreModal.constants';
 import PickupSkuSelectionForm from '../molecules/PickupSkuSelectionForm';
 import PickupStoreSelectionForm from '../molecules/PickupStoreSelectionForm';
-// import withStyles from "../../../hoc/withStyles";
-// import styles from '../styles/PickUpStoreModal.style';
 
 const DISTANCES_MAP_PROP_TYPE = PropTypes.arrayOf(
   PropTypes.shape({
