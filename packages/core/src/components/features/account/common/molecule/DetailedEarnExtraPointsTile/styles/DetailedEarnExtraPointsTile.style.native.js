@@ -1,17 +1,17 @@
 import styled from 'styled-components/native';
 
 const ImageSize = styled.Image`
-  height: '60px';
-  margin-left: '12px';
-  width: '60px';
+  height: 60px;
+  width: 60px;
 `;
 
 const TileWrapper = styled.View`
   border: 1px solid ${props => props.theme.colorPalette.gray[300]};
   background: ${props => props.theme.colors.WHITE};
-  margin-left: ${props => props.theme.spacing.ELEM_SPACING.SM};
-  margin-right: ${props => props.theme.spacing.ELEM_SPACING.SM};
+  margin-left: ${props => props.theme.spacing.ELEM_SPACING.LRG};
+  margin-right: ${props => props.theme.spacing.ELEM_SPACING.LRG};
   border-bottom-width: 2px;
+  box-shadow: 0 0 1px gray;
   border-bottom-color: ${props =>
     props.theme.isGymboree
       ? props.theme.colorPalette.orange[800]
@@ -26,7 +26,7 @@ const EarnPointDesc = styled.View`
 
 const EarnExtraPointsTileImage = styled.View`
   margin-top: ${props => props.theme.spacing.LAYOUT_SPACING.MED};
-  height: 96px;
+  height: 100px;
   text-align: center;
   display: flex;
   justify-content: space-around;

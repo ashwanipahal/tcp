@@ -7,7 +7,6 @@ const CAROUSEL_OPTIONS = {
   infinite: false,
   initialSlide: 0,
   fade: false,
-  adaptiveHeight: true,
   speed: 1000,
   dots: true,
   dotsClass: 'slick-dots',
@@ -18,7 +17,6 @@ const CAROUSEL_OPTIONS = {
       breakpoint: breakpoints.values.lg,
       settings: {
         arrows: true,
-        adaptiveHeight: true,
       },
     },
   ],

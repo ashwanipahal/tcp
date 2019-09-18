@@ -56,6 +56,10 @@ class EarnExtraPointsTile extends PureComponent {
               showDots
               darkArrow
               autoplay={false}
+              carouselConfig={{
+                enableSnap: false,
+                loop: false,
+              }}
             />
           </View>
         </EarnExtraPointsWrapper>
