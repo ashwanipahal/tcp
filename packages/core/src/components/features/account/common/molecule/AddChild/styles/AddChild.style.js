@@ -51,10 +51,10 @@ const styles = css`
   }
 
   .formHeading {
-    padding-top: ${props => props.theme.spacing.ELEM_SPACING.XXL};
-    padding-bottom: ${props => props.theme.spacing.ELEM_SPACING.XL};
+    padding: ${props => props.theme.spacing.ELEM_SPACING.XXL} 0
+      ${props => props.theme.spacing.ELEM_SPACING.XL} 0;
     background-color: ${props => props.theme.colorPalette.gray[500]};
-    margin-top: -${props => props.theme.spacing.ELEM_SPACING.SM};
+    margin-top: -14px;
   }
 
   .lastName {
@@ -66,16 +66,10 @@ const styles = css`
     }
   }
 
-  .privacy {
-    margin: ${props => props.theme.spacing.ELEM_SPACING.XS} 0 0
-      ${props => props.theme.spacing.ELEM_SPACING.XXL};
-  }
-
   .timestamp {
     height: 60px;
     display: flex;
     align-items: flex-end;
-    margin-bottom: ${props => props.theme.spacing.ELEM_SPACING.XS};
     @media ${props => props.theme.mediaQuery.medium} {
       margin-top: 40px;
     }

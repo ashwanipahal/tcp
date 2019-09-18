@@ -193,7 +193,7 @@ export class AddChildBirthdayForm extends React.PureComponent {
                 </BodyCopy>
               </Col>
 
-              <Col colSize={{ small: 6, medium: 8, large: 12 }} fullBleed className="elem-mt-LRG">
+              <Col colSize={{ small: 6, medium: 8, large: 12 }} fullBleed className="elem-mt-XL">
                 <Field
                   name="acceptAddChildAgreement"
                   id="acceptAddChildAgreement"
@@ -212,12 +212,13 @@ export class AddChildBirthdayForm extends React.PureComponent {
                 </Field>
               </Col>
 
-              <Col colSize={{ small: 6, medium: 8, large: 12 }} fullBleed className="privacy">
+              <Col colSize={{ small: 6, medium: 8, large: 12 }} fullBleed className="elem-mt-SM">
                 <BodyCopy
                   component="span"
                   fontSize="fs14"
                   fontFamily="secondary"
                   fontWeight="semibold"
+                  className="elem-ml-XXL"
                 >
                   <Anchor underline noLink to={endpoints.policiesPage} data-locator="privacyLnk">
                     {addChildBirthdayLabels.lbl_add_child_privacy}

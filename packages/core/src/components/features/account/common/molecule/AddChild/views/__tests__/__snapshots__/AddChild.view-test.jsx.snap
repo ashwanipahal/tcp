@@ -1196,7 +1196,7 @@ exports[`AddChildBirthday component should renders correctly 1`] = `
           </Styled(BodyCopy)>
         </Styled(Col)>
         <Styled(Col)
-          className="elem-mt-LRG"
+          className="elem-mt-XL"
           colSize={
             Object {
               "large": 12,
@@ -1357,7 +1357,7 @@ exports[`AddChildBirthday component should renders correctly 1`] = `
           </Field>
         </Styled(Col)>
         <Styled(Col)
-          className="privacy"
+          className="elem-mt-SM"
           colSize={
             Object {
               "large": 12,
@@ -1368,7 +1368,7 @@ exports[`AddChildBirthday component should renders correctly 1`] = `
           fullBleed={true}
         >
           <Styled(BodyCopy)
-            className={null}
+            className="elem-ml-XXL"
             color="text.primary"
             component="span"
             fontFamily="secondary"
