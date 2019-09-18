@@ -14,10 +14,10 @@ import createValidateMethod from '../../../../../../../utils/formValidation/crea
 import getStandardConfig from '../../../../../../../utils/formValidation/validatorStandardConfig';
 import styles from '../styles/ChangePasswordForm.style';
 
-export const ChangePasswordForm = ({ className, labels, pristine, errorMessage, handleSubmit }) => {
+export const ChangePasswordForm = ({ className, labels, pristine, errorMessage, handleSubmit , changeErrorMessage }) => {
   return (
     <form name="ChangePasswordForm" noValidate onSubmit={handleSubmit} className={className}>
-      {errorMessage && (
+      {errorMessage && changeErrorMessage && (
         <Notification
           className="elem-mt-MED"
           status="error"

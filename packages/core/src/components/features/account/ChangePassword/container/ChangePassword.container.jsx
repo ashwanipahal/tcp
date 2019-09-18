@@ -4,7 +4,7 @@ import PropTypes from 'prop-types';
 import logger from '@tcp/core/src/utils/loggerInstance';
 import { toastMessageInfo } from '@tcp/core/src/components/common/atoms/Toast/container/Toast.actions.native';
 import utils from '../../../../../utils';
-import { getError, getChangePasswordLabels } from './ChangePassword.selectors';
+import { getError, getChangePasswordLabels , getChangeErrorMessage } from './ChangePassword.selectors';
 import { getSuccess } from '../../MyProfile/container/MyProfile.selectors';
 import ChangePasswordComponent from '../views';
 import { changePassword, changePasswordError, changePasswordReset } from './ChangePassword.actions';
@@ -74,7 +74,7 @@ export class ChangePasswordContainer extends PureComponent {
   };
 
   render() {
-    const { successMessage, errorMessage, labels, onClose, formErrorMessage } = this.props;
+    const { successMessage, errorMessage, labels, onClose, formErrorMessage , changeErrorMessage } = this.props;
     return (
       <ChangePasswordComponent
         successMessage={successMessage}
@@ -83,6 +83,8 @@ export class ChangePasswordContainer extends PureComponent {
         labels={labels}
         onClose={onClose}
         formErrorMessage={formErrorMessage}
+        changeErrorMessage={changeErrorMessage}
+
       />
     );
   }
@@ -93,7 +95,7 @@ export const mapStateToProps = state => ({
   errorMessage: getError(state),
   labels: getChangePasswordLabels(state),
   formErrorMessage: getFormValidationErrorMessages(state),
-  resetChangePasswordAction: PropTypes.func,
+  changeErrorMessage: getChangeErrorMessage(state),
 });
 
 export const mapDispatchToProps = dispatch => ({
