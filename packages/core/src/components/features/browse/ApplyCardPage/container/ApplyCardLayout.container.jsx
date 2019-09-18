@@ -8,6 +8,7 @@ import { getUserProfileData, getUserId, getBagItemsSize, isGuest } from './Apply
 import AddressVerification from '../../../../common/organisms/AddressVerification/container/AddressVerification.container';
 import { verifyAddress } from '../../../../common/organisms/AddressVerification/container/AddressVerification.actions';
 import BAG_PAGE_ACTIONS from '../../../CnC/BagPage/container/BagPage.actions';
+// import StyledPLCCTimedoutModal from '../molecules/Modals/PLCCTimedOutModal';
 
 class ApplyCardLayoutContainer extends React.Component {
   static propTypes = {
@@ -36,6 +37,7 @@ class ApplyCardLayoutContainer extends React.Component {
     super(props);
     this.state = {
       showAddEditAddressForm: false,
+      showInterimModal: true,
     };
   }
 
@@ -46,6 +48,10 @@ class ApplyCardLayoutContainer extends React.Component {
       fetchModuleXContent(labels && labels.referred);
     }
   }
+
+  onCloseInterimModal = () => {
+    this.setState({ showInterimModal: false });
+  };
 
   /**
    *  @fatarrow - formatPayload
@@ -110,7 +116,7 @@ class ApplyCardLayoutContainer extends React.Component {
       plccUser,
       profileInfo,
     } = this.props;
-    const { showAddEditAddressForm } = this.state;
+    const { showAddEditAddressForm, showInterimModal } = this.state;
     return (
       <React.Fragment>
         <ApplyCardLayoutView
@@ -126,6 +132,11 @@ class ApplyCardLayoutContainer extends React.Component {
           isPLCCModalFlow={isPLCCModalFlow}
         />
         {showAddEditAddressForm ? <AddressVerification onSuccess={this.submitForm} /> : null}
+        {/* <StyledPLCCTimedoutModal
+          isModalOpen={showInterimModal}
+          labels={labels}
+          closeModal={this.onCloseInterimModal}
+        /> */}
       </React.Fragment>
     );
   }
