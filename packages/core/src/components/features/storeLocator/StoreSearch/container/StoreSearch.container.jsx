@@ -7,7 +7,7 @@ import { getStoresByCoordinates } from './StoreSearch.actions';
 import StoreLocatorSearch from './views/StoreSearch';
 import { getCurrentCountry, getPageLabels } from './StoreSearch.selectors';
 
-export class StoreLocator extends PureComponent {
+export class StoreSearch extends PureComponent {
   /**
    * @function loadStoresByCoordinates function to fetch the stores based on coordinates.
    * @param {Promise} coordinatesPromise - Promise that resolves with the coordinates
@@ -38,11 +38,12 @@ export class StoreLocator extends PureComponent {
   }
 }
 
-StoreLocator.propTypes = {
+StoreSearch.propTypes = {
   fetchStoresByCoordinates: PropTypes.func.isRequired,
 };
 
-export const mapDispatchToProps = dispatch => {
+/* istanbul ignore next  */
+const mapDispatchToProps = dispatch => {
   return {
     fetchStoresByCoordinates: storeConfig => dispatch(getStoresByCoordinates(storeConfig)),
   };
@@ -57,5 +58,5 @@ export default withRouter(
   connect(
     mapStateToProps,
     mapDispatchToProps
-  )(StoreLocator)
+  )(StoreSearch)
 );

@@ -1,30 +1,22 @@
 import { fromJS } from 'immutable';
-import constants from '../StoreSearch.constants';
-import StoreSearchReducer from '../StoreSearch.reducer';
+import STORE_LOCATOR_CONSTANTS from '../StoreSearch.constants';
 
-describe('StoreSearch Reducer', () => {
-  it('should return default state', () => {
-    const initialState = fromJS({});
-    expect(StoreSearchReducer(initialState, {}).get('action_one')).not.toBeDefined();
+import StoreLocatorReducer, { initialState } from '../StoreSearch.reducer';
+import suggestedStores from '../__mocks__/suggestedStore';
+
+describe('StoreLocatorReducer', () => {
+  // eslint-disable-next-line no-unused-vars
+  let state = {};
+  beforeEach(() => {
+    state = fromJS(initialState);
   });
 
-  it('should return success state', () => {
-    const initialState = fromJS({});
-    expect(
-      StoreSearchReducer(initialState, {
-        type: constants.STORE_SEARCH_TEST_ACTION_ONE,
-        payload: 'test',
-      }).get('action_one')
-    ).toEqual('test');
-  });
-
-  it('should return error state', () => {
-    const initialState = fromJS({});
-    expect(
-      StoreSearchReducer(initialState, {
-        type: constants.STORE_SEARCH_TEST_ACTION_TWO,
-        payload: 'test',
-      }).get('action_two')
-    ).toEqual('test');
+  test('STORES_SET_SUGGESTED_STORES', () => {
+    const action = {
+      type: STORE_LOCATOR_CONSTANTS.STORES_SET_SUGGESTED_STORES,
+      payload: suggestedStores,
+    };
+    const storeSuggestedStore = StoreLocatorReducer(state, action);
+    expect(storeSuggestedStore.get('suggestedStores')).toBe(suggestedStores);
   });
 });
