@@ -1,8 +1,8 @@
 /**
  * @description - global config values which can be used in multiple components
  */
-/*eslint-disable */
-export const config = {
+
+const config = {
   SOCIAL_ACCOUNTS: {
     facebook: 'Facebook',
     instagram: 'Instagram',
@@ -30,3 +30,5 @@ export const config = {
     edit: 'edit',
   },
 };
+
+export default config;

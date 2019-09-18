@@ -7,7 +7,7 @@ const initialState = fromJS({
 
 const SocialReducer = (state = initialState, action) => {
   switch (action.type) {
-    case SOCIAL_CONSTANTS.SOCIAL_LOAD_DATA:
+    case SOCIAL_CONSTANTS.SET_SOCIAL_LOAD:
       return state.set('socialDataOnLoad', action.payload);
 
     default:

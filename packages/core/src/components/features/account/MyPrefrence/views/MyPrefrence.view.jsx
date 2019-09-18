@@ -1,12 +1,17 @@
 import React from 'react';
 import PropTypes from 'prop-types';
+import { getLabelValue } from '@tcp/core/src/utils/utils';
 import FormPageHeadingComponent from '../../common/molecule/FormPageHeading';
-import MyPref from '../organism/MyPref.view';
+
+import MyPref from '../organism/MyPreferencesSection.view';
 
 const MyPrefrence = ({ labels }) => {
   return (
     <div>
-      <FormPageHeadingComponent heading={labels.lbl_prefrence_heading} className="margin-none" />
+      <FormPageHeadingComponent
+        heading={getLabelValue(labels, 'lbl_prefrence_heading')}
+        className="margin-none"
+      />
       <MyPref labels={labels} />
     </div>
   );
@@ -14,12 +19,10 @@ const MyPrefrence = ({ labels }) => {
 
 MyPrefrence.propTypes = {
   labels: PropTypes.shape({}),
-  labelsObj: PropTypes.shape({}),
 };
 
 MyPrefrence.defaultProps = {
   labels: {},
-  labelsObj: {},
 };
 
 export default MyPrefrence;

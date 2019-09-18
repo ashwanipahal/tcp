@@ -1,7 +1,7 @@
 import { put, takeLatest } from 'redux-saga/effects';
 import { SocialAccountSaga, getsocialAccounts, savesocialAccounts } from '../Social.saga';
-import { currentSocialInfo } from '../Social.actions';
-import SOCIAL_LOAD from '../../social.constants';
+import { setSocialAccount } from '../Social.actions';
+import SOCIAL_CONSTANTS from '../../social.constants';
 
 describe('getsocialAccounts saga', () => {
   describe('SocialAccountSaga', () => {
@@ -15,7 +15,7 @@ describe('getsocialAccounts saga', () => {
       const payload = [{}];
 
       const putDescriptor = SocialAccountSagaGeneration.next(payload).value;
-      expect(putDescriptor).toEqual(put(currentSocialInfo(payload)));
+      expect(putDescriptor).toEqual(put(setSocialAccount(payload)));
     });
   });
 
@@ -38,7 +38,7 @@ describe('getsocialAccounts saga', () => {
       it('should dispatch savesocialAccounts action for success resposnse', () => {
         const res = 'foo';
         const putDescriptor = savesocialAccountsGeneration.next(res).value;
-        expect(putDescriptor).toEqual(put(currentSocialInfo(res)));
+        expect(putDescriptor).toEqual(put(setSocialAccount(res)));
       });
     });
   });
@@ -47,7 +47,9 @@ describe('getsocialAccounts saga', () => {
     it('should return correct takeLatest effect', () => {
       const generator = SocialAccountSaga();
       const takeLatestDescriptor = generator.next().value;
-      expect(takeLatestDescriptor).toEqual(takeLatest(SOCIAL_LOAD.SOCIAL_LOAD, getsocialAccounts));
+      expect(takeLatestDescriptor).toEqual(
+        takeLatest(SOCIAL_CONSTANTS.GET_SOCIAL_LOAD, getsocialAccounts)
+      );
     });
   });
 });

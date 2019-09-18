@@ -1,15 +1,16 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
-import { socialAccountLoad, savesocialAccount } from './Social.actions';
+import { getSocialAccount, saveSocialAccount } from './Social.actions';
 import { getsocialDataOnLoadState } from './Social.selectors';
 import Socialview from '../Views/Social.view';
 
 class SocialContainer extends React.PureComponent {
   static propTypes = {
-    socialLoad: PropTypes.shape({}).isRequired,
-    saveSocialAcc: PropTypes.shape({}).isRequired,
-    getSocialLoad: PropTypes.shape({}).isRequired,
+    socialLoad: PropTypes.func.isRequired,
+    saveSocialAcc: PropTypes.func.isRequired,
+    getSocialAcc: PropTypes.func.isRequired,
+    labels: PropTypes.shape({}).isRequired,
   };
 
   componentDidMount() {
@@ -18,12 +19,13 @@ class SocialContainer extends React.PureComponent {
   }
 
   render() {
-    const { socialLoad, saveSocialAcc, getSocialLoad } = this.props;
+    const { socialLoad, saveSocialAcc, getSocialAcc, labels } = this.props;
     return (
       <Socialview
-        getSocialLoad={getSocialLoad}
+        getSocialAcc={getSocialAcc}
         saveSocialAcc={saveSocialAcc}
         socialLoad={socialLoad}
+        labels={labels}
       />
     );
   }
@@ -34,17 +36,17 @@ SocialContainer.propTypes = {};
 const mapDispatchToProps = dispatch => {
   return {
     socialLoad: () => {
-      dispatch(socialAccountLoad());
+      dispatch(getSocialAccount());
     },
-    saveSocialAcc: OBJ => {
-      dispatch(savesocialAccount(OBJ));
+    saveSocialAcc: payload => {
+      dispatch(saveSocialAccount(payload));
     },
   };
 };
 
 const mapStateToProps = state => {
   return {
-    getSocialLoad: getsocialDataOnLoadState(state),
+    getSocialAcc: getsocialDataOnLoadState(state),
   };
 };
 

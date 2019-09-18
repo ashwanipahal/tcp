@@ -1,13 +1,13 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import { FacebookLoginComponent } from './facebookLoginComponent';
-import { config } from './config';
+import FacebookLogin from './FacebookLogin';
+import config from './config';
 import socialStyle from '../styles/social.style';
 import withStyles from '../../../hoc/withStyles';
-import BodyCopy from '../../BodyCopy';
+import BodyCopy from '../../../atoms/BodyCopy';
 
 const loginComponents = {
-  Facebook: FacebookLoginComponent,
+  Facebook: FacebookLogin,
 };
 
 class Socialview extends React.PureComponent {
@@ -15,7 +15,8 @@ class Socialview extends React.PureComponent {
     className: PropTypes.string,
     socialLoad: PropTypes.shape({}).isRequired,
     saveSocialAcc: PropTypes.shape({}).isRequired,
-    getSocialLoad: PropTypes.shape({}).isRequired,
+    getSocialAcc: PropTypes.shape({}).isRequired,
+    labels: PropTypes.shape({}).isRequired,
   };
 
   static defaultProps = {
@@ -38,7 +39,7 @@ class Socialview extends React.PureComponent {
     );
   };
 
-  renderAccountsInformation = (accounts, saveSocialAcc) => {
+  renderAccountsInformation = (accounts, saveSocialAcc, labels) => {
     return accounts.map((elem, index) => {
       const isSocialAccount =
         config && config.SOCIAL_ACCOUNTS[elem.socialAccount.toLocaleLowerCase()];
@@ -58,8 +59,8 @@ class Socialview extends React.PureComponent {
             data-locator={elem.isConnected ? 'facebookConnectedTxt' : 'connectFacebokTxt'}
           >
             {elem.isConnected
-              ? `${config.SOCIAL_ACCOUNTS[elem.socialAccount]} Connected`
-              : `Connect to ${config.SOCIAL_ACCOUNTS[elem.socialAccount]}`}
+              ? `${config.SOCIAL_ACCOUNTS[elem.socialAccount]} ${labels.lbl_prefrence_connected}`
+              : `${labels.lbl_prefrence_connectTo} ${config.SOCIAL_ACCOUNTS[elem.socialAccount]}`}
           </BodyCopy>
           {this.renderSocialLogins(loginComponents[isSocialAccount], saveSocialAcc)}
         </li>
@@ -82,21 +83,18 @@ class Socialview extends React.PureComponent {
   };
 
   render() {
-    const { saveSocialAcc, getSocialLoad, className } = this.props;
-    if (Object.keys(getSocialLoad).length) {
-      this.refactorSocialDetails(getSocialLoad);
+    const { saveSocialAcc, getSocialAcc, className, labels } = this.props;
+    if (Object.keys(getSocialAcc).length) {
+      this.refactorSocialDetails(getSocialAcc);
     }
 
     return (
       <React.Fragment>
         <section className={className} data-selector="analytics-social-account">
-          <h3 className="social-accounts__title" data-locator="socialAccountsLbl">
-            Social Accounts
-          </h3>
           <p className="social-accounts__subTitle" data-locator="linkAccountTxt">
-            Link your social accounts to earn extra points!
+            {labels.lbl_prefrence_social_text}
           </p>
-          <ul>{this.renderAccountsInformation(this.socialAccounts, saveSocialAcc)}</ul>
+          <ul>{this.renderAccountsInformation(this.socialAccounts, saveSocialAcc, labels)}</ul>
         </section>
       </React.Fragment>
     );

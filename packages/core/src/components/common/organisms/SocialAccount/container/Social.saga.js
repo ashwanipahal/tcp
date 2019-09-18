@@ -3,8 +3,8 @@
  */
 
 import { call, takeLatest, put } from 'redux-saga/effects';
-import SOCIAL_LOAD from '../social.constants';
-import { currentSocialInfo } from './Social.actions';
+import SOCIAL_CONSTANTS from '../social.constants';
+import { setSocialAccount } from './Social.actions';
 import {
   getSocialAccountsInformation,
   saveSocialAccountsInfo,
@@ -15,7 +15,7 @@ export function* getsocialAccounts(action) {
     const res = yield call(getSocialAccountsInformation, action);
     /* istanbul ignore else */
     if (res) {
-      yield put(currentSocialInfo(res));
+      yield put(setSocialAccount(res));
     }
   } catch (err) {
     console.log('err', err);
@@ -33,16 +33,15 @@ export function* savesocialAccounts({ payload }) {
     const res = yield call(saveSocialAccountsInfo, body);
     /* istanbul ignore else */
     if (res) {
-      yield put(currentSocialInfo(res));
-      // yield put(savesocialAccount(res));
+      yield put(setSocialAccount(res));
     }
   } catch (err) {
     console.log('err', err);
   }
 }
 export function* SocialAccountSaga() {
-  yield takeLatest(SOCIAL_LOAD.SOCIAL_LOAD, getsocialAccounts);
-  yield takeLatest(SOCIAL_LOAD.SOCIAL_ACCOUNT_SAVE, savesocialAccounts);
+  yield takeLatest(SOCIAL_CONSTANTS.GET_SOCIAL_LOAD, getsocialAccounts);
+  yield takeLatest(SOCIAL_CONSTANTS.SAVE_SOCIAL_LOAD, savesocialAccounts);
 }
 
 export default SocialAccountSaga;

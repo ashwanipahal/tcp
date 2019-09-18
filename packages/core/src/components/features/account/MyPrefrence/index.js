@@ -1,1 +1,1 @@
-export { default } from './container/MyPrefrence.container';
+export { default } from './container/MyPreference.container';

@@ -11,23 +11,19 @@ import BodyCopy from '../../../../common/atoms/BodyCopy';
 import Anchor from '../../../../common/atoms/Anchor';
 import InputCheckbox from '../../../../common/atoms/InputCheckbox';
 import { getIconPath } from '../../../../../utils';
-import SocialContainer from '../../../../common/atoms/SocialAccount/container/Social.container';
-import { config } from '../../../../common/atoms/SocialAccount/Views/config';
+import SocialContainer from '../../../../common/organisms/SocialAccount/container/Social.container';
 
-class MyFavoriteStore extends React.PureComponent {
+class MyPrefrenceSection extends React.PureComponent {
   render() {
     const { className, labels } = this.props;
     return (
-      <div className={className}>
-        <Row fullBleed className="elem-pt-LRG">
+      <div className={`elem-pt-LRG ${className}`}>
+        <Row fullBleed>
           <Col
             colSize={{
               small: 6,
               medium: 5,
               large: 5,
-            }}
-            ignoreGutter={{
-              small: true,
             }}
             className="profileInfoCol"
           >
@@ -46,9 +42,6 @@ class MyFavoriteStore extends React.PureComponent {
               medium: 4,
               large: 7,
             }}
-            ignoreGutter={{
-              small: true,
-            }}
             className="profileInfoCol"
           >
             <BodyCopy
@@ -59,7 +52,7 @@ class MyFavoriteStore extends React.PureComponent {
             >
               {getLabelValue(labels, 'lbl_prefrence_social_account')}
             </BodyCopy>
-            <SocialContainer view={config.VIEW_MODE.read} />
+            <SocialContainer labels={labels} />
           </Col>
         </Row>
 
@@ -78,9 +71,6 @@ class MyFavoriteStore extends React.PureComponent {
               small: 6,
               medium: 4,
               large: 5,
-            }}
-            ignoreGutter={{
-              small: true,
             }}
             className="elem-mb-XL"
           >
@@ -105,9 +95,6 @@ class MyFavoriteStore extends React.PureComponent {
               small: 6,
               medium: 4,
               large: 7,
-            }}
-            ignoreGutter={{
-              small: true,
             }}
             className="profileInfoCol elem-mb-XL"
           >
@@ -138,7 +125,7 @@ class MyFavoriteStore extends React.PureComponent {
                     name="primary"
                     component={InputCheckbox}
                     dataLocator="InputCheckbox"
-                    className="InputCheckbox"
+                    className="elm-padding-top"
                   >
                     <BodyCopy fontSize="fs14" fontFamily="secondary" component="span">
                       {' '}
@@ -149,7 +136,7 @@ class MyFavoriteStore extends React.PureComponent {
                     name="primary"
                     component={InputCheckbox}
                     dataLocator="InputCheckbox"
-                    className="InputCheckbox"
+                    className="elm-padding-top"
                   >
                     <BodyCopy fontSize="fs14" fontFamily="secondary" component="span">
                       {getLabelValue(labels, 'lbl_prefrence_gym_label')}
@@ -161,9 +148,6 @@ class MyFavoriteStore extends React.PureComponent {
                     small: 6,
                     medium: 4,
                     large: 6,
-                  }}
-                  ignoreGutter={{
-                    small: true,
                   }}
                   className="elem-mb-XL"
                 >
@@ -209,9 +193,6 @@ class MyFavoriteStore extends React.PureComponent {
               medium: 4,
               large: 12,
             }}
-            ignoreGutter={{
-              small: true,
-            }}
           >
             <BodyCopy textAlign="center">
               <Anchor
@@ -242,15 +223,15 @@ class MyFavoriteStore extends React.PureComponent {
   }
 }
 
-MyFavoriteStore.propTypes = {
+MyPrefrenceSection.propTypes = {
   labels: PropTypes.shape({}),
   className: PropTypes.string.isRequired,
 };
 
-MyFavoriteStore.defaultProps = {
+MyPrefrenceSection.defaultProps = {
   labels: {},
 };
 
 export default reduxForm({
-  form: 'rewardPrefrence', // a unique identifier for this form
-})(withStyles(MyFavoriteStore, styles));
+  form: 'MyPrefrence', // a unique identifier for this form
+})(withStyles(MyPrefrenceSection, styles));

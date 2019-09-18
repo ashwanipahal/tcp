@@ -21,7 +21,7 @@ describe('SocialReducer List reducer', () => {
 
     expect(
       SocialReducer(initialState, {
-        type: SOCIAL_CONSTANTS.SOCIAL_LOAD_DATA,
+        type: SOCIAL_CONSTANTS.SET_SOCIAL_LOAD,
         payload: fromJS({}),
       })
     ).toEqual(

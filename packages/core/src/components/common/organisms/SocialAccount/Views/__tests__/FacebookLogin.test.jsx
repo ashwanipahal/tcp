@@ -1,6 +1,6 @@
 import React from 'react';
 import { shallow } from 'enzyme';
-import { FacebookLoginComponent } from '../facebookLoginComponent';
+import FacebookLogin from '../FacebookLogin';
 
 // describing and shallow rendering the facebook Login component
 describe('Facebook login', () => {
@@ -14,12 +14,12 @@ describe('Facebook login', () => {
   };
 
   it('should be defined', () => {
-    expect(FacebookLoginComponent).toBeDefined();
+    expect(FacebookLogin).toBeDefined();
   });
 
   // check snapshot
   it('should render the FaceBook component correctly ', () => {
-    const wrapper = shallow(<FacebookLoginComponent {...props} />);
+    const wrapper = shallow(<FacebookLogin {...props} />);
     expect(wrapper).toMatchSnapshot();
   });
 });

@@ -1,10 +1,10 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
 import { PropTypes } from 'prop-types';
-import { config } from './config';
-import ImageComp from '../../Image';
+import config from './config';
+import ImageComp from '../../../atoms/Image';
 import { getIconPath } from '../../../../../utils';
-import BodyCopy from '../../BodyCopy';
+import BodyCopy from '../../../atoms/BodyCopy';
 
 let bodyEle;
 let elem;
@@ -28,8 +28,6 @@ const openLogin = () => {
           isconnected: false,
         };
         saveAccountInfo({ socialAccInfo });
-      } else {
-        // The person is not logged into this app or we are unable to tell.
       }
     },
     { scope: 'public_profile,email' }
@@ -178,4 +176,4 @@ FacebookLoginComponent.propTypes = {
   saveAccountInfo: PropTypes.func.isRequired,
 };
 
-export { FacebookLoginComponent };
+export default FacebookLoginComponent;
