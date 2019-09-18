@@ -264,7 +264,8 @@ export function getProductsAndTitleBlocks(state, productBlocks = []) {
 
       // push: If we should group and we hit a new category name push on array
       // Add separator if required in the RWD design - injectionHandler.seperator(productsAndTitleBlock, categoryName);
-      const shouldGroup = getIsShowCategoryGrouping(state);
+      const shouldGroup =
+        state.ProductListing.get('breadCrumbTrail') && getIsShowCategoryGrouping(state);
       if (shouldGroup && (categoryName && categoryName !== lastCategoryName)) {
         productsAndTitleBlock.push(categoryName);
         lastCategoryName = categoryName;
