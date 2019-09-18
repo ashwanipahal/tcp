@@ -332,7 +332,7 @@ class ProductListingFiltersForm extends React.Component {
               </div>
             </div>
           )}
-          <Row>
+          <Row className="filtered-by-section">
             <Col colSize={{ small: 0, medium: 0, large: 10 }}>
               {this.getAppliedFiltersCount() > 0 && (
                 <AppliedFiltersList
@@ -340,7 +340,7 @@ class ProductListingFiltersForm extends React.Component {
                   onRemoveFilter={this.handleRemoveFilter}
                   appliedFilters={appliedFilters}
                   removeAllFilters={this.handleRemoveAllFilters}
-                  className={` ${className} filtered-by-section`}
+                  className={className}
                   labels={labels}
                   totalProductsCount={totalProductsCount}
                 />

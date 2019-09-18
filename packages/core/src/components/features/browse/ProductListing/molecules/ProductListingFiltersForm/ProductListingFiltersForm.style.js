@@ -59,7 +59,6 @@ export default css`
       margin-right: 84px;
     }
   }
-
   .filters-only-container {
     display: inline-block;
   }
@@ -72,6 +71,11 @@ export default css`
     .custom-select-common {
       display: flex;
       border-bottom: none;
+    }
+  }
+  .render-desktop-view {
+    .filtered-by-section {
+      margin-left: 0;
     }
   }
 `;
