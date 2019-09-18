@@ -7,7 +7,7 @@ import errorBoundary from '../../../hoc/withErrorBoundary';
 import withStyles from '../../../hoc/withStyles';
 import ProductTabList from '../../../organisms/ProductTabList';
 import moduleJStyle from '../styles/ModuleJ.style';
-import { getIconPath, redirectToPdp, getLocator } from '../../../../../utils';
+import { getIconPath, getLocator } from '../../../../../utils';
 import config from '../config';
 
 class ModuleJ extends React.PureComponent {
@@ -217,13 +217,13 @@ class ModuleJ extends React.PureComponent {
                   customArrowRight: getIconPath('carousel-big-carrot'),
                 }}
               >
-                {data.map(({ uniqueId, imageUrl }, index) => {
+                {data.map(({ imageUrl, pdpUrl, pdpAsPath }, index) => {
                   return (
                     <div key={index.toString()}>
                       <Anchor
                         className="image-link"
-                        to={redirectToPdp(uniqueId).url}
-                        asPath={redirectToPdp(uniqueId).asPath}
+                        to={pdpUrl}
+                        asPath={pdpAsPath}
                         dataLocator={`${getLocator('moduleJ_product_image')}${index}`}
                       >
                         <Image src={imageUrl[0]} />

@@ -18,6 +18,7 @@ import {
   StyledImage,
   PromoContainer,
   HeaderContainer,
+  SecondHeaderContainer,
   ImageContainer,
   MessageContainer,
   Border,
@@ -63,17 +64,15 @@ class ModuleJ extends React.PureComponent<Props, State> {
       <ImageSlideWrapper>
         {item.map(productItem => {
           const {
-            seo_token: seoToken,
-            uniqueId,
             imageUrl: [imageUrl],
+            pdpAsPath,
             productItemIndex,
           } = productItem;
 
-          const pdpUrl = `/p/${seoToken || uniqueId}`;
           return (
             <ImageItemWrapper isFullMargin={productItemIndex === selectedProductList.length - 1}>
               <Anchor
-                url={pdpUrl}
+                url={pdpAsPath}
                 navigation={navigation}
                 locator={`${getLocator('moduleJ_product_image')}${productItemIndex}`}
               >
@@ -105,6 +104,7 @@ class ModuleJ extends React.PureComponent<Props, State> {
       headerText,
       promoBanner,
       divTabs,
+      bgColor,
     } = this.props;
 
     const selectedProductList = productTabList[selectedCategoryId] || [];
@@ -125,17 +125,20 @@ class ModuleJ extends React.PureComponent<Props, State> {
 
     return (
       <Container>
-        <MessageContainer layout={layout}>
+        <MessageContainer layout={layout} bgColor={bgColor}>
           <Wrapper>
             <Border layout={layout} />
             <HeaderContainer layout={layout}>
+              <LinkText navigation={navigation} headerText={[headerText[0]]} useStyle />
+            </HeaderContainer>
+            <SecondHeaderContainer>
               <LinkText
                 navigation={navigation}
-                headerText={headerText}
+                headerText={[headerText[1]]}
                 renderComponentInNewLine
                 useStyle
               />
-            </HeaderContainer>
+            </SecondHeaderContainer>
           </Wrapper>
 
           <PromoContainer layout={layout}>

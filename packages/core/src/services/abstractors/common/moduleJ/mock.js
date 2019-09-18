@@ -1,3 +1,5 @@
+const dummyUrl = 'http://www.childrensplace.com';
+
 export default {
   moduleJ: {
     contentId: 'f1733fc9-6db0-4042-9844-99980420359f',
@@ -71,93 +73,70 @@ export default {
           ],
         },
       ],
-      ctaItems: [
+
+      divTabs: [
         {
-          image: {
-            url:
-              'https://res.cloudinary.com/tcp-dam-test/image/upload/q_auto:best/v1558543115/ecom/assets/content/tcp/us/home/moduled/US-HP-050519-MINIME1_h9cwcd.jpg',
-            alt: 'Girl',
-            title: 'Girl',
-            crop_d: '',
-            crop_t: '',
-            crop_m: '',
+          text: {
+            text: 'GIRL',
           },
-          button: {
-            url: '/girl',
-            text: 'Girl',
-            title: 'Girl',
+          category: {
+            cat_id: '47526',
+          },
+          singleCTAButton: {
+            url: dummyUrl,
+            text: 'SHOP ALL',
+            title: 'SHOP ALL',
             target: '',
             external: 0,
+            action: '',
           },
         },
         {
-          image: {
-            url:
-              'https://test5.childrensplace.com/image/upload/v1558543115/ecom/assets/content/tcp/us/home/moduled/US-HP-050519-MINIME3_vmfhnu.jpg',
-            alt: 'Toddler Girl alt',
-            title: 'Toddler Girl title',
-            crop_d: '',
-            crop_t: '',
-            crop_m: '',
+          text: {
+            text: 'TODDLER GIRL',
           },
-          button: {
-            url: '/toddler-girl',
-            text: 'Toddler Girl',
-            title: 'Toddler Girl',
+          category: {
+            cat_id: '47502>47535>54071',
+          },
+          singleCTAButton: {
+            url: dummyUrl,
+            text: 'SHOP ALL',
+            title: 'SHOP ALL',
             target: '',
             external: 0,
+            action: '',
           },
         },
         {
-          image: {
-            url: '',
-            alt: 'Boy',
-            title: 'Boy',
-            crop_d: '',
-            crop_t: '',
-            crop_m: '',
+          text: {
+            text: 'BOY',
           },
-          button: {
-            url: '/boy',
-            text: 'Boy',
-            title: 'Boy',
+          category: {
+            cat_id: '47503>47544',
+          },
+          singleCTAButton: {
+            url: dummyUrl,
+            text: 'SHOP ALL',
+            title: 'SHOP ALL',
             target: '',
             external: 0,
+            action: '',
           },
         },
         {
-          image: {
-            url:
-              'https://test5.childrensplace.com/image/upload/v1558543115/ecom/assets/content/tcp/us/home/moduled/US-HP-050519-MINIME3_vmfhnu.jpg',
-            alt: 'Toddler Boy alt',
-            title: 'Tod Boy title',
-            crop_d: '',
-            crop_t: '',
-            crop_m: '',
+          text: {
+            text: 'TODDLER BOY',
           },
-          button: {
-            url: '/toddler-boy',
-            text: 'Toddler Boy',
-            title: 'Tod Boy',
+          category: {
+            cat_id: '47501>47526',
+          },
+          singleCTAButton: {
+            url: dummyUrl,
+            text: 'SHOP ALL',
+            title: 'SHOP ALL',
             target: '',
             external: 0,
-          },
-        },
-        {
-          image: {
-            url: '',
-            alt: 'Baby Alt',
-            title: 'Baby title',
-            crop_d: '',
-            crop_t: '',
-            crop_m: '',
-          },
-          button: {
-            url: '/toddler-boy',
-            text: 'Baby',
-            title: 'Baby',
-            target: '',
-            external: 0,
+            action: '',
           },
         },
       ],

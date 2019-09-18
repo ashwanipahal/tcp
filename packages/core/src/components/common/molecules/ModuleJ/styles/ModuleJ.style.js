@@ -28,14 +28,6 @@ export default css`
     }
   }
 
-  .promo-header:first-child span {
-    padding: 0 ${props => props.theme.spacing.ELEM_SPACING.SM};
-
-    @media ${props => props.theme.mediaQuery.medium} {
-      margin-top: ${props => props.theme.spacing.ELEM_SPACING.XL};
-    }
-  }
-
   .promo-header-wrapper {
     ${props =>
       !props.promoBanner
@@ -72,6 +64,14 @@ export default css`
 
     @media ${props => props.theme.mediaQuery.large} {
       width: 440px;
+    }
+  }
+
+  .promo-header:first-child .link-text {
+    padding: 0 ${props => props.theme.spacing.ELEM_SPACING.SM};
+
+    @media ${props => props.theme.mediaQuery.medium} {
+      margin-top: ${props => props.theme.spacing.ELEM_SPACING.XL};
     }
   }
 
