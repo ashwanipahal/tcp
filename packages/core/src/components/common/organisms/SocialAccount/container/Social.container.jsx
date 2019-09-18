@@ -5,7 +5,7 @@ import { getSocialAccount, saveSocialAccount } from './Social.actions';
 import { getsocialDataOnLoadState } from './Social.selectors';
 import Socialview from '../Views/Social.view';
 
-export class SocialContainer extends React.PureComponent {
+class SocialContainer extends React.PureComponent {
   static propTypes = {
     socialLoad: PropTypes.func.isRequired,
     saveSocialAcc: PropTypes.func.isRequired,
@@ -44,7 +44,7 @@ export const mapDispatchToProps = dispatch => {
   };
 };
 
-export const mapStateToProps = state => {
+const mapStateToProps = state => {
   return {
     getSocialAcc: getsocialDataOnLoadState(state),
   };

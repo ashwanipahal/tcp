@@ -1,6 +1,6 @@
 import React from 'react';
 import { shallow } from 'enzyme';
-import { SocialContainer, mapDispatchToProps } from '../Social.container';
+import SocialContainer, { mapDispatchToProps } from '../Social.container';
 
 describe('SocialviewVanilla container', () => {
   const props = {
