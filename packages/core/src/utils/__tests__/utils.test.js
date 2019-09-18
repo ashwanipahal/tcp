@@ -1,6 +1,13 @@
-import { getLabelValue, formatDate, isValidDate, childOptionsMap } from '../utils';
+import {
+  getLabelValue,
+  formatDate,
+  isValidDate,
+  childOptionsMap,
+  formatPhoneNumber,
+} from '../utils';
 
 const formattedDate = '01/01/1970';
+const formattedPhoneNumber = '(718)-243-1150';
 
 describe('getLabelValue', () => {
   const labelState = {
@@ -96,5 +103,12 @@ describe('childOptionsMap', () => {
         { displayName: '2003', id: '2003' },
       ],
     });
+  });
+});
+
+describe('formatPhoneNumner', () => {
+  it('should format the phone number correctly with area code in brackets', () => {
+    const phone = formatPhoneNumber('7182431150');
+    expect(phone).toBe(formattedPhoneNumber);
   });
 });

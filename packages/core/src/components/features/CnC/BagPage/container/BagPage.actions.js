@@ -105,6 +105,20 @@ const routeForCheckout = () => {
   };
 };
 
+const startPaypalCheckout = payload => {
+  return {
+    type: BAGPAGE_CONSTANTS.START_PAYPAL_CHECKOUT,
+    payload,
+  };
+};
+
+const paypalAuthorization = payload => {
+  return {
+    type: BAGPAGE_CONSTANTS.AUTHORIZATION_PAYPAL_CHECKOUT,
+    payload,
+  };
+};
+
 const addItemToSflList = payload => {
   return {
     type: BAGPAGE_CONSTANTS.ADD_ITEM_SAVE_FOR_LATER,
@@ -141,6 +155,8 @@ export default {
   removeUnqualifiedItemsAndCheckout,
   openCheckoutConfirmationModal,
   setItemOOS,
+  paypalAuthorization,
+  startPaypalCheckout,
   setCartItemsUpdating,
   setItemUnavailable,
   routeForCheckout,

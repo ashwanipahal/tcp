@@ -17,6 +17,10 @@ const styles = css`
     position: initial;
     margin-top: ${props => props.theme.spacing.ELEM_SPACING.XXS};
   }
+  .slick-disabled {
+    opacity: 0.5;
+    cursor: default;
+  }
 `;
 
 export default styles;
