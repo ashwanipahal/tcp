@@ -11,7 +11,7 @@ const TileWrapper = styled.View`
   margin-left: ${props => props.theme.spacing.ELEM_SPACING.LRG};
   margin-right: ${props => props.theme.spacing.ELEM_SPACING.LRG};
   border-bottom-width: 2px;
-  box-shadow: 0 0 1px gray;
+  box-shadow: 0 0 1px ${props => props.theme.colorPalette.gray[400]};
   border-bottom-color: ${props =>
     props.theme.isGymboree
       ? props.theme.colorPalette.orange[800]

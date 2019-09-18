@@ -3,22 +3,23 @@ import PropTypes from 'prop-types';
 import Carousel from '@tcp/core/src/components/common/molecules/Carousel';
 import withStyles from '@tcp/core/src/components/common/hoc/withStyles';
 import { BodyCopy, Row, Col, Anchor } from '@tcp/core/src/components/common/atoms';
-import { routerPush, getIconPath } from '@tcp/core/src/utils';
+import { routerPush, getIconPath, getLabelValue } from '@tcp/core/src/utils';
 import internalEndpoints from '@tcp/core/src/components/features/account/common/internalEndpoints';
 import styles from '../styles/EarnExtraPointsTile.style';
 import carouselConfig from '../EarnExtraPointsTile.config';
 import DetailedEarnExtraPointsTile from '../../../molecule/DetailedEarnExtraPointsTile';
+import EARNEXTRAPOINTS_CONSTANTS from '../EarnExtraPointsTile.constants';
 
 const onClickHandler = () => {
   return routerPush(internalEndpoints.profilePage.link, internalEndpoints.profilePage.path);
 };
 
 /**
- * @function RewardsPointsView The RewardsPointsView component will provide slider for account drawer
+ * @function EarnExtraPointsTile The EarnExtraPointsTile component will provide Carousel with tiles data
  */
 
 const EarnExtraPointsTile = ({ className, labels, waysToEarn }) => {
-  if (waysToEarn && waysToEarn.length > 8) {
+  if (waysToEarn && waysToEarn.length > EARNEXTRAPOINTS_CONSTANTS.MAX_TILE_COUNT) {
     carouselConfig.dots = false;
   }
 
@@ -33,7 +34,7 @@ const EarnExtraPointsTile = ({ className, labels, waysToEarn }) => {
             fontFamily="secondary"
             data-locator="earnExtraPointsHeading"
           >
-            {labels.lbl_common_earnExtraPoints}
+            {getLabelValue(labels, 'lbl_common_earnExtraPoints')}
           </BodyCopy>
         </Col>
         <Col colSize={{ large: 2, medium: 2, small: 2 }} className="textRight">
@@ -43,7 +44,7 @@ const EarnExtraPointsTile = ({ className, labels, waysToEarn }) => {
             data-locator="earnExtraPointsViewAll"
             underline
           >
-            {labels.lbl_common_viewAll}
+            {getLabelValue(labels, 'lbl_common_viewAll')}
           </Anchor>
         </Col>
       </Row>

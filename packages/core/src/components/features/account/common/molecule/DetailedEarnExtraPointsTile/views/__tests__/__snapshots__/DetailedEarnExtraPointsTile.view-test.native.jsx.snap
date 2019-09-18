@@ -1,0 +1,35 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Detailed Earn Extra Points Tile component  should render Detailed Earn Extra Points Tile component Correctly 1`] = `
+<Styled(View)>
+  <Styled(View)>
+    <Styled(Image)
+      source={
+        Object {
+          "testUri": "../../../../core/src/assets/download-app.png",
+        }
+      }
+    />
+  </Styled(View)>
+  <Styled(BodyCopy)
+    component="p"
+    data-locator="earnExtraPointsActivityTitle_AppDownload"
+    fontFamily="secondary"
+    fontSize="fs16"
+    fontWeight="black"
+    text="Earn 5 Points"
+    textAlign="center"
+  />
+  <Styled(View)>
+    <Styled(BodyCopy)
+      component="p"
+      data-locator="earnExtraPointsDescription_AppDownload"
+      fontFamily="secondary"
+      fontSize="fs16"
+      fontWeight="regular"
+      text="Download & Log in to our App"
+      textAlign="center"
+    />
+  </Styled(View)>
+</Styled(View)>
+`;

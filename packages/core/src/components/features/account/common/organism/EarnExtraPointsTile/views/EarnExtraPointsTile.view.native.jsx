@@ -2,7 +2,7 @@ import React, { PureComponent } from 'react';
 import PropTypes from 'prop-types';
 import { View } from 'react-native';
 import { BodyCopy, Anchor } from '@tcp/core/src/components/common/atoms';
-import { getScreenWidth } from '@tcp/core/src/utils';
+import { getScreenWidth, getLabelValue } from '@tcp/core/src/utils';
 import Carousel from '@tcp/core/src/components/common/molecules/Carousel';
 import DetailedEarnExtraPointsTile from '../../../molecule/DetailedEarnExtraPointsTile';
 import {
@@ -17,6 +17,11 @@ import {
  */
 const MODULE_HEIGHT = 220;
 const MODULE_WIDTH = getScreenWidth() - 30;
+
+/**
+ * @component EarnExtraPointsTile for Native view
+ *  The EarnExtraPointsTile child component used for provide Carousel view with tiles data
+ */
 
 class EarnExtraPointsTile extends PureComponent {
   renderView = ({ item, labels }) => {
@@ -34,13 +39,13 @@ class EarnExtraPointsTile extends PureComponent {
             fontSize="fs16"
             fontWeight="extrabold"
             fontFamily="secondary"
-            text={labels.lbl_common_earnExtraPoints}
+            text={getLabelValue(labels, 'lbl_common_earnExtraPoints')}
             data-locator="earnExtraPointsHeading"
           />
           <Anchor
             fontSizeVariation="medium"
             anchorVariation="primary"
-            text={labels.lbl_common_viewAll}
+            text={getLabelValue(labels, 'lbl_common_viewAll')}
             data-locator="earnExtraPointsViewAll"
             underline
           />
