@@ -297,7 +297,7 @@ class ProductListingFiltersForm extends React.Component {
       className,
       initialValues,
       onSubmit,
-      showingItemsLabel,
+      slpLabels,
     } = this.props;
     const filterKeys = Object.keys(filtersMaps);
     return (
@@ -340,7 +340,7 @@ class ProductListingFiltersForm extends React.Component {
                   onRemoveFilter={this.handleRemoveFilter}
                   appliedFilters={appliedFilters}
                   removeAllFilters={this.handleRemoveAllFilters}
-                  className={className}
+                  className={` ${className} filtered-by-section`}
                   labels={labels}
                   totalProductsCount={totalProductsCount}
                 />
@@ -349,7 +349,7 @@ class ProductListingFiltersForm extends React.Component {
             <Col colSize={{ small: 6, medium: 8, large: 2 }}>
               <LoadedProductsCount
                 totalProductsCount={totalProductsCount}
-                showingItemsLabel={showingItemsLabel}
+                showingItemsLabel={slpLabels}
               />
             </Col>
           </Row>
@@ -445,7 +445,7 @@ ProductListingFiltersForm.propTypes = {
   onSubmit: PropTypes.func.isRequired,
   getProducts: PropTypes.func.isRequired,
   change: PropTypes.func,
-  showingItemsLabel: PropTypes.objectOf(PropTypes.oneOfType([PropTypes.string])),
+  slpLabels: PropTypes.objectOf(PropTypes.oneOfType([PropTypes.string])),
 };
 
 ProductListingFiltersForm.defaultProps = {
@@ -458,7 +458,7 @@ ProductListingFiltersForm.defaultProps = {
   colorSeqMap: {},
   submitting: false,
   change: () => null,
-  showingItemsLabel: {},
+  slpLabels: {},
 };
 export default reduxForm({
   form: 'filter-form', // a unique identifier for this form
