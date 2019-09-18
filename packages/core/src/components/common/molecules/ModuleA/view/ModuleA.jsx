@@ -90,7 +90,7 @@ class ModuleA extends React.Component {
                   promoBanner,
                   ribbonBanner,
                 } = item;
-                const imageConfig = isGymboree() ? IMG_DATA_GYM : IMG_DATA_TCP;
+                const imageConfig = isGymboree() ? IMG_DATA_GYM.config : IMG_DATA_TCP.config;
                 return (
                   <div className="banner-slide">
                     <DamImage
