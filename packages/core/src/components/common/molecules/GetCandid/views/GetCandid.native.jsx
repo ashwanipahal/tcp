@@ -64,7 +64,7 @@ class GetCandid extends React.Component {
     const image = StandardResolution;
     return (
       <Touchable accessibilityRole="image">
-        <Anchor onPress={this.navigateToPage}>
+        <Anchor onPress={() => this.navigateToPage(index)}>
           <ImageGridItem
             host={LAZYLOAD_HOST_NAME.HOME}
             key={index.toString()}
@@ -82,9 +82,12 @@ class GetCandid extends React.Component {
    * @function navigateToPage function to navigate to
    * Get Candid Gallery page.
    */
-  navigateToPage = () => {
-    const { navigation } = this.props;
-    navigateToNestedRoute(navigation, 'HomeStack', 'GetCandidGallery');
+  navigateToPage = index => {
+    const { navigation, labels } = this.props;
+    navigateToNestedRoute(navigation, 'HomeStack', 'GetCandidGallery', {
+      activeIndex: index,
+      title: labels.title.toUpperCase(),
+    });
   };
 
   render() {
@@ -131,7 +134,7 @@ class GetCandid extends React.Component {
               dataLocator=""
               text={labels.btnSeeMore}
               visible
-              onPress={this.navigateToPage}
+              onPress={() => this.navigateToPage(8)}
             />
           </>
         )}
