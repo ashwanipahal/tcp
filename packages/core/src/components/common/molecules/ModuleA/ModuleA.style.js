@@ -72,14 +72,17 @@ const style = css`
 
   .tcp_carousel_wrapper .slick-list,
   .banner-slide {
-    height: 311px;
+    min-height: 200px;
+    max-height: 311px;
 
     @media ${props => props.theme.mediaQuery.medium} {
-      height: 406px;
+      min-height: 300px;
+      max-height: 406px;
     }
 
     @media ${props => props.theme.mediaQuery.large} {
-      height: 474px;
+      min-height: 300px;
+      max-height: 474px;
     }
   }
 
