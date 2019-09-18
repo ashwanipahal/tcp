@@ -1,3 +1,4 @@
+/* eslint-disable complexity */
 import { fromJS } from 'immutable';
 import CheckoutConstants from '../Checkout.constants';
 
@@ -16,9 +17,16 @@ const initialState = fromJS({
     giftCards: [],
     venmoData: {
       nonce: '',
-      venmoClientTokenData: '',
+      venmoClientTokenData: {
+        userState: 'G',
+        venmoCustomerIdAvailable: false,
+        venmoIsDefaultPaymentType: false,
+        venmoPaymentTokenAvailable: false,
+        venmoSecurityToken: '',
+      },
       deviceData: '',
       supportedByBrowser: true,
+      loading: false,
     },
     addEditResponseAddressId: null,
     giftCardError: null,
@@ -116,7 +124,14 @@ function uiFlagReducer(checkout, action) {
       return checkout.setIn(['values', 'orderBalanceTotal'], action.payload);
     case CheckoutConstants.CHECKOUT_VAlUES_SET_GIFT_WRAP:
       return checkout.CartPageReducer.setIn(['orderDetails', 'checkout', 'giftWrap']);
-
+    case CheckoutConstants.GET_VENMO_CLIENT_TOKEN_SUCCESS:
+      return checkout.setIn(['values', 'venmoData'], action.payload);
+    case CheckoutConstants.GET_VENMO_CLIENT_TOKEN_ERROR:
+      return checkout.setIn(['values', 'venmoData'], action.payload);
+    case CheckoutConstants.SET_VENMO_DATA:
+      return checkout.setIn(['values', 'venmoData'], action.payload);
+    case CheckoutConstants.SET_VENMO_PAYMENT_INPROGRESS:
+      return checkout.setIn(['uiFlags', 'venmoPaymentInProgress'], action.payload);
     // case 'CHECKOUT_FLAGS_SET_REVIEW_VISTED':
     //   return merge(uiFlags, { isReviewVisited: action.payload });
     // case 'CHECKOUT_FLAGS_SET_PAYMENT_ERROR':

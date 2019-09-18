@@ -25,3 +25,4 @@ export {
   removeGiftCard,
   addGiftCard,
 } from './Checkout';
+export { getVenmoToken } from './venmo';
