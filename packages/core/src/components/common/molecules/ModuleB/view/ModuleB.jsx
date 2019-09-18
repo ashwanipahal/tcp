@@ -10,21 +10,21 @@ import errorBoundary from '../../../hoc/withErrorBoundary/errorBoundary';
 import style from '../ModuleB.style';
 
 /**
- * This function returns button list variation on the basis of CTA Type
- * @param {*} ctaType
+ * This function returns button list
  */
-const getButtonListVariation = ctaType => {
-  const buttonTypes = Object.assign({}, ctaTypes);
-  return buttonTypes[ctaType];
+const getButtonListVariation = () => {
+  return {
+    ...ctaTypes,
+  };
 };
 
 /**
- * This function returns props from button list variation on the basis of CTA Type
- * @param {*} ctaType
+ * This function returns props from button list
  */
-const getButtonListVariationProps = ctaType => {
-  const buttonTypeProps = Object.assign({}, ctaTypeProps);
-  return buttonTypeProps[ctaType];
+const getButtonListVariationProps = () => {
+  return {
+    ...ctaTypeProps,
+  };
 };
 
 /**
@@ -59,15 +59,15 @@ const ModuleB = props => {
     expandableTitle,
   } = props;
 
-  const buttonListCtaType = getButtonListVariation(ctaType);
-  const buttonListProps = getButtonListVariationProps(ctaType);
+  const buttonListCtaType = getButtonListVariation()[ctaType];
+  const buttonListProps = getButtonListVariationProps()[ctaType];
   const colSize = getColSize(moduleWidth);
 
   if (ctaItems.length < 3) {
     buttonListProps.dualVariation = null;
+  } else {
+    buttonListProps.dualVariation = ctaTypeProps[ctaType];
   }
-
-  console.log(buttonListProps);
 
   const imageBannerProps = {
     bannerPosition,
