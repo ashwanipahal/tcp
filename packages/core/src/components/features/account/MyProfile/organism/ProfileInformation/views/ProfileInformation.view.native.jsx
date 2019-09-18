@@ -1,5 +1,4 @@
 import React from 'react';
-import { SafeAreaView } from 'react-native';
 import PropTypes from 'prop-types';
 import Anchor from '@tcp/core/src/components/common/atoms/Anchor';
 import { ViewWithSpacing } from '@tcp/core/src/components/common/atoms/styledWrapper';
@@ -118,15 +117,13 @@ export class ProfileInformation extends React.PureComponent {
             onRequestClose={this.toggleMailingAddressModal}
             heading={labelsObj.profile.lbl_profile_heading}
           >
-            <SafeAreaView>
-              <ViewWithSpacing spacingStyles="margin-left-SM margin-right-SM">
-                <MailingInformationContainer
-                  labels={labelsObj}
-                  onUpdateMailingAddress={this.toggleMailingAddressModal}
-                  onClose={this.toggleMailingAddressModal}
-                />
-              </ViewWithSpacing>
-            </SafeAreaView>
+            <ViewWithSpacing spacingStyles="margin-left-SM margin-right-SM">
+              <MailingInformationContainer
+                labels={labelsObj}
+                onUpdateMailingAddress={this.toggleMailingAddressModal}
+                onClose={this.toggleMailingAddressModal}
+              />
+            </ViewWithSpacing>
           </ModalNative>
         )}
       </>
