@@ -6,9 +6,14 @@ import bagPageActions from '../../../../BagPage/container/BagPage.actions';
 import { getSetIsPaypalPaymentSettings } from '../../../../Checkout/container/Checkout.action';
 import { ServiceResponseError } from '../../../../../../../utils/errorMessage.util';
 import CONSTANTS from '../../../../Checkout/Checkout.constants';
+import { getAPIConfig } from '../../../../../../../utils';
+
+const apiConfigObj = getAPIConfig();
+const { paypalEnv } = apiConfigObj;
 
 export class PayPalButtonContainer extends React.PureComponent<Props> {
   initalizePayPalButton = data => {
+    console.log('paypalEnv', paypalEnv);
     const { startPaypalCheckout, paypalAuthorizationHandle, clearPaypalSettings } = this.props;
     const { containerId, height } = data;
     const options = {
@@ -24,7 +29,7 @@ export class PayPalButtonContainer extends React.PureComponent<Props> {
       funding: {
         disallowed: [window.paypal && window.paypal.FUNDING.CREDIT],
       },
-      env: 'sandbox',
+      env: paypalEnv,
       payment: () => {
         return new Promise((resolve, reject) => startPaypalCheckout({ resolve, reject }));
       },
