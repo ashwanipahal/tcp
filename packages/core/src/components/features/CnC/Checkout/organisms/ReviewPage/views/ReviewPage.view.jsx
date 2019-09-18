@@ -7,6 +7,7 @@ import styles from '../styles/ReviewPage.style';
 import { CHECKOUT_ROUTES } from '../../../Checkout.constants';
 import utility from '../../../util/utility';
 import { Anchor } from '../../../../../../common/atoms';
+import PickUpReviewSectionContainer from '../organisms/PickUpReviewSection';
 
 class ReviewPage extends React.PureComponent {
   static propTypes = {
@@ -41,7 +42,12 @@ class ReviewPage extends React.PureComponent {
     return (
       <div className={className}>
         <CheckoutSectionTitleDisplay title={header} dataLocator="review-title" />
-        {!!orderHasPickUp && <div className="review-pickup">{pickupSectionTitle}</div>}
+        {!!orderHasPickUp && (
+          <div className="review-pickup">
+            {pickupSectionTitle}
+            <PickUpReviewSectionContainer />
+          </div>
+        )}
         {!!orderHasShipping && <div className="review-shipping">{shippingSectionTitle}</div>}
         <div className="review-billing">{billingSectionTitle}</div>
         <CheckoutFooter

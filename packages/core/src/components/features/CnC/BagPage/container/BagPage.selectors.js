@@ -127,6 +127,10 @@ const getCurrentCurrency = state => {
   return state.session.getIn(['siteDetails', 'currency']);
 };
 
+const getCartStores = state => {
+  return state.CartPageReducer.getIn(['orderDetails', 'stores']);
+};
+
 export default {
   getBagPageLabels,
   getTotalItems,
@@ -146,4 +150,5 @@ export default {
   getGiftServicesContentTcpId,
   getGiftServicesContentGymId,
   getCurrentCurrency,
+  getCartStores,
 };
