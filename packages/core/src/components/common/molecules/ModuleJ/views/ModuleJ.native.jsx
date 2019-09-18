@@ -141,9 +141,11 @@ class ModuleJ extends React.PureComponent<Props, State> {
             </SecondHeaderContainer>
           </Wrapper>
 
-          <PromoContainer layout={layout}>
-            <PromoBanner promoBanner={promoBanner} navigation={navigation} />
-          </PromoContainer>
+          {promoBanner && (
+            <PromoContainer layout={layout}>
+              <PromoBanner promoBanner={promoBanner} navigation={navigation} />
+            </PromoContainer>
+          )}
         </MessageContainer>
         <ProductTabListContainer>
           <ProductTabList
