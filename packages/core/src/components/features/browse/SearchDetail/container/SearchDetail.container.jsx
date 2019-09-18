@@ -8,6 +8,7 @@ import { isClient } from '../../../../../utils/index';
 import SearchDetail from '../views/SearchDetail.view';
 import { getSlpProducts } from './SearchDetail.actions';
 import { getProductsAndTitleBlocks } from '../container/SearchDetail.util';
+import getSortLabels from '../../ProductListing/molecules/SortSelector/views/Sort.selectors';
 import {
   getUnbxdId,
   getCategoryId,
@@ -41,8 +42,9 @@ class SearchDetailContainer extends React.PureComponent {
         asPath,
       },
       getProducts,
+      formValues,
     } = this.props;
-    getProducts({ URI: 'search', asPath, sq, ignoreCache: true });
+    getProducts({ URI: 'search', asPath, sq, ignoreCache: true, formValues });
   }
 
   render() {
@@ -68,6 +70,7 @@ class SearchDetailContainer extends React.PureComponent {
       onPickUpOpenClick,
       searchedText,
       slpLabels,
+      sortLabels,
       ...otherProps
     } = this.props;
     return (
@@ -85,6 +88,7 @@ class SearchDetailContainer extends React.PureComponent {
         labelsFilter={labelsFilter}
         slpLabels={slpLabels}
         searchedText={searchedText}
+        sortLabels={sortLabels}
         {...otherProps}
       />
     );
@@ -130,6 +134,7 @@ function mapStateToProps(state) {
     onSubmit: submitProductListingFiltersForm,
     currentNavIds: state.ProductListing && state.ProductListing.get('currentNavigationIds'),
     slpLabels: getLabels(state),
+    sortLabels: getSortLabels(state),
   };
 }
 

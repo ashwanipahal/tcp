@@ -15,13 +15,13 @@ const operatorInstance = new ProductsOperator();
 
 export function* fetchSlpProducts({ payload }) {
   try {
-    const { sq } = payload;
+    const { sq, formData } = payload;
     const state = yield select();
     yield put(setSlpSearchTerm({ searchTerm: sq }));
 
     const reqObj = operatorInstance.getProductsListingInfo({
       state,
-      filtersAndSort: {},
+      filtersAndSort: formData,
       pageNumber: 1,
       // TODO - fix this for mobile APP - location needs to be defined
       location: window.location, // TODO - this is the prod code - location = routingInfoStoreView.getHistory(this.store.getState()).location,

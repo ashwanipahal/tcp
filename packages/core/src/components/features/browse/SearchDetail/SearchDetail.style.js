@@ -52,6 +52,9 @@ export default css`
         padding-right: 0;
       }
     }
+    .render-mobile-view {
+      display: none;
+    }
   }
   .item-title {
     width: 100%;

@@ -17,6 +17,7 @@ const SearchListingView = ({
   totalProductsCount,
   searchedText,
   slpLabels,
+  sortLabels,
   filters,
   filtersLength,
   formValues,
@@ -30,10 +31,12 @@ const SearchListingView = ({
     <div className={className}>
       <Row>
         <Col colSize={{ small: 6, medium: 8, large: 12 }}>
-          <BodyCopy fontSize="fs14" component="div" fontFamily="secondary" fontWeight="regular">
-            {slpLabels.lbl_searched_for}
-            <span className="searched-label">{`"${searchedText}"`}</span>
-          </BodyCopy>
+          {searchedText && (
+            <BodyCopy fontSize="fs14" component="div" fontFamily="secondary" fontWeight="regular">
+              {slpLabels.lbl_searched_for}
+              <span className="searched-label">{`"${searchedText}"`}</span>
+            </BodyCopy>
+          )}
         </Col>
       </Row>
       <Row>
@@ -46,6 +49,7 @@ const SearchListingView = ({
             labels={labelsFilter}
             onSubmit={onSubmit}
             formValues={formValues}
+            sortLabels={sortLabels}
             getProducts={getProducts}
           />
         </Col>
@@ -91,6 +95,7 @@ SearchListingView.propTypes = {
   totalProductsCount: PropTypes.number,
   searchedText: PropTypes.string,
   slpLabels: PropTypes.objectOf(PropTypes.oneOfType([PropTypes.string])),
+  sortLabels: PropTypes.arrayOf(PropTypes.shape({})),
 };
 
 SearchListingView.defaultProps = {
@@ -105,6 +110,7 @@ SearchListingView.defaultProps = {
   totalProductsCount: 0,
   searchedText: '',
   slpLabels: {},
+  sortLabels: {},
 };
 
 export default withStyles(errorBoundary(SearchListingView), SearchListingStyle);
