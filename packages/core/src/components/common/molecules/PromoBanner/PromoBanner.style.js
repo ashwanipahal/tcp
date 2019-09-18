@@ -38,10 +38,10 @@ export default css`
   .promo-banner-header {
     display: block;
     border-bottom: 1px solid ${props => props.theme.colorPalette.gray[900]};
+    padding-bottom: 5px;
     margin: 8px 18px;
     .link-text {
       margin: 0;
-      padding-bottom: 5px;
     }
     .style1,
     .style2 {
@@ -54,9 +54,7 @@ export default css`
 
     @media ${props => props.theme.mediaQuery.large} {
       margin: 12px 38px 15px 38px;
-      .link-text {
-        padding-bottom: 7px;
-      }
+      padding-bottom: 7px;
       .style1,
       .style2 {
         font-size: ${props => props.theme.typography.fontSizes.fs16};
@@ -146,7 +144,7 @@ export default css`
     letter-spacing: ${props => props.theme.typography.letterSpacings.ls222};
 
     @media ${props => props.theme.mediaQuery.large} {
-      font-size: ${props => props.theme.typography.fontSizes.fs32};
+      font-size: ${props => props.theme.typography.fontSizes.fs36};
       font-weight: ${props => props.theme.typography.fontWeights.black};
       letter-spacing: ${props => props.theme.typography.letterSpacings.ls222};
     }

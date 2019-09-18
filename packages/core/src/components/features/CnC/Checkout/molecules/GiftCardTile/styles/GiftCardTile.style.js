@@ -31,7 +31,6 @@ const styles = css`
       width: 177px;
     }
     @media ${props => props.theme.mediaQuery.large} {
-      width: 195px;
       padding: ${props => props.theme.spacing.ELEM_SPACING.SM}
         ${props => props.theme.spacing.ELEM_SPACING.XL};
     }
@@ -60,6 +59,12 @@ const styles = css`
   @media ${props => props.theme.mediaQuery.large} {
     .gift_card_number_detail {
       padding: ${props => props.theme.spacing.ELEM_SPACING.MED} 0;
+    }
+  }
+
+  @media ${props => props.theme.mediaQuery.mediumMax} {
+    .remainingBalanceText {
+      display: inline-block;
     }
   }
 `;

@@ -18,10 +18,37 @@ const getGiftCardErrors = state => {
   return state.Checkout.getIn(['values', 'giftCardError']);
 };
 
+const getShowAddGiftCard = state => {
+  return state.Checkout.getIn(['values', 'showAddGiftCard']) || false;
+};
+
+const getAddGiftCardErrors = state => {
+  return state.Checkout.getIn(['values', 'addGiftCardError']);
+};
+
+const getAddGiftCardResponse = state => {
+  return state.Checkout.getIn(['values', 'addGiftCardResponse']);
+};
+
+const getIsRecapchaEnabled = state => {
+  return (
+    (state.session && state.session.siteDetails && state.session.siteDetails.isRecapchaEnabled) ||
+    true
+  );
+};
+
+const getIsLoading = state => {
+  return state.Checkout.getIn(['uiFlags', 'isLoadingShippingMethods']);
+};
 export default {
   getGrandTotal,
   getAppliedGiftCards,
   getGiftCardsTotal,
   getGiftSectionLabels,
   getGiftCardErrors,
+  getShowAddGiftCard,
+  getAddGiftCardErrors,
+  getIsRecapchaEnabled,
+  getAddGiftCardResponse,
+  getIsLoading,
 };

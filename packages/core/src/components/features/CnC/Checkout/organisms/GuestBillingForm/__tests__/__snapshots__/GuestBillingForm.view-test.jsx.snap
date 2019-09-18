@@ -1,0 +1,80 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`GuestBillingFormVanilla should render correctly 1`] = `
+<form
+  name="checkoutBilling"
+>
+  <Styled(BodyCopy)
+    className="elem-mb-XS elem-mt-MED"
+    color="text.primary"
+    component="p"
+    data-locator="billing-details"
+    fontFamily="primary"
+    fontSize="fs28"
+    fontWeight="regular"
+    letterSpacing="normal"
+    lineHeight="normal"
+    textAlign="left"
+  >
+    lbl_billing_paymentMethodTitle
+  </Styled(BodyCopy)>
+  <Styled(PaymentMethods)
+    labels={Object {}}
+  />
+  <div
+    className="elem-mt-LRG"
+  />
+</form>
+`;
+
+exports[`GuestBillingFormVanilla should render correctly when props change 1`] = `
+<form
+  name="checkoutBilling"
+>
+  <Styled(BodyCopy)
+    className="elem-mb-XS elem-mt-MED"
+    color="text.primary"
+    component="p"
+    data-locator="billing-details"
+    fontFamily="primary"
+    fontSize="fs28"
+    fontWeight="regular"
+    letterSpacing="normal"
+    lineHeight="normal"
+    textAlign="left"
+  >
+    lbl_billing_paymentMethodTitle
+  </Styled(BodyCopy)>
+  <Styled(PaymentMethods)
+    labels={Object {}}
+  />
+  <div
+    className="elem-mt-LRG"
+  >
+    <AddNewCCForm
+      cardType="VISA"
+      cvvError="error"
+      cvvInfo={
+        <ForwardRef
+          aligned="right"
+          fontFamily="secondary"
+          message={
+            <ForwardRef
+              className="cvv-code-info"
+              dataLocator="cvv-code-info"
+              richTextHtml=""
+            />
+          }
+        >
+          <ForwardRef
+            height="15"
+            src="/static/images/info-icon.png"
+            width="15"
+          />
+        </ForwardRef>
+      }
+      labels={Object {}}
+    />
+  </div>
+</form>
+`;

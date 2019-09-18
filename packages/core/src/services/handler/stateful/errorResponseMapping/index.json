@@ -339,7 +339,7 @@
     "errorMessage": "One or more of your coupons have already been redeemed. Please remove the coupon(s) and try again.",
     "formFieldName": ""
   },
-  "_WIC_RTPS_COUPON_NOT_APPLIED": {
+  "WIC_RTPS_COUPON_NOT_APPLIED": {
     "errorMessage": "We attempted to apply your offer, but, it does not combine with offers already applied to your order. We’ve saved your coupon to your My Place Rewards account",
     "formFieldName": ""
   },

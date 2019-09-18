@@ -1,5 +1,6 @@
 import React from 'react';
 import PropTypes from 'prop-types';
+import internalEndpoints from '@tcp/core/src/components/features/account/common/internalEndpoints';
 import LogOutPageContainer from '../../../../Logout/container/LogOut.container';
 import withStyles from '../../../../../../common/hoc/withStyles';
 import styles from '../styles/AccountDrawerBottomLinks.style';
@@ -30,6 +31,8 @@ const AccountDrawerBottomLinks = props => {
           <Anchor
             fontSizeVariation="large"
             fontFamily="secondary"
+            to={internalEndpoints.myWalletPage.link}
+            asPath={internalEndpoints.myWalletPage.path}
             anchorVariation="primary"
             text={labels.CREATE_ACC_WALLET}
           />

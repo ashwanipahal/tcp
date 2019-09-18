@@ -36,11 +36,12 @@ class ProductListingContainer extends React.PureComponent {
     getProducts({ URI: 'category', url, ignoreCache: true });
   };
 
-  onGoToPDPPage = (title, pdpUrl) => {
+  onGoToPDPPage = (title, pdpUrl, selectedColorProductId) => {
     const { navigation } = this.props;
     navigation.navigate('ProductDetail', {
-      pdpUrl,
       title,
+      pdpUrl,
+      selectedColorProductId,
       reset: true,
     });
   };
