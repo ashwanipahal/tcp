@@ -5,7 +5,7 @@ exports[`GiftCardTileVanilla should render gift card tile 1`] = `
   className="test"
 >
   <div
-    className="gift_card_box elem-mb-XS elem-mt-MED"
+    className="gift_card_box elem-mt-SM"
   >
     <Styled(Row)
       className="gift-card-row"
@@ -21,7 +21,7 @@ exports[`GiftCardTileVanilla should render gift card tile 1`] = `
         }
       >
         <Styled(BodyCopy)
-          className="gift_card_number_detail"
+          className="gift_card_number_detail available_giftCards_text"
           color="text.secondary"
           component="p"
           fontFamily="secondary"
@@ -31,7 +31,10 @@ exports[`GiftCardTileVanilla should render gift card tile 1`] = `
           lineHeight="normal"
           textAlign="left"
         >
-          lbl_giftcard_endingIn  
+          lbl_giftcard_endingIn 
+          <span
+            className="remainingBalanceText"
+          />
         </Styled(BodyCopy)>
       </Styled(Col)>
       <Styled(Col)
@@ -66,7 +69,7 @@ exports[`GiftCardTileVanilla should render gift card tile with 0 order balance 1
   className="test"
 >
   <div
-    className="gift_card_box elem-mb-XS elem-mt-MED"
+    className="gift_card_box elem-mt-SM"
   >
     <Styled(Row)
       className="gift-card-row"
@@ -82,7 +85,7 @@ exports[`GiftCardTileVanilla should render gift card tile with 0 order balance 1
         }
       >
         <Styled(BodyCopy)
-          className="gift_card_number_detail"
+          className="gift_card_number_detail available_giftCards_text"
           color="text.secondary"
           component="p"
           fontFamily="secondary"
@@ -92,7 +95,10 @@ exports[`GiftCardTileVanilla should render gift card tile with 0 order balance 1
           lineHeight="normal"
           textAlign="left"
         >
-          lbl_giftcard_endingIn  
+          lbl_giftcard_endingIn 
+          <span
+            className="remainingBalanceText"
+          />
         </Styled(BodyCopy)>
       </Styled(Col)>
       <Styled(Col)
@@ -127,7 +133,7 @@ exports[`GiftCardTileVanilla should render gift card tile with 100 order balance
   className="test"
 >
   <div
-    className="gift_card_box elem-mb-XS elem-mt-MED"
+    className="gift_card_box elem-mt-SM"
   >
     <Styled(Row)
       className="gift-card-row"
@@ -143,7 +149,7 @@ exports[`GiftCardTileVanilla should render gift card tile with 100 order balance
         }
       >
         <Styled(BodyCopy)
-          className="gift_card_number_detail"
+          className="gift_card_number_detail available_giftCards_text"
           color="text.secondary"
           component="p"
           fontFamily="secondary"
@@ -153,7 +159,10 @@ exports[`GiftCardTileVanilla should render gift card tile with 100 order balance
           lineHeight="normal"
           textAlign="left"
         >
-          lbl_giftcard_endingIn  
+          lbl_giftcard_endingIn 
+          <span
+            className="remainingBalanceText"
+          />
         </Styled(BodyCopy)>
       </Styled(Col)>
       <Styled(Col)
@@ -188,7 +197,7 @@ exports[`GiftCardTileVanilla should render gift card tile with errors 1`] = `
   className="test"
 >
   <div
-    className="gift_card_box elem-mb-XS elem-mt-MED"
+    className="gift_card_box elem-mt-SM"
   >
     <Styled(Row)>
       <Styled(Col)
@@ -220,7 +229,7 @@ exports[`GiftCardTileVanilla should render gift card tile with errors 1`] = `
         }
       >
         <Styled(BodyCopy)
-          className="gift_card_number_detail"
+          className="gift_card_number_detail available_giftCards_text"
           color="text.secondary"
           component="p"
           fontFamily="secondary"
@@ -230,7 +239,10 @@ exports[`GiftCardTileVanilla should render gift card tile with errors 1`] = `
           lineHeight="normal"
           textAlign="left"
         >
-          lbl_giftcard_endingIn  
+          lbl_giftcard_endingIn 
+          <span
+            className="remainingBalanceText"
+          />
         </Styled(BodyCopy)>
       </Styled(Col)>
       <Styled(Col)
@@ -265,7 +277,7 @@ exports[`GiftCardTileVanilla should render gift card tile with isGiftCardApplied
   className="test"
 >
   <div
-    className="gift_card_box elem-mb-XS elem-mt-MED"
+    className="gift_card_box elem-mt-SM"
   >
     <Styled(Row)
       className="gift-card-row"
@@ -281,7 +293,7 @@ exports[`GiftCardTileVanilla should render gift card tile with isGiftCardApplied
         }
       >
         <Styled(BodyCopy)
-          className="gift_card_number_detail"
+          className="gift_card_number_detail "
           color="text.secondary"
           component="p"
           fontFamily="secondary"
@@ -291,7 +303,12 @@ exports[`GiftCardTileVanilla should render gift card tile with isGiftCardApplied
           lineHeight="normal"
           textAlign="left"
         >
-          lbl_giftcard_endingIn undefined  | lbl_giftcard_remainingBal : $0
+          lbl_giftcard_endingIn undefined | 
+          <span
+            className="remainingBalanceText"
+          >
+            lbl_giftcard_remainingBal: $0
+          </span>
         </Styled(BodyCopy)>
       </Styled(Col)>
       <Styled(Col)
