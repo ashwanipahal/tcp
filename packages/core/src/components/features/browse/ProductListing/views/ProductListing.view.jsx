@@ -13,6 +13,7 @@ import FixedBreadCrumbs from '../molecules/FixedBreadCrumbs/views';
 import ProductListingFiltersForm from '../molecules/ProductListingFiltersForm';
 import ReadMore from '../molecules/ReadMore/views';
 import SpotlightContainer from '../molecules/Spotlight/container/Spotlight.container';
+import LoadedProductsCount from '../molecules/LoadedProductsCount/views';
 
 const ProductListView = ({
   className,
@@ -32,6 +33,7 @@ const ProductListView = ({
   getProducts,
   onSubmit,
   sortLabels,
+  slpLabels,
   ...otherProps
 }) => {
   return (
@@ -74,17 +76,10 @@ const ProductListView = ({
             </div>
           </Col>
           <Col colSize={{ small: 6, medium: 8, large: 12 }}>
-            <div className="count-section">
-              {totalProductsCount > 0 && (
-                <span className="items-count-content">
-                  Showing
-                  <span className="items-count-content-number">
-                    {totalProductsCount > 0 ? totalProductsCount : 0}
-                  </span>
-                  {totalProductsCount > 1 ? 'Items' : 'Item'}
-                </span>
-              )}
-            </div>
+            <LoadedProductsCount
+              totalProductsCount={totalProductsCount}
+              showingItemsLabel={slpLabels}
+            />
           </Col>
           <Col colSize={{ small: 6, medium: 8, large: 12 }}>
             <ProductsGrid productsBlock={productsBlock} labels={labels} {...otherProps} />
@@ -125,6 +120,7 @@ ProductListView.propTypes = {
   onSubmit: PropTypes.func,
   formValues: PropTypes.shape({}).isRequired,
   sortLabels: PropTypes.arrayOf(PropTypes.shape({})),
+  slpLabels: PropTypes.objectOf(PropTypes.oneOfType([PropTypes.string])),
 };
 
 ProductListView.defaultProps = {
@@ -142,6 +138,7 @@ ProductListView.defaultProps = {
   labels: {},
   labelsFilter: {},
   sortLabels: [],
+  slpLabels: {},
 };
 
 export default withStyles(ProductListView, ProductListingStyle);

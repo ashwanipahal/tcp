@@ -1,5 +1,5 @@
 const searchLabels = {
-  SEARCHED_FOR: 'You Searched For',
+  SEARCHED_FOR: 'You searched for',
   FILTERS: 'FILTERS',
   SORT_BY: 'SORT BY',
   SHOW_X_RESULTS: 'Showing X Results',
