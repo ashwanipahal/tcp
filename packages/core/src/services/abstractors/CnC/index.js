@@ -7,6 +7,8 @@ export {
   getCartData,
   getUnqualifiedItems,
   getProductInfoForTranslationData,
+  startPaypalCheckoutAPI,
+  paypalAuthorizationAPI,
 } from './CartItemTile';
 
 export { applyCouponToCart, removeCouponOrPromo, getAllCoupons } from './Coupon';
@@ -23,3 +25,4 @@ export {
   removeGiftCard,
   addGiftCard,
 } from './Checkout';
+export { getVenmoToken } from './venmo';

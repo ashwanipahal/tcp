@@ -46,6 +46,7 @@ import {
   addRegisteredUserAddress,
   routeToPickupPage,
   addAndSetGiftWrappingOptions,
+  getVenmoClientTokenSaga,
 } from './Checkout.saga.util';
 import submitBilling from './CheckoutBilling.saga';
 
@@ -571,11 +572,9 @@ function* saveLocalSmsInfo(smsInfo = {}) {
   let returnVal;
   const { wantsSmsOrderUpdates, smsUpdateNumber } = smsInfo;
   if (smsUpdateNumber) {
-    if (wantsSmsOrderUpdates) {
-      returnVal = yield call(setSmsNumberForUpdates, smsUpdateNumber);
-    } else {
-      returnVal = yield call(setSmsNumberForUpdates(null));
-    }
+    returnVal = wantsSmsOrderUpdates
+      ? yield call(setSmsNumberForUpdates, smsUpdateNumber)
+      : yield call(setSmsNumberForUpdates(null));
   }
   return returnVal;
 }
@@ -719,11 +718,9 @@ function* submitShippingSection({ payload: { navigation, ...formData } }) {
     // throw getSubmissionError(store, 'submitShippingSection', err);
   }
 }
-
 export function* submitBillingSection(payload) {
   yield call(submitBilling, payload, loadUpdatedCheckoutValues);
 }
-
 export function* CheckoutSaga() {
   yield takeLatest(CONSTANTS.INIT_CHECKOUT, initCheckout);
   yield takeLatest('CHECKOUT_SET_CART_DATA', storeUpdatedCheckoutValues);
@@ -738,5 +735,6 @@ export function* CheckoutSaga() {
   );
   yield takeLatest(CONSTANTS.UPDATE_SHIPPING_ADDRESS, updateShippingAddress);
   yield takeLatest(CONSTANTS.ADD_NEW_SHIPPING_ADDRESS, addNewShippingAddress);
+  yield takeLatest(CONSTANTS.GET_VENMO_CLIENT_TOKEN, getVenmoClientTokenSaga);
 }
 export default CheckoutSaga;

@@ -24,6 +24,7 @@ exports[`Gift Cards Container should render Gift Card view section 1`] = `
   isGuestUser={[Function]}
   labels={Object {}}
   onAddGiftCardClick={[Function]}
+  onClearError={[Function]}
   orderBalanceTotal={50}
   toastMessage={[MockFunction]}
 />
