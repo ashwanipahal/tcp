@@ -12,7 +12,7 @@ import FilterModal from '../../FilterModal/views';
 import { Row, Col, Button } from '../../../../../../common/atoms';
 import { getLocator } from '../../../../../../../utils';
 import SortSelector from '../../SortSelector';
-import config from '../../SortSelector/SortSelector.config';
+import getSortOptions from '../../SortSelector/views/Sort.util';
 import { FACETS_FIELD_KEY } from '../../../../../../../services/abstractors/productListing/productListing.utils';
 
 // @flow
@@ -263,7 +263,9 @@ class ProductListingMobileFiltersForm extends React.PureComponent<Props> {
    */
   renderMobilePlpFilterForm() {
     const { isSortOpenModal } = this.state;
-    const { handleSubmit, handleSubmitOnChange } = this.props;
+    const { handleSubmit, handleSubmitOnChange, sortLabels } = this.props;
+    const sortOptions = getSortOptions(sortLabels);
+
     return (
       <div>
         {!isSortOpenModal && (
@@ -272,7 +274,7 @@ class ProductListingMobileFiltersForm extends React.PureComponent<Props> {
         {isSortOpenModal && (
           <SortSelector
             expanded
-            sortSelectOptions={getSortCustomOptionsMap(config)}
+            sortSelectOptions={getSortCustomOptionsMap(sortOptions)}
             hideTitle
             isSortOpenModal
             onChange={handleSubmit(formValues => {
@@ -352,6 +354,7 @@ class ProductListingMobileFiltersForm extends React.PureComponent<Props> {
       labels,
       removeAllFilters,
       handleImmediateSubmit,
+      sortLabels,
     } = this.props;
     const { isOpenFilterSection, show } = this.state;
     let appliedFiltersCount = this.getAppliedFiltersCount();
@@ -392,6 +395,7 @@ class ProductListingMobileFiltersForm extends React.PureComponent<Props> {
             classNames={classNames}
             labels={labels}
             isSortOpenModal={isSortOpenModal}
+            sortLabels={sortLabels}
           >
             <div className={`${className} ${sortClassName} new-filter-and-sort-form-container`}>
               {this.renderMobilePlpFilterForm()}
@@ -450,11 +454,13 @@ ProductListingMobileFiltersForm.propTypes = {
   handleSubmit: PropTypes.func.isRequired,
   handleSubmitOnChange: PropTypes.func,
   removeAllFilters: PropTypes.func,
+  sortLabels: PropTypes.arrayOf(PropTypes.shape({})),
 };
 
 ProductListingMobileFiltersForm.defaultProps = {
   filtersMaps: {},
   labels: {},
+  sortLabels: [],
   handleSubmitOnChange: () => {},
   removeAllFilters: () => {},
 };
