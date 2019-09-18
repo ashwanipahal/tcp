@@ -21,12 +21,23 @@ describe('CheckoutReview saga', () => {
   });
 });
 
+const emailAddress = '123@123.com';
 describe('submitOrderProcessing saga', () => {
   it('submitOrderProcessing review Page', () => {
-    const emailAddress = '123@123.com';
     const orderProcessing = submitOrderProcessing();
     orderProcessing.next();
     orderProcessing.next({ userDetails: { emailAddress } });
+    orderProcessing.next();
+
+    expect(orderProcessing.next().value).toEqual(select(isGuest));
+    expect(orderProcessing.next(true).value).toEqual(
+      call(validateAndSubmitEmailSignup, emailAddress, 'us_guest_checkout')
+    );
+  });
+  it('submitOrderProcessing review Page with shipping email', () => {
+    const orderProcessing = submitOrderProcessing();
+    orderProcessing.next();
+    orderProcessing.next({ shipping: { emailAddress } });
     orderProcessing.next();
 
     expect(orderProcessing.next().value).toEqual(select(isGuest));
@@ -38,7 +49,6 @@ describe('submitOrderProcessing saga', () => {
 
 describe('loadPersonalizedCoupons saga', () => {
   it('loadPersonalizedCoupons review Page', () => {
-    const emailAddress = '123@123.com';
     const orderProcessing = loadPersonalizedCoupons({
       userDetails: { emailAddress },
     });
@@ -61,6 +71,32 @@ describe('loadPersonalizedCoupons saga', () => {
       orderProcessing.next({
         personalizedOffersResponse: {},
         orderResponse: { pointsToNextReward: -1, userPoints: -1, earnedReward: true },
+      }).value
+    ).toEqual(undefined);
+  });
+  it('loadPersonalizedCoupons review Page for canada', () => {
+    const orderProcessing = loadPersonalizedCoupons({
+      userDetails: { emailAddress },
+    });
+    orderProcessing.next();
+    orderProcessing.next(true);
+
+    expect(orderProcessing.next([]).value).toEqual(
+      call(requestPersonalizedCoupons, {
+        orderNumber: undefined,
+        emailAddress,
+        locationId: '3180',
+        couponList: [],
+        isElectiveBonus: undefined,
+        currencyCode: undefined,
+        payments: undefined,
+        cartItems: undefined,
+      })
+    );
+    expect(
+      orderProcessing.next({
+        personalizedOffersResponse: {},
+        orderResponse: { pointsToNextReward: 12, userPoints: 15, earnedReward: true },
       }).value
     ).toEqual(undefined);
   });
