@@ -1,7 +1,10 @@
 /* eslint-disable max-lines */
 import { formValueSelector } from 'redux-form';
 import { createSelector } from 'reselect';
-import { CHECKOUT_REDUCER_KEY } from '@tcp/core/src/constants/reducer.constants';
+import {
+  CHECKOUT_REDUCER_KEY,
+  SESSIONCONFIG_REDUCER_KEY,
+} from '@tcp/core/src/constants/reducer.constants';
 import {
   modes,
   constants as venmoConstants,
@@ -579,6 +582,13 @@ function getVenmoUserEmail(state) {
   );
 }
 
+const getIsVenmoEnabled = state => {
+  return (
+    state[SESSIONCONFIG_REDUCER_KEY] &&
+    state[SESSIONCONFIG_REDUCER_KEY].getIn(['siteDetails', 'VENMO_ENABLED'])
+  );
+};
+
 export default {
   getRecalcOrderPointsInterval,
   getIsOrderHasShipping,
@@ -640,4 +650,5 @@ export default {
   isVenmoNonceNotExpired,
   isVenmoPaymentInProgress,
   isVenmoPaymentToken,
+  getIsVenmoEnabled,
 };
