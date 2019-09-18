@@ -10,7 +10,7 @@ import Panel from '../../../../common/molecules/Panel';
 import PaymentTile from '../../common/organism/PaymentTile';
 import CustomButton from '../../../../common/atoms/Button';
 import AddressOverviewTile from '../../common/organism/AddressOverviewTile';
-import { ApplyCardLayout } from '../../../browse/ApplyCardPage/views/ApplyCardLayout.View.native';
+import ApplyCardLayout from '../../../browse/ApplyCardPage/views/ApplyCardLayout.View.native';
 import {
   UnderlineStyle,
   ImageWrapper,
@@ -39,11 +39,11 @@ class AccountOverview extends PureComponent<Props> {
     super(props);
     this.state = {
       showModal: false,
+      applyCard: false,
       getComponentId: {
         login: '',
         createAccount: '',
         favorites: '',
-        applyCard: false,
       },
     };
   }
@@ -138,6 +138,8 @@ class AccountOverview extends PureComponent<Props> {
     }
     return header;
   };
+
+  toggleApplyCardModal = () => {};
 
   render() {
     const { isUserLoggedIn, labels, commonLabels, handleComponentChange, navigation } = this.props;
@@ -279,7 +281,7 @@ class AccountOverview extends PureComponent<Props> {
             </FavtWrapper>
             <UnderlineStyle />
             <TouchableView onPress={this.toggleApplyCard} />
-            {applyCard && <ApplyCardLayout />}
+            <ApplyCardLayout toggleModal={this.toggleApplyCard} applyCard={applyCard} />
             <Panel
               title={labels.lbl_overview_apply_today}
               isVariationTypeLink
