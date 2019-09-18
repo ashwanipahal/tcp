@@ -2475,6 +2475,7 @@ exports[`ProductListingFiltersForm is shown should render ProductListingFiltersF
       </div>
       <Styled(Row)
         className="filtered-by-section"
+        fullBleed={true}
       >
         <Styled(Col)
           colSize={
