@@ -31,7 +31,7 @@ exports[`Points History List Page View should render Points History Page Correct
       <Styled(BodyCopy)
         fontFamily="secondary"
         fontSize="fs12"
-        fontWeight="regular"
+        fontWeight="semibold"
         text="08/08/19"
       />
     </Styled(View)>
@@ -39,7 +39,7 @@ exports[`Points History List Page View should render Points History Page Correct
       <Styled(BodyCopy)
         fontFamily="secondary"
         fontSize="fs12"
-        fontWeight="regular"
+        fontWeight="semibold"
         text="AddBirthDate"
       />
     </Styled(View)>
@@ -47,21 +47,13 @@ exports[`Points History List Page View should render Points History Page Correct
       <Styled(BodyCopy)
         fontFamily="secondary"
         fontSize="fs12"
-        fontWeight="regular"
+        fontWeight="semibold"
         text={5}
-        textAlign="left"
+        textAlign="center"
       />
     </Styled(View)>
   </Styled(View)>
 </Fragment>
 `;
 
-exports[`Points History List Page View should render Points History Page Correctly if no PointHistory data is available 1`] = `
-<Fragment>
-  <Styled(BodyCopy)
-    fontFamily="secondary"
-    fontSize="fs16"
-    fontWeight="regular"
-  />
-</Fragment>
-`;
+exports[`Points History List Page View should render Points History Page Correctly if no PointHistory data is available 1`] = `<Fragment />`;

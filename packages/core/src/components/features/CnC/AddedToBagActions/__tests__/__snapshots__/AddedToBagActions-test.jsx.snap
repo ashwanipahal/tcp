@@ -36,20 +36,8 @@ exports[`AddedToBagActions component AddedToBagActions component renders correct
   <Styled(Row)
     className="checkout-button"
   >
-    <PayPalButton
+    <withRouter(Connect(PayPalButtonContainer))
       className="payPal-button"
-      containerId="paypal-button-container"
-      locale="en_US"
-      style={
-        Object {
-          "color": "blue",
-          "height": 48,
-          "label": "paypal",
-          "shape": "rect",
-          "size": "responsive",
-          "tagline": false,
-        }
-      }
     />
     <Styled(Button)
       className="checkout"

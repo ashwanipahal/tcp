@@ -8,7 +8,7 @@ import { PointHistoryView, PointView, PointTransView } from '../styles/PointHist
  */
 
 const PointsHistory = ({ labels, pointHistory }) => {
-  const pointHistoryLen = pointHistory.length;
+  const pointHistoryLen = pointHistory && pointHistory.length;
   return (
     <React.Fragment>
       {pointHistoryLen > 0 && (
@@ -38,7 +38,7 @@ const PointsHistory = ({ labels, pointHistory }) => {
                 text={pointHistoryRow.transactionDate}
                 fontFamily="secondary"
                 fontSize="fs12"
-                fontWeight="regular"
+                fontWeight="semibold"
               />
             </PointView>
             <PointTransView>
@@ -46,7 +46,7 @@ const PointsHistory = ({ labels, pointHistory }) => {
                 text={pointHistoryRow.transactionTypeName}
                 fontFamily="secondary"
                 fontSize="fs12"
-                fontWeight="regular"
+                fontWeight="semibold"
               />
             </PointTransView>
             <PointView>
@@ -54,19 +54,19 @@ const PointsHistory = ({ labels, pointHistory }) => {
                 text={pointHistoryRow.pointsEarned}
                 fontFamily="secondary"
                 fontSize="fs12"
-                fontWeight="regular"
-                textAlign="left"
+                fontWeight="semibold"
+                textAlign="center"
               />
             </PointView>
           </PointHistoryView>
         ))}
 
-      {pointHistoryLen === 0 && (
+      {!pointHistory && (
         <BodyCopy
           text={labels.lbl_common_points_history_nopoints}
           fontFamily="secondary"
           fontSize="fs16"
-          fontWeight="regular"
+          fontWeight="semibold"
         />
       )}
     </React.Fragment>
