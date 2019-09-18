@@ -1,0 +1,320 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`StoreHours component StoreHours component renders correctly without props 1`] = `
+<StyledComponent
+  forwardedComponent={
+    Object {
+      "$$typeof": Symbol(react.forward_ref),
+      "attrs": Array [],
+      "componentStyle": ComponentStyle {
+        "componentId": "sc-bxivhb",
+        "isStatic": false,
+        "rules": Array [
+          "
+  ",
+          "
+  .meta{
+    padding-top: ",
+          [Function],
+          ";
+  }
+  .data-list-wrapper{
+    ",
+          "
+    font-family: ",
+          [Function],
+          ";
+    font-size: ",
+          [Function],
+          "px;
+    font-weight: ",
+          [Function],
+          ";
+    line-height: ",
+          [Function],
+          ";
+    color: ",
+          [Function],
+          ";
+    padding-bottom: ",
+          [Function],
+          ";
+",
+          "
+    padding-top: ",
+          [Function],
+          ";
+  }
+  ul.data-list {
+    margin: 0;
+    padding: 0;
+    list-style: none;
+
+    li {
+      display: flex;
+      flex-direction: row;
+      width: 100%;
+      padding-top: ",
+          [Function],
+          ";
+      padding-bottom: ",
+          [Function],
+          ";
+
+      .text-left{
+        flex: 1;
+        text-align: left;
+        padding-right: ",
+          [Function],
+          ";
+      }
+      .text-right{
+        flex: 1;
+        text-align: right;
+        padding-left: ",
+          [Function],
+          ";
+      }
+    }
+  }
+",
+          ";
+",
+        ],
+      },
+      "displayName": "Styled(StoreHours)",
+      "foldedComponentIds": Array [],
+      "render": [Function],
+      "styledComponentId": "sc-bxivhb",
+      "target": [Function],
+      "toString": [Function],
+      "warnTooManyClasses": [Function],
+      "withComponent": [Function],
+    }
+  }
+  forwardedRef={null}
+/>
+`;
+
+exports[`StoreHours component should render component with timing data 1`] = `
+<StyledComponent
+  defaultOpen={true}
+  forwardedComponent={
+    Object {
+      "$$typeof": Symbol(react.forward_ref),
+      "attrs": Array [],
+      "componentStyle": ComponentStyle {
+        "componentId": "sc-bxivhb",
+        "isStatic": false,
+        "rules": Array [
+          "
+  ",
+          "
+  .meta{
+    padding-top: ",
+          [Function],
+          ";
+  }
+  .data-list-wrapper{
+    ",
+          "
+    font-family: ",
+          [Function],
+          ";
+    font-size: ",
+          [Function],
+          "px;
+    font-weight: ",
+          [Function],
+          ";
+    line-height: ",
+          [Function],
+          ";
+    color: ",
+          [Function],
+          ";
+    padding-bottom: ",
+          [Function],
+          ";
+",
+          "
+    padding-top: ",
+          [Function],
+          ";
+  }
+  ul.data-list {
+    margin: 0;
+    padding: 0;
+    list-style: none;
+
+    li {
+      display: flex;
+      flex-direction: row;
+      width: 100%;
+      padding-top: ",
+          [Function],
+          ";
+      padding-bottom: ",
+          [Function],
+          ";
+
+      .text-left{
+        flex: 1;
+        text-align: left;
+        padding-right: ",
+          [Function],
+          ";
+      }
+      .text-right{
+        flex: 1;
+        text-align: right;
+        padding-left: ",
+          [Function],
+          ";
+      }
+    }
+  }
+",
+          ";
+",
+        ],
+      },
+      "displayName": "Styled(StoreHours)",
+      "foldedComponentIds": Array [],
+      "render": [Function],
+      "styledComponentId": "sc-bxivhb",
+      "target": [Function],
+      "toString": [Function],
+      "warnTooManyClasses": [Function],
+      "withComponent": [Function],
+    }
+  }
+  forwardedRef={null}
+  storeTiming={
+    Array [
+      Object {
+        "id": 1,
+        "label": "Test",
+        "value": "Test",
+      },
+    ]
+  }
+  title="Store Hours"
+/>
+`;
+
+exports[`StoreHours component should render component with timing data 2`] = `
+<StyledComponent
+  defaultOpen={true}
+  forwardedComponent={
+    Object {
+      "$$typeof": Symbol(react.forward_ref),
+      "attrs": Array [],
+      "componentStyle": ComponentStyle {
+        "componentId": "sc-bxivhb",
+        "isStatic": false,
+        "rules": Array [
+          "
+  ",
+          "
+  .meta{
+    padding-top: ",
+          [Function],
+          ";
+  }
+  .data-list-wrapper{
+    ",
+          "
+    font-family: ",
+          [Function],
+          ";
+    font-size: ",
+          [Function],
+          "px;
+    font-weight: ",
+          [Function],
+          ";
+    line-height: ",
+          [Function],
+          ";
+    color: ",
+          [Function],
+          ";
+    padding-bottom: ",
+          [Function],
+          ";
+",
+          "
+    padding-top: ",
+          [Function],
+          ";
+  }
+  ul.data-list {
+    margin: 0;
+    padding: 0;
+    list-style: none;
+
+    li {
+      display: flex;
+      flex-direction: row;
+      width: 100%;
+      padding-top: ",
+          [Function],
+          ";
+      padding-bottom: ",
+          [Function],
+          ";
+
+      .text-left{
+        flex: 1;
+        text-align: left;
+        padding-right: ",
+          [Function],
+          ";
+      }
+      .text-right{
+        flex: 1;
+        text-align: right;
+        padding-left: ",
+          [Function],
+          ";
+      }
+    }
+  }
+",
+          ";
+",
+        ],
+      },
+      "displayName": "Styled(StoreHours)",
+      "foldedComponentIds": Array [],
+      "render": [Function],
+      "styledComponentId": "sc-bxivhb",
+      "target": [Function],
+      "toString": [Function],
+      "warnTooManyClasses": [Function],
+      "withComponent": [Function],
+    }
+  }
+  forwardedRef={null}
+  storeMeta={
+    Array [
+      Object {
+        "id": 1,
+        "label": "Test",
+        "value": "Test",
+      },
+    ]
+  }
+  storeTiming={
+    Array [
+      Object {
+        "id": 1,
+        "label": "Test",
+        "value": "Test",
+      },
+    ]
+  }
+  title="Store Hours"
+/>
+`;
