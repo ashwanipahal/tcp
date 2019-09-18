@@ -129,8 +129,12 @@ exports[`ProductsGridItem component should renders correctly 1`] = `
       showColorEvenOne={true}
     />
     <PromotionalMessage />
-    <div>
+    <div
+      className="fulfillment-section"
+    >
       <Styled(FulfillmentSection)
+        btnClassName="added-to-bag"
+        dataLocator="global-addtocart-Button"
         onPickupOpenClick={[Function]}
       />
     </div>

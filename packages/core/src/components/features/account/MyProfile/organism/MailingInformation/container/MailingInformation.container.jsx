@@ -25,7 +25,7 @@ export class MailingInformationContainer extends PureComponent {
     const { addressResponse, onUpdateMailingAddress } = this.props;
     const isSuccess = addressResponse && addressResponse.get('addressId');
     if (isSuccess) {
-      if (!isMobileApp) {
+      if (!isMobileApp()) {
         this.backToAddressBookClick();
       } else if (onUpdateMailingAddress) {
         onUpdateMailingAddress();

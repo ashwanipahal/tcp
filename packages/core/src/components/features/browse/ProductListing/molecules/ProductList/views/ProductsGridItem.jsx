@@ -278,7 +278,7 @@ class ProductsGridItem extends React.PureComponent {
       unbxdId,
       labels,
       dataLocatorImages,
-      // dataLocatorBag,
+      dataLocatorBag,
     } = this.props;
 
     // eslint-disable-next-line camelcase
@@ -342,11 +342,10 @@ class ProductsGridItem extends React.PureComponent {
 
     const videoUrl = this.getVideoUrl(curentColorEntry);
 
-    // This is temp commit to fix linting issue
-    // let dataLocatorAddToBag;
-    // if (dataLocatorBag) {
-    //   dataLocatorAddToBag = `${dataLocatorBag}_${sqnNmb - 1}`;
-    // }
+    let dataLocatorAddToBag;
+    if (dataLocatorBag) {
+      dataLocatorAddToBag = `${dataLocatorBag}_${sqnNmb - 1}`;
+    }
 
     return (
       <li
@@ -435,8 +434,10 @@ class ProductsGridItem extends React.PureComponent {
               {labels.addToBag}
             </Button>
           </div> */}
-          <div>
+          <div className="fulfillment-section">
             <FulfillmentSection
+              btnClassName="added-to-bag"
+              dataLocator={dataLocatorAddToBag || getLocator('global_addtocart_Button')}
               buttonLabel={labels.addToBag}
               onPickupOpenClick={this.handlePickupOpenClick}
             />

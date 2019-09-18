@@ -152,6 +152,26 @@ export const toTimeString = est => {
   return `${hh}:${mm}${ampm}`;
 };
 
+/**
+ * This function will format the Date in mm/dd/yy format
+ * @param {object} date to be formatted
+ */
+export const formatDate = date => {
+  const month = `0${date.getMonth() + 1}`.substr(-2);
+  const dateStr = `0${date.getDate()}`.substr(-2);
+  const year = date.getFullYear().toString();
+  return `${month}/${dateStr}/${year}`;
+};
+
+/**
+ * This function will check for valid date
+ * @param {object} date to be check
+ */
+/* eslint-disable no-restricted-globals */
+export const isValidDate = date => {
+  return date instanceof Date && !isNaN(date);
+};
+
 export const isGymboree = () => {
   const { brandId } = getAPIConfig();
   return brandId === API_CONFIG.brandIds.gym;
@@ -242,6 +262,11 @@ export const formatAddress = address => ({
   zipCode: address.zip,
   phone1: address.phoneNumber,
 });
+
+export const formatPhoneNumber = phone => {
+  if (phone) return `(${phone.slice(0, 3)})-${phone.slice(3, 6)}-${phone.slice(6, 15)}`;
+  return '';
+};
 
 const MONTH_SHORT_FORMAT = {
   JAN: 'Jan',
@@ -361,7 +386,7 @@ export const getLabelValue = (labelState, labelKey, subCategory, category) => {
 
 export const getErrorSelector = (state, labels, errorKey) => {
   const errorParameters = state && state.getIn(['errorParameters', '0']);
-  const errorCode = state && state.get('errorCode');
+  const errorCode = state && state.get('errorKey');
   if (
     (errorParameters && getLabelValue(labels, `${errorKey}_${errorParameters}`)) ||
     (errorCode && getLabelValue(labels, `${errorKey}_${errorCode}`))
@@ -516,10 +541,13 @@ export default {
   isTCP,
   getAddressFromPlace,
   formatAddress,
+  formatPhoneNumber,
   getLabelValue,
   getCacheKeyForRedis,
   calculateAge,
   generateUniqueKeyUsingLabel,
   getErrorSelector,
+  isValidDate,
+  formatDate,
   parseStoreHours,
 };

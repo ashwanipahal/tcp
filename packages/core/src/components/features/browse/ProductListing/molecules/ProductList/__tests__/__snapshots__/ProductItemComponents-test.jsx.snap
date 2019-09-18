@@ -176,24 +176,31 @@ exports[`ProductItemComponents component ProductWishlistIcon render Text 1`] = `
 `;
 
 exports[`ProductItemComponents component PromotionalMessage render Text 1`] = `
-<ForwardRef
-  className="loyalty-text-container"
-  color="text.primary"
-  component="p"
-  data-locator="global-loyalty-text"
-  fontFamily="secondary"
-  fontSize={
-    Array [
-      "fs10",
-      "fs12",
-      "fs14",
-    ]
-  }
-  fontWeight="extrabold"
-  letterSpacing="normal"
-  lineHeight="normal"
-  textAlign="left"
-/>
+<Dotdotdot
+  clamp={2}
+  tagName="div"
+  truncationChar="…"
+  useNativeClamp={false}
+>
+  <ForwardRef
+    className="loyalty-text-container"
+    color="text.primary"
+    component="p"
+    data-locator="global-loyalty-text"
+    fontFamily="secondary"
+    fontSize={
+      Array [
+        "fs10",
+        "fs12",
+        "fs14",
+      ]
+    }
+    fontWeight="extrabold"
+    letterSpacing="normal"
+    lineHeight="normal"
+    textAlign="left"
+  />
+</Dotdotdot>
 `;
 
 exports[`ProductItemComponents component productLink called correctly 1`] = `undefined`;
