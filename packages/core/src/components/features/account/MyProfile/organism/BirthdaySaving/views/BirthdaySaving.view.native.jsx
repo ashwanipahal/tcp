@@ -1,7 +1,6 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import { BodyCopyWithSpacing } from '@tcp/core/src/components/common/atoms/styledWrapper';
-
 import MyProfileTile from '@tcp/core/src/components/common/molecules/MyProfileTile';
 
 export const BirthdaySaving = ({ labels, handleComponentChange }) => {

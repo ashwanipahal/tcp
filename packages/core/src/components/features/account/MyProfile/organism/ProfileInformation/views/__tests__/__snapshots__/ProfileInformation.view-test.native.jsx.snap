@@ -68,6 +68,10 @@ exports[`ProfileInformation should render correctly 1`] = `
       }
     }
   />
+  <Connect(BirthdaySavings)
+    handleComponentChange={[Function]}
+    mountAddChildModal={false}
+  />
   <Styled(View)>
     <Styled(Anchor)
       accessibilityLabel=""
