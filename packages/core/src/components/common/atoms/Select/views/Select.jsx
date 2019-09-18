@@ -71,7 +71,7 @@ const SelectBox = ({
             );
           })}
       </select>
-      {!placeholder ? (
+      {placeholder ? (
         <BodyCopy fontSize="fs12" fontFamily="secondary" className="select__label">
           {placeholder}
         </BodyCopy>

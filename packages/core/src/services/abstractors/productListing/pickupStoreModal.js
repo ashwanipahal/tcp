@@ -1,7 +1,16 @@
 /* eslint-disable extra-rules/no-commented-out-code */
 import { executeStatefulAPICall } from '../../handler';
 import endpoints from '../../endpoints';
-import { sanitizeEntity, formatPhone, parseStoreHours } from '../../../utils';
+import { sanitizeEntity, formatPhone, parseStoreHours, isCanada } from '../../../utils';
+
+const ERROR_MESSAGES_BOPIS = {
+  caPostalCode: 'Please enter a Canadian Postal Code',
+  usZipCode: 'Please enter a US Zip Code',
+  zeroResults: 'ZERO_RESULTS',
+  noAddressFound: 'We were unable to find the address you typed. Please try again',
+  selectSize: 'Please select a size',
+  storeSearchException: 'Oops something went wrong, Please retry.',
+};
 
 export const BOPIS_ITEM_AVAILABILITY = {
   AVAILABLE: 'OK',
@@ -189,42 +198,21 @@ function storeAPIParser(store, configs = { requestedQuantity: 0 }) {
 }
 
 const submitGetBopisSearchByLatLng = ({ locationPromise }) => {
-  // this.store.dispatch(getSetSuggestedStoresActn(EMPTY_ARRAY));     // clear previous search results
-  console.log('in the submitGetBopisSearchByLatLng', locationPromise);
   return locationPromise.then(location => {
-    return location;
-    // const isCanada = sitesAndCountriesStoreView.getIsCanada(this.store.getState());
-    // //Validation to check if search is for same country, else show error message.
-    //   if (location && location.country.toLowerCase() === 'us' && isCanada) {
-    //     throw new SubmissionError(ERRORS_MAP.ERROR_MESSAGES_BOPIS.caPostalCode);
-    //   } else if (location && location.country.toLowerCase() === 'ca' && !isCanada) {
-    //     throw new SubmissionError(ERRORS_MAP.ERROR_MESSAGES_BOPIS.usZipCode);
-    //   }
-    // return location;
+    try {
+      let errorMessage = '';
+      // Validation to check if search is for same country, else show error message.
+      if (location && location.country.toLowerCase() === 'us' && !isCanada()) {
+        errorMessage = ERROR_MESSAGES_BOPIS.caPostalCode;
+      } else if (location && location.country.toLowerCase() === 'ca' && !isCanada()) {
+        errorMessage = ERROR_MESSAGES_BOPIS.usZipCode;
+      }
+      return { location, errorMessage };
+    } catch (e) {
+      console.log('comes in error ', e);
+      return { location, error: e };
+    }
   });
-  // .then((location) => this.tcpStoresAbstractor.getStoresPlusInventorybyLatLng(skuId, quantity, distance, location.lat(), location.lng(), location.country, variantId))
-  // .then((searchResults) => {
-  //   this.store.dispatch(getSetSuggestedStoresActn(searchResults));
-  //   if (!searchResults.length) {
-  //     throw new SubmissionError(ERRORS_MAP.ERROR_MESSAGES_BOPIS.noAddressFound);
-  //   }
-  //   /** distance calculated based of user input, not user location
-  //   calculateLocationDistances(this.vendorAbstractors.calcDistanceByLatLng, searchResults).then((distances) => {
-  //     this.store.dispatch(getSetSuggestedStoresActn(searchResults.map((location, index) => ({...location, distance: distances[index]}))));
-  //   });
-  //   */
-  // }).catch((err) => {
-  //   if (err && err === ERRORS_MAP.ERROR_MESSAGES_BOPIS.zeroResults) { //If google geo location is not able to find locations related to address search then responds with ZERO_RESULTS message
-  //     throw new SubmissionError({
-  //       _error: ERRORS_MAP.ERROR_MESSAGES_BOPIS.noAddressFound
-  //     });
-  //   } else if (err && err.errors) {
-  //     throw new SubmissionError({
-  //       _error: err.errors
-  //     });
-  //   }
-  //   throw getSubmissionError(this.store, 'submitGetBopisSearchByLatLng', err);
-  // });
 };
 
 /**
@@ -262,21 +250,25 @@ export const getStoresPlusInventorybyLatLng = ({
     },
     webService: endpoints.getStoreandProductInventoryInfo,
   };
-
+  let apiError = '';
   return executeStatefulAPICall(payload)
     .then(res => {
-      // if (this.apiHelper.responseContainsErrors(res)) {
-      //   // throw new ServiceResponseError(res);
-      //   console.log('error');
-      // }
-      const stores = res.body.result;
+      const stores = res.body && res.body.result;
       if (stores && stores.length) {
         return stores.map(store => storeAPIParser(store, { requestedQuantity: quantity }));
       }
-      return [];
+      if (!stores.length) {
+        apiError = { error: ERROR_MESSAGES_BOPIS.noAddressFound };
+      }
+      return { error: apiError, stores: [] };
     })
     .catch(err => {
-      console.log(err);
+      if (err && err === ERROR_MESSAGES_BOPIS.zeroResults) {
+        // If google geo location is not able to find locations related to address search then responds with ZERO_RESULTS message
+        apiError = { error: ERROR_MESSAGES_BOPIS.noAddressFound };
+      } else if (err && err.errors) {
+        apiError = { error: err.errors };
+      }
     });
 };
 

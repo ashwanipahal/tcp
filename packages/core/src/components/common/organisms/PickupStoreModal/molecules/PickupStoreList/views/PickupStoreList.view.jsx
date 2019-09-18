@@ -1,6 +1,5 @@
 import React from 'react';
 import { PropTypes } from 'prop-types';
-import LabeledCheckbox from '../../../../../atoms/LabeledCheckbox';
 import { BOPIS_ITEM_AVAILABILITY } from '../../../PickUpStoreModal.constants';
 import PickupStoreListItem from '../../PickupStoreListItem';
 import { STORE_SUMMARY_PROP_TYPES } from '../../../PickUpStoreModal.proptypes';
@@ -43,7 +42,7 @@ class PickupStoreList extends React.Component {
     /** Flag to identify Boss/Bopis */
     isBossSelected: PropTypes.bool.isRequired,
     /** flags if to show the checkbox for showing only stores with avialability */
-    isShowFilterCheckbox: PropTypes.bool.isRequired,
+    // isShowFilterCheckbox: PropTypes.bool.isRequired,
     /** flags if search was in stores already in cart */
     isResultOfSearchingInCartStores: PropTypes.bool.isRequired,
 
@@ -113,7 +112,7 @@ class PickupStoreList extends React.Component {
       isShoppingBag,
       storesList,
       onStoreSelect,
-      isShowFilterCheckbox,
+      // isShowFilterCheckbox,
       isResultOfSearchingInCartStores,
       selectedStoreId,
       isBossSelected,
@@ -171,13 +170,13 @@ class PickupStoreList extends React.Component {
 */
     return (
       <div className="stores-info">
-        {!allowBossStoreSearch && (!isResultOfSearchingInCartStores && isShowFilterCheckbox) && (
-          <LabeledCheckbox
-            className="store-availability-checkbox"
-            title="Only show stores available for pickup today."
-            input={{ value: isOnlyShowAvailable, onChange: this.handleShowAvailableChange }}
-          />
-        )}
+        {/* {!allowBossStoreSearch && (!isResultOfSearchingInCartStores && isShowFilterCheckbox) && ( */}
+        {/* <LabeledCheckbox
+          className="store-availability-checkbox"
+          title="Only show stores available for pickup today."
+          input={{ value: isOnlyShowAvailable, onChange: this.handleShowAvailableChange }}
+        /> */}
+        {/* )} */}
         {derivedStoresList.map(store => (
           <PickupStoreListItem
             sameStore={sameStore}

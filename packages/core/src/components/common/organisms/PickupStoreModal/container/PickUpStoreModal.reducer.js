@@ -41,6 +41,11 @@ const PickupModalReducer = (state = initialState, action) => {
       return state.merge(mergePickupModalState(state, action.payload));
     case PICKUP_MODAL_ACTIONS_CONSTANTS.SET_BOPIS_STORES:
       return state.set('suggestedStores', action.payload.stores);
+    case PICKUP_MODAL_ACTIONS_CONSTANTS.SET_LOCATION_SEARCH_ERROR:
+      return state.set('locationError', action.payload);
+    case PICKUP_MODAL_ACTIONS_CONSTANTS.SET_STORE_SEARCH_ERROR:
+      console.log('action.payload.errorMessage', action.payload);
+      return state.set('storeSearchError', action.payload);
     default:
       if (state instanceof Object) {
         return fromJS(state);

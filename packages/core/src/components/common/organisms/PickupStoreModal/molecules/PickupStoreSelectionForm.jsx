@@ -14,7 +14,7 @@ import {
   isBOSSProductOOSQtyMismatched,
 } from '../../../../features/browse/ProductListing/molecules/ProductList/utils/productsCommonUtils';
 import Spinner from '../atoms/Spinner';
-import Button from '../../../atoms/Button';
+import { Button, Row, Col } from '../../../atoms';
 import BodyCopy from '../../../atoms/BodyCopy';
 import {
   PICKUP_LABELS,
@@ -22,11 +22,10 @@ import {
   DEFAULT_STORE,
 } from '../PickUpStoreModal.constants';
 import { minStoreCount } from '../PickUpStoreModal.config';
-import LabeledInput from '../../../atoms/LabeledInput';
-import LabeledSelect from '../../../atoms/LabeledSelect';
 import PickupStoreListContainer from './PickupStoreList';
 import PickupStoreListItem from './PickupStoreListItem';
 import PickupProductFormPart from './PickupProductFormPart';
+import { TextBox, SelectBox } from '../../../atoms';
 
 export const DISTANCES_MAP_PROP_TYPE = PropTypes.arrayOf(
   PropTypes.shape({
@@ -399,29 +398,51 @@ class _PickupStoreSelectionForm extends React.Component {
     const { distancesMap, pristine, submitting } = this.props;
     return showStoreSearching ? (
       <div className="search-store">
-        <BodyCopy className="find-store-label">{PICKUP_LABELS.FIND_STORE}</BodyCopy>
-        <Field
-          title="Zip or City, State"
-          name="addressLocation"
-          className="address-location-input"
-          component={LabeledInput}
-          placeholder="Zip or City, State"
-        />
-        <Field
-          name="distance"
-          component={LabeledSelect}
-          optionsMap={distancesMap}
-          className="distance-input"
-          title="Distance"
-        />
-        <Button
-          type="submit"
-          title="search"
-          className="button-search-bopis"
-          disabled={pristine || submitting}
+        <BodyCopy
+          className="find-store-label"
+          fontFamily="secondary"
+          fontSize="fs16"
+          fontWeight="semibold"
         >
-          Search
-        </Button>
+          {PICKUP_LABELS.FIND_STORE}
+        </BodyCopy>
+        <Row fullBleed>
+          <Col colSize={{ small: 6, medium: 4, large: 6 }}>
+            <Field
+              name="addressLocation"
+              id="addressLocation"
+              component={TextBox}
+              className="zipcode-field"
+              placeholder="Zip or City, State"
+              enableSuccessCheck={false}
+            />
+          </Col>
+          <Col colSize={{ small: 6, medium: 4, large: 6 }}>
+            <Row fullBleed>
+              <Col colSize={{ small: 2, medium: 4, large: 6 }}>
+                <Field
+                  name="distance"
+                  component={SelectBox}
+                  placeholder="Distance"
+                  options={distancesMap}
+                  className="distance-input"
+                />
+              </Col>
+              <Col colSize={{ small: 6, medium: 4, large: 6 }}>
+                <Button
+                  buttonVariation="variable-width"
+                  fill="BLUE"
+                  type="submit"
+                  title="search"
+                  className="button-search-bopis"
+                  disabled={pristine || submitting}
+                >
+                  Search
+                </Button>
+              </Col>
+            </Row>
+          </Col>
+        </Row>
       </div>
     ) : null;
   }
@@ -524,8 +545,8 @@ class _PickupStoreSelectionForm extends React.Component {
             />
           </div>
         )}
-        {/* {this.displayStoreSearchForm(showStoreSearching)}
-        {this.displayStoreListItems({
+        {this.displayStoreSearchForm(showStoreSearching)}
+        {/* {this.displayStoreListItems({
           isBossCtaEnabled,
           buttonLabel,
           sameStore,

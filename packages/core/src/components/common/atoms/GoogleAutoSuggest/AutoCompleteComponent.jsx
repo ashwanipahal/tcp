@@ -18,9 +18,13 @@ export function getAddressLocationInfo(address) {
     return new Promise((resolve, reject) => {
       geocoder.geocode({ address }, (results, status) => {
         if (status === 'OK') {
+          const country = results[0].address_components.find(component => {
+            return component.types && component.types.find(type => type === 'country');
+          });
           const storeDataObject = {
             lat: results[0].geometry.location.lat(),
             lng: results[0].geometry.location.lng(),
+            country: country && country.short_name,
           };
           resolve(storeDataObject);
         } else {
