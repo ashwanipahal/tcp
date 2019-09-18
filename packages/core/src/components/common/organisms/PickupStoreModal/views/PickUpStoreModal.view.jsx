@@ -17,11 +17,16 @@ import {
 } from '../../../../features/browse/ProductListing/molecules/ProductList/utils/productsCommonUtils';
 import { SKU_DETAILS } from '../PickUpStoreModal.constants';
 import PickupSkuSelectionForm from '../molecules/PickupSkuSelectionForm';
-import PickupStoreSelectionForm, {
-  DISTANCES_MAP_PROP_TYPE,
-} from '../molecules/PickupStoreSelectionForm';
+import PickupStoreSelectionForm from '../molecules/PickupStoreSelectionForm';
 // import withStyles from "../../../hoc/withStyles";
 // import styles from '../styles/PickUpStoreModal.style';
+
+const DISTANCES_MAP_PROP_TYPE = PropTypes.arrayOf(
+  PropTypes.shape({
+    id: PropTypes.string.isRequired,
+    displayName: PropTypes.string.isRequired,
+  })
+);
 
 const ERRORS_MAP = require('../../../../../services/handler/stateful/errorResponseMapping/index.json');
 
@@ -146,6 +151,8 @@ class PickUpStoreModalView extends React.Component {
     isRadialInventoryEnabled: PropTypes.number,
     itemsCount: PropTypes.number,
     defaultStore: STORE_SUMMARY_PROP_TYPES,
+    storeSearchError: PropTypes.string,
+    onClearSearchFormError: PropTypes.func.isRequired,
   };
 
   static defaultProps = {
@@ -169,6 +176,7 @@ class PickUpStoreModalView extends React.Component {
     isShoppingBag: false,
     itemsCount: 0,
     defaultStore: {},
+    storeSearchError: '',
   };
 
   constructor(props) {
@@ -363,6 +371,8 @@ class PickUpStoreModalView extends React.Component {
       showDefaultSizeMsg,
       isRadialInventoryEnabled,
       itemsCount,
+      storeSearchError,
+      onClearSearchFormError,
     } = this.props;
     let { colorFitSizeDisplayNames } = this.props;
 
@@ -461,6 +471,8 @@ class PickUpStoreModalView extends React.Component {
             isCanada={isCanada}
             isPlcc={isPlcc}
             isInternationalShipping={isInternationalShipping}
+            storeSearchError={storeSearchError}
+            onClearSearchFormError={onClearSearchFormError}
           />
         )}
       </div>

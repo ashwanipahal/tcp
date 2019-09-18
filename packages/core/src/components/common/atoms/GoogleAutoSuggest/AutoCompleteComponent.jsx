@@ -15,7 +15,7 @@ type Props = {
 export function getAddressLocationInfo(address) {
   return requireNamedOnlineModule('google.maps').then(() => {
     const geocoder = new window.google.maps.Geocoder();
-    return new Promise((resolve, reject) => {
+    return new Promise(resolve => {
       geocoder.geocode({ address }, (results, status) => {
         if (status === 'OK') {
           const country = results[0].address_components.find(component => {
@@ -28,7 +28,7 @@ export function getAddressLocationInfo(address) {
           };
           resolve(storeDataObject);
         } else {
-          reject(status);
+          resolve({ error: status });
         }
       });
     });

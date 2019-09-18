@@ -3,6 +3,7 @@ import { PropTypes } from 'prop-types';
 import { BOPIS_ITEM_AVAILABILITY } from '../../../PickUpStoreModal.constants';
 import PickupStoreListItem from '../../PickupStoreListItem';
 import { STORE_SUMMARY_PROP_TYPES } from '../../../PickUpStoreModal.proptypes';
+import InputCheckbox from '../../../../../atoms/InputCheckbox';
 
 const derieveStoresWithAvailability = (isOnlyShowAvailable, isBopisEnabled, storesList) => {
   return isOnlyShowAvailable && isBopisEnabled
@@ -42,7 +43,7 @@ class PickupStoreList extends React.Component {
     /** Flag to identify Boss/Bopis */
     isBossSelected: PropTypes.bool.isRequired,
     /** flags if to show the checkbox for showing only stores with avialability */
-    // isShowFilterCheckbox: PropTypes.bool.isRequired,
+    isShowFilterCheckbox: PropTypes.bool.isRequired,
     /** flags if search was in stores already in cart */
     isResultOfSearchingInCartStores: PropTypes.bool.isRequired,
 
@@ -112,7 +113,7 @@ class PickupStoreList extends React.Component {
       isShoppingBag,
       storesList,
       onStoreSelect,
-      // isShowFilterCheckbox,
+      isShowFilterCheckbox,
       isResultOfSearchingInCartStores,
       selectedStoreId,
       isBossSelected,
@@ -170,13 +171,14 @@ class PickupStoreList extends React.Component {
 */
     return (
       <div className="stores-info">
-        {/* {!allowBossStoreSearch && (!isResultOfSearchingInCartStores && isShowFilterCheckbox) && ( */}
-        {/* <LabeledCheckbox
-          className="store-availability-checkbox"
-          title="Only show stores available for pickup today."
-          input={{ value: isOnlyShowAvailable, onChange: this.handleShowAvailableChange }}
-        /> */}
-        {/* )} */}
+        {!allowBossStoreSearch && (!isResultOfSearchingInCartStores && isShowFilterCheckbox) && (
+          <InputCheckbox
+            className="store-availability-checkbox"
+            input={{ value: isOnlyShowAvailable, onChange: this.handleShowAvailableChange }}
+          >
+            Only show stores available for pickup today.
+          </InputCheckbox>
+        )}
         {derivedStoresList.map(store => (
           <PickupStoreListItem
             sameStore={sameStore}

@@ -7,9 +7,9 @@ const ERROR_MESSAGES_BOPIS = {
   caPostalCode: 'Please enter a Canadian Postal Code',
   usZipCode: 'Please enter a US Zip Code',
   zeroResults: 'ZERO_RESULTS',
-  noAddressFound: 'We were unable to find the address you typed. Please try again',
+  noAddressFound: 'We were unable to find the address you typed, please try again',
   selectSize: 'Please select a size',
-  storeSearchException: 'Oops something went wrong, Please retry.',
+  storeSearchException: 'Oops, something went wrong, Please retry',
 };
 
 export const BOPIS_ITEM_AVAILABILITY = {
@@ -201,16 +201,18 @@ const submitGetBopisSearchByLatLng = ({ locationPromise }) => {
   return locationPromise.then(location => {
     try {
       let errorMessage = '';
+      if (location.error === ERROR_MESSAGES_BOPIS.zeroResults) {
+        return { errorMessage: ERROR_MESSAGES_BOPIS.noAddressFound };
+      }
       // Validation to check if search is for same country, else show error message.
-      if (location && location.country.toLowerCase() === 'us' && !isCanada()) {
+      if (location && location.country.toLowerCase() === 'us' && isCanada()) {
         errorMessage = ERROR_MESSAGES_BOPIS.caPostalCode;
       } else if (location && location.country.toLowerCase() === 'ca' && !isCanada()) {
         errorMessage = ERROR_MESSAGES_BOPIS.usZipCode;
       }
       return { location, errorMessage };
     } catch (e) {
-      console.log('comes in error ', e);
-      return { location, error: e };
+      return { location, errorMessage: e };
     }
   });
 };
@@ -250,17 +252,19 @@ export const getStoresPlusInventorybyLatLng = ({
     },
     webService: endpoints.getStoreandProductInventoryInfo,
   };
-  let apiError = '';
+  let apiError = { error: ERROR_MESSAGES_BOPIS.noAddressFound };
   return executeStatefulAPICall(payload)
     .then(res => {
       const stores = res.body && res.body.result;
       if (stores && stores.length) {
-        return stores.map(store => storeAPIParser(store, { requestedQuantity: quantity }));
+        return {
+          stores: stores.map(store => storeAPIParser(store, { requestedQuantity: quantity })),
+        };
       }
       if (!stores.length) {
         apiError = { error: ERROR_MESSAGES_BOPIS.noAddressFound };
       }
-      return { error: apiError, stores: [] };
+      return { error: apiError.error, stores: [] };
     })
     .catch(err => {
       if (err && err === ERROR_MESSAGES_BOPIS.zeroResults) {

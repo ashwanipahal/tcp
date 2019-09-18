@@ -3,23 +3,25 @@
 import React from 'react';
 import { PropTypes } from 'prop-types';
 import { reduxForm, Field, propTypes as reduxFormPropTypes } from 'redux-form';
-import createValidateMethod from '../../../../../utils/formValidation/createValidateMethod';
-import { getAddressLocationInfo } from '../../../atoms/GoogleAutoSuggest/AutoCompleteComponent';
+import createValidateMethod from '../../../../../../../utils/formValidation/createValidateMethod';
+import { getAddressLocationInfo } from '../../../../../atoms/GoogleAutoSuggest/AutoCompleteComponent';
 import {
   getSkuId,
   getVariantId,
   getMapSliceForSize,
   isProductOOS,
   isBOSSProductOOSQtyMismatched,
-} from '../../../../features/browse/ProductListing/molecules/ProductList/utils/productsCommonUtils';
-import Spinner from '../atoms/Spinner';
-import BodyCopy from '../../../atoms/BodyCopy';
-import { PICKUP_LABELS, BOPIS_ITEM_AVAILABILITY } from '../PickUpStoreModal.constants';
-import { minStoreCount } from '../PickUpStoreModal.config';
-import PickupStoreListContainer from './PickupStoreList';
-import PickupStoreListItem from './PickupStoreListItem';
-import PickupProductFormPart from './PickupProductFormPart';
-import { TextBox, SelectBox, Row, Col, Button } from '../../../atoms';
+} from '../../../../../../features/browse/ProductListing/molecules/ProductList/utils/productsCommonUtils';
+import Spinner from '../../../atoms/Spinner';
+import BodyCopy from '../../../../../atoms/BodyCopy';
+import { PICKUP_LABELS, BOPIS_ITEM_AVAILABILITY } from '../../../PickUpStoreModal.constants';
+import { minStoreCount } from '../../../PickUpStoreModal.config';
+import PickupStoreListContainer from '../../PickupStoreList';
+import PickupStoreListItem from '../../PickupStoreListItem';
+import PickupProductFormPart from '../../PickupProductFormPart';
+import { TextBox, SelectBox, Row, Col, Button } from '../../../../../atoms';
+import withStyles from '../../../../../hoc/withStyles';
+import PickupStoreSelectionFormStyle from '../styles/PickupStoreSelectionForm.style';
 
 export const DISTANCES_MAP_PROP_TYPE = PropTypes.arrayOf(
   PropTypes.shape({
@@ -389,9 +391,9 @@ class _PickupStoreSelectionForm extends React.Component {
   }
 
   displayStoreSearchForm(showStoreSearching) {
-    const { distancesMap, pristine, submitting } = this.props;
+    const { distancesMap, pristine, submitting, className, storeSearchError } = this.props;
     return showStoreSearching ? (
-      <div className="search-store">
+      <div className={`${className} search-store`}>
         <BodyCopy
           className="find-store-label"
           fontFamily="secondary"
@@ -401,7 +403,7 @@ class _PickupStoreSelectionForm extends React.Component {
           {PICKUP_LABELS.FIND_STORE}
         </BodyCopy>
         <Row fullBleed>
-          <Col colSize={{ small: 6, medium: 4, large: 6 }}>
+          <Col colSize={{ small: 6, medium: 3, large: 6 }}>
             <Field
               name="addressLocation"
               id="addressLocation"
@@ -411,32 +413,31 @@ class _PickupStoreSelectionForm extends React.Component {
               enableSuccessCheck={false}
             />
           </Col>
-          <Col colSize={{ small: 6, medium: 4, large: 6 }}>
-            <Row fullBleed>
-              <Col colSize={{ small: 2, medium: 4, large: 6 }}>
-                <Field
-                  name="distance"
-                  component={SelectBox}
-                  placeholder="Distance"
-                  options={distancesMap}
-                  className="distance-input"
-                />
-              </Col>
-              <Col colSize={{ small: 6, medium: 4, large: 6 }}>
-                <Button
-                  buttonVariation="variable-width"
-                  fill="BLUE"
-                  type="submit"
-                  title="search"
-                  className="button-search-bopis"
-                  disabled={pristine || submitting}
-                >
-                  Search
-                </Button>
-              </Col>
-            </Row>
+          <Col colSize={{ small: 2, medium: 3, large: 3 }}>
+            <Field
+              name="distance"
+              component={SelectBox}
+              placeholder="Distance"
+              options={distancesMap}
+              className="distance-input"
+            />
+          </Col>
+          <Col colSize={{ small: 6, medium: 2, large: 3 }} className="button-wrapper">
+            <Button
+              buttonVariation="fixed-width"
+              fill="BLUE"
+              type="submit"
+              title="search"
+              className="button-search-bopis"
+              disabled={pristine || submitting}
+            >
+              Search
+            </Button>
           </Col>
         </Row>
+        <BodyCopy fontFamily="secondary" fontSize="fs14" fontWeight="extrabold" textAlign="center">
+          {storeSearchError}
+        </BodyCopy>
       </div>
     ) : null;
   }
@@ -508,9 +509,9 @@ class _PickupStoreSelectionForm extends React.Component {
       <Spinner />
     ) : (
       <React.Fragment>
-        <BodyCopy className="select-store-label">
-          {this.renderVariationText(storeLimitReached, sameStore)}
-        </BodyCopy>
+        {/* <BodyCopy className="select-store-label">
+        {this.renderVariationText(storeLimitReached, sameStore)}
+      </BodyCopy> */}
         {!storeLimitReached && prefStoreWithData && (
           <div className="favorite-store-box">
             <PickupStoreListItem
@@ -620,4 +621,4 @@ const PickupStoreSelectionForm = reduxForm({
 })(_PickupStoreSelectionForm);
 PickupStoreSelectionForm.displayName = 'PickupStoreSelection';
 
-export default PickupStoreSelectionForm;
+export default withStyles(PickupStoreSelectionForm, PickupStoreSelectionFormStyle);

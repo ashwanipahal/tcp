@@ -35,13 +35,6 @@ export const setBopisStores = payload => {
   };
 };
 
-export const setLocationSearchError = payload => {
-  return {
-    payload,
-    type: PICKUP_MODAL_ACTIONS_CONSTANTS.SET_LOCATION_SEARCH_ERROR,
-  };
-};
-
 export const setStoreSearchError = payload => {
   return {
     payload,
@@ -55,6 +48,5 @@ export default {
   openPickupModalWithValues,
   getBopisStoresActn,
   setBopisStores,
-  setLocationSearchError,
   setStoreSearchError,
 };

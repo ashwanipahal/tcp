@@ -1,11 +1,7 @@
 import { call, put, takeLatest } from 'redux-saga/effects';
 import logger from '@tcp/core/src/utils/loggerInstance';
 import { PICKUP_MODAL_ACTIONS_CONSTANTS } from '../PickUpStoreModal.constants';
-import {
-  setBopisStores,
-  setLocationSearchError,
-  setStoreSearchError,
-} from './PickUpStoreModal.actions';
+import { setBopisStores, setStoreSearchError } from './PickUpStoreModal.actions';
 import getLatLng, {
   getStoresPlusInventorybyLatLng,
 } from '../../../../../services/abstractors/productListing/pickupStoreModal';
@@ -21,7 +17,7 @@ export function* getPickupStores(arg) {
     const locationRes = yield call(getLatLng, payload);
     const { errorMessage, location } = locationRes;
     if (errorMessage) {
-      yield put(setLocationSearchError(errorMessage));
+      yield put(setStoreSearchError(errorMessage));
     } else {
       const reqObj = {
         skuId,
