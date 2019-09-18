@@ -61,6 +61,12 @@ const styles = css`
       padding: ${props => props.theme.spacing.ELEM_SPACING.MED} 0;
     }
   }
+
+  @media ${props => props.theme.mediaQuery.mediumMax} {
+    .remainingBalanceText {
+      display: inline-block;
+    }
+  }
 `;
 
 export default styles;

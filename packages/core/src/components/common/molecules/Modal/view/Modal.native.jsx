@@ -1,5 +1,5 @@
 import React from 'react';
-import { Modal, StatusBar, SafeAreaView } from 'react-native';
+import { Modal, StatusBar, SafeAreaView, ScrollView } from 'react-native';
 import LineComp from '@tcp/core/src/components/common/atoms/Line';
 import ToastContainer from '@tcp/core/src/components/common/atoms/Toast/container/Toast.container.native';
 import {
@@ -86,7 +86,9 @@ const ModalNative = ({ isOpen, children, ...otherProps }: Props) => {
             <LineComp marginTop={5} borderWidth={2} borderColor={borderColor} />
           </LineWrapper>
         ) : null}
-        {children}
+        <ScrollView showsVerticalScrollIndicator={false} keyboardShouldPersistTaps="handled">
+          {children}
+        </ScrollView>
       </Modal>
     </SafeAreaView>
   );

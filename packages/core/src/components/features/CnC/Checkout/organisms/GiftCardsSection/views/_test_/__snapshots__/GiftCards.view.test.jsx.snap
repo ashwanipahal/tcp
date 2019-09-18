@@ -6,6 +6,7 @@ exports[`GiftCardsVanilla should render gift card tile 1`] = `
 >
   <Styled(Row)
     className="gift-section-container elem-mb-LRG"
+    fullBleed={true}
   >
     <Styled(Col)
       colSize={
@@ -17,7 +18,7 @@ exports[`GiftCardsVanilla should render gift card tile 1`] = `
       }
     >
       <Styled(BodyCopy)
-        className="elem-mb-XS elem-mt-XXL"
+        className="elem-mt-XXL"
         color="text.primary"
         component="p"
         data-locator="gift-cards"
@@ -31,7 +32,7 @@ exports[`GiftCardsVanilla should render gift card tile 1`] = `
         lbl_giftcard_title
       </Styled(BodyCopy)>
       <Styled(BodyCopy)
-        className="elem-mb-XS elem-mt-MED"
+        className="elem-mt-LRG"
         color="text.primary"
         component="p"
         data-locator="gift-cards"
@@ -45,7 +46,7 @@ exports[`GiftCardsVanilla should render gift card tile 1`] = `
         lbl_giftcard_addUptoMsg
       </Styled(BodyCopy)>
       <Styled(BodyCopy)
-        className="elem-mb-XS elem-mt-XXL"
+        className="elem-mt-LRG"
         color="text.primary"
         component="p"
         data-locator="gift-cards"
@@ -83,7 +84,7 @@ exports[`GiftCardsVanilla should render gift card tile 1`] = `
         labels={Object {}}
       />
       <Styled(BodyCopy)
-        className="elem-mb-XS elem-mt-MED"
+        className="elem-mt-LRG"
         color="text.primary"
         component="p"
         data-locator="gift-cards"
@@ -102,7 +103,7 @@ exports[`GiftCardsVanilla should render gift card tile 1`] = `
         lbl_giftcard_headsUpMsg
       </Styled(BodyCopy)>
       <Styled(BodyCopy)
-        className="elem-mb-XS elem-mt-XXL"
+        className="elem-mt-LRG"
         color="text.primary"
         component="p"
         data-locator="gift-cards"
@@ -150,6 +151,7 @@ exports[`GiftCardsVanilla should render gift card tile with 0 order balance 1`] 
 >
   <Styled(Row)
     className="gift-section-container elem-mb-LRG"
+    fullBleed={true}
   >
     <Styled(Col)
       colSize={
@@ -161,7 +163,7 @@ exports[`GiftCardsVanilla should render gift card tile with 0 order balance 1`] 
       }
     >
       <Styled(BodyCopy)
-        className="elem-mb-XS elem-mt-XXL"
+        className="elem-mt-XXL"
         color="text.primary"
         component="p"
         data-locator="gift-cards"
@@ -175,7 +177,7 @@ exports[`GiftCardsVanilla should render gift card tile with 0 order balance 1`] 
         lbl_giftcard_title
       </Styled(BodyCopy)>
       <Styled(BodyCopy)
-        className="elem-mb-XS elem-mt-MED"
+        className="elem-mt-LRG"
         color="text.primary"
         component="p"
         data-locator="gift-cards"
@@ -189,7 +191,7 @@ exports[`GiftCardsVanilla should render gift card tile with 0 order balance 1`] 
         lbl_giftcard_addUptoMsg
       </Styled(BodyCopy)>
       <Styled(BodyCopy)
-        className="elem-mb-XS elem-mt-XXL"
+        className="elem-mt-LRG"
         color="text.primary"
         component="p"
         data-locator="gift-cards"
@@ -227,7 +229,7 @@ exports[`GiftCardsVanilla should render gift card tile with 0 order balance 1`] 
         labels={Object {}}
       />
       <Styled(BodyCopy)
-        className="elem-mb-XS elem-mt-MED"
+        className="elem-mt-LRG"
         color="text.primary"
         component="p"
         data-locator="gift-cards"
@@ -246,7 +248,7 @@ exports[`GiftCardsVanilla should render gift card tile with 0 order balance 1`] 
         lbl_giftcard_headsUpMsg
       </Styled(BodyCopy)>
       <Styled(BodyCopy)
-        className="elem-mb-XS elem-mt-XXL"
+        className="elem-mt-LRG"
         color="text.primary"
         component="p"
         data-locator="gift-cards"
@@ -294,6 +296,7 @@ exports[`GiftCardsVanilla should render gift card tile with 100 order balance 1`
 >
   <Styled(Row)
     className="gift-section-container elem-mb-LRG"
+    fullBleed={true}
   >
     <Styled(Col)
       colSize={
@@ -305,7 +308,7 @@ exports[`GiftCardsVanilla should render gift card tile with 100 order balance 1`
       }
     >
       <Styled(BodyCopy)
-        className="elem-mb-XS elem-mt-XXL"
+        className="elem-mt-XXL"
         color="text.primary"
         component="p"
         data-locator="gift-cards"
@@ -319,7 +322,7 @@ exports[`GiftCardsVanilla should render gift card tile with 100 order balance 1`
         lbl_giftcard_title
       </Styled(BodyCopy)>
       <Styled(BodyCopy)
-        className="elem-mb-XS elem-mt-MED"
+        className="elem-mt-LRG"
         color="text.primary"
         component="p"
         data-locator="gift-cards"
@@ -333,7 +336,7 @@ exports[`GiftCardsVanilla should render gift card tile with 100 order balance 1`
         lbl_giftcard_addUptoMsg
       </Styled(BodyCopy)>
       <Styled(BodyCopy)
-        className="elem-mb-XS elem-mt-XXL"
+        className="elem-mt-LRG"
         color="text.primary"
         component="p"
         data-locator="gift-cards"
@@ -371,7 +374,7 @@ exports[`GiftCardsVanilla should render gift card tile with 100 order balance 1`
         labels={Object {}}
       />
       <Styled(BodyCopy)
-        className="elem-mb-XS elem-mt-MED"
+        className="elem-mt-LRG"
         color="text.primary"
         component="p"
         data-locator="gift-cards"
@@ -390,7 +393,7 @@ exports[`GiftCardsVanilla should render gift card tile with 100 order balance 1`
         lbl_giftcard_headsUpMsg
       </Styled(BodyCopy)>
       <Styled(BodyCopy)
-        className="elem-mb-XS elem-mt-XXL"
+        className="elem-mt-LRG"
         color="text.primary"
         component="p"
         data-locator="gift-cards"
@@ -431,6 +434,7 @@ exports[`GiftCardsVanilla should render gift card tile with 100 order balance 1`
   </Styled(Row)>
   <Styled(Row)
     className="elem-mt-LRG elem-mb-LRG"
+    fullBleed={true}
   >
     <Styled(Col)
       colSize={
@@ -463,6 +467,7 @@ exports[`GiftCardsVanilla should render gift card tile with 100 order balance wi
 >
   <Styled(Row)
     className="gift-section-container elem-mb-LRG"
+    fullBleed={true}
   >
     <Styled(Col)
       colSize={
@@ -474,7 +479,7 @@ exports[`GiftCardsVanilla should render gift card tile with 100 order balance wi
       }
     >
       <Styled(BodyCopy)
-        className="elem-mb-XS elem-mt-XXL"
+        className="elem-mt-XXL"
         color="text.primary"
         component="p"
         data-locator="gift-cards"
@@ -488,7 +493,7 @@ exports[`GiftCardsVanilla should render gift card tile with 100 order balance wi
         lbl_giftcard_title
       </Styled(BodyCopy)>
       <Styled(BodyCopy)
-        className="elem-mb-XS elem-mt-MED"
+        className="elem-mt-LRG"
         color="text.primary"
         component="p"
         data-locator="gift-cards"
@@ -502,7 +507,7 @@ exports[`GiftCardsVanilla should render gift card tile with 100 order balance wi
         lbl_giftcard_addUptoMsg
       </Styled(BodyCopy)>
       <Styled(BodyCopy)
-        className="elem-mb-XS elem-mt-XXL"
+        className="elem-mt-LRG"
         color="text.primary"
         component="p"
         data-locator="gift-cards"
@@ -540,7 +545,7 @@ exports[`GiftCardsVanilla should render gift card tile with 100 order balance wi
         labels={Object {}}
       />
       <Styled(BodyCopy)
-        className="elem-mb-XS elem-mt-MED"
+        className="elem-mt-LRG"
         color="text.primary"
         component="p"
         data-locator="gift-cards"
@@ -559,7 +564,7 @@ exports[`GiftCardsVanilla should render gift card tile with 100 order balance wi
         lbl_giftcard_headsUpMsg
       </Styled(BodyCopy)>
       <Styled(BodyCopy)
-        className="elem-mb-XS elem-mt-XXL"
+        className="elem-mt-LRG"
         color="text.primary"
         component="p"
         data-locator="gift-cards"

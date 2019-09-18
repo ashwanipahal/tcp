@@ -73,9 +73,9 @@ exports[`GuestBillingFormVanilla should render correctly when props change 1`] =
           }
         >
           <ForwardRef
-            height="10"
+            height="15"
             src="/static/images/info-icon.png"
-            width="10"
+            width="15"
           />
         </ForwardRef>
       }
