@@ -1,0 +1,27 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`StoreSearch Container should render StoreSearch Correctly 1`] = `
+<ReduxForm
+  backgroundColor="#edf5fb"
+  destroyOnUnmount={true}
+  enableReinitialize={true}
+  fetchStoresByLatLng={[MockFunction]}
+  forceUnregisterOnUnmount={false}
+  form="StoreSearch"
+  getFormState={[Function]}
+  keepDirtyOnReinitialize={false}
+  loadStoresByCoordinates={[Function]}
+  markerIcon="/static/images/marker-icon.svg"
+  persistentSubmitErrors={false}
+  pure={true}
+  searchIcon="/static/images/search-icon.svg"
+  shouldAsyncValidate={[Function]}
+  shouldError={[Function]}
+  shouldValidate={[Function]}
+  shouldWarn={[Function]}
+  submitAsSideEffect={false}
+  touchOnBlur={true}
+  touchOnChange={false}
+  updateUnregisteredFields={false}
+/>
+`;
