@@ -26,11 +26,11 @@ const styles = css`
   }
 
   .childInfo {
+    margin-left: ${props => props.theme.spacing.ELEM_SPACING.XXS};
+    margin-right: ${props => props.theme.spacing.ELEM_SPACING.XXS};
     @media ${props => props.theme.mediaQuery.medium} {
       margin-left: ${props => props.theme.spacing.ELEM_SPACING.XS};
     }
-    margin-left: ${props => props.theme.spacing.ELEM_SPACING.XXS};
-    margin-right: ${props => props.theme.spacing.ELEM_SPACING.XXS};
   }
 
   .parentInfo {
@@ -43,11 +43,11 @@ const styles = css`
   }
 
   .buttons {
+    margin-top: ${props => props.theme.spacing.ELEM_SPACING.XXXL};
     @media ${props => props.theme.mediaQuery.smallOnly} {
       margin-left: ${props => props.theme.spacing.ELEM_SPACING.XXS};
       margin-right: ${props => props.theme.spacing.ELEM_SPACING.XXS};
     }
-    margin-top: ${props => props.theme.spacing.ELEM_SPACING.XXXL};
   }
 
   .formHeading {

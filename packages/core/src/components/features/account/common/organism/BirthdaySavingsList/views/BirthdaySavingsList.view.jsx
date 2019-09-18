@@ -133,6 +133,7 @@ export class BirthdaySavingsList extends PureComponent {
       addModal: true,
       activeChild,
     });
+    this.closeRemoveModal();
   };
 
   /**
