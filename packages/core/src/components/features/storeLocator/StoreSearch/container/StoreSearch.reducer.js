@@ -1,18 +1,34 @@
 import { fromJS } from 'immutable';
-import constants from './StoreSearch.constants';
+import { DEFAULT_REDUCER_KEY } from '@tcp/core/src/utils/cache.util';
+import STORE_LOCATOR_CONSTANTS from './StoreSearch.constants';
 
-const initialState = fromJS({});
+export const initialState = fromJS({
+  [DEFAULT_REDUCER_KEY]: null,
+  suggestedStores: [],
+  currentStore: {},
+  defaultStore: null,
+  geoDefaultStore: null,
+  storesSummaryListUS: [],
+  storesSummaryListCA: [],
+  storesSummaryListOthers: [],
+  bopisStoresOnCart: [],
+  bopisItemInventory: [],
+});
 
-// TBD: Update reducers for container components with contextual ones
-const StoreSearchReducer = (state = initialState, action) => {
+const StoreLocatorReducer = (state = initialState, action) => {
   switch (action.type) {
-    case constants.STORE_SEARCH_TEST_ACTION_ONE:
-      return state.set('action_one', action.payload);
-    case constants.STORE_SEARCH_TEST_ACTION_TWO:
-      return state.set('action_two', action.payload);
+    case STORE_LOCATOR_CONSTANTS.SET_DEFAULT_STORE:
+      return state.set('defaultStore', action.payload);
+    case STORE_LOCATOR_CONSTANTS.SET_GEO_DEFAULT_STORE:
+      return state.set('geoDefaultStore', action.payload);
+    case STORE_LOCATOR_CONSTANTS.STORES_SET_SUGGESTED_STORES:
+      return state.set('suggestedStores', action.payload);
     default:
+      if (state instanceof Object) {
+        return fromJS(state);
+      }
       return state;
   }
 };
 
-export default StoreSearchReducer;
+export default StoreLocatorReducer;

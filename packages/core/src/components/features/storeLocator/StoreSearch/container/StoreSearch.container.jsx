@@ -1,46 +1,61 @@
-import React, { PureComponent, Fragment } from 'react';
+import React, { PureComponent } from 'react';
 import { connect } from 'react-redux';
+import { withRouter } from 'next/router'; //eslint-disable-line
 import PropTypes from 'prop-types';
-import { test } from './StoreSearch.actions';
-import StoreSearch from './views/StoreSearch';
+import { getIconPath, isGymboree } from '@tcp/core/src/utils';
+import { getStoresByCoordinates } from './StoreSearch.actions';
+import StoreLocatorSearch from './views/StoreSearch';
+import { getCurrentCountry, getPageLabels } from './StoreSearch.selectors';
 
-export class StoreSearchContainer extends PureComponent {
-  componentDidMount() {
-    const { testAction } = this.props;
-    testAction('Test');
-  }
+export class StoreLocator extends PureComponent {
+  /**
+   * @function loadStoresByCoordinates function to fetch the stores based on coordinates.
+   * @param {Promise} coordinatesPromise - Promise that resolves with the coordinates
+   * @param {Number} maxItems - The maximum number of items to be fetched
+   * @param {Number} radius - The radius under which the stores needs to be fetched
+   */
+  loadStoresByCoordinates = (coordinatesPromise, maxItems, radius) => {
+    const { fetchStoresByCoordinates } = this.props;
+    coordinatesPromise.then(({ lat, lng }) =>
+      fetchStoresByCoordinates({ coordinates: { lat, lng }, maxItems, radius })
+    );
+    return false;
+  };
 
   render() {
-    const { children, ...otherProps } = this.props;
+    const searchIcon = getIconPath('search-icon');
+    const markerIcon = getIconPath(isGymboree() ? 'marker-icon-gym' : 'marker-icon');
+    const backgroundColor = !isGymboree() ? '#edf5fb' : '#fef4e8';
     return (
-      <Fragment>
-        <StoreSearch {...otherProps} />
-        {children}
-      </Fragment>
+      <StoreLocatorSearch
+        {...this.props}
+        markerIcon={markerIcon}
+        searchIcon={searchIcon}
+        loadStoresByCoordinates={this.loadStoresByCoordinates}
+        backgroundColor={backgroundColor}
+      />
     );
   }
 }
 
-StoreSearchContainer.propTypes = {
-  children: PropTypes.arrayOf(PropTypes.node),
-  testAction: PropTypes.func.isRequired,
+StoreLocator.propTypes = {
+  fetchStoresByCoordinates: PropTypes.func.isRequired,
 };
 
-StoreSearchContainer.defaultProps = {
-  children: null,
+export const mapDispatchToProps = dispatch => {
+  return {
+    fetchStoresByCoordinates: storeConfig => dispatch(getStoresByCoordinates(storeConfig)),
+  };
 };
 
-const mapStateToProps = () => {
-  return {};
-};
-
-export const mapDispatchToProps = dispatch => ({
-  testAction: payload => {
-    dispatch(test(payload));
-  },
+const mapStateToProps = state => ({
+  selectedCountry: getCurrentCountry(state),
+  labels: getPageLabels(state),
 });
 
-export default connect(
-  mapStateToProps,
-  mapDispatchToProps
-)(StoreSearchContainer);
+export default withRouter(
+  connect(
+    mapStateToProps,
+    mapDispatchToProps
+  )(StoreLocator)
+);

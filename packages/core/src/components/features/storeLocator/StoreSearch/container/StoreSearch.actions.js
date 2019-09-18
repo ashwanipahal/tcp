@@ -1,17 +1,37 @@
-import constants from './StoreSearch.constants';
+/* istanbul ignore file */
+import STORE_LOCATOR_CONSTANTS from './StoreSearch.constants';
 
-// TBD: Update actions for container components with contextual ones
-export const test = payload => ({
-  type: constants.STORE_SEARCH_TEST_ACTION,
-  payload,
-});
+export function getSetDefaultStoreActn(payload) {
+  return {
+    payload,
+    type: STORE_LOCATOR_CONSTANTS.SET_DEFAULT_STORE,
+  };
+}
 
-export const testOne = payload => ({
-  type: constants.STORE_SEARCH_TEST_ACTION_ONE,
-  payload,
-});
+export function getSetGeoDefaultStoreActn(payload) {
+  return {
+    payload,
+    type: STORE_LOCATOR_CONSTANTS.SET_GEO_DEFAULT_STORE,
+  };
+}
 
-export const testTwo = payload => ({
-  type: constants.STORE_SEARCH_TEST_ACTION_TWO,
-  payload,
-});
+export function getFavoriteStore(payload) {
+  return {
+    payload,
+    type: STORE_LOCATOR_CONSTANTS.GET_FAVORITE_STORE,
+  };
+}
+
+export function getStoresByCoordinates(payload) {
+  return {
+    payload,
+    type: STORE_LOCATOR_CONSTANTS.GET_LOCATION_STORES,
+  };
+}
+
+export function setStoresByCoordinates(payload) {
+  return {
+    payload,
+    type: STORE_LOCATOR_CONSTANTS.STORES_SET_SUGGESTED_STORES,
+  };
+}

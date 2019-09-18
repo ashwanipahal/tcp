@@ -41,7 +41,7 @@
     "generate-esdoc": "./node_modules/.bin/esdoc -c .esdoc.json",
     "lighthouse": "node ./lighthouse",
     "plop": "plop",
-    "storybook": "start-storybook"
+    "storybook": "cross-env RWD_WEB_GOOGLE_MAPS_API_KEY=AIzaSyDIC5xMsfnVAoFIyerOYhiUS5z79hiRzmc start-storybook -s ./packages/web/src/static/images/ -p 9001"
   },
   "devDependencies": {
     "@storybook/addon-actions": "^5.2.0",
@@ -131,6 +131,7 @@
     "babel-eslint": "^10.0.1",
     "babel-loader": "^8.0.6",
     "babel-plugin-transform-remove-console": "^6.9.4",
+    "braintree-web": "3.40.0",
     "core-js": "3.2.1",
     "cross-env": "^5.2.0",
     "dotenv": "^8.0.0",
@@ -157,7 +158,6 @@
     "reselect": "^4.0.0",
     "seamless-immutable": "^7.1.4",
     "styled-components": "^4.2.0",
-    "vanilla-lazyload": "^12.0.0",
-    "braintree-web": "3.40.0"
+    "vanilla-lazyload": "^12.0.0"
   }
 }
