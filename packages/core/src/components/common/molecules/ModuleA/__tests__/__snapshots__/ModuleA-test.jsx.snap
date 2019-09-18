@@ -70,15 +70,6 @@ exports[`ModuleA component should render Gymboree variant correctly 1`] = `
           <ForwardRef
             alt=""
             data-locator="moduleA_image_0"
-            imgConfigs={
-              Object {
-                "crops": Array [
-                  "t_mod_A_img_m",
-                  "t_mod_A_img_t",
-                  "t_mod_A_img_d",
-                ],
-              }
-            }
             imgData={
               Object {
                 "alt": "Family Tees Image 1",
@@ -190,15 +181,6 @@ exports[`ModuleA component should render Gymboree variant correctly 1`] = `
           <ForwardRef
             alt=""
             data-locator="moduleA_image_1"
-            imgConfigs={
-              Object {
-                "crops": Array [
-                  "t_mod_A_img_m",
-                  "t_mod_A_img_t",
-                  "t_mod_A_img_d",
-                ],
-              }
-            }
             imgData={
               Object {
                 "alt": "Family Tees Image 2",
@@ -310,15 +292,6 @@ exports[`ModuleA component should render Gymboree variant correctly 1`] = `
           <ForwardRef
             alt=""
             data-locator="moduleA_image_2"
-            imgConfigs={
-              Object {
-                "crops": Array [
-                  "t_mod_A_img_m",
-                  "t_mod_A_img_t",
-                  "t_mod_A_img_d",
-                ],
-              }
-            }
             imgData={
               Object {
                 "alt": "Family Tees Image 3",
@@ -430,15 +403,6 @@ exports[`ModuleA component should render Gymboree variant correctly 1`] = `
           <ForwardRef
             alt=""
             data-locator="moduleA_image_3"
-            imgConfigs={
-              Object {
-                "crops": Array [
-                  "t_mod_A_img_m",
-                  "t_mod_A_img_t",
-                  "t_mod_A_img_d",
-                ],
-              }
-            }
             imgData={
               Object {
                 "alt": "Family Tees Image 4",
@@ -717,15 +681,6 @@ exports[`ModuleA component should render TCP or default variant correctly 1`] = 
           <ForwardRef
             alt=""
             data-locator="moduleA_image_0"
-            imgConfigs={
-              Object {
-                "crops": Array [
-                  "t_mod_A_img_m",
-                  "t_mod_A_img_t",
-                  "t_mod_A_img_d",
-                ],
-              }
-            }
             imgData={
               Object {
                 "alt": "Family Tees Image 1",
@@ -837,15 +792,6 @@ exports[`ModuleA component should render TCP or default variant correctly 1`] = 
           <ForwardRef
             alt=""
             data-locator="moduleA_image_1"
-            imgConfigs={
-              Object {
-                "crops": Array [
-                  "t_mod_A_img_m",
-                  "t_mod_A_img_t",
-                  "t_mod_A_img_d",
-                ],
-              }
-            }
             imgData={
               Object {
                 "alt": "Family Tees Image 2",
@@ -957,15 +903,6 @@ exports[`ModuleA component should render TCP or default variant correctly 1`] = 
           <ForwardRef
             alt=""
             data-locator="moduleA_image_2"
-            imgConfigs={
-              Object {
-                "crops": Array [
-                  "t_mod_A_img_m",
-                  "t_mod_A_img_t",
-                  "t_mod_A_img_d",
-                ],
-              }
-            }
             imgData={
               Object {
                 "alt": "Family Tees Image 3",
@@ -1077,15 +1014,6 @@ exports[`ModuleA component should render TCP or default variant correctly 1`] = 
           <ForwardRef
             alt=""
             data-locator="moduleA_image_3"
-            imgConfigs={
-              Object {
-                "crops": Array [
-                  "t_mod_A_img_m",
-                  "t_mod_A_img_t",
-                  "t_mod_A_img_d",
-                ],
-              }
-            }
             imgData={
               Object {
                 "alt": "Family Tees Image 4",
