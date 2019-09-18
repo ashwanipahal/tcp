@@ -12,4 +12,8 @@ export default css`
   .favtPageLink {
     padding-right: ${props => props.theme.spacing.ELEM_SPACING.XL};
   }
+
+  .elm-padding-left {
+    padding-left: ${props => props.theme.spacing.ELEM_SPACING.XS};
+  }
 `;
