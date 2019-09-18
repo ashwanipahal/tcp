@@ -100,14 +100,14 @@ class GiftCardTile extends React.PureComponent {
     let remainingBalance = '';
     if (isGiftCardApplied) {
       const remainingBalanceValue = cardData.get('remainingBalance');
-      cardEndingIn = cardData.get('endingNumbers');
-      remainingBalance = ` | ${getLabelValue(labels, 'lbl_giftcard_remainingBal')} : $${
+      cardEndingIn = `${cardData.get('endingNumbers')} | `;
+      remainingBalance = `${getLabelValue(labels, 'lbl_giftcard_remainingBal')}: $${
         typeof remainingBalanceValue !== 'undefined' ? remainingBalanceValue.toFixed(2) : 0
       }`;
     }
     return (
       <div className={className}>
-        <div className="gift_card_box elem-mb-XS elem-mt-MED">
+        <div className="gift_card_box elem-mt-SM">
           {this.renderGiftCardError()}
 
           <Row className="gift-card-row">
@@ -125,10 +125,8 @@ class GiftCardTile extends React.PureComponent {
                 color="text.secondary"
                 className="gift_card_number_detail"
               >
-                {`${getLabelValue(
-                  labels,
-                  'lbl_giftcard_endingIn'
-                )} ${cardEndingIn} ${remainingBalance}`}
+                {`${getLabelValue(labels, 'lbl_giftcard_endingIn')} ${cardEndingIn}`}
+                <span className="remainingBalanceText">{remainingBalance}</span>
               </BodyCopy>
             </Col>
             <Col

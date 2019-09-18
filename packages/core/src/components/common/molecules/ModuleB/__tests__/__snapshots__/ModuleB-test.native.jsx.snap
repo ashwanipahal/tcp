@@ -35,6 +35,22 @@ exports[`ModuleNVanilla should match snapshot 1`] = `
                     "style": "style1",
                     "text": "MORE FITS.",
                   },
+                ],
+              },
+              Object {
+                "icon": Object {
+                  "icon": "",
+                  "placement": "",
+                },
+                "link": Object {
+                  "action": "",
+                  "external": 0,
+                  "target": "",
+                  "text": "",
+                  "title": "",
+                  "url": "/c/girls-denim-bottoms",
+                },
+                "textItems": Array [
                   Object {
                     "style": "style2",
                     "text": "SLIM, PLUS & HUSKY",

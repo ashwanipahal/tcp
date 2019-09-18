@@ -14,11 +14,12 @@ exports[`ApplyNowModalWrapper component should renders correctly 1`] = `
     margin-right: 5px;
   }
 
+  div.TCPModal__InnerContent.innerContent {
+    padding: 21px;
+  }
+
   .TCPModal__InnerContent {
     text-align: center;
-    && {
-      padding: 21px;
-    }
     > h2 {
       ::after {
         content: '§';
@@ -128,7 +129,11 @@ exports[`ApplyNowModalWrapper component should renders correctly 1`] = `
   }
 
   .rewards__benefits {
-    margin: 21px 0 0 21px;
+    @media ",
+      [Function],
+      " {
+      margin-left: 6px;
+    }
     > li {
       font-size: ",
       [Function],
@@ -150,15 +155,8 @@ exports[`ApplyNowModalWrapper component should renders correctly 1`] = `
   .footerLinks {
     display: flex;
     margin-top: 38px;
-    > span {
-      padding-left: 67px;
-    }
+    justify-content: center;
     padding-bottom: 33px;
-    @media ",
-      [Function],
-      " {
-      padding: 0px;
-    }
   }
 
   .footerLink {
@@ -167,9 +165,10 @@ exports[`ApplyNowModalWrapper component should renders correctly 1`] = `
 ",
     ]
   }
+  innerContentClassName="innerContent"
   isOpen={true}
   maxWidth="464px"
-  minHeight="746px"
+  minHeight="646px"
   overlayClassName="TCPModal__Overlay"
   shouldCloseOnOverlayClick={false}
 >

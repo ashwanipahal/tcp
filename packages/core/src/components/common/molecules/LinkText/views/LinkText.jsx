@@ -46,26 +46,30 @@ const LinkText = props => {
     };
   }
 
-  return headerText.map((item, index) => {
-    const { link, textItems } = item;
-    const navigationUrl = link;
-    navigationUrl.to = configurePlpNavigationFromCMSUrl(link.url);
-    navigationUrl.asPath = link.url;
+  return (
+    <div className={className}>
+      {headerText.map((item, index) => {
+        const { link, textItems } = item;
+        const navigationUrl = link;
+        navigationUrl.to = configurePlpNavigationFromCMSUrl(link.url);
+        navigationUrl.asPath = link.url;
 
-    if (type === 'heading') {
-      compProps.dataLocator = `${compProps.dataLocator}_${index}`;
-    } else {
-      compProps['data-locator'] = `${compProps['data-locator']}_${index}`;
-    }
+        if (type === 'heading') {
+          compProps.dataLocator = `${compProps.dataLocator}_${index}`;
+        } else {
+          compProps['data-locator'] = `${compProps['data-locator']}_${index}`;
+        }
 
-    return (
-      <Anchor key={index.toString()} {...navigationUrl} className={className}>
-        <Component {...compProps} className={`${heading} link-text`}>
-          <TextItems textItems={textItems} />
-        </Component>
-      </Anchor>
-    );
-  });
+        return (
+          <Anchor key={index.toString()} {...navigationUrl}>
+            <Component {...compProps} className={`${heading} link-text`}>
+              <TextItems textItems={textItems} />
+            </Component>
+          </Anchor>
+        );
+      })}
+    </div>
+  );
 };
 
 LinkText.defaultProps = {

@@ -8,6 +8,10 @@ import {
   startCartCheckout,
   removeUnqualifiedItemsAndCheckout,
   checkoutCart,
+  startPaypalCheckout,
+  authorizePayPalPayment,
+  routeForCartCheckout,
+  addItemToSFL,
 } from '../container/BagPage.saga';
 import BAG_PAGE_ACTIONS from '../container/BagPage.actions';
 import BAGPAGE_CONSTANTS from '../BagPage.constants';
@@ -72,12 +76,15 @@ describe('Bag page Saga', () => {
 
     expectValue(BAGPAGE_CONSTANTS.FETCH_MODULEX_CONTENT, fetchModuleX);
 
-    expectValue(BAGPAGE_CONSTANTS.START_BAG_CHECKOUT, startCartCheckout);
-
     expectValue(
       BAGPAGE_CONSTANTS.REMOVE_UNQUALIFIED_AND_CHECKOUT,
       removeUnqualifiedItemsAndCheckout
     );
+    expectValue(BAGPAGE_CONSTANTS.ROUTE_FOR_CART_CHECKOUT, routeForCartCheckout);
+    expectValue(BAGPAGE_CONSTANTS.ADD_ITEM_SAVE_FOR_LATER, addItemToSFL);
+    expectValue(BAGPAGE_CONSTANTS.START_BAG_CHECKOUT, startCartCheckout);
+    expectValue(BAGPAGE_CONSTANTS.START_PAYPAL_CHECKOUT, startPaypalCheckout);
+    expectValue(BAGPAGE_CONSTANTS.AUTHORIZATION_PAYPAL_CHECKOUT, authorizePayPalPayment);
   });
 });
 
@@ -139,5 +146,21 @@ describe('checkoutCart Saga', () => {
     let takeLatestDescriptor = generator.next(true).value;
     takeLatestDescriptor = generator.next().value;
     expect(takeLatestDescriptor).toEqual(put(setCheckoutModalMountedState({ state: true })));
+  });
+});
+
+describe('Bag SFL Saga', () => {
+  it('add item to sfl', () => {
+    const res = {
+      errorResponse: null,
+    };
+    const generator = addItemToSFL({});
+
+    let takeLatestDescriptor = generator.next().value;
+    takeLatestDescriptor = generator.next().value;
+    takeLatestDescriptor = generator.next().value;
+    takeLatestDescriptor = generator.next(res).value;
+    takeLatestDescriptor = generator.next(res).value;
+    expect(takeLatestDescriptor).toEqual(put(BAG_PAGE_ACTIONS.setCartItemsSFL(true)));
   });
 });

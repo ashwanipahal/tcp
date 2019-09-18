@@ -1,4 +1,4 @@
-import { API_METHODS, PRODUCTS_URI } from './api.constants';
+import { API_METHODS, PRODUCTS_URI, SAVE_FOR_LATER } from './api.constants';
 
 const endpoints = {
   graphQL: {
@@ -255,6 +255,14 @@ const endpoints = {
     method: 'POST',
     URI: 'v2/checkout/addGiftOptions',
   },
+  paypalLookUp: {
+    method: 'GET',
+    URI: 'v2/checkout/TCPPayPalCCLookUpRESTCmd',
+  },
+  paypalAuth: {
+    method: 'GET',
+    URI: 'v2/checkout/TCPPayPalCCAuthenticationRESTCmd',
+  },
   searchBarApi: {
     method: 'GET',
     URI: PRODUCTS_URI.PRODUCTS_AUTOSUGGEST,
@@ -269,6 +277,26 @@ const endpoints = {
   saveSocialAccountsInfo: {
     method: 'PUT',
     URI: 'v2/account/preferences/socialNew',
+  },
+  getVenmoClientToken: {
+    method: 'GET',
+    URI: 'v2/venmo/getVenmoClientToken',
+  },
+  getAllSfl: {
+    method: 'GET',
+    URI: SAVE_FOR_LATER,
+  },
+  updateSflItem: {
+    method: 'PUT',
+    URI: SAVE_FOR_LATER,
+  },
+  deleteSflItem: {
+    method: 'DELETE',
+    URI: SAVE_FOR_LATER,
+  },
+  addSflItem: {
+    method: 'POST',
+    URI: SAVE_FOR_LATER,
   },
   getMyFavoriteStore: {
     method: API_METHODS.GET,

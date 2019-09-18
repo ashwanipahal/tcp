@@ -229,6 +229,7 @@ exports[`#ThemeWrapper.container should render correctly 1`] = `
           "FOCUS_BORDER": "#439ad4",
           "SUCCESS_BORDER": "#6dc927",
         },
+        "VENMO": "#3d95ce",
         "WHITE": "#ffffff",
       },
       "fonts": Object {

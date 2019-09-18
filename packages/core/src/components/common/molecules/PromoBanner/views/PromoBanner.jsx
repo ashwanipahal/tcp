@@ -55,6 +55,7 @@ const PromoBanner = props => {
       <React.Fragment>
         {headerText && (
           <LinkText
+            component="div"
             dataLocator={dataLocatorHeader}
             className="promo-banner-header"
             fontFamily="primary"

@@ -1,4 +1,5 @@
 import ProductListingPageSaga from '@tcp/core/src/components/features/browse/ProductListingPage/container/ProductListingPage.saga';
+import SearchListingPageSaga from '@tcp/core/src/components/features/browse/SearchDetail/container/SearchDetail.saga';
 import LoginPageSaga from '@tcp/core/src/components/features/account/LoginPage/container/LoginPage.saga';
 import LogOutPageSaga from '@tcp/core/src/components/features/account/Logout/container/LogOut.saga';
 import ForgotPasswordSaga from '@tcp/core/src/components/features/account/ForgotPassword/container/ForgotPassword.saga';
@@ -30,6 +31,7 @@ export {
   LabelsSaga,
   GiftCardsSaga,
   SocialAccountSaga,
+  SearchListingPageSaga,
 };
 
 export default {
@@ -48,4 +50,5 @@ export default {
   LabelsSaga,
   GiftCardsSaga,
   SocialAccountSaga,
+  SearchListingPageSaga,
 };
