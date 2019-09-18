@@ -166,7 +166,7 @@ const processResponse = (
     isOutfitPage,
     searchTerm,
     sort,
-    isRecommendationView,
+    filterSortView,
   }
 ) => {
   const scrollPoint = isClient() ? window.sessionStorage.getItem('SCROLL_POINT') : 0;
@@ -180,7 +180,7 @@ const processResponse = (
     window.location.href = res.body.redirect.value;
   }
 
-  if (!isMobileApp() && !isRecommendationView) {
+  if (!isMobileApp() && filterSortView) {
     getPlpUrlQueryValues(filtersAndSort);
   }
 

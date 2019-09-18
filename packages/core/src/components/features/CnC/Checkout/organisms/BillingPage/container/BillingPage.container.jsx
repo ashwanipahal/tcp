@@ -9,6 +9,9 @@ import {
   getCVVCodeRichTextSelector,
   getBillingLabels,
 } from './BillingPage.selectors';
+import CheckoutSelectors from '../../../container/Checkout.selector';
+
+const { getBillingLabels: getBillingLabelsCheckout } = CheckoutSelectors;
 
 class BillingPageContainer extends React.Component {
   componentDidMount() {
@@ -36,7 +39,7 @@ export const mapStateToProps = state => {
   return {
     cvvCodeInfoContentId: getCVVCodeInfoContentId(state),
     cvvCodeRichText: getCVVCodeRichTextSelector(state),
-    labels: getBillingLabels(state),
+    labels: { ...getBillingLabels(state), ...getBillingLabelsCheckout(state) },
   };
 };
 

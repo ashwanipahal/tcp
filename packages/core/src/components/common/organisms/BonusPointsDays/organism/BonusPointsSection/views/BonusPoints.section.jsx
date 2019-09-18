@@ -9,7 +9,6 @@ import withStyles from '../../../../../hoc/withStyles';
 import styles from '../styles/BonusPoints.section.style';
 import BonusPointsAvailability from '../../../molecules/BonusPointsAvailability';
 import CollapsibleContainer from '../../../../../molecules/CollapsibleContainer';
-import ApplyNowModal from '../../../../../molecules/ApplyNowPLCCModal';
 
 const getButtonText = ({
   appliedToBagBonusPointDays,
@@ -186,7 +185,6 @@ const getContent = ({
           />
         </Col>
       </Row>
-      <ApplyNowModal />
       <Anchor
         fontSizeVariation="medium"
         underline

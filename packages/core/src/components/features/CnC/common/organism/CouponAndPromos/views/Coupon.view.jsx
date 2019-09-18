@@ -6,6 +6,7 @@ import CouponDetailModal from './CouponDetailModal.view';
 import CouponHelpModal from './CouponHelpModal.view';
 import CouponForm from '../../../molecules/CouponForm';
 import styles from '../styles/Coupon.style';
+import ApplyNowModal from '../../../../../../common/molecules/ApplyNowPLCCModal';
 
 class CouponView extends React.PureComponent<Props> {
   constructor(props) {
@@ -105,6 +106,7 @@ class CouponView extends React.PureComponent<Props> {
             heading="Help Modal"
           />
         </div>
+        <ApplyNowModal />
       </div>
     );
   }

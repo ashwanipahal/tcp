@@ -21,6 +21,7 @@ export default css`
     vertical-align: bottom;
   }
   .sort-item-list {
+    cursor: pointer;
     width: 95%;
   }
 
