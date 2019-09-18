@@ -83,7 +83,7 @@ const PromoBanner = props => {
                   </span>
                 </div>
               );
-            } else if (style === 'currency_up_style') {
+            } else if (style === 'currency_up_style' || style === 'style10') {
               promoText = renderCurrencyUpVariation(style, text);
             } else {
               promoText = (

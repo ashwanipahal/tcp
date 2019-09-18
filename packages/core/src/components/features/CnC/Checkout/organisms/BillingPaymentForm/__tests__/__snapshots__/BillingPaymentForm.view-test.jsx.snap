@@ -3,13 +3,11 @@
 exports[`ButtonList component renders correctly without props 1`] = `
 <form
   className=""
-  name="checkoutBilling"
+  name="checkoutBillingPayment"
   noValidate={true}
   onSubmit={[MockFunction]}
 >
-  <div
-    className="payment-container"
-  >
+  <div>
     <Styled(BodyCopy)
       className="elem-mb-LRG elem-mt-XL"
       color="text.primary"
@@ -413,9 +411,9 @@ exports[`ButtonList component renders correctly without props 1`] = `
               }
             >
               <Styled(Image)
-                height="10"
+                height="15"
                 src="/static/images/info-icon.png"
-                width="10"
+                width="15"
               />
             </Styled(ReactTooltip)>
           </span>
@@ -629,13 +627,11 @@ exports[`ButtonList component renders correctly without props 1`] = `
 exports[`ButtonList component renders correctly without props 2`] = `
 <form
   className=""
-  name="checkoutBilling"
+  name="checkoutBillingPayment"
   noValidate={true}
   onSubmit={[MockFunction]}
 >
-  <div
-    className="payment-container"
-  >
+  <div>
     <Styled(BodyCopy)
       className="elem-mb-LRG elem-mt-XL"
       color="text.primary"
@@ -1039,9 +1035,9 @@ exports[`ButtonList component renders correctly without props 2`] = `
               }
             >
               <Styled(Image)
-                height="10"
+                height="15"
                 src="/static/images/info-icon.png"
-                width="10"
+                width="15"
               />
             </Styled(ReactTooltip)>
           </span>

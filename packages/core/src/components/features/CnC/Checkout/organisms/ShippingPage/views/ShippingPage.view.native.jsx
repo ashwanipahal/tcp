@@ -29,6 +29,7 @@ export default class ShippingPage extends React.Component {
     navigation: PropTypes.shape({}).isRequired,
     handleSubmit: PropTypes.func.isRequired,
     availableStages: PropTypes.shape([]).isRequired,
+    isGiftServicesChecked: PropTypes.bool,
     userAddresses: PropTypes.shape([]),
     onFileAddressKey: PropTypes.string,
     isSaveToAddressBookChecked: PropTypes.bool,
@@ -51,6 +52,7 @@ export default class ShippingPage extends React.Component {
     orderHasPickUp: false,
     shipmentMethods: null,
     defaultShipmentId: null,
+    isGiftServicesChecked: false,
     userAddresses: null,
     onFileAddressKey: null,
     isSaveToAddressBookChecked: false,
@@ -216,6 +218,7 @@ export default class ShippingPage extends React.Component {
       navigation,
       availableStages,
       labels,
+      isGiftServicesChecked,
       userAddresses,
       onFileAddressKey,
       isSaveToAddressBookChecked,
@@ -270,6 +273,7 @@ export default class ShippingPage extends React.Component {
               navigation={navigation}
               submitShippingForm={this.submitShippingForm}
               labels={labels}
+              isGiftServicesChecked={isGiftServicesChecked}
               userAddresses={userAddresses}
               onFileAddressKey={onFileAddressKey}
               isSaveToAddressBookChecked={isSaveToAddressBookChecked}
