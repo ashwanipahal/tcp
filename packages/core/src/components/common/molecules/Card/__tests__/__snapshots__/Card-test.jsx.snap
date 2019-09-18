@@ -67,44 +67,6 @@ exports[`Card component renders correctly without props 1`] = `
       }
       cardNumber=""
     />
-    <Styled(BodyCopy)
-      className="hideOnDesktop"
-      color="text.primary"
-      component="div"
-      fontFamily="secondary"
-      fontSize={12}
-      fontWeight="regular"
-      letterSpacing="normal"
-      lineHeight="normal"
-      textAlign="right"
-    >
-      <Styled(Button)
-        buttonVariation="variable-width"
-        fill="BLACK"
-      >
-        test
-      </Styled(Button)>
-    </Styled(BodyCopy)>
-  </Styled(BodyCopy)>
-  <Styled(BodyCopy)
-    className="hideOnDesktop"
-    color="text.primary"
-    component="div"
-    fontFamily="primary"
-    fontSize={12}
-    fontWeight="regular"
-    letterSpacing="normal"
-    lineHeight="normal"
-    textAlign="right"
-  >
-    <Styled(Anchor)
-      anchorVariation="primary"
-      className="billing-payment-edit"
-      dataLocator="billing-payment-edit"
-      fontSizeVariation="medium"
-      to="/"
-      underline={true}
-    />
   </Styled(BodyCopy)>
 </Styled(BodyCopy)>
 `;

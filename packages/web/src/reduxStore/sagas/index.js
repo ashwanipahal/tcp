@@ -1,4 +1,5 @@
 import { all } from 'redux-saga/effects';
+import SearchPageSaga from '@tcp/core/src/components/features/browse/SearchDetail/container/SearchDetail.saga';
 import ProductListingPageSaga from '@tcp/core/src/components/features/browse/ProductListingPage/container/ProductListingPage.saga';
 import LoginPageSaga from '@tcp/core/src/components/features/account/LoginPage/container/LoginPage.saga';
 import UserSaga from '@tcp/core/src/components/features/account/User/container/User.saga';
@@ -44,7 +45,7 @@ import GiftCardsSaga from '@tcp/core/src/components/features/CnC/Checkout/organi
 import MailingAddressSaga from '@tcp/core/src/components/features/account/MyProfile/organism/MailingInformation/container/MailingAddress.saga';
 import ProductTabListSaga from '@tcp/core/src/components/common/organisms/ProductTabList/container/ProductTabList.saga';
 import RecommendationsSaga from '@tcp/core/src/components/common/molecules/Recommendations/container/Recommendations.saga';
-import StoreLocatorSaga from '@tcp/core/src/components/features/storeLocator/container/StoreLocator.saga';
+import StoreLocatorSaga from '@tcp/core/src/components/features/storeLocator/StoreSearch/container/StoreSearch.saga';
 import MyFavoriteStoreSaga from '@tcp/core/src/components/features/account/MyProfile/organism/MyFavoriteStore/container/MyFavoriteStore.saga';
 import PickupStoreSaga from '@tcp/core/src/components/common/organisms/PickupStoreModal/container/PickUpStoreModal.saga';
 import HomePageSaga from '../../components/features/content/HomePage/container/HomePage.saga';
@@ -105,6 +106,7 @@ export default function* rootSaga() {
     RecommendationsSaga(),
     BillingPaymentSaga(),
     StoreLocatorSaga(),
+    SearchPageSaga(),
     MyFavoriteStoreSaga(),
     PickupStoreSaga(),
   ]);

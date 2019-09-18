@@ -18,7 +18,51 @@ exports[`CreditCardForm component should renders correctly with address dropdown
         },
       ]
     }
+    cardNumbProps={
+      Object {
+        "colSize": Object {
+          "large": 6,
+          "medium": 8,
+          "small": 6,
+        },
+      }
+    }
+    cardNumberInnerProps={
+      Object {
+        "colSize": Object {
+          "large": 12,
+          "medium": 4,
+          "small": 6,
+        },
+      }
+    }
+    cardNumberWrapper={true}
     className=""
+    creditFieldLabels={
+      Object {
+        "creditCardNumber": "lbl_payment_cardNumber",
+        "expMonth": "lbl_payment_expMonth",
+        "expYear": "lbl_payment_expYear",
+      }
+    }
+    expMonthProps={
+      Object {
+        "colSize": Object {
+          "large": 3,
+          "medium": 2,
+          "small": 6,
+        },
+      }
+    }
+    expYearProps={
+      Object {
+        "colSize": Object {
+          "large": 3,
+          "medium": 2,
+          "small": 6,
+        },
+      }
+    }
     initialValues={Object {}}
     isEdit={false}
     labels={
@@ -32,6 +76,7 @@ exports[`CreditCardForm component should renders correctly with address dropdown
     onFileAddressKey=""
     onFileAddresskey="12345"
     showCreditCardFields={true}
+    showCvv={false}
     showUserName={true}
     subHeading={null}
   />
@@ -196,7 +241,51 @@ exports[`CreditCardForm component should renders correctly with addressForm 1`] 
         },
       ]
     }
+    cardNumbProps={
+      Object {
+        "colSize": Object {
+          "large": 6,
+          "medium": 8,
+          "small": 6,
+        },
+      }
+    }
+    cardNumberInnerProps={
+      Object {
+        "colSize": Object {
+          "large": 12,
+          "medium": 4,
+          "small": 6,
+        },
+      }
+    }
+    cardNumberWrapper={true}
     className=""
+    creditFieldLabels={
+      Object {
+        "creditCardNumber": "lbl_payment_cardNumber",
+        "expMonth": "lbl_payment_expMonth",
+        "expYear": "lbl_payment_expYear",
+      }
+    }
+    expMonthProps={
+      Object {
+        "colSize": Object {
+          "large": 3,
+          "medium": 2,
+          "small": 6,
+        },
+      }
+    }
+    expYearProps={
+      Object {
+        "colSize": Object {
+          "large": 3,
+          "medium": 2,
+          "small": 6,
+        },
+      }
+    }
     initialValues={Object {}}
     isEdit={false}
     labels={
@@ -210,6 +299,7 @@ exports[`CreditCardForm component should renders correctly with addressForm 1`] 
     onFileAddressKey=""
     pristine={true}
     showCreditCardFields={true}
+    showCvv={false}
     showUserName={true}
     subHeading={null}
   />

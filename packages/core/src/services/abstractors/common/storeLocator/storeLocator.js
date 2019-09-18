@@ -1,16 +1,26 @@
+import { STORE_LOCATOR_REDUCER_KEY } from '@tcp/core/src/constants/reducer.constants';
 import { executeStatefulAPICall } from '../../../handler';
 import { formatPhoneNumber } from '../../../../utils/formValidation/phoneNumber';
 import { parseStoreHours } from '../../../../utils/parseStoreHours';
 import { sanitizeEntity } from '../../../../utils';
 import endpoints from '../../../endpoints';
-import { getSuggestedStoreById } from '../../../../components/features/storeLocator/container/StoreLocator.selectors';
 import { getPersonalDataState } from '../../../../components/features/account/User/container/User.selectors';
-import { BOPIS_ITEM_AVAILABILITY } from '../../../../components/features/storeLocator/StoreLocator.constants';
 
 const DEFAULT_RADIUS = 75;
 const STORE_TYPES = {
   RETAIL: 'Retail Store',
   OUTLET: 'Outlet',
+};
+const BOPIS_ITEM_AVAILABILITY = {
+  AVAILABLE: 'OK',
+  LIMITED: 'LIMITED',
+  UNAVAILABLE: 'UNAVAILABLE',
+};
+
+export const getSuggestedStoreById = (state, storeId) => {
+  return state[STORE_LOCATOR_REDUCER_KEY].get('suggestedStores').find(
+    stores => stores.basicInfo.id === storeId
+  );
 };
 
 /**

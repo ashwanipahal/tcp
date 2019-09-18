@@ -35,9 +35,16 @@ exports[`Detailed Earn Extra Points Tile component  should render Detailed Earn 
       lineHeight="normal"
       textAlign="left"
     >
-      <Styled(Image)
-        data-locator="earnExtraPointsImage_AppDownload"
-        src="undefined//wcsstore/static/images/download-app.jpg"
+      <Styled(BodyCopy)
+        className="imageSize AppDownload"
+        color="text.primary"
+        component="div"
+        fontFamily="primary"
+        fontSize={12}
+        fontWeight="regular"
+        letterSpacing="normal"
+        lineHeight="normal"
+        textAlign="left"
       />
     </Styled(BodyCopy)>
     <Styled(BodyCopy)

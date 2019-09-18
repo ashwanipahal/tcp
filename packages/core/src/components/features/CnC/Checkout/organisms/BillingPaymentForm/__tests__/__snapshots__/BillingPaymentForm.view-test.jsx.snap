@@ -7,9 +7,7 @@ exports[`ButtonList component renders correctly without props 1`] = `
   noValidate={true}
   onSubmit={[MockFunction]}
 >
-  <div
-    className="payment-container"
-  >
+  <div>
     <Styled(BodyCopy)
       className="elem-mb-LRG elem-mt-XL"
       color="text.primary"
@@ -407,7 +405,7 @@ exports[`ButtonList component renders correctly without props 1`] = `
               message={
                 <ForwardRef
                   className="cvv-code-info"
-                  dataLocator="bonus-points-details"
+                  dataLocator="cvv-code-info"
                   richTextHtml={null}
                 />
               }
@@ -633,9 +631,7 @@ exports[`ButtonList component renders correctly without props 2`] = `
   noValidate={true}
   onSubmit={[MockFunction]}
 >
-  <div
-    className="payment-container"
-  >
+  <div>
     <Styled(BodyCopy)
       className="elem-mb-LRG elem-mt-XL"
       color="text.primary"
@@ -1033,7 +1029,7 @@ exports[`ButtonList component renders correctly without props 2`] = `
               message={
                 <ForwardRef
                   className="cvv-code-info"
-                  dataLocator="bonus-points-details"
+                  dataLocator="cvv-code-info"
                   richTextHtml={null}
                 />
               }
