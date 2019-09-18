@@ -251,14 +251,30 @@ const endpoints = {
     method: 'POST',
     URI: 'v2/account/deleteBirthdaySavings',
   },
+  addChild: {
+    method: 'POST',
+    URI: 'v2/account/addBirthdaySavings',
+  },
   addGiftOptions: {
     method: 'POST',
     URI: 'v2/checkout/addGiftOptions',
+  },
+  paypalLookUp: {
+    method: 'GET',
+    URI: 'v2/checkout/TCPPayPalCCLookUpRESTCmd',
+  },
+  paypalAuth: {
+    method: 'GET',
+    URI: 'v2/checkout/TCPPayPalCCAuthenticationRESTCmd',
   },
   searchBarApi: {
     method: 'GET',
     URI: PRODUCTS_URI.PRODUCTS_AUTOSUGGEST,
     unbxd: true,
+  },
+  getVenmoClientToken: {
+    method: 'GET',
+    URI: 'v2/venmo/getVenmoClientToken',
   },
   getAllSfl: {
     method: 'GET',

@@ -63,6 +63,22 @@ exports[`ModuleB component should render TCP or default variant correctly 1`] = 
                     "style": "style1",
                     "text": "MORE FITS.",
                   },
+                ],
+              },
+              Object {
+                "icon": Object {
+                  "icon": "",
+                  "placement": "",
+                },
+                "link": Object {
+                  "action": "",
+                  "external": 0,
+                  "target": "",
+                  "text": "",
+                  "title": "",
+                  "url": "/c/girls-denim-bottoms",
+                },
+                "textItems": Array [
                   Object {
                     "style": "style2",
                     "text": "SLIM, PLUS & HUSKY",
@@ -317,6 +333,22 @@ exports[`ModuleB component should render banner bottom variation 1`] = `
               "style": "style1",
               "text": "MORE FITS.",
             },
+          ],
+        },
+        Object {
+          "icon": Object {
+            "icon": "",
+            "placement": "",
+          },
+          "link": Object {
+            "action": "",
+            "external": 0,
+            "target": "",
+            "text": "",
+            "title": "",
+            "url": "/c/girls-denim-bottoms",
+          },
+          "textItems": Array [
             Object {
               "style": "style2",
               "text": "SLIM, PLUS & HUSKY",
@@ -421,6 +453,22 @@ exports[`ModuleB component should render banner overlay variation 1`] = `
               "style": "style1",
               "text": "MORE FITS.",
             },
+          ],
+        },
+        Object {
+          "icon": Object {
+            "icon": "",
+            "placement": "",
+          },
+          "link": Object {
+            "action": "",
+            "external": 0,
+            "target": "",
+            "text": "",
+            "title": "",
+            "url": "/c/girls-denim-bottoms",
+          },
+          "textItems": Array [
             Object {
               "style": "style2",
               "text": "SLIM, PLUS & HUSKY",
@@ -494,6 +542,22 @@ exports[`ModuleB component should render banner top alt variation 1`] = `
               "style": "style1",
               "text": "MORE FITS.",
             },
+          ],
+        },
+        Object {
+          "icon": Object {
+            "icon": "",
+            "placement": "",
+          },
+          "link": Object {
+            "action": "",
+            "external": 0,
+            "target": "",
+            "text": "",
+            "title": "",
+            "url": "/c/girls-denim-bottoms",
+          },
+          "textItems": Array [
             Object {
               "style": "style2",
               "text": "SLIM, PLUS & HUSKY",
@@ -598,6 +662,22 @@ exports[`ModuleB component should render banner top variation 1`] = `
               "style": "style1",
               "text": "MORE FITS.",
             },
+          ],
+        },
+        Object {
+          "icon": Object {
+            "icon": "",
+            "placement": "",
+          },
+          "link": Object {
+            "action": "",
+            "external": 0,
+            "target": "",
+            "text": "",
+            "title": "",
+            "url": "/c/girls-denim-bottoms",
+          },
+          "textItems": Array [
             Object {
               "style": "style2",
               "text": "SLIM, PLUS & HUSKY",

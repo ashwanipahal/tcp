@@ -20,7 +20,7 @@ import {
 } from '../FilterModal.style.native';
 import FilterButtons from '../../FilterButtons';
 import Filters from '../../Filters';
-import config from '../../SortSelector/SortSelector.config';
+import getSortOptions from '../../SortSelector/views/Sort.util';
 
 class FilterModal extends React.PureComponent {
   static propTypes = {
@@ -30,6 +30,7 @@ class FilterModal extends React.PureComponent {
     onSubmit: PropTypes.func.isRequired,
     getProducts: PropTypes.func.isRequired,
     navigation: PropTypes.objectOf(PropTypes.oneOfType([PropTypes.string])),
+    sortLabels: PropTypes.arrayOf(PropTypes.shape({})),
   };
 
   static defaultProps = {
@@ -37,6 +38,7 @@ class FilterModal extends React.PureComponent {
     theme: {},
     labelsFilter: {},
     navigation: {},
+    sortLabels: [],
   };
 
   constructor(props) {
@@ -127,11 +129,14 @@ class FilterModal extends React.PureComponent {
   };
 
   render() {
-    const { theme, labelsFilter, filters } = this.props;
+    const { theme, labelsFilter, filters, sortLabels } = this.props;
     const { showModal, language, showSortModal } = this.state;
     const closeIconColor = get(theme, 'colorPalette.gray[900]', '#1a1a1a');
     const closeIconSize = get(theme, 'typography.fontSizes.fs20', 20);
-    const lapsList = config.map(data => {
+
+    const sortOptions = getSortOptions(sortLabels);
+
+    const lapsList = sortOptions.map(data => {
       return <Picker.Item label={data.displayName} value={data.id} />;
     });
     return (

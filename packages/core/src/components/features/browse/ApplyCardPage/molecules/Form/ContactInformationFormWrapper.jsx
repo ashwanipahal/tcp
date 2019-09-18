@@ -228,11 +228,11 @@ class ContactInformationFormWrapper extends React.Component {
             colSize={{ small: 6, medium: 4, large: 6 }}
           >
             <Field
-              placeholder={labels.plcc_form_email}
-              name="emailAddress"
-              id="emailAddress"
+              placeholder={labels.plcc_form_alternate_phone}
+              name="altPhoneNumber"
+              id="alternatePhone"
               component={TextBox}
-              dataLocator={getLocator('plcc_email')}
+              dataLocator={getLocator('plcc_alt_mobile_no')}
               className="field"
             />
           </Col>
@@ -245,11 +245,11 @@ class ContactInformationFormWrapper extends React.Component {
             colSize={{ large: 6, medium: 4, small: 6 }}
           >
             <Field
-              placeholder={labels.plcc_form_alternate_phone}
-              name="altPhoneNumber"
-              id="alternatePhone"
+              placeholder={labels.plcc_form_email}
+              name="emailAddress"
+              id="emailAddress"
               component={TextBox}
-              dataLocator={getLocator('plcc_alt_mobile_no')}
+              dataLocator={getLocator('plcc_email')}
               className="field"
             />
           </Col>

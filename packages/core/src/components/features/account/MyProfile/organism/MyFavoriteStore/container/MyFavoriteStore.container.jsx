@@ -11,6 +11,7 @@ import {
   getFavoriteStoreState,
   getFavoriteStoreZipcode,
   getFavoriteStoreCity,
+  getDefaultStore,
 } from '../../../../User/container/User.selectors';
 import { getCommonLabels } from '../../../../Account/container/Account.selectors';
 import { getMyFavoriteStoreAction, resetMyFavoriteStoreAction } from './MyFavoriteStore.actions';
@@ -99,6 +100,7 @@ function mapStateToProps(state) {
     favStoreState: getFavoriteStoreState(state),
     favStoreZipcode: getFavoriteStoreZipcode(state),
     favStorePhone: getFavoriteStorePhone(state),
+    defaultStore: getDefaultStore(state),
   };
 }
 
