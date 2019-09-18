@@ -4,7 +4,8 @@
  */
 
 // Note: useDispatch() can only be called during hook execution.
-import { useDispatch } from 'react-redux';
+// TODO: Upgrade react-redux and use this hook
+// import { useDispatch } from 'react-redux';
 import { trackPageView, trackClick } from './actions';
 
 /**
@@ -19,8 +20,9 @@ import { trackPageView, trackClick } from './actions';
  *   return null;
  * }
  */
-export function usePageTracking() {
-  const dispatch = useDispatch();
+export function usePageTracking(dispatch) {
+  // TODO: Upgrade react-redux and use this hook
+  // const dispatch = useDispatch();
   return payload => dispatch(trackPageView(payload));
 }
 
@@ -34,7 +36,8 @@ export function usePageTracking() {
  *   return <button onClick={handleClick}>Click</button>;
  * }
  */
-export function useClickTracking() {
-  const dispatch = useDispatch();
+export function useClickTracking(dispatch) {
+  // TODO: Upgrade react-redux and use this hook
+  // const dispatch = useDispatch();
   return payload => dispatch(trackClick(payload));
 }
