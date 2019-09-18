@@ -48,7 +48,7 @@ const mapStateToProps = (state, ownProps) => {
     onSubmit,
     onSubmitSuccess,
     maxAllowedStoresInCart,
-    cartBopisStoresList: 0, // TODO - IN QV  - storesStoreView.getBopisStoresOnCart(state),
+    cartBopisStoresList: PickupSelectors.getBopisStoresOnCart(state),
     distancesMap,
     isShowExtendedSizesNotification: false,
     productInfo,

@@ -235,3 +235,4 @@ MyPrefrenceSection.defaultProps = {
 export default reduxForm({
   form: 'MyPrefrence', // a unique identifier for this form
 })(withStyles(MyPrefrenceSection, styles));
+export { MyPrefrenceSection as MyPrefrenceSectionVanilla };

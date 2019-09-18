@@ -91,6 +91,7 @@ exports[`#ThemeWrapper.container should render correctly 1`] = `
         },
         "success": "#26762c",
         "text": Object {
+          "darkgray": "#595959",
           "disabled": "#d8d8d8",
           "hint": "#9b9b9b",
           "lightgray": "#f3f3f3",
@@ -424,6 +425,7 @@ exports[`#ThemeWrapper.container should render correctly 1`] = `
           "XXXL": "320px",
         },
         "MODAL_WIDTH": Object {
+          "MEDIUM": "600px",
           "SMALL": "458px",
         },
       },

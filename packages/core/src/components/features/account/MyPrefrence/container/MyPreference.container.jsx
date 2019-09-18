@@ -7,7 +7,7 @@ const getMyPrefrenceLabels = labels => {
   return (labels && labels.preferences) || {};
 };
 
-class MyPrefrenceContainer extends PureComponent {
+export class MyPrefrenceContainer extends PureComponent {
   render() {
     const { labels } = this.props;
     const myPrefrenceLabels = getMyPrefrenceLabels(labels);
