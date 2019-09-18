@@ -11,6 +11,7 @@ exports[`ProductListingFiltersForm is shown should render ProductListingFiltersF
       isSortOpenModal={false}
       labels={Object {}}
       show={false}
+      sortLabels={Array []}
     >
       <div
         className="  new-filter-and-sort-form-container"

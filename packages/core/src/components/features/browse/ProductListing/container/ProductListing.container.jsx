@@ -26,6 +26,7 @@ import {
 } from './ProductListing.selectors';
 import submitProductListingFiltersForm from './productListingOnSubmitHandler';
 import { isPlccUser } from '../../../account/User/container/User.selectors';
+import getSortLabels from '../molecules/SortSelector/views/Sort.selectors';
 
 class ProductListingContainer extends React.PureComponent {
   componentDidMount() {
@@ -75,6 +76,7 @@ class ProductListingContainer extends React.PureComponent {
       onSubmit,
       onPickUpOpenClick,
       formValues,
+      sortLabels,
       slpLabels,
       ...otherProps
     } = this.props;
@@ -99,6 +101,7 @@ class ProductListingContainer extends React.PureComponent {
         onSubmit={onSubmit}
         onPickUpOpenClick={onPickUpOpenClick}
         formValues={formValues}
+        sortLabels={sortLabels}
         slpLabels={slpLabels}
         {...otherProps}
       />
@@ -148,6 +151,7 @@ function mapStateToProps(state) {
     // Need to pass form values in as prop so we can compare current values to previous values
     formValues: getFormValues('filter-form')(state),
     isPlcc: isPlccUser(state),
+    sortLabels: getSortLabels(state),
     slpLabels: getLabels(state),
   };
 }
@@ -193,6 +197,7 @@ ProductListingContainer.propTypes = {
   formValues: PropTypes.shape({
     sort: PropTypes.string.isRequired,
   }).isRequired,
+  sortLabels: PropTypes.arrayOf(PropTypes.shape({})),
   slpLabels: PropTypes.objectOf(PropTypes.oneOfType([PropTypes.string])),
 };
 
@@ -211,6 +216,7 @@ ProductListingContainer.defaultProps = {
   labelsFilter: {},
   isLoadingMore: false,
   lastLoadedPageNumber: 0,
+  sortLabels: [],
   slpLabels: {},
 };
 
