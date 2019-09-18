@@ -1,6 +1,6 @@
 import { getLabelValue } from '@tcp/core/src/utils';
 
-export default function getMarkupForPrint(coupon, labels, addToBagCTALabel, validityDate, uri) {
+export default function getMarkupForPrint(coupon, labels, validityDate, uri) {
   return `<div style='text-align:center;'>
   <div>
      <div font-weight="black" style='font-size:40px;margin-bottom: 16px;' >${coupon.title}</div>

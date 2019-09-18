@@ -42,7 +42,7 @@ exports[`Detail Coupon Modal should render correctly 1`] = `
       <View
         data-locator="couponDetailModal_applied_BarCode"
       >
-        <ViewShot
+        <ScreenViewShot
           options={
             Object {
               "format": "png",
@@ -50,13 +50,14 @@ exports[`Detail Coupon Modal should render correctly 1`] = `
               "result": "base64",
             }
           }
+          setScreenViewShotRef={[Function]}
         >
           <BarcodeView
             format="CODE128"
             height="50"
             value="Y00105578"
           />
-        </ViewShot>
+        </ScreenViewShot>
       </View>
       <Styled(View) />
       <Styled(View)

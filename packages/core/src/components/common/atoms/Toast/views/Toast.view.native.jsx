@@ -57,7 +57,7 @@ class ToastView extends React.PureComponent {
           position="top"
           positionValue={0}
           fadeInDuration={750}
-          fadeOutDuration={1000}
+          fadeOutDuration={5000}
           opacity={1}
           textStyle={{ color: colors.WHITE }}
         />

@@ -9,7 +9,7 @@ import Modal from '@tcp/core/src/components/common/molecules/Modal';
 import { UrlHandler } from '@tcp/core/src/utils/utils.app';
 import { getLabelValue } from '@tcp/core/src/utils';
 import RNPrint from 'react-native-print';
-import ViewShot from 'react-native-view-shot';
+import ScreenViewShot from '../../../../../../common/atoms/ScreenViewShot';
 import endpoints from '../../../../../account/common/externalEndpoints';
 
 import {
@@ -20,9 +20,18 @@ import {
 } from '../styles/CouponDetailModal.style.native';
 import { COUPON_REDEMPTION_TYPE } from '../../../../../../../services/abstractors/CnC/CartItemTile';
 import BodyCopy from '../../../../../../common/atoms/BodyCopy';
-import getMarkupForPrint from './CouponDetailPrintHTMLModal';
+import getMarkupForPrint from './CouponDetailPrintHTMLModal.native';
 
 class CouponDetailModal extends React.PureComponent<Props> {
+  constructor(props) {
+    super(props);
+    this.screenViewShotRef = null;
+
+    this.setScreenViewShotRef = element => {
+      this.screenViewShotRef = element;
+    };
+  }
+
   componentDidUpdate() {
     const { coupon, handleErrorCoupon } = this.props;
     if (coupon.error) {
@@ -80,10 +89,10 @@ class CouponDetailModal extends React.PureComponent<Props> {
    * @param {obj} - coupon
    * @param {string} - addToBagCTALabel
    */
-  async printHTML(coupon, labels, addToBagCTALabel) {
-    const uri = await this.refs.viewShot.capture();
+  async printHTML(coupon, labels) {
+    const uri = await this.screenViewShotRef.capture();
     await RNPrint.print({
-      html: getMarkupForPrint(coupon, labels, addToBagCTALabel, this.showValidity(), uri),
+      html: getMarkupForPrint(coupon, labels, this.showValidity(), uri),
     });
   }
 
@@ -124,9 +133,12 @@ class CouponDetailModal extends React.PureComponent<Props> {
             </ViewWithSpacing>
             <Horizontal />
             <View data-locator={`couponDetailModal_${coupon.status}_BarCode`}>
-              <ViewShot ref="viewShot" options={{ format: 'png', quality: 0.9, result: 'base64' }}>
+              <ScreenViewShot
+                setScreenViewShotRef={this.setScreenViewShotRef}
+                options={{ format: 'png', quality: 0.9, result: 'base64' }}
+              >
                 <Barcode value={coupon.id} height="50" />
-              </ViewShot>
+              </ScreenViewShot>
             </View>
             <Horizontal />
             <ViewWithSpacing spacingStyles="margin-bottom-LRG">
@@ -148,7 +160,7 @@ class CouponDetailModal extends React.PureComponent<Props> {
               dataLocator={`couponDetailModal_${coupon.status}_printAch`}
               text={getLabelValue(labels, 'PRINT_ANCHOR_TEXT')}
               class="clickhere"
-              onPress={() => this.printHTML(coupon, labels, addToBagCTALabel, this.showValidity())}
+              onPress={() => this.printHTML(coupon, labels, this.showValidity())}
             />
             <PrivacyContent data-locator={`couponDetailModal_${coupon.status}_LongDesc`}>
               <HTML html={coupon.legalText} />
