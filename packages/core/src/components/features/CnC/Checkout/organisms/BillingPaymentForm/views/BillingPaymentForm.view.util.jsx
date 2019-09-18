@@ -65,8 +65,8 @@ const getCreditCardList = ({ cardList }) =>
       card.ccType !== constants.ACCEPTED_CREDIT_CARDS.VENMO
   );
 
-const getCardOptions = ({ cardList, labels, onFileCardKey, addNewCCState }) => {
-  let cardOptions = cardList.map(card => ({
+const getCardOptions = ({ creditCardList, labels, onFileCardKey, addNewCCState }) => {
+  let cardOptions = creditCardList.map(card => ({
     value: card.creditCardId,
     title: `${labels.lbl_billing_creditCardEnd}${card.accountNo.slice(-4)} ${
       card.defaultInd ? `(${labels.lbl_billing_default})` : ''
