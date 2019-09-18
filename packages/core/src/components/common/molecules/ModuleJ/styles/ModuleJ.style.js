@@ -2,11 +2,7 @@ import { css } from 'styled-components';
 
 export default css`
   margin-top: ${props => props.theme.spacing.LAYOUT_SPACING.MED};
-
-  span {
-    background-color: ${props =>
-      props.layout !== 'alt' ? props.theme.colorPalette.white : 'none'};
-  }
+  margin-bottom: ${props => props.theme.spacing.LAYOUT_SPACING.MED};
 
   .topview {
     position: relative;
@@ -55,24 +51,18 @@ export default css`
   }
 
   .promoBanner {
-    margin: 0 auto ${props => props.theme.spacing.ELEM_SPACING.SM};
-    width: 350px;
-
-    @media ${props => props.theme.mediaQuery.medium} {
-      width: 310px;
-    }
-
-    @media ${props => props.theme.mediaQuery.large} {
-      width: 440px;
-    }
+    margin: ${props => props.theme.spacing.ELEM_SPACING.SM} auto;
   }
 
-  .promo-header:first-child .link-text {
-    padding: 0 ${props => props.theme.spacing.ELEM_SPACING.SM};
+  .promo-header-wrapper:first-child {
+    padding: 0 ${props => props.theme.spacing.ELEM_SPACING.LRG};
+    display: inline-block;
+    ${props =>
+      props.layout === 'default' ? `background-color: ${props.theme.colorPalette.white}` : ''}
+  }
 
-    @media ${props => props.theme.mediaQuery.medium} {
-      margin-top: ${props => props.theme.spacing.ELEM_SPACING.XL};
-    }
+  &.layout-default .promo-text {
+    display: block;
   }
 
   &.layout-alt .promoBanner {
@@ -81,7 +71,7 @@ export default css`
   }
 
   .promo-image-left {
-    margin-top: ${props => props.theme.spacing.ELEM_SPACING.LRG};
+    margin-top: 30px;
   }
 
   .promo-image-right {
@@ -89,7 +79,18 @@ export default css`
 
     @media ${props => props.theme.mediaQuery.medium} {
       text-align: right;
+      margin-top: 30px;
     }
+  }
+
+  .promo-text:nth-child(2) {
+    line-height: 64px;
+    margin-top: -4px;
+  }
+
+  &.layout-alt .promo-text:nth-child(2) {
+    line-height: 48px;
+    margin-top: -4px;
   }
 
   .promo-img {

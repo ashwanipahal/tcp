@@ -115,7 +115,16 @@ class ModuleJ extends React.PureComponent {
               <div className="promo-header-wrapper">
                 <LinkText
                   component="div"
-                  headerText={headerText}
+                  headerText={[headerText[0]]}
+                  className="promo-header"
+                  dataLocator={getLocator('moduleJ_header_text')}
+                />
+              </div>
+
+              <div className="promo-header-wrapper">
+                <LinkText
+                  component="div"
+                  headerText={[headerText[1]]}
                   className="promo-header"
                   dataLocator={getLocator('moduleJ_header_text')}
                 />

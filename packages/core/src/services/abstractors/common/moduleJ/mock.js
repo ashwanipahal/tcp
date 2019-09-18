@@ -7,7 +7,7 @@ export default {
     type: 'module',
     composites: {
       bgColor: '#d8d8d8',
-      layout: 'default',
+      layout: 'alt',
       headerText: [
         {
           textItems: [
@@ -70,8 +70,8 @@ export default {
           },
           textItems: [
             {
-              text: 'ALL SHORTS',
-              text2: 'ALL UNIFORMS',
+              text2: 'ALL SHORTS',
+              text: 'ALL UNIFORMS',
               style: 'medium_text_semibold',
               style2: 'extra_large_text_regular',
             },
@@ -94,7 +94,7 @@ export default {
           },
           singleCTAButton: {
             url: dummyUrl,
-            text: 'SHOP ALL',
+            text: 'SHOP ALL 1',
             title: 'SHOP ALL',
             target: '',
             external: 0,
@@ -110,7 +110,7 @@ export default {
           },
           singleCTAButton: {
             url: dummyUrl,
-            text: 'SHOP ALL',
+            text: 'SHOP ALL 2',
             title: 'SHOP ALL',
             target: '',
             external: 0,
@@ -126,7 +126,7 @@ export default {
           },
           singleCTAButton: {
             url: dummyUrl,
-            text: 'SHOP ALL',
+            text: 'SHOP ALL 3',
             title: 'SHOP ALL',
             target: '',
             external: 0,
@@ -147,7 +147,8 @@ export default {
       mediaLinkedList: [
         {
           image: {
-            url: 'https://test5.childrensplace.com/image/upload/v1562731929/Image_14_bp7ih0.jpg',
+            url:
+              'https://test5.childrensplace.com/image/upload/c_fill,g_face:center,h_189,w_177/v1562731929/Image_14_bp7ih0.jpg',
             alt: 'Boys',
             title: 'Boys',
             crop_d: '',
@@ -165,12 +166,13 @@ export default {
         },
         {
           image: {
-            url: 'https://test5.childrensplace.com/image/upload/v1565145744/mod-h-kids_b9ivyr.png',
+            url:
+              'https://test5.childrensplace.com/image/upload/c_fill,g_face:center,h_189,w_177/v1565145744/mod-h-kids_b9ivyr.png',
             alt: 'Girls',
             title: 'Girls',
-            crop_d: '',
-            crop_t: 'c_crop,g_face:center,q_auto:best,w_962',
-            crop_m: 'c_crop,g_face:center,q_auto:best,w_962',
+            crop_d: 'h_189,w_177',
+            crop_t: 'h_189,w_177',
+            crop_m: 'h_310,w_375',
           },
           link: {
             url: '/node/product/e499bac3-6770-4757-b924-55c837712dfc',
