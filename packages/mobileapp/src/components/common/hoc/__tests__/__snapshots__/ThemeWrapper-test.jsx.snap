@@ -45,6 +45,7 @@ exports[`#ThemeWrapper.container should render correctly 1`] = `
           "1100": "#4a4a4a",
           "1200": "#eeeeee",
           "1300": "#9c9c9c",
+          "1400": "#c3c3c3",
           "300": "#f3f3f3",
           "400": "#4a4a4a",
           "500": "#d8d8d8",
@@ -125,7 +126,6 @@ exports[`#ThemeWrapper.container should render correctly 1`] = `
         "BLACK": "#000000",
         "BORDER": Object {
           "BLUE": "#2e6a91",
-          "LIGHT": "#c3c3c3",
           "NORMAL": "#979797",
         },
         "BRAND": Object {
