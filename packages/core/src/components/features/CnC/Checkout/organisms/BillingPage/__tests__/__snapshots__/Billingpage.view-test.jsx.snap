@@ -6,14 +6,18 @@ exports[`CheckoutProgressIndicator component should renders correctly props not 
 >
   <Styled(CheckoutSectionTitleDisplay)
     dataLocator="billing-title"
+    title="lbl_billing_title"
   />
   <Connect(GiftCardsContainer) />
   <div
     className="payment-container"
   >
     <Connect(GiftCardsContainer)
+      backLinkPickup="lbl_billing_backLinkPickup"
+      backLinkShipping="lbl_billing_backLinkShipping"
       cvvCodeRichText={null}
       labels={Object {}}
+      nextSubmitText="lbl_billing_nextSubmit"
     />
   </div>
 </div>
@@ -25,11 +29,18 @@ exports[`CheckoutProgressIndicator component should renders correctly props not 
 >
   <Styled(CheckoutSectionTitleDisplay)
     dataLocator="billing-title"
+    title="lbl_billing_title"
   />
   <Connect(GiftCardsContainer) />
   <Connect(GuestBillingContainer)
+    addressLabels={null}
+    backLinkPickup="lbl_billing_backLinkPickup"
+    backLinkShipping="lbl_billing_backLinkShipping"
+    billingData={Object {}}
     cvvCodeRichText={null}
+    isGuest={true}
     labels={Object {}}
+    nextSubmitText="lbl_billing_nextSubmit"
     shippingAddress={null}
   />
 </div>

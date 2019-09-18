@@ -26,7 +26,7 @@ class GuestBillingContainer extends React.Component {
     let zipCode;
     let onFileAddressKey;
     let onFileAddressId;
-
+    /* istanbul ignore else */
     if (address) {
       ({
         addressLine1,

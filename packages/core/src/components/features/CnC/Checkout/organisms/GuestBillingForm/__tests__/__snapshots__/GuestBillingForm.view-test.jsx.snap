@@ -22,7 +22,13 @@ exports[`GuestBillingFormVanilla should render correctly 1`] = `
     labels={Object {}}
   />
   <div
-    className="elem-mt-LRG"
+    className="elem-mt-LRG elem-pb-XL     "
+  />
+  <Styled(CheckoutFooter)
+    backLinkHandler={[Function]}
+    backLinkText=""
+    hideBackLink={true}
+    nextButtonText=""
   />
 </form>
 `;
@@ -49,7 +55,7 @@ exports[`GuestBillingFormVanilla should render correctly when props change 1`] =
     labels={Object {}}
   />
   <div
-    className="elem-mt-LRG"
+    className="elem-mt-LRG elem-pb-XL     "
   >
     <AddNewCCForm
       cardType="VISA"
@@ -75,6 +81,44 @@ exports[`GuestBillingFormVanilla should render correctly when props change 1`] =
       }
       labels={Object {}}
     />
+    <CheckoutAddress
+      billingData={Object {}}
+      dispatch={
+        [MockFunction] {
+          "calls": Array [
+            Array [
+              Object {
+                "meta": Object {
+                  "field": "cardType",
+                  "form": "checkoutBilling",
+                  "persistentSubmitErrors": undefined,
+                  "touch": undefined,
+                },
+                "payload": "VISA",
+                "type": "@@redux-form/CHANGE",
+              },
+            ],
+          ],
+          "results": Array [
+            Object {
+              "type": "return",
+              "value": undefined,
+            },
+          ],
+        }
+      }
+      isGuest={true}
+      isSameAsShippingChecked={true}
+      labels={Object {}}
+      orderHasShipping={true}
+      shippingAddress={null}
+    />
   </div>
+  <Styled(CheckoutFooter)
+    backLinkHandler={[Function]}
+    backLinkText=""
+    hideBackLink={true}
+    nextButtonText=""
+  />
 </form>
 `;
