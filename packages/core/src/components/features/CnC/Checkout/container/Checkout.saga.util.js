@@ -1,7 +1,10 @@
 /* eslint-disable extra-rules/no-commented-out-code */
 import { call, put, select } from 'redux-saga/effects';
 import selectors from './Checkout.selector';
-import { setShippingMethodAndAddressId } from '../../../../../services/abstractors/CnC/index';
+import {
+  setShippingMethodAndAddressId,
+  getVenmoToken,
+} from '../../../../../services/abstractors/CnC/index';
 
 import { getUserEmail } from '../../../account/User/container/User.selectors';
 import { getAddressListState } from '../../../account/AddressBook/container/AddressBook.selectors';
@@ -10,7 +13,12 @@ import {
   updateAddressPut,
 } from '../../../../common/organisms/AddEditAddress/container/AddEditAddress.saga';
 import { getAddressList } from '../../../account/AddressBook/container/AddressBook.saga';
-import { setOnFileAddressKey, setGiftWrap } from './Checkout.action';
+import {
+  setOnFileAddressKey,
+  setGiftWrap,
+  getVenmoClientTokenSuccess,
+  getVenmoClientTokenError,
+} from './Checkout.action';
 import utility from '../util/utility';
 import { CHECKOUT_ROUTES } from '../Checkout.constants';
 import {
@@ -162,5 +170,14 @@ export function* addAndSetGiftWrappingOptions(payload) {
     } catch (err) {
       // throw getSubmissionError(store, 'submitShippingSection', err);
     }
+  }
+}
+
+export function* getVenmoClientTokenSaga(payload) {
+  try {
+    const response = yield call(getVenmoToken, payload.payload);
+    yield put(getVenmoClientTokenSuccess(response));
+  } catch (ex) {
+    yield put(getVenmoClientTokenError({ error: 'Error' }));
   }
 }

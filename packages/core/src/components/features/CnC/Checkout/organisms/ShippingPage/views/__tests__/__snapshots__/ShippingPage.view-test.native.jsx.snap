@@ -98,6 +98,7 @@ exports[`Shipping Page should render correctly 1`] = `
           },
         }
       }
+      isGiftServicesChecked={false}
       isGuest={true}
       isOrderUpdateChecked={false}
       isSaveToAddressBookChecked={false}
@@ -233,6 +234,7 @@ exports[`Shipping Page should render correctly with component did update and get
           },
         }
       }
+      isGiftServicesChecked={false}
       isGuest={true}
       isOrderUpdateChecked={false}
       isSaveToAddressBookChecked={false}
@@ -350,6 +352,7 @@ exports[`Shipping Page should render correctly with component did update and get
           },
         }
       }
+      isGiftServicesChecked={false}
       isGuest={true}
       isOrderUpdateChecked={false}
       isSaveToAddressBookChecked={false}

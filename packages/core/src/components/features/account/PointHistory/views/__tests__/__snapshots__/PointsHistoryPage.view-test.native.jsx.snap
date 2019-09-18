@@ -25,7 +25,7 @@ exports[`PointHistoryPage component should renders correctly 1`] = `
       }
       style={
         Object {
-          "minHeight": 640,
+          "minHeight": 600,
         }
       }
       thirdPartyCookiesEnabled={false}

@@ -60,6 +60,11 @@ const StyledLabel = styled.Text`
       ? props.theme.typography.fontWeights.regular
       : props.theme.typography.fontWeights.extrabold};
 `;
+const SelectedLabelView = styled.View`
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+`;
 
 export {
   DropDownStyle,
@@ -70,4 +75,5 @@ export {
   Separator,
   FlatList,
   StyledLabel,
+  SelectedLabelView,
 };

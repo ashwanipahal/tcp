@@ -74,4 +74,7 @@ describe('#Added to bag Selectors', () => {
       showModal: undefined,
     });
   });
+  it('#getCurrentOrderId', () => {
+    expect(BAGPAGE_SELECTORS.getCurrentOrderId(state)).toEqual(0);
+  });
 });

@@ -46,6 +46,7 @@ import PickupModalReducer from '@tcp/core/src/components/common/organisms/Pickup
 import RecommendationsReducer from '@tcp/core/src/components/common/molecules/Recommendations/container/Recommendations.reducer';
 import SearchBarReducer from '@tcp/web/src/components/features/content/Header/molecules/SearchBar/SearchBar.reducer';
 import StoreLocatorReducer from '@tcp/core/src/components/features/storeLocator/container/StoreLocator.reducer';
+import SearchPageReducer from '@tcp/core/src/components/features/browse/SearchDetail/container/SearchDetail.reducer';
 import MyFavoriteStoreReducer from '@tcp/core/src/components/features/account/MyProfile/organism/MyFavoriteStore/container/MyFavoriteStore.reducer';
 
 import {
@@ -105,6 +106,7 @@ import {
   RECOMMENDATIONS_REDUCER_KEY,
   SEARCH_REDUCER_KEY,
   STORE_LOCATOR_REDUCER_KEY,
+  SLP_PAGE_REDUCER_KEY,
 } from '@tcp/core/src/constants/reducer.constants';
 import HeaderReducer from '@tcp/core/src/components/common/organisms/Header/container/Header.reducer';
 import FooterReducer from '@tcp/core/src/components/common/organisms/Footer/container/Footer.reducer';
@@ -195,4 +197,5 @@ export default combineReducers({
   [PICKUP_MODAL_REDUCER_KEY]: PickupModalReducer,
   [RECOMMENDATIONS_REDUCER_KEY]: RecommendationsReducer,
   [STORE_LOCATOR_REDUCER_KEY]: StoreLocatorReducer,
+  [SLP_PAGE_REDUCER_KEY]: SearchPageReducer,
 });
