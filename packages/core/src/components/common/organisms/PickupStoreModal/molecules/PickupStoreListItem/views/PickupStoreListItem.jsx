@@ -1,40 +1,90 @@
 import React from 'react';
 import { PropTypes } from 'prop-types';
-import { StoreTitle } from '../../../atoms/StoreSummaryComponents';
-import { STORE_SUMMARY_PROP_TYPES } from '../PickUpStoreModal.proptypes';
-import PickUpCTA from '../atoms/PickupCTA';
+import { STORE_SUMMARY_PROP_TYPES } from '../../../PickUpStoreModal.proptypes';
+import { Anchor, BodyCopy, Button, Image } from '../../../../../atoms';
+import PickupRadioBtn from '../../../atoms/PickupRadioButton';
 // import {ButtonTooltip} from 'views/components/tooltip/ButtonTooltip.jsx';
-import { parseDate } from '../../../../../utils/parseDate';
-import { getDateInformation, parseBoolean } from '../../../../../utils/badge.util';
-import cssClassName from '../../../../../utils/cssClassName';
+import { parseDate } from '../../../../../../../utils/parseDate';
+import { getDateInformation, parseBoolean } from '../../../../../../../utils/badge.util';
 import {
   STORE_DETAILS_LABELS,
   ITEM_AVAILABILITY_MESSAGES,
   BOPIS_ITEM_AVAILABILITY,
-} from '../PickUpStoreModal.constants';
-import { toTimeString, capitalize } from '../../../../../utils';
-import BodyCopy from '../../../atoms/BodyCopy';
+  PICKUP_CTA_LABELS,
+} from '../../../PickUpStoreModal.constants';
+import { toTimeString, capitalize, getIconPath } from '../../../../../../../utils';
+import withStyles from '../../../../../hoc/withStyles';
+import styles from '../styles/PickupStoreListItem.style';
+
+const displayStoreDetailsAnchor = () => {
+  return (
+    <Anchor noLink underline className="StoreDetailsAnchor">
+      <BodyCopy
+        fontFamily="secondary"
+        color="text.primary"
+        fontSize="fs12"
+        className="elem-pb-SM elem-pt-LRG"
+      >
+        {STORE_DETAILS_LABELS.STORE_DETAILS}
+      </BodyCopy>
+    </Anchor>
+  );
+};
+
+const displayFavoriteStore = (basicInfo, label) => {
+  return basicInfo.isDefault ? (
+    <div className="favStore elem-mt-SM elem-mb-SM">
+      <Image
+        alt="Favorite Store"
+        className="marker-icon elem-pr-XXXS"
+        src={getIconPath('marker-icon')}
+      />
+      <BodyCopy
+        fontFamily="secondary"
+        fontWeight="extrabold"
+        color="text.secondary"
+        fontSize="fs12"
+      >
+        {label}
+      </BodyCopy>
+    </div>
+  ) : null;
+};
 
 const displayStoreUnavailable = (showBopisCTA, showBossCTA) => {
   const { STORE_UNAVAILABLE } = STORE_DETAILS_LABELS;
   return !showBopisCTA && !showBossCTA ? (
-    <BodyCopy className="store-unavailable-text">{STORE_UNAVAILABLE}</BodyCopy>
+    <div className="storeUnavailable">
+      <BodyCopy fontFamily="secondary" color="text.primary" fontSize="fs14">
+        {STORE_UNAVAILABLE}
+      </BodyCopy>
+    </div>
   ) : null;
 };
 
 const displayStoreAddress = address => {
   return address && address.addressLine1 ? (
-    <BodyCopy className="store-address-one">{capitalize(address.addressLine1)}</BodyCopy>
+    <BodyCopy fontFamily="secondary" color="text.primary" fontSize="fs12">
+      {capitalize(address.addressLine1)}
+    </BodyCopy>
   ) : null;
 };
 
-const displayDistance = (isShowDistance, distance) => {
-  return isShowDistance && distance ? (
-    <BodyCopy className="store-distance">
+const displayDistance = distance => {
+  return distance ? (
+    <BodyCopy fontFamily="secondary" color="text.primary" fontSize="fs12">
       {distance}
       mi.
     </BodyCopy>
   ) : null;
+};
+
+const displayStoreTitle = basicInfo => {
+  return (
+    <BodyCopy fontFamily="secondary" fontWeight="semibold" fontSize="fs16" className="elem-mb-XXS">
+      {basicInfo.storeName}
+    </BodyCopy>
+  );
 };
 
 class PickupStoreListItem extends React.Component {
@@ -82,17 +132,20 @@ class PickupStoreListItem extends React.Component {
     /** store id that was selected */
     selectedStoreId: PropTypes.number.isRequired,
 
-    isGiftCard: PropTypes.bool.isRequired,
     isBopisCtaEnabled: PropTypes.bool.isRequired,
     isBossCtaEnabled: PropTypes.bool.isRequired,
     buttonLabel: PropTypes.string.isRequired,
-    isShowDistance: PropTypes.bool.isRequired,
-    updateCartItemStore: PropTypes.bool.isRequired,
+    className: PropTypes.string,
+  };
+
+  static defaultProps = {
+    className: '',
   };
 
   constructor(props) {
     super(props);
     this.handleStoreSelect = this.handleStoreSelect.bind(this);
+    this.handlePickupRadioBtn = this.handlePickupRadioBtn.bind(this);
   }
 
   getStoreCloseTime() {
@@ -131,6 +184,25 @@ class PickupStoreListItem extends React.Component {
     return onStoreSelect(store.basicInfo.id, isBoss);
   }
 
+  /**
+   * @method handlePickupRadioBtn
+   * @description this method sets the pickup mode for store
+   */
+  handlePickupRadioBtn() {
+    // TODO - Code for toggle of Radio Button
+    this.isBossSelected = true;
+  }
+
+  displayPickupCTA(showBopisCTA, showBossCTA, buttonLabel) {
+    return showBopisCTA || showBossCTA ? (
+      <div className="pickupCTAWrapper elem-mt-SM">
+        <Button buttonVariation="fixed-width" onClick={this.handleStoreSelect} fill="BLACK">
+          {buttonLabel}
+        </Button>
+      </div>
+    ) : null;
+  }
+
   displayStoreDetails({
     basicInfo,
     address,
@@ -142,61 +214,54 @@ class PickupStoreListItem extends React.Component {
     BossCtaProps,
     BopisCtaProps,
     buttonLabel,
-    isShowDistance,
     addToCartError,
-    updateCartItemStore,
-    isGiftCard,
   }) {
     const { FAVORITE_STORE } = STORE_DETAILS_LABELS;
     return (
-      <React.Fragment>
-        <div className="store-info">
-          {!!basicInfo.isDefault && (
-            <BodyCopy className="favorite-store__label">{FAVORITE_STORE}</BodyCopy>
-          )}
-          <StoreTitle basicInfo={basicInfo} />
-          {displayDistance(isShowDistance, distance)}
-          {displayStoreAddress(address)}
+      <div className="elem-mt-XXS storeListItemWrapper">
+        <div className="storeInfoWrapper">
+          {displayFavoriteStore(basicInfo, FAVORITE_STORE)}
+          <div className="storeAddressWrapper">
+            {displayStoreTitle(basicInfo)}
+            {displayDistance(distance)}
+            {displayStoreAddress(address)}
+            {displayStoreDetailsAnchor()}
+          </div>
         </div>
-        <div className="store-actions">
+        <div colSize={{ large: 7, medium: 5, small: 3.2 }} className="pickupButtonsWrapper">
           {showBossCTA && (
             <React.Fragment>
-              <PickUpCTA
+              <PickupRadioBtn
+                className="PickupRadioBtn"
+                radioGroupName="PICKUP-BTN"
                 isSelected={isBossSelected}
-                isBoss
-                {...BossCtaProps}
-                handleClick={this.handleStoreSelect}
-                storeId={basicInfo.id}
-                buttonLabel={buttonLabel}
-                updateCartItemStore={updateCartItemStore}
-                isGiftCard={isGiftCard}
+                isBossPickupButton
+                handleClick={this.handlePickupRadioBtn}
+                BossCtaProps={BossCtaProps}
               />
-              {addToCartError && isBossSelected && (
-                <span className="pickup-error">{addToCartError}</span>
-              )}
+              {addToCartError && isBossSelected && <BodyCopy>{addToCartError}</BodyCopy>}
             </React.Fragment>
+          )}
+          {showBossCTA && showBopisCTA && (
+            <div className="hide-on-mobile elem-mt-SM pickupBtnDivider" />
           )}
           {showBopisCTA && (
             <React.Fragment>
-              <PickUpCTA
+              <PickupRadioBtn
+                className="PickupRadioBtn"
+                radioGroupName="PICKUP-BTN"
                 isSelected={isBopisSelected}
-                isBopis
-                {...BopisCtaProps}
-                handleClick={this.handleStoreSelect}
-                storeId={basicInfo.id}
-                buttonLabel={buttonLabel}
-                updateCartItemStore={updateCartItemStore}
-                isGiftCard={isGiftCard}
+                BopisCtaProps={BopisCtaProps}
+                handleClick={this.handlePickupRadioBtn}
               />
-              {addToCartError && isBopisSelected && (
-                <span className="pickup-error">{addToCartError}</span>
-              )}
+              {addToCartError && isBopisSelected && <BodyCopy>{addToCartError}</BodyCopy>}
             </React.Fragment>
           )}
 
+          {this.displayPickupCTA(showBopisCTA, showBossCTA, buttonLabel)}
           {displayStoreUnavailable(showBopisCTA, showBossCTA)}
         </div>
-      </React.Fragment>
+      </div>
     );
   }
 
@@ -219,60 +284,53 @@ class PickupStoreListItem extends React.Component {
       isBopisCtaEnabled,
       isBossCtaEnabled,
       buttonLabel,
-      isShowDistance,
-      updateCartItemStore,
-      isGiftCard,
+      className,
     } = this.props;
-    // 'selected' class is removed for avoiding extra stylings for favorite store items
-    const className = cssClassName('bopis-store-item-info ', {
-      'favorite-store': basicInfo.isDefault,
-    });
+
     const BopisCtaProps = {
-      status: ITEM_AVAILABILITY_MESSAGES[status],
-      ...getDateInformation(),
+      buttonLabel: PICKUP_CTA_LABELS.bopis,
+      status:
+        status === BOPIS_ITEM_AVAILABILITY.LIMITED ? ITEM_AVAILABILITY_MESSAGES.LIMITED : null,
+      pickupDate: { ...getDateInformation() },
     };
     const BossCtaProps = {
+      buttonLabel: PICKUP_CTA_LABELS.boss,
+      pickupLabel: ITEM_AVAILABILITY_MESSAGES.GET_IT_BY,
       startDate: { ...getDateInformation(storeBossInfo.startDate, true) },
       endDate: { ...getDateInformation(storeBossInfo.endDate, true) },
     };
-    const tooltipTarget = <BodyCopy className="store-details-link">Store Details</BodyCopy>;
     // checking if there is sameStore then both CTAs should be disabled
     const pickupTypeBOPIS = !sameStore ? pickupType.isStoreBopisSelected : true;
     const pickupTypeBOSS = !sameStore ? pickupType.isStoreBossSelected : true;
 
-    const showBopisCTA = isBopisAvailable && pickupTypeBOPIS && isBopisCtaEnabled;
+    const showBopisCTA = parseBoolean(isBopisAvailable) && pickupTypeBOPIS && isBopisCtaEnabled;
     const showBossCTA = parseBoolean(isBossAvailable) && pickupTypeBOSS && isBossCtaEnabled;
     const { storeClosingTimeToday, storeClosingTimeTomorrow } = this.getStoreCloseTime();
 
     return (
-      <React.Fragment>
-        <div className={className} itemScope itemType="http://schema.org/ClothingStore">
-          {this.displayStoreDetails({
-            basicInfo,
-            address: basicInfo.address,
-            distance,
-            tooltipTarget,
-            storeClosingTimeToday,
-            storeClosingTimeTomorrow,
-            isBossAvailable,
-            pickupTypeBOSS,
-            isBopisSelected,
-            isBossSelected,
-            BossCtaProps,
-            BopisCtaProps,
-            showBopisCTA,
-            showBossCTA,
-            buttonLabel,
-            isShowDistance,
-            addToCartError,
-            selectedStoreId,
-            updateCartItemStore,
-            isGiftCard,
-          })}
-        </div>
-      </React.Fragment>
+      <div className={className}>
+        {this.displayStoreDetails({
+          basicInfo,
+          address: basicInfo.address,
+          distance,
+          storeClosingTimeToday,
+          storeClosingTimeTomorrow,
+          isBossAvailable,
+          pickupTypeBOSS,
+          isBopisSelected,
+          isBossSelected,
+          BossCtaProps,
+          BopisCtaProps,
+          showBopisCTA,
+          showBossCTA,
+          buttonLabel,
+          addToCartError,
+          selectedStoreId,
+        })}
+      </div>
     );
   }
 }
 
-export default PickupStoreListItem;
+export default withStyles(PickupStoreListItem, styles);
+export { PickupStoreListItem as PickupStoreListItemVanilla };

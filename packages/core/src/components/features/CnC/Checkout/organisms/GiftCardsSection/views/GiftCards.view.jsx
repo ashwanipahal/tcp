@@ -18,7 +18,7 @@ const GiftCardSectionHeading = (labels, isGiftCardApplied = false) => {
       fontSize="fs16"
       fontWeight="extrabold"
       data-locator="gift-cards"
-      className="elem-mt-LRG"
+      className="elem-mt-MED"
     >
       {getLabelValue(
         labels,

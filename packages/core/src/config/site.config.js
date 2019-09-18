@@ -12,8 +12,11 @@ export const DEFAULT_GLOBAL_LABEL_TTL = {
   CACHE_EXP_TIME: 10 * 60,
 }; // ttl for xappConfig is 10 mins by default, refer: https://redis.io/commands/set
 
+export const DEFAULT_TOAST_ERROR_MESSAGE_TTL = 5000;
+
 export default {
   DEFAULT_REDUX_TTL_TIME,
   DEFAULT_XAPP_CONFIG_TTL,
   DEFAULT_GLOBAL_LABEL_TTL,
+  DEFAULT_TOAST_ERROR_MESSAGE_TTL,
 };
