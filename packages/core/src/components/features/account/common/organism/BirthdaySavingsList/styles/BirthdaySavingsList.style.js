@@ -1,6 +1,8 @@
 import { css } from 'styled-components';
 
 const styles = css`
+  position: relative;
+
   @media ${props => props.theme.mediaQuery.medium} {
     .cancelCta {
       order: 1;
