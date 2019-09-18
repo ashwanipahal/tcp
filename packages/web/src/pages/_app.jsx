@@ -22,7 +22,6 @@ import { configureStore } from '../reduxStore';
 import ReactAxe from '../utils/react-axe';
 import CHECKOUT_STAGES from './App.constants';
 import { createDataLayer } from '../constants/analytics';
-import Script from '../components/common/atoms/Script';
 import RenderPerf from '../components/common/molecules/RenderPerf';
 import RouteTracker from '../components/common/atoms/RouteTracker';
 
@@ -31,7 +30,7 @@ import constants from '../constants';
 
 // Analytics script injection
 function AnalyticsScript() {
-  return <Script src={process.env.ANALYTICS_SCRIPT_URL} />;
+  return <script src={process.env.ANALYTICS_SCRIPT_URL} />;
 }
 class TCPWebApp extends App {
   constructor(props) {
@@ -40,9 +39,8 @@ class TCPWebApp extends App {
   }
 
   static async getInitialProps({ Component, ctx }) {
-    const compProps = TCPWebApp.loadComponentData(Component, ctx, {});
+    const compProps = await TCPWebApp.loadComponentData(Component, ctx, {});
     const pageProps = TCPWebApp.loadGlobalData(Component, ctx, compProps);
-
     return {
       pageProps,
     };

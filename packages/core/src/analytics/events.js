@@ -34,6 +34,7 @@ export function trackPageView(eventDef = EventDefinition) {
     const { name } = eventDef(...args);
     return TrackingEvent({
       hitType: 'pageView',
+      eventName: 'trackPageView',
       name,
       // TODO: Fill in rest of payload
     });
@@ -45,6 +46,7 @@ export function trackClick(eventDef = EventDefinition) {
     const { name } = eventDef(...args);
     return TrackingEvent({
       hitType: 'click',
+      eventName: 'trackLinkEvent',
       name,
       // TODO: Fill in rest of payload
     });
