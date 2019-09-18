@@ -13,8 +13,8 @@ import { getLocator } from '../../../../../../../utils';
 import AppliedFiltersList from '../../AppliedFiltersList';
 import { FACETS_FIELD_KEY } from '../../../../../../../services/abstractors/productListing/productListing.utils';
 import SortSelector from '../../SortSelector';
-import config from '../../SortSelector/SortSelector.config';
 import { DESCRIPTION_FILTER } from '../../../container/ProductListing.constants';
+import getSortOptions from '../../SortSelector/views/Sort.util';
 
 /**
  * @function getColorFilterOptionsMap This handles to render the desktop filter fields of color
@@ -296,8 +296,12 @@ class ProductListingFiltersForm extends React.Component {
       className,
       initialValues,
       onSubmit,
+      sortLabels,
     } = this.props;
     const filterKeys = Object.keys(filtersMaps);
+
+    const sortOptions = getSortOptions(sortLabels);
+
     return (
       <div className="filter-and-sort-form-container">
         {/* {totalProductsCount > 0 && <ProductListingCount currentSearchTerm={currentSearchTerm} isMobile={false} totalProductsCount={totalProductsCount} isShowAllEnabled={false} />} NOTE: FPO isShowAllEnabled */}
@@ -324,7 +328,7 @@ class ProductListingFiltersForm extends React.Component {
               <div className="sort-selector-wrapper">
                 <SortSelector
                   isMobile={false}
-                  sortSelectOptions={getSortCustomOptionsMap(config)}
+                  sortSelectOptions={getSortCustomOptionsMap(sortOptions)}
                   onChange={handleSubmit(this.handleSubmitOnChange)}
                 />
               </div>
@@ -338,6 +342,7 @@ class ProductListingFiltersForm extends React.Component {
               removeAllFilters={this.handleRemoveAllFilters}
               className={className}
               labels={labels}
+              sortLabels={sortLabels}
             />
           )}
         </form>
@@ -353,6 +358,7 @@ class ProductListingFiltersForm extends React.Component {
             handleImmediateSubmit={this.handleImmediateSubmit}
             removeAllFilters={this.handleRemoveAllFilters}
             handleSubmitOnChange={this.handleSubmitOnChange}
+            sortLabels={sortLabels}
           />
         </div>
         {/* {submitting && <Spinner className="loading-more-product">Updating...</Spinner>} */}
@@ -432,6 +438,7 @@ ProductListingFiltersForm.propTypes = {
   onSubmit: PropTypes.func.isRequired,
   getProducts: PropTypes.func.isRequired,
   change: PropTypes.func,
+  sortLabels: PropTypes.arrayOf(PropTypes.shape({})),
 };
 
 ProductListingFiltersForm.defaultProps = {
@@ -444,6 +451,7 @@ ProductListingFiltersForm.defaultProps = {
   colorSeqMap: {},
   submitting: false,
   change: () => null,
+  sortLabels: [],
 };
 export default reduxForm({
   form: 'filter-form', // a unique identifier for this form
