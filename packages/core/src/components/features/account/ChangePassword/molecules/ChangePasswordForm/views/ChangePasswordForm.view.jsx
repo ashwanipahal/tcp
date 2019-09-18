@@ -14,7 +14,14 @@ import createValidateMethod from '../../../../../../../utils/formValidation/crea
 import getStandardConfig from '../../../../../../../utils/formValidation/validatorStandardConfig';
 import styles from '../styles/ChangePasswordForm.style';
 
-export const ChangePasswordForm = ({ className, labels, pristine, errorMessage, handleSubmit , changeErrorMessage }) => {
+export const ChangePasswordForm = ({
+  className,
+  labels,
+  pristine,
+  errorMessage,
+  handleSubmit,
+  changeErrorMessage,
+}) => {
   return (
     <form name="ChangePasswordForm" noValidate onSubmit={handleSubmit} className={className}>
       {errorMessage && changeErrorMessage && (
@@ -22,7 +29,7 @@ export const ChangePasswordForm = ({ className, labels, pristine, errorMessage, 
           className="elem-mt-MED"
           status="error"
           colSize={{ large: 12, medium: 8, small: 6 }}
-          message={labels[`lbl_changePassword_${errorMessage}`]}
+          message={`${changeErrorMessage}`}
         />
       )}
       <BodyCopy component="div" className="elem-mt-LRG">
@@ -132,6 +139,7 @@ ChangePasswordForm.propTypes = {
   errorMessage: PropTypes.string.isRequired,
   handleSubmit: PropTypes.func.isRequired,
   className: PropTypes.string,
+  changeErrorMessage: PropTypes.string.isRequired,
 };
 
 ChangePasswordForm.defaultProps = {

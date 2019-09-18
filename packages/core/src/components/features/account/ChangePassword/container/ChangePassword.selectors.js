@@ -25,15 +25,13 @@ export const getForgotpasswordLabels = createSelector(
   labels => labels && labels.login
 );
 
-
 export const getChangeErrorResponse = state => {
   return state[CHANGE_PASSWORD_REDUCER_KEY].get('error');
 };
 
-
 export const getChangeErrorMessage = createSelector(
   [getChangeErrorResponse, getChangePasswordLabels],
   (state, labels) => {
-    return getErrorSelector(state, labels, 'lbl_login_error');
+    return getErrorSelector(state, labels, 'lbl_changePassword');
   }
 );
