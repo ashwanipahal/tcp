@@ -1,5 +1,5 @@
 export default {
-  FORM_NAME: 'checkoutBillingPayment',
+  FORM_NAME: 'checkoutBilling',
   FETCH_MODULEX_CONTENT: 'FETCH_MODULEX_CONTENT_CREDIT',
   SET_MODULEX_CONTENT: 'SET_MODULEX_CONTENT_CREDIT',
   CREDIT_CARD_CVV_INFO_LABEL: 'cvv_info',
