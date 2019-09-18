@@ -27,10 +27,14 @@ export default css`
   .banner-top-variation,
   .banner-top-alt-variation,
   .banner-bottom-variation {
+    .promo-banner-header {
+      display: none;
+    }
     .image-container {
       height: 295px;
     }
   }
+
   .banner-top-variation,
   .banner-top-alt-variation {
     .promo-banner {
