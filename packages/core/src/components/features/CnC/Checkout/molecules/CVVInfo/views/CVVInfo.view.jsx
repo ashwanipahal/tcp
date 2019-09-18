@@ -22,7 +22,7 @@ const getCvvInfo = ({ cvvCodeRichText }) => {
       message={getCVVInfoRichText({ cvvCodeRichText })}
       aligned="right"
     >
-      <Image height="10" width="10" src={getIconPath('info-icon')} />
+      <Image height="15" width="15" src={getIconPath('info-icon')} />
     </ReactTooltip>
   );
 };

@@ -1,8 +1,6 @@
 import React from 'react';
 import { View, ScrollView } from 'react-native';
 import PropTypes from 'prop-types';
-import { ParentContainer } from '@tcp/core/src/components/features/account/AddressBook/styles/AddressBook.style';
-import withStyles from '@tcp/core/src/components/common/hoc/withStyles.native';
 import CONSTANTS from '../../AddressVerification/AddressVerification.constants';
 import AddressVerification from '../../AddressVerification/container/AddressVerification.container';
 import AddressFormComponent from '../../AddressForm/AddressForm';
@@ -99,6 +97,5 @@ AddressBook.defaultProps = {
   verificationResult: '',
 };
 
-export default withStyles(AddressBook, ParentContainer);
-
+export default AddressBook;
 export { AddressBook as AddressBookVanilla };
