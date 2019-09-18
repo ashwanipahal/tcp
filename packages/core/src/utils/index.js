@@ -53,6 +53,7 @@ export {
   toTimeString,
   getPromotionalMessage,
   getBirthDateOptionMap,
+  childOptionsMap,
   generateUniqueKeyUsingLabel,
   getErrorSelector,
   formatDate,

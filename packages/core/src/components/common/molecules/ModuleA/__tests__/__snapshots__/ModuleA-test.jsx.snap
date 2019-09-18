@@ -71,13 +71,11 @@ exports[`ModuleA component should render Gymboree variant correctly 1`] = `
             alt=""
             data-locator="moduleA_image_0"
             imgConfigs={
-              Object {
-                "crops": Array [
-                  "t_mod_A_img_m",
-                  "t_mod_A_img_t",
-                  "t_mod_A_img_d",
-                ],
-              }
+              Array [
+                "t_mod_A_img_m",
+                "t_mod_A_img_t",
+                "t_mod_A_img_d",
+              ]
             }
             imgData={
               Object {
@@ -191,13 +189,11 @@ exports[`ModuleA component should render Gymboree variant correctly 1`] = `
             alt=""
             data-locator="moduleA_image_1"
             imgConfigs={
-              Object {
-                "crops": Array [
-                  "t_mod_A_img_m",
-                  "t_mod_A_img_t",
-                  "t_mod_A_img_d",
-                ],
-              }
+              Array [
+                "t_mod_A_img_m",
+                "t_mod_A_img_t",
+                "t_mod_A_img_d",
+              ]
             }
             imgData={
               Object {
@@ -311,13 +307,11 @@ exports[`ModuleA component should render Gymboree variant correctly 1`] = `
             alt=""
             data-locator="moduleA_image_2"
             imgConfigs={
-              Object {
-                "crops": Array [
-                  "t_mod_A_img_m",
-                  "t_mod_A_img_t",
-                  "t_mod_A_img_d",
-                ],
-              }
+              Array [
+                "t_mod_A_img_m",
+                "t_mod_A_img_t",
+                "t_mod_A_img_d",
+              ]
             }
             imgData={
               Object {
@@ -431,13 +425,11 @@ exports[`ModuleA component should render Gymboree variant correctly 1`] = `
             alt=""
             data-locator="moduleA_image_3"
             imgConfigs={
-              Object {
-                "crops": Array [
-                  "t_mod_A_img_m",
-                  "t_mod_A_img_t",
-                  "t_mod_A_img_d",
-                ],
-              }
+              Array [
+                "t_mod_A_img_m",
+                "t_mod_A_img_t",
+                "t_mod_A_img_d",
+              ]
             }
             imgData={
               Object {
@@ -718,13 +710,11 @@ exports[`ModuleA component should render TCP or default variant correctly 1`] = 
             alt=""
             data-locator="moduleA_image_0"
             imgConfigs={
-              Object {
-                "crops": Array [
-                  "t_mod_A_img_m",
-                  "t_mod_A_img_t",
-                  "t_mod_A_img_d",
-                ],
-              }
+              Array [
+                "t_mod_A_img_m",
+                "t_mod_A_img_t",
+                "t_mod_A_img_d",
+              ]
             }
             imgData={
               Object {
@@ -838,13 +828,11 @@ exports[`ModuleA component should render TCP or default variant correctly 1`] = 
             alt=""
             data-locator="moduleA_image_1"
             imgConfigs={
-              Object {
-                "crops": Array [
-                  "t_mod_A_img_m",
-                  "t_mod_A_img_t",
-                  "t_mod_A_img_d",
-                ],
-              }
+              Array [
+                "t_mod_A_img_m",
+                "t_mod_A_img_t",
+                "t_mod_A_img_d",
+              ]
             }
             imgData={
               Object {
@@ -958,13 +946,11 @@ exports[`ModuleA component should render TCP or default variant correctly 1`] = 
             alt=""
             data-locator="moduleA_image_2"
             imgConfigs={
-              Object {
-                "crops": Array [
-                  "t_mod_A_img_m",
-                  "t_mod_A_img_t",
-                  "t_mod_A_img_d",
-                ],
-              }
+              Array [
+                "t_mod_A_img_m",
+                "t_mod_A_img_t",
+                "t_mod_A_img_d",
+              ]
             }
             imgData={
               Object {
@@ -1078,13 +1064,11 @@ exports[`ModuleA component should render TCP or default variant correctly 1`] = 
             alt=""
             data-locator="moduleA_image_3"
             imgConfigs={
-              Object {
-                "crops": Array [
-                  "t_mod_A_img_m",
-                  "t_mod_A_img_t",
-                  "t_mod_A_img_d",
-                ],
-              }
+              Array [
+                "t_mod_A_img_m",
+                "t_mod_A_img_t",
+                "t_mod_A_img_d",
+              ]
             }
             imgData={
               Object {
