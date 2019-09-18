@@ -34,6 +34,7 @@ export const getCouponsLabels = state => {
         lbl_couponlist_expiring: EXPIRING_SOON,
         lbl_coupon_couponValid: COUPON_VALIDITY = 'Validity',
         lbl_coupon_seeRedeemDates: SEE_REDEEM_DATES = 'See Redeem Dates',
+        lbl_coupon_collapsible_header: REWARDS_OFFERS_COLLAPSIBLE_HEADING = 'REWARDS & OFFERS',
       } = {},
     } = {},
   } = state.Labels;
@@ -64,6 +65,7 @@ export const getCouponsLabels = state => {
     EXPIRING_SOON,
     COUPON_VALIDITY,
     SEE_REDEEM_DATES,
+    REWARDS_OFFERS_COLLAPSIBLE_HEADING,
   };
 };
 

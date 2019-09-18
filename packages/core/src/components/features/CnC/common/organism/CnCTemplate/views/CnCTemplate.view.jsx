@@ -43,7 +43,9 @@ const CnCTemplate = ({
               </div>
             )}
             <AirmilesBanner />
-            <CouponAndPromos showAccordian={showAccordian} />
+            <div className={`${showAccordian ? 'couponsWrapperAccordian' : ''}`}>
+              <CouponAndPromos showAccordian={showAccordian} />
+            </div>
           </Col>
         )}
       </Row>

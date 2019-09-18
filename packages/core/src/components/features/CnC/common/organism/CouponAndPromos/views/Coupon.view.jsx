@@ -35,11 +35,11 @@ class CouponView extends React.PureComponent<Props> {
     });
   };
 
-  getHeader = () => {
+  getHeader = ({ labels }) => {
     return (
       <div className="elem-mb-SM rewards-header">
         <BodyCopy fontFamily="secondary" fontSize="fs16" fontWeight="semibold" component="span">
-          REWARDS & OFFERS
+          {labels.REWARDS_OFFERS_COLLAPSIBLE_HEADING}
         </BodyCopy>
       </div>
     );
@@ -154,8 +154,9 @@ class CouponView extends React.PureComponent<Props> {
       helpStatus,
       selectedCoupon,
     });
+    const defaultOpen = availableCouponList && availableCouponList.size > 0;
     return (
-      <div className={`${className} coupon-form`}>
+      <div className={className}>
         <Col
           colSize={{
             large: 12,
@@ -170,6 +171,7 @@ class CouponView extends React.PureComponent<Props> {
             header={header}
             body={body}
             iconLocator="arrowicon"
+            defaultOpen={defaultOpen}
           />
         </Col>
         <div className={showAccordian ? 'hide-in-medium-down' : ''}>{body}</div>
