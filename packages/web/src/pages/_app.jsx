@@ -21,7 +21,7 @@ import Loader from '../components/features/content/Loader';
 import { configureStore } from '../reduxStore';
 import ReactAxe from '../utils/react-axe';
 import CHECKOUT_STAGES from './App.constants';
-import { createDataLayer } from '../constants/analytics';
+import createDataLayer from '../analytics/dataLayer';
 import RenderPerf from '../components/common/molecules/RenderPerf';
 import RouteTracker from '../components/common/atoms/RouteTracker';
 
@@ -81,8 +81,13 @@ class TCPWebApp extends App {
       isDevelopment: isDevelopment(),
     });
 
-    // This is where we create the window.trackingData reference
-    global.trackingData = createDataLayer(this.props.store);
+    /**
+     * This is where we assign window._dataLayer for analytics logic
+     */
+    if (process.env.ANALYTICS) {
+      // eslint-disable-next-line
+      global._dataLayer = createDataLayer(this.props.store);
+    }
   }
 
   componentDidUpdate() {
