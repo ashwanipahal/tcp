@@ -18,7 +18,7 @@ import withStyles from '../../../../../../common/hoc/withStyles';
 class CheckoutAddress extends React.Component {
   constructor(props) {
     super(props);
-    const { addNewCCState, selectedOnFileAddressId, userAddresses } = props;
+    const { addNewCCState, selectedOnFileAddressId, userAddresses, orderHasShipping } = props;
     this.state = {
       isAddNewAddress:
         (addNewCCState &&
@@ -26,6 +26,7 @@ class CheckoutAddress extends React.Component {
             selectedOnFileAddressId &&
             this.getSelectedAddress(userAddresses, selectedOnFileAddressId)
           )) ||
+        (!orderHasShipping && !this.getSelectedAddress(userAddresses, selectedOnFileAddressId)) ||
         false,
     };
   }
@@ -83,24 +84,30 @@ class CheckoutAddress extends React.Component {
 
   getAddressFields = () => {
     const { addressLabels, dispatch, isGuest, formName } = this.props;
+    return (
+      <FormSection name="address">
+        <AddressFields
+          addressFormLabels={addressLabels.addressFormLabels}
+          showDefaultCheckbox={false}
+          formName={formName}
+          formSection="address"
+          variation="primary"
+          dispatch={dispatch}
+          isGuest={isGuest}
+          showPhoneNumber={false}
+          grayTextBox
+          className="elem-mb-LRG"
+        />
+      </FormSection>
+    );
+  };
+
+  getAddressForm = () => {
     const { isAddNewAddress } = this.state;
     return (
       <>
         {isAddNewAddress && this.getAddressDropDown()}
-        <FormSection name="address">
-          <AddressFields
-            addressFormLabels={addressLabels.addressFormLabels}
-            showDefaultCheckbox={false}
-            formName={formName}
-            formSection="address"
-            variation="primary"
-            dispatch={dispatch}
-            isGuest={isGuest}
-            showPhoneNumber={false}
-            grayTextBox
-            className="elem-mb-LRG"
-          />
-        </FormSection>
+        {this.getAddressFields()}
       </>
     );
   };
@@ -117,23 +124,27 @@ class CheckoutAddress extends React.Component {
         >
           {getLabelValue(labels, 'lbl_billing_billingAddress', 'billing', 'checkout')}
         </Heading>
-        <Field
-          showDefaultCheckbox={false}
-          component={InputCheckbox}
-          name="sameAsShipping"
-          className="elem-mb-LRG"
-          onChange={this.onSameAsShippingChange}
-        >
-          <BodyCopy fontSize="fs16" fontFamily="secondary">
-            {getLabelValue(labels, 'lbl_billing_sameAsShipping', 'billing', 'checkout')}
-          </BodyCopy>
-        </Field>
+        <Row fullBleed>
+          <Col colSize={{ large: 6, medium: 5, small: 6 }}>
+            <Field
+              showDefaultCheckbox={false}
+              component={InputCheckbox}
+              name="sameAsShipping"
+              className="elem-mb-LRG"
+              onChange={this.onSameAsShippingChange}
+            >
+              <BodyCopy fontSize="fs16" fontFamily="secondary">
+                {getLabelValue(labels, 'lbl_billing_sameAsShipping', 'billing', 'checkout')}
+              </BodyCopy>
+            </Field>
+          </Col>
+        </Row>
         {this.getAddressSection()}
       </>
     );
   };
 
-  getAddressOptions = () => {
+  getAddressOptions = ({ selectedAddress }) => {
     const { userAddresses, labels } = this.props;
     const { isAddNewAddress } = this.state;
     let addressOptions =
@@ -181,7 +192,7 @@ class CheckoutAddress extends React.Component {
             buttonVariation="variable-width"
             fill="BLACK"
             onClick={this.toggleAddNewAddressMode}
-            disabled={isAddNewAddress}
+            disabled={isAddNewAddress || !selectedAddress}
           >
             {getLabelValue(labels, 'lbl_billing_addNewAddress', 'billing', 'checkout')}
           </Button>
@@ -199,6 +210,7 @@ class CheckoutAddress extends React.Component {
 
   getAddressDropDown = () => {
     const { userAddresses, selectedOnFileAddressId } = this.props;
+    const selectedAddress = this.getSelectedAddress(userAddresses, selectedOnFileAddressId);
     return (
       userAddresses &&
       userAddresses.size > 0 && (
@@ -211,16 +223,17 @@ class CheckoutAddress extends React.Component {
                 id="onFileAddressId"
                 component={AddressDropdown}
                 dataLocator="shipping-address"
-                options={this.getAddressOptions()}
+                options={this.getAddressOptions({ selectedAddress })}
                 onChange={this.onAddressDropDownChange}
                 customSelectClassName="billing-address-dropDown"
               />
             </Col>
           </Row>
+
           <Address
             showCountry={false}
             showPhone={false}
-            address={this.getSelectedAddress(userAddresses, selectedOnFileAddressId)}
+            address={selectedAddress}
             className="address elem-mb-XXXL"
           />
         </>
@@ -233,8 +246,8 @@ class CheckoutAddress extends React.Component {
     const { isAddNewAddress } = this.state;
     return (
       <>
-        {(userAddresses && userAddresses.size === 0) || isAddNewAddress
-          ? this.getAddressFields()
+        {(userAddresses && userAddresses.size === 0) || isAddNewAddress || !userAddresses
+          ? this.getAddressForm()
           : this.getAddressDropDown()}
       </>
     );

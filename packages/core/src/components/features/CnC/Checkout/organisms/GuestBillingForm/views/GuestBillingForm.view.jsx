@@ -111,6 +111,7 @@ class GuestBillingForm extends React.Component {
                 labels={labels}
                 formName="checkoutBilling"
                 isExpirationRequired={isExpirationRequired}
+                isGuest={isGuest}
               />
               <CheckoutBillingAddress
                 isGuest={isGuest}

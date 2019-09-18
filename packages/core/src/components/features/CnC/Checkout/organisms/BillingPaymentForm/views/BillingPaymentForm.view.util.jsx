@@ -65,7 +65,14 @@ const getCreditCardList = ({ cardList }) =>
       card.ccType !== constants.ACCEPTED_CREDIT_CARDS.VENMO
   );
 
-const getCardOptions = ({ creditCardList, labels, onFileCardKey, addNewCCState }) => {
+const getCardOptions = ({
+  creditCardList,
+  labels,
+  onFileCardKey,
+  addNewCCState,
+  addNewCC,
+  selectedCard,
+}) => {
   let cardOptions = creditCardList.map(card => ({
     value: card.creditCardId,
     title: `${labels.lbl_billing_creditCardEnd}${card.accountNo.slice(-4)} ${
@@ -91,8 +98,8 @@ const getCardOptions = ({ creditCardList, labels, onFileCardKey, addNewCCState }
         fullWidth
         buttonVariation="variable-width"
         fill="BLACK"
-        onClick={this.onAddNewCCClick}
-        disabled={addNewCCState}
+        onClick={addNewCC}
+        disabled={addNewCCState || !selectedCard}
       >
         {labels.lbl_billing_addCreditBtn}
       </Button>

@@ -22,15 +22,15 @@ const creditCardProps = {
       medium: 3,
       large: 2,
     },
+    ignoreGutter: {
+      small: false,
+    },
   },
   expYearProps: {
     colSize: {
       small: 2,
       medium: 3,
       large: 2,
-    },
-    ignoreGutter: {
-      small: false,
     },
   },
   cvvProps: {

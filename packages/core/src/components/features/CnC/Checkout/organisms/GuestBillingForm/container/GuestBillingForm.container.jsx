@@ -11,6 +11,7 @@ import {
   getSameAsShippingValue,
 } from './GuestBillingForm.selectors';
 import { submitBillingSection } from '../../../container/Checkout.action';
+import CreditCardSelector from '../../BillingPaymentForm/container/CreditCard.selectors';
 
 class GuestBillingContainer extends React.Component {
   submitBillingData = data => {
@@ -98,14 +99,16 @@ class GuestBillingContainer extends React.Component {
   };
 
   render() {
-    const { billingData, orderHasShipping } = this.props;
+    const { billingData, orderHasShipping, syncErrors, shippingOnFileAddressKey } = this.props;
     let cardNumber;
     let cardType;
     let expMonth;
     let expYear;
+    let billingOnFileAddressKey;
     if (billingData && billingData.billing) {
       ({
         billing: { cardNumber, cardType, expMonth, expYear },
+        address: { onFileAddressKey: billingOnFileAddressKey },
       } = billingData);
     }
     return (
@@ -113,7 +116,9 @@ class GuestBillingContainer extends React.Component {
         {...this.props}
         initialValues={{
           paymentMethodId: CONSTANTS.PAYMENT_METHOD_CREDIT_CARD,
-          sameAsShipping: orderHasShipping && isEmpty(billingData),
+          sameAsShipping:
+            orderHasShipping &&
+            (isEmpty(billingData) || billingOnFileAddressKey === shippingOnFileAddressKey),
           address: this.getAddressInitialValues(),
           cardNumber,
           cardType,
@@ -121,6 +126,7 @@ class GuestBillingContainer extends React.Component {
           expYear,
         }}
         onSubmit={this.submitBillingData}
+        syncErrorsObj={syncErrors}
       />
     );
   }
@@ -132,6 +138,7 @@ export const mapStateToProps = state => {
     syncErrors: getSyncError(state),
     paymentMethodId: getPaymentMethodId(state),
     isSameAsShippingChecked: getSameAsShippingValue(state),
+    shippingOnFileAddressKey: CreditCardSelector.getShippingOnFileAddressKey(state),
   };
 };
 
@@ -154,6 +161,7 @@ GuestBillingContainer.propTypes = {
   billingData: PropTypes.shape({}),
   orderHasShipping: PropTypes.bool,
   submitBilling: PropTypes.func.isRequired,
+  shippingOnFileAddressKey: PropTypes.string,
 };
 
 GuestBillingContainer.defaultProps = {
@@ -166,6 +174,7 @@ GuestBillingContainer.defaultProps = {
   isSameAsShippingChecked: true,
   billingData: {},
   orderHasShipping: true,
+  shippingOnFileAddressKey: null,
 };
 
 export default connect(

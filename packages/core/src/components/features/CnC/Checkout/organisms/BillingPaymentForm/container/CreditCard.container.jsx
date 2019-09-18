@@ -27,11 +27,33 @@ export class GiftCardsContainer extends React.PureComponent<Props> {
     return billingOnFileAddressId || shippingOnFileAddressId;
   };
 
+  showAddressPrefilled = () => {
+    const { userAddresses, orderHasShipping, billingData } = this.props;
+    if (!orderHasShipping && this.isBillingIfoPresent()) {
+      const {
+        address: { onFileAddressId },
+      } = billingData;
+      if (userAddresses && userAddresses.size > 0) {
+        const selectedAddress = userAddresses.find(add => add.addressId === onFileAddressId);
+        if (!selectedAddress) return true;
+      } else return true;
+    }
+    return false;
+  };
+
+  isBillingIfoPresent = () => {
+    const { billingData, shippingAddress, orderHasShipping } = this.props;
+    return (
+      billingData.address &&
+      !isEmpty(billingData) &&
+      (!isEmpty(shippingAddress) || !orderHasShipping)
+    );
+  };
+
   getInitialValues = cardList => {
     const {
       billingData,
       orderHasShipping,
-      shippingAddress,
       shippingOnFileAddressKey,
       shippingOnFileAddressId,
     } = this.props;
@@ -43,19 +65,44 @@ export class GiftCardsContainer extends React.PureComponent<Props> {
     let billingOnFileAddressId;
     let cardType;
     let onFileCardId;
-    if (
-      billingData.address &&
-      !isEmpty(billingData) &&
-      (!isEmpty(shippingAddress) || !orderHasShipping)
-    ) {
+    let firstName;
+    let lastName;
+    let addressLine1;
+    let addressLine2;
+    let city;
+    let state;
+    let zipCode;
+    let country;
+    let address;
+    if (this.isBillingIfoPresent()) {
       ({
         address: {
           onFileAddressKey: billingOnFileAddressKey,
           onFileAddressId: billingOnFileAddressId,
+          firstName,
+          lastName,
+          addressLine1,
+          addressLine2,
+          city,
+          state,
+          zipCode,
+          country,
         },
         billing: { cardNumber, cvvCode, expMonth, expYear, cardType },
         onFileCardId,
       } = billingData);
+    }
+    if (this.showAddressPrefilled()) {
+      address = {
+        firstName,
+        lastName,
+        addressLine1,
+        addressLine2,
+        city,
+        state,
+        zipCode,
+        country,
+      };
     }
     if (!cardList) {
       return {
@@ -74,11 +121,13 @@ export class GiftCardsContainer extends React.PureComponent<Props> {
           billingOnFileAddressId,
           shippingOnFileAddressId,
         }),
+        address,
       };
     }
 
     return {
-      onFileCardKey: onFileCardId,
+      onFileCardKey:
+        onFileCardId || (cardList.size > 0 && cardList.get(0) && cardList.get(0).creditCardId),
       paymentMethodId: constants.PAYMENT_METHOD_CREDIT_CARD,
       saveToAccount: true,
       sameAsShipping: orderHasShipping && billingOnFileAddressKey === shippingOnFileAddressKey,
@@ -88,6 +137,7 @@ export class GiftCardsContainer extends React.PureComponent<Props> {
       expYear,
       cardType,
       onFileAddressId: this.getOnFileAddressId({ billingOnFileAddressId, shippingOnFileAddressId }),
+      address,
     };
   };
 
