@@ -19,18 +19,18 @@ const MyFavoriteStore = ({
   favStoreZipcode,
   favStorePhone,
   className,
-  isMyReferences,
+  isMyPreferences,
 }) => {
   return (
     <MyProfileTile
       className={className}
       title={getLabelValue(labels, 'lbl_common_myFavoriteStore')}
-      ctaTitle={ctaTitleDefaultStore(labels, defaultStore, isMyReferences)}
+      ctaTitle={ctaTitleDefaultStore(labels, defaultStore, isMyPreferences)}
       ctaPath="/account/profile"
       ctaLink="/account?id=profile&subSection=change-password"
       dataLocator="myFavStoreLbl"
     >
-      {isMyReferences && (
+      {isMyPreferences && (
         <Row fullBleed>
           <Col
             colSize={{
@@ -133,7 +133,7 @@ MyFavoriteStore.propTypes = {
   favStorePhone: PropTypes.string,
   labels: PropTypes.shape({}).isRequired,
   className: PropTypes.string,
-  isMyReferences: PropTypes.bool,
+  isMyPreferences: PropTypes.bool,
 };
 
 MyFavoriteStore.defaultProps = {
@@ -145,7 +145,7 @@ MyFavoriteStore.defaultProps = {
   favStorePhone: '',
   favStoreAddress: '',
   className: '',
-  isMyReferences: false,
+  isMyPreferences: false,
 };
 
 export default withStyles(MyFavoriteStore, styles);
