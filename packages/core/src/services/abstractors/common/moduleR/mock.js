@@ -45,7 +45,7 @@ export default {
             },
             {
               text: '60 % OFF',
-              style: 'percentage_wrapped_xl_black',
+              style: 'percentage_all_wrapped_normal',
             },
           ],
         },

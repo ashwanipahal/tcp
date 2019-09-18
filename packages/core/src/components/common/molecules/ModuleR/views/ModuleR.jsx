@@ -6,7 +6,7 @@ import { Anchor, Button, Col, Row, Image } from '../../../atoms';
 import withStyles from '../../../hoc/withStyles';
 import { Grid, LinkText, PromoBanner } from '../..';
 import ProductTabList from '../../../organisms/ProductTabList';
-import { getLocator, redirectToPdp } from '../../../../../utils';
+import { getLocator, isClient, redirectToPdp } from '../../../../../utils';
 import { mediaQuery } from '../../../../../../styles/themes/TCP/mediaQuery';
 import moduleRStyle, { ImageGridCol } from '../styles/ModuleR.style';
 
@@ -59,23 +59,25 @@ class ModuleR extends React.PureComponent {
     const promoComponent = this.getPromoComponent();
     let productsList = selectedProductList;
 
-    if (promoBanner && bannerPosition === 'center') {
-      if (window.matchMedia(mediaQuery.smallMax).matches) {
-        productsList = productsList.slice(0, 8);
-        productsList.splice(4, 0, promoComponent);
+    if (isClient()) {
+      if (promoBanner && bannerPosition === 'center') {
+        if (window.matchMedia(mediaQuery.smallMax).matches) {
+          productsList = productsList.slice(0, 8);
+          productsList.splice(4, 0, promoComponent);
+        } else if (window.matchMedia(mediaQuery.mediumMax).matches) {
+          productsList = productsList.slice(0, 10);
+          productsList.splice(5, 0, promoComponent);
+        } else {
+          productsList = productsList.slice(0, 16);
+          productsList.splice(8, 0, promoComponent);
+        }
+      } else if (window.matchMedia(mediaQuery.smallMax).matches) {
+        productsList = productsList.slice(0, 9);
       } else if (window.matchMedia(mediaQuery.mediumMax).matches) {
-        productsList = productsList.slice(0, 10);
-        productsList.splice(5, 0, promoComponent);
+        productsList = productsList.slice(0, 12);
       } else {
-        productsList = productsList.slice(0, 16);
-        productsList.splice(8, 0, promoComponent);
+        productsList = productsList.slice(0, 18);
       }
-    } else if (window.matchMedia(mediaQuery.smallMax).matches) {
-      productsList = productsList.slice(0, 9);
-    } else if (window.matchMedia(mediaQuery.mediumMax).matches) {
-      productsList = productsList.slice(0, 12);
-    } else {
-      productsList = productsList.slice(0, 18);
     }
 
     return productsList;
