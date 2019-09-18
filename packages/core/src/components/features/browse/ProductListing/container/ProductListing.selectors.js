@@ -70,6 +70,10 @@ export const getProductsSelect = createSelector(
     products && products.get('loadedProductsPages') && products.get('loadedProductsPages')[0]
 );
 
+export const getLabels = state => {
+  return state.Labels.Browse && state.Labels.Browse.SLP;
+};
+
 export const getTotalProductsCount = createSelector(
   getProductListingState,
   products => products && products.get('totalProductsCount')

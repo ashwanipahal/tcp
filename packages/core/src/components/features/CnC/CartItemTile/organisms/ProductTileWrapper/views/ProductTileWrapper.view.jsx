@@ -100,6 +100,7 @@ class ProductTileWrapper extends React.PureComponent<props> {
       removeCartItem,
       isUserLoggedIn,
       isPlcc,
+      sflItemsCount,
     } = this.props;
     let isUnavailable;
     let isSoldOut;
@@ -132,6 +133,7 @@ class ProductTileWrapper extends React.PureComponent<props> {
             setSelectedProductTile={this.setSelectedProductTile}
             setSwipedElement={this.setSwipedElement}
             swipedElement={swipedElement}
+            sflItemsCount={sflItemsCount}
           />
         );
       });
@@ -167,6 +169,7 @@ ProductTileWrapper.propTypes = {
   isPlcc: PropTypes.bool.isRequired,
   pageView: PropTypes.string,
   bagLabels: PropTypes.shape(),
+  sflItemsCount: PropTypes.number.isRequired,
 };
 
 export default ProductTileWrapper;
