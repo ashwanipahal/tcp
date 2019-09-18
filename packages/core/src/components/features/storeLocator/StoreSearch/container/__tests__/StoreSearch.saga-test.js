@@ -4,7 +4,7 @@ import { fetchLocationStoresSaga } from '../StoreSearch.saga';
 import suggestedStores from '../__mocks__/suggestedStore';
 import { setStoresByCoordinates } from '../StoreSearch.actions';
 
-jest.mock('tcp/core/src/services/abstractors/common/storeLocator', () => ({
+jest.mock('@tcp/core/src/services/abstractors/common/storeLocator', () => ({
   getLocationStores: jest.fn(),
 }));
 
