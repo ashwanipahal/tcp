@@ -10,8 +10,6 @@ export const ItemWrapper = styled.View`
   min-height: 50px;
 `;
 
-export const ImageDescription = styled.View``;
-
 export const DescriptionWrapper = styled.View`
   flex-direction: row;
   align-items: center;
@@ -24,7 +22,6 @@ export const ProfileImageWrapper = styled.View`
 
 export const Title = styled(BodyCopy)`
   margin: 24px 0;
-  text-transform: uppercase;
 `;
 
 export const Image = styled.Image`
@@ -42,7 +39,7 @@ export const Divider = styled.View`
   flex: 1;
   margin: 0 15px;
   height: 1px;
-  background-color: #d8d8d8;
+  background-color: ${props => props.theme.colors.PRIMARY.LIGHTGRAY};
   margin-bottom: ${props => (props.marginBottom ? `${props.marginBottom}px` : 0)};
 `;
 
@@ -69,7 +66,6 @@ export default {
   ItemWrapper,
   Image,
   Title,
-  ImageDescription,
   ProfileImageWrapper,
   CaptionTextWrapper,
   Divider,

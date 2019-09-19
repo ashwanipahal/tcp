@@ -2,14 +2,13 @@
 import React from 'react';
 import { connect } from 'react-redux';
 import PropTypes from 'prop-types';
-import { FlatList } from 'react-native';
+import { FlatList, View } from 'react-native';
 import { Anchor, BodyCopy, Button } from '../../../atoms';
 import { getCandidData, getLabels } from '../../GetCandid/container/GetCandid.selectors';
 import {
   Image,
   ItemWrapper,
   Title,
-  ImageDescription,
   ProfileImageWrapper,
   CaptionTextWrapper,
   ShopLookWrapper,
@@ -186,10 +185,10 @@ class GetCandidGallery extends React.PureComponent {
           />
         </Touchable>
         {index === activeIndex && (
-          <ImageDescription>
+          <View>
             <DescriptionWrapper>
               <ProfileImageWrapper>
-                <Image source={{ uri: ProfilePicture }} width={30} height={66} />
+                <Image source={{ uri: ProfilePicture }} width={66} height={66} />
               </ProfileImageWrapper>
               <CaptionTextWrapper>
                 <BodyCopy
@@ -208,14 +207,14 @@ class GetCandidGallery extends React.PureComponent {
                 fontSize="fs20"
                 fontWeight="regular"
                 color="gray.900"
-                text={labels.titleShopThisLook}
+                text={labels.titleShopThisLook.toUpperCase()}
                 textAlign="center"
                 letterSpacing="ls222"
               />
               {this.renderShopThisLook(Tags.Items)}
               <Divider marginBottom={16} />
             </ShopLookWrapper>
-          </ImageDescription>
+          </View>
         )}
       </ItemWrapper>
     );

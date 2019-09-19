@@ -17,6 +17,7 @@ import {
   Touchable,
   Wrapper,
 } from '../styles/GetCandid.style.native';
+import { IMAGE_COUNT } from '../config';
 
 /**
  * @class GetCandid - display images shared by customers on Home Page
@@ -64,7 +65,7 @@ class GetCandid extends React.Component {
     const image = StandardResolution;
     return (
       <Touchable accessibilityRole="image">
-        <Anchor onPress={() => this.navigateToPage(index)}>
+        <Anchor onPress={() => this.navigateToGallery(index)}>
           <ImageGridItem
             host={LAZYLOAD_HOST_NAME.HOME}
             key={index.toString()}
@@ -79,10 +80,10 @@ class GetCandid extends React.Component {
   };
 
   /**
-   * @function navigateToPage function to navigate to
+   * @function navigateToGallery function to navigate to
    * Get Candid Gallery page.
    */
-  navigateToPage = index => {
+  navigateToGallery = index => {
     const { navigation, labels } = this.props;
     navigateToNestedRoute(navigation, 'HomeStack', 'GetCandidGallery', {
       activeIndex: index,
@@ -119,7 +120,7 @@ class GetCandid extends React.Component {
               <ImageWrapper>
                 <FlatList
                   numColumns={3}
-                  data={data.slice(0, 9)}
+                  data={data.slice(0, IMAGE_COUNT)}
                   keyExtractor={this.keyExtractor}
                   renderItem={this.renderItem}
                   initialNumToRender={6}
@@ -134,7 +135,7 @@ class GetCandid extends React.Component {
               dataLocator=""
               text={labels.btnSeeMore}
               visible
-              onPress={() => this.navigateToPage(8)}
+              onPress={() => this.navigateToGallery(IMAGE_COUNT - 1)}
             />
           </>
         )}
