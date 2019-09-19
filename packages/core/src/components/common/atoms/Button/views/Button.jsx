@@ -10,6 +10,7 @@ type Props = {
   className: string,
   ariaLabel: string,
   disabled: boolean,
+  active: boolean,
   fullWidth?: boolean,
   type?: string,
   dataLocator?: string,
@@ -42,6 +43,7 @@ const Button = ({
   type,
   customStyle,
   buttonVariation,
+  active,
   ...otherProps
 }: Props): Node => (
   <button
