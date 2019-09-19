@@ -10,7 +10,6 @@ import CouponForm from '../../../molecules/CouponForm';
 import styles from '../styles/Coupon.style';
 import CollapsibleContainer from '../../../../../../common/molecules/CollapsibleContainer';
 import ApplyNowModal from '../../../../../../common/molecules/ApplyNowPLCCModal';
-import { getLabelValue } from '../../../../../../../utils';
 
 class CouponView extends React.PureComponent<Props> {
   constructor(props) {
@@ -40,7 +39,7 @@ class CouponView extends React.PureComponent<Props> {
     return (
       <div className="elem-mb-SM rewards-header">
         <BodyCopy fontFamily="secondary" fontSize="fs16" fontWeight="semibold" component="span">
-          {getLabelValue(labels, 'lbl_coupon_collapsible_header', 'bagPage', 'checkout')}
+          {labels.couponCollapsibleHeader}
         </BodyCopy>
       </div>
     );

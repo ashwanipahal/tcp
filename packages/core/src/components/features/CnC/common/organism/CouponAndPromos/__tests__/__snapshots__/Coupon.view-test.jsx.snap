@@ -96,6 +96,7 @@ exports[`Coupon component should renders correctly when Coupon are not present 1
           <Connect(ApplyNowModalWrapper) />
         </div>
       }
+      className="undefined "
       defaultOpen={false}
       header={
         <div
@@ -277,6 +278,7 @@ exports[`Coupon component should renders correctly when Coupon are present 1`] =
           <Connect(ApplyNowModalWrapper) />
         </div>
       }
+      className="undefined "
       header={
         <div
           className="elem-mb-SM rewards-header"
