@@ -1,0 +1,58 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Earn Extra Points Tile app component  should render Earn Extra Points Tile app component Correctly 1`] = `
+<View>
+  <Styled(View)>
+    <Styled(BodyCopy)
+      component="div"
+      data-locator="earnExtraPointsHeading"
+      fontFamily="secondary"
+      fontSize="fs16"
+      fontWeight="extrabold"
+      text="Earn Extra Points"
+    />
+    <Styled(Anchor)
+      accessibilityLabel=""
+      anchorVariation="primary"
+      customStyle={Object {}}
+      data-locator="earnExtraPointsViewAll"
+      fontSizeVariation="medium"
+      locator=""
+      onPress={[Function]}
+      text="View All"
+      underline={true}
+      visible={false}
+    />
+  </Styled(View)>
+  <Styled(View)>
+    <View>
+      <WithTheme(SnapCarousel)
+        autoplay={false}
+        darkArrow={true}
+        data={
+          Array [
+            Object {
+              "activityCode": "AppDownload",
+              "activityTitle": "Earn 5 Points",
+              "description": "Download & Log in to our App",
+              "displayOrder": 1,
+              "iconImage": "/wcsstore/static/images/download-app.jpg",
+            },
+          ]
+        }
+        height={220}
+        options={
+          Object {
+            "enableSnap": false,
+            "loop": false,
+          }
+        }
+        renderItem={[Function]}
+        showDots={true}
+        variation="show-arrow"
+        width={720}
+      />
+    </View>
+  </Styled(View)>
+</View>
+`;
