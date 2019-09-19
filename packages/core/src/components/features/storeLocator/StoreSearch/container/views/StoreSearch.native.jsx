@@ -1,7 +1,7 @@
 import React from 'react';
 import { View } from 'react-native';
 import { PropTypes } from 'prop-types';
-import withStyles from '../../../../../../common/hoc/withStyles.native';
+import withStyles from '@tcp/core/src/components/common/hoc/withStyles.native';
 // import {
 //   Image,
 //   Button,
