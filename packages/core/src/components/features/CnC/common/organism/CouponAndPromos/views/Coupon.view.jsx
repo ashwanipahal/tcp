@@ -1,8 +1,8 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import withStyles from '@tcp/core/src/components/common/hoc/withStyles';
-import BodyCopy from '@tcp/core/src/components/common/atoms/BodyCopy';
-import Col from '@tcp/core/src/components/common/atoms/Col';
+import withStyles from '../../../../../../common/hoc/withStyles';
+import BodyCopy from '../../../../../../common/atoms/BodyCopy';
+import Col from '../../../../../../common/atoms/Col';
 import CouponListSection from '../../../../../../common/organisms/CouponListSection';
 import CouponDetailModal from './CouponDetailModal.view';
 import CouponHelpModal from './CouponHelpModal.view';
@@ -10,6 +10,7 @@ import CouponForm from '../../../molecules/CouponForm';
 import styles from '../styles/Coupon.style';
 import CollapsibleContainer from '../../../../../../common/molecules/CollapsibleContainer';
 import ApplyNowModal from '../../../../../../common/molecules/ApplyNowPLCCModal';
+import { getLabelValue } from '../../../../../../../utils';
 
 class CouponView extends React.PureComponent<Props> {
   constructor(props) {
@@ -39,7 +40,7 @@ class CouponView extends React.PureComponent<Props> {
     return (
       <div className="elem-mb-SM rewards-header">
         <BodyCopy fontFamily="secondary" fontSize="fs16" fontWeight="semibold" component="span">
-          {labels.REWARDS_OFFERS_COLLAPSIBLE_HEADING}
+          {getLabelValue(labels, 'lbl_coupon_collapsible_header', 'bagPage', 'checkout')}
         </BodyCopy>
       </div>
     );
@@ -167,7 +168,7 @@ class CouponView extends React.PureComponent<Props> {
           className={showAccordian ? 'hide-in-large-up' : 'hideAccordian'}
         >
           <CollapsibleContainer
-            className={className}
+            className={`${className} ${showAccordian ? 'couponsWrapperAccordian' : ''}`}
             header={header}
             body={body}
             iconLocator="arrowicon"

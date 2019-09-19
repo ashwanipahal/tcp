@@ -26,6 +26,18 @@ const styles = css`
   .rewards-header {
     text-align: left;
   }
+
+  .couponsWrapperAccordian {
+    .collapsible-header {
+      height: 60px;
+      background-color: ${props => props.theme.colorPalette.white};
+      padding-top: ${props => props.theme.spacing.ELEM_SPACING.MED};
+      padding-left: ${props => props.theme.spacing.ELEM_SPACING.SM};
+    }
+    .collapsible-icon {
+      right: ${props => props.theme.spacing.ELEM_SPACING.SM};
+    }
+  }
 `;
 
 export default styles;
