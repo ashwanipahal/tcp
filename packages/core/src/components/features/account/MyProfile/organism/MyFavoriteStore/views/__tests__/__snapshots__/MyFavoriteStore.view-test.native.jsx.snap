@@ -2,6 +2,7 @@
 
 exports[`MyFavoriteStore Component MyFavoriteStore should render correctly 1`] = `
 <MyProfileTile
+  birthdaySaving={true}
   className=""
   ctaLink="accountOverviewMobile"
   ctaTitle="lbl_common_updateFavoriteStore"

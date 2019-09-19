@@ -6,7 +6,32 @@ import { BodyCopyWithSpacing } from '@tcp/core/src/components/common/atoms/style
 import BirthdayCardComponent from '../../../molecule/BirthdayCard';
 import EmptyBirthdayCard from '../../../molecule/EmptyBirthdayCard';
 import constants from '../BirthdaySavingsList.constants';
-import WrapLayout from '../styles/BirthdaySavingsList.styles.native';
+import { WrapLayout, WrapItem } from '../styles/BirthdaySavingsList.styles.native';
+
+/**
+ * Functional component to render Birthday Saving Info Message
+ * @param {object} props
+ */
+export const InfoMessage = ({ labels }) => (
+  <BodyCopyWithSpacing
+    fontSize="fs14"
+    mobileFontFamily="secondary"
+    spacingStyles="margin-bottom-XXL margin-top-XXL"
+    text={labels.lbl_profile_birthday_saving_info}
+  />
+);
+
+InfoMessage.propTypes = {
+  labels: PropTypes.shape({
+    lbl_profile_birthday_saving_info: PropTypes.string,
+  }),
+};
+
+InfoMessage.defaultProps = {
+  labels: {
+    lbl_profile_birthday_saving_info: '',
+  },
+};
 
 /**
  * @function BirthdaySavingsList
@@ -24,18 +49,11 @@ class BirthdaySavingsList extends PureComponent {
 
       return (
         <View>
-          {isEditMode && (
-            <BodyCopyWithSpacing
-              fontSize="fs14"
-              mobileFontFamily="secondary"
-              spacingStyles="margin-bottom-XXL margin-top-XXL"
-              text={labels.lbl_profile_birthday_saving_info}
-            />
-          )}
+          {isEditMode && <InfoMessage labels={labels} />}
           <WrapLayout>
             {birthdays.map(birthday => {
               return (
-                <View>
+                <WrapItem>
                   {birthday ? (
                     <BirthdayCardComponent
                       name={birthday.get('name')}
@@ -48,14 +66,14 @@ class BirthdaySavingsList extends PureComponent {
                   ) : (
                     <EmptyBirthdayCard labels={labels} view={view} />
                   )}
-                </View>
+                </WrapItem>
               );
             })}
           </WrapLayout>
         </View>
       );
     }
-    return null;
+    return <InfoMessage labels={labels} />;
   }
 }
 

@@ -19,6 +19,7 @@ const BirthdaySaving = ({ labels, handleComponentChange, childrenBirthdays }) =>
       ctaTitle={ctaTitle}
       dataLocator="pi-addbirthdayinfo"
       handleComponentChange={handleComponentChange}
+      birthdaySaving={false}
     >
       <BirthdaySavingsList view="read" labels={labels} />
     </MyProfileTile>

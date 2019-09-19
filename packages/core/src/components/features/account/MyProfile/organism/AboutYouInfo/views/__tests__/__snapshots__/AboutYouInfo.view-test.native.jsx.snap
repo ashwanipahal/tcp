@@ -2,6 +2,7 @@
 
 exports[`AboutYouInfo should render correctly 1`] = `
 <MyProfileTile
+  birthdaySaving={true}
   ctaLink="accountOverviewMobile"
   ctaTitle="UPDATE INFO"
   dataLocator="moreaboutyou-updateinfo"
