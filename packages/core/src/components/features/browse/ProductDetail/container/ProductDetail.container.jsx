@@ -12,6 +12,7 @@ import {
   getRatingsProductId,
   getDefaultImage,
   getCurrentCurrency,
+  getCurrentProduct,
 } from './ProductDetail.selectors';
 
 class ProductListingContainer extends React.PureComponent {
@@ -43,6 +44,7 @@ class ProductListingContainer extends React.PureComponent {
       longDescription,
       ratingsProductId,
       defaultImage,
+      productInfo,
       currency,
       ...otherProps
     } = this.props;
@@ -55,6 +57,7 @@ class ProductListingContainer extends React.PureComponent {
         otherProps={otherProps}
         defaultImage={defaultImage}
         currency={currency}
+        productInfo={productInfo}
       />
     );
   }
@@ -69,6 +72,7 @@ function mapStateToProps(state) {
     ratingsProductId: getRatingsProductId(state),
     // This is just to check if the product is correct
     defaultImage: getDefaultImage(state),
+    productInfo: getCurrentProduct(state),
     currency: getCurrentCurrency(state),
   };
 }
@@ -84,6 +88,7 @@ function mapDispatchToProps(dispatch) {
 ProductListingContainer.propTypes = {
   productDetails: PropTypes.arrayOf(PropTypes.shape({})),
   getDetails: PropTypes.func.isRequired,
+  productInfo: PropTypes.arrayOf(PropTypes.shape({})),
   breadCrumbs: PropTypes.shape({}),
   longDescription: PropTypes.string,
   ratingsProductId: PropTypes.string,
@@ -98,6 +103,7 @@ ProductListingContainer.propTypes = {
 
 ProductListingContainer.defaultProps = {
   productDetails: [],
+  productInfo: {},
   breadCrumbs: null,
   longDescription: '',
   ratingsProductId: '',
