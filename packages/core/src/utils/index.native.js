@@ -35,9 +35,11 @@ export {
   isGymboree,
   getAddressFromPlace,
   formatAddress,
+  formatPhoneNumber,
   getLabelValue,
   capitalize,
   toTimeString,
   getPromotionalMessage,
   getBirthDateOptionMap,
+  calculateAge,
 } from './utils';
