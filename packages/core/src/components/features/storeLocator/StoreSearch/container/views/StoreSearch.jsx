@@ -121,19 +121,19 @@ export class StoreSearch extends PureComponent {
         asPath: '',
         to: '',
         label: viewMap,
-        className: '',
+        classValue: 'mapLink',
       },
       {
         asPath: '',
         to: '',
         label: allUSCAStores,
-        className: '',
+        classValue: '',
       },
       {
         asPath: '',
         to: '',
         label: internationalStores,
-        className: '',
+        classValue: '',
       },
     ];
 
@@ -217,8 +217,8 @@ export class StoreSearch extends PureComponent {
                       ))}
                     </ul>
                     <ul className="storeLinksList">
-                      {linksConfig.map(({ to, asPath, label }) => (
-                        <li key={label} className="storeLinks">
+                      {linksConfig.map(({ to, asPath, label, classValue }) => (
+                        <li key={label} className={`${classValue} storeLinks`}>
                           <Anchor asPath={asPath} className="" to={to}>
                             {label}
                           </Anchor>

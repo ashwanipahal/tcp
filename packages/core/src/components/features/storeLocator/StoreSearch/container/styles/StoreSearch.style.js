@@ -107,4 +107,14 @@ export default css`
       border-right: none;
     }
   }
+
+  @media ${props => props.theme.mediaQuery.large} {
+    .mapLink {
+      display: none;
+
+      & + .storeLinks {
+        padding-left: 0;
+      }
+    }
+  }
 `;
