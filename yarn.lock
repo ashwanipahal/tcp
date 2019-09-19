@@ -1119,6 +1119,11 @@
   resolved "https://registry.yarnpkg.com/@fabulas/astly/-/astly-0.0.3.tgz#389aeb6d3d8936b9f34e06b18d5067ebcdbb1616"
   integrity sha512-GWf+dkuee3biaUZZGUeF6Ya5I0n4pqzDZJ0hnjjknZzF0Iq1nbh3VpfXC49DP6VlgJeKYYaPwjgRvnJaqjWiAQ==
 
+"@fabulas/astly@^0.0.5":
+  version "0.0.5"
+  resolved "https://registry.yarnpkg.com/@fabulas/astly/-/astly-0.0.5.tgz#6b0c3471092f7cdd760601694d7624f0053a4311"
+  integrity sha512-rgW8MZpTr/SqpawoW4qr/ageUCKkSYjnamB0yZH//Pnt/GhKXZxGvUuNn6NPvXDZELg8hlkuZ7R4Tm0SLBH+kA==
+
 "@jest/console@^24.7.1":
   version "24.7.1"
   resolved "https://registry.yarnpkg.com/@jest/console/-/console-24.7.1.tgz#32a9e42535a97aedfe037e725bd67e954b459545"
