@@ -41,9 +41,8 @@ export class VenmoPaymentButtonContainer extends React.PureComponent<Props> {
    * @param {object} data - venmo reducer data to store
    */
   setVenmoData = data => {
-    const { venmoClientTokenData, setVenmoDataAction } = this.props;
+    const { setVenmoDataAction } = this.props;
     setVenmoDataAction({
-      venmoClientTokenData,
       ...data,
     });
   };

@@ -17,18 +17,18 @@ const initialState = fromJS({
     giftCards: [],
     venmoData: {
       nonce: '',
-      venmoClientTokenData: {
-        userState: 'G',
-        venmoCustomerIdAvailable: false,
-        venmoIsDefaultPaymentType: false,
-        venmoPaymentTokenAvailable: false,
-        venmoSecurityToken: '',
-      },
       deviceData: '',
       supportedByBrowser: true,
       loading: false,
       timestamp: '',
       error: null,
+    },
+    venmoClientTokenData: {
+      userState: 'G',
+      venmoCustomerIdAvailable: false,
+      venmoIsDefaultPaymentType: false,
+      venmoPaymentTokenAvailable: false,
+      venmoSecurityToken: '',
     },
     addEditResponseAddressId: null,
     giftCardError: null,
@@ -91,7 +91,7 @@ function uiGiftCardFlagReducer(checkout, action) {
 
 const mergedVenmoDetails = (state, payload) => {
   const currentValue = fromJS(state.getIn(['values', 'venmoData']));
-  return currentValue.mergeDeep(payload).toJS();
+  return currentValue.merge(payload).toObject();
 };
 
 function uiFlagReducer(checkout, action) {
@@ -133,7 +133,7 @@ function uiFlagReducer(checkout, action) {
       return checkout.CartPageReducer.setIn(['orderDetails', 'checkout', 'giftWrap']);
     case CheckoutConstants.GET_VENMO_CLIENT_TOKEN_SUCCESS:
       return checkout.setIn(
-        ['values', 'venmoData', 'venmoClientTokenData'],
+        ['values', 'venmoClientTokenData'],
         action.payload && action.payload.venmoClientTokenData
       );
     case CheckoutConstants.GET_VENMO_CLIENT_TOKEN_ERROR:
