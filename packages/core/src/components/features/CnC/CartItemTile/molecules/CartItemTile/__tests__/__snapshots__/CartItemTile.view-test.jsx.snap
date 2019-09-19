@@ -361,6 +361,9 @@ exports[`CartItemTile common component renders correctly 1`] = `
           [Function],
           ";
   }
+  .sflActions {
+    text-decoration: underline;
+  }
   ",
           [Function],
           ";
@@ -768,6 +771,9 @@ exports[`CartItemTile common component renders correctly with bag page sfl secti
     margin-top: ",
           [Function],
           ";
+  }
+  .sflActions {
+    text-decoration: underline;
   }
   ",
           [Function],

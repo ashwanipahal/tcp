@@ -321,5 +321,8 @@ export default css`
   .heartIcon {
     margin-top: ${props => props.theme.spacing.ELEM_SPACING.XS};
   }
+  .sflActions {
+    text-decoration: underline;
+  }
   ${props => (props.inheritedStyles ? props.inheritedStyles : '')};
 `;

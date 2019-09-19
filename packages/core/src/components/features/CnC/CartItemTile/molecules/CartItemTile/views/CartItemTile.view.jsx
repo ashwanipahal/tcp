@@ -3,6 +3,7 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import ItemAvailability from '@tcp/core/src/components/features/CnC/common/molecules/ItemAvailability';
 import withStyles from '@tcp/core/src/components/common/hoc/withStyles';
+import { getLabelValue } from '@tcp/core/src/utils';
 import ProductEditForm from '../../../../../../common/molecules/ProductCustomizeForm';
 import CartItemRadioButtons from '../../CartItemRadioButtons/views/CartItemRadioButtons.view';
 import endpoints from '../../../../../../../service/endpoint';
@@ -135,14 +136,15 @@ class CartItemTile extends React.Component {
         <BodyCopy
           fontFamily="secondary"
           fontSize="fs12"
-          component="div"
+          component="p"
           fontWeight={['semibold']}
           dataLocator="saveForLaterLink"
+          className="sflActions"
           onClick={() => {
             this.handleMoveItemtoSaveList();
           }}
         >
-          <u>{labels.saveForLaterLink}</u>
+          {labels.saveForLaterLink}
         </BodyCopy>
       );
     }
@@ -154,11 +156,12 @@ class CartItemTile extends React.Component {
         <BodyCopy
           fontFamily="secondary"
           fontSize="fs12"
-          component="div"
+          component="p"
           fontWeight={['semibold']}
           dataLocator="moveToBagLink"
+          className="sflActions"
         >
-          <u>{labels.moveToBagLink}</u>
+          {labels.moveToBagLink}
         </BodyCopy>
       );
     }
@@ -322,8 +325,7 @@ class CartItemTile extends React.Component {
             fontSize="fs12"
             fontWeight={['extrabold']}
           >
-            {` ${labels.qty}`}
-            {':'}
+            {` ${labels.qty}:`}
           </BodyCopy>
         </div>
         <BodyCopy
@@ -341,11 +343,15 @@ class CartItemTile extends React.Component {
   };
 
   renderHeartIcon = () => {
-    const { isBagPageSflSection } = this.props;
+    const { isBagPageSflSection, labels } = this.props;
     if (!isBagPageSflSection) return null;
     return (
       <div className="heartIcon">
-        <Image alt="favIcon" className="sfl-fav-image" src={getIconPath('fav-icon')} />
+        <Image
+          alt={getLabelValue(labels, 'lbl_sfl_favIcon', 'bagPage', 'checkout')}
+          className="sfl-fav-image"
+          src={getIconPath('fav-icon')}
+        />
       </div>
     );
   };

@@ -33,8 +33,8 @@ const styles = css`
       text-align: center;
       padding: 13px 0 22px;
       margin: 0;
-      font-size: 16px;
-      font-weight: 600;
+      font-size: ${props => props.theme.fonts.fontSize.anchor.xlarge}px;
+      font-weight: ${props => props.theme.fonts.fontWeight.semiBold};
     }
     @media ${props => props.theme.mediaQuery.medium} {
       padding-left: 3px;
@@ -49,7 +49,8 @@ const styles = css`
       display: none;
     }
     .activeHeader {
-      border-bottom: 2px solid ${props => props.theme.colors.TEXT.DARKERGRAY};
+      border-bottom: ${props => props.theme.spacing.ELEM_SPACING.XXXS} solid
+        ${props => props.theme.colors.TEXT.DARKERGRAY};
       font-weight: 800;
     }
   }
