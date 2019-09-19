@@ -47,6 +47,7 @@ const mapDispatchToProps = dispatch => {
   };
 };
 
+/* istanbul ignore next  */
 const mapStateToProps = state => ({
   selectedCountry: getCurrentCountry(state),
   labels: getPageLabels(state),

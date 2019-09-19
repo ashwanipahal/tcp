@@ -2,7 +2,6 @@
 
 exports[`StoreSearch Container should render StoreSearch Correctly 1`] = `
 <ReduxForm
-  backgroundColor="#edf5fb"
   destroyOnUnmount={true}
   enableReinitialize={true}
   fetchStoresByLatLng={[MockFunction]}
