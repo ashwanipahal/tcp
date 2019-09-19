@@ -9,9 +9,9 @@ import { EmptyContainer, Row } from '../styles/EmptyBirthdayCard.style.native';
  * @param { string } props.view
  */
 export const EmptyBirthdayCard = ({ view }) => {
-  return (
-    <EmptyContainer>
-      {view === 'edit' && (
+  if (view === 'edit') {
+    return (
+      <EmptyContainer>
         <Row>
           <BodyCopy
             fontSize="fs14"
@@ -29,9 +29,10 @@ export const EmptyBirthdayCard = ({ view }) => {
             color="gray.900"
           />
         </Row>
-      )}
-    </EmptyContainer>
-  );
+      </EmptyContainer>
+    );
+  }
+  return null;
 };
 
 EmptyBirthdayCard.propTypes = {

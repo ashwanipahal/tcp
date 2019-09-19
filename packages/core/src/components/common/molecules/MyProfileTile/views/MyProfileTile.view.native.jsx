@@ -19,7 +19,7 @@ export const MyProfileTile = ({ title, ctaTitle, ctaLink, children, handleCompon
           spacingStyles="margin-bottom-MED"
         />
       )}
-      <ViewWithSpacing spacingStyles={isCtaPresent ? 'margin-bottom-XXXL' : ''}>
+      <ViewWithSpacing spacingStyles={isCtaPresent ? 'margin-bottom-XXL' : ''}>
         {children}
       </ViewWithSpacing>
       {isCtaPresent && (

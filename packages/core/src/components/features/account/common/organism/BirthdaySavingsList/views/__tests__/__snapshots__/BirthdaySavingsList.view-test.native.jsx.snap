@@ -1,0 +1,119 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`BirthdaySavingsList component should renders correctly when childrenBirthdays are not present 1`] = `
+<View>
+  <Styled(Styled(BodyCopy))
+    fontSize="fs14"
+    mobileFontFamily="secondary"
+    spacingStyles="margin-bottom-XXL margin-top-XXL"
+    text="Add up to 4 kids’ birthdays to your account and receive special savings during their birthday month!"
+  />
+  <Styled(View)>
+    <View>
+      <EmptyBirthdayCard
+        labels={
+          Object {
+            "lbl_profile_birthday_saving_info": "Add up to 4 kids’ birthdays to your account and receive special savings during their birthday month!",
+            "lbl_profile_birthday_savings": "Birthday Savings",
+            "lbl_profile_personal_info_back": "back",
+          }
+        }
+        view="edit"
+      />
+    </View>
+    <View>
+      <EmptyBirthdayCard
+        labels={
+          Object {
+            "lbl_profile_birthday_saving_info": "Add up to 4 kids’ birthdays to your account and receive special savings during their birthday month!",
+            "lbl_profile_birthday_savings": "Birthday Savings",
+            "lbl_profile_personal_info_back": "back",
+          }
+        }
+        view="edit"
+      />
+    </View>
+    <View>
+      <EmptyBirthdayCard
+        labels={
+          Object {
+            "lbl_profile_birthday_saving_info": "Add up to 4 kids’ birthdays to your account and receive special savings during their birthday month!",
+            "lbl_profile_birthday_savings": "Birthday Savings",
+            "lbl_profile_personal_info_back": "back",
+          }
+        }
+        view="edit"
+      />
+    </View>
+    <View>
+      <EmptyBirthdayCard
+        labels={
+          Object {
+            "lbl_profile_birthday_saving_info": "Add up to 4 kids’ birthdays to your account and receive special savings during their birthday month!",
+            "lbl_profile_birthday_savings": "Birthday Savings",
+            "lbl_profile_personal_info_back": "back",
+          }
+        }
+        view="edit"
+      />
+    </View>
+  </Styled(View)>
+</View>
+`;
+
+exports[`BirthdaySavingsList component should renders correctly when childrenBirthdays are not present with read view 1`] = `""`;
+
+exports[`BirthdaySavingsList component should renders correctly when childrenBirthdays are present 1`] = `
+<View>
+  <Styled(Styled(BodyCopy))
+    fontSize="fs14"
+    mobileFontFamily="secondary"
+    spacingStyles="margin-bottom-XXL margin-top-XXL"
+    text="Add up to 4 kids’ birthdays to your account and receive special savings during their birthday month!"
+  />
+  <Styled(View)>
+    <View>
+      <BirthdayCard
+        childId="12345"
+        view="edit"
+      />
+    </View>
+    <View>
+      <EmptyBirthdayCard
+        labels={
+          Object {
+            "lbl_profile_birthday_saving_info": "Add up to 4 kids’ birthdays to your account and receive special savings during their birthday month!",
+            "lbl_profile_birthday_savings": "Birthday Savings",
+            "lbl_profile_personal_info_back": "back",
+          }
+        }
+        view="edit"
+      />
+    </View>
+    <View>
+      <EmptyBirthdayCard
+        labels={
+          Object {
+            "lbl_profile_birthday_saving_info": "Add up to 4 kids’ birthdays to your account and receive special savings during their birthday month!",
+            "lbl_profile_birthday_savings": "Birthday Savings",
+            "lbl_profile_personal_info_back": "back",
+          }
+        }
+        view="edit"
+      />
+    </View>
+    <View>
+      <EmptyBirthdayCard
+        labels={
+          Object {
+            "lbl_profile_birthday_saving_info": "Add up to 4 kids’ birthdays to your account and receive special savings during their birthday month!",
+            "lbl_profile_birthday_savings": "Birthday Savings",
+            "lbl_profile_personal_info_back": "back",
+          }
+        }
+        view="edit"
+      />
+    </View>
+  </Styled(View)>
+</View>
+`;

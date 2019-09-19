@@ -61,6 +61,7 @@ exports[`ProfileInformation should render correctly 1`] = `
     }
   />
   <BirthdaySaving
+    childrenBirthdays={Immutable.List []}
     handleComponentChange={[Function]}
     labels={
       Object {
