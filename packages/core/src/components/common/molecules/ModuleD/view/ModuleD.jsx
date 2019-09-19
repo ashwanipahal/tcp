@@ -1,5 +1,5 @@
-// @flow
 import React from 'react';
+import PropTypes from 'prop-types';
 import { Anchor, Button, Col, DamImage, Row } from '../../../atoms';
 import { Grid, LinkText, PromoBanner } from '../..';
 import config from '../config';
@@ -7,14 +7,6 @@ import { getLocator } from '../../../../../utils';
 import style from '../ModuleD.style';
 import withStyles from '../../../hoc/withStyles';
 import errorBoundary from '../../../hoc/withErrorBoundary';
-
-type Props = {
-  className: string,
-  headerText: Array<Object>,
-  promoBanner: Array<Object>,
-  smallCompImage: Array<Object>,
-  singleCTAButton: Object,
-};
 
 const colSize2Elements = {
   small: 3,
@@ -43,8 +35,7 @@ const ignoreGutter = [
   { small: true, medium: true },
 ];
 
-const ModuleD = (props: Props) => {
-  const { className, headerText, promoBanner, smallCompImage, singleCTAButton } = props;
+const ModuleD = ({ className, headerText, promoBanner, smallCompImage, singleCTAButton }) => {
   let colSize;
   let imgDataConfig;
   const checkPromo = promoBanner && promoBanner.length;
@@ -140,6 +131,20 @@ const ModuleD = (props: Props) => {
       )}
     </Grid>
   );
+};
+
+ModuleD.defaultProps = {
+  className: '',
+  promoBanner: [],
+  singleCTAButton: {},
+};
+
+ModuleD.propTypes = {
+  className: PropTypes.string,
+  headerText: PropTypes.arrayOf(PropTypes.shape({})).isRequired,
+  promoBanner: PropTypes.arrayOf(PropTypes.shape({})),
+  smallCompImage: PropTypes.arrayOf(PropTypes.shape({})).isRequired,
+  singleCTAButton: PropTypes.objectOf(PropTypes.shape({})),
 };
 
 export default withStyles(errorBoundary(ModuleD), style);

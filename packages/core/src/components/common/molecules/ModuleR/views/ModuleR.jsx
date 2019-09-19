@@ -197,30 +197,26 @@ class ModuleR extends React.PureComponent {
 }
 
 ModuleR.defaultProps = {
-  className: '',
-  divTabs: [],
-  headerText: [],
-  productTabList: {},
   promoBanner: [],
   bannerPosition: 'center',
 };
 
 ModuleR.propTypes = {
-  className: PropTypes.string,
+  className: PropTypes.string.isRequired,
   divTabs: PropTypes.arrayOf(
     PropTypes.shape({
       text: PropTypes.object,
       category: PropTypes.object,
       singleCTAButton: PropTypes.object,
     })
-  ),
+  ).isRequired,
   headerText: PropTypes.arrayOf(
     PropTypes.shape({
       textItems: PropTypes.object,
       link: PropTypes.object,
       icon: PropTypes.object,
     })
-  ),
+  ).isRequired,
   productTabList: PropTypes.oneOfType(
     PropTypes.objectOf(
       PropTypes.arrayOf(
@@ -231,7 +227,7 @@ ModuleR.propTypes = {
         })
       )
     )
-  ),
+  ).isRequired,
   promoBanner: PropTypes.arrayOf(
     PropTypes.objectOf(
       PropTypes.shape({
