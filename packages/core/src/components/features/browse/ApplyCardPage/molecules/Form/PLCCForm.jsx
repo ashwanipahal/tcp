@@ -104,7 +104,7 @@ class PLCCForm extends React.PureComponent {
       this.setState({
         isIdleModalActive: true,
       });
-    }, 1 * 60 * 1000);
+    }, 13 * 60 * 1000);
   };
 
   /**
@@ -277,7 +277,7 @@ class PLCCForm extends React.PureComponent {
             isPLCCModalFlow={isPLCCModalFlow}
             unregisterIdleVerfication={this.unregisterIdleVerfication}
             bagItems={bagItems}
-            time={6}
+            time={120}
             isTimedOutModalActive={isTimedOutModalActive}
             handleFormReset={this.handleFormReset}
           />
