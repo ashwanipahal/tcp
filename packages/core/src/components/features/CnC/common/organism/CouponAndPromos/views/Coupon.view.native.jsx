@@ -14,7 +14,6 @@ import CouponHelpModal from './CouponHelpModal.view';
 import CouponDetailModal from './CouponDetailModal.view';
 import CollapsibleContainer from '../../../../../../common/molecules/CollapsibleContainer';
 import BodyCopy from '../../../../../../common/atoms/BodyCopy';
-import { getLabelValue } from '../../../../../../../utils';
 
 class CouponView extends React.PureComponent {
   state = {
@@ -45,7 +44,7 @@ class CouponView extends React.PureComponent {
           fontSize="fs16"
           fontWeight="semibold"
           component="span"
-          text={getLabelValue(labels, 'lbl_bonusPoints_placeRewardsDay')}
+          text={labels.couponCollapsibleHeader}
         />
       </StyledHeader>
     );
@@ -63,6 +62,7 @@ class CouponView extends React.PureComponent {
     detailStatus,
     helpStatus,
     selectedCoupon,
+    showAccordian,
   }) => {
     return (
       <WrapperStyle>
@@ -72,6 +72,7 @@ class CouponView extends React.PureComponent {
           source="form"
           labels={labels}
           onNeedHelpTextClick={this.toggleNeedHelpModal}
+          showAccordian={showAccordian}
         />
         <CouponListContainer>
           {appliedCouponList && (
@@ -152,17 +153,20 @@ class CouponView extends React.PureComponent {
       detailStatus,
       helpStatus,
       selectedCoupon,
+      showAccordian,
     });
-
+    const defaultOpen = availableCouponList && availableCouponList.size > 0;
     return (
       <View>
         {showAccordian ? (
-          <CollapsibleContainer header={header} body={body} iconLocator="arrowicon" />
+          <CollapsibleContainer
+            header={header}
+            body={body}
+            defaultOpen={defaultOpen}
+            iconLocator="arrowicon"
+          />
         ) : (
-          <>
-            {header}
-            {body}
-          </>
+          <>{body}</>
         )}
       </View>
     );
