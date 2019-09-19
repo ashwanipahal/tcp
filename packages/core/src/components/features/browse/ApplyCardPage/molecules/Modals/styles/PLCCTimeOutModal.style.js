@@ -51,6 +51,13 @@ export const modalStyles = css`
     height: 112px;
     object-fit: contain;
     margin: ${props => props.theme.spacing.ELEM_SPACING.XL} auto 0;
+    @media ${props => props.theme.mediaQuery.smallOnly} {
+      margin-top: 57px;
+    }
+  }
+
+  .returnto_checkout {
+    font-weight: normal;
   }
 
   .offer_info_icon {

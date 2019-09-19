@@ -8,7 +8,6 @@ import { getUserProfileData, getUserId, getBagItemsSize, isGuest } from './Apply
 import AddressVerification from '../../../../common/organisms/AddressVerification/container/AddressVerification.container';
 import { verifyAddress } from '../../../../common/organisms/AddressVerification/container/AddressVerification.actions';
 import BAG_PAGE_ACTIONS from '../../../CnC/BagPage/container/BagPage.actions';
-// import StyledPLCCTimedoutModal from '../molecules/Modals/PLCCTimedOutModal';
 
 class ApplyCardLayoutContainer extends React.Component {
   static propTypes = {
@@ -26,6 +25,7 @@ class ApplyCardLayoutContainer extends React.Component {
     approvedPLCCData: PropTypes.shape({}).isRequired,
     isGuestUser: PropTypes.bool.isRequired,
     userId: PropTypes.string.isRequired,
+    handleTimedOutModal: PropTypes.func.isRequired,
   };
   /**
    *  @function - constructor
@@ -37,7 +37,6 @@ class ApplyCardLayoutContainer extends React.Component {
     super(props);
     this.state = {
       showAddEditAddressForm: false,
-      showInterimModal: true,
     };
   }
 
@@ -48,10 +47,6 @@ class ApplyCardLayoutContainer extends React.Component {
       fetchModuleXContent(labels && labels.referred);
     }
   }
-
-  onCloseInterimModal = () => {
-    this.setState({ showInterimModal: false });
-  };
 
   /**
    *  @fatarrow - formatPayload
@@ -115,8 +110,9 @@ class ApplyCardLayoutContainer extends React.Component {
       labels,
       plccUser,
       profileInfo,
+      handleTimedOutModal,
     } = this.props;
-    const { showAddEditAddressForm, showInterimModal } = this.state;
+    const { showAddEditAddressForm } = this.state;
     return (
       <React.Fragment>
         <ApplyCardLayoutView
@@ -130,13 +126,9 @@ class ApplyCardLayoutContainer extends React.Component {
           plccUser={plccUser}
           profileInfo={profileInfo}
           isPLCCModalFlow={isPLCCModalFlow}
+          handleTimedOutModal={handleTimedOutModal}
         />
         {showAddEditAddressForm ? <AddressVerification onSuccess={this.submitForm} /> : null}
-        {/* <StyledPLCCTimedoutModal
-          isModalOpen={showInterimModal}
-          labels={labels}
-          closeModal={this.onCloseInterimModal}
-        /> */}
       </React.Fragment>
     );
   }

@@ -21,7 +21,8 @@ const getApplyCardLayoutView = (
   isGuest,
   plccUser,
   profileInfo,
-  approvedPLCCData
+  approvedPLCCData,
+  handleTimedOutModal
 ) => {
   if (applicationStatus === constants.APPLICATION_STATE_EXISTING) {
     return (
@@ -56,9 +57,11 @@ const getApplyCardLayoutView = (
       <PLCCForm
         plccData={plccData}
         labels={labels}
+        bagItems={bagItems}
         isPLCCModalFlow={isPLCCModalFlow}
         onSubmit={submitPLCCForm}
         initialValues={profileInfo}
+        handleTimedOutModal={handleTimedOutModal}
       />
     );
   }
@@ -75,6 +78,7 @@ const ApplyCardLayoutView = ({
   isGuest,
   profileInfo,
   approvedPLCCData,
+  handleTimedOutModal,
 }) => {
   return (
     <ApplyRewardsCreditCardStyle isPLCCModalFlow={isPLCCModalFlow}>
@@ -88,7 +92,8 @@ const ApplyCardLayoutView = ({
         isGuest,
         plccUser,
         profileInfo,
-        approvedPLCCData
+        approvedPLCCData,
+        handleTimedOutModal
       )}
     </ApplyRewardsCreditCardStyle>
   );
@@ -105,6 +110,7 @@ ApplyCardLayoutView.propTypes = {
   approvedPLCCData: PropTypes.shape({}).isRequired,
   isGuest: PropTypes.bool.isRequired,
   bagItems: PropTypes.bool.isRequired,
+  handleTimedOutModal: PropTypes.func.isRequired,
 };
 
 export default ApplyCardLayoutView;

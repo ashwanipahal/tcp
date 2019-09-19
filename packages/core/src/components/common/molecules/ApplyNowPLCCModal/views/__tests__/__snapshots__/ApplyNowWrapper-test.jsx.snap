@@ -7,6 +7,7 @@ exports[`ApplyNowModalWrapper component should renders correctly 1`] = `
   <Styled(StyledApplyNowModal)
     closeModal={[Function]}
     closePLCCModal={[Function]}
+    handleTimedOutModal={[Function]}
     isModalOpen={true}
     labels={
       Object {

@@ -1,112 +1,152 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import { Anchor, BodyCopy, Button, Row, Col } from '../../../../../common/atoms';
+import { BodyCopy, Button, Row, Col } from '../../../../../common/atoms';
 import Modal from '../../../../../common/molecules/Modal';
 import withStyles from '../../../../../common/hoc/withStyles';
-import { getLocator } from '../../../../../../utils';
-import styles, { modalStyles } from './styles/PLCCTimedOutModal.style';
+import { getLocator, routerPush, getLabelValue } from '../../../../../../utils';
+import styles, { modalStyles } from './styles/PLCCTimeOutModal.style';
+import getModalHeight from '../../utils/modalHelper';
 
 /**
- * @constant PLCCTimedoutModal - Opens a Modal containing information about application closure.
+ * @class PLCCTimedoutModal - Opens a Modal containing information about application closure.
  */
-const StyledPLCCTimedoutModal = ({ className, isModalOpen, closeModal, labels }) => {
-  return (
-    <Modal
-      fixedWidth
-      isOpen={isModalOpen}
-      onRequestClose={closeModal}
-      overlayClassName="TCPModal__Overlay"
-      className={`${className} TCPModal__Content`}
-      dataLocator={getLocator('plcc_apply_now_modal')}
-      dataLocatorHeader={getLocator('plcc_apply_now_close_btn')}
-      maxWidth="458px"
-      minHeight="420px"
-      inheritedStyles={modalStyles}
-      shouldCloseOnOverlayClick={false}
-    >
-      <div className="Modal__Content__Wrapper">
-        <Row fullBleed className="modal_content">
-          <Col
-            ignoreGutter={{ small: true }}
-            colSize={{ large: 12, medium: 8, small: 6 }}
-            className="submit_button_plcc_form_container"
-          >
-            <div className="header-image" />
-          </Col>
-        </Row>
-        <Row fullBleed className="modal_content">
-          <Col
-            ignoreGutter={{ small: true }}
-            colSize={{ large: 12, medium: 8, small: 6 }}
-            className="submit_button_plcc_form_container"
-          >
-            <BodyCopy
-              component="div"
-              color="black.900"
-              fontWeight="black"
-              fontFamily="primary"
-              fontSize="fs36"
-              textAlign="center"
-              data-locator={getLocator('ship_to_text_2')}
-              className="info_text_margin"
+class StyledPLCCTimedoutModal extends React.Component {
+  static propTypes = {
+    className: PropTypes.string.isRequired,
+    isModalOpen: PropTypes.bool.isRequired,
+    handleTimedOutModalClose: PropTypes.func.isRequired,
+    isPLCCModalFlow: PropTypes.bool.isRequired,
+    bagItems: PropTypes.bool.isRequired,
+    labels: PropTypes.shape({
+      plcc_restart_application: PropTypes.string.isRequired,
+      plcc_application_closure_subheader: PropTypes.string.isRequired,
+      plcc_application_closure: PropTypes.string.isRequired,
+    }).isRequired,
+  };
+
+  restartApplication = () => {
+    const { handleTimedOutModalClose, isPLCCModalFlow } = this.props;
+    if (isPLCCModalFlow) {
+      handleTimedOutModalClose();
+    } else {
+      window.location.reload();
+    }
+  };
+
+  handleCheckoutClick = () => {
+    routerPush(window.location.href, '/bag');
+  };
+
+  render() {
+    const { className, isModalOpen, labels, isPLCCModalFlow, bagItems } = this.props;
+    return (
+      <Modal
+        fixedWidth
+        isOpen={isModalOpen}
+        onRequestClose={this.restartApplication}
+        overlayClassName="TCPModal__Overlay"
+        className={`${className} TCPModal__Content`}
+        dataLocatorHeader={getLocator('plcc_time_out_modal_2_close_btn')}
+        maxWidth="458px"
+        minHeight={getModalHeight(bagItems, isPLCCModalFlow)}
+        inheritedStyles={modalStyles}
+        shouldCloseOnOverlayClick={false}
+      >
+        <div className="Modal__Content__Wrapper">
+          <Row fullBleed className="modal_content">
+            <Col
+              ignoreGutter={{ small: true }}
+              colSize={{ large: 12, medium: 8, small: 6 }}
+              className="submit_button_plcc_form_container"
             >
-              {labels && labels.plcc_application_closure}
-            </BodyCopy>
-          </Col>
-        </Row>
-        <Row fullBleed className="modal_content">
-          <Col
-            ignoreGutter={{ small: true }}
-            colSize={{ large: 12, medium: 8, small: 6 }}
-            className="submit_button_plcc_form_container"
-          >
-            <BodyCopy
-              component="div"
-              color="gray.900"
-              fontFamily="secondary"
-              fontSize="fs14"
-              textAlign="center"
-              data-locator={getLocator('ship_to_text_2')}
-              className="info_text_margin"
+              <div data-locator={getLocator('plcc_time_out_modal_logo')} className="header-image" />
+            </Col>
+          </Row>
+          <Row fullBleed className="modal_content">
+            <Col
+              ignoreGutter={{ small: true }}
+              colSize={{ large: 12, medium: 8, small: 6 }}
+              className="submit_button_plcc_form_container"
             >
-              {labels && labels.plcc_application_closure_subheader}
-            </BodyCopy>
-          </Col>
-        </Row>
-        <Row fullBleed className="modal_content">
-          <Col
-            ignoreGutter={{ small: true }}
-            colSize={{ large: 9, medium: 6, small: 12 }}
-            className="restart_application_button"
-          >
-            <Anchor asPath="/bag">
+              <BodyCopy
+                component="div"
+                color="black.900"
+                fontWeight="black"
+                fontFamily="primary"
+                fontSize="fs36"
+                textAlign="center"
+                data-locator={getLocator('plcc_time_out_modal_text')}
+                className="info_text_margin"
+              >
+                {isPLCCModalFlow
+                  ? getLabelValue(labels, 'plcc_timeout_preacceptance')
+                  : getLabelValue(labels, 'plcc_application_closure')}
+              </BodyCopy>
+            </Col>
+          </Row>
+          <Row fullBleed className="modal_content">
+            <Col
+              ignoreGutter={{ small: true }}
+              colSize={{ large: 12, medium: 8, small: 6 }}
+              className="submit_button_plcc_form_container"
+            >
+              <BodyCopy
+                component="div"
+                color="gray.900"
+                fontFamily="secondary"
+                fontSize="fs14"
+                textAlign="center"
+                className="info_text_margin"
+              >
+                {getLabelValue(labels, 'plcc_application_closure_subheader')}
+              </BodyCopy>
+            </Col>
+          </Row>
+          <Row fullBleed className="modal_content">
+            <Col
+              ignoreGutter={{ small: true }}
+              colSize={{ large: 9, medium: 6, small: 12 }}
+              className="restart_application_button"
+            >
               <Button
                 buttonVariation="fixed-width"
                 fill="BLUE"
                 type="submit"
                 className="restart_application_button"
-                data-locator="submit-plcc-btn"
+                data-locator={getLocator('plcc_time_out_modal_restart_application')}
+                onClick={this.restartApplication}
               >
-                {labels && labels.plcc_restart_application}
+                {isPLCCModalFlow
+                  ? getLabelValue(labels, 'plcc_timeout_restart_acceptance')
+                  : getLabelValue(labels, 'plcc_restart_application')}
               </Button>
-            </Anchor>
-          </Col>
-        </Row>
-      </div>
-    </Modal>
-  );
-};
-
-StyledPLCCTimedoutModal.propTypes = {
-  className: PropTypes.string.isRequired,
-  isModalOpen: PropTypes.bool.isRequired,
-  closeModal: PropTypes.func.isRequired,
-  labels: PropTypes.shape({
-    plcc_restart_application: PropTypes.string.isRequired,
-    plcc_application_closure_subheader: PropTypes.string.isRequired,
-    plcc_application_closure: PropTypes.string.isRequired,
-  }).isRequired,
-};
+            </Col>
+          </Row>
+          {bagItems ? (
+            <Row fullBleed className="modal_content">
+              <Col
+                ignoreGutter={{ small: true }}
+                colSize={{ large: 9, medium: 6, small: 12 }}
+                className="restart_application_button"
+              >
+                <Button
+                  buttonVariation="fixed-width"
+                  fill="WHITE"
+                  type="submit"
+                  className="returnto_checkout"
+                  data-locator={getLocator('plcc_time_out_modal_return_to_checkout')}
+                  onClick={this.handleCheckoutClick}
+                >
+                  {getLabelValue(labels, 'plcc_return_checkout')}
+                </Button>
+              </Col>
+            </Row>
+          ) : null}
+        </div>
+      </Modal>
+    );
+  }
+}
 
 export default withStyles(StyledPLCCTimedoutModal, styles);
 export { StyledPLCCTimedoutModal as StyledPLCCTimedoutModalVanilla };
