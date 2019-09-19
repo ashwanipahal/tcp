@@ -36,7 +36,7 @@ const PRODUCT_IMAGE_GUTTER = 16;
 const PRODUCT_IMAGE_PER_SLIDE = 4;
 const MODULE_HEIGHT = 142;
 const MODULE_WIDTH = (PRODUCT_IMAGE_WIDTH + PRODUCT_IMAGE_GUTTER) * PRODUCT_IMAGE_PER_SLIDE;
-const { IMG_DATA } = config;
+const { IMG_DATA, TOTAL_IMAGES } = config;
 class ModuleJ extends React.PureComponent<Props, State> {
   constructor(props) {
     super(props);
@@ -58,7 +58,8 @@ class ModuleJ extends React.PureComponent<Props, State> {
     const { item } = slideProps;
     const { navigation, productTabList } = this.props;
     const { selectedCategoryId } = this.state;
-    const selectedProductList = productTabList[selectedCategoryId];
+    let selectedProductList = productTabList[selectedCategoryId];
+    selectedProductList = selectedProductList ? selectedProductList.slice(0, TOTAL_IMAGES) : [];
 
     return (
       <ImageSlideWrapper>
@@ -107,7 +108,8 @@ class ModuleJ extends React.PureComponent<Props, State> {
       bgColor,
     } = this.props;
 
-    const selectedProductList = productTabList[selectedCategoryId] || [];
+    let selectedProductList = productTabList[selectedCategoryId] || [];
+    selectedProductList = selectedProductList ? selectedProductList.slice(0, TOTAL_IMAGES) : [];
 
     const selectedProductCarouselList = selectedProductList.reduce(
       (list, item, index) => {

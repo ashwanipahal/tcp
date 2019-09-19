@@ -88,6 +88,11 @@ export default css`
     margin-top: -4px;
   }
 
+  &.layout-default .promo-text:nth-child(2) {
+    line-height: normal;
+    margin-top: -15px;
+  }
+
   &.layout-alt .promo-text:nth-child(2) {
     line-height: 48px;
     margin-top: -4px;
