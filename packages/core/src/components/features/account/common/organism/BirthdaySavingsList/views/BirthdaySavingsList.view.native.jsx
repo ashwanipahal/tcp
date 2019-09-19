@@ -12,11 +12,11 @@ import { WrapLayout, WrapItem } from '../styles/BirthdaySavingsList.styles.nativ
  * Functional component to render Birthday Saving Info Message
  * @param {object} props
  */
-export const InfoMessage = ({ labels }) => (
+export const InfoMessage = ({ labels, spacingStyles }) => (
   <BodyCopyWithSpacing
     fontSize="fs14"
     mobileFontFamily="secondary"
-    spacingStyles="margin-bottom-XXL margin-top-XXL"
+    spacingStyles={spacingStyles}
     text={labels.lbl_profile_birthday_saving_info}
   />
 );
@@ -25,12 +25,14 @@ InfoMessage.propTypes = {
   labels: PropTypes.shape({
     lbl_profile_birthday_saving_info: PropTypes.string,
   }),
+  spacingStyles: PropTypes.string,
 };
 
 InfoMessage.defaultProps = {
   labels: {
     lbl_profile_birthday_saving_info: '',
   },
+  spacingStyles: '',
 };
 
 /**
@@ -46,10 +48,11 @@ class BirthdaySavingsList extends PureComponent {
       const birthdays = childrenBirthdays
         ? childrenBirthdays.setSize(constants.MAX_BIRTHDAY_CARDS)
         : List().setSize(constants.MAX_BIRTHDAY_CARDS);
-
       return (
         <View>
-          {isEditMode && <InfoMessage labels={labels} />}
+          {isEditMode && (
+            <InfoMessage labels={labels} spacingStyles="margin-bottom-XXL margin-top-XXL" />
+          )}
           <WrapLayout>
             {birthdays.map(birthday => {
               return (
@@ -73,7 +76,7 @@ class BirthdaySavingsList extends PureComponent {
         </View>
       );
     }
-    return <InfoMessage labels={labels} />;
+    return <InfoMessage labels={labels} spacingStyles="margin-bottom-XXL" />;
   }
 }
 
