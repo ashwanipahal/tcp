@@ -1,6 +1,7 @@
 import mock from './mock';
 import { executeUnbxdAPICall } from '../../handler';
 import endpoints from '../../endpoints';
+import { getAPIConfig } from '../../../utils';
 
 /**
  * Abstractor layer for loading Product List Tabs data
@@ -29,6 +30,8 @@ const Abstractor = {
     return mock;
   },
   processData: res => {
+    const { assetHost } = getAPIConfig();
+
     return res.body.response.products.map(item => {
       const {
         imageUrl: [imageUrl],
@@ -38,13 +41,14 @@ const Abstractor = {
 
       return {
         ...item,
-        pdpUrl: `/p/${seoToken || uniqueId}`,
+        pdpUrl: `/p?pid=${seoToken || uniqueId}`,
+        pdpAsPath: `/p/${seoToken || uniqueId}`,
         /*
            In Android, the images are not loading with www.childrensplace.com domain due to
            some security issue.
            TODO: This should be removed once we start getting CDN URL from the unbxd.
         */
-        imageUrl: [imageUrl.replace('www.childrensplace.com', 'test4.childrensplace.com')],
+        imageUrl: [imageUrl.replace('https://www.childrensplace.com', assetHost)],
       };
     });
   },
