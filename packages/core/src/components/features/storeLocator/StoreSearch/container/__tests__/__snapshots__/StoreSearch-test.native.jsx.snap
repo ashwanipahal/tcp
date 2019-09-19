@@ -1,0 +1,31 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`StoreSearch component StoreSearch component renders correctly without props 1`] = `
+<StyledNativeComponent
+  forwardedComponent={
+    Object {
+      "$$typeof": Symbol(react.forward_ref),
+      "_foldedDefaultProps": Object {
+        "submitting": false,
+      },
+      "attrs": Array [],
+      "displayName": "Styled(StoreSearch)",
+      "inlineStyle": InlineStyle {
+        "rules": Array [
+          "
+    ",
+          ".StyledNativeComponent",
+          ";
+  ",
+        ],
+      },
+      "render": [Function],
+      "styledComponentId": "StyledNativeComponent",
+      "target": [Function],
+      "withComponent": [Function],
+    }
+  }
+  forwardedRef={null}
+  submitting={false}
+/>
+`;
