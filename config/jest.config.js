@@ -66,6 +66,7 @@ module.exports = {
     '/*.app.js',
     '/*.app.jsx',
     '/stories/',
+    '/*.stories.jsx',
     ...ignorePsuedoCodeDir,
   ],
   coverageReporters: ['json', 'lcov', 'text', 'text-summary'],
