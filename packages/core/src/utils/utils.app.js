@@ -181,7 +181,7 @@ export const navigateToPage = (url, navigation) => {
   const { navigate } = navigation;
   const category = getLandingPage(url);
   const text = url.split('/');
-  const title = text[text.length - 1].replace(/[\W_]+/g, ' ');
+  const titleSplitValue = text[text.length - 1].replace(/[\W_]+/g, ' ');
   switch (category) {
     case URL_PATTERN.PRODUCT_LIST:
       /**
@@ -189,13 +189,18 @@ export const navigateToPage = (url, navigation) => {
        * If url starts with “/p” → Create and navigate to a page in stack for Products (Blank page with a Text - “Product List”)
        */
       return navigate('ProductLanding', {
-        product: title,
+        product: titleSplitValue,
       });
+
     case URL_PATTERN.CATEGORY_LANDING:
       /**
        * /c/* - If url starts with “/c” (* can be anything in url) → Select “CATEGORY_LANDING” tab in tabbar and Open CATEGORY_LANDING page
        */
-      return navigate('ProductLanding');
+      return navigate('ProductListing', {
+        url,
+        title: titleSplitValue,
+        reset: true,
+      });
     default:
       return null;
   }

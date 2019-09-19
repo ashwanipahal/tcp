@@ -351,6 +351,21 @@ export const calculateAge = (month, year) => {
   return age;
 };
 
+export const childOptionsMap = () => {
+  const currentYear = new Date().getFullYear();
+  const yearOptionsMap = Array(17)
+    .fill(currentYear)
+    .map((e, index) => {
+      const year = e - index;
+      return { id: year.toString(), displayName: year.toString() };
+    });
+
+  return {
+    genderMap: [{ id: '01', displayName: 'Boy' }, { id: '0', displayName: 'Girl' }],
+    yearsMap: yearOptionsMap,
+  };
+};
+
 /**
  *
  * @param {object} labelState object in which key needs to be searched

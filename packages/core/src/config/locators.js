@@ -84,9 +84,9 @@ export default {
   // Module R
   moduleR_header_text: 'moduleR_header_text',
   moduleR_promobanner_text: 'moduleR_promobanner_text',
-  moduleR_promobanner_img: 'moduleR_promobanner_img',
   moduleR_product_image: 'moduleR_product_image_',
-  moduleR_cta_link: 'moduleR_cta_links',
+  moduleR_cta_link: 'moduleR_cta_links_',
+  moduleR_cta_btn: 'moduleR_cta_btn',
 
   // Added To Bag
   addedtobag_btnviewbag: 'addedtobag-btnviewbag',
