@@ -7,9 +7,10 @@ describe('StoreSearch component', () => {
     className: 'test-class',
     handleSubmit: jest.fn(),
   };
-  it('StoreViewVanilla component renders correctly', () => {
+
+  it('StoreSearch component renders correctly', () => {
     const component = shallow(<StoreViewVanilla {...props} />);
-    expect(component.find('.test-class')).toHaveLength(1);
+    expect(component).toMatchSnapshot();
   });
 
   it('handleLocationSelection - returns false', () => {
