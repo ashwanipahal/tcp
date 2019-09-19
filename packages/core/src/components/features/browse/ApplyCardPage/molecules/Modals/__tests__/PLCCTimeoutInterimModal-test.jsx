@@ -1,6 +1,6 @@
 import React from 'react';
 import { shallow } from 'enzyme';
-import { StyledPLCCTimeoutInterimModalVanilla } from '../PLCCTmeoutInterimModal';
+import { PLCCTimeoutInterimModalVanilla } from '../PLCCTmeoutInterimModal';
 
 jest.mock('../../../../../../../utils/utils.web', () => ({
   routerPush: jest.fn(),
@@ -25,7 +25,7 @@ describe('ApplicationInProgress component', () => {
     },
   };
 
-  const tree = shallow(<StyledPLCCTimeoutInterimModalVanilla {...props} />);
+  const tree = shallow(<PLCCTimeoutInterimModalVanilla {...props} />);
   it('should renders correctly', () => {
     expect(tree).toBeDefined();
   });
@@ -38,7 +38,7 @@ describe('ApplicationInProgress component', () => {
 
   it('should should trigger restartApplication function when time has lapsed.', () => {
     props.time = 0;
-    const timedoutModal = shallow(<StyledPLCCTimeoutInterimModalVanilla {...props} />);
+    const timedoutModal = shallow(<PLCCTimeoutInterimModalVanilla {...props} />);
     const spyOpenModal = jest.spyOn(timedoutModal.instance(), 'handleCloseClick');
     timedoutModal.instance().handleCloseClick();
     expect(spyOpenModal).toHaveBeenCalled();

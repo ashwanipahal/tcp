@@ -34,7 +34,6 @@ export const modalStyles = css`
 
   .restart_application_button {
     margin: ${props => props.theme.spacing.ELEM_SPACING.MED} 0px 0px 0px;
-    font-weight: normal;
   }
 
   .info_text_margin {

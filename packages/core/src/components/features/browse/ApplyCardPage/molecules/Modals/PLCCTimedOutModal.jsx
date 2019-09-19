@@ -3,32 +3,19 @@ import PropTypes from 'prop-types';
 import { BodyCopy, Button, Row, Col } from '../../../../../common/atoms';
 import Modal from '../../../../../common/molecules/Modal';
 import withStyles from '../../../../../common/hoc/withStyles';
-import { getLocator, routerPush, getLabelValue } from '../../../../../../utils';
+import { getLocator, isClient, routerPush, getLabelValue } from '../../../../../../utils';
 import styles, { modalStyles } from './styles/PLCCTimeOutModal.style';
 import getModalHeight from '../../utils/modalHelper';
 
 /**
  * @class PLCCTimedoutModal - Opens a Modal containing information about application closure.
  */
-class StyledPLCCTimedoutModal extends React.Component {
-  static propTypes = {
-    className: PropTypes.string.isRequired,
-    isModalOpen: PropTypes.bool.isRequired,
-    handleFormReset: PropTypes.func.isRequired,
-    isPLCCModalFlow: PropTypes.bool.isRequired,
-    bagItems: PropTypes.bool.isRequired,
-    labels: PropTypes.shape({
-      plcc_restart_application: PropTypes.string.isRequired,
-      plcc_application_closure_subheader: PropTypes.string.isRequired,
-      plcc_application_closure: PropTypes.string.isRequired,
-    }).isRequired,
-  };
-
+class StyledPLCCTimedoutModal extends React.PureComponent {
   restartApplication = () => {
     const { handleFormReset, isPLCCModalFlow } = this.props;
     if (isPLCCModalFlow) {
       handleFormReset();
-    } else {
+    } else if (isClient()) {
       window.location.reload();
     }
   };
@@ -147,6 +134,19 @@ class StyledPLCCTimedoutModal extends React.Component {
     );
   }
 }
+
+StyledPLCCTimedoutModal.propTypes = {
+  className: PropTypes.string.isRequired,
+  isModalOpen: PropTypes.bool.isRequired,
+  handleFormReset: PropTypes.func.isRequired,
+  isPLCCModalFlow: PropTypes.bool.isRequired,
+  bagItems: PropTypes.bool.isRequired,
+  labels: PropTypes.shape({
+    plcc_restart_application: PropTypes.string.isRequired,
+    plcc_application_closure_subheader: PropTypes.string.isRequired,
+    plcc_application_closure: PropTypes.string.isRequired,
+  }).isRequired,
+};
 
 export default withStyles(StyledPLCCTimedoutModal, styles);
 export { StyledPLCCTimedoutModal as StyledPLCCTimedoutModalVanilla };

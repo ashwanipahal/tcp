@@ -8,9 +8,9 @@ import styles, { modalStyles } from './styles/PLCCTimeOutModal.style';
 import StyledPLCCTimeOutModal from './PLCCTimedOutModal';
 
 /**
- * @constant StyledPLCCTimeoutInterimModal - Opens a Modal containing information about application closure.
+ * @constant PLCCTimeoutInterimModal - Opens a Modal containing information about application closure.
  */
-class StyledPLCCTimeoutInterimModal extends React.Component {
+class PLCCTimeoutInterimModal extends React.PureComponent {
   static propTypes = {
     className: PropTypes.string.isRequired,
     isModalOpen: PropTypes.bool.isRequired,
@@ -174,5 +174,5 @@ class StyledPLCCTimeoutInterimModal extends React.Component {
   }
 }
 
-export default withStyles(StyledPLCCTimeoutInterimModal, styles);
-export { StyledPLCCTimeoutInterimModal as StyledPLCCTimeoutInterimModalVanilla };
+export default withStyles(PLCCTimeoutInterimModal, styles);
+export { PLCCTimeoutInterimModal as PLCCTimeoutInterimModalVanilla };

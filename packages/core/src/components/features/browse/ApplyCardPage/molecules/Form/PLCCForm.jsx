@@ -19,9 +19,9 @@ import {
 } from '../index';
 import { backToHome } from '../../utils/DateOfBirthHelper';
 import StyledPLCCFormWrapper from './styles/PLCCForm.style';
-import StyledPLCCTimeoutInterimModal from '../Modals/PLCCTmeoutInterimModal';
+import PLCCTimeoutInterimModal from '../Modals/PLCCTmeoutInterimModal';
 
-class PLCCForm extends React.Component {
+class PLCCForm extends React.PureComponent {
   static idleUserEvents = [
     'blur',
     'change',
@@ -47,28 +47,6 @@ class PLCCForm extends React.Component {
     'submit',
   ];
 
-  static propTypes = {
-    plccData: PropTypes.shape({
-      credit_card_header: PropTypes.string.isRequired,
-      contact_information_disclaimer: PropTypes.string.isRequired,
-      account_classified_disclaimer: PropTypes.string.isRequired,
-      electronic_consent: PropTypes.string.isRequired,
-      plcc_form_checkbox_text: PropTypes.string.isRequired,
-      plcc_form_submit_button: PropTypes.string.isRequired,
-      plcc_form_nothanks: PropTypes.string.isRequired,
-    }).isRequired,
-    dispatch: PropTypes.func.isRequired,
-    isPLCCModalFlow: PropTypes.bool.isRequired,
-    handleSubmit: PropTypes.func.isRequired,
-    reset: PropTypes.func.isRequired,
-    bagItems: PropTypes.bool.isRequired,
-    labels: PropTypes.shape({
-      plcc_form_checkbox_text: PropTypes.string.isRequired,
-      plcc_form_submit_button: PropTypes.string.isRequired,
-      plcc_form_nothanks: PropTypes.string.isRequired,
-    }).isRequired,
-  };
-
   constructor(props) {
     super(props);
     this.state = {
@@ -90,18 +68,33 @@ class PLCCForm extends React.Component {
     this.unbindIdleVerification();
   }
 
+  /**
+   * @fatarrow - bindIdleVerification
+   *
+   * @description - registers idleuserevents to check user activity on form page.
+   */
   bindIdleVerification = () => {
     PLCCForm.idleUserEvents.forEach(event => {
       document.addEventListener(event, this.restartIdleUserTimeout, true);
     });
   };
 
+  /**
+   * @fatarrow - unbindIdleVerification
+   *
+   * @description - releases idleuserevents registered with document.
+   */
   unbindIdleVerification = () => {
     PLCCForm.idleUserEvents.forEach(event => {
       document.removeEventListener(event, this.restartIdleUserTimeout, true);
     });
   };
 
+  /**
+   * @fatarrow - restartIdleUserTimeout
+   *
+   * @description - restart timer when user interacts with form.
+   */
   restartIdleUserTimeout = () => {
     if (this.timeout) {
       clearTimeout(this.timeout);
@@ -111,13 +104,23 @@ class PLCCForm extends React.Component {
       this.setState({
         isIdleModalActive: true,
       });
-    }, 13 * 60 * 1000);
+    }, 1 * 60 * 1000);
   };
 
+  /**
+   * @fatarrow - onCloseInterimModal
+   *
+   * @description - resets idleModalActive state to close close interim moda.
+   */
   onCloseInterimModal = () => {
     this.setState({ isIdleModalActive: false });
   };
 
+  /**
+   * @fatarrow - onCloseInterimModal
+   *
+   * @description - resets idleModalActive state to close interim modal.
+   */
   handleContinueApplication = () => {
     this.setState({
       isIdleModalActive: false,
@@ -125,10 +128,20 @@ class PLCCForm extends React.Component {
     this.restartIdleUserTimeout();
   };
 
+  /**
+   * @fatarrow - unregisterIdleVerfication
+   *
+   * @description - unregisters idleUserEvents from document.
+   */
   unregisterIdleVerfication = () => {
     this.unbindIdleVerification();
   };
 
+  /**
+   * @fatarrow - handleFormReset
+   *
+   * @description - resets plcc form data entered by user.
+   */
   handleFormReset = () => {
     const { reset } = this.props;
     this.setState({ isTimedOutModalActive: true });
@@ -256,7 +269,7 @@ class PLCCForm extends React.Component {
           </Grid>
         </form>
         {isIdleModalActive ? (
-          <StyledPLCCTimeoutInterimModal
+          <PLCCTimeoutInterimModal
             isModalOpen={isIdleModalActive}
             handleContinueApplication={this.handleContinueApplication}
             labels={labels}
@@ -264,7 +277,7 @@ class PLCCForm extends React.Component {
             isPLCCModalFlow={isPLCCModalFlow}
             unregisterIdleVerfication={this.unregisterIdleVerfication}
             bagItems={bagItems}
-            time={120}
+            time={6}
             isTimedOutModalActive={isTimedOutModalActive}
             handleFormReset={this.handleFormReset}
           />
@@ -273,6 +286,28 @@ class PLCCForm extends React.Component {
     );
   }
 }
+
+PLCCForm.propTypes = {
+  plccData: PropTypes.shape({
+    credit_card_header: PropTypes.string.isRequired,
+    contact_information_disclaimer: PropTypes.string.isRequired,
+    account_classified_disclaimer: PropTypes.string.isRequired,
+    electronic_consent: PropTypes.string.isRequired,
+    plcc_form_checkbox_text: PropTypes.string.isRequired,
+    plcc_form_submit_button: PropTypes.string.isRequired,
+    plcc_form_nothanks: PropTypes.string.isRequired,
+  }).isRequired,
+  dispatch: PropTypes.func.isRequired,
+  isPLCCModalFlow: PropTypes.bool.isRequired,
+  handleSubmit: PropTypes.func.isRequired,
+  reset: PropTypes.func.isRequired,
+  bagItems: PropTypes.bool.isRequired,
+  labels: PropTypes.shape({
+    plcc_form_checkbox_text: PropTypes.string.isRequired,
+    plcc_form_submit_button: PropTypes.string.isRequired,
+    plcc_form_nothanks: PropTypes.string.isRequired,
+  }).isRequired,
+};
 
 const validateMethod = createValidateMethod(
   getStandardConfig([
