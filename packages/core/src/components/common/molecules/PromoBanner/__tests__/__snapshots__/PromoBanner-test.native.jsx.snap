@@ -1064,7 +1064,7 @@ exports[`PromoTextBanner native component renders all style correctly 19`] = `
 />
 `;
 
-exports[`PromoTextBanner native component renders all style correctly 19`] = `
+exports[`PromoTextBanner native component renders all style correctly 20`] = `
 <StyledNativeComponent
   color="gray.900"
   fontSize="fs20"
@@ -1121,7 +1121,7 @@ exports[`PromoTextBanner native component renders all style correctly 19`] = `
 />
 `;
 
-exports[`PromoTextBanner native component renders all style correctly 20`] = `
+exports[`PromoTextBanner native component renders all style correctly 21`] = `
 <Styled(View)
   style={
     Object {
