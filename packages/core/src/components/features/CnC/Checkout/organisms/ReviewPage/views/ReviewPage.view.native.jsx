@@ -62,7 +62,7 @@ class ReviewPage extends React.PureComponent {
     return (
       <>
         <CheckoutProgressIndicator
-          activeStage="billing"
+          activeStage="review"
           navigation={navigation}
           availableStages={availableStages}
         />

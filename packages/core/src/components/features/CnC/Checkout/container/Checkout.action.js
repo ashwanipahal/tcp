@@ -352,7 +352,7 @@ export const getSetIsPaypalPaymentSettings = paypalPaymentSettings => {
 
 export const submitReviewSection = payload => {
   return {
-    type: constants.SUBMIT_REVIEW,
+    type: constants.SUBMIT_REVIEW_SECTION,
     payload,
   };
 };

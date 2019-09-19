@@ -144,7 +144,7 @@ export class AddressFields extends React.PureComponent {
             placeholder={isCA ? addressFormLabels.postalCode : addressFormLabels.zipCode}
             id={`${formSection}.zipCode`}
             name="zipCode"
-            maxLength={isCA ? 6 : 5}
+            maxLength={isCA ? 7 : 5}
             component={TextBox}
             dataLocator="addnewaddress-zipcode"
             className="address-field"

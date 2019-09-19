@@ -5923,7 +5923,7 @@ exports[`AddressFields component should render correctly without phoneNumber and
         dataLocator="addnewaddress-zipcode"
         enableSuccessCheck={false}
         id="address.zipCode"
-        maxLength={6}
+        maxLength={7}
         name="zipCode"
       />
     </Styled(Col)>

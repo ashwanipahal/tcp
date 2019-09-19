@@ -29,7 +29,7 @@ const {
 } = selectors;
 const { getCreditCardType } = utility;
 
-function* updatePaymentInstruction(
+export function* updatePaymentInstruction(
   formData,
   cardDetails,
   isGuestUser,
@@ -98,7 +98,7 @@ function* getAddressData(formData) {
   return existingAddress ? existingAddress.addressId : shippingDetails.onFileAddressId;
 }
 
-function* submitBillingData(formData, address, loadUpdatedCheckoutValues) {
+export function* submitBillingData(formData, address, loadUpdatedCheckoutValues) {
   let res;
   let cardDetails;
   const updatePaymentRequired = true;
