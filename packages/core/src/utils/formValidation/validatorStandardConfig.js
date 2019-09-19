@@ -1,3 +1,4 @@
+/* eslint max-lines: ["error", 500] */
 const enterPhoneNumber = 'lbl_err_phonenumber_required';
 const validPhoneNumber = 'lbl_err_phonenumber_phone';
 const validStreetAddress = 'lbl_err_validstreetaddress';
@@ -161,6 +162,27 @@ export const formValidationMessages = {
     eitherRequired: enterPhoneNumber,
     phone: validPhoneNumber,
     notEqualTo: 'lbl_err_altphonenumber_notequalto',
+  },
+  storeNumber: {
+    required: 'lbl_err_store_number_required',
+    maxLength: 'lbl_err_store_number_invalid',
+    number: 'lbl_err_store_number_invalid',
+  },
+  registerNumber: {
+    required: 'lbl_err_register_number_required',
+    maxLength: 'lbl_err_register_number_invalid',
+    number: 'lbl_err_register_number_invalid',
+  },
+  transactionNumber: {
+    required: 'lbl_err_transaction_number_required',
+    maxLength: 'lbl_err_transaction_number_invalid',
+    number: 'lbl_err_transaction_number_invalid',
+  },
+  transactionDate: {
+    required: 'lbl_err_transaction_date_required',
+  },
+  orderDate: {
+    required: 'lbl_err_order_date_required',
   },
 };
 
@@ -365,6 +387,27 @@ export const formValidationRules = {
     notEqualTo: {
       linkedFields: ['phoneNumberWithAlt'],
     },
+  },
+  storeNumber: {
+    required: true,
+    maxLength: 4,
+    number: true,
+  },
+  registerNumber: {
+    required: true,
+    maxLength: 2,
+    number: true,
+  },
+  transactionNumber: {
+    required: true,
+    maxLength: 4,
+    number: true,
+  },
+  orderDate: {
+    required: true,
+  },
+  transactionDate: {
+    required: true,
   },
 };
 

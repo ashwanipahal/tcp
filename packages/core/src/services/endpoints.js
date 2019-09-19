@@ -304,5 +304,9 @@ const endpoints = {
     method: 'POST',
     URI: 'v2/coupons/getOffers',
   },
+  claimPoints: {
+    method: 'POST',
+    URI: 'v2/account/points/claim',
+  },
 };
 export default endpoints;

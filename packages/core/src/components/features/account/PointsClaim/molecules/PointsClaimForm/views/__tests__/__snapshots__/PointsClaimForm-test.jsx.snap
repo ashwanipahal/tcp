@@ -1,0 +1,2116 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`PointsClaimForm component should renders correctly in initial state 1`] = `
+<Styled(BodyCopy)
+  className=""
+  color="text.primary"
+  component="p"
+  fontFamily="primary"
+  fontSize={12}
+  fontWeight="regular"
+  letterSpacing="normal"
+  lineHeight="normal"
+  textAlign="left"
+>
+  <Styled(BodyCopy)
+    className="elem-mb-LRG"
+    color="text.primary"
+    component="p"
+    fontFamily="secondary"
+    fontSize={12}
+    fontWeight="regular"
+    letterSpacing="normal"
+    lineHeight="normal"
+    textAlign="left"
+  >
+    lbl_points_claim_supporting_text
+  </Styled(BodyCopy)>
+  <form
+    className=""
+    name="PointsClaimForm"
+    noValidate={true}
+    onBlur={[Function]}
+  >
+    <Styled(Row)
+      fullBleed={true}
+    >
+      <Styled(Col)
+        colSize={
+          Object {
+            "large": 2,
+            "medium": 4,
+            "small": 3,
+          }
+        }
+        ignoreGutter={
+          Object {
+            "small": true,
+          }
+        }
+      >
+        <Styled(BodyCopy)
+          className="selectBox__label"
+          color="text.primary"
+          component="p"
+          fontFamily="secondary"
+          fontSize="fs11"
+          fontWeight="extrabold"
+          letterSpacing="normal"
+          lineHeight="normal"
+          textAlign="left"
+        >
+          lbl_points_claim_transaction_type
+        </Styled(BodyCopy)>
+        <Field
+          component={
+            Object {
+              "$$typeof": Symbol(react.forward_ref),
+              "attrs": Array [],
+              "componentStyle": ComponentStyle {
+                "componentId": "sc-bxivhb",
+                "isStatic": false,
+                "rules": Array [
+                  "
+  ",
+                  "
+  position: relative;
+  display: block;
+  height: 70px;
+
+  .select__input {
+    appearance: none;
+    background: url(",
+                  "/static/images/carrot-small-down.png",
+                  ") no-repeat right 0px bottom
+      ",
+                  [Function],
+                  ";
+    border: 0;
+    border-bottom: 1px solid ",
+                  [Function],
+                  ";
+    ",
+                  [Function],
+                  ";
+    border-radius: 0;
+    color: ",
+                  [Function],
+                  ";
+    font-size: ",
+                  [Function],
+                  ";
+    margin: 0;
+    margin-bottom: ",
+                  [Function],
+                  ";
+    outline: 0;
+    padding: ",
+                  "26px",
+                  " 0 ",
+                  [Function],
+                  ";
+    width: 100%;
+
+    ",
+                  [Function],
+                  ";
+  }
+
+  .select__label {
+    font-size: ",
+                  [Function],
+                  "px;
+    font-weight: ",
+                  [Function],
+                  ";
+    padding: 0;
+    position: absolute;
+    top: 0;
+  }
+
+  .SelectBox__error {
+    display: flex;
+    flex-direction: row;
+    padding-bottom: ",
+                  [Function],
+                  ";
+  }
+
+  .warning-icon {
+    background: transparent url('/static/images/circle-alert-fill.svg') no-repeat 0 0;
+    background-size: contain;
+    border: none;
+    height: 14px;
+    width: 16px;
+    margin-right: 7px;
+  }
+
+  ",
+                  [Function],
+                  ";
+",
+                  ";
+",
+                ],
+              },
+              "displayName": "Styled(SelectBox)",
+              "foldedComponentIds": Array [],
+              "render": [Function],
+              "styledComponentId": "sc-bxivhb",
+              "target": [Function],
+              "toString": [Function],
+              "warnTooManyClasses": [Function],
+              "withComponent": [Function],
+            }
+          }
+          dataLocator="points-claim-transactiontype"
+          id="transactionType"
+          name="transactionType"
+          onChange={[Function]}
+        />
+      </Styled(Col)>
+    </Styled(Row)>
+    <Styled(Row)
+      fullBleed={true}
+    >
+      <Styled(Col)
+        colSize={
+          Object {
+            "large": 5,
+            "medium": 4,
+            "small": 6,
+          }
+        }
+        ignoreGutter={
+          Object {
+            "small": true,
+          }
+        }
+      >
+        <UserInfo
+          change={[Function]}
+          className=""
+          labels={
+            Object {
+              "common": Object {},
+            }
+          }
+          myPlaceNumber=""
+          successMessage=""
+          userInfoData={Object {}}
+        />
+      </Styled(Col)>
+      <Styled(Col)
+        colSize={
+          Object {
+            "large": 4,
+            "medium": 4,
+            "small": 6,
+          }
+        }
+        ignoreGutter={
+          Object {
+            "small": true,
+          }
+        }
+      >
+        <Styled(BodyCopy)
+          className="image_container"
+          color="text.primary"
+          component="div"
+          fontFamily="primary"
+          fontSize={12}
+          fontWeight="regular"
+          letterSpacing="normal"
+          lineHeight="normal"
+          textAlign="left"
+        >
+          <Styled(BodyCopy)
+            className="image_caption"
+            color="text.primary"
+            component="p"
+            fontFamily="secondary"
+            fontSize={12}
+            fontWeight="semibold"
+            letterSpacing="normal"
+            lineHeight="normal"
+            textAlign="center"
+          >
+            lbl_points_claim_sample_receipt
+          </Styled(BodyCopy)>
+          <Styled(Image)
+            src="/static/images/sample-receipt.png"
+          />
+        </Styled(BodyCopy)>
+      </Styled(Col)>
+    </Styled(Row)>
+    <Styled(Row)
+      fullBleed={true}
+    >
+      <Styled(Col)
+        colSize={
+          Object {
+            "large": 3,
+            "medium": 4,
+            "small": 6,
+          }
+        }
+        ignoreGutter={
+          Object {
+            "small": true,
+          }
+        }
+      >
+        <Field
+          component={
+            Object {
+              "$$typeof": Symbol(react.forward_ref),
+              "attrs": Array [],
+              "componentStyle": ComponentStyle {
+                "componentId": "sc-htpNat",
+                "isStatic": false,
+                "rules": Array [
+                  "
+  ",
+                  "
+  position: relative;
+  display: block;
+
+  .TextBox__label {
+    font-size: ",
+                  [Function],
+                  "px;
+    padding: 0;
+    position: absolute;
+    top: ",
+                  [Function],
+                  ";
+    ",
+                  [Function],
+                  "
+  }
+
+  .TextBox__input {
+    margin: 0;
+    outline: 0;
+    font-size: ",
+                  [Function],
+                  "px;
+    color: ",
+                  [Function],
+                  ";
+    width: 100%;
+    background-position: left top;
+    background-repeat: no-repeat;
+    background-size: contain;
+    border: 0 solid transparent;
+    border-bottom: 1px solid ",
+                  [Function],
+                  ";
+    padding-bottom: ",
+                  [Function],
+                  ";
+    margin-bottom: ",
+                  [Function],
+                  ";
+    padding-top: ",
+                  [Function],
+                  ";
+
+    ",
+                  [Function],
+                  "
+
+    ",
+                  [Function],
+                  ";
+
+    &:focus + .TextBox__label {
+      font-size: ",
+                  [Function],
+                  "px;
+      font-weight: ",
+                  [Function],
+                  ";
+      top: ",
+                  [Function],
+                  ";
+    }
+  }
+  .success__checkmark {
+    display: none;
+  }
+  &.textbox_validation_success .TextBox__input {
+    border-bottom: 1px solid ",
+                  [Function],
+                  ";
+  }
+
+  &.textbox_validation_success .success__checkmark {
+    display: ",
+                  [Function],
+                  ";
+    width: 15px;
+    height: 8px;
+    margin-left: ",
+                  [Function],
+                  ";
+    transform: rotate(-45deg);
+    transform-origin: left;
+    position: absolute;
+    right: 0;
+    top: 30px;
+
+    &:before {
+      content: '';
+      position: absolute;
+      width: 3px;
+      height: 100%;
+      background-color: ",
+                  [Function],
+                  ";
+    }
+
+    &:after {
+      content: '';
+      position: absolute;
+      width: 100%;
+      height: 3px;
+      background-color: ",
+                  [Function],
+                  ";
+      bottom: 0;
+    }
+  }
+
+  ",
+                  [Function],
+                  ";
+
+  .TextBox__error {
+    display: flex;
+    flex-direction: row;
+    padding-bottom: ",
+                  [Function],
+                  ";
+  }
+  .warning-icon {
+    background: transparent url('/static/images/circle-alert-fill.svg') no-repeat 0 0;
+    background-size: contain;
+    border: none;
+    height: 14px;
+    width: 16px;
+    margin-right: 7px;
+  }
+",
+                  ";
+",
+                ],
+              },
+              "displayName": "Styled(TextBox)",
+              "foldedComponentIds": Array [],
+              "render": [Function],
+              "styledComponentId": "sc-htpNat",
+              "target": [Function],
+              "toString": [Function],
+              "warnTooManyClasses": [Function],
+              "withComponent": [Function],
+            }
+          }
+          dataLocator="points-claim-storenumber"
+          id="storeNumber"
+          name="storeNumber"
+          placeholder="lbl_points_claim_store_number"
+        />
+      </Styled(Col)>
+      <Styled(Col)
+        colSize={
+          Object {
+            "large": 3,
+            "medium": 4,
+            "small": 6,
+          }
+        }
+      >
+        <Field
+          component={
+            Object {
+              "$$typeof": Symbol(react.forward_ref),
+              "attrs": Array [],
+              "componentStyle": ComponentStyle {
+                "componentId": "sc-htpNat",
+                "isStatic": false,
+                "rules": Array [
+                  "
+  ",
+                  "
+  position: relative;
+  display: block;
+
+  .TextBox__label {
+    font-size: ",
+                  [Function],
+                  "px;
+    padding: 0;
+    position: absolute;
+    top: ",
+                  [Function],
+                  ";
+    ",
+                  [Function],
+                  "
+  }
+
+  .TextBox__input {
+    margin: 0;
+    outline: 0;
+    font-size: ",
+                  [Function],
+                  "px;
+    color: ",
+                  [Function],
+                  ";
+    width: 100%;
+    background-position: left top;
+    background-repeat: no-repeat;
+    background-size: contain;
+    border: 0 solid transparent;
+    border-bottom: 1px solid ",
+                  [Function],
+                  ";
+    padding-bottom: ",
+                  [Function],
+                  ";
+    margin-bottom: ",
+                  [Function],
+                  ";
+    padding-top: ",
+                  [Function],
+                  ";
+
+    ",
+                  [Function],
+                  "
+
+    ",
+                  [Function],
+                  ";
+
+    &:focus + .TextBox__label {
+      font-size: ",
+                  [Function],
+                  "px;
+      font-weight: ",
+                  [Function],
+                  ";
+      top: ",
+                  [Function],
+                  ";
+    }
+  }
+  .success__checkmark {
+    display: none;
+  }
+  &.textbox_validation_success .TextBox__input {
+    border-bottom: 1px solid ",
+                  [Function],
+                  ";
+  }
+
+  &.textbox_validation_success .success__checkmark {
+    display: ",
+                  [Function],
+                  ";
+    width: 15px;
+    height: 8px;
+    margin-left: ",
+                  [Function],
+                  ";
+    transform: rotate(-45deg);
+    transform-origin: left;
+    position: absolute;
+    right: 0;
+    top: 30px;
+
+    &:before {
+      content: '';
+      position: absolute;
+      width: 3px;
+      height: 100%;
+      background-color: ",
+                  [Function],
+                  ";
+    }
+
+    &:after {
+      content: '';
+      position: absolute;
+      width: 100%;
+      height: 3px;
+      background-color: ",
+                  [Function],
+                  ";
+      bottom: 0;
+    }
+  }
+
+  ",
+                  [Function],
+                  ";
+
+  .TextBox__error {
+    display: flex;
+    flex-direction: row;
+    padding-bottom: ",
+                  [Function],
+                  ";
+  }
+  .warning-icon {
+    background: transparent url('/static/images/circle-alert-fill.svg') no-repeat 0 0;
+    background-size: contain;
+    border: none;
+    height: 14px;
+    width: 16px;
+    margin-right: 7px;
+  }
+",
+                  ";
+",
+                ],
+              },
+              "displayName": "Styled(TextBox)",
+              "foldedComponentIds": Array [],
+              "render": [Function],
+              "styledComponentId": "sc-htpNat",
+              "target": [Function],
+              "toString": [Function],
+              "warnTooManyClasses": [Function],
+              "withComponent": [Function],
+            }
+          }
+          dataLocator="points-claim-registernumber"
+          id="registerNumber"
+          name="registerNumber"
+          placeholder="lbl_points_claim_register_number"
+        />
+      </Styled(Col)>
+    </Styled(Row)>
+    <Styled(Row)
+      fullBleed={true}
+    >
+      <Styled(Col)
+        colSize={
+          Object {
+            "large": 3,
+            "medium": 4,
+            "small": 6,
+          }
+        }
+        ignoreGutter={
+          Object {
+            "small": true,
+          }
+        }
+      >
+        <Field
+          component={
+            Object {
+              "$$typeof": Symbol(react.forward_ref),
+              "attrs": Array [],
+              "componentStyle": ComponentStyle {
+                "componentId": "sc-ifAKCX",
+                "isStatic": false,
+                "rules": Array [
+                  "
+  ",
+                  "
+  z-index: 1;
+
+  .react-datepicker {
+    background-color: ",
+                  [Function],
+                  ";
+    color: ",
+                  [Function],
+                  ";
+    display: inline-block;
+    position: relative;
+    box-shadow: 0 0 4px 3px ",
+                  "rgba(163, 162, 162, 0.31)",
+                  ";
+    font-family: ",
+                  [Function],
+                  ";
+    font-size: ",
+                  [Function],
+                  ";
+    line-height: normal;
+    padding: 0 ",
+                  [Function],
+                  ";
+  }
+
+  .react-datepicker__header {
+    text-align: center;
+    border-bottom: 1px solid ",
+                  [Function],
+                  ";
+    padding-top: ",
+                  [Function],
+                  ";
+    position: relative;
+  }
+
+  .react-datepicker__current-month {
+    font-weight: bold;
+    font-size: ",
+                  [Function],
+                  ";
+    margin-bottom: ",
+                  [Function],
+                  ";
+  }
+
+  .react-datepicker__navigation {
+    background: none;
+    text-align: center;
+    cursor: pointer;
+    position: absolute;
+    top: ",
+                  [Function],
+                  ";
+    padding: 0;
+    border: 1px solid ",
+                  [Function],
+                  ";
+    border-top: none;
+    border-right: none;
+    z-index: 1;
+    height: 8px;
+    width: 8px;
+    text-indent: -999em;
+    overflow: hidden;
+  }
+
+  .react-datepicker__navigation:hover {
+    border-color: ",
+                  [Function],
+                  ";
+  }
+
+  .react-datepicker__navigation--previous {
+    left: ",
+                  [Function],
+                  ";
+    transform: rotate(45deg);
+  }
+
+  .react-datepicker__navigation--next {
+    right: ",
+                  [Function],
+                  ";
+    transform: rotate(225deg);
+  }
+
+  .react-datepicker__month {
+    padding: ",
+                  [Function],
+                  " 0;
+  }
+
+  .react-datepicker__day-names,
+  .react-datepicker__week {
+    white-space: nowrap;
+  }
+
+  .react-datepicker__day {
+    cursor: pointer;
+  }
+
+  .react-datepicker__day,
+  .react-datepicker__day-name {
+    background-color: ",
+                  [Function],
+                  ";
+    border-radius: 50%;
+    color: ",
+                  [Function],
+                  ";
+    display: inline-block;
+    height: 38px;
+    line-height: 38px;
+    margin: 0;
+    text-align: center;
+    width: 38px;
+  }
+
+  .react-datepicker__day:hover {
+    background-color: ",
+                  [Function],
+                  ";
+  }
+
+  .react-datepicker__day-name {
+    font-weight: ",
+                  [Function],
+                  ";
+  }
+
+  .react-datepicker__day--selected {
+    background-color: ",
+                  [Function],
+                  ";
+    color: ",
+                  [Function],
+                  ";
+  }
+
+  .react-datepicker__day--disabled {
+    color: ",
+                  [Function],
+                  ";
+    cursor: default;
+  }
+
+  .react-datepicker__day--disabled:hover {
+    background-color: transparent;
+  }
+
+  .react-datepicker__triangle {
+    width: 25px;
+    height: 15px;
+    position: absolute;
+    overflow: hidden;
+    top: -15px;
+    left: calc(50% - 12px);
+  }
+
+  .react-datepicker__triangle::after {
+    content: '';
+    position: absolute;
+    width: 20px;
+    height: 20px;
+    background: ",
+                  [Function],
+                  ";
+    transform: rotate(45deg);
+    top: 7px;
+    left: 3px;
+    box-shadow: -1px -1px 5px 0px ",
+                  "rgba(163, 162, 162, 0.31)",
+                  ";
+  }
+
+  &[data-placement='top-start'] .react-datepicker__triangle {
+    top: 100%;
+
+    &:after {
+      top: -10px;
+    }
+  }
+",
+                  ";
+",
+                ],
+              },
+              "displayName": "Styled(DateInput)",
+              "foldedComponentIds": Array [],
+              "render": [Function],
+              "styledComponentId": "sc-ifAKCX",
+              "target": [Function],
+              "toString": [Function],
+              "warnTooManyClasses": [Function],
+              "withComponent": [Function],
+            }
+          }
+          dataLocator="points-claim-transactiondate"
+          id="transactionDate"
+          maxDate={2019-09-19T18:17:54.135Z}
+          name="transactionDate"
+          placeholder="lbl_points_claim_transaction_date"
+        />
+      </Styled(Col)>
+      <Styled(Col)
+        colSize={
+          Object {
+            "large": 3,
+            "medium": 4,
+            "small": 6,
+          }
+        }
+      >
+        <Field
+          component={
+            Object {
+              "$$typeof": Symbol(react.forward_ref),
+              "attrs": Array [],
+              "componentStyle": ComponentStyle {
+                "componentId": "sc-htpNat",
+                "isStatic": false,
+                "rules": Array [
+                  "
+  ",
+                  "
+  position: relative;
+  display: block;
+
+  .TextBox__label {
+    font-size: ",
+                  [Function],
+                  "px;
+    padding: 0;
+    position: absolute;
+    top: ",
+                  [Function],
+                  ";
+    ",
+                  [Function],
+                  "
+  }
+
+  .TextBox__input {
+    margin: 0;
+    outline: 0;
+    font-size: ",
+                  [Function],
+                  "px;
+    color: ",
+                  [Function],
+                  ";
+    width: 100%;
+    background-position: left top;
+    background-repeat: no-repeat;
+    background-size: contain;
+    border: 0 solid transparent;
+    border-bottom: 1px solid ",
+                  [Function],
+                  ";
+    padding-bottom: ",
+                  [Function],
+                  ";
+    margin-bottom: ",
+                  [Function],
+                  ";
+    padding-top: ",
+                  [Function],
+                  ";
+
+    ",
+                  [Function],
+                  "
+
+    ",
+                  [Function],
+                  ";
+
+    &:focus + .TextBox__label {
+      font-size: ",
+                  [Function],
+                  "px;
+      font-weight: ",
+                  [Function],
+                  ";
+      top: ",
+                  [Function],
+                  ";
+    }
+  }
+  .success__checkmark {
+    display: none;
+  }
+  &.textbox_validation_success .TextBox__input {
+    border-bottom: 1px solid ",
+                  [Function],
+                  ";
+  }
+
+  &.textbox_validation_success .success__checkmark {
+    display: ",
+                  [Function],
+                  ";
+    width: 15px;
+    height: 8px;
+    margin-left: ",
+                  [Function],
+                  ";
+    transform: rotate(-45deg);
+    transform-origin: left;
+    position: absolute;
+    right: 0;
+    top: 30px;
+
+    &:before {
+      content: '';
+      position: absolute;
+      width: 3px;
+      height: 100%;
+      background-color: ",
+                  [Function],
+                  ";
+    }
+
+    &:after {
+      content: '';
+      position: absolute;
+      width: 100%;
+      height: 3px;
+      background-color: ",
+                  [Function],
+                  ";
+      bottom: 0;
+    }
+  }
+
+  ",
+                  [Function],
+                  ";
+
+  .TextBox__error {
+    display: flex;
+    flex-direction: row;
+    padding-bottom: ",
+                  [Function],
+                  ";
+  }
+  .warning-icon {
+    background: transparent url('/static/images/circle-alert-fill.svg') no-repeat 0 0;
+    background-size: contain;
+    border: none;
+    height: 14px;
+    width: 16px;
+    margin-right: 7px;
+  }
+",
+                  ";
+",
+                ],
+              },
+              "displayName": "Styled(TextBox)",
+              "foldedComponentIds": Array [],
+              "render": [Function],
+              "styledComponentId": "sc-htpNat",
+              "target": [Function],
+              "toString": [Function],
+              "warnTooManyClasses": [Function],
+              "withComponent": [Function],
+            }
+          }
+          dataLocator="points-claim-transactionnumber"
+          id="transactionNumber"
+          name="transactionNumber"
+          placeholder="lbl_points_claim_transaction_number"
+        />
+      </Styled(Col)>
+    </Styled(Row)>
+    <Styled(Row)
+      className="elem-pt-XXL"
+      fullBleed={true}
+    >
+      <Styled(Col)
+        className="points-claim__cancel"
+        colSize={
+          Object {
+            "large": 3,
+            "medium": 3,
+            "small": 6,
+          }
+        }
+        offsetLeft={
+          Object {
+            "large": 5,
+            "medium": 1,
+          }
+        }
+      >
+        <Styled(Button)
+          buttonVariation="fixed-width"
+          data-locator="points-claim-cancel"
+          type="button"
+        />
+      </Styled(Col)>
+      <Styled(Col)
+        className="points-claim__submit"
+        colSize={
+          Object {
+            "large": 3,
+            "medium": 3,
+            "small": 6,
+          }
+        }
+      >
+        <Styled(Button)
+          buttonVariation="fixed-width"
+          data-locator="points-claim-submit"
+          fill="BLUE"
+          type="submit"
+        >
+          lbl_points_claim_submit_caps
+        </Styled(Button)>
+      </Styled(Col)>
+    </Styled(Row)>
+  </form>
+</Styled(BodyCopy)>
+`;
+
+exports[`PointsClaimForm component should renders correctly with success and error 1`] = `
+<Styled(BodyCopy)
+  className=""
+  color="text.primary"
+  component="p"
+  fontFamily="primary"
+  fontSize={12}
+  fontWeight="regular"
+  letterSpacing="normal"
+  lineHeight="normal"
+  textAlign="left"
+>
+  <Styled(Notification)
+    colSize={
+      Object {
+        "large": 12,
+        "medium": 8,
+        "small": 6,
+      }
+    }
+    message=""
+    status="error"
+  />
+  <Styled(BodyCopy)
+    className="elem-mb-LRG"
+    color="text.primary"
+    component="p"
+    fontFamily="secondary"
+    fontSize={12}
+    fontWeight="regular"
+    letterSpacing="normal"
+    lineHeight="normal"
+    textAlign="left"
+  >
+    lbl_points_claim_supporting_text
+  </Styled(BodyCopy)>
+  <form
+    className=""
+    name="PointsClaimForm"
+    noValidate={true}
+    onBlur={[Function]}
+  >
+    <Styled(Row)
+      fullBleed={true}
+    >
+      <Styled(Col)
+        colSize={
+          Object {
+            "large": 2,
+            "medium": 4,
+            "small": 3,
+          }
+        }
+        ignoreGutter={
+          Object {
+            "small": true,
+          }
+        }
+      >
+        <Styled(BodyCopy)
+          className="selectBox__label"
+          color="text.primary"
+          component="p"
+          fontFamily="secondary"
+          fontSize="fs11"
+          fontWeight="extrabold"
+          letterSpacing="normal"
+          lineHeight="normal"
+          textAlign="left"
+        >
+          lbl_points_claim_transaction_type
+        </Styled(BodyCopy)>
+        <Field
+          component={
+            Object {
+              "$$typeof": Symbol(react.forward_ref),
+              "attrs": Array [],
+              "componentStyle": ComponentStyle {
+                "componentId": "sc-bxivhb",
+                "isStatic": false,
+                "rules": Array [
+                  "
+  ",
+                  "
+  position: relative;
+  display: block;
+  height: 70px;
+
+  .select__input {
+    appearance: none;
+    background: url(",
+                  "/static/images/carrot-small-down.png",
+                  ") no-repeat right 0px bottom
+      ",
+                  [Function],
+                  ";
+    border: 0;
+    border-bottom: 1px solid ",
+                  [Function],
+                  ";
+    ",
+                  [Function],
+                  ";
+    border-radius: 0;
+    color: ",
+                  [Function],
+                  ";
+    font-size: ",
+                  [Function],
+                  ";
+    margin: 0;
+    margin-bottom: ",
+                  [Function],
+                  ";
+    outline: 0;
+    padding: ",
+                  "26px",
+                  " 0 ",
+                  [Function],
+                  ";
+    width: 100%;
+
+    ",
+                  [Function],
+                  ";
+  }
+
+  .select__label {
+    font-size: ",
+                  [Function],
+                  "px;
+    font-weight: ",
+                  [Function],
+                  ";
+    padding: 0;
+    position: absolute;
+    top: 0;
+  }
+
+  .SelectBox__error {
+    display: flex;
+    flex-direction: row;
+    padding-bottom: ",
+                  [Function],
+                  ";
+  }
+
+  .warning-icon {
+    background: transparent url('/static/images/circle-alert-fill.svg') no-repeat 0 0;
+    background-size: contain;
+    border: none;
+    height: 14px;
+    width: 16px;
+    margin-right: 7px;
+  }
+
+  ",
+                  [Function],
+                  ";
+",
+                  ";
+",
+                ],
+              },
+              "displayName": "Styled(SelectBox)",
+              "foldedComponentIds": Array [],
+              "render": [Function],
+              "styledComponentId": "sc-bxivhb",
+              "target": [Function],
+              "toString": [Function],
+              "warnTooManyClasses": [Function],
+              "withComponent": [Function],
+            }
+          }
+          dataLocator="points-claim-transactiontype"
+          id="transactionType"
+          name="transactionType"
+          onChange={[Function]}
+        />
+      </Styled(Col)>
+    </Styled(Row)>
+    <Styled(Row)
+      fullBleed={true}
+    >
+      <Styled(Col)
+        colSize={
+          Object {
+            "large": 5,
+            "medium": 4,
+            "small": 6,
+          }
+        }
+        ignoreGutter={
+          Object {
+            "small": true,
+          }
+        }
+      >
+        <UserInfo
+          change={[Function]}
+          className=""
+          labels={
+            Object {
+              "common": Object {},
+            }
+          }
+          myPlaceNumber=""
+          successMessage="success"
+          userInfoData={Object {}}
+        />
+      </Styled(Col)>
+      <Styled(Col)
+        colSize={
+          Object {
+            "large": 4,
+            "medium": 4,
+            "small": 6,
+          }
+        }
+        ignoreGutter={
+          Object {
+            "small": true,
+          }
+        }
+      >
+        <Styled(BodyCopy)
+          className="image_container"
+          color="text.primary"
+          component="div"
+          fontFamily="primary"
+          fontSize={12}
+          fontWeight="regular"
+          letterSpacing="normal"
+          lineHeight="normal"
+          textAlign="left"
+        >
+          <Styled(BodyCopy)
+            className="image_caption"
+            color="text.primary"
+            component="p"
+            fontFamily="secondary"
+            fontSize={12}
+            fontWeight="semibold"
+            letterSpacing="normal"
+            lineHeight="normal"
+            textAlign="center"
+          >
+            lbl_points_claim_sample_receipt
+          </Styled(BodyCopy)>
+          <Styled(Image)
+            src="/static/images/sample-receipt.png"
+          />
+        </Styled(BodyCopy)>
+      </Styled(Col)>
+    </Styled(Row)>
+    <Styled(Row)
+      fullBleed={true}
+    >
+      <Styled(Col)
+        colSize={
+          Object {
+            "large": 3,
+            "medium": 4,
+            "small": 6,
+          }
+        }
+        ignoreGutter={
+          Object {
+            "small": true,
+          }
+        }
+      >
+        <Field
+          component={
+            Object {
+              "$$typeof": Symbol(react.forward_ref),
+              "attrs": Array [],
+              "componentStyle": ComponentStyle {
+                "componentId": "sc-htpNat",
+                "isStatic": false,
+                "rules": Array [
+                  "
+  ",
+                  "
+  position: relative;
+  display: block;
+
+  .TextBox__label {
+    font-size: ",
+                  [Function],
+                  "px;
+    padding: 0;
+    position: absolute;
+    top: ",
+                  [Function],
+                  ";
+    ",
+                  [Function],
+                  "
+  }
+
+  .TextBox__input {
+    margin: 0;
+    outline: 0;
+    font-size: ",
+                  [Function],
+                  "px;
+    color: ",
+                  [Function],
+                  ";
+    width: 100%;
+    background-position: left top;
+    background-repeat: no-repeat;
+    background-size: contain;
+    border: 0 solid transparent;
+    border-bottom: 1px solid ",
+                  [Function],
+                  ";
+    padding-bottom: ",
+                  [Function],
+                  ";
+    margin-bottom: ",
+                  [Function],
+                  ";
+    padding-top: ",
+                  [Function],
+                  ";
+
+    ",
+                  [Function],
+                  "
+
+    ",
+                  [Function],
+                  ";
+
+    &:focus + .TextBox__label {
+      font-size: ",
+                  [Function],
+                  "px;
+      font-weight: ",
+                  [Function],
+                  ";
+      top: ",
+                  [Function],
+                  ";
+    }
+  }
+  .success__checkmark {
+    display: none;
+  }
+  &.textbox_validation_success .TextBox__input {
+    border-bottom: 1px solid ",
+                  [Function],
+                  ";
+  }
+
+  &.textbox_validation_success .success__checkmark {
+    display: ",
+                  [Function],
+                  ";
+    width: 15px;
+    height: 8px;
+    margin-left: ",
+                  [Function],
+                  ";
+    transform: rotate(-45deg);
+    transform-origin: left;
+    position: absolute;
+    right: 0;
+    top: 30px;
+
+    &:before {
+      content: '';
+      position: absolute;
+      width: 3px;
+      height: 100%;
+      background-color: ",
+                  [Function],
+                  ";
+    }
+
+    &:after {
+      content: '';
+      position: absolute;
+      width: 100%;
+      height: 3px;
+      background-color: ",
+                  [Function],
+                  ";
+      bottom: 0;
+    }
+  }
+
+  ",
+                  [Function],
+                  ";
+
+  .TextBox__error {
+    display: flex;
+    flex-direction: row;
+    padding-bottom: ",
+                  [Function],
+                  ";
+  }
+  .warning-icon {
+    background: transparent url('/static/images/circle-alert-fill.svg') no-repeat 0 0;
+    background-size: contain;
+    border: none;
+    height: 14px;
+    width: 16px;
+    margin-right: 7px;
+  }
+",
+                  ";
+",
+                ],
+              },
+              "displayName": "Styled(TextBox)",
+              "foldedComponentIds": Array [],
+              "render": [Function],
+              "styledComponentId": "sc-htpNat",
+              "target": [Function],
+              "toString": [Function],
+              "warnTooManyClasses": [Function],
+              "withComponent": [Function],
+            }
+          }
+          dataLocator="points-claim-storenumber"
+          id="storeNumber"
+          name="storeNumber"
+          placeholder="lbl_points_claim_store_number"
+        />
+      </Styled(Col)>
+      <Styled(Col)
+        colSize={
+          Object {
+            "large": 3,
+            "medium": 4,
+            "small": 6,
+          }
+        }
+      >
+        <Field
+          component={
+            Object {
+              "$$typeof": Symbol(react.forward_ref),
+              "attrs": Array [],
+              "componentStyle": ComponentStyle {
+                "componentId": "sc-htpNat",
+                "isStatic": false,
+                "rules": Array [
+                  "
+  ",
+                  "
+  position: relative;
+  display: block;
+
+  .TextBox__label {
+    font-size: ",
+                  [Function],
+                  "px;
+    padding: 0;
+    position: absolute;
+    top: ",
+                  [Function],
+                  ";
+    ",
+                  [Function],
+                  "
+  }
+
+  .TextBox__input {
+    margin: 0;
+    outline: 0;
+    font-size: ",
+                  [Function],
+                  "px;
+    color: ",
+                  [Function],
+                  ";
+    width: 100%;
+    background-position: left top;
+    background-repeat: no-repeat;
+    background-size: contain;
+    border: 0 solid transparent;
+    border-bottom: 1px solid ",
+                  [Function],
+                  ";
+    padding-bottom: ",
+                  [Function],
+                  ";
+    margin-bottom: ",
+                  [Function],
+                  ";
+    padding-top: ",
+                  [Function],
+                  ";
+
+    ",
+                  [Function],
+                  "
+
+    ",
+                  [Function],
+                  ";
+
+    &:focus + .TextBox__label {
+      font-size: ",
+                  [Function],
+                  "px;
+      font-weight: ",
+                  [Function],
+                  ";
+      top: ",
+                  [Function],
+                  ";
+    }
+  }
+  .success__checkmark {
+    display: none;
+  }
+  &.textbox_validation_success .TextBox__input {
+    border-bottom: 1px solid ",
+                  [Function],
+                  ";
+  }
+
+  &.textbox_validation_success .success__checkmark {
+    display: ",
+                  [Function],
+                  ";
+    width: 15px;
+    height: 8px;
+    margin-left: ",
+                  [Function],
+                  ";
+    transform: rotate(-45deg);
+    transform-origin: left;
+    position: absolute;
+    right: 0;
+    top: 30px;
+
+    &:before {
+      content: '';
+      position: absolute;
+      width: 3px;
+      height: 100%;
+      background-color: ",
+                  [Function],
+                  ";
+    }
+
+    &:after {
+      content: '';
+      position: absolute;
+      width: 100%;
+      height: 3px;
+      background-color: ",
+                  [Function],
+                  ";
+      bottom: 0;
+    }
+  }
+
+  ",
+                  [Function],
+                  ";
+
+  .TextBox__error {
+    display: flex;
+    flex-direction: row;
+    padding-bottom: ",
+                  [Function],
+                  ";
+  }
+  .warning-icon {
+    background: transparent url('/static/images/circle-alert-fill.svg') no-repeat 0 0;
+    background-size: contain;
+    border: none;
+    height: 14px;
+    width: 16px;
+    margin-right: 7px;
+  }
+",
+                  ";
+",
+                ],
+              },
+              "displayName": "Styled(TextBox)",
+              "foldedComponentIds": Array [],
+              "render": [Function],
+              "styledComponentId": "sc-htpNat",
+              "target": [Function],
+              "toString": [Function],
+              "warnTooManyClasses": [Function],
+              "withComponent": [Function],
+            }
+          }
+          dataLocator="points-claim-registernumber"
+          id="registerNumber"
+          name="registerNumber"
+          placeholder="lbl_points_claim_register_number"
+        />
+      </Styled(Col)>
+    </Styled(Row)>
+    <Styled(Row)
+      fullBleed={true}
+    >
+      <Styled(Col)
+        colSize={
+          Object {
+            "large": 3,
+            "medium": 4,
+            "small": 6,
+          }
+        }
+        ignoreGutter={
+          Object {
+            "small": true,
+          }
+        }
+      >
+        <Field
+          component={
+            Object {
+              "$$typeof": Symbol(react.forward_ref),
+              "attrs": Array [],
+              "componentStyle": ComponentStyle {
+                "componentId": "sc-ifAKCX",
+                "isStatic": false,
+                "rules": Array [
+                  "
+  ",
+                  "
+  z-index: 1;
+
+  .react-datepicker {
+    background-color: ",
+                  [Function],
+                  ";
+    color: ",
+                  [Function],
+                  ";
+    display: inline-block;
+    position: relative;
+    box-shadow: 0 0 4px 3px ",
+                  "rgba(163, 162, 162, 0.31)",
+                  ";
+    font-family: ",
+                  [Function],
+                  ";
+    font-size: ",
+                  [Function],
+                  ";
+    line-height: normal;
+    padding: 0 ",
+                  [Function],
+                  ";
+  }
+
+  .react-datepicker__header {
+    text-align: center;
+    border-bottom: 1px solid ",
+                  [Function],
+                  ";
+    padding-top: ",
+                  [Function],
+                  ";
+    position: relative;
+  }
+
+  .react-datepicker__current-month {
+    font-weight: bold;
+    font-size: ",
+                  [Function],
+                  ";
+    margin-bottom: ",
+                  [Function],
+                  ";
+  }
+
+  .react-datepicker__navigation {
+    background: none;
+    text-align: center;
+    cursor: pointer;
+    position: absolute;
+    top: ",
+                  [Function],
+                  ";
+    padding: 0;
+    border: 1px solid ",
+                  [Function],
+                  ";
+    border-top: none;
+    border-right: none;
+    z-index: 1;
+    height: 8px;
+    width: 8px;
+    text-indent: -999em;
+    overflow: hidden;
+  }
+
+  .react-datepicker__navigation:hover {
+    border-color: ",
+                  [Function],
+                  ";
+  }
+
+  .react-datepicker__navigation--previous {
+    left: ",
+                  [Function],
+                  ";
+    transform: rotate(45deg);
+  }
+
+  .react-datepicker__navigation--next {
+    right: ",
+                  [Function],
+                  ";
+    transform: rotate(225deg);
+  }
+
+  .react-datepicker__month {
+    padding: ",
+                  [Function],
+                  " 0;
+  }
+
+  .react-datepicker__day-names,
+  .react-datepicker__week {
+    white-space: nowrap;
+  }
+
+  .react-datepicker__day {
+    cursor: pointer;
+  }
+
+  .react-datepicker__day,
+  .react-datepicker__day-name {
+    background-color: ",
+                  [Function],
+                  ";
+    border-radius: 50%;
+    color: ",
+                  [Function],
+                  ";
+    display: inline-block;
+    height: 38px;
+    line-height: 38px;
+    margin: 0;
+    text-align: center;
+    width: 38px;
+  }
+
+  .react-datepicker__day:hover {
+    background-color: ",
+                  [Function],
+                  ";
+  }
+
+  .react-datepicker__day-name {
+    font-weight: ",
+                  [Function],
+                  ";
+  }
+
+  .react-datepicker__day--selected {
+    background-color: ",
+                  [Function],
+                  ";
+    color: ",
+                  [Function],
+                  ";
+  }
+
+  .react-datepicker__day--disabled {
+    color: ",
+                  [Function],
+                  ";
+    cursor: default;
+  }
+
+  .react-datepicker__day--disabled:hover {
+    background-color: transparent;
+  }
+
+  .react-datepicker__triangle {
+    width: 25px;
+    height: 15px;
+    position: absolute;
+    overflow: hidden;
+    top: -15px;
+    left: calc(50% - 12px);
+  }
+
+  .react-datepicker__triangle::after {
+    content: '';
+    position: absolute;
+    width: 20px;
+    height: 20px;
+    background: ",
+                  [Function],
+                  ";
+    transform: rotate(45deg);
+    top: 7px;
+    left: 3px;
+    box-shadow: -1px -1px 5px 0px ",
+                  "rgba(163, 162, 162, 0.31)",
+                  ";
+  }
+
+  &[data-placement='top-start'] .react-datepicker__triangle {
+    top: 100%;
+
+    &:after {
+      top: -10px;
+    }
+  }
+",
+                  ";
+",
+                ],
+              },
+              "displayName": "Styled(DateInput)",
+              "foldedComponentIds": Array [],
+              "render": [Function],
+              "styledComponentId": "sc-ifAKCX",
+              "target": [Function],
+              "toString": [Function],
+              "warnTooManyClasses": [Function],
+              "withComponent": [Function],
+            }
+          }
+          dataLocator="points-claim-transactiondate"
+          id="transactionDate"
+          maxDate={2019-09-19T18:17:54.167Z}
+          name="transactionDate"
+          placeholder="lbl_points_claim_transaction_date"
+        />
+      </Styled(Col)>
+      <Styled(Col)
+        colSize={
+          Object {
+            "large": 3,
+            "medium": 4,
+            "small": 6,
+          }
+        }
+      >
+        <Field
+          component={
+            Object {
+              "$$typeof": Symbol(react.forward_ref),
+              "attrs": Array [],
+              "componentStyle": ComponentStyle {
+                "componentId": "sc-htpNat",
+                "isStatic": false,
+                "rules": Array [
+                  "
+  ",
+                  "
+  position: relative;
+  display: block;
+
+  .TextBox__label {
+    font-size: ",
+                  [Function],
+                  "px;
+    padding: 0;
+    position: absolute;
+    top: ",
+                  [Function],
+                  ";
+    ",
+                  [Function],
+                  "
+  }
+
+  .TextBox__input {
+    margin: 0;
+    outline: 0;
+    font-size: ",
+                  [Function],
+                  "px;
+    color: ",
+                  [Function],
+                  ";
+    width: 100%;
+    background-position: left top;
+    background-repeat: no-repeat;
+    background-size: contain;
+    border: 0 solid transparent;
+    border-bottom: 1px solid ",
+                  [Function],
+                  ";
+    padding-bottom: ",
+                  [Function],
+                  ";
+    margin-bottom: ",
+                  [Function],
+                  ";
+    padding-top: ",
+                  [Function],
+                  ";
+
+    ",
+                  [Function],
+                  "
+
+    ",
+                  [Function],
+                  ";
+
+    &:focus + .TextBox__label {
+      font-size: ",
+                  [Function],
+                  "px;
+      font-weight: ",
+                  [Function],
+                  ";
+      top: ",
+                  [Function],
+                  ";
+    }
+  }
+  .success__checkmark {
+    display: none;
+  }
+  &.textbox_validation_success .TextBox__input {
+    border-bottom: 1px solid ",
+                  [Function],
+                  ";
+  }
+
+  &.textbox_validation_success .success__checkmark {
+    display: ",
+                  [Function],
+                  ";
+    width: 15px;
+    height: 8px;
+    margin-left: ",
+                  [Function],
+                  ";
+    transform: rotate(-45deg);
+    transform-origin: left;
+    position: absolute;
+    right: 0;
+    top: 30px;
+
+    &:before {
+      content: '';
+      position: absolute;
+      width: 3px;
+      height: 100%;
+      background-color: ",
+                  [Function],
+                  ";
+    }
+
+    &:after {
+      content: '';
+      position: absolute;
+      width: 100%;
+      height: 3px;
+      background-color: ",
+                  [Function],
+                  ";
+      bottom: 0;
+    }
+  }
+
+  ",
+                  [Function],
+                  ";
+
+  .TextBox__error {
+    display: flex;
+    flex-direction: row;
+    padding-bottom: ",
+                  [Function],
+                  ";
+  }
+  .warning-icon {
+    background: transparent url('/static/images/circle-alert-fill.svg') no-repeat 0 0;
+    background-size: contain;
+    border: none;
+    height: 14px;
+    width: 16px;
+    margin-right: 7px;
+  }
+",
+                  ";
+",
+                ],
+              },
+              "displayName": "Styled(TextBox)",
+              "foldedComponentIds": Array [],
+              "render": [Function],
+              "styledComponentId": "sc-htpNat",
+              "target": [Function],
+              "toString": [Function],
+              "warnTooManyClasses": [Function],
+              "withComponent": [Function],
+            }
+          }
+          dataLocator="points-claim-transactionnumber"
+          id="transactionNumber"
+          name="transactionNumber"
+          placeholder="lbl_points_claim_transaction_number"
+        />
+      </Styled(Col)>
+    </Styled(Row)>
+    <Styled(Row)
+      className="elem-pt-XXL"
+      fullBleed={true}
+    >
+      <Styled(Col)
+        className="points-claim__cancel"
+        colSize={
+          Object {
+            "large": 3,
+            "medium": 3,
+            "small": 6,
+          }
+        }
+        offsetLeft={
+          Object {
+            "large": 5,
+            "medium": 1,
+          }
+        }
+      >
+        <Styled(Button)
+          buttonVariation="fixed-width"
+          data-locator="points-claim-cancel"
+          type="button"
+        />
+      </Styled(Col)>
+      <Styled(Col)
+        className="points-claim__submit"
+        colSize={
+          Object {
+            "large": 3,
+            "medium": 3,
+            "small": 6,
+          }
+        }
+      >
+        <Styled(Button)
+          buttonVariation="fixed-width"
+          data-locator="points-claim-submit"
+          fill="BLUE"
+          type="submit"
+        >
+          lbl_points_claim_submit_caps
+        </Styled(Button)>
+      </Styled(Col)>
+    </Styled(Row)>
+  </form>
+</Styled(BodyCopy)>
+`;
