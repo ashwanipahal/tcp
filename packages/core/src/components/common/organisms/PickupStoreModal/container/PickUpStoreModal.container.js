@@ -4,7 +4,11 @@ import * as PickupSelectors from './PickUpStoreModal.selectors';
 import { maxAllowedStoresInCart, distancesMap } from '../PickUpStoreModal.config';
 import { PICKUP_HEADING } from '../PickUpStoreModal.constants';
 import { isCanada } from '../../../../../utils';
-import { closePickupModal, getBopisStoresActn } from './PickUpStoreModal.actions';
+import {
+  closePickupModal,
+  getBopisStoresActn,
+  setStoreSearchError,
+} from './PickUpStoreModal.actions';
 import errorBoundary from '../../../hoc/withErrorBoundary';
 
 export const mapDispatchToProps = dispatch => {
@@ -14,6 +18,9 @@ export const mapDispatchToProps = dispatch => {
     },
     onSearchAreaStoresSubmit: (skuId, quantity, distance, locationPromise, variantId) => {
       dispatch(getBopisStoresActn({ skuId, quantity, distance, locationPromise, variantId }));
+    },
+    onClearSearchFormError: () => {
+      dispatch(setStoreSearchError({ errorMessage: '' }));
     },
   };
 };
@@ -41,6 +48,7 @@ const mapStateToProps = (state, ownProps) => {
   const isBossCtaEnabled = PickupSelectors.getIsBossCtaEnabled(state);
   const isPickUpWarningModal = PickupSelectors.getIsPickUpWarningModal(state);
   const openSkuSelectionForm = PickupSelectors.getOpenSkuSelectionForm(state);
+  const storeSearchError = PickupSelectors.getStoreSearchError(state);
 
   return {
     onAddItemToCart,
@@ -73,6 +81,7 @@ const mapStateToProps = (state, ownProps) => {
     isShowDefaultSize,
     itemsCount: PickupSelectors.getItemsCount(state),
     pickupModalHeading: PICKUP_HEADING,
+    storeSearchError,
   };
 };
 
