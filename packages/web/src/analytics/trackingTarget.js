@@ -5,14 +5,15 @@
  */
 
 // This would come from Launch
+// This would be used for hotfixing
 global._trackingMutation = event => {
-  console.log('TRANSFORMING', event);
   return event;
 };
 
+const passthru = event => event;
+
 function transformEvent(event) {
-  const transform = global._trackingMutation || (e => e);
-  return transform(event);
+  return (global._trackingMutation || passthru)(event);
 }
 
 function track(...args) {
