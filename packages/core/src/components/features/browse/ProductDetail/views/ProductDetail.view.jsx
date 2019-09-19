@@ -8,7 +8,8 @@ import { PRODUCT_INFO_PROP_TYPE_SHAPE } from '../../ProductListing/molecules/Pro
 import { breakpoints } from '../../../../../../styles/themes/TCP/mediaQuery';
 import Product from '../molecules/Product/views/Product.view';
 import FixedBreadCrumbs from '../../ProductListing/molecules/FixedBreadCrumbs/views';
-import ProductImages from '../../../../common/organisms/ProductImages';
+
+import ProductImagesWrapper from '../molecules/ProductImagesWrapper/views/ProductImagesWrapper.view';
 import {
   getImagesToDisplay,
   getMapSliceForColorProductId,
@@ -54,14 +55,12 @@ const ProductDetailView = ({
       </Row>
       <Row>
         <Col className="product-image-wrapper" colSize={{ small: 6, medium: 4, large: 7 }}>
-          {imagesToDisplay.length > 0 ? (
-            <ProductImages
-              productName={productInfo.name}
-              isThumbnailListVisible={isWeb}
-              images={imagesToDisplay}
-              isZoomEnabled
-            />
-          ) : null}
+          <ProductImagesWrapper
+            productName={productInfo.name}
+            isThumbnailListVisible={isWeb}
+            images={imagesToDisplay}
+            isZoomEnabled
+          />
         </Col>
         <Col
           id="productDetailsSection"

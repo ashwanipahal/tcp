@@ -1,20 +1,19 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import ExecutionEnvironment from 'exenv';
 import Immutable from 'seamless-immutable';
 import { Anchor } from '../../../atoms';
 import withStyles from '../../../hoc/withStyles';
 import config from '../config';
-import { breakpoints } from '../../../../../../styles/themes/TCP/mediaQuery';
 import ThumbnailsList from '../../../molecules/ThumbnailsList';
-import FullSizeImageWithQuickViewModal from '../../../../features/browse/ProductDetail/molecules/FullSizeImageWithQuickViewModal/views/FullSizeImageWithQuickViewModal.view';
+
 import FullSizeImageModal from '../../../../features/browse/ProductDetail/molecules/FullSizeImageModal/views/FullSizeImageModal.view';
 import Carousel from '../../../molecules/Carousel';
 import styles, { carousalStyle } from '../styles/ProductImages.style';
 import ProductDetailImage from '../../../molecules/ProductDetailImage';
 import { getIconPath } from '../../../../../utils';
 
-const getThumbNailList = (
+// function to return Thumbnails list to show on PDP and full size page
+const getThumbnailList = (
   isThumbnailListVisible,
   thumbnailImagesPaths,
   currentImageIndex,
@@ -59,29 +58,24 @@ class ProductImages extends React.Component {
     className: PropTypes.string,
     isFullSizeVisible: PropTypes.bool,
     isFullSizeForTab: PropTypes.bool,
+    onCloseClick: PropTypes.func.isRequired,
+    isFullSizeModalOpen: PropTypes.bool,
+    isMobile: PropTypes.bool,
   };
 
   state = {
     currentImageIndex: 0,
-    isFullSizeModalOpen: false,
   };
 
   constructor(props) {
     super(props);
 
     this.handleThumbnailClick = this.handleThumbnailClick.bind(this);
-    this.handleShowHideFullSizeModalClick = this.handleShowHideFullSizeModalClick.bind(this);
   }
 
   handleThumbnailClick = imageIndex => {
     this.setState({ currentImageIndex: imageIndex });
   };
-
-  handleShowHideFullSizeModalClick(e) {
-    e.preventDefault();
-    const { isFullSizeModalOpen } = this.state;
-    this.setState({ isFullSizeModalOpen: !isFullSizeModalOpen });
-  }
 
   render() {
     const {
@@ -93,8 +87,11 @@ class ProductImages extends React.Component {
       className,
       isThumbnailListVisible,
       isFullSizeForTab,
+      onCloseClick,
+      isFullSizeModalOpen,
+      isMobile,
     } = this.props;
-    const { currentImageIndex, isFullSizeModalOpen } = this.state;
+    const { currentImageIndex } = this.state;
 
     const thumbnailImagesPaths = Immutable.asMutable(
       images.map(image => ({
@@ -103,15 +100,14 @@ class ProductImages extends React.Component {
       }))
     );
     const imageSizePropertyName = isShowBigSizeImages ? 'bigSizeImageUrl' : 'regularSizeImageUrl';
-    const isMobile =
-      ExecutionEnvironment.canUseDOM && document.body.offsetWidth < breakpoints.values.sm;
+
     const { CAROUSEL_OPTIONS } = config;
     CAROUSEL_OPTIONS.beforeChange = (current, next) => {
       this.setState({ currentImageIndex: next });
     };
     return (
       <div className={className}>
-        {getThumbNailList(
+        {getThumbnailList(
           isThumbnailListVisible,
           thumbnailImagesPaths,
           currentImageIndex,
@@ -144,7 +140,7 @@ class ProductImages extends React.Component {
                         zoomImageUrl={superSizeImageUrl}
                         imageName={productName}
                         isZoomEnabled={isZoomEnabled}
-                        onOpenSimpleFullSize={this.handleShowHideFullSizeModalClick}
+                        onOpenSimpleFullSize={onCloseClick}
                         isMobile={isMobile}
                         isFullSizeModalOpen={isFullSizeModalOpen}
                       />
@@ -155,8 +151,8 @@ class ProductImages extends React.Component {
             {isFullSizeVisible && (
               <Anchor
                 className="resize-text"
-                aria-label="view full size image"
-                onClick={this.handleShowHideFullSizeModalClick}
+                aria-label="View full size image"
+                onClick={onCloseClick}
               >
                 Full Size
               </Anchor>
@@ -173,17 +169,9 @@ class ProductImages extends React.Component {
             <FullSizeImageModal
               name={productName}
               image={images[currentImageIndex] && images[currentImageIndex][imageSizePropertyName]}
-              onCloseClick={this.handleShowHideFullSizeModalClick}
+              onCloseClick={onCloseClick}
             />
-          ) : (
-            <FullSizeImageWithQuickViewModal
-              onCloseClick={this.handleShowHideFullSizeModalClick}
-              images={images}
-              isMobile={isMobile}
-              name={productName}
-              isThumbnailListVisible
-            />
-          ))}
+          ) : null)}
       </div>
     );
   }
@@ -194,6 +182,8 @@ ProductImages.defaultProps = {
   isShowBigSizeImages: false,
   isFullSizeForTab: false,
   isFullSizeVisible: true,
+  isFullSizeModalOpen: false,
+  isMobile: true,
 };
 
 export default withStyles(ProductImages, styles);

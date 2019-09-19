@@ -15,7 +15,7 @@ const FullSizeImageWithQuickViewModal = props => {
       className="TCPModal__Content"
       heading={name}
       fixedWidth
-      widthConfig={{ small: '375px', medium: '1000px', large: '1200px' }}
+      widthConfig={{ small: '375px', medium: '760px', large: '1200px' }}
       heightConfig={{ height: '95%' }}
       inheritedStyles={customHeaderStyle}
     >
