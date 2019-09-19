@@ -15,16 +15,20 @@ type Props = {
 export function getAddressLocationInfo(address) {
   return requireNamedOnlineModule('google.maps').then(() => {
     const geocoder = new window.google.maps.Geocoder();
-    return new Promise((resolve, reject) => {
+    return new Promise(resolve => {
       geocoder.geocode({ address }, (results, status) => {
         if (status === 'OK') {
+          const country = results[0].address_components.find(component => {
+            return component.types && component.types.find(type => type === 'country');
+          });
           const storeDataObject = {
             lat: results[0].geometry.location.lat(),
             lng: results[0].geometry.location.lng(),
+            country: country && country.short_name,
           };
           resolve(storeDataObject);
         } else {
-          reject(status);
+          resolve({ error: status });
         }
       });
     });
