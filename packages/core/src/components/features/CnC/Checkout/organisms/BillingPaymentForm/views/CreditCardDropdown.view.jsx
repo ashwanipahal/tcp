@@ -3,7 +3,7 @@ import PropTypes from 'prop-types';
 import CustomSelect from '../../../../../../common/molecules/CustomSelect';
 
 const getActiveTitle = (options, value) => {
-  const selectedOption = options.find(o => o.value === value);
+  const selectedOption = options.find(o => o.value === +value);
   return selectedOption && selectedOption.title;
 };
 

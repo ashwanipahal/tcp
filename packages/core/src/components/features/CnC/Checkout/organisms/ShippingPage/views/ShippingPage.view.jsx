@@ -225,6 +225,15 @@ export default class ShippingPage extends React.PureComponent {
     });
   };
 
+  getPrimaryAddress = () => {
+    const { userAddresses } = this.props;
+    if (userAddresses && userAddresses.size > 0) {
+      const selectedAddress = userAddresses.find(address => address.primary === 'true');
+      return selectedAddress && selectedAddress.addressId;
+    }
+    return null;
+  };
+
   render() {
     const {
       addressLabels,
@@ -253,7 +262,7 @@ export default class ShippingPage extends React.PureComponent {
       syncErrors,
       shippingAddress,
     } = this.props;
-
+    const primaryAddressId = this.getPrimaryAddress();
     const { isAddNewAddress, isEditing, defaultAddressId } = this.state;
     return (
       <>
@@ -268,7 +277,7 @@ export default class ShippingPage extends React.PureComponent {
               address: { country: getSiteId() && getSiteId().toUpperCase() },
               shipmentMethods: { shippingMethodId: defaultShipmentId },
               saveToAddressBook: !isGuest,
-              onFileAddressKey: shippingAddressId,
+              onFileAddressKey: shippingAddressId || primaryAddressId,
             }}
             selectedShipmentId={selectedShipmentId}
             checkPOBoxAddress={this.checkPOBoxAddress}

@@ -6,12 +6,13 @@ export const MODULES_REDUCER_KEY = 'Modules';
 export const HOMEPAGE_REDUCER_KEY = 'HomePage';
 export const NAVIGATION_REDUCER_KEY = 'Navigation';
 export const PRODUCT_LISTING_REDUCER_KEY = 'ProductListing';
+export const PRODUCTLISTING_ACTION_PATTERN = '@@PLP-';
 export const FORM_REDUCER_KEY = 'form';
 export const LOADER_REDUCER_KEY = 'PageLoader';
 export const TOAST_REDUCER_KEY = 'Toast';
 export const RECOMMENDATIONS_REDUCER_KEY = 'Recommendations';
 export const SEARCH_REDUCER_KEY = 'Search';
-
+export const SOCIAL_REDUCER_KEY = 'Social';
 // Don't Add "Reducer" in the Key - it should be LoginPage, not LoginPageReducer
 
 // Login Page Reducer
@@ -40,8 +41,12 @@ export const USER_REDUCER_KEY = 'User';
 export const BIRTHDAY_SAVINGS_ACTION_PATTERN = '@@BirthdaySavings';
 export const NAVIGATION_ACTION_PATTERN = '@@Navigation-';
 export const RECOMMENDATIONS_ACTION_PATTERN = '@@Recommendations-';
+
+// search listing page reducer
+export const SLP_PAGE_REDUCER_KEY = 'SearchListingPage';
+export const SEARCH_REDUCER_ACTION_PATTERN = '@@SLP-';
+
 export const MY_FAVORITE_STORE_ACTION_PATTERN = '@@MyFavoriteStore';
-export const SEARCH_REDUCER_ACTION_PATTERN = '@@Search-';
 
 // acconut page reducer
 export const ACCOUNT_REDUCER_KEY = 'AccountReducer';
@@ -68,7 +73,7 @@ export const ADDEDITCREDITCARD_REDUCER_KEY = 'AddEditCreditCardReducer';
 
 // ProductListing Page Reducer
 export const PRODUCTLISTINGPAGE_REDUCER_KEY = 'ProductListingPage';
-export const PRODUCTLISTINGPAGE_ACTION_PATTERN = '@@PLP-';
+export const PRODUCTLISTINGPAGE_ACTION_PATTERN = '@@PLPDummy-';
 
 // Product Detail Page Reducer
 export const PRODUCT_DETAIL_REDUCER_KEY = 'ProductDetail';
@@ -159,6 +164,7 @@ export const REDUCER_ACTION_MAPPING = {
   [LOGINPAGE_REDUCER_KEY]: LOGINPAGE_ACTION_PATTERN,
   [FORGOTPASSWORD_REDUCER_KEY]: FORGOTPASSWORD_ACTION_PATTERN,
   [PRODUCTLISTINGPAGE_REDUCER_KEY]: PRODUCTLISTINGPAGE_ACTION_PATTERN,
+  [PRODUCT_LISTING_REDUCER_KEY]: PRODUCTLISTING_ACTION_PATTERN,
   [ADDRESSBOOK_REDUCER_KEY]: ADDRESSBOOK_ACTION_PATTERN,
   [PAYMENT_REDUCER_KEY]: PAYMENT_ACTION_PATTERN,
   [ADD_GIFT_CARD_REDUCER_KEY]: ADD_GIFT_CARD_ACTION_PATTERN,
@@ -179,5 +185,5 @@ export const REDUCER_ACTION_MAPPING = {
   [APPLY_NOW_MODAL_REDUCER_KEY]: APPLY_NOW_MODAL_REDUCER_PATTERN,
   [PICKUP_MODAL_REDUCER_KEY]: PICKUP_MODAL_REDUCER_PATTERN,
   [RECOMMENDATIONS_REDUCER_KEY]: RECOMMENDATIONS_ACTION_PATTERN,
-  [SEARCH_REDUCER_KEY]: SEARCH_REDUCER_ACTION_PATTERN,
+  [SLP_PAGE_REDUCER_KEY]: SEARCH_REDUCER_ACTION_PATTERN,
 };

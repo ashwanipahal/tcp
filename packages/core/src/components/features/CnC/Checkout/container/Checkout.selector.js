@@ -1,7 +1,11 @@
 /* eslint-disable max-lines */
 import { formValueSelector } from 'redux-form';
 import { createSelector } from 'reselect';
-import { CHECKOUT_REDUCER_KEY } from '@tcp/core/src/constants/reducer.constants';
+import {
+  CHECKOUT_REDUCER_KEY,
+  SESSIONCONFIG_REDUCER_KEY,
+} from '@tcp/core/src/constants/reducer.constants';
+import { constants as venmoConstants } from '@tcp/core/src/components/common/atoms/VenmoPaymentButton/container/VenmoPaymentButton.util';
 
 /* eslint-disable extra-rules/no-commented-out-code */
 import { getAPIConfig, isMobileApp, getViewportInfo, getLabelValue } from '../../../../../utils';
@@ -470,7 +474,7 @@ function getBillingValues(state) {
 
 function getDetailedCreditCardById(state, id) {
   return JSON.parse(JSON.stringify(state.PaymentReducer.get('cardList'))).find(
-    ({ creditCardId }) => (creditCardId && creditCardId.toString()) === id
+    ({ creditCardId }) => (creditCardId && creditCardId.toString()) === id.toString()
   );
 }
 
@@ -497,6 +501,94 @@ const getReviewLabels = state => {
     ariaLabelReviewPageTitle: getReviewLabelValue('lbl_review_ariaLabelReviewPageTitle'),
     ariaLabelBackLink: getReviewLabelValue('lbl_review_ariaLabelBackLink'),
   };
+};
+
+const getCurrentOrderId = state => {
+  return state.CartPageReducer.getIn(['orderDetails', 'orderId']);
+};
+
+const getSmsNumberForBillingOrderUpdates = state =>
+  state.Checkout.getIn(['values', 'smsInfo', 'numberForUpdates']);
+
+const getVenmoData = state => state[CHECKOUT_REDUCER_KEY].getIn(['values', 'venmoData']);
+
+const getVenmoClientTokenData = state =>
+  state[CHECKOUT_REDUCER_KEY].getIn(['values', 'venmoClientTokenData']);
+
+const isVenmoPaymentInProgress = state =>
+  state[CHECKOUT_REDUCER_KEY].getIn(['uiFlags', 'venmoPaymentInProgress']);
+
+/**
+ * Mainly used to check for Venmo nonce expiry
+ * @param state
+ */
+const isVenmoNonceNotExpired = state => {
+  const venmoData = getVenmoData(state);
+  const expiry = venmoConstants.VENMO_NONCE_EXPIRY_TIMEOUT;
+  const { nonce, timestamp } = venmoData;
+  const venmoClientTokenData = getVenmoClientTokenData(state);
+  const venmoPaymentTokenAvailable = venmoClientTokenData
+    ? venmoClientTokenData.venmoPaymentTokenAvailable
+    : false;
+  return venmoPaymentTokenAvailable === 'TRUE' || (nonce && Date.now() - timestamp <= expiry);
+};
+
+const isVenmoPaymentToken = state => {
+  const venmoClientTokenData = getVenmoClientTokenData(state);
+  const venmoPaymentTokenAvailable = venmoClientTokenData
+    ? venmoClientTokenData.venmoPaymentTokenAvailable
+    : false;
+  return venmoPaymentTokenAvailable === 'TRUE';
+};
+
+const isVenmoNonceActive = state => {
+  const venmoData = getVenmoData(state);
+  const venmoPaymentInProgress = isVenmoPaymentInProgress(state);
+  return (
+    venmoData &&
+    (venmoData.nonce || isVenmoPaymentToken(state)) &&
+    venmoPaymentInProgress &&
+    isVenmoNonceNotExpired(state)
+  );
+};
+
+function isVenmoPaymentAvailable(state) {
+  const venmoData = getVenmoData(state);
+  const venmoPaymentInProgress = isVenmoPaymentInProgress(state);
+  return venmoData && (venmoData.nonce || isVenmoPaymentToken(state)) && venmoPaymentInProgress;
+}
+
+function isVenmoMessageDisplayed(state) {
+  const hasShippingCaptured =
+    state.checkout.values.shipping && state.checkout.values.shipping.onFileAddressId;
+  const hasPickupCaptured =
+    state.checkout.values.pickUpContact && state.checkout.values.pickUpContact.firstName;
+  return (
+    hasPickupCaptured ||
+    hasShippingCaptured ||
+    (state.checkout.uiFlags && state.checkout.uiFlags.venmoInformationMessageDisplayed)
+  );
+}
+
+function getVenmoUserEmail(state) {
+  const pickupValues = getPickupValues(state);
+  return (
+    getUserEmail(state) ||
+    (state.checkout.values.shipping && state.checkout.values.shipping.emailAddress) ||
+    (pickupValues && pickupValues.emailAddress) ||
+    (state.user.personalData.contactInfo && state.user.personalData.contactInfo.emailAddress)
+  );
+}
+
+const getIsVenmoEnabled = state => {
+  return (
+    state[SESSIONCONFIG_REDUCER_KEY] &&
+    state[SESSIONCONFIG_REDUCER_KEY].getIn(['siteDetails', 'VENMO_ENABLED'])
+  );
+};
+
+const getCurrentLanguage = state => {
+  return state.CountrySelector.get('language') || constants.DEFAULT_LANGUAGE;
 };
 
 export default {
@@ -551,4 +643,17 @@ export default {
   getGiftServicesSend,
   getPaypalPaymentSettings,
   getReviewLabels,
+  getCurrentOrderId,
+  getSmsNumberForBillingOrderUpdates,
+  getVenmoData,
+  getVenmoClientTokenData,
+  isVenmoPaymentAvailable,
+  isVenmoMessageDisplayed,
+  isVenmoNonceActive,
+  getVenmoUserEmail,
+  isVenmoNonceNotExpired,
+  isVenmoPaymentInProgress,
+  isVenmoPaymentToken,
+  getIsVenmoEnabled,
+  getCurrentLanguage,
 };

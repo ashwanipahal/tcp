@@ -6,6 +6,7 @@ import Anchor from '@tcp/core/src/components/common/atoms/Anchor';
 import BodyCopy from '@tcp/core/src/components/common/atoms/BodyCopy';
 import Heading from '@tcp/core/src/components/common/atoms/Heading';
 import withStyles from '@tcp/core/src/components/common/hoc/withStyles';
+import externalEndpoints from '../../../externalEndpoints';
 import styles from '../styles/PageHeadingWithLinks.styles';
 
 export const PageHeadingWithLinks = ({
@@ -45,24 +46,23 @@ export const PageHeadingWithLinks = ({
               fontSizeVariation="large"
               underline
               noLink
-              href="https://www.childrensplace.com/us/help-center/#termsAndConditionsli"
+              href={externalEndpoints.myPlaceRewardsPage}
               anchorVariation="primary"
-              dataLocator="terms_condition_cta"
+              dataLocator="program_details_cta"
               target="_blank"
-              className="elem-ml-MED"
             >
-              {termsConditionCta}
+              {programDetailsCta}
             </Anchor>
             <Anchor
               fontSizeVariation="large"
               underline
               noLink
-              href="https://www.childrensplace.com/us/content/myplace-rewards-page"
+              href={externalEndpoints.termsAndConditionsPage}
               anchorVariation="primary"
-              dataLocator="program_details_cta"
-              className="elem-ml-LRG"
+              dataLocator="terms_condition_cta"
+              className="elem-ml-XL"
             >
-              {programDetailsCta}
+              {termsConditionCta}
             </Anchor>
           </Col>
         </Row>

@@ -18,7 +18,7 @@ const GiftCardSectionHeading = (labels, isGiftCardApplied = false) => {
       fontSize="fs16"
       fontWeight="extrabold"
       data-locator="gift-cards"
-      className="elem-mb-XS elem-mt-XXL"
+      className="elem-mt-MED"
     >
       {getLabelValue(
         labels,
@@ -86,7 +86,7 @@ const renderAddGiftCard = ({
 const renderAddNewGiftButton = (labels, orderBalanceTotal, appliedGiftCards, showAddGiftCard) => {
   if (orderBalanceTotal > 0 && appliedGiftCards && appliedGiftCards.size < 5) {
     return (
-      <Row className="elem-mt-LRG elem-mb-LRG">
+      <Row fullBleed className="elem-mt-LRG elem-mb-LRG">
         <Col
           colSize={{
             small: 4,
@@ -132,7 +132,7 @@ export const GiftCards = ({
 }) => {
   return (
     <Grid className={className}>
-      <Row className="gift-section-container elem-mb-LRG">
+      <Row fullBleed className="gift-section-container elem-mb-LRG">
         <Col
           colSize={{
             small: 6,
@@ -145,7 +145,7 @@ export const GiftCards = ({
             fontSize="fs26"
             fontWeight="regular"
             data-locator="gift-cards"
-            className="elem-mb-XS elem-mt-XXL"
+            className="elem-mt-XXL"
           >
             {getLabelValue(labels, 'lbl_giftcard_title')}
           </BodyCopy>
@@ -154,7 +154,7 @@ export const GiftCards = ({
             fontSize="fs16"
             fontWeight="regular"
             data-locator="gift-cards"
-            className="elem-mb-XS elem-mt-MED"
+            className="elem-mt-LRG"
           >
             {getLabelValue(labels, 'lbl_giftcard_addUptoMsg')}
           </BodyCopy>
@@ -177,7 +177,7 @@ export const GiftCards = ({
             fontSize="fs16"
             fontWeight="regular"
             data-locator="gift-cards"
-            className="elem-mb-XS elem-mt-MED"
+            className="elem-mt-LRG"
           >
             <span className="headsUpMsgBoldTitle">
               {getLabelValue(labels, 'lbl_giftcard_headsUpTitle')}

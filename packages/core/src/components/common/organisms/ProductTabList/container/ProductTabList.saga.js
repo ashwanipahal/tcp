@@ -1,5 +1,5 @@
 /* istanbul ignore file */
-import { call, put, takeLatest } from 'redux-saga/effects';
+import { call, put, takeEvery } from 'redux-saga/effects';
 import lightweightProductListing from '@tcp/core/src/services/abstractors/lightweightProductListing';
 
 import constants from './ProductTabList.constants';
@@ -19,7 +19,7 @@ export function* fetchProductTabListData({ payload }) {
 }
 
 function* ProductTabListSaga() {
-  yield takeLatest(constants.PRODUCT_TAB_LIST_REQ, fetchProductTabListData);
+  yield takeEvery(constants.PRODUCT_TAB_LIST_REQ, fetchProductTabListData);
 }
 
 export default ProductTabListSaga;

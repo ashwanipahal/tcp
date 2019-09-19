@@ -29,14 +29,15 @@ export const PointsHistoryPageView = props => {
         fontWeight="extrabold"
         fontFamily="secondary"
         spacingStyles="margin-bottom-XL margin-top-LRG"
+        dataLocator="points_history_subheading"
       />
       <PointsHistoryList view="edit" labels={labels} showFullHistory />
-      <RichTextWrapper>
+      <RichTextWrapper dataLocator="points_history_rte">
         <RichText source={{ html: richTextContent }} style={contentHeight} />
       </RichTextWrapper>
       <StyledAnchorWrapper>
         <Anchor
-          fontSizeVariation="large"
+          fontSizeVariation="medium"
           underline
           onPress={() => {
             UrlHandler(endpoints.myPlaceRewardsPage);
