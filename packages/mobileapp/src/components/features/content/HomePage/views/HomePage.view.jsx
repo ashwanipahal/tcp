@@ -16,6 +16,7 @@ import {
   ModuleA,
   ModuleB,
   ModuleJ,
+  ModuleR,
 } from '@tcp/core/src/components/common/molecules';
 import InitialPropsHOC from '../../../../common/hoc/InitialPropsHOC/InitialPropsHOC';
 import HeaderPromo from '../../../../common/molecules/HeaderPromo';
@@ -30,6 +31,7 @@ const modulesMap = {
   moduleA: ModuleA,
   moduleB: ModuleB,
   moduleJ: ModuleJ,
+  moduleR: ModuleR,
 };
 
 const buttonMargin = { margin: 30 };
@@ -71,7 +73,6 @@ class HomePageView extends React.PureComponent<Props> {
           <HeaderPromo headerPromo={headerPromo} />
         </HeaderPromoContainer>
         <HomePageSlots slots={slots} modules={modulesMap} navigation={navigation} />
-        <ModuleB navigation={navigation} />
         <GetCandid apiConfig={apiConfig} navigation={navigation} />
         <Button
           fullWidth

@@ -74,7 +74,7 @@ class ModuleJ extends React.PureComponent<Props, State> {
               <Anchor
                 url={pdpAsPath}
                 navigation={navigation}
-                locator={`${getLocator('moduleJ_product_image')}${productItemIndex}`}
+                testID={`${getLocator('moduleJ_product_image')}${productItemIndex}`}
               >
                 <StyledImage
                   host={LAZYLOAD_HOST_NAME.HOME}
@@ -129,12 +129,18 @@ class ModuleJ extends React.PureComponent<Props, State> {
           <Wrapper>
             <Border layout={layout} />
             <HeaderContainer layout={layout}>
-              <LinkText navigation={navigation} headerText={[headerText[0]]} useStyle />
+              <LinkText
+                navigation={navigation}
+                headerText={[headerText[0]]}
+                testID={getLocator('moduleJ_header_text_0')}
+                useStyle
+              />
             </HeaderContainer>
             <SecondHeaderContainer>
               <LinkText
                 navigation={navigation}
                 headerText={[headerText[1]]}
+                testID={getLocator('moduleJ_header_text_1')}
                 renderComponentInNewLine
                 useStyle
               />
@@ -143,7 +149,11 @@ class ModuleJ extends React.PureComponent<Props, State> {
 
           {promoBanner && (
             <PromoContainer layout={layout}>
-              <PromoBanner promoBanner={promoBanner} navigation={navigation} />
+              <PromoBanner
+                testID={getLocator('moduleJ_promobanner_text')}
+                promoBanner={promoBanner}
+                navigation={navigation}
+              />
             </PromoContainer>
           )}
         </MessageContainer>
@@ -152,6 +162,7 @@ class ModuleJ extends React.PureComponent<Props, State> {
             onProductTabChange={this.onProductTabChange}
             tabItems={divTabs}
             navigation={navigation}
+            testID={getLocator('moduleJ_cta_link')}
           />
         </ProductTabListContainer>
         <ImageContainer layout={layout}>
@@ -160,6 +171,7 @@ class ModuleJ extends React.PureComponent<Props, State> {
               url={mediaLinkedList[1] && mediaLinkedList[1].image.url}
               height="300px"
               width="100%"
+              testID={`${getLocator('moduleJ_promobanner_img')}${1}`}
               alt={mediaLinkedList[1] && mediaLinkedList[1].image.alt}
               imgConfig={IMG_DATA.promoImgConfig[0]}
             />
@@ -189,6 +201,7 @@ class ModuleJ extends React.PureComponent<Props, State> {
               text={selectedSingleCTAButton.text}
               url={selectedSingleCTAButton.url}
               navigation={navigation}
+              testID={getLocator('moduleJ_cta_btn')}
             />
           </ButtonContainer>
         ) : null}

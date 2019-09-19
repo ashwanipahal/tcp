@@ -5,15 +5,23 @@ import PropTypes from 'prop-types';
 import ButtonTabs from '../../../molecules/ButtonTabs';
 
 const ProductTabList = props => {
-  const { selectedTabId, tabs, onTabChange } = props;
+  const { selectedTabId, tabs, onTabChange, dataLocator } = props;
 
-  return <ButtonTabs selectedTabId={selectedTabId} onTabChange={onTabChange} tabs={tabs} />;
+  return (
+    <ButtonTabs
+      selectedTabId={selectedTabId}
+      onTabChange={onTabChange}
+      tabs={tabs}
+      dataLocator={dataLocator}
+    />
+  );
 };
 
 ProductTabList.defaultProps = {
   onTabChange: () => {},
   tabs: [],
   selectedTabId: '',
+  dataLocator: '',
 };
 
 ProductTabList.propTypes = {
@@ -25,6 +33,7 @@ ProductTabList.propTypes = {
     })
   ),
   selectedTabId: PropTypes.string,
+  dataLocator: PropTypes.string,
 };
 
 export default ProductTabList;

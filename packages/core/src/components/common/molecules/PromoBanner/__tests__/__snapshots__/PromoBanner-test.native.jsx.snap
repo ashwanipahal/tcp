@@ -447,6 +447,66 @@ exports[`PromoTextBanner native component renders all style correctly 8`] = `
 `;
 
 exports[`PromoTextBanner native component renders all style correctly 9`] = `
+<Styled(View)>
+  <Styled(Styled(BodyCopy))
+    color="black"
+    fontFamily="primary"
+    fontWeight="black"
+    lineHeight="34px"
+    style={
+      Object {
+        "fontSize": 28,
+      }
+    }
+    text=""
+    textAlign="center"
+  />
+  <Styled(Styled(BodyCopy))
+    color="black"
+    fontFamily="primary"
+    fontWeight="black"
+    lineHeight="86px"
+    style={
+      Object {
+        "fontSize": 86,
+      }
+    }
+    text=""
+    textAlign="center"
+  />
+  <Styled(View)>
+    <Styled(Styled(BodyCopy))
+      color="black"
+      fontFamily="primary"
+      fontWeight="black"
+      lineHeight="50px"
+      style={
+        Object {
+          "fontSize": 48,
+          "height": 45,
+        }
+      }
+      text=""
+    />
+    <Styled(Styled(BodyCopy))
+      color="black"
+      fontFamily="primary"
+      fontSize="fs42"
+      fontWeight="black"
+      lineHeight="28px"
+      style={
+        Object {
+          "fontSize": 28,
+        }
+      }
+      text=""
+      textAlign="center"
+    />
+  </Styled(View)>
+</Styled(View)>
+`;
+
+exports[`PromoTextBanner native component renders all style correctly 10`] = `
 <StyledNativeComponent
   color="black"
   fontFamily="primary"
@@ -502,7 +562,7 @@ exports[`PromoTextBanner native component renders all style correctly 9`] = `
 />
 `;
 
-exports[`PromoTextBanner native component renders all style correctly 10`] = `
+exports[`PromoTextBanner native component renders all style correctly 11`] = `
 <StyledNativeComponent
   color="gray.900"
   fontFamily="primary"
@@ -557,7 +617,7 @@ exports[`PromoTextBanner native component renders all style correctly 10`] = `
 />
 `;
 
-exports[`PromoTextBanner native component renders all style correctly 11`] = `
+exports[`PromoTextBanner native component renders all style correctly 12`] = `
 <StyledNativeComponent
   color="white"
   fontFamily="secondary"
@@ -612,7 +672,7 @@ exports[`PromoTextBanner native component renders all style correctly 11`] = `
 />
 `;
 
-exports[`PromoTextBanner native component renders all style correctly 12`] = `
+exports[`PromoTextBanner native component renders all style correctly 13`] = `
 <StyledNativeComponent
   color="white"
   fontFamily="primary"
@@ -667,7 +727,7 @@ exports[`PromoTextBanner native component renders all style correctly 12`] = `
 />
 `;
 
-exports[`PromoTextBanner native component renders all style correctly 13`] = `
+exports[`PromoTextBanner native component renders all style correctly 14`] = `
 <StyledNativeComponent
   color="text.primary"
   fontFamily="primary"
@@ -724,7 +784,7 @@ exports[`PromoTextBanner native component renders all style correctly 13`] = `
 />
 `;
 
-exports[`PromoTextBanner native component renders all style correctly 14`] = `
+exports[`PromoTextBanner native component renders all style correctly 15`] = `
 <StyledNativeComponent
   color="text.primary"
   fontFamily="primary"
@@ -781,7 +841,7 @@ exports[`PromoTextBanner native component renders all style correctly 14`] = `
 />
 `;
 
-exports[`PromoTextBanner native component renders all style correctly 15`] = `
+exports[`PromoTextBanner native component renders all style correctly 16`] = `
 <StyledNativeComponent
   color="gray.900"
   fontSize="fs32"
@@ -837,7 +897,7 @@ exports[`PromoTextBanner native component renders all style correctly 15`] = `
 />
 `;
 
-exports[`PromoTextBanner native component renders all style correctly 16`] = `
+exports[`PromoTextBanner native component renders all style correctly 17`] = `
 <StyledNativeComponent
   color="gray.900"
   fontSize="fs48"
@@ -893,7 +953,7 @@ exports[`PromoTextBanner native component renders all style correctly 16`] = `
 />
 `;
 
-exports[`PromoTextBanner native component renders all style correctly 17`] = `
+exports[`PromoTextBanner native component renders all style correctly 18`] = `
 <StyledNativeComponent
   color="gray.900"
   fontSize="fs48"
@@ -948,7 +1008,7 @@ exports[`PromoTextBanner native component renders all style correctly 17`] = `
 />
 `;
 
-exports[`PromoTextBanner native component renders all style correctly 18`] = `
+exports[`PromoTextBanner native component renders all style correctly 19`] = `
 <StyledNativeComponent
   color="gray.900"
   fontSize="fs64"

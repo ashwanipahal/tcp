@@ -70,7 +70,7 @@ class ModuleJ extends React.PureComponent {
     const data = productTabList ? productTabList[currentCatId] : productTabList;
 
     return (
-      <Grid className={`${className} layout-${layout}`}>
+      <Grid className={`${className} moduleJ layout-${layout}`}>
         {layout !== 'alt' ? (
           <Row fullBleed={{ small: true, medium: true }} className="topview">
             <Col
@@ -98,7 +98,7 @@ class ModuleJ extends React.PureComponent {
                   alt: mediaLinkedList[0] && mediaLinkedList[0].image.alt,
                   url: mediaLinkedList[0] && mediaLinkedList[0].image.url,
                 }}
-                dataLocator={`${getLocator('moduleJ_promobanner_img')}${1}`}
+                data-locator={`${getLocator('moduleJ_promobanner_img')}${1}`}
               />
             </Col>
             <Col
@@ -117,7 +117,7 @@ class ModuleJ extends React.PureComponent {
                   component="div"
                   headerText={[headerText[0]]}
                   className="promo-header"
-                  dataLocator={getLocator('moduleJ_header_text')}
+                  dataLocator={getLocator('moduleJ_header_text_0')}
                 />
               </div>
 
@@ -126,7 +126,7 @@ class ModuleJ extends React.PureComponent {
                   component="div"
                   headerText={[headerText[1]]}
                   className="promo-header"
-                  dataLocator={getLocator('moduleJ_header_text')}
+                  dataLocator={getLocator('moduleJ_header_text_1')}
                 />
               </div>
               {promoBanner && (
@@ -136,7 +136,11 @@ class ModuleJ extends React.PureComponent {
                   dataLocator={getLocator('moduleJ_promobanner_text')}
                 />
               )}
-              <ProductTabList onProductTabChange={this.onTabChange} tabItems={divTabs} />
+              <ProductTabList
+                onProductTabChange={this.onTabChange}
+                tabItems={divTabs}
+                dataLocator={getLocator('moduleJ_cta_link')}
+              />
             </Col>
             <Col
               className="promo-image-right"
@@ -153,7 +157,7 @@ class ModuleJ extends React.PureComponent {
                   alt: mediaLinkedList[1] && mediaLinkedList[1].image.alt,
                   url: mediaLinkedList[1] && mediaLinkedList[1].image.url,
                 }}
-                dataLocator={`${getLocator('moduleJ_promobanner_img')}${2}`}
+                data-locator={`${getLocator('moduleJ_promobanner_img')}${2}`}
               />
             </Col>
           </Row>

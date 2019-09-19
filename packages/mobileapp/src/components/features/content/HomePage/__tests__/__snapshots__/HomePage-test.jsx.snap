@@ -22,15 +22,9 @@ exports[`HomePageView should render correctly 1`] = `
         "moduleK": [Function],
         "moduleL": [Function],
         "moduleN": [Function],
+        "moduleR": [Function],
       }
     }
-    navigation={
-      Object {
-        "getParam": [Function],
-      }
-    }
-  />
-  <ModuleB
     navigation={
       Object {
         "getParam": [Function],

@@ -21,7 +21,7 @@ exports[`GiftCardTileVanilla should render gift card tile 1`] = `
         }
       >
         <Styled(BodyCopy)
-          className="gift_card_number_detail"
+          className="gift_card_number_detail available_giftCards_text"
           color="text.secondary"
           component="p"
           fontFamily="secondary"
@@ -85,7 +85,7 @@ exports[`GiftCardTileVanilla should render gift card tile with 0 order balance 1
         }
       >
         <Styled(BodyCopy)
-          className="gift_card_number_detail"
+          className="gift_card_number_detail available_giftCards_text"
           color="text.secondary"
           component="p"
           fontFamily="secondary"
@@ -149,7 +149,7 @@ exports[`GiftCardTileVanilla should render gift card tile with 100 order balance
         }
       >
         <Styled(BodyCopy)
-          className="gift_card_number_detail"
+          className="gift_card_number_detail available_giftCards_text"
           color="text.secondary"
           component="p"
           fontFamily="secondary"
@@ -229,7 +229,7 @@ exports[`GiftCardTileVanilla should render gift card tile with errors 1`] = `
         }
       >
         <Styled(BodyCopy)
-          className="gift_card_number_detail"
+          className="gift_card_number_detail available_giftCards_text"
           color="text.secondary"
           component="p"
           fontFamily="secondary"
@@ -293,7 +293,7 @@ exports[`GiftCardTileVanilla should render gift card tile with isGiftCardApplied
         }
       >
         <Styled(BodyCopy)
-          className="gift_card_number_detail"
+          className="gift_card_number_detail "
           color="text.secondary"
           component="p"
           fontFamily="secondary"

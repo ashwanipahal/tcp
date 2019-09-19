@@ -67,6 +67,8 @@ export const bodyCopyStyles = {
   percentage_wrapped_large: props => <PercentageStyle {...props} />,
   percentage_wrapped_extra_large: props => <PercentagePinkStyle {...props} />,
   currency_up_style: props => <CurrencyUpPromoBanner {...props} />,
+  // TODO: Remove .style10 when currency_up_style is available in CMS
+  style10: props => <CurrencyUpPromoBanner {...props} />,
   small_text_bold: props => (
     <BodyCopy
       fontSize="fs16"

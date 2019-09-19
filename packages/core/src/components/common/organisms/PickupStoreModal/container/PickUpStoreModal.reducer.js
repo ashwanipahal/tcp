@@ -1,37 +1,32 @@
 import { fromJS } from 'immutable';
 import { PICKUP_MODAL_ACTIONS_CONSTANTS } from '../PickUpStoreModal.constants';
 
-const initialState = fromJS({
+const initialState = {
   isModalOpen: false, // TODO - Set ErrorBoundary in PICKUP Modal and .. Change it to default as false
-  isBopisCtaEnabled: false,
-  isBossCtaEnabled: false,
+  isBopisCtaEnabled: true,
+  isBossCtaEnabled: true,
   isPickUpWarningModal: false,
   openSkuSelectionForm: false,
   generalProductId: null,
   colorProductId: null,
   requestorKey: null,
   initialValues: null,
-});
+  suggestedStores: null,
+};
 
 const mergePickupModalState = (state, payload) => {
-  const defaultPayload = {
+  // mergedPayload is used to make sure that default values of params are reset if not sent in payload
+  const mergedPayload = {
+    ...initialState,
     isModalOpen: true,
-    isBopisCtaEnabled: false,
-    isBossCtaEnabled: false,
-    isPickUpWarningModal: false,
-    openSkuSelectionForm: false,
     colorProductId: payload.generalProductId,
     requestorKey: payload.generalProductId,
-  };
-  // defaultPayload is used to make sure that default values of params are reset if not sent in payload
-  const mergedPayload = {
-    ...defaultPayload,
     ...payload,
   };
   return fromJS(mergedPayload);
 };
 
-const PickupModalReducer = (state = initialState, action) => {
+const PickupModalReducer = (state = fromJS(initialState), action) => {
   switch (action.type) {
     case PICKUP_MODAL_ACTIONS_CONSTANTS.PICKUP_MODAL_TOGGLE:
       return state.set('isModalOpen', action.payload.isModalOpen); // TODO - Make this one action - and use merge instead of set
