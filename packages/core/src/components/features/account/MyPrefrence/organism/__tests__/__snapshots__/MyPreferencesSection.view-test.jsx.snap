@@ -28,7 +28,9 @@ exports[`ProfileInformation component should render correctly 1`] = `
         lineHeight="normal"
         textAlign="left"
       >
-        lbl_prefrence_favorite_store
+        <Connect(MyFavoriteStoreContainer)
+          isMyPreferences={true}
+        />
       </Styled(BodyCopy)>
     </Styled(Col)>
     <Styled(Col)
@@ -161,7 +163,7 @@ exports[`ProfileInformation component should render correctly 1`] = `
             <Styled(BodyCopy)
               className={null}
               color="text.primary"
-              component="div"
+              component="span"
               fontFamily="secondary"
               fontSize="fs16"
               fontWeight="extrabold"
@@ -170,10 +172,13 @@ exports[`ProfileInformation component should render correctly 1`] = `
               textAlign="left"
             >
               lbl_prefrence_app_text
-              <Styled(Image)
-                src="/static/images/empty-heart.png"
-              />
             </Styled(BodyCopy)>
+            <Styled(Image)
+              class="elem-pl-XS"
+              height="17"
+              src="/static/images/icon-alarm@2x.png"
+              width="17"
+            />
             <Field
               className="elm-padding-top"
               component={
@@ -468,6 +473,7 @@ exports[`ProfileInformation component should render correctly 1`] = `
                 lineHeight="normal"
                 textAlign="left"
               >
+                 
                 lbl_prefrence_gym_label
               </Styled(BodyCopy)>
             </Field>
@@ -485,7 +491,7 @@ exports[`ProfileInformation component should render correctly 1`] = `
             <Styled(BodyCopy)
               className={null}
               color="text.primary"
-              component="div"
+              component="span"
               fontFamily="secondary"
               fontSize="fs14"
               fontWeight="extrabold"
@@ -494,12 +500,15 @@ exports[`ProfileInformation component should render correctly 1`] = `
               textAlign="left"
             >
               lbl_prefrence_text_text
-              <Styled(Image)
-                src="/static/images/empty-heart.png"
-              />
             </Styled(BodyCopy)>
+            <Styled(Image)
+              class="elem-pl-XS"
+              height="17"
+              src="/static/images/icon-chat@2x.png"
+              width="17"
+            />
             <Field
-              className="InputCheckbox"
+              className="elm-padding-top"
               component={
                 Object {
                   "$$typeof": Symbol(react.forward_ref),
@@ -647,7 +656,7 @@ exports[`ProfileInformation component should render correctly 1`] = `
               </Styled(BodyCopy)>
             </Field>
             <Field
-              className="InputCheckbox"
+              className="elm-padding-top"
               component={
                 Object {
                   "$$typeof": Symbol(react.forward_ref),

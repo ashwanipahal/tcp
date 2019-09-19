@@ -12,6 +12,7 @@ import Anchor from '../../../../common/atoms/Anchor';
 import InputCheckbox from '../../../../common/atoms/InputCheckbox';
 import { getIconPath } from '../../../../../utils';
 import SocialContainer from '../../../../common/organisms/SocialAccount/container/Social.container';
+import MyFavoriteStore from '../../MyProfile/organism/MyFavoriteStore';
 
 class MyPrefrenceSection extends React.PureComponent {
   render() {
@@ -33,7 +34,7 @@ class MyPrefrenceSection extends React.PureComponent {
               fontSize="fs16"
               fontWeight="extrabold"
             >
-              {getLabelValue(labels, 'lbl_prefrence_favorite_store')}
+              <MyFavoriteStore isMyPreferences />
             </BodyCopy>
           </Col>
           <Col
@@ -115,12 +116,16 @@ class MyPrefrenceSection extends React.PureComponent {
                     fontSize="fs16"
                     fontFamily="secondary"
                     fontWeight="extrabold"
-                    component="div"
+                    component="span"
                   >
                     {getLabelValue(labels, 'lbl_prefrence_app_text')}
-                    <Image src={getIconPath('empty-fav-icon')} />
                   </BodyCopy>
-
+                  <Image
+                    class="elem-pl-XS"
+                    width="17"
+                    height="17"
+                    src={getIconPath('icon-alarm')}
+                  />
                   <Field
                     name="primary"
                     component={InputCheckbox}
@@ -139,6 +144,7 @@ class MyPrefrenceSection extends React.PureComponent {
                     className="elm-padding-top"
                   >
                     <BodyCopy fontSize="fs14" fontFamily="secondary" component="span">
+                      {' '}
                       {getLabelValue(labels, 'lbl_prefrence_gym_label')}
                     </BodyCopy>
                   </Field>
@@ -154,18 +160,18 @@ class MyPrefrenceSection extends React.PureComponent {
                   <BodyCopy
                     fontSize="fs14"
                     fontFamily="secondary"
-                    component="div"
+                    component="span"
                     fontWeight="extrabold"
                   >
                     {getLabelValue(labels, 'lbl_prefrence_text_text')}
-                    <Image src={getIconPath('empty-fav-icon')} />
                   </BodyCopy>
+                  <Image class="elem-pl-XS" width="17" height="17" src={getIconPath('icon-chat')} />
 
                   <Field
                     name="primary"
                     component={InputCheckbox}
                     dataLocator="InputCheckbox"
-                    className="InputCheckbox"
+                    className="elm-padding-top"
                   >
                     <BodyCopy fontSize="fs14" fontFamily="secondary" component="span">
                       {getLabelValue(labels, 'lbl_prefrence_tcp_label')}
@@ -175,7 +181,7 @@ class MyPrefrenceSection extends React.PureComponent {
                     name="primary"
                     component={InputCheckbox}
                     dataLocator="InputCheckbox"
-                    className="InputCheckbox"
+                    className="elm-padding-top"
                   >
                     <BodyCopy fontSize="fs14" fontFamily="secondary" component="span">
                       {getLabelValue(labels, 'lbl_prefrence_gym_label')}
