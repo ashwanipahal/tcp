@@ -40,7 +40,7 @@ exports[`FullSizeImageWithQuickViewModal component should renders correctly 1`] 
   widthConfig={
     Object {
       "large": "1200px",
-      "medium": "1000px",
+      "medium": "760px",
       "small": "375px",
     }
   }

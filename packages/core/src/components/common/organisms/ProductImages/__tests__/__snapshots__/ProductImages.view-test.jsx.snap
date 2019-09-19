@@ -88,7 +88,6 @@ exports[`ProductImages component should renders correctly 1`] = `
           isFullSizeModalOpen={false}
           isMobile={true}
           isZoomEnabled={true}
-          onOpenSimpleFullSize={[Function]}
           zoomImageUrl="https://test4.childrensplace.com/wcsstore/GlobalSAS/images/tcp/products/900/2082931_IV.jpg"
         />
         <Styled(ProductDetailImage)
@@ -97,14 +96,12 @@ exports[`ProductImages component should renders correctly 1`] = `
           isFullSizeModalOpen={false}
           isMobile={true}
           isZoomEnabled={true}
-          onOpenSimpleFullSize={[Function]}
           zoomImageUrl="https://test4.childrensplace.com/wcsstore/GlobalSAS/images/tcp/products/900/2082931_IV-1.jpg"
         />
       </Styled(Carousel)>
       <Styled(Anchor)
-        aria-label="view full size image"
+        aria-label="View full size image"
         className="resize-text"
-        onClick={[Function]}
       >
         Full Size
       </Styled(Anchor)>
