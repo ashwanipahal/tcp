@@ -51,7 +51,7 @@ const styles = css`
     .activeHeader {
       border-bottom: ${props => props.theme.spacing.ELEM_SPACING.XXXS} solid
         ${props => props.theme.colors.TEXT.DARKERGRAY};
-      font-weight: 800;
+      font-weight: ${props => props.theme.fonts.fontWeight.bold};
     }
   }
 
