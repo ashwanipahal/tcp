@@ -272,6 +272,16 @@ const endpoints = {
     URI: PRODUCTS_URI.PRODUCTS_AUTOSUGGEST,
     unbxd: true,
   },
+
+  getSocialAccountsInfo: {
+    method: 'GET',
+    URI: 'v2/account/preferences/socialNew',
+  },
+
+  saveSocialAccountsInfo: {
+    method: 'PUT',
+    URI: 'v2/account/preferences/socialNew',
+  },
   getVenmoClientToken: {
     method: 'GET',
     URI: 'v2/venmo/getVenmoClientToken',
@@ -299,6 +309,14 @@ const endpoints = {
   getStoreandProductInventoryInfo: {
     method: 'GET',
     URI: 'v2/vendor/getStoreAndProductInventoryInfo',
+  },
+  checkout: {
+    method: 'POST',
+    URI: 'v2/checkout/addCheckout',
+  },
+  personalizedCoupons: {
+    method: 'POST',
+    URI: 'v2/coupons/getOffers',
   },
 };
 export default endpoints;

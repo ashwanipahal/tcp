@@ -68,9 +68,13 @@ export const UpdateProfileInfo = args => {
     payload.body.customMemberAttributes = [{ airMilesCard: airmiles }];
   }
 
-  return executeStatefulAPICall(payload, errorHandler).then(() => {
-    return 'successMessage';
-  });
+  return executeStatefulAPICall(payload)
+    .then(() => {
+      return 'successMessage';
+    })
+    .catch(err => {
+      throw err;
+    });
 };
 
 /**

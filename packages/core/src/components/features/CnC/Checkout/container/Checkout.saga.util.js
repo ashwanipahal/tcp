@@ -1,11 +1,15 @@
 /* eslint-disable extra-rules/no-commented-out-code */
 import { call, put, select } from 'redux-saga/effects';
+import logger from '../../../../../utils/loggerInstance';
+import { getAPIConfig } from '../../../../../utils';
 import selectors from './Checkout.selector';
 import {
   setShippingMethodAndAddressId,
+  briteVerifyStatusExtraction,
   getVenmoToken,
 } from '../../../../../services/abstractors/CnC/index';
-
+import endpoints from '../../../../../service/endpoint';
+import emailSignupAbstractor from '../../../../../services/abstractors/common/EmailSmsSignup/EmailSmsSignup';
 import { getUserEmail } from '../../../account/User/container/User.selectors';
 import { getAddressListState } from '../../../account/AddressBook/container/AddressBook.selectors';
 import {
@@ -18,9 +22,10 @@ import {
   setGiftWrap,
   getVenmoClientTokenSuccess,
   getVenmoClientTokenError,
+  emailSignupStatus,
 } from './Checkout.action';
 import utility from '../util/utility';
-import { CHECKOUT_ROUTES } from '../Checkout.constants';
+import constants, { CHECKOUT_ROUTES } from '../Checkout.constants';
 import {
   addGiftWrappingOption,
   removeGiftWrappingOption,
@@ -170,6 +175,44 @@ export function* addAndSetGiftWrappingOptions(payload) {
     } catch (err) {
       // throw getSubmissionError(store, 'submitShippingSection', err);
     }
+  }
+}
+
+export function* subscribeEmailAddress(emailObj, status, field1) {
+  try {
+    const { storeId, langId, catalogId } = getAPIConfig();
+    const payloadObject = {
+      storeId,
+      catalogId,
+      langId,
+      emailaddr: emailObj.payload,
+      URL: 'email-confirmation',
+      response: `${status}:::false:false`,
+      registrationType: constants.EMAIL_REGISTRATION_TYPE_CONSTANT,
+    };
+
+    if (field1) {
+      payloadObject.field1 = field1;
+    }
+
+    const { baseURI, relURI, method } = endpoints.addEmailSignup;
+    const params = {
+      payload: JSON.stringify(payloadObject),
+      langId,
+      storeId,
+      catalogId,
+    };
+    const res = yield call(emailSignupAbstractor.subscribeEmail, baseURI, relURI, params, method);
+    yield put(emailSignupStatus({ subscription: res }));
+  } catch (err) {
+    logger.error(err);
+  }
+}
+
+export function* validateAndSubmitEmailSignup(emailAddress, field1) {
+  if (emailAddress) {
+    const statusCode = call(briteVerifyStatusExtraction, emailAddress);
+    yield subscribeEmailAddress({ payload: emailAddress }, statusCode, field1);
   }
 }
 
