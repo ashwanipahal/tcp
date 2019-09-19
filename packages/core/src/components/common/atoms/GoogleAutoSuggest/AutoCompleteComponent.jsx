@@ -1,7 +1,7 @@
 import React from 'react';
 import { requireNamedOnlineModule } from '../../../../utils/resourceLoader';
 import TextBox from '../TextBox'; // this comment prevents linting errors
-import { getCacheData, setCacheData } from '../../../../utils/localStorageManagement';
+import { getCacheData, setCacheData } from '../../../../utils/multipleLocalStorageManagement';
 
 // @flow
 type Props = {
