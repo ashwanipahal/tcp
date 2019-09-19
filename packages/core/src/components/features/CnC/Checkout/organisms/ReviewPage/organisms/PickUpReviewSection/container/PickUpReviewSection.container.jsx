@@ -2,7 +2,8 @@ import { connect } from 'react-redux';
 
 import PickUpReviewSection from '../../../molecules/PickUpReviewSection';
 import BAG_SELECTORS from '../../../../../../BagPage/container/BagPage.selectors';
-import { getPickupValues } from '../../../../../container/Checkout.selector';
+
+import CHECKOUT_SELECTORS, { getPickupValues } from '../../../../../container/Checkout.selector';
 
 function mapStateToProps(state) {
   const pickUpContactPerson = getPickupValues(state);
@@ -23,6 +24,10 @@ function mapStateToProps(state) {
     // adding items for showing Pickup store data
     cartStores: BAG_SELECTORS.getCartStores(state),
     pickUpContactPerson,
+    pickUpLabels: CHECKOUT_SELECTORS.getPickUpContactFormLabels(state),
+    pickUpAlternatePerson: CHECKOUT_SELECTORS.getInitialReviewSectionValues(state).pickUpAlternate,
+    isHasPickUpAlternatePerson: CHECKOUT_SELECTORS.getInitialReviewSectionValues(state)
+      .hasAlternatePickup,
   };
 }
 

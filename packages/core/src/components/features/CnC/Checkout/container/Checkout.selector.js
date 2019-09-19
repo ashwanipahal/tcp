@@ -427,6 +427,13 @@ const getSmsNumberForOrderUpdates = createSelector(
   smsSignUpFields => smsSignUpFields && smsSignUpFields.phoneNumber
 );
 
+const getInitialReviewSectionValues = state => {
+  return {
+    hasAlternatePickup: isPickupAlt(state),
+    pickUpAlternate: isPickupAlt(state) ? getPickupAltValues(state) : {},
+  };
+};
+
 function getPickupInitialPickupSectionValues(state) {
   // let userContactInfo = userStoreView.getUserContactInfo(state);
   // values (if any) entered previously in the checkout process,
@@ -631,6 +638,7 @@ export default {
   getGiftServicesSend,
   getPaypalPaymentSettings,
   getReviewLabels,
+  getInitialReviewSectionValues,
   getVenmoData,
   getVenmoClientTokenData,
   isVenmoPaymentAvailable,
