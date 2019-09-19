@@ -17,8 +17,6 @@ import {
   getLongDescription,
   getIsLoadingMore,
   getLastLoadedPageNumber,
-  getAppliedFilters,
-  getAppliedSortId,
 } from '../../ProductListing/container/ProductListing.selectors';
 import {
   getLoadedProductsCount,
@@ -28,6 +26,8 @@ import {
   getProductsSelect,
   getCurrentSearchForText,
   getLabels,
+  getAppliedFilters,
+  getAppliedSortId,
 } from '../container/SearchDetail.selectors';
 
 import { isPlccUser } from '../../../account/User/container/User.selectors';
