@@ -234,4 +234,12 @@ export default {
   plp_sort_newest: 'sortoption-Newest-option',
   plp_sort_favorited: 'sortoption-Most Favorited-option',
   plp_sort_top_rated: 'sortoption-Top Rated-option',
+
+  // PDP ProductImages
+  pdp_product_titles: 'pdp_product_titles',
+  pdp_main_image: 'pdp_main_image',
+  pdp_image_carousel_icon: 'pdp_image_carousel_icon',
+  pdp_full_size_btn: 'pdp_full_size_btn',
+  pdp_full_size_image_modal: 'pdp_full_size_image_modal',
+  pdp_zoomed_image_closed_btn: 'pdp_zoomed_image_closed_btn',
 };

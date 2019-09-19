@@ -5,6 +5,7 @@ import ReactImageMagnify from 'react-image-magnify';
 import { Image, Anchor } from '../../atoms';
 import withStyles from '../../hoc/withStyles';
 import styles from './ProductDetailImage.style';
+import { getLocator } from '../../../../utils';
 
 const getNonZoomImage = (isMobile, imageUrl, imageName, onOpenSimpleFullSize) => {
   return !isMobile ? (
@@ -13,10 +14,16 @@ const getNonZoomImage = (isMobile, imageUrl, imageName, onOpenSimpleFullSize) =>
       src={imageUrl}
       alt={imageName}
       itemProp="contentUrl"
+      data-locator={getLocator('pdp_main_image')}
     />
   ) : (
     <Anchor aria-label="view full size image" onClick={onOpenSimpleFullSize}>
-      <Image src={imageUrl} alt={imageName} itemProp="contentUrl" />
+      <Image
+        data-locator={getLocator('pdp_main_image')}
+        src={imageUrl}
+        alt={imageName}
+        itemProp="contentUrl"
+      />
     </Anchor>
   );
 };
@@ -41,6 +48,7 @@ const ProductDetailImage = props => {
     <div itemScope itemType="http://schema.org/ImageObject" className={className} title={imageName}>
       {isZoomEnabled && !isMobile ? (
         <ReactImageMagnify
+          data-locator={getLocator('pdp_main_image')}
           {...{
             enlargedImagePortalId: 'portal',
             smallImage: {

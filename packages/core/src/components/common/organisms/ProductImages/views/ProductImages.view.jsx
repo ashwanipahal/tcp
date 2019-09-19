@@ -10,7 +10,7 @@ import FullSizeImageModal from '../../../../features/browse/ProductDetail/molecu
 import Carousel from '../../../molecules/Carousel';
 import styles, { carousalStyle } from '../styles/ProductImages.style';
 import ProductDetailImage from '../../../molecules/ProductDetailImage';
-import { getIconPath } from '../../../../../utils';
+import { getIconPath, getLocator } from '../../../../../utils';
 
 // function to return Thumbnails list to show on PDP and full size page
 const getThumbnailList = (
@@ -153,6 +153,7 @@ class ProductImages extends React.Component {
                 className="resize-text"
                 aria-label="View full size image"
                 onClick={onCloseClick}
+                dataLocator={getLocator('pdp_full_size_btn')}
               >
                 Full Size
               </Anchor>

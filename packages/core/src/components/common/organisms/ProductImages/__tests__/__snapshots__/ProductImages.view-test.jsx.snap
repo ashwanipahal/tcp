@@ -102,6 +102,7 @@ exports[`ProductImages component should renders correctly 1`] = `
       <Styled(Anchor)
         aria-label="View full size image"
         className="resize-text"
+        dataLocator="pdp_full_size_btn"
       >
         Full Size
       </Styled(Anchor)>

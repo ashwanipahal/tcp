@@ -4,6 +4,7 @@ import withStyles from '../../../../../../common/hoc/withStyles';
 import styles, { customHeaderStyle } from '../styles/FullSizeImageWithQuickViewModal.style';
 import Modal from '../../../../../../common/molecules/Modal';
 import ProductImages from '../../../../../../common/organisms/ProductImages';
+import { getLocator } from '../../../../../../../utils';
 
 const FullSizeImageWithQuickViewModal = props => {
   const { isMobile, onCloseClick, name, isThumbnailListVisible, images } = props;
@@ -13,6 +14,9 @@ const FullSizeImageWithQuickViewModal = props => {
       onRequestClose={onCloseClick}
       overlayClassName="TCPModal__Overlay"
       className="TCPModal__Content"
+      dataLocatorHeader={getLocator('pdp_product_titles')}
+      dataLocator={getLocator('pdp_full_size_image_modal')}
+      closeIconDataLocator={getLocator('pdp_zoomed_image_closed_btn')}
       heading={name}
       fixedWidth
       widthConfig={{ small: '375px', medium: '760px', large: '1200px' }}

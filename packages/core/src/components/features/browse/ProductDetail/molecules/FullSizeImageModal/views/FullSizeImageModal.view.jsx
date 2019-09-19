@@ -5,6 +5,7 @@ import styles from '../styles/FullSizeImageModal.style';
 import { Image } from '../../../../../../common/atoms';
 import Modal from '../../../../../../common/molecules/Modal';
 import onDoubleTap from '../util';
+import { getLocator } from '../../../../../../../utils';
 
 class FullSizeImageModal extends React.Component {
   static propTypes = {
@@ -40,6 +41,8 @@ class FullSizeImageModal extends React.Component {
         onRequestClose={onCloseClick}
         overlayClassName="TCPModal__Overlay"
         className={`${className} TCPModal__Content`}
+        dataLocator={getLocator('pdp_full_size_image_modal')}
+        closeIconDataLocator={getLocator('pdp_zoomed_image_closed_btn')}
         fixedWidth
       >
         <div className="overlay-content">

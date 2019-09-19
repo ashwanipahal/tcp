@@ -3,6 +3,9 @@
 exports[`FullSizeImageWithQuickViewModal component should renders correctly 1`] = `
 <Styled(Modal)
   className="TCPModal__Content"
+  closeIconDataLocator="pdp_zoomed_image_closed_btn"
+  dataLocator="pdp_full_size_image_modal"
+  dataLocatorHeader="pdp_product_titles"
   fixedWidth={true}
   heading=""
   heightConfig={
