@@ -3,10 +3,15 @@ import { connect } from 'react-redux';
 import PickUpReviewSection from '../../../molecules/PickUpReviewSection';
 import BAG_SELECTORS from '../../../../../../BagPage/container/BagPage.selectors';
 
-import CHECKOUT_SELECTORS, { getPickupValues } from '../../../../../container/Checkout.selector';
+import CHECKOUT_SELECTORS, {
+  getPickupValues,
+  getPickupAltValues,
+  isPickupAlt,
+} from '../../../../../container/Checkout.selector';
 
 function mapStateToProps(state) {
   const pickUpContactPerson = getPickupValues(state);
+  const pickUpAlternatePerson = getPickupAltValues(state);
 
   // const venmoEnabled = checkoutStoreView.isVenmoNonceActive(state);
   // if (venmoEnabled && !checkoutStoreView.isPickupValuesAvailable(state)) {
@@ -22,12 +27,11 @@ function mapStateToProps(state) {
   // console.log('BAG_SELECTORS getCartStoresTwo', BAG_SELECTORS.getCartStoresTwo(state));
   return {
     // adding items for showing Pickup store data
-    cartStores: BAG_SELECTORS.getCartStores(state),
+    cartStores: BAG_SELECTORS.getCartStoresToJs(state),
     pickUpContactPerson,
     pickUpLabels: CHECKOUT_SELECTORS.getPickUpContactFormLabels(state),
-    pickUpAlternatePerson: CHECKOUT_SELECTORS.getInitialReviewSectionValues(state).pickUpAlternate,
-    isHasPickUpAlternatePerson: CHECKOUT_SELECTORS.getInitialReviewSectionValues(state)
-      .hasAlternatePickup,
+    pickUpAlternatePerson,
+    isHasPickUpAlternatePerson: isPickupAlt(state),
   };
 }
 

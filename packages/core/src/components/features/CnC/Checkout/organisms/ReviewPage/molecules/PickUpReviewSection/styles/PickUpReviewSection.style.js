@@ -1,9 +1,8 @@
 import { css } from 'styled-components';
 
 const styles = css`
-  .container {
-    width: 100%;
-  }
+  margin-bottom: 36px;
+
   .row-one {
     margin-bottom: 24px;
   }
@@ -16,8 +15,9 @@ const styles = css`
     margin-bottom: 26px;
   }
   .EditAnchor {
-    margin-left: ${props => props.theme.spacing.LAYOUT_SPACING.XS};
+    margin-left: ${props => props.theme.spacing.ELEM_SPACING.XS};
     align-self: flex-end;
+    padding-bottom: 2px;
   }
   .anchorStyle {
     font-size: 12px;
@@ -26,6 +26,9 @@ const styles = css`
   .pickup-store-details-container {
     display: flex;
     flex-direction: 'row';
+  }
+  .pickupTitle {
+    margin-bottom: 14px;
   }
 `;
 

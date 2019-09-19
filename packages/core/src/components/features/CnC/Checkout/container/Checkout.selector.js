@@ -401,10 +401,11 @@ const getAlternateFormFields = state => {
   return selector(state, 'pickUpAlternate');
 };
 
-const isPickupAlt = createSelector(
-  getAlternateFormFields,
-  pickUpAlternate => pickUpAlternate && pickUpAlternate.firstName
+export const isPickupAlt = createSelector(
+  getPickupAltValues,
+  pickUpAlternate => pickUpAlternate && !!pickUpAlternate.firstName
 );
+
 const getLabels = state => state.Labels;
 
 export const getAlternateFormUpdate = createSelector(
@@ -427,13 +428,6 @@ const getSmsNumberForOrderUpdates = createSelector(
   smsSignUpFields => smsSignUpFields && smsSignUpFields.phoneNumber
 );
 
-const getInitialReviewSectionValues = state => {
-  return {
-    hasAlternatePickup: isPickupAlt(state),
-    pickUpAlternate: isPickupAlt(state) ? getPickupAltValues(state) : {},
-  };
-};
-
 function getPickupInitialPickupSectionValues(state) {
   // let userContactInfo = userStoreView.getUserContactInfo(state);
   // values (if any) entered previously in the checkout process,
@@ -445,14 +439,14 @@ function getPickupInitialPickupSectionValues(state) {
   };
   return {
     pickUpContact: {
-      firstName: pickupValues.get('firstName') || getUserName(state),
-      lastName: pickupValues.get('lastName') || getUserLastName(state),
-      emailAddress: pickupValues.get('emailAddress') || getUserEmail(state),
-      phoneNumber: pickupValues.get('phoneNumber') || getUserPhoneNumber(state),
+      firstName: pickupValues.firstName || getUserName(state),
+      lastName: pickupValues.lastName || getUserLastName(state),
+      emailAddress: pickupValues.emailAddress || getUserEmail(state),
+      phoneNumber: pickupValues.phoneNumber || getUserPhoneNumber(state),
     },
     smsSignUp: {
       sendOrderUpdate: !!getSmsNumberForOrderUpdates(state),
-      phoneNumber: pickupValues.get('phoneNumber') || getUserPhoneNumber(state),
+      phoneNumber: pickupValues.phoneNumber || getUserPhoneNumber(state),
     },
     hasAlternatePickup: isPickupAlt(state),
     pickUpAlternate: isPickupAlt(state) ? alternativeData : {},
@@ -638,7 +632,6 @@ export default {
   getGiftServicesSend,
   getPaypalPaymentSettings,
   getReviewLabels,
-  getInitialReviewSectionValues,
   getVenmoData,
   getVenmoClientTokenData,
   isVenmoPaymentAvailable,

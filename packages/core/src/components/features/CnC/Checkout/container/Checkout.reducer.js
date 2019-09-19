@@ -166,7 +166,7 @@ export default function CheckoutReducer(state = initialState, action) {
   // const uiFlags = checkout.get('uiFlags');
   switch (action.type) {
     case 'CHECKOUT_VALUES_SET_PICKUP':
-      return checkout.setIn(['values', 'pickUpContact'], fromJS(action.pickUpContact));
+      return checkout.setIn(['values', 'pickUpContact'], action.pickUpContact);
     case 'CHECKOUT_VALUES_SET_PICKUP_ALT':
       return checkout.setIn(['values', 'pickUpAlternative'], action.pickUpAlternative);
     // case 'CHECKOUT_VALUES_SET_GIFTCARDS':

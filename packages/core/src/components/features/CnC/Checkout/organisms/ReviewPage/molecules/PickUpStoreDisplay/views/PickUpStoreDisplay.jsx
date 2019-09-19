@@ -1,7 +1,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import withStyles from '../../../../../../../../common/hoc/withStyles';
-// import BodyCopy from '../../../../../../../../common/atoms/BodyCopy';
+import BodyCopy from '../../../../../../../../common/atoms/BodyCopy';
 import { getDateInformation } from '../../../../../../../../../utils/badge.util';
 import { ORDER_ITEM_TYPE } from '../../../../../../../../../services/abstractors/CnC/CartItemTile';
 import { Image } from '../../../../../../../../common/atoms';
@@ -13,7 +13,7 @@ const pickup = getIconPath('marker-icon');
 const PickupStoreDisplay = props => {
   const {
     className,
-    store: { bossEndDate, bossStartDate, store, storeItemsCount },
+    store: { bossEndDate, bossStartDate, store, storeItemsCount, storeAddress },
     orderType,
     labels,
   } = props;
@@ -28,7 +28,7 @@ const PickupStoreDisplay = props => {
   const bopisDate = `Today, ${today.month} ${today.date}`;
   bossItems = bossItems || storeItemsCount;
   bopisItems = bopisItems || storeItemsCount;
-
+  console.log('labels', labels);
   return (
     <div className={`${className}`}>
       <div className="pickup-store-details">
@@ -36,25 +36,69 @@ const PickupStoreDisplay = props => {
           <Image src={pickup} className="back-link-image" />
         </div>
         <div className="pickup-store-content">
-          <p className="pickup-store-name">{store}</p>
-          {/* <p className="pickup-store-address">{storeAddress.addressLine1}</p> */}
+          <BodyCopy
+            fontSize="fs14"
+            dataLocator=""
+            color="gray.900"
+            fontFamily="secondary"
+            fontWeight="extrabold"
+          >
+            {store}
+          </BodyCopy>
+          <BodyCopy
+            fontSize="fs12"
+            dataLocator=""
+            color="gray.900"
+            fontFamily="secondary"
+            fontWeight="regular"
+          >
+            {storeAddress.addressLine1}
+          </BodyCopy>
           {orderType !== ORDER_ITEM_TYPE.BOSS && (
-            <React.Fragment>
-              <p className="pickup-store-items">
+            <div className="pickup-store-margin">
+              <BodyCopy
+                fontSize="fs14"
+                dataLocator=""
+                fontFamily="secondary"
+                fontWeight="extrabold"
+                color="gray.900"
+              >
                 {`PICK UP ${bopisItems} `}
-                {bopisItems === 1 ? labels.ITEM : labels.ITEMS}
-              </p>
-              <p className="pickup-store-time">{bopisDate}</p>
-            </React.Fragment>
+                {bopisItems === 1 ? 'item' : 'items'}
+              </BodyCopy>
+              <BodyCopy
+                fontSize="fs12"
+                dataLocator=""
+                color="gray.900"
+                fontFamily="secondary"
+                fontWeight="regular"
+              >
+                {bopisDate}
+              </BodyCopy>
+            </div>
           )}
           {orderType !== ORDER_ITEM_TYPE.BOPIS && (
-            <React.Fragment>
-              <p className="pickup-store-items">
+            <div className="pickup-store-margin">
+              <BodyCopy
+                fontSize="fs14"
+                dataLocator=""
+                fontFamily="secondary"
+                fontWeight="extrabold"
+                color="gray.900"
+              >
                 {`PICK UP ${bopisItems} `}
-                {bossItems === 1 ? labels.ITEM : labels.ITEMS}
-              </p>
-              <p className="pickup-store-time">{bossDate}</p>
-            </React.Fragment>
+                {bossItems === 1 ? 'item' : 'items'}
+              </BodyCopy>
+              <BodyCopy
+                fontSize="fs12"
+                dataLocator=""
+                color="gray.900"
+                fontFamily="secondary"
+                fontWeight="regular"
+              >
+                {bossDate}
+              </BodyCopy>
+            </div>
           )}
         </div>
       </div>

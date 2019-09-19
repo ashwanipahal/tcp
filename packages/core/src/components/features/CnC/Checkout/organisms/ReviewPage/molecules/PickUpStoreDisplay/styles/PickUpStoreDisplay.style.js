@@ -13,7 +13,11 @@ const styles = css`
     background-color: #ffffff;
   }
   .pickup-store-icon {
+    padding-top: 4px;
     margin-right: 20px;
+  }
+  .pickup-store-margin {
+    margin-top: 12px;
   }
 `;
 

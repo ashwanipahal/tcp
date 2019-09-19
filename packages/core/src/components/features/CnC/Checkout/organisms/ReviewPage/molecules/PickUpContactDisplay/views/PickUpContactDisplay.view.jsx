@@ -7,20 +7,37 @@ import BodyCopy from '../../../../../../../../common/atoms/BodyCopy';
 class PickUpContactDisplay extends React.PureComponent {
   render() {
     const { className, formData } = this.props;
-
     return (
       <div className={className}>
-        <BodyCopy fontSize="fs16" dataLocator="" fontFamily="secondary" fontWeight="regular">
-          {`${formData.get('firstName')} ${formData.get('lastName')}`}
+        <BodyCopy
+          fontSize="fs16"
+          dataLocator=""
+          fontFamily="secondary"
+          color="gray.900"
+          fontWeight="regular"
+        >
+          {`${formData.firstName} ${formData.lastName}`}
         </BodyCopy>
-        {formData.get('phoneNumber') && (
-          <BodyCopy fontSize="fs16" dataLocator="" fontFamily="secondary" fontWeight="regular">
-            {formData.get('phoneNumber')}
+        {formData.phoneNumber && (
+          <BodyCopy
+            fontSize="fs16"
+            dataLocator=""
+            fontFamily="secondary"
+            color="gray.900"
+            fontWeight="regular"
+          >
+            {formData.phoneNumber}
           </BodyCopy>
         )}
-        {formData.get('emailAddress') && (
-          <BodyCopy fontSize="fs16" dataLocator="" fontFamily="secondary" fontWeight="regular">
-            {formData.get('emailAddress')}
+        {formData.emailAddress && (
+          <BodyCopy
+            fontSize="fs16"
+            dataLocator=""
+            fontFamily="secondary"
+            color="gray.900"
+            fontWeight="regular"
+          >
+            {formData.emailAddress}
           </BodyCopy>
         )}
       </div>

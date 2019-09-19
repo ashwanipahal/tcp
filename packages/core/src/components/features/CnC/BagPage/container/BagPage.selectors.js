@@ -132,56 +132,9 @@ const getCartStores = state => {
   return state.CartPageReducer.getIn(['orderDetails', 'stores']);
 };
 
-const getCartStoresTwo = createSelector(
+const getCartStoresToJs = createSelector(
   getCartStores,
-  store => {
-    const address = store.getIn(['0', 'address']);
-    return {
-      storeId: store.getIn(['0', 'stLocId']),
-      store: store.getIn(['0', 'storeName']),
-      storeAddress: {
-        addessKey: address.getIn(['addessKey']),
-        address: address.getIn(['address']),
-        addressId: address.getIn(['addressId']),
-        addressLine1: address.getIn(['addressLine1']),
-        addressLine2: address.getIn(['addressLine2']),
-        addressLine3: address.getIn(['addressLine3']),
-        city: address.getIn(['city']),
-        country: address.getIn(['country']),
-        state: address.getIn(['state']),
-        zipCode: address.getIn(['zipCode']),
-      },
-      storeItemsCount: store.getIn(['0', 'itemsCount']),
-      bossStartDate: store.getIn(['0', 'bossStartDate']),
-      bossEndDate: store.getIn(['0', 'bossEndDate']),
-      orderType: store.getIn(['0', 'orderType']),
-    };
-  }
-);
-
-const getCartStoresThree = createSelector(
-  getCartStores,
-  store => {
-    return [...store].filter(item => item.get('stLocId') !== 'ECOM');
-  }
-);
-
-const getCartStoresFour = createSelector(
-  getCartStoresThree,
-  store => {
-    store.map(item => {
-      console.log('getCartStoresFour item', item);
-      return {
-        storeId: item.get('storeId'),
-        store: item.storeName,
-        storeAddress: item.address,
-        storeItemsCount: item.itemsCount,
-        bossStartDate: item.bossStartDate,
-        bossEndDate: item.bossEndDate,
-        orderType: item.orderType,
-      };
-    });
-  }
+  store => store.toJS()
 );
 
 export default {
@@ -204,7 +157,5 @@ export default {
   getGiftServicesContentGymId,
   getCurrentCurrency,
   getCartStores,
-  getCartStoresTwo,
-  getCartStoresThree,
-  getCartStoresFour,
+  getCartStoresToJs,
 };

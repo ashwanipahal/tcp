@@ -32,7 +32,6 @@ class ReviewPage extends React.PureComponent {
       applyConditionTermsText,
       applyConditionAndText,
       applyConditionPolicyText,
-      pickupSectionTitle,
       shippingSectionTitle,
       billingSectionTitle,
       ariaLabelBackLink,
@@ -44,7 +43,6 @@ class ReviewPage extends React.PureComponent {
         <CheckoutSectionTitleDisplay title={header} dataLocator="review-title" />
         {!!orderHasPickUp && (
           <div className="review-pickup">
-            {pickupSectionTitle}
             <PickUpReviewSectionContainer />
           </div>
         )}
