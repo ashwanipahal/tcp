@@ -52,7 +52,7 @@ class ProductVariantSelector extends React.PureComponent {
       <ErrorContainer>
         <Image source={errorIcon} style={errorIconStyle} />
         <BodyCopy
-          fontWeight="semibold"
+          fontWeight="extrabold"
           mobileFontFamily="secondary"
           fontSize="fs10"
           text={error}
