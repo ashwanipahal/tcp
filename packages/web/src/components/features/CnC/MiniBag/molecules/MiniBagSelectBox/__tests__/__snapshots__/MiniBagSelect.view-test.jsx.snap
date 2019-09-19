@@ -3,7 +3,7 @@
 exports[`MiniBagSelectBox component MiniBagSelectBox component renders correctly 1`] = `
 <Fragment>
   <Styled(BodyCopy)
-    className={null}
+    className="pdp-qty"
     color="text.primary"
     component="p"
     fontFamily="secondary"
