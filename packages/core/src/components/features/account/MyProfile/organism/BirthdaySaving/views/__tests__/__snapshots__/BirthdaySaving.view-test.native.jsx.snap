@@ -1,6 +1,6 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`BirthdaySaving should render correctly 1`] = `
+exports[`BirthdaySaving component should render correctly 1`] = `
 <MyProfileTile
   ctaLink="accountOverviewMobile"
   ctaTitle=""
@@ -8,8 +8,15 @@ exports[`BirthdaySaving should render correctly 1`] = `
   handleComponentChange={[Function]}
   title=""
 >
-  <Styled(Styled(BodyCopy))
-    fontSize="fs14"
+  <Connect(BirthdaySavings)
+    labels={
+      Object {
+        "lbl_profile_add_birthday_info": "",
+        "lbl_profile_birthday_saving_info": "",
+        "lbl_profile_birthday_savings": "",
+      }
+    }
+    view="read"
   />
 </MyProfileTile>
 `;

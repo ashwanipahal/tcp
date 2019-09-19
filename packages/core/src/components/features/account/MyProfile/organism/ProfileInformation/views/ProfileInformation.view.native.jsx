@@ -2,6 +2,7 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import Anchor from '@tcp/core/src/components/common/atoms/Anchor';
 import { ViewWithSpacing } from '@tcp/core/src/components/common/atoms/styledWrapper';
+import { fromJS } from 'immutable';
 import { UrlHandler } from '../../../../../../../utils/utils.app';
 import ProfileInfoActions from '../../ProfileInfoActions';
 import PersonalInformation from '../../PersonalInformation';
@@ -58,6 +59,7 @@ export class ProfileInformation extends React.PureComponent {
       myPlaceNumber,
       userSurvey,
       percentageIncrement,
+      childrenBirthdays,
     } = this.props;
     const { mountSurveyModal, mountMailingAddressModal, mountAddChildModal } = this.state;
     return (
@@ -91,7 +93,11 @@ export class ProfileInformation extends React.PureComponent {
         )}
         <ChangePasswordInfo labels={labels} handleComponentChange={handleComponentChange} />
         {!!defaultStore && <MyFavoriteStore defaultStore={defaultStore} />}
-        <BirthdaySaving labels={labels} handleComponentChange={this.toggleAddChildModal} />
+        <BirthdaySaving
+          labels={labels}
+          childrenBirthdays={childrenBirthdays}
+          handleComponentChange={this.toggleAddChildModal}
+        />
         <BirthdaySavingsPage
           mountAddChildModal={mountAddChildModal}
           handleComponentChange={this.toggleAddChildModal}
@@ -157,6 +163,7 @@ ProfileInformation.propTypes = {
   userSurvey: PropTypes.shape([]),
   percentageIncrement: PropTypes.shape({}),
   defaultStore: PropTypes.string,
+  childrenBirthdays: PropTypes.shape({}),
 };
 
 ProfileInformation.defaultProps = {
@@ -175,6 +182,7 @@ ProfileInformation.defaultProps = {
   userSurvey: [],
   percentageIncrement: {},
   defaultStore: '',
+  childrenBirthdays: fromJS([]),
 };
 
 export default ProfileInformation;

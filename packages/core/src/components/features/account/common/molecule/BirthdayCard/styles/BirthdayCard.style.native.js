@@ -6,6 +6,7 @@ const BirthdayCardContainer = styled.View`
   border: 1px solid ${props => props.theme.colorPalette.gray[900]};
   position: relative;
   padding: 6px 8px 8px;
+  width: 162px;
   height: ${constants.BIRTHDAY_CARD_HEIGHT};
 `;
 
