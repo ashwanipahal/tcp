@@ -27,6 +27,7 @@ describe('#Added to bag Selectors', () => {
       totalItems: 0,
       orderItems: [],
     },
+    sfl: [],
   });
 
   const state = {
@@ -82,5 +83,8 @@ describe('#Added to bag Selectors', () => {
   });
   it('#getCurrentOrderId', () => {
     expect(BAGPAGE_SELECTORS.getCurrentOrderId(state)).toEqual(0);
+  });
+  it('#getsflItemsList', () => {
+    expect(BAGPAGE_SELECTORS.getsflItemsList(state)).toEqual(fromJS([]));
   });
 });

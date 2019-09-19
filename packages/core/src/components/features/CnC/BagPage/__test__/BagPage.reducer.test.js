@@ -5,6 +5,7 @@ import BagPageReducer from '../container/BagPage.reducer';
 describe('BagPage Reducer', () => {
   const initialState = {
     orderDetails: { orderItems: [], orderId: '1234' },
+    sfl: fromJS([]),
     errors: false,
     uiFlags: {
       isItemMovedToSflList: false,
@@ -101,6 +102,15 @@ describe('BagPage Reducer', () => {
     const newState = BagPageReducer(initialStateMutated, {
       type: BAGPAGE_CONSTANTS.CART_ITEMS_SET_SFL_ERROR,
       payload: null,
+    });
+
+    expect(newState).toEqual(initialStateMutated);
+  });
+
+  it('SET_SFL_DATA', () => {
+    const newState = BagPageReducer(initialStateMutated, {
+      type: BAGPAGE_CONSTANTS.SET_SFL_DATA,
+      payload: fromJS([]),
     });
 
     expect(newState).toEqual(initialStateMutated);
