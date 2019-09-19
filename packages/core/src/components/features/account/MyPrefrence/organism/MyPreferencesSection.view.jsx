@@ -12,6 +12,7 @@ import Anchor from '../../../../common/atoms/Anchor';
 import InputCheckbox from '../../../../common/atoms/InputCheckbox';
 import { getIconPath } from '../../../../../utils';
 import SocialContainer from '../../../../common/organisms/SocialAccount/container/Social.container';
+import MyFavoriteStore from '../../MyProfile/organism/MyFavoriteStore';
 
 class MyPrefrenceSection extends React.PureComponent {
   render() {
@@ -33,7 +34,7 @@ class MyPrefrenceSection extends React.PureComponent {
               fontSize="fs16"
               fontWeight="extrabold"
             >
-              {getLabelValue(labels, 'lbl_prefrence_favorite_store')}
+              <MyFavoriteStore isMyPreferences />
             </BodyCopy>
           </Col>
           <Col
