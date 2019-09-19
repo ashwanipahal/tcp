@@ -175,7 +175,7 @@ export default css`
 
     .bag-product-detail-wrapper {
       position: relative;
-
+      width: 100%;
       .color-fit-size-separator {
         padding: 0 10px;
       }
@@ -318,6 +318,8 @@ export default css`
       margin-top: 27px;
     }
   }
-
+  .heartIcon {
+    margin-top: ${props => props.theme.spacing.ELEM_SPACING.XS};
+  }
   ${props => (props.inheritedStyles ? props.inheritedStyles : '')};
 `;

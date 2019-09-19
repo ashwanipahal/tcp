@@ -123,9 +123,47 @@ class CartItemTile extends React.Component {
     );
   };
 
+  renderSflActionsLinks = () => {
+    const { productDetail, isShowSaveForLater, labels, isBagPageSflSection } = this.props;
+
+    if (
+      !isBagPageSflSection &&
+      productDetail.miscInfo.availability === CARTPAGE_CONSTANTS.AVAILABILITY_OK &&
+      isShowSaveForLater
+    ) {
+      return (
+        <BodyCopy
+          fontFamily="secondary"
+          fontSize="fs12"
+          component="div"
+          fontWeight={['semibold']}
+          dataLocator="saveForLaterLink"
+          onClick={() => {
+            this.handleMoveItemtoSaveList();
+          }}
+        >
+          <u>{labels.saveForLaterLink}</u>
+        </BodyCopy>
+      );
+    }
+    if (isBagPageSflSection) {
+      return (
+        <BodyCopy
+          fontFamily="secondary"
+          fontSize="fs12"
+          component="div"
+          fontWeight={['semibold']}
+          dataLocator="moveToBagLink"
+        >
+          <u>{labels.moveToBagLink}</u>
+        </BodyCopy>
+      );
+    }
+    return null;
+  };
+
   getItemDetails = (removeCartItem, productDetail, labels, pageView) => {
     const { isEdit } = this.state;
-    const { isShowSaveForLater } = this.props;
     return (
       <Row className={`padding-top-15 padding-bottom-20 parent-${pageView}`} fullBleed>
         {pageView !== 'myBag' && this.getBossBopisDetailsForMiniBag(productDetail, labels)}
@@ -156,22 +194,7 @@ class CartItemTile extends React.Component {
               Update
             </BodyCopy>
           )}
-          {// eslint-disable-next-line
-          productDetail.miscInfo.availability === CARTPAGE_CONSTANTS.AVAILABILITY_OK &&
-            isShowSaveForLater && (
-              <BodyCopy
-                fontFamily="secondary"
-                fontSize="fs12"
-                component="div"
-                fontWeight={['semibold']}
-                dataLocator="saveForLaterLink"
-                onClick={() => {
-                  this.handleMoveItemtoSaveList();
-                }}
-              >
-                <u>{labels.saveForLaterLink}</u>
-              </BodyCopy>
-            )}
+          {this.renderSflActionsLinks()}
         </Col>
         {pageView === 'myBag' && (
           <BodyCopy
@@ -226,6 +249,22 @@ class CartItemTile extends React.Component {
   };
 
   getProductPriceList = (productDetail, pageView) => {
+    const { isBagPageSflSection } = this.props;
+    if (isBagPageSflSection) {
+      return (
+        <Col className="value-responsive" colSize={{ small: 2, medium: 3, large: 8 }}>
+          <BodyCopy
+            fontFamily="secondary"
+            component="span"
+            fontSize="fs12"
+            dataLocator={getLocator('cart_item_price')}
+            fontWeight={['extrabold']}
+          >
+            {`$${productDetail.itemInfo.price.toFixed(2)}`}
+          </BodyCopy>
+        </Col>
+      );
+    }
     return (
       <Col className="value-responsive" colSize={{ small: 2, medium: 3, large: 8 }}>
         <BodyCopy
@@ -268,6 +307,46 @@ class CartItemTile extends React.Component {
     return '';
   };
 
+  renderItemQuantity = () => {
+    const { isBagPageSflSection, labels, productDetail } = this.props;
+    if (isBagPageSflSection) return null;
+    return (
+      <div>
+        <div className="color-size-fit-label color-fit-size-desktop">
+          <BodyCopy
+            fontFamily="secondary"
+            component="span"
+            fontSize="fs12"
+            fontWeight={['extrabold']}
+          >
+            {` ${labels.qty}`}
+            {':'}
+          </BodyCopy>
+        </div>
+        <BodyCopy
+          className="padding-left-10"
+          fontFamily="secondary"
+          component="span"
+          fontSize="fs12"
+          color="gray.800"
+          dataLocator="addedtobag-productqty"
+        >
+          {`${productDetail.itemInfo.qty}`}
+        </BodyCopy>
+      </div>
+    );
+  };
+
+  renderHeartIcon = () => {
+    const { isBagPageSflSection } = this.props;
+    if (!isBagPageSflSection) return null;
+    return (
+      <div className="heartIcon">
+        <Image alt="favIcon" className="sfl-fav-image" src={getIconPath('fav-icon')} />
+      </div>
+    );
+  };
+
   // eslint-disable-next-line complexity
   render() {
     const { isEdit } = this.state;
@@ -279,6 +358,7 @@ class CartItemTile extends React.Component {
       className,
       pageView,
       isEditAllowed,
+      isBagPageSflSection,
     } = this.props;
     const initialValues = {
       color: { name: productDetail.itemInfo.color },
@@ -433,43 +513,22 @@ class CartItemTile extends React.Component {
                         {`${productDetail.itemInfo.size}`}
                         {this.getProductFit(productDetail)}
                       </BodyCopy>
-                      <BodyCopy
-                        className="color-fit-size-separator"
-                        fontFamily="secondary"
-                        component="span"
-                        fontSize="fs12"
-                        color="gray.600"
-                      >
-                        |
-                      </BodyCopy>
-                    </div>
-
-                    <div>
-                      <div className="color-size-fit-label color-fit-size-desktop">
+                      {!isBagPageSflSection && (
                         <BodyCopy
+                          className="color-fit-size-separator"
                           fontFamily="secondary"
                           component="span"
                           fontSize="fs12"
-                          fontWeight={['extrabold']}
+                          color="gray.600"
                         >
-                          {` ${labels.qty}`}
-                          {':'}
+                          |
                         </BodyCopy>
-                      </div>
-                      <BodyCopy
-                        className="padding-left-10"
-                        fontFamily="secondary"
-                        component="span"
-                        fontSize="fs12"
-                        color="gray.800"
-                        dataLocator="addedtobag-productqty"
-                      >
-                        {`${productDetail.itemInfo.qty}`}
-                      </BodyCopy>
+                      )}
                     </div>
+                    {this.renderItemQuantity()}
                   </Col>
                   <Col colSize={{ small: 2, medium: 2, large: 2 }}>
-                    {isEditAllowed && (
+                    {!isBagPageSflSection && isEditAllowed && (
                       <BodyCopy
                         fontFamily="secondary"
                         fontSize="fs12"
@@ -507,7 +566,7 @@ class CartItemTile extends React.Component {
               </Col>
               {this.getProductPriceList(productDetail, pageView)}
             </Row>
-            {!isCanada() && (
+            {!isCanada() && !isBagPageSflSection && (
               <Row className="product-detail-row label-responsive-wrapper">
                 <Col
                   className="label-responsive label-responsive-price"
@@ -538,8 +597,10 @@ class CartItemTile extends React.Component {
             )}
             {this.getItemDetails(removeCartItem, productDetail, labels, pageView)}
           </Col>
+          {this.renderHeartIcon()}
         </Row>
-        {pageView === 'myBag' &&
+        {!isBagPageSflSection &&
+          pageView === 'myBag' &&
           productDetail.miscInfo.availability !== CARTPAGE_CONSTANTS.AVAILABILITY_SOLDOUT && (
             <Row fullBleed>
               <CartItemRadioButtons
@@ -559,6 +620,7 @@ CartItemTile.defaultProps = {
   isEditAllowed: true,
   isCondense: true,
   sflItemsCount: 0,
+  isBagPageSflSection: false,
 };
 
 CartItemTile.propTypes = {
@@ -580,6 +642,7 @@ CartItemTile.propTypes = {
   sflMaxCount: PropTypes.number.isRequired,
   addItemToSflList: PropTypes.func.isRequired,
   setCartItemsSflError: PropTypes.func.isRequired,
+  isBagPageSflSection: PropTypes.bool,
 };
 
 export default withStyles(CartItemTile, styles);

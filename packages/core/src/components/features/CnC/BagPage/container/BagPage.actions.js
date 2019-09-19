@@ -140,6 +140,19 @@ const setCartItemsSflError = payload => {
   };
 };
 
+const getSflData = () => {
+  return {
+    type: BAGPAGE_CONSTANTS.GET_SFL_DATA,
+  };
+};
+
+const setSflData = payload => {
+  return {
+    payload,
+    type: BAGPAGE_CONSTANTS.SET_SFL_DATA,
+  };
+};
+
 const initActions = [loadComponentLabelsData({ category: LABELS.checkout })];
 
 export default {
@@ -164,4 +177,6 @@ export default {
   addItemToSflList,
   setCartItemsSFL,
   setCartItemsSflError,
+  getSflData,
+  setSflData,
 };
