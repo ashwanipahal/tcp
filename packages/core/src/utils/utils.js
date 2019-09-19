@@ -571,28 +571,3 @@ export default {
   parseStoreHours,
   parseBoolean,
 };
-
-/**
- * Create an object from lists of keys and values.
- * Values default to the corresponding key name.
- *
- * @param {Array} keys array of key names
- * @param {Array} [values=[]] array of values
- * @param {Object} [base={}] base object to assign values to
- * @returns {Object} object with combined keys and values
- *
- * @example
- * const obj = zipObj(['a']);
- * obj; // { a: "a" }
- *
- * @example
- * const obj = zipObj(['a'], [1]);
- * obj; // { a: 1 }
- *
- * @example
- * const obj = zipObj(['a', 'b'], [1], {c: 3});
- * obj; // { a: 1, b: "b", c: 3 }
- */
-export function zipObj(keys, values = [], base = {}) {
-  return keys.reduce((obj, key, i) => Object.assign(obj, { [key]: values[i] || key }), base);
-}

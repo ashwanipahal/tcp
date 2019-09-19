@@ -24,7 +24,7 @@
  */
 
 import TrackingEvent from './TrackingEvent';
-import { BasicEventName } from './constants';
+import { TRACK_LINK_CLICK, TRACK_PAGE_VIEW } from './names';
 
 function EventDefinition(action /* , prevState, nextState */) {
   return { ...action.payload };
@@ -34,7 +34,7 @@ export function trackPageView(eventDef = EventDefinition) {
   return (...args) =>
     TrackingEvent({
       hitType: 'pageView',
-      eventName: BasicEventName.PAGE_VIEW,
+      eventName: TRACK_PAGE_VIEW,
       ...eventDef(...args),
     });
 }
@@ -43,7 +43,7 @@ export function trackClick(eventDef = EventDefinition) {
   return (...args) =>
     TrackingEvent({
       hitType: 'click',
-      eventName: BasicEventName.LINK_CLICK,
+      eventName: TRACK_LINK_CLICK,
       ...eventDef(...args),
     });
 }
