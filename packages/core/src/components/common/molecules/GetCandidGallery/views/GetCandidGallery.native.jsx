@@ -14,6 +14,7 @@ import {
   ShopLookWrapper,
   ShopLookScroll,
   ShopLookItem,
+  ShopLookItemCaption,
   Touchable,
   Wrapper,
   DescriptionWrapper,
@@ -21,6 +22,7 @@ import {
   ButtonContainer,
 } from '../styles/GetCandidGallery.style.native';
 import { getScreenWidth, navigateToNestedRoute } from '../../../../../utils/index.native';
+import { DEFAULT_PAGE_SIZE } from '../config';
 
 /**
  * @class GetCandidGallery - display images shared by customers on the Get candid gallery page
@@ -37,10 +39,11 @@ class GetCandidGallery extends React.PureComponent {
    */
   state = {
     activeIndex: 0,
+    batchSizeMultiplier: 1,
   };
 
   /**
-   * @function calculateItemHeight function is used to
+   * @function componentDidMount function is used to
    * set the index of the activeImage clicked on the homepage
    * as its index is passed in the navigation's param with
    * @key activeIndex
@@ -53,6 +56,20 @@ class GetCandidGallery extends React.PureComponent {
       },
     } = navigation;
     this.candidItemClickHandler(activeIndex);
+  }
+
+  /**
+   * @function componentDidUpdate function is used to
+   * check if the prevState multiplier and currentState multiplier
+   * values are different inorder to focus the very first image
+   * in the next batch.
+   */
+  componentDidUpdate(prevProps, prevState) {
+    const { batchSizeMultiplier: prevMultiplier } = prevState;
+    const { batchSizeMultiplier: currentMultiplier } = this.state;
+    if (prevMultiplier !== currentMultiplier) {
+      this.candidItemClickHandler(prevMultiplier * 20);
+    }
   }
 
   /**
@@ -120,7 +137,7 @@ class GetCandidGallery extends React.PureComponent {
               }
             >
               <Image source={{ uri: ImageUrl }} width={142} height={142} />
-              <BodyCopy
+              <ShopLookItemCaption
                 mobileFontFamily="secondary"
                 fontSize="fs14"
                 fontWeight="regular"
@@ -225,23 +242,46 @@ class GetCandidGallery extends React.PureComponent {
    * to render LoadMore button at the end of the list
    */
   renderFlatListFooter = () => {
-    const { labels } = this.props;
-    return (
-      <ButtonContainer>
-        <Button
-          buttonVariation="variable-width"
-          width="100%"
-          text={labels.btnLoadMore}
-          fill="BLUE"
-          color="white"
-        />
-      </ButtonContainer>
-    );
+    const { labels, candidData } = this.props;
+    const candidDataLength = candidData.Views.length;
+    const { batchSizeMultiplier } = this.state;
+    const showLoadMore = candidDataLength > batchSizeMultiplier * DEFAULT_PAGE_SIZE;
+    if (showLoadMore) {
+      return (
+        <ButtonContainer>
+          <Button
+            buttonVariation="variable-width"
+            width="100%"
+            text={labels.btnLoadMore}
+            fill="BLUE"
+            color="white"
+            onPress={this.loadMoreHandler}
+          />
+        </ButtonContainer>
+      );
+    }
+
+    return null;
+  };
+
+  /**
+   * @function loadMoreHandler function is used
+   * to load data in batch of 20 by updating
+   * batchSizeMultiplier in state
+   */
+  loadMoreHandler = () => {
+    const { batchSizeMultiplier } = this.state;
+    const newMultiplier = batchSizeMultiplier + 1;
+    this.setState({
+      batchSizeMultiplier: newMultiplier,
+    });
   };
 
   render() {
     const { navigation, candidData } = this.props;
-    const data = candidData && candidData.Views;
+    const { batchSizeMultiplier } = this.state;
+    const imagesCount = DEFAULT_PAGE_SIZE * batchSizeMultiplier;
+    const data = candidData && candidData.Views.slice(0, imagesCount);
     const {
       state: {
         params: { activeIndex },

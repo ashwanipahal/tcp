@@ -24,6 +24,10 @@ export const Title = styled(BodyCopy)`
   margin: 24px 0;
 `;
 
+export const ShopLookItemCaption = styled(BodyCopy)`
+  margin-top: 8px;
+`;
+
 export const Image = styled.Image`
   width: ${props => `${props.width}px`};
   height: ${props => `${props.height}px`};
@@ -71,6 +75,7 @@ export default {
   Divider,
   ShopLookWrapper,
   ShopLookScroll,
+  ShopLookItemCaption,
   Touchable,
   Wrapper,
   DescriptionWrapper,

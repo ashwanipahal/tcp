@@ -53,9 +53,9 @@ describe('GetCandidGallery component', () => {
     expect(component.instance().keyExtractor('', 1)).toBe('1');
   });
 
-  it('should call navigateToPage func', () => {
+  it('should call navigateToGallery func', () => {
     const component = shallow(<GetCandidVanilla {...props} />);
-    component.instance().navigateToPage();
+    component.instance().navigateToGallery();
   });
 
   it('should call renderItem func', () => {
