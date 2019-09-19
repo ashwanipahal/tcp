@@ -56,4 +56,62 @@ export default css`
   .item-title {
     width: 100%;
   }
+  .search-by-keywords-container {
+    padding: 0 0 75px;
+  }
+  .empty-search-result-title {
+    padding: ${props => props.theme.spacing.ELEM_SPACING.XXS} 0 10px;
+  }
+  .empty-search-result-suggestion {
+    padding: 14px 0;
+  }
+  .empty-search-inputBox-container {
+    position: relative;
+    width: 240px;
+    height: 40px;
+  }
+  .empty-search-inputBox-container-wrapper {
+    padding-bottom: 10px;
+    margin: 0 auto;
+    margin-top: 54px;
+    width: 100%;
+    justify-content: center;
+  }
+  .empty-search-input {
+    position: absolute;
+    width: 240px;
+    height: 40px;
+    padding-left: 20px;
+    border-radius: 20px;
+    background-color: ${props => props.theme.colorPalette.gray[300]};
+    border: 1px solid ${props => props.theme.colorPalette.gray[300]};
+  }
+  .empty-search-image {
+    position: absolute;
+    float: none;
+    top: calc(0% - -12px);
+    width: 20px;
+    height: 20px;
+    right: ${props => props.theme.spacing.ELEM_SPACING.XXXS};
+  }
+  .search-tips-message-container-wrapper {
+    padding-top: 50px;
+  }
+  .suggestion-label {
+    font-weight: ${props => props.theme.typography.fontWeights.extrabold};
+    color: ${props => props.theme.colorPalette.blue[800]};
+  }
+  .empty-search-tips-items {
+    color: ${props => props.theme.colorPalette.gray[1000]};
+    font-weight: ${props => props.theme.typography.fontWeights.regular};
+  }
+  .empty-searched-label {
+    font-weight: ${props => props.theme.typography.fontWeights.extrabold};
+  }
+  .empty-search-inputBox-col {
+    width: 240px;
+  }
+  .empty-search-tips-title {
+    margin-bottom: 8px;
+  }
 `;

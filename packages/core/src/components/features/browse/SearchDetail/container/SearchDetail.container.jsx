@@ -31,9 +31,20 @@ import {
 import { isPlccUser } from '../../../account/User/container/User.selectors';
 import submitProductListingFiltersForm from '../../ProductListing/container/productListingOnSubmitHandler';
 import { getSearchResult } from '../../../../../../../web/src/components/features/content/Header/molecules/SearchBar/SearchBar.actions';
-
+import NoResponseSearchDetail from '../views/NoResponseSearchDetail.view';
 class SearchDetailContainer extends React.PureComponent {
   componentDidMount() {
+    const {
+      router: {
+        query: { sq },
+        asPath,
+      },
+      getProducts,
+    } = this.props;
+    getProducts({ URI: 'search', asPath, sq, ignoreCache: true });
+  }
+
+  componentDidUpdate() {
     const {
       router: {
         query: { sq },
@@ -66,18 +77,36 @@ class SearchDetailContainer extends React.PureComponent {
       onPickUpOpenClick,
       searchedText,
       slpLabels,
+      searchResultSuggestions,
       ...otherProps
     } = this.props;
+
     return (
-      <SearchDetail
-        products={products}
-        productsBlock={productsBlock}
-        totalProductsCount={totalProductsCount}
-        labels={labels}
-        slpLabels={slpLabels}
-        searchedText={searchedText}
-        {...otherProps}
-      />
+      <>
+        {products && products.length > 0 ? (
+          <SearchDetail
+            products={products}
+            productsBlock={productsBlock}
+            totalProductsCount={totalProductsCount}
+            labels={labels}
+            slpLabels={slpLabels}
+            searchedText={searchedText}
+            searchResultSuggestions={searchResultSuggestions}
+            {...otherProps}
+          />
+        ) : (
+          <NoResponseSearchDetail
+            products={products}
+            productsBlock={productsBlock}
+            totalProductsCount={totalProductsCount}
+            labels={labels}
+            slpLabels={slpLabels}
+            searchedText={searchedText}
+            searchResultSuggestions={searchResultSuggestions}
+            {...otherProps}
+          />
+        )}
+      </>
     );
   }
 }
@@ -119,6 +148,8 @@ function mapStateToProps(state) {
     lastLoadedPageNumber: getLastLoadedPageNumber(state),
     currentNavIds: state.ProductListing && state.ProductListing.get('currentNavigationIds'),
     slpLabels: getLabels(state),
+    searchResultSuggestions:
+      state.SearchListingPage && state.SearchListingPage.get('searchResultSuggestions'),
   };
 }
 
