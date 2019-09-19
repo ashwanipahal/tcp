@@ -120,7 +120,10 @@ export class AddressFields extends React.PureComponent {
     const isCA = country === API_CONFIG.siteIds.ca.toUpperCase();
     return (
       <>
-        <Col colSize={{ small: 3, medium: variation === 'primary' ? 2 : 4, large: 3 }}>
+        <Col
+          colSize={{ small: 3, medium: variation === 'primary' ? 2 : 4, large: 3 }}
+          className="margin-right"
+        >
           <Field
             id={`${formSection}.state`}
             placeholder={isCA ? addressFormLabels.province : addressFormLabels.stateLbl}
@@ -141,7 +144,7 @@ export class AddressFields extends React.PureComponent {
             placeholder={isCA ? addressFormLabels.postalCode : addressFormLabels.zipCode}
             id={`${formSection}.zipCode`}
             name="zipCode"
-            maxLength={isCA ? 6 : 5}
+            maxLength={isCA ? 7 : 5}
             component={TextBox}
             dataLocator="addnewaddress-zipcode"
             className="address-field"

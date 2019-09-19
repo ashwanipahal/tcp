@@ -1,0 +1,45 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`BirthdayCard should render correctly 1`] = `
+<Styled(View)>
+  <Styled(View)>
+    <Styled(BodyCopy)
+      className="elem-mb-XXXS"
+      data-locator="nameOfChildInTile"
+      fontWeight="semibold"
+      mobileFontFamily="secondary"
+      text="test"
+      textAlign="center"
+    />
+  </Styled(View)>
+  <Styled(View)>
+    <Styled(BodyCopy)
+      data-locator="childAgeInTile"
+      fontSize="fs12"
+      fontWeight="semibold"
+      mobileFontFamily="secondary"
+      text="21 yo"
+    />
+    <Styled(ImageComp)
+      alt=""
+      height={24}
+      host=""
+      source={
+        Object {
+          "testUri": "../../../src/assets/images/child-birthday-profile.png",
+        }
+      }
+      url=""
+      width={16}
+    />
+    <Styled(BodyCopy)
+      data-locator="childBirthYearInTile"
+      fontSize="fs12"
+      fontWeight="semibold"
+      mobileFontFamily="secondary"
+      text="1998"
+      textAlign="right"
+    />
+  </Styled(View)>
+</Styled(View)>
+`;

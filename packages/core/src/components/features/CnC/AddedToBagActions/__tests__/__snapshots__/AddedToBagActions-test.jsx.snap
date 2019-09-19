@@ -38,6 +38,7 @@ exports[`AddedToBagActions component AddedToBagActions component renders correct
   >
     <Connect(VenmoPaymentButtonContainer)
       className="venmo-container"
+      onSuccess={[Function]}
     />
     <withRouter(Connect(PayPalButtonContainer))
       className="payPal-button"
