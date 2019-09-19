@@ -18,13 +18,6 @@ export const getChangePasswordLabels = state => {
   return (state && state.Labels.global.password) || {};
 };
 
-export const getLabels = state => state.Labels.global;
-
-export const getForgotpasswordLabels = createSelector(
-  getLabels,
-  labels => labels && labels.login
-);
-
 export const getChangeErrorResponse = state => {
   return state[CHANGE_PASSWORD_REDUCER_KEY].get('error');
 };
