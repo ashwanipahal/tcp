@@ -170,7 +170,9 @@ exports[`ProductAddToBagVanilla native should render correctly should call getFi
   }
   initialValues={
     Object {
-      "Fit": undefined,
+      "Fit": Object {
+        "name": undefined,
+      },
       "Quantity": 1,
       "Size": "",
       "color": Object {
@@ -592,7 +594,9 @@ exports[`ProductAddToBagVanilla native should render correctly should match snap
   }
   initialValues={
     Object {
-      "Fit": undefined,
+      "Fit": Object {
+        "name": undefined,
+      },
       "Quantity": 1,
       "Size": "",
       "color": Object {
@@ -701,6 +705,11 @@ exports[`ProductAddToBagVanilla native should render correctly should match snap
   selectedColor={
     Object {
       "name": "TIDAL",
+    }
+  }
+  selectedFit={
+    Object {
+      "name": undefined,
     }
   }
   selectedQuantity={1}

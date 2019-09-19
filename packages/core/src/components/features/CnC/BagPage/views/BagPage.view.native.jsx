@@ -1,11 +1,11 @@
 import React from 'react';
+import { View } from 'react-native';
 import PropTypes from 'prop-types';
 import OrderLedgerContainer from '@tcp/core/src/components/features/CnC/common/organism/OrderLedger';
 import { isCanada } from '@tcp/core/src/utils';
 import ProductTileWrapper from '../../CartItemTile/organisms/ProductTileWrapper/container/ProductTileWrapper.container';
 import CouponAndPromos from '../../common/organism/CouponAndPromos';
 import AirmilesBanner from '../../common/organism/AirmilesBanner';
-
 import AddedToBagActions from '../../AddedToBagActions';
 import {
   HeadingViewStyle,
@@ -16,53 +16,66 @@ import {
   BonusPointsWrapper,
 } from '../styles/BagPage.style.native';
 import BonusPointsDays from '../../../../common/organisms/BonusPointsDays';
+import InitialPropsHOC from '../../../../common/hoc/InitialPropsHOC/InitialPropsHOC.native';
 
-const BagPage = ({
-  labels,
-  totalCount,
-  showAddTobag,
-  navigation,
-  handleCartCheckout,
-  isUserLoggedIn,
-}) => {
-  return (
-    <>
-      <ScrollViewWrapper showAddTobag={showAddTobag}>
-        <HeadingViewStyle>
-          <HeadingTextStyle>{`${labels.bagHeading} (${totalCount})`}</HeadingTextStyle>
-        </HeadingViewStyle>
-        <MainSection>
-          <ProductTileWrapper bagLabels={labels} />
-          <RowSectionStyle>
-            <OrderLedgerContainer />
-          </RowSectionStyle>
-          {isUserLoggedIn && (
-            <RowSectionStyle>
-              <BonusPointsWrapper>
-                <BonusPointsDays isBagPage showAccordian={false} />
-              </BonusPointsWrapper>
-            </RowSectionStyle>
-          )}
-          {isCanada() && (
-            <RowSectionStyle>
-              <AirmilesBanner />
-            </RowSectionStyle>
-          )}
-          <RowSectionStyle>
-            <CouponAndPromos />
-          </RowSectionStyle>
-        </MainSection>
-      </ScrollViewWrapper>
+class BagPage extends React.Component {
+  componentDidMount() {
+    const { fetchLabels } = this.props;
+    fetchLabels();
+  }
 
-      <AddedToBagActions
-        handleCartCheckout={handleCartCheckout}
-        labels={labels}
-        showAddTobag={showAddTobag}
-        navigation={navigation}
-      />
-    </>
-  );
-};
+  render() {
+    const {
+      labels,
+      totalCount,
+      showAddTobag,
+      navigation,
+      handleCartCheckout,
+      isUserLoggedIn,
+    } = this.props;
+
+    if (!labels.tagLine) {
+      return <View />;
+    }
+    return (
+      <>
+        <ScrollViewWrapper showAddTobag={showAddTobag}>
+          <HeadingViewStyle>
+            <HeadingTextStyle>{`${labels.bagHeading} (${totalCount})`}</HeadingTextStyle>
+          </HeadingViewStyle>
+          <MainSection>
+            <ProductTileWrapper bagLabels={labels} />
+            <RowSectionStyle>
+              <OrderLedgerContainer />
+            </RowSectionStyle>
+            {isUserLoggedIn && (
+              <RowSectionStyle>
+                <BonusPointsWrapper>
+                  <BonusPointsDays isBagPage showAccordian={false} />
+                </BonusPointsWrapper>
+              </RowSectionStyle>
+            )}
+            {isCanada() && (
+              <RowSectionStyle>
+                <AirmilesBanner />
+              </RowSectionStyle>
+            )}
+            <RowSectionStyle>
+              <CouponAndPromos />
+            </RowSectionStyle>
+          </MainSection>
+        </ScrollViewWrapper>
+
+        <AddedToBagActions
+          handleCartCheckout={handleCartCheckout}
+          labels={labels}
+          showAddTobag={showAddTobag}
+          navigation={navigation}
+        />
+      </>
+    );
+  }
+}
 
 BagPage.propTypes = {
   labels: PropTypes.shape.isRequired,
@@ -71,6 +84,7 @@ BagPage.propTypes = {
   navigation: PropTypes.shape({}).isRequired,
   isUserLoggedIn: PropTypes.bool.isRequired,
   handleCartCheckout: PropTypes.func.isRequired,
+  fetchLabels: PropTypes.func.isRequired,
 };
 
-export default BagPage;
+export default InitialPropsHOC(BagPage);

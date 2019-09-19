@@ -43,6 +43,7 @@ export class BagPageContainer extends React.Component<Props> {
       removeUnqualifiedItemsAndCheckout,
       isGuest,
       sflItems,
+      fetchLabels,
     } = this.props;
 
     const showAddTobag = false;
@@ -60,6 +61,7 @@ export class BagPageContainer extends React.Component<Props> {
         removeUnqualifiedItemsAndCheckout={removeUnqualifiedItemsAndCheckout}
         handleCartCheckout={handleCartCheckout}
         sflItems={sflItems}
+        fetchLabels={fetchLabels}
       />
     );
   }
@@ -77,6 +79,9 @@ export const mapDispatchToProps = (dispatch: ({}) => void) => {
     },
     fetchSflData: () => {
       dispatch(BAG_PAGE_ACTIONS.getSflData());
+    },
+    fetchLabels: () => {
+      dispatch(BAG_PAGE_ACTIONS.initActions[0]);
     },
   };
 };
