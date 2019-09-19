@@ -95,7 +95,12 @@ class ModuleJ extends React.PureComponent {
                 small: true,
               }}
             >
-              <Anchor to={configurePlpNavigationFromCMSUrl(promoLink1.url)} asPath={promoLink1.url}>
+              <Anchor
+                to={configurePlpNavigationFromCMSUrl(promoLink1.url)}
+                asPath={promoLink1.url}
+                title={promoLink1.title}
+                target={promoLink1.target}
+              >
                 <DamImage
                   imgConfigs={PROMO_IMG_DATA.imgConfig}
                   imgData={{
@@ -155,7 +160,12 @@ class ModuleJ extends React.PureComponent {
                 large: 3,
               }}
             >
-              <Anchor to={configurePlpNavigationFromCMSUrl(promoLink2.url)} asPath={promoLink2.url}>
+              <Anchor
+                to={configurePlpNavigationFromCMSUrl(promoLink2.url)}
+                asPath={promoLink2.url}
+                title={promoLink2.title}
+                target={promoLink2.target}
+              >
                 <DamImage
                   className="promo-img"
                   imgConfigs={PROMO_IMG_DATA.imgConfig}
