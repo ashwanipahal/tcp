@@ -1,0 +1,24 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`EmptyBirthdayCard should render correctly for edit view 1`] = `
+<Styled(View)>
+  <Styled(View)>
+    <Styled(BodyCopy)
+      color="gray.900"
+      fontFamily="secondary"
+      fontSize="fs14"
+      mobileFontFamily="secondary"
+      text="+ "
+    />
+    <Styled(BodyCopy)
+      color="gray.900"
+      data-locator="addAChildLnk"
+      fontFamily="secondary"
+      fontSize="fs14"
+      mobileFontFamily="secondary"
+    />
+  </Styled(View)>
+</Styled(View)>
+`;
+
+exports[`EmptyBirthdayCard should render correctly for read view as well 1`] = `""`;

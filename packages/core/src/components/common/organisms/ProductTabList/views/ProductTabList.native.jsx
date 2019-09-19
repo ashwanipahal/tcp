@@ -16,9 +16,9 @@ class ProductTabList extends React.PureComponent {
 
   componentDidMount() {
     const {
-      categoryList: [item = {}],
+      tabItems: [item = {}],
     } = this.props;
-    const { catId } = item;
+    const { category: { cat_id: catId } = {} } = item;
 
     // TODO: Intro animation is being jerky without it and the REST is failing. Need to check why.
     setTimeout(() => {
@@ -30,11 +30,36 @@ class ProductTabList extends React.PureComponent {
     this.updateCategoryId(catId);
   };
 
+  getTabItemsMap() {
+    const { tabItems } = this.props;
+    return tabItems.reduce((map, item) => {
+      const {
+        category: { cat_id: catId },
+      } = item;
+      const tabsMap = map;
+      tabsMap[catId] = item;
+      return tabsMap;
+    }, {});
+  }
+
+  getButtonTabItems() {
+    const { tabItems } = this.props;
+
+    return tabItems.map(item => {
+      const {
+        category: { cat_id: catId } = {},
+        text: { text },
+      } = item;
+      return { label: text, id: catId };
+    });
+  }
+
   updateCategoryId(catId) {
     if (catId) {
       const { productTabList, getProductTabListData, onProductTabChange } = this.props;
+      const categoryItem = this.getTabItemsMap()[catId];
       this.setState({ selectedCategoryId: catId });
-      onProductTabChange(catId);
+      onProductTabChange(catId, categoryItem);
       if (!productTabList[catId]) {
         getProductTabListData({ categoryId: catId });
       }
@@ -42,12 +67,8 @@ class ProductTabList extends React.PureComponent {
   }
 
   render() {
-    const { categoryList } = this.props;
     const { selectedCategoryId } = this.state;
-    const buttonTabItems = categoryList.map(item => ({
-      id: item.catId,
-      label: item.text,
-    }));
+    const buttonTabItems = this.getButtonTabItems();
 
     return (
       <Wrapper>
@@ -63,14 +84,14 @@ class ProductTabList extends React.PureComponent {
 
 ProductTabList.defaultProps = {
   getProductTabListData: () => {},
-  categoryList: [],
+  tabItems: [],
   productTabList: {},
   onProductTabChange: () => {},
 };
 
 ProductTabList.propTypes = {
   getProductTabListData: PropTypes.func,
-  categoryList: PropTypes.arrayOf(
+  tabItems: PropTypes.arrayOf(
     PropTypes.shape({
       label: PropTypes.string,
       id: PropTypes.string,

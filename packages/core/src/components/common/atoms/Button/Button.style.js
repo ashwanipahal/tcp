@@ -201,6 +201,7 @@ const ButtonStyles = css`
         border-bottom: 2px solid ${
           props.active ? props.theme.colorPalette.primary.main : 'transparent'
         };
+        letter-spacing: normal;
         padding: 0 5px;
         min-height: 24px;
 
