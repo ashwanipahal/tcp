@@ -86,7 +86,7 @@ class ProductList extends React.PureComponent {
       <FlatList
         data={products}
         renderItem={this.renderItemList}
-        keyExtractor={item => item.generalProductId}
+        keyExtractor={item => item.productInfo.generalProductId}
         initialNumToRender={4}
         maxToRenderPerBatch={2}
         numColumns={2}

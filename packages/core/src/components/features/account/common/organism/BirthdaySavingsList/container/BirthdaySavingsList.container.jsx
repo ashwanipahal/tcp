@@ -6,6 +6,7 @@ import {
   getChildrenAction,
   removeChildAction,
   resetBirthdaySavingMessageAction,
+  addChildAction,
 } from './BirthdaySavingsList.actions';
 import { getStatus, getMessage } from './BirthdaySavingsList.selectors';
 import BirthdaySavingsComponent from '../views';
@@ -68,6 +69,9 @@ export const mapDispatchToProps = dispatch => ({
   },
   removeBirthday: childId => {
     dispatch(removeChildAction(childId));
+  },
+  addChildBirthday: payload => {
+    dispatch(addChildAction(payload));
   },
   resetBirthdaySavingMessage: () => {
     dispatch(resetBirthdaySavingMessageAction());

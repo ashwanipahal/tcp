@@ -35,7 +35,7 @@ export const PointsHistoryPageView = props => {
       <FormPageHeading
         className="elem-mb-XL"
         heading={labels.lbl_common_points_history_heading}
-        data-locator="historyPointsLbl"
+        dataLocator="points_history_heading"
       />
       <BodyCopy component="div" className="elem-mb-XXL elem-mt-XXL elem-pb-MED">
         <BodyCopy
@@ -44,6 +44,7 @@ export const PointsHistoryPageView = props => {
           fontSize="fs16"
           fontWeight="extrabold"
           className="hide-on-desktop hide-on-tablet elem-mb-LRG"
+          dataLocator="points_history_subheading"
         >
           {labels.lbl_common_points_history}
         </BodyCopy>
@@ -52,6 +53,7 @@ export const PointsHistoryPageView = props => {
       <BodyCopy
         component="div"
         className="history-section-separator hide-on-mobile elem-mb-XXL elem-mt-XXL"
+        data-locator="points_history_separator"
       />
       <HistoryPointsRichTextComponent content={richTextContent} />
       <Row className="elem-pt-XXL">
@@ -75,6 +77,7 @@ export const PointsHistoryPageView = props => {
             href={externalEndpoints.myPlaceRewardsPage}
             anchorVariation="primary"
             dataLocator="program_details_cta"
+            target="_blank"
           >
             {labels.lbl_points_history_program_details}
           </Anchor>
