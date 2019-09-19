@@ -3,12 +3,16 @@ import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
 import BillingPage from '../views';
 import BAG_PAGE_ACTIONS from '../../../../BagPage/container/BagPage.actions';
+import { getAddEditAddressLabels } from '../../../../../../common/organisms/AddEditAddress/container/AddEditAddress.selectors';
 
 import {
   getCVVCodeInfoContentId,
   getCVVCodeRichTextSelector,
   getBillingLabels,
 } from './BillingPage.selectors';
+import CheckoutSelectors from '../../../container/Checkout.selector';
+
+const { getBillingLabels: getBillingLabelsCheckout } = CheckoutSelectors;
 
 class BillingPageContainer extends React.Component {
   componentDidMount() {
@@ -36,7 +40,8 @@ export const mapStateToProps = state => {
   return {
     cvvCodeInfoContentId: getCVVCodeInfoContentId(state),
     cvvCodeRichText: getCVVCodeRichTextSelector(state),
-    labels: getBillingLabels(state),
+    labels: { ...getBillingLabels(state), ...getBillingLabelsCheckout(state) },
+    addressLabels: getAddEditAddressLabels(state),
   };
 };
 

@@ -217,7 +217,7 @@ class HeaderMiddleNav extends React.PureComponent {
                 <Image
                   alt="Product"
                   className="product-image"
-                  src={getIconPath(`cart-icon-${cartItemCount ? cartItemCount.length : 1}`)}
+                  src={getIconPath('cart-icon-1')}
                   data-locator="addedtobag-bag-icon"
                 />
                 <BodyCopy

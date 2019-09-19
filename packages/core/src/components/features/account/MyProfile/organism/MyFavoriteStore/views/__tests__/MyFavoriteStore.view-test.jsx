@@ -31,4 +31,22 @@ describe('MyFavoriteStore Component', () => {
   it('MyFavoriteStore should render correctly', () => {
     expect(component).toMatchSnapshot();
   });
+
+  it('should renders correctly when isMyPreferences is present', () => {
+    const prop = {
+      defaultStore: '12313',
+      isMyPreferences: true,
+    };
+    const tree = shallow(<MyFavoriteStore {...prop} />);
+    expect(tree).toMatchSnapshot();
+  });
+
+  it('should renders correctly when isMyPreferences is false', () => {
+    const prop = {
+      defaultStore: '34334',
+      isMyPreferences: false,
+    };
+    const tree = shallow(<MyFavoriteStore {...prop} />);
+    expect(tree).toMatchSnapshot();
+  });
 });

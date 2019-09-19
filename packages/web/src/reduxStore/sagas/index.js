@@ -1,4 +1,5 @@
 import { all } from 'redux-saga/effects';
+import SearchPageSaga from '@tcp/core/src/components/features/browse/SearchDetail/container/SearchDetail.saga';
 import ProductListingPageSaga from '@tcp/core/src/components/features/browse/ProductListingPage/container/ProductListingPage.saga';
 import LoginPageSaga from '@tcp/core/src/components/features/account/LoginPage/container/LoginPage.saga';
 import UserSaga from '@tcp/core/src/components/features/account/User/container/User.saga';
@@ -39,6 +40,7 @@ import AddAirmilesBannerSaga from '@tcp/core/src/components/features/CnC/common/
 import ApplyCreditCardSaga, {
   SubmitInstantCardApplication,
 } from '@tcp/core/src/components/features/browse/ApplyCardPage/container/ApplyCard.saga';
+import SocialAccountSaga from '@tcp/core/src/components/common/organisms/SocialAccount/container/Social.saga';
 import BillingPaymentSaga from '@tcp/core/src/components/features/CnC/Checkout/organisms/BillingPaymentForm/container/CreditCard.saga';
 import GiftCardsSaga from '@tcp/core/src/components/features/CnC/Checkout/organisms/GiftCardsSection/container/GiftCards.saga';
 import MailingAddressSaga from '@tcp/core/src/components/features/account/MyProfile/organism/MailingInformation/container/MailingAddress.saga';
@@ -103,6 +105,8 @@ export default function* rootSaga() {
     ProductTabListSaga(),
     RecommendationsSaga(),
     BillingPaymentSaga(),
+    SocialAccountSaga(),
+    SearchPageSaga(),
     MyFavoriteStoreSaga(),
     PickupStoreSaga(),
   ]);

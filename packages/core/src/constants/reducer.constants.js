@@ -11,7 +11,7 @@ export const LOADER_REDUCER_KEY = 'PageLoader';
 export const TOAST_REDUCER_KEY = 'Toast';
 export const RECOMMENDATIONS_REDUCER_KEY = 'Recommendations';
 export const SEARCH_REDUCER_KEY = 'Search';
-
+export const SOCIAL_REDUCER_KEY = 'Social';
 // Don't Add "Reducer" in the Key - it should be LoginPage, not LoginPageReducer
 
 // Login Page Reducer
@@ -40,8 +40,12 @@ export const USER_REDUCER_KEY = 'User';
 export const BIRTHDAY_SAVINGS_ACTION_PATTERN = '@@BirthdaySavings';
 export const NAVIGATION_ACTION_PATTERN = '@@Navigation-';
 export const RECOMMENDATIONS_ACTION_PATTERN = '@@Recommendations-';
+
+// search listing page reducer
+export const SLP_PAGE_REDUCER_KEY = 'SearchListingPage';
+export const SEARCH_REDUCER_ACTION_PATTERN = '@@SLP-';
+
 export const MY_FAVORITE_STORE_ACTION_PATTERN = '@@MyFavoriteStore';
-export const SEARCH_REDUCER_ACTION_PATTERN = '@@Search-';
 
 // acconut page reducer
 export const ACCOUNT_REDUCER_KEY = 'AccountReducer';
@@ -179,5 +183,5 @@ export const REDUCER_ACTION_MAPPING = {
   [APPLY_NOW_MODAL_REDUCER_KEY]: APPLY_NOW_MODAL_REDUCER_PATTERN,
   [PICKUP_MODAL_REDUCER_KEY]: PICKUP_MODAL_REDUCER_PATTERN,
   [RECOMMENDATIONS_REDUCER_KEY]: RECOMMENDATIONS_ACTION_PATTERN,
-  [SEARCH_REDUCER_KEY]: SEARCH_REDUCER_ACTION_PATTERN,
+  [SLP_PAGE_REDUCER_KEY]: SEARCH_REDUCER_ACTION_PATTERN,
 };

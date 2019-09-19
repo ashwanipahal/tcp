@@ -1,15 +1,13 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`ButtonList component renders correctly without props 1`] = `
+exports[`ButtonList component renders correctly if  cards present and addNewCCState is true 1`] = `
 <form
   className=""
-  name="checkoutBilling"
+  name="checkoutBillingPayment"
   noValidate={true}
   onSubmit={[MockFunction]}
 >
-  <div
-    className="payment-container"
-  >
+  <div>
     <Styled(BodyCopy)
       className="elem-mb-LRG elem-mt-XL"
       color="text.primary"
@@ -25,6 +23,428 @@ exports[`ButtonList component renders correctly without props 1`] = `
       Payment Method
     </Styled(BodyCopy)>
     <Styled(PaymentMethods)
+      className="elem-mb-LRG"
+      labels={
+        Object {
+          "lbl_billing_addCreditBtn": "ADD A NEW CREDIT CARD",
+          "lbl_billing_addCreditHeading": "+ Add a new Credit Card",
+          "lbl_billing_billingAddress": "Billing Address",
+          "lbl_billing_cardDetailsTitle": "Card Details",
+          "lbl_billing_creditCard": "Credit Card",
+          "lbl_billing_creditCardEnd": "ending in ",
+          "lbl_billing_cvvCode": "CVV Code",
+          "lbl_billing_default": "Default",
+          "lbl_billing_defaultPayment": "Set as default payment method",
+          "lbl_billing_default_card": "DEFAULT",
+          "lbl_billing_editBtn": "Edit",
+          "lbl_billing_paymentMethodTitle": "Payment Method",
+          "lbl_billing_paypal": "Pay Pal",
+          "lbl_billing_select": "SELECT",
+          "lbl_billing_selectCardTitle": "SELECT CARD",
+          "lbl_billing_selectFromCard": "Select from card on file",
+          "lbl_billing_venmo": "Venmo",
+        }
+      }
+    />
+    <Styled(Row)
+      className="elem-mb-XL elem-mt-MED"
+      fullBleed={true}
+    >
+      <Styled(Col)
+        className="creditCardForm__addressBook"
+        colSize={
+          Object {
+            "large": 6,
+            "medium": 10,
+            "small": 6,
+          }
+        }
+      >
+        <Field
+          childrenComp={[Function]}
+          component={[Function]}
+          dataLocator="payment-billingaddressdd"
+          id="onFileCardKey"
+          name="onFileCardKey"
+          onChange={[Function]}
+          options={
+            Immutable.List [
+              Object {
+                "content": <ForwardRef
+                  card={
+                    Object {
+                      "accountNo": "************3743",
+                      "addressDetails": Object {
+                        "addressLine1": "Dorney Park Road",
+                        "addressLine2": "",
+                        "city": "Allentown",
+                        "country": "US",
+                      },
+                      "ccBrand": "PLACE CARD",
+                      "ccType": "PLACE CARD1",
+                      "creditCardId": 82596,
+                      "defaultInd": false,
+                    }
+                  }
+                  cardNumber="ending in 3743"
+                  isDefault={false}
+                  labels={
+                    Object {
+                      "lbl_billing_addCreditBtn": "ADD A NEW CREDIT CARD",
+                      "lbl_billing_addCreditHeading": "+ Add a new Credit Card",
+                      "lbl_billing_billingAddress": "Billing Address",
+                      "lbl_billing_cardDetailsTitle": "Card Details",
+                      "lbl_billing_creditCard": "Credit Card",
+                      "lbl_billing_creditCardEnd": "ending in ",
+                      "lbl_billing_cvvCode": "CVV Code",
+                      "lbl_billing_default": "Default",
+                      "lbl_billing_defaultPayment": "Set as default payment method",
+                      "lbl_billing_default_card": "DEFAULT",
+                      "lbl_billing_editBtn": "Edit",
+                      "lbl_billing_paymentMethodTitle": "Payment Method",
+                      "lbl_billing_paypal": "Pay Pal",
+                      "lbl_billing_select": "SELECT",
+                      "lbl_billing_selectCardTitle": "SELECT CARD",
+                      "lbl_billing_selectFromCard": "Select from card on file",
+                      "lbl_billing_venmo": "Venmo",
+                    }
+                  }
+                  selectedValue={82596}
+                />,
+                "title": "ending in 3743 ",
+                "value": 82596,
+              },
+              Object {
+                "content": <ForwardRef
+                  buttonVariation="variable-width"
+                  className="addCreditCardBtn"
+                  disabled={true}
+                  fill="BLACK"
+                  fullWidth={true}
+                  onClick={[Function]}
+                >
+                  ADD A NEW CREDIT CARD
+                </ForwardRef>,
+                "title": "+ Add a new Credit Card",
+                "value": "",
+              },
+            ]
+          }
+          selectListTitle=""
+        />
+      </Styled(Col)>
+    </Styled(Row)>
+    <AddNewCCForm
+      cardList={null}
+      cardType={null}
+      cvvError="Enter correct code"
+      cvvInfo={
+        <ForwardRef
+          aligned="right"
+          fontFamily="secondary"
+          message={
+            <ForwardRef
+              className="cvv-code-info"
+              dataLocator="cvv-code-info"
+              richTextHtml={null}
+            />
+          }
+        >
+          <ForwardRef
+            height="15"
+            src="/static/images/info-icon.png"
+            width="15"
+          />
+        </ForwardRef>
+      }
+      formName="checkoutBillingPayment"
+      isExpirationRequired={true}
+      isGuest={false}
+      isSaveToAccountChecked={false}
+      labels={
+        Object {
+          "lbl_billing_addCreditBtn": "ADD A NEW CREDIT CARD",
+          "lbl_billing_addCreditHeading": "+ Add a new Credit Card",
+          "lbl_billing_billingAddress": "Billing Address",
+          "lbl_billing_cardDetailsTitle": "Card Details",
+          "lbl_billing_creditCard": "Credit Card",
+          "lbl_billing_creditCardEnd": "ending in ",
+          "lbl_billing_cvvCode": "CVV Code",
+          "lbl_billing_default": "Default",
+          "lbl_billing_defaultPayment": "Set as default payment method",
+          "lbl_billing_default_card": "DEFAULT",
+          "lbl_billing_editBtn": "Edit",
+          "lbl_billing_paymentMethodTitle": "Payment Method",
+          "lbl_billing_paypal": "Pay Pal",
+          "lbl_billing_select": "SELECT",
+          "lbl_billing_selectCardTitle": "SELECT CARD",
+          "lbl_billing_selectFromCard": "Select from card on file",
+          "lbl_billing_venmo": "Venmo",
+        }
+      }
+    />
+    <Styled(CheckoutAddress)
+      addNewCCState={true}
+      billingData={null}
+      formName="checkoutBillingPayment"
+      isGuest={false}
+      isSameAsShippingChecked={false}
+      labels={
+        Object {
+          "lbl_billing_addCreditBtn": "ADD A NEW CREDIT CARD",
+          "lbl_billing_addCreditHeading": "+ Add a new Credit Card",
+          "lbl_billing_billingAddress": "Billing Address",
+          "lbl_billing_cardDetailsTitle": "Card Details",
+          "lbl_billing_creditCard": "Credit Card",
+          "lbl_billing_creditCardEnd": "ending in ",
+          "lbl_billing_cvvCode": "CVV Code",
+          "lbl_billing_default": "Default",
+          "lbl_billing_defaultPayment": "Set as default payment method",
+          "lbl_billing_default_card": "DEFAULT",
+          "lbl_billing_editBtn": "Edit",
+          "lbl_billing_paymentMethodTitle": "Payment Method",
+          "lbl_billing_paypal": "Pay Pal",
+          "lbl_billing_select": "SELECT",
+          "lbl_billing_selectCardTitle": "SELECT CARD",
+          "lbl_billing_selectFromCard": "Select from card on file",
+          "lbl_billing_venmo": "Venmo",
+        }
+      }
+      orderHasShipping={true}
+      selectedOnFileAddressId={null}
+      shippingAddress={null}
+      userAddresses={null}
+    />
+  </div>
+  <Styled(CheckoutFooter)
+    backLinkHandler={[Function]}
+    backLinkText=""
+    hideBackLink={true}
+    nextButtonText=""
+  />
+</form>
+`;
+
+exports[`ButtonList component renders correctly if  no cards present  1`] = `
+<form
+  className=""
+  name="checkoutBillingPayment"
+  noValidate={true}
+  onSubmit={[MockFunction]}
+>
+  <div>
+    <Styled(BodyCopy)
+      className="elem-mb-LRG elem-mt-XL"
+      color="text.primary"
+      component="p"
+      data-locator="billing-details"
+      fontFamily="primary"
+      fontSize="fs26"
+      fontWeight="regular"
+      letterSpacing="normal"
+      lineHeight="normal"
+      textAlign="left"
+    >
+      Payment Method
+    </Styled(BodyCopy)>
+    <Styled(PaymentMethods)
+      className="elem-mb-LRG"
+      labels={
+        Object {
+          "lbl_billing_addCreditBtn": "ADD A NEW CREDIT CARD",
+          "lbl_billing_addCreditHeading": "+ Add a new Credit Card",
+          "lbl_billing_billingAddress": "Billing Address",
+          "lbl_billing_cardDetailsTitle": "Card Details",
+          "lbl_billing_creditCard": "Credit Card",
+          "lbl_billing_creditCardEnd": "ending in ",
+          "lbl_billing_cvvCode": "CVV Code",
+          "lbl_billing_default": "Default",
+          "lbl_billing_defaultPayment": "Set as default payment method",
+          "lbl_billing_default_card": "DEFAULT",
+          "lbl_billing_editBtn": "Edit",
+          "lbl_billing_paymentMethodTitle": "Payment Method",
+          "lbl_billing_paypal": "Pay Pal",
+          "lbl_billing_select": "SELECT",
+          "lbl_billing_selectCardTitle": "SELECT CARD",
+          "lbl_billing_selectFromCard": "Select from card on file",
+          "lbl_billing_venmo": "Venmo",
+        }
+      }
+    />
+    <AddNewCCForm
+      cardList={null}
+      cardType={null}
+      cvvError="Enter correct code"
+      cvvInfo={
+        <ForwardRef
+          aligned="right"
+          fontFamily="secondary"
+          message={
+            <ForwardRef
+              className="cvv-code-info"
+              dataLocator="cvv-code-info"
+              richTextHtml={null}
+            />
+          }
+        >
+          <ForwardRef
+            height="15"
+            src="/static/images/info-icon.png"
+            width="15"
+          />
+        </ForwardRef>
+      }
+      formName="checkoutBillingPayment"
+      isExpirationRequired={true}
+      isGuest={false}
+      isSaveToAccountChecked={false}
+      labels={
+        Object {
+          "lbl_billing_addCreditBtn": "ADD A NEW CREDIT CARD",
+          "lbl_billing_addCreditHeading": "+ Add a new Credit Card",
+          "lbl_billing_billingAddress": "Billing Address",
+          "lbl_billing_cardDetailsTitle": "Card Details",
+          "lbl_billing_creditCard": "Credit Card",
+          "lbl_billing_creditCardEnd": "ending in ",
+          "lbl_billing_cvvCode": "CVV Code",
+          "lbl_billing_default": "Default",
+          "lbl_billing_defaultPayment": "Set as default payment method",
+          "lbl_billing_default_card": "DEFAULT",
+          "lbl_billing_editBtn": "Edit",
+          "lbl_billing_paymentMethodTitle": "Payment Method",
+          "lbl_billing_paypal": "Pay Pal",
+          "lbl_billing_select": "SELECT",
+          "lbl_billing_selectCardTitle": "SELECT CARD",
+          "lbl_billing_selectFromCard": "Select from card on file",
+          "lbl_billing_venmo": "Venmo",
+        }
+      }
+    />
+    <Styled(CheckoutAddress)
+      addNewCCState={true}
+      billingData={null}
+      formName="checkoutBillingPayment"
+      isGuest={false}
+      isSameAsShippingChecked={false}
+      labels={
+        Object {
+          "lbl_billing_addCreditBtn": "ADD A NEW CREDIT CARD",
+          "lbl_billing_addCreditHeading": "+ Add a new Credit Card",
+          "lbl_billing_billingAddress": "Billing Address",
+          "lbl_billing_cardDetailsTitle": "Card Details",
+          "lbl_billing_creditCard": "Credit Card",
+          "lbl_billing_creditCardEnd": "ending in ",
+          "lbl_billing_cvvCode": "CVV Code",
+          "lbl_billing_default": "Default",
+          "lbl_billing_defaultPayment": "Set as default payment method",
+          "lbl_billing_default_card": "DEFAULT",
+          "lbl_billing_editBtn": "Edit",
+          "lbl_billing_paymentMethodTitle": "Payment Method",
+          "lbl_billing_paypal": "Pay Pal",
+          "lbl_billing_select": "SELECT",
+          "lbl_billing_selectCardTitle": "SELECT CARD",
+          "lbl_billing_selectFromCard": "Select from card on file",
+          "lbl_billing_venmo": "Venmo",
+        }
+      }
+      orderHasShipping={true}
+      selectedOnFileAddressId={null}
+      shippingAddress={null}
+      userAddresses={null}
+    />
+  </div>
+  <Styled(CheckoutFooter)
+    backLinkHandler={[Function]}
+    backLinkText=""
+    hideBackLink={true}
+    nextButtonText=""
+  />
+</form>
+`;
+
+exports[`ButtonList component renders correctly if payment method is diff 1`] = `
+<form
+  className=""
+  name="checkoutBillingPayment"
+  noValidate={true}
+  onSubmit={[MockFunction]}
+>
+  <div>
+    <Styled(BodyCopy)
+      className="elem-mb-LRG elem-mt-XL"
+      color="text.primary"
+      component="p"
+      data-locator="billing-details"
+      fontFamily="primary"
+      fontSize="fs26"
+      fontWeight="regular"
+      letterSpacing="normal"
+      lineHeight="normal"
+      textAlign="left"
+    >
+      Payment Method
+    </Styled(BodyCopy)>
+    <Styled(PaymentMethods)
+      className="elem-mb-LRG"
+      labels={
+        Object {
+          "lbl_billing_addCreditBtn": "ADD A NEW CREDIT CARD",
+          "lbl_billing_addCreditHeading": "+ Add a new Credit Card",
+          "lbl_billing_billingAddress": "Billing Address",
+          "lbl_billing_cardDetailsTitle": "Card Details",
+          "lbl_billing_creditCard": "Credit Card",
+          "lbl_billing_creditCardEnd": "ending in ",
+          "lbl_billing_cvvCode": "CVV Code",
+          "lbl_billing_default": "Default",
+          "lbl_billing_defaultPayment": "Set as default payment method",
+          "lbl_billing_default_card": "DEFAULT",
+          "lbl_billing_editBtn": "Edit",
+          "lbl_billing_paymentMethodTitle": "Payment Method",
+          "lbl_billing_paypal": "Pay Pal",
+          "lbl_billing_select": "SELECT",
+          "lbl_billing_selectCardTitle": "SELECT CARD",
+          "lbl_billing_selectFromCard": "Select from card on file",
+          "lbl_billing_venmo": "Venmo",
+        }
+      }
+    />
+    <div
+      className="payment-paypal-container"
+    />
+  </div>
+  <Styled(CheckoutFooter)
+    backLinkHandler={[Function]}
+    backLinkText=""
+    hideBackLink={true}
+    nextButtonText=""
+  />
+</form>
+`;
+
+exports[`ButtonList component renders correctly without props 1`] = `
+<form
+  className=""
+  name="checkoutBillingPayment"
+  noValidate={true}
+  onSubmit={[MockFunction]}
+>
+  <div>
+    <Styled(BodyCopy)
+      className="elem-mb-LRG elem-mt-XL"
+      color="text.primary"
+      component="p"
+      data-locator="billing-details"
+      fontFamily="primary"
+      fontSize="fs26"
+      fontWeight="regular"
+      letterSpacing="normal"
+      lineHeight="normal"
+      textAlign="left"
+    >
+      Payment Method
+    </Styled(BodyCopy)>
+    <Styled(PaymentMethods)
+      className="elem-mb-LRG"
       labels={
         Object {
           "lbl_billing_addCreditBtn": "ADD A NEW CREDIT CARD",
@@ -77,6 +497,7 @@ exports[`ButtonList component renders correctly without props 1`] = `
           dataLocator="payment-billingaddressdd"
           id="onFileCardKey"
           name="onFileCardKey"
+          onChange={[Function]}
           options={
             Immutable.List [
               Object {
@@ -128,8 +549,10 @@ exports[`ButtonList component renders correctly without props 1`] = `
                 "content": <ForwardRef
                   buttonVariation="variable-width"
                   className="addCreditCardBtn"
+                  disabled={false}
                   fill="BLACK"
                   fullWidth={true}
+                  onClick={[Function]}
                 >
                   ADD A NEW CREDIT CARD
                 </ForwardRef>,
@@ -172,7 +595,6 @@ exports[`ButtonList component renders correctly without props 1`] = `
         className="billing-payment-edit"
         dataLocator="billing-payment-edit"
         fontSizeVariation="medium"
-        onClick={[Function]}
         to="/#"
         underline={true}
       >
@@ -413,9 +835,9 @@ exports[`ButtonList component renders correctly without props 1`] = `
               }
             >
               <Styled(Image)
-                height="10"
+                height="15"
                 src="/static/images/info-icon.png"
-                width="10"
+                width="15"
               />
             </Styled(ReactTooltip)>
           </span>
@@ -629,13 +1051,11 @@ exports[`ButtonList component renders correctly without props 1`] = `
 exports[`ButtonList component renders correctly without props 2`] = `
 <form
   className=""
-  name="checkoutBilling"
+  name="checkoutBillingPayment"
   noValidate={true}
   onSubmit={[MockFunction]}
 >
-  <div
-    className="payment-container"
-  >
+  <div>
     <Styled(BodyCopy)
       className="elem-mb-LRG elem-mt-XL"
       color="text.primary"
@@ -651,6 +1071,7 @@ exports[`ButtonList component renders correctly without props 2`] = `
       Payment Method
     </Styled(BodyCopy)>
     <Styled(PaymentMethods)
+      className="elem-mb-LRG"
       labels={
         Object {
           "lbl_billing_addCreditBtn": "ADD A NEW CREDIT CARD",
@@ -703,6 +1124,7 @@ exports[`ButtonList component renders correctly without props 2`] = `
           dataLocator="payment-billingaddressdd"
           id="onFileCardKey"
           name="onFileCardKey"
+          onChange={[Function]}
           options={
             Immutable.List [
               Object {
@@ -754,8 +1176,10 @@ exports[`ButtonList component renders correctly without props 2`] = `
                 "content": <ForwardRef
                   buttonVariation="variable-width"
                   className="addCreditCardBtn"
+                  disabled={false}
                   fill="BLACK"
                   fullWidth={true}
+                  onClick={[Function]}
                 >
                   ADD A NEW CREDIT CARD
                 </ForwardRef>,
@@ -798,7 +1222,6 @@ exports[`ButtonList component renders correctly without props 2`] = `
         className="billing-payment-edit"
         dataLocator="billing-payment-edit"
         fontSizeVariation="medium"
-        onClick={[Function]}
         to="/#"
         underline={true}
       >
@@ -1039,9 +1462,9 @@ exports[`ButtonList component renders correctly without props 2`] = `
               }
             >
               <Styled(Image)
-                height="10"
+                height="15"
                 src="/static/images/info-icon.png"
-                width="10"
+                width="15"
               />
             </Styled(ReactTooltip)>
           </span>
@@ -1243,6 +1666,22 @@ exports[`ButtonList component renders correctly without props 2`] = `
       />
     </Styled(Row)>
   </div>
+  <Styled(CheckoutFooter)
+    backLinkHandler={[Function]}
+    backLinkText=""
+    hideBackLink={true}
+    nextButtonText=""
+  />
+</form>
+`;
+
+exports[`ButtonList component renders correctly without props with isPaymentDisabled true 1`] = `
+<form
+  className=""
+  name="checkoutBillingPayment"
+  noValidate={true}
+  onSubmit={[MockFunction]}
+>
   <Styled(CheckoutFooter)
     backLinkHandler={[Function]}
     backLinkText=""

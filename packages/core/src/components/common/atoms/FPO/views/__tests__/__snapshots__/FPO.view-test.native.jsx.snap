@@ -1,0 +1,16 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`FPO Component should render correctly 1`] = `
+<Styled(BodyCopy)
+  color="black"
+  fontSize="fs12"
+  fontWeight="black"
+  mobilefontFamily={
+    Array [
+      "secondary",
+    ]
+  }
+  text="FPO"
+  textAlign="center"
+/>
+`;
