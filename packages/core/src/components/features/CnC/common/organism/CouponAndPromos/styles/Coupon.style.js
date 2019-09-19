@@ -34,6 +34,7 @@ const styles = css`
       padding-left: ${props => props.theme.spacing.ELEM_SPACING.SM};
     }
     .collapsible-icon {
+      top: ${props => props.theme.spacing.ELEM_SPACING.LRG};
       right: ${props => props.theme.spacing.ELEM_SPACING.SM};
     }
   }
