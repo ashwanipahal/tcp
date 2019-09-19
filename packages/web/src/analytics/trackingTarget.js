@@ -1,33 +1,41 @@
+/* eslint-disable no-underscore-dangle, no-console */
 /**
  * Tracking target for the Redux-Beacon middleware
  * @see https://rangle.gitbook.io/redux-beacon/examples-and-recipes#how-to-create-your-own-target
  */
 
-function lib() {
-  // eslint-disable-next-line no-underscore-dangle
+// This would come from Launch
+global._trackingMutation = event => {
+  console.log('TRANSFORMING', event);
+  return event;
+};
+
+function transformEvent(event) {
+  const transform = global._trackingMutation || (e => e);
+  return transform(event);
+}
+
+function track(...args) {
   const satellite = global._satellite;
   if (!satellite) {
-    // eslint-disable-next-line no-console
     console.warn('Analytics library is undefined.');
-    return {
-      // TODO: Figure out if we want to mock this or not
-      track() {},
-    };
   }
-  return satellite;
+  satellite.track(...args);
 }
 
 export default function create() {
-  return events => {
+  return events =>
     events.forEach(event => {
       switch (event.hitType) {
         case 'pageView':
+          return track(event.eventName, transformEvent(event));
+
         case 'click':
-          lib().track(event.eventName, {});
-          break;
+          return track(event.eventName, transformEvent(event));
+
         default:
           break;
       }
+      return true;
     });
-  };
 }
