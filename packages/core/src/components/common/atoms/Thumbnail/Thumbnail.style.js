@@ -7,6 +7,7 @@ export default css`
   }
   .image-wrapper {
     display: inline-flex;
-    padding: 5px;
+    height: 111px;
+    width: 90px;
   }
 `;
