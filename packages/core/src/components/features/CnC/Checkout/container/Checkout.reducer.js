@@ -27,6 +27,8 @@ const initialState = fromJS({
       deviceData: '',
       supportedByBrowser: true,
       loading: false,
+      timestamp: '',
+      error: null,
     },
     addEditResponseAddressId: null,
     giftCardError: null,
@@ -87,6 +89,11 @@ function uiGiftCardFlagReducer(checkout, action) {
   }
 }
 
+const mergedVenmoDetails = (state, payload) => {
+  const currentValue = fromJS(state.getIn(['values', 'venmoData']));
+  return currentValue.mergeDeep(payload).toJS();
+};
+
 function uiFlagReducer(checkout, action) {
   switch (action.type) {
     // case 'CHECKOUT_FLAGS_SET_STAGE':
@@ -125,11 +132,15 @@ function uiFlagReducer(checkout, action) {
     case CheckoutConstants.CHECKOUT_VAlUES_SET_GIFT_WRAP:
       return checkout.CartPageReducer.setIn(['orderDetails', 'checkout', 'giftWrap']);
     case CheckoutConstants.GET_VENMO_CLIENT_TOKEN_SUCCESS:
-      return checkout.setIn(['values', 'venmoData'], action.payload);
+      return checkout.setIn(
+        ['values', 'venmoData', 'venmoClientTokenData'],
+        action.payload && action.payload.venmoClientTokenData
+      );
     case CheckoutConstants.GET_VENMO_CLIENT_TOKEN_ERROR:
       return checkout.setIn(['values', 'venmoData'], action.payload);
-    case CheckoutConstants.SET_VENMO_DATA:
-      return checkout.setIn(['values', 'venmoData'], action.payload);
+    case CheckoutConstants.SET_VENMO_DATA: {
+      return checkout.setIn(['values', 'venmoData'], mergedVenmoDetails(checkout, action.payload));
+    }
     case CheckoutConstants.SET_VENMO_PAYMENT_INPROGRESS:
       return checkout.setIn(['uiFlags', 'venmoPaymentInProgress'], action.payload);
     // case 'CHECKOUT_FLAGS_SET_REVIEW_VISTED':
@@ -189,18 +200,6 @@ export default function CheckoutReducer(state = initialState, action) {
     //   return orderValues.setIn(['smsInfo', 'numberForMarketing'], action.phoneNumber);
     // case 'CHECKOUT_VALUES_SET_SELECTED_SHIPPING_PHONE_NUMBER':
     //   return orderValues.set('selectedShippingPhoneNumber', action.payload);
-    // case 'CHECKOUT_VALUES_SET_VENMO_DATA':
-    //   return merge(orderValues, { venmoData: action.payload }, { deep: true });
-    // case 'CHECKOUT_VALUES_SET_VENMO_CLIENT_TOKEN_DATA':
-    //   return merge(
-    //     orderValues,
-    //     {
-    //       venmoData: {
-    //         venmoClientTokenData: action.payload,
-    //       },
-    //     },
-    //
-    //   );
     case CheckoutConstants.CHECKOUT_ORDER_OPTIONS_SET_SHIPPING:
       return checkout.setIn(['options', 'shippingMethods'], action.shippingMethods);
     // case CheckoutConstants.CHECKOUT_ORDER_OPTIONS_SET_PAYPAL_PAYMENT:

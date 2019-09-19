@@ -512,18 +512,14 @@ const getCurrentOrderId = state => {
 
 const getSmsNumberForBillingOrderUpdates = state =>
   state.Checkout.getIn(['values', 'smsInfo', 'numberForUpdates']);
-const getVenmoData = state => {
-  return state[CHECKOUT_REDUCER_KEY].getIn(['values', 'venmoData']);
-};
 
-const getVenmoClientTokenData = state => {
-  const venmoData = getVenmoData(state);
-  return venmoData && venmoData.venmoClientTokenData;
-};
+const getVenmoData = state => state[CHECKOUT_REDUCER_KEY].getIn(['values', 'venmoData']);
 
-const isVenmoPaymentInProgress = state => {
-  return state[CHECKOUT_REDUCER_KEY].getIn(['uiFlags', 'venmoPaymentInProgress']);
-};
+const getVenmoClientTokenData = state =>
+  state[CHECKOUT_REDUCER_KEY].getIn(['values', 'venmoData', 'venmoClientTokenData']);
+
+const isVenmoPaymentInProgress = state =>
+  state[CHECKOUT_REDUCER_KEY].getIn(['uiFlags', 'venmoPaymentInProgress']);
 
 /**
  * Mainly used to check for Venmo nonce expiry
