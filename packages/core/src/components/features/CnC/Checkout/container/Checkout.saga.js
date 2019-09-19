@@ -12,6 +12,7 @@ import {
   briteVerifyStatusExtraction,
   setShippingMethodAndAddressId,
   addPickupPerson,
+  getInternationCheckoutSettings,
 } from '../../../../../services/abstractors/CnC/index';
 import selectors, { isGuest } from './Checkout.selector';
 import { getUserEmail } from '../../../account/User/container/User.selectors';
@@ -27,6 +28,7 @@ import {
   setAddressError,
   setSmsNumberForUpdates,
   emailSignupStatus,
+  getSetIntlUrl,
 } from './Checkout.action';
 import BAG_PAGE_ACTIONS from '../../BagPage/container/BagPage.actions';
 import BagPageSelectors from '../../BagPage/container/BagPage.selectors';
@@ -568,6 +570,17 @@ function* initCheckout() {
   }
 }
 
+function* initIntlCheckout() {
+  try {
+    const res = yield call(getInternationCheckoutSettings);
+    yield put(getSetIntlUrl(res.checkoutUrl));
+  } catch (e) {
+    // logErrorAndServerThrow(store, 'CheckoutOperator.loadGiftWrappingOptions', e);
+    // throw e;
+    logger.error(e);
+  }
+}
+
 function* saveLocalSmsInfo(smsInfo = {}) {
   let returnVal;
   const { wantsSmsOrderUpdates, smsUpdateNumber } = smsInfo;
@@ -723,6 +736,7 @@ export function* submitBillingSection(payload) {
 }
 export function* CheckoutSaga() {
   yield takeLatest(CONSTANTS.INIT_CHECKOUT, initCheckout);
+  yield takeLatest('INIT_INTL_CHECKOUT', initIntlCheckout);
   yield takeLatest('CHECKOUT_SET_CART_DATA', storeUpdatedCheckoutValues);
   yield takeLatest(CONSTANTS.SUBMIT_SHIPPING_SECTION, submitShippingSection);
   yield takeLatest(CONSTANTS.SUBMIT_BILLING_SECTION, submitBillingSection);

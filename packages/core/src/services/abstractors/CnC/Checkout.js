@@ -544,6 +544,34 @@ export function addGiftCard(args) {
     });
 }
 
+export function getInternationCheckoutSettings() {
+  const apiConfig = getAPIConfig();
+  const payload = {
+    body: {
+      storeId: apiConfig.storeId,
+      langId: apiConfig.langId,
+      catalogId: apiConfig.catalogId,
+      orderId: '.',
+      URL: 'LogonForm',
+    },
+    webService: endpoints.internationalCheckoutSettings,
+  };
+
+  return executeStatefulAPICall(payload)
+    .then(res => {
+      if (responseContainsErrors(res)) {
+        throw new ServiceResponseError(res);
+      }
+
+      return {
+        checkoutUrl: res.body.completeURL,
+      };
+    })
+    .catch(err => {
+      throw getFormattedError(err);
+    });
+}
+
 export default {
   getGiftWrappingOptions,
   getCurrentOrderAndCouponsDetails,
@@ -558,4 +586,5 @@ export default {
   addGiftWrappingOption,
   removeGiftWrappingOption,
   addGiftCard,
+  getInternationCheckoutSettings,
 };

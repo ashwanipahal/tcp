@@ -579,6 +579,18 @@ function getVenmoUserEmail(state) {
   );
 }
 
+function getInternationalCheckoutApiUrl() {
+  return getAPIConfig().borderFree;
+}
+
+function getInternationalCheckoutCommUrl() {
+  return getAPIConfig().borderFreeComm;
+}
+
+function getInternationalCheckoutUrl(state) {
+  return state.Checkout.getIn(['options', 'internationalUrl']);
+}
+
 export default {
   getRecalcOrderPointsInterval,
   getIsOrderHasShipping,
@@ -640,4 +652,7 @@ export default {
   isVenmoNonceNotExpired,
   isVenmoPaymentInProgress,
   isVenmoPaymentToken,
+  getInternationalCheckoutCommUrl,
+  getInternationalCheckoutApiUrl,
+  getInternationalCheckoutUrl,
 };
