@@ -14,6 +14,9 @@ export default css`
     margin: 0 ${props => props.theme.spacing.ELEM_SPACING.SM}
       ${props => props.theme.spacing.ELEM_SPACING.SM};
   }
+  .filter-and-sort-form-container .desktop-dropdown {
+    display: none;
+  }
   .product-list .search-product-tile {
     display: inline-block;
     padding: ${props => props.theme.spacing.ELEM_SPACING.SM} 20px 0 0;
@@ -54,6 +57,9 @@ export default css`
     }
     .render-mobile-view {
       display: none;
+    }
+    .filter-and-sort-form-container .desktop-dropdown {
+      display: flex;
     }
   }
   .item-title {

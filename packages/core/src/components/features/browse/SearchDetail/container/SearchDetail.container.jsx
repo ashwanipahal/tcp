@@ -44,7 +44,10 @@ class SearchDetailContainer extends React.PureComponent {
       getProducts,
       formValues,
     } = this.props;
-    getProducts({ URI: 'search', asPath, sq, ignoreCache: true, formValues });
+    const splitAsPathBy = `/search/${sq}?`;
+    const queryString = asPath.split(splitAsPathBy);
+    const filterSortString = (queryString.length && queryString[1]) || '';
+    getProducts({ URI: 'search', asPath: filterSortString, sq, ignoreCache: true, formValues });
   }
 
   render() {
