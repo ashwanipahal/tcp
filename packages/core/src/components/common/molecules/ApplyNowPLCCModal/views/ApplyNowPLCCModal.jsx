@@ -4,13 +4,7 @@ import Modal from '../../Modal';
 import ApplyCardPage from '../../../../features/browse/ApplyCardPage';
 import { getLocator } from '../../../../../utils';
 
-const ApplyNowPLCCModal = ({
-  modalStyles,
-  isPLCCModalOpen,
-  closePLCCModal,
-  className,
-  handleTimedOutModal,
-}) => {
+const ApplyNowPLCCModal = ({ modalStyles, isPLCCModalOpen, closePLCCModal, className }) => {
   return (
     <Modal
       fixedWidth
@@ -25,7 +19,7 @@ const ApplyNowPLCCModal = ({
       inheritedStyles={modalStyles}
       shouldCloseOnOverlayClick={false}
     >
-      <ApplyCardPage isPLCCModalFlow handleTimedOutModal={handleTimedOutModal} />
+      <ApplyCardPage isPLCCModalFlow />
     </Modal>
   );
 };
@@ -35,7 +29,6 @@ ApplyNowPLCCModal.propTypes = {
   isPLCCModalOpen: PropTypes.bool.isRequired,
   closePLCCModal: PropTypes.func.isRequired,
   className: PropTypes.string.isRequired,
-  handleTimedOutModal: PropTypes.func.isRequired,
 };
 
 export default ApplyNowPLCCModal;

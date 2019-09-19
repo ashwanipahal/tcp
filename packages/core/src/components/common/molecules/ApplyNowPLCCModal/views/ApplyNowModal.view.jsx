@@ -21,7 +21,6 @@ const StyledApplyNowModal = ({
   closeModal,
   labels,
   plccBenefitsList,
-  handleTimedOutModal,
 }) => {
   return !isPLCCModalOpen ? (
     <Modal
@@ -161,7 +160,6 @@ const StyledApplyNowModal = ({
       className={className}
       isPLCCModalOpen={isPLCCModalOpen}
       closePLCCModal={closePLCCModal}
-      handleTimedOutModal={handleTimedOutModal}
     />
   );
 };
@@ -174,7 +172,6 @@ StyledApplyNowModal.propTypes = {
   isModalOpen: PropTypes.bool.isRequired,
   closeModal: PropTypes.func.isRequired,
   plccBenefitsList: PropTypes.string.isRequired,
-  handleTimedOutModal: PropTypes.func.isRequired,
   labels: PropTypes.shape({
     apply_now_header: PropTypes.string.isRequired,
     apply_now_subheader: PropTypes.string.isRequired,

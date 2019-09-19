@@ -60,7 +60,7 @@ class PLCCForm extends React.Component {
     dispatch: PropTypes.func.isRequired,
     isPLCCModalFlow: PropTypes.bool.isRequired,
     handleSubmit: PropTypes.func.isRequired,
-    handleTimedOutModal: PropTypes.func.isRequired,
+    reset: PropTypes.func.isRequired,
     bagItems: PropTypes.bool.isRequired,
     labels: PropTypes.shape({
       plcc_form_checkbox_text: PropTypes.string.isRequired,
@@ -73,6 +73,7 @@ class PLCCForm extends React.Component {
     super(props);
     this.state = {
       isIdleModalActive: false,
+      isTimedOutModalActive: false,
     };
     this.timeout = null;
   }
@@ -128,17 +129,15 @@ class PLCCForm extends React.Component {
     this.unbindIdleVerification();
   };
 
+  handleFormReset = () => {
+    const { reset } = this.props;
+    this.setState({ isTimedOutModalActive: true });
+    reset();
+  };
+
   render() {
-    const {
-      dispatch,
-      plccData,
-      handleSubmit,
-      labels,
-      isPLCCModalFlow,
-      bagItems,
-      handleTimedOutModal,
-    } = this.props;
-    const { isIdleModalActive } = this.state;
+    const { dispatch, plccData, handleSubmit, labels, isPLCCModalFlow, bagItems } = this.props;
+    const { isIdleModalActive, isTimedOutModalActive } = this.state;
     return (
       <StyledPLCCFormWrapper isPLCCModalFlow={isPLCCModalFlow}>
         <form onSubmit={handleSubmit}>
@@ -265,8 +264,9 @@ class PLCCForm extends React.Component {
             isPLCCModalFlow={isPLCCModalFlow}
             unregisterIdleVerfication={this.unregisterIdleVerfication}
             bagItems={bagItems}
-            handleTimedOutModalClose={handleTimedOutModal}
             time={120}
+            isTimedOutModalActive={isTimedOutModalActive}
+            handleFormReset={this.handleFormReset}
           />
         ) : null}
       </StyledPLCCFormWrapper>

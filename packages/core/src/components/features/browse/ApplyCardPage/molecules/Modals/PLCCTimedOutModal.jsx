@@ -14,7 +14,7 @@ class StyledPLCCTimedoutModal extends React.Component {
   static propTypes = {
     className: PropTypes.string.isRequired,
     isModalOpen: PropTypes.bool.isRequired,
-    handleTimedOutModalClose: PropTypes.func.isRequired,
+    handleFormReset: PropTypes.func.isRequired,
     isPLCCModalFlow: PropTypes.bool.isRequired,
     bagItems: PropTypes.bool.isRequired,
     labels: PropTypes.shape({
@@ -25,9 +25,9 @@ class StyledPLCCTimedoutModal extends React.Component {
   };
 
   restartApplication = () => {
-    const { handleTimedOutModalClose, isPLCCModalFlow } = this.props;
+    const { handleFormReset, isPLCCModalFlow } = this.props;
     if (isPLCCModalFlow) {
-      handleTimedOutModalClose();
+      handleFormReset();
     } else {
       window.location.reload();
     }

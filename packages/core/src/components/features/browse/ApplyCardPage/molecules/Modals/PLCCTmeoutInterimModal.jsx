@@ -16,7 +16,8 @@ class StyledPLCCTimeoutInterimModal extends React.Component {
     isModalOpen: PropTypes.bool.isRequired,
     bagItems: PropTypes.bool.isRequired,
     isPLCCModalFlow: PropTypes.func.isRequired,
-    handleTimedOutModalClose: PropTypes.func.isRequired,
+    isTimedOutModalActive: PropTypes.bool.isRequired,
+    handleFormReset: PropTypes.func.isRequired,
     time: PropTypes.number.isRequired,
     unregisterIdleVerfication: PropTypes.func.isRequired,
     handleContinueApplication: PropTypes.func.isRequired,
@@ -67,7 +68,8 @@ class StyledPLCCTimeoutInterimModal extends React.Component {
       handleContinueApplication,
       isPLCCModalFlow,
       bagItems,
-      handleTimedOutModalClose,
+      handleFormReset,
+      isTimedOutModalActive,
     } = this.props;
     const { currentTime } = this.state;
     let modalBody;
@@ -160,10 +162,10 @@ class StyledPLCCTimeoutInterimModal extends React.Component {
     } else {
       modalBody = (
         <StyledPLCCTimeOutModal
-          handleTimedOutModalClose={handleTimedOutModalClose}
           isPLCCModalFlow={isPLCCModalFlow}
-          isModalOpen={currentTime === 0}
+          isModalOpen={currentTime === 0 && !isTimedOutModalActive}
           labels={labels}
+          handleFormReset={handleFormReset}
           bagItems={bagItems}
         />
       );

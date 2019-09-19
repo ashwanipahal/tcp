@@ -25,7 +25,6 @@ class ApplyCardLayoutContainer extends React.Component {
     approvedPLCCData: PropTypes.shape({}).isRequired,
     isGuestUser: PropTypes.bool.isRequired,
     userId: PropTypes.string.isRequired,
-    handleTimedOutModal: PropTypes.func.isRequired,
   };
   /**
    *  @function - constructor
@@ -110,7 +109,6 @@ class ApplyCardLayoutContainer extends React.Component {
       labels,
       plccUser,
       profileInfo,
-      handleTimedOutModal,
     } = this.props;
     const { showAddEditAddressForm } = this.state;
     return (
@@ -126,7 +124,6 @@ class ApplyCardLayoutContainer extends React.Component {
           plccUser={plccUser}
           profileInfo={profileInfo}
           isPLCCModalFlow={isPLCCModalFlow}
-          handleTimedOutModal={handleTimedOutModal}
         />
         {showAddEditAddressForm ? <AddressVerification onSuccess={this.submitForm} /> : null}
       </React.Fragment>

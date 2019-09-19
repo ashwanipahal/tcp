@@ -12,7 +12,7 @@ describe('ApplicationInProgress component', () => {
     isModalOpen: true,
     closeModal: jest.fn(),
     isPLCCModalFlow: false,
-    handleTimedOutModalClose: jest.fn(),
+    handleFormReset: jest.fn(),
     bagItems: true,
     labels: {
       plcc_form_status_detail: 'application card is in progress',

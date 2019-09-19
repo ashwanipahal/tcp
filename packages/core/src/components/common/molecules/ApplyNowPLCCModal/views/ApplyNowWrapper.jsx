@@ -28,11 +28,6 @@ class ApplyNowModalWrapper extends React.Component {
     resetPLCCApplicationStatus({ status: null });
   };
 
-  handleTimedOutModal = () => {
-    const { toggleModal } = this.props;
-    toggleModal({ isModalOpen: true, isPLCCModalOpen: false });
-  };
-
   openModal = e => {
     e.preventDefault();
     const { toggleModal } = this.props;
@@ -55,7 +50,6 @@ class ApplyNowModalWrapper extends React.Component {
             isPLCCModalOpen={isPLCCModalOpen}
             openPLCCModal={this.openPLCCModal}
             closePLCCModal={this.closePLCCModal}
-            handleTimedOutModal={this.handleTimedOutModal}
             closeModal={this.closeModal}
             labels={labels}
             plccBenefitsList={plccBenefitsList}
