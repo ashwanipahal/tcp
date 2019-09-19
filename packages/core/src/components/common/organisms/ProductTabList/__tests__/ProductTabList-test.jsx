@@ -64,4 +64,30 @@ describe('ProductTabList', () => {
 
     expect(getProductTabListData).toBeCalledTimes(0);
   });
+
+  it('Should provide selected tab item on tab selection ', () => {
+    const onProductTabChangeMock = jest.fn();
+    const tabItems = [
+      {
+        text: {
+          text: 'test',
+        },
+        category: {
+          cat_id: '2',
+        },
+      },
+      {
+        text: {
+          text: 'test 2',
+        },
+        category: {
+          cat_id: '3',
+        },
+      },
+    ];
+
+    shallow(<ProductTabList tabItems={tabItems} onProductTabChange={onProductTabChangeMock} />);
+
+    expect(onProductTabChangeMock).toHaveBeenCalledWith('2', tabItems[0]);
+  });
 });
