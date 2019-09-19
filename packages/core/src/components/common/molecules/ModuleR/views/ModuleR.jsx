@@ -12,9 +12,10 @@ import moduleRStyle, { ImageGridCol } from '../styles/ModuleR.style';
  * @class ModuleR - global reusable component will display featured
  * category module with category links and featured product images
  * This component is plug and play at any given slot in layout by passing required data
- * @param {productTabList} productTabList the list of data for tabs
+ * @param {productTabList} productTabList the list of data for category tab
  * @param {headerText} headerText the list of data for header
  * @param {promoBanner} promoBanner promo banner data
+ * @param {divTabs} divTabs division tabs data
  */
 class ModuleR extends React.PureComponent {
   constructor(props) {
