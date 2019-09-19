@@ -3,6 +3,7 @@ import PropTypes from 'prop-types';
 import { ViewWithSpacing } from '@tcp/core/src/components/common/atoms/styledWrapper';
 import ModalNative from '../../../../common/molecules/Modal';
 import BirthdaySavingsList from '../../common/organism/BirthdaySavingsList';
+import { getLabelValue } from '../../../../../utils';
 
 /**
  * This component will render BirthdaySavingsPage component
@@ -13,7 +14,7 @@ const BirthdaySavings = ({ labels, mountAddChildModal, handleComponentChange }) 
     <ModalNative
       isOpen={mountAddChildModal}
       onRequestClose={handleComponentChange}
-      heading={labels.lbl_profile_birthday_savings}
+      heading={getLabelValue(labels, 'lbl_profile_birthday_savings')}
     >
       <ViewWithSpacing spacingStyles="margin-left-LRG margin-right-LRG">
         <BirthdaySavingsList view="edit" labels={labels} />

@@ -7,6 +7,7 @@ import BirthdayCardComponent from '../../../molecule/BirthdayCard';
 import EmptyBirthdayCard from '../../../molecule/EmptyBirthdayCard';
 import constants from '../BirthdaySavingsList.constants';
 import { WrapLayout, WrapItem } from '../styles/BirthdaySavingsList.styles.native';
+import { getLabelValue } from '../../../../../../../utils';
 
 /**
  * Functional component to render Birthday Saving Info Message
@@ -17,7 +18,7 @@ export const InfoMessage = ({ labels, spacingStyles }) => (
     fontSize="fs14"
     mobileFontFamily="secondary"
     spacingStyles={spacingStyles}
-    text={labels.lbl_profile_birthday_saving_info}
+    text={getLabelValue(labels, 'lbl_profile_birthday_saving_info')}
   />
 );
 
