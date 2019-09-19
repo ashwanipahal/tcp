@@ -28,7 +28,9 @@ exports[`ProfileInformation component should render correctly 1`] = `
         lineHeight="normal"
         textAlign="left"
       >
-        lbl_prefrence_favorite_store
+        <Connect(MyFavoriteStoreContainer)
+          isMyPreferences={true}
+        />
       </Styled(BodyCopy)>
     </Styled(Col)>
     <Styled(Col)
