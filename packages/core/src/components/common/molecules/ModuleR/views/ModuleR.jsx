@@ -42,7 +42,12 @@ class ModuleR extends React.PureComponent {
   getPromoComponent = () => {
     const { promoBanner } = this.props;
     return (
-      <PromoBanner promoBanner={promoBanner} dataLocator={getLocator('moduleR_promobanner_text')} />
+      promoBanner && (
+        <PromoBanner
+          promoBanner={promoBanner}
+          dataLocator={getLocator('moduleR_promobanner_text')}
+        />
+      )
     );
   };
 
@@ -84,6 +89,7 @@ class ModuleR extends React.PureComponent {
     This method is to return the Image grid item
   */
   getImageGrid = selectedProductList => {
+    const { bannerPosition } = this.props;
     return (
       <Row className="image-items-container">
         {selectedProductList.map((productItem, index) => {
@@ -97,6 +103,7 @@ class ModuleR extends React.PureComponent {
               <ImageGridCol
                 key={uniqueId}
                 imageIndex={index}
+                bannerPosition={bannerPosition}
                 colSize={{
                   small: 2,
                   medium: 2,
