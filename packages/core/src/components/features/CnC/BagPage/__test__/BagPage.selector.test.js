@@ -12,6 +12,9 @@ describe('#Added to bag Selectors', () => {
         lbl_emptyBag_shopNow: 'shopNow',
         lbl_emptyBag_inspirationTagLine: 'tagLine',
         lbl_emptyBag_helperMsg: 'helperMsg',
+        lbl_sfl_myBagButton: 'myBagButton',
+        lbl_sfl_savedForLater: 'savedForLaterText',
+        lbl_sfl_savedLaterButton: 'savedLaterButton',
       },
     },
     global: {
@@ -42,6 +45,9 @@ describe('#Added to bag Selectors', () => {
       login: 'login',
       shopNow: 'shopNow',
       tagLine: 'tagLine',
+      myBagButton: 'myBagButton',
+      savedForLaterText: 'savedForLaterText',
+      savedLaterButton: 'savedLaterButton',
     });
   });
 

@@ -50,7 +50,7 @@ class BagPageView extends React.Component {
             fontFamily="secondary"
             fontSize="fs16"
             fontWeight={['semibold']}
-            className="elem-mt-XXL save-for-later-section-heading"
+            className="elem-mt-XXL elem-mb-XL save-for-later-section-heading"
           >
             {`${labels.savedForLaterText} (${sflItems.size})`}
           </BodyCopy>

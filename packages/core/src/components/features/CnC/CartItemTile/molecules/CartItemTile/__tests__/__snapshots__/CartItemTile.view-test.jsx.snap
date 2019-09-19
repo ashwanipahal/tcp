@@ -199,7 +199,7 @@ exports[`CartItemTile common component renders correctly 1`] = `
 
     .bag-product-detail-wrapper {
       position: relative;
-
+      width: 100%;
       .color-fit-size-separator {
         padding: 0 10px;
       }
@@ -356,7 +356,11 @@ exports[`CartItemTile common component renders correctly 1`] = `
       margin-top: 27px;
     }
   }
-
+  .heartIcon {
+    margin-top: ",
+          [Function],
+          ";
+  }
   ",
           [Function],
           ";

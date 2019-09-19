@@ -146,7 +146,10 @@ class CartItemTile extends React.Component {
         </BodyCopy>
       );
     }
-    if (isBagPageSflSection) {
+    if (
+      isBagPageSflSection &&
+      productDetail.miscInfo.availability === CARTPAGE_CONSTANTS.AVAILABILITY_OK
+    ) {
       return (
         <BodyCopy
           fontFamily="secondary"
