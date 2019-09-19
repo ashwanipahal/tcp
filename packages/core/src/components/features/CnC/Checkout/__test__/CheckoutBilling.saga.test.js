@@ -3,6 +3,7 @@ import submitBilling, {
   submitBillingData,
   updatePaymentInstruction,
 } from '../container/CheckoutBilling.saga';
+import { getAddressList } from '../../../account/AddressBook/container/AddressBook.saga';
 
 describe('CheckoutBilling saga', () => {
   it('CheckoutBilling', () => {
@@ -27,7 +28,7 @@ describe('CheckoutBilling saga', () => {
         undefined
       )
     );
-    expect(CheckoutReviewSaga.next(false).value).toEqual(undefined);
+    expect(CheckoutReviewSaga.next(false).value).toEqual(call(getAddressList));
   });
   it('submitBillingData', () => {
     const CheckoutReviewSaga = submitBillingData({ address: { sameAsShipping: true } }, {});
