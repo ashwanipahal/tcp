@@ -12,18 +12,40 @@ export const ImageGridCol = styled(Col)`
 
   @media ${props => props.theme.mediaQuery.mediumOnly} {
     ${props =>
-      props.imageIndex === 3 || props.imageIndex === 6 || props.imageIndex === 10
+      props.promoBanner &&
+      props.bannerPosition !== 'top' &&
+      (props.imageIndex === 3 || props.imageIndex === 6 || props.imageIndex === 10)
         ? `
         margin-right: 0;
+      `
+        : ``}
+
+    ${props =>
+      !props.promoBanner || props.bannerPosition === 'top'
+        ? `
+        &:nth-child(4n) {
+          margin-right: 0;
+        }
       `
         : ``}
   }
 
   @media ${props => props.theme.mediaQuery.large} {
     ${props =>
-      props.imageIndex === 5 || props.imageIndex === 10 || props.imageIndex === 16
+      props.promoBanner &&
+      props.bannerPosition !== 'top' &&
+      (props.imageIndex === 5 || props.imageIndex === 10 || props.imageIndex === 16)
         ? `
         margin-right: 0;
+      `
+        : ``}
+
+    ${props =>
+      !props.promoBanner || props.bannerPosition === 'top'
+        ? `
+        &:nth-child(6n) {
+          margin-right: 0;
+        }
       `
         : ``}
   }

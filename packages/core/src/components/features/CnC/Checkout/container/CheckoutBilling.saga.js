@@ -16,6 +16,8 @@ import {
 } from '../../../../common/organisms/AddEditAddress/container/AddEditAddress.saga';
 import CONSTANTS, { CHECKOUT_ROUTES } from '../Checkout.constants';
 import { isMobileApp } from '../../../../../utils';
+import { getAddressList } from '../../../account/AddressBook/container/AddressBook.saga';
+import { getCardList } from '../../../account/Payment/container/Payment.saga';
 
 const {
   getIsPaymentDisabled,
@@ -96,10 +98,17 @@ function* getAddressData(formData) {
   return existingAddress ? existingAddress.addressId : shippingDetails.onFileAddressId;
 }
 
+function addressIdToString(addressId) {
+  if (addressId) {
+    return addressId.toString();
+  }
+  return null;
+}
+
 export function* submitBillingData(formData, address, loadUpdatedCheckoutValues) {
   let res;
   let cardDetails;
-  let updatePaymentRequired = true;
+  const updatePaymentRequired = true;
   const isGuestUser = yield select(isGuest);
   if (formData.address.sameAsShipping) {
     const shippingDetails = yield select(getShippingDestinationValues);
@@ -114,12 +123,13 @@ export function* submitBillingData(formData, address, loadUpdatedCheckoutValues)
     res = yield call(updateAddress, {
       checkoutUpdateOnly: true,
       addressKey: cardDetails.addressKey,
-      addressId: cardDetails.addressId || cardDetails.billingAddressId,
+      addressId:
+        addressIdToString(cardDetails.addressId) || addressIdToString(cardDetails.billingAddressId),
     });
     res = res.body;
   } else if (formData.address.onFileAddressKey && !isGuestUser) {
     // return submitPaymentInformation({addressId: formData.address.onFileAddressKey});
-    const addressId = getAddressData(formData);
+    const addressId = yield call(getAddressData, formData);
     res = yield call(updateAddress, {
       checkoutUpdateOnly: true,
       addressKey: formData.address.onFileAddressKey,
@@ -128,7 +138,7 @@ export function* submitBillingData(formData, address, loadUpdatedCheckoutValues)
     res = res.body;
   } else if (formData.address.onFileAddressKey && isGuestUser) {
     // send update
-    const addressId = getAddressData(formData);
+    const addressId = yield call(getAddressData, formData);
     res = yield updateAddressPut(
       {
         payload: {
@@ -144,9 +154,7 @@ export function* submitBillingData(formData, address, loadUpdatedCheckoutValues)
       },
       { profileUpdate: false }
     );
-    res = res.payload;
   } else {
-    updatePaymentRequired = false;
     res = yield call(
       addAddressGet,
       {
@@ -161,6 +169,7 @@ export function* submitBillingData(formData, address, loadUpdatedCheckoutValues)
       },
       false
     );
+    res = res.body;
   }
   if (updatePaymentRequired) {
     yield call(
@@ -195,6 +204,8 @@ export default function* submitBilling(payload = {}, loadUpdatedCheckoutValues) 
     if (!isPaymentDisabled) {
       yield call(submitBillingData, formData, address, loadUpdatedCheckoutValues);
     }
+    yield call(getAddressList);
+    yield call(getCardList);
     if (!isMobileApp()) {
       utility.routeToPage(CHECKOUT_ROUTES.reviewPage);
     } else if (navigation) {

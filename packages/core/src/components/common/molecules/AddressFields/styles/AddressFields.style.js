@@ -7,7 +7,9 @@ const styles = css`
   }
   input {
     background-color: ${props =>
-      props.variation === 'secondary' ? props.theme.colorPalette.gray[300] : ''};
+      props.variation === 'secondary' || props.grayTextBox
+        ? props.theme.colorPalette.gray[300]
+        : ''};
   }
   .country-selector {
     position: relative;

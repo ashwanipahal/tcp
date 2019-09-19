@@ -2,9 +2,16 @@ import React from 'react';
 import { shallow } from 'enzyme';
 import mock from '../../../../../services/abstractors/common/moduleR/mock';
 import { ModuleRVanilla as ModuleR } from '../views/ModuleR';
+import * as utils from '../../../../../utils/utils.web';
+
+utils.viewport = jest.fn();
 
 describe('Module R Component', () => {
   let ModuleRComp;
+  const props = {
+    ...mock.moduleR.composites,
+    bannerPosition: 'top',
+  };
   const selectedProductList = [
     {
       uniqueId: '3002156_10',
@@ -204,7 +211,48 @@ describe('Module R Component', () => {
     ModuleRComp.instance().getImageGrid(selectedProductList);
   });
 
-  it('should call getSelectedProductList', () => {
-    ModuleRComp.instance().getSelectedProductList(selectedProductList);
+  it('should call getSelectedProductList in case of mobile view', () => {
+    utils.viewport.mockReturnValue({
+      small: true,
+    });
+    expect(ModuleRComp.instance().getSelectedProductList(selectedProductList).length).toBe(9);
+  });
+
+  it('should call getSelectedProductList in case of tablet view', () => {
+    utils.viewport.mockReturnValue({
+      medium: true,
+    });
+    expect(ModuleRComp.instance().getSelectedProductList(selectedProductList).length).toBe(11);
+  });
+
+  it('should call getSelectedProductList in case of desktop view', () => {
+    utils.viewport.mockReturnValue({
+      large: true,
+    });
+    expect(ModuleRComp.instance().getSelectedProductList(selectedProductList).length).toBe(17);
+  });
+
+  it('should call getSelectedProductList in case of mobile view if banner position is top', () => {
+    utils.viewport.mockReturnValue({
+      small: true,
+    });
+    ModuleRComp = shallow(<ModuleR {...props} />);
+    expect(ModuleRComp.instance().getSelectedProductList(selectedProductList).length).toBe(9);
+  });
+
+  it('should call getSelectedProductList in case of tablet view if banner position is top', () => {
+    utils.viewport.mockReturnValue({
+      medium: true,
+    });
+    ModuleRComp = shallow(<ModuleR {...props} />);
+    expect(ModuleRComp.instance().getSelectedProductList(selectedProductList).length).toBe(12);
+  });
+
+  it('should call getSelectedProductList in case of desktop view if banner position is top', () => {
+    utils.viewport.mockReturnValue({
+      large: true,
+    });
+    ModuleRComp = shallow(<ModuleR {...props} />);
+    expect(ModuleRComp.instance().getSelectedProductList(selectedProductList).length).toBe(18);
   });
 });

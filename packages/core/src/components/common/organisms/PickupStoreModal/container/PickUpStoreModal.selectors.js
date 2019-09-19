@@ -125,3 +125,7 @@ export const getOpenSkuSelectionForm = state => {
     state[PICKUP_MODAL_REDUCER_KEY] && state[PICKUP_MODAL_REDUCER_KEY].get('openSkuSelectionForm')
   );
 };
+
+export const getStoreSearchError = state => {
+  return state[PICKUP_MODAL_REDUCER_KEY] && state[PICKUP_MODAL_REDUCER_KEY].get('storeSearchError');
+};
