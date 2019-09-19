@@ -110,7 +110,7 @@ class PLCCForm extends React.Component {
       this.setState({
         isIdleModalActive: true,
       });
-    }, 1 * 60 * 1000);
+    }, 13 * 60 * 1000);
   };
 
   onCloseInterimModal = () => {
