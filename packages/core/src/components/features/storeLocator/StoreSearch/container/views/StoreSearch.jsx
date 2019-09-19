@@ -182,12 +182,14 @@ export class StoreSearch extends PureComponent {
                         />
                       </Button>
                     </div>
-                    <ErrorMessage
-                      isShowingMessage={errorMessage}
-                      errorId={Math.random()}
-                      error={errorMessage}
-                      withoutErrorDataAttribute
-                    />
+                    {errorMessage && (
+                      <ErrorMessage
+                        isShowingMessage={errorMessage}
+                        errorId={Math.random()}
+                        error={errorMessage}
+                        withoutErrorDataAttribute
+                      />
+                    )}
                   </form>
                 </Col>
                 <Col colSize={{ large: 12, medium: 4, small: 6 }}>

@@ -1,42 +1,165 @@
-import React from 'react';
-import { View } from 'react-native';
+import React, { Component } from 'react';
+import { FlatList } from 'react-native';
+import ErrorMessage from '@tcp/core/src/components/common/hoc/ErrorMessage';
 import { PropTypes } from 'prop-types';
-import withStyles from '@tcp/core/src/components/common/hoc/withStyles.native';
-// import {
-//   Image,
-//   Button,
-//   BodyCopy,
-//   InputCheckBox,
-//   Anchor,
-//   Row,
-//   Col,
-// } from '@tcp/core/src/components/common/atoms';
-import styles from '../styles/StoreSearch.style.native';
+import { Anchor, BodyCopy, Image } from '@tcp/core/src/components/common/atoms';
+import InputCheckbox from '@tcp/core/src/components/common/atoms/InputCheckbox';
+import { GooglePlacesInput } from '@tcp/core/src/components/common/atoms/GoogleAutoSuggest/AutoCompleteComponent';
+import { reduxForm, Field } from 'redux-form';
+import {
+  StyledContainer,
+  StyledStoreLocator,
+  StyledAutoComplete,
+  StyledCheckbox,
+  StyledLinks,
+  StyleStoreOptionList,
+  StyledFindStoreTitle,
+  StyledCurrentLocation,
+  StyledSearch,
+  StyledCheckBoxBodyCopy,
+} from '../styles/StoreSearch.style.native';
 
-// import TheMarketPlaceLogo from '../../../../../../../assets/my-place-rewards.png';
-// import favIcon from '../../../../../../../../../mobileapp/src/assets/images/empty-heart.png';
+const MarkerIcon = require('../../../../../../assets/icon-marker.png');
+const SearchIcon = require('../../../../../../assets/icon-mag-glass.png');
 
-const StoreSearch = props => {
-  // const { labels } = props;
-  // const imgStyle = { alignSelf: 'center', marginTop: 20 };
-  return <View {...props}>data</View>;
-};
+class StoreSearch extends Component {
+  state = {
+    errorNotFound: null,
+  };
+
+  onSubmit = () => {
+    // @TODO
+  };
+
+  onSearch = () => {
+    // @TODO
+  };
+
+  renderStoreTypes = ({ name, dataLocator, storeLabel }) => {
+    return (
+      <StyledCheckbox>
+        <Field
+          name={name}
+          component={InputCheckbox}
+          dataLocator={dataLocator}
+          enableSuccessCheck={false}
+        />
+        <StyledCheckBoxBodyCopy>
+          <BodyCopy
+            fontSize="fs12"
+            fontFamily="secondary"
+            fontWeight="regular"
+            color="#1a1a1a"
+            text={storeLabel}
+          />
+        </StyledCheckBoxBodyCopy>
+      </StyledCheckbox>
+    );
+  };
+
+  render() {
+    const { labels, error, selectedCountry = 'US' } = this.props;
+    const {
+      errorLabel,
+      storeSearchPlaceholder,
+      findStoreHeading,
+      gymboreeStores,
+      outletStores,
+      currentLocation,
+      viewMap,
+    } = labels;
+
+    const { errorNotFound } = this.state;
+    const errorMessage = errorNotFound ? errorLabel : error;
+
+    const storeOptionsConfig = [
+      {
+        name: 'gymboreeStoreOption',
+        dataLocator: 'gymboree-store-option',
+        storeLabel: gymboreeStores,
+      },
+      {
+        name: 'outletOption',
+        dataLocator: 'only-outlet-option',
+        storeLabel: outletStores,
+      },
+    ];
+
+    return (
+      <StyledContainer>
+        <StyledFindStoreTitle>
+          <BodyCopy
+            mobilefontFamily="primary"
+            fontWeight="extrabold"
+            fontSize="fs16"
+            color="#1a1a1a"
+            text={findStoreHeading}
+          />
+        </StyledFindStoreTitle>
+        <Anchor>
+          <StyledStoreLocator>
+            <Image source={MarkerIcon} height="16px" width="16px" />
+            <StyledCurrentLocation>
+              <BodyCopy
+                mobilefontFamily="primary"
+                fontWeight="regular"
+                fontSize="fs12"
+                color="#1a1a1a"
+                text={currentLocation}
+              />
+            </StyledCurrentLocation>
+          </StyledStoreLocator>
+        </Anchor>
+        <StyledAutoComplete>
+          <Field
+            headerTitle={storeSearchPlaceholder}
+            component={GooglePlacesInput}
+            dataLocator="addnewaddress-addressl1"
+            componentRestrictions={{ ...{ country: [selectedCountry] } }}
+          />
+          <StyledSearch>
+            <Anchor onPress={() => this.onSearch()}>
+              <Image source={SearchIcon} height="25px" width="25px" />
+            </Anchor>
+          </StyledSearch>
+          {errorMessage && (
+            <ErrorMessage
+              isShowingMessage={errorMessage}
+              errorId={Math.random()}
+              error={errorMessage}
+              withoutErrorDataAttribute
+            />
+          )}
+        </StyledAutoComplete>
+        <StyleStoreOptionList>
+          <FlatList
+            data={storeOptionsConfig}
+            renderItem={({ item }) => this.renderStoreTypes(item)}
+            horizontal
+          />
+        </StyleStoreOptionList>
+        <StyledLinks>
+          <Anchor fontWeight="regular" anchorVariation="primary" text={viewMap} underline />
+        </StyledLinks>
+      </StyledContainer>
+    );
+  }
+}
 
 StoreSearch.propTypes = {
-  className: PropTypes.string.isRequired,
-  selectedCountry: PropTypes.string.isRequired,
-  loadStoresByCoordinates: PropTypes.func.isRequired,
-  submitting: PropTypes.bool,
+  selectedCountry: PropTypes.string,
   error: PropTypes.bool.isRequired,
-  handleSubmit: PropTypes.func.isRequired,
-  labels: PropTypes.objectOf(PropTypes.string).isRequired,
-  searchIcon: PropTypes.string.isRequired,
-  markerIcon: PropTypes.string.isRequired,
+  labels: PropTypes.objectOf(PropTypes.string),
 };
 
 StoreSearch.defaultProps = {
-  submitting: false,
+  labels: {},
+  selectedCountry: 'US',
 };
 
-export default withStyles(StoreSearch, styles);
+export default reduxForm({
+  form: 'StoreSearch',
+  enableReinitialize: true,
+})(StoreSearch);
+
 export { StoreSearch as LoginTopSectionVanilla };
