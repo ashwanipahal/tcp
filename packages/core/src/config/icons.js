@@ -43,6 +43,8 @@ export default {
   // TODO - Remove the fav_icon when the vector Icons would be implemented
   'fav-icon': '/static/images/heart.png',
   'empty-fav-icon': '/static/images/empty-heart.png',
+  'icon-chat': '/static/images/icon-chat@2x.png',
+  'icon-alarm': '/static/images/icon-alarm@2x.png',
   'cart-icon': '/static/images/bag.png',
   'marker-icon': '/static/images/marker-icon.png',
   'cart-icon-1': '/static/images/bag.svg',
@@ -56,6 +58,7 @@ export default {
   'checkout-white-dot': '/static/images/checkout-white-dot.svg',
   'carrot-large-left': '/static/images/carrot-large-left.png',
   'close-icon': '/static/images/close.png',
+  'plus-icon': '/static/images/plus.png',
   'mailing-address-icon': '/static/images/mailingAddress.jpg',
   'fav-store-icon': '/static/images/store.jpg',
   'birthday-icon': '/static/images/birthday.jpg',

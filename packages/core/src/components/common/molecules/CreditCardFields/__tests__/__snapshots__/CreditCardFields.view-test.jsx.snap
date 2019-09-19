@@ -214,11 +214,6 @@ exports[`CreditCardFields component should renders correctly when isExpirationRe
         "small": 2,
       }
     }
-    ignoreGutter={
-      Object {
-        "small": true,
-      }
-    }
   >
     <Field
       className="field"

@@ -22,7 +22,6 @@ import {
   setIsLoadingShippingMethods,
   setShippingOptions,
   setAddressError,
-  setSmsNumberForUpdates,
 } from './Checkout.action';
 import BAG_PAGE_ACTIONS from '../../BagPage/container/BagPage.actions';
 import BagPageSelectors from '../../BagPage/container/BagPage.selectors';
@@ -33,6 +32,7 @@ import {
   updateAddressPut,
 } from '../../../../common/organisms/AddEditAddress/container/AddEditAddress.saga';
 import { getAddressList } from '../../../account/AddressBook/container/AddressBook.saga';
+import { getCardList } from '../../../account/Payment/container/Payment.saga';
 // import { addAddress } from '../../../../../services/abstractors/account/AddEditAddress';
 import { isMobileApp } from '../../../../../utils';
 import {
@@ -44,6 +44,7 @@ import {
   addAndSetGiftWrappingOptions,
   validateAndSubmitEmailSignup,
   getVenmoClientTokenSaga,
+  saveLocalSmsInfo,
 } from './Checkout.saga.util';
 import submitBilling from './CheckoutBilling.saga';
 import submitOrderForProcessing from './CheckoutReview.saga';
@@ -178,8 +179,13 @@ function* submitPickupSection({ payload }) {
   //  }
   const result = yield call(callPickupSubmitMethod, formData);
   if (result.addressId) {
+    yield call(getAddressList);
+    yield call(getCardList);
     if (!isMobileApp()) {
-      utility.routeToPage(CHECKOUT_ROUTES.shippingPage);
+      const getIsShippingRequired = yield select(getIsOrderHasShipping);
+      if (getIsShippingRequired) {
+        utility.routeToPage(CHECKOUT_ROUTES.shippingPage);
+      } else utility.routeToPage(CHECKOUT_ROUTES.billingPage);
     } else if (navigation) {
       navigation.navigate(CONSTANTS.CHECKOUT_ROUTES_NAMES.CHECKOUT_SHIPPING);
     }
@@ -542,17 +548,6 @@ function* initCheckout() {
   }
 }
 
-function* saveLocalSmsInfo(smsInfo = {}) {
-  let returnVal;
-  const { wantsSmsOrderUpdates, smsUpdateNumber } = smsInfo;
-  if (smsUpdateNumber) {
-    returnVal = wantsSmsOrderUpdates
-      ? yield call(setSmsNumberForUpdates, smsUpdateNumber)
-      : yield call(setSmsNumberForUpdates(null));
-  }
-  return returnVal;
-}
-
 function* submitShipping({
   isEmailSignUpAllowed,
   emailSignup,
@@ -701,6 +696,8 @@ function* submitShippingSection({ payload: { navigation, ...formData } }) {
       recalcFlag,
       emailAddress,
     });
+    yield call(getAddressList);
+    yield call(getCardList);
     redirectToBilling(navigation);
   } catch (err) {
     // throw getSubmissionError(store, 'submitShippingSection', err);

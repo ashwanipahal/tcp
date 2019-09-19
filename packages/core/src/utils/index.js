@@ -28,6 +28,7 @@ export {
   configurePlpNavigationFromCMSUrl,
   isBopisProduct,
   isBossProduct,
+  viewport,
 } from './utils.web';
 
 export {
