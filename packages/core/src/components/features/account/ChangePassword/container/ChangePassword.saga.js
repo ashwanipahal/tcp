@@ -10,7 +10,12 @@ export function* ChangePassword({ payload }) {
     const res = yield call(UpdateProfileInfo, payload);
     return yield put(updateProfileSuccess(res));
   } catch (err) {
-    return yield put(changePasswordError(err));
+    let error = {};
+    /* istanbul ignore else */
+    error = err;
+    if (error) {
+      return yield put(changePasswordError(error.errorResponse));
+    }
   }
 }
 
