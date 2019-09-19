@@ -25,14 +25,12 @@ export class StoreSearch extends PureComponent {
   render() {
     const searchIcon = getIconPath('search-icon');
     const markerIcon = getIconPath(isGymboree() ? 'marker-icon-gym' : 'marker-icon');
-    const backgroundColor = !isGymboree() ? '#edf5fb' : '#fef4e8';
     return (
       <StoreLocatorSearch
         {...this.props}
         markerIcon={markerIcon}
         searchIcon={searchIcon}
         loadStoresByCoordinates={this.loadStoresByCoordinates}
-        backgroundColor={backgroundColor}
       />
     );
   }
