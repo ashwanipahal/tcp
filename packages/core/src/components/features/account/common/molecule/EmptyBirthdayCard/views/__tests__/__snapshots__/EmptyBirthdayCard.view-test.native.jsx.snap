@@ -16,7 +16,6 @@ exports[`EmptyBirthdayCard should render correctly for edit view 1`] = `
       fontFamily="secondary"
       fontSize="fs14"
       mobileFontFamily="secondary"
-      text="Add a child"
     />
   </Styled(View)>
 </Styled(View)>

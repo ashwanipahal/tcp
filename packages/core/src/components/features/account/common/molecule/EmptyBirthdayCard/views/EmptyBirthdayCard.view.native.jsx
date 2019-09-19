@@ -7,8 +7,9 @@ import { EmptyContainer, Row } from '../styles/EmptyBirthdayCard.style.native';
  * This component will render Empty Birthday Card
  * @param {object} props for EmptyBirthdayCard component
  * @param { string } props.view
+ * @param { object } props.labels
  */
-export const EmptyBirthdayCard = ({ view }) => {
+export const EmptyBirthdayCard = ({ labels, view }) => {
   if (view === 'edit') {
     return (
       <EmptyContainer>
@@ -25,7 +26,7 @@ export const EmptyBirthdayCard = ({ view }) => {
             fontSize="fs14"
             mobileFontFamily="secondary"
             fontFamily="secondary"
-            text="Add a child"
+            text={labels.lbl_profile_addChildBirthdayCta}
             color="gray.900"
           />
         </Row>

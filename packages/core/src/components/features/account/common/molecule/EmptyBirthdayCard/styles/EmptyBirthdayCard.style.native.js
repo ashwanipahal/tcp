@@ -16,6 +16,8 @@ const Row = styled.View`
   flex-direction: row;
   align-items: center;
   justify-content: center;
+  border-bottom-color: ${props => props.theme.colorPalette.black};
+  border-bottom-width: 1;
 `;
 
 export { EmptyContainer, Row };
