@@ -540,6 +540,10 @@ export const parseStoreHours = hoursOfOperation => {
   return result;
 };
 
+export const parseBoolean = bool => {
+  return bool === true || bool === '1' || (bool || '').toUpperCase() === 'TRUE';
+};
+
 export default {
   getPromotionalMessage,
   getIconPath,
@@ -565,4 +569,5 @@ export default {
   isValidDate,
   formatDate,
   parseStoreHours,
+  parseBoolean,
 };
