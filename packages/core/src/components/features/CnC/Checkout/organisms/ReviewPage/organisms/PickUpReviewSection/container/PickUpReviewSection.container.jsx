@@ -9,10 +9,7 @@ import CHECKOUT_SELECTORS, {
   isPickupAlt,
 } from '../../../../../container/Checkout.selector';
 
-function mapStateToProps(state) {
-  const pickUpContactPerson = getPickupValues(state);
-  const pickUpAlternatePerson = getPickupAltValues(state);
-
+const mapStateToProps = state => {
   // const venmoEnabled = checkoutStoreView.isVenmoNonceActive(state);
   // if (venmoEnabled && !checkoutStoreView.isPickupValuesAvailable(state)) {
   //   const initialPickupValues = checkoutStoreView.getInitialPickupSectionValues(state);
@@ -20,20 +17,17 @@ function mapStateToProps(state) {
   //   pickUpContactPerson = initialPickupValues && initialPickupValues.pickUpContact;
   // }
   // eslint-disable-next-line extra-rules/no-commented-out-code
-  // console.log('BAG_SELECTORS getCartStores(state)', BAG_SELECTORS.getCartStores(state).toJS());
-  // eslint-disable-next-line extra-rules/no-commented-out-code
-  // console.log('BAG_SELECTORS getCartstLocId', BAG_SELECTORS.getCartStoresFour(state));
-  // eslint-disable-next-line extra-rules/no-commented-out-code
-  // console.log('BAG_SELECTORS getCartStoresTwo', BAG_SELECTORS.getCartStoresTwo(state));
+  const pickUpContactPerson = getPickupValues(state);
+  const pickUpAlternatePerson = getPickupAltValues(state);
+
   return {
-    // adding items for showing Pickup store data
     cartStores: BAG_SELECTORS.getCartStoresToJs(state),
     pickUpContactPerson,
     pickUpLabels: CHECKOUT_SELECTORS.getPickUpContactFormLabels(state),
     pickUpAlternatePerson,
     isHasPickUpAlternatePerson: isPickupAlt(state),
   };
-}
+};
 
 export default connect(
   mapStateToProps,

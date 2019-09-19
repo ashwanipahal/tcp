@@ -1,23 +1,19 @@
 import { css } from 'styled-components';
 
 const styles = css`
-  .container {
-    width: 100%;
-  }
-
   .pickup-store-details {
-    padding: 20px;
+    padding: ${props => props.theme.spacing.APP_LAYOUT_SPACING.XS};
     display: flex;
     flex-direction: 'row';
-    border: solid 1px #979797;
-    background-color: #ffffff;
+    border: solid 1px ${props => props.theme.colors.BORDER.NORMAL};
+    background-color: ${props => props.theme.colors.WHITE};
   }
   .pickup-store-icon {
-    padding-top: 4px;
-    margin-right: 20px;
+    padding-top: ${props => props.theme.spacing.ELEM_SPACING.XXS};
+    margin-right: ${props => props.theme.spacing.APP_LAYOUT_SPACING.XS};
   }
   .pickup-store-margin {
-    margin-top: 12px;
+    margin-top: ${props => props.theme.spacing.ELEM_SPACING.SM};
   }
 `;
 
