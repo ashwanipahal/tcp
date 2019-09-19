@@ -40,6 +40,7 @@ const PointsHistoryList = ({ className, labels, pointHistory }) => {
               fontFamily="secondary"
               className="list-fontsizes"
               fontWeight="semibold"
+              textAlign="center"
             >
               {labels.lbl_common_points_earned}
             </BodyCopy>

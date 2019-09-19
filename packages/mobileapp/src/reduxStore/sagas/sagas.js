@@ -36,6 +36,7 @@ import ProductTabListSaga from '@tcp/core/src/components/common/organisms/Produc
 import GetCandidSaga from '@tcp/core/src/components/common/molecules/GetCandid/container/GetCandid.saga';
 import GiftCardsSaga from '@tcp/core/src/components/features/CnC/Checkout/organisms/GiftCardsSection/container/GiftCards.saga';
 import MailingAddressSaga from '@tcp/core/src/components/features/account/MyProfile/organism/MailingInformation/container/MailingAddress.saga';
+import MyFavoriteStoreSaga from '@tcp/core/src/components/features/account/MyProfile/organism/MyFavoriteStore/container/MyFavoriteStore.saga';
 import SearchPageSaga from '@tcp/core/src/components/features/browse/SearchDetail/container/SearchDetail.saga';
 import HomePageSaga from '../../components/features/content/HomePage/container/HomePage.saga';
 
@@ -80,5 +81,6 @@ export default function* rootSaga() {
     MailingAddressSaga(),
     SearchPageSaga(),
     ProductDetailSaga(),
+    MyFavoriteStoreSaga(),
   ]);
 }
