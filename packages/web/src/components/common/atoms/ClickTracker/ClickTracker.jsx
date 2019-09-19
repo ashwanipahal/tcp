@@ -3,6 +3,23 @@ import { string, node, func } from 'prop-types';
 import { connect } from 'react-redux';
 import { useClickTracking } from '@tcp/core/src/analytics';
 
+/**
+ * This component can be used for dispatching click
+ * tracking actions when it or its associated ref
+ * element receives click events. This can be used with
+ * or without children. If used without children, a ref
+ * should be passed to it.
+ *
+ * @example
+ * <ClickTracker name="brand_logo">
+ *   <BrandLogo />
+ * </ClickTracker>
+ *
+ * @example
+ * const logo = useRef()
+ * <BrandLogo ref={logo} />
+ * <ClickTracker name="brand_logo" ref={logo} />
+ */
 const ClickTracker = forwardRef(({ as: Component, name, children, dispatch, ...props }, ref) => {
   const track = useClickTracking(dispatch);
   const handleClick = () => track(name);
