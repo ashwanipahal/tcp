@@ -590,8 +590,6 @@ exports[`#ThemeWrapper.container should render correctly 1`] = `
         },
       },
       "zindex": Object {
-        "zCondensedHeader": 100,
-        "zCondensedHeaderSearch": 200,
         "zDrawer": 1200,
         "zEnlargedImage": 100,
         "zGoogleAutosuggest": 100000,
