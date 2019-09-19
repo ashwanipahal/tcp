@@ -98,6 +98,13 @@ function* getAddressData(formData) {
   return existingAddress ? existingAddress.addressId : shippingDetails.onFileAddressId;
 }
 
+function addressIdToString(addressId) {
+  if (addressId) {
+    return addressId.toString();
+  }
+  return null;
+}
+
 export function* submitBillingData(formData, address, loadUpdatedCheckoutValues) {
   let res;
   let cardDetails;
@@ -116,7 +123,8 @@ export function* submitBillingData(formData, address, loadUpdatedCheckoutValues)
     res = yield call(updateAddress, {
       checkoutUpdateOnly: true,
       addressKey: cardDetails.addressKey,
-      addressId: cardDetails.addressId || cardDetails.billingAddressId,
+      addressId:
+        addressIdToString(cardDetails.addressId) || addressIdToString(cardDetails.billingAddressId),
     });
     res = res.body;
   } else if (formData.address.onFileAddressKey && !isGuestUser) {

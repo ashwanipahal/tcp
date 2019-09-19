@@ -94,7 +94,7 @@ exports[`Shipping Page should render correctly with component did update and get
         "address": Object {
           "country": "US",
         },
-        "onFileAddressKey": null,
+        "onFileAddressKey": "123",
         "saveToAddressBook": false,
         "shipmentMethods": Object {
           "shippingMethodId": null,
@@ -198,7 +198,7 @@ exports[`Shipping Page should render correctly with component did update and get
         "address": Object {
           "country": "US",
         },
-        "onFileAddressKey": null,
+        "onFileAddressKey": "123",
         "saveToAddressBook": false,
         "shipmentMethods": Object {
           "shippingMethodId": null,

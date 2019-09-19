@@ -62,4 +62,5 @@ export {
   sanitizeEntity,
   formatPhone,
   parseStoreHours,
+  parseBoolean,
 } from './utils';

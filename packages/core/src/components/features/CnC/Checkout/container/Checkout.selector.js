@@ -474,7 +474,7 @@ function getBillingValues(state) {
 
 function getDetailedCreditCardById(state, id) {
   return JSON.parse(JSON.stringify(state.PaymentReducer.get('cardList'))).find(
-    ({ creditCardId }) => (creditCardId && creditCardId.toString()) === id
+    ({ creditCardId }) => (creditCardId && creditCardId.toString()) === id.toString()
   );
 }
 
