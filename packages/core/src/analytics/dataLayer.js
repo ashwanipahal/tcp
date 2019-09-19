@@ -20,7 +20,7 @@
 /* eslint-disable extra-rules/no-commented-out-code */
 export default {
   eventData: {},
-  // TODO: For these  values, determine if we need them.
+  // TODO: For these values, determine if we need them.
   // _dataManager.eventData.errorFields
   // _dataManager.eventData.eventName
   // _dataManager.eventData.featureName
@@ -39,7 +39,7 @@ export default {
   cartType: null, // _dataManager.cart.type
   checkoutType: null, // _dataManager.cart.checkoutType
   countryId: null, // _dataManager.page.countryId
-  currencyCode: 'USD', // _dataManager.page.currencyCode
+  currencyCode: null, // _dataManager.page.currencyCode
   customerEmail: null, // _dataManager.profile.emailAddress
   customerId: null, // _dataManager.profile.customerId
   customerType: null, // _dataManager.profile.customerType
@@ -51,7 +51,7 @@ export default {
   listingFilterList: null, // _dataManager.productListing.fullFilterList
   listingSortList: null, // _dataManager.productListing.fullFilterSortList
   listingSubCategory: null, // _dataManager.productListing.subCategoryName
-  locale: 'en-US', // _dataManager.page.locale
+  locale: null, // _dataManager.page.locale
   orderId: null, // _dataManager.order.id
   orderSubtotal: null, // _dataManager.order.roundedSubtotal
   pageName: null, // _dataManager.page.name
