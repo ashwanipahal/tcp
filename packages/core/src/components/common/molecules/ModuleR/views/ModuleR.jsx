@@ -89,7 +89,7 @@ class ModuleR extends React.PureComponent {
     This method is to return the Image grid item
   */
   getImageGrid = selectedProductList => {
-    const { bannerPosition } = this.props;
+    const { promoBanner, bannerPosition } = this.props;
     return (
       <Row className="image-items-container">
         {selectedProductList.map((productItem, index) => {
@@ -103,6 +103,7 @@ class ModuleR extends React.PureComponent {
               <ImageGridCol
                 key={uniqueId}
                 imageIndex={index}
+                promoBanner={promoBanner}
                 bannerPosition={bannerPosition}
                 colSize={{
                   small: 2,
