@@ -16,7 +16,7 @@ export function* ChangePassword({ payload }) {
     if (error && error.errorResponse) {
       return yield put(changePasswordError(error.errorResponse));
     }
-    if (error.response.body) {
+    if (error && error.response.body) {
       return yield put(changePasswordError(error.response.body.errors[0]));
     }
   }
