@@ -10,10 +10,6 @@ export const getCurrentCountry = state => {
   );
 };
 
-export const getStoreInfo = state => {
-  return state[STORE_LOCATOR_REDUCER_KEY];
-};
-
 export const getSuggestedStoreById = (state, storeId) => {
   return state[STORE_LOCATOR_REDUCER_KEY].get('suggestedStores').find(
     stores => stores.basicInfo.id === storeId
