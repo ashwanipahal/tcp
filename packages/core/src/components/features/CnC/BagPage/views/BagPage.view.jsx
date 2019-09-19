@@ -8,6 +8,7 @@ import Col from '../../../../common/atoms/Col';
 import BodyCopy from '../../../../common/atoms/BodyCopy';
 import AddedToBagActions from '../../AddedToBagActions';
 import CnCTemplate from '../../common/organism/CnCTemplate';
+import BAGPAGE_CONSTANTS from '../BagPage.constants';
 
 import styles, { addedToBagActionsStyles } from '../styles/BagPage.style';
 
@@ -26,7 +27,7 @@ class BagPageView extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
-      activeSection: 'BAG',
+      activeSection: BAGPAGE_CONSTANTS.BAG_STATE,
     };
   }
 
@@ -37,13 +38,15 @@ class BagPageView extends React.Component {
     return (
       <React.Fragment>
         <div
-          className={`bag-section ${activeSection === 'BAG' ? 'activeSection' : 'inActiveSection'}`}
+          className={`bag-section ${
+            activeSection === BAGPAGE_CONSTANTS.BAG_STATE ? 'activeSection' : 'inActiveSection'
+          }`}
         >
           <ProductTileWrapper bagLabels={labels} pageView={myBag} />
         </div>
         <div
           className={`save-for-later-section ${
-            activeSection === 'SFL' ? 'activeSection' : 'inActiveSection'
+            activeSection === BAGPAGE_CONSTANTS.SFL_STATE ? 'activeSection' : 'inActiveSection'
           }`}
         >
           <BodyCopy
@@ -103,14 +106,16 @@ class BagPageView extends React.Component {
             colSize={{ small: 3, medium: 4, large: 6 }}
             className="left-sec"
             onClick={() => {
-              this.handleChangeActiveSection('BAG');
+              this.handleChangeActiveSection(BAGPAGE_CONSTANTS.BAG_STATE);
             }}
           >
             <Heading
               variant="h6"
               fontSize="fs16"
               color="text.primary"
-              className={`bag-header ${activeSection === 'BAG' ? 'activeHeader' : ''}`}
+              className={`bag-header ${
+                activeSection === BAGPAGE_CONSTANTS.BAG_STATE ? 'activeHeader' : ''
+              }`}
             >
               {`${labels.bagHeading} (${totalCount})`}
             </Heading>
@@ -119,7 +124,7 @@ class BagPageView extends React.Component {
             colSize={{ small: 3, medium: 4, large: 6 }}
             className="left-sec"
             onClick={() => {
-              this.handleChangeActiveSection('SFL');
+              this.handleChangeActiveSection(BAGPAGE_CONSTANTS.SFL_STATE);
             }}
           >
             <Heading
@@ -127,7 +132,7 @@ class BagPageView extends React.Component {
               fontSize="fs16"
               color="text.primary"
               className={`bag-header bag-header-sfl ${
-                activeSection === 'SFL' ? 'activeHeader' : ''
+                activeSection === BAGPAGE_CONSTANTS.SFL_STATE ? 'activeHeader' : ''
               }`}
             >
               {`${labels.savedLaterButton} (${sflItems.size})`}
