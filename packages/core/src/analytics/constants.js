@@ -6,10 +6,9 @@ import { zipObj } from '../utils/utils';
  * @type {Object}
  * @see https://bitbucket.org/TCP_BitBucket_Admin/tcp_omniture_-_marketing/src/master/src/global/data/constants/event-names.js
  */
-export const basicEventNames = {
-  linkClick: 'trackLinkEvent',
-  pageView: 'trackPageView',
-  navigationClick: 'navigation click',
+export const BasicEventName = {
+  LINK_CLICK: 'trackLinkEvent',
+  PAGE_VIEW: 'trackPageView',
 };
 
 /**
@@ -17,7 +16,7 @@ export const basicEventNames = {
  * @type {Object}
  * @see https://bitbucket.org/TCP_BitBucket_Admin/tcp_omniture_-_marketing/src/master/src/global/data/constants/endpoints.js
  */
-export const serviceEventNames = zipObj([
+export const ServiceEventName = zipObj([
   'acceptOrDeclineWIC',
   'addAddress',
   'addCheckout',

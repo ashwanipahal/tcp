@@ -24,42 +24,26 @@
  */
 
 import TrackingEvent from './TrackingEvent';
+import { BasicEventName } from './constants';
 
 function EventDefinition(action /* , prevState, nextState */) {
   return { ...action.payload };
 }
 
 export function trackPageView(eventDef = EventDefinition) {
-  return (...args) => {
-    const { name } = eventDef(...args);
-    return TrackingEvent({
+  return (...args) =>
+    TrackingEvent({
       hitType: 'pageView',
-      eventName: 'trackPageView',
-      name,
-      // TODO: Fill in rest of payload
+      eventName: BasicEventName.PAGE_VIEW,
+      ...eventDef(...args),
     });
-  };
 }
 
 export function trackClick(eventDef = EventDefinition) {
-  return (...args) => {
-    const { name } = eventDef(...args);
-    return TrackingEvent({
+  return (...args) =>
+    TrackingEvent({
       hitType: 'click',
-      eventName: 'trackLinkEvent',
-      name,
-      // TODO: Fill in rest of payload
+      eventName: BasicEventName.LINK_CLICK,
+      ...eventDef(...args),
     });
-  };
-}
-
-export function trackServiceResponse(eventDef = EventDefinition) {
-  return (...args) => {
-    const { name } = eventDef(...args);
-    return TrackingEvent({
-      hitType: 'serviceResponse',
-      name,
-      // TODO: Fill in rest of payload
-    });
-  };
 }
