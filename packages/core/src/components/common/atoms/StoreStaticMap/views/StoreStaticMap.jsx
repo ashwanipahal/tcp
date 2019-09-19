@@ -4,6 +4,14 @@ import Image from '@tcp/core/src/components/common/atoms/Image';
 import constants from '../StoreStaticMap.constants';
 import { isMobileApp } from '../../../../../utils';
 
+/**
+ *
+ * @param {object} coordinates - coordinates object with latitude & longitude
+ * @param {number} zoomLevel - zoom level for map
+ * @param {string} mapUpdatedSize - map size
+ * @param {string} markers - store markers to show on map
+ * @param {string} googleApiKey - google api key
+ */
 const staticMapUrlGenerator = ({
   coordinates,
   zoomLevel,
@@ -17,6 +25,13 @@ const staticMapUrlGenerator = ({
   return `${constants.GOOGLE_STATIC_MAPS_URL}?${params}`;
 };
 
+/**
+ *
+ * @param {array} storesList - suggested store list stored in redux state.
+ * @param {object} centeredStore - store detail to marked centered on the map
+ * @param {number} defaultZoom - zoom parameter
+ * @param {string} centeredStoreId - selected store id
+ */
 const mapConfig = ({ storesList, centeredStore, defaultZoom, centeredStoreId }) => {
   const config = {
     mapCoordinates: '',
@@ -41,23 +56,37 @@ const mapConfig = ({ storesList, centeredStore, defaultZoom, centeredStoreId }) 
   return config;
 };
 
+const renderForMobileApp = mapImageUrl => <Image url={mapImageUrl} height="400px" width="100%" />;
+
+/**
+ *
+ * @param {Object} props - Props passed to show to Google static maps
+ * @param {string} props.storesList - suggested store list stored in redux state.
+ * @param {string} props.centeredStoreId - selected store id
+ * @param {number} props.defaultZoom - zoom parameter
+ * @param {bool} props.isCanada - check for  canada geo
+ * @param {bool} props.isMobile - check for mobile view
+ * @param {string} props.apiKey - google api key
+ */
 const StoreStaticMap = props => {
-  const { storesList, centeredStoreId, defaultZoom, isCanada, isMobile, config } = props;
+  const { storesList, centeredStoreId, defaultZoom, isCanada, isMobile, apiKey } = props;
   const mapSize = constants.MAP_DIMENSION_ON_LOAD[isMobile || isMobileApp() ? 'mobile' : 'desktop'];
   const [mapUpdatedSize, setMapUpdateSize] = useState(mapSize);
+  const [imageLoaded, setImageLoadingState] = useState(false);
   const refMapContainer = React.createRef();
   useEffect(() => {
     let containerWidth = 0;
-    if (refMapContainer && refMapContainer.current) {
+    if (refMapContainer && refMapContainer.current && !isMobileApp()) {
       containerWidth = refMapContainer.current.clientWidth;
       setMapUpdateSize(`${containerWidth}x${mapSize.split('x')[1]}`);
+      setImageLoadingState(true);
     }
   });
   const centeredStore =
     storesList && storesList.find(store => store.basicInfo.id === centeredStoreId);
   let coordinates = isCanada ? constants.MAP_DEFAULT_LAT_LNG_CA : constants.MAP_DEFAULT_LAT_LNG_US;
   let zoomLevel = constants.MAP_MIN_ZOOM_LEVEL;
-  const googleApiKey = config && config.googleApiKey;
+  const googleApiKey = apiKey;
   let markers = '';
 
   if (storesList && storesList.length > 0) {
@@ -79,11 +108,12 @@ const StoreStaticMap = props => {
     markers,
     googleApiKey,
   });
+
   return isMobileApp() ? (
-    <Image url={staticmapUrl} height="400px" width="100%" />
+    renderForMobileApp(staticmapUrl)
   ) : (
     <div ref={refMapContainer} className="google-map">
-      <Image url={staticmapUrl} alt="Google Map" title="Stores" />
+      {imageLoaded ? <Image url={staticmapUrl} alt="Google Map" title="Stores" /> : null}
     </div>
   );
 };
@@ -94,9 +124,7 @@ StoreStaticMap.propTypes = {
   defaultZoom: PropTypes.string,
   isCanada: PropTypes.bool,
   isMobile: PropTypes.bool,
-  config: PropTypes.shape({
-    googleApiKey: PropTypes.string.isRequired,
-  }),
+  apiKey: PropTypes.string.isRequired,
 };
 
 StoreStaticMap.defaultProps = {
@@ -105,7 +133,6 @@ StoreStaticMap.defaultProps = {
   defaultZoom: '',
   isMobile: false,
   isCanada: false,
-  config: {},
 };
 
 export default StoreStaticMap;

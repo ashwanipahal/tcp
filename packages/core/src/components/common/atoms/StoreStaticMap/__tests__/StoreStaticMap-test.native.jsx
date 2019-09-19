@@ -4,7 +4,7 @@ import StoreStaticMap from '../views/StoreStaticMap';
 import list from '../stories/storesList';
 
 describe('StoreStaticMap component', () => {
-  const config = { googleApiKey: 'AIzaSyCzOG6DZLR-haS8xvPOr73KkIWPMBbTVI8' };
+  const apiKey = 'AIzaSyCzOG6DZLR-haS8xvPOr73KkIWPMBbTVI8';
   it('StoreStaticMap component renders correctly without props', () => {
     const component = shallow(<StoreStaticMap />);
     expect(component).toMatchSnapshot();
@@ -13,7 +13,7 @@ describe('StoreStaticMap component', () => {
   it('StoreStaticMap component renders correctly with props', () => {
     const props = {
       storesList: list,
-      config,
+      apiKey,
     };
     const component = shallow(<StoreStaticMap {...props} />);
     expect(component).toMatchSnapshot();
@@ -21,7 +21,7 @@ describe('StoreStaticMap component', () => {
   it('StoreStaticMap component renders correctly with map', () => {
     const props = {
       storesList: list,
-      config,
+      apiKey,
     };
     const component = shallow(<StoreStaticMap {...props} />);
     expect(component).toHaveLength(1);
@@ -30,7 +30,7 @@ describe('StoreStaticMap component', () => {
     const props = {
       storesList: list,
       centeredStoreId: '110850',
-      config,
+      apiKey,
     };
     const component = shallow(<StoreStaticMap {...props} />);
     expect(component).toHaveLength(1);

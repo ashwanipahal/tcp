@@ -5,7 +5,7 @@ import StoreStaticMap from '../views/StoreStaticMap';
 import list from './storesList';
 import { getViewportInfo } from '../../../../../utils';
 
-const StoreStaticMapTest = ({ storesList, isCanada, isMobile, config, centeredStoreId = '' }) => {
+const StoreStaticMapTest = ({ storesList, isCanada, isMobile, apiKey, centeredStoreId = '' }) => {
   const [show, setShow] = useState(false);
   return (
     <div>
@@ -19,7 +19,7 @@ const StoreStaticMapTest = ({ storesList, isCanada, isMobile, config, centeredSt
           storesList={storesList}
           isCanada={isCanada}
           isMobile
-          config={config}
+          apiKey={apiKey}
           centeredStoreId={centeredStoreId}
         />
       ) : null}
@@ -31,9 +31,7 @@ StoreStaticMapTest.propTypes = {
   centeredStoreId: PropTypes.string,
   isCanada: PropTypes.bool,
   isMobile: PropTypes.bool,
-  config: PropTypes.shape({
-    googleApiKey: PropTypes.string.isRequired,
-  }),
+  apiKey: PropTypes.string.isRequired,
 };
 
 StoreStaticMapTest.defaultProps = {
@@ -41,15 +39,14 @@ StoreStaticMapTest.defaultProps = {
   centeredStoreId: '',
   isMobile: false,
   isCanada: false,
-  config: {},
 };
 
-const config = { googleApiKey: 'AIzaSyCzOG6DZLR-haS8xvPOr73KkIWPMBbTVI8' };
+const apiKey = 'AIzaSyCzOG6DZLR-haS8xvPOr73KkIWPMBbTVI8';
 
 storiesOf('StoreStaticMap', module)
   .add('GoogleMap-StoreList', () => {
     return (
-      <StoreStaticMap storesList={list} isMobile={getViewportInfo().isMobile} config={config} />
+      <StoreStaticMap storesList={list} isMobile={getViewportInfo().isMobile} apiKey={apiKey} />
     );
   })
   .add('GoogleMap-Store', () => {
@@ -58,16 +55,16 @@ storiesOf('StoreStaticMap', module)
         storesList={list}
         isMobile={getViewportInfo().isMobile}
         centeredStoreId="110850"
-        config={config}
+        apiKey={apiKey}
       />
     );
   })
   .add('GoogleMap-NoList', () => {
-    return <StoreStaticMap isMobile={getViewportInfo().isMobile} config={config} />;
+    return <StoreStaticMap isMobile={getViewportInfo().isMobile} apiKey={apiKey} />;
   })
   .add('GoogleMap-StoreList-MobileView', () => {
     return (
-      <StoreStaticMapTest storesList={list} isMobile={getViewportInfo().isMobile} config={config} />
+      <StoreStaticMapTest storesList={list} isMobile={getViewportInfo().isMobile} apiKey={apiKey} />
     );
   })
   .add('GoogleMap-Store-MobileView', () => {
@@ -76,7 +73,7 @@ storiesOf('StoreStaticMap', module)
         storesList={list}
         isMobile={getViewportInfo().isMobile}
         centeredStoreId="110850"
-        config={config}
+        apiKey={apiKey}
       />
     );
   });

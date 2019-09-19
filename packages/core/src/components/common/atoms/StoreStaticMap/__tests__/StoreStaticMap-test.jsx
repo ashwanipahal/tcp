@@ -5,7 +5,7 @@ import list from '../stories/storesList';
 import { isCanada, getViewportInfo } from '../../../../../utils';
 
 describe('StoreStaticMap component', () => {
-  const config = { googleApiKey: 'AIzaSyCzOG6DZLR-haS8xvPOr73KkIWPMBbTVI8' };
+  const apiKey = 'AIzaSyCzOG6DZLR-haS8xvPOr73KkIWPMBbTVI8';
   it('StoreStaticMap component renders correctly without props', () => {
     const component = shallow(<StoreStaticMap />);
     expect(component).toMatchSnapshot();
@@ -16,7 +16,7 @@ describe('StoreStaticMap component', () => {
       storesList: list,
       isCanada,
       isMobile: getViewportInfo().isMobile,
-      config,
+      apiKey,
     };
     const component = shallow(<StoreStaticMap {...props} />);
     expect(component).toMatchSnapshot();
@@ -26,7 +26,7 @@ describe('StoreStaticMap component', () => {
       storesList: list,
       isCanada,
       isMobile: getViewportInfo().isMobile,
-      config,
+      apiKey,
     };
     const component = shallow(<StoreStaticMap {...props} />);
     expect(component).toHaveLength(1);
@@ -37,7 +37,7 @@ describe('StoreStaticMap component', () => {
       isCanada,
       isMobile: getViewportInfo().isMobile,
       centeredStoreId: '110850',
-      config,
+      apiKey,
     };
     const component = shallow(<StoreStaticMap {...props} />);
     expect(component).toHaveLength(1);
