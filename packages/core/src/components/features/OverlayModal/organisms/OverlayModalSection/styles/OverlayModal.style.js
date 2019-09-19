@@ -42,7 +42,10 @@ const StyledModal = css`
     width: 374px;
 
     @media ${props => props.theme.mediaQuery.medium} {
-      top: 64px;
+      top: 62px;
+    }
+    @media ${props => props.theme.mediaQuery.large} {
+      top: 71px;
     }
   }
   .modal__bar {

@@ -26,21 +26,26 @@ class Header extends React.PureComponent {
     this.removeScrollListener();
   }
 
+  getStickyPosition = () => {
+    const header = document.getElementById('header-middle-nav-bar');
+    return header && header.offsetTop;
+  };
+
   addScrollListener = () => {
-    window.addEventListener('scroll', this.throttledOnScroll);
+    const stickyPos = this.getStickyPosition();
+    window.addEventListener('scroll', throttle(this.handleScroll.bind(this, stickyPos), 100));
   };
 
   removeScrollListener = () => {
-    window.removeEventListener('scroll', this.throttledOnScroll);
+    const stickyPos = this.getStickyPosition();
+    window.removeEventListener('scroll', throttle(this.handleScroll.bind(this, stickyPos), 100));
   };
 
   setSearchState = (currentStatus, cb = null) => {
     this.setState({ isSearchOpen: currentStatus }, cb ? cb() : () => {});
   };
 
-  handleScroll = () => {
-    const header = document.getElementById('header-middle-nav-bar');
-    const sticky = header && header.offsetTop;
+  handleScroll = sticky => {
     /**
      * Note:
      * 1. Condensed header is 'stuck' if scrolled past Navigation bar
@@ -59,9 +64,6 @@ class Header extends React.PureComponent {
       this.setState({ showCondensedHeader: false });
     }
   };
-
-  // eslint-disable-next-line
-  throttledOnScroll = throttle(this.handleScroll, 100);
 
   render() {
     const {

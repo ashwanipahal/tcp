@@ -65,7 +65,7 @@ export default css`
 
   .condensed-search {
     position: fixed;
-    z-index: ${props => props.theme.zindex.zCondensedHeaderSearch};
+    z-index: ${props => props.theme.zindex.zModule};
     top: 14px;
     width: 300px;
 

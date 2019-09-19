@@ -9,14 +9,14 @@ export default css`
     left: 0;
     right: 0;
     top: 0;
-    z-index: ${props => props.theme.zindex.zCondensedHeader};
+    z-index: ${props => props.theme.zindex.zEnlargedImage};
     background-color: ${props => props.theme.colorPalette.white};
     text-align: center;
     width: 100%;
     margin: 0;
     @media ${props => props.theme.mediaQuery.large} {
       padding: 0 14px;
-      border-bottom: 1px solid ${props => props.theme.colorPalette.gray[1400]};
+      border-bottom: 1px solid ${props => props.theme.colorPalette.gray[1300]};
     }
 
     @media ${props => props.theme.mediaQuery.mediumOnly} {
@@ -41,7 +41,7 @@ export default css`
     }
 
     .tcp-drawer__isOpen{
-      top: 316px;
+      display: none;
     }
   }
 
@@ -152,9 +152,9 @@ export default css`
       top: 70px;
       left: -50%;
       width: 200%;
-      z-index: ${props => props.theme.zindex.zCondensedHeader};
+      z-index: ${props => props.theme.zindex.zEnlargedImage};
       height: 1px;
-      background-color: ${props => props.theme.colorPalette.gray[1400]};
+      background-color: ${props => props.theme.colorPalette.gray[1300]};
     }
 
   }
