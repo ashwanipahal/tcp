@@ -19,7 +19,7 @@ import {
   ModuleJ,
   ModuleR,
 } from '@tcp/core/src/components/common/molecules';
-import InitialPropsHOC from '../../../../common/hoc/InitialPropsHOC/InitialPropsHOC';
+import InitialPropsHOC from '@tcp/core/src/components/common/hoc/InitialPropsHOC/InitialPropsHOC.native';
 import HeaderPromo from '../../../../common/molecules/HeaderPromo';
 import { HeaderPromoContainer } from '../HomePage.style';
 
