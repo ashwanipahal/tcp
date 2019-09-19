@@ -28,7 +28,7 @@ exports[`MyProfileTile should render correctly when title and ctaTitle is not pa
   spacingStyles="margin-bottom-XXXL"
 >
   <Styled(View)
-    spacingStyles=""
+    spacingStyles="margin-bottom-LRG"
   />
 </Styled(View)>
 `;

@@ -2,6 +2,7 @@
 
 exports[`BirthdaySaving component should render correctly 1`] = `
 <MyProfileTile
+  birthdaySaving={false}
   ctaLink="accountOverviewMobile"
   ctaTitle=""
   dataLocator="pi-addbirthdayinfo"

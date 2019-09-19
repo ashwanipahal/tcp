@@ -7,4 +7,8 @@ const WrapLayout = styled.View`
   justify-content: space-between;
 `;
 
-export default WrapLayout;
+const WrapItem = styled.View`
+  width: 48%;
+`;
+
+export { WrapLayout, WrapItem };

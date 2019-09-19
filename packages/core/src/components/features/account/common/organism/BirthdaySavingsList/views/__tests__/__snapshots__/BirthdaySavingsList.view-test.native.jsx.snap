@@ -2,14 +2,17 @@
 
 exports[`BirthdaySavingsList component should renders correctly when childrenBirthdays are not present 1`] = `
 <View>
-  <Styled(Styled(BodyCopy))
-    fontSize="fs14"
-    mobileFontFamily="secondary"
-    spacingStyles="margin-bottom-XXL margin-top-XXL"
-    text="Add up to 4 kids’ birthdays to your account and receive special savings during their birthday month!"
+  <InfoMessage
+    labels={
+      Object {
+        "lbl_profile_birthday_saving_info": "Add up to 4 kids’ birthdays to your account and receive special savings during their birthday month!",
+        "lbl_profile_birthday_savings": "Birthday Savings",
+        "lbl_profile_personal_info_back": "back",
+      }
+    }
   />
   <Styled(View)>
-    <View>
+    <Styled(View)>
       <EmptyBirthdayCard
         labels={
           Object {
@@ -20,8 +23,8 @@ exports[`BirthdaySavingsList component should renders correctly when childrenBir
         }
         view="edit"
       />
-    </View>
-    <View>
+    </Styled(View)>
+    <Styled(View)>
       <EmptyBirthdayCard
         labels={
           Object {
@@ -32,8 +35,8 @@ exports[`BirthdaySavingsList component should renders correctly when childrenBir
         }
         view="edit"
       />
-    </View>
-    <View>
+    </Styled(View)>
+    <Styled(View)>
       <EmptyBirthdayCard
         labels={
           Object {
@@ -44,8 +47,8 @@ exports[`BirthdaySavingsList component should renders correctly when childrenBir
         }
         view="edit"
       />
-    </View>
-    <View>
+    </Styled(View)>
+    <Styled(View)>
       <EmptyBirthdayCard
         labels={
           Object {
@@ -56,29 +59,42 @@ exports[`BirthdaySavingsList component should renders correctly when childrenBir
         }
         view="edit"
       />
-    </View>
+    </Styled(View)>
   </Styled(View)>
 </View>
 `;
 
-exports[`BirthdaySavingsList component should renders correctly when childrenBirthdays are not present with read view 1`] = `""`;
+exports[`BirthdaySavingsList component should renders correctly when childrenBirthdays are not present with read view 1`] = `
+<InfoMessage
+  labels={
+    Object {
+      "lbl_profile_birthday_saving_info": "Add up to 4 kids’ birthdays to your account and receive special savings during their birthday month!",
+      "lbl_profile_birthday_savings": "Birthday Savings",
+      "lbl_profile_personal_info_back": "back",
+    }
+  }
+/>
+`;
 
 exports[`BirthdaySavingsList component should renders correctly when childrenBirthdays are present 1`] = `
 <View>
-  <Styled(Styled(BodyCopy))
-    fontSize="fs14"
-    mobileFontFamily="secondary"
-    spacingStyles="margin-bottom-XXL margin-top-XXL"
-    text="Add up to 4 kids’ birthdays to your account and receive special savings during their birthday month!"
+  <InfoMessage
+    labels={
+      Object {
+        "lbl_profile_birthday_saving_info": "Add up to 4 kids’ birthdays to your account and receive special savings during their birthday month!",
+        "lbl_profile_birthday_savings": "Birthday Savings",
+        "lbl_profile_personal_info_back": "back",
+      }
+    }
   />
   <Styled(View)>
-    <View>
+    <Styled(View)>
       <BirthdayCard
         childId="12345"
         view="edit"
       />
-    </View>
-    <View>
+    </Styled(View)>
+    <Styled(View)>
       <EmptyBirthdayCard
         labels={
           Object {
@@ -89,8 +105,8 @@ exports[`BirthdaySavingsList component should renders correctly when childrenBir
         }
         view="edit"
       />
-    </View>
-    <View>
+    </Styled(View)>
+    <Styled(View)>
       <EmptyBirthdayCard
         labels={
           Object {
@@ -101,8 +117,8 @@ exports[`BirthdaySavingsList component should renders correctly when childrenBir
         }
         view="edit"
       />
-    </View>
-    <View>
+    </Styled(View)>
+    <Styled(View)>
       <EmptyBirthdayCard
         labels={
           Object {
@@ -113,7 +129,7 @@ exports[`BirthdaySavingsList component should renders correctly when childrenBir
         }
         view="edit"
       />
-    </View>
+    </Styled(View)>
   </Styled(View)>
 </View>
 `;

@@ -8,8 +8,7 @@ const EmptyContainer = styled.View`
   align-items: center;
   justify-content: space-around;
   height: ${constants.BIRTHDAY_CARD_HEIGHT};
-  width: 162px;
-  margin-bottom: ${props => props.theme.spacing.ELEM_SPACING.LRG};
+  margin-bottom: ${props => props.theme.spacing.ELEM_SPACING.MED};
 `;
 
 const Row = styled.View`

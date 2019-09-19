@@ -2,12 +2,11 @@ import styled from 'styled-components/native';
 import constants from '../../../organism/BirthdaySavingsList/BirthdaySavingsList.constants';
 
 const BirthdayCardContainer = styled.View`
-  display: flex;
   border: 1px solid ${props => props.theme.colorPalette.gray[900]};
-  position: relative;
-  padding: 6px 8px 8px;
-  width: 162px;
+  padding: 6px ${props => props.theme.spacing.ELEM_SPACING.XS}
+    ${props => props.theme.spacing.ELEM_SPACING.XS};
   height: ${constants.BIRTHDAY_CARD_HEIGHT};
+  margin-bottom: ${props => props.theme.spacing.ELEM_SPACING.MED};
 `;
 
 const NameWrapper = styled.View`
