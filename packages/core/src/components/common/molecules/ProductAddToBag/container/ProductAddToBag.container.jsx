@@ -10,16 +10,14 @@ import ProductAddToBag from '../views/ProductAddToBag.view';
 class ProductAddToBagContainer extends React.PureComponent<Props> {
   constructor(props) {
     super(props);
-    // const selectedColor = this.getDefaultColor(productDetails);
-    // const selectedFit = this.getDefaultFit(selectedColor);
     const { currentProduct } = props;
     this.initialValuesForm = this.getInitialValues(currentProduct);
 
     this.state = {
-      selectedColor: this.initialValuesForm.color,
-      selectedFit: this.initialValuesForm.Fit,
-      selectedSize: this.initialValuesForm.Size,
-      selectedQuantity: this.initialValuesForm.Quantity,
+      selectedColor: this.initialValuesForm && this.initialValuesForm.color,
+      selectedFit: this.initialValuesForm && this.initialValuesForm.Fit,
+      selectedSize: this.initialValuesForm && this.initialValuesForm.Size,
+      selectedQuantity: this.initialValuesForm && this.initialValuesForm.Quantity,
       isErrorMessageDisplayed: false,
       fitChanged: true,
       persistSelectedFit: '',
@@ -129,12 +127,14 @@ class ProductAddToBagContainer extends React.PureComponent<Props> {
 
   fitChange = e => {
     const { persistSelectedFit } = this.state;
+
     if (persistSelectedFit !== e) {
       this.setState({
         selectedFit: {
           name: e,
         },
         fitChanged: true,
+        isErrorMessageDisplayed: false,
       });
     } else {
       this.setState({
@@ -142,6 +142,7 @@ class ProductAddToBagContainer extends React.PureComponent<Props> {
           name: e,
         },
         fitChanged: false,
+        isErrorMessageDisplayed: false,
       });
     }
   };
@@ -151,89 +152,8 @@ class ProductAddToBagContainer extends React.PureComponent<Props> {
     this.setState({
       selectedColor: { name: e },
       selectedSize,
+      isErrorMessageDisplayed: false,
     });
-  };
-
-  /**
-   * @function selectColor
-   * sets selected color in state and resets selected fit to first fit in selected color array
-   *
-   * @memberof ProductAddToBagContainer
-   */
-  selectColor = item => {
-    const selectedFit = this.resetFitForSelectedColor(item);
-    const selectedSize = this.resetSizeForSelectedFit(selectedFit);
-    this.setState({ selectedColor: item, selectedFit, selectedSize });
-  };
-
-  /**
-   * @function selectFit
-   * sets selected fit in state and resets selected size to null
-   *
-   * @memberof ProductAddToBagContainer
-   */
-  selectFit = item => {
-    const selectedSize = this.resetSizeForSelectedFit(item);
-    this.setState({ selectedFit: item, selectedSize });
-  };
-
-  /**
-   * @function resetFitForSelectedColor
-   * @returns selectedFit in state if it is available in selected color
-   * else returns first fit in selected color
-   *
-   * @memberof ProductAddToBagContainer
-   */
-  resetFitForSelectedColor = item => {
-    const { selectedFit } = this.state;
-    const selectedFitAvailableInColor = selectedFit
-      ? item.fits.filter(fit => fit.fitNameVal === selectedFit.fitNameVal)
-      : [];
-    if (selectedFitAvailableInColor.length === 0) {
-      return this.getDefaultFit(item);
-    }
-
-    return selectedFit;
-  };
-
-  /**
-   * @function resetSizeForSelectedFit
-   * @returns selectedSize in state if it is available in selected fit
-   * else returns null
-   *
-   * @memberof ProductAddToBagContainer
-   */
-  resetSizeForSelectedFit = item => {
-    const { selectedSize } = this.state;
-    const selectedSizeAvailableInFits = selectedSize
-      ? item.sizes.filter(size => size.sizeName === selectedSize.sizeName)
-      : [];
-    if (selectedSizeAvailableInFits.length === 0) {
-      return null;
-    }
-    return selectedSize;
-  };
-
-  /**
-   * @function selectSize
-   * sets selected size in state
-   *
-   * @memberof ProductAddToBagContainer
-   */
-  selectSize = item => {
-    this.setState({ selectedSize: item });
-  };
-
-  /**
-   * @function getFitList
-   * @returns fit list for selected color
-   *
-   * @memberof ProductAddToBagContainer
-   */
-  getFitList = () => {
-    const { selectedColor } = this.state;
-    const { hasFits = false, fits } = selectedColor || {};
-    return (hasFits && fits) || [];
   };
 
   /**
@@ -366,9 +286,11 @@ class ProductAddToBagContainer extends React.PureComponent<Props> {
 
   getFitOptions = (colorFitsSizesMap, selectedColor) => {
     const colorItem = this.getSelectedColorData(colorFitsSizesMap, selectedColor);
-    const { fits } = colorItem || {};
+    const { fits, hasFits } = (colorItem && colorItem[0]) || {};
+
     return (
       (fits &&
+        hasFits &&
         fits.map(fit => ({
           displayName: fit.fitNameVal,
           id: fit.fitNameVal,
@@ -387,6 +309,29 @@ class ProductAddToBagContainer extends React.PureComponent<Props> {
     if (e !== 'Select') {
       this.displayErrorMessage(false);
     }
+  };
+
+  addToBagAction = () => {
+    const { selectedSize, selectedFit, selectedColor } = this.state;
+    const {
+      currentProduct: { colorFitsSizesMap },
+    } = this.props;
+    const colors = colorFitsSizesMap.filter(item => item.color.name === selectedColor.name);
+    let fitList = [];
+    const color = colors && colors.length > 0 && colors[0];
+    if (color.hasFits && selectedFit) {
+      fitList = color.fits.filter(fit => fit.fitNameVal === selectedFit.name);
+    } else {
+      fitList = color.fits;
+    }
+
+    const isSizeAvaiable =
+      (selectedSize &&
+        fitList &&
+        fitList.length > 0 &&
+        fitList[0].sizes.filter(size => size.sizeName === selectedSize.name).length > 0) ||
+      false;
+    this.displayErrorMessage(!isSizeAvaiable);
   };
 
   /**
@@ -428,6 +373,8 @@ class ProductAddToBagContainer extends React.PureComponent<Props> {
         initialValues={initialValues}
         displayErrorMessage={this.displayErrorMessage}
         selectedQuantity={selectedQuantity}
+        onQuantityChange={this.quantityChange}
+        addToBagAction={this.addToBagAction}
       />
     );
   }

@@ -201,4 +201,24 @@ describe('ProductAddToBagVanilla native should render correctly', () => {
     wrapper.instance().setState({ selectedColor: color, selectedFit: fit });
     expect(wrapper.props().sizeList).toEqual(false);
   });
+
+  it('should call getInitialValues', () => {
+    const getInitialValues = jest.spyOn(wrapper.instance(), 'getInitialValues');
+
+    wrapper.instance().getStateValuesFromProps(props.currentProduct);
+    expect(getInitialValues).toHaveBeenCalled();
+  });
+
+  it('should call getFitOptions', () => {
+    const color = {
+      name: 'TIDAL',
+    };
+    wrapper
+      .instance()
+      .setState({
+        selectedColor: color,
+        selectedFit: props.currentProduct.colorFitsSizesMap[0].fits,
+      });
+    expect(wrapper).toMatchSnapshot();
+  });
 });

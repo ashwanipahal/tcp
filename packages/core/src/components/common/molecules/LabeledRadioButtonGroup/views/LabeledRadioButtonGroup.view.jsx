@@ -13,7 +13,6 @@
  * Any extra props (i.e., other than <code>disabled, optionsMap, className, tabIndex, input, meta, isHideIfEmptyOptionsMap</code>),
  * e.g., <code>aria-label</code>, passed to this component will be passed along to the containing <code>div</code> element.
  *
- * @author Miguel (based on Ben's CustomSelect)
  */
 import React from 'react';
 import { PropTypes } from 'prop-types';
@@ -171,7 +170,7 @@ class LabeledRadioButtonGroup extends React.Component {
       ...otherProps
     } = this.props;
 
-    if (isHideIfEmptyOptionsMap && optionsMap.length === 0) {
+    if (isHideIfEmptyOptionsMap && optionsMap.size === 0) {
       return null; // render nothing
     }
     const dataAttributes = '';
