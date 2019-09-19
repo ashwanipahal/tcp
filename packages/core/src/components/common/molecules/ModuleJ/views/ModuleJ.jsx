@@ -67,8 +67,8 @@ class ModuleJ extends React.PureComponent {
     const { currentCatId } = this.state;
 
     const { CAROUSEL_OPTIONS, PROMO_IMG_DATA, TOTAL_IMAGES } = config;
-    let data = productTabList[currentCatId];
-    data = data ? data.slice(0, TOTAL_IMAGES) : [];
+    let data = productTabList[currentCatId] || [];
+    data = data.slice(0, TOTAL_IMAGES);
 
     return (
       <Grid className={`${className} moduleJ layout-${layout}`}>

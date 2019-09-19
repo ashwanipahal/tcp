@@ -109,7 +109,7 @@ class ModuleJ extends React.PureComponent<Props, State> {
     } = this.props;
 
     let selectedProductList = productTabList[selectedCategoryId] || [];
-    selectedProductList = selectedProductList ? selectedProductList.slice(0, TOTAL_IMAGES) : [];
+    selectedProductList = selectedProductList.slice(0, TOTAL_IMAGES);
 
     const selectedProductCarouselList = selectedProductList.reduce(
       (list, item, index) => {
