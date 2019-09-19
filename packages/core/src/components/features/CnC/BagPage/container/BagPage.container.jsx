@@ -41,6 +41,7 @@ export class BagPageContainer extends React.Component<Props> {
       closeCheckoutConfirmationModal,
       removeUnqualifiedItemsAndCheckout,
       isGuest,
+      fetchLabels,
     } = this.props;
 
     const showAddTobag = false;
@@ -57,6 +58,7 @@ export class BagPageContainer extends React.Component<Props> {
         closeCheckoutConfirmationModal={closeCheckoutConfirmationModal}
         removeUnqualifiedItemsAndCheckout={removeUnqualifiedItemsAndCheckout}
         handleCartCheckout={handleCartCheckout}
+        fetchLabels={fetchLabels}
       />
     );
   }
@@ -71,6 +73,9 @@ export const mapDispatchToProps = (dispatch: ({}) => void) => {
     },
     fetchNeedHelpContent: contentIds => {
       dispatch(BAG_PAGE_ACTIONS.fetchModuleX(contentIds));
+    },
+    fetchLabels: () => {
+      dispatch(BAG_PAGE_ACTIONS.initActions[0]);
     },
   };
 };
