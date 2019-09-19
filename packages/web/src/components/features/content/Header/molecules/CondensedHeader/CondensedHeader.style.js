@@ -14,9 +14,9 @@ export default css`
     text-align: center;
     width: 100%;
     margin: 0;
+    border-bottom: 1px solid ${props => props.theme.colorPalette.gray[300]};
     @media ${props => props.theme.mediaQuery.large} {
       padding: 0 14px;
-      border-bottom: 1px solid ${props => props.theme.colorPalette.gray[1300]};
     }
 
     @media ${props => props.theme.mediaQuery.mediumOnly} {
@@ -154,7 +154,7 @@ export default css`
       width: 200%;
       z-index: ${props => props.theme.zindex.zEnlargedImage};
       height: 1px;
-      background-color: ${props => props.theme.colorPalette.gray[1300]};
+      background-color: ${props => props.theme.colorPalette.gray[300]};
     }
 
   }

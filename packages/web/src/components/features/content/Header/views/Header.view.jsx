@@ -110,6 +110,18 @@ class Header extends React.PureComponent {
           setSearchState={this.setSearchState}
           isSearchOpen={isSearchOpen}
         />
+        <SearchBar
+          className={!isSearchOpen && 'rightLink'}
+          setSearchState={this.setSearchState}
+          isSearchOpen={isSearchOpen}
+          showCondensedHeader={showCondensedHeader}
+        />
+        <HeaderPromo
+          mobileMarkup
+          className="header__promo-area--mobile"
+          dataPromo={headerPromoArea}
+        />
+        <HeaderPromo className="header__promo-area--desktop" dataPromo={headerPromoArea} />
         {showCondensedHeader && (
           <CondensedHeader
             openNavigationDrawer={openNavigationDrawer}
@@ -126,19 +138,6 @@ class Header extends React.PureComponent {
             labels={labels}
           />
         )}
-
-        <SearchBar
-          className={!isSearchOpen && 'rightLink'}
-          setSearchState={this.setSearchState}
-          isSearchOpen={isSearchOpen}
-          showCondensedHeader={showCondensedHeader}
-        />
-        <HeaderPromo
-          mobileMarkup
-          className="header__promo-area--mobile"
-          dataPromo={headerPromoArea}
-        />
-        <HeaderPromo className="header__promo-area--desktop" dataPromo={headerPromoArea} />
         <OverlayModal showCondensedHeader={showCondensedHeader} />
         <TrackOrder />
       </header>

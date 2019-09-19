@@ -52,8 +52,6 @@ export default css`
   .tcp-condensed-drawer {
     position: fixed;
     top: 58px;
-    max-height: 100%;
-    overflow-y: scroll;
   }
   .tcp-drawer-content {
     width: ${props => props.width.small || `100%`};
