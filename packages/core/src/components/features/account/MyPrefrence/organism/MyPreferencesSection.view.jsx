@@ -120,7 +120,7 @@ class MyPrefrenceSection extends React.PureComponent {
                     {getLabelValue(labels, 'lbl_prefrence_app_text')}
                   </BodyCopy>
                   <Image
-                    class="elm-padding-left"
+                    class="elem-pl-XS"
                     width="17"
                     height="17"
                     src={getIconPath('icon-alarm')}
@@ -164,12 +164,7 @@ class MyPrefrenceSection extends React.PureComponent {
                   >
                     {getLabelValue(labels, 'lbl_prefrence_text_text')}
                   </BodyCopy>
-                  <Image
-                    class="elm-padding-left"
-                    width="17"
-                    height="17"
-                    src={getIconPath('icon-chat')}
-                  />
+                  <Image class="elem-pl-XS" width="17" height="17" src={getIconPath('icon-chat')} />
 
                   <Field
                     name="primary"

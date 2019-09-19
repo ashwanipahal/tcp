@@ -172,7 +172,7 @@ exports[`ProfileInformation component should render correctly 1`] = `
               lbl_prefrence_app_text
             </Styled(BodyCopy)>
             <Styled(Image)
-              class="elm-padding-left"
+              class="elem-pl-XS"
               height="17"
               src="/static/images/icon-alarm@2x.png"
               width="17"
@@ -500,7 +500,7 @@ exports[`ProfileInformation component should render correctly 1`] = `
               lbl_prefrence_text_text
             </Styled(BodyCopy)>
             <Styled(Image)
-              class="elm-padding-left"
+              class="elem-pl-XS"
               height="17"
               src="/static/images/icon-chat@2x.png"
               width="17"
