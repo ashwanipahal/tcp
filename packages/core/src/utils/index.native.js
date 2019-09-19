@@ -41,4 +41,5 @@ export {
   toTimeString,
   getPromotionalMessage,
   getBirthDateOptionMap,
+  calculateAge,
 } from './utils';
