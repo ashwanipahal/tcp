@@ -13,6 +13,7 @@ exports[`ProductDetailView component should renders correctly 1`] = `
       "$$typeof": Symbol(react.forward_ref),
       "_foldedDefaultProps": Object {
         "currentProduct": Object {},
+        "handleSubmit": null,
         "plpLabels": null,
       },
       "attrs": Array [],
@@ -32,6 +33,7 @@ exports[`ProductDetailView component should renders correctly 1`] = `
     }
   }
   forwardedRef={null}
+  handleSubmit={null}
   plpLabels={null}
   selectedColorProductId=""
 />

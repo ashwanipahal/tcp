@@ -2,10 +2,16 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import { View } from 'react-native';
 import Grid from '../../Grid';
-import { Button, BodyCopy } from '../../../atoms';
+import { Button, BodyCopy, Image } from '../../../atoms';
 import { BUTTON_VARIATION } from '../../../atoms/Button/Button.constants';
 import withStyles from '../../../hoc/withStyles';
-import styles, { SelectedValueContainer } from '../styles/ProductVariantSelector.style.native';
+import styles, {
+  SelectedValueContainer,
+  ErrorContainer,
+  errorIconStyle,
+} from '../styles/ProductVariantSelector.style.native';
+
+const errorIcon = require('../../../../../assets/alert-triangle.png');
 
 /**
  * This class returns Product variant selector for Product Add To Bag Page
@@ -25,18 +31,41 @@ class ProductVariantSelector extends React.PureComponent {
   renderGridItem = ({ item }) => {
     const { selectedItem, selectItem, itemNameKey } = this.props;
     const itemValue = item[itemNameKey];
-    const isSelected = (selectedItem && item[itemNameKey] === selectedItem[itemNameKey]) || false;
-
+    const isSelected = (selectedItem && item[itemNameKey] === selectedItem) || false;
+    const { disabled } = item;
     return (
       <Button
         buttonVariation={BUTTON_VARIATION.mobileAppFilter}
-        text={itemValue}
-        onPress={() => selectItem(item)}
-        selected={isSelected}
+        text={itemValue.toUpperCase()}
+        onPress={() => selectItem(item[itemNameKey])}
+        selected={!disabled && isSelected}
         data-locator=""
         accessibilityLabel={itemValue}
+        disableButton={disabled}
       />
     );
+  };
+
+  renderError = error => {
+    if (!error) return null;
+    return (
+      <ErrorContainer>
+        <Image source={errorIcon} style={errorIconStyle} />
+        <BodyCopy
+          fontWeight="semibold"
+          mobileFontFamily="secondary"
+          fontSize="fs10"
+          text={error}
+          color="error"
+        />
+      </ErrorContainer>
+    );
+  };
+
+  checkIfSelectedItemIsAvaiableInData = () => {
+    const { data, itemNameKey, selectedItem } = this.props;
+    if (!itemNameKey) return true;
+    return data && data.filter(item => item[itemNameKey] === selectedItem).length > 0;
   };
 
   render() {
@@ -49,11 +78,16 @@ class ProductVariantSelector extends React.PureComponent {
       selectedItem,
       componentWidth,
       separatorWidth,
+      error,
+      locators,
     } = this.props;
 
-    const titleValue = itemValue ? `${title}: ` : title;
+    const { key, value } = locators || {};
+    const isItemAvailable = this.checkIfSelectedItemIsAvaiableInData();
+    const titleValue = isItemAvailable ? `${title}: ` : title;
 
     if (!data || data.length === 0) return null;
+
     return (
       <View {...this.props}>
         <SelectedValueContainer>
@@ -62,15 +96,19 @@ class ProductVariantSelector extends React.PureComponent {
             color="gray.900"
             mobileFontFamily="secondary"
             fontSize="fs14"
-            text={titleValue}
+            text={titleValue.toUpperCase()}
+            dataLocator={key}
           />
-          <BodyCopy
-            fontWeight="regular"
-            color="gray.900"
-            mobileFontFamily="secondary"
-            fontSize="fs14"
-            text={itemValue}
-          />
+          {isItemAvailable ? (
+            <BodyCopy
+              fontWeight="regular"
+              color="gray.900"
+              mobileFontFamily="secondary"
+              fontSize="fs14"
+              text={itemValue.toUpperCase()}
+              dataLocator={value}
+            />
+          ) : null}
         </SelectedValueContainer>
         <Grid
           name={title}
@@ -81,6 +119,7 @@ class ProductVariantSelector extends React.PureComponent {
           componentWidth={componentWidth}
           separatorWidth={separatorWidth}
         />
+        {this.renderError(error)}
       </View>
     );
   }
@@ -93,11 +132,13 @@ ProductVariantSelector.propTypes = {
   renderItem: PropTypes.func,
   data: PropTypes.arrayOf(Object),
   keyExtractor: PropTypes.func,
-  selectedItem: PropTypes.instanceOf(Object),
+  selectedItem: PropTypes.string,
   componentWidth: PropTypes.number,
   separatorWidth: PropTypes.number,
   selectItem: PropTypes.func,
   itemNameKey: PropTypes.string,
+  error: PropTypes.string,
+  locators: PropTypes.instanceOf(Object),
 };
 
 ProductVariantSelector.defaultProps = {
@@ -110,6 +151,8 @@ ProductVariantSelector.defaultProps = {
   separatorWidth: 8,
   selectItem: null,
   itemNameKey: '',
+  error: null,
+  locators: null,
 };
 
 /* export class with styles */
