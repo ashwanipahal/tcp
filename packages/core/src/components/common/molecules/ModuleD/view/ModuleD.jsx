@@ -134,16 +134,30 @@ const ModuleD = ({ className, headerText, promoBanner, smallCompImage, singleCTA
 };
 
 ModuleD.defaultProps = {
-  className: '',
   promoBanner: [],
   singleCTAButton: {},
 };
 
 ModuleD.propTypes = {
-  className: PropTypes.string,
-  headerText: PropTypes.arrayOf(PropTypes.shape({})).isRequired,
-  promoBanner: PropTypes.arrayOf(PropTypes.shape({})),
-  smallCompImage: PropTypes.arrayOf(PropTypes.shape({})).isRequired,
+  className: PropTypes.string.isRequired,
+  headerText: PropTypes.arrayOf(
+    PropTypes.shape({
+      link: PropTypes.object,
+      textItems: PropTypes.object,
+    })
+  ).isRequired,
+  promoBanner: PropTypes.arrayOf(
+    PropTypes.shape({
+      link: PropTypes.object,
+      textItems: PropTypes.object,
+    })
+  ),
+  smallCompImage: PropTypes.arrayOf(
+    PropTypes.shape({
+      link: PropTypes.object,
+      image: PropTypes.object,
+    })
+  ).isRequired,
   singleCTAButton: PropTypes.objectOf(PropTypes.shape({})),
 };
 

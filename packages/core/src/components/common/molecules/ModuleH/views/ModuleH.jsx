@@ -1,9 +1,9 @@
-// @flow
 import React from 'react';
-import DamImage from '@tcp/core/src/components/common/atoms/DamImage';
+import PropTypes from 'prop-types';
+
 import withStyles from '../../../hoc/withStyles';
 import errorBoundary from '../../../hoc/withErrorBoundary';
-import { Col, Row } from '../../../atoms';
+import { Col, DamImage, Row } from '../../../atoms';
 import { getLocator } from '../../../../../utils';
 import { Carousel } from '../..';
 import ModuleHHeader from './ModuleH.Header';
@@ -11,25 +11,14 @@ import ModuleHCTALinks from './ModuleH.Links';
 import style from '../ModuleH.style';
 import config from '../config';
 
-type Props = {
-  className: string,
-  divCTALinks: Object[],
-  headerText: Object[],
-};
-
-type State = {
-  current: number,
-  next: number,
-};
-
 /**
  * @class ModuleH - global reusable component will provide featured content module
  * with a composite background image and 2-6 CTAs
  * This component is plug and play at any given slot in layout by passing required data
  * @param {composites} composites the list of data for header texts, links and images for component
  */
-class ModuleH extends React.PureComponent<Props, State> {
-  constructor(props: Object) {
+class ModuleH extends React.PureComponent {
+  constructor(props) {
     super(props);
     this.state = {
       current: 0,
@@ -76,6 +65,23 @@ class ModuleH extends React.PureComponent<Props, State> {
     );
   }
 }
+
+ModuleH.propTypes = {
+  className: PropTypes.string.isRequired,
+  headerText: PropTypes.arrayOf(
+    PropTypes.shape({
+      link: PropTypes.object,
+      textItems: PropTypes.array,
+    })
+  ).isRequired,
+  divCTALinks: PropTypes.arrayOf(
+    PropTypes.shape({
+      link: PropTypes.object,
+      image: PropTypes.object,
+      styled: PropTypes.object,
+    })
+  ).isRequired,
+};
 
 export default withStyles(errorBoundary(ModuleH), style);
 export { ModuleH as ModuleHVanilla };
