@@ -1,0 +1,169 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`testing block for PickupStoreDisplay PickupStoreDisplay should be rendered correclty when order type is BOPIS 1`] = `
+<StyledComponent
+  forwardedComponent={
+    Object {
+      "$$typeof": Symbol(react.forward_ref),
+      "attrs": Array [],
+      "componentStyle": ComponentStyle {
+        "componentId": "sc-gqjmRU",
+        "isStatic": false,
+        "rules": Array [
+          "
+  ",
+          "
+  .pickup-store-details {
+    padding: ",
+          [Function],
+          ";
+    display: flex;
+    flex-direction: 'row';
+    border: solid 1px ",
+          [Function],
+          ";
+    background-color: ",
+          [Function],
+          ";
+  }
+  .pickup-store-icon {
+    padding-top: ",
+          [Function],
+          ";
+    margin-right: ",
+          [Function],
+          ";
+  }
+  .pickup-store-margin {
+    margin-top: ",
+          [Function],
+          ";
+  }
+",
+          ";
+",
+        ],
+      },
+      "displayName": "Styled(PickupStoreDisplay)",
+      "foldedComponentIds": Array [],
+      "render": [Function],
+      "styledComponentId": "sc-gqjmRU",
+      "target": [Function],
+      "toString": [Function],
+      "warnTooManyClasses": [Function],
+      "withComponent": [Function],
+    }
+  }
+  forwardedRef={null}
+  orderType="BOPIS"
+  store={
+    Object {
+      "bossEndDate": Object {},
+      "bossStartDate": null,
+      "orderType": "BOPIS",
+      "store": "Newport Center",
+      "storeAddress": Object {
+        "address": "30 Mall Drive West",
+        "addressId": 2141180,
+        "addressLine1": "30 Mall Drive West",
+        "addressLine2": "",
+        "addressLine3": "",
+        "city": "Jersey City",
+        "country": "US",
+        "state": "NJ",
+        "zipCode": "07310",
+      },
+      "storeId": "110715",
+      "storeItemsCount": 1,
+    }
+  }
+/>
+`;
+
+exports[`testing block for PickupStoreDisplay PickupStoreDisplay should be rendered correclty when order type is BOSS 1`] = `
+<StyledComponent
+  forwardedComponent={
+    Object {
+      "$$typeof": Symbol(react.forward_ref),
+      "attrs": Array [],
+      "componentStyle": ComponentStyle {
+        "componentId": "sc-gqjmRU",
+        "isStatic": false,
+        "rules": Array [
+          "
+  ",
+          "
+  .pickup-store-details {
+    padding: ",
+          [Function],
+          ";
+    display: flex;
+    flex-direction: 'row';
+    border: solid 1px ",
+          [Function],
+          ";
+    background-color: ",
+          [Function],
+          ";
+  }
+  .pickup-store-icon {
+    padding-top: ",
+          [Function],
+          ";
+    margin-right: ",
+          [Function],
+          ";
+  }
+  .pickup-store-margin {
+    margin-top: ",
+          [Function],
+          ";
+  }
+",
+          ";
+",
+        ],
+      },
+      "displayName": "Styled(PickupStoreDisplay)",
+      "foldedComponentIds": Array [],
+      "render": [Function],
+      "styledComponentId": "sc-gqjmRU",
+      "target": [Function],
+      "toString": [Function],
+      "warnTooManyClasses": [Function],
+      "withComponent": [Function],
+    }
+  }
+  forwardedRef={null}
+  orderType="BOSS"
+  store={
+    Object {
+      "bossEndDate": Object {
+        "date": 4,
+        "day": "Fri",
+        "month": "Jan",
+      },
+      "bossStartDate": Object {
+        "date": 3,
+        "day": "Thu",
+        "month": "Jan",
+      },
+      "orderType": "BOSS",
+      "store": "Fulton Street",
+      "storeAddress": Object {
+        "address": "471-485 Fulton Street",
+        "addressId": 2141181,
+        "addressLine1": "471-485 Fulton Street",
+        "addressLine2": "",
+        "addressLine3": "",
+        "city": "Brooklyn",
+        "country": "US",
+        "state": "NY",
+        "zipCode": "11201",
+      },
+      "storeId": "110850",
+      "storeItemsCount": 1,
+    }
+  }
+/>
+`;
