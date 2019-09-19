@@ -2,12 +2,12 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import { getLabelValue } from '@tcp/core/src/utils/utils';
 
-import { RichText, Anchor, BodyCopy, Button, Row, Col } from '../../../atoms';
-import Modal from '../../Modal';
-import withStyles from '../../../hoc/withStyles';
-import { getLocator } from '../../../../../utils';
-import styles, { modalStyles } from '../styles/ApplyNowModal.style';
-import ApplyNowPLCCModal from './ApplyNowPLCCModal';
+import { RichText, Anchor, BodyCopy, Button, Row, Col } from '../../../../../atoms';
+import Modal from '../../../../Modal';
+import withStyles from '../../../../../hoc/withStyles';
+import { getLocator } from '../../../../../../../utils';
+import styles, { modalStyles } from '../../../styles/ApplyNowModal.style';
+import ApplyNowPLCCModal from '../../ApplyNowPLCCModal.jsx/views/ApplyNowPLCCModal';
 
 /**
  * @constant ApplyNowModal - Opens a Modal containing modal to open apply plcc modal.

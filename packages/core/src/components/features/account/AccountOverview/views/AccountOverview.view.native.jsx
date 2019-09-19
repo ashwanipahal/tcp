@@ -11,6 +11,7 @@ import PaymentTile from '../../common/organism/PaymentTile';
 import CustomButton from '../../../../common/atoms/Button';
 import AddressOverviewTile from '../../common/organism/AddressOverviewTile';
 import ApplyCardLayout from '../../../browse/ApplyCardPage/views/ApplyCardLayout.View.native';
+import ApplyNowWrapper from '../../../../common/molecules/ApplyNowPLCCModal';
 import {
   UnderlineStyle,
   ImageWrapper,
@@ -40,6 +41,7 @@ class AccountOverview extends PureComponent<Props> {
     this.state = {
       showModal: false,
       applyCard: false,
+      applyNow: false,
       getComponentId: {
         login: '',
         createAccount: '',
@@ -112,6 +114,13 @@ class AccountOverview extends PureComponent<Props> {
     });
   };
 
+  toggleApplyNowModal = () => {
+    const { applyNow } = this.state;
+    this.setState({
+      applyNow: !applyNow,
+    });
+  };
+
   resetAccountOverViewState = () => {
     this.setState({
       showModal: false,
@@ -139,11 +148,13 @@ class AccountOverview extends PureComponent<Props> {
     return header;
   };
 
-  toggleApplyCardModal = () => {};
+  // toggleApplyCardModal = () => {};
+
+  // toggleApplyNowModal = () => {};
 
   render() {
     const { isUserLoggedIn, labels, commonLabels, handleComponentChange, navigation } = this.props;
-    const { showModal, getComponentId, applyCard } = this.state;
+    const { showModal, getComponentId, applyCard, applyNow } = this.state;
     const modalHeaderLbl = this.getModalHeader(getComponentId, labels);
     const viewContainerStyle = { marginTop: 15 };
     const colorPallete = createThemeColorPalette();
@@ -280,14 +291,14 @@ class AccountOverview extends PureComponent<Props> {
               </ImageWrapper>
             </FavtWrapper>
             <UnderlineStyle />
+
             <TouchableView onPress={this.toggleApplyCard} />
             <ApplyCardLayout toggleModal={this.toggleApplyCard} applyCard={applyCard} />
-            <Panel
-              title={labels.lbl_overview_apply_today}
-              isVariationTypeLink
-              handleComponentChange={handleComponentChange}
-              isCardApply
-            />
+
+            <TouchableView onPress={this.toggleApplyNowModal} />
+            <ApplyNowWrapper toggleModalWrapper={this.toggleApplyNowModal} applyNow={applyNow} />
+
+            <Panel title={labels.lbl_overview_apply_today} isVariationTypeLink isCardApply />
 
             <Panel title={labels.lbl_overview_manage_creditCard} isVariationTypeLink />
 
