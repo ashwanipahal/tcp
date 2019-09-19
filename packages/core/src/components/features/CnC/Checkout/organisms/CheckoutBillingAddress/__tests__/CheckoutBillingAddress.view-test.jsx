@@ -1,6 +1,6 @@
 import React from 'react';
 import { shallow } from 'enzyme';
-import CheckoutAddress from '../views/CheckoutBillingAddress.view';
+import { CheckoutAddressVanilla } from '../views/CheckoutBillingAddress.view';
 
 describe('CheckoutAddress', () => {
   it('should render correctly', () => {
@@ -12,11 +12,11 @@ describe('CheckoutAddress', () => {
       labels: {},
       shippingAddress: {},
       isSameAsShippingChecked: true,
-    }
-    const tree = shallow(<CheckoutAddress {...props} />)
-    tree.setProps({ isSameAsShippingChecked: false })
+    };
+    const tree = shallow(<CheckoutAddressVanilla {...props} />);
+    tree.setProps({ isSameAsShippingChecked: false });
     expect(tree).toMatchSnapshot();
-  })
+  });
   it('should render correctly if order doesnot have shipping items', () => {
     const props = {
       dispatch: jest.fn(),
@@ -26,10 +26,10 @@ describe('CheckoutAddress', () => {
       labels: {},
       shippingAddress: {},
       isSameAsShippingChecked: false,
-    }
-    const tree = shallow(<CheckoutAddress {...props} />)
+    };
+    const tree = shallow(<CheckoutAddressVanilla {...props} />);
     expect(tree).toMatchSnapshot();
-  })
+  });
   it('should call onSameAsShippingChange', () => {
     const mockedDispatch = jest.fn();
     const props = {
@@ -40,12 +40,11 @@ describe('CheckoutAddress', () => {
       labels: {},
       shippingAddress: {},
       isSameAsShippingChecked: false,
-    }
-    const tree = shallow(<CheckoutAddress {...props} />)
-    tree.setProps({ isSameAsShippingChecked: true })
+    };
+    const tree = shallow(<CheckoutAddressVanilla {...props} />);
+    tree.setProps({ isSameAsShippingChecked: true });
     tree.instance().onSameAsShippingChange();
     expect(mockedDispatch).toHaveBeenCalled();
     expect(tree).toMatchSnapshot();
-  })
-})
-
+  });
+});

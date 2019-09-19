@@ -30,12 +30,14 @@ exports[`BillingPageContainer should render correctly 1`] = `
   persistentSubmitErrors={false}
   pure={true}
   shippingAddress={null}
+  shippingOnFileAddressKey={null}
   shouldAsyncValidate={[Function]}
   shouldError={[Function]}
   shouldValidate={[Function]}
   shouldWarn={[Function]}
   submitAsSideEffect={false}
   syncErrors={null}
+  syncErrorsObj={null}
   touchOnBlur={true}
   touchOnChange={false}
   updateUnregisteredFields={false}
@@ -89,6 +91,7 @@ exports[`BillingPageContainer should render correctly if billing data is present
   persistentSubmitErrors={false}
   pure={true}
   shippingAddress={null}
+  shippingOnFileAddressKey={null}
   shouldAsyncValidate={[Function]}
   shouldError={[Function]}
   shouldValidate={[Function]}
@@ -130,6 +133,7 @@ exports[`BillingPageContainer should render correctly if billing data is present
     }
   }
   syncErrors={null}
+  syncErrorsObj={null}
   touchOnBlur={true}
   touchOnChange={false}
   updateUnregisteredFields={false}

@@ -78,6 +78,7 @@ class AddNewCCForm extends React.PureComponent {
 
   onSaveToAccountChange = (e, value) => {
     const { dispatch, formName } = this.props;
+    /* istanbul ignore else */
     if (!value) {
       dispatch(change(formName, 'defaultPayment', value));
     }

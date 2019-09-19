@@ -288,3 +288,4 @@ CheckoutAddress.defaultProps = {
   selectedOnFileAddressId: null,
 };
 export default withStyles(CheckoutAddress, styles);
+export { CheckoutAddress as CheckoutAddressVanilla };

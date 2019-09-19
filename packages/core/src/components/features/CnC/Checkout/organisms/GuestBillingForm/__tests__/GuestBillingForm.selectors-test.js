@@ -2,7 +2,7 @@ import {
   getCardType,
   getSyncError,
   getPaymentMethodId,
-  getSameAsShippingValue
+  getSameAsShippingValue,
 } from '../container/GuestBillingForm.selectors';
 import { fromJS } from '../../../../../../../../../../node_modules/immutable';
 
@@ -18,31 +18,9 @@ describe('GuestBillingFormSelectors', () => {
       },
       Checkout: fromJS({
         values: {
-          billing: {}
-        }
-      })
-    };
-    expect(getCardType(state)).toEqual('VISA');
-  });
-  it('#getCardType if previous billing info is present', () => {
-    const state = {
-      form: {
-        checkoutBilling: {
-          values: {
-            cardNumber: '******1111',
-          },
+          billing: {},
         },
-      },
-      Checkout: fromJS({
-        values: {
-          billing: {
-            billing: {
-              cardNumber: '******1111',
-              cardType: 'VISA',
-            }
-          }
-        }
-      })
+      }),
     };
     expect(getCardType(state)).toEqual('VISA');
   });
@@ -60,9 +38,9 @@ describe('GuestBillingFormSelectors', () => {
           billing: {
             cardNumber: '******11111',
             cardType: 'VISA',
-          }
-        }
-      })
+          },
+        },
+      }),
     };
     expect(getCardType(state)).toEqual(null);
   });
@@ -78,9 +56,9 @@ describe('GuestBillingFormSelectors', () => {
           billing: {
             cardNumber: '******11111',
             cardType: 'VISA',
-          }
-        }
-      })
+          },
+        },
+      }),
     };
     expect(getCardType(state)).toEqual(null);
   });

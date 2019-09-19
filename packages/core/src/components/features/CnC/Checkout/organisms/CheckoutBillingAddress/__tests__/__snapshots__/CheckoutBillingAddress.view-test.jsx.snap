@@ -1,161 +1,167 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
 exports[`CheckoutAddress should call onSameAsShippingChange 1`] = `
-<FormSection
-  name="address"
+<div
+  className=""
 >
-  <Styled(AddressFields)
-    dispatch={
-      [MockFunction] {
-        "calls": Array [
-          Array [
-            Object {
-              "meta": Object {
-                "field": "address.firstName",
-                "form": "checkoutBilling",
-                "persistentSubmitErrors": undefined,
-                "touch": undefined,
+  <FormSection
+    name="address"
+  >
+    <Styled(AddressFields)
+      className="elem-mb-LRG"
+      dispatch={
+        [MockFunction] {
+          "calls": Array [
+            Array [
+              Object {
+                "meta": Object {
+                  "field": "address.firstName",
+                  "form": undefined,
+                  "persistentSubmitErrors": undefined,
+                  "touch": undefined,
+                },
+                "payload": undefined,
+                "type": "@@redux-form/CHANGE",
               },
-              "payload": undefined,
-              "type": "@@redux-form/CHANGE",
+            ],
+            Array [
+              Object {
+                "meta": Object {
+                  "field": "address.lastName",
+                  "form": undefined,
+                  "persistentSubmitErrors": undefined,
+                  "touch": undefined,
+                },
+                "payload": undefined,
+                "type": "@@redux-form/CHANGE",
+              },
+            ],
+            Array [
+              Object {
+                "meta": Object {
+                  "field": "address.addressLine1",
+                  "form": undefined,
+                  "persistentSubmitErrors": undefined,
+                  "touch": undefined,
+                },
+                "payload": undefined,
+                "type": "@@redux-form/CHANGE",
+              },
+            ],
+            Array [
+              Object {
+                "meta": Object {
+                  "field": "address.addressLine2",
+                  "form": undefined,
+                  "persistentSubmitErrors": undefined,
+                  "touch": undefined,
+                },
+                "payload": undefined,
+                "type": "@@redux-form/CHANGE",
+              },
+            ],
+            Array [
+              Object {
+                "meta": Object {
+                  "field": "address.state",
+                  "form": undefined,
+                  "persistentSubmitErrors": undefined,
+                  "touch": undefined,
+                },
+                "payload": undefined,
+                "type": "@@redux-form/CHANGE",
+              },
+            ],
+            Array [
+              Object {
+                "meta": Object {
+                  "field": "address.city",
+                  "form": undefined,
+                  "persistentSubmitErrors": undefined,
+                  "touch": undefined,
+                },
+                "payload": undefined,
+                "type": "@@redux-form/CHANGE",
+              },
+            ],
+            Array [
+              Object {
+                "meta": Object {
+                  "field": "address.zipCode",
+                  "form": undefined,
+                  "persistentSubmitErrors": undefined,
+                  "touch": undefined,
+                },
+                "payload": undefined,
+                "type": "@@redux-form/CHANGE",
+              },
+            ],
+            Array [
+              Object {
+                "meta": Object {
+                  "field": "address.country",
+                  "form": undefined,
+                  "persistentSubmitErrors": undefined,
+                  "touch": undefined,
+                },
+                "payload": undefined,
+                "type": "@@redux-form/CHANGE",
+              },
+            ],
+          ],
+          "results": Array [
+            Object {
+              "type": "return",
+              "value": undefined,
+            },
+            Object {
+              "type": "return",
+              "value": undefined,
+            },
+            Object {
+              "type": "return",
+              "value": undefined,
+            },
+            Object {
+              "type": "return",
+              "value": undefined,
+            },
+            Object {
+              "type": "return",
+              "value": undefined,
+            },
+            Object {
+              "type": "return",
+              "value": undefined,
+            },
+            Object {
+              "type": "return",
+              "value": undefined,
+            },
+            Object {
+              "type": "return",
+              "value": undefined,
             },
           ],
-          Array [
-            Object {
-              "meta": Object {
-                "field": "address.lastName",
-                "form": "checkoutBilling",
-                "persistentSubmitErrors": undefined,
-                "touch": undefined,
-              },
-              "payload": undefined,
-              "type": "@@redux-form/CHANGE",
-            },
-          ],
-          Array [
-            Object {
-              "meta": Object {
-                "field": "address.addressLine1",
-                "form": "checkoutBilling",
-                "persistentSubmitErrors": undefined,
-                "touch": undefined,
-              },
-              "payload": undefined,
-              "type": "@@redux-form/CHANGE",
-            },
-          ],
-          Array [
-            Object {
-              "meta": Object {
-                "field": "address.addressLine2",
-                "form": "checkoutBilling",
-                "persistentSubmitErrors": undefined,
-                "touch": undefined,
-              },
-              "payload": undefined,
-              "type": "@@redux-form/CHANGE",
-            },
-          ],
-          Array [
-            Object {
-              "meta": Object {
-                "field": "address.state",
-                "form": "checkoutBilling",
-                "persistentSubmitErrors": undefined,
-                "touch": undefined,
-              },
-              "payload": undefined,
-              "type": "@@redux-form/CHANGE",
-            },
-          ],
-          Array [
-            Object {
-              "meta": Object {
-                "field": "address.city",
-                "form": "checkoutBilling",
-                "persistentSubmitErrors": undefined,
-                "touch": undefined,
-              },
-              "payload": undefined,
-              "type": "@@redux-form/CHANGE",
-            },
-          ],
-          Array [
-            Object {
-              "meta": Object {
-                "field": "address.zipCode",
-                "form": "checkoutBilling",
-                "persistentSubmitErrors": undefined,
-                "touch": undefined,
-              },
-              "payload": undefined,
-              "type": "@@redux-form/CHANGE",
-            },
-          ],
-          Array [
-            Object {
-              "meta": Object {
-                "field": "address.country",
-                "form": "checkoutBilling",
-                "persistentSubmitErrors": undefined,
-                "touch": undefined,
-              },
-              "payload": undefined,
-              "type": "@@redux-form/CHANGE",
-            },
-          ],
-        ],
-        "results": Array [
-          Object {
-            "type": "return",
-            "value": undefined,
-          },
-          Object {
-            "type": "return",
-            "value": undefined,
-          },
-          Object {
-            "type": "return",
-            "value": undefined,
-          },
-          Object {
-            "type": "return",
-            "value": undefined,
-          },
-          Object {
-            "type": "return",
-            "value": undefined,
-          },
-          Object {
-            "type": "return",
-            "value": undefined,
-          },
-          Object {
-            "type": "return",
-            "value": undefined,
-          },
-          Object {
-            "type": "return",
-            "value": undefined,
-          },
-        ],
+        }
       }
-    }
-    formName="checkoutBilling"
-    formSection="address"
-    grayTextBox={true}
-    isGuest={true}
-    showDefaultCheckbox={false}
-    showPhoneNumber={false}
-    variation="primary"
-  />
-</FormSection>
+      formSection="address"
+      grayTextBox={true}
+      isGuest={true}
+      showDefaultCheckbox={false}
+      showPhoneNumber={false}
+      variation="primary"
+    />
+  </FormSection>
+</div>
 `;
 
 exports[`CheckoutAddress should render correctly 1`] = `
-<Fragment>
+<div
+  className=""
+>
   <Styled(Heading)
-    className="paymentMethodHeading elem-mt-XXL elem-mb-LRG"
+    className="paymentMethodHeading elem-mt-MED elem-mb-LRG"
     color="text.primary"
     component="h2"
     dataLocator="billing-payment-billingAddress"
@@ -164,23 +170,35 @@ exports[`CheckoutAddress should render correctly 1`] = `
   >
     lbl_billing_billingAddress
   </Styled(Heading)>
-  <Field
-    className="elem-mb-LRG"
-    component={
-      Object {
-        "$$typeof": Symbol(react.forward_ref),
-        "attrs": Array [],
-        "componentStyle": ComponentStyle {
-          "componentId": "sc-bwzfXH",
-          "isStatic": false,
-          "rules": Array [
-            "
+  <Styled(Row)
+    fullBleed={true}
+  >
+    <Styled(Col)
+      colSize={
+        Object {
+          "large": 6,
+          "medium": 5,
+          "small": 6,
+        }
+      }
+    >
+      <Field
+        className="elem-mb-LRG"
+        component={
+          Object {
+            "$$typeof": Symbol(react.forward_ref),
+            "attrs": Array [],
+            "componentStyle": ComponentStyle {
+              "componentId": "sc-bwzfXH",
+              "isStatic": false,
+              "rules": Array [
+                "
   ",
-            "
+                "
   display: block;
   align-items: ",
-            [Function],
-            ";
+                [Function],
+                ";
 
   & .CheckBox__input {
     flex: 0 0 auto;
@@ -190,15 +208,15 @@ exports[`CheckoutAddress should render correctly 1`] = `
     outline: 0;
     border: 0;
     height: ",
-            "25px",
-            ";
+                "25px",
+                ";
     width: ",
-            "25px",
-            ";
+                "25px",
+                ";
     margin: 0;
     margin-right: ",
-            [Function],
-            ";
+                [Function],
+                ";
     display: inline-block;
     vertical-align: top;
   }
@@ -210,31 +228,31 @@ exports[`CheckoutAddress should render correctly 1`] = `
     width: 100%;
     left: 0;
     border: 1px solid ",
-            [Function],
-            ";
+                [Function],
+                ";
   }
 
   & .CheckBox__input:checked:before {
     background: ",
-            [Function],
-            ";
+                [Function],
+                ";
     border: 1px solid ",
-            [Function],
-            ";
+                [Function],
+                ";
   }
 
   & .CheckBox__input:checked:after {
     transform: rotate(225deg);
     content: '';
     border: 2px solid ",
-            [Function],
-            ";
+                [Function],
+                ";
     font-size: ",
-            [Function],
-            "px;
+                [Function],
+                "px;
     width: ",
-            [Function],
-            ";
+                [Function],
+                ";
     height: 10px;
     border-right: 0;
     border-bottom: 0;
@@ -250,75 +268,77 @@ exports[`CheckoutAddress should render correctly 1`] = `
 
   & .CheckBox__text a {
     color: ",
-            [Function],
-            ";
+                [Function],
+                ";
   }
 
   & .disabled {
     opacity: ",
-            [Function],
-            ";
+                [Function],
+                ";
   }
 
   & .Checkbox__error {
     display: flex;
     flex-direction: row;
     padding-left: ",
-            [Function],
-            ";
+                [Function],
+                ";
   }
   & .warning-icon {
     background: transparent url('/static/images/circle-alert-fill.svg') no-repeat 0 0;
     background-size: contain;
     border: none;
     height: ",
-            [Function],
-            ";
+                [Function],
+                ";
     width: ",
-            [Function],
-            ";
+                [Function],
+                ";
     margin-right: 4px;
     margin-top: 2px;
   }
 ",
-            ";
+                ";
 ",
-          ],
-        },
-        "displayName": "Styled(InputCheckbox)",
-        "foldedComponentIds": Array [],
-        "render": [Function],
-        "styledComponentId": "sc-bwzfXH",
-        "target": [Function],
-        "toString": [Function],
-        "warnTooManyClasses": [Function],
-        "withComponent": [Function],
-      }
-    }
-    name="sameAsShipping"
-    onChange={[Function]}
-    showDefaultCheckbox={false}
-  >
-    <Styled(BodyCopy)
-      className={null}
-      color="text.primary"
-      component="p"
-      fontFamily="secondary"
-      fontSize="fs16"
-      fontWeight="regular"
-      letterSpacing="normal"
-      lineHeight="normal"
-      textAlign="left"
-    >
-      lbl_billing_sameAsShipping
-    </Styled(BodyCopy)>
-  </Field>
+              ],
+            },
+            "displayName": "Styled(InputCheckbox)",
+            "foldedComponentIds": Array [],
+            "render": [Function],
+            "styledComponentId": "sc-bwzfXH",
+            "target": [Function],
+            "toString": [Function],
+            "warnTooManyClasses": [Function],
+            "withComponent": [Function],
+          }
+        }
+        name="sameAsShipping"
+        onChange={[Function]}
+        showDefaultCheckbox={false}
+      >
+        <Styled(BodyCopy)
+          className={null}
+          color="text.primary"
+          component="p"
+          fontFamily="secondary"
+          fontSize="fs16"
+          fontWeight="regular"
+          letterSpacing="normal"
+          lineHeight="normal"
+          textAlign="left"
+        >
+          lbl_billing_sameAsShipping
+        </Styled(BodyCopy)>
+      </Field>
+    </Styled(Col)>
+  </Styled(Row)>
   <FormSection
     name="address"
   >
     <Styled(AddressFields)
+      className="elem-mb-LRG"
       dispatch={[MockFunction]}
-      formName="checkoutBilling"
       formSection="address"
       grayTextBox={true}
       isGuest={true}
@@ -327,22 +347,26 @@ exports[`CheckoutAddress should render correctly 1`] = `
       variation="primary"
     />
   </FormSection>
-</Fragment>
+</div>
 `;
 
 exports[`CheckoutAddress should render correctly if order doesnot have shipping items 1`] = `
-<FormSection
-  name="address"
+<div
+  className=""
 >
-  <Styled(AddressFields)
-    dispatch={[MockFunction]}
-    formName="checkoutBilling"
-    formSection="address"
-    grayTextBox={true}
-    isGuest={true}
-    showDefaultCheckbox={false}
-    showPhoneNumber={false}
-    variation="primary"
-  />
-</FormSection>
+  <FormSection
+    name="address"
+  >
+    <Styled(AddressFields)
+      className="elem-mb-LRG"
+      dispatch={[MockFunction]}
+      formSection="address"
+      grayTextBox={true}
+      isGuest={true}
+      showDefaultCheckbox={false}
+      showPhoneNumber={false}
+      variation="primary"
+    />
+  </FormSection>
+</div>
 `;

@@ -33,6 +33,7 @@ export class GiftCardsContainer extends React.PureComponent<Props> {
       const {
         address: { onFileAddressId },
       } = billingData;
+      /* istanbul ignore else */
       if (userAddresses && userAddresses.size > 0) {
         const selectedAddress = userAddresses.find(add => add.addressId === onFileAddressId);
         if (!selectedAddress) return true;
@@ -157,7 +158,9 @@ export class GiftCardsContainer extends React.PureComponent<Props> {
     let state;
     let zipCode;
     let cardDetails = this.getSelectedCard(cardList, data.onFileCardKey);
+    /* istanbul ignore else */
     if (!cardDetails) {
+      /* istanbul ignore else */
       if (data.address) {
         ({
           addressLine1,
@@ -189,6 +192,7 @@ export class GiftCardsContainer extends React.PureComponent<Props> {
         },
       };
     }
+    /* istanbul ignore else */
     if (data.onFileAddressId) {
       const selectedAddress =
         userAddresses &&

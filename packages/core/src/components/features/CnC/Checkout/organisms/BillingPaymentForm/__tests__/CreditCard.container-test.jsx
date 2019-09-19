@@ -16,6 +16,11 @@ describe('GiftCardsContainer Container', () => {
       addressDetails: { phone1: '1234567891' },
     },
   ];
+  const userAddress = [
+    {
+      addressId: '1234',
+    },
+  ];
   const props = {
     cardList: new List(card),
     labels: {
@@ -52,6 +57,28 @@ describe('GiftCardsContainer Container', () => {
     nextSubmitText: '',
     getCardListAction: jest.fn(),
     handleSubmit: jest.fn(),
+    billingData: {
+      address: {
+        onFileAddressKey: '',
+        onFileAddressId: '1234',
+        firstName: '',
+        lastName: '',
+        addressLine1: '',
+        addressLine2: '',
+        city: '',
+        state: '',
+        zipCode: '',
+        country: '',
+      },
+      billing: {
+        cardNumber: '',
+        cvvCode: '',
+        expMonth: '',
+        expYear: '',
+        cardType: '',
+      },
+    },
+    userAddresses: new List(userAddress),
   };
 
   const wrapper = shallow(<GiftCardsContainer {...props} />);
@@ -69,13 +96,54 @@ describe('GiftCardsContainer Container', () => {
 
   describe('#mapDispatchToProps', () => {
     it('should render getSelectedCard view section', () => {
-      instance.getSelectedCard(card, 1);
+      instance.getSelectedCard(card, 82596);
     });
     it('should render with getInitialValues', () => {
       instance.getInitialValues(null);
     });
+    it('should render with getInitialValues  with shipping Address', () => {
+      const props1 = { ...props, shippingAddress: {} };
+      const tree = shallow(<GiftCardsContainer {...props1} />);
+      tree.instance().getInitialValues(null);
+    });
+    it('should render with getInitialValues  with orderHasShipping false', () => {
+      const props1 = { ...props, orderHasShipping: false };
+      const tree = shallow(<GiftCardsContainer {...props1} />);
+      tree.instance().getInitialValues(null);
+    });
+    it('should render with getInitialValues  with orderHasShipping false and selected address is not present', () => {
+      const props1 = {
+        ...props,
+        orderHasShipping: false,
+        userAddresses: new List([{ addressId: '12345' }]),
+      };
+      const tree = shallow(<GiftCardsContainer {...props1} />);
+      tree.instance().getInitialValues(null);
+    });
     it('should render with submitBillingData', () => {
-      instance.submitBillingData(card[0]);
+      const data = {
+        address: {
+          onFileAddressKey: '',
+          onFileAddressId: '1234',
+          firstName: '',
+          lastName: '',
+          addressLine1: '',
+          addressLine2: '',
+          city: '',
+          state: '',
+          zipCode: '',
+          country: '',
+        },
+        onFileAddressId: '12345',
+      };
+      const props1 = {
+        ...props,
+        orderHasShipping: false,
+        userAddresses: new List([{ addressId: '12345', nickName: 'erty' }]),
+        cardList: new List(),
+      };
+      const tree = shallow(<GiftCardsContainer {...props1} />);
+      tree.instance().submitBillingData(data);
     });
   });
 });
