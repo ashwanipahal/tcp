@@ -50,6 +50,15 @@ export const BonusPointsWrapper = styled.View`
   border-color: ${props => props.theme.colors.PRIMARY.PALEGRAY};
 `;
 
+export const CouponAndPromosWrapper = styled.View`
+  padding-top: ${props => props.theme.spacing.ELEM_SPACING.MED};
+  padding-bottom: ${props => props.theme.spacing.ELEM_SPACING.MED};
+  border-top-width: 1px;
+  border-bottom-width: 1px;
+  border-style: solid;
+  border-color: ${props => props.theme.colors.PRIMARY.PALEGRAY};
+`;
+
 export default {
   ButtonWrapper,
   CheckoutButton,
@@ -57,4 +66,5 @@ export default {
   BackIcon,
   BackLinkWrapperWrapper,
   BonusPointsWrapper,
+  CouponAndPromosWrapper,
 };

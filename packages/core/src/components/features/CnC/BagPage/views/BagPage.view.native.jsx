@@ -49,7 +49,7 @@ const BagPage = ({
             </RowSectionStyle>
           )}
           <RowSectionStyle>
-            <CouponAndPromos />
+            <CouponAndPromos showAccordian={false} />
           </RowSectionStyle>
         </MainSection>
       </ScrollViewWrapper>

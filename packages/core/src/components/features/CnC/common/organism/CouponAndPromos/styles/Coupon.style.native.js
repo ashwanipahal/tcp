@@ -13,4 +13,9 @@ const CouponListContainer = styled.View`
   padding: 20px 0px 20px 0px;
 `;
 
-export { styles, WrapperStyle, CouponListContainer };
+const StyledHeader = styled.View`
+  margin-left: 10px;
+  margin-right: 10px;
+`;
+
+export { styles, WrapperStyle, CouponListContainer, StyledHeader };
