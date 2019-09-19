@@ -31,13 +31,9 @@ exports[`CnC template should render correctly 1`] = `
       <Connect(OrderLedgerContainer) />
       <[object Object] />
       <Connect(AirmilesBannerContainer) />
-      <div
-        className="couponsWrapperAccordian"
-      >
-        <Connect(CouponContainer)
-          showAccordian={true}
-        />
-      </div>
+      <Connect(CouponContainer)
+        showAccordian={true}
+      />
     </Styled(Col)>
   </Styled(Row)>
 </section>

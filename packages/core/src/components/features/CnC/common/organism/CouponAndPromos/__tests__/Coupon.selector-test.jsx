@@ -143,7 +143,6 @@ describe('#Coupon selector', () => {
             lbl_couponlist_rewards: 'rewards',
             lbl_couponlist_savings: 'saving',
             lbl_couponlist_expiring: 'expire',
-            lbl_coupon_collapsible_header: 'REWARDS & OFFERS',
           },
         },
       },
@@ -174,7 +173,6 @@ describe('#Coupon selector', () => {
       USE_BY_TEXT: 'use',
       COUPON_VALIDITY: 'Validity',
       SEE_REDEEM_DATES: 'See Redeem Dates',
-      REWARDS_OFFERS_COLLAPSIBLE_HEADING: 'REWARDS & OFFERS',
     });
   });
 });
