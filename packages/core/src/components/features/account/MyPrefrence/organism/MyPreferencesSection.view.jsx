@@ -12,6 +12,7 @@ import Anchor from '../../../../common/atoms/Anchor';
 import InputCheckbox from '../../../../common/atoms/InputCheckbox';
 import { getIconPath } from '../../../../../utils';
 import SocialContainer from '../../../../common/organisms/SocialAccount/container/Social.container';
+import MyFavoriteStore from '../../MyProfile/organism/MyFavoriteStore';
 
 class MyPrefrenceSection extends React.PureComponent {
   render() {
@@ -33,7 +34,7 @@ class MyPrefrenceSection extends React.PureComponent {
               fontSize="fs16"
               fontWeight="extrabold"
             >
-              {getLabelValue(labels, 'lbl_prefrence_favorite_store')}
+              <MyFavoriteStore isMyPreferences />
             </BodyCopy>
           </Col>
           <Col
@@ -120,7 +121,7 @@ class MyPrefrenceSection extends React.PureComponent {
                     {getLabelValue(labels, 'lbl_prefrence_app_text')}
                   </BodyCopy>
                   <Image
-                    class="elm-padding-left"
+                    class="elem-pl-XS"
                     width="17"
                     height="17"
                     src={getIconPath('icon-alarm')}
@@ -164,12 +165,7 @@ class MyPrefrenceSection extends React.PureComponent {
                   >
                     {getLabelValue(labels, 'lbl_prefrence_text_text')}
                   </BodyCopy>
-                  <Image
-                    class="elm-padding-left"
-                    width="17"
-                    height="17"
-                    src={getIconPath('icon-chat')}
-                  />
+                  <Image class="elem-pl-XS" width="17" height="17" src={getIconPath('icon-chat')} />
 
                   <Field
                     name="primary"

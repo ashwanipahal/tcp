@@ -174,7 +174,7 @@ class ProfileInformation extends React.PureComponent {
               }}
               className="profileInfoCol elem-mb-XL"
             >
-              <MyFavoriteStore labels={labels} defaultStore={defaultStore} />
+              <MyFavoriteStore />
             </Col>
           )}
           {userSurvey && userSurvey.getIn(['0', '0']) && (
