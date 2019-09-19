@@ -25,6 +25,7 @@ export class CouponContainer extends React.PureComponent<Props> {
       needHelpRichText,
       handleErrorCoupon,
       isCheckout,
+      showAccordian,
     } = this.props;
     const updateLabels = { ...labels, NEED_HELP_RICH_TEXT: needHelpRichText };
     return (
@@ -38,6 +39,7 @@ export class CouponContainer extends React.PureComponent<Props> {
         appliedCouponList={appliedCouponList}
         availableCouponList={availableCouponList}
         handleErrorCoupon={handleErrorCoupon}
+        showAccordian={showAccordian}
       />
     );
   }

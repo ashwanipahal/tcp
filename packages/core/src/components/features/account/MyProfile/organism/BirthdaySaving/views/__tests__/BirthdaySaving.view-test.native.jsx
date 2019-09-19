@@ -1,14 +1,10 @@
 import React from 'react';
 import { shallow } from 'enzyme';
-import { BirthdaySaving } from '../BirthdaySaving.view.native';
+import BirthdaySaving from '../BirthdaySaving.view.native';
 
-describe('BirthdaySaving', () => {
+describe('BirthdaySaving component', () => {
   it('should render correctly', () => {
-    const props = {
-      labels: {},
-      handleComponentChange: () => {},
-    };
-    const tree = shallow(<BirthdaySaving {...props} />);
-    expect(tree).toMatchSnapshot();
+    const component = shallow(<BirthdaySaving />);
+    expect(component).toMatchSnapshot();
   });
 });
