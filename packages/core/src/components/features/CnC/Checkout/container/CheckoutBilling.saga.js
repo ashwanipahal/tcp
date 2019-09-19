@@ -178,24 +178,22 @@ export default function* submitBilling(payload = {}, loadUpdatedCheckoutValues) 
   try {
     // TODO need to remove as it is temp fix to deliver review page for app
     const { payload: { navigation, ...formData } = {} } = payload;
-    if (!isMobileApp()) {
-      formData.phoneNumber = formData.phoneNumber || '';
-      const {
-        addressLine1: address1,
-        addressLine2: address2,
-        city,
-        country,
-        firstName,
-        lastName,
-        state,
-        zipCode: zip,
-      } = formData.address;
-      const address = { address1, address2, city, country, firstName, lastName, state, zip };
-      yield put(getSetIsBillingVisitedActn(true)); // flag that billing section was visited by the user
-      const isPaymentDisabled = yield select(getIsPaymentDisabled);
-      if (!isPaymentDisabled) {
-        yield call(submitBillingData, formData, address, loadUpdatedCheckoutValues);
-      }
+    formData.phoneNumber = formData.phoneNumber || '';
+    const {
+      addressLine1: address1,
+      addressLine2: address2,
+      city,
+      country,
+      firstName,
+      lastName,
+      state,
+      zipCode: zip,
+    } = formData.address;
+    const address = { address1, address2, city, country, firstName, lastName, state, zip };
+    yield put(getSetIsBillingVisitedActn(true)); // flag that billing section was visited by the user
+    const isPaymentDisabled = yield select(getIsPaymentDisabled);
+    if (!isPaymentDisabled) {
+      yield call(submitBillingData, formData, address, loadUpdatedCheckoutValues);
     }
     if (!isMobileApp()) {
       utility.routeToPage(CHECKOUT_ROUTES.reviewPage);
