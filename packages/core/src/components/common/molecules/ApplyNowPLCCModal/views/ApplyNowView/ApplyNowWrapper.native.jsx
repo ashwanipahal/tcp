@@ -1,7 +1,16 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import { Text } from 'react-native';
+import { Image, Button } from '../../../../atoms';
 import ModalNative from '../../../Modal/view/Modal.native';
+import {
+  ImageContainer,
+  StyledBodyCopy,
+  ScrollViewContainer,
+  ButtonWrapper,
+} from '../../styles/ApplyNowView.style.native';
+import { getLabelValue } from '../../../../../../utils/utils';
+
+const headerImage = require('../../../../../../assets/tcp-cc.png');
 
 class ApplyNowModalWrapper extends React.PureComponent {
   onClose = () => {
@@ -34,7 +43,40 @@ class ApplyNowModalWrapper extends React.PureComponent {
         headerStyle={fullWidth}
         isOpen={applyNow}
       >
-        <Text>Hello</Text>
+        <ScrollViewContainer>
+          <StyledBodyCopy
+            color="gray.900"
+            mobilefontFamily="primary"
+            fontSize="fs36"
+            textAlign="center"
+            fontWeight="black"
+            text={getLabelValue(labels, 'apply_now_header')}
+            paddingTop="30px"
+          />
+
+          <ImageContainer>
+            <Image source={headerImage} width="45%" height="112px" />
+          </ImageContainer>
+
+          <StyledBodyCopy
+            color="gray.900"
+            fontFamily="secondary"
+            fontSize="fs14"
+            textAlign="center"
+            text={getLabelValue(labels, 'apply_now_subheader')}
+            paddingTop="9px"
+          />
+          <ButtonWrapper>
+            <Button
+              fill="BLUE"
+              type="submit"
+              color="white"
+              buttonVariation="variable-width"
+              text="SUBMIT TO OPEN AN ACCOUNT"
+              width="90%"
+            />
+          </ButtonWrapper>
+        </ScrollViewContainer>
       </ModalNative>
     );
   }
