@@ -2,7 +2,7 @@
 
 exports[`ProfileInfoActions should render correctly for empty state 1`] = `
 <MyProfileTile
-  birthdaySaving={true}
+  birthdaySaving={false}
   ctaLink="accountOverviewMobile"
   ctaTitle=""
   handleComponentChange={[Function]}
@@ -81,7 +81,7 @@ exports[`ProfileInfoActions should render correctly for empty state 1`] = `
 
 exports[`ProfileInfoActions should render correctly for filled state 1`] = `
 <MyProfileTile
-  birthdaySaving={true}
+  birthdaySaving={false}
   ctaLink="accountOverviewMobile"
   ctaTitle=""
   handleComponentChange={[Function]}

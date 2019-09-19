@@ -15,6 +15,17 @@ export const MyProfileTile = ({
   birthdaySaving,
 }) => {
   const isCtaPresent = !!ctaTitle;
+
+  const styling = () => {
+    if (isCtaPresent) {
+      if (birthdaySaving) {
+        return 'margin-bottom-LRG';
+      }
+      return 'margin-bottom-XXL';
+    }
+    return '';
+  };
+
   return (
     <ViewWithSpacing spacingStyles="margin-bottom-XXXL">
       {!!title && (
@@ -26,11 +37,7 @@ export const MyProfileTile = ({
           spacingStyles="margin-bottom-MED"
         />
       )}
-      <ViewWithSpacing
-        spacingStyles={isCtaPresent && birthdaySaving ? 'margin-bottom-XXL' : 'margin-bottom-LRG'}
-      >
-        {children}
-      </ViewWithSpacing>
+      <ViewWithSpacing spacingStyles={styling()}>{children}</ViewWithSpacing>
       {isCtaPresent && (
         <CustomButton
           fill="BLUE"
@@ -59,7 +66,7 @@ MyProfileTile.defaultProps = {
   ctaTitle: '',
   ctaLink: 'accountOverviewMobile',
   handleComponentChange: () => {},
-  birthdaySaving: true,
+  birthdaySaving: false,
 };
 
 export default MyProfileTile;
