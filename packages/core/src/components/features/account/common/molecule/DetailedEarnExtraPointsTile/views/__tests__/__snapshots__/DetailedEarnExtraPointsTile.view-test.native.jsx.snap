@@ -1,7 +1,20 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
 exports[`Detailed Earn Extra Points Tile component  should render Detailed Earn Extra Points Tile component Correctly 1`] = `
-<Styled(View)>
+<Styled(View)
+  style={
+    Object {
+      "elevation": 5,
+      "shadowColor": "#6d7278",
+      "shadowOffset": Object {
+        "height": 2,
+        "width": 0,
+      },
+      "shadowOpacity": 0.3,
+      "shadowRadius": 5,
+    }
+  }
+>
   <Styled(Anchor)
     accessibilityLabel=""
     anchorVariation=""

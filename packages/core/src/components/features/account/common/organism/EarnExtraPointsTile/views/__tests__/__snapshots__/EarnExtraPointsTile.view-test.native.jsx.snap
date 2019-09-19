@@ -28,12 +28,6 @@ exports[`Earn Extra Points Tile app component  should render Earn Extra Points T
     <View>
       <WithTheme(SnapCarousel)
         autoplay={false}
-        carouselConfig={
-          Object {
-            "enableSnap": false,
-            "loop": false,
-          }
-        }
         darkArrow={true}
         data={
           Array [
@@ -47,6 +41,12 @@ exports[`Earn Extra Points Tile app component  should render Earn Extra Points T
           ]
         }
         height={220}
+        options={
+          Object {
+            "enableSnap": false,
+            "loop": false,
+          }
+        }
         renderItem={[Function]}
         showDots={true}
         variation="show-arrow"

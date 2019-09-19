@@ -1,6 +1,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import { BodyCopy, Anchor } from '@tcp/core/src/components/common/atoms';
+import createThemeColorPalette from '@tcp/core/styles/themes/createThemeColorPalette';
 import {
   TileWrapper,
   EarnPointDesc,
@@ -18,6 +19,13 @@ const AddMailingAddressImage = require('../../../../../../../assets/mailingAddre
 const AddFavoriteStoreImage = require('../../../../../../../assets/store.png');
 const AddShopperTypeImage = require('../../../../../../../assets/survey.png');
 
+const colorPalette = createThemeColorPalette();
+
+/**
+ * DetailedEarnExtraPointsTile component used for show details earn extra points.
+ * @sourceMap - sourceMap object for images path
+ */
+
 const sourceMap = {
   AppDownload: AppDownloadImage,
   ProductReview: ProductReviewImage,
@@ -29,6 +37,12 @@ const sourceMap = {
   AddFavoriteStore: AddFavoriteStoreImage,
   AddShopperType: AddShopperTypeImage,
 };
+
+/**
+ * DetailedEarnExtraPointsTile component used for show details earn extra points.
+ * @param - Received object of waysToEarnRow data
+ * @param - Received object of label from cms
+ */
 
 export class DetailedEarnExtraPointsTile extends React.PureComponent {
   static propTypes = {
@@ -43,11 +57,19 @@ export class DetailedEarnExtraPointsTile extends React.PureComponent {
     waysToEarnRow: {},
   };
 
+  boxWithShadow = {
+    shadowColor: colorPalette.gray[1000],
+    shadowOffset: { width: 0, height: 2 },
+    shadowOpacity: 0.3,
+    shadowRadius: 5,
+    elevation: 5,
+  };
+
   render() {
     const { waysToEarnRow, handleComponentChange } = this.props;
 
     return (
-      <TileWrapper>
+      <TileWrapper style={this.boxWithShadow}>
         <Anchor onPress={() => handleComponentChange('accountOverviewMobile')}>
           <EarnExtraPointsTileImage>
             <ImageSize source={sourceMap[waysToEarnRow.activityCode]} />

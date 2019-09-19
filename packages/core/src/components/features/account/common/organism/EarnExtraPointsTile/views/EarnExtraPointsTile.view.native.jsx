@@ -5,6 +5,11 @@ import { BodyCopy, Anchor } from '@tcp/core/src/components/common/atoms';
 import { getScreenWidth, getLabelValue } from '@tcp/core/src/utils';
 import Carousel from '@tcp/core/src/components/common/molecules/Carousel';
 import DetailedEarnExtraPointsTile from '../../../molecule/DetailedEarnExtraPointsTile';
+
+/**
+ * used style component for give style to EarnExtraPointsTile component
+ */
+
 import {
   EarnExtraPointsHeading,
   EarnExtraPointsWrapper,
@@ -24,6 +29,10 @@ const MODULE_WIDTH = getScreenWidth() - 30;
  */
 
 class EarnExtraPointsTile extends PureComponent {
+  /**
+   * @renderView function used for provide view data for carousel
+   */
+
   renderView = ({ item }) => {
     const { labels, ...otherProps } = this.props;
     return (
@@ -70,7 +79,7 @@ class EarnExtraPointsTile extends PureComponent {
               showDots
               darkArrow
               autoplay={false}
-              carouselConfig={{
+              options={{
                 enableSnap: false,
                 loop: false,
               }}
