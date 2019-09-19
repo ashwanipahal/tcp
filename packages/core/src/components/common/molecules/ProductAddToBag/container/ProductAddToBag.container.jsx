@@ -116,7 +116,9 @@ class ProductAddToBagContainer extends React.PureComponent<Props> {
         name: colorFitsSizesMapEntry.color.name,
       },
       Fit: colorFitsSizesMapEntry.hasFits
-        ? this.getDefaultFitForColorSlice(colorFitsSizesMapEntry).fitNameVal
+        ? {
+            name: this.getDefaultFitForColorSlice(colorFitsSizesMapEntry).fitNameVal,
+          }
         : null,
       Size: currentProduct.isGiftCard
         ? currentProduct.colorFitsSizesMap[0].fits[0].sizes[0].sizeName // on gift card we need something selected, otherwise no price would show up
