@@ -1,6 +1,6 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`StoreSearch component StoreSearch component renders correctly without props 1`] = `
+exports[`StoreSearch component StoreSearch component renders correctly props 1`] = `
 <Hoc
   destroyOnUnmount={true}
   enableReinitialize={true}
