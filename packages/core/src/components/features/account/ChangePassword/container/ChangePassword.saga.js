@@ -13,8 +13,11 @@ export function* ChangePassword({ payload }) {
     let error = {};
     /* istanbul ignore else */
     error = err;
-    if (error) {
+    if (error && error.errorResponse) {
       return yield put(changePasswordError(error.errorResponse));
+    }
+    if (error.response.body) {
+      return yield put(changePasswordError(error.response.body.errors[0]));
     }
   }
 }
