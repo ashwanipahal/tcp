@@ -50,11 +50,7 @@ const buildQuery = ({ slot, contentId }) => `
 
 			linkedImage {
 				link {
-          url
-          alt
-          crop_d
-          crop_t
-          crop_m
+					url
 				}
 				image {
 					url
