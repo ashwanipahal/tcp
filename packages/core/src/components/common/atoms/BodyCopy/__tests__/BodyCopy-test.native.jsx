@@ -4,9 +4,16 @@ import { BodyCopyVanilla } from '../views/BodyCopy.native';
 
 describe('HeadingVanilla', () => {
   let component;
+  const props = {
+    dataLocator: '',
+    accessibilityText: '',
+    margin: null,
+    textDecoration: null,
+    numberOfLines: null,
+  };
 
   beforeEach(() => {
-    component = shallow(<BodyCopyVanilla />);
+    component = shallow(<BodyCopyVanilla {...props} />);
   });
 
   it('should be defined', () => {
@@ -18,6 +25,6 @@ describe('HeadingVanilla', () => {
   });
 
   it('should return abc component value one', () => {
-    expect(component.find('Text')).toHaveLength(1);
+    expect(component.find('Styled(Text)')).toHaveLength(1);
   });
 });

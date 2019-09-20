@@ -80,7 +80,7 @@ class EarnExtraPointsTile extends PureComponent {
               darkArrow
               autoplay={false}
               options={{
-                enableSnap: false,
+                enableSnap: true,
                 loop: false,
               }}
             />

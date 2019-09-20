@@ -7,26 +7,36 @@ exports[`BonusPointsAvailabilityVanilla should render correctly 1`] = `
     onPress={[Function]}
   >
     <Styled(BodyCopy)
+      accessibilityText=""
       color="#4a4a4a"
+      dataLocator=""
       fontFamily="secondary"
       fontSize="fs10"
       fontWeight="extrabold"
       letterSpacing="ls071"
+      margin={null}
+      numberOfLines={null}
       text="Available For Future Use"
       textAlign="center"
+      textDecoration={null}
     />
   </Styled(TouchableOpacity)>
   <Styled(View)
     index={1}
   >
     <Styled(BodyCopy)
+      accessibilityText=""
       color="#4a4a4a"
+      dataLocator=""
       fontFamily="secondary"
       fontSize="fs10"
       fontWeight="extrabold"
       letterSpacing="ls071"
+      margin={null}
+      numberOfLines={null}
       text="Applied to Order"
       textAlign="center"
+      textDecoration={null}
     />
   </Styled(View)>
 </Styled(View)>
@@ -39,13 +49,18 @@ exports[`BonusPointsAvailabilityVanilla should render correctly with 1 bonus poi
     onPress={[Function]}
   >
     <Styled(BodyCopy)
+      accessibilityText=""
       color="#4a4a4a"
+      dataLocator=""
       fontFamily="secondary"
       fontSize="fs10"
       fontWeight="extrabold"
       letterSpacing="ls071"
+      margin={null}
+      numberOfLines={null}
       text="Available For Future Use"
       textAlign="center"
+      textDecoration={null}
     />
   </Styled(TouchableOpacity)>
 </Styled(View)>

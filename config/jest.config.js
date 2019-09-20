@@ -18,6 +18,7 @@ const ignorePsuedoCodeDir = [
   '/FPO/',
   '/services/abstractors/CnC/Checkout.js',
   '/GoogleAutoSuggest/',
+  '/utils/localStorageManagement.js',
 ];
 
 module.exports = {

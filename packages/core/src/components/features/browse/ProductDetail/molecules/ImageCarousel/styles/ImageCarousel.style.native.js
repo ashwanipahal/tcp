@@ -9,6 +9,29 @@ const Container = styled.View`
   width: 100%;
 `;
 
+const FavoriteAndPaginationContainer = styled.View`
+  justify-content: space-between;
+  flex-direction: row;
+  align-items: center;
+  width: 100%;
+`;
+
+const FavoriteContainer = styled.View`
+  flex-direction: row;
+  align-items: center;
+`;
+
+const DownloadContainer = styled.View`
+  width: 20;
+`;
+
 const styles = css``;
 
-export { styles, Container, ImageTouchableOpacity };
+export {
+  styles,
+  Container,
+  FavoriteAndPaginationContainer,
+  FavoriteContainer,
+  DownloadContainer,
+  ImageTouchableOpacity,
+};
