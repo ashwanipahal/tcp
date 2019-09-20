@@ -30,10 +30,9 @@ export const mapStateToProps = state => {
     getInternationalCheckoutUrl,
   } = selectors;
   return {
-    apiUrl: getInternationalCheckoutApiUrl(), // 'https://checkout.fiftyone.com/htmlcheckout/resources/js/merchant.js', // checkoutStoreView.getInternationalCheckoutApiUrl(state),
-    communicationUrl: getInternationalCheckoutCommUrl(), // 'https://embassy.fiftyone.com/utils/empty.jsp', //checkoutStoreView.getInternationalCheckoutCommUrl(state),
+    apiUrl: getInternationalCheckoutApiUrl(),
+    communicationUrl: getInternationalCheckoutCommUrl(),
     iframeUrl: getInternationalCheckoutUrl(state),
-    // 'https://checkout.fiftyone.com/v5#/checkout/E4X001065011973-zpyE6lNUNrv0HYeefyGrAzIToiGHJwDl_1yy2xMgI80_CB?version=e5_0&merchantid=2300&method=default&consumeraccountenabled=Y', // checkoutStoreView.getInternationalCheckoutUrl(state),
     isLoading: false,
   };
 };
