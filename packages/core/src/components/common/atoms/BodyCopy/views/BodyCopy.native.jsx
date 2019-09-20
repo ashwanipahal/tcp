@@ -1,37 +1,40 @@
-// @flow
 import React from 'react';
-import { Text } from 'react-native';
-import BodyCopyStyles from '../BodyCopy.style.native';
+import PropTypes from 'prop-types';
+import { setTestId, getLocator } from '@tcp/core/src/utils';
+import BodyCopyText from '../BodyCopy.style.native';
 import withStyles from '../../../hoc/withStyles.native';
-import { getLocator } from '../../../../../utils/index.native';
 
-type Props = {
-  text: string,
-  locator: string,
-  accessibilityText: string,
-};
-
-const BodyCopy = (props: Props) => {
-  const { text, locator, accessibilityText, ...otherProps } = props;
-  const accessibText = accessibilityText || ' ';
-  const textValue = accessibText.concat(text);
+const BodyCopy = props => {
+  const { text, dataLocator, accessibilityText, numberOfLines, ...otherProps } = props;
+  const textValue = accessibilityText.concat(text);
   return (
-    <Text
-      {...otherProps}
-      testID={getLocator(locator)}
+    <BodyCopyText
+      {...numberOfLines && { numberOfLines }}
+      {...setTestId(getLocator(dataLocator))}
       accessibilityRole="text"
       accessibilityLabel={textValue}
+      {...otherProps}
     >
       {text}
-    </Text>
+    </BodyCopyText>
   );
 };
 
-// BodyCopy.defaultProps = {
-//   text: '',
-//   locator: '',
-//   accessibilityText: '',
-// };
+BodyCopy.propTypes = {
+  text: PropTypes.string.isRequired,
+  dataLocator: PropTypes.string,
+  accessibilityText: PropTypes.string,
+  margin: PropTypes.string,
+  textDecoration: PropTypes.string,
+  numberOfLines: PropTypes.number,
+};
 
-export default withStyles(BodyCopy, BodyCopyStyles);
+BodyCopy.defaultProps = {
+  dataLocator: '',
+  accessibilityText: '',
+  margin: null,
+  textDecoration: null,
+  numberOfLines: null,
+};
+export default withStyles(BodyCopy);
 export { BodyCopy as BodyCopyVanilla };

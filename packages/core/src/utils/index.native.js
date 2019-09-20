@@ -17,6 +17,7 @@ export {
   isAndroid,
   getPixelRatio,
   LAZYLOAD_HOST_NAME,
+  setTestId,
 } from './utils.app';
 
 export { default, getSiteId } from './utils.app';
@@ -41,4 +42,5 @@ export {
   toTimeString,
   getPromotionalMessage,
   getBirthDateOptionMap,
+  calculateAge,
 } from './utils';

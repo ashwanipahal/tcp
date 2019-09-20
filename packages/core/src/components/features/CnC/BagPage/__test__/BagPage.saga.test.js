@@ -12,6 +12,7 @@ import {
   authorizePayPalPayment,
   routeForCartCheckout,
   addItemToSFL,
+  getSflDataSaga,
 } from '../container/BagPage.saga';
 import BAG_PAGE_ACTIONS from '../container/BagPage.actions';
 import BAGPAGE_CONSTANTS from '../BagPage.constants';
@@ -162,5 +163,22 @@ describe('Bag SFL Saga', () => {
     takeLatestDescriptor = generator.next(res).value;
     takeLatestDescriptor = generator.next(res).value;
     expect(takeLatestDescriptor).toEqual(put(BAG_PAGE_ACTIONS.setCartItemsSFL(true)));
+  });
+
+  it('get all sfl data', () => {
+    const sflItemsData = {
+      productInfo: {},
+      itemInfo: {},
+      miscInfo: {},
+    };
+    const res = {
+      sflItems: sflItemsData,
+    };
+    const generator = getSflDataSaga({});
+
+    let takeLatestDescriptor = generator.next().value;
+    takeLatestDescriptor = generator.next(res).value;
+    takeLatestDescriptor = generator.next(res).value;
+    expect(takeLatestDescriptor).toEqual(put(BAG_PAGE_ACTIONS.setSflData(sflItemsData)));
   });
 });

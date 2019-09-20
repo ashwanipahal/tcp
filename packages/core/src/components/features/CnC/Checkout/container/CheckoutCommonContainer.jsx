@@ -55,6 +55,7 @@ const {
   getSyncError,
   getGiftWrappingValues,
   getReviewLabels,
+  getBillingValues,
 } = selectors;
 
 export class CheckoutContainer extends React.Component<Props> {
@@ -240,6 +241,8 @@ const mapStateToProps = state => {
     billingProps: {
       labels: getBillingLabels(state),
       shippingAddress: getShippingAddress(state),
+      billingData: getBillingValues(state),
+      userAddresses: getAddressListState(state),
     },
     // isAddressVerifyModalOpen: addressesStoreView.isVerifyAddressModalOpen(state),
     // onPickupSubmit: storeOperators.checkoutFormOperator.submitPickupSection,

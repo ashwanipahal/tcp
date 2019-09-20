@@ -3,12 +3,19 @@
 exports[`TrackOrderBottomSection component should renders correctly 1`] = `
 <Styled(View)>
   <Styled(View)>
-    <Styled(BodyCopy) />
+    <Styled(BodyCopy)
+      accessibilityText=""
+      dataLocator=""
+      margin={null}
+      numberOfLines={null}
+      textDecoration={null}
+    />
     <Styled(View)>
       <Styled(Anchor)
         accessibilityLabel="undefined
                 undefined"
         anchorVariation="primary"
+        colorName={null}
         customStyle={Object {}}
         data-locator="track_order_login"
         locator=""
@@ -17,7 +24,13 @@ exports[`TrackOrderBottomSection component should renders correctly 1`] = `
         underline={true}
         visible={false}
       />
-      <Styled(BodyCopy) />
+      <Styled(BodyCopy)
+        accessibilityText=""
+        dataLocator=""
+        margin={null}
+        numberOfLines={null}
+        textDecoration={null}
+      />
     </Styled(View)>
   </Styled(View)>
   <Styled(View)>
@@ -25,6 +38,7 @@ exports[`TrackOrderBottomSection component should renders correctly 1`] = `
       accessibilityLabel="undefined
                 undefined"
       anchorVariation="primary"
+      colorName={null}
       customStyle={Object {}}
       locator="track_order_click_here"
       onPress={null}
@@ -32,7 +46,13 @@ exports[`TrackOrderBottomSection component should renders correctly 1`] = `
       underline={true}
       visible={false}
     />
-    <Styled(BodyCopy) />
+    <Styled(BodyCopy)
+      accessibilityText=""
+      dataLocator=""
+      margin={null}
+      numberOfLines={null}
+      textDecoration={null}
+    />
   </Styled(View)>
 </Styled(View)>
 `;

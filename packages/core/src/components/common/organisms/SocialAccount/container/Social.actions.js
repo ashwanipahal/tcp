@@ -20,4 +20,11 @@ const saveSocialAccount = payload => {
   };
 };
 
-export { getSocialAccount, saveSocialAccount, setSocialAccount };
+const showPointModalDetails = payload => {
+  return {
+    type: SOCIAL_CONSTANTS.POINT_MODAL_MOUNT_STATE,
+    payload,
+  };
+};
+
+export { getSocialAccount, saveSocialAccount, setSocialAccount, showPointModalDetails };

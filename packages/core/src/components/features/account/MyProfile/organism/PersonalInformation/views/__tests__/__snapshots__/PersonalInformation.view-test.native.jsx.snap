@@ -3,6 +3,7 @@
 exports[`PersonalInformation component should render correctly 1`] = `
 <Fragment>
   <MyProfileTile
+    birthdaySaving={false}
     ctaLink="accountOverviewMobile"
     ctaTitle="Edit personal Info"
     handleComponentChange={[Function]}
@@ -40,6 +41,7 @@ exports[`PersonalInformation component should render correctly 1`] = `
 exports[`PersonalInformation component should render emptyu correctly 1`] = `
 <Fragment>
   <MyProfileTile
+    birthdaySaving={false}
     ctaLink="accountOverviewMobile"
     ctaTitle=""
     handleComponentChange={[Function]}

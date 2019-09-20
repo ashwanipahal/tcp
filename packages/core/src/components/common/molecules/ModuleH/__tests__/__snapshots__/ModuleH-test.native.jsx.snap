@@ -6,6 +6,7 @@ exports[`ModuleH component renders correctly 1`] = `
     <Styled(Anchor)
       accessibilityLabel=""
       anchorVariation=""
+      colorName={null}
       customStyle={Object {}}
       key="0"
       locator=""
@@ -29,6 +30,7 @@ exports[`ModuleH component renders correctly 1`] = `
     <Styled(Anchor)
       accessibilityLabel=""
       anchorVariation=""
+      colorName={null}
       customStyle={Object {}}
       key="1"
       locator=""
@@ -162,6 +164,7 @@ exports[`ModuleH component renders correctly 1`] = `
     <Styled(Anchor)
       accessibilityLabel=""
       anchorVariation=""
+      colorName={null}
       customStyle={Object {}}
       locator=""
       onPress={null}
@@ -170,11 +173,15 @@ exports[`ModuleH component renders correctly 1`] = `
       visible={false}
     >
       <Styled(BodyCopy)
+        accessibilityText=""
         color="white"
+        dataLocator=""
         fontSize="fs22"
         fontWeight="black"
         key="0"
+        margin={null}
         mobilefontFamily="secondary"
+        numberOfLines={null}
         style={
           Object {
             "marginTop": 16,
@@ -184,11 +191,13 @@ exports[`ModuleH component renders correctly 1`] = `
         testID="moduleH_cta_links_1"
         text="Toddler Girl"
         textAlign="left"
+        textDecoration={null}
       />
     </Styled(Anchor)>
     <Styled(Anchor)
       accessibilityLabel=""
       anchorVariation=""
+      colorName={null}
       customStyle={Object {}}
       locator=""
       onPress={null}
@@ -197,11 +206,15 @@ exports[`ModuleH component renders correctly 1`] = `
       visible={false}
     >
       <Styled(BodyCopy)
+        accessibilityText=""
         color="white"
+        dataLocator=""
         fontSize="fs22"
         fontWeight={null}
         key="1"
+        margin={null}
         mobilefontFamily="secondary"
+        numberOfLines={null}
         style={
           Object {
             "marginTop": 16,
@@ -211,11 +224,13 @@ exports[`ModuleH component renders correctly 1`] = `
         testID="moduleH_cta_links_2"
         text="Girl"
         textAlign="left"
+        textDecoration={null}
       />
     </Styled(Anchor)>
     <Styled(Anchor)
       accessibilityLabel=""
       anchorVariation=""
+      colorName={null}
       customStyle={Object {}}
       locator=""
       onPress={null}
@@ -224,11 +239,15 @@ exports[`ModuleH component renders correctly 1`] = `
       visible={false}
     >
       <Styled(BodyCopy)
+        accessibilityText=""
         color="white"
+        dataLocator=""
         fontSize="fs22"
         fontWeight={null}
         key="2"
+        margin={null}
         mobilefontFamily="secondary"
+        numberOfLines={null}
         style={
           Object {
             "marginTop": 16,
@@ -238,11 +257,13 @@ exports[`ModuleH component renders correctly 1`] = `
         testID="moduleH_cta_links_3"
         text="Toddler boy"
         textAlign="left"
+        textDecoration={null}
       />
     </Styled(Anchor)>
     <Styled(Anchor)
       accessibilityLabel=""
       anchorVariation=""
+      colorName={null}
       customStyle={Object {}}
       locator=""
       onPress={null}
@@ -251,11 +272,15 @@ exports[`ModuleH component renders correctly 1`] = `
       visible={false}
     >
       <Styled(BodyCopy)
+        accessibilityText=""
         color="white"
+        dataLocator=""
         fontSize="fs22"
         fontWeight={null}
         key="3"
+        margin={null}
         mobilefontFamily="secondary"
+        numberOfLines={null}
         style={
           Object {
             "marginTop": 16,
@@ -265,11 +290,13 @@ exports[`ModuleH component renders correctly 1`] = `
         testID="moduleH_cta_links_4"
         text="Boy"
         textAlign="left"
+        textDecoration={null}
       />
     </Styled(Anchor)>
     <Styled(Anchor)
       accessibilityLabel=""
       anchorVariation=""
+      colorName={null}
       customStyle={Object {}}
       locator=""
       onPress={null}
@@ -278,11 +305,15 @@ exports[`ModuleH component renders correctly 1`] = `
       visible={false}
     >
       <Styled(BodyCopy)
+        accessibilityText=""
         color="white"
+        dataLocator=""
         fontSize="fs22"
         fontWeight={null}
         key="4"
+        margin={null}
         mobilefontFamily="secondary"
+        numberOfLines={null}
         style={
           Object {
             "marginTop": 16,
@@ -292,6 +323,7 @@ exports[`ModuleH component renders correctly 1`] = `
         testID="moduleH_cta_links_5"
         text="Baby"
         textAlign="left"
+        textDecoration={null}
       />
     </Styled(Anchor)>
   </Styled(View)>
