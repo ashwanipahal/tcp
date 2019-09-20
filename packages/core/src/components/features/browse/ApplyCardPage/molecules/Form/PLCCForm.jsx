@@ -3,6 +3,7 @@ import { Field, reduxForm } from 'redux-form';
 import PropTypes from 'prop-types';
 import { BodyCopy, Button, Col, Row } from '../../../../../common/atoms';
 import { Grid } from '../../../../../common/molecules';
+// import { getLabelValue } from '../../../../../../utils';
 import createValidateMethod from '../../../../../../utils/formValidation/createValidateMethod';
 import InputCheckBox from '../../../../../common/atoms/InputCheckbox';
 import getStandardConfig from '../../../../../../utils/formValidation/validatorStandardConfig';
