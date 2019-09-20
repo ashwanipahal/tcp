@@ -2,6 +2,10 @@ import { loadComponentLabelsData } from '@tcp/core/src/reduxStore/actions';
 import { LABELS } from '@tcp/core/src/reduxStore/constants';
 import constants from '../Checkout.constants';
 
+/**
+ * @function initCheckoutAction
+ * action creator for type: INIT_CHECKOUT
+ */
 export const initCheckoutAction = () => ({
   type: constants.INIT_CHECKOUT,
 });
@@ -437,7 +441,11 @@ export const initIntlCheckoutAction = payload => ({
   type: constants.INIT_INTL_CHECKOUT,
   payload,
 });
-
+/**
+ * @function getSetIntlUrl
+ *  @param { object } internationalUrl
+ * action creator for type: CHECKOUT_ORDER_OPTIONS_SET_INTL_URL
+ */
 export const getSetIntlUrl = internationalUrl => {
   return {
     internationalUrl,

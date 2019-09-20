@@ -1023,6 +1023,11 @@ export function addGiftCard(args) {
     });
 }
 
+/**
+ *
+ * @function getInternationCheckoutSettings
+ * @description this method trigger internationalCheckout API call on start of international checkout journey.
+ */
 export function getInternationCheckoutSettings() {
   const apiConfig = getAPIConfig();
   const payload = {

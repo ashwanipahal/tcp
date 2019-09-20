@@ -550,14 +550,15 @@ function* initCheckout() {
   }
 }
 
+/**
+ * initIntlCheckout component. This is responsible for initiating actions required for start of international checkout journey.
+ */
 function* initIntlCheckout() {
   try {
     const res = yield call(getInternationCheckoutSettings);
     yield put(getSetIntlUrl(res.checkoutUrl));
   } catch (e) {
-    // logErrorAndServerThrow(store, 'CheckoutOperator.loadGiftWrappingOptions', e);
-    // throw e;
-    logger.error(e);
+    logger.error(`initIntlCheckout:${e}`);
   }
 }
 

@@ -3,6 +3,12 @@ import { PropTypes } from 'prop-types';
 import InternationalCheckout from '../organisms/InternationalCheckout';
 
 class InternationalCheckoutPage extends React.PureComponent {
+  /**
+   *
+   * @function render
+   * @description render method to render view for international checkout
+   * @memberof InternationalCheckoutPage
+   */
   render() {
     const { apiUrl, communicationUrl, iframeUrl } = this.props;
     return (

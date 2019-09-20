@@ -5,8 +5,8 @@ import { InternationalCheckoutVanilla } from '../organisms/InternationalCheckout
 describe('InternationalCheckoutVanilla', () => {
   const props = {
     iframeUrl: '',
-    apiUrl: '',
-    communicationUrl: '',
+    apiUrl: 'https://stagecheckout.fiftyone.com/htmlcheckout/resources/js/merchant.js',
+    communicationUrl: 'https://stagecheckout.fiftyone.com/utils/empty.jsp',
   };
 
   it('should render InternationalCheckoutVanilla section', () => {

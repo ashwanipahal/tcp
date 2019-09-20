@@ -161,6 +161,12 @@ export function* fetchModuleX({ payload = [] }) {
   }
 }
 
+/**
+ * routeForCartCheckout component. This is responsible for routing our web to specific page of checkout journey.
+ * @param {Boolean} recalc query parameter for recalculation of points
+ * @param {Object} navigation for navigating in mobile app
+ * @param {Boolean} closeModal for closing addedtoBag modal in app
+ */
 export function* routeForCartCheckout(recalc, navigation, closeModal) {
   const orderHasPickup = yield select(checkoutSelectors.getIsOrderHasPickup);
   const IsInternationalShipping = yield select(getIsInternationalShipping);

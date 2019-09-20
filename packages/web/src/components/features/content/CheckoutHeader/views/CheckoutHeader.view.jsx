@@ -8,6 +8,13 @@ import { BrandTabs } from '../../Header/molecules';
 import CheckoutProgressIndicator from '../../CheckoutProgressIndicator';
 import { getIconPath } from '../../../../../../../core/src/utils';
 
+/**
+ * This component will render the CheckoutHeader for checkout journey
+ * @param { string } className
+ * @param { Object } brandTabs Tabs
+ * @param { Object } labels Labels
+ * @param { Boolean } isInternationalShipping shipping internationally or not
+ */
 const CheckoutHeader = ({ className, brandTabs, labels, isInternationalShipping }) => {
   return (
     <header className={className}>

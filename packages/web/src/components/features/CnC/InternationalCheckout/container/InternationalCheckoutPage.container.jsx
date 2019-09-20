@@ -5,11 +5,22 @@ import selectors from '@tcp/core/src/components/features/CnC/Checkout/container/
 import InternationalCheckoutPage from '../views/InternationalCheckoutPage.view';
 
 export class InternationalCheckoutPageContainer extends React.PureComponent<Props> {
+  /**
+   * @function componentDidMount
+   * @description call international checkout settings on componentdidmount
+   * @memberof InternationalCheckoutPageContainer
+   */
   componentDidMount() {
     const { initIntlCheckout } = this.props;
     initIntlCheckout();
   }
 
+  /**
+   * @function render
+   * @description render of international checkout view
+   * @returns
+   * @memberof InternationalCheckoutPageContainer
+   */
   render() {
     const { apiUrl, communicationUrl, iframeUrl, isLoading } = this.props;
     return (
@@ -22,7 +33,12 @@ export class InternationalCheckoutPageContainer extends React.PureComponent<Prop
     );
   }
 }
-
+/**
+ *
+ * @param {*} state
+ * @function mapStateToProps
+ * @description initial props to container
+ */
 export const mapStateToProps = state => {
   const {
     getInternationalCheckoutCommUrl,
@@ -36,6 +52,12 @@ export const mapStateToProps = state => {
     isLoading: false,
   };
 };
+/**
+ *
+ * @param {*} state
+ * @function mapDispatchToProps
+ * @description initial actions to container
+ */
 export const mapDispatchToProps = dispatch => {
   return {
     initIntlCheckout: () => {
