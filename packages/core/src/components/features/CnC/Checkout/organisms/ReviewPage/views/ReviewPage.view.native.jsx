@@ -49,7 +49,6 @@ class ReviewPage extends React.PureComponent {
       orderHasShipping,
       orderHasPickUp,
     } = this.props;
-    console.log({ navigation });
     const {
       header,
       backLinkBilling,

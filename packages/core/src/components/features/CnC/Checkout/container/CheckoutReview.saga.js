@@ -150,6 +150,7 @@ export function* submitOrderProcessing(orderId, smsOrderInfo, currentLanguage) {
   // });
 }
 
+// method to handle submit of order in review page
 function* submitOrderForProcessing({ payload: { navigation } }) {
   const orderId = yield select(getCurrentOrderId);
   const smsOrderInfo = yield select(getSmsNumberForBillingOrderUpdates);
