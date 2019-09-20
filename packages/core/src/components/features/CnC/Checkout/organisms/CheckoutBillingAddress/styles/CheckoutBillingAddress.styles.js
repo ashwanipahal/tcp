@@ -12,6 +12,9 @@ const styles = css`
   .margin-right {
     margin-right: auto;
   }
+  .address-field {
+    height: auto;
+  }
 `;
 
 export default styles;

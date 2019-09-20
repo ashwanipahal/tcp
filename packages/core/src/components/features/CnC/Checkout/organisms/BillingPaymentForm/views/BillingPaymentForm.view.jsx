@@ -299,8 +299,8 @@ export class BillingPaymentForm extends React.PureComponent {
               )}
             </>
           ) : (
-            this.getAddNewCCForm()
-          )}
+              this.getAddNewCCForm()
+            )}
           <Row fullBleed className="billing-payment-subHeading">
             <Heading
               component="h2"
@@ -324,8 +324,8 @@ export class BillingPaymentForm extends React.PureComponent {
               )}
             </Row>
           ) : (
-            this.getCheckoutBillingAddress()
-          )}
+              this.getCheckoutBillingAddress()
+            )}
         </>
       </>
     );
@@ -382,7 +382,7 @@ export class BillingPaymentForm extends React.PureComponent {
               })
             ) : (
               <div className="payment-paypal-container" />
-            )}
+              )}
           </div>
         )}
         <CheckoutFooter

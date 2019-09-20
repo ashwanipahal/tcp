@@ -196,7 +196,7 @@ const PromoBanner = (props: Props) => {
 
   return [
     <ContainerView>
-      {textItems && (
+      {/* {textItems && (
         <Anchor url={link ? link.url : ''} navigation={navigation}>
           {textItems.map(({ text, style }, index) => {
             const StyleBodyCopy = bodyCopyStyles[style];
@@ -210,7 +210,7 @@ const PromoBanner = (props: Props) => {
             );
           })}
         </Anchor>
-      )}
+      )} */}
     </ContainerView>,
   ];
 };

@@ -2,6 +2,7 @@ import React from 'react';
 import { LazyloadScrollView } from 'react-native-lazyload-deux';
 import { Button } from '@tcp/core/src/components/common/atoms';
 import GetCandid from '@tcp/core/src/components/common/molecules/GetCandid/index.native';
+import { redirectToBilling } from '@tcp/core/src/components/features/CnC/Checkout/util/utility';
 import { LAZYLOAD_HOST_NAME } from '@tcp/core/src/utils';
 
 import PropTypes from 'prop-types';
@@ -70,11 +71,6 @@ class HomePageView extends React.PureComponent<Props> {
     } = this.props;
     return (
       <LazyloadScrollView name={LAZYLOAD_HOST_NAME.HOME}>
-        <HeaderPromoContainer>
-          <HeaderPromo headerPromo={headerPromo} />
-        </HeaderPromoContainer>
-        <HomePageSlots slots={slots} modules={modulesMap} navigation={navigation} />
-        <GetCandid apiConfig={apiConfig} navigation={navigation} />
         <Button
           fullWidth
           buttonVariation="variable-width"
@@ -82,7 +78,21 @@ class HomePageView extends React.PureComponent<Props> {
           onPress={() => navigation.navigate('ProductListingPageContainer')}
           style={buttonMargin}
         />
+        <Button
+          fullWidth
+          buttonVariation="variable-width"
+          text="GoTOBilling"
+          onPress={() => navigation.navigate('CheckoutBilling')}
+          style={buttonMargin}
+        />
+        <HeaderPromoContainer>
+          <HeaderPromo headerPromo={headerPromo} />
+        </HeaderPromoContainer>
+        <HomePageSlots slots={slots} modules={modulesMap} navigation={navigation} />
+        <GetCandid apiConfig={apiConfig} navigation={navigation} />
+
         <ModuleJ navigation={navigation} {...moduleJMock.moduleJ.composites} />
+
       </LazyloadScrollView>
     );
   }

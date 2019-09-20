@@ -8,6 +8,7 @@ import GiftCardsContainer from '../../GiftCardsSection';
 import CnCTemplate from '../../../../common/organism/CnCTemplate';
 import style from '../styles/BillingPage.style.native';
 import CONSTANTS from '../../../Checkout.constants';
+import GuestBillingForm from '../../GuestBillingForm';
 
 const { Container } = style;
 
@@ -38,6 +39,11 @@ class BillingPage extends React.PureComponent {
       handleSubmit,
       submitBilling,
       orderHasShipping,
+      isGuest,
+      shippingAddress,
+      cvvCodeRichText,
+      addressLabels,
+      billingData,
     } = this.props;
 
     const { header, backLinkShipping, backLinkPickup, nextSubmitText } = labels;
@@ -53,6 +59,18 @@ class BillingPage extends React.PureComponent {
           <Container>
             <CheckoutSectionTitleDisplay title={header} />
             <GiftCardsContainer />
+            <GuestBillingForm
+              shippingAddress={shippingAddress}
+              cvvCodeRichText={cvvCodeRichText}
+              labels={labels}
+              isGuest={isGuest}
+              addressLabels={addressLabels}
+              backLinkPickup={backLinkPickup}
+              backLinkShipping={backLinkShipping}
+              nextSubmitText={nextSubmitText}
+              orderHasShipping={orderHasShipping}
+              billingData={billingData}
+            />
           </Container>
           <CnCTemplate
             navigation={navigation}
