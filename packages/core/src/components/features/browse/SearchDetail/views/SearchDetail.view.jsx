@@ -41,6 +41,7 @@ const SearchListingView = ({
             >
               {slpLabels.lbl_searched_for}
               <BodyCopy
+                fontFamily="secondary"
                 className="searched-label"
                 fontSize={['fs16', 'fs16', 'fs14']}
                 fontWeight="extrabold"
