@@ -48,6 +48,7 @@ class ProductsGridItem extends React.PureComponent {
     this.handleOpenAltImages = this.handleOpenAltImages.bind(this);
     this.handleChangeColor = this.handleChangeColor.bind(this);
     this.handlePickupOpenClick = this.handlePickupOpenClick.bind(this);
+    this.handleQuickViewOpenClick = this.handleQuickViewOpenClick.bind(this);
     const {
       onQuickViewOpenClick,
       item: {
@@ -210,6 +211,25 @@ class ProductsGridItem extends React.PureComponent {
     const { selectedColorProductId } = this.state;
     const colorEntry = getMapSliceForColorProductId(colorsMap, selectedColorProductId);
     onPickUpOpenClick({
+      generalProductId,
+      initialValues: { color: colorEntry && colorEntry.color.name },
+      isBopisCtaEnabled: colorEntry.miscInfo.isBopisEligible,
+      isBossCtaEnabled: colorEntry.miscInfo.isBossEligible,
+      colorProductId: selectedColorProductId,
+    });
+  }
+
+  handleQuickViewOpenClick() {
+    const {
+      item: {
+        colorsMap,
+        productInfo: { generalProductId },
+      },
+      onQuickViewOpenClick,
+    } = this.props;
+    const { selectedColorProductId } = this.state;
+    const colorEntry = getMapSliceForColorProductId(colorsMap, selectedColorProductId);
+    onQuickViewOpenClick({
       generalProductId,
       initialValues: { color: colorEntry && colorEntry.color.name },
       isBopisCtaEnabled: colorEntry.miscInfo.isBopisEligible,
@@ -440,6 +460,7 @@ class ProductsGridItem extends React.PureComponent {
               dataLocator={dataLocatorAddToBag || getLocator('global_addtocart_Button')}
               buttonLabel={labels.addToBag}
               onPickupOpenClick={this.handlePickupOpenClick}
+              onQuickViewOpenClick={this.handleQuickViewOpenClick}
             />
           </div>
 

@@ -6,6 +6,7 @@ import { PropTypes } from 'prop-types';
 import ProductListing from '../views';
 import { getPlpProducts, getMorePlpProducts } from './ProductListing.actions';
 import { openPickupModalWithValues } from '../../../../common/organisms/PickupStoreModal/container/PickUpStoreModal.actions';
+import { openQuickViewWithValues } from '../../../../common/organisms/QuickViewCardProductCustomizeForm/container/QuickViewCardProductCustomizeForm.actions';
 import { processBreadCrumbs, getProductsAndTitleBlocks } from './ProductListing.util';
 import {
   getProductsSelect,
@@ -75,6 +76,7 @@ class ProductListingContainer extends React.PureComponent {
       getProducts,
       onSubmit,
       onPickUpOpenClick,
+      onQuickViewOpenClick,
       formValues,
       sortLabels,
       slpLabels,
@@ -100,6 +102,7 @@ class ProductListingContainer extends React.PureComponent {
         getProducts={getProducts}
         onSubmit={onSubmit}
         onPickUpOpenClick={onPickUpOpenClick}
+        onQuickViewOpenClick={onQuickViewOpenClick}
         formValues={formValues}
         sortLabels={sortLabels}
         slpLabels={slpLabels}
@@ -164,6 +167,9 @@ function mapDispatchToProps(dispatch) {
     onPickUpOpenClick: payload => {
       dispatch(openPickupModalWithValues(payload));
     },
+    onQuickViewOpenClick: payload => {
+      dispatch(openQuickViewWithValues(payload));
+    },
     getMoreProducts: payload => {
       dispatch(getMorePlpProducts(payload));
     },
@@ -175,6 +181,7 @@ function mapDispatchToProps(dispatch) {
 ProductListingContainer.propTypes = {
   getProducts: PropTypes.func.isRequired,
   onPickUpOpenClick: PropTypes.func.isRequired,
+  onQuickViewOpenClick: PropTypes.func.isRequired,
   getMoreProducts: PropTypes.func.isRequired,
   productsBlock: PropTypes.arrayOf(PropTypes.shape({})),
   categoryId: PropTypes.string.isRequired,

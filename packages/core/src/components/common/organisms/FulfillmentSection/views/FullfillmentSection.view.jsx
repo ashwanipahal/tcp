@@ -15,8 +15,14 @@ class FulfillmentSection extends React.Component {
 
   openModal = e => {
     e.preventDefault();
-    const { onPickupOpenClick } = this.props;
-    onPickupOpenClick();
+
+    // Now we call onQuickViewOpenClick
+    // const { onPickupOpenClick } = this.props;
+    // eslint-disable-next-line extra-rules/no-commented-out-code
+    // onPickupOpenClick();
+    const { onQuickViewOpenClick } = this.props;
+
+    onQuickViewOpenClick();
   };
 
   render() {
@@ -38,7 +44,8 @@ class FulfillmentSection extends React.Component {
 }
 
 FulfillmentSection.propTypes = {
-  onPickupOpenClick: PropTypes.func.isRequired,
+  // onPickupOpenClick: PropTypes.func.isRequired,
+  onQuickViewOpenClick: PropTypes.func.isRequired,
   className: PropTypes.string,
   buttonLabel: PropTypes.string,
   dataLocator: PropTypes.string,

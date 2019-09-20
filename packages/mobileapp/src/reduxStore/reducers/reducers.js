@@ -30,6 +30,7 @@ import AddMailingAddressReducer from '@tcp/core/src/components/features/account/
 import UpdateProfileReducer from '@tcp/core/src/components/features/account/AddEditPersonalInformation/container/AddEditPersonalInformation.reducer';
 import MyProfileReducer from '@tcp/core/src/components/features/account/MyProfile/container/MyProfile.reducer';
 import ProductDetailReducer from '@tcp/core/src/components/features/browse/ProductDetail/container/ProductDetail.reducer';
+import QuickViewReducer from '@tcp/core/src/components/common/organisms/QuickViewCardProductCustomizeForm/container/QuickViewCardProductCustomizeForm.reducer';
 import MyFavoriteStoreReducer from '@tcp/core/src/components/features/account/MyProfile/organism/MyFavoriteStore/container/MyFavoriteStore.reducer';
 import BirthdaySavingsListReducer from '@tcp/core/src/components/features/account/common/organism/BirthdaySavingsList/container/BirthdaySavingsList.reducer';
 
@@ -72,6 +73,7 @@ import {
   UPDATE_PROFILE_REDUCER_KEY,
   MY_PROFILE_REDUCER_KEY,
   PRODUCT_DETAIL_REDUCER_KEY,
+  QUICK_VIEW_REDUCER_KEY,
   MY_FAVORITE_STORE_REDUCER_KEY,
   BIRTHDAY_SAVING_LIST_REDUCER_KEY,
 } from '@tcp/core/src/constants/reducer.constants';
@@ -122,6 +124,7 @@ const rootReducer = combineReducers({
   [PRODUCTLISTINGPAGE_REDUCER_KEY]: filteredProductListingPageReducer,
   [PRODUCT_LISTING_REDUCER_KEY]: filteredProductListingReducer,
   [PRODUCT_DETAIL_REDUCER_KEY]: filteredProductDetailReducer,
+  [QUICK_VIEW_REDUCER_KEY]: QuickViewReducer,
   [LOGINPAGE_REDUCER_KEY]: LoginPageReducer,
   [FORGOTPASSWORD_REDUCER_KEY]: ForgotPasswordReducer,
   [PAYMENT_REDUCER_KEY]: PaymentReducer,

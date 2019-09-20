@@ -6,6 +6,7 @@ import ProductsGrid from '../molecules/ProductsGrid/views';
 import GlobalNavigationMenuDesktopL2 from '../molecules/GlobalNavigationMenuDesktopL2/views';
 import withStyles from '../../../../common/hoc/withStyles';
 import PickupStoreModal from '../../../../common/organisms/PickupStoreModal';
+import QuickViewModal from '../../../../common/organisms/QuickViewCardProductCustomizeForm/container/QuickViewCardProductCustomizeForm.container';
 
 import ProductListingStyle from '../ProductListing.style';
 
@@ -99,6 +100,7 @@ const ProductListView = ({
         </Col>
       </Row>
       <PickupStoreModal />
+      <QuickViewModal />
     </div>
   );
 };
