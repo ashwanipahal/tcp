@@ -10,7 +10,7 @@ import Row from '../../../../common/atoms/Row';
 import Col from '../../../../common/atoms/Col';
 import BodyCopy from '../../../../common/atoms/BodyCopy';
 import { getLocator } from '../../../../../utils';
-import BagConfirmationModal from '../../BagPage/views/BagConfirmationModal.view';
+import BagConfirmationModal from '../../BagPage/views/ItemDeleteConfirmationModal.view';
 
 class AddedToBagActions extends React.PureComponent<Props> {
   routeToCheckout = e => {

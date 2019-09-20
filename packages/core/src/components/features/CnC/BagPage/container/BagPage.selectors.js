@@ -152,6 +152,21 @@ const getsflItemsList = state => {
   return state.CartPageReducer.get('sfl');
 };
 
+const checkoutIfItemIsUnqualified = state => {
+  const items = getOrderItems(state);
+  const indexValue = items.findIndex(
+    item => item.getIn(['miscInfo', 'availability']) !== AVAILABILITY.OK
+  );
+  return indexValue >= 0;
+};
+
+const getCurrentDeleteSelectedItemInfo = state => {
+  return {
+    currentItemId: state.CartPageReducer.get('currentItemId'),
+    showModal: state.CartPageReducer.get('openItemDeleteConfirmationModal'),
+  };
+};
+
 export default {
   getBagPageLabels,
   getTotalItems,
@@ -172,4 +187,6 @@ export default {
   getGiftServicesContentGymId,
   getCurrentCurrency,
   getsflItemsList,
+  checkoutIfItemIsUnqualified,
+  getCurrentDeleteSelectedItemInfo,
 };

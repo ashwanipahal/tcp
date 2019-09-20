@@ -153,6 +153,19 @@ const setSflData = payload => {
   };
 };
 
+const openItemDeleteConfirmationModal = itemId => {
+  return {
+    type: BAGPAGE_CONSTANTS.OPEN_ITEM_DELETE_CONFIRMATION_MODAL,
+    itemId,
+  };
+};
+
+const closeItemDeleteConfirmationModal = () => {
+  return {
+    type: BAGPAGE_CONSTANTS.CLOSE_ITEM_DELETE_CONFIRMATION_MODAL,
+  };
+};
+
 const initActions = [loadComponentLabelsData({ category: LABELS.checkout })];
 
 export default {
@@ -179,4 +192,6 @@ export default {
   setCartItemsSflError,
   getSflData,
   setSflData,
+  openItemDeleteConfirmationModal,
+  closeItemDeleteConfirmationModal,
 };

@@ -3,7 +3,7 @@
  */
 // TODO: Need fix unused/proptypes eslint error
 
-import { call, takeLatest, put, delay } from 'redux-saga/effects';
+import { call, takeLatest, put, delay, select } from 'redux-saga/effects';
 import logger from '@tcp/core/src/utils/loggerInstance';
 import { parseProductFromAPI } from '@tcp/core/src/components/features/browse/ProductListingPage/container/ProductListingPage.dataMassage';
 import { getImgPath } from '@tcp/core/src/components/features/browse/ProductListingPage/util/utility';
@@ -18,8 +18,11 @@ import {
 import BAG_PAGE_ACTIONS from '../../BagPage/container/BagPage.actions';
 import endpoints from '../../../../../service/endpoint';
 import { removeItem, updateItem } from '../../../../../services/abstractors/CnC';
+import BagPageSelectors from '../../BagPage/container/BagPage.selectors';
 
-export function* removeCartItem({ payload }) {
+const { checkoutIfItemIsUnqualified } = BagPageSelectors;
+
+export function* confirmRemoveItem({ payload }) {
   try {
     const res = yield call(removeItem, payload);
     yield put(removeCartItemComplete(res));
@@ -30,6 +33,14 @@ export function* removeCartItem({ payload }) {
   } catch (err) {
     logger.error(err);
   }
+}
+
+export function* removeCartItem({ payload }) {
+  const isUnqualifiedItem = yield select(checkoutIfItemIsUnqualified);
+  if (isUnqualifiedItem) {
+    yield confirmRemoveItem({ payload });
+  }
+  yield put(BAG_PAGE_ACTIONS.openItemDeleteConfirmationModal(payload));
 }
 
 export function* updateCartItemSaga({ payload }) {
@@ -92,6 +103,7 @@ export function* CartPageSaga() {
   yield takeLatest(CARTPAGE_CONSTANTS.REMOVE_CART_ITEM, removeCartItem);
   yield takeLatest(CARTPAGE_CONSTANTS.UPDATE_CART_ITEM, updateCartItemSaga);
   yield takeLatest(CARTPAGE_CONSTANTS.GET_PRODUCT_SKU_INFO, getProductSKUInfoSaga);
+  yield takeLatest(CARTPAGE_CONSTANTS.CONFIRM_REMOVE_CART_ITEM, confirmRemoveItem);
 }
 
 export default CartPageSaga;
