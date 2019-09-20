@@ -11,8 +11,8 @@ exports[`BillingSection should render correctly for empty state 1`] = `
       colSize={
         Object {
           "large": 12,
-          "medium": 12,
-          "small": 12,
+          "medium": 8,
+          "small": 6,
         }
       }
     >
@@ -47,8 +47,8 @@ exports[`BillingSection should render correctly for empty state 1`] = `
       colSize={
         Object {
           "large": 7,
-          "medium": 6,
-          "small": 12,
+          "medium": 4,
+          "small": 6,
         }
       }
     />
@@ -67,8 +67,8 @@ exports[`BillingSection should render correctly without address details 1`] = `
       colSize={
         Object {
           "large": 12,
-          "medium": 12,
-          "small": 12,
+          "medium": 8,
+          "small": 6,
         }
       }
     >
@@ -103,8 +103,8 @@ exports[`BillingSection should render correctly without address details 1`] = `
       colSize={
         Object {
           "large": 5,
-          "medium": 6,
-          "small": 12,
+          "medium": 4,
+          "small": 6,
         }
       }
     >
@@ -148,8 +148,8 @@ exports[`BillingSection should render correctly without address details 1`] = `
       colSize={
         Object {
           "large": 7,
-          "medium": 6,
-          "small": 12,
+          "medium": 4,
+          "small": 6,
         }
       }
     >
@@ -207,8 +207,8 @@ exports[`BillingSection should render correctly without card & address details o
       colSize={
         Object {
           "large": 12,
-          "medium": 12,
-          "small": 12,
+          "medium": 8,
+          "small": 6,
         }
       }
     >
@@ -243,8 +243,8 @@ exports[`BillingSection should render correctly without card & address details o
       colSize={
         Object {
           "large": 7,
-          "medium": 6,
-          "small": 12,
+          "medium": 4,
+          "small": 6,
         }
       }
     >
@@ -289,8 +289,8 @@ exports[`BillingSection should render correctly without card & address details o
       colSize={
         Object {
           "large": 12,
-          "medium": 12,
-          "small": 12,
+          "medium": 8,
+          "small": 6,
         }
       }
     >
@@ -325,8 +325,8 @@ exports[`BillingSection should render correctly without card & address details o
       colSize={
         Object {
           "large": 7,
-          "medium": 6,
-          "small": 12,
+          "medium": 4,
+          "small": 6,
         }
       }
     >
@@ -384,8 +384,8 @@ exports[`BillingSection should render correctly without card details 1`] = `
       colSize={
         Object {
           "large": 12,
-          "medium": 12,
-          "small": 12,
+          "medium": 8,
+          "small": 6,
         }
       }
     >
@@ -420,8 +420,8 @@ exports[`BillingSection should render correctly without card details 1`] = `
       colSize={
         Object {
           "large": 5,
-          "medium": 6,
-          "small": 12,
+          "medium": 4,
+          "small": 6,
         }
       }
     >
@@ -463,8 +463,8 @@ exports[`BillingSection should render correctly without card details 1`] = `
       colSize={
         Object {
           "large": 7,
-          "medium": 6,
-          "small": 12,
+          "medium": 4,
+          "small": 6,
         }
       }
     >
