@@ -3,6 +3,27 @@
 exports[`BirthdayCard should render correctly 1`] = `
 <Styled(View)>
   <Styled(View)>
+    <TouchableOpacity
+      accessibilityLabel="Delete child"
+      accessibilityRole="button"
+      activeOpacity={0.2}
+      onPress={[Function]}
+    >
+      <Styled(ImageComp)
+        alt=""
+        height={14}
+        host=""
+        source={
+          Object {
+            "testUri": "../../../src/assets/images/close.png",
+          }
+        }
+        url=""
+        width={14}
+      />
+    </TouchableOpacity>
+  </Styled(View)>
+  <Styled(View)>
     <Styled(BodyCopy)
       className="elem-mb-XXXS"
       data-locator="nameOfChildInTile"
