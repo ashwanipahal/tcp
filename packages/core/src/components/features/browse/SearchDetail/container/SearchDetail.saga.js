@@ -1,3 +1,4 @@
+/* eslint-disable */
 import { call, put, takeLatest, select } from 'redux-saga/effects';
 import logger from '@tcp/core/src/utils/loggerInstance';
 import SLP_CONSTANTS from './SearchDetail.constants';
@@ -9,6 +10,7 @@ import {
 } from './SearchDetail.actions';
 import Abstractor from '../../../../../services/abstractors/productListing';
 import ProductsOperator from '../../ProductListing/container/productsRequestFormatter';
+import { getLastLoadedPageNumber, getMaxPageNumber } from './SearchDetail.selectors';
 
 const instanceProductListing = new Abstractor();
 const operatorInstance = new ProductsOperator();
@@ -17,6 +19,7 @@ export function* fetchSlpProducts({ payload }) {
   try {
     const { searchQuery, asPath, formData } = payload;
     const state = yield select();
+    yield put(setSlpLoadingState({ isLoadingMore: true }));
     yield put(setSlpSearchTerm({ searchTerm: searchQuery }));
 
     const reqObj = operatorInstance.getProductsListingFilters({
@@ -27,6 +30,7 @@ export function* fetchSlpProducts({ payload }) {
     });
     const res = yield call(instanceProductListing.getProducts, reqObj, state);
     yield put(setListingFirstProductsPage({ ...res }));
+    yield put(setSlpLoadingState({ isLoadingMore: false }));
   } catch (err) {
     logger.error(err);
   }
@@ -34,21 +38,27 @@ export function* fetchSlpProducts({ payload }) {
 
 export function* fetchMoreProducts() {
   try {
-    let state = yield select();
+    const state = yield select();
     yield put(setSlpLoadingState({ isLoadingMore: true }));
-    const reqObj = operatorInstance.getMoreBucketedProducts(state);
-    if (reqObj && reqObj.categoryId) {
-      state = yield select();
-      const slpProducts = yield call(instanceProductListing.getProducts, reqObj, state);
-      if (
-        slpProducts &&
-        slpProducts.loadedProductsPages &&
-        slpProducts.loadedProductsPages[0] &&
-        slpProducts.loadedProductsPages[0].length
-      ) {
-        yield put(setSlpProducts({ ...slpProducts }));
-      }
-    }
+    const appliedFiltersIds = state.SearchListingPage.get('appliedFiltersIds');
+    const sort = (state.SearchListingPage && state.SearchListingPage.get('appliedSortId')) || '';
+
+    const appliedFiltersAndSort = { ...appliedFiltersIds, sort };
+
+    const lastLoadedPageNumber = getLastLoadedPageNumber(state);
+    // if (lastLoadedPageNumber >= getMaxPageNumber(state)) {
+    //   return null; // nothing more to load
+    // }
+
+    const reqObj = operatorInstance.getProductsListingInfo({
+      state,
+      appliedFiltersAndSort,
+      pageNumber: lastLoadedPageNumber + 1,
+    });
+
+    // const reqObj = operatorInstance.getProductsListingFilters();
+    const res = yield call(instanceProductListing.getProducts, reqObj, state);
+    yield put(setSlpProducts({ ...res }));
     yield put(setSlpLoadingState({ isLoadingMore: false }));
   } catch (err) {
     logger.error(err);

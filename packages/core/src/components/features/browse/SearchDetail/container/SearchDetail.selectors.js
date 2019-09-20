@@ -168,5 +168,5 @@ export const getLastLoadedPageNumber = state => {
 
 export const getMaxPageNumber = state => {
   // We no longer need to divide by page size because UNBXD start parameter matches the direct number of results.
-  return Math.ceil(state.ProductListing.get('totalProductsCount') / getPageSize());
+  return Math.ceil(state[SLP_PAGE_REDUCER_KEY].get('totalProductsCount') / getPageSize());
 };
