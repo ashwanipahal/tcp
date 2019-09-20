@@ -344,7 +344,7 @@ class CustomSelect extends React.Component {
       input: { value },
     } = this.props;
 
-    if (event.button !== 0) return; // ignore clicks not on the main (left) mouse button
+    if (event.button !== 0 && event.which !== 13) return; // ignore clicks not on the main (left) mouse button
     if (!optionsMap[clickedItemIndex].disabled) {
       // ignore clicks on disabled items
       this.setHighlightedIndex(clickedItemIndex); // make the clicked item highlighted
@@ -420,13 +420,8 @@ class CustomSelect extends React.Component {
   // handles key presses for this component
   handleKeyDown(event) {
     const { disabled } = this.props;
-    const { expanded } = this.state;
     if (disabled) return; // ignore everything if this component is disabled
     switch (event.keyCode) {
-      case 13: // enter
-        if (!expanded) return;
-        this.selectHighlightedItem(); // the user selected the currently highlighted item
-        break;
       case 27: // escape
         this.handleEscapeKeyEvent(this.state, this.props);
 
