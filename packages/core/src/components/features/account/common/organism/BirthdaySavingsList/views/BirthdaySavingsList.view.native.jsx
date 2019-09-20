@@ -52,9 +52,11 @@ class BirthdaySavingsList extends PureComponent {
   }
 
   componentDidUpdate(prevProps) {
-    const { status } = this.props;
-    if (status === 'success' && status !== prevProps.status) {
-      this.closeRemoveModal();
+    const { status, message, toastMessage } = this.props;
+    if (status !== prevProps.status) {
+      if (status === 'success') {
+        this.closeRemoveModal();
+      } else toastMessage(message);
     }
   }
 
@@ -95,16 +97,20 @@ class BirthdaySavingsList extends PureComponent {
     const { labels, childrenBirthdays, view } = this.props;
     const { removeModal, activeChild } = this.state;
     const isEditMode = view === 'edit';
+
     const removeButtonStyle = {
       marginTop: 59,
     };
+
     const cancelButtonStyle = {
       marginTop: 20,
     };
+
     if (isEditMode || (childrenBirthdays && childrenBirthdays.size > 0)) {
       const birthdays = childrenBirthdays
         ? childrenBirthdays.setSize(constants.MAX_BIRTHDAY_CARDS)
         : List().setSize(constants.MAX_BIRTHDAY_CARDS);
+
       return (
         <View>
           {isEditMode && (
@@ -173,12 +179,16 @@ BirthdaySavingsList.propTypes = {
   view: PropTypes.oneOf([constants.VIEW.READ, constants.VIEW.EDIT]),
   removeBirthday: PropTypes.func,
   status: PropTypes.string,
+  message: PropTypes.string,
+  toastMessage: PropTypes.func,
 };
 
 BirthdaySavingsList.defaultProps = {
   view: constants.VIEW.EDIT,
   removeBirthday: () => {},
   status: '',
+  message: '',
+  toastMessage: () => {},
 };
 
 export default BirthdaySavingsList;
