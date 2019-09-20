@@ -41,7 +41,8 @@
     "generate-esdoc": "./node_modules/.bin/esdoc -c .esdoc.json",
     "lighthouse": "node ./lighthouse",
     "plop": "plop",
-    "storybook": "start-storybook"
+    "storybook": "start-storybook -s ./public,./packages/web/src -p 9001",
+    "storybook:build": "build-storybook"
   },
   "devDependencies": {
     "@storybook/addon-actions": "^5.2.0",
