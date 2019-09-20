@@ -5,6 +5,7 @@ import Col from '@tcp/core/src/components/common/atoms/Col';
 import Grid from '@tcp/core/src/components/common/molecules/Grid';
 import { getLocator } from '@tcp/core/src/utils';
 import ReactToolTip from '@tcp/core/src/components/common/atoms/ReactToolTip';
+import usePerfMeasure from '@tcp/web/src/hooks/usePerfMeasure';
 import { getIconPath } from '../../../../../../../utils';
 import { Image } from '../../../../../../common/atoms';
 import BodyCopy from '../../../../../../common/atoms/BodyCopy';
@@ -26,6 +27,9 @@ const OrderLedger = ({ className, ledgerSummaryData, labels }) => {
     totalOrderSavings,
   } = ledgerSummaryData;
   const toolTipMinWidth = '205px';
+
+  usePerfMeasure('render_cart_total');
+
   return (
     <React.Fragment>
       <Grid
