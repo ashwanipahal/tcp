@@ -4,21 +4,31 @@ exports[`BirthdayCard should render correctly 1`] = `
 <Styled(View)>
   <Styled(View)>
     <Styled(BodyCopy)
+      accessibilityText=""
       className="elem-mb-XXXS"
       data-locator="nameOfChildInTile"
+      dataLocator=""
       fontWeight="semibold"
+      margin={null}
       mobileFontFamily="secondary"
+      numberOfLines={null}
       text="test"
       textAlign="center"
+      textDecoration={null}
     />
   </Styled(View)>
   <Styled(View)>
     <Styled(BodyCopy)
+      accessibilityText=""
       data-locator="childAgeInTile"
+      dataLocator=""
       fontSize="fs12"
       fontWeight="semibold"
+      margin={null}
       mobileFontFamily="secondary"
+      numberOfLines={null}
       text="21 yo"
+      textDecoration={null}
     />
     <Styled(ImageComp)
       alt=""
@@ -33,12 +43,17 @@ exports[`BirthdayCard should render correctly 1`] = `
       width={16}
     />
     <Styled(BodyCopy)
+      accessibilityText=""
       data-locator="childBirthYearInTile"
+      dataLocator=""
       fontSize="fs12"
       fontWeight="semibold"
+      margin={null}
       mobileFontFamily="secondary"
+      numberOfLines={null}
       text="1998"
       textAlign="right"
+      textDecoration={null}
     />
   </Styled(View)>
 </Styled(View)>

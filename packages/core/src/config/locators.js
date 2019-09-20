@@ -273,4 +273,7 @@ export default {
   pdp_free_shipping_label: 'pdp_free_shipping_label',
   pdp_pick_up_in_store: 'pdp_pick_up_in_store',
   pdp_pick_up_in_store_modal: 'pdp_pick_up_in_store_modal',
+  pdp_discounted_percentage: 'Product Discount Percentage',
+  pdp_favorite_icon_count: 'Favorites count',
+  pdp_anchor_complete_the_look: 'Complete The Look',
 };

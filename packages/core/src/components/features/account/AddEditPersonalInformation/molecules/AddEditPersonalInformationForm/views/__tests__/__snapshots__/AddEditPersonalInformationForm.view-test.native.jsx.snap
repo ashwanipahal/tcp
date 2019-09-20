@@ -154,10 +154,15 @@ exports[`AddEditPersonalInformationForm component should renders correctly in in
   />
   <Styled(View)>
     <Styled(BodyCopy)
+      accessibilityText=""
+      dataLocator=""
       fontFamily="secondary"
       fontSize="fs12"
       fontWeight="regular"
+      margin={null}
+      numberOfLines={null}
       text="lbl_profile_email_used_login"
+      textDecoration={null}
     />
   </Styled(View)>
   <Styled(View)>
@@ -455,10 +460,15 @@ exports[`AddEditPersonalInformationForm component should renders correctly in in
   </Styled(View)>
   <Styled(View)>
     <Styled(BodyCopy)
+      accessibilityText=""
+      dataLocator=""
       fontFamily="secondary"
       fontSize="fs12"
       fontWeight="regular"
+      margin={null}
+      numberOfLines={null}
       text="lbl_profile_celebration_birthday"
+      textDecoration={null}
     />
   </Styled(View)>
   <Styled(View)>

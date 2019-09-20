@@ -16,6 +16,12 @@ import { Button, BodyCopy } from '../../../atoms';
 import DropDown from '../../../atoms/DropDown/views/DropDown.native';
 
 class ProductAddToBag extends React.PureComponent<Props> {
+  /* Have to define empty constructor because test case fail with error 'TypeError: Cannot read property 'find' of undefined'. So if using PureComponent then mendatory to define constructor */
+  // eslint-disable-next-line
+  constructor(props) {
+    super(props);
+  }
+
   changeQuantity = quantity => {
     const { onQuantityChange } = this.props;
     if (onQuantityChange) onQuantityChange(quantity);
