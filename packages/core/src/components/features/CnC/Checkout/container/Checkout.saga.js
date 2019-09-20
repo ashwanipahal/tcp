@@ -27,10 +27,6 @@ import BAG_PAGE_ACTIONS from '../../BagPage/container/BagPage.actions';
 import BagPageSelectors from '../../BagPage/container/BagPage.selectors';
 // import { getUserEmail } from '../../../account/User/container/User.selectors';
 import { isCanada } from '../../../../../utils/utils';
-import {
-  addAddressGet,
-  updateAddressPut,
-} from '../../../../common/organisms/AddEditAddress/container/AddEditAddress.saga';
 import { getAddressList } from '../../../account/AddressBook/container/AddressBook.saga';
 import { getCardList } from '../../../account/Payment/container/Payment.saga';
 // import { addAddress } from '../../../../../services/abstractors/account/AddEditAddress';
@@ -45,6 +41,7 @@ import {
   validateAndSubmitEmailSignup,
   getVenmoClientTokenSaga,
   saveLocalSmsInfo,
+  addOrEditGuestUserAddress,
 } from './Checkout.saga.util';
 import submitBilling from './CheckoutBilling.saga';
 import submitOrderForProcessing from './CheckoutReview.saga';
@@ -576,46 +573,14 @@ function* submitShipping({
   let addOrEditAddressRes;
   if (isGuestUser) {
     const oldShippingDestination = yield select(getShippingDestinationValues);
-    if (!oldShippingDestination.onFileAddressKey) {
-      // guest user that is using a new address
-      addOrEditAddressRes = yield call(
-        addAddressGet,
-        {
-          payload: {
-            ...address,
-            address1: address.addressLine1,
-            address2: address.addressLine2,
-            zip: address.zipCode,
-            phoneNumber,
-            emailAddress,
-            primary: setAsDefault,
-            phone1Publish: `${saveToAccount}`,
-            fromPage: 'checkout',
-          },
-        },
-        false
-      );
-      addOrEditAddressRes = { payload: addOrEditAddressRes.body };
-    } else {
-      // guest user is editing a previously entered shipping address
-      addOrEditAddressRes = {
-        payload: yield call(
-          updateAddressPut,
-          {
-            payload: {
-              ...address,
-              address1: address.addressLine1,
-              address2: address.addressLine2,
-              zip: address.zipCode,
-              phoneNumber,
-              nickName: oldShippingDestination.onFileAddressKey,
-              emailAddress,
-            },
-          },
-          {}
-        ),
-      };
-    }
+    addOrEditAddressRes = yield addOrEditGuestUserAddress({
+      oldShippingDestination,
+      address,
+      phoneNumber,
+      emailAddress,
+      saveToAccount,
+      setAsDefault,
+    });
   } else {
     addOrEditAddressRes = yield addRegisteredUserAddress({
       onFileAddressKey,

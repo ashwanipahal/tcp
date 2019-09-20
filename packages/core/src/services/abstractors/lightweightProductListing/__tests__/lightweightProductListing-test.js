@@ -1,9 +1,7 @@
 import productListTabsAbstractor from '../lightweightProductListing';
 import * as handler from '../../../handler/handler';
 import mock from '../mock';
-import { getAPIConfig } from '../../../../utils';
 
-const { assetHost } = getAPIConfig();
 const mockResponse = mock.body.response.products.map(item => {
   const {
     imageUrl: [imageUrl],
@@ -11,7 +9,9 @@ const mockResponse = mock.body.response.products.map(item => {
 
   return {
     ...item,
-    imageUrl: [imageUrl.replace('https://www.childrensplace.com', assetHost)],
+    imageUrl: [
+      imageUrl.replace('https://www.childrensplace.com', 'https://test4.childrensplace.com'),
+    ],
   };
 });
 

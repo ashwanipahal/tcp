@@ -1,7 +1,7 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
 exports[`InitialPropsHOC testcases should render correctly 1`] = `
-<HomePageView
+<InitialProps
   navigation={
     Object {
       "addListener": [MockFunction] {
@@ -20,6 +20,5 @@ exports[`InitialPropsHOC testcases should render correctly 1`] = `
       },
     }
   }
-  screenProps={Object {}}
 />
 `;

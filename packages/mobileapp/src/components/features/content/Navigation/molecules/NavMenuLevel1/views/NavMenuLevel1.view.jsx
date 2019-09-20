@@ -2,13 +2,13 @@ import React from 'react';
 import { PropTypes } from 'prop-types';
 import { getScreenWidth, cropImageUrl } from '@tcp/core/src/utils';
 import { Image, BodyCopy } from '@tcp/core/src/components/common/atoms';
+import InitialPropsHOC from '@tcp/core/src/components/common/hoc/InitialPropsHOC/InitialPropsHOC.native';
 import {
   L1TouchableOpacity,
   L1TextView,
   ContainerList,
   L1TouchableOpacityNoImage,
 } from '../NavMenuLevel1.style';
-import InitialPropsHOC from '../../../../../../common/hoc/InitialPropsHOC/InitialPropsHOC';
 
 const imageWidth = getScreenWidth() / 2;
 const keyExtractor = (_, index) => index.toString();

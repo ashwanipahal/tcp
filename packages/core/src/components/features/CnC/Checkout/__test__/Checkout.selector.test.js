@@ -108,16 +108,18 @@ describe('Checkout Selectors', () => {
 
   it('#getDetailedCreditCardById', () => {
     const State = {
-      PaymentReducer: fromJS({ cardList: [{ creditCardId: '' }] }),
+      PaymentReducer: fromJS({ cardList: [{ creditCardId: '123' }] }),
     };
-    expect(CHECKOUT_SELECTORS.getDetailedCreditCardById(State)).toEqual(fromJS(undefined));
+    expect(CHECKOUT_SELECTORS.getDetailedCreditCardById(State, 123)).toEqual({
+      creditCardId: '123',
+    });
   });
 
   it('#getAddressByKey', () => {
     const State = {
       PaymentReducer: fromJS({ cardList: [{ creditCardId: '123' }] }),
     };
-    expect(CHECKOUT_SELECTORS.getDetailedCreditCardById(State)).toEqual(undefined);
+    expect(CHECKOUT_SELECTORS.getDetailedCreditCardById(State, 99)).toEqual(undefined);
   });
 
   it('#getShipmentMethods', () => {

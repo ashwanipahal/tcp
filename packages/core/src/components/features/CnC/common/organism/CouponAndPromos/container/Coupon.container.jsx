@@ -54,6 +54,7 @@ CouponContainer.propTypes = {
   handleRemoveCoupon: PropTypes.func.isRequired,
   appliedCouponList: PropTypes.shape({}).isRequired,
   availableCouponList: PropTypes.shape({}).isRequired,
+  showAccordian: PropTypes.bool.isRequired,
 };
 
 export const mapDispatchToProps = dispatch => ({
