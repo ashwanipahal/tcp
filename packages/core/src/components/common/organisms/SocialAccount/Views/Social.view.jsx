@@ -1,6 +1,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import FacebookLogin from './FacebookLogin';
+import {InstagramLoginComponent} from './InstagramLogin';
 import config from './config';
 import socialStyle from '../styles/social.style';
 import withStyles from '../../../hoc/withStyles';
@@ -95,6 +96,7 @@ class Socialview extends React.PureComponent {
             {labels.lbl_prefrence_social_text}
           </p>
           <ul>{this.renderAccountsInformation(this.socialAccounts, saveSocialAcc, labels)}</ul>
+          <InstagramLoginComponent saveAccountInfo={this.socialAccounts} />
         </section>
       </React.Fragment>
     );

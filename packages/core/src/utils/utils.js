@@ -489,6 +489,13 @@ export const formatPhone = (phoneNum, hyphenFormat) => {
   return phone;
 };
 
+
+
+  export const getSiteId = () => { 
+  const paths = window.location.pathname.split('/', 2);
+  return paths[1];
+}
+
 export const parseStoreHours = hoursOfOperation => {
   let carryOverClosingHour;
   const result = [];
