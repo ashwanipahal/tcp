@@ -437,6 +437,11 @@ export const resetAddGiftCardSuccess = payload => {
     payload,
   };
 };
+/**
+ * @function initIntlCheckoutAction
+ *  @param { object } payload
+ * action creator for type: INIT_INTL_CHECKOUT
+ */
 export const initIntlCheckoutAction = payload => ({
   type: constants.INIT_INTL_CHECKOUT,
   payload,
