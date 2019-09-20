@@ -43,7 +43,6 @@ class ReviewPage extends React.PureComponent {
         <CheckoutSectionTitleDisplay title={header} dataLocator="review-title" />
         {!!orderHasPickUp && <div className="review-pickup">{pickupSectionTitle}</div>}
         {!!orderHasShipping && <div className="review-shipping">{shippingSectionTitle}</div>}
-        {/* <div className="review-billing">{billingSectionTitle}</div> */}
         <BillingSection />
         <CheckoutFooter
           hideBackLink
