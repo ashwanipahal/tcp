@@ -60,6 +60,7 @@ exports[`AddedToBagActions component AddedToBagActions component renders correct
         textAlign="left"
       />
     </Styled(Button)>
+    <PerfMeasure />
   </Styled(Row)>
   <Styled(BagConfirmationModal)
     labels={Object {}}
