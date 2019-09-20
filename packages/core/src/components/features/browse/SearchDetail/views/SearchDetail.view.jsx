@@ -6,7 +6,7 @@ import ProductsGrid from '../../ProductListing/molecules/ProductsGrid/views';
 import { Row, Col } from '../../../../common/atoms';
 import LoadedProductsCount from '../../ProductListing/molecules/LoadedProductsCount/views';
 import errorBoundary from '../../../../common/hoc/withErrorBoundary';
-import { BodyCopy } from '../../../../../../styles/themes/TCP/typotheme';
+import BodyCopy from '../../../../common/atoms/BodyCopy';
 import ProductListingFiltersForm from '../../ProductListing/molecules/ProductListingFiltersForm';
 
 const SearchListingView = ({
@@ -32,9 +32,21 @@ const SearchListingView = ({
       <Row>
         <Col colSize={{ small: 6, medium: 8, large: 12 }}>
           {searchedText && (
-            <BodyCopy fontSize="fs14" component="div" fontFamily="secondary" fontWeight="regular">
+            <BodyCopy
+              className={`${className} searched-text-wrapper`}
+              component="div"
+              fontFamily="secondary"
+              fontSize="fs14"
+              fontWeight="regular"
+            >
               {slpLabels.lbl_searched_for}
-              <span className="searched-label">{`"${searchedText}"`}</span>
+              <BodyCopy
+                className="searched-label"
+                fontSize={['fs16', 'fs16', 'fs14']}
+                fontWeight="extrabold"
+              >
+                {`"${searchedText}"`}
+              </BodyCopy>
             </BodyCopy>
           )}
         </Col>

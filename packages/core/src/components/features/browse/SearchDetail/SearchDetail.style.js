@@ -17,6 +17,12 @@ export default css`
   .filter-and-sort-form-container .desktop-dropdown {
     display: none;
   }
+  .searched-label {
+    display: block;
+  }
+  .searched-text-wrapper {
+    padding-top: ${props => props.theme.spacing.ELEM_SPACING.XS};
+  }
   .product-list .search-product-tile {
     display: inline-block;
     padding: ${props => props.theme.spacing.ELEM_SPACING.SM} 20px 0 0;
@@ -41,12 +47,27 @@ export default css`
         padding-right: 0;
       }
     }
+    .filter-row {
+      margin-left: 0;
+    }
+    .mobile-sort-container .common-dropdown .item-common {
+      padding-left: 8px;
+    }
   }
   @media ${props => props.theme.mediaQuery.mediumOnly} {
     .product-list {
       .search-product-tile:nth-child(3n) {
         padding-right: 0;
       }
+    }
+    .searched-label {
+      padding-bottom: 28px;
+    }
+  }
+  @media ${props => props.theme.mediaQuery.medium} {
+    .searched-label {
+      display: inline-block;
+      padding-left: 6px;
     }
   }
   @media ${props => props.theme.mediaQuery.large} {
@@ -60,6 +81,17 @@ export default css`
     }
     .filter-and-sort-form-container .desktop-dropdown {
       display: flex;
+    }
+    .searched-label {
+      padding-bottom: 28px;
+    }
+  }
+
+  .render-desktop-view {
+    display: none;
+
+    @media ${props => props.theme.mediaQuery.large} {
+      display: block;
     }
   }
   .item-title {
