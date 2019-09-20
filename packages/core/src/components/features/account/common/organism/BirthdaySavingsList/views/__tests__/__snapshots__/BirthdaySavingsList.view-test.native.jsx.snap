@@ -94,6 +94,7 @@ exports[`BirthdaySavingsList component should renders correctly when childrenBir
     <Styled(View)>
       <BirthdayCard
         childId="12345"
+        removeBirthday={[Function]}
         view="edit"
       />
     </Styled(View)>
@@ -135,4 +136,13 @@ exports[`BirthdaySavingsList component should renders correctly when childrenBir
     </Styled(View)>
   </Styled(View)>
 </View>
+`;
+
+exports[`InfoMessage component should render correctly 1`] = `
+<Styled(Styled(BodyCopy))
+  fontSize="fs14"
+  mobileFontFamily="secondary"
+  spacingStyles=""
+  text="Add up to 4 kids’ birthdays to your account and receive special savings during their birthday month!"
+/>
 `;
