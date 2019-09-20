@@ -12,6 +12,7 @@ import utility from '../util/utility';
 import constants, { CHECKOUT_ROUTES } from '../Checkout.constants';
 import { validateAndSubmitEmailSignup } from './Checkout.saga.util';
 import { getAppliedCouponListState } from '../../common/organism/CouponAndPromos/container/Coupon.selectors';
+import { isMobileApp } from '../../../../../utils';
 
 const {
   // isVenmoPaymentAvailable,
@@ -133,8 +134,6 @@ export function* submitOrderProcessing(orderId, smsOrderInfo, currentLanguage) {
   if (isGuestUser && !isCaSite && email) {
     yield call(validateAndSubmitEmailSignup, email, 'us_guest_checkout');
   }
-
-  utility.routeToPage(CHECKOUT_ROUTES.confirmationPage);
   // this.store.dispatch(getSetOrderProductDetails(cartItems));
   // getCartOperator(this.store).clearCart();
   // getUserOperator(this.store).setUserBasicInfo();
@@ -151,7 +150,7 @@ export function* submitOrderProcessing(orderId, smsOrderInfo, currentLanguage) {
   // });
 }
 
-function* submitOrderForProcessing(/* formData */) {
+function* submitOrderForProcessing({ payload: { navigation } }) {
   const orderId = yield select(getCurrentOrderId);
   const smsOrderInfo = yield select(getSmsNumberForBillingOrderUpdates);
   const currentLanguage = yield select(getCurrentLanguage);
@@ -335,6 +334,11 @@ function* submitOrderForProcessing(/* formData */) {
   // }
   yield all(pendingPromises);
   yield call(submitOrderProcessing, orderId, smsOrderInfo, currentLanguage);
+  if (!isMobileApp()) {
+    utility.routeToPage(CHECKOUT_ROUTES.confirmationPage);
+  } else if (navigation) {
+    navigation.navigate(constants.CHECKOUT_ROUTES_NAMES.CHECKOUT_CONFIRMATION);
+  }
 }
 
 export default submitOrderForProcessing;
