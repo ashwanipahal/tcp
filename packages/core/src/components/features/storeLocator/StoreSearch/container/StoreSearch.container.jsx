@@ -2,7 +2,7 @@ import React, { PureComponent } from 'react';
 import { connect } from 'react-redux';
 import { withRouter } from 'next/router'; //eslint-disable-line
 import PropTypes from 'prop-types';
-import { getIconPath, isGymboree } from '@tcp/core/src/utils';
+import { getIconPath } from '@tcp/core/src/utils';
 import { getStoresByCoordinates } from './StoreSearch.actions';
 import StoreLocatorSearch from './views/StoreSearch';
 import { getCurrentCountry, getPageLabels } from './StoreSearch.selectors';
@@ -24,7 +24,7 @@ export class StoreSearch extends PureComponent {
 
   render() {
     const searchIcon = getIconPath('search-icon');
-    const markerIcon = getIconPath(isGymboree() ? 'marker-icon-gym' : 'marker-icon');
+    const markerIcon = getIconPath('marker-icon');
     return (
       <StoreLocatorSearch
         {...this.props}
