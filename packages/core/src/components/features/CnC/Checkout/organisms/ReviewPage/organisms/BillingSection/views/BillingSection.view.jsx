@@ -29,7 +29,7 @@ export const BillingSection = ({ className, card, address, appliedGiftCards, lab
   return (
     <Grid className={`${className}`}>
       <Row fullBleed>
-        <Col colSize={{ small: 12, medium: 12, large: 12 }}>
+        <Col colSize={{ small: 6, medium: 8, large: 12 }}>
           <BodyCopy component="span" fontSize="fs28" fontFamily="primary">
             {`${getLabelValue(labels, 'lbl_review_billingSectionTitle')} `}
           </BodyCopy>
@@ -45,7 +45,7 @@ export const BillingSection = ({ className, card, address, appliedGiftCards, lab
       </Row>
       <Row fullBleed>
         {(card || address) && (
-          <Col colSize={{ small: 12, medium: 6, large: 5 }}>
+          <Col colSize={{ small: 6, medium: 4, large: 5 }}>
             {card && (
               <Fragment>
                 <BodyCopy
@@ -78,7 +78,7 @@ export const BillingSection = ({ className, card, address, appliedGiftCards, lab
             )}
           </Col>
         )}
-        <Col colSize={{ small: 12, medium: 6, large: 7 }}>
+        <Col colSize={{ small: 6, medium: 4, large: 7 }}>
           {appliedGiftCards && (
             <Fragment>
               <BodyCopy
