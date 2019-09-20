@@ -63,7 +63,7 @@ class ModuleJ extends React.PureComponent {
 
     return (
       <ImageSlideWrapper>
-        {item.map(productItem => {
+        {item.map((productItem, index) => {
           const {
             imageUrl: [imageUrl],
             pdpAsPath,
@@ -71,7 +71,10 @@ class ModuleJ extends React.PureComponent {
           } = productItem;
 
           return (
-            <ImageItemWrapper isFullMargin={productItemIndex === selectedProductList.length - 1}>
+            <ImageItemWrapper
+              key={index.toString()}
+              isFullMargin={productItemIndex === selectedProductList.length - 1}
+            >
               <Anchor
                 url={pdpAsPath}
                 navigation={navigation}

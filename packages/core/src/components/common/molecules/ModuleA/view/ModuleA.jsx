@@ -151,16 +151,23 @@ class ModuleA extends React.Component {
   }
 }
 
-ModuleA.defaultProps = {
-  largeCompImageCarousel: [],
-  ctaItems: [],
-};
-
 ModuleA.propTypes = {
   className: PropTypes.string.isRequired,
-  largeCompImageCarousel: PropTypes.shape([]),
-  ctaItems: PropTypes.shape([]),
-  ctaType: PropTypes.oneOf(['stackedCTAList', 'linkCTAList', 'scrollCTAList', 'imageCTAList'])
+  largeCompImageCarousel: PropTypes.arrayOf(
+    PropTypes.shape({
+      headerText: PropTypes.arrayOf(
+        PropTypes.shape({
+          link: PropTypes.object,
+          textItems: PropTypes.array,
+        })
+      ),
+      linkedImage: PropTypes.arrayOf(PropTypes.shape({})),
+      promoBanner: PropTypes.arrayOf(PropTypes.shape({})),
+      ribbonBanner: PropTypes.arrayOf(PropTypes.shape({})),
+    })
+  ).isRequired,
+  ctaItems: PropTypes.arrayOf(PropTypes.shape({})).isRequired,
+  ctaType: PropTypes.oneOf(['stackedCTAButtons', 'linkCTAList', 'scrollCTAList', 'imageCTAList'])
     .isRequired,
 };
 

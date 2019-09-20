@@ -33,10 +33,6 @@ const style = css`
   position: relative;
   margin-bottom: 40px;
 
-  &.moduleA {
-    min-height: 474px;
-  }
-
   &.gymboree-module-a {
     background-color: #003057;
   }
