@@ -47,14 +47,9 @@ class ApplyNowModalWrapper extends React.PureComponent {
       width: '100%',
     };
     // eslint-disable-next-line react/prop-types
-    const { labels, applyNow, toggleModalWrapper } = this.props;
+    const { labels, plccBenefitsList, applyNow, toggleModalWrapper } = this.props;
     const { applyCard } = this.state;
-
-    console.info('>>>>labels---', getLabelValue(labels, 'oneequalstwopointsoffer'));
-    console.info(
-      '>>>>apply_now_benefits_header---',
-      getLabelValue(labels, 'apply_now_benefits_header')
-    );
+    console.info('>>>>labels---', getLabelValue(plccBenefitsList, 'oneequalstwopointsoffer'));
     console.info('>>>>labels---', getLabelValue(labels, 'oneequalstwopointsoffer'));
 
     return (
