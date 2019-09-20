@@ -15,9 +15,9 @@ const operatorInstance = new ProductsOperator();
 
 export function* fetchSlpProducts({ payload }) {
   try {
-    const { sq, asPath, formData } = payload;
+    const { searchQuery, asPath, formData } = payload;
     const state = yield select();
-    yield put(setSlpSearchTerm({ searchTerm: sq }));
+    yield put(setSlpSearchTerm({ searchTerm: searchQuery }));
 
     const reqObj = operatorInstance.getProductsListingFilters({
       state,

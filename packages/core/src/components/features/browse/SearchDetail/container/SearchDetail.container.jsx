@@ -6,7 +6,7 @@ import { getFormValues } from 'redux-form';
 import { PropTypes } from 'prop-types';
 import { isClient } from '../../../../../utils/index';
 import SearchDetail from '../views/SearchDetail.view';
-import { getSlpProducts } from './SearchDetail.actions';
+import { getSlpProducts, getMoreSlpProducts } from './SearchDetail.actions';
 import { getProductsAndTitleBlocks } from '../container/SearchDetail.util';
 import getSortLabels from '../../ProductListing/molecules/SortSelector/views/Sort.selectors';
 import {
@@ -38,16 +38,22 @@ class SearchDetailContainer extends React.PureComponent {
   componentDidMount() {
     const {
       router: {
-        query: { sq },
+        query: { searchQuery },
         asPath,
       },
       getProducts,
       formValues,
     } = this.props;
-    const splitAsPathBy = `/search/${sq}?`;
+    const splitAsPathBy = `/search/${searchQuery}?`;
     const queryString = asPath.split(splitAsPathBy);
     const filterSortString = (queryString.length && queryString[1]) || '';
-    getProducts({ URI: 'search', asPath: filterSortString, sq, ignoreCache: true, formValues });
+    getProducts({
+      URI: 'search',
+      asPath: filterSortString,
+      searchQuery,
+      ignoreCache: true,
+      formValues,
+    });
   }
 
   render() {
@@ -146,16 +152,20 @@ function mapDispatchToProps(dispatch) {
     getProducts: payload => {
       dispatch(getSlpProducts(payload));
     },
+    getMoreProducts: payload => {
+      dispatch(getMoreSlpProducts(payload));
+    },
   };
 }
 
 SearchDetailContainer.propTypes = {
   router: PropTypes.shape({
     query: PropTypes.shape({
-      sq: PropTypes.string,
+      searchQuery: PropTypes.string,
     }),
   }).isRequired,
   getProducts: PropTypes.func.isRequired,
+  getMoreProducts: PropTypes.func.isRequired,
   navTree: PropTypes.shape({}),
   filters: PropTypes.shape({}),
   filtersLength: PropTypes.shape({}),

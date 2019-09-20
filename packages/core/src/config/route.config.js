@@ -58,9 +58,9 @@ const ROUTES_LIST = [
   },
   {
     noSlugPath: 'search',
-    path: '/search/:sq',
+    path: '/search/:searchQuery ',
     resolver: '/SearchDetail',
-    params: ['sq'],
+    params: ['searchQuery'],
   },
   {
     noSlugPath: 'outfit',

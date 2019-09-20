@@ -100,6 +100,7 @@ SearchListingView.propTypes = {
     sort: PropTypes.string.isRequired,
   }).isRequired,
   getProducts: PropTypes.func.isRequired,
+  getMoreProducts: PropTypes.func.isRequired,
   initialValues: PropTypes.shape({}),
   labelsFilter: PropTypes.objectOf(PropTypes.oneOfType([PropTypes.string])),
   onSubmit: PropTypes.func.isRequired,
