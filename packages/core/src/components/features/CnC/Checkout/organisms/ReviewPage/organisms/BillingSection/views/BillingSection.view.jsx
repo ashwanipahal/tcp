@@ -11,10 +11,21 @@ import { CHECKOUT_ROUTES } from '../../../../../Checkout.constants';
 
 import styles from '../styles/BillingSection.style';
 
+/**
+ * @function renderCardNumber
+ * @param {Object} card
+ * @param {Object} labels
+ * @description This method renders the card number string with ending in prefixed
+ */
 const renderCardNumber = (card, labels) =>
   `${getLabelValue(labels, 'lbl_review_paymentMethodEndingIn')} ${card.cardNumber}`;
 
-const BillingSection = ({ className, card, address, appliedGiftCards, labels }) => {
+/**
+ * @function BillingSection
+ * @param {Object} props
+ * @description Billing Section functional component
+ */
+export const BillingSection = ({ className, card, address, appliedGiftCards, labels }) => {
   return (
     <Grid className={`${className}`}>
       <Row fullBleed>

@@ -6,6 +6,10 @@ import giftCardSelectors from '../../../../GiftCardsSection/container/GiftCards.
 import checkoutSelectors from '../../../../../container/Checkout.selector';
 import billingSectionSelectors from './BillingSection.selectors';
 
+/**
+ * @class BillingSectionContainer
+ * @extends {PureComponent}
+ */
 class BillingSectionContainer extends PureComponent {
   static propTypes = {
     appliedGiftCards: PropTypes.shape([]),
@@ -21,11 +25,24 @@ class BillingSectionContainer extends PureComponent {
     labels: {},
   };
 
+  /**
+   * @function render
+   * @description Render the Billing Section component and pass the redux state as props into it.
+   * @returns {JSX}
+   * @memberof BillingSectionContainer
+   */
   render() {
     return <BillingSection {...this.props} />;
   }
 }
 
+/**
+ * @function mapStateToProps
+ * @param {Object} state
+ * @description Used for connect HOC to maps the state to props and pass to the connected component
+ * @returns {Object}
+ */
+/* istanbul ignore next */
 export const mapStateToProps = state => {
   const { address } = checkoutSelectors.getBillingValues(state);
   return {

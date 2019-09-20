@@ -5,12 +5,25 @@ import { BodyCopy } from '@tcp/core/src/components/common/atoms';
 import { getLabelValue } from '@tcp/core/src/utils';
 import styles from '../styles/AppliedGiftCards.style';
 
+/**
+ * @function getGiftCard
+ * @param {Map} giftCard
+ * @description Converts gift card from immutable to normal object.
+ */
 const getGiftCard = giftCard => ({
   id: giftCard.get('id'),
   endingNumbers: giftCard.get('endingNumbers'),
   remainingBalance: giftCard.get('remainingBalance'),
 });
 
+/**
+ * @function renderGiftCard
+ * @param {Object} labels
+ * @param {String} endingNumbers
+ * @param {Number} remainingBalance
+ * @description This method renders the applied gift card row.
+ * @returns {String}
+ */
 const renderGiftCard = (labels, endingNumbers, remainingBalance) =>
   `${getLabelValue(
     labels,
@@ -20,6 +33,12 @@ const renderGiftCard = (labels, endingNumbers, remainingBalance) =>
     'lbl_review_appliedGiftCardRemainingBal'
   )}: $${remainingBalance.toFixed(2)}`;
 
+/**
+ * @function renderGiftCardMessage
+ * @param {Object} labels
+ * @description This method renders Gift card heads up message
+ * @returns {JSX}
+ */
 const renderGiftCardMessage = labels => (
   <BodyCopy component="p" className="headsup-container">
     <BodyCopy
@@ -37,7 +56,13 @@ const renderGiftCardMessage = labels => (
   </BodyCopy>
 );
 
-const AppliedGiftCards = ({ className, appliedGiftCards, labels }) => {
+/**
+ * @function AppliedGiftCards
+ * @param {Object} props
+ * @description Applied Gift cards Functional component
+ * @returns {JSX}
+ */
+export const AppliedGiftCards = ({ className, appliedGiftCards, labels }) => {
   return (
     <BodyCopy component="div" className={`${className} applied-gift-cards`}>
       {appliedGiftCards && appliedGiftCards.size > 0
