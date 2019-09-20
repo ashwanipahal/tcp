@@ -38,21 +38,13 @@ import BodyCopy from '../../../../../../common/atoms/BodyCopy';
 import withStyles from '../../../../../../common/hoc/withStyles';
 import CustomSelectStyle from '../CustomSelect.style';
 import { getLocator } from '../../../../../../../utils';
+import { keyboard } from '../../../../../../../../../web/src/constants/constants';
 
 // TODO Fix This import {ErrorMessage, ERROR_FORM_NAME_DATA_ATTRIBUTE} from '../ErrorMessage.jsx';
 // TODO Fix This import warning from 'warning';
 
 const UNSELECTED_VALUE = '';
 const UNSELECTED_ARRAY_VALUE = [];
-const KEY_CODE = {
-  ENTER: 13,
-  ESCAPE: 27,
-  SPACE: 32,
-  UP: 38,
-  DOWN: 40,
-  HOME_KEY: 36,
-  END_KEY: 35,
-};
 
 // returns the index (or indices) of the item(s) with the given value(s) in the given optionsMap
 function getIndexOrIndicesOfValue(optionsMap, valueOrValues) {
@@ -353,7 +345,7 @@ class CustomSelect extends React.Component {
       input: { value },
     } = this.props;
 
-    if (event.button !== 0 && event.keyCode !== KEY_CODE.ENTER) return; // ignore clicks not on the main (left) mouse button
+    if (event.button !== 0 && event.keyCode !== keyboard.KEY_ENTER) return; // ignore clicks not on the main (left) mouse button
     if (!optionsMap[clickedItemIndex].disabled) {
       // ignore clicks on disabled items
       this.setHighlightedIndex(clickedItemIndex); // make the clicked item highlighted
@@ -431,24 +423,24 @@ class CustomSelect extends React.Component {
     const { disabled } = this.props;
     if (disabled) return; // ignore everything if this component is disabled
     switch (event.keyCode) {
-      case KEY_CODE.ESCAPE: // escape
+      case keyboard.KEY_ESCAPE: // escape
         this.handleEscapeKeyEvent(this.state, this.props);
 
         break;
-      case KEY_CODE.SPACE: // space
+      case keyboard.KEY_SPACE: // space
         this.handleSpaceKeyEvent(this.state);
 
         break;
-      case KEY_CODE.UP: // up
+      case keyboard.KEY_UP: // up
         this.moveHighlightOrExpand('up');
         break;
-      case KEY_CODE.DOWN: // down
+      case keyboard.KEY_DOWN: // down
         this.moveHighlightOrExpand('down');
         break;
-      case KEY_CODE.END_KEY: // end key
+      case keyboard.KEY_END_KEY: // end key
         this.moveHighlightOrExpand('end');
         break;
-      case KEY_CODE.HOME_KEY: // home key
+      case keyboard.KEY_HOME_KEY: // home key
         this.moveHighlightOrExpand('start');
         break;
       default:
