@@ -259,9 +259,9 @@ exports[`CartItemTile common component renders correctly 1`] = `
         right: 0;
       }
       .save-for-later-label {
-        position: absolute;
-        bottom: 4px;
-        left: 170px;
+        margin: ",
+          [Function],
+          " 0;
         width: 100%;
       }
       .color-map-size-fit {
@@ -670,9 +670,9 @@ exports[`CartItemTile common component renders correctly with bag page sfl secti
         right: 0;
       }
       .save-for-later-label {
-        position: absolute;
-        bottom: 4px;
-        left: 170px;
+        margin: ",
+          [Function],
+          " 0;
         width: 100%;
       }
       .color-map-size-fit {

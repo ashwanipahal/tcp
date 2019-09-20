@@ -231,9 +231,7 @@ export default css`
         right: 0;
       }
       .save-for-later-label {
-        position: absolute;
-        bottom: 4px;
-        left: 170px;
+        margin: ${props => props.theme.spacing.ELEM_SPACING.XS} 0;
         width: 100%;
       }
       .color-map-size-fit {
