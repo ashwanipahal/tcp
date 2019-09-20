@@ -185,7 +185,7 @@ export class StoreSearch extends PureComponent {
                     {errorMessage && (
                       <ErrorMessage
                         isShowingMessage={errorMessage}
-                        errorId={Math.random()}
+                        errorId="storeSearch_geoLocation"
                         error={errorMessage}
                         withoutErrorDataAttribute
                       />
