@@ -109,6 +109,11 @@ const ROUTES_LIST = [
     path: '/error',
     resolver: '/error',
   },
+  {
+    noSlugPath: 'international-checkout',
+    path: '/international-checkout',
+    resolver: '/InternationalCheckout',
+  },
 ];
 
 const ROUTING_MAP = {};

@@ -245,6 +245,10 @@ const endpoints = {
     method: 'POST',
     URI: 'v2/checkout/addGiftOptions',
   },
+  internationalCheckoutSettings: {
+    method: 'POST',
+    URI: 'v2/checkout/internationalCheckout',
+  },
   paypalLookUp: {
     method: 'GET',
     URI: 'v2/checkout/TCPPayPalCCLookUpRESTCmd',
@@ -303,6 +307,10 @@ const endpoints = {
   personalizedCoupons: {
     method: 'POST',
     URI: 'v2/coupons/getOffers',
+  },
+  claimPoints: {
+    method: 'POST',
+    URI: 'v2/account/points/claim',
   },
 };
 export default endpoints;

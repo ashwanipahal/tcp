@@ -56,6 +56,17 @@ export const PointsHistoryPageView = props => {
         data-locator="points_history_separator"
       />
       <HistoryPointsRichTextComponent content={richTextContent} />
+      <BodyCopy component="div" className="elem-mb-XXL elem-mt-XXL" textAlign="center">
+        <Anchor
+          to="/account?id=place-rewards&&subSection=points-claim"
+          asPath="/account/place-rewards/points-claim"
+          fontSizeVariation="xlarge"
+          anchorVariation="secondary"
+          data-locator="claim form link"
+        >
+          Points claim form
+        </Anchor>
+      </BodyCopy>
       <Row className="elem-pt-XXL">
         <Col
           colSize={{
