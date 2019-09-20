@@ -100,11 +100,9 @@ class ModuleJ extends React.PureComponent {
 
   render() {
     const { className, productTabList, mediaLinkedList, layout, divTabs } = this.props;
-
     const { currentCatId } = this.state;
     const { image: promoImage1, link: promoLink1 } = mediaLinkedList[0];
     const { image: promoImage2, link: promoLink2 } = mediaLinkedList[1];
-
     const { CAROUSEL_OPTIONS, PROMO_IMG_DATA, TOTAL_IMAGES } = config;
     let data = productTabList[currentCatId] || [];
     data = data.slice(0, TOTAL_IMAGES);
@@ -160,7 +158,7 @@ class ModuleJ extends React.PureComponent {
               }}
             >
               {this.getHeaderText1()}
-              {this.getHeaderText1()}
+              {this.getHeaderText2()}
               {this.getPromoBanner()}
               <ProductTabList
                 onProductTabChange={this.onTabChange}
@@ -210,7 +208,7 @@ class ModuleJ extends React.PureComponent {
               }}
             >
               {this.getHeaderText1()}
-              {this.getHeaderText1()}
+              {this.getHeaderText2()}
               {this.getPromoBanner()}
             </Col>
             <Col
@@ -220,7 +218,11 @@ class ModuleJ extends React.PureComponent {
                 large: 12,
               }}
             >
-              <ProductTabList onProductTabChange={this.onTabChange} tabItems={divTabs} />
+              <ProductTabList
+                onProductTabChange={this.onTabChange}
+                tabItems={divTabs}
+                dataLocator={getLocator('moduleJ_cta_link')}
+              />
             </Col>
           </Row>
         )}
@@ -285,6 +287,18 @@ ModuleJ.defaultProps = {
 
 ModuleJ.propTypes = {
   className: PropTypes.string.isRequired,
+  headerText: PropTypes.arrayOf(
+    PropTypes.shape({
+      link: PropTypes.object,
+      textItems: PropTypes.array,
+    })
+  ).isRequired,
+  promoBanner: PropTypes.arrayOf(
+    PropTypes.shape({
+      link: PropTypes.object,
+      textItems: PropTypes.array,
+    })
+  ),
   productTabList: PropTypes.oneOfType(
     PropTypes.objectOf(
       PropTypes.arrayOf(
@@ -296,14 +310,12 @@ ModuleJ.propTypes = {
       )
     )
   ).isRequired,
-  headerText: PropTypes.arrayOf(PropTypes.shape({})).isRequired,
   mediaLinkedList: PropTypes.arrayOf(
     PropTypes.shape({
       image: PropTypes.object,
       link: PropTypes.object,
     })
   ).isRequired,
-  promoBanner: PropTypes.arrayOf(PropTypes.shape({})),
   layout: PropTypes.string.isRequired,
   divTabs: PropTypes.arrayOf(
     PropTypes.shape({

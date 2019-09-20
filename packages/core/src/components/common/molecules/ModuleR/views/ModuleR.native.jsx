@@ -146,12 +146,14 @@ class ModuleR extends React.PureComponent {
     return (
       <Container>
         <HeaderContainer>
-          <LinkText
-            navigation={navigation}
-            headerText={headerText}
-            renderComponentInNewLine
-            useStyle
-          />
+          {headerText && (
+            <LinkText
+              navigation={navigation}
+              headerText={headerText}
+              renderComponentInNewLine
+              useStyle
+            />
+          )}
         </HeaderContainer>
         {promoBanner && bannerPosition === 'top' ? promoComponentContainer : null}
         <ProductTabListContainer>

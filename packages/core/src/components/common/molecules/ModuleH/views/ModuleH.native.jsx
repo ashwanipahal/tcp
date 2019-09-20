@@ -100,6 +100,7 @@ class ModuleH extends React.PureComponent {
   render() {
     const { navigation, divCTALinks, headerText: [{ link, textItems }] = {} } = this.props;
     let HeadingFontSize = 'fs36';
+    const headerLines = textItems.length;
     if (devicePixelRatio === 'xxxhdpi' || devicePixelRatio === 'xhdpi') {
       HeadingFontSize = 'fs32';
     }
@@ -123,6 +124,7 @@ class ModuleH extends React.PureComponent {
                 </Anchor>
               ) : (
                 <Heading
+                  key={index.toString()}
                   fontFamily="primary"
                   fontSize={HeadingFontSize}
                   letterSpacing="ls167"
@@ -151,7 +153,9 @@ class ModuleH extends React.PureComponent {
           />
         )}
         {divCTALinks ? (
-          <LinksWrapper>{this.renderLinks(divCTALinks, navigation)}</LinksWrapper>
+          <LinksWrapper lines={headerLines}>
+            {this.renderLinks(divCTALinks, navigation)}
+          </LinksWrapper>
         ) : null}
       </Wrapper>
     );

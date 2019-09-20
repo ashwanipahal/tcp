@@ -103,9 +103,9 @@ class ModuleR extends React.PureComponent {
             return (
               <ImageGridCol
                 key={uniqueId}
-                imageIndex={index}
-                promoBanner={promoBanner}
-                bannerPosition={bannerPosition}
+                imageindex={index}
+                promobanner={promoBanner}
+                bannerposition={bannerPosition}
                 colSize={{
                   small: 2,
                   medium: 2,
@@ -208,6 +208,7 @@ class ModuleR extends React.PureComponent {
 ModuleR.defaultProps = {
   promoBanner: [],
   bannerPosition: 'center',
+  productTabList: {},
 };
 
 ModuleR.propTypes = {
@@ -221,7 +222,7 @@ ModuleR.propTypes = {
   ).isRequired,
   headerText: PropTypes.arrayOf(
     PropTypes.shape({
-      textItems: PropTypes.object,
+      textItems: PropTypes.array,
       link: PropTypes.object,
       icon: PropTypes.object,
     })
@@ -236,14 +237,12 @@ ModuleR.propTypes = {
         })
       )
     )
-  ).isRequired,
+  ),
   promoBanner: PropTypes.arrayOf(
-    PropTypes.objectOf(
-      PropTypes.shape({
-        textItems: PropTypes.array,
-        link: PropTypes.object,
-      })
-    )
+    PropTypes.shape({
+      textItems: PropTypes.array,
+      link: PropTypes.object,
+    })
   ),
   bannerPosition: PropTypes.string,
 };
