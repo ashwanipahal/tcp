@@ -3,6 +3,10 @@ import constants from '../PointsClaim.constants';
 import { submitClaimError, submitClaimSuccess } from './PointsClaim.actions';
 import { claimPoints } from '../../../../../services/abstractors/account';
 
+/**
+ * @function SubmitClaimForm
+ * @description This function will call claimPoints Abstractor to submit claim form
+ */
 export function* SubmitClaimForm({ payload }) {
   try {
     const res = yield call(claimPoints, payload);
@@ -20,6 +24,10 @@ export function* SubmitClaimForm({ payload }) {
   }
 }
 
+/**
+ * @function PointsClaimSaga
+ * @description watcher function for SubmitClaimForm.
+ */
 export function* PointsClaimSaga() {
   yield takeLatest(constants.POINTS_CLAIM, SubmitClaimForm);
 }

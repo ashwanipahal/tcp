@@ -3,10 +3,11 @@ import { connect } from 'react-redux';
 import PropTypes from 'prop-types';
 import PointsHistory from '../views';
 import PointsHistoryList from '../views/PointsHistoryList.view';
-import { getPointHistoryState, getCommonLabels, getLabels } from './PointsHistory.selectors';
+import { getPointHistoryState, getCommonLabels } from './PointsHistory.selectors';
 import { getPointsHistoryList } from './PointsHistory.actions';
 import { resetState } from '../../../../PointsClaim/container/PointsClaim.actions';
 import { getSuccess } from '../../../../PointsClaim/container/PointsClaim.selectors';
+import { getLabels } from '../../../../Account/container/Account.selectors';
 
 export class PointsHistoryContainer extends React.PureComponent {
   componentDidMount() {

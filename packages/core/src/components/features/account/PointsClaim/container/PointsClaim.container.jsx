@@ -5,7 +5,6 @@ import {
   getError,
   getSuccess,
   getShowNotificationState,
-  getLabels,
   getPointsClaimErrorMessage,
 } from './PointsClaim.selectors';
 import { routerPush } from '../../../../../utils';
@@ -14,7 +13,13 @@ import { getMyPlaceNumber, getProfileInfoTileData } from '../../User/container/U
 import PointsClaimComponent from '../views';
 import { TRANSACTION_TYPES } from '../PointsClaim.constants';
 import { submitClaimPoints, resetState } from './PointsClaim.actions';
-import { getFormValidationErrorMessages } from '../../Account/container/Account.selectors';
+import {
+  getLabels,
+  getFormValidationErrorMessages,
+} from '../../Account/container/Account.selectors';
+
+import { getSiteId } from '../../../../../utils/utils.web';
+import { API_CONFIG } from '../../../../../services/config';
 
 export class PontsClaimContainer extends PureComponent {
   transactionTypesMap = [
@@ -22,9 +27,9 @@ export class PontsClaimContainer extends PureComponent {
     { id: TRANSACTION_TYPES.ONLINE, displayName: 'Online' },
   ];
 
-  componentDidUpdate() {
+  componentDidUpdate(prevProps) {
     const { successMessage } = this.props;
-    if (successMessage) {
+    if (prevProps.successMessage !== successMessage) {
       this.backHandler();
     }
   }
@@ -36,6 +41,11 @@ export class PontsClaimContainer extends PureComponent {
     }
   }
 
+  /**
+   * @function submitClaim
+   * @param {object} formData : form data payload
+   * @desc This is a function to submit points claim form
+   */
   submitClaim = formData => {
     const { submitClaimAction, userInfoData, myPlaceNumber } = this.props;
     let orderOrTxData;
@@ -66,6 +76,10 @@ export class PontsClaimContainer extends PureComponent {
     submitClaimAction(claimData);
   };
 
+  /**
+   * @function backHandler
+   * @desc This is a function to redirect at point history page
+   */
   backHandler = () => {
     routerPush(
       '/account?id=place-rewards&&subSection=points-history',
@@ -75,17 +89,21 @@ export class PontsClaimContainer extends PureComponent {
 
   render() {
     const { successMessage, errorMessage, labels, showNotification, ...otherprops } = this.props;
+    const siteId = getSiteId();
 
     return (
-      <PointsClaimComponent
-        successMessage={successMessage}
-        errorMessage={errorMessage}
-        claimSubmit={this.submitClaim}
-        labels={labels}
-        showNotification={showNotification}
-        transactionTypesMap={this.transactionTypesMap}
-        {...otherprops}
-      />
+      siteId !== API_CONFIG.siteIds.ca && (
+        <PointsClaimComponent
+          successMessage={successMessage}
+          errorMessage={errorMessage}
+          claimSubmit={this.submitClaim}
+          labels={labels}
+          showNotification={showNotification}
+          transactionTypesMap={this.transactionTypesMap}
+          onBack={this.backHandler}
+          {...otherprops}
+        />
+      )
     );
   }
 }

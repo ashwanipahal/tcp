@@ -1,6 +1,6 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`PointsClaim View component should renders correctly 1`] = `
+exports[`PointsClaimContainer container should not render if site id is ca 1`] = `
 <Fragment>
   <PointsClaimTopSection
     className="elem-mb-XL"
@@ -9,7 +9,7 @@ exports[`PointsClaim View component should renders correctly 1`] = `
   <ReduxForm
     destroyOnUnmount={true}
     enableReinitialize={true}
-    errorMessage="ERROR"
+    errorMessage=""
     forceUnregisterOnUnmount={false}
     form="PointsClaimForm"
     getFormState={[Function]}
@@ -20,16 +20,19 @@ exports[`PointsClaim View component should renders correctly 1`] = `
     }
     keepDirtyOnReinitialize={false}
     labels={Object {}}
+    onSubmit={[MockFunction]}
     persistentSubmitErrors={false}
     pure={true}
     shouldAsyncValidate={[Function]}
     shouldError={[Function]}
     shouldValidate={[Function]}
     shouldWarn={[Function]}
+    showNotification=""
     submitAsSideEffect={false}
-    successMessage="SUCCESS"
+    successMessage=""
     touchOnBlur={true}
     touchOnChange={false}
+    transactionTypesMap={Array []}
     updateUnregisteredFields={false}
     validate={[Function]}
   />

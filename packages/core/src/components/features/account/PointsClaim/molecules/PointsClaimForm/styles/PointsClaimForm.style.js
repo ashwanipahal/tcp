@@ -13,17 +13,17 @@ const styles = css`
     color: #ffffff;
     width: 260px;
   }
-  .selectBox__label {
+  .selectBox_label {
     margin-bottom: -${props => props.theme.spacing.ELEM_SPACING.MED};
     font-size: 10px;
   }
 
   @media ${props => props.theme.mediaQuery.smallMax} {
-    .points-claim__cancel {
+    .points-claim_cancel {
       order: 2;
     }
 
-    .points-claim__submit {
+    .points-claim_submit {
       order: 1;
       margin-bottom: ${props => props.theme.spacing.ELEM_SPACING.MED};
     }

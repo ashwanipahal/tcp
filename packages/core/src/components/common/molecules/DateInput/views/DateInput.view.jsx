@@ -14,7 +14,6 @@ export class DateInput extends PureComponent {
   static propTypes = {
     className: PropTypes.string,
     placeholder: PropTypes.string,
-    maxDate: PropTypes.string,
     input: PropTypes.shape({
       value: PropTypes.string,
       onChange: PropTypes.func,
@@ -24,7 +23,6 @@ export class DateInput extends PureComponent {
   static defaultProps = {
     className: '',
     placeholder: '',
-    maxDate: '',
     input: {
       value: '',
     },
@@ -51,7 +49,7 @@ export class DateInput extends PureComponent {
   };
 
   render() {
-    const { className, placeholder, maxDate, ...otherProps } = this.props;
+    const { className, placeholder, ...otherProps } = this.props;
     const {
       input = {
         value: '',
@@ -66,7 +64,6 @@ export class DateInput extends PureComponent {
         selected={this.getSelectedDate(input.value)}
         placeholderText={placeholder}
         customInput={<TextBox {...otherProps} />}
-        maxDate={maxDate}
         popperModifiers={{
           offset: {
             offset: '0, 16px',

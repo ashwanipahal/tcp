@@ -1,7 +1,8 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import BodyCopy from '../../../../../../common/atoms/BodyCopy';
-import Anchor from '../../../../../../common/atoms/Anchor';
+import { getLabelValue } from '@tcp/core/src/utils/utils';
+import BodyCopy from '@tcp/core/src/components/common/atoms/BodyCopy';
+import Anchor from '@tcp/core/src/components/common/atoms/Anchor';
 import FormPageHeading from '../../../../common/molecule/FormPageHeading';
 
 export const PointsClaimTopSection = ({ className, labels, onBack }) => {
@@ -18,12 +19,12 @@ export const PointsClaimTopSection = ({ className, labels, onBack }) => {
           asPath="/account/place-rewards/points-history"
         >
           <span className="left-arrow"> </span>
-          {labels.common.lbl_common_backLink}
+          {getLabelValue(labels, 'lbl_common_backLink', 'common')}
         </Anchor>
       </BodyCopy>
       <FormPageHeading
         className="elem-mb-XL"
-        heading={labels.common.lbl_common_points_claim_heading}
+        heading={getLabelValue(labels, 'lbl_points_claim_heading', 'myPlaceRewards')}
         data-locator="historyPointsLbl"
       />
     </BodyCopy>
