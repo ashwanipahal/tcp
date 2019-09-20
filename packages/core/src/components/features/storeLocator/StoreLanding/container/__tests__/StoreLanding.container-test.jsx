@@ -12,7 +12,7 @@ describe('StoreSearch Container', () => {
     tree = shallow(<StoreSearch {...props} />);
   });
 
-  test('should render StoreSearch Correctly', () => {
+  test('should render StoreLanding Correctly', () => {
     expect(tree).toMatchSnapshot();
   });
 
