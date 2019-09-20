@@ -1,6 +1,0 @@
-// TBD: Update constants for container components with contextual ones
-export default {
-  STORE_SEARCH_TEST_ACTION: 'STORE_SEARCH_TEST_ACTION',
-  STORE_SEARCH_TEST_ACTION_ONE: 'STORE_SEARCH_TEST_ACTION_1',
-  STORE_SEARCH_TEST_ACTION_TWO: 'STORE_SEARCH_TEST_ACTION_2',
-};
