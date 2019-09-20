@@ -245,6 +245,10 @@ const endpoints = {
     method: 'POST',
     URI: 'v2/checkout/addGiftOptions',
   },
+  internationalCheckoutSettings: {
+    method: 'POST',
+    URI: 'v2/checkout/internationalCheckout',
+  },
   paypalLookUp: {
     method: 'GET',
     URI: 'v2/checkout/TCPPayPalCCLookUpRESTCmd',

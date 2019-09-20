@@ -580,6 +580,30 @@ function getVenmoUserEmail(state) {
   );
 }
 
+/**
+ * @function getInternationalCheckoutApiUrl
+ * @description this selector gives borderFree url for iframe
+ */
+function getInternationalCheckoutApiUrl() {
+  return getAPIConfig().borderFree;
+}
+/**
+ * @function getInternationalCheckoutCommUrl
+ * @description this selector gives borderFreeComm url for iframe
+ */
+function getInternationalCheckoutCommUrl() {
+  return getAPIConfig().borderFreeComm;
+}
+
+/**
+ *
+ * @function getInternationalCheckoutUrl
+ * @param {*} state
+ * @description this selector gives international url from state.
+ */
+function getInternationalCheckoutUrl(state) {
+  return state.Checkout.getIn(['options', 'internationalUrl']);
+}
 const getIsVenmoEnabled = state => {
   return (
     state[SESSIONCONFIG_REDUCER_KEY] &&
@@ -654,6 +678,9 @@ export default {
   isVenmoNonceNotExpired,
   isVenmoPaymentInProgress,
   isVenmoPaymentToken,
+  getInternationalCheckoutCommUrl,
+  getInternationalCheckoutApiUrl,
+  getInternationalCheckoutUrl,
   getIsVenmoEnabled,
   getCurrentLanguage,
 };
