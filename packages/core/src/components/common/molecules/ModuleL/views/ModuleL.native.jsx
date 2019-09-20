@@ -1,6 +1,6 @@
 // @flow
 import React from 'react';
-import { FlatList } from 'react-native';
+import { FlatList, StyleSheet } from 'react-native';
 import { getLocator, getScreenWidth, LAZYLOAD_HOST_NAME } from '../../../../../utils/index.native';
 import { DamImage, BodyCopy, Anchor } from '../../../atoms';
 import PromoBanner from '../../PromoBanner';
@@ -47,13 +47,26 @@ const renderItem = (item, navigation) => {
     index,
   } = item;
 
+  let tileBgColorSheet = {};
+  try {
+    tileBgColorSheet = StyleSheet.create({
+      // eslint-disable-next-line react-native/no-unused-styles
+      tileColor: {
+        backgroundColor: tileBgColor,
+      },
+    });
+  } catch (e) {
+    // eslint-disable-next-line no-console
+    console.warn('Inavlid tile Background color in Module L');
+  }
+
   return (
     <Anchor
       url={link.url}
       navigation={navigation}
       testID={`${getLocator('moduleL_tiles')}${index + 1}`}
     >
-      <ChildContainer bgColor={tileBgColor}>
+      <ChildContainer style={tileBgColorSheet.tileColor}>
         <DamImage
           url={image.url}
           height={127}

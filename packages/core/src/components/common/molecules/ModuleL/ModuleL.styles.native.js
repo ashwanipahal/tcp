@@ -14,7 +14,6 @@ export const ChildContainer = styled.View`
   margin-right: ${props => props.theme.spacing.LAYOUT_SPACING.XXS};
   align-items: center;
   margin-bottom: ${props => props.theme.spacing.LAYOUT_SPACING.XXS};
-  ${props => (props.bgColor ? `background-color: ${props.bgColor}` : '')}
 `;
 
 export const MessageContainer = styled.View`
