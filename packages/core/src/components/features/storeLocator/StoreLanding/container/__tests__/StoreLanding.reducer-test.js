@@ -1,7 +1,7 @@
 import { fromJS } from 'immutable';
-import STORE_LOCATOR_CONSTANTS from '../StoreSearch.constants';
+import STORE_LOCATOR_CONSTANTS from '../StoreLanding.constants';
 
-import StoreLocatorReducer, { initialState } from '../StoreSearch.reducer';
+import StoreLocatorReducer, { initialState } from '../StoreLanding.reducer';
 import suggestedStores from '../__mocks__/suggestedStore';
 
 describe('StoreLocatorReducer', () => {

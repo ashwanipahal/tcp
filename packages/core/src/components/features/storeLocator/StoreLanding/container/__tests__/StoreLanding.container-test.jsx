@@ -1,6 +1,6 @@
 import { shallow } from 'enzyme';
 import React from 'react';
-import { StoreSearch } from '../StoreSearch.container';
+import { StoreSearch } from '../StoreLanding.container';
 
 describe('StoreSearch Container', () => {
   const props = {

@@ -3,7 +3,7 @@ import { FlatList } from 'react-native';
 import { shallow } from 'enzyme';
 import theme from '@tcp/core/styles/themes/TCP';
 import { StoreSearchVanilla } from '../views/StoreSearch.native';
-import labels from '../__mocks__/storeSearchData';
+import labels from '../../../container/__mocks__/storeSearchData';
 
 describe('StoreSearch component', () => {
   let props = {

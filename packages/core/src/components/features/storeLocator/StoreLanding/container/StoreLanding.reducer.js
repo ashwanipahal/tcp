@@ -1,6 +1,6 @@
 import { fromJS } from 'immutable';
 import { DEFAULT_REDUCER_KEY } from '@tcp/core/src/utils/cache.util';
-import STORE_LOCATOR_CONSTANTS from './StoreSearch.constants';
+import STORE_LOCATOR_CONSTANTS from './StoreLanding.constants';
 
 export const initialState = fromJS({
   [DEFAULT_REDUCER_KEY]: null,

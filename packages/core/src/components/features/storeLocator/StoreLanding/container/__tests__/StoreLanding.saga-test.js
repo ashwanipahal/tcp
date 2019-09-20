@@ -1,14 +1,22 @@
-import { call, put } from 'redux-saga/effects';
+import { call, put, takeLatest } from 'redux-saga/effects';
 import { getLocationStores } from '@tcp/core/src/services/abstractors/common/storeLocator';
-import { fetchLocationStoresSaga } from '../StoreSearch.saga';
+import STORE_LOCATOR_CONSTANTS from '../StoreLanding.constants';
+import StoreSaga, { fetchLocationStoresSaga } from '../StoreLanding.saga';
 import suggestedStores from '../__mocks__/suggestedStore';
-import { setStoresByCoordinates } from '../StoreSearch.actions';
+import { setStoresByCoordinates } from '../StoreLanding.actions';
 
 jest.mock('@tcp/core/src/services/abstractors/common/storeLocator', () => ({
   getLocationStores: jest.fn(),
 }));
 
 describe('Store Locator saga', () => {
+  test('should test watch Category page action', () => {
+    const generator = StoreSaga();
+    expect(generator.next().value).toEqual(
+      takeLatest(STORE_LOCATOR_CONSTANTS.GET_LOCATION_STORES, fetchLocationStoresSaga)
+    );
+  });
+
   describe('fetchLocationStoresSaga', () => {
     getLocationStores.mockImplementation(() => new Promise(resolve => resolve(suggestedStores)));
     const payload = {

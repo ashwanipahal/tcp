@@ -1,7 +1,7 @@
 import { call, takeLatest, put } from 'redux-saga/effects';
 import { getLocationStores } from '@tcp/core/src/services/abstractors/common/storeLocator';
-import STORE_LOCATOR_CONSTANTS from './StoreSearch.constants';
-import { setStoresByCoordinates } from './StoreSearch.actions';
+import STORE_LOCATOR_CONSTANTS from './StoreLanding.constants';
+import { setStoresByCoordinates } from './StoreLanding.actions';
 
 export function* fetchLocationStoresSaga({ payload }) {
   try {

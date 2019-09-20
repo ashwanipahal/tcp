@@ -1,0 +1,10 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`StoreSearch Container should render StoreSearch Correctly 1`] = `
+<StoreLanding
+  fetchStoresByLatLng={[MockFunction]}
+  loadStoresByCoordinates={[Function]}
+  markerIcon="/static/images/marker-icon.svg"
+  searchIcon="/static/images/search-icon.svg"
+/>
+`;

@@ -1,5 +1,5 @@
 /* istanbul ignore file */
-import STORE_LOCATOR_CONSTANTS from './StoreSearch.constants';
+import STORE_LOCATOR_CONSTANTS from './StoreLanding.constants';
 
 export function getSetDefaultStoreActn(payload) {
   return {

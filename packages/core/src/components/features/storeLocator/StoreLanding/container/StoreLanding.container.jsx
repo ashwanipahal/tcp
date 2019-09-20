@@ -1,11 +1,11 @@
 import React, { PureComponent } from 'react';
 import { connect } from 'react-redux';
+import { getIconPath } from '@tcp/core/src/utils';
 import { withRouter } from 'next/router'; //eslint-disable-line
 import PropTypes from 'prop-types';
-import { getIconPath } from '@tcp/core/src/utils';
-import { getStoresByCoordinates } from './StoreSearch.actions';
-import StoreLocatorSearch from './views/StoreSearch';
-import { getCurrentCountry, getPageLabels } from './StoreSearch.selectors';
+import { getStoresByCoordinates } from './StoreLanding.actions';
+import StoreLandingView from './views/StoreLanding';
+import { getCurrentCountry, getPageLabels } from './StoreLanding.selectors';
 
 export class StoreSearch extends PureComponent {
   /**
@@ -26,11 +26,11 @@ export class StoreSearch extends PureComponent {
     const searchIcon = getIconPath('search-icon');
     const markerIcon = getIconPath('marker-icon');
     return (
-      <StoreLocatorSearch
+      <StoreLandingView
         {...this.props}
-        markerIcon={markerIcon}
-        searchIcon={searchIcon}
         loadStoresByCoordinates={this.loadStoresByCoordinates}
+        searchIcon={searchIcon}
+        markerIcon={markerIcon}
       />
     );
   }

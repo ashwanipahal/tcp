@@ -3,7 +3,7 @@ import { ThemeProvider } from 'styled-components';
 import Theme from '@tcp/core/styles/themes';
 import { storiesOf } from '@storybook/react';
 import StoreSearch from '../views/StoreSearch';
-import mockLabels from '../__mocks__/storeSearchData';
+import mockLabels from '../../../container/__mocks__/storeSearchData';
 
 storiesOf('StoreSearch', module)
   .add('with styles and redux-form', () => (

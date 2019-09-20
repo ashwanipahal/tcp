@@ -15,7 +15,7 @@ import { AutoCompleteComponent } from '@tcp/core/src/components/common/atoms/Goo
 import withStyles from '@tcp/core/src/components/common/hoc/withStyles';
 import ErrorMessage from '@tcp/core/src/components/common/hoc/ErrorMessage';
 import { getAddressLocationInfo } from '@tcp/core/src/utils/addressLocation';
-import constants from '../StoreSearch.constants';
+import constants from '../../../container/StoreLanding.constants';
 import styles from '../styles/StoreSearch.style';
 
 const { INITIAL_STORE_LIMIT } = constants;

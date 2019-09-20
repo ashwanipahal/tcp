@@ -1,5 +1,5 @@
 import { fromJS } from 'immutable';
-import { getCurrentCountry } from '../StoreSearch.selectors';
+import { getCurrentCountry } from '../StoreLanding.selectors';
 import { SESSIONCONFIG_REDUCER_KEY } from '../../../../../../constants/reducer.constants';
 
 describe('selectors', () => {

@@ -8,7 +8,7 @@ import PropTypes from 'prop-types';
 import HomePageSlots from '@tcp/core/src/components/common/molecules/HomePageSlots';
 import moduleJMock from '@tcp/core/src/components/common/molecules/ModuleJ/mock';
 import moduleRMock from '@tcp/core/src/services/abstractors/common/moduleR/mock';
-
+import StoreSearch from '@tcp/core/src/components/features/storeLocator/StoreLanding/organisms/StoreSearch';
 import {
   ModuleD,
   ModuleH,
@@ -73,6 +73,7 @@ class HomePageView extends React.PureComponent<Props> {
         <HeaderPromoContainer>
           <HeaderPromo headerPromo={headerPromo} />
         </HeaderPromoContainer>
+        <StoreSearch />
         <HomePageSlots slots={slots} modules={modulesMap} navigation={navigation} />
         <ModuleB navigation={navigation} />
         <GetCandid apiConfig={apiConfig} navigation={navigation} />

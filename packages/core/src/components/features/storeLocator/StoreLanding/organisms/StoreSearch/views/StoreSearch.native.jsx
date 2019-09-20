@@ -19,8 +19,8 @@ import {
   StyledCheckBoxBodyCopy,
 } from '../styles/StoreSearch.style.native';
 
-const MarkerIcon = require('../../../../../../assets/icon-marker.png');
-const SearchIcon = require('../../../../../../assets/icon-mag-glass.png');
+const MarkerIcon = require('@tcp/core/src/assets/icon-marker.png');
+const SearchIcon = require('@tcp/core/src/assets/icon-mag-glass.png');
 
 class StoreSearch extends Component {
   state = {
