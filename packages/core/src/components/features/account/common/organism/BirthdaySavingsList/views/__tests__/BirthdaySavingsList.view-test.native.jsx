@@ -53,6 +53,7 @@ describe('BirthdaySavingsList component', () => {
       childrenBirthdays: fromJS([{ childId: '3434' }]),
       view: 'read',
       addChildBirthday: jest.fn(),
+      removeBirthday: jest.fn(),
     };
     const component = shallow(<BirthdaySavingsList {...props} />);
     expect(component).toMatchSnapshot();

@@ -6,6 +6,7 @@ exports[`BirthdaySavingsList component should render BirthdayCard component if a
     <Styled(View)>
       <BirthdayCard
         childId="3434"
+        removeBirthday={[Function]}
         view="read"
       />
     </Styled(View)>
