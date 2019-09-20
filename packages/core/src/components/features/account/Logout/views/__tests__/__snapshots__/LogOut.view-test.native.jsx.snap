@@ -5,11 +5,16 @@ exports[`LogOutView Page should render correctly 1`] = `
   className=""
 >
   <Styled(BodyCopy)
+    accessibilityText=""
     color="gray.900"
+    dataLocator=""
     fontFamily="secondary"
     fontSize="fs13"
     fontWeight="regular"
+    margin={null}
+    numberOfLines={null}
     onPress={[Function]}
+    textDecoration={null}
   />
 </Fragment>
 `;

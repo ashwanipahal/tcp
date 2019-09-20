@@ -61,7 +61,7 @@ class BagPage extends React.Component {
               </RowSectionStyle>
             )}
             <RowSectionStyle>
-              <CouponAndPromos />
+              <CouponAndPromos showAccordian={false} />
             </RowSectionStyle>
           </MainSection>
         </ScrollViewWrapper>

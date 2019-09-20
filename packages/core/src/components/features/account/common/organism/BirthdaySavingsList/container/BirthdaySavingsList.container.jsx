@@ -10,6 +10,7 @@ import {
 } from './BirthdaySavingsList.actions';
 import { getStatus, getMessage } from './BirthdaySavingsList.selectors';
 import BirthdaySavingsComponent from '../views';
+import { toastMessageInfo } from '../../../../../../common/atoms/Toast/container/Toast.actions.native';
 
 /**
  * @function BirthdaySavings
@@ -75,6 +76,9 @@ export const mapDispatchToProps = dispatch => ({
   },
   resetBirthdaySavingMessage: () => {
     dispatch(resetBirthdaySavingMessageAction());
+  },
+  toastMessage: palyoad => {
+    dispatch(toastMessageInfo(palyoad));
   },
 });
 

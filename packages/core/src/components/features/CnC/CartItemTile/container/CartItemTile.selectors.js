@@ -170,6 +170,7 @@ export const getLabelsCartItemTile = state => {
   } = state.Labels;
 
   const saveForLaterLink = getLabelValue(state.Labels, 'lbl_sfl_actionLink', 'bagPage', 'checkout');
+  const moveToBagLink = getLabelValue(state.Labels, 'lbl_sfl_moveToBag', 'bagPage', 'checkout');
   const sflMaxLimitError = getLabelValue(
     state.Labels,
     'lbl_sfl_maxLimitError',
@@ -220,6 +221,7 @@ export const getLabelsCartItemTile = state => {
     deleteItem,
     saveForLaterLink,
     sflMaxLimitError,
+    moveToBagLink,
   };
 };
 

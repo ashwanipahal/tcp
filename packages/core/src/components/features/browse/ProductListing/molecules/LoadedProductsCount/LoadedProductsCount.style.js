@@ -3,6 +3,7 @@ import { css } from 'styled-components';
 export default css`
   .count-section {
     position: relative;
+    text-align: right;
   }
 
   .items-count-content-number {
@@ -16,7 +17,6 @@ export default css`
   }
 
   .items-count-content {
-    position: absolute;
-    right: 15px;
+    position: relative;
   }
 `;

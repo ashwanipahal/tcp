@@ -7,12 +7,17 @@ exports[`Header Component Header should render correctly 1`] = `
   >
     <Styled(View)>
       <Styled(BodyCopy)
+        accessibilityText=""
         color="black"
         data-locator="global_headerpanelwelcometext"
+        dataLocator=""
         fontFamily="secondary"
         fontSize="fs14"
         fontWeight="semibold"
+        margin={null}
+        numberOfLines={null}
         textAlign="center"
+        textDecoration={null}
       />
       <Styled(TouchableOpacity)
         onPress={[Function]}
@@ -21,10 +26,14 @@ exports[`Header Component Header should render correctly 1`] = `
           accessibilityText="Drop Down"
           color="text.primary"
           data-locator="global_findastoretext"
+          dataLocator=""
           fontFamily="secondary"
           fontSize="fs12"
           fontWeight="regular"
+          margin={null}
+          numberOfLines={null}
           textAlign="center"
+          textDecoration={null}
         />
         <Styled(Image)
           data-locator="global_headerpanelcollapsedicon"
@@ -60,7 +69,10 @@ exports[`Header Component Header should render correctly 1`] = `
           accessibilityText="Mini bag with count"
           color="white"
           data-locator="obal_headerpanelbagicon"
+          dataLocator=""
           fontSize="fs10"
+          margin={null}
+          numberOfLines={null}
           style={
             Object {
               "marginTop": 18,
@@ -69,6 +81,7 @@ exports[`Header Component Header should render correctly 1`] = `
             }
           }
           text={0}
+          textDecoration={null}
         />
       </Styled(TouchableOpacity)>
     </Styled(View)>

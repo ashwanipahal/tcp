@@ -77,6 +77,7 @@ exports[`ProfileInformation should render correctly 1`] = `
     <Styled(Anchor)
       accessibilityLabel=""
       anchorVariation="primary"
+      colorName={null}
       customStyle={Object {}}
       data-locator="my-rewards-program-details"
       fontSizeVariation="medium"
@@ -90,6 +91,7 @@ exports[`ProfileInformation should render correctly 1`] = `
       <Styled(Anchor)
         accessibilityLabel=""
         anchorVariation="primary"
+        colorName={null}
         customStyle={Object {}}
         data-locator="my-rewards-tnc"
         fontSizeVariation="medium"

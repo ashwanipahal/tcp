@@ -4,6 +4,7 @@ import { AVAILABILITY } from '../../../../../services/abstractors/CnC/CartItemTi
 
 const initialState = fromJS({
   orderDetails: {},
+  sfl: [],
   errors: false,
   moduleXContent: [],
   showConfirmationModal: false,
@@ -71,6 +72,8 @@ const returnBagPageReducer = (state = initialState, action) => {
       return setCartItemsSFL(state, action.payload);
     case BAGPAGE_CONSTANTS.CART_ITEMS_SET_SFL_ERROR:
       return setCartItemsSflError(state, action.payload);
+    case BAGPAGE_CONSTANTS.SET_SFL_DATA:
+      return state.set('sfl', fromJS(action.payload));
     default:
       // TODO: currently when initial state is hydrated on browser, List is getting converted to an JS Array
       if (state instanceof Object) {
