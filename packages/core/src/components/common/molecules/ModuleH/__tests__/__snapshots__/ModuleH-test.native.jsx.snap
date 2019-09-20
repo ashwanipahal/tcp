@@ -160,7 +160,9 @@ exports[`ModuleH component renders correctly 1`] = `
     vertical={true}
     width={750}
   />
-  <Styled(View)>
+  <Styled(View)
+    lines={2}
+  >
     <Styled(Anchor)
       accessibilityLabel=""
       anchorVariation=""
