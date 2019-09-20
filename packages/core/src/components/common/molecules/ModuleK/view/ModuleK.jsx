@@ -87,6 +87,8 @@ class ModuleK extends React.PureComponent<Props, State> {
             >
               {masonryGrid.map(({ promoBanner, mediaLinkedList, singleCTAButton }, index) => {
                 const checkPromo = promoBanner && promoBanner.length;
+
+                console.info('>> ModuleK -- mediaLinkedList-----', mediaLinkedList);
                 return (
                   <React.Fragment>
                     {checkPromo && (

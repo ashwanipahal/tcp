@@ -7,12 +7,30 @@ import {
   StyledBodyCopy,
   ScrollViewContainer,
   ButtonWrapper,
+  StyledAnchor,
 } from '../../styles/ApplyNowView.style.native';
 import { getLabelValue } from '../../../../../../utils/utils';
+import ApplyCardLayout from '../../../../../features/browse/ApplyCardPage/views/ApplyCardLayout.View.native';
 
 const headerImage = require('../../../../../../assets/tcp-cc.png');
+const PLCC_LOOKUP_2_POINTS = require('../../../../../../assets/PLCC_lockup_2_points.png');
+const PLCC_LOOKUP_1_POINTS = require('../../../../../../assets/PLCC_lockup_1_points.png');
 
 class ApplyNowModalWrapper extends React.PureComponent {
+  constructor(props) {
+    super(props);
+    this.state = {
+      applyCard: false,
+    };
+  }
+
+  toggleApplyCard = () => {
+    const { applyCard } = this.state;
+    this.setState({
+      applyCard: !applyCard,
+    });
+  };
+
   onClose = () => {
     const { setLoginModalMountState } = this.props;
     setLoginModalMountState({ state: false });
@@ -30,8 +48,14 @@ class ApplyNowModalWrapper extends React.PureComponent {
     };
     // eslint-disable-next-line react/prop-types
     const { labels, applyNow, toggleModalWrapper } = this.props;
+    const { applyCard } = this.state;
 
-    console.info('>>>>labels---', labels);
+    console.info('>>>>labels---', getLabelValue(labels, 'oneequalstwopointsoffer'));
+    console.info(
+      '>>>>apply_now_benefits_header---',
+      getLabelValue(labels, 'apply_now_benefits_header')
+    );
+    console.info('>>>>labels---', getLabelValue(labels, 'oneequalstwopointsoffer'));
 
     return (
       <ModalNative
@@ -53,11 +77,9 @@ class ApplyNowModalWrapper extends React.PureComponent {
             text={getLabelValue(labels, 'apply_now_header')}
             paddingTop="30px"
           />
-
           <ImageContainer>
             <Image source={headerImage} width="45%" height="112px" />
           </ImageContainer>
-
           <StyledBodyCopy
             color="gray.900"
             fontFamily="secondary"
@@ -72,10 +94,34 @@ class ApplyNowModalWrapper extends React.PureComponent {
               type="submit"
               color="white"
               buttonVariation="variable-width"
-              text="SUBMIT TO OPEN AN ACCOUNT"
+              text={getLabelValue(labels, 'applynow_cta')}
               width="90%"
+              onPress={this.toggleApplyCard}
             />
           </ButtonWrapper>
+          <ApplyCardLayout toggleModal={this.toggleApplyCard} applyCard={applyCard} />
+          <StyledAnchor
+            url={getLabelValue(labels, 'learn_more_link')}
+            fontSizeVariation="large"
+            anchorVariation="secondary"
+            underline
+            text={getLabelValue(labels, 'apply_now_learn_more')}
+            paddingTop="23px"
+          />
+          <ImageContainer>
+            <Image source={PLCC_LOOKUP_1_POINTS} width="90%" height="60px" />
+
+            <Image source={PLCC_LOOKUP_2_POINTS} width="90%" height="60px" />
+          </ImageContainer>
+          <StyledBodyCopy
+            mobilefontFamily="primary"
+            fontSize="fs28"
+            fontWeight="black"
+            textAlign="center"
+            color="text.secondary"
+            text={getLabelValue(labels, 'apply_now_benefits_header')}
+            paddingTop="9px"
+          />
         </ScrollViewContainer>
       </ModalNative>
     );
