@@ -147,11 +147,16 @@ class ProductAddToBagContainer extends React.PureComponent<Props> {
 
   colorChange = e => {
     const { selectedSize } = this.state;
+    const { onChangeColor } = this.props;
     this.setState({
       selectedColor: { name: e },
       selectedSize,
       isErrorMessageDisplayed: false,
     });
+
+    if (onChangeColor) {
+      onChangeColor();
+    }
   };
 
   /**
@@ -340,6 +345,7 @@ class ProductAddToBagContainer extends React.PureComponent<Props> {
    */
   render() {
     const {
+      currentProduct,
       currentProduct: { colorFitsSizesMap },
       plpLabels,
     } = this.props;
@@ -352,6 +358,7 @@ class ProductAddToBagContainer extends React.PureComponent<Props> {
       selectedQuantity,
     } = this.state;
     const initialValues = this.initialValuesForm;
+    const generalProductId = currentProduct && currentProduct.generalProductId;
 
     return (
       <ProductAddToBag
@@ -373,6 +380,7 @@ class ProductAddToBagContainer extends React.PureComponent<Props> {
         selectedQuantity={selectedQuantity}
         onQuantityChange={this.quantityChange}
         addToBagAction={this.addToBagAction}
+        generalProductId={generalProductId}
       />
     );
   }
