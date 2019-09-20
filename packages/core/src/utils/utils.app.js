@@ -519,3 +519,27 @@ export const getPixelRatio = () => {
 export default {
   getSiteId,
 };
+
+/**
+ * INFO: Use this function only after accessibility props is set.
+ * This adds unique identifier as testId or accessibiliyLabel when the build
+ * type is of automation variant. For dev, alpha, release builds
+ * it will return an empty object and won't override anything.
+ */
+const isAutomation = false;
+export function setTestId(id) {
+  if (id === false) {
+    return {};
+  }
+  if (isAutomation) {
+    return Platform.select({
+      ios: {
+        testID: id,
+      },
+      android: {
+        accessibilityLabel: id,
+      },
+    });
+  }
+  return {};
+}

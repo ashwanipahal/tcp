@@ -1023,6 +1023,39 @@ export function addGiftCard(args) {
     });
 }
 
+/**
+ *
+ * @function getInternationCheckoutSettings
+ * @description this method trigger internationalCheckout API call on start of international checkout journey.
+ */
+export function getInternationCheckoutSettings() {
+  const apiConfig = getAPIConfig();
+  const payload = {
+    body: {
+      storeId: apiConfig.storeId,
+      langId: apiConfig.langId,
+      catalogId: apiConfig.catalogId,
+      orderId: '.',
+      URL: 'LogonForm',
+    },
+    webService: endpoints.internationalCheckoutSettings,
+  };
+
+  return executeStatefulAPICall(payload)
+    .then(res => {
+      if (responseContainsErrors(res)) {
+        throw new ServiceResponseError(res);
+      }
+
+      return {
+        checkoutUrl: res.body.completeURL,
+      };
+    })
+    .catch(err => {
+      throw getFormattedError(err);
+    });
+}
+
 export default {
   getGiftWrappingOptions,
   getCurrentOrderAndCouponsDetails,
@@ -1039,4 +1072,5 @@ export default {
   submitOrder,
   requestPersonalizedCoupons,
   addGiftCard,
+  getInternationCheckoutSettings,
 };

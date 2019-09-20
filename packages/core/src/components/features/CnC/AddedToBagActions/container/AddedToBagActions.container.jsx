@@ -11,6 +11,7 @@ import { getUserLoggedInState } from '../../../account/User/container/User.selec
 import bagPageActions from '../../BagPage/container/BagPage.actions';
 import bagPageSelector from '../../BagPage/container/BagPage.selectors';
 import checkoutSelectors from '../../Checkout/container/Checkout.selector';
+import { getIsInternationalShipping } from '../../../../../reduxStore/selectors/siteDetails.selectors';
 
 export class AddedToBagContainer extends React.Component<Props> {
   constructor(props) {
@@ -46,6 +47,7 @@ export class AddedToBagContainer extends React.Component<Props> {
       orderHasPickup,
       closeModal,
       closeMiniBag,
+      isInternationalShipping,
     } = this.props;
     const onClickViewBag = () => {
       utility.routeToPage(CHECKOUT_ROUTES.bagPage);
@@ -70,6 +72,7 @@ export class AddedToBagContainer extends React.Component<Props> {
         orderHasPickup={orderHasPickup}
         closeModal={closeModal}
         closeMiniBag={closeMiniBag}
+        isInternationalShipping={isInternationalShipping}
       />
     );
   }
@@ -83,6 +86,7 @@ AddedToBagContainer.propTypes = {
   removeUnqualifiedItemsAndCheckout: PropTypes.func.isRequired,
   closeCheckoutConfirmationModal: PropTypes.func.isRequired,
   modalInfo: PropTypes.shape({}).isRequired,
+  isInternationalShipping: PropTypes.bool.isRequired,
 };
 
 const mapDispatchToProps = (dispatch, ownProps) => {
@@ -112,6 +116,7 @@ const mapStateToProps = state => {
     isUserLoggedIn: getUserLoggedInState(state),
     modalInfo: bagPageSelector.getConfirmationModalFlag(state),
     orderHasPickup: checkoutSelectors.getIsOrderHasPickup(state),
+    isInternationalShipping: getIsInternationalShipping(state),
   };
 };
 

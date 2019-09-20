@@ -5,11 +5,16 @@ exports[`MyProfileTile should render correctly when all props are present 1`] = 
   spacingStyles="margin-bottom-XXXL"
 >
   <Styled(Styled(BodyCopy))
+    accessibilityText=""
+    dataLocator=""
     fontFamily="secondary"
     fontSize="fs16"
     fontWeight="extrabold"
+    margin={null}
+    numberOfLines={null}
     spacingStyles="margin-bottom-MED"
     text="Test"
+    textDecoration={null}
   />
   <Styled(View)
     spacingStyles="margin-bottom-XXL"

@@ -162,11 +162,16 @@ exports[`ProductAddToBagVanilla native should render correctly should match snap
   />
   <Styled(View)>
     <Styled(BodyCopy)
+      accessibilityText=""
       color="gray.900"
+      dataLocator=""
       fontSize="fs14"
       fontWeight="black"
+      margin={null}
       mobileFontFamily="secondary"
+      numberOfLines={null}
       text="undefined: "
+      textDecoration={null}
     />
     <Styled(DropDown)
       bounces={false}

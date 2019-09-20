@@ -159,8 +159,8 @@ class TCPWebApp extends App {
   render() {
     const { Component, pageProps, store, router } = this.props;
     let isNonCheckoutPage = true;
-    const { PICKUP, SHIPPING, BILLING, REVIEW } = CHECKOUT_STAGES;
-    const checkoutPageURL = [PICKUP, SHIPPING, BILLING, REVIEW];
+    const { PICKUP, SHIPPING, BILLING, REVIEW, INTERNATIONAL_CHECKOUT } = CHECKOUT_STAGES;
+    const checkoutPageURL = [PICKUP, SHIPPING, BILLING, REVIEW, INTERNATIONAL_CHECKOUT];
     for (let i = 0; i < checkoutPageURL.length; i += 1) {
       if (router.asPath.indexOf(checkoutPageURL[i]) > -1) {
         isNonCheckoutPage = false;

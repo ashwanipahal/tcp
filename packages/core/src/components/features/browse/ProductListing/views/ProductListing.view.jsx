@@ -74,10 +74,11 @@ const ProductListView = ({
                 formValues={formValues}
                 getProducts={getProducts}
                 sortLabels={sortLabels}
+                slpLabels={slpLabels}
               />
             </div>
           </Col>
-          <Col colSize={{ small: 6, medium: 8, large: 12 }}>
+          <Col colSize={{ small: 6, medium: 8, large: 12 }} className="show-count-section">
             <LoadedProductsCount
               totalProductsCount={totalProductsCount}
               showingItemsLabel={slpLabels}

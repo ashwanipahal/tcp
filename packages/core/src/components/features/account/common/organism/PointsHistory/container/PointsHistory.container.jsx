@@ -5,11 +5,21 @@ import PointsHistory from '../views';
 import PointsHistoryList from '../views/PointsHistoryList.view';
 import { getPointHistoryState, getCommonLabels } from './PointsHistory.selectors';
 import { getPointsHistoryList } from './PointsHistory.actions';
+import { resetState } from '../../../../PointsClaim/container/PointsClaim.actions';
+import { getSuccess } from '../../../../PointsClaim/container/PointsClaim.selectors';
+import { getLabels } from '../../../../Account/container/Account.selectors';
 
 export class PointsHistoryContainer extends React.PureComponent {
   componentDidMount() {
     const { getPointsHistoryAction } = this.props;
     getPointsHistoryAction();
+  }
+
+  componentWillUnmount() {
+    const { showNotification, resetStateAction } = this.props;
+    if (showNotification) {
+      resetStateAction();
+    }
   }
 
   /**
@@ -20,7 +30,7 @@ export class PointsHistoryContainer extends React.PureComponent {
   render() {
     const { labels, pointHistory, showFullHistory, ...otherprops } = this.props;
     if (showFullHistory) {
-      return <PointsHistoryList pointHistory={pointHistory} labels={labels} />;
+      return <PointsHistoryList pointHistory={pointHistory} labels={labels} {...otherprops} />;
     }
     return <PointsHistory pointHistory={pointHistory} labels={labels} {...otherprops} />;
   }
@@ -31,6 +41,9 @@ export const mapDispatchToProps = dispatch => {
     getPointsHistoryAction: () => {
       dispatch(getPointsHistoryList());
     },
+    resetStateAction: () => {
+      dispatch(resetState());
+    },
   };
 };
 
@@ -38,6 +51,8 @@ const mapStateToProps = state => {
   return {
     pointHistory: getPointHistoryState(state),
     labels: getCommonLabels(state),
+    accountlabels: getLabels(state),
+    showNotification: getSuccess(state),
   };
 };
 
@@ -49,12 +64,16 @@ PointsHistoryContainer.propTypes = {
   }),
   pointHistory: PropTypes.shape({}),
   showFullHistory: PropTypes.bool,
+  showNotification: PropTypes.string,
+  resetStateAction: PropTypes.func,
 };
 
 PointsHistoryContainer.defaultProps = {
   labels: PropTypes.shape({ labels: {} }),
   pointHistory: PropTypes.shape({}),
   showFullHistory: false,
+  showNotification: '',
+  resetStateAction: () => {},
 };
 
 export default connect(

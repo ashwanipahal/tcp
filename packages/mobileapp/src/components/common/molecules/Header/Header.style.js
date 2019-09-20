@@ -115,8 +115,46 @@ export const BackIcon = styled.Image`
   margin-top: ${props => props.theme.spacing.ELEM_SPACING.XS};
 `;
 
+export const BrandIcon = styled.Image`
+  width: 90px;
+  height: 35px;
+`;
+
+export const BrandIconSection = styled.View`
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: row;
+  width: 100%;
+  border-bottom-color: ${props => props.theme.colorPalette.gray[500]};
+  border-bottom-width: 1;
+  height: 54px;
+`;
+
 export const BackIconTouchable = styled.TouchableOpacity`
   width: 45px;
+`;
+
+export const CloseIcon = styled.Image`
+  width: 15px;
+  height: 15px;
+`;
+
+export const CloseIconTouchable = styled.TouchableOpacity`
+  width: auto;
+`;
+
+export const CloseContainer = styled.View`
+  position: absolute;
+  z-index: ${props => props.theme.zindex.zOverlay};
+  justify-content: space-between;
+  right: ${props => props.theme.spacing.ELEM_SPACING.SM};
+  top: 20px;
+`;
+
+export const BagPageContainer = styled.View`
+  display: flex;
+  flex-direction: row;
 `;
 
 export default {
@@ -137,4 +175,9 @@ export default {
   CheckoutHeaderTextSection,
   BackIcon,
   BackIconTouchable,
+  BrandIconSection,
+  CloseIconTouchable,
+  CloseIcon,
+  CloseContainer,
+  BagPageContainer,
 };

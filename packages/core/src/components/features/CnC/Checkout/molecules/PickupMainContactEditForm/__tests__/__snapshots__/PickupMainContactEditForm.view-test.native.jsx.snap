@@ -4,16 +4,22 @@ exports[`PickupMainContactEditFormVanilla component should renders correctly whe
 <View>
   <Styled(View)>
     <Styled(BodyCopy)
+      accessibilityText=""
       color="gray.900"
+      dataLocator=""
       fontFamily="primary"
       fontSize="fs28"
       fontWeight="regular"
+      margin={null}
+      numberOfLines={null}
+      textDecoration={null}
     />
     <Styled(View)>
       <Styled(Anchor)
         accessibilityLabel=""
         anchorVariation="primary"
         color="gray.900"
+        colorName={null}
         customStyle={Object {}}
         fontSize="fs12"
         href="#"
@@ -65,16 +71,22 @@ exports[`PickupMainContactEditFormVanilla component should renders correctly whe
 <View>
   <Styled(View)>
     <Styled(BodyCopy)
+      accessibilityText=""
       color="gray.900"
+      dataLocator=""
       fontFamily="primary"
       fontSize="fs28"
       fontWeight="regular"
+      margin={null}
+      numberOfLines={null}
+      textDecoration={null}
     />
     <Styled(View)>
       <Styled(Anchor)
         accessibilityLabel=""
         anchorVariation="primary"
         color="gray.900"
+        colorName={null}
         customStyle={Object {}}
         fontSize="fs12"
         href="#"
@@ -98,16 +110,22 @@ exports[`PickupMainContactEditFormVanilla component should renders on click 1`] 
 <View>
   <Styled(View)>
     <Styled(BodyCopy)
+      accessibilityText=""
       color="gray.900"
+      dataLocator=""
       fontFamily="primary"
       fontSize="fs28"
       fontWeight="regular"
+      margin={null}
+      numberOfLines={null}
+      textDecoration={null}
     />
     <Styled(View)>
       <Styled(Anchor)
         accessibilityLabel=""
         anchorVariation="primary"
         color="gray.900"
+        colorName={null}
         customStyle={Object {}}
         fontSize="fs12"
         href="#"

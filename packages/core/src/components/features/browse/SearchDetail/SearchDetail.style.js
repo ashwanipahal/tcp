@@ -14,6 +14,15 @@ export default css`
     margin: 0 ${props => props.theme.spacing.ELEM_SPACING.SM}
       ${props => props.theme.spacing.ELEM_SPACING.SM};
   }
+  .filter-and-sort-form-container .desktop-dropdown {
+    display: none;
+  }
+  .searched-label {
+    display: block;
+  }
+  .searched-text-wrapper {
+    padding-top: ${props => props.theme.spacing.ELEM_SPACING.XS};
+  }
   .product-list .search-product-tile {
     display: inline-block;
     padding: ${props => props.theme.spacing.ELEM_SPACING.SM} 20px 0 0;
@@ -38,6 +47,12 @@ export default css`
         padding-right: 0;
       }
     }
+    .filter-row {
+      margin-left: 0;
+    }
+    .mobile-sort-container .common-dropdown .item-common {
+      padding-left: 8px;
+    }
   }
   @media ${props => props.theme.mediaQuery.mediumOnly} {
     .product-list {
@@ -45,12 +60,41 @@ export default css`
         padding-right: 0;
       }
     }
+    .searched-label {
+      padding-bottom: 28px;
+    }
+  }
+  @media ${props => props.theme.mediaQuery.medium} {
+    .searched-label {
+      display: inline-block;
+      padding-left: 6px;
+    }
   }
   @media ${props => props.theme.mediaQuery.large} {
+    .show-items-count-section {
+      display: none;
+    }
     .product-list {
       .search-product-tile:nth-child(5n) {
         padding-right: 0;
       }
+    }
+    .render-mobile-view {
+      display: none;
+    }
+    .filter-and-sort-form-container .desktop-dropdown {
+      display: flex;
+    }
+    .searched-label {
+      padding-bottom: 28px;
+    }
+  }
+
+  .render-desktop-view {
+    display: none;
+
+    @media ${props => props.theme.mediaQuery.large} {
+      display: block;
     }
   }
   .item-title {
