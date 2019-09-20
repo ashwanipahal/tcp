@@ -29,6 +29,10 @@ const config = {
     read: 'read',
     edit: 'edit',
   },
+  AUTH_URL: {
+    INSTAGRAM: 'https://api.instagram.com/oauth/authorize/',
+    TWITTER: 'https://api.twitter.com/oauth/authenticate',
+  },
 };
 
 export default config;
