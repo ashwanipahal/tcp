@@ -177,6 +177,7 @@ describe('#CartItemTile selector', () => {
           bagPage: {
             lbl_sfl_actionLink: 'saveForLaterLink',
             lbl_sfl_maxLimitError: 'sflMaxLimitError',
+            lbl_sfl_moveToBag: 'moveToBagLink',
           },
         },
       },
@@ -216,6 +217,7 @@ describe('#CartItemTile selector', () => {
       value: 'Value',
       saveForLaterLink: 'saveForLaterLink',
       sflMaxLimitError: 'sflMaxLimitError',
+      moveToBagLink: 'moveToBagLink',
     });
   });
 });

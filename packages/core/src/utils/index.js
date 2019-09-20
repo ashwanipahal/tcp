@@ -28,6 +28,7 @@ export {
   configurePlpNavigationFromCMSUrl,
   isBopisProduct,
   isBossProduct,
+  viewport,
 } from './utils.web';
 
 export {
@@ -53,6 +54,7 @@ export {
   toTimeString,
   getPromotionalMessage,
   getBirthDateOptionMap,
+  childOptionsMap,
   generateUniqueKeyUsingLabel,
   getErrorSelector,
   formatDate,
@@ -60,4 +62,5 @@ export {
   sanitizeEntity,
   formatPhone,
   parseStoreHours,
+  parseBoolean,
 } from './utils';

@@ -123,7 +123,9 @@ class GiftCardTile extends React.PureComponent {
                 fontFamily="secondary"
                 fontSize="fs16"
                 color="text.secondary"
-                className="gift_card_number_detail"
+                className={`gift_card_number_detail ${
+                  !isGiftCardApplied ? 'available_giftCards_text' : ''
+                }`}
               >
                 {`${getLabelValue(labels, 'lbl_giftcard_endingIn')} ${cardEndingIn}`}
                 <span className="remainingBalanceText">{remainingBalance}</span>

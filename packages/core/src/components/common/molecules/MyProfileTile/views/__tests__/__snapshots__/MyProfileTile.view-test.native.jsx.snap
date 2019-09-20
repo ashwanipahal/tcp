@@ -12,7 +12,7 @@ exports[`MyProfileTile should render correctly when all props are present 1`] = 
     text="Test"
   />
   <Styled(View)
-    spacingStyles="margin-bottom-XXXL"
+    spacingStyles="margin-bottom-XXL"
   />
   <Styled(WithTheme(CustomButton))
     buttonVariation="variable-width"
