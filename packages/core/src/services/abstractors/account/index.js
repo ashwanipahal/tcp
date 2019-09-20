@@ -16,3 +16,4 @@ export { forgotPassword } from './ForgotPassword';
 export { resetPassword } from './ResetPassword';
 export { getSocialAccountsInformation, saveSocialAccountsInfo } from './SocialNew';
 export { UpdateProfileInfo, getChildren, deleteChild, addChildBirthday } from './UpdateProfileInfo';
+export { claimPoints } from './PointsClaim';

@@ -9,6 +9,7 @@ const CONSTANTS = {
   },
   EMAIL_REGISTRATION_TYPE_CONSTANT: '10',
   CHECKOUT: 'checkout',
+  INTERNATIONAL_CHECKOUT: 'international-checkout',
   CREDIT_CARD_CVV_INFO_LABEL: 'cvv_info',
   PAYMENT_METHOD_CREDIT_CARD: 'creditCard',
   ADDREESS_TYPE: {
@@ -44,6 +45,7 @@ const CONSTANTS = {
     SHIPPING: 'shippingPage',
     BILLING: 'billingPage',
     REVIEW: 'reviewPage',
+    CONFIRMATION: 'confirmationPage',
   },
 
   CHECKOUT_ROUTES_NAMES: {
@@ -51,6 +53,7 @@ const CONSTANTS = {
     CHECKOUT_SHIPPING: 'CheckoutShipping',
     CHECKOUT_BILLING: 'CheckoutBilling',
     CHECKOUT_REVIEW: 'CheckoutReview',
+    CHECKOUT_CONFIRMATION: 'CheckoutConfirmation',
   },
 
   PAYMENT_CARD_TYPE: {
@@ -88,6 +91,7 @@ const CONSTANTS = {
   ADD_GIFT_CARD_SUCCESS: 'ADD_GIFT_CARD_SUCCESS',
   RESET_ADD_GIFT_CARD: 'RESET_ADD_GIFT_CARD',
   RESET_ADD_GIFT_CARD_SUCCESS: 'RESET_ADD_GIFT_CARD_SUCCESS',
+  INIT_INTL_CHECKOUT: 'INIT_INTL_CHECKOUT',
   PAYPAL_LOCATE: 'en_US',
   PAYPAL_LABEL: 'paypal',
 };
@@ -96,6 +100,7 @@ const {
   CHECKOUT_PAGES_NAMES: { CHECKOUT },
   CHECKOUT_STAGES: { SHIPPING, PICKUP, BILLING, REVIEW, CONFIRMATION },
   BAGPAGE,
+  INTERNATIONAL_CHECKOUT,
 } = CONSTANTS;
 
 export const CHECKOUT_ROUTES = {
@@ -118,6 +123,10 @@ export const CHECKOUT_ROUTES = {
   reviewPage: {
     to: `/${CHECKOUT}?section=${REVIEW}`,
     asPath: `/${CHECKOUT}/${REVIEW}`,
+  },
+  internationalCheckout: {
+    to: `/${INTERNATIONAL_CHECKOUT}`,
+    asPath: `/${INTERNATIONAL_CHECKOUT}`,
   },
   confirmationPage: {
     to: `/${CHECKOUT}?section=${CONFIRMATION}`,

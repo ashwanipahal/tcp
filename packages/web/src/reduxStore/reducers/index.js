@@ -48,6 +48,7 @@ import SearchBarReducer from '@tcp/web/src/components/features/content/Header/mo
 import SocialReducer from '@tcp/core/src/components/common/organisms/SocialAccount/container/Social.reducer';
 import SearchPageReducer from '@tcp/core/src/components/features/browse/SearchDetail/container/SearchDetail.reducer';
 import MyFavoriteStoreReducer from '@tcp/core/src/components/features/account/MyProfile/organism/MyFavoriteStore/container/MyFavoriteStore.reducer';
+import PointsClaimReducer from '@tcp/core/src/components/features/account/PointsClaim/container/PointsClaim.reducer';
 
 import {
   APICONFIG_REDUCER_KEY,
@@ -107,6 +108,7 @@ import {
   SEARCH_REDUCER_KEY,
   SOCIAL_REDUCER_KEY,
   SLP_PAGE_REDUCER_KEY,
+  POINTS_CLAIM_REDUCER_KEY,
 } from '@tcp/core/src/constants/reducer.constants';
 import HeaderReducer from '@tcp/core/src/components/common/organisms/Header/container/Header.reducer';
 import FooterReducer from '@tcp/core/src/components/common/organisms/Footer/container/Footer.reducer';
@@ -198,4 +200,5 @@ export default combineReducers({
   [PICKUP_MODAL_REDUCER_KEY]: PickupModalReducer,
   [RECOMMENDATIONS_REDUCER_KEY]: RecommendationsReducer,
   [SLP_PAGE_REDUCER_KEY]: SearchPageReducer,
+  [POINTS_CLAIM_REDUCER_KEY]: PointsClaimReducer,
 });

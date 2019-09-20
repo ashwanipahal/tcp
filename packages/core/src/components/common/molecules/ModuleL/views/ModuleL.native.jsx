@@ -1,5 +1,5 @@
 import React from 'react';
-import { FlatList } from 'react-native';
+import { FlatList, StyleSheet } from 'react-native';
 import PropTypes from 'prop-types';
 
 import { getLocator, getScreenWidth, LAZYLOAD_HOST_NAME } from '../../../../../utils/index.native';
@@ -37,9 +37,22 @@ const keyExtractor = (_, index) => index.toString();
 
 const renderItem = (item, navigation) => {
   const {
-    item: { image, link, color = {} },
+    item: { image, link, color: { color: tileBgColor } = {} },
     index,
   } = item;
+
+  let tileBgColorSheet = {};
+  try {
+    tileBgColorSheet = StyleSheet.create({
+      // eslint-disable-next-line react-native/no-unused-styles
+      tileColor: {
+        backgroundColor: tileBgColor,
+      },
+    });
+  } catch (e) {
+    // eslint-disable-next-line no-console
+    console.warn('Inavlid tile Background color in Module L');
+  }
 
   return (
     <Anchor
@@ -47,7 +60,7 @@ const renderItem = (item, navigation) => {
       navigation={navigation}
       testID={`${getLocator('moduleL_tiles')}${index + 1}`}
     >
-      <ChildContainer bgClass={color.color}>
+      <ChildContainer style={tileBgColorSheet.tileColor}>
         <DamImage
           url={image.url}
           height={127}
