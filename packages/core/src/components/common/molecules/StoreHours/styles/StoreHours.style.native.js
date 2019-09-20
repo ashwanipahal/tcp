@@ -24,7 +24,6 @@ export const StoreHoursTitle = styled.Text`
 
 export const TimingsText = styled.Text`
   font-size: ${props => props.theme.fonts.fontSize.body.small.secondary};
-  font-family: ${props => props.theme.typography.fonts.secondary};
   font-weight: ${props => props.theme.fonts.fontWeight.normal};
   color: ${props => props.theme.colors.TEXT.DARK};
   text-align: ${props => props.textAlign || 'left'};
