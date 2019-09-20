@@ -207,8 +207,8 @@ export default function CheckoutReducer(state = initialState, action) {
     // case 'CHECKOUT_ORDER_OPTIONS_SET_GIFT_WRAP':
     //   return merge(orderOptions, { giftWrapOptions: action.giftWrapOptions });
 
-    // case 'CHECKOUT_ORDER_OPTIONS_SET_INTL_URL':
-    //   return merge(orderOptions, { internationalUrl: action.internationalUrl });
+    case 'CHECKOUT_ORDER_OPTIONS_SET_INTL_URL':
+      return checkout.setIn(['options', 'internationalUrl'], action.internationalUrl);
     default:
       return uiFlagReducer(checkout, action);
   }
