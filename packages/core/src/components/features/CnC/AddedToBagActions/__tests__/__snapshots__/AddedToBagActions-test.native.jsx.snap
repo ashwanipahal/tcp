@@ -7,11 +7,16 @@ exports[`AddedToBagActions native component AddedToBagActions native component r
       onPress={[Function]}
     >
       <Styled(BodyCopy)
+        accessibilityText=""
         color="white"
+        dataLocator=""
         fontFamily="secondary"
         fontSize="fs13"
         fontWeight="extrabold"
+        margin={null}
+        numberOfLines={null}
         text=""
+        textDecoration={null}
         textTransform="uppercase"
       />
     </Styled(TouchableOpacity)>
@@ -21,11 +26,16 @@ exports[`AddedToBagActions native component AddedToBagActions native component r
       onPress={[Function]}
     >
       <Styled(BodyCopy)
+        accessibilityText=""
         color="white"
+        dataLocator=""
         fontFamily="secondary"
         fontSize="fs13"
         fontWeight="extrabold"
+        margin={null}
+        numberOfLines={null}
         text=""
+        textDecoration={null}
       />
     </Styled(TouchableOpacity)>
   </Styled(View)>

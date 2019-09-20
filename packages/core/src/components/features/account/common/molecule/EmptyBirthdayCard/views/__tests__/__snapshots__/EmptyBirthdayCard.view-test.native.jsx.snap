@@ -4,18 +4,28 @@ exports[`EmptyBirthdayCard should render correctly for edit view 1`] = `
 <Styled(View)>
   <Styled(View)>
     <Styled(BodyCopy)
+      accessibilityText=""
       color="gray.900"
+      dataLocator=""
       fontFamily="secondary"
       fontSize="fs14"
+      margin={null}
       mobileFontFamily="secondary"
+      numberOfLines={null}
       text="+ "
+      textDecoration={null}
     />
     <Styled(BodyCopy)
+      accessibilityText=""
       color="gray.900"
       data-locator="addAChildLnk"
+      dataLocator=""
       fontFamily="secondary"
       fontSize="fs14"
+      margin={null}
       mobileFontFamily="secondary"
+      numberOfLines={null}
+      textDecoration={null}
     />
   </Styled(View)>
 </Styled(View)>

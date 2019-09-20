@@ -64,12 +64,17 @@ exports[`Shipping Page should render correctly 1`] = `
     </Styled(View)>
     <Styled(View)>
       <Styled(BodyCopy)
+        accessibilityText=""
         color="black"
+        dataLocator=""
         fontFamily="primary"
         fontSize="fs28"
         fontWeight="regular"
+        margin={null}
+        numberOfLines={null}
         text=""
         textAlign="left"
+        textDecoration={null}
       />
     </Styled(View)>
     <ReduxForm
@@ -200,12 +205,17 @@ exports[`Shipping Page should render correctly with component did update and get
     </Styled(View)>
     <Styled(View)>
       <Styled(BodyCopy)
+        accessibilityText=""
         color="black"
+        dataLocator=""
         fontFamily="primary"
         fontSize="fs28"
         fontWeight="regular"
+        margin={null}
+        numberOfLines={null}
         text=""
         textAlign="left"
+        textDecoration={null}
       />
     </Styled(View)>
     <ReduxForm
@@ -319,12 +329,17 @@ exports[`Shipping Page should render correctly with component did update and get
     </Styled(View)>
     <Styled(View)>
       <Styled(BodyCopy)
+        accessibilityText=""
         color="black"
+        dataLocator=""
         fontFamily="primary"
         fontSize="fs28"
         fontWeight="regular"
+        margin={null}
+        numberOfLines={null}
         text=""
         textAlign="left"
+        textDecoration={null}
       />
     </Styled(View)>
     <ReduxForm

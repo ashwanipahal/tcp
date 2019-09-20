@@ -4,20 +4,30 @@ exports[`ItemAvailability Component ItemAvailability should render correctly 1`]
 <Styled(View)>
   <Styled(View)>
     <Styled(BodyCopy)
+      accessibilityText=""
       color="error"
+      dataLocator=""
       fontFamily="secondary"
       fontSize="fs14"
       fontWeight="regular"
+      margin={null}
+      numberOfLines={null}
       text=""
+      textDecoration={null}
     />
   </Styled(View)>
   <Styled(View)>
     <Styled(BodyCopy)
+      accessibilityText=""
       color="error"
+      dataLocator=""
       fontFamily="secondary"
       fontSize="fs10"
       fontWeight="regular"
+      margin={null}
+      numberOfLines={null}
       text="Choose different product"
+      textDecoration={null}
     />
   </Styled(View)>
 </Styled(View)>
