@@ -20,7 +20,8 @@ import PickupSkuSelectionForm from '../molecules/PickupSkuSelectionForm';
 import PickupStoreSelectionForm, {
   DISTANCES_MAP_PROP_TYPE,
 } from '../molecules/PickupStoreSelectionForm';
-import spacing from '../../../../../../styles/themes/TCP/spacing';
+// import withStyles from "../../../hoc/withStyles";
+// import styles from '../styles/PickUpStoreModal.style';
 
 const ERRORS_MAP = require('../../../../../services/handler/stateful/errorResponseMapping/index.json');
 
@@ -336,7 +337,7 @@ class PickUpStoreModalView extends React.Component {
     return currentColorEntry && currentColorEntry.hasFits;
   }
 
-  renderNormal() {
+  renderModal() {
     const {
       isPreferredStoreError,
       isShowExtendedSizesNotification,
@@ -401,11 +402,7 @@ class PickUpStoreModalView extends React.Component {
     };
 
     return (
-      <div
-        className={`pickup-modal-wrapper ${
-          isSkuResolved ? ' scrollable-pickup-modal-wrapper' : ' '
-        }`}
-      >
+      <div>
         {!isSkuResolved && (
           <PickupSkuSelectionForm
             colorFitSizeDisplayNames={colorFitSizeDisplayNames}
@@ -474,20 +471,21 @@ class PickUpStoreModalView extends React.Component {
     const { pickupHeading, isPickupModalOpen } = this.props;
     return isPickupModalOpen ? (
       <Modal
-        colSet={{ large: 4, medium: 8, small: 6 }}
         isOpen
         onRequestClose={this.onCloseClick}
         overlayClassName="TCPModal__Overlay"
         className="TCPModal__Content"
         heading={pickupHeading}
         fixedWidth
-        maxWidth={spacing.MODAL_WIDTH.SMALL}
-        minHeight="675px"
+        widthConfig={{ small: '375px', medium: '600px', large: '704px' }}
+        heightConfig={{ minHeight: '534px', height: '620', maxHeight: '650' }}
       >
-        {this.renderNormal()}
+        {this.renderModal()}
       </Modal>
     ) : null;
   }
 }
 
+export { PickUpStoreModalView as PickUpStoreModalViewVanilla };
+// export default withStyles(PickUpStoreModalView, styles);
 export default PickUpStoreModalView;

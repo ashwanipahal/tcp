@@ -23,8 +23,8 @@ storiesOf('StoreSearch', module)
     return (
       <ThemeProvider theme={theme}>
         <StoreSearch
-          searchIcon="/search-icon.svg"
-          markerIcon="/marker-icon.svg"
+          searchIcon="/static/images/search-icon.svg"
+          markerIcon="/static/images/marker-icon.svg"
           labels={mockLabels}
         />
       </ThemeProvider>
