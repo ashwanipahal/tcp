@@ -547,7 +547,7 @@ export function setTestId(id) {
 /**
  * Avoid breaking of the app if author accidentally pass invalid color from the CMS.
  * Return null if color is invalid else return the color.
- * @param {Object} color Color string to validate
+ * @param {String} color Color string to validate
  */
 export const validateColor = color => {
   let colorSheet = { viewColor: { color: null } };
