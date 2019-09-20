@@ -2,6 +2,7 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import ExecutionEnvironment from 'exenv';
 import ReactImageMagnify from 'react-image-magnify';
+import usePerfMeasure from '@tcp/web/src/hooks/usePerfMeasure';
 import { Image, Anchor } from '../../atoms';
 import withStyles from '../../hoc/withStyles';
 import styles from './ProductDetailImage.style';
@@ -38,6 +39,9 @@ const ProductDetailImage = props => {
     onOpenSimpleFullSize,
     isMobile,
   } = props;
+
+  usePerfMeasure('render_product_photo');
+
   let productSectionWidth;
   if (ExecutionEnvironment.canUseDOM) {
     productSectionWidth =
