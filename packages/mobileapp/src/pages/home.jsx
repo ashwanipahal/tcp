@@ -5,6 +5,7 @@ import BagPage from '@tcp/core/src/components/features/CnC/BagPage';
 import LoginPageContainer from '@tcp/core/src/components/features/account/LoginPage';
 import GetCandidGallery from '@tcp/core/src/components/common/molecules/GetCandidGallery/views/GetCandidGallery.native';
 import ProductListingPage from '@tcp/core/src/components/features/browse/ProductListing';
+import ProductDetail from '@tcp/core/src/components/features/browse/ProductDetail';
 import Home from '../components/features/content/HomePage';
 import account from '../components/features/account/account';
 import NavBarIcon from '../components/common/atoms/NavBarIcon';
@@ -32,6 +33,12 @@ const HomeStack = createStackNavigator(
     LoginPageContainer,
     GetCandidGallery: {
       screen: GetCandidGallery,
+      navigationOptions: ({ navigation }) => {
+        return getNewHeader(navigation);
+      },
+    },
+    ProductDetail: {
+      screen: ProductDetail,
       navigationOptions: ({ navigation }) => {
         return getNewHeader(navigation);
       },
