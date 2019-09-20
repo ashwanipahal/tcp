@@ -1,7 +1,6 @@
 import React from 'react';
 import { createStackNavigator } from 'react-navigation';
 import ProductListingPageContainer from '@tcp/core/src/components/features/browse/ProductListingPage';
-import BagPage from '@tcp/core/src/components/features/CnC/BagPage';
 import LoginPageContainer from '@tcp/core/src/components/features/account/LoginPage';
 import GetCandidGallery from '@tcp/core/src/components/common/molecules/GetCandidGallery/views/GetCandidGallery.native';
 import ProductListingPage from '@tcp/core/src/components/features/browse/ProductListing';
@@ -28,7 +27,6 @@ const HomeStack = createStackNavigator(
     Navigation,
     ProductLanding,
     ProductListingPageContainer,
-    BagPage,
     LoginPageContainer,
     GetCandidGallery: {
       screen: GetCandidGallery,
