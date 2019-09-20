@@ -1,7 +1,7 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
 exports[`ModuleH Header Component renders correctly 1`] = `
-<Fragment>
+Array [
   <Styled(HeadingStyle)
     HeadingLarge="three"
     HeadingcolorSm="secondary"
@@ -17,7 +17,7 @@ exports[`ModuleH Header Component renders correctly 1`] = `
     >
       New arrivals
     </Styled(Anchor)>
-  </Styled(HeadingStyle)>
+  </Styled(HeadingStyle)>,
   <Styled(HeadingStyle)
     HeadingLarge="three"
     HeadingcolorSm="secondary"
@@ -33,6 +33,6 @@ exports[`ModuleH Header Component renders correctly 1`] = `
     >
       New adventures
     </Styled(Anchor)>
-  </Styled(HeadingStyle)>
-</Fragment>
+  </Styled(HeadingStyle)>,
+]
 `;
