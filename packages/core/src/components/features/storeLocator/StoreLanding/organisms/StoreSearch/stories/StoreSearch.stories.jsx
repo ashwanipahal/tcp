@@ -7,12 +7,16 @@ import mockLabels from '../../../container/__mocks__/storeSearchData';
 
 storiesOf('StoreSearch', module)
   .add('with styles and redux-form', () => (
-    <StoreSearch searchIcon="/search-icon.svg" markerIcon="/marker-icon.svg" labels={mockLabels} />
+    <StoreSearch
+      searchIcon="/static/images/search-icon.svg"
+      markerIcon="/static/images/marker-icon.svg"
+      labels={mockLabels}
+    />
   ))
   .add('with store brand selected', () => (
     <StoreSearch
-      searchIcon="/search-icon.svg"
-      markerIcon="/marker-icon.svg"
+      searchIcon="/static/images/search-icon.svg"
+      markerIcon="/static/images/marker-icon.svg"
       gymSelected={true}
       labels={mockLabels}
     />
