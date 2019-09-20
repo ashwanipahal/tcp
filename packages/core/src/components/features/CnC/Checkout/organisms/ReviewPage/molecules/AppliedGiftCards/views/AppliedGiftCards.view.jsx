@@ -2,7 +2,6 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import withStyles from '@tcp/core/src/components/common/hoc/withStyles';
 import { BodyCopy } from '@tcp/core/src/components/common/atoms';
-import { getLabelValue } from '@tcp/core/src/utils';
 import styles from '../styles/AppliedGiftCards.style';
 
 /**
@@ -25,13 +24,9 @@ const getGiftCard = giftCard => ({
  * @returns {String}
  */
 const renderGiftCard = (labels, endingNumbers, remainingBalance) =>
-  `${getLabelValue(
-    labels,
-    'lbl_review_appliedGiftCardEndingIn'
-  )} ${endingNumbers} | ${getLabelValue(
-    labels,
-    'lbl_review_appliedGiftCardRemainingBal'
-  )}: $${remainingBalance.toFixed(2)}`;
+  `${labels.lbl_review_appliedGiftCardEndingIn} ${endingNumbers} | ${
+    labels.lbl_review_appliedGiftCardRemainingBal
+  }: $${remainingBalance.toFixed(2)}`;
 
 /**
  * @function renderGiftCardMessage
@@ -48,10 +43,10 @@ const renderGiftCardMessage = labels => (
       fontFamily="secondary"
       fontWeight="extrabold"
     >
-      {getLabelValue(labels, 'lbl_review_giftCardHeadsup')}
+      {labels.lbl_review_giftCardHeadsup}
     </BodyCopy>
     <BodyCopy component="span" fontSize="fs16" color="gray[900]" fontFamily="secondary">
-      {` ${getLabelValue(labels, 'lbl_review_giftCardMessage')}`}
+      {` ${labels.lbl_review_giftCardMessage}`}
     </BodyCopy>
   </BodyCopy>
 );
@@ -81,7 +76,7 @@ export const AppliedGiftCards = ({ className, appliedGiftCards, labels }) => {
               </BodyCopy>
             );
           })
-        : getLabelValue(labels, 'lbl_review_appliedGiftCardsNone')}
+        : labels.lbl_review_appliedGiftCardsNone}
       {renderGiftCardMessage(labels)}
     </BodyCopy>
   );

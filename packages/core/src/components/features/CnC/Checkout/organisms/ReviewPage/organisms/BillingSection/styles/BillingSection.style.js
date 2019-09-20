@@ -28,7 +28,7 @@ export default css`
   }
 
   .review-billing-address {
-    font-size: ${props => props.theme.fonts.fontSize.body.bodytext.copy4}px;
+    font-size: ${props => props.theme.typography.fontSizes.fs16}px;
     padding-bottom: ${props => props.theme.spacing.ELEM_SPACING.MED};
   }
 `;

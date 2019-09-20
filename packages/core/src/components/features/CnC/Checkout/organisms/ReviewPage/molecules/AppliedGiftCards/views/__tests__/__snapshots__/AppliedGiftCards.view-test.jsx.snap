@@ -12,7 +12,6 @@ exports[`AppliedGiftCards should render correctly for empty state 1`] = `
   lineHeight="normal"
   textAlign="left"
 >
-  lbl_review_appliedGiftCardsNone
   <Styled(BodyCopy)
     className="headsup-container"
     color="text.primary"
@@ -34,9 +33,7 @@ exports[`AppliedGiftCards should render correctly for empty state 1`] = `
       letterSpacing="normal"
       lineHeight="normal"
       textAlign="left"
-    >
-      lbl_review_giftCardHeadsup
-    </Styled(BodyCopy)>
+    />
     <Styled(BodyCopy)
       className={null}
       color="gray[900]"
@@ -48,7 +45,7 @@ exports[`AppliedGiftCards should render correctly for empty state 1`] = `
       lineHeight="normal"
       textAlign="left"
     >
-       lbl_review_giftCardMessage
+       undefined
     </Styled(BodyCopy)>
   </Styled(BodyCopy)>
 </Styled(BodyCopy)>

@@ -27,7 +27,7 @@ exports[`BillingSection should render correctly for empty state 1`] = `
         lineHeight="normal"
         textAlign="left"
       >
-        lbl_review_billingSectionTitle 
+        undefined 
       </Styled(BodyCopy)>
       <Styled(Anchor)
         anchorVariation="primary"
@@ -35,9 +35,7 @@ exports[`BillingSection should render correctly for empty state 1`] = `
         fontSizeVariation="large"
         to="/checkout?section=billing"
         underline={true}
-      >
-        lbl_review_billingEdit
-      </Styled(Anchor)>
+      />
     </Styled(Col)>
   </Styled(Row)>
   <Styled(Row)
@@ -91,9 +89,7 @@ exports[`BillingSection should render correctly without address details 1`] = `
         fontSizeVariation="large"
         to="/checkout?section=billing"
         underline={true}
-      >
-        lbl_review_billingEdit
-      </Styled(Anchor)>
+      />
     </Styled(Col)>
   </Styled(Row)>
   <Styled(Row)
@@ -231,9 +227,7 @@ exports[`BillingSection should render correctly without card & address details o
         fontSizeVariation="large"
         to="/checkout?section=billing"
         underline={true}
-      >
-        lbl_review_billingEdit
-      </Styled(Anchor)>
+      />
     </Styled(Col)>
   </Styled(Row)>
   <Styled(Row)
@@ -313,9 +307,7 @@ exports[`BillingSection should render correctly without card & address details o
         fontSizeVariation="large"
         to="/checkout?section=billing"
         underline={true}
-      >
-        lbl_review_billingEdit
-      </Styled(Anchor)>
+      />
     </Styled(Col)>
   </Styled(Row)>
   <Styled(Row)
@@ -408,9 +400,7 @@ exports[`BillingSection should render correctly without card details 1`] = `
         fontSizeVariation="large"
         to="/checkout?section=billing"
         underline={true}
-      >
-        lbl_review_billingEdit
-      </Styled(Anchor)>
+      />
     </Styled(Col)>
   </Styled(Row)>
   <Styled(Row)

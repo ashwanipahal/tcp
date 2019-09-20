@@ -1,3 +1,5 @@
+import { createSelector } from 'reselect';
+import { getLabelValue } from '@tcp/core/src/utils';
 import checkoutSelectors from '../../../../../container/Checkout.selector';
 
 /**
@@ -21,15 +23,37 @@ const getBillingCardDetails = state => {
   };
 };
 
+const getReviewLabels = state =>
+  state.Labels && state.Labels.checkout && state.Labels.checkout.review;
+
 /**
  * @function getReviewPageLabels
  * @param {Object} state
  * @description This selector provides the state of the review page labels.
  * @returns {Object}
  */
-const getReviewPageLabels = state => {
-  return state.Labels && state.Labels.checkout && state.Labels.checkout.review;
-};
+const getReviewPageLabels = createSelector(
+  getReviewLabels,
+  reviewLabels => {
+    const labels = {};
+    const labelKeys = [
+      'lbl_review_billingSectionTitle',
+      'lbl_review_paymentMethod',
+      'lbl_review_billingAddress',
+      'lbl_review_appliedGiftCards',
+      'lbl_review_paymentMethodEndingIn',
+      'lbl_review_appliedGiftCardEndingIn',
+      'lbl_review_appliedGiftCardRemainingBal',
+      'lbl_review_appliedGiftCardsNone',
+      'lbl_review_giftCardHeadsup',
+      'lbl_review_giftCardMessage',
+    ];
+    labelKeys.forEach(key => {
+      labels[key] = getLabelValue(reviewLabels, key);
+    });
+    return labels;
+  }
+);
 
 export default {
   getBillingCardDetails,
