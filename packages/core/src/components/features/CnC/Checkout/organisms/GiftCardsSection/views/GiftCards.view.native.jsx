@@ -9,14 +9,17 @@ import {
   GiftCardBody,
   GiftCardButtonCal,
   HeadsUpMessage,
+  AddGiftCardWrapper,
 } from '../styles/GiftCards.style.native';
 import { BodyCopyWithSpacing } from '../../../../../../common/atoms/styledWrapper';
 import GiftCardTileView from '../../../molecules/GiftCardTile';
 import CustomButton from '../../../../../../common/atoms/Button';
+import { AddGiftCardForm } from '../../../../../account/Payment/AddGiftCard/views/AddGiftCardForm.native';
+import { propTypes, defaultProps } from './GiftCards.view.utils';
 
 class GiftCards extends React.PureComponent {
   renderAddNewGiftButton() {
-    const { labels, orderBalanceTotal, appliedGiftCards } = this.props;
+    const { labels, orderBalanceTotal, appliedGiftCards, showAddGiftCard } = this.props;
     if (orderBalanceTotal > 0 && appliedGiftCards && appliedGiftCards.size < 5) {
       return (
         <GiftCardButtonCal>
@@ -25,12 +28,58 @@ class GiftCards extends React.PureComponent {
             type="submit"
             data-locator="add-gift-card"
             text={getLabelValue(labels, 'lbl_giftcard_newGiftCard')}
-            onPress={() => {}}
+            onPress={() => showAddGiftCard()}
           />
         </GiftCardButtonCal>
       );
     }
     return null;
+  }
+
+  renderAddGiftCardError() {
+    const { getAddGiftCardError } = this.props;
+    if (getAddGiftCardError) {
+      return (
+        <BodyCopyWithSpacing
+          mobileFontFamily={['secondary']}
+          fontWeight="semibold"
+          fontSize="fs12"
+          color="error"
+          text={getAddGiftCardError}
+        />
+      );
+    }
+    return null;
+  }
+
+  renderAddGiftCard() {
+    const {
+      hideAddGiftCard,
+      onAddGiftCardClick,
+      getAddGiftCardError,
+      isGuestUser,
+      isRecapchaEnabled,
+      labels,
+      isLoading,
+      onClearError,
+    } = this.props;
+    return (
+      <AddGiftCardWrapper>
+        {this.renderAddGiftCardError()}
+        <AddGiftCardForm
+          labels={labels}
+          goBackToPayment={hideAddGiftCard}
+          onAddGiftCardClick={onAddGiftCardClick}
+          saveToAccountEnabled={!isGuestUser}
+          isRecapchaEnabled={isRecapchaEnabled}
+          addGiftCardError={getAddGiftCardError}
+          isRow
+          isLoading={isLoading}
+          onClearError={onClearError}
+          toggleModal={hideAddGiftCard}
+        />
+      </AddGiftCardWrapper>
+    );
   }
 
   render() {
@@ -43,6 +92,7 @@ class GiftCards extends React.PureComponent {
       giftCardList,
       applyExistingGiftCardToOrder,
       orderBalanceTotal,
+      enableAddGiftCard,
     } = this.props;
 
     return (
@@ -136,7 +186,8 @@ class GiftCards extends React.PureComponent {
                 </GiftCardBody>
               );
             })}
-          {this.renderAddNewGiftButton()}
+          {!enableAddGiftCard && this.renderAddNewGiftButton()}
+          {enableAddGiftCard && this.renderAddGiftCard()}
         </Container>
       </>
     );
@@ -144,23 +195,11 @@ class GiftCards extends React.PureComponent {
 }
 
 GiftCards.propTypes = {
-  labels: PropTypes.shape({}),
-  appliedGiftCards: PropTypes.shape({}),
-  giftCardList: PropTypes.shape({}),
-  giftCardErrors: PropTypes.shape({}),
-  handleRemoveGiftCard: PropTypes.func.isRequired,
-  orderBalanceTotal: PropTypes.number,
-  applyExistingGiftCardToOrder: PropTypes.func.isRequired,
+  ...propTypes,
   toastMessage: PropTypes.func.isRequired,
 };
 
-GiftCards.defaultProps = {
-  labels: {},
-  giftCardList: {},
-  appliedGiftCards: {},
-  giftCardErrors: {},
-  orderBalanceTotal: 0,
-};
+GiftCards.defaultProps = defaultProps;
 
 export default withStyles(GiftCards, PageStyle);
 export { GiftCards as GiftCardsVanilla };

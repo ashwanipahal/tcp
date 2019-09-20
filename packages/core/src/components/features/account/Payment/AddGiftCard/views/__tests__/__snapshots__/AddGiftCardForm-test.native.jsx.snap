@@ -2,9 +2,39 @@
 
 exports[`Add gift card form component render error message 1`] = `
 <ScrollViewMock
+  addGiftCardError={true}
   addGiftCardResponse="foo"
   change={[MockFunction]}
-  handleSubmit={[Function]}
+  goBackToPayment={[MockFunction]}
+  handleSubmit={
+    [MockFunction] {
+      "calls": Array [
+        Array [
+          [Function],
+        ],
+        Array [
+          [Function],
+        ],
+        Array [
+          [Function],
+        ],
+      ],
+      "results": Array [
+        Object {
+          "type": "return",
+          "value": undefined,
+        },
+        Object {
+          "type": "return",
+          "value": undefined,
+        },
+        Object {
+          "type": "return",
+          "value": undefined,
+        },
+      ],
+    }
+  }
   keyboardShouldPersistTaps="handled"
   labels={
     Object {
@@ -12,9 +42,11 @@ exports[`Add gift card form component render error message 1`] = `
       "paymentGC": Object {},
     }
   }
-  onAddGiftCardClick={[Function]}
+  onAddGiftCardClick={[MockFunction]}
+  onClearError={[MockFunction]}
   showsVerticalScrollIndicator={false}
   toggleModal={[Function]}
+  untouch={[MockFunction]}
 >
   <View>
     <Styled(View)>
@@ -76,6 +108,7 @@ exports[`Add gift card form component render error message 1`] = `
       }
       dataLocator="gift-card-cardnaumberfield"
       name="giftCardNumber"
+      onChange={[Function]}
       type="tel"
     />
     <Field
@@ -124,6 +157,7 @@ exports[`Add gift card form component render error message 1`] = `
       }
       dataLocator="gift-card-pinnumberfield"
       name="cardPin"
+      onChange={[Function]}
       type="tel"
     />
     <View>
@@ -225,9 +259,25 @@ exports[`Add gift card form component render error message 1`] = `
 
 exports[`Add gift card form component should render component correctly 1`] = `
 <ScrollViewMock
+  addGiftCardError={true}
   addGiftCardResponse={null}
   change={[MockFunction]}
-  handleSubmit={[Function]}
+  goBackToPayment={[MockFunction]}
+  handleSubmit={
+    [MockFunction] {
+      "calls": Array [
+        Array [
+          [Function],
+        ],
+      ],
+      "results": Array [
+        Object {
+          "type": "return",
+          "value": undefined,
+        },
+      ],
+    }
+  }
   keyboardShouldPersistTaps="handled"
   labels={
     Object {
@@ -235,9 +285,11 @@ exports[`Add gift card form component should render component correctly 1`] = `
       "paymentGC": Object {},
     }
   }
-  onAddGiftCardClick={[Function]}
+  onAddGiftCardClick={[MockFunction]}
+  onClearError={[MockFunction]}
   showsVerticalScrollIndicator={false}
   toggleModal={[Function]}
+  untouch={[MockFunction]}
 >
   <View>
     <Field
@@ -286,6 +338,7 @@ exports[`Add gift card form component should render component correctly 1`] = `
       }
       dataLocator="gift-card-cardnaumberfield"
       name="giftCardNumber"
+      onChange={[Function]}
       type="tel"
     />
     <Field
@@ -334,6 +387,7 @@ exports[`Add gift card form component should render component correctly 1`] = `
       }
       dataLocator="gift-card-pinnumberfield"
       name="cardPin"
+      onChange={[Function]}
       type="tel"
     />
     <View>
