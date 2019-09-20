@@ -1,7 +1,4 @@
-import {
-  SESSIONCONFIG_REDUCER_KEY,
-  STORE_LOCATOR_REDUCER_KEY,
-} from '@tcp/core/src/constants/reducer.constants';
+import { SESSIONCONFIG_REDUCER_KEY } from '@tcp/core/src/constants/reducer.constants';
 
 export const getCurrentCountry = state => {
   return (
@@ -10,12 +7,7 @@ export const getCurrentCountry = state => {
   );
 };
 
-export const getSuggestedStoreById = (state, storeId) => {
-  return state[STORE_LOCATOR_REDUCER_KEY].get('suggestedStores').find(
-    stores => stores.basicInfo.id === storeId
-  );
-};
-
+/* istanbul ignore next */
 export const getPageLabels = state => {
   return state.Labels; // && state.Labels.StoreLocator;
 };

@@ -5,10 +5,22 @@ import StoreLocatorReducer, { initialState } from '../StoreSearch.reducer';
 import suggestedStores from '../__mocks__/suggestedStore';
 
 describe('StoreLocatorReducer', () => {
-  // eslint-disable-next-line no-unused-vars
   let state = {};
   beforeEach(() => {
     state = fromJS(initialState);
+  });
+
+  test('DEFAULT', () => {
+    const action = {};
+    const storeChanged = StoreLocatorReducer(state, action);
+    expect(storeChanged).toBe(initialState);
+  });
+
+  test('DEFAULT - no state instance of object', () => {
+    const action = {};
+    state = 'string-value';
+    const storeChanged = StoreLocatorReducer(state, action);
+    expect(storeChanged).toBe(state);
   });
 
   test('STORES_SET_SUGGESTED_STORES', () => {

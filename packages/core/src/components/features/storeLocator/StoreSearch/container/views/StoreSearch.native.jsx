@@ -27,14 +27,6 @@ class StoreSearch extends Component {
     errorNotFound: null,
   };
 
-  onSubmit = () => {
-    // @TODO
-  };
-
-  onSearch = () => {
-    // @TODO
-  };
-
   renderStoreTypes = ({ name, dataLocator, storeLabel }) => {
     return (
       <StyledCheckbox>
@@ -58,7 +50,7 @@ class StoreSearch extends Component {
   };
 
   render() {
-    const { labels, error, selectedCountry = 'US' } = this.props;
+    const { labels, error, selectedCountry } = this.props;
     const {
       errorLabel,
       storeSearchPlaceholder,
@@ -162,4 +154,4 @@ export default reduxForm({
   enableReinitialize: true,
 })(StoreSearch);
 
-export { StoreSearch as LoginTopSectionVanilla };
+export { StoreSearch as StoreSearchVanilla };
