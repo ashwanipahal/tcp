@@ -14,6 +14,9 @@ export default css`
   .text-black {
     font-weight: ${props => props.theme.typography.fontWeights.black};
   }
+  .slick-slide > div {
+    padding: 0 15px;
+  }
   .moduleL__tile {
     display: flex;
     flex-direction: row;
@@ -23,9 +26,6 @@ export default css`
     @media ${props => props.theme.mediaQuery.medium} {
       margin-bottom: 30px;
     }
-  }
-  .moduleL__color-gray {
-    background-color: ${props => props.theme.colorPalette.gray['300']};
   }
   .moduleL__tile-image {
     max-width: 210px;
@@ -81,6 +81,6 @@ export default css`
     right: -70px;
   }
   .slick-dots {
-    bottom: -5px;
+    bottom: ${props => props.theme.spacing.ELEM_SPACING.XS};
   }
 `;
