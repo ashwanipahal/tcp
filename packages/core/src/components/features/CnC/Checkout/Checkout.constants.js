@@ -44,6 +44,7 @@ const CONSTANTS = {
     SHIPPING: 'shippingPage',
     BILLING: 'billingPage',
     REVIEW: 'reviewPage',
+    CONFIRMATION: 'confirmationPage',
   },
 
   CHECKOUT_ROUTES_NAMES: {
@@ -51,6 +52,7 @@ const CONSTANTS = {
     CHECKOUT_SHIPPING: 'CheckoutShipping',
     CHECKOUT_BILLING: 'CheckoutBilling',
     CHECKOUT_REVIEW: 'CheckoutReview',
+    CHECKOUT_CONFIRMATION: 'CheckoutConfirmation',
   },
 
   PAYMENT_CARD_TYPE: {
