@@ -215,6 +215,12 @@ export default {
   plcc_apply_now_close_btn: 'plcc_apply_now_close_btn',
   plcc_apply_btn: 'plcc_apply_btn',
   plcc_apply_now_modal: 'plcc_apply_now_modal',
+  plcc_time_out_modal_close_btn: 'plcc_time_out_modal_close_btn',
+  plcc_time_out_modal_restart_application: 'plcc_time_out_modal_restart_application',
+  plcc_time_out_modal_return_to_checkout: 'plcc_time_out_modal_return_to_checkout',
+  plcc_time_out_modal_logo: 'plcc_time_out_modal_logo',
+  plcc_time_out_modal_text: 'plcc_time_out_modal_text',
+  plcc_time_out_modal_continue: 'plcc_time_out_modal_continue',
 
   // BreadCrumbs Locators
   breadCrumb_L1_Category: 'breadcrumb-L1-link',
@@ -267,4 +273,7 @@ export default {
   pdp_free_shipping_label: 'pdp_free_shipping_label',
   pdp_pick_up_in_store: 'pdp_pick_up_in_store',
   pdp_pick_up_in_store_modal: 'pdp_pick_up_in_store_modal',
+  pdp_discounted_percentage: 'Product Discount Percentage',
+  pdp_favorite_icon_count: 'Favorites count',
+  pdp_anchor_complete_the_look: 'Complete The Look',
 };

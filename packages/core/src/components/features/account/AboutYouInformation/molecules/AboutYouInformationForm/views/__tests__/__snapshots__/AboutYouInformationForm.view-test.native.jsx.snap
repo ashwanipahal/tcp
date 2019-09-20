@@ -3,10 +3,15 @@
 exports[`AboutYouInformationForm should render correctly 1`] = `
 <Styled(View)>
   <Styled(BodyCopy)
+    accessibilityText=""
     data-locator="moreaboutyou-edit-q1text"
+    dataLocator=""
     fontFamily="secondary"
     fontSize="fs14"
+    margin={null}
+    numberOfLines={null}
     text="Question 1"
+    textDecoration={null}
   />
   <Styled(View)>
     <Styled(View)>
@@ -84,10 +89,15 @@ exports[`AboutYouInformationForm should render correctly 1`] = `
   </Styled(View)>
   <View>
     <Styled(BodyCopy)
+      accessibilityText=""
       data-locator="moreaboutyou-edit-q2text"
+      dataLocator=""
       fontFamily="secondary"
       fontSize="fs14"
+      margin={null}
+      numberOfLines={null}
       text="Question 2"
+      textDecoration={null}
     />
   </View>
   <Styled(View)>

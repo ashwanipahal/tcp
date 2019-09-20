@@ -4,16 +4,22 @@ exports[`Earn Extra Points Tile app component  should render Earn Extra Points T
 <View>
   <Styled(View)>
     <Styled(BodyCopy)
+      accessibilityText=""
       component="div"
       data-locator="earnExtraPointsHeading"
+      dataLocator=""
       fontFamily="secondary"
       fontSize="fs16"
       fontWeight="extrabold"
+      margin={null}
+      numberOfLines={null}
       text="Earn Extra Points"
+      textDecoration={null}
     />
     <Styled(Anchor)
       accessibilityLabel=""
       anchorVariation="primary"
+      colorName={null}
       customStyle={Object {}}
       data-locator="earnExtraPointsViewAll"
       fontSizeVariation="medium"

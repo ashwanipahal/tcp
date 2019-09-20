@@ -10,7 +10,6 @@ const CheckBoxWrapper = styled.View`
   flex-direction: row;
 `;
 const GiftServicesHeader = styled.View`
-  flex: 1;
   flex-direction: row;
 `;
 const StyledAnchor = styled.View`

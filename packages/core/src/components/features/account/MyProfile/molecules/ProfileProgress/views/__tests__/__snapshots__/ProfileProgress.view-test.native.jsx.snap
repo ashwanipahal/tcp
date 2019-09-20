@@ -42,9 +42,14 @@ exports[`ProfileProgress should render correctly 1`] = `
     />
   </Styled(View)>
   <Styled(Styled(BodyCopy))
+    accessibilityText=""
+    dataLocator=""
     fontSize="fs18"
     fontWeight="black"
+    margin={null}
+    numberOfLines={null}
     text="20%"
+    textDecoration={null}
   />
 </Styled(View)>
 `;

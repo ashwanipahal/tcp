@@ -124,6 +124,7 @@ exports[`CartItemTile common component renders correctly 1`] = `
       <Styled(View)>
         <Styled(View)>
           <Styled(BodyCopy)
+            accessibilityText=""
             dataLocator="cartItemTitle"
             fontFamily="secondary"
             fontSize="fs14"
@@ -132,91 +133,133 @@ exports[`CartItemTile common component renders correctly 1`] = `
                 "semibold",
               ]
             }
+            margin={null}
+            numberOfLines={null}
             text="Boys Basic Skinny Jeans"
+            textDecoration={null}
           />
         </Styled(View)>
         <Styled(View)>
           <Styled(View)>
             <Styled(View)>
               <Styled(BodyCopy)
+                accessibilityText=""
+                dataLocator=""
                 fontSize="fs13"
                 fontWeight={
                   Array [
                     "semibold",
                   ]
                 }
+                margin={null}
+                numberOfLines={null}
                 text="Design: "
                 textAlign="left"
+                textDecoration={null}
               />
             </Styled(View)>
             <Styled(BodyCopy)
+              accessibilityText=""
               color="gray.800"
               dataLocator="cartItemColor"
               fontFamily="secondary"
               fontSize="fs13"
+              margin={null}
+              numberOfLines={null}
+              textDecoration={null}
             />
           </Styled(View)>
           <Styled(View)>
             <Styled(View)>
               <Styled(BodyCopy)
+                accessibilityText=""
+                dataLocator=""
                 fontSize="fs13"
                 fontWeight={
                   Array [
                     "semibold",
                   ]
                 }
+                margin={null}
+                numberOfLines={null}
                 text="undefined: "
                 textAlign="left"
+                textDecoration={null}
               />
             </Styled(View)>
             <Styled(BodyCopy)
+              accessibilityText=""
               color="gray.800"
               dataLocator="cartItemSize"
               fontFamily="secondary"
               fontSize="fs13"
+              margin={null}
+              numberOfLines={null}
               text="1 "
+              textDecoration={null}
             />
             <Styled(BodyCopy)
+              accessibilityText=""
               color="gray.800"
+              dataLocator=""
               fontFamily="secondary"
               fontSize="fs13"
+              margin={null}
+              numberOfLines={null}
               text="regular"
+              textDecoration={null}
             />
           </Styled(View)>
           <Styled(View)>
             <Styled(View)>
               <Styled(BodyCopy)
+                accessibilityText=""
+                dataLocator=""
                 fontSize="fs13"
                 fontWeight={
                   Array [
                     "semibold",
                   ]
                 }
+                margin={null}
+                numberOfLines={null}
                 text="Qty: "
                 textAlign="left"
+                textDecoration={null}
               />
             </Styled(View)>
             <Styled(BodyCopy)
+              accessibilityText=""
               color="gray.800"
+              dataLocator=""
               fontFamily="secondary"
               fontSize="fs13"
+              margin={null}
+              numberOfLines={null}
               text="1"
+              textDecoration={null}
             />
           </Styled(View)>
           <Styled(View)>
             <Styled(View)>
               <Styled(BodyCopy)
+                accessibilityText=""
+                dataLocator=""
                 fontSize="fs13"
                 fontWeight={
                   Array [
                     "semibold",
                   ]
                 }
+                margin={null}
+                numberOfLines={null}
                 text="Price: "
                 textAlign="left"
+                textDecoration={null}
               />
             </Styled(View)>
             <Styled(BodyCopy)
+              accessibilityText=""
               dataLocator="cartItemPrice"
               fontSize="fs13"
               fontWeight={
@@ -224,37 +267,54 @@ exports[`CartItemTile common component renders correctly 1`] = `
                   "semibold",
                 ]
               }
+              margin={null}
+              numberOfLines={null}
               text="$123"
               textAlign="left"
+              textDecoration={null}
             />
             <Styled(View)>
               <Styled(BodyCopy)
+                accessibilityText=""
                 color="gray.800"
+                dataLocator=""
                 fontFamily="secondary"
                 fontSize="fs13"
+                margin={null}
+                numberOfLines={null}
                 text="$undefined"
+                textDecoration={null}
               />
             </Styled(View)>
           </Styled(View)>
           <Styled(View)>
             <Styled(View)>
               <Styled(BodyCopy)
+                accessibilityText=""
+                dataLocator=""
                 fontSize="fs13"
                 fontWeight={
                   Array [
                     "semibold",
                   ]
                 }
+                margin={null}
+                numberOfLines={null}
                 text="undefined: "
                 textAlign="left"
+                textDecoration={null}
               />
             </Styled(View)>
             <Styled(BodyCopy)
+              accessibilityText=""
               color="orange.800"
               dataLocator="cartItemPoints"
               fontFamily="secondary"
               fontSize="fs13"
+              margin={null}
+              numberOfLines={null}
               text={123}
+              textDecoration={null}
             />
           </Styled(View)>
         </Styled(View)>
@@ -262,10 +322,14 @@ exports[`CartItemTile common component renders correctly 1`] = `
           onPress={[Function]}
         >
           <Styled(BodyCopy)
+            accessibilityText=""
             color="gray.900"
             dataLocator="cartItemEditLink"
             fontFamily="secondary"
             fontSize="fs12"
+            margin={null}
+            numberOfLines={null}
+            textDecoration={null}
             textDecorationLine="underline"
           />
         </Styled(TouchableOpacity)>

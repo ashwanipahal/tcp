@@ -14,15 +14,25 @@ exports[`ProfileInfoActionTile should render correctly 1`] = `
   />
   <View>
     <Styled(BodyCopy)
+      accessibilityText=""
+      dataLocator=""
       fontSize="fs16"
       fontWeight="semibold"
+      margin={null}
+      numberOfLines={null}
       text="test"
       textAlign="center"
+      textDecoration={null}
     />
     <Styled(BodyCopy)
+      accessibilityText=""
+      dataLocator=""
       fontSize="fs14"
+      margin={null}
+      numberOfLines={null}
       text="test"
       textAlign="center"
+      textDecoration={null}
     />
   </View>
 </Styled(TouchableOpacity)>
@@ -53,15 +63,25 @@ exports[`ProfileInfoActionTile should render correctly when activityCompletionSt
   />
   <View>
     <Styled(BodyCopy)
+      accessibilityText=""
+      dataLocator=""
       fontSize="fs16"
       fontWeight="semibold"
+      margin={null}
+      numberOfLines={null}
       text="added"
       textAlign="center"
+      textDecoration={null}
     />
     <Styled(BodyCopy)
+      accessibilityText=""
+      dataLocator=""
       fontSize="fs14"
+      margin={null}
+      numberOfLines={null}
       text="test"
       textAlign="center"
+      textDecoration={null}
     />
   </View>
 </Styled(TouchableOpacity)>
