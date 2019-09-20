@@ -1,5 +1,6 @@
 import { createSelector } from 'reselect';
 import { RESET_PASSWORD_REDUCER_KEY } from '../../../../../constants/reducer.constants';
+import { getErrorSelector } from '../../../../../utils/utils';
 
 const getState = state => state[RESET_PASSWORD_REDUCER_KEY];
 
@@ -27,14 +28,7 @@ export const getResetLabels = createSelector(
 
 export const getResetPasswordErrorMessage = createSelector(
   [getError, getResetLabels],
-  (resetState, labels) => {
-    const errorCode = resetState && resetState.get('errorCode');
-    if (errorCode && labels[`lbl_resetpassword_error_${errorCode}`]) {
-      return labels[`lbl_resetpassword_error_${errorCode}`];
-    }
-    return (
-      (resetState && resetState.getIn(['errorMessage', '_error'])) ||
-      'labels.lbl_resetpassword_error'
-    );
+  (state, labels) => {
+    return getErrorSelector(state, labels, 'lbl_resetpassword_error');
   }
 );

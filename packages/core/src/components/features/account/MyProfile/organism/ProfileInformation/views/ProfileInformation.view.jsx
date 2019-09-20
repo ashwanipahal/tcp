@@ -12,6 +12,7 @@ import PersonalInformation from '../../PersonalInformation/views';
 import ChangePasswordInfo from '../../ChangePasswordInfo/views';
 import BirthdaySaving from '../../BirthdaySaving/views';
 import AboutYouInfo from '../../AboutYouInfo';
+import MyFavoriteStore from '../../MyFavoriteStore';
 
 class ProfileInformation extends React.PureComponent {
   constructor(props) {
@@ -134,23 +135,9 @@ class ProfileInformation extends React.PureComponent {
             }}
             className="profileInfoCol elem-mb-XL"
           >
-            {userSurvey && userSurvey.getIn(['0', '0']) && (
-              <AboutYouInfo labels={labels} userSurvey={userSurvey} />
-            )}
-          </Col>
-          <Col
-            colSize={{
-              small: 6,
-              medium: 4,
-              large: 6,
-            }}
-            ignoreGutter={{
-              small: true,
-            }}
-            className="profileInfoCol elem-mb-XL"
-          >
             <ChangePasswordInfo labels={labels} />
           </Col>
+
           <Col
             colSize={{
               small: 6,
@@ -164,6 +151,47 @@ class ProfileInformation extends React.PureComponent {
           >
             <BirthdaySaving labels={labels} childrenBirthdays={childrenBirthdays} />
           </Col>
+        </Row>
+
+        <Row fullBleed className="hideOnMobile elem-pt-LRG elem-pb-LRG">
+          <Col
+            colSize={{
+              large: 12,
+            }}
+            className="profileInfoSeparator"
+          />
+        </Row>
+        <Row fullBleed className="elem-pt-LRG">
+          {defaultStore && (
+            <Col
+              colSize={{
+                small: 6,
+                medium: 4,
+                large: 6,
+              }}
+              ignoreGutter={{
+                small: true,
+              }}
+              className="profileInfoCol elem-mb-XL"
+            >
+              <MyFavoriteStore />
+            </Col>
+          )}
+          {userSurvey && userSurvey.getIn(['0', '0']) && (
+            <Col
+              colSize={{
+                small: 6,
+                medium: 4,
+                large: 6,
+              }}
+              ignoreGutter={{
+                small: true,
+              }}
+              className="profileInfoCol elem-mb-XL"
+            >
+              <AboutYouInfo labels={labels} userSurvey={userSurvey} />
+            </Col>
+          )}
         </Row>
         <Row fullBleed className="elem-pb-MED">
           <Col

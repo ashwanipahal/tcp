@@ -14,6 +14,10 @@ exports[`ApplyNowModalWrapper component should renders correctly 1`] = `
     margin-right: 5px;
   }
 
+  div.TCPModal__InnerContent.innerContent {
+    padding: 21px;
+  }
+
   .TCPModal__InnerContent {
     text-align: center;
     > h2 {
@@ -90,8 +94,7 @@ exports[`ApplyNowModalWrapper component should renders correctly 1`] = `
   }
 
   .header__greeting {
-    margin: 9px 9px;
-    width: 353px;
+    margin: 9px 0px;
   }
 
   .header-image {
@@ -126,7 +129,11 @@ exports[`ApplyNowModalWrapper component should renders correctly 1`] = `
   }
 
   .rewards__benefits {
-    margin: 21px 0 0 9px;
+    @media ",
+      [Function],
+      " {
+      margin-left: 6px;
+    }
     > li {
       font-size: ",
       [Function],
@@ -145,28 +152,11 @@ exports[`ApplyNowModalWrapper component should renders correctly 1`] = `
     }
   }
 
-  /* This css is for list coming from module X */
-  .benefit_list {
-    font-size: ",
-      [Function],
-      ";
-    font-weight: ",
-      [Function],
-      ";
-  }
-
   .footerLinks {
     display: flex;
     margin-top: 38px;
-    > span {
-      padding-left: 67px;
-    }
+    justify-content: center;
     padding-bottom: 33px;
-    @media ",
-      [Function],
-      " {
-      padding: 0px;
-    }
   }
 
   .footerLink {
@@ -175,9 +165,10 @@ exports[`ApplyNowModalWrapper component should renders correctly 1`] = `
 ",
     ]
   }
+  innerContentClassName="innerContent"
   isOpen={true}
-  maxWidth="458px"
-  minHeight="746px"
+  maxWidth="464px"
+  minHeight="646px"
   overlayClassName="TCPModal__Overlay"
   shouldCloseOnOverlayClick={false}
 >

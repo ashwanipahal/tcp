@@ -1,26 +1,14 @@
 /* eslint-disable extra-rules/no-commented-out-code */
-/** @module ProductsGridItem
- * @summary renders a single product in a PLP.
- *
- * @author Gabriel Gomez
- * @author Miguel
- * @author Ben
- */
 import React from 'react';
 import productGridItemPropTypes from '../propTypes/ProductGridItemPropTypes';
-import Button from '../../../../../../common/atoms/Button';
+// import Button from '../../../../../../common/atoms/Button';
+import FulfillmentSection from '../../../../../../common/organisms/FulfillmentSection';
 import { getLocator } from '../../../../../../../utils';
 import { getImagesToDisplay, getMapSliceForColorProductId } from '../utils/productsCommonUtils';
-
 // import { ProductRating } from './ProductRating';
-
 import withStyles from '../../../../../../common/hoc/withStyles';
 import styles from '../styles/ProductsGridItem.style';
-import {
-  getPromotionalMessage,
-  // validateBossEligibility,
-  // validateBopisEligibility,
-} from '../utils/utility';
+import { getPromotionalMessage } from '../utils/utility';
 
 import {
   ProductTitle,
@@ -107,6 +95,16 @@ class ProductsGridItem extends React.PureComponent {
       : undefined;
   }
 
+  /**
+   * This function returns array of images for carousal and also decides whether to show image carousal or not
+   * @param {*} imageUrls
+   */
+  getImageCarouselOptions(imageUrls) {
+    const { hideImageCarousel } = this.props;
+
+    return hideImageCarousel ? imageUrls.slice(0, 1) : imageUrls;
+  }
+
   handleAddToWishlist = () => {
     const {
       item: {
@@ -154,6 +152,7 @@ class ProductsGridItem extends React.PureComponent {
     } = this.props;
     return colorsMap.length >= 1 ? (
       <ProductColorChipWrapper
+        className="color-chips-container"
         onChipClick={this.handleChangeColor}
         maxVisibleItems={5}
         selectedColorId={curentColorEntry.color.name}
@@ -169,7 +168,8 @@ class ProductsGridItem extends React.PureComponent {
 
   /* function to get product price section */
   getProductPriceSection = (listPriceForColor, offerPriceForColor, badge3, isShowBadges) => {
-    const { currencySymbol } = this.props;
+    const { currencySymbol, dataLocatorPrice, sqnNmbr } = this.props;
+
     return (
       <ProductPricesSection
         currencySymbol={currencySymbol || '$'}
@@ -178,6 +178,7 @@ class ProductsGridItem extends React.PureComponent {
         noMerchantBadge={badge3}
         merchantTag={isShowBadges ? badge3 : null}
         hidePrefixListPrice
+        dataLocator={`${dataLocatorPrice}_${sqnNmbr - 1}`}
       />
     );
   };
@@ -208,14 +209,13 @@ class ProductsGridItem extends React.PureComponent {
     } = this.props;
     const { selectedColorProductId } = this.state;
     const colorEntry = getMapSliceForColorProductId(colorsMap, selectedColorProductId);
-    onPickUpOpenClick(
+    onPickUpOpenClick({
       generalProductId,
-      { color: colorEntry && colorEntry.color.name },
-      selectedColorProductId,
-      generalProductId,
-      colorEntry.miscInfo.isBopisEligible,
-      colorEntry.miscInfo.isBossEligible
-    );
+      initialValues: { color: colorEntry && colorEntry.color.name },
+      isBopisCtaEnabled: colorEntry.miscInfo.isBopisEligible,
+      isBossCtaEnabled: colorEntry.miscInfo.isBossEligible,
+      colorProductId: selectedColorProductId,
+    });
   }
 
   handleChangeColor(colorProductId) {
@@ -237,25 +237,6 @@ class ProductsGridItem extends React.PureComponent {
     // eslint-disable-next-line react/destructuring-assignment
     this.state.pdpUrl = this.state.pdpUrl.replace(color, selectedColor);
     this.setState({ selectedColorProductId: colorProductId, currentImageIndex: 0 });
-  }
-
-  handleQuickBopisOpenClick() {
-    const {
-      item: {
-        colorsMap,
-        productInfo: { generalProductId },
-      },
-      onQuickBopisOpenClick,
-    } = this.props;
-
-    const { selectedColorProductId } = this.state;
-    const colorEntry = getMapSliceForColorProductId(colorsMap, selectedColorProductId);
-    onQuickBopisOpenClick(
-      generalProductId,
-      { color: colorEntry && colorEntry.color.name },
-      selectedColorProductId,
-      generalProductId
-    );
   }
 
   render() {
@@ -296,7 +277,10 @@ class ProductsGridItem extends React.PureComponent {
       sqnNmbr,
       unbxdId,
       labels,
+      dataLocatorImages,
+      dataLocatorBag,
     } = this.props;
+
     // eslint-disable-next-line camelcase
     const prodNameAltImages = long_product_title || name;
     // eslint-disable-next-line no-unused-vars
@@ -314,6 +298,8 @@ class ProductsGridItem extends React.PureComponent {
       curentColorEntry,
       isAbTestActive: isOnModelImgDisplay,
     });
+
+    const imageUrlsToShow = this.getImageCarouselOptions(imageUrls);
 
     const currentColorMiscInfo =
       this.colorsExtraInfo[curentColorEntry.color.name] || curentColorEntry.miscInfo || {};
@@ -356,6 +342,11 @@ class ProductsGridItem extends React.PureComponent {
 
     const videoUrl = this.getVideoUrl(curentColorEntry);
 
+    let dataLocatorAddToBag;
+    if (dataLocatorBag) {
+      dataLocatorAddToBag = `${dataLocatorBag}_${sqnNmb - 1}`;
+    }
+
     return (
       <li
         className={className}
@@ -374,10 +365,11 @@ class ProductsGridItem extends React.PureComponent {
             />
           }
           <ProductAltImages
+            className="product-image-container"
             pdpUrl={pdpUrl}
             videoUrl={videoUrl}
             loadedProductCount={loadedProductCount}
-            imageUrls={imageUrls}
+            imageUrls={imageUrlsToShow}
             isMobile={isMobile}
             isShowVideoOnPlp={isShowVideoOnPlp}
             productName={prodNameAltImages}
@@ -390,9 +382,10 @@ class ProductsGridItem extends React.PureComponent {
             }}
             isPLPredesign={isPLPredesign}
             keepAlive={isKeepAlive}
+            dataLocator={`${dataLocatorImages}_${sqnNmb - 1}`}
           />
           {
-            <Row fullBleed>
+            <Row fullBleed className="product-wishlist-container">
               <Col colSize={{ small: 4, medium: 6, large: 10 }}>
                 <BodyCopy
                   dataLocator={getLocator('global_Extended_sizes_text')}
@@ -431,15 +424,23 @@ class ProductsGridItem extends React.PureComponent {
             promotionalMessageModified,
             promotionalPLCCMessageModified
           )}
-          <div>
+          {/* <div>
             <Button
               className="added-to-bag"
               fullWidth
               buttonVariation="fixed-width"
-              dataLocator={getLocator('global_addtocart_Button')}
+              dataLocator={dataLocatorAddToBag || getLocator('global_addtocart_Button')}
             >
               {labels.addToBag}
             </Button>
+          </div> */}
+          <div className="fulfillment-section">
+            <FulfillmentSection
+              btnClassName="added-to-bag"
+              dataLocator={dataLocatorAddToBag || getLocator('global_addtocart_Button')}
+              buttonLabel={labels.addToBag}
+              onPickupOpenClick={this.handlePickupOpenClick}
+            />
           </div>
 
           {/* {error && <ErrorMessage error={error} />} */}

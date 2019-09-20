@@ -8,15 +8,24 @@ exports[`AboutYouSurvey should render SurveyQuestion correctly 1`] = `
   <Styled(View)>
     <Styled(View)>
       <Styled(BodyCopy)
+        accessibilityText=""
+        dataLocator=""
         fontFamily="secondary"
         fontSize="fs20"
         fontWeight="black"
+        margin={null}
+        numberOfLines={null}
         text="lbl_profile_survey_hi, TCP"
+        textDecoration={null}
       />
       <Styled(BodyCopy)
+        accessibilityText=""
+        dataLocator=""
         fontFamily="secondary"
         fontSize="fs14"
         fontWeight="regular"
+        margin={null}
+        numberOfLines={null}
         style={
           Object {
             "flex": 1,
@@ -24,6 +33,7 @@ exports[`AboutYouSurvey should render SurveyQuestion correctly 1`] = `
           }
         }
         text=""
+        textDecoration={null}
       />
     </Styled(View)>
     <Styled(View)>
@@ -33,12 +43,14 @@ exports[`AboutYouSurvey should render SurveyQuestion correctly 1`] = `
         <Styled(ImageComp)
           alt="Survey Stage"
           height="26px"
+          host=""
           onClick={[Function]}
           source={
             Object {
               "testUri": "../../../src/assets/images/star-filled.png",
             }
           }
+          url=""
           width="26px"
         />
       </Styled(TouchableOpacity)>
@@ -46,22 +58,26 @@ exports[`AboutYouSurvey should render SurveyQuestion correctly 1`] = `
       <Styled(ImageComp)
         alt="Survey Stage"
         height="26px"
+        host=""
         source={
           Object {
             "testUri": "../../../src/assets/images/star.png",
           }
         }
+        url=""
         width="26px"
       />
       <Styled(View) />
       <Styled(ImageComp)
         alt="Survey Stage"
         height="26px"
+        host=""
         source={
           Object {
             "testUri": "../../../src/assets/images/circle-check.png",
           }
         }
+        url=""
         width="26px"
       />
     </Styled(View)>
@@ -115,15 +131,24 @@ exports[`AboutYouSurvey should render correctly 1`] = `
   <Styled(View)>
     <Styled(View)>
       <Styled(BodyCopy)
+        accessibilityText=""
+        dataLocator=""
         fontFamily="secondary"
         fontSize="fs20"
         fontWeight="black"
+        margin={null}
+        numberOfLines={null}
         text="lbl_profile_survey_hi, TCP"
+        textDecoration={null}
       />
       <Styled(BodyCopy)
+        accessibilityText=""
+        dataLocator=""
         fontFamily="secondary"
         fontSize="fs14"
         fontWeight="regular"
+        margin={null}
+        numberOfLines={null}
         style={
           Object {
             "flex": 1,
@@ -131,6 +156,7 @@ exports[`AboutYouSurvey should render correctly 1`] = `
           }
         }
         text=""
+        textDecoration={null}
       />
     </Styled(View)>
     <Styled(View)>
@@ -140,12 +166,14 @@ exports[`AboutYouSurvey should render correctly 1`] = `
         <Styled(ImageComp)
           alt="Survey Stage"
           height="26px"
+          host=""
           onClick={[Function]}
           source={
             Object {
               "testUri": "../../../src/assets/images/star-filled.png",
             }
           }
+          url=""
           width="26px"
         />
       </Styled(TouchableOpacity)>
@@ -153,22 +181,26 @@ exports[`AboutYouSurvey should render correctly 1`] = `
       <Styled(ImageComp)
         alt="Survey Stage"
         height="26px"
+        host=""
         source={
           Object {
             "testUri": "../../../src/assets/images/star.png",
           }
         }
+        url=""
         width="26px"
       />
       <Styled(View) />
       <Styled(ImageComp)
         alt="Survey Stage"
         height="26px"
+        host=""
         source={
           Object {
             "testUri": "../../../src/assets/images/circle-check.png",
           }
         }
+        url=""
         width="26px"
       />
     </Styled(View)>

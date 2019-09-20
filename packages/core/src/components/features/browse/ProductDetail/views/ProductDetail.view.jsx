@@ -1,17 +1,54 @@
 import React from 'react';
 import PropTypes from 'prop-types';
+import ExecutionEnvironment from 'exenv';
 import { Row, Col, RichText } from '../../../../common/atoms';
 import withStyles from '../../../../common/hoc/withStyles';
 import ProductDetailStyle from '../ProductDetail.style';
+import { PRODUCT_INFO_PROP_TYPE_SHAPE } from '../../ProductListing/molecules/ProductList/propTypes/productsAndItemsPropTypes';
+import { breakpoints } from '../../../../../../styles/themes/TCP/mediaQuery';
 import Product from '../molecules/Product/views/Product.view';
+import FixedBreadCrumbs from '../../ProductListing/molecules/FixedBreadCrumbs/views';
+import ProductAddToBagContainer from '../../../../common/molecules/ProductAddToBag';
 
-const ProductDetailView = ({ className, productDetails, longDescription }) => {
+import ProductImagesWrapper from '../molecules/ProductImagesWrapper/views/ProductImagesWrapper.view';
+import {
+  getImagesToDisplay,
+  getMapSliceForColorProductId,
+} from '../../ProductListing/molecules/ProductList/utils/productsCommonUtils';
+
+const ProductDetailView = ({
+  className,
+  productDetails,
+  longDescription,
+  breadCrumbs,
+  currency,
+  productInfo,
+  plpLabels,
+}) => {
+  const currentProduct = productDetails && productDetails.get('currentProduct');
+  const isWeb =
+    ExecutionEnvironment.canUseDOM && document.body.offsetWidth >= breakpoints.values.lg;
+  let imagesToDisplay = [];
+  if (Object.keys(productInfo).length !== 0) {
+    const colorProduct = getMapSliceForColorProductId(
+      productInfo.colorFitsSizesMap,
+      /* colorProductId would not be hard coded and it will be replaced in near future when it done */
+      productInfo.colorFitsSizesMap[0].colorProductId
+    );
+    imagesToDisplay = getImagesToDisplay({
+      imagesByColor: productInfo.imagesByColor,
+      curentColorEntry: colorProduct,
+      isAbTestActive: false,
+      isFullSet: true,
+    });
+  }
+
   return (
     <div className={className}>
-      <Row className="placeholder">
+      <Row>
         <Col colSize={{ small: 6, medium: 8, large: 12 }}>
-          <div className="promo-area-1">BREAD CRUMB</div>
-          {/* {breadCrumbs && <FixedBreadCrumbs crumbs={breadCrumbs} separationChar=">" />} */}
+          {/* <div className="promo-area-1">BREAD CRUMB</div> */}
+          {breadCrumbs && <FixedBreadCrumbs crumbs={breadCrumbs} separationChar=">" />}
         </Col>
       </Row>
       <Row className="placeholder">
@@ -20,14 +57,23 @@ const ProductDetailView = ({ className, productDetails, longDescription }) => {
         </Col>
       </Row>
       <Row>
-        <Col colSize={{ small: 6, medium: 8, large: 1 }}>
-          <div className="side-tile">MINI TILE PDP</div>
+        <Col className="product-image-wrapper" colSize={{ small: 6, medium: 4, large: 7 }}>
+          <ProductImagesWrapper
+            productName={productInfo.name}
+            isThumbnailListVisible={isWeb}
+            images={imagesToDisplay}
+            isZoomEnabled
+          />
         </Col>
-        <Col colSize={{ small: 6, medium: 8, large: 6 }}>
-          <div className="product-image-carousel">PRODUCT IMAGE CAROUSEL SECTION</div>
-        </Col>
-        <Col colSize={{ small: 6, medium: 8, large: 5 }}>
-          <Product productDetails={productDetails} />
+        <Col
+          id="productDetailsSection"
+          className="product-detail-section"
+          colSize={{ small: 6, medium: 4, large: 5 }}
+        >
+          <Product productDetails={productDetails} currencySymbol={currency} />
+          {currentProduct && (
+            <ProductAddToBagContainer currentProduct={currentProduct} plpLabels={plpLabels} />
+          )}
         </Col>
       </Row>
       <Row className="placeholder">
@@ -74,13 +120,25 @@ const ProductDetailView = ({ className, productDetails, longDescription }) => {
 ProductDetailView.propTypes = {
   className: PropTypes.string,
   productDetails: PropTypes.shape({}),
+  productInfo: PRODUCT_INFO_PROP_TYPE_SHAPE,
   longDescription: PropTypes.string,
+  breadCrumbs: PropTypes.shape({}),
+  currency: PropTypes.string,
+  plpLabels: PropTypes.shape({
+    lbl_sort: PropTypes.string,
+  }),
 };
 
 ProductDetailView.defaultProps = {
   className: '',
   productDetails: {},
   longDescription: '',
+  breadCrumbs: {},
+  currency: '',
+  plpLabels: {
+    lbl_sort: '',
+  },
+  productInfo: {},
 };
 
 export default withStyles(ProductDetailView, ProductDetailStyle);

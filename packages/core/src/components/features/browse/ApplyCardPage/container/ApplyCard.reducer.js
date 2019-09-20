@@ -12,7 +12,11 @@ const ApplyCardReducer = (state = initialState, action) => {
     case constants.RESET_PLCC_APPLICATION_RESPONSE:
       return { ...state, applicationStatus: action.payload.status };
     case constants.RESPONSE_INSTANT_CARD_APPLICATION:
-      return { ...state, applicationStatus: action.payload.status };
+      return {
+        ...state,
+        applicationStatus: action.payload.status,
+        approvedPLCCData: action.payload,
+      };
     default:
       return state;
   }

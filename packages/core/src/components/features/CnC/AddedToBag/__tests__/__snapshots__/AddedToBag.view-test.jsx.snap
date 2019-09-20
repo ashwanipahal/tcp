@@ -41,11 +41,7 @@ exports[`Added to Bag View should render Added to Bag view  1`] = `
       border: none;
       margin-bottom: 0;
       padding: 0;
-      @media ",
-      [Function],
-      " {
-        display: block;
-      }
+      display: inline;
     }
   }
 ",

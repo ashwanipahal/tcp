@@ -7,7 +7,6 @@ const StyledLinkText = styled(LinkText)`
 
   .link-text {
     margin-bottom: 0;
-    font-size: ${props => props.theme.typography.fontSizes.fs48};
   }
 `;
 
@@ -73,13 +72,16 @@ const style = css`
 
   .tcp_carousel_wrapper .slick-list,
   .banner-slide {
+    min-height: 200px;
     max-height: 311px;
 
     @media ${props => props.theme.mediaQuery.medium} {
+      min-height: 300px;
       max-height: 406px;
     }
 
     @media ${props => props.theme.mediaQuery.large} {
+      min-height: 300px;
       max-height: 474px;
     }
   }

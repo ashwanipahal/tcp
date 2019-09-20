@@ -17,10 +17,15 @@ exports[`Modal Native should render correctly 1`] = `
     <Styled(View)>
       <Styled(Text)>
         <Styled(BodyCopy)
+          accessibilityText=""
+          dataLocator=""
           fontSize="fs16"
           fontWeight="extrabold"
+          margin={null}
           mobileFontFamily="primary"
+          numberOfLines={null}
           text="Modal Heading"
+          textDecoration={null}
         />
       </Styled(Text)>
       <Styled(View)>
@@ -45,6 +50,10 @@ exports[`Modal Native should render correctly 1`] = `
         marginTop={5}
       />
     </Styled(View)>
+    <ScrollViewMock
+      keyboardShouldPersistTaps="handled"
+      showsVerticalScrollIndicator={false}
+    />
   </Component>
 </SafeAreaView>
 `;

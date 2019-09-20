@@ -22,6 +22,7 @@ import Loader from '../components/features/content/Loader';
 import { configureStore } from '../reduxStore';
 import ReactAxe from '../utils/react-axe';
 import CHECKOUT_STAGES from './App.constants';
+import RenderPerf from '../components/common/molecules/RenderPerf';
 
 // constants
 import constants from '../constants';
@@ -34,11 +35,6 @@ const Script = dynamic(() => import('../components/common/atoms/Script'), { ssr:
 function AnalyticsScript() {
   return <Script src={process.env.ANALYTICS_SCRIPT_URL} />;
 }
-
-// TODO: Needs to be removed once this feature is enabled in analytics script
-// Recommendation script injection - (adobe.target) API
-const RecommendationsScript = () => <Script src={process.env.RECOMMENDATIONS_SCRIPT_URL} />;
-
 class TCPWebApp extends App {
   constructor(props) {
     super(props);
@@ -172,6 +168,8 @@ class TCPWebApp extends App {
     }
     return (
       <Container>
+        {/* TODO: Remove, this is for testing only */}
+        <RenderPerf.Mark name="app_render_start" />
         <ThemeProvider theme={this.theme}>
           <Provider store={store}>
             <GlobalStyle />
@@ -192,7 +190,8 @@ class TCPWebApp extends App {
         </ThemeProvider>
         {/* Inject analytics script if enabled */}
         {process.env.ANALYTICS && <AnalyticsScript />}
-        {process.env.RECOMMENDATIONS_SCRIPT_URL && <RecommendationsScript />}
+        {/* TODO: Remove, this is for testing only */}
+        <RenderPerf.Measure name="app_render" start="app_render_start" />
       </Container>
     );
   }

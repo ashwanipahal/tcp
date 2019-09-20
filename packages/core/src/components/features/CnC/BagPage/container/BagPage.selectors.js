@@ -1,3 +1,4 @@
+import { getLabelValue } from '@tcp/core/src/utils/utils';
 import { AVAILABILITY } from '../../../../../services/abstractors/CnC/CartItemTile';
 import getErrorList from './Errors.selector';
 
@@ -29,6 +30,20 @@ const getBagPageLabels = state => {
       addedToBagModal: { lbl_header_addedToBag: addedToBag, lbl_cta_checkout: checkout },
     } = {},
   } = state.Labels;
+
+  const savedForLaterText = getLabelValue(
+    state.Labels,
+    'lbl_sfl_savedForLater',
+    'bagPage',
+    'checkout'
+  );
+  const myBagButton = getLabelValue(state.Labels, 'lbl_sfl_myBagButton', 'bagPage', 'checkout');
+  const savedLaterButton = getLabelValue(
+    state.Labels,
+    'lbl_sfl_savedLaterButton',
+    'bagPage',
+    'checkout'
+  );
   return {
     addedToBag,
     checkout,
@@ -39,6 +54,9 @@ const getBagPageLabels = state => {
     tagLine,
     guestUserMsg,
     helperMsg,
+    savedForLaterText,
+    myBagButton,
+    savedLaterButton,
   };
 };
 
@@ -99,8 +117,11 @@ const getGiftServicesContentTcpId = state => {
   return contentTCP && contentTCP.contentId;
 };
 
-const getGiftServicesContentGymId = state => {
-  const { referred = [] } = state.Labels.bag.addedToBag;
+const getGiftServicesContentGymId = ({
+  Labels: {
+    checkout: { addedToBag: { referred = [] } = {} },
+  },
+}) => {
   const contentGYM = referred.find(label => label.name === 'GiftServicesDetailsGYMModal');
   return contentGYM && contentGYM.contentId;
 };
@@ -117,7 +138,19 @@ const getUnqualifiedItemsIds = state =>
 const getUnavailableCount = state =>
   getFilteredItems(state, type => type === AVAILABILITY.UNAVAILABLE).size;
 
+const getCurrentOrderId = state => {
+  return state.CartPageReducer.getIn(['orderDetails', 'orderId']) || 0;
+};
+
 const getOOSCount = state => getFilteredItems(state, type => type === AVAILABILITY.SOLDOUT).size;
+
+const getCurrentCurrency = state => {
+  return state.session.getIn(['siteDetails', 'currency']);
+};
+
+const getsflItemsList = state => {
+  return state.CartPageReducer.get('sfl');
+};
 
 export default {
   getBagPageLabels,
@@ -131,9 +164,12 @@ export default {
   getOOSCount,
   getConfirmationModalFlag,
   getFilteredItems,
+  getCurrentOrderId,
   getErrorMapping,
   getDetailsContentGymId,
   getDetailsContentTcpId,
   getGiftServicesContentTcpId,
   getGiftServicesContentGymId,
+  getCurrentCurrency,
+  getsflItemsList,
 };

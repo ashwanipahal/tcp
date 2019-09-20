@@ -26,6 +26,13 @@ class ProductList extends React.PureComponent {
   // eslint-disable-next-line
   onFavorite = item => {};
 
+  onOpenPDPPageHandler = (pdpUrl, selectedColorIndex) => {
+    const { title, onGoToPDPPage } = this.props;
+    if (onGoToPDPPage) {
+      onGoToPDPPage(title, pdpUrl, selectedColorIndex);
+    }
+  };
+
   /**
    * @param {Object} itemData : product list item
    * @desc This is renderer method of the product tile list
@@ -65,6 +72,7 @@ class ProductList extends React.PureComponent {
         onFavorite={this.onFavorite}
         currencyExchange={currencyExchange}
         currencySymbol={currencySymbol}
+        onGoToPDPPage={this.onOpenPDPPageHandler}
       />
     );
   };
@@ -78,7 +86,7 @@ class ProductList extends React.PureComponent {
       <FlatList
         data={products}
         renderItem={this.renderItemList}
-        keyExtractor={item => item.generalProductId}
+        keyExtractor={item => item.productInfo.generalProductId}
         initialNumToRender={4}
         maxToRenderPerBatch={2}
         numColumns={2}
@@ -125,6 +133,8 @@ ProductList.propTypes = {
   isMatchingFamily: PropTypes.bool,
   isPlcc: PropTypes.bool,
   /* eslint-enable */
+  onGoToPDPPage: PropTypes.func.isRequired,
+  title: PropTypes.string.isRequired,
 };
 
 ProductList.defaultProps = {

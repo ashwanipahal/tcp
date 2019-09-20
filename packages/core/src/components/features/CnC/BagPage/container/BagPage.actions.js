@@ -105,6 +105,54 @@ const routeForCheckout = () => {
   };
 };
 
+const startPaypalCheckout = payload => {
+  return {
+    type: BAGPAGE_CONSTANTS.START_PAYPAL_CHECKOUT,
+    payload,
+  };
+};
+
+const paypalAuthorization = payload => {
+  return {
+    type: BAGPAGE_CONSTANTS.AUTHORIZATION_PAYPAL_CHECKOUT,
+    payload,
+  };
+};
+
+const addItemToSflList = payload => {
+  return {
+    type: BAGPAGE_CONSTANTS.ADD_ITEM_SAVE_FOR_LATER,
+    payload,
+  };
+};
+
+const setCartItemsSFL = payload => {
+  return {
+    payload,
+    type: BAGPAGE_CONSTANTS.CART_ITEMS_SET_SFL,
+  };
+};
+
+const setCartItemsSflError = payload => {
+  return {
+    payload,
+    type: BAGPAGE_CONSTANTS.CART_ITEMS_SET_SFL_ERROR,
+  };
+};
+
+const getSflData = () => {
+  return {
+    type: BAGPAGE_CONSTANTS.GET_SFL_DATA,
+  };
+};
+
+const setSflData = payload => {
+  return {
+    payload,
+    type: BAGPAGE_CONSTANTS.SET_SFL_DATA,
+  };
+};
+
 const initActions = [loadComponentLabelsData({ category: LABELS.checkout })];
 
 export default {
@@ -120,8 +168,15 @@ export default {
   removeUnqualifiedItemsAndCheckout,
   openCheckoutConfirmationModal,
   setItemOOS,
+  paypalAuthorization,
+  startPaypalCheckout,
   setCartItemsUpdating,
   setItemUnavailable,
   routeForCheckout,
   initActions,
+  addItemToSflList,
+  setCartItemsSFL,
+  setCartItemsSflError,
+  getSflData,
+  setSflData,
 };

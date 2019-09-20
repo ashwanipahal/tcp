@@ -70,6 +70,10 @@ export const getProductsSelect = createSelector(
     products && products.get('loadedProductsPages') && products.get('loadedProductsPages')[0]
 );
 
+export const getLabels = state => {
+  return state.Labels.Browse && state.Labels.Browse.SLP;
+};
+
 export const getTotalProductsCount = createSelector(
   getProductListingState,
   products => products && products.get('totalProductsCount')
@@ -163,4 +167,37 @@ export const getLastLoadedPageNumber = state => {
 export const getMaxPageNumber = state => {
   // We no longer need to divide by page size because UNBXD start parameter matches the direct number of results.
   return Math.ceil(state.ProductListing.get('totalProductsCount') / getPageSize());
+};
+
+/**
+ * @function updateAppliedFiltersInState
+ * matches filterMaps with appliedFilterIds
+ * and updates isSelected state in filters
+ *
+ * @param {*} state
+ * @returns
+ */
+export const updateAppliedFiltersInState = state => {
+  const filters = getProductsFilters(state);
+  const appliedFilters = getAppliedFilters(state);
+  const filterEntries = (filters && Object.entries(filters)) || [];
+  if (appliedFilters && Object.keys(appliedFilters).length) {
+    filterEntries.map(filter => {
+      const key = filter[0];
+      const values = filter[1];
+      const appliedFilterValue = appliedFilters[key] || [];
+      if (!(values instanceof Array)) return values;
+
+      // for all arrays in filters - update isSelected as true if it is present in appliedFilterIds
+      values.map(value => {
+        const isValueApplied = appliedFilterValue.filter(id => id === value.id).length > 0;
+        const updatedValue = value;
+        updatedValue.isSelected = isValueApplied;
+        return updatedValue;
+      });
+      return values;
+    });
+  }
+
+  return filters;
 };

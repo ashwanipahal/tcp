@@ -2,8 +2,9 @@ import React from 'react';
 import Barcode from '@tcp/core/src/components/common/molecules/Barcode';
 import Modal from '@tcp/core/src/components/common/molecules/Modal';
 import Button from '@tcp/core/src/components/common/atoms/Button';
-import Anchor from '@tcp/core/src/components/common/atoms/Anchor';
+import { Anchor, RichText } from '@tcp/core/src/components/common/atoms';
 import withStyles from '@tcp/core/src/components/common/hoc/withStyles';
+import endpoints from '@tcp/core/src/components/features/account/common/externalEndpoints';
 import { BodyCopy } from '../../../../../../../../styles/themes/TCP/typotheme';
 import styles from '../styles/CouponDetailModal.style';
 
@@ -17,10 +18,6 @@ class CouponDetailModal extends React.PureComponent<Props> {
 
   printClick = event => {
     window.print();
-    event.preventDefault();
-  };
-
-  tAndCClick = event => {
     event.preventDefault();
   };
 
@@ -62,7 +59,9 @@ class CouponDetailModal extends React.PureComponent<Props> {
           data-locator={`couponDetailModal_${coupon.status}_BarCode`}
           className="couponModal_modalbarcode"
         >
-          <Barcode value={coupon.id} barcodeId={coupon.id} />
+          <BodyCopy component="div" className="elem-mt-MED elem-mb-MED">
+            <Barcode value={coupon.id} barcodeId={coupon.id} />
+          </BodyCopy>
         </BodyCopy>
         <div className="couponModal_btnWrapper">
           <Button
@@ -93,7 +92,7 @@ class CouponDetailModal extends React.PureComponent<Props> {
           className="couponModal_modalLongDesc"
           data-locator={`couponDetailModal_${coupon.status}_LongDesc`}
         >
-          {coupon.legalText}
+          <RichText richTextHtml={coupon.legalText} />
         </BodyCopy>
         <BodyCopy
           fontFamily="secondaryFontFamily"
@@ -106,7 +105,7 @@ class CouponDetailModal extends React.PureComponent<Props> {
             anchorVariation="primary"
             fontSize="fs14"
             dataLocator={`couponDetailModal_${coupon.status}_tAndC`}
-            onClick={this.tAndCClick}
+            url={endpoints.termsAndConditionsPage}
             className="couponModal_print_anchortext"
           >
             {`${labels.TERMS_AND_CONDITIONS}`}
@@ -118,7 +117,7 @@ class CouponDetailModal extends React.PureComponent<Props> {
             anchorVariation="primary"
             fontSize="fs14"
             dataLocator={`couponDetailModal_${coupon.status}_pp`}
-            onClick={this.tAndCClick}
+            url={endpoints.privacyPolicyPage}
             className="couponModal_print_anchortext"
           >
             {`${labels.PRIVACY_POLICY}`}

@@ -5,15 +5,15 @@ import Row from '@tcp/core/src/components/common/atoms/Row';
 import Col from '@tcp/core/src/components/common/atoms/Col';
 import withStyles from '@tcp/core/src/components/common/hoc/withStyles';
 import { isCanada } from '@tcp/core/src/utils';
-import FPO from '@tcp/core/src/components/common/atoms/FPO';
 
 import styles from '../styles/PlaceRewards.section.style';
 import MyRewards from '../../../../common/organism/MyRewards';
 import RewardsPoints from '../../../../common/organism/RewardsPoints';
 import PointsHistory from '../../../../common/organism/PointsHistory';
+import EarnExtraPointsTileContainer from '../../../../common/organism/EarnExtraPointsTile';
 import BonusPointsDays from '../../../molecules/BonusPointsDays';
 
-const PlaceRewardsSection = ({ labels, className }) => {
+const PlaceRewardsSection = ({ labels, className, ...otherProps }) => {
   const isCA = isCanada();
   return (
     <div className={className}>
@@ -145,11 +145,11 @@ const PlaceRewardsSection = ({ labels, className }) => {
             }}
             className="place-rewards-col4"
           >
-            <FPO />
+            <EarnExtraPointsTileContainer />
           </Col>
         </Row>
       </Row>
-      {!isCA && <MyRewards labels={labels} showLink />}
+      {!isCA && <MyRewards labels={labels} showLink {...otherProps} />}
     </div>
   );
 };

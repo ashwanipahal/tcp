@@ -75,10 +75,11 @@ const GooglePlaceInputWrapper = styled.View`
 const AddressSecondWrapper = styled.View`
   height: 72px;
   margin-top: ${props => props.theme.spacing.ELEM_SPACING.XL};
+  margin-bottom: ${props => props.theme.spacing.ELEM_SPACING.XS};
 `;
 
 const HiddenAddressLineWrapper = styled.View`
-  margin-top: -${props => props.theme.spacing.ELEM_SPACING.LRG};
+  margin-top: -${props => props.theme.spacing.ELEM_SPACING.MED};
 `;
 
 export {

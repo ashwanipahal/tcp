@@ -10,6 +10,10 @@ import {
   getBreadCrumbs,
   getDescription,
   getRatingsProductId,
+  getDefaultImage,
+  getCurrentCurrency,
+  getPlpLabels,
+  getCurrentProduct,
 } from './ProductDetail.selectors';
 
 class ProductListingContainer extends React.PureComponent {
@@ -22,7 +26,16 @@ class ProductListingContainer extends React.PureComponent {
     } = this.props;
 
     // TODO - fix this to extract the product ID from the page.
-    getDetails({ productColorId: pid });
+    const id = pid && pid.split('-');
+    let productId = id && id.length > 1 ? `${id[id.length - 2]}_${id[id.length - 1]}` : pid;
+    if (
+      (id.indexOf('Gift') > -1 || id.indexOf('gift') > -1) &&
+      (id.indexOf('Card') > -1 || id.indexOf('card') > -1)
+    ) {
+      productId = 'gift';
+    }
+
+    getDetails({ productColorId: productId });
   }
 
   render() {
@@ -31,6 +44,10 @@ class ProductListingContainer extends React.PureComponent {
       breadCrumbs,
       longDescription,
       ratingsProductId,
+      defaultImage,
+      productInfo,
+      currency,
+      plpLabels,
       ...otherProps
     } = this.props;
     return (
@@ -40,6 +57,10 @@ class ProductListingContainer extends React.PureComponent {
         longDescription={longDescription}
         ratingsProductId={ratingsProductId}
         otherProps={otherProps}
+        defaultImage={defaultImage}
+        plpLabels={plpLabels}
+        currency={currency}
+        productInfo={productInfo}
       />
     );
   }
@@ -52,6 +73,11 @@ function mapStateToProps(state) {
     breadCrumbs: getBreadCrumbs(state),
     longDescription: getDescription(state),
     ratingsProductId: getRatingsProductId(state),
+    // This is just to check if the product is correct
+    defaultImage: getDefaultImage(state),
+    productInfo: getCurrentProduct(state),
+    currency: getCurrentCurrency(state),
+    plpLabels: getPlpLabels(state),
   };
 }
 
@@ -66,6 +92,7 @@ function mapDispatchToProps(dispatch) {
 ProductListingContainer.propTypes = {
   productDetails: PropTypes.arrayOf(PropTypes.shape({})),
   getDetails: PropTypes.func.isRequired,
+  productInfo: PropTypes.arrayOf(PropTypes.shape({})),
   breadCrumbs: PropTypes.shape({}),
   longDescription: PropTypes.string,
   ratingsProductId: PropTypes.string,
@@ -74,13 +101,24 @@ ProductListingContainer.propTypes = {
       pid: PropTypes.string,
     }),
   }).isRequired,
+  defaultImage: PropTypes.string,
+  currency: PropTypes.string,
+  plpLabels: PropTypes.shape({
+    lbl_sort: PropTypes.string,
+  }),
 };
 
 ProductListingContainer.defaultProps = {
   productDetails: [],
-  breadCrumbs: {},
+  productInfo: {},
+  breadCrumbs: null,
   longDescription: '',
   ratingsProductId: '',
+  defaultImage: '',
+  currency: '',
+  plpLabels: {
+    lbl_sort: '',
+  },
 };
 
 export default withRouter(

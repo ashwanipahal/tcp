@@ -175,7 +175,7 @@ export default css`
 
     .bag-product-detail-wrapper {
       position: relative;
-
+      width: 100%;
       .color-fit-size-separator {
         padding: 0 10px;
       }
@@ -231,9 +231,7 @@ export default css`
         right: 0;
       }
       .save-for-later-label {
-        position: absolute;
-        bottom: 4px;
-        left: 170px;
+        margin: ${props => props.theme.spacing.ELEM_SPACING.XS} 0;
         width: 100%;
       }
       .color-map-size-fit {
@@ -294,9 +292,8 @@ export default css`
   .parent- {
     padding-bottom: 0px;
     .save-for-later-label {
-      right: -57px;
-      position: absolute;
-      bottom: 17px;
+      float: right;
+      cursor: pointer;
     }
   }
 
@@ -319,6 +316,11 @@ export default css`
       margin-top: 27px;
     }
   }
-
+  .heartIcon {
+    margin-top: ${props => props.theme.spacing.ELEM_SPACING.XS};
+  }
+  .sflActions {
+    text-decoration: underline;
+  }
   ${props => (props.inheritedStyles ? props.inheritedStyles : '')};
 `;

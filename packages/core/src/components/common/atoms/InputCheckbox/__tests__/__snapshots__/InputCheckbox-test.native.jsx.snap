@@ -14,12 +14,15 @@ exports[`InputCheckbox component should render correctly 1`] = `
   >
     <Styled(View)>
       <Styled(ImageComp)
+        alt=""
         height="25px"
+        host=""
         source={
           Object {
             "testUri": "../../../../core/src/assets/store-locator-checked.png",
           }
         }
+        url=""
         width="25px"
       />
     </Styled(View)>
@@ -27,9 +30,14 @@ exports[`InputCheckbox component should render correctly 1`] = `
       inputVariation="inputVariation"
     >
       <Styled(BodyCopy)
+        accessibilityText=""
+        dataLocator=""
         fontSize="fs12"
+        margin={null}
         mobileFontFamily="secondary"
+        numberOfLines={null}
         text="checkbox"
+        textDecoration={null}
       />
     </Styled(Text)>
   </Styled(View)>
@@ -50,12 +58,15 @@ exports[`InputCheckbox component should render correctly with checked state fals
   >
     <Styled(View)>
       <Styled(ImageComp)
+        alt=""
         height="25px"
+        host=""
         source={
           Object {
             "testUri": "../../../../core/src/assets/store-locator-check.png",
           }
         }
+        url=""
         width="25px"
       />
     </Styled(View)>
@@ -63,9 +74,14 @@ exports[`InputCheckbox component should render correctly with checked state fals
       inputVariation="inputVariation"
     >
       <Styled(BodyCopy)
+        accessibilityText=""
+        dataLocator=""
         fontSize="fs12"
+        margin={null}
         mobileFontFamily="secondary"
+        numberOfLines={null}
         text="checkbox"
+        textDecoration={null}
       />
     </Styled(Text)>
   </Styled(View)>

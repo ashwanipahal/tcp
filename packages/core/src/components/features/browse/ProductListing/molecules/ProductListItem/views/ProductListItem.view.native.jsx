@@ -2,6 +2,7 @@ import React, { useState } from 'react';
 import get from 'lodash/get';
 import PropTypes from 'prop-types';
 import { withTheme } from 'styled-components/native';
+import PromotionalMessage from '@tcp/core/src/components/common/atoms/PromotionalMessage';
 import withStyles from '../../../../../../common/hoc/withStyles.native';
 import {
   styles,
@@ -18,13 +19,9 @@ import {
   Badge3Text,
   TitleContainer,
   TitleText,
-  PromotionalMessageContainer,
-  PromotionalMessage,
   AddToBagContainer,
-  PromotionalMessagePostfix,
   OfferPriceAndFavoriteIconContainer,
 } from '../styles/ProductListItem.style.native';
-import { getFormattedLoyaltyText } from '../../ProductList/utils/productsCommonUtils';
 import CustomButton from '../../../../../../common/atoms/Button';
 import ColorSwitch from '../../ColorSwitch';
 import CustomIcon from '../../../../../../common/atoms/Icon';
@@ -53,6 +50,7 @@ const ListItem = props => {
     theme,
     currencySymbol,
     isPlcc,
+    onGoToPDPPage,
   } = props;
   const [selectedColorIndex, setSelectedColorIndex] = useState(0);
   const { productInfo, colorsMap } = item;
@@ -63,7 +61,11 @@ const ListItem = props => {
   return (
     <ListContainer accessible>
       <RenderTopBadge1 text={badge1} />
-      <ImageSection item={item} selectedColorIndex={selectedColorIndex} />
+      <ImageSection
+        item={item}
+        selectedColorIndex={selectedColorIndex}
+        onGoToPDPPage={onGoToPDPPage}
+      />
       <RenderBadge2 text={badge2} />
       <RenderPricesSection
         onFavorite={onFavorite}
@@ -75,7 +77,12 @@ const ListItem = props => {
       />
       <RenderTitle text={name} />
       <ColorSwitch colorsMap={colorsMap} setSelectedColorIndex={setSelectedColorIndex} />
-      <RenderPromotionalMessage isPlcc={isPlcc} text={loyaltyPromotionMessage} />
+      <PromotionalMessage
+        isPlcc={isPlcc}
+        text={loyaltyPromotionMessage}
+        height="24px"
+        marginTop={12}
+      />
       <AddToBagContainer>
         <CustomButton
           fill="BLUE"
@@ -105,13 +112,20 @@ const RenderTopBadge1 = ({ text }) => {
 
 RenderTopBadge1.propTypes = TextProps;
 
-const ImageSection = ({ item, selectedColorIndex }) => {
-  return <ImageCarousel item={item} selectedColorIndex={selectedColorIndex} />;
+const ImageSection = ({ item, selectedColorIndex, onGoToPDPPage }) => {
+  return (
+    <ImageCarousel
+      item={item}
+      selectedColorIndex={selectedColorIndex}
+      onGoToPDPPage={onGoToPDPPage}
+    />
+  );
 };
 
 ImageSection.propTypes = {
   item: PropTypes.shape({}).isRequired,
   selectedColorIndex: PropTypes.number.isRequired,
+  onGoToPDPPage: PropTypes.func.isRequired,
 };
 
 const RenderBadge2 = ({ text }) => {
@@ -182,23 +196,6 @@ const RenderTitle = ({ text }) => {
 
 RenderTitle.propTypes = TextProps;
 
-const RenderPromotionalMessage = ({ text, isPlcc }) => {
-  return (
-    <PromotionalMessageContainer>
-      <PromotionalMessage isPlcc={isPlcc} accessibilityRole="text" numberOfLines={2}>
-        {text && getFormattedLoyaltyText(text)[0]}
-        {text && (
-          <PromotionalMessagePostfix>
-            {` on${getFormattedLoyaltyText(text)[1]}`}
-          </PromotionalMessagePostfix>
-        )}
-      </PromotionalMessage>
-    </PromotionalMessageContainer>
-  );
-};
-
-RenderPromotionalMessage.propTypes = { ...TextProps, isPlcc: PropTypes.bool };
-
 ListItem.propTypes = {
   theme: PropTypes.shape({}),
   item: PropTypes.shape({}),
@@ -210,6 +207,7 @@ ListItem.propTypes = {
   isPlcc: PropTypes.bool,
   currencyExchange: PropTypes.arrayOf(PropTypes.shape({})).isRequired,
   currencySymbol: PropTypes.string.isRequired,
+  onGoToPDPPage: PropTypes.func.isRequired,
 };
 
 ListItem.defaultProps = {
@@ -220,10 +218,6 @@ ListItem.defaultProps = {
   loyaltyPromotionMessage: '',
   onAddToBag: () => {},
   onFavorite: () => {},
-  isPlcc: false,
-};
-
-RenderPromotionalMessage.defaultProps = {
   isPlcc: false,
 };
 

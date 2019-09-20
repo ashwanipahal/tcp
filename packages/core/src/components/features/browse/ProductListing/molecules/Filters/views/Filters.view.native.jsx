@@ -21,12 +21,14 @@ class Filters extends React.PureComponent {
     filters: PropTypes.shape({}),
     theme: PropTypes.shape({}),
     labelsFilter: PropTypes.shape({}),
+    onSubmit: PropTypes.func,
   };
 
   static defaultProps = {
     filters: {},
     theme: {},
     labelsFilter: {},
+    onSubmit: null,
   };
 
   filterNames = [];
@@ -35,7 +37,8 @@ class Filters extends React.PureComponent {
     super(props);
     const { filters } = this.props;
     const { unbxdDisplayName } = filters;
-    this.filterNames = Object.entries(unbxdDisplayName);
+    this.filterNames = (unbxdDisplayName && Object.entries(unbxdDisplayName)) || [];
+    this.state = { selectedItems: [] };
   }
 
   /**
@@ -45,16 +48,31 @@ class Filters extends React.PureComponent {
     return <ItemSeparatorStyle />;
   };
 
-  onSelectFilter = () => {};
+  /**
+   * @function onSelectFilter
+   * This method is called on tap of an item in filter list
+   * toggles isSelected property of selected item and saves or removes it from selectedItems in state
+   *
+   * @memberof Filters
+   */
+  onSelectFilter = item => {
+    const updatedItem = item;
+    updatedItem.isSelected = !updatedItem.isSelected;
+    const { selectedItems } = this.state;
+    const selectedItemsList = updatedItem.isSelected
+      ? [...selectedItems, updatedItem]
+      : selectedItems.filter(i => i !== updatedItem);
+    this.setState({ selectedItems: selectedItemsList });
+  };
 
   renderListItem = ({ item }) => {
-    const { displayName } = item;
+    const { displayName, isSelected } = item;
     return (
       <Button
         buttonVariation={BUTTON_VARIATION.mobileAppFilter}
         text={displayName}
-        onPress={this.onSelectFilter}
-        selected={false}
+        onPress={() => this.onSelectFilter(item)}
+        selected={isSelected}
         data-locator=""
         accessibilityLabel={displayName}
       />
@@ -62,16 +80,66 @@ class Filters extends React.PureComponent {
   };
 
   renderColorSwitchItem = ({ item }) => {
-    const { imagePath } = item;
-    return <LinkImageIcon uri={imagePath} onPress={() => {}} />;
+    const { imagePath, isSelected } = item;
+    return (
+      <LinkImageIcon
+        uri={imagePath}
+        selected={isSelected}
+        onPress={() => this.onSelectFilter(item)}
+      />
+    );
   };
 
-  onClearAll = () => {};
+  /**
+   * @function onClearAll
+   * This method clears selected items list and sets isSelected as false for all selected items
+   *
+   * @memberof Filters
+   */
+  onClearAll = () => {
+    this.clearAllFilters();
 
-  onApplyFilter = () => {};
+    // Call onSubmit with empty filter list
+    const { onSubmit } = this.props;
+    if (onSubmit) onSubmit({});
+  };
+
+  clearAllFilters = () => {
+    const { selectedItems } = this.state;
+    selectedItems.forEach(item => {
+      const updatedItem = item;
+      updatedItem.isSelected = false;
+    });
+  };
+
+  /**
+   * @function onApplyFilter
+   * This method is called on tap of APPLY button in filters modal
+   *
+   * @memberof Filters
+   */
+  onApplyFilter = () => {
+    const { onSubmit } = this.props;
+    const { filters } = this.props;
+    let selectedFilters = {};
+
+    this.filterNames.forEach(name => {
+      const key = name[0];
+      const filterData = filters[key] || [];
+
+      // find all the selected items from filters list and map it with filter key present in filterNames
+      const selectedFiltersData = filterData.filter(item => item.isSelected).map(item => item.id);
+      const result = {};
+      result[key] = selectedFiltersData;
+      selectedFilters = { ...selectedFilters, ...result };
+    });
+
+    if (onSubmit) onSubmit(selectedFilters);
+  };
 
   renderList = (key, title, filterData) => {
     if (filterData && filterData.length > 0) {
+      const { selectedItems } = this.state;
       const itemRenderer =
         key === 'TCPColor_uFilter' ? this.renderColorSwitchItem : this.renderListItem;
       return (
@@ -88,6 +156,7 @@ class Filters extends React.PureComponent {
             horizontal
             ItemSeparatorComponent={this.renderSeparator}
             showsHorizontalScrollIndicator={false}
+            extraData={selectedItems}
           />
         </Container>
       );

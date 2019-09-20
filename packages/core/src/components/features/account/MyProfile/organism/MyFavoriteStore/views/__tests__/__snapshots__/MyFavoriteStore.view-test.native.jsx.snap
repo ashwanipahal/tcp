@@ -1,0 +1,50 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`MyFavoriteStore Component MyFavoriteStore should render correctly 1`] = `
+<MyProfileTile
+  birthdaySaving={false}
+  className=""
+  ctaLink="accountOverviewMobile"
+  ctaTitle="lbl_common_updateFavoriteStore"
+  dataLocator="myFavStoreLbl"
+  handleComponentChange={[Function]}
+  title="lbl_common_myFavoriteStore"
+>
+  <Styled(BodyCopy)
+    accessibilityText=""
+    dataLocator=""
+    fontSize="fs16"
+    margin={null}
+    numberOfLines={null}
+    text="Fulton Street"
+    textDecoration={null}
+  />
+  <Styled(BodyCopy)
+    accessibilityText=""
+    dataLocator=""
+    fontSize="fs16"
+    margin={null}
+    numberOfLines={null}
+    text="471-485 Fulton Street"
+    textDecoration={null}
+  />
+  <Styled(BodyCopy)
+    accessibilityText=""
+    dataLocator=""
+    fontSize="fs16"
+    margin={null}
+    numberOfLines={null}
+    text="Brooklyn, NY 11201"
+    textDecoration={null}
+  />
+  <Styled(BodyCopy)
+    accessibilityText=""
+    dataLocator=""
+    fontSize="fs16"
+    margin={null}
+    numberOfLines={null}
+    text="(712)-431-1408"
+    textDecoration={null}
+  />
+</MyProfileTile>
+`;

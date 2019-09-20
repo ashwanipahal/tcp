@@ -5,6 +5,10 @@ export const modalStyles = css`
     margin-right: 5px;
   }
 
+  div.TCPModal__InnerContent.innerContent {
+    padding: 21px;
+  }
+
   .TCPModal__InnerContent {
     text-align: center;
     > h2 {
@@ -65,8 +69,7 @@ export const modalStyles = css`
   }
 
   .header__greeting {
-    margin: 9px 9px;
-    width: 353px;
+    margin: 9px 0px;
   }
 
   .header-image {
@@ -102,7 +105,9 @@ export const modalStyles = css`
   }
 
   .rewards__benefits {
-    margin: 21px 0 0 9px;
+    @media ${props => props.theme.mediaQuery.medium} {
+      margin-left: 6px;
+    }
     > li {
       font-size: ${props => props.theme.fonts.fontSize.body.large.secondary}px;
       width: 355px;
@@ -119,22 +124,11 @@ export const modalStyles = css`
     }
   }
 
-  /* This css is for list coming from module X */
-  .benefit_list {
-    font-size: ${props => props.theme.typography.fontSizes.fs14};
-    font-weight: ${props => props.theme.typography.fontWeights.semibold};
-  }
-
   .footerLinks {
     display: flex;
     margin-top: 38px;
-    > span {
-      padding-left: 67px;
-    }
+    justify-content: center;
     padding-bottom: 33px;
-    @media ${props => props.theme.mediaQuery.medium} {
-      padding: 0px;
-    }
   }
 
   .footerLink {

@@ -1,7 +1,10 @@
 import React, { Fragment } from 'react';
 import PropTypes from 'prop-types';
+import { View } from 'react-native';
 import Toast from 'react-native-easy-toast';
 import colors from '@tcp/core/styles/themes/TCP/colors';
+import { ToastWrapper, ToastCross, ToastText } from './ToastMsg.style.native';
+import { DEFAULT_TOAST_ERROR_MESSAGE_TTL } from '../../../../../config/site.config';
 
 /**
  * @param {object} props : Props for FPO
@@ -31,9 +34,18 @@ class ToastView extends React.PureComponent {
   componentDidUpdate() {
     const { errorMessage, toastMessageReset } = this.props;
     if (errorMessage) {
-      this.toastRef.current.show(`${errorMessage}`, 500, () => {
-        toastMessageReset();
-      });
+      this.toastRef.current.show(
+        <View>
+          <ToastWrapper>
+            <ToastText>{errorMessage}</ToastText>
+            <ToastCross>X</ToastCross>
+          </ToastWrapper>
+        </View>,
+        500,
+        () => {
+          toastMessageReset();
+        }
+      );
     }
   }
 
@@ -44,9 +56,9 @@ class ToastView extends React.PureComponent {
           ref={this.toastRef}
           style={styles.ToastStyle}
           position="top"
-          positionValue={20}
+          positionValue={0}
           fadeInDuration={750}
-          fadeOutDuration={1000}
+          fadeOutDuration={DEFAULT_TOAST_ERROR_MESSAGE_TTL}
           opacity={1}
           textStyle={{ color: colors.WHITE }}
         />

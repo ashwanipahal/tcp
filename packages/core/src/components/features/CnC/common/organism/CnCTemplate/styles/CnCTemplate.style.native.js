@@ -35,11 +35,24 @@ export const BackLinkWrapperWrapper = styled.View`
 export const CheckoutButton = styled.TouchableOpacity`
   background: ${props => props.theme.colors.PRIMARY.BLUE};
   display: flex;
-  flex: 1;
   height: 42px;
   justify-content: center;
   align-items: center;
   margin-bottom: ${props => props.theme.spacing.ELEM_SPACING.MED};
+`;
+
+export const BonusPointsWrapper = styled.View`
+  padding-top: ${props => props.theme.spacing.ELEM_SPACING.SM};
+  padding-bottom: ${props => props.theme.spacing.ELEM_SPACING.SM};
+  border-top-width: 1px;
+  border-bottom-width: 1px;
+  border-style: solid;
+  border-color: ${props => props.theme.colors.PRIMARY.GRAY};
+`;
+
+export const CouponAndPromosWrapper = styled.View`
+  padding-top: ${props => props.theme.spacing.ELEM_SPACING.SM};
+  padding-bottom: ${props => props.theme.spacing.ELEM_SPACING.SM};
 `;
 
 export default {
@@ -48,4 +61,6 @@ export default {
   BackLinkText,
   BackIcon,
   BackLinkWrapperWrapper,
+  BonusPointsWrapper,
+  CouponAndPromosWrapper,
 };

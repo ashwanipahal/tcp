@@ -34,16 +34,17 @@ export const MainContainerView = styled.View`
 export const ContainerView = styled.View``;
 
 export const Border = styled.View`
-  height: 1px;
+  height: 0.5px;
   background: ${props =>
     props.background === 'text'
       ? props.theme.colors.BUTTON.WHITE.BORDER
-      : props.theme.colors.BUTTON.WHITE.TEXT};
+      : props.theme.colorPalette.gray[700]};
 `;
 
 export const DivImageCTAContainer = styled.View``;
 export const SeparatorView = styled.View`
-  margin: -10px 20px 10px;
+  margin: ${props => props.theme.spacing.ELEM_SPACING.XS}
+    ${props => props.theme.spacing.ELEM_SPACING.MED} ${props => props.theme.spacing.ELEM_SPACING.XS};
   height: 1px;
   width: 150px;
   background: ${props => props.theme.colorPalette.black};

@@ -5,6 +5,17 @@ const validExpirationDate = 'lbl_err_validexpirationedate';
 const ssnMessage = 'lbl_err_ssnumber_ssn';
 
 export const formValidationMessages = {
+  gender: {
+    required: 'lbl_err_gender_required',
+  },
+  childName: {
+    nonEmpty: 'lbl_err_name_nonempty',
+    name: 'lbl_err_name_name',
+    maxLength: 'lbl_err_name_maxlength',
+  },
+  acceptAddChildAgreement: {
+    required: 'lbl_err_accept_tna_required',
+  },
   addressLine1: {
     required: validStreetAddress,
     address: 'lbl_err_addressline1_address',
@@ -73,8 +84,8 @@ export const formValidationMessages = {
     required: validExpirationDate,
     expiration: validExpirationDate,
   },
-  giftCardNumber: 'Please enter a valid gift card number',
-  cardPin: 'Please enter your gift card pin number',
+  giftCardNumber: 'lbl_err_giftcardnumber',
+  cardPin: 'lbl_err_cardpin',
 
   Email: {
     required: `lbl_err_email_req`,
@@ -154,6 +165,17 @@ export const formValidationMessages = {
 };
 
 export const formValidationRules = {
+  gender: {
+    required: true,
+  },
+  childName: {
+    nonEmpty: true,
+    name: true,
+    maxLength: 50,
+  },
+  acceptAddChildAgreement: {
+    required: true,
+  },
   addressLine1: {
     required: true,
     address: true,
@@ -321,8 +343,13 @@ export const formValidationRules = {
   cvvCode: {
     required: true,
     cvvNumber: true,
-    cvvLengthThree: true,
-    cvvLengthFour: true,
+    cvvLengthThree: {
+      linkedProps: ['cardType'],
+    },
+    // amex validation, validates length === 4 only if type is amex, otherwise it passes validation
+    cvvLengthFour: {
+      linkedProps: ['cardType'],
+    },
   },
   phoneNumberWithAlt: {
     phone: true,

@@ -4,7 +4,9 @@ exports[`LinkText component renders correctly 1`] = `
 <Styled(Anchor)
   accessibilityLabel=""
   anchorVariation=""
+  colorName={null}
   customStyle={Object {}}
+  key="0"
   locator=""
   onPress={null}
   text=""
@@ -15,31 +17,19 @@ exports[`LinkText component renders correctly 1`] = `
     Component={
       Object {
         "$$typeof": Symbol(react.forward_ref),
-        "_foldedDefaultProps": undefined,
+        "_foldedDefaultProps": Object {
+          "accessibilityText": "",
+          "dataLocator": "",
+          "margin": null,
+          "numberOfLines": null,
+          "textDecoration": null,
+        },
         "attrs": Array [],
         "displayName": "Styled(BodyCopy)",
         "inlineStyle": InlineStyle {
           "rules": Array [
             "
     ",
-            "
-  ",
-            [Function],
-            "
-  ",
-            [Function],
-            "
-  ",
-            "
-  ",
-            [Function],
-            ";
-  ",
-            [Function],
-            ";
-",
-            "
-",
             ";
   ",
           ],
@@ -50,16 +40,27 @@ exports[`LinkText component renders correctly 1`] = `
         "withComponent": [Function],
       }
     }
+    accessibilityText=""
+    dataLocator=""
+    margin={null}
+    numberOfLines={null}
     text={
       Array [
-        <ForwardRef>
+        <ForwardRef
+          accessibilityLabel="UNICORNS"
+          accessibilityRole="text"
+        >
           UNICORNS
         </ForwardRef>,
-        <ForwardRef>
+        <ForwardRef
+          accessibilityLabel=", DINOS & MORE!"
+          accessibilityRole="text"
+        >
            , DINOS & MORE!
         </ForwardRef>,
       ]
     }
+    textDecoration={null}
   />
 </Styled(Anchor)>
 `;

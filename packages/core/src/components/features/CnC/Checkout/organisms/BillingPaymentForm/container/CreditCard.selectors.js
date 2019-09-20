@@ -1,8 +1,10 @@
-import { formValueSelector } from 'redux-form';
+import { formValueSelector, getFormSyncErrors } from 'redux-form';
 import { createSelector } from 'reselect';
 import constants from './CreditCard.constants';
+import CARD_RANGES from '../../../../../account/AddEditCreditCard/container/AddEditCreditCard.constants';
+import CheckoutSelectors from '../../../container/Checkout.selector';
 
-const getCreditCardLabels = state => state.Labels.checkout.billing;
+const { getBillingValues, getShippingDestinationValues } = CheckoutSelectors;
 
 const getOnFileCardKey = state => {
   const selector = formValueSelector(constants.FORM_NAME);
@@ -14,22 +16,11 @@ const getPaymentMethodId = state => {
   return selector(state, 'paymentMethodId');
 };
 
-const getCVVCodeInfoContentId = state => {
-  let cvvCodeCID;
-  if (state.Labels.checkout.billing && Array.isArray(state.Labels.checkout.billing.referred)) {
-    state.Labels.checkout.billing.referred.forEach(label => {
-      if (label.name === constants.CREDIT_CARD_CVV_INFO_LABEL) cvvCodeCID = label.contentId;
-    });
-  }
-  return cvvCodeCID;
+const getCardNumber = state => {
+  const selector = formValueSelector(constants.FORM_NAME);
+  return selector(state, 'cardNumber');
 };
 
-const getCVVCodeRichTextSelector = state => {
-  const rContent = state.CartPageReducer.get('moduleXContent').find(
-    moduleX => moduleX.name === getCVVCodeInfoContentId(state)
-  );
-  return rContent && rContent.richText;
-};
 export const getErrorMessages = state => {
   return state.Labels.global;
 };
@@ -39,11 +30,86 @@ const getFormValidationErrorMessages = createSelector(
   global => global && global.formValidation
 );
 
+const getSyncError = state => {
+  return {
+    syncError: getFormSyncErrors(constants.FORM_NAME)(state),
+  };
+};
+
+const getCardType = createSelector(
+  [getCardNumber, getBillingValues],
+  (formCardNumber, billingData) => {
+    if ((formCardNumber || '').length === 0) {
+      return null;
+    }
+    const cardNumber = formCardNumber;
+    if (cardNumber.startsWith('*') && billingData && billingData.billing) {
+      const {
+        billing: { cardType },
+      } = billingData;
+      return cardType;
+    }
+    // look up based on cardNumber
+    const type = Object.keys(CARD_RANGES.CREDIT_CARDS_BIN_RANGES).filter(range => {
+      const rangeCount = CARD_RANGES.CREDIT_CARDS_BIN_RANGES[range].length;
+      for (let i = 0; i < rangeCount; i += 1) {
+        const { from, to } = CARD_RANGES.CREDIT_CARDS_BIN_RANGES[range][i];
+        const prefixLength = from.toString().length;
+        const prefix = cardNumber.substr(0, prefixLength);
+
+        if (prefix >= from && prefix <= to) {
+          return true;
+        }
+      }
+      return false;
+    });
+
+    if (type.length > 0) {
+      return CARD_RANGES.ACCEPTED_CREDIT_CARDS[type[0]];
+    }
+
+    return null;
+  }
+);
+
+const getSameAsShippingValue = state => {
+  const selector = formValueSelector(constants.FORM_NAME);
+  return selector(state, 'sameAsShipping');
+};
+
+const getSaveToAccountValue = state => {
+  const selector = formValueSelector(constants.FORM_NAME);
+  return selector(state, 'saveToAccount');
+};
+
+const getShippingOnFileAddressKey = createSelector(
+  getShippingDestinationValues,
+  shippingData => {
+    return shippingData && shippingData.onFileAddressKey;
+  }
+);
+
+const getShippingOnFileAddressId = createSelector(
+  getShippingDestinationValues,
+  shippingData => {
+    return shippingData && shippingData.onFileAddressId;
+  }
+);
+
+const getSelectedOnFileAddressId = state => {
+  const selector = formValueSelector(constants.FORM_NAME);
+  return selector(state, 'onFileAddressId');
+};
+
 export default {
-  getCreditCardLabels,
   getOnFileCardKey,
   getPaymentMethodId,
-  getCVVCodeInfoContentId,
-  getCVVCodeRichTextSelector,
   getFormValidationErrorMessages,
+  getSyncError,
+  getCardType,
+  getSameAsShippingValue,
+  getSaveToAccountValue,
+  getShippingOnFileAddressKey,
+  getSelectedOnFileAddressId,
+  getShippingOnFileAddressId,
 };

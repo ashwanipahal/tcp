@@ -7,12 +7,12 @@ import withStyles from '../../../hoc/withStyles';
 import buttonTabsStyle from '../ButtonTabs.style';
 
 function ButtonTabs(props) {
-  const { className, tabs, selectedTabId, onTabChange } = props;
+  const { className, tabs, selectedTabId, onTabChange, dataLocator } = props;
 
   return (
     <div className={className}>
-      {tabs.map(({ label, id }) => (
-        <div key={id} className="button-wrapper">
+      {tabs.map(({ label, id }, index) => (
+        <div key={id} className="button-wrapper" data-locator={`${dataLocator}${index}`}>
           <Button
             active={id === selectedTabId}
             buttonVariation="mini-nav"
@@ -28,6 +28,7 @@ function ButtonTabs(props) {
 
 ButtonTabs.defaultProps = {
   className: '',
+  dataLocator: '',
   tabs: [],
   selectedTabId: '',
   onTabChange: () => {},
@@ -35,6 +36,7 @@ ButtonTabs.defaultProps = {
 
 ButtonTabs.propTypes = {
   className: PropTypes.string,
+  dataLocator: PropTypes.string,
   selectedTabId: PropTypes.string,
   tabs: PropTypes.arrayOf(
     PropTypes.shape({

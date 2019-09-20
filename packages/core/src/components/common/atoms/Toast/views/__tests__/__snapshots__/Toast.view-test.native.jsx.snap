@@ -4,10 +4,10 @@ exports[`Toast msg view render should render correctly 1`] = `
 <Fragment>
   <Toast
     fadeInDuration={750}
-    fadeOutDuration={1000}
+    fadeOutDuration={5000}
     opacity={1}
     position="top"
-    positionValue={20}
+    positionValue={0}
     style={
       Object {
         "backgroundColor": "#000000",

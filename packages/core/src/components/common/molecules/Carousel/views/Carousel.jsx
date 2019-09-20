@@ -12,11 +12,13 @@ const defaults = { ...config.CAROUSEL_DEFAULTS };
 
 type Props = {
   options: Object,
+  nextProps: Object,
   children: any,
   carouselConfig: Object,
   className: String,
   playIconButtonLabel: String,
   pauseIconButtonLabel: String,
+  sliderImageIndex: number,
 };
 
 type State = {
@@ -39,6 +41,14 @@ class Carousel extends React.PureComponent<Props, State> {
       autoplay: true,
     };
   }
+
+  componentWillReceiveProps = (nextProps: Object) => {
+    const { sliderImageIndex } = nextProps;
+    const { sliderImageIndex: sliderImage } = this.props;
+    if (sliderImageIndex !== sliderImage) {
+      (this: any).slider.slickGoTo(sliderImageIndex);
+    }
+  };
 
   /**
    * @function getSlider function gets DOM reference of slider component.

@@ -6,6 +6,7 @@ exports[`GiftCardsVanilla should render gift card tile 1`] = `
 >
   <Styled(Row)
     className="gift-section-container elem-mb-LRG"
+    fullBleed={true}
   >
     <Styled(Col)
       colSize={
@@ -17,7 +18,7 @@ exports[`GiftCardsVanilla should render gift card tile 1`] = `
       }
     >
       <Styled(BodyCopy)
-        className="elem-mb-XS elem-mt-XXL"
+        className="elem-mt-XXL"
         color="text.primary"
         component="p"
         data-locator="gift-cards"
@@ -31,7 +32,7 @@ exports[`GiftCardsVanilla should render gift card tile 1`] = `
         lbl_giftcard_title
       </Styled(BodyCopy)>
       <Styled(BodyCopy)
-        className="elem-mb-XS elem-mt-MED"
+        className="elem-mt-LRG"
         color="text.primary"
         component="p"
         data-locator="gift-cards"
@@ -45,7 +46,7 @@ exports[`GiftCardsVanilla should render gift card tile 1`] = `
         lbl_giftcard_addUptoMsg
       </Styled(BodyCopy)>
       <Styled(BodyCopy)
-        className="elem-mb-XS elem-mt-XXL"
+        className="elem-mt-MED"
         color="text.primary"
         component="p"
         data-locator="gift-cards"
@@ -58,8 +59,32 @@ exports[`GiftCardsVanilla should render gift card tile 1`] = `
       >
         lbl_giftcard_appliedCards
       </Styled(BodyCopy)>
+      <Styled(GiftCardTile)
+        cardData={
+          Object {
+            "creditCardId": 123,
+            "name": "test",
+          }
+        }
+        giftCardErrors={Object {}}
+        handleRemoveGiftCard={[MockFunction]}
+        isGiftCardApplied={true}
+        labels={Object {}}
+      />
+      <Styled(GiftCardTile)
+        cardData={
+          Object {
+            "creditCardId": 123,
+            "name": "test",
+          }
+        }
+        giftCardErrors={Object {}}
+        handleRemoveGiftCard={[MockFunction]}
+        isGiftCardApplied={true}
+        labels={Object {}}
+      />
       <Styled(BodyCopy)
-        className="elem-mb-XS elem-mt-MED"
+        className="elem-mt-LRG"
         color="text.primary"
         component="p"
         data-locator="gift-cards"
@@ -78,7 +103,7 @@ exports[`GiftCardsVanilla should render gift card tile 1`] = `
         lbl_giftcard_headsUpMsg
       </Styled(BodyCopy)>
       <Styled(BodyCopy)
-        className="elem-mb-XS elem-mt-XXL"
+        className="elem-mt-MED"
         color="text.primary"
         component="p"
         data-locator="gift-cards"
@@ -91,6 +116,30 @@ exports[`GiftCardsVanilla should render gift card tile 1`] = `
       >
         lbl_giftcard_availableCards
       </Styled(BodyCopy)>
+      <Styled(GiftCardTile)
+        applyExistingGiftCardToOrder={[MockFunction]}
+        cardData={
+          Object {
+            "creditCardId": 123,
+            "name": "test",
+          }
+        }
+        giftCardErrors={Object {}}
+        labels={Object {}}
+        orderBalanceTotal={0}
+      />
+      <Styled(GiftCardTile)
+        applyExistingGiftCardToOrder={[MockFunction]}
+        cardData={
+          Object {
+            "creditCardId": 123,
+            "name": "test",
+          }
+        }
+        giftCardErrors={Object {}}
+        labels={Object {}}
+        orderBalanceTotal={0}
+      />
     </Styled(Col)>
   </Styled(Row)>
 </Styled(Grid)>
@@ -102,6 +151,7 @@ exports[`GiftCardsVanilla should render gift card tile with 0 order balance 1`] 
 >
   <Styled(Row)
     className="gift-section-container elem-mb-LRG"
+    fullBleed={true}
   >
     <Styled(Col)
       colSize={
@@ -113,7 +163,7 @@ exports[`GiftCardsVanilla should render gift card tile with 0 order balance 1`] 
       }
     >
       <Styled(BodyCopy)
-        className="elem-mb-XS elem-mt-XXL"
+        className="elem-mt-XXL"
         color="text.primary"
         component="p"
         data-locator="gift-cards"
@@ -127,7 +177,7 @@ exports[`GiftCardsVanilla should render gift card tile with 0 order balance 1`] 
         lbl_giftcard_title
       </Styled(BodyCopy)>
       <Styled(BodyCopy)
-        className="elem-mb-XS elem-mt-MED"
+        className="elem-mt-LRG"
         color="text.primary"
         component="p"
         data-locator="gift-cards"
@@ -141,7 +191,7 @@ exports[`GiftCardsVanilla should render gift card tile with 0 order balance 1`] 
         lbl_giftcard_addUptoMsg
       </Styled(BodyCopy)>
       <Styled(BodyCopy)
-        className="elem-mb-XS elem-mt-XXL"
+        className="elem-mt-MED"
         color="text.primary"
         component="p"
         data-locator="gift-cards"
@@ -154,8 +204,32 @@ exports[`GiftCardsVanilla should render gift card tile with 0 order balance 1`] 
       >
         lbl_giftcard_appliedCards
       </Styled(BodyCopy)>
+      <Styled(GiftCardTile)
+        cardData={
+          Object {
+            "creditCardId": 123,
+            "name": "test",
+          }
+        }
+        giftCardErrors={Object {}}
+        handleRemoveGiftCard={[MockFunction]}
+        isGiftCardApplied={true}
+        labels={Object {}}
+      />
+      <Styled(GiftCardTile)
+        cardData={
+          Object {
+            "creditCardId": 123,
+            "name": "test",
+          }
+        }
+        giftCardErrors={Object {}}
+        handleRemoveGiftCard={[MockFunction]}
+        isGiftCardApplied={true}
+        labels={Object {}}
+      />
       <Styled(BodyCopy)
-        className="elem-mb-XS elem-mt-MED"
+        className="elem-mt-LRG"
         color="text.primary"
         component="p"
         data-locator="gift-cards"
@@ -174,7 +248,7 @@ exports[`GiftCardsVanilla should render gift card tile with 0 order balance 1`] 
         lbl_giftcard_headsUpMsg
       </Styled(BodyCopy)>
       <Styled(BodyCopy)
-        className="elem-mb-XS elem-mt-XXL"
+        className="elem-mt-MED"
         color="text.primary"
         component="p"
         data-locator="gift-cards"
@@ -187,6 +261,30 @@ exports[`GiftCardsVanilla should render gift card tile with 0 order balance 1`] 
       >
         lbl_giftcard_availableCards
       </Styled(BodyCopy)>
+      <Styled(GiftCardTile)
+        applyExistingGiftCardToOrder={[MockFunction]}
+        cardData={
+          Object {
+            "creditCardId": 123,
+            "name": "test",
+          }
+        }
+        giftCardErrors={Object {}}
+        labels={Object {}}
+        orderBalanceTotal={0}
+      />
+      <Styled(GiftCardTile)
+        applyExistingGiftCardToOrder={[MockFunction]}
+        cardData={
+          Object {
+            "creditCardId": 123,
+            "name": "test",
+          }
+        }
+        giftCardErrors={Object {}}
+        labels={Object {}}
+        orderBalanceTotal={0}
+      />
     </Styled(Col)>
   </Styled(Row)>
 </Styled(Grid)>
@@ -198,6 +296,7 @@ exports[`GiftCardsVanilla should render gift card tile with 100 order balance 1`
 >
   <Styled(Row)
     className="gift-section-container elem-mb-LRG"
+    fullBleed={true}
   >
     <Styled(Col)
       colSize={
@@ -209,7 +308,7 @@ exports[`GiftCardsVanilla should render gift card tile with 100 order balance 1`
       }
     >
       <Styled(BodyCopy)
-        className="elem-mb-XS elem-mt-XXL"
+        className="elem-mt-XXL"
         color="text.primary"
         component="p"
         data-locator="gift-cards"
@@ -223,7 +322,7 @@ exports[`GiftCardsVanilla should render gift card tile with 100 order balance 1`
         lbl_giftcard_title
       </Styled(BodyCopy)>
       <Styled(BodyCopy)
-        className="elem-mb-XS elem-mt-MED"
+        className="elem-mt-LRG"
         color="text.primary"
         component="p"
         data-locator="gift-cards"
@@ -237,7 +336,7 @@ exports[`GiftCardsVanilla should render gift card tile with 100 order balance 1`
         lbl_giftcard_addUptoMsg
       </Styled(BodyCopy)>
       <Styled(BodyCopy)
-        className="elem-mb-XS elem-mt-XXL"
+        className="elem-mt-MED"
         color="text.primary"
         component="p"
         data-locator="gift-cards"
@@ -250,8 +349,32 @@ exports[`GiftCardsVanilla should render gift card tile with 100 order balance 1`
       >
         lbl_giftcard_appliedCards
       </Styled(BodyCopy)>
+      <Styled(GiftCardTile)
+        cardData={
+          Object {
+            "creditCardId": 123,
+            "name": "test",
+          }
+        }
+        giftCardErrors={Object {}}
+        handleRemoveGiftCard={[MockFunction]}
+        isGiftCardApplied={true}
+        labels={Object {}}
+      />
+      <Styled(GiftCardTile)
+        cardData={
+          Object {
+            "creditCardId": 123,
+            "name": "test",
+          }
+        }
+        giftCardErrors={Object {}}
+        handleRemoveGiftCard={[MockFunction]}
+        isGiftCardApplied={true}
+        labels={Object {}}
+      />
       <Styled(BodyCopy)
-        className="elem-mb-XS elem-mt-MED"
+        className="elem-mt-LRG"
         color="text.primary"
         component="p"
         data-locator="gift-cards"
@@ -270,7 +393,7 @@ exports[`GiftCardsVanilla should render gift card tile with 100 order balance 1`
         lbl_giftcard_headsUpMsg
       </Styled(BodyCopy)>
       <Styled(BodyCopy)
-        className="elem-mb-XS elem-mt-XXL"
+        className="elem-mt-MED"
         color="text.primary"
         component="p"
         data-locator="gift-cards"
@@ -282,6 +405,279 @@ exports[`GiftCardsVanilla should render gift card tile with 100 order balance 1`
         textAlign="left"
       >
         lbl_giftcard_availableCards
+      </Styled(BodyCopy)>
+      <Styled(GiftCardTile)
+        applyExistingGiftCardToOrder={[MockFunction]}
+        cardData={
+          Object {
+            "creditCardId": 123,
+            "name": "test",
+          }
+        }
+        giftCardErrors={Object {}}
+        labels={Object {}}
+        orderBalanceTotal={100}
+      />
+      <Styled(GiftCardTile)
+        applyExistingGiftCardToOrder={[MockFunction]}
+        cardData={
+          Object {
+            "creditCardId": 123,
+            "name": "test",
+          }
+        }
+        giftCardErrors={Object {}}
+        labels={Object {}}
+        orderBalanceTotal={100}
+      />
+    </Styled(Col)>
+  </Styled(Row)>
+  <Styled(Row)
+    className="elem-mt-LRG elem-mb-LRG"
+    fullBleed={true}
+  >
+    <Styled(Col)
+      colSize={
+        Object {
+          "large": 3,
+          "medium": 4,
+          "small": 4,
+        }
+      }
+    >
+      <Styled(Button)
+        buttonVariation="variable-width"
+        className="new_gift_card_button"
+        data-locator="gift_apply_button"
+        disabled={false}
+        fullWidth="true"
+        onClick={[Function]}
+        type="submit"
+      >
+        lbl_giftcard_newGiftCard
+      </Styled(Button)>
+    </Styled(Col)>
+  </Styled(Row)>
+</Styled(Grid)>
+`;
+
+exports[`GiftCardsVanilla should render gift card tile with 100 order balance with enableAddGiftCard  1`] = `
+<Styled(Grid)
+  className="test"
+>
+  <Styled(Row)
+    className="gift-section-container elem-mb-LRG"
+    fullBleed={true}
+  >
+    <Styled(Col)
+      colSize={
+        Object {
+          "large": 8,
+          "medium": 8,
+          "small": 6,
+        }
+      }
+    >
+      <Styled(BodyCopy)
+        className="elem-mt-XXL"
+        color="text.primary"
+        component="p"
+        data-locator="gift-cards"
+        fontFamily="primary"
+        fontSize="fs26"
+        fontWeight="regular"
+        letterSpacing="normal"
+        lineHeight="normal"
+        textAlign="left"
+      >
+        lbl_giftcard_title
+      </Styled(BodyCopy)>
+      <Styled(BodyCopy)
+        className="elem-mt-LRG"
+        color="text.primary"
+        component="p"
+        data-locator="gift-cards"
+        fontFamily="secondary"
+        fontSize="fs16"
+        fontWeight="regular"
+        letterSpacing="normal"
+        lineHeight="normal"
+        textAlign="left"
+      >
+        lbl_giftcard_addUptoMsg
+      </Styled(BodyCopy)>
+      <Styled(BodyCopy)
+        className="elem-mt-MED"
+        color="text.primary"
+        component="p"
+        data-locator="gift-cards"
+        fontFamily="secondary"
+        fontSize="fs16"
+        fontWeight="extrabold"
+        letterSpacing="normal"
+        lineHeight="normal"
+        textAlign="left"
+      >
+        lbl_giftcard_appliedCards
+      </Styled(BodyCopy)>
+      <Styled(GiftCardTile)
+        cardData={
+          Object {
+            "creditCardId": 123,
+            "name": "test",
+          }
+        }
+        giftCardErrors={Object {}}
+        handleRemoveGiftCard={[MockFunction]}
+        isGiftCardApplied={true}
+        labels={Object {}}
+      />
+      <Styled(GiftCardTile)
+        cardData={
+          Object {
+            "creditCardId": 123,
+            "name": "test",
+          }
+        }
+        giftCardErrors={Object {}}
+        handleRemoveGiftCard={[MockFunction]}
+        isGiftCardApplied={true}
+        labels={Object {}}
+      />
+      <Styled(BodyCopy)
+        className="elem-mt-LRG"
+        color="text.primary"
+        component="p"
+        data-locator="gift-cards"
+        fontFamily="secondary"
+        fontSize="fs16"
+        fontWeight="regular"
+        letterSpacing="normal"
+        lineHeight="normal"
+        textAlign="left"
+      >
+        <span
+          className="headsUpMsgBoldTitle"
+        >
+          lbl_giftcard_headsUpTitle
+        </span>
+        lbl_giftcard_headsUpMsg
+      </Styled(BodyCopy)>
+      <Styled(BodyCopy)
+        className="elem-mt-MED"
+        color="text.primary"
+        component="p"
+        data-locator="gift-cards"
+        fontFamily="secondary"
+        fontSize="fs16"
+        fontWeight="extrabold"
+        letterSpacing="normal"
+        lineHeight="normal"
+        textAlign="left"
+      >
+        lbl_giftcard_availableCards
+      </Styled(BodyCopy)>
+      <Styled(GiftCardTile)
+        applyExistingGiftCardToOrder={[MockFunction]}
+        cardData={
+          Object {
+            "creditCardId": 123,
+            "name": "test",
+          }
+        }
+        giftCardErrors={Object {}}
+        labels={Object {}}
+        orderBalanceTotal={100}
+      />
+      <Styled(GiftCardTile)
+        applyExistingGiftCardToOrder={[MockFunction]}
+        cardData={
+          Object {
+            "creditCardId": 123,
+            "name": "test",
+          }
+        }
+        giftCardErrors={Object {}}
+        labels={Object {}}
+        orderBalanceTotal={100}
+      />
+    </Styled(Col)>
+  </Styled(Row)>
+  <Styled(Row)
+    className="gift-card-container elem-mb-LRG"
+  >
+    <Styled(Col)
+      colSize={
+        Object {
+          "large": 12,
+          "medium": 8,
+          "small": 6,
+        }
+      }
+    >
+      <Styled(BodyCopy)
+        className="gift-addgiftcard-container"
+        color="text.primary"
+        component="div"
+        fontFamily="primary"
+        fontSize={12}
+        fontWeight="regular"
+        letterSpacing="normal"
+        lineHeight="normal"
+        textAlign="left"
+      >
+        <Styled(Row)
+          fullBleed={true}
+        >
+          <Styled(Col)
+            colSize={
+              Object {
+                "large": 6,
+                "medium": 10,
+                "small": 6,
+              }
+            }
+            ignoreGutter={
+              Object {
+                "small": true,
+              }
+            }
+          >
+            <ErrorMessage
+              className=""
+              error="Duplicate card"
+              errorId="addNew"
+              formName=""
+              isShowingMessage={true}
+              withoutErrorDataAttribute={true}
+            />
+          </Styled(Col)>
+        </Styled(Row)>
+        <ReduxForm
+          addGiftCardError="Duplicate card"
+          destroyOnUnmount={true}
+          enableReinitialize={true}
+          forceUnregisterOnUnmount={false}
+          form="AddGiftCardForm"
+          getFormState={[Function]}
+          isLoading={false}
+          isRecapchaEnabled={false}
+          isRow={true}
+          keepDirtyOnReinitialize={false}
+          labels={Object {}}
+          persistentSubmitErrors={false}
+          pure={true}
+          saveToAccountEnabled={true}
+          shouldAsyncValidate={[Function]}
+          shouldError={[Function]}
+          shouldValidate={[Function]}
+          shouldWarn={[Function]}
+          submitAsSideEffect={false}
+          touchOnBlur={true}
+          touchOnChange={false}
+          updateUnregisteredFields={false}
+          validate={[Function]}
+        />
       </Styled(BodyCopy)>
     </Styled(Col)>
   </Styled(Row)>

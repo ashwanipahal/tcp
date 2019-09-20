@@ -240,9 +240,9 @@ exports[`ModuleH component renders correctly 1`] = `
         data-locator="moduleH_composite_image__1"
         imgConfigs={
           Array [
-            "c_fill,g_face,q_80,h_425,w_375",
-            "c_fill,g_face,q_80,h_465,w_768",
-            "c_fill,g_face,q_80,h_541,w_1410",
+            "t_mod_H_img_full_m",
+            "t_mod_H_img_full_t",
+            "t_mod_H_img_full_d",
           ]
         }
         imgData={
@@ -258,9 +258,9 @@ exports[`ModuleH component renders correctly 1`] = `
         data-locator="moduleH_composite_image__2"
         imgConfigs={
           Array [
-            "c_fill,g_face,q_80,h_425,w_375",
-            "c_fill,g_face,q_80,h_465,w_768",
-            "c_fill,g_face,q_80,h_541,w_1410",
+            "t_mod_H_img_full_m",
+            "t_mod_H_img_full_t",
+            "t_mod_H_img_full_d",
           ]
         }
         imgData={
@@ -276,9 +276,9 @@ exports[`ModuleH component renders correctly 1`] = `
         data-locator="moduleH_composite_image__3"
         imgConfigs={
           Array [
-            "c_fill,g_face,q_80,h_425,w_375",
-            "c_fill,g_face,q_80,h_465,w_768",
-            "c_fill,g_face,q_80,h_541,w_1410",
+            "t_mod_H_img_full_m",
+            "t_mod_H_img_full_t",
+            "t_mod_H_img_full_d",
           ]
         }
         imgData={
@@ -294,9 +294,9 @@ exports[`ModuleH component renders correctly 1`] = `
         data-locator="moduleH_composite_image__4"
         imgConfigs={
           Array [
-            "c_fill,g_face,q_80,h_425,w_375",
-            "c_fill,g_face,q_80,h_465,w_768",
-            "c_fill,g_face,q_80,h_541,w_1410",
+            "t_mod_H_img_full_m",
+            "t_mod_H_img_full_t",
+            "t_mod_H_img_full_d",
           ]
         }
         imgData={
@@ -312,9 +312,9 @@ exports[`ModuleH component renders correctly 1`] = `
         data-locator="moduleH_composite_image__5"
         imgConfigs={
           Array [
-            "c_fill,g_face,q_80,h_425,w_375",
-            "c_fill,g_face,q_80,h_465,w_768",
-            "c_fill,g_face,q_80,h_541,w_1410",
+            "t_mod_H_img_full_m",
+            "t_mod_H_img_full_t",
+            "t_mod_H_img_full_d",
           ]
         }
         imgData={

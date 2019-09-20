@@ -17,6 +17,7 @@ export {
   isAndroid,
   getPixelRatio,
   LAZYLOAD_HOST_NAME,
+  setTestId,
 } from './utils.app';
 
 export { default, getSiteId } from './utils.app';
@@ -35,6 +36,11 @@ export {
   isGymboree,
   getAddressFromPlace,
   formatAddress,
+  formatPhoneNumber,
   getLabelValue,
+  capitalize,
+  toTimeString,
+  getPromotionalMessage,
   getBirthDateOptionMap,
+  calculateAge,
 } from './utils';

@@ -1,5 +1,26 @@
 import { css } from 'styled-components';
 
+/**
+ * @function to return margin left for bag count icon
+ * @param {string} cartItemCount - no of items in cart
+ */
+const cartItemMargin = cartItemCount => {
+  let marginLeft = '-7px';
+  if (cartItemCount && cartItemCount.toString().length > 0) {
+    switch (cartItemCount.toString().length) {
+      case 2:
+        marginLeft = '-9px';
+        break;
+      case 3:
+        marginLeft = '-14px';
+        break;
+      default:
+        break;
+    }
+  }
+  return marginLeft;
+};
+
 export default css`
   .mainWrapper {
     text-align: center;
@@ -54,8 +75,8 @@ export default css`
         : props.theme.colorPalette.blue['800']};
     color: ${props => props.theme.colors.WHITE};
     border-radius: 8px;
-    margin: 1px 0px 0px -8px;
-    padding: 2px 6px;
+    margin: 1px 0px 0px ${props => cartItemMargin(props.cartItemCount)};
+    padding: 2px 5px;
   }
   .favIcon {
     margin-right: ${props => props.theme.spacing.ELEM_SPACING.XS};

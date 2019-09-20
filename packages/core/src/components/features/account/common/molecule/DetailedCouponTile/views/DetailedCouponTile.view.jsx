@@ -92,7 +92,8 @@ export class DetailedCouponTile extends React.Component {
    * This function is used for view coupon deatils
    * can be passed in the component.
    */
-  handleViewCouponDetails = () => {
+  handleViewCouponDetails = e => {
+    e.preventDefault();
     const { onViewCouponDetails, coupon } = this.props;
     onViewCouponDetails(coupon);
   };
@@ -207,7 +208,7 @@ export class DetailedCouponTile extends React.Component {
               </BodyCopy>
             )}
           </BodyCopy>
-
+          <ErrorMessage className="error-notification" error={coupon.error} noBackground />
           <BodyCopy component="div" className="bottom-content">
             <BodyCopy component="div" className="coupon-desc elem-mb-SM">
               <BodyCopy component="div" data-locator="myrewards-usebylabel">
@@ -220,7 +221,12 @@ export class DetailedCouponTile extends React.Component {
                     : `${coupon.expirationDate}`}
                 </BodyCopy>
               </BodyCopy>
-              <Anchor fontSizeVariation="large" underline data-locator="myrewards-detailslink">
+              <Anchor
+                fontSizeVariation="large"
+                onClick={this.handleViewCouponDetails}
+                underline
+                data-locator="myrewards-detailslink"
+              >
                 {labels.lbl_coupon_detailsLink}
               </Anchor>
             </BodyCopy>
@@ -260,7 +266,6 @@ export class DetailedCouponTile extends React.Component {
                 </Button>
               )}
             </BodyCopy>
-            <ErrorMessage className="error-notification" error={coupon.error} />
           </BodyCopy>
         </BodyCopy>
       </BodyCopy>

@@ -9,9 +9,11 @@ exports[`ModuleL Header component renders correctly 1`] = `
   title="Shop Unicorns & Friends"
   url="https://www.childrensplace.com/us/c/toddler-girl-clothes"
 >
-  <Styled(Row)>
+  <Styled(Row)
+    fullBleed={true}
+  >
     <Styled(Col)
-      className="moduleL__tile moduleL__red"
+      className="moduleL__tile"
       colSize={
         Object {
           "large": 12,
@@ -20,15 +22,20 @@ exports[`ModuleL Header component renders correctly 1`] = `
         }
       }
       data-locator="moduleL_tiles_NaN"
+      style={
+        Object {
+          "backgroundColor": "red",
+        }
+      }
     >
       <WithTheme(DamImage)
         className="moduleL__tile-image"
         data-locator="moduleL_image_NaN"
         imgConfigs={
           Array [
-            "c_fill,g_center,q_80,h_127,w_103",
-            "c_fill,g_center,q_80,h_200,w_162",
-            "c_fill,g_center,q_80,h_260,w_210",
+            "t_mod_L_img_m",
+            "t_mod_L_img_t",
+            "t_mod_L_img_d",
           ]
         }
         imgData={

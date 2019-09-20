@@ -29,7 +29,7 @@ exports[`ProductListingFiltersForm is shown should render ProductListingFiltersF
             tabIndex={0}
             textAlign="center"
           >
-            undefined:
+            undefined
           </Styled(BodyCopy)>
           <Field
             allowMultipleSelections={true}
@@ -2305,9 +2305,7 @@ exports[`ProductListingFiltersForm is shown should render ProductListingFiltersF
                     letterSpacing="normal"
                     lineHeight="normal"
                     textAlign="left"
-                  >
-                    Recommended
-                  </ForwardRef>,
+                  />,
                   "title": <ForwardRef
                     className="sort-item-selected"
                     color="text.primary"
@@ -2318,9 +2316,7 @@ exports[`ProductListingFiltersForm is shown should render ProductListingFiltersF
                     letterSpacing="normal"
                     lineHeight="normal"
                     textAlign="left"
-                  >
-                    Recommended
-                  </ForwardRef>,
+                  />,
                   "value": "",
                 },
                 Object {
@@ -2334,9 +2330,7 @@ exports[`ProductListingFiltersForm is shown should render ProductListingFiltersF
                     letterSpacing="normal"
                     lineHeight="normal"
                     textAlign="left"
-                  >
-                    Price: High to Low
-                  </ForwardRef>,
+                  />,
                   "title": <ForwardRef
                     className="sort-item-selected"
                     color="text.primary"
@@ -2347,9 +2341,7 @@ exports[`ProductListingFiltersForm is shown should render ProductListingFiltersF
                     letterSpacing="normal"
                     lineHeight="normal"
                     textAlign="left"
-                  >
-                    Price: High to Low
-                  </ForwardRef>,
+                  />,
                   "value": "min_offer_price desc",
                 },
                 Object {
@@ -2363,9 +2355,7 @@ exports[`ProductListingFiltersForm is shown should render ProductListingFiltersF
                     letterSpacing="normal"
                     lineHeight="normal"
                     textAlign="left"
-                  >
-                    Price: Low to High
-                  </ForwardRef>,
+                  />,
                   "title": <ForwardRef
                     className="sort-item-selected"
                     color="text.primary"
@@ -2376,9 +2366,7 @@ exports[`ProductListingFiltersForm is shown should render ProductListingFiltersF
                     letterSpacing="normal"
                     lineHeight="normal"
                     textAlign="left"
-                  >
-                    Price: Low to High
-                  </ForwardRef>,
+                  />,
                   "value": "min_offer_price asc",
                 },
                 Object {
@@ -2392,9 +2380,7 @@ exports[`ProductListingFiltersForm is shown should render ProductListingFiltersF
                     letterSpacing="normal"
                     lineHeight="normal"
                     textAlign="left"
-                  >
-                    Newest
-                  </ForwardRef>,
+                  />,
                   "title": <ForwardRef
                     className="sort-item-selected"
                     color="text.primary"
@@ -2405,9 +2391,7 @@ exports[`ProductListingFiltersForm is shown should render ProductListingFiltersF
                     letterSpacing="normal"
                     lineHeight="normal"
                     textAlign="left"
-                  >
-                    Newest
-                  </ForwardRef>,
+                  />,
                   "value": "newest_score desc",
                 },
                 Object {
@@ -2421,9 +2405,7 @@ exports[`ProductListingFiltersForm is shown should render ProductListingFiltersF
                     letterSpacing="normal"
                     lineHeight="normal"
                     textAlign="left"
-                  >
-                    Most Favorited
-                  </ForwardRef>,
+                  />,
                   "title": <ForwardRef
                     className="sort-item-selected"
                     color="text.primary"
@@ -2434,9 +2416,7 @@ exports[`ProductListingFiltersForm is shown should render ProductListingFiltersF
                     letterSpacing="normal"
                     lineHeight="normal"
                     textAlign="left"
-                  >
-                    Most Favorited
-                  </ForwardRef>,
+                  />,
                   "value": "favoritedcount desc",
                 },
                 Object {
@@ -2450,9 +2430,7 @@ exports[`ProductListingFiltersForm is shown should render ProductListingFiltersF
                     letterSpacing="normal"
                     lineHeight="normal"
                     textAlign="left"
-                  >
-                    Top Rated
-                  </ForwardRef>,
+                  />,
                   "title": <ForwardRef
                     className="sort-item-selected"
                     color="text.primary"
@@ -2463,9 +2441,7 @@ exports[`ProductListingFiltersForm is shown should render ProductListingFiltersF
                     letterSpacing="normal"
                     lineHeight="normal"
                     textAlign="left"
-                  >
-                    Top Rated
-                  </ForwardRef>,
+                  />,
                   "value": "TCPBazaarVoiceRating desc",
                 },
               ]
@@ -2473,25 +2449,55 @@ exports[`ProductListingFiltersForm is shown should render ProductListingFiltersF
           />
         </div>
       </div>
-      <Styled(AppliedFiltersList)
-        appliedFilters={
-          Array [
-            Array [],
-            Array [
-              Object {
-                "displayName": "Shoes & Accessories",
-                "facetName": "categoryPath2_uFilter",
-                "id": "Shoes & Accessories",
-              },
-            ],
-          ]
-        }
-        auxColorMap={Object {}}
-        className=""
-        labels={Object {}}
-        onRemoveFilter={[Function]}
-        removeAllFilters={[Function]}
-      />
+      <Styled(Row)
+        className="filtered-by-section"
+        fullBleed={true}
+      >
+        <Styled(Col)
+          colSize={
+            Object {
+              "large": 10,
+              "medium": 0,
+              "small": 0,
+            }
+          }
+        >
+          <Styled(AppliedFiltersList)
+            appliedFilters={
+              Array [
+                Array [],
+                Array [
+                  Object {
+                    "displayName": "Shoes & Accessories",
+                    "facetName": "categoryPath2_uFilter",
+                    "id": "Shoes & Accessories",
+                  },
+                ],
+              ]
+            }
+            auxColorMap={Object {}}
+            className=""
+            labels={Object {}}
+            onRemoveFilter={[Function]}
+            removeAllFilters={[Function]}
+            totalProductsCount="34"
+          />
+        </Styled(Col)>
+        <Styled(Col)
+          colSize={
+            Object {
+              "large": 2,
+              "medium": 8,
+              "small": 6,
+            }
+          }
+        >
+          <Styled(LoadedProductsCount)
+            showingItemsLabel={Object {}}
+            totalProductsCount="34"
+          />
+        </Styled(Col)>
+      </Styled(Row)>
     </form>
     <div
       className="render-mobile-view"
@@ -2929,6 +2935,7 @@ exports[`ProductListingFiltersForm is shown should render ProductListingFiltersF
         labels={Object {}}
         onSubmit={[MockFunction]}
         removeAllFilters={[Function]}
+        sortLabels={Array []}
         totalProductsCount="34"
       />
     </div>

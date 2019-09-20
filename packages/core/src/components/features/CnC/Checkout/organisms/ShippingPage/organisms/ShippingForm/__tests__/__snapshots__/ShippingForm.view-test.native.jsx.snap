@@ -13,10 +13,12 @@ exports[`Shipping Form should render correctly 1`] = `
         formName="checkoutShipping"
         formSection="address"
         initialValues={Object {}}
+        isGuest={true}
         showDefaultCheckbox={false}
         showEmailAddress={true}
         showPhoneNumber={true}
         showUserName={true}
+        state=""
       />
     </FormSection>
     <FormSection
@@ -43,11 +45,198 @@ exports[`Shipping Form should render correctly 1`] = `
         shipmentMethods={null}
       />
     </FormSection>
+    <FormSection
+      name="giftServices"
+    >
+      <Connect(GiftServicesContainer)
+        formSection="giftServices"
+        showDefaultCheckbox={false}
+        variation="secondary"
+      />
+    </FormSection>
   </Styled(View)>
   <CnCCommonTemplate
     backLinkText={false}
     btnText=""
     isGuest={true}
+    onBackLinkPress={[Function]}
+    routeToPage=""
+  />
+</Fragment>
+`;
+
+exports[`Shipping Form should render correctly with non us site 1`] = `
+<Fragment>
+  <Styled(View)>
+    <FormSection
+      name="address"
+    >
+      <AddressFields
+        addressFormLabels={Object {}}
+        addressPhoneNo={null}
+        disableCountry={true}
+        formName="checkoutShipping"
+        formSection="address"
+        initialValues={Object {}}
+        isGuest={true}
+        showDefaultCheckbox={false}
+        showEmailAddress={true}
+        showPhoneNumber={true}
+        showUserName={true}
+        state=""
+      />
+    </FormSection>
+    <FormSection
+      name="emailSignUp"
+    >
+      <Styled(View)>
+        <Styled(View)>
+          <Field
+            component={[Function]}
+            dataLocator="signUp-checkbox-field"
+            name="sendEmailSignup"
+          />
+          <Styled(BodyCopy)
+            accessibilityText=""
+            dataLocator="shipping-email-signUp-heading-lbl"
+            fontSize="fs14"
+            fontWeight="regular"
+            margin={null}
+            mobileFontFamily="secondary"
+            numberOfLines={null}
+            text=""
+            textDecoration={null}
+          />
+        </Styled(View)>
+        <Styled(BodyCopy)
+          accessibilityText=""
+          dataLocator="shipping-email-signUp-sub-heading-text"
+          fontSize="fs12"
+          fontWeight="regular"
+          margin={null}
+          mobileFontFamily="secondary"
+          numberOfLines={null}
+          text=""
+          textDecoration={null}
+        />
+        <Styled(BodyCopy)
+          accessibilityText=""
+          dataLocator=""
+          fontSize="fs12"
+          fontWeight="regular"
+          margin={null}
+          mobileFontFamily="secondary"
+          numberOfLines={null}
+          text=""
+          textDecoration={null}
+        />
+        <Styled(Anchor)
+          accessibilityLabel=""
+          anchorVariation="primary"
+          colorName={null}
+          customStyle={Object {}}
+          dataLocator="shipping-email-signUp-contact-anchor"
+          fontSizeVariation="small"
+          href="#"
+          locator=""
+          noLink={true}
+          noUnderline={true}
+          onPress={null}
+          target="_blank"
+          text=""
+          visible={false}
+        />
+      </Styled(View)>
+    </FormSection>
+    <FormSection
+      name="shipmentMethods"
+    >
+      <ShipmentMethods
+        formName="checkoutShipping"
+        formSection="shipmentMethods"
+        selectedShipmentId={null}
+        shipmentHeader=""
+        shipmentMethods={null}
+      />
+    </FormSection>
+    <FormSection
+      name="giftServices"
+    >
+      <Connect(GiftServicesContainer)
+        formSection="giftServices"
+        showDefaultCheckbox={false}
+        variation="secondary"
+      />
+    </FormSection>
+  </Styled(View)>
+  <CnCCommonTemplate
+    backLinkText={false}
+    btnText=""
+    isGuest={true}
+    onBackLinkPress={[Function]}
+    routeToPage=""
+  />
+</Fragment>
+`;
+
+exports[`Shipping Form should render correctly with signed in 1`] = `
+<Fragment>
+  <Styled(View)>
+    <RegisteredShippingForm
+      addNewShippingAddress={[Function]}
+      address={null}
+      addressFormLabels={Object {}}
+      addressPhoneNo={null}
+      defaultAddressId={null}
+      formName="checkoutShipping"
+      isGuest={false}
+      isSaveToAddressBookChecked={false}
+      newUserPhoneNo={null}
+      onFileAddressKey={null}
+      setAsDefaultShipping={null}
+      shippingAddress={null}
+      syncErrorsObject={Object {}}
+      updateShippingAddress={[Function]}
+      userAddresses={null}
+    />
+    <FormSection
+      name="smsSignUp"
+    >
+      <SMSFormFields
+        addressPhoneNo={null}
+        dispatch={[Function]}
+        formName="checkoutShipping"
+        formSection="smsSignUp"
+        isOrderUpdateChecked={false}
+        labels={Object {}}
+        showDefaultCheckbox={false}
+      />
+    </FormSection>
+    <FormSection
+      name="shipmentMethods"
+    >
+      <ShipmentMethods
+        formName="checkoutShipping"
+        formSection="shipmentMethods"
+        selectedShipmentId={null}
+        shipmentHeader=""
+        shipmentMethods={null}
+      />
+    </FormSection>
+    <FormSection
+      name="giftServices"
+    >
+      <Connect(GiftServicesContainer)
+        formSection="giftServices"
+        showDefaultCheckbox={false}
+        variation="secondary"
+      />
+    </FormSection>
+  </Styled(View)>
+  <CnCCommonTemplate
+    backLinkText={false}
+    btnText=""
+    isGuest={false}
     onBackLinkPress={[Function]}
     routeToPage=""
   />

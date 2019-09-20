@@ -31,10 +31,13 @@ const styles = css`
       width: 177px;
     }
     @media ${props => props.theme.mediaQuery.large} {
-      width: 195px;
       padding: ${props => props.theme.spacing.ELEM_SPACING.SM}
         ${props => props.theme.spacing.ELEM_SPACING.XL};
     }
+  }
+
+  .gift-card-row {
+    display: block;
   }
 
   @media ${props => props.theme.mediaQuery.mediumOnly} {
@@ -45,12 +48,27 @@ const styles = css`
 
   .gift-tile-msg-container {
     margin-right: 0;
+    display: inline-block;
+    align-items: center;
+  }
+
+  .available_giftCards_text {
     display: flex;
     align-items: center;
   }
 
+  @media ${props => props.theme.mediaQuery.mediumMax} {
+    .gift_card_number_detail {
+      min-height: ${props => props.theme.spacing.ELEM_SPACING.XXL};
+    }
+  }
+
   .gift-action-container {
-    padding: ${props => props.theme.spacing.ELEM_SPACING.XS} 0;
+    @media ${props => props.theme.mediaQuery.large} {
+      padding: ${props => props.theme.spacing.ELEM_SPACING.XS} 0;
+    }
+    float: right;
+    width: auto;
   }
 
   .error_box {
@@ -60,6 +78,12 @@ const styles = css`
   @media ${props => props.theme.mediaQuery.large} {
     .gift_card_number_detail {
       padding: ${props => props.theme.spacing.ELEM_SPACING.MED} 0;
+    }
+  }
+
+  @media ${props => props.theme.mediaQuery.mediumMax} {
+    .remainingBalanceText {
+      display: inline-block;
     }
   }
 `;

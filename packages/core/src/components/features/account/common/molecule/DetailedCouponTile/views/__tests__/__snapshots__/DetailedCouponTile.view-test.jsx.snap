@@ -137,6 +137,10 @@ exports[`DetailedCouponTile should display overlay 1`] = `
         />
       </Styled(BodyCopy)>
     </Styled(BodyCopy)>
+    <Styled(ErrorMessage)
+      className="error-notification"
+      noBackground={true}
+    />
     <Styled(BodyCopy)
       className="bottom-content"
       color="text.primary"
@@ -201,6 +205,7 @@ exports[`DetailedCouponTile should display overlay 1`] = `
         <Styled(Anchor)
           data-locator="myrewards-detailslink"
           fontSizeVariation="large"
+          onClick={[Function]}
           underline={true}
         >
           details
@@ -238,9 +243,6 @@ exports[`DetailedCouponTile should display overlay 1`] = `
           remove from bag
         </Styled(Button)>
       </Styled(BodyCopy)>
-      <Styled(ErrorMessage)
-        className="error-notification"
-      />
     </Styled(BodyCopy)>
   </Styled(BodyCopy)>
 </Styled(BodyCopy)>
@@ -309,6 +311,10 @@ exports[`DetailedCouponTile should render correctly 1`] = `
         textAlign="center"
       />
     </Styled(BodyCopy)>
+    <Styled(ErrorMessage)
+      className="error-notification"
+      noBackground={true}
+    />
     <Styled(BodyCopy)
       className="bottom-content"
       color="text.primary"
@@ -373,6 +379,7 @@ exports[`DetailedCouponTile should render correctly 1`] = `
         <Styled(Anchor)
           data-locator="myrewards-detailslink"
           fontSizeVariation="large"
+          onClick={[Function]}
           underline={true}
         >
           details
@@ -410,9 +417,6 @@ exports[`DetailedCouponTile should render correctly 1`] = `
           apply
         </Styled(Button)>
       </Styled(BodyCopy)>
-      <Styled(ErrorMessage)
-        className="error-notification"
-      />
     </Styled(BodyCopy)>
   </Styled(BodyCopy)>
 </Styled(BodyCopy)>
@@ -555,6 +559,10 @@ exports[`DetailedCouponTile should render correctly for applied coupon 1`] = `
         />
       </Styled(BodyCopy)>
     </Styled(BodyCopy)>
+    <Styled(ErrorMessage)
+      className="error-notification"
+      noBackground={true}
+    />
     <Styled(BodyCopy)
       className="bottom-content"
       color="text.primary"
@@ -619,6 +627,7 @@ exports[`DetailedCouponTile should render correctly for applied coupon 1`] = `
         <Styled(Anchor)
           data-locator="myrewards-detailslink"
           fontSizeVariation="large"
+          onClick={[Function]}
           underline={true}
         >
           details
@@ -656,9 +665,6 @@ exports[`DetailedCouponTile should render correctly for applied coupon 1`] = `
           remove from bag
         </Styled(Button)>
       </Styled(BodyCopy)>
-      <Styled(ErrorMessage)
-        className="error-notification"
-      />
     </Styled(BodyCopy)>
   </Styled(BodyCopy)>
 </Styled(BodyCopy)>
@@ -774,6 +780,10 @@ exports[`DetailedCouponTile should render expiring soon notification if coupon i
         />
       </Styled(BodyCopy)>
     </Styled(BodyCopy)>
+    <Styled(ErrorMessage)
+      className="error-notification"
+      noBackground={true}
+    />
     <Styled(BodyCopy)
       className="bottom-content"
       color="text.primary"
@@ -838,6 +848,7 @@ exports[`DetailedCouponTile should render expiring soon notification if coupon i
         <Styled(Anchor)
           data-locator="myrewards-detailslink"
           fontSizeVariation="large"
+          onClick={[Function]}
           underline={true}
         >
           details
@@ -875,9 +886,6 @@ exports[`DetailedCouponTile should render expiring soon notification if coupon i
           apply
         </Styled(Button)>
       </Styled(BodyCopy)>
-      <Styled(ErrorMessage)
-        className="error-notification"
-      />
     </Styled(BodyCopy)>
   </Styled(BodyCopy)>
 </Styled(BodyCopy)>

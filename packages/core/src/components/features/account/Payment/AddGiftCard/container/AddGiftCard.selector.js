@@ -1,4 +1,5 @@
 import { createSelector } from 'reselect';
+import { getErrorSelector } from '../../../../../../utils/utils';
 
 export const getAddGiftCardResponse = state => {
   return state.AddGiftCardReducer.get('showUpdatedNotification');
@@ -25,21 +26,7 @@ export const getAddGiftcardLabels = createSelector(
 
 export const getAddGiftCardErrorMessage = createSelector(
   [getAddGiftCardError, getAddGiftcardLabels],
-  (addGiftState, labels) => {
-    const errorParameters = addGiftState && addGiftState.getIn(['errorParameters', '0']);
-    const errorCode = addGiftState && addGiftState.get('errorCode');
-    if (
-      (errorParameters && labels[`lbl_paymentGC_error_${errorParameters}`]) ||
-      (errorCode && labels[`lbl_paymentGC_error_${errorCode}`])
-    ) {
-      if (errorParameters) {
-        return labels[`lbl_paymentGC_error_${errorParameters}`];
-      }
-      return labels[`lbl_paymentGC_error_${errorCode}`];
-    }
-    return (
-      (addGiftState && addGiftState.getIn(['errorMessage', '_error'])) ||
-      'labels.lbl_paymentGC_error'
-    );
+  (state, labels) => {
+    return getErrorSelector(state, labels, 'lbl_paymentGC_error');
   }
 );

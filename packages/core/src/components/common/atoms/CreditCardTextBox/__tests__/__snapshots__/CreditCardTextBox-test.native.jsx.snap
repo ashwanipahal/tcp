@@ -46,12 +46,15 @@ exports[`CreditCardTextBox component render enableSuccessCheck on validation fai
       />
       <Styled(View)>
         <Styled(ImageComp)
+          alt=""
           height="30"
+          host=""
           source={
             Object {
               "testUri": "../../../../core/src/assets/visa-small.png",
             }
           }
+          url=""
           width="40"
         />
       </Styled(View)>
@@ -59,15 +62,20 @@ exports[`CreditCardTextBox component render enableSuccessCheck on validation fai
     <Styled(View)>
       <Styled(View)>
         <Styled(BodyCopy)
+          accessibilityText=""
           color="error"
+          dataLocator=""
           fontSize="fs12"
           fontWeight="semibold"
+          margin={null}
           mobilefontFamily={
             Array [
               "secondary",
             ]
           }
+          numberOfLines={null}
           text="food"
+          textDecoration={null}
         />
       </Styled(View)>
     </Styled(View)>
@@ -121,12 +129,15 @@ exports[`CreditCardTextBox component render enableSuccessCheck on validation tru
       />
       <Styled(View)>
         <Styled(ImageComp)
+          alt=""
           height="30"
+          host=""
           source={
             Object {
               "testUri": "../../../../core/src/assets/visa-small.png",
             }
           }
+          url=""
           width="40"
         />
       </Styled(View)>
@@ -182,12 +193,15 @@ exports[`CreditCardTextBox component renders correctly 1`] = `
       />
       <Styled(View)>
         <Styled(ImageComp)
+          alt=""
           height="30"
+          host=""
           source={
             Object {
               "testUri": "../../../../core/src/assets/visa-small.png",
             }
           }
+          url=""
           width="40"
         />
       </Styled(View)>
@@ -243,12 +257,15 @@ exports[`CreditCardTextBox component renders correctly hidden textbox 1`] = `
       />
       <Styled(View)>
         <Styled(ImageComp)
+          alt=""
           height="30"
+          host=""
           source={
             Object {
               "testUri": "../../../../core/src/assets/visa-small.png",
             }
           }
+          url=""
           width="40"
         />
       </Styled(View)>

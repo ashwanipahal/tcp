@@ -24,9 +24,11 @@ export {
   redirectToPdp,
   getAsPathWithSlug,
   getMappedPageHref,
+  handleGenericKeyDown,
   configurePlpNavigationFromCMSUrl,
   isBopisProduct,
   isBossProduct,
+  viewport,
 } from './utils.web';
 
 export {
@@ -45,8 +47,20 @@ export {
   getCacheKeyForRedis,
   getAddressFromPlace,
   formatAddress,
+  formatPhoneNumber,
   calculateAge,
   getLabelValue,
+  capitalize,
+  toTimeString,
+  getPromotionalMessage,
   getBirthDateOptionMap,
+  childOptionsMap,
   generateUniqueKeyUsingLabel,
+  getErrorSelector,
+  formatDate,
+  isValidDate,
+  sanitizeEntity,
+  formatPhone,
+  parseStoreHours,
+  parseBoolean,
 } from './utils';

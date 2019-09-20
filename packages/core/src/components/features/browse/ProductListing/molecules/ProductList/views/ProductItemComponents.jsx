@@ -53,12 +53,13 @@ export function ProductTitle(values) {
 /* NOTE: As per DT-29548, isMobile condition is not valid. "Offer" price should be shown below "List" price (always) */
 /* NOTE: DT-27216, if offerPrice and listPrice are the same, just offerPrice should be shown (and will be black) */
 export function ProductPricesSection(props) {
-  const { currencySymbol, listPrice, offerPrice, merchantTag } = props;
+  const { currencySymbol, listPrice, offerPrice, merchantTag, dataLocator } = props;
+
   return (
     <div className="container-price">
       {offerPrice && (
         <BodyCopy
-          dataLocator={getLocator('global_Price_text')}
+          dataLocator={dataLocator || getLocator('global_Price_text')}
           color="red.500"
           fontWeight="extrabold"
           fontFamily="secondary"
@@ -155,26 +156,28 @@ export function BadgeItem(props) {
 export function PromotionalMessage(props) {
   const { text } = props;
   return (
-    <BodyCopy
-      fontSize={['fs10', 'fs12', 'fs14']}
-      fontWeight="extrabold"
-      fontFamily="secondary"
-      data-locator={getLocator('global_loyalty_text')}
-      className="loyalty-text-container"
-    >
-      {text && getFormattedLoyaltyText(text)[0]}
-      {text && (
-        <BodyCopy
-          fontSize={['fs10', 'fs12', 'fs14']}
-          fontWeight="extrabold"
-          fontFamily="secondary"
-          component="span"
-          color="gray.900"
-        >
-          {` on${getFormattedLoyaltyText(text)[1]}`}
-        </BodyCopy>
-      )}
-    </BodyCopy>
+    <Dotdotdot clamp={2}>
+      <BodyCopy
+        fontSize={['fs10', 'fs12', 'fs14']}
+        fontWeight="extrabold"
+        fontFamily="secondary"
+        data-locator={getLocator('global_loyalty_text')}
+        className="loyalty-text-container"
+      >
+        {text && getFormattedLoyaltyText(text)[0]}
+        {text && (
+          <BodyCopy
+            fontSize={['fs10', 'fs12', 'fs14']}
+            fontWeight="extrabold"
+            fontFamily="secondary"
+            component="span"
+            color="gray.900"
+          >
+            {` on${getFormattedLoyaltyText(text)[1]}`}
+          </BodyCopy>
+        )}
+      </BodyCopy>
+    </Dotdotdot>
   );
 }
 
@@ -199,6 +202,7 @@ ProductPricesSection.defaultProps = {
   listPrice: 0,
   offerPrice: 0,
   merchantTag: '',
+  dataLocator: '',
 };
 
 ProductPricesSection.propTypes = {
@@ -206,4 +210,5 @@ ProductPricesSection.propTypes = {
   listPrice: PropTypes.number,
   offerPrice: PropTypes.number,
   merchantTag: PropTypes.string,
+  dataLocator: PropTypes.string,
 };

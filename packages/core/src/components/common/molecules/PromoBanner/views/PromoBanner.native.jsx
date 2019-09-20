@@ -67,6 +67,8 @@ export const bodyCopyStyles = {
   percentage_wrapped_large: props => <PercentageStyle {...props} />,
   percentage_wrapped_extra_large: props => <PercentagePinkStyle {...props} />,
   currency_up_style: props => <CurrencyUpPromoBanner {...props} />,
+  // TODO: Remove .style10 when currency_up_style is available in CMS
+  style10: props => <CurrencyUpPromoBanner {...props} />,
   small_text_bold: props => (
     <BodyCopy
       fontSize="fs16"
@@ -132,7 +134,29 @@ export const bodyCopyStyles = {
       {...props}
     />
   ),
-  large_text_semibold_normal: props => (
+  medium_text_semibold: props => (
+    <BodyCopy
+      color="gray.900"
+      mobilefontFamily="primary"
+      fontSize="fs32"
+      textAlign="center"
+      lineHeight="47px"
+      letterSpacing="ls2"
+      {...props}
+    />
+  ),
+  extra_large_text_black: props => (
+    <BodyCopy
+      color="gray.900"
+      mobilefontFamily="primary"
+      fontSize="fs48"
+      textAlign="center"
+      lineHeight="47px"
+      fontWeight="black"
+      {...props}
+    />
+  ),
+  extra_large_text_regular: props => (
     <BodyCopy
       color="gray.900"
       mobilefontFamily="primary"
@@ -142,19 +166,18 @@ export const bodyCopyStyles = {
       {...props}
     />
   ),
-
-  large_text_semibold_bold: props => (
+  fixed_medium_text_black: props => (
     <BodyCopy
       color="gray.900"
       mobilefontFamily="primary"
-      fontSize="fs48"
+      fontSize="fs64"
       textAlign="center"
-      lineHeight="48px"
+      lineHeight="64px"
       fontWeight="black"
       {...props}
     />
   ),
-  text_normal_gray: props => (
+  medium_text_regular: props => (
     <BodyCopy
       fontSize="fs20"
       color="gray.900"
@@ -162,10 +185,12 @@ export const bodyCopyStyles = {
       fontWeight="regular"
       textAlign="center"
       letterSpacing="ls2"
-      lineHeight="40px"
+      lineHeight="20px"
       {...props}
     />
   ),
+
+  percentage_all_wrapped_normal: props => <PercentageAllWrappedNormal {...props} />,
 };
 
 /**
@@ -211,7 +236,57 @@ const PromoBanner = (props: Props) => {
 
 /**
  * This function return the Promobanner Percentage Style
- * Color is 'White' and Split by the '%' key .
+ * Color is 'Black' and Split by the space ' ' key. Font size is also small.
+ */
+const PercentageAllWrappedNormal = (props: PercentageStyleProps) => {
+  const { text } = props;
+
+  const strArray = text && text.split(' ');
+  const containerStyle = { marginTop: 5 };
+  const bodyCopyStyle = { height: 24, width: 28, marginTop: 0 };
+  const bodyCopyStyle1 = { height: 38, marginTop: 0 };
+  const bodyCopyStyle2 = { height: 20 };
+
+  return (
+    <Container style={containerStyle}>
+      <BodyCopy
+        fontSize="fs48"
+        fontWeight="black"
+        color="text.primary"
+        fontFamily="primary"
+        textAlign="center"
+        lineHeight="48px"
+        style={bodyCopyStyle1}
+        text={strArray && strArray[0]}
+      />
+      <ContainerView>
+        <BodyCopy
+          fontSize="fs28"
+          fontWeight="black"
+          color="text.primary"
+          fontFamily="primary"
+          lineHeight="28px"
+          text={strArray && strArray[1]}
+          style={bodyCopyStyle}
+        />
+        <BodyCopy
+          fontSize="fs18"
+          fontWeight="black"
+          color="text.primary"
+          fontFamily="primary"
+          textAlign="center"
+          lineHeight="18px"
+          text={strArray && strArray[2]}
+          style={bodyCopyStyle2}
+        />
+      </ContainerView>
+    </Container>
+  );
+};
+
+/**
+ * This function return the Promobanner Percentage Style
+ * Color is 'White' and Split by the space ' ' key .
  */
 const PercentageStyle = (props: PercentageStyleProps) => {
   const { text } = props;
@@ -258,7 +333,7 @@ const PercentageStyle = (props: PercentageStyleProps) => {
 
 /**
  * This function return the Promobanner Percentage Style
- * Color is 'Pink' and Split by the '%' key .
+ * Color is 'Pink' and Split by the space ' ' key .
  */
 const PercentagePinkStyle = (props: PercentageStyleProps) => {
   const { text } = props;

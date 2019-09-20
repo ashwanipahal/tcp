@@ -1,10 +1,11 @@
 import React from 'react';
 import PropTypes from 'prop-types';
+import VenmoPaymentButton from '@tcp/core/src/components/common/atoms/VenmoPaymentButton';
 import Button from '../../../../common/atoms/Button';
 import withStyles from '../../../../common/hoc/withStyles';
 import OpenLoginModal from '../../../account/LoginPage/views/LoginModal';
 import style from '../styles/AddedToBagActions.style';
-import PayPalButton from '../../../../common/atoms/PaypalButton';
+import PayPalButton from '../../common/organism/PayPalButton';
 import Row from '../../../../common/atoms/Row';
 import Col from '../../../../common/atoms/Col';
 import BodyCopy from '../../../../common/atoms/BodyCopy';
@@ -13,10 +14,14 @@ import BagConfirmationModal from '../../BagPage/views/BagConfirmationModal.view'
 
 class AddedToBagActions extends React.PureComponent<Props> {
   routeToCheckout = e => {
-    const { routeForBagCheckout } = this.props;
+    const { routeForBagCheckout, closeCheckoutModalMountState, closeMiniBag } = this.props;
     if (e) {
       e.preventDefault();
     }
+    if (closeMiniBag) {
+      closeMiniBag(false, false);
+    }
+    closeCheckoutModalMountState({ state: false });
     routeForBagCheckout();
   };
 
@@ -68,6 +73,10 @@ class AddedToBagActions extends React.PureComponent<Props> {
           </Row>
         )}
         <Row className="checkout-button">
+          <VenmoPaymentButton
+            className="venmo-container"
+            onSuccess={() => handleCartCheckout(isEditingItem)}
+          />
           <PayPalButton className="payPal-button" />
           <Button
             data-locator={getLocator('addedtobag_btncheckout')}

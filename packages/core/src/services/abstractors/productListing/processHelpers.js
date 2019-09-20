@@ -76,7 +76,7 @@ function convertToColorArray(colorSwatches, id, color) {
  */
 const getAppliedFilters = (filters, filterIds) => {
   const appliedFilters = {};
-  const facetKeys = Object.keys(filterIds);
+  const facetKeys = filterIds ? Object.keys(filterIds) : [];
   facetKeys.forEach(facetKey => {
     if (isUnbxdFacetKey(facetKey)) {
       // for facets having facetName as key
@@ -315,6 +315,7 @@ const getBreadCrumbTrail = breadCrumbs => {
     ? breadCrumbs.map(crumb => ({
         displayName: crumb.displayName,
         urlPathSuffix: crumb.urlPathSuffix,
+        categoryId: crumb.categoryId,
       }))
     : [];
 };
@@ -335,7 +336,9 @@ const getColors = (isUSStore, product, uniqueId, defaultColor) => {
     : convertToColorArray(product.TCPSwatchesCanadaStore, uniqueId, defaultColor);
 };
 const getChildLength = bucketingSeqConfig => {
-  return bucketingSeqConfig.requiredChildren ? bucketingSeqConfig.requiredChildren.length : 0;
+  return bucketingSeqConfig && bucketingSeqConfig.requiredChildren
+    ? bucketingSeqConfig.requiredChildren.length
+    : 0;
 };
 const getCatMap = (product, bucketingSeqConfig) => {
   return (

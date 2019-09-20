@@ -1,10 +1,11 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import { View, FlatList } from 'react-native';
+import { TouchableOpacity, FlatList } from 'react-native';
 import CustomImage from '../../../atoms/CustomImage';
 import {
   getImagesToDisplay,
   getMapSliceForColorProductId,
+  getProductListToPathInMobileApp,
 } from '../../ProductList/utils/productsCommonUtils';
 
 class ImageCarousel extends React.PureComponent {
@@ -35,9 +36,11 @@ class ImageCarousel extends React.PureComponent {
   };
 
   render() {
-    const { item, selectedColorIndex } = this.props;
+    const { item, selectedColorIndex, onGoToPDPPage } = this.props;
     const { activeSlideIndex } = this.state;
-    const { colorsMap, imagesByColor } = item;
+    const { colorsMap, imagesByColor, productInfo } = item;
+    const { pdpUrl } = productInfo;
+    const modifiedPdpUrl = getProductListToPathInMobileApp(pdpUrl) || '';
     const { colorProductId } = colorsMap[selectedColorIndex];
     const curentColorEntry = getMapSliceForColorProductId(colorsMap, colorProductId);
     const imageUrls = getImagesToDisplay({
@@ -62,13 +65,14 @@ class ImageCarousel extends React.PureComponent {
         renderItem={imgSource => {
           const { index } = imgSource;
           return (
-            <View
+            <TouchableOpacity
+              onPress={() => onGoToPDPPage(modifiedPdpUrl, colorProductId)}
               accessible={index === activeSlideIndex}
               accessibilityRole="image"
               accessibilityLabel={`product image ${index + 1}`}
             >
-              <CustomImage imageSource={imgSource.item} />
-            </View>
+              <CustomImage imageSource={imgSource.item} productInfo={productInfo} />
+            </TouchableOpacity>
           );
         }}
       />
@@ -79,6 +83,7 @@ class ImageCarousel extends React.PureComponent {
 ImageCarousel.propTypes = {
   item: PropTypes.shape({}),
   selectedColorIndex: PropTypes.number,
+  onGoToPDPPage: PropTypes.func.isRequired,
 };
 
 ImageCarousel.defaultProps = {

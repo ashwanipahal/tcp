@@ -1,7 +1,14 @@
 const ignorePsuedoCodeDir = [
   '/ProductListing/',
+  '/FulfillmentSection/',
+  '/Recommendations/',
+  '/PickupStoreModal/',
+  '/StoreSummaryComponents/',
   '/ProductDetail/',
+  '/SearchDetail/',
+  '/OutfitDetail/',
   '/services/abstractors/productListing/',
+  '/services/abstractors/common/recommendations/',
   '/ProductListingPage/',
   '/AddressForm/',
   '/plpDeltaSync/',
@@ -11,6 +18,7 @@ const ignorePsuedoCodeDir = [
   '/FPO/',
   '/services/abstractors/CnC/Checkout.js',
   '/GoogleAutoSuggest/',
+  '/utils/localStorageManagement.js',
 ];
 
 module.exports = {

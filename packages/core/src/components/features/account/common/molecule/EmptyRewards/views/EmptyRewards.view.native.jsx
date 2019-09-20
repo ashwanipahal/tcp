@@ -2,11 +2,12 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import { View } from 'react-native';
 import { ViewWithSpacing } from '@tcp/core/src/components/common/atoms/styledWrapper';
+import { navigateToNestedRoute } from '@tcp/core/src/utils/utils.app';
 import BodyCopy from '../../../../../../common/atoms/BodyCopy';
 import { StyledBodyCopy } from '../styles/EmptyRewards.style.native';
 import Button from '../../../../../../common/atoms/Button';
 
-const EmptyRewards = ({ labels }) => {
+const EmptyRewards = ({ labels, navigation }) => {
   return (
     <View>
       <StyledBodyCopy>
@@ -30,6 +31,7 @@ const EmptyRewards = ({ labels }) => {
           buttonVariation="variable-width"
           fill="BLUE"
           color="white"
+          onPress={() => navigateToNestedRoute(navigation, 'HomeStack', 'home')}
           data-locator="my-rewards-shop-now-btn"
           text={labels.placeRewards.lbl_my_rewards_shop_now}
         />
@@ -40,6 +42,7 @@ const EmptyRewards = ({ labels }) => {
 
 EmptyRewards.propTypes = {
   labels: PropTypes.shape({ common: {}, placeRewards: {} }),
+  navigation: PropTypes.shape({}),
 };
 
 EmptyRewards.defaultProps = {
@@ -52,6 +55,7 @@ EmptyRewards.defaultProps = {
       lbl_my_rewards_heading: '',
     },
   },
+  navigation: {},
 };
 
 export default EmptyRewards;

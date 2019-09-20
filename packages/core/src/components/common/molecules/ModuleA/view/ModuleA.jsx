@@ -8,9 +8,9 @@ import errorBoundary from '../../../hoc/withErrorBoundary';
 import { PromoBanner, ButtonList } from '../..';
 import { getIconPath, getLocator, isGymboree } from '../../../../../utils';
 
-import config from '../ModuleA.config';
+import config from '../config';
 
-const { ctaTypes, CAROUSEL_OPTIONS } = config;
+const { ctaTypes, CAROUSEL_OPTIONS, IMG_DATA_TCP, IMG_DATA_GYM } = config;
 const bigCarrotIcon = 'carousel-big-carrot';
 const bigCarrotIconGym = 'carousel-big-carrot-white';
 
@@ -97,12 +97,13 @@ class ModuleA extends React.Component {
                   promoBanner,
                   ribbonBanner,
                 } = item;
+                const imageConfig = isGymboree() ? IMG_DATA_GYM.crops : IMG_DATA_TCP.crops;
                 return (
                   <div className="banner-slide">
                     <DamImage
                       imgData={linkedImage.image}
                       alt=""
-                      imgConfigs={config.IMG_DATA.crops}
+                      imgConfigs={imageConfig}
                       data-locator={`${getLocator('moduleA_image')}${i}`}
                     />
                     <div className="banner-content">

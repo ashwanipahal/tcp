@@ -55,6 +55,7 @@ const PromoBanner = props => {
       <React.Fragment>
         {headerText && (
           <LinkText
+            component="div"
             dataLocator={dataLocatorHeader}
             className="promo-banner-header"
             fontFamily="primary"
@@ -68,7 +69,8 @@ const PromoBanner = props => {
             /* this need to be fixed once we have 5 items for module A or unlimited textItems creation in CMS */
             if (
               style === 'percentage_wrapped_extra_large' ||
-              style === 'percentage_wrapped_large'
+              style === 'percentage_wrapped_large' ||
+              style === 'percentage_all_wrapped_normal'
             ) {
               const percentageTexts = text.split(' ');
               promoText = (
@@ -82,7 +84,7 @@ const PromoBanner = props => {
                   </span>
                 </div>
               );
-            } else if (style === 'currency_up_style') {
+            } else if (style === 'currency_up_style' || style === 'style10') {
               promoText = renderCurrencyUpVariation(style, text);
             } else {
               promoText = (

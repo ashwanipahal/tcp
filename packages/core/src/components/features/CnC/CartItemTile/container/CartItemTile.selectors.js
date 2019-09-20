@@ -1,3 +1,5 @@
+import { getLabelValue } from '@tcp/core/src/utils';
+
 export const getCartOrderList = state => {
   // needs to do it with get method.
   return state.CartPageReducer.getIn(['orderDetails', 'orderItems']);
@@ -99,6 +101,14 @@ export const getProductItemUpcNumber = product => {
   return product.getIn(['productInfo', 'upc']);
 };
 
+export const getGeneralProdId = product => {
+  return product.getIn(['productInfo', 'generalProductId']);
+};
+
+export const getProductSkuId = product => {
+  return product.getIn(['productInfo', 'skuId']);
+};
+
 export const getProductItemPrice = product => {
   return product.getIn(['itemInfo', 'listPrice']);
 };
@@ -159,6 +169,15 @@ export const getLabelsCartItemTile = state => {
     },
   } = state.Labels;
 
+  const saveForLaterLink = getLabelValue(state.Labels, 'lbl_sfl_actionLink', 'bagPage', 'checkout');
+  const moveToBagLink = getLabelValue(state.Labels, 'lbl_sfl_moveToBag', 'bagPage', 'checkout');
+  const sflMaxLimitError = getLabelValue(
+    state.Labels,
+    'lbl_sfl_maxLimitError',
+    'bagPage',
+    'checkout'
+  );
+
   // const {
   //   bag: {
   //     bagOverview: { lbl_error_please: pleaseText, lbl_error_remove: remove },
@@ -200,6 +219,9 @@ export const getLabelsCartItemTile = state => {
     updateUnavailable,
     removeSoldoutHeader,
     deleteItem,
+    saveForLaterLink,
+    sflMaxLimitError,
+    moveToBagLink,
   };
 };
 
@@ -226,6 +248,8 @@ export const getProductDetails = tile => {
       itemPartNumber: getProductItemPartNumber(tile),
       variantNo: getVariantNumber(tile),
       upc: getProductItemUpcNumber(tile),
+      generalProductId: getGeneralProdId(tile),
+      skuId: getProductSkuId(tile),
     },
     miscInfo: {
       badge: getProductBadge(tile),

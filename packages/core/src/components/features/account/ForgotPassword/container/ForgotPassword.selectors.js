@@ -1,5 +1,6 @@
 import { createSelector } from 'reselect';
 import { FORGOTPASSWORD_REDUCER_KEY } from '@tcp/core/src/constants/reducer.constants';
+import { getErrorSelector } from '../../../../../utils/utils';
 
 export const getResetEmailResponse = state => {
   return state[FORGOTPASSWORD_REDUCER_KEY];
@@ -28,12 +29,8 @@ export const toggleSuccessfulEmailSection = createSelector(
 
 export const getForgotPasswordErrorMessage = createSelector(
   [getForgotPasswordErrorResponse, getForgotpasswordLabels],
-  (loginState, labels) => {
-    const errorCode = loginState && loginState.get('errorCode');
-    if (errorCode && labels[`lbl_forgotpassword_error_${errorCode}`]) {
-      return labels[`lbl_forgotpassword_error_${errorCode}`];
-    }
-    return (loginState && loginState.getIn(['errorMessage', '_error'])) || labels.lbl_login_error;
+  (state, labels) => {
+    return getErrorSelector(state, labels, 'lbl_login_error');
   }
 );
 

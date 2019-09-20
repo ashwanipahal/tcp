@@ -28,6 +28,9 @@ export function* addAddressGet({ payload }, addToAddressBook = true) {
     }
     return yield put(addAddressFail(res.body));
   } catch (err) {
+    if (!addToAddressBook) {
+      throw err;
+    }
     let error = {};
     /* istanbul ignore else */
     error = err;
@@ -51,10 +54,11 @@ export function* updateAddressPut({ payload }, fromCheckout) {
         })
       );
       yield put(clearGetAddressListTTL());
-      return yield put(addAddressSuccess(res.body));
-    }
-    if (fromCheckout) {
-      return res.body;
+      const putRes = yield put(addAddressSuccess(res.body));
+      if (fromCheckout) {
+        return res.body;
+      }
+      return putRes;
     }
     return yield put(addAddressFail(res.body));
   } catch (err) {
