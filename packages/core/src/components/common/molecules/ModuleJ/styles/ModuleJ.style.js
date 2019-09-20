@@ -2,11 +2,7 @@ import { css } from 'styled-components';
 
 export default css`
   margin-top: ${props => props.theme.spacing.LAYOUT_SPACING.MED};
-
-  span {
-    background-color: ${props =>
-      props.layout !== 'alt' ? props.theme.colorPalette.white : 'none'};
-  }
+  margin-bottom: ${props => props.theme.spacing.LAYOUT_SPACING.MED};
 
   .topview {
     position: relative;
@@ -25,14 +21,6 @@ export default css`
 
     @media ${props => props.theme.mediaQuery.large} {
       margin-top: ${props => props.theme.spacing.ELEM_SPACING.SM};
-    }
-  }
-
-  .promo-header:first-child span {
-    padding: 0 ${props => props.theme.spacing.ELEM_SPACING.SM};
-
-    @media ${props => props.theme.mediaQuery.medium} {
-      margin-top: ${props => props.theme.spacing.ELEM_SPACING.XL};
     }
   }
 
@@ -63,16 +51,18 @@ export default css`
   }
 
   .promoBanner {
-    margin: 0 auto ${props => props.theme.spacing.ELEM_SPACING.SM};
-    width: 350px;
+    margin: ${props => props.theme.spacing.ELEM_SPACING.SM} auto;
+  }
 
-    @media ${props => props.theme.mediaQuery.medium} {
-      width: 310px;
-    }
+  .promo-header-wrapper:first-child {
+    padding: 0 ${props => props.theme.spacing.ELEM_SPACING.LRG};
+    display: inline-block;
+    ${props =>
+      props.layout === 'default' ? `background-color: ${props.theme.colorPalette.white}` : ''}
+  }
 
-    @media ${props => props.theme.mediaQuery.large} {
-      width: 440px;
-    }
+  &.layout-default .promo-text {
+    display: block;
   }
 
   &.layout-alt .promoBanner {
@@ -81,7 +71,7 @@ export default css`
   }
 
   .promo-image-left {
-    margin-top: ${props => props.theme.spacing.ELEM_SPACING.LRG};
+    margin-top: 30px;
   }
 
   .promo-image-right {
@@ -89,7 +79,23 @@ export default css`
 
     @media ${props => props.theme.mediaQuery.medium} {
       text-align: right;
+      margin-top: 30px;
     }
+  }
+
+  .promo-text:nth-child(2) {
+    line-height: 64px;
+    margin-top: -4px;
+  }
+
+  &.layout-default .promo-text:nth-child(2) {
+    line-height: normal;
+    margin-top: -15px;
+  }
+
+  &.layout-alt .promo-text:nth-child(2) {
+    line-height: 48px;
+    margin-top: -4px;
   }
 
   .promo-img {

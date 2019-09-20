@@ -35,9 +35,7 @@ exports[`MyRewards should render correctly 1`] = `
       <BonusPointsDaysSection />
     </Styled(View)>
     <Styled(View)>
-      <Text>
-        FPO
-      </Text>
+      <Connect(EarnExtraPointsTileContainer) />
     </Styled(View)>
     <Connect(MyRewardsContainer)
       labels={

@@ -39,6 +39,7 @@ export class MyFavoriteStoreContainer extends PureComponent {
       favStoreCity,
       favStoreZipcode,
       favStorePhone,
+      isMyPreferences,
     } = this.props;
 
     return (
@@ -51,6 +52,7 @@ export class MyFavoriteStoreContainer extends PureComponent {
         favStoreCity={favStoreCity}
         favStoreZipcode={favStoreZipcode}
         favStorePhone={favStorePhone}
+        isMyPreferences={isMyPreferences}
       />
     );
   }
@@ -65,6 +67,7 @@ MyFavoriteStoreContainer.defaultProps = {
   favStoreCity: '',
   favStoreZipcode: '',
   favStorePhone: '',
+  isMyPreferences: false,
 };
 
 MyFavoriteStoreContainer.propTypes = {
@@ -79,6 +82,7 @@ MyFavoriteStoreContainer.propTypes = {
   favStorePhone: PropTypes.string,
   getMyFavoriteStoreDetails: PropTypes.func.isRequired,
   resetMyFavoriteStoreDetails: PropTypes.func.isRequired,
+  isMyPreferences: PropTypes.bool,
 };
 
 export const mapDispatchToProps = dispatch => ({

@@ -50,7 +50,6 @@ class AddedToBagActions extends React.PureComponent<Props> {
     if (modalEditingItem) {
       labels.confirmationText = labels.editConfirmationText;
     }
-    console.log('isInternationalShipping--->', isInternationalShipping);
     return (
       <div className={className}>
         {showAddTobag && (
@@ -75,7 +74,12 @@ class AddedToBagActions extends React.PureComponent<Props> {
           </Row>
         )}
         <Row className="checkout-button">
-          {!isInternationalShipping && <VenmoPaymentButton className="venmo-container" />}
+          {!isInternationalShipping && (
+            <VenmoPaymentButton
+              className="venmo-container"
+              onSuccess={() => handleCartCheckout(isEditingItem)}
+            />
+          )}
           {!isInternationalShipping && <PayPalButton className="payPal-button" />}
           <Button
             data-locator={getLocator('addedtobag_btncheckout')}
