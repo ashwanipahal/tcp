@@ -43,7 +43,7 @@ const keyExtractor = (_, index) => index.toString();
 
 const renderItem = (item, navigation) => {
   const {
-    item: { image, link, color = {} },
+    item: { image, link, color: { color: tileBgColor } = {} },
     index,
   } = item;
 
@@ -53,7 +53,7 @@ const renderItem = (item, navigation) => {
       navigation={navigation}
       testID={`${getLocator('moduleL_tiles')}${index + 1}`}
     >
-      <ChildContainer bgClass={color.color}>
+      <ChildContainer bgColor={tileBgColor}>
         <DamImage
           url={image.url}
           height={127}
