@@ -12,6 +12,7 @@ import {
   BackIcon,
   BackLinkWrapperWrapper,
   BonusPointsWrapper,
+  CouponAndPromosWrapper,
 } from '../styles/CnCTemplate.style.native';
 
 const CnCCommonTemplate = ({
@@ -24,9 +25,9 @@ const CnCCommonTemplate = ({
 }) => {
   return (
     <>
-      <View>
+      <CouponAndPromosWrapper>
         <CouponAndPromos isCheckout />
-      </View>
+      </CouponAndPromosWrapper>
       <View>
         <OrderLedgerContainer />
       </View>

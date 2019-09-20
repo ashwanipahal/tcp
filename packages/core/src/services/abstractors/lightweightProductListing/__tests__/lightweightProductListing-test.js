@@ -9,7 +9,9 @@ const mockResponse = mock.body.response.products.map(item => {
 
   return {
     ...item,
-    imageUrl: [imageUrl.replace('www.childrensplace.com', 'test4.childrensplace.com')],
+    imageUrl: [
+      imageUrl.replace('https://www.childrensplace.com', 'https://test4.childrensplace.com'),
+    ],
   };
 });
 

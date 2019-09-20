@@ -3,6 +3,7 @@ import SearchListingPageSaga from '@tcp/core/src/components/features/browse/Sear
 import LoginPageSaga from '@tcp/core/src/components/features/account/LoginPage/container/LoginPage.saga';
 import LogOutPageSaga from '@tcp/core/src/components/features/account/Logout/container/LogOut.saga';
 import ForgotPasswordSaga from '@tcp/core/src/components/features/account/ForgotPassword/container/ForgotPassword.saga';
+import SocialAccountSaga from '@tcp/core/src/components/common/organisms/SocialAccount/container/Social.saga';
 import AddressBookSaga from '@tcp/core/src/components/features/account/AddressBook/container/AddressBook.saga';
 import DeleteAddressSaga from '@tcp/core/src/components/features/account/AddressBook/container/DeleteAddress.saga';
 import { SetDefaultShippingAddressSaga } from '@tcp/core/src/components/features/account/AddressBook/container/DefaultShippingAddress.saga';
@@ -29,6 +30,7 @@ export {
   BootstrapSaga,
   LabelsSaga,
   GiftCardsSaga,
+  SocialAccountSaga,
   SearchListingPageSaga,
 };
 
@@ -47,5 +49,6 @@ export default {
   BootstrapSaga,
   LabelsSaga,
   GiftCardsSaga,
+  SocialAccountSaga,
   SearchListingPageSaga,
 };

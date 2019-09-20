@@ -3,18 +3,25 @@
 exports[`PointHistoryPage component should renders correctly 1`] = `
 <ScrollViewMock>
   <Styled(Styled(BodyCopy))
+    accessibilityText=""
+    dataLocator="points_history_subheading"
     fontFamily="secondary"
     fontSize="fs16"
     fontWeight="extrabold"
+    margin={null}
+    numberOfLines={null}
     spacingStyles="margin-bottom-XL margin-top-LRG"
     text="lbl_common_points_history"
+    textDecoration={null}
   />
   <Connect(PointsHistoryContainer)
     labels={Object {}}
     showFullHistory={true}
     view="edit"
   />
-  <Styled(View)>
+  <Styled(View)
+    dataLocator="points_history_rte"
+  >
     <RichText
       domStorageEnabled={false}
       javaScriptEnabled={false}
@@ -35,9 +42,10 @@ exports[`PointHistoryPage component should renders correctly 1`] = `
     <Styled(Anchor)
       accessibilityLabel=""
       anchorVariation="primary"
+      colorName={null}
       customStyle={Object {}}
       dataLocator="my-rewards-program-details"
-      fontSizeVariation="large"
+      fontSizeVariation="medium"
       locator=""
       onPress={[Function]}
       text="lbl_points_history_program_details"
@@ -48,6 +56,7 @@ exports[`PointHistoryPage component should renders correctly 1`] = `
       <Styled(Anchor)
         accessibilityLabel=""
         anchorVariation="primary"
+        colorName={null}
         customStyle={Object {}}
         dataLocator="my-rewards-tnc"
         fontSizeVariation="medium"

@@ -29,15 +29,20 @@ exports[`Create Account Page should render correctly 1`] = `
     />
     <Styled(View)>
       <Styled(BodyCopy)
+        accessibilityText=""
         color="error"
+        dataLocator=""
         fontSize="fs12"
         fontWeight="semibold"
+        margin={null}
         mobileFontFamily={
           Array [
             "secondary",
           ]
         }
+        numberOfLines={null}
         text={Object {}}
+        textDecoration={null}
       />
     </Styled(View)>
     <ReduxForm

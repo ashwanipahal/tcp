@@ -16,10 +16,9 @@ const styles = css`
     background-color: ${props =>
       props.variation === 'secondary' ? props.theme.colorPalette.gray[300] : ''};
   }
-  @media and ${props => props.theme.mediaQuery.smallOnly} {
-    .exp-year-field {
-      margin-right: auto;
-    }
+
+  .exp-year-field {
+    margin-right: auto;
   }
 `;
 

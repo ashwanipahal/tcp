@@ -5,51 +5,90 @@ exports[`Points History List Page View should render Points History Page Correct
   <Styled(View)>
     <Styled(View)>
       <Styled(BodyCopy)
+        accessibilityText=""
+        color="#1a1a1a"
+        dataLocator=""
         fontFamily="secondary"
         fontSize="fs12"
+        fontWeight="semibold"
+        margin={null}
+        numberOfLines={null}
         text="08/08/19"
+        textDecoration={null}
       />
     </Styled(View)>
     <Styled(View)>
       <Styled(BodyCopy)
+        accessibilityText=""
+        color="#1a1a1a"
+        dataLocator=""
         fontFamily="secondary"
         fontSize="fs12"
+        fontWeight="semibold"
+        margin={null}
+        numberOfLines={null}
         text="Credit"
+        textDecoration={null}
       />
     </Styled(View)>
     <Styled(View)>
       <Styled(BodyCopy)
-        component="p"
+        accessibilityText=""
+        color="#1a1a1a"
+        dataLocator=""
         fontFamily="secondary"
         fontSize="fs12"
+        fontWeight="semibold"
+        margin={null}
+        numberOfLines={null}
         text="5"
+        textAlign="center"
+        textDecoration={null}
       />
     </Styled(View)>
   </Styled(View)>
   <Styled(View)>
     <Styled(View)>
       <Styled(BodyCopy)
+        accessibilityText=""
+        color="#1a1a1a"
+        dataLocator=""
         fontFamily="secondary"
         fontSize="fs12"
         fontWeight="semibold"
+        margin={null}
+        numberOfLines={null}
         text="08/08/19"
+        textDecoration={null}
       />
     </Styled(View)>
     <Styled(View)>
       <Styled(BodyCopy)
+        accessibilityText=""
+        color="#1a1a1a"
+        dataLocator=""
         fontFamily="secondary"
         fontSize="fs12"
         fontWeight="semibold"
+        margin={null}
+        numberOfLines={null}
         text="AddBirthDate"
+        textDecoration={null}
       />
     </Styled(View)>
     <Styled(View)>
       <Styled(BodyCopy)
+        accessibilityText=""
+        color="#1a1a1a"
+        dataLocator=""
         fontFamily="secondary"
         fontSize="fs12"
         fontWeight="semibold"
+        margin={null}
+        numberOfLines={null}
         text={5}
         textAlign="center"
+        textDecoration={null}
       />
     </Styled(View)>
   </Styled(View)>
