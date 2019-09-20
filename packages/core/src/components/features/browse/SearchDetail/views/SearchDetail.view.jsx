@@ -63,12 +63,14 @@ const SearchListingView = ({
             formValues={formValues}
             sortLabels={sortLabels}
             getProducts={getProducts}
+            slpLabels={slpLabels}
           />
         </Col>
       </Row>
       <Row>
         <Col colSize={{ small: 6, medium: 8, large: 12 }}>
           <LoadedProductsCount
+            className="show-items-count-section"
             totalProductsCount={totalProductsCount}
             showingItemsLabel={slpLabels}
           />

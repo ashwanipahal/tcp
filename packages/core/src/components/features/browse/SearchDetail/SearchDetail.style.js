@@ -71,6 +71,9 @@ export default css`
     }
   }
   @media ${props => props.theme.mediaQuery.large} {
+    .show-items-count-section {
+      display: none;
+    }
     .product-list {
       .search-product-tile:nth-child(5n) {
         padding-right: 0;
