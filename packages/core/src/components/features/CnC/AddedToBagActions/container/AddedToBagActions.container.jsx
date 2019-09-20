@@ -48,6 +48,7 @@ export class AddedToBagContainer extends React.Component<Props> {
       closeModal,
       closeMiniBag,
       isInternationalShipping,
+      isVenmoEnabled,
     } = this.props;
     const onClickViewBag = () => {
       utility.routeToPage(CHECKOUT_ROUTES.bagPage);
@@ -73,6 +74,7 @@ export class AddedToBagContainer extends React.Component<Props> {
         closeModal={closeModal}
         closeMiniBag={closeMiniBag}
         isInternationalShipping={isInternationalShipping}
+        isVenmoEnabled={isVenmoEnabled}
       />
     );
   }
@@ -117,6 +119,7 @@ const mapStateToProps = state => {
     modalInfo: bagPageSelector.getConfirmationModalFlag(state),
     orderHasPickup: checkoutSelectors.getIsOrderHasPickup(state),
     isInternationalShipping: getIsInternationalShipping(state),
+    isVenmoEnabled: checkoutSelectors.getIsVenmoEnabled(state),
   };
 };
 

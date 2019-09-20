@@ -38,6 +38,19 @@ const CtaStyle = css`
       display: none;
     }
   }
+
+  .paypal-venmo {
+    display: flex;
+    flex-direction: row;
+    margin-bottom: 8px;
+  }
+  .paypal-wrapper {
+    width: 100%;
+  }
+  .venmo-wrapper {
+    width: 100%;
+    margin-left: 6px;
+  }
   ${props => (props.inheritedStyles ? props.inheritedStyles : '')};
 `;
 export default CtaStyle;

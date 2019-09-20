@@ -139,7 +139,7 @@ export class VenmoPaymentButton extends Component {
     if (isMobile && nonce && isNonceNotExpired) {
       this.setState({ hasVenmoError: false });
       setVenmoData({ loading: false });
-    } else if (isMobile && mode === modes.CLIENT_TOKEN && enabled && authorizationKey) {
+    } else if (mode === modes.CLIENT_TOKEN && enabled && authorizationKey) {
       this.setupVenmoInstance();
     }
   };
@@ -195,14 +195,13 @@ export class VenmoPaymentButton extends Component {
   };
 
   render() {
-    const { isMobile, venmoData, mode, enabled, className } = this.props;
+    const { venmoData, mode, enabled, className } = this.props;
     const { hasVenmoError } = this.state;
     const { supportedByBrowser } = venmoData || {};
-    const venmoIcon = getIconPath('venmo-button');
+    const venmoIcon = getIconPath('venmo-logo-blue');
     return (
       <div className={className}>
         {enabled &&
-          isMobile &&
           supportedByBrowser &&
           (!hasVenmoError || mode === modes.PAYMENT_TOKEN) &&
           (this.canCallVenmoApi() || mode === modes.PAYMENT_TOKEN) && (
@@ -212,7 +211,7 @@ export class VenmoPaymentButton extends Component {
               className="venmo-button"
               aria-label="Venmo Payment Button"
             >
-              <Image src={venmoIcon} alt="Venmo Payment Button" className="venmo-image" />
+              <Image src={venmoIcon} alt="Venmo Payment Button" className="venmo-button-image" />
             </button>
           )}
       </div>

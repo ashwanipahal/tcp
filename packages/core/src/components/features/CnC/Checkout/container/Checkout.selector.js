@@ -607,7 +607,8 @@ function getInternationalCheckoutUrl(state) {
 const getIsVenmoEnabled = state => {
   return (
     state[SESSIONCONFIG_REDUCER_KEY] &&
-    state[SESSIONCONFIG_REDUCER_KEY].getIn(['siteDetails', 'VENMO_ENABLED'])
+    state[SESSIONCONFIG_REDUCER_KEY].getIn(['siteDetails', 'VENMO_ENABLED']) === 'TRUE' &&
+    getIsMobile()
   );
 };
 

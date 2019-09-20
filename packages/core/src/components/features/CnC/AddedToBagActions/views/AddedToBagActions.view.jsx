@@ -45,6 +45,7 @@ class AddedToBagActions extends React.PureComponent<Props> {
       removeUnqualifiedItemsAndCheckout,
       isEditingItem,
       isInternationalShipping,
+      isVenmoEnabled,
     } = this.props;
     const { showModal, isEditingItem: modalEditingItem } = modalInfo;
     if (modalEditingItem) {
@@ -74,13 +75,19 @@ class AddedToBagActions extends React.PureComponent<Props> {
           </Row>
         )}
         <Row className="checkout-button">
-          {!isInternationalShipping && (
-            <VenmoPaymentButton
-              className="venmo-container"
-              onSuccess={() => handleCartCheckout(isEditingItem)}
-            />
-          )}
-          {!isInternationalShipping && <PayPalButton className="payPal-button" />}
+          <div className="paypal-venmo">
+            <div className="paypal-wrapper">
+              {!isInternationalShipping && <PayPalButton className="payPal-button" />}
+            </div>
+            {!isInternationalShipping && isVenmoEnabled && (
+              <div className="venmo-wrapper">
+                <VenmoPaymentButton
+                  className="venmo-container"
+                  onSuccess={() => handleCartCheckout(isEditingItem)}
+                />
+              </div>
+            )}
+          </div>
           <Button
             data-locator={getLocator('addedtobag_btncheckout')}
             className="checkout"

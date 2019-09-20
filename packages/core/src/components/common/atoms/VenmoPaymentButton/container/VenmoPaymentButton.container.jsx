@@ -90,10 +90,11 @@ const mapStateToProps = state => {
   const { venmoSecurityToken: authorizationKey, venmoPaymentTokenAvailable } =
     venmoClientTokenData || {};
   const mode = venmoPaymentTokenAvailable === 'TRUE' ? modes.PAYMENT_TOKEN : modes.CLIENT_TOKEN;
-  const enabled = selectors.getIsVenmoEnabled(state) === 'TRUE';
+  const isMobile = selectors.getIsMobile();
+  const enabled = selectors.getIsVenmoEnabled(state);
   return {
     enabled,
-    isMobile: selectors.getIsMobile(),
+    isMobile,
     mode,
     authorizationKey,
     isNonceNotExpired: selectors.isVenmoNonceNotExpired(state),

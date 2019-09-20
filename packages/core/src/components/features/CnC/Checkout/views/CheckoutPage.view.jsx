@@ -7,6 +7,7 @@ import ShippingPage from '../organisms/ShippingPage';
 import BillingPage from '../organisms/BillingPage';
 import ReviewPage from '../organisms/ReviewPage';
 import CHECKOUT_STAGES from '../../../../../../../web/src/pages/App.constants';
+import VenmoBanner from '../../../../common/molecules/VenmoBanner';
 // import CheckoutProgressUtils from '../../../../../../../web/src/components/features/content/CheckoutProgressIndicator/utils/utils';
 
 class CheckoutPage extends React.PureComponent {
@@ -29,6 +30,21 @@ class CheckoutPage extends React.PureComponent {
       (pickupInitialValues &&
         pickupInitialValues.pickUpContact &&
         pickupInitialValues.pickUpContact.firstName)
+    );
+  };
+
+  /**
+   * This function is to validate if we need to show venmo banner or not.
+   * Only if user comes on pickup or shipping page, but not on coming back from navigation
+   * @params {string} currentSection - current checkout section name
+   */
+  isShowVenmoBanner = currentSection => {
+    const { isMobile, isUsSite } = this.props;
+    return (
+      isMobile &&
+      isUsSite &&
+      (currentSection.toLowerCase() === CHECKOUT_STAGES.PICKUP ||
+        currentSection.toLowerCase() === CHECKOUT_STAGES.SHIPPING)
     );
   };
 
@@ -70,6 +86,7 @@ class CheckoutPage extends React.PureComponent {
     const isFormLoad = this.getFormLoad(pickupInitialValues, isGuest);
     return (
       <div>
+        {this.isShowVenmoBanner(currentSection) && <VenmoBanner labels={pickUpLabels} />}
         {currentSection.toLowerCase() === CHECKOUT_STAGES.PICKUP && isFormLoad && (
           <PickUpFormPart
             isGuest={isGuest}
