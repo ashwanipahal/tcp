@@ -44,6 +44,15 @@ import { getLocator } from '../../../../../../../utils';
 
 const UNSELECTED_VALUE = '';
 const UNSELECTED_ARRAY_VALUE = [];
+const KEY_CODE = {
+  ENTER: 13,
+  ESCAPE: 27,
+  SPACE: 32,
+  UP: 38,
+  DOWN: 40,
+  HOME_KEY: 36,
+  END_KEY: 35,
+};
 
 // returns the index (or indices) of the item(s) with the given value(s) in the given optionsMap
 function getIndexOrIndicesOfValue(optionsMap, valueOrValues) {
@@ -344,7 +353,7 @@ class CustomSelect extends React.Component {
       input: { value },
     } = this.props;
 
-    if (event.button !== 0 && event.which !== 13) return; // ignore clicks not on the main (left) mouse button
+    if (event.button !== 0 && event.keyCode !== KEY_CODE.ENTER) return; // ignore clicks not on the main (left) mouse button
     if (!optionsMap[clickedItemIndex].disabled) {
       // ignore clicks on disabled items
       this.setHighlightedIndex(clickedItemIndex); // make the clicked item highlighted
@@ -422,24 +431,24 @@ class CustomSelect extends React.Component {
     const { disabled } = this.props;
     if (disabled) return; // ignore everything if this component is disabled
     switch (event.keyCode) {
-      case 27: // escape
+      case KEY_CODE.ESCAPE: // escape
         this.handleEscapeKeyEvent(this.state, this.props);
 
         break;
-      case 32: // space
+      case KEY_CODE.SPACE: // space
         this.handleSpaceKeyEvent(this.state);
 
         break;
-      case 38: // up
+      case KEY_CODE.UP: // up
         this.moveHighlightOrExpand('up');
         break;
-      case 40: // down
+      case KEY_CODE.DOWN: // down
         this.moveHighlightOrExpand('down');
         break;
-      case 35: // end key
+      case KEY_CODE.END_KEY: // end key
         this.moveHighlightOrExpand('end');
         break;
-      case 36: // home key
+      case KEY_CODE.HOME_KEY: // home key
         this.moveHighlightOrExpand('start');
         break;
       default:
