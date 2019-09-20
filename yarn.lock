@@ -1114,15 +1114,10 @@
   resolved "https://registry.yarnpkg.com/@emotion/unitless/-/unitless-0.7.3.tgz#6310a047f12d21a1036fb031317219892440416f"
   integrity sha512-4zAPlpDEh2VwXswwr/t8xGNDGg8RQiPxtxZ3qQEXyQsBV39ptTdESCjuBvGze1nLMVrxmTIKmnO/nAV8Tqjjzg==
 
-"@fabulas/astly@^0.0.3":
-  version "0.0.3"
-  resolved "https://registry.yarnpkg.com/@fabulas/astly/-/astly-0.0.3.tgz#389aeb6d3d8936b9f34e06b18d5067ebcdbb1616"
-  integrity sha512-GWf+dkuee3biaUZZGUeF6Ya5I0n4pqzDZJ0hnjjknZzF0Iq1nbh3VpfXC49DP6VlgJeKYYaPwjgRvnJaqjWiAQ==
-
-"@fabulas/astly@^0.0.5":
-  version "0.0.5"
-  resolved "https://registry.yarnpkg.com/@fabulas/astly/-/astly-0.0.5.tgz#6b0c3471092f7cdd760601694d7624f0053a4311"
-  integrity sha512-rgW8MZpTr/SqpawoW4qr/ageUCKkSYjnamB0yZH//Pnt/GhKXZxGvUuNn6NPvXDZELg8hlkuZ7R4Tm0SLBH+kA==
+"@fabulas/astly@^0.0.11":
+  version "0.0.11"
+  resolved "https://registry.yarnpkg.com/@fabulas/astly/-/astly-0.0.11.tgz#8f9312fc55b56fb2061eb0df81b665bab2a467e5"
+  integrity sha512-edRpYvU/2H4rDX+tUf4bPylXPH/1J6p+XyO8IEHiscXTsxXLgpMHwWSnIh2Tor7++Wqt0vvOLvYyntukHitk0g==
 
 "@jest/console@^24.7.1":
   version "24.7.1"

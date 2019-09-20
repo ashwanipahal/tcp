@@ -1,5 +1,6 @@
 import React, { Fragment } from 'React';
 import PropTypes from 'prop-types';
+import { TouchableOpacity, Alert } from 'react-native';
 import BodyCopy from '../../BodyCopy';
 import {
   StyledCheckBox,
@@ -7,6 +8,7 @@ import {
   StyledText,
   StyledErrorIcon,
 } from '../InputCheckbox.style.native';
+import { RenderTree, ComponentMap, Text } from '@fabulas/astly';
 
 import { StyledErrorWrapper } from '../../TextBox/TextBox.style.native';
 
@@ -95,7 +97,45 @@ class InputCheckBox extends React.Component {
 
   renderRight() {
     const { rightText, fontSize } = this.props;
-    return <BodyCopy mobileFontFamily="secondary" fontSize={fontSize || 'fs12'} text={rightText} />;
+
+    const astlyBag = {
+      navigate(node) {
+        const { tagName, properties } = node;
+        const { href } = properties;
+
+        Alert.alert(
+          `You just clicked on an ${tagName} tag for ${href}`,
+          JSON.stringify(node, null, 2)
+        );
+      },
+    };
+
+    return (
+      <RenderTree
+        tree={`<div><p>${rightText}</p></div>`}
+        tools={astlyBag}
+        componentMap={{
+          ...ComponentMap,
+          span: props => (
+            <BodyCopy
+              mobileFontFamily="secondary"
+              fontSize={fontSize || 'fs12'}
+              text={props.children}
+              {...props}
+            />
+          ),
+          a: props => (
+            <BodyCopy
+              mobileFontFamily="secondary"
+              fontSize={fontSize || 'fs12'}
+              text={props.children}
+              {...props}
+            />
+          ),
+        }}
+      />
+    );
+    // return <BodyCopy mobileFontFamily="secondary" fontSize={fontSize || 'fs12'} text={rightText} />;
   }
 
   render() {
@@ -121,9 +161,8 @@ class InputCheckBox extends React.Component {
           pointerEvents={disabled ? 'none' : 'auto'}
         >
           {!hideCheckboxIcon && this.genCheckedIcon()}
-          {rightText && (
-            <StyledText inputVariation={inputVariation}>{this.renderRight()}</StyledText>
-          )}
+
+          {rightText && this.renderRight()}
         </StyledCheckBox>
         <Fragment>
           {isError ? (
