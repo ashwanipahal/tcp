@@ -120,7 +120,10 @@ export class AddressFields extends React.PureComponent {
     const isCA = country === API_CONFIG.siteIds.ca.toUpperCase();
     return (
       <>
-        <Col colSize={{ small: 3, medium: variation === 'primary' ? 2 : 4, large: 3 }}>
+        <Col
+          colSize={{ small: 3, medium: variation === 'primary' ? 2 : 4, large: 3 }}
+          className="margin-right"
+        >
           <Field
             id={`${formSection}.state`}
             placeholder={isCA ? addressFormLabels.province : addressFormLabels.stateLbl}

@@ -1,0 +1,81 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`BirthdayCard should render correctly 1`] = `
+<Styled(View)>
+  <Styled(View)>
+    <TouchableOpacity
+      accessibilityLabel="Delete child"
+      accessibilityRole="button"
+      activeOpacity={0.2}
+      onPress={[Function]}
+    >
+      <Styled(ImageComp)
+        alt=""
+        height={14}
+        host=""
+        source={
+          Object {
+            "testUri": "../../../src/assets/images/close.png",
+          }
+        }
+        url=""
+        width={14}
+      />
+    </TouchableOpacity>
+  </Styled(View)>
+  <Styled(View)>
+    <Styled(BodyCopy)
+      accessibilityText=""
+      className="elem-mb-XXXS"
+      data-locator="nameOfChildInTile"
+      dataLocator=""
+      fontWeight="semibold"
+      margin={null}
+      mobileFontFamily="secondary"
+      numberOfLines={null}
+      text="test"
+      textAlign="center"
+      textDecoration={null}
+    />
+  </Styled(View)>
+  <Styled(View)>
+    <Styled(BodyCopy)
+      accessibilityText=""
+      data-locator="childAgeInTile"
+      dataLocator=""
+      fontSize="fs12"
+      fontWeight="semibold"
+      margin={null}
+      mobileFontFamily="secondary"
+      numberOfLines={null}
+      text="21 yo"
+      textDecoration={null}
+    />
+    <Styled(ImageComp)
+      alt=""
+      height={24}
+      host=""
+      source={
+        Object {
+          "testUri": "../../../src/assets/images/child-birthday-profile.png",
+        }
+      }
+      url=""
+      width={16}
+    />
+    <Styled(BodyCopy)
+      accessibilityText=""
+      data-locator="childBirthYearInTile"
+      dataLocator=""
+      fontSize="fs12"
+      fontWeight="semibold"
+      margin={null}
+      mobileFontFamily="secondary"
+      numberOfLines={null}
+      text="1998"
+      textAlign="right"
+      textDecoration={null}
+    />
+  </Styled(View)>
+</Styled(View)>
+`;

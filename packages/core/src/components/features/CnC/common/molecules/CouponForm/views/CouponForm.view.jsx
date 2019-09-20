@@ -44,7 +44,7 @@ class CouponForm extends React.PureComponent {
     const { touched } = this.state;
     return (
       <div className={className}>
-        {!touched && <ErrorMessage error={error && error.msg} />}
+        {!touched && <ErrorMessage className="coupon_error_message" error={error && error.msg} />}
         <div className="coupon_form_container">
           <Heading
             fontFamily="primaryFontFamily"
