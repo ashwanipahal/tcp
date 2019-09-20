@@ -213,12 +213,10 @@ describe('ProductAddToBagVanilla native should render correctly', () => {
     const color = {
       name: 'TIDAL',
     };
-    wrapper
-      .instance()
-      .setState({
-        selectedColor: color,
-        selectedFit: props.currentProduct.colorFitsSizesMap[0].fits,
-      });
+    wrapper.instance().setState({
+      selectedColor: color,
+      selectedFit: props.currentProduct.colorFitsSizesMap[0].fits,
+    });
     expect(wrapper).toMatchSnapshot();
   });
 });
