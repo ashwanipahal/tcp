@@ -36,4 +36,5 @@ export default {
   OPTIMIZELY_DECISION_LABEL,
   OPTIMIZELY_HEADER_PREFIX,
   sites,
+  keyboard,
 };

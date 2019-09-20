@@ -45,6 +45,7 @@ import { keyboard } from '../../../../../../../../../web/src/constants/constants
 
 const UNSELECTED_VALUE = '';
 const UNSELECTED_ARRAY_VALUE = [];
+const { KEY_ENTER, KEY_SPACE, KEY_ESCAPE, KEY_UP, KEY_DOWN, KEY_HOME_KEY, KEY_END_KEY } = keyboard;
 
 // returns the index (or indices) of the item(s) with the given value(s) in the given optionsMap
 function getIndexOrIndicesOfValue(optionsMap, valueOrValues) {
@@ -345,7 +346,7 @@ class CustomSelect extends React.Component {
       input: { value },
     } = this.props;
 
-    if (event.button !== 0 && event.keyCode !== keyboard.KEY_ENTER) return; // ignore clicks not on the main (left) mouse button
+    if (event.button !== 0 && event.keyCode !== KEY_ENTER) return; // ignore clicks not on the main (left) mouse button
     if (!optionsMap[clickedItemIndex].disabled) {
       // ignore clicks on disabled items
       this.setHighlightedIndex(clickedItemIndex); // make the clicked item highlighted
@@ -423,24 +424,24 @@ class CustomSelect extends React.Component {
     const { disabled } = this.props;
     if (disabled) return; // ignore everything if this component is disabled
     switch (event.keyCode) {
-      case keyboard.KEY_ESCAPE: // escape
+      case KEY_ESCAPE: // escape
         this.handleEscapeKeyEvent(this.state, this.props);
 
         break;
-      case keyboard.KEY_SPACE: // space
+      case KEY_SPACE: // space
         this.handleSpaceKeyEvent(this.state);
 
         break;
-      case keyboard.KEY_UP: // up
+      case KEY_UP: // up
         this.moveHighlightOrExpand('up');
         break;
-      case keyboard.KEY_DOWN: // down
+      case KEY_DOWN: // down
         this.moveHighlightOrExpand('down');
         break;
-      case keyboard.KEY_END_KEY: // end key
+      case KEY_END_KEY: // end key
         this.moveHighlightOrExpand('end');
         break;
-      case keyboard.KEY_HOME_KEY: // home key
+      case KEY_HOME_KEY: // home key
         this.moveHighlightOrExpand('start');
         break;
       default:
