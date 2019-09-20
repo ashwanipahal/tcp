@@ -11,6 +11,15 @@ import NavBarIcon from '../components/common/atoms/NavBarIcon';
 import Header from '../components/common/molecules/Header';
 import Navigation from '../components/features/content/Navigation';
 import ProductLanding from '../components/features/browse/ProductLanding/ProductLanding';
+import HeaderNew from '../components/common/molecules/Header/HeaderNew';
+
+const getNewHeader = navigation => {
+  const title = navigation && navigation.getParam('title');
+  return {
+    header: props => <HeaderNew {...props} title={title} />,
+    headerBackground: 'transparent',
+  };
+};
 
 const HomeStack = createStackNavigator(
   {
@@ -21,7 +30,12 @@ const HomeStack = createStackNavigator(
     ProductListingPageContainer,
     BagPage,
     LoginPageContainer,
-    GetCandidGallery,
+    GetCandidGallery: {
+      screen: GetCandidGallery,
+      navigationOptions: ({ navigation }) => {
+        return getNewHeader(navigation);
+      },
+    },
     ProductListingPage,
   },
   {

@@ -22,10 +22,13 @@ const colSize = { ...config.COL_SIZE_TILE };
 const ModuleLTile = ({ tileData: { image, link, styled }, index, tileColor = {} }: Props) => {
   return (
     <Anchor {...link}>
-      <Row>
+      <Row fullBleed>
         <Col
           colSize={colSize}
-          className={`moduleL__tile moduleL__${tileColor.color}`}
+          className="moduleL__tile"
+          style={{
+            backgroundColor: tileColor.color,
+          }}
           data-locator={`${getLocator('moduleL_tiles')}${index + 1}`}
         >
           <DamImage

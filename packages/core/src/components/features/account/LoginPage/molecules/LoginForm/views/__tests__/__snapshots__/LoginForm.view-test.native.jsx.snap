@@ -124,6 +124,7 @@ exports[`LoginForm component should renders correctly 1`] = `
         <Styled(Anchor)
           accessibilityLabel=""
           anchorVariation="primary"
+          colorName={null}
           customStyle={Object {}}
           dataLocator=""
           fontFamily="secondary"
@@ -172,6 +173,7 @@ exports[`LoginForm component should renders correctly 1`] = `
       accessibilityLabel=""
       anchorVariation="secondary"
       class="underlink"
+      colorName={null}
       customStyle={
         Object {
           "marginTop": 10,

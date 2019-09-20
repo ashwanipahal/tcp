@@ -4,7 +4,18 @@ import withStyles from '../../../../../../common/hoc/withStyles.native';
 import { ImageComp, ImageTouchableOpacity } from '../styles/LinkImageIcon.style.native';
 
 const LinkImageIcon = props => {
-  const { onPress, uri, selected, width, height, resizeMode, borderWidth, borderRadius } = props;
+  const {
+    onPress,
+    uri,
+    selected,
+    width,
+    height,
+    resizeMode,
+    borderWidth,
+    borderRadius,
+    imageWidth,
+    imageHeight,
+  } = props;
   return (
     <ImageTouchableOpacity
       onPress={onPress}
@@ -23,8 +34,8 @@ const LinkImageIcon = props => {
           uri,
         }}
         selected={selected}
-        width={width}
-        height={height}
+        width={imageWidth || width}
+        height={imageHeight || height}
         resizeMode={resizeMode}
         borderWidth={borderWidth}
         borderRadius={borderRadius}
@@ -42,6 +53,8 @@ LinkImageIcon.propTypes = {
   borderWidth: PropTypes.number,
   borderRadius: PropTypes.number,
   onPress: PropTypes.func,
+  imageWidth: PropTypes.number,
+  imageHeight: PropTypes.number,
 };
 
 LinkImageIcon.defaultProps = {
@@ -52,6 +65,8 @@ LinkImageIcon.defaultProps = {
   borderWidth: 1,
   borderRadius: 12,
   onPress: null,
+  imageWidth: null,
+  imageHeight: null,
 };
 
 export default withStyles(LinkImageIcon);
