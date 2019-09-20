@@ -9,6 +9,7 @@
 
 import React from 'react';
 import { PropTypes } from 'prop-types';
+import usePerfMeasure from '@tcp/web/src/hooks/usePerfMeasure';
 import withStyles from '../../../hoc/withStyles';
 import LabeledRadioButtonGroup from '../../LabeledRadioButtonGroup';
 import styles from '../styles/ProductColorChipSelector.style';
@@ -38,6 +39,19 @@ const getColorsChipsOptionsMap = (
     })
   );
 };
+
+/**
+ * Client-side performance timer for the swatches
+ *
+ * NOTE: Need to use component w/ hook because ProductColorChipsSelector
+ * is a class component.
+ *
+ * @see https://reactjs.org/docs/hooks-rules.html#only-call-hooks-from-react-functions
+ */
+function PerfMeasure() {
+  usePerfMeasure('render_product_colors');
+  return null;
+}
 
 class ProductColorChipsSelector extends React.PureComponent<Props> {
   static propTypes = {
@@ -77,11 +91,14 @@ class ProductColorChipsSelector extends React.PureComponent<Props> {
       isDisableZeroInventoryEntries
     );
     return (
-      <LabeledRadioButtonGroup
-        className={`${className} color-chips-selector`}
-        optionsMap={optionsMap}
-        {...otherProps}
-      />
+      <>
+        <LabeledRadioButtonGroup
+          className={`${className} color-chips-selector`}
+          optionsMap={optionsMap}
+          {...otherProps}
+        />
+        <PerfMeasure />
+      </>
     );
   }
 }
