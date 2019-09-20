@@ -9,7 +9,7 @@ const DropDownStyle = css`
           props.theme.colors.BLACK
         }`};
   background-color: ${props =>
-    props.variation === 'primary'
+    props.variation === 'primary' || props.bgColor
       ? props.theme.colorPalette.gray[500]
       : props.theme.colorPalette.white};
 `;
