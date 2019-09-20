@@ -6,8 +6,26 @@ import {
   ViewWithSpacing,
 } from '@tcp/core/src/components/common/atoms/styledWrapper';
 
-export const MyProfileTile = ({ title, ctaTitle, ctaLink, children, handleComponentChange }) => {
+export const MyProfileTile = ({
+  title,
+  ctaTitle,
+  ctaLink,
+  children,
+  handleComponentChange,
+  birthdaySaving,
+}) => {
   const isCtaPresent = !!ctaTitle;
+
+  const styling = () => {
+    if (isCtaPresent) {
+      if (birthdaySaving) {
+        return 'margin-bottom-LRG';
+      }
+      return 'margin-bottom-XXL';
+    }
+    return '';
+  };
+
   return (
     <ViewWithSpacing spacingStyles="margin-bottom-XXXL">
       {!!title && (
@@ -19,9 +37,7 @@ export const MyProfileTile = ({ title, ctaTitle, ctaLink, children, handleCompon
           spacingStyles="margin-bottom-MED"
         />
       )}
-      <ViewWithSpacing spacingStyles={isCtaPresent ? 'margin-bottom-XXXL' : ''}>
-        {children}
-      </ViewWithSpacing>
+      <ViewWithSpacing spacingStyles={styling()}>{children}</ViewWithSpacing>
       {isCtaPresent && (
         <CustomButton
           fill="BLUE"
@@ -42,6 +58,7 @@ MyProfileTile.propTypes = {
   ctaLink: PropTypes.string,
   children: PropTypes.node.isRequired,
   handleComponentChange: PropTypes.func,
+  birthdaySaving: PropTypes.bool,
 };
 
 MyProfileTile.defaultProps = {
@@ -49,6 +66,7 @@ MyProfileTile.defaultProps = {
   ctaTitle: '',
   ctaLink: 'accountOverviewMobile',
   handleComponentChange: () => {},
+  birthdaySaving: false,
 };
 
 export default MyProfileTile;

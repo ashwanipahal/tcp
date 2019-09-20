@@ -357,7 +357,6 @@ export class BillingPaymentForm extends React.PureComponent {
       nextSubmitText,
       isPaymentDisabled,
     } = this.props;
-    console.log('isPaymentDisabled', isPaymentDisabled);
     const creditCardList = getCreditCardList({ cardList });
     return (
       <form name={constants.FORM_NAME} noValidate className={className} onSubmit={handleSubmit}>

@@ -56,6 +56,7 @@ const getApplyCardLayoutView = (
       <PLCCForm
         plccData={plccData}
         labels={labels}
+        bagItems={bagItems}
         isPLCCModalFlow={isPLCCModalFlow}
         onSubmit={submitPLCCForm}
         initialValues={profileInfo}

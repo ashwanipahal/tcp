@@ -43,7 +43,7 @@ const CnCTemplate = ({
               </div>
             )}
             <AirmilesBanner />
-            <CouponAndPromos />
+            <CouponAndPromos showAccordian={showAccordian} />
           </Col>
         )}
       </Row>
