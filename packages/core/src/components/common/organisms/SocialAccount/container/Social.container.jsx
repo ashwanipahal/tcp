@@ -56,6 +56,7 @@ export const mapDispatchToProps = dispatch => {
     saveSocialAcc: payload => {
       dispatch(saveSocialAccount(payload));
     },
+    // point modal function will help to open /close the modal which is available after social account login
     pointModalClose: payload => {
       dispatch(showPointModalDetails(payload));
     },
@@ -65,6 +66,7 @@ export const mapDispatchToProps = dispatch => {
 const mapStateToProps = state => {
   return {
     getSocialAcc: getsocialDataOnLoadState(state),
+    // initial state of the social point modal
     setPointsModal: getPointsModal(state),
     isPlcc: isPlccUser(state),
   };
