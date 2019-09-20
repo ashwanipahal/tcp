@@ -77,4 +77,5 @@ export default {
   'marker-icon': '/static/images/marker-icon.svg',
   'search-close-icon': '/static/images/search-close-icon.svg',
   'venmo-button': '/static/images/venmo_white_logo.svg',
+  'gymboree-icon': '/static/images/gymboree-logo.svg',
 };

@@ -1,0 +1,7 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`StoreAddressTile component StoreAddressTile component renders correctly without props 1`] = `
+<Styled(View)>
+  StoreAddressTile
+</Styled(View)>
+`;
