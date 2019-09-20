@@ -6,7 +6,7 @@ exports[`InternationalCheckoutVanilla should render InternationalCheckoutVanilla
     className="__frame"
     frameBorder="0"
     height="0"
-    src=""
+    src="https://stagecheckout.fiftyone.com/utils/empty.jsp"
     title="internationalCheckout"
     width="0"
   />
