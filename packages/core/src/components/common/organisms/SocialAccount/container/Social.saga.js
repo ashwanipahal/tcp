@@ -38,7 +38,7 @@ export function* savesocialAccounts({ payload }) {
       yield put(setSocialAccount(res));
     }
 
-    if (payload.socialAccInfo.isconnected) {
+    if (isConnected) {
       yield put(showPointModalDetails({ state: !isConnected }));
     }
   } catch (err) {

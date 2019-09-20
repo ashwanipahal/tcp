@@ -20,8 +20,8 @@ class Socialview extends React.PureComponent {
     saveSocialAcc: PropTypes.shape({}).isRequired,
     getSocialAcc: PropTypes.shape({}).isRequired,
     labels: PropTypes.shape({}).isRequired,
-    pointModalClose: PropTypes.string.isRequired,
-    setPointsModal: PropTypes.string.isRequired,
+    pointModalClose: PropTypes.func.isRequired,
+    setPointsModal: PropTypes.func.isRequired,
   };
 
   static defaultProps = {

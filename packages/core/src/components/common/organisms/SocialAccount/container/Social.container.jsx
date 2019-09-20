@@ -12,8 +12,8 @@ class SocialContainer extends React.PureComponent {
     saveSocialAcc: PropTypes.func.isRequired,
     getSocialAcc: PropTypes.func.isRequired,
     labels: PropTypes.shape({}).isRequired,
-    setPointsModal: PropTypes.string.isRequired,
-    pointModalClose: PropTypes.string.isRequired,
+    pointModalClose: PropTypes.func.isRequired,
+    setPointsModal: PropTypes.func.isRequired,
     isPlcc: PropTypes.string.isRequired,
   };
 

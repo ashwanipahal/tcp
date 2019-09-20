@@ -9,7 +9,7 @@ import BodyCopy from '../../../atoms/BodyCopy';
 let bodyEle;
 let elem;
 let saveAccountInfo;
-let CloseModal;
+let closeModal;
 
 /**
  * @function openLogin This function calls the Method of login for facebook and open up the dialog window where user sign in.
@@ -29,7 +29,7 @@ const openLogin = () => {
           isconnected: false,
         };
         saveAccountInfo({ socialAccInfo });
-        CloseModal({ state: true });
+        closeModal({ state: true });
       }
     },
     { scope: 'public_profile,email' }
@@ -97,7 +97,7 @@ const facebookSDK = () => {
 const logoutUser = () => {
   /* istanbul ignore next */
 
-  CloseModal({ state: false });
+  closeModal({ state: false });
   try {
     window.FB.logout();
   } catch (ex) {
@@ -127,7 +127,7 @@ const FacebookLoginComponent = props => {
   bodyEle = document.getElementsByTagName('body')[0];
   saveAccountInfo = props.saveSocialAcc;
   elem = props.loginStatus;
-  CloseModal = props.pointModalClose;
+  closeModal = props.pointModalClose;
 
   return (
     <React.Fragment>
