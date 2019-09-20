@@ -1,1 +1,1 @@
-export { default } from './StoreSearch/container';
+export { default } from './StoreLanding/container';

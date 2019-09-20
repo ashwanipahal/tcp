@@ -29,6 +29,7 @@ import AddMailingAddressReducer from '@tcp/core/src/components/features/account/
 import UpdateProfileReducer from '@tcp/core/src/components/features/account/AddEditPersonalInformation/container/AddEditPersonalInformation.reducer';
 import MyProfileReducer from '@tcp/core/src/components/features/account/MyProfile/container/MyProfile.reducer';
 import ProductDetailReducer from '@tcp/core/src/components/features/browse/ProductDetail/container/ProductDetail.reducer';
+import MyFavoriteStoreReducer from '@tcp/core/src/components/features/account/MyProfile/organism/MyFavoriteStore/container/MyFavoriteStore.reducer';
 
 import {
   SESSIONCONFIG_REDUCER_KEY,
@@ -68,6 +69,7 @@ import {
   UPDATE_PROFILE_REDUCER_KEY,
   MY_PROFILE_REDUCER_KEY,
   PRODUCT_DETAIL_REDUCER_KEY,
+  MY_FAVORITE_STORE_REDUCER_KEY,
 } from '@tcp/core/src/constants/reducer.constants';
 import HeaderReducer from '@tcp/core/src/components/common/organisms/Header/container/Header.reducer';
 import ModulesReducer from '@tcp/core/src/reduxStore/reducers/modules';
@@ -144,6 +146,7 @@ const rootReducer = combineReducers({
   [MAILING_ADDRESS_REDUCER_KEY]: AddMailingAddressReducer,
   [UPDATE_PROFILE_REDUCER_KEY]: UpdateProfileReducer,
   [MY_PROFILE_REDUCER_KEY]: MyProfileReducer,
+  [MY_FAVORITE_STORE_REDUCER_KEY]: MyFavoriteStoreReducer,
 });
 
 export default rootReducer;

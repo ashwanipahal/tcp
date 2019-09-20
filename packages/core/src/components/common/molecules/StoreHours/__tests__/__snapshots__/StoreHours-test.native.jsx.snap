@@ -1,0 +1,53 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`StoreHours component StoreHours component renders correctly without props 1`] = `
+<Styled(View)>
+  <Styled(Text) />
+</Styled(View)>
+`;
+
+exports[`StoreHours component should render the store timings 1`] = `
+<Styled(View)>
+  <Styled(Text)>
+    Store Hours
+  </Styled(Text)>
+  <Styled(View)>
+    <Styled(View)
+      key="1"
+    >
+      <Styled(Text)
+        textAlign="left"
+      >
+        Test
+      </Styled(Text)>
+      <Styled(Text)
+        textAlign="right"
+      >
+        Test
+      </Styled(Text)>
+    </Styled(View)>
+    <Styled(View)
+      key="2"
+    >
+      <Styled(Text)
+        textAlign="left"
+      >
+        Test
+      </Styled(Text)>
+      <Styled(Text)
+        textAlign="right"
+      >
+        Test
+      </Styled(Text)>
+    </Styled(View)>
+  </Styled(View)>
+</Styled(View)>
+`;
+
+exports[`StoreHours component should render the title text 1`] = `
+<Styled(View)>
+  <Styled(Text)>
+    Store Hours
+  </Styled(Text)>
+</Styled(View)>
+`;
