@@ -58,8 +58,8 @@ export const PointsHistoryPageView = props => {
       <HistoryPointsRichTextComponent content={richTextContent} />
       <BodyCopy component="div" className="elem-mb-XXL elem-mt-XXL" textAlign="center">
         <Anchor
-          to="/account?id=place-rewards&&subSection=points-claim"
-          asPath="/account/place-rewards/points-claim"
+          to={internalEndpoints.pointsClaimPage.link}
+          asPath={internalEndpoints.pointsClaimPage.path}
           fontSizeVariation="xlarge"
           anchorVariation="secondary"
           data-locator="claim form link"
