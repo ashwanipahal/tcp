@@ -1,6 +1,6 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import { Row, Col, BodyCopy } from '../../../../../atoms';
+import { Row, Col, BodyCopy, Anchor } from '../../../../../atoms';
 import withStyles from '../../../../../hoc/withStyles';
 import styles, { customPriceStyles } from '../styles/ProductCustomizeFormPart.style';
 import ProductPrice from '../../../../../../features/browse/ProductDetail/molecules/ProductPrice/ProductPrice';
@@ -51,22 +51,18 @@ class ProductCustomizeFormPart extends React.Component {
       : null;
     const prices = productInfo && getPrices(productInfo, currentColorEntry.color.name);
     const currentColorPdpUrl =
-      currentColorEntry && currentColorEntry.pdpUrl ? (
-        <a className="link-redirect" href={currentColorEntry.pdpUrl}>
-          View Product Details
-        </a>
-      ) : (
-        <a className="link-redirect" href={productInfo.pdpUrl}>
-          View Product Details
-        </a>
-      );
+      currentColorEntry && currentColorEntry.pdpUrl ? currentColorEntry.pdpUrl : productInfo.pdpUrl;
 
     return (
       <div className={className}>
         <Row>
-          <Col colSize={{ small: 6, medium: 4, large: 4 }}>
+          <Col className="image-wrapper" colSize={{ small: 6, medium: 4, large: 4 }}>
             <img alt={productInfo.name} src={imageUrl} />
-            {currentColorPdpUrl}
+            <Anchor className="link-redirect" to={currentColorPdpUrl} asPath={currentColorPdpUrl}>
+              <BodyCopy className="product-link" fontSize="fs14" fontFamily="secondary">
+                View Product Details
+              </BodyCopy>
+            </Anchor>
           </Col>
           <Col colSize={{ small: 6, medium: 4, large: 8 }}>
             <div className="product-details-card-container">

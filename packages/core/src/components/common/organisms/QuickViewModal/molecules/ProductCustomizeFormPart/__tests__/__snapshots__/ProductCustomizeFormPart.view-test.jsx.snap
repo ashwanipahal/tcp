@@ -6,6 +6,7 @@ exports[`ProductCustomizeFormPart component should renders correctly 1`] = `
 >
   <Styled(Row)>
     <Styled(Col)
+      className="image-wrapper"
       colSize={
         Object {
           "large": 4,
@@ -18,12 +19,25 @@ exports[`ProductCustomizeFormPart component should renders correctly 1`] = `
         alt="Boys Uniform V Neck Sweater"
         src="https://test4.childrensplace.com/wcsstore/GlobalSAS/images/tcp/products/500/2100606_IV.jpg"
       />
-      <a
+      <Styled(Anchor)
+        asPath="/p/2100606_IV"
         className="link-redirect"
-        href="/p/2100606_IV"
+        to="/p/2100606_IV"
       >
-        View Product Details
-      </a>
+        <Styled(BodyCopy)
+          className="product-link"
+          color="text.primary"
+          component="p"
+          fontFamily="secondary"
+          fontSize="fs14"
+          fontWeight="regular"
+          letterSpacing="normal"
+          lineHeight="normal"
+          textAlign="left"
+        >
+          View Product Details
+        </Styled(BodyCopy)>
+      </Styled(Anchor)>
     </Styled(Col)>
     <Styled(Col)
       colSize={
