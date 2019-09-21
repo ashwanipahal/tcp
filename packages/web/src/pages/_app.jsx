@@ -14,6 +14,7 @@ import { initErrorReporter } from '@tcp/core/src/utils/errorReporter.util';
 import { deriveSEOTags } from '@tcp/core/src/config/SEOTags.config';
 import { openOverlayModal } from '@tcp/core/src/components/features/OverlayModal/container/OverlayModal.actions';
 import { getUserInfo } from '@tcp/core/src/components/features/account/User/container/User.actions';
+import CheckoutModals from '@tcp/core/src/components/features/CnC/common/organism/CheckoutModals';
 import { Header, Footer } from '../components/features/content';
 import SEOTags from '../components/common/atoms';
 import CheckoutHeader from '../components/features/content/CheckoutHeader';
@@ -189,6 +190,7 @@ class TCPWebApp extends App {
                 </div>
               </div>
               <Footer />
+              <CheckoutModals />
             </Grid>
             {/* Inject route tracker if analytics is enabled. Must be within store provider. */}
             {process.env.ANALYTICS && <RouteTracker />}
