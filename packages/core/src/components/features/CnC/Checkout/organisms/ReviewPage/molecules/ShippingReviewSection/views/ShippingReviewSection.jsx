@@ -18,14 +18,15 @@ export class ShippingReviewSection extends React.PureComponent {
       shippingMethod,
       isGiftOptionsEnabled,
       giftWrappingDisplayName,
+      labels,
     } = this.props;
     return (
       <div className={className} dataLocator="review-shipping-section">
         <Row fullBleed>
           <Col colSize={{ small: 6, medium: 8, large: 12 }}>
             <TitlePlusEditButton
-              title="Shipping"
-              editTitle="Edit"
+              title={labels.lbl_review_shippingSectionTitle}
+              editTitle={labels.lbl_review_sectionAnchor}
               onEdit={this.handleEnterEditModeClick}
               dataLocator="pickup-section"
             />
@@ -42,7 +43,7 @@ export class ShippingReviewSection extends React.PureComponent {
                 color="gray.900"
                 fontWeight="extrabold"
               >
-                Shipping Address
+                {labels.lbl_review_sectionShippingAddressTitle}
               </BodyCopy>
             </div>
             <Address className="addressStyle" address={shippingAddress.address} />
@@ -78,7 +79,7 @@ export class ShippingReviewSection extends React.PureComponent {
 
 ShippingReviewSection.propTypes = {
   className: PropTypes.string.isRequired,
-  pickUpLabels: PropTypes.shape({}),
+  labels: PropTypes.shape({}),
   isGiftOptionsEnabled: PropTypes.bool,
   giftWrappingDisplayName: PropTypes.string,
   shippingAddress: PropTypes.shape({}),
@@ -92,7 +93,7 @@ ShippingReviewSection.propTypes = {
 };
 
 ShippingReviewSection.defaultProps = {
-  pickUpLabels: {},
+  labels: {},
   shippingAddress: {},
   isGiftOptionsEnabled: true,
   giftWrappingDisplayName: 'N/A',

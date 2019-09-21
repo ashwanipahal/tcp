@@ -9,6 +9,7 @@ const mapStateToProps = state => {
   return {
     shippingAddress,
     shippingMethod,
+    labels: CHECKOUT_SELECTOR.getShippingSectionLabels(state),
     // isGiftOptionsEnabled: CHECKOUT_SELECTOR.isGiftOptionsEnabled(state),
     // giftWrappingDisplayName:
     // CHECKOUT_SELECTOR.getSelectedGiftWrapDetails(state).displayName || 'N/A',

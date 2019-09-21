@@ -155,7 +155,7 @@ const getCartStores = state => {
 
 const getCartStoresToJs = createSelector(
   getCartStores,
-  store => store.toJS()
+  store => JSON.parse(JSON.stringify(store))
 );
 
 const getsflItemsList = state => {

@@ -28,7 +28,7 @@ const PickupStoreDisplay = props => {
   const bopisDate = `Today, ${today.month} ${today.date}`;
   bossItems = bossItems || storeItemsCount;
   bopisItems = bopisItems || storeItemsCount;
-  console.log('labels', labels);
+
   return (
     <div className={`${className}`}>
       <div className="pickup-store-details">
@@ -64,7 +64,9 @@ const PickupStoreDisplay = props => {
                 color="gray.900"
               >
                 {`PICK UP ${bopisItems} `}
-                {bopisItems === 1 ? 'item' : 'items'}
+                {bopisItems === 1
+                  ? labels.lbl_review_sectionPickupItem
+                  : labels.lbl_review_sectionPickupItems}
               </BodyCopy>
               <BodyCopy
                 fontSize="fs12"
@@ -87,7 +89,9 @@ const PickupStoreDisplay = props => {
                 color="gray.900"
               >
                 {`PICK UP ${bopisItems} `}
-                {bossItems === 1 ? 'item' : 'items'}
+                {bossItems === 1
+                  ? labels.lbl_review_sectionPickupItem
+                  : labels.lbl_review_sectionPickupItems}
               </BodyCopy>
               <BodyCopy
                 fontSize="fs12"

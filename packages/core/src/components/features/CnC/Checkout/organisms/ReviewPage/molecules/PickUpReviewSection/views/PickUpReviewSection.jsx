@@ -11,10 +11,6 @@ import PickUpContactDisplay from '../../PickUpContactDisplay';
 import { ORDER_ITEM_TYPE } from '../../../../../../../../../services/abstractors/CnC/CartItemTile';
 
 export class PickUpReviewSection extends React.PureComponent {
-  handleEnterEditModeClick = () => {
-    console.log('handleEnterEditModeClick');
-  };
-
   /**
    * @method generateStoreDetails
    * @param {array} pickupItems - pickup details of items
@@ -73,10 +69,11 @@ export class PickUpReviewSection extends React.PureComponent {
     const {
       className,
       pickUpContactPerson,
-      pickUpLabels,
+      labels,
       cartStores,
       pickUpAlternatePerson,
       isHasPickUpAlternatePerson,
+      onEdit,
     } = this.props;
     const pickupStores = [...cartStores]
       .filter(store => store.stLocId !== 'ECOM')
@@ -99,9 +96,9 @@ export class PickUpReviewSection extends React.PureComponent {
             {pickUpContactPerson && (
               <React.Fragment>
                 <TitlePlusEditButton
-                  title={pickUpLabels.pickupContactText}
-                  editTitle={pickUpLabels.anchorEdit}
-                  onEdit={this.handleEnterEditModeClick}
+                  title={labels.lbl_review_pickupSectionTitle}
+                  editTitle={labels.lbl_review_sectionAnchor}
+                  onEdit={onEdit}
                   dataLocator="pickup-section"
                 />
                 <BodyCopy
@@ -110,8 +107,7 @@ export class PickUpReviewSection extends React.PureComponent {
                   color="gray.900"
                   fontWeight="regular"
                 >
-                  We will send you an email when your order is ready. A government issued ID is
-                  required to pick up the order.
+                  {labels.lbl_review_sectionPickupText}
                 </BodyCopy>
               </React.Fragment>
             )}
@@ -122,7 +118,7 @@ export class PickUpReviewSection extends React.PureComponent {
             return (
               store && (
                 <Col key={store.storeId} colSize={{ small: 6, medium: 4, large: 5 }}>
-                  <PickupStoreDisplay orderType={store.orderType} store={store} />
+                  <PickupStoreDisplay labels={labels} orderType={store.orderType} store={store} />
                 </Col>
               )
             );
@@ -137,7 +133,7 @@ export class PickUpReviewSection extends React.PureComponent {
               fontWeight="extrabold"
               color="gray.900"
             >
-              {pickUpLabels.pickupContactText}
+              {labels.lbl_review_pickupSectionTitle}
             </BodyCopy>
             <PickUpContactDisplay formData={pickUpContactPerson} />
           </Col>
@@ -150,7 +146,7 @@ export class PickUpReviewSection extends React.PureComponent {
                 fontWeight="extrabold"
                 color="gray.900"
               >
-                Alternate Pickup Contact
+                {labels.lbl_review_sectionPickupAlternateHeading}
               </BodyCopy>
               <PickUpContactDisplay formData={pickUpAlternatePerson} />
             </Col>
@@ -163,7 +159,10 @@ export class PickUpReviewSection extends React.PureComponent {
 
 PickUpReviewSection.propTypes = {
   className: PropTypes.string.isRequired,
-  pickUpLabels: PropTypes.shape({}),
+  labels: PropTypes.shape({
+    lbl_review_pickupSectionTitle: PropTypes.string,
+    lbl_review_sectionPickupAlternateHeading: PropTypes.string,
+  }),
   pickUpContactPerson: PropTypes.shape({
     firstName: PropTypes.string.isRequired,
     lastName: PropTypes.string.isRequired,
@@ -177,10 +176,14 @@ PickUpReviewSection.propTypes = {
   }),
   isHasPickUpAlternatePerson: PropTypes.bool.isRequired,
   cartStores: PropTypes.shape({}).isRequired,
+  onEdit: PropTypes.func.isRequired,
 };
 
 PickUpReviewSection.defaultProps = {
-  pickUpLabels: {},
+  labels: {
+    lbl_review_pickupSectionTitle: '',
+    lbl_review_sectionPickupAlternateHeading: '',
+  },
   pickUpContactPerson: {
     firstName: '',
     lastName: '',

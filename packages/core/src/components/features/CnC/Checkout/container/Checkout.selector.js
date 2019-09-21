@@ -636,6 +636,61 @@ const getCurrentLanguage = state => {
   return state.CountrySelector.get('language') || constants.DEFAULT_LANGUAGE;
 };
 
+const getReviewPageLabels = state =>
+  state.Labels && state.Labels.checkout && state.Labels.checkout.review;
+
+/**
+ * @function getPickupSectionLabels
+ * @param {Object} state
+ * @description This selector provides the state of the review page labels.
+ * @returns {Object}
+ */
+const getPickupSectionLabels = createSelector(
+  getReviewPageLabels,
+  reviewLabels => {
+    const labels = {};
+    const labelKeys = [
+      'lbl_review_pickupSectionTitle',
+      'lbl_review_sectionAnchor',
+      'lbl_review_sectionPickupText',
+      'lbl_review_sectionPickupItem',
+      'lbl_review_sectionPickupItems',
+      'lbl_review_sectionPickupToday',
+      'lbl_review_sectionPickupAlternateHeading',
+    ];
+    labelKeys.forEach(key => {
+      labels[key] = getLabelValue(reviewLabels, key);
+    });
+    return labels;
+  }
+);
+
+/**
+ * @function getShippingSectionLabels
+ * @param {Object} state
+ * @description This selector provides the state of the review page labels.
+ * @returns {Object}
+ */
+const getShippingSectionLabels = createSelector(
+  getReviewPageLabels,
+  reviewLabels => {
+    const labels = {};
+    const labelKeys = [
+      'lbl_review_shippingSectionTitle',
+      'lbl_review_sectionAnchor',
+      'lbl_review_sectionShippingHeading',
+      'lbl_review_sectionShippingAddressTitle',
+      'lbl_review_sectionShippingMethodTitle',
+      'lbl_review_sectionShippingGiftServiceTitle',
+      'lbl_review_sectionShippingGiftServiceDefault',
+    ];
+    labelKeys.forEach(key => {
+      labels[key] = getLabelValue(reviewLabels, key);
+    });
+    return labels;
+  }
+);
+
 export default {
   getRecalcOrderPointsInterval,
   getIsOrderHasShipping,
@@ -687,6 +742,8 @@ export default {
   getGiftServicesFormData,
   getGiftServicesSend,
   getReviewLabels,
+  getPickupSectionLabels,
+  getShippingSectionLabels,
   isGiftOptionsEnabled,
   getPaypalPaymentSettings,
   getSelectedGiftWrapDetails,

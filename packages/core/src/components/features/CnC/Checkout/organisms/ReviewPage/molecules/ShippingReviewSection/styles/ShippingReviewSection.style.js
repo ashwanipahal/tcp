@@ -1,6 +1,7 @@
 import { css } from 'styled-components';
 
 const styles = css`
+  margin-bottom: 16px;
   .shippingAddressTitle {
     margin-bottom: 14px;
   }

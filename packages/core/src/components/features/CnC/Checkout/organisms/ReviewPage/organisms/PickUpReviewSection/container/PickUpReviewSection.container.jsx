@@ -22,9 +22,9 @@ const mapStateToProps = state => {
   return {
     cartStores: BAG_SELECTORS.getCartStoresToJs(state),
     pickUpContactPerson,
-    pickUpLabels: CHECKOUT_SELECTORS.getPickUpContactFormLabels(state),
     pickUpAlternatePerson,
     isHasPickUpAlternatePerson: isPickupAlt(state),
+    labels: CHECKOUT_SELECTORS.getPickupSectionLabels(state),
   };
 };
 

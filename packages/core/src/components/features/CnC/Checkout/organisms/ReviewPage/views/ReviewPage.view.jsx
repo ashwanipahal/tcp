@@ -43,12 +43,20 @@ class ReviewPage extends React.PureComponent {
         <CheckoutSectionTitleDisplay title={header} dataLocator="review-title" />
         {!!orderHasPickUp && (
           <div className="review-pickup">
-            <PickUpReviewSectionContainer />
+            <PickUpReviewSectionContainer
+              onEdit={() => {
+                utility.routeToPage(CHECKOUT_ROUTES.pickupPage);
+              }}
+            />
           </div>
         )}
         {!!orderHasShipping && (
           <div className="review-shipping">
-            <ShippingReviewSection />
+            <ShippingReviewSection
+              onEdit={() => {
+                utility.routeToPage(CHECKOUT_ROUTES.shippingPage);
+              }}
+            />
           </div>
         )}
         <BillingSection />
