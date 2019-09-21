@@ -6,4 +6,10 @@ const styles = css`
   justify-content: space-between;
 `;
 
+export const customPriceStyles = css`
+  .list-badge-container {
+    display: flex;
+  }
+`;
+
 export default styles;

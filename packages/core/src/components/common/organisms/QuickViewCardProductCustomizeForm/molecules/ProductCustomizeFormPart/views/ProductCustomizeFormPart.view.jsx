@@ -2,8 +2,8 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import { Row, Col, BodyCopy } from '../../../../../atoms';
 import withStyles from '../../../../../hoc/withStyles';
-import styles from '../styles/ProductCustomizeFormPart.style';
-import ProductPricesBopisSection from './QuickViewComponents';
+import styles, { customPriceStyles } from '../styles/ProductCustomizeFormPart.style';
+import ProductPrice from '../../../../../../features/browse/ProductDetail/molecules/ProductPrice/ProductPrice';
 import { PRODUCT_INFO_PROP_TYPE_SHAPE } from '../../../../../../features/browse/ProductListing/molecules/ProductList/propTypes/productsAndItemsPropTypes';
 import { COLOR_FITS_SIZES_MAP_PROP_TYPE } from '../../../../PickupStoreModal/PickUpStoreModal.proptypes';
 import ProductAddToBagContainer from '../../../../../molecules/ProductAddToBag/container/ProductAddToBag.container';
@@ -11,6 +11,7 @@ import ProductAddToBagContainer from '../../../../../molecules/ProductAddToBag/c
 import {
   getMapSliceForColorProductId,
   getMapSliceForColor,
+  getPrices,
 } from '../../../../../../features/browse/ProductListing/molecules/ProductList/utils/productsCommonUtils';
 
 class ProductCustomizeFormPart extends React.Component {
@@ -34,9 +35,13 @@ class ProductCustomizeFormPart extends React.Component {
     const {
       className,
       productInfo,
-      productInfo: { listPrice, offerPrice },
       plpLabels,
       currency,
+      priceCurrency,
+      currencyExchange,
+      isCanada,
+      isHasPlcc,
+      isInternationalShipping,
     } = this.props;
 
     const { currentColorEntry } = this.state;
@@ -44,6 +49,7 @@ class ProductCustomizeFormPart extends React.Component {
     const imageUrl = currentColorEntry
       ? productInfo.imagesByColor[currentColorEntry.color.name].basicImageUrl
       : null;
+    const prices = productInfo && getPrices(productInfo, currentColorEntry.color.name);
 
     return (
       <div className={className}>
@@ -61,12 +67,17 @@ class ProductCustomizeFormPart extends React.Component {
               >
                 {productInfo.name}
               </BodyCopy>
-
-              <ProductPricesBopisSection
+              <ProductPrice
                 currencySymbol={currency}
-                currentColorEntry={currentColorEntry}
-                listPrice={listPrice}
-                offerPrice={offerPrice}
+                currencyExchange={currencyExchange}
+                priceCurrency={priceCurrency}
+                isItemPartNumberVisible={false}
+                {...prices}
+                isCanada={isCanada}
+                inheritedStyles={customPriceStyles}
+                customFonts={{ listPriceFont: 'fs14' }}
+                isPlcc={isHasPlcc}
+                isInternationalShipping={isInternationalShipping}
               />
             </div>
             <ProductAddToBagContainer
@@ -87,11 +98,21 @@ ProductCustomizeFormPart.propTypes = {
   productInfo: PRODUCT_INFO_PROP_TYPE_SHAPE.isRequired,
   currency: PropTypes.string,
   className: PropTypes.string,
+  priceCurrency: PropTypes.string,
+  currencyExchange: PropTypes.string,
+  isCanada: PropTypes.bool,
+  isInternationalShipping: PropTypes.bool,
+  isHasPlcc: PropTypes.bool,
 };
 
 ProductCustomizeFormPart.defaultProps = {
   currency: 'USD',
   className: '',
+  priceCurrency: '',
+  currencyExchange: '',
+  isCanada: false,
+  isHasPlcc: false,
+  isInternationalShipping: false,
 };
 
 export default withStyles(ProductCustomizeFormPart, styles);

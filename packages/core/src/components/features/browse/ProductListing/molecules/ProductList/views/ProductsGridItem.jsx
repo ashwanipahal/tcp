@@ -1,7 +1,7 @@
 /* eslint-disable extra-rules/no-commented-out-code */
 import React from 'react';
 import productGridItemPropTypes from '../propTypes/ProductGridItemPropTypes';
-// import Button from '../../../../../../common/atoms/Button';
+import Button from '../../../../../../common/atoms/Button';
 import FulfillmentSection from '../../../../../../common/organisms/FulfillmentSection';
 import { getLocator } from '../../../../../../../utils';
 import { getImagesToDisplay, getMapSliceForColorProductId } from '../utils/productsCommonUtils';
@@ -444,23 +444,23 @@ class ProductsGridItem extends React.PureComponent {
             promotionalMessageModified,
             promotionalPLCCMessageModified
           )}
-          {/* <div>
+          <div>
             <Button
               className="added-to-bag"
               fullWidth
               buttonVariation="fixed-width"
-              dataLocator={dataLocatorAddToBag || getLocator('global_addtocart_Button')}
+              dataLocator={getLocator('global_addtocart_Button')}
+              onClick={this.handleQuickViewOpenClick}
             >
               {labels.addToBag}
             </Button>
-          </div> */}
+          </div>
           <div className="fulfillment-section">
             <FulfillmentSection
               btnClassName="added-to-bag"
               dataLocator={dataLocatorAddToBag || getLocator('global_addtocart_Button')}
               buttonLabel={labels.addToBag}
               onPickupOpenClick={this.handlePickupOpenClick}
-              onQuickViewOpenClick={this.handleQuickViewOpenClick}
             />
           </div>
 
