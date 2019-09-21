@@ -3,6 +3,14 @@
 exports[`LabeledRadioButtonGroup should render correctly should match snapshot 1`] = `
 <div
   className="-container"
+  input={
+    Object {
+      "onChange": [MockFunction],
+      "value": Object {
+        "name": "2T",
+      },
+    }
+  }
 >
   <span
     className="-title"
@@ -14,10 +22,14 @@ exports[`LabeledRadioButtonGroup should render correctly should match snapshot 1
   >
     <LabeledRadioButton
       aria-describedby="error_2T_0"
-      checked={true}
-      className="-item item-selected-option"
+      checked={false}
+      className="-item"
       disabled={false}
-      input="2T"
+      input={
+        Object {
+          "name": "2T",
+        }
+      }
       name="2T_0"
       onChange={[Function]}
       style={Object {}}
@@ -33,10 +45,14 @@ exports[`LabeledRadioButtonGroup should render correctly should match snapshot 1
     </LabeledRadioButton>
     <LabeledRadioButton
       aria-describedby="error_2T_0"
-      checked={true}
-      className="-item item-selected-option"
+      checked={false}
+      className="-item"
       disabled={false}
-      input="2T"
+      input={
+        Object {
+          "name": "2T",
+        }
+      }
       name="2T_0"
       onChange={[Function]}
       style={Object {}}
@@ -52,10 +68,14 @@ exports[`LabeledRadioButtonGroup should render correctly should match snapshot 1
     </LabeledRadioButton>
     <LabeledRadioButton
       aria-describedby="error_2T_0"
-      checked={true}
-      className="-item item-selected-option"
+      checked={false}
+      className="-item"
       disabled={false}
-      input="2T"
+      input={
+        Object {
+          "name": "2T",
+        }
+      }
       name="2T_0"
       onChange={[Function]}
       style={Object {}}
@@ -71,10 +91,14 @@ exports[`LabeledRadioButtonGroup should render correctly should match snapshot 1
     </LabeledRadioButton>
     <LabeledRadioButton
       aria-describedby="error_2T_0"
-      checked={true}
-      className="-item item-selected-option"
+      checked={false}
+      className="-item"
       disabled={false}
-      input="2T"
+      input={
+        Object {
+          "name": "2T",
+        }
+      }
       name="2T_0"
       onChange={[Function]}
       style={Object {}}
@@ -90,10 +114,14 @@ exports[`LabeledRadioButtonGroup should render correctly should match snapshot 1
     </LabeledRadioButton>
     <LabeledRadioButton
       aria-describedby="error_2T_0"
-      checked={true}
-      className="-item item-selected-option"
+      checked={false}
+      className="-item"
       disabled={false}
-      input="2T"
+      input={
+        Object {
+          "name": "2T",
+        }
+      }
       name="2T_0"
       onChange={[Function]}
       style={Object {}}
@@ -116,6 +144,26 @@ exports[`LabeledRadioButtonGroup should render correctly should return null 1`] 
 exports[`LabeledRadioButtonGroup should render correctly should return null value 1`] = `
 <div
   className="-container"
+  input={
+    Object {
+      "onChange": [MockFunction] {
+        "calls": Array [
+          Array [
+            "3T",
+          ],
+        ],
+        "results": Array [
+          Object {
+            "type": "return",
+            "value": undefined,
+          },
+        ],
+      },
+      "value": Object {
+        "name": "2T",
+      },
+    }
+  }
 >
   <span
     className="-title"
@@ -127,10 +175,14 @@ exports[`LabeledRadioButtonGroup should render correctly should return null valu
   >
     <LabeledRadioButton
       aria-describedby="error_2T_5"
-      checked={true}
-      className="-item item-selected-option"
+      checked={false}
+      className="-item"
       disabled={false}
-      input="2T"
+      input={
+        Object {
+          "name": "2T",
+        }
+      }
       name="2T_5"
       onChange={[Function]}
       style={Object {}}
@@ -146,10 +198,14 @@ exports[`LabeledRadioButtonGroup should render correctly should return null valu
     </LabeledRadioButton>
     <LabeledRadioButton
       aria-describedby="error_2T_5"
-      checked={true}
-      className="-item item-selected-option"
+      checked={false}
+      className="-item"
       disabled={false}
-      input="2T"
+      input={
+        Object {
+          "name": "2T",
+        }
+      }
       name="2T_5"
       onChange={[Function]}
       style={Object {}}
@@ -165,10 +221,14 @@ exports[`LabeledRadioButtonGroup should render correctly should return null valu
     </LabeledRadioButton>
     <LabeledRadioButton
       aria-describedby="error_2T_5"
-      checked={true}
-      className="-item item-selected-option"
+      checked={false}
+      className="-item"
       disabled={false}
-      input="2T"
+      input={
+        Object {
+          "name": "2T",
+        }
+      }
       name="2T_5"
       onChange={[Function]}
       style={Object {}}
@@ -184,10 +244,14 @@ exports[`LabeledRadioButtonGroup should render correctly should return null valu
     </LabeledRadioButton>
     <LabeledRadioButton
       aria-describedby="error_2T_5"
-      checked={true}
-      className="-item item-selected-option"
+      checked={false}
+      className="-item"
       disabled={false}
-      input="2T"
+      input={
+        Object {
+          "name": "2T",
+        }
+      }
       name="2T_5"
       onChange={[Function]}
       style={Object {}}
@@ -203,10 +267,14 @@ exports[`LabeledRadioButtonGroup should render correctly should return null valu
     </LabeledRadioButton>
     <LabeledRadioButton
       aria-describedby="error_2T_5"
-      checked={true}
-      className="-item item-selected-option"
+      checked={false}
+      className="-item"
       disabled={false}
-      input="2T"
+      input={
+        Object {
+          "name": "2T",
+        }
+      }
       name="2T_5"
       onChange={[Function]}
       style={Object {}}

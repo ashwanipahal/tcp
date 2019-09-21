@@ -168,6 +168,7 @@ exports[`ProductAddToBagVanilla native should render correctly should call getFi
       },
     ]
   }
+  generalProductId="3000935_IV"
   initialValues={
     Object {
       "Fit": Object {
@@ -592,6 +593,7 @@ exports[`ProductAddToBagVanilla native should render correctly should match snap
       },
     ]
   }
+  generalProductId="3000935_IV"
   initialValues={
     Object {
       "Fit": Object {

@@ -32,6 +32,8 @@ import {
 import { removeCartItem } from '../../CartItemTile/container/CartItemTile.actions';
 import { imageGenerator } from '../../../../../services/abstractors/CnC/CartItemTile';
 import { getUserInfo } from '../../../account/User/container/User.actions';
+import { getIsInternationalShipping } from '../../../../../reduxStore/selectors/siteDetails.selectors';
+import { closeMiniBag } from '../../../../common/organisms/Header/container/Header.actions';
 
 // external helper function
 const PAYPAL_REDIRECT_PARAM = 'isPaypalPostBack';
@@ -163,8 +165,15 @@ export function* fetchModuleX({ payload = [] }) {
   }
 }
 
+/**
+ * routeForCartCheckout component. This is responsible for routing our web to specific page of checkout journey.
+ * @param {Boolean} recalc query parameter for recalculation of points
+ * @param {Object} navigation for navigating in mobile app
+ * @param {Boolean} closeModal for closing addedtoBag modal in app
+ */
 export function* routeForCartCheckout(recalc, navigation, closeModal) {
   const orderHasPickup = yield select(checkoutSelectors.getIsOrderHasPickup);
+  const IsInternationalShipping = yield select(getIsInternationalShipping);
   if (isMobileApp()) {
     if (orderHasPickup) {
       navigation.navigate(CONSTANTS.CHECKOUT_ROUTES_NAMES.CHECKOUT_PICKUP);
@@ -174,10 +183,15 @@ export function* routeForCartCheckout(recalc, navigation, closeModal) {
     if (closeModal) {
       closeModal();
     }
-  } else if (orderHasPickup) {
-    utility.routeToPage(CHECKOUT_ROUTES.pickupPage, { recalc });
+  } else if (!IsInternationalShipping) {
+    yield put(closeMiniBag());
+    if (orderHasPickup) {
+      utility.routeToPage(CHECKOUT_ROUTES.pickupPage, { recalc });
+    } else {
+      utility.routeToPage(CHECKOUT_ROUTES.shippingPage, { recalc });
+    }
   } else {
-    utility.routeToPage(CHECKOUT_ROUTES.shippingPage, { recalc });
+    utility.routeToPage(CHECKOUT_ROUTES.internationalCheckout, { recalc });
   }
 }
 

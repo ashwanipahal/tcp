@@ -317,11 +317,7 @@ exports[`ProductAddToBagVanilla should render correctly should match snapshot 1`
             }
             dataLocator="addnewaddress-state"
             id="color"
-            name={
-              Object {
-                "name": "WHITE",
-              }
-            }
+            name="color"
             onChange={[MockFunction]}
             title=":"
             width={87}
@@ -812,11 +808,7 @@ exports[`ProductAddToBagVanilla should render correctly should match snapshot wi
             }
             dataLocator="addnewaddress-state"
             id="color"
-            name={
-              Object {
-                "name": "WHITE",
-              }
-            }
+            name="color"
             onChange={[MockFunction]}
             title=":"
             width={87}

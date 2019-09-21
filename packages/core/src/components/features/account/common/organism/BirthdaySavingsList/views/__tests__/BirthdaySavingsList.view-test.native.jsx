@@ -1,7 +1,7 @@
 import React from 'react';
 import { fromJS } from 'immutable';
 import { shallow } from 'enzyme';
-import BirthdaySavingsList from '../BirthdaySavingsList.view.native';
+import BirthdaySavingsList, { InfoMessage } from '../BirthdaySavingsList.view.native';
 import EmptyBirthdayCard from '../../../../molecule/EmptyBirthdayCard';
 
 const labels = {
@@ -46,5 +46,44 @@ describe('BirthdaySavingsList component', () => {
     };
     const component = shallow(<BirthdaySavingsList {...props} />);
     expect(component.find(EmptyBirthdayCard)).toHaveLength(3);
+  });
+});
+
+describe('#instances', () => {
+  const removeBirthday = jest.fn();
+  const activeChild = {
+    childId: '12345',
+    childName: 'test',
+  };
+  const props = {
+    labels: {
+      lbl_profile_removeInfoText: 'dummy $childName$ dummy',
+    },
+    childrenBirthdays: fromJS([{ childId: '12345', childName: 'test' }]),
+    removeBirthday,
+    view: 'edit',
+  };
+  const component = shallow(<BirthdaySavingsList {...props} />);
+
+  it('showRemoveModal should render remove modal', () => {
+    component.instance().showRemoveModal(activeChild);
+    expect(component.state('removeModal')).toBe(true);
+  });
+
+  it('closeRemoveModal should close the remove modal', () => {
+    component.instance().closeRemoveModal();
+    expect(component.state('removeModal')).toBe(false);
+  });
+
+  it('removeBirthdayHandler should call removeBirthday prop', () => {
+    component.instance().removeBirthdayHandler({});
+    expect(removeBirthday).toHaveBeenCalled();
+  });
+});
+
+describe('InfoMessage component', () => {
+  it('should render correctly', () => {
+    const component = shallow(<InfoMessage labels={labels} />);
+    expect(component).toMatchSnapshot();
   });
 });

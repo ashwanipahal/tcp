@@ -10,10 +10,9 @@ import { getIconPath, getLocator, isGymboree } from '../../../../../utils';
 
 import config from '../config';
 
+const { ctaTypes, CAROUSEL_OPTIONS, IMG_DATA_TCP, IMG_DATA_GYM } = config;
 const bigCarrotIcon = 'carousel-big-carrot';
 const bigCarrotIconGym = 'carousel-big-carrot-white';
-
-const { ctaTypes, CAROUSEL_OPTIONS, IMG_DATA_TCP, IMG_DATA_GYM } = config;
 
 class ModuleA extends React.Component {
   constructor(props) {
@@ -43,11 +42,27 @@ class ModuleA extends React.Component {
   };
 
   render() {
-    const { largeCompImageCarousel, ctaItems, ctaType, className } = this.props;
+    const {
+      largeCompImageCarousel,
+      ctaItems,
+      ctaType,
+      className,
+      accessibility: { playIconButton, pauseIconButton } = {},
+    } = this.props;
+
     const buttonListCtaType = ctaTypes[ctaType];
     const { isRibbonLeftAligned } = this.state;
     const isLinkList = buttonListCtaType === 'linkCTAList';
     const carouselIcon = isGymboree() ? bigCarrotIconGym : bigCarrotIcon;
+
+    const carouselConfig = {
+      autoplay: true,
+      dataLocatorPlay: getLocator('moduleA_play_button'),
+      dataLocatorPause: getLocator('moduleA_pause_button'),
+      customArrowLeft: getIconPath(carouselIcon),
+      customArrowRight: getIconPath(carouselIcon),
+      dataLocatorCarousel: 'carousel_banner',
+    };
 
     CAROUSEL_OPTIONS.prevArrow = (
       <button type="button" data-locator="moduleA_left_arrow" className="slick-prev" />
@@ -55,7 +70,9 @@ class ModuleA extends React.Component {
     CAROUSEL_OPTIONS.nextArrow = (
       <button type="button" data-locator="moduleA_right_arrow" className="slick-prev" />
     );
-    CAROUSEL_OPTIONS.hidePlayPause = largeCompImageCarousel.length === 1;
+    carouselConfig.autoplay = carouselConfig.autoplay && largeCompImageCarousel.length > 1;
+    carouselConfig.pauseIconButtonLabel = pauseIconButton;
+    carouselConfig.playIconButtonLabel = playIconButton;
 
     return (
       <Row
@@ -72,17 +89,7 @@ class ModuleA extends React.Component {
           }}
         >
           <div>
-            <Carousel
-              options={CAROUSEL_OPTIONS}
-              carouselConfig={{
-                autoplay: true,
-                dataLocatorCarousel: getLocator('carousel_banner'),
-                dataLocatorPlay: getLocator('moduleA_play_button'),
-                dataLocatorPause: getLocator('moduleA_pause_button'),
-                customArrowLeft: getIconPath(carouselIcon),
-                customArrowRight: getIconPath(carouselIcon),
-              }}
-            >
+            <Carousel options={CAROUSEL_OPTIONS} carouselConfig={carouselConfig}>
               {largeCompImageCarousel.map((item, i) => {
                 const {
                   headerText,
@@ -153,6 +160,7 @@ ModuleA.defaultProps = {
   ctaItems: [],
   ctaType: 'stackedCTAList',
   className: '',
+  accessibility: {},
 };
 
 ModuleA.propTypes = {
@@ -160,6 +168,10 @@ ModuleA.propTypes = {
   ctaItems: PropTypes.shape([]),
   ctaType: PropTypes.oneOf(['stackedCTAList', 'linkCTAList', 'scrollCTAList', 'imageCTAList']),
   className: PropTypes.string,
+  accessibility: PropTypes.shape({
+    playIconButton: PropTypes.string,
+    pauseIconButton: PropTypes.string,
+  }),
 };
 
 export default withStyles(errorBoundary(ModuleA), style);
