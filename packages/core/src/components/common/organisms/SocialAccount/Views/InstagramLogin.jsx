@@ -10,17 +10,14 @@
 
 import React from 'react';
 import config from './config';
-import {
-  getSiteId,
-  getLocationOrigin,
-  handleGenericKeyDown,
-} from '../../../../../utils/utils.web';
+import { getSiteId, getLocationOrigin, handleGenericKeyDown } from '../../../../../utils/utils.web';
 import { getIconPath } from '../../../../../utils';
 import BodyCopy from '../../../atoms/BodyCopy';
 import ImageComp from '../../../atoms/Image';
 
 let elem;
 let saveAccountInfo;
+let closeModal;
 
 /**
  * @function onClickHandler This function handles the click event on plus/cross icon
@@ -54,16 +51,7 @@ export const onClickHandler = () => {
 const InstagramLoginComponent = props => {
   saveAccountInfo = props.saveSocialAcc;
   elem = props.loginStatus;
-
-  /**
-   * @method handleOnKeyPress
-   * handles the keypress with tabbing focus.
-   * triggers the edit method when enter key is pressed
-   */
-
-  function handleOnKeyPress() {
-    return handleGenericKeyDown(event, config.KEY_CODES.ENTER, onClickHandler);
-  }
+  closeModal = props.pointModalClose;
 
   const onTokenCapture = () => {
     const instagramTokenField = document.getElementById('instagram-token');
@@ -77,6 +65,7 @@ const InstagramLoginComponent = props => {
       };
       saveAccountInfo({ socialAccInfo });
       instagramTokenField.value = '';
+      closeModal({ state: true });
     }
   };
 
@@ -91,7 +80,6 @@ const InstagramLoginComponent = props => {
                 <BodyCopy
                   className="social-accounts__align social_accounts_cross_plus-icon"
                   onClick={onClickHandler}
-                  onKeyDown={handleOnKeyPress}
                   tabIndex="0"
                 >
                   <ImageComp
@@ -112,7 +100,6 @@ const InstagramLoginComponent = props => {
                     src={getIconPath('close-icon')}
                     data-locator="facebookCrossIcon"
                     onClick={onClickHandler}
-                    onKeyDown={handleOnKeyPress}
                   />
                 </BodyCopy>
               )}
