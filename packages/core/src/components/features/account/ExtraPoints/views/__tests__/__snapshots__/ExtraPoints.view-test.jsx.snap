@@ -71,5 +71,30 @@ exports[`EarnPointsVanilla component should renders correctly 1`] = `
   <Styled(Row)
     fullBleed={true}
   />
+  <Styled(BodyCopy)
+    className="elem-mt-XL"
+    color="text.primary"
+    component="p"
+    fontFamily="secondary"
+    fontSize="fs14"
+    fontWeight="regular"
+    letterSpacing="normal"
+    lineHeight="normal"
+    textAlign="left"
+  >
+    <Styled(Anchor)
+      anchorVariation="primary"
+      dataLocator="shipping-email-signUp-contact-anchor"
+      fontSizeVariation="large"
+      href="https://www.childrensplace.com/us/content/mpr-terms"
+      noLink={true}
+      noUnderline={true}
+      target="_blank"
+      underline={true}
+    >
+      lbl_common_check_here
+    </Styled(Anchor)>
+    lbl_common_extra_ppoints_terms_conditions
+  </Styled(BodyCopy)>
 </div>
 `;

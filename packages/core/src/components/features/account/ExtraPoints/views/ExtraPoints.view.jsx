@@ -1,9 +1,10 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import { getLabelValue } from '@tcp/core/src/utils/utils';
-import { Row, Col } from '@tcp/core/src/components/common/atoms';
+import { Row, Col, BodyCopy, Anchor } from '@tcp/core/src/components/common/atoms';
 import withStyles from '@tcp/core/src/components/common/hoc/withStyles';
 import styles from '../styles/ExtraPoints.style';
+import externalEndpoints from '../../common/externalEndpoints';
 import FormPageHeadingComponent from '../../common/molecule/FormPageHeading';
 import DetailedEarnExtraPointsTile from '../../common/molecule/DetailedEarnExtraPointsTile';
 import DetailedEarnExtraPointsSingleTileComponent from '../../common/molecule/DetailedEarnExtraPointsTile/views/DetailedEarnExtraPointsSingleTile.view';
@@ -88,6 +89,21 @@ const EarnPoints = ({ className, labels, waysToEarn, onViewActivityDetails }) =>
             );
           })}
       </Row>
+      <BodyCopy fontSize="fs14" fontWeight="regular" fontFamily="secondary" className="elem-mt-XL">
+        <Anchor
+          noUnderline
+          anchorVariation="primary"
+          fontSizeVariation="large"
+          underline
+          noLink
+          href={externalEndpoints.mprTermsPage}
+          target="_blank"
+          dataLocator="shipping-email-signUp-contact-anchor"
+        >
+          {getLabelValue(labels, 'lbl_common_check_here')}
+        </Anchor>
+        {getLabelValue(labels, 'lbl_common_extra_ppoints_terms_conditions')}
+      </BodyCopy>
     </div>
   );
 };
