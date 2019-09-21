@@ -48,6 +48,7 @@ import SearchBarReducer from '@tcp/web/src/components/features/content/Header/mo
 import SocialReducer from '@tcp/core/src/components/common/organisms/SocialAccount/container/Social.reducer';
 import SearchPageReducer from '@tcp/core/src/components/features/browse/SearchDetail/container/SearchDetail.reducer';
 import MyFavoriteStoreReducer from '@tcp/core/src/components/features/account/MyProfile/organism/MyFavoriteStore/container/MyFavoriteStore.reducer';
+import PointsClaimReducer from '@tcp/core/src/components/features/account/PointsClaim/container/PointsClaim.reducer';
 
 import {
   APICONFIG_REDUCER_KEY,
@@ -107,7 +108,9 @@ import {
   SEARCH_REDUCER_KEY,
   SOCIAL_REDUCER_KEY,
   SLP_PAGE_REDUCER_KEY,
+  POINTS_CLAIM_REDUCER_KEY,
 } from '@tcp/core/src/constants/reducer.constants';
+import { TRACK_PAGE_VIEW } from '@tcp/core/src/analytics';
 import HeaderReducer from '@tcp/core/src/components/common/organisms/Header/container/Header.reducer';
 import FooterReducer from '@tcp/core/src/components/common/organisms/Footer/container/Footer.reducer';
 import NavigationReducer from '@tcp/core/src/components/features/content/Navigation/container/Navigation.reducer';
@@ -139,7 +142,26 @@ const filteredProductTabListReducer = createFilteredReducer(
   PRODUCT_TAB_LIST_REDUCER_KEY
 );
 
+/**
+ * TODO: This reducer is fragile. We should handle page
+ * name changes in a cleaner way.
+ *
+ * @see RouteTracker.js
+ */
+function pageNameReducer(state = '', action) {
+  switch (action.type) {
+    case TRACK_PAGE_VIEW: {
+      const { props } = action.payload;
+      const { pageName = '' } = (props && props.initialProps && props.initialProps.pageProps) || {};
+      return pageName;
+    }
+    default:
+      return state;
+  }
+}
+
 export default combineReducers({
+  pageName: pageNameReducer,
   [SOCIAL_REDUCER_KEY]: SocialReducer,
   [APICONFIG_REDUCER_KEY]: filteredAppConfigReducer,
   [APPLY_PLCC_REDUCER_KEY]: ApplyCardReducer,
@@ -198,4 +220,5 @@ export default combineReducers({
   [PICKUP_MODAL_REDUCER_KEY]: PickupModalReducer,
   [RECOMMENDATIONS_REDUCER_KEY]: RecommendationsReducer,
   [SLP_PAGE_REDUCER_KEY]: SearchPageReducer,
+  [POINTS_CLAIM_REDUCER_KEY]: PointsClaimReducer,
 });

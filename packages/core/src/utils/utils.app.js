@@ -1,7 +1,7 @@
 /* eslint-disable global-require */
 /* eslint-disable import/no-unresolved */
 import { NavigationActions, StackActions } from 'react-navigation';
-import { Dimensions, Linking, Platform, PixelRatio } from 'react-native';
+import { Dimensions, Linking, Platform, PixelRatio, StyleSheet } from 'react-native';
 import logger from '@tcp/core/src/utils/loggerInstance';
 import AsyncStorage from '@react-native-community/async-storage';
 import { getAPIConfig } from './utils';
@@ -543,3 +543,25 @@ export function setTestId(id) {
   }
   return {};
 }
+
+/**
+ * Avoid breaking of the app if author accidentally pass invalid color from the CMS.
+ * Return null if color is invalid else return the color.
+ * @param {String} color Color string to validate
+ */
+export const validateColor = color => {
+  let colorSheet = { viewColor: { color: null } };
+  try {
+    colorSheet = StyleSheet.create({
+      // eslint-disable-next-line react-native/no-unused-styles
+      viewColor: {
+        color,
+      },
+    });
+  } catch (e) {
+    // eslint-disable-next-line no-console
+    console.warn(`Invalid color: ${color}`);
+  }
+
+  return colorSheet.viewColor.color;
+};

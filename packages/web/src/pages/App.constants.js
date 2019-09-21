@@ -8,6 +8,7 @@ const CHECKOUT_STAGES = {
   BILLING: 'billing',
   REVIEW: 'review',
   CONFIRMATION: 'confirmation',
+  INTERNATIONAL_CHECKOUT: 'international-checkout',
 };
 
 export const CHECKOUT_PAGE = 'checkout';

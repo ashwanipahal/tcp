@@ -2,6 +2,7 @@ import { connect } from 'react-redux';
 import {
   openNavigationDrawer,
   closeNavigationDrawer,
+  openMiniBag,
 } from '@tcp/core/src/components/common/organisms/Header/container/Header.actions';
 import { setTrackOrderModalMountedState } from '@tcp/core/src/components/features/account/TrackOrder/container/TrackOrder.actions';
 import { openOverlayModal } from '@tcp/core/src/components/features/OverlayModal/container/OverlayModal.actions';
@@ -36,6 +37,9 @@ const mapDispatchToProps = dispatch => {
     },
     closeNavigationDrawer: () => {
       dispatch(closeNavigationDrawer());
+    },
+    openMiniBagDispatch: () => {
+      dispatch(openMiniBag());
     },
     openOverlay: component => dispatch(openOverlayModal(component)),
     openTrackOrderOverlay: payload => dispatch(setTrackOrderModalMountedState(payload)),
