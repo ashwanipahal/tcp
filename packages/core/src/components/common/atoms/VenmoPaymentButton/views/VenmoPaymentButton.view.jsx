@@ -19,6 +19,9 @@ export class VenmoPaymentButton extends Component {
     };
   }
 
+  /**
+   * This method is to validate if we can call the venmo client token api.
+   */
   canCallVenmoApi = () => {
     const { authorizationKey, mode, enabled } = this.props;
     return enabled && authorizationKey && mode === modes.CLIENT_TOKEN;

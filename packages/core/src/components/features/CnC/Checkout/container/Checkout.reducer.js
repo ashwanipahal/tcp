@@ -149,8 +149,6 @@ function uiFlagReducer(checkout, action) {
     //   return merge(uiFlags, { paymentError: action.paymentError });
     // case CheckoutConstants.CHECKOUT_FLAGS_SET_ADDRESS_ERROR:
     //   return checkout.setIn(['uiFlags', 'addressError'], action.addressError);
-    //  case 'CHECKOUT_FLAGS_SET_VENMO_PAYMENT_IN_PROGRESS':
-    //    return uiFlags.setIn(['venmoPaymentInProgress'], action.payload);
     // case 'CHECKOUT_FLAGS_SET_VENMO_INFO_MESG_DISPLAYED':
     //   return uiFlags.setIn(['venmoInformationMessageDisplayed'], action.payload);
     // case actionTypes.CHANGE: { // Listen in on redux-form change events and enjoy the pure function approach

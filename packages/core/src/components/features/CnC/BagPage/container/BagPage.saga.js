@@ -33,6 +33,7 @@ import { removeCartItem } from '../../CartItemTile/container/CartItemTile.action
 import { imageGenerator } from '../../../../../services/abstractors/CnC/CartItemTile';
 import { getUserInfo } from '../../../account/User/container/User.actions';
 import { getIsInternationalShipping } from '../../../../../reduxStore/selectors/siteDetails.selectors';
+import { getAddressListState } from '../../../account/AddressBook/container/AddressBook.selectors';
 
 // external helper function
 const PAYPAL_REDIRECT_PARAM = 'isPaypalPostBack';
@@ -173,6 +174,9 @@ export function* fetchModuleX({ payload = [] }) {
 export function* routeForCartCheckout(recalc, navigation, closeModal) {
   const orderHasPickup = yield select(checkoutSelectors.getIsOrderHasPickup);
   const IsInternationalShipping = yield select(getIsInternationalShipping);
+  const isVenmoPaymentInProgress = yield select(checkoutSelectors.isVenmoPaymentInProgress);
+  const addressList = yield select(getAddressListState);
+  const hasDefaultShippingAddress = addressList && addressList.size > 0;
   if (isMobileApp()) {
     if (orderHasPickup) {
       navigation.navigate(CONSTANTS.CHECKOUT_ROUTES_NAMES.CHECKOUT_PICKUP);
@@ -185,6 +189,8 @@ export function* routeForCartCheckout(recalc, navigation, closeModal) {
   } else if (!IsInternationalShipping) {
     if (orderHasPickup) {
       utility.routeToPage(CHECKOUT_ROUTES.pickupPage, { recalc });
+    } else if (isVenmoPaymentInProgress && hasDefaultShippingAddress) {
+      utility.routeToPage(CHECKOUT_ROUTES.reviewPage, { recalc });
     } else {
       utility.routeToPage(CHECKOUT_ROUTES.shippingPage, { recalc });
     }
