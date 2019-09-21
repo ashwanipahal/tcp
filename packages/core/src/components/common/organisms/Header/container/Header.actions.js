@@ -14,6 +14,18 @@ export const closeNavigationDrawer = payload => {
   };
 };
 
+export const closeMiniBag = () => {
+  return {
+    type: HEADER_CONSTANTS.CLOSE_MINI_BAG,
+  };
+};
+
+export const openMiniBag = () => {
+  return {
+    type: HEADER_CONSTANTS.OPEN_MINI_BAG,
+  };
+};
+
 export const loadHeaderData = payload => {
   return {
     payload,
