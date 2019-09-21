@@ -2,7 +2,9 @@ import { css } from 'styled-components';
 
 const styles = css`
   margin-bottom: ${props => props.theme.spacing.ELEM_SPACING.XL};
-
+  .pickupContactAlternateContainer {
+    margin-top: 0px;
+  }
   .row-one {
     margin-bottom: ${props => props.theme.spacing.ELEM_SPACING.LRG};
   }
@@ -16,6 +18,18 @@ const styles = css`
   }
   .pickupTitle {
     margin-bottom: ${props => props.theme.spacing.ELEM_SPACING.SM};
+  }
+
+  @media ${props => props.theme.mediaQuery.smallMax} {
+    .row-one {
+      margin-top: ${props => props.theme.spacing.ELEM_SPACING.XS};
+    }
+    .row-two {
+      margin-bottom: ${props => props.theme.spacing.ELEM_SPACING.XL};
+    }
+    .pickupContactAlternateContainer {
+      margin-top: ${props => props.theme.spacing.ELEM_SPACING.XL};
+    }
   }
 `;
 

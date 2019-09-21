@@ -125,7 +125,7 @@ export class PickUpReviewSection extends React.PureComponent {
           })}
         </Row>
         <Row fullBleed>
-          <Col colSize={{ small: 6, medium: 4, large: 5 }}>
+          <Col className="pickupContactPersonContainer" colSize={{ small: 6, medium: 4, large: 5 }}>
             <BodyCopy
               fontSize="fs16"
               fontFamily="secondary"
@@ -138,7 +138,10 @@ export class PickUpReviewSection extends React.PureComponent {
             <PickUpContactDisplay formData={pickUpContactPerson} />
           </Col>
           {isHasPickUpAlternatePerson && (
-            <Col colSize={{ small: 6, medium: 4, large: 5 }}>
+            <Col
+              className="pickupContactAlternateContainer"
+              colSize={{ small: 6, medium: 4, large: 5 }}
+            >
               <BodyCopy
                 fontSize="fs16"
                 fontFamily="secondary"

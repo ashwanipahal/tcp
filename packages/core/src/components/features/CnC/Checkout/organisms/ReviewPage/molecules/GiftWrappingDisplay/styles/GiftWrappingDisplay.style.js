@@ -1,7 +1,7 @@
 import { css } from 'styled-components';
 
 const styles = css`
-  margin-top: 24px;
+  margin-top: ${props => props.theme.spacing.ELEM_SPACING.LRG};
 `;
 
 export default styles;

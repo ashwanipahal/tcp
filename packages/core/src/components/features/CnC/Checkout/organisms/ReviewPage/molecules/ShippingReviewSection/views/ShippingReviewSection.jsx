@@ -67,9 +67,12 @@ export class ShippingReviewSection extends React.PureComponent {
             </BodyCopy>
           </Col>
           <Col colSize={{ small: 6, medium: 4, large: 5 }}>
-            {shippingMethod && <ShippingMethodDisplay displayName={shippingMethod.displayName} />}
-
-            {isGiftOptionsEnabled && <GiftWrappingDisplay displayName={giftWrappingDisplayName} />}
+            {shippingMethod && (
+              <ShippingMethodDisplay labels={labels} displayName={shippingMethod.displayName} />
+            )}
+            {isGiftOptionsEnabled && (
+              <GiftWrappingDisplay labels={labels} displayName={giftWrappingDisplayName} />
+            )}
           </Col>
         </Row>
       </div>

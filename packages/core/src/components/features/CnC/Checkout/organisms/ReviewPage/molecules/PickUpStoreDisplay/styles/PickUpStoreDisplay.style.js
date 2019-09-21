@@ -1,6 +1,9 @@
 import { css } from 'styled-components';
 
 const styles = css`
+  @media ${props => props.theme.mediaQuery.smallMax} {
+    margin-top: 16px;
+  }
   .pickup-store-details {
     padding: ${props => props.theme.spacing.APP_LAYOUT_SPACING.XS};
     display: flex;

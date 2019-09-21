@@ -19,7 +19,7 @@ class ShippingMethodDisplay extends React.PureComponent {
             fontWeight="extrabold"
             className="heading"
           >
-            {labels.methodTitle}
+            {labels.lbl_review_sectionShippingMethodTitle}
           </BodyCopy>
           <BodyCopy
             fontSize="fs16"
@@ -44,7 +44,7 @@ ShippingMethodDisplay.propTypes = {
 
 ShippingMethodDisplay.defaultProps = {
   labels: {
-    methodTitle: 'Shipping Method',
+    lbl_review_sectionShippingMethodTitle: 'Shipping Method',
   },
 };
 
