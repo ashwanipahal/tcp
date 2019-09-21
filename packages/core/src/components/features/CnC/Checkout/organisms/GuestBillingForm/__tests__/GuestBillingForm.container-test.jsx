@@ -1,6 +1,9 @@
 import React from 'react';
 import { shallow } from 'enzyme';
-import { GuestBillingContainerVanilla, mapDispatchToProps } from '../container/GuestBillingForm.container';
+import {
+  GuestBillingContainerVanilla,
+  mapDispatchToProps,
+} from '../container/GuestBillingForm.container';
 
 describe('BillingPageContainer', () => {
   it('should render correctly', () => {
@@ -25,7 +28,7 @@ describe('BillingPageContainer', () => {
       shippingAddress: null,
       billingData: {
         billing: {},
-        address: {}
+        address: {},
       },
       submitBilling: jest.fn(),
     };
@@ -41,10 +44,11 @@ describe('BillingPageContainer', () => {
         zipCode: '',
         onFileAddressKey: '',
         onFileAddressId: '',
-      }, sameAsShipping: true,
-    }
+      },
+      sameAsShipping: true,
+    };
     const tree = shallow(<GuestBillingContainerVanilla {...props} />);
-    tree.instance().submitBillingData(data)
+    tree.instance().submitBillingData(data);
     expect(tree).toMatchSnapshot();
   });
   it('should call mapDispatchToProps', () => {

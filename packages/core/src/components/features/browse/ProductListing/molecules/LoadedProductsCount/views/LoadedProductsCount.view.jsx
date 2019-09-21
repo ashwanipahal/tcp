@@ -21,7 +21,7 @@ class LoadedProductsCount extends React.PureComponent {
       >
         {totalProductsCount > 0 && (
           <span className="items-count-content">
-            {showingXItems}
+            <span className="show-label">{showingXItems}</span>
             <span className="items-count-content-number">
               {totalProductsCount > 0 ? totalProductsCount : 0}
             </span>

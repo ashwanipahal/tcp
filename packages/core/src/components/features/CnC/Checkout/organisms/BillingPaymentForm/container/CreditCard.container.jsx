@@ -221,6 +221,7 @@ export class GiftCardsContainer extends React.PureComponent<Props> {
       phoneNumber: cardDetails.addressDetails && cardDetails.addressDetails.phone1,
       saveToAccount: data.saveToAccount,
       isDefault: data.defaultPayment || cardDetails.defaultInd,
+      onFileCardId: data.onFileCardKey,
     });
   };
 

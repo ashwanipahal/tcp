@@ -1,4 +1,4 @@
-import { css } from 'styled-components/native';
+import styled from 'styled-components/native';
 
 import {
   typography as typographyStyleSystem,
@@ -7,10 +7,18 @@ import {
 
 import { androidFontStyles } from '../../../../../styles/globalStyles/StyledText.style';
 
-const BodyCopyStyles = css`
+const getAdditionalStyle = props => {
+  const { margin, textDecoration } = props;
+  return {
+    ...(margin && { margin }),
+    ...(textDecoration && { 'text-decoration-line': textDecoration }),
+  };
+};
+
+const BodyCopyText = styled.Text`
   ${typographyStyleSystem}
   ${colorStyleSystem}
   ${androidFontStyles}
+  ${getAdditionalStyle}
 `;
-
-export default BodyCopyStyles;
+export default BodyCopyText;

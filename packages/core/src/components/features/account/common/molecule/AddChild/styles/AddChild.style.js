@@ -1,11 +1,6 @@
 import { css } from 'styled-components';
 
 const styles = css`
-  position: absolute;
-  left: 0;
-  top: ${props => (props.offset ? `${props.offset.top}px` : 0)};
-  z-index: 1;
-
   input {
     background-color: ${props => props.theme.colorPalette.gray[500]};
   }
@@ -54,7 +49,7 @@ const styles = css`
     padding: ${props => props.theme.spacing.ELEM_SPACING.XXL} 0
       ${props => props.theme.spacing.ELEM_SPACING.XL} 0;
     background-color: ${props => props.theme.colorPalette.gray[500]};
-    margin-top: -14px;
+    margin-top: -11px;
   }
 
   .lastName {
@@ -79,9 +74,8 @@ const styles = css`
   }
 
   .addChildBirthdayTip {
-    position: absolute;
+    position: relative;
     left: ${props => (props.offset ? `${props.offset.left - 11}px` : 0)};
-    top: -22px;
     width: 22px;
     height: 22px;
     transform: rotate(-315deg);

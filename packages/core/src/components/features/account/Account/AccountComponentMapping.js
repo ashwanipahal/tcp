@@ -15,6 +15,7 @@ import AboutYouInformationContainer from '../AboutYouInformation';
 import BirthdaySavingsPage from '../BirthdaySavingsPage';
 import PointHistoryPage from '../PointHistory';
 import EarnPoints from '../ExtraPoints';
+import PointsClaimPage from '../PointsClaim';
 
 const AccountComponentMapping = {
   'address-book': AddressBook,
@@ -36,6 +37,7 @@ const AccountComponentMapping = {
   'my-preference': MyPrefrenceContainer,
   'points-history': PointHistoryPage,
   'extra-points': EarnPoints,
+  'points-claim': PointsClaimPage,
 };
 
 export default AccountComponentMapping;

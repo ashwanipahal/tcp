@@ -14,13 +14,10 @@ export default function getMarkupForPrint(coupon, labels, validityDate, uri) {
      <div style='font-size:14px;margin-bottom: 16px;'>${getLabelValue(
        labels,
        'MODAL_SHORT_DESCRIPTION'
-     )} <a  href="/us" title="" target="_self" font-size="14px" style='color:#000000'>${getLabelValue(
+     )} <span font-size="14px">${getLabelValue(
     labels,
     'TERMS_AND_CONDITIONS'
-  )}</a> and <a  href="/us" title="" target="_self" font-size="14px"  style='color:#000000'> ${getLabelValue(
-    labels,
-    'PRIVACY_POLICY'
-  )}</a></div>
+  )}</span> and <span font-size="14px"> ${getLabelValue(labels, 'PRIVACY_POLICY')}</span></div>
   </div>
 </div>`;
 }
