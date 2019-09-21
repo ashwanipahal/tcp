@@ -2,7 +2,7 @@
 
 exports[`PickUp Review Section should render the component correctly with same store 1`] = `
 <div
-  dataLocator="alternate-div"
+  dataLocator="review-pickup-section"
 >
   <Styled(Row)
     className="row-one"
@@ -17,48 +17,21 @@ exports[`PickUp Review Section should render the component correctly with same s
         }
       }
     >
-      <div
-        className="header"
-      >
-        <Styled(BodyCopy)
-          className={null}
-          color="gray.900"
-          component="p"
-          fontFamily="primary"
-          fontSize="fs26"
-          fontWeight="regular"
-          letterSpacing="normal"
-          lineHeight="normal"
-          textAlign="left"
-        />
-        <div
-          className="EditAnchor"
-        >
-          <Styled(Anchor)
-            anchorVariation="secondary"
-            className="anchorStyle"
-            color="gray.900"
-            dataLocator="pickup-pickupContact-edit-anchor"
-            fontFamily="secondary"
-            fontSize="fs12"
-            onClick={[Function]}
-            underline={true}
-          />
-        </div>
-      </div>
+      <Styled(TitlePlusEditButton)
+        dataLocator="pickup-section"
+        title=""
+      />
       <Styled(BodyCopy)
         className={null}
         color="gray.900"
         component="p"
-        fontFamily="primary"
+        fontFamily="secondary"
         fontSize="fs16"
         fontWeight="regular"
         letterSpacing="normal"
         lineHeight="normal"
         textAlign="left"
-      >
-        We will send you an email when your order is ready. A government issued ID is required to pick up the order.
-      </Styled(BodyCopy)>
+      />
     </Styled(Col)>
   </Styled(Row)>
   <Styled(Row)
@@ -76,6 +49,12 @@ exports[`PickUp Review Section should render the component correctly with same s
       key="111287"
     >
       <Styled(PickupStoreDisplay)
+        labels={
+          Object {
+            "lbl_review_pickupSectionTitle": "",
+            "lbl_review_sectionPickupAlternateHeading": "",
+          }
+        }
         orderType="BOPIS"
         store={
           Object {
@@ -111,6 +90,12 @@ exports[`PickUp Review Section should render the component correctly with same s
       key="111257"
     >
       <Styled(PickupStoreDisplay)
+        labels={
+          Object {
+            "lbl_review_pickupSectionTitle": "",
+            "lbl_review_sectionPickupAlternateHeading": "",
+          }
+        }
         orderType="BOSS"
         store={
           Object {
@@ -144,6 +129,7 @@ exports[`PickUp Review Section should render the component correctly with same s
     fullBleed={true}
   >
     <Styled(Col)
+      className="pickupContactPersonContainer"
       colSize={
         Object {
           "large": 5,
@@ -175,6 +161,7 @@ exports[`PickUp Review Section should render the component correctly with same s
       />
     </Styled(Col)>
     <Styled(Col)
+      className="pickupContactAlternateContainer"
       colSize={
         Object {
           "large": 5,
@@ -193,9 +180,7 @@ exports[`PickUp Review Section should render the component correctly with same s
         letterSpacing="normal"
         lineHeight="normal"
         textAlign="left"
-      >
-        Alternate Pickup Contact
-      </Styled(BodyCopy)>
+      />
       <Styled(PickUpContactDisplay)
         formData={Object {}}
       />

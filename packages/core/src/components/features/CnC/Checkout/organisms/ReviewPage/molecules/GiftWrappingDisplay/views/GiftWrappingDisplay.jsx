@@ -49,3 +49,4 @@ GiftWrappingDisplay.defaultProps = {
 };
 
 export default withStyles(GiftWrappingDisplay, styles);
+export { GiftWrappingDisplay as GiftWrappingDisplayanilla };

@@ -49,3 +49,4 @@ ShippingMethodDisplay.defaultProps = {
 };
 
 export default withStyles(ShippingMethodDisplay, styles);
+export { ShippingMethodDisplay as ShippingMethodDisplayanilla };

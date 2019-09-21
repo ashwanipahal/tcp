@@ -5,7 +5,7 @@ import styles from '../styles/TitlePlusEditButton.style';
 import BodyCopy from '../../../../../../../../common/atoms/BodyCopy';
 import Anchor from '../../../../../../../../common/atoms/Anchor';
 
-export class TitlePlusEditButton extends React.PureComponent {
+class TitlePlusEditButton extends React.PureComponent {
   handleClick = event => {
     event.preventDefault();
     const { onEdit } = this.props;
@@ -55,3 +55,4 @@ TitlePlusEditButton.propTypes = {
 };
 
 export default withStyles(TitlePlusEditButton, styles);
+export { TitlePlusEditButton as TitlePlusEditButtonVanilla };

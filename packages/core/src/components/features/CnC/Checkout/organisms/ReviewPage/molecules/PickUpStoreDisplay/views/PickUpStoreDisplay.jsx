@@ -131,3 +131,4 @@ PickupStoreDisplay.defaultProps = {
 };
 
 export default withStyles(PickupStoreDisplay, styles);
+export { PickupStoreDisplay as PickupStoreDisplayanilla };

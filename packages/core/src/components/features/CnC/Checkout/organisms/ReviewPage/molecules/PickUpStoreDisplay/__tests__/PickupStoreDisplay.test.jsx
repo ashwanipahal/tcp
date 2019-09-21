@@ -1,6 +1,6 @@
 import React from 'react';
 import { shallow } from 'enzyme';
-import PickupStoreDisplay from '../views/PickUpStoreDisplay';
+import { PickupStoreDisplayanilla } from '../views/PickUpStoreDisplay';
 
 export const bopisPickup = {
   orderType: 'BOPIS',
@@ -22,6 +22,12 @@ export const bopisPickup = {
     },
     storeId: '110715',
     storeItemsCount: 1,
+  },
+  labels: {
+    lbl_review_sectionPickupToday: 'Today,',
+    lbl_review_sectionPickupOrderTitle: 'Title',
+    lbl_review_sectionPickupItem: 'item',
+    lbl_review_sectionPickupItems: 'items',
   },
 };
 
@@ -54,15 +60,21 @@ export const bossPickup = {
     storeId: '110850',
     storeItemsCount: 1,
   },
+  labels: {
+    lbl_review_sectionPickupToday: 'Today,',
+    lbl_review_sectionPickupOrderTitle: 'Title',
+    lbl_review_sectionPickupItem: 'item',
+    lbl_review_sectionPickupItems: 'items',
+  },
 };
 describe('testing block for PickupStoreDisplay', () => {
   it('PickupStoreDisplay should be rendered correclty when order type is BOPIS', () => {
-    const component = shallow(<PickupStoreDisplay {...bopisPickup} />);
+    const component = shallow(<PickupStoreDisplayanilla {...bopisPickup} />);
     expect(component).toMatchSnapshot();
   });
 
   it('PickupStoreDisplay should be rendered correclty when order type is BOSS', () => {
-    const component = shallow(<PickupStoreDisplay {...bossPickup} />);
+    const component = shallow(<PickupStoreDisplayanilla {...bossPickup} />);
     expect(component).toMatchSnapshot();
   });
 });

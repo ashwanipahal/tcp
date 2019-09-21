@@ -103,3 +103,4 @@ ShippingReviewSection.defaultProps = {
 };
 
 export default withStyles(ShippingReviewSection, styles);
+export { ShippingReviewSection as ShippingReviewSectionvanilla };
