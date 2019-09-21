@@ -14,25 +14,81 @@ import {
   HeadingTextStyle,
   ScrollViewWrapper,
   BonusPointsWrapper,
+  BagHeaderRow,
+  SflHeadingViewStyle,
+  InActiveBagHeaderText,
+  ActiveBagHeaderText,
+  ActiveBagHeaderView,
+  InActiveBagHeaderView,
 } from '../styles/BagPage.style.native';
 import BonusPointsDays from '../../../../common/organisms/BonusPointsDays';
 import InitialPropsHOC from '../../../../common/hoc/InitialPropsHOC/InitialPropsHOC.native';
+import BAGPAGE_CONSTANTS from '../BagPage.constants';
 
 class BagPage extends React.Component {
+  constructor(props) {
+    super(props);
+    const { totalCount, sflItems } = this.props;
+    this.state = {
+      activeSection:
+        !totalCount && sflItems.size ? BAGPAGE_CONSTANTS.SFL_STATE : BAGPAGE_CONSTANTS.BAG_STATE,
+    };
+  }
+
   componentDidMount() {
     const { fetchLabels } = this.props;
     fetchLabels();
   }
 
+  handleChangeActiveSection = sectionName => {
+    this.setState({
+      activeSection: sectionName,
+    });
+  };
+
+  renderBagHeading() {
+    const { activeSection } = this.state;
+    const { labels, totalCount } = this.props;
+    return (
+      <HeadingTextStyle>
+        {activeSection === BAGPAGE_CONSTANTS.SFL_STATE ? (
+          <InActiveBagHeaderText>{`${labels.bagHeading} (${totalCount})`}</InActiveBagHeaderText>
+        ) : (
+          <ActiveBagHeaderText>{`${labels.bagHeading} (${totalCount})`}</ActiveBagHeaderText>
+        )}
+      </HeadingTextStyle>
+    );
+  }
+
+  renderSflHeading() {
+    const { activeSection } = this.state;
+    const { labels, sflItems } = this.props;
+    return (
+      <HeadingTextStyle>
+        {activeSection === BAGPAGE_CONSTANTS.BAG_STATE ? (
+          <InActiveBagHeaderText>
+            {`${labels.savedLaterButton} (${sflItems.size})`}
+          </InActiveBagHeaderText>
+        ) : (
+          <ActiveBagHeaderText>
+            {`${labels.savedLaterButton} (${sflItems.size})`}
+          </ActiveBagHeaderText>
+        )}
+      </HeadingTextStyle>
+    );
+  }
+
   render() {
     const {
       labels,
-      totalCount,
       showAddTobag,
       navigation,
       handleCartCheckout,
       isUserLoggedIn,
+      sflItems,
     } = this.props;
+
+    const { activeSection } = this.state;
 
     if (!labels.tagLine) {
       return <View />;
@@ -40,11 +96,38 @@ class BagPage extends React.Component {
     return (
       <>
         <ScrollViewWrapper showAddTobag={showAddTobag}>
-          <HeadingViewStyle>
-            <HeadingTextStyle>{`${labels.bagHeading} (${totalCount})`}</HeadingTextStyle>
-          </HeadingViewStyle>
+          <BagHeaderRow>
+            <HeadingViewStyle
+              onPress={() => {
+                this.handleChangeActiveSection(BAGPAGE_CONSTANTS.BAG_STATE);
+              }}
+            >
+              {activeSection === BAGPAGE_CONSTANTS.BAG_STATE ? (
+                <ActiveBagHeaderView>{this.renderBagHeading()}</ActiveBagHeaderView>
+              ) : (
+                <InActiveBagHeaderView>{this.renderBagHeading()}</InActiveBagHeaderView>
+              )}
+            </HeadingViewStyle>
+            <SflHeadingViewStyle
+              onPress={() => {
+                this.handleChangeActiveSection(BAGPAGE_CONSTANTS.SFL_STATE);
+              }}
+            >
+              {activeSection === BAGPAGE_CONSTANTS.SFL_STATE ? (
+                <ActiveBagHeaderView>{this.renderSflHeading()}</ActiveBagHeaderView>
+              ) : (
+                <InActiveBagHeaderView>{this.renderSflHeading()}</InActiveBagHeaderView>
+              )}
+            </SflHeadingViewStyle>
+          </BagHeaderRow>
+
           <MainSection>
-            <ProductTileWrapper bagLabels={labels} />
+            {activeSection === BAGPAGE_CONSTANTS.BAG_STATE && (
+              <ProductTileWrapper bagLabels={labels} />
+            )}
+            {activeSection === BAGPAGE_CONSTANTS.SFL_STATE && (
+              <ProductTileWrapper bagLabels={labels} sflItems={sflItems} isBagPageSflSection />
+            )}
             <RowSectionStyle>
               <OrderLedgerContainer />
             </RowSectionStyle>
@@ -85,6 +168,7 @@ BagPage.propTypes = {
   isUserLoggedIn: PropTypes.bool.isRequired,
   handleCartCheckout: PropTypes.func.isRequired,
   fetchLabels: PropTypes.func.isRequired,
+  sflItems: PropTypes.shape([]).isRequired,
 };
 
 export default InitialPropsHOC(BagPage);

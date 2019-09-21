@@ -143,14 +143,16 @@ class ProductTileWrapper extends React.PureComponent<props> {
       });
       return (
         <>
-          {this.getHeaderError(labels, productSectionData, pageView)}
-          {isSoldOut && (
+          {!isBagPageSflSection && this.getHeaderError(labels, productSectionData, pageView)}
+          {!isBagPageSflSection && isSoldOut && (
             <RemoveSoldOut
               pageView={pageView}
               labelForRemove={this.getRemoveString(labels, removeCartItem, getUnavailableOOSItems)}
             />
           )}
-          {isUnavailable && <RemoveSoldOut pageView={pageView} labels={labels} />}
+          {!isBagPageSflSection && isUnavailable && (
+            <RemoveSoldOut pageView={pageView} labels={labels} />
+          )}
 
           {orderItemsView}
         </>

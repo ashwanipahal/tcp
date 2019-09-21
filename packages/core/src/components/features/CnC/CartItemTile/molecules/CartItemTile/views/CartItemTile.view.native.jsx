@@ -1,3 +1,4 @@
+/* eslint-disable max-lines */
 import React from 'react';
 import PropTypes from 'prop-types';
 import { View } from 'react-native';
@@ -28,6 +29,8 @@ import {
   IconWidth,
   IconTextDelete,
   IconTextEdit,
+  IconTextMoveToBag,
+  HeartIcon,
 } from '../styles/CartItemTile.style.native';
 import { getLocator } from '../../../../../../../utils';
 import CartItemRadioButtons from '../../CartItemRadioButtons';
@@ -37,6 +40,9 @@ const gymboreeImage = require('../../../../../../../assets/gymboree-logo.png');
 const tcpImage = require('../../../../../../../assets/tcp-logo.png');
 const editIcon = require('../../../../../../../assets/edit-icon.png');
 const deleteIcon = require('../../../../../../../assets/delete.png');
+const moveToBagIcon = require('../../../../../../../assets/moveToBag-icon.png');
+const sflIcon = require('../../../../../../../assets/sfl-icon.png');
+const heart = require('../../../../../../../assets/heart.png');
 
 const getItemStatus = (productDetail, labels) => {
   if (productDetail.miscInfo.availability === 'UNAVAILABLE') {
@@ -49,8 +55,10 @@ const getCartRadioButtons = (
   labels,
   itemIndex,
   openedTile,
-  setSelectedProductTile
+  setSelectedProductTile,
+  isBagPageSflSection
 ) => {
+  if (isBagPageSflSection) return null;
   if (productDetail.miscInfo.availability !== CARTPAGE_CONSTANTS.AVAILABILITY_SOLDOUT) {
     return (
       <CartItemRadioButtons
@@ -107,6 +115,128 @@ class ProductInformation extends React.Component {
     this.swipeable = React.createRef();
   }
 
+  renderSflActionsLinks = () => {
+    const { productDetail, isShowSaveForLater, labels, isBagPageSflSection } = this.props;
+    if (
+      !isBagPageSflSection &&
+      productDetail.miscInfo.availability === CARTPAGE_CONSTANTS.AVAILABILITY_OK &&
+      isShowSaveForLater
+    ) {
+      return (
+        <MarginLeft onPress={() => {}}>
+          <Image
+            data-locator="save-for-later-link"
+            source={sflIcon}
+            height={IconHeight}
+            width={IconWidth}
+          />
+          <IconTextMoveToBag>{labels.saveForLaterLink}</IconTextMoveToBag>
+        </MarginLeft>
+      );
+    }
+    if (
+      isBagPageSflSection &&
+      productDetail.miscInfo.availability === CARTPAGE_CONSTANTS.AVAILABILITY_OK
+    ) {
+      return (
+        <MarginLeft onPress={() => {}}>
+          <Image
+            data-locator="move-to-bag-link"
+            source={moveToBagIcon}
+            height={IconHeight}
+            width={IconWidth}
+          />
+          <IconTextMoveToBag>{labels.moveToBagLink}</IconTextMoveToBag>
+        </MarginLeft>
+      );
+    }
+    return null;
+  };
+
+  renderPoints = () => {
+    const { labels, productDetail, isBagPageSflSection } = this.props;
+    if (isBagPageSflSection) return null;
+    return (
+      <ProductDesc>
+        <ProductSubDetailLabel>
+          <BodyCopy
+            fontSize="fs13"
+            fontWeight={['semibold']}
+            textAlign="left"
+            text={`${labels.points}: `}
+          />
+        </ProductSubDetailLabel>
+        <BodyCopy
+          color="orange.800"
+          fontFamily="secondary"
+          fontSize="fs13"
+          dataLocator={getLocator('cart_item_points')}
+          text={productDetail.itemInfo.myPlacePoints}
+        />
+      </ProductDesc>
+    );
+  };
+
+  renderQuantity = () => {
+    const { labels, productDetail, isBagPageSflSection } = this.props;
+    if (isBagPageSflSection) return null;
+    return (
+      <ProductDesc>
+        <ProductSubDetailLabel>
+          <BodyCopy
+            fontSize="fs13"
+            fontWeight={['semibold']}
+            textAlign="left"
+            text={`${labels.qty}: `}
+          />
+        </ProductSubDetailLabel>
+        <BodyCopy
+          color="gray.800"
+          fontFamily="secondary"
+          fontSize="fs13"
+          text={productDetail.itemInfo.qty}
+        />
+      </ProductDesc>
+    );
+  };
+
+  renderPrice = () => {
+    const { labels, productDetail, isBagPageSflSection } = this.props;
+    return (
+      <ProductDesc>
+        <ProductSubDetailLabel>
+          <BodyCopy
+            fontSize="fs13"
+            fontWeight={['semibold']}
+            textAlign="left"
+            text={`${labels.price}: `}
+          />
+        </ProductSubDetailLabel>
+        <BodyCopy
+          fontSize="fs13"
+          fontWeight={['semibold']}
+          textAlign="left"
+          dataLocator={getLocator('cart_item_price')}
+          text={`$${productDetail.itemInfo.price}`}
+        />
+        {!isBagPageSflSection && (
+          <ProductListPrice>
+            <BodyCopy
+              color="gray.800"
+              fontFamily="secondary"
+              fontSize="fs13"
+              text={
+                productDetail.itemInfo.price !== productDetail.itemInfo.itemPrice
+                  ? `$${productDetail.itemInfo.itemPrice}`
+                  : ''
+              }
+            />
+          </ProductListPrice>
+        )}
+      </ProductDesc>
+    );
+  };
+
   rightButton = () => {
     const { removeCartItem, productDetail, labels } = this.props;
     return (
@@ -122,6 +252,8 @@ class ProductInformation extends React.Component {
             <IconTextEdit>{labels.edit}</IconTextEdit>
           </View>
         )}
+        {this.renderSflActionsLinks()}
+
         <MarginLeft onPress={() => removeCartItem(productDetail.itemInfo.itemId)}>
           <Image
             data-locator={getLocator('cart_item_edit_link')}
@@ -144,14 +276,22 @@ class ProductInformation extends React.Component {
   };
 
   render() {
-    const { productDetail, labels, itemIndex, openedTile, setSelectedProductTile } = this.props;
+    const {
+      productDetail,
+      labels,
+      itemIndex,
+      openedTile,
+      setSelectedProductTile,
+      isBagPageSflSection,
+    } = this.props;
+
     return (
       <Swipeable
         onRef={ref => {
           this.swipeable = ref;
         }}
         rightButtons={[this.rightButton()]}
-        rightButtonWidth={200}
+        rightButtonWidth={250}
         leftButtons={[null]}
         onSwipeComplete={(event, gestureState, swipe) => {
           this.onSwipeComplete(swipe);
@@ -210,6 +350,11 @@ class ProductInformation extends React.Component {
                   text={productDetail.itemInfo.name}
                 />
               </ProductName>
+              {isBagPageSflSection && (
+                <HeartIcon onPress={() => {}}>
+                  <Image data-locator="heartIcon" source={heart} height={13} width={15} />
+                </HeartIcon>
+              )}
               <ProductSubDetails>
                 <ProductDesc>
                   <ProductSubDetailLabel>
@@ -263,85 +408,27 @@ class ProductInformation extends React.Component {
                     }
                   />
                 </ProductDesc>
-                <ProductDesc>
-                  <ProductSubDetailLabel>
-                    <BodyCopy
-                      fontSize="fs13"
-                      fontWeight={['semibold']}
-                      textAlign="left"
-                      text={`${labels.qty}: `}
-                    />
-                  </ProductSubDetailLabel>
-                  <BodyCopy
-                    color="gray.800"
-                    fontFamily="secondary"
-                    fontSize="fs13"
-                    text={productDetail.itemInfo.qty}
-                  />
-                </ProductDesc>
-                <ProductDesc>
-                  <ProductSubDetailLabel>
-                    <BodyCopy
-                      fontSize="fs13"
-                      fontWeight={['semibold']}
-                      textAlign="left"
-                      text={`${labels.price}: `}
-                    />
-                  </ProductSubDetailLabel>
-                  <BodyCopy
-                    fontSize="fs13"
-                    fontWeight={['semibold']}
-                    textAlign="left"
-                    dataLocator={getLocator('cart_item_price')}
-                    text={`$${productDetail.itemInfo.price}`}
-                  />
-                  <ProductListPrice>
-                    <BodyCopy
-                      color="gray.800"
-                      fontFamily="secondary"
-                      fontSize="fs13"
-                      text={
-                        productDetail.itemInfo.price !== productDetail.itemInfo.itemPrice
-                          ? `$${productDetail.itemInfo.itemPrice}`
-                          : ''
-                      }
-                    />
-                  </ProductListPrice>
-                </ProductDesc>
-                <ProductDesc>
-                  <ProductSubDetailLabel>
-                    <BodyCopy
-                      fontSize="fs13"
-                      fontWeight={['semibold']}
-                      textAlign="left"
-                      text={`${labels.points}: `}
-                    />
-                  </ProductSubDetailLabel>
-                  <BodyCopy
-                    color="orange.800"
-                    fontFamily="secondary"
-                    fontSize="fs13"
-                    dataLocator={getLocator('cart_item_points')}
-                    text={productDetail.itemInfo.myPlacePoints}
-                  />
-                </ProductDesc>
+                {this.renderQuantity()}
+                {this.renderPrice()}
+                {this.renderPoints()}
               </ProductSubDetails>
-              <EditButton
-                onPress={() => {
-                  this.onSwipeComplete(this.swipeable);
-                  return this.swipeable.toggle('right');
-                }}
-              >
-                {getEditError(productDetail, labels)}
-              </EditButton>
             </ProductDescription>
           </OuterContainer>
+          <EditButton
+            onPress={() => {
+              this.onSwipeComplete(this.swipeable);
+              return this.swipeable.toggle('right');
+            }}
+          >
+            {getEditError(productDetail, labels)}
+          </EditButton>
           {getCartRadioButtons(
             productDetail,
             labels,
             itemIndex,
             openedTile,
-            setSelectedProductTile
+            setSelectedProductTile,
+            isBagPageSflSection
           )}
         </MainWrapper>
       </Swipeable>
@@ -358,6 +445,8 @@ ProductInformation.propTypes = {
   setSelectedProductTile: PropTypes.func.isRequired,
   swipedElement: PropTypes.shape({}),
   setSwipedElement: PropTypes.func.isRequired,
+  isBagPageSflSection: PropTypes.bool,
+  isShowSaveForLater: PropTypes.bool.isRequired,
 };
 ProductInformation.defaultProps = {
   productDetail: {},
@@ -365,5 +454,6 @@ ProductInformation.defaultProps = {
   itemIndex: 0,
   openedTile: 0,
   swipedElement: null,
+  isBagPageSflSection: false,
 };
 export default ProductInformation;
