@@ -10,7 +10,12 @@ describe('ModuleH component', () => {
   let moduleHComp;
 
   beforeEach(() => {
-    const wrapper = shallow(<ModuleH {...mock.moduleH.composites} />).get(0);
+    const wrapper = shallow(
+      <ModuleH
+        {...mock.moduleH.composites}
+        accessibility={{ playIconButton: 'Play', pauseIconButton: 'Pause' }}
+      />
+    ).get(0);
     moduleHComp = shallow(wrapper);
   });
 

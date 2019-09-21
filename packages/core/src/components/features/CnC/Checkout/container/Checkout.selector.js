@@ -5,10 +5,7 @@ import {
   CHECKOUT_REDUCER_KEY,
   SESSIONCONFIG_REDUCER_KEY,
 } from '@tcp/core/src/constants/reducer.constants';
-import {
-  modes,
-  constants as venmoConstants,
-} from '@tcp/core/src/components/common/atoms/VenmoPaymentButton/container/VenmoPaymentButton.util';
+import { constants as venmoConstants } from '@tcp/core/src/components/common/atoms/VenmoPaymentButton/container/VenmoPaymentButton.util';
 
 /* eslint-disable extra-rules/no-commented-out-code */
 import { getAPIConfig, isMobileApp, getViewportInfo, getLabelValue } from '../../../../../utils';
@@ -477,7 +474,7 @@ function getBillingValues(state) {
 
 function getDetailedCreditCardById(state, id) {
   return JSON.parse(JSON.stringify(state.PaymentReducer.get('cardList'))).find(
-    ({ creditCardId }) => (creditCardId && creditCardId.toString()) === id
+    ({ creditCardId }) => (creditCardId && creditCardId.toString()) === id.toString()
   );
 }
 
@@ -512,18 +509,14 @@ const getCurrentOrderId = state => {
 
 const getSmsNumberForBillingOrderUpdates = state =>
   state.Checkout.getIn(['values', 'smsInfo', 'numberForUpdates']);
-const getVenmoData = state => {
-  return state[CHECKOUT_REDUCER_KEY].getIn(['values', 'venmoData']);
-};
 
-const getVenmoClientTokenData = state => {
-  const venmoData = getVenmoData(state);
-  return venmoData && venmoData.venmoClientTokenData;
-};
+const getVenmoData = state => state[CHECKOUT_REDUCER_KEY].getIn(['values', 'venmoData']);
 
-const isVenmoPaymentInProgress = state => {
-  return state[CHECKOUT_REDUCER_KEY].getIn(['uiFlags', 'venmoPaymentInProgress']);
-};
+const getVenmoClientTokenData = state =>
+  state[CHECKOUT_REDUCER_KEY].getIn(['values', 'venmoClientTokenData']);
+
+const isVenmoPaymentInProgress = state =>
+  state[CHECKOUT_REDUCER_KEY].getIn(['uiFlags', 'venmoPaymentInProgress']);
 
 /**
  * Mainly used to check for Venmo nonce expiry
@@ -532,7 +525,8 @@ const isVenmoPaymentInProgress = state => {
 const isVenmoNonceNotExpired = state => {
   const venmoData = getVenmoData(state);
   const expiry = venmoConstants.VENMO_NONCE_EXPIRY_TIMEOUT;
-  const { nonce, timestamp, venmoClientTokenData } = venmoData;
+  const { nonce, timestamp } = venmoData;
+  const venmoClientTokenData = getVenmoClientTokenData(state);
   const venmoPaymentTokenAvailable = venmoClientTokenData
     ? venmoClientTokenData.venmoPaymentTokenAvailable
     : false;
@@ -540,13 +534,11 @@ const isVenmoNonceNotExpired = state => {
 };
 
 const isVenmoPaymentToken = state => {
-  const venmoData = getVenmoData(state);
-  return (
-    (venmoData && venmoData.mode === modes.PAYMENT_TOKEN) ||
-    (venmoData &&
-      venmoData.venmoClientTokenData &&
-      venmoData.venmoClientTokenData.mode === modes.PAYMENT_TOKEN)
-  );
+  const venmoClientTokenData = getVenmoClientTokenData(state);
+  const venmoPaymentTokenAvailable = venmoClientTokenData
+    ? venmoClientTokenData.venmoPaymentTokenAvailable
+    : false;
+  return venmoPaymentTokenAvailable === 'TRUE';
 };
 
 const isVenmoNonceActive = state => {
@@ -588,6 +580,30 @@ function getVenmoUserEmail(state) {
   );
 }
 
+/**
+ * @function getInternationalCheckoutApiUrl
+ * @description this selector gives borderFree url for iframe
+ */
+function getInternationalCheckoutApiUrl() {
+  return getAPIConfig().borderFree;
+}
+/**
+ * @function getInternationalCheckoutCommUrl
+ * @description this selector gives borderFreeComm url for iframe
+ */
+function getInternationalCheckoutCommUrl() {
+  return getAPIConfig().borderFreeComm;
+}
+
+/**
+ *
+ * @function getInternationalCheckoutUrl
+ * @param {*} state
+ * @description this selector gives international url from state.
+ */
+function getInternationalCheckoutUrl(state) {
+  return state.Checkout.getIn(['options', 'internationalUrl']);
+}
 const getIsVenmoEnabled = state => {
   return (
     state[SESSIONCONFIG_REDUCER_KEY] &&
@@ -662,6 +678,9 @@ export default {
   isVenmoNonceNotExpired,
   isVenmoPaymentInProgress,
   isVenmoPaymentToken,
+  getInternationalCheckoutCommUrl,
+  getInternationalCheckoutApiUrl,
+  getInternationalCheckoutUrl,
   getIsVenmoEnabled,
   getCurrentLanguage,
 };

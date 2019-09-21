@@ -29,7 +29,7 @@ export {
   isBopisProduct,
   isBossProduct,
   viewport,
-  getLocationOrigin
+  getLocationOrigin,
 } from './utils.web';
 
 export {
@@ -63,4 +63,5 @@ export {
   sanitizeEntity,
   formatPhone,
   parseStoreHours,
+  parseBoolean,
 } from './utils';

@@ -29,6 +29,21 @@ class CollapsibleContainer extends React.Component {
     };
   }
 
+  componentDidUpdate(prevProps) {
+    const { defaultOpen } = this.props;
+    const { isExpanded } = this.state;
+    if (defaultOpen && !isExpanded && prevProps.defaultOpen !== defaultOpen) {
+      this.updateState();
+    }
+  }
+
+  updateState = () => {
+    const { defaultOpen } = this.props;
+    this.setState({
+      isExpanded: defaultOpen,
+    });
+  };
+
   toggleCollapseState = () => {
     const { isExpanded } = this.state;
     this.setState({ isExpanded: !isExpanded });

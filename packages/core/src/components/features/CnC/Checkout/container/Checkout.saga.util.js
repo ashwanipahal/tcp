@@ -22,6 +22,7 @@ import {
   setGiftWrap,
   getVenmoClientTokenSuccess,
   getVenmoClientTokenError,
+  setSmsNumberForUpdates,
   emailSignupStatus,
 } from './Checkout.action';
 import utility from '../util/utility';
@@ -52,7 +53,7 @@ export function* addRegisteredUserAddress({ address, phoneNumber, emailAddress, 
         payload: {
           ...address,
           address1: address.addressLine1,
-          address2: address.addressLine2,
+          address2: address.addressLine2 ? address.addressLine2 : '',
           zip: address.zipCode,
           phoneNumber,
           emailAddress,
@@ -107,7 +108,7 @@ export function* updateShippingAddress({ payload }) {
     payload: {
       ...address,
       address1: address.addressLine1,
-      address2: address.addressLine2,
+      address2: address.addressLine2 ? address.addressLine2 : '',
       zip: address.zipCode,
       phoneNumber,
       email: emailAddress,
@@ -138,7 +139,7 @@ export function* addNewShippingAddress({ payload }) {
       payload: {
         ...address,
         address1: address.addressLine1,
-        address2: address.addressLine2,
+        address2: address.addressLine2 ? address.addressLine2 : '',
         zip: address.zipCode,
         phoneNumber,
         emailAddress,
@@ -223,4 +224,68 @@ export function* getVenmoClientTokenSaga(payload) {
   } catch (ex) {
     yield put(getVenmoClientTokenError({ error: 'Error' }));
   }
+}
+export function* saveLocalSmsInfo(smsInfo = {}) {
+  let returnVal;
+  const { wantsSmsOrderUpdates, smsUpdateNumber } = smsInfo;
+  if (smsUpdateNumber) {
+    if (wantsSmsOrderUpdates) {
+      returnVal = yield call(setSmsNumberForUpdates, smsUpdateNumber);
+    } else {
+      returnVal = yield call(setSmsNumberForUpdates(null));
+    }
+  }
+  return returnVal;
+}
+
+export function* addOrEditGuestUserAddress({
+  oldShippingDestination,
+  address,
+  phoneNumber,
+  emailAddress,
+  saveToAccount,
+  setAsDefault,
+}) {
+  let addOrEditAddressRes;
+  if (!oldShippingDestination.onFileAddressKey) {
+    // guest user that is using a new address
+    addOrEditAddressRes = yield call(
+      addAddressGet,
+      {
+        payload: {
+          ...address,
+          address1: address.addressLine1,
+          address2: address.addressLine2 ? address.addressLine2 : '',
+          zip: address.zipCode,
+          phoneNumber,
+          emailAddress,
+          primary: setAsDefault,
+          phone1Publish: `${saveToAccount}`,
+          fromPage: 'checkout',
+        },
+      },
+      false
+    );
+    addOrEditAddressRes = { payload: addOrEditAddressRes.body };
+  } else {
+    // guest user is editing a previously entered shipping address
+    addOrEditAddressRes = yield call(
+      updateAddressPut,
+      {
+        payload: {
+          ...address,
+          address1: address.addressLine1,
+          address2: address.addressLine2 ? address.addressLine2 : '',
+          zip: address.zipCode,
+          phoneNumber,
+          nickName: oldShippingDestination.onFileAddressKey,
+          emailAddress,
+        },
+      },
+      {}
+    );
+  }
+  addOrEditAddressRes = { payload: addOrEditAddressRes };
+
+  return addOrEditAddressRes;
 }

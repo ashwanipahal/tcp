@@ -489,12 +489,10 @@ export const formatPhone = (phoneNum, hyphenFormat) => {
   return phone;
 };
 
-
-
-  export const getSiteId = () => { 
+export const getSiteId = () => {
   const paths = window.location.pathname.split('/', 2);
   return paths[1];
-}
+};
 
 export const parseStoreHours = hoursOfOperation => {
   let carryOverClosingHour;
@@ -547,6 +545,10 @@ export const parseStoreHours = hoursOfOperation => {
   return result;
 };
 
+export const parseBoolean = bool => {
+  return bool === true || bool === '1' || (bool || '').toUpperCase() === 'TRUE';
+};
+
 export default {
   getPromotionalMessage,
   getIconPath,
@@ -572,4 +574,5 @@ export default {
   isValidDate,
   formatDate,
   parseStoreHours,
+  parseBoolean,
 };

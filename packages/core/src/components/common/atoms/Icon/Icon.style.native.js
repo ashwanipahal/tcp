@@ -1,4 +1,4 @@
-import { css } from 'styled-components/native';
+import styled, { css } from 'styled-components/native';
 import { Platform } from 'react-native';
 
 /**
@@ -36,10 +36,25 @@ const getFontSizeStyle = props => {
   `;
 };
 
+const getAdditionalStyle = props => {
+  const { margin } = props;
+  return {
+    ...(margin && { margin }),
+  };
+};
+
+const IconTouchableOpacity = styled.TouchableOpacity`
+  ${getAdditionalStyle}
+`;
+
+const Container = styled.View`
+  ${getAdditionalStyle}
+`;
+
 const IconStyle = css`
   ${props => (props.isDisabled ? ` opacity: 0.6; ` : 'opacity: 1')};
   ${getDisableStyle};
   ${getFontSizeStyle}
 `;
 
-export default IconStyle;
+export { IconStyle, Container, IconTouchableOpacity };

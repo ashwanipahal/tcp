@@ -4,21 +4,31 @@ exports[`BossBanner Component should render correctly 1`] = `
 <Styled(View)>
   <Styled(Text)>
     <Styled(BodyCopy)
+      accessibilityText=""
+      dataLocator=""
       fontSize="fs12"
       fontWeight={
         Array [
           "semibold",
         ]
       }
+      margin={null}
+      numberOfLines={null}
       text="abc"
       textAlign="center"
+      textDecoration={null}
     />
   </Styled(Text)>
   <Styled(View)>
     <Styled(BodyCopy)
+      accessibilityText=""
+      dataLocator=""
       fontSize="fs10"
+      margin={null}
+      numberOfLines={null}
       text="def"
       textAlign="center"
+      textDecoration={null}
     />
   </Styled(View)>
 </Styled(View)>

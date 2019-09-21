@@ -5,10 +5,7 @@ import icons from '../config/icons';
 import { breakpoints, mediaQuery } from '../../styles/themes/TCP/mediaQuery';
 import { getAPIConfig } from './utils';
 import { API_CONFIG } from '../services/config';
-import {
-  defaultCountries,
-  defaultCurrencies,
-} from '../constants/site.constants';
+import { defaultCountries, defaultCurrencies } from '../constants/site.constants';
 import { ROUTING_MAP, ROUTE_PATH } from '../config/route.config';
 
 const MONTH_SHORT_FORMAT = {
@@ -40,9 +37,7 @@ export const getLocationOrigin = () => {
 
 export const canUseDOM = () => {
   const isClitent =
-    typeof window !== 'undefined' &&
-    window.document &&
-    window.document.createElement;
+    typeof window !== 'undefined' && window.document && window.document.createElement;
   return isClitent;
 };
 
@@ -62,9 +57,7 @@ export const getSiteId = () => {
 const isCompleteHTTPUrl = url => /^(http|https):\/\//.test(url);
 
 const getRouteHref = noSlugPath => {
-  const pathArray = noSlugPath
-    ? noSlugPath.replace(/\//, '&').split('&')
-    : ['', ROUTING_MAP.home];
+  const pathArray = noSlugPath ? noSlugPath.replace(/\//, '&').split('&') : ['', ROUTING_MAP.home];
   const pathValue = pathArray[1];
   return ROUTING_MAP[pathValue] || ROUTING_MAP.home;
 };
@@ -203,14 +196,8 @@ export const getCreditCardExpirationOptionMap = () => {
 export const getViewportInfo = () => {
   if (!window) return null;
 
-  const width = Math.max(
-    document.documentElement.clientWidth,
-    window.innerWidth || 0
-  );
-  const height = Math.max(
-    document.documentElement.clientHeight,
-    window.innerHeight || 0
-  );
+  const width = Math.max(document.documentElement.clientWidth, window.innerWidth || 0);
+  const height = Math.max(document.documentElement.clientHeight, window.innerHeight || 0);
   const isMobile = width < parseInt(breakpoints.medium, 10);
   const isTablet = !isMobile && width < parseInt(breakpoints.large, 10);
   const isDesktop = !isMobile && !isTablet;
@@ -229,10 +216,7 @@ export const getViewportInfo = () => {
  */
 export const showOverlay = () => {
   const className = 'dark-overlay';
-  if (
-    typeof window !== 'undefined' &&
-    document.getElementsByClassName(className)[0]
-  ) {
+  if (typeof window !== 'undefined' && document.getElementsByClassName(className)[0]) {
     document.getElementsByClassName(className)[0].style.display = 'block';
   }
 };
@@ -242,19 +226,12 @@ export const showOverlay = () => {
  */
 export const closeOverlay = () => {
   const className = 'dark-overlay';
-  if (
-    typeof window !== 'undefined' &&
-    document.getElementsByClassName(className)[0]
-  ) {
+  if (typeof window !== 'undefined' && document.getElementsByClassName(className)[0]) {
     document.getElementsByClassName(className)[0].style.display = 'none';
   }
 };
 
-export const bindAllClassMethodsToThis = (
-  obj,
-  namePrefix = '',
-  isExclude = false
-) => {
+export const bindAllClassMethodsToThis = (obj, namePrefix = '', isExclude = false) => {
   const prototype = Object.getPrototypeOf(obj);
   // eslint-disable-next-line
   for (let name of Object.getOwnPropertyNames(prototype)) {
@@ -263,9 +240,7 @@ export const bindAllClassMethodsToThis = (
     // eslint-disable-next-line
     if (isGetter) continue;
     if (
-      typeof prototype[name] === 'function' &&
-      name !== 'constructor' &&
-      isExclude
+      typeof prototype[name] === 'function' && name !== 'constructor' && isExclude
         ? !name.startsWith(namePrefix)
         : name.startsWith(namePrefix)
     ) {
@@ -296,12 +271,9 @@ export const getCountriesMap = data => {
 
 export const getCurrenciesMap = data => {
   const currencies = defaultCurrencies;
-  data.map(value =>
-    currencies.push(Object.assign({}, value.currency, value.exchangeRate))
-  );
+  data.map(value => currencies.push(Object.assign({}, value.currency, value.exchangeRate)));
   return currencies.filter(
-    (currency, index, self) =>
-      index === self.findIndex(cur => cur.id === currency.id)
+    (currency, index, self) => index === self.findIndex(cur => cur.id === currency.id)
   );
 };
 
@@ -319,10 +291,7 @@ export const getModifiedLanguageCode = id => {
 };
 
 export const siteRedirect = (newCountry, oldCountry, newSiteId, oldSiteId) => {
-  if (
-    (newCountry && newCountry !== oldCountry) ||
-    (newSiteId && newSiteId !== oldSiteId)
-  ) {
+  if ((newCountry && newCountry !== oldCountry) || (newSiteId && newSiteId !== oldSiteId)) {
     routerPush(window.location.href, ROUTE_PATH.home, null, newSiteId);
   }
 };
@@ -404,18 +373,17 @@ const getAPIInfoFromEnv = (apiSiteInfo, processEnv, siteId) => {
     googleApiKey: process.env.RWD_WEB_GOOGLE_MAPS_API_KEY,
     raygunApiKey: processEnv.RWD_WEB_RAYGUN_API_KEY,
     channelId: API_CONFIG.channelIds.Desktop, // TODO - Make it dynamic for all 3 platforms
+    borderFree: processEnv.BORDERS_FREE,
+    borderFreeComm: processEnv.BORDERS_FREE_COMM,
     paypalEnv: processEnv.RWD_WEB_PAYPAL_ENV,
   };
 };
 
 const getGraphQLApiFromEnv = (apiSiteInfo, processEnv, relHostname) => {
-  const graphQlEndpoint =
-    processEnv.RWD_WEB_GRAPHQL_API_ENDPOINT || relHostname;
+  const graphQlEndpoint = processEnv.RWD_WEB_GRAPHQL_API_ENDPOINT || relHostname;
   return {
     graphql_reqion: processEnv.RWD_WEB_GRAPHQL_API_REGION,
-    graphql_endpoint_url: `${graphQlEndpoint}/${
-      processEnv.RWD_WEB_GRAPHQL_API_IDENTIFIER
-    }`,
+    graphql_endpoint_url: `${graphQlEndpoint}/${processEnv.RWD_WEB_GRAPHQL_API_IDENTIFIER}`,
     graphql_auth_type: processEnv.RWD_WEB_GRAPHQL_API_AUTH_TYPE,
     graphql_api_key: processEnv.RWD_WEB_GRAPHQL_API_KEY || '',
   };
@@ -442,10 +410,7 @@ export const parseBoolean = bool => {
  */
 export const isBossProduct = bossDisabledFlags => {
   const { bossCategoryDisabled, bossProductDisabled } = bossDisabledFlags;
-  return !(
-    numericStringToBool(bossCategoryDisabled) ||
-    numericStringToBool(bossProductDisabled)
-  );
+  return !(numericStringToBool(bossCategoryDisabled) || numericStringToBool(bossProductDisabled));
 };
 
 /**
@@ -459,13 +424,10 @@ export const isBopisProduct = (isUSStore, product) => {
   let isOnlineOnly;
   if (isUSStore) {
     isOnlineOnly =
-      (product.TCPWebOnlyFlagUSStore &&
-        parseBoolean(product.TCPWebOnlyFlagUSStore)) ||
-      false;
+      (product.TCPWebOnlyFlagUSStore && parseBoolean(product.TCPWebOnlyFlagUSStore)) || false;
   } else {
     isOnlineOnly =
-      (product.TCPWebOnlyFlagCanadaStore &&
-        parseBoolean(product.TCPWebOnlyFlagCanadaStore)) ||
+      (product.TCPWebOnlyFlagCanadaStore && parseBoolean(product.TCPWebOnlyFlagCanadaStore)) ||
       false;
   }
   return !isOnlineOnly;
@@ -478,25 +440,15 @@ export const createAPIConfig = resLocals => {
   const { country, currency, language, siteId, brandId, hostname } = resLocals;
   const isCASite = siteId === API_CONFIG.siteIds.ca;
   const isGYMSite = brandId === API_CONFIG.brandIds.gym;
-  const countryConfig = isCASite
-    ? API_CONFIG.CA_CONFIG_OPTIONS
-    : API_CONFIG.US_CONFIG_OPTIONS;
-  const brandConfig = isGYMSite
-    ? API_CONFIG.GYM_CONFIG_OPTIONS
-    : API_CONFIG.TCP_CONFIG_OPTIONS;
+  const countryConfig = isCASite ? API_CONFIG.CA_CONFIG_OPTIONS : API_CONFIG.US_CONFIG_OPTIONS;
+  const brandConfig = isGYMSite ? API_CONFIG.GYM_CONFIG_OPTIONS : API_CONFIG.TCP_CONFIG_OPTIONS;
   const catalogId =
-    API_CONFIG.CATALOGID_CONFIG[isGYMSite ? 'Gymboree' : 'TCP'][
-      isCASite ? 'Canada' : 'USA'
-    ];
+    API_CONFIG.CATALOGID_CONFIG[isGYMSite ? 'Gymboree' : 'TCP'][isCASite ? 'Canada' : 'USA'];
   const apiSiteInfo = API_CONFIG.sitesInfo;
   const processEnv = process.env;
   const relHostname = apiSiteInfo.proto + apiSiteInfo.protoSeparator + hostname;
   const basicConfig = getAPIInfoFromEnv(apiSiteInfo, processEnv, siteId);
-  const graphQLConfig = getGraphQLApiFromEnv(
-    apiSiteInfo,
-    processEnv,
-    relHostname
-  );
+  const graphQLConfig = getGraphQLApiFromEnv(apiSiteInfo, processEnv, relHostname);
   return {
     ...basicConfig,
     ...graphQLConfig,
@@ -542,5 +494,5 @@ export default {
   redirectToPdp,
   handleGenericKeyDown,
   viewport,
-  canUseDOM
+  canUseDOM,
 };
