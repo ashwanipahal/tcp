@@ -183,10 +183,7 @@ class ModuleJ extends React.PureComponent {
                 <DamImage
                   className="promo-img"
                   imgConfigs={PROMO_IMG_DATA.imgConfig}
-                  imgData={{
-                    alt: promoImage2.alt,
-                    url: promoImage2.url,
-                  }}
+                  imgData={promoImage2}
                   data-locator={`${getLocator('moduleJ_promobanner_img')}${2}`}
                 />
               </Anchor>
@@ -255,7 +252,7 @@ class ModuleJ extends React.PureComponent {
                   customArrowRight: getIconPath('carousel-big-carrot'),
                 }}
               >
-                {data.map(({ imageUrl, pdpUrl, pdpAsPath }, index) => {
+                {data.map(({ imageUrl, pdpUrl, pdpAsPath, product_name: productName }, index) => {
                   return (
                     <div key={index.toString()}>
                       <Anchor
@@ -264,7 +261,7 @@ class ModuleJ extends React.PureComponent {
                         asPath={pdpAsPath}
                         dataLocator={`${getLocator('moduleJ_product_image')}${index}`}
                       >
-                        <Image src={imageUrl[0]} />
+                        <Image alt={productName} src={imageUrl[0]} />
                       </Anchor>
                     </div>
                   );

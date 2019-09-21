@@ -5,7 +5,7 @@ import PropTypes from 'prop-types';
 import { LAZYLOAD_HOST_NAME } from '@tcp/core/src/utils';
 
 import { Button, Anchor, DamImage } from '../../../atoms';
-import { getLocator } from '../../../../../utils';
+import { getLocator, validateColor } from '../../../../../utils/index.native';
 import { Carousel } from '../..';
 import config from '../config';
 
@@ -63,24 +63,33 @@ class ModuleJ extends React.PureComponent {
 
     return (
       <ImageSlideWrapper>
-        {item.map((productItem, index) => {
+        {item.map(productItem => {
           const {
             imageUrl: [imageUrl],
-            pdpAsPath,
+            uniqueId,
+            product_name: productName,
             productItemIndex,
           } = productItem;
 
           return (
             <ImageItemWrapper
-              key={index.toString()}
+              key={uniqueId}
               isFullMargin={productItemIndex === selectedProductList.length - 1}
             >
               <Anchor
-                url={pdpAsPath}
+                onPress={() =>
+                  navigation.navigate('ProductDetail', {
+                    title: productName,
+                    pdpUrl: uniqueId,
+                    selectedColorProductId: uniqueId,
+                    reset: true,
+                  })
+                }
                 navigation={navigation}
                 testID={`${getLocator('moduleJ_product_image')}${productItemIndex}`}
               >
                 <StyledImage
+                  alt={productName}
                   host={LAZYLOAD_HOST_NAME.HOME}
                   url={imageUrl}
                   height={PRODUCT_IMAGE_HEIGHT}
@@ -130,7 +139,7 @@ class ModuleJ extends React.PureComponent {
 
     return (
       <Container>
-        <MessageContainer layout={layout} bgColor={bgColor}>
+        <MessageContainer layout={layout} bgColor={validateColor(bgColor)}>
           <Wrapper>
             <Border layout={layout} />
             <HeaderContainer layout={layout}>

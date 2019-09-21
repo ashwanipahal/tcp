@@ -27,7 +27,12 @@ class ModuleH extends React.PureComponent {
   }
 
   render() {
-    const { className, divCTALinks, headerText } = this.props;
+    const {
+      className,
+      divCTALinks,
+      headerText,
+      accessibility: { playIconButton, pauseIconButton } = {},
+    } = this.props;
     const { CAROUSEL_OPTIONS, COL_SIZE, FULL_BLEED, OFFSET_LEFT, IMG_DATA } = config;
     CAROUSEL_OPTIONS.beforeChange = (current, next) => {
       this.setState({ current, next });
@@ -47,6 +52,8 @@ class ModuleH extends React.PureComponent {
               dataLocatorPlay: getLocator('moduleH_play_button'),
               dataLocatorPause: getLocator('moduleH_pause_button'),
               type: 'light',
+              pauseIconButtonLabel: pauseIconButton,
+              playIconButtonLabel: playIconButton,
             }}
           >
             {divCTALinks.map((item, index) => {
@@ -66,7 +73,15 @@ class ModuleH extends React.PureComponent {
   }
 }
 
+ModuleH.defaultProps = {
+  accessibility: {},
+};
+
 ModuleH.propTypes = {
+  accessibility: PropTypes.shape({
+    playIconButton: PropTypes.string,
+    pauseIconButton: PropTypes.string,
+  }),
   className: PropTypes.string.isRequired,
   headerText: PropTypes.arrayOf(
     PropTypes.shape({

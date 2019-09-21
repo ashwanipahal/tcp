@@ -5,7 +5,7 @@ import Carousel, { Pagination } from 'react-native-snap-carousel';
 import { getLocator } from '../../../../../utils';
 
 import { Image } from '../../../atoms';
-import config from '../Config.native';
+import config from '../Carousel.config.native';
 
 import {
   ControlsWrapper,
