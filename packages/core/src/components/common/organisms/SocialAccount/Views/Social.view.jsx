@@ -71,7 +71,7 @@ class Socialview extends React.PureComponent {
               : `${labels.lbl_prefrence_connectTo} ${config.SOCIAL_ACCOUNTS[elem.socialAccount]}`}
           </BodyCopy>
           {this.renderSocialLogins(loginComponents[isSocialAccount], saveSocialAcc)}
-          {setPointsModal && (
+          {setPointsModal && this.pointsInformation.points > 0 && (
             <Modal
               fixedWidth
               isOpen={setPointsModal}
