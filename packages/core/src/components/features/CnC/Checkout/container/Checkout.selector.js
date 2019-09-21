@@ -25,6 +25,7 @@ import {
   getPickUpContactFormLabels,
   getGiftServicesFormData,
   getSyncError,
+  getPaypalPaymentSettings,
 } from './Checkout.selector.util';
 
 // import { getAddressListState } from '../../../account/AddressBook/container/AddressBook.selectors';
@@ -396,6 +397,14 @@ const getDefaultShipmentID = createSelector(
   }
 );
 
+const getSelectedShippingMethodDetails = createSelector(
+  [getDefaultShipmentID, getShipmentMethods],
+  (shippingID, method) => {
+    const selectedMethod = method.filter(item => item.id === shippingID);
+    return selectedMethod.length > 0 && selectedMethod[0];
+  }
+);
+
 const getAlternateFormFields = state => {
   const selector = formValueSelector('checkoutPickup');
   return selector(state, 'pickUpAlternate');
@@ -483,9 +492,6 @@ function isCardNotUpdated(state, cardId) {
   return getBillingValues(state).onFileCardId === cardId;
 }
 
-const getPaypalPaymentSettings = state => {
-  return state.Checkout.getIn(['options', 'paypalPaymentSettings']);
-};
 const getReviewLabels = state => {
   const getReviewLabelValue = label => getLabelValue(state.Labels, label, 'review', 'checkout');
   return {
@@ -515,6 +521,10 @@ const getVenmoClientTokenData = state => {
 
 const isVenmoPaymentInProgress = state => {
   return state[CHECKOUT_REDUCER_KEY].getIn(['uiFlags', 'venmoPaymentInProgress']);
+};
+
+const isGiftOptionsEnabled = state => {
+  return state[CHECKOUT_REDUCER_KEY].getIn(['uiFlags', 'isGiftOptionsEnabled']);
 };
 
 /**
@@ -580,6 +590,16 @@ function getVenmoUserEmail(state) {
   );
 }
 
+const getGiftWrapOptions = state => {
+  return state.Checkout.getIn(['options', 'giftWrapOptions']);
+};
+
+const getSelectedGiftWrapDetails = state => {
+  const selectedGiftWrapValues = getGiftWrappingValues(state);
+  const selectedOptionData = getGiftWrapOptions(state);
+  return { ...selectedGiftWrapValues, ...selectedOptionData };
+};
+
 export default {
   getRecalcOrderPointsInterval,
   getIsOrderHasShipping,
@@ -630,8 +650,11 @@ export default {
   getSyncError,
   getGiftServicesFormData,
   getGiftServicesSend,
-  getPaypalPaymentSettings,
   getReviewLabels,
+  isGiftOptionsEnabled,
+  getPaypalPaymentSettings,
+  getSelectedGiftWrapDetails,
+  getSelectedShippingMethodDetails,
   getVenmoData,
   getVenmoClientTokenData,
   isVenmoPaymentAvailable,

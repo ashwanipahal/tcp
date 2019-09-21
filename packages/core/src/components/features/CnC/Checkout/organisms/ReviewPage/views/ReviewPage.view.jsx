@@ -8,6 +8,7 @@ import { CHECKOUT_ROUTES } from '../../../Checkout.constants';
 import utility from '../../../util/utility';
 import { Anchor } from '../../../../../../common/atoms';
 import PickUpReviewSectionContainer from '../organisms/PickUpReviewSection';
+import ShippingReviewSection from '../organisms/ShippingReviewSection';
 
 class ReviewPage extends React.PureComponent {
   static propTypes = {
@@ -32,7 +33,6 @@ class ReviewPage extends React.PureComponent {
       applyConditionTermsText,
       applyConditionAndText,
       applyConditionPolicyText,
-      shippingSectionTitle,
       billingSectionTitle,
       ariaLabelBackLink,
       ariaLabelSubmitOrderButton,
@@ -46,7 +46,11 @@ class ReviewPage extends React.PureComponent {
             <PickUpReviewSectionContainer />
           </div>
         )}
-        {!!orderHasShipping && <div className="review-shipping">{shippingSectionTitle}</div>}
+        {!!orderHasShipping && (
+          <div className="review-shipping">
+            <ShippingReviewSection />
+          </div>
+        )}
         <div className="review-billing">{billingSectionTitle}</div>
         <CheckoutFooter
           hideBackLink

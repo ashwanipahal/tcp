@@ -4,15 +4,15 @@ import withStyles from '../../../../../../../../common/hoc/withStyles';
 import Row from '../../../../../../../../common/atoms/Row';
 import Col from '../../../../../../../../common/atoms/Col';
 import BodyCopy from '../../../../../../../../common/atoms/BodyCopy';
-import Anchor from '../../../../../../../../common/atoms/Anchor';
 import styles from '../styles/PickUpReviewSection.style';
+import TitlePlusEditButton from '../../TitlePlusEditButton';
 import PickupStoreDisplay from '../../PickUpStoreDisplay';
 import PickUpContactDisplay from '../../PickUpContactDisplay';
 import { ORDER_ITEM_TYPE } from '../../../../../../../../../services/abstractors/CnC/CartItemTile';
 
 export class PickUpReviewSection extends React.PureComponent {
-  handleEnterEditModeClick = event => {
-    event.preventDefault();
+  handleEnterEditModeClick = () => {
+    console.log('handleEnterEditModeClick');
   };
 
   /**
@@ -93,35 +93,17 @@ export class PickUpReviewSection extends React.PureComponent {
       });
     const stores = this.generateStoreDetails(pickupStores);
     return (
-      <div className={className} dataLocator="alternate-div">
+      <div className={className} dataLocator="review-pickup-section">
         <Row fullBleed className="row-one">
           <Col colSize={{ small: 6, medium: 8, large: 12 }}>
             {pickUpContactPerson && (
               <React.Fragment>
-                <div className="header">
-                  <BodyCopy
-                    fontSize="fs26"
-                    fontFamily="primary"
-                    color="gray.900"
-                    fontWeight="regular"
-                  >
-                    {pickUpLabels.pickupContactText}
-                  </BodyCopy>
-                  <div className="EditAnchor">
-                    <Anchor
-                      underline
-                      anchorVariation="secondary"
-                      fontSize="fs12"
-                      fontFamily="secondary"
-                      dataLocator="pickup-pickupContact-edit-anchor"
-                      onClick={this.handleEnterEditModeClick}
-                      className="anchorStyle"
-                      color="gray.900"
-                    >
-                      {pickUpLabels.anchorEdit}
-                    </Anchor>
-                  </div>
-                </div>
+                <TitlePlusEditButton
+                  title={pickUpLabels.pickupContactText}
+                  editTitle={pickUpLabels.anchorEdit}
+                  onEdit={this.handleEnterEditModeClick}
+                  dataLocator="pickup-section"
+                />
                 <BodyCopy
                   fontSize="fs16"
                   fontFamily="primary"

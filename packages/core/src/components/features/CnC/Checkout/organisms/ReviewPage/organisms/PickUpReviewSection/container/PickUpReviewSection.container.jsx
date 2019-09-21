@@ -1,5 +1,4 @@
 import { connect } from 'react-redux';
-
 import PickUpReviewSection from '../../../molecules/PickUpReviewSection';
 import BAG_SELECTORS from '../../../../../../BagPage/container/BagPage.selectors';
 
