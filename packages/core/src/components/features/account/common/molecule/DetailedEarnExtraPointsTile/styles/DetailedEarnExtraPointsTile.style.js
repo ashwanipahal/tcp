@@ -12,6 +12,10 @@ const styles = css`
   .FirstColImage {
     display: flex;
     justify-content: flex-end;
+    flex-direction: column;
+    @media ${props => props.theme.mediaQuery.large} {
+      flex-direction: row;
+    }
   }
   .imageSizeSingle {
     width: 60px;
@@ -64,6 +68,7 @@ const styles = css`
     margin-bottom: ${props => (props.viewAll ? props.theme.spacing.ELEM_SPACING.LRG : '')};
     box-shadow: 0 0 10px 0 rgba(0, 0, 0, 0.12);
     cursor: pointer;
+    min-height: ${props => (props.viewAll ? '240px' : '')};
     border-bottom: 2px solid
       ${props =>
         props.theme.isGymboree
@@ -82,31 +87,57 @@ const styles = css`
   }
 
   .earnPointDesc {
-    margin-bottom: ${props => props.theme.spacing.LAYOUT_SPACING.LRG};
+    margin-bottom: ${props =>
+      props.viewAll
+        ? props.theme.spacing.ELEM_SPACING.XXL
+        : props.theme.spacing.LAYOUT_SPACING.LRG};
     padding-left: ${props => props.theme.spacing.ELEM_SPACING.XS};
     padding-right: ${props => props.theme.spacing.ELEM_SPACING.XS};
+    @media ${props => props.theme.mediaQuery.large} {
+      margin-bottom: ${props => props.theme.spacing.LAYOUT_SPACING.LRG};
+    }
   }
 
   .ActivityTitleMargin {
-    margin-top: ${props => props.theme.spacing.LAYOUT_SPACING.XL};
+    margin-top: ${props => props.theme.spacing.ELEM_SPACING.LRG};
+    @media ${props => props.theme.mediaQuery.large} {
+      margin-top: ${props => props.theme.spacing.LAYOUT_SPACING.XL};
+      padding-right: ${props => props.theme.spacing.ELEM_SPACING.MED};
+    }
   }
 
   .earnExtraPointsTileImage {
-    margin-top: ${props => props.theme.spacing.LAYOUT_SPACING.MED};
+    margin-top: ${props =>
+      props.viewAll ? props.theme.spacing.ELEM_SPACING.XL : props.theme.spacing.LAYOUT_SPACING.MED};
     height: 96px;
     text-align: center;
     display: flex;
     justify-content: space-around;
     align-items: center;
+    @media ${props => props.theme.mediaQuery.large} {
+      margin-top: ${props => props.theme.spacing.LAYOUT_SPACING.MED};
+    }
   }
 
   .earnExtraPointsTileImageSingle {
-    margin-top: ${props => props.theme.spacing.LAYOUT_SPACING.LRG};
+    margin-top: ${props =>
+      props.viewAll
+        ? props.theme.spacing.LAYOUT_SPACING.MED
+        : props.theme.spacing.LAYOUT_SPACING.LRG};
     height: 96px;
     text-align: center;
     display: flex;
     justify-content: space-around;
     align-items: center;
+    @media ${props => props.theme.mediaQuery.large} {
+      margin-top: ${props => props.theme.spacing.LAYOUT_SPACING.LRG};
+      margin-right: ${props => (props.viewAll ? props.theme.spacing.LAYOUT_SPACING.SM : '')};
+    }
+  }
+  .earnExtraPointsTileTextMargin {
+    @media ${props => props.theme.mediaQuery.large} {
+      margin-right: ${props => props.theme.spacing.LAYOUT_SPACING.MED};
+    }
   }
 `;
 

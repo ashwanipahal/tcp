@@ -13,7 +13,7 @@ exports[`Detailed Earn Extra Points Tile component  should render Detailed Earn 
   textAlign="left"
 >
   <Styled(BodyCopy)
-    className="tileWrapper"
+    className="tileWrapper FirstColImage"
     color="text.primary"
     component="div"
     fontFamily="primary"
@@ -25,7 +25,7 @@ exports[`Detailed Earn Extra Points Tile component  should render Detailed Earn 
     textAlign="left"
   >
     <Styled(BodyCopy)
-      className="earnExtraPointsTileImage"
+      className="earnExtraPointsTileImageSingle"
       color="text.primary"
       component="div"
       fontFamily="primary"
@@ -36,7 +36,7 @@ exports[`Detailed Earn Extra Points Tile component  should render Detailed Earn 
       textAlign="left"
     >
       <Styled(BodyCopy)
-        className="imageSize undefined"
+        className="imageSizeSingle undefined"
         color="text.primary"
         component="div"
         fontFamily="primary"
@@ -48,29 +48,41 @@ exports[`Detailed Earn Extra Points Tile component  should render Detailed Earn 
       />
     </Styled(BodyCopy)>
     <Styled(BodyCopy)
-      className={null}
+      className="earnExtraPointsTileTextMargin"
       color="text.primary"
-      component="p"
-      data-locator="earnExtraPointsActivityTitle_undefined"
-      fontFamily="secondary"
-      fontSize="fs16"
-      fontWeight="black"
-      letterSpacing="normal"
-      lineHeight="normal"
-      textAlign="center"
-    />
-    <Styled(BodyCopy)
-      className="earnPointDesc"
-      color="text.primary"
-      component="p"
-      data-locator="earnExtraPointsDescription_undefined"
-      fontFamily="secondary"
-      fontSize="fs16"
+      component="div"
+      fontFamily="primary"
+      fontSize={12}
       fontWeight="regular"
       letterSpacing="normal"
       lineHeight="normal"
-      textAlign="center"
-    />
+      textAlign="left"
+    >
+      <Styled(BodyCopy)
+        className="ActivityTitleMargin"
+        color="text.primary"
+        component="p"
+        data-locator="earnExtraPointsActivityTitle_undefined"
+        fontFamily="secondary"
+        fontSize="fs16"
+        fontWeight="black"
+        letterSpacing="normal"
+        lineHeight="normal"
+        textAlign="center"
+      />
+      <Styled(BodyCopy)
+        className="earnPointDesc"
+        color="text.primary"
+        component="p"
+        data-locator="earnExtraPointsDescription_undefined"
+        fontFamily="secondary"
+        fontSize="fs16"
+        fontWeight="regular"
+        letterSpacing="normal"
+        lineHeight="normal"
+        textAlign="center"
+      />
+    </Styled(BodyCopy)>
   </Styled(BodyCopy)>
 </Styled(BodyCopy)>
 `;

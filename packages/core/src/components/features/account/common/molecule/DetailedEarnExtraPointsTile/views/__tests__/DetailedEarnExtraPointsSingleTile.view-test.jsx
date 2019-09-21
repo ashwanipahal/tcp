@@ -1,6 +1,6 @@
 import { shallow } from 'enzyme';
 import React from 'react';
-import { DetailedEarnExtraPointsTileVanilla } from '../DetailedEarnExtraPointsTile.view';
+import { DetailedEarnExtraPointsSingleVanilla } from '../DetailedEarnExtraPointsSingleTile.view';
 
 describe('Detailed Earn Extra Points Tile component ', () => {
   it('should render Detailed Earn Extra Points Tile component Correctly', () => {
@@ -28,7 +28,7 @@ describe('Detailed Earn Extra Points Tile component ', () => {
       },
       onViewActivityDetails: () => {},
     };
-    const tree = shallow(<DetailedEarnExtraPointsTileVanilla {...props} />);
+    const tree = shallow(<DetailedEarnExtraPointsSingleVanilla {...props} />);
     expect(tree).toMatchSnapshot();
   });
 });

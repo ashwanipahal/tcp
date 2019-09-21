@@ -9,11 +9,16 @@ import {
 import { getEarnExtraPointsList } from '../../common/organism/EarnExtraPointsTile/container/EarnExtraPointsTile.actions';
 import ExtraPointsDetailModal from '../organism/ExtraPointsDetailModal.view';
 
+/**
+ * This Class component use for return the Extra Points details
+ * can be passed in the component.
+ * @param state - initial state of selectedActivity set to be null
+ */
 export class ExtraPointsContainer extends PureComponent {
   constructor(props) {
     super(props);
     this.state = {
-      selectedCoupon: null,
+      selectedActivity: null,
     };
   }
 
@@ -23,24 +28,23 @@ export class ExtraPointsContainer extends PureComponent {
   }
 
   /**
-   * This function use for view coupon details for popup modal
+   * This function use for view Earn Activity details for Earn Activity modal
    * can be passed in the component.
-   * @param coupon - this is coupon data used for show coupon details
+   * @param earnActivity - this is earnActivity data used for show Activity details
    */
-  onViewCouponDetails = coupon => {
+  onViewActivityDetails = earnActivity =>
     this.setState({
-      selectedCoupon: coupon,
+      selectedActivity: earnActivity,
     });
-  };
 
   /**
-   * This function use for close coupon details for popup modal
+   * This function use for close view Earn details for popup modal
    * can be passed in the component.
-   * @param coupon - this is coupon data used for show coupon details
+   * @param state - this is state data used for closed popup modal
    */
-  onCloseCouponDetails = () => {
+  onCloseEarnPointsDetails = () => {
     this.setState({
-      selectedCoupon: null,
+      selectedActivity: null,
     });
   };
 
@@ -52,19 +56,19 @@ export class ExtraPointsContainer extends PureComponent {
 
   render() {
     const { waysToEarn, labels } = this.props;
-    const { selectedCoupon } = this.state;
+    const { selectedActivity } = this.state;
     return (
       <>
         <EarnPoints
           labels={labels}
           waysToEarn={waysToEarn}
-          onViewCouponDetails={this.onViewCouponDetails}
+          onViewActivityDetails={this.onViewActivityDetails}
         />
-        {selectedCoupon && (
+        {selectedActivity && (
           <ExtraPointsDetailModal
-            openState={selectedCoupon}
-            coupon={selectedCoupon}
-            onRequestClose={this.onCloseCouponDetails}
+            openState={selectedActivity}
+            waysToEarnRow={selectedActivity}
+            onRequestClose={this.onCloseEarnPointsDetails}
           />
         )}
       </>

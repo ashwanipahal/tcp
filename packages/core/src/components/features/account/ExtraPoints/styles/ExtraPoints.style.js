@@ -6,4 +6,10 @@ export default css`
       margin-right: 0px;
     }
   }
+
+  .extraPointsTileCol {
+    @media ${props => props.theme.mediaQuery.small} {
+      margin-right: 19px;
+    }
+  }
 `;
