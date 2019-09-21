@@ -50,12 +50,23 @@ class ProductCustomizeFormPart extends React.Component {
       ? productInfo.imagesByColor[currentColorEntry.color.name].basicImageUrl
       : null;
     const prices = productInfo && getPrices(productInfo, currentColorEntry.color.name);
+    const currentColorPdpUrl =
+      currentColorEntry && currentColorEntry.pdpUrl ? (
+        <a className="link-redirect" href={currentColorEntry.pdpUrl}>
+          View Product Details
+        </a>
+      ) : (
+        <a className="link-redirect" href={productInfo.pdpUrl}>
+          View Product Details
+        </a>
+      );
 
     return (
       <div className={className}>
         <Row>
           <Col colSize={{ small: 6, medium: 4, large: 4 }}>
             <img alt={productInfo.name} src={imageUrl} />
+            {currentColorPdpUrl}
           </Col>
           <Col colSize={{ small: 6, medium: 4, large: 8 }}>
             <div className="product-details-card-container">
@@ -116,3 +127,4 @@ ProductCustomizeFormPart.defaultProps = {
 };
 
 export default withStyles(ProductCustomizeFormPart, styles);
+export { ProductCustomizeFormPart as ProductCustomizeFormPartVanilla };

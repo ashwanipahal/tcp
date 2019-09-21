@@ -1,5 +1,5 @@
 import { fromJS } from 'immutable';
-import QUICK_VIEW_CONSTANT from './QuickViewCardProductCustomizeForm.constants';
+import QUICK_VIEW_CONSTANT from './QuickViewModal.constants';
 import { DEFAULT_REDUCER_KEY } from '../../../../../utils/cache.util';
 
 const initialState = fromJS({

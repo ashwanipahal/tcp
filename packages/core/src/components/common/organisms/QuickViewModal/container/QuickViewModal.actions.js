@@ -1,15 +1,8 @@
-import QUICK_VIEW_CONSTANTS from './QuickViewCardProductCustomizeForm.constants';
+import QUICK_VIEW_CONSTANTS from './QuickViewModal.constants';
 
 export const setQuickView = payload => {
   return {
     type: QUICK_VIEW_CONSTANTS.SET_QUICK_VIEW,
-    payload,
-  };
-};
-
-export const getQuickView = payload => {
-  return {
-    type: QUICK_VIEW_CONSTANTS.FETCH_QUICK_VIEW,
     payload,
   };
 };

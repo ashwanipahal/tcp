@@ -1,6 +1,6 @@
 import { call, put, takeLatest, select } from 'redux-saga/effects';
-import QUICK_VIEW_CONSTANT from './QuickViewCardProductCustomizeForm.constants';
-import { setQuickView, setModalState } from './QuickViewCardProductCustomizeForm.actions';
+import QUICK_VIEW_CONSTANT from './QuickViewModal.constants';
+import { setQuickView, setModalState } from './QuickViewModal.actions';
 import getProductInfoById from '../../../../../services/abstractors/productListing/productDetail';
 
 function* fetchProductDetail({ payload: { colorProductId } }) {

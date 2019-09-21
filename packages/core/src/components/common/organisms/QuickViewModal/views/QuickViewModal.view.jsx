@@ -1,12 +1,12 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import withStyles from '../../../hoc/withStyles';
-import styles, { customHeaderStyle } from '../styles/QuickViewCardProductCustomizeForm.style';
+import styles, { customHeaderStyle } from '../styles/QuickViewModal.style';
 import Modal from '../../../molecules/Modal';
 import { PRODUCT_INFO_PROP_TYPE_SHAPE } from '../../../../features/browse/ProductListing/molecules/ProductList/propTypes/productsAndItemsPropTypes';
 import ProductCustomizeFormPart from '../molecules/ProductCustomizeFormPart/views/ProductCustomizeFormPart.view';
 
-class QuickViewCardProductCustomizeForm extends React.Component {
+class QuickViewModal extends React.Component {
   onCloseClick = () => {
     const { closeQuickViewModal } = this.props;
     closeQuickViewModal({
@@ -48,10 +48,11 @@ class QuickViewCardProductCustomizeForm extends React.Component {
   }
 }
 
-QuickViewCardProductCustomizeForm.propTypes = {
+QuickViewModal.propTypes = {
   closeQuickViewModal: PropTypes.func.isRequired,
   isModalOpen: PropTypes.bool.isRequired,
   productInfo: PRODUCT_INFO_PROP_TYPE_SHAPE.isRequired,
 };
 
-export default withStyles(QuickViewCardProductCustomizeForm, styles);
+export default withStyles(QuickViewModal, styles);
+export { QuickViewModal as QuickViewModalVanilla };

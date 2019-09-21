@@ -220,20 +220,9 @@ class ProductsGridItem extends React.PureComponent {
   }
 
   handleQuickViewOpenClick() {
-    const {
-      item: {
-        colorsMap,
-        productInfo: { generalProductId },
-      },
-      onQuickViewOpenClick,
-    } = this.props;
+    const { onQuickViewOpenClick } = this.props;
     const { selectedColorProductId } = this.state;
-    const colorEntry = getMapSliceForColorProductId(colorsMap, selectedColorProductId);
     onQuickViewOpenClick({
-      generalProductId,
-      initialValues: { color: colorEntry && colorEntry.color.name },
-      isBopisCtaEnabled: colorEntry.miscInfo.isBopisEligible,
-      isBossCtaEnabled: colorEntry.miscInfo.isBossEligible,
       colorProductId: selectedColorProductId,
     });
   }
@@ -459,7 +448,7 @@ class ProductsGridItem extends React.PureComponent {
             <FulfillmentSection
               btnClassName="added-to-bag"
               dataLocator={dataLocatorAddToBag || getLocator('global_addtocart_Button')}
-              buttonLabel={labels.addToBag}
+              buttonLabel="Pickup In Store"
               onPickupOpenClick={this.handlePickupOpenClick}
             />
           </div>

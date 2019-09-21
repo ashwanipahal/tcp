@@ -2,22 +2,24 @@ import React from 'react';
 import { connect } from 'react-redux';
 import { withRouter } from 'next/router'; // eslint-disable-line
 import PropTypes from 'prop-types';
-import QuickViewCardProductCustomizeForm from '../views';
-import { closeQuickViewModal } from './QuickViewCardProductCustomizeForm.actions';
+import QuickViewModal from '../views';
+import { closeQuickViewModal } from './QuickViewModal.actions';
 import { PRODUCT_INFO_PROP_TYPE_SHAPE } from '../../../../features/browse/ProductListing/molecules/ProductList/propTypes/productsAndItemsPropTypes';
-import { getModalState, getProductInfo } from './QuickViewCardProductCustomizeForm.selectors';
+import { getModalState, getProductInfo } from './QuickViewModal.selectors';
 import {
   getPlpLabels,
   getCurrentCurrency,
 } from '../../../../features/browse/ProductDetail/container/ProductDetail.selectors';
 
-class QuickViewCardProductCustomizeFormContainer extends React.PureComponent {
+class QuickViewModalContainer extends React.PureComponent {
+  componentDidMount() {}
+
   render() {
     const { isModalOpen, closeQuickViewModalAction, productInfo, ...otherProps } = this.props;
     return (
       <React.Fragment>
         {productInfo ? (
-          <QuickViewCardProductCustomizeForm
+          <QuickViewModal
             isModalOpen={isModalOpen}
             closeQuickViewModal={closeQuickViewModalAction}
             productInfo={productInfo}
@@ -46,7 +48,7 @@ function mapDispatchToProps(dispatch) {
   };
 }
 
-QuickViewCardProductCustomizeFormContainer.propTypes = {
+QuickViewModalContainer.propTypes = {
   isModalOpen: PropTypes.bool.isRequired,
   closeQuickViewModalAction: PropTypes.func.isRequired,
   productInfo: PRODUCT_INFO_PROP_TYPE_SHAPE.isRequired,
@@ -56,5 +58,5 @@ export default withRouter(
   connect(
     mapStateToProps,
     mapDispatchToProps
-  )(QuickViewCardProductCustomizeFormContainer)
+  )(QuickViewModalContainer)
 );
