@@ -33,6 +33,7 @@ import { removeCartItem } from '../../CartItemTile/container/CartItemTile.action
 import { imageGenerator } from '../../../../../services/abstractors/CnC/CartItemTile';
 import { getUserInfo } from '../../../account/User/container/User.actions';
 import { getIsInternationalShipping } from '../../../../../reduxStore/selectors/siteDetails.selectors';
+import { closeMiniBag } from '../../../../common/organisms/Header/container/Header.actions';
 
 // external helper function
 const PAYPAL_REDIRECT_PARAM = 'isPaypalPostBack';
@@ -183,6 +184,7 @@ export function* routeForCartCheckout(recalc, navigation, closeModal) {
       closeModal();
     }
   } else if (!IsInternationalShipping) {
+    yield put(closeMiniBag());
     if (orderHasPickup) {
       utility.routeToPage(CHECKOUT_ROUTES.pickupPage, { recalc });
     } else {
