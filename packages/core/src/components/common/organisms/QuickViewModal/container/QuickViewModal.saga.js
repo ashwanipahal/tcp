@@ -6,9 +6,9 @@ import getProductInfoById from '../../../../../services/abstractors/productListi
 function* fetchProductDetail({ payload: { colorProductId } }) {
   try {
     const state = yield select();
+    yield put(setModalState({ isModalOpen: true }));
     const productDetail = yield call(getProductInfoById, colorProductId, state);
     yield put(setQuickView({ ...productDetail }));
-    yield put(setModalState({ isModalOpen: true }));
   } catch (err) {
     console.log(err);
   }
