@@ -26,7 +26,7 @@ export function* savesocialAccounts({ payload }) {
   try {
     const body = {
       token: payload.socialAccInfo.accessToken,
-      accountName: payload.socialAccInfo.facebook,
+      accountName: payload.socialAccInfo.facebook || payload.socialAccInfo.instagram,
       userId: payload.socialAccInfo.userId,
     };
 

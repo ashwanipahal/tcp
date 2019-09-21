@@ -9,6 +9,7 @@ import BodyCopy from '../../../atoms/BodyCopy';
 
 const loginComponents = {
   Facebook: FacebookLogin,
+  Instagram: InstagramLoginComponent
 };
 
 class Socialview extends React.PureComponent {
@@ -43,11 +44,14 @@ class Socialview extends React.PureComponent {
   renderAccountsInformation = (accounts, saveSocialAcc, labels) => {
     return accounts.map((elem, index) => {
       const isSocialAccount =
-        config && config.SOCIAL_ACCOUNTS[elem.socialAccount.toLocaleLowerCase()];
+        config &&
+        config.SOCIAL_ACCOUNTS[elem.socialAccount.toLocaleLowerCase()];
       return (
         <li className="social-accounts__infoList" key={index.toString()}>
           <span
-            data-locator={!elem.isConnected ? 'facebookDisabledIcon' : 'facebookEnabledIcon'}
+            data-locator={
+              !elem.isConnected ? `${isSocialAccount}DisabledIcon` : `${isSocialAccount}EnabledIcon`
+            }
             className={`${isSocialAccount}-icon--${
               elem.isConnected ? 'enable' : 'disable'
             } social-accounts__social-icon`}
@@ -57,13 +61,22 @@ class Socialview extends React.PureComponent {
             fontFamily="secondary"
             textAlign="center"
             className="social-accounts__align"
-            data-locator={elem.isConnected ? 'facebookConnectedTxt' : 'connectFacebokTxt'}
+            data-locator={
+              elem.isConnected ? 'facebookConnectedTxt' : 'connectFacebokTxt'
+            }
           >
             {elem.isConnected
-              ? `${config.SOCIAL_ACCOUNTS[elem.socialAccount]} ${labels.lbl_prefrence_connected}`
-              : `${labels.lbl_prefrence_connectTo} ${config.SOCIAL_ACCOUNTS[elem.socialAccount]}`}
+              ? `${config.SOCIAL_ACCOUNTS[elem.socialAccount]} ${
+                  labels.lbl_prefrence_connected
+                }`
+              : `${labels.lbl_prefrence_connectTo} ${
+                  config.SOCIAL_ACCOUNTS[elem.socialAccount]
+                }`}
           </BodyCopy>
-          {this.renderSocialLogins(loginComponents[isSocialAccount], saveSocialAcc)}
+          {this.renderSocialLogins(
+            loginComponents[isSocialAccount],
+            saveSocialAcc
+          )}
         </li>
       );
     });
@@ -72,7 +85,7 @@ class Socialview extends React.PureComponent {
   refactorSocialDetails = accounts => {
     const accountsInfo = [];
     Object.keys(accounts).forEach(prop => {
-      if (prop === 'facebook') {
+      if (prop === 'facebook' || prop === 'instagram') {
         accountsInfo.push({
           socialAccount: config.SOCIAL_ACCOUNTS_INFO[prop],
           isConnected: accounts[prop].accessToken,
@@ -92,11 +105,19 @@ class Socialview extends React.PureComponent {
     return (
       <React.Fragment>
         <section className={className} data-selector="analytics-social-account">
-          <p className="social-accounts__subTitle" data-locator="linkAccountTxt">
+          <p
+            className="social-accounts__subTitle"
+            data-locator="linkAccountTxt"
+          >
             {labels.lbl_prefrence_social_text}
           </p>
-          <ul>{this.renderAccountsInformation(this.socialAccounts, saveSocialAcc, labels)}</ul>
-          <InstagramLoginComponent saveAccountInfo={this.socialAccounts} />
+          <ul>
+            {this.renderAccountsInformation(
+              this.socialAccounts,
+              saveSocialAcc,
+              labels
+            )}
+          </ul>
         </section>
       </React.Fragment>
     );
