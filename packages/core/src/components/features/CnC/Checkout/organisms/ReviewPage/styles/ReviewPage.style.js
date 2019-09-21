@@ -8,7 +8,6 @@ const styles = css`
 
   .review-shipping {
     margin-top: ${props => props.theme.spacing.ELEM_SPACING.XL};
-    min-height: 300px;
     border-bottom: 1px solid ${props => props.theme.colors.BLACK};
   }
 

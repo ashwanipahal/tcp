@@ -103,7 +103,7 @@ export class PickUpReviewSection extends React.PureComponent {
                 />
                 <BodyCopy
                   fontSize="fs16"
-                  fontFamily="primary"
+                  fontFamily="secondary"
                   color="gray.900"
                   fontWeight="regular"
                 >

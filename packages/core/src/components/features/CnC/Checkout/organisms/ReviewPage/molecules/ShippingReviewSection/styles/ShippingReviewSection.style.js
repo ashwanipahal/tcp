@@ -1,12 +1,12 @@
 import { css } from 'styled-components';
 
 const styles = css`
-  margin-bottom: 16px;
+  margin-bottom: ${props => props.theme.spacing.ELEM_SPACING.XL};
   .shippingAddressTitle {
-    margin-bottom: 14px;
+    margin-bottom: ${props => props.theme.spacing.ELEM_SPACING.MED};
   }
   .addressStyle {
-    font-size: 16px;
+    font-size: ${props => props.theme.typography.fontSizes.fs16};
   }
 `;
 

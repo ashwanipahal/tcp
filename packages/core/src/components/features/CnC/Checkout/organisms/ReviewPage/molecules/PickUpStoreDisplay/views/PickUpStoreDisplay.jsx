@@ -25,7 +25,7 @@ const PickupStoreDisplay = props => {
     !!(bossStartDate && bossEndDate) &&
     `${bossStartDate.day}. ${bossStartDate.month}
     ${bossStartDate.date} - ${bossEndDate.day}. ${bossEndDate.month} ${bossEndDate.date}`;
-  const bopisDate = `Today, ${today.month} ${today.date}`;
+  const bopisDate = `${labels.lbl_review_sectionPickupToday} ${today.month} ${today.date}`;
   bossItems = bossItems || storeItemsCount;
   bopisItems = bopisItems || storeItemsCount;
 
@@ -63,7 +63,7 @@ const PickupStoreDisplay = props => {
                 fontWeight="extrabold"
                 color="gray.900"
               >
-                {`PICK UP ${bopisItems} `}
+                {`${labels.lbl_review_sectionPickupOrderTitle} ${bopisItems} `}
                 {bopisItems === 1
                   ? labels.lbl_review_sectionPickupItem
                   : labels.lbl_review_sectionPickupItems}
@@ -88,7 +88,7 @@ const PickupStoreDisplay = props => {
                 fontWeight="extrabold"
                 color="gray.900"
               >
-                {`PICK UP ${bopisItems} `}
+                {`${labels.lbl_review_sectionPickupOrderTitle} ${bopisItems} `}
                 {bossItems === 1
                   ? labels.lbl_review_sectionPickupItem
                   : labels.lbl_review_sectionPickupItems}

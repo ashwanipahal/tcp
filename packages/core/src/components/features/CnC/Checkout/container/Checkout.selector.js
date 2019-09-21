@@ -657,6 +657,7 @@ const getPickupSectionLabels = createSelector(
       'lbl_review_sectionPickupItems',
       'lbl_review_sectionPickupToday',
       'lbl_review_sectionPickupAlternateHeading',
+      'lbl_review_sectionPickupOrderTitle',
     ];
     labelKeys.forEach(key => {
       labels[key] = getLabelValue(reviewLabels, key);

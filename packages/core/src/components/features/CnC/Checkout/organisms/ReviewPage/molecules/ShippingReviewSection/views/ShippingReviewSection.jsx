@@ -34,7 +34,7 @@ export class ShippingReviewSection extends React.PureComponent {
         </Row>
 
         <Row fullBleed>
-          <Col colSize={{ small: 6, medium: 8, large: 6 }}>
+          <Col colSize={{ small: 6, medium: 4, large: 5 }}>
             <div className="shippingAddressTitle">
               <BodyCopy
                 fontSize="fs16"
@@ -66,7 +66,7 @@ export class ShippingReviewSection extends React.PureComponent {
               {shippingAddress.phoneNumber}
             </BodyCopy>
           </Col>
-          <Col colSize={{ small: 6, medium: 8, large: 6 }}>
+          <Col colSize={{ small: 6, medium: 4, large: 5 }}>
             {shippingMethod && <ShippingMethodDisplay displayName={shippingMethod.displayName} />}
 
             {isGiftOptionsEnabled && <GiftWrappingDisplay displayName={giftWrappingDisplayName} />}
