@@ -1,8 +1,10 @@
 import React from 'react';
 import { shallow } from 'enzyme';
+import Slider from 'react-slick';
+
 import { CarouselVanilla } from '../views/Carousel';
 
-const playButton = '.tcp_carousel__play';
+const playButton = '.tcp_carousel__play_pause_button';
 describe('Carousel component', () => {
   const CarouselTest = new CarouselVanilla();
   beforeEach(() => {
@@ -19,28 +21,36 @@ describe('Carousel component', () => {
         accessibility: true,
         autoplaySpeed: 3000,
         dots: false,
+        autoplay: true,
       },
       carouselConfig: {
         autoplay: true,
       },
     };
     const wrapper = shallow(<CarouselVanilla {...props} />);
-    expect(wrapper.find(playButton)).toHaveLength(1);
+    const Dots = wrapper.find(Slider).props().appendDots;
+    const dotsWrapper = shallow(<Dots />);
+
+    expect(dotsWrapper.find(playButton)).toHaveLength(1);
   });
 
-  it('show play button if autoplay: true prop is passed', () => {
+  it('hide play button if autoplay: true prop is passed', () => {
     const props = {
       options: {
         accessibility: true,
         autoplaySpeed: 3000,
         dots: false,
+        autoplay: true,
       },
       carouselConfig: {
         autoplay: false,
       },
     };
     const wrapper = shallow(<CarouselVanilla {...props} />);
-    expect(wrapper.find(playButton)).toHaveLength(0);
+    const Dots = wrapper.find(Slider).props().appendDots;
+    const dotsWrapper = shallow(<Dots />);
+
+    expect(dotsWrapper.find(playButton)).toHaveLength(0);
   });
 
   it('togglePlay function working properly', () => {

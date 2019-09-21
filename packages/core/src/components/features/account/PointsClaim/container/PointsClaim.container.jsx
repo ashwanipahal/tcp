@@ -9,7 +9,6 @@ import {
 } from './PointsClaim.selectors';
 import { routerPush } from '../../../../../utils';
 import { getMyPlaceNumber, getProfileInfoTileData } from '../../User/container/User.selectors';
-
 import PointsClaimComponent from '../views';
 import { TRANSACTION_TYPES } from '../PointsClaim.constants';
 import { submitClaimPoints, resetState } from './PointsClaim.actions';
@@ -17,9 +16,9 @@ import {
   getLabels,
   getFormValidationErrorMessages,
 } from '../../Account/container/Account.selectors';
-
 import { getSiteId } from '../../../../../utils/utils.web';
 import { API_CONFIG } from '../../../../../services/config';
+import internalEndpoints from '../../common/internalEndpoints';
 
 export class PontsClaimContainer extends PureComponent {
   transactionTypesMap = [
@@ -81,10 +80,7 @@ export class PontsClaimContainer extends PureComponent {
    * @desc This is a function to redirect at point history page
    */
   backHandler = () => {
-    routerPush(
-      '/account?id=place-rewards&&subSection=points-history',
-      '/account/place-rewards/points-history'
-    );
+    routerPush(internalEndpoints.pointsHistoryPage.link, internalEndpoints.pointsHistoryPage.path);
   };
 
   render() {
