@@ -5,7 +5,7 @@ import withStyles from '../../../../../../common/hoc/withStyles';
 import ProductListingFiltersFormStyle from '../ProductListingFiltersForm.style';
 import CustomSelect from '../../CustomSelect/views';
 
-import BodyCopy from '../../../../../../common/atoms/BodyCopy';
+import { BodyCopy, Col, Row } from '../../../../../../common/atoms';
 import cssClassName from '../../utils/cssClassName';
 import ProductListingMobileFiltersForm from '../../ProductListingMobileFiltersForm';
 import Image from '../../../../../../common/atoms/Image';
@@ -13,8 +13,9 @@ import { getLocator } from '../../../../../../../utils';
 import AppliedFiltersList from '../../AppliedFiltersList';
 import { FACETS_FIELD_KEY } from '../../../../../../../services/abstractors/productListing/productListing.utils';
 import SortSelector from '../../SortSelector';
-import config from '../../SortSelector/SortSelector.config';
 import { DESCRIPTION_FILTER } from '../../../container/ProductListing.constants';
+import getSortOptions from '../../SortSelector/views/Sort.util';
+import LoadedProductsCount from '../../LoadedProductsCount/views';
 
 /**
  * @function getColorFilterOptionsMap This handles to render the desktop filter fields of color
@@ -296,8 +297,13 @@ class ProductListingFiltersForm extends React.Component {
       className,
       initialValues,
       onSubmit,
+      sortLabels,
+      slpLabels,
     } = this.props;
     const filterKeys = Object.keys(filtersMaps);
+
+    const sortOptions = getSortOptions(sortLabels);
+
     return (
       <div className="filter-and-sort-form-container">
         {/* {totalProductsCount > 0 && <ProductListingCount currentSearchTerm={currentSearchTerm} isMobile={false} totalProductsCount={totalProductsCount} isShowAllEnabled={false} />} NOTE: FPO isShowAllEnabled */}
@@ -316,7 +322,7 @@ class ProductListingFiltersForm extends React.Component {
                   outline="none"
                   data-locator={getLocator('plp_filter_label_filterby')}
                 >
-                  {`${labels.lbl_filter_by}:`}
+                  {`${labels.lbl_filter_by}`}
                 </BodyCopy>
 
                 {filtersMaps && this.renderDesktopFilters(filterKeys, appliedFilters)}
@@ -324,22 +330,33 @@ class ProductListingFiltersForm extends React.Component {
               <div className="sort-selector-wrapper">
                 <SortSelector
                   isMobile={false}
-                  sortSelectOptions={getSortCustomOptionsMap(config)}
+                  sortSelectOptions={getSortCustomOptionsMap(sortOptions)}
                   onChange={handleSubmit(this.handleSubmitOnChange)}
                 />
               </div>
             </div>
           )}
-          {this.getAppliedFiltersCount() > 0 && (
-            <AppliedFiltersList
-              auxColorMap={colorSeqMap}
-              onRemoveFilter={this.handleRemoveFilter}
-              appliedFilters={appliedFilters}
-              removeAllFilters={this.handleRemoveAllFilters}
-              className={className}
-              labels={labels}
-            />
-          )}
+          <Row fullBleed className="filtered-by-section">
+            <Col colSize={{ small: 0, medium: 0, large: 10 }}>
+              {this.getAppliedFiltersCount() > 0 && (
+                <AppliedFiltersList
+                  auxColorMap={colorSeqMap}
+                  onRemoveFilter={this.handleRemoveFilter}
+                  appliedFilters={appliedFilters}
+                  removeAllFilters={this.handleRemoveAllFilters}
+                  className={className}
+                  labels={labels}
+                  totalProductsCount={totalProductsCount}
+                />
+              )}
+            </Col>
+            <Col colSize={{ small: 6, medium: 8, large: 2 }}>
+              <LoadedProductsCount
+                totalProductsCount={totalProductsCount}
+                showingItemsLabel={slpLabels}
+              />
+            </Col>
+          </Row>
         </form>
         <div className="render-mobile-view">
           <ProductListingMobileFiltersForm
@@ -353,6 +370,7 @@ class ProductListingFiltersForm extends React.Component {
             handleImmediateSubmit={this.handleImmediateSubmit}
             removeAllFilters={this.handleRemoveAllFilters}
             handleSubmitOnChange={this.handleSubmitOnChange}
+            sortLabels={sortLabels}
           />
         </div>
         {/* {submitting && <Spinner className="loading-more-product">Updating...</Spinner>} */}
@@ -432,6 +450,8 @@ ProductListingFiltersForm.propTypes = {
   onSubmit: PropTypes.func.isRequired,
   getProducts: PropTypes.func.isRequired,
   change: PropTypes.func,
+  sortLabels: PropTypes.arrayOf(PropTypes.shape({})),
+  slpLabels: PropTypes.objectOf(PropTypes.oneOfType([PropTypes.string])),
 };
 
 ProductListingFiltersForm.defaultProps = {
@@ -444,6 +464,8 @@ ProductListingFiltersForm.defaultProps = {
   colorSeqMap: {},
   submitting: false,
   change: () => null,
+  sortLabels: [],
+  slpLabels: {},
 };
 export default reduxForm({
   form: 'filter-form', // a unique identifier for this form

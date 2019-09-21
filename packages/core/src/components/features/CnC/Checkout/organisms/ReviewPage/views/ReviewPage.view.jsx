@@ -9,12 +9,13 @@ import utility from '../../../util/utility';
 import { Anchor } from '../../../../../../common/atoms';
 import PickUpReviewSectionContainer from '../organisms/PickUpReviewSection';
 import ShippingReviewSection from '../organisms/ShippingReviewSection';
+import BillingSection from '../organisms/BillingSection';
 
 class ReviewPage extends React.PureComponent {
   static propTypes = {
     className: PropTypes.string.isRequired,
     labels: PropTypes.shape({}).isRequired,
-    // submitReview: PropTypes.func.isRequired,
+    submitReview: PropTypes.func.isRequired,
     orderHasShipping: PropTypes.bool.isRequired,
     orderHasPickUp: PropTypes.bool.isRequired,
   };
@@ -24,7 +25,7 @@ class ReviewPage extends React.PureComponent {
   };
 
   render() {
-    const { className, labels, orderHasPickUp, orderHasShipping } = this.props;
+    const { className, labels, orderHasPickUp, orderHasShipping, submitReview } = this.props;
     const {
       header,
       backLinkBilling,
@@ -33,7 +34,6 @@ class ReviewPage extends React.PureComponent {
       applyConditionTermsText,
       applyConditionAndText,
       applyConditionPolicyText,
-      billingSectionTitle,
       ariaLabelBackLink,
       ariaLabelSubmitOrderButton,
     } = labels;
@@ -51,7 +51,7 @@ class ReviewPage extends React.PureComponent {
             <ShippingReviewSection />
           </div>
         )}
-        <div className="review-billing">{billingSectionTitle}</div>
+        <BillingSection />
         <CheckoutFooter
           hideBackLink
           ariaLabelBackLink={ariaLabelBackLink}
@@ -59,6 +59,7 @@ class ReviewPage extends React.PureComponent {
           backLinkHandler={() => utility.routeToPage(CHECKOUT_ROUTES.billingPage)}
           nextButtonText={nextSubmitText}
           backLinkText={backLinkBilling}
+          nextHandler={submitReview}
           footerBody={[
             applyConditionPreText,
             <Anchor

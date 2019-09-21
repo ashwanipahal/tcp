@@ -1,4 +1,5 @@
 import { createSelector } from 'reselect';
+import { getLabelValue } from '../../../../../utils';
 import { AVAILABILITY } from '../../../../../services/abstractors/CnC/CartItemTile';
 import getErrorList from './Errors.selector';
 
@@ -30,6 +31,20 @@ const getBagPageLabels = state => {
       addedToBagModal: { lbl_header_addedToBag: addedToBag, lbl_cta_checkout: checkout },
     } = {},
   } = state.Labels;
+
+  const savedForLaterText = getLabelValue(
+    state.Labels,
+    'lbl_sfl_savedForLater',
+    'bagPage',
+    'checkout'
+  );
+  const myBagButton = getLabelValue(state.Labels, 'lbl_sfl_myBagButton', 'bagPage', 'checkout');
+  const savedLaterButton = getLabelValue(
+    state.Labels,
+    'lbl_sfl_savedLaterButton',
+    'bagPage',
+    'checkout'
+  );
   return {
     addedToBag,
     checkout,
@@ -40,6 +55,9 @@ const getBagPageLabels = state => {
     tagLine,
     guestUserMsg,
     helperMsg,
+    savedForLaterText,
+    myBagButton,
+    savedLaterButton,
   };
 };
 
@@ -100,8 +118,11 @@ const getGiftServicesContentTcpId = state => {
   return contentTCP && contentTCP.contentId;
 };
 
-const getGiftServicesContentGymId = state => {
-  const { referred = [] } = state.Labels.bag.addedToBag;
+const getGiftServicesContentGymId = ({
+  Labels: {
+    checkout: { addedToBag: { referred = [] } = {} },
+  },
+}) => {
   const contentGYM = referred.find(label => label.name === 'GiftServicesDetailsGYMModal');
   return contentGYM && contentGYM.contentId;
 };
@@ -137,6 +158,10 @@ const getCartStoresToJs = createSelector(
   store => store.toJS()
 );
 
+const getsflItemsList = state => {
+  return state.CartPageReducer.get('sfl');
+};
+
 export default {
   getBagPageLabels,
   getTotalItems,
@@ -158,4 +183,5 @@ export default {
   getCurrentCurrency,
   getCartStores,
   getCartStoresToJs,
+  getsflItemsList,
 };

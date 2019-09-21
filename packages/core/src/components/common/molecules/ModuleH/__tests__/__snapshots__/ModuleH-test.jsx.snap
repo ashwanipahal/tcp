@@ -212,6 +212,8 @@ exports[`ModuleH component renders correctly 1`] = `
           "autoplay": true,
           "dataLocatorPause": "moduleH_pause_button",
           "dataLocatorPlay": "moduleH_play_button",
+          "pauseIconButtonLabel": "Pause",
+          "playIconButtonLabel": "Play",
           "type": "light",
         }
       }

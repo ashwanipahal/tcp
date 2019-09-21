@@ -746,6 +746,7 @@ exports[`AddressFields component should render correctly 1`] = `
       />
     </Styled(Col)>
     <Styled(Col)
+      className="margin-right"
       colSize={
         Object {
           "large": 3,
@@ -2570,6 +2571,7 @@ exports[`AddressFields component should render correctly without phoneNumber and
       />
     </Styled(Col)>
     <Styled(Col)
+      className="margin-right"
       colSize={
         Object {
           "large": 3,
@@ -4066,6 +4068,7 @@ exports[`AddressFields component should render correctly without phoneNumber and
       />
     </Styled(Col)>
     <Styled(Col)
+      className="margin-right"
       colSize={
         Object {
           "large": 3,
@@ -5562,6 +5565,7 @@ exports[`AddressFields component should render correctly without phoneNumber and
       />
     </Styled(Col)>
     <Styled(Col)
+      className="margin-right"
       colSize={
         Object {
           "large": 3,
@@ -5919,7 +5923,7 @@ exports[`AddressFields component should render correctly without phoneNumber and
         dataLocator="addnewaddress-zipcode"
         enableSuccessCheck={false}
         id="address.zipCode"
-        maxLength={6}
+        maxLength={7}
         name="zipCode"
       />
     </Styled(Col)>

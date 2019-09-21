@@ -22,21 +22,23 @@ import {
 export const PointsHistoryPageView = props => {
   const { labels, richTextContent } = props;
   return (
-    <ScrollView>
+    <ScrollView showsVerticalScrollIndicator={false} keyboardShouldPersistTaps="handled">
       <BodyCopyWithSpacing
         text={getLabelValue(labels, 'lbl_common_points_history')}
         fontSize="fs16"
         fontWeight="extrabold"
         fontFamily="secondary"
+        color="gray.900"
         spacingStyles="margin-bottom-XL margin-top-LRG"
+        dataLocator="points_history_subheading"
       />
       <PointsHistoryList view="edit" labels={labels} showFullHistory />
-      <RichTextWrapper>
+      <RichTextWrapper dataLocator="points_history_rte">
         <RichText source={{ html: richTextContent }} style={contentHeight} />
       </RichTextWrapper>
       <StyledAnchorWrapper>
         <Anchor
-          fontSizeVariation="large"
+          fontSizeVariation="medium"
           underline
           onPress={() => {
             UrlHandler(endpoints.myPlaceRewardsPage);

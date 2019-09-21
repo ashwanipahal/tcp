@@ -1,8 +1,9 @@
 import React from 'react';
 import { PropTypes } from 'prop-types';
-import LabeledCheckbox from '../../../../../atoms/LabeledCheckbox';
 import { BOPIS_ITEM_AVAILABILITY } from '../../../PickUpStoreModal.constants';
 import PickupStoreListItem from '../../PickupStoreListItem';
+import { STORE_SUMMARY_PROP_TYPES } from '../../../PickUpStoreModal.proptypes';
+import InputCheckbox from '../../../../../atoms/InputCheckbox';
 
 const derieveStoresWithAvailability = (isOnlyShowAvailable, isBopisEnabled, storesList) => {
   return isOnlyShowAvailable && isBopisEnabled
@@ -17,7 +18,21 @@ class PickupStoreList extends React.Component {
     /** Error message when add to cart */
     addToCartError: PropTypes.string.isRequired,
     /** Array of stores to display */
-    storesList: PropTypes.arrayOf(PickupStoreListItem.propTypes.store).isRequired,
+    storesList: PropTypes.arrayOf(
+      PropTypes.shape({
+        ...STORE_SUMMARY_PROP_TYPES,
+        /** the availability status of the searched for cart item in this store */
+        basicInfo: PropTypes.shape({
+          /** store id identifier */
+          id: PropTypes.string,
+        }),
+        productAvailability: PropTypes.shape({
+          status: PropTypes.oneOf(
+            Object.keys(BOPIS_ITEM_AVAILABILITY).map(key => BOPIS_ITEM_AVAILABILITY[key])
+          ).isRequired,
+        }).isRequired,
+      })
+    ).isRequired,
 
     /**
      * Function to call when a store is selected. The called function will
@@ -78,7 +93,6 @@ class PickupStoreList extends React.Component {
     this.state = { isOnlyShowAvailable: false };
     this.handleCancelClick = this.handleCancelClick.bind(this);
     this.handleShowAvailableChange = this.handleShowAvailableChange.bind(this);
-    this.isShowDistanceForSearch = true;
   }
 
   handleShowAvailableChange() {
@@ -158,11 +172,12 @@ class PickupStoreList extends React.Component {
     return (
       <div className="stores-info">
         {!allowBossStoreSearch && (!isResultOfSearchingInCartStores && isShowFilterCheckbox) && (
-          <LabeledCheckbox
+          <InputCheckbox
             className="store-availability-checkbox"
-            title="Only show stores available for pickup today."
             input={{ value: isOnlyShowAvailable, onChange: this.handleShowAvailableChange }}
-          />
+          >
+            Only show stores available for pickup today.
+          </InputCheckbox>
         )}
         {derivedStoresList.map(store => (
           <PickupStoreListItem
@@ -186,7 +201,6 @@ class PickupStoreList extends React.Component {
             isBossCtaEnabled={isBossCtaEnabled && isBossEnabled}
             updateCartItemStore={updateCartItemStore}
             buttonLabel={buttonLabel}
-            isShowDistance={!isResultOfSearchingInCartStores && this.isShowDistanceForSearch}
             isGiftCard={isGiftCard}
           />
         ))}

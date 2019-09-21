@@ -5,6 +5,7 @@ import { Row, Col } from '../../../../common/atoms';
 import ProductsGrid from '../molecules/ProductsGrid/views';
 import GlobalNavigationMenuDesktopL2 from '../molecules/GlobalNavigationMenuDesktopL2/views';
 import withStyles from '../../../../common/hoc/withStyles';
+import PickupStoreModal from '../../../../common/organisms/PickupStoreModal';
 
 import ProductListingStyle from '../ProductListing.style';
 
@@ -32,6 +33,7 @@ const ProductListView = ({
   formValues,
   getProducts,
   onSubmit,
+  sortLabels,
   slpLabels,
   ...otherProps
 }) => {
@@ -70,10 +72,12 @@ const ProductListView = ({
                 onSubmit={onSubmit}
                 formValues={formValues}
                 getProducts={getProducts}
+                sortLabels={sortLabels}
+                slpLabels={slpLabels}
               />
             </div>
           </Col>
-          <Col colSize={{ small: 6, medium: 8, large: 12 }}>
+          <Col colSize={{ small: 6, medium: 8, large: 12 }} className="show-count-section">
             <LoadedProductsCount
               totalProductsCount={totalProductsCount}
               showingItemsLabel={slpLabels}
@@ -95,6 +99,7 @@ const ProductListView = ({
           </Col>
         </Col>
       </Row>
+      <PickupStoreModal />
     </div>
   );
 };
@@ -117,6 +122,7 @@ ProductListView.propTypes = {
   getProducts: PropTypes.func,
   onSubmit: PropTypes.func,
   formValues: PropTypes.shape({}).isRequired,
+  sortLabels: PropTypes.arrayOf(PropTypes.shape({})),
   slpLabels: PropTypes.objectOf(PropTypes.oneOfType([PropTypes.string])),
 };
 
@@ -134,6 +140,7 @@ ProductListView.defaultProps = {
   categoryId: '',
   labels: {},
   labelsFilter: {},
+  sortLabels: [],
   slpLabels: {},
 };
 

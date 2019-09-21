@@ -30,6 +30,8 @@ exports[`ModuleA component should render Gymboree variant correctly 1`] = `
             "dataLocatorCarousel": "carousel_banner",
             "dataLocatorPause": "moduleA_pause_button",
             "dataLocatorPlay": "moduleA_play_button",
+            "pauseIconButtonLabel": "Pause",
+            "playIconButtonLabel": "Play",
           }
         }
         options={
@@ -40,7 +42,6 @@ exports[`ModuleA component should render Gymboree variant correctly 1`] = `
             "dots": true,
             "dotsClass": "slick-dots",
             "fade": false,
-            "hidePlayPause": false,
             "nextArrow": <button
               className="slick-prev"
               data-locator="moduleA_right_arrow"
@@ -71,13 +72,11 @@ exports[`ModuleA component should render Gymboree variant correctly 1`] = `
             alt=""
             data-locator="moduleA_image_0"
             imgConfigs={
-              Object {
-                "crops": Array [
-                  "t_mod_A_img_m",
-                  "t_mod_A_img_t",
-                  "t_mod_A_img_d",
-                ],
-              }
+              Array [
+                "t_mod_A_img_m",
+                "t_mod_A_img_t",
+                "t_mod_A_img_d",
+              ]
             }
             imgData={
               Object {
@@ -191,13 +190,11 @@ exports[`ModuleA component should render Gymboree variant correctly 1`] = `
             alt=""
             data-locator="moduleA_image_1"
             imgConfigs={
-              Object {
-                "crops": Array [
-                  "t_mod_A_img_m",
-                  "t_mod_A_img_t",
-                  "t_mod_A_img_d",
-                ],
-              }
+              Array [
+                "t_mod_A_img_m",
+                "t_mod_A_img_t",
+                "t_mod_A_img_d",
+              ]
             }
             imgData={
               Object {
@@ -311,13 +308,11 @@ exports[`ModuleA component should render Gymboree variant correctly 1`] = `
             alt=""
             data-locator="moduleA_image_2"
             imgConfigs={
-              Object {
-                "crops": Array [
-                  "t_mod_A_img_m",
-                  "t_mod_A_img_t",
-                  "t_mod_A_img_d",
-                ],
-              }
+              Array [
+                "t_mod_A_img_m",
+                "t_mod_A_img_t",
+                "t_mod_A_img_d",
+              ]
             }
             imgData={
               Object {
@@ -431,13 +426,11 @@ exports[`ModuleA component should render Gymboree variant correctly 1`] = `
             alt=""
             data-locator="moduleA_image_3"
             imgConfigs={
-              Object {
-                "crops": Array [
-                  "t_mod_A_img_m",
-                  "t_mod_A_img_t",
-                  "t_mod_A_img_d",
-                ],
-              }
+              Array [
+                "t_mod_A_img_m",
+                "t_mod_A_img_t",
+                "t_mod_A_img_d",
+              ]
             }
             imgData={
               Object {
@@ -677,6 +670,8 @@ exports[`ModuleA component should render TCP or default variant correctly 1`] = 
             "dataLocatorCarousel": "carousel_banner",
             "dataLocatorPause": "moduleA_pause_button",
             "dataLocatorPlay": "moduleA_play_button",
+            "pauseIconButtonLabel": "Pause",
+            "playIconButtonLabel": "Play",
           }
         }
         options={
@@ -687,7 +682,6 @@ exports[`ModuleA component should render TCP or default variant correctly 1`] = 
             "dots": true,
             "dotsClass": "slick-dots",
             "fade": false,
-            "hidePlayPause": false,
             "nextArrow": <button
               className="slick-prev"
               data-locator="moduleA_right_arrow"
@@ -718,13 +712,11 @@ exports[`ModuleA component should render TCP or default variant correctly 1`] = 
             alt=""
             data-locator="moduleA_image_0"
             imgConfigs={
-              Object {
-                "crops": Array [
-                  "t_mod_A_img_m",
-                  "t_mod_A_img_t",
-                  "t_mod_A_img_d",
-                ],
-              }
+              Array [
+                "t_mod_A_img_m",
+                "t_mod_A_img_t",
+                "t_mod_A_img_d",
+              ]
             }
             imgData={
               Object {
@@ -838,13 +830,11 @@ exports[`ModuleA component should render TCP or default variant correctly 1`] = 
             alt=""
             data-locator="moduleA_image_1"
             imgConfigs={
-              Object {
-                "crops": Array [
-                  "t_mod_A_img_m",
-                  "t_mod_A_img_t",
-                  "t_mod_A_img_d",
-                ],
-              }
+              Array [
+                "t_mod_A_img_m",
+                "t_mod_A_img_t",
+                "t_mod_A_img_d",
+              ]
             }
             imgData={
               Object {
@@ -958,13 +948,11 @@ exports[`ModuleA component should render TCP or default variant correctly 1`] = 
             alt=""
             data-locator="moduleA_image_2"
             imgConfigs={
-              Object {
-                "crops": Array [
-                  "t_mod_A_img_m",
-                  "t_mod_A_img_t",
-                  "t_mod_A_img_d",
-                ],
-              }
+              Array [
+                "t_mod_A_img_m",
+                "t_mod_A_img_t",
+                "t_mod_A_img_d",
+              ]
             }
             imgData={
               Object {
@@ -1078,13 +1066,11 @@ exports[`ModuleA component should render TCP or default variant correctly 1`] = 
             alt=""
             data-locator="moduleA_image_3"
             imgConfigs={
-              Object {
-                "crops": Array [
-                  "t_mod_A_img_m",
-                  "t_mod_A_img_t",
-                  "t_mod_A_img_d",
-                ],
-              }
+              Array [
+                "t_mod_A_img_m",
+                "t_mod_A_img_t",
+                "t_mod_A_img_d",
+              ]
             }
             imgData={
               Object {
