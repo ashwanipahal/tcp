@@ -7,6 +7,8 @@ import { ProductTileWrapperVanilla } from '../views/ProductTileWrapper.view';
 describe('ProductTileWrapper component', () => {
   it('should render ProductTile view section', () => {
     const props = {
+      isCartItemsUpdating: { isDeleting: true },
+      labels: {},
       orderItems: fromJS([
         {
           productInfo: {
@@ -122,6 +124,8 @@ describe('ProductTileWrapper component', () => {
   });
   it('should render ProductTile view section with bag page sfl section', () => {
     const props = {
+      isCartItemsUpdating: { isDeleting: true },
+      labels: {},
       sflItems: fromJS([
         {
           productInfo: {

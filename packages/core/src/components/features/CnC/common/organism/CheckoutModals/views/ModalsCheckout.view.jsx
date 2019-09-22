@@ -4,6 +4,7 @@ import withStyles from '../../../../../../common/hoc/withStyles';
 import OpenLoginModal from '../../../../../account/LoginPage/views/LoginModal';
 import style from '../../../../AddedToBagActions/styles/AddedToBagActions.style';
 import BagConfirmationModal from '../../../../BagPage/views/BagConfirmationModal.view';
+import ItemDeleteConfirmationModal from '../../../../BagPage/views/ItemDeleteConfirmationModal.view';
 
 class ModalsCheckout extends React.PureComponent<Props> {
   routeToCheckout = e => {
@@ -30,6 +31,11 @@ class ModalsCheckout extends React.PureComponent<Props> {
       modalInfo,
       closeCheckoutConfirmationModal,
       removeUnqualifiedItemsAndCheckout,
+      currentSelectItemInfo,
+      closeItemDeleteModal,
+      deleteConfirmationModalLabels,
+      confirmRemoveCartItem,
+      addItemToSflList,
     } = this.props;
     const { showModal, isEditingItem: modalEditingItem } = modalInfo;
     if (modalEditingItem) {
@@ -51,6 +57,13 @@ class ModalsCheckout extends React.PureComponent<Props> {
           setLoginModalMountState={closeCheckoutModalMountState}
           handleContinueAsGuest={this.routeToCheckout}
           handleAfterLogin={this.routeToCheckout}
+        />
+        <ItemDeleteConfirmationModal
+          isOpen={currentSelectItemInfo.showModal}
+          closeCheckoutConfirmationModal={closeItemDeleteModal}
+          labels={deleteConfirmationModalLabels}
+          moveToSfl={() => addItemToSflList(currentSelectItemInfo)}
+          confirmRemoveCartItem={() => confirmRemoveCartItem(currentSelectItemInfo.itemId)}
         />
       </>
     );
