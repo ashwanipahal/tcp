@@ -22,6 +22,12 @@ import BagPageSelectors from '../../BagPage/container/BagPage.selectors';
 
 const { checkoutIfItemIsUnqualified } = BagPageSelectors;
 
+export function* afterRemovingCartItem() {
+  yield put(BAG_PAGE_ACTIONS.setCartItemsUpdating({ isDeleting: true }));
+  yield delay(3000);
+  yield put(BAG_PAGE_ACTIONS.setCartItemsUpdating({ isDeleting: false }));
+}
+
 /**
  *@function confirmRemoveItem to be invoked to delete item form cart
  *
@@ -35,10 +41,7 @@ export function* confirmRemoveItem({ payload, afterHandler }) {
     if (afterHandler) {
       afterHandler();
     }
-    yield put(BAG_PAGE_ACTIONS.getOrderDetails());
-    yield put(BAG_PAGE_ACTIONS.setCartItemsUpdating({ isDeleting: true }));
-    yield delay(3000);
-    yield put(BAG_PAGE_ACTIONS.setCartItemsUpdating({ isDeleting: false }));
+    yield put(BAG_PAGE_ACTIONS.getOrderDetails({ after: afterRemovingCartItem }));
   } catch (err) {
     logger.error(err);
   }

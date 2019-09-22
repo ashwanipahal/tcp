@@ -103,13 +103,17 @@ function createMatchObject(res, translatedProductInfo) {
   });
 }
 
-export function* getOrderDetailSaga() {
+export function* getOrderDetailSaga(payload) {
+  const { payload: { after } = {} } = payload;
   try {
     const res = yield call(getOrderDetailsData);
     const translatedProductInfo = yield call(getTranslatedProductInfo, res);
 
     createMatchObject(res, translatedProductInfo);
     yield put(BAG_PAGE_ACTIONS.getOrderDetailsComplete(res.orderDetails));
+    if (after) {
+      yield call(after);
+    }
   } catch (err) {
     yield put(BAG_PAGE_ACTIONS.setBagPageError(err));
   }
@@ -325,6 +329,7 @@ export function* addItemToSFL({
       yield put(BAG_PAGE_ACTIONS.setCartItemsSFL(false));
     }
   } catch (err) {
+    console.log({ err });
     yield put(BAG_PAGE_ACTIONS.setCartItemsSflError(err));
   }
 }

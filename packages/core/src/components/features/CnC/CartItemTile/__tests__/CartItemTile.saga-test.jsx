@@ -6,6 +6,7 @@ import {
   removeCartItem,
   updateCartItemSaga,
   getProductSKUInfoSaga,
+  afterRemovingCartItem,
 } from '../container/CartItemTile.saga';
 import { removeCartItemComplete, updateCartItemComplete } from '../container/CartItemTile.actions';
 import CARTPAGE_CONSTANTS from '../CartItemTile.constants';
@@ -28,6 +29,15 @@ describe('Cart Item saga remove', () => {
     const putDescriptor = removeCartItemGen.next(res).value;
     expect(putDescriptor).toEqual(put(removeCartItemComplete(res)));
   });
+});
+
+it('should dispatch afterRemovingCartItem action for success resposnse', () => {
+  const removeCartItemGen = afterRemovingCartItem();
+  removeCartItemGen.next();
+  removeCartItemGen.next();
+
+  const putDescriptor = removeCartItemGen.next().value;
+  expect(putDescriptor).toEqual(put(BAG_PAGE_ACTIONS.setCartItemsUpdating({ isDeleting: false })));
 });
 
 describe('Cart Item saga remove', () => {

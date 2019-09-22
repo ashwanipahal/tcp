@@ -3,9 +3,10 @@ import { LABELS } from '@tcp/core/src/reduxStore/constants';
 
 import BAGPAGE_CONSTANTS from '../BagPage.constants';
 
-const getOrderDetails = () => {
+const getOrderDetails = payload => {
   return {
     type: BAGPAGE_CONSTANTS.GET_ORDER_DETAILS,
+    payload,
   };
 };
 
