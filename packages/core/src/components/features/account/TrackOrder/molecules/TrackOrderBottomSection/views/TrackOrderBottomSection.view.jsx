@@ -53,11 +53,11 @@ class TrackOrderBottomSection extends React.Component {
               onClick={e => this.handleDefaultLinkClick(e)}
               className="trackorder__modal__loginlink"
               aria-label={`${labels.trackOrder.lbl_trackOrder_login}
-                ${labels.trackOrder.lbl_trackOrder_content1}`}
+                ${labels.trackOrder.lbl_trackOrder_content}`}
             >
               {labels.trackOrder.lbl_trackOrder_login}
             </Anchor>
-            {labels.trackOrder.lbl_trackOrder_content1}
+            {labels.trackOrder.lbl_trackOrder_content}
           </BodyCopy>
         </BodyCopy>
         <BodyCopy
@@ -77,11 +77,11 @@ class TrackOrderBottomSection extends React.Component {
             target="_blank"
             className="trackorder__modal__clickhere_link"
             aria-label={`${labels.trackOrder.lbl_trackOrder_clickHere}
-                ${labels.trackOrder.lbl_trackOrder_content2}`}
+                ${labels.trackOrder.lbl_trackOrder_subContent}`}
           >
             {labels.trackOrder.lbl_trackOrder_clickHere}
           </Anchor>
-          {labels.trackOrder.lbl_trackOrder_content2}
+          {labels.trackOrder.lbl_trackOrder_subContent}
         </BodyCopy>
       </BodyCopy>
     );

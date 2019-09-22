@@ -153,7 +153,7 @@ const totalSavingsFooterContainer = (
               type="submit"
               className="existing_continue_button"
             >
-              {getLabelValue(labels, 'lbl_PLCCTimeoutModal_continueShopping')}
+              {getLabelValue(labels, 'lbl_PLCCForm_continueShopping')}
             </Button>
           </Anchor>
         </Col>
@@ -254,7 +254,7 @@ const ApprovedPLCCApplicationView = ({
           className="footer_links"
         >
           <BodyCopy component="span" fontSize="fs12" fontFamily="secondary">
-            {getLabelValue(labels, 'lbl_PLCCForm_footerlinksPrefix')}
+            {getLabelValue(labels, 'lbl_PLCCModal_linksTextPrefix')}
           </BodyCopy>
           <Anchor
             url={getLabelValue(labels, 'lbl_PLCCForm_detailsLink')}

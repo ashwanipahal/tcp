@@ -311,18 +311,16 @@ FooterTopCandidateA.defaultProps = {
     text: '',
   },
   emailSignupLabels: {
-    lbl_SignUp_placeholderText: 'Enter email address',
+    lbl_SignUp_placeholderText: '',
     lbl_SignUp_validationErrorLabel: '',
-    lbl_SignUp_termsTextLabel:
-      '*Applies to new email subscribers only. Exclusions apply. Offer valid onyour next purchase of $40 or more. You may withdraw your consent at any time. Contact Us The Children’s Place, 500 Plaza Drive, Secaucus, NJ 07094, www.childrensplace.com.',
-    lbl_SignUp_submitButtonLabel: 'Submit',
+    lbl_SignUp_termsTextLabel: '',
+    lbl_SignUp_submitButtonLabel: '',
   },
   smsSignupLabels: {
-    lbl_SignUp_placeholderText: 'Enter phone number',
+    lbl_SignUp_placeholderText: '',
     lbl_SignUp_validationErrorLabel: '',
-    lbl_SignUp_termsTextLabel:
-      '*Applies to new email subscribers only. Exclusions apply. Offer valid onyour next purchase of $40 or more. You may withdraw your consent at any time. Contact Us The Children’s Place, 500 Plaza Drive, Secaucus, NJ 07094, www.childrensplace.com.',
-    lbl_SignUp_submitButtonLabel: 'Submit',
+    lbl_SignUp_termsTextLabel: '',
+    lbl_SignUp_submitButtonLabel: '',
   },
   referAFriend: {
     title: '',

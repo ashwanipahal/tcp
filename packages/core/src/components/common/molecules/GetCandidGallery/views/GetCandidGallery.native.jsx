@@ -224,7 +224,7 @@ class GetCandidGallery extends React.PureComponent {
                 fontSize="fs20"
                 fontWeight="regular"
                 color="gray.900"
-                text={labels.titleShopThisLook.toUpperCase()}
+                text={labels.lbl_getCandid_titleShopThisLook.toUpperCase()}
                 textAlign="center"
                 letterSpacing="ls222"
               />
@@ -252,7 +252,7 @@ class GetCandidGallery extends React.PureComponent {
           <Button
             buttonVariation="variable-width"
             width="100%"
-            text={labels.btnLoadMore}
+            text={labels.lbl_getCandid_btnLoadMore}
             fill="BLUE"
             color="white"
             onPress={this.loadMoreHandler}

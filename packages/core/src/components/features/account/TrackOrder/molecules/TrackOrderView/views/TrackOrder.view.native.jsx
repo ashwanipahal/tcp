@@ -19,7 +19,7 @@ import {
 const getGenericErrorMessage = labels => (
   <GenericErrorView>
     <BodyCopy
-      text={labels.trackOrder.lbl_trackOrder_genericError1}
+      text={labels.trackOrder.lbl_trackOrder_genericErrorTryAgain}
       mobilefontFamily={['secondary']}
       fontSize="fs14"
     />
@@ -34,7 +34,7 @@ const getGenericErrorMessage = labels => (
     </AnchorView>
 
     <BodyCopy
-      text={labels.trackOrder.lbl_trackOrder_genericError2}
+      text={labels.trackOrder.lbl_trackOrder_genericErrorAssistance}
       mobilefontFamily={['secondary']}
       fontSize="fs14"
     />
