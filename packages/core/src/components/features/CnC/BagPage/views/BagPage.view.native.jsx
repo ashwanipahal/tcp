@@ -28,16 +28,19 @@ import BAGPAGE_CONSTANTS from '../BagPage.constants';
 class BagPage extends React.Component {
   constructor(props) {
     super(props);
-    const { totalCount, sflItems } = this.props;
     this.state = {
-      activeSection:
-        !totalCount && sflItems.size ? BAGPAGE_CONSTANTS.SFL_STATE : BAGPAGE_CONSTANTS.BAG_STATE,
+      activeSection: null,
     };
   }
 
   componentDidMount() {
-    const { fetchLabels } = this.props;
+    const { fetchLabels, totalCount, sflItems } = this.props;
     fetchLabels();
+
+    this.setState({
+      activeSection:
+        !totalCount && sflItems.size ? BAGPAGE_CONSTANTS.SFL_STATE : BAGPAGE_CONSTANTS.BAG_STATE,
+    });
   }
 
   handleChangeActiveSection = sectionName => {
