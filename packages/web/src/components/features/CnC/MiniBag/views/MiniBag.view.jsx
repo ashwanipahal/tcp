@@ -30,10 +30,10 @@ class MiniBag extends React.Component {
   }
 
   componentWillReceiveProps({ router: nextRouter }) {
-    const { router, onRequestClose } = this.props;
+    const { router, closeMiniBagDispatch } = this.props;
     /* istanbul ignore else */
     if (router.asPath !== nextRouter.asPath) {
-      onRequestClose(false, true);
+      closeMiniBagDispatch();
     }
   }
 
@@ -102,6 +102,7 @@ MiniBag.propTypes = {
   isCartItemsUpdating: PropTypes.bool.isRequired,
   isCartItemSFL: PropTypes.bool.isRequired,
   cartItemSflError: PropTypes.string.isRequired,
+  closeMiniBagDispatch: PropTypes.func.isRequired,
 };
 
 export default withRouter(withStyles(MiniBag, styles));
