@@ -24,4 +24,18 @@ describe('#Bag Page actions', () => {
       type: BAGPAGE_CONSTANTS.CART_ITEMS_SET_SFL_ERROR,
     });
   });
+  it('getSflData', () => {
+    expect(BAG_PAGE_ACTIONS.getSflData()).toEqual({
+      type: BAGPAGE_CONSTANTS.GET_SFL_DATA,
+    });
+  });
+  it('setSflData', () => {
+    const data = {
+      id: 123,
+    };
+    expect(BAG_PAGE_ACTIONS.setSflData(data)).toEqual({
+      payload: { id: 123 },
+      type: BAGPAGE_CONSTANTS.SET_SFL_DATA,
+    });
+  });
 });

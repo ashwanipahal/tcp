@@ -51,6 +51,7 @@ export const CartItemTileContainer = ({
   addItemToSflList,
   setCartItemsSflError,
   sflItemsCount,
+  isBagPageSflSection,
 }) => (
   <CartItemTile
     labels={labels}
@@ -76,6 +77,7 @@ export const CartItemTileContainer = ({
     addItemToSflList={addItemToSflList}
     setCartItemsSflError={setCartItemsSflError}
     sflItemsCount={sflItemsCount}
+    isBagPageSflSection={isBagPageSflSection}
   />
 );
 export const mapDispatchToProps = (dispatch: ({}) => void) => {

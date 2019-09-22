@@ -5,7 +5,7 @@ import Carousel, { Pagination } from 'react-native-snap-carousel';
 import { getLocator } from '../../../../../utils';
 
 import { Image } from '../../../atoms';
-import config from '../Config.native';
+import config from '../Carousel.config.native';
 
 import {
   ControlsWrapper,
@@ -273,16 +273,25 @@ class SnapCarousel extends React.PureComponent<Props, State> {
       overlap,
       buttonPosition,
       darkArrow,
+      options,
     } = this.props;
 
-    const { autoplay } = this.state;
+    const { autoplay, activeSlide } = this.state;
+    const settings = { ...defaults, ...options };
 
     if (!data) {
       return null;
     }
 
-    const iconTypePre = darkArrow ? prevIconDark : prevIcon;
-    const iconTypeNext = darkArrow ? nextIconDark : nextIcon;
+    let iconTypePre = darkArrow ? prevIconDark : prevIcon;
+    let iconTypeNext = darkArrow ? nextIconDark : nextIcon;
+
+    if (settings.loop === false && darkArrow && activeSlide < 1) {
+      iconTypeNext = nextIcon;
+    }
+    if (settings.loop === false && darkArrow && data.length - 1 <= activeSlide) {
+      iconTypePre = prevIcon;
+    }
 
     if (variation === 'show-arrow') {
       // reduce left and right arrow with from the total with to fix center aline issue
@@ -299,7 +308,7 @@ class SnapCarousel extends React.PureComponent<Props, State> {
               <Icon source={iconTypeNext} />
             </TouchableView>
             <Carousel
-              {...defaults}
+              {...settings}
               data={data}
               onSnapToItem={this.onSnapToItemHandler}
               renderItem={renderItem}

@@ -4,16 +4,26 @@ exports[`SurveyQuestion should render correctly 1`] = `
 <Styled(View)>
   <Styled(View)>
     <Styled(BodyCopy)
+      accessibilityText=""
+      dataLocator=""
       fontFamily="secondary"
       fontSize="fs14"
       fontWeight="regular"
+      margin={null}
+      numberOfLines={null}
       text=""
+      textDecoration={null}
     />
     <Styled(BodyCopy)
+      accessibilityText=""
+      dataLocator=""
       fontFamily="secondary"
       fontSize="fs13"
       fontWeight="regular"
+      margin={null}
+      numberOfLines={null}
       text="SELECT ONE"
+      textDecoration={null}
     />
   </Styled(View)>
   <Styled(View)>

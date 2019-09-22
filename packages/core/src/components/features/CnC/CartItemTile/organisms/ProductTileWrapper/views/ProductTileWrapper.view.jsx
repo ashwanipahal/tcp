@@ -101,14 +101,17 @@ class ProductTileWrapper extends React.PureComponent<props> {
       isUserLoggedIn,
       isPlcc,
       sflItemsCount,
+      isBagPageSflSection,
+      sflItems,
     } = this.props;
+    const productSectionData = isBagPageSflSection ? sflItems : orderItems;
     let isUnavailable;
     let isSoldOut;
     const inheritedStyles = pageView === 'myBag' ? productTileCss : miniBagCSS;
     const getUnavailableOOSItems = [];
     const { openedTile, swipedElement } = this.state;
-    if (orderItems && orderItems.size > 0) {
-      const orderItemsView = orderItems.map((tile, index) => {
+    if (productSectionData && productSectionData.size > 0) {
+      const orderItemsView = productSectionData.map((tile, index) => {
         const productDetail = getProductDetails(tile);
         if (productDetail.miscInfo.availability === CARTPAGE_CONSTANTS.AVAILABILITY_SOLDOUT) {
           getUnavailableOOSItems.push(productDetail.itemInfo.itemId);
@@ -134,12 +137,13 @@ class ProductTileWrapper extends React.PureComponent<props> {
             setSwipedElement={this.setSwipedElement}
             swipedElement={swipedElement}
             sflItemsCount={sflItemsCount}
+            isBagPageSflSection={isBagPageSflSection}
           />
         );
       });
       return (
         <>
-          {this.getHeaderError(labels, orderItems, pageView)}
+          {this.getHeaderError(labels, productSectionData, pageView)}
           {isSoldOut && (
             <RemoveSoldOut
               pageView={pageView}
@@ -152,17 +156,22 @@ class ProductTileWrapper extends React.PureComponent<props> {
         </>
       );
     }
-    return <EmptyBag bagLabels={bagLabels} isUserLoggedIn={isUserLoggedIn} />;
+    if (productSectionData.size === 0) {
+      return <EmptyBag bagLabels={bagLabels} isUserLoggedIn={isUserLoggedIn} />;
+    }
+    return <></>;
   }
 }
 
 ProductTileWrapper.defaultProps = {
   pageView: '',
   bagLabels: {},
+  isBagPageSflSection: false,
 };
 
 ProductTileWrapper.propTypes = {
   orderItems: PropTypes.shape([]).isRequired,
+  sflItems: PropTypes.shape([]).isRequired,
   labels: PropTypes.shape({}).isRequired,
   removeCartItem: PropTypes.func.isRequired,
   isUserLoggedIn: PropTypes.bool.isRequired,
@@ -170,6 +179,7 @@ ProductTileWrapper.propTypes = {
   pageView: PropTypes.string,
   bagLabels: PropTypes.shape(),
   sflItemsCount: PropTypes.number.isRequired,
+  isBagPageSflSection: PropTypes.bool,
 };
 
 export default ProductTileWrapper;

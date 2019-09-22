@@ -56,8 +56,13 @@ exports[`Coupon component should renders correctly when Coupon are not present 1
     />
     <Styled(View)>
       <Styled(BodyCopy)
+        accessibilityText=""
+        dataLocator=""
         fontFamily="secondary"
         fontSize="fs12"
+        margin={null}
+        numberOfLines={null}
+        textDecoration={null}
       />
     </Styled(View)>
   </View>

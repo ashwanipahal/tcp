@@ -2,6 +2,7 @@
 
 import endpoints from '../../endpoints';
 import { executeStatefulAPICall } from '../../handler';
+import { getAPIConfig } from '../../../utils';
 import {
   responseContainsErrors,
   ServiceResponseError,
@@ -24,6 +25,7 @@ export function getProductInfo(item, imageGenerator) {
     size: sizeAndFit ? sizeAndFit.TCPSize : item.itemUnitDstPrice, // giftCard Size is its price
     fit: sizeAndFit ? sizeAndFit.TCPFit : null, // no fit for gift cards
     pdpUrl: item.productUrl.replace(/&amp;/g, '&'),
+    upc: sizeAndFit.UPC,
     color: {
       name: item.productInfo.productColor
         ? item.productInfo.productColor
@@ -121,8 +123,31 @@ export function addItemToSflList(
     });
 }
 
+export function getSflItems(imageGenerator, currencyCode, isCanada) {
+  const apiConfig = getAPIConfig();
+  const payload = {
+    header: {
+      'X-Cookie': apiConfig.cookie,
+    },
+    webService: endpoints.getAllSfl,
+  };
+
+  return executeStatefulAPICall(payload)
+    .then(response => {
+      if (responseContainsErrors(response)) {
+        throw new ServiceResponseError(response);
+      } else {
+        return formatSflItems(response.body.sflItems, imageGenerator, currencyCode, isCanada);
+      }
+    })
+    .catch(err => {
+      throw getFormattedError(err);
+    });
+}
+
 export default {
   formatSflItems,
   addItemToSflList,
   deriveSflItemAvailability,
+  getSflItems,
 };

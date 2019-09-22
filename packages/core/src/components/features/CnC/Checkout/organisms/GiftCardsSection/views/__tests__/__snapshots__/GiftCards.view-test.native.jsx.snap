@@ -4,28 +4,43 @@ exports[`GiftCardsVanilla should render gift card tile 1`] = `
 <Fragment>
   <Styled(View)>
     <Styled(Styled(BodyCopy))
+      accessibilityText=""
       color="gray.900"
+      dataLocator=""
       fontFamily="primary"
       fontSize="fs26"
       fontWeight="regular"
+      margin={null}
+      numberOfLines={null}
       spacingStyles="margin-bottom-MED"
       text="lbl_giftcard_title"
+      textDecoration={null}
     />
     <Styled(Styled(BodyCopy))
+      accessibilityText=""
       color="gray.900"
+      dataLocator=""
       fontFamily="primary"
       fontSize="fs16"
       fontWeight="regular"
+      margin={null}
+      numberOfLines={null}
       spacingStyles="margin-bottom-MED"
       text="lbl_giftcard_addUptoMsg"
+      textDecoration={null}
     />
     <Styled(Styled(BodyCopy))
+      accessibilityText=""
       color="gray.900"
+      dataLocator=""
       fontFamily="secondary"
       fontSize="fs16"
       fontWeight="extrabold"
+      margin={null}
+      numberOfLines={null}
       spacingStyles="margin-bottom-MED"
       text="lbl_giftcard_appliedCards"
+      textDecoration={null}
     />
     <Styled(View)>
       <GiftCardTile
@@ -59,29 +74,44 @@ exports[`GiftCardsVanilla should render gift card tile 1`] = `
     </Styled(View)>
     <Styled(Text)>
       <Styled(Styled(BodyCopy))
+        accessibilityText=""
         color="gray.900"
+        dataLocator=""
         fontFamily="secondary"
         fontSize="fs16"
         fontWeight="semibold"
+        margin={null}
+        numberOfLines={null}
         spacingStyles="margin-bottom-MED margin-top-MED"
         text="lbl_giftcard_headsUpTitle "
+        textDecoration={null}
       />
       <Styled(Styled(BodyCopy))
+        accessibilityText=""
         color="gray.900"
+        dataLocator=""
         fontFamily="primary"
         fontSize="fs16"
         fontWeight="regular"
+        margin={null}
+        numberOfLines={null}
         spacingStyles="margin-left-SM"
         text="lbl_giftcard_headsUpMsg"
+        textDecoration={null}
       />
     </Styled(Text)>
     <Styled(Styled(BodyCopy))
+      accessibilityText=""
       color="gray.900"
+      dataLocator=""
       fontFamily="secondary"
       fontSize="fs16"
       fontWeight="extrabold"
+      margin={null}
+      numberOfLines={null}
       spacingStyles="margin-bottom-MED margin-top-MED"
       text="lbl_giftcard_availableCards"
+      textDecoration={null}
     />
     <Styled(View)>
       <GiftCardTile
@@ -121,28 +151,43 @@ exports[`GiftCardsVanilla should render gift card tile with 0 order balance 1`] 
 <Fragment>
   <Styled(View)>
     <Styled(Styled(BodyCopy))
+      accessibilityText=""
       color="gray.900"
+      dataLocator=""
       fontFamily="primary"
       fontSize="fs26"
       fontWeight="regular"
+      margin={null}
+      numberOfLines={null}
       spacingStyles="margin-bottom-MED"
       text="lbl_giftcard_title"
+      textDecoration={null}
     />
     <Styled(Styled(BodyCopy))
+      accessibilityText=""
       color="gray.900"
+      dataLocator=""
       fontFamily="primary"
       fontSize="fs16"
       fontWeight="regular"
+      margin={null}
+      numberOfLines={null}
       spacingStyles="margin-bottom-MED"
       text="lbl_giftcard_addUptoMsg"
+      textDecoration={null}
     />
     <Styled(Styled(BodyCopy))
+      accessibilityText=""
       color="gray.900"
+      dataLocator=""
       fontFamily="secondary"
       fontSize="fs16"
       fontWeight="extrabold"
+      margin={null}
+      numberOfLines={null}
       spacingStyles="margin-bottom-MED"
       text="lbl_giftcard_appliedCards"
+      textDecoration={null}
     />
     <Styled(View)>
       <GiftCardTile
@@ -176,29 +221,44 @@ exports[`GiftCardsVanilla should render gift card tile with 0 order balance 1`] 
     </Styled(View)>
     <Styled(Text)>
       <Styled(Styled(BodyCopy))
+        accessibilityText=""
         color="gray.900"
+        dataLocator=""
         fontFamily="secondary"
         fontSize="fs16"
         fontWeight="semibold"
+        margin={null}
+        numberOfLines={null}
         spacingStyles="margin-bottom-MED margin-top-MED"
         text="lbl_giftcard_headsUpTitle "
+        textDecoration={null}
       />
       <Styled(Styled(BodyCopy))
+        accessibilityText=""
         color="gray.900"
+        dataLocator=""
         fontFamily="primary"
         fontSize="fs16"
         fontWeight="regular"
+        margin={null}
+        numberOfLines={null}
         spacingStyles="margin-left-SM"
         text="lbl_giftcard_headsUpMsg"
+        textDecoration={null}
       />
     </Styled(Text)>
     <Styled(Styled(BodyCopy))
+      accessibilityText=""
       color="gray.900"
+      dataLocator=""
       fontFamily="secondary"
       fontSize="fs16"
       fontWeight="extrabold"
+      margin={null}
+      numberOfLines={null}
       spacingStyles="margin-bottom-MED margin-top-MED"
       text="lbl_giftcard_availableCards"
+      textDecoration={null}
     />
     <Styled(View)>
       <GiftCardTile
@@ -238,28 +298,43 @@ exports[`GiftCardsVanilla should render gift card tile with 100 order balance 1`
 <Fragment>
   <Styled(View)>
     <Styled(Styled(BodyCopy))
+      accessibilityText=""
       color="gray.900"
+      dataLocator=""
       fontFamily="primary"
       fontSize="fs26"
       fontWeight="regular"
+      margin={null}
+      numberOfLines={null}
       spacingStyles="margin-bottom-MED"
       text="lbl_giftcard_title"
+      textDecoration={null}
     />
     <Styled(Styled(BodyCopy))
+      accessibilityText=""
       color="gray.900"
+      dataLocator=""
       fontFamily="primary"
       fontSize="fs16"
       fontWeight="regular"
+      margin={null}
+      numberOfLines={null}
       spacingStyles="margin-bottom-MED"
       text="lbl_giftcard_addUptoMsg"
+      textDecoration={null}
     />
     <Styled(Styled(BodyCopy))
+      accessibilityText=""
       color="gray.900"
+      dataLocator=""
       fontFamily="secondary"
       fontSize="fs16"
       fontWeight="extrabold"
+      margin={null}
+      numberOfLines={null}
       spacingStyles="margin-bottom-MED"
       text="lbl_giftcard_appliedCards"
+      textDecoration={null}
     />
     <Styled(View)>
       <GiftCardTile
@@ -293,29 +368,44 @@ exports[`GiftCardsVanilla should render gift card tile with 100 order balance 1`
     </Styled(View)>
     <Styled(Text)>
       <Styled(Styled(BodyCopy))
+        accessibilityText=""
         color="gray.900"
+        dataLocator=""
         fontFamily="secondary"
         fontSize="fs16"
         fontWeight="semibold"
+        margin={null}
+        numberOfLines={null}
         spacingStyles="margin-bottom-MED margin-top-MED"
         text="lbl_giftcard_headsUpTitle "
+        textDecoration={null}
       />
       <Styled(Styled(BodyCopy))
+        accessibilityText=""
         color="gray.900"
+        dataLocator=""
         fontFamily="primary"
         fontSize="fs16"
         fontWeight="regular"
+        margin={null}
+        numberOfLines={null}
         spacingStyles="margin-left-SM"
         text="lbl_giftcard_headsUpMsg"
+        textDecoration={null}
       />
     </Styled(Text)>
     <Styled(Styled(BodyCopy))
+      accessibilityText=""
       color="gray.900"
+      dataLocator=""
       fontFamily="secondary"
       fontSize="fs16"
       fontWeight="extrabold"
+      margin={null}
+      numberOfLines={null}
       spacingStyles="margin-bottom-MED margin-top-MED"
       text="lbl_giftcard_availableCards"
+      textDecoration={null}
     />
     <Styled(View)>
       <GiftCardTile
@@ -364,28 +454,43 @@ exports[`GiftCardsVanilla should render gift card tile with 100 order balance wi
 <Fragment>
   <Styled(View)>
     <Styled(Styled(BodyCopy))
+      accessibilityText=""
       color="gray.900"
+      dataLocator=""
       fontFamily="primary"
       fontSize="fs26"
       fontWeight="regular"
+      margin={null}
+      numberOfLines={null}
       spacingStyles="margin-bottom-MED"
       text="lbl_giftcard_title"
+      textDecoration={null}
     />
     <Styled(Styled(BodyCopy))
+      accessibilityText=""
       color="gray.900"
+      dataLocator=""
       fontFamily="primary"
       fontSize="fs16"
       fontWeight="regular"
+      margin={null}
+      numberOfLines={null}
       spacingStyles="margin-bottom-MED"
       text="lbl_giftcard_addUptoMsg"
+      textDecoration={null}
     />
     <Styled(Styled(BodyCopy))
+      accessibilityText=""
       color="gray.900"
+      dataLocator=""
       fontFamily="secondary"
       fontSize="fs16"
       fontWeight="extrabold"
+      margin={null}
+      numberOfLines={null}
       spacingStyles="margin-bottom-MED"
       text="lbl_giftcard_appliedCards"
+      textDecoration={null}
     />
     <Styled(View)>
       <GiftCardTile
@@ -419,29 +524,44 @@ exports[`GiftCardsVanilla should render gift card tile with 100 order balance wi
     </Styled(View)>
     <Styled(Text)>
       <Styled(Styled(BodyCopy))
+        accessibilityText=""
         color="gray.900"
+        dataLocator=""
         fontFamily="secondary"
         fontSize="fs16"
         fontWeight="semibold"
+        margin={null}
+        numberOfLines={null}
         spacingStyles="margin-bottom-MED margin-top-MED"
         text="lbl_giftcard_headsUpTitle "
+        textDecoration={null}
       />
       <Styled(Styled(BodyCopy))
+        accessibilityText=""
         color="gray.900"
+        dataLocator=""
         fontFamily="primary"
         fontSize="fs16"
         fontWeight="regular"
+        margin={null}
+        numberOfLines={null}
         spacingStyles="margin-left-SM"
         text="lbl_giftcard_headsUpMsg"
+        textDecoration={null}
       />
     </Styled(Text)>
     <Styled(Styled(BodyCopy))
+      accessibilityText=""
       color="gray.900"
+      dataLocator=""
       fontFamily="secondary"
       fontSize="fs16"
       fontWeight="extrabold"
+      margin={null}
+      numberOfLines={null}
       spacingStyles="margin-bottom-MED margin-top-MED"
       text="lbl_giftcard_availableCards"
+      textDecoration={null}
     />
     <Styled(View)>
       <GiftCardTile
@@ -475,15 +595,20 @@ exports[`GiftCardsVanilla should render gift card tile with 100 order balance wi
     </Styled(View)>
     <Styled(View)>
       <Styled(Styled(BodyCopy))
+        accessibilityText=""
         color="error"
+        dataLocator=""
         fontSize="fs12"
         fontWeight="semibold"
+        margin={null}
         mobileFontFamily={
           Array [
             "secondary",
           ]
         }
+        numberOfLines={null}
         text="Duplicate"
+        textDecoration={null}
       />
       <AddGiftCardForm
         addGiftCardError="Duplicate"

@@ -12,6 +12,8 @@ import {
   getRatingsProductId,
   getDefaultImage,
   getCurrentCurrency,
+  getPlpLabels,
+  getCurrentProduct,
 } from './ProductDetail.selectors';
 
 class ProductListingContainer extends React.PureComponent {
@@ -43,7 +45,9 @@ class ProductListingContainer extends React.PureComponent {
       longDescription,
       ratingsProductId,
       defaultImage,
+      productInfo,
       currency,
+      plpLabels,
       ...otherProps
     } = this.props;
     return (
@@ -54,7 +58,9 @@ class ProductListingContainer extends React.PureComponent {
         ratingsProductId={ratingsProductId}
         otherProps={otherProps}
         defaultImage={defaultImage}
+        plpLabels={plpLabels}
         currency={currency}
+        productInfo={productInfo}
       />
     );
   }
@@ -69,7 +75,9 @@ function mapStateToProps(state) {
     ratingsProductId: getRatingsProductId(state),
     // This is just to check if the product is correct
     defaultImage: getDefaultImage(state),
+    productInfo: getCurrentProduct(state),
     currency: getCurrentCurrency(state),
+    plpLabels: getPlpLabels(state),
   };
 }
 
@@ -84,6 +92,7 @@ function mapDispatchToProps(dispatch) {
 ProductListingContainer.propTypes = {
   productDetails: PropTypes.arrayOf(PropTypes.shape({})),
   getDetails: PropTypes.func.isRequired,
+  productInfo: PropTypes.arrayOf(PropTypes.shape({})),
   breadCrumbs: PropTypes.shape({}),
   longDescription: PropTypes.string,
   ratingsProductId: PropTypes.string,
@@ -94,15 +103,22 @@ ProductListingContainer.propTypes = {
   }).isRequired,
   defaultImage: PropTypes.string,
   currency: PropTypes.string,
+  plpLabels: PropTypes.shape({
+    lbl_sort: PropTypes.string,
+  }),
 };
 
 ProductListingContainer.defaultProps = {
   productDetails: [],
+  productInfo: {},
   breadCrumbs: null,
   longDescription: '',
   ratingsProductId: '',
   defaultImage: '',
   currency: '',
+  plpLabels: {
+    lbl_sort: '',
+  },
 };
 
 export default withRouter(

@@ -52,15 +52,20 @@ exports[`Add gift card form component render error message 1`] = `
   <View>
     <Styled(View)>
       <Styled(BodyCopy)
+        accessibilityText=""
         color="error"
+        dataLocator=""
         fontSize="fs12"
         fontWeight="semibold"
+        margin={null}
         mobileFontFamily={
           Array [
             "secondary",
           ]
         }
+        numberOfLines={null}
         text="foo"
+        textDecoration={null}
       />
     </Styled(View)>
     <Field
@@ -227,18 +232,28 @@ exports[`Add gift card form component render error message 1`] = `
     </View>
     <Styled(View)>
       <Styled(BodyCopy)
+        accessibilityText=""
         color="gray.900"
+        dataLocator=""
         fontFamily="secondary"
         fontSize="fs14"
+        margin={null}
+        numberOfLines={null}
         text="lbl_payment_giftCardMessageHeading"
+        textDecoration={null}
       />
       <Styled(Text)>
         <Styled(BodyCopy)
+          accessibilityText=""
           color="black"
+          dataLocator=""
           fontFamily="secondary"
           fontSize="fs12"
           fontWeight="regular"
+          margin={null}
+          numberOfLines={null}
           text="lbl_payment_giftCardMessageDescription"
+          textDecoration={null}
         />
       </Styled(Text)>
     </Styled(View)>
@@ -464,18 +479,28 @@ exports[`Add gift card form component should render component correctly 1`] = `
     </View>
     <Styled(View)>
       <Styled(BodyCopy)
+        accessibilityText=""
         color="gray.900"
+        dataLocator=""
         fontFamily="secondary"
         fontSize="fs14"
+        margin={null}
+        numberOfLines={null}
         text="lbl_payment_giftCardMessageHeading"
+        textDecoration={null}
       />
       <Styled(Text)>
         <Styled(BodyCopy)
+          accessibilityText=""
           color="black"
+          dataLocator=""
           fontFamily="secondary"
           fontSize="fs12"
           fontWeight="regular"
+          margin={null}
+          numberOfLines={null}
           text="lbl_payment_giftCardMessageDescription"
+          textDecoration={null}
         />
       </Styled(Text)>
     </Styled(View)>

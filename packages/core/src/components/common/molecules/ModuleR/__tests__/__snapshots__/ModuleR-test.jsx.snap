@@ -37,7 +37,7 @@ exports[`Module R Component renders correctly 1`] = `
     />
   </div>
   <div>
-    <Connect(ProductTabList)
+    <Connect(ProductTabListContainer)
       dataLocator="moduleR_cta_links_"
       onProductTabChange={[Function]}
       tabItems={

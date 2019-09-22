@@ -5,7 +5,7 @@ import { Anchor, Button, Col, Row, Image } from '../../../atoms';
 import withStyles from '../../../hoc/withStyles';
 import { Grid, LinkText, PromoBanner } from '../..';
 import ProductTabList from '../../../organisms/ProductTabList';
-import { getLocator, redirectToPdp, viewport } from '../../../../../utils';
+import { getLocator, viewport } from '../../../../../utils';
 import moduleRStyle, { ImageGridCol } from '../styles/ModuleR.style';
 
 /**
@@ -42,7 +42,12 @@ class ModuleR extends React.PureComponent {
   getPromoComponent = () => {
     const { promoBanner } = this.props;
     return (
-      <PromoBanner promoBanner={promoBanner} dataLocator={getLocator('moduleR_promobanner_text')} />
+      promoBanner && (
+        <PromoBanner
+          promoBanner={promoBanner}
+          dataLocator={getLocator('moduleR_promobanner_text')}
+        />
+      )
     );
   };
 
@@ -84,19 +89,24 @@ class ModuleR extends React.PureComponent {
     This method is to return the Image grid item
   */
   getImageGrid = selectedProductList => {
+    const { promoBanner, bannerPosition } = this.props;
     return (
       <Row className="image-items-container">
         {selectedProductList.map((productItem, index) => {
           if (productItem.uniqueId) {
             const {
-              seo_token: seoToken,
+              pdpUrl,
+              pdpAsPath,
               uniqueId,
               imageUrl: [imageUrl],
+              product_name: productName,
             } = productItem;
             return (
               <ImageGridCol
                 key={uniqueId}
                 imageIndex={index}
+                promoBanner={promoBanner}
+                bannerPosition={bannerPosition}
                 colSize={{
                   small: 2,
                   medium: 2,
@@ -104,11 +114,11 @@ class ModuleR extends React.PureComponent {
                 }}
               >
                 <Anchor
-                  to={redirectToPdp(uniqueId, seoToken).url}
-                  asPath={redirectToPdp(uniqueId, seoToken).asPath}
+                  to={pdpUrl}
+                  asPath={pdpAsPath}
                   dataLocator={`${getLocator('moduleR_product_image')}${index}`}
                 >
-                  <Image src={imageUrl} />
+                  <Image alt={productName} src={imageUrl} />
                 </Anchor>
               </ImageGridCol>
             );

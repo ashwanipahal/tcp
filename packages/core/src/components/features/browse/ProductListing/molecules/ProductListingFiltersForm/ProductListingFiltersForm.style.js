@@ -2,7 +2,7 @@ import { css } from 'styled-components';
 
 export default css`
   width: 100%;
-  padding: 20px 0px;
+  padding: 20px 0px ${props => props.theme.spacing.ELEM_SPACING.SM};
   margin-bottom: 0px;
 
   .custom-select-common {
@@ -59,7 +59,6 @@ export default css`
       margin-right: 84px;
     }
   }
-
   .filters-only-container {
     display: inline-block;
   }
