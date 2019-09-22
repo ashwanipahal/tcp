@@ -10,6 +10,7 @@ import bagPageActions from '../../../../BagPage/container/BagPage.actions';
 import bagPageSelector from '../../../../BagPage/container/BagPage.selectors';
 import checkoutSelectors from '../../../../Checkout/container/Checkout.selector';
 import { closeMiniBag } from '../../../../../../common/organisms/Header/container/Header.actions';
+import { confirmRemoveCartItem } from '../../../../CartItemTile/container/CartItemTile.actions';
 
 export class AddedToBagContainer extends React.Component<Props> {
   constructor(props) {
@@ -42,6 +43,11 @@ export class AddedToBagContainer extends React.Component<Props> {
       labels,
       closeModal,
       closeMiniBagDispatch,
+      closeItemDeleteModal,
+      currentSelectItemInfo,
+      removeCartItem,
+      deleteConfirmationModalLabels,
+      addItemToSflList,
     } = this.props;
     return (
       <ModalsCheckoutView
@@ -59,6 +65,11 @@ export class AddedToBagContainer extends React.Component<Props> {
         closeModal={closeModal}
         closeMiniBagDispatch={closeMiniBagDispatch}
         labels={labels}
+        closeItemDeleteModal={closeItemDeleteModal}
+        currentSelectItemInfo={currentSelectItemInfo}
+        deleteConfirmationModalLabels={deleteConfirmationModalLabels}
+        confirmRemoveCartItem={removeCartItem}
+        addItemToSflList={addItemToSflList}
       />
     );
   }
@@ -74,6 +85,9 @@ AddedToBagContainer.propTypes = {
 };
 
 const mapDispatchToProps = (dispatch, ownProps) => {
+  const closeItemDeleteModal = () => {
+    dispatch(bagPageActions.closeItemDeleteConfirmationModal());
+  };
   return {
     closeCheckoutModalMountState: payload => {
       dispatch(setCheckoutModalMountedState(payload));
@@ -90,6 +104,13 @@ const mapDispatchToProps = (dispatch, ownProps) => {
     closeMiniBagDispatch: () => {
       dispatch(closeMiniBag());
     },
+    closeItemDeleteModal,
+    removeCartItem: payload => {
+      dispatch(confirmRemoveCartItem(payload, closeItemDeleteModal));
+    },
+    addItemToSflList: payload => {
+      dispatch(bagPageActions.addItemToSflList({ ...payload, afterHandler: closeItemDeleteModal }));
+    },
   };
 };
 
@@ -100,6 +121,8 @@ const mapStateToProps = state => {
     isUserLoggedIn: getUserLoggedInState(state),
     modalInfo: bagPageSelector.getConfirmationModalFlag(state),
     orderHasPickup: checkoutSelectors.getIsOrderHasPickup(state),
+    currentSelectItemInfo: bagPageSelector.getCurrentDeleteSelectedItemInfo(state),
+    deleteConfirmationModalLabels: bagPageSelector.itemDeleteModalLabels(state),
   };
 };
 
