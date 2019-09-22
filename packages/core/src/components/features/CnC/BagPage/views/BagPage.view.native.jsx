@@ -32,8 +32,9 @@ class BagPage extends React.Component {
       navigation,
       handleCartCheckout,
       isUserLoggedIn,
+      orderItemsCount,
     } = this.props;
-
+    const isNoNEmptyBag = orderItemsCount > 0;
     if (!labels.tagLine) {
       return <View />;
     }
@@ -45,10 +46,12 @@ class BagPage extends React.Component {
           </HeadingViewStyle>
           <MainSection>
             <ProductTileWrapper bagLabels={labels} />
-            <RowSectionStyle>
-              <OrderLedgerContainer />
-            </RowSectionStyle>
-            {isUserLoggedIn && (
+            {isNoNEmptyBag && (
+              <RowSectionStyle>
+                <OrderLedgerContainer />
+              </RowSectionStyle>
+            )}
+            {isUserLoggedIn && isNoNEmptyBag && (
               <RowSectionStyle>
                 <BonusPointsWrapper>
                   <BonusPointsDays isBagPage showAccordian={false} />
@@ -60,9 +63,11 @@ class BagPage extends React.Component {
                 <AirmilesBanner />
               </RowSectionStyle>
             )}
-            <RowSectionStyle>
-              <CouponAndPromos showAccordian={false} />
-            </RowSectionStyle>
+            {isNoNEmptyBag && (
+              <RowSectionStyle>
+                <CouponAndPromos showAccordian={false} />
+              </RowSectionStyle>
+            )}
           </MainSection>
         </ScrollViewWrapper>
 
@@ -71,6 +76,7 @@ class BagPage extends React.Component {
           labels={labels}
           showAddTobag={showAddTobag}
           navigation={navigation}
+          isNoNEmptyBag={isNoNEmptyBag}
         />
       </>
     );
@@ -85,6 +91,7 @@ BagPage.propTypes = {
   isUserLoggedIn: PropTypes.bool.isRequired,
   handleCartCheckout: PropTypes.func.isRequired,
   fetchLabels: PropTypes.func.isRequired,
+  orderItemsCount: PropTypes.number.isRequired,
 };
 
 export default InitialPropsHOC(BagPage);
