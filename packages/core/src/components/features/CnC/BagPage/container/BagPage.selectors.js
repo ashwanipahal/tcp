@@ -162,6 +162,10 @@ const getsflItemsList = state => {
   return state.CartPageReducer.get('sfl');
 };
 
+/** @function checkoutIfItemIsUnqualified to check if item is Unavailable
+ * @param {object} state
+ * @param {string|number} itemId
+ */
 const checkoutIfItemIsUnqualified = (state, itemId) => {
   const items = getOrderItems(state);
   const indexValue = items.findIndex(
@@ -172,10 +176,16 @@ const checkoutIfItemIsUnqualified = (state, itemId) => {
   return indexValue >= 0;
 };
 
+/** @function getCurrentDeleteSelectedItemInfo to get confirmation modal info
+ * @param {object} state
+ */
 const getCurrentDeleteSelectedItemInfo = state => {
   return state.CartPageReducer.get('openItemDeleteConfirmationModalInfo');
 };
 
+/** @function itemDeleteModalLabels to get item delete confirmation modal info
+ * @param {object} state
+ */
 const itemDeleteModalLabels = state => {
   const getBagLabelByLabelName = labelName =>
     getLabelValue(state.Labels, labelName, 'bagPage', 'checkout');
@@ -186,6 +196,7 @@ const itemDeleteModalLabels = state => {
     modalButtonConfirmDelete: getBagLabelByLabelName('lbl_itemDelete_modalButtonConfirmDelete'),
   };
 };
+
 export default {
   getBagPageLabels,
   getTotalItems,

@@ -22,6 +22,12 @@ import BagPageSelectors from '../../BagPage/container/BagPage.selectors';
 
 const { checkoutIfItemIsUnqualified } = BagPageSelectors;
 
+/**
+ *@function confirmRemoveItem to be invoked to delete item form cart
+ *
+ * @export
+ * @param {*} { payload, afterHandler }
+ */
 export function* confirmRemoveItem({ payload, afterHandler }) {
   try {
     const res = yield call(removeItem, payload);
@@ -38,6 +44,13 @@ export function* confirmRemoveItem({ payload, afterHandler }) {
   }
 }
 
+/**
+ *
+ * @function removeCartItem to be called when item delete from cart is required it opens the confirmation modal if function is invoked from bag page and item is available
+ * @export
+ * @param {*} { payload }
+ *
+ */
 export function* removeCartItem({ payload }) {
   const { itemId, pageView } = payload;
   if (pageView === 'myBag') {

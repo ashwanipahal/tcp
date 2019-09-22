@@ -78,7 +78,12 @@ const ItemDeleteConfirmationModal = ({
 
 ItemDeleteConfirmationModal.propTypes = {
   className: PropTypes.string.isRequired,
-  labels: PropTypes.shape({}).isRequired,
+  labels: PropTypes.shape({
+    modalTitle: PropTypes.string.isRequired,
+    modalHeading: PropTypes.string.isRequired,
+    modalButtonSFL: PropTypes.string.isRequired,
+    modalButtonConfirmDelete: PropTypes.string.isRequired,
+  }).isRequired,
   isOpen: PropTypes.bool,
   closeCheckoutConfirmationModal: PropTypes.func.isRequired,
   moveToSfl: PropTypes.func.isRequired,
