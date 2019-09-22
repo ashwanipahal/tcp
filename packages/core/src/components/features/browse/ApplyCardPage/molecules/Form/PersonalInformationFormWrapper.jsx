@@ -85,8 +85,8 @@ export default class PersonalInformationFormWrapper extends React.PureComponent 
           >
             <Field
               component={TextBox}
-              title={labels.plcc_form_ssn}
-              placeholder={getLabelValue(labels, 'plcc_form_ssn')}
+              title={getLabelValue(labels, 'lbl_PLCCForm_ssn')}
+              placeholder={getLabelValue(labels, 'lbl_PLCCForm_ssn')}
               name="ssNumber"
               maxLength="4"
               id="lastName"

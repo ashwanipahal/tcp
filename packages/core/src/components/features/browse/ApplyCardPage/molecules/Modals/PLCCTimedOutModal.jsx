@@ -66,8 +66,8 @@ class StyledPLCCTimedoutModal extends React.PureComponent {
                 className="info_text_margin"
               >
                 {isPLCCModalFlow
-                  ? getLabelValue(labels, 'plcc_timeout_preacceptance')
-                  : getLabelValue(labels, 'plcc_application_closure')}
+                  ? getLabelValue(labels, 'lbl_PLCCTimeoutModal_preacceptance')
+                  : getLabelValue(labels, 'lbl_PLCCTimeoutModal_applicationClosure')}
               </BodyCopy>
             </Col>
           </Row>
@@ -85,7 +85,7 @@ class StyledPLCCTimedoutModal extends React.PureComponent {
                 textAlign="center"
                 className="info_text_margin"
               >
-                {getLabelValue(labels, 'plcc_application_closure_subheader')}
+                {getLabelValue(labels, 'lbl_PLCCTimeoutModal_closureSubHeader')}
               </BodyCopy>
             </Col>
           </Row>
@@ -104,8 +104,8 @@ class StyledPLCCTimedoutModal extends React.PureComponent {
                 onClick={this.restartApplication}
               >
                 {isPLCCModalFlow
-                  ? getLabelValue(labels, 'plcc_timeout_restart_acceptance')
-                  : getLabelValue(labels, 'plcc_restart_application')}
+                  ? getLabelValue(labels, 'lbl_PLCCTimeoutModal_restartAcceptance')
+                  : getLabelValue(labels, 'lbl_PLCCTimeoutModal_restartApplication')}
               </Button>
             </Col>
           </Row>
@@ -124,7 +124,7 @@ class StyledPLCCTimedoutModal extends React.PureComponent {
                   data-locator={getLocator('plcc_time_out_modal_return_to_checkout')}
                   onClick={this.handleCheckoutClick}
                 >
-                  {getLabelValue(labels, 'plcc_return_checkout')}
+                  {getLabelValue(labels, 'lbl_PLCCTimeoutModal_returnCheckout')}
                 </Button>
               </Col>
             </Row>
@@ -142,9 +142,12 @@ StyledPLCCTimedoutModal.propTypes = {
   isPLCCModalFlow: PropTypes.bool.isRequired,
   bagItems: PropTypes.bool.isRequired,
   labels: PropTypes.shape({
-    plcc_restart_application: PropTypes.string.isRequired,
-    plcc_application_closure_subheader: PropTypes.string.isRequired,
-    plcc_application_closure: PropTypes.string.isRequired,
+    lbl_PLCCTimeoutModal_restartAcceptance: PropTypes.string.isRequired,
+    lbl_PLCCTimeoutModal_restartApplication: PropTypes.string.isRequired,
+    lbl_PLCCTimeoutModal_returnCheckout: PropTypes.string.isRequired,
+    lbl_PLCCTimeoutModal_closureSubHeader: PropTypes.string.isRequired,
+    lbl_PLCCTimeoutModal_applicationClosure: PropTypes.string.isRequired,
+    lbl_PLCCTimeoutModal_preacceptance: PropTypes.string.isRequired,
   }).isRequired,
 };
 

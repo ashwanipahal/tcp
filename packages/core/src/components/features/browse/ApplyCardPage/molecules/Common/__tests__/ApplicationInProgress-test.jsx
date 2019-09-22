@@ -6,10 +6,10 @@ describe('ApplicationInProgress component', () => {
   it('should renders correctly', () => {
     const props = {
       labels: {
-        plcc_form_status_detail: 'application card is in progress',
-        plcc_form_status: 'in progress',
-        plcc_form_ctc_buttom: 'continue to checkout',
-        plcc_form_continue_shopping: 'continue shopping',
+        lbl_PLCCForm_underProgress: 'application card is in progress',
+        lbl_PLCCForm_underProcessDetails: 'in progress',
+        lbl_PLCCForm_ctcButton: 'continue to checkout',
+        lbl_PLCCForm_continueShopping: 'continue shopping',
       },
     };
     const component = shallow(<ApplicationInProgress {...props} />);

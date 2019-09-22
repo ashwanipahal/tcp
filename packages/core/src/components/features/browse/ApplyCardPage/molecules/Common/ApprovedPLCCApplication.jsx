@@ -2,6 +2,7 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import { Anchor, BodyCopy, RichText, Button, Col, Row } from '../../../../../common/atoms';
 import ApprovedPLCCApplicationViewStyled from './styles/ApprovedPLCCApplication.style';
+import { getLabelValue } from '../../../../../../utils';
 
 const CopyToClipboard = e => {
   e.preventDefault();
@@ -41,11 +42,11 @@ const getCouponCodeBody = (approvedPLCCData, labels = {}, plccData = {}) => {
                 fontSize="fs22"
                 fontFamily="secondary"
                 className="credit_limit_heading"
-                aria-label={labels.plcc_form_rewardsCardHeading}
+                aria-label={getLabelValue(labels, 'lbl_PLCCForm_rewardsCardHeading')}
                 textAlign="center"
                 id="couponCode"
               >
-                {labels.plc_welcome_offer_label}
+                {getLabelValue(labels, 'lbl_PLCCForm_welcomeOffer')}
               </BodyCopy>
               <BodyCopy
                 component="div"
@@ -53,14 +54,13 @@ const getCouponCodeBody = (approvedPLCCData, labels = {}, plccData = {}) => {
                 fontSize="fs22"
                 fontFamily="secondary"
                 className="promo_code"
-                aria-label={labels.plcc_form_rewardsCardHeading}
                 tabIndex="0"
                 textAlign="center"
               >
                 {approvedPLCCData && approvedPLCCData.couponCode}
               </BodyCopy>
               <Anchor onClick={CopyToClipboard} asPath="/bag" underline>
-                {labels.plcc_copy_to_clipboard}
+                {getLabelValue(labels, 'lbl_PLCCForm_copyToClipboard')}
               </Anchor>
             </Col>
             <Col
@@ -130,7 +130,7 @@ const totalSavingsFooterContainer = (
                 type="submit"
                 className="existing_checkout_button"
               >
-                {labels.plcc_checkout}
+                {getLabelValue(labels, 'lbl_PLCCForm_checkout')}
               </Button>
             </Anchor>
           </Col>
@@ -153,7 +153,7 @@ const totalSavingsFooterContainer = (
               type="submit"
               className="existing_continue_button"
             >
-              {labels.plcc_form_continue_shopping}
+              {getLabelValue(labels, 'lbl_PLCCTimeoutModal_continueShopping')}
             </Button>
           </Anchor>
         </Col>
@@ -192,11 +192,11 @@ const ApprovedPLCCApplicationView = ({
             fontSize="fs22"
             fontFamily="secondary"
             className="credit_card_heading"
-            aria-label={labels.plcc_form_rewardsCardHeading}
+            aria-label={getLabelValue(labels, 'lbl_PLCCForm_rewardsCardHeading')}
             tabIndex="0"
             textAlign="center"
           >
-            {`${labels.plcc_congratulations} ${approvedPLCCData &&
+            {`${getLabelValue(labels, 'lbl_PLCCForm_congratulations')} ${approvedPLCCData &&
               approvedPLCCData.address.firstName}!`}
           </BodyCopy>
         </Col>
@@ -208,7 +208,7 @@ const ApprovedPLCCApplicationView = ({
             fontSize="fs22"
             fontFamily="secondary"
             className="credit_card_heading"
-            aria-label={labels.plcc_form_rewardsCardHeading}
+            aria-label={getLabelValue(labels, 'lbl_PLCCForm_rewardsCardHeading')}
             tabIndex="0"
             textAlign="center"
           >
@@ -223,11 +223,10 @@ const ApprovedPLCCApplicationView = ({
             fontSize="fs22"
             fontFamily="secondary"
             className="credit_limit_heading"
-            aria-label={labels.plcc_form_rewardsCardHeading}
             tabIndex="0"
             textAlign="center"
           >
-            {labels.plcc_credit_limit}
+            {getLabelValue(labels, 'lbl_PLCCForm_creditLimit')}
             {`$${approvedPLCCData && approvedPLCCData.creditLimit}`}
           </BodyCopy>
         </Col>
@@ -255,17 +254,17 @@ const ApprovedPLCCApplicationView = ({
           className="footer_links"
         >
           <BodyCopy component="span" fontSize="fs12" fontFamily="secondary">
-            {labels.apply_now_links_text}
+            {getLabelValue(labels, 'lbl_PLCCForm_footerlinksPrefix')}
           </BodyCopy>
           <Anchor
-            url={labels.details_link}
+            url={getLabelValue(labels, 'lbl_PLCCForm_detailsLink')}
             target="_blank"
             fontSizeVariation="large"
             anchorVariation="primary"
             className="linkIconSeperator"
             underline
           >
-            {labels.apply_now_details}
+            {getLabelValue(labels, 'lbl_PLCCForm_details')}
           </Anchor>
         </Col>
       </Row>
