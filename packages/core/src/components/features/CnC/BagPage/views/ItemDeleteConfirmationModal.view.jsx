@@ -46,7 +46,7 @@ const ItemDeleteConfirmationModal = ({
           {modalHeading}
         </BodyCopy>
         <div className="button-container">
-          <Button className="item-delete-confirmation-button" onClick={moveToSfl}>
+          <Button className="item-delete-button" onClick={moveToSfl}>
             <BodyCopy
               component="span"
               color="white"
