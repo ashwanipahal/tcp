@@ -4,6 +4,7 @@ import PropTypes from 'prop-types';
 import {
   getCartOrderList,
   getLabelsCartItemTile,
+  getIsCartItemsUpdating,
 } from '@tcp/core/src/components/features/CnC/CartItemTile/container/CartItemTile.selectors';
 import {
   getUserLoggedInState,
@@ -30,6 +31,7 @@ const mapStateToProps = state => {
     labels: getLabelsCartItemTile(state),
     isUserLoggedIn: getUserLoggedInState(state),
     isPlcc: isPlccUser(state),
+    isCartItemsUpdating: getIsCartItemsUpdating(state),
   };
 };
 export const mapDispatchToProps = dispatch => {
