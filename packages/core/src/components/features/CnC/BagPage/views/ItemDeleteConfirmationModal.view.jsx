@@ -53,7 +53,6 @@ const ItemDeleteConfirmationModal = ({
               fontWeight="extrabold"
               fontFamily="secondary"
               fontSize={['fs13', 'fs13', 'fs14']}
-              onClick={() => {}}
             >
               {modalButtonSFL}
             </BodyCopy>
@@ -65,7 +64,6 @@ const ItemDeleteConfirmationModal = ({
               fontWeight="extrabold"
               fontFamily="secondary"
               fontSize={['fs13', 'fs13', 'fs14']}
-              onClick={() => {}}
             >
               {modalButtonConfirmDelete}
             </BodyCopy>
