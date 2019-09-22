@@ -192,6 +192,7 @@ exports[`GiftServices component should renders correctly props not present 2`] =
   background-color: ",
               [Function],
               ";
+  width: 100%;
 ",
               ";
   ",
@@ -206,7 +207,7 @@ exports[`GiftServices component should renders correctly props not present 2`] =
       dataLocator="giftServices-list"
       dropDownStyle={
         Object {
-          "border": 2,
+          "border": 1,
           "height": 30,
         }
       }
@@ -225,17 +226,19 @@ exports[`GiftServices component should renders correctly props not present 2`] =
       variation="secondary"
     />
     <Styled(View)>
-      <Styled(BodyCopy)
-        accessibilityText=""
-        color="gray.900"
-        dataLocator=""
-        fontSize="fs14"
-        margin={null}
-        mobileFontFamily="secondary"
-        numberOfLines={null}
-        textAlign="left"
-        textDecoration={null}
-      />
+      <Styled(View)>
+        <Styled(BodyCopy)
+          accessibilityText=""
+          color="gray.900"
+          dataLocator=""
+          fontSize="fs14"
+          margin={null}
+          mobileFontFamily="secondary"
+          numberOfLines={null}
+          textAlign="left"
+          textDecoration={null}
+        />
+      </Styled(View)>
       <Styled(BodyCopy)
         accessibilityText=""
         color="gray.900"

@@ -304,6 +304,7 @@ exports[`AddressForm component should render correctly with default address 1`] 
   background-color: ",
                 [Function],
                 ";
+  width: 100%;
 ",
                 ";
   ",
@@ -791,6 +792,7 @@ exports[`AddressForm component should render correctly with default address 1`] 
   background-color: ",
               [Function],
               ";
+  width: 100%;
 ",
               ";
   ",
@@ -1222,6 +1224,7 @@ exports[`AddressForm component should renders correctly 1`] = `
   background-color: ",
                 [Function],
                 ";
+  width: 100%;
 ",
                 ";
   ",
@@ -1709,6 +1712,7 @@ exports[`AddressForm component should renders correctly 1`] = `
   background-color: ",
               [Function],
               ";
+  width: 100%;
 ",
               ";
   ",
