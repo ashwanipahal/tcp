@@ -1,6 +1,5 @@
 import React from 'react';
 import { connect } from 'react-redux';
-// import CheckoutProgressUtils from '@tcp/web/src/components/features/content/CheckoutProgressIndicator/utils/utils'
 import {
   initCheckoutAction,
   submitShippingSection,
