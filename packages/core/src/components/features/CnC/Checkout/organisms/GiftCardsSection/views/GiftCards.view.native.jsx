@@ -14,12 +14,28 @@ import {
 import { BodyCopyWithSpacing } from '../../../../../../common/atoms/styledWrapper';
 import GiftCardTileView from '../../../molecules/GiftCardTile';
 import CustomButton from '../../../../../../common/atoms/Button';
-import { AddGiftCardForm } from '../../../../../account/Payment/AddGiftCard/views/AddGiftCardForm.native';
+import AddGiftCardForm from '../../../../../../common/organisms/AddGiftCardForm/AddGiftCardForm.native';
 import { propTypes, defaultProps } from './GiftCards.view.utils';
 
 class GiftCards extends React.PureComponent {
+  constructor(props) {
+    super(props);
+    this.state = {
+      orderBalanceTotal: props.orderBalanceTotal,
+    };
+  }
+
+  static getDerivedStateFromProps(nextProps) {
+    const { orderBalanceTotal } = nextProps;
+    if (orderBalanceTotal) {
+      return { orderBalanceTotal };
+    }
+    return null;
+  }
+
   renderAddNewGiftButton() {
-    const { labels, orderBalanceTotal, appliedGiftCards, showAddGiftCard } = this.props;
+    const { labels, appliedGiftCards, showAddGiftCard } = this.props;
+    const { orderBalanceTotal } = this.state;
     if (orderBalanceTotal > 0 && appliedGiftCards && appliedGiftCards.size < 5) {
       return (
         <GiftCardButtonCal>
@@ -45,6 +61,7 @@ class GiftCards extends React.PureComponent {
           fontWeight="semibold"
           fontSize="fs12"
           color="error"
+          spacingStyles="margin-bottom-MED"
           text={getAddGiftCardError}
         />
       );
@@ -62,6 +79,7 @@ class GiftCards extends React.PureComponent {
       labels,
       isLoading,
       onClearError,
+      formErrorMessage,
     } = this.props;
     return (
       <AddGiftCardWrapper>
@@ -77,6 +95,7 @@ class GiftCards extends React.PureComponent {
           isLoading={isLoading}
           onClearError={onClearError}
           toggleModal={hideAddGiftCard}
+          formErrorMessage={formErrorMessage}
         />
       </AddGiftCardWrapper>
     );
@@ -91,10 +110,9 @@ class GiftCards extends React.PureComponent {
       appliedGiftCards,
       giftCardList,
       applyExistingGiftCardToOrder,
-      orderBalanceTotal,
       enableAddGiftCard,
     } = this.props;
-
+    const { orderBalanceTotal } = this.state;
     return (
       <>
         <Container>

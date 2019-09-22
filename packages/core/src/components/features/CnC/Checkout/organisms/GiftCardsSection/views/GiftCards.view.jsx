@@ -5,7 +5,7 @@ import styles from '../styles/GiftCards.style';
 import { Row, Col, BodyCopy, Button } from '../../../../../../common/atoms';
 import Grid from '../../../../../../common/molecules/Grid';
 import GiftCardTile from '../../../molecules/GiftCardTile';
-import AddGiftCardForm from '../../../../../account/Payment/AddGiftCard/views/AddGiftCardForm';
+import AddGiftCardForm from '../../../../../../common/organisms/AddGiftCardForm/AddGiftCardForm';
 
 import ErrorMessage from '../../../../../../common/hoc/ErrorMessage';
 

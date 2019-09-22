@@ -607,22 +607,35 @@ exports[`GiftCardsVanilla should render gift card tile with 100 order balance wi
           ]
         }
         numberOfLines={null}
+        spacingStyles="margin-bottom-MED"
         text="Duplicate"
         textDecoration={null}
       />
-      <AddGiftCardForm
+      <ReduxForm
         addGiftCardError="Duplicate"
-        addGiftCardResponse={null}
-        change={[Function]}
-        handleSubmit={[Function]}
+        destroyOnUnmount={true}
+        enableReinitialize={true}
+        forceUnregisterOnUnmount={false}
+        form="AddGiftCardMobileForm"
+        formErrorMessage=""
+        getFormState={[Function]}
         isLoading={false}
         isRecapchaEnabled={false}
         isRow={true}
+        keepDirtyOnReinitialize={false}
         labels={Object {}}
-        onAddGiftCardClick={[Function]}
-        onClearError={[Function]}
+        persistentSubmitErrors={false}
+        pure={true}
         saveToAccountEnabled={true}
-        toggleModal={[Function]}
+        shouldAsyncValidate={[Function]}
+        shouldError={[Function]}
+        shouldValidate={[Function]}
+        shouldWarn={[Function]}
+        submitAsSideEffect={false}
+        touchOnBlur={true}
+        touchOnChange={false}
+        updateUnregisteredFields={false}
+        validate={[Function]}
       />
     </Styled(View)>
   </Styled(View)>

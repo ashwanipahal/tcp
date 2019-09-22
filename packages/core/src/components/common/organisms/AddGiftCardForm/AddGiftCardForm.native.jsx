@@ -5,8 +5,8 @@ import Recaptcha from '@tcp/core/src/components/common/molecules/recaptcha/recap
 import { PropTypes } from 'prop-types';
 import { get } from 'lodash';
 import { getLabelValue } from '@tcp/core/src/utils/utils';
-import TextBox from '../../../../../common/atoms/TextBox';
-import CustomButton from '../../../../../common/atoms/Button';
+import TextBox from '../../atoms/TextBox';
+import CustomButton from '../../atoms/Button';
 import {
   RecaptchaContainer,
   ErrorWrapper,
@@ -15,24 +15,20 @@ import {
   MessageWrapper,
   MessageTextWrapper,
   FooterButtonWrapper,
-} from '../styles/AddGiftCard.style.native';
-import createValidateMethod from '../../../../../../utils/formValidation/createValidateMethod';
-import getStandardConfig from '../../../../../../utils/formValidation/validatorStandardConfig';
-import BodyCopy from '../../../../../common/atoms/BodyCopy';
-import InputCheckbox from '../../../../../common/atoms/InputCheckbox';
+} from '../../../features/account/Payment/AddGiftCard/styles/AddGiftCard.style.native';
+import createValidateMethod from '../../../../utils/formValidation/createValidateMethod';
+import getStandardConfig from '../../../../utils/formValidation/validatorStandardConfig';
+import BodyCopy from '../../atoms/BodyCopy';
+import InputCheckbox from '../../atoms/InputCheckbox';
 
-export class AddGiftCardForm extends React.PureComponent {
-  componentDidUpdate(prevProps) {
-    const { addGiftCardError, change, isRow } = this.props;
-    if (addGiftCardError !== prevProps.addGiftCardError && isRow) {
-      change('recaptchaToken', '');
-    }
-  }
-
+class AddGiftCardForm extends React.PureComponent {
   onMessage = event => {
     const { change } = this.props;
     if (event && event.nativeEvent.data) {
-      const value = get(event, 'nativeEvent.data', '');
+      let value = get(event, 'nativeEvent.data', '');
+      if (['cancel', 'error', 'expired'].includes(value)) {
+        value = '';
+      }
       change('recaptchaToken', value);
     }
   };
