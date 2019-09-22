@@ -17,6 +17,7 @@ const PickupStoreDisplay = props => {
     orderType,
     labels,
   } = props;
+  const { addressLine1 } = storeAddress;
   let {
     store: { bopisItems, bossItems },
   } = props;
@@ -59,7 +60,7 @@ const PickupStoreDisplay = props => {
             fontFamily="secondary"
             fontWeight="regular"
           >
-            {storeAddress.addressLine1}
+            {addressLine1}
           </BodyCopy>
           {orderType !== ORDER_ITEM_TYPE.BOSS && (
             <div className="pickup-store-margin">
