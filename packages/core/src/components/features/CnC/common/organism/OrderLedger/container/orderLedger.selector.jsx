@@ -1,5 +1,3 @@
-import CheckoutSelectors from '../../../../Checkout/container/Checkout.selector';
-
 export const getItemsTotalCount = state => {
   return state.CartPageReducer.getIn(['orderDetails', 'totalItems']) || 0;
 };
@@ -45,7 +43,6 @@ export const getLedgerSummaryData = state => {
     orderBalanceTotal: getGrandTotal(state) - getGiftCardsTotal(state),
     totalOrderSavings: getTotalOrderSavings(state),
     currencySymbol: getCurrencySymbol(state),
-    isOrderHasShipping: CheckoutSelectors.getIsOrderHasShipping(state),
   };
 };
 export const getOrderLedgerLabels = state => {
