@@ -22,10 +22,10 @@ export class PickUpReviewSection extends React.PureComponent {
    * Stores are sorted on the basis on orderType
    */
 
-  // eslint-disable-next-line sonarjs/cognitive-complexity
   generateStoreDetails = pickupData => {
     const stores = [];
     const pickupItems = [...pickupData];
+    const MIX = 'MIX';
     if (pickupItems.length === 1) {
       stores.push(pickupItems[0]);
     } else if (
@@ -46,23 +46,27 @@ export class PickUpReviewSection extends React.PureComponent {
         pickupItems[0].orderType === ORDER_ITEM_TYPE.BOPIS
           ? pickupItems[0].storeItemsCount
           : pickupItems[1].storeItemsCount;
-      pickupItems[0].orderType = 'MIX';
+      pickupItems[0].orderType = MIX;
       stores.push(pickupItems[0]);
     } else {
       if (pickupItems[0].orderType !== pickupItems[1].orderType) {
-        pickupItems.sort((a, b) => {
-          if (a.orderType < b.orderType) {
-            return -1;
-          }
-          if (a.orderType > b.orderType) {
-            return 1;
-          }
-          return 0;
-        });
+        this.sortPickupItems(pickupItems);
       }
       stores.push(...pickupItems);
     }
     return stores;
+  };
+
+  sortPickupItems = pickupItems => {
+    pickupItems.sort((a, b) => {
+      if (a.orderType < b.orderType) {
+        return -1;
+      }
+      if (a.orderType > b.orderType) {
+        return 1;
+      }
+      return 0;
+    });
   };
 
   render() {
@@ -75,6 +79,12 @@ export class PickUpReviewSection extends React.PureComponent {
       isHasPickUpAlternatePerson,
       onEdit,
     } = this.props;
+    const {
+      lbl_review_pickupSectionTitle: title,
+      lbl_review_sectionAnchor: edit,
+      lbl_review_sectionPickupText: text,
+      lbl_review_sectionPickupAlternateHeading: alternate,
+    } = labels;
     const pickupStores = [...cartStores]
       .filter(store => store.stLocId !== 'ECOM')
       .map(store => {
@@ -96,8 +106,8 @@ export class PickUpReviewSection extends React.PureComponent {
             {pickUpContactPerson && (
               <React.Fragment>
                 <TitlePlusEditButton
-                  title={labels.lbl_review_pickupSectionTitle}
-                  editTitle={labels.lbl_review_sectionAnchor}
+                  title={title}
+                  editTitle={edit}
                   onEdit={onEdit}
                   dataLocator="pickup-section"
                 />
@@ -107,7 +117,7 @@ export class PickUpReviewSection extends React.PureComponent {
                   color="gray.900"
                   fontWeight="regular"
                 >
-                  {labels.lbl_review_sectionPickupText}
+                  {text}
                 </BodyCopy>
               </React.Fragment>
             )}
@@ -133,7 +143,7 @@ export class PickUpReviewSection extends React.PureComponent {
               fontWeight="extrabold"
               color="gray.900"
             >
-              {labels.lbl_review_pickupSectionTitle}
+              {title}
             </BodyCopy>
             <PickUpContactDisplay formData={pickUpContactPerson} />
           </Col>
@@ -149,7 +159,7 @@ export class PickUpReviewSection extends React.PureComponent {
                 fontWeight="extrabold"
                 color="gray.900"
               >
-                {labels.lbl_review_sectionPickupAlternateHeading}
+                {alternate}
               </BodyCopy>
               <PickUpContactDisplay formData={pickUpAlternatePerson} />
             </Col>

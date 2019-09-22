@@ -7,6 +7,7 @@ import BodyCopy from '../../../../../../../../common/atoms/BodyCopy';
 class GiftWrappingDisplay extends React.PureComponent {
   render() {
     const { displayName, className, labels } = this.props;
+    const { lbl_review_sectionShippingGiftServiceTitle: GiftServiceTitle } = labels;
     return (
       <div className={className}>
         <div className="gift-wrapping-container">
@@ -17,7 +18,7 @@ class GiftWrappingDisplay extends React.PureComponent {
             fontWeight="extrabold"
             dataLocator="gift-wrapping-title"
           >
-            {labels.lbl_review_sectionShippingGiftServiceTitle}
+            {GiftServiceTitle}
           </BodyCopy>
           <BodyCopy
             fontSize="fs16"

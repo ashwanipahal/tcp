@@ -20,13 +20,18 @@ export class ShippingReviewSection extends React.PureComponent {
       giftWrappingDisplayName,
       labels,
     } = this.props;
+    const {
+      lbl_review_shippingSectionTitle: title,
+      lbl_review_sectionAnchor: edit,
+      lbl_review_sectionShippingAddressTitle: addressTitle,
+    } = labels;
     return (
       <div className={className} dataLocator="review-shipping-section">
         <Row fullBleed>
           <Col colSize={{ small: 6, medium: 8, large: 12 }}>
             <TitlePlusEditButton
-              title={labels.lbl_review_shippingSectionTitle}
-              editTitle={labels.lbl_review_sectionAnchor}
+              title={title}
+              editTitle={edit}
               onEdit={this.handleEnterEditModeClick}
               dataLocator="pickup-section"
             />
@@ -43,7 +48,7 @@ export class ShippingReviewSection extends React.PureComponent {
                 color="gray.900"
                 fontWeight="extrabold"
               >
-                {labels.lbl_review_sectionShippingAddressTitle}
+                {addressTitle}
               </BodyCopy>
             </div>
             <Address className="addressStyle" address={shippingAddress.address} />

@@ -7,7 +7,7 @@ import styles from '../styles/ShippingMethodDisplay.style';
 class ShippingMethodDisplay extends React.PureComponent {
   render() {
     const { className, displayName, labels } = this.props;
-
+    const { lbl_review_sectionShippingMethodTitle: title } = labels;
     return (
       <div className={className}>
         <div className="shipping-method-container">
@@ -19,7 +19,7 @@ class ShippingMethodDisplay extends React.PureComponent {
             fontWeight="extrabold"
             className="heading"
           >
-            {labels.lbl_review_sectionShippingMethodTitle}
+            {title}
           </BodyCopy>
           <BodyCopy
             fontSize="fs16"

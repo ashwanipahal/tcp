@@ -20,12 +20,19 @@ const PickupStoreDisplay = props => {
   let {
     store: { bopisItems, bossItems },
   } = props;
-  const today = getDateInformation('', false);
+  const translateInTo = 'en-US';
+  const {
+    lbl_review_sectionPickupToday: pickupToday,
+    lbl_review_sectionPickupOrderTitle: title,
+    lbl_review_sectionPickupItem: item,
+    lbl_review_sectionPickupItems: items,
+  } = labels;
+  const today = getDateInformation('', false, translateInTo);
   const bossDate =
     !!(bossStartDate && bossEndDate) &&
     `${bossStartDate.day}. ${bossStartDate.month}
     ${bossStartDate.date} - ${bossEndDate.day}. ${bossEndDate.month} ${bossEndDate.date}`;
-  const bopisDate = `${labels.lbl_review_sectionPickupToday} ${today.month} ${today.date}`;
+  const bopisDate = `${pickupToday} ${today.month} ${today.date}`;
   bossItems = bossItems || storeItemsCount;
   bopisItems = bopisItems || storeItemsCount;
 
@@ -63,10 +70,8 @@ const PickupStoreDisplay = props => {
                 fontWeight="extrabold"
                 color="gray.900"
               >
-                {`${labels.lbl_review_sectionPickupOrderTitle} ${bopisItems} `}
-                {bopisItems === 1
-                  ? labels.lbl_review_sectionPickupItem
-                  : labels.lbl_review_sectionPickupItems}
+                {`${title} ${bopisItems} `}
+                {bopisItems === 1 ? item : items}
               </BodyCopy>
               <BodyCopy
                 fontSize="fs12"
@@ -88,10 +93,8 @@ const PickupStoreDisplay = props => {
                 fontWeight="extrabold"
                 color="gray.900"
               >
-                {`${labels.lbl_review_sectionPickupOrderTitle} ${bopisItems} `}
-                {bossItems === 1
-                  ? labels.lbl_review_sectionPickupItem
-                  : labels.lbl_review_sectionPickupItems}
+                {`${title} ${bopisItems} `}
+                {bossItems === 1 ? item : items}
               </BodyCopy>
               <BodyCopy
                 fontSize="fs12"
