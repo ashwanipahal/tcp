@@ -22,10 +22,13 @@ import BagPageSelectors from '../../BagPage/container/BagPage.selectors';
 
 const { checkoutIfItemIsUnqualified } = BagPageSelectors;
 
-export function* confirmRemoveItem({ payload }) {
+export function* confirmRemoveItem({ payload, afterHandler }) {
   try {
     const res = yield call(removeItem, payload);
     yield put(removeCartItemComplete(res));
+    if (afterHandler) {
+      afterHandler();
+    }
     yield put(BAG_PAGE_ACTIONS.setCartItemsUpdating({ isDeleting: true }));
     yield put(BAG_PAGE_ACTIONS.getOrderDetails());
     yield delay(3000);
@@ -36,11 +39,16 @@ export function* confirmRemoveItem({ payload }) {
 }
 
 export function* removeCartItem({ payload }) {
-  const isUnqualifiedItem = yield select(checkoutIfItemIsUnqualified);
-  if (isUnqualifiedItem) {
-    yield confirmRemoveItem({ payload });
+  const { itemId, pageView } = payload;
+  if (pageView === 'myBag') {
+    const isUnqualifiedItem = yield select(checkoutIfItemIsUnqualified);
+    if (isUnqualifiedItem) {
+      yield confirmRemoveItem({ payload: itemId });
+    }
+    yield put(BAG_PAGE_ACTIONS.openItemDeleteConfirmationModal(payload));
+  } else {
+    yield confirmRemoveItem({ payload: itemId });
   }
-  yield put(BAG_PAGE_ACTIONS.openItemDeleteConfirmationModal(payload));
 }
 
 export function* updateCartItemSaga({ payload }) {

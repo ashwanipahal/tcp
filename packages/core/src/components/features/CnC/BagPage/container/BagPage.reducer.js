@@ -6,7 +6,7 @@ const initialState = fromJS({
   orderDetails: {},
   sfl: [],
   errors: false,
-  openItemDeleteConfirmationModal: false,
+  openItemDeleteConfirmationModalInfo: { showModal: false },
   currentItemId: null,
   moduleXContent: [],
   showConfirmationModal: false,
@@ -77,10 +77,12 @@ const returnBagPageReducer = (state = initialState, action) => {
     case BAGPAGE_CONSTANTS.SET_SFL_DATA:
       return state.set('sfl', fromJS(action.payload));
     case BAGPAGE_CONSTANTS.CLOSE_ITEM_DELETE_CONFIRMATION_MODAL:
-      return state.set('openItemDeleteConfirmationModal', false);
+      return state.set('openItemDeleteConfirmationModalInfo', { showModal: false });
     case BAGPAGE_CONSTANTS.OPEN_ITEM_DELETE_CONFIRMATION_MODAL:
-      state.set('currentItemId', action.itemId);
-      return state.set('openItemDeleteConfirmationModal', true);
+      return state.set('openItemDeleteConfirmationModalInfo', {
+        ...action.payload,
+        showModal: true,
+      });
     default:
       // TODO: currently when initial state is hydrated on browser, List is getting converted to an JS Array
       if (state instanceof Object) {

@@ -153,10 +153,10 @@ const setSflData = payload => {
   };
 };
 
-const openItemDeleteConfirmationModal = itemId => {
+const openItemDeleteConfirmationModal = payload => {
   return {
     type: BAGPAGE_CONSTANTS.OPEN_ITEM_DELETE_CONFIRMATION_MODAL,
-    itemId,
+    payload,
   };
 };
 

@@ -125,6 +125,10 @@ export const getProductItemUnitPrice = product => {
   return product.getIn(['itemInfo', 'listUnitPrice']);
 };
 
+export const getIsCartItemsUpdating = state => {
+  return state.CartPageReducer.getIn(['uiFlags', 'isCartItemsUpdating']);
+};
+
 export const getLabelsCartItemTile = state => {
   const {
     global: {

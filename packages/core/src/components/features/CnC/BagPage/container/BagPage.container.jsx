@@ -44,8 +44,6 @@ export class BagPageContainer extends React.Component<Props> {
       isGuest,
       sflItems,
       fetchLabels,
-      currentSelectItemInfo,
-      closeItemDeleteModal,
     } = this.props;
 
     const showAddTobag = false;
@@ -64,8 +62,6 @@ export class BagPageContainer extends React.Component<Props> {
         handleCartCheckout={handleCartCheckout}
         sflItems={sflItems}
         fetchLabels={fetchLabels}
-        currentSelectItemInfo={currentSelectItemInfo}
-        closeItemDeleteModal={closeItemDeleteModal}
       />
     );
   }
@@ -87,9 +83,6 @@ export const mapDispatchToProps = (dispatch: ({}) => void) => {
     fetchLabels: () => {
       dispatch(BAG_PAGE_ACTIONS.initActions[0]);
     },
-    closeItemDeleteModal: () => {
-      dispatch(BAG_PAGE_ACTIONS.closeItemDeleteConfirmationModal());
-    },
   };
 };
 
@@ -105,7 +98,6 @@ const mapStateToProps = state => {
     isUserLoggedIn: getUserLoggedInState(state),
     isGuest: isGuestUser(state),
     sflItems: BagPageSelector.getsflItemsList(state),
-    currentSelectItemInfo: BagPageSelector.getCurrentDeleteSelectedItemInfo(state),
   };
 };
 

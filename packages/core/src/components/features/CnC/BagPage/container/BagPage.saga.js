@@ -292,7 +292,9 @@ export function* removeUnqualifiedItemsAndCheckout({ navigation } = {}) {
   yield call(checkoutCart, true, navigation);
 }
 
-export function* addItemToSFL({ payload: { itemId, catEntryId, userInfoRequired } = {} } = {}) {
+export function* addItemToSFL({
+  payload: { itemId, catEntryId, userInfoRequired, afterHandler } = {},
+} = {}) {
   const isRememberedUser = yield select(isRemembered);
   const isRegistered = yield select(getUserLoggedInState);
   const countryCurrency = yield select(BAG_SELECTORS.getCurrentCurrency);
@@ -307,7 +309,9 @@ export function* addItemToSFL({ payload: { itemId, catEntryId, userInfoRequired 
       countryCurrency,
       isCanadaSIte
     );
-
+    if (afterHandler) {
+      afterHandler();
+    }
     if (res.errorResponse && res.errorMessage) {
       const resErr = res.errorMessage[Object.keys(res.errorMessage)[0]];
       yield put(BAG_PAGE_ACTIONS.setCartItemsSflError(resErr));

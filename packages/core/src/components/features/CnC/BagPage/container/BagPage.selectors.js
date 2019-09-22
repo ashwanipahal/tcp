@@ -161,12 +161,19 @@ const checkoutIfItemIsUnqualified = state => {
 };
 
 const getCurrentDeleteSelectedItemInfo = state => {
-  return {
-    currentItemId: state.CartPageReducer.get('currentItemId'),
-    showModal: state.CartPageReducer.get('openItemDeleteConfirmationModal'),
-  };
+  return state.CartPageReducer.get('openItemDeleteConfirmationModalInfo');
 };
 
+const itemDeleteModalLabels = state => {
+  const getBagLabelByLabelName = labelName =>
+    getLabelValue(state.Labels, labelName, 'bagPage', 'checkout');
+  return {
+    modalTitle: getBagLabelByLabelName('lbl_itemDelete_modalTitle'),
+    modalHeading: getBagLabelByLabelName('lbl_itemDelete_modalHeading'),
+    modalButtonSFL: getBagLabelByLabelName('lbl_itemDelete_modalButtonSFL'),
+    modalButtonConfirmDelete: getBagLabelByLabelName('lbl_itemDelete_modalButtonConfirmDelete'),
+  };
+};
 export default {
   getBagPageLabels,
   getTotalItems,
@@ -189,4 +196,5 @@ export default {
   getsflItemsList,
   checkoutIfItemIsUnqualified,
   getCurrentDeleteSelectedItemInfo,
+  itemDeleteModalLabels,
 };

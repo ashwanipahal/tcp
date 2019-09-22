@@ -41,6 +41,21 @@ const styles = css`
     }
   }
 
+  .delete-msg {
+    border: solid 2px ${props => props.theme.colors.NOTIFICATION.SUCCESS};
+    text-align: left;
+    padding: 10px;
+    background: ${props => props.theme.colors.WHITE};
+    display: flex;
+    align-items: center;
+    margin-top: 12px;
+    .tick-icon {
+      height: 23px;
+      width: 23px;
+      margin-right: 10px;
+    }
+  }
+
   @media ${props => props.theme.mediaQuery.smallOnly} {
     .activeSection {
       display: block;

@@ -9,7 +9,6 @@ import BodyCopy from '../../../../common/atoms/BodyCopy';
 import AddedToBagActions from '../../AddedToBagActions';
 import CnCTemplate from '../../common/organism/CnCTemplate';
 import BAGPAGE_CONSTANTS from '../BagPage.constants';
-import ItemDeleteConfirmationModal from './ItemDeleteConfirmationModal.view';
 
 import styles, { addedToBagActionsStyles } from '../styles/BagPage.style';
 
@@ -59,6 +58,7 @@ class BagPageView extends React.Component {
             {`${labels.savedForLaterText} (${sflItems.size})`}
           </BodyCopy>
           <ProductTileWrapper
+            isSflList
             bagLabels={labels}
             pageView={myBag}
             sflItems={sflItems}
@@ -97,8 +97,6 @@ class BagPageView extends React.Component {
       isUserLoggedIn,
       isGuest,
       sflItems,
-      currentSelectItemInfo,
-      closeItemDeleteModal,
     } = this.props;
     const { activeSection } = this.state;
     const isNoNEmptyBag = orderItemsCount > 0;
@@ -149,10 +147,6 @@ class BagPageView extends React.Component {
           isUserLoggedIn={isUserLoggedIn}
           isGuest={isGuest}
           showAccordian={false}
-        />
-        <ItemDeleteConfirmationModal
-          isOpen={currentSelectItemInfo.showModal}
-          closeCheckoutConfirmationModal={closeItemDeleteModal}
         />
       </div>
     );
