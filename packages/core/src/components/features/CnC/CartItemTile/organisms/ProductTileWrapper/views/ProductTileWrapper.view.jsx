@@ -172,14 +172,16 @@ class ProductTileWrapper extends React.PureComponent<props> {
       const { isDeleting } = isCartItemsUpdating;
       return (
         <>
-          {this.getHeaderError(labels, productSectionData, pageView)}
-          {isSoldOut && (
+          {!isBagPageSflSection && this.getHeaderError(labels, productSectionData, pageView)}
+          {!isBagPageSflSection && isSoldOut && (
             <RemoveSoldOut
               pageView={pageView}
               labelForRemove={this.getRemoveString(labels, removeCartItem, getUnavailableOOSItems)}
             />
           )}
-          {isUnavailable && <RemoveSoldOut pageView={pageView} labels={labels} />}
+          {!isBagPageSflSection && isUnavailable && (
+            <RemoveSoldOut pageView={pageView} labels={labels} />
+          )}
           {this.renderItemDeleteSuccessMsg(
             isBagPageSflSection,
             isBagPage,
@@ -190,10 +192,13 @@ class ProductTileWrapper extends React.PureComponent<props> {
         </>
       );
     }
-    if (productSectionData.size === 0) {
-      return <EmptyBag bagLabels={bagLabels} isUserLoggedIn={isUserLoggedIn} />;
-    }
-    return <></>;
+    return (
+      <EmptyBag
+        bagLabels={bagLabels}
+        isUserLoggedIn={isUserLoggedIn}
+        isBagPageSflSection={isBagPageSflSection}
+      />
+    );
   }
 }
 

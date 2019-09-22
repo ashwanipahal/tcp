@@ -39,6 +39,7 @@ const getBagPageLabels = state => {
     'checkout'
   );
   const myBagButton = getLabelValue(state.Labels, 'lbl_sfl_myBagButton', 'bagPage', 'checkout');
+  const emptySflMsg = getLabelValue(state.Labels, 'lbl_sfl_emptySflMsg', 'bagPage', 'checkout');
   const savedLaterButton = getLabelValue(
     state.Labels,
     'lbl_sfl_savedLaterButton',
@@ -58,6 +59,7 @@ const getBagPageLabels = state => {
     savedForLaterText,
     myBagButton,
     savedLaterButton,
+    emptySflMsg,
   };
 };
 
