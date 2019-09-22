@@ -58,7 +58,6 @@ class BagPageView extends React.Component {
             {`${labels.savedForLaterText} (${sflItems.size})`}
           </BodyCopy>
           <ProductTileWrapper
-            isSflList
             bagLabels={labels}
             pageView={myBag}
             sflItems={sflItems}

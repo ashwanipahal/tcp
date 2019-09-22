@@ -104,7 +104,6 @@ class ProductTileWrapper extends React.PureComponent<props> {
       isBagPageSflSection,
       isCartItemsUpdating,
       sflItems,
-      isSflList,
     } = this.props;
     const productSectionData = isBagPageSflSection ? sflItems : orderItems;
     let isUnavailable;
@@ -155,7 +154,7 @@ class ProductTileWrapper extends React.PureComponent<props> {
             />
           )}
           {isUnavailable && <RemoveSoldOut pageView={pageView} labels={labels} />}
-          {!isSflList && isBagPage && isDeleting && (
+          {!isBagPageSflSection && isBagPage && isDeleting && (
             <div className="delete-msg">
               <Image alt="closeIcon" className="tick-icon" src={getIconPath('circle-check-fill')} />
               <BodyCopy
@@ -182,7 +181,6 @@ ProductTileWrapper.defaultProps = {
   pageView: '',
   bagLabels: {},
   isBagPageSflSection: false,
-  isSflList: false,
 };
 
 ProductTileWrapper.propTypes = {
@@ -195,7 +193,6 @@ ProductTileWrapper.propTypes = {
   pageView: PropTypes.string,
   bagLabels: PropTypes.shape(),
   sflItemsCount: PropTypes.number.isRequired,
-  isSflList: PropTypes.bool,
   isBagPageSflSection: PropTypes.bool,
 };
 

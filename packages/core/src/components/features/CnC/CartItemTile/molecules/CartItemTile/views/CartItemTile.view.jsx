@@ -170,7 +170,14 @@ class CartItemTile extends React.Component {
   };
 
   removeCartItem = () => {
-    const { removeCartItem, pageView, productDetail, isGenricGuest, isCondense } = this.props;
+    const {
+      removeCartItem,
+      pageView,
+      productDetail,
+      isGenricGuest,
+      isCondense,
+      isBagPageSflSection,
+    } = this.props;
     const {
       itemInfo: { itemId, isGiftItem },
       productInfo: { skuId, generalProductId },
@@ -183,6 +190,7 @@ class CartItemTile extends React.Component {
       pageView,
       catEntryId,
       userInfoRequired,
+      isBagPageSflSection,
     });
   };
 
