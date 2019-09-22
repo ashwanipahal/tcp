@@ -36,9 +36,7 @@ export const getLocationOrigin = () => {
 };
 
 export const canUseDOM = () => {
-  const isClitent =
-    typeof window !== 'undefined' && window.document && window.document.createElement;
-  return isClitent;
+  return typeof window !== 'undefined' && window.document && window.document.createElement;
 };
 
 export const isProduction = () => {

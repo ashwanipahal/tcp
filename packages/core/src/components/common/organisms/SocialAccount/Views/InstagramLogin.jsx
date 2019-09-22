@@ -9,8 +9,9 @@
  */
 
 import React from 'react';
+import PropTypes from 'prop-types';
 import config from './config';
-import { getSiteId, getLocationOrigin, handleGenericKeyDown } from '../../../../../utils/utils.web';
+import { getSiteId, getLocationOrigin } from '../../../../../utils/utils.web';
 import { getIconPath } from '../../../../../utils';
 import BodyCopy from '../../../atoms/BodyCopy';
 import ImageComp from '../../../atoms/Image';
@@ -49,9 +50,10 @@ export const onClickHandler = () => {
  * @return CTA for connecting to instagram - The button connects/disconnects instagram
  */
 const InstagramLoginComponent = props => {
-  saveAccountInfo = props.saveSocialAcc;
-  elem = props.loginStatus;
-  closeModal = props.pointModalClose;
+  const { saveSocialAcc, loginStatus, pointModalClose } = props;
+  saveAccountInfo = saveSocialAcc;
+  elem = loginStatus;
+  closeModal = pointModalClose;
 
   const onTokenCapture = () => {
     const instagramTokenField = document.getElementById('instagram-token');
@@ -109,6 +111,15 @@ const InstagramLoginComponent = props => {
       <input type="hidden" onClick={onTokenCapture} id="instagram-token" />
     </React.Fragment>
   );
+};
+
+InstagramLoginComponent.propTypes = {
+  socialLoad: PropTypes.shape({}).isRequired,
+  saveSocialAcc: PropTypes.shape({}).isRequired,
+  getSocialAcc: PropTypes.shape({}).isRequired,
+  labels: PropTypes.shape({}).isRequired,
+  pointModalClose: PropTypes.func.isRequired,
+  loginStatus: PropTypes.shape({}).isRequired,
 };
 
 export { InstagramLoginComponent };
