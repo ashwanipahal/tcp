@@ -21,15 +21,23 @@ exports[`QuickViewModal component should renders correctly 1`] = `
     font-size: ",
       [Function],
       ";
-    display: none;
-    padding-bottom: ",
-      [Function],
-      ";
+    display: flex;
+    justify-content: center;
+    height: auto;
+    padding-bottom: 0;
     @media ",
       [Function],
       " {
       display: flex;
       justify-content: center;
+      height: auto;
+    }
+    @media ",
+      [Function],
+      " {
+      margin-bottom: ",
+      [Function],
+      ";
     }
   }
 ",
@@ -40,7 +48,7 @@ exports[`QuickViewModal component should renders correctly 1`] = `
   overlayClassName="TCPModal__Overlay"
   widthConfig={
     Object {
-      "large": "702px",
+      "large": "704px",
       "medium": "600px",
       "small": "375px",
     }

@@ -4,16 +4,11 @@ exports[`ProductCustomizeFormPart component should renders correctly 1`] = `
 <div
   className=""
 >
-  <Styled(Row)>
-    <Styled(Col)
+  <div
+    className="product-customize-form-container"
+  >
+    <div
       className="image-wrapper"
-      colSize={
-        Object {
-          "large": 4,
-          "medium": 4,
-          "small": 6,
-        }
-      }
     >
       <img
         alt="Boys Uniform V Neck Sweater"
@@ -38,15 +33,9 @@ exports[`ProductCustomizeFormPart component should renders correctly 1`] = `
           View Product Details
         </Styled(BodyCopy)>
       </Styled(Anchor)>
-    </Styled(Col)>
-    <Styled(Col)
-      colSize={
-        Object {
-          "large": 8,
-          "medium": 4,
-          "small": 6,
-        }
-      }
+    </div>
+    <div
+      className="product-detail"
     >
       <div
         className="product-details-card-container"
@@ -265,7 +254,7 @@ exports[`ProductCustomizeFormPart component should renders correctly 1`] = `
         onChangeColor={[Function]}
         plpLabels={Object {}}
       />
-    </Styled(Col)>
-  </Styled(Row)>
+    </div>
+  </div>
 </div>
 `;
