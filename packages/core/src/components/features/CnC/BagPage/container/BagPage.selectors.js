@@ -162,10 +162,12 @@ const getsflItemsList = state => {
   return state.CartPageReducer.get('sfl');
 };
 
-const checkoutIfItemIsUnqualified = state => {
+const checkoutIfItemIsUnqualified = (state, itemId) => {
   const items = getOrderItems(state);
   const indexValue = items.findIndex(
-    item => item.getIn(['miscInfo', 'availability']) !== AVAILABILITY.OK
+    item =>
+      item.getIn(['itemInfo', 'itemId']) === itemId.toString() &&
+      item.getIn(['miscInfo', 'availability']) !== AVAILABILITY.OK
   );
   return indexValue >= 0;
 };

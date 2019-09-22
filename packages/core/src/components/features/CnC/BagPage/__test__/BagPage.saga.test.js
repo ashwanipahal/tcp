@@ -155,8 +155,7 @@ describe('Bag SFL Saga', () => {
     const res = {
       errorResponse: null,
     };
-    const generator = addItemToSFL({});
-
+    const generator = addItemToSFL({ payload: { afterHandler: () => {} } });
     let takeLatestDescriptor = generator.next().value;
     takeLatestDescriptor = generator.next().value;
     takeLatestDescriptor = generator.next().value;

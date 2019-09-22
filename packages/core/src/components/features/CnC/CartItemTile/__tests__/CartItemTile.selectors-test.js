@@ -11,6 +11,7 @@ import {
   getLabelsCartItemTile,
   getProductSize,
   getGeneralProdId,
+  getIsCartItemsUpdating,
   getProductSkuId,
 } from '../container/CartItemTile.selectors';
 
@@ -127,6 +128,15 @@ describe('#CartItemTile selector', () => {
     expect(checkForGiftItem(productState)).toEqual(
       productState.getIn(['productInfo', 'isGiftCard'])
     );
+  });
+
+  it('#getIsCartItemsUpdating', () => {
+    const CartPageReducer = fromJS({
+      uiFlags: {
+        isCartItemsUpdating: true,
+      },
+    });
+    expect(getIsCartItemsUpdating({ CartPageReducer })).toEqual(true);
   });
 
   it('#getLabelsCartItemTile should return labels', () => {

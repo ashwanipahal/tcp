@@ -41,13 +41,14 @@ export function* confirmRemoveItem({ payload, afterHandler }) {
 export function* removeCartItem({ payload }) {
   const { itemId, pageView } = payload;
   if (pageView === 'myBag') {
-    const isUnqualifiedItem = yield select(checkoutIfItemIsUnqualified);
+    const isUnqualifiedItem = yield select(checkoutIfItemIsUnqualified, itemId);
     if (isUnqualifiedItem) {
-      yield confirmRemoveItem({ payload: itemId });
+      yield call(confirmRemoveItem, { payload: itemId });
+      return;
     }
     yield put(BAG_PAGE_ACTIONS.openItemDeleteConfirmationModal(payload));
   } else {
-    yield confirmRemoveItem({ payload: itemId });
+    yield call(confirmRemoveItem, { payload: itemId });
   }
 }
 
