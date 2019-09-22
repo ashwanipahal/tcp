@@ -91,6 +91,32 @@ class ProductTileWrapper extends React.PureComponent<props> {
     return isEditAllowed;
   };
 
+  renderItemDeleteSuccessMsg = (
+    isBagPageSflSection,
+    isBagPage,
+    isDeleting,
+    itemDeleteSuccessMsg
+  ) => {
+    return (
+      !isBagPageSflSection &&
+      isBagPage &&
+      isDeleting && (
+        <div className="delete-msg">
+          <Image alt="closeIcon" className="tick-icon" src={getIconPath('circle-check-fill')} />
+          <BodyCopy
+            component="span"
+            fontSize="fs12"
+            textAlign="center"
+            fontFamily="secondary"
+            fontWeight="extrabold"
+          >
+            {itemDeleteSuccessMsg}
+          </BodyCopy>
+        </div>
+      )
+    );
+  };
+
   render() {
     const {
       orderItems,
@@ -154,20 +180,11 @@ class ProductTileWrapper extends React.PureComponent<props> {
             />
           )}
           {isUnavailable && <RemoveSoldOut pageView={pageView} labels={labels} />}
-          {!isBagPageSflSection && isBagPage && isDeleting && (
-            <div className="delete-msg">
-              <Image alt="closeIcon" className="tick-icon" src={getIconPath('circle-check-fill')} />
-              <BodyCopy
-                component="span"
-                fontSize="fs12"
-                textAlign="center"
-                fontFamily="secondary"
-                fontWeight="extrabold"
-              >
-                Your item has been deleted.
-                {labels.itemDeleted}
-              </BodyCopy>
-            </div>
+          {this.renderItemDeleteSuccessMsg(
+            isBagPageSflSection,
+            isBagPage,
+            isDeleting,
+            labels.itemDeleted
           )}
           {orderItemsView}
         </>

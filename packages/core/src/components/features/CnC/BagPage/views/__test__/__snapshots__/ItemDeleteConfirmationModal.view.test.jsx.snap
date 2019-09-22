@@ -40,7 +40,6 @@ exports[`ItemDeleteConfirmation Modal should render modal when open true 1`] = `
     >
       <Styled(Button)
         className="item-delete-confirmation-button"
-        data-locator="addedtobag-btncheckout"
         onClick={[MockFunction]}
       >
         <Styled(BodyCopy)
@@ -64,7 +63,6 @@ exports[`ItemDeleteConfirmation Modal should render modal when open true 1`] = `
       </Styled(Button)>
       <Styled(Button)
         className="item-delete-button confirm-button"
-        data-locator="addedtobag-btncheckout"
         onClick={[MockFunction]}
       >
         <Styled(BodyCopy)
@@ -131,7 +129,6 @@ exports[`ItemDeleteConfirmation Modal should render no modal when isOpen is fals
     >
       <Styled(Button)
         className="item-delete-confirmation-button"
-        data-locator="addedtobag-btncheckout"
         onClick={[MockFunction]}
       >
         <Styled(BodyCopy)
@@ -155,7 +152,6 @@ exports[`ItemDeleteConfirmation Modal should render no modal when isOpen is fals
       </Styled(Button)>
       <Styled(Button)
         className="item-delete-button confirm-button"
-        data-locator="addedtobag-btncheckout"
         onClick={[MockFunction]}
       >
         <Styled(BodyCopy)

@@ -182,6 +182,12 @@ export const getLabelsCartItemTile = state => {
     'checkout'
   );
 
+  const itemDeleted = getLabelValue(
+    state.Labels,
+    'lbl_msg_itemDeleteSuccess',
+    'bagPage',
+    'checkout'
+  );
   // const {
   //   bag: {
   //     bagOverview: { lbl_error_please: pleaseText, lbl_error_remove: remove },
@@ -226,6 +232,7 @@ export const getLabelsCartItemTile = state => {
     saveForLaterLink,
     sflMaxLimitError,
     moveToBagLink,
+    itemDeleted,
   };
 };
 
