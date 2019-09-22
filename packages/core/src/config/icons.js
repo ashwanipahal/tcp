@@ -72,6 +72,7 @@ export default {
   'boy-icon': '/static/images/boy-icon.png',
   star: '/static/images/star.svg',
   'star-filled': '/static/images/star-filled.svg',
+  'star-icon': '/static/images/star.png',
   'circle-check': '/static/images/circle-check.svg',
   'dot-email-orange': '/static/images/dot-email-orange.svg',
   'dot-email-blue': '/static/images/dot-email-blue.svg',

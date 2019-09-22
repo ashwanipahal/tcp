@@ -12,7 +12,7 @@ export default {
   isGym: true,
   basicInfo: {
     id: '110850',
-    storeName: 'fulton street',
+    storeName: '86th Street - 3rd Ave.',
     isDefault: '1',
     address: {
       addressLine1: '471-485 fulton street',
