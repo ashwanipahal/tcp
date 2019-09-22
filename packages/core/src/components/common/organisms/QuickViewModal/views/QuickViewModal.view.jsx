@@ -32,7 +32,7 @@ class QuickViewModal extends React.Component {
         // dataLocator={getLocator('pdp_full_size_image_modal')}
         //  closeIconDataLocator={getLocator('pdp_zoomed_image_closed_btn')}
         heading="ADD TO BAG"
-        widthConfig={{ small: '375px', medium: '600px', large: '702px' }}
+        widthConfig={{ small: '375px', medium: '600px', large: '704px' }}
         heightConfig={{ height: '95%' }}
         fixedWidth
         inheritedStyles={customHeaderStyle}

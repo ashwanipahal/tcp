@@ -1,6 +1,6 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import { Row, Col, BodyCopy, Anchor } from '../../../../../atoms';
+import { BodyCopy, Anchor } from '../../../../../atoms';
 import withStyles from '../../../../../hoc/withStyles';
 import styles, { customPriceStyles } from '../styles/ProductCustomizeFormPart.style';
 import ProductPrice from '../../../../../../features/browse/ProductDetail/molecules/ProductPrice/ProductPrice';
@@ -45,26 +45,38 @@ class ProductCustomizeFormPart extends React.Component {
     } = this.props;
 
     const { currentColorEntry } = this.state;
-
     const imageUrl = currentColorEntry
-      ? productInfo.imagesByColor[currentColorEntry.color.name].basicImageUrl
+      ? productInfo.imagesByColor[currentColorEntry.color.name] &&
+        productInfo.imagesByColor[currentColorEntry.color.name].basicImageUrl
       : null;
     const prices = productInfo && getPrices(productInfo, currentColorEntry.color.name);
     const currentColorPdpUrl =
       currentColorEntry && currentColorEntry.pdpUrl ? currentColorEntry.pdpUrl : productInfo.pdpUrl;
+    const productPriceProps = {
+      currencySymbol: currency,
+      currencyExchange,
+      priceCurrency,
+      isItemPartNumberVisible: false,
+      ...prices,
+      isCanada,
+      inheritedStyles: customPriceStyles,
+      customFonts: { listPriceFont: 'fs14' },
+      isPlcc: isHasPlcc,
+      isInternationalShipping,
+    };
 
     return (
       <div className={className}>
-        <Row>
-          <Col className="image-wrapper" colSize={{ small: 6, medium: 4, large: 4 }}>
+        <div className="product-customize-form-container">
+          <div className="image-wrapper">
             <img alt={productInfo.name} src={imageUrl} />
             <Anchor className="link-redirect" to={currentColorPdpUrl} asPath={currentColorPdpUrl}>
               <BodyCopy className="product-link" fontSize="fs14" fontFamily="secondary">
                 View Product Details
               </BodyCopy>
             </Anchor>
-          </Col>
-          <Col colSize={{ small: 6, medium: 4, large: 8 }}>
+          </div>
+          <div className="product-detail">
             <div className="product-details-card-container">
               <BodyCopy
                 fontSize="fs18"
@@ -74,26 +86,16 @@ class ProductCustomizeFormPart extends React.Component {
               >
                 {productInfo.name}
               </BodyCopy>
-              <ProductPrice
-                currencySymbol={currency}
-                currencyExchange={currencyExchange}
-                priceCurrency={priceCurrency}
-                isItemPartNumberVisible={false}
-                {...prices}
-                isCanada={isCanada}
-                inheritedStyles={customPriceStyles}
-                customFonts={{ listPriceFont: 'fs14' }}
-                isPlcc={isHasPlcc}
-                isInternationalShipping={isInternationalShipping}
-              />
+              <ProductPrice {...productPriceProps} />
             </div>
+
             <ProductAddToBagContainer
               onChangeColor={this.onChangeColor}
               plpLabels={plpLabels}
               currentProduct={productInfo}
             />
-          </Col>
-        </Row>
+          </div>
+        </div>
       </div>
     );
   }

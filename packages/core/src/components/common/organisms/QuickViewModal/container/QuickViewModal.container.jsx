@@ -12,8 +12,6 @@ import {
 } from '../../../../features/browse/ProductDetail/container/ProductDetail.selectors';
 
 class QuickViewModalContainer extends React.PureComponent {
-  componentDidMount() {}
-
   render() {
     const { isModalOpen, closeQuickViewModalAction, productInfo, ...otherProps } = this.props;
     return (
