@@ -20,6 +20,7 @@ const Header = ({
   isLoggedIn,
   cartItemCount,
   labels,
+  openMiniBagDispatch,
   totalItems,
 }) => {
   return (
@@ -41,6 +42,7 @@ const Header = ({
         isLoggedIn={isLoggedIn}
         cartItemCount={cartItemCount}
         totalItems={totalItems}
+        openMiniBagDispatch={openMiniBagDispatch}
       />
       <HeaderPromo
         mobileMarkup
@@ -67,6 +69,7 @@ Header.propTypes = {
   openTrackOrderOverlay: PropTypes.func.isRequired,
   isLoggedIn: PropTypes.bool.isRequired,
   cartItemCount: PropTypes.func.isRequired,
+  openMiniBagDispatch: PropTypes.func.isRequired,
   labels: PropTypes.shape({}),
   totalItems: PropTypes.string,
 };

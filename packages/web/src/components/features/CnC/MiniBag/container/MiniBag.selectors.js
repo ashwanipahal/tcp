@@ -16,6 +16,10 @@ export const getCartItemsSflError = state => {
   return state.CartPageReducer.getIn(['uiFlags', 'cartItemSflError']);
 };
 
+export const getIsMiniBagOpen = state => {
+  return state.Header.miniBag;
+};
+
 export const getLabelsMiniBag = state => {
   return {
     createAccount: getLabelValue(state.Labels, 'lbl_miniBag_createAccount', 'minibag', 'global'),

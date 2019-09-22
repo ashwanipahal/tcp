@@ -30,6 +30,7 @@ import AddEditCreditCardSaga from '@tcp/core/src/components/features/account/Add
 import CartPageSaga from '@tcp/core/src/components/features/CnC/CartItemTile/container/CartItemTile.saga';
 import ProductListingSaga from '@tcp/core/src/components/features/browse/ProductListing/container/ProductListing.saga';
 import ProductDetailSaga from '@tcp/core/src/components/features/browse/ProductDetail/container/ProductDetail.saga';
+import QuickViewSaga from '@tcp/core/src/components/common/organisms/QuickViewModal/container/QuickViewModal.saga';
 import CouponSaga from '@tcp/core/src/components/features/CnC/common/organism/CouponAndPromos/container/Coupon.saga';
 import CheckoutSaga from '@tcp/core/src/components/features/CnC/Checkout/container/Checkout.saga';
 import BagPageSaga from '@tcp/core/src/components/features/CnC/BagPage/container/BagPage.saga';
@@ -110,6 +111,7 @@ export default function* rootSaga() {
     SearchPageSaga(),
     MyFavoriteStoreSaga(),
     PickupStoreSaga(),
+    QuickViewSaga(),
     PointsClaimSaga(),
   ]);
 }
