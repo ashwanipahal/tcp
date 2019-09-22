@@ -1,0 +1,71 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`EarnPointsVanilla component should renders correctly 1`] = `
+<Fragment>
+  <Styled(View)>
+    <Styled(View)>
+      <DetailedEarnExtraPointsTile
+        handleComponentChange={[Function]}
+        key="0"
+        labels={Object {}}
+        onViewActivityDetails={[Function]}
+        viewAll={true}
+        waysToEarnRow={
+          Object {
+            "activityCode": "AppDownload",
+            "activityTitle": "Earn 5 Points",
+            "description": "Download & Log in to our App",
+            "displayOrder": 1,
+            "iconImage": "/wcsstore/static/images/download-app.jpg",
+          }
+        }
+      />
+    </Styled(View)>
+    <Styled(View)>
+      <DetailedEarnExtraPointsTile
+        handleComponentChange={[Function]}
+        key="1"
+        labels={Object {}}
+        onViewActivityDetails={[Function]}
+        viewAll={true}
+        waysToEarnRow={
+          Object {
+            "activityCode": "AppDownload",
+            "activityTitle": "Earn 5 Points",
+            "description": "Download & Log in to our App",
+            "displayOrder": 1,
+            "iconImage": "/wcsstore/static/images/download-app.jpg",
+          }
+        }
+      />
+    </Styled(View)>
+  </Styled(View)>
+  <Styled(View)>
+    <Styled(Anchor)
+      accessibilityLabel=""
+      anchorVariation="primary"
+      colorName={null}
+      customStyle={Object {}}
+      dataLocator="earn-points-mpr-link"
+      fontSizeVariation="medium"
+      locator=""
+      noLink={true}
+      onPress={[Function]}
+      text="lbl_common_check_here"
+      underline={true}
+      visible={false}
+    />
+    <Styled(BodyCopy)
+      accessibilityText=""
+      component="p"
+      dataLocator="earn-points-mpr-text"
+      fontFamily="secondary"
+      fontSize="fs14"
+      margin={null}
+      numberOfLines={null}
+      text="lbl_common_extra_ppoints_terms_conditions"
+      textDecoration={null}
+    />
+  </Styled(View)>
+</Fragment>
+`;

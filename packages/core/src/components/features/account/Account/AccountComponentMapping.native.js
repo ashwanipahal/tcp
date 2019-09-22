@@ -3,7 +3,7 @@ import PaymentViewContainer from '../Payment/container/Payment.container';
 import PlaceRewardsContainer from '../PlaceRewards/container/PlaceRewards.container';
 import AccountOverviewViewContainer from '../AccountOverview/container/AccountOverview.container';
 import MyProfile from '../MyProfile/container/MyProfile.container';
-import Wallet from '../Wallet/container/Wallet.container';
+import Wallet from '../ExtraPoints/container/ExtraPoints.container';
 import PointHistoryPage from '../PointHistory';
 
 const AccountComponentNativeMapping = {
@@ -13,6 +13,7 @@ const AccountComponentNativeMapping = {
   accountOverview: AccountOverviewViewContainer,
   profile: MyProfile,
   myWalletPageMobile: Wallet,
+  earnExtraPointsPageMobile: Wallet,
   pointHistoryPageMobile: PointHistoryPage,
 };
 

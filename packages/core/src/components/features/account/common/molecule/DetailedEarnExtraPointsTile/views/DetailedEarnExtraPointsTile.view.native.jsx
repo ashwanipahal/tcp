@@ -49,12 +49,14 @@ export class DetailedEarnExtraPointsTile extends React.PureComponent {
     labels: PropTypes.shape({}),
     handleComponentChange: PropTypes.func,
     waysToEarnRow: PropTypes.shape({}),
+    viewAll: PropTypes.bool,
   };
 
   static defaultProps = {
     labels: {},
     handleComponentChange: () => {},
     waysToEarnRow: {},
+    viewAll: false,
   };
 
   boxWithShadow = {
@@ -66,11 +68,10 @@ export class DetailedEarnExtraPointsTile extends React.PureComponent {
   };
 
   render() {
-    const { waysToEarnRow, handleComponentChange } = this.props;
-
+    const { waysToEarnRow, viewAll, handleComponentChange } = this.props;
     return (
       <TileWrapper style={this.boxWithShadow}>
-        <Anchor onPress={() => handleComponentChange('accountOverviewMobile')}>
+        <Anchor onPress={() => handleComponentChange('earnExtraPointsPageMobile')}>
           <EarnExtraPointsTileImage>
             <ImageSize source={sourceMap[waysToEarnRow.activityCode]} />
           </EarnExtraPointsTileImage>
@@ -86,7 +87,7 @@ export class DetailedEarnExtraPointsTile extends React.PureComponent {
           <EarnPointDesc>
             <BodyCopy
               component="p"
-              fontSize="fs16"
+              fontSize={`${viewAll ? 'fs14' : 'fs16'}`}
               fontWeight="regular"
               fontFamily="secondary"
               textAlign="center"

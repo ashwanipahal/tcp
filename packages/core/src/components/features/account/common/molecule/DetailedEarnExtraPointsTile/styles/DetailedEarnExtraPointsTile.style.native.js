@@ -8,9 +8,8 @@ const ImageSize = styled.Image`
 const TileWrapper = styled.View`
   border: 1px solid ${props => props.theme.colorPalette.gray[300]};
   background: ${props => props.theme.colors.WHITE};
-  margin-left: ${props => props.theme.spacing.ELEM_SPACING.LRG};
-  margin-right: ${props => props.theme.spacing.ELEM_SPACING.LRG};
   border-bottom-width: 2px;
+  min-height: 275px;
   border-bottom-color: ${props =>
     props.theme.isGymboree
       ? props.theme.colorPalette.orange[800]
@@ -19,6 +18,8 @@ const TileWrapper = styled.View`
 
 const EarnPointDesc = styled.View`
   margin-bottom: ${props => props.theme.spacing.LAYOUT_SPACING.LRG};
+  margin-top: ${props =>
+    props.viewAll ? props.theme.spacing.LAYOUT_SPACING.LRG : props.theme.spacing.ELEM_SPACING.XXS};
   padding-left: ${props => props.theme.spacing.ELEM_SPACING.XS};
   padding-right: ${props => props.theme.spacing.ELEM_SPACING.XS};
 `;
