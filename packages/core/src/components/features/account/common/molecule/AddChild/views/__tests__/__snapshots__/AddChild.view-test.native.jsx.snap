@@ -3,19 +3,20 @@
 exports[`AddChildBirthday component should renders correctly 1`] = `
 <Fragment>
   <Styled(View)>
-    <Styled(View)>
-      <Styled(BodyCopy)
-        accessibilityText=""
-        dataLocator=""
-        fontFamily="secondary"
-        fontSize="fs16"
-        fontWeight="regular"
-        margin={null}
-        numberOfLines={null}
-        textDecoration={null}
-      />
-    </Styled(View)>
-    <Styled(View)>
+    <Styled(Styled(BodyCopy))
+      accessibilityText=""
+      dataLocator=""
+      fontFamily="secondary"
+      fontSize="fs16"
+      fontWeight="regular"
+      margin={null}
+      numberOfLines={null}
+      spacingStyles="margin-top-LRG margin-left-LRG margin-bottom-LRG"
+      textDecoration={null}
+    />
+    <Styled(View)
+      spacingStyles="margin-left-LRG margin-right-LRG"
+    >
       <Field
         component={
           Object {
@@ -126,7 +127,9 @@ exports[`AddChildBirthday component should renders correctly 1`] = `
           onValueChange={[Function]}
           variation="secondary"
         />
-        <Styled(View)>
+        <Styled(View)
+          spacingStyles="margin-top-SM"
+        >
           <Field
             component={
               Object {
@@ -354,7 +357,9 @@ exports[`AddChildBirthday component should renders correctly 1`] = `
           onValueChange={[Function]}
           variation="secondary"
         />
-        <Styled(View)>
+        <Styled(View)
+          spacingStyles="margin-top-SM"
+        >
           <Field
             component={
               Object {
@@ -407,18 +412,17 @@ exports[`AddChildBirthday component should renders correctly 1`] = `
         </Styled(View)>
       </Styled(View)>
     </Styled(View)>
-    <Styled(View)>
-      <Styled(BodyCopy)
-        accessibilityText=""
-        dataLocator=""
-        fontFamily="secondary"
-        fontSize="fs16"
-        fontWeight="regular"
-        margin={null}
-        numberOfLines={null}
-        textDecoration={null}
-      />
-    </Styled(View)>
+    <Styled(Styled(BodyCopy))
+      accessibilityText=""
+      dataLocator=""
+      fontFamily="secondary"
+      fontSize="fs16"
+      fontWeight="regular"
+      margin={null}
+      numberOfLines={null}
+      spacingStyles="margin-top-LRG margin-left-LRG margin-bottom-LRG"
+      textDecoration={null}
+    />
     <Styled(View)>
       <Styled(View)>
         <Field
@@ -521,19 +525,18 @@ exports[`AddChildBirthday component should renders correctly 1`] = `
         />
       </Styled(View)>
     </Styled(View)>
-    <Styled(View)>
-      <Styled(BodyCopy)
-        accessibilityText=""
-        dataLocator=""
-        fontFamily="secondary"
-        fontSize="fs14"
-        fontWeight="regular"
-        margin={null}
-        numberOfLines={null}
-        text="undefined "
-        textDecoration={null}
-      />
-    </Styled(View)>
+    <Styled(Styled(BodyCopy))
+      accessibilityText=""
+      dataLocator=""
+      fontFamily="secondary"
+      fontSize="fs14"
+      fontWeight="regular"
+      margin={null}
+      numberOfLines={null}
+      spacingStyles="margin-right-LRG margin-left-LRG"
+      text="undefined "
+      textDecoration={null}
+    />
     <Styled(View)>
       <Field
         component={[Function]}
@@ -573,7 +576,9 @@ exports[`AddChildBirthday component should renders correctly 1`] = `
       />
     </Styled(View)>
   </Styled(View)>
-  <Styled(View)>
+  <Styled(View)
+    spacingStyles="margin-top-XXL"
+  >
     <Styled(WithTheme(CustomButton))
       buttonVariation="variable-width"
       color="white"
@@ -582,7 +587,9 @@ exports[`AddChildBirthday component should renders correctly 1`] = `
       type="submit"
     />
   </Styled(View)>
-  <Styled(View)>
+  <Styled(View)
+    spacingStyles="margin-top-MED margin-bottom-XL"
+  >
     <Styled(WithTheme(CustomButton))
       buttonVariation="variable-width"
       fill="WHITE"

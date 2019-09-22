@@ -59,18 +59,20 @@ class BirthdaySavingsList extends PureComponent {
     if (status !== prevProps.status) {
       if (status === 'success') {
         this.closeRemoveModal();
-        this.closeAddModal();
+        this.toggleAddModal();
       } else toastMessage(message);
     }
   }
 
   /**
-   * @function showAddModal
-   * @description This function will handle showing of add Children Birthday Confirmation Modal
+   * @function toggleAddModal
+   * @description This function will handle toggling of add Children Birthday Confirmation Modal
    */
-  showAddModal = () => {
+  toggleAddModal = () => {
+    const { addModal } = this.state;
+
     this.setState({
-      addModal: true,
+      addModal: !addModal,
     });
   };
 
@@ -86,15 +88,15 @@ class BirthdaySavingsList extends PureComponent {
     });
   };
 
-  /**
-   * @function closeAddModal
-   * @description This function will handle closing of add Children Birthday Confirmation Modal
-   */
-  closeAddModal = () => {
-    this.setState({
-      addModal: false,
-    });
-  };
+  // /**
+  //  * @function closeAddModal
+  //  * @description This function will handle closing of add Children Birthday Confirmation Modal
+  //  */
+  // closeAddModal = () => {
+  //   this.setState({
+  //     addModal: false,
+  //   });
+  // };
 
   /**
    * @function closeRemoveModal
@@ -160,7 +162,7 @@ class BirthdaySavingsList extends PureComponent {
                     <EmptyBirthdayCard
                       labels={labels}
                       view={view}
-                      showAddModal={this.showAddModal}
+                      showAddModal={this.toggleAddModal}
                     />
                   )}
                 </WrapItem>
@@ -173,7 +175,7 @@ class BirthdaySavingsList extends PureComponent {
               birthYearOptionsMap={childOptions.yearsMap}
               timestamp={new Date()}
               childOptions={childOptions.genderMap}
-              closeAddModal={this.closeAddModal}
+              closeAddModal={this.toggleAddModal}
               onSubmit={addChildBirthday}
               addChildBirthdayLabels={labels}
             />

@@ -15,16 +15,6 @@ const itemStyle = {
   color: 'black',
 };
 
-const InformationHeaderView = styled.View`
-  margin: ${props => props.theme.spacing.ELEM_SPACING.LRG};
-`;
-
-const FieldTopMarginWrapper = styled.View`
-  margin: 0 ${props => props.theme.spacing.ELEM_SPACING.LRG};
-`;
-const HiddenStateWrapper = styled.View`
-  margin-top: ${props => props.theme.spacing.ELEM_SPACING.SM};
-`;
 const CheckboxMarginWrapper = styled.View`
   margin: ${props => props.theme.spacing.ELEM_SPACING.MED}
     ${props => props.theme.spacing.ELEM_SPACING.LRG};
@@ -34,7 +24,6 @@ const BirthdayContainer = styled.View`
   display: flex;
   flex-direction: row;
   justify-content: space-between;
-
   margin: ${props => (props.chooseGender ? props.theme.spacing.ELEM_SPACING.MED : 0)}
     ${props => props.theme.spacing.ELEM_SPACING.LRG};
 `;
@@ -51,33 +40,12 @@ const StyledAnchorWrapper = styled.View`
   margin-left: ${props => props.theme.spacing.LAYOUT_SPACING.LRG};
 `;
 
-const SaveButtonWrapper = styled.View`
-  margin-top: ${props => props.theme.spacing.ELEM_SPACING.XXL};
-`;
-
-const CancelButtonWrapper = styled.View`
-  margin-top: ${props => props.theme.spacing.ELEM_SPACING.MED};
-  margin-bottom: ${props => props.theme.spacing.ELEM_SPACING.XL};
-`;
-const CheckBoxWrapper = styled.View`
-  display: flex;
-  flex-direction: row;
-  margin: ${props => props.theme.spacing.ELEM_SPACING.MED}
-    ${props => props.theme.spacing.ELEM_SPACING.LRG};
-  width: 80%;
-`;
 export {
   AddChildFormWrapper,
   dropDownStyle,
   itemStyle,
-  InformationHeaderView,
-  FieldTopMarginWrapper,
   BirthdayContainer,
   InputFieldHalf,
   StyledAnchorWrapper,
-  SaveButtonWrapper,
-  CancelButtonWrapper,
   CheckboxMarginWrapper,
-  HiddenStateWrapper,
-  CheckBoxWrapper,
 };

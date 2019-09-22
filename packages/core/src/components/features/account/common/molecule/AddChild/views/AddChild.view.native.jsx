@@ -4,26 +4,24 @@ import { reduxForm, Field, change } from 'redux-form';
 import InputCheckbox from '@tcp/core/src/components/common/atoms/InputCheckbox';
 import TextBox from '@tcp/core/src/components/common/atoms/TextBox';
 import Button from '@tcp/core/src/components/common/atoms/Button';
-import BodyCopy from '@tcp/core/src/components/common/atoms/BodyCopy';
 import Anchor from '@tcp/core/src/components/common/atoms/Anchor';
 import createValidateMethod from '@tcp/core/src/utils/formValidation/createValidateMethod';
 import getStandardConfig from '@tcp/core/src/utils/formValidation/validatorStandardConfig';
+import {
+  BodyCopyWithSpacing,
+  ViewWithSpacing,
+} from '@tcp/core/src/components/common/atoms/styledWrapper';
 import { UrlHandler } from '../../../../../../../utils/utils.app';
 
 import DropDown from '../../../../../../common/atoms/DropDown/views/DropDown.native';
 import {
   AddChildFormWrapper,
-  InformationHeaderView,
-  FieldTopMarginWrapper,
   BirthdayContainer,
   InputFieldHalf,
   dropDownStyle,
   itemStyle,
   StyledAnchorWrapper,
-  SaveButtonWrapper,
-  CancelButtonWrapper,
   CheckboxMarginWrapper,
-  HiddenStateWrapper,
 } from '../styles/AddChild.style.native';
 import endpoints from '../../../externalEndpoints';
 
@@ -76,15 +74,14 @@ export class AddChildBirthdayForm extends PureComponent {
     return (
       <>
         <AddChildFormWrapper>
-          <InformationHeaderView>
-            <BodyCopy
-              fontFamily="secondary"
-              fontSize="fs16"
-              fontWeight="regular"
-              text={addChildBirthdayLabels.lbl_add_child_child_information}
-            />
-          </InformationHeaderView>
-          <FieldTopMarginWrapper>
+          <BodyCopyWithSpacing
+            fontFamily="secondary"
+            fontSize="fs16"
+            fontWeight="regular"
+            text={addChildBirthdayLabels.lbl_add_child_child_information}
+            spacingStyles="margin-top-LRG margin-left-LRG margin-bottom-LRG"
+          />
+          <ViewWithSpacing spacingStyles="margin-left-LRG margin-right-LRG">
             <Field
               label={addChildBirthdayLabels.lbl_add_child_child_name}
               name="childName"
@@ -92,7 +89,7 @@ export class AddChildBirthdayForm extends PureComponent {
               component={TextBox}
               dataLocator="childNameField"
             />
-          </FieldTopMarginWrapper>
+          </ViewWithSpacing>
           <BirthdayContainer>
             <InputFieldHalf>
               <Field
@@ -107,7 +104,7 @@ export class AddChildBirthdayForm extends PureComponent {
                 variation="secondary"
                 bgColor
               />
-              <HiddenStateWrapper>
+              <ViewWithSpacing spacingStyles="margin-top-SM">
                 <Field
                   component={TextBox}
                   title=""
@@ -115,7 +112,7 @@ export class AddChildBirthdayForm extends PureComponent {
                   id="userBirthMonth"
                   name="userBirthMonth"
                 />
-              </HiddenStateWrapper>
+              </ViewWithSpacing>
             </InputFieldHalf>
             <InputFieldHalf birthYear>
               <Field
@@ -153,19 +150,18 @@ export class AddChildBirthdayForm extends PureComponent {
                 variation="secondary"
                 bgColor
               />
-              <HiddenStateWrapper>
+              <ViewWithSpacing spacingStyles="margin-top-SM">
                 <Field component={TextBox} title="" type="hidden" id="gender" name="gender" />
-              </HiddenStateWrapper>
+              </ViewWithSpacing>
             </InputFieldHalf>
           </BirthdayContainer>
-          <InformationHeaderView>
-            <BodyCopy
-              fontFamily="secondary"
-              fontSize="fs16"
-              fontWeight="regular"
-              text={addChildBirthdayLabels.lbl_add_child_parent_digital_signature}
-            />
-          </InformationHeaderView>
+          <BodyCopyWithSpacing
+            fontFamily="secondary"
+            fontSize="fs16"
+            fontWeight="regular"
+            text={addChildBirthdayLabels.lbl_add_child_parent_digital_signature}
+            spacingStyles="margin-top-LRG margin-left-LRG margin-bottom-LRG"
+          />
           <BirthdayContainer>
             <InputFieldHalf>
               <Field
@@ -186,17 +182,16 @@ export class AddChildBirthdayForm extends PureComponent {
               />
             </InputFieldHalf>
           </BirthdayContainer>
-          <FieldTopMarginWrapper>
-            <BodyCopy
-              fontFamily="secondary"
-              fontSize="fs14"
-              fontWeight="regular"
-              text={`${addChildBirthdayLabels.lbl_add_child_timestamp} ${timestamp.toLocaleString(
-                'en-US',
-                AddChildBirthdayForm.timestampFormatOptions
-              )}`}
-            />
-          </FieldTopMarginWrapper>
+          <BodyCopyWithSpacing
+            fontFamily="secondary"
+            fontSize="fs14"
+            fontWeight="regular"
+            text={`${addChildBirthdayLabels.lbl_add_child_timestamp} ${timestamp.toLocaleString(
+              'en-US',
+              AddChildBirthdayForm.timestampFormatOptions
+            )}`}
+            spacingStyles="margin-right-LRG margin-left-LRG"
+          />
           <CheckboxMarginWrapper>
             <Field
               id="acceptAddChildAgreement"
@@ -209,23 +204,6 @@ export class AddChildBirthdayForm extends PureComponent {
               }`}
             />
           </CheckboxMarginWrapper>
-          {/* <CheckBoxWrapper>
-            <Field
-              name="hasGiftWrapping"
-              component={InputCheckbox}
-              dataLocator="hide-show-checkbox"
-              enableSuccessCheck={false}
-              onChange={this.handleChange}
-            />
-            <BodyCopy
-              fontFamily="secondary"
-              fontSize="fs14"
-              fontWeight="extrabold"
-              text={`${addChildBirthdayLabels.lbl_add_child_terms_agreement}${
-                addChildBirthdayLabels.lbl_add_child_terms_agreement_second
-              }`}
-            />
-          </CheckBoxWrapper> */}
           <StyledAnchorWrapper>
             <Anchor
               fontSizeVariation="medium"
@@ -251,7 +229,7 @@ export class AddChildBirthdayForm extends PureComponent {
           </StyledAnchorWrapper>
         </AddChildFormWrapper>
 
-        <SaveButtonWrapper>
+        <ViewWithSpacing spacingStyles="margin-top-XXL">
           <Button
             fill="BLUE"
             type="submit"
@@ -260,15 +238,15 @@ export class AddChildBirthdayForm extends PureComponent {
             buttonVariation="variable-width"
             text={addChildBirthdayLabels.lbl_add_child_save}
           />
-        </SaveButtonWrapper>
-        <CancelButtonWrapper>
+        </ViewWithSpacing>
+        <ViewWithSpacing spacingStyles="margin-top-MED margin-bottom-XL">
           <Button
             fill="WHITE"
             buttonVariation="variable-width"
             onPress={closeAddModal}
             text={addChildBirthdayLabels.lbl_add_child_cancel}
           />
-        </CancelButtonWrapper>
+        </ViewWithSpacing>
       </>
     );
   }
