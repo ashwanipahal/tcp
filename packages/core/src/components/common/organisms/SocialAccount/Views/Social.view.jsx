@@ -129,27 +129,38 @@ class Socialview extends React.PureComponent {
                 className="social-accounts-alignment"
               >
                 {getLabelValue(labels, 'lbl_prefrence_social_points_text_4')}
+                <BodyCopy fontSize="fs14" fontFamily="secondary" textAlign="center">
+                  {getLabelValue(labels, 'lbl_prefrence_social_points_text_5')}
+                </BodyCopy>
               </BodyCopy>
 
-              <Button
-                buttonVariation="fixed-width"
-                fill="BLUE"
-                type="submit"
-                className="button-style"
-                onClick={this.viewAll}
+              <BodyCopy
+                fontSize="fs14"
+                fontFamily="secondary"
+                textAlign="center"
+                className="social-accounts-alignment"
               >
-                {getLabelValue(labels, 'lbl_prefrence_social_points_modal_viewall_btn')}
-              </Button>
+                <Button
+                  buttonVariation="fixed-width"
+                  fill="BLUE"
+                  type="submit"
+                  className="button-style"
+                  onClick={this.viewAll}
+                >
+                  {getLabelValue(labels, 'lbl_prefrence_social_points_modal_viewall_btn')}
+                </Button>
 
-              <Button
-                buttonVariation="fixed-width"
-                fill="WHITE"
-                type="submit"
-                className="button-style"
-                onClick={this.onClose}
-              >
-                {getLabelValue(labels, 'lbl_prefrence_social_points_modal_close_btn')}
-              </Button>
+                <Button
+                  buttonVariation="fixed-width"
+                  fill="WHITE"
+                  type="submit"
+                  className="button-style"
+                  onClick={this.onClose}
+                  component="div"
+                >
+                  {getLabelValue(labels, 'lbl_prefrence_social_points_modal_close_btn')}
+                </Button>
+              </BodyCopy>
             </Modal>
           )}
         </li>

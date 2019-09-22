@@ -1,6 +1,5 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import Immutable from 'seamless-immutable';
 import { Anchor } from '../../../atoms';
 import withStyles from '../../../hoc/withStyles';
 import config from '../config';
@@ -92,13 +91,10 @@ class ProductImages extends React.Component {
       isMobile,
     } = this.props;
     const { currentImageIndex } = this.state;
-
-    const thumbnailImagesPaths = Immutable.asMutable(
-      images.map(image => ({
-        imageUrl: image.iconSizeImageUrl,
-        imageName: productName,
-      }))
-    );
+    const thumbnailImagesPaths = images.map(image => ({
+      imageUrl: image.iconSizeImageUrl,
+      imageName: productName,
+    }));
     const imageSizePropertyName = isShowBigSizeImages ? 'bigSizeImageUrl' : 'regularSizeImageUrl';
 
     const { CAROUSEL_OPTIONS } = config;
