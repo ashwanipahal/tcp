@@ -25,21 +25,20 @@ class ExtraPointsDetailModal extends React.PureComponent {
     waysToEarnRow: {},
   };
 
+  onRequestClosePopup = () => {
+    const { onRequestClose } = this.props;
+    onRequestClose(null);
+  };
+
   /**
    * This function use for return the JSX of the component
    * can be passed in the component.
    * @param waysToEarnRow - this is waysToEarnRow data used for show Activity details
    */
 
-  renderModal = () => {
+  getModalMarkup = () => {
     const { className, waysToEarnRow } = this.props;
     const activeActivity = waysToEarnRow.activityModal;
-    let activityModalLongDescription = [];
-    if (activeActivity.activityModalLongDescription) {
-      activityModalLongDescription = activeActivity.activityModalLongDescription.split(
-        '<br/><br/>'
-      );
-    }
 
     return (
       <div className={className}>
@@ -67,17 +66,7 @@ class ExtraPointsDetailModal extends React.PureComponent {
         >
           {activeActivity.activityModalShortTitle}
         </BodyCopy>
-        <BodyCopy
-          component="div"
-          fontSize="fs14"
-          fontWeight="regular"
-          fontFamily="secondary"
-          textAlign="center"
-          className="elem-mb-MED"
-          data-locator={`earnPointsModal_${activeActivity.activityModalAction}_longDescription`}
-        >
-          {activityModalLongDescription[0]}
-        </BodyCopy>
+
         <BodyCopy
           component="div"
           fontSize="fs14"
@@ -87,7 +76,7 @@ class ExtraPointsDetailModal extends React.PureComponent {
           className="elem-mb-MED"
           data-locator={`earnPointsModal_${activeActivity.activityModalAction}_ShortDesc`}
         >
-          <RichText richTextHtml={activityModalLongDescription[1]} />
+          <RichText richTextHtml={activeActivity.activityModalLongDescription} />
         </BodyCopy>
         <BodyCopy component="div" textAlign="center">
           <Button
@@ -110,19 +99,19 @@ class ExtraPointsDetailModal extends React.PureComponent {
    */
 
   render() {
-    const { openState, onRequestClose } = this.props;
+    const { openState } = this.props;
     return (
       <Modal
         isOpen={openState}
-        onRequestClose={onRequestClose}
+        onRequestClose={this.onRequestClosePopup}
         overlayClassName="TCPModal__Overlay"
         className="TCPModal__Content"
         maxWidth="500px"
-        minHeight="420px"
+        minHeight="450px"
         fixedWidth
         closeIconDataLocator="ExtraPointsDetailModal_crossIcon"
       >
-        {this.renderModal()}
+        {this.getModalMarkup()}
       </Modal>
     );
   }

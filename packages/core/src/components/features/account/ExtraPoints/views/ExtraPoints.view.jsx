@@ -58,9 +58,6 @@ const EarnPoints = ({ className, labels, waysToEarn, onViewActivityDetails }) =>
                       waysToEarnRow={item}
                       onViewActivityDetails={onViewActivityDetails}
                       labels={labels}
-                      offsetRight={{
-                        small: true,
-                      }}
                       viewAll
                     />
                   </Col>

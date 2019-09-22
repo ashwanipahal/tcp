@@ -32,21 +32,10 @@ export class ExtraPointsContainer extends PureComponent {
    * can be passed in the component.
    * @param earnActivity - this is earnActivity data used for show Activity details
    */
-  onViewActivityDetails = earnActivity =>
+  handlePopupEarnPointsDetails = earnActivity =>
     this.setState({
       selectedActivity: earnActivity,
     });
-
-  /**
-   * This function use for close view Earn details for popup modal
-   * can be passed in the component.
-   * @param state - this is state data used for closed popup modal
-   */
-  onCloseEarnPointsDetails = () => {
-    this.setState({
-      selectedActivity: null,
-    });
-  };
 
   /**
    * @function render  Used to render the JSX of the component
@@ -62,13 +51,13 @@ export class ExtraPointsContainer extends PureComponent {
         <EarnPoints
           labels={labels}
           waysToEarn={waysToEarn}
-          onViewActivityDetails={this.onViewActivityDetails}
+          onViewActivityDetails={this.handlePopupEarnPointsDetails}
         />
         {selectedActivity && (
           <ExtraPointsDetailModal
             openState={selectedActivity}
             waysToEarnRow={selectedActivity}
-            onRequestClose={this.onCloseEarnPointsDetails}
+            onRequestClose={this.handlePopupEarnPointsDetails}
           />
         )}
       </>

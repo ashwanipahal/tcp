@@ -49,11 +49,6 @@ exports[`EarnPointsVanilla component should renders correctly 1`] = `
       <Styled(DetailedEarnExtraPointsTile)
         key="1"
         labels={Object {}}
-        offsetRight={
-          Object {
-            "small": true,
-          }
-        }
         onViewActivityDetails={[Function]}
         viewAll={true}
         waysToEarnRow={

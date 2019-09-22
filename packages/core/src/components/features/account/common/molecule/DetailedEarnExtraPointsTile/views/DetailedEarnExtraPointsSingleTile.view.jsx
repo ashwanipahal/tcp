@@ -35,7 +35,7 @@ export class DetailedEarnExtraPointsSingleTile extends React.PureComponent {
       <BodyCopy component="div" className={className}>
         <BodyCopy
           component="div"
-          className="tileWrapper FirstColImage"
+          className="tileWrapper firstColImage"
           onClick={() => onViewActivityDetails(waysToEarnRow)}
         >
           <BodyCopy component="div" className="earnExtraPointsTileImageSingle">
@@ -43,7 +43,7 @@ export class DetailedEarnExtraPointsSingleTile extends React.PureComponent {
           </BodyCopy>
           <BodyCopy component="div" className="earnExtraPointsTileTextMargin">
             <BodyCopy
-              className="ActivityTitleMargin"
+              className="activityTitleMargin"
               component="p"
               fontSize="fs16"
               fontWeight="black"
