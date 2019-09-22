@@ -244,8 +244,12 @@ class ShippingForm extends React.Component {
       shippingAddress,
       setDefaultAddressId,
       syncErrorsObject,
+      isVenmoPaymentInProgress,
     } = this.props;
     const { isEditing, modalType, modalState } = this.state;
+    const nextButtonText = isVenmoPaymentInProgress
+      ? getLabelValue(labels, 'lbl_shipping_reviewText', 'shipping', 'checkout')
+      : getLabelValue(labels, 'lbl_shipping_billingText', 'shipping', 'checkout');
     return (
       <>
         <CheckoutSectionTitleDisplay
@@ -353,12 +357,7 @@ class ShippingForm extends React.Component {
           <CheckoutFooter
             hideBackLink={!!orderHasPickUp}
             backLinkHandler={routeToPickupPage}
-            nextButtonText={getLabelValue(
-              labels,
-              'lbl_shipping_billingText',
-              'shipping',
-              'checkout'
-            )}
+            nextButtonText={nextButtonText}
             backLinkText={getLabelValue(
               labels,
               'lbl_shipping_backLinkText',

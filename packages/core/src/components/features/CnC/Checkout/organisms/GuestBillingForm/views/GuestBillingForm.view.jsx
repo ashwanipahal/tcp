@@ -128,7 +128,10 @@ class GuestBillingForm extends React.Component {
             </>
           ) : null}
           {paymentMethodId === CONSTANTS.PAYMENT_METHOD_VENMO && (
-            <VenmoPaymentButton className="venmo-container" />
+            <>
+              <h2>Venmo</h2>
+              <VenmoPaymentButton className="venmo-container" />
+            </>
           )}
         </div>
         <CheckoutFooter

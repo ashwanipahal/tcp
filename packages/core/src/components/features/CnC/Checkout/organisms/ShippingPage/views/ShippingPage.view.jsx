@@ -39,6 +39,7 @@ export default class ShippingPage extends React.PureComponent {
     labels: PropTypes.shape({}).isRequired,
     syncErrors: PropTypes.shape({}),
     shippingAddress: PropTypes.shape({}),
+    isVenmoPaymentInProgress: PropTypes.bool,
   };
 
   static defaultProps = {
@@ -62,6 +63,7 @@ export default class ShippingPage extends React.PureComponent {
     saveToAddressBook: false,
     syncErrors: {},
     shippingAddress: null,
+    isVenmoPaymentInProgress: false,
   };
 
   constructor(props) {
@@ -261,6 +263,7 @@ export default class ShippingPage extends React.PureComponent {
       address,
       syncErrors,
       shippingAddress,
+      isVenmoPaymentInProgress,
     } = this.props;
     const primaryAddressId = this.getPrimaryAddress();
     const { isAddNewAddress, isEditing, defaultAddressId } = this.state;
@@ -308,6 +311,7 @@ export default class ShippingPage extends React.PureComponent {
             setDefaultAddressId={this.setDefaultAddressId}
             syncErrorsObject={syncErrors}
             shippingAddress={shippingAddress}
+            isVenmoPaymentInProgress={isVenmoPaymentInProgress}
           />
         )}
       </>

@@ -71,21 +71,28 @@ export class VenmoPaymentButton extends Component {
     this.handleVenmoClickedError(err);
   };
 
-  handleVenmoClick = e => {
+  handleVenmoClick = () => {
     const {
       setVenmoData,
       onVenmoPaymentButtonClick,
       mode,
       isNonceNotExpired,
       setVenmoPaymentInProgress,
+      isRemoveOOSItems,
     } = this.props;
+    // Condition for OOS items in the bag, modal will open and proceed with regular checkout on continue cta trigger
+    if (isRemoveOOSItems) {
+      onVenmoPaymentButtonClick(mode);
+      setVenmoData({ loading: false });
+      this.disableVenmoButton(false);
+    }
     setVenmoData({ loading: true, error: null });
     setVenmoPaymentInProgress(true);
     if (venmoInstance && !isNonceNotExpired && this.canCallVenmoApi()) {
       this.venmoButtonRef.disable = true;
       this.fetchVenmoNonce();
     } else {
-      onVenmoPaymentButtonClick(mode, e);
+      onVenmoPaymentButtonClick(mode);
       setVenmoData({ loading: false });
       this.disableVenmoButton(false);
     }
@@ -249,6 +256,7 @@ VenmoPaymentButton.propTypes = {
   onVenmoPaymentButtonError: func,
   setVenmoPaymentInProgress: func,
   isNonceNotExpired: bool,
+  isRemoveOOSItems: bool,
 };
 
 VenmoPaymentButton.defaultProps = {
@@ -266,6 +274,7 @@ VenmoPaymentButton.defaultProps = {
   onVenmoPaymentButtonError: noop,
   setVenmoPaymentInProgress: noop,
   isNonceNotExpired: false,
+  isRemoveOOSItems: false,
 };
 
 export default withStyles(VenmoPaymentButton, styles);

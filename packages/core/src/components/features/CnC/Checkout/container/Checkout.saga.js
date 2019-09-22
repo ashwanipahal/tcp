@@ -677,7 +677,12 @@ function* submitShippingSection({ payload: { navigation, ...formData } }) {
     });
     yield call(getAddressList);
     yield call(getCardList);
-    redirectToBilling(navigation);
+    const isVenmoInProgress = yield select(selectors.isVenmoPaymentInProgress);
+    if (isVenmoInProgress) {
+      utility.routeToPage(CHECKOUT_ROUTES.reviewPage, { recalc: false });
+    } else {
+      redirectToBilling(navigation);
+    }
   } catch (err) {
     // throw getSubmissionError(store, 'submitShippingSection', err);
   }
