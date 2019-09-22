@@ -44,15 +44,15 @@ const styles = css`
   .delete-msg {
     border: solid 2px ${props => props.theme.colors.NOTIFICATION.SUCCESS};
     text-align: left;
-    padding: 10px;
+    padding: ${props => props.theme.spacing.ELEM_SPACING.SM};
     background: ${props => props.theme.colors.WHITE};
     display: flex;
     align-items: center;
-    margin-top: 12px;
+    margin-top: ${props => props.theme.spacing.ELEM_SPACING.SM};
     .tick-icon {
       height: 23px;
       width: 23px;
-      margin-right: 10px;
+      margin-right: ${props => props.theme.spacing.ELEM_SPACING.SM};
     }
   }
 

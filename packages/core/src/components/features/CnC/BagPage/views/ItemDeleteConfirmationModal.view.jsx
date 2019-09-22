@@ -49,7 +49,7 @@ const ItemDeleteConfirmationModal = ({
         <div className="button-container">
           <Button
             data-locator={getLocator('addedtobag_btncheckout')}
-            className="confirmation-button back-to-bag"
+            className="item-delete-confirmation-button"
             onClick={moveToSfl}
           >
             <BodyCopy
@@ -65,7 +65,7 @@ const ItemDeleteConfirmationModal = ({
           </Button>
           <Button
             data-locator={getLocator('addedtobag_btncheckout')}
-            className="confirmation-button confirm-checkout"
+            className="item-delete-button confirm-button"
             onClick={confirmRemoveCartItem}
           >
             <BodyCopy

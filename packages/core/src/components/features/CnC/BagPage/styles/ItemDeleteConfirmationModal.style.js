@@ -38,11 +38,11 @@ const styles = css`
 
   .button-container {
     display: flex;
-    margin-top: 48px;
+    margin-top: ${props => props.theme.spacing.ELEM_SPACING.XXXL};
     flex-direction: column;
   }
 
-  .confirmation-button {
+  .item-delete-button {
     flex: 1;
     height: 51px;
     background-color: ${props => props.theme.colors.PRIMARY.BLUE};
@@ -51,8 +51,8 @@ const styles = css`
     }
   }
 
-  .confirm-checkout {
-    margin-top: 24px;
+  .confirm-button {
+    margin-top: ${props => props.theme.spacing.ELEM_SPACING.LRG};
     background-color: ${props => props.theme.colors.WHITE};
     border: 1px solid ${props => props.theme.colors.PRIMARY.GRAY};
     &:hover {
