@@ -30,7 +30,7 @@ const labels = {
  * @param {upperCase} date determines case
  */
 
-export const getDateInformation = (date, upperCase) => {
+export const getDateInformation = (date, upperCase, translateInTo = 'en-US') => {
   const currentDate = date ? new Date(date) : new Date();
   return {
     // added a case for upper and lower case values
@@ -41,6 +41,7 @@ export const getDateInformation = (date, upperCase) => {
       ? labels.MONTHS[currentDate.getMonth()]
       : labels.MONTHS_SMALL[currentDate.getMonth()],
     date: currentDate.getDate(),
+    translated: new Intl.DateTimeFormat(translateInTo).format(currentDate),
   };
 };
 

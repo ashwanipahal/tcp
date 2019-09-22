@@ -19,7 +19,7 @@ const formErrorCMSMessage = {
   lbl_err_currentpassword_password: 'Your current password is incorrect. Please try again.',
   lbl_err_date_dob: 'Please select a day',
   lbl_err_dob_required: 'Please enter a valid birth date',
-  lbl_err_email: 'Please Enter Valid Email Id',
+  lbl_err_email: 'Email format is invalid.',
   lbl_err_email_req: 'Please enter a valid Email',
   lbl_err_firstname_maxlength: 'Please enter a valid first name',
   lbl_err_firstname_name: 'First name field should not contain any special characters',
