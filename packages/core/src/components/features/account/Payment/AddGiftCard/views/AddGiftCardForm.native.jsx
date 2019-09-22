@@ -4,6 +4,7 @@ import { Field, reduxForm } from 'redux-form';
 import Recaptcha from '@tcp/core/src/components/common/molecules/recaptcha/recaptcha.native';
 import { PropTypes } from 'prop-types';
 import { get } from 'lodash';
+import { getLabelValue } from '@tcp/core/src/utils/utils';
 import TextBox from '../../../../../common/atoms/TextBox';
 import CustomButton from '../../../../../common/atoms/Button';
 import {
@@ -22,8 +23,8 @@ import InputCheckbox from '../../../../../common/atoms/InputCheckbox';
 
 export class AddGiftCardForm extends React.PureComponent {
   componentDidUpdate(prevProps) {
-    const { addGiftCardError, change } = this.props;
-    if (addGiftCardError !== prevProps.addGiftCardError) {
+    const { addGiftCardError, change, isRow } = this.props;
+    if (addGiftCardError !== prevProps.addGiftCardError && isRow) {
       change('recaptchaToken', '');
     }
   }
@@ -37,8 +38,8 @@ export class AddGiftCardForm extends React.PureComponent {
   };
 
   handleChange = () => {
-    const { onClearError, addGiftCardError } = this.props;
-    if (addGiftCardError) {
+    const { onClearError, addGiftCardError, isRow } = this.props;
+    if (addGiftCardError && isRow) {
       onClearError();
     }
   };
@@ -52,7 +53,7 @@ export class AddGiftCardForm extends React.PureComponent {
         dataLocator="saveToAccount"
         disabled={false}
         fontSize="fs16"
-        rightText={labels.lbl_payment_saveToAccount}
+        rightText={getLabelValue(labels, 'lbl_payment_saveToAccount')}
         marginTop={36}
         marginBottom={36}
       />
@@ -87,7 +88,7 @@ export class AddGiftCardForm extends React.PureComponent {
             </ErrorWrapper>
           )}
           <Field
-            label={labels.lbl_payment_giftCardNoPlaceholder}
+            label={getLabelValue(labels, 'lbl_payment_giftCardNoPlaceholder')}
             name="giftCardNumber"
             type="tel"
             component={TextBox}
@@ -96,7 +97,7 @@ export class AddGiftCardForm extends React.PureComponent {
           />
 
           <Field
-            label={labels.lbl_payment_giftCardPinPlaceholder}
+            label={getLabelValue(labels, 'lbl_payment_giftCardPinPlaceholder')}
             name="cardPin"
             type="tel"
             component={TextBox}
@@ -125,7 +126,7 @@ export class AddGiftCardForm extends React.PureComponent {
                 fontFamily="secondary"
                 fontSize="fs14"
                 color="gray.900"
-                text={labels.lbl_payment_giftCardMessageHeading}
+                text={getLabelValue(labels, 'lbl_payment_giftCardMessageHeading')}
               />
               <MessageTextWrapper>
                 <BodyCopy
@@ -133,7 +134,7 @@ export class AddGiftCardForm extends React.PureComponent {
                   fontSize="fs12"
                   color="black"
                   fontWeight="regular"
-                  text={labels.lbl_payment_giftCardMessageDescription}
+                  text={getLabelValue(labels, 'lbl_payment_giftCardMessageDescription')}
                 />
               </MessageTextWrapper>
             </MessageWrapper>
@@ -144,7 +145,7 @@ export class AddGiftCardForm extends React.PureComponent {
             <FooterButtonWrapper>
               <CustomButton
                 color="black"
-                text={labels.lbl_payment_cancelCard}
+                text={getLabelValue(labels, 'lbl_payment_cancelCard')}
                 data-locator="gift-card-cancelbtn"
                 buttonVariation="variable-width"
                 onPress={toggleModal}
@@ -153,7 +154,7 @@ export class AddGiftCardForm extends React.PureComponent {
               <CustomButton
                 color="white"
                 fill="BLUE"
-                text={labels.lbl_payment_addCard}
+                text={getLabelValue(labels, 'lbl_payment_addCard')}
                 buttonVariation="variable-width"
                 data-locator="gift-card-addcardbtn"
                 width="164px"
@@ -170,7 +171,7 @@ export class AddGiftCardForm extends React.PureComponent {
                 <CustomButton
                   color="white"
                   fill="BLUE"
-                  text={labels.lbl_payment_addCard}
+                  text={getLabelValue(labels, 'lbl_payment_addCard')}
                   buttonVariation="variable-width"
                   data-locator="gift-card-addcardbtn"
                   onPress={handleSubmit(data => {
@@ -182,7 +183,7 @@ export class AddGiftCardForm extends React.PureComponent {
               <CancelButtonWrapper>
                 <CustomButton
                   color="black"
-                  text={labels.lbl_payment_cancelCard}
+                  text={getLabelValue(labels, 'lbl_payment_cancelCard')}
                   data-locator="gift-card-cancelbtn"
                   buttonVariation="variable-width"
                   onPress={toggleModal}

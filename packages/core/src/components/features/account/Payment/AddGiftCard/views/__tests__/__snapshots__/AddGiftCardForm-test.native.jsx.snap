@@ -35,6 +35,7 @@ exports[`Add gift card form component render error message 1`] = `
       ],
     }
   }
+  isRow={false}
   keyboardShouldPersistTaps="handled"
   labels={
     Object {
@@ -107,6 +108,7 @@ exports[`Add gift card form component render error message 1`] = `
         }
       }
       dataLocator="gift-card-cardnaumberfield"
+      label="lbl_payment_giftCardNoPlaceholder"
       name="giftCardNumber"
       onChange={[Function]}
       type="tel"
@@ -156,6 +158,7 @@ exports[`Add gift card form component render error message 1`] = `
         }
       }
       dataLocator="gift-card-pinnumberfield"
+      label="lbl_payment_giftCardPinPlaceholder"
       name="cardPin"
       onChange={[Function]}
       type="tel"
@@ -227,6 +230,7 @@ exports[`Add gift card form component render error message 1`] = `
         color="gray.900"
         fontFamily="secondary"
         fontSize="fs14"
+        text="lbl_payment_giftCardMessageHeading"
       />
       <Styled(Text)>
         <Styled(BodyCopy)
@@ -234,6 +238,7 @@ exports[`Add gift card form component render error message 1`] = `
           fontFamily="secondary"
           fontSize="fs12"
           fontWeight="regular"
+          text="lbl_payment_giftCardMessageDescription"
         />
       </Styled(Text)>
     </Styled(View)>
@@ -243,6 +248,7 @@ exports[`Add gift card form component render error message 1`] = `
         color="white"
         data-locator="gift-card-addcardbtn"
         fill="BLUE"
+        text="lbl_payment_addCard"
       />
     </Styled(View)>
     <Styled(View)>
@@ -251,6 +257,7 @@ exports[`Add gift card form component render error message 1`] = `
         color="black"
         data-locator="gift-card-cancelbtn"
         onPress={[Function]}
+        text="lbl_payment_cancelCard"
       />
     </Styled(View)>
   </View>
@@ -278,6 +285,7 @@ exports[`Add gift card form component should render component correctly 1`] = `
       ],
     }
   }
+  isRow={false}
   keyboardShouldPersistTaps="handled"
   labels={
     Object {
@@ -337,6 +345,7 @@ exports[`Add gift card form component should render component correctly 1`] = `
         }
       }
       dataLocator="gift-card-cardnaumberfield"
+      label="lbl_payment_giftCardNoPlaceholder"
       name="giftCardNumber"
       onChange={[Function]}
       type="tel"
@@ -386,6 +395,7 @@ exports[`Add gift card form component should render component correctly 1`] = `
         }
       }
       dataLocator="gift-card-pinnumberfield"
+      label="lbl_payment_giftCardPinPlaceholder"
       name="cardPin"
       onChange={[Function]}
       type="tel"
@@ -457,6 +467,7 @@ exports[`Add gift card form component should render component correctly 1`] = `
         color="gray.900"
         fontFamily="secondary"
         fontSize="fs14"
+        text="lbl_payment_giftCardMessageHeading"
       />
       <Styled(Text)>
         <Styled(BodyCopy)
@@ -464,6 +475,7 @@ exports[`Add gift card form component should render component correctly 1`] = `
           fontFamily="secondary"
           fontSize="fs12"
           fontWeight="regular"
+          text="lbl_payment_giftCardMessageDescription"
         />
       </Styled(Text)>
     </Styled(View)>
@@ -473,6 +485,7 @@ exports[`Add gift card form component should render component correctly 1`] = `
         color="white"
         data-locator="gift-card-addcardbtn"
         fill="BLUE"
+        text="lbl_payment_addCard"
       />
     </Styled(View)>
     <Styled(View)>
@@ -481,6 +494,7 @@ exports[`Add gift card form component should render component correctly 1`] = `
         color="black"
         data-locator="gift-card-cancelbtn"
         onPress={[Function]}
+        text="lbl_payment_cancelCard"
       />
     </Styled(View)>
   </View>

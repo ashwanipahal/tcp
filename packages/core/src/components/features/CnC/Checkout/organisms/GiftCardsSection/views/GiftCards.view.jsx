@@ -1,4 +1,3 @@
-/* eslint-disable max-lines */
 import React from 'react';
 import { getLabelValue } from '@tcp/core/src/utils';
 import withStyles from '@tcp/core/src/components/common/hoc/withStyles';
