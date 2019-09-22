@@ -197,6 +197,7 @@ describe('#CartItemTile selector', () => {
       errorSize: 'minibag',
       extra: 'extra',
       fit: 'Fit',
+      itemDeleted: 'lbl_msg_itemDeleteSuccess',
       itemSoldOut: 'minibag',
       itemUnavailable: 'minibag',
       off: 'off',
