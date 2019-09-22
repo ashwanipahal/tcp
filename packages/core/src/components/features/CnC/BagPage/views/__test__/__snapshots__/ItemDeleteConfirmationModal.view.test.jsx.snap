@@ -39,7 +39,7 @@ exports[`ItemDeleteConfirmation Modal should render modal when open true 1`] = `
       className="button-container"
     >
       <Styled(Button)
-        className="item-delete-confirmation-button"
+        className="item-delete-button"
         onClick={[MockFunction]}
       >
         <Styled(BodyCopy)
@@ -128,7 +128,7 @@ exports[`ItemDeleteConfirmation Modal should render no modal when isOpen is fals
       className="button-container"
     >
       <Styled(Button)
-        className="item-delete-confirmation-button"
+        className="item-delete-button"
         onClick={[MockFunction]}
       >
         <Styled(BodyCopy)
