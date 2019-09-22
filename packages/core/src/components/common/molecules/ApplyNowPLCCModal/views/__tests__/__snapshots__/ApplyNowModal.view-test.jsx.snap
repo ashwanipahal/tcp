@@ -6,7 +6,7 @@ exports[`ApplyNowModalWrapper component should renders correctly 1`] = `
   dataLocator="plcc_apply_now_modal"
   dataLocatorHeader="plcc_apply_now_close_btn"
   fixedWidth={true}
-  heading="apply_now_header"
+  heading="lbl_PLCCModal_applyNowHeaderText"
   inheritedStyles={
     Array [
       "
@@ -230,7 +230,7 @@ exports[`ApplyNowModalWrapper component should renders correctly 1`] = `
           lineHeight="normal"
           textAlign="center"
         >
-          apply_now_subheader
+          lbl_PLCCModal_applyNowSubText
         </Styled(BodyCopy)>
       </Styled(Col)>
     </Styled(Row)>
@@ -259,7 +259,7 @@ exports[`ApplyNowModalWrapper component should renders correctly 1`] = `
           fill="BLUE"
           type="submit"
         >
-          applynow_cta
+          lbl_PLCCModal_applyNowCTA
         </Styled(Button)>
       </Styled(Col)>
     </Styled(Row)>
@@ -288,16 +288,16 @@ exports[`ApplyNowModalWrapper component should renders correctly 1`] = `
           fontSizeVariation="large"
           target="_blank"
           underline={true}
-          url="learn_more_link"
+          url="lbl_PLCCModal_learnMoreLink"
         >
-          apply_now_learn_more
+          lbl_PLCCModal_learnMoreText
         </Styled(Anchor)>
       </Styled(Col)>
     </Styled(Row)>
     <div
       className="offer_info_icon"
       data-locator="plcc_modal_logo"
-      offerType="oneequalstwopointsoffer"
+      offerType="lbl_PLCCModal_oneEqualsTwoPoints"
     />
     <Styled(BodyCopy)
       className={null}
@@ -310,7 +310,7 @@ exports[`ApplyNowModalWrapper component should renders correctly 1`] = `
       lineHeight="normal"
       textAlign="center"
     >
-      apply_now_benefits_header
+      lbl_PLCCModal_benefitsText
     </Styled(BodyCopy)>
     <Styled(RichText)
       className="rewards__benefits"
@@ -329,7 +329,7 @@ exports[`ApplyNowModalWrapper component should renders correctly 1`] = `
         lineHeight="normal"
         textAlign="left"
       >
-        apply_now_links_text
+        lbl_PLCCModal_linksTextPrefix
       </Styled(BodyCopy)>
       <Styled(Anchor)
         anchorVariation="primary"
@@ -337,9 +337,9 @@ exports[`ApplyNowModalWrapper component should renders correctly 1`] = `
         fontSizeVariation="large"
         target="_blank"
         underline={true}
-        url="details_link"
+        url="lbl_PLCCModal_detailsLink"
       >
-        apply_now_details
+        lbl_PLCCForm_details
       </Styled(Anchor)>
       <Styled(Anchor)
         anchorVariation="primary"
@@ -348,9 +348,9 @@ exports[`ApplyNowModalWrapper component should renders correctly 1`] = `
         fontSizeVariation="large"
         target="_blank"
         underline={true}
-        url="faq_link"
+        url="lbl_PLCCModal_faqLink"
       >
-        apply_now_faq
+        lbl_PLCCModal_faqText
       </Styled(Anchor)>
       <Styled(Anchor)
         anchorVariation="primary"
@@ -359,9 +359,9 @@ exports[`ApplyNowModalWrapper component should renders correctly 1`] = `
         fontSizeVariation="large"
         target="_blank"
         underline={true}
-        url="rewards_program_link"
+        url="lbl_PLCCModal_rewardsProgramLink"
       >
-        apply_now_rewardTerms
+        lbl_PLCCModal_rewardsProgramText
       </Styled(Anchor)>
     </div>
   </div>

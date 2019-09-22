@@ -1,6 +1,5 @@
 import React from 'react';
 import App, { Container } from 'next/app';
-import dynamic from 'next/dynamic';
 import { Provider } from 'react-redux';
 import { ThemeProvider } from 'styled-components';
 import withRedux from 'next-redux-wrapper';
@@ -15,6 +14,7 @@ import { initErrorReporter } from '@tcp/core/src/utils/errorReporter.util';
 import { deriveSEOTags } from '@tcp/core/src/config/SEOTags.config';
 import { openOverlayModal } from '@tcp/core/src/components/features/OverlayModal/container/OverlayModal.actions';
 import { getUserInfo } from '@tcp/core/src/components/features/account/User/container/User.actions';
+import CheckoutModals from '@tcp/core/src/components/features/CnC/common/organism/CheckoutModals';
 import { Header, Footer } from '../components/features/content';
 import SEOTags from '../components/common/atoms';
 import CheckoutHeader from '../components/features/content/CheckoutHeader';
@@ -22,18 +22,16 @@ import Loader from '../components/features/content/Loader';
 import { configureStore } from '../reduxStore';
 import ReactAxe from '../utils/react-axe';
 import CHECKOUT_STAGES from './App.constants';
+import createDataLayer from '../analytics/dataLayer';
 import RenderPerf from '../components/common/molecules/RenderPerf';
+import RouteTracker from '../components/common/atoms/RouteTracker';
 
 // constants
 import constants from '../constants';
 
-// Script injection component
-// This is lazy-loaded so we inject it after SSR
-const Script = dynamic(() => import('../components/common/atoms/Script'), { ssr: false });
-
 // Analytics script injection
 function AnalyticsScript() {
-  return <Script src={process.env.ANALYTICS_SCRIPT_URL} />;
+  return <script src={process.env.ANALYTICS_SCRIPT_URL} />;
 }
 class TCPWebApp extends App {
   constructor(props) {
@@ -42,9 +40,8 @@ class TCPWebApp extends App {
   }
 
   static async getInitialProps({ Component, ctx }) {
-    const compProps = TCPWebApp.loadComponentData(Component, ctx, {});
+    const compProps = await TCPWebApp.loadComponentData(Component, ctx, {});
     const pageProps = TCPWebApp.loadGlobalData(Component, ctx, compProps);
-
     return {
       pageProps,
     };
@@ -84,6 +81,14 @@ class TCPWebApp extends App {
       channelId,
       isDevelopment: isDevelopment(),
     });
+
+    /**
+     * This is where we assign window._dataLayer for analytics logic
+     */
+    if (process.env.ANALYTICS) {
+      // eslint-disable-next-line
+      global._dataLayer = createDataLayer(this.props.store);
+    }
   }
 
   componentDidUpdate() {
@@ -185,10 +190,13 @@ class TCPWebApp extends App {
                 </div>
               </div>
               <Footer />
+              <CheckoutModals />
             </Grid>
+            {/* Inject route tracker if analytics is enabled. Must be within store provider. */}
+            {process.env.ANALYTICS && <RouteTracker />}
           </Provider>
         </ThemeProvider>
-        {/* Inject analytics script if enabled */}
+        {/* Inject analytics script if analytics is enabled. */}
         {process.env.ANALYTICS && <AnalyticsScript />}
         {/* TODO: Remove, this is for testing only */}
         <RenderPerf.Measure name="app_render" start="app_render_start" />

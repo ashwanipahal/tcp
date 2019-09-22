@@ -209,6 +209,9 @@ class ProductCustomizeForm extends React.PureComponent<Props> {
     } = this.state;
 
     const colorList = this.getColorOptions(colorFitsSizesMap);
+
+    const selectedColorOption =
+      colorList && colorList.find(color => color.value === selectedColor.name);
     const selectedColorElement = this.getSelectedColorData(colorFitsSizesMap, selectedColor);
     const hasFits = selectedColorElement && selectedColorElement.getIn([0, 'hasFits']);
     const fitList = hasFits && this.getFitOptions(selectedColorElement.get(0));
@@ -224,7 +227,6 @@ class ProductCustomizeForm extends React.PureComponent<Props> {
     const quantity = selectedQuantity || '1';
     const { itemPartNumber } = item.productInfo;
     const { variantNo } = item.productInfo;
-
     return (
       <form className={className} noValidate>
         <Row className="edit-form-css">
@@ -234,9 +236,10 @@ class ProductCustomizeForm extends React.PureComponent<Props> {
                 <Field
                   width={87}
                   id="color"
+                  component={ColorSelector}
                   selectListTitle={this.getColorLabel(item, labels)}
                   name={selectedColor}
-                  component={ColorSelector}
+                  selectedColorOption={selectedColorOption}
                   options={colorList}
                   onChange={this.colorChange}
                   dataLocator="addnewaddress-state"

@@ -38,4 +38,20 @@ describe('#Bag Page actions', () => {
       type: BAGPAGE_CONSTANTS.SET_SFL_DATA,
     });
   });
+
+  it('openItemDeleteConfirmationModal', () => {
+    const data = {
+      id: 12,
+    };
+    expect(BAG_PAGE_ACTIONS.openItemDeleteConfirmationModal(data)).toEqual({
+      payload: data,
+      type: BAGPAGE_CONSTANTS.OPEN_ITEM_DELETE_CONFIRMATION_MODAL,
+    });
+  });
+
+  it('closeItemDeleteConfirmationModal', () => {
+    expect(BAG_PAGE_ACTIONS.closeItemDeleteConfirmationModal()).toEqual({
+      type: BAGPAGE_CONSTANTS.CLOSE_ITEM_DELETE_CONFIRMATION_MODAL,
+    });
+  });
 });
