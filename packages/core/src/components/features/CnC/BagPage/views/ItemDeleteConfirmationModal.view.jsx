@@ -4,7 +4,6 @@ import withStyles from '../../../../common/hoc/withStyles';
 import BodyCopy from '../../../../common/atoms/BodyCopy';
 import Button from '../../../../common/atoms/Button';
 import Modal from '../../../../common/molecules/Modal';
-import { getLocator } from '../../../../../utils';
 
 import styles from '../styles/ItemDeleteConfirmationModal.style';
 
@@ -47,11 +46,7 @@ const ItemDeleteConfirmationModal = ({
           {modalHeading}
         </BodyCopy>
         <div className="button-container">
-          <Button
-            data-locator={getLocator('addedtobag_btncheckout')}
-            className="item-delete-confirmation-button"
-            onClick={moveToSfl}
-          >
+          <Button className="item-delete-confirmation-button" onClick={moveToSfl}>
             <BodyCopy
               component="span"
               color="white"
@@ -63,11 +58,7 @@ const ItemDeleteConfirmationModal = ({
               {modalButtonSFL}
             </BodyCopy>
           </Button>
-          <Button
-            data-locator={getLocator('addedtobag_btncheckout')}
-            className="item-delete-button confirm-button"
-            onClick={confirmRemoveCartItem}
-          >
+          <Button className="item-delete-button confirm-button" onClick={confirmRemoveCartItem}>
             <BodyCopy
               component="span"
               color="text.secondary"
