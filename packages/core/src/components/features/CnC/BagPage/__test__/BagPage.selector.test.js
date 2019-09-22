@@ -28,6 +28,7 @@ describe('#Added to bag Selectors', () => {
       orderItems: [],
     },
     sfl: [],
+    openItemDeleteConfirmationModalInfo: true,
   });
 
   const state = {
@@ -86,5 +87,20 @@ describe('#Added to bag Selectors', () => {
   });
   it('#getsflItemsList', () => {
     expect(BAGPAGE_SELECTORS.getsflItemsList(state)).toEqual(fromJS([]));
+  });
+
+  it('#checkoutIfItemIsUnqualified', () => {
+    expect(BAGPAGE_SELECTORS.checkoutIfItemIsUnqualified(state, 123)).toEqual(false);
+  });
+  it('#getCurrentDeleteSelectedItemInfo', () => {
+    expect(BAGPAGE_SELECTORS.getCurrentDeleteSelectedItemInfo(state)).toEqual(true);
+  });
+  it('#itemDeleteModalLabels', () => {
+    expect(BAGPAGE_SELECTORS.itemDeleteModalLabels(state)).toEqual({
+      modalButtonConfirmDelete: 'lbl_itemDelete_modalButtonConfirmDelete',
+      modalButtonSFL: 'lbl_itemDelete_modalButtonSFL',
+      modalHeading: 'lbl_itemDelete_modalHeading',
+      modalTitle: 'lbl_itemDelete_modalTitle',
+    });
   });
 });

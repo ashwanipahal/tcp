@@ -340,6 +340,57 @@ exports[`OrderLedger Component OrderLedger should render correctly 2`] = `
       </Styled(Col)>
     </Styled(Row)>
     <Styled(Row)
+      className="shipping-total rowMargin"
+      data-locator="orderLedgerShippingLbl"
+    >
+      <Styled(Col)
+        colSize={
+          Object {
+            "large": 6,
+            "medium": 4,
+            "small": 3,
+          }
+        }
+      >
+        <Styled(BodyCopy)
+          bodySize="one"
+          className={null}
+          color="primary"
+          component="p"
+          fontFamily="secondary"
+          fontSize="fs13"
+          fontWeight="semibold"
+          letterSpacing="normal"
+          lineHeight="normal"
+          textAlign="left"
+        >
+          undefined:
+        </Styled(BodyCopy)>
+      </Styled(Col)>
+      <Styled(Col)
+        colSize={
+          Object {
+            "large": 6,
+            "medium": 4,
+            "small": 3,
+          }
+        }
+      >
+        <Styled(BodyCopy)
+          bodySize="one"
+          className={null}
+          color="primary"
+          component="p"
+          fontFamily="secondary"
+          fontSize="fs13"
+          fontWeight="semibold"
+          letterSpacing="normal"
+          lineHeight="normal"
+          textAlign="right"
+        />
+      </Styled(Col)>
+    </Styled(Row)>
+    <Styled(Row)
       className="tax-total rowMargin"
       data-locator="orderLedgerTaxLbl"
     >

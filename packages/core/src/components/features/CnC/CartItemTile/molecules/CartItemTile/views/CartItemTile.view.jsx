@@ -169,7 +169,32 @@ class CartItemTile extends React.Component {
     return null;
   };
 
-  getItemDetails = (removeCartItem, productDetail, labels, pageView) => {
+  removeCartItem = () => {
+    const {
+      removeCartItem,
+      pageView,
+      productDetail,
+      isGenricGuest,
+      isCondense,
+      isBagPageSflSection,
+    } = this.props;
+    const {
+      itemInfo: { itemId, isGiftItem },
+      productInfo: { skuId, generalProductId },
+    } = productDetail;
+    const catEntryId = isGiftItem ? generalProductId : skuId;
+    const userInfoRequired = isGenricGuest && isGenricGuest.get('userId') && isCondense; // Flag to check if getRegisteredUserInfo required after SflList
+
+    removeCartItem({
+      itemId,
+      pageView,
+      catEntryId,
+      userInfoRequired,
+      isBagPageSflSection,
+    });
+  };
+
+  getItemDetails = (productDetail, labels, pageView) => {
     const { isEdit } = this.state;
     return (
       <Row className={`padding-top-15 padding-bottom-20 parent-${pageView}`} fullBleed>
@@ -183,7 +208,7 @@ class CartItemTile extends React.Component {
               fontSize="fs12"
               component="span"
               dataLocator={getLocator('cart_item_soldOut_remove')}
-              onClick={() => removeCartItem(productDetail.itemInfo.itemId)}
+              onClick={this.removeCartItem}
             >
               Remove
             </BodyCopy>
@@ -353,7 +378,6 @@ class CartItemTile extends React.Component {
       productDetail,
       labels,
       editableProductInfo,
-      removeCartItem,
       className,
       pageView,
       isEditAllowed,
@@ -382,7 +406,7 @@ class CartItemTile extends React.Component {
                 alt="closeIcon"
                 className="close-icon-image"
                 src={getIconPath('close-icon')}
-                onClick={() => removeCartItem(productDetail.itemInfo.itemId)}
+                onClick={this.removeCartItem}
               />
             </div>
           )}
@@ -594,7 +618,7 @@ class CartItemTile extends React.Component {
                 </Col>
               </Row>
             )}
-            {this.getItemDetails(removeCartItem, productDetail, labels, pageView)}
+            {this.getItemDetails(productDetail, labels, pageView)}
           </Col>
           {this.renderHeartIcon()}
         </Row>
