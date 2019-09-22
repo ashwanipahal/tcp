@@ -1,2 +1,3 @@
-export { default } from '@tcp/core/src/components/common/organisms/SocialAccount/Views/instagramLoginPage';
-
+export {
+  default,
+} from '@tcp/core/src/components/common/organisms/SocialAccount/Views/InstagramLoginPage';
