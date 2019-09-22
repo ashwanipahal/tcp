@@ -49,12 +49,14 @@ class BagPage extends React.Component {
   renderBagHeading() {
     const { activeSection } = this.state;
     const { labels, totalCount } = this.props;
+    const { bagHeading } = labels;
+    const bagHeadingTexts = `${bagHeading} (${totalCount})`;
     return (
       <HeadingTextStyle>
         {activeSection === BAGPAGE_CONSTANTS.SFL_STATE ? (
-          <InActiveBagHeaderText>{`${labels.bagHeading} (${totalCount})`}</InActiveBagHeaderText>
+          <InActiveBagHeaderText>{bagHeadingTexts}</InActiveBagHeaderText>
         ) : (
-          <ActiveBagHeaderText>{`${labels.bagHeading} (${totalCount})`}</ActiveBagHeaderText>
+          <ActiveBagHeaderText>{bagHeadingTexts}</ActiveBagHeaderText>
         )}
       </HeadingTextStyle>
     );
@@ -63,16 +65,14 @@ class BagPage extends React.Component {
   renderSflHeading() {
     const { activeSection } = this.state;
     const { labels, sflItems } = this.props;
+    const { savedLaterButton } = labels;
+    const headingTexts = `${savedLaterButton} (${sflItems.size})`;
     return (
       <HeadingTextStyle>
         {activeSection === BAGPAGE_CONSTANTS.BAG_STATE ? (
-          <InActiveBagHeaderText>
-            {`${labels.savedLaterButton} (${sflItems.size})`}
-          </InActiveBagHeaderText>
+          <InActiveBagHeaderText>{headingTexts}</InActiveBagHeaderText>
         ) : (
-          <ActiveBagHeaderText>
-            {`${labels.savedLaterButton} (${sflItems.size})`}
-          </ActiveBagHeaderText>
+          <ActiveBagHeaderText>{headingTexts}</ActiveBagHeaderText>
         )}
       </HeadingTextStyle>
     );

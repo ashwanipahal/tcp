@@ -1,26 +1,18 @@
-/* eslint-disable max-lines */
 import React from 'react';
 import PropTypes from 'prop-types';
 import { View } from 'react-native';
 import ItemAvailability from '@tcp/core/src/components/features/CnC/common/molecules/ItemAvailability';
 import Swipeable from '../../../../../../common/atoms/Swipeable/Swipeable.native';
 import BodyCopy from '../../../../../../common/atoms/BodyCopy';
-import endpoints from '../../../../../../../service/endpoint';
 import Image from '../../../../../../common/atoms/Image';
 import {
-  ProductName,
   ProductDesc,
   OuterContainer,
-  ImgWrapper,
-  ImageStyle,
   ProductDescription,
   ProductSubDetails,
   ProductSubDetailLabel,
   ProductListPrice,
   EditButton,
-  ImageBrandStyle,
-  ImageGymBrandStyle,
-  SoldOutLabel,
   MainWrapper,
   BtnWrapper,
   MarginLeft,
@@ -30,19 +22,16 @@ import {
   IconTextDelete,
   IconTextEdit,
   IconTextMoveToBag,
-  HeartIcon,
 } from '../styles/CartItemTile.style.native';
 import { getLocator } from '../../../../../../../utils';
 import CartItemRadioButtons from '../../CartItemRadioButtons';
 import CARTPAGE_CONSTANTS from '../../../CartItemTile.constants';
+import CartItemTileExtension from './CartItemTileExtension.view.native';
 
-const gymboreeImage = require('../../../../../../../assets/gymboree-logo.png');
-const tcpImage = require('../../../../../../../assets/tcp-logo.png');
 const editIcon = require('../../../../../../../assets/edit-icon.png');
 const deleteIcon = require('../../../../../../../assets/delete.png');
 const moveToBagIcon = require('../../../../../../../assets/moveToBag-icon.png');
 const sflIcon = require('../../../../../../../assets/sfl-icon.png');
-const heart = require('../../../../../../../assets/heart.png');
 
 const getItemStatus = (productDetail, labels) => {
   if (productDetail.miscInfo.availability === 'UNAVAILABLE') {
@@ -117,6 +106,7 @@ class ProductInformation extends React.Component {
 
   renderSflActionsLinks = () => {
     const { productDetail, isShowSaveForLater, labels, isBagPageSflSection } = this.props;
+    const { saveForLaterLink, moveToBagLink } = labels;
     if (
       !isBagPageSflSection &&
       productDetail.miscInfo.availability === CARTPAGE_CONSTANTS.AVAILABILITY_OK &&
@@ -130,7 +120,7 @@ class ProductInformation extends React.Component {
             height={IconHeight}
             width={IconWidth}
           />
-          <IconTextMoveToBag>{labels.saveForLaterLink}</IconTextMoveToBag>
+          <IconTextMoveToBag>{saveForLaterLink}</IconTextMoveToBag>
         </MarginLeft>
       );
     }
@@ -146,7 +136,7 @@ class ProductInformation extends React.Component {
             height={IconHeight}
             width={IconWidth}
           />
-          <IconTextMoveToBag>{labels.moveToBagLink}</IconTextMoveToBag>
+          <IconTextMoveToBag>{moveToBagLink}</IconTextMoveToBag>
         </MarginLeft>
       );
     }
@@ -155,6 +145,8 @@ class ProductInformation extends React.Component {
 
   renderPoints = () => {
     const { labels, productDetail, isBagPageSflSection } = this.props;
+    const { points } = labels;
+    const { itemInfo: { myPlacePoints } = {} } = productDetail;
     if (isBagPageSflSection) return null;
     return (
       <ProductDesc>
@@ -163,7 +155,7 @@ class ProductInformation extends React.Component {
             fontSize="fs13"
             fontWeight={['semibold']}
             textAlign="left"
-            text={`${labels.points}: `}
+            text={`${points}: `}
           />
         </ProductSubDetailLabel>
         <BodyCopy
@@ -171,7 +163,7 @@ class ProductInformation extends React.Component {
           fontFamily="secondary"
           fontSize="fs13"
           dataLocator={getLocator('cart_item_points')}
-          text={productDetail.itemInfo.myPlacePoints}
+          text={myPlacePoints}
         />
       </ProductDesc>
     );
@@ -179,6 +171,7 @@ class ProductInformation extends React.Component {
 
   renderQuantity = () => {
     const { labels, productDetail, isBagPageSflSection } = this.props;
+    const { itemInfo: { qty } = {} } = productDetail;
     if (isBagPageSflSection) return null;
     return (
       <ProductDesc>
@@ -190,12 +183,7 @@ class ProductInformation extends React.Component {
             text={`${labels.qty}: `}
           />
         </ProductSubDetailLabel>
-        <BodyCopy
-          color="gray.800"
-          fontFamily="secondary"
-          fontSize="fs13"
-          text={productDetail.itemInfo.qty}
-        />
+        <BodyCopy color="gray.800" fontFamily="secondary" fontSize="fs13" text={qty} />
       </ProductDesc>
     );
   };
@@ -300,38 +288,7 @@ class ProductInformation extends React.Component {
         <MainWrapper>
           <UnavailableView>{getItemStatus(productDetail, labels)}</UnavailableView>
           <OuterContainer>
-            <ImgWrapper>
-              <View>
-                <ImageStyle
-                  data-locator={getLocator('cart_item_image')}
-                  source={{ uri: endpoints.global.baseURI + productDetail.itemInfo.imagePath }}
-                />
-                {productDetail.miscInfo.availability ===
-                  CARTPAGE_CONSTANTS.AVAILABILITY_SOLDOUT && (
-                  <SoldOutLabel>
-                    <BodyCopy
-                      fontFamily="secondary"
-                      textAlign="center"
-                      fontSize="fs12"
-                      color="white"
-                      text={labels.soldOut}
-                    />
-                  </SoldOutLabel>
-                )}
-              </View>
-              {!productDetail.itemInfo.isGiftItem &&
-                (productDetail.itemInfo.itemBrand === 'TCP' ? (
-                  <ImageBrandStyle
-                    data-locator={getLocator('cart_item_brand_logo')}
-                    source={tcpImage}
-                  />
-                ) : (
-                  <ImageGymBrandStyle
-                    data-locator={getLocator('cart_item_brand_logo')}
-                    source={gymboreeImage}
-                  />
-                ))}
-            </ImgWrapper>
+            {CartItemTileExtension.CartItemImageWrapper(productDetail, labels)}
             <ProductDescription>
               {!!productDetail.miscInfo.badge && (
                 <BodyCopy
@@ -341,20 +298,8 @@ class ProductInformation extends React.Component {
                   text={productDetail.miscInfo.badge}
                 />
               )}
-              <ProductName>
-                <BodyCopy
-                  fontFamily="secondary"
-                  fontSize="fs14"
-                  dataLocator={getLocator('cart_item_title')}
-                  fontWeight={['semibold']}
-                  text={productDetail.itemInfo.name}
-                />
-              </ProductName>
-              {isBagPageSflSection && (
-                <HeartIcon onPress={() => {}}>
-                  <Image data-locator="heartIcon" source={heart} height={13} width={15} />
-                </HeartIcon>
-              )}
+              {CartItemTileExtension.getProductName(productDetail)}
+              {CartItemTileExtension.heartIcon(isBagPageSflSection)}
               <ProductSubDetails>
                 <ProductDesc>
                   <ProductSubDetailLabel>
