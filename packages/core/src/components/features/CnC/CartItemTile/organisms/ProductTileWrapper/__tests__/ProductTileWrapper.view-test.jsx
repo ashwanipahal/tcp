@@ -7,6 +7,7 @@ import { ProductTileWrapperVanilla } from '../views/ProductTileWrapper.view';
 describe('ProductTileWrapper component', () => {
   it('should render ProductTile view section', () => {
     const props = {
+      isCartItemsUpdating: { isDeleting: true },
       orderItems: fromJS([
         {
           productInfo: {

@@ -11,12 +11,11 @@ import CARTPAGE_CONSTANTS from '../CartItemTile.constants';
 
 describe('Cart Item saga remove', () => {
   it('should dispatch removeCartItem action for success resposnse', () => {
-    const payload = [
-      {
-        orderItemId: '3001545548',
-        quantity: '0',
+    const payload = {
+      payload: {
+        itemId: '3001545548',
       },
-    ];
+    };
     const removeCartItemGen = removeCartItem(payload);
     removeCartItemGen.next();
 
