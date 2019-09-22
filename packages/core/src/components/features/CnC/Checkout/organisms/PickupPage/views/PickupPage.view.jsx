@@ -122,6 +122,22 @@ class PickUpFormPart extends React.Component {
     onPickupSubmit(params);
   };
 
+  /**
+   * This method is to return the label text based on venmo or normal checkout
+   */
+  getNextCTAText = () => {
+    const { isVenmoPaymentInProgress, orderHasShipping, pickUpLabels } = this.props;
+    let nextButtonText;
+    if (isVenmoPaymentInProgress && !orderHasShipping) {
+      nextButtonText = `${pickUpLabels.nextText}: ${pickUpLabels.reviewText}`;
+    } else {
+      nextButtonText = !orderHasShipping
+        ? `${pickUpLabels.nextText}: ${pickUpLabels.billingText}`
+        : `${pickUpLabels.nextText}: ${pickUpLabels.shippingText}`;
+    }
+    return nextButtonText;
+  };
+
   updatePickupForm() {
     const { pickupInitialValues, dispatch } = this.props;
     const { pickUpContact } = this.state;
@@ -158,7 +174,6 @@ class PickUpFormPart extends React.Component {
       isSmsUpdatesEnabled,
       dispatch,
       handleSubmit,
-      orderHasShipping,
     } = this.props;
     const { isEditing, pickUpContact, dataUpdated } = this.state;
     if (!dataUpdated) {
@@ -285,11 +300,7 @@ class PickUpFormPart extends React.Component {
           <CheckoutFooter
             hideBackLink={false}
             backLinkText={`${pickUpLabels.returnTo} ${pickUpLabels.pickupText}`}
-            nextButtonText={
-              !orderHasShipping
-                ? `${pickUpLabels.nextText}: ${pickUpLabels.billingText}`
-                : `${pickUpLabels.nextText}: ${pickUpLabels.shippingText}`
-            }
+            nextButtonText={this.getNextCTAText()}
             disableNext={isEditing}
           />
         </form>
@@ -315,6 +326,7 @@ PickUpFormPart.propTypes = {
   dispatch: PropTypes.func.isRequired,
   handleSubmit: PropTypes.func.isRequired,
   onPickupSubmit: PropTypes.func.isRequired,
+  isVenmoPaymentInProgress: PropTypes.func,
 };
 
 PickUpFormPart.defaultProps = {
@@ -327,6 +339,7 @@ PickUpFormPart.defaultProps = {
   isAlternateUpdateChecked: false,
   pickupError: '',
   currentPhoneNumber: '',
+  isVenmoPaymentInProgress: false,
 };
 
 const validateMethod = createValidateMethod({

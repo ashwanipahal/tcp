@@ -14,6 +14,7 @@ import AddressFields from '../../../../../../common/molecules/AddressFields';
 import CheckoutFooter from '../../../molecules/CheckoutFooter';
 import utility from '../../../util/utility';
 import CREDIT_CARD_CONSTANTS from '../../BillingPaymentForm/container/CreditCard.constants';
+import VenmoPaymentButton from '../../../../../../common/atoms/VenmoPaymentButton';
 
 class GuestBillingForm extends React.Component {
   static propTypes = {
@@ -126,6 +127,9 @@ class GuestBillingForm extends React.Component {
               />
             </>
           ) : null}
+          {paymentMethodId === CONSTANTS.PAYMENT_METHOD_VENMO && (
+            <VenmoPaymentButton className="venmo-container" />
+          )}
         </div>
         <CheckoutFooter
           hideBackLink

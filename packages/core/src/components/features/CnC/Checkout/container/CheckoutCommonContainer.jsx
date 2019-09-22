@@ -112,6 +112,7 @@ export class CheckoutContainer extends React.Component<Props> {
       checkoutProgressBarLabels,
       submitReview,
       reviewProps,
+      isVenmoPaymentInProgress,
     } = this.props;
     const availableStages = checkoutUtil.getAvailableStages(
       cartOrderItems,
@@ -155,6 +156,7 @@ export class CheckoutContainer extends React.Component<Props> {
         submitBilling={submitBilling}
         submitReview={submitReview}
         reviewProps={reviewProps}
+        isVenmoPaymentInProgress={isVenmoPaymentInProgress}
       />
     );
   }
@@ -276,6 +278,7 @@ const mapStateToProps = state => {
     reviewProps: {
       labels: getReviewLabels(state),
     },
+    isVenmoPaymentInProgress: selectors.isVenmoPaymentInProgress(),
   };
 };
 

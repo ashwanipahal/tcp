@@ -1,5 +1,7 @@
 /* eslint-disable complexity */
 import { fromJS } from 'immutable';
+import { setLocalStorage } from '../../../../../utils/localStorageManagement';
+import { constants as venmoConstants } from '../../../../common/atoms/VenmoPaymentButton/container/VenmoPaymentButton.util';
 import CheckoutConstants from '../Checkout.constants';
 
 const initialState = fromJS({
@@ -139,10 +141,17 @@ function uiFlagReducer(checkout, action) {
     case CheckoutConstants.GET_VENMO_CLIENT_TOKEN_ERROR:
       return checkout.setIn(['values', 'venmoData'], action.payload);
     case CheckoutConstants.SET_VENMO_DATA: {
-      return checkout.setIn(['values', 'venmoData'], mergedVenmoDetails(checkout, action.payload));
+      const venmoData = mergedVenmoDetails(checkout, action.payload);
+      setLocalStorage({ key: venmoConstants.VENMO_STORAGE_KEY, value: JSON.stringify(venmoData) });
+      return checkout.setIn(['values', 'venmoData'], venmoData);
     }
-    case CheckoutConstants.SET_VENMO_PAYMENT_INPROGRESS:
+    case CheckoutConstants.SET_VENMO_PAYMENT_INPROGRESS: {
+      setLocalStorage({
+        key: venmoConstants.VENMO_INPROGRESS_KEY,
+        value: action.payload,
+      });
       return checkout.setIn(['uiFlags', 'venmoPaymentInProgress'], action.payload);
+    }
     // case 'CHECKOUT_FLAGS_SET_REVIEW_VISTED':
     //   return merge(uiFlags, { isReviewVisited: action.payload });
     // case 'CHECKOUT_FLAGS_SET_PAYMENT_ERROR':

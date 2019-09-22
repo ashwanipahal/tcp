@@ -58,7 +58,7 @@ const PaymentMethods = ({ className, paymentHeader, labels }) => {
           <Field
             component={LabeledRadioButton}
             key="Venmo"
-            selectedValue="Venmo"
+            selectedValue="venmo"
             title=""
             subtitle=""
             name="paymentMethodId"

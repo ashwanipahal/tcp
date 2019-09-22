@@ -79,6 +79,7 @@ class CheckoutPage extends React.PureComponent {
       submitBilling,
       reviewProps,
       submitReview,
+      isVenmoPaymentInProgress,
     } = this.props;
 
     const section = router.query.section || router.query.subSection;
@@ -105,6 +106,7 @@ class CheckoutPage extends React.PureComponent {
             orderHasShipping={orderHasShipping}
             onPickupSubmit={onPickupSubmit}
             navigation={navigation}
+            isVenmoPaymentInProgress={isVenmoPaymentInProgress}
           />
         )}
         {currentSection.toLowerCase() === CHECKOUT_STAGES.SHIPPING && (
@@ -121,6 +123,7 @@ class CheckoutPage extends React.PureComponent {
             updateShippingAddressData={updateShippingAddressData}
             addNewShippingAddressData={addNewShippingAddressData}
             labels={labels}
+            isVenmoPaymentInProgress={isVenmoPaymentInProgress}
           />
         )}
         {currentSection.toLowerCase() === CHECKOUT_STAGES.BILLING && (
@@ -129,6 +132,7 @@ class CheckoutPage extends React.PureComponent {
             orderHasShipping={orderHasShipping}
             isGuest={isGuest}
             submitBilling={submitBilling}
+            isVenmoPaymentInProgress={isVenmoPaymentInProgress}
           />
         )}
         {currentSection.toLowerCase() === CHECKOUT_STAGES.REVIEW && (
@@ -138,6 +142,7 @@ class CheckoutPage extends React.PureComponent {
             navigation={navigation}
             orderHasPickUp={orderHasPickUp}
             orderHasShipping={orderHasShipping}
+            isVenmoPaymentInProgress={isVenmoPaymentInProgress}
           />
         )}
       </div>
@@ -182,6 +187,11 @@ CheckoutPage.propTypes = {
   updateShippingAddressData: PropTypes.func.isRequired,
   addNewShippingAddressData: PropTypes.func.isRequired,
   submitBilling: PropTypes.func.isRequired,
+  isVenmoPaymentInProgress: PropTypes.func,
+};
+
+CheckoutPage.defaultProps = {
+  isVenmoPaymentInProgress: false,
 };
 
 export default CheckoutPage;

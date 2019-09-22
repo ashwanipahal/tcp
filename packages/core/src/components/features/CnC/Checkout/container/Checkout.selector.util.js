@@ -25,6 +25,7 @@ const getPickUpContactFormLabels = state => {
     lbl_pickup_anchor_edit: anchorEdit,
     lbl_pickup_buttonText: pickupText,
     lbl_pickup_billingText: billingText,
+    lbl_pickup_reviewText: reviewText,
     lbl_pickup_nextText: nextText,
     lbl_pickup_returnTo: returnTo,
     lbl_pickup_venmo_banner: venmoBannerText,
@@ -59,6 +60,7 @@ const getPickUpContactFormLabels = state => {
     returnTo,
     shippingText,
     venmoBannerText,
+    reviewText,
   };
 };
 
