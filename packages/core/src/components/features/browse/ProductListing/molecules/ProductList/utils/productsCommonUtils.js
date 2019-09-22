@@ -73,7 +73,11 @@ export function getPrices(productInfo, color, fit, size) {
 
   const currentColorEntry = getMapSliceForColor(productInfo.colorFitsSizesMap, color);
   if (currentColorEntry && currentColorEntry.listPrice) {
-    return { listPrice: currentColorEntry.listPrice, offerPrice: currentColorEntry.offerPrice };
+    return {
+      listPrice: currentColorEntry.listPrice,
+      offerPrice: currentColorEntry.offerPrice,
+      badge2: currentColorEntry.miscInfo.badge2,
+    };
   }
 
   return { listPrice: productInfo.listPrice, offerPrice: productInfo.offerPrice };

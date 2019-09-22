@@ -1,9 +1,15 @@
 import { css } from 'styled-components';
 
 export default css`
+  text-align: right;
   .count-section {
     position: relative;
-    text-align: right;
+  }
+
+  @media ${props => props.theme.mediaQuery.smallOnly} {
+    .show-label {
+      display: none;
+    }
   }
 
   .items-count-content-number {

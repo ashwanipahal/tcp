@@ -1,0 +1,33 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`BagPageHeader Component BagPage Header should render correctly 1`] = `
+<Styled(SafeAreaView)>
+  <Connect(ToastContainer) />
+  <Styled(View)>
+    <Styled(View)>
+      <Styled(Image)
+        accessibilityRole="image"
+        source={
+          Object {
+            "testUri": "../../../src/assets/images/tcp/tcpLaunchImage.png",
+          }
+        }
+      />
+    </Styled(View)>
+    <Styled(View)>
+      <Styled(TouchableOpacity)
+        onPress={[Function]}
+      >
+        <Styled(Image)
+          accessibilityRole="button"
+          source={
+            Object {
+              "testUri": "../../../../core/src/assets/close.png",
+            }
+          }
+        />
+      </Styled(TouchableOpacity)>
+    </Styled(View)>
+  </Styled(View)>
+</Styled(SafeAreaView)>
+`;

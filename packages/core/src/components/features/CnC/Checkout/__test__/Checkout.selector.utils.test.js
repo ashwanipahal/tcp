@@ -151,7 +151,7 @@ describe('Checkout Selectors', () => {
         phoneNumber: 212,
         sendOrderUpdate: false,
       },
-      hasAlternatePickup: undefined,
+      hasAlternatePickup: false,
       pickUpAlternate: {},
     });
   });

@@ -5,8 +5,8 @@ import {
   getProductName,
   getProductDetails,
 } from '@tcp/core/src/components/features/CnC/CartItemTile/container/CartItemTile.selectors';
-
-import { BodyCopy } from '@tcp/core/src/components/common/atoms';
+import { getIconPath } from '@tcp/core/src/utils';
+import { BodyCopy, Image } from '@tcp/core/src/components/common/atoms';
 import ErrorMessage from '@tcp/core/src/components/features/CnC/common/molecules/ErrorMessage';
 import EmptyBag from '@tcp/core/src/components/features/CnC/EmptyBagPage/views/EmptyBagPage.view';
 import productTileCss, {
@@ -91,6 +91,32 @@ class ProductTileWrapper extends React.PureComponent<props> {
     return isEditAllowed;
   };
 
+  renderItemDeleteSuccessMsg = (
+    isBagPageSflSection,
+    isBagPage,
+    isDeleting,
+    itemDeleteSuccessMsg
+  ) => {
+    return (
+      !isBagPageSflSection &&
+      isBagPage &&
+      isDeleting && (
+        <div className="delete-msg">
+          <Image alt="closeIcon" className="tick-icon" src={getIconPath('circle-check-fill')} />
+          <BodyCopy
+            component="span"
+            fontSize="fs12"
+            textAlign="center"
+            fontFamily="secondary"
+            fontWeight="extrabold"
+          >
+            {itemDeleteSuccessMsg}
+          </BodyCopy>
+        </div>
+      )
+    );
+  };
+
   render() {
     const {
       orderItems,
@@ -102,12 +128,14 @@ class ProductTileWrapper extends React.PureComponent<props> {
       isPlcc,
       sflItemsCount,
       isBagPageSflSection,
+      isCartItemsUpdating,
       sflItems,
     } = this.props;
     const productSectionData = isBagPageSflSection ? sflItems : orderItems;
     let isUnavailable;
     let isSoldOut;
-    const inheritedStyles = pageView === 'myBag' ? productTileCss : miniBagCSS;
+    const isBagPage = pageView === 'myBag';
+    const inheritedStyles = isBagPage ? productTileCss : miniBagCSS;
     const getUnavailableOOSItems = [];
     const { openedTile, swipedElement } = this.state;
     if (productSectionData && productSectionData.size > 0) {
@@ -141,6 +169,7 @@ class ProductTileWrapper extends React.PureComponent<props> {
           />
         );
       });
+      const { isDeleting } = isCartItemsUpdating;
       return (
         <>
           {this.getHeaderError(labels, productSectionData, pageView)}
@@ -151,12 +180,20 @@ class ProductTileWrapper extends React.PureComponent<props> {
             />
           )}
           {isUnavailable && <RemoveSoldOut pageView={pageView} labels={labels} />}
-
+          {this.renderItemDeleteSuccessMsg(
+            isBagPageSflSection,
+            isBagPage,
+            isDeleting,
+            labels.itemDeleted
+          )}
           {orderItemsView}
         </>
       );
     }
-    return <EmptyBag bagLabels={bagLabels} isUserLoggedIn={isUserLoggedIn} />;
+    if (productSectionData.size === 0) {
+      return <EmptyBag bagLabels={bagLabels} isUserLoggedIn={isUserLoggedIn} />;
+    }
+    return <></>;
   }
 }
 

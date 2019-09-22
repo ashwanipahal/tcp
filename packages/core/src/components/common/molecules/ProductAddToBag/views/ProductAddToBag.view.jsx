@@ -1,5 +1,6 @@
 import React from 'react';
 import { fromJS } from 'immutable';
+import { compose } from 'redux';
 import { connect } from 'react-redux';
 import { Field, reduxForm } from 'redux-form';
 import withStyles from '@tcp/core/src/components/common/hoc/withStyles';
@@ -16,11 +17,8 @@ class ProductAddToBag extends React.PureComponent<Props> {
     const {
       plpLabels,
       className,
-      selectedColor,
-      selectedFit,
       isErrorMessageDisplayed,
       fitChanged,
-      selectedSize,
       quantityList,
       selectColor,
       selectFit,
@@ -35,9 +33,6 @@ class ProductAddToBag extends React.PureComponent<Props> {
     colorList = fromJS(colorList);
     const { addToBag, errorMessage, size: sizeTitle, fit: fitTitle, color: colorTitle } = plpLabels;
 
-    const sizeSelector = selectedSize || 'Size';
-    const fitSelector = selectedFit || 'Fit';
-
     return (
       <form className={className} noValidate>
         <Row className="edit-form-css">
@@ -48,8 +43,7 @@ class ProductAddToBag extends React.PureComponent<Props> {
                   <Field
                     width={87}
                     id="color"
-                    // selectListTitle={this.getColorLabel(item, labels)}
-                    name={selectedColor}
+                    name="color"
                     component={ProductColorChipsSelector}
                     colorFitsSizesMap={colorList}
                     onChange={selectColor}
@@ -63,7 +57,7 @@ class ProductAddToBag extends React.PureComponent<Props> {
                   <Field
                     width={69}
                     id="fit"
-                    name={fitSelector}
+                    name="Fit"
                     component={ProductSizeSelector}
                     sizesMap={fitList}
                     onChange={selectFit}
@@ -78,7 +72,7 @@ class ProductAddToBag extends React.PureComponent<Props> {
                     width={49}
                     className={isErrorMessageDisplayed ? 'size-field-error' : 'size-field'}
                     id="size"
-                    name={sizeSelector}
+                    name="Size"
                     component={ProductSizeSelector}
                     sizesMap={sizeList}
                     onChange={selectSize}
@@ -154,13 +148,13 @@ class ProductAddToBag extends React.PureComponent<Props> {
     );
   }
 }
-export default connect()(
-  reduxForm({
-    form: 'ProductAddToBag',
-    enableReinitialize: true,
 
-    // a unique identifier for this form..
-  })(withStyles(ProductAddToBag, styles))
-);
+export default compose(
+  connect((state, props) => ({
+    form: `ProductAddToBag-${props.generalProductId}`,
+    enableReinitialize: true,
+  })),
+  reduxForm()
+)(withStyles(ProductAddToBag, styles));
 
 export { ProductAddToBag as ProductAddToBagVanilla };
