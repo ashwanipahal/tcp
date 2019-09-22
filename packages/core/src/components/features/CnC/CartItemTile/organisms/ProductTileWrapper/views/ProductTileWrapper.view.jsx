@@ -158,7 +158,13 @@ class ProductTileWrapper extends React.PureComponent<props> {
         </>
       );
     }
-    return <EmptyBag bagLabels={bagLabels} isUserLoggedIn={isUserLoggedIn} />;
+    return (
+      <EmptyBag
+        bagLabels={bagLabels}
+        isUserLoggedIn={isUserLoggedIn}
+        isBagPageSflSection={isBagPageSflSection}
+      />
+    );
   }
 }
 
