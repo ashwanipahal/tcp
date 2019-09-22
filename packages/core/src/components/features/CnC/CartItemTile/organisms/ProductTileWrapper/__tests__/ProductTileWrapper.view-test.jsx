@@ -123,6 +123,7 @@ describe('ProductTileWrapper component', () => {
   });
   it('should render ProductTile view section with bag page sfl section', () => {
     const props = {
+      isCartItemsUpdating: { isDeleting: true },
       sflItems: fromJS([
         {
           productInfo: {

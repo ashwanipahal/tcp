@@ -2,6 +2,7 @@ import { put, takeLatest } from 'redux-saga/effects';
 // import { validateReduxCache } from '../../../../../../utils/cache.util';
 import {
   CartPageSaga,
+  confirmRemoveItem,
   removeCartItem,
   updateCartItemSaga,
   getProductSKUInfoSaga,
@@ -16,7 +17,7 @@ describe('Cart Item saga remove', () => {
         itemId: '3001545548',
       },
     };
-    const removeCartItemGen = removeCartItem(payload);
+    const removeCartItemGen = confirmRemoveItem(payload);
     removeCartItemGen.next();
 
     const res = {
