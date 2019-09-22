@@ -408,9 +408,6 @@ exports[`ButtonList component renders correctly if payment method is diff 1`] = 
         }
       }
     />
-    <div
-      className="payment-paypal-container"
-    />
   </div>
   <Styled(CheckoutFooter)
     backLinkHandler={[Function]}
