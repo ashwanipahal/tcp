@@ -2,6 +2,7 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import { Anchor, RichText, Button, Col, Row } from '../../../../../common/atoms';
 import ExistingPLCCUserStyle from './styles/ExistingPLCCUser.view.style';
+import { getLabelValue } from '../../../../../../utils';
 
 /**
  * @const ExistingPLCCUserView
@@ -30,7 +31,7 @@ const ExistingPLCCUserView = ({ bagItems, existingCustomerDetails, labels, isPLC
                 type="submit"
                 className="existing_checkout_button"
               >
-                {labels.plcc_form_ctc_buttom}
+                {getLabelValue(labels, 'lbl_PLCCForm_ctcButton')}
               </Button>
             </Anchor>
           </Col>
@@ -49,7 +50,7 @@ const ExistingPLCCUserView = ({ bagItems, existingCustomerDetails, labels, isPLC
               type="submit"
               className="existing_continue_button"
             >
-              {labels.plcc_form_continue_shopping}
+              {getLabelValue(labels, 'lbl_PLCCForm_continueShopping')}
             </Button>
           </Anchor>
         </Col>

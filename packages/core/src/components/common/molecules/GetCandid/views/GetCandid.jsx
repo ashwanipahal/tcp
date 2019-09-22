@@ -86,7 +86,7 @@ class GetCandid extends React.PureComponent {
           className="get-candid-main-heading"
           data-locator="get_candid_module_header_textImages_1"
         >
-          {labels.title}
+          {labels.lbl_getCandid_title}
         </BodyCopy>
 
         <BodyCopy
@@ -96,7 +96,7 @@ class GetCandid extends React.PureComponent {
           className="get-candid-heading-desc"
           data-locator="get_candid_module_header_textImages_2"
         >
-          {labels.titleDescription}
+          {labels.lbl_getCandid_titleDescription}
         </BodyCopy>
       </div>
     );
@@ -145,7 +145,7 @@ class GetCandid extends React.PureComponent {
                 className="gallery-button-left"
                 data-locator="view_gallery_button"
               >
-                {labels.BtnGallery}
+                {labels.lbl_getCandid_BtnGallery}
               </Button>
 
               <Button
@@ -155,7 +155,7 @@ class GetCandid extends React.PureComponent {
                 className="gellary-button-right"
                 data-locator="add_photo_button"
               >
-                {labels.BtnPhoto}
+                {labels.lbl_getCandid_BtnPhoto}
               </Button>
             </Col>
           </div>
@@ -167,7 +167,7 @@ class GetCandid extends React.PureComponent {
 
 const mapStateToProps = state => {
   return {
-    labels: state.Labels.modules && state.Labels.modules.getCandid,
+    labels: state.Labels.global && state.Labels.global.getCandid,
   };
 };
 

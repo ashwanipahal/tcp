@@ -5,7 +5,7 @@ import { BodyCopy, Col, Row, SelectBox, TextBox } from '../../../../../common/at
 import { calendarDaysMap, calendarYearsMap } from '../../utils/DateOfBirthHelper';
 import { MONTH_OPTIONS_MAP_WITH_EMPTY as months } from '../../RewardsCard.constants';
 import StyledPersonalFormWrapper from './styles/PersonalInformationFormWrapper.style';
-import { getLocator } from '../../../../../../utils';
+import { getLocator, getLabelValue } from '../../../../../../utils';
 
 export default class PersonalInformationFormWrapper extends React.PureComponent {
   render() {
@@ -13,7 +13,7 @@ export default class PersonalInformationFormWrapper extends React.PureComponent 
     return (
       <StyledPersonalFormWrapper>
         <BodyCopy component="h2" className="title" tabIndex="0">
-          {labels.plcc_form_personal_info}
+          {getLabelValue(labels, 'lbl_PLCCForm_personalInfo')}
         </BodyCopy>
         <Row fullBleed>
           <Col
@@ -28,7 +28,7 @@ export default class PersonalInformationFormWrapper extends React.PureComponent 
               fontWeight="extrabold"
               className="free_dropdown_label"
             >
-              {labels.plcc_form_dob}
+              {getLabelValue(labels, 'lbl_PLCCForm_dob')}
             </BodyCopy>
             <Row fullBleed>
               <Col
@@ -85,8 +85,8 @@ export default class PersonalInformationFormWrapper extends React.PureComponent 
           >
             <Field
               component={TextBox}
-              title={labels.plcc_form_ssn}
-              placeholder={labels.plcc_form_ssn}
+              title={getLabelValue(labels, 'lbl_PLCCForm_ssn')}
+              placeholder={getLabelValue(labels, 'lbl_PLCCForm_ssn')}
               name="ssNumber"
               maxLength="4"
               id="lastName"

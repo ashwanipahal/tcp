@@ -17,12 +17,12 @@ const TrackOrderTopSection = ({ labels }) => {
         mobileFontFamily="secondary"
         fontSize="fs22"
         fontWeight="extrabold"
-        text={labels.trackOrder.lbl_header_trackOrderOverlay_header}
+        text={labels.trackOrder.lbl_trackOrder_header}
       />
       <BodyCopy
         data-locator="trackordermodal-overlaysubheading"
         id="trackorder__modal__subheading"
-        text={labels.trackOrder.lbl_header_trackOrderOverlay_subheader}
+        text={labels.trackOrder.lbl_trackOrder_subheader}
       />
     </TrackOrderTopSectionView>
   );
