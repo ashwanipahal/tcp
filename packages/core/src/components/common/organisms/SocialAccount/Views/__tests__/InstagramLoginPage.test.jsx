@@ -1,7 +1,6 @@
 /* eslint-disable */
 import React from 'react';
 import { shallow } from 'enzyme';
-
 import InstagramLoginPage from '../InstagramLoginPage';
 
 describe('ForgotPasswordView component', () => {
