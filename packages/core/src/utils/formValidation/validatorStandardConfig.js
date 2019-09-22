@@ -100,6 +100,9 @@ export const formValidationMessages = {
     required: 'lbl_err_confirmemailaddress_required',
     matchEmail: 'lbl_err_confirmemailaddress_matchemail',
   },
+  legacyPassword: {
+    required: 'lbl_err_req',
+  },
   password: {
     required: 'lbl_err_password_required',
     password: 'lbl_err_password_password',

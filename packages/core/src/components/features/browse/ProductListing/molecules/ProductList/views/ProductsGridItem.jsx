@@ -1,7 +1,7 @@
 /* eslint-disable extra-rules/no-commented-out-code */
 import React from 'react';
 import productGridItemPropTypes from '../propTypes/ProductGridItemPropTypes';
-// import Button from '../../../../../../common/atoms/Button';
+import Button from '../../../../../../common/atoms/Button';
 import FulfillmentSection from '../../../../../../common/organisms/FulfillmentSection';
 import { getLocator } from '../../../../../../../utils';
 import { getImagesToDisplay, getMapSliceForColorProductId } from '../utils/productsCommonUtils';
@@ -48,6 +48,7 @@ class ProductsGridItem extends React.PureComponent {
     this.handleOpenAltImages = this.handleOpenAltImages.bind(this);
     this.handleChangeColor = this.handleChangeColor.bind(this);
     this.handlePickupOpenClick = this.handlePickupOpenClick.bind(this);
+    this.handleQuickViewOpenClick = this.handleQuickViewOpenClick.bind(this);
     const {
       onQuickViewOpenClick,
       item: {
@@ -214,6 +215,14 @@ class ProductsGridItem extends React.PureComponent {
       initialValues: { color: colorEntry && colorEntry.color.name },
       isBopisCtaEnabled: colorEntry.miscInfo.isBopisEligible,
       isBossCtaEnabled: colorEntry.miscInfo.isBossEligible,
+      colorProductId: selectedColorProductId,
+    });
+  }
+
+  handleQuickViewOpenClick() {
+    const { onQuickViewOpenClick } = this.props;
+    const { selectedColorProductId } = this.state;
+    onQuickViewOpenClick({
       colorProductId: selectedColorProductId,
     });
   }
@@ -424,21 +433,22 @@ class ProductsGridItem extends React.PureComponent {
             promotionalMessageModified,
             promotionalPLCCMessageModified
           )}
-          {/* <div>
+          <div>
             <Button
               className="added-to-bag"
               fullWidth
               buttonVariation="fixed-width"
-              dataLocator={dataLocatorAddToBag || getLocator('global_addtocart_Button')}
+              dataLocator={getLocator('global_addtocart_Button')}
+              onClick={this.handleQuickViewOpenClick}
             >
               {labels.addToBag}
             </Button>
-          </div> */}
+          </div>
           <div className="fulfillment-section">
             <FulfillmentSection
               btnClassName="added-to-bag"
               dataLocator={dataLocatorAddToBag || getLocator('global_addtocart_Button')}
-              buttonLabel={labels.addToBag}
+              buttonLabel="Pickup In Store"
               onPickupOpenClick={this.handlePickupOpenClick}
             />
           </div>

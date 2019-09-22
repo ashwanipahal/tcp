@@ -1,4 +1,5 @@
-import { getLabelValue } from '@tcp/core/src/utils/utils';
+import { createSelector } from 'reselect';
+import { getLabelValue } from '../../../../../utils';
 import { AVAILABILITY } from '../../../../../services/abstractors/CnC/CartItemTile';
 import getErrorList from './Errors.selector';
 
@@ -150,6 +151,15 @@ const getCurrentCurrency = state => {
   return state.session.getIn(['siteDetails', 'currency']);
 };
 
+const getCartStores = state => {
+  return state.CartPageReducer.getIn(['orderDetails', 'stores']);
+};
+
+const getCartStoresToJs = createSelector(
+  getCartStores,
+  store => JSON.parse(JSON.stringify(store))
+);
+
 const getsflItemsList = state => {
   return state.CartPageReducer.get('sfl');
 };
@@ -173,5 +183,7 @@ export default {
   getGiftServicesContentTcpId,
   getGiftServicesContentGymId,
   getCurrentCurrency,
+  getCartStores,
+  getCartStoresToJs,
   getsflItemsList,
 };
