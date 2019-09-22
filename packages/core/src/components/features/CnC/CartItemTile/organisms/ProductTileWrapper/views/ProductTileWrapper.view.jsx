@@ -156,7 +156,10 @@ class ProductTileWrapper extends React.PureComponent<props> {
         </>
       );
     }
-    return <EmptyBag bagLabels={bagLabels} isUserLoggedIn={isUserLoggedIn} />;
+    if (productSectionData.size === 0) {
+      return <EmptyBag bagLabels={bagLabels} isUserLoggedIn={isUserLoggedIn} />;
+    }
+    return <></>;
   }
 }
 

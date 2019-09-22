@@ -4,6 +4,7 @@ import { getLabelValue } from '@tcp/core/src/utils/utils';
 import BodyCopy from '@tcp/core/src/components/common/atoms/BodyCopy';
 import Anchor from '@tcp/core/src/components/common/atoms/Anchor';
 import FormPageHeading from '../../../../common/molecule/FormPageHeading';
+import internalEndpoints from '../../../../common/internalEndpoints';
 
 export const PointsClaimTopSection = ({ className, labels, onBack }) => {
   return (
@@ -15,8 +16,8 @@ export const PointsClaimTopSection = ({ className, labels, onBack }) => {
           anchorVariation="secondary"
           dataLocator="ponints-claim-back"
           className="elem-mb-LRG"
-          to="/account?id=place-rewards&&subSection=points-history"
-          asPath="/account/place-rewards/points-history"
+          to={internalEndpoints.pointsHistoryPage.link}
+          asPath={internalEndpoints.pointsHistoryPage.path}
         >
           <span className="left-arrow"> </span>
           {getLabelValue(labels, 'lbl_common_backLink', 'common')}

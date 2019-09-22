@@ -5,7 +5,7 @@ import { Anchor, Button, Col, Row, Image } from '../../../atoms';
 import withStyles from '../../../hoc/withStyles';
 import { Grid, LinkText, PromoBanner } from '../..';
 import ProductTabList from '../../../organisms/ProductTabList';
-import { getLocator, redirectToPdp, viewport } from '../../../../../utils';
+import { getLocator, viewport } from '../../../../../utils';
 import moduleRStyle, { ImageGridCol } from '../styles/ModuleR.style';
 
 /**
@@ -95,9 +95,11 @@ class ModuleR extends React.PureComponent {
         {selectedProductList.map((productItem, index) => {
           if (productItem.uniqueId) {
             const {
-              seo_token: seoToken,
+              pdpUrl,
+              pdpAsPath,
               uniqueId,
               imageUrl: [imageUrl],
+              product_name: productName,
             } = productItem;
             return (
               <ImageGridCol
@@ -112,11 +114,11 @@ class ModuleR extends React.PureComponent {
                 }}
               >
                 <Anchor
-                  to={redirectToPdp(uniqueId, seoToken).url}
-                  asPath={redirectToPdp(uniqueId, seoToken).asPath}
+                  to={pdpUrl}
+                  asPath={pdpAsPath}
                   dataLocator={`${getLocator('moduleR_product_image')}${index}`}
                 >
-                  <Image src={imageUrl} />
+                  <Image alt={productName} src={imageUrl} />
                 </Anchor>
               </ImageGridCol>
             );

@@ -77,4 +77,13 @@ const getGiftServicesFormData = state => {
   };
 };
 
-export { getPickUpContactFormLabels, getGiftServicesFormData, getSyncError };
+const getPaypalPaymentSettings = state => {
+  return state.Checkout.getIn(['options', 'paypalPaymentSettings']);
+};
+
+export {
+  getPickUpContactFormLabels,
+  getGiftServicesFormData,
+  getSyncError,
+  getPaypalPaymentSettings,
+};
