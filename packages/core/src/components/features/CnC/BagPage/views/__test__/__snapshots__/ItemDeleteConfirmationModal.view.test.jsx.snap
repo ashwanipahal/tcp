@@ -57,7 +57,6 @@ exports[`ItemDeleteConfirmation Modal should render modal when open true 1`] = `
           fontWeight="extrabold"
           letterSpacing="normal"
           lineHeight="normal"
-          onClick={[Function]}
           textAlign="left"
         />
       </Styled(Button)>
@@ -80,7 +79,6 @@ exports[`ItemDeleteConfirmation Modal should render modal when open true 1`] = `
           fontWeight="extrabold"
           letterSpacing="normal"
           lineHeight="normal"
-          onClick={[Function]}
           textAlign="left"
         />
       </Styled(Button)>
@@ -146,7 +144,6 @@ exports[`ItemDeleteConfirmation Modal should render no modal when isOpen is fals
           fontWeight="extrabold"
           letterSpacing="normal"
           lineHeight="normal"
-          onClick={[Function]}
           textAlign="left"
         />
       </Styled(Button)>
@@ -169,7 +166,6 @@ exports[`ItemDeleteConfirmation Modal should render no modal when isOpen is fals
           fontWeight="extrabold"
           letterSpacing="normal"
           lineHeight="normal"
-          onClick={[Function]}
           textAlign="left"
         />
       </Styled(Button)>
