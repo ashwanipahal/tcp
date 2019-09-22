@@ -107,15 +107,6 @@ export default css`
       props.variation === 'listing' ? props.theme.spacing.ELEM_SPACING.XL : 0};
   }
 
-  .heading-right {
-    .brand-store {
-      margin-bottom: ${props => props.theme.spacing.ELEM_SPACING.XS};
-      @media ${props => props.theme.mediaQuery.largeOnly} {
-        display: none;
-      }
-    }
-  }
-
   .listing-header {
     .title {
       @media ${props => props.theme.mediaQuery.medium} {
@@ -153,11 +144,11 @@ export default css`
         display: none;
       }
     }
-    .address-wrapper {
-      @media ${props => props.theme.mediaQuery.largeOnly} {
-        display: flex;
-        align-items: center;
-      }
+  }
+  .address-wrapper {
+    @media ${props => props.theme.mediaQuery.largeOnly} {
+      display: flex;
+      align-items: center;
     }
   }
   .address-details--listing-header {
@@ -165,10 +156,20 @@ export default css`
       margin-right: ${props => props.theme.spacing.ELEM_SPACING.XL};
     }
   }
-  .brand-store--listing-header {
+  .brand-store--sm {
     display: none;
     @media ${props => props.theme.mediaQuery.largeOnly} {
       display: flex;
+    }
+  }
+
+  .brand-store--lg {
+    margin-bottom: ${props => props.theme.spacing.ELEM_SPACING.XS};
+    @media ${props => props.theme.mediaQuery.largeOnly} {
+      display: none;
+    }
+    @media ${props => props.theme.mediaQuery.mediumOnly} {
+      margin: 0;
     }
   }
 `;

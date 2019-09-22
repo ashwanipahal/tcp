@@ -168,11 +168,11 @@ class StoreAddressTile extends PureComponent {
                 ))}
               </div>
             </address>
-            {isGym && this.getBrandStoreIcon(props, 'brand-store--listing-header')}
+            {isGym && this.getBrandStoreIcon(props, 'brand-store--sm')}
           </div>
         </div>
         <div className="heading-right">
-          {isGym && this.getBrandStoreIcon(props)}
+          {isGym && this.getBrandStoreIcon(props, 'brand-store--lg')}
           <Anchor
             fontSizeVariation="medium"
             underline
@@ -260,7 +260,7 @@ class StoreAddressTile extends PureComponent {
     );
   }
 
-  static getBrandStoreIcon(props) {
+  static getBrandStoreIcon(props, cls = '') {
     const { labels } = props;
     return (
       <BodyCopy
@@ -268,7 +268,7 @@ class StoreAddressTile extends PureComponent {
         component="div"
         color="text.primary"
         fontFamily="secondary"
-        className="brand-store"
+        className={`brand-store ${cls}`}
       >
         <Image
           src={getIconPath('gymboree-icon')}
