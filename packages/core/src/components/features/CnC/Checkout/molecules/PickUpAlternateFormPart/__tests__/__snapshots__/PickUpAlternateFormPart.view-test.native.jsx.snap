@@ -12,9 +12,14 @@ exports[`Coupon component should renders correctly when Coupon are not present 1
       name="hasAlternatePickup"
     />
     <Styled(BodyCopy)
+      accessibilityText=""
+      dataLocator=""
       fontFamily="secondary"
       fontSize="fs14"
       fontWeight="regular"
+      margin={null}
+      numberOfLines={null}
+      textDecoration={null}
     />
   </Styled(View)>
   <Styled(View)>
@@ -37,9 +42,14 @@ exports[`Coupon component should renders correctly when data is present 1`] = `
       name="hasAlternatePickup"
     />
     <Styled(BodyCopy)
+      accessibilityText=""
+      dataLocator=""
       fontFamily="secondary"
       fontSize="fs14"
       fontWeight="regular"
+      margin={null}
+      numberOfLines={null}
+      textDecoration={null}
     />
   </Styled(View)>
   <Styled(View)>
@@ -47,9 +57,14 @@ exports[`Coupon component should renders correctly when data is present 1`] = `
     <Styled(View)>
       <Styled(View)>
         <Styled(BodyCopy)
+          accessibilityText=""
+          dataLocator=""
           fontFamily="primary"
           fontSize="fs10"
           fontWeight="regular"
+          margin={null}
+          numberOfLines={null}
+          textDecoration={null}
         />
       </Styled(View)>
     </Styled(View)>

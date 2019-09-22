@@ -2,8 +2,10 @@
 
 exports[`ProductAddToBagVanilla native should render correctly should match snapshot 1`] = `
 <View
+  addToBagAction={null}
   colorList={Array []}
   fitList={Array []}
+  isErrorMessageDisplayed={false}
   plpLabels={Object {}}
   quantityList={Array []}
   selectedColor={null}
@@ -18,9 +20,11 @@ exports[`ProductAddToBagVanilla native should render correctly should match snap
         "_foldedDefaultProps": Object {
           "componentWidth": 80,
           "data": Array [],
+          "error": null,
           "itemNameKey": "",
           "itemValue": "",
           "keyExtractor": null,
+          "locators": null,
           "renderItem": null,
           "selectItem": null,
           "selectedItem": null,
@@ -48,12 +52,14 @@ exports[`ProductAddToBagVanilla native should render correctly should match snap
     componentWidth={30}
     data={Array []}
     id="color"
-    itemValue=""
-    name={null}
+    locators={
+      Object {
+        "key": "pdp_color_label",
+        "value": "pdp_color_value",
+      }
+    }
     renderItem={[Function]}
-    selectedItem={null}
     separatorWidth={16}
-    title="COLOR"
   />
   <Field
     component={
@@ -62,9 +68,11 @@ exports[`ProductAddToBagVanilla native should render correctly should match snap
         "_foldedDefaultProps": Object {
           "componentWidth": 80,
           "data": Array [],
+          "error": null,
           "itemNameKey": "",
           "itemValue": "",
           "keyExtractor": null,
+          "locators": null,
           "renderItem": null,
           "selectItem": null,
           "selectedItem": null,
@@ -91,11 +99,16 @@ exports[`ProductAddToBagVanilla native should render correctly should match snap
     }
     data={Array []}
     id="fit"
-    itemNameKey="fitNameVal"
+    itemNameKey="displayName"
     itemValue=""
-    name={null}
-    selectedItem={null}
-    title="FIT"
+    locators={
+      Object {
+        "key": "pdp_fit_label",
+        "value": "pdp_fit_value",
+      }
+    }
+    name=""
+    selectedItem=""
   />
   <Field
     component={
@@ -104,9 +117,11 @@ exports[`ProductAddToBagVanilla native should render correctly should match snap
         "_foldedDefaultProps": Object {
           "componentWidth": 80,
           "data": Array [],
+          "error": null,
           "itemNameKey": "",
           "itemValue": "",
           "keyExtractor": null,
+          "locators": null,
           "renderItem": null,
           "selectItem": null,
           "selectedItem": null,
@@ -132,20 +147,31 @@ exports[`ProductAddToBagVanilla native should render correctly should match snap
       }
     }
     data={Array []}
+    error=""
     id="size"
-    itemNameKey="sizeName"
+    itemNameKey="displayName"
     itemValue=""
-    name={null}
-    selectedItem={null}
-    title="SIZE"
+    locators={
+      Object {
+        "key": "pdp_size_label",
+        "value": "pdp_size_value",
+      }
+    }
+    name=""
+    selectedItem=""
   />
   <Styled(View)>
     <Styled(BodyCopy)
+      accessibilityText=""
       color="gray.900"
+      dataLocator=""
       fontSize="fs14"
       fontWeight="black"
+      margin={null}
       mobileFontFamily="secondary"
-      text="QUANTITY: "
+      numberOfLines={null}
+      text="undefined: "
+      textDecoration={null}
     />
     <Styled(DropDown)
       bounces={false}
@@ -174,9 +200,10 @@ exports[`ProductAddToBagVanilla native should render correctly should match snap
     color="white"
     fill="BLUE"
     fontFamily="secondary"
-    fontSize="fs13"
+    fontSize="fs10"
     fontWeight="extrabold"
-    onPress={[Function]}
+    locator="pdp_color_swatch"
+    onPress={null}
   />
 </View>
 `;

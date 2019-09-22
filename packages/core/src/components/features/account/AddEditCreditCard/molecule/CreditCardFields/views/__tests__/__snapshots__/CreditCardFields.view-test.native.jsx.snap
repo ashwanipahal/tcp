@@ -23,10 +23,15 @@ exports[`CreditCardFields component should render correctly 1`] = `
   <Styled(View)>
     <Styled(View)>
       <Styled(BodyCopy)
+        accessibilityText=""
+        dataLocator=""
         fontSize="fs10"
         fontWeight="black"
+        margin={null}
         mobilefontFamily="secondary"
+        numberOfLines={null}
         text=""
+        textDecoration={null}
       />
       <Field
         component={
@@ -142,10 +147,15 @@ exports[`CreditCardFields component should render correctly 1`] = `
     </Styled(View)>
     <Styled(View)>
       <Styled(BodyCopy)
+        accessibilityText=""
+        dataLocator=""
         fontSize="fs10"
         fontWeight="black"
+        margin={null}
         mobilefontFamily="secondary"
+        numberOfLines={null}
         text=""
+        textDecoration={null}
       />
       <Field
         component={

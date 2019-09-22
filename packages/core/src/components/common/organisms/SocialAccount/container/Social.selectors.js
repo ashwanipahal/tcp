@@ -9,3 +9,8 @@ export const getsocialDataOnLoadState = createSelector(
   getSocialResponse,
   resp => resp && resp.get('socialDataOnLoad')
 );
+
+export const getPointsModal = createSelector(
+  getSocialResponse,
+  resp => resp && resp.get('pointModalMountState')
+);

@@ -14,6 +14,7 @@ import AddedToBagReducer from '@tcp/core/src/components/features/CnC/AddedToBag/
 import CartItemTile from '@tcp/core/src/components/features/CnC/CartItemTile/container/CartItemTile.reducer';
 import CartPage from '@tcp/core/src/components/features/CnC/BagPage/container/BagPage.reducer';
 import PointsHistoryReducer from '@tcp/core/src/components/features/account/common/organism/PointsHistory/container/PointsHistory.reducer';
+import EarnExtraPointsReducer from '@tcp/core/src/components/features/account/common/organism/EarnExtraPointsTile/container/EarnExtraPointsTile.reducer';
 import CreateAccountReducer from '@tcp/core/src/components/features/account/CreateAccount/container/CreateAccount.reducer';
 import CouponReducer from '@tcp/core/src/components/features/CnC/common/organism/CouponAndPromos/container/Coupon.reducer';
 import AirmilesBannerReducer from '@tcp/core/src/components/features/CnC/common/organism/AirmilesBanner/container/AirmilesBanner.reducer';
@@ -30,6 +31,7 @@ import UpdateProfileReducer from '@tcp/core/src/components/features/account/AddE
 import MyProfileReducer from '@tcp/core/src/components/features/account/MyProfile/container/MyProfile.reducer';
 import ProductDetailReducer from '@tcp/core/src/components/features/browse/ProductDetail/container/ProductDetail.reducer';
 import MyFavoriteStoreReducer from '@tcp/core/src/components/features/account/MyProfile/organism/MyFavoriteStore/container/MyFavoriteStore.reducer';
+import BirthdaySavingsListReducer from '@tcp/core/src/components/features/account/common/organism/BirthdaySavingsList/container/BirthdaySavingsList.reducer';
 
 import {
   SESSIONCONFIG_REDUCER_KEY,
@@ -53,6 +55,7 @@ import {
   AIRMILES_BANNER_REDUCER_KEY,
   BONUS_POINTS_DAYS_REDUCER_KEY,
   POINTS_HISTORY_REDUCER_KEY,
+  EARNEXTRAPOINTS_REDUCER_KEY,
   PRODUCT_LISTING_REDUCER_KEY,
   APICONFIG_REDUCER_KEY,
   ADDEDITCREDITCARD_REDUCER_KEY,
@@ -70,6 +73,7 @@ import {
   MY_PROFILE_REDUCER_KEY,
   PRODUCT_DETAIL_REDUCER_KEY,
   MY_FAVORITE_STORE_REDUCER_KEY,
+  BIRTHDAY_SAVING_LIST_REDUCER_KEY,
 } from '@tcp/core/src/constants/reducer.constants';
 import HeaderReducer from '@tcp/core/src/components/common/organisms/Header/container/Header.reducer';
 import ModulesReducer from '@tcp/core/src/reduxStore/reducers/modules';
@@ -135,6 +139,7 @@ const rootReducer = combineReducers({
   [AIRMILES_BANNER_REDUCER_KEY]: AirmilesBannerReducer,
   [BONUS_POINTS_DAYS_REDUCER_KEY]: BonusPointsDaysReducer,
   [POINTS_HISTORY_REDUCER_KEY]: PointsHistoryReducer,
+  [EARNEXTRAPOINTS_REDUCER_KEY]: EarnExtraPointsReducer,
   [ADDEDITCREDITCARD_REDUCER_KEY]: AddEditCreditCardReducer,
   [USER_REDUCER_KEY]: UserReducer,
   [CHANGE_PASSWORD_REDUCER_KEY]: ChangePasswordReducer,
@@ -147,6 +152,7 @@ const rootReducer = combineReducers({
   [UPDATE_PROFILE_REDUCER_KEY]: UpdateProfileReducer,
   [MY_PROFILE_REDUCER_KEY]: MyProfileReducer,
   [MY_FAVORITE_STORE_REDUCER_KEY]: MyFavoriteStoreReducer,
+  [BIRTHDAY_SAVING_LIST_REDUCER_KEY]: BirthdaySavingsListReducer,
 });
 
 export default rootReducer;

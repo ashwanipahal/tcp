@@ -42,12 +42,17 @@ export const CheckoutButton = styled.TouchableOpacity`
 `;
 
 export const BonusPointsWrapper = styled.View`
-  padding-top: ${props => props.theme.spacing.ELEM_SPACING.MED};
-  padding-bottom: ${props => props.theme.spacing.ELEM_SPACING.MED};
-  border-top-width: ${props => props.theme.spacing.ELEM_SPACING.MED};
-  border-bottom-width: ${props => props.theme.spacing.ELEM_SPACING.MED};
+  padding-top: ${props => props.theme.spacing.ELEM_SPACING.SM};
+  padding-bottom: ${props => props.theme.spacing.ELEM_SPACING.SM};
+  border-top-width: 1px;
+  border-bottom-width: 1px;
   border-style: solid;
-  border-color: ${props => props.theme.colors.PRIMARY.PALEGRAY};
+  border-color: ${props => props.theme.colors.PRIMARY.GRAY};
+`;
+
+export const CouponAndPromosWrapper = styled.View`
+  padding-top: ${props => props.theme.spacing.ELEM_SPACING.SM};
+  padding-bottom: ${props => props.theme.spacing.ELEM_SPACING.SM};
 `;
 
 export default {
@@ -57,4 +62,5 @@ export default {
   BackIcon,
   BackLinkWrapperWrapper,
   BonusPointsWrapper,
+  CouponAndPromosWrapper,
 };

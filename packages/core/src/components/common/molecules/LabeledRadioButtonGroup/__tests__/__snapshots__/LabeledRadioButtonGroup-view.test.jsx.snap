@@ -1,0 +1,225 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`LabeledRadioButtonGroup should render correctly should match snapshot 1`] = `
+<div
+  className="-container"
+>
+  <span
+    className="-title"
+  >
+    5T
+  </span>
+  <div
+    className="-items-list"
+  >
+    <LabeledRadioButton
+      aria-describedby="error_2T_0"
+      checked={true}
+      className="-item item-selected-option"
+      disabled={false}
+      input="2T"
+      name="2T_0"
+      onChange={[Function]}
+      style={Object {}}
+      subtitle={
+        Array [
+          "",
+        ]
+      }
+      tabIndex="0"
+      title="Size: "
+    >
+      <Component />
+    </LabeledRadioButton>
+    <LabeledRadioButton
+      aria-describedby="error_2T_0"
+      checked={true}
+      className="-item item-selected-option"
+      disabled={false}
+      input="2T"
+      name="2T_0"
+      onChange={[Function]}
+      style={Object {}}
+      subtitle={
+        Array [
+          "",
+        ]
+      }
+      tabIndex="0"
+      title="Size: "
+    >
+      <Component />
+    </LabeledRadioButton>
+    <LabeledRadioButton
+      aria-describedby="error_2T_0"
+      checked={true}
+      className="-item item-selected-option"
+      disabled={false}
+      input="2T"
+      name="2T_0"
+      onChange={[Function]}
+      style={Object {}}
+      subtitle={
+        Array [
+          "",
+        ]
+      }
+      tabIndex="0"
+      title="Size: "
+    >
+      <Component />
+    </LabeledRadioButton>
+    <LabeledRadioButton
+      aria-describedby="error_2T_0"
+      checked={true}
+      className="-item item-selected-option"
+      disabled={false}
+      input="2T"
+      name="2T_0"
+      onChange={[Function]}
+      style={Object {}}
+      subtitle={
+        Array [
+          "",
+        ]
+      }
+      tabIndex="0"
+      title="Size: "
+    >
+      <Component />
+    </LabeledRadioButton>
+    <LabeledRadioButton
+      aria-describedby="error_2T_0"
+      checked={true}
+      className="-item item-selected-option"
+      disabled={false}
+      input="2T"
+      name="2T_0"
+      onChange={[Function]}
+      style={Object {}}
+      subtitle={
+        Array [
+          "",
+        ]
+      }
+      tabIndex="0"
+      title="Size: "
+    >
+      <Component />
+    </LabeledRadioButton>
+  </div>
+</div>
+`;
+
+exports[`LabeledRadioButtonGroup should render correctly should return null 1`] = `""`;
+
+exports[`LabeledRadioButtonGroup should render correctly should return null value 1`] = `
+<div
+  className="-container"
+>
+  <span
+    className="-title"
+  >
+    5T
+  </span>
+  <div
+    className="-items-list"
+  >
+    <LabeledRadioButton
+      aria-describedby="error_2T_5"
+      checked={true}
+      className="-item item-selected-option"
+      disabled={false}
+      input="2T"
+      name="2T_5"
+      onChange={[Function]}
+      style={Object {}}
+      subtitle={
+        Array [
+          "",
+        ]
+      }
+      tabIndex="0"
+      title="Size: "
+    >
+      <Component />
+    </LabeledRadioButton>
+    <LabeledRadioButton
+      aria-describedby="error_2T_5"
+      checked={true}
+      className="-item item-selected-option"
+      disabled={false}
+      input="2T"
+      name="2T_5"
+      onChange={[Function]}
+      style={Object {}}
+      subtitle={
+        Array [
+          "",
+        ]
+      }
+      tabIndex="0"
+      title="Size: "
+    >
+      <Component />
+    </LabeledRadioButton>
+    <LabeledRadioButton
+      aria-describedby="error_2T_5"
+      checked={true}
+      className="-item item-selected-option"
+      disabled={false}
+      input="2T"
+      name="2T_5"
+      onChange={[Function]}
+      style={Object {}}
+      subtitle={
+        Array [
+          "",
+        ]
+      }
+      tabIndex="0"
+      title="Size: "
+    >
+      <Component />
+    </LabeledRadioButton>
+    <LabeledRadioButton
+      aria-describedby="error_2T_5"
+      checked={true}
+      className="-item item-selected-option"
+      disabled={false}
+      input="2T"
+      name="2T_5"
+      onChange={[Function]}
+      style={Object {}}
+      subtitle={
+        Array [
+          "",
+        ]
+      }
+      tabIndex="0"
+      title="Size: "
+    >
+      <Component />
+    </LabeledRadioButton>
+    <LabeledRadioButton
+      aria-describedby="error_2T_5"
+      checked={true}
+      className="-item item-selected-option"
+      disabled={false}
+      input="2T"
+      name="2T_5"
+      onChange={[Function]}
+      style={Object {}}
+      subtitle={
+        Array [
+          "",
+        ]
+      }
+      tabIndex="0"
+      title="Size: "
+    >
+      <Component />
+    </LabeledRadioButton>
+  </div>
+</div>
+`;

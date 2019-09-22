@@ -10,23 +10,38 @@ exports[`MyRewards should render correctly 1`] = `
   >
     <Styled(Text)>
       <Styled(BodyCopy)
+        accessibilityText=""
+        dataLocator=""
         fontSize="fs16"
         fontWeight="extrabold"
+        margin={null}
+        numberOfLines={null}
+        textDecoration={null}
       />
     </Styled(Text)>
     <Styled(View) />
     <Styled(View)>
       <Styled(BodyCopy)
+        accessibilityText=""
+        dataLocator=""
         fontSize="fs16"
         fontWeight="extrabold"
+        margin={null}
+        numberOfLines={null}
+        textDecoration={null}
       />
       <Connect(RewardsPointsContainer) />
     </Styled(View)>
     <Styled(View)>
       <Styled(Text)>
         <Styled(BodyCopy)
+          accessibilityText=""
+          dataLocator=""
           fontSize="fs16"
           fontWeight="extrabold"
+          margin={null}
+          numberOfLines={null}
+          textDecoration={null}
         />
       </Styled(Text)>
       <Connect(PointsHistoryContainer) />
@@ -35,9 +50,7 @@ exports[`MyRewards should render correctly 1`] = `
       <BonusPointsDaysSection />
     </Styled(View)>
     <Styled(View)>
-      <Text>
-        FPO
-      </Text>
+      <Connect(EarnExtraPointsTileContainer) />
     </Styled(View)>
     <Connect(MyRewardsContainer)
       labels={

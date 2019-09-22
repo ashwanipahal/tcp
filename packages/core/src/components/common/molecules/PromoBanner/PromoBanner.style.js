@@ -360,7 +360,7 @@ export default css`
     font-family: ${props => props.theme.typography.fonts.primary};
     font-size: ${props => props.theme.typography.fontSizes.fs32};
     font-weight: ${props => props.theme.typography.fontWeights.semibold};
-    letter-spacing: ${props => props.theme.typography.letterSpacings.ls222};
+    letter-spacing: ${props => props.theme.typography.letterSpacings.ls2};
 
     @media ${props => props.theme.mediaQuery.large} {
       font-size: ${props => props.theme.typography.fontSizes.fs64};
