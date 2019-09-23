@@ -5,6 +5,7 @@ import AccountOverviewViewContainer from '../AccountOverview/container/AccountOv
 import MyProfile from '../MyProfile/container/MyProfile.container';
 import Wallet from '../Wallet/container/Wallet.container';
 import PointHistoryPage from '../PointHistory';
+import { MyPrefrenceContainer } from '../MyPrefrence/container/MyPreference.container';
 
 const AccountComponentNativeMapping = {
   addressBookMobile: AddressBookMobile,
@@ -14,6 +15,7 @@ const AccountComponentNativeMapping = {
   profile: MyProfile,
   myWalletPageMobile: Wallet,
   pointHistoryPageMobile: PointHistoryPage,
+  myPreferences: MyPrefrenceContainer,
 };
 
 export default AccountComponentNativeMapping;
