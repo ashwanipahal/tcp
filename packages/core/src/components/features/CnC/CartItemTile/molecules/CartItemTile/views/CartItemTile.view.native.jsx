@@ -242,7 +242,11 @@ class ProductInformation extends React.Component {
         )}
         {this.renderSflActionsLinks()}
 
-        <MarginLeft onPress={() => removeCartItem(productDetail.itemInfo.itemId)}>
+        <MarginLeft
+          onPress={() =>
+            removeCartItem({ itemId: productDetail.itemInfo.itemId, pageView: 'myBag' })
+          }
+        >
           <Image
             data-locator={getLocator('cart_item_edit_link')}
             source={deleteIcon}
