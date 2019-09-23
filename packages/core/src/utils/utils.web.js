@@ -288,6 +288,27 @@ export const getModifiedLanguageCode = id => {
   }
 };
 
+/**
+ * @method getTranslateDateInformation
+ * @desc returns day, month and day of the respective date provided
+ * @param {string} date date which is to be mutated
+ * @param {upperCase} locale use for convert locate formate
+ */
+export const getTranslateDateInformation = (
+  date,
+  language = 'en',
+  dayOption = { weekday: 'short' },
+  monthOption = { month: 'short' }
+) => {
+  const localeType = getModifiedLanguageCode(language).replace('_', '-');
+  const currentDate = date ? new Date(date) : new Date();
+  return {
+    day: new Intl.DateTimeFormat(localeType, dayOption).format(currentDate),
+    month: new Intl.DateTimeFormat(localeType, monthOption).format(currentDate),
+    date: currentDate.getDate(),
+  };
+};
+
 export const siteRedirect = (newCountry, oldCountry, newSiteId, oldSiteId) => {
   if ((newCountry && newCountry !== oldCountry) || (newSiteId && newSiteId !== oldSiteId)) {
     routerPush(window.location.href, ROUTE_PATH.home, null, newSiteId);
