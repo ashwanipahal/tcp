@@ -1,0 +1,91 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`AddedToBagActions native component AddedToBagActions native component renders correctly 1`] = `
+<BagPage
+  activeSection="BAG"
+  labels={
+    Object {
+      "bagHeading": "test",
+      "checkout": "",
+      "savedLaterButton": "savedLaterButton",
+      "tagLine": "tagline",
+      "viewBag": "",
+    }
+  }
+  navigation={[MockFunction]}
+  sflItems={Object {}}
+  totalCount={10}
+/>
+`;
+
+exports[`AddedToBagActions native component AddedToBagActions native component renders correctly with SFL section 1`] = `
+<BagPage
+  activeSection="SFL"
+  labels={
+    Object {
+      "bagHeading": "test",
+      "checkout": "",
+      "savedLaterButton": "savedLaterButton",
+      "tagLine": "tagline",
+      "viewBag": "",
+    }
+  }
+  navigation={[MockFunction]}
+  sflItems={Object {}}
+  totalCount={0}
+/>
+`;
+
+exports[`AddedToBagActions native component AddedToBagActions native component renders correctly with active BAG section 1`] = `
+<BagPage
+  activeSection="SFL"
+  labels={
+    Object {
+      "bagHeading": "test",
+      "checkout": "",
+      "savedLaterButton": "savedLaterButton",
+      "tagLine": "tagline",
+      "viewBag": "",
+    }
+  }
+  navigation={[MockFunction]}
+  sflItems={Object {}}
+  totalCount={0}
+/>
+`;
+
+exports[`AddedToBagActions native component AddedToBagActions native component renders correctly with active SFL section 1`] = `
+<BagPage
+  activeSection="BAG"
+  labels={
+    Object {
+      "bagHeading": "test",
+      "checkout": "",
+      "savedLaterButton": "savedLaterButton",
+      "tagLine": "tagline",
+      "viewBag": "",
+    }
+  }
+  navigation={[MockFunction]}
+  sflItems={Object {}}
+  totalCount={0}
+/>
+`;
+
+exports[`AddedToBagActions native component AddedToBagActions native component renders correctly with bag section 1`] = `
+<BagPage
+  activeSection="BAG"
+  labels={
+    Object {
+      "bagHeading": "test",
+      "checkout": "",
+      "savedLaterButton": "savedLaterButton",
+      "tagLine": "tagline",
+      "viewBag": "",
+    }
+  }
+  navigation={[MockFunction]}
+  sflItems={Object {}}
+  totalCount={0}
+/>
+`;

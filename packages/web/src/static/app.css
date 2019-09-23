@@ -1,3 +1,7 @@
+html > body {
+  opacity: 1 !important;
+}
+
 .dark-overlay {
   display: none;
   background-color: #1a1a1a;
