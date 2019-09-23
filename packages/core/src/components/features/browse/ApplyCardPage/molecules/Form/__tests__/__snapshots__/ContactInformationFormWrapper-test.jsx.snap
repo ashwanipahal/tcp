@@ -978,7 +978,9 @@ exports[`ContactInformationFormWrapper component should renders correctly 1`] = 
             letterSpacing="normal"
             lineHeight="normal"
             textAlign="left"
-          />
+          >
+            state
+          </Styled(BodyCopy)>
           <Field
             className="field"
             component={
@@ -1154,6 +1156,7 @@ exports[`ContactInformationFormWrapper component should renders correctly 1`] = 
                 },
               ]
             }
+            placeholder="state select"
           />
         </Styled(Col)>
         <Styled(Col)

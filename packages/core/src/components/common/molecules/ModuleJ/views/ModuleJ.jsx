@@ -7,7 +7,7 @@ import errorBoundary from '../../../hoc/withErrorBoundary';
 import withStyles from '../../../hoc/withStyles';
 import ProductTabList from '../../../organisms/ProductTabList';
 import moduleJStyle from '../styles/ModuleJ.style';
-import { getIconPath, getLocator } from '../../../../../utils';
+import { configurePlpNavigationFromCMSUrl, getIconPath, getLocator } from '../../../../../utils';
 import config from '../config';
 
 class ModuleJ extends React.PureComponent {
@@ -65,6 +65,8 @@ class ModuleJ extends React.PureComponent {
     } = this.props;
 
     const { currentCatId } = this.state;
+    const { image: promoImage1, link: promoLink1 } = mediaLinkedList[0];
+    const { image: promoImage2, link: promoLink2 } = mediaLinkedList[1];
 
     const { CAROUSEL_OPTIONS, PROMO_IMG_DATA, TOTAL_IMAGES } = config;
     let data = productTabList[currentCatId] || [];
@@ -93,14 +95,21 @@ class ModuleJ extends React.PureComponent {
                 small: true,
               }}
             >
-              <DamImage
-                imgConfigs={PROMO_IMG_DATA.imgConfig}
-                imgData={{
-                  alt: mediaLinkedList[0] && mediaLinkedList[0].image.alt,
-                  url: mediaLinkedList[0] && mediaLinkedList[0].image.url,
-                }}
-                data-locator={`${getLocator('moduleJ_promobanner_img')}${1}`}
-              />
+              <Anchor
+                to={configurePlpNavigationFromCMSUrl(promoLink1.url)}
+                asPath={promoLink1.url}
+                title={promoLink1.title}
+                target={promoLink1.target}
+              >
+                <DamImage
+                  imgConfigs={PROMO_IMG_DATA.imgConfig}
+                  imgData={{
+                    alt: promoImage1.alt,
+                    url: promoImage1.url,
+                  }}
+                  data-locator={`${getLocator('moduleJ_promobanner_img')}${1}`}
+                />
+              </Anchor>
             </Col>
             <Col
               className="promo"
@@ -151,15 +160,19 @@ class ModuleJ extends React.PureComponent {
                 large: 3,
               }}
             >
-              <DamImage
-                className="promo-img"
-                imgConfigs={PROMO_IMG_DATA.imgConfig}
-                imgData={{
-                  alt: mediaLinkedList[1] && mediaLinkedList[1].image.alt,
-                  url: mediaLinkedList[1] && mediaLinkedList[1].image.url,
-                }}
-                data-locator={`${getLocator('moduleJ_promobanner_img')}${2}`}
-              />
+              <Anchor
+                to={configurePlpNavigationFromCMSUrl(promoLink2.url)}
+                asPath={promoLink2.url}
+                title={promoLink2.title}
+                target={promoLink2.target}
+              >
+                <DamImage
+                  className="promo-img"
+                  imgConfigs={PROMO_IMG_DATA.imgConfig}
+                  imgData={promoImage2}
+                  data-locator={`${getLocator('moduleJ_promobanner_img')}${2}`}
+                />
+              </Anchor>
             </Col>
           </Row>
         ) : (
@@ -231,7 +244,7 @@ class ModuleJ extends React.PureComponent {
                   customArrowRight: getIconPath('carousel-big-carrot'),
                 }}
               >
-                {data.map(({ imageUrl, pdpUrl, pdpAsPath }, index) => {
+                {data.map(({ imageUrl, pdpUrl, pdpAsPath, product_name: productName }, index) => {
                   return (
                     <div key={index.toString()}>
                       <Anchor
@@ -240,7 +253,7 @@ class ModuleJ extends React.PureComponent {
                         asPath={pdpAsPath}
                         dataLocator={`${getLocator('moduleJ_product_image')}${index}`}
                       >
-                        <Image src={imageUrl[0]} />
+                        <Image alt={productName} src={imageUrl[0]} />
                       </Anchor>
                     </div>
                   );

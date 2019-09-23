@@ -29,7 +29,8 @@ const ProductDetailView = ({
   const isWeb =
     ExecutionEnvironment.canUseDOM && document.body.offsetWidth >= breakpoints.values.lg;
   let imagesToDisplay = [];
-  if (Object.keys(productInfo).length !== 0) {
+  const noProductData = Object.keys(productInfo).length === 0;
+  if (!noProductData) {
     const colorProduct = getMapSliceForColorProductId(
       productInfo.colorFitsSizesMap,
       /* colorProductId would not be hard coded and it will be replaced in near future when it done */
@@ -43,7 +44,7 @@ const ProductDetailView = ({
     });
   }
 
-  return (
+  return noProductData ? null : (
     <div className={className}>
       <Row>
         <Col colSize={{ small: 6, medium: 8, large: 12 }}>

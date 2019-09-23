@@ -18,7 +18,7 @@ import {
 } from '../../../utils/errorMessage.util';
 import { isCanada } from '../../../utils';
 
-const ORDER_ITEM_TYPE = {
+export const ORDER_ITEM_TYPE = {
   BOSS: 'BOSS',
   BOPIS: 'BOPIS',
   ECOM: 'ECOM',

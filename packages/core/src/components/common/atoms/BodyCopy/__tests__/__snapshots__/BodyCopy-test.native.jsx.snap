@@ -1,8 +1,10 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
 exports[`HeadingVanilla should render correctly 1`] = `
-<Text
-  accessibilityLabel=" undefined"
+<Styled(Text)
+  accessibilityLabel="undefined"
   accessibilityRole="text"
+  margin={null}
+  textDecoration={null}
 />
 `;

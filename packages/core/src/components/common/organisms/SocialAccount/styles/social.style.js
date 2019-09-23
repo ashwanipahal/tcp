@@ -35,6 +35,20 @@ const socialStyle = css`
     position: absolute;
     right: 0;
   }
+  .social-accounts-alignment {
+    padding: 0 ${props => props.theme.spacing.LAYOUT_SPACING.LRG}
+      ${props => props.theme.spacing.LAYOUT_SPACING.XS};
+  }
+  .button-style {
+    margin: ${props => props.theme.spacing.ELEM_SPACING.XXL} 0 0;
+  }
+  .points-theme {
+    padding: 0 ${props => props.theme.spacing.ELEM_SPACING.XXS};
+    color: ${props =>
+      props.isPlcc
+        ? props.theme.colorPalette.userTheme.plcc
+        : props.theme.colorPalette.userTheme.mpr};
+  }
 `;
 
 export default socialStyle;

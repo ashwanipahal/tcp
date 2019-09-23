@@ -22,6 +22,11 @@ export const getPlpLabels = state => {
   if (!state.Labels || !state.Labels.PLP)
     return {
       addToBag: '',
+      errorMessage: '',
+      size: '',
+      fit: '',
+      color: '',
+      quantity: '',
     };
 
   const {
@@ -32,6 +37,7 @@ export const getPlpLabels = state => {
         lbl_pdp_size: size,
         lbl_pdp_fit: fit,
         lbl_pdp_color: color,
+        lbl_pdp_quantity: quantity,
       },
     },
   } = state.Labels;
@@ -42,6 +48,7 @@ export const getPlpLabels = state => {
     size,
     fit,
     color,
+    quantity,
   };
 };
 

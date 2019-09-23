@@ -12,15 +12,21 @@ exports[`GiftServices component should renders correctly props not present 1`] =
         onChange={[Function]}
       />
       <Styled(BodyCopy)
+        accessibilityText=""
+        dataLocator=""
         fontFamily="secondary"
         fontSize="fs14"
         fontWeight="extrabold"
+        margin={null}
+        numberOfLines={null}
+        textDecoration={null}
       />
     </Styled(View)>
     <Styled(View)>
       <Styled(Anchor)
         accessibilityLabel=""
         anchorVariation="primary"
+        colorName={null}
         customStyle={Object {}}
         fontFamily="secondary"
         fontSizeVariation="medium"
@@ -34,10 +40,14 @@ exports[`GiftServices component should renders correctly props not present 1`] =
   </Styled(View)>
   <Styled(View)>
     <Styled(BodyCopy)
+      accessibilityText=""
       dataLocator="add-gift-services-details-lbl"
       fontSize="fs14"
       fontWeight="regular"
+      margin={null}
       mobileFontFamily="secondary"
+      numberOfLines={null}
+      textDecoration={null}
     />
   </Styled(View)>
   <GiftServicesDetailsModal
@@ -60,15 +70,21 @@ exports[`GiftServices component should renders correctly props not present 2`] =
         onChange={[Function]}
       />
       <Styled(BodyCopy)
+        accessibilityText=""
+        dataLocator=""
         fontFamily="secondary"
         fontSize="fs14"
         fontWeight="extrabold"
+        margin={null}
+        numberOfLines={null}
+        textDecoration={null}
       />
     </Styled(View)>
     <Styled(View)>
       <Styled(Anchor)
         accessibilityLabel=""
         anchorVariation="primary"
+        colorName={null}
         customStyle={Object {}}
         fontFamily="secondary"
         fontSizeVariation="medium"
@@ -82,19 +98,27 @@ exports[`GiftServices component should renders correctly props not present 2`] =
   </Styled(View)>
   <Styled(View)>
     <Styled(BodyCopy)
+      accessibilityText=""
       dataLocator="add-gift-services-details-lbl"
       fontSize="fs14"
       fontWeight="regular"
+      margin={null}
       mobileFontFamily="secondary"
+      numberOfLines={null}
+      textDecoration={null}
     />
   </Styled(View)>
   <View>
     <Styled(View)>
       <Styled(BodyCopy)
+        accessibilityText=""
         dataLocator="brand-gift-services-details-lbl"
         fontSize="fs14"
         fontWeight="regular"
+        margin={null}
         mobileFontFamily="secondary"
+        numberOfLines={null}
+        textDecoration={null}
       />
       <Styled(View)>
         <Styled(View)>
@@ -202,16 +226,26 @@ exports[`GiftServices component should renders correctly props not present 2`] =
     />
     <Styled(View)>
       <Styled(BodyCopy)
+        accessibilityText=""
         color="gray.900"
+        dataLocator=""
         fontSize="fs14"
+        margin={null}
         mobileFontFamily="secondary"
+        numberOfLines={null}
         textAlign="left"
+        textDecoration={null}
       />
       <Styled(BodyCopy)
+        accessibilityText=""
         color="gray.900"
+        dataLocator=""
         fontSize="fs10"
+        margin={null}
         mobileFontFamily="secondary"
+        numberOfLines={null}
         textAlign="right"
+        textDecoration={null}
       />
     </Styled(View)>
     <Styled(TextInput)

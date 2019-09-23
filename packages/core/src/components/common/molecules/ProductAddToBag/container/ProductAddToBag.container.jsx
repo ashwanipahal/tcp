@@ -10,8 +10,8 @@ import ProductAddToBag from '../views/ProductAddToBag.view';
 class ProductAddToBagContainer extends React.PureComponent<Props> {
   constructor(props) {
     super(props);
-    const { currentProduct } = props;
-    this.initialValuesForm = this.getInitialValues(currentProduct);
+    const { currentProduct, selectedColorProductId } = props;
+    this.initialValuesForm = this.getInitialValues(currentProduct, selectedColorProductId);
 
     this.state = {
       selectedColor: this.initialValuesForm && this.initialValuesForm.color,
@@ -25,27 +25,21 @@ class ProductAddToBagContainer extends React.PureComponent<Props> {
   }
 
   componentWillReceiveProps(nextProps) {
-    const { currentProduct } = nextProps;
+    const { currentProduct, selectedColorProductId } = nextProps;
     const { currentProduct: prevCurrentProduct } = this.props;
 
     if (currentProduct && currentProduct !== prevCurrentProduct) {
       // update selected color once map is received from api
-      this.setState(this.getStateValuesFromProps(currentProduct));
+      this.setState(this.getStateValuesFromProps(currentProduct, selectedColorProductId));
     }
   }
 
-  getStateValuesFromProps = currentProduct => {
-    const initialValues = this.getInitialValues(currentProduct);
-    const selectedFit =
-      initialValues && initialValues.Fit
-        ? {
-            name: initialValues.Fit,
-          }
-        : null;
+  getStateValuesFromProps = (currentProduct, selectedColorProductId) => {
+    const initialValues = this.getInitialValues(currentProduct, selectedColorProductId);
 
     return {
       selectedColor: initialValues && initialValues.color,
-      selectedFit,
+      selectedFit: initialValues && initialValues.Fit,
       selectedSize: initialValues && initialValues.Size,
       selectedQuantity: initialValues && initialValues.Quantity,
       persistSelectedFit: initialValues && initialValues.Fit,
@@ -58,22 +52,23 @@ class ProductAddToBagContainer extends React.PureComponent<Props> {
    *
    * @memberof ProductAddToBagContainer
    */
-  getInitialValues = currentProduct => {
+  getInitialValues = (currentProduct, selectedColorProductId) => {
     const { colorFitsSizesMap } = currentProduct;
-    return colorFitsSizesMap && this.defaultSizesSet(currentProduct);
+    return colorFitsSizesMap && this.defaultSizesSet(currentProduct, selectedColorProductId);
   };
 
-  defaultSizesSet = currentProduct => {
+  defaultSizesSet = (currentProduct, selectedColorProductId) => {
     if (currentProduct) {
-      return this.getInitialAddToBagFormValues(currentProduct);
+      return this.getInitialAddToBagFormValues(currentProduct, selectedColorProductId);
     }
 
     return null;
   };
 
-  getMapSliceForColorProductId = (colorFitsSizesMap, colorProductId) => {
+  getMapSliceForColorProductId = (colorFitsSizesMap, colorProductId, selectedColorProductId) => {
+    const colorIdToMatch = selectedColorProductId || colorProductId;
     const selectedProduct = colorFitsSizesMap.find(
-      entry => entry.colorProductId === colorProductId || entry.colorDisplayId === colorProductId
+      entry => entry.colorProductId === colorIdToMatch || entry.colorDisplayId === colorIdToMatch
     );
     return selectedProduct || (colorFitsSizesMap.length > 0 ? colorFitsSizesMap[0] : null);
   };
@@ -103,12 +98,13 @@ class ProductAddToBagContainer extends React.PureComponent<Props> {
     return firstSizeName;
   };
 
-  getInitialAddToBagFormValues = currentProduct => {
+  getInitialAddToBagFormValues = (currentProduct, selectedColorProductId) => {
     const colorFitsSizesMapEntry =
       currentProduct &&
       this.getMapSliceForColorProductId(
         currentProduct.colorFitsSizesMap,
-        currentProduct.generalProductId
+        currentProduct.generalProductId,
+        selectedColorProductId
       );
 
     return {
@@ -151,11 +147,16 @@ class ProductAddToBagContainer extends React.PureComponent<Props> {
 
   colorChange = e => {
     const { selectedSize } = this.state;
+    const { onChangeColor } = this.props;
     this.setState({
       selectedColor: { name: e },
       selectedSize,
       isErrorMessageDisplayed: false,
     });
+    // props for any custom action to call
+    if (onChangeColor) {
+      onChangeColor(e);
+    }
   };
 
   /**
@@ -344,6 +345,7 @@ class ProductAddToBagContainer extends React.PureComponent<Props> {
    */
   render() {
     const {
+      currentProduct,
       currentProduct: { colorFitsSizesMap },
       plpLabels,
     } = this.props;
@@ -356,6 +358,7 @@ class ProductAddToBagContainer extends React.PureComponent<Props> {
       selectedQuantity,
     } = this.state;
     const initialValues = this.initialValuesForm;
+    const generalProductId = currentProduct && currentProduct.generalProductId;
 
     return (
       <ProductAddToBag
@@ -377,6 +380,7 @@ class ProductAddToBagContainer extends React.PureComponent<Props> {
         selectedQuantity={selectedQuantity}
         onQuantityChange={this.quantityChange}
         addToBagAction={this.addToBagAction}
+        generalProductId={generalProductId}
       />
     );
   }

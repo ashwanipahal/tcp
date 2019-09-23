@@ -6,6 +6,7 @@ export const MODULES_REDUCER_KEY = 'Modules';
 export const HOMEPAGE_REDUCER_KEY = 'HomePage';
 export const NAVIGATION_REDUCER_KEY = 'Navigation';
 export const PRODUCT_LISTING_REDUCER_KEY = 'ProductListing';
+export const PRODUCTLISTING_ACTION_PATTERN = '@@PLP-';
 export const FORM_REDUCER_KEY = 'form';
 export const LOADER_REDUCER_KEY = 'PageLoader';
 export const TOAST_REDUCER_KEY = 'Toast';
@@ -72,7 +73,7 @@ export const ADDEDITCREDITCARD_REDUCER_KEY = 'AddEditCreditCardReducer';
 
 // ProductListing Page Reducer
 export const PRODUCTLISTINGPAGE_REDUCER_KEY = 'ProductListingPage';
-export const PRODUCTLISTINGPAGE_ACTION_PATTERN = '@@PLP-';
+export const PRODUCTLISTINGPAGE_ACTION_PATTERN = '@@PLPDummy-';
 
 // Product Detail Page Reducer
 export const PRODUCT_DETAIL_REDUCER_KEY = 'ProductDetail';
@@ -81,6 +82,10 @@ export const PRODUCT_DETAIL_ACTION_PATTERN = '@@PDP-';
 // Product Pickup Reducer
 export const PRODUCT_PICKUP_REDUCER_KEY = 'ProductPickup';
 export const PRODUCT_PICKUP_ACTION_PATTERN = '@BOPIS-';
+
+// Quick View Page Reducer
+export const QUICK_VIEW_REDUCER_KEY = 'QuickView';
+export const QUICK_VIEW_ACTION_PATTERN = '@@QV-';
 
 // Email signup reducer
 export const EMAIL_SIGNUP_REDUCER_KEY = 'EmailSignUp';
@@ -160,6 +165,9 @@ export const GIFT_SERVICES_ACTION_PATTERN = '@@GiftServices-';
 
 export const MY_FAVORITE_STORE_REDUCER_KEY = 'MyFavoriteStore';
 
+export const POINTS_CLAIM_REDUCER_KEY = 'PointsClaim';
+export const POINTS_CLAIM_ACTION_PATTERN = '@@PointsClaim-';
+
 export const REDUCER_ACTION_MAPPING = {
   [APPLY_PLCC_REDUCER_KEY]: APPLY_PLCC_ACTION_PATTERN,
   [APICONFIG_REDUCER_KEY]: APICONFIG_ACTION_PATTERN,
@@ -167,6 +175,7 @@ export const REDUCER_ACTION_MAPPING = {
   [LOGINPAGE_REDUCER_KEY]: LOGINPAGE_ACTION_PATTERN,
   [FORGOTPASSWORD_REDUCER_KEY]: FORGOTPASSWORD_ACTION_PATTERN,
   [PRODUCTLISTINGPAGE_REDUCER_KEY]: PRODUCTLISTINGPAGE_ACTION_PATTERN,
+  [PRODUCT_LISTING_REDUCER_KEY]: PRODUCTLISTING_ACTION_PATTERN,
   [ADDRESSBOOK_REDUCER_KEY]: ADDRESSBOOK_ACTION_PATTERN,
   [PAYMENT_REDUCER_KEY]: PAYMENT_ACTION_PATTERN,
   [ADD_GIFT_CARD_REDUCER_KEY]: ADD_GIFT_CARD_ACTION_PATTERN,
