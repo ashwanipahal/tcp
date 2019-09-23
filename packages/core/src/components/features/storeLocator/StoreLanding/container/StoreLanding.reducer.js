@@ -16,9 +16,14 @@ export const initialState = fromJS({
 });
 
 const StoreLocatorReducer = (state = initialState, action) => {
-  switch (action.type) {
+  const { type, payload } = action;
+  switch (type) {
+    case STORE_LOCATOR_CONSTANTS.SET_DEFAULT_STORE:
+      return state.set('defaultStore', payload);
+    case STORE_LOCATOR_CONSTANTS.SET_GEO_DEFAULT_STORE:
+      return state.set('geoDefaultStore', payload);
     case STORE_LOCATOR_CONSTANTS.STORES_SET_SUGGESTED_STORES:
-      return state.set('suggestedStores', action.payload);
+      return state.set('suggestedStores', payload);
     default:
       if (state instanceof Object) {
         return fromJS(state);

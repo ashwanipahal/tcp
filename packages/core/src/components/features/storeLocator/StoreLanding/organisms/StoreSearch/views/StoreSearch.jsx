@@ -23,6 +23,8 @@ const { INITIAL_STORE_LIMIT } = constants;
 export class StoreSearch extends PureComponent {
   state = {
     errorNotFound: null,
+    gymSelected: false,
+    outletSelected: false,
   };
 
   componentDidMount() {
@@ -71,8 +73,14 @@ export class StoreSearch extends PureComponent {
   };
 
   /* istanbul ignore next  */
-  onSelectStore = () => {
-    // @TODO
+  onSelectStore = event => {
+    const { target } = event;
+    const gymSelected = target.name === 'gymboreeStoreOption' && target.checked;
+    const outletSelected = target.name === 'outletOption' && target.checked;
+    this.setState({
+      gymSelected,
+      outletSelected,
+    });
   };
 
   render() {
@@ -84,20 +92,18 @@ export class StoreSearch extends PureComponent {
       labels,
       searchIcon,
       markerIcon,
-      gymSelected,
-      outletSelected,
     } = this.props;
-    const { errorNotFound } = this.state;
+    const { errorNotFound, gymSelected, outletSelected } = this.state;
     const {
-      errorLabel,
-      storeSearchPlaceholder,
-      findStoreHeading,
-      gymboreeStores,
-      outletStores,
-      currentLocation,
-      viewMap,
-      allUSCAStores,
-      internationalStores,
+      errorLabel = 'there is an error in the input',
+      storeSearchPlaceholder = 'ZIP or city, state',
+      findStoreHeading = 'Find a Store',
+      gymboreeStores = 'Gymboree',
+      outletStores = 'Only Outlet Stores',
+      currentLocation = 'Use my current location',
+      viewMap = 'View Map',
+      allUSCAStores = 'All US & Canada Stores',
+      internationalStores = 'International Stores',
     } = labels;
     const errorMessage = errorNotFound ? errorLabel : error;
 
@@ -246,15 +252,11 @@ StoreSearch.propTypes = {
   labels: PropTypes.objectOf(PropTypes.string),
   searchIcon: PropTypes.string.isRequired,
   markerIcon: PropTypes.string.isRequired,
-  gymSelected: PropTypes.bool,
-  outletSelected: PropTypes.bool,
 };
 
 StoreSearch.defaultProps = {
   submitting: false,
   labels: {},
-  gymSelected: false,
-  outletSelected: false,
 };
 
 export default reduxForm({
