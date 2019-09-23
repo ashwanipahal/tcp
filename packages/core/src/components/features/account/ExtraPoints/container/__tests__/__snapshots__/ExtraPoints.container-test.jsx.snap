@@ -1,0 +1,11 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`ExtraPointsContainer View should render ExtraPointsContainer Correctly 1`] = `
+<Fragment>
+  <Styled(EarnPoints)
+    labels={Object {}}
+    onViewActivityDetails={[Function]}
+    waysToEarn={Array []}
+  />
+</Fragment>
+`;
