@@ -1,3 +1,5 @@
+import { routerPush } from '../../../../../utils';
+
 const userAddressData = addressTemp => {
   return {
     addressLine1: addressTemp.get('addressLine1') || '',
@@ -29,4 +31,29 @@ const fetchBillingOrShippingAddress = address => {
   return plccAddress;
 };
 
-export { userAddressData, fetchBillingOrShippingAddress };
+const redirectToBag = resetPLCCResponse => {
+  resetPLCCResponse({ status: null });
+  routerPush(window.location.href, '/bag');
+};
+
+const redirectToHome = resetPLCCResponse => {
+  resetPLCCResponse({ status: null });
+  routerPush(window.location.href, '/home');
+};
+
+const getPageViewGridColumnSize = isPLCCModalFlow => {
+  return isPLCCModalFlow ? 6 : 5;
+};
+
+const getPageViewGridRowSize = isPLCCModalFlow => {
+  return isPLCCModalFlow ? 12 : 10;
+};
+
+export {
+  userAddressData,
+  fetchBillingOrShippingAddress,
+  redirectToBag,
+  redirectToHome,
+  getPageViewGridColumnSize,
+  getPageViewGridRowSize,
+};

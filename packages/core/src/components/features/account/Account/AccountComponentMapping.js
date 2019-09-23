@@ -14,6 +14,7 @@ import AddEditPersonalInformationContainer from '../AddEditPersonalInformation';
 import AboutYouInformationContainer from '../AboutYouInformation';
 import BirthdaySavingsPage from '../BirthdaySavingsPage';
 import PointHistoryPage from '../PointHistory';
+import EarnPoints from '../ExtraPoints';
 import PointsClaimPage from '../PointsClaim';
 
 const AccountComponentMapping = {
@@ -35,6 +36,7 @@ const AccountComponentMapping = {
   'edit-aboutyou-info': AboutYouInformationContainer,
   'my-preference': MyPrefrenceContainer,
   'points-history': PointHistoryPage,
+  'extra-points': EarnPoints,
   'points-claim': PointsClaimPage,
 };
 

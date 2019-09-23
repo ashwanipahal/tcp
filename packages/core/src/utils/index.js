@@ -30,6 +30,7 @@ export {
   isBossProduct,
   viewport,
   getLocationOrigin,
+  getTranslateDateInformation,
 } from './utils.web';
 
 export {
