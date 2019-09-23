@@ -18,7 +18,7 @@ import { getLabelValue } from '../../../../../../../../../utils';
 import { propTypes, defaultProps } from './ShippingForm.view.utils';
 import GiftServices from '../../../molecules/GiftServices';
 
-import styles from '../styles/ShippingForm.styles';
+import styles from '../styles/ShippingForm.view.style';
 
 const formName = 'checkoutShipping';
 
