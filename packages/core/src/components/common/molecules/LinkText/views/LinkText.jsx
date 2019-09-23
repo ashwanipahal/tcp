@@ -3,7 +3,7 @@ import PropTypes from 'prop-types';
 import { Anchor, Heading, BodyCopy, TextItems } from '../../../atoms';
 import withStyles from '../../../hoc/withStyles';
 import LinkTextStyle from '../LinkText.style';
-import { configurePlpNavigationFromCMSUrl } from '../../../../../utils';
+import { configureInternalNavigationFromCMSUrl } from '../../../../../utils';
 
 /**
  * This component creates a link with styled text
@@ -51,7 +51,7 @@ const LinkText = props => {
       {headerText.map((item, index) => {
         const { link, textItems } = item;
         const navigationUrl = link;
-        navigationUrl.to = configurePlpNavigationFromCMSUrl(link.url);
+        navigationUrl.to = configureInternalNavigationFromCMSUrl(link.url);
         navigationUrl.asPath = link.url;
 
         if (type === 'heading') {

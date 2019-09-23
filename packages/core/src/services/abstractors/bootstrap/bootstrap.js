@@ -151,6 +151,7 @@ const bootstrap = async (pages, modules, cachedData) => {
 
   try {
     const bootstrapData = await fetchBootstrapData(bootstrapParams, modules);
+
     for (let i = 0; i < pages.length; i += 1) {
       const page = pages[i];
       // eslint-disable-next-line no-await-in-loop
