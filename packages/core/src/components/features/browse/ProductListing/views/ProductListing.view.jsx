@@ -36,6 +36,7 @@ const ProductListView = ({
   onSubmit,
   sortLabels,
   slpLabels,
+  onPickUpOpenClick,
   ...otherProps
 }) => {
   return (
@@ -101,7 +102,7 @@ const ProductListView = ({
         </Col>
       </Row>
       <PickupStoreModal />
-      <QuickViewModal />
+      <QuickViewModal onPickUpOpenClick={onPickUpOpenClick} />
     </div>
   );
 };
@@ -124,6 +125,7 @@ ProductListView.propTypes = {
   getProducts: PropTypes.func,
   onSubmit: PropTypes.func,
   formValues: PropTypes.shape({}).isRequired,
+  onPickUpOpenClick: PropTypes.func.isRequired,
   sortLabels: PropTypes.arrayOf(PropTypes.shape({})),
   slpLabels: PropTypes.objectOf(PropTypes.oneOfType([PropTypes.string])),
 };

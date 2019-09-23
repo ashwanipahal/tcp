@@ -4,7 +4,6 @@ exports[`QuickViewModal component should renders correctly 1`] = `
 <Styled(Modal)
   className="TCPModal__Content"
   fixedWidth={true}
-  heading="ADD TO BAG"
   heightConfig={
     Object {
       "height": "95%",
@@ -329,6 +328,17 @@ exports[`QuickViewModal component should renders correctly 1`] = `
         "unbxdProdId": "2100606_IV",
       }
     }
+    quickViewLabels={Object {}}
   />
+  <div
+    className="fulfillment-section"
+  >
+    <Styled(FulfillmentSection)
+      btnClassName="added-to-bag"
+      buttonLabel="Pickup In Store"
+      dataLocator="global-addtocart-Button"
+      onPickupOpenClick={[Function]}
+    />
+  </div>
 </Styled(Modal)>
 `;

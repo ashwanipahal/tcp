@@ -80,7 +80,7 @@ const processPdpResponse = ({
     generalProductId: getGeneralProductId(colorIdOrSeoKeyword, colorFitsSizesMap, baseProduct),
     categoryId: getCatId(categoryId),
     name: getIsGiftCard(isGiftCard, baseProduct),
-    pdpUrl: `/p/${baseProduct.seo_token}`,
+    pdpUrl: `/p/${colorIdOrSeoKeyword}`,
     shortDescription: baseProduct.product_short_description,
     longDescription: getLongDescription(isBundleProduct, baseProduct),
     imagesByColor,

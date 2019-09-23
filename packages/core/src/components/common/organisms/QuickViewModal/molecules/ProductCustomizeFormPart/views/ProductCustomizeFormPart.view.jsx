@@ -1,6 +1,6 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import { BodyCopy, Anchor } from '../../../../../atoms';
+import { BodyCopy, Anchor, Image } from '../../../../../atoms';
 import withStyles from '../../../../../hoc/withStyles';
 import styles, { customPriceStyles } from '../styles/ProductCustomizeFormPart.style';
 import ProductPrice from '../../../../../../features/browse/ProductDetail/molecules/ProductPrice/ProductPrice';
@@ -12,6 +12,7 @@ import {
   getMapSliceForColorProductId,
   getMapSliceForColor,
   getPrices,
+  getProductListToPath,
 } from '../../../../../../features/browse/ProductListing/molecules/ProductList/utils/productsCommonUtils';
 
 class ProductCustomizeFormPart extends React.Component {
@@ -42,6 +43,7 @@ class ProductCustomizeFormPart extends React.Component {
       isCanada,
       isHasPlcc,
       isInternationalShipping,
+      quickViewLabels,
     } = this.props;
 
     const { currentColorEntry } = this.state;
@@ -52,6 +54,7 @@ class ProductCustomizeFormPart extends React.Component {
     const prices = productInfo && getPrices(productInfo, currentColorEntry.color.name);
     const currentColorPdpUrl =
       currentColorEntry && currentColorEntry.pdpUrl ? currentColorEntry.pdpUrl : productInfo.pdpUrl;
+    const pdpToPath = getProductListToPath(currentColorPdpUrl);
     const productPriceProps = {
       currencySymbol: currency,
       currencyExchange,
@@ -68,13 +71,26 @@ class ProductCustomizeFormPart extends React.Component {
     return (
       <div className={className}>
         <div className="product-customize-form-container">
-          <div className="image-wrapper">
-            <img alt={productInfo.name} src={imageUrl} />
-            <Anchor className="link-redirect" to={currentColorPdpUrl} asPath={currentColorPdpUrl}>
-              <BodyCopy className="product-link" fontSize="fs14" fontFamily="secondary">
-                View Product Details
+          <div className="image-title-wrapper">
+            <div className="image-wrapper">
+              <Image alt={productInfo.name} src={imageUrl} />
+              <Anchor className="link-redirect" to={pdpToPath} asPath={currentColorPdpUrl}>
+                <BodyCopy className="product-link" fontSize="fs14" fontFamily="secondary">
+                  {quickViewLabels.viewProductDetails}
+                </BodyCopy>
+              </Anchor>
+            </div>
+            <div className="product-details-card-container-separate">
+              <BodyCopy
+                fontSize="fs18"
+                fontWeight="extrabold"
+                fontFamily="secondary"
+                className="product-name"
+              >
+                {productInfo.name}
               </BodyCopy>
-            </Anchor>
+              <ProductPrice {...productPriceProps} />
+            </div>
           </div>
           <div className="product-detail">
             <div className="product-details-card-container">
@@ -103,6 +119,10 @@ class ProductCustomizeFormPart extends React.Component {
 
 ProductCustomizeFormPart.propTypes = {
   plpLabels: PropTypes.shape({}).isRequired,
+  quickViewLabels: PropTypes.shape({
+    addToBag: PropTypes.string,
+    viewProductDetails: PropTypes.string,
+  }).isRequired,
   colorFitsSizesMap: COLOR_FITS_SIZES_MAP_PROP_TYPE.isRequired,
   productInfo: PRODUCT_INFO_PROP_TYPE_SHAPE.isRequired,
   currency: PropTypes.string,

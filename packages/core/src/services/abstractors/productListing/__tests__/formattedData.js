@@ -19,7 +19,7 @@ export const formattedPdpRes = {
     generalProductId: '2043572',
     categoryId: '47504>50502',
     name: 'Baby And Toddler Girls Long Sleeve Butterfly Print Smocked Top',
-    pdpUrl: '/p/Baby-And-Toddler-Girls-Long-Sleeve-Butterfly-Print-Smocked-Top-3003099-32E5',
+    pdpUrl: '/p/2043572',
     imagesByColor: {
       WHITE: {
         basicImageUrl:

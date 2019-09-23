@@ -5,7 +5,7 @@ import PropTypes from 'prop-types';
 import QuickViewModal from '../views';
 import { closeQuickViewModal } from './QuickViewModal.actions';
 import { PRODUCT_INFO_PROP_TYPE_SHAPE } from '../../../../features/browse/ProductListing/molecules/ProductList/propTypes/productsAndItemsPropTypes';
-import { getModalState, getProductInfo } from './QuickViewModal.selectors';
+import { getModalState, getProductInfo, getQuickViewLabels } from './QuickViewModal.selectors';
 import {
   getPlpLabels,
   getCurrentCurrency,
@@ -29,12 +29,14 @@ class QuickViewModalContainer extends React.PureComponent {
   }
 }
 
-function mapStateToProps(state) {
+function mapStateToProps(state, ownProps) {
   return {
     isModalOpen: getModalState(state),
     productInfo: getProductInfo(state),
     plpLabels: getPlpLabels(state),
     currency: getCurrentCurrency(state),
+    quickViewLabels: getQuickViewLabels(state),
+    ...ownProps,
   };
 }
 

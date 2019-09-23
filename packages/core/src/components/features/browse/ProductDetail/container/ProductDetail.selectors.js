@@ -74,3 +74,19 @@ export const getCurrentCurrency = state => {
 export const getCurrentProduct = state => {
   return state.ProductDetail.get('currentProduct');
 };
+
+export const getPDPLabels = state => {
+  if (!state.Labels || !state.Labels.Browse)
+    return {
+      fullSize: '',
+    };
+
+  const {
+    Browse: {
+      PDP: { lbl_full_size: fullSize },
+    },
+  } = state.Labels;
+  return {
+    fullSize,
+  };
+};
