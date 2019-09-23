@@ -76,7 +76,7 @@ exports[`testing block for PickupStoreDisplay PickupStoreDisplay should be rende
           lineHeight="normal"
           textAlign="left"
         >
-          Today, Sep 22
+          Today, Sep 23
         </Styled(BodyCopy)>
       </div>
     </div>
