@@ -34,7 +34,7 @@ class TrackOrderBottomSection extends React.Component {
             className="trackorder__modal__overlaycontent"
             component="p"
           >
-            {labels.trackOrder.lbl_header_trackOrderOverlay_haveAccount}
+            {labels.trackOrder.lbl_trackOrder_haveAccount}
           </BodyCopy>
           <BodyCopy
             fontSize="fs12"
@@ -52,12 +52,12 @@ class TrackOrderBottomSection extends React.Component {
               href="#"
               onClick={e => this.handleDefaultLinkClick(e)}
               className="trackorder__modal__loginlink"
-              aria-label={`${labels.trackOrder.lbl_header_trackOrderOverlay_login}
-                ${labels.trackOrder.lbl_header_trackOrderOverlay_content1}`}
+              aria-label={`${labels.trackOrder.lbl_trackOrder_login}
+                ${labels.trackOrder.lbl_trackOrder_content}`}
             >
-              {labels.trackOrder.lbl_header_trackOrderOverlay_login}
+              {labels.trackOrder.lbl_trackOrder_login}
             </Anchor>
-            {labels.trackOrder.lbl_header_trackOrderOverlay_content1}
+            {labels.trackOrder.lbl_trackOrder_content}
           </BodyCopy>
         </BodyCopy>
         <BodyCopy
@@ -73,15 +73,15 @@ class TrackOrderBottomSection extends React.Component {
             underline
             anchorVariation="primary"
             fontSize="fs12"
-            to={labels.trackOrder.lbl_header_trackOrderOverlay_internationTrackOrderLink}
+            to={labels.trackOrder.lbl_trackOrder_internationTrackOrderLink}
             target="_blank"
             className="trackorder__modal__clickhere_link"
-            aria-label={`${labels.trackOrder.lbl_header_trackOrderOverlay_clickHere}
-                ${labels.trackOrder.lbl_header_trackOrderOverlay_content2}`}
+            aria-label={`${labels.trackOrder.lbl_trackOrder_clickHere}
+                ${labels.trackOrder.lbl_trackOrder_subContent}`}
           >
-            {labels.trackOrder.lbl_header_trackOrderOverlay_clickHere}
+            {labels.trackOrder.lbl_trackOrder_clickHere}
           </Anchor>
-          {labels.trackOrder.lbl_header_trackOrderOverlay_content2}
+          {labels.trackOrder.lbl_trackOrder_subContent}
         </BodyCopy>
       </BodyCopy>
     );
