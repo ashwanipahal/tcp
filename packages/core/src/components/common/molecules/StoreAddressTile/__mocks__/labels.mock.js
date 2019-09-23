@@ -7,6 +7,9 @@ const labels = {
     lbl_storelocators_landingpage_setfavStore: 'SET AS FAVORITE',
     lbl_storelocators_common_atThisPlace: 'at this PLACE!',
     lbl_storelocators_landingpage_storedetails_link: 'Store Details',
+    lbl_storelocators_details_getdirections_btn: 'Directions',
+    lbl_storelocators_details_callstore_btn: 'Call Store',
+    lbl_storelocators_details_changestore_btn: 'Change Favorite Store',
   },
 };
 
