@@ -1,14 +1,9 @@
 import React, { Fragment } from 'React';
 import PropTypes from 'prop-types';
-import { TouchableOpacity, Alert } from 'react-native';
+import { Alert } from 'react-native';
+import { RenderTree, ComponentMap } from '@fabulas/astly';
 import BodyCopy from '../../BodyCopy';
-import {
-  StyledCheckBox,
-  StyledImage,
-  StyledText,
-  StyledErrorIcon,
-} from '../InputCheckbox.style.native';
-import { RenderTree, ComponentMap, Text } from '@fabulas/astly';
+import { StyledCheckBox, StyledImage, StyledErrorIcon } from '../InputCheckbox.style.native';
 
 import { StyledErrorWrapper } from '../../TextBox/TextBox.style.native';
 
@@ -97,7 +92,6 @@ class InputCheckBox extends React.Component {
 
   renderRight() {
     const { rightText, fontSize } = this.props;
-
     const astlyBag = {
       navigate(node) {
         const { tagName, properties } = node;
@@ -124,18 +118,19 @@ class InputCheckBox extends React.Component {
               {...props}
             />
           ),
-          a: props => (
-            <BodyCopy
-              mobileFontFamily="secondary"
-              fontSize={fontSize || 'fs12'}
-              text={props.children}
-              {...props}
-            />
-          ),
+          a: props => {
+            return (
+              <BodyCopy
+                mobileFontFamily="secondary"
+                fontSize={fontSize || 'fs12'}
+                text={props.children}
+                {...props}
+              />
+            );
+          },
         }}
       />
     );
-    // return <BodyCopy mobileFontFamily="secondary" fontSize={fontSize || 'fs12'} text={rightText} />;
   }
 
   render() {
@@ -161,7 +156,6 @@ class InputCheckBox extends React.Component {
           pointerEvents={disabled ? 'none' : 'auto'}
         >
           {!hideCheckboxIcon && this.genCheckedIcon()}
-
           {rightText && this.renderRight()}
         </StyledCheckBox>
         <Fragment>
