@@ -169,7 +169,7 @@ class ContactInformationFormWrapper extends React.Component {
             />
           </Col>
           <Col
-            colSize={{ small: 5, medium: 4, large: getPageViewGridColumnSize(isPLCCModalFlow) }}
+            colSize={{ small: 6, medium: 4, large: getPageViewGridColumnSize(isPLCCModalFlow) }}
             className="columnWrapper"
           >
             <Row fullBleed>

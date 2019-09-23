@@ -9,7 +9,7 @@ export default styled.div`
   }
 
   @media ${props => props.theme.mediaQuery.large} {
-    padding-left: ${props => (props.isPLCCModalFlow ? `0px` : `200px`)};
+    padding-left: ${props => (props.isPLCCModalFlow ? `0px` : `277px`)};
   }
 
   .iAgree_terms_conditions {
