@@ -24,7 +24,11 @@ describe('EarnPointsVanilla component', () => {
       labels: {},
       onViewActivityDetails: () => {},
     };
-    const component = shallow(<EarnPoints {...props} />);
+    const component = shallow(
+      <EarnPoints {...props} onViewActivityDetails={jest.fn()} toggleModal={jest.fn()} />
+    );
+    component.setState({ showModal: true });
+    component.setState({ waysToEarnRow: {} });
     expect(component).toMatchSnapshot();
   });
 });

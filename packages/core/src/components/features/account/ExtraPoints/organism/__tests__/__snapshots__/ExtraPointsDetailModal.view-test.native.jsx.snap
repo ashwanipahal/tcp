@@ -11,21 +11,19 @@ exports[`Extra Points Details Modal for native should render correctly native co
       }
     />
   </Styled(View)>
-  <Styled(View)>
-    <Styled(BodyCopy)
-      accessibilityText=""
-      className="elem-mb-MED"
-      data-locator="earnPointsModal_undefined_title"
-      dataLocator=""
-      fontFamily="primary"
-      fontSize="fs28"
-      fontWeight="black"
-      margin={null}
-      numberOfLines={null}
-      textAlign="center"
-      textDecoration={null}
-    />
-  </Styled(View)>
+  <Styled(Styled(BodyCopy))
+    accessibilityText=""
+    data-locator="earnPointsModal_undefined_title"
+    dataLocator=""
+    fontFamily="primary"
+    fontSize="fs28"
+    fontWeight="black"
+    margin={null}
+    numberOfLines={null}
+    spacingStyles="margin-top-LRG"
+    textAlign="center"
+    textDecoration={null}
+  />
   <Styled(BodyCopy)
     accessibilityText=""
     className="elem-mb-MED"
