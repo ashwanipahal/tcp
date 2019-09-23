@@ -47,6 +47,17 @@ describe('BirthdaySavingsList component', () => {
     const component = shallow(<BirthdaySavingsList {...props} />);
     expect(component.find(EmptyBirthdayCard)).toHaveLength(3);
   });
+  it('should render BirthdayCard component if addChildBirthday is added', () => {
+    const props = {
+      labels: {},
+      childrenBirthdays: fromJS([{ childId: '3434' }]),
+      view: 'read',
+      addChildBirthday: jest.fn(),
+      removeBirthday: jest.fn(),
+    };
+    const component = shallow(<BirthdaySavingsList {...props} />);
+    expect(component).toMatchSnapshot();
+  });
 });
 
 describe('#instances', () => {

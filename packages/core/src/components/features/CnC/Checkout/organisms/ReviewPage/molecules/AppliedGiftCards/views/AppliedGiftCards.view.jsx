@@ -58,9 +58,10 @@ const renderGiftCardMessage = labels => (
  * @returns {JSX}
  */
 export const AppliedGiftCards = ({ className, appliedGiftCards, labels }) => {
+  const isGiftCardAdded = appliedGiftCards && appliedGiftCards.size > 0;
   return (
     <BodyCopy component="div" className={`${className} applied-gift-cards`}>
-      {appliedGiftCards && appliedGiftCards.size > 0
+      {isGiftCardAdded
         ? appliedGiftCards.map(giftCard => {
             const { id, endingNumbers, remainingBalance } = getGiftCard(giftCard);
             return (
@@ -77,7 +78,7 @@ export const AppliedGiftCards = ({ className, appliedGiftCards, labels }) => {
             );
           })
         : labels.lbl_review_appliedGiftCardsNone}
-      {renderGiftCardMessage(labels)}
+      {isGiftCardAdded && renderGiftCardMessage(labels)}
     </BodyCopy>
   );
 };

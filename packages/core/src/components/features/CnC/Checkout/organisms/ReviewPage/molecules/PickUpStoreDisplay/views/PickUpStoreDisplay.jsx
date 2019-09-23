@@ -2,10 +2,10 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import withStyles from '../../../../../../../../common/hoc/withStyles';
 import BodyCopy from '../../../../../../../../common/atoms/BodyCopy';
-import { getDateInformation } from '../../../../../../../../../utils/badge.util';
+import { getTranslateDateInformation } from '../../../../../../../../../utils/badge.util';
 import { ORDER_ITEM_TYPE } from '../../../../../../../../../services/abstractors/CnC/CartItemTile';
 import { Image } from '../../../../../../../../common/atoms';
-import { getIconPath } from '../../../../../../../../../utils';
+import { getIconPath, getAPIConfig } from '../../../../../../../../../utils';
 import styles from '../styles/PickUpStoreDisplay.style';
 
 const pickup = getIconPath('marker-icon');
@@ -21,14 +21,15 @@ const PickupStoreDisplay = props => {
   let {
     store: { bopisItems, bossItems },
   } = props;
-  const translateInTo = 'en-US';
+  const apiConfig = getAPIConfig();
+  const localeType = apiConfig.siteId + apiConfig.countryKey;
   const {
     lbl_review_sectionPickupToday: pickupToday,
     lbl_review_sectionPickupOrderTitle: title,
     lbl_review_sectionPickupItem: item,
     lbl_review_sectionPickupItems: items,
   } = labels;
-  const today = getDateInformation('', false, translateInTo);
+  const today = getTranslateDateInformation('', localeType);
   const bossDate =
     !!(bossStartDate && bossEndDate) &&
     `${bossStartDate.day}. ${bossStartDate.month}

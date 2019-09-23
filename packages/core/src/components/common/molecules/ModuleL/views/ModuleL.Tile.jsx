@@ -1,14 +1,9 @@
-// @flow
 import React from 'react';
+import PropTypes from 'prop-types';
+
 import { Anchor, BodyCopy, Col, DamImage, Row } from '../../../atoms';
 import { getLocator } from '../../../../../utils';
 import config from '../config';
-
-type Props = {
-  tileData: Object,
-  index: number,
-  tileColor: Object,
-};
 
 /**
  * @colSize : Column size for tile element
@@ -19,7 +14,7 @@ const colSize = { ...config.COL_SIZE_TILE };
  * @function ModuleLTile This function renders tiles for carousel
  * @param {tileData} tileData Accepts image, link and styled object and index
  */
-const ModuleLTile = ({ tileData: { image, link, styled }, index, tileColor = {} }: Props) => {
+const ModuleLTile = ({ tileData: { image, link, styled }, index, tileColor = {} }) => {
   return (
     <Anchor {...link}>
       <Row fullBleed>
@@ -65,6 +60,12 @@ const ModuleLTile = ({ tileData: { image, link, styled }, index, tileColor = {} 
       </Row>
     </Anchor>
   );
+};
+
+ModuleLTile.propTypes = {
+  tileData: PropTypes.objectOf(PropTypes.shape({})).isRequired,
+  index: PropTypes.number.isRequired,
+  tileColor: PropTypes.shape({}).isRequired,
 };
 
 export default ModuleLTile;

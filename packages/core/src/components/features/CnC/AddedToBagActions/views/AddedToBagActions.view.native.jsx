@@ -19,6 +19,7 @@ class AddedToBagActions extends React.PureComponent<Props> {
       isEditingItem,
       navigation,
       closeModal,
+      isNoNEmptyBag,
     } = this.props;
     return (
       <ActionsWrapper>
@@ -43,21 +44,23 @@ class AddedToBagActions extends React.PureComponent<Props> {
             </ViewBagButton>
           </ButtonWrapper>
         )}
-        <ButtonWrapper>
-          <CheckoutButton
-            onPress={() => {
-              handleCartCheckout({ isEditingItem, navigation, closeModal });
-            }}
-          >
-            <BodyCopy
-              color="white"
-              fontWeight="extrabold"
-              fontFamily="secondary"
-              fontSize="fs13"
-              text={labels.checkout && labels.checkout.toUpperCase()}
-            />
-          </CheckoutButton>
-        </ButtonWrapper>
+        {isNoNEmptyBag && (
+          <ButtonWrapper>
+            <CheckoutButton
+              onPress={() => {
+                handleCartCheckout({ isEditingItem, navigation, closeModal });
+              }}
+            >
+              <BodyCopy
+                color="white"
+                fontWeight="extrabold"
+                fontFamily="secondary"
+                fontSize="fs13"
+                text={labels.checkout && labels.checkout.toUpperCase()}
+              />
+            </CheckoutButton>
+          </ButtonWrapper>
+        )}
         <CheckoutModals navigation={navigation} />
       </ActionsWrapper>
     );
@@ -69,6 +72,7 @@ AddedToBagActions.propTypes = {
   showAddTobag: PropTypes.shape,
   navigation: PropTypes.shape({}).isRequired,
   closeModal: PropTypes.func,
+  isNoNEmptyBag: PropTypes.number.isRequired,
 };
 
 AddedToBagActions.defaultProps = {

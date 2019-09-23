@@ -29,6 +29,7 @@ export {
   isBopisProduct,
   isBossProduct,
   viewport,
+  getLocationOrigin,
 } from './utils.web';
 
 export {

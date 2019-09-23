@@ -30,6 +30,10 @@ const HeadsUpMessage = styled.Text`
   margin-top: ${props => props.theme.spacing.ELEM_SPACING.XS};
 `;
 
+const AddGiftCardWrapper = styled.View`
+  margin-top: ${props => props.theme.spacing.ELEM_SPACING.XXL};
+`;
+
 export {
   PageStyle,
   Container,
@@ -37,4 +41,5 @@ export {
   GiftCardBody,
   GiftCardButtonCal,
   HeadsUpMessage,
+  AddGiftCardWrapper,
 };
