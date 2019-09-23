@@ -16,7 +16,7 @@ export function* getBopisInventory({ payload }) {
 }
 
 function* ProductPickupStoreSaga() {
-  yield takeLatest(PRODUCT_PICKUP_ACTIONS_CONSTANTS.GET_BOPIS_STORES, getBopisInventory);
+  yield takeLatest(PRODUCT_PICKUP_ACTIONS_CONSTANTS.GET_BOPIS_INVENTORY, getBopisInventory);
 }
 
 export default ProductPickupStoreSaga;
