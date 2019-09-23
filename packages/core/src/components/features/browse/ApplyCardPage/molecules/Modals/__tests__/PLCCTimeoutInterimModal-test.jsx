@@ -17,11 +17,9 @@ describe('ApplicationInProgress component', () => {
     bagItems: true,
     time: 120,
     labels: {
-      plcc_timout_interim_text: 'session would be expired in 120 seconds',
-      plcc_form_status_detail: 'application card is in progress',
-      plcc_form_status: 'in progress',
-      plcc_form_ctc_buttom: 'continue to checkout',
-      plcc_form_continue_shopping: 'continue shopping',
+      lbl_PLCCTimeoutModal_stillThere: 'session would be expired in 120 seconds',
+      lbl_PLCCTimeoutModal_continueApplication: 'application card is in progress',
+      lbl_PLCCTimeoutModal_interimText: 'in progress',
     },
   };
 

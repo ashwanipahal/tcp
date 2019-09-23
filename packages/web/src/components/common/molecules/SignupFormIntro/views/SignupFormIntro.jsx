@@ -20,7 +20,7 @@ const SignupFormIntro = ({ className, formViewConfig }) => (
           textAlign="center"
           className="sign-up__label"
         >
-          {formViewConfig.signUpForLabel}
+          {formViewConfig.lbl_SignUp_signUpForLabel}
         </BodyCopy>
         <BodyCopy
           fontSize={['fs28', 'fs28', 'fs38']}
@@ -29,11 +29,11 @@ const SignupFormIntro = ({ className, formViewConfig }) => (
           textAlign="center"
           className="offer-type__label"
         >
-          {formViewConfig.offerTypeLabel}
+          {formViewConfig.lbl_SignUp_offerTypeLabel}
         </BodyCopy>
         <BodyCopy fontFamily="primary" className="flash-text" textAlign="center" component="div">
           <BodyCopy fontSize="fs48" component="span" className="get-text" color="primary.main">
-            {formViewConfig.getTextLabel}
+            {formViewConfig.lbl_SignUp_getTextLabel}
           </BodyCopy>
           <BodyCopy
             fontSize="fs36"
@@ -42,7 +42,7 @@ const SignupFormIntro = ({ className, formViewConfig }) => (
             className="dollar-text"
             color="primary.main"
           >
-            {formViewConfig.dollarTextLabel}
+            {formViewConfig.lbl_SignUp_dollarTextLabel}
           </BodyCopy>
           <BodyCopy
             fontSize="fs48"
@@ -51,14 +51,14 @@ const SignupFormIntro = ({ className, formViewConfig }) => (
             className="ten-text"
             color="primary.main"
           >
-            {formViewConfig.tenTextLabel}
+            {formViewConfig.lbl_SignUp_tenTextLabel}
           </BodyCopy>
           <BodyCopy fontSize="fs48" textAlign="center" className="off-text" color="primary.main">
-            {formViewConfig.offTextLabel}
+            {formViewConfig.lbl_SignUp_offTextLabel}
           </BodyCopy>
         </BodyCopy>
         <BodyCopy fontSize="fs22" fontFamily="primary" fontWeight="semibold" textAlign="center">
-          {formViewConfig.nextPurchaseLabel}
+          {formViewConfig.lbl_SignUp_nextPurchaseLabel}
         </BodyCopy>
       </section>
     </Col>
