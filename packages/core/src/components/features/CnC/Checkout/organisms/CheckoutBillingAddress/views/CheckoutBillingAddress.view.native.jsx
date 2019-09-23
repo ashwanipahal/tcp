@@ -1,6 +1,5 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import { View } from 'react-native';
 import { Field, FormSection, change } from 'redux-form';
 import InputCheckbox from '../../../../../../common/atoms/InputCheckbox';
 import AddressFields from '../../../../../../common/molecules/AddressFields';
@@ -10,8 +9,7 @@ import Address from '../../../../../../common/molecules/Address';
 import AddressDropdown from '../../../../../account/AddEditCreditCard/molecule/AddressDropdown';
 import styles from '../styles/CheckoutBillingAddress.styles';
 import withStyles from '../../../../../../common/hoc/withStyles';
-import { BillingAddWrapper, SameAsShippingWrapper } from '../styles/CheckoutBillingAddress.styles.native'
-
+import { BillingAddWrapper, SameAsShippingWrapper, CheckoutAddressWrapper } from '../styles/CheckoutBillingAddress.styles.native'
 
 const dropDownStyle = {
   height: 30,
@@ -75,7 +73,6 @@ class CheckoutAddress extends React.Component {
         dispatch(change(formName, `address.country`, country));
       }
     }
-
   };
 
   getAddressSection = () => {
@@ -85,19 +82,42 @@ class CheckoutAddress extends React.Component {
         showCountry={false}
         showPhone={false}
         address={shippingAddress}
-        className="address elem-mb-XXXL"
       />
     ) : (
         this.renderNonShippingAddressForm()
       );
   };
 
+  getBillingAddressHeader = () => {
+    const { labels } = this.props;
+    return (
+      <BillingAddWrapper>
+        <BodyCopy
+          mobileFontFamily="secondary"
+          fontSize="fs16"
+          fontWeight="semibold"
+          dataLocator="billing-payment-billingAddress"
+          text={getLabelValue(labels, 'lbl_billing_billingAddress', 'billing', 'checkout')}
+        />
+      </BillingAddWrapper>
+    )
+  }
+
   getAddressFields = () => {
-    const { addressLabels, dispatch, isGuest, formName, userAddresses, onFileAddressId } = this.props;
+    const { addressLabels, dispatch, formName, userAddresses, onFileAddressId, shippingAddress, isSameAsShippingChecked, billingData } = this.props;
     const selectedAddress = this.getSelectedAddress(userAddresses, onFileAddressId)
-    let addressLine1;
+    let addressLine1; let state; let address;
     if (selectedAddress) {
       [addressLine1] = selectedAddress.addressLine;
+      ({ state } = selectedAddress);
+    }
+    if (shippingAddress && !isSameAsShippingChecked) {
+      ({ addressLine1 } = shippingAddress);
+      ({ state } = shippingAddress);
+    }
+    if (billingData && billingData.address) {
+      ({ address } = billingData);
+      ({ state, addressLine1 } = address);
     }
     return (
       <FormSection name="address">
@@ -110,8 +130,9 @@ class CheckoutAddress extends React.Component {
           dispatch={dispatch}
           showPhoneNumber={false}
           className="elem-mb-LRG"
-          state={selectedAddress ? selectedAddress.state : ''}
+          state={state}
           initialValues={{ address: { addressLine1 } }}
+          showEmailAddress={false}
         />
       </FormSection>
     );
@@ -131,15 +152,7 @@ class CheckoutAddress extends React.Component {
     const { labels } = this.props;
     return (
       <>
-        <BillingAddWrapper>
-          <BodyCopy
-            mobileFontFamily="secondary"
-            fontSize="fs16"
-            fontWeight="semibold"
-            dataLocator="billing-payment-billingAddress"
-            text={getLabelValue(labels, 'lbl_billing_billingAddress', 'billing', 'checkout')}
-          />
-        </BillingAddWrapper>
+        {this.getBillingAddressHeader()}
         <SameAsShippingWrapper>
           <Field
             showDefaultCheckbox={false}
@@ -181,67 +194,13 @@ class CheckoutAddress extends React.Component {
     return addressOptions.valueSeq().toArray();
   };
 
-  // getAddressOptions = ({ selectedAddress }) => {
-  //   const { userAddresses, labels } = this.props;
-  //   const { isAddNewAddress } = this.state;
-  //   let addressOptions =
-  //     userAddresses &&
-  //     userAddresses.map(address => {
-  //       let defaultId = false;
-  //       if (address.primary === 'true') {
-  //         defaultId = true;
-  //       }
-  //       return {
-  //         value: address.addressId,
-  //         title: `${address.firstName} ${address.lastName} ${defaultId ? '(Default)' : ''}`,
-  //         content: (
-  //           <View className="address-wrapper">
-  //             <Address
-  //               showCountry={false}
-  //               showPhone={false}
-  //               address={address}
-  //               isDefault={defaultId}
-  //               className="address"
-  //               showDefault={false}
-  //             />
-  //             {address.primary === 'true' && (
-  //               <Badge
-  //                 showCheckmark
-  //                 dataLocator="shipping-defshippinglabel"
-  //                 className="default-badge"
-  //               >
-  //                 {getLabelValue(labels, 'lbl_billing_default_card', 'billing', 'checkout')}
-  //               </Badge>
-  //             )}
-  //           </View>
-  //         ),
-  //       };
-  //     });
-
-  //   addressOptions =
-  //     addressOptions &&
-  //     addressOptions.push({
-  //       value: '',
-  //       title: 'Add New Address',
-  //       content: (
-  //         <Button
-  //           fullWidth
-  //           buttonVariation="variable-width"
-  //           fill="BLACK"
-  //           onClick={this.toggleAddNewAddressMode}
-  //           text={getLabelValue(labels, 'lbl_billing_addNewAddress', 'billing', 'checkout')}
-  //           disabled={isAddNewAddress || !selectedAddress}
-  //         />
-  //       ),
-  //     });
-  //   return addressOptions;
-  // };
-
-  onAddressDropDownChange = () => {
+  onAddressDropDownChange = itemValue => {
     const { isAddNewAddress } = this.state;
+    const { dispatch, formName } = this.props;
     if (isAddNewAddress) {
       this.setState({ isAddNewAddress: !isAddNewAddress });
     }
+    dispatch(change(formName, 'onFileAddressId', itemValue));
   };
 
   getAddressDropDown = () => {
@@ -251,16 +210,6 @@ class CheckoutAddress extends React.Component {
       userAddresses &&
       userAddresses.size > 0 && (
         <>
-          {/* <Field
-            selectListTitle="Select from address book"
-            name="onFileAddressId"
-            id="onFileAddressId"
-            component={AddressDropdown}
-            dataLocator="shipping-address"
-            options={this.getAddressOptions({ selectedAddress })}
-            onChange={this.onAddressDropDownChange}
-            customSelectClassName="billing-address-dropDown"
-          /> */}
           <Field
             selectListTitle="Select from address book"
             name="onFileAddressId"
@@ -274,8 +223,8 @@ class CheckoutAddress extends React.Component {
               this.onAddressDropDownChange(itemValue);
             }}
             variation="secondary"
-            showButton={false}
             selectedValue={selectedOnFileAddressId}
+            labels={{ common: { lbl_common_tapClose: 'close' } }}
           />
 
           <Address
@@ -290,10 +239,11 @@ class CheckoutAddress extends React.Component {
   };
 
   renderNonShippingAddressForm = () => {
-    const { userAddresses } = this.props;
+    const { userAddresses, orderHasShipping } = this.props;
     const { isAddNewAddress } = this.state;
     return (
       <>
+        {!orderHasShipping && this.getBillingAddressHeader()}
         {(userAddresses && userAddresses.size === 0) || isAddNewAddress || !userAddresses
           ? this.getAddressForm()
           : this.getAddressDropDown()}
@@ -302,11 +252,11 @@ class CheckoutAddress extends React.Component {
   };
 
   render() {
-    const { orderHasShipping, className } = this.props;
+    const { orderHasShipping } = this.props;
     return (
-      <View className={className}>
+      <CheckoutAddressWrapper>
         {orderHasShipping ? this.renderShippingAddressForm() : this.renderNonShippingAddressForm()}
-      </View>
+      </CheckoutAddressWrapper>
     );
   }
 }
@@ -315,25 +265,25 @@ CheckoutAddress.propTypes = {
   dispatch: PropTypes.func.isRequired,
   orderHasShipping: PropTypes.bool,
   addressLabels: PropTypes.shape({}).isRequired,
-  isGuest: PropTypes.bool,
   labels: PropTypes.shape({}).isRequired,
   shippingAddress: PropTypes.shape({}),
   isSameAsShippingChecked: PropTypes.bool,
-  className: PropTypes.bool,
   userAddresses: PropTypes.shape({}),
   selectedOnFileAddressId: PropTypes.string,
   formName: PropTypes.string.isRequired,
   addNewCCState: PropTypes.bool.isRequired,
+  onFileAddressId: PropTypes.string,
+  billingData: PropTypes.shape({}),
 };
 
 CheckoutAddress.defaultProps = {
   orderHasShipping: true,
-  isGuest: true,
   shippingAddress: {},
   isSameAsShippingChecked: true,
-  className: '',
   userAddresses: null,
   selectedOnFileAddressId: null,
+  onFileAddressId: null,
+  billingData: null,
 };
 export default withStyles(CheckoutAddress, styles);
 export { CheckoutAddress as CheckoutAddressVanilla };

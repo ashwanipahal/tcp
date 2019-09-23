@@ -26,7 +26,10 @@ const ExpiryYear = styled.View`
 const CvvCode = styled.View`
 width:30%;
 padding-top: 12px;
+`;
 
+const HiddenExpiryWrapper = styled.View`
+  margin-top: ${props => props.theme.spacing.ELEM_SPACING.SM};
 `;
 
 const CardTextboxStyle = {
@@ -37,6 +40,14 @@ const CvvTextboxStyle = {
   height: 72,
 };
 
+const CVVInfo = styled.View`
+  width: 15px;
+  position: absolute;
+  right:0;
+  top: 20%;
+
+`;
+
 export {
   PaymentContainer,
   CardContainer,
@@ -45,5 +56,7 @@ export {
   ExpiryYear,
   CardTextboxStyle,
   CvvCode,
-  CvvTextboxStyle
+  CvvTextboxStyle,
+  HiddenExpiryWrapper,
+  CVVInfo
 };

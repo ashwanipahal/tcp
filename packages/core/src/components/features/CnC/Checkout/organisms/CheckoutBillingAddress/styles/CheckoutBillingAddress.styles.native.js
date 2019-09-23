@@ -8,4 +8,8 @@ const SameAsShippingWrapper = styled.View`
 margin-bottom:${props => props.theme.spacing.ELEM_SPACING.LRG};
 `;
 
-export { BillingAddWrapper, SameAsShippingWrapper };
+const CheckoutAddressWrapper = styled.View`
+margin-bottom:${props => props.theme.spacing.ELEM_SPACING.XXXL};
+`
+
+export { BillingAddWrapper, SameAsShippingWrapper, CheckoutAddressWrapper };

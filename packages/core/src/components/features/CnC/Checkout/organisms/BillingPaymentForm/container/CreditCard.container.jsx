@@ -147,7 +147,7 @@ export class GiftCardsContainer extends React.PureComponent<Props> {
   };
 
   submitBillingData = data => {
-    const { cardList, handleSubmit, userAddresses } = this.props;
+    const { cardList, handleSubmit, userAddresses, navigation } = this.props;
     let onFileAddressKey;
     let addressLine1;
     let addressLine2;
@@ -221,6 +221,7 @@ export class GiftCardsContainer extends React.PureComponent<Props> {
       phoneNumber: cardDetails.addressDetails && cardDetails.addressDetails.phone1,
       saveToAccount: data.saveToAccount,
       isDefault: data.defaultPayment || cardDetails.defaultInd,
+      navigation
     });
   };
 
@@ -247,6 +248,7 @@ export class GiftCardsContainer extends React.PureComponent<Props> {
       isSaveToAccountChecked,
       userAddresses,
       selectedOnFileAddressId,
+      navigation,
     } = this.props;
     this.initialValues = this.getInitialValues(this.getCreditCardDefault(cardList));
     return (
@@ -274,6 +276,7 @@ export class GiftCardsContainer extends React.PureComponent<Props> {
         isSaveToAccountChecked={isSaveToAccountChecked}
         userAddresses={userAddresses}
         selectedOnFileAddressId={selectedOnFileAddressId}
+        navigation={navigation}
       />
     );
   }

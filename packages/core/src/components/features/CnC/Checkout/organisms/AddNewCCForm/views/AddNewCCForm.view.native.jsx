@@ -25,6 +25,7 @@ class AddNewCCForm extends React.PureComponent {
     cardList: PropTypes.shape({}),
     isSaveToAccountChecked: PropTypes.bool,
     isExpirationRequired: PropTypes.bool,
+    billingData: PropTypes.shape({}),
   };
 
   static defaultProps = {
@@ -35,6 +36,7 @@ class AddNewCCForm extends React.PureComponent {
     cardList: null,
     isSaveToAccountChecked: true,
     isExpirationRequired: true,
+    billingData: null
   };
 
   constructor(props) {
@@ -96,8 +98,19 @@ class AddNewCCForm extends React.PureComponent {
     dispatch(change(formName, 'expMonth', month));
   };
 
+  getExpData = () => {
+    const { billingData } = this.props;
+    let expMonth; let expYear;
+    if (billingData && billingData.billing) {
+      ({ billing: { expMonth, expYear } } = billingData);
+      return { expMonth, expYear };
+    }
+    return { expMonth, expYear };
+  }
+
   render() {
     const { cvvInfo, cardType, cvvError, isGuest, isExpirationRequired } = this.props;
+    const { expMonth, expYear } = this.getExpData();
     return (
       <>
         <CreditCardFields
@@ -110,6 +123,8 @@ class AddNewCCForm extends React.PureComponent {
           expMonthOptionsMap={this.creditCardExpirationOptionMap.monthsMap}
           expYearOptionsMap={this.creditCardExpirationOptionMap.yearsMap}
           updateExpiryDate={this.updateExpiryDate}
+          selectedExpYear={expYear}
+          selectedExpMonth={expMonth}
         />
         {!isGuest && this.renderSaveToAccountOptions()}
       </>

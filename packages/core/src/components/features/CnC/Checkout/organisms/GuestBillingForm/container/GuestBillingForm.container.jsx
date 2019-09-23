@@ -15,7 +15,7 @@ import CreditCardSelector from '../../BillingPaymentForm/container/CreditCard.se
 
 class GuestBillingContainer extends React.Component {
   submitBillingData = data => {
-    const { submitBilling } = this.props;
+    const { submitBilling, navigation } = this.props;
     const { address, sameAsShipping } = data;
     let addressLine1;
     let addressLine2;
@@ -62,6 +62,7 @@ class GuestBillingContainer extends React.Component {
         onFileAddressKey,
         onFileAddressId,
       },
+      navigation
     });
   };
 
@@ -162,6 +163,7 @@ GuestBillingContainer.propTypes = {
   orderHasShipping: PropTypes.bool,
   submitBilling: PropTypes.func.isRequired,
   shippingOnFileAddressKey: PropTypes.string,
+  navigation: PropTypes.shape({}),
 };
 
 GuestBillingContainer.defaultProps = {
@@ -175,6 +177,7 @@ GuestBillingContainer.defaultProps = {
   billingData: {},
   orderHasShipping: true,
   shippingOnFileAddressKey: null,
+  navigation: null,
 };
 
 export default connect(

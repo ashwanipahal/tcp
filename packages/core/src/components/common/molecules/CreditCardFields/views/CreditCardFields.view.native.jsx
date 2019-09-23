@@ -1,6 +1,6 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import { Field, View } from 'redux-form';
+import { Field } from 'redux-form';
 import DropDown from '@tcp/core/src/components/common/atoms/DropDown/views/DropDown.native';
 import CreditCardNumber from '../../../atoms/CreditCardNumber';
 import TextBox from '../../../atoms/TextBox';
@@ -12,13 +12,15 @@ import {
   ExpiryYear,
   CardTextboxStyle,
   CvvCode,
-  CvvTextboxStyle
+  CvvTextboxStyle,
+  HiddenExpiryWrapper,
+  CVVInfo
 } from '../styles/CreditCardFields.styles.native';
 
 export class CreditCardFields extends React.PureComponent<Props> {
   constructor(props) {
     super(props);
-    const { isEdit, selectedCard } = props;
+    const { isEdit, selectedCard, selectedExpYear, selectedExpMonth } = props;
     if (isEdit && selectedCard) {
       const { expMonth, expYear } = selectedCard;
       this.state = {
@@ -27,8 +29,8 @@ export class CreditCardFields extends React.PureComponent<Props> {
       };
     } else {
       this.state = {
-        selectedYear: null,
-        selectedMonth: null,
+        selectedYear: selectedExpYear,
+        selectedMonth: selectedExpMonth,
       };
     }
   }
@@ -45,7 +47,7 @@ export class CreditCardFields extends React.PureComponent<Props> {
       isEdit,
       creditCard,
       creditFieldLabels,
-      cvvInfo: CVVInfo
+      cvvInfo
     } = this.props;
     const { selectedMonth, selectedYear } = this.state;
     const dropDownStyle = {
@@ -80,16 +82,8 @@ export class CreditCardFields extends React.PureComponent<Props> {
         </CardContainer>
         <ExpiryContainer>
           <ExpiryMonth>
-            {/* <BodyCopy
-              mobilefontFamily="secondary"
-              fontSize="fs10"
-              fontWeight="black"
-              text={selectedMonth ? creditFieldLabels.expMonth : ''}
-            /> */}
             <Field
               heading={creditFieldLabels.expMonth}
-              name="expMonth"
-              id="expMonth"
               component={DropDown}
               data={expMonthOptionsMap}
               dataLocator="addEditCreditCard-expMonth"
@@ -102,18 +96,20 @@ export class CreditCardFields extends React.PureComponent<Props> {
               dropDownStyle={{ ...dropDownStyle }}
               itemStyle={{ ...itemStyle }}
             />
+            <HiddenExpiryWrapper>
+              <Field
+                label=""
+                component={TextBox}
+                title=""
+                type="hidden"
+                name="expMonth"
+                id="expMonth"
+              />
+            </HiddenExpiryWrapper>
           </ExpiryMonth>
           <ExpiryYear>
-            {/* <BodyCopy
-              mobilefontFamily="secondary"
-              fontSize="fs10"
-              fontWeight="black"
-              text={selectedYear ? creditFieldLabels.expYear : ''}
-            /> */}
             <Field
               heading={creditFieldLabels.expYear}
-              name="expYear"
-              id="expYear"
               component={DropDown}
               data={expYearOptionsMap}
               dataLocator="addEditCreditCard-expYear"
@@ -126,6 +122,16 @@ export class CreditCardFields extends React.PureComponent<Props> {
               }}
               selectedValue={selectedYear || creditFieldLabels.expYear}
             />
+            <HiddenExpiryWrapper>
+              <Field
+                label=""
+                component={TextBox}
+                title=""
+                type="hidden"
+                name="expYear"
+                id="expYear"
+              />
+            </HiddenExpiryWrapper>
           </ExpiryYear>
           <CvvCode>
             <Field
@@ -138,7 +144,7 @@ export class CreditCardFields extends React.PureComponent<Props> {
               customStyle={CvvTextboxStyle}
             />
             <Field name="cardType" id="cardType" component={TextBox} type="hidden" />
-            {/* <CVVInfo /> */}
+            <CVVInfo>{cvvInfo}</CVVInfo>
           </CvvCode>
         </ExpiryContainer>
       </PaymentContainer>

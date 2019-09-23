@@ -7,13 +7,13 @@ import AddNewCCForm from '../../AddNewCCForm';
 import cvvInfo from '../../../molecules/CVVInfo';
 // import PaymentMethods from '../../../../common/molecules/PaymentMethods';
 import BodyCopy from '../../../../../../common/atoms/BodyCopy';
-// import CONSTANTS, { CHECKOUT_ROUTES } from '../../../Checkout.constants';
 import { getLabelValue } from '../../../../../../../utils';
 import CheckoutBillingAddress from '../../CheckoutBillingAddress';
-// import AddressFields from '../../../../../../common/molecules/AddressFields';
-// import utility from '../../../util/utility';
 import CREDIT_CARD_CONSTANTS from '../../BillingPaymentForm/container/CreditCard.constants';
 import GuestBillingFormWrapper from '../styles/GuestBillingForm.styles.native';
+import CnCTemplate from '../../../../common/organism/CnCTemplate';
+import CONSTANTS from '../../../Checkout.constants';
+import AddressFields from '../../../../../../common/molecules/AddressFields';
 
 class GuestBillingForm extends React.Component {
   static propTypes = {
@@ -28,6 +28,12 @@ class GuestBillingForm extends React.Component {
     isGuest: PropTypes.bool,
     isSameAsShippingChecked: PropTypes.bool,
     billingData: PropTypes.shape({}),
+    nextSubmitText: PropTypes.string,
+    backLinkShipping: PropTypes.string,
+    backLinkPickup: PropTypes.string,
+    navigation: PropTypes.shape({}).isRequired,
+    handleSubmit: PropTypes.func.isRequired,
+    onSubmit: PropTypes.func.isRequired,
   };
 
   static defaultProps = {
@@ -73,6 +79,12 @@ class GuestBillingForm extends React.Component {
       shippingAddress,
       isSameAsShippingChecked,
       billingData,
+      backLinkShipping,
+      backLinkPickup,
+      navigation,
+      nextSubmitText,
+      handleSubmit,
+      onSubmit
     } = this.props;
     let cvvError;
     if (syncErrorsObj) {
@@ -90,6 +102,8 @@ class GuestBillingForm extends React.Component {
             className="elem-mb-XS elem-mt-MED"
             text={getLabelValue(labels, 'lbl_billing_paymentMethodTitle')}
           />
+          {/* <PaymentMethods labels={labels} /> */}
+          {/* {paymentMethodId === CONSTANTS.PAYMENT_METHOD_CREDIT_CARD ? ( */}
           <>
             <AddNewCCForm
               cvvInfo={cvvInfo({ cvvCodeRichText })}
@@ -100,6 +114,7 @@ class GuestBillingForm extends React.Component {
               isExpirationRequired={isExpirationRequired}
               isGuest={isGuest}
               dispatch={dispatch}
+              billingData={billingData}
             />
             <CheckoutBillingAddress
               isGuest={isGuest}
@@ -113,33 +128,21 @@ class GuestBillingForm extends React.Component {
               formName="checkoutBilling"
             />
           </>
-          {/* <PaymentMethods labels={labels} /> */}
-          {/* <div className="elem-mt-LRG elem-pb-XL">
-          {paymentMethodId === CONSTANTS.PAYMENT_METHOD_CREDIT_CARD ? (
-            <>
-              <AddNewCCForm
-                cvvInfo={cvvInfo({ cvvCodeRichText })}
-                cardType={cardType}
-                cvvError={cvvError}
-                labels={labels}
-                formName="checkoutBilling"
-                isExpirationRequired={isExpirationRequired}
-                isGuest={isGuest}
-              />
-              <CheckoutBillingAddress
-                isGuest={isGuest}
-                orderHasShipping={orderHasShipping}
-                addressLabels={addressLabels}
-                dispatch={dispatch}
-                shippingAddress={shippingAddress}
-                isSameAsShippingChecked={isSameAsShippingChecked}
-                labels={labels}
-                billingData={billingData}
-                formName="checkoutBilling"
-              />
-            </>
-          ) : null}
-        </div> */}
+          {/* ) : null} */}
+          <CnCTemplate
+            navigation={navigation}
+            btnText={nextSubmitText}
+            routeToPage=""
+            onPress={handleSubmit(onSubmit)}
+            backLinkText={orderHasShipping ? backLinkShipping : backLinkPickup}
+            onBackLinkPress={() =>
+              navigation.navigate(
+                orderHasShipping
+                  ? CONSTANTS.CHECKOUT_ROUTES_NAMES.CHECKOUT_SHIPPING
+                  : CONSTANTS.CHECKOUT_ROUTES_NAMES.CHECKOUT_PICKUP
+              )
+            }
+          />
         </GuestBillingFormWrapper>
       </>
     );
@@ -147,7 +150,7 @@ class GuestBillingForm extends React.Component {
 }
 
 const validateMethod = createValidateMethod({
-  // address: AddressFields.addressValidationConfig,
+  address: AddressFields.addressValidationConfig,
   ...getStandardConfig(['cardNumber', 'cvvCode', 'expYear', 'expMonth']),
 });
 export default reduxForm({
