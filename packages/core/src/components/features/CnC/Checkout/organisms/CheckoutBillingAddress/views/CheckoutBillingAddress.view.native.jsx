@@ -9,7 +9,12 @@ import Address from '../../../../../../common/molecules/Address';
 import AddressDropdown from '../../../../../account/AddEditCreditCard/molecule/AddressDropdown';
 import styles from '../styles/CheckoutBillingAddress.styles';
 import withStyles from '../../../../../../common/hoc/withStyles';
-import { BillingAddWrapper, SameAsShippingWrapper, CheckoutAddressWrapper, AddressDropdownWrapper } from '../styles/CheckoutBillingAddress.styles.native'
+import {
+  BillingAddWrapper,
+  SameAsShippingWrapper,
+  CheckoutAddressWrapper,
+  AddressDropdownWrapper,
+} from '../styles/CheckoutBillingAddress.styles.native';
 
 const dropDownStyle = {
   height: 30,
@@ -46,7 +51,7 @@ class CheckoutAddress extends React.Component {
 
   toggleAddNewAddressMode = () => {
     const { isAddNewAddress } = this.state;
-    const { dispatch, formName } = this.props
+    const { dispatch, formName } = this.props;
     this.setState({ isAddNewAddress: !isAddNewAddress });
     dispatch(change(formName, 'onFileAddressId', ''));
     dispatch(resetSection(formName, 'address'));
@@ -81,14 +86,10 @@ class CheckoutAddress extends React.Component {
   getAddressSection = () => {
     const { shippingAddress, isSameAsShippingChecked } = this.props;
     return isSameAsShippingChecked ? (
-      <Address
-        showCountry={false}
-        showPhone={false}
-        address={shippingAddress}
-      />
+      <Address showCountry={false} showPhone={false} address={shippingAddress} />
     ) : (
-        this.renderNonShippingAddressForm()
-      );
+      this.renderNonShippingAddressForm()
+    );
   };
 
   getBillingAddressHeader = () => {
@@ -103,14 +104,25 @@ class CheckoutAddress extends React.Component {
           text={getLabelValue(labels, 'lbl_billing_billingAddress', 'billing', 'checkout')}
         />
       </BillingAddWrapper>
-    )
-  }
+    );
+  };
 
   getAddressFields = () => {
-    const { addressLabels, dispatch, formName, userAddresses, onFileAddressId, shippingAddress, isSameAsShippingChecked, billingData } = this.props;
+    const {
+      addressLabels,
+      dispatch,
+      formName,
+      userAddresses,
+      onFileAddressId,
+      shippingAddress,
+      isSameAsShippingChecked,
+      billingData,
+    } = this.props;
     const selectedAddress = this.getSelectedAddress(userAddresses, onFileAddressId);
     const { isAddNewAddress } = this.state;
-    let addressLine1; let state; let address;
+    let addressLine1;
+    let state;
+    let address;
     if (!isAddNewAddress) {
       if (selectedAddress) {
         [addressLine1] = selectedAddress.addressLine;
@@ -183,7 +195,7 @@ class CheckoutAddress extends React.Component {
             id: address.addressId,
             label: `${address.firstName} ${address.lastName} ${
               address.primary === 'true' ? '(Default)' : ''
-              }`,
+            }`,
             content: address,
             primary: address.primary === 'true',
           };
@@ -210,7 +222,7 @@ class CheckoutAddress extends React.Component {
   };
 
   getAddressDropDown = () => {
-    const { userAddresses, selectedOnFileAddressId } = this.props;
+    const { userAddresses, selectedOnFileAddressId, labels } = this.props;
     const { isAddNewAddress } = this.state;
     const selectedAddress = this.getSelectedAddress(userAddresses, selectedOnFileAddressId);
     return (
@@ -218,8 +230,16 @@ class CheckoutAddress extends React.Component {
       userAddresses.size > 0 && (
         <>
           <AddressDropdownWrapper>
+            <BodyCopy
+              mobileFontFamily="secondary"
+              fontSize="fs12"
+              textAlign="left"
+              fontWeight="black"
+              marginTop="10"
+              text={getLabelValue(labels, 'lbl_billing_selectFromAddress', 'billing', 'checkout')}
+            />
             <Field
-              selectListTitle="Select from address book"
+              selectedLabelState="Select from address book"
               name="onFileAddressId"
               id="onFileAddressId"
               component={AddressDropdown}
@@ -237,14 +257,8 @@ class CheckoutAddress extends React.Component {
             />
           </AddressDropdownWrapper>
           {!isAddNewAddress && (
-            <Address
-              showCountry={false}
-              showPhone={false}
-              address={selectedAddress}
-              className="address elem-mb-XXXL"
-            />
-          )
-          }
+            <Address showCountry={false} showPhone={false} address={selectedAddress} />
+          )}
         </>
       )
     );

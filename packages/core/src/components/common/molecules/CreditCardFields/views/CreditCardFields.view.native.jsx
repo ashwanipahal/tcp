@@ -81,7 +81,7 @@ export class CreditCardFields extends React.PureComponent<Props> {
             customStyle={CardTextboxStyle}
           />
         </CardContainer>
-        <ExpiryContainer>
+        <ExpiryContainer showCvv={showCvv}>
           <ExpiryMonth>
             <Field
               heading={creditFieldLabels.expMonth}

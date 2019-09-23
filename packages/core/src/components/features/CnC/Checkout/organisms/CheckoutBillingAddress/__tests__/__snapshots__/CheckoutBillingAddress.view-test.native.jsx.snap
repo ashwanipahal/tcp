@@ -276,6 +276,19 @@ exports[`CheckoutAddress should render correctly if isAddNewAddress is true 1`] 
     />
   </Styled(View)>
   <Styled(View)>
+    <Styled(BodyCopy)
+      accessibilityText=""
+      dataLocator=""
+      fontSize="fs12"
+      fontWeight="black"
+      margin={null}
+      marginTop="10"
+      mobileFontFamily="secondary"
+      numberOfLines={null}
+      text="lbl_billing_selectFromAddress"
+      textAlign="left"
+      textDecoration={null}
+    />
     <Field
       addAddress={[Function]}
       component={[Function]}
@@ -328,7 +341,7 @@ exports[`CheckoutAddress should render correctly if isAddNewAddress is true 1`] 
       }
       name="onFileAddressId"
       onValueChange={[Function]}
-      selectListTitle="Select from address book"
+      selectedLabelState="Select from address book"
       selectedValue="1234"
       variation="secondary"
     />
@@ -339,7 +352,6 @@ exports[`CheckoutAddress should render correctly if isAddNewAddress is true 1`] 
         "addressId": "1234",
       }
     }
-    className="address elem-mb-XXXL"
     customStyle={Object {}}
     showCountry={false}
     showDefaultText={false}
@@ -365,6 +377,19 @@ exports[`CheckoutAddress should render correctly if order doesnot have shipping 
     />
   </Styled(View)>
   <Styled(View)>
+    <Styled(BodyCopy)
+      accessibilityText=""
+      dataLocator=""
+      fontSize="fs12"
+      fontWeight="black"
+      margin={null}
+      marginTop="10"
+      mobileFontFamily="secondary"
+      numberOfLines={null}
+      text="lbl_billing_selectFromAddress"
+      textAlign="left"
+      textDecoration={null}
+    />
     <Field
       addAddress={[Function]}
       component={[Function]}
@@ -409,7 +434,7 @@ exports[`CheckoutAddress should render correctly if order doesnot have shipping 
       }
       name="onFileAddressId"
       onValueChange={[Function]}
-      selectListTitle="Select from address book"
+      selectedLabelState="Select from address book"
       selectedValue="1234"
       variation="secondary"
     />
@@ -420,7 +445,6 @@ exports[`CheckoutAddress should render correctly if order doesnot have shipping 
         "addressId": "1234",
       }
     }
-    className="address elem-mb-XXXL"
     customStyle={Object {}}
     showCountry={false}
     showDefaultText={false}
@@ -456,6 +480,19 @@ exports[`CheckoutAddress should render correctly if selectedAddress is present 1
     />
   </Styled(View)>
   <Styled(View)>
+    <Styled(BodyCopy)
+      accessibilityText=""
+      dataLocator=""
+      fontSize="fs12"
+      fontWeight="black"
+      margin={null}
+      marginTop="10"
+      mobileFontFamily="secondary"
+      numberOfLines={null}
+      text="lbl_billing_selectFromAddress"
+      textAlign="left"
+      textDecoration={null}
+    />
     <Field
       addAddress={[Function]}
       component={[Function]}
@@ -512,14 +549,13 @@ exports[`CheckoutAddress should render correctly if selectedAddress is present 1
       }
       name="onFileAddressId"
       onValueChange={[Function]}
-      selectListTitle="Select from address book"
+      selectedLabelState="Select from address book"
       selectedValue={null}
       variation="secondary"
     />
   </Styled(View)>
   <Address
     address={null}
-    className="address elem-mb-XXXL"
     customStyle={Object {}}
     showCountry={false}
     showDefaultText={false}

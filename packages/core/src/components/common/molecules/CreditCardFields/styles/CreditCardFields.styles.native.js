@@ -44,7 +44,7 @@ const CVVInfo = styled.View`
   width: 15px;
   position: absolute;
   right: 0;
-  top: 20%;
+  top: 25px;
 `;
 
 export {
