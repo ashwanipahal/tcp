@@ -296,11 +296,11 @@ export const getModifiedLanguageCode = id => {
  */
 export const getTranslateDateInformation = (
   date,
-  language = 'en',
+  language,
   dayOption = { weekday: 'short' },
   monthOption = { month: 'short' }
 ) => {
-  const localeType = getModifiedLanguageCode(language).replace('_', '-');
+  const localeType = language ? getModifiedLanguageCode(language).replace('_', '-') : 'en';
   const currentDate = date ? new Date(date) : new Date();
   return {
     day: new Intl.DateTimeFormat(localeType, dayOption).format(currentDate),
