@@ -1,3 +1,4 @@
+/* eslint-disable import/named */
 import HomePageLayout from '../../abstractors/bootstrap/layout/mock';
 import ModuleDMock from '../../abstractors/common/moduleD/mock';
 import QueryBuilder from '../graphQL/queries/queryBuilder';

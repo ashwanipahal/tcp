@@ -1,6 +1,6 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import { Image, Button } from '../../../../atoms';
+import { Image, Button, RichText } from '../../../../atoms';
 import ModalNative from '../../../Modal/view/Modal.native';
 import {
   ImageContainer,
@@ -9,8 +9,12 @@ import {
   ButtonWrapper,
   StyledAnchor,
   BottomContainer,
+  RichTextContainer,
+  Container,
+  StyledImage,
 } from '../../styles/ApplyNowView.style.native';
 import { getLabelValue } from '../../../../../../utils/utils';
+import ApplyCardLayoutView from '../../../../../features/browse/ApplyCardPage';
 
 const headerImage = require('../../../../../../assets/tcp-cc.png');
 const PLCC_LOOKUP_2_POINTS = require('../../../../../../assets/PLCC_lockup_2_points.png');
@@ -19,7 +23,7 @@ const PLCC_LOOKUP_1_POINTS = require('../../../../../../assets/PLCC_lockup_1_poi
 class ApplyNowModalWrapper extends React.PureComponent {
   constructor(props) {
     super(props);
-    this.state = {};
+    this.state = { applyCard: false };
   }
 
   componentDidMount() {
@@ -28,6 +32,13 @@ class ApplyNowModalWrapper extends React.PureComponent {
       fetchModuleXContent(labels.referred);
     }
   }
+
+  toggleApplyCard = () => {
+    const { applyCard } = this.state;
+    this.setState({
+      applyCard: !applyCard,
+    });
+  };
 
   onClose = () => {
     const { setLoginModalMountState } = this.props;
@@ -45,7 +56,8 @@ class ApplyNowModalWrapper extends React.PureComponent {
       width: '100%',
     };
     // eslint-disable-next-line react/prop-types
-    const { labels, applyNow, toggleModalWrapper } = this.props;
+    const { labels, applyNow, toggleModalWrapper, plccBenefitsList } = this.props;
+    const { applyCard } = this.state;
 
     const offerType = getLabelValue(labels, 'oneequalstwopointsoffer');
     return (
@@ -65,7 +77,7 @@ class ApplyNowModalWrapper extends React.PureComponent {
             fontSize="fs36"
             textAlign="center"
             fontWeight="black"
-            text={getLabelValue(labels, 'apply_now_header')}
+            text={getLabelValue(labels, 'lbl_PLCCModal_applyNowHeaderText')}
             paddingTop="30px"
           />
           <ImageContainer>
@@ -76,8 +88,10 @@ class ApplyNowModalWrapper extends React.PureComponent {
             fontFamily="secondary"
             fontSize="fs14"
             textAlign="center"
-            text={getLabelValue(labels, 'apply_now_subheader')}
+            text={getLabelValue(labels, 'lbl_PLCCModal_applyNowSubText')}
             paddingTop="9px"
+            paddingLeft="12px"
+            paddingRight="12px"
           />
           <ButtonWrapper>
             <Button
@@ -85,24 +99,24 @@ class ApplyNowModalWrapper extends React.PureComponent {
               type="submit"
               color="white"
               buttonVariation="variable-width"
-              text={getLabelValue(labels, 'applynow_cta')}
+              text={getLabelValue(labels, 'lbl_PLCCModal_applyNowCTA')}
               width="90%"
               onPress={this.toggleApplyCard}
             />
           </ButtonWrapper>
-          {/* <ApplyCardLayoutView toggleModal={this.toggleApplyCard} applyCard={applyCard} /> */}
+          <ApplyCardLayoutView toggleModal={this.toggleApplyCard} applyCard={applyCard} />
           <StyledAnchor
-            url={getLabelValue(labels, 'learn_more_link')}
+            url={getLabelValue(labels, 'lbl_PLCCModal_learnMoreLink')}
             fontSizeVariation="large"
             anchorVariation="secondary"
             underline
-            text={getLabelValue(labels, 'apply_now_learn_more')}
+            text={getLabelValue(labels, 'lbl_PLCCModal_learnMoreText')}
             paddingTop="23px"
           />
           <ImageContainer marginTop="28px">
-            <Image
+            <StyledImage
               source={offerType ? PLCC_LOOKUP_1_POINTS : PLCC_LOOKUP_2_POINTS}
-              width="90%"
+              width="95%"
               height="60px"
             />
           </ImageContainer>
@@ -112,47 +126,52 @@ class ApplyNowModalWrapper extends React.PureComponent {
             fontWeight="black"
             textAlign="center"
             color="text.secondary"
-            text={getLabelValue(labels, 'apply_now_benefits_header')}
+            text={getLabelValue(labels, 'lbl_PLCCModal_benefitsText')}
             paddingTop="9px"
           />
+          <Container>
+            <RichTextContainer>
+              <RichText source={{ html: plccBenefitsList }} />
+            </RichTextContainer>
+          </Container>
           <BottomContainer>
             <StyledBodyCopy
               fontSize="fs12"
               fontFamily="secondary"
-              text={getLabelValue(labels, 'apply_now_links_text')}
+              text={getLabelValue(labels, 'lbl_PLCCModal_linksTextPrefix')}
               paddingRight="4px"
             />
 
             <StyledAnchor
-              url={getLabelValue(labels, 'learn_more_link')}
+              url={getLabelValue(labels, 'lbl_PLCCModal_detailsLink')}
               fontSizeVariation="large"
               anchorVariation="primary"
               underline
-              text={getLabelValue(labels, 'apply_now_details')}
+              text={getLabelValue(labels, 'lbl_PLCCForm_details')}
               paddingRight="28px"
             />
 
             <StyledAnchor
               className="footerLink"
-              url={getLabelValue(labels, 'faq_link')}
+              url={getLabelValue(labels, 'lbl_PLCCModal_faqLink')}
               target="_blank"
               locator="plcc_faq"
               fontSizeVariation="large"
               anchorVariation="primary"
               underline
-              text={getLabelValue(labels, 'apply_now_faq')}
+              text={getLabelValue(labels, 'lbl_PLCCModal_faqText')}
               paddingRight="28px"
             />
 
             <StyledAnchor
               className="footerLink"
-              url={getLabelValue(labels, 'rewards_program_link')}
+              url={getLabelValue(labels, 'lbl_PLCCModal_rewardsProgramLink')}
               target="_blank"
               data-locator="plcc_rewards_terms"
               fontSizeVariation="large"
               anchorVariation="primary"
               underline
-              text={getLabelValue(labels, 'apply_now_rewardTerms')}
+              text={getLabelValue(labels, 'lbl_PLCCModal_rewardsProgramText')}
             />
           </BottomContainer>
         </ScrollViewContainer>

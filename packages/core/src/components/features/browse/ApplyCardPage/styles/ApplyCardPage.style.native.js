@@ -1,10 +1,15 @@
 import styled from 'styled-components/native';
 
-import BodyCopy from '../../../../common/atoms/BodyCopy';
+import { BodyCopy, Image } from '../../../../common/atoms';
 
 export const ImageContainer = styled.View`
   margin-top: ${props => props.theme.spacing.ELEM_SPACING.XS};
   align-items: center;
+`;
+
+export const StyledImage = styled(Image)`
+  /* stylelint-disable-next-line */
+  resize-mode: stretch;
 `;
 
 export const Container = styled.View`
@@ -101,6 +106,12 @@ export const ButtonWrapper = styled.View`
   margin-top: ${props => props.theme.spacing.LAYOUT_SPACING.XXS};
 `;
 
+export const RichTextContainer = styled.View`
+  width: 100%;
+  height: 150px;
+  background: ${props => props.theme.colorPalette.gray[500]};
+`;
+
 export default {
   ImageContainer,
   StyledBodyCopy,
@@ -116,4 +127,5 @@ export default {
   CheckBoxImage,
   CheckMessageView,
   ButtonWrapper,
+  RichTextContainer,
 };

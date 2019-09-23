@@ -93,8 +93,9 @@ export const resetGraphQLClient = () => {
  * @param {*} moduleName Module for which query needs to be executed
  * @returns {Promise} Resolves with data or rejects with error object
  */
-export const fetchModuleDataFromGraphQL = async modules => {
+const fetchModuleDataFromGraphQL = async modules => {
   const query = await QueryBuilder.getQuery(modules);
+  console.log(query);
   return executeGraphQLQuery(query);
 };
 

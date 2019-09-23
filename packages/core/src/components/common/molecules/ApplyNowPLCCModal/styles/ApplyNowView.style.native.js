@@ -1,5 +1,5 @@
 import styled from 'styled-components/native';
-import { BodyCopy, Anchor } from '../../../atoms';
+import { BodyCopy, Anchor, Image } from '../../../atoms';
 
 export const ImageContainer = styled.View`
   margin-top: ${props => props.marginTop || props.theme.spacing.ELEM_SPACING.XS};
@@ -7,11 +7,10 @@ export const ImageContainer = styled.View`
 `;
 
 export const Container = styled.View`
-  width: 100%;
-  padding-top: ${props => props.theme.spacing.LAYOUT_SPACING.XS};
-  padding-left: ${props => props.theme.spacing.LAYOUT_SPACING.XXS};
-  padding-right: ${props => props.theme.spacing.LAYOUT_SPACING.XXS};
-  align-items: center;
+  width: 50%;
+  margin-top: ${props => props.theme.spacing.LAYOUT_SPACING.XXS};
+  margin-left: ${props => props.theme.spacing.LAYOUT_SPACING.MED};
+  margin-right: ${props => props.theme.spacing.LAYOUT_SPACING.MED};
 `;
 
 export const TextBoxContainer = styled.View`
@@ -58,6 +57,16 @@ export const BottomContainer = styled.View`
   justify-content: center;
 `;
 
+export const RichTextContainer = styled.View`
+  width: 420px;
+  height: 80px;
+`;
+
+export const StyledImage = styled(Image)`
+  /* stylelint-disable-next-line */
+  resize-mode: stretch;
+`;
+
 export default {
   ImageContainer,
   StyledBodyCopy,
@@ -65,4 +74,7 @@ export default {
   ButtonWrapper,
   StyledAnchor,
   BottomContainer,
+  RichTextContainer,
+  Container,
+  StyledImage,
 };

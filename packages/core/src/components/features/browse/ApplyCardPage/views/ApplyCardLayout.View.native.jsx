@@ -3,7 +3,7 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import { Field, reduxForm } from 'redux-form';
 import ModalNative from '../../../../common/molecules/Modal';
-import { Image, BodyCopy, Button } from '../../../../common/atoms';
+import { RichText, Button } from '../../../../common/atoms';
 import TextBox from '../../../../common/atoms/TextBox';
 import InputCheckbox from '../../../../common/atoms/InputCheckbox/views/InputCheckbox.native';
 import DropDown from '../../../../common/atoms/DropDown/views/DropDown.native';
@@ -24,8 +24,11 @@ import {
   CheckBoxImage,
   CheckMessageView,
   ButtonWrapper,
+  StyledImage,
+  RichTextContainer,
 } from '../styles/ApplyCardPage.style.native';
 import { CAcountriesStatesTable, UScountriesStatesTable } from '../CountriesAndStates.constants';
+import { getLabelValue } from '../../../../../utils';
 
 const headerImage = require('../../../../../../../core/src/assets/tcp-cc.png');
 
@@ -80,7 +83,7 @@ class ApplyCardLayoutView extends React.PureComponent<Props> {
       width: '100%',
     };
 
-    const { applyCard, toggleModal } = this.props;
+    const { applyCard, toggleModal, plccData, labels } = this.props;
     const { country, dropDownItem } = this.state;
 
     return (
@@ -95,21 +98,12 @@ class ApplyCardLayoutView extends React.PureComponent<Props> {
       >
         <ScrollViewContainer>
           <ImageContainer>
-            <Image source={headerImage} width="70%" height="166px" />
+            <StyledImage source={headerImage} width="70%" height="166px" />
           </ImageContainer>
           <Container>
-            <BodyCopy
-              text="Please review the important information and terms about opening a MY PLACE REWARDS CREDIT CARD account prior to submitting your application or accepting a pre-approved offer.
-
-To apply or accept a pre-approved offer you must:
-• Be at the age of majority in your state or territory
-• Have a valid government-issued photo ID
-• Have a valid government issued tax identification number (such as a SSN or SIN)
-• Have a street, rural route or APO/FPO mailing address (no P.O. Boxes)
-
-You agree that this application and any information you submit to Comenity Capital Bank may be shared with and retained by
-The Children’s Place."
-            />
+            <RichTextContainer>
+              <RichText source={{ html: plccData.credit_card_header }} />
+            </RichTextContainer>
           </Container>
           <TextBoxContainer>
             <Field
@@ -144,9 +138,9 @@ The Children’s Place."
           />
           <NameFieldContainer>
             <Field
-              name="firstName"
+              name={getLabelValue(labels, 'lbl_PLCCForm_firstName')}
               id="firstName"
-              label="First Name"
+              label={getLabelValue(labels, 'lbl_PLCCForm_firstName')}
               type="text"
               component={TextBox}
               maxLength={20}
