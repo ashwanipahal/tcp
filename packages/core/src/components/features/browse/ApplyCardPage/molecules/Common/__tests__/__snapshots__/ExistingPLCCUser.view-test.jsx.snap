@@ -32,6 +32,7 @@ exports[`ExistingPLCCUserView component should renders correctly 1`] = `
         buttonVariation="fixed-width"
         className="existing_continue_button"
         fill="BLUE"
+        onClick={[Function]}
         type="submit"
       >
         continue

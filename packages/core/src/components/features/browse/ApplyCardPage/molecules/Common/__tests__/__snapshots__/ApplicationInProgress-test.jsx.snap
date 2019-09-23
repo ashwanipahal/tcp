@@ -55,6 +55,7 @@ exports[`ApplicationInProgress component should renders correctly 1`] = `
         className="underprogress_continue_button"
         data-locator="submit-plcc-btn"
         fill="BLUE"
+        onClick={[Function]}
         type="submit"
       >
         continue shopping
