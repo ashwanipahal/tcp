@@ -1,4 +1,3 @@
-/* eslint-disable */
 import { call, put, takeLatest, select } from 'redux-saga/effects';
 import logger from '@tcp/core/src/utils/loggerInstance';
 import SLP_CONSTANTS from './SearchDetail.constants';
@@ -10,7 +9,7 @@ import {
 } from './SearchDetail.actions';
 import Abstractor from '../../../../../services/abstractors/productListing';
 import ProductsOperator from '../../ProductListing/container/productsRequestFormatter';
-import { getLastLoadedPageNumber, getMaxPageNumber } from './SearchDetail.selectors';
+import { getLastLoadedPageNumber } from './SearchDetail.selectors';
 
 const instanceProductListing = new Abstractor();
 const operatorInstance = new ProductsOperator();
