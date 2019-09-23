@@ -60,7 +60,6 @@ class BirthdaySavingsList extends PureComponent {
       if (status === 'success') {
         this.closeRemoveModal();
         this.closeAddModal();
-        toastMessage(message);
       } else toastMessage(message);
     }
   }
