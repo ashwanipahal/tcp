@@ -1,6 +1,7 @@
 import { call, put, takeLatest, select } from 'redux-saga/effects';
 import logger from '@tcp/core/src/utils/loggerInstance';
 import SLP_CONSTANTS from './SearchDetail.constants';
+import { SLP_PAGE_REDUCER_KEY } from '../../../../../constants/reducer.constants';
 import {
   setSlpProducts,
   setSlpLoadingState,
@@ -39,15 +40,16 @@ export function* fetchMoreProducts() {
   try {
     const state = yield select();
     yield put(setSlpLoadingState({ isLoadingMore: true }));
-    const appliedFiltersIds = state.SearchListingPage.get('appliedFiltersIds');
-    const sort = (state.SearchListingPage && state.SearchListingPage.get('appliedSortId')) || '';
+    const appliedFiltersIds = state[SLP_PAGE_REDUCER_KEY].get('appliedFiltersIds');
+    const sort =
+      (state[SLP_PAGE_REDUCER_KEY] && state[SLP_PAGE_REDUCER_KEY].get('appliedSortId')) || '';
 
     const appliedFiltersAndSort = { ...appliedFiltersIds, sort };
 
     const lastLoadedPageNumber = getLastLoadedPageNumber(state);
     const reqObj = operatorInstance.getProductsListingInfo({
       state,
-      appliedFiltersAndSort,
+      filtersAndSort: appliedFiltersAndSort,
       pageNumber: lastLoadedPageNumber + 1,
     });
 

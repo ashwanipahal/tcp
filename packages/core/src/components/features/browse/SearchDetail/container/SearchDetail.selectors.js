@@ -6,7 +6,7 @@ import { SLP_PAGE_REDUCER_KEY } from '../../../../../constants/reducer.constants
 
 const getReducer = state => state[SLP_PAGE_REDUCER_KEY];
 
-const getProductListingState = state => {
+const getSearchListingState = state => {
   return state[SLP_PAGE_REDUCER_KEY];
 };
 
@@ -42,7 +42,7 @@ const getOrganizedHeaderNavigationTree = state => {
 };
 
 export const getCurrentListingIds = createSelector(
-  getProductListingState,
+  getSearchListingState,
   products => products && products.get('currentNavigationIds')
 );
 
@@ -59,12 +59,12 @@ export const getNavigationTree = state => {
 };
 
 export const getBreadCrumbTrail = createSelector(
-  getProductListingState,
+  getSearchListingState,
   products => products && products.get('breadCrumbTrail')
 );
 
 export const getProductsSelect = createSelector(
-  getProductListingState,
+  getSearchListingState,
   products =>
     products && products.get('loadedProductsPages') && products.get('loadedProductsPages')[0]
 );
@@ -74,27 +74,27 @@ export const getLabels = state => {
 };
 
 export const getTotalProductsCount = createSelector(
-  getProductListingState,
+  getSearchListingState,
   products => products && products.get('totalProductsCount')
 );
 
 export const getCurrentSearchForText = createSelector(
-  getProductListingState,
+  getSearchListingState,
   products => products && products.get('currentListingSearchForText')
 );
 
 export const getAppliedFilters = createSelector(
-  getProductListingState,
+  getSearchListingState,
   products => products && products.get('appliedFiltersIds')
 );
 
 export const getAppliedSortId = createSelector(
-  getProductListingState,
+  getSearchListingState,
   products => products && products.get('appliedSortId')
 );
 
 export const getLoadedProductsCount = createSelector(
-  getProductListingState,
+  getSearchListingState,
   products => {
     const allProducts = products && products.get('loadedProductsPages');
     const totalProductCount =
@@ -104,22 +104,22 @@ export const getLoadedProductsCount = createSelector(
 );
 
 export const getLongDescription = createSelector(
-  getProductListingState,
+  getSearchListingState,
   ProductListing => ProductListing && ProductListing.get('currentListingDescription')
 );
 
 export const getUnbxdId = createSelector(
-  getProductListingState,
+  getSearchListingState,
   products => products && products.get('unbxdId')
 );
 
 export const getLoadedProductsPages = createSelector(
-  getProductListingState,
+  getSearchListingState,
   products => products && products.get('loadedProductsPages')
 );
 
 export const getProductsFilters = createSelector(
-  getProductListingState,
+  getSearchListingState,
   products => products && products.get('filtersMaps')
 );
 export const getLabelsProductListing = state => {
@@ -144,7 +144,7 @@ export const getLabelsProductListing = state => {
 };
 
 export const getIsLoadingMore = state => {
-  return state.SearchListingPage.get('isLoadingMore');
+  return state[SLP_PAGE_REDUCER_KEY].get('isLoadingMore');
 };
 
 export const getSpotlightReviewsUrl = () => {
