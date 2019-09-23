@@ -62,6 +62,10 @@ class ExtraPointsDetailModal extends React.PureComponent {
     const { waysToEarnRow } = this.props;
     const activityDetails = waysToEarnRow.activityModal;
 
+    const richTextStyle = `<style font-size: 30px; >${
+      activityDetails.activityModalLongDescription
+    } </style>`;
+
     return (
       <>
         <EarnExtraPointsTileImage>
@@ -87,12 +91,10 @@ class ExtraPointsDetailModal extends React.PureComponent {
           data-locator={`earnPointsModal_${activityDetails.activityModalAction}_shortTitle`}
         />
         <RichTextWrapper>
-          <BodyCopy component="div" fontSize="fs22" fontWeight="black">
-            <RichText
-              source={{ html: activityDetails.activityModalLongDescription }}
-              data-locator={`earnPointsModal_${activityDetails.activityModalAction}_ShortDesc`}
-            />
-          </BodyCopy>
+          <RichText
+            source={{ html: richTextStyle }}
+            data-locator={`earnPointsModal_${activityDetails.activityModalAction}_ShortDesc`}
+          />
         </RichTextWrapper>
         <BodyCopy component="div" textAlign="center">
           <Button
