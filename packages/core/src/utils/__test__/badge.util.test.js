@@ -1,6 +1,7 @@
 import {
   parseBoolean,
   getDateInformation,
+  getTranslateDateInformation,
   getCartProductAttributes,
   attributeListMaker,
   extractAttributeValue,
@@ -21,7 +22,6 @@ describe('badge util test', () => {
         date: 12,
         day: 'THU',
         month: 'DEC',
-        translated: currentDate,
       };
       expect(getDateInformation(new Date(currentDate), true)).toEqual(dateObj);
     });
@@ -30,9 +30,21 @@ describe('badge util test', () => {
         date: 12,
         day: 'Thu',
         month: 'Dec',
-        translated: currentDate,
       };
       expect(getDateInformation(new Date(currentDate), false)).toEqual(dateObj);
+    });
+
+    it('getTranslateDateInformation', () => {
+      const dateObj = {
+        date: 12,
+        day: 'Thu',
+        month: 'Dec',
+      };
+      const dayOption = { weekday: 'short' };
+      const monthOption = { month: 'short' };
+      expect(
+        getTranslateDateInformation(new Date(currentDate), 'en-US', dayOption, monthOption)
+      ).toEqual(dateObj);
     });
 
     it('should return product attributes', () => {
