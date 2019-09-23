@@ -72,7 +72,7 @@ export class DetailedEarnExtraPointsTile extends React.PureComponent {
   render() {
     const { waysToEarnRow, viewAll, handleComponentChange, onViewActivityDetails } = this.props;
     return (
-      <TileWrapper style={this.boxWithShadow}>
+      <TileWrapper style={this.boxWithShadow} viewAll>
         <Anchor
           onPress={() =>
             viewAll

@@ -14,6 +14,7 @@ exports[`Detailed Earn Extra Points Tile component  should render Detailed Earn 
       "shadowRadius": 5,
     }
   }
+  viewAll={true}
 >
   <Styled(Anchor)
     accessibilityLabel=""

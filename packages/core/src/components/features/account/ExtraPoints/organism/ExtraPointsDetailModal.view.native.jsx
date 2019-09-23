@@ -20,7 +20,7 @@ const AddFavoriteStoreImage = require('@tcp/core/src/assets/store.png');
 const AddShopperTypeImage = require('@tcp/core/src/assets/survey.png');
 
 /**
- * DetailedEarnExtraPointsTile component used for show details earn extra points.
+ * ExtraPointsDetailModal component used for show details earn extra points.
  * @sourceMap - sourceMap object for images path
  */
 

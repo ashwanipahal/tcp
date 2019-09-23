@@ -17,7 +17,7 @@ import {
 } from '../styles/ExtraPoints.style.native';
 
 /**
- * This function component use for return the EarnPoints
+ * This class component use for return the EarnPoints
  * can be passed in the component.
  * @param waysToEarn - waysToEarn object used for showing extra points details
  */
@@ -29,12 +29,21 @@ export class EarnPoints extends React.PureComponent {
     };
   }
 
+  /**
+   * onViewActivityDetails function used to set modal toggle state
+   * @param waysToEarnRow - waysToEarnRow object used for showing extra points details
+   */
+
   onViewActivityDetails = earnPoints => {
     this.setState({
       waysToEarnRow: earnPoints,
       showModal: true,
     });
   };
+
+  /**
+   * toggle modal to open and closed
+   */
 
   toggleModal = () => {
     const { showModal } = this.state;
