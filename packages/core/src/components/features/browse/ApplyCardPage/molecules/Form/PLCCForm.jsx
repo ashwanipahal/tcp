@@ -3,6 +3,7 @@ import { Field, reduxForm } from 'redux-form';
 import PropTypes from 'prop-types';
 import { BodyCopy, Button, Col, Row } from '../../../../../common/atoms';
 import { Grid } from '../../../../../common/molecules';
+import { getLabelValue } from '../../../../../../utils';
 import createValidateMethod from '../../../../../../utils/formValidation/createValidateMethod';
 import InputCheckBox from '../../../../../common/atoms/InputCheckbox';
 import getStandardConfig from '../../../../../../utils/formValidation/validatorStandardConfig';
@@ -20,6 +21,7 @@ import {
 import { backToHome } from '../../utils/DateOfBirthHelper';
 import StyledPLCCFormWrapper from './styles/PLCCForm.style';
 import PLCCTimeoutInterimModal from '../Modals/PLCCTmeoutInterimModal';
+import { getPageViewGridRowSize } from '../../utils/utility';
 
 class PLCCForm extends React.PureComponent {
   static idleUserEvents = [
@@ -166,34 +168,50 @@ class PLCCForm extends React.PureComponent {
               <Col
                 key="Prescreen_code_link"
                 data-locator="Prescreen_code_link"
-                colSize={{ large: 12, medium: 8, small: 6 }}
+                colSize={{ large: getPageViewGridRowSize(isPLCCModalFlow), medium: 8, small: 6 }}
               >
                 <PrescreenCode labels={labels} />
               </Col>
             </Row>
-            <ContactInformationFormWrapper labels={labels} dispatch={dispatch} />
+            <ContactInformationFormWrapper
+              labels={labels}
+              dispatch={dispatch}
+              isPLCCModalFlow={isPLCCModalFlow}
+            />
             <Row fullBleed>
-              <Col key="container_contact_info" colSize={{ large: 12, medium: 8, small: 6 }}>
+              <Col
+                key="container_contact_info"
+                colSize={{ large: getPageViewGridRowSize(isPLCCModalFlow), medium: 8, small: 6 }}
+              >
                 <ContactInformation
                   contactInfo={plccData && plccData.contact_information_disclaimer}
                 />
               </Col>
             </Row>
-            <PersonalInformationFormWrapper labels={labels} />
+            <PersonalInformationFormWrapper labels={labels} isPLCCModalFlow={isPLCCModalFlow} />
             <Row fullBleed>
-              <Col key="container_account_info" colSize={{ large: 12, medium: 8, small: 6 }}>
+              <Col
+                key="container_account_info"
+                colSize={{ large: getPageViewGridRowSize(isPLCCModalFlow), medium: 8, small: 6 }}
+              >
                 <AccountInformations
                   classifiedDisclaimer={plccData && plccData.account_classified_disclaimer}
                 />
               </Col>
             </Row>
             <Row fullBleed>
-              <Col key="container_electronic_consent" colSize={{ large: 12, medium: 8, small: 6 }}>
+              <Col
+                key="container_electronic_consent"
+                colSize={{ large: getPageViewGridRowSize(isPLCCModalFlow), medium: 8, small: 6 }}
+              >
                 <ElectronicConsent electronicConsent={plccData && plccData.electronic_consent} />
               </Col>
             </Row>
             <Row fullBleed>
-              <Col key="container_plcc_agreement" colSize={{ large: 12, medium: 8, small: 6 }}>
+              <Col
+                key="container_plcc_agreement"
+                colSize={{ large: getPageViewGridRowSize(isPLCCModalFlow), medium: 8, small: 6 }}
+              >
                 <PLCCAgreements labels={labels} />
               </Col>
             </Row>
@@ -202,7 +220,7 @@ class PLCCForm extends React.PureComponent {
               <Col
                 className="plcc_iAgree_container"
                 key="container_checkbox"
-                colSize={{ large: 12, medium: 8, small: 6 }}
+                colSize={{ large: getPageViewGridRowSize(isPLCCModalFlow), medium: 8, small: 6 }}
               >
                 <Field
                   name="iAgree"
@@ -218,7 +236,7 @@ class PLCCForm extends React.PureComponent {
                     fontFamily="secondary"
                     fontWeight="regular"
                   >
-                    {labels && labels.plcc_form_checkbox_text}
+                    {getLabelValue(labels, 'lbl_PLCCForm_iAgreeCheckboxText')}
                   </BodyCopy>
                 </Field>
               </Col>
@@ -229,10 +247,10 @@ class PLCCForm extends React.PureComponent {
               fontFamily="secondary"
               fontWeight="regular"
             >
-              <Row fullBleed className="submit_plcc_form">
+              <Row fullBleed>
                 <Col
-                  ignoreGutter={{ small: true }}
-                  colSize={{ large: 6, medium: 4, small: 6 }}
+                  ignoreGutter={{ small: true, medium: true }}
+                  colSize={{ large: getPageViewGridRowSize(isPLCCModalFlow), medium: 8, small: 6 }}
                   className="submit_button_plcc_form_container"
                 >
                   <Button
@@ -242,17 +260,15 @@ class PLCCForm extends React.PureComponent {
                     className="submit_button_plcc_form"
                     data-locator="plcc_submit_btn"
                   >
-                    {labels.plcc_form_submit_button}
+                    {getLabelValue(labels, 'lbl_PLCCForm_submitButton')}
                   </Button>
                 </Col>
               </Row>
-              <Row className="no_thanks_link_wrapper">
+              <Row fullBleed>
                 <Col
                   ignoreGutter={{ small: true }}
-                  colSize={{ large: 4, medium: 8, small: 6 }}
+                  colSize={{ large: getPageViewGridRowSize(isPLCCModalFlow), medium: 8, small: 6 }}
                   className="no_thanks_link"
-                  aria-label="no_thanks_link"
-                  data-locator="plcc_no_thanks"
                 >
                   <BodyCopy
                     fontFamily="secondary"
@@ -261,7 +277,7 @@ class PLCCForm extends React.PureComponent {
                     textAlign="center"
                     tabIndex="0"
                   >
-                    {labels.plcc_form_nothanks}
+                    {getLabelValue(labels, 'lbl_PLCCForm_noThanks')}
                   </BodyCopy>
                 </Col>
               </Row>

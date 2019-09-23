@@ -21,7 +21,6 @@ describe('badge util test', () => {
         date: 12,
         day: 'THU',
         month: 'DEC',
-        translated: currentDate,
       };
       expect(getDateInformation(new Date(currentDate), true)).toEqual(dateObj);
     });
@@ -30,7 +29,6 @@ describe('badge util test', () => {
         date: 12,
         day: 'Thu',
         month: 'Dec',
-        translated: currentDate,
       };
       expect(getDateInformation(new Date(currentDate), false)).toEqual(dateObj);
     });

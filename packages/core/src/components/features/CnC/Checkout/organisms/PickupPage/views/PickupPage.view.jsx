@@ -15,6 +15,7 @@ import BodyCopy from '../../../../../../common/atoms/BodyCopy';
 import Button from '../../../../../../common/atoms/Button';
 import Anchor from '../../../../../../common/atoms/Anchor';
 import CheckoutFooter from '../../../molecules/CheckoutFooter';
+import CheckoutOrderInfo from '../../../molecules/CheckoutOrderInfoMobile';
 
 class PickUpFormPart extends React.Component {
   constructor(props) {
@@ -175,6 +176,7 @@ class PickUpFormPart extends React.Component {
       isSmsUpdatesEnabled,
       dispatch,
       handleSubmit,
+      showAccordian,
     } = this.props;
     const { isEditing, pickUpContact, dataUpdated } = this.state;
     if (!dataUpdated) {
@@ -297,6 +299,7 @@ class PickUpFormPart extends React.Component {
           </div>
           {isEditing && !isMobile && this.SaveAndCancelButton()}
         </div>
+        <CheckoutOrderInfo isGuest={isGuest} showAccordian={showAccordian} />
         <form onSubmit={handleSubmit(this.pickupSubmit)}>
           <CheckoutFooter
             hideBackLink={false}
@@ -329,6 +332,7 @@ PickUpFormPart.propTypes = {
   onPickupSubmit: PropTypes.func.isRequired,
   isVenmoPaymentInProgress: PropTypes.bool,
   setVenmoPickupState: PropTypes.func,
+  showAccordian: PropTypes.bool,
 };
 
 PickUpFormPart.defaultProps = {
@@ -343,6 +347,7 @@ PickUpFormPart.defaultProps = {
   currentPhoneNumber: '',
   isVenmoPaymentInProgress: false,
   setVenmoPickupState: () => {},
+  showAccordian: true,
 };
 
 const validateMethod = createValidateMethod({

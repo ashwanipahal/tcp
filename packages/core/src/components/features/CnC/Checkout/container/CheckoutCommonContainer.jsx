@@ -57,6 +57,7 @@ const {
   getGiftWrappingValues,
   getReviewLabels,
   getBillingValues,
+  getShippingPhoneAndEmail,
 } = selectors;
 
 export class CheckoutContainer extends React.Component<Props> {
@@ -246,6 +247,7 @@ const mapStateToProps = state => {
       addEditResponseAddressId: getAddEditResponseAddressId(state),
       shippingAddress: getShippingAddress(state),
       syncErrors: getSyncError(state),
+      shippingPhoneAndEmail: getShippingPhoneAndEmail(state),
     },
     billingProps: {
       labels: getBillingLabels(state),

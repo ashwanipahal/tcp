@@ -288,6 +288,14 @@ const getDefaultShipping = state => {
   return selector(state, 'defaultShipping');
 };
 
+const getShippingPhoneAndEmail = createSelector(
+  getShippingDestinationValues,
+  shippingDestinationValues => {
+    const { phoneNumber, emailAddress } = shippingDestinationValues;
+    return { phoneNumber, emailAddress };
+  }
+);
+
 const getCurrentPickupFormNumber = createSelector(
   getShippingPickupFields,
   pickUpContact => pickUpContact && pickUpContact.phoneNumber
@@ -783,4 +791,5 @@ export default {
   getCurrentLanguage,
   isVenmoShippingBannerDisplayed,
   isVenmoPickupBannerDisplayed,
+  getShippingPhoneAndEmail,
 };

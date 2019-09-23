@@ -17,6 +17,7 @@ const CnCTemplate = ({
   className,
   header: Header,
   isGuest,
+  isCheckoutView,
   showAccordian,
 }) => {
   return (
@@ -30,7 +31,10 @@ const CnCTemplate = ({
           <LeftSection />
         </Col>
         {showLeftSection && (
-          <Col colSize={{ small: 6, medium: 3, large: 4 }} className="right-sec">
+          <Col
+            colSize={{ small: 6, medium: 3, large: 4 }}
+            className={`right-sec ${isCheckoutView ? 'hide-mobile' : ''}`}
+          >
             <OrderLedgerContainer />
             {BagActions && <BagActions />}
             {!isGuest && (
@@ -60,6 +64,7 @@ CnCTemplate.propTypes = {
   showLeftSection: PropTypes.bool,
   isGuest: PropTypes.bool.isRequired,
   showAccordian: PropTypes.bool,
+  isCheckoutView: PropTypes.bool,
 };
 
 CnCTemplate.defaultProps = {
@@ -67,6 +72,7 @@ CnCTemplate.defaultProps = {
   header: false,
   showLeftSection: true,
   showAccordian: true,
+  isCheckoutView: false,
 };
 
 export default withStyles(CnCTemplate, styles);

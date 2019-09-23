@@ -104,13 +104,17 @@ function createMatchObject(res, translatedProductInfo) {
   });
 }
 
-export function* getOrderDetailSaga() {
+export function* getOrderDetailSaga(payload) {
+  const { payload: { after } = {} } = payload;
   try {
     const res = yield call(getOrderDetailsData);
     const translatedProductInfo = yield call(getTranslatedProductInfo, res);
 
     createMatchObject(res, translatedProductInfo);
     yield put(BAG_PAGE_ACTIONS.getOrderDetailsComplete(res.orderDetails));
+    if (after) {
+      yield call(after);
+    }
   } catch (err) {
     yield put(BAG_PAGE_ACTIONS.setBagPageError(err));
   }
@@ -298,7 +302,9 @@ export function* removeUnqualifiedItemsAndCheckout({ navigation } = {}) {
   yield call(checkoutCart, true, navigation);
 }
 
-export function* addItemToSFL({ payload: { itemId, catEntryId, userInfoRequired } = {} } = {}) {
+export function* addItemToSFL({
+  payload: { itemId, catEntryId, userInfoRequired, afterHandler } = {},
+} = {}) {
   const isRememberedUser = yield select(isRemembered);
   const isRegistered = yield select(getUserLoggedInState);
   const countryCurrency = yield select(BAG_SELECTORS.getCurrentCurrency);
@@ -313,7 +319,9 @@ export function* addItemToSFL({ payload: { itemId, catEntryId, userInfoRequired 
       countryCurrency,
       isCanadaSIte
     );
-
+    if (afterHandler) {
+      afterHandler();
+    }
     if (res.errorResponse && res.errorMessage) {
       const resErr = res.errorMessage[Object.keys(res.errorMessage)[0]];
       yield put(BAG_PAGE_ACTIONS.setCartItemsSflError(resErr));
@@ -327,6 +335,7 @@ export function* addItemToSFL({ payload: { itemId, catEntryId, userInfoRequired 
       yield put(BAG_PAGE_ACTIONS.setCartItemsSFL(false));
     }
   } catch (err) {
+    console.log({ err });
     yield put(BAG_PAGE_ACTIONS.setCartItemsSflError(err));
   }
 }

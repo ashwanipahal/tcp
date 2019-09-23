@@ -34,6 +34,7 @@ import {
   getCardOptions,
 } from './BillingPaymentForm.view.util';
 import VenmoPaymentButton from '../../../../../../common/atoms/VenmoPaymentButton';
+import CheckoutOrderInfo from '../../../molecules/CheckoutOrderInfoMobile';
 
 export class BillingPaymentForm extends React.PureComponent {
   static propTypes = propTypes;
@@ -357,6 +358,8 @@ export class BillingPaymentForm extends React.PureComponent {
       backLinkShipping,
       nextSubmitText,
       isPaymentDisabled,
+      showAccordian,
+      isGuest,
     } = this.props;
     const creditCardList = getCreditCardList({ cardList });
     return (
@@ -388,6 +391,7 @@ export class BillingPaymentForm extends React.PureComponent {
             )}
           </div>
         )}
+        <CheckoutOrderInfo isGuest={isGuest} showAccordian={showAccordian} />
         <CheckoutFooter
           hideBackLink
           backLinkHandler={() => utility.routeToPage(CHECKOUT_ROUTES.shippingPage)}
