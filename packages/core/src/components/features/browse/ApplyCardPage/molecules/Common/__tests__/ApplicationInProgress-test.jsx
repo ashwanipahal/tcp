@@ -2,6 +2,10 @@ import React from 'react';
 import { shallow } from 'enzyme';
 import ApplicationInProgress from '../ApplicationInProgress';
 
+jest.mock('../../../../../../../utils/utils.web', () => ({
+  routerPush: jest.fn(),
+}));
+
 describe('ApplicationInProgress component', () => {
   it('should renders correctly', () => {
     const props = {

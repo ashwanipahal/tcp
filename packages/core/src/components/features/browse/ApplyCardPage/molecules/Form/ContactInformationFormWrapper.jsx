@@ -17,6 +17,7 @@ import { AutoCompleteComponent } from '../../../../../common/atoms/GoogleAutoSug
 import { getSiteId } from '../../../../../../utils/utils.web';
 import StyeldContactInfoFormWrapper from './styles/ContactInformationFormWrapper.style';
 import { getLocator, getLabelValue } from '../../../../../../utils';
+import { getPageViewGridColumnSize } from '../../utils/utility';
 
 class ContactInformationFormWrapper extends React.Component {
   static propTypes = {
@@ -47,7 +48,7 @@ class ContactInformationFormWrapper extends React.Component {
   };
 
   render() {
-    const { labels } = this.props;
+    const { labels, isPLCCModalFlow } = this.props;
     return (
       <StyeldContactInfoFormWrapper>
         <Heading
@@ -65,7 +66,7 @@ class ContactInformationFormWrapper extends React.Component {
           <Col
             className="contact_information_form columnWrapper"
             key="contact_information_form"
-            colSize={{ large: 6, medium: 4, small: 6 }}
+            colSize={{ large: getPageViewGridColumnSize(isPLCCModalFlow), medium: 4, small: 6 }}
           >
             <Row fullBleed>
               <Col
@@ -106,7 +107,7 @@ class ContactInformationFormWrapper extends React.Component {
           <Col
             className="contact_information_form columnWrapper"
             key={`contact_information_form_${getLabelValue(labels, 'lbl_PLCCForm_lastName')}`}
-            colSize={{ large: 6, medium: 4, small: 6 }}
+            colSize={{ large: getPageViewGridColumnSize(isPLCCModalFlow), medium: 4, small: 6 }}
           >
             <Field
               component={TextBox}
@@ -123,7 +124,7 @@ class ContactInformationFormWrapper extends React.Component {
           <Col
             className="contact_information_form columnWrapper"
             key="contact_information_form"
-            colSize={{ large: 6, medium: 4, small: 6 }}
+            colSize={{ large: getPageViewGridColumnSize(isPLCCModalFlow), medium: 4, small: 6 }}
           >
             <Field
               id="addressLine1"
@@ -134,11 +135,12 @@ class ContactInformationFormWrapper extends React.Component {
               componentRestrictions={Object.assign({}, { country: [this.siteId] })}
               dataLocator={getLocator('plcc_address_1')}
               className="field"
+              maxLength="30"
             />
           </Col>
           <Col
             className="contact_information_form columnWrapper"
-            colSize={{ small: 6, medium: 4, large: 6 }}
+            colSize={{ small: 6, medium: 4, large: getPageViewGridColumnSize(isPLCCModalFlow) }}
           >
             <Field
               placeholder={getLabelValue(labels, 'lbl_PLCCForm_addressLine2')}
@@ -155,7 +157,7 @@ class ContactInformationFormWrapper extends React.Component {
           <Col
             className="contact_information_form columnWrapper"
             key="container_city"
-            colSize={{ large: 6, medium: 4, small: 6 }}
+            colSize={{ large: getPageViewGridColumnSize(isPLCCModalFlow), medium: 4, small: 6 }}
           >
             <Field
               id="city"
@@ -166,7 +168,10 @@ class ContactInformationFormWrapper extends React.Component {
               className="field"
             />
           </Col>
-          <Col colSize={{ small: 6, medium: 4, large: 6 }} className="columnWrapper">
+          <Col
+            colSize={{ small: 6, medium: 4, large: getPageViewGridColumnSize(isPLCCModalFlow) }}
+            className="columnWrapper"
+          >
             <Row fullBleed>
               <Col
                 className="contact_information_form"
@@ -214,7 +219,7 @@ class ContactInformationFormWrapper extends React.Component {
           <Col
             className="contact_information_form columnWrapper"
             key="container_phone"
-            colSize={{ large: 6, medium: 4, small: 6 }}
+            colSize={{ large: getPageViewGridColumnSize(isPLCCModalFlow), medium: 4, small: 6 }}
           >
             <Field
               placeholder={getLabelValue(labels, 'lbl_PLCCForm_mobilePhoneNumber')}
@@ -228,7 +233,7 @@ class ContactInformationFormWrapper extends React.Component {
           </Col>
           <Col
             className="contact_information_form columnWrapper"
-            colSize={{ small: 6, medium: 4, large: 6 }}
+            colSize={{ small: 6, medium: 4, large: getPageViewGridColumnSize(isPLCCModalFlow) }}
           >
             <Field
               placeholder={getLabelValue(labels, 'lbl_PLCCForm_alternatePhone')}
@@ -245,7 +250,7 @@ class ContactInformationFormWrapper extends React.Component {
             className="prescreen_code_link_container contact_information_form columnWrapper"
             key="Prescreen_code_link"
             data-locator="Prescreen_code_link"
-            colSize={{ large: 6, medium: 4, small: 6 }}
+            colSize={{ large: getPageViewGridColumnSize(isPLCCModalFlow), medium: 4, small: 6 }}
           >
             <Field
               placeholder={getLabelValue(labels, 'lbl_PLCCForm_email')}
@@ -273,6 +278,7 @@ class ContactInformationFormWrapper extends React.Component {
 
 ContactInformationFormWrapper.propTypes = {
   labels: PropTypes.shape({}).isRequired,
+  isPLCCModalFlow: PropTypes.func.isRequired,
 };
 
 export default ContactInformationFormWrapper;
