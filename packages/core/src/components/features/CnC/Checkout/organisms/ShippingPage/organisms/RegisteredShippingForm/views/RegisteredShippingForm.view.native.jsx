@@ -13,7 +13,7 @@ import {
   SaveToAccountWrapper,
   MarginBottom,
   AddressViewWrapper,
-} from '../styles/RegisteredShippingForm.styles.native';
+} from '../styles/RegisteredShippingForm.view.style.native';
 import {
   onSaveBtnClick,
   getFieldsValidation,
