@@ -1,6 +1,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import { Anchor } from '../../../atoms';
+import errorBoundary from '../../../hoc/withErrorBoundary';
 import { getLocator } from '../../../../../utils';
 import config from '../config';
 
@@ -45,4 +46,4 @@ ModuleHCTALinks.propTypes = {
   ).isRequired,
 };
 
-export default ModuleHCTALinks;
+export default errorBoundary(ModuleHCTALinks);
