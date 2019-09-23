@@ -31,6 +31,14 @@ export const importGraphQLQueriesDynamically = query => {
   return import(`../services/handler/graphQL/queries/${query}`);
 };
 
+export const getLocationOrigin = () => {
+  return window.location.origin;
+};
+
+export const canUseDOM = () => {
+  return typeof window !== 'undefined' && window.document && window.document.createElement;
+};
+
 export const isProduction = () => {
   return process.env.NODE_ENV === ENV_PRODUCTION;
 };
@@ -250,7 +258,10 @@ export const getCountriesMap = data => {
   const countries = defaultCountries;
   data.map(value =>
     countries.push(
-      Object.assign({}, value.country, { siteId: 'us', currencyId: value.currency.id })
+      Object.assign({}, value.country, {
+        siteId: 'us',
+        currencyId: value.currency.id,
+      })
     )
   );
   return countries;
@@ -481,4 +492,5 @@ export default {
   redirectToPdp,
   handleGenericKeyDown,
   viewport,
+  canUseDOM,
 };

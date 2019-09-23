@@ -136,7 +136,7 @@ const FacebookLoginComponent = props => {
         elem.map(element => {
           return (
             <React.Fragment>
-              {!(element.socialAccount === 'facebook' && element.isConnected) && (
+              {element.socialAccount === 'facebook' && !element.isConnected && (
                 <BodyCopy
                   className="social-accounts__align social_accounts_cross_plus-icon"
                   onClick={() => loginUser(element)}
