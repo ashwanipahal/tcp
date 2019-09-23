@@ -281,42 +281,6 @@ class PLCCForm extends React.PureComponent {
                   </BodyCopy>
                 </Col>
               </Row>
-              {/* <Row fullBleed className="submit_plcc_form">
-                <Col
-                  ignoreGutter={{ large: true, medium: true, small: true }}
-                  colSize={{ large: 10, medium: 4, small: 6 }}
-                  className="submit_button_plcc_form_container"
-                ><Row>
-                   <Button
-                    buttonVariation="fixed-width"
-                    fill="BLUE"
-                    type="submit"
-                    className="submit_button_plcc_form"
-                    data-locator="plcc_submit_btn"
-                  >
-                    {getLabelValue(labels, 'lbl_PLCCForm_submitButton')}
-                  </Button>
-                </Row>
-                </Col></Row> */}
-              {/* <Row className="no_thanks_link_wrapper">
-                <Col
-                  ignoreGutter={{ large: true, medium: true, small: true }}
-                  colSize={{ large: 5, medium: 8, small: 6 }}
-                  className="no_thanks_link"
-                  aria-label="no_thanks_link"
-                  data-locator="plcc_no_thanks"
-                >
-                  <BodyCopy
-                    fontFamily="secondary"
-                    component="div"
-                    onClick={backToHome}
-                    textAlign="center"
-                    tabIndex="0"
-                  >
-                    {getLabelValue(labels, 'lbl_PLCCForm_noThanks')}
-                  </BodyCopy>
-                </Col>
-              </Row> */}
             </BodyCopy>
           </Grid>
         </form>

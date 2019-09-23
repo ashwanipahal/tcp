@@ -951,7 +951,7 @@ exports[`ContactInformationFormWrapper component should renders correctly 1`] = 
         Object {
           "large": 5,
           "medium": 4,
-          "small": 5,
+          "small": 6,
         }
       }
     >
