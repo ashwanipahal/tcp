@@ -14,6 +14,7 @@ import Anchor from '../../../../../../../../common/atoms/Anchor';
 import getStandardConfig from '../../../../../../../../../utils/formValidation/validatorStandardConfig';
 import withStyles from '../../../../../../../../common/hoc/withStyles';
 import RegisteredShippingForm from '../../RegisteredShippingForm';
+import CheckoutOrderInfo from '../../../../../molecules/CheckoutOrderInfoMobile';
 import { getLabelValue } from '../../../../../../../../../utils';
 import { propTypes, defaultProps } from './ShippingForm.view.utils';
 import GiftServices from '../../../molecules/GiftServices';
@@ -244,6 +245,7 @@ class ShippingForm extends React.Component {
       shippingAddress,
       setDefaultAddressId,
       syncErrorsObject,
+      showAccordian,
     } = this.props;
     const { isEditing, modalType, modalState } = this.state;
     return (
@@ -349,7 +351,7 @@ class ShippingForm extends React.Component {
               />
             </Col>
           </Row>
-
+          <CheckoutOrderInfo showAccordian={showAccordian} isGuest={isGuest} />
           <CheckoutFooter
             hideBackLink={!!orderHasPickUp}
             backLinkHandler={routeToPickupPage}
