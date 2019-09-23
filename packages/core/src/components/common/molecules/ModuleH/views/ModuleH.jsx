@@ -4,9 +4,8 @@ import PropTypes from 'prop-types';
 import withStyles from '../../../hoc/withStyles';
 import errorBoundary from '../../../hoc/withErrorBoundary';
 import { Col, DamImage, Row } from '../../../atoms';
+import { Carousel, LinkText } from '../..';
 import { getLocator } from '../../../../../utils';
-import { Carousel } from '../..';
-import ModuleHHeader from './ModuleH.Header';
 import ModuleHCTALinks from './ModuleH.Links';
 import style from '../ModuleH.style';
 import config from '../config';
@@ -41,8 +40,18 @@ class ModuleH extends React.PureComponent {
     return (
       <Row fullBleed={FULL_BLEED} className={`${className} moduleH`}>
         <Col colSize={COL_SIZE} offsetLeft={OFFSET_LEFT} className="moduleH__header--wrapper">
-          <ModuleHHeader headerText={headerText} />
-          <ModuleHCTALinks dataCTALinks={divCTALinks} currentIndex={{ current, next }} />
+          {headerText && (
+            <LinkText
+              component="h2"
+              headerText={headerText}
+              className="moduleH__header"
+              headingClass="medium_text_white_black"
+              dataLocator={getLocator('moduleH_header_text')}
+            />
+          )}
+          {divCTALinks && (
+            <ModuleHCTALinks dataCTALinks={divCTALinks} currentIndex={{ current, next }} />
+          )}
         </Col>
         <Col colSize={COL_SIZE}>
           <Carousel

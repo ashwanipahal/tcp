@@ -53,32 +53,16 @@ class ModuleJ extends React.PureComponent {
     ) : null;
   };
 
-  getHeaderText1 = () => {
+  getHeaderText = () => {
     const { headerText } = this.props;
     return (
-      [headerText[0]] && (
+      headerText && (
         <div className="promo-header-wrapper">
           <LinkText
             component="div"
-            headerText={[headerText[0]]}
+            headerText={headerText}
             className="promo-header"
-            dataLocator={getLocator('moduleJ_header_text_0')}
-          />
-        </div>
-      )
-    );
-  };
-
-  getHeaderText2 = () => {
-    const { headerText } = this.props;
-    return (
-      [headerText[1]] && (
-        <div className="promo-header-wrapper">
-          <LinkText
-            component="div"
-            headerText={[headerText[1]]}
-            className="promo-header"
-            dataLocator={getLocator('moduleJ_header_text_1')}
+            dataLocator={getLocator('moduleJ_header_text')}
           />
         </div>
       )
@@ -157,8 +141,7 @@ class ModuleJ extends React.PureComponent {
                 small: true,
               }}
             >
-              {this.getHeaderText1()}
-              {this.getHeaderText2()}
+              {this.getHeaderText()}
               {this.getPromoBanner()}
               <ProductTabList
                 onProductTabChange={this.onTabChange}
@@ -204,8 +187,7 @@ class ModuleJ extends React.PureComponent {
                 large: true,
               }}
             >
-              {this.getHeaderText1()}
-              {this.getHeaderText2()}
+              {this.getHeaderText()}
               {this.getPromoBanner()}
             </Col>
             <Col
