@@ -50,6 +50,10 @@ const internalEndpoints = {
     link: '/account?id=place-rewards&subSection=points-claim',
     path: `${placeRewardsPath}/points-claim`,
   },
+  extraPointsPage: {
+    link: '/account?id=extra-points',
+    path: '/account/extra-points',
+  },
 };
 
 export default internalEndpoints;

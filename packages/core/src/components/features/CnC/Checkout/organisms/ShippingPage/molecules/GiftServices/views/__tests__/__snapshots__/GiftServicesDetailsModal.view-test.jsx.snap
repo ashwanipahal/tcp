@@ -13,6 +13,13 @@ exports[`GiftServices component renders correctly 1`] = `
           "
   ",
           "
+  @media ",
+          [Function],
+          " {
+    margin-bottom: ",
+          [Function],
+          ";
+  }
   .brand-image {
     width: 83px;
   }

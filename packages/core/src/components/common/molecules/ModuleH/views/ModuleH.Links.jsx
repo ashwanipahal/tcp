@@ -1,27 +1,22 @@
-// @flow
 import React from 'react';
 import PropTypes from 'prop-types';
 import { Anchor } from '../../../atoms';
+import errorBoundary from '../../../hoc/withErrorBoundary';
 import { getLocator } from '../../../../../utils';
 import config from '../config';
-
-type Props = {
-  currentIndex: Object,
-  dataCTALinks: Object,
-};
 
 /**
  * @function ModuleHCTALinks This function renders header of Module H
  * @param {currentIndex} currentIndex Current and next index of carousel autoplay
  * @param {dataCTALinks} dataCTALinks This list of CTA links data to display
  */
-const ModuleHCTALinks = ({ currentIndex, dataCTALinks }: Props) => {
+const ModuleHCTALinks = ({ currentIndex, dataCTALinks }) => {
   const { maxLimit } = config.MODULE_H_CTALINKS;
   const CTALinks =
     dataCTALinks.length < maxLimit ? 'moduleH__listItem-partial' : 'moduleH__listItem-full';
   return (
     <ul className="moduleH__CTALink-wrapper">
-      {dataCTALinks.map((item, index) => {
+      {dataCTALinks.map(({ link, styled }, index) => {
         return (
           <li key={`modHList${index.toString()}`} className={CTALinks}>
             <Anchor
@@ -29,10 +24,10 @@ const ModuleHCTALinks = ({ currentIndex, dataCTALinks }: Props) => {
                 currentIndex.next === index ? `moduleH__CTALink--active` : ''
               }`}
               dataLocator={`${getLocator('moduleH_cta_links')}${index + 1}`}
-              to={item.link.url}
-              target={item.link.target}
+              to={link.url}
+              target={link.target}
             >
-              {item.styled.text}
+              {styled.text}
             </Anchor>
           </li>
         );
@@ -43,7 +38,12 @@ const ModuleHCTALinks = ({ currentIndex, dataCTALinks }: Props) => {
 
 ModuleHCTALinks.propTypes = {
   currentIndex: PropTypes.shape({}).isRequired,
-  dataCTALinks: PropTypes.arrayOf(PropTypes.shape({})).isRequired,
+  dataCTALinks: PropTypes.arrayOf(
+    PropTypes.shape({
+      link: PropTypes.object,
+      styled: PropTypes.object,
+    })
+  ).isRequired,
 };
 
-export default ModuleHCTALinks;
+export default errorBoundary(ModuleHCTALinks);

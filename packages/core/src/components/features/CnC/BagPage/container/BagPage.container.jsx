@@ -8,8 +8,10 @@ import {
   getCartOrderList,
   getIsCartItemsUpdating,
   getLabelsCartItemTile,
+  getIsCartItemsSFL,
 } from '../../CartItemTile/container/CartItemTile.selectors';
 import { getUserLoggedInState } from '../../../account/User/container/User.selectors';
+import { toastMessageInfo } from '../../../../common/atoms/Toast/container/Toast.actions.native';
 
 // @flow
 // type Props = {
@@ -49,6 +51,8 @@ export class BagPageContainer extends React.Component<Props> {
       sflItems,
       fetchLabels,
       isCartItemsUpdating,
+      toastMessage,
+      isCartItemSFL,
     } = this.props;
 
     const showAddTobag = false;
@@ -68,6 +72,8 @@ export class BagPageContainer extends React.Component<Props> {
         sflItems={sflItems}
         fetchLabels={fetchLabels}
         isCartItemsUpdating={isCartItemsUpdating}
+        toastMessage={toastMessage}
+        isCartItemSFL={isCartItemSFL}
       />
     );
   }
@@ -89,6 +95,9 @@ export const mapDispatchToProps = (dispatch: ({}) => void) => {
     fetchLabels: () => {
       dispatch(BAG_PAGE_ACTIONS.initActions[0]);
     },
+    toastMessage: palyoad => {
+      dispatch(toastMessageInfo(palyoad));
+    },
   };
 };
 
@@ -105,6 +114,7 @@ const mapStateToProps = state => {
     isGuest: isGuestUser(state),
     sflItems: BagPageSelector.getsflItemsList(state),
     isCartItemsUpdating: getIsCartItemsUpdating(state),
+    isCartItemSFL: getIsCartItemsSFL(state),
   };
 };
 

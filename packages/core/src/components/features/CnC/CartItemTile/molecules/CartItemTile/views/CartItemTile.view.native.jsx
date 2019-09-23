@@ -107,7 +107,7 @@ class ProductInformation extends React.Component {
     const isOK = productDetail.miscInfo.availability === CARTPAGE_CONSTANTS.AVAILABILITY_OK;
     if (!isBagPageSflSection && isOK && isShowSaveForLater) {
       return (
-        <MarginLeft onPress={() => {}}>
+        <MarginLeft onPress={() => CartItemTileExtension.handleMoveItemtoSaveList(this.props)}>
           <Image
             data-locator="save-for-later-link"
             source={sflIcon}

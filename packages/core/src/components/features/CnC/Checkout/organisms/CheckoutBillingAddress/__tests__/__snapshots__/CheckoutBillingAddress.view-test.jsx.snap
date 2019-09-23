@@ -4,6 +4,16 @@ exports[`CheckoutAddress should call onSameAsShippingChange 1`] = `
 <div
   className=""
 >
+  <Styled(Heading)
+    className="paymentMethodHeading elem-mt-MED elem-mb-LRG"
+    color="text.primary"
+    component="h2"
+    dataLocator="billing-payment-billingAddress"
+    textAlign="left"
+    variant="listMenu"
+  >
+    lbl_billing_billingAddress
+  </Styled(Heading)>
   <FormSection
     name="address"
   >
@@ -354,6 +364,16 @@ exports[`CheckoutAddress should render correctly if order doesnot have shipping 
 <div
   className=""
 >
+  <Styled(Heading)
+    className="paymentMethodHeading elem-mt-MED elem-mb-LRG"
+    color="text.primary"
+    component="h2"
+    dataLocator="billing-payment-billingAddress"
+    textAlign="left"
+    variant="listMenu"
+  >
+    lbl_billing_billingAddress
+  </Styled(Heading)>
   <FormSection
     name="address"
   >

@@ -47,6 +47,7 @@ const getReviewPageLabels = createSelector(
       'lbl_review_appliedGiftCardsNone',
       'lbl_review_giftCardHeadsup',
       'lbl_review_giftCardMessage',
+      'lbl_review_billingEdit',
     ];
     labelKeys.forEach(key => {
       labels[key] = getLabelValue(reviewLabels, key);
