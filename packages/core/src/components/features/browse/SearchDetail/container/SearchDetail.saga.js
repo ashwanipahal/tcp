@@ -1,5 +1,6 @@
 import { call, put, takeLatest, select } from 'redux-saga/effects';
 import logger from '@tcp/core/src/utils/loggerInstance';
+import makeSearch from '@tcp/core/src/services/abstractors/common/searchBar';
 import SLP_CONSTANTS from './SearchDetail.constants';
 import {
   setSlpProducts,
@@ -9,6 +10,7 @@ import {
 } from './SearchDetail.actions';
 import Abstractor from '../../../../../services/abstractors/productListing';
 import ProductsOperator from '../../ProductListing/container/productsRequestFormatter';
+import { setSearchResult } from '../../../../../../../web/src/components/features/content/Header/molecules/SearchBar/SearchBar.actions';
 
 const instanceProductListing = new Abstractor();
 const operatorInstance = new ProductsOperator();
@@ -55,9 +57,29 @@ export function* fetchMoreProducts() {
   }
 }
 
+export function* fetchSlpSearchResults({ payload }) {
+  const searchApiConfig = {
+    categoryCount: 4,
+    topQueriesCount: 4,
+    productsCounts: 4,
+    suggestionsCount: 4,
+  };
+
+  try {
+    const response = yield call(makeSearch, {
+      searchTerm: payload,
+      ...searchApiConfig,
+    });
+    yield put(setSearchResult(response));
+  } catch (err) {
+    logger.error('Error: error in fetching Search bar results ');
+  }
+}
+
 function* SearchPageSaga() {
   yield takeLatest(SLP_CONSTANTS.FETCH_SLP_PRODUCTS, fetchSlpProducts);
   yield takeLatest(SLP_CONSTANTS.GET_MORE_SLP_PRODUCTS, fetchMoreProducts);
+  yield takeLatest(SLP_CONSTANTS.GET_SLP_SEARCH_RESULTS, fetchSlpSearchResults);
 }
 
 export default SearchPageSaga;
