@@ -81,6 +81,17 @@ class BagPage extends React.Component {
     );
   }
 
+  renderOrderLedgerContainer = isNoNEmptyBag => {
+    if (isNoNEmptyBag) {
+      return (
+        <RowSectionStyle>
+          <OrderLedgerContainer />
+        </RowSectionStyle>
+      );
+    }
+    return <></>;
+  };
+
   render() {
     const {
       labels,
@@ -88,11 +99,11 @@ class BagPage extends React.Component {
       navigation,
       handleCartCheckout,
       isUserLoggedIn,
+      orderItemsCount,
       sflItems,
     } = this.props;
-
+    const isNoNEmptyBag = orderItemsCount > 0;
     const { activeSection } = this.state;
-
     if (!labels.tagLine) {
       return <View />;
     }
@@ -131,10 +142,8 @@ class BagPage extends React.Component {
             {activeSection === BAGPAGE_CONSTANTS.SFL_STATE && (
               <ProductTileWrapper bagLabels={labels} sflItems={sflItems} isBagPageSflSection />
             )}
-            <RowSectionStyle>
-              <OrderLedgerContainer />
-            </RowSectionStyle>
-            {isUserLoggedIn && (
+            {this.renderOrderLedgerContainer(isNoNEmptyBag)}
+            {isUserLoggedIn && isNoNEmptyBag && (
               <RowSectionStyle>
                 <BonusPointsWrapper>
                   <BonusPointsDays isBagPage showAccordian={false} />
@@ -146,9 +155,11 @@ class BagPage extends React.Component {
                 <AirmilesBanner />
               </RowSectionStyle>
             )}
-            <RowSectionStyle>
-              <CouponAndPromos showAccordian={false} />
-            </RowSectionStyle>
+            {isNoNEmptyBag && (
+              <RowSectionStyle>
+                <CouponAndPromos showAccordian={false} />
+              </RowSectionStyle>
+            )}
           </MainSection>
         </ScrollViewWrapper>
 
@@ -157,6 +168,7 @@ class BagPage extends React.Component {
           labels={labels}
           showAddTobag={showAddTobag}
           navigation={navigation}
+          isNoNEmptyBag={isNoNEmptyBag}
         />
       </>
     );
@@ -171,6 +183,7 @@ BagPage.propTypes = {
   isUserLoggedIn: PropTypes.bool.isRequired,
   handleCartCheckout: PropTypes.func.isRequired,
   fetchLabels: PropTypes.func.isRequired,
+  orderItemsCount: PropTypes.number.isRequired,
   sflItems: PropTypes.shape([]).isRequired,
 };
 
