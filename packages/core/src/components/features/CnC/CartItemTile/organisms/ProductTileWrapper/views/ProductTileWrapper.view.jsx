@@ -97,7 +97,9 @@ class ProductTileWrapper extends React.PureComponent<props> {
     isDeleting,
     itemDeleteSuccessMsg
   ) => {
+    const { isCartItemSFL } = this.props;
     return (
+      !isCartItemSFL &&
       !isBagPageSflSection &&
       isBagPage &&
       isDeleting && (
@@ -117,6 +119,28 @@ class ProductTileWrapper extends React.PureComponent<props> {
     );
   };
 
+  renderItemSflSuccessMsg = (isBagPage, isCartItemSFL, itemSflSuccessMsg) => {
+    const { isBagPageSflSection } = this.props;
+    return (
+      !isBagPageSflSection &&
+      isBagPage &&
+      isCartItemSFL && (
+        <div className="delete-msg">
+          <Image alt="closeIcon" className="tick-icon" src={getIconPath('circle-check-fill')} />
+          <BodyCopy
+            component="span"
+            fontSize="fs12"
+            textAlign="center"
+            fontFamily="secondary"
+            fontWeight="extrabold"
+          >
+            {itemSflSuccessMsg}
+          </BodyCopy>
+        </div>
+      )
+    );
+  };
+
   render() {
     const {
       orderItems,
@@ -130,6 +154,7 @@ class ProductTileWrapper extends React.PureComponent<props> {
       isBagPageSflSection,
       isCartItemsUpdating,
       sflItems,
+      isCartItemSFL,
     } = this.props;
     const productSectionData = isBagPageSflSection ? sflItems : orderItems;
     let isUnavailable;
@@ -188,6 +213,7 @@ class ProductTileWrapper extends React.PureComponent<props> {
             isDeleting,
             labels.itemDeleted
           )}
+          {this.renderItemSflSuccessMsg(isBagPage, isCartItemSFL, labels.sflSuccess)}
           {orderItemsView}
         </>
       );
@@ -219,6 +245,7 @@ ProductTileWrapper.propTypes = {
   bagLabels: PropTypes.shape(),
   sflItemsCount: PropTypes.number.isRequired,
   isBagPageSflSection: PropTypes.bool,
+  isCartItemSFL: PropTypes.bool.isRequired,
 };
 
 export default ProductTileWrapper;

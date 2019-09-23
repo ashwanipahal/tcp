@@ -31,6 +31,14 @@ class BagPageView extends React.Component {
     };
   }
 
+  componentDidUpdate() {
+    const urlParams = new URLSearchParams(window.location.search);
+    const isSfl = urlParams.get('isSfl');
+    if (isSfl) {
+      document.querySelector('.save-for-later-section-heading').scrollIntoView(true);
+    }
+  }
+
   renderLeftSection = () => {
     const { labels, sflItems } = this.props;
     const { activeSection } = this.state;
@@ -99,6 +107,7 @@ class BagPageView extends React.Component {
     } = this.props;
     const { activeSection } = this.state;
     const isNoNEmptyBag = orderItemsCount > 0;
+    const isNonEmptySFL = sflItems.size > 0;
     return (
       <div className={className}>
         <Row tagName="header">
@@ -146,6 +155,7 @@ class BagPageView extends React.Component {
           isUserLoggedIn={isUserLoggedIn}
           isGuest={isGuest}
           showAccordian={false}
+          isNonEmptySFL={isNonEmptySFL}
         />
       </div>
     );
