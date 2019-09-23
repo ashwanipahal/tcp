@@ -92,7 +92,7 @@ exports[`ProductsGridItem component should renders correctly 1`] = `
     </Styled(Row)>
     <ProductPricesSection
       currencySymbol="$"
-      dataLocator="undefined_122"
+      dataLocator=""
       hidePrefixListPrice={true}
       listPrice={NaN}
       merchantTag=""
