@@ -228,7 +228,6 @@ export class AddChildBirthdayForm extends PureComponent {
             />
           </StyledAnchorWrapper>
         </AddChildFormWrapper>
-
         <ViewWithSpacing spacingStyles="margin-top-XXL">
           <Button
             fill="BLUE"

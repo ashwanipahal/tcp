@@ -59,7 +59,8 @@ class BirthdaySavingsList extends PureComponent {
     if (status !== prevProps.status) {
       if (status === 'success') {
         this.closeRemoveModal();
-        this.toggleAddModal();
+        this.closeAddModal();
+        toastMessage(message);
       } else toastMessage(message);
     }
   }
@@ -69,10 +70,8 @@ class BirthdaySavingsList extends PureComponent {
    * @description This function will handle toggling of add Children Birthday Confirmation Modal
    */
   toggleAddModal = () => {
-    const { addModal } = this.state;
-
     this.setState({
-      addModal: !addModal,
+      addModal: true,
     });
   };
 
@@ -88,15 +87,15 @@ class BirthdaySavingsList extends PureComponent {
     });
   };
 
-  // /**
-  //  * @function closeAddModal
-  //  * @description This function will handle closing of add Children Birthday Confirmation Modal
-  //  */
-  // closeAddModal = () => {
-  //   this.setState({
-  //     addModal: false,
-  //   });
-  // };
+  /**
+   * @function closeAddModal
+   * @description This function will handle closing of add Children Birthday Confirmation Modal
+   */
+  closeAddModal = () => {
+    this.setState({
+      addModal: false,
+    });
+  };
 
   /**
    * @function closeRemoveModal
@@ -175,7 +174,7 @@ class BirthdaySavingsList extends PureComponent {
               birthYearOptionsMap={childOptions.yearsMap}
               timestamp={new Date()}
               childOptions={childOptions.genderMap}
-              closeAddModal={this.toggleAddModal}
+              closeAddModal={this.closeAddModal}
               onSubmit={addChildBirthday}
               addChildBirthdayLabels={labels}
             />
