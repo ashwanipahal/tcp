@@ -46,17 +46,12 @@ export function* fetchMoreProducts() {
     const appliedFiltersAndSort = { ...appliedFiltersIds, sort };
 
     const lastLoadedPageNumber = getLastLoadedPageNumber(state);
-    // if (lastLoadedPageNumber >= getMaxPageNumber(state)) {
-    //   return null; // nothing more to load
-    // }
-
     const reqObj = operatorInstance.getProductsListingInfo({
       state,
       appliedFiltersAndSort,
       pageNumber: lastLoadedPageNumber + 1,
     });
 
-    // const reqObj = operatorInstance.getProductsListingFilters();
     const res = yield call(instanceProductListing.getProducts, reqObj, state);
     yield put(setSlpProducts({ ...res }));
     yield put(setSlpLoadingState({ isLoadingMore: false }));
