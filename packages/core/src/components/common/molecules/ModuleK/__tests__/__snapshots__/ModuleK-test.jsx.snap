@@ -40,6 +40,7 @@ exports[`ModuleK component renders correctly 1`] = `
         "fontWeight": "regular",
         "letterSpacing": "normal",
         "lineHeight": "normal",
+        "link": null,
         "textAlign": "left",
       },
       "displayName": "Styled(BodyCopy)",
@@ -55,6 +56,7 @@ exports[`ModuleK component renders correctly 1`] = `
   forwardedRef={null}
   letterSpacing="normal"
   lineHeight="normal"
+  link={null}
   textAlign="left"
 >
   <Styled(Row)>
@@ -707,21 +709,22 @@ exports[`ModuleK component renders correctly 1`] = `
             }
           }
         >
-          <Styled(Anchor)
-            external={0}
-            target=""
-            text="SHOP ALL"
-            title=""
-            url="http://example.com"
+          <Styled(Button)
+            buttonVariation="fixed-width"
+            className="carousal-cta"
+            cta={
+              Object {
+                "external": 0,
+                "target": "",
+                "text": "SHOP ALL",
+                "title": "",
+                "url": "http://example.com",
+              }
+            }
+            dataLocator="moduleK_button_set_1"
           >
-            <Styled(Button)
-              buttonVariation="fixed-width"
-              className="carousal-cta"
-              dataLocator="moduleK_button_set_1"
-            >
-              SHOP ALL
-            </Styled(Button)>
-          </Styled(Anchor)>
+            SHOP ALL
+          </Styled(Button)>
         </Styled(Col)>
         <Styled(PromoBanner)
           className="moduleK__promoBanner"
@@ -837,21 +840,22 @@ exports[`ModuleK component renders correctly 1`] = `
             }
           }
         >
-          <Styled(Anchor)
-            external={0}
-            target=""
-            text="SHOP ALL"
-            title=""
-            url="http://example.com"
+          <Styled(Button)
+            buttonVariation="fixed-width"
+            className="carousal-cta"
+            cta={
+              Object {
+                "external": 0,
+                "target": "",
+                "text": "SHOP ALL",
+                "title": "",
+                "url": "http://example.com",
+              }
+            }
+            dataLocator="moduleK_button_set_2"
           >
-            <Styled(Button)
-              buttonVariation="fixed-width"
-              className="carousal-cta"
-              dataLocator="moduleK_button_set_2"
-            >
-              SHOP ALL
-            </Styled(Button)>
-          </Styled(Anchor)>
+            SHOP ALL
+          </Styled(Button)>
         </Styled(Col)>
       </Styled(Styled(Carousel))>
     </Styled(Col)>

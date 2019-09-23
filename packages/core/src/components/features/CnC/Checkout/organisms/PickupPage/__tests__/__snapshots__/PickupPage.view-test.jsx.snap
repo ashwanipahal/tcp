@@ -353,6 +353,7 @@ exports[`PickUpFormPartVanilla component should renders correctly props not pres
           fontWeight="regular"
           letterSpacing="normal"
           lineHeight="normal"
+          link={null}
           textAlign="left"
         />
       </Field>
@@ -369,6 +370,7 @@ exports[`PickUpFormPartVanilla component should renders correctly props not pres
           fontWeight="regular"
           letterSpacing="normal"
           lineHeight="normal"
+          link={null}
           textAlign="left"
         />
         <Styled(BodyCopy)
@@ -380,6 +382,7 @@ exports[`PickUpFormPartVanilla component should renders correctly props not pres
           fontWeight="regular"
           letterSpacing="normal"
           lineHeight="normal"
+          link={null}
           textAlign="left"
         />
         <Styled(Anchor)

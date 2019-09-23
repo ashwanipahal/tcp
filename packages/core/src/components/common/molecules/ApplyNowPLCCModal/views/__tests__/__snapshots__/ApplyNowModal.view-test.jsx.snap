@@ -228,6 +228,7 @@ exports[`ApplyNowModalWrapper component should renders correctly 1`] = `
           fontWeight="regular"
           letterSpacing="normal"
           lineHeight="normal"
+          link={null}
           textAlign="center"
         >
           apply_now_subheader
@@ -308,6 +309,7 @@ exports[`ApplyNowModalWrapper component should renders correctly 1`] = `
       fontWeight="black"
       letterSpacing="normal"
       lineHeight="normal"
+      link={null}
       textAlign="center"
     >
       apply_now_benefits_header
@@ -327,6 +329,7 @@ exports[`ApplyNowModalWrapper component should renders correctly 1`] = `
         fontWeight="regular"
         letterSpacing="normal"
         lineHeight="normal"
+        link={null}
         textAlign="left"
       >
         apply_now_links_text

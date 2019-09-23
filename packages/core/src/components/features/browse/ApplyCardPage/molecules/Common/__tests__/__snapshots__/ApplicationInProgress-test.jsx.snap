@@ -14,6 +14,7 @@ exports[`ApplicationInProgress component should renders correctly 1`] = `
     fontWeight="semibold"
     letterSpacing="normal"
     lineHeight="normal"
+    link={null}
     textAlign="left"
   >
     in progress
@@ -27,6 +28,7 @@ exports[`ApplicationInProgress component should renders correctly 1`] = `
     fontWeight="regular"
     letterSpacing="normal"
     lineHeight="normal"
+    link={null}
     textAlign="left"
   >
     application card is in progress

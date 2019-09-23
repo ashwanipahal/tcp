@@ -72,6 +72,7 @@ exports[`ProductsGridItem component should renders correctly 1`] = `
           fontWeight="extrabold"
           letterSpacing="normal"
           lineHeight="normal"
+          link={null}
           textAlign="left"
         />
       </Styled(Col)>

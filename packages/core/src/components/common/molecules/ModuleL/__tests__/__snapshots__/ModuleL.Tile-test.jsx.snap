@@ -2,12 +2,10 @@
 
 exports[`ModuleL Header component renders correctly 1`] = `
 <Styled(Anchor)
-  class=""
-  external={0}
+  asPath="https://www.childrensplace.com/us/c/toddler-girl-clothes"
   target=""
-  text="Shop Unicorns & Friends"
   title="Shop Unicorns & Friends"
-  url="https://www.childrensplace.com/us/c/toddler-girl-clothes"
+  to="/c?cid=https://www.childrensplace.com/us"
 >
   <Styled(Row)>
     <Styled(Col)
@@ -66,19 +64,18 @@ exports[`ModuleL Header component renders correctly 1`] = `
           }
           letterSpacing="ls222"
           lineHeight="lh107"
+          link={null}
           textAlign="left"
         >
           BE A UNICORN 24/7/365
         </Styled(BodyCopy)>
         <Styled(Anchor)
-          class=""
+          asPath="https://www.childrensplace.com/us/c/toddler-girl-clothes"
           className="moduleL__tile-link"
           dataLocator="moduleL_link_NaN"
-          external={0}
           target=""
-          text="Shop Unicorns & Friends"
           title="Shop Unicorns & Friends"
-          url="https://www.childrensplace.com/us/c/toddler-girl-clothes"
+          to="/c?cid=https://www.childrensplace.com/us"
           withCaret={true}
         >
           Shop Unicorns & Friends

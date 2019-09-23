@@ -14,6 +14,7 @@ exports[`GuestBillingFormVanilla should render correctly 1`] = `
     fontWeight="regular"
     letterSpacing="normal"
     lineHeight="normal"
+    link={null}
     textAlign="left"
   >
     lbl_billing_paymentMethodTitle
@@ -41,6 +42,7 @@ exports[`GuestBillingFormVanilla should render correctly when props change 1`] =
     fontWeight="regular"
     letterSpacing="normal"
     lineHeight="normal"
+    link={null}
     textAlign="left"
   >
     lbl_billing_paymentMethodTitle

@@ -26,6 +26,7 @@ exports[`ProfileInformation component should render correctly 1`] = `
         fontWeight="extrabold"
         letterSpacing="normal"
         lineHeight="normal"
+        link={null}
         textAlign="left"
       >
         <Connect(MyFavoriteStoreContainer)
@@ -52,6 +53,7 @@ exports[`ProfileInformation component should render correctly 1`] = `
         fontWeight="extrabold"
         letterSpacing="normal"
         lineHeight="normal"
+        link={null}
         textAlign="left"
       >
         lbl_prefrence_social_account
@@ -97,6 +99,7 @@ exports[`ProfileInformation component should render correctly 1`] = `
         fontWeight="extrabold"
         letterSpacing="normal"
         lineHeight="normal"
+        link={null}
         textAlign="left"
       >
         lbl_prefrence_rewards_prefrence
@@ -110,6 +113,7 @@ exports[`ProfileInformation component should render correctly 1`] = `
         fontWeight="regular"
         letterSpacing="normal"
         lineHeight="normal"
+        link={null}
         textAlign="left"
       >
         lbl_prefrence_access_buy_online_pickup
@@ -123,6 +127,7 @@ exports[`ProfileInformation component should render correctly 1`] = `
         fontWeight="regular"
         letterSpacing="normal"
         lineHeight="normal"
+        link={null}
         textAlign="left"
       >
         lbl_prefrence_not_added_fvt_store
@@ -169,6 +174,7 @@ exports[`ProfileInformation component should render correctly 1`] = `
               fontWeight="extrabold"
               letterSpacing="normal"
               lineHeight="normal"
+              link={null}
               textAlign="left"
             >
               lbl_prefrence_app_text
@@ -322,6 +328,7 @@ exports[`ProfileInformation component should render correctly 1`] = `
                 fontWeight="regular"
                 letterSpacing="normal"
                 lineHeight="normal"
+                link={null}
                 textAlign="left"
               >
                  
@@ -471,6 +478,7 @@ exports[`ProfileInformation component should render correctly 1`] = `
                 fontWeight="regular"
                 letterSpacing="normal"
                 lineHeight="normal"
+                link={null}
                 textAlign="left"
               >
                  
@@ -497,6 +505,7 @@ exports[`ProfileInformation component should render correctly 1`] = `
               fontWeight="extrabold"
               letterSpacing="normal"
               lineHeight="normal"
+              link={null}
               textAlign="left"
             >
               lbl_prefrence_text_text
@@ -650,6 +659,7 @@ exports[`ProfileInformation component should render correctly 1`] = `
                 fontWeight="regular"
                 letterSpacing="normal"
                 lineHeight="normal"
+                link={null}
                 textAlign="left"
               >
                 lbl_prefrence_tcp_label
@@ -798,6 +808,7 @@ exports[`ProfileInformation component should render correctly 1`] = `
                 fontWeight="regular"
                 letterSpacing="normal"
                 lineHeight="normal"
+                link={null}
                 textAlign="left"
               >
                 lbl_prefrence_gym_label
@@ -830,6 +841,7 @@ exports[`ProfileInformation component should render correctly 1`] = `
         fontWeight="regular"
         letterSpacing="normal"
         lineHeight="normal"
+        link={null}
         textAlign="center"
       >
         <Styled(Anchor)

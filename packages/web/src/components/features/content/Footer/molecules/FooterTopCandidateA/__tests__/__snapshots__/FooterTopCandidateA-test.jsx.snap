@@ -30,6 +30,7 @@ exports[`FooterTopCandidateAVanilla component renders correctly 1`] = `
         fontWeight="black"
         letterSpacing="normal"
         lineHeight="normal"
+        link={null}
         textAlign="left"
       >
         <TextItems />
@@ -97,6 +98,7 @@ exports[`FooterTopCandidateAVanilla component renders correctly 1`] = `
         fontWeight="regular"
         letterSpacing="normal"
         lineHeight="normal"
+        link={null}
         textAlign="center"
       >
         <Styled(RichText)
@@ -134,6 +136,7 @@ exports[`FooterTopCandidateAVanilla component renders correctly 1`] = `
         fontWeight="black"
         letterSpacing="normal"
         lineHeight="normal"
+        link={null}
         textAlign="left"
       >
         <TextItems />
@@ -206,6 +209,7 @@ exports[`FooterTopCandidateAVanilla component renders correctly 1`] = `
         fontWeight="regular"
         letterSpacing="normal"
         lineHeight="normal"
+        link={null}
         textAlign="center"
       >
         <Styled(RichText)
@@ -260,6 +264,7 @@ exports[`FooterTopCandidateAVanilla component renders correctly 1`] = `
               fontWeight="black"
               letterSpacing="normal"
               lineHeight="normal"
+              link={null}
               textAlign="left"
             >
               <TextItems />

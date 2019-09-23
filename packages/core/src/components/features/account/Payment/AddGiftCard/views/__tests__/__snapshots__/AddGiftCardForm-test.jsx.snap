@@ -27,7 +27,7 @@ exports[`Add gift card form component should render component correctly 1`] = `
             "$$typeof": Symbol(react.forward_ref),
             "attrs": Array [],
             "componentStyle": ComponentStyle {
-              "componentId": "sc-bwzfXH",
+              "componentId": "sc-htpNat",
               "isStatic": false,
               "rules": Array [
                 "
@@ -170,7 +170,7 @@ exports[`Add gift card form component should render component correctly 1`] = `
             "displayName": "Styled(TextBox)",
             "foldedComponentIds": Array [],
             "render": [Function],
-            "styledComponentId": "sc-bwzfXH",
+            "styledComponentId": "sc-htpNat",
             "target": [Function],
             "toString": [Function],
             "warnTooManyClasses": [Function],
@@ -204,7 +204,7 @@ exports[`Add gift card form component should render component correctly 1`] = `
             "$$typeof": Symbol(react.forward_ref),
             "attrs": Array [],
             "componentStyle": ComponentStyle {
-              "componentId": "sc-bwzfXH",
+              "componentId": "sc-htpNat",
               "isStatic": false,
               "rules": Array [
                 "
@@ -347,7 +347,7 @@ exports[`Add gift card form component should render component correctly 1`] = `
             "displayName": "Styled(TextBox)",
             "foldedComponentIds": Array [],
             "render": [Function],
-            "styledComponentId": "sc-bwzfXH",
+            "styledComponentId": "sc-htpNat",
             "target": [Function],
             "toString": [Function],
             "warnTooManyClasses": [Function],
@@ -392,6 +392,7 @@ exports[`Add gift card form component should render component correctly 1`] = `
           fontWeight="bold"
           letterSpacing="normal"
           lineHeight="normal"
+          link={null}
           tag="p"
           textAlign="left"
         />
@@ -405,6 +406,7 @@ exports[`Add gift card form component should render component correctly 1`] = `
           fontWeight="regular"
           letterSpacing="normal"
           lineHeight="normal"
+          link={null}
           tag="p"
           textAlign="left"
         />

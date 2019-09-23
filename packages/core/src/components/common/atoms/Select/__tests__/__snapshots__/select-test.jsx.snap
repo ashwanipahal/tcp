@@ -138,6 +138,7 @@ exports[`Selectbox component renders correctly with touched and error 1`] = `
       id="selectbox__error__"
       letterSpacing="normal"
       lineHeight="normal"
+      link={null}
       role="alert"
       textAlign="left"
     >
@@ -187,6 +188,7 @@ exports[`Selectbox component renders correctly with touched and warning 1`] = `
     fontWeight="regular"
     letterSpacing="normal"
     lineHeight="normal"
+    link={null}
     textAlign="left"
   />
   <div

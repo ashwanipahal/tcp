@@ -21,6 +21,7 @@ exports[`BirthdayCard should render correctly 1`] = `
     fontWeight="semibold"
     letterSpacing="normal"
     lineHeight="normal"
+    link={null}
     textAlign="center"
   >
     test
@@ -38,6 +39,7 @@ exports[`BirthdayCard should render correctly 1`] = `
       fontWeight="semibold"
       letterSpacing="normal"
       lineHeight="normal"
+      link={null}
       textAlign="left"
     >
       21 yo
@@ -58,6 +60,7 @@ exports[`BirthdayCard should render correctly 1`] = `
       fontWeight="semibold"
       letterSpacing="normal"
       lineHeight="normal"
+      link={null}
       textAlign="right"
     >
       1998

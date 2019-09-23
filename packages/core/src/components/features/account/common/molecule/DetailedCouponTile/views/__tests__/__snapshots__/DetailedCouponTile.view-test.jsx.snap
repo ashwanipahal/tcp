@@ -11,6 +11,7 @@ exports[`DetailedCouponTile should display overlay 1`] = `
   fontWeight="regular"
   letterSpacing="normal"
   lineHeight="normal"
+  link={null}
   textAlign="left"
 >
   <Styled(BodyCopy)
@@ -23,6 +24,7 @@ exports[`DetailedCouponTile should display overlay 1`] = `
     fontWeight="regular"
     letterSpacing="normal"
     lineHeight="normal"
+    link={null}
     textAlign="left"
   >
     <Styled(BodyCopy)
@@ -35,6 +37,7 @@ exports[`DetailedCouponTile should display overlay 1`] = `
       fontWeight="extrabold"
       letterSpacing="normal"
       lineHeight="normal"
+      link={null}
       textAlign="left"
     >
       <Styled(Image)
@@ -50,6 +53,7 @@ exports[`DetailedCouponTile should display overlay 1`] = `
         fontWeight="extrabold"
         letterSpacing="normal"
         lineHeight="normal"
+        link={null}
         textAlign="center"
       />
     </Styled(BodyCopy)>
@@ -63,6 +67,7 @@ exports[`DetailedCouponTile should display overlay 1`] = `
     fontWeight="regular"
     letterSpacing="normal"
     lineHeight="normal"
+    link={null}
     textAlign="left"
   >
     <Styled(BodyCopy)
@@ -74,6 +79,7 @@ exports[`DetailedCouponTile should display overlay 1`] = `
       fontWeight="regular"
       letterSpacing="normal"
       lineHeight="normal"
+      link={null}
       textAlign="center"
     >
       <Styled(CouponIcon)
@@ -105,6 +111,7 @@ exports[`DetailedCouponTile should display overlay 1`] = `
         fontWeight="extrabold"
         letterSpacing="normal"
         lineHeight="normal"
+        link={null}
         textAlign="center"
       />
       <Styled(BodyCopy)
@@ -117,6 +124,7 @@ exports[`DetailedCouponTile should display overlay 1`] = `
         fontWeight="regular"
         letterSpacing="normal"
         lineHeight="normal"
+        link={null}
         textAlign="left"
       >
         <Barcode
@@ -150,6 +158,7 @@ exports[`DetailedCouponTile should display overlay 1`] = `
       fontWeight="regular"
       letterSpacing="normal"
       lineHeight="normal"
+      link={null}
       textAlign="left"
     >
       <Styled(BodyCopy)
@@ -161,6 +170,7 @@ exports[`DetailedCouponTile should display overlay 1`] = `
         fontWeight="regular"
         letterSpacing="normal"
         lineHeight="normal"
+        link={null}
         textAlign="left"
       >
         <Styled(BodyCopy)
@@ -173,6 +183,7 @@ exports[`DetailedCouponTile should display overlay 1`] = `
           fontWeight="regular"
           letterSpacing="normal"
           lineHeight="normal"
+          link={null}
           textAlign="left"
         >
           <Styled(BodyCopy)
@@ -184,6 +195,7 @@ exports[`DetailedCouponTile should display overlay 1`] = `
             fontWeight="regular"
             letterSpacing="normal"
             lineHeight="normal"
+            link={null}
             textAlign="left"
           >
             use by
@@ -197,6 +209,7 @@ exports[`DetailedCouponTile should display overlay 1`] = `
             fontWeight="regular"
             letterSpacing="normal"
             lineHeight="normal"
+            link={null}
             textAlign="left"
           >
             undefined
@@ -220,6 +233,7 @@ exports[`DetailedCouponTile should display overlay 1`] = `
         fontWeight="regular"
         letterSpacing="normal"
         lineHeight="normal"
+        link={null}
         textAlign="left"
       >
         <Styled(Button)
@@ -259,6 +273,7 @@ exports[`DetailedCouponTile should render correctly 1`] = `
   fontWeight="regular"
   letterSpacing="normal"
   lineHeight="normal"
+  link={null}
   textAlign="left"
 >
   <Styled(BodyCopy)
@@ -270,6 +285,7 @@ exports[`DetailedCouponTile should render correctly 1`] = `
     fontWeight="regular"
     letterSpacing="normal"
     lineHeight="normal"
+    link={null}
     textAlign="left"
   >
     <Styled(BodyCopy)
@@ -281,6 +297,7 @@ exports[`DetailedCouponTile should render correctly 1`] = `
       fontWeight="regular"
       letterSpacing="normal"
       lineHeight="normal"
+      link={null}
       textAlign="center"
     >
       <Styled(CouponIcon)
@@ -308,6 +325,7 @@ exports[`DetailedCouponTile should render correctly 1`] = `
         fontWeight="extrabold"
         letterSpacing="normal"
         lineHeight="normal"
+        link={null}
         textAlign="center"
       />
     </Styled(BodyCopy)>
@@ -324,6 +342,7 @@ exports[`DetailedCouponTile should render correctly 1`] = `
       fontWeight="regular"
       letterSpacing="normal"
       lineHeight="normal"
+      link={null}
       textAlign="left"
     >
       <Styled(BodyCopy)
@@ -335,6 +354,7 @@ exports[`DetailedCouponTile should render correctly 1`] = `
         fontWeight="regular"
         letterSpacing="normal"
         lineHeight="normal"
+        link={null}
         textAlign="left"
       >
         <Styled(BodyCopy)
@@ -347,6 +367,7 @@ exports[`DetailedCouponTile should render correctly 1`] = `
           fontWeight="regular"
           letterSpacing="normal"
           lineHeight="normal"
+          link={null}
           textAlign="left"
         >
           <Styled(BodyCopy)
@@ -358,6 +379,7 @@ exports[`DetailedCouponTile should render correctly 1`] = `
             fontWeight="regular"
             letterSpacing="normal"
             lineHeight="normal"
+            link={null}
             textAlign="left"
           >
             use by
@@ -371,6 +393,7 @@ exports[`DetailedCouponTile should render correctly 1`] = `
             fontWeight="regular"
             letterSpacing="normal"
             lineHeight="normal"
+            link={null}
             textAlign="left"
           >
             undefined
@@ -394,6 +417,7 @@ exports[`DetailedCouponTile should render correctly 1`] = `
         fontWeight="regular"
         letterSpacing="normal"
         lineHeight="normal"
+        link={null}
         textAlign="left"
       >
         <Styled(Button)
@@ -433,6 +457,7 @@ exports[`DetailedCouponTile should render correctly for applied coupon 1`] = `
   fontWeight="regular"
   letterSpacing="normal"
   lineHeight="normal"
+  link={null}
   textAlign="left"
 >
   <Styled(BodyCopy)
@@ -445,6 +470,7 @@ exports[`DetailedCouponTile should render correctly for applied coupon 1`] = `
     fontWeight="regular"
     letterSpacing="normal"
     lineHeight="normal"
+    link={null}
     textAlign="left"
   >
     <Styled(BodyCopy)
@@ -457,6 +483,7 @@ exports[`DetailedCouponTile should render correctly for applied coupon 1`] = `
       fontWeight="extrabold"
       letterSpacing="normal"
       lineHeight="normal"
+      link={null}
       textAlign="left"
     >
       <Styled(Image)
@@ -472,6 +499,7 @@ exports[`DetailedCouponTile should render correctly for applied coupon 1`] = `
         fontWeight="extrabold"
         letterSpacing="normal"
         lineHeight="normal"
+        link={null}
         textAlign="center"
       />
     </Styled(BodyCopy)>
@@ -485,6 +513,7 @@ exports[`DetailedCouponTile should render correctly for applied coupon 1`] = `
     fontWeight="regular"
     letterSpacing="normal"
     lineHeight="normal"
+    link={null}
     textAlign="left"
   >
     <Styled(BodyCopy)
@@ -496,6 +525,7 @@ exports[`DetailedCouponTile should render correctly for applied coupon 1`] = `
       fontWeight="regular"
       letterSpacing="normal"
       lineHeight="normal"
+      link={null}
       textAlign="center"
     >
       <Styled(CouponIcon)
@@ -527,6 +557,7 @@ exports[`DetailedCouponTile should render correctly for applied coupon 1`] = `
         fontWeight="extrabold"
         letterSpacing="normal"
         lineHeight="normal"
+        link={null}
         textAlign="center"
       />
       <Styled(BodyCopy)
@@ -539,6 +570,7 @@ exports[`DetailedCouponTile should render correctly for applied coupon 1`] = `
         fontWeight="regular"
         letterSpacing="normal"
         lineHeight="normal"
+        link={null}
         textAlign="left"
       >
         <Barcode
@@ -572,6 +604,7 @@ exports[`DetailedCouponTile should render correctly for applied coupon 1`] = `
       fontWeight="regular"
       letterSpacing="normal"
       lineHeight="normal"
+      link={null}
       textAlign="left"
     >
       <Styled(BodyCopy)
@@ -583,6 +616,7 @@ exports[`DetailedCouponTile should render correctly for applied coupon 1`] = `
         fontWeight="regular"
         letterSpacing="normal"
         lineHeight="normal"
+        link={null}
         textAlign="left"
       >
         <Styled(BodyCopy)
@@ -595,6 +629,7 @@ exports[`DetailedCouponTile should render correctly for applied coupon 1`] = `
           fontWeight="regular"
           letterSpacing="normal"
           lineHeight="normal"
+          link={null}
           textAlign="left"
         >
           <Styled(BodyCopy)
@@ -606,6 +641,7 @@ exports[`DetailedCouponTile should render correctly for applied coupon 1`] = `
             fontWeight="regular"
             letterSpacing="normal"
             lineHeight="normal"
+            link={null}
             textAlign="left"
           >
             use by
@@ -619,6 +655,7 @@ exports[`DetailedCouponTile should render correctly for applied coupon 1`] = `
             fontWeight="regular"
             letterSpacing="normal"
             lineHeight="normal"
+            link={null}
             textAlign="left"
           >
             undefined
@@ -642,6 +679,7 @@ exports[`DetailedCouponTile should render correctly for applied coupon 1`] = `
         fontWeight="regular"
         letterSpacing="normal"
         lineHeight="normal"
+        link={null}
         textAlign="left"
       >
         <Styled(Button)
@@ -681,6 +719,7 @@ exports[`DetailedCouponTile should render expiring soon notification if coupon i
   fontWeight="regular"
   letterSpacing="normal"
   lineHeight="normal"
+  link={null}
   textAlign="left"
 >
   <Styled(BodyCopy)
@@ -693,6 +732,7 @@ exports[`DetailedCouponTile should render expiring soon notification if coupon i
     fontWeight="black"
     letterSpacing="normal"
     lineHeight="normal"
+    link={null}
     textAlign="center"
   >
     expiring soon
@@ -706,6 +746,7 @@ exports[`DetailedCouponTile should render expiring soon notification if coupon i
     fontWeight="regular"
     letterSpacing="normal"
     lineHeight="normal"
+    link={null}
     textAlign="left"
   >
     <Styled(BodyCopy)
@@ -717,6 +758,7 @@ exports[`DetailedCouponTile should render expiring soon notification if coupon i
       fontWeight="regular"
       letterSpacing="normal"
       lineHeight="normal"
+      link={null}
       textAlign="center"
     >
       <Styled(CouponIcon)
@@ -748,6 +790,7 @@ exports[`DetailedCouponTile should render expiring soon notification if coupon i
         fontWeight="extrabold"
         letterSpacing="normal"
         lineHeight="normal"
+        link={null}
         textAlign="center"
       />
       <Styled(BodyCopy)
@@ -760,6 +803,7 @@ exports[`DetailedCouponTile should render expiring soon notification if coupon i
         fontWeight="regular"
         letterSpacing="normal"
         lineHeight="normal"
+        link={null}
         textAlign="left"
       >
         <Barcode
@@ -793,6 +837,7 @@ exports[`DetailedCouponTile should render expiring soon notification if coupon i
       fontWeight="regular"
       letterSpacing="normal"
       lineHeight="normal"
+      link={null}
       textAlign="left"
     >
       <Styled(BodyCopy)
@@ -804,6 +849,7 @@ exports[`DetailedCouponTile should render expiring soon notification if coupon i
         fontWeight="regular"
         letterSpacing="normal"
         lineHeight="normal"
+        link={null}
         textAlign="left"
       >
         <Styled(BodyCopy)
@@ -816,6 +862,7 @@ exports[`DetailedCouponTile should render expiring soon notification if coupon i
           fontWeight="regular"
           letterSpacing="normal"
           lineHeight="normal"
+          link={null}
           textAlign="left"
         >
           <Styled(BodyCopy)
@@ -827,6 +874,7 @@ exports[`DetailedCouponTile should render expiring soon notification if coupon i
             fontWeight="regular"
             letterSpacing="normal"
             lineHeight="normal"
+            link={null}
             textAlign="left"
           >
             use by
@@ -840,6 +888,7 @@ exports[`DetailedCouponTile should render expiring soon notification if coupon i
             fontWeight="regular"
             letterSpacing="normal"
             lineHeight="normal"
+            link={null}
             textAlign="left"
           >
             undefined
@@ -863,6 +912,7 @@ exports[`DetailedCouponTile should render expiring soon notification if coupon i
         fontWeight="regular"
         letterSpacing="normal"
         lineHeight="normal"
+        link={null}
         textAlign="left"
       >
         <Styled(Button)
