@@ -144,7 +144,7 @@ export const getLabelsProductListing = state => {
 };
 
 export const getIsLoadingMore = state => {
-  return state.ProductListing.get('isLoadingMore');
+  return state.SearchListingPage.get('isLoadingMore');
 };
 
 export const getSpotlightReviewsUrl = () => {
