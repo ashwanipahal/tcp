@@ -102,7 +102,7 @@ class ApplyCardLayoutView extends React.PureComponent<Props> {
           </ImageContainer>
           <Container>
             <RichTextContainer>
-              <RichText source={{ html: plccData.credit_card_header }} />
+              <RichText source={{ html: plccData && plccData.credit_card_header }} />
             </RichTextContainer>
           </Container>
           <TextBoxContainer>
