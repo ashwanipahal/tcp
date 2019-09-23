@@ -145,8 +145,8 @@ const FacebookLoginComponent = props => {
                   {ReactDOM.createPortal(facebookSDK(), bodyEle)}
                   <ImageComp
                     className="social-account-icon"
-                    width={10}
-                    height={10}
+                    width={15}
+                    height={15}
                     src={getIconPath('plus-icon')}
                     data-locator="facebookPlusIcon"
                   />
@@ -159,8 +159,8 @@ const FacebookLoginComponent = props => {
                 >
                   <ImageComp
                     className="social-account-icon"
-                    width={10}
-                    height={10}
+                    width={15}
+                    height={15}
                     src={getIconPath('close-icon')}
                     data-locator="facebookCrossIcon"
                   />
