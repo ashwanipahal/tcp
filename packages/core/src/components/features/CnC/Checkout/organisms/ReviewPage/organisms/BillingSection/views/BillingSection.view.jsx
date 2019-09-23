@@ -77,7 +77,10 @@ export const BillingSection = ({ className, card, address, appliedGiftCards, lab
             )}
           </Col>
         )}
-        <Col colSize={{ small: 6, medium: 4, large: 7 }}>
+        <Col
+          colSize={{ small: 6, medium: 4, large: 6 }}
+          offsetRight={{ small: 0, medium: 0, large: 1 }}
+        >
           {appliedGiftCards && (
             <Fragment>
               <BodyCopy

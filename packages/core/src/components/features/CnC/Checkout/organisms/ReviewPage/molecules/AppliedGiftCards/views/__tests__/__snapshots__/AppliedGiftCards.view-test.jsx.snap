@@ -11,44 +11,7 @@ exports[`AppliedGiftCards should render correctly for empty state 1`] = `
   letterSpacing="normal"
   lineHeight="normal"
   textAlign="left"
->
-  <Styled(BodyCopy)
-    className="headsup-container"
-    color="text.primary"
-    component="p"
-    fontFamily="primary"
-    fontSize={12}
-    fontWeight="regular"
-    letterSpacing="normal"
-    lineHeight="normal"
-    textAlign="left"
-  >
-    <Styled(BodyCopy)
-      className={null}
-      color="gray[900]"
-      component="span"
-      fontFamily="secondary"
-      fontSize="fs16"
-      fontWeight="extrabold"
-      letterSpacing="normal"
-      lineHeight="normal"
-      textAlign="left"
-    />
-    <Styled(BodyCopy)
-      className={null}
-      color="gray[900]"
-      component="span"
-      fontFamily="secondary"
-      fontSize="fs16"
-      fontWeight="regular"
-      letterSpacing="normal"
-      lineHeight="normal"
-      textAlign="left"
-    >
-       undefined
-    </Styled(BodyCopy)>
-  </Styled(BodyCopy)>
-</Styled(BodyCopy)>
+/>
 `;
 
 exports[`AppliedGiftCards should render correctly for filled state 1`] = `
