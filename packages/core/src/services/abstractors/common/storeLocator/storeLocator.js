@@ -160,6 +160,7 @@ export const getStoreParameters = ({
 }) => {
   let hoursOfOperation;
   let addressLineDetail;
+  let isGym;
 
   // Sometimes addressLine is returned as an array
   // Sometimes addressLine is returned as an object with numerical properties (WHY???)
@@ -177,10 +178,12 @@ export const getStoreParameters = ({
   }
   if (storeDetails.attribute) {
     hoursOfOperation = JSON.parse(attribute.displayValue || '{}').storehours;
+    isGym = attribute.brands.includes('GYM');
   }
   return {
     addressLineDetail,
     hoursOfOperation,
+    isGym,
   };
 };
 
@@ -206,7 +209,7 @@ export const storeResponseParser = (storeDetails, configs = { requestedQuantity:
     itemAvailability,
   } = storeDetails;
 
-  const { hoursOfOperation, addressLineDetail } = getStoreParameters({
+  const { hoursOfOperation, addressLineDetail, isGym } = getStoreParameters({
     storehours,
     Attribute,
     storeDetails,
@@ -235,6 +238,7 @@ export const storeResponseParser = (storeDetails, configs = { requestedQuantity:
     },
     distance: getDistance(storeDetails),
     basicInfo: getBasicInfo(storeDetails),
+    isGym,
     hours: {
       regularHours: [],
       holidayHours: [],
