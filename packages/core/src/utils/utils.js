@@ -139,7 +139,7 @@ export const getPromotionalMessage = (isPlcc, handlers) => {
   return null;
 };
 
-export const toTimeString = est => {
+export const toTimeString = (est, perfect = false) => {
   let hh = est.getHours();
   let mm = est.getMinutes();
   const ampm = hh >= 12 ? ' pm' : ' am';
@@ -149,7 +149,7 @@ export const toTimeString = est => {
   if (hh === 11 && mm === 59 && ampm === ' pm') {
     return 'Midnight';
   }
-  return `${hh}:${mm}${ampm}`;
+  return !perfect ? `${hh}:${mm}${ampm}` : `${hh}${ampm}`;
 };
 
 /**
