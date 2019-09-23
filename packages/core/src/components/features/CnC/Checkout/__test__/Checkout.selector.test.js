@@ -82,6 +82,19 @@ describe('Checkout Selectors', () => {
     expect(CHECKOUT_SELECTORS.getIsOrderHasShipping(State)).toEqual(0);
   });
 
+  it('#getShippingPhoneAndEmail', () => {
+    const State = {
+      Checkout: fromJS({
+        values: { shipping: { emailAddress: 'abc@test.com', phoneNumber: 987654322 } },
+      }),
+      User: fromJS({ personalData: {} }),
+    };
+    expect(CHECKOUT_SELECTORS.getShippingPhoneAndEmail(State)).toEqual({
+      emailAddress: 'abc@test.com',
+      phoneNumber: 987654322,
+    });
+  });
+
   it('#getShippingDestinationValues', () => {
     const State = {
       Checkout: fromJS({ values: { shipping: {} } }),

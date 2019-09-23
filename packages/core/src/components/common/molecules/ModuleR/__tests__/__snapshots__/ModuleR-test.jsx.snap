@@ -2,7 +2,7 @@
 
 exports[`Module R Component renders correctly 1`] = `
 <Styled(Grid)
-  className=" moduleR"
+  className="undefined moduleR"
 >
   <div>
     <Styled(LinkText)

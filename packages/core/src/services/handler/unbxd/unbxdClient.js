@@ -1,3 +1,4 @@
+/* eslint-disable no-underscore-dangle */
 import superagent from 'superagent';
 import { readCookie } from '../../../utils/cookie.util';
 import { API_CONFIG } from '../../config';
@@ -33,20 +34,6 @@ const getRequestParams = (apiConfig, reqObj) => {
   };
 };
 
-// superagent encodes all the uri components - so decode body params if already encoded
-const decodeParamsInBody = reqObj => {
-  const updatedRequest = reqObj;
-  const body = (reqObj.body && Object.entries(reqObj.body)) || [];
-  body.map(object => {
-    const key = object[0];
-    const value = object[1];
-    updatedRequest.body[key] = decodeURIComponent(value);
-    return object;
-  });
-
-  return updatedRequest;
-};
-
 /**
  * @summary This is to initialise superagent client to consume the unbxd data.
  * @param {string} apiConfig - Api config to be utilized for brand/channel/locale config
@@ -77,10 +64,12 @@ const UnbxdAPIClient = (apiConfig, reqObj) => {
       // reqObj.body.uid = 'uid-1563946353348-89276';
     }
 
-    // decode params in body if already encoded
-    decodeParamsInBody(reqObj);
-
+    // decode params in body if already encoded in mobile app
     request.query(reqObj.body);
+
+    if (request._query && request._query.length > 0) {
+      request._query[0] = decodeURIComponent(request._query[0]);
+    }
   } else {
     request.send(reqObj.body);
   }

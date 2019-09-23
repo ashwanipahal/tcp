@@ -21,7 +21,7 @@ export default {
   moduleD_textlink: 'moduleD_textlink_',
   moduleD_button: 'moduleD_button',
   // ModuleH
-  moduleH_header_text: 'moduleH_header_text_',
+  moduleH_header_text: 'moduleH_header_text',
   moduleH_cta_links: 'moduleH_cta_links_',
   moduleH_composite_image: 'moduleH_composite_image_',
   moduleH_play_button: 'moduleH_play_button',

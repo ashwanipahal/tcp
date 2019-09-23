@@ -3,12 +3,14 @@ import PropTypes from 'prop-types';
 import { List } from 'immutable';
 import { View } from 'react-native';
 import { BodyCopyWithSpacing } from '@tcp/core/src/components/common/atoms/styledWrapper';
+import { getBirthDateOptionMap, childOptionsMap } from '@tcp/core/src/utils';
 import Button from '@tcp/core/src/components/common/atoms/Button';
 import BirthdayCardComponent from '../../../molecule/BirthdayCard';
 import EmptyBirthdayCard from '../../../molecule/EmptyBirthdayCard';
 import constants from '../BirthdaySavingsList.constants';
 import { WrapLayout, WrapItem } from '../styles/BirthdaySavingsList.styles.native';
 import { getLabelValue } from '../../../../../../../utils';
+import AddChildBirthdayForm from '../../../molecule/AddChild';
 
 /**
  * Functional component to render Birthday Saving Info Message
@@ -46,6 +48,7 @@ class BirthdaySavingsList extends PureComponent {
   constructor(props) {
     super(props);
     this.state = {
+      addModal: false,
       removeModal: false,
       activeChild: null,
     };
@@ -56,9 +59,20 @@ class BirthdaySavingsList extends PureComponent {
     if (status !== prevProps.status) {
       if (status === 'success') {
         this.closeRemoveModal();
+        this.toggleAddModal(true);
       } else toastMessage(message);
     }
   }
+
+  /**
+   * @function toggleAddModal
+   * @description This function will handle toggling of add Children Birthday Modal
+   */
+  toggleAddModal = isOpen => {
+    this.setState({
+      addModal: !isOpen,
+    });
+  };
 
   /**
    * @function showRemoveModal
@@ -94,9 +108,11 @@ class BirthdaySavingsList extends PureComponent {
   };
 
   render() {
-    const { labels, childrenBirthdays, view } = this.props;
-    const { removeModal, activeChild } = this.state;
+    const { labels, childrenBirthdays, view, addChildBirthday } = this.props;
+    const { removeModal, activeChild, addModal } = this.state;
     const isEditMode = view === 'edit';
+    const yearOptionsMap = getBirthDateOptionMap();
+    const childOptions = childOptionsMap();
 
     const removeButtonStyle = {
       marginTop: 59,
@@ -131,13 +147,27 @@ class BirthdaySavingsList extends PureComponent {
                       removeBirthday={this.showRemoveModal}
                     />
                   ) : (
-                    <EmptyBirthdayCard labels={labels} view={view} />
+                    <EmptyBirthdayCard
+                      labels={labels}
+                      view={view}
+                      showAddModal={() => this.toggleAddModal(false)}
+                    />
                   )}
                 </WrapItem>
               );
             })}
           </WrapLayout>
-
+          {addModal && (
+            <AddChildBirthdayForm
+              birthMonthOptionsMap={yearOptionsMap.monthsMap}
+              birthYearOptionsMap={childOptions.yearsMap}
+              timestamp={new Date()}
+              childOptions={childOptions.genderMap}
+              closeAddModal={() => this.toggleAddModal(true)}
+              onSubmit={addChildBirthday}
+              addChildBirthdayLabels={labels}
+            />
+          )}
           {removeModal && (
             <View>
               <BodyCopyWithSpacing
@@ -177,6 +207,7 @@ BirthdaySavingsList.propTypes = {
   labels: PropTypes.shape({}).isRequired,
   childrenBirthdays: PropTypes.shape([]).isRequired,
   view: PropTypes.oneOf([constants.VIEW.READ, constants.VIEW.EDIT]),
+  addChildBirthday: PropTypes.func,
   removeBirthday: PropTypes.func,
   status: PropTypes.string,
   message: PropTypes.string,
@@ -185,8 +216,9 @@ BirthdaySavingsList.propTypes = {
 
 BirthdaySavingsList.defaultProps = {
   view: constants.VIEW.EDIT,
-  removeBirthday: () => {},
+  addChildBirthday: () => {},
   status: '',
+  removeBirthday: () => {},
   message: '',
   toastMessage: () => {},
 };
