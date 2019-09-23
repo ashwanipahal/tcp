@@ -79,7 +79,7 @@ class Socialview extends React.PureComponent {
               overlayClassName="TCPModal__Overlay"
               className={`${className} TCPModal__Content`}
               maxWidth="450px"
-              minHeight="500px"
+              minHeight="505px"
             >
               <BodyCopy
                 fontSize="fs22"
