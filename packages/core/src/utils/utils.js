@@ -399,6 +399,7 @@ export const getLabelValue = (labelState, labelKey, subCategory, category) => {
   return typeof labelValue === 'string' ? labelValue : labelKey;
 };
 
+// eslint-disable-next-line
 export const getErrorSelector = (state, labels, errorKey) => {
   const errorParameters = state && state.getIn(['errorParameters', '0']);
   const errorCode = state && state.get('errorKey');
@@ -489,6 +490,11 @@ export const formatPhone = (phoneNum, hyphenFormat) => {
   return phone;
 };
 
+export const getSiteId = () => {
+  const paths = window.location.pathname.split('/', 2);
+  return paths[1];
+};
+// eslint-disable-next-line
 export const parseStoreHours = hoursOfOperation => {
   let carryOverClosingHour;
   const result = [];
@@ -540,6 +546,10 @@ export const parseStoreHours = hoursOfOperation => {
   return result;
 };
 
+export const parseBoolean = bool => {
+  return bool === true || bool === '1' || (bool || '').toUpperCase() === 'TRUE';
+};
+
 export default {
   getPromotionalMessage,
   getIconPath,
@@ -565,4 +575,5 @@ export default {
   isValidDate,
   formatDate,
   parseStoreHours,
+  parseBoolean,
 };

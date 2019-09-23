@@ -13,7 +13,21 @@ import {
 } from '../styles/EmptyBagPage.style.native';
 
 const EmptyBagPage = ({ isUserLoggedIn, bagLabels, ...otherProps }) => {
-  const { navigation } = otherProps;
+  const { navigation, isBagPageSflSection } = otherProps;
+  if (isBagPageSflSection) {
+    return (
+      <StyledEmptyBag>
+        <Text>
+          <BodyCopy
+            fontSize="fs14"
+            fontFamily="secondary"
+            dataLocator={getLocator('empty_bag_Msg')}
+            text={bagLabels.emptySflMsg}
+          />
+        </Text>
+      </StyledEmptyBag>
+    );
+  }
   return (
     <StyledEmptyBag>
       <Text>
@@ -65,9 +79,14 @@ const EmptyBagPage = ({ isUserLoggedIn, bagLabels, ...otherProps }) => {
   );
 };
 
+EmptyBagPage.defaultProps = {
+  isBagPageSflSection: false,
+};
+
 EmptyBagPage.propTypes = {
   isUserLoggedIn: PropTypes.bool.isRequired,
   bagLabels: PropTypes.bool.isRequired,
+  isBagPageSflSection: PropTypes.bool,
 };
 
 export default withNavigation(withStyle(EmptyBagPage, style));

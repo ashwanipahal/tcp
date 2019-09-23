@@ -92,4 +92,32 @@ describe('CartItemTile common component', () => {
     const component = shallow(<CartItemTileVanilla {...props} />);
     component.instance().handleMoveItemtoSaveList();
   });
+
+  it('renders correctly with bag page sfl section', () => {
+    const props = {
+      productDetail: {
+        itemInfo: {
+          name: 'Boys Basic Skinny',
+          qty: '1',
+          size: '1',
+          price: 123,
+          myPlacePoints: 123,
+          isGiftItem: true,
+          fit: 'regular',
+        },
+        miscInfo: {
+          badge: '',
+        },
+      },
+      labels: {
+        color: 'Color',
+        sizeL: 'Size',
+        qty: 'Qty',
+        design: 'Design',
+        price: 'Price',
+      },
+    };
+    const component = shallow(<CartItemTile {...props} isBagPageSflSection />);
+    expect(component).toMatchSnapshot();
+  });
 });

@@ -17,9 +17,13 @@ exports[`NavMenuLevel3 should render correctly 1`] = `
       />
     </Styled(TouchableOpacity)>
     <Styled(BodyCopy)
+      accessibilityText=""
       color="text.primary"
+      dataLocator=""
       fontFamily="secondary"
       fontSize="fs16"
+      margin={null}
+      numberOfLines={null}
       style={
         Object {
           "textTransform": "uppercase",
@@ -28,6 +32,7 @@ exports[`NavMenuLevel3 should render correctly 1`] = `
       testID="L3_header_text"
       text="test"
       textAlign="left"
+      textDecoration={null}
     />
     <Text />
   </Styled(View)>

@@ -27,7 +27,7 @@ class HeaderMiddleNav extends React.PureComponent {
     super(props);
     const { isLoggedIn, cartItemCount } = props;
     this.state = {
-      isOpenMiniBagModal: false,
+      isSearchOpen: false,
       userNameClick: true,
       triggerLoginCreateAccount: true,
       isLoggedIn: isLoggedIn || false,
@@ -65,17 +65,19 @@ class HeaderMiddleNav extends React.PureComponent {
     }
   };
 
-  toggleMiniBagModal = ({ e, isOpen, isRouting }) => {
+  updateCartItemCount = () => {
+    this.setState({
+      cartItemCount: getCartItemCount(),
+    });
+  };
+
+  openMiniBag = e => {
     if (e) e.preventDefault();
-    if (window.innerWidth <= breakpoints.values.lg && !isRouting) {
+    if (window.innerWidth <= breakpoints.values.lg) {
       routerPush('/bag', '/bag');
     } else {
-      this.setState({ isOpenMiniBagModal: isOpen });
-      if (!isOpen) {
-        this.setState({
-          cartItemCount: getCartItemCount(),
-        });
-      }
+      const { openMiniBagDispatch } = this.props;
+      openMiniBagDispatch();
     }
   };
 
@@ -89,15 +91,9 @@ class HeaderMiddleNav extends React.PureComponent {
       userName,
       showCondensedHeader,
       setSearchState,
-      isSearchOpen,
     } = this.props;
     const brand = getBrand();
-    const {
-      isOpenMiniBagModal,
-      userNameClick,
-      triggerLoginCreateAccount,
-      cartItemCount,
-    } = this.state;
+    const { userNameClick, triggerLoginCreateAccount, cartItemCount, isSearchOpen } = this.state;
 
     return (
       <React.Fragment>
@@ -209,7 +205,7 @@ class HeaderMiddleNav extends React.PureComponent {
                 to=""
                 id="cartIcon"
                 className="rightLink"
-                onClick={e => this.toggleMiniBagModal({ e, isOpen: true })}
+                onClick={e => this.openMiniBag(e)}
                 fontSizeVariation="small"
                 anchorVariation="primary"
                 noLink
@@ -256,11 +252,7 @@ class HeaderMiddleNav extends React.PureComponent {
             />
           </Col>
         </Row>
-        <MiniBagContainer
-          isOpen={isOpenMiniBagModal}
-          toggleMiniBagModal={this.toggleMiniBagModal}
-          userName={userName}
-        />
+        <MiniBagContainer userName={userName} updateCartItemCount={this.updateCartItemCount} />
       </React.Fragment>
     );
   }
@@ -277,7 +269,7 @@ HeaderMiddleNav.propTypes = {
   isLoggedIn: PropTypes.bool.isRequired,
   cartItemCount: PropTypes.func.isRequired,
   showCondensedHeader: PropTypes.bool.isRequired,
-  isSearchOpen: PropTypes.bool.isRequired,
+  openMiniBagDispatch: PropTypes.func.isRequired,
 };
 
 HeaderMiddleNav.defaultProps = {

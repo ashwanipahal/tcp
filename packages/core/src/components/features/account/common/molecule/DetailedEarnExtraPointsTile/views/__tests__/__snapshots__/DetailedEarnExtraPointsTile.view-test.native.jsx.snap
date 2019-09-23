@@ -18,6 +18,7 @@ exports[`Detailed Earn Extra Points Tile component  should render Detailed Earn 
   <Styled(Anchor)
     accessibilityLabel=""
     anchorVariation=""
+    colorName={null}
     customStyle={Object {}}
     locator=""
     onPress={[Function]}
@@ -34,23 +35,33 @@ exports[`Detailed Earn Extra Points Tile component  should render Detailed Earn 
       />
     </Styled(View)>
     <Styled(BodyCopy)
+      accessibilityText=""
       component="p"
       data-locator="earnExtraPointsActivityTitle_AppDownload"
+      dataLocator=""
       fontFamily="secondary"
       fontSize="fs16"
       fontWeight="black"
+      margin={null}
+      numberOfLines={null}
       text="Earn 5 Points"
       textAlign="center"
+      textDecoration={null}
     />
     <Styled(View)>
       <Styled(BodyCopy)
+        accessibilityText=""
         component="p"
         data-locator="earnExtraPointsDescription_AppDownload"
+        dataLocator=""
         fontFamily="secondary"
         fontSize="fs16"
         fontWeight="regular"
+        margin={null}
+        numberOfLines={null}
         text="Download & Log in to our App"
         textAlign="center"
+        textDecoration={null}
       />
     </Styled(View)>
   </Styled(Anchor)>

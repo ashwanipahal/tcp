@@ -2,6 +2,7 @@ import React from 'react';
 import { PropTypes } from 'prop-types';
 import throttle from 'lodash/throttle';
 import withStyles from '@tcp/core/src/components/common/hoc/withStyles';
+import errorBoundary from '@tcp/core/src/components/common/hoc/withErrorBoundary';
 import OverlayModal from '@tcp/core/src/components/features/OverlayModal';
 import TrackOrder from '@tcp/core/src/components/features/account/TrackOrder';
 import { getViewportInfo } from '@tcp/core/src/utils';
@@ -80,6 +81,7 @@ class Header extends React.PureComponent {
       isLoggedIn,
       cartItemCount,
       labels,
+      openMiniBagDispatch,
       totalItems,
     } = this.props;
 
@@ -109,6 +111,7 @@ class Header extends React.PureComponent {
           showCondensedHeader={showCondensedHeader}
           setSearchState={this.setSearchState}
           isSearchOpen={isSearchOpen}
+          openMiniBagDispatch={openMiniBagDispatch}
         />
         <SearchBar
           className={!isSearchOpen && 'rightLink'}
@@ -158,6 +161,7 @@ Header.propTypes = {
   openTrackOrderOverlay: PropTypes.func.isRequired,
   isLoggedIn: PropTypes.bool.isRequired,
   cartItemCount: PropTypes.func.isRequired,
+  openMiniBagDispatch: PropTypes.func.isRequired,
   labels: PropTypes.shape({}),
   totalItems: PropTypes.string,
 };
@@ -169,4 +173,4 @@ Header.defaultProps = {
   totalItems: 0,
 };
 
-export default withStyles(Header, style);
+export default withStyles(errorBoundary(Header), style);

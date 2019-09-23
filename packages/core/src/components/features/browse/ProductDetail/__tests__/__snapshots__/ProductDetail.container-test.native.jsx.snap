@@ -4,6 +4,7 @@ exports[`ProductDetailContainerVanilla component should renders correctly 1`] = 
 <Styled(ProductDetailView)
   breadCrumbs={Object {}}
   currentProduct={Object {}}
+  handleSubmit={null}
   navTree={Object {}}
   plpLabels={Object {}}
 />

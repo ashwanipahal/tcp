@@ -8,6 +8,7 @@ import { PRODUCT_INFO_PROP_TYPE_SHAPE } from '../../ProductListing/molecules/Pro
 import { breakpoints } from '../../../../../../styles/themes/TCP/mediaQuery';
 import Product from '../molecules/Product/views/Product.view';
 import FixedBreadCrumbs from '../../ProductListing/molecules/FixedBreadCrumbs/views';
+import ProductAddToBagContainer from '../../../../common/molecules/ProductAddToBag';
 
 import ProductImagesWrapper from '../molecules/ProductImagesWrapper/views/ProductImagesWrapper.view';
 import {
@@ -22,11 +23,14 @@ const ProductDetailView = ({
   breadCrumbs,
   currency,
   productInfo,
+  plpLabels,
 }) => {
+  const currentProduct = productDetails && productDetails.get('currentProduct');
   const isWeb =
     ExecutionEnvironment.canUseDOM && document.body.offsetWidth >= breakpoints.values.lg;
   let imagesToDisplay = [];
-  if (Object.keys(productInfo).length !== 0) {
+  const noProductData = Object.keys(productInfo).length === 0;
+  if (!noProductData) {
     const colorProduct = getMapSliceForColorProductId(
       productInfo.colorFitsSizesMap,
       /* colorProductId would not be hard coded and it will be replaced in near future when it done */
@@ -40,7 +44,7 @@ const ProductDetailView = ({
     });
   }
 
-  return (
+  return noProductData ? null : (
     <div className={className}>
       <Row>
         <Col colSize={{ small: 6, medium: 8, large: 12 }}>
@@ -68,6 +72,9 @@ const ProductDetailView = ({
           colSize={{ small: 6, medium: 4, large: 5 }}
         >
           <Product productDetails={productDetails} currencySymbol={currency} />
+          {currentProduct && (
+            <ProductAddToBagContainer currentProduct={currentProduct} plpLabels={plpLabels} />
+          )}
         </Col>
       </Row>
       <Row className="placeholder">
@@ -118,6 +125,9 @@ ProductDetailView.propTypes = {
   longDescription: PropTypes.string,
   breadCrumbs: PropTypes.shape({}),
   currency: PropTypes.string,
+  plpLabels: PropTypes.shape({
+    lbl_sort: PropTypes.string,
+  }),
 };
 
 ProductDetailView.defaultProps = {
@@ -126,6 +136,9 @@ ProductDetailView.defaultProps = {
   longDescription: '',
   breadCrumbs: {},
   currency: '',
+  plpLabels: {
+    lbl_sort: '',
+  },
   productInfo: {},
 };
 

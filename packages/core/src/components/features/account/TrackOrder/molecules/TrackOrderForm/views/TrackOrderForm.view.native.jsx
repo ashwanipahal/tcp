@@ -19,7 +19,7 @@ class TrackOrderForm extends React.PureComponent {
           <Field
             id="emailAddress"
             type="text"
-            label={labels.trackOrder.lbl_header_trackOrderOverlay_emailAddress_placeholder}
+            label={labels.trackOrder.lbl_trackOrder_emailPlaceholder}
             name="emailAddress"
             component={TextBox}
             dataLocator="track_order_email_address"
@@ -34,7 +34,7 @@ class TrackOrderForm extends React.PureComponent {
           <Field
             id="orderNumber"
             type="text"
-            label={labels.trackOrder.lbl_header_trackOrderOverlay_orderNo_placeholder}
+            label={labels.trackOrder.lbl_trackOrder_orderNoPlaceholder}
             name="orderNumber"
             component={TextBox}
             dataLocator="track_order_no"
@@ -49,8 +49,8 @@ class TrackOrderForm extends React.PureComponent {
           <Anchor
             anchorVariation="primary"
             underline
-            url={labels.trackOrder.lbl_header_trackOrderOverlay_needHelpLink}
-            text={labels.trackOrder.lbl_header_trackOrderOverlay_needHelp}
+            url={labels.trackOrder.lbl_trackOrder_needHelpLink}
+            text={labels.trackOrder.lbl_trackOrder_needHelp}
             locator="track_order_need_help"
           />
         </AnchorView>
@@ -61,7 +61,7 @@ class TrackOrderForm extends React.PureComponent {
             onPress={!invalid ? handleSubmit : null}
             buttonVariation="variable-width"
             disableButton={invalid}
-            text={labels.trackOrder.lbl_header_trackOrderOverlay_trackOrderBtn}
+            text={labels.trackOrder.lbl_trackOrder_trackOrderBtn}
             color="white"
           />
         </CtaView>

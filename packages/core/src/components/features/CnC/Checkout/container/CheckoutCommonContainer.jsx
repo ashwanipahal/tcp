@@ -1,6 +1,5 @@
 import React from 'react';
 import { connect } from 'react-redux';
-// import CheckoutProgressUtils from '@tcp/web/src/components/features/content/CheckoutProgressIndicator/utils/utils'
 import {
   initCheckoutAction,
   submitShippingSection,
@@ -56,6 +55,7 @@ const {
   getGiftWrappingValues,
   getReviewLabels,
   getBillingValues,
+  getShippingPhoneAndEmail,
 } = selectors;
 
 export class CheckoutContainer extends React.Component<Props> {
@@ -237,6 +237,7 @@ const mapStateToProps = state => {
       addEditResponseAddressId: getAddEditResponseAddressId(state),
       shippingAddress: getShippingAddress(state),
       syncErrors: getSyncError(state),
+      shippingPhoneAndEmail: getShippingPhoneAndEmail(state),
     },
     billingProps: {
       labels: getBillingLabels(state),

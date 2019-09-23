@@ -4,12 +4,17 @@ exports[`CouponForm Component AirmilesBanner should render correctly 1`] = `
 <Styled(View)>
   <Styled(View)>
     <Styled(BodyCopy)
+      accessibilityText=""
       bodySize="one"
       color="gray.800"
+      dataLocator=""
       fontFamily="secondary"
       fontSize="fs10"
+      margin={null}
+      numberOfLines={null}
       text="headerText"
       textAlign="left"
+      textDecoration={null}
     />
   </Styled(View)>
   <Styled(View)>
@@ -80,11 +85,16 @@ exports[`CouponForm Component AirmilesBanner should render correctly 1`] = `
           pointerColor="#fff"
           popover={
             <ForwardRef
+              accessibilityText=""
               color="gray.900"
+              dataLocator=""
               fontFamily="secondary"
               fontSize="fs12"
               fontWeight="regular"
+              margin={null}
+              numberOfLines={null}
               text="collectorFlyout"
+              textDecoration={null}
             />
           }
           toggleOnPress={true}
@@ -174,11 +184,16 @@ exports[`CouponForm Component AirmilesBanner should render correctly 1`] = `
           pointerColor="#fff"
           popover={
             <ForwardRef
+              accessibilityText=""
               color="gray.900"
+              dataLocator=""
               fontFamily="secondary"
               fontSize="fs12"
               fontWeight="regular"
+              margin={null}
+              numberOfLines={null}
               text="offerFlyout"
+              textDecoration={null}
             />
           }
           toggleOnPress={true}
@@ -204,12 +219,17 @@ exports[`CouponForm Component AirmilesBanner should render correctly 1`] = `
   </Styled(View)>
   <Styled(View)>
     <Styled(BodyCopy)
+      accessibilityText=""
       bodySize="one"
       color="gray.800"
+      dataLocator=""
       fontFamily="secondary"
       fontSize="fs10"
+      margin={null}
+      numberOfLines={null}
       text="footerText"
       textAlign="center"
+      textDecoration={null}
     />
   </Styled(View)>
 </Styled(View)>
