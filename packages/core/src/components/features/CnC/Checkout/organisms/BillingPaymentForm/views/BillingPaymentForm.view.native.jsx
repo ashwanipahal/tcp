@@ -1,5 +1,5 @@
 import React from 'react';
-import { reduxForm } from 'redux-form';
+import { reduxForm, change } from 'redux-form';
 import BodyCopy from '../../../../../../common/atoms/BodyCopy';
 import createValidateMethod from '../../../../../../../utils/formValidation/createValidateMethod';
 import getStandardConfig from '../../../../../../../utils/formValidation/validatorStandardConfig';
@@ -14,11 +14,11 @@ import {
   propTypes,
   defaultProps,
   getExpirationRequiredFlag,
-  getSelectedCard,
   getCreditCardList,
 } from './BillingPaymentForm.view.util';
 import CnCTemplate from '../../../../common/organism/CnCTemplate';
 import CONSTANTS from '../../../Checkout.constants';
+import AddNewCCWrapper from '../styles/BillingPaymentForm.style.native';
 
 export class BillingPaymentForm extends React.PureComponent {
   static propTypes = propTypes;
@@ -33,7 +33,12 @@ export class BillingPaymentForm extends React.PureComponent {
   }
 
   onAddNewCCClick = () => {
+    const { dispatch } = this.props;
     this.setState({ addNewCCState: true });
+    dispatch(change(constants.FORM_NAME, 'cardNumber', ''));
+    dispatch(change(constants.FORM_NAME, 'expMonth', ''));
+    dispatch(change(constants.FORM_NAME, 'expYear', ''));
+    dispatch(change(constants.FORM_NAME, 'cvvCode', ''));
   };
 
   getCreditCardDropDown = (options, onClickHandler, activeValue) => {
@@ -102,6 +107,7 @@ export class BillingPaymentForm extends React.PureComponent {
       cvvError = syncErrorsObj.syncError.cvvCode;
     }
     const isExpirationRequired = getExpirationRequiredFlag({ cardType });
+    const { addNewCCState } = this.state;
 
     return (
       <AddNewCCForm
@@ -115,28 +121,37 @@ export class BillingPaymentForm extends React.PureComponent {
         dispatch={dispatch}
         isExpirationRequired={isExpirationRequired}
         billingData={billingData}
+        addNewCCState={addNewCCState}
       />
     );
   };
 
+  addNewCCBtn = () => {
+    return (
+      <AddNewCCWrapper>
+        <Button
+          color="white"
+          fill="BLUE"
+          buttonVariation="variable-width"
+          text="Add new CC"
+          fontSize="fs13"
+          fontWeight="extrabold"
+          mobileFontFamily="secondary"
+          onPress={this.onAddNewCCClick}
+        />
+      </AddNewCCWrapper>
+    )
+  }
+
   addNewBillingInfoForm = () => {
-    const { onFileCardKey, labels, cardList } = this.props;
+    const { cardList } = this.props;
     const { addNewCCState } = this.state;
     const creditCardList = getCreditCardList({ cardList });
     return (
       <>
         {creditCardList &&
           creditCardList.size > 0 && (
-            <Button
-              color="white"
-              fill="BLUE"
-              buttonVariation="variable-width"
-              text="Add new CC"
-              fontSize="fs13"
-              fontWeight="extrabold"
-              mobileFontFamily="secondary"
-              onPress={this.onAddNewCCClick}
-            />
+            this.addNewCCBtn()
           )}
         {this.getAddNewCCForm()}
         {this.getCheckoutBillingAddress({ ...this.props, creditCardList, addNewCCState })}
@@ -145,25 +160,16 @@ export class BillingPaymentForm extends React.PureComponent {
   };
 
 
-  getCreditListView = ({ labels, cvvCodeRichText, creditCardList, onFileCardKey }) => {
+  getCreditListView = ({ creditCardList }) => {
     return (
       <>
         {creditCardList &&
-          creditCardList.size > 0 && (
-            <Button
-              color="white"
-              fill="BLUE"
-              buttonVariation="variable-width"
-              text="Add new CC"
-              fontSize="fs13"
-              fontWeight="extrabold"
-              mobileFontFamily="secondary"
-              onPress={this.onAddNewCCClick}
-            />
+          creditCardList.size > 0 ? (
+            this.addNewCCBtn()
+          )
+          : (
+            this.getAddNewCCForm()
           )}
-        : (
-        this.getAddNewCCForm()
-      )}
         {this.getCheckoutBillingAddress()}
       </>
     );
@@ -192,9 +198,8 @@ export class BillingPaymentForm extends React.PureComponent {
       backLinkPickup,
       backLinkShipping,
       nextSubmitText,
-      isPaymentDisabled,
       onSubmit,
-      navigation
+      navigation, billingData
     } = this.props;
     const creditCardList = getCreditCardList({ cardList });
     return (
@@ -206,7 +211,7 @@ export class BillingPaymentForm extends React.PureComponent {
           data-locator="billing-details"
           text={labels.lbl_billing_paymentMethodTitle}
         />
-        {paymentMethodId === constants.PAYMENT_METHOD_CREDIT_CARD ? (
+        {paymentMethodId === constants.PAYMENT_METHOD_CREDIT_CARD && billingData ? (
           this.getCreditCardWrapper({
             labels,
             creditCardList,

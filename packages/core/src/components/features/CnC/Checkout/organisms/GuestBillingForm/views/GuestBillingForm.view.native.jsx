@@ -42,7 +42,6 @@ class GuestBillingForm extends React.Component {
     cardType: null,
     syncErrorsObj: null,
     labels: {},
-    paymentMethodId: null,
     orderHasShipping: true,
     isGuest: true,
     isSameAsShippingChecked: true,

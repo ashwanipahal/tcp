@@ -195,13 +195,13 @@ function* confirmStartCheckout() {
   //   );
   // }
 
-  const [OOSCount, unavailableCount] = yield all(
-    [BAG_SELECTORS.getOOSCount, BAG_SELECTORS.getUnavailableCount].map(val => select(val))
-  );
-  if (OOSCount > 0 || unavailableCount > 0) {
-    yield put(BAG_PAGE_ACTIONS.openCheckoutConfirmationModal());
-    return yield true;
-  }
+  // const [OOSCount, unavailableCount] = yield all(
+  //   [BAG_SELECTORS.getOOSCount, BAG_SELECTORS.getUnavailableCount].map(val => select(val))
+  // );
+  // if (OOSCount > 0 || unavailableCount > 0) {
+  yield put(BAG_PAGE_ACTIONS.openCheckoutConfirmationModal());
+  return yield true;
+  // }
   return false;
 }
 
@@ -212,15 +212,15 @@ export function* startCartCheckout({
     yield put(BAG_PAGE_ACTIONS.openCheckoutConfirmationModal(isEditingItem));
   } else {
     // this.store.dispatch(setVenmoPaymentInProgress(false));
-    let res = yield call(getUnqualifiedItems);
-    res = res || [];
-    yield all(
-      res.map(({ orderItemId, isOOS }) =>
-        isOOS
-          ? put(BAG_PAGE_ACTIONS.setItemOOS(orderItemId))
-          : put(BAG_PAGE_ACTIONS.setItemUnavailable(orderItemId))
-      )
-    );
+    // let res = yield call(getUnqualifiedItems);
+    // res = res || [];
+    // yield all(
+    //   res.map(({ orderItemId, isOOS }) =>
+    //     isOOS
+    //       ? put(BAG_PAGE_ACTIONS.setItemOOS(orderItemId))
+    //       : put(BAG_PAGE_ACTIONS.setItemUnavailable(orderItemId))
+    //   )
+    // );
     const oOSModalOpen = yield call(confirmStartCheckout);
     if (!oOSModalOpen) {
       yield call(checkoutCart, false, navigation, closeModal);

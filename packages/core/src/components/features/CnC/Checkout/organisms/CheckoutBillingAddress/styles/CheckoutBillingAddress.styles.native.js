@@ -12,4 +12,7 @@ const CheckoutAddressWrapper = styled.View`
 margin-bottom:${props => props.theme.spacing.ELEM_SPACING.XXXL};
 `
 
-export { BillingAddWrapper, SameAsShippingWrapper, CheckoutAddressWrapper };
+const AddressDropdownWrapper = styled.View`
+margin-bottom:${props => props.theme.spacing.ELEM_SPACING.XL};
+`;
+export { BillingAddWrapper, SameAsShippingWrapper, CheckoutAddressWrapper, AddressDropdownWrapper };

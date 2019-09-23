@@ -8,6 +8,28 @@ exports[`HomePageView should render correctly 1`] = `
   recycleDistance={5336}
   renderDistance={0}
 >
+  <Styled(WithTheme(CustomButton))
+    buttonVariation="variable-width"
+    fullWidth={true}
+    onPress={[Function]}
+    style={
+      Object {
+        "margin": 30,
+      }
+    }
+    text="PLP Page"
+  />
+  <Styled(WithTheme(CustomButton))
+    buttonVariation="variable-width"
+    fullWidth={true}
+    onPress={[Function]}
+    style={
+      Object {
+        "margin": 30,
+      }
+    }
+    text="GoTOBilling"
+  />
   <Styled(View)>
     <HeaderPromo />
   </Styled(View)>
@@ -37,17 +59,6 @@ exports[`HomePageView should render correctly 1`] = `
         "getParam": [Function],
       }
     }
-  />
-  <Styled(WithTheme(CustomButton))
-    buttonVariation="variable-width"
-    fullWidth={true}
-    onPress={[Function]}
-    style={
-      Object {
-        "margin": 30,
-      }
-    }
-    text="PLP Page"
   />
   <Connect(ModuleJ)
     bgColor="#d8d8d8"

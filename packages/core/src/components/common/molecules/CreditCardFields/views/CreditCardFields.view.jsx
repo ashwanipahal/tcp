@@ -55,8 +55,8 @@ export const CreditCardFields = ({
             </Col>
           </Row>
         ) : (
-          CardNumberField({ cardTypeImgUrl, cardType, isPLCCEnabled, creditFieldLabels })
-        )}
+            CardNumberField({ cardTypeImgUrl, cardType, isPLCCEnabled, creditFieldLabels })
+          )}
       </Col>
       {isExpirationRequired && (
         <React.Fragment>
@@ -92,7 +92,6 @@ export const CreditCardFields = ({
                 id="cvvCode"
                 component={TextBox}
                 dataLocator="payment-cvv"
-                cvvInfo={cvvInfo}
                 maxLength="4"
                 enableSuccessCheck={false}
               />

@@ -26,6 +26,7 @@ class AddNewCCForm extends React.PureComponent {
     isSaveToAccountChecked: PropTypes.bool,
     isExpirationRequired: PropTypes.bool,
     billingData: PropTypes.shape({}),
+    addNewCCState: PropTypes.bool,
   };
 
   static defaultProps = {
@@ -36,7 +37,8 @@ class AddNewCCForm extends React.PureComponent {
     cardList: null,
     isSaveToAccountChecked: true,
     isExpirationRequired: true,
-    billingData: null
+    billingData: null,
+    addNewCCState: false,
   };
 
   constructor(props) {
@@ -99,9 +101,9 @@ class AddNewCCForm extends React.PureComponent {
   };
 
   getExpData = () => {
-    const { billingData } = this.props;
+    const { billingData, addNewCCState } = this.props;
     let expMonth; let expYear;
-    if (billingData && billingData.billing) {
+    if (billingData && billingData.billing && !addNewCCState) {
       ({ billing: { expMonth, expYear } } = billingData);
       return { expMonth, expYear };
     }

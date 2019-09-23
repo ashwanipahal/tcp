@@ -78,8 +78,8 @@ class CheckoutAddress extends React.Component {
         className="address elem-mb-XXXL"
       />
     ) : (
-      this.renderNonShippingAddressForm()
-    );
+        this.renderNonShippingAddressForm()
+      );
   };
 
   getAddressFields = () => {

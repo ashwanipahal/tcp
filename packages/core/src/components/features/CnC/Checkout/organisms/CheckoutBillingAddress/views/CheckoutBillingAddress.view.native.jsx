@@ -1,6 +1,6 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import { Field, FormSection, change } from 'redux-form';
+import { Field, FormSection, change, resetSection } from 'redux-form';
 import InputCheckbox from '../../../../../../common/atoms/InputCheckbox';
 import AddressFields from '../../../../../../common/molecules/AddressFields';
 import { getLabelValue } from '../../../../../../../utils';
@@ -9,7 +9,7 @@ import Address from '../../../../../../common/molecules/Address';
 import AddressDropdown from '../../../../../account/AddEditCreditCard/molecule/AddressDropdown';
 import styles from '../styles/CheckoutBillingAddress.styles';
 import withStyles from '../../../../../../common/hoc/withStyles';
-import { BillingAddWrapper, SameAsShippingWrapper, CheckoutAddressWrapper } from '../styles/CheckoutBillingAddress.styles.native'
+import { BillingAddWrapper, SameAsShippingWrapper, CheckoutAddressWrapper, AddressDropdownWrapper } from '../styles/CheckoutBillingAddress.styles.native'
 
 const dropDownStyle = {
   height: 30,
@@ -46,7 +46,10 @@ class CheckoutAddress extends React.Component {
 
   toggleAddNewAddressMode = () => {
     const { isAddNewAddress } = this.state;
+    const { dispatch, formName } = this.props
     this.setState({ isAddNewAddress: !isAddNewAddress });
+    dispatch(change(formName, 'onFileAddressId', ''));
+    dispatch(resetSection(formName, 'address'));
   };
 
   onSameAsShippingChange = () => {
@@ -105,19 +108,22 @@ class CheckoutAddress extends React.Component {
 
   getAddressFields = () => {
     const { addressLabels, dispatch, formName, userAddresses, onFileAddressId, shippingAddress, isSameAsShippingChecked, billingData } = this.props;
-    const selectedAddress = this.getSelectedAddress(userAddresses, onFileAddressId)
+    const selectedAddress = this.getSelectedAddress(userAddresses, onFileAddressId);
+    const { isAddNewAddress } = this.state;
     let addressLine1; let state; let address;
-    if (selectedAddress) {
-      [addressLine1] = selectedAddress.addressLine;
-      ({ state } = selectedAddress);
-    }
-    if (shippingAddress && !isSameAsShippingChecked) {
-      ({ addressLine1 } = shippingAddress);
-      ({ state } = shippingAddress);
-    }
-    if (billingData && billingData.address) {
-      ({ address } = billingData);
-      ({ state, addressLine1 } = address);
+    if (!isAddNewAddress) {
+      if (selectedAddress) {
+        [addressLine1] = selectedAddress.addressLine;
+        ({ state } = selectedAddress);
+      }
+      if (shippingAddress && !isSameAsShippingChecked) {
+        ({ addressLine1 } = shippingAddress);
+        ({ state } = shippingAddress);
+      }
+      if (billingData && billingData.address) {
+        ({ address } = billingData);
+        ({ state, addressLine1 } = address);
+      }
     }
     return (
       <FormSection name="address">
@@ -205,34 +211,40 @@ class CheckoutAddress extends React.Component {
 
   getAddressDropDown = () => {
     const { userAddresses, selectedOnFileAddressId } = this.props;
+    const { isAddNewAddress } = this.state;
     const selectedAddress = this.getSelectedAddress(userAddresses, selectedOnFileAddressId);
     return (
       userAddresses &&
       userAddresses.size > 0 && (
         <>
-          <Field
-            selectListTitle="Select from address book"
-            name="onFileAddressId"
-            id="onFileAddressId"
-            component={AddressDropdown}
-            data={this.getAddressOptions()}
-            dropDownStyle={{ ...dropDownStyle }}
-            itemStyle={{ ...itemStyle }}
-            toggleModal={this.toggleAddressModal}
-            onValueChange={itemValue => {
-              this.onAddressDropDownChange(itemValue);
-            }}
-            variation="secondary"
-            selectedValue={selectedOnFileAddressId}
-            labels={{ common: { lbl_common_tapClose: 'close' } }}
-          />
-
-          <Address
-            showCountry={false}
-            showPhone={false}
-            address={selectedAddress}
-            className="address elem-mb-XXXL"
-          />
+          <AddressDropdownWrapper>
+            <Field
+              selectListTitle="Select from address book"
+              name="onFileAddressId"
+              id="onFileAddressId"
+              component={AddressDropdown}
+              data={this.getAddressOptions()}
+              dropDownStyle={{ ...dropDownStyle }}
+              itemStyle={{ ...itemStyle }}
+              addAddress={this.toggleAddNewAddressMode}
+              onValueChange={itemValue => {
+                this.onAddressDropDownChange(itemValue);
+              }}
+              variation="secondary"
+              selectedValue={selectedOnFileAddressId}
+              labels={{ common: { lbl_common_tapClose: 'close' } }}
+              disableBtn={isAddNewAddress}
+            />
+          </AddressDropdownWrapper>
+          {!isAddNewAddress && (
+            <Address
+              showCountry={false}
+              showPhone={false}
+              address={selectedAddress}
+              className="address elem-mb-XXXL"
+            />
+          )
+          }
         </>
       )
     );

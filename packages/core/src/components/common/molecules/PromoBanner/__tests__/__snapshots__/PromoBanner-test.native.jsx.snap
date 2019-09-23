@@ -1,28 +1,6 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`PromoTextBanner native component ModuleN should render correctly 1`] = `
-<Styled(View)>
-  <Styled(Anchor)
-    accessibilityLabel=""
-    anchorVariation=""
-    customStyle={Object {}}
-    locator=""
-    onPress={null}
-    text=""
-    url="http://example.com235"
-    visible={false}
-  >
-    <style1
-      key="0"
-      text="alL DINOS"
-    />
-    <style2
-      key="1"
-      text="50% OFF"
-    />
-  </Styled(Anchor)>
-</Styled(View)>
-`;
+exports[`PromoTextBanner native component ModuleN should render correctly 1`] = `<Styled(View) />`;
 
 exports[`PromoTextBanner native component renders all style correctly 1`] = `
 <StyledNativeComponent
@@ -1118,28 +1096,4 @@ exports[`PromoTextBanner native component renders all style correctly 20`] = `
 </Styled(View)>
 `;
 
-exports[`PromoTextBanner native component renders correctly 1`] = `
-<Styled(View)>
-  <Styled(Anchor)
-    accessibilityLabel=""
-    anchorVariation=""
-    customStyle={Object {}}
-    locator=""
-    onPress={null}
-    text=""
-    url="http://example.com235"
-    visible={false}
-  >
-    <style1
-      dataLocator="moduleK_text_"
-      key="0"
-      text="alL DINOS"
-    />
-    <style2
-      dataLocator="moduleK_text_"
-      key="1"
-      text="50% OFF"
-    />
-  </Styled(Anchor)>
-</Styled(View)>
-`;
+exports[`PromoTextBanner native component renders correctly 1`] = `<Styled(View) />`;

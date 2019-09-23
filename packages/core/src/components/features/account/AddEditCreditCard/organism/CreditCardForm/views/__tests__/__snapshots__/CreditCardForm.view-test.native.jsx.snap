@@ -152,6 +152,13 @@ exports[`CreditCardForm component should renders correctly in mailingAddress vie
       cardType=""
       cardTypeImgUrl=""
       className=""
+      creditFieldLabels={
+        Object {
+          "creditCardNumber": "lbl_payment_cardNumber",
+          "expMonth": "lbl_payment_expMonth",
+          "expYear": "lbl_payment_expYear",
+        }
+      }
       dispatch={[MockFunction]}
       dto={Object {}}
       expMonthOptionsMap={
@@ -570,6 +577,13 @@ exports[`CreditCardForm component should renders correctly with address dropdown
       cardType=""
       cardTypeImgUrl=""
       className=""
+      creditFieldLabels={
+        Object {
+          "creditCardNumber": "lbl_payment_cardNumber",
+          "expMonth": "lbl_payment_expMonth",
+          "expYear": "lbl_payment_expYear",
+        }
+      }
       dispatch={
         [MockFunction] {
           "calls": Array [
@@ -992,6 +1006,13 @@ exports[`CreditCardForm component should renders correctly with addressForm 1`] 
       cardType=""
       cardTypeImgUrl=""
       className=""
+      creditFieldLabels={
+        Object {
+          "creditCardNumber": "lbl_payment_cardNumber",
+          "expMonth": "lbl_payment_expMonth",
+          "expYear": "lbl_payment_expYear",
+        }
+      }
       dispatch={[MockFunction]}
       dto={Object {}}
       expMonthOptionsMap={
