@@ -1,6 +1,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import FacebookLogin from './FacebookLogin';
+import { InstagramLoginComponent } from './InstagramLogin';
 import config from './config';
 import socialStyle from '../styles/social.style';
 import withStyles from '../../../hoc/withStyles';
@@ -11,6 +12,7 @@ import { getLabelValue, routerPush } from '../../../../../utils';
 
 const loginComponents = {
   Facebook: FacebookLogin,
+  Instagram: InstagramLoginComponent,
 };
 
 class Socialview extends React.PureComponent {
@@ -54,7 +56,9 @@ class Socialview extends React.PureComponent {
       return (
         <li className="social-accounts__infoList" key={index.toString()}>
           <span
-            data-locator={!elem.isConnected ? 'facebookDisabledIcon' : 'facebookEnabledIcon'}
+            data-locator={
+              !elem.isConnected ? `${isSocialAccount}DisabledIcon` : `${isSocialAccount}EnabledIcon`
+            }
             className={`${isSocialAccount}-icon--${
               elem.isConnected ? 'enable' : 'disable'
             } social-accounts__social-icon`}
@@ -79,7 +83,7 @@ class Socialview extends React.PureComponent {
               overlayClassName="TCPModal__Overlay"
               className={`${className} TCPModal__Content`}
               maxWidth="450px"
-              minHeight="500px"
+              minHeight="505px"
             >
               <BodyCopy
                 fontSize="fs22"
@@ -167,7 +171,7 @@ class Socialview extends React.PureComponent {
   refactorSocialDetails = accounts => {
     const accountsInfo = [];
     Object.keys(accounts).forEach(prop => {
-      if (prop === 'facebook') {
+      if (prop === 'facebook' || prop === 'instagram') {
         accountsInfo.push({
           socialAccount: config.SOCIAL_ACCOUNTS_INFO[prop],
           isConnected: accounts[prop].accessToken,

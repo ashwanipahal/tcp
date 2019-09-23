@@ -386,6 +386,5 @@ const validateMethod = createValidateMethod({
 export default reduxForm({
   form: formName, // a unique identifier for this form
   ...validateMethod,
-  destroyOnUnmount: false,
 })(withStyles(ShippingForm, styles));
 export { ShippingForm as ShippingFormVanilla };
