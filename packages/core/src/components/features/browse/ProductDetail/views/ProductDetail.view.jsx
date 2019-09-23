@@ -9,7 +9,7 @@ import { breakpoints } from '../../../../../../styles/themes/TCP/mediaQuery';
 import Product from '../molecules/Product/views/Product.view';
 import FixedBreadCrumbs from '../../ProductListing/molecules/FixedBreadCrumbs/views';
 import ProductAddToBagContainer from '../../../../common/molecules/ProductAddToBag';
-
+import ProductPickupContainer from '../../../../common/organisms/ProductPickup';
 import ProductImagesWrapper from '../molecules/ProductImagesWrapper/views/ProductImagesWrapper.view';
 import {
   getImagesToDisplay,
@@ -73,6 +73,14 @@ const ProductDetailView = ({
           <Product productDetails={productDetails} currencySymbol={currency} />
           {currentProduct && (
             <ProductAddToBagContainer currentProduct={currentProduct} plpLabels={plpLabels} />
+          )}
+          {productInfo && (
+            <ProductPickupContainer
+              productInfo={productInfo}
+              formName="ProductAddToBag"
+              // miscInfo={colorProduct.miscInfo}
+              // onPickUpOpenClick={onPickUpOpenClick}
+            />
           )}
         </Col>
       </Row>

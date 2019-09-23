@@ -78,6 +78,10 @@ export const PRODUCTLISTINGPAGE_ACTION_PATTERN = '@@PLP-';
 export const PRODUCT_DETAIL_REDUCER_KEY = 'ProductDetail';
 export const PRODUCT_DETAIL_ACTION_PATTERN = '@@PDP-';
 
+// Product Pickup Reducer
+export const PRODUCT_PICKUP_REDUCER_KEY = 'ProductPickup';
+export const PRODUCT_PICKUP_ACTION_PATTERN = '@BOPIS-';
+
 // Email signup reducer
 export const EMAIL_SIGNUP_REDUCER_KEY = 'EmailSignUp';
 export const SMS_SIGNUP_REDUCER_KEY = 'SmsSignUp';

@@ -318,5 +318,9 @@ const endpoints = {
     method: 'POST',
     URI: 'v2/coupons/getOffers',
   },
+  getBOPISInventoryDetails: {
+    method: 'POST',
+    URI: 'v2/vendor/getBOPISInvetoryDetails',
+  },
 };
 export default endpoints;
