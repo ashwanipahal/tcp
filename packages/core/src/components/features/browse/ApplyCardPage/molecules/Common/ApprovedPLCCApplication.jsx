@@ -3,6 +3,7 @@ import PropTypes from 'prop-types';
 import { Anchor, BodyCopy, RichText, Button, Col, Row } from '../../../../../common/atoms';
 import ApprovedPLCCApplicationViewStyled from './styles/ApprovedPLCCApplication.style';
 import { getLabelValue } from '../../../../../../utils';
+import { redirectToBag, redirectToHome } from '../../utils/utility';
 
 const CopyToClipboard = e => {
   e.preventDefault();
@@ -100,7 +101,8 @@ const totalSavingsFooterContainer = (
   approvedPLCCData = {},
   plccData = {},
   labels = {},
-  bagItems
+  bagItems,
+  resetPLCCResponse
 ) => {
   return (
     <React.Fragment>
@@ -123,16 +125,15 @@ const totalSavingsFooterContainer = (
             colSize={{ large: 3, medium: 4, small: 12 }}
             className="existing_checkout_button"
           >
-            <Anchor asPath="/bag">
-              <Button
-                buttonVariation="fixed-width"
-                fill="BLUE"
-                type="submit"
-                className="existing_checkout_button"
-              >
-                {getLabelValue(labels, 'lbl_PLCCForm_checkout')}
-              </Button>
-            </Anchor>
+            <Button
+              buttonVariation="fixed-width"
+              fill="BLUE"
+              type="submit"
+              className="existing_checkout_button"
+              onClick={() => redirectToBag(resetPLCCResponse)}
+            >
+              {getLabelValue(labels, 'lbl_PLCCForm_checkout')}
+            </Button>
           </Col>
         </Row>
       ) : null}
@@ -146,16 +147,15 @@ const totalSavingsFooterContainer = (
           ignoreGutter={{ small: true }}
           colSize={{ large: 3, medium: 4, small: 12 }}
         >
-          <Anchor asPath="/home">
-            <Button
-              buttonVariation="fixed-width"
-              fill={!bagItems ? 'BLUE' : 'WHITE'}
-              type="submit"
-              className="existing_continue_button"
-            >
-              {getLabelValue(labels, 'lbl_PLCCForm_continueShopping')}
-            </Button>
-          </Anchor>
+          <Button
+            buttonVariation="fixed-width"
+            fill={!bagItems ? 'BLUE' : 'WHITE'}
+            type="submit"
+            className="existing_continue_button"
+            onClick={() => redirectToHome(resetPLCCResponse)}
+          >
+            {getLabelValue(labels, 'lbl_PLCCForm_continueShopping')}
+          </Button>
         </Col>
       </Row>
     </React.Fragment>
@@ -177,6 +177,7 @@ const ApprovedPLCCApplicationView = ({
   isPLCCModalFlow,
   approvedPLCCData,
   isGuest,
+  resetPLCCResponse,
 }) => {
   return (
     <ApprovedPLCCApplicationViewStyled isPLCCModalFlow={isPLCCModalFlow}>
@@ -246,7 +247,7 @@ const ApprovedPLCCApplicationView = ({
         </Col>
       </Row>
       {getCouponCodeBody(approvedPLCCData, labels, plccData)}
-      {totalSavingsFooterContainer(approvedPLCCData, plccData, labels, bagItems)}
+      {totalSavingsFooterContainer(approvedPLCCData, plccData, labels, bagItems, resetPLCCResponse)}
       <Row fullBleed className="centered">
         <Col
           ignoreGutter={{ small: true }}
@@ -279,6 +280,7 @@ ApprovedPLCCApplicationView.propTypes = {
   isGuest: PropTypes.bool.isRequired,
   bagItems: PropTypes.bool.isRequired,
   plccData: PropTypes.shape({}).isRequired,
+  resetPLCCResponse: PropTypes.func.isRequired,
 };
 
 export default ApprovedPLCCApplicationView;

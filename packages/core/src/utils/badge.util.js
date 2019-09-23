@@ -44,27 +44,6 @@ export const getDateInformation = (date, upperCase) => {
   };
 };
 
-/**
- * @method getTranslateDateInformation
- * @desc returns day, month and day of the respective date provided
- * @param {string} date date which is to be mutated
- * @param {upperCase} locale use for convert locate formate
- */
-export const getTranslateDateInformation = (
-  date,
-  localeType = 'en-US',
-  dayOption = { weekday: 'short' },
-  monthOption = { month: 'short' }
-) => {
-  const currentDate = date ? new Date(date) : new Date();
-
-  return {
-    day: new Intl.DateTimeFormat(localeType, dayOption).format(currentDate),
-    month: new Intl.DateTimeFormat(localeType, monthOption).format(currentDate),
-    date: currentDate.getDate(),
-  };
-};
-
 export const getCartProductAttributes = () => {
   const isUSStore = true;
   return isUSStore
