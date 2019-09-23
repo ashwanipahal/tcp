@@ -30,7 +30,7 @@ import {
 } from '../../../../../../../services/abstractors/CnC/CartItemTile';
 import CouponIcon from '../../CouponIcon';
 
-const bagIcon = require('../../../../../../../assets/bag.png');
+const bagIcon = require('../../../../../../../assets/bag-white.png');
 
 export class DetailedCouponTile extends React.Component {
   static propTypes = {

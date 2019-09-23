@@ -137,7 +137,7 @@ export class DetailedCouponTile extends React.Component {
     const isApplyButtonDisabled = isDisabled || !coupon.isStarted;
     const isPlaceCash = coupon.redemptionType === COUPON_REDEMPTION_TYPE.PLACECASH;
     const addToBagCTALabel = this.getAddToBagCtaLabel(labels, coupon.isStarted, isPlaceCash);
-    const bagIcon = getIconPath('cart-icon');
+    const bagIcon = getIconPath('cart-icon-white');
     const showOverlow = coupon.status === COUPON_STATUS.APPLIED;
     const overlapCls = this.overlapClass(coupon.status);
     const overlapTxtCls = this.overlapTxtClass(coupon.status);
