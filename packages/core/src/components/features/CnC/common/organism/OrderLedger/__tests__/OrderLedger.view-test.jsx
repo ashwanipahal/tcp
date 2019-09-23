@@ -18,6 +18,7 @@ describe('OrderLedger Component', () => {
       giftCardsTotal: 0,
       orderBalanceTotal: 0,
       totalOrderSavings: 0,
+      isOrderHasShipping: false,
     },
     labels: {},
   };
@@ -51,6 +52,7 @@ describe('OrderLedger Component', () => {
       giftCardsTotal: 1,
       orderBalanceTotal: 1,
       totalOrderSavings: 1,
+      isOrderHasShipping: true,
     },
     labels: {},
   };

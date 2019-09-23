@@ -27,7 +27,7 @@ const StyledApplyNowModal = ({
       fixedWidth
       isOpen={isModalOpen}
       onRequestClose={closeModal}
-      heading={getLabelValue(labels, 'apply_now_header')}
+      heading={getLabelValue(labels, 'lbl_PLCCModal_applyNowHeaderText')}
       overlayClassName="TCPModal__Overlay"
       className={`${className} TCPModal__Content`}
       dataLocator={getLocator('plcc_apply_now_modal')}
@@ -63,7 +63,7 @@ const StyledApplyNowModal = ({
               data-locator={getLocator('ship_to_text_2')}
               className="header__greeting"
             >
-              {getLabelValue(labels, 'apply_now_subheader')}
+              {getLabelValue(labels, 'lbl_PLCCModal_applyNowSubText')}
             </BodyCopy>
           </Col>
         </Row>
@@ -78,7 +78,7 @@ const StyledApplyNowModal = ({
               onClick={openPLCCModal}
               data-locator={getLocator('plcc_apply_btn')}
             >
-              {getLabelValue(labels, 'applynow_cta')}
+              {getLabelValue(labels, 'lbl_PLCCModal_applyNowCTA')}
             </Button>
           </Col>
         </Row>
@@ -91,20 +91,20 @@ const StyledApplyNowModal = ({
             className="learn_more_link"
           >
             <Anchor
-              url={getLabelValue(labels, 'learn_more_link')}
+              url={getLabelValue(labels, 'lbl_PLCCModal_learnMoreLink')}
               fontSizeVariation="large"
               anchorVariation="secondary"
               underline
               target="_blank"
             >
-              {getLabelValue(labels, 'apply_now_learn_more')}
+              {getLabelValue(labels, 'lbl_PLCCModal_learnMoreText')}
             </Anchor>
           </Col>
         </Row>
         <div
           className="offer_info_icon"
           data-locator="plcc_modal_logo"
-          offerType={getLabelValue(labels, 'oneequalstwopointsoffer')}
+          offerType={getLabelValue(labels, 'lbl_PLCCModal_oneEqualsTwoPoints')}
         />
         <BodyCopy
           fontFamily="primary"
@@ -113,44 +113,44 @@ const StyledApplyNowModal = ({
           textAlign="center"
           color="text.secondary"
         >
-          {getLabelValue(labels, 'apply_now_benefits_header')}
+          {getLabelValue(labels, 'lbl_PLCCModal_benefitsText')}
         </BodyCopy>
         <RichText className="rewards__benefits" richTextHtml={plccBenefitsList} />
         <div className="footerLinks">
           <BodyCopy component="span" fontSize="fs12" fontFamily="secondary">
-            {getLabelValue(labels, 'apply_now_links_text')}
+            {getLabelValue(labels, 'lbl_PLCCModal_linksTextPrefix')}
           </BodyCopy>
           <Anchor
             className="linkIconSeperator"
-            url={getLabelValue(labels, 'details_link')}
+            url={getLabelValue(labels, 'lbl_PLCCModal_detailsLink')}
             target="_blank"
             fontSizeVariation="large"
             anchorVariation="primary"
             underline
           >
-            {getLabelValue(labels, 'apply_now_details')}
+            {getLabelValue(labels, 'lbl_PLCCForm_details')}
           </Anchor>
           <Anchor
             className="footerLink"
-            url={getLabelValue(labels, 'faq_link')}
+            url={getLabelValue(labels, 'lbl_PLCCModal_faqLink')}
             target="_blank"
             data-locator="plcc_faq"
             fontSizeVariation="large"
             anchorVariation="primary"
             underline
           >
-            {getLabelValue(labels, 'apply_now_faq')}
+            {getLabelValue(labels, 'lbl_PLCCModal_faqText')}
           </Anchor>
           <Anchor
             className="footerLink"
-            url={getLabelValue(labels, 'rewards_program_link')}
+            url={getLabelValue(labels, 'lbl_PLCCModal_rewardsProgramLink')}
             target="_blank"
             data-locator="plcc_rewards_terms"
             fontSizeVariation="large"
             anchorVariation="primary"
             underline
           >
-            {getLabelValue(labels, 'apply_now_rewardTerms')}
+            {getLabelValue(labels, 'lbl_PLCCModal_rewardsProgramText')}
           </Anchor>
         </div>
       </div>

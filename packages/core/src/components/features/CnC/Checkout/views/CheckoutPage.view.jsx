@@ -118,6 +118,7 @@ class CheckoutPage extends React.PureComponent {
           <ReviewPage
             {...reviewProps}
             submitReview={submitReview}
+            navigation={navigation}
             orderHasPickUp={orderHasPickUp}
             orderHasShipping={orderHasShipping}
           />
@@ -128,7 +129,14 @@ class CheckoutPage extends React.PureComponent {
 
   render() {
     const { isGuest } = this.props;
-    return <CnCTemplate leftSection={this.renderLeftSection} marginTop isGuest={isGuest} />;
+    return (
+      <CnCTemplate
+        leftSection={this.renderLeftSection}
+        marginTop
+        isGuest={isGuest}
+        isCheckoutView
+      />
+    );
   }
 }
 

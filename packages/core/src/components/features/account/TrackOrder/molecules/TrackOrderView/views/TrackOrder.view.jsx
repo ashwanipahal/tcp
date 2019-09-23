@@ -17,22 +17,22 @@ const getGenericErrorMessage = labels => (
     fontFamily="secondary"
   >
     <BodyCopy fontFamily="secondary">
-      {labels.trackOrder && labels.trackOrder.lbl_header_trackOrderOverlay_genericError1}
+      {labels.trackOrder && labels.trackOrder.lbl_trackOrder_genericError1}
     </BodyCopy>
     <Anchor
       data-locator="contact_us_form_help"
       underline
       anchorVariation="primary"
       fontFamily="secondary"
-      to={labels.trackOrder && labels.trackOrder.lbl_header_trackOrderOverlay_genericErrorLinkHref}
+      to={labels.trackOrder && labels.trackOrder.lbl_trackOrder_genericErrorLinkHref}
       className="trackorder__modal__contactus"
       aria-label=""
       target="_blank"
     >
-      {labels.trackOrder && labels.trackOrder.lbl_header_trackOrderOverlay_genericErrorLink}
+      {labels.trackOrder && labels.trackOrder.lbl_trackOrder_genericErrorLinkText}
     </Anchor>
     <BodyCopy fontFamily="secondary">
-      {labels.trackOrder && labels.trackOrder.lbl_header_trackOrderOverlay_genericError2}
+      {labels.trackOrder && labels.trackOrder.lbl_trackOrder_genericError2}
     </BodyCopy>
   </BodyCopy>
 );

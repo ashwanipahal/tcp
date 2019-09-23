@@ -11,10 +11,11 @@ import StyledApplyNowModal from './ApplyNowModal.view';
  */
 class ApplyNowModalWrapper extends React.Component {
   componentDidMount() {
-    const { labels, fetchModuleXContent } = this.props;
+    const { labels, fetchModuleXContent, resetPLCCApplicationStatus } = this.props;
     if (labels && labels.referred) {
       fetchModuleXContent(labels.referred);
     }
+    resetPLCCApplicationStatus({ status: null });
   }
 
   closeModal = () => {
@@ -58,7 +59,7 @@ class ApplyNowModalWrapper extends React.Component {
         <Anchor
           fontSizeVariation="medium"
           anchorVariation="primary"
-          text={getLabelValue(labels, 'apply_now_link_modal')}
+          text={getLabelValue(labels, 'lbl_PLCCModal_applyNowLink')}
           onClick={this.openModal}
           underline
         />

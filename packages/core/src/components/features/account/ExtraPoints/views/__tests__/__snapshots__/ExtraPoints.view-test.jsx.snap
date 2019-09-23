@@ -1,0 +1,95 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`EarnPointsVanilla component should renders correctly 1`] = `
+<div
+  className="className"
+>
+  <Styled(FormPageHeading)
+    heading="lbl_common_extraPointsHeading"
+  />
+  <Styled(Row)
+    className="elem-mt-LRG"
+    fullBleed={true}
+  >
+    <Styled(Col)
+      colSize={
+        Object {
+          "large": 6,
+          "medium": 4,
+          "small": 6,
+        }
+      }
+    >
+      <Styled(DetailedEarnExtraPointsSingleTile)
+        key="0"
+        labels={Object {}}
+        onViewActivityDetails={[Function]}
+        viewAll={true}
+        waysToEarnRow={
+          Object {
+            "activityCode": "AppDownload",
+            "activityTitle": "Earn 5 Points 1",
+            "description": "Download & Log in to our App",
+            "displayOrder": 1,
+            "iconImage": "/wcsstore/static/images/download-app.jpg",
+          }
+        }
+      />
+    </Styled(Col)>
+    <Styled(Col)
+      className="extraPointsTileCol"
+      colSize={
+        Object {
+          "large": 3,
+          "medium": 2,
+          "small": 3,
+        }
+      }
+    >
+      <Styled(DetailedEarnExtraPointsTile)
+        key="1"
+        labels={Object {}}
+        onViewActivityDetails={[Function]}
+        viewAll={true}
+        waysToEarnRow={
+          Object {
+            "activityCode": "AppDownload",
+            "activityTitle": "Earn 5 Points",
+            "description": "Download & Log in to our App",
+            "displayOrder": 1,
+            "iconImage": "/wcsstore/static/images/download-app.jpg",
+          }
+        }
+      />
+    </Styled(Col)>
+  </Styled(Row)>
+  <Styled(Row)
+    fullBleed={true}
+  />
+  <Styled(BodyCopy)
+    className="elem-mt-XL"
+    color="text.primary"
+    component="p"
+    fontFamily="secondary"
+    fontSize="fs14"
+    fontWeight="regular"
+    letterSpacing="normal"
+    lineHeight="normal"
+    textAlign="left"
+  >
+    <Styled(Anchor)
+      anchorVariation="primary"
+      dataLocator="shipping-email-signUp-contact-anchor"
+      fontSizeVariation="large"
+      href="https://www.childrensplace.com/us/content/mpr-terms"
+      noLink={true}
+      noUnderline={true}
+      target="_blank"
+      underline={true}
+    >
+      lbl_common_check_here
+    </Styled(Anchor)>
+    lbl_common_extra_ppoints_terms_conditions
+  </Styled(BodyCopy)>
+</div>
+`;

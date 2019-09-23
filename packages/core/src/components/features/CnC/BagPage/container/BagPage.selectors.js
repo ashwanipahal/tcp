@@ -1,4 +1,5 @@
-import { getLabelValue } from '@tcp/core/src/utils/utils';
+import { createSelector } from 'reselect';
+import { getLabelValue } from '../../../../../utils';
 import { AVAILABILITY } from '../../../../../services/abstractors/CnC/CartItemTile';
 import getErrorList from './Errors.selector';
 
@@ -38,12 +39,14 @@ const getBagPageLabels = state => {
     'checkout'
   );
   const myBagButton = getLabelValue(state.Labels, 'lbl_sfl_myBagButton', 'bagPage', 'checkout');
+  const emptySflMsg = getLabelValue(state.Labels, 'lbl_sfl_emptySflMsg', 'bagPage', 'checkout');
   const savedLaterButton = getLabelValue(
     state.Labels,
     'lbl_sfl_savedLaterButton',
     'bagPage',
     'checkout'
   );
+  const sflSuccess = getLabelValue(state.Labels, 'bl_sfl_actionSuccess', 'bagPage', 'checkout');
   return {
     addedToBag,
     checkout,
@@ -57,6 +60,8 @@ const getBagPageLabels = state => {
     savedForLaterText,
     myBagButton,
     savedLaterButton,
+    emptySflMsg,
+    sflSuccess,
   };
 };
 
@@ -148,8 +153,52 @@ const getCurrentCurrency = state => {
   return state.session.getIn(['siteDetails', 'currency']);
 };
 
+const getCartStores = state => {
+  return state.CartPageReducer.getIn(['orderDetails', 'stores']);
+};
+
+const getCartStoresToJs = createSelector(
+  getCartStores,
+  store => JSON.parse(JSON.stringify(store))
+);
+
 const getsflItemsList = state => {
   return state.CartPageReducer.get('sfl');
+};
+
+/** @function checkoutIfItemIsUnqualified to check if item is Unavailable
+ * @param {object} state
+ * @param {string|number} itemId
+ */
+const checkoutIfItemIsUnqualified = (state, itemId) => {
+  const items = getOrderItems(state);
+  const indexValue = items.findIndex(
+    item =>
+      item.getIn(['itemInfo', 'itemId']) === itemId.toString() &&
+      item.getIn(['miscInfo', 'availability']) !== AVAILABILITY.OK
+  );
+  return indexValue >= 0;
+};
+
+/** @function getCurrentDeleteSelectedItemInfo to get confirmation modal info
+ * @param {object} state
+ */
+const getCurrentDeleteSelectedItemInfo = state => {
+  return state.CartPageReducer.get('openItemDeleteConfirmationModalInfo');
+};
+
+/** @function itemDeleteModalLabels to get item delete confirmation modal info
+ * @param {object} state
+ */
+const itemDeleteModalLabels = state => {
+  const getBagLabelByLabelName = labelName =>
+    getLabelValue(state.Labels, labelName, 'bagPage', 'checkout');
+  return {
+    modalTitle: getBagLabelByLabelName('lbl_itemDelete_modalTitle'),
+    modalHeading: getBagLabelByLabelName('lbl_itemDelete_modalHeading'),
+    modalButtonSFL: getBagLabelByLabelName('lbl_itemDelete_modalButtonSFL'),
+    modalButtonConfirmDelete: getBagLabelByLabelName('lbl_itemDelete_modalButtonConfirmDelete'),
+  };
 };
 
 export default {
@@ -171,5 +220,10 @@ export default {
   getGiftServicesContentTcpId,
   getGiftServicesContentGymId,
   getCurrentCurrency,
+  getCartStores,
+  getCartStoresToJs,
   getsflItemsList,
+  checkoutIfItemIsUnqualified,
+  getCurrentDeleteSelectedItemInfo,
+  itemDeleteModalLabels,
 };

@@ -2,50 +2,92 @@
 import React from 'react';
 import { connect } from 'react-redux';
 import { withRouter } from 'next/router'; //eslint-disable-line
+import { getFormValues } from 'redux-form';
 import { PropTypes } from 'prop-types';
 import { isClient } from '../../../../../utils/index';
 import SearchDetail from '../views/SearchDetail.view';
-import { getSlpProducts } from './SearchDetail.actions';
+import { getSlpProducts, getMoreSlpProducts } from './SearchDetail.actions';
 import { getProductsAndTitleBlocks } from '../container/SearchDetail.util';
+import getSortLabels from '../../ProductListing/molecules/SortSelector/views/Sort.selectors';
 import {
   getUnbxdId,
-  getProductsFilters,
   getCategoryId,
   getLabelsProductListing,
   getNavigationTree,
   getLongDescription,
-  getIsLoadingMore,
   getLastLoadedPageNumber,
-  getAppliedFilters,
-  getAppliedSortId,
 } from '../../ProductListing/container/ProductListing.selectors';
 import {
   getLoadedProductsCount,
   getLoadedProductsPages,
+  getProductsFilters,
   getTotalProductsCount,
   getProductsSelect,
   getCurrentSearchForText,
   getLabels,
+  getAppliedFilters,
+  getAppliedSortId,
+  getIsLoadingMore,
 } from '../container/SearchDetail.selectors';
 
 import { isPlccUser } from '../../../account/User/container/User.selectors';
 import submitProductListingFiltersForm from '../../ProductListing/container/productListingOnSubmitHandler';
 import { getSearchResult } from '../../../../../../../web/src/components/features/content/Header/molecules/SearchBar/SearchBar.actions';
-
+import NoResponseSearchDetail from '../views/NoResponseSearchDetail.view';
 class SearchDetailContainer extends React.PureComponent {
   componentDidMount() {
     const {
       router: {
-        query: { sq },
+        query: { searchQuery },
         asPath,
       },
       getProducts,
+      formValues,
     } = this.props;
-    getProducts({ URI: 'search', asPath, sq, ignoreCache: true });
+    const splitAsPathBy = `/search/${searchQuery}?`;
+    const queryString = asPath.split(splitAsPathBy);
+    const filterSortString = (queryString.length && queryString[1]) || '';
+    getProducts({
+      URI: 'search',
+      asPath: filterSortString,
+      searchQuery,
+      ignoreCache: true,
+      formValues,
+    });
+  }
+
+  componentDidUpdate(prevProps) {
+    const {
+      router: {
+        query: { searchQuery },
+        asPath,
+      },
+      getProducts,
+      formValues,
+    } = prevProps;
+
+    const {
+      router: {
+        query: { searchQuery: currentSearchQuery },
+      },
+    } = this.props;
+    if (searchQuery !== currentSearchQuery) {
+      const splitAsPathBy = `/search/${searchQuery}?`;
+      const queryString = asPath.split(splitAsPathBy);
+      const filterSortString = (queryString.length && queryString[1]) || '';
+      getProducts({
+        URI: 'search',
+        asPath: filterSortString,
+        searchQuery,
+        ignoreCache: true,
+        formValues,
+      });
+    }
   }
 
   render() {
     const {
+      formValues,
       productsBlock,
       products,
       currentNavIds,
@@ -66,18 +108,54 @@ class SearchDetailContainer extends React.PureComponent {
       onPickUpOpenClick,
       searchedText,
       slpLabels,
+      searchResultSuggestions,
+      sortLabels,
       ...otherProps
     } = this.props;
+
     return (
-      <SearchDetail
-        products={products}
-        productsBlock={productsBlock}
-        totalProductsCount={totalProductsCount}
-        labels={labels}
-        slpLabels={slpLabels}
-        searchedText={searchedText}
-        {...otherProps}
-      />
+      <>
+        {products && products.length > 0 ? (
+          <SearchDetail
+            filters={filters}
+            formValues={formValues}
+            filtersLength={filtersLength}
+            getProducts={getProducts}
+            isLoadingMore={isLoadingMore}
+            initialValues={initialValues}
+            onSubmit={onSubmit}
+            products={products}
+            productsBlock={productsBlock}
+            totalProductsCount={totalProductsCount}
+            labels={labels}
+            labelsFilter={labelsFilter}
+            slpLabels={slpLabels}
+            searchedText={searchedText}
+            sortLabels={sortLabels}
+            searchResultSuggestions={searchResultSuggestions}
+            {...otherProps}
+          />
+        ) : (
+          <NoResponseSearchDetail
+            filters={filters}
+            formValues={formValues}
+            filtersLength={filtersLength}
+            getProducts={getProducts}
+            initialValues={initialValues}
+            onSubmit={onSubmit}
+            products={products}
+            productsBlock={productsBlock}
+            totalProductsCount={totalProductsCount}
+            labels={labels}
+            labelsFilter={labelsFilter}
+            slpLabels={slpLabels}
+            searchedText={searchedText}
+            sortLabels={sortLabels}
+            searchResultSuggestions={searchResultSuggestions}
+            {...otherProps}
+          />
+        )}
+      </>
     );
   }
 }
@@ -117,8 +195,13 @@ function mapStateToProps(state) {
     labels: getLabelsProductListing(state),
     isLoadingMore: getIsLoadingMore(state),
     lastLoadedPageNumber: getLastLoadedPageNumber(state),
+    formValues: getFormValues('filter-form')(state),
+    onSubmit: submitProductListingFiltersForm,
     currentNavIds: state.ProductListing && state.ProductListing.get('currentNavigationIds'),
     slpLabels: getLabels(state),
+    searchResultSuggestions:
+      state.SearchListingPage && state.SearchListingPage.get('searchResultSuggestions'),
+    sortLabels: getSortLabels(state),
   };
 }
 
@@ -127,16 +210,20 @@ function mapDispatchToProps(dispatch) {
     getProducts: payload => {
       dispatch(getSlpProducts(payload));
     },
+    getMoreProducts: payload => {
+      dispatch(getMoreSlpProducts(payload));
+    },
   };
 }
 
 SearchDetailContainer.propTypes = {
   router: PropTypes.shape({
     query: PropTypes.shape({
-      sq: PropTypes.string,
+      searchQuery: PropTypes.string,
     }),
   }).isRequired,
   getProducts: PropTypes.func.isRequired,
+  getMoreProducts: PropTypes.func.isRequired,
   navTree: PropTypes.shape({}),
   filters: PropTypes.shape({}),
   filtersLength: PropTypes.shape({}),
@@ -144,6 +231,8 @@ SearchDetailContainer.propTypes = {
   formValues: PropTypes.shape({
     sort: PropTypes.string.isRequired,
   }).isRequired,
+  onSubmit: PropTypes.func.isRequired,
+  isLoadingMore: PropTypes.bool,
 };
 
 SearchDetailContainer.defaultProps = {
@@ -151,6 +240,7 @@ SearchDetailContainer.defaultProps = {
   filters: {},
   filtersLength: {},
   initialValues: {},
+  isLoadingMore: false,
 };
 
 export default withRouter(

@@ -29,6 +29,7 @@ const propTypes = {
   shippingAddress: PropTypes.shape({}),
   isSameAsShippingChecked: PropTypes.bool,
   billingData: PropTypes.shape({}),
+  showAccordian: PropTypes.bool,
 };
 
 const defaultProps = {
@@ -46,6 +47,7 @@ const defaultProps = {
   shippingAddress: null,
   isSameAsShippingChecked: false,
   billingData: null,
+  showAccordian: true,
 };
 
 const getExpirationRequiredFlag = ({ cardType }) => {

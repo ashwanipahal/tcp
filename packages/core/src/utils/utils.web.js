@@ -31,6 +31,14 @@ export const importGraphQLQueriesDynamically = query => {
   return import(`../services/handler/graphQL/queries/${query}`);
 };
 
+export const getLocationOrigin = () => {
+  return window.location.origin;
+};
+
+export const canUseDOM = () => {
+  return typeof window !== 'undefined' && window.document && window.document.createElement;
+};
+
 export const isProduction = () => {
   return process.env.NODE_ENV === ENV_PRODUCTION;
 };
@@ -250,7 +258,10 @@ export const getCountriesMap = data => {
   const countries = defaultCountries;
   data.map(value =>
     countries.push(
-      Object.assign({}, value.country, { siteId: 'us', currencyId: value.currency.id })
+      Object.assign({}, value.country, {
+        siteId: 'us',
+        currencyId: value.currency.id,
+      })
     )
   );
   return countries;
@@ -275,6 +286,27 @@ export const getModifiedLanguageCode = id => {
     default:
       return id;
   }
+};
+
+/**
+ * @method getTranslateDateInformation
+ * @desc returns day, month and day of the respective date provided
+ * @param {string} date date which is to be mutated
+ * @param {upperCase} locale use for convert locate formate
+ */
+export const getTranslateDateInformation = (
+  date,
+  language,
+  dayOption = { weekday: 'short' },
+  monthOption = { month: 'short' }
+) => {
+  const localeType = language ? getModifiedLanguageCode(language).replace('_', '-') : 'en';
+  const currentDate = date ? new Date(date) : new Date();
+  return {
+    day: new Intl.DateTimeFormat(localeType, dayOption).format(currentDate),
+    month: new Intl.DateTimeFormat(localeType, monthOption).format(currentDate),
+    date: currentDate.getDate(),
+  };
 };
 
 export const siteRedirect = (newCountry, oldCountry, newSiteId, oldSiteId) => {
@@ -360,6 +392,8 @@ const getAPIInfoFromEnv = (apiSiteInfo, processEnv, siteId) => {
     googleApiKey: process.env.RWD_WEB_GOOGLE_MAPS_API_KEY,
     raygunApiKey: processEnv.RWD_WEB_RAYGUN_API_KEY,
     channelId: API_CONFIG.channelIds.Desktop, // TODO - Make it dynamic for all 3 platforms
+    borderFree: processEnv.BORDERS_FREE,
+    borderFreeComm: processEnv.BORDERS_FREE_COMM,
     paypalEnv: processEnv.RWD_WEB_PAYPAL_ENV,
   };
 };
@@ -479,4 +513,5 @@ export default {
   redirectToPdp,
   handleGenericKeyDown,
   viewport,
+  canUseDOM,
 };

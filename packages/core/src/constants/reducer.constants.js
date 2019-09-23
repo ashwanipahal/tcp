@@ -79,6 +79,10 @@ export const PRODUCTLISTINGPAGE_ACTION_PATTERN = '@@PLPDummy-';
 export const PRODUCT_DETAIL_REDUCER_KEY = 'ProductDetail';
 export const PRODUCT_DETAIL_ACTION_PATTERN = '@@PDP-';
 
+// Quick View Page Reducer
+export const QUICK_VIEW_REDUCER_KEY = 'QuickView';
+export const QUICK_VIEW_ACTION_PATTERN = '@@QV-';
+
 // Email signup reducer
 export const EMAIL_SIGNUP_REDUCER_KEY = 'EmailSignUp';
 export const SMS_SIGNUP_REDUCER_KEY = 'SmsSignUp';
@@ -156,6 +160,9 @@ export const GIFT_SERVICES_REDUCER_KEY = 'GiftServices';
 export const GIFT_SERVICES_ACTION_PATTERN = '@@GiftServices-';
 
 export const MY_FAVORITE_STORE_REDUCER_KEY = 'MyFavoriteStore';
+
+export const POINTS_CLAIM_REDUCER_KEY = 'PointsClaim';
+export const POINTS_CLAIM_ACTION_PATTERN = '@@PointsClaim-';
 
 export const REDUCER_ACTION_MAPPING = {
   [APPLY_PLCC_REDUCER_KEY]: APPLY_PLCC_ACTION_PATTERN,

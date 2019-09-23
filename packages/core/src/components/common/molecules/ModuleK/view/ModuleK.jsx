@@ -1,5 +1,6 @@
-// @flow
 import React from 'react';
+import PropTypes from 'prop-types';
+
 import { Col, Row, Button, BodyCopy, Anchor } from '../../../atoms';
 import { PromoBanner } from '../..';
 import { Carousel, LinkText, ImageGrid, style } from '../ModuleK.style';
@@ -8,16 +9,12 @@ import errorBoundary from '../../../hoc/withErrorBoundary';
 import config from '../config';
 import { getIconPath, getLocator } from '../../../../../utils';
 
-type Props = {
-  className: string,
-  headerText: Array<Object>,
-  promoTextBanner: Array<Object>,
-  masonryGrid: Object,
-};
-
-type State = {
-  current: number,
-  next: number,
+const carouselConfig = {
+  autoplay: true,
+  dataLocatorPlay: getLocator('moduleK_play_button'),
+  dataLocatorPause: getLocator('moduleK_pause_button'),
+  customArrowLeft: getIconPath('carousel-big-carrot'),
+  customArrowRight: getIconPath('carousel-big-carrot'),
 };
 
 /**
@@ -26,9 +23,14 @@ type State = {
  * This component is plug and play at any given slot in layout by passing required data
  * @param {composites} composites the list of data for header texts, links and images for component
  */
-class ModuleK extends React.PureComponent<Props, State> {
+class ModuleK extends React.PureComponent {
   render() {
-    const { headerText, masonryGrid, className } = this.props;
+    const {
+      headerText,
+      masonryGrid,
+      className,
+      accessibility: { playIconButton, pauseIconButton } = {},
+    } = this.props;
 
     const { CAROUSEL_OPTIONS, IMG_DATA } = config;
 
@@ -38,7 +40,10 @@ class ModuleK extends React.PureComponent<Props, State> {
     CAROUSEL_OPTIONS.nextArrow = (
       <button type="button" data-locator="moduleK_right_arrow" className="slick-prev" />
     );
-    CAROUSEL_OPTIONS.hidePlayPause = masonryGrid.length === 1;
+
+    carouselConfig.autoplay = carouselConfig.autoplay && masonryGrid.length > 1;
+    carouselConfig.pauseIconButtonLabel = pauseIconButton;
+    carouselConfig.playIconButtonLabel = playIconButton;
 
     return (
       <BodyCopy component="div" className={`${className} moduleK`}>
@@ -77,57 +82,54 @@ class ModuleK extends React.PureComponent<Props, State> {
             <Carousel
               options={CAROUSEL_OPTIONS}
               inheritedStyles={Carousel}
-              carouselConfig={{
-                autoplay: true,
-                dataLocatorPlay: getLocator('moduleK_play_button'),
-                dataLocatorPause: getLocator('moduleK_pause_button'),
-                customArrowLeft: getIconPath('carousel-big-carrot'),
-                customArrowRight: getIconPath('carousel-big-carrot'),
-              }}
+              carouselConfig={carouselConfig}
             >
-              {masonryGrid.map(({ promoBanner, mediaLinkedList, singleCTAButton }, index) => {
-                const checkPromo = promoBanner && promoBanner.length;
-                return (
-                  <React.Fragment>
-                    {checkPromo && (
-                      <PromoBanner
-                        promoBanner={promoBanner}
-                        className="moduleK__promoBanner"
-                        data-locator={`${getLocator('moduleK_promobanner_text')}${index + 1}`}
-                        fontSize="fs48"
-                      />
-                    )}
-                    <ImageGrid
-                      mediaLinkedList={mediaLinkedList}
-                      className="image-grid"
-                      colM={2}
-                      dataLocator={`${getLocator('moduleK_image')}${index + 1}`}
-                      dataLocatorContainer={`${getLocator('moduleK_image_set')}${index + 1}`}
-                      promo={checkPromo}
-                      imgConfigs={IMG_DATA.imgConfig}
-                    />
-                    <Col
-                      colSize={{
-                        small: 4,
-                        medium: 2,
-                        large: 3,
-                      }}
-                    >
-                      {singleCTAButton && (
-                        <Anchor {...singleCTAButton}>
-                          <Button
-                            buttonVariation="fixed-width"
-                            dataLocator={`${getLocator('moduleK_button_set')}${index + 1}`}
-                            className="carousal-cta"
-                          >
-                            {singleCTAButton.text}
-                          </Button>
-                        </Anchor>
+              {masonryGrid &&
+                masonryGrid.map(({ promoBanner, mediaLinkedList, singleCTAButton }, index) => {
+                  const checkPromo = promoBanner && promoBanner.length;
+                  return (
+                    <React.Fragment>
+                      {checkPromo && (
+                        <PromoBanner
+                          promoBanner={promoBanner}
+                          className="moduleK__promoBanner"
+                          data-locator={`${getLocator('moduleK_promobanner_text')}${index + 1}`}
+                          fontSize="fs48"
+                        />
                       )}
-                    </Col>
-                  </React.Fragment>
-                );
-              })}
+                      {mediaLinkedList && (
+                        <ImageGrid
+                          mediaLinkedList={mediaLinkedList}
+                          className="image-grid"
+                          colM={2}
+                          dataLocator={`${getLocator('moduleK_image')}${index + 1}`}
+                          dataLocatorContainer={`${getLocator('moduleK_image_set')}${index + 1}`}
+                          promo={checkPromo}
+                          imgConfigs={IMG_DATA.imgConfig}
+                        />
+                      )}
+                      <Col
+                        colSize={{
+                          small: 4,
+                          medium: 2,
+                          large: 3,
+                        }}
+                      >
+                        {singleCTAButton && (
+                          <Anchor {...singleCTAButton}>
+                            <Button
+                              buttonVariation="fixed-width"
+                              dataLocator={`${getLocator('moduleK_button_set')}${index + 1}`}
+                              className="carousal-cta"
+                            >
+                              {singleCTAButton.text}
+                            </Button>
+                          </Anchor>
+                        )}
+                      </Col>
+                    </React.Fragment>
+                  );
+                })}
             </Carousel>
           </Col>
         </Row>
@@ -135,6 +137,36 @@ class ModuleK extends React.PureComponent<Props, State> {
     );
   }
 }
+
+ModuleK.defaultProps = {
+  accessibility: {},
+};
+
+ModuleK.propTypes = {
+  accessibility: PropTypes.shape({
+    playIconButton: PropTypes.string,
+    pauseIconButton: PropTypes.string,
+  }),
+  className: PropTypes.string.isRequired,
+  headerText: PropTypes.arrayOf(
+    PropTypes.shape({
+      link: PropTypes.object,
+      textItems: PropTypes.array,
+    })
+  ).isRequired,
+  masonryGrid: PropTypes.arrayOf(
+    PropTypes.shape({
+      mediaLinkedList: PropTypes.arrayOf(PropTypes.shape({})),
+      promoBanner: PropTypes.arrayOf(
+        PropTypes.shape({
+          link: PropTypes.object,
+          textItems: PropTypes.array,
+        })
+      ),
+      singleCTAButton: PropTypes.shape({}),
+    })
+  ).isRequired,
+};
 
 export default withStyles(errorBoundary(ModuleK), style);
 export { ModuleK as ModuleKVanilla };

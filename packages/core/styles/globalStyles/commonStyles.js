@@ -14,6 +14,24 @@ export default css`
     position: relative;
   }
 
+  @media print {
+    .ReactModal__Body--open {
+      position: fixed !important;
+      visibility: hidden !important;
+    }
+    .TCPModal__InnerContent {
+      top: 75% !important;
+      visibility: visible !important;
+    }
+    a {
+      text-decoration: none !important;
+    }
+    .couponModal_btnWrapper,
+    .couponModal_print {
+      display: none !important;
+    }
+  }
+
   .content-wrapper {
     max-width: ${breakpoints.xlarge};
     margin: 0 auto;

@@ -23,7 +23,8 @@ import { setCheckoutModalMountedState } from '../../../account/LoginPage/contain
 
 describe('Cart Item saga', () => {
   it('should dispatch getOrderDetailSaga action for success resposnse', () => {
-    const getOrderDetailSagaGen = getOrderDetailSaga();
+    const afterFunc = () => {};
+    const getOrderDetailSagaGen = getOrderDetailSaga({ payload: { after: afterFunc } });
     getOrderDetailSagaGen.next();
 
     const res = {
@@ -38,6 +39,7 @@ describe('Cart Item saga', () => {
     expect(getOrderDetailSagaGen.next(res).value).toEqual(
       put(BAG_PAGE_ACTIONS.getOrderDetailsComplete(res.orderDetails))
     );
+    expect(getOrderDetailSagaGen.next().value).toEqual(call(afterFunc));
   });
 
   it('should dispatch getCartDataSaga action for success resposnse', () => {
@@ -155,9 +157,9 @@ describe('Bag SFL Saga', () => {
     const res = {
       errorResponse: null,
     };
-    const generator = addItemToSFL({});
-
+    const generator = addItemToSFL({ payload: { afterHandler: () => {} } });
     let takeLatestDescriptor = generator.next().value;
+    takeLatestDescriptor = generator.next().value;
     takeLatestDescriptor = generator.next().value;
     takeLatestDescriptor = generator.next().value;
     takeLatestDescriptor = generator.next(res).value;

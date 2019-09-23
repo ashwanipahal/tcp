@@ -1,5 +1,40 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
+exports[`BirthdaySavingsList component should render BirthdayCard component if addChildBirthday is added 1`] = `
+<View>
+  <Styled(View)>
+    <Styled(View)>
+      <BirthdayCard
+        childId="3434"
+        removeBirthday={[Function]}
+        view="read"
+      />
+    </Styled(View)>
+    <Styled(View)>
+      <EmptyBirthdayCard
+        labels={Object {}}
+        showAddModal={[Function]}
+        view="read"
+      />
+    </Styled(View)>
+    <Styled(View)>
+      <EmptyBirthdayCard
+        labels={Object {}}
+        showAddModal={[Function]}
+        view="read"
+      />
+    </Styled(View)>
+    <Styled(View)>
+      <EmptyBirthdayCard
+        labels={Object {}}
+        showAddModal={[Function]}
+        view="read"
+      />
+    </Styled(View)>
+  </Styled(View)>
+</View>
+`;
+
 exports[`BirthdaySavingsList component should renders correctly when childrenBirthdays are not present 1`] = `
 <View>
   <InfoMessage
@@ -22,6 +57,7 @@ exports[`BirthdaySavingsList component should renders correctly when childrenBir
             "lbl_profile_personal_info_back": "back",
           }
         }
+        showAddModal={[Function]}
         view="edit"
       />
     </Styled(View)>
@@ -34,6 +70,7 @@ exports[`BirthdaySavingsList component should renders correctly when childrenBir
             "lbl_profile_personal_info_back": "back",
           }
         }
+        showAddModal={[Function]}
         view="edit"
       />
     </Styled(View)>
@@ -46,6 +83,7 @@ exports[`BirthdaySavingsList component should renders correctly when childrenBir
             "lbl_profile_personal_info_back": "back",
           }
         }
+        showAddModal={[Function]}
         view="edit"
       />
     </Styled(View)>
@@ -58,6 +96,7 @@ exports[`BirthdaySavingsList component should renders correctly when childrenBir
             "lbl_profile_personal_info_back": "back",
           }
         }
+        showAddModal={[Function]}
         view="edit"
       />
     </Styled(View)>
@@ -94,6 +133,7 @@ exports[`BirthdaySavingsList component should renders correctly when childrenBir
     <Styled(View)>
       <BirthdayCard
         childId="12345"
+        removeBirthday={[Function]}
         view="edit"
       />
     </Styled(View)>
@@ -106,6 +146,7 @@ exports[`BirthdaySavingsList component should renders correctly when childrenBir
             "lbl_profile_personal_info_back": "back",
           }
         }
+        showAddModal={[Function]}
         view="edit"
       />
     </Styled(View)>
@@ -118,6 +159,7 @@ exports[`BirthdaySavingsList component should renders correctly when childrenBir
             "lbl_profile_personal_info_back": "back",
           }
         }
+        showAddModal={[Function]}
         view="edit"
       />
     </Styled(View)>
@@ -130,9 +172,24 @@ exports[`BirthdaySavingsList component should renders correctly when childrenBir
             "lbl_profile_personal_info_back": "back",
           }
         }
+        showAddModal={[Function]}
         view="edit"
       />
     </Styled(View)>
   </Styled(View)>
 </View>
+`;
+
+exports[`InfoMessage component should render correctly 1`] = `
+<Styled(Styled(BodyCopy))
+  accessibilityText=""
+  dataLocator=""
+  fontSize="fs14"
+  margin={null}
+  mobileFontFamily="secondary"
+  numberOfLines={null}
+  spacingStyles=""
+  text="Add up to 4 kids’ birthdays to your account and receive special savings during their birthday month!"
+  textDecoration={null}
+/>
 `;

@@ -22,7 +22,7 @@ export default class LabeledRadioButton extends React.Component {
     /** The value of the radioButton (i.e., the value of the associated form field when this radio button is checked) */
     selectedValue: PropTypes.string.isRequired,
     input: PropTypes.shape({
-      name: PropTypes.string,
+      value: PropTypes.string,
     }),
     children: PropTypes.shape({}),
     disabled: PropTypes.bool,
@@ -35,7 +35,9 @@ export default class LabeledRadioButton extends React.Component {
     subtitle: [''],
     className: '',
     input: {
-      name: '',
+      value: {
+        name: '',
+      },
     },
     children: {},
     disabled: false,
@@ -83,9 +85,9 @@ export default class LabeledRadioButton extends React.Component {
       title,
       subtitle,
       className,
-      input, // When using redux-form, is passed implicitly by a wrapping Field component
       meta /* When using redux-form, is passed implicitly by a wrapping Field component */, // eslint-disable-line
       children,
+      input,
       disabled,
       selectedValue,
       checked,

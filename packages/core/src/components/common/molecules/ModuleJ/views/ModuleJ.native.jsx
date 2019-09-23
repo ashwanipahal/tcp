@@ -5,7 +5,7 @@ import PropTypes from 'prop-types';
 import { LAZYLOAD_HOST_NAME } from '@tcp/core/src/utils';
 
 import { Button, Anchor, DamImage } from '../../../atoms';
-import { getLocator } from '../../../../../utils';
+import { getLocator, validateColor } from '../../../../../utils/index.native';
 import { Carousel } from '../..';
 import config from '../config';
 
@@ -37,7 +37,7 @@ const PRODUCT_IMAGE_PER_SLIDE = 4;
 const MODULE_HEIGHT = 142;
 const MODULE_WIDTH = (PRODUCT_IMAGE_WIDTH + PRODUCT_IMAGE_GUTTER) * PRODUCT_IMAGE_PER_SLIDE;
 const { IMG_DATA, TOTAL_IMAGES } = config;
-class ModuleJ extends React.PureComponent<Props, State> {
+class ModuleJ extends React.PureComponent {
   constructor(props) {
     super(props);
 
@@ -66,18 +66,30 @@ class ModuleJ extends React.PureComponent<Props, State> {
         {item.map(productItem => {
           const {
             imageUrl: [imageUrl],
-            pdpAsPath,
+            uniqueId,
+            product_name: productName,
             productItemIndex,
           } = productItem;
 
           return (
-            <ImageItemWrapper isFullMargin={productItemIndex === selectedProductList.length - 1}>
+            <ImageItemWrapper
+              key={uniqueId}
+              isFullMargin={productItemIndex === selectedProductList.length - 1}
+            >
               <Anchor
-                url={pdpAsPath}
+                onPress={() =>
+                  navigation.navigate('ProductDetail', {
+                    title: productName,
+                    pdpUrl: uniqueId,
+                    selectedColorProductId: uniqueId,
+                    reset: true,
+                  })
+                }
                 navigation={navigation}
                 testID={`${getLocator('moduleJ_product_image')}${productItemIndex}`}
               >
                 <StyledImage
+                  alt={productName}
                   host={LAZYLOAD_HOST_NAME.HOME}
                   url={imageUrl}
                   height={PRODUCT_IMAGE_HEIGHT}
@@ -127,25 +139,29 @@ class ModuleJ extends React.PureComponent<Props, State> {
 
     return (
       <Container>
-        <MessageContainer layout={layout} bgColor={bgColor}>
+        <MessageContainer layout={layout} bgColor={validateColor(bgColor)}>
           <Wrapper>
             <Border layout={layout} />
             <HeaderContainer layout={layout}>
-              <LinkText
-                navigation={navigation}
-                headerText={[headerText[0]]}
-                testID={getLocator('moduleJ_header_text_0')}
-                useStyle
-              />
+              {[headerText[0]] && (
+                <LinkText
+                  navigation={navigation}
+                  headerText={[headerText[0]]}
+                  testID={getLocator('moduleJ_header_text_0')}
+                  useStyle
+                />
+              )}
             </HeaderContainer>
             <SecondHeaderContainer>
-              <LinkText
-                navigation={navigation}
-                headerText={[headerText[1]]}
-                testID={getLocator('moduleJ_header_text_1')}
-                renderComponentInNewLine
-                useStyle
-              />
+              {[headerText[1]] && (
+                <LinkText
+                  navigation={navigation}
+                  headerText={[headerText[1]]}
+                  testID={getLocator('moduleJ_header_text_1')}
+                  renderComponentInNewLine
+                  useStyle
+                />
+              )}
             </SecondHeaderContainer>
           </Wrapper>
 
@@ -213,14 +229,24 @@ class ModuleJ extends React.PureComponent<Props, State> {
 }
 
 ModuleJ.defaultProps = {
-  productTabList: {},
-  navigation: null,
-  mediaLinkedList: [],
-  layout: 'default',
-  divTabs: [],
+  bgColor: '',
+  promoBanner: [],
 };
 
 ModuleJ.propTypes = {
+  bgColor: PropTypes.string,
+  headerText: PropTypes.arrayOf(
+    PropTypes.shape({
+      link: PropTypes.object,
+      textItems: PropTypes.array,
+    })
+  ).isRequired,
+  promoBanner: PropTypes.arrayOf(
+    PropTypes.shape({
+      link: PropTypes.object,
+      textItems: PropTypes.array,
+    })
+  ),
   productTabList: PropTypes.oneOfType(
     PropTypes.objectOf(
       PropTypes.arrayOf(
@@ -231,22 +257,22 @@ ModuleJ.propTypes = {
         })
       )
     )
-  ),
-  navigation: PropTypes.shape({}),
-  layout: PropTypes.string,
+  ).isRequired,
+  navigation: PropTypes.shape({}).isRequired,
+  layout: PropTypes.string.isRequired,
   mediaLinkedList: PropTypes.arrayOf(
     PropTypes.shape({
       image: PropTypes.object,
       link: PropTypes.object,
     })
-  ),
+  ).isRequired,
   divTabs: PropTypes.arrayOf(
     PropTypes.shape({
       text: PropTypes.object,
       category: PropTypes.object,
       singleCTAButton: PropTypes.object,
     })
-  ),
+  ).isRequired,
 };
 
 export default ModuleJ;

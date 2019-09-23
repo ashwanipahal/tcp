@@ -24,7 +24,7 @@ class ModuleJ extends React.PureComponent {
     this.setState({ currentCatId: catId, currentTabItem: tabItem });
   };
 
-  getCurrentCtaButton() {
+  getCurrentCtaButton = () => {
     const { currentTabItem: { singleCTAButton: currentSingleCTAButton } = {} } = this.state;
 
     return currentSingleCTAButton ? (
@@ -51,23 +51,42 @@ class ModuleJ extends React.PureComponent {
         </Col>
       </Row>
     ) : null;
-  }
+  };
+
+  getHeaderText = () => {
+    const { headerText } = this.props;
+    return (
+      headerText && (
+        <div className="promo-header-wrapper">
+          <LinkText
+            component="div"
+            headerText={headerText}
+            className="promo-header"
+            dataLocator={getLocator('moduleJ_header_text')}
+          />
+        </div>
+      )
+    );
+  };
+
+  getPromoBanner = () => {
+    const { promoBanner } = this.props;
+    return (
+      promoBanner && (
+        <PromoBanner
+          promoBanner={promoBanner}
+          className="promoBanner"
+          dataLocator={getLocator('moduleJ_promobanner_text')}
+        />
+      )
+    );
+  };
 
   render() {
-    const {
-      className,
-      productTabList,
-      mediaLinkedList,
-      headerText,
-      layout,
-      promoBanner,
-      divTabs,
-    } = this.props;
-
+    const { className, productTabList, mediaLinkedList, layout, divTabs } = this.props;
     const { currentCatId } = this.state;
     const { image: promoImage1, link: promoLink1 } = mediaLinkedList[0];
     const { image: promoImage2, link: promoLink2 } = mediaLinkedList[1];
-
     const { CAROUSEL_OPTIONS, PROMO_IMG_DATA, TOTAL_IMAGES } = config;
     let data = productTabList[currentCatId] || [];
     data = data.slice(0, TOTAL_IMAGES);
@@ -122,30 +141,8 @@ class ModuleJ extends React.PureComponent {
                 small: true,
               }}
             >
-              <div className="promo-header-wrapper">
-                <LinkText
-                  component="div"
-                  headerText={[headerText[0]]}
-                  className="promo-header"
-                  dataLocator={getLocator('moduleJ_header_text_0')}
-                />
-              </div>
-
-              <div className="promo-header-wrapper">
-                <LinkText
-                  component="div"
-                  headerText={[headerText[1]]}
-                  className="promo-header"
-                  dataLocator={getLocator('moduleJ_header_text_1')}
-                />
-              </div>
-              {promoBanner && (
-                <PromoBanner
-                  promoBanner={promoBanner}
-                  className="promoBanner"
-                  dataLocator={getLocator('moduleJ_promobanner_text')}
-                />
-              )}
+              {this.getHeaderText()}
+              {this.getPromoBanner()}
               <ProductTabList
                 onProductTabChange={this.onTabChange}
                 tabItems={divTabs}
@@ -169,10 +166,7 @@ class ModuleJ extends React.PureComponent {
                 <DamImage
                   className="promo-img"
                   imgConfigs={PROMO_IMG_DATA.imgConfig}
-                  imgData={{
-                    alt: promoImage2.alt,
-                    url: promoImage2.url,
-                  }}
+                  imgData={promoImage2}
                   data-locator={`${getLocator('moduleJ_promobanner_img')}${2}`}
                 />
               </Anchor>
@@ -193,19 +187,8 @@ class ModuleJ extends React.PureComponent {
                 large: true,
               }}
             >
-              <LinkText
-                component="div"
-                headerText={headerText}
-                className="promo-header"
-                dataLocator={getLocator('moduleJ_header_text')}
-              />
-              {promoBanner && (
-                <PromoBanner
-                  promoBanner={promoBanner}
-                  className="promoBanner"
-                  dataLocator={getLocator('moduleJ_promobanner_text')}
-                />
-              )}
+              {this.getHeaderText()}
+              {this.getPromoBanner()}
             </Col>
             <Col
               colSize={{
@@ -214,7 +197,11 @@ class ModuleJ extends React.PureComponent {
                 large: 12,
               }}
             >
-              <ProductTabList onProductTabChange={this.onTabChange} tabItems={divTabs} />
+              <ProductTabList
+                onProductTabChange={this.onTabChange}
+                tabItems={divTabs}
+                dataLocator={getLocator('moduleJ_cta_link')}
+              />
             </Col>
           </Row>
         )}
@@ -247,7 +234,7 @@ class ModuleJ extends React.PureComponent {
                   customArrowRight: getIconPath('carousel-big-carrot'),
                 }}
               >
-                {data.map(({ imageUrl, pdpUrl, pdpAsPath }, index) => {
+                {data.map(({ imageUrl, pdpUrl, pdpAsPath, product_name: productName }, index) => {
                   return (
                     <div key={index.toString()}>
                       <Anchor
@@ -256,7 +243,7 @@ class ModuleJ extends React.PureComponent {
                         asPath={pdpAsPath}
                         dataLocator={`${getLocator('moduleJ_product_image')}${index}`}
                       >
-                        <Image src={imageUrl[0]} />
+                        <Image alt={productName} src={imageUrl[0]} />
                       </Anchor>
                     </div>
                   );
@@ -273,17 +260,24 @@ class ModuleJ extends React.PureComponent {
 }
 
 ModuleJ.defaultProps = {
-  className: '',
-  headerText: [],
-  productTabList: {},
-  mediaLinkedList: [],
   promoBanner: [],
   layout: 'default',
-  divTabs: [],
 };
 
 ModuleJ.propTypes = {
-  className: PropTypes.string,
+  className: PropTypes.string.isRequired,
+  headerText: PropTypes.arrayOf(
+    PropTypes.shape({
+      link: PropTypes.object,
+      textItems: PropTypes.array,
+    })
+  ).isRequired,
+  promoBanner: PropTypes.arrayOf(
+    PropTypes.shape({
+      link: PropTypes.object,
+      textItems: PropTypes.array,
+    })
+  ),
   productTabList: PropTypes.oneOfType(
     PropTypes.objectOf(
       PropTypes.arrayOf(
@@ -294,23 +288,21 @@ ModuleJ.propTypes = {
         })
       )
     )
-  ),
-  headerText: PropTypes.arrayOf(PropTypes.shape({})),
+  ).isRequired,
   mediaLinkedList: PropTypes.arrayOf(
     PropTypes.shape({
       image: PropTypes.object,
       link: PropTypes.object,
     })
-  ),
-  promoBanner: PropTypes.arrayOf(PropTypes.shape({})),
-  layout: PropTypes.string,
+  ).isRequired,
+  layout: PropTypes.string.isRequired,
   divTabs: PropTypes.arrayOf(
     PropTypes.shape({
       text: PropTypes.object,
       category: PropTypes.object,
       singleCTAButton: PropTypes.object,
     })
-  ),
+  ).isRequired,
 };
 
 const styledModuleJ = withStyles(errorBoundary(ModuleJ), moduleJStyle);
