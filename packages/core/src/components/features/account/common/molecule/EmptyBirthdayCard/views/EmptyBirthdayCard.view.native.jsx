@@ -9,10 +9,10 @@ import { EmptyContainer, Row } from '../styles/EmptyBirthdayCard.style.native';
  * @param { string } props.view
  * @param { object } props.labels
  */
-export const EmptyBirthdayCard = ({ labels, view }) => {
+export const EmptyBirthdayCard = ({ labels, view, showAddModal }) => {
   if (view === 'edit') {
     return (
-      <EmptyContainer>
+      <EmptyContainer onPress={showAddModal}>
         <Row>
           <BodyCopy
             fontSize="fs14"
@@ -39,6 +39,7 @@ export const EmptyBirthdayCard = ({ labels, view }) => {
 EmptyBirthdayCard.propTypes = {
   labels: PropTypes.shape({}).isRequired,
   view: PropTypes.oneOf(['read', 'edit']),
+  showAddModal: PropTypes.func.isRequired,
 };
 
 EmptyBirthdayCard.defaultProps = {

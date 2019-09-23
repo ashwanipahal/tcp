@@ -141,6 +141,19 @@ class ProductTileWrapper extends React.PureComponent<props> {
     );
   };
 
+  renderEmptyBag = (productSectionData, bagLabels, isUserLoggedIn, isBagPageSflSection) => {
+    if (productSectionData.size === 0) {
+      return (
+        <EmptyBag
+          bagLabels={bagLabels}
+          isUserLoggedIn={isUserLoggedIn}
+          isBagPageSflSection={isBagPageSflSection}
+        />
+      );
+    }
+    return <></>;
+  };
+
   render() {
     const {
       orderItems,
@@ -219,11 +232,7 @@ class ProductTileWrapper extends React.PureComponent<props> {
       );
     }
     return (
-      <EmptyBag
-        bagLabels={bagLabels}
-        isUserLoggedIn={isUserLoggedIn}
-        isBagPageSflSection={isBagPageSflSection}
-      />
+      <>{this.renderEmptyBag(productSectionData, bagLabels, isUserLoggedIn, isBagPageSflSection)}</>
     );
   }
 }

@@ -99,23 +99,24 @@ class ModuleA extends React.Component {
                 } = item;
                 const imageConfig = isGymboree() ? IMG_DATA_GYM.crops : IMG_DATA_TCP.crops;
                 return (
-                  <div className="banner-slide">
+                  <div key={i.toString()} className="banner-slide">
                     <DamImage
                       imgData={linkedImage.image}
-                      alt=""
                       imgConfigs={imageConfig}
                       data-locator={`${getLocator('moduleA_image')}${i}`}
                     />
                     <div className="banner-content">
-                      <LinkText
-                        type="heading"
-                        component="h2"
-                        fontSize={isLinkList ? ['fs32', 'fs32', 'fs64'] : 'fs16'}
-                        headerText={headerText}
-                        color={isGymboree() ? 'white' : ''}
-                        className="link-text-wrapper"
-                        dataLocator={`${getLocator('moduleA_header_text')}${i}`}
-                      />
+                      {headerText && (
+                        <LinkText
+                          type="heading"
+                          component="h2"
+                          fontSize={isLinkList ? ['fs32', 'fs32', 'fs64'] : 'fs16'}
+                          headerText={headerText}
+                          color={isGymboree() ? 'white' : ''}
+                          className="link-text-wrapper"
+                          dataLocator={`${getLocator('moduleA_header_text')}${i}`}
+                        />
+                      )}
                       {promoBanner && (
                         <PromoBanner
                           promoBanner={promoBanner}
@@ -141,12 +142,14 @@ class ModuleA extends React.Component {
             </Carousel>
 
             <div className={`button-list-container ${buttonListCtaType}`}>
-              <ButtonList
-                buttonsData={ctaItems}
-                buttonListVariation={buttonListCtaType}
-                dataLocatorDivisionImages={getLocator('moduleA_cta_image')}
-                dataLocatorTextCta={getLocator('moduleA_cta_links')}
-              />
+              {ctaItems && (
+                <ButtonList
+                  buttonsData={ctaItems}
+                  buttonListVariation={buttonListCtaType}
+                  dataLocatorDivisionImages={getLocator('moduleA_cta_image')}
+                  dataLocatorTextCta={getLocator('moduleA_cta_links')}
+                />
+              )}
             </div>
           </div>
         </Col>
@@ -156,22 +159,31 @@ class ModuleA extends React.Component {
 }
 
 ModuleA.defaultProps = {
-  largeCompImageCarousel: [],
-  ctaItems: [],
-  ctaType: 'stackedCTAList',
-  className: '',
   accessibility: {},
 };
 
 ModuleA.propTypes = {
-  largeCompImageCarousel: PropTypes.shape([]),
-  ctaItems: PropTypes.shape([]),
-  ctaType: PropTypes.oneOf(['stackedCTAList', 'linkCTAList', 'scrollCTAList', 'imageCTAList']),
-  className: PropTypes.string,
   accessibility: PropTypes.shape({
     playIconButton: PropTypes.string,
     pauseIconButton: PropTypes.string,
   }),
+  className: PropTypes.string.isRequired,
+  largeCompImageCarousel: PropTypes.arrayOf(
+    PropTypes.shape({
+      headerText: PropTypes.arrayOf(
+        PropTypes.shape({
+          link: PropTypes.object,
+          textItems: PropTypes.array,
+        })
+      ),
+      linkedImage: PropTypes.arrayOf(PropTypes.shape({})),
+      promoBanner: PropTypes.arrayOf(PropTypes.shape({})),
+      ribbonBanner: PropTypes.arrayOf(PropTypes.shape({})),
+    })
+  ).isRequired,
+  ctaItems: PropTypes.arrayOf(PropTypes.shape({})).isRequired,
+  ctaType: PropTypes.oneOf(['stackedCTAButtons', 'linkCTAList', 'scrollCTAList', 'imageCTAList'])
+    .isRequired,
 };
 
 export default withStyles(errorBoundary(ModuleA), style);

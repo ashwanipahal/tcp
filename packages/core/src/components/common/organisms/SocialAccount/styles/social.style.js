@@ -13,13 +13,13 @@ const socialStyle = css`
     background: url('/static/images/facebook@2x.png') no-repeat;
   }
   .Instagram-icon--enable {
-    width: 50px;
-    height: 50px;
+    width: 62px;
+    height: 55px;
     background: url('/static/images/instagram@2x.png') no-repeat;
   }
   .Instagram-icon--disable {
-    width: 50px;
-    height: 50px;
+    width: 62px;
+    height: 55px;
     background: url('/static/images/instagram-fade@2x.png') no-repeat;
   }
   .Facebook-icon--disable {
