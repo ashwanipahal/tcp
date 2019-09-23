@@ -12,20 +12,20 @@ const ExpiryContainer = styled.View`
   flex: 1;
   flex-direction: row;
   margin-top: ${props => props.theme.spacing.ELEM_SPACING.LRG};
-  justify-content:space-between;
+  justify-content: ${props => (props.showCvv ? 'space-between' : 'flex-start')};
 `;
 
 const ExpiryMonth = styled.View`
-  width:30%;
+  width: 30%;
 `;
 
 const ExpiryYear = styled.View`
-  width:30%;
+  width: 30%;
 `;
 
 const CvvCode = styled.View`
-width:30%;
-padding-top: 12px;
+  width: 30%;
+  padding-top: 12px;
 `;
 
 const HiddenExpiryWrapper = styled.View`
@@ -43,9 +43,8 @@ const CvvTextboxStyle = {
 const CVVInfo = styled.View`
   width: 15px;
   position: absolute;
-  right:0;
+  right: 0;
   top: 20%;
-
 `;
 
 export {
@@ -58,5 +57,5 @@ export {
   CvvCode,
   CvvTextboxStyle,
   HiddenExpiryWrapper,
-  CVVInfo
+  CVVInfo,
 };

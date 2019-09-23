@@ -14,7 +14,7 @@ import {
   CvvCode,
   CvvTextboxStyle,
   HiddenExpiryWrapper,
-  CVVInfo
+  CVVInfo,
 } from '../styles/CreditCardFields.styles.native';
 
 export class CreditCardFields extends React.PureComponent<Props> {
@@ -47,7 +47,8 @@ export class CreditCardFields extends React.PureComponent<Props> {
       isEdit,
       creditCard,
       creditFieldLabels,
-      cvvInfo
+      cvvInfo,
+      showCvv,
     } = this.props;
     const { selectedMonth, selectedYear } = this.state;
     const dropDownStyle = {
@@ -133,19 +134,21 @@ export class CreditCardFields extends React.PureComponent<Props> {
               />
             </HiddenExpiryWrapper>
           </ExpiryYear>
-          <CvvCode>
-            <Field
-              label={creditFieldLabels.cvvCode}
-              name="cvvCode"
-              id="cvvCode"
-              type="text"
-              component={TextBox}
-              dataLocator="payment-cvv"
-              customStyle={CvvTextboxStyle}
-            />
-            <Field name="cardType" id="cardType" component={TextBox} type="hidden" />
-            <CVVInfo>{cvvInfo}</CVVInfo>
-          </CvvCode>
+          {showCvv && (
+            <CvvCode>
+              <Field
+                label={creditFieldLabels.cvvCode}
+                name="cvvCode"
+                id="cvvCode"
+                type="text"
+                component={TextBox}
+                dataLocator="payment-cvv"
+                customStyle={CvvTextboxStyle}
+              />
+              <Field name="cardType" id="cardType" component={TextBox} type="hidden" />
+              <CVVInfo>{cvvInfo}</CVVInfo>
+            </CvvCode>
+          )}
         </ExpiryContainer>
       </PaymentContainer>
     );
@@ -159,6 +162,7 @@ CreditCardFields.propTypes = {
   cardType: PropTypes.string,
   dto: PropTypes.shape({}),
   selectedCard: PropTypes.shape({}),
+  showCvv: PropTypes.bool,
 };
 
 CreditCardFields.defaultProps = {
@@ -173,6 +177,7 @@ CreditCardFields.defaultProps = {
   isPLCCEnabled: true,
   dto: {},
   selectedCard: null,
+  showCvv: true,
 };
 
 export default CreditCardFields;

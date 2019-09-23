@@ -91,7 +91,7 @@ export class CreditCardForm extends React.PureComponent<Props, State> {
           id: address.addressId,
           label: `${address.firstName} ${address.lastName} ${
             address.primary === 'true' ? '(Default)' : ''
-            }`,
+          }`,
           content: address,
           primary: address.primary === 'true',
         }))) ||
@@ -227,6 +227,7 @@ export class CreditCardForm extends React.PureComponent<Props, State> {
               dto={dto}
               selectedCard={selectedCard}
               creditFieldLabels={this.getCreditFieldLabels()}
+              showCvv={false}
             />
           )}
           <AddressWrapper>
