@@ -32,14 +32,14 @@ function mapStateToProps(state, ownProps) {
   // const geoDefaultStore = storesStoreView.getGeoDefaultStore(state);
   // const userDefaultStore = favStore || geoDefaultStore || null;
   // const offerEspot = generalStoreView.getEspotByName(state, 'fav_store_pickup_content');
-
   const userDefaultStore = null;
+
   return {
     itemValues: selector(state, 'color', 'fit', 'size', 'quantity'),
-    isBopisEnabled: PickupSelectors.getIsBopisEnabled(state), // Fixed
-    isBossEnabled: PickupSelectors.getIsBossEnabled(state), // Fixed
-    isBopisClearanceProductEnabled: PickupSelectors.getIsBopisClearanceProductEnabled(state), // Fixed
-    isBossClearanceProductEnabled: PickupSelectors.getIsBossClearanceProductEnabled(state), // Fixed
+    isBopisEnabled: PickupSelectors.getIsBopisEnabled(state),
+    isBossEnabled: PickupSelectors.getIsBossEnabled(state),
+    isBopisClearanceProductEnabled: PickupSelectors.getIsBopisClearanceProductEnabled(state),
+    isBossClearanceProductEnabled: PickupSelectors.getIsBossClearanceProductEnabled(state),
     userDefaultStore,
     userGeoCoordinates: {
       lat: null,
@@ -49,8 +49,8 @@ function mapStateToProps(state, ownProps) {
     // Checking with BA since the requirement is not mentioned in the story.
     // TODO - check if required => userGeoCoordinates: userStoreView.getUserGeoCoordinates(state),
     // TODO - check if required => getGeoDefaultStore: storeOperators.storesOperator.loadDefaultStore,
-    disabledFits: PickupSelectors.getBopisDisabledFits(state), // Fixed
-    bopisItemInventory: PickupSelectors.getBopisItemInventory(state), // Fixed
+    disabledFits: PickupSelectors.getBopisDisabledFits(state),
+    bopisItemInventory: PickupSelectors.getBopisItemInventory(state),
     // TODO - This changes to CMS data - offerEspotAvailable: offerEspot && offerEspot.value,
     isRadialInventoryEnabled: PickupSelectors.getIsRadialInventoryEnabled(state),
   };

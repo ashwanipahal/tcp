@@ -19,17 +19,23 @@ import {
   numericStringToBool,
   handleGenericKeyDown,
 } from '../util';
+import withStyles from '../../../hoc/withStyles';
 
 import {
   getVariantId,
   getMapSliceForSize,
 } from '../../../../features/browse/ProductListing/molecules/ProductList/utils/productsCommonUtils';
-import { Button } from '../../../atoms';
+import { Button, Anchor, BodyCopy } from '../../../atoms';
+import ProductPickupStyles from '../styles/ProductPickup.style';
 
 /** Dummy content slot component - TODO - Remove once it comes from CMS */
 const ContentSlot = props => {
   const { contentSlotName } = props;
-  return <div>{contentSlotName}</div>;
+  return (
+    <BodyCopy fontSize="fs10" component="span" className="espot">
+      {contentSlotName}
+    </BodyCopy>
+  );
 };
 
 ContentSlot.propTypes = {
@@ -41,9 +47,9 @@ ContentSlot.defaultProps = {
 };
 
 const labels = {
-  CHANGE_STORE: 'Change Store',
+  CHANGE_STORE: '(Change Store)',
   PRODUCT_PICKUP: {
-    TITLE_DEFAULT_NOSTORE: 'Pick up in Store',
+    TITLE_DEFAULT_NOSTORE: 'Select Store',
     PRODUCT_BOPIS: 'Buy online - Pick up in store',
     BOPIS_AVAILABLE: 'Pick up TODAY!',
     BOPIS_ONLY_AVAILABLE: 'Item available for pickup TODAY',
@@ -53,7 +59,8 @@ const labels = {
   },
   SPACE_ONE: ' ',
   FREE_SHIPPING: 'FREE Shipping Every Day!',
-  CHOOSE_STORE: 'CHOOSE STORE',
+  NO_MIN_PURCHASE: 'No Minimum Purchase Required.',
+  FIND_STORE: 'FIND A STORE',
 };
 
 const KEY_CODES = {
@@ -132,6 +139,7 @@ class ProductPickup extends React.Component {
     isBopisClearanceProductEnabled: PropTypes.bool,
     isBossClearanceProductEnabled: PropTypes.bool,
     offerEspotAvailable: PropTypes.bool,
+    className: PropTypes.string,
     /** When flase, flags that BOPIS is globaly disabled */
     isBopisEnabled: PropTypes.bool,
 
@@ -218,6 +226,7 @@ class ProductPickup extends React.Component {
     bopisItemInventory: [],
     isRadialInventoryEnabled: null,
     offerEspotAvailable: false,
+    className: '',
   };
 
   constructor(props, context) {
@@ -240,6 +249,8 @@ class ProductPickup extends React.Component {
     this.isSkuResolved = false;
     this.isBopisEligible = validateBopisEligibility({ ...bopisValidatingParams, miscInfo });
     this.isBossEligible = validateBossEligibility({ ...bossValidatingParams, miscInfo });
+    this.isBopisEligible = false;
+    this.isBossEligible = true;
     this.isGeoStoreAPIRequested = false;
     this.state = {
       isSubmitting: false,
@@ -406,20 +417,34 @@ class ProductPickup extends React.Component {
            * */
           return (
             <React.Fragment>
-              <span className="store-name">{userDefaultStore.basicInfo.storeName}</span>
-              <span
+              <BodyCopy
+                className="store-name"
+                fontSize="fs16"
+                fontFamily="secondary"
+                fontWeight="semibold"
+                component="span"
+              >
+                {userDefaultStore.basicInfo.storeName}
+              </BodyCopy>
+              <Anchor
+                fontSizeVariation="medium"
                 className="change-store-link"
                 role="link"
                 tabIndex="0"
                 onKeyDown={this.handleChangeStoreOnKeyPress}
                 onClick={this.handlePickupModalClick}
+                underline
               >
                 {labels.CHANGE_STORE}
-              </span>
+              </Anchor>
             </React.Fragment>
           );
         }
-        return labels.PRODUCT_PICKUP.TITLE_DEFAULT_NOSTORE;
+        return (
+          <BodyCopy fontSize="fs16" fontWeight="semibold" fontFamily="secondary">
+            {labels.PRODUCT_PICKUP.TITLE_DEFAULT_NOSTORE}
+          </BodyCopy>
+        );
       }
       if (this.isBopisEligible && !isBossEligBossInvAvail) {
         // bopis only
@@ -427,15 +452,27 @@ class ProductPickup extends React.Component {
          * @returns if the product is only bopis eligible and the sku is resolved
          * then it @returns {labels.PRODUCT_BOPIS}
          */
-        return labels.PRODUCT_PICKUP.PRODUCT_BOPIS;
+        return (
+          <BodyCopy fontSize="fs16" fontWeight="semibold" fontFamily="secondary">
+            {labels.PRODUCT_PICKUP.PRODUCT_BOPIS}
+          </BodyCopy>
+        );
       }
       /**
        * @returns if the product is only boss eligible and the sku is resolved
        * then it @returns {labels.TITLE_DEFAULT_NOSTORE}
        */
-      return labels.PRODUCT_PICKUP.TITLE_DEFAULT_NOSTORE;
+      return (
+        <BodyCopy fontSize="fs16" fontWeight="semibold" fontFamily="secondary">
+          {labels.PRODUCT_PICKUP.TITLE_DEFAULT_NOSTORE}
+        </BodyCopy>
+      );
     }
-    return labels.PRODUCT_PICKUP.TITLE_DEFAULT_NOSTORE;
+    return (
+      <BodyCopy fontSize="fs16" fontWeight="semibold" fontFamily="secondary">
+        {labels.PRODUCT_PICKUP.TITLE_DEFAULT_NOSTORE}
+      </BodyCopy>
+    );
   }
 
   /**
@@ -488,36 +525,47 @@ class ProductPickup extends React.Component {
       return (
         <div className="pickup-info">
           {isStoreBopisEligible && (
-            <p>
-              <span className="availability">
+            <BodyCopy fontSize="fs12" fontFamily="secondary">
+              <BodyCopy
+                className="availability"
+                fontWeight="extrabold"
+                fontFamily="secondary"
+                color="success"
+                component="span"
+              >
                 {`${bopisItemInventory[0].status}!`}
                 {labels.SPACE_ONE}
-              </span>
+              </BodyCopy>
               {labels.PRODUCT_PICKUP.BOPIS_AVAILABLE}
-            </p>
+            </BodyCopy>
           )}
-          <p className="pickup-boss-info">
+          <BodyCopy
+            className="pickup-boss-info"
+            fontSize="fs12"
+            fontFamily="secondary"
+            component="span"
+          >
             {isStoreBopisEligible
               ? labels.PRODUCT_PICKUP.BOSS_AVAILABLE
               : labels.PRODUCT_PICKUP.BOSS_ONLY_AVAILABLE}
             {labels.SPACE_ONE}
             {offerEspotAvailable && 'and'}
             {labels.SPACE_ONE}
-          </p>
-          <ContentSlot className="pickup-espot" contentSlotName="fav_store_pickup_content" />
+          </BodyCopy>
+          {/* <ContentSlot className="pickup-espot" contentSlotName="fav_store_pickup_content" /> */}
         </div>
       );
     }
     if (this.isBopisEligible) {
       return (
         isStoreBopisEligible && (
-          <p className="pickup-info">
+          <BodyCopy className="pickup-info">
             <span className="availability">
               {`${bopisItemInventory[0].status}!`}
               {labels.SPACE_ONE}
             </span>
             {labels.PRODUCT_PICKUP.BOPIS_ONLY_AVAILABLE}
-          </p>
+          </BodyCopy>
         )
       );
     }
@@ -529,13 +577,19 @@ class ProductPickup extends React.Component {
           {offerEspotAvailable && 'and'}
           {labels.SPACE_ONE}
         </p>
-        <ContentSlot className="pickup-espot" contentSlotName="no_fav_pickup_content" />
+        {/* <ContentSlot className="pickup-espot" contentSlotName="no_fav_pickup_content" /> */}
       </div>
     );
   }
 
   render() {
-    const { userDefaultStore, productInfo, itemValues, isRadialInventoryEnabled } = this.props;
+    const {
+      userDefaultStore,
+      productInfo,
+      itemValues,
+      isRadialInventoryEnabled,
+      className,
+    } = this.props;
 
     if (this.noBossBopisInfo()) {
       return null;
@@ -560,7 +614,7 @@ class ProductPickup extends React.Component {
 
     return (
       <React.Fragment>
-        <div className="pickup-section-container">
+        <div className={`${className} pickup-section-container`}>
           <div className="pickup-sub-container">
             <div className="pickup-header">
               <div className="title-pickup-section">
@@ -569,19 +623,35 @@ class ProductPickup extends React.Component {
                   alt="shipping-icon"
                   src="/static/images/fast-shipping.svg"
                 />
-                {labels.FREE_SHIPPING}
+                <div className="shipping-text-section">
+                  <BodyCopy
+                    fontSize="fs16"
+                    fontWeight="semibold"
+                    fontFamily="secondary"
+                    component="span"
+                  >
+                    {labels.FREE_SHIPPING}
+                  </BodyCopy>
+                  <BodyCopy fontSize="fs12" fontFamily="secondary" className="sub-header-pickup">
+                    {labels.NO_MIN_PURCHASE}
+                  </BodyCopy>
+                </div>
               </div>
             </div>
             <div className="pickup-content">
-              <div className="title-pickup-section">
-                <img
-                  className="pickup-icon"
-                  alt="pickup-icon"
-                  src="/static/images/marker-icon.svg"
-                />
-                {this.renderPickupTitle()}
+              <div className="pickup-section">
+                <div className="title-pickup-section">
+                  <img
+                    className="pickup-icon"
+                    alt="pickup-icon"
+                    src="/static/images/marker-icon.svg"
+                  />
+                </div>
+                <div className="pickup-details">
+                  {this.renderPickupTitle()}
+                  {showPickupInfo && this.renderPickupInfo()}
+                </div>
               </div>
-              {showPickupInfo && this.renderPickupInfo()}
               <Button
                 className="button-find-in-store"
                 buttonVariation="fixed-width"
@@ -589,17 +659,17 @@ class ProductPickup extends React.Component {
                 disabled={isSubmitting}
                 onClick={this.handlePickupModalClick}
               >
-                {showPickupInfo ? labels.PRODUCT_PICKUP.PICKUP_IN_STORE : labels.CHOOSE_STORE}
+                {showPickupInfo ? labels.PRODUCT_PICKUP.PICKUP_IN_STORE : labels.FIND_STORE}
               </Button>
             </div>
           </div>
         </div>
-        {this.isBopisEligible && (
+        {/* {this.isBopisEligible && (
           <ContentSlot contentSlotName="pdp_bopis_promo" className="product-details-bopis-promo" />
-        )}
+        )} */}
       </React.Fragment>
     );
   }
 }
 
-export default ProductPickup;
+export default withStyles(ProductPickup, ProductPickupStyles);
