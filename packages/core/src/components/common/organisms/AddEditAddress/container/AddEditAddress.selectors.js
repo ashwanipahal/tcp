@@ -3,7 +3,7 @@ import {
   LOGINPAGE_REDUCER_KEY,
   ADDEDITADDRESS_REDUCER_KEY,
 } from '../../../../../constants/reducer.constants';
-import { getLabelValue, getErrorSelector } from '../../../../../utils';
+import { getLabelValue, getErrorSelector } from '../../../../../utils/utils';
 import { getAddressListState } from '../../../../features/account/AddressBook/container/AddressBook.selectors';
 
 export const getAddressResponse = state => {

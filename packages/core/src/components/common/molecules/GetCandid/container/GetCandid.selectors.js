@@ -9,6 +9,6 @@ export const getCandidData = state => {
 };
 
 export const getLabels = state => {
-  const { modules: { getCandid } = {} } = state.Labels;
+  const { global: { getCandid } = {} } = state.Labels;
   return getCandid;
 };

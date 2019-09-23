@@ -23,6 +23,12 @@ const ROUTES_LIST = [
     path: '/login',
     resolver: '/login',
   },
+
+  {
+    noSlugPath: 'instagram',
+    path: '/instagram',
+    resolver: '/instagram',
+  },
   {
     noSlugPath: 'account',
     path: '/account/:id?/:subSection?',
@@ -108,6 +114,11 @@ const ROUTES_LIST = [
     noSlugPath: 'error',
     path: '/error',
     resolver: '/error',
+  },
+  {
+    noSlugPath: 'international-checkout',
+    path: '/international-checkout',
+    resolver: '/InternationalCheckout',
   },
 ];
 

@@ -51,7 +51,7 @@ export class AddChildBirthdayForm extends React.PureComponent {
     } = this.props;
     return (
       <form className={className} onSubmit={handleSubmit}>
-        <div className="addChildBirthdayTip" />
+        <div className="addChildBirthdayTip hide-on-mobile" />
         <Row fullBleed className="formHeading">
           <Col
             colSize={{ small: 6, medium: 4, large: 5 }}

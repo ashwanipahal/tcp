@@ -49,7 +49,7 @@ exports[`Earn Extra Points Tile app component  should render Earn Extra Points T
         height={220}
         options={
           Object {
-            "enableSnap": false,
+            "enableSnap": true,
             "loop": false,
           }
         }

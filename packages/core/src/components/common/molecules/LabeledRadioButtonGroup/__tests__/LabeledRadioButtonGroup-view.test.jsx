@@ -17,7 +17,9 @@ describe('LabeledRadioButtonGroup should render correctly', () => {
     className: '',
     title: '5T',
     input: {
-      name: '2T',
+      value: {
+        name: '2T',
+      },
       onChange: jest.fn(),
     },
   };

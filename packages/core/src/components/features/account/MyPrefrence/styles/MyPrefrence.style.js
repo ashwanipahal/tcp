@@ -6,7 +6,7 @@ export default css`
   }
 
   .elm-padding-top {
-    padding-top: ${props => props.theme.spacing.ELEM_SPACING.XS};
+    padding-top: ${props => props.theme.spacing.ELEM_SPACING.LRG};
   }
 
   .favtPageLink {

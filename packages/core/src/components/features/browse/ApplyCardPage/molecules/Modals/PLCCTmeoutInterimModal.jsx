@@ -22,9 +22,9 @@ class PLCCTimeoutInterimModal extends React.PureComponent {
     unregisterIdleVerfication: PropTypes.func.isRequired,
     handleContinueApplication: PropTypes.func.isRequired,
     labels: PropTypes.shape({
-      plcc_restart_application: PropTypes.string.isRequired,
-      plcc_application_closure_subheader: PropTypes.string.isRequired,
-      plcc_application_closure: PropTypes.string.isRequired,
+      lbl_PLCCTimeoutModal_stillThere: PropTypes.string.isRequired,
+      lbl_PLCCTimeoutModal_continueApplication: PropTypes.string.isRequired,
+      lbl_PLCCTimeoutModal_interimText: PropTypes.string.isRequired,
     }).isRequired,
   };
 
@@ -116,7 +116,7 @@ class PLCCTimeoutInterimModal extends React.PureComponent {
                   data-locator={getLocator('plcc_time_out_modal_text')}
                   className="info_text_margin"
                 >
-                  {getLabelValue(labels, 'plcc_timeout_stillThere')}
+                  {getLabelValue(labels, 'lbl_PLCCTimeoutModal_stillThere')}
                 </BodyCopy>
               </Col>
             </Row>
@@ -134,7 +134,7 @@ class PLCCTimeoutInterimModal extends React.PureComponent {
                   textAlign="center"
                   className="info_text_margin"
                 >
-                  {labels && labels.plcc_timout_interim_text.replace('XX', currentTime)}
+                  {labels && labels.lbl_PLCCTimeoutModal_interimText.replace('XX', currentTime)}
                 </BodyCopy>
               </Col>
             </Row>
@@ -152,7 +152,7 @@ class PLCCTimeoutInterimModal extends React.PureComponent {
                   data-locator={getLocator('plcc_time_out_modal_continue')}
                   onClick={handleContinueApplication}
                 >
-                  {getLabelValue(labels, 'plcc_timeout_continue_application')}
+                  {getLabelValue(labels, 'lbl_PLCCTimeoutModal_continueApplication')}
                 </Button>
               </Col>
             </Row>

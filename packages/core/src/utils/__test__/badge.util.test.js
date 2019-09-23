@@ -11,6 +11,8 @@ import {
 describe('badge util test', () => {
   describe('#mapDispatchToProps', () => {
     const LABELS = 'itemTCPProductIndUSStore:1;itemTCPGlowInDarkUSStore:d';
+    const currentDate = '12/12/2019';
+
     it('should return true', () => {
       expect(parseBoolean('1')).toEqual(true);
     });
@@ -19,16 +21,18 @@ describe('badge util test', () => {
         date: 12,
         day: 'THU',
         month: 'DEC',
+        translated: currentDate,
       };
-      expect(getDateInformation(new Date('12/12/2019'), true)).toEqual(dateObj);
+      expect(getDateInformation(new Date(currentDate), true)).toEqual(dateObj);
     });
     it('should return date object in lower case', () => {
       const dateObj = {
         date: 12,
         day: 'Thu',
         month: 'Dec',
+        translated: currentDate,
       };
-      expect(getDateInformation(new Date('12/12/2019'), false)).toEqual(dateObj);
+      expect(getDateInformation(new Date(currentDate), false)).toEqual(dateObj);
     });
 
     it('should return product attributes', () => {

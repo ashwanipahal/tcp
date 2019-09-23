@@ -21,7 +21,7 @@ import {
   Divider,
   ButtonContainer,
 } from '../styles/GetCandidGallery.style.native';
-import { getScreenWidth, navigateToNestedRoute } from '../../../../../utils/index.native';
+import { getScreenWidth } from '../../../../../utils/index.native';
 import { DEFAULT_PAGE_SIZE } from '../config';
 
 /**
@@ -127,12 +127,15 @@ class GetCandidGallery extends React.PureComponent {
     const { navigation } = this.props;
     return (
       <ShopLookScroll horizontal showsHorizontalScrollIndicator={false}>
-        {tagItems.map(({ Id, ImageUrl, DisplayText }) => (
+        {tagItems.map(({ Id, ImageUrl, DisplayText, TagId }) => (
           <ShopLookItem key={Id}>
             <Anchor
               onPress={() =>
-                navigateToNestedRoute(navigation, 'PlpStack', 'ProductDetail', {
-                  Id,
+                navigation.navigate('ProductDetail', {
+                  title: DisplayText,
+                  pdpUrl: TagId,
+                  selectedColorProductId: TagId,
+                  reset: true,
                 })
               }
             >
@@ -224,7 +227,7 @@ class GetCandidGallery extends React.PureComponent {
                 fontSize="fs20"
                 fontWeight="regular"
                 color="gray.900"
-                text={labels.titleShopThisLook.toUpperCase()}
+                text={labels.lbl_getCandid_titleShopThisLook.toUpperCase()}
                 textAlign="center"
                 letterSpacing="ls222"
               />
@@ -252,7 +255,7 @@ class GetCandidGallery extends React.PureComponent {
           <Button
             buttonVariation="variable-width"
             width="100%"
-            text={labels.btnLoadMore}
+            text={labels.lbl_getCandid_btnLoadMore}
             fill="BLUE"
             color="white"
             onPress={this.loadMoreHandler}

@@ -6,7 +6,7 @@ exports[`Points History List Page View should render Points History Page Correct
     <Styled(View)>
       <Styled(BodyCopy)
         accessibilityText=""
-        color="#1a1a1a"
+        color="gray.900"
         dataLocator=""
         fontFamily="secondary"
         fontSize="fs12"
@@ -20,7 +20,7 @@ exports[`Points History List Page View should render Points History Page Correct
     <Styled(View)>
       <Styled(BodyCopy)
         accessibilityText=""
-        color="#1a1a1a"
+        color="gray.900"
         dataLocator=""
         fontFamily="secondary"
         fontSize="fs12"
@@ -34,7 +34,7 @@ exports[`Points History List Page View should render Points History Page Correct
     <Styled(View)>
       <Styled(BodyCopy)
         accessibilityText=""
-        color="#1a1a1a"
+        color="gray.900"
         dataLocator=""
         fontFamily="secondary"
         fontSize="fs12"
@@ -51,7 +51,7 @@ exports[`Points History List Page View should render Points History Page Correct
     <Styled(View)>
       <Styled(BodyCopy)
         accessibilityText=""
-        color="#1a1a1a"
+        color="gray.900"
         dataLocator=""
         fontFamily="secondary"
         fontSize="fs12"
@@ -65,7 +65,7 @@ exports[`Points History List Page View should render Points History Page Correct
     <Styled(View)>
       <Styled(BodyCopy)
         accessibilityText=""
-        color="#1a1a1a"
+        color="gray.900"
         dataLocator=""
         fontFamily="secondary"
         fontSize="fs12"
@@ -79,7 +79,7 @@ exports[`Points History List Page View should render Points History Page Correct
     <Styled(View)>
       <Styled(BodyCopy)
         accessibilityText=""
-        color="#1a1a1a"
+        color="gray.900"
         dataLocator=""
         fontFamily="secondary"
         fontSize="fs12"

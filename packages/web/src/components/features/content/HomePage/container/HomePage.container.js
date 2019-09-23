@@ -11,11 +11,13 @@ HomePageView.getInitActions = () => initActions;
 const mapStateToProps = state => {
   const { Layouts, Modules } = state;
   const homepageSlots = Layouts.homepage ? Layouts.homepage.slots || [] : [];
+  const { accessibility } = state.Labels.global;
 
   return {
     slots: homepageSlots.map(slot => {
       return {
         ...slot,
+        accessibility,
         data: Modules[slot.contentId],
       };
     }),

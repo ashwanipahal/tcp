@@ -33,7 +33,7 @@ import {
 import { isPlccUser } from '../../../account/User/container/User.selectors';
 import submitProductListingFiltersForm from '../../ProductListing/container/productListingOnSubmitHandler';
 import { getSearchResult } from '../../../../../../../web/src/components/features/content/Header/molecules/SearchBar/SearchBar.actions';
-
+import NoResponseSearchDetail from '../views/NoResponseSearchDetail.view';
 class SearchDetailContainer extends React.PureComponent {
   componentDidMount() {
     const {
@@ -54,6 +54,35 @@ class SearchDetailContainer extends React.PureComponent {
       ignoreCache: true,
       formValues,
     });
+  }
+
+  componentDidUpdate(prevProps) {
+    const {
+      router: {
+        query: { searchQuery },
+        asPath,
+      },
+      getProducts,
+      formValues,
+    } = prevProps;
+
+    const {
+      router: {
+        query: { searchQuery: currentSearchQuery },
+      },
+    } = this.props;
+    if (searchQuery !== currentSearchQuery) {
+      const splitAsPathBy = `/search/${searchQuery}?`;
+      const queryString = asPath.split(splitAsPathBy);
+      const filterSortString = (queryString.length && queryString[1]) || '';
+      getProducts({
+        URI: 'search',
+        asPath: filterSortString,
+        searchQuery,
+        ignoreCache: true,
+        formValues,
+      });
+    }
   }
 
   render() {
@@ -79,28 +108,54 @@ class SearchDetailContainer extends React.PureComponent {
       onPickUpOpenClick,
       searchedText,
       slpLabels,
+      searchResultSuggestions,
       sortLabels,
       ...otherProps
     } = this.props;
+
     return (
-      <SearchDetail
-        filters={filters}
-        formValues={formValues}
-        filtersLength={filtersLength}
-        getProducts={getProducts}
-        isLoadingMore={isLoadingMore}
-        initialValues={initialValues}
-        onSubmit={onSubmit}
-        products={products}
-        productsBlock={productsBlock}
-        totalProductsCount={totalProductsCount}
-        labels={labels}
-        labelsFilter={labelsFilter}
-        slpLabels={slpLabels}
-        searchedText={searchedText}
-        sortLabels={sortLabels}
-        {...otherProps}
-      />
+      <>
+        {products && products.length > 0 ? (
+          <SearchDetail
+            filters={filters}
+            formValues={formValues}
+            filtersLength={filtersLength}
+            getProducts={getProducts}
+            isLoadingMore={isLoadingMore}
+            initialValues={initialValues}
+            onSubmit={onSubmit}
+            products={products}
+            productsBlock={productsBlock}
+            totalProductsCount={totalProductsCount}
+            labels={labels}
+            labelsFilter={labelsFilter}
+            slpLabels={slpLabels}
+            searchedText={searchedText}
+            sortLabels={sortLabels}
+            searchResultSuggestions={searchResultSuggestions}
+            {...otherProps}
+          />
+        ) : (
+          <NoResponseSearchDetail
+            filters={filters}
+            formValues={formValues}
+            filtersLength={filtersLength}
+            getProducts={getProducts}
+            initialValues={initialValues}
+            onSubmit={onSubmit}
+            products={products}
+            productsBlock={productsBlock}
+            totalProductsCount={totalProductsCount}
+            labels={labels}
+            labelsFilter={labelsFilter}
+            slpLabels={slpLabels}
+            searchedText={searchedText}
+            sortLabels={sortLabels}
+            searchResultSuggestions={searchResultSuggestions}
+            {...otherProps}
+          />
+        )}
+      </>
     );
   }
 }
@@ -144,6 +199,8 @@ function mapStateToProps(state) {
     onSubmit: submitProductListingFiltersForm,
     currentNavIds: state.ProductListing && state.ProductListing.get('currentNavigationIds'),
     slpLabels: getLabels(state),
+    searchResultSuggestions:
+      state.SearchListingPage && state.SearchListingPage.get('searchResultSuggestions'),
     sortLabels: getSortLabels(state),
   };
 }

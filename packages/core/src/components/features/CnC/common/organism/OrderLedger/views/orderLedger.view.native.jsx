@@ -38,6 +38,7 @@ const OrderLedger = ({ ledgerSummaryData, labels }) => {
     giftCardsTotal,
     orderBalanceTotal,
     totalOrderSavings,
+    isOrderHasShipping,
   } = ledgerSummaryData;
   return (
     <StyledOrderLedger>
@@ -108,35 +109,37 @@ const OrderLedger = ({ ledgerSummaryData, labels }) => {
           </Text>
         </StyledRowDataContainer>
       ) : null}
-      <StyledRowDataContainer>
-        <Text>
-          <BodyCopy
-            bodySize="one"
-            fontFamily="secondary"
-            textAlign="left"
-            fontWeight="regular"
-            fontSize="fs13"
-            text={`${labels.shippingLabel}:`}
-          />
-        </Text>
-        <Text>
-          <BodyCopy
-            bodySize="one"
-            fontFamily="secondary"
-            fontWeight="regular"
-            fontSize="fs13"
-            textAlign="right"
-            text={
-              // eslint-disable-next-line no-nested-ternary
-              shippingTotal !== undefined
-                ? { shippingTotal } > 0
-                  ? `${currencySymbol}${shippingTotal.toFixed(2)}`
-                  : labels.free
-                : '-'
-            }
-          />
-        </Text>
-      </StyledRowDataContainer>
+      {isOrderHasShipping ? (
+        <StyledRowDataContainer>
+          <Text>
+            <BodyCopy
+              bodySize="one"
+              fontFamily="secondary"
+              textAlign="left"
+              fontWeight="regular"
+              fontSize="fs13"
+              text={`${labels.shippingLabel}:`}
+            />
+          </Text>
+          <Text>
+            <BodyCopy
+              bodySize="one"
+              fontFamily="secondary"
+              fontWeight="regular"
+              fontSize="fs13"
+              textAlign="right"
+              text={
+                // eslint-disable-next-line no-nested-ternary
+                shippingTotal !== undefined
+                  ? { shippingTotal } > 0
+                    ? `${currencySymbol}${shippingTotal.toFixed(2)}`
+                    : labels.free
+                  : '-'
+              }
+            />
+          </Text>
+        </StyledRowDataContainer>
+      ) : null}
       <StyledRowDataContainer>
         <Text>
           <BodyCopy
