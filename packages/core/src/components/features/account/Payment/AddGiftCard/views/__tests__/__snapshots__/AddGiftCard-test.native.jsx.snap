@@ -9,12 +9,7 @@ exports[`Add gift card component should render component correctly 1`] = `
   form="AddGiftCardMobileForm"
   getFormState={[Function]}
   keepDirtyOnReinitialize={false}
-  labels={
-    Object {
-      "common": Object {},
-      "paymentGC": Object {},
-    }
-  }
+  labels={Object {}}
   onAddGiftCardClick={[MockFunction]}
   persistentSubmitErrors={false}
   pure={true}

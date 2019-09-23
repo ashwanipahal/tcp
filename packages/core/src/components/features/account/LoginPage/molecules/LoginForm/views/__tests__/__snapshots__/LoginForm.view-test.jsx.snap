@@ -183,6 +183,7 @@ exports[`LoginForm component should renders correctly 1`] = `
         errorDataLocator="login-emailerror"
         id="emailAddress"
         name="emailAddress"
+        onKeyPress={[Function]}
         showSuccessCheck={false}
       />
       <Field
@@ -264,6 +265,7 @@ exports[`LoginForm component should renders correctly 1`] = `
           }
         }
         name="password"
+        onKeyPress={[Function]}
         showSuccessCheck={false}
       />
       <Styled(BodyCopy)
@@ -660,6 +662,7 @@ exports[`LoginForm component should renders correctly with error 1`] = `
         errorDataLocator="login-emailerror"
         id="emailAddress"
         name="emailAddress"
+        onKeyPress={[Function]}
         showSuccessCheck={false}
       />
       <Field
@@ -742,6 +745,7 @@ exports[`LoginForm component should renders correctly with error 1`] = `
           }
         }
         name="password"
+        onKeyPress={[Function]}
         showSuccessCheck={false}
       />
       <Styled(BodyCopy)
