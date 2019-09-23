@@ -41,10 +41,11 @@ exports[`MiniBagBody component renders main component correctly 1`] = `
           </Styled(Anchor)>
           <Styled(Anchor)
             anchorVariation="primary"
+            asPath="/bag?isSfl=true"
             className="elem-ml-MED"
             data-locator="cartitem-saveforlater"
             fontSizeVariation="medium"
-            noLink={true}
+            to="/bag?isSfl=true"
             underline={true}
           >
             undefined(undefined)
