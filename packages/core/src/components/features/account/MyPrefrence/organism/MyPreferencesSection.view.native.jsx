@@ -2,8 +2,10 @@ import React from 'react';
 import { View, ScrollView } from 'react-native';
 import PropTypes from 'prop-types';
 import { getLabelValue } from '@tcp/core/src/utils/utils';
+import { StyledHeading } from '@tcp/core/src/components/common/atoms/styledWrapper';
 import withStyles from '../../../../common/hoc/withStyles.native';
-import { StyledHeading, UnderlineStyle } from '../../AddressBook/styles/AddressBook.style.native';
+
+import { UnderlineStyle } from '../styles/MyPreference.style.native';
 import MyFavoriteStore from '../../MyProfile/organism/MyFavoriteStore';
 import BodyCopy from '../../../../common/atoms/BodyCopy';
 
