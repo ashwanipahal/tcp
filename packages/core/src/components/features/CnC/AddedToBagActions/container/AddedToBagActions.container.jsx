@@ -21,6 +21,7 @@ export class AddedToBagContainer extends React.Component<Props> {
       isEditingItem,
       isInternationalShipping,
       navigation,
+      isNoNEmptyBag,
     } = this.props;
     return (
       <AddedToBagActionsView
@@ -31,6 +32,7 @@ export class AddedToBagContainer extends React.Component<Props> {
         isEditingItem={isEditingItem}
         isInternationalShipping={isInternationalShipping}
         navigation={navigation}
+        isNoNEmptyBag={isNoNEmptyBag}
       />
     );
   }
@@ -40,6 +42,7 @@ AddedToBagContainer.propTypes = {
   labels: PropTypes.shape.isRequired,
   handleCartCheckout: PropTypes.func.isRequired,
   isInternationalShipping: PropTypes.bool.isRequired,
+  isNoNEmptyBag: PropTypes.number.isRequired,
 };
 
 const mapDispatchToProps = dispatch => {
