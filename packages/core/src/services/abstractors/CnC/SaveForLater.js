@@ -14,7 +14,7 @@ import { sanitizeEntity, flatCurrencyToCents, AVAILABILITY } from './CartItemTil
 export function getProductInfo(item, imageGenerator) {
   const { isGiftCard, itemAtributes } = item;
   const sizeAndFit = itemAtributes;
-  return {
+  const returnProductInfo = {
     generalProductId: isGiftCard ? item.itemCatentryId.toString() : item.productId,
     productPartNumber: item.productInfo && item.productInfo.productPartNumber,
     skuId: isGiftCard ? item.productId : item.itemCatentryId.toString(),
@@ -22,10 +22,7 @@ export function getProductInfo(item, imageGenerator) {
     imagePath: imageGenerator(item.productInfo.productPartNumber)
       ? imageGenerator(item.productInfo.productPartNumber).productImages[500]
       : '',
-    size: sizeAndFit ? sizeAndFit.TCPSize : item.itemUnitDstPrice, // giftCard Size is its price
-    fit: sizeAndFit ? sizeAndFit.TCPFit : null, // no fit for gift cards
     pdpUrl: item.productUrl.replace(/&amp;/g, '&'),
-    upc: sizeAndFit.UPC,
     color: {
       name: item.productInfo.productColor
         ? item.productInfo.productColor
@@ -37,6 +34,15 @@ export function getProductInfo(item, imageGenerator) {
     isGiftCard,
     colorFitSizeDisplayNames: isGiftCard ? true : {}, // To Do when consuming this data { color: 'Design', size: 'Value' }
   };
+  if (sizeAndFit) {
+    returnProductInfo.size = sizeAndFit.TCPSize;
+    returnProductInfo.fit = sizeAndFit.TCPFit;
+    returnProductInfo.upc = sizeAndFit.UPC;
+  } else {
+    returnProductInfo.size = item.itemUnitDstPrice;
+    returnProductInfo.fit = null;
+  }
+  return returnProductInfo;
 }
 
 export function deriveSflItemAvailability(item, currencyCode) {

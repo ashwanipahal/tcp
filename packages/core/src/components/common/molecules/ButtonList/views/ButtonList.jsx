@@ -3,6 +3,7 @@ import { PropTypes } from 'prop-types';
 import ButtonCTA from '../../ButtonCTA';
 import ImageTextCTA from '../../ImageTextCTA';
 import withStyles from '../../../hoc/withStyles';
+import errorBoundary from '../../../hoc/withErrorBoundary';
 import config from '../ButtonList.config';
 import ButtonListStyle from '../ButtonList.style';
 import DropDownButton from '../../DropDownButton';
@@ -224,5 +225,5 @@ ButtonList.propTypes = {
   fill: PropTypes.string,
 };
 
-export default withStyles(ButtonList, ButtonListStyle);
+export default withStyles(errorBoundary(ButtonList), ButtonListStyle);
 export { ButtonList as VanillaButtonList };
