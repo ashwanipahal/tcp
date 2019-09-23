@@ -2,6 +2,7 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import { BodyCopy, Anchor } from '@tcp/core/src/components/common/atoms';
 import createThemeColorPalette from '@tcp/core/styles/themes/createThemeColorPalette';
+import sourceMap from '../../../../ExtraPoints/imageSourceMap';
 import {
   TileWrapper,
   EarnPointDesc,
@@ -9,34 +10,7 @@ import {
   ImageSize,
 } from '../styles/DetailedEarnExtraPointsTile.style.native';
 
-const AppDownloadImage = require('../../../../../../../assets/download-app.png');
-const ProductReviewImage = require('../../../../../../../assets/review.png');
-const FacebookLinkImage = require('../../../../../../../assets/facebook.png');
-const InstagramLinkImage = require('../../../../../../../assets/instagram.png');
-const ChildProfileImage = require('../../../../../../../assets/child-birthday-profile.png');
-const SMSOptInImage = require('../../../../../../../assets/sms.png');
-const AddMailingAddressImage = require('../../../../../../../assets/mailingAddress.png');
-const AddFavoriteStoreImage = require('../../../../../../../assets/store.png');
-const AddShopperTypeImage = require('../../../../../../../assets/survey.png');
-
 const colorPalette = createThemeColorPalette();
-
-/**
- * DetailedEarnExtraPointsTile component used for show details earn extra points.
- * @sourceMap - sourceMap object for images path
- */
-
-const sourceMap = {
-  AppDownload: AppDownloadImage,
-  ProductReview: ProductReviewImage,
-  FacebookLink: FacebookLinkImage,
-  InstagramLink: InstagramLinkImage,
-  ChildProfile: ChildProfileImage,
-  SMSOptIn: SMSOptInImage,
-  AddMailingAddress: AddMailingAddressImage,
-  AddFavoriteStore: AddFavoriteStoreImage,
-  AddShopperType: AddShopperTypeImage,
-};
 
 /**
  * DetailedEarnExtraPointsTile component used for show details earn extra points.

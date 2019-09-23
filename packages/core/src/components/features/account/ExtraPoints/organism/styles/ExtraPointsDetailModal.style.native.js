@@ -9,10 +9,6 @@ const RichTextWrapper = styled.View`
   height: 200px;
 `;
 
-const ActivityModalTitleWrapper = styled.View`
-  margin-top: ${props => props.theme.spacing.ELEM_SPACING.LRG};
-`;
-
 const EarnExtraPointsTileImage = styled.View`
   height: 60px;
   text-align: center;
@@ -21,4 +17,4 @@ const EarnExtraPointsTileImage = styled.View`
   align-items: center;
 `;
 
-export { RichTextWrapper, ImageSize, EarnExtraPointsTileImage, ActivityModalTitleWrapper };
+export { RichTextWrapper, ImageSize, EarnExtraPointsTileImage };

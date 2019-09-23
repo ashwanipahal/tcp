@@ -1,40 +1,14 @@
 import React from 'react';
 import { BodyCopy, RichText, Button } from '@tcp/core/src/components/common/atoms';
+import { BodyCopyWithSpacing } from '@tcp/core/src/components/common/atoms/styledWrapper';
 import PropTypes from 'prop-types';
+import sourceMap from '../imageSourceMap';
 
 import {
   RichTextWrapper,
   ImageSize,
   EarnExtraPointsTileImage,
-  ActivityModalTitleWrapper,
 } from './styles/ExtraPointsDetailModal.style.native';
-
-const AppDownloadImage = require('@tcp/core/src/assets/download-app.png');
-const ProductReviewImage = require('@tcp/core/src/assets/review.png');
-const FacebookLinkImage = require('@tcp/core/src/assets/facebook.png');
-const InstagramLinkImage = require('@tcp/core/src/assets/instagram.png');
-const ChildProfileImage = require('@tcp/core/src/assets/child-birthday-profile.png');
-const SMSOptInImage = require('@tcp/core/src/assets/sms.png');
-const AddMailingAddressImage = require('@tcp/core/src/assets/mailingAddress.png');
-const AddFavoriteStoreImage = require('@tcp/core/src/assets/store.png');
-const AddShopperTypeImage = require('@tcp/core/src/assets/survey.png');
-
-/**
- * ExtraPointsDetailModal component used for show details earn extra points.
- * @sourceMap - sourceMap object for images path
- */
-
-const sourceMap = {
-  AppDownload: AppDownloadImage,
-  ProductReview: ProductReviewImage,
-  FacebookLink: FacebookLinkImage,
-  InstagramLink: InstagramLinkImage,
-  ChildProfile: ChildProfileImage,
-  SMSOptIn: SMSOptInImage,
-  AddMailingAddress: AddMailingAddressImage,
-  AddFavoriteStore: AddFavoriteStoreImage,
-  AddShopperType: AddShopperTypeImage,
-};
 
 /**
  * This Class component use for return the Extra Points Detail Modal
@@ -72,17 +46,16 @@ class ExtraPointsDetailModal extends React.PureComponent {
         <EarnExtraPointsTileImage>
           <ImageSize source={sourceMap[waysToEarnRow.activityCode]} />
         </EarnExtraPointsTileImage>
-        <ActivityModalTitleWrapper>
-          <BodyCopy
-            fontSize="fs28"
-            fontWeight="black"
-            fontFamily="primary"
-            textAlign="center"
-            className="elem-mb-MED"
-            text={activityDetails.activityModalTitle}
-            data-locator={`earnPointsModal_${activityDetails.activityModalAction}_title`}
-          />
-        </ActivityModalTitleWrapper>
+
+        <BodyCopyWithSpacing
+          fontSize="fs28"
+          fontWeight="black"
+          fontFamily="primary"
+          textAlign="center"
+          spacingStyles="margin-top-LRG"
+          text={activityDetails.activityModalTitle}
+          data-locator={`earnPointsModal_${activityDetails.activityModalAction}_title`}
+        />
         <BodyCopy
           component="div"
           fontSize="fs18"
