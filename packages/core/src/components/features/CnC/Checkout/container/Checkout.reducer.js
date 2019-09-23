@@ -177,7 +177,7 @@ export default function CheckoutReducer(state = initialState, action) {
   // const uiFlags = checkout.get('uiFlags');
   switch (action.type) {
     case 'CHECKOUT_VALUES_SET_PICKUP':
-      return checkout.setIn(['values', 'pickUpContact'], fromJS(action.pickUpContact));
+      return checkout.setIn(['values', 'pickUpContact'], action.pickUpContact);
     case 'CHECKOUT_VALUES_SET_PICKUP_ALT':
       return checkout.setIn(['values', 'pickUpAlternative'], action.pickUpAlternative);
     // case 'CHECKOUT_VALUES_SET_GIFTCARDS':
@@ -207,8 +207,8 @@ export default function CheckoutReducer(state = initialState, action) {
     // case 'CHECKOUT_ORDER_OPTIONS_SET_GIFT_WRAP':
     //   return merge(orderOptions, { giftWrapOptions: action.giftWrapOptions });
 
-    // case 'CHECKOUT_ORDER_OPTIONS_SET_INTL_URL':
-    //   return merge(orderOptions, { internationalUrl: action.internationalUrl });
+    case 'CHECKOUT_ORDER_OPTIONS_SET_INTL_URL':
+      return checkout.setIn(['options', 'internationalUrl'], action.internationalUrl);
     default:
       return uiFlagReducer(checkout, action);
   }

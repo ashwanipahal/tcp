@@ -7,6 +7,9 @@ import styles from '../styles/ReviewPage.style';
 import { CHECKOUT_ROUTES } from '../../../Checkout.constants';
 import utility from '../../../util/utility';
 import { Anchor } from '../../../../../../common/atoms';
+import PickUpReviewSectionContainer from '../organisms/PickUpReviewSection';
+import ShippingReviewSection from '../organisms/ShippingReviewSection';
+import BillingSection from '../organisms/BillingSection';
 
 class ReviewPage extends React.PureComponent {
   static propTypes = {
@@ -31,9 +34,6 @@ class ReviewPage extends React.PureComponent {
       applyConditionTermsText,
       applyConditionAndText,
       applyConditionPolicyText,
-      pickupSectionTitle,
-      shippingSectionTitle,
-      billingSectionTitle,
       ariaLabelBackLink,
       ariaLabelSubmitOrderButton,
     } = labels;
@@ -41,9 +41,25 @@ class ReviewPage extends React.PureComponent {
     return (
       <div className={className}>
         <CheckoutSectionTitleDisplay title={header} dataLocator="review-title" />
-        {!!orderHasPickUp && <div className="review-pickup">{pickupSectionTitle}</div>}
-        {!!orderHasShipping && <div className="review-shipping">{shippingSectionTitle}</div>}
-        <div className="review-billing">{billingSectionTitle}</div>
+        {!!orderHasPickUp && (
+          <div className="review-pickup">
+            <PickUpReviewSectionContainer
+              onEdit={() => {
+                utility.routeToPage(CHECKOUT_ROUTES.pickupPage);
+              }}
+            />
+          </div>
+        )}
+        {!!orderHasShipping && (
+          <div className="review-shipping">
+            <ShippingReviewSection
+              onEdit={() => {
+                utility.routeToPage(CHECKOUT_ROUTES.shippingPage);
+              }}
+            />
+          </div>
+        )}
+        <BillingSection />
         <CheckoutFooter
           hideBackLink
           ariaLabelBackLink={ariaLabelBackLink}

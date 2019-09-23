@@ -59,7 +59,7 @@ class ApplyNowModalWrapper extends React.Component {
         <Anchor
           fontSizeVariation="medium"
           anchorVariation="primary"
-          text={getLabelValue(labels, 'apply_now_link_modal')}
+          text={getLabelValue(labels, 'lbl_PLCCModal_applyNowLink')}
           onClick={this.openModal}
           underline
         />

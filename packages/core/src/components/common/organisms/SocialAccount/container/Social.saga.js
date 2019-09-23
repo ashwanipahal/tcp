@@ -4,7 +4,7 @@
 
 import { call, takeLatest, put } from 'redux-saga/effects';
 import SOCIAL_CONSTANTS from '../social.constants';
-import { setSocialAccount } from './Social.actions';
+import { setSocialAccount, showPointModalDetails } from './Social.actions';
 import {
   getSocialAccountsInformation,
   saveSocialAccountsInfo,
@@ -30,10 +30,16 @@ export function* savesocialAccounts({ payload }) {
       userId: payload.socialAccInfo.userId,
     };
 
+    const isConnected = payload.socialAccInfo.isconnected;
+
     const res = yield call(saveSocialAccountsInfo, body);
     /* istanbul ignore else */
     if (res) {
       yield put(setSocialAccount(res));
+    }
+
+    if (isConnected) {
+      yield put(showPointModalDetails({ state: !isConnected }));
     }
   } catch (err) {
     console.log('err', err);

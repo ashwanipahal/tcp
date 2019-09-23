@@ -1,9 +1,14 @@
+import { isCanada } from '../../../core/src/utils';
+
+const country = isCanada() ? 'ca' : 'us';
+
 const CHECKOUT_STAGES = {
   PICKUP: 'pickup',
   SHIPPING: 'shipping',
   BILLING: 'billing',
   REVIEW: 'review',
   CONFIRMATION: 'confirmation',
+  INTERNATIONAL_CHECKOUT: 'international-checkout',
 };
 
 export const CHECKOUT_PAGE = 'checkout';
@@ -14,35 +19,35 @@ export const CHECKOUT_SECTIONS = {
     page: CHECKOUT_PAGE,
     displayName: 'Pickup',
     pathPart: 'pickup',
-    pathPattern: '/us/checkout/pickup',
+    pathPattern: `/${country}/checkout/pickup`,
   },
   [CHECKOUT_STAGES.SHIPPING]: {
     id: CHECKOUT_STAGES.SHIPPING,
     page: CHECKOUT_PAGE,
     displayName: 'Shipping',
     pathPart: 'shipping',
-    pathPattern: '/us/checkout/shipping',
+    pathPattern: `/${country}/checkout/shipping`,
   },
   [CHECKOUT_STAGES.BILLING]: {
     id: CHECKOUT_STAGES.BILLING,
     page: CHECKOUT_PAGE,
     displayName: 'Billing',
     pathPart: 'billing',
-    pathPattern: '/us/checkout/billing',
+    pathPattern: `/${country}/checkout/billing`,
   },
   [CHECKOUT_STAGES.REVIEW]: {
     id: CHECKOUT_STAGES.REVIEW,
     page: CHECKOUT_PAGE,
     displayName: 'Review',
     pathPart: 'review',
-    pathPattern: '/us/checkout/review',
+    pathPattern: `/${country}/checkout/review`,
   },
   [CHECKOUT_STAGES.CONFIRMATION]: {
     id: CHECKOUT_STAGES.CONFIRMATION,
     page: CHECKOUT_PAGE,
     displayName: '',
     pathPart: 'confirmation',
-    pathPattern: '/us/checkout/confirmation',
+    pathPattern: `/${country}/checkout/confirmation`,
   },
 };
 

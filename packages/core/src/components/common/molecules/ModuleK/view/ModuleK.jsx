@@ -13,11 +13,20 @@ type Props = {
   headerText: Array<Object>,
   promoTextBanner: Array<Object>,
   masonryGrid: Object,
+  accessibility: Object,
 };
 
 type State = {
   current: number,
   next: number,
+};
+
+const carouselConfig = {
+  autoplay: true,
+  dataLocatorPlay: getLocator('moduleK_play_button'),
+  dataLocatorPause: getLocator('moduleK_pause_button'),
+  customArrowLeft: getIconPath('carousel-big-carrot'),
+  customArrowRight: getIconPath('carousel-big-carrot'),
 };
 
 /**
@@ -28,7 +37,12 @@ type State = {
  */
 class ModuleK extends React.PureComponent<Props, State> {
   render() {
-    const { headerText, masonryGrid, className } = this.props;
+    const {
+      headerText,
+      masonryGrid,
+      className,
+      accessibility: { playIconButton, pauseIconButton } = {},
+    } = this.props;
 
     const { CAROUSEL_OPTIONS, IMG_DATA } = config;
 
@@ -38,7 +52,10 @@ class ModuleK extends React.PureComponent<Props, State> {
     CAROUSEL_OPTIONS.nextArrow = (
       <button type="button" data-locator="moduleK_right_arrow" className="slick-prev" />
     );
-    CAROUSEL_OPTIONS.hidePlayPause = masonryGrid.length === 1;
+
+    carouselConfig.autoplay = carouselConfig.autoplay && masonryGrid.length > 1;
+    carouselConfig.pauseIconButtonLabel = pauseIconButton;
+    carouselConfig.playIconButtonLabel = playIconButton;
 
     return (
       <BodyCopy component="div" className={`${className} moduleK`}>
@@ -77,18 +94,11 @@ class ModuleK extends React.PureComponent<Props, State> {
             <Carousel
               options={CAROUSEL_OPTIONS}
               inheritedStyles={Carousel}
-              carouselConfig={{
-                autoplay: true,
-                dataLocatorPlay: getLocator('moduleK_play_button'),
-                dataLocatorPause: getLocator('moduleK_pause_button'),
-                customArrowLeft: getIconPath('carousel-big-carrot'),
-                customArrowRight: getIconPath('carousel-big-carrot'),
-              }}
+              carouselConfig={carouselConfig}
             >
               {masonryGrid.map(({ promoBanner, mediaLinkedList, singleCTAButton }, index) => {
                 const checkPromo = promoBanner && promoBanner.length;
 
-                console.info('>> ModuleK -- mediaLinkedList-----', mediaLinkedList);
                 return (
                   <React.Fragment>
                     {checkPromo && (

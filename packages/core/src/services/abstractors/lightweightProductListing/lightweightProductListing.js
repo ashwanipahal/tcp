@@ -1,13 +1,12 @@
 import mock from './mock';
 import { executeUnbxdAPICall } from '../../handler';
 import endpoints from '../../endpoints';
-import { getAPIConfig } from '../../../utils';
 
 /**
  * Abstractor layer for loading Product List Tabs data
  */
 const Abstractor = {
-  getData: ({ categoryId, rows = 18, fields = 'imageUrl,seo_token' }) => {
+  getData: ({ categoryId, rows = 18, fields = 'imageUrl,seo_token,product_name' }) => {
     const payload = {
       body: {
         start: 0,
@@ -30,8 +29,6 @@ const Abstractor = {
     return mock;
   },
   processData: res => {
-    const { assetHost } = getAPIConfig();
-
     return res.body.response.products.map(item => {
       const {
         imageUrl: [imageUrl],
@@ -48,7 +45,9 @@ const Abstractor = {
            some security issue.
            TODO: This should be removed once we start getting CDN URL from the unbxd.
         */
-        imageUrl: [imageUrl.replace('https://www.childrensplace.com', assetHost)],
+        imageUrl: [
+          imageUrl.replace('https://www.childrensplace.com', 'https://test4.childrensplace.com'),
+        ],
       };
     });
   },

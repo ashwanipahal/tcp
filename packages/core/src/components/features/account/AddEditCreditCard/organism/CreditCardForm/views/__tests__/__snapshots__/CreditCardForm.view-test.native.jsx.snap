@@ -286,11 +286,16 @@ exports[`CreditCardForm component should renders correctly in mailingAddress vie
       />
       <Styled(View)>
         <Styled(BodyCopy)
+          accessibilityText=""
+          dataLocator=""
           fontFamily="secondary"
           fontSize="fs12"
           fontWeight="black"
+          margin={null}
           marginTop="10"
+          numberOfLines={null}
           textAlign="left"
+          textDecoration={null}
         />
       </Styled(View)>
       <Field
@@ -727,11 +732,16 @@ exports[`CreditCardForm component should renders correctly with address dropdown
       />
       <Styled(View)>
         <Styled(BodyCopy)
+          accessibilityText=""
+          dataLocator=""
           fontFamily="secondary"
           fontSize="fs12"
           fontWeight="black"
+          margin={null}
           marginTop="10"
+          numberOfLines={null}
           textAlign="left"
+          textDecoration={null}
         />
       </Styled(View)>
       <Field
@@ -1126,11 +1136,16 @@ exports[`CreditCardForm component should renders correctly with addressForm 1`] 
       />
       <Styled(View)>
         <Styled(BodyCopy)
+          accessibilityText=""
+          dataLocator=""
           fontFamily="secondary"
           fontSize="fs12"
           fontWeight="black"
+          margin={null}
           marginTop="10"
+          numberOfLines={null}
           textAlign="left"
+          textDecoration={null}
         />
       </Styled(View)>
       <Field

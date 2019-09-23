@@ -11,20 +11,40 @@ exports[`MyFavoriteStore Component MyFavoriteStore should render correctly 1`] =
   title="lbl_common_myFavoriteStore"
 >
   <Styled(BodyCopy)
+    accessibilityText=""
+    dataLocator=""
     fontSize="fs16"
+    margin={null}
+    numberOfLines={null}
     text="Fulton Street"
+    textDecoration={null}
   />
   <Styled(BodyCopy)
+    accessibilityText=""
+    dataLocator=""
     fontSize="fs16"
+    margin={null}
+    numberOfLines={null}
     text="471-485 Fulton Street"
+    textDecoration={null}
   />
   <Styled(BodyCopy)
+    accessibilityText=""
+    dataLocator=""
     fontSize="fs16"
+    margin={null}
+    numberOfLines={null}
     text="Brooklyn, NY 11201"
+    textDecoration={null}
   />
   <Styled(BodyCopy)
+    accessibilityText=""
+    dataLocator=""
     fontSize="fs16"
+    margin={null}
+    numberOfLines={null}
     text="(712)-431-1408"
+    textDecoration={null}
   />
 </MyProfileTile>
 `;

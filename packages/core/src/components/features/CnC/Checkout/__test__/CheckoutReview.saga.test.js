@@ -9,7 +9,7 @@ import { requestPersonalizedCoupons } from '../../../../../services/abstractors/
 
 describe('CheckoutReview saga', () => {
   it('CheckoutReview', () => {
-    const CheckoutReviewSaga = CheckoutReview();
+    const CheckoutReviewSaga = CheckoutReview({ payload: {} });
     CheckoutReviewSaga.next();
     CheckoutReviewSaga.next();
     CheckoutReviewSaga.next();

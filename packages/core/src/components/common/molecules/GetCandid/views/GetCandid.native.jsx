@@ -87,7 +87,7 @@ class GetCandid extends React.Component {
     const { navigation, labels } = this.props;
     navigateToNestedRoute(navigation, 'HomeStack', 'GetCandidGallery', {
       activeIndex: index,
-      title: labels.title.toUpperCase(),
+      title: labels.lbl_getCandid_title.toUpperCase(),
     });
   };
 
@@ -96,7 +96,7 @@ class GetCandid extends React.Component {
     const data = candidData && candidData.Views;
     return (
       <Wrapper>
-        {labels.title && (
+        {labels.lbl_getCandid_title && (
           <>
             <Title
               mobileFontFamily="primary"
@@ -104,7 +104,7 @@ class GetCandid extends React.Component {
               fontWeight="semibold"
               color="gray.900"
               marginBottom="12px"
-              text={labels.title}
+              text={labels.lbl_getCandid_title}
               textAlign="center"
               letterSpacing="ls167"
             />
@@ -113,7 +113,7 @@ class GetCandid extends React.Component {
               fontSize="fs14"
               fontWeight="regular"
               color="gray.900"
-              text={labels.titleDescription}
+              text={labels.lbl_getCandid_titleDescription}
               textAlign="center"
             />
             {data && (
@@ -133,7 +133,7 @@ class GetCandid extends React.Component {
               anchorVariation="primary"
               noLink
               dataLocator=""
-              text={labels.btnSeeMore}
+              text={labels.lbl_getCandid_btnSeeMore}
               visible
               onPress={() => this.navigateToGallery(IMAGE_COUNT - 1)}
             />

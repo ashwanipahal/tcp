@@ -64,7 +64,7 @@ class LabeledRadioButtonGroup extends React.Component {
      */
     optionsMap: PropTypes.arrayOf(
       PropTypes.shape({
-        name: PropTypes.string.isRequired,
+        input: PropTypes.object.isRequired,
         title: PropTypes.oneOfType([PropTypes.string, PropTypes.element]).isRequired,
         content: PropTypes.element,
         disabled: PropTypes.bool,
@@ -80,8 +80,6 @@ class LabeledRadioButtonGroup extends React.Component {
     input: PropTypes.shape({
       /** The value of the selected item. */
       value: PropTypes.string.isRequired,
-      /** The name for all the radio inputs to render (a random string will be appended to it to ensure uniqueness) */
-      name: PropTypes.string.isRequired,
       /** Called when the selected item of this component is changed by the user. Passed in by an enclosing Redux-Form <code>Field</code> */
       onChange: PropTypes.func,
     }),
@@ -99,8 +97,9 @@ class LabeledRadioButtonGroup extends React.Component {
     disabled: false,
     title: '',
     input: {
-      value: '',
-      name: '',
+      value: {
+        name: '',
+      },
     },
   };
 
@@ -111,7 +110,7 @@ class LabeledRadioButtonGroup extends React.Component {
     this.containerDivRef = null; // the HTML DOM element of the containing div element of this component
 
     // eslint-disable-next-line no-plusplus
-    this.groupName = `${props.input.name}_${LabeledRadioButtonGroup.radioGroupCounter++}`; // make sure the name of the group is different even if the parent form is reused
+    this.groupName = `${props.input.value.name}_${LabeledRadioButtonGroup.radioGroupCounter++}`; // make sure the name of the group is different even if the parent form is reused
 
     // bind methods that are passed as callbacks
     this.captureContainerDivRef = this.captureContainerDivRef.bind(this);
@@ -134,10 +133,10 @@ class LabeledRadioButtonGroup extends React.Component {
   // select the item with the given value
   setValue(value) {
     const { input } = this.props;
-    if (input && input.name !== value && input.onChange) {
+    if (input && input.value.name !== value.name && input.onChange) {
       // if the value to select is not the current value of this component
       // notify our listeners that the user wants the value of this component to change
-      input.onChange(value);
+      input.onChange(value.name);
     }
   }
 
@@ -148,7 +147,10 @@ class LabeledRadioButtonGroup extends React.Component {
 
   // handles changes of checked radio
   handleItemChange(event) {
-    this.setValue(event.target.value); // set the value of this component to the value of the clicked item
+    const value = {
+      name: event.target.value,
+    };
+    this.setValue(value); // set the value of this component to the value of the clicked item
   }
 
   captureContainerDivRef(ref) {
@@ -161,14 +163,22 @@ class LabeledRadioButtonGroup extends React.Component {
       disabled,
       className,
       optionsMap,
-      input: { name },
-      input,
       /* we do not want the props in the next line to be part of otherProps */
       // meta, // eslint-disable-line no-unused-vars
       isHideIfEmptyOptionsMap,
       isShowSelectedValueInLabel,
       ...otherProps
     } = this.props;
+
+    let {
+      input: { value },
+    } = this.props;
+
+    if (typeof value === 'string') {
+      value = {
+        name: value,
+      };
+    }
 
     if (isHideIfEmptyOptionsMap && optionsMap.size === 0) {
       return null; // render nothing
@@ -177,7 +187,9 @@ class LabeledRadioButtonGroup extends React.Component {
     const containingClassName = cssClassName(`${className}-container `, className, {
       '-disabled': disabled,
     });
-    const selectedOptionTitle = isShowSelectedValueInLabel ? this.getTitleOfValue(name.name) : null;
+    const selectedOptionTitle = isShowSelectedValueInLabel
+      ? this.getTitleOfValue(value.name)
+      : null;
     const errorUniqueId = `error_${this.groupName}`; // Unique Id to connect the error input with its error message. Both needs to be the same. Accessibility requirement. DT-30852
 
     return (
@@ -188,7 +200,6 @@ class LabeledRadioButtonGroup extends React.Component {
         {...dataAttributes}
       >
         {title && <span className={`${className}-title`}>{title}</span>}
-        {/* {name.name &&  <span className={`${className}-title-name`}>{name.name}</span>} */}
         {selectedOptionTitle && (
           <span className={`${className}-title-name`}>{selectedOptionTitle}</span>
         )}
@@ -198,16 +209,16 @@ class LabeledRadioButtonGroup extends React.Component {
               key={option.value}
               aria-describedby={errorUniqueId}
               name={this.groupName}
-              checked={name.name === option.value}
+              checked={value.name === option.value}
               onChange={this.handleItemChange}
               selectedValue={option.value}
               tabIndex="0"
-              input={input.name}
+              input={value}
               disabled={option.disabled}
               className={cssClassName(
                 `${className}-item `,
                 className,
-                { ' item-selected-option': option.value === name.name },
+                { ' item-selected-option': option.value === value.name },
                 { ' item-disabled-option': option.disabled }
               )}
             >
