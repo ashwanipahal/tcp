@@ -115,6 +115,9 @@ export default css`
       @media ${props => props.theme.mediaQuery.smallOnly} {
         margin-bottom: ${props => props.theme.spacing.ELEM_SPACING.SM};
       }
+      @media ${props => props.theme.mediaQuery.largeOnly} {
+        margin-bottom: ${props => props.theme.spacing.ELEM_SPACING.SM};
+      }
       span {
         margin-right: ${props => props.theme.spacing.ELEM_SPACING.SM};
       }
@@ -145,12 +148,6 @@ export default css`
       }
     }
   }
-  .address-wrapper {
-    @media ${props => props.theme.mediaQuery.largeOnly} {
-      display: flex;
-      align-items: center;
-    }
-  }
   .address-details--listing-header {
     @media ${props => props.theme.mediaQuery.largeOnly} {
       margin-right: ${props => props.theme.spacing.ELEM_SPACING.XL};
@@ -158,18 +155,28 @@ export default css`
   }
   .brand-store--sm {
     display: none;
+    margin-bottom: ${props => props.theme.spacing.ELEM_SPACING.XL};
     @media ${props => props.theme.mediaQuery.largeOnly} {
       display: flex;
     }
   }
 
   .brand-store--lg {
-    margin-bottom: ${props => props.theme.spacing.ELEM_SPACING.XS};
+    margin-bottom: ${props => props.theme.spacing.ELEM_SPACING.XL};
     @media ${props => props.theme.mediaQuery.largeOnly} {
       display: none;
     }
     @media ${props => props.theme.mediaQuery.mediumOnly} {
       margin: 0;
+    }
+  }
+
+  .heading-right {
+    @media ${props => props.theme.mediaQuery.smallOnly} {
+      margin-bottom: ${props => props.theme.spacing.ELEM_SPACING.LRG};
+    }
+    @media ${props => props.theme.mediaQuery.largeOnly} {
+      margin-bottom: ${props => props.theme.spacing.ELEM_SPACING.LRG};
     }
   }
 `;

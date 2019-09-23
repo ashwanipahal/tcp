@@ -8,7 +8,7 @@ const labels = labelsMock.StoreLocator;
 const storeMockNotGym = { ...storeMock };
 storeMockNotGym.isGym = false;
 
-storiesOf('StoreAddressTile C', module)
+storiesOf('StoreAddressTile', module)
   .add('Store Details - No Favorite', () => <StoreAddressTile labels={labels} store={storeMock} />)
   .add('Store Details - Favorite', () => (
     <StoreAddressTile isFavorite labels={labels} store={storeMock} />

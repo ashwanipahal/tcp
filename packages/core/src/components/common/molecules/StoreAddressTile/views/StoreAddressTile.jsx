@@ -1,5 +1,4 @@
 import React, { PureComponent, Fragment } from 'react';
-import PropTypes from 'prop-types';
 import withStyles from '@tcp/core/src/components/common/hoc/withStyles';
 import { Anchor, BodyCopy, Image, Button } from '@tcp/core/src/components/common/atoms';
 import { toTimeString, getIconPath } from '@tcp/core/src/utils';
@@ -10,14 +9,11 @@ import style, {
   TileBody,
   FavStore,
 } from '../styles/StoreAddressTile.style';
-
-const listingHeader = 'listing-header';
-const listingType = 'listing';
-const detailsType = 'detail';
+import { listingHeader, listingType, detailsType, propTypes, defaultProps } from './prop-types';
 
 class StoreAddressTile extends PureComponent {
-  static getIsFavStoreIcon(props) {
-    const { labels } = props;
+  getIsFavStoreIcon() {
+    const { labels } = this.props;
     return (
       <FavStore>
         <Image
@@ -33,7 +29,8 @@ class StoreAddressTile extends PureComponent {
     );
   }
 
-  static getDetailsTileFooter({ labels }) {
+  getDetailsTileFooter() {
+    const { labels } = this.props;
     return (
       <div>
         <Button
@@ -48,8 +45,8 @@ class StoreAddressTile extends PureComponent {
     );
   }
 
-  static getListingTileFooter(props) {
-    const { labels, openStoreDetail, isFavorite } = props;
+  getListingTileFooter() {
+    const { labels, openStoreDetail, isFavorite, setFavoriteStore } = this.props;
     return (
       <Fragment>
         <div>
@@ -66,9 +63,14 @@ class StoreAddressTile extends PureComponent {
           </Anchor>
         </div>
         <div>
-          {isFavorite && this.getIsFavStoreIcon(props)}
+          {isFavorite && this.getIsFavStoreIcon()}
           {!isFavorite && (
-            <Button buttonVariation="fixed-width" type="button" data-locator="set-favorite-store">
+            <Button
+              onClick={setFavoriteStore}
+              buttonVariation="fixed-width"
+              type="button"
+              data-locator="set-favorite-store"
+            >
               {labels.lbl_storelocators_landingpage_setfavStore}
             </Button>
           )}
@@ -77,11 +79,12 @@ class StoreAddressTile extends PureComponent {
     );
   }
 
-  static getDetailsTileHeader(props) {
+  getDetailsTileHeader() {
     const {
-      store: { basicInfo },
-    } = props;
-    const { storeName } = basicInfo;
+      store: {
+        basicInfo: { storeName },
+      },
+    } = this.props;
     return (
       <div className="store-details-header">
         <h4 className="store-name store-name--details">{storeName}</h4>
@@ -89,14 +92,13 @@ class StoreAddressTile extends PureComponent {
     );
   }
 
-  static getListingHeader(props) {
+  getListingHeader() {
     const {
-      storeIndex,
       openStoreDetail,
       store: { isGym, basicInfo, distance },
       labels,
       openStoreDirections,
-    } = props;
+    } = this.props;
     const { storeName, address, phone } = basicInfo;
     const { addressLine1, city, state, zipCode } = address;
     return (
@@ -111,7 +113,6 @@ class StoreAddressTile extends PureComponent {
                 fontFamily="secondary"
                 fontWeight="semibold"
               >
-                {storeIndex && `${storeIndex}.`}
                 {storeName}
               </BodyCopy>
               <BodyCopy
@@ -120,9 +121,7 @@ class StoreAddressTile extends PureComponent {
                 color="text.primary"
                 fontFamily="secondary"
               >
-                {`(${labels.lbl_storelocators_landingpage_openInterval} ${this.getStoreHours(
-                  props
-                )})`}
+                {`(${labels.lbl_storelocators_landingpage_openInterval} ${this.getStoreHours()})`}
               </BodyCopy>
             </div>
             <div className="title__two">
@@ -168,11 +167,11 @@ class StoreAddressTile extends PureComponent {
                 ))}
               </div>
             </address>
-            {isGym && this.getBrandStoreIcon(props, 'brand-store--sm')}
+            {isGym && this.getBrandStoreIcon('brand-store--sm')}
           </div>
         </div>
         <div className="heading-right">
-          {isGym && this.getBrandStoreIcon(props, 'brand-store--lg')}
+          {isGym && this.getBrandStoreIcon('brand-store--lg')}
           <Anchor
             fontSizeVariation="medium"
             underline
@@ -189,13 +188,13 @@ class StoreAddressTile extends PureComponent {
     );
   }
 
-  static getListingTileHeader(props) {
+  getListingTileHeader() {
     const {
       storeIndex,
       store: { basicInfo, distance },
       labels,
       openStoreDirections,
-    } = props;
+    } = this.props;
     const { storeName } = basicInfo;
 
     return (
@@ -209,11 +208,11 @@ class StoreAddressTile extends PureComponent {
             fontWeight="semibold"
             className="store-name store-name--listing"
           >
-            {storeIndex && `${storeIndex}. `}
+            {!!storeIndex && `${storeIndex}. `}
             {storeName}
           </BodyCopy>
           <BodyCopy fontSize="fs12" component="span" color="text.primary" fontFamily="secondary">
-            {`(${labels.lbl_storelocators_landingpage_openInterval} ${this.getStoreHours(props)})`}
+            {`(${labels.lbl_storelocators_landingpage_openInterval} ${this.getStoreHours()})`}
           </BodyCopy>
         </div>
         <div className="title-two">
@@ -236,8 +235,10 @@ class StoreAddressTile extends PureComponent {
     );
   }
 
-  static getStoreType(props) {
-    const { features } = props;
+  getStoreType() {
+    const {
+      store: { features },
+    } = this.props;
     const { storeType } = features;
     return (
       <BodyCopy
@@ -260,8 +261,8 @@ class StoreAddressTile extends PureComponent {
     );
   }
 
-  static getBrandStoreIcon(props, cls = '') {
-    const { labels } = props;
+  getBrandStoreIcon(cls = '') {
+    const { labels } = this.props;
     return (
       <BodyCopy
         fontSize="fs12"
@@ -283,8 +284,8 @@ class StoreAddressTile extends PureComponent {
     );
   }
 
-  static getStoreAddress(props) {
-    const { store, variation, isFavorite } = props;
+  getStoreAddress() {
+    const { store, variation, isFavorite } = this.props;
     const { address, phone } = store.basicInfo;
     const { addressLine1, city, state, zipCode } = address;
 
@@ -306,21 +307,21 @@ class StoreAddressTile extends PureComponent {
         </BodyCopy>
         <div className="address-meta">
           <div className="address-meta__left">
-            {variation === detailsType && this.getStoreType(store)}
-            {store.isGym ? this.getBrandStoreIcon(props) : <div className="brand-store" />}
+            {variation === detailsType && this.getStoreType()}
+            {store.isGym ? this.getBrandStoreIcon() : <div className="brand-store" />}
           </div>
           <div className="address-meta__right">
-            {variation === detailsType && isFavorite && this.getIsFavStoreIcon(props)}
+            {variation === detailsType && isFavorite && this.getIsFavStoreIcon()}
           </div>
         </div>
       </div>
     );
   }
 
-  static getStoreHours(props) {
+  getStoreHours() {
     const {
       store: { hours },
-    } = props;
+    } = this.props;
     const todaysDate = new Date();
     const { regularHours, holidayHours, regularAndHolidayHours } = hours;
     const selectedInterval = [...regularHours, ...holidayHours, ...regularAndHolidayHours].filter(
@@ -337,23 +338,23 @@ class StoreAddressTile extends PureComponent {
   }
 
   render() {
-    const { className, children, variation } = this.props;
+    const { className, children, variation, ...rest } = this.props;
     return (
       <div className={className}>
-        {variation === listingHeader && this.constructor.getListingHeader(this.props)}
+        {variation === listingHeader && this.getListingHeader()}
         {variation !== listingHeader && (
           <Fragment>
-            <TileHeader {...this.props} className="tile-header">
-              {variation === detailsType && this.constructor.getDetailsTileHeader(this.props)}
-              {variation === listingType && this.constructor.getListingTileHeader(this.props)}
+            <TileHeader className="title-header" variation={variation} {...rest}>
+              {variation === detailsType && this.getDetailsTileHeader()}
+              {variation === listingType && this.getListingTileHeader()}
             </TileHeader>
-            <TileBody {...this.props} className="tile-body">
-              {this.constructor.getStoreAddress(this.props)}
+            <TileBody className="title-body" variation={variation} {...rest}>
+              {this.getStoreAddress()}
               {children}
             </TileBody>
-            <TileFooter {...this.props} className="tile-footer">
-              {variation === detailsType && this.constructor.getDetailsTileFooter(this.props)}
-              {variation === listingType && this.constructor.getListingTileFooter(this.props)}
+            <TileFooter className="title-footer" variation={variation} {...rest}>
+              {variation === detailsType && this.getDetailsTileFooter()}
+              {variation === listingType && this.getListingTileFooter()}
             </TileFooter>
           </Fragment>
         )}
@@ -362,52 +363,8 @@ class StoreAddressTile extends PureComponent {
   }
 }
 
-StoreAddressTile.propTypes = {
-  className: PropTypes.string.isRequired,
-  children: PropTypes.arrayOf(PropTypes.node),
-  variation: PropTypes.oneOf([listingType, detailsType, listingHeader]),
-  labels: PropTypes.shape({
-    lbl_storelocators_landingpage_storedetails_link: PropTypes.string,
-    lbl_storelocators_landingpage_getdirections_link: PropTypes.string,
-    lbl_storelocators_landingpage_setfavStore: PropTypes.string,
-    lbl_storelocators_landingpage_favStore: PropTypes.string,
-    lbl_storelocators_common_atThisPlace: PropTypes.string,
-    lbl_storelocators_landingpage_openInterval: PropTypes.string,
-    lbl_storelocators_landingpage_milesAway: PropTypes.string,
-  }).isRequired,
-  store: PropTypes.shape({
-    basicInfo: PropTypes.shape({
-      address: PropTypes.shape({
-        addressLine1: PropTypes.string,
-        city: PropTypes.string,
-        state: PropTypes.string,
-        zipCode: PropTypes.string,
-      }),
-      phone: PropTypes.string,
-      storeName: PropTypes.string,
-      coordinates: PropTypes.shape({
-        lat: PropTypes.number,
-        long: PropTypes.number,
-      }),
-    }),
-    hours: PropTypes.shape({}),
-    distance: PropTypes.string,
-    features: PropTypes.shape({
-      storeType: PropTypes.string,
-    }),
-    isGym: PropTypes.bool,
-  }).isRequired,
-  isFavorite: PropTypes.bool,
-  index: PropTypes.number,
-  isListingHeader: PropTypes.bool,
-};
+StoreAddressTile.propTypes = propTypes;
 
-StoreAddressTile.defaultProps = {
-  children: null,
-  variation: detailsType,
-  isFavorite: false,
-  index: null,
-  isListingHeader: false,
-};
+StoreAddressTile.defaultProps = defaultProps;
 
 export default withStyles(StoreAddressTile, style);
