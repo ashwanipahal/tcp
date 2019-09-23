@@ -84,6 +84,9 @@ export default styled.div`
     font-weight: ${props => props.theme.fonts.fontWeight.normal};
     letter-spacing: 1px;
     text-align: center;
+    @media ${props => props.theme.mediaQuery.medium} {
+      width: 50%;
+    }
   }
 
   .pre-approved-offer-criteria {

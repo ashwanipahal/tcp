@@ -21,6 +21,7 @@ import {
 import { backToHome } from '../../utils/DateOfBirthHelper';
 import StyledPLCCFormWrapper from './styles/PLCCForm.style';
 import PLCCTimeoutInterimModal from '../Modals/PLCCTmeoutInterimModal';
+import { getPageViewGridRowSize } from '../../utils/utility';
 
 class PLCCForm extends React.PureComponent {
   static idleUserEvents = [
@@ -167,34 +168,50 @@ class PLCCForm extends React.PureComponent {
               <Col
                 key="Prescreen_code_link"
                 data-locator="Prescreen_code_link"
-                colSize={{ large: 12, medium: 8, small: 6 }}
+                colSize={{ large: getPageViewGridRowSize(isPLCCModalFlow), medium: 8, small: 6 }}
               >
                 <PrescreenCode labels={labels} />
               </Col>
             </Row>
-            <ContactInformationFormWrapper labels={labels} dispatch={dispatch} />
+            <ContactInformationFormWrapper
+              labels={labels}
+              dispatch={dispatch}
+              isPLCCModalFlow={isPLCCModalFlow}
+            />
             <Row fullBleed>
-              <Col key="container_contact_info" colSize={{ large: 12, medium: 8, small: 6 }}>
+              <Col
+                key="container_contact_info"
+                colSize={{ large: getPageViewGridRowSize(isPLCCModalFlow), medium: 8, small: 6 }}
+              >
                 <ContactInformation
                   contactInfo={plccData && plccData.contact_information_disclaimer}
                 />
               </Col>
             </Row>
-            <PersonalInformationFormWrapper labels={labels} />
+            <PersonalInformationFormWrapper labels={labels} isPLCCModalFlow={isPLCCModalFlow} />
             <Row fullBleed>
-              <Col key="container_account_info" colSize={{ large: 12, medium: 8, small: 6 }}>
+              <Col
+                key="container_account_info"
+                colSize={{ large: getPageViewGridRowSize(isPLCCModalFlow), medium: 8, small: 6 }}
+              >
                 <AccountInformations
                   classifiedDisclaimer={plccData && plccData.account_classified_disclaimer}
                 />
               </Col>
             </Row>
             <Row fullBleed>
-              <Col key="container_electronic_consent" colSize={{ large: 12, medium: 8, small: 6 }}>
+              <Col
+                key="container_electronic_consent"
+                colSize={{ large: getPageViewGridRowSize(isPLCCModalFlow), medium: 8, small: 6 }}
+              >
                 <ElectronicConsent electronicConsent={plccData && plccData.electronic_consent} />
               </Col>
             </Row>
             <Row fullBleed>
-              <Col key="container_plcc_agreement" colSize={{ large: 12, medium: 8, small: 6 }}>
+              <Col
+                key="container_plcc_agreement"
+                colSize={{ large: getPageViewGridRowSize(isPLCCModalFlow), medium: 8, small: 6 }}
+              >
                 <PLCCAgreements labels={labels} />
               </Col>
             </Row>
@@ -203,7 +220,7 @@ class PLCCForm extends React.PureComponent {
               <Col
                 className="plcc_iAgree_container"
                 key="container_checkbox"
-                colSize={{ large: 12, medium: 8, small: 6 }}
+                colSize={{ large: getPageViewGridRowSize(isPLCCModalFlow), medium: 8, small: 6 }}
               >
                 <Field
                   name="iAgree"
@@ -230,10 +247,10 @@ class PLCCForm extends React.PureComponent {
               fontFamily="secondary"
               fontWeight="regular"
             >
-              <Row fullBleed className="submit_plcc_form">
+              <Row fullBleed>
                 <Col
-                  ignoreGutter={{ small: true }}
-                  colSize={{ large: 6, medium: 4, small: 6 }}
+                  ignoreGutter={{ small: true, medium: true }}
+                  colSize={{ large: getPageViewGridRowSize(isPLCCModalFlow), medium: 8, small: 6 }}
                   className="submit_button_plcc_form_container"
                 >
                   <Button
@@ -247,10 +264,44 @@ class PLCCForm extends React.PureComponent {
                   </Button>
                 </Col>
               </Row>
-              <Row className="no_thanks_link_wrapper">
+              <Row fullBleed>
                 <Col
                   ignoreGutter={{ small: true }}
-                  colSize={{ large: 4, medium: 8, small: 6 }}
+                  colSize={{ large: getPageViewGridRowSize(isPLCCModalFlow), medium: 8, small: 6 }}
+                  className="no_thanks_link"
+                >
+                  <BodyCopy
+                    fontFamily="secondary"
+                    component="div"
+                    onClick={backToHome}
+                    textAlign="center"
+                    tabIndex="0"
+                  >
+                    {getLabelValue(labels, 'lbl_PLCCForm_noThanks')}
+                  </BodyCopy>
+                </Col>
+              </Row>
+              {/* <Row fullBleed className="submit_plcc_form">
+                <Col
+                  ignoreGutter={{ large: true, medium: true, small: true }}
+                  colSize={{ large: 10, medium: 4, small: 6 }}
+                  className="submit_button_plcc_form_container"
+                ><Row>
+                   <Button
+                    buttonVariation="fixed-width"
+                    fill="BLUE"
+                    type="submit"
+                    className="submit_button_plcc_form"
+                    data-locator="plcc_submit_btn"
+                  >
+                    {getLabelValue(labels, 'lbl_PLCCForm_submitButton')}
+                  </Button>
+                </Row>
+                </Col></Row> */}
+              {/* <Row className="no_thanks_link_wrapper">
+                <Col
+                  ignoreGutter={{ large: true, medium: true, small: true }}
+                  colSize={{ large: 5, medium: 8, small: 6 }}
                   className="no_thanks_link"
                   aria-label="no_thanks_link"
                   data-locator="plcc_no_thanks"
@@ -265,7 +316,7 @@ class PLCCForm extends React.PureComponent {
                     {getLabelValue(labels, 'lbl_PLCCForm_noThanks')}
                   </BodyCopy>
                 </Col>
-              </Row>
+              </Row> */}
             </BodyCopy>
           </Grid>
         </form>
