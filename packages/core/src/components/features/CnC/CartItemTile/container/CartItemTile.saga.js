@@ -41,7 +41,7 @@ export function* confirmRemoveItem({ payload, afterHandler }) {
     if (afterHandler) {
       afterHandler();
     }
-    yield put(BAG_PAGE_ACTIONS.getOrderDetails({ after: afterRemovingCartItem }));
+    yield put(BAG_PAGE_ACTIONS.getCartData({ onCartRes: afterRemovingCartItem }));
   } catch (err) {
     logger.error(err);
   }

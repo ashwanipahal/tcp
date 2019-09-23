@@ -20,10 +20,15 @@ import {
   ActiveBagHeaderText,
   ActiveBagHeaderView,
   InActiveBagHeaderView,
+  SuccessTickImage,
+  SuccessMessageContainer,
 } from '../styles/BagPage.style.native';
 import BonusPointsDays from '../../../../common/organisms/BonusPointsDays';
 import InitialPropsHOC from '../../../../common/hoc/InitialPropsHOC/InitialPropsHOC.native';
 import BAGPAGE_CONSTANTS from '../BagPage.constants';
+import BodyCopy from '../../../../common/atoms/BodyCopy';
+
+const tickIcon = require('../../../../../assets/circle-check-fill.png');
 
 class BagPage extends React.Component {
   constructor(props) {
@@ -82,15 +87,9 @@ class BagPage extends React.Component {
   }
 
   render() {
-    const {
-      labels,
-      showAddTobag,
-      navigation,
-      handleCartCheckout,
-      isUserLoggedIn,
-      sflItems,
-    } = this.props;
-
+    const { labels, showAddTobag, navigation } = this.props;
+    const { handleCartCheckout, isUserLoggedIn, sflItems, isCartItemsUpdating } = this.props;
+    const { isDeleting } = isCartItemsUpdating;
     const { activeSection } = this.state;
 
     if (!labels.tagLine) {
@@ -123,7 +122,18 @@ class BagPage extends React.Component {
               )}
             </SflHeadingViewStyle>
           </BagHeaderRow>
-
+          {isDeleting && (
+            <SuccessMessageContainer>
+              <SuccessTickImage source={tickIcon} />
+              <BodyCopy
+                component="span"
+                fontSize="fs12"
+                mobilefontFamily={['secondary']}
+                fontWeight="extrabold"
+                text={labels.itemDeleted}
+              />
+            </SuccessMessageContainer>
+          )}
           <MainSection>
             {activeSection === BAGPAGE_CONSTANTS.BAG_STATE && (
               <ProductTileWrapper bagLabels={labels} />
@@ -170,6 +180,7 @@ BagPage.propTypes = {
   navigation: PropTypes.shape({}).isRequired,
   isUserLoggedIn: PropTypes.bool.isRequired,
   handleCartCheckout: PropTypes.func.isRequired,
+  isCartItemsUpdating: PropTypes.shape({ isDeleting: PropTypes.bool.isRequired }).isRequired,
   fetchLabels: PropTypes.func.isRequired,
   sflItems: PropTypes.shape([]).isRequired,
 };
