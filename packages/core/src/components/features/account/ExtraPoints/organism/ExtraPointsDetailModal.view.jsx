@@ -46,9 +46,9 @@ class ExtraPointsDetailModal extends React.PureComponent {
           <BodyCopy component="div" className={`imageSizeSingle ${waysToEarnRow.activityCode}`} />
         </BodyCopy>
         <BodyCopy
-          fontSize="fs18"
+          fontSize="fs42"
           fontWeight="black"
-          fontFamily="secondary"
+          fontFamily="primary"
           textAlign="center"
           className="elem-mb-MED"
           data-locator={`earnPointsModal_${activeActivity.activityModalAction}_title`}
@@ -57,8 +57,8 @@ class ExtraPointsDetailModal extends React.PureComponent {
         </BodyCopy>
         <BodyCopy
           component="div"
-          fontSize="fs16"
-          fontWeight="black"
+          fontSize="fs22"
+          fontWeight="extrabold"
           fontFamily="secondary"
           textAlign="center"
           className="elem-mb-MED"
@@ -69,8 +69,8 @@ class ExtraPointsDetailModal extends React.PureComponent {
 
         <BodyCopy
           component="div"
-          fontSize="fs14"
-          fontWeight="regular"
+          fontSize="fs22"
+          fontWeight="semibold"
           fontFamily="secondary"
           textAlign="center"
           className="elem-mb-MED"
@@ -106,8 +106,8 @@ class ExtraPointsDetailModal extends React.PureComponent {
         onRequestClose={this.onRequestClosePopup}
         overlayClassName="TCPModal__Overlay"
         className="TCPModal__Content"
-        maxWidth="500px"
-        minHeight="450px"
+        maxWidth="615px"
+        minHeight="615px"
         fixedWidth
         closeIconDataLocator="ExtraPointsDetailModal_crossIcon"
       >
