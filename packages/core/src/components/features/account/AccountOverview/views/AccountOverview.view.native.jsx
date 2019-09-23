@@ -10,7 +10,6 @@ import Panel from '../../../../common/molecules/Panel';
 import PaymentTile from '../../common/organism/PaymentTile';
 import CustomButton from '../../../../common/atoms/Button';
 import AddressOverviewTile from '../../common/organism/AddressOverviewTile';
-import ApplyCardLayout from '../../../browse/ApplyCardPage/views/ApplyCardLayout.View.native';
 import ApplyNowWrapper from '../../../../common/molecules/ApplyNowPLCCModal';
 import {
   UnderlineStyle,
@@ -40,7 +39,6 @@ class AccountOverview extends PureComponent<Props> {
     super(props);
     this.state = {
       showModal: false,
-      applyCard: false,
       applyNow: false,
       getComponentId: {
         login: '',
@@ -148,13 +146,9 @@ class AccountOverview extends PureComponent<Props> {
     return header;
   };
 
-  // toggleApplyCardModal = () => {};
-
-  // toggleApplyNowModal = () => {};
-
   render() {
     const { isUserLoggedIn, labels, commonLabels, handleComponentChange, navigation } = this.props;
-    const { showModal, getComponentId, applyCard, applyNow } = this.state;
+    const { showModal, getComponentId, applyNow } = this.state;
     const modalHeaderLbl = this.getModalHeader(getComponentId, labels);
     const viewContainerStyle = { marginTop: 15 };
     const colorPallete = createThemeColorPalette();
@@ -291,9 +285,6 @@ class AccountOverview extends PureComponent<Props> {
               </ImageWrapper>
             </FavtWrapper>
             <UnderlineStyle />
-
-            <TouchableView onPress={this.toggleApplyCard} />
-            <ApplyCardLayout toggleModal={this.toggleApplyCard} applyCard={applyCard} />
 
             <TouchableView onPress={this.toggleApplyNowModal} />
             <ApplyNowWrapper toggleModalWrapper={this.toggleApplyNowModal} applyNow={applyNow} />

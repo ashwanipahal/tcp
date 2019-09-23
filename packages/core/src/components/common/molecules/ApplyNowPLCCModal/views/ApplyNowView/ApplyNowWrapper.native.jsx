@@ -8,9 +8,9 @@ import {
   ScrollViewContainer,
   ButtonWrapper,
   StyledAnchor,
+  BottomContainer,
 } from '../../styles/ApplyNowView.style.native';
 import { getLabelValue } from '../../../../../../utils/utils';
-import ApplyCardLayout from '../../../../../features/browse/ApplyCardPage/views/ApplyCardLayout.View.native';
 
 const headerImage = require('../../../../../../assets/tcp-cc.png');
 const PLCC_LOOKUP_2_POINTS = require('../../../../../../assets/PLCC_lockup_2_points.png');
@@ -19,17 +19,15 @@ const PLCC_LOOKUP_1_POINTS = require('../../../../../../assets/PLCC_lockup_1_poi
 class ApplyNowModalWrapper extends React.PureComponent {
   constructor(props) {
     super(props);
-    this.state = {
-      applyCard: false,
-    };
+    this.state = {};
   }
 
-  toggleApplyCard = () => {
-    const { applyCard } = this.state;
-    this.setState({
-      applyCard: !applyCard,
-    });
-  };
+  componentDidMount() {
+    const { labels, fetchModuleXContent } = this.props;
+    if (labels && labels.referred) {
+      fetchModuleXContent(labels.referred);
+    }
+  }
 
   onClose = () => {
     const { setLoginModalMountState } = this.props;
@@ -47,11 +45,9 @@ class ApplyNowModalWrapper extends React.PureComponent {
       width: '100%',
     };
     // eslint-disable-next-line react/prop-types
-    const { labels, plccBenefitsList, applyNow, toggleModalWrapper } = this.props;
-    const { applyCard } = this.state;
-    console.info('>>>>labels---', getLabelValue(plccBenefitsList, 'oneequalstwopointsoffer'));
-    console.info('>>>>labels---', getLabelValue(labels, 'oneequalstwopointsoffer'));
+    const { labels, applyNow, toggleModalWrapper } = this.props;
 
+    const offerType = getLabelValue(labels, 'oneequalstwopointsoffer');
     return (
       <ModalNative
         onRequestClose={toggleModalWrapper}
@@ -94,7 +90,7 @@ class ApplyNowModalWrapper extends React.PureComponent {
               onPress={this.toggleApplyCard}
             />
           </ButtonWrapper>
-          <ApplyCardLayout toggleModal={this.toggleApplyCard} applyCard={applyCard} />
+          {/* <ApplyCardLayoutView toggleModal={this.toggleApplyCard} applyCard={applyCard} /> */}
           <StyledAnchor
             url={getLabelValue(labels, 'learn_more_link')}
             fontSizeVariation="large"
@@ -103,10 +99,12 @@ class ApplyNowModalWrapper extends React.PureComponent {
             text={getLabelValue(labels, 'apply_now_learn_more')}
             paddingTop="23px"
           />
-          <ImageContainer>
-            <Image source={PLCC_LOOKUP_1_POINTS} width="90%" height="60px" />
-
-            <Image source={PLCC_LOOKUP_2_POINTS} width="90%" height="60px" />
+          <ImageContainer marginTop="28px">
+            <Image
+              source={offerType ? PLCC_LOOKUP_1_POINTS : PLCC_LOOKUP_2_POINTS}
+              width="90%"
+              height="60px"
+            />
           </ImageContainer>
           <StyledBodyCopy
             mobilefontFamily="primary"
@@ -117,6 +115,46 @@ class ApplyNowModalWrapper extends React.PureComponent {
             text={getLabelValue(labels, 'apply_now_benefits_header')}
             paddingTop="9px"
           />
+          <BottomContainer>
+            <StyledBodyCopy
+              fontSize="fs12"
+              fontFamily="secondary"
+              text={getLabelValue(labels, 'apply_now_links_text')}
+              paddingRight="4px"
+            />
+
+            <StyledAnchor
+              url={getLabelValue(labels, 'learn_more_link')}
+              fontSizeVariation="large"
+              anchorVariation="primary"
+              underline
+              text={getLabelValue(labels, 'apply_now_details')}
+              paddingRight="28px"
+            />
+
+            <StyledAnchor
+              className="footerLink"
+              url={getLabelValue(labels, 'faq_link')}
+              target="_blank"
+              locator="plcc_faq"
+              fontSizeVariation="large"
+              anchorVariation="primary"
+              underline
+              text={getLabelValue(labels, 'apply_now_faq')}
+              paddingRight="28px"
+            />
+
+            <StyledAnchor
+              className="footerLink"
+              url={getLabelValue(labels, 'rewards_program_link')}
+              target="_blank"
+              data-locator="plcc_rewards_terms"
+              fontSizeVariation="large"
+              anchorVariation="primary"
+              underline
+              text={getLabelValue(labels, 'apply_now_rewardTerms')}
+            />
+          </BottomContainer>
         </ScrollViewContainer>
       </ModalNative>
     );
@@ -129,6 +167,7 @@ ApplyNowModalWrapper.propTypes = {
     apply_now_link_modal: PropTypes.string,
   }).isRequired,
   toggleModalWrapper: PropTypes.func.isRequired,
+  fetchModuleXContent: PropTypes.func.isRequired,
 };
 
 export default ApplyNowModalWrapper;

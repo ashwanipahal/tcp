@@ -40,7 +40,7 @@ const itemStyle = {
   color: 'black',
 };
 
-class ApplyCardLayout extends React.PureComponent<Props> {
+class ApplyCardLayoutView extends React.PureComponent<Props> {
   constructor(props) {
     super(props);
 
@@ -432,7 +432,7 @@ The Children’s Place."
   }
 }
 
-ApplyCardLayout.propTypes = {
+ApplyCardLayoutView.propTypes = {
   setLoginModalMountState: PropTypes.bool.isRequired,
   plccData: PropTypes.shape({}).isRequired,
   labels: PropTypes.shape({}).isRequired,
@@ -443,6 +443,6 @@ ApplyCardLayout.propTypes = {
 export default reduxForm({
   form: 'ApplyCardForm', // a unique identifier for this form
   enableReinitialize: true,
-})(ApplyCardLayout);
+})(ApplyCardLayoutView);
 
-export { ApplyCardLayout as ApplyCardLayoutVanilla };
+export { ApplyCardLayoutView as ApplyCardLayoutViewVanilla };

@@ -2,7 +2,7 @@ import styled from 'styled-components/native';
 import { BodyCopy, Anchor } from '../../../atoms';
 
 export const ImageContainer = styled.View`
-  margin-top: ${props => props.theme.spacing.ELEM_SPACING.XS};
+  margin-top: ${props => props.marginTop || props.theme.spacing.ELEM_SPACING.XS};
   align-items: center;
 `;
 
@@ -41,7 +41,20 @@ export const ButtonWrapper = styled.View`
 
 export const StyledAnchor = styled(Anchor)`
   padding-top: ${props => props.paddingTop || '0px'};
+  padding-left: ${props => props.paddingLeft || '0px'};
+  padding-right: ${props => props.paddingRight || '0px'};
+  padding-bottom: ${props => props.paddingBottom || '0px'};
   align-items: center;
+  justify-content: center;
+`;
+
+export const BottomContainer = styled.View`
+  width: 100%;
+  padding-top: ${props => props.theme.spacing.LAYOUT_SPACING.SM};
+  padding-left: ${props => props.theme.spacing.LAYOUT_SPACING.XXS};
+  padding-right: ${props => props.theme.spacing.LAYOUT_SPACING.XXS};
+  align-items: center;
+  flex-direction: row;
   justify-content: center;
 `;
 
@@ -51,4 +64,5 @@ export default {
   ScrollViewContainer,
   ButtonWrapper,
   StyledAnchor,
+  BottomContainer,
 };

@@ -1,7 +1,7 @@
 import React from 'react';
 import { connect } from 'react-redux';
 import PropTypes from 'prop-types';
-import ApplyCardLayoutView from '../views/ApplyCardLayout.View';
+import ApplyCardLayoutView from '../views';
 import { fetchModuleX, submitInstantCardApplication } from './ApplyCard.actions';
 import { isPlccUser } from '../../../account/User/container/User.selectors';
 import { getUserProfileData, getUserId, getBagItemsSize, isGuest } from './ApplyCard.selectors';
@@ -134,14 +134,14 @@ class ApplyCardLayoutContainer extends React.Component {
 export const mapStateToProps = state => {
   const { ApplyCardPage, Labels } = state;
   return {
-    applicationStatus: ApplyCardPage.applicationStatus,
-    approvedPLCCData: ApplyCardPage.approvedPLCCData,
-    plccData: ApplyCardPage.plccData,
+    applicationStatus: ApplyCardPage && ApplyCardPage.applicationStatus,
+    approvedPLCCData: ApplyCardPage && ApplyCardPage.approvedPLCCData,
+    plccData: ApplyCardPage && ApplyCardPage.plccData,
     plccUser: isPlccUser(state),
     bagItems: getBagItemsSize(state),
     isGuestUser: isGuest(state),
     profileInfo: getUserProfileData(state),
-    labels: Labels && Labels.PLCC && Labels.PLCC.plccForm,
+    labels: Labels && Labels.global && Labels.global.plccForm,
     userId: getUserId(state),
   };
 };
