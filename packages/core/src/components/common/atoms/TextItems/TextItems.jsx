@@ -1,4 +1,5 @@
 import React from 'react';
+import errorBoundary from '../../hoc/withErrorBoundary';
 
 const TextItems = ({ textItems }) => {
   if (!textItems) {
@@ -11,4 +12,4 @@ const TextItems = ({ textItems }) => {
   ));
 };
 
-export default TextItems;
+export default errorBoundary(TextItems);

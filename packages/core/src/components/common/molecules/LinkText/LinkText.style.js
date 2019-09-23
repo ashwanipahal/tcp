@@ -59,4 +59,16 @@ export default css`
       font-size: ${props => props.theme.typography.fontSizes.fs48};
     }
   }
+
+  /* Module H Heading styles */
+  .medium_text_white_black {
+    color: ${props => props.theme.colorPalette.white};
+    font-family: ${props => props.theme.typography.fonts.primary};
+    font-weight: ${props => props.theme.typography.fontWeights.black};
+    font-size: ${props => props.theme.typography.fontSizes.fs32};
+
+    @media ${props => props.theme.mediaQuery.large} {
+      font-size: ${props => props.theme.typography.fontSizes.fs48};
+    }
+  }
 `;

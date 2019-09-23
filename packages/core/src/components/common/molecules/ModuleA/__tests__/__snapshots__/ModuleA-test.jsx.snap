@@ -2,7 +2,7 @@
 
 exports[`ModuleA component should render Gymboree variant correctly 1`] = `
 <ForwardRef
-  className="   moduleA"
+  className="undefined   moduleA"
   fullBleed={
     Object {
       "large": false,
@@ -69,7 +69,6 @@ exports[`ModuleA component should render Gymboree variant correctly 1`] = `
           className="banner-slide"
         >
           <ForwardRef
-            alt=""
             data-locator="moduleA_image_0"
             imgConfigs={
               Array [
@@ -187,7 +186,6 @@ exports[`ModuleA component should render Gymboree variant correctly 1`] = `
           className="banner-slide"
         >
           <ForwardRef
-            alt=""
             data-locator="moduleA_image_1"
             imgConfigs={
               Array [
@@ -305,7 +303,6 @@ exports[`ModuleA component should render Gymboree variant correctly 1`] = `
           className="banner-slide"
         >
           <ForwardRef
-            alt=""
             data-locator="moduleA_image_2"
             imgConfigs={
               Array [
@@ -423,7 +420,6 @@ exports[`ModuleA component should render Gymboree variant correctly 1`] = `
           className="banner-slide"
         >
           <ForwardRef
-            alt=""
             data-locator="moduleA_image_3"
             imgConfigs={
               Array [
@@ -642,7 +638,7 @@ exports[`ModuleA component should render Gymboree variant correctly 1`] = `
 
 exports[`ModuleA component should render TCP or default variant correctly 1`] = `
 <ForwardRef
-  className="   moduleA"
+  className="undefined   moduleA"
   fullBleed={
     Object {
       "large": false,
@@ -709,7 +705,6 @@ exports[`ModuleA component should render TCP or default variant correctly 1`] = 
           className="banner-slide"
         >
           <ForwardRef
-            alt=""
             data-locator="moduleA_image_0"
             imgConfigs={
               Array [
@@ -827,7 +822,6 @@ exports[`ModuleA component should render TCP or default variant correctly 1`] = 
           className="banner-slide"
         >
           <ForwardRef
-            alt=""
             data-locator="moduleA_image_1"
             imgConfigs={
               Array [
@@ -945,7 +939,6 @@ exports[`ModuleA component should render TCP or default variant correctly 1`] = 
           className="banner-slide"
         >
           <ForwardRef
-            alt=""
             data-locator="moduleA_image_2"
             imgConfigs={
               Array [
@@ -1063,7 +1056,6 @@ exports[`ModuleA component should render TCP or default variant correctly 1`] = 
           className="banner-slide"
         >
           <ForwardRef
-            alt=""
             data-locator="moduleA_image_3"
             imgConfigs={
               Array [

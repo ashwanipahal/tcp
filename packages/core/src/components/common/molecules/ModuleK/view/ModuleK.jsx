@@ -141,5 +141,35 @@ ModuleK.propTypes = {
   }).isRequired,
 };
 
+ModuleK.defaultProps = {
+  accessibility: {},
+};
+
+ModuleK.propTypes = {
+  accessibility: PropTypes.shape({
+    playIconButton: PropTypes.string,
+    pauseIconButton: PropTypes.string,
+  }),
+  className: PropTypes.string.isRequired,
+  headerText: PropTypes.arrayOf(
+    PropTypes.shape({
+      link: PropTypes.object,
+      textItems: PropTypes.array,
+    })
+  ).isRequired,
+  masonryGrid: PropTypes.arrayOf(
+    PropTypes.shape({
+      mediaLinkedList: PropTypes.arrayOf(PropTypes.shape({})),
+      promoBanner: PropTypes.arrayOf(
+        PropTypes.shape({
+          link: PropTypes.object,
+          textItems: PropTypes.array,
+        })
+      ),
+      singleCTAButton: PropTypes.shape({}),
+    })
+  ).isRequired,
+};
+
 export default withStyles(errorBoundary(ModuleK), style);
 export { ModuleK as ModuleKVanilla };

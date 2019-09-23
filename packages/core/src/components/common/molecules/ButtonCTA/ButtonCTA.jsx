@@ -2,6 +2,7 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import { configureInternalNavigationFromCMSUrl } from '../../../../utils';
 import { Anchor, Button } from '../../atoms';
+import errorBoundary from '../../hoc/withErrorBoundary';
 
 /**
  * @desc This component generates button list. The three variations of buttonlist are:
@@ -74,4 +75,4 @@ ButtonCTA.defaultProps = {
   dataLocatorCTA: '',
 };
 
-export default ButtonCTA;
+export default errorBoundary(ButtonCTA);

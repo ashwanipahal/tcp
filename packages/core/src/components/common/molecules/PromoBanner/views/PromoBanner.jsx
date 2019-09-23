@@ -1,6 +1,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import { Anchor, BodyCopy } from '../../../atoms';
+import errorBoundary from '../../../hoc/withErrorBoundary';
 import LinkText from '../../LinkText';
 import withStyles from '../../../hoc/withStyles';
 import PromoBannerStyle from '../PromoBanner.style';
@@ -145,4 +146,4 @@ PromoBanner.defaultProps = {
 };
 
 export { PromoBanner as PromoBannerVanilla };
-export default withStyles(PromoBanner, PromoBannerStyle);
+export default withStyles(errorBoundary(PromoBanner), PromoBannerStyle);

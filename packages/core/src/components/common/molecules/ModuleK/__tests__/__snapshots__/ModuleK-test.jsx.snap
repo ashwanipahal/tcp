@@ -209,6 +209,30 @@ exports[`ModuleK component renders correctly 1`] = `
                 ";
     }
   }
+
+  /* Module H Heading styles */
+  .medium_text_white_black {
+    color: ",
+                [Function],
+                ";
+    font-family: ",
+                [Function],
+                ";
+    font-weight: ",
+                [Function],
+                ";
+    font-size: ",
+                [Function],
+                ";
+
+    @media ",
+                [Function],
+                " {
+      font-size: ",
+                [Function],
+                ";
+    }
+  }
 ",
                 ";
 ",
