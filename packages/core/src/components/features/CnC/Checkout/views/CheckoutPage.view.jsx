@@ -8,6 +8,7 @@ import BillingPage from '../organisms/BillingPage';
 import ReviewPage from '../organisms/ReviewPage';
 import CHECKOUT_STAGES from '../../../../../../../web/src/pages/App.constants';
 import VenmoBanner from '../../../../common/molecules/VenmoBanner';
+import checkoutSelectors from '../container/Checkout.selector';
 // import CheckoutProgressUtils from '../../../../../../../web/src/components/features/content/CheckoutProgressIndicator/utils/utils';
 
 class CheckoutPage extends React.PureComponent {
@@ -34,6 +35,41 @@ class CheckoutPage extends React.PureComponent {
   };
 
   /**
+   * This method returns the current checkout section
+   */
+  getCurrentSection = () => {
+    const { router } = this.props;
+    const section = router.query.section || router.query.subSection;
+    return section || CHECKOUT_STAGES.SHIPPING;
+  };
+
+  /**
+   * This method will set venmo banner state once it is visible, so that it won't be visible
+   * once user comes back
+   */
+  isVenmoPickupDisplayed = () => {
+    const currentSection = this.getCurrentSection();
+    let venmoPickupDisplayed = false;
+    if (currentSection && currentSection.toLowerCase() === CHECKOUT_STAGES.PICKUP) {
+      venmoPickupDisplayed = checkoutSelectors.isVenmoPickupBannerDisplayed();
+    }
+    return venmoPickupDisplayed;
+  };
+
+  /**
+   * This method will set venmo banner state once it is visible, so that it won't be visible
+   * once user comes back
+   */
+  isVenmoShippingDisplayed = () => {
+    const currentSection = this.getCurrentSection();
+    let venmoShippingDisplayed = false;
+    if (currentSection.toLowerCase() === CHECKOUT_STAGES.SHIPPING) {
+      venmoShippingDisplayed = checkoutSelectors.isVenmoShippingBannerDisplayed();
+    }
+    return venmoShippingDisplayed;
+  };
+
+  /**
    * This function is to validate if we need to show venmo banner or not.
    * Only if user comes on pickup or shipping page, but not on coming back from navigation
    * @params {string} currentSection - current checkout section name
@@ -44,8 +80,10 @@ class CheckoutPage extends React.PureComponent {
       isMobile &&
       isUsSite &&
       isVenmoPaymentInProgress &&
-      (currentSection.toLowerCase() === CHECKOUT_STAGES.PICKUP ||
-        currentSection.toLowerCase() === CHECKOUT_STAGES.SHIPPING)
+      ((currentSection.toLowerCase() === CHECKOUT_STAGES.PICKUP &&
+        !this.isVenmoPickupDisplayed()) ||
+        (currentSection.toLowerCase() === CHECKOUT_STAGES.SHIPPING &&
+          !this.isVenmoShippingDisplayed()))
     );
   };
 
@@ -81,6 +119,8 @@ class CheckoutPage extends React.PureComponent {
       reviewProps,
       submitReview,
       isVenmoPaymentInProgress,
+      setVenmoPickupState,
+      setVenmoShippingState,
     } = this.props;
 
     const section = router.query.section || router.query.subSection;
@@ -108,6 +148,7 @@ class CheckoutPage extends React.PureComponent {
             onPickupSubmit={onPickupSubmit}
             navigation={navigation}
             isVenmoPaymentInProgress={isVenmoPaymentInProgress}
+            setVenmoPickupState={setVenmoPickupState}
           />
         )}
         {currentSection.toLowerCase() === CHECKOUT_STAGES.SHIPPING && (
@@ -125,6 +166,7 @@ class CheckoutPage extends React.PureComponent {
             addNewShippingAddressData={addNewShippingAddressData}
             labels={labels}
             isVenmoPaymentInProgress={isVenmoPaymentInProgress}
+            setVenmoShippingState={setVenmoShippingState}
           />
         )}
         {currentSection.toLowerCase() === CHECKOUT_STAGES.BILLING && (
@@ -188,11 +230,15 @@ CheckoutPage.propTypes = {
   updateShippingAddressData: PropTypes.func.isRequired,
   addNewShippingAddressData: PropTypes.func.isRequired,
   submitBilling: PropTypes.func.isRequired,
-  isVenmoPaymentInProgress: PropTypes.func,
+  isVenmoPaymentInProgress: PropTypes.bool,
+  setVenmoPickupState: PropTypes.func,
+  setVenmoShippingState: PropTypes.func,
 };
 
 CheckoutPage.defaultProps = {
   isVenmoPaymentInProgress: false,
+  setVenmoPickupState: () => {},
+  setVenmoShippingState: () => {},
 };
 
 export default CheckoutPage;

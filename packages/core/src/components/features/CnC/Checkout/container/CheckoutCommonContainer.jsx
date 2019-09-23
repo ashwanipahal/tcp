@@ -14,6 +14,8 @@ import {
   submitBillingSection,
   initActions,
   submitReviewSection,
+  setVenmoPickupMessageState,
+  setVenmoShippingMessageState,
 } from './Checkout.action';
 
 import CheckoutPage from '../views/CheckoutPage.view';
@@ -113,6 +115,8 @@ export class CheckoutContainer extends React.Component<Props> {
       submitReview,
       reviewProps,
       isVenmoPaymentInProgress,
+      setVenmoPickupState,
+      setVenmoShippingState,
     } = this.props;
     const availableStages = checkoutUtil.getAvailableStages(
       cartOrderItems,
@@ -157,6 +161,8 @@ export class CheckoutContainer extends React.Component<Props> {
         submitReview={submitReview}
         reviewProps={reviewProps}
         isVenmoPaymentInProgress={isVenmoPaymentInProgress}
+        setVenmoPickupState={setVenmoPickupState}
+        setVenmoShippingState={setVenmoShippingState}
       />
     );
   }
@@ -205,6 +211,8 @@ export const mapDispatchToProps = dispatch => {
     submitReview: payload => {
       dispatch(submitReviewSection(payload));
     },
+    setVenmoPickupState: data => dispatch(setVenmoPickupMessageState(data)),
+    setVenmoShippingState: data => dispatch(setVenmoShippingMessageState(data)),
   };
 };
 

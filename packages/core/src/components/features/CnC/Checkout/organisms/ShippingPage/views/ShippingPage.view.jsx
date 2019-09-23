@@ -40,6 +40,7 @@ export default class ShippingPage extends React.PureComponent {
     syncErrors: PropTypes.shape({}),
     shippingAddress: PropTypes.shape({}),
     isVenmoPaymentInProgress: PropTypes.bool,
+    setVenmoShippingState: PropTypes.func,
   };
 
   static defaultProps = {
@@ -64,6 +65,7 @@ export default class ShippingPage extends React.PureComponent {
     syncErrors: {},
     shippingAddress: null,
     isVenmoPaymentInProgress: false,
+    setVenmoShippingState: () => {},
   };
 
   constructor(props) {
@@ -161,7 +163,7 @@ export default class ShippingPage extends React.PureComponent {
     //   response: 'invalid::false:false',
     //   storeId: '10152',
     // };
-    const { handleSubmit } = this.props;
+    const { handleSubmit, setVenmoShippingState } = this.props;
     handleSubmit({
       method: {
         shippingMethodId: shipmentMethods.shippingMethodId,
@@ -181,6 +183,7 @@ export default class ShippingPage extends React.PureComponent {
         wantsSmsOrderUpdates: smsSignUp.sendOrderUpdate,
       },
     });
+    setVenmoShippingState(true);
   };
 
   updateShippingAddress = () => {

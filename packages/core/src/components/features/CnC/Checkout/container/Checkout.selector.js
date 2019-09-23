@@ -530,6 +530,16 @@ const isVenmoPaymentInProgress = () => {
   return venmoProgressString ? venmoProgressString === 'true' : false;
 };
 
+const isVenmoPickupBannerDisplayed = () => {
+  const venmoPickupBanner = getLocalStorage(venmoConstants.VENMO_PICKUP_BANNER);
+  return venmoPickupBanner ? venmoPickupBanner === 'true' : false;
+};
+
+const isVenmoShippingBannerDisplayed = () => {
+  const venmoShippingBanner = getLocalStorage(venmoConstants.VENMO_SHIPPING_BANNER);
+  return venmoShippingBanner ? venmoShippingBanner === 'true' : false;
+};
+
 const isGiftOptionsEnabled = state => {
   return state[CHECKOUT_REDUCER_KEY].getIn(['uiFlags', 'isGiftOptionsEnabled']);
 };
@@ -771,4 +781,6 @@ export default {
   getInternationalCheckoutUrl,
   getIsVenmoEnabled,
   getCurrentLanguage,
+  isVenmoShippingBannerDisplayed,
+  isVenmoPickupBannerDisplayed,
 };

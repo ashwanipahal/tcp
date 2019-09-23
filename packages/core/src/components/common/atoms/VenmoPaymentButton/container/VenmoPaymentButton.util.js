@@ -3,6 +3,8 @@ export const constants = {
   VENMO_CANCELED: 'VENMO_CANCELED',
   VENMO_STORAGE_KEY: 'vmo',
   VENMO_INPROGRESS_KEY: 'venprog',
+  VENMO_PICKUP_BANNER: 'ven_pickup_banner',
+  VENMO_SHIPPING_BANNER: 'ven_shipping_banner',
 };
 
 export const modes = {

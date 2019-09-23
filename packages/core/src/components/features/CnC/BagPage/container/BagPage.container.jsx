@@ -6,12 +6,19 @@ import BagPage from '../views/BagPage.view';
 import BAG_PAGE_ACTIONS from './BagPage.actions';
 import { getCartOrderList } from '../../CartItemTile/container/CartItemTile.selectors';
 import { getUserLoggedInState } from '../../../account/User/container/User.selectors';
-import { setVenmoPaymentInProgress } from '../../Checkout/container/Checkout.action';
+import {
+  setVenmoPaymentInProgress,
+  setVenmoPickupMessageState,
+  setVenmoShippingMessageState,
+} from '../../Checkout/container/Checkout.action';
 
 export class BagPageContainer extends React.Component<Props> {
   componentDidMount() {
     const { needHelpContentId, fetchNeedHelpContent } = this.props;
     fetchNeedHelpContent([needHelpContentId]);
+    const { setVenmoPickupState, setVenmoShippingState } = this.props;
+    setVenmoPickupState(false);
+    setVenmoShippingState(false);
   }
 
   closeModal = () => {};
@@ -78,6 +85,8 @@ export const mapDispatchToProps = dispatch => {
       dispatch(BAG_PAGE_ACTIONS.initActions[0]);
     },
     setVenmoInProgress: data => dispatch(setVenmoPaymentInProgress(data)),
+    setVenmoPickupState: data => dispatch(setVenmoPickupMessageState(data)),
+    setVenmoShippingState: data => dispatch(setVenmoShippingMessageState(data)),
   };
 };
 

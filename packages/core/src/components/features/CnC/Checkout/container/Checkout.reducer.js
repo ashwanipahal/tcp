@@ -50,7 +50,8 @@ const initialState = fromJS({
     maxGiftCards: 5,
     isPaypalPaymentInProgress: false,
     venmoPaymentInProgress: false,
-    venmoInformationMessageDisplayed: false,
+    venmoPickupMessageDisplayed: false,
+    venmoShppingMessageDisplayed: false,
     isLoadingShippingMethods: false,
     isEditingSubform: false,
     isBillingVisited: false,
@@ -151,6 +152,20 @@ function uiFlagReducer(checkout, action) {
         value: action.payload,
       });
       return checkout.setIn(['uiFlags', 'venmoPaymentInProgress'], action.payload);
+    }
+    case CheckoutConstants.SET_VENMO_PICKUP_MESSAGE_STATE: {
+      setLocalStorage({
+        key: venmoConstants.VENMO_PICKUP_BANNER,
+        value: action.payload,
+      });
+      return checkout.setIn(['uiFlags', 'venmoPickupMessageDisplayed'], action.payload);
+    }
+    case CheckoutConstants.SET_VENMO_SHIPPING_MESSAGE_STATE: {
+      setLocalStorage({
+        key: venmoConstants.VENMO_SHIPPING_BANNER,
+        value: action.payload,
+      });
+      return checkout.setIn(['uiFlags', 'venmoShippingMessageDisplayed'], action.payload);
     }
     // case 'CHECKOUT_FLAGS_SET_REVIEW_VISTED':
     //   return merge(uiFlags, { isReviewVisited: action.payload });
