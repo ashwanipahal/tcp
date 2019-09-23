@@ -1,3 +1,3 @@
 export {
   default,
-} from '../../../../../../core/src/components/common/organisms/SocialAccount/Views/InstagramLoginPage';
+} from '@tcp/core/src/components/common/organisms/SocialAccount/Views/InstagramPage';

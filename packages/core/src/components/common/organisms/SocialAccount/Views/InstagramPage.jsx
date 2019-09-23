@@ -15,7 +15,7 @@ import { canUseDOM } from '../../../../../utils/utils.web';
  * @returns undefined
  */
 
-const bindEvent = () => {
+export const bindEvent = () => {
   if (canUseDOM()) {
     window.onload = () => {
       const urlSplitArr = window.location.href.split('#access_token=');
@@ -36,7 +36,7 @@ const bindEvent = () => {
   }
 };
 
-const InstagramLoginPage = () => {
+export const InstagramLoginPage = () => {
   bindEvent();
   return null;
 };
