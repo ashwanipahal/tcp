@@ -10,7 +10,7 @@ const renderFooterNavLinks = (
   colNum,
   linkConfig,
   footerActionCreator,
-  { isSubHeader, isLoggedIn, headerAsImage }
+  { isSubHeader, isLoggedIn, headerAsImage } = {}
 ) => {
   if (!navLink) {
     return null;
