@@ -92,7 +92,7 @@ export class DetailedEarnExtraPointsTile extends React.PureComponent {
             text={waysToEarnRow.activityTitle}
             data-locator={`earnExtraPointsActivityTitle_${waysToEarnRow.activityCode}`}
           />
-          <EarnPointDesc>
+          <EarnPointDesc viewAll>
             <BodyCopy
               component="p"
               fontSize={`${viewAll ? 'fs14' : 'fs16'}`}

@@ -6,6 +6,7 @@ import {
   RichTextWrapper,
   ImageSize,
   EarnExtraPointsTileImage,
+  ActivityModalTitleWrapper,
 } from './styles/ExtraPointsDetailModal.style.native';
 
 const AppDownloadImage = require('@tcp/core/src/assets/download-app.png');
@@ -62,28 +63,30 @@ class ExtraPointsDetailModal extends React.PureComponent {
     const { waysToEarnRow } = this.props;
     const activityDetails = waysToEarnRow.activityModal;
 
-    const richTextStyle = `<style font-size: 30px; >${
+    const richTextStyle = `<meta name="viewport" content="width=device-width, initial-scale=1.0"><div style="font-size:14px; font-family: Nunito; margin-top:24px font-weight: normal;">${
       activityDetails.activityModalLongDescription
-    } </style>`;
+    } </div>`;
 
     return (
       <>
         <EarnExtraPointsTileImage>
           <ImageSize source={sourceMap[waysToEarnRow.activityCode]} />
         </EarnExtraPointsTileImage>
-        <BodyCopy
-          fontSize="fs18"
-          fontWeight="black"
-          fontFamily="secondary"
-          textAlign="center"
-          className="elem-mb-MED"
-          text={activityDetails.activityModalTitle}
-          data-locator={`earnPointsModal_${activityDetails.activityModalAction}_title`}
-        />
+        <ActivityModalTitleWrapper>
+          <BodyCopy
+            fontSize="fs28"
+            fontWeight="black"
+            fontFamily="primary"
+            textAlign="center"
+            className="elem-mb-MED"
+            text={activityDetails.activityModalTitle}
+            data-locator={`earnPointsModal_${activityDetails.activityModalAction}_title`}
+          />
+        </ActivityModalTitleWrapper>
         <BodyCopy
           component="div"
-          fontSize="fs16"
-          fontWeight="black"
+          fontSize="fs18"
+          fontWeight="extrabold"
           fontFamily="secondary"
           textAlign="center"
           className="elem-mb-MED"
@@ -96,14 +99,12 @@ class ExtraPointsDetailModal extends React.PureComponent {
             data-locator={`earnPointsModal_${activityDetails.activityModalAction}_ShortDesc`}
           />
         </RichTextWrapper>
-        <BodyCopy component="div" textAlign="center">
-          <Button
-            buttonVariation="variable-width"
-            text={activityDetails.activityModalCtaText}
-            fill="BLUE"
-            color="white"
-          />
-        </BodyCopy>
+        <Button
+          buttonVariation="variable-width"
+          text={activityDetails.activityModalCtaText}
+          fill="BLUE"
+          color="white"
+        />
       </>
     );
   }

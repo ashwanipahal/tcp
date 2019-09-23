@@ -53,10 +53,6 @@ export class EarnPoints extends React.PureComponent {
     const { labels, waysToEarn } = this.props;
     const { waysToEarnRow, showModal } = this.state;
 
-    console.log('kali----------------------');
-    console.log(waysToEarnRow);
-    console.log('kali----------------------');
-
     return (
       <>
         <TilesWrapper>
@@ -90,7 +86,7 @@ export class EarnPoints extends React.PureComponent {
         </TilesWrapper>
         <MprTermsWrapper>
           <Anchor
-            fontSizeVariation="medium"
+            fontSizeVariation="large"
             underline
             noLink
             onPress={() => {

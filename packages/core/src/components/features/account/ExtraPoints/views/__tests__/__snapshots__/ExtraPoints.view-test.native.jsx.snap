@@ -47,7 +47,7 @@ exports[`EarnPointsVanilla component should renders correctly 1`] = `
       colorName={null}
       customStyle={Object {}}
       dataLocator="earn-points-mpr-link"
-      fontSizeVariation="medium"
+      fontSizeVariation="large"
       locator=""
       noLink={true}
       onPress={[Function]}
@@ -63,9 +63,23 @@ exports[`EarnPointsVanilla component should renders correctly 1`] = `
       fontSize="fs14"
       margin={null}
       numberOfLines={null}
-      text="lbl_common_extra_ppoints_terms_conditions"
+      text="lbl_common_extra_points_terms_conditions"
       textDecoration={null}
     />
   </Styled(View)>
+  <ModalNative
+    heading=" "
+    horizontalBar={false}
+    isOpen={null}
+    onRequestClose={[Function]}
+  >
+    <Styled(View)
+      spacingStyles="margin-left-LRG margin-right-LRG"
+    >
+      <ExtraPointsDetailModal
+        waysToEarnRow={Object {}}
+      />
+    </Styled(View)>
+  </ModalNative>
 </Fragment>
 `;

@@ -48,7 +48,9 @@ exports[`Detailed Earn Extra Points Tile component  should render Detailed Earn 
       textAlign="center"
       textDecoration={null}
     />
-    <Styled(View)>
+    <Styled(View)
+      viewAll={true}
+    >
       <Styled(BodyCopy)
         accessibilityText=""
         component="p"

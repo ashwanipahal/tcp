@@ -64,7 +64,7 @@ class EarnExtraPointsTile extends PureComponent {
             anchorVariation="primary"
             text={getLabelValue(labels, 'lbl_common_viewAll')}
             data-locator="earnExtraPointsViewAll"
-            onPress={() => handleComponentChange('accountOverviewMobile')}
+            onPress={() => handleComponentChange('earnExtraPointsPageMobile')}
             underline
           />
         </EarnExtraPointsHeading>
