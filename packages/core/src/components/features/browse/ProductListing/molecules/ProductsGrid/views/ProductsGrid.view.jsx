@@ -133,6 +133,7 @@ class ProductsGrid extends React.Component {
       labels,
       isLoadingMore,
       onPickUpOpenClick,
+      onQuickViewOpenClick,
       ...otherProps
     } = this.props;
 
@@ -160,6 +161,7 @@ class ProductsGrid extends React.Component {
                         onPickUpOpenClick={onPickUpOpenClick}
                         className={`${className} product-list`}
                         labels={labels}
+                        onQuickViewOpenClick={onQuickViewOpenClick}
                         {...otherProps}
                       />
                     );

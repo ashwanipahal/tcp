@@ -1,7 +1,7 @@
 /* eslint-disable global-require */
 /* eslint-disable import/no-unresolved */
 import { NavigationActions, StackActions } from 'react-navigation';
-import { Dimensions, Linking, Platform, PixelRatio } from 'react-native';
+import { Dimensions, Linking, Platform, PixelRatio, StyleSheet } from 'react-native';
 import logger from '@tcp/core/src/utils/loggerInstance';
 import AsyncStorage from '@react-native-community/async-storage';
 import { getAPIConfig } from './utils';
@@ -518,4 +518,50 @@ export const getPixelRatio = () => {
 
 export default {
   getSiteId,
+};
+
+/**
+ * INFO: Use this function only after accessibility props is set.
+ * This adds unique identifier as testId or accessibiliyLabel when the build
+ * type is of automation variant. For dev, alpha, release builds
+ * it will return an empty object and won't override anything.
+ */
+const isAutomation = false;
+export function setTestId(id) {
+  if (id === false) {
+    return {};
+  }
+  if (isAutomation) {
+    return Platform.select({
+      ios: {
+        testID: id,
+      },
+      android: {
+        accessibilityLabel: id,
+      },
+    });
+  }
+  return {};
+}
+
+/**
+ * Avoid breaking of the app if author accidentally pass invalid color from the CMS.
+ * Return null if color is invalid else return the color.
+ * @param {String} color Color string to validate
+ */
+export const validateColor = color => {
+  let colorSheet = { viewColor: { color: null } };
+  try {
+    colorSheet = StyleSheet.create({
+      // eslint-disable-next-line react-native/no-unused-styles
+      viewColor: {
+        color,
+      },
+    });
+  } catch (e) {
+    // eslint-disable-next-line no-console
+    console.warn(`Invalid color: ${color}`);
+  }
+
+  return colorSheet.viewColor.color;
 };

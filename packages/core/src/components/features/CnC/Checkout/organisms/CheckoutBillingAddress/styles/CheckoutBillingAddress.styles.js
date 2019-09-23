@@ -13,7 +13,7 @@ const styles = css`
     margin-right: auto;
   }
   .address-field {
-    height: auto;
+    height: 75px;
   }
 `;
 

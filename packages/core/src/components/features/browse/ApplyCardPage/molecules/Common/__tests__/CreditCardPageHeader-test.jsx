@@ -6,8 +6,8 @@ describe('CreditCardPageHeader component', () => {
   it('should renders correctly', () => {
     const props = {
       labels: {
-        plcc_form_back_button: 'back',
-        plcc_form_rewardsCardHeading: 'rewards',
+        lbl_PLCCForm_backButton: 'back',
+        lbl_PLCCForm_rewardsCardHeading: 'rewards',
       },
     };
     const component = shallow(<CreditCardPageHeader {...props} />);

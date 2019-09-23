@@ -8,32 +8,59 @@ const socialStyle = css`
     padding: 15px 0;
   }
   .Facebook-icon--enable {
-    width: 50px;
-    height: 50px;
+    width: 62px;
+    height: 55px;
     background: url('/static/images/facebook@2x.png') no-repeat;
   }
+  .Instagram-icon--enable {
+    width: 62px;
+    height: 55px;
+    background: url('/static/images/instagram@2x.png') no-repeat;
+  }
+  .Instagram-icon--disable {
+    width: 62px;
+    height: 55px;
+    background: url('/static/images/instagram-fade@2x.png') no-repeat;
+  }
   .Facebook-icon--disable {
-    width: 50px;
-    height: 50px;
+    width: 62px;
+    height: 55px;
     background: url('/static/images/facebook-fade@2x.png') no-repeat;
   }
 
   .social-accounts__align {
     display: flex;
     align-items: center;
-    padding-left: 20px;
+    padding-right: ${props => props.theme.spacing.LAYOUT_SPACING.XS};
   }
   .social_accounts_cross_plus-icon {
-    position: relative;
+    position: absolute;
     z-index: 1000;
-    width: 165px;
-    right: 160px;
-    text-align: right;
     cursor: pointer;
+    width: 215px;
+    height: 55px;
+    @media ${props => props.theme.mediaQuery.smallOnly} {
+      right: 120px;
+      width: 160px;
+    }
   }
   .social-account-icon {
     position: absolute;
     right: 0;
+  }
+  .social-accounts-alignment {
+    padding: 0 ${props => props.theme.spacing.LAYOUT_SPACING.LRG}
+      ${props => props.theme.spacing.LAYOUT_SPACING.XS};
+  }
+  .button-style {
+    margin: ${props => props.theme.spacing.ELEM_SPACING.XXL} 0 0;
+  }
+  .points-theme {
+    padding: 0 ${props => props.theme.spacing.ELEM_SPACING.XXS};
+    color: ${props =>
+      props.isPlcc
+        ? props.theme.colorPalette.userTheme.plcc
+        : props.theme.colorPalette.userTheme.mpr};
   }
 `;
 

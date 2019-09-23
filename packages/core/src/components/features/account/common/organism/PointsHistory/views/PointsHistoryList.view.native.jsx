@@ -1,13 +1,11 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import createThemeColorPalette from '@tcp/core/styles/themes/createThemeColorPalette';
 import { BodyCopy } from '../../../../../../common/atoms';
 import { PointHistoryView, PointView, PointTransView } from '../styles/PointHistory.style';
 
 /**
  * @function PointsHistoryList The PointsHistory to show points history list
  */
-const colorPalette = createThemeColorPalette();
 
 const PointsHistoryList = ({ labels, pointHistory }) => {
   const pointHistoryLen = pointHistory && pointHistory.length;
@@ -18,7 +16,7 @@ const PointsHistoryList = ({ labels, pointHistory }) => {
           <PointView>
             <BodyCopy
               text={labels.lbl_common_order_date}
-              color={colorPalette.gray[900]}
+              color="gray.900"
               fontWeight="semibold"
               fontFamily="secondary"
               fontSize="fs12"
@@ -27,7 +25,7 @@ const PointsHistoryList = ({ labels, pointHistory }) => {
           <PointTransView>
             <BodyCopy
               text={labels.lbl_common_transaction}
-              color={colorPalette.gray[900]}
+              color="gray.900"
               fontWeight="semibold"
               fontFamily="secondary"
               fontSize="fs12"
@@ -38,7 +36,7 @@ const PointsHistoryList = ({ labels, pointHistory }) => {
               text={labels.lbl_common_points_earned}
               fontFamily="secondary"
               fontSize="fs12"
-              color={colorPalette.gray[900]}
+              color="gray.900"
               fontWeight="semibold"
               textAlign="center"
             />
@@ -55,7 +53,7 @@ const PointsHistoryList = ({ labels, pointHistory }) => {
                 fontFamily="secondary"
                 fontSize="fs12"
                 fontWeight="semibold"
-                color={colorPalette.gray[900]}
+                color="gray.900"
               />
             </PointView>
             <PointTransView>
@@ -64,7 +62,7 @@ const PointsHistoryList = ({ labels, pointHistory }) => {
                 fontFamily="secondary"
                 fontSize="fs12"
                 fontWeight="semibold"
-                color={colorPalette.gray[900]}
+                color="gray.900"
               />
             </PointTransView>
             <PointView>
@@ -74,7 +72,7 @@ const PointsHistoryList = ({ labels, pointHistory }) => {
                 fontSize="fs12"
                 fontWeight="semibold"
                 textAlign="center"
-                color={colorPalette.gray[900]}
+                color="gray.900"
               />
             </PointView>
           </PointHistoryView>
@@ -86,7 +84,7 @@ const PointsHistoryList = ({ labels, pointHistory }) => {
           fontFamily="secondary"
           fontSize="fs16"
           fontWeight="semibold"
-          color={colorPalette.gray[900]}
+          color="gray.900"
         />
       )}
     </React.Fragment>

@@ -64,11 +64,17 @@ class FilterModal extends React.PureComponent {
     });
   };
 
+  resetAppliedFilters = () => {
+    if (this.filterViewRef) this.filterViewRef.clearAllFilters();
+  };
+
   onCloseModal = () => {
+    this.resetAppliedFilters();
     this.setModalVisibilityState(false);
   };
 
   onPressOut = () => {
+    this.resetAppliedFilters();
     this.setModalVisibilityState(false);
   };
 
@@ -174,6 +180,9 @@ class FilterModal extends React.PureComponent {
                   labelsFilter={labelsFilter}
                   filters={filters}
                   onSubmit={this.applyFilters}
+                  ref={ref => {
+                    this.filterViewRef = ref;
+                  }}
                 />
               </ModalContent>
             )}

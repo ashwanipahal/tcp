@@ -1,6 +1,7 @@
 import {
   parseBoolean,
   getDateInformation,
+  getTranslateDateInformation,
   getCartProductAttributes,
   attributeListMaker,
   extractAttributeValue,
@@ -11,6 +12,8 @@ import {
 describe('badge util test', () => {
   describe('#mapDispatchToProps', () => {
     const LABELS = 'itemTCPProductIndUSStore:1;itemTCPGlowInDarkUSStore:d';
+    const currentDate = '12/12/2019';
+
     it('should return true', () => {
       expect(parseBoolean('1')).toEqual(true);
     });
@@ -20,7 +23,7 @@ describe('badge util test', () => {
         day: 'THU',
         month: 'DEC',
       };
-      expect(getDateInformation(new Date('12/12/2019'), true)).toEqual(dateObj);
+      expect(getDateInformation(new Date(currentDate), true)).toEqual(dateObj);
     });
     it('should return date object in lower case', () => {
       const dateObj = {
@@ -28,7 +31,20 @@ describe('badge util test', () => {
         day: 'Thu',
         month: 'Dec',
       };
-      expect(getDateInformation(new Date('12/12/2019'), false)).toEqual(dateObj);
+      expect(getDateInformation(new Date(currentDate), false)).toEqual(dateObj);
+    });
+
+    it('getTranslateDateInformation', () => {
+      const dateObj = {
+        date: 12,
+        day: 'Thu',
+        month: 'Dec',
+      };
+      const dayOption = { weekday: 'short' };
+      const monthOption = { month: 'short' };
+      expect(
+        getTranslateDateInformation(new Date(currentDate), 'en-US', dayOption, monthOption)
+      ).toEqual(dateObj);
     });
 
     it('should return product attributes', () => {

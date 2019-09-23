@@ -36,12 +36,17 @@ exports[`CreditCardFields component should renders correctly when isExpirationRe
   >
     <Styled(View)>
       <Styled(BodyCopy)
+        accessibilityText=""
         color="gray.800"
+        dataLocator=""
         fontFamily="secondary"
         fontSize="fs13"
         fontWeight="black"
+        margin={null}
+        numberOfLines={null}
         text={0}
         textAlign="center"
+        textDecoration={null}
       />
     </Styled(View)>
     <Image

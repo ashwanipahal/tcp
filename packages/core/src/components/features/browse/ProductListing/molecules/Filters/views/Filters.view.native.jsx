@@ -97,15 +97,19 @@ class Filters extends React.PureComponent {
    * @memberof Filters
    */
   onClearAll = () => {
+    this.clearAllFilters();
+
+    // Call onSubmit with empty filter list
+    const { onSubmit } = this.props;
+    if (onSubmit) onSubmit({});
+  };
+
+  clearAllFilters = () => {
     const { selectedItems } = this.state;
     selectedItems.forEach(item => {
       const updatedItem = item;
       updatedItem.isSelected = false;
     });
-
-    // Call onSubmit with empty filter list
-    const { onSubmit } = this.props;
-    if (onSubmit) onSubmit({});
   };
 
   /**

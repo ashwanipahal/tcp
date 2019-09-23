@@ -21,21 +21,31 @@ exports[`Detail Coupon Modal should render correctly 1`] = `
   >
     <Styled(View)>
       <Styled(BodyCopy)
+        accessibilityText=""
         data-locator="couponDetailModal_applied_NameLbl"
+        dataLocator=""
         fontFamily="primary"
         fontSize="fs42"
         fontWeight="black"
+        margin={null}
+        numberOfLines={null}
         text="$10 OFF On $80"
+        textDecoration={null}
       />
       <Styled(View)
         spacingStyles="margin-top-SM"
       >
         <Styled(BodyCopy)
+          accessibilityText=""
           data-locator="couponDetailModal_applied_ValidityDateLbl"
+          dataLocator=""
           fontFamily="secondary"
           fontSize="fs24"
           fontWeight="semibold"
+          margin={null}
+          numberOfLines={null}
           text="USE_BY_TEXT 8/10/19"
+          textDecoration={null}
         />
       </Styled(View)>
       <Styled(View) />
@@ -76,6 +86,7 @@ exports[`Detail Coupon Modal should render correctly 1`] = `
         accessibilityLabel=""
         anchorVariation="secondary"
         class="clickhere"
+        colorName={null}
         customStyle={Object {}}
         dataLocator="couponDetailModal_applied_printAch"
         fontSizeVariation="large"
@@ -166,15 +177,21 @@ exports[`Detail Coupon Modal should render correctly 1`] = `
       </Styled(View)>
       <Styled(View)>
         <Styled(BodyCopy)
+          accessibilityText=""
           data-locator="couponDetailModal_applied_ShortDesc"
+          dataLocator=""
           fontFamily="primary"
           fontSize="fs12"
           fontWeight="regular"
+          margin={null}
+          numberOfLines={null}
           text="MODAL_SHORT_DESCRIPTION"
+          textDecoration={null}
         />
         <Styled(Anchor)
           accessibilityLabel=""
           anchorVariation="primary"
+          colorName={null}
           customStyle={Object {}}
           dataLocator="couponDetailModal_applied_tAndC"
           fontFamily="secondary"
@@ -187,15 +204,21 @@ exports[`Detail Coupon Modal should render correctly 1`] = `
           visible={false}
         />
         <Styled(BodyCopy)
+          accessibilityText=""
           data-locator="couponDetailModal_applied_and"
+          dataLocator=""
           fontFamily="primary"
           fontSize="fs12"
           fontWeight="regular"
+          margin={null}
+          numberOfLines={null}
           text=" and "
+          textDecoration={null}
         />
         <Styled(Anchor)
           accessibilityLabel=""
           anchorVariation="primary"
+          colorName={null}
           customStyle={Object {}}
           dataLocator="couponDetailModal_applied_pp"
           fontSizeVariation="medium"

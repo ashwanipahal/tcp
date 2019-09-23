@@ -20,9 +20,9 @@ exports[`ContactInformationFormWrapper component should renders correctly 1`] = 
   keepDirtyOnReinitialize={false}
   labels={
     Object {
-      "plcc_form_checkbox_text": "checkbox",
-      "plcc_form_nothanks": "no thanks",
-      "plcc_form_submit_button": "submit",
+      "lbl_PLCCForm_iAgreeCheckboxText": "checkbox text",
+      "lbl_PLCCForm_noThanks": "no thanks",
+      "lbl_PLCCForm_submitButton": "submit",
     }
   }
   persistentSubmitErrors={false}

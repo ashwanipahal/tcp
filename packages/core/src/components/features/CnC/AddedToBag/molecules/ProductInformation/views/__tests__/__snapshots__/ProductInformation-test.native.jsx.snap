@@ -22,71 +22,111 @@ exports[`GiftCardList Component renders correctly 1`] = `
   <Styled(View)>
     <Styled(View)>
       <Styled(BodyCopy)
+        accessibilityText=""
+        dataLocator=""
         fontSize="fs12"
         fontWeight={
           Array [
             "semibold",
           ]
         }
+        margin={null}
+        numberOfLines={null}
         text="Boys Basic Skinny Jeans"
+        textDecoration={null}
       />
     </Styled(View)>
     <Styled(View)>
       <Styled(View)>
         <Styled(View)>
           <Styled(BodyCopy)
+            accessibilityText=""
+            dataLocator=""
             fontSize="fs12"
             fontWeight={
               Array [
                 "semibold",
               ]
             }
+            margin={null}
+            numberOfLines={null}
             text="Color: "
             textAlign="left"
+            textDecoration={null}
           />
         </Styled(View)>
         <Styled(BodyCopy)
+          accessibilityText=""
+          dataLocator=""
           fontSize="fs12"
+          margin={null}
+          numberOfLines={null}
+          textDecoration={null}
         />
       </Styled(View)>
       <Styled(View)>
         <Styled(View)>
           <Styled(BodyCopy)
+            accessibilityText=""
+            dataLocator=""
             fontSize="fs12"
             fontWeight={
               Array [
                 "semibold",
               ]
             }
+            margin={null}
+            numberOfLines={null}
             text="Size: "
             textAlign="left"
+            textDecoration={null}
           />
         </Styled(View)>
         <Styled(BodyCopy)
+          accessibilityText=""
+          dataLocator=""
           fontSize="fs12"
+          margin={null}
+          numberOfLines={null}
           text="M "
+          textDecoration={null}
         />
         <Styled(BodyCopy)
+          accessibilityText=""
+          dataLocator=""
           fontSize="fs12"
+          margin={null}
+          numberOfLines={null}
           text="slim"
+          textDecoration={null}
         />
       </Styled(View)>
       <Styled(View)>
         <Styled(View)>
           <Styled(BodyCopy)
+            accessibilityText=""
+            dataLocator=""
             fontSize="fs12"
             fontWeight={
               Array [
                 "semibold",
               ]
             }
+            margin={null}
+            numberOfLines={null}
             text="Qty: "
             textAlign="left"
+            textDecoration={null}
           />
         </Styled(View)>
         <Styled(BodyCopy)
+          accessibilityText=""
+          dataLocator=""
           fontSize="fs12"
+          margin={null}
+          numberOfLines={null}
           text="1"
+          textDecoration={null}
         />
       </Styled(View)>
     </Styled(View)>

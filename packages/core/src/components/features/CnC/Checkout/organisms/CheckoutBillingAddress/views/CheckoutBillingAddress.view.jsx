@@ -78,8 +78,22 @@ class CheckoutAddress extends React.Component {
         className="address elem-mb-XXXL"
       />
     ) : (
-        this.renderNonShippingAddressForm()
-      );
+      this.renderNonShippingAddressForm()
+    );
+  };
+
+  getBillingAddressHeader = () => {
+    const { labels } = this.props;
+    return (
+      <Heading
+        component="h2"
+        variant="listMenu"
+        className="paymentMethodHeading elem-mt-MED elem-mb-LRG"
+        dataLocator="billing-payment-billingAddress"
+      >
+        {getLabelValue(labels, 'lbl_billing_billingAddress', 'billing', 'checkout')}
+      </Heading>
+    );
   };
 
   getAddressFields = () => {
@@ -116,14 +130,7 @@ class CheckoutAddress extends React.Component {
     const { labels } = this.props;
     return (
       <>
-        <Heading
-          component="h2"
-          variant="listMenu"
-          className="paymentMethodHeading elem-mt-MED elem-mb-LRG"
-          dataLocator="billing-payment-billingAddress"
-        >
-          {getLabelValue(labels, 'lbl_billing_billingAddress', 'billing', 'checkout')}
-        </Heading>
+        {this.getBillingAddressHeader()}
         <Row fullBleed>
           <Col colSize={{ large: 6, medium: 5, small: 6 }}>
             <Field
@@ -242,10 +249,11 @@ class CheckoutAddress extends React.Component {
   };
 
   renderNonShippingAddressForm = () => {
-    const { userAddresses } = this.props;
+    const { userAddresses, orderHasShipping } = this.props;
     const { isAddNewAddress } = this.state;
     return (
       <>
+        {!orderHasShipping && this.getBillingAddressHeader()}
         {(userAddresses && userAddresses.size === 0) || isAddNewAddress || !userAddresses
           ? this.getAddressForm()
           : this.getAddressDropDown()}

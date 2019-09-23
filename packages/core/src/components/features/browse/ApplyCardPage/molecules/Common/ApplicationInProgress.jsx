@@ -2,6 +2,7 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import { Anchor, BodyCopy, Button, Col, Row } from '../../../../../common/atoms';
 import ApplicationInProgressWrapper from './styles/ApplicationInProgress.style';
+import { getLabelValue } from '../../../../../../utils';
 
 /**
  * @const ApplicationInProgress
@@ -20,10 +21,10 @@ const ApplicationInProgress = ({ bagItems, isPLCCModalFlow, labels }) => {
         fontFamily="secondary"
         fontWeight="semibold"
       >
-        {labels.plcc_form_status}
+        {getLabelValue(labels, 'lbl_PLCCForm_underProgress')}
       </BodyCopy>
       <BodyCopy fontSize="fs16" fontFamily="secondary" className="in_progress_status_details">
-        {labels.plcc_form_status_detail}
+        {getLabelValue(labels, 'lbl_PLCCForm_underProcessDetails')}
       </BodyCopy>
       {bagItems ? (
         <Row fullBleed className="submit_plcc_form">
@@ -40,7 +41,7 @@ const ApplicationInProgress = ({ bagItems, isPLCCModalFlow, labels }) => {
                 className="underprogress_checkout_button"
                 data-locator="submit-plcc-btn"
               >
-                {labels.plcc_form_ctc_buttom}
+                {getLabelValue(labels, 'lbl_PLCCForm_ctcButton')}
               </Button>
             </Anchor>
           </Col>
@@ -60,7 +61,7 @@ const ApplicationInProgress = ({ bagItems, isPLCCModalFlow, labels }) => {
               className="underprogress_continue_button"
               data-locator="submit-plcc-btn"
             >
-              {labels.plcc_form_continue_shopping}
+              {getLabelValue(labels, 'lbl_PLCCForm_continueShopping')}
             </Button>
           </Anchor>
         </Col>

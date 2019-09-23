@@ -5,10 +5,10 @@ import PrescreenCode from '../PreScreenCode';
 describe('PreScreenCode component', () => {
   const props = {
     labels: {
-      plcc_form_prescreen_optional: 'Enter a Pre screen code (optional)',
-      plcc_form_prescreencodetext: 'Click here to unbox the link',
-      plcc_form_clickHere: 'click here',
-      plcc_form_enterHere: 'Enter the link here',
+      lbl_PLCCForm_preScreenCodeOpt: 'Enter a Pre screen code (optional)',
+      lbl_PLCCForm_preScreenCodeText: 'Click here to unbox the link',
+      lbl_PLCCForm_clickHere: 'click here',
+      lbl_PLCCForm_enterHere: 'Enter the link here',
     },
   };
   const component = shallow(<PrescreenCode {...props} />);
