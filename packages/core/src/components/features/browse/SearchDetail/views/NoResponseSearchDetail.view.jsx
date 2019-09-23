@@ -13,7 +13,7 @@ class NoResponseSearchDetailView extends React.PureComponent {
     const searchResultSuggestionsArg =
       searchResultSuggestions && searchResultSuggestions.length
         ? searchResultSuggestions.map(searchSuggestion => searchSuggestion.suggestion)
-        : 'No Suggestions Found';
+        : slpLabels.lbl_no_suggestion;
 
     return (
       <div className={className}>
@@ -52,7 +52,7 @@ class NoResponseSearchDetailView extends React.PureComponent {
               {/* <span className="suggestion-label" onClick={() => this.suggestionClick(searchResultSuggestionsArg,searchedText)}>{` "${searchResultSuggestionsArg }"`}</span> */}
               <Anchor
                 asPath={`/search/${searchResultSuggestionsArg}`}
-                to={`/search?sq=${searchResultSuggestionsArg}`}
+                to={`/search?searchQuery=${searchResultSuggestionsArg}`}
                 className="suggestion-label"
               >
                 {` "${searchResultSuggestionsArg}"`}
@@ -71,7 +71,7 @@ class NoResponseSearchDetailView extends React.PureComponent {
               <input
                 className="empty-search-input"
                 maxLength="150"
-                placeholder="What are you looking for ?"
+                placeholder={slpLabels.lbl_looking_for}
               />
               <Image
                 alt="close"
@@ -122,7 +122,11 @@ NoResponseSearchDetailView.propTypes = {
   className: PropTypes.string,
   slpLabels: PropTypes.objectOf(PropTypes.oneOfType([PropTypes.string])),
   searchedText: PropTypes.string,
-  searchResultSuggestions: PropTypes.arrayOf(PropTypes.shape({})),
+  searchResultSuggestions: PropTypes.arrayOf(
+    PropTypes.shape({
+      suggestion: PropTypes.string.isRequired,
+    })
+  ),
 };
 
 NoResponseSearchDetailView.defaultProps = {
