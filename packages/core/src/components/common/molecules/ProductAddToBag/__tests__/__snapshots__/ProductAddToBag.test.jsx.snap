@@ -489,7 +489,9 @@ exports[`ProductAddToBagVanilla should render correctly should match snapshot 1`
           onClick={[Function]}
           type="submit"
         />
-        <PerfMeasure />
+        <Measure
+          name="render_cart_cta"
+        />
       </div>
     </Styled(Col)>
   </Styled(Row)>
@@ -1014,7 +1016,9 @@ exports[`ProductAddToBagVanilla should render correctly should match snapshot wi
           onClick={[Function]}
           type="submit"
         />
-        <PerfMeasure />
+        <Measure
+          name="render_cart_cta"
+        />
       </div>
     </Styled(Col)>
   </Styled(Row)>

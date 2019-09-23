@@ -1,7 +1,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import VenmoPaymentButton from '@tcp/core/src/components/common/atoms/VenmoPaymentButton';
-import usePerfMeasure from '@tcp/web/src/hooks/usePerfMeasure';
+import RenderPerf from '@tcp/web/src/components/common/molecules/RenderPerf';
 import Button from '../../../../common/atoms/Button';
 import withStyles from '../../../../common/hoc/withStyles';
 import OpenLoginModal from '../../../account/LoginPage/views/LoginModal';
@@ -12,19 +12,6 @@ import Col from '../../../../common/atoms/Col';
 import BodyCopy from '../../../../common/atoms/BodyCopy';
 import { getLocator } from '../../../../../utils';
 import BagConfirmationModal from '../../BagPage/views/BagConfirmationModal.view';
-
-/**
- * Client-side performance timer for the size options.
- *
- * NOTE: Need to use component w/ hook because AddedToBagActions
- * is a class component.
- *
- * @see https://reactjs.org/docs/hooks-rules.html#only-call-hooks-from-react-functions
- */
-function PerfMeasure() {
-  usePerfMeasure('render_checkout_cta');
-  return null;
-}
 
 class AddedToBagActions extends React.PureComponent<Props> {
   routeToCheckout = e => {
@@ -110,7 +97,7 @@ class AddedToBagActions extends React.PureComponent<Props> {
               {labels.checkout}
             </BodyCopy>
           </Button>
-          <PerfMeasure />
+          <RenderPerf.Measure name="render_checkout_cta" />
         </Row>
         <BagConfirmationModal
           labels={labels}

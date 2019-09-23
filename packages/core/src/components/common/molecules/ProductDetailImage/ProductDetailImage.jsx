@@ -2,7 +2,7 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import ExecutionEnvironment from 'exenv';
 import ReactImageMagnify from 'react-image-magnify';
-import usePerfMeasure from '@tcp/web/src/hooks/usePerfMeasure';
+import RenderPerf from '@tcp/web/src/components/common/molecules/RenderPerf';
 import { Image, Anchor } from '../../atoms';
 import withStyles from '../../hoc/withStyles';
 import styles from './ProductDetailImage.style';
@@ -40,8 +40,6 @@ const ProductDetailImage = props => {
     isMobile,
   } = props;
 
-  usePerfMeasure('render_product_photo');
-
   let productSectionWidth;
   if (ExecutionEnvironment.canUseDOM) {
     productSectionWidth =
@@ -75,6 +73,7 @@ const ProductDetailImage = props => {
       ) : (
         getNonZoomImage(isMobile, imageUrl, imageName, onOpenSimpleFullSize)
       )}
+      <RenderPerf.Measure name="render_product_photo" />
     </div>
   );
 };

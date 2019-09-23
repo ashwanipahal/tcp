@@ -7,23 +7,10 @@ import BodyCopy from '@tcp/core/src/components/common/atoms/BodyCopy';
 import MiniBagSelect from '@tcp/web/src/components/features/CnC/MiniBag/molecules/MiniBagSelectBox/MiniBagSelectBox';
 import { Row, Button, Image, Col } from '@tcp/core/src/components/common/atoms';
 import { getIconPath } from '@tcp/core/src/utils';
-import usePerfMeasure from '@tcp/web/src/hooks/usePerfMeasure';
+import RenderPerf from '@tcp/web/src/components/common/molecules/RenderPerf';
 import ProductColorChipsSelector from '../../ProductColorChipSelector';
 import ProductSizeSelector from '../../ProductSizeSelector';
 import styles from '../styles/ProductAddToBag.style';
-
-/**
- * Client-side performance timer for the CTA
- *
- * NOTE: Need to use component w/ hook because ProductAddToBag
- * is a class component.
- *
- * @see https://reactjs.org/docs/hooks-rules.html#only-call-hooks-from-react-functions
- */
-function PerfMeasure() {
-  usePerfMeasure('render_cart_cta');
-  return null;
-}
 
 class ProductAddToBag extends React.PureComponent<Props> {
   render() {
@@ -161,7 +148,7 @@ class ProductAddToBag extends React.PureComponent<Props> {
               >
                 {addToBag}
               </Button>
-              <PerfMeasure />
+              <RenderPerf.Measure name="render_cart_cta" />
             </div>
           </Col>
         </Row>

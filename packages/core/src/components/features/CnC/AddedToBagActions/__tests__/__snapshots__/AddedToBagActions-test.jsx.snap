@@ -60,7 +60,9 @@ exports[`AddedToBagActions component AddedToBagActions component renders correct
         textAlign="left"
       />
     </Styled(Button)>
-    <PerfMeasure />
+    <Measure
+      name="render_checkout_cta"
+    />
   </Styled(Row)>
   <Styled(BagConfirmationModal)
     labels={Object {}}

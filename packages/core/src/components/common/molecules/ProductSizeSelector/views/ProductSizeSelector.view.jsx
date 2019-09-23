@@ -10,23 +10,10 @@
 
 import React from 'react';
 import { PropTypes } from 'prop-types';
-import usePerfMeasure from '@tcp/web/src/hooks/usePerfMeasure';
+import RenderPerf from '@tcp/web/src/components/common/molecules/RenderPerf';
 import LabeledRadioButtonGroup from '../../LabeledRadioButtonGroup';
 import withStyles from '../../../hoc/withStyles';
 import styles from '../styles/ProductSizeSelector.style';
-
-/**
- * Client-side performance timer for the size options.
- *
- * NOTE: Need to use component w/ hook because ProductSizeSelector
- * is a class component.
- *
- * @see https://reactjs.org/docs/hooks-rules.html#only-call-hooks-from-react-functions
- */
-function PerfMeasure() {
-  usePerfMeasure('render_product_sizes');
-  return null;
-}
 
 const getSizesOptionsMap = (
   sizesMap,
@@ -101,7 +88,7 @@ class ProductSizeSelector extends React.PureComponent<Props> {
             optionsMap={optionsMap}
             {...otherProps}
           />
-          <PerfMeasure />
+          <RenderPerf.Measure name="render_product_sizes" />
         </>
       )
     );
