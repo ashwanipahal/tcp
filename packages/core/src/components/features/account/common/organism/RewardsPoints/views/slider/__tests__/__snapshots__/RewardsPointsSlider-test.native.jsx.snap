@@ -39,8 +39,11 @@ exports[`RewardsPoints Slider View should render RewardsPointsViewVanilla Correc
         textDecoration={null}
       />
     </Styled(Text)>
-    <Styled(View)>
+    <Styled(View)
+      plccUser={true}
+    >
       <Styled(Text)
+        plccUser={true}
         style={
           Object {
             "width": "%",
