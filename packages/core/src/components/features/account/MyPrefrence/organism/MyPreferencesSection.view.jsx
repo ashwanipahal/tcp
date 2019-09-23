@@ -87,15 +87,23 @@ class MyPrefrenceSection extends React.PureComponent {
             <BodyCopy fontSize="fs16" fontFamily="secondary">
               {getLabelValue(labels, 'lbl_prefrence_access_buy_online_pickup')}
             </BodyCopy>
-            <BodyCopy fontSize="fs16" fontFamily="secondary">
-              {getLabelValue(labels, 'lbl_prefrence_not_added_fvt_store')}
+            <BodyCopy className="elm-padding-top" fontSize="fs14" fontFamily="secondary">
+              {getLabelValue(labels, 'lbl_prefrence_marketing_notification')}
             </BodyCopy>
           </Col>
           <Col
             colSize={{
               small: 6,
               medium: 4,
-              large: 7,
+              large: 1,
+            }}
+            className="elem-mb-XL"
+          />
+          <Col
+            colSize={{
+              small: 6,
+              medium: 4,
+              large: 6,
             }}
             className="profileInfoCol elem-mb-XL"
           >

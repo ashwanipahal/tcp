@@ -11,6 +11,7 @@ import {
   getLabelsCartItemTile,
   getProductSize,
   getGeneralProdId,
+  getIsCartItemsUpdating,
   getProductSkuId,
 } from '../container/CartItemTile.selectors';
 
@@ -129,6 +130,15 @@ describe('#CartItemTile selector', () => {
     );
   });
 
+  it('#getIsCartItemsUpdating', () => {
+    const CartPageReducer = fromJS({
+      uiFlags: {
+        isCartItemsUpdating: true,
+      },
+    });
+    expect(getIsCartItemsUpdating({ CartPageReducer })).toEqual(true);
+  });
+
   it('#getLabelsCartItemTile should return labels', () => {
     const addedToBagModal = {
       lbl_info_color: 'Color',
@@ -197,6 +207,7 @@ describe('#CartItemTile selector', () => {
       errorSize: 'minibag',
       extra: 'extra',
       fit: 'Fit',
+      itemDeleted: 'lbl_msg_itemDeleteSuccess',
       itemSoldOut: 'minibag',
       itemUnavailable: 'minibag',
       off: 'off',

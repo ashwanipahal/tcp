@@ -175,7 +175,9 @@ exports[`ProductAddToBagVanilla native should render correctly should call getFi
         "name": undefined,
       },
       "Quantity": 1,
-      "Size": "",
+      "Size": Object {
+        "name": "",
+      },
       "color": Object {
         "name": "TIDAL",
       },
@@ -402,7 +404,11 @@ exports[`ProductAddToBagVanilla native should render correctly should call getFi
     ]
   }
   selectedQuantity={1}
-  selectedSize=""
+  selectedSize={
+    Object {
+      "name": "",
+    }
+  }
   sizeList={
     Array [
       Object {
@@ -600,7 +606,9 @@ exports[`ProductAddToBagVanilla native should render correctly should match snap
         "name": undefined,
       },
       "Quantity": 1,
-      "Size": "",
+      "Size": Object {
+        "name": "",
+      },
       "color": Object {
         "name": "TIDAL",
       },
@@ -715,7 +723,11 @@ exports[`ProductAddToBagVanilla native should render correctly should match snap
     }
   }
   selectedQuantity={1}
-  selectedSize=""
+  selectedSize={
+    Object {
+      "name": "",
+    }
+  }
   sizeList={
     Array [
       Object {

@@ -9,7 +9,7 @@ const styles = css`
     background-repeat: no-repeat;
   }
 
-  .FirstColImage {
+  .firstColImage {
     display: flex;
     justify-content: flex-end;
     flex-direction: column;
@@ -98,7 +98,7 @@ const styles = css`
     }
   }
 
-  .ActivityTitleMargin {
+  .activityTitleMargin {
     margin-top: ${props => props.theme.spacing.ELEM_SPACING.LRG};
     @media ${props => props.theme.mediaQuery.large} {
       margin-top: ${props => props.theme.spacing.LAYOUT_SPACING.XL};

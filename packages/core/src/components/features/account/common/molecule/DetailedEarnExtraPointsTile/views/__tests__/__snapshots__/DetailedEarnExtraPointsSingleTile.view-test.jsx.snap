@@ -13,7 +13,7 @@ exports[`Detailed Earn Extra Points Tile component  should render Detailed Earn 
   textAlign="left"
 >
   <Styled(BodyCopy)
-    className="tileWrapper FirstColImage"
+    className="tileWrapper firstColImage"
     color="text.primary"
     component="div"
     fontFamily="primary"
@@ -59,7 +59,7 @@ exports[`Detailed Earn Extra Points Tile component  should render Detailed Earn 
       textAlign="left"
     >
       <Styled(BodyCopy)
-        className="ActivityTitleMargin"
+        className="activityTitleMargin"
         color="text.primary"
         component="p"
         data-locator="earnExtraPointsActivityTitle_undefined"

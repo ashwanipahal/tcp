@@ -9,7 +9,7 @@ describe('EarnPointsVanilla component', () => {
       waysToEarn: [
         {
           activityCode: 'AppDownload',
-          activityTitle: 'Earn 5 Points',
+          activityTitle: 'Earn 5 Points 1',
           description: 'Download & Log in to our App',
           displayOrder: 1,
           iconImage: '/wcsstore/static/images/download-app.jpg',

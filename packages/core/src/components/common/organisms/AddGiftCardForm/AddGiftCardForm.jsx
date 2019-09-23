@@ -1,15 +1,15 @@
 import React from 'react';
 import { Field, reduxForm } from 'redux-form';
-import TextBox from '../../../../../common/atoms/TextBox';
-import Row from '../../../../../common/atoms/Row';
-import Col from '../../../../../common/atoms/Col';
-import BodyCopy from '../../../../../common/atoms/BodyCopy';
-import Button from '../../../../../common/atoms/Button';
-import createValidateMethod from '../../../../../../utils/formValidation/createValidateMethod';
-import getStandardConfig from '../../../../../../utils/formValidation/validatorStandardConfig';
-import Recaptcha from '../../../../../common/molecules/recaptcha/recaptcha';
+import TextBox from '../../atoms/TextBox';
+import Row from '../../atoms/Row';
+import Col from '../../atoms/Col';
+import BodyCopy from '../../atoms/BodyCopy';
+import Button from '../../atoms/Button';
+import createValidateMethod from '../../../../utils/formValidation/createValidateMethod';
+import getStandardConfig from '../../../../utils/formValidation/validatorStandardConfig';
+import Recaptcha from '../../molecules/recaptcha/recaptcha';
 import Router from 'next/router'; //eslint-disable-line
-import InputCheckbox from '../../../../../common/atoms/InputCheckbox';
+import InputCheckbox from '../../atoms/InputCheckbox';
 
 // @flow
 

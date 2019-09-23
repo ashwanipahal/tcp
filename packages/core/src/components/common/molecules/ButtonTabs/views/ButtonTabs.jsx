@@ -4,6 +4,7 @@ import PropTypes from 'prop-types';
 
 import { Button } from '../../../atoms';
 import withStyles from '../../../hoc/withStyles';
+import errorBoundary from '../../../hoc/withErrorBoundary';
 import buttonTabsStyle from '../ButtonTabs.style';
 
 function ButtonTabs(props) {
@@ -46,4 +47,4 @@ ButtonTabs.propTypes = {
   onTabChange: PropTypes.func,
 };
 
-export default withStyles(ButtonTabs, buttonTabsStyle);
+export default withStyles(errorBoundary(ButtonTabs), buttonTabsStyle);
