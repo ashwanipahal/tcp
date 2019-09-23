@@ -4,11 +4,15 @@ exports[`CheckoutAddress should call onSameAsShippingChange 1`] = `
 <Styled(View)>
   <Styled(View)>
     <Styled(BodyCopy)
+      accessibilityText=""
       dataLocator="billing-payment-billingAddress"
       fontSize="fs16"
       fontWeight="semibold"
+      margin={null}
       mobileFontFamily="secondary"
+      numberOfLines={null}
       text="lbl_billing_billingAddress"
+      textDecoration={null}
     />
   </Styled(View)>
   <FormSection
@@ -208,11 +212,15 @@ exports[`CheckoutAddress should render correctly 1`] = `
 <Styled(View)>
   <Styled(View)>
     <Styled(BodyCopy)
+      accessibilityText=""
       dataLocator="billing-payment-billingAddress"
       fontSize="fs16"
       fontWeight="semibold"
+      margin={null}
       mobileFontFamily="secondary"
+      numberOfLines={null}
       text="lbl_billing_billingAddress"
+      textDecoration={null}
     />
   </Styled(View)>
   <Styled(View)>
@@ -256,11 +264,15 @@ exports[`CheckoutAddress should render correctly if isAddNewAddress is true 1`] 
 <Styled(View)>
   <Styled(View)>
     <Styled(BodyCopy)
+      accessibilityText=""
       dataLocator="billing-payment-billingAddress"
       fontSize="fs16"
       fontWeight="semibold"
+      margin={null}
       mobileFontFamily="secondary"
+      numberOfLines={null}
       text="lbl_billing_billingAddress"
+      textDecoration={null}
     />
   </Styled(View)>
   <Styled(View)>
@@ -341,11 +353,15 @@ exports[`CheckoutAddress should render correctly if order doesnot have shipping 
 <Styled(View)>
   <Styled(View)>
     <Styled(BodyCopy)
+      accessibilityText=""
       dataLocator="billing-payment-billingAddress"
       fontSize="fs16"
       fontWeight="semibold"
+      margin={null}
       mobileFontFamily="secondary"
+      numberOfLines={null}
       text="lbl_billing_billingAddress"
+      textDecoration={null}
     />
   </Styled(View)>
   <Styled(View)>
@@ -418,11 +434,15 @@ exports[`CheckoutAddress should render correctly if selectedAddress is present 1
 <Styled(View)>
   <Styled(View)>
     <Styled(BodyCopy)
+      accessibilityText=""
       dataLocator="billing-payment-billingAddress"
       fontSize="fs16"
       fontWeight="semibold"
+      margin={null}
       mobileFontFamily="secondary"
+      numberOfLines={null}
       text="lbl_billing_billingAddress"
+      textDecoration={null}
     />
   </Styled(View)>
   <Styled(View)>
