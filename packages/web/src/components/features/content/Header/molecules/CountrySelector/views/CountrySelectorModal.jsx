@@ -196,8 +196,8 @@ class CountrySelectorModal extends React.Component {
 CountrySelectorModal.propTypes = {
   className: PropTypes.string.isRequired,
   noteContent: PropTypes.string.isRequired,
-  countriesMap: PropTypes.arrayOf(PropTypes.shape({})).isRequired,
-  currenciesMap: PropTypes.arrayOf(PropTypes.shape({})).isRequired,
+  countriesMap: PropTypes.shape({}).isRequired,
+  currenciesMap: PropTypes.shape({}).isRequired,
   handleSubmit: PropTypes.func.isRequired,
   isModalOpen: PropTypes.bool.isRequired,
   closeModal: PropTypes.func.isRequired,
@@ -219,7 +219,7 @@ CountrySelectorModal.defaultPropTypes = {
 };
 
 export default reduxForm({
-  form: 'CountrySelectorForm', // a unique identifier for this form
+  form: 'CountrySelectorForm',
   enableReinitialize: true,
 })(withStyles(CountrySelectorModal, styles));
 
