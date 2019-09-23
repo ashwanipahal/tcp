@@ -3,6 +3,7 @@ import PropTypes from 'prop-types';
 import { BodyCopy, Anchor, Image } from '../../../../../atoms';
 import withStyles from '../../../../../hoc/withStyles';
 import styles, { customPriceStyles } from '../styles/ProductCustomizeFormPart.style';
+import { getCartItemInfo } from '../../../../../../features/CnC/AddedToBag/util/utility';
 import ProductPrice from '../../../../../../features/browse/ProductDetail/molecules/ProductPrice/ProductPrice';
 import { PRODUCT_INFO_PROP_TYPE_SHAPE } from '../../../../../../features/browse/ProductListing/molecules/ProductList/propTypes/productsAndItemsPropTypes';
 import { COLOR_FITS_SIZES_MAP_PROP_TYPE } from '../../../../PickupStoreModal/PickUpStoreModal.proptypes';
@@ -32,6 +33,12 @@ class ProductCustomizeFormPart extends React.Component {
     this.setState({ currentColorEntry: getMapSliceForColor(colorFitsSizesMap, e) });
   };
 
+  addToBagEcom = () => {
+    const { addToCartEcom, formValues, productInfo } = this.props;
+    const cartItemInfo = getCartItemInfo(productInfo, formValues);
+    addToCartEcom(cartItemInfo);
+  };
+
   render() {
     const {
       className,
@@ -44,6 +51,7 @@ class ProductCustomizeFormPart extends React.Component {
       isHasPlcc,
       isInternationalShipping,
       quickViewLabels,
+      addToBagError,
     } = this.props;
 
     const { currentColorEntry } = this.state;
@@ -109,6 +117,8 @@ class ProductCustomizeFormPart extends React.Component {
               onChangeColor={this.onChangeColor}
               plpLabels={plpLabels}
               currentProduct={productInfo}
+              addToBagEcom={this.addToBagEcom}
+              addToBagError={addToBagError}
             />
           </div>
         </div>
@@ -119,6 +129,7 @@ class ProductCustomizeFormPart extends React.Component {
 
 ProductCustomizeFormPart.propTypes = {
   plpLabels: PropTypes.shape({}).isRequired,
+  formValues: PropTypes.shape({}).isRequired,
   quickViewLabels: PropTypes.shape({
     addToBag: PropTypes.string,
     viewProductDetails: PropTypes.string,
@@ -128,9 +139,11 @@ ProductCustomizeFormPart.propTypes = {
   currency: PropTypes.string,
   className: PropTypes.string,
   priceCurrency: PropTypes.string,
+  addToBagError: PropTypes.string,
   currencyExchange: PropTypes.string,
   isCanada: PropTypes.bool,
   isInternationalShipping: PropTypes.bool,
+  addToCartEcom: PropTypes.func.isRequired,
   isHasPlcc: PropTypes.bool,
 };
 
@@ -142,6 +155,7 @@ ProductCustomizeFormPart.defaultProps = {
   isCanada: false,
   isHasPlcc: false,
   isInternationalShipping: false,
+  addToBagError: '',
 };
 
 export default withStyles(ProductCustomizeFormPart, styles);

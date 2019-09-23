@@ -6,6 +6,7 @@ import {
   addCartBopisItem,
 } from '../../../../../services/abstractors/CnC/AddedToBag';
 import { AddToCartError, SetAddedToBagData, openAddedToBag } from './AddedToBag.actions';
+import { closeQuickViewModal } from '../../../../common/organisms/QuickViewModal/container/QuickViewModal.actions';
 import BAG_PAGE_ACTIONS from '../../BagPage/container/BagPage.actions';
 import { getAPIConfig } from '../../../../../utils';
 
@@ -38,6 +39,7 @@ export function* addToCartEcom({ payload }) {
         ...res,
       })
     );
+    yield put(closeQuickViewModal({ isModalOpen: false }));
     yield put(openAddedToBag());
     yield put(BAG_PAGE_ACTIONS.getOrderDetails());
   } catch (err) {

@@ -11,6 +11,14 @@ import {
   getCurrentCurrency,
 } from '../../../../features/browse/ProductDetail/container/ProductDetail.selectors';
 
+import { getAddedToBagError } from '../../../../features/CnC/AddedToBag/container/AddedToBag.selectors';
+
+import getQuickViewFormValues from '../../../../../reduxStore/selectors/form.selectors';
+import {
+  addToCartEcom,
+  clearAddToBagErrorState,
+} from '../../../../features/CnC/AddedToBag/container/AddedToBag.actions';
+
 class QuickViewModalContainer extends React.PureComponent {
   render() {
     const { isModalOpen, closeQuickViewModalAction, productInfo, ...otherProps } = this.props;
@@ -36,6 +44,8 @@ function mapStateToProps(state, ownProps) {
     plpLabels: getPlpLabels(state),
     currency: getCurrentCurrency(state),
     quickViewLabels: getQuickViewLabels(state),
+    formValues: getQuickViewFormValues(state),
+    addToBagError: getAddedToBagError(state),
     ...ownProps,
   };
 }
@@ -44,6 +54,12 @@ function mapDispatchToProps(dispatch) {
   return {
     closeQuickViewModalAction: payload => {
       dispatch(closeQuickViewModal(payload));
+    },
+    addToCartEcom: payload => {
+      dispatch(addToCartEcom(payload));
+    },
+    clearAddToBagErrorState: () => {
+      dispatch(clearAddToBagErrorState());
     },
   };
 }

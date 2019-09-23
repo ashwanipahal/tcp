@@ -124,6 +124,8 @@ exports[`ProductCustomizeFormPart component should renders correctly 1`] = `
         />
       </div>
       <ProductAddToBagContainer
+        addToBagEcom={[Function]}
+        addToBagError=""
         currentProduct={
           Object {
             "alternateSizes": Object {},
