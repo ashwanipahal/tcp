@@ -23,6 +23,7 @@ export class AddedToBagContainer extends React.Component<Props> {
       isInternationalShipping,
       isVenmoEnabled,
       navigation,
+      showVenmo,
     } = this.props;
     return (
       <AddedToBagActionsView
@@ -34,6 +35,7 @@ export class AddedToBagContainer extends React.Component<Props> {
         isInternationalShipping={isInternationalShipping}
         isVenmoEnabled={isVenmoEnabled}
         navigation={navigation}
+        showVenmo={showVenmo}
       />
     );
   }

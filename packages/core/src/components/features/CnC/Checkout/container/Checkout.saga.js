@@ -182,9 +182,15 @@ function* submitPickupSection({ payload }) {
     yield call(getCardList);
     if (!isMobileApp()) {
       const getIsShippingRequired = yield select(getIsOrderHasShipping);
+      const isVenmoInProgress = yield select(selectors.isVenmoPaymentInProgress);
+
       if (getIsShippingRequired) {
         utility.routeToPage(CHECKOUT_ROUTES.shippingPage);
-      } else utility.routeToPage(CHECKOUT_ROUTES.billingPage);
+      } else if (isVenmoInProgress) {
+        utility.routeToPage(CHECKOUT_ROUTES.reviewPage);
+      } else {
+        utility.routeToPage(CHECKOUT_ROUTES.billingPage);
+      }
     } else if (navigation) {
       navigation.navigate(CONSTANTS.CHECKOUT_ROUTES_NAMES.CHECKOUT_SHIPPING);
     }

@@ -6,15 +6,7 @@ import BagPage from '../views/BagPage.view';
 import BAG_PAGE_ACTIONS from './BagPage.actions';
 import { getCartOrderList } from '../../CartItemTile/container/CartItemTile.selectors';
 import { getUserLoggedInState } from '../../../account/User/container/User.selectors';
-
-// @flow
-// type Props = {
-//   closeModal: Function,
-//   addedToBagData: any,
-//   isOpenDialog: boolean,
-//   labels: any,
-//   quantity: number,
-// };
+import { setVenmoPaymentInProgress } from '../../Checkout/container/Checkout.action';
 
 export class BagPageContainer extends React.Component<Props> {
   componentDidMount() {
@@ -44,6 +36,7 @@ export class BagPageContainer extends React.Component<Props> {
       isGuest,
       sflItems,
       fetchLabels,
+      setVenmoInProgress,
     } = this.props;
 
     const showAddTobag = false;
@@ -62,6 +55,7 @@ export class BagPageContainer extends React.Component<Props> {
         handleCartCheckout={handleCartCheckout}
         sflItems={sflItems}
         fetchLabels={fetchLabels}
+        setVenmoPaymentInProgress={setVenmoInProgress}
       />
     );
   }
@@ -69,7 +63,7 @@ export class BagPageContainer extends React.Component<Props> {
 
 BagPageContainer.getInitActions = () => BAG_PAGE_ACTIONS.initActions;
 
-export const mapDispatchToProps = (dispatch: ({}) => void) => {
+export const mapDispatchToProps = dispatch => {
   return {
     initialActions: () => {
       dispatch(BAG_PAGE_ACTIONS.getCartData());
@@ -83,6 +77,7 @@ export const mapDispatchToProps = (dispatch: ({}) => void) => {
     fetchLabels: () => {
       dispatch(BAG_PAGE_ACTIONS.initActions[0]);
     },
+    setVenmoInProgress: data => dispatch(setVenmoPaymentInProgress(data)),
   };
 };
 

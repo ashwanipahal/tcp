@@ -24,8 +24,8 @@ export class VenmoPaymentButtonContainer extends React.PureComponent<Props> {
    * Fetch venmo token details from the backend api. This is used to create instance of venmo and for authorization
    */
   fetchVenmoClientToken = () => {
-    const { isMobile, isGuest, orderId, enabled } = this.props;
-    if (isMobile && enabled) {
+    const { isMobile, isGuest, orderId, enabled, isNonceNotExpired } = this.props;
+    if (isMobile && enabled && !isNonceNotExpired) {
       let userState = '';
       if (isGuest) {
         userState = VENMO_USER_STATES.GUEST;
