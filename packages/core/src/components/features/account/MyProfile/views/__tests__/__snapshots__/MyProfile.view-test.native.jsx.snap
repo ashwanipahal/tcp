@@ -11,6 +11,7 @@ exports[`Myprofile should render correctly 1`] = `
   />
   <ProfileInformation
     airMiles=""
+    childrenBirthdays={Immutable.List []}
     defaultStore=""
     handleComponentChange={[Function]}
     labels={Object {}}

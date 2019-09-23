@@ -82,6 +82,19 @@ describe('Checkout Selectors', () => {
     expect(CHECKOUT_SELECTORS.getIsOrderHasShipping(State)).toEqual(0);
   });
 
+  it('#getShippingPhoneAndEmail', () => {
+    const State = {
+      Checkout: fromJS({
+        values: { shipping: { emailAddress: 'abc@test.com', phoneNumber: 987654322 } },
+      }),
+      User: fromJS({ personalData: {} }),
+    };
+    expect(CHECKOUT_SELECTORS.getShippingPhoneAndEmail(State)).toEqual({
+      emailAddress: 'abc@test.com',
+      phoneNumber: 987654322,
+    });
+  });
+
   it('#getShippingDestinationValues', () => {
     const State = {
       Checkout: fromJS({ values: { shipping: {} } }),
@@ -108,16 +121,18 @@ describe('Checkout Selectors', () => {
 
   it('#getDetailedCreditCardById', () => {
     const State = {
-      PaymentReducer: fromJS({ cardList: [{ creditCardId: '' }] }),
+      PaymentReducer: fromJS({ cardList: [{ creditCardId: '123' }] }),
     };
-    expect(CHECKOUT_SELECTORS.getDetailedCreditCardById(State)).toEqual(fromJS(undefined));
+    expect(CHECKOUT_SELECTORS.getDetailedCreditCardById(State, 123)).toEqual({
+      creditCardId: '123',
+    });
   });
 
   it('#getAddressByKey', () => {
     const State = {
       PaymentReducer: fromJS({ cardList: [{ creditCardId: '123' }] }),
     };
-    expect(CHECKOUT_SELECTORS.getDetailedCreditCardById(State)).toEqual(undefined);
+    expect(CHECKOUT_SELECTORS.getDetailedCreditCardById(State, 99)).toEqual(undefined);
   });
 
   it('#getShipmentMethods', () => {

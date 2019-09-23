@@ -19,7 +19,7 @@ import {
 const getGenericErrorMessage = labels => (
   <GenericErrorView>
     <BodyCopy
-      text={labels.trackOrder.lbl_header_trackOrderOverlay_genericError1}
+      text={labels.trackOrder.lbl_trackOrder_genericErrorTryAgain}
       mobilefontFamily={['secondary']}
       fontSize="fs14"
     />
@@ -28,13 +28,13 @@ const getGenericErrorMessage = labels => (
         data-locator="contact_us_form_help"
         underline
         anchorVariation="primary"
-        url={labels.trackOrder.lbl_header_trackOrderOverlay_genericErrorLinkHref}
-        text={labels.trackOrder.lbl_header_trackOrderOverlay_genericErrorLink}
+        url={labels.trackOrder.lbl_trackOrder_genericErrorLinkHref}
+        text={labels.trackOrder.lbl_trackOrder_genericErrorLinkText}
       />
     </AnchorView>
 
     <BodyCopy
-      text={labels.trackOrder.lbl_header_trackOrderOverlay_genericError2}
+      text={labels.trackOrder.lbl_trackOrder_genericErrorAssistance}
       mobilefontFamily={['secondary']}
       fontSize="fs14"
     />

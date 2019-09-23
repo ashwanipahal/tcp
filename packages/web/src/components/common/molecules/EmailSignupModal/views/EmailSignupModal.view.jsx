@@ -96,7 +96,9 @@ class EmailSignupModal extends React.PureComponent {
           closeIconDataLocator={
             subscription.success ? 'thank_you_modal_close_btn' : 'email_signup_modal_close_btn'
           }
-          contentLabel={`${formViewConfig.signUpForLabel} ${formViewConfig.offerTypeLabel}`}
+          contentLabel={`${formViewConfig.lbl_SignUp_signUpForLabel} ${
+            formViewConfig.lbl_SignUp_offerTypeLabel
+          }`}
           aria={{
             describedby: subscription.success
               ? 'sign-up-modal-confirm-view'
@@ -115,7 +117,7 @@ class EmailSignupModal extends React.PureComponent {
                   <DamImage
                     alt={formViewConfig.imageAltText}
                     imgConfigs={IMG_DATA.imgConfig}
-                    imgData={formViewConfig.imageSrc}
+                    imgData={formViewConfig.lbl_SignUp_imageSrc}
                   />
                 </Col>
                 <Col colSize={{ small: 6, medium: 8, large: 8 }} ignoreGutter={{ large: true }}>
@@ -131,7 +133,7 @@ class EmailSignupModal extends React.PureComponent {
                         dataLocator="shop_now_btn"
                         onClick={this.closeModal}
                       >
-                        {formViewConfig.shopNowLabel}
+                        {formViewConfig.lbl_SignUp_shopNowLabel}
                       </Button>
                     </Col>
                   </Row>
@@ -151,7 +153,7 @@ class EmailSignupModal extends React.PureComponent {
                     <DamImage
                       alt={formViewConfig.imageAltText}
                       imgConfigs={IMG_DATA.imgConfig}
-                      imgData={formViewConfig.imageSrc}
+                      imgData={formViewConfig.lbl_SignUp_imageSrc}
                     />
                   </Col>
                   <Col colSize={{ small: 6, medium: 8, large: 8 }}>
@@ -162,7 +164,7 @@ class EmailSignupModal extends React.PureComponent {
                       className="field-container"
                     >
                       <Field
-                        placeholder={formViewConfig.placeholderText}
+                        placeholder={formViewConfig.lbl_SignUp_placeholderText}
                         name="signup"
                         id="signup"
                         type="text"
@@ -173,7 +175,7 @@ class EmailSignupModal extends React.PureComponent {
                         onKeyPress={this.onSignUpInputKeyPress}
                       />
                       <BodyCopy fontSize="fs12" fontFamily="secondary" className="terms-label">
-                        {formViewConfig.termsTextLabel}
+                        {formViewConfig.lbl_SignUp_termsTextLabel}
                       </BodyCopy>
                     </Col>
                     <Row className="button-wrapper-form" fullBleed>
@@ -194,7 +196,7 @@ class EmailSignupModal extends React.PureComponent {
                           dataLocator="join_now_btn"
                           onClick={this.submitForm}
                         >
-                          {formViewConfig.joinButtonLabel}
+                          {formViewConfig.lbl_SignUp_joinButtonLabel}
                         </Button>
                       </Col>
                     </Row>

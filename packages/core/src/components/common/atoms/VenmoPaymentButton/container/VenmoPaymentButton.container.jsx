@@ -23,9 +23,8 @@ export class VenmoPaymentButtonContainer extends React.PureComponent<Props> {
    * Fetch venmo token details from the backend api. This is used to create instance of venmo and for authorization
    */
   fetchVenmoClientToken = () => {
-    const { isMobile, isGuest, orderId } = this.props;
-    // Todo: Add Kill switch logic
-    if (isMobile) {
+    const { isMobile, isGuest, orderId, enabled } = this.props;
+    if (isMobile && enabled) {
       let userState = '';
       if (isGuest) {
         userState = VENMO_USER_STATES.GUEST;
@@ -42,17 +41,8 @@ export class VenmoPaymentButtonContainer extends React.PureComponent<Props> {
    * @param {object} data - venmo reducer data to store
    */
   setVenmoData = data => {
-    const {
-      venmoClientTokenData,
-      setVenmoDataAction,
-      venmoData: { nonce, deviceData, supportedByBrowser, loading },
-    } = this.props;
+    const { setVenmoDataAction } = this.props;
     setVenmoDataAction({
-      venmoClientTokenData,
-      nonce,
-      deviceData,
-      supportedByBrowser,
-      loading,
       ...data,
     });
   };
@@ -62,6 +52,8 @@ export class VenmoPaymentButtonContainer extends React.PureComponent<Props> {
    * @param {string} mode - guest or registered user mode
    */
   onVenmoPaymentButtonClick = mode => {
+    const { onSuccess } = this.props;
+    onSuccess();
     logger.info(mode);
   };
 
@@ -98,8 +90,9 @@ const mapStateToProps = state => {
   const { venmoSecurityToken: authorizationKey, venmoPaymentTokenAvailable } =
     venmoClientTokenData || {};
   const mode = venmoPaymentTokenAvailable === 'TRUE' ? modes.PAYMENT_TOKEN : modes.CLIENT_TOKEN;
+  const enabled = selectors.getIsVenmoEnabled(state) === 'TRUE';
   return {
-    enabled: true, // Todo: This will be handled with the venmo killswitch
+    enabled,
     isMobile: selectors.getIsMobile(),
     mode,
     authorizationKey,

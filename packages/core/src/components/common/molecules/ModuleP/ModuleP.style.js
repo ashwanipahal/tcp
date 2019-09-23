@@ -11,9 +11,6 @@ export default css`
   .container-price {
     text-align: left;
   }
-  .fulfillment-section {
-    display: none;
-  }
 
   @media ${props => props.theme.mediaQuery.large} {
     margin: 0 ${props => props.theme.spacing.SM};

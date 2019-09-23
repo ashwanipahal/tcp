@@ -49,7 +49,6 @@ class ReviewPage extends React.PureComponent {
       orderHasShipping,
       orderHasPickUp,
     } = this.props;
-
     const {
       header,
       backLinkBilling,
@@ -62,7 +61,7 @@ class ReviewPage extends React.PureComponent {
     return (
       <>
         <CheckoutProgressIndicator
-          activeStage="billing"
+          activeStage="review"
           navigation={navigation}
           availableStages={availableStages}
         />
@@ -77,10 +76,10 @@ class ReviewPage extends React.PureComponent {
             navigation={navigation}
             btnText={nextSubmitText}
             routeToPage=""
-            onPress={submitReview}
+            onPress={() => submitReview({ navigation })}
             backLinkText={backLinkBilling}
             onBackLinkPress={() =>
-              navigation.navigate(CONSTANTS.CHECKOUT_ROUTES_NAMES.CHECKOUT_REVIEW)
+              navigation.navigate(CONSTANTS.CHECKOUT_ROUTES_NAMES.CHECKOUT_BILLING)
             }
             footerBody={this.renderFooter()}
           />

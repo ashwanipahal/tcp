@@ -3,6 +3,7 @@ import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
 import BillingPage from '../views';
 import BAG_PAGE_ACTIONS from '../../../../BagPage/container/BagPage.actions';
+import { getAddEditAddressLabels } from '../../../../../../common/organisms/AddEditAddress/container/AddEditAddress.selectors';
 
 import {
   getCVVCodeInfoContentId,
@@ -40,6 +41,7 @@ export const mapStateToProps = state => {
     cvvCodeInfoContentId: getCVVCodeInfoContentId(state),
     cvvCodeRichText: getCVVCodeRichTextSelector(state),
     labels: { ...getBillingLabels(state), ...getBillingLabelsCheckout(state) },
+    addressLabels: getAddEditAddressLabels(state),
   };
 };
 

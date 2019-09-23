@@ -4,27 +4,41 @@ import { BodyCopy } from '../../../../../../common/atoms';
 import { PointHistoryView, PointView, PointTransView } from '../styles/PointHistory.style';
 
 /**
- * @function PointsHistory The PointsHistory to show points history list
+ * @function PointsHistoryList The PointsHistory to show points history list
  */
 
-const PointsHistory = ({ labels, pointHistory }) => {
+const PointsHistoryList = ({ labels, pointHistory }) => {
   const pointHistoryLen = pointHistory && pointHistory.length;
   return (
     <React.Fragment>
       {pointHistoryLen > 0 && (
         <PointHistoryView>
           <PointView>
-            <BodyCopy text={labels.lbl_common_order_date} fontFamily="secondary" fontSize="fs12" />
+            <BodyCopy
+              text={labels.lbl_common_order_date}
+              color="gray.900"
+              fontWeight="semibold"
+              fontFamily="secondary"
+              fontSize="fs12"
+            />
           </PointView>
           <PointTransView>
-            <BodyCopy text={labels.lbl_common_transaction} fontFamily="secondary" fontSize="fs12" />
+            <BodyCopy
+              text={labels.lbl_common_transaction}
+              color="gray.900"
+              fontWeight="semibold"
+              fontFamily="secondary"
+              fontSize="fs12"
+            />
           </PointTransView>
           <PointView>
             <BodyCopy
               text={labels.lbl_common_points_earned}
-              component="p"
               fontFamily="secondary"
               fontSize="fs12"
+              color="gray.900"
+              fontWeight="semibold"
+              textAlign="center"
             />
           </PointView>
         </PointHistoryView>
@@ -39,6 +53,7 @@ const PointsHistory = ({ labels, pointHistory }) => {
                 fontFamily="secondary"
                 fontSize="fs12"
                 fontWeight="semibold"
+                color="gray.900"
               />
             </PointView>
             <PointTransView>
@@ -47,6 +62,7 @@ const PointsHistory = ({ labels, pointHistory }) => {
                 fontFamily="secondary"
                 fontSize="fs12"
                 fontWeight="semibold"
+                color="gray.900"
               />
             </PointTransView>
             <PointView>
@@ -56,6 +72,7 @@ const PointsHistory = ({ labels, pointHistory }) => {
                 fontSize="fs12"
                 fontWeight="semibold"
                 textAlign="center"
+                color="gray.900"
               />
             </PointView>
           </PointHistoryView>
@@ -67,13 +84,14 @@ const PointsHistory = ({ labels, pointHistory }) => {
           fontFamily="secondary"
           fontSize="fs16"
           fontWeight="semibold"
+          color="gray.900"
         />
       )}
     </React.Fragment>
   );
 };
 
-PointsHistory.propTypes = {
+PointsHistoryList.propTypes = {
   pointHistory: PropTypes.shape([]),
   labels: PropTypes.shape({
     lbl_common_order_date: PropTypes.string,
@@ -83,7 +101,7 @@ PointsHistory.propTypes = {
   }),
 };
 
-PointsHistory.defaultProps = {
+PointsHistoryList.defaultProps = {
   pointHistory: [],
   labels: {
     lbl_common_order_date: '',
@@ -93,4 +111,5 @@ PointsHistory.defaultProps = {
   },
 };
 
-export default PointsHistory;
+export default PointsHistoryList;
+export { PointsHistoryList as PointsHistoryListVanilla };

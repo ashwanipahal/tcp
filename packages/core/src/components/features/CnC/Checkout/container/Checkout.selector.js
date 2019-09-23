@@ -1,11 +1,11 @@
 /* eslint-disable max-lines */
 import { formValueSelector } from 'redux-form';
 import { createSelector } from 'reselect';
-import { CHECKOUT_REDUCER_KEY } from '@tcp/core/src/constants/reducer.constants';
 import {
-  modes,
-  constants as venmoConstants,
-} from '@tcp/core/src/components/common/atoms/VenmoPaymentButton/container/VenmoPaymentButton.util';
+  CHECKOUT_REDUCER_KEY,
+  SESSIONCONFIG_REDUCER_KEY,
+} from '@tcp/core/src/constants/reducer.constants';
+import { constants as venmoConstants } from '@tcp/core/src/components/common/atoms/VenmoPaymentButton/container/VenmoPaymentButton.util';
 
 /* eslint-disable extra-rules/no-commented-out-code */
 import { getAPIConfig, isMobileApp, getViewportInfo, getLabelValue } from '../../../../../utils';
@@ -25,6 +25,7 @@ import {
   getPickUpContactFormLabels,
   getGiftServicesFormData,
   getSyncError,
+  getPaypalPaymentSettings,
 } from './Checkout.selector.util';
 
 // import { getAddressListState } from '../../../account/AddressBook/container/AddressBook.selectors';
@@ -287,6 +288,14 @@ const getDefaultShipping = state => {
   return selector(state, 'defaultShipping');
 };
 
+const getShippingPhoneAndEmail = createSelector(
+  getShippingDestinationValues,
+  shippingDestinationValues => {
+    const { phoneNumber, emailAddress } = shippingDestinationValues;
+    return { phoneNumber, emailAddress };
+  }
+);
+
 const getCurrentPickupFormNumber = createSelector(
   getShippingPickupFields,
   pickUpContact => pickUpContact && pickUpContact.phoneNumber
@@ -396,15 +405,24 @@ const getDefaultShipmentID = createSelector(
   }
 );
 
+const getSelectedShippingMethodDetails = createSelector(
+  [getDefaultShipmentID, getShipmentMethods],
+  (shippingID, method) => {
+    const selectedMethod = method.filter(item => item.id === shippingID);
+    return selectedMethod.length > 0 && selectedMethod[0];
+  }
+);
+
 const getAlternateFormFields = state => {
   const selector = formValueSelector('checkoutPickup');
   return selector(state, 'pickUpAlternate');
 };
 
-const isPickupAlt = createSelector(
-  getAlternateFormFields,
-  pickUpAlternate => pickUpAlternate && pickUpAlternate.firstName
+export const isPickupAlt = createSelector(
+  getPickupAltValues,
+  pickUpAlternate => pickUpAlternate && !!pickUpAlternate.firstName
 );
+
 const getLabels = state => state.Labels;
 
 export const getAlternateFormUpdate = createSelector(
@@ -438,14 +456,14 @@ function getPickupInitialPickupSectionValues(state) {
   };
   return {
     pickUpContact: {
-      firstName: pickupValues.get('firstName') || getUserName(state),
-      lastName: pickupValues.get('lastName') || getUserLastName(state),
-      emailAddress: pickupValues.get('emailAddress') || getUserEmail(state),
-      phoneNumber: pickupValues.get('phoneNumber') || getUserPhoneNumber(state),
+      firstName: pickupValues.firstName || getUserName(state),
+      lastName: pickupValues.lastName || getUserLastName(state),
+      emailAddress: pickupValues.emailAddress || getUserEmail(state),
+      phoneNumber: pickupValues.phoneNumber || getUserPhoneNumber(state),
     },
     smsSignUp: {
       sendOrderUpdate: !!getSmsNumberForOrderUpdates(state),
-      phoneNumber: pickupValues.get('phoneNumber') || getUserPhoneNumber(state),
+      phoneNumber: pickupValues.phoneNumber || getUserPhoneNumber(state),
     },
     hasAlternatePickup: isPickupAlt(state),
     pickUpAlternate: isPickupAlt(state) ? alternativeData : {},
@@ -474,7 +492,7 @@ function getBillingValues(state) {
 
 function getDetailedCreditCardById(state, id) {
   return JSON.parse(JSON.stringify(state.PaymentReducer.get('cardList'))).find(
-    ({ creditCardId }) => (creditCardId && creditCardId.toString()) === id
+    ({ creditCardId }) => (creditCardId && creditCardId.toString()) === id.toString()
   );
 }
 
@@ -482,9 +500,6 @@ function isCardNotUpdated(state, cardId) {
   return getBillingValues(state).onFileCardId === cardId;
 }
 
-const getPaypalPaymentSettings = state => {
-  return state.Checkout.getIn(['options', 'paypalPaymentSettings']);
-};
 const getReviewLabels = state => {
   const getReviewLabelValue = label => getLabelValue(state.Labels, label, 'review', 'checkout');
   return {
@@ -503,17 +518,23 @@ const getReviewLabels = state => {
   };
 };
 
-const getVenmoData = state => {
-  return state[CHECKOUT_REDUCER_KEY].getIn(['values', 'venmoData']);
+const getCurrentOrderId = state => {
+  return state.CartPageReducer.getIn(['orderDetails', 'orderId']);
 };
 
-const getVenmoClientTokenData = state => {
-  const venmoData = getVenmoData(state);
-  return venmoData && venmoData.venmoClientTokenData;
-};
+const getSmsNumberForBillingOrderUpdates = state =>
+  state.Checkout.getIn(['values', 'smsInfo', 'numberForUpdates']);
 
-const isVenmoPaymentInProgress = state => {
-  return state[CHECKOUT_REDUCER_KEY].getIn(['uiFlags', 'venmoPaymentInProgress']);
+const getVenmoData = state => state[CHECKOUT_REDUCER_KEY].getIn(['values', 'venmoData']);
+
+const getVenmoClientTokenData = state =>
+  state[CHECKOUT_REDUCER_KEY].getIn(['values', 'venmoClientTokenData']);
+
+const isVenmoPaymentInProgress = state =>
+  state[CHECKOUT_REDUCER_KEY].getIn(['uiFlags', 'venmoPaymentInProgress']);
+
+const isGiftOptionsEnabled = state => {
+  return state[CHECKOUT_REDUCER_KEY].getIn(['uiFlags', 'isGiftOptionsEnabled']);
 };
 
 /**
@@ -523,7 +544,8 @@ const isVenmoPaymentInProgress = state => {
 const isVenmoNonceNotExpired = state => {
   const venmoData = getVenmoData(state);
   const expiry = venmoConstants.VENMO_NONCE_EXPIRY_TIMEOUT;
-  const { nonce, timestamp, venmoClientTokenData } = venmoData;
+  const { nonce, timestamp } = venmoData;
+  const venmoClientTokenData = getVenmoClientTokenData(state);
   const venmoPaymentTokenAvailable = venmoClientTokenData
     ? venmoClientTokenData.venmoPaymentTokenAvailable
     : false;
@@ -531,13 +553,11 @@ const isVenmoNonceNotExpired = state => {
 };
 
 const isVenmoPaymentToken = state => {
-  const venmoData = getVenmoData(state);
-  return (
-    (venmoData && venmoData.mode === modes.PAYMENT_TOKEN) ||
-    (venmoData &&
-      venmoData.venmoClientTokenData &&
-      venmoData.venmoClientTokenData.mode === modes.PAYMENT_TOKEN)
-  );
+  const venmoClientTokenData = getVenmoClientTokenData(state);
+  const venmoPaymentTokenAvailable = venmoClientTokenData
+    ? venmoClientTokenData.venmoPaymentTokenAvailable
+    : false;
+  return venmoPaymentTokenAvailable === 'TRUE';
 };
 
 const isVenmoNonceActive = state => {
@@ -578,6 +598,107 @@ function getVenmoUserEmail(state) {
     (state.user.personalData.contactInfo && state.user.personalData.contactInfo.emailAddress)
   );
 }
+
+const getGiftWrapOptions = state => {
+  return state.Checkout.getIn(['options', 'giftWrapOptions']);
+};
+
+const getSelectedGiftWrapDetails = state => {
+  const selectedGiftWrapValues = getGiftWrappingValues(state);
+  const selectedOptionData = getGiftWrapOptions(state);
+  return { ...selectedGiftWrapValues, ...selectedOptionData };
+};
+
+/**
+ * @function getInternationalCheckoutApiUrl
+ * @description this selector gives borderFree url for iframe
+ */
+function getInternationalCheckoutApiUrl() {
+  return getAPIConfig().borderFree;
+}
+/**
+ * @function getInternationalCheckoutCommUrl
+ * @description this selector gives borderFreeComm url for iframe
+ */
+function getInternationalCheckoutCommUrl() {
+  return getAPIConfig().borderFreeComm;
+}
+
+/**
+ *
+ * @function getInternationalCheckoutUrl
+ * @param {*} state
+ * @description this selector gives international url from state.
+ */
+function getInternationalCheckoutUrl(state) {
+  return state.Checkout.getIn(['options', 'internationalUrl']);
+}
+const getIsVenmoEnabled = state => {
+  return (
+    state[SESSIONCONFIG_REDUCER_KEY] &&
+    state[SESSIONCONFIG_REDUCER_KEY].getIn(['siteDetails', 'VENMO_ENABLED'])
+  );
+};
+
+const getCurrentLanguage = state => {
+  return state.CountrySelector.get('language') || constants.DEFAULT_LANGUAGE;
+};
+
+const getReviewPageLabels = state =>
+  state.Labels && state.Labels.checkout && state.Labels.checkout.review;
+
+/**
+ * @function getPickupSectionLabels
+ * @param {Object} state
+ * @description This selector provides the state of the review page labels.
+ * @returns {Object}
+ */
+const getPickupSectionLabels = createSelector(
+  getReviewPageLabels,
+  reviewLabels => {
+    const labels = {};
+    const labelKeys = [
+      'lbl_review_pickupSectionTitle',
+      'lbl_review_sectionAnchor',
+      'lbl_review_sectionPickupText',
+      'lbl_review_sectionPickupItem',
+      'lbl_review_sectionPickupItems',
+      'lbl_review_sectionPickupToday',
+      'lbl_review_sectionPickupAlternateHeading',
+      'lbl_review_sectionPickupOrderTitle',
+    ];
+    labelKeys.forEach(key => {
+      labels[key] = getLabelValue(reviewLabels, key);
+    });
+    return labels;
+  }
+);
+
+/**
+ * @function getShippingSectionLabels
+ * @param {Object} state
+ * @description This selector provides the state of the review page labels.
+ * @returns {Object}
+ */
+const getShippingSectionLabels = createSelector(
+  getReviewPageLabels,
+  reviewLabels => {
+    const labels = {};
+    const labelKeys = [
+      'lbl_review_shippingSectionTitle',
+      'lbl_review_sectionAnchor',
+      'lbl_review_sectionShippingHeading',
+      'lbl_review_sectionShippingAddressTitle',
+      'lbl_review_sectionShippingMethodTitle',
+      'lbl_review_sectionShippingGiftServiceTitle',
+      'lbl_review_sectionShippingGiftServiceDefault',
+    ];
+    labelKeys.forEach(key => {
+      labels[key] = getLabelValue(reviewLabels, key);
+    });
+    return labels;
+  }
+);
 
 export default {
   getRecalcOrderPointsInterval,
@@ -629,8 +750,15 @@ export default {
   getSyncError,
   getGiftServicesFormData,
   getGiftServicesSend,
-  getPaypalPaymentSettings,
   getReviewLabels,
+  getPickupSectionLabels,
+  getShippingSectionLabels,
+  isGiftOptionsEnabled,
+  getPaypalPaymentSettings,
+  getSelectedGiftWrapDetails,
+  getSelectedShippingMethodDetails,
+  getCurrentOrderId,
+  getSmsNumberForBillingOrderUpdates,
   getVenmoData,
   getVenmoClientTokenData,
   isVenmoPaymentAvailable,
@@ -640,4 +768,10 @@ export default {
   isVenmoNonceNotExpired,
   isVenmoPaymentInProgress,
   isVenmoPaymentToken,
+  getInternationalCheckoutCommUrl,
+  getInternationalCheckoutApiUrl,
+  getInternationalCheckoutUrl,
+  getIsVenmoEnabled,
+  getCurrentLanguage,
+  getShippingPhoneAndEmail,
 };

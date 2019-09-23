@@ -4,10 +4,15 @@ exports[`CouponList component should renders applied list 1`] = `
 <Styled(View)>
   <Styled(View)>
     <Styled(BodyCopy)
+      accessibilityText=""
+      dataLocator=""
       fontFamily="secondary"
       fontSize="fs16"
       fontWeight="semibold"
+      margin={null}
+      numberOfLines={null}
       text="Heading (6)"
+      textDecoration={null}
     />
   </Styled(View)>
   <Styled(View)>
@@ -125,11 +130,16 @@ exports[`CouponList component should renders available list 1`] = `
 <Styled(View)>
   <Styled(View)>
     <Styled(BodyCopy)
+      accessibilityText=""
       data-locator=""
+      dataLocator=""
       fontFamily="secondary"
       fontSize="fs16"
       fontWeight="semibold"
+      margin={null}
+      numberOfLines={null}
       text="Heading (6)"
+      textDecoration={null}
     />
     <Styled(View)>
       <Styled(View)>
@@ -140,6 +150,7 @@ exports[`CouponList component should renders available list 1`] = `
       <Styled(Anchor)
         accessibilityLabel=""
         anchorVariation="primary"
+        colorName={null}
         customStyle={Object {}}
         dataLocator=""
         fontFamily="secondary"
@@ -283,6 +294,7 @@ exports[`CouponList component should renders available list 1`] = `
     <Styled(Anchor)
       accessibilityLabel=""
       anchorVariation="primary"
+      colorName={null}
       customStyle={Object {}}
       dataLocator=""
       fontFamily="secondary"

@@ -141,7 +141,7 @@ export const mapStateToProps = state => {
     bagItems: getBagItemsSize(state),
     isGuestUser: isGuest(state),
     profileInfo: getUserProfileData(state),
-    labels: Labels && Labels.PLCC && Labels.PLCC.plccForm,
+    labels: Labels && Labels.global && Labels.global.plccForm,
     userId: getUserId(state),
   };
 };

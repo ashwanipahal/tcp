@@ -28,6 +28,8 @@ export {
   configurePlpNavigationFromCMSUrl,
   isBopisProduct,
   isBossProduct,
+  viewport,
+  getLocationOrigin,
 } from './utils.web';
 
 export {
@@ -61,4 +63,5 @@ export {
   sanitizeEntity,
   formatPhone,
   parseStoreHours,
+  parseBoolean,
 } from './utils';

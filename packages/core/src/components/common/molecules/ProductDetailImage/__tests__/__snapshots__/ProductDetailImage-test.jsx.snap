@@ -8,6 +8,7 @@ exports[`ProductDetailImage component should renders correctly 1`] = `
   title=""
 >
   <ReactImageMagnify
+    data-locator="pdp_main_image"
     enlargedImageContainerClassName="enlarged-image-wrapper"
     enlargedImageContainerDimensions={
       Object {

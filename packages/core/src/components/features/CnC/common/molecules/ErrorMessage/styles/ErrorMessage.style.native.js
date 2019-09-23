@@ -2,9 +2,11 @@ import styled from 'styled-components/native';
 
 export const ErrorView = styled.View`
   display: flex;
-  padding: 6px 15px 13px 14px;
+  padding: ${props => (props.showAccordian ? '0' : '6px')} 15px
+    ${props => (props.showAccordian ? '0' : '13px')} 14px;
   flex-direction: row;
-  background-color: ${props => props.theme.colors.PRIMARY.PALEGRAY};
+  background-color: ${props =>
+    props.showAccordian ? props.theme.colors.WHITE : props.theme.colors.PRIMARY.PALEGRAY};
 `;
 
 export const ErrorIcon = {

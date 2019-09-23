@@ -29,9 +29,9 @@ describe('GetCandidGallery component', () => {
       ],
     },
     labels: {
-      title: '#MyStylePlace',
-      titleDescription: 'Title Description',
-      btnSeeMore: 'See More',
+      lbl_getCandid_title: '#MyStylePlace',
+      lbl_getCandid_titleDescription: 'Title Description',
+      lbl_getCandid_btnSeeMore: 'See More',
     },
     navigation: {
       dispatch: jest.fn(),
@@ -53,9 +53,9 @@ describe('GetCandidGallery component', () => {
     expect(component.instance().keyExtractor('', 1)).toBe('1');
   });
 
-  it('should call navigateToPage func', () => {
+  it('should call navigateToGallery func', () => {
     const component = shallow(<GetCandidVanilla {...props} />);
-    component.instance().navigateToPage();
+    component.instance().navigateToGallery();
   });
 
   it('should call renderItem func', () => {

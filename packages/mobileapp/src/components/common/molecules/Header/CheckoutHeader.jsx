@@ -45,7 +45,7 @@ class CheckoutHeader extends React.PureComponent<Props> {
             <StoreContainer>
               <BackIconTouchable
                 onPress={() => {
-                  navigation.goBack();
+                  navigation.goBack(null);
                 }}
               >
                 <BackIcon
