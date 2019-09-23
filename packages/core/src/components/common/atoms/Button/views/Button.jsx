@@ -33,6 +33,7 @@ const Button = ({
   cta,
   uniqueKey,
   noCurve,
+  active,
   ...otherProps
 }) => {
   if (!cta) {
@@ -90,6 +91,7 @@ Button.propTypes = {
   }),
   uniqueKey: PropTypes.string,
   noCurve: PropTypes.bool,
+  active: PropTypes.bool,
 };
 
 Button.defaultProps = {
@@ -101,6 +103,7 @@ Button.defaultProps = {
   noCurve: true,
   cta: null,
   dataLocatorCTA: '',
+  active: false,
 };
 
 export default withStyles(Button, styles);

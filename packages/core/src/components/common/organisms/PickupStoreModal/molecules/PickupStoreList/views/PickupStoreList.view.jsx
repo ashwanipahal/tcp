@@ -1,9 +1,9 @@
 import React from 'react';
 import { PropTypes } from 'prop-types';
-import LabeledCheckbox from '../../../../../atoms/LabeledCheckbox';
 import { BOPIS_ITEM_AVAILABILITY } from '../../../PickUpStoreModal.constants';
 import PickupStoreListItem from '../../PickupStoreListItem';
 import { STORE_SUMMARY_PROP_TYPES } from '../../../PickUpStoreModal.proptypes';
+import InputCheckbox from '../../../../../atoms/InputCheckbox';
 
 const derieveStoresWithAvailability = (isOnlyShowAvailable, isBopisEnabled, storesList) => {
   return isOnlyShowAvailable && isBopisEnabled
@@ -172,11 +172,12 @@ class PickupStoreList extends React.Component {
     return (
       <div className="stores-info">
         {!allowBossStoreSearch && (!isResultOfSearchingInCartStores && isShowFilterCheckbox) && (
-          <LabeledCheckbox
+          <InputCheckbox
             className="store-availability-checkbox"
-            title="Only show stores available for pickup today."
             input={{ value: isOnlyShowAvailable, onChange: this.handleShowAvailableChange }}
-          />
+          >
+            Only show stores available for pickup today.
+          </InputCheckbox>
         )}
         {derivedStoresList.map(store => (
           <PickupStoreListItem

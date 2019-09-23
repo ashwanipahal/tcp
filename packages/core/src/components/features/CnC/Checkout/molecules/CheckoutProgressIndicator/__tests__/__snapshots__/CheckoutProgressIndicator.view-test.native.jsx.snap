@@ -17,6 +17,7 @@ exports[`CheckoutProgressIndicator component should renders correctly props not 
         <Styled(Anchor)
           accessibilityLabel=""
           anchorVariation="primary"
+          colorName={null}
           customStyle={Object {}}
           dataLocator=""
           fontFamily="secondary"
@@ -43,6 +44,7 @@ exports[`CheckoutProgressIndicator component should renders correctly props not 
         <Styled(Anchor)
           accessibilityLabel=""
           anchorVariation="primary"
+          colorName={null}
           customStyle={Object {}}
           dataLocator=""
           fontFamily="secondary"

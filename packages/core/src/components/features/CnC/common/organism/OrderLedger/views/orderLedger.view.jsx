@@ -24,6 +24,7 @@ const OrderLedger = ({ className, ledgerSummaryData, labels }) => {
     giftCardsTotal,
     orderBalanceTotal,
     totalOrderSavings,
+    isOrderHasShipping,
   } = ledgerSummaryData;
   const toolTipMinWidth = '205px';
   return (
@@ -119,40 +120,42 @@ const OrderLedger = ({ className, ledgerSummaryData, labels }) => {
             </Col>
           </Row>
         ) : null}
-        <Row
-          className="shipping-total rowMargin"
-          data-locator={getLocator('order_ledger_shipping_label')}
-        >
-          <Col colSize={{ large: 6, medium: 4, small: 3 }}>
-            <BodyCopy
-              bodySize="one"
-              color="primary"
-              fontFamily="secondary"
-              fontWeight="semibold"
-              fontSize="fs13"
-            >
-              {`${labels.shippingLabel}:`}
-            </BodyCopy>
-          </Col>
-          <Col colSize={{ large: 6, medium: 4, small: 3 }}>
-            <BodyCopy
-              bodySize="one"
-              color="primary"
-              fontFamily="secondary"
-              fontWeight="semibold"
-              fontSize="fs13"
-              textAlign="right"
-            >
-              {/* eslint-disable-next-line no-nested-ternary */}
-              {shippingTotal !== undefined
-                ? // eslint-disable-next-line no-constant-condition
-                  { shippingTotal } > 0
-                  ? `${currencySymbol}${shippingTotal.toFixed(2)}`
-                  : labels.free
-                : '-'}
-            </BodyCopy>
-          </Col>
-        </Row>
+        {isOrderHasShipping && (
+          <Row
+            className="shipping-total rowMargin"
+            data-locator={getLocator('order_ledger_shipping_label')}
+          >
+            <Col colSize={{ large: 6, medium: 4, small: 3 }}>
+              <BodyCopy
+                bodySize="one"
+                color="primary"
+                fontFamily="secondary"
+                fontWeight="semibold"
+                fontSize="fs13"
+              >
+                {`${labels.shippingLabel}:`}
+              </BodyCopy>
+            </Col>
+            <Col colSize={{ large: 6, medium: 4, small: 3 }}>
+              <BodyCopy
+                bodySize="one"
+                color="primary"
+                fontFamily="secondary"
+                fontWeight="semibold"
+                fontSize="fs13"
+                textAlign="right"
+              >
+                {/* eslint-disable-next-line no-nested-ternary */}
+                {shippingTotal !== undefined
+                  ? // eslint-disable-next-line no-constant-condition
+                    { shippingTotal } > 0
+                    ? `${currencySymbol}${shippingTotal.toFixed(2)}`
+                    : labels.free
+                  : '-'}
+              </BodyCopy>
+            </Col>
+          </Row>
+        )}
         <Row
           className="tax-total rowMargin"
           data-locator={getLocator('order_ledger_estimated_tax_label')}

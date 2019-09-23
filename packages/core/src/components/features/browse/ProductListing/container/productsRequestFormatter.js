@@ -421,6 +421,16 @@ export default class ProductsOperator {
     return { bucketingSeqConfig, categoryId };
   };
 
+  getProductsListingFilters({ state, asPath, pageNumber, formData }) {
+    const filtersAndSort = formData || getPlpCutomizersFromUrlQueryString(asPath);
+    return this.getProductsListingInfo({
+      state,
+      filtersAndSort,
+      pageNumber,
+      location: window.location,
+    });
+  }
+
   getProductsListingInfo = ({
     state,
     filtersAndSort,

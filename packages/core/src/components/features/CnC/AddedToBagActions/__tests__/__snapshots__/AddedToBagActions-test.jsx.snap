@@ -63,13 +63,5 @@ exports[`AddedToBagActions component AddedToBagActions component renders correct
       />
     </Styled(Button)>
   </Styled(Row)>
-  <Styled(BagConfirmationModal)
-    labels={Object {}}
-  />
-  <OpenLoginModal
-    handleAfterLogin={[Function]}
-    handleContinueAsGuest={[Function]}
-    variation="checkout"
-  />
 </div>
 `;

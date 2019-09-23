@@ -2,6 +2,7 @@ import React, { useState } from 'react';
 import get from 'lodash/get';
 import PropTypes from 'prop-types';
 import { withTheme } from 'styled-components/native';
+import PromotionalMessage from '@tcp/core/src/components/common/atoms/PromotionalMessage';
 import withStyles from '../../../../../../common/hoc/withStyles.native';
 import {
   styles,
@@ -18,13 +19,9 @@ import {
   Badge3Text,
   TitleContainer,
   TitleText,
-  PromotionalMessageContainer,
-  PromotionalMessage,
   AddToBagContainer,
-  PromotionalMessagePostfix,
   OfferPriceAndFavoriteIconContainer,
 } from '../styles/ProductListItem.style.native';
-import { getFormattedLoyaltyText } from '../../ProductList/utils/productsCommonUtils';
 import CustomButton from '../../../../../../common/atoms/Button';
 import ColorSwitch from '../../ColorSwitch';
 import CustomIcon from '../../../../../../common/atoms/Icon';
@@ -80,7 +77,12 @@ const ListItem = props => {
       />
       <RenderTitle text={name} />
       <ColorSwitch colorsMap={colorsMap} setSelectedColorIndex={setSelectedColorIndex} />
-      <RenderPromotionalMessage isPlcc={isPlcc} text={loyaltyPromotionMessage} />
+      <PromotionalMessage
+        isPlcc={isPlcc}
+        text={loyaltyPromotionMessage}
+        height="24px"
+        marginTop={12}
+      />
       <AddToBagContainer>
         <CustomButton
           fill="BLUE"
@@ -194,23 +196,6 @@ const RenderTitle = ({ text }) => {
 
 RenderTitle.propTypes = TextProps;
 
-const RenderPromotionalMessage = ({ text, isPlcc }) => {
-  return (
-    <PromotionalMessageContainer>
-      <PromotionalMessage isPlcc={isPlcc} accessibilityRole="text" numberOfLines={2}>
-        {text && getFormattedLoyaltyText(text)[0]}
-        {text && (
-          <PromotionalMessagePostfix>
-            {` on${getFormattedLoyaltyText(text)[1]}`}
-          </PromotionalMessagePostfix>
-        )}
-      </PromotionalMessage>
-    </PromotionalMessageContainer>
-  );
-};
-
-RenderPromotionalMessage.propTypes = { ...TextProps, isPlcc: PropTypes.bool };
-
 ListItem.propTypes = {
   theme: PropTypes.shape({}),
   item: PropTypes.shape({}),
@@ -233,10 +218,6 @@ ListItem.defaultProps = {
   loyaltyPromotionMessage: '',
   onAddToBag: () => {},
   onFavorite: () => {},
-  isPlcc: false,
-};
-
-RenderPromotionalMessage.defaultProps = {
   isPlcc: false,
 };
 

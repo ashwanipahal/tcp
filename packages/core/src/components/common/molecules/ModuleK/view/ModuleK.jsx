@@ -8,6 +8,14 @@ import errorBoundary from '../../../hoc/withErrorBoundary';
 import config from '../config';
 import { getIconPath, getLocator } from '../../../../../utils';
 
+const carouselConfig = {
+  autoplay: true,
+  dataLocatorPlay: getLocator('moduleK_play_button'),
+  dataLocatorPause: getLocator('moduleK_pause_button'),
+  customArrowLeft: getIconPath('carousel-big-carrot'),
+  customArrowRight: getIconPath('carousel-big-carrot'),
+};
+
 /**
  * @class ModuleK - global reusable component will provide featured content module
  * with a composite background image and 2-6 CTAs
@@ -15,7 +23,12 @@ import { getIconPath, getLocator } from '../../../../../utils';
  * @param {composites} composites the list of data for header texts, links and images for component
  */
 const ModuleK = props => {
-  const { headerText, masonryGrid, className } = props;
+  const {
+    headerText,
+    masonryGrid,
+    className,
+    accessibility: { playIconButton, pauseIconButton } = {},
+  } = props;
 
   const { CAROUSEL_OPTIONS, IMG_DATA } = config;
 
@@ -25,7 +38,10 @@ const ModuleK = props => {
   CAROUSEL_OPTIONS.nextArrow = (
     <button type="button" data-locator="moduleK_right_arrow" className="slick-prev" />
   );
-  CAROUSEL_OPTIONS.hidePlayPause = masonryGrid.length === 1;
+
+  carouselConfig.autoplay = carouselConfig.autoplay && masonryGrid.length > 1;
+  carouselConfig.pauseIconButtonLabel = pauseIconButton;
+  carouselConfig.playIconButtonLabel = playIconButton;
 
   return (
     <BodyCopy component="div" className={`${className} moduleK`}>
@@ -64,13 +80,7 @@ const ModuleK = props => {
           <Carousel
             options={CAROUSEL_OPTIONS}
             inheritedStyles={Carousel}
-            carouselConfig={{
-              autoplay: true,
-              dataLocatorPlay: getLocator('moduleK_play_button'),
-              dataLocatorPause: getLocator('moduleK_pause_button'),
-              customArrowLeft: getIconPath('carousel-big-carrot'),
-              customArrowRight: getIconPath('carousel-big-carrot'),
-            }}
+            carouselConfig={carouselConfig}
           >
             {masonryGrid.map(({ promoBanner, mediaLinkedList, singleCTAButton }, index) => {
               const checkPromo = promoBanner && promoBanner.length;
@@ -125,6 +135,10 @@ ModuleK.propTypes = {
   className: PropTypes.string.isRequired,
   headerText: PropTypes.arrayOf(PropTypes.oneOfType(PropTypes.shape({}))).isRequired,
   masonryGrid: PropTypes.shape({}).isRequired,
+  accessibility: PropTypes.shape({
+    playIconButton: PropTypes.string,
+    pauseIconButton: PropTypes.string,
+  }).isRequired,
 };
 
 export default withStyles(errorBoundary(ModuleK), style);

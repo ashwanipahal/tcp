@@ -17,7 +17,7 @@ exports[`ApplicationInProgress component should renders correctly 1`] = `
     link={null}
     textAlign="left"
   >
-    in progress
+    application card is in progress
   </Styled(BodyCopy)>
   <Styled(BodyCopy)
     className="in_progress_status_details"
@@ -31,7 +31,7 @@ exports[`ApplicationInProgress component should renders correctly 1`] = `
     link={null}
     textAlign="left"
   >
-    application card is in progress
+    in progress
   </Styled(BodyCopy)>
   <Styled(Row)
     className="submit_plcc_form"

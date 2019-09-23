@@ -9,6 +9,7 @@ import {
   getShippingMethods,
   setShippingMethodAndAddressId,
   addPickupPerson,
+  getInternationCheckoutSettings,
 } from '../../../../../services/abstractors/CnC/index';
 import selectors, { isGuest } from './Checkout.selector';
 import { getUserEmail } from '../../../account/User/container/User.selectors';
@@ -22,17 +23,14 @@ import {
   setIsLoadingShippingMethods,
   setShippingOptions,
   setAddressError,
-  setSmsNumberForUpdates,
+  getSetIntlUrl,
 } from './Checkout.action';
 import BAG_PAGE_ACTIONS from '../../BagPage/container/BagPage.actions';
 import BagPageSelectors from '../../BagPage/container/BagPage.selectors';
 // import { getUserEmail } from '../../../account/User/container/User.selectors';
 import { isCanada } from '../../../../../utils/utils';
-import {
-  addAddressGet,
-  updateAddressPut,
-} from '../../../../common/organisms/AddEditAddress/container/AddEditAddress.saga';
 import { getAddressList } from '../../../account/AddressBook/container/AddressBook.saga';
+import { getCardList } from '../../../account/Payment/container/Payment.saga';
 // import { addAddress } from '../../../../../services/abstractors/account/AddEditAddress';
 import { isMobileApp } from '../../../../../utils';
 import {
@@ -44,6 +42,8 @@ import {
   addAndSetGiftWrappingOptions,
   validateAndSubmitEmailSignup,
   getVenmoClientTokenSaga,
+  saveLocalSmsInfo,
+  addOrEditGuestUserAddress,
 } from './Checkout.saga.util';
 import submitBilling from './CheckoutBilling.saga';
 import submitOrderForProcessing from './CheckoutReview.saga';
@@ -178,8 +178,13 @@ function* submitPickupSection({ payload }) {
   //  }
   const result = yield call(callPickupSubmitMethod, formData);
   if (result.addressId) {
+    yield call(getAddressList);
+    yield call(getCardList);
     if (!isMobileApp()) {
-      utility.routeToPage(CHECKOUT_ROUTES.shippingPage);
+      const getIsShippingRequired = yield select(getIsOrderHasShipping);
+      if (getIsShippingRequired) {
+        utility.routeToPage(CHECKOUT_ROUTES.shippingPage);
+      } else utility.routeToPage(CHECKOUT_ROUTES.billingPage);
     } else if (navigation) {
       navigation.navigate(CONSTANTS.CHECKOUT_ROUTES_NAMES.CHECKOUT_SHIPPING);
     }
@@ -542,15 +547,16 @@ function* initCheckout() {
   }
 }
 
-function* saveLocalSmsInfo(smsInfo = {}) {
-  let returnVal;
-  const { wantsSmsOrderUpdates, smsUpdateNumber } = smsInfo;
-  if (smsUpdateNumber) {
-    returnVal = wantsSmsOrderUpdates
-      ? yield call(setSmsNumberForUpdates, smsUpdateNumber)
-      : yield call(setSmsNumberForUpdates(null));
+/**
+ * initIntlCheckout component. This is responsible for initiating actions required for start of international checkout journey.
+ */
+function* initIntlCheckout() {
+  try {
+    const res = yield call(getInternationCheckoutSettings);
+    yield put(getSetIntlUrl(res.checkoutUrl));
+  } catch (e) {
+    logger.error(`initIntlCheckout:${e}`);
   }
-  return returnVal;
 }
 
 function* submitShipping({
@@ -581,46 +587,14 @@ function* submitShipping({
   let addOrEditAddressRes;
   if (isGuestUser) {
     const oldShippingDestination = yield select(getShippingDestinationValues);
-    if (!oldShippingDestination.onFileAddressKey) {
-      // guest user that is using a new address
-      addOrEditAddressRes = yield call(
-        addAddressGet,
-        {
-          payload: {
-            ...address,
-            address1: address.addressLine1,
-            address2: address.addressLine2,
-            zip: address.zipCode,
-            phoneNumber,
-            emailAddress,
-            primary: setAsDefault,
-            phone1Publish: `${saveToAccount}`,
-            fromPage: 'checkout',
-          },
-        },
-        false
-      );
-      addOrEditAddressRes = { payload: addOrEditAddressRes.body };
-    } else {
-      // guest user is editing a previously entered shipping address
-      addOrEditAddressRes = {
-        payload: yield call(
-          updateAddressPut,
-          {
-            payload: {
-              ...address,
-              address1: address.addressLine1,
-              address2: address.addressLine2,
-              zip: address.zipCode,
-              phoneNumber,
-              nickName: oldShippingDestination.onFileAddressKey,
-              emailAddress,
-            },
-          },
-          {}
-        ),
-      };
-    }
+    addOrEditAddressRes = yield addOrEditGuestUserAddress({
+      oldShippingDestination,
+      address,
+      phoneNumber,
+      emailAddress,
+      saveToAccount,
+      setAsDefault,
+    });
   } else {
     addOrEditAddressRes = yield addRegisteredUserAddress({
       onFileAddressKey,
@@ -701,6 +675,8 @@ function* submitShippingSection({ payload: { navigation, ...formData } }) {
       recalcFlag,
       emailAddress,
     });
+    yield call(getAddressList);
+    yield call(getCardList);
     redirectToBilling(navigation);
   } catch (err) {
     // throw getSubmissionError(store, 'submitShippingSection', err);
@@ -711,6 +687,7 @@ export function* submitBillingSection(payload) {
 }
 export function* CheckoutSaga() {
   yield takeLatest(CONSTANTS.INIT_CHECKOUT, initCheckout);
+  yield takeLatest('INIT_INTL_CHECKOUT', initIntlCheckout);
   yield takeLatest('CHECKOUT_SET_CART_DATA', storeUpdatedCheckoutValues);
   yield takeLatest(CONSTANTS.SUBMIT_SHIPPING_SECTION, submitShippingSection);
   yield takeLatest(CONSTANTS.SUBMIT_BILLING_SECTION, submitBillingSection);

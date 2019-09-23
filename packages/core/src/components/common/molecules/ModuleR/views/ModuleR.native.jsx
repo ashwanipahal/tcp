@@ -65,7 +65,7 @@ class ModuleR extends React.PureComponent {
               uniqueId,
               imageUrl: [imageUrl],
               productItemIndex,
-              pdpUrl,
+              product_name: productName,
             } = productItem;
 
             return (
@@ -75,11 +75,19 @@ class ModuleR extends React.PureComponent {
                 isFullMargin={productItemIndex === selectedProductList.length - 1}
               >
                 <Anchor
-                  url={pdpUrl}
+                  onPress={() =>
+                    navigation.navigate('ProductDetail', {
+                      title: productName,
+                      pdpUrl: uniqueId,
+                      selectedColorProductId: uniqueId,
+                      reset: true,
+                    })
+                  }
                   navigation={navigation}
                   locator={`${getLocator('moduleR_product_image')}${productItemIndex}`}
                 >
                   <StyledImage
+                    alt={productName}
                     host={LAZYLOAD_HOST_NAME.HOME}
                     url={imageUrl}
                     height={PRODUCT_IMAGE_HEIGHT}

@@ -7,9 +7,11 @@ exports[`ModuleL Header component renders correctly 1`] = `
   title="Shop Unicorns & Friends"
   to="/c?cid=https://www.childrensplace.com/us"
 >
-  <Styled(Row)>
+  <Styled(Row)
+    fullBleed={true}
+  >
     <Styled(Col)
-      className="moduleL__tile moduleL__red"
+      className="moduleL__tile"
       colSize={
         Object {
           "large": 12,
@@ -18,6 +20,11 @@ exports[`ModuleL Header component renders correctly 1`] = `
         }
       }
       data-locator="moduleL_tiles_NaN"
+      style={
+        Object {
+          "backgroundColor": "red",
+        }
+      }
     >
       <WithTheme(DamImage)
         className="moduleL__tile-image"

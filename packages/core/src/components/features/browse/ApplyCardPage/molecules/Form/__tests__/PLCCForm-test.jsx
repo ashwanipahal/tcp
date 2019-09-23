@@ -12,9 +12,9 @@ describe('ContactInformationFormWrapper component', () => {
       electronic_consent: 'consent',
     },
     labels: {
-      plcc_form_submit_button: 'submit',
-      plcc_form_checkbox_text: 'checkbox',
-      plcc_form_nothanks: 'no thanks',
+      lbl_PLCCForm_submitButton: 'submit',
+      lbl_PLCCForm_noThanks: 'no thanks',
+      lbl_PLCCForm_iAgreeCheckboxText: 'checkbox text',
     },
   };
 

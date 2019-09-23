@@ -29,10 +29,13 @@ const ModuleLTile = ({ tileData: { image, link, styled }, index, tileColor = {} 
 
   return (
     <Anchor to={to} asPath={ctaUrl} target={target} title={title}>
-      <Row>
+      <Row fullBleed>
         <Col
           colSize={colSize}
-          className={`moduleL__tile moduleL__${tileColor.color}`}
+          className="moduleL__tile"
+          style={{
+            backgroundColor: tileColor.color,
+          }}
           data-locator={`${getLocator('moduleL_tiles')}${index + 1}`}
         >
           <DamImage

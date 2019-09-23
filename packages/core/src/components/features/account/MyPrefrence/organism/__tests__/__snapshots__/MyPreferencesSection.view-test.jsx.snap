@@ -119,25 +119,35 @@ exports[`ProfileInformation component should render correctly 1`] = `
         lbl_prefrence_access_buy_online_pickup
       </Styled(BodyCopy)>
       <Styled(BodyCopy)
-        className={null}
+        className="elm-padding-top"
         color="text.primary"
         component="p"
         fontFamily="secondary"
-        fontSize="fs16"
+        fontSize="fs14"
         fontWeight="regular"
         letterSpacing="normal"
         lineHeight="normal"
         link={null}
         textAlign="left"
       >
-        lbl_prefrence_not_added_fvt_store
+        lbl_prefrence_marketing_notification
       </Styled(BodyCopy)>
     </Styled(Col)>
+    <Styled(Col)
+      className="elem-mb-XL"
+      colSize={
+        Object {
+          "large": 1,
+          "medium": 4,
+          "small": 6,
+        }
+      }
+    />
     <Styled(Col)
       className="profileInfoCol elem-mb-XL"
       colSize={
         Object {
-          "large": 7,
+          "large": 6,
           "medium": 4,
           "small": 6,
         }

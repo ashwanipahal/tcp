@@ -53,7 +53,6 @@ exports[`CreditCardPageHeader component should renders correctly 1`] = `
       key="rewards"
     >
       <Styled(BodyCopy)
-        aria-label="rewards"
         className="credit_card_heading"
         color="text.primary"
         component="h2"

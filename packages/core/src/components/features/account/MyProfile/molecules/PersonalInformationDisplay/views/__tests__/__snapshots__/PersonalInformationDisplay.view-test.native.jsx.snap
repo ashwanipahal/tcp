@@ -3,8 +3,13 @@
 exports[`PersonalInformationDisplay should render correctly 1`] = `
 <View>
   <Styled(BodyCopy)
+    accessibilityText=""
+    dataLocator=""
     fontSize="fs16"
+    margin={null}
+    numberOfLines={null}
     text=""
+    textDecoration={null}
   />
 </View>
 `;
@@ -12,8 +17,13 @@ exports[`PersonalInformationDisplay should render correctly 1`] = `
 exports[`PersonalInformationDisplay should render empty correctly 1`] = `
 <View>
   <Styled(BodyCopy)
+    accessibilityText=""
+    dataLocator=""
     fontSize="fs16"
+    margin={null}
+    numberOfLines={null}
     text=""
+    textDecoration={null}
   />
 </View>
 `;
