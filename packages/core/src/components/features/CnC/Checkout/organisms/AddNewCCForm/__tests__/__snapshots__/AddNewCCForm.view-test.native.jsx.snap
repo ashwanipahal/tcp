@@ -118,6 +118,7 @@ exports[`AddNewCCForm should render correctly 1`] = `
     isExpirationRequired={true}
     isPLCCEnabled={true}
     selectedCard={null}
+    showCvv={true}
     updateExpiryDate={[Function]}
     variation="secondary"
   />
