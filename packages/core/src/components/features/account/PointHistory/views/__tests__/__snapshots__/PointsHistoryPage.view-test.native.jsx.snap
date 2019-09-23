@@ -1,9 +1,13 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
 exports[`PointHistoryPage component should renders correctly 1`] = `
-<ScrollViewMock>
+<ScrollViewMock
+  keyboardShouldPersistTaps="handled"
+  showsVerticalScrollIndicator={false}
+>
   <Styled(Styled(BodyCopy))
     accessibilityText=""
+    color="gray.900"
     dataLocator="points_history_subheading"
     fontFamily="secondary"
     fontSize="fs16"

@@ -3,6 +3,7 @@ import { Field, reduxForm } from 'redux-form';
 import PropTypes from 'prop-types';
 import { BodyCopy, Button, Col, Row } from '../../../../../common/atoms';
 import { Grid } from '../../../../../common/molecules';
+import { getLabelValue } from '../../../../../../utils';
 import createValidateMethod from '../../../../../../utils/formValidation/createValidateMethod';
 import InputCheckBox from '../../../../../common/atoms/InputCheckbox';
 import getStandardConfig from '../../../../../../utils/formValidation/validatorStandardConfig';
@@ -218,7 +219,7 @@ class PLCCForm extends React.PureComponent {
                     fontFamily="secondary"
                     fontWeight="regular"
                   >
-                    {labels && labels.plcc_form_checkbox_text}
+                    {getLabelValue(labels, 'lbl_PLCCForm_iAgreeCheckboxText')}
                   </BodyCopy>
                 </Field>
               </Col>
@@ -242,7 +243,7 @@ class PLCCForm extends React.PureComponent {
                     className="submit_button_plcc_form"
                     data-locator="plcc_submit_btn"
                   >
-                    {labels.plcc_form_submit_button}
+                    {getLabelValue(labels, 'lbl_PLCCForm_submitButton')}
                   </Button>
                 </Col>
               </Row>
@@ -261,7 +262,7 @@ class PLCCForm extends React.PureComponent {
                     textAlign="center"
                     tabIndex="0"
                   >
-                    {labels.plcc_form_nothanks}
+                    {getLabelValue(labels, 'lbl_PLCCForm_noThanks')}
                   </BodyCopy>
                 </Col>
               </Row>

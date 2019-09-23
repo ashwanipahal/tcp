@@ -21,7 +21,7 @@ const SignupConfirm = ({ className, formViewConfig, susbscriptionType }) => {
         className="thank-you__label"
         data-locator={`${susbscriptionType}_thank_you_message`}
       >
-        {formViewConfig.thankYouTextLabel}
+        {formViewConfig.lbl_SignUp_thankYouTextLabel}
       </BodyCopy>
       <BodyCopy
         fontSize={['fs18', 'fs18', 'fs22']}
@@ -30,7 +30,7 @@ const SignupConfirm = ({ className, formViewConfig, susbscriptionType }) => {
         className="confirmation-label"
         data-locator={`${susbscriptionType}_copy_text_01`}
       >
-        {formViewConfig.joiningTextLabel}
+        {formViewConfig.lbl_SignUp_joiningTextLabel}
       </BodyCopy>
       <Image
         src={susbscriptionType === 'email' ? getIconPath(emailIcon) : getIconPath(chatIcon)}
@@ -48,7 +48,7 @@ const SignupConfirm = ({ className, formViewConfig, susbscriptionType }) => {
         className="first-label"
         data-locator={`${susbscriptionType}_copy_text_02`}
       >
-        {formViewConfig.confirmationMsgReceiveLabel}
+        {formViewConfig.lbl_SignUp_confirmationMsgReceiveLabel}
       </BodyCopy>
       <BodyCopy
         fontSize={['fs16', 'f16', 'fs18']}
@@ -57,7 +57,7 @@ const SignupConfirm = ({ className, formViewConfig, susbscriptionType }) => {
         className="redeem-label"
         data-locator={`${susbscriptionType}_copy_text_03`}
       >
-        {formViewConfig.extraMessageLabel}
+        {formViewConfig.lbl_SignUp_extraMessageLabel}
       </BodyCopy>
       <BodyCopy
         fontSize="fs10"
@@ -66,7 +66,7 @@ const SignupConfirm = ({ className, formViewConfig, susbscriptionType }) => {
         className="tnc-label"
         data-locator={`${susbscriptionType}_copy_text_04`}
       >
-        {formViewConfig.footerTextLabel}
+        {formViewConfig.lbl_SignUp_footerTextLabel}
       </BodyCopy>
     </div>
   );

@@ -29,9 +29,9 @@ describe('GetCandidGallery component', () => {
       ],
     },
     labels: {
-      title: '#MyStylePlace',
-      titleDescription: 'Title Description',
-      btnSeeMore: 'See More',
+      lbl_getCandid_title: '#MyStylePlace',
+      lbl_getCandid_titleDescription: 'Title Description',
+      lbl_getCandid_btnSeeMore: 'See More',
     },
     navigation: {
       dispatch: jest.fn(),

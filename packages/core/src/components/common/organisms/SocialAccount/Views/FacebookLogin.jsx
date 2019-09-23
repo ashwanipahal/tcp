@@ -136,7 +136,7 @@ const FacebookLoginComponent = props => {
         elem.map(element => {
           return (
             <React.Fragment>
-              {!(element.socialAccount === 'facebook' && element.isConnected) && (
+              {element.socialAccount === 'facebook' && !element.isConnected && (
                 <BodyCopy
                   className="social-accounts__align social_accounts_cross_plus-icon"
                   onClick={() => loginUser(element)}
@@ -145,8 +145,8 @@ const FacebookLoginComponent = props => {
                   {ReactDOM.createPortal(facebookSDK(), bodyEle)}
                   <ImageComp
                     className="social-account-icon"
-                    width={10}
-                    height={10}
+                    width={15}
+                    height={15}
                     src={getIconPath('plus-icon')}
                     data-locator="facebookPlusIcon"
                   />
@@ -159,8 +159,8 @@ const FacebookLoginComponent = props => {
                 >
                   <ImageComp
                     className="social-account-icon"
-                    width={10}
-                    height={10}
+                    width={15}
+                    height={15}
                     src={getIconPath('close-icon')}
                     data-locator="facebookCrossIcon"
                   />
