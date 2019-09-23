@@ -29,6 +29,15 @@ export default css`
   }
   .moduleL__tile-image {
     max-width: 210px;
+    min-height: 128px;
+
+    @media ${props => props.theme.mediaQuery.medium} {
+      min-height: 200px;
+    }
+
+    @media ${props => props.theme.mediaQuery.large} {
+      min-height: 259px;
+    }
   }
   .moduleL__tile-text {
     margin: 0 13px;

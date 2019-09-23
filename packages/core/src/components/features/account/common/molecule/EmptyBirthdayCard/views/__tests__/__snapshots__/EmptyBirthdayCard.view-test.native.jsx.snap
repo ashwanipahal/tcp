@@ -1,7 +1,7 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
 exports[`EmptyBirthdayCard should render correctly for edit view 1`] = `
-<Styled(View)>
+<Styled(TouchableOpacity)>
   <Styled(View)>
     <Styled(BodyCopy)
       accessibilityText=""
@@ -28,7 +28,7 @@ exports[`EmptyBirthdayCard should render correctly for edit view 1`] = `
       textDecoration={null}
     />
   </Styled(View)>
-</Styled(View)>
+</Styled(TouchableOpacity)>
 `;
 
 exports[`EmptyBirthdayCard should render correctly for read view as well 1`] = `""`;

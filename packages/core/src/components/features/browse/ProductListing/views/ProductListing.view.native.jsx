@@ -16,6 +16,7 @@ const ProductListView = ({
   onSubmit,
   getProducts,
   navigation,
+  sortLabels,
   ...otherProps
 }) => {
   const title = navigation && navigation.getParam('title');
@@ -27,6 +28,7 @@ const ProductListView = ({
         onSubmit={onSubmit}
         getProducts={getProducts}
         navigation={navigation}
+        sortLabels={sortLabels}
       />
       <ProductList products={products} title={title} {...otherProps} />
     </PageContainer>
@@ -43,6 +45,7 @@ ProductListView.propTypes = {
   onSubmit: PropTypes.func.isRequired,
   getProducts: PropTypes.func.isRequired,
   navigation: PropTypes.objectOf(PropTypes.oneOfType([PropTypes.string])),
+  sortLabels: PropTypes.arrayOf(PropTypes.shape({})),
 };
 
 ProductListView.defaultProps = {
@@ -51,6 +54,7 @@ ProductListView.defaultProps = {
   breadCrumbs: [],
   labelsFilter: {},
   navigation: {},
+  sortLabels: [],
 };
 
 export default withStyles(ProductListView, styles);

@@ -41,8 +41,10 @@ exports[`Earn Extra Points Tile component  should render Earn Extra Points Tile 
     >
       <Styled(Anchor)
         anchorVariation="primary"
+        asPath="/account/extra-points"
         data-locator="earnExtraPointsViewAll"
         fontSizeVariation="medium"
+        to="/account?id=extra-points"
         underline={true}
       >
         View All
@@ -103,7 +105,7 @@ exports[`Earn Extra Points Tile component  should render Earn Extra Points Tile 
             "lbl_common_viewAll": "View All",
           }
         }
-        onClickHandler={[Function]}
+        onViewActivityDetails={[Function]}
         waysToEarnRow={
           Object {
             "activityCode": "AppDownload",
