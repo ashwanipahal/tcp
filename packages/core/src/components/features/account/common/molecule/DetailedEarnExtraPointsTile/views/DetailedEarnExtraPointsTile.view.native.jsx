@@ -48,6 +48,7 @@ export class DetailedEarnExtraPointsTile extends React.PureComponent {
   static propTypes = {
     labels: PropTypes.shape({}),
     handleComponentChange: PropTypes.func,
+    onViewActivityDetails: PropTypes.func,
     waysToEarnRow: PropTypes.shape({}),
     viewAll: PropTypes.bool,
   };
@@ -55,6 +56,7 @@ export class DetailedEarnExtraPointsTile extends React.PureComponent {
   static defaultProps = {
     labels: {},
     handleComponentChange: () => {},
+    onViewActivityDetails: () => {},
     waysToEarnRow: {},
     viewAll: false,
   };
@@ -68,10 +70,16 @@ export class DetailedEarnExtraPointsTile extends React.PureComponent {
   };
 
   render() {
-    const { waysToEarnRow, viewAll, handleComponentChange } = this.props;
+    const { waysToEarnRow, viewAll, handleComponentChange, onViewActivityDetails } = this.props;
     return (
       <TileWrapper style={this.boxWithShadow}>
-        <Anchor onPress={() => handleComponentChange('earnExtraPointsPageMobile')}>
+        <Anchor
+          onPress={() =>
+            viewAll
+              ? onViewActivityDetails(waysToEarnRow)
+              : handleComponentChange('earnExtraPointsPageMobile')
+          }
+        >
           <EarnExtraPointsTileImage>
             <ImageSize source={sourceMap[waysToEarnRow.activityCode]} />
           </EarnExtraPointsTileImage>
