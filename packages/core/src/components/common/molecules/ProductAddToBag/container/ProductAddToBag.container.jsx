@@ -36,7 +36,6 @@ class ProductAddToBagContainer extends React.PureComponent<Props> {
 
   getStateValuesFromProps = (currentProduct, selectedColorProductId) => {
     const initialValues = this.getInitialValues(currentProduct, selectedColorProductId);
-
     return {
       selectedColor: initialValues && initialValues.color,
       selectedFit: initialValues && initialValues.Fit,
@@ -95,6 +94,7 @@ class ProductAddToBagContainer extends React.PureComponent<Props> {
         return '';
       }
     }
+
     return firstSizeName;
   };
 
@@ -116,9 +116,11 @@ class ProductAddToBagContainer extends React.PureComponent<Props> {
             name: this.getDefaultFitForColorSlice(colorFitsSizesMapEntry).fitNameVal,
           }
         : null,
-      Size: currentProduct.isGiftCard
-        ? currentProduct.colorFitsSizesMap[0].fits[0].sizes[0].sizeName // on gift card we need something selected, otherwise no price would show up
-        : this.getDefaultSizeForProduct(currentProduct.colorFitsSizesMap),
+      Size: {
+        name: currentProduct.isGiftCard
+          ? currentProduct.colorFitsSizesMap[0].fits[0].sizes[0].sizeName // on gift card we need something selected, otherwise no price would show up
+          : this.getDefaultSizeForProduct(currentProduct.colorFitsSizesMap),
+      },
       Quantity: 1,
     };
   };

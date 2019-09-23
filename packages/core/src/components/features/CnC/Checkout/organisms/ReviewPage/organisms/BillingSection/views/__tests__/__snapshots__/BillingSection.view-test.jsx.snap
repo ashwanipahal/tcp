@@ -44,9 +44,16 @@ exports[`BillingSection should render correctly for empty state 1`] = `
     <Styled(Col)
       colSize={
         Object {
-          "large": 7,
+          "large": 6,
           "medium": 4,
           "small": 6,
+        }
+      }
+      offsetRight={
+        Object {
+          "large": 1,
+          "medium": 0,
+          "small": 0,
         }
       }
     />
@@ -143,9 +150,16 @@ exports[`BillingSection should render correctly without address details 1`] = `
     <Styled(Col)
       colSize={
         Object {
-          "large": 7,
+          "large": 6,
           "medium": 4,
           "small": 6,
+        }
+      }
+      offsetRight={
+        Object {
+          "large": 1,
+          "medium": 0,
+          "small": 0,
         }
       }
     >
@@ -236,9 +250,16 @@ exports[`BillingSection should render correctly without card & address details o
     <Styled(Col)
       colSize={
         Object {
-          "large": 7,
+          "large": 6,
           "medium": 4,
           "small": 6,
+        }
+      }
+      offsetRight={
+        Object {
+          "large": 1,
+          "medium": 0,
+          "small": 0,
         }
       }
     >
@@ -316,9 +337,16 @@ exports[`BillingSection should render correctly without card & address details o
     <Styled(Col)
       colSize={
         Object {
-          "large": 7,
+          "large": 6,
           "medium": 4,
           "small": 6,
+        }
+      }
+      offsetRight={
+        Object {
+          "large": 1,
+          "medium": 0,
+          "small": 0,
         }
       }
     >
@@ -452,9 +480,16 @@ exports[`BillingSection should render correctly without card details 1`] = `
     <Styled(Col)
       colSize={
         Object {
-          "large": 7,
+          "large": 6,
           "medium": 4,
           "small": 6,
+        }
+      }
+      offsetRight={
+        Object {
+          "large": 1,
+          "medium": 0,
+          "small": 0,
         }
       }
     >
