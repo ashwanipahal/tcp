@@ -36,23 +36,23 @@ class SearchDetailContainer extends React.PureComponent {
   componentDidMount() {
     const {
       router: {
-        query: { sq },
+        query: { searchQuery },
         asPath,
       },
       getProducts,
     } = this.props;
-    getProducts({ URI: 'search', asPath, sq, ignoreCache: true });
+    getProducts({ URI: 'search', asPath, searchQuery, ignoreCache: true });
   }
 
   componentDidUpdate() {
     const {
       router: {
-        query: { sq },
+        query: { searchQuery },
         asPath,
       },
       getProducts,
     } = this.props;
-    getProducts({ URI: 'search', asPath, sq, ignoreCache: true });
+    getProducts({ URI: 'search', asPath, searchQuery, ignoreCache: true });
   }
 
   render() {
@@ -164,7 +164,7 @@ function mapDispatchToProps(dispatch) {
 SearchDetailContainer.propTypes = {
   router: PropTypes.shape({
     query: PropTypes.shape({
-      sq: PropTypes.string,
+      searchQuery: PropTypes.string,
     }),
   }).isRequired,
   getProducts: PropTypes.func.isRequired,

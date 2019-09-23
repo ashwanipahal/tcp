@@ -94,20 +94,20 @@ class NoResponseSearchDetailView extends React.PureComponent {
                 fontWeight="black"
                 className="empty-search-tips-title"
               >
-                Tips for Searching
+                {slpLabels.lbl_tips}
               </BodyCopy>
               <BodyCopy className="empty-search-tips-items">
                 <BodyCopy fontSize="fs16" textAlign="center">
-                  Check your spelling
+                  {slpLabels.lbl_check_your_spelling}
                 </BodyCopy>
                 <BodyCopy fontSize="fs16" textAlign="center">
-                  Use simplified keywords (jeans, tee, top, hat, dress)
+                  {slpLabels.lbl_simplified_keywords}
                 </BodyCopy>
                 <BodyCopy fontSize="fs16" textAlign="center">
-                  Try searching by themes/categories (dinosaur, active, uniform, pj set)
+                  {slpLabels.lbl_try_searching}
                 </BodyCopy>
                 <BodyCopy fontSize="fs16" textAlign="center">
-                  Try broader searches and then narrow your results
+                  {slpLabels.lbl_narrow_searches}
                 </BodyCopy>
               </BodyCopy>
             </BodyCopy>
