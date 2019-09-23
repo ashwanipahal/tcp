@@ -4,13 +4,17 @@ import { isGuest as isGuestUser } from '@tcp/core/src/components/features/CnC/Ch
 import BagPageSelector from './BagPage.selectors';
 import BagPage from '../views/BagPage.view';
 import BAG_PAGE_ACTIONS from './BagPage.actions';
-import { getCartOrderList } from '../../CartItemTile/container/CartItemTile.selectors';
+import {
+  getCartOrderList,
+  getIsCartItemsSFL,
+} from '../../CartItemTile/container/CartItemTile.selectors';
 import { getUserLoggedInState } from '../../../account/User/container/User.selectors';
 import {
   setVenmoPaymentInProgress,
   setVenmoPickupMessageState,
   setVenmoShippingMessageState,
 } from '../../Checkout/container/Checkout.action';
+import { toastMessageInfo } from '../../../../common/atoms/Toast/container/Toast.actions.native';
 
 export class BagPageContainer extends React.Component<Props> {
   componentDidMount() {
@@ -44,6 +48,8 @@ export class BagPageContainer extends React.Component<Props> {
       sflItems,
       fetchLabels,
       setVenmoInProgress,
+      toastMessage,
+      isCartItemSFL,
     } = this.props;
 
     const showAddTobag = false;
@@ -63,6 +69,8 @@ export class BagPageContainer extends React.Component<Props> {
         sflItems={sflItems}
         fetchLabels={fetchLabels}
         setVenmoPaymentInProgress={setVenmoInProgress}
+        toastMessage={toastMessage}
+        isCartItemSFL={isCartItemSFL}
       />
     );
   }
@@ -87,6 +95,9 @@ export const mapDispatchToProps = dispatch => {
     setVenmoInProgress: data => dispatch(setVenmoPaymentInProgress(data)),
     setVenmoPickupState: data => dispatch(setVenmoPickupMessageState(data)),
     setVenmoShippingState: data => dispatch(setVenmoShippingMessageState(data)),
+    toastMessage: palyoad => {
+      dispatch(toastMessageInfo(palyoad));
+    },
   };
 };
 
@@ -102,6 +113,7 @@ const mapStateToProps = state => {
     isUserLoggedIn: getUserLoggedInState(state),
     isGuest: isGuestUser(state),
     sflItems: BagPageSelector.getsflItemsList(state),
+    isCartItemSFL: getIsCartItemsSFL(state),
   };
 };
 

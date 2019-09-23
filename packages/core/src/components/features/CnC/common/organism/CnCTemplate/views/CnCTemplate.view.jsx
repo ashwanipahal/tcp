@@ -19,13 +19,19 @@ const CnCTemplate = ({
   isGuest,
   isCheckoutView,
   showAccordian,
+  isNonEmptySFL,
 }) => {
+  const isSmallLeftSection = isNonEmptySFL || showLeftSection;
   return (
     <section className={className}>
       {Header && <Header />}
       <Row>
         <Col
-          colSize={{ small: 6, medium: showLeftSection ? 5 : 8, large: showLeftSection ? 8 : 12 }}
+          colSize={{
+            small: 6,
+            medium: isSmallLeftSection ? 5 : 8,
+            large: isSmallLeftSection ? 8 : 12,
+          }}
           className="left-sec"
         >
           <LeftSection />
@@ -64,6 +70,7 @@ CnCTemplate.propTypes = {
   showLeftSection: PropTypes.bool,
   isGuest: PropTypes.bool.isRequired,
   showAccordian: PropTypes.bool,
+  isNonEmptySFL: PropTypes.bool,
   isCheckoutView: PropTypes.bool,
 };
 
@@ -72,6 +79,7 @@ CnCTemplate.defaultProps = {
   header: false,
   showLeftSection: true,
   showAccordian: true,
+  isNonEmptySFL: true,
   isCheckoutView: false,
 };
 
