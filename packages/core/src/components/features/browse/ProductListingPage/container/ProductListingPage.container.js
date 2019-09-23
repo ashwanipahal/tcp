@@ -8,7 +8,6 @@ import {
   addToCartEcom,
   addItemToCartBopis,
 } from '../../../CnC/AddedToBag/container/AddedToBag.actions';
-import getSortLabels from '../../../browse/ProductListing/molecules/SortSelector/views/Sort.selectors';
 
 class ProductListingPageContainer extends React.Component {
   componentDidMount() {
@@ -24,7 +23,6 @@ class ProductListingPageContainer extends React.Component {
         addToCartEcom={addToCartEcom}
         addItemToCartBopis={addItemToCartBopis}
         navigation={navigation}
-        sortLabels={sortLabels}
       />
     );
   }
@@ -34,7 +32,6 @@ function mapStateToProps(state) {
   return {
     products: getExpensivePlpProducts(state),
     giftCardProducts: giftCardProducts(state),
-    sortLabels: getSortLabels(state),
   };
 }
 

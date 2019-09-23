@@ -37,7 +37,7 @@ export class ProductListView extends React.Component {
   };
 
   render() {
-    const { className, addToCartEcom, giftCardProducts, navigation, sortLabels } = this.props;
+    const { className, addToCartEcom, giftCardProducts, navigation } = this.props;
     let { data } = this.props;
     let allProducts = [];
     if (giftCardProducts.length || data.length) {
@@ -65,7 +65,6 @@ export class ProductListView extends React.Component {
                 addToBagEcom={this.addToBagEcom}
                 addToBagBossBopis={this.addToBagBossBopis}
                 navigation={navigation}
-                sortLabels={sortLabels}
               />
             );
           }}
