@@ -20,6 +20,7 @@ const ProductListView = ({
   ...otherProps
 }) => {
   const title = navigation && navigation.getParam('title');
+  console.log('sortLabels', sortLabels);
   return (
     <PageContainer>
       <FilterModal
