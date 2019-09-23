@@ -15,6 +15,7 @@ describe('Bag page Container', () => {
     showConfirmationModal: true,
     closeCheckoutConfirmationModal: jest.fn(),
     removeUnqualifiedItemsAndCheckout: jest.fn(),
+    setVenmoPaymentInProgress: jest.fn(),
     sflItems: {},
   };
 

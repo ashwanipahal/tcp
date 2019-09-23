@@ -121,6 +121,7 @@ exports[`MiniBagBody component renders main component correctly 1`] = `
     <Connect(AddedToBagContainer)
       isEditingItem={false}
       showAddTobag={false}
+      showVenmo={false}
     />
     <Connect(AirmilesBannerContainer) />
   </div>
