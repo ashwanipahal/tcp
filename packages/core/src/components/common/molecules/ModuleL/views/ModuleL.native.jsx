@@ -1,7 +1,12 @@
 // @flow
 import React from 'react';
 import { FlatList } from 'react-native';
-import { getLocator, getScreenWidth, LAZYLOAD_HOST_NAME } from '../../../../../utils/index.native';
+import {
+  getLocator,
+  getScreenWidth,
+  LAZYLOAD_HOST_NAME,
+  validateColor,
+} from '../../../../../utils/index.native';
 import { DamImage, BodyCopy, Anchor } from '../../../atoms';
 import PromoBanner from '../../PromoBanner';
 import LinkText from '../../LinkText';
@@ -43,7 +48,7 @@ const keyExtractor = (_, index) => index.toString();
 
 const renderItem = (item, navigation) => {
   const {
-    item: { image, link, color = {} },
+    item: { image, link, color: { color: tileBgColor } = {} },
     index,
   } = item;
 
@@ -53,7 +58,7 @@ const renderItem = (item, navigation) => {
       navigation={navigation}
       testID={`${getLocator('moduleL_tiles')}${index + 1}`}
     >
-      <ChildContainer bgClass={color.color}>
+      <ChildContainer style={{ backgroundColor: validateColor(tileBgColor) }}>
         <DamImage
           url={image.url}
           height={127}

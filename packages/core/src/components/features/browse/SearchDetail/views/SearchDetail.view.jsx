@@ -2,12 +2,12 @@ import React from 'react';
 import { PropTypes } from 'prop-types';
 import withStyles from '../../../../common/hoc/withStyles';
 import SearchListingStyle from '../SearchDetail.style';
-import config from '../searchDetail.constants';
 import ProductsGrid from '../../ProductListing/molecules/ProductsGrid/views';
 import { Row, Col } from '../../../../common/atoms';
 import LoadedProductsCount from '../../ProductListing/molecules/LoadedProductsCount/views';
 import errorBoundary from '../../../../common/hoc/withErrorBoundary';
-import { BodyCopy } from '../../../../../../styles/themes/TCP/typotheme';
+import BodyCopy from '../../../../common/atoms/BodyCopy';
+import ProductListingFiltersForm from '../../ProductListing/molecules/ProductListingFiltersForm';
 
 const SearchListingView = ({
   className,
@@ -17,30 +17,61 @@ const SearchListingView = ({
   totalProductsCount,
   searchedText,
   slpLabels,
+  sortLabels,
+  filters,
+  filtersLength,
+  formValues,
+  getProducts,
+  initialValues,
+  labelsFilter,
+  onSubmit,
   ...otherProps
 }) => {
-  const { FILTERS, SORT_BY } = config;
   return (
     <div className={className}>
       <Row>
         <Col colSize={{ small: 6, medium: 8, large: 12 }}>
-          <BodyCopy fontSize="fs14" component="div" fontFamily="secondary" fontWeight="regular">
-            {slpLabels.lbl_searched_for}
-            <span className="searched-label">{`"${searchedText}"`}</span>
-          </BodyCopy>
+          {searchedText && (
+            <BodyCopy
+              className={`${className} searched-text-wrapper`}
+              component="div"
+              fontFamily="secondary"
+              fontSize="fs14"
+              fontWeight="regular"
+            >
+              {slpLabels.lbl_searched_for}
+              <BodyCopy
+                fontFamily="secondary"
+                className="searched-label"
+                fontSize={['fs16', 'fs16', 'fs14']}
+                fontWeight="extrabold"
+              >
+                {`"${searchedText}"`}
+              </BodyCopy>
+            </BodyCopy>
+          )}
         </Col>
       </Row>
-      <Row className="placeholder">
-        <Col colSize={{ small: 3, medium: 4, large: 6 }}>
-          <div className="filter">{FILTERS}</div>
-        </Col>
-        <Col colSize={{ small: 3, medium: 4, large: 6 }}>
-          <div className="sort-by">{SORT_BY}</div>
+      <Row>
+        <Col colSize={{ small: 6, medium: 8, large: 12 }}>
+          <ProductListingFiltersForm
+            filtersMaps={filters}
+            totalProductsCount={totalProductsCount}
+            initialValues={initialValues}
+            filtersLength={filtersLength}
+            labels={labelsFilter}
+            onSubmit={onSubmit}
+            formValues={formValues}
+            sortLabels={sortLabels}
+            getProducts={getProducts}
+            slpLabels={slpLabels}
+          />
         </Col>
       </Row>
       <Row>
         <Col colSize={{ small: 6, medium: 8, large: 12 }}>
           <LoadedProductsCount
+            className="show-items-count-section"
             totalProductsCount={totalProductsCount}
             showingItemsLabel={slpLabels}
           />
@@ -64,22 +95,38 @@ const SearchListingView = ({
 
 SearchListingView.propTypes = {
   className: PropTypes.string,
+  filters: PropTypes.shape({}),
+  filtersLength: PropTypes.shape({}),
+  formValues: PropTypes.shape({
+    sort: PropTypes.string.isRequired,
+  }).isRequired,
+  getProducts: PropTypes.func.isRequired,
+  getMoreProducts: PropTypes.func.isRequired,
+  initialValues: PropTypes.shape({}),
+  labelsFilter: PropTypes.objectOf(PropTypes.oneOfType([PropTypes.string])),
+  onSubmit: PropTypes.func.isRequired,
   productsBlock: PropTypes.arrayOf(PropTypes.shape({})),
   products: PropTypes.arrayOf(PropTypes.shape({})),
   labels: PropTypes.objectOf(PropTypes.oneOfType([PropTypes.string])),
   totalProductsCount: PropTypes.number,
   searchedText: PropTypes.string,
   slpLabels: PropTypes.objectOf(PropTypes.oneOfType([PropTypes.string])),
+  sortLabels: PropTypes.arrayOf(PropTypes.shape({})),
 };
 
 SearchListingView.defaultProps = {
   className: '',
+  filters: {},
+  filtersLength: {},
+  initialValues: {},
+  labelsFilter: {},
   products: [],
   productsBlock: [],
   labels: {},
   totalProductsCount: 0,
   searchedText: '',
   slpLabels: {},
+  sortLabels: {},
 };
 
 export default withStyles(errorBoundary(SearchListingView), SearchListingStyle);

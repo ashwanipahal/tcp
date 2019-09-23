@@ -1,7 +1,8 @@
 import logger from '@tcp/core/src/utils/loggerInstance';
 import { executeUnbxdAPICall } from '../../handler';
+
 import endpoints from '../../endpoints';
-import utils, { bindAllClassMethodsToThis } from '../../../utils';
+import utils, { bindAllClassMethodsToThis, isMobileApp } from '../../../utils';
 import processHelpers from './processHelpers';
 import { PRODUCTS_PER_LOAD } from '../../../components/features/browse/ProductListing/container/ProductListing.constants';
 import processResponse from './processResponse';
@@ -72,7 +73,10 @@ class ProductsDynamicAbstractor {
         facetValue.length > 0 &&
         facetKey.indexOf('uFilter') > -1
       ) {
-        facetValue = facetValue.map(facet => `${facetKey}:"${encodeURIComponent(facet)}"`);
+        facetValue = facetValue.map(facet => {
+          const encodedFacet = isMobileApp() ? facet : encodeURIComponent(facet);
+          return `${facetKey}:"${encodedFacet}"`;
+        });
         query += facetValue.length > 0 ? (query ? '&filter=' : '') + facetValue.join(' OR ') : '';
       }
     });

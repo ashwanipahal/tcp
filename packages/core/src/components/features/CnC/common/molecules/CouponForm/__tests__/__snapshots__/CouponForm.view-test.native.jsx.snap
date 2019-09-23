@@ -8,17 +8,26 @@ exports[`CouponForm Component CouponForm should render correctly 1`] = `
   <Styled(View)>
     <Styled(View)>
       <Styled(BodyCopy)
+        accessibilityText=""
         component="span"
+        dataLocator=""
         fontFamily="secondary"
         fontSize="fs16"
         fontWeight="semibold"
+        margin={null}
+        numberOfLines={null}
         text="COUPON CODE"
+        textDecoration={null}
       />
       <Styled(BodyCopy)
+        accessibilityText=""
         component="span"
+        dataLocator=""
         fontFamily="secondary"
         fontSize="fs12"
         fontWeight="semibold"
+        margin={null}
+        numberOfLines={null}
         onPress={[Function]}
         style={
           Object {
@@ -26,6 +35,7 @@ exports[`CouponForm Component CouponForm should render correctly 1`] = `
           }
         }
         text="Need Help?"
+        textDecoration={null}
       />
     </Styled(View)>
     <Styled(View)>

@@ -125,6 +125,10 @@ export const getProductItemUnitPrice = product => {
   return product.getIn(['itemInfo', 'listUnitPrice']);
 };
 
+export const getIsCartItemsUpdating = state => {
+  return state.CartPageReducer.getIn(['uiFlags', 'isCartItemsUpdating']);
+};
+
 export const getLabelsCartItemTile = state => {
   const {
     global: {
@@ -170,6 +174,7 @@ export const getLabelsCartItemTile = state => {
   } = state.Labels;
 
   const saveForLaterLink = getLabelValue(state.Labels, 'lbl_sfl_actionLink', 'bagPage', 'checkout');
+  const moveToBagLink = getLabelValue(state.Labels, 'lbl_sfl_moveToBag', 'bagPage', 'checkout');
   const sflMaxLimitError = getLabelValue(
     state.Labels,
     'lbl_sfl_maxLimitError',
@@ -177,6 +182,12 @@ export const getLabelsCartItemTile = state => {
     'checkout'
   );
 
+  const itemDeleted = getLabelValue(
+    state.Labels,
+    'lbl_msg_itemDeleteSuccess',
+    'bagPage',
+    'checkout'
+  );
   // const {
   //   bag: {
   //     bagOverview: { lbl_error_please: pleaseText, lbl_error_remove: remove },
@@ -220,6 +231,8 @@ export const getLabelsCartItemTile = state => {
     deleteItem,
     saveForLaterLink,
     sflMaxLimitError,
+    moveToBagLink,
+    itemDeleted,
   };
 };
 

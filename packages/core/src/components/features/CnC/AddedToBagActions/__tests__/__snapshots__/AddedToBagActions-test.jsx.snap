@@ -38,6 +38,7 @@ exports[`AddedToBagActions component AddedToBagActions component renders correct
   >
     <Connect(VenmoPaymentButtonContainer)
       className="venmo-container"
+      onSuccess={[Function]}
     />
     <withRouter(Connect(PayPalButtonContainer))
       className="payPal-button"
@@ -60,13 +61,5 @@ exports[`AddedToBagActions component AddedToBagActions component renders correct
       />
     </Styled(Button)>
   </Styled(Row)>
-  <Styled(BagConfirmationModal)
-    labels={Object {}}
-  />
-  <OpenLoginModal
-    handleAfterLogin={[Function]}
-    handleContinueAsGuest={[Function]}
-    variation="checkout"
-  />
 </div>
 `;

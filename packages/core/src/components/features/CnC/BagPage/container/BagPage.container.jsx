@@ -25,8 +25,9 @@ export class BagPageContainer extends React.Component<Props> {
   closeModal = () => {};
 
   componentWillMount = () => {
-    const { initialActions } = this.props;
+    const { initialActions, fetchSflData } = this.props;
     initialActions();
+    fetchSflData();
   };
 
   render() {
@@ -41,6 +42,8 @@ export class BagPageContainer extends React.Component<Props> {
       closeCheckoutConfirmationModal,
       removeUnqualifiedItemsAndCheckout,
       isGuest,
+      sflItems,
+      fetchLabels,
     } = this.props;
 
     const showAddTobag = false;
@@ -57,6 +60,8 @@ export class BagPageContainer extends React.Component<Props> {
         closeCheckoutConfirmationModal={closeCheckoutConfirmationModal}
         removeUnqualifiedItemsAndCheckout={removeUnqualifiedItemsAndCheckout}
         handleCartCheckout={handleCartCheckout}
+        sflItems={sflItems}
+        fetchLabels={fetchLabels}
       />
     );
   }
@@ -72,6 +77,12 @@ export const mapDispatchToProps = (dispatch: ({}) => void) => {
     fetchNeedHelpContent: contentIds => {
       dispatch(BAG_PAGE_ACTIONS.fetchModuleX(contentIds));
     },
+    fetchSflData: () => {
+      dispatch(BAG_PAGE_ACTIONS.getSflData());
+    },
+    fetchLabels: () => {
+      dispatch(BAG_PAGE_ACTIONS.initActions[0]);
+    },
   };
 };
 
@@ -86,6 +97,7 @@ const mapStateToProps = state => {
     showConfirmationModal: BagPageSelector.getConfirmationModalFlag(state),
     isUserLoggedIn: getUserLoggedInState(state),
     isGuest: isGuestUser(state),
+    sflItems: BagPageSelector.getsflItemsList(state),
   };
 };
 

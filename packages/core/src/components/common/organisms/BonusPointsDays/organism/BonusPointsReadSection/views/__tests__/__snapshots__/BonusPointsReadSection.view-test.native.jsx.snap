@@ -5,16 +5,22 @@ exports[`BonusPointsReadSection should render correctly 1`] = `
   <Styled(View)>
     <Styled(View)>
       <Styled(BodyCopy)
+        accessibilityText=""
         data-locator="accountoverview-myplacerewatdstile-bonuspointdaytext"
+        dataLocator=""
         fontSize="fs14"
         fontWeight="semibold"
+        margin={null}
+        numberOfLines={null}
         text="BONUS POINTS DAY"
+        textDecoration={null}
       />
     </Styled(View)>
     <Styled(View)>
       <Styled(Anchor)
         accessibilityLabel=""
         anchorVariation="primary"
+        colorName={null}
         customStyle={Object {}}
         dataLocator="accountoverview-myplacerewatdstile-bonuspointdetaillink"
         fontSizeVariation="large"
@@ -27,10 +33,15 @@ exports[`BonusPointsReadSection should render correctly 1`] = `
   </Styled(View)>
   <Styled(View)>
     <Styled(BodyCopy)
+      accessibilityText=""
       color="black"
+      dataLocator=""
       fontSize="fs14"
       fontWeight="regular"
+      margin={null}
+      numberOfLines={null}
       text="You have 1 days left"
+      textDecoration={null}
     />
     <Styled(Styled(View)) />
     <Styled(Styled(View)) />

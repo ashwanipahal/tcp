@@ -23,6 +23,9 @@ export {
   updatePaymentOnOrder,
   addGiftCardPaymentToOrder,
   removeGiftCard,
+  submitOrder,
+  requestPersonalizedCoupons,
   addGiftCard,
+  getInternationCheckoutSettings,
 } from './Checkout';
 export { getVenmoToken } from './venmo';
