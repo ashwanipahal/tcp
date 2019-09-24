@@ -33,6 +33,10 @@ export class RewardsPointsContainer extends React.PureComponent {
       plccUser,
     } = this.props;
 
+    console.log('ali------------------------');
+    console.log(plccUser);
+    console.log('ali------------------------');
+
     if (tableView) {
       return (
         <RewardsPointsTable

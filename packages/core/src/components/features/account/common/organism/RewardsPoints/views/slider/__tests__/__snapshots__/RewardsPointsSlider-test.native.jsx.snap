@@ -2,7 +2,9 @@
 
 exports[`RewardsPoints Slider View should render RewardsPointsViewVanilla Correctly 1`] = `
 <Fragment>
-  <Styled(View)>
+  <Styled(View)
+    plccUser={false}
+  >
     <Styled(Text) />
     <Styled(Text)>
       <Styled(BodyCopy)
@@ -40,10 +42,10 @@ exports[`RewardsPoints Slider View should render RewardsPointsViewVanilla Correc
       />
     </Styled(Text)>
     <Styled(View)
-      plccUser={true}
+      plccUser={false}
     >
       <Styled(Text)
-        plccUser={true}
+        plccUser={false}
         style={
           Object {
             "width": "%",
