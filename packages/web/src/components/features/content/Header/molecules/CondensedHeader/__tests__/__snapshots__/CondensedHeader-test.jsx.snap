@@ -64,13 +64,8 @@ exports[`<CondensedHeaderVanilla /> Should match snapshot correctly 1`] = `
         colSize={
           Object {
             "large": 2,
-            "medium": 2,
+            "medium": 3,
             "small": 3,
-          }
-        }
-        offsetLeft={
-          Object {
-            "medium": 1,
           }
         }
       >
@@ -92,7 +87,7 @@ exports[`<CondensedHeaderVanilla /> Should match snapshot correctly 1`] = `
             alt="Account"
             className="rightLink userIcon"
             data-locator="user-icon"
-            id="condensedLogin"
+            id="login"
             src="/static/images/user-icon-blue.svg"
           />
         </Styled(Anchor)>
