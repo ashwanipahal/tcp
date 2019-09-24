@@ -239,6 +239,7 @@ export const getLabelsCartItemTile = state => {
     moveToBagLink,
     itemDeleted,
     sflSuccess,
+    removeError: getLabelValue(state.Labels, 'lbl_minibag_errorRemove', 'minibag', 'global'),
   };
 };
 

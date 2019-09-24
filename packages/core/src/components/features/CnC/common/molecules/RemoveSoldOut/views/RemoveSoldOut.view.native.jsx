@@ -4,11 +4,28 @@ import { BodyCopy } from '../../../../../../common/atoms';
 import { RemoveSoldOutView, RowSectionStyle } from '../styles/RemoveSoldOut.style.native';
 
 class RemoveSoldOut extends React.PureComponent {
+  getRemoveString = (labels, removeCartItem, getUnavailableOOSItems) => {
+    const remove = labels.updateUnavailable.split('#remove#');
+    const newRemove = (
+      <BodyCopy
+        fontFamily="secondary"
+        fontSize="fs10"
+        text={labels.removeError}
+        textDecoration="underline"
+        onPress={() => removeCartItem(getUnavailableOOSItems)}
+      />
+    );
+
+    remove.splice(1, 0, newRemove);
+    return remove;
+  };
+
   render() {
-    const { labels, labelForRemove } = this.props;
+    const { labels, removeCartItem, getUnavailableOOSItems, showLabelForRemove } = this.props;
+    const labelForRemove = this.getRemoveString(labels, removeCartItem, getUnavailableOOSItems);
     return (
       <RemoveSoldOutView>
-        {labels && (
+        {labels && !showLabelForRemove && (
           <RowSectionStyle>
             <BodyCopy
               fontFamily="secondary"
@@ -18,7 +35,7 @@ class RemoveSoldOut extends React.PureComponent {
             />
           </RowSectionStyle>
         )}
-        {labelForRemove && (
+        {showLabelForRemove && (
           <RowSectionStyle>
             <BodyCopy
               fontFamily="secondary"
@@ -35,12 +52,15 @@ class RemoveSoldOut extends React.PureComponent {
 
 RemoveSoldOut.propTypes = {
   labels: PropTypes.string,
-  labelForRemove: PropTypes.string,
+  removeCartItem: PropTypes.func.isRequired,
+  getUnavailableOOSItems: PropTypes.shape([]),
+  showLabelForRemove: PropTypes.bool,
 };
 
 RemoveSoldOut.defaultProps = {
   labels: '',
-  labelForRemove: '',
+  getUnavailableOOSItems: [],
+  showLabelForRemove: false,
 };
 
 export default RemoveSoldOut;

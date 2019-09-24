@@ -7,7 +7,7 @@ import ClickTracker from '../ClickTracker';
 
 const BrandLogo = ({ className, alt, dataLocator, imgSrc }) => (
   <ClickTracker className={className} name="brand_logo">
-    <Anchor to="/" dataLocator={dataLocator}>
+    <Anchor to="/home" dataLocator={dataLocator}>
       <Image src={imgSrc} alt={alt} />
     </Anchor>
   </ClickTracker>

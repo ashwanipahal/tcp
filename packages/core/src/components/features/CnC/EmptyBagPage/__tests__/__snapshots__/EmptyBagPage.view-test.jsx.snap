@@ -1,5 +1,44 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
+exports[`EmptyBagPage component with false should renders correctly for SFL 1`] = `
+<div
+  className=""
+>
+  <div
+    className="empty-sfl-msg"
+  >
+    <Styled(BodyCopy)
+      className={null}
+      color="gray.900"
+      component="p"
+      dataLocator="cartEmptySFLMessage_1"
+      fontFamily="secondary"
+      fontSize="fs14"
+      fontWeight="regular"
+      letterSpacing="normal"
+      lineHeight="normal"
+      textAlign="center"
+    >
+      Not ready to buy anything yet?
+    </Styled(BodyCopy)>
+    <Styled(BodyCopy)
+      className={null}
+      color="gray.900"
+      component="p"
+      dataLocator="cartEmptySFLMessage_2"
+      fontFamily="secondary"
+      fontSize="fs14"
+      fontWeight="regular"
+      letterSpacing="normal"
+      lineHeight="normal"
+      textAlign="center"
+    >
+      You can save it for later and it will appear in this area.
+    </Styled(BodyCopy)>
+  </div>
+</div>
+`;
+
 exports[`EmptyBagPage component with false should renders correctly with false 1`] = `
 <div
   className=""
