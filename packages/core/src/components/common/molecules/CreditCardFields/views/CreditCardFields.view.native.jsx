@@ -2,8 +2,8 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import { Field } from 'redux-form';
 import DropDown from '@tcp/core/src/components/common/atoms/DropDown/views/DropDown.native';
-import BodyCopy from '@tcp/core/src/components/common/atoms/BodyCopy';
-import CreditCardNumber from '../../CreditCardNumber';
+import CreditCardNumber from '../../../atoms/CreditCardNumber';
+import TextBox from '../../../atoms/TextBox';
 import {
   PaymentContainer,
   CardContainer,
@@ -11,12 +11,23 @@ import {
   ExpiryMonth,
   ExpiryYear,
   CardTextboxStyle,
-} from '../styles/CreditCardFields.native.style';
+  CvvCode,
+  CvvTextboxStyle,
+  HiddenExpiryWrapper,
+  CVVInfo,
+} from '../styles/CreditCardFields.styles.native';
 
+/**
+ *
+ *
+ * @class CreditCardFields
+ * @extends {PureComponent}
+ * @description view component to render credit card form fields.
+ */
 export class CreditCardFields extends React.PureComponent<Props> {
   constructor(props) {
     super(props);
-    const { isEdit, selectedCard } = props;
+    const { isEdit, selectedCard, selectedExpYear, selectedExpMonth } = props;
     if (isEdit && selectedCard) {
       const { expMonth, expYear } = selectedCard;
       this.state = {
@@ -25,15 +36,18 @@ export class CreditCardFields extends React.PureComponent<Props> {
       };
     } else {
       this.state = {
-        selectedYear: null,
-        selectedMonth: null,
+        selectedYear: selectedExpYear,
+        selectedMonth: selectedExpMonth,
       };
     }
   }
 
+  /**
+   * @function render
+   * @description render method to be called of component
+   */
   render() {
     const {
-      labels,
       cardTypeImgUrl,
       isPLCCEnabled,
       cardType,
@@ -43,10 +57,13 @@ export class CreditCardFields extends React.PureComponent<Props> {
       updateExpiryDate,
       isEdit,
       creditCard,
+      creditFieldLabels,
+      cvvInfo,
+      showCvv,
     } = this.props;
     const { selectedMonth, selectedYear } = this.state;
     const dropDownStyle = {
-      height: 35,
+      height: 40,
       border: 1,
       width: 100,
       marginRight: 15,
@@ -60,7 +77,7 @@ export class CreditCardFields extends React.PureComponent<Props> {
       <PaymentContainer>
         <CardContainer>
           <Field
-            label={labels.paymentGC.lbl_payment_cardNumber}
+            label={creditFieldLabels.creditCardNumber}
             name="cardNumber"
             id="cardNumber"
             component={CreditCardNumber}
@@ -75,16 +92,10 @@ export class CreditCardFields extends React.PureComponent<Props> {
             customStyle={CardTextboxStyle}
           />
         </CardContainer>
-        <ExpiryContainer>
+        <ExpiryContainer showCvv={showCvv}>
           <ExpiryMonth>
-            <BodyCopy
-              mobilefontFamily="secondary"
-              fontSize="fs10"
-              fontWeight="black"
-              text={selectedMonth ? labels.paymentGC.lbl_payment_expMonth : ''}
-            />
             <Field
-              name="expMonth"
+              heading={creditFieldLabels.expMonth}
               component={DropDown}
               data={expMonthOptionsMap}
               dataLocator="addEditCreditCard-expMonth"
@@ -93,20 +104,24 @@ export class CreditCardFields extends React.PureComponent<Props> {
                 updateExpiryDate(itemValue, selectedYear);
               }}
               variation="secondary"
-              selectedValue={selectedMonth || labels.paymentGC.lbl_payment_expMonth}
+              selectedValue={selectedMonth || creditFieldLabels.expMonth}
               dropDownStyle={{ ...dropDownStyle }}
               itemStyle={{ ...itemStyle }}
             />
+            <HiddenExpiryWrapper>
+              <Field
+                label=""
+                component={TextBox}
+                title=""
+                type="hidden"
+                name="expMonth"
+                id="expMonth"
+              />
+            </HiddenExpiryWrapper>
           </ExpiryMonth>
           <ExpiryYear>
-            <BodyCopy
-              mobilefontFamily="secondary"
-              fontSize="fs10"
-              fontWeight="black"
-              text={selectedYear ? labels.paymentGC.lbl_payment_expYear : ''}
-            />
             <Field
-              name="expYear"
+              heading={creditFieldLabels.expYear}
               component={DropDown}
               data={expYearOptionsMap}
               dataLocator="addEditCreditCard-expYear"
@@ -117,9 +132,34 @@ export class CreditCardFields extends React.PureComponent<Props> {
                 this.setState({ selectedYear: itemValue });
                 updateExpiryDate(selectedMonth, itemValue);
               }}
-              selectedValue={selectedYear || labels.paymentGC.lbl_payment_expYear}
+              selectedValue={selectedYear || creditFieldLabels.expYear}
             />
+            <HiddenExpiryWrapper>
+              <Field
+                label=""
+                component={TextBox}
+                title=""
+                type="hidden"
+                name="expYear"
+                id="expYear"
+              />
+            </HiddenExpiryWrapper>
           </ExpiryYear>
+          {showCvv && (
+            <CvvCode>
+              <Field
+                label={creditFieldLabels.cvvCode}
+                name="cvvCode"
+                id="cvvCode"
+                type="text"
+                component={TextBox}
+                dataLocator="payment-cvv"
+                customStyle={CvvTextboxStyle}
+              />
+              <Field name="cardType" id="cardType" component={TextBox} type="hidden" />
+              <CVVInfo>{cvvInfo}</CVVInfo>
+            </CvvCode>
+          )}
         </ExpiryContainer>
       </PaymentContainer>
     );
@@ -127,23 +167,28 @@ export class CreditCardFields extends React.PureComponent<Props> {
 }
 
 CreditCardFields.propTypes = {
-  labels: PropTypes.shape({}),
+  creditFieldLabels: PropTypes.shape({}),
   cardTypeImgUrl: PropTypes.string,
   isPLCCEnabled: PropTypes.bool,
   cardType: PropTypes.string,
   dto: PropTypes.shape({}),
   selectedCard: PropTypes.shape({}),
+  showCvv: PropTypes.bool,
 };
 
 CreditCardFields.defaultProps = {
-  labels: {
-    paymentGC: { lbl_payment_cardNumber: '', lbl_payment_expMonth: '', lbl_payment_expYear: '' },
+  creditFieldLabels: {
+    creditCardNumber: '',
+    expMonth: '',
+    expYear: '',
+    cvvCode: '',
   },
   cardTypeImgUrl: '',
   cardType: '',
   isPLCCEnabled: true,
   dto: {},
   selectedCard: null,
+  showCvv: true,
 };
 
 export default CreditCardFields;

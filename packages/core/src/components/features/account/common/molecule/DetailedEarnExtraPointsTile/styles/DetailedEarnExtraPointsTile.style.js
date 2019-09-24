@@ -94,14 +94,14 @@ const styles = css`
     padding-left: ${props => props.theme.spacing.ELEM_SPACING.XS};
     padding-right: ${props => props.theme.spacing.ELEM_SPACING.XS};
     @media ${props => props.theme.mediaQuery.large} {
-      margin-bottom: ${props => props.theme.spacing.LAYOUT_SPACING.LRG};
+      margin-bottom: 0;
     }
   }
 
   .activityTitleMargin {
     margin-top: ${props => props.theme.spacing.ELEM_SPACING.LRG};
     @media ${props => props.theme.mediaQuery.large} {
-      margin-top: ${props => props.theme.spacing.LAYOUT_SPACING.XL};
+      margin-top: 0;
       padding-right: ${props => props.theme.spacing.ELEM_SPACING.MED};
     }
   }
@@ -120,21 +120,18 @@ const styles = css`
   }
 
   .earnExtraPointsTileImageSingle {
-    margin-top: ${props =>
-      props.viewAll
-        ? props.theme.spacing.LAYOUT_SPACING.MED
-        : props.theme.spacing.LAYOUT_SPACING.LRG};
-    height: 96px;
-    text-align: center;
     display: flex;
-    justify-content: space-around;
+    justify-content: center;
     align-items: center;
     @media ${props => props.theme.mediaQuery.large} {
-      margin-top: ${props => props.theme.spacing.LAYOUT_SPACING.LRG};
       margin-right: ${props => (props.viewAll ? props.theme.spacing.LAYOUT_SPACING.SM : '')};
     }
   }
   .earnExtraPointsTileTextMargin {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
     @media ${props => props.theme.mediaQuery.large} {
       margin-right: ${props => props.theme.spacing.LAYOUT_SPACING.MED};
     }
