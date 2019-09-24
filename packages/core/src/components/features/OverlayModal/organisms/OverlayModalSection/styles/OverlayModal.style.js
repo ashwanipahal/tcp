@@ -67,13 +67,6 @@ const StyledModal = css`
     top: -10px;
     z-index: 99;
   }
-  .condensed-modal-triangle {
-    left: 281px !important;
-
-    @media ${props => props.theme.mediaQuery.large} {
-      left: 180px !important;
-    }
-  }
   .modal__closeIcon {
     background: transparent url('/static/images/modal-close.svg') no-repeat 0 0;
     border: none;

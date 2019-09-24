@@ -44,10 +44,10 @@ class SearchBar extends React.PureComponent {
 
   openSearchBar = e => {
     e.preventDefault();
-    const { setSearchState, isSearchOpen } = this.props;
+    const { setSearchState } = this.props;
     if (window.innerWidth <= breakpoints.large) {
       routerPush('/search', '/search');
-    } else if (!isSearchOpen) {
+    } else {
       setSearchState(true);
     }
   };
@@ -68,20 +68,16 @@ class SearchBar extends React.PureComponent {
   };
 
   render() {
-    const { className, searchResults, labels, isSearchOpen, showCondensedHeader } = this.props;
+    const { className, fromCondensedHeader, searchResults, labels, isSearchOpen } = this.props;
 
     const { showProduct } = this.state;
 
     logger.debug(searchResults); // only for use purpose (temporary)
     return (
       <React.Fragment>
-        <BodyCopy className={`${className}`} component="div">
-          {isSearchOpen && (
-            <div
-              className={`searchWrapper ${
-                showCondensedHeader ? 'condensed-search' : 'header-search'
-              }`}
-            >
+        <BodyCopy className={className} component="div">
+          {isSearchOpen ? (
+            <div className="searchWrapper">
               <div className="searchbar">
                 <input
                   ref={this.searchInput}
@@ -193,6 +189,15 @@ class SearchBar extends React.PureComponent {
                 )}
               </div>
             </div>
+          ) : (
+            <Image
+              alt="close"
+              className="search-image icon`"
+              onClick={this.openSearchBar}
+              src={getIconPath(fromCondensedHeader ? 'search-icon-blue' : 'search-icon')}
+              data-locator="close-icon"
+              height="25px"
+            />
           )}
         </BodyCopy>
       </React.Fragment>
@@ -202,10 +207,10 @@ class SearchBar extends React.PureComponent {
 
 SearchBar.propTypes = {
   className: PropTypes.string.isRequired,
+  fromCondensedHeader: PropTypes.bool,
   startSearch: PropTypes.func.isRequired,
   setSearchState: PropTypes.func.isRequired,
   isSearchOpen: PropTypes.bool,
-  showCondensedHeader: PropTypes.bool,
   searchResults: PropTypes.shape({
     trends: PropTypes.shape({}),
     categories: PropTypes.shape({}),
@@ -221,7 +226,7 @@ SearchBar.propTypes = {
 
 SearchBar.defaultProps = {
   isSearchOpen: false,
-  showCondensedHeader: false,
+  fromCondensedHeader: false,
   searchResults: {
     trends: {},
     categories: {},

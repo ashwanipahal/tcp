@@ -61,6 +61,10 @@ export default css`
     padding-left: ${props => props.theme.spacing.ELEM_SPACING.SM};
   }
 
+  .userIcon {
+    height: 25px;
+  }
+
   .username {
     cursor: pointer;
     display: inline-block;

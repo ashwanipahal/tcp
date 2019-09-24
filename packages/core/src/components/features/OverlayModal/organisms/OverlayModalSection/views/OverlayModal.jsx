@@ -46,12 +46,17 @@ class OverlayModal extends React.Component {
   }
 
   componentDidUpdate(prevProps) {
-    const { component: nextTargetComponent } = this.props;
-    const { component: prevTargetComponent } = prevProps;
+    const { component: nextTargetComponent, showCondensedHeader: nextCondensedState } = this.props;
+    const { component: prevTargetComponent, showCondensedHeader: prevCondensedState } = prevProps;
     if (nextTargetComponent !== prevTargetComponent) {
       scrollPage();
       return this.getCustomStyles({ styleModal: false });
     }
+
+    if (nextCondensedState !== prevCondensedState) {
+      this.getCustomStyles({ styleModal: true });
+    }
+
     return null;
   }
 
@@ -88,8 +93,8 @@ class OverlayModal extends React.Component {
   };
 
   getCustomStyles = ({ styleModal }) => {
-    const { component } = this.props;
-    const comp = document.getElementById(component);
+    const { component, showCondensedHeader } = this.props;
+    const comp = document.getElementById(showCondensedHeader ? 'condensedLogin' : component);
     /* istanbul ignore else */
     if (comp && window) {
       const compRectBoundingY = comp.getBoundingClientRect().y + window.scrollY;

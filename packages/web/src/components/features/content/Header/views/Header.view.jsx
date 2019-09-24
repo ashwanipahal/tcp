@@ -8,14 +8,12 @@ import TrackOrder from '@tcp/core/src/components/features/account/TrackOrder';
 import { getViewportInfo } from '@tcp/core/src/utils';
 import { HeaderTopNav, HeaderPromo, HeaderMiddleNav, CondensedHeader } from '../molecules';
 import style from '../Header.style';
-import SearchBar from '../molecules/SearchBar/index';
 
 class Header extends React.PureComponent {
   constructor(props) {
     super(props);
     this.state = {
       showCondensedHeader: false,
-      isSearchOpen: false,
     };
   }
 
@@ -40,10 +38,6 @@ class Header extends React.PureComponent {
   removeScrollListener = () => {
     const stickyPos = this.getStickyPosition();
     window.removeEventListener('scroll', throttle(this.handleScroll.bind(this, stickyPos), 100));
-  };
-
-  setSearchState = (currentStatus, cb = null) => {
-    this.setState({ isSearchOpen: currentStatus }, cb ? cb() : () => {});
   };
 
   handleScroll = sticky => {
@@ -84,9 +78,6 @@ class Header extends React.PureComponent {
       openMiniBagDispatch,
       totalItems,
     } = this.props;
-
-    const { isSearchOpen } = this.state;
-
     const { showCondensedHeader } = this.state;
     return (
       <header className={className}>
@@ -108,16 +99,7 @@ class Header extends React.PureComponent {
           isLoggedIn={isLoggedIn}
           cartItemCount={cartItemCount}
           totalItems={totalItems}
-          showCondensedHeader={showCondensedHeader}
-          setSearchState={this.setSearchState}
-          isSearchOpen={isSearchOpen}
           openMiniBagDispatch={openMiniBagDispatch}
-        />
-        <SearchBar
-          className={!isSearchOpen && 'rightLink'}
-          setSearchState={this.setSearchState}
-          isSearchOpen={isSearchOpen}
-          showCondensedHeader={showCondensedHeader}
         />
         <HeaderPromo
           mobileMarkup
@@ -128,6 +110,7 @@ class Header extends React.PureComponent {
         {showCondensedHeader && (
           <CondensedHeader
             openNavigationDrawer={openNavigationDrawer}
+            openMiniBagDispatch={openMiniBagDispatch}
             closeNavigationDrawer={closeNavigationDrawer}
             navigationDrawer={navigationDrawer}
             userName={userName}
@@ -136,8 +119,6 @@ class Header extends React.PureComponent {
             cartItemCount={cartItemCount}
             totalItems={totalItems}
             showCondensedHeader={showCondensedHeader}
-            setSearchState={this.setSearchState}
-            isSearchOpen={isSearchOpen}
             labels={labels}
           />
         )}
