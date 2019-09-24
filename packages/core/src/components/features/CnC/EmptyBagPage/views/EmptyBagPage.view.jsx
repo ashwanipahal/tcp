@@ -7,7 +7,7 @@ import { BodyCopy, Button } from '../../../../common/atoms';
 import { getLocator } from '../../../../../utils';
 import ApplyNowModal from '../../../../common/molecules/ApplyNowPLCCModal';
 
-const EmptyBagPage = ({ className, isUserLoggedIn, bagLabels }) => {
+const EmptyBagPage = ({ className, isUserLoggedIn, bagLabels, showPlccApplyNow = true }) => {
   return (
     <div className={className}>
       <BodyCopy
@@ -19,7 +19,7 @@ const EmptyBagPage = ({ className, isUserLoggedIn, bagLabels }) => {
       >
         {!isUserLoggedIn ? bagLabels.guestUserMsg : bagLabels.loggedInMsg}
       </BodyCopy>
-      <ApplyNowModal />
+      {showPlccApplyNow ? <ApplyNowModal /> : null}
       <div className="element-spacing">
         <Button
           data-locator={getLocator(
@@ -66,6 +66,7 @@ EmptyBagPage.propTypes = {
   className: PropTypes.string.isRequired,
   isUserLoggedIn: PropTypes.bool.isRequired,
   bagLabels: PropTypes.bool.isRequired,
+  showPlccApplyNow: PropTypes.bool.isRequired,
 };
 
 export default withStyle(EmptyBagPage, style);

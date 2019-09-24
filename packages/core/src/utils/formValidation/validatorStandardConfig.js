@@ -21,7 +21,6 @@ export const formValidationMessages = {
     required: validStreetAddress,
     address: 'lbl_err_addressline1_address',
     minLength: validStreetAddress,
-    maxLength: 'lbl_err_addressline1_maxlength',
   },
   addressLine2: {
     address: 'lbl_err_addressline2_address',

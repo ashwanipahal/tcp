@@ -39,7 +39,7 @@ exports[`ApplicationInProgress component should renders correctly 1`] = `
       className="underprogress_continue_button"
       colSize={
         Object {
-          "large": 3,
+          "large": 4,
           "medium": 4,
           "small": 12,
         }

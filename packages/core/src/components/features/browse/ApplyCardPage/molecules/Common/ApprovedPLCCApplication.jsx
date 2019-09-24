@@ -3,7 +3,7 @@ import PropTypes from 'prop-types';
 import { Anchor, BodyCopy, RichText, Button, Col, Row } from '../../../../../common/atoms';
 import ApprovedPLCCApplicationViewStyled from './styles/ApprovedPLCCApplication.style';
 import { getLabelValue } from '../../../../../../utils';
-import { redirectToBag, redirectToHome } from '../../utils/utility';
+import { redirectToBag, redirectToHome, getModalSizeForApprovedPLCC } from '../../utils/utility';
 
 const CopyToClipboard = e => {
   e.preventDefault();
@@ -27,11 +27,20 @@ const CopyToClipboard = e => {
  * @param {set of labels to be displayed} labels
  * @param {moduleX content} plccData
  */
-const getCouponCodeBody = (approvedPLCCData, labels = {}, plccData = {}) => {
+const getCouponCodeBody = (
+  approvedPLCCData,
+  labels = {},
+  plccData = {},
+  _getModalSizeForApprovedPLCC,
+  isPLCCModalFlow
+) => {
   return approvedPLCCData && approvedPLCCData.couponCode ? (
     <React.Fragment>
       <Row fullBleed className="centered">
-        <Col ignoreGutter={{ small: true }} colSize={{ large: 8, medium: 8, small: 12 }}>
+        <Col
+          ignoreGutter={{ small: true }}
+          colSize={{ large: _getModalSizeForApprovedPLCC(isPLCCModalFlow), medium: 8, small: 12 }}
+        >
           <Row>
             <Col
               ignoreGutter={{ small: true }}
@@ -75,12 +84,18 @@ const getCouponCodeBody = (approvedPLCCData, labels = {}, plccData = {}) => {
         </Col>
       </Row>
       <Row fullBleed className="centered">
-        <Col ignoreGutter={{ small: true }} colSize={{ large: 8, medium: 8, small: 12 }}>
+        <Col
+          ignoreGutter={{ small: true }}
+          colSize={{ large: getModalSizeForApprovedPLCC(isPLCCModalFlow), medium: 8, small: 12 }}
+        >
           <RichText richTextHtml={plccData && plccData.plcc_approved_ps} />
         </Col>
       </Row>
       <Row fullBleed className="centered">
-        <Col ignoreGutter={{ small: true }} colSize={{ large: 8, medium: 8, small: 12 }}>
+        <Col
+          ignoreGutter={{ small: true }}
+          colSize={{ large: getModalSizeForApprovedPLCC(isPLCCModalFlow), medium: 8, small: 12 }}
+        >
           <hr className="horizontal_divider" />
         </Col>
       </Row>
@@ -185,7 +200,7 @@ const ApprovedPLCCApplicationView = ({
       <Row fullBleed className="submit_plcc_form">
         <Col
           ignoreGutter={{ small: true }}
-          colSize={{ large: 6, medium: 8, small: 12 }}
+          colSize={{ large: getModalSizeForApprovedPLCC(isPLCCModalFlow), medium: 8, small: 12 }}
           className="congratulations_header"
         >
           <BodyCopy
@@ -203,7 +218,10 @@ const ApprovedPLCCApplicationView = ({
         </Col>
       </Row>
       <Row fullBleed className="centered">
-        <Col ignoreGutter={{ small: true }} colSize={{ large: 8, medium: 8, small: 12 }}>
+        <Col
+          ignoreGutter={{ small: true }}
+          colSize={{ large: getModalSizeForApprovedPLCC(isPLCCModalFlow), medium: 8, small: 12 }}
+        >
           <BodyCopy
             fontWeight="bold"
             fontSize="fs22"
@@ -218,7 +236,10 @@ const ApprovedPLCCApplicationView = ({
         </Col>
       </Row>
       <Row fullBleed className="centered">
-        <Col ignoreGutter={{ small: true }} colSize={{ large: 8, medium: 8, small: 12 }}>
+        <Col
+          ignoreGutter={{ small: true }}
+          colSize={{ large: getModalSizeForApprovedPLCC(isPLCCModalFlow), medium: 8, small: 12 }}
+        >
           <BodyCopy
             fontWeight="extrabold"
             fontSize="fs22"
@@ -233,7 +254,10 @@ const ApprovedPLCCApplicationView = ({
         </Col>
       </Row>
       <Row fullBleed className="centered">
-        <Col ignoreGutter={{ small: true }} colSize={{ large: 7, medium: 8, small: 12 }}>
+        <Col
+          ignoreGutter={{ small: true }}
+          colSize={{ large: getModalSizeForApprovedPLCC(isPLCCModalFlow), medium: 8, small: 12 }}
+        >
           {!isGuest ? (
             <RichText richTextHtml={plccData && plccData.plcc_shipping_info} />
           ) : (
@@ -242,11 +266,20 @@ const ApprovedPLCCApplicationView = ({
         </Col>
       </Row>
       <Row fullBleed className="centered">
-        <Col ignoreGutter={{ small: true }} colSize={{ large: 8, medium: 8, small: 12 }}>
+        <Col
+          ignoreGutter={{ small: true }}
+          colSize={{ large: getModalSizeForApprovedPLCC(isPLCCModalFlow), medium: 8, small: 12 }}
+        >
           <hr className="horizontal_divider" />
         </Col>
       </Row>
-      {getCouponCodeBody(approvedPLCCData, labels, plccData)}
+      {getCouponCodeBody(
+        approvedPLCCData,
+        labels,
+        plccData,
+        getModalSizeForApprovedPLCC,
+        isPLCCModalFlow
+      )}
       {totalSavingsFooterContainer(approvedPLCCData, plccData, labels, bagItems, resetPLCCResponse)}
       <Row fullBleed className="centered">
         <Col

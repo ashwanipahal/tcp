@@ -31,6 +31,10 @@ const fetchBillingOrShippingAddress = address => {
   return plccAddress;
 };
 
+const getModalSizeForApprovedPLCC = isPLCCModalFlow => {
+  return isPLCCModalFlow ? 12 : 8;
+};
+
 const redirectToBag = resetPLCCResponse => {
   resetPLCCResponse({ status: null });
   routerPush(window.location.href, '/bag');
@@ -56,4 +60,5 @@ export {
   redirectToHome,
   getPageViewGridColumnSize,
   getPageViewGridRowSize,
+  getModalSizeForApprovedPLCC,
 };

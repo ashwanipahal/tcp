@@ -11,6 +11,11 @@ import getModalHeight from '../../utils/modalHelper';
  * @class PLCCTimedoutModal - Opens a Modal containing information about application closure.
  */
 class StyledPLCCTimedoutModal extends React.PureComponent {
+  componentDidMount() {
+    const { unregisterIdleVerfication } = this.props;
+    unregisterIdleVerfication();
+  }
+
   restartApplication = () => {
     const { handleFormReset, isPLCCModalFlow } = this.props;
     if (isPLCCModalFlow) {
@@ -141,6 +146,7 @@ StyledPLCCTimedoutModal.propTypes = {
   handleFormReset: PropTypes.func.isRequired,
   isPLCCModalFlow: PropTypes.bool.isRequired,
   bagItems: PropTypes.bool.isRequired,
+  unregisterIdleVerfication: PropTypes.func.isRequired,
   labels: PropTypes.shape({
     lbl_PLCCTimeoutModal_restartAcceptance: PropTypes.string.isRequired,
     lbl_PLCCTimeoutModal_restartApplication: PropTypes.string.isRequired,
