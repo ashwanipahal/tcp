@@ -184,14 +184,34 @@ export function* fetchModuleX({ payload = [] }) {
  * @param {Object} navigation for navigating in mobile app
  * @param {Boolean} closeModal for closing addedtoBag modal in app
  */
-export function* routeForCartCheckout(recalc, navigation, closeModal) {
+export function* routeForCartCheckout(recalc, navigation, closeModal, navigationActions) {
   const orderHasPickup = yield select(checkoutSelectors.getIsOrderHasPickup);
   const IsInternationalShipping = yield select(getIsInternationalShipping);
   if (isMobileApp()) {
     if (orderHasPickup) {
-      navigation.navigate(CONSTANTS.CHECKOUT_ROUTES_NAMES.CHECKOUT_PICKUP);
+      const navigateAction = navigationActions.navigate({
+        routeName: CONSTANTS.CHECKOUT_ROOT,
+        params: {},
+        action: navigationActions.navigate({
+          routeName: CONSTANTS.CHECKOUT_ROUTES_NAMES.CHECKOUT_PICKUP,
+          params: {
+            routeTo: CONSTANTS.PICKUP_DEFAULT_PARAM,
+          },
+        }),
+      });
+      navigation.dispatch(navigateAction);
     } else {
-      navigation.navigate(CONSTANTS.CHECKOUT_ROUTES_NAMES.CHECKOUT_SHIPPING);
+      const navigateAction = navigationActions.navigate({
+        routeName: CONSTANTS.CHECKOUT_ROOT,
+        params: {},
+        action: navigationActions.navigate({
+          routeName: CONSTANTS.CHECKOUT_ROUTES_NAMES.CHECKOUT_SHIPPING,
+          params: {
+            routeTo: CONSTANTS.SHIPPING_DEFAULT_PARAM,
+          },
+        }),
+      });
+      navigation.dispatch(navigateAction);
     }
     if (closeModal) {
       closeModal();
@@ -208,12 +228,12 @@ export function* routeForCartCheckout(recalc, navigation, closeModal) {
   }
 }
 
-export function* checkoutCart(recalc, navigation, closeModal) {
+export function* checkoutCart(recalc, navigation, closeModal, navigationActions) {
   const isLoggedIn = yield select(getUserLoggedInState);
   if (!isLoggedIn) {
     return yield put(setCheckoutModalMountedState({ state: true }));
   }
-  return yield call(routeForCartCheckout, recalc, navigation, closeModal);
+  return yield call(routeForCartCheckout, recalc, navigation, closeModal, navigationActions);
 }
 
 function* confirmStartCheckout() {
@@ -236,7 +256,7 @@ function* confirmStartCheckout() {
 }
 
 export function* startCartCheckout({
-  payload: { isEditingItem, navigation, closeModal } = {},
+  payload: { isEditingItem, navigation, closeModal, navigationActions } = {},
 } = {}) {
   if (isEditingItem) {
     yield put(BAG_PAGE_ACTIONS.openCheckoutConfirmationModal(isEditingItem));
@@ -253,7 +273,7 @@ export function* startCartCheckout({
     );
     const oOSModalOpen = yield call(confirmStartCheckout);
     if (!oOSModalOpen) {
-      yield call(checkoutCart, false, navigation, closeModal);
+      yield call(checkoutCart, false, navigation, closeModal, navigationActions);
     }
   }
 }
