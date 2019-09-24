@@ -16,5 +16,3 @@ export const VENMO_USER_STATES = {
   GUEST: 'G',
   REGISTERED: 'R',
 };
-
-export const noop = () => {};

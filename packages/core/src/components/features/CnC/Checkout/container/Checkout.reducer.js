@@ -1,4 +1,3 @@
-/* eslint-disable complexity */
 import { fromJS } from 'immutable';
 import { setLocalStorage } from '../../../../../utils/localStorageManagement';
 import { constants as venmoConstants } from '../../../../common/atoms/VenmoPaymentButton/container/VenmoPaymentButton.util';
@@ -62,12 +61,57 @@ const initialState = fromJS({
   },
 });
 
+const mergedVenmoDetails = (state, payload) => {
+  const currentValue = fromJS(state.getIn(['values', 'venmoData']));
+  return currentValue.merge(payload).toObject();
+};
+
+function venmoFlagReducer(checkout, action) {
+  switch (action.type) {
+    case CheckoutConstants.GET_VENMO_CLIENT_TOKEN_SUCCESS:
+      return checkout.setIn(
+        ['values', 'venmoClientTokenData'],
+        action.payload && action.payload.venmoClientTokenData
+      );
+    case CheckoutConstants.GET_VENMO_CLIENT_TOKEN_ERROR:
+      return checkout.setIn(['values', 'venmoData'], action.payload);
+    case CheckoutConstants.SET_VENMO_DATA: {
+      const venmoData = mergedVenmoDetails(checkout, action.payload);
+      setLocalStorage({ key: venmoConstants.VENMO_STORAGE_KEY, value: JSON.stringify(venmoData) });
+      return checkout.setIn(['values', 'venmoData'], venmoData);
+    }
+    case CheckoutConstants.SET_VENMO_PAYMENT_INPROGRESS: {
+      setLocalStorage({
+        key: venmoConstants.VENMO_INPROGRESS_KEY,
+        value: action.payload,
+      });
+      return checkout.setIn(['uiFlags', 'venmoPaymentInProgress'], action.payload);
+    }
+    case CheckoutConstants.SET_VENMO_PICKUP_MESSAGE_STATE: {
+      setLocalStorage({
+        key: venmoConstants.VENMO_PICKUP_BANNER,
+        value: action.payload,
+      });
+      return checkout.setIn(['uiFlags', 'venmoPickupMessageDisplayed'], action.payload);
+    }
+    case CheckoutConstants.SET_VENMO_SHIPPING_MESSAGE_STATE: {
+      setLocalStorage({
+        key: venmoConstants.VENMO_SHIPPING_BANNER,
+        value: action.payload,
+      });
+      return checkout.setIn(['uiFlags', 'venmoShippingMessageDisplayed'], action.payload);
+    }
+    default:
+      return checkout;
+  }
+}
+
 function paypalReducer(checkout, action) {
   switch (action.type) {
     case CheckoutConstants.CHECKOUT_ORDER_OPTIONS_SET_PAYPAL_PAYMENT:
       return checkout.setIn(['options', 'paypalPaymentSettings'], action.paypalPaymentSettings);
     default:
-      return checkout;
+      return venmoFlagReducer(checkout, action);
   }
 }
 
@@ -91,11 +135,6 @@ function uiGiftCardFlagReducer(checkout, action) {
       return paypalReducer(checkout, action);
   }
 }
-
-const mergedVenmoDetails = (state, payload) => {
-  const currentValue = fromJS(state.getIn(['values', 'venmoData']));
-  return currentValue.merge(payload).toObject();
-};
 
 function uiFlagReducer(checkout, action) {
   switch (action.type) {
@@ -134,39 +173,8 @@ function uiFlagReducer(checkout, action) {
       return checkout.setIn(['values', 'orderBalanceTotal'], action.payload);
     case CheckoutConstants.CHECKOUT_VAlUES_SET_GIFT_WRAP:
       return checkout.CartPageReducer.setIn(['orderDetails', 'checkout', 'giftWrap']);
-    case CheckoutConstants.GET_VENMO_CLIENT_TOKEN_SUCCESS:
-      return checkout.setIn(
-        ['values', 'venmoClientTokenData'],
-        action.payload && action.payload.venmoClientTokenData
-      );
-    case CheckoutConstants.GET_VENMO_CLIENT_TOKEN_ERROR:
-      return checkout.setIn(['values', 'venmoData'], action.payload);
-    case CheckoutConstants.SET_VENMO_DATA: {
-      const venmoData = mergedVenmoDetails(checkout, action.payload);
-      setLocalStorage({ key: venmoConstants.VENMO_STORAGE_KEY, value: JSON.stringify(venmoData) });
-      return checkout.setIn(['values', 'venmoData'], venmoData);
-    }
-    case CheckoutConstants.SET_VENMO_PAYMENT_INPROGRESS: {
-      setLocalStorage({
-        key: venmoConstants.VENMO_INPROGRESS_KEY,
-        value: action.payload,
-      });
-      return checkout.setIn(['uiFlags', 'venmoPaymentInProgress'], action.payload);
-    }
-    case CheckoutConstants.SET_VENMO_PICKUP_MESSAGE_STATE: {
-      setLocalStorage({
-        key: venmoConstants.VENMO_PICKUP_BANNER,
-        value: action.payload,
-      });
-      return checkout.setIn(['uiFlags', 'venmoPickupMessageDisplayed'], action.payload);
-    }
-    case CheckoutConstants.SET_VENMO_SHIPPING_MESSAGE_STATE: {
-      setLocalStorage({
-        key: venmoConstants.VENMO_SHIPPING_BANNER,
-        value: action.payload,
-      });
-      return checkout.setIn(['uiFlags', 'venmoShippingMessageDisplayed'], action.payload);
-    }
+    case 'CHECKOUT_ORDER_OPTIONS_SET_INTL_URL':
+      return checkout.setIn(['options', 'internationalUrl'], action.internationalUrl);
     // case 'CHECKOUT_FLAGS_SET_REVIEW_VISTED':
     //   return merge(uiFlags, { isReviewVisited: action.payload });
     // case 'CHECKOUT_FLAGS_SET_PAYMENT_ERROR':
@@ -228,9 +236,6 @@ export default function CheckoutReducer(state = initialState, action) {
     //   return checkout.setIn(['options', 'shippingMethods'], action.shippingMethods);
     // case 'CHECKOUT_ORDER_OPTIONS_SET_GIFT_WRAP':
     //   return merge(orderOptions, { giftWrapOptions: action.giftWrapOptions });
-
-    case 'CHECKOUT_ORDER_OPTIONS_SET_INTL_URL':
-      return checkout.setIn(['options', 'internationalUrl'], action.internationalUrl);
     default:
       return uiFlagReducer(checkout, action);
   }

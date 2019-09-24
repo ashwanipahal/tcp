@@ -5,7 +5,7 @@ import Image from '../../Image/views/Image';
 import { getIconPath } from '../../../../../utils/utils';
 import withStyles from '../../../hoc/withStyles';
 import logger from '../../../../../utils/loggerInstance';
-import { noop, modes, constants } from '../container/VenmoPaymentButton.util';
+import { modes, constants } from '../container/VenmoPaymentButton.util';
 import styles from '../styles/VenmoPaymentButton.style';
 
 let venmoInstance = null;
@@ -263,16 +263,16 @@ VenmoPaymentButton.defaultProps = {
   className: '',
   enabled: false,
   authorizationKey: '',
-  setVenmoData: noop,
+  setVenmoData: () => {},
   allowNewBrowserTab: false,
   isMobile: false,
   venmoData: {
     supportedByBrowser: true,
   },
   mode: modes.CLIENT_TOKEN,
-  onVenmoPaymentButtonClick: noop,
-  onVenmoPaymentButtonError: noop,
-  setVenmoPaymentInProgress: noop,
+  onVenmoPaymentButtonClick: () => {},
+  onVenmoPaymentButtonError: () => {},
+  setVenmoPaymentInProgress: () => {},
   isNonceNotExpired: false,
   isRemoveOOSItems: false,
 };

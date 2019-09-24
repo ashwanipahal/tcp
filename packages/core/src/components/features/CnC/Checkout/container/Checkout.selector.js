@@ -7,7 +7,6 @@ import {
 } from '@tcp/core/src/constants/reducer.constants';
 import { constants as venmoConstants } from '@tcp/core/src/components/common/atoms/VenmoPaymentButton/container/VenmoPaymentButton.util';
 import { getLocalStorage } from '@tcp/core/src/utils/localStorageManagement';
-/* eslint-disable extra-rules/no-commented-out-code */
 import { getAPIConfig, isMobileApp, getViewportInfo, getLabelValue } from '../../../../../utils';
 /* eslint-disable extra-rules/no-commented-out-code */
 import CheckoutUtils from '../util/utility';
