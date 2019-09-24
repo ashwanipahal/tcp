@@ -17,6 +17,7 @@ import { initializeStore } from '../reduxStore/store/initializeStore';
 import { APP_TYPE } from '../components/common/hoc/ThemeWrapper.constants';
 import AnimatedBrandChangeIcon from '../components/common/atoms/AnimatedBrandChangeIcon/AnimatedBrandChangeIcon.container';
 import { updateBrandName } from '../utils/utils';
+import { getOnNavigationStateChange } from '../navigation/helpers';
 
 const styles = StyleSheet.create({
   // eslint-disable-next-line react-native/no-color-literals
@@ -90,6 +91,7 @@ export class App extends React.PureComponent {
             <Box style={styles.container}>
               {Platform.OS === 'ios' && <StatusBar barStyle="default" />}
               <AppNavigator
+                {...getOnNavigationStateChange()}
                 screenProps={{ toggleBrandAction: this.toggleBrandAction, apiConfig }}
               />
               {isSplashVisible && <AppSplash appType={appType} removeSplash={this.removeSplash} />}
