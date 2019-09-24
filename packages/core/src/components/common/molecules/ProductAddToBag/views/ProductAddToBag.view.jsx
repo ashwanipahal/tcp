@@ -10,6 +10,7 @@ import { Row, Button, Image, Col } from '@tcp/core/src/components/common/atoms';
 import { getIconPath } from '@tcp/core/src/utils';
 import RenderPerf from '@tcp/web/src/components/common/molecules/RenderPerf';
 import ProductColorChipsSelector from '../../ProductColorChipSelector';
+import { getCartItemInfo } from '../../../../features/CnC/AddedToBag/util/utility';
 import ProductSizeSelector from '../../ProductSizeSelector';
 import styles from '../styles/ProductAddToBag.style';
 
@@ -43,6 +44,18 @@ const ErrorComp = errorMessage => {
 };
 
 class ProductAddToBag extends React.PureComponent<Props> {
+  handleAddToBag = () => {
+    const {
+      addToBagEcom,
+      formValues,
+      currentProduct: productInfo,
+      closeQuickViewModal,
+    } = this.props;
+    let cartItemInfo = getCartItemInfo(productInfo, formValues);
+    cartItemInfo = { ...cartItemInfo, callBack: closeQuickViewModal };
+    addToBagEcom(cartItemInfo);
+  };
+
   render() {
     const {
       plpLabels,
@@ -54,7 +67,6 @@ class ProductAddToBag extends React.PureComponent<Props> {
       selectFit,
       selectSize,
       displayErrorMessage,
-      addToBagEcom,
       addToBagError,
     } = this.props;
 
@@ -142,7 +154,7 @@ class ProductAddToBag extends React.PureComponent<Props> {
                   if (fitChanged) {
                     displayErrorMessage(fitChanged);
                   } else {
-                    addToBagEcom();
+                    this.handleAddToBag();
                   }
                 }}
               >

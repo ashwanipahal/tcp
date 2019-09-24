@@ -123,9 +123,8 @@ exports[`ProductCustomizeFormPart component should renders correctly 1`] = `
           priceCurrency=""
         />
       </div>
-      <ProductAddToBagContainer
-        addToBagEcom={[Function]}
-        addToBagError=""
+      <Connect(ProductAddToBagContainer)
+        closeQuickViewModal={[Function]}
         currentProduct={
           Object {
             "alternateSizes": Object {},

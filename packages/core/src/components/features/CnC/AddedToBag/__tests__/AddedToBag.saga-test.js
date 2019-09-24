@@ -57,9 +57,9 @@ describe('Added to bag saga', () => {
       })
     );
 
-    addToCartEcomGen.next();
     putDescriptor = addToCartEcomGen.next().value;
     expect(putDescriptor).toEqual(put(openAddedToBag()));
+    addToCartEcomGen.next();
     putDescriptor = addToCartEcomGen.next().value;
     expect(putDescriptor).toEqual(put(BAG_PAGE_ACTIONS.getOrderDetails()));
   });
