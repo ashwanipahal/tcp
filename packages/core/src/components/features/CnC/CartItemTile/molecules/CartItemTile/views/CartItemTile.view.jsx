@@ -643,7 +643,7 @@ class CartItemTile extends React.Component {
                           className="padding-left-10 responsive-edit-css"
                           onClick={this.callEditMethod}
                         >
-                          <u>{labels.edit}</u>
+                          {labels.edit}
                         </BodyCopy>
                       )}
                     </Col>

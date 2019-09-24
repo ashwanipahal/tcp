@@ -3,9 +3,9 @@ import { PropTypes } from 'prop-types';
 import withStyles from '@tcp/core/src/components/common/hoc/withStyles';
 import { BodyCopy, Col, Row, Image } from '@tcp/core/src/components/common/atoms';
 import ReactToolTip from '@tcp/core/src/components/common/atoms/ReactToolTip';
-import cssClassName from '../../../../../../../../../utils/cssClassName';
-import { getTranslateDateInformation } from '../../../../../../../../../utils/utils.web';
-import { getAPIConfig, getIconPath } from '../../../../../../../../../utils/utils';
+import cssClassName from '@tcp/core/src/utils/cssClassName';
+import { getTranslateDateInformation } from '@tcp/core/src/utils//utils.web';
+import { getAPIConfig, getIconPath } from '@tcp/core/src/utils/utils';
 import CartItemTile from '../../../../../../CartItemTile/molecules/CartItemTile/views/CartItemTile.view';
 import { getProductDetails } from '../../../../../../CartItemTile/container/CartItemTile.selectors';
 import styles from '../styles/CheckoutCartItemsList.style';
@@ -32,49 +32,19 @@ class CheckoutCartItemsList extends Component {
          * Information regarding the product that this cart item refers to.
          * Essentially, the cart item is just some quantity of the product
          */
-        productInfo: PropTypes.shape({
-          /** This identifies the product with a given color fit and size combination */
-          skuId: PropTypes.string.isRequired,
-          /** The name of the product to be displayed to the user */
-          name: PropTypes.string.isRequired,
-          /** the url of the image of the product */
-          imagePath: PropTypes.string.isRequired,
-          /** The color/pattern */
-          color: PropTypes.shape({
-            /** The color's name (e.g. 'Clay') */
-            name: PropTypes.string.isRequired,
-          }),
-          /** The fit (e.g. 'slim') */
-          fit: PropTypes.string,
-          /** The size (e.g. '5S') */
-          size: PropTypes.string.isRequired,
-        }).isRequired,
+        productInfo: PropTypes.shape({}).isRequired,
 
         /** Information about this cart item that is not a function of the product */
-        itemInfo: PropTypes.shape({
-          /** This cart item is made up of quantity many copies of the product */
-          quantity: PropTypes.number.isRequired,
-          /** the list price of this item (i.e., before any discounts) */
-          listPrice: PropTypes.number.isRequired,
-          /** the actuall price the user has to pay for this item */
-          offerPrice: PropTypes.number.isRequired,
-        }).isRequired,
+        itemInfo: PropTypes.shape({}).isRequired,
 
-        miscInfo: PropTypes.shape({
-          /**
-           * If falsy (i.e., null, undefined, etc.) this item is to be shipped;
-           * otherwise, it is the name of the store from which it is to be picked up
-           */
-          store: PropTypes.string,
-          storeAddress: PropTypes.object,
-        }).isRequired,
+        miscInfo: PropTypes.shape({}).isRequired,
       })
     ).isRequired,
 
     /** This is used to display the correct currency symbol */
     currencySymbol: PropTypes.string.isRequired,
-    labels: PropTypes.shape({}).isRequired,
-    bagPageLabels: PropTypes.shape({}).isRequired,
+    labels: PropTypes.shape({}),
+    bagPageLabels: PropTypes.shape({}),
     className: PropTypes.string.isRequired,
   };
 
@@ -105,29 +75,66 @@ class CheckoutCartItemsList extends Component {
     return (
       <>
         {deliveryItem.storeAddress && (
-          <p>
-            {deliveryItem.storeAddress.addressLine1}
-            <br />
+          <>
+            <BodyCopy
+              component="span"
+              fontWeight="regular"
+              fontSize="fs12"
+              fontFamily="secondary"
+              className="title-list-product"
+            >
+              {deliveryItem.storeAddress.addressLine1}
+            </BodyCopy>
             {deliveryItem.storeAddress.addressLine2 && (
-              <span>
+              <BodyCopy
+                component="span"
+                fontWeight="regular"
+                fontSize="fs12"
+                fontFamily="secondary"
+                className="title-list-product"
+              >
                 {deliveryItem.storeAddress.addressLine2}
-                <br />
-              </span>
+              </BodyCopy>
             )}
-            {`${deliveryItem.storeAddress.city},
-      ${deliveryItem.storeAddress.state}
-      ${deliveryItem.storeAddress.zipCode}`}
-            <br />
-            <br />
-            <em>{labels.today}</em>
-            {deliveryItem.storeTodayOpenRange}
-            <br />
-            <em>{labels.tomorrow}</em>
-            {deliveryItem.storeTomorrowOpenRange}
-            <br />
-            <em>{labels.phone}</em>
-            {deliveryItem.storePhoneNumber}
-          </p>
+            <BodyCopy
+              component="span"
+              fontWeight="regular"
+              fontSize="fs12"
+              fontFamily="secondary"
+              className="title-list-product"
+            >
+              {`${deliveryItem.storeAddress.city},${deliveryItem.storeAddress.state}${
+                deliveryItem.storeAddress.zipCode
+              }`}
+            </BodyCopy>
+            <BodyCopy
+              component="span"
+              fontWeight="regular"
+              fontSize="fs12"
+              fontFamily="secondary"
+              className="title-list-product"
+            >
+              {`${labels.today}${deliveryItem.storeTodayOpenRange}`}
+            </BodyCopy>
+            <BodyCopy
+              component="span"
+              fontWeight="regular"
+              fontSize="fs12"
+              fontFamily="secondary"
+              className="title-list-product"
+            >
+              {`${labels.tomorrow}${deliveryItem.storeTomorrowOpenRange}`}
+            </BodyCopy>
+            <BodyCopy
+              component="span"
+              fontWeight="regular"
+              fontSize="fs12"
+              fontFamily="secondary"
+              className="title-list-product"
+            >
+              {`${labels.phone}${deliveryItem.storePhoneNumber}`}
+            </BodyCopy>
+          </>
         )}
       </>
     );
@@ -149,7 +156,7 @@ class CheckoutCartItemsList extends Component {
         {isShowHeader && (
           <div className="pickup-header">
             <Row>
-              <Col colSize={{ small: 12, medium: 12, large: 12 }}>
+              <Col colSize={{ small: 6, medium: 8, large: 12 }}>
                 <BodyCopy
                   component="span"
                   fontWeight="extrabold"
@@ -189,7 +196,7 @@ class CheckoutCartItemsList extends Component {
           </div>
         )}
         <Row>
-          <Col colSize={{ small: 12, medium: 12, large: 12 }}>
+          <Col colSize={{ small: 6, medium: 8, large: 12 }}>
             <BodyCopy
               fontWeight="extrabold"
               fontSize="fs16"
@@ -217,7 +224,7 @@ class CheckoutCartItemsList extends Component {
       return (
         <div key={index}>
           <Row>
-            <Col colSize={{ small: 12, medium: 12, large: 12 }}>
+            <Col colSize={{ small: 6, medium: 8, large: 12 }}>
               <div className={headerClassName}>
                 <BodyCopy
                   fontWeight="extrabold"
@@ -228,11 +235,11 @@ class CheckoutCartItemsList extends Component {
                   {labels.shipping}
                 </BodyCopy>
               </div>
-              <ul className="container-list-shopping-cart">
+              <div className="container-list-shopping-cart">
                 {pickUpList.list.map(listItem => {
                   return this.getOrderItem(listItem.item, listItem.currencySymbol);
                 })}
-              </ul>
+              </div>
             </Col>
           </Row>
         </div>
@@ -276,11 +283,11 @@ class CheckoutCartItemsList extends Component {
                 <div key={`${index}_${orderCount}_0`} className={headerClassName}>
                   {this.getPickupHeader(deliveryItem, isShowHeader)}
                 </div>,
-                <ul key={`${index}_${orderCount}_1`} className="container-list-shopping-cart">
+                <div key={`${index}_${orderCount}_1`} className="container-list-shopping-cart">
                   {deliveryItem.list.map(listItem => {
                     return this.getOrderItem(listItem.item, listItem.currencySymbol);
                   })}
-                </ul>,
+                </div>,
               ];
               orderItemView.push(itemHeader);
               isShowHeader = false;
@@ -311,15 +318,21 @@ class CheckoutCartItemsList extends Component {
   }) => {
     const { currencySymbol, labels } = this.props;
     const bucketReferenceTemp = bucketReference;
+    const {
+      storePhoneNumber,
+      storeTodayOpenRange,
+      storeTomorrowOpenRange,
+      orderItemType,
+    } = item.miscInfo;
     const orderItem = {
       store: currentStore,
       storeAddress: currentStoreAddress,
-      storePhoneNumber: item.miscInfo.storePhoneNumber || '',
-      storeTodayOpenRange: item.miscInfo.storeTodayOpenRange || '',
-      storeTomorrowOpenRange: item.miscInfo.storeTomorrowOpenRange || '',
+      storePhoneNumber: storePhoneNumber || '',
+      storeTodayOpenRange: storeTodayOpenRange || '',
+      storeTomorrowOpenRange: storeTomorrowOpenRange || '',
       orderType,
       duration:
-        item.miscInfo.orderItemType === CheckoutConstants.ORDER_ITEM_TYPE.BOSS ? (
+        orderItemType === CheckoutConstants.ORDER_ITEM_TYPE.BOSS ? (
           `${bossStartDate.day}. ${bossStartDate.month} ${bossStartDate.date} - ${
             bossEndDate.day
           }. ${bossEndDate.month} ${bossEndDate.date}`
@@ -369,7 +382,6 @@ class CheckoutCartItemsList extends Component {
       items.map(item => {
         return getProductDetails(item);
       });
-
     const listItems = JSON.parse(JSON.stringify(updateditems));
     const sortedItem =
       listItems &&
@@ -388,7 +400,6 @@ class CheckoutCartItemsList extends Component {
         }
         return 0;
       });
-
     /*
       Bucketing Data in following way:
         SHIPIT
@@ -411,14 +422,20 @@ class CheckoutCartItemsList extends Component {
         const currentStoreAddress = item.miscInfo.storeAddress || '';
         const { bossStartDate, bossEndDate } = item.miscInfo;
         const bucketReference = bucket;
-
+        const {
+          CHECKOUT_ORDER: {
+            ORDER_BOPIS_LABEL,
+            ORDER_BOSS_LABEL,
+            ORDER_PICKUP_LABEL,
+            ORDER_SHIPIT_LABEL,
+          },
+        } = CheckoutConstants;
         const deliveryType =
-          orderType === CheckoutConstants.CHECKOUT_ORDER.ORDER_BOPIS_LABEL ||
-          orderType === CheckoutConstants.CHECKOUT_ORDER.ORDER_BOSS_LABEL
-            ? CheckoutConstants.CHECKOUT_ORDER.ORDER_PICKUP_LABEL
-            : CheckoutConstants.CHECKOUT_ORDER.ORDER_SHIPIT_LABEL;
+          orderType === ORDER_BOPIS_LABEL || orderType === ORDER_BOSS_LABEL
+            ? ORDER_PICKUP_LABEL
+            : ORDER_SHIPIT_LABEL;
 
-        if (deliveryType === CheckoutConstants.CHECKOUT_ORDER.ORDER_SHIPIT_LABEL) {
+        if (deliveryType === ORDER_SHIPIT_LABEL) {
           bucketReference[deliveryType] = bucket[deliveryType] || {};
           bucketReference[deliveryType].list = bucket[deliveryType].list || [];
           bucket[deliveryType].list.push({ item, currencySymbol });
@@ -438,8 +455,10 @@ class CheckoutCartItemsList extends Component {
         }
         return bucket;
       }, {});
-
-    const orderTypeList = CheckoutConstants.CHECKOUT_ORDER.REVIEW_PRODUCT_SEQUENCE;
+    const {
+      CHECKOUT_ORDER: { REVIEW_PRODUCT_SEQUENCE },
+    } = CheckoutConstants;
+    const orderTypeList = REVIEW_PRODUCT_SEQUENCE;
     return (
       <div className="checkout-cart-list">
         {orderTypeList.map((item, index) => this.renderOrderItems(item, orderBucket[item], index))}
@@ -456,7 +475,7 @@ class CheckoutCartItemsList extends Component {
     return (
       <div className={className}>
         <Row tagName="header">
-          <Col colSize={{ small: 12, medium: 12, large: 12 }}>
+          <Col colSize={{ small: 6, medium: 8, large: 12 }}>
             <BodyCopy
               fontWeight="semibold"
               fontSize="fs16"
@@ -472,6 +491,11 @@ class CheckoutCartItemsList extends Component {
     );
   }
 }
+
+CheckoutCartItemsList.defaultProps = {
+  labels: {},
+  bagPageLabels: {},
+};
 
 export default withStyles(CheckoutCartItemsList, styles);
 export { CheckoutCartItemsList as CheckoutCartItemsListVanilla };

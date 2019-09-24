@@ -5,6 +5,18 @@ import BAGPAGE_SELECTORS from '../../../../../../BagPage/container/BagPage.selec
 import { getLabelsCartItemTile } from '../../../../../../CartItemTile/container/CartItemTile.selectors';
 import CheckoutCartItemsList from '../views/CheckoutCartItemsList.view';
 
+/**
+ *
+ *
+ * @param {*} {
+ *   itemsCount,
+ *   items,
+ *   currencySymbol,
+ *   labels,
+ *   bagPageLabels,
+ * }
+ * @returns
+ */
 export const CheckoutCartItemList = ({
   itemsCount,
   items,

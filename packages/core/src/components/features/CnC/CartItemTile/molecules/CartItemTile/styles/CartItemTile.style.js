@@ -52,6 +52,7 @@ export default css`
     display: inline-block;
   }
   .responsive-edit-css {
+    text-decoration: underline;
     padding-top: 2px;
     cursor: pointer;
     display: flex;
@@ -205,6 +206,7 @@ export default css`
       }
 
       .responsive-edit-css {
+        text-decoration: underline;
         padding-top: 4px;
         cursor: pointer;
         display: flex;
@@ -238,6 +240,7 @@ export default css`
         display: inline-grid;
       }
       .responsive-edit-css {
+        text-decoration: underline;
         position: absolute;
         bottom: 0;
         right: 50%;

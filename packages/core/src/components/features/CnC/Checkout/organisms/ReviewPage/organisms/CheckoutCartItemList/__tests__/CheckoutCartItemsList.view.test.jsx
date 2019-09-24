@@ -52,22 +52,6 @@ const bossprops = {
   itemsCount: 0,
   items: fromJS([
     {
-      productInfo: {
-        skuId: '',
-        name: '',
-        imagePath: '',
-        color: {
-          name: 'Clay',
-        },
-        fit: 'slim',
-        size: '5S',
-      },
-      itemInfo: {
-        quantity: 1,
-        listPrice: 12,
-        offerPrice: 10,
-      },
-
       miscInfo: {
         store: '',
         storeAddress: {},
