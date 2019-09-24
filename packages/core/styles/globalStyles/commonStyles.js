@@ -145,7 +145,7 @@ export default css`
 
   .hide-on-mobile {
     @media ${mediaQuery.smallOnly} {
-      display: none;
+      display: none !important;
     }
   }
 
