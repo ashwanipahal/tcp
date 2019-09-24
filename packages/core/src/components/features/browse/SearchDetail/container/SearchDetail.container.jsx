@@ -28,6 +28,7 @@ import {
   getAppliedFilters,
   getAppliedSortId,
   getIsLoadingMore,
+  checkIfSearchResultsAvailable,
 } from '../container/SearchDetail.selectors';
 
 import { isPlccUser } from '../../../account/User/container/User.selectors';
@@ -86,11 +87,11 @@ class SearchDetailContainer extends React.PureComponent {
   }
 
   render() {
-    const { isLoadingMore, products, ...otherProps } = this.props;
+    const { isLoadingMore, products, isSearchResultsAvailable, ...otherProps } = this.props;
 
     return (
       <>
-        {isLoadingMore === true ? (
+        {isSearchResultsAvailable === true ? (
           <>
             {products && products.length > 0 ? (
               <SearchDetail isLoadingMore={isLoadingMore} products={products} {...otherProps} />
@@ -140,6 +141,7 @@ function mapStateToProps(state) {
     longDescription: getLongDescription(state),
     labels: getLabelsProductListing(state),
     isLoadingMore: getIsLoadingMore(state),
+    isSearchResultsAvailable: checkIfSearchResultsAvailable(state),
     lastLoadedPageNumber: getLastLoadedPageNumber(state),
     formValues: getFormValues('filter-form')(state),
     onSubmit: submitProductListingFiltersForm,
@@ -179,6 +181,7 @@ SearchDetailContainer.propTypes = {
   }).isRequired,
   onSubmit: PropTypes.func.isRequired,
   isLoadingMore: PropTypes.bool,
+  isSearchResultsAvailable: PropTypes.bool,
 };
 
 SearchDetailContainer.defaultProps = {
@@ -187,6 +190,7 @@ SearchDetailContainer.defaultProps = {
   filtersLength: {},
   initialValues: {},
   isLoadingMore: false,
+  isSearchResultsAvailable: false,
 };
 
 export default withRouter(

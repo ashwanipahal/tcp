@@ -43,14 +43,7 @@ class NoResponseSearchDetailView extends React.PureComponent {
   };
 
   render() {
-    const {
-      className,
-      slpLabels,
-      searchedText,
-      searchResultSuggestions,
-      labels,
-      searchResults,
-    } = this.props;
+    const { className, slpLabels, searchedText, searchResultSuggestions, labels } = this.props;
 
     const { showProduct } = this.state;
 
@@ -149,20 +142,7 @@ class NoResponseSearchDetailView extends React.PureComponent {
                     </BodyCopy>
                     <BodyCopy component="div" className="matchLinkBoxBody" lineHeight="39">
                       <ul>
-                        {searchResults.length > 0 &&
-                          searchResults.looking.map(item => {
-                            return (
-                              <BodyCopy
-                                component="li"
-                                fontFamily="secondary"
-                                fontSize="fs14"
-                                key={item.id}
-                                className="linkName"
-                              >
-                                {item.text}
-                              </BodyCopy>
-                            );
-                          })}
+                        <li>{slpLabels.lbl_noresults_found}</li>
                       </ul>
                     </BodyCopy>
                   </div>
@@ -172,10 +152,7 @@ class NoResponseSearchDetailView extends React.PureComponent {
                     </BodyCopy>
                     <BodyCopy className="matchProductBody" lineHeight="39" component="div">
                       <ul>
-                        {searchResults.length > 0 &&
-                          searchResults.map(item => {
-                            return <BodyCopy component="li" key={item.id} className="productBox" />;
-                          })}
+                        <li>{slpLabels.lbl_noresults_found}</li>
                       </ul>
                     </BodyCopy>
                   </div>
@@ -250,11 +227,6 @@ NoResponseSearchDetailView.propTypes = {
     })
   ),
   startSearch: PropTypes.func.isRequired,
-  searchResults: PropTypes.shape({
-    trends: PropTypes.shape({}),
-    categories: PropTypes.shape({}),
-    products: PropTypes.arrayOf(PropTypes.shape({})),
-  }),
   labels: PropTypes.shape({
     lbl_search_whats_trending: PropTypes.string,
     lbl_search_recent_search: PropTypes.string,
@@ -268,11 +240,6 @@ NoResponseSearchDetailView.defaultProps = {
   slpLabels: {},
   searchedText: '',
   searchResultSuggestions: [],
-  searchResults: {
-    trends: {},
-    categories: {},
-    products: [],
-  },
   labels: PropTypes.shape({
     lbl_search_whats_trending: '',
     lbl_search_recent_search: '',
@@ -283,7 +250,6 @@ NoResponseSearchDetailView.defaultProps = {
 
 const mapStateToProps = state => {
   return {
-    searchResults: state.Search.searchResults && state.Search.searchResults.get('products'),
     labels: state.Labels.global && state.Labels.global.Search,
   };
 };

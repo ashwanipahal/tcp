@@ -8,6 +8,7 @@ import {
   setSlpLoadingState,
   setSlpSearchTerm,
   setListingFirstProductsPage,
+  setSlpResultsAvailableState,
 } from './SearchDetail.actions';
 import Abstractor from '../../../../../services/abstractors/productListing';
 import ProductsOperator from '../../ProductListing/container/productsRequestFormatter';
@@ -21,7 +22,9 @@ export function* fetchSlpProducts({ payload }) {
   try {
     const { searchQuery, asPath, formData } = payload;
     const state = yield select();
-    yield put(setSlpLoadingState({ isLoadingMore: false }));
+    yield put(setSlpLoadingState({ isLoadingMore: true }));
+    yield put(setSlpResultsAvailableState({ isSearchResultsAvailable: false }));
+
     yield put(setSlpSearchTerm({ searchTerm: searchQuery }));
 
     const reqObj = operatorInstance.getProductsListingFilters({
@@ -32,7 +35,8 @@ export function* fetchSlpProducts({ payload }) {
     });
     const res = yield call(instanceProductListing.getProducts, reqObj, state);
     yield put(setListingFirstProductsPage({ ...res }));
-    yield put(setSlpLoadingState({ isLoadingMore: true }));
+    yield put(setSlpLoadingState({ isLoadingMore: false }));
+    yield put(setSlpResultsAvailableState({ isSearchResultsAvailable: true }));
   } catch (err) {
     logger.error(err);
   }
