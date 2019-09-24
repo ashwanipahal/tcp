@@ -1,12 +1,11 @@
 import React from 'react';
 import { PropTypes } from 'prop-types';
 import { connect } from 'react-redux';
-import Router from 'next/router'; // eslint-disable-line
 import { requireNamedOnlineModule } from '../../../../../utils/resourceLoader';
 import { Button, Row, Col, BodyCopy } from '../../../atoms';
 import style from '../styles/GetCandid.style';
 import withStyles from '../../../hoc/withStyles';
-import { getAPIConfig } from '../../../../../utils';
+import { getAPIConfig, routerPush } from '../../../../../utils';
 import withLazyLoad from '../../../hoc/withLazyLoad';
 
 class GetCandid extends React.PureComponent {
@@ -62,7 +61,7 @@ class GetCandid extends React.PureComponent {
     // window.location.href = `${window.location.origin}/us/content/mystyleplace?icid=${
     // eslint-disable-line icid[pageType]
     // }`;
-    Router.push(`/gallery`);
+    routerPush('/gallery', '/gallery');
   };
 
   getDefaultHeading = () => {

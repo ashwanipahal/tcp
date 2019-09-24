@@ -32,7 +32,7 @@ class GetCandidGallery extends React.Component {
           fontWeight="semibold"
           fontSize={['fs20', 'fs20', 'fs32']}
           textAlign="center"
-          data-locator="get_candid_gallery_header_text_1"
+          data-locator="get_gallery_page_header_text_1"
         >
           {labels.lbl_getCandid_title}
         </BodyCopy>
@@ -41,7 +41,7 @@ class GetCandidGallery extends React.Component {
           className="description"
           fontSize={['fs16', 'fs16', 'fs26']}
           textAlign="center"
-          data-locator="get_candid_gallery_header_text_2"
+          data-locator="get_gallery_page_header_text_2"
         >
           {labels.lbl_getCandid_titleDescription}
         </BodyCopy>
@@ -106,7 +106,7 @@ class GetCandidGallery extends React.Component {
             buttonVariation="fixed-width"
             type="button"
             className="add-photo-btn"
-            data-locator="add_photo_button"
+            data-locator="get_gallery_page_add_photo_btn"
           >
             {labels.lbl_getCandid_BtnPhoto}
           </Button>
