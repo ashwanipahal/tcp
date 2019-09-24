@@ -83,7 +83,7 @@ class GetCandidGallery extends React.Component {
      * jsView is required because sometimes when we switch back and forth using client side routing.
      * The gallery page breaks because the jsView is not available.
      */
-    const allJsFileLoadPromise = ['jquery', 'jsViews', 'getCandid', 'getCandidIsotope'].reduce(
+    const allJsFileLoadPromise = ['jquery', 'wallJs', 'getCandid', 'getCandidIsotope'].reduce(
       (loadPromise, jsFile) => {
         return loadPromise.then(() => requireNamedOnlineModule(jsFile));
       },

@@ -33,8 +33,8 @@ const getNamedModulesMap = apiConfig => {
       loadPromise: null,
     },
 
-    jsViews: {
-      url: 'https://www.jsviews.com/download/jsviews.min.js',
+    wallJs: {
+      url: 'https://api.getcandid.com/scripts/wall.js',
       loadPromise: null,
     },
 
