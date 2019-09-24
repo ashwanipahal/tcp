@@ -49,6 +49,13 @@ export const setAPIConfig = payload => {
   };
 };
 
+export const siteConfigData = payload => {
+  return {
+    type: GLOBAL_CONSTANTS.SITE_CONFIG,
+    payload,
+  };
+};
+
 export const bootstrapData = payload => {
   return {
     type: GLOBAL_CONSTANTS.BOOTSTRAP_API,

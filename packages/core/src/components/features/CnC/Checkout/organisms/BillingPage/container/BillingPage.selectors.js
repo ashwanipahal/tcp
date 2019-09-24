@@ -19,6 +19,4 @@ const getCVVCodeRichTextSelector = state => {
   return rContent && rContent.richText;
 };
 
-const getBillingLabels = state => state.Labels.checkout.billing;
-
-export { getCVVCodeInfoContentId, getCVVCodeRichTextSelector, getBillingLabels };
+export { getCVVCodeInfoContentId, getCVVCodeRichTextSelector };

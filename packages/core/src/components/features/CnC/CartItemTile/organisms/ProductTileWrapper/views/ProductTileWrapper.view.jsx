@@ -61,24 +61,6 @@ class ProductTileWrapper extends React.PureComponent<props> {
     return false;
   };
 
-  getRemoveString = (labels, removeCartItem, getUnavailableOOSItems) => {
-    const remove = labels.updateUnavailable.split('#remove#');
-    const newRemove = (
-      <BodyCopy
-        fontFamily="secondary"
-        fontSize="fs12"
-        component="span"
-        className="removeErrorMessage"
-        onClick={() => removeCartItem(getUnavailableOOSItems)}
-      >
-        <u>remove</u>
-      </BodyCopy>
-    );
-
-    remove.splice(1, 0, newRemove);
-    return remove;
-  };
-
   setSelectedProductTile = ({ index }) => {
     this.setState({ openedTile: index });
   };
@@ -240,11 +222,10 @@ class ProductTileWrapper extends React.PureComponent<props> {
           {!isBagPageSflSection && isSoldOut && (
             <RemoveSoldOut
               pageView={pageView}
-              labelForRemove={this.getRemoveString(
-                labels,
-                confirmRemoveCartItem,
-                getUnavailableOOSItems
-              )}
+              labels={labels}
+              removeCartItem={confirmRemoveCartItem}
+              getUnavailableOOSItems={getUnavailableOOSItems}
+              showLabelForRemove
             />
           )}
           {!isBagPageSflSection && isUnavailable && (
