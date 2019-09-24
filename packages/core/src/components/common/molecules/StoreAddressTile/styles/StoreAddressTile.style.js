@@ -40,6 +40,7 @@ export const TileFooter = styled.div`
 `;
 
 export const TileBody = styled.div`
+  flex: 1;
   .address-wrapper {
     @media ${props => props.theme.mediaQuery.largeOnly} {
       display: ${props => (props.variation === 'listing' ? 'flex' : 'block')};
@@ -82,6 +83,8 @@ export const FavStore = styled.div`
 `;
 
 export default css`
+  display: flex;
+  flex-direction: column;
   box-sizing: bored-box;
   padding-top: ${props => props.theme.spacing.ELEM_SPACING.MED};
   padding-bottom: ${props => props.theme.spacing.ELEM_SPACING.MED};
