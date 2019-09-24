@@ -22,11 +22,21 @@ import CACHED_KEYS from '../../constants/cache.config';
 import { isMobileApp } from '../../utils';
 import { getDataFromRedis } from '../../utils/redis.util';
 
+// TODO - GLOBAL-LABEL-CHANGE - STEP 1.3 - Uncomment these references
+// import GLOBAL_CONSTANTS, { LABELS } from '../constants';
+// import { loadLayoutData, loadLabelsData, setLabelsData, loadModulesData, setAPIConfig } from '../actions';
+
 function* bootstrap(params) {
   const {
-    payload: { name: pageName, modules, apiConfig, deviceType, optimizelyHeadersObject },
+    payload: {
+      name: pageName,
+      modules,
+      apiConfig,
+      deviceType,
+      optimizelyHeadersObject,
+      siteConfig,
+    },
   } = params;
-  const { country, currency, language } = apiConfig;
 
   const cachedData = {};
   let modulesList = modules;
@@ -43,9 +53,20 @@ function* bootstrap(params) {
   });
 
   try {
-    yield putResolve(setAPIConfig(apiConfig));
-    yield putResolve(setDeviceInfo({ deviceType }));
-    yield putResolve(setOptimizelyFeaturesList(optimizelyHeadersObject));
+    if (siteConfig) {
+      const { country, currency, language } = apiConfig;
+
+      // putResolve is used to block the other actions till apiConfig is set in state, which is to be used by next bootstrap api calls
+      yield putResolve(setAPIConfig(apiConfig));
+      yield putResolve(setDeviceInfo({ deviceType }));
+      yield putResolve(setOptimizelyFeaturesList(optimizelyHeadersObject));
+
+      yield put(setCountry(country));
+      yield put(setCurrency(currency));
+      yield put(setLanguage(language));
+      const xappConfig = yield call(xappAbstractor.getData, GLOBAL_CONSTANTS.XAPP_CONFIG_MODULE);
+      yield put(loadXappConfigData(xappConfig));
+    }
 
     const result = yield call(bootstrapAbstractor, pageName, modulesList, cachedData);
     if (pageName) {
@@ -53,15 +74,12 @@ function* bootstrap(params) {
       yield put(loadModulesData(result.modules));
     }
     yield put(loadLabelsData(result.labels));
+    // TODO - GLOBAL-LABEL-CHANGE - STEP 1.4 - Remove loadLabelsData and uncomment this new code
+    //  yield put(setLabelsData({ category:LABELS.global, data:result.labels
+    // }));
     yield put(loadHeaderData(result.header));
     if (!isMobileApp()) yield put(loadNavigationData(result.navigation));
     yield put(loadFooterData(result.footer));
-
-    yield put(setCountry(country));
-    yield put(setCurrency(currency));
-    yield put(setLanguage(language));
-    const xappConfig = yield call(xappAbstractor.getData, GLOBAL_CONSTANTS.XAPP_CONFIG_MODULE);
-    yield put(loadXappConfigData(xappConfig));
   } catch (err) {
     logger.error(err);
   }

@@ -6,6 +6,8 @@ import footerAbstractor from './footer';
 import navigationAbstractor from './navigation';
 import handler from '../../handler';
 import { getAPIConfig, isMobileApp } from '../../../utils';
+// TODO - GLOBAL-LABEL-CHANGE - STEP 1.1 -  Uncomment this line for only global data
+// import { LABELS } from '../../../reduxStore/constants';
 import CACHED_KEYS from '../../../constants/cache.config';
 import { defaultBrand, defaultChannel, defaultCountry, MobileChannel } from '../../api.constants';
 import { setDataInRedis } from '../../../utils/redis.util';
@@ -31,9 +33,9 @@ const fetchBootstrapData = async ({ page, labels, brand, country, channel }, boo
     : {};
 
   /**
-   * Sets up query params for modules requests
+   * Sets up query params for global modules requests - (labels, header, footer, navigation)
    */
-  const modulesBootstrapParams = bootstrapModules.map(module => {
+  const globalBootstrapParams = bootstrapModules.map(module => {
     let data = {};
     switch (module) {
       case 'labels':
@@ -77,7 +79,7 @@ const fetchBootstrapData = async ({ page, labels, brand, country, channel }, boo
       data,
     };
   });
-  const bootstrapParams = modulesBootstrapParams;
+  const bootstrapParams = globalBootstrapParams;
   if (pageBootstrapParams.data) {
     bootstrapParams.push(pageBootstrapParams);
   }
@@ -141,13 +143,10 @@ export const retrieveCachedData = ({ cachedData, key, bootstrapData }) => {
  * @param {String} pageName
  * @param {module} Array ['header', 'footer', 'layout', 'navigation']
  */
-const bootstrap = async (pageName, modules, cachedData) => {
+const bootstrap = async (pageName = '', modules, cachedData) => {
   const response = {};
-  let page = '';
-  if (pageName) {
-    page = pageName;
-  }
-  const bootstrapParams = { page, ...createBootstrapParams() };
+
+  const bootstrapParams = { page: pageName, ...createBootstrapParams() };
 
   /**
    * Config Responsible for making all the http requests that need to be resolved before loading the application

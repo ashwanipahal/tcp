@@ -35,6 +35,8 @@ function AnalyticsScript() {
 }
 
 class TCPWebApp extends App {
+  static siteConfigSet = false;
+
   constructor(props) {
     super(props);
     this.theme = getCurrentTheme();
@@ -96,54 +98,80 @@ class TCPWebApp extends App {
     ReactAxe.runAccessibility();
   }
 
+  /**
+   * This function parses cookie response
+   */
+  static parseCookieResponse = ({ name, value }) => {
+    let itemValue;
+    try {
+      itemValue = JSON.parse(value);
+    } catch (err) {
+      itemValue = {};
+    }
+    return {
+      [name]: itemValue,
+    };
+  };
+
+  /**
+   * This function determines whether to load page data in bootstrap call
+   * @param {boolean} isServer
+   * @param {Object} state
+   * @param {*} Component
+   */
+  static shouldLoadPageData(isServer, state, Component) {
+    return isServer || !state.Layouts[Component.pageInfo && Component.pageInfo.name];
+  }
+
   static loadGlobalData(Component, { store, res, isServer, req }, pageProps) {
     // getInitialProps of _App is called on every internal page navigation in spa.
     // This check is to avoid unnecessary api call in those cases
-    if (isServer) {
-      const { locals } = res;
-      const { device = {} } = req;
-      const apiConfig = createAPIConfig(locals);
+    let payload = { siteConfig: false };
+    // Get initial props is getting called twice on server
+    // This check ensures this block is executed once since Component is not available in first call
+    if (Component.displayName) {
+      if (isServer) {
+        const { locals } = res;
+        const { device = {} } = req;
+        const apiConfig = createAPIConfig(locals);
 
-      // optimizely headers
-      const optimizelyHeadersObject = {};
-      const setCookieHeaderList = setCookie.parse(res).map(({ name, value }) => {
-        let itemValue;
-        try {
-          itemValue = JSON.parse(value);
-        } catch (err) {
-          itemValue = {};
+        // optimizely headers
+        const optimizelyHeadersObject = {};
+        const setCookieHeaderList = setCookie.parse(res).map(TCPWebApp.parseCookieResponse);
+
+        const optimizelyHeader = setCookieHeaderList && setCookieHeaderList[0];
+        if (optimizelyHeader) {
+          optimizelyHeader[constants.OPTIMIZELY_DECISION_LABEL].forEach(item => {
+            let optimizelyHeaderValue;
+            try {
+              optimizelyHeaderValue = JSON.parse(
+                res.getHeader(`${constants.OPTIMIZELY_HEADER_PREFIX}${item}`)
+              );
+            } catch (err) {
+              optimizelyHeaderValue = {};
+            }
+            optimizelyHeadersObject[item] = optimizelyHeaderValue;
+          });
         }
-        return {
-          [name]: itemValue,
-        };
-      });
 
-      const optimizelyHeader = setCookieHeaderList && setCookieHeaderList[0];
-      if (optimizelyHeader) {
-        optimizelyHeader[constants.OPTIMIZELY_DECISION_LABEL].forEach(item => {
-          let optimizelyHeaderValue;
-          try {
-            optimizelyHeaderValue = JSON.parse(
-              res.getHeader(`${constants.OPTIMIZELY_HEADER_PREFIX}${item}`)
-            );
-          } catch (err) {
-            optimizelyHeaderValue = {};
-          }
-          optimizelyHeadersObject[item] = optimizelyHeaderValue;
-        });
-      }
-
-      // Get initial props is getting called twice on server
-      // This check ensures this block is executed once since Component is not available in first call
-      if (Component.displayName) {
-        const payload = {
-          ...Component.pageInfo,
+        payload = {
+          siteConfig: true,
           apiConfig,
           deviceType: device.type,
           optimizelyHeadersObject,
         };
-        store.dispatch(bootstrapData(payload));
       }
+
+      // Get initial props is getting called twice on server
+      // This check ensures this block is executed once since Component is not available in first call
+      const state = store.getState();
+      if (TCPWebApp.shouldLoadPageData(isServer, state, Component)) {
+        payload = {
+          ...Component.pageInfo,
+          ...payload,
+        };
+      }
+      store.dispatch(bootstrapData(payload));
     }
     return pageProps;
   }
