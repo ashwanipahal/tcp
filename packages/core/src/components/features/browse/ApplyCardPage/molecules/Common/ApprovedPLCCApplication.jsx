@@ -27,19 +27,13 @@ const CopyToClipboard = e => {
  * @param {set of labels to be displayed} labels
  * @param {moduleX content} plccData
  */
-const getCouponCodeBody = (
-  approvedPLCCData,
-  labels = {},
-  plccData = {},
-  _getModalSizeForApprovedPLCC,
-  isPLCCModalFlow
-) => {
+const getCouponCodeBody = (approvedPLCCData, labels = {}, plccData = {}, isPLCCModalFlow) => {
   return approvedPLCCData && approvedPLCCData.couponCode ? (
     <React.Fragment>
       <Row fullBleed className="centered">
         <Col
           ignoreGutter={{ small: true }}
-          colSize={{ large: _getModalSizeForApprovedPLCC(isPLCCModalFlow), medium: 8, small: 12 }}
+          colSize={{ large: getModalSizeForApprovedPLCC(isPLCCModalFlow), medium: 8, small: 12 }}
         >
           <Row>
             <Col
@@ -273,13 +267,7 @@ const ApprovedPLCCApplicationView = ({
           <hr className="horizontal_divider" />
         </Col>
       </Row>
-      {getCouponCodeBody(
-        approvedPLCCData,
-        labels,
-        plccData,
-        getModalSizeForApprovedPLCC,
-        isPLCCModalFlow
-      )}
+      {getCouponCodeBody(approvedPLCCData, labels, plccData, isPLCCModalFlow)}
       {totalSavingsFooterContainer(approvedPLCCData, plccData, labels, bagItems, resetPLCCResponse)}
       <Row fullBleed className="centered">
         <Col
