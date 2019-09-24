@@ -18,6 +18,7 @@ module.exports = withTM({
     // TODO: change to process.env.RWD_WEB_ANALYTICS_SCRIPT_URL
     ANALYTICS_SCRIPT_URL:
       '//assets.adobedtm.com/launch-EN2ad1a963f240455f9fff064520345530-development.min.js',
+    RWD_WEB_LOG_LEVEL: 'debug',
   },
   webpack(config, { isServer }) {
     const newConfig = config;

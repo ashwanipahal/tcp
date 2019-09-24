@@ -22,22 +22,11 @@ import CACHED_KEYS from '../../constants/cache.config';
 import { isMobileApp } from '../../utils';
 import { getDataFromRedis } from '../../utils/redis.util';
 
-// TODO - GLOBAL-LABEL-CHANGE - STEP 1.3 - Uncomment these references
-// import GLOBAL_CONSTANTS, { LABELS } from '../constants';
-// import { loadLayoutData, loadLabelsData, setLabelsData, loadModulesData, setAPIConfig } from '../actions';
-
 function* bootstrap(params) {
   const {
-    payload: {
-      name: pageName = 'homepage',
-      modules,
-      apiConfig,
-      deviceType,
-      optimizelyHeadersObject,
-    },
+    payload: { name: pageName, modules, apiConfig, deviceType, optimizelyHeadersObject },
   } = params;
   const { country, currency, language } = apiConfig;
-  const pagesList = [pageName];
 
   const cachedData = {};
   let modulesList = modules;
@@ -54,21 +43,20 @@ function* bootstrap(params) {
   });
 
   try {
-    // putResolve is used to block the other actions till apiConfig is set in state, which is to be used by next bootstrap api calls
     yield putResolve(setAPIConfig(apiConfig));
     yield putResolve(setDeviceInfo({ deviceType }));
     yield putResolve(setOptimizelyFeaturesList(optimizelyHeadersObject));
-    const result = yield call(bootstrapAbstractor, pagesList, modulesList, cachedData);
-    yield put(loadLayoutData(result[pageName].items[0].layout, pageName));
+
+    const result = yield call(bootstrapAbstractor, pageName, modulesList, cachedData);
+    if (pageName) {
+      yield put(loadLayoutData(result[pageName].items[0].layout, pageName));
+      yield put(loadModulesData(result.modules));
+    }
     yield put(loadLabelsData(result.labels));
-    // TODO - GLOBAL-LABEL-CHANGE - STEP 1.4 - Remove loadLabelsData and uncomment this new code
-    //  yield put(setLabelsData({ category:LABELS.global, data:result.labels
-    // }));
     yield put(loadHeaderData(result.header));
     if (!isMobileApp()) yield put(loadNavigationData(result.navigation));
-
     yield put(loadFooterData(result.footer));
-    yield put(loadModulesData(result.modules));
+
     yield put(setCountry(country));
     yield put(setCurrency(currency));
     yield put(setLanguage(language));

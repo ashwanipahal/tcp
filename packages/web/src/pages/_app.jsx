@@ -33,6 +33,7 @@ import constants from '../constants';
 function AnalyticsScript() {
   return <script src={process.env.ANALYTICS_SCRIPT_URL} />;
 }
+
 class TCPWebApp extends App {
   constructor(props) {
     super(props);
@@ -132,13 +133,17 @@ class TCPWebApp extends App {
         });
       }
 
-      const payload = {
-        ...Component.pageInfo,
-        apiConfig,
-        deviceType: device.type,
-        optimizelyHeadersObject,
-      };
-      store.dispatch(bootstrapData(payload));
+      // Get initial props is getting called twice on server
+      // This check ensures this block is executed once since Component is not available in first call
+      if (Component.displayName) {
+        const payload = {
+          ...Component.pageInfo,
+          apiConfig,
+          deviceType: device.type,
+          optimizelyHeadersObject,
+        };
+        store.dispatch(bootstrapData(payload));
+      }
     }
     return pageProps;
   }
