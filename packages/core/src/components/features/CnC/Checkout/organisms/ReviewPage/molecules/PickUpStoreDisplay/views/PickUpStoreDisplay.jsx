@@ -22,7 +22,7 @@ const PickupStoreDisplay = props => {
     store: { bopisItems, bossItems },
   } = props;
   const apiConfig = getAPIConfig();
-  const localeType = apiConfig.siteId + apiConfig.countryKey;
+  const localeType = 'en-US'; //apiConfig.siteId + apiConfig.countryKey;
   const {
     lbl_review_sectionPickupToday: pickupToday,
     lbl_review_sectionPickupOrderTitle: title,

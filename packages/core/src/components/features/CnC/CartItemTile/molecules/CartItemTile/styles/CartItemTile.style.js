@@ -10,7 +10,7 @@ export default css`
   .padding-left-10 {
     padding-left: 4px;
     @media ${props => props.theme.mediaQuery.smallMax} {
-      width: 150px;
+      width: ${props => props.showOnReviewPage} ? 150px : 'auto';
       display: inline-flex;
     }
   }
