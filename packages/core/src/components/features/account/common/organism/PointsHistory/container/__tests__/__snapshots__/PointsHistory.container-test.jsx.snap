@@ -14,7 +14,9 @@ exports[`PointsHistoryContainer View should render PointsHistory container Corre
       },
     }
   }
+  showError=""
   showNotification=""
+  showSuccess=""
 />
 `;
 
@@ -25,6 +27,8 @@ exports[`PointsHistoryContainer View should render PointsHistoryContainer Correc
   labels={[Function]}
   pointHistory={[Function]}
   resetStateAction={[Function]}
+  showError=""
   showNotification=""
+  showSuccess=""
 />
 `;
