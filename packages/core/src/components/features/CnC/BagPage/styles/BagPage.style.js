@@ -67,6 +67,7 @@ const styles = css`
       border-bottom: ${props => props.theme.spacing.ELEM_SPACING.XXXS} solid
         ${props => props.theme.colors.TEXT.DARKERGRAY};
       font-weight: ${props => props.theme.fonts.fontWeight.bold};
+      font-size: ${props => props.theme.typography.fontSizes.fs18};
     }
   }
 
@@ -81,6 +82,7 @@ const styles = css`
     display: none;
     @media ${props => props.theme.mediaQuery.smallOnly} {
       display: block;
+      font-size: ${props => props.theme.typography.fontSizes.fs18};
     }
   }
 `;
