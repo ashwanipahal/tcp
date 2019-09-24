@@ -239,12 +239,15 @@ class CheckoutCartItemsList extends React.Component {
     }
     const orderItemView = [];
     const { PICKUP_ITEM_ORDER } = CheckoutConstants.CHECKOUT_ORDER;
+    /* istanbul ignore else */
     if (storeItemsList) {
       Object.keys(storeItemsList).forEach(storeItem => {
+        /* istanbul ignore else */
         if (storeItem) {
           let isShowHeader = true;
           let orderCount = 0;
           Object.keys(storeItemsList[storeItem]).forEach(deliveryItemList => {
+            /* istanbul ignore else */
             if (deliveryItemList) {
               const deliveryItem =
                 storeItemsList[storeItem][PICKUP_ITEM_ORDER[orderCount]] ||
@@ -348,11 +351,13 @@ class CheckoutCartItemsList extends React.Component {
     const sortedItem =
       listItems &&
       listItems.sort((firstItem, secondItem) => {
+        /* istanbul ignore else */
         if (
           firstItem.miscInfo.orderItemType === CheckoutConstants.CHECKOUT_ORDER.ORDER_BOPIS_LABEL
         ) {
           return -1;
         }
+        /* istanbul ignore else */
         if (
           secondItem.miscInfo.orderItemType === CheckoutConstants.CHECKOUT_ORDER.ORDER_BOSS_LABEL
         ) {
