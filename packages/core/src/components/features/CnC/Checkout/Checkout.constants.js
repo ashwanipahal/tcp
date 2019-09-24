@@ -28,6 +28,8 @@ const CONSTANTS = {
   COUPON_SCENARIO_CODE: '1006',
   COUPON_CUSTOMER_LOOKUP_TYPE: '1003',
   BAGPAGE: 'bag',
+  HOME: 'home',
+  LOGIN: 'login',
   US_LOCATION_ID: '0180',
   CA_LOCATION_ID: '3180',
   CHECKOUT_STAGES: {
@@ -100,6 +102,8 @@ const {
   CHECKOUT_PAGES_NAMES: { CHECKOUT },
   CHECKOUT_STAGES: { SHIPPING, PICKUP, BILLING, REVIEW, CONFIRMATION },
   BAGPAGE,
+  HOME,
+  LOGIN,
   INTERNATIONAL_CHECKOUT,
 } = CONSTANTS;
 
@@ -131,6 +135,14 @@ export const CHECKOUT_ROUTES = {
   confirmationPage: {
     to: `/${CHECKOUT}?section=${CONFIRMATION}`,
     asPath: `/${CHECKOUT}/${CONFIRMATION}`,
+  },
+  home: {
+    to: `/${HOME}`,
+    asPath: `/${HOME}`,
+  },
+  login: {
+    to: `/${LOGIN}`,
+    asPath: `/${LOGIN}`,
   },
 };
 

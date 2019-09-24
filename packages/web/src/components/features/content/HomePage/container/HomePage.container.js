@@ -6,6 +6,7 @@ HomePageView.pageInfo = {
   name: 'homepage',
   modules: ['labels', 'header', 'footer', 'navigation'],
 };
+
 HomePageView.getInitActions = () => initActions;
 
 const mapStateToProps = state => {

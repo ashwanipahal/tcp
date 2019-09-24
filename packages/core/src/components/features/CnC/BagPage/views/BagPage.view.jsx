@@ -57,7 +57,7 @@ class BagPageView extends React.Component {
         <div
           className={`save-for-later-section ${
             activeSection === BAGPAGE_CONSTANTS.SFL_STATE ? 'activeSection' : 'inActiveSection'
-          }`}
+          } ${sflItems.size === 0 ? 'hide-on-desktop' : ''}`}
         >
           <BodyCopy
             fontFamily="secondary"
