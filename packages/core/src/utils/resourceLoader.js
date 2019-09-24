@@ -27,6 +27,17 @@ const getNamedModulesMap = apiConfig => {
       loadPromise: null,
     },
 
+    jquery: {
+      url:
+        'https://www.childrensplace.com/wcsstore/GlobalSAS/javascript/tcp/libs/jquery-1.11.3.min.js',
+      loadPromise: null,
+    },
+
+    getCandidIsotope: {
+      url: 'https://api.getcandid.com/scripts/wall-isotope.js',
+      loadPromise: null,
+    },
+
     getCandid: {
       url: 'https://api.getcandid.com/scripts/widget.js',
       loadPromise: null,

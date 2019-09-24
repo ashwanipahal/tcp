@@ -1,0 +1,139 @@
+import React from 'react';
+import { PropTypes } from 'prop-types';
+import { connect } from 'react-redux';
+
+import { BodyCopy, Button } from '../../../atoms';
+import style from '../styles/GetCandidGallery.style';
+import withStyles from '../../../hoc/withStyles';
+import { requireNamedOnlineModule } from '../../../../../utils/resourceLoader';
+import { getAPIConfig } from '../../../../../utils';
+
+const CANDID_GALLERY_CONTAINER_ID = 'tcp-get-candid-image-container';
+
+class GetCandidGallery extends React.Component {
+  constructor(props) {
+    super(props);
+    this.apiConfig = getAPIConfig();
+  }
+
+  componentDidMount() {
+    this.injectGetCandidWallTemplate();
+    this.initGetCandid();
+  }
+
+  getDefaultHeading = () => {
+    const { labels } = this.props;
+
+    return (
+      <div>
+        <BodyCopy
+          className="heading"
+          fontWeight="semibold"
+          fontSize={['fs20', 'fs20', 'fs32']}
+          textAlign="center"
+          data-locator="get_candid_gallery_header_text_1"
+        >
+          {labels.lbl_getCandid_title}
+        </BodyCopy>
+
+        <BodyCopy
+          className="description"
+          fontSize={['fs16', 'fs16', 'fs26']}
+          textAlign="center"
+          data-locator="get_candid_gallery_header_text_2"
+        >
+          {labels.lbl_getCandid_titleDescription}
+        </BodyCopy>
+      </div>
+    );
+  };
+
+  injectGetCandidWallTemplate = () => {
+    const script = document.createElement('script');
+    script.id = 'mediaTemplate';
+    script.type = 'text/x-jsrender';
+    script.innerHTML = `
+      <div class="candid-wall-cell">
+          <div class="candid-wall-overlay"></div>
+          <div class="candid-wall-overlay-text">
+              <div>SHOP NOW</div>
+          </div>
+          <a class='media' data-media-index='{{> Index }}'>
+          <img data-original="{{> Media.Images.LowResolution.Url }}"
+                alt="{{> Title }}"
+                style="display:inline-block;" class="lazy">
+        </a>
+     </div>
+    `;
+    document.head.appendChild(script);
+  };
+
+  onUploadButton = () => {
+    if (window.candid) {
+      window.candid.upload(this.apiConfig.CAND_API_KEY, [], this.apiConfig.CAND_URL);
+    }
+  };
+
+  initGetCandid = () => {
+    const apiKey = this.apiConfig.CANDID_API_KEY;
+    // DOC: https://support.getcandid.com/support/solutions/articles/5000524031-widget-properties
+    requireNamedOnlineModule('jquery').then(() => {
+      return requireNamedOnlineModule('getCandid').then(() => {
+        return requireNamedOnlineModule('getCandidIsotope').then(() => {
+          window.candid.wall(`#${CANDID_GALLERY_CONTAINER_ID}`, {
+            id: apiKey,
+            cluster: 'prod-2',
+            layoutMode: 'packery',
+            layout: 'isotope-packery',
+            tag: 'gallery',
+          });
+        });
+      });
+    });
+  };
+
+  render() {
+    const { className, labels } = this.props;
+
+    return (
+      <div className={className}>
+        <div>{this.getDefaultHeading()}</div>
+
+        <div className="button-container">
+          <Button
+            onClick={this.onUploadButton}
+            buttonVariation="fixed-width"
+            type="button"
+            className="add-photo-btn"
+            data-locator="add_photo_button"
+          >
+            {labels.lbl_getCandid_BtnPhoto}
+          </Button>
+        </div>
+
+        <div>
+          <div id={CANDID_GALLERY_CONTAINER_ID} />
+        </div>
+      </div>
+    );
+  }
+}
+
+GetCandidGallery.defaultProps = {
+  labels: {},
+  className: '',
+};
+
+GetCandidGallery.propTypes = {
+  labels: PropTypes.shape({}),
+  className: PropTypes.string,
+};
+
+const mapStateToProps = state => {
+  return {
+    labels: state.Labels.global && state.Labels.global.getCandid,
+  };
+};
+
+export default connect(mapStateToProps)(withStyles(GetCandidGallery, style));
+export { GetCandidGallery as GetCandidGalleryVanilla };
