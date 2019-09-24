@@ -27,6 +27,7 @@ describe('PickUpFormPartVanilla component', () => {
       dispatch: jest.fn(),
       handleSubmit: jest.fn(),
       orderHasShipping: true,
+      isVenmoPaymentInProgress: false,
     };
     const component = shallow(<PickUpFormPartVanilla {...props} />);
     expect(component).toMatchSnapshot();

@@ -49,9 +49,11 @@ class AddedToBagActions extends React.PureComponent<Props> {
         )}
         <Row className="checkout-button">
           <div className="paypal-venmo">
-            <div className="paypal-wrapper">
-              {!isInternationalShipping && <PayPalButton className="payPal-button" />}
-            </div>
+            {!isInternationalShipping && (
+              <div className="paypal-wrapper">
+                <PayPalButton className="payPal-button" />
+              </div>
+            )}
             {!isInternationalShipping && isVenmoEnabled && showVenmo && (
               <div className="venmo-wrapper">
                 <VenmoPaymentButton
