@@ -28,7 +28,7 @@ const PaymentMethods = ({ className, paymentHeader, labels }) => {
             component={LabeledRadioButton}
             key="Credit Card"
             selectedValue="creditCard"
-            title={labels.lbl_billing_creditCard}
+            title={labels.creditCard}
             subtitle=""
             name="paymentMethodId"
             hideSubtitleOnMobile
