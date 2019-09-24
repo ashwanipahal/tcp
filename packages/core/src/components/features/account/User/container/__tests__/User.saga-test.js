@@ -1,7 +1,6 @@
 import { all, put } from 'redux-saga/effects';
 import { getUserInfoSaga } from '../User.saga';
 import { setUserInfo } from '../User.actions';
-import { setAddressList } from '../../../AddressBook/container/AddressBook.actions';
 
 describe('User saga', () => {
   describe('getUserInfoSaga', () => {
@@ -16,9 +15,7 @@ describe('User saga', () => {
         firstName: 'test',
       };
       const putDescriptor = gen.next(response).value;
-      expect(putDescriptor).toEqual(
-        all([put(setUserInfo(response)), put(setAddressList(response.contactList))])
-      );
+      expect(putDescriptor).toEqual(all([put(setUserInfo(response))]));
     });
   });
 });

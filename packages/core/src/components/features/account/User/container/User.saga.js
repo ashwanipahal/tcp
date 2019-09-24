@@ -14,7 +14,6 @@ import { getProfile } from '../../../../../services/abstractors/account';
 import { validateReduxCache } from '../../../../../utils/cache.util';
 import { getSiteId, routerPush } from '../../../../../utils';
 import { API_CONFIG } from '../../../../../services/config';
-import { setAddressList } from '../../AddressBook/container/AddressBook.actions';
 
 export function* getUserInfoSaga() {
   try {
@@ -25,7 +24,7 @@ export function* getUserInfoSaga() {
     const siteId = getSiteId();
     const { CA_CONFIG_OPTIONS: apiConfig, sites } = API_CONFIG;
 
-    yield all([put(setUserInfo(response)), put(setAddressList(response.contactList))]);
+    yield all([put(setUserInfo(response))]);
     const { country, currency, language, bossBopisFlags } = response;
     yield put(setBossBopisFlags(bossBopisFlags));
     if (country) {
