@@ -4,6 +4,21 @@ exports[`EarnPointsVanilla component should renders correctly 1`] = `
 <Fragment>
   <Styled(View)>
     <Styled(View)>
+      <Styled(BodyCopy)
+        accessibilityText=""
+        component="p"
+        dataLocator="earn-points-morePoints-text"
+        fontFamily="secondary"
+        fontSize="fs18"
+        fontWeight="semibold"
+        margin={null}
+        numberOfLines={null}
+        text="lbl_extraExtraPoints_more_points"
+        textAlign="center"
+        textDecoration={null}
+      />
+    </Styled(View)>
+    <Styled(View)>
       <DetailedEarnExtraPointsTile
         handleComponentChange={[Function]}
         key="0"
