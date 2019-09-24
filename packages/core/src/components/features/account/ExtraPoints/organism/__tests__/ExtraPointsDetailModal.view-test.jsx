@@ -8,7 +8,7 @@ describe('Extra Points Details Modal', () => {
     openState: false,
     waysToEarnRow: {
       activityCode: 'AppDownload',
-      activityTitle: 'Earn 5 Points',
+      activityTitle: 'Earn 4 Points',
       description: 'Download & Log in to our App',
       displayOrder: 1,
       activityModal: {

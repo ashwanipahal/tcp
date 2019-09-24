@@ -97,7 +97,6 @@ export const CreditCardFields = ({
                 id="cvvCode"
                 component={TextBox}
                 dataLocator="payment-cvv"
-                cvvInfo={cvvInfo}
                 maxLength="4"
                 enableSuccessCheck={false}
               />

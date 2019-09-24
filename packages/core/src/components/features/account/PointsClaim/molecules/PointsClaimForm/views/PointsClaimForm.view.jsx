@@ -256,7 +256,7 @@ export class PointsClaimForm extends PureComponent {
                 data-locator="points-claim-cancel"
                 onClick={onBack}
               >
-                {labels.common.lbl_common_cancelCTACaps}
+                {getLabelValue(labels, 'lbl_common_cancelCTACaps', 'common')}
               </Button>
             </Col>
             <Col className="points-claim_submit" colSize={{ small: 6, medium: 3, large: 3 }}>

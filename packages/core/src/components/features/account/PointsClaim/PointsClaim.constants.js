@@ -1,8 +1,8 @@
 import { POINTS_CLAIM_ACTION_PATTERN } from '../../../../constants/reducer.constants';
 
 export const TRANSACTION_TYPES = {
-  IN_STORE: 'in-store',
-  ONLINE: 'online',
+  IN_STORE: 'In-Store',
+  ONLINE: 'Online',
 };
 
 export default {
