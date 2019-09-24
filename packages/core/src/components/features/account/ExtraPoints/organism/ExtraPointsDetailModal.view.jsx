@@ -78,7 +78,7 @@ class ExtraPointsDetailModal extends React.PureComponent {
         >
           <RichText richTextHtml={activeActivity.activityModalLongDescription} />
         </BodyCopy>
-        <BodyCopy component="div" textAlign="center">
+        <BodyCopy component="div" textAlign="center" className="buttonWrapper">
           <Button
             fill="BLUE"
             buttonVariation="fixed-width"
