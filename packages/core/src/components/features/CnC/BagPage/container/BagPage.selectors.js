@@ -46,6 +46,7 @@ const getBagPageLabels = state => {
     'bagPage',
     'checkout'
   );
+  const sflSuccess = getLabelValue(state.Labels, 'bl_sfl_actionSuccess', 'bagPage', 'checkout');
   return {
     addedToBag,
     checkout,
@@ -60,6 +61,7 @@ const getBagPageLabels = state => {
     myBagButton,
     savedLaterButton,
     emptySflMsg,
+    sflSuccess,
   };
 };
 

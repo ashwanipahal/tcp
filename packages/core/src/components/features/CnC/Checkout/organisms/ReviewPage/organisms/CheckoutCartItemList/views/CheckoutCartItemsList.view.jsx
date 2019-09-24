@@ -4,7 +4,7 @@ import withStyles from '@tcp/core/src/components/common/hoc/withStyles';
 import { BodyCopy, Col, Row, Image } from '@tcp/core/src/components/common/atoms';
 import ReactToolTip from '@tcp/core/src/components/common/atoms/ReactToolTip';
 import cssClassName from '../../../../../../../../../utils/cssClassName';
-import { getDateInformation } from '../../../../../../../../../utils/badge.util';
+import { getTranslateDateInformation } from '../../../../../../../../../utils/utils.web';
 import { getAPIConfig, getIconPath } from '../../../../../../../../../utils/utils';
 import CartItemTile from '../../../../../../CartItemTile/molecules/CartItemTile/views/CartItemTile.view';
 import { getProductDetails } from '../../../../../../CartItemTile/container/CartItemTile.selectors';
@@ -288,6 +288,7 @@ class CheckoutCartItemsList extends React.Component {
     bucketReference,
   }) => {
     const { currencySymbol } = this.props;
+    const bucketReferenceTemp = bucketReference;
     const orderItem = {
       store: currentStore,
       storeAddress: currentStoreAddress,
@@ -312,15 +313,15 @@ class CheckoutCartItemsList extends React.Component {
         ),
     };
     if (bucket[deliveryType]) {
-      bucketReference[deliveryType][currentStore] = bucket[deliveryType][currentStore] || {};
+      bucketReferenceTemp[deliveryType][currentStore] = bucket[deliveryType][currentStore] || {};
       const bucketStore = bucket[deliveryType][currentStore];
       bucketStore[orderType] = bucketStore[orderType] || orderItem;
       bucketStore[orderType].list = bucketStore[orderType].list || [];
       bucketStore[orderType].list.push({ item, currencySymbol });
     } else {
-      bucketReference[deliveryType] = {};
-      bucketReference[deliveryType][currentStore] = {};
-      const bucketStore = bucketReference[deliveryType][currentStore];
+      bucketReferenceTemp[deliveryType] = {};
+      bucketReferenceTemp[deliveryType][currentStore] = {};
+      const bucketStore = bucketReferenceTemp[deliveryType][currentStore];
 
       bucketStore[orderType] = orderItem;
       bucketStore[orderType].list = [];
@@ -331,9 +332,7 @@ class CheckoutCartItemsList extends React.Component {
   renderItems() {
     const { items, currencySymbol } = this.props;
     const apiConfig = getAPIConfig();
-    const localeType = 'en_US'; // apiConfig.siteId + apiConfig.countryKey;
-    const bopisDate = getDateInformation();
-
+    const bopisDate = getTranslateDateInformation('', apiConfig.language);
     /**
      * @var sortedItem - array of items available in the cart checkout are sorted in a
      * way that the BOPIS selected stores are moved to the top in the list than BOSS

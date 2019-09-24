@@ -32,7 +32,6 @@ export class RewardsPointsContainer extends React.PureComponent {
       tableView,
       plccUser,
     } = this.props;
-
     if (tableView) {
       return (
         <RewardsPointsTable

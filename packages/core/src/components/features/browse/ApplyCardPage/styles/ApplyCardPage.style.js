@@ -9,7 +9,7 @@ export default styled.div`
   }
 
   @media ${props => props.theme.mediaQuery.large} {
-    padding-left: ${props => (props.isPLCCModalFlow ? `0px` : `200px`)};
+    padding-left: ${props => (props.isPLCCModalFlow ? `0px` : `277px`)};
   }
 
   .iAgree_terms_conditions {
@@ -84,6 +84,9 @@ export default styled.div`
     font-weight: ${props => props.theme.fonts.fontWeight.normal};
     letter-spacing: 1px;
     text-align: center;
+    @media ${props => props.theme.mediaQuery.medium} {
+      width: 50%;
+    }
   }
 
   .pre-approved-offer-criteria {

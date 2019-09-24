@@ -10,7 +10,7 @@ export default css`
   .padding-left-10 {
     padding-left: 4px;
     @media ${props => props.theme.mediaQuery.smallMax} {
-      width: ${props => props.showOnReviewPage} ? 150px : 'auto';
+      width: ${props => (props.showOnReviewPage ? '150px' : 'auto')};
       display: inline-flex;
     }
   }
@@ -321,6 +321,7 @@ export default css`
   }
   .sflActions {
     text-decoration: underline;
+    cursor: pointer;
   }
   ${props => (props.inheritedStyles ? props.inheritedStyles : '')};
 `;

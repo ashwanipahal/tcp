@@ -1,6 +1,9 @@
 import { css } from 'styled-components';
 
 export default css`
+  @media ${props => props.theme.mediaQuery.mediumMax} {
+    margin-bottom: ${props => props.theme.spacing.ELEM_SPACING.MED};
+  }
   .brand-image {
     width: 83px;
   }
