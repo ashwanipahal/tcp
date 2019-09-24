@@ -66,7 +66,7 @@ export const MessageViewContainer = styled.View`
 export const PersonalInformationContainerView = styled.View`
   width: 100%;
   flex-direction: row;
-  margin-top: ${props => props.theme.spacing.LAYOUT_SPACING.XXS};
+  margin-top: ${props => props.theme.spacing.ELEM_SPACING.XXS};
   margin-left: ${props => props.theme.spacing.LAYOUT_SPACING.XXS};
   margin-right: ${props => props.theme.spacing.LAYOUT_SPACING.XXS};
   margin-bottom: ${props => props.theme.spacing.LAYOUT_SPACING.XXS};
@@ -74,7 +74,7 @@ export const PersonalInformationContainerView = styled.View`
 `;
 
 export const DateContainerView = styled.View`
-  width: 30%;
+  width: 32%;
   padding-right: 15px;
 `;
 

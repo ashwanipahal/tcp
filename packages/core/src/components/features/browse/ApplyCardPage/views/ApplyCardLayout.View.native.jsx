@@ -380,21 +380,20 @@ class ApplyCardLayoutView extends React.PureComponent<Props> {
 
           <StyledBodyCopy
             text={getLabelValue(labels, 'lbl_PLCCForm_dob')}
-            fontSize="fs10"
+            mobilefontSize="fs10"
             color="gray.900"
             paddingLeft="16px"
             paddingTop="10px"
-            paddingBottom="-15px"
             fontFamily="secondary"
             textAlign="left"
-            fontWeight="extrabold"
+            fontWeight="black"
           />
           <PersonalInformationContainerView>
             <DateContainerView>
               <Field
                 bounces={false}
                 component={DropDown}
-                heading="YY"
+                heading="MM"
                 data={months}
                 variation="secondary"
                 dropDownStyle={{ ...dropDownStyle }}
@@ -448,10 +447,10 @@ class ApplyCardLayoutView extends React.PureComponent<Props> {
             <Field
               name="ssnName"
               id="ssnName"
-              label="Last 4 Digits of SSN"
+              label={getLabelValue(labels, 'lbl_PLCCForm_ssn')}
               type="tel"
               component={TextBox}
-              maxLength={20}
+              maxLength={4}
             />
           </NameFieldContainer>
 
