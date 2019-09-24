@@ -24,6 +24,7 @@ exports[`BillingPageContainer should render correctly 1`] = `
   isSameAsShippingChecked={true}
   keepDirtyOnReinitialize={false}
   labels={Object {}}
+  navigation={null}
   onSubmit={[Function]}
   orderHasShipping={true}
   paymentMethodId={null}
@@ -85,6 +86,7 @@ exports[`BillingPageContainer should render correctly if billing data is present
   isSameAsShippingChecked={true}
   keepDirtyOnReinitialize={false}
   labels={Object {}}
+  navigation={null}
   onSubmit={[Function]}
   orderHasShipping={true}
   paymentMethodId={null}
@@ -121,6 +123,7 @@ exports[`BillingPageContainer should render correctly if billing data is present
             "emailAddress": undefined,
             "expMonth": undefined,
             "expYear": undefined,
+            "navigation": null,
           },
         ],
       ],
