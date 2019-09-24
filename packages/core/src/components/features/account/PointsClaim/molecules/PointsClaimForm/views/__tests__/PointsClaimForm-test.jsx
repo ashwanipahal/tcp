@@ -37,7 +37,7 @@ describe('PointsClaimForm component', () => {
     };
 
     const component = shallow(<PointsClaimForm {...props} />);
-    component.setState({ type: 'in-store' });
+    component.setState({ type: 'In-Store' });
     expect(component.find('.image_container')).toHaveLength(1);
   });
 });

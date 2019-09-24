@@ -1,31 +1,5 @@
 import styled from 'styled-components/native';
 
-const InputFieldPhoneNumber = styled.View`
-  margin: ${props => props.theme.spacing.ELEM_SPACING.XL} 0
-    ${props => props.theme.spacing.ELEM_SPACING.MED};
-`;
-
-const StateZipCodeContainer = styled.View`
-  flex: 1;
-  flex-direction: row;
-  height: 72px;
-`;
-
-const CountryContainer = styled.View`
-  margin-top: ${props => props.theme.spacing.ELEM_SPACING.LRG};
-  margin-bottom: ${props => props.theme.spacing.ELEM_SPACING.MED};
-  height: 72px;
-`;
-
-const InputFieldHalf = styled.View`
-  width: 48%;
-  margin-top: ${props => (props.zipCode ? props.theme.spacing.ELEM_SPACING.SM : 0)};
-`;
-
-const Separator = styled.View`
-  width: 4%;
-`;
-
 const SaveButtonWrapper = styled.View`
   margin-top: ${props => props.theme.spacing.ELEM_SPACING.XXL};
 `;
@@ -35,19 +9,8 @@ const CancelButtonWrapper = styled.View`
   margin-bottom: ${props => props.theme.spacing.ELEM_SPACING.MED};
 `;
 
-const SetDefaultShippingWrapper = styled.View`
-  margin-left: ${props => props.theme.spacing.ELEM_SPACING.XXL};
-  margin-right: ${props => props.theme.spacing.ELEM_SPACING.XXL};
-`;
-
-const AddAddressWrapper = styled.View`
-  flex: 1;
-  flex-direction: column;
-  margin-top: ${props => props.theme.spacing.ELEM_SPACING.XS};
-`;
-
 const FieldWrapper = styled.View`
-  margin-bottom: ${props => props.theme.spacing.ELEM_SPACING.MED};
+  margin-top: ${props => props.theme.spacing.ELEM_SPACING.LRG};
 `;
 
 const ImageContainer = styled.View`
@@ -84,13 +47,6 @@ export {
   CancelButtonWrapper,
   dropDownStyle,
   itemStyle,
-  InputFieldHalf,
-  InputFieldPhoneNumber,
-  StateZipCodeContainer,
-  Separator,
-  SetDefaultShippingWrapper,
-  CountryContainer,
-  AddAddressWrapper,
   DropdownWrapper,
   ImageContainer,
   ImageCaption,

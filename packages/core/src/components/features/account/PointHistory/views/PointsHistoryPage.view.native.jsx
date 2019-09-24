@@ -2,6 +2,7 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import { ScrollView } from 'react-native';
 import RichText from '@tcp/core/src/components/common/atoms/RichText';
+import { ViewWithSpacing } from '@tcp/core/src/components/common/atoms/styledWrapper';
 import { getLabelValue } from '@tcp/core/src/utils';
 import { UrlHandler } from '../../../../../utils/utils.app';
 import endpoints from '../../common/externalEndpoints';
@@ -12,7 +13,6 @@ import {
   contentHeight,
   StyledAnchorWrapper,
   AnchorLeftMargin,
-  PointsHistoryWrapper,
 } from '../styles/PointsHistoryPage.view.style.native';
 
 /**
@@ -23,7 +23,7 @@ export const PointsHistoryPageView = props => {
   const { labels, richTextContent, accountLabels, navigation } = props;
   return (
     <ScrollView showsVerticalScrollIndicator={false} keyboardShouldPersistTaps="handled">
-      <PointsHistoryWrapper>
+      <ViewWithSpacing spacingStyles="margin-LRG">
         <PointsHistoryList view="edit" labels={labels} showFullHistory />
         <RichTextWrapper dataLocator="points_history_rte">
           <RichText source={{ html: richTextContent }} style={contentHeight} />
@@ -67,7 +67,7 @@ export const PointsHistoryPageView = props => {
             />
           </AnchorLeftMargin>
         </StyledAnchorWrapper>
-      </PointsHistoryWrapper>
+      </ViewWithSpacing>
     </ScrollView>
   );
 };

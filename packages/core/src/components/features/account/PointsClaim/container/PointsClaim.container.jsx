@@ -21,7 +21,7 @@ import internalEndpoints from '../../common/internalEndpoints';
 
 export class PontsClaimContainer extends PureComponent {
   transactionTypesMap = [
-    { id: TRANSACTION_TYPES.IN_STORE, displayName: 'In Store' },
+    { id: TRANSACTION_TYPES.IN_STORE, displayName: 'In-Store' },
     { id: TRANSACTION_TYPES.ONLINE, displayName: 'Online' },
   ];
 
@@ -31,13 +31,6 @@ export class PontsClaimContainer extends PureComponent {
       this.backHandler();
     }
   }
-
-  /*   componentWillUnmount() {
-    const { errorMessage, resetStateAction } = this.props;
-    if (errorMessage) {
-      resetStateAction();
-    }
-  } */
 
   /**
    * @function submitClaim

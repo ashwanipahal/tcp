@@ -7,10 +7,6 @@ export const RichTextWrapper = styled.View`
   overflow: hidden;
 `;
 
-export const PointsHistoryWrapper = styled.View`
-  margin: ${props => props.theme.spacing.ELEM_SPACING.SM};
-`;
-
 export const contentHeight = { minHeight: 600 };
 
 export const StyledAnchorWrapper = styled.View`

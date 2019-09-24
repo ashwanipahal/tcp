@@ -46,17 +46,16 @@ export class PointsClaimForm extends PureComponent {
    * @function fieldFormater
    * @desc This is a function to format input fields
    */
-  fieldFormater = (value, name) => {
+
+  fieldFormater = (num, name) => {
+    const { dispatch } = this.props;
     const { STORE_NUMBER, TRANSACTION_NUMBER } = fieldNames;
     const minLimit = name === STORE_NUMBER || name === TRANSACTION_NUMBER ? 4 : 2;
-    if (Number.isNaN(value) || value === '') {
-      return value;
-    }
-    let val = value;
-    while (val.length < minLimit) {
-      val = `0${val}`;
-    }
-    return val;
+    const zero = minLimit - num.toString().length + 1;
+    let val = num;
+    val = Array(+(zero > 0 && zero)).join('0') + num;
+    // TODO: Remove settimout and find a better way to update values
+    setTimeout(() => dispatch(change('PointsClaimForm', name, val)));
   };
 
   render() {
@@ -127,7 +126,7 @@ export class PointsClaimForm extends PureComponent {
                 component={TextBox}
                 dataLocator="points-claim-storenumber"
                 type="number"
-                normalize={e => this.fieldFormater(e, fieldNames.STORE_NUMBER)}
+                onBlur={val => this.fieldFormater(val, fieldNames.STORE_NUMBER)}
               />
             </FieldWrapper>
             <FieldWrapper>
@@ -147,7 +146,7 @@ export class PointsClaimForm extends PureComponent {
                 component={TextBox}
                 dataLocator="points-claim-registernumber"
                 type="number"
-                normalize={e => this.fieldFormater(e, fieldNames.REGISTER_NUMBER)}
+                onBlur={val => this.fieldFormater(val, fieldNames.REGISTER_NUMBER)}
               />
             </FieldWrapper>
             <FieldWrapper>
@@ -162,7 +161,7 @@ export class PointsClaimForm extends PureComponent {
                 component={TextBox}
                 dataLocator="points-claim-transactionnumber"
                 type="number"
-                normalize={e => this.fieldFormater(e, fieldNames.TRANSACTION_NUMBER)}
+                onBlur={val => this.fieldFormater(val, fieldNames.TRANSACTION_NUMBER)}
               />
             </FieldWrapper>
           </>

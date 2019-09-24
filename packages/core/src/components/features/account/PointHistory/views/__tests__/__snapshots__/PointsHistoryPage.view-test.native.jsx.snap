@@ -5,7 +5,9 @@ exports[`PointHistoryPage component should renders correctly 1`] = `
   keyboardShouldPersistTaps="handled"
   showsVerticalScrollIndicator={false}
 >
-  <Styled(View)>
+  <Styled(View)
+    spacingStyles="margin-LRG"
+  >
     <Connect(PointsHistoryContainer)
       labels={Object {}}
       showFullHistory={true}

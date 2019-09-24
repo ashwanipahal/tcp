@@ -1,7 +1,7 @@
 import React from 'react';
 import { createStackNavigator } from 'react-navigation';
-import PointsPage from '../screens/PointsPage';
-import PointsHistory from '../screens/PointsHistory';
+import PointsPage from '@tcp/core/src/components/features/account/PointsClaim';
+import PointsHistory from '@tcp/core/src/components/features/account/PointHistory';
 import LoginSync from '../screens/LoginSync';
 import NavBarIcon from '../components/common/atoms/NavBarIcon';
 import Account from '../components/features/account/account';
