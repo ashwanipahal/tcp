@@ -64,7 +64,7 @@ exports[`ProfileInformation component should render correctly 1`] = `
     </Styled(Col)>
   </Styled(Row)>
   <Styled(Row)
-    className="hideOnMobile elem-pt-LRG elem-pb-LRG"
+    className="hide-on-mobile elem-pt-LRG elem-pb-LRG"
     fullBleed={true}
   >
     <Styled(Col)
@@ -94,6 +94,7 @@ exports[`ProfileInformation component should render correctly 1`] = `
         className="elem-mb-MED"
         color="text.primary"
         component="p"
+        data-locator="mypreference-Myplacerewardpreferheade"
         fontFamily="secondary"
         fontSize="fs16"
         fontWeight="extrabold"
@@ -108,6 +109,7 @@ exports[`ProfileInformation component should render correctly 1`] = `
         className={null}
         color="text.primary"
         component="p"
+        data-locator="mypreference-Myplacerewardprefertext"
         fontFamily="secondary"
         fontSize="fs16"
         fontWeight="regular"
@@ -134,7 +136,7 @@ exports[`ProfileInformation component should render correctly 1`] = `
       </Styled(BodyCopy)>
     </Styled(Col)>
     <Styled(Col)
-      className="elem-mb-XL"
+      className="hide-on-mobile elem-mb-XL"
       colSize={
         Object {
           "large": 1,
@@ -326,6 +328,7 @@ exports[`ProfileInformation component should render correctly 1`] = `
                   "withComponent": [Function],
                 }
               }
+              data-locator="mypreference-apptcpcheckbox"
               dataLocator="InputCheckbox"
               name="primary"
             >
@@ -333,6 +336,7 @@ exports[`ProfileInformation component should render correctly 1`] = `
                 className={null}
                 color="text.primary"
                 component="span"
+                data-locator="mypreference-texttcpcheckbox"
                 fontFamily="secondary"
                 fontSize="fs14"
                 fontWeight="regular"
@@ -476,6 +480,7 @@ exports[`ProfileInformation component should render correctly 1`] = `
                   "withComponent": [Function],
                 }
               }
+              data-locator="mypreference-appgymcheckbox"
               dataLocator="InputCheckbox"
               name="primary"
             >
@@ -483,6 +488,7 @@ exports[`ProfileInformation component should render correctly 1`] = `
                 className={null}
                 color="text.primary"
                 component="span"
+                data-locator="mypreference-textgymcheckbox"
                 fontFamily="secondary"
                 fontSize="fs14"
                 fontWeight="regular"
@@ -657,6 +663,7 @@ exports[`ProfileInformation component should render correctly 1`] = `
                   "withComponent": [Function],
                 }
               }
+              data-locator="mypreference-apptcpcheckbox"
               dataLocator="InputCheckbox"
               name="primary"
             >
@@ -664,6 +671,7 @@ exports[`ProfileInformation component should render correctly 1`] = `
                 className={null}
                 color="text.primary"
                 component="span"
+                data-locator="mypreference-texttcpcheckbox"
                 fontFamily="secondary"
                 fontSize="fs14"
                 fontWeight="regular"
@@ -806,6 +814,7 @@ exports[`ProfileInformation component should render correctly 1`] = `
                   "withComponent": [Function],
                 }
               }
+              data-locator="mypreference-appgymcheckbox"
               dataLocator="InputCheckbox"
               name="primary"
             >
@@ -813,6 +822,7 @@ exports[`ProfileInformation component should render correctly 1`] = `
                 className={null}
                 color="text.primary"
                 component="span"
+                data-locator="mypreference-textgymcheckbox"
                 fontFamily="secondary"
                 fontSize="fs14"
                 fontWeight="regular"
@@ -857,6 +867,7 @@ exports[`ProfileInformation component should render correctly 1`] = `
         <Styled(Anchor)
           anchorVariation="primary"
           className="favtPageLink"
+          data-locator="myprefernce-progdetaillink"
           fontSizeVariation="large"
           target="_blank"
           underline={true}
@@ -867,6 +878,7 @@ exports[`ProfileInformation component should render correctly 1`] = `
         <Styled(Anchor)
           anchorVariation="primary"
           className="favtPageLink"
+          data-locator="mypreference-tandclink"
           fontSizeVariation="large"
           target="_blank"
           underline={true}

@@ -20,9 +20,7 @@ exports[`ButtonList component renders correctly if  cards present and addNewCCSt
       lineHeight="normal"
       link={null}
       textAlign="left"
-    >
-      Payment Method
-    </Styled(BodyCopy)>
+    />
     <Styled(PaymentMethods)
       className="elem-mb-LRG"
       labels={
@@ -87,7 +85,7 @@ exports[`ButtonList component renders correctly if  cards present and addNewCCSt
                       "defaultInd": false,
                     }
                   }
-                  cardNumber="ending in 3743"
+                  cardNumber="undefined3743"
                   isDefault={false}
                   labels={
                     Object {
@@ -112,7 +110,7 @@ exports[`ButtonList component renders correctly if  cards present and addNewCCSt
                   }
                   selectedValue={82596}
                 />,
-                "title": "ending in 3743 ",
+                "title": "undefined3743 ",
                 "value": 82596,
               },
               Object {
@@ -123,10 +121,8 @@ exports[`ButtonList component renders correctly if  cards present and addNewCCSt
                   fill="BLACK"
                   fullWidth={true}
                   onClick={[Function]}
-                >
-                  ADD A NEW CREDIT CARD
-                </ForwardRef>,
-                "title": "+ Add a new Credit Card",
+                />,
+                "title": undefined,
                 "value": "",
               },
             ]
@@ -138,6 +134,7 @@ exports[`ButtonList component renders correctly if  cards present and addNewCCSt
     <AddNewCCForm
       cardList={null}
       cardType={null}
+      creditFieldLabels={Object {}}
       cvvError="Enter correct code"
       cvvInfo={
         <ForwardRef
@@ -250,9 +247,7 @@ exports[`ButtonList component renders correctly if  no cards present  1`] = `
       lineHeight="normal"
       link={null}
       textAlign="left"
-    >
-      Payment Method
-    </Styled(BodyCopy)>
+    />
     <Styled(PaymentMethods)
       className="elem-mb-LRG"
       labels={
@@ -280,6 +275,7 @@ exports[`ButtonList component renders correctly if  no cards present  1`] = `
     <AddNewCCForm
       cardList={null}
       cardType={null}
+      creditFieldLabels={Object {}}
       cvvError="Enter correct code"
       cvvInfo={
         <ForwardRef
@@ -392,9 +388,7 @@ exports[`ButtonList component renders correctly if payment method is diff 1`] = 
       lineHeight="normal"
       link={null}
       textAlign="left"
-    >
-      Payment Method
-    </Styled(BodyCopy)>
+    />
     <Styled(PaymentMethods)
       className="elem-mb-LRG"
       labels={
@@ -456,9 +450,7 @@ exports[`ButtonList component renders correctly without props 1`] = `
       lineHeight="normal"
       link={null}
       textAlign="left"
-    >
-      Payment Method
-    </Styled(BodyCopy)>
+    />
     <Styled(PaymentMethods)
       className="elem-mb-LRG"
       labels={
@@ -490,9 +482,7 @@ exports[`ButtonList component renders correctly without props 1`] = `
       dataLocator="billing-payment-bilingcreditcardlabel"
       textAlign="left"
       variant="listMenu"
-    >
-      Select from card on file
-    </Styled(Heading)>
+    />
     <Styled(Row)
       className="elem-mb-XL elem-mt-MED"
       fullBleed={true}
@@ -533,7 +523,7 @@ exports[`ButtonList component renders correctly without props 1`] = `
                       "defaultInd": false,
                     }
                   }
-                  cardNumber="ending in 3743"
+                  cardNumber="undefined3743"
                   isDefault={false}
                   labels={
                     Object {
@@ -558,7 +548,7 @@ exports[`ButtonList component renders correctly without props 1`] = `
                   }
                   selectedValue={82596}
                 />,
-                "title": "ending in 3743 ",
+                "title": "undefined3743 ",
                 "value": 82596,
               },
               Object {
@@ -569,10 +559,8 @@ exports[`ButtonList component renders correctly without props 1`] = `
                   fill="BLACK"
                   fullWidth={true}
                   onClick={[Function]}
-                >
-                  ADD A NEW CREDIT CARD
-                </ForwardRef>,
-                "title": "+ Add a new Credit Card",
+                />,
+                "title": undefined,
                 "value": "",
               },
             ]
@@ -605,9 +593,7 @@ exports[`ButtonList component renders correctly without props 1`] = `
         lineHeight="normal"
         link={null}
         textAlign="left"
-      >
-        Card Details
-      </Styled(BodyCopy)>
+      />
       <Styled(Anchor)
         anchorVariation="primary"
         className="billing-payment-edit"
@@ -615,9 +601,7 @@ exports[`ButtonList component renders correctly without props 1`] = `
         fontSizeVariation="medium"
         to="/#"
         underline={true}
-      >
-        Edit
-      </Styled(Anchor)>
+      />
     </Styled(BodyCopy)>
     <Styled(Heading)
       className="paymentMethodHeading"
@@ -626,9 +610,7 @@ exports[`ButtonList component renders correctly without props 1`] = `
       dataLocator="billing-payment-method"
       textAlign="left"
       variant="listMenu"
-    >
-      Payment Method
-    </Styled(Heading)>
+    />
     <Styled(Row)
       fullBleed={true}
     >
@@ -658,7 +640,7 @@ exports[`ButtonList component renders correctly without props 1`] = `
               "defaultInd": false,
             }
           }
-          cardNumber="ending in 3743"
+          cardNumber="undefined3743"
         />
       </Styled(Col)>
       <Styled(Col)
@@ -832,7 +814,6 @@ exports[`ButtonList component renders correctly without props 1`] = `
           enableSuccessCheck={false}
           id="cvvCode"
           name="cvvCode"
-          placeholder="CVV Code"
           showSuccessCheck={false}
         />
         <span
@@ -1012,9 +993,7 @@ exports[`ButtonList component renders correctly without props 1`] = `
           lineHeight="normal"
           link={null}
           textAlign="left"
-        >
-          Set as default payment method
-        </Styled(BodyCopy)>
+        />
       </Field>
     </Styled(Row)>
     <Styled(Row)
@@ -1028,9 +1007,7 @@ exports[`ButtonList component renders correctly without props 1`] = `
         dataLocator="billing-payment-billingAddress"
         textAlign="left"
         variant="listMenu"
-      >
-        Billing Address
-      </Styled(Heading)>
+      />
     </Styled(Row)>
     <Styled(Row)
       className="elem-mb-XL"
@@ -1091,9 +1068,7 @@ exports[`ButtonList component renders correctly without props 2`] = `
       lineHeight="normal"
       link={null}
       textAlign="left"
-    >
-      Payment Method
-    </Styled(BodyCopy)>
+    />
     <Styled(PaymentMethods)
       className="elem-mb-LRG"
       labels={
@@ -1125,9 +1100,7 @@ exports[`ButtonList component renders correctly without props 2`] = `
       dataLocator="billing-payment-bilingcreditcardlabel"
       textAlign="left"
       variant="listMenu"
-    >
-      Select from card on file
-    </Styled(Heading)>
+    />
     <Styled(Row)
       className="elem-mb-XL elem-mt-MED"
       fullBleed={true}
@@ -1168,7 +1141,7 @@ exports[`ButtonList component renders correctly without props 2`] = `
                       "defaultInd": false,
                     }
                   }
-                  cardNumber="ending in 3743"
+                  cardNumber="undefined3743"
                   isDefault={false}
                   labels={
                     Object {
@@ -1193,7 +1166,7 @@ exports[`ButtonList component renders correctly without props 2`] = `
                   }
                   selectedValue={82596}
                 />,
-                "title": "ending in 3743 ",
+                "title": "undefined3743 ",
                 "value": 82596,
               },
               Object {
@@ -1204,10 +1177,8 @@ exports[`ButtonList component renders correctly without props 2`] = `
                   fill="BLACK"
                   fullWidth={true}
                   onClick={[Function]}
-                >
-                  ADD A NEW CREDIT CARD
-                </ForwardRef>,
-                "title": "+ Add a new Credit Card",
+                />,
+                "title": undefined,
                 "value": "",
               },
             ]
@@ -1240,9 +1211,7 @@ exports[`ButtonList component renders correctly without props 2`] = `
         lineHeight="normal"
         link={null}
         textAlign="left"
-      >
-        Card Details
-      </Styled(BodyCopy)>
+      />
       <Styled(Anchor)
         anchorVariation="primary"
         className="billing-payment-edit"
@@ -1250,9 +1219,7 @@ exports[`ButtonList component renders correctly without props 2`] = `
         fontSizeVariation="medium"
         to="/#"
         underline={true}
-      >
-        Edit
-      </Styled(Anchor)>
+      />
     </Styled(BodyCopy)>
     <Styled(Heading)
       className="paymentMethodHeading"
@@ -1261,9 +1228,7 @@ exports[`ButtonList component renders correctly without props 2`] = `
       dataLocator="billing-payment-method"
       textAlign="left"
       variant="listMenu"
-    >
-      Payment Method
-    </Styled(Heading)>
+    />
     <Styled(Row)
       fullBleed={true}
     >
@@ -1293,7 +1258,7 @@ exports[`ButtonList component renders correctly without props 2`] = `
               "defaultInd": false,
             }
           }
-          cardNumber="ending in 3743"
+          cardNumber="undefined3743"
         />
       </Styled(Col)>
       <Styled(Col)
@@ -1467,7 +1432,6 @@ exports[`ButtonList component renders correctly without props 2`] = `
           enableSuccessCheck={false}
           id="cvvCode"
           name="cvvCode"
-          placeholder="CVV Code"
           showSuccessCheck={false}
         />
         <span
@@ -1647,9 +1611,7 @@ exports[`ButtonList component renders correctly without props 2`] = `
           lineHeight="normal"
           link={null}
           textAlign="left"
-        >
-          Set as default payment method
-        </Styled(BodyCopy)>
+        />
       </Field>
     </Styled(Row)>
     <Styled(Row)
@@ -1663,9 +1625,7 @@ exports[`ButtonList component renders correctly without props 2`] = `
         dataLocator="billing-payment-billingAddress"
         textAlign="left"
         variant="listMenu"
-      >
-        Billing Address
-      </Styled(Heading)>
+      />
     </Styled(Row)>
     <Styled(Row)
       className="elem-mb-XL"

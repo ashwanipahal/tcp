@@ -2,7 +2,6 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import { Field, change } from 'redux-form';
 import CreditCardFields from '../../../../../../common/molecules/CreditCardFields';
-import { getLabelValue } from '../../../../../../../utils';
 import InputCheckbox from '../../../../../../common/atoms/InputCheckbox';
 import BodyCopy from '../../../../../../common/atoms/BodyCopy';
 import Row from '../../../../../../common/atoms/Row';
@@ -54,6 +53,7 @@ class AddNewCCForm extends React.PureComponent {
     cardList: PropTypes.shape({}),
     isSaveToAccountChecked: PropTypes.bool,
     isExpirationRequired: PropTypes.bool,
+    creditFieldLabels: PropTypes.shape({}),
   };
 
   static defaultProps = {
@@ -64,15 +64,16 @@ class AddNewCCForm extends React.PureComponent {
     cardList: null,
     isSaveToAccountChecked: true,
     isExpirationRequired: true,
+    creditFieldLabels: {},
   };
 
   getCreditLabelValues = () => {
-    const { labels } = this.props;
+    const { creditFieldLabels } = this.props;
     return {
-      creditCardNumber: getLabelValue(labels, 'lbl_billing_cardNumber'),
-      expMonth: getLabelValue(labels, 'lbl_billing_expMonth'),
-      expYear: getLabelValue(labels, 'lbl_billing_expYear'),
-      cvvCode: getLabelValue(labels, 'lbl_billing_cvvCode'),
+      creditCardNumber: creditFieldLabels.cardNumber,
+      expMonth: creditFieldLabels.expMonth,
+      expYear: creditFieldLabels.expYear,
+      cvvCode: creditFieldLabels.cvvCode,
     };
   };
 
@@ -98,7 +99,7 @@ class AddNewCCForm extends React.PureComponent {
               onChange={this.onSaveToAccountChange}
             >
               <BodyCopy fontSize="fs16" fontFamily="secondary">
-                {getLabelValue(labels, 'lbl_billing_saveToAccount', 'billing', 'checkout')}
+                {labels.saveToAccount}
               </BodyCopy>
             </Field>
           </Col>
@@ -113,7 +114,7 @@ class AddNewCCForm extends React.PureComponent {
               disabled={!cardList && !isSaveToAccountChecked}
             >
               <BodyCopy fontSize="fs16" fontFamily="secondary">
-                {getLabelValue(labels, 'lbl_billing_defaultPayment', 'billing', 'checkout')}
+                {labels.defaultPayment}
               </BodyCopy>
             </Field>
           </Col>

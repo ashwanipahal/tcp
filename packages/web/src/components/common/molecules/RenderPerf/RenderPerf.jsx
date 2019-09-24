@@ -35,7 +35,7 @@ export function Measure({ name, start, end }) {
   // For client-side execution
   useEffect(() => {
     try {
-      if (isEnabled && !entryExists(name)) {
+      if (isEnabled && !entryExists(name) && typeof performance !== 'undefined') {
         performance.measure(name, start, end);
       }
     } catch (err) {
@@ -45,7 +45,7 @@ export function Measure({ name, start, end }) {
 
   // For server-side execution
   // NOTE: JSON.stringify used to properly quote the arguments
-  return isEnabled ? (
+  return isEnabled && typeof performance !== 'undefined' ? (
     <ServerOnly>
       <Safe.script>
         {`
