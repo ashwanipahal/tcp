@@ -377,13 +377,11 @@ export const configureInternalNavigationFromCMSUrl = url => {
  * @description this method invokes the parameter method received when respective
  * keybord key is triggered
  */
-
 export const handleGenericKeyDown = (event, key, method) => {
   if (event.keyCode === key) {
     method();
   }
 };
-
 const getAPIInfoFromEnv = (apiSiteInfo, processEnv, siteId) => {
   const country = siteId && siteId.toUpperCase();
   const apiEndpoint = processEnv.RWD_WEB_API_DOMAIN || ''; // TO ensure relative URLs for MS APIs
@@ -410,7 +408,6 @@ const getAPIInfoFromEnv = (apiSiteInfo, processEnv, siteId) => {
     paypalEnv: processEnv.RWD_WEB_PAYPAL_ENV,
   };
 };
-
 const getGraphQLApiFromEnv = (apiSiteInfo, processEnv, relHostname) => {
   const graphQlEndpoint = processEnv.RWD_WEB_GRAPHQL_API_ENDPOINT || relHostname;
   return {
@@ -420,19 +417,16 @@ const getGraphQLApiFromEnv = (apiSiteInfo, processEnv, relHostname) => {
     graphql_api_key: processEnv.RWD_WEB_GRAPHQL_API_KEY || '',
   };
 };
-
 /*
  * @method numericStringToBool
  * @description this method returns the bool value of string numeric passed
  * @param {string} str the  string numeric value
  */
 export const numericStringToBool = str => !!+str;
-
 // Parse boolean out of string true|false
 export const parseBoolean = bool => {
   return bool === true || bool === '1' || (bool || '').toUpperCase() === 'TRUE';
 };
-
 /**
  *
  * @param {object} bossDisabledFlags carries the boss disability flags -
@@ -444,7 +438,6 @@ export const isBossProduct = bossDisabledFlags => {
   const { bossCategoryDisabled, bossProductDisabled } = bossDisabledFlags;
   return !(numericStringToBool(bossCategoryDisabled) || numericStringToBool(bossProductDisabled));
 };
-
 /**
  * @function isBopsProduct
  * @param {*} isUSStore
@@ -464,7 +457,6 @@ export const isBopisProduct = (isUSStore, product) => {
   }
   return !isOnlineOnly;
 };
-
 export const createAPIConfig = resLocals => {
   // TODO - Get data from env config - Brand, MellisaKey, BritverifyId, AcquisitionId, Domains, Asset Host, Unbxd Domain;
   // TODO - use isMobile and cookie as well..
@@ -494,7 +486,6 @@ export const createAPIConfig = resLocals => {
     language,
   };
 };
-
 export const viewport = () => {
   if (!window) return null;
 
@@ -504,7 +495,6 @@ export const viewport = () => {
     large: window.matchMedia(mediaQuery.large).matches,
   };
 };
-
 export default {
   importGraphQLClientDynamically,
   importGraphQLQueriesDynamically,
