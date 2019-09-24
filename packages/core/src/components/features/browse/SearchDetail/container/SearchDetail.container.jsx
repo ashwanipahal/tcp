@@ -115,32 +115,56 @@ class SearchDetailContainer extends React.PureComponent {
 
     return (
       <>
-        {products && products.length > 0 ? (
+        {isLoadingMore === true ? (
+          <>
+            {products && products.length > 0 ? (
+              <SearchDetail
+                filters={filters}
+                formValues={formValues}
+                filtersLength={filtersLength}
+                getProducts={getProducts}
+                isLoadingMore={isLoadingMore}
+                initialValues={initialValues}
+                onSubmit={onSubmit}
+                products={products}
+                productsBlock={productsBlock}
+                totalProductsCount={totalProductsCount}
+                labels={labels}
+                labelsFilter={labelsFilter}
+                slpLabels={slpLabels}
+                searchedText={searchedText}
+                sortLabels={sortLabels}
+                searchResultSuggestions={searchResultSuggestions}
+                {...otherProps}
+              />
+            ) : (
+              <NoResponseSearchDetail
+                filters={filters}
+                formValues={formValues}
+                filtersLength={filtersLength}
+                getProducts={getProducts}
+                initialValues={initialValues}
+                onSubmit={onSubmit}
+                products={products}
+                productsBlock={productsBlock}
+                totalProductsCount={totalProductsCount}
+                labels={labels}
+                labelsFilter={labelsFilter}
+                slpLabels={slpLabels}
+                searchedText={searchedText}
+                sortLabels={sortLabels}
+                searchResultSuggestions={searchResultSuggestions}
+                {...otherProps}
+              />
+            )}
+          </>
+        ) : (
           <SearchDetail
             filters={filters}
             formValues={formValues}
             filtersLength={filtersLength}
             getProducts={getProducts}
             isLoadingMore={isLoadingMore}
-            initialValues={initialValues}
-            onSubmit={onSubmit}
-            products={products}
-            productsBlock={productsBlock}
-            totalProductsCount={totalProductsCount}
-            labels={labels}
-            labelsFilter={labelsFilter}
-            slpLabels={slpLabels}
-            searchedText={searchedText}
-            sortLabels={sortLabels}
-            searchResultSuggestions={searchResultSuggestions}
-            {...otherProps}
-          />
-        ) : (
-          <NoResponseSearchDetail
-            filters={filters}
-            formValues={formValues}
-            filtersLength={filtersLength}
-            getProducts={getProducts}
             initialValues={initialValues}
             onSubmit={onSubmit}
             products={products}

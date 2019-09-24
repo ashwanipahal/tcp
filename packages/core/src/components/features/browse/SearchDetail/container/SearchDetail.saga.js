@@ -21,7 +21,7 @@ export function* fetchSlpProducts({ payload }) {
   try {
     const { searchQuery, asPath, formData } = payload;
     const state = yield select();
-    yield put(setSlpLoadingState({ isLoadingMore: true }));
+    yield put(setSlpLoadingState({ isLoadingMore: false }));
     yield put(setSlpSearchTerm({ searchTerm: searchQuery }));
 
     const reqObj = operatorInstance.getProductsListingFilters({
@@ -32,7 +32,7 @@ export function* fetchSlpProducts({ payload }) {
     });
     const res = yield call(instanceProductListing.getProducts, reqObj, state);
     yield put(setListingFirstProductsPage({ ...res }));
-    yield put(setSlpLoadingState({ isLoadingMore: false }));
+    yield put(setSlpLoadingState({ isLoadingMore: true }));
   } catch (err) {
     logger.error(err);
   }

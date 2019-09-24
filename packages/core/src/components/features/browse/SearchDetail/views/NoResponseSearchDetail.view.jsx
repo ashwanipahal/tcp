@@ -26,7 +26,6 @@ class NoResponseSearchDetailView extends React.PureComponent {
 
   redirectToSearchPage = () => {
     // redirect to search page integration pending
-    console.log('redirectToSearchPage');
   };
 
   changeSearchText = e => {
@@ -58,7 +57,12 @@ class NoResponseSearchDetailView extends React.PureComponent {
       <div className={className}>
         <Row className="search-by-keywords-container">
           <Col colSize={{ small: 6, medium: 8, large: 12 }}>
-            <BodyCopy fontSize="fs14" component="div" fontFamily="secondary" fontWeight="regular">
+            <BodyCopy
+              fontSize={['fs16', 'fs14', 'fs14']}
+              component="div"
+              fontFamily="secondary"
+              fontWeight="regular"
+            >
               {slpLabels.lbl_searched_for}
               <span className="empty-searched-label">{` "${searchedText}"`}</span>
             </BodyCopy>
@@ -68,13 +72,13 @@ class NoResponseSearchDetailView extends React.PureComponent {
           <Col colSize={{ small: 6, medium: 8, large: 12 }}>
             <BodyCopy
               component="div"
-              fontSize="fs32"
+              fontSize={['fs16', 'fs32', 'fs32']}
               fontFamily="secondary"
               fontWeight="semibold"
               textAlign="center"
             >
               {slpLabels.lbl_nothing_matched}
-              <span className="searched-label">{` "${searchedText}"`}</span>
+              <span className="empty-searched-label-title">{` "${searchedText}"`}</span>
             </BodyCopy>
           </Col>
         </Row>
@@ -82,7 +86,7 @@ class NoResponseSearchDetailView extends React.PureComponent {
           <Row className="empty-search-result-suggestion">
             <Col colSize={{ small: 6, medium: 8, large: 12 }}>
               <BodyCopy
-                fontSize="fs32"
+                fontSize={['fs16', 'fs32', 'fs32']}
                 component="div"
                 fontFamily="secondary"
                 fontWeight="semibold"
@@ -103,7 +107,7 @@ class NoResponseSearchDetailView extends React.PureComponent {
         <Row className="empty-search-inputBox-container-wrapper">
           <Col className="empty-search-inputBox-col" colSize={{ small: 6, medium: 8, large: 3 }}>
             <BodyCopy
-              fontSize="fs14"
+              fontSize={['fs16', 'fs32', 'fs32']}
               fontFamily="secondary"
               fontWeight="regular"
               className="empty-search-inputBox-container"
@@ -174,25 +178,46 @@ class NoResponseSearchDetailView extends React.PureComponent {
           <Col colSize={{ small: 6, medium: 8, large: 12 }}>
             <BodyCopy fontSize="fs16" component="div" fontFamily="secondary" textAlign="center">
               <BodyCopy
-                fontSize="fs16"
+                fontSize={['fs12', 'fs16', 'fs16']}
                 component="div"
                 textAlign="center"
                 fontWeight="black"
                 className="empty-search-tips-title"
+                fontFamily="secondary"
               >
                 {slpLabels.lbl_tips}
               </BodyCopy>
               <BodyCopy className="empty-search-tips-items">
-                <BodyCopy fontSize="fs16" textAlign="center">
+                <BodyCopy
+                  fontSize={['fs12', 'fs16', 'fs16']}
+                  color="gray.1000"
+                  fontFamily="secondary"
+                  textAlign="center"
+                >
                   {slpLabels.lbl_check_your_spelling}
                 </BodyCopy>
-                <BodyCopy fontSize="fs16" textAlign="center">
+                <BodyCopy
+                  fontSize={['fs12', 'fs16', 'fs16']}
+                  color="gray.1000"
+                  fontFamily="secondary"
+                  textAlign="center"
+                >
                   {slpLabels.lbl_simplified_keywords}
                 </BodyCopy>
-                <BodyCopy fontSize="fs16" textAlign="center">
+                <BodyCopy
+                  fontSize={['fs12', 'fs16', 'fs16']}
+                  color="gray.1000"
+                  fontFamily="secondary"
+                  textAlign="center"
+                >
                   {slpLabels.lbl_try_searching}
                 </BodyCopy>
-                <BodyCopy fontSize="fs16" textAlign="center">
+                <BodyCopy
+                  fontSize={['fs12', 'fs16', 'fs16']}
+                  color="gray.1000"
+                  fontFamily="secondary"
+                  textAlign="center"
+                >
                   {slpLabels.lbl_narrow_searches}
                 </BodyCopy>
               </BodyCopy>
