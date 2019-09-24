@@ -485,6 +485,9 @@ exports[`ProductAddToBagVanilla should render correctly should match snapshot 1`
           onClick={[Function]}
           type="submit"
         />
+        <Measure
+          name="render_cart_cta"
+        />
       </div>
     </Styled(Col)>
   </Styled(Row)>
@@ -1004,6 +1007,9 @@ exports[`ProductAddToBagVanilla should render correctly should match snapshot wi
           className="add-to-bag-button"
           onClick={[Function]}
           type="submit"
+        />
+        <Measure
+          name="render_cart_cta"
         />
       </div>
     </Styled(Col)>

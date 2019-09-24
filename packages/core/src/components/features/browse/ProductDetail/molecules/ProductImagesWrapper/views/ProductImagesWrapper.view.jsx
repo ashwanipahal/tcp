@@ -19,7 +19,7 @@ class ProductImageWrapper extends React.Component {
   }
 
   render() {
-    const { productName, images, isZoomEnabled, isThumbnailListVisible } = this.props;
+    const { productName, images, isZoomEnabled, isThumbnailListVisible, pdpLabels } = this.props;
     const { isFullSizeModalOpen } = this.state;
     const isMobile =
       ExecutionEnvironment.canUseDOM && document.body.offsetWidth < breakpoints.values.sm;
@@ -34,6 +34,7 @@ class ProductImageWrapper extends React.Component {
             isZoomEnabled={isZoomEnabled}
             onCloseClick={this.handleShowHideFullSizeModalClick}
             isFullSizeModalOpen={isFullSizeModalOpen}
+            pdpLabels={pdpLabels}
           />
         ) : null}
         {isFullSizeModalOpen &&
@@ -67,6 +68,9 @@ ProductImageWrapper.propTypes = {
       superSizeImageUrl: PropTypes.string.isRequired,
     })
   ).isRequired,
+  pdpLabels: PropTypes.shape({
+    fullSize: PropTypes.string.isRequired,
+  }).isRequired,
 
   /**
    * Flags if we should show big size images, instead of regular size

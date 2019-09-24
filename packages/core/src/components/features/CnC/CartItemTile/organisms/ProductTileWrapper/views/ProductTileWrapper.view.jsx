@@ -185,7 +185,7 @@ class ProductTileWrapper extends React.PureComponent<props> {
       bagLabels,
       labels,
       pageView,
-      removeCartItem,
+      confirmRemoveCartItem,
       isUserLoggedIn,
       isPlcc,
       sflItemsCount,
@@ -240,7 +240,11 @@ class ProductTileWrapper extends React.PureComponent<props> {
           {!isBagPageSflSection && isSoldOut && (
             <RemoveSoldOut
               pageView={pageView}
-              labelForRemove={this.getRemoveString(labels, removeCartItem, getUnavailableOOSItems)}
+              labelForRemove={this.getRemoveString(
+                labels,
+                confirmRemoveCartItem,
+                getUnavailableOOSItems
+              )}
             />
           )}
           {!isBagPageSflSection && isUnavailable && (
@@ -274,7 +278,7 @@ ProductTileWrapper.propTypes = {
   orderItems: PropTypes.shape([]).isRequired,
   sflItems: PropTypes.shape([]).isRequired,
   labels: PropTypes.shape({}).isRequired,
-  removeCartItem: PropTypes.func.isRequired,
+  confirmRemoveCartItem: PropTypes.func.isRequired,
   isUserLoggedIn: PropTypes.bool.isRequired,
   isPlcc: PropTypes.bool.isRequired,
   pageView: PropTypes.string,

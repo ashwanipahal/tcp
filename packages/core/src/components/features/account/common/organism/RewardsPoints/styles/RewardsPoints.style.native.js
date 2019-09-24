@@ -24,7 +24,11 @@ const ProgressBarStyle = props => {
   return `
   height: ${props.theme.spacing.ELEM_SPACING.SM};
   border-radius: ${props.theme.spacing.ELEM_SPACING.XXS};
-  background-color: ${props.theme.colorPalette.orange['300']};
+  background-color: ${
+    props.plccUser
+      ? props.theme.colorPalette.userTheme.plccLight
+      : props.theme.colorPalette.orange['300']
+  };
   width: 100%;
   overflow: hidden;
   margin:${theme.spacing.ELEM_SPACING.SM} 0;
@@ -34,7 +38,9 @@ const ProgressBarStyle = props => {
 const ProgressBarRewardStyle = props => {
   const { theme } = props;
   return `
-  background-color: ${theme.colorPalette.orange['800']};
+  background-color: ${
+    props.plccUser ? props.theme.colorPalette.userTheme.plcc : theme.colorPalette.orange['800']
+  };
     width: 0%;
     height: ${theme.spacing.ELEM_SPACING.SM};
   `;

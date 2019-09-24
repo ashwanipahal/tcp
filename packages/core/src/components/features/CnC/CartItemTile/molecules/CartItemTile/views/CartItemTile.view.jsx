@@ -206,8 +206,9 @@ class CartItemTile extends React.Component {
       isBagPageSflSection,
     } = this.props;
     const {
-      itemInfo: { itemId, isGiftItem },
+      itemInfo: { itemId, isGiftItem, itemBrand },
       productInfo: { skuId, generalProductId },
+      miscInfo: { orderItemType },
     } = productDetail;
     const catEntryId = isGiftItem ? generalProductId : skuId;
     const userInfoRequired = isGenricGuest && isGenricGuest.get('userId') && isCondense; // Flag to check if getRegisteredUserInfo required after SflList
@@ -218,6 +219,8 @@ class CartItemTile extends React.Component {
       catEntryId,
       userInfoRequired,
       isBagPageSflSection,
+      itemBrand,
+      orderItemType,
     });
   };
 

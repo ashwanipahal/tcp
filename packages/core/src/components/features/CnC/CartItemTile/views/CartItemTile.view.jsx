@@ -25,7 +25,7 @@ class CartItemTile extends React.Component<Props> {
 
   deleteCartItem = orderItemId => {
     const { removeCartItem } = this.props;
-    removeCartItem(orderItemId);
+    removeCartItem({ orderItemId });
   };
 
   render() {

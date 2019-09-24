@@ -7,6 +7,7 @@ import GlobalNavigationMenuDesktopL2 from '../molecules/GlobalNavigationMenuDesk
 import withStyles from '../../../../common/hoc/withStyles';
 import PickupStoreModal from '../../../../common/organisms/PickupStoreModal';
 import QuickViewModal from '../../../../common/organisms/QuickViewModal/container/QuickViewModal.container';
+import AddedToBagContainer from '../../../CnC/AddedToBag';
 
 import ProductListingStyle from '../ProductListing.style';
 
@@ -36,6 +37,7 @@ const ProductListView = ({
   onSubmit,
   sortLabels,
   slpLabels,
+  onPickUpOpenClick,
   ...otherProps
 }) => {
   return (
@@ -101,7 +103,8 @@ const ProductListView = ({
         </Col>
       </Row>
       <PickupStoreModal />
-      <QuickViewModal />
+      <QuickViewModal onPickUpOpenClick={onPickUpOpenClick} />
+      <AddedToBagContainer />
     </div>
   );
 };
@@ -124,6 +127,7 @@ ProductListView.propTypes = {
   getProducts: PropTypes.func,
   onSubmit: PropTypes.func,
   formValues: PropTypes.shape({}).isRequired,
+  onPickUpOpenClick: PropTypes.func.isRequired,
   sortLabels: PropTypes.arrayOf(PropTypes.shape({})),
   slpLabels: PropTypes.objectOf(PropTypes.oneOfType([PropTypes.string])),
 };

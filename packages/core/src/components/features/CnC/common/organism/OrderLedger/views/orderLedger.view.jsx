@@ -5,6 +5,7 @@ import Col from '@tcp/core/src/components/common/atoms/Col';
 import Grid from '@tcp/core/src/components/common/molecules/Grid';
 import { getLocator } from '@tcp/core/src/utils';
 import ReactToolTip from '@tcp/core/src/components/common/atoms/ReactToolTip';
+import RenderPerf from '@tcp/web/src/components/common/molecules/RenderPerf';
 import { getIconPath } from '../../../../../../../utils';
 import { Image } from '../../../../../../common/atoms';
 import BodyCopy from '../../../../../../common/atoms/BodyCopy';
@@ -27,6 +28,7 @@ const OrderLedger = ({ className, ledgerSummaryData, labels }) => {
     isOrderHasShipping,
   } = ledgerSummaryData;
   const toolTipMinWidth = '205px';
+
   return (
     <React.Fragment>
       <Grid
@@ -314,6 +316,7 @@ const OrderLedger = ({ className, ledgerSummaryData, labels }) => {
           </Row>
         ) : null}
       </Grid>
+      <RenderPerf.Measure name="render_cart_total" />
     </React.Fragment>
   );
 };
