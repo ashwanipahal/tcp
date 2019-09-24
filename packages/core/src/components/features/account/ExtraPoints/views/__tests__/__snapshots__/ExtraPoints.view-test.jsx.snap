@@ -16,6 +16,7 @@ exports[`EarnPointsVanilla component should renders correctly 1`] = `
     fontWeight="semibold"
     letterSpacing="normal"
     lineHeight="normal"
+    link={null}
     textAlign="center"
   >
     lbl_extraExtraPoints_more_points
