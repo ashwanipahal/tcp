@@ -1,7 +1,6 @@
 import React, { PureComponent } from 'react';
 import { connect } from 'react-redux';
 import { getIconPath } from '@tcp/core/src/utils';
-import { withRouter } from 'next/router'; //eslint-disable-line
 import PropTypes from 'prop-types';
 import { getPersonalDataState } from '@tcp/core/src/components/features/account/User/container/User.selectors';
 import { getStoresByCoordinates, setFavoriteStoreActn, getFavoriteStoreActn } from './StoreLanding.actions';
@@ -76,14 +75,12 @@ const mapDispatchToProps = dispatch => {
 const mapStateToProps = state => ({
   selectedCountry: getCurrentCountry(state),
   labels: getPageLabels(state),
-  suggestedStoreList: state.StoreLocatorReducer.get('suggestedStores'),
-  favoriteStore: state.User.get('defaultStore'),
-  personalDataState: state.User.get('personalData'),
+  suggestedStoreList: state.StoreLocatorReducer && state.StoreLocatorReducer.get('suggestedStores'),
+  favoriteStore: state.User && state.User.get('defaultStore'),
+  personalDataState: state.User && state.User.get('personalData'),
 });
 
-export default withRouter(
-  connect(
-    mapStateToProps,
-    mapDispatchToProps
-  )(StoreLanding)
-);
+export default connect(
+  mapStateToProps,
+  mapDispatchToProps
+)(StoreLanding);

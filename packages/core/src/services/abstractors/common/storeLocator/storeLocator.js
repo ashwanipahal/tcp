@@ -2,7 +2,7 @@ import { STORE_LOCATOR_REDUCER_KEY } from '@tcp/core/src/constants/reducer.const
 import { executeStatefulAPICall } from '../../../handler';
 import { formatPhoneNumber } from '../../../../utils/formValidation/phoneNumber';
 import { parseStoreHours } from '../../../../utils/parseStoreHours';
-import { sanitizeEntity } from '../../../../utils';
+// import { sanitizeEntity } from '../../../../utils';
 import endpoints from '../../../endpoints';
 import { getPersonalDataState } from '../../../../components/features/account/User/container/User.selectors';
 
@@ -15,6 +15,22 @@ const BOPIS_ITEM_AVAILABILITY = {
   AVAILABLE: 'OK',
   LIMITED: 'LIMITED',
   UNAVAILABLE: 'UNAVAILABLE',
+};
+
+export const sanitizeEntity = string => {
+  return string && typeof string === 'string'
+    ? string
+        .replace(/&amp;/gi, '&')
+        .replace(/&quot;/gi, '"')
+        .replace(/&ldquo;/gi, '"')
+        .replace(/&acute;/gi, '"')
+        .replace(/&prime;/gi, '"')
+        .replace(/&bdquo;/gi, '"')
+        .replace(/&ldquot;/gi, '"')
+        .replace(/\\u0027/gi, "'")
+        .replace(/&lsquot;/gi, '"')
+        .replace(/%20/gi, ' ')
+    : string;
 };
 
 export const getSuggestedStoreById = (state, storeId) => {
@@ -347,8 +363,10 @@ export const getLocationStores = ({
     body: {},
     webService: endpoints.findStoresByCoordinates,
   };
+  console.log('ooo')
   return executeStatefulAPICall(payload)
     .then(res => {
+      console.log('LLL',res)
       // unknown structure of response may be nested arrays, may not be nested arrays. all depends on how backend is feeling today.
       const fetchedStores =
         res.body.PhysicalStore &&
@@ -362,7 +380,10 @@ export const getLocationStores = ({
       }
       return fetchedStores.map(storeResponseParser);
     })
-    .catch(errorHandler);
+    .catch((e) => {
+      console.log(e)
+      errorHandler(e)
+    });
 };
 
 /**

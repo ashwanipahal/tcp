@@ -18,13 +18,25 @@ import {
   StyledSearch,
   StyledCheckBoxBodyCopy,
 } from '../styles/StoreSearch.style.native';
+import constants from '../../../container/StoreLanding.constants';
 
 const MarkerIcon = require('@tcp/core/src/assets/icon-marker.png');
 const SearchIcon = require('@tcp/core/src/assets/icon-mag-glass.png');
 
+const { INITIAL_STORE_LIMIT } = constants;
+
 class StoreSearch extends Component {
   state = {
     errorNotFound: null,
+  };
+
+  handleLocationSelection = ({ geometry }, inputValue) => {
+    const { location: { lat, lng } } = geometry;
+    const { loadStoresByCoordinates, submitting } = this.props;
+    if (!geometry || submitting) {
+      return;
+    }
+    loadStoresByCoordinates(Promise.resolve({ lat, lng }), INITIAL_STORE_LIMIT);
   };
 
   renderStoreTypes = ({ name, dataLocator, storeLabel }) => {
@@ -108,6 +120,9 @@ class StoreSearch extends Component {
             component={GooglePlacesInput}
             dataLocator="addnewaddress-addressl1"
             componentRestrictions={{ ...{ country: [selectedCountry] } }}
+            onValueChange={(data, inputValue) => {
+              this.handleLocationSelection(data, inputValue);
+            }}
           />
           <StyledSearch>
             <Anchor onPress={() => this.onSearch()}>
@@ -142,11 +157,14 @@ StoreSearch.propTypes = {
   selectedCountry: PropTypes.string,
   error: PropTypes.bool.isRequired,
   labels: PropTypes.objectOf(PropTypes.string),
+  loadStoresByCoordinates: PropTypes.func.isRequired,
+  submitting: PropTypes.bool,
 };
 
 StoreSearch.defaultProps = {
   labels: {},
   selectedCountry: 'US',
+  submitting: false,
 };
 
 export default reduxForm({
