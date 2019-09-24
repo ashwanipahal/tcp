@@ -23,7 +23,7 @@ exports[`ContactInformationFormWrapper component should renders correctly 1`] = 
       className="contact_information_form columnWrapper"
       colSize={
         Object {
-          "large": 6,
+          "large": 5,
           "medium": 4,
           "small": 6,
         }
@@ -389,7 +389,7 @@ exports[`ContactInformationFormWrapper component should renders correctly 1`] = 
       className="contact_information_form columnWrapper"
       colSize={
         Object {
-          "large": 6,
+          "large": 5,
           "medium": 4,
           "small": 6,
         }
@@ -568,7 +568,7 @@ exports[`ContactInformationFormWrapper component should renders correctly 1`] = 
       className="contact_information_form columnWrapper"
       colSize={
         Object {
-          "large": 6,
+          "large": 5,
           "medium": 4,
           "small": 6,
         }
@@ -587,6 +587,7 @@ exports[`ContactInformationFormWrapper component should renders correctly 1`] = 
         }
         dataLocator="plcc_address_1"
         id="addressLine1"
+        maxLength="30"
         name="addressLine1"
         onPlaceSelected={[Function]}
         placeholder="Address Line 1"
@@ -596,7 +597,7 @@ exports[`ContactInformationFormWrapper component should renders correctly 1`] = 
       className="contact_information_form columnWrapper"
       colSize={
         Object {
-          "large": 6,
+          "large": 5,
           "medium": 4,
           "small": 6,
         }
@@ -774,7 +775,7 @@ exports[`ContactInformationFormWrapper component should renders correctly 1`] = 
       className="contact_information_form columnWrapper"
       colSize={
         Object {
-          "large": 6,
+          "large": 5,
           "medium": 4,
           "small": 6,
         }
@@ -948,7 +949,7 @@ exports[`ContactInformationFormWrapper component should renders correctly 1`] = 
       className="columnWrapper"
       colSize={
         Object {
-          "large": 6,
+          "large": 5,
           "medium": 4,
           "small": 6,
         }
@@ -1344,7 +1345,7 @@ exports[`ContactInformationFormWrapper component should renders correctly 1`] = 
       className="contact_information_form columnWrapper"
       colSize={
         Object {
-          "large": 6,
+          "large": 5,
           "medium": 4,
           "small": 6,
         }
@@ -1519,7 +1520,7 @@ exports[`ContactInformationFormWrapper component should renders correctly 1`] = 
       className="contact_information_form columnWrapper"
       colSize={
         Object {
-          "large": 6,
+          "large": 5,
           "medium": 4,
           "small": 6,
         }
@@ -1696,7 +1697,7 @@ exports[`ContactInformationFormWrapper component should renders correctly 1`] = 
       className="prescreen_code_link_container contact_information_form columnWrapper"
       colSize={
         Object {
-          "large": 6,
+          "large": 5,
           "medium": 4,
           "small": 6,
         }

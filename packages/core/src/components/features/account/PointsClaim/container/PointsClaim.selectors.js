@@ -1,6 +1,6 @@
 import { createSelector } from 'reselect';
+import { getErrorSelector } from '@tcp/core/src/utils/utils';
 import { POINTS_CLAIM_REDUCER_KEY } from '../../../../../constants/reducer.constants';
-import { getErrorSelector } from '../../../../../utils';
 
 const getState = state => state[POINTS_CLAIM_REDUCER_KEY];
 

@@ -22,6 +22,10 @@ exports[`GuestBillingFormVanilla should render correctly 1`] = `
   <div
     className="elem-mt-LRG elem-pb-XL"
   />
+  <Styled(CheckoutOrderInfo)
+    isGuest={true}
+    showAccordian={true}
+  />
   <Styled(CheckoutFooter)
     backLinkHandler={[Function]}
     backLinkText=""
@@ -117,6 +121,10 @@ exports[`GuestBillingFormVanilla should render correctly when props change 1`] =
       shippingAddress={null}
     />
   </div>
+  <Styled(CheckoutOrderInfo)
+    isGuest={true}
+    showAccordian={true}
+  />
   <Styled(CheckoutFooter)
     backLinkHandler={[Function]}
     backLinkText=""

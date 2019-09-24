@@ -1,6 +1,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import { requireUrlScript } from '../../../../../../../utils/resourceLoader';
+import { getLocator } from '../../../../../../../utils';
 
 export default class Spotlights extends React.PureComponent {
   static propTypes = {
@@ -44,7 +45,13 @@ export default class Spotlights extends React.PureComponent {
   render() {
     const { isLoading } = this.state;
     if (isLoading) return null;
-    return <div id="BVSpotlightsContainer" ref={this.captureContainerRef} />;
+    return (
+      <div
+        id="BVSpotlightsContainer"
+        data-locator={getLocator('plp_rating_review')}
+        ref={this.captureContainerRef}
+      />
+    );
   }
 }
 

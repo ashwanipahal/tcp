@@ -56,39 +56,45 @@ const ModalNative = ({ isOpen, children, ...otherProps }: Props) => {
     borderColor = 'black',
     iconType,
     fullWidth,
+    customTransparent,
   } = otherProps;
   return (
     <SafeAreaView>
       <Modal
-        transparent={false}
+        transparent={customTransparent || false}
         visible={isOpen}
         animationType={animationType}
         onRequestClose={onRequestClose}
       >
-        <ToastContainer />
-        <StatusBar hidden />
-        <RowWrapper>
-          {heading && (
-            <ModalHeading fullWidth={fullWidth}>
-              <BodyCopy
-                mobileFontFamily={headingFontFamily || 'primary'}
-                fontWeight={headingFontWeight || 'extrabold'}
-                textAlign={headingAlign}
-                fontSize={fontSize || 'fs16'}
-                text={heading}
-              />
-            </ModalHeading>
-          )}
-          {getCloseIcon({ onRequestClose, headerStyle, iconType })}
-        </RowWrapper>
-        {horizontalBar ? (
-          <LineWrapper>
-            <LineComp marginTop={5} borderWidth={2} borderColor={borderColor} />
-          </LineWrapper>
-        ) : null}
-        <ScrollView showsVerticalScrollIndicator={false} keyboardShouldPersistTaps="handled">
-          {children}
-        </ScrollView>
+        {!customTransparent && (
+          <>
+            <ToastContainer />
+            <StatusBar hidden />
+            <RowWrapper>
+              {heading && (
+                <ModalHeading fullWidth={fullWidth}>
+                  <BodyCopy
+                    mobileFontFamily={headingFontFamily || 'primary'}
+                    fontWeight={headingFontWeight || 'extrabold'}
+                    textAlign={headingAlign}
+                    fontSize={fontSize || 'fs16'}
+                    text={heading}
+                  />
+                </ModalHeading>
+              )}
+              {getCloseIcon({ onRequestClose, headerStyle, iconType })}
+            </RowWrapper>
+            {horizontalBar ? (
+              <LineWrapper>
+                <LineComp marginTop={5} borderWidth={2} borderColor={borderColor} />
+              </LineWrapper>
+            ) : null}
+            <ScrollView showsVerticalScrollIndicator={false} keyboardShouldPersistTaps="handled">
+              {children}
+            </ScrollView>
+          </>
+        )}
+        {customTransparent && children}
       </Modal>
     </SafeAreaView>
   );
