@@ -93,48 +93,47 @@ class ModuleR extends React.PureComponent {
     const { promoBanner, bannerPosition } = this.props;
     return (
       <Row className="image-items-container">
-        {selectedProductList &&
-          selectedProductList.map((productItem, index) => {
-            if (productItem.uniqueId) {
-              const {
-                pdpUrl,
-                pdpAsPath,
-                uniqueId,
-                imageUrl: [imageUrl],
-                product_name: productName,
-              } = productItem;
-              return (
-                <ImageGridCol
-                  key={uniqueId}
-                  imageindex={index}
-                  promobanner={promoBanner}
-                  bannerposition={bannerPosition}
-                  colSize={{
-                    small: 2,
-                    medium: 2,
-                    large: 2,
-                  }}
-                >
-                  <Anchor
-                    to={pdpUrl}
-                    asPath={pdpAsPath}
-                    dataLocator={`${getLocator('moduleR_product_image')}${index}`}
-                  >
-                    <Image alt={productName} src={imageUrl} />
-                  </Anchor>
-                </ImageGridCol>
-              );
-            }
+        {selectedProductList.map((productItem, index) => {
+          if (productItem.uniqueId) {
+            const {
+              pdpUrl,
+              pdpAsPath,
+              uniqueId,
+              imageUrl: [imageUrl],
+              product_name: productName,
+            } = productItem;
             return (
-              <Col
-                key={index.toString()}
-                className="image-item-wrapper"
-                colSize={{ small: 2, medium: 4, large: 4 }}
+              <ImageGridCol
+                key={uniqueId}
+                imageindex={index}
+                promobanner={promoBanner}
+                bannerposition={bannerPosition}
+                colSize={{
+                  small: 2,
+                  medium: 2,
+                  large: 2,
+                }}
               >
-                {productItem}
-              </Col>
+                <Anchor
+                  to={pdpUrl}
+                  asPath={pdpAsPath}
+                  dataLocator={`${getLocator('moduleR_product_image')}${index}`}
+                >
+                  <Image alt={productName} src={imageUrl} />
+                </Anchor>
+              </ImageGridCol>
             );
-          })}
+          }
+          return (
+            <Col
+              key={index.toString()}
+              className="image-item-wrapper"
+              colSize={{ small: 2, medium: 4, large: 4 }}
+            >
+              {productItem}
+            </Col>
+          );
+        })}
       </Row>
     );
   };
