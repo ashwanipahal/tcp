@@ -43,6 +43,14 @@ class BagPage extends React.Component {
     });
   }
 
+  componentDidUpdate() {
+    const { toastMessage, isCartItemSFL, labels } = this.props;
+    const { sflSuccess } = labels;
+    if (isCartItemSFL) {
+      toastMessage(sflSuccess);
+    }
+  }
+
   handleChangeActiveSection = sectionName => {
     this.setState({
       activeSection: sectionName,
@@ -185,6 +193,8 @@ BagPage.propTypes = {
   fetchLabels: PropTypes.func.isRequired,
   orderItemsCount: PropTypes.number.isRequired,
   sflItems: PropTypes.shape([]).isRequired,
+  toastMessage: PropTypes.func.isRequired,
+  isCartItemSFL: PropTypes.bool.isRequired,
 };
 
 export default InitialPropsHOC(BagPage);

@@ -177,7 +177,7 @@ class ProductsGridItem extends React.PureComponent {
         noMerchantBadge={badge3}
         merchantTag={isShowBadges ? badge3 : null}
         hidePrefixListPrice
-        dataLocator={`${dataLocatorPrice}_${sqnNmbr - 1}`}
+        dataLocator={dataLocatorPrice && `${dataLocatorPrice}_${sqnNmbr - 1}`}
       />
     );
   };
