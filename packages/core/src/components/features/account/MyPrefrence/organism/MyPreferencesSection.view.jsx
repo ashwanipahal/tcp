@@ -57,7 +57,7 @@ class MyPrefrenceSection extends React.PureComponent {
           </Col>
         </Row>
 
-        <Row fullBleed className="hideOnMobile elem-pt-LRG elem-pb-LRG">
+        <Row fullBleed className="hide-on-mobile elem-pt-LRG elem-pb-LRG">
           <Col
             colSize={{
               large: 12,
@@ -102,7 +102,7 @@ class MyPrefrenceSection extends React.PureComponent {
               medium: 4,
               large: 1,
             }}
-            className="hideOnMobile elem-mb-XL"
+            className="hide-on-mobile elem-mb-XL"
           />
           <Col
             colSize={{

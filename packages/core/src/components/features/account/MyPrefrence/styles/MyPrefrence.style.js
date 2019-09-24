@@ -9,11 +9,6 @@ export default css`
     padding-top: ${props => props.theme.spacing.ELEM_SPACING.LRG};
   }
 
-  .hideOnMobile {
-    @media ${props => props.theme.mediaQuery.smallOnly} {
-      display: none;
-    }
-  }
   .CheckBox__text {
     padding-top: ${props => props.theme.spacing.ELEM_SPACING.XXS};
   }
