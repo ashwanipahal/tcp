@@ -9,7 +9,6 @@ import BodyCopy from '../../../../common/atoms/BodyCopy';
 import AddedToBagActions from '../../AddedToBagActions';
 import CnCTemplate from '../../common/organism/CnCTemplate';
 import BAGPAGE_CONSTANTS from '../BagPage.constants';
-import { isClient } from '../../../../../utils';
 import styles, { addedToBagActionsStyles } from '../styles/BagPage.style';
 
 // @flow
@@ -29,16 +28,6 @@ class BagPageView extends React.Component {
     this.state = {
       activeSection: BAGPAGE_CONSTANTS.BAG_STATE,
     };
-  }
-
-  componentDidUpdate() {
-    if (isClient()) {
-      const urlParams = new URLSearchParams(window.location.search);
-      const isSfl = urlParams.get('isSfl');
-      if (isSfl) {
-        document.querySelector('.save-for-later-section-heading').scrollIntoView(true);
-      }
-    }
   }
 
   renderLeftSection = () => {

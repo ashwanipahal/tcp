@@ -1,5 +1,6 @@
 import React from 'react';
 import { connect } from 'react-redux';
+import { withRouter } from 'next/router'; //eslint-disable-line
 import { isGuest as isGuestUser } from '@tcp/core/src/components/features/CnC/Checkout/container/Checkout.selector';
 import BagPageSelector from './BagPage.selectors';
 import BagPage from '../views/BagPage.view';
@@ -13,6 +14,7 @@ import {
 } from '../../CartItemTile/container/CartItemTile.selectors';
 import { getUserLoggedInState } from '../../../account/User/container/User.selectors';
 import { toastMessageInfo } from '../../../../common/atoms/Toast/container/Toast.actions.native';
+import utils, { isClient } from '../../../../../utils';
 
 // @flow
 // type Props = {
@@ -27,6 +29,16 @@ export class BagPageContainer extends React.Component<Props> {
   componentDidMount() {
     const { needHelpContentId, fetchNeedHelpContent } = this.props;
     fetchNeedHelpContent([needHelpContentId]);
+  }
+
+  componentDidUpdate() {
+    if (isClient()) {
+      const { router } = this.props;
+      const isSfl = utils.getObjectValue(router, undefined, 'query', 'isSfl');
+      if (isSfl) {
+        document.querySelector('.save-for-later-section-heading').scrollIntoView(true);
+      }
+    }
   }
 
   closeModal = () => {};
@@ -122,7 +134,9 @@ const mapStateToProps = state => {
   };
 };
 
-export default connect(
-  mapStateToProps,
-  mapDispatchToProps
-)(BagPageContainer);
+export default withRouter(
+  connect(
+    mapStateToProps,
+    mapDispatchToProps
+  )(BagPageContainer)
+);
