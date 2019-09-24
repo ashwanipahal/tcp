@@ -1,3 +1,4 @@
+/* eslint-disable max-lines */
 import React from 'react';
 import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
@@ -13,7 +14,7 @@ import {
   isProductOOS,
   numericStringToBool,
 } from '../util';
-
+import { openPickupModalWithValues } from '../../PickupStoreModal/container/PickUpStoreModal.actions';
 import {
   getVariantId,
   getMapSliceForSize,
@@ -109,9 +110,6 @@ export const PRODUCT_INFO_PROP_TYPE_SHAPE = PropTypes.shape(PRODUCT_INFO_PROP_TY
 class ProductPickupContainer extends React.PureComponent {
   static propTypes = {
     miscInfo: PropTypes.shape({}),
-    offerEspotAvailable: PropTypes.bool,
-    className: PropTypes.string,
-
     /**
      * Information regarding the product at the swatch/color level.
      */
@@ -152,16 +150,6 @@ class ProductPickupContainer extends React.PureComponent {
      * carries the inventory information of the bopis item selected
      */
     bopisItemInventory: PropTypes.arrayOf(PropTypes.object),
-    isBopisEligible: PropTypes.bool,
-    isBossEligible: PropTypes.bool,
-    isSkuResolved: PropTypes.bool,
-    showChangeStore: PropTypes.bool,
-    pickupTitleText: PropTypes.string,
-    isBossEligBossInvAvail: PropTypes.bool,
-    isStoreBopisEligible: PropTypes.bool,
-    showPickupDetails: PropTypes.bool,
-    showPickupInfo: PropTypes.bool,
-    isSubmitting: PropTypes.bool,
     isBossEnabled: PropTypes.bool,
     isBopisEnabled: PropTypes.bool,
     isBopisClearanceProductEnabled: PropTypes.bool,
@@ -191,18 +179,6 @@ class ProductPickupContainer extends React.PureComponent {
     },
     onPickUpOpenClick: null,
     bopisItemInventory: [],
-    offerEspotAvailable: false,
-    className: '',
-    isBopisEligible: false,
-    isBossEligible: false,
-    isSkuResolved: false,
-    showChangeStore: false,
-    pickupTitleText: '',
-    isBossEligBossInvAvail: false,
-    isStoreBopisEligible: false,
-    showPickupDetails: false,
-    showPickupInfo: false,
-    isSubmitting: false,
     isBossEnabled: false,
     isBopisEnabled: false,
     isBopisClearanceProductEnabled: false,
@@ -231,7 +207,8 @@ class ProductPickupContainer extends React.PureComponent {
     this.isSkuResolved = false;
     this.isBopisEligible = validateBopisEligibility({ ...bopisValidatingParams, miscInfo });
     this.isBossEligible = validateBossEligibility({ ...bossValidatingParams, miscInfo });
-    this.isBopisEligible = false;
+    // TODO - remove this hard coding before merging
+    this.isBopisEligible = true;
     this.isBossEligible = true;
     this.isGeoStoreAPIRequested = false;
     this.state = {
@@ -322,7 +299,7 @@ class ProductPickupContainer extends React.PureComponent {
       isbossInventoryAvailable
     );
     let showChangeStore = false;
-    let pickupTitleText = '';
+    let pickupTitleText = labels.PRODUCT_PICKUP.TITLE_DEFAULT_NOSTORE;
     if (this.isSkuResolved) {
       if (userDefaultStore) {
         if (isBossEligBossInvAvail || this.isBopisEligible) {
@@ -341,7 +318,6 @@ class ProductPickupContainer extends React.PureComponent {
       }
       pickupTitleText = labels.PRODUCT_PICKUP.TITLE_DEFAULT_NOSTORE;
     }
-    pickupTitleText = labels.PRODUCT_PICKUP.TITLE_DEFAULT_NOSTORE;
 
     return { showChangeStore, pickupTitleText, isBossEligBossInvAvail };
   }
@@ -446,11 +422,9 @@ class ProductPickupContainer extends React.PureComponent {
       productInfo,
       isRadialInventoryEnabled,
       getBopisInventoryDetails,
-      className,
       itemValues,
       bopisItemInventory,
       onPickUpOpenClick,
-      ...otherProps
     } = this.props;
 
     if (this.noBossBopisInfo()) {
@@ -494,7 +468,6 @@ class ProductPickupContainer extends React.PureComponent {
         showPickupDetails={showPickupDetails}
         showPickupInfo={showPickupInfo}
         isSubmitting={isSubmitting}
-        {...otherProps}
       />
     );
   }
@@ -514,7 +487,7 @@ function mapStateToProps(state, ownProps) {
   // const geoDefaultStore = storesStoreView.getGeoDefaultStore(state);
   // const userDefaultStore = favStore || geoDefaultStore || null;
   // const offerEspot = generalStoreView.getEspotByName(state, 'fav_store_pickup_content');
-  const userDefaultStore = null;
+  // const userDefaultStore = null;
 
   return {
     itemValues: selector(state, 'color', 'Fit', 'Size', 'Quantity'),
@@ -522,7 +495,136 @@ function mapStateToProps(state, ownProps) {
     isBossEnabled: PickupSelectors.getIsBossEnabled(state),
     isBopisClearanceProductEnabled: PickupSelectors.getIsBopisClearanceProductEnabled(state),
     isBossClearanceProductEnabled: PickupSelectors.getIsBossClearanceProductEnabled(state),
-    userDefaultStore,
+    userDefaultStore: {
+      storeBossInfo: {
+        isBossEligible: '1',
+        startDate: '09/29/2019',
+        endDate: '10/03/2019',
+      },
+      pickupType: {
+        isStoreBossSelected: true,
+        isStoreBopisSelected: true,
+      },
+      distance: null,
+      basicInfo: {
+        id: '114037',
+        storeName: 'south park meadows',
+        isDefault: 1,
+        address: {
+          addressLine1: '9500 south ih-35',
+          city: 'austin',
+          state: 'TX',
+          country: 'US',
+          zipCode: '78748',
+        },
+        phone: '(512) 292-3025',
+        coordinates: {
+          lat: 30.16216,
+          long: -97.7892,
+        },
+      },
+      hours: {
+        regularHours: [
+          {
+            dayName: 'TUESDAY',
+            openIntervals: [
+              {
+                fromHour: '2019-09-24 10:00:00',
+                toHour: '2019-09-24 21:00:00',
+              },
+            ],
+            isClosed: false,
+          },
+          {
+            dayName: 'WEDNESDAY',
+            openIntervals: [
+              {
+                fromHour: '2019-09-25 10:00:00',
+                toHour: '2019-09-25 21:00:00',
+              },
+            ],
+            isClosed: false,
+          },
+          {
+            dayName: 'THURSDAY',
+            openIntervals: [
+              {
+                fromHour: '2019-09-26 10:00:00',
+                toHour: '2019-09-26 21:00:00',
+              },
+            ],
+            isClosed: false,
+          },
+          {
+            dayName: 'FRIDAY',
+            openIntervals: [
+              {
+                fromHour: '2019-09-27 10:00:00',
+                toHour: '2019-09-27 21:00:00',
+              },
+            ],
+            isClosed: false,
+          },
+          {
+            dayName: 'SATURDAY',
+            openIntervals: [
+              {
+                fromHour: '2019-09-28 10:00:00',
+                toHour: '2019-09-28 21:00:00',
+              },
+            ],
+            isClosed: false,
+          },
+          {
+            dayName: 'SUNDAY',
+            openIntervals: [
+              {
+                fromHour: '2019-09-29 12:00:00',
+                toHour: '2019-09-29 18:00:00',
+              },
+            ],
+            isClosed: false,
+          },
+          {
+            dayName: 'MONDAY',
+            openIntervals: [
+              {
+                fromHour: '2019-09-30 10:00:00',
+                toHour: '2019-09-30 21:00:00',
+              },
+            ],
+            isClosed: false,
+          },
+          {
+            dayName: 'TUESDAY',
+            openIntervals: [
+              {
+                fromHour: '2019-10-01 10:00:00',
+                toHour: '2019-10-01 21:00:00',
+              },
+            ],
+            isClosed: false,
+          },
+          {
+            dayName: 'WEDNESDAY',
+            openIntervals: [
+              {
+                fromHour: '2019-10-02 10:00:00',
+                toHour: '2019-10-02 21:00:00',
+              },
+            ],
+            isClosed: false,
+          },
+        ],
+        holidayHours: [],
+        regularAndHolidayHours: [],
+      },
+      features: {
+        storeType: 'Retail Store',
+      },
+      productAvailability: {},
+      timeStamp: 1569314564525,
+    },
     userGeoCoordinates: {
       lat: null,
       long: null,
@@ -534,7 +636,8 @@ function mapStateToProps(state, ownProps) {
     disabledFits: PickupSelectors.getBopisDisabledFits(state),
     bopisItemInventory: PickupSelectors.getBopisItemInventory(state),
     // TODO - This changes to CMS data - offerEspotAvailable: offerEspot && offerEspot.value,
-    isRadialInventoryEnabled: PickupSelectors.getIsRadialInventoryEnabled(state),
+    // isRadialInventoryEnabled: PickupSelectors.getIsRadialInventoryEnabled(state),
+    isRadialInventoryEnabled: true,
   };
 }
 
@@ -542,9 +645,8 @@ const mapDispatchToProps = dispatch => ({
   getBopisInventoryDetails: () => {
     dispatch(getBopisInventoryDetailsActn());
   },
-  onPickUpOpenClick: () => {
-    // TODO - use the open pickup modal action here
-    console.log('onPickUpOpenClick');
+  onPickUpOpenClick: payload => {
+    dispatch(openPickupModalWithValues(payload));
   },
 });
 

@@ -207,14 +207,13 @@ class ProductPickup extends React.PureComponent {
       isBossEligible,
     } = this.props;
 
-    return onPickUpOpenClick(
-      productInfo.generalProductId,
-      itemValues,
-      productInfo.generalProductId,
-      productInfo.generalProductId,
-      isBopisEligible,
-      isBossEligible
-    );
+    return onPickUpOpenClick({
+      generalProductId: productInfo.generalProductId,
+      initialValues: { color: itemValues && itemValues.color && itemValues.color.name },
+      isBopisCtaEnabled: isBopisEligible,
+      isBossCtaEnabled: isBossEligible,
+      colorProductId: productInfo.generalProductId,
+    });
   };
 
   /**

@@ -105,7 +105,11 @@ function isProductOOS(colorFitsSizesMap, selectedSKu) {
  * quantity
  */
 function isBOSSProductOOS(colorFitsSizesMap, selectedSKu) {
-  const currentFitEntry = getMapSliceForFit(colorFitsSizesMap, selectedSKu.color, selectedSKu.fit);
+  const currentFitEntry = getMapSliceForFit(
+    colorFitsSizesMap,
+    selectedSKu.color && selectedSKu.color.name,
+    selectedSKu.Fit && selectedSKu.Fit.name
+  );
   if (currentFitEntry && currentFitEntry.sizes) {
     const selectedSKuProductInfo = currentFitEntry.sizes.find(
       size => size.sizeName === selectedSKu.size
