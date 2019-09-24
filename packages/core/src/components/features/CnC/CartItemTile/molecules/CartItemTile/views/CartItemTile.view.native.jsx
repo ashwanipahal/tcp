@@ -220,8 +220,9 @@ class ProductInformation extends React.Component {
     const { removeCartItem, productDetail, labels, isBagPageSflSection } = this.props;
     const { isGenricGuest, isCondense } = this.props;
     const {
-      itemInfo: { itemId, isGiftItem },
+      itemInfo: { itemId, isGiftItem, itemBrand },
       productInfo: { skuId, generalProductId },
+      miscInfo: { orderItemType },
     } = productDetail;
     const catEntryId = isGiftItem ? generalProductId : skuId;
     const userInfoRequired = isGenricGuest && isGenricGuest.get('userId') && isCondense; // Flag to check if getRegisteredUserInfo required after SflList
@@ -247,6 +248,8 @@ class ProductInformation extends React.Component {
               catEntryId,
               userInfoRequired,
               isBagPageSflSection,
+              itemBrand,
+              orderItemType,
             })
           }
         >
