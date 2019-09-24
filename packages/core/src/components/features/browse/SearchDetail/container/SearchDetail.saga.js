@@ -11,7 +11,7 @@ import {
 } from './SearchDetail.actions';
 import Abstractor from '../../../../../services/abstractors/productListing';
 import ProductsOperator from '../../ProductListing/container/productsRequestFormatter';
-import { setSearchResult } from '../../../../../../../web/src/components/features/content/Header/molecules/SearchBar/SearchBar.actions';
+// import { setSearchResult } from '../../../../../../../web/src/components/features/content/Header/molecules/SearchBar/SearchBar.actions';
 import { getLastLoadedPageNumber } from './SearchDetail.selectors';
 
 const instanceProductListing = new Abstractor();
@@ -72,11 +72,11 @@ export function* fetchSlpSearchResults({ payload }) {
   };
 
   try {
-    const response = yield call(makeSearch, {
+    yield call(makeSearch, {
       searchTerm: payload,
       ...searchApiConfig,
     });
-    yield put(setSearchResult(response));
+    // yield put(setSearchResult(response));
   } catch (err) {
     logger.error('Error: error in fetching Search bar results ');
   }

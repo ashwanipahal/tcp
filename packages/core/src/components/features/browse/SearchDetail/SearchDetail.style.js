@@ -210,4 +210,7 @@ export default css`
   .empty-search-tips-title {
     margin-bottom: 8px;
   }
+  .suggestionHide {
+    display: none;
+  }
 `;

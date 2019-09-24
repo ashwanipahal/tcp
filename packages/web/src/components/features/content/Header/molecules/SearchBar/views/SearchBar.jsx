@@ -55,7 +55,13 @@ class SearchBar extends React.PureComponent {
   closeSearchBar = e => {
     e.preventDefault();
     const { setSearchState } = this.props;
+    const searchText = this.searchInput.current.value;
+    this.redirectToSearchPage(searchText);
     setSearchState(false);
+  };
+
+  redirectToSearchPage = searchText => {
+    routerPush(`/search?searchQuery=${searchText}`, `/search/${searchText}`, { shallow: true });
   };
 
   changeSearchText = e => {
