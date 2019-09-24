@@ -17,6 +17,7 @@ exports[`TitlePlusEditButton component should renders correctly props are presen
       fontWeight="regular"
       letterSpacing="normal"
       lineHeight="normal"
+      link={null}
       textAlign="left"
     />
     <div
@@ -54,6 +55,7 @@ exports[`TitlePlusEditButton component should renders correctly props not presen
       fontWeight="regular"
       letterSpacing="normal"
       lineHeight="normal"
+      link={null}
       textAlign="left"
     />
     <div

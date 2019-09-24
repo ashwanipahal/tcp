@@ -22,7 +22,7 @@ exports[`SMSFormFields should render correctly with isOrderUpdateChecked as fals
             "$$typeof": Symbol(react.forward_ref),
             "attrs": Array [],
             "componentStyle": ComponentStyle {
-              "componentId": "sc-htpNat",
+              "componentId": "sc-bxivhb",
               "isStatic": false,
               "rules": Array [
                 "
@@ -139,7 +139,7 @@ exports[`SMSFormFields should render correctly with isOrderUpdateChecked as fals
             "displayName": "Styled(InputCheckbox)",
             "foldedComponentIds": Array [],
             "render": [Function],
-            "styledComponentId": "sc-htpNat",
+            "styledComponentId": "sc-bxivhb",
             "target": [Function],
             "toString": [Function],
             "warnTooManyClasses": [Function],
@@ -166,6 +166,7 @@ exports[`SMSFormFields should render correctly with isOrderUpdateChecked as fals
           fontWeight="regular"
           letterSpacing="normal"
           lineHeight="normal"
+          link={null}
           textAlign="left"
         />
       </Field>
@@ -196,7 +197,7 @@ exports[`SMSFormFields should render correctly with isOrderUpdateChecked as true
             "$$typeof": Symbol(react.forward_ref),
             "attrs": Array [],
             "componentStyle": ComponentStyle {
-              "componentId": "sc-htpNat",
+              "componentId": "sc-bxivhb",
               "isStatic": false,
               "rules": Array [
                 "
@@ -313,7 +314,7 @@ exports[`SMSFormFields should render correctly with isOrderUpdateChecked as true
             "displayName": "Styled(InputCheckbox)",
             "foldedComponentIds": Array [],
             "render": [Function],
-            "styledComponentId": "sc-htpNat",
+            "styledComponentId": "sc-bxivhb",
             "target": [Function],
             "toString": [Function],
             "warnTooManyClasses": [Function],
@@ -340,6 +341,7 @@ exports[`SMSFormFields should render correctly with isOrderUpdateChecked as true
           fontWeight="regular"
           letterSpacing="normal"
           lineHeight="normal"
+          link={null}
           textAlign="left"
         />
       </Field>
@@ -370,7 +372,7 @@ exports[`SMSFormFields should render correctly with isOrderUpdateChecked as true
             "$$typeof": Symbol(react.forward_ref),
             "attrs": Array [],
             "componentStyle": ComponentStyle {
-              "componentId": "sc-bwzfXH",
+              "componentId": "sc-htpNat",
               "isStatic": false,
               "rules": Array [
                 "
@@ -513,7 +515,7 @@ exports[`SMSFormFields should render correctly with isOrderUpdateChecked as true
             "displayName": "Styled(TextBox)",
             "foldedComponentIds": Array [],
             "render": [Function],
-            "styledComponentId": "sc-bwzfXH",
+            "styledComponentId": "sc-htpNat",
             "target": [Function],
             "toString": [Function],
             "warnTooManyClasses": [Function],
@@ -549,6 +551,7 @@ exports[`SMSFormFields should render correctly with isOrderUpdateChecked as true
           fontWeight="regular"
           letterSpacing="normal"
           lineHeight="normal"
+          link={null}
           textAlign="left"
         />
       </Styled(Col)>
@@ -579,7 +582,7 @@ exports[`SMSFormFields should render correctly with isOrderUpdateChecked as true
             "$$typeof": Symbol(react.forward_ref),
             "attrs": Array [],
             "componentStyle": ComponentStyle {
-              "componentId": "sc-htpNat",
+              "componentId": "sc-bxivhb",
               "isStatic": false,
               "rules": Array [
                 "
@@ -696,7 +699,7 @@ exports[`SMSFormFields should render correctly with isOrderUpdateChecked as true
             "displayName": "Styled(InputCheckbox)",
             "foldedComponentIds": Array [],
             "render": [Function],
-            "styledComponentId": "sc-htpNat",
+            "styledComponentId": "sc-bxivhb",
             "target": [Function],
             "toString": [Function],
             "warnTooManyClasses": [Function],
@@ -723,6 +726,7 @@ exports[`SMSFormFields should render correctly with isOrderUpdateChecked as true
           fontWeight="regular"
           letterSpacing="normal"
           lineHeight="normal"
+          link={null}
           textAlign="left"
         />
       </Field>
@@ -753,7 +757,7 @@ exports[`SMSFormFields should render correctly with isOrderUpdateChecked as true
             "$$typeof": Symbol(react.forward_ref),
             "attrs": Array [],
             "componentStyle": ComponentStyle {
-              "componentId": "sc-bwzfXH",
+              "componentId": "sc-htpNat",
               "isStatic": false,
               "rules": Array [
                 "
@@ -896,7 +900,7 @@ exports[`SMSFormFields should render correctly with isOrderUpdateChecked as true
             "displayName": "Styled(TextBox)",
             "foldedComponentIds": Array [],
             "render": [Function],
-            "styledComponentId": "sc-bwzfXH",
+            "styledComponentId": "sc-htpNat",
             "target": [Function],
             "toString": [Function],
             "warnTooManyClasses": [Function],
@@ -932,6 +936,7 @@ exports[`SMSFormFields should render correctly with isOrderUpdateChecked as true
           fontWeight="regular"
           letterSpacing="normal"
           lineHeight="normal"
+          link={null}
           textAlign="left"
         />
       </Styled(Col)>

@@ -10,6 +10,7 @@ exports[`TrackOrderView component should renders correctly 1`] = `
   fontWeight="regular"
   letterSpacing="normal"
   lineHeight="normal"
+  link={null}
   textAlign="left"
 >
   <Styled(TrackOrderTopSection)

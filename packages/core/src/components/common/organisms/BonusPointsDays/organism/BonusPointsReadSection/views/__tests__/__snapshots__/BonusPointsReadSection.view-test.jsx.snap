@@ -10,6 +10,7 @@ exports[`BonusPointsReadSection should render correctly 1`] = `
   fontWeight="regular"
   letterSpacing="normal"
   lineHeight="normal"
+  link={null}
   textAlign="left"
 >
   <Styled(BodyCopy)
@@ -21,6 +22,7 @@ exports[`BonusPointsReadSection should render correctly 1`] = `
     fontWeight="regular"
     letterSpacing="normal"
     lineHeight="normal"
+    link={null}
     textAlign="left"
   >
     <Styled(BodyCopy)
@@ -33,6 +35,7 @@ exports[`BonusPointsReadSection should render correctly 1`] = `
       fontWeight="semibold"
       letterSpacing="normal"
       lineHeight="normal"
+      link={null}
       textAlign="left"
     >
       BONUS POINTS DAY
@@ -56,6 +59,7 @@ exports[`BonusPointsReadSection should render correctly 1`] = `
     fontWeight="regular"
     letterSpacing="normal"
     lineHeight="normal"
+    link={null}
     textAlign="left"
   >
     You have 1 days left
