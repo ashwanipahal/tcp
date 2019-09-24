@@ -1,20 +1,7 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`Points History List Page View should render Points History Page Correctly 1`] = `
+exports[`UserInfo Native component should renders correctly with success and error 1`] = `
 <Fragment>
-  <Styled(Styled(BodyCopy))
-    accessibilityText=""
-    color="gray.900"
-    dataLocator="points_history_subheading"
-    fontFamily="secondary"
-    fontSize="fs16"
-    fontWeight="extrabold"
-    margin={null}
-    numberOfLines={null}
-    spacingStyles="margin-bottom-XL margin-top-LRG"
-    text="Points History"
-    textDecoration={null}
-  />
   <Styled(View)>
     <Styled(View)>
       <Styled(BodyCopy)
@@ -22,11 +9,11 @@ exports[`Points History List Page View should render Points History Page Correct
         color="gray.900"
         dataLocator=""
         fontFamily="secondary"
-        fontSize="fs12"
-        fontWeight="semibold"
+        fontSize="fs16"
+        fontWeight="extrabold"
         margin={null}
         numberOfLines={null}
-        text="08/08/19"
+        text="lbl_points_claim_account_number"
         textDecoration={null}
       />
     </Styled(View)>
@@ -35,27 +22,12 @@ exports[`Points History List Page View should render Points History Page Correct
         accessibilityText=""
         color="gray.900"
         dataLocator=""
-        fontFamily="secondary"
-        fontSize="fs12"
-        fontWeight="semibold"
+        fontSize="fs14"
+        fontWeight="regular"
         margin={null}
+        mobileFontFamily="secondary"
         numberOfLines={null}
-        text="Credit"
-        textDecoration={null}
-      />
-    </Styled(View)>
-    <Styled(View)>
-      <Styled(BodyCopy)
-        accessibilityText=""
-        color="gray.900"
-        dataLocator=""
-        fontFamily="secondary"
-        fontSize="fs12"
-        fontWeight="semibold"
-        margin={null}
-        numberOfLines={null}
-        text="5"
-        textAlign="center"
+        text=""
         textDecoration={null}
       />
     </Styled(View)>
@@ -67,11 +39,11 @@ exports[`Points History List Page View should render Points History Page Correct
         color="gray.900"
         dataLocator=""
         fontFamily="secondary"
-        fontSize="fs12"
-        fontWeight="semibold"
+        fontSize="fs16"
+        fontWeight="extrabold"
         margin={null}
         numberOfLines={null}
-        text="08/08/19"
+        text="lbl_points_claim_firstname"
         textDecoration={null}
       />
     </Styled(View)>
@@ -80,48 +52,72 @@ exports[`Points History List Page View should render Points History Page Correct
         accessibilityText=""
         color="gray.900"
         dataLocator=""
-        fontFamily="secondary"
-        fontSize="fs12"
-        fontWeight="semibold"
+        fontSize="fs14"
+        fontWeight="regular"
         margin={null}
+        mobileFontFamily="secondary"
         numberOfLines={null}
-        text="AddBirthDate"
-        textDecoration={null}
-      />
-    </Styled(View)>
-    <Styled(View)>
-      <Styled(BodyCopy)
-        accessibilityText=""
-        color="gray.900"
-        dataLocator=""
-        fontFamily="secondary"
-        fontSize="fs12"
-        fontWeight="semibold"
-        margin={null}
-        numberOfLines={null}
-        text={5}
-        textAlign="center"
         textDecoration={null}
       />
     </Styled(View)>
   </Styled(View)>
-</Fragment>
-`;
-
-exports[`Points History List Page View should render Points History Page Correctly if no PointHistory data is available 1`] = `
-<Fragment>
-  <Styled(Styled(BodyCopy))
-    accessibilityText=""
-    color="gray.900"
-    dataLocator="points_history_subheading"
-    fontFamily="secondary"
-    fontSize="fs16"
-    fontWeight="extrabold"
-    margin={null}
-    numberOfLines={null}
-    spacingStyles="margin-bottom-XL margin-top-LRG"
-    text="Points History"
-    textDecoration={null}
-  />
+  <Styled(View)>
+    <Styled(View)>
+      <Styled(BodyCopy)
+        accessibilityText=""
+        color="gray.900"
+        dataLocator=""
+        fontFamily="secondary"
+        fontSize="fs16"
+        fontWeight="extrabold"
+        margin={null}
+        numberOfLines={null}
+        text="lbl_points_claim_lastname"
+        textDecoration={null}
+      />
+    </Styled(View)>
+    <Styled(View)>
+      <Styled(BodyCopy)
+        accessibilityText=""
+        color="gray.900"
+        dataLocator=""
+        fontSize="fs14"
+        fontWeight="regular"
+        margin={null}
+        mobileFontFamily="secondary"
+        numberOfLines={null}
+        textDecoration={null}
+      />
+    </Styled(View)>
+  </Styled(View)>
+  <Styled(View)>
+    <Styled(View)>
+      <Styled(BodyCopy)
+        accessibilityText=""
+        color="gray.900"
+        dataLocator=""
+        fontFamily="secondary"
+        fontSize="fs16"
+        fontWeight="extrabold"
+        margin={null}
+        numberOfLines={null}
+        text="lbl_points_claim_email"
+        textDecoration={null}
+      />
+    </Styled(View)>
+    <Styled(View)>
+      <Styled(BodyCopy)
+        accessibilityText=""
+        color="gray.900"
+        dataLocator=""
+        fontSize="fs14"
+        fontWeight="regular"
+        margin={null}
+        mobileFontFamily="secondary"
+        numberOfLines={null}
+        textDecoration={null}
+      />
+    </Styled(View)>
+  </Styled(View)>
 </Fragment>
 `;
