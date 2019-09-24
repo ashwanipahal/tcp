@@ -10,13 +10,14 @@ import { PRODUCT_INFO_PROP_TYPE_SHAPE } from '../../../../features/browse/Produc
 import ProductCustomizeFormPart from '../molecules/ProductCustomizeFormPart/views/ProductCustomizeFormPart.view';
 
 class QuickViewModal extends React.Component {
+  componentWillUnmount = () => {
+    const { clearAddToBagError } = this.props;
+    clearAddToBagError();
+  };
+
   onCloseClick = () => {
     const { closeQuickViewModal } = this.props;
-    closeQuickViewModal({
-      isModalOpen: false,
-      // To clear QV product selected info..
-      // To clear search results from suggested store list
-    });
+    closeQuickViewModal();
   };
 
   handlePickupOpenClick = () => {
@@ -82,6 +83,7 @@ QuickViewModal.propTypes = {
     viewProductDetails: PropTypes.string,
   }).isRequired,
   closeQuickViewModal: PropTypes.func.isRequired,
+  clearAddToBagError: PropTypes.func.isRequired,
   onPickUpOpenClick: PropTypes.func.isRequired,
   isModalOpen: PropTypes.bool.isRequired,
   productInfo: PRODUCT_INFO_PROP_TYPE_SHAPE.isRequired,

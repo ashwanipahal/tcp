@@ -1,12 +1,5 @@
 import React from 'react';
-import { connect } from 'react-redux';
 import ProductAddToBag from '../views/ProductAddToBag.view';
-import {
-  addToCartEcom,
-  clearAddToBagErrorState,
-} from '../../../../features/CnC/AddedToBag/container/AddedToBag.actions';
-import { getAddedToBagError } from '../../../../features/CnC/AddedToBag/container/AddedToBag.selectors';
-import getQuickViewFormValues from '../../../../../reduxStore/selectors/form.selectors';
 
 /**
  * This class is a container of Product Add to bag view
@@ -40,11 +33,6 @@ class ProductAddToBagContainer extends React.PureComponent<Props> {
       this.setState(this.getStateValuesFromProps(currentProduct, selectedColorProductId));
     }
   }
-
-  componentWillUnmount = () => {
-    const { clearAddToBagError } = this.props;
-    clearAddToBagError();
-  };
 
   getStateValuesFromProps = (currentProduct, selectedColorProductId) => {
     const initialValues = this.getInitialValues(currentProduct, selectedColorProductId);
@@ -382,10 +370,8 @@ class ProductAddToBagContainer extends React.PureComponent<Props> {
       currentProduct,
       currentProduct: { colorFitsSizesMap },
       plpLabels,
-      addToBagEcom,
-      addToBagError,
-      formValues,
-      closeQuickViewModal,
+      handleFormSubmit,
+      errorOnHandleSubmit,
     } = this.props;
     const {
       selectedColor,
@@ -405,7 +391,6 @@ class ProductAddToBagContainer extends React.PureComponent<Props> {
         sizeList={this.getSizeList(colorFitsSizesMap)}
         selectSize={this.sizeChange}
         selectFit={this.fitChange}
-        currentProduct={currentProduct}
         selectColor={this.colorChange}
         selectedColor={selectedColor}
         selectedFit={selectedFit}
@@ -420,40 +405,15 @@ class ProductAddToBagContainer extends React.PureComponent<Props> {
         onQuantityChange={this.quantityChange}
         addToBagAction={this.addToBagAction}
         generalProductId={generalProductId}
-        addToBagEcom={addToBagEcom}
-        addToBagError={addToBagError}
-        formValues={formValues}
-        closeQuickViewModal={closeQuickViewModal}
+        handleFormSubmit={handleFormSubmit}
+        errorOnHandleSubmit={errorOnHandleSubmit}
       />
     );
   }
 }
 
-function mapStateToProps(state, ownProps) {
-  return {
-    formValues:
-      ownProps.currentProduct.generalProductId &&
-      getQuickViewFormValues(state, `ProductAddToBag-${ownProps.currentProduct.generalProductId}`),
-    addToBagError: getAddedToBagError(state),
-  };
-}
-
-function mapDispatchToProps(dispatch) {
-  return {
-    addToBagEcom: payload => {
-      dispatch(addToCartEcom(payload));
-    },
-    clearAddToBagError: () => {
-      dispatch(clearAddToBagErrorState());
-    },
-  };
-}
-
 /* Export container */
 
-export default connect(
-  mapStateToProps,
-  mapDispatchToProps
-)(ProductAddToBagContainer);
+export default ProductAddToBagContainer;
 
 export { ProductAddToBagContainer as ProductAddToBagContainerVanilla };

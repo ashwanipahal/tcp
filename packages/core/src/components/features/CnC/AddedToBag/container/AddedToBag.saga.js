@@ -37,6 +37,7 @@ export function* addToCartEcom({ payload }) {
       'calculationUsage[]': '-7',
       externalId: wishlistItemId || '',
     };
+    yield put(clearAddToBagErrorState());
     const res = yield call(addCartEcomItem, params);
     yield put(
       SetAddedToBagData({
@@ -49,10 +50,9 @@ export function* addToCartEcom({ payload }) {
     }
 
     yield put(openAddedToBag());
-    yield put(clearAddToBagErrorState());
+
     yield put(BAG_PAGE_ACTIONS.getOrderDetails());
   } catch (err) {
-    // eslint-disable-next-line no-underscore-dangle
     const errMsg = err && err.errorResponse && err.errorResponse.errorMessage;
     yield put(AddToCartError(errMsg));
   }

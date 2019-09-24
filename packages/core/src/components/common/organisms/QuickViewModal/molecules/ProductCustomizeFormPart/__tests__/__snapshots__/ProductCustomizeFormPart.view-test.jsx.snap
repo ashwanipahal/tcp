@@ -123,8 +123,7 @@ exports[`ProductCustomizeFormPart component should renders correctly 1`] = `
           priceCurrency=""
         />
       </div>
-      <Connect(ProductAddToBagContainer)
-        closeQuickViewModal={[Function]}
+      <ProductAddToBagContainer
         currentProduct={
           Object {
             "alternateSizes": Object {},
@@ -296,6 +295,7 @@ exports[`ProductCustomizeFormPart component should renders correctly 1`] = `
             "unbxdProdId": "2100606_IV",
           }
         }
+        errorOnHandleSubmit=""
         onChangeColor={[Function]}
         plpLabels={Object {}}
       />

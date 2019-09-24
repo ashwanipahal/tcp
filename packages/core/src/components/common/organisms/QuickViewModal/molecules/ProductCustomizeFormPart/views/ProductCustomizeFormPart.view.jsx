@@ -44,7 +44,8 @@ class ProductCustomizeFormPart extends React.Component {
       isHasPlcc,
       isInternationalShipping,
       quickViewLabels,
-      closeQuickViewModal,
+      handleAddToBag,
+      addToBagError,
     } = this.props;
 
     const { currentColorEntry } = this.state;
@@ -110,7 +111,8 @@ class ProductCustomizeFormPart extends React.Component {
               onChangeColor={this.onChangeColor}
               plpLabels={plpLabels}
               currentProduct={productInfo}
-              closeQuickViewModal={closeQuickViewModal}
+              handleFormSubmit={handleAddToBag}
+              errorOnHandleSubmit={addToBagError}
             />
           </div>
         </div>
@@ -121,6 +123,7 @@ class ProductCustomizeFormPart extends React.Component {
 
 ProductCustomizeFormPart.propTypes = {
   plpLabels: PropTypes.shape({}).isRequired,
+  handleAddToBag: PropTypes.func.isRequired,
   closeQuickViewModal: PropTypes.func,
   formValues: PropTypes.shape({}).isRequired,
   quickViewLabels: PropTypes.shape({
@@ -136,6 +139,7 @@ ProductCustomizeFormPart.propTypes = {
   isCanada: PropTypes.bool,
   isInternationalShipping: PropTypes.bool,
   isHasPlcc: PropTypes.bool,
+  addToBagError: PropTypes.string,
 };
 
 ProductCustomizeFormPart.defaultProps = {
@@ -147,6 +151,7 @@ ProductCustomizeFormPart.defaultProps = {
   isHasPlcc: false,
   isInternationalShipping: false,
   closeQuickViewModal: () => {},
+  addToBagError: '',
 };
 
 export default withStyles(ProductCustomizeFormPart, styles);

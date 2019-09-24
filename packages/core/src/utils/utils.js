@@ -550,7 +550,7 @@ export const parseBoolean = bool => {
   return bool === true || bool === '1' || (bool || '').toUpperCase() === 'TRUE';
 };
 
-export const getFormSquValue = formValue => {
+export const getFormSKUValue = formValue => {
   return {
     color: (typeof formValue.color === 'object' && formValue.color.name) || formValue.Quantity,
     size: (typeof formValue.Size === 'object' && formValue.Size.name) || formValue.Size,
@@ -587,5 +587,5 @@ export default {
   formatDate,
   parseStoreHours,
   parseBoolean,
-  getFormSquValue,
+  getFormSKUValue,
 };

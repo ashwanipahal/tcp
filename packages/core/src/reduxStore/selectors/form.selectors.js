@@ -1,16 +1,16 @@
-import { getFormSquValue } from '../../utils/utils';
+import { getFormSKUValue } from '../../utils/utils';
 
 const getFormValues = (state, formName) => {
   return state.form[formName] && state.form[formName].values;
 };
 
-const getQuickViewFormValues = (state, formName) => {
+const getAddedToBagFormValues = (state, formName) => {
   const formValues = getFormValues(state, formName);
   return (
     formValues && {
-      ...getFormSquValue(formValues),
+      ...getFormSKUValue(formValues),
     }
   );
 };
 
-export default getQuickViewFormValues;
+export default getAddedToBagFormValues;
