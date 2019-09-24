@@ -42,7 +42,9 @@ export function* addToCartEcom({ payload }) {
     yield put(openAddedToBag());
     yield put(BAG_PAGE_ACTIONS.getOrderDetails());
   } catch (err) {
-    yield put(AddToCartError(err));
+    // eslint-disable-next-line no-underscore-dangle
+    const errMsg = err && err.errorResponse && err.errorResponse.errorMessage;
+    yield put(AddToCartError(errMsg));
   }
 }
 
