@@ -7,6 +7,13 @@ const ImageSize = styled.Image`
 
 const RichTextWrapper = styled.View`
   height: 200px;
+  margin-top: ${props => props.theme.spacing.ELEM_SPACING.MED};
+  overflow: hidden;
+`;
+
+const ButtonWrapper = styled.View`
+  width: 60%;
+  margin: 0 auto;
 `;
 
 const EarnExtraPointsTileImage = styled.View`
@@ -17,4 +24,4 @@ const EarnExtraPointsTileImage = styled.View`
   align-items: center;
 `;
 
-export { RichTextWrapper, ImageSize, EarnExtraPointsTileImage };
+export { RichTextWrapper, ImageSize, EarnExtraPointsTileImage, ButtonWrapper };

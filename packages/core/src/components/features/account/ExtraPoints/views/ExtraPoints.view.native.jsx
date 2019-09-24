@@ -14,6 +14,7 @@ import {
   InnerTileWrapper,
   FirstInnerTileWrapper,
   MprTermsWrapper,
+  MorePointsWrapper,
 } from '../styles/ExtraPoints.style.native';
 
 /**
@@ -64,35 +65,49 @@ export class EarnPoints extends React.PureComponent {
 
     return (
       <>
-        <TilesWrapper>
-          {waysToEarn &&
-            waysToEarn.map((item, index) => (
-              <>
-                {item && index === 0 && (
-                  <FirstInnerTileWrapper>
-                    <DetailedEarnExtraPointsTile
-                      key={index.toString()}
-                      waysToEarnRow={item}
-                      onViewActivityDetails={this.onViewActivityDetails}
-                      labels={labels}
-                      viewAll
-                    />
-                  </FirstInnerTileWrapper>
-                )}
-                {item && index > 0 && (
-                  <InnerTileWrapper>
-                    <DetailedEarnExtraPointsTile
-                      key={index.toString()}
-                      waysToEarnRow={item}
-                      onViewActivityDetails={this.onViewActivityDetails}
-                      labels={labels}
-                      viewAll
-                    />
-                  </InnerTileWrapper>
-                )}
-              </>
-            ))}
-        </TilesWrapper>
+        {waysToEarn && (
+          <TilesWrapper>
+            <MorePointsWrapper>
+              <BodyCopy
+                component="p"
+                fontSize="fs18"
+                fontFamily="secondary"
+                fontWeight="semibold"
+                textAlign="center"
+                color="gray.900"
+                text={getLabelValue(labels, 'lbl_extraExtraPoints_more_points')}
+                dataLocator="earn-points-morePoints-text"
+              />
+            </MorePointsWrapper>
+            {waysToEarn &&
+              waysToEarn.map((item, index) => (
+                <>
+                  {item && index === 0 && (
+                    <FirstInnerTileWrapper>
+                      <DetailedEarnExtraPointsTile
+                        key={index.toString()}
+                        waysToEarnRow={item}
+                        onViewActivityDetails={this.onViewActivityDetails}
+                        labels={labels}
+                        viewAll
+                      />
+                    </FirstInnerTileWrapper>
+                  )}
+                  {item && index > 0 && (
+                    <InnerTileWrapper>
+                      <DetailedEarnExtraPointsTile
+                        key={index.toString()}
+                        waysToEarnRow={item}
+                        onViewActivityDetails={this.onViewActivityDetails}
+                        labels={labels}
+                        viewAll
+                      />
+                    </InnerTileWrapper>
+                  )}
+                </>
+              ))}
+          </TilesWrapper>
+        )}
         <MprTermsWrapper>
           <Anchor
             fontSizeVariation="large"
@@ -109,6 +124,7 @@ export class EarnPoints extends React.PureComponent {
             component="p"
             fontSize="fs14"
             fontFamily="secondary"
+            color="gray.900"
             text={getLabelValue(labels, 'lbl_common_extra_points_terms_conditions')}
             dataLocator="earn-points-mpr-text"
           />
