@@ -91,4 +91,52 @@ describe('PickUpFormPartVanilla component', () => {
     component.instance().SaveAndCancelButton();
     expect(component).toMatchSnapshot();
   });
+
+  it('calling getNextCTAText method', () => {
+    const props = {
+      className: '',
+      isGuest: false,
+      isMobile: false,
+      pickupError: 'Error',
+      isUsSite: false,
+      pickUpLabels: { nextText: 'NEXT', reviewText: 'REVIEW' },
+      smsSignUpLabels: {},
+      currentPhoneNumber: '',
+      isOrderUpdateChecked: false,
+      isAlternateUpdateChecked: false,
+      initialValues: {},
+      isSmsUpdatesEnabled: true,
+      dispatch: jest.fn(),
+      handleSubmit: jest.fn(),
+      orderHasShipping: false,
+      isVenmoPaymentInProgress: true,
+    };
+    const tree = shallow(<PickUpFormPartVanilla {...props} />);
+    const componentInstance = tree.instance();
+    expect(componentInstance.getNextCTAText()).toEqual('NEXT: REVIEW');
+  });
+
+  it('calling getNextCTAText method with orderHasShipping', () => {
+    const props = {
+      className: '',
+      isGuest: false,
+      isMobile: false,
+      pickupError: 'Error',
+      isUsSite: false,
+      pickUpLabels: { nextText: 'NEXT', reviewText: 'REVIEW', shippingText: 'SHIPPING' },
+      smsSignUpLabels: {},
+      currentPhoneNumber: '',
+      isOrderUpdateChecked: false,
+      isAlternateUpdateChecked: false,
+      initialValues: {},
+      isSmsUpdatesEnabled: true,
+      dispatch: jest.fn(),
+      handleSubmit: jest.fn(),
+      orderHasShipping: true,
+      isVenmoPaymentInProgress: false,
+    };
+    const tree = shallow(<PickUpFormPartVanilla {...props} />);
+    const componentInstance = tree.instance();
+    expect(componentInstance.getNextCTAText()).toEqual('NEXT: SHIPPING');
+  });
 });
