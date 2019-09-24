@@ -99,19 +99,13 @@ const getEditError = (productDetail, labels) => {
 };
 
 class ProductInformation extends React.Component {
-  constructor(props) {
-    super(props);
-    this.swipeable = React.createRef();
-  }
+  swipeable = React.createRef();
 
   renderSflActionsLinks = () => {
     const { productDetail, isShowSaveForLater, labels, isBagPageSflSection } = this.props;
     const { saveForLaterLink, moveToBagLink } = labels;
-    if (
-      !isBagPageSflSection &&
-      productDetail.miscInfo.availability === CARTPAGE_CONSTANTS.AVAILABILITY_OK &&
-      isShowSaveForLater
-    ) {
+    const isOK = productDetail.miscInfo.availability === CARTPAGE_CONSTANTS.AVAILABILITY_OK;
+    if (!isBagPageSflSection && isOK && isShowSaveForLater) {
       return (
         <MarginLeft onPress={() => CartItemTileExtension.handleMoveItemtoSaveList(this.props)}>
           <Image
@@ -124,10 +118,7 @@ class ProductInformation extends React.Component {
         </MarginLeft>
       );
     }
-    if (
-      isBagPageSflSection &&
-      productDetail.miscInfo.availability === CARTPAGE_CONSTANTS.AVAILABILITY_OK
-    ) {
+    if (isBagPageSflSection && isOK) {
       return (
         <MarginLeft onPress={() => {}}>
           <Image
@@ -226,7 +217,15 @@ class ProductInformation extends React.Component {
   };
 
   rightButton = () => {
-    const { removeCartItem, productDetail, labels } = this.props;
+    const { removeCartItem, productDetail, labels, isBagPageSflSection } = this.props;
+    const { isGenricGuest, isCondense } = this.props;
+    const {
+      itemInfo: { itemId, isGiftItem, itemBrand },
+      productInfo: { skuId, generalProductId },
+      miscInfo: { orderItemType },
+    } = productDetail;
+    const catEntryId = isGiftItem ? generalProductId : skuId;
+    const userInfoRequired = isGenricGuest && isGenricGuest.get('userId') && isCondense; // Flag to check if getRegisteredUserInfo required after SflList
     return (
       <BtnWrapper>
         {productDetail.miscInfo.availability !== CARTPAGE_CONSTANTS.AVAILABILITY_SOLDOUT && (
@@ -241,8 +240,19 @@ class ProductInformation extends React.Component {
           </View>
         )}
         {this.renderSflActionsLinks()}
-
-        <MarginLeft onPress={() => removeCartItem(productDetail.itemInfo.itemId)}>
+        <MarginLeft
+          onPress={() =>
+            removeCartItem({
+              itemId,
+              pageView: 'myBag',
+              catEntryId,
+              userInfoRequired,
+              isBagPageSflSection,
+              itemBrand,
+              orderItemType,
+            })
+          }
+        >
           <Image
             data-locator={getLocator('cart_item_edit_link')}
             source={deleteIcon}
@@ -264,15 +274,9 @@ class ProductInformation extends React.Component {
   };
 
   render() {
-    const {
-      productDetail,
-      labels,
-      itemIndex,
-      openedTile,
-      setSelectedProductTile,
-      isBagPageSflSection,
-    } = this.props;
-
+    const { productDetail, labels, itemIndex } = this.props;
+    const { openedTile, setSelectedProductTile, isBagPageSflSection } = this.props;
+    const { isGiftItem } = productDetail.itemInfo;
     return (
       <Swipeable
         onRef={ref => {
@@ -307,11 +311,7 @@ class ProductInformation extends React.Component {
                       fontSize="fs13"
                       fontWeight={['semibold']}
                       textAlign="left"
-                      text={
-                        productDetail.itemInfo.isGiftItem === true
-                          ? `${labels.design}: `
-                          : `${labels.color}: `
-                      }
+                      text={isGiftItem === true ? `${labels.design}: ` : `${labels.color}: `}
                     />
                   </ProductSubDetailLabel>
                   <BodyCopy
@@ -328,11 +328,7 @@ class ProductInformation extends React.Component {
                       fontSize="fs13"
                       fontWeight={['semibold']}
                       textAlign="left"
-                      text={
-                        productDetail.itemInfo.isGiftItem === true
-                          ? `${labels.value}: `
-                          : `${labels.size}: `
-                      }
+                      text={isGiftItem === true ? `${labels.value}: ` : `${labels.size}: `}
                     />
                   </ProductSubDetailLabel>
                   <BodyCopy
@@ -387,18 +383,23 @@ ProductInformation.propTypes = {
   removeCartItem: PropTypes.func.isRequired,
   itemIndex: PropTypes.number,
   openedTile: PropTypes.number,
+  isCondense: PropTypes.bool,
   setSelectedProductTile: PropTypes.func.isRequired,
   swipedElement: PropTypes.shape({}),
   setSwipedElement: PropTypes.func.isRequired,
   isBagPageSflSection: PropTypes.bool,
   isShowSaveForLater: PropTypes.bool.isRequired,
+  isGenricGuest: PropTypes.shape({}).isRequired,
 };
+
 ProductInformation.defaultProps = {
   productDetail: {},
   labels: {},
   itemIndex: 0,
   openedTile: 0,
+  isCondense: true,
   swipedElement: null,
   isBagPageSflSection: false,
 };
+
 export default ProductInformation;
