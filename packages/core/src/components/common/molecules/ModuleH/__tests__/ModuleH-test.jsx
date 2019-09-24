@@ -2,7 +2,6 @@ import React from 'react';
 import { shallow } from 'enzyme';
 import Carousel from '../../Carousel';
 import { ModuleHVanilla as ModuleH } from '../views/ModuleH';
-import ModuleHHeader from '../views/ModuleH.Header';
 import ModuleHCTALinks from '../views/ModuleH.Links';
 import mock from '../../../../../services/abstractors/common/moduleH/mock';
 
@@ -21,10 +20,6 @@ describe('ModuleH component', () => {
 
   it('renders correctly', () => {
     expect(moduleHComp).toMatchSnapshot();
-  });
-
-  it('has Header component', () => {
-    expect(moduleHComp.find(ModuleHHeader)).toHaveLength(1);
   });
 
   it('has Carousel wrapper', () => {

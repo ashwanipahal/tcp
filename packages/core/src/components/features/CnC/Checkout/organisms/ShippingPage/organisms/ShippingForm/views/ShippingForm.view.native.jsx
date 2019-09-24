@@ -14,7 +14,7 @@ import {
   EmailSignUpWrapper,
   EmailSignUpForm,
   ShippingFormWrapper,
-} from '../styles/ShippingForm.styles.native';
+} from '../styles/ShippingForm.view.style.native';
 import GiftServices from '../../../molecules/GiftServices';
 import CnCTemplate from '../../../../../../common/organism/CnCTemplate';
 import RegisteredShippingFormView from '../../RegisteredShippingForm/views/RegisteredShippingForm.view.native';

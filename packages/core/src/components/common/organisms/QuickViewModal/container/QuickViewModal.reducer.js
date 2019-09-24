@@ -21,7 +21,8 @@ const QuickViewReducer = (state = initialState, action) => {
     case QUICK_VIEW_CONSTANT.OPEN_QUICK_VIEW_MODAL:
       return state.set('isModalOpen', action.payload.isModalOpen);
     case QUICK_VIEW_CONSTANT.CLOSE_QUICK_VIEW_MODAL:
-      return state.set('isModalOpen', action.payload.isModalOpen);
+      state.set('isModalOpen', action.payload.isModalOpen);
+      return state.set('quickViewProduct', null);
     default:
       return getDefaultState(state);
   }

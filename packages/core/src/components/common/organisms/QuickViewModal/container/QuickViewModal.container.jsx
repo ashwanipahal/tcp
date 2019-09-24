@@ -5,15 +5,21 @@ import PropTypes from 'prop-types';
 import QuickViewModal from '../views';
 import { closeQuickViewModal } from './QuickViewModal.actions';
 import { PRODUCT_INFO_PROP_TYPE_SHAPE } from '../../../../features/browse/ProductListing/molecules/ProductList/propTypes/productsAndItemsPropTypes';
-import { getModalState, getProductInfo } from './QuickViewModal.selectors';
+import { getModalState, getProductInfo, getQuickViewLabels } from './QuickViewModal.selectors';
 import {
   getPlpLabels,
   getCurrentCurrency,
 } from '../../../../features/browse/ProductDetail/container/ProductDetail.selectors';
 
-class QuickViewModalContainer extends React.PureComponent {
-  componentDidMount() {}
+import { getAddedToBagError } from '../../../../features/CnC/AddedToBag/container/AddedToBag.selectors';
 
+import getQuickViewFormValues from '../../../../../reduxStore/selectors/form.selectors';
+import {
+  addToCartEcom,
+  clearAddToBagErrorState,
+} from '../../../../features/CnC/AddedToBag/container/AddedToBag.actions';
+
+class QuickViewModalContainer extends React.PureComponent {
   render() {
     const { isModalOpen, closeQuickViewModalAction, productInfo, ...otherProps } = this.props;
     return (
@@ -31,12 +37,16 @@ class QuickViewModalContainer extends React.PureComponent {
   }
 }
 
-function mapStateToProps(state) {
+function mapStateToProps(state, ownProps) {
   return {
     isModalOpen: getModalState(state),
     productInfo: getProductInfo(state),
     plpLabels: getPlpLabels(state),
     currency: getCurrentCurrency(state),
+    quickViewLabels: getQuickViewLabels(state),
+    formValues: getQuickViewFormValues(state),
+    addToBagError: getAddedToBagError(state),
+    ...ownProps,
   };
 }
 
@@ -44,6 +54,12 @@ function mapDispatchToProps(dispatch) {
   return {
     closeQuickViewModalAction: payload => {
       dispatch(closeQuickViewModal(payload));
+    },
+    addToCartEcom: payload => {
+      dispatch(addToCartEcom(payload));
+    },
+    clearAddToBagErrorState: () => {
+      dispatch(clearAddToBagErrorState());
     },
   };
 }

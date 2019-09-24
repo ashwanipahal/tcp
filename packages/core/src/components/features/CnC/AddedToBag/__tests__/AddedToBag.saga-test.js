@@ -57,6 +57,7 @@ describe('Added to bag saga', () => {
       })
     );
 
+    addToCartEcomGen.next();
     putDescriptor = addToCartEcomGen.next().value;
     expect(putDescriptor).toEqual(put(openAddedToBag()));
     putDescriptor = addToCartEcomGen.next().value;

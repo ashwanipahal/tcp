@@ -85,8 +85,8 @@ const InstagramLoginComponent = props => {
                 >
                   <ImageComp
                     className="social-account-icon"
-                    width={10}
-                    height={10}
+                    width={15}
+                    height={15}
                     src={getIconPath('plus-icon')}
                     data-locator="facebookPlusIcon"
                   />
@@ -96,8 +96,8 @@ const InstagramLoginComponent = props => {
                 <BodyCopy className="social-accounts__align social_accounts_cross_plus-icon">
                   <ImageComp
                     className="social-account-icon"
-                    width={10}
-                    height={10}
+                    width={15}
+                    height={15}
                     src={getIconPath('close-icon')}
                     data-locator="facebookCrossIcon"
                     onClick={onClickHandler}

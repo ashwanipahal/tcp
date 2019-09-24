@@ -4,7 +4,7 @@ import BodyCopy from '../../../atoms/BodyCopy';
 import {
   CheckoutSectionTitleWrapper,
   CheckoutSectionTitle,
-} from '../styles/CheckoutSectionTitleDisplay.style.native';
+} from '../styles/CheckoutSectionTitleDisplay.view.style.native';
 
 class CheckoutSectionTitleDisplay extends React.PureComponent {
   render() {

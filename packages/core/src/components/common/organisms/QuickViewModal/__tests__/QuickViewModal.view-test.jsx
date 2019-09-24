@@ -6,6 +6,7 @@ import { QuickViewModalVanilla } from '../views/QuickViewModal.view';
 describe('QuickViewModal component', () => {
   it('should renders correctly', () => {
     const props = {
+      quickViewLabels: {},
       closeQuickViewModal: jest.fn(),
       isModalOpen: false,
       productInfo: {
