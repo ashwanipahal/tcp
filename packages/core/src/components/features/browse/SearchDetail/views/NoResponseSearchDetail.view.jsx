@@ -9,6 +9,7 @@ import SearchListingStyle from '../SearchDetail.style';
 import { Anchor, Row, Col, BodyCopy } from '../../../../common/atoms';
 import { getSearchResult } from '../container/SearchDetail.actions';
 import searchData from '../../../../../../../web/src/components/features/content/Header/molecules/SearchBar/SearchBar.mock';
+import { routerPush, getSiteId } from '../../../../../utils/index';
 
 class NoResponseSearchDetailView extends React.PureComponent {
   constructor(props) {
@@ -16,7 +17,6 @@ class NoResponseSearchDetailView extends React.PureComponent {
 
     this.state = {
       showProduct: false,
-      ...props,
     };
 
     this.searchInput = React.createRef();
@@ -24,8 +24,19 @@ class NoResponseSearchDetailView extends React.PureComponent {
     this.getSearchResults = this.getSearchResults.bind(this);
   }
 
-  redirectToSearchPage = () => {
-    // redirect to search page integration pending
+  redirectToSearchPage = searchText => {
+    // redirect to search page integration pending WORK IN PROGRESS
+    let displayPath = window.location.pathname;
+    const searchName = window.location.search;
+    let routeURL = '?';
+    displayPath = `${displayPath}${searchName}`;
+    const country = getSiteId();
+    let urlPath = displayPath.replace(`/${country}`, '');
+    urlPath = urlPath.split('?');
+    urlPath = [...urlPath].shift();
+    routeURL = `${routeURL}`;
+    routeURL = `${urlPath}${routeURL}`;
+    routerPush(`/search?searchQuery=${searchText}`, routeURL, { shallow: true });
   };
 
   changeSearchText = e => {
