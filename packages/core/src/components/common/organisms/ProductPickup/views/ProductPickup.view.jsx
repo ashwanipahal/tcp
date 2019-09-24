@@ -15,10 +15,7 @@ import withStyles from '../../../hoc/withStyles';
 import { Button, Anchor, BodyCopy } from '../../../atoms';
 import ProductPickupStyles from '../styles/ProductPickup.style';
 
-const KEY_CODES = {
-  ENTER: 13,
-};
-
+import { KEY_CODES } from '../../../../../constants/keyboard.constants';
 /**
  *  Describes a general product, not yet specialized by chosing a color, size, etc.
  *  For example, a product shown in reccomendations, or PDP.

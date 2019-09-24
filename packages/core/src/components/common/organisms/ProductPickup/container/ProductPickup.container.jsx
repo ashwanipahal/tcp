@@ -4,7 +4,7 @@ import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
 import { formValueSelector } from 'redux-form';
 import ProductPickup from '../views/ProductPickup.view';
-import { getBopisInventoryDetailsActn } from './ProductPickup.actions';
+import { getBopisInventoryDetailsAction } from './ProductPickup.actions';
 import * as PickupSelectors from './ProductPickup.selectors';
 import {
   validateSkuDetails,
@@ -696,7 +696,7 @@ function mapStateToProps(state, ownProps) {
 
 const mapDispatchToProps = dispatch => ({
   getBopisInventoryDetails: payload => {
-    dispatch(getBopisInventoryDetailsActn(payload));
+    dispatch(getBopisInventoryDetailsAction(payload));
   },
   onPickUpOpenClick: payload => {
     dispatch(openPickupModalWithValues(payload));
