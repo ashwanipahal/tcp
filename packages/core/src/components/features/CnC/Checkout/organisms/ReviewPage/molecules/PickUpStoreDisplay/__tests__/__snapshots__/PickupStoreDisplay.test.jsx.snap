@@ -28,6 +28,7 @@ exports[`testing block for PickupStoreDisplay PickupStoreDisplay should be rende
         fontWeight="extrabold"
         letterSpacing="normal"
         lineHeight="normal"
+        link={null}
         textAlign="left"
       >
         Fulton Street
@@ -42,6 +43,7 @@ exports[`testing block for PickupStoreDisplay PickupStoreDisplay should be rende
         fontWeight="regular"
         letterSpacing="normal"
         lineHeight="normal"
+        link={null}
         textAlign="left"
       >
         471-485 Fulton Street
@@ -59,6 +61,7 @@ exports[`testing block for PickupStoreDisplay PickupStoreDisplay should be rende
           fontWeight="extrabold"
           letterSpacing="normal"
           lineHeight="normal"
+          link={null}
           textAlign="left"
         >
           Title 1 
@@ -74,6 +77,7 @@ exports[`testing block for PickupStoreDisplay PickupStoreDisplay should be rende
           fontWeight="regular"
           letterSpacing="normal"
           lineHeight="normal"
+          link={null}
           textAlign="left"
         >
           Thu. Jan

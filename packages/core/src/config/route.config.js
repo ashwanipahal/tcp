@@ -1,7 +1,18 @@
 const ROUTE_PATH = {
   guestOrderDetails: ({ pathSuffix }) => `/track-order/${pathSuffix}`,
   home: '/home',
-  plp: '/c',
+  plp: {
+    name: '/c',
+    param: 'cid',
+  },
+  pdp: {
+    name: '/p',
+    param: 'pid',
+  },
+  search: {
+    name: '/search',
+    param: 'sq',
+  },
   // TODO - Make all page constants and use them in ROUTES_LIST for mapping
 };
 

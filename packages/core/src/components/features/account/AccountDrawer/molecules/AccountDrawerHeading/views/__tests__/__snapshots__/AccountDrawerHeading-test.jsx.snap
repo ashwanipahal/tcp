@@ -20,6 +20,7 @@ exports[`AccountDrawerHeading should render correctly 1`] = `
         fontWeight="semibold"
         letterSpacing="normal"
         lineHeight="normal"
+        link={null}
         textAlign="left"
       />
     </span>

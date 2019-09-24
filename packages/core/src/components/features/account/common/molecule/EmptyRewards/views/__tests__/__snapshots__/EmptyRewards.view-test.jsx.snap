@@ -28,6 +28,7 @@ exports[`EmptyRewards should render correctly 1`] = `
       fontWeight="regular"
       letterSpacing="normal"
       lineHeight="normal"
+      link={null}
       textAlign="left"
     >
       msg

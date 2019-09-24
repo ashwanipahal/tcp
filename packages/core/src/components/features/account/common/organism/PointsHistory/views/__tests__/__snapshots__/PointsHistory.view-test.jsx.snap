@@ -27,6 +27,7 @@ exports[`Points History Slider View should render Points History Correctly 1`] =
         fontWeight="semibold"
         letterSpacing="normal"
         lineHeight="normal"
+        link={null}
         textAlign="left"
       >
         08/08/19
@@ -51,6 +52,7 @@ exports[`Points History Slider View should render Points History Correctly 1`] =
         fontWeight="semibold"
         letterSpacing="normal"
         lineHeight="normal"
+        link={null}
         textAlign="left"
       >
         Credit
@@ -75,6 +77,7 @@ exports[`Points History Slider View should render Points History Correctly 1`] =
         fontWeight="semibold"
         letterSpacing="normal"
         lineHeight="normal"
+        link={null}
         textAlign="left"
       >
         5
@@ -104,6 +107,7 @@ exports[`Points History Slider View should render Points History Correctly 1`] =
         fontWeight="semibold"
         letterSpacing="normal"
         lineHeight="normal"
+        link={null}
         textAlign="left"
       >
         08/08/19
@@ -128,6 +132,7 @@ exports[`Points History Slider View should render Points History Correctly 1`] =
         fontWeight="semibold"
         letterSpacing="normal"
         lineHeight="normal"
+        link={null}
         textAlign="left"
       >
         AddBirthDate
@@ -152,6 +157,7 @@ exports[`Points History Slider View should render Points History Correctly 1`] =
         fontWeight="semibold"
         letterSpacing="normal"
         lineHeight="normal"
+        link={null}
         textAlign="center"
       >
         5
