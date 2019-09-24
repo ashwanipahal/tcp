@@ -91,7 +91,7 @@ export class App extends React.PureComponent {
             <Box style={styles.container}>
               {Platform.OS === 'ios' && <StatusBar barStyle="default" />}
               <AppNavigator
-                {...getOnNavigationStateChange()}
+                {...getOnNavigationStateChange(this.store)}
                 screenProps={{ toggleBrandAction: this.toggleBrandAction, apiConfig }}
               />
               {isSplashVisible && <AppSplash appType={appType} removeSplash={this.removeSplash} />}
