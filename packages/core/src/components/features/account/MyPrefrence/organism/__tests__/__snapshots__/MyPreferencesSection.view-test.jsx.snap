@@ -62,7 +62,7 @@ exports[`ProfileInformation component should render correctly 1`] = `
     </Styled(Col)>
   </Styled(Row)>
   <Styled(Row)
-    className="hideOnMobile elem-pt-LRG elem-pb-LRG"
+    className="hide-on-mobile elem-pt-LRG elem-pb-LRG"
     fullBleed={true}
   >
     <Styled(Col)
@@ -131,7 +131,7 @@ exports[`ProfileInformation component should render correctly 1`] = `
       </Styled(BodyCopy)>
     </Styled(Col)>
     <Styled(Col)
-      className="hideOnMobile elem-mb-XL"
+      className="hide-on-mobile elem-mb-XL"
       colSize={
         Object {
           "large": 1,
