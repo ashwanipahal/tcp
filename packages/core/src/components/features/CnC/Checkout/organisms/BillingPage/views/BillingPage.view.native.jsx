@@ -10,6 +10,11 @@ import BillingPaymentForm from '../../BillingPaymentForm';
 
 const { Container } = style;
 
+/**
+ * @class BillingPage
+ * @extends {PureComponent}
+ * @description view component to render billing page .
+ */
 class BillingPage extends React.PureComponent {
   static propTypes = {
     addressLabels: PropTypes.shape({}).isRequired,
@@ -26,7 +31,8 @@ class BillingPage extends React.PureComponent {
     shippingAddress: PropTypes.shape({}),
     cvvCodeRichText: PropTypes.shape({}),
     billingData: PropTypes.shape({}),
-    userAddresses: PropTypes.shape({})
+    userAddresses: PropTypes.shape({}),
+    creditFieldLabels: PropTypes.shape({}),
   };
 
   static defaultProps = {
@@ -36,8 +42,13 @@ class BillingPage extends React.PureComponent {
     cvvCodeRichText: null,
     billingData: null,
     userAddresses: null,
+    creditFieldLabels: {},
   };
 
+  /**
+   * @function render
+   * @description render method to be called of component
+   */
   render() {
     const {
       navigation,
@@ -51,7 +62,7 @@ class BillingPage extends React.PureComponent {
       addressLabels,
       billingData,
       userAddresses,
-
+      creditFieldLabels,
     } = this.props;
 
     const { header, backLinkShipping, backLinkPickup, nextSubmitText } = labels;
@@ -81,26 +92,26 @@ class BillingPage extends React.PureComponent {
                 billingData={billingData}
                 navigation={navigation}
                 btnText={nextSubmitText}
+                creditFieldLabels={creditFieldLabels}
               />
-            ) :
-              (
-                <BillingPaymentForm
-                  handleSubmit={submitBilling}
-                  orderHasShipping={orderHasShipping}
-                  isGuest={isGuest}
-                  backLinkPickup={backLinkPickup}
-                  backLinkShipping={backLinkShipping}
-                  nextSubmitText={nextSubmitText}
-                  cvvCodeRichText={cvvCodeRichText}
-                  labels={labels}
-                  billingData={billingData}
-                  addressLabels={addressLabels}
-                  shippingAddress={shippingAddress}
-                  userAddresses={userAddresses}
-                  navigation={navigation}
-                />
-
-              )}
+            ) : (
+              <BillingPaymentForm
+                handleSubmit={submitBilling}
+                orderHasShipping={orderHasShipping}
+                isGuest={isGuest}
+                backLinkPickup={backLinkPickup}
+                backLinkShipping={backLinkShipping}
+                nextSubmitText={nextSubmitText}
+                cvvCodeRichText={cvvCodeRichText}
+                labels={labels}
+                billingData={billingData}
+                addressLabels={addressLabels}
+                shippingAddress={shippingAddress}
+                userAddresses={userAddresses}
+                navigation={navigation}
+                creditFieldLabels={creditFieldLabels}
+              />
+            )}
           </Container>
         </ScrollView>
       </>

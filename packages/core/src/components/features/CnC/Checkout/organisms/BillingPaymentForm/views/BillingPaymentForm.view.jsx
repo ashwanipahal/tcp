@@ -34,6 +34,11 @@ import {
   getCardOptions,
 } from './BillingPaymentForm.view.util';
 
+/**
+ * @class BillingPaymentForm
+ * @extends {PureComponent}
+ * @description view component to render signed in user form.
+ */
 export class BillingPaymentForm extends React.PureComponent {
   static propTypes = propTypes;
 
@@ -46,10 +51,18 @@ export class BillingPaymentForm extends React.PureComponent {
     };
   }
 
-  onAddNewCCClick = () => {
+  /**
+   * @function onAddNewCreditCardClick
+   * @description sets the add new credit card state as true
+   */
+  onAddNewCreditCardClick = () => {
     this.setState({ addNewCCState: true });
   };
 
+  /**
+   * @function getCreditCardDropDown
+   * @description returns the  credit card list
+   */
   getCreditCardDropDown = (options, onClickHandler, activeValue) => {
     return (
       <DropdownList
@@ -61,6 +74,10 @@ export class BillingPaymentForm extends React.PureComponent {
     );
   };
 
+  /**
+   * @function getCheckoutBillingAddress
+   * @description returns the checkout billing address form
+   */
   getCheckoutBillingAddress = () => {
     const {
       selectedOnFileAddressId,
@@ -99,6 +116,10 @@ export class BillingPaymentForm extends React.PureComponent {
     );
   };
 
+  /**
+   * @function getAddNewCCForm
+   * @description returns the add new credit card form
+   */
   getAddNewCCForm = () => {
     const {
       cvvCodeRichText,
@@ -108,6 +129,7 @@ export class BillingPaymentForm extends React.PureComponent {
       isGuest,
       isSaveToAccountChecked,
       dispatch,
+      creditFieldLabels,
     } = this.props;
     let cvvError;
     /* istanbul ignore else */
@@ -127,10 +149,15 @@ export class BillingPaymentForm extends React.PureComponent {
         formName={constants.FORM_NAME}
         dispatch={dispatch}
         isExpirationRequired={isExpirationRequired}
+        creditFieldLabels={creditFieldLabels}
       />
     );
   };
 
+  /**
+   * @function addNewBillingInfoForm
+   * @description returns the new billing info form
+   */
   addNewBillingInfoForm = () => {
     const { onFileCardKey, labels, cardList } = this.props;
     const { addNewCCState } = this.state;
@@ -146,6 +173,10 @@ export class BillingPaymentForm extends React.PureComponent {
     );
   };
 
+  /**
+   * @function onCCDropDownChange
+   * @description sets the add new credit card state to false if it is true
+   */
   onCCDropDownChange = () => {
     const { addNewCCState } = this.state;
     if (addNewCCState) {
@@ -153,6 +184,10 @@ export class BillingPaymentForm extends React.PureComponent {
     }
   };
 
+  /**
+   * @function getCCDropDown
+   * @description returns the credit card drop down if user has credit cards
+   */
   getCCDropDown = ({ labels, creditCardList, onFileCardKey, selectedCard }) => {
     const { addNewCCState } = this.state;
     return (
@@ -176,7 +211,7 @@ export class BillingPaymentForm extends React.PureComponent {
               labels,
               onFileCardKey,
               addNewCCState,
-              addNewCC: this.onAddNewCCClick,
+              addNewCC: this.onAddNewCreditCardClick,
               selectedCard,
             })}
             childrenComp={(options, onClickHandler, activeValue, onClose) =>
@@ -189,6 +224,10 @@ export class BillingPaymentForm extends React.PureComponent {
     );
   };
 
+  /**
+   * @function getCreditListView
+   * @description returns the credit card drop down along with selected card
+   */
   getCreditListView = ({ labels, cvvCodeRichText, creditCardList, onFileCardKey }) => {
     const selectedCard = onFileCardKey ? getSelectedCard({ creditCardList, onFileCardKey }) : '';
     return (
@@ -199,7 +238,7 @@ export class BillingPaymentForm extends React.PureComponent {
           className="cardDropdownHeading"
           dataLocator="billing-payment-bilingcreditcardlabel"
         >
-          {labels.lbl_billing_selectFromCard}
+          {labels.selectFromCard}
         </Heading>
         <>
           {this.getCCDropDown({ labels, creditCardList, onFileCardKey, selectedCard })}
@@ -213,7 +252,7 @@ export class BillingPaymentForm extends React.PureComponent {
                   data-locator="billing-payment-details"
                   className="elem-mb-XS"
                 >
-                  {labels.lbl_billing_cardDetailsTitle}
+                  {labels.cardDetailsTitle}
                 </BodyCopy>
                 <Anchor
                   fontSizeVariation="medium"
@@ -223,7 +262,7 @@ export class BillingPaymentForm extends React.PureComponent {
                   className="billing-payment-edit"
                   dataLocator="billing-payment-edit"
                 >
-                  {labels.lbl_billing_editBtn}
+                  {labels.edit}
                 </Anchor>
               </BodyCopy>
               <Heading
@@ -232,7 +271,7 @@ export class BillingPaymentForm extends React.PureComponent {
                 className="paymentMethodHeading"
                 dataLocator="billing-payment-method"
               >
-                {labels.lbl_billing_paymentMethodTitle}
+                {labels.paymentMethod}
               </Heading>
               <Row fullBleed>
                 <Col
@@ -245,9 +284,7 @@ export class BillingPaymentForm extends React.PureComponent {
                 >
                   <CardImage
                     card={selectedCard}
-                    cardNumber={`${labels.lbl_billing_creditCardEnd}${selectedCard.accountNo.slice(
-                      -4
-                    )}`}
+                    cardNumber={`${labels.creditCardEnd}${selectedCard.accountNo.slice(-4)}`}
                   />
                 </Col>
 
@@ -261,7 +298,7 @@ export class BillingPaymentForm extends React.PureComponent {
                     className="position-relative cvvCode"
                   >
                     <Field
-                      placeholder={labels.lbl_billing_cvvCode}
+                      placeholder={labels.cvvCode}
                       name="cvvCode"
                       id="cvvCode"
                       component={TextBox}
@@ -292,15 +329,15 @@ export class BillingPaymentForm extends React.PureComponent {
                       fontFamily="secondary"
                       fontWeight="regular"
                     >
-                      {labels.lbl_billing_defaultPayment}
+                      {labels.defaultPayment}
                     </BodyCopy>
                   </Field>
                 </Row>
               )}
             </>
           ) : (
-              this.getAddNewCCForm()
-            )}
+            this.getAddNewCCForm()
+          )}
           <Row fullBleed className="billing-payment-subHeading">
             <Heading
               component="h2"
@@ -308,7 +345,7 @@ export class BillingPaymentForm extends React.PureComponent {
               className="paymentMethodHeading"
               dataLocator="billing-payment-billingAddress"
             >
-              {labels.lbl_billing_billingAddress}
+              {labels.billingAddress}
             </Heading>
           </Row>
 
@@ -324,13 +361,17 @@ export class BillingPaymentForm extends React.PureComponent {
               )}
             </Row>
           ) : (
-              this.getCheckoutBillingAddress()
-            )}
+            this.getCheckoutBillingAddress()
+          )}
         </>
       </>
     );
   };
 
+  /**
+   * @function getCreditCardWrapper
+   * @description returns the credit card payment method view
+   */
   getCreditCardWrapper = ({ labels, creditCardList, cvvCodeRichText, onFileCardKey }) => {
     const { addNewCCState } = this.state;
     return (
@@ -342,6 +383,10 @@ export class BillingPaymentForm extends React.PureComponent {
     );
   };
 
+  /**
+   * @function render
+   * @description render method to be called of component
+   */
   render() {
     const {
       className,
@@ -369,7 +414,7 @@ export class BillingPaymentForm extends React.PureComponent {
               data-locator="billing-details"
               className="elem-mb-LRG elem-mt-XL"
             >
-              {labels.lbl_billing_paymentMethodTitle}
+              {labels.paymentMethod}
             </BodyCopy>
             <PaymentMethods labels={labels} className="elem-mb-LRG" />
             {paymentMethodId === constants.PAYMENT_METHOD_CREDIT_CARD ? (
@@ -379,10 +424,9 @@ export class BillingPaymentForm extends React.PureComponent {
                 cvvCodeRichText,
                 onFileCardKey,
               })
-            ) :
-              (
-                <div className="payment-paypal-container" />
-              )}
+            ) : (
+              <div className="payment-paypal-container" />
+            )}
           </div>
         )}
         <CheckoutFooter

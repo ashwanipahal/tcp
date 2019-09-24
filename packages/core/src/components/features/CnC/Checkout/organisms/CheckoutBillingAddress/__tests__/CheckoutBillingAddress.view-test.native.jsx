@@ -1,5 +1,5 @@
 import React from 'react';
-import { List } from 'immutable'
+import { List } from 'immutable';
 import { shallow } from 'enzyme';
 import { CheckoutAddressVanilla } from '../views/CheckoutBillingAddress.view';
 
@@ -8,12 +8,11 @@ describe('CheckoutAddress', () => {
     const props = {
       dispatch: jest.fn(),
       orderHasShipping: true,
-      addressLabels: {},
+      addressLabels: { addressFormLabels: { selectFromAddress: '' } },
       isGuest: true,
       labels: {},
       shippingAddress: {},
       isSameAsShippingChecked: true,
-
     };
     const tree = shallow(<CheckoutAddressVanilla {...props} />);
     tree.setProps({ isSameAsShippingChecked: false });
@@ -23,7 +22,7 @@ describe('CheckoutAddress', () => {
     const props = {
       dispatch: jest.fn(),
       orderHasShipping: false,
-      addressLabels: {},
+      addressLabels: { addressFormLabels: { selectFromAddress: '' } },
       isGuest: true,
       labels: {},
       shippingAddress: {},
@@ -33,7 +32,7 @@ describe('CheckoutAddress', () => {
           addressId: '1234',
         },
       ]),
-      selectedOnFileAddressId: '1234'
+      selectedOnFileAddressId: '1234',
     };
     const tree = shallow(<CheckoutAddressVanilla {...props} />);
     expect(tree).toMatchSnapshot();
@@ -42,7 +41,7 @@ describe('CheckoutAddress', () => {
     const props = {
       dispatch: jest.fn(),
       orderHasShipping: false,
-      addressLabels: {},
+      addressLabels: { addressFormLabels: { selectFromAddress: '' } },
       isGuest: true,
       labels: {},
       shippingAddress: {},
@@ -51,7 +50,7 @@ describe('CheckoutAddress', () => {
         {
           addressId: '1234',
         },
-        { addressId: '5678', }
+        { addressId: '5678' },
       ]),
       selectedOnFileAddressId: '1234',
 
@@ -67,7 +66,7 @@ describe('CheckoutAddress', () => {
     const props = {
       dispatch: jest.fn(),
       orderHasShipping: true,
-      addressLabels: {},
+      addressLabels: { addressFormLabels: { selectFromAddress: '' } },
       isGuest: true,
       labels: {},
       isSameAsShippingChecked: false,
@@ -75,9 +74,9 @@ describe('CheckoutAddress', () => {
         {
           addressId: '1234',
           addressLine: ['abcd'],
-          state: 'AB'
+          state: 'AB',
         },
-        { addressId: '5678', }
+        { addressId: '5678' },
       ]),
 
       onFileAddressId: '1234',
@@ -96,7 +95,6 @@ describe('CheckoutAddress', () => {
       shippingAddress: {},
       isSameAsShippingChecked: false,
       userAddresses: new List(),
-
     };
 
     const tree = shallow(<CheckoutAddressVanilla {...props} />);

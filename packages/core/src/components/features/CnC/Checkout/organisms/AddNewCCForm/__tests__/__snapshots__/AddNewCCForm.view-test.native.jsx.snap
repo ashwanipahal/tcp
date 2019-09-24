@@ -7,10 +7,10 @@ exports[`AddNewCCForm should render correctly 1`] = `
     cardTypeImgUrl=""
     creditFieldLabels={
       Object {
-        "creditCardNumber": "lbl_billing_cardNumber",
-        "cvvCode": "lbl_billing_cvvCode",
-        "expMonth": "lbl_billing_expMonth",
-        "expYear": "lbl_billing_expYear",
+        "creditCardNumber": undefined,
+        "cvvCode": undefined,
+        "expMonth": undefined,
+        "expYear": undefined,
       }
     }
     cvvError={null}
@@ -128,7 +128,6 @@ exports[`AddNewCCForm should render correctly 1`] = `
       fontSize="fs16"
       name="saveToAccount"
       onChange={[Function]}
-      rightText="lbl_billing_saveToAccount"
       showDefaultCheckbox={false}
     />
   </Styled(View)>
@@ -138,7 +137,6 @@ exports[`AddNewCCForm should render correctly 1`] = `
       disabled={false}
       fontSize="fs16"
       name="defaultPayment"
-      rightText="lbl_billing_defaultPayment"
       showDefaultCheckbox={false}
     />
   </Styled(View)>

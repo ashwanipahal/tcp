@@ -5,6 +5,11 @@ import { Image } from '../../../../../../common/atoms';
 
 const infoIcon = require('../../../../../../../assets/info-icon.png');
 
+/**
+ * @function getCvvInfo
+ * @description renders the tooltip component
+ */
+
 const getCvvInfo = ({ cvvCodeRichText }) => {
   return (
     <ReactTooltip withOverlay={false} popover={cvvCodeRichText}>
@@ -20,6 +25,5 @@ getCvvInfo.propTypes = {
 getCvvInfo.defaultProps = {
   cvvCodeRichText: PropTypes.string,
 };
-
 
 export default getCvvInfo;

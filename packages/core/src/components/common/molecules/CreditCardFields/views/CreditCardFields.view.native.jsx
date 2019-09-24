@@ -17,6 +17,13 @@ import {
   CVVInfo,
 } from '../styles/CreditCardFields.styles.native';
 
+/**
+ *
+ *
+ * @class CreditCardFields
+ * @extends {PureComponent}
+ * @description view component to render credit card form fields.
+ */
 export class CreditCardFields extends React.PureComponent<Props> {
   constructor(props) {
     super(props);
@@ -35,6 +42,10 @@ export class CreditCardFields extends React.PureComponent<Props> {
     }
   }
 
+  /**
+   * @function render
+   * @description render method to be called of component
+   */
   render() {
     const {
       cardTypeImgUrl,

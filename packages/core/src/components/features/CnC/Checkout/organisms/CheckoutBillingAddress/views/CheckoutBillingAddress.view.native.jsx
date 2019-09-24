@@ -3,7 +3,6 @@ import PropTypes from 'prop-types';
 import { Field, FormSection, change, resetSection } from 'redux-form';
 import InputCheckbox from '../../../../../../common/atoms/InputCheckbox';
 import AddressFields from '../../../../../../common/molecules/AddressFields';
-import { getLabelValue } from '../../../../../../../utils';
 import BodyCopy from '../../../../../../common/atoms/BodyCopy';
 import Address from '../../../../../../common/molecules/Address';
 import AddressDropdown from '../../../../../account/AddEditCreditCard/molecule/AddressDropdown';
@@ -25,6 +24,11 @@ const itemStyle = {
   height: 90,
 };
 
+/**
+ * @class CheckoutAddress
+ * @extends {Component}
+ * @description view component to render billing address component.
+ */
 class CheckoutAddress extends React.Component {
   constructor(props) {
     super(props);
@@ -36,11 +40,19 @@ class CheckoutAddress extends React.Component {
             selectedOnFileAddressId &&
             this.getSelectedAddress(userAddresses, selectedOnFileAddressId)
           )) ||
-        (!orderHasShipping && !this.getSelectedAddress(userAddresses, selectedOnFileAddressId)) ||
+        this.checkIfPickUp({ orderHasShipping, userAddresses, selectedOnFileAddressId }) ||
         false,
     };
   }
 
+  checkIfPickUp = ({ orderHasShipping, userAddresses, selectedOnFileAddressId }) => {
+    return !orderHasShipping && !this.getSelectedAddress(userAddresses, selectedOnFileAddressId);
+  };
+
+  /**
+   * @function getSelectedAddress
+   * @description returns the selected address from address list
+   */
   getSelectedAddress = (addressList, onFileAddressId) => {
     let selectedAddress = null;
     if (onFileAddressId) {
@@ -49,6 +61,10 @@ class CheckoutAddress extends React.Component {
     return selectedAddress;
   };
 
+  /**
+   * @function toggleAddNewAddressMode
+   * @description toggles the isAddNewAddress state
+   */
   toggleAddNewAddressMode = () => {
     const { isAddNewAddress } = this.state;
     const { dispatch, formName } = this.props;
@@ -57,6 +73,10 @@ class CheckoutAddress extends React.Component {
     dispatch(resetSection(formName, 'address'));
   };
 
+  /**
+   * @function onSameAsShippingChange
+   * @description called when same as shipping checkbox is checked
+   */
   onSameAsShippingChange = () => {
     const { isSameAsShippingChecked, dispatch, shippingAddress, formName } = this.props;
     if (shippingAddress) {
@@ -83,6 +103,10 @@ class CheckoutAddress extends React.Component {
     }
   };
 
+  /**
+   * @function getAddressSection
+   * @description checks if sameAsShipping is checked, if checked address is returned else returns form
+   */
   getAddressSection = () => {
     const { shippingAddress, isSameAsShippingChecked } = this.props;
     return isSameAsShippingChecked ? (
@@ -92,6 +116,10 @@ class CheckoutAddress extends React.Component {
     );
   };
 
+  /**
+   * @function getBillingAddressHeader
+   * @description returns the billing header
+   */
   getBillingAddressHeader = () => {
     const { labels } = this.props;
     return (
@@ -101,12 +129,16 @@ class CheckoutAddress extends React.Component {
           fontSize="fs16"
           fontWeight="semibold"
           dataLocator="billing-payment-billingAddress"
-          text={getLabelValue(labels, 'lbl_billing_billingAddress', 'billing', 'checkout')}
+          text={labels.billingAddress}
         />
       </BillingAddWrapper>
     );
   };
 
+  /**
+   * @function getAddressFields
+   * @description returns the address fields section
+   */
   getAddressFields = () => {
     const {
       addressLabels,
@@ -156,6 +188,10 @@ class CheckoutAddress extends React.Component {
     );
   };
 
+  /**
+   * @function getAddressForm
+   * @description returns the address form
+   */
   getAddressForm = () => {
     const { isAddNewAddress } = this.state;
     return (
@@ -166,6 +202,10 @@ class CheckoutAddress extends React.Component {
     );
   };
 
+  /**
+   * @function renderShippingAddressForm
+   * @description returns the address form
+   */
   renderShippingAddressForm = () => {
     const { labels } = this.props;
     return (
@@ -178,7 +218,7 @@ class CheckoutAddress extends React.Component {
             name="sameAsShipping"
             fontSize="fs16"
             onChange={this.onSameAsShippingChange}
-            rightText={getLabelValue(labels, 'lbl_billing_sameAsShipping', 'billing', 'checkout')}
+            rightText={labels.sameAsShipping}
           />
         </SameAsShippingWrapper>
         {this.getAddressSection()}
@@ -186,8 +226,15 @@ class CheckoutAddress extends React.Component {
     );
   };
 
+  /**
+   * @function getAddressOptions
+   * @description returns the address dropdown options
+   */
   getAddressOptions = () => {
-    const { userAddresses } = this.props;
+    const {
+      userAddresses,
+      addressLabels: { addressFormLabels },
+    } = this.props;
     let addressOptions =
       (userAddresses &&
         userAddresses.map(address => {
@@ -204,7 +251,7 @@ class CheckoutAddress extends React.Component {
 
     addressOptions = addressOptions.push({
       id: '',
-      label: '+Add New Address',
+      label: addressFormLabels.addNewAddressSign,
       content: '',
       primary: false,
     });
@@ -212,6 +259,10 @@ class CheckoutAddress extends React.Component {
     return addressOptions.valueSeq().toArray();
   };
 
+  /**
+   * @function onAddressDropDownChange
+   * @description called when address dropdown value is changed
+   */
   onAddressDropDownChange = itemValue => {
     const { isAddNewAddress } = this.state;
     const { dispatch, formName } = this.props;
@@ -221,8 +272,16 @@ class CheckoutAddress extends React.Component {
     dispatch(change(formName, 'onFileAddressId', itemValue));
   };
 
+  /**
+   * @function onAddressDropDownChange
+   * @description returns the address dropdown component
+   */
   getAddressDropDown = () => {
-    const { userAddresses, selectedOnFileAddressId, labels } = this.props;
+    const {
+      userAddresses,
+      selectedOnFileAddressId,
+      addressLabels: { addressFormLabels },
+    } = this.props;
     const { isAddNewAddress } = this.state;
     const selectedAddress = this.getSelectedAddress(userAddresses, selectedOnFileAddressId);
     return (
@@ -236,7 +295,7 @@ class CheckoutAddress extends React.Component {
               textAlign="left"
               fontWeight="black"
               marginTop="10"
-              text={getLabelValue(labels, 'lbl_billing_selectFromAddress', 'billing', 'checkout')}
+              text={addressFormLabels.selectFromAddress}
             />
             <Field
               selectedLabelState="Select from address book"
@@ -264,6 +323,10 @@ class CheckoutAddress extends React.Component {
     );
   };
 
+  /**
+   * @function renderNonShippingAddressForm
+   * @description returns the non shipping address form
+   */
   renderNonShippingAddressForm = () => {
     const { userAddresses, orderHasShipping } = this.props;
     const { isAddNewAddress } = this.state;
@@ -277,6 +340,10 @@ class CheckoutAddress extends React.Component {
     );
   };
 
+  /**
+   * @function render
+   * @description render method to be called of component
+   */
   render() {
     const { orderHasShipping } = this.props;
     return (

@@ -11,7 +11,6 @@ exports[`CheckoutAddress should call onSameAsShippingChange 1`] = `
       margin={null}
       mobileFontFamily="secondary"
       numberOfLines={null}
-      text="lbl_billing_billingAddress"
       textDecoration={null}
     />
   </Styled(View)>
@@ -219,7 +218,6 @@ exports[`CheckoutAddress should render correctly 1`] = `
       margin={null}
       mobileFontFamily="secondary"
       numberOfLines={null}
-      text="lbl_billing_billingAddress"
       textDecoration={null}
     />
   </Styled(View)>
@@ -229,7 +227,6 @@ exports[`CheckoutAddress should render correctly 1`] = `
       fontSize="fs16"
       name="sameAsShipping"
       onChange={[Function]}
-      rightText="lbl_billing_sameAsShipping"
       showDefaultCheckbox={false}
     />
   </Styled(View)>
@@ -237,6 +234,11 @@ exports[`CheckoutAddress should render correctly 1`] = `
     name="address"
   >
     <AddressFields
+      addressFormLabels={
+        Object {
+          "selectFromAddress": "",
+        }
+      }
       className="elem-mb-LRG"
       disableCountry={false}
       dispatch={[MockFunction]}
@@ -271,7 +273,6 @@ exports[`CheckoutAddress should render correctly if isAddNewAddress is true 1`] 
       margin={null}
       mobileFontFamily="secondary"
       numberOfLines={null}
-      text="lbl_billing_billingAddress"
       textDecoration={null}
     />
   </Styled(View)>
@@ -285,7 +286,7 @@ exports[`CheckoutAddress should render correctly if isAddNewAddress is true 1`] 
       marginTop="10"
       mobileFontFamily="secondary"
       numberOfLines={null}
-      text="lbl_billing_selectFromAddress"
+      text=""
       textAlign="left"
       textDecoration={null}
     />
@@ -313,7 +314,7 @@ exports[`CheckoutAddress should render correctly if isAddNewAddress is true 1`] 
           Object {
             "content": "",
             "id": "",
-            "label": "+Add New Address",
+            "label": undefined,
             "primary": false,
           },
         ]
@@ -372,7 +373,6 @@ exports[`CheckoutAddress should render correctly if order doesnot have shipping 
       margin={null}
       mobileFontFamily="secondary"
       numberOfLines={null}
-      text="lbl_billing_billingAddress"
       textDecoration={null}
     />
   </Styled(View)>
@@ -386,7 +386,7 @@ exports[`CheckoutAddress should render correctly if order doesnot have shipping 
       marginTop="10"
       mobileFontFamily="secondary"
       numberOfLines={null}
-      text="lbl_billing_selectFromAddress"
+      text=""
       textAlign="left"
       textDecoration={null}
     />
@@ -406,7 +406,7 @@ exports[`CheckoutAddress should render correctly if order doesnot have shipping 
           Object {
             "content": "",
             "id": "",
-            "label": "+Add New Address",
+            "label": undefined,
             "primary": false,
           },
         ]
@@ -465,7 +465,6 @@ exports[`CheckoutAddress should render correctly if selectedAddress is present 1
       margin={null}
       mobileFontFamily="secondary"
       numberOfLines={null}
-      text="lbl_billing_billingAddress"
       textDecoration={null}
     />
   </Styled(View)>
@@ -475,7 +474,6 @@ exports[`CheckoutAddress should render correctly if selectedAddress is present 1
       fontSize="fs16"
       name="sameAsShipping"
       onChange={[Function]}
-      rightText="lbl_billing_sameAsShipping"
       showDefaultCheckbox={false}
     />
   </Styled(View)>
@@ -489,7 +487,7 @@ exports[`CheckoutAddress should render correctly if selectedAddress is present 1
       marginTop="10"
       mobileFontFamily="secondary"
       numberOfLines={null}
-      text="lbl_billing_selectFromAddress"
+      text=""
       textAlign="left"
       textDecoration={null}
     />
@@ -521,7 +519,7 @@ exports[`CheckoutAddress should render correctly if selectedAddress is present 1
           Object {
             "content": "",
             "id": "",
-            "label": "+Add New Address",
+            "label": undefined,
             "primary": false,
           },
         ]

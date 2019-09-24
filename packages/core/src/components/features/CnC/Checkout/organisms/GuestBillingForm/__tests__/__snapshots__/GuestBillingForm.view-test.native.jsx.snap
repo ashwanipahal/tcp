@@ -13,7 +13,6 @@ exports[`GuestBillingFormVanilla should render correctly 1`] = `
       margin={null}
       mobileFontFamily="primary"
       numberOfLines={null}
-      text="lbl_billing_paymentMethodTitle"
       textDecoration={null}
     />
     <AddNewCCForm
@@ -21,6 +20,7 @@ exports[`GuestBillingFormVanilla should render correctly 1`] = `
       billingData={Object {}}
       cardList={null}
       cardType={null}
+      creditFieldLabels={Object {}}
       cvvError={null}
       cvvInfo={
         <ReactTooltip
@@ -91,7 +91,6 @@ exports[`GuestBillingFormVanilla should render correctly when props change 1`] =
       margin={null}
       mobileFontFamily="primary"
       numberOfLines={null}
-      text="lbl_billing_paymentMethodTitle"
       textDecoration={null}
     />
     <AddNewCCForm
@@ -99,6 +98,7 @@ exports[`GuestBillingFormVanilla should render correctly when props change 1`] =
       billingData={Object {}}
       cardList={null}
       cardType="VISA"
+      creditFieldLabels={Object {}}
       cvvError="error"
       cvvInfo={
         <ReactTooltip

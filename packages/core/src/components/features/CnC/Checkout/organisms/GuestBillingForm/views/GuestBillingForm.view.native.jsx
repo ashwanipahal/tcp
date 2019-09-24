@@ -5,9 +5,7 @@ import createValidateMethod from '../../../../../../../utils/formValidation/crea
 import getStandardConfig from '../../../../../../../utils/formValidation/validatorStandardConfig';
 import AddNewCCForm from '../../AddNewCCForm';
 import cvvInfo from '../../../molecules/CVVInfo';
-// import PaymentMethods from '../../../../common/molecules/PaymentMethods';
 import BodyCopy from '../../../../../../common/atoms/BodyCopy';
-import { getLabelValue } from '../../../../../../../utils';
 import CheckoutBillingAddress from '../../CheckoutBillingAddress';
 import CREDIT_CARD_CONSTANTS from '../../BillingPaymentForm/container/CreditCard.constants';
 import GuestBillingFormWrapper from '../styles/GuestBillingForm.styles.native';
@@ -15,6 +13,11 @@ import CnCTemplate from '../../../../common/organism/CnCTemplate';
 import CONSTANTS from '../../../Checkout.constants';
 import AddressFields from '../../../../../../common/molecules/AddressFields';
 
+/**
+ * @class GuestBillingForm
+ * @extends {Component}
+ * @description view component to render guest billing form.
+ */
 class GuestBillingForm extends React.Component {
   static propTypes = {
     dispatch: PropTypes.func.isRequired,
@@ -34,6 +37,7 @@ class GuestBillingForm extends React.Component {
     navigation: PropTypes.shape({}).isRequired,
     handleSubmit: PropTypes.func.isRequired,
     onSubmit: PropTypes.func.isRequired,
+    creditFieldLabels: PropTypes.shape({}),
   };
 
   static defaultProps = {
@@ -49,8 +53,14 @@ class GuestBillingForm extends React.Component {
     nextSubmitText: '',
     backLinkShipping: '',
     backLinkPickup: '',
+    creditFieldLabels: {},
   };
 
+  /**
+   * @function componentDidUpdate
+   * @memberof GuestBillingForm
+   * @description method to be called on update of component
+   */
   componentDidUpdate(prevProp) {
     const { cardType: prevCardType } = prevProp;
     const { cardType, dispatch } = this.props;
@@ -60,11 +70,19 @@ class GuestBillingForm extends React.Component {
     }
   }
 
+  /**
+   * @function getExpirationRequiredFlag
+   * @description checks whether to show expiry dropdown
+   */
   getExpirationRequiredFlag = () => {
     const { cardType } = this.props;
     return !cardType || cardType !== CREDIT_CARD_CONSTANTS.ACCEPTED_CREDIT_CARDS.PLACE_CARD;
   };
 
+  /**
+   * @function render
+   * @description render method to be called of component
+   */
   render() {
     const {
       cvvCodeRichText,
@@ -83,7 +101,8 @@ class GuestBillingForm extends React.Component {
       navigation,
       nextSubmitText,
       handleSubmit,
-      onSubmit
+      onSubmit,
+      creditFieldLabels,
     } = this.props;
     let cvvError;
     if (syncErrorsObj) {
@@ -99,10 +118,8 @@ class GuestBillingForm extends React.Component {
             fontWeight="regular"
             data-locator="billing-details"
             className="elem-mb-XS elem-mt-MED"
-            text={getLabelValue(labels, 'lbl_billing_paymentMethodTitle')}
+            text={labels.paymentMethod}
           />
-          {/* <PaymentMethods labels={labels} /> */}
-          {/* {paymentMethodId === CONSTANTS.PAYMENT_METHOD_CREDIT_CARD ? ( */}
           <>
             <AddNewCCForm
               cvvInfo={cvvInfo({ cvvCodeRichText })}
@@ -114,6 +131,7 @@ class GuestBillingForm extends React.Component {
               isGuest={isGuest}
               dispatch={dispatch}
               billingData={billingData}
+              creditFieldLabels={creditFieldLabels}
             />
             <CheckoutBillingAddress
               isGuest={isGuest}
@@ -127,7 +145,6 @@ class GuestBillingForm extends React.Component {
               formName="checkoutBilling"
             />
           </>
-          {/* ) : null} */}
           <CnCTemplate
             navigation={navigation}
             btnText={nextSubmitText}
