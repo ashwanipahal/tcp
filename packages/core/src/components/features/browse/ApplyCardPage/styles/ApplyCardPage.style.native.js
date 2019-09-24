@@ -1,6 +1,6 @@
 import styled from 'styled-components/native';
 
-import { BodyCopy, Image } from '../../../../common/atoms';
+import { BodyCopy, Image, Anchor } from '../../../../common/atoms';
 
 export const ImageContainer = styled.View`
   margin-top: ${props => props.theme.spacing.ELEM_SPACING.XS};
@@ -22,7 +22,7 @@ export const Container = styled.View`
 
 export const TextBoxContainer = styled.View`
   width: 100%;
-  padding-top: ${props => props.theme.spacing.LAYOUT_SPACING.XXS};
+
   padding-left: ${props => props.theme.spacing.LAYOUT_SPACING.XXS};
   padding-right: ${props => props.theme.spacing.LAYOUT_SPACING.XXS};
 `;
@@ -108,8 +108,40 @@ export const ButtonWrapper = styled.View`
 
 export const RichTextContainer = styled.View`
   width: 100%;
-  height: 150px;
+  height: 210px;
   background: ${props => props.theme.colorPalette.gray[500]};
+  margin-left: ${props => props.theme.spacing.LAYOUT_SPACING.XXS};
+  margin-right: ${props => props.theme.spacing.LAYOUT_SPACING.XXS};
+  margin-bottom: ${props => props.theme.spacing.LAYOUT_SPACING.XXS};
+`;
+
+export const StyledAnchor = styled(Anchor)`
+  padding-top: ${props => props.paddingTop || '0px'};
+  padding-left: ${props => props.paddingLeft || '0px'};
+  padding-right: ${props => props.paddingRight || '0px'};
+  padding-bottom: ${props => props.paddingBottom || '0px'};
+  align-items: center;
+  justify-content: center;
+`;
+
+export const PreScreenCodeContainer = styled.View`
+  width: 100%;
+  flex-direction: row;
+  margin-top: -20px;
+`;
+
+export const ParentMessageContainer = styled.View`
+  width: 100%;
+  flex-direction: row;
+`;
+
+export const FirstNameContainer = styled.View`
+  width: 70%;
+`;
+
+export const MiddleNameContainer = styled.View`
+  width: 30%;
+  padding-left: 19px;
 `;
 
 export default {
@@ -128,4 +160,9 @@ export default {
   CheckMessageView,
   ButtonWrapper,
   RichTextContainer,
+  StyledAnchor,
+  PreScreenCodeContainer,
+  ParentMessageContainer,
+  FirstNameContainer,
+  MiddleNameContainer,
 };

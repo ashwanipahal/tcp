@@ -1,6 +1,6 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import { Image, Button, RichText } from '../../../../atoms';
+import { Button, RichText } from '../../../../atoms';
 import ModalNative from '../../../Modal/view/Modal.native';
 import {
   ImageContainer,
@@ -74,14 +74,14 @@ class ApplyNowModalWrapper extends React.PureComponent {
           <StyledBodyCopy
             color="gray.900"
             mobilefontFamily="primary"
-            fontSize="fs36"
+            fontSize="fs38"
             textAlign="center"
             fontWeight="black"
             text={getLabelValue(labels, 'lbl_PLCCModal_applyNowHeaderText')}
             paddingTop="30px"
           />
           <ImageContainer>
-            <Image source={headerImage} width="45%" height="112px" />
+            <StyledImage source={headerImage} width="45%" height="112px" />
           </ImageContainer>
           <StyledBodyCopy
             color="gray.900"
@@ -107,21 +107,21 @@ class ApplyNowModalWrapper extends React.PureComponent {
           <ApplyCardLayoutView toggleModal={this.toggleApplyCard} applyCard={applyCard} />
           <StyledAnchor
             url={getLabelValue(labels, 'lbl_PLCCModal_learnMoreLink')}
-            fontSizeVariation="large"
+            fontSizeVariation="xlarge"
             anchorVariation="secondary"
-            underline
+            underlineBlue
             text={getLabelValue(labels, 'lbl_PLCCModal_learnMoreText')}
             paddingTop="23px"
           />
           <ImageContainer marginTop="28px">
             <StyledImage
-              source={offerType ? PLCC_LOOKUP_1_POINTS : PLCC_LOOKUP_2_POINTS}
+              source={offerType ? PLCC_LOOKUP_2_POINTS : PLCC_LOOKUP_1_POINTS}
               width="95%"
               height="60px"
             />
           </ImageContainer>
           <StyledBodyCopy
-            mobilefontFamily="primary"
+            fontFamily="primary"
             fontSize="fs28"
             fontWeight="black"
             textAlign="center"
@@ -136,7 +136,7 @@ class ApplyNowModalWrapper extends React.PureComponent {
           </Container>
           <BottomContainer>
             <StyledBodyCopy
-              fontSize="fs12"
+              fontSize="fs10"
               fontFamily="secondary"
               text={getLabelValue(labels, 'lbl_PLCCModal_linksTextPrefix')}
               paddingRight="4px"
@@ -144,7 +144,7 @@ class ApplyNowModalWrapper extends React.PureComponent {
 
             <StyledAnchor
               url={getLabelValue(labels, 'lbl_PLCCModal_detailsLink')}
-              fontSizeVariation="large"
+              fontSizeVariation="medium"
               anchorVariation="primary"
               underline
               text={getLabelValue(labels, 'lbl_PLCCForm_details')}
@@ -156,7 +156,7 @@ class ApplyNowModalWrapper extends React.PureComponent {
               url={getLabelValue(labels, 'lbl_PLCCModal_faqLink')}
               target="_blank"
               locator="plcc_faq"
-              fontSizeVariation="large"
+              fontSizeVariation="medium"
               anchorVariation="primary"
               underline
               text={getLabelValue(labels, 'lbl_PLCCModal_faqText')}
@@ -168,7 +168,7 @@ class ApplyNowModalWrapper extends React.PureComponent {
               url={getLabelValue(labels, 'lbl_PLCCModal_rewardsProgramLink')}
               target="_blank"
               data-locator="plcc_rewards_terms"
-              fontSizeVariation="large"
+              fontSizeVariation="medium"
               anchorVariation="primary"
               underline
               text={getLabelValue(labels, 'lbl_PLCCModal_rewardsProgramText')}

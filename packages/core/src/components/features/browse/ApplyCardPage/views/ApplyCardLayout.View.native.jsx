@@ -1,12 +1,18 @@
 /* eslint-disable max-lines */
 import React from 'react';
 import PropTypes from 'prop-types';
-import { Field, reduxForm } from 'redux-form';
+import { Field, reduxForm, change } from 'redux-form';
 import ModalNative from '../../../../common/molecules/Modal';
 import { RichText, Button } from '../../../../common/atoms';
 import TextBox from '../../../../common/atoms/TextBox';
 import InputCheckbox from '../../../../common/atoms/InputCheckbox/views/InputCheckbox.native';
 import DropDown from '../../../../common/atoms/DropDown/views/DropDown.native';
+import { calendarDaysMap, calendarYearsMap } from '../utils/DateOfBirthHelper';
+import { MONTH_OPTIONS_MAP_WITH_EMPTY as months } from '../RewardsCard.constants';
+import { GooglePlacesInput } from '../../../../common/atoms/GoogleAutoSuggest/AutoCompleteComponent.native';
+import createValidateMethod from '../../../../../utils/formValidation/createValidateMethod';
+import getStandardConfig from '../../../../../utils/formValidation/validatorStandardConfig';
+
 import {
   ImageContainer,
   Container,
@@ -26,9 +32,14 @@ import {
   ButtonWrapper,
   StyledImage,
   RichTextContainer,
+  StyledAnchor,
+  PreScreenCodeContainer,
+  ParentMessageContainer,
+  FirstNameContainer,
+  MiddleNameContainer,
 } from '../styles/ApplyCardPage.style.native';
 import { CAcountriesStatesTable, UScountriesStatesTable } from '../CountriesAndStates.constants';
-import { getLabelValue } from '../../../../../utils';
+import { getLabelValue, getSiteId } from '../../../../../utils';
 
 const headerImage = require('../../../../../../../core/src/assets/tcp-cc.png');
 
@@ -44,8 +55,14 @@ const itemStyle = {
 };
 
 class ApplyCardLayoutView extends React.PureComponent<Props> {
+  static propTypes = {
+    dispatch: PropTypes.func.isRequired,
+    labels: PropTypes.shape({}).isRequired,
+  };
+
   constructor(props) {
     super(props);
+    this.siteId = getSiteId();
 
     const selectArray = [
       {
@@ -63,6 +80,7 @@ class ApplyCardLayoutView extends React.PureComponent<Props> {
       country: 'US',
       // eslint-disable-next-line react/no-unused-state
       dropDownItem: props.countryState ? props.countryState : this.UScountriesStates[0].displayName,
+      isPreScreen: false,
     };
 
     this.locationRef = null;
@@ -73,18 +91,41 @@ class ApplyCardLayoutView extends React.PureComponent<Props> {
     setLoginModalMountState({ state: false });
   };
 
+  togglePreScreen = () => {
+    const { isPreScreen } = this.props;
+    this.setState({ isPreScreen: !isPreScreen });
+  };
+
+  /**
+   * @fatarrow - handlePlaceSelected
+   * @params - @param - place - place picked up from google autocomplete.
+   *           @param - inputValue - input value.
+   *
+   * @description - handles the place selected from address1 field of PLCC appliation form.
+   *
+   */
+  handlePlaceSelected = (place, inputValue) => {
+    const { dispatch } = this.props;
+    const address = GooglePlacesInput.getAddressFromPlace(place, inputValue);
+    dispatch(change('ApplyCardForm', 'city', address.city));
+    dispatch(change('ApplyCardForm', 'noCountryZip', address.zip));
+    dispatch(change('ApplyCardForm', 'statewocountry', address.state));
+    dispatch(change('ApplyCardForm', 'addressLine1', address.street));
+  };
+
   /**
    * @function render  Used to render the JSX of the component
    * @param    {[Void]} function does not accept anything.
    * @return   {[Object]} JSX of the component
    */
+  // eslint-disable-next-line complexity
   render() {
     const fullWidth = {
       width: '100%',
     };
 
-    const { applyCard, toggleModal, plccData, labels } = this.props;
-    const { country, dropDownItem } = this.state;
+    const { applyCard, toggleModal, plccData, labels, handleSubmit } = this.props;
+    const { dropDownItem, isPreScreen } = this.state;
 
     return (
       <ModalNative
@@ -105,30 +146,52 @@ class ApplyCardLayoutView extends React.PureComponent<Props> {
               <RichText source={{ html: plccData && plccData.credit_card_header }} />
             </RichTextContainer>
           </Container>
-          <TextBoxContainer>
-            <Field
-              name="Enter Pre-Screen Code (optional)"
-              id="firstName"
-              label="Enter Pre-Screen Code (optional)"
-              type="text"
-              component={TextBox}
-              maxLength={20}
+          {isPreScreen && (
+            <TextBoxContainer>
+              <Field
+                name={getLabelValue(labels, 'lbl_PLCCForm_preScreenCodeOpt')}
+                id="preScreenCode"
+                label={getLabelValue(labels, 'lbl_PLCCForm_preScreenCodeOpt')}
+                type="text"
+                component={TextBox}
+                maxLength={12}
+              />
+            </TextBoxContainer>
+          )}
+
+          <PreScreenCodeContainer>
+            <StyledBodyCopy
+              text={getLabelValue(labels, 'lbl_PLCCForm_preScreenCodeText')}
+              fontSize="fs16"
+              color="gray.700"
+              paddingLeft="16px"
+              mobilefontFamily="secondary"
+              textAlign="center"
             />
-          </TextBoxContainer>
-          <StyledBodyCopy
-            text="If you’ve received a pre-screen code, enter it here."
-            fontSize="fs16"
-            color="gray.700"
-            paddingLeft="16px"
-            paddingRight="16px"
-            mobilefontFamily="secondary"
-            textAlign="left"
-          />
+
+            {!isPreScreen ? (
+              <StyledAnchor
+                onPress={() => this.togglePreScreen()}
+                fontSizeVariation="large"
+                underline
+                text={getLabelValue(labels, 'lbl_PLCCForm_clickHere')}
+                paddingRight="16px"
+              />
+            ) : (
+              <StyledBodyCopy
+                text={getLabelValue(labels, 'lbl_PLCCForm_enterHere')}
+                fontSize="fs16"
+                color="gray.700"
+                textAlign="center"
+              />
+            )}
+          </PreScreenCodeContainer>
+
           <StyledBodyCopy
             text="CONTACT INFORMATION"
             fontSize="fs16"
             color="black"
-            mobilefontFamily="secondary"
+            fontFamily="secondary"
             textAlign="left"
             fontWeight="semibold"
             paddingLeft="16px"
@@ -136,21 +199,69 @@ class ApplyCardLayoutView extends React.PureComponent<Props> {
             paddingTop="26px"
             paddingBottom="12px"
           />
+
           <NameFieldContainer>
-            <Field
-              name={getLabelValue(labels, 'lbl_PLCCForm_firstName')}
-              id="firstName"
-              label={getLabelValue(labels, 'lbl_PLCCForm_firstName')}
-              type="text"
-              component={TextBox}
-              maxLength={20}
-            />
+            <ParentMessageContainer>
+              <FirstNameContainer>
+                <Field
+                  name="firstName"
+                  id="firstName"
+                  label={getLabelValue(labels, 'lbl_PLCCForm_firstName')}
+                  type="text"
+                  component={TextBox}
+                  maxLength={20}
+                />
+              </FirstNameContainer>
+
+              <MiddleNameContainer>
+                <Field
+                  name="middleName"
+                  id="middleName"
+                  label={getLabelValue(labels, 'lbl_PLCCForm_middleNameInitial')}
+                  type="text"
+                  component={TextBox}
+                  maxLength={5}
+                />
+              </MiddleNameContainer>
+            </ParentMessageContainer>
           </NameFieldContainer>
           <NameFieldContainer>
             <Field
+              label={getLabelValue(labels, 'lbl_PLCCForm_lastName')}
+              type="text"
+              component={TextBox}
+              maxLength={15}
               name="lastName"
-              id="Last Name"
-              label="lastName"
+              id="lastName"
+            />
+          </NameFieldContainer>
+          <NameFieldContainer>
+            <Field
+              name="emailAddress"
+              id="emailAddress"
+              label={getLabelValue(labels, 'lbl_PLCCForm_email')}
+              type="text"
+              component={TextBox}
+            />
+          </NameFieldContainer>
+          <NameFieldContainer>
+            <Field
+              headerTitle={getLabelValue(labels, 'lbl_PLCCForm_addressLine1')}
+              component={GooglePlacesInput}
+              name="addressLine1"
+              id="addressLine1"
+              // onPlaceSelected={this.handlePlaceSelected}
+              // componentRestrictions={Object.assign({}, { country: [this.siteId] })}
+              onValueChange={(data, inputValue) => {
+                this.handlePlaceSelected(data, inputValue);
+              }}
+            />
+          </NameFieldContainer>
+          <NameFieldContainer>
+            <Field
+              name="addressLine2"
+              id="addressLine2"
+              label={getLabelValue(labels, 'lbl_PLCCForm_addressLine2')}
               type="text"
               component={TextBox}
               maxLength={20}
@@ -158,39 +269,9 @@ class ApplyCardLayoutView extends React.PureComponent<Props> {
           </NameFieldContainer>
           <NameFieldContainer>
             <Field
-              name="firstName"
-              id="firstName"
-              label="Email"
-              type="text"
-              component={TextBox}
-              maxLength={20}
-            />
-          </NameFieldContainer>
-          <NameFieldContainer>
-            <Field
-              name="addressName"
-              id="addressName"
-              label="Address Line 1"
-              type="text"
-              component={TextBox}
-              maxLength={20}
-            />
-          </NameFieldContainer>
-          <NameFieldContainer>
-            <Field
-              name="address2Name"
-              id="address2Name"
-              label="Address Line 2 (optional)"
-              type="text"
-              component={TextBox}
-              maxLength={20}
-            />
-          </NameFieldContainer>
-          <NameFieldContainer>
-            <Field
-              name="cityName"
-              id="cityName"
-              label="City"
+              name="city"
+              id="city"
+              label={getLabelValue(labels, 'lbl_PLCCForm_city')}
               type="text"
               component={TextBox}
               maxLength={20}
@@ -199,10 +280,12 @@ class ApplyCardLayoutView extends React.PureComponent<Props> {
           <ContainerView>
             <StateContainerView>
               <Field
+                name="statewocountry"
+                id="statewocountry"
                 bounces={false}
                 component={DropDown}
                 heading="State"
-                data={country === 'CA' ? this.CAcountriesStates : this.UScountriesStates}
+                data={this.siteId === 'us' ? this.CAcountriesStates : this.UScountriesStates}
                 variation="secondary"
                 dropDownStyle={{ ...dropDownStyle }}
                 itemStyle={{ ...itemStyle }}
@@ -211,20 +294,20 @@ class ApplyCardLayoutView extends React.PureComponent<Props> {
             </StateContainerView>
             <ZipContainerView>
               <Field
-                name="zipcode"
-                id="zipCode"
-                label="Zipcode"
+                name="noCountryZip"
+                id="noCountryZip"
+                label={getLabelValue(labels, 'lbl_PLCCForm_zipCode')}
                 type="text"
                 component={TextBox}
-                maxLength={20}
+                maxLength={5}
               />
             </ZipContainerView>
           </ContainerView>
           <NameFieldContainer>
             <Field
-              name="mobileName"
-              id="mobileName"
-              label="Phone Number*"
+              name="phoneNumberWithAlt"
+              id="phoneNumberWithAlt"
+              label={getLabelValue(labels, 'lbl_PLCCForm_mobilePhoneNumber')}
               type="tel"
               component={TextBox}
               maxLength={20}
@@ -232,16 +315,16 @@ class ApplyCardLayoutView extends React.PureComponent<Props> {
           </NameFieldContainer>
           <NameFieldContainer>
             <Field
-              name="mobileName"
-              id="mobileName"
-              label="Alternate Phone Number*"
+              name="altPhoneNumber"
+              id="altPhoneNumber"
+              label={getLabelValue(labels, 'lbl_PLCCForm_alternatePhone')}
               type="tel"
               component={TextBox}
               maxLength={20}
             />
           </NameFieldContainer>
           <StyledBodyCopy
-            text="At least one phone number is required."
+            text={getLabelValue(labels, 'lbl_PLCCForm_minPhone')}
             fontSize="fs10"
             color="gray.900"
             paddingLeft="16px"
@@ -249,18 +332,8 @@ class ApplyCardLayoutView extends React.PureComponent<Props> {
             mobilefontFamily="secondary"
             textAlign="left"
           />
-          <MessageViewContainer height="100px">
-            <StyledBodyCopy
-              text="*By providing your contact information above, including any cellular or other phone numbers, you agree to be contacted regarding any of your Comenity Bank or Comenity Capital Bank accounts via calls to cell phones, text messages or telephone calls, including the use of artificial or pre-recorded message calls, as well as calls made via automatic telephone dialing systems, or via e-mail."
-              fontSize="fs12"
-              color="black"
-              paddingLeft="16px"
-              paddingRight="16px"
-              paddingTop="16px"
-              paddingBottom="16px"
-              mobilefontFamily="secondary"
-              textAlign="left"
-            />
+          <MessageViewContainer height="70px">
+            <RichText source={{ html: plccData && plccData.contact_information_disclaimer }} />
           </MessageViewContainer>
           <StyledBodyCopy
             text="PERSONAL INFORMATION"
@@ -269,45 +342,61 @@ class ApplyCardLayoutView extends React.PureComponent<Props> {
             paddingLeft="16px"
             paddingRight="16px"
             paddingTop="34px"
-            mobilefontFamily="secondary"
+            fontFamily="secondary"
             textAlign="left"
+          />
+
+          <StyledBodyCopy
+            text={getLabelValue(labels, 'lbl_PLCCForm_dob')}
+            fontSize="fs10"
+            color="gray.900"
+            paddingLeft="16px"
+            paddingTop="10px"
+            paddingBottom="-15px"
+            fontFamily="secondary"
+            textAlign="left"
+            fontWeight="extrabold"
           />
           <PersonalInformationContainerView>
             <DateContainerView>
               <Field
                 bounces={false}
                 component={DropDown}
-                heading="MM"
-                data={country === 'CA' ? this.CAcountriesStates : this.UScountriesStates}
+                heading="YY"
+                data={months}
                 variation="secondary"
                 dropDownStyle={{ ...dropDownStyle }}
                 itemStyle={{ ...itemStyle }}
-                selectedValue={dropDownItem}
+                name="month"
+                id="month"
               />
             </DateContainerView>
 
             <DateContainerView>
               <Field
+                heading="DD"
                 bounces={false}
                 component={DropDown}
-                heading="DD"
-                data={country === 'CA' ? this.CAcountriesStates : this.UScountriesStates}
+                data={calendarDaysMap()}
                 variation="secondary"
                 dropDownStyle={{ ...dropDownStyle }}
                 itemStyle={{ ...itemStyle }}
                 selectedValue={dropDownItem}
+                name="date"
+                id="date"
               />
             </DateContainerView>
             <DateContainerView>
               <Field
+                heading="YYYY"
                 bounces={false}
                 component={DropDown}
-                heading="YYYY"
-                data={country === 'CA' ? this.CAcountriesStates : this.UScountriesStates}
+                data={calendarYearsMap()}
                 variation="secondary"
                 dropDownStyle={{ ...dropDownStyle }}
                 itemStyle={{ ...itemStyle }}
-                selectedValue={dropDownItem}
+                name="year"
+                id="year"
               />
             </DateContainerView>
           </PersonalInformationContainerView>
@@ -323,44 +412,12 @@ class ApplyCardLayoutView extends React.PureComponent<Props> {
             />
           </NameFieldContainer>
 
-          <MessageViewContainer height="635px">
-            <StyledBodyCopy
-              text="*By providing your contact information above, including any cellular or other phone numbers, you agree to be contacted regarding any of your Comenity Bank or Comenity Capital Bank accounts via calls to cell phones, text messages or telephone calls, including the use of artificial or pre-recorded message calls, as well as calls made via automatic telephone dialing systems, or via e-mail."
-              fontSize="fs12"
-              color="black"
-              paddingLeft="16px"
-              paddingRight="16px"
-              paddingTop="16px"
-              paddingBottom="16px"
-              mobilefontFamily="secondary"
-              textAlign="left"
-            />
+          <MessageViewContainer height="430px">
+            <RichText source={{ html: plccData && plccData.account_classified_disclaimer }} />
           </MessageViewContainer>
 
-          <StyledBodyCopy
-            text="Electronic Consent"
-            fontSize="fs16"
-            color="black"
-            fontWeight="semibold"
-            paddingLeft="16px"
-            paddingRight="16px"
-            paddingTop="34px"
-            mobilefontFamily="secondary"
-            textAlign="left"
-          />
-
-          <MessageViewContainer height="441px">
-            <StyledBodyCopy
-              text="*By providing your contact information above, including any cellular or other phone numbers, you agree to be contacted regarding any of your Comenity Bank or Comenity Capital Bank accounts via calls to cell phones, text messages or telephone calls, including the use of artificial or pre-recorded message calls, as well as calls made via automatic telephone dialing systems, or via e-mail."
-              fontSize="fs12"
-              color="black"
-              paddingLeft="16px"
-              paddingRight="16px"
-              paddingTop="16px"
-              paddingBottom="16px"
-              mobilefontFamily="secondary"
-              textAlign="left"
-            />
+          <MessageViewContainer height="300px">
+            <RichText source={{ html: plccData && plccData.electronic_consent }} />
           </MessageViewContainer>
 
           <StyledBodyCopy
@@ -376,16 +433,8 @@ class ApplyCardLayoutView extends React.PureComponent<Props> {
           />
 
           <MessageViewContainer height="900px">
-            <StyledBodyCopy
-              text="*By providing your contact information above, including any cellular or other phone numbers, you agree to be contacted regarding any of your Comenity Bank or Comenity Capital Bank accounts via calls to cell phones, text messages or telephone calls, including the use of artificial or pre-recorded message calls, as well as calls made via automatic telephone dialing systems, or via e-mail."
-              fontSize="fs12"
-              color="black"
-              paddingLeft="16px"
-              paddingRight="16px"
-              paddingTop="16px"
-              paddingBottom="16px"
-              mobilefontFamily="secondary"
-              textAlign="left"
+            <RichText
+              source={{ uri: 'https://comenity.net/childrensplace/common/Legal/disclosures.xhtml' }}
             />
           </MessageViewContainer>
 
@@ -400,7 +449,7 @@ class ApplyCardLayoutView extends React.PureComponent<Props> {
             </CheckBoxImage>
             <CheckMessageView>
               <StyledBodyCopy
-                text="*By providing your contact information above, including any cellular or other phone numbers, you agree to be contacted regarding any of your Comenity Bank or Comenity Capital Bank accounts via calls to cell phones, text messages or telephone calls, including the use of artificial or pre-recorded message calls, as well as calls made via automatic telephone dialing systems, or via e-mail."
+                text={getLabelValue(labels, 'lbl_PLCCForm_iAgreeCheckboxText')}
                 fontSize="fs10"
                 color="black"
                 mobilefontFamily="secondary"
@@ -414,10 +463,19 @@ class ApplyCardLayoutView extends React.PureComponent<Props> {
             <Button
               fill="BLUE"
               type="submit"
+              onPress={() => handleSubmit}
               color="white"
               buttonVariation="variable-width"
-              text="SUBMIT TO OPEN AN ACCOUNT"
+              text={getLabelValue(labels, 'lbl_PLCCForm_submitButton')}
               width="90%"
+            />
+
+            <StyledAnchor
+              fontSizeVariation="large"
+              underline
+              text={getLabelValue(labels, 'lbl_PLCCForm_noThanks')}
+              paddingTop="40px"
+              onPress={toggleModal}
             />
           </ButtonWrapper>
         </ScrollViewContainer>
@@ -426,17 +484,43 @@ class ApplyCardLayoutView extends React.PureComponent<Props> {
   }
 }
 
+const validateMethod = createValidateMethod(
+  getStandardConfig([
+    'firstName',
+    'lastName',
+    'addressLine1',
+    'addressLine2',
+    'city',
+    'statewocountry',
+    'date',
+    'month',
+    'year',
+    'ssNumber',
+    'preScreenCode',
+    'noCountryZip',
+    'emailAddress',
+    'confirmEmailAddress',
+    'password',
+    'confirmPassword',
+    'iAgree',
+    'phoneNumberWithAlt',
+    'altPhoneNumber',
+  ])
+);
+
 ApplyCardLayoutView.propTypes = {
   setLoginModalMountState: PropTypes.bool.isRequired,
   plccData: PropTypes.shape({}).isRequired,
   labels: PropTypes.shape({}).isRequired,
   profileInfo: PropTypes.shape({}).isRequired,
   approvedPLCCData: PropTypes.shape({}).isRequired,
+  handleSubmit: PropTypes.shape({}).isRequired,
 };
 
 export default reduxForm({
   form: 'ApplyCardForm', // a unique identifier for this form
   enableReinitialize: true,
+  ...validateMethod,
 })(ApplyCardLayoutView);
 
 export { ApplyCardLayoutView as ApplyCardLayoutViewVanilla };

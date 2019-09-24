@@ -130,6 +130,7 @@ class ApplyCardLayoutContainer extends React.Component {
           isPLCCModalFlow={isPLCCModalFlow}
           toggleModal={toggleModal}
           applyCard={applyCard}
+          onSubmit={this.submitPLCCForm}
         />
         {showAddEditAddressForm ? <AddressVerification onSuccess={this.submitForm} /> : null}
       </React.Fragment>
