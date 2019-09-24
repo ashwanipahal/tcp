@@ -13,6 +13,35 @@ import ProductColorChipsSelector from '../../ProductColorChipSelector';
 import ProductSizeSelector from '../../ProductSizeSelector';
 import styles from '../styles/ProductAddToBag.style';
 
+// to get Error Message displayed in case any error comes on Add To card
+const ErrorComp = errorMessage => {
+  return (
+    <BodyCopy
+      className="size-error"
+      fontSize="fs12"
+      component="div"
+      fontFamily="secondary"
+      fontWeight="regular"
+    >
+      <Image
+        alt="Error"
+        className="error-image"
+        src={getIconPath('alert-triangle')}
+        data-locator="productcustomizeform-error-icon"
+      />
+      <BodyCopy
+        className="size-error-message"
+        fontSize="fs12"
+        component="div"
+        fontFamily="secondary"
+        fontWeight="regular"
+      >
+        {errorMessage}
+      </BodyCopy>
+    </BodyCopy>
+  );
+};
+
 class ProductAddToBag extends React.PureComponent<Props> {
   render() {
     const {
@@ -25,6 +54,8 @@ class ProductAddToBag extends React.PureComponent<Props> {
       selectFit,
       selectSize,
       displayErrorMessage,
+      addToBagEcom,
+      addToBagError,
     } = this.props;
 
     let { sizeList, fitList, colorList } = this.props;
@@ -80,31 +111,7 @@ class ProductAddToBag extends React.PureComponent<Props> {
                     dataLocator="addnewaddress-state"
                     title={`${sizeTitle}:`}
                   />
-                  {isErrorMessageDisplayed && (
-                    <BodyCopy
-                      className="size-error"
-                      fontSize="fs12"
-                      component="div"
-                      fontFamily="secondary"
-                      fontWeight="regular"
-                    >
-                      <Image
-                        alt="Error"
-                        className="error-image"
-                        src={getIconPath('alert-triangle')}
-                        data-locator="productcustomizeform-error-icon"
-                      />
-                      <BodyCopy
-                        className="size-error-message"
-                        fontSize="fs12"
-                        component="div"
-                        fontFamily="secondary"
-                        fontWeight="regular"
-                      >
-                        {errorMessage}
-                      </BodyCopy>
-                    </BodyCopy>
-                  )}
+                  {isErrorMessageDisplayed && ErrorComp(errorMessage)}
                 </div>
               )}
               <div className="qty-selector">
@@ -121,6 +128,7 @@ class ProductAddToBag extends React.PureComponent<Props> {
             </div>
           </Col>
         </Row>
+        {addToBagError && ErrorComp(addToBagError)}
         <Row fullBleed>
           <Col colSize={{ small: 12, medium: 12, large: 12 }}>
             <div className="button-wrapper">
@@ -134,9 +142,7 @@ class ProductAddToBag extends React.PureComponent<Props> {
                   if (fitChanged) {
                     displayErrorMessage(fitChanged);
                   } else {
-                    displayErrorMessage(fitChanged);
-                    // eslint-disable-next-line extra-rules/no-commented-out-code
-                    // handleSubmit(itemId, this.getSkuId(), quantity, itemPartNumber, variantNo);
+                    addToBagEcom();
                   }
                 }}
               >
