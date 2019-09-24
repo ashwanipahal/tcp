@@ -78,17 +78,25 @@ class GetCandidGallery extends React.Component {
   initGetCandid = () => {
     const apiKey = this.apiConfig.CANDID_API_KEY;
     // DOC: https://support.getcandid.com/support/solutions/articles/5000524031-widget-properties
-    requireNamedOnlineModule('jquery').then(() => {
-      return requireNamedOnlineModule('getCandid').then(() => {
-        return requireNamedOnlineModule('getCandidIsotope').then(() => {
-          window.candid.wall(`#${CANDID_GALLERY_CONTAINER_ID}`, {
-            id: apiKey,
-            cluster: 'prod-2',
-            layoutMode: 'packery',
-            layout: 'isotope-packery',
-            tag: 'gallery',
-          });
-        });
+    // Load All js file in following order.
+    /*
+     * jsView is required because sometimes when we switch back and forth using client side routing.
+     * The gallery page breaks because the jsView is not available.
+     */
+    const allJsFileLoadPromise = ['jquery', 'jsViews', 'getCandid', 'getCandidIsotope'].reduce(
+      (loadPromise, jsFile) => {
+        return loadPromise.then(() => requireNamedOnlineModule(jsFile));
+      },
+      Promise.resolve()
+    );
+
+    allJsFileLoadPromise.then(() => {
+      window.candid.wall(`#${CANDID_GALLERY_CONTAINER_ID}`, {
+        id: apiKey,
+        cluster: 'prod-2',
+        layoutMode: 'packery',
+        layout: 'isotope-packery',
+        tag: 'gallery',
       });
     });
   };

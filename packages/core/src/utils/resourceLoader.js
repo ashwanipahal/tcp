@@ -33,6 +33,11 @@ const getNamedModulesMap = apiConfig => {
       loadPromise: null,
     },
 
+    jsViews: {
+      url: 'https://www.jsviews.com/download/jsviews.min.js',
+      loadPromise: null,
+    },
+
     getCandidIsotope: {
       url: 'https://api.getcandid.com/scripts/wall-isotope.js',
       loadPromise: null,
