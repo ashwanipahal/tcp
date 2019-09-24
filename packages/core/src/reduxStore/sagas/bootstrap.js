@@ -29,15 +29,14 @@ import { getDataFromRedis } from '../../utils/redis.util';
 function* bootstrap(params) {
   const {
     payload: {
-      name: pageName = 'homepage',
+      name: pageName,
       modules,
       apiConfig,
       deviceType,
       optimizelyHeadersObject,
+      siteConfig,
     },
   } = params;
-  const { country, currency, language } = apiConfig;
-  const pagesList = [pageName];
 
   const cachedData = {};
   let modulesList = modules;
@@ -54,26 +53,33 @@ function* bootstrap(params) {
   });
 
   try {
-    // putResolve is used to block the other actions till apiConfig is set in state, which is to be used by next bootstrap api calls
-    yield putResolve(setAPIConfig(apiConfig));
-    yield putResolve(setDeviceInfo({ deviceType }));
-    yield putResolve(setOptimizelyFeaturesList(optimizelyHeadersObject));
-    const result = yield call(bootstrapAbstractor, pagesList, modulesList, cachedData);
-    yield put(loadLayoutData(result[pageName].items[0].layout, pageName));
+    if (siteConfig) {
+      const { country, currency, language } = apiConfig;
+
+      // putResolve is used to block the other actions till apiConfig is set in state, which is to be used by next bootstrap api calls
+      yield putResolve(setAPIConfig(apiConfig));
+      yield putResolve(setDeviceInfo({ deviceType }));
+      yield putResolve(setOptimizelyFeaturesList(optimizelyHeadersObject));
+
+      yield put(setCountry(country));
+      yield put(setCurrency(currency));
+      yield put(setLanguage(language));
+      const xappConfig = yield call(xappAbstractor.getData, GLOBAL_CONSTANTS.XAPP_CONFIG_MODULE);
+      yield put(loadXappConfigData(xappConfig));
+    }
+
+    const result = yield call(bootstrapAbstractor, pageName, modulesList, cachedData);
+    if (pageName) {
+      yield put(loadLayoutData(result[pageName].items[0].layout, pageName));
+      yield put(loadModulesData(result.modules));
+    }
     yield put(loadLabelsData(result.labels));
     // TODO - GLOBAL-LABEL-CHANGE - STEP 1.4 - Remove loadLabelsData and uncomment this new code
     //  yield put(setLabelsData({ category:LABELS.global, data:result.labels
     // }));
     yield put(loadHeaderData(result.header));
     if (!isMobileApp()) yield put(loadNavigationData(result.navigation));
-
     yield put(loadFooterData(result.footer));
-    yield put(loadModulesData(result.modules));
-    yield put(setCountry(country));
-    yield put(setCurrency(currency));
-    yield put(setLanguage(language));
-    const xappConfig = yield call(xappAbstractor.getData, GLOBAL_CONSTANTS.XAPP_CONFIG_MODULE);
-    yield put(loadXappConfigData(xappConfig));
   } catch (err) {
     logger.error(err);
   }

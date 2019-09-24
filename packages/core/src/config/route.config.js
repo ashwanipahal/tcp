@@ -100,11 +100,6 @@ const ROUTES_LIST = [
     resolver: '/cookiesTesting',
   },
   {
-    noSlugPath: 'gallery',
-    path: '/gallery',
-    resolver: '/gallery',
-  },
-  {
     noSlugPath: 'checkout',
     path: '/checkout/:section',
     resolver: '/Checkout',
@@ -119,6 +114,12 @@ const ROUTES_LIST = [
     noSlugPath: 'international-checkout',
     path: '/international-checkout',
     resolver: '/InternationalCheckout',
+  },
+  {
+    noSlugPath: 'content',
+    path: '/content/:contentType',
+    resolver: '/content',
+    params: ['contentType'],
   },
 ];
 

@@ -1,4 +1,6 @@
 import { all } from 'redux-saga/effects';
+import BootstrapSaga from '@tcp/core/src/reduxStore/sagas/bootstrap';
+import LabelsSaga from '@tcp/core/src/reduxStore/sagas/labels';
 import SearchPageSaga from '@tcp/core/src/components/features/browse/SearchDetail/container/SearchDetail.saga';
 import ProductListingPageSaga from '@tcp/core/src/components/features/browse/ProductListingPage/container/ProductListingPage.saga';
 import LoginPageSaga from '@tcp/core/src/components/features/account/LoginPage/container/LoginPage.saga';
@@ -22,8 +24,6 @@ import BonusPointsSaga from '@tcp/core/src/components/common/organisms/BonusPoin
 import { SetDefaultShippingAddressSaga } from '@tcp/core/src/components/features/account/AddressBook/container/DefaultShippingAddress.saga';
 import AddressVerificationSaga from '@tcp/core/src/components/common/organisms/AddressVerification/container/AddressVerification.saga';
 import BirthdaySavingsSaga from '@tcp/core/src/components/features/account/common/organism/BirthdaySavingsList/container/BirthdaySavingsList.saga';
-import BootstrapSaga from '@tcp/core/src/reduxStore/sagas/bootstrap';
-import LabelsSaga from '@tcp/core/src/reduxStore/sagas/labels';
 import AccountSaga from '@tcp/core/src/components/features/account/Account/container/Account.saga';
 import AccountHeaderSaga from '@tcp/core/src/components/features/account/common/organism/AccountHeader/container/AccountHeader.saga';
 import AddEditCreditCardSaga from '@tcp/core/src/components/features/account/AddEditCreditCard/container/AddEditCreditCard.saga';
@@ -58,8 +58,8 @@ import SearchBarSaga from '../../components/features/content/Header/molecules/Se
 
 export default function* rootSaga() {
   yield all([
-    LabelsSaga(),
     BootstrapSaga(),
+    LabelsSaga(),
     HomePageSaga(),
     ProductListingPageSaga(),
     LoginPageSaga(),

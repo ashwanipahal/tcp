@@ -251,6 +251,7 @@ export const getLabelsCartItemTile = state => {
     pickup,
     at,
     shipping,
+    removeError: getLabelValue(state.Labels, 'lbl_minibag_errorRemove', 'minibag', 'global'),
   };
 };
 
