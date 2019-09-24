@@ -66,7 +66,7 @@ class CondensedHeader extends React.PureComponent {
     e.preventDefault();
     if (userNameClick || triggerLoginCreateAccount) {
       openOverlay({
-        component: 'login',
+        component: e.target.id,
         variation: 'primary',
       });
     }
@@ -91,8 +91,6 @@ class CondensedHeader extends React.PureComponent {
       navigationDrawer,
       openOverlay,
       userName,
-      // showCondensedHeader,
-      // setSearchState,
       labels,
     } = this.props;
     const brand = getBrand();
@@ -103,12 +101,7 @@ class CondensedHeader extends React.PureComponent {
       triggerLoginCreateAccount,
       cartItemCount,
     } = this.state;
-    const {
-      accountIconButton,
-      cartIconButton,
-      hamburgerMenu,
-      // searchIconButton,
-    } = labels.accessibility;
+    const { accountIconButton, cartIconButton, hamburgerMenu } = labels.accessibility;
     return (
       <React.Fragment>
         <Row className={`${className} condensed-header`}>
@@ -178,11 +171,8 @@ class CondensedHeader extends React.PureComponent {
               className="condensed-icons"
               colSize={{
                 large: 2,
-                medium: 2,
+                medium: 3,
                 small: 3,
-              }}
-              offsetLeft={{
-                medium: 1,
               }}
             >
               <SearchBar
@@ -215,7 +205,7 @@ class CondensedHeader extends React.PureComponent {
                   <Image
                     alt={accountIconButton}
                     className="rightLink userIcon"
-                    id="condensedLogin"
+                    id="login"
                     src={getIconPath('user-icon-blue')}
                     data-locator="user-icon"
                   />

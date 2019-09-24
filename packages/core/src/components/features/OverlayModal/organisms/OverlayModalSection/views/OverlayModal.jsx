@@ -93,8 +93,8 @@ class OverlayModal extends React.Component {
   };
 
   getCustomStyles = ({ styleModal }) => {
-    const { component, showCondensedHeader } = this.props;
-    const comp = document.getElementById(showCondensedHeader ? 'condensedLogin' : component);
+    const { component } = this.props;
+    const comp = document.getElementById(component);
     /* istanbul ignore else */
     if (comp && window) {
       const compRectBoundingY = comp.getBoundingClientRect().y + window.scrollY;
