@@ -5,6 +5,7 @@ const labels = {
     ...tileLabels.StoreLocator,
     lbl_storelocators_details_locations_details_btn: 'See store details',
     lbl_storelocators_details_locations_title: 'Other locations near you',
+    lbl_storelocators_details_locations_more_store: 'See more stores',
   },
 };
 
