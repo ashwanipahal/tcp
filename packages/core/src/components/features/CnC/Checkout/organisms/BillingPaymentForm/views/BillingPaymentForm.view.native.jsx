@@ -20,6 +20,11 @@ import CnCTemplate from '../../../../common/organism/CnCTemplate';
 import CONSTANTS from '../../../Checkout.constants';
 import AddNewCCWrapper from '../styles/BillingPaymentForm.style.native';
 
+/**
+ * @class BillingPaymentForm
+ * @extends {PureComponent}
+ * @description view component to render signed in user form.
+ */
 export class BillingPaymentForm extends React.PureComponent {
   static propTypes = propTypes;
 
@@ -32,7 +37,11 @@ export class BillingPaymentForm extends React.PureComponent {
     };
   }
 
-  onAddNewCCClick = () => {
+  /**
+   * @function onAddNewCreditCardClick
+   * @description sets the add new credit card state as true
+   */
+  onAddNewCreditCardClick = () => {
     const { dispatch } = this.props;
     this.setState({ addNewCCState: true });
     dispatch(change(constants.FORM_NAME, 'cardNumber', ''));
@@ -41,6 +50,10 @@ export class BillingPaymentForm extends React.PureComponent {
     dispatch(change(constants.FORM_NAME, 'cvvCode', ''));
   };
 
+  /**
+   * @function getCreditCardDropDown
+   * @description returns the  credit card list
+   */
   getCreditCardDropDown = (options, onClickHandler, activeValue) => {
     return (
       <DropdownList
@@ -52,6 +65,10 @@ export class BillingPaymentForm extends React.PureComponent {
     );
   };
 
+  /**
+   * @function getCheckoutBillingAddress
+   * @description returns the checkout billing address form
+   */
   getCheckoutBillingAddress = () => {
     const {
       selectedOnFileAddressId,
@@ -90,6 +107,10 @@ export class BillingPaymentForm extends React.PureComponent {
     );
   };
 
+  /**
+   * @function getAddNewCCForm
+   * @description returns the add new credit card form
+   */
   getAddNewCCForm = () => {
     const {
       cvvCodeRichText,
@@ -139,12 +160,16 @@ export class BillingPaymentForm extends React.PureComponent {
           fontSize="fs13"
           fontWeight="extrabold"
           mobileFontFamily="secondary"
-          onPress={this.onAddNewCCClick}
+          onPress={this.onAddNewCreditCardClick}
         />
       </AddNewCCWrapper>
     );
   };
 
+  /**
+   * @function addNewBillingInfoForm
+   * @description returns the new billing info form
+   */
   addNewBillingInfoForm = () => {
     const { cardList } = this.props;
     const { addNewCCState } = this.state;
@@ -158,6 +183,10 @@ export class BillingPaymentForm extends React.PureComponent {
     );
   };
 
+  /**
+   * @function getCreditListView
+   * @description returns the credit card drop down along with selected card
+   */
   getCreditListView = ({ creditCardList }) => {
     return (
       <>
@@ -167,6 +196,10 @@ export class BillingPaymentForm extends React.PureComponent {
     );
   };
 
+  /**
+   * @function getCreditCardWrapper
+   * @description returns the credit card payment method view
+   */
   getCreditCardWrapper = ({ labels, creditCardList, cvvCodeRichText, onFileCardKey }) => {
     const { addNewCCState } = this.state;
     return (
@@ -178,6 +211,10 @@ export class BillingPaymentForm extends React.PureComponent {
     );
   };
 
+  /**
+   * @function render
+   * @description render method to be called of component
+   */
   render() {
     const {
       handleSubmit,
