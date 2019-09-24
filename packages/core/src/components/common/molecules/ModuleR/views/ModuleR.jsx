@@ -12,9 +12,10 @@ import moduleRStyle, { ImageGridCol } from '../styles/ModuleR.style';
  * @class ModuleR - global reusable component will display featured
  * category module with category links and featured product images
  * This component is plug and play at any given slot in layout by passing required data
- * @param {productTabList} productTabList the list of data for tabs
+ * @param {productTabList} productTabList the list of data for category tab
  * @param {headerText} headerText the list of data for header
  * @param {promoBanner} promoBanner promo banner data
+ * @param {divTabs} divTabs division tabs data
  */
 class ModuleR extends React.PureComponent {
   constructor(props) {
@@ -105,9 +106,9 @@ class ModuleR extends React.PureComponent {
               return (
                 <ImageGridCol
                   key={uniqueId}
-                  imageIndex={index}
-                  promoBanner={promoBanner}
-                  bannerPosition={bannerPosition}
+                  imageindex={index}
+                  promobanner={promoBanner}
+                  bannerposition={bannerPosition}
                   colSize={{
                     small: 2,
                     medium: 2,
@@ -208,30 +209,27 @@ class ModuleR extends React.PureComponent {
 }
 
 ModuleR.defaultProps = {
-  className: '',
-  divTabs: [],
-  headerText: [],
-  productTabList: {},
   promoBanner: [],
   bannerPosition: 'center',
+  productTabList: {},
 };
 
 ModuleR.propTypes = {
-  className: PropTypes.string,
+  className: PropTypes.string.isRequired,
   divTabs: PropTypes.arrayOf(
     PropTypes.shape({
       text: PropTypes.object,
       category: PropTypes.object,
       singleCTAButton: PropTypes.object,
     })
-  ),
+  ).isRequired,
   headerText: PropTypes.arrayOf(
     PropTypes.shape({
-      textItems: PropTypes.object,
+      textItems: PropTypes.array,
       link: PropTypes.object,
       icon: PropTypes.object,
     })
-  ),
+  ).isRequired,
   productTabList: PropTypes.oneOfType(
     PropTypes.objectOf(
       PropTypes.arrayOf(
@@ -244,12 +242,10 @@ ModuleR.propTypes = {
     )
   ),
   promoBanner: PropTypes.arrayOf(
-    PropTypes.objectOf(
-      PropTypes.shape({
-        textItems: PropTypes.array,
-        link: PropTypes.object,
-      })
-    )
+    PropTypes.shape({
+      textItems: PropTypes.array,
+      link: PropTypes.object,
+    })
   ),
   bannerPosition: PropTypes.string,
 };

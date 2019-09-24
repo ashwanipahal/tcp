@@ -15,7 +15,6 @@ import {
   getLabelsProductListing,
   getNavigationTree,
   getLongDescription,
-  getIsLoadingMore,
   getLastLoadedPageNumber,
 } from '../../ProductListing/container/ProductListing.selectors';
 import {
@@ -28,6 +27,7 @@ import {
   getLabels,
   getAppliedFilters,
   getAppliedSortId,
+  getIsLoadingMore,
 } from '../container/SearchDetail.selectors';
 
 import { isPlccUser } from '../../../account/User/container/User.selectors';
@@ -121,6 +121,7 @@ class SearchDetailContainer extends React.PureComponent {
             formValues={formValues}
             filtersLength={filtersLength}
             getProducts={getProducts}
+            isLoadingMore={isLoadingMore}
             initialValues={initialValues}
             onSubmit={onSubmit}
             products={products}
@@ -231,6 +232,7 @@ SearchDetailContainer.propTypes = {
     sort: PropTypes.string.isRequired,
   }).isRequired,
   onSubmit: PropTypes.func.isRequired,
+  isLoadingMore: PropTypes.bool,
 };
 
 SearchDetailContainer.defaultProps = {
@@ -238,6 +240,7 @@ SearchDetailContainer.defaultProps = {
   filters: {},
   filtersLength: {},
   initialValues: {},
+  isLoadingMore: false,
 };
 
 export default withRouter(

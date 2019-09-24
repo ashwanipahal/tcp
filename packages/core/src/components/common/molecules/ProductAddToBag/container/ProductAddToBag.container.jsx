@@ -125,25 +125,44 @@ class ProductAddToBagContainer extends React.PureComponent<Props> {
     };
   };
 
+  updateSelectedSize = () => {
+    const {
+      currentProduct: { colorFitsSizesMap },
+    } = this.props;
+    const sizeList = this.getSizeList(colorFitsSizesMap);
+    if (sizeList.length === 1) {
+      this.setState({
+        selectedSize: {
+          name: sizeList[0].displayName,
+        },
+      });
+    }
+  };
+
   fitChange = e => {
     const { persistSelectedFit } = this.state;
-
     if (persistSelectedFit !== e) {
-      this.setState({
-        selectedFit: {
-          name: e,
+      this.setState(
+        {
+          selectedFit: {
+            name: e,
+          },
+          fitChanged: true,
+          isErrorMessageDisplayed: false,
         },
-        fitChanged: true,
-        isErrorMessageDisplayed: false,
-      });
+        this.updateSelectedSize
+      );
     } else {
-      this.setState({
-        selectedFit: {
-          name: e,
+      this.setState(
+        {
+          selectedFit: {
+            name: e,
+          },
+          fitChanged: false,
+          isErrorMessageDisplayed: false,
         },
-        fitChanged: false,
-        isErrorMessageDisplayed: false,
-      });
+        this.updateSelectedSize
+      );
     }
   };
 
@@ -204,6 +223,7 @@ class ProductAddToBagContainer extends React.PureComponent<Props> {
         }
       });
     }
+
     this.getErrorCheck(sizeOptions, selectedFit);
     return sizeOptions;
   };
@@ -350,6 +370,8 @@ class ProductAddToBagContainer extends React.PureComponent<Props> {
       currentProduct,
       currentProduct: { colorFitsSizesMap },
       plpLabels,
+      addToBagEcom,
+      addToBagError,
     } = this.props;
     const {
       selectedColor,
@@ -383,6 +405,8 @@ class ProductAddToBagContainer extends React.PureComponent<Props> {
         onQuantityChange={this.quantityChange}
         addToBagAction={this.addToBagAction}
         generalProductId={generalProductId}
+        addToBagEcom={addToBagEcom}
+        addToBagError={addToBagError}
       />
     );
   }

@@ -7,6 +7,7 @@ describe('ProductImages component', () => {
   it('should renders correctly', () => {
     const props = {
       isZoomEnabled: true,
+      pdpLabels: {},
       images: [
         {
           isOnModalImage: false,

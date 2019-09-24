@@ -97,7 +97,9 @@ class ProductTileWrapper extends React.PureComponent<props> {
     isDeleting,
     itemDeleteSuccessMsg
   ) => {
+    const { isCartItemSFL } = this.props;
     return (
+      !isCartItemSFL &&
       !isBagPageSflSection &&
       isBagPage &&
       isDeleting && (
@@ -117,19 +119,55 @@ class ProductTileWrapper extends React.PureComponent<props> {
     );
   };
 
+  renderItemSflSuccessMsg = (isBagPage, isCartItemSFL, itemSflSuccessMsg) => {
+    const { isBagPageSflSection } = this.props;
+    return (
+      !isBagPageSflSection &&
+      isBagPage &&
+      isCartItemSFL && (
+        <div className="delete-msg">
+          <Image alt="closeIcon" className="tick-icon" src={getIconPath('circle-check-fill')} />
+          <BodyCopy
+            component="span"
+            fontSize="fs12"
+            textAlign="center"
+            fontFamily="secondary"
+            fontWeight="extrabold"
+          >
+            {itemSflSuccessMsg}
+          </BodyCopy>
+        </div>
+      )
+    );
+  };
+
+  renderEmptyBag = (productSectionData, bagLabels, isUserLoggedIn, isBagPageSflSection) => {
+    if (productSectionData.size === 0) {
+      return (
+        <EmptyBag
+          bagLabels={bagLabels}
+          isUserLoggedIn={isUserLoggedIn}
+          isBagPageSflSection={isBagPageSflSection}
+        />
+      );
+    }
+    return <></>;
+  };
+
   render() {
     const {
       orderItems,
       bagLabels,
       labels,
       pageView,
-      removeCartItem,
+      confirmRemoveCartItem,
       isUserLoggedIn,
       isPlcc,
       sflItemsCount,
       isBagPageSflSection,
       isCartItemsUpdating,
       sflItems,
+      isCartItemSFL,
     } = this.props;
     const productSectionData = isBagPageSflSection ? sflItems : orderItems;
     let isUnavailable;
@@ -176,7 +214,11 @@ class ProductTileWrapper extends React.PureComponent<props> {
           {!isBagPageSflSection && isSoldOut && (
             <RemoveSoldOut
               pageView={pageView}
-              labelForRemove={this.getRemoveString(labels, removeCartItem, getUnavailableOOSItems)}
+              labelForRemove={this.getRemoveString(
+                labels,
+                confirmRemoveCartItem,
+                getUnavailableOOSItems
+              )}
             />
           )}
           {!isBagPageSflSection && isUnavailable && (
@@ -188,16 +230,13 @@ class ProductTileWrapper extends React.PureComponent<props> {
             isDeleting,
             labels.itemDeleted
           )}
+          {this.renderItemSflSuccessMsg(isBagPage, isCartItemSFL, labels.sflSuccess)}
           {orderItemsView}
         </>
       );
     }
     return (
-      <EmptyBag
-        bagLabels={bagLabels}
-        isUserLoggedIn={isUserLoggedIn}
-        isBagPageSflSection={isBagPageSflSection}
-      />
+      <>{this.renderEmptyBag(productSectionData, bagLabels, isUserLoggedIn, isBagPageSflSection)}</>
     );
   }
 }
@@ -212,13 +251,14 @@ ProductTileWrapper.propTypes = {
   orderItems: PropTypes.shape([]).isRequired,
   sflItems: PropTypes.shape([]).isRequired,
   labels: PropTypes.shape({}).isRequired,
-  removeCartItem: PropTypes.func.isRequired,
+  confirmRemoveCartItem: PropTypes.func.isRequired,
   isUserLoggedIn: PropTypes.bool.isRequired,
   isPlcc: PropTypes.bool.isRequired,
   pageView: PropTypes.string,
   bagLabels: PropTypes.shape(),
   sflItemsCount: PropTypes.number.isRequired,
   isBagPageSflSection: PropTypes.bool,
+  isCartItemSFL: PropTypes.bool.isRequired,
 };
 
 export default ProductTileWrapper;

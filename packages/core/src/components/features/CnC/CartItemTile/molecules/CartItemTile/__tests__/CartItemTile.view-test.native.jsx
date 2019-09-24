@@ -16,6 +16,7 @@ describe('CartItemTile common component', () => {
           fit: 'regular',
           itemBrand: 'TCP',
         },
+        productInfo: { skuId: '123' },
         miscInfo: {
           badge: '',
         },
@@ -35,6 +36,7 @@ describe('CartItemTile common component', () => {
   it('renders correctly with Save for later enabled', () => {
     const props = {
       productDetail: {
+        productInfo: { skuId: '123' },
         itemInfo: {
           name: 'Boys Basic',
           qty: '1',
@@ -65,6 +67,7 @@ describe('CartItemTile common component', () => {
   it('renders correctly with bag page sfl section', () => {
     const props = {
       productDetail: {
+        productInfo: { skuId: '123' },
         itemInfo: {
           name: 'Boys Basic Skinny Jeans',
           qty: '1',

@@ -11,6 +11,7 @@ const MyPrefrence = ({ labels }) => {
       <FormPageHeadingComponent
         heading={getLabelValue(labels, 'lbl_prefrence_heading')}
         className="margin-none"
+        data-locator="mypreference-header"
       />
       <MyPref labels={labels} />
     </div>

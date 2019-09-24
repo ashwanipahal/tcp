@@ -72,6 +72,20 @@ export const BagHeaderRow = styled.View`
   margin: 0 ${props => props.theme.spacing.APP_LAYOUT_SPACING.XXS};
 `;
 
+export const SuccessTickImage = styled.Image`
+  width: 23px;
+  height: 23px;
+  margin-right: ${props => props.theme.spacing.APP_LAYOUT_SPACING.XXS};
+`;
+
+export const SuccessMessageContainer = styled.View`
+  flex-direction: row;
+  align-items: center;
+  border-width: 2px;
+  border-color: ${props => props.theme.colors.NOTIFICATION.SUCCESS};
+  padding: ${props => props.theme.spacing.ELEM_SPACING.SM};
+`;
+
 export default {
   HeadingViewStyle,
   MainSection,
@@ -85,4 +99,6 @@ export default {
   ActiveBagHeaderText,
   ActiveBagHeaderView,
   InActiveBagHeaderView,
+  SuccessTickImage,
+  SuccessMessageContainer,
 };

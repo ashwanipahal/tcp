@@ -20,7 +20,10 @@ import {
 } from '../../Checkout/container/Checkout.action';
 import BAG_SELECTORS from './BagPage.selectors';
 import { getModuleX } from '../../../../../services/abstractors/common/moduleX';
-import { getUserLoggedInState } from '../../../account/User/container/User.selectors';
+import {
+  getUserLoggedInState,
+  getPersonalDataState,
+} from '../../../account/User/container/User.selectors';
 import { setCheckoutModalMountedState } from '../../../account/LoginPage/container/LoginPage.actions';
 import checkoutSelectors, { isRemembered } from '../../Checkout/container/Checkout.selector';
 import { isMobileApp, isCanada } from '../../../../../utils';
@@ -147,6 +150,12 @@ export function* getCartDataSaga(payload = {}) {
       createMatchObject(res, translatedProductInfo);
     }
     yield put(BAG_PAGE_ACTIONS.getOrderDetailsComplete(res.orderDetails));
+    if (res.orderDetails.orderItems.length > 0) {
+      const personalData = yield select(getPersonalDataState);
+      if (!personalData || !personalData.get('userId')) {
+        yield put(getUserInfo());
+      }
+    }
     if (isCheckoutFlow) {
       yield put(checkoutSetCartData({ res, isCartNotRequired, updateSmsInfo }));
     }
@@ -313,6 +322,7 @@ export function* addItemToSFL({
       countryCurrency,
       isCanadaSIte
     );
+    yield put(BAG_PAGE_ACTIONS.setSflData(res.sflItems));
     if (afterHandler) {
       afterHandler();
     }
@@ -324,12 +334,10 @@ export function* addItemToSFL({
       if (userInfoRequired) {
         yield put(getUserInfo());
       }
-      yield put(removeCartItem(itemId));
+      yield put(removeCartItem({ itemId }));
       yield delay(BAGPAGE_CONSTANTS.ITEM_SFL_SUCCESS_MSG_TIMEOUT);
-      yield put(BAG_PAGE_ACTIONS.setCartItemsSFL(false));
     }
   } catch (err) {
-    console.log({ err });
     yield put(BAG_PAGE_ACTIONS.setCartItemsSflError(err));
   }
 }

@@ -84,4 +84,5 @@ export default {
   'search-close-icon': '/static/images/search-close-icon.svg',
   'venmo-button': '/static/images/venmo_white_logo.svg',
   'sample-receipt': '/static/images/sample-receipt.png',
+  'cart-icon-white': '/static/images/bag-white.svg',
 };
