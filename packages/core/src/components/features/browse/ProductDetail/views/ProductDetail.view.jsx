@@ -15,6 +15,7 @@ import {
   getImagesToDisplay,
   getMapSliceForColorProductId,
 } from '../../ProductListing/molecules/ProductList/utils/productsCommonUtils';
+import PickupStoreModal from '../../../../common/organisms/PickupStoreModal';
 
 const getProductColorId = (productInfo, currentProduct) => {
   let colorProduct = {};
@@ -135,6 +136,7 @@ const ProductDetailView = ({
           <div className="product-detail-section">RATINGS AND REVIEWS</div>
         </Col>
       </Row>
+      <PickupStoreModal />
     </div>
   );
 };

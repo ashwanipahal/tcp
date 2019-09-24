@@ -46,7 +46,7 @@ const styles = css`
     padding-bottom: 3px;
   }
   .availability {
-    padding-bottom: 7px;
+    padding: 0 12px 7px 0;
   }
   .pickup-info {
     padding-bottom: 14px;
@@ -59,6 +59,9 @@ const styles = css`
   }
   .pickup-icon {
     align-self: flex-start;
+  }
+  .error-pickup-info {
+    padding-top: 8px;
   }
 `;
 export default styles;

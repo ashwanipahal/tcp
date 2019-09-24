@@ -1,11 +1,6 @@
 import { executeStatefulAPICall } from '../../../handler';
 import endpoints from '../../../endpoints';
-
-const ORDER_ITEM_TYPE = {
-  BOSS: 'BOSS',
-  BOPIS: 'BOPIS',
-  ECOM: 'ECOM',
-};
+import { getSiteId } from '../../../../utils';
 
 /**
  * @function getBopisInventoryDetails
@@ -24,22 +19,11 @@ const ORDER_ITEM_TYPE = {
     ]
   );
   */
-const getBopisInventoryDetails = cartItems => {
-  const bopisItems = cartItems
-    .filter(item => !!item.miscInfo.store && item.productInfo.orderType === ORDER_ITEM_TYPE.BOPIS)
-    .map(item => ({
-      storeId: item.miscInfo.storeId.substring(2),
-      variantNo: item.productInfo.variantNo,
-      itemPartNumber: item.productInfo.itemPartNumber,
-    }));
-
-  if (!bopisItems.length) {
-    return {};
-  }
+const getBopisInventoryDetails = bopisItems => {
   const payload = {
     body: {
       availabilityRequest: {
-        viewName: this.apiHelper.configOptions.isUSStore ? 'US BOPIS' : 'CA BOPIS',
+        viewName: getSiteId() === 'us' ? 'US BOPIS' : 'CA BOPIS',
         availabilityCriteria: {
           facilityNames: {
             facilityName: bopisItems.map(item => item.storeId),

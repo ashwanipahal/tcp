@@ -32,8 +32,9 @@ const validateSkuDetails = (productInfo, initialValues) => {
   for (let key in initialValues) {
     if (
       !initialValues[key] &&
-      (key !== config.SKU_DETAILS.fit ||
-        (key === config.SKU_DETAILS.fit && showFitsForProduct(productInfo, initialValues)))
+      (key.toLowerCase() !== config.SKU_DETAILS.fit ||
+        (key.toLowerCase() === config.SKU_DETAILS.fit &&
+          showFitsForProduct(productInfo, initialValues)))
     ) {
       return false;
     }
@@ -87,14 +88,10 @@ function validateBopisEligibility({ isBopisClearanceProductEnabled, isBopisEnabl
  * quantity
  */
 function isProductOOS(colorFitsSizesMap, selectedSKu) {
-  const currentFitEntry = getMapSliceForFit(
-    colorFitsSizesMap,
-    selectedSKu.color && selectedSKu.color.name,
-    selectedSKu.Fit && selectedSKu.Fit.name
-  );
+  const currentFitEntry = getMapSliceForFit(colorFitsSizesMap, selectedSKu.color, selectedSKu.Fit);
   if (currentFitEntry && currentFitEntry.sizes) {
     const selectedSKuProductInfo = currentFitEntry.sizes.find(
-      size => size.sizeName === selectedSKu.size
+      size => size.sizeName === selectedSKu.Size
     );
     const maxAvailableProducts = selectedSKuProductInfo ? selectedSKuProductInfo.maxAvailable : 0;
 
@@ -109,14 +106,10 @@ function isProductOOS(colorFitsSizesMap, selectedSKu) {
  * quantity
  */
 function isBOSSProductOOS(colorFitsSizesMap, selectedSKu) {
-  const currentFitEntry = getMapSliceForFit(
-    colorFitsSizesMap,
-    selectedSKu.color && selectedSKu.color.name,
-    selectedSKu.Fit && selectedSKu.Fit.name
-  );
+  const currentFitEntry = getMapSliceForFit(colorFitsSizesMap, selectedSKu.color, selectedSKu.Fit);
   if (currentFitEntry && currentFitEntry.sizes) {
     const selectedSKuProductInfo = currentFitEntry.sizes.find(
-      size => size.sizeName === selectedSKu.size
+      size => size.sizeName === selectedSKu.Size
     );
     const maxAvailableBossProducts = selectedSKuProductInfo
       ? selectedSKuProductInfo.maxAvailableBoss

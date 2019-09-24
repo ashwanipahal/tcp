@@ -7,8 +7,8 @@ import getBopisInventoryDetails from '../../../../../services/abstractors/common
 export function* getBopisInventory({ payload }) {
   yield put(setBopisInventoryDetailsActn({}));
   try {
-    const { cartItem } = { payload };
-    const inventoryResponse = yield call(getBopisInventoryDetails, cartItem);
+    const { itemInfo } = payload;
+    const inventoryResponse = yield call(getBopisInventoryDetails, itemInfo);
     yield put(setBopisInventoryDetailsActn({ inventoryResponse }));
   } catch (err) {
     logger.error(err);

@@ -19,11 +19,11 @@ import {
   getVariantId,
   getMapSliceForSize,
 } from '../../../../features/browse/ProductListing/molecules/ProductList/utils/productsCommonUtils';
-
 import {
   COLOR_FITS_SIZES_MAP_PROP_TYPE,
   PRICING_PROP_TYPES,
 } from '../../PickupStoreModal/PickUpStoreModal.proptypes';
+import { getIsPickupModalOpen } from '../../PickupStoreModal/container/PickUpStoreModal.selectors';
 
 /**
  *  Describes a general product, not yet specialized by chosing a color, size, etc.
@@ -90,6 +90,16 @@ export const PRODUCT_INFO_PROP_TYPES = {
 
 export const PRODUCT_INFO_PROP_TYPE_SHAPE = PropTypes.shape(PRODUCT_INFO_PROP_TYPES);
 
+const updateItemValueObj = itemObjParam => {
+  const itemObj = itemObjParam;
+  const itemObjKeys = Object.keys(itemObj);
+  itemObjKeys.forEach(objKey => {
+    if (itemObj[objKey] && itemObj[objKey].name) {
+      itemObj[objKey] = itemObj[objKey].name;
+    }
+  });
+  return itemObj;
+};
 class ProductPickupContainer extends React.PureComponent {
   static propTypes = {
     miscInfo: PropTypes.shape({}),
@@ -154,6 +164,7 @@ class ProductPickupContainer extends React.PureComponent {
       lbl_Product_pickup_PICKUP_IN_STORE: PropTypes.string,
       lbl_Product_pickup_PRODUCT_BOPIS: PropTypes.string,
       lbl_Product_pickup_TITLE_DEFAULT_NOSTORE: PropTypes.string,
+      lbl_Product_pickup_CHANGE_STORE: PropTypes.string,
     }),
   };
 
@@ -195,8 +206,9 @@ class ProductPickupContainer extends React.PureComponent {
       lbl_Product_pickup_FREE_SHIPPING: 'FREE Shipping Every Day!',
       lbl_Product_pickup_NO_MIN_PURCHASE: 'No Minimum Purchase Required.',
       lbl_Product_pickup_PICKUP_IN_STORE: 'PICK UP IN STORE',
-      lbl_Product_pickup_PRODUCT_BOPIS: 'Buy online - Pick up in store',
+      lbl_Product_pickup_PRODUCT_BOPIS: 'Select Store',
       lbl_Product_pickup_TITLE_DEFAULT_NOSTORE: 'Select Store',
+      lbl_Product_pickup_CHANGE_STORE: '(Change Store)',
     },
   };
 
@@ -220,9 +232,6 @@ class ProductPickupContainer extends React.PureComponent {
     this.isSkuResolved = false;
     this.isBopisEligible = validateBopisEligibility({ ...bopisValidatingParams, miscInfo });
     this.isBossEligible = validateBossEligibility({ ...bossValidatingParams, miscInfo });
-    // TODO - remove this hard coding before merging
-    this.isBopisEligible = true;
-    this.isBossEligible = true;
     this.isGeoStoreAPIRequested = false;
     this.state = {
       isSubmitting: false,
@@ -243,18 +252,28 @@ class ProductPickupContainer extends React.PureComponent {
       const itemPartNumber = getVariantId(
         productInfo.colorFitsSizesMap,
         itemValues.color,
-        itemValues.Fit.name,
-        itemValues.Size.name
+        itemValues.Fit,
+        itemValues.Size
       );
       const currentSizeEntry = getMapSliceForSize(
         productInfo.colorFitsSizesMap,
         itemValues.color,
-        itemValues.Fit.name,
-        itemValues.Size.name
+        itemValues.Fit,
+        itemValues.Size
       );
       const variantNo =
         currentSizeEntry && currentSizeEntry.variantNo ? currentSizeEntry.variantNo : null;
-      getBopisInventoryDetails(itemPartNumber, userDefaultStore.basicInfo.id, variantNo);
+      const itemInfo = [
+        {
+          storeId:
+            userDefaultStore.basicInfo &&
+            userDefaultStore.basicInfo.id &&
+            userDefaultStore.basicInfo.id.substring(2),
+          variantNo,
+          itemPartNumber,
+        },
+      ];
+      getBopisInventoryDetails({ itemInfo });
     } else if (!userDefaultStore && lat && long && !this.isGeoStoreAPIRequested) {
       /* Making this call only when preffered store doesn't exist in redux state and lat long are changed by user's access.
        * Added isGeoStoreAPIRequested to ensure that API for geo store is called only once
@@ -325,6 +344,7 @@ class ProductPickupContainer extends React.PureComponent {
           showChangeStore = true;
         }
         pickupTitleText = labels.lbl_Product_pickup_TITLE_DEFAULT_NOSTORE;
+        return { showChangeStore, pickupTitleText, isBossEligBossInvAvail };
       }
       if (this.isBopisEligible && !isBossEligBossInvAvail) {
         // bopis only
@@ -333,15 +353,16 @@ class ProductPickupContainer extends React.PureComponent {
          * then it @returns {labels.PRODUCT_BOPIS}
          */
         pickupTitleText = labels.lbl_Product_pickup_PRODUCT_BOPIS;
+        return { showChangeStore, pickupTitleText, isBossEligBossInvAvail };
       }
       pickupTitleText = labels.lbl_Product_pickup_TITLE_DEFAULT_NOSTORE;
+      return { showChangeStore, pickupTitleText, isBossEligBossInvAvail };
     }
-
     return { showChangeStore, pickupTitleText, isBossEligBossInvAvail };
   }
 
   /**
-   * @member renderPickupInfo
+   * @member getPickupInfo
    * @description this method returns the information of pickup on the
    * respective store based on different scenarios
    * @param {object} miscInfo carries the product information
@@ -402,7 +423,7 @@ class ProductPickupContainer extends React.PureComponent {
     return (
       this.isSkuResolved &&
       userDefaultStore &&
-      (itemValues.size !== prevProps.itemValues.size || this.compareDefaultStore(prevProps))
+      (itemValues.Size !== prevProps.itemValues.Size || this.compareDefaultStore(prevProps))
     );
   };
 
@@ -503,149 +524,154 @@ function mapStateToProps(state, ownProps) {
   const selector = formValueSelector(ownProps.formName);
   // creating new prop userDefaultStore which is a combination of
   //  favStore store or geo default store of user
+  // TODO - use the favorite store and getGeoDefaultStore selector from store locator
   // const favStore = storesStoreView.getDefaultStore(state);
   // const geoDefaultStore = storesStoreView.getGeoDefaultStore(state);
   // const userDefaultStore = favStore || geoDefaultStore || null;
   // const offerEspot = generalStoreView.getEspotByName(state, 'fav_store_pickup_content');
-  // const userDefaultStore = null;
+  const userDefaultStore = null;
 
   return {
     labels: PickupSelectors.getLabels(state),
-    itemValues: selector(state, 'color', 'Fit', 'Size', 'Quantity'),
+    itemValues: updateItemValueObj(selector(state, 'color', 'Fit', 'Size', 'Quantity')),
     isBopisEnabled: PickupSelectors.getIsBopisEnabled(state),
     isBossEnabled: PickupSelectors.getIsBossEnabled(state),
+    pickupModalState: getIsPickupModalOpen(state),
     isBopisClearanceProductEnabled: PickupSelectors.getIsBopisClearanceProductEnabled(state),
     isBossClearanceProductEnabled: PickupSelectors.getIsBossClearanceProductEnabled(state),
-    userDefaultStore: {
-      storeBossInfo: {
-        isBossEligible: '1',
-        startDate: '09/29/2019',
-        endDate: '10/03/2019',
-      },
-      pickupType: {
-        isStoreBossSelected: true,
-        isStoreBopisSelected: true,
-      },
-      distance: null,
-      basicInfo: {
-        id: '114037',
-        storeName: 'south park meadows',
-        isDefault: 1,
-        address: {
-          addressLine1: '9500 south ih-35',
-          city: 'austin',
-          state: 'TX',
-          country: 'US',
-          zipCode: '78748',
-        },
-        phone: '(512) 292-3025',
-        coordinates: {
-          lat: 30.16216,
-          long: -97.7892,
-        },
-      },
-      hours: {
-        regularHours: [
-          {
-            dayName: 'TUESDAY',
-            openIntervals: [
-              {
-                fromHour: '2019-09-24 10:00:00',
-                toHour: '2019-09-24 21:00:00',
-              },
-            ],
-            isClosed: false,
-          },
-          {
-            dayName: 'WEDNESDAY',
-            openIntervals: [
-              {
-                fromHour: '2019-09-25 10:00:00',
-                toHour: '2019-09-25 21:00:00',
-              },
-            ],
-            isClosed: false,
-          },
-          {
-            dayName: 'THURSDAY',
-            openIntervals: [
-              {
-                fromHour: '2019-09-26 10:00:00',
-                toHour: '2019-09-26 21:00:00',
-              },
-            ],
-            isClosed: false,
-          },
-          {
-            dayName: 'FRIDAY',
-            openIntervals: [
-              {
-                fromHour: '2019-09-27 10:00:00',
-                toHour: '2019-09-27 21:00:00',
-              },
-            ],
-            isClosed: false,
-          },
-          {
-            dayName: 'SATURDAY',
-            openIntervals: [
-              {
-                fromHour: '2019-09-28 10:00:00',
-                toHour: '2019-09-28 21:00:00',
-              },
-            ],
-            isClosed: false,
-          },
-          {
-            dayName: 'SUNDAY',
-            openIntervals: [
-              {
-                fromHour: '2019-09-29 12:00:00',
-                toHour: '2019-09-29 18:00:00',
-              },
-            ],
-            isClosed: false,
-          },
-          {
-            dayName: 'MONDAY',
-            openIntervals: [
-              {
-                fromHour: '2019-09-30 10:00:00',
-                toHour: '2019-09-30 21:00:00',
-              },
-            ],
-            isClosed: false,
-          },
-          {
-            dayName: 'TUESDAY',
-            openIntervals: [
-              {
-                fromHour: '2019-10-01 10:00:00',
-                toHour: '2019-10-01 21:00:00',
-              },
-            ],
-            isClosed: false,
-          },
-          {
-            dayName: 'WEDNESDAY',
-            openIntervals: [
-              {
-                fromHour: '2019-10-02 10:00:00',
-                toHour: '2019-10-02 21:00:00',
-              },
-            ],
-            isClosed: false,
-          },
-        ],
-        holidayHours: [],
-        regularAndHolidayHours: [],
-      },
-      features: {
-        storeType: 'Retail Store',
-      },
-      productAvailability: {},
-      timeStamp: 1569314564525,
-    },
+    userDefaultStore,
+    // TODO - This is a sample default store value for implementation.
+    // Will be removed once the favorite store is available in the store
+    // userDefaultStore: {
+    //   storeBossInfo: {
+    //     isBossEligible: '1',
+    //     startDate: '09/29/2019',
+    //     endDate: '10/03/2019',
+    //   },
+    //   pickupType: {
+    //     isStoreBossSelected: true,
+    //     isStoreBopisSelected: true,
+    //   },
+    //   distance: null,
+    //   basicInfo: {
+    //     id: '114037',
+    //     storeName: 'south park meadows',
+    //     isDefault: 1,
+    //     address: {
+    //       addressLine1: '9500 south ih-35',
+    //       city: 'austin',
+    //       state: 'TX',
+    //       country: 'US',
+    //       zipCode: '78748',
+    //     },
+    //     phone: '(512) 292-3025',
+    //     coordinates: {
+    //       lat: 30.16216,
+    //       long: -97.7892,
+    //     },
+    //   },
+    //   hours: {
+    //     regularHours: [
+    //       {
+    //         dayName: 'TUESDAY',
+    //         openIntervals: [
+    //           {
+    //             fromHour: '2019-09-24 10:00:00',
+    //             toHour: '2019-09-24 21:00:00',
+    //           },
+    //         ],
+    //         isClosed: false,
+    //       },
+    //       {
+    //         dayName: 'WEDNESDAY',
+    //         openIntervals: [
+    //           {
+    //             fromHour: '2019-09-25 10:00:00',
+    //             toHour: '2019-09-25 21:00:00',
+    //           },
+    //         ],
+    //         isClosed: false,
+    //       },
+    //       {
+    //         dayName: 'THURSDAY',
+    //         openIntervals: [
+    //           {
+    //             fromHour: '2019-09-26 10:00:00',
+    //             toHour: '2019-09-26 21:00:00',
+    //           },
+    //         ],
+    //         isClosed: false,
+    //       },
+    //       {
+    //         dayName: 'FRIDAY',
+    //         openIntervals: [
+    //           {
+    //             fromHour: '2019-09-27 10:00:00',
+    //             toHour: '2019-09-27 21:00:00',
+    //           },
+    //         ],
+    //         isClosed: false,
+    //       },
+    //       {
+    //         dayName: 'SATURDAY',
+    //         openIntervals: [
+    //           {
+    //             fromHour: '2019-09-28 10:00:00',
+    //             toHour: '2019-09-28 21:00:00',
+    //           },
+    //         ],
+    //         isClosed: false,
+    //       },
+    //       {
+    //         dayName: 'SUNDAY',
+    //         openIntervals: [
+    //           {
+    //             fromHour: '2019-09-29 12:00:00',
+    //             toHour: '2019-09-29 18:00:00',
+    //           },
+    //         ],
+    //         isClosed: false,
+    //       },
+    //       {
+    //         dayName: 'MONDAY',
+    //         openIntervals: [
+    //           {
+    //             fromHour: '2019-09-30 10:00:00',
+    //             toHour: '2019-09-30 21:00:00',
+    //           },
+    //         ],
+    //         isClosed: false,
+    //       },
+    //       {
+    //         dayName: 'TUESDAY',
+    //         openIntervals: [
+    //           {
+    //             fromHour: '2019-10-01 10:00:00',
+    //             toHour: '2019-10-01 21:00:00',
+    //           },
+    //         ],
+    //         isClosed: false,
+    //       },
+    //       {
+    //         dayName: 'WEDNESDAY',
+    //         openIntervals: [
+    //           {
+    //             fromHour: '2019-10-02 10:00:00',
+    //             toHour: '2019-10-02 21:00:00',
+    //           },
+    //         ],
+    //         isClosed: false,
+    //       },
+    //     ],
+    //     holidayHours: [],
+    //     regularAndHolidayHours: [],
+    //   },
+    //   features: {
+    //     storeType: 'Retail Store',
+    //   },
+    //   productAvailability: {},
+    //   timeStamp: 1569314564525,
+    // },
     userGeoCoordinates: {
       lat: null,
       long: null,
@@ -654,22 +680,23 @@ function mapStateToProps(state, ownProps) {
     // Checking with BA since the requirement is not mentioned in the story.
     // TODO - check if required => userGeoCoordinates: userStoreView.getUserGeoCoordinates(state),
     // TODO - check if required => getGeoDefaultStore: storeOperators.storesOperator.loadDefaultStore,
-    disabledFits: PickupSelectors.getBopisDisabledFits(state),
-    // bopisItemInventory: PickupSelectors.getBopisItemInventory(state),
+    bopisItemInventory: PickupSelectors.getBopisItemInventory(state),
     // TODO - This changes to CMS data - offerEspotAvailable: offerEspot && offerEspot.value,
-    // isRadialInventoryEnabled: PickupSelectors.getIsRadialInventoryEnabled(state),
-    bopisItemInventory: [
-      {
-        status: 'Limited',
-      },
-    ],
-    isRadialInventoryEnabled: true,
+    isRadialInventoryEnabled: PickupSelectors.getIsRadialInventoryEnabled(state),
+    // TODO - dummy values for hardcoding the status. Remove once the API works.
+    // bopisItemInventory: [
+    //   {
+    //     status: 'Limited availability',
+    //     quantity: 10,
+    //   },
+    // ],
+    // isRadialInventoryEnabled: true,
   };
 }
 
 const mapDispatchToProps = dispatch => ({
-  getBopisInventoryDetails: () => {
-    dispatch(getBopisInventoryDetailsActn());
+  getBopisInventoryDetails: payload => {
+    dispatch(getBopisInventoryDetailsActn(payload));
   },
   onPickUpOpenClick: payload => {
     dispatch(openPickupModalWithValues(payload));

@@ -204,12 +204,17 @@ class ProductPickup extends React.PureComponent {
     },
   };
 
+  constructor(props) {
+    super(props);
+    this.handlePickupModalClick = this.handlePickupModalClick.bind(this);
+  }
+
   /**
    * @method handlePickupModalClick -
    * method is responsible for invoking the method for open pickup modal
    */
 
-  handlePickupModalClick = () => {
+  handlePickupModalClick = e => {
     const {
       onPickUpOpenClick,
       productInfo,
@@ -218,9 +223,10 @@ class ProductPickup extends React.PureComponent {
       isBossEligible,
     } = this.props;
 
+    e.preventDefault();
     return onPickUpOpenClick({
       generalProductId: productInfo.generalProductId,
-      initialValues: { color: itemValues && itemValues.color && itemValues.color.name },
+      initialValues: { color: itemValues && itemValues.color },
       isBopisCtaEnabled: isBopisEligible,
       isBossCtaEnabled: isBossEligible,
       colorProductId: productInfo.generalProductId,
@@ -272,13 +278,15 @@ class ProductPickup extends React.PureComponent {
               <Anchor
                 fontSizeVariation="medium"
                 className="change-store-link"
-                role="link"
+                role="button"
                 tabIndex="0"
                 onKeyDown={this.handleChangeStoreOnKeyPress}
-                onClick={this.handlePickupModalClick}
+                handleLinkClick={this.handlePickupModalClick}
                 underline
+                noLink
               >
                 {labels.lbl_Product_pickup_CHANGE_STORE}
+                {'(Change Store)'}
               </Anchor>
             </React.Fragment>
           );
@@ -406,6 +414,22 @@ class ProductPickup extends React.PureComponent {
     );
   }
 
+  renderPickupInfoError() {
+    const { labels } = this.props;
+    return (
+      <BodyCopy
+        fontSize="fs10"
+        fontWeight="regular"
+        fontFamily="secondary"
+        color="error"
+        className="error-pickup-info"
+      >
+        {labels.lbl_Product_pickup_UNAVAILABLE_IN_STORES}
+        UNAVAILABLE IN STORES.
+      </BodyCopy>
+    );
+  }
+
   render() {
     const { className, showPickupInfo, isSubmitting, labels } = this.props;
 
@@ -447,6 +471,7 @@ class ProductPickup extends React.PureComponent {
                 <div className="pickup-details">
                   {this.renderPickupTitle()}
                   {showPickupInfo && this.renderPickupInfo()}
+                  {!showPickupInfo && this.renderPickupInfoError()}
                 </div>
               </div>
               <Button
