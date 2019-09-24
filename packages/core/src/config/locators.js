@@ -141,6 +141,8 @@ export default {
   empty_bag_loginUserCTA: 'cartRegisteredShopNowButton',
   empty_bag_guestUserCTA: 'cartGuestLoginCta',
   empty_bag_recommendation_msg: 'cartRecommendationMessage',
+  empty_sfl_Msg_1: 'cartEmptySFLMessage_1',
+  empty_sfl_Msg_2: 'cartEmptySFLMessage_2',
 
   // Country Selector
   header_country_flag: 'header_country_flag',
