@@ -17,9 +17,4 @@ const FavtWrapper = styled.View`
   position: relative;
 `;
 
-const TouchableView = styled.TouchableOpacity`
-  background: red;
-  height: 40px;
-`;
-
-export { UnderlineStyle, ImageWrapper, FavtWrapper, TouchableView };
+export { UnderlineStyle, ImageWrapper, FavtWrapper };

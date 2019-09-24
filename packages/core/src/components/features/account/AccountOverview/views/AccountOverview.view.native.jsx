@@ -10,13 +10,7 @@ import Panel from '../../../../common/molecules/Panel';
 import PaymentTile from '../../common/organism/PaymentTile';
 import CustomButton from '../../../../common/atoms/Button';
 import AddressOverviewTile from '../../common/organism/AddressOverviewTile';
-import ApplyNowWrapper from '../../../../common/molecules/ApplyNowPLCCModal';
-import {
-  UnderlineStyle,
-  ImageWrapper,
-  FavtWrapper,
-  TouchableView,
-} from '../styles/AccountOverview.style.native';
+import { UnderlineStyle, ImageWrapper, FavtWrapper } from '../styles/AccountOverview.style.native';
 import LogOutPageContainer from '../../Logout/container/LogOut.container';
 import ModalNative from '../../../../common/molecules/Modal';
 import BodyCopy from '../../../../common/atoms/BodyCopy';
@@ -39,7 +33,6 @@ class AccountOverview extends PureComponent<Props> {
     super(props);
     this.state = {
       showModal: false,
-      applyNow: false,
       getComponentId: {
         login: '',
         createAccount: '',
@@ -105,20 +98,6 @@ class AccountOverview extends PureComponent<Props> {
     }));
   };
 
-  toggleApplyCard = () => {
-    const { applyCard } = this.state;
-    this.setState({
-      applyCard: !applyCard,
-    });
-  };
-
-  toggleApplyNowModal = () => {
-    const { applyNow } = this.state;
-    this.setState({
-      applyNow: !applyNow,
-    });
-  };
-
   resetAccountOverViewState = () => {
     this.setState({
       showModal: false,
@@ -148,7 +127,7 @@ class AccountOverview extends PureComponent<Props> {
 
   render() {
     const { isUserLoggedIn, labels, commonLabels, handleComponentChange, navigation } = this.props;
-    const { showModal, getComponentId, applyNow } = this.state;
+    const { showModal, getComponentId } = this.state;
     const modalHeaderLbl = this.getModalHeader(getComponentId, labels);
     const viewContainerStyle = { marginTop: 15 };
     const colorPallete = createThemeColorPalette();
@@ -285,9 +264,6 @@ class AccountOverview extends PureComponent<Props> {
               </ImageWrapper>
             </FavtWrapper>
             <UnderlineStyle />
-
-            <TouchableView onPress={this.toggleApplyNowModal} />
-            <ApplyNowWrapper toggleModalWrapper={this.toggleApplyNowModal} applyNow={applyNow} />
 
             <Panel title={labels.lbl_overview_apply_today} isVariationTypeLink isCardApply />
 
