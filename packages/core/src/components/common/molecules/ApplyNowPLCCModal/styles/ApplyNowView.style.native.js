@@ -7,10 +7,10 @@ export const ImageContainer = styled.View`
 `;
 
 export const Container = styled.View`
-  width: 50%;
+  width: 85%;
   margin-top: ${props => props.theme.spacing.LAYOUT_SPACING.XXS};
-  margin-left: ${props => props.theme.spacing.LAYOUT_SPACING.MED};
-  margin-right: ${props => props.theme.spacing.LAYOUT_SPACING.MED};
+  margin-left: ${props => props.theme.spacing.LAYOUT_SPACING.XS};
+  margin-right: ${props => props.theme.spacing.LAYOUT_SPACING.XS};
 `;
 
 export const TextBoxContainer = styled.View`
@@ -49,7 +49,7 @@ export const StyledAnchor = styled(Anchor)`
 
 export const BottomContainer = styled.View`
   width: 100%;
-  padding-top: ${props => props.theme.spacing.LAYOUT_SPACING.SM};
+  padding-top: ${props => props.theme.spacing.LAYOUT_SPACING.XXS};
   padding-left: ${props => props.theme.spacing.LAYOUT_SPACING.XXS};
   padding-right: ${props => props.theme.spacing.LAYOUT_SPACING.XXS};
   align-items: center;
@@ -58,8 +58,8 @@ export const BottomContainer = styled.View`
 `;
 
 export const RichTextContainer = styled.View`
-  width: 420px;
-  height: 80px;
+  width: 100%;
+  height: 143px;
 `;
 
 export const StyledImage = styled(Image)`
