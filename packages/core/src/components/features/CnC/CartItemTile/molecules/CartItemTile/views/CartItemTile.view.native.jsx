@@ -129,7 +129,7 @@ class ProductInformation extends React.Component {
       productDetail.miscInfo.availability === CARTPAGE_CONSTANTS.AVAILABILITY_OK
     ) {
       return (
-        <MarginLeft onPress={() => {}}>
+        <MarginLeft onPress={() => CartItemTileExtension.moveToBagSflItem(this.props)}>
           <Image
             data-locator="move-to-bag-link"
             source={moveToBagIcon}
@@ -226,7 +226,7 @@ class ProductInformation extends React.Component {
   };
 
   rightButton = () => {
-    const { removeCartItem, productDetail, labels } = this.props;
+    const { removeCartItem, productDetail, labels, isBagPageSflSection } = this.props;
     return (
       <BtnWrapper>
         {productDetail.miscInfo.availability !== CARTPAGE_CONSTANTS.AVAILABILITY_SOLDOUT && (
@@ -242,7 +242,13 @@ class ProductInformation extends React.Component {
         )}
         {this.renderSflActionsLinks()}
 
-        <MarginLeft onPress={() => removeCartItem(productDetail.itemInfo.itemId)}>
+        <MarginLeft
+          onPress={() =>
+            isBagPageSflSection
+              ? CartItemTileExtension.removeSflItem(this.props)
+              : removeCartItem(productDetail.itemInfo.itemId)
+          }
+        >
           <Image
             data-locator={getLocator('cart_item_edit_link')}
             source={deleteIcon}

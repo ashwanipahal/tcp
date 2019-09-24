@@ -6,6 +6,7 @@ import {
   getLabelsCartItemTile,
   getIsCartItemsUpdating,
   getIsCartItemsSFL,
+  getIsSflItemRemoved,
 } from '@tcp/core/src/components/features/CnC/CartItemTile/container/CartItemTile.selectors';
 import {
   getUserLoggedInState,
@@ -34,6 +35,7 @@ const mapStateToProps = state => {
     isPlcc: isPlccUser(state),
     isCartItemsUpdating: getIsCartItemsUpdating(state),
     isCartItemSFL: getIsCartItemsSFL(state),
+    isSflItemRemoved: getIsSflItemRemoved(state),
   };
 };
 export const mapDispatchToProps = dispatch => {

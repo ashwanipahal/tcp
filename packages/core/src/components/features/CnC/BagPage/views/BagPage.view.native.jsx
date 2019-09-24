@@ -44,10 +44,12 @@ class BagPage extends React.Component {
   }
 
   componentDidUpdate() {
-    const { toastMessage, isCartItemSFL, labels } = this.props;
-    const { sflSuccess } = labels;
+    const { toastMessage, isCartItemSFL, labels, isSflItemRemoved } = this.props;
+    const { sflSuccess, sflDeleteSuccess } = labels;
     if (isCartItemSFL) {
       toastMessage(sflSuccess);
+    } else if (isSflItemRemoved) {
+      toastMessage(sflDeleteSuccess);
     }
   }
 
@@ -195,6 +197,7 @@ BagPage.propTypes = {
   sflItems: PropTypes.shape([]).isRequired,
   toastMessage: PropTypes.func.isRequired,
   isCartItemSFL: PropTypes.bool.isRequired,
+  isSflItemRemoved: PropTypes.bool.isRequired,
 };
 
 export default InitialPropsHOC(BagPage);

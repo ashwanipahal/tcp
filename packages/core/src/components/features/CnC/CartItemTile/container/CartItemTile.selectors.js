@@ -133,6 +133,10 @@ export const getIsCartItemsSFL = state => {
   return state.CartPageReducer.getIn(['uiFlags', 'isItemMovedToSflList']);
 };
 
+export const getIsSflItemRemoved = state => {
+  return state.CartPageReducer.getIn(['uiFlags', 'isSflItemDeleted']);
+};
+
 export const getLabelsCartItemTile = state => {
   const {
     global: {
@@ -186,6 +190,12 @@ export const getLabelsCartItemTile = state => {
     'checkout'
   );
   const sflSuccess = getLabelValue(state.Labels, 'bl_sfl_actionSuccess', 'bagPage', 'checkout');
+  const sflDeleteSuccess = getLabelValue(
+    state.Labels,
+    'lbl_sfl_itemDeleteSuccess',
+    'bagPage',
+    'checkout'
+  );
   const itemDeleted = getLabelValue(
     state.Labels,
     'lbl_msg_itemDeleteSuccess',
@@ -238,6 +248,7 @@ export const getLabelsCartItemTile = state => {
     moveToBagLink,
     itemDeleted,
     sflSuccess,
+    sflDeleteSuccess,
   };
 };
 

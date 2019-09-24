@@ -7,6 +7,7 @@ import BAG_PAGE_ACTIONS from './BagPage.actions';
 import {
   getCartOrderList,
   getIsCartItemsSFL,
+  getIsSflItemRemoved,
 } from '../../CartItemTile/container/CartItemTile.selectors';
 import { getUserLoggedInState } from '../../../account/User/container/User.selectors';
 import { toastMessageInfo } from '../../../../common/atoms/Toast/container/Toast.actions.native';
@@ -50,6 +51,7 @@ export class BagPageContainer extends React.Component<Props> {
       fetchLabels,
       toastMessage,
       isCartItemSFL,
+      isSflItemRemoved,
     } = this.props;
 
     const showAddTobag = false;
@@ -70,6 +72,7 @@ export class BagPageContainer extends React.Component<Props> {
         fetchLabels={fetchLabels}
         toastMessage={toastMessage}
         isCartItemSFL={isCartItemSFL}
+        isSflItemRemoved={isSflItemRemoved}
       />
     );
   }
@@ -110,6 +113,7 @@ const mapStateToProps = state => {
     isGuest: isGuestUser(state),
     sflItems: BagPageSelector.getsflItemsList(state),
     isCartItemSFL: getIsCartItemsSFL(state),
+    isSflItemRemoved: getIsSflItemRemoved(state),
   };
 };
 

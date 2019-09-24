@@ -17,6 +17,7 @@ describe('#Added to bag Selectors', () => {
         lbl_sfl_savedLaterButton: 'savedLaterButton',
         lbl_sfl_emptySflMsg: 'emptySflMsg',
         bl_sfl_actionSuccess: 'sflSuccess',
+        lbl_sfl_itemDeleteSuccess: 'sflDeleteSuccess',
       },
     },
     global: {
@@ -54,6 +55,7 @@ describe('#Added to bag Selectors', () => {
       savedLaterButton: 'savedLaterButton',
       emptySflMsg: 'emptySflMsg',
       sflSuccess: 'sflSuccess',
+      sflDeleteSuccess: 'sflDeleteSuccess',
     });
   });
 

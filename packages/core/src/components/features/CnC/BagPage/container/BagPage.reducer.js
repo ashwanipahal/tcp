@@ -27,6 +27,7 @@ const initialState = fromJS({
     cartItemSflError: null,
     isPickupStoreUpdating: false,
     isItemMovedToSflList: false,
+    isSflItemDeleted: false,
     cartItemLargeImagesViewer: {
       opened: false,
       currentIndex: 0,
@@ -56,6 +57,10 @@ function setCartItemsUpdating(state, isCartItemUpdating) {
 
 function setCartItemsSFL(state, isCartItemSFL) {
   return state.setIn(['uiFlags', 'isItemMovedToSflList'], isCartItemSFL);
+}
+
+function setSflItemDeleted(state, isCartItemSFL) {
+  return state.setIn(['uiFlags', 'isSflItemDeleted'], isCartItemSFL);
 }
 
 function setCartItemsSflError(state, isCartItemSflError) {
@@ -106,6 +111,8 @@ const BagPageReducer = (state = initialState, action) => {
       return updateItem(state, action.payload, AVAILABILITY.SOLDOUT);
     case BAGPAGE_CONSTANTS.SET_ITEM_UNAVAILABLE:
       return updateItem(state, action.payload, AVAILABILITY.UNAVAILABLE);
+    case BAGPAGE_CONSTANTS.SFL_ITEMS_SET_DELETED:
+      return setSflItemDeleted(state, action.payload);
     default:
       return returnBagPageReducer(state, action);
   }

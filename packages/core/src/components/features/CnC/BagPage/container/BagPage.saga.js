@@ -34,6 +34,7 @@ import { imageGenerator } from '../../../../../services/abstractors/CnC/CartItem
 import { getUserInfo } from '../../../account/User/container/User.actions';
 import { getIsInternationalShipping } from '../../../../../reduxStore/selectors/siteDetails.selectors';
 import { closeMiniBag } from '../../../../common/organisms/Header/container/Header.actions';
+import { addToCartEcom } from '../../AddedToBag/container/AddedToBag.actions';
 
 // external helper function
 const PAYPAL_REDIRECT_PARAM = 'isPaypalPostBack';
@@ -326,10 +327,8 @@ export function* addItemToSFL({
         yield put(getUserInfo());
       }
       yield put(removeCartItem({ itemId }));
-      yield delay(BAGPAGE_CONSTANTS.ITEM_SFL_SUCCESS_MSG_TIMEOUT);
     }
   } catch (err) {
-    console.log({ err });
     yield put(BAG_PAGE_ACTIONS.setCartItemsSflError(err));
   }
 }
@@ -342,6 +341,54 @@ export function* getSflDataSaga() {
     yield put(BAG_PAGE_ACTIONS.setSflData(res.sflItems));
   } catch (err) {
     yield put(BAG_PAGE_ACTIONS.setBagPageError(err));
+  }
+}
+
+export function* startSflItemDelete({ payload: { catEntryId } = {} } = {}) {
+  const isRememberedUser = yield select(isRemembered);
+  const isRegistered = yield select(getUserLoggedInState);
+  const countryCurrency = yield select(BAG_SELECTORS.getCurrentCurrency);
+  const isCanadaSIte = isCanada();
+  try {
+    const res = yield call(
+      addItemToSflList,
+      catEntryId,
+      isRememberedUser,
+      isRegistered,
+      imageGenerator,
+      countryCurrency,
+      isCanadaSIte,
+      true
+    );
+    yield put(BAG_PAGE_ACTIONS.setSflData(res.sflItems));
+    if (res.errorResponse && res.errorMessage) {
+      const resErr = res.errorMessage[Object.keys(res.errorMessage)[0]];
+      yield put(BAG_PAGE_ACTIONS.setCartItemsSflError(resErr));
+    } else {
+      yield put(BAG_PAGE_ACTIONS.setSflItemDeleted(true));
+      yield delay(BAGPAGE_CONSTANTS.ITEM_SFL_SUCCESS_MSG_TIMEOUT);
+      yield put(BAG_PAGE_ACTIONS.setSflItemDeleted(false));
+    }
+  } catch (err) {
+    yield put(BAG_PAGE_ACTIONS.setCartItemsSflError(err));
+  }
+}
+
+export function* startSflItemMoveToBag({ payload }) {
+  try {
+    const { itemId } = payload;
+    const addToCartData = {
+      skuInfo: {
+        skuId: itemId,
+      },
+      quantity: 1,
+    };
+    yield put(addToCartEcom(addToCartData));
+    yield put(BAG_PAGE_ACTIONS.getCartData());
+    // yield put(BAG_PAGE_ACTIONS.getOrderDetails());
+    yield put(BAG_PAGE_ACTIONS.startSflItemDelete(payload));
+  } catch (err) {
+    yield put(BAG_PAGE_ACTIONS.setCartItemsSflError(err));
   }
 }
 
@@ -360,6 +407,8 @@ export function* BagPageSaga() {
   yield takeLatest(BAGPAGE_CONSTANTS.START_PAYPAL_CHECKOUT, startPaypalCheckout);
   yield takeLatest(BAGPAGE_CONSTANTS.AUTHORIZATION_PAYPAL_CHECKOUT, authorizePayPalPayment);
   yield takeLatest(BAGPAGE_CONSTANTS.GET_SFL_DATA, getSflDataSaga);
+  yield takeLatest(BAGPAGE_CONSTANTS.SFL_ITEMS_DELETE, startSflItemDelete);
+  yield takeLatest(BAGPAGE_CONSTANTS.SFL_ITEMS_MOVE_TO_BAG, startSflItemMoveToBag);
 }
 
 export default BagPageSaga;
