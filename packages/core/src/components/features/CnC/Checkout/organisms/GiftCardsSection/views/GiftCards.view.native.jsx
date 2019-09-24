@@ -101,6 +101,23 @@ class GiftCards extends React.PureComponent {
     );
   }
 
+  renderAvailableCardHeading = (giftCardList, labels) => {
+    return (
+      <>
+        {giftCardList && giftCardList.size > 0 && (
+          <BodyCopyWithSpacing
+            text={getLabelValue(labels, 'lbl_giftcard_availableCards')}
+            fontSize="fs16"
+            fontWeight="extrabold"
+            fontFamily="secondary"
+            spacingStyles="margin-bottom-MED margin-top-MED"
+            color="gray.900"
+          />
+        )}
+      </>
+    );
+  };
+
   render() {
     const {
       labels,
@@ -134,14 +151,16 @@ class GiftCards extends React.PureComponent {
             color="gray.900"
           />
 
-          <BodyCopyWithSpacing
-            text={getLabelValue(labels, 'lbl_giftcard_appliedCards')}
-            fontSize="fs16"
-            fontWeight="extrabold"
-            fontFamily="secondary"
-            spacingStyles="margin-bottom-MED"
-            color="gray.900"
-          />
+          {appliedGiftCards && appliedGiftCards.size > 0 && (
+            <BodyCopyWithSpacing
+              text={getLabelValue(labels, 'lbl_giftcard_appliedCards')}
+              fontSize="fs16"
+              fontWeight="extrabold"
+              fontFamily="secondary"
+              spacingStyles="margin-bottom-MED"
+              color="gray.900"
+            />
+          )}
 
           {appliedGiftCards &&
             appliedGiftCards.size > 0 &&
@@ -179,14 +198,7 @@ class GiftCards extends React.PureComponent {
             />
           </HeadsUpMessage>
 
-          <BodyCopyWithSpacing
-            text={getLabelValue(labels, 'lbl_giftcard_availableCards')}
-            fontSize="fs16"
-            fontWeight="extrabold"
-            fontFamily="secondary"
-            spacingStyles="margin-bottom-MED margin-top-MED"
-            color="gray.900"
-          />
+          {this.renderAvailableCardHeading(giftCardList, labels)}
 
           {giftCardList &&
             giftCardList.size > 0 &&

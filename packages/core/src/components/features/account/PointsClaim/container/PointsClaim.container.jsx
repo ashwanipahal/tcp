@@ -7,7 +7,7 @@ import {
   getShowNotificationState,
   getPointsClaimErrorMessage,
 } from './PointsClaim.selectors';
-import { routerPush } from '../../../../../utils';
+import { routerPush, getSiteId, isMobileApp, getLabelValue } from '../../../../../utils';
 import { getMyPlaceNumber, getProfileInfoTileData } from '../../User/container/User.selectors';
 import PointsClaimComponent from '../views';
 import { TRANSACTION_TYPES } from '../PointsClaim.constants';
@@ -16,27 +16,19 @@ import {
   getLabels,
   getFormValidationErrorMessages,
 } from '../../Account/container/Account.selectors';
-import { getSiteId } from '../../../../../utils/utils.web';
 import { API_CONFIG } from '../../../../../services/config';
 import internalEndpoints from '../../common/internalEndpoints';
 
 export class PontsClaimContainer extends PureComponent {
   transactionTypesMap = [
-    { id: TRANSACTION_TYPES.IN_STORE, displayName: 'In Store' },
+    { id: TRANSACTION_TYPES.IN_STORE, displayName: 'In-Store' },
     { id: TRANSACTION_TYPES.ONLINE, displayName: 'Online' },
   ];
 
   componentDidUpdate(prevProps) {
-    const { successMessage } = this.props;
-    if (prevProps.successMessage !== successMessage) {
+    const { successMessage, errorMessage } = this.props;
+    if (prevProps.successMessage !== successMessage || prevProps.errorMessage !== errorMessage) {
       this.backHandler();
-    }
-  }
-
-  componentWillUnmount() {
-    const { errorMessage, resetStateAction } = this.props;
-    if (errorMessage) {
-      resetStateAction();
     }
   }
 
@@ -80,11 +72,28 @@ export class PontsClaimContainer extends PureComponent {
    * @desc This is a function to redirect at point history page
    */
   backHandler = () => {
-    routerPush(internalEndpoints.pointsHistoryPage.link, internalEndpoints.pointsHistoryPage.path);
+    const { navigation, labels } = this.props;
+    if (isMobileApp()) {
+      navigation.navigate('PointsHistoryPage', {
+        title: getLabelValue(labels, 'lbl_common_points_history_heading', 'common'),
+      });
+    } else {
+      routerPush(
+        internalEndpoints.pointsHistoryPage.link,
+        internalEndpoints.pointsHistoryPage.path
+      );
+    }
   };
 
   render() {
-    const { successMessage, errorMessage, labels, showNotification, ...otherprops } = this.props;
+    const {
+      successMessage,
+      errorMessage,
+      labels,
+      navigation,
+      showNotification,
+      ...otherprops
+    } = this.props;
     const siteId = getSiteId();
 
     return (
@@ -134,6 +143,7 @@ PontsClaimContainer.propTypes = {
   showNotification: PropTypes.bool,
   userInfoData: PropTypes.shape([]),
   myPlaceNumber: PropTypes.string,
+  navigation: PropTypes.shape({}).isRequired,
 };
 
 PontsClaimContainer.defaultProps = {

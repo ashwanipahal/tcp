@@ -1,6 +1,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import VenmoPaymentButton from '@tcp/core/src/components/common/atoms/VenmoPaymentButton';
+import RenderPerf from '@tcp/web/src/components/common/molecules/RenderPerf';
 import Button from '../../../../common/atoms/Button';
 import withStyles from '../../../../common/hoc/withStyles';
 import style from '../styles/AddedToBagActions.style';
@@ -75,6 +76,7 @@ class AddedToBagActions extends React.PureComponent<Props> {
               {labels.checkout}
             </BodyCopy>
           </Button>
+          <RenderPerf.Measure name="render_checkout_cta" />
         </Row>
       </div>
     );
