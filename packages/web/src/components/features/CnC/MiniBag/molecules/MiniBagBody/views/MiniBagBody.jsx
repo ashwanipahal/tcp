@@ -32,7 +32,8 @@ class MiniBagBody extends React.PureComponent {
         fontSizeVariation="medium"
         underline
         anchorVariation="primary"
-        noLink
+        asPath={CHECKOUT_ROUTES.bagPage.asPath}
+        to={`${CHECKOUT_ROUTES.bagPage.to}?isSfl=true`}
         data-locator="cartitem-saveforlater"
         className="elem-ml-MED"
       >

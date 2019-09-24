@@ -14,6 +14,7 @@ exports[`MyFavoriteStore Component MyFavoriteStore should render correctly 1`] =
     accessibilityText=""
     dataLocator=""
     fontSize="fs16"
+    fontWeight="regular"
     margin={null}
     numberOfLines={null}
     text="Fulton Street"
@@ -44,6 +45,116 @@ exports[`MyFavoriteStore Component MyFavoriteStore should render correctly 1`] =
     margin={null}
     numberOfLines={null}
     text="(712)-431-1408"
+    textDecoration={null}
+  />
+</MyProfileTile>
+`;
+
+exports[`MyFavoriteStore Component should renders correctly when isMyPreferences is false 1`] = `
+<MyProfileTile
+  birthdaySaving={false}
+  className=""
+  ctaLink="accountOverviewMobile"
+  ctaTitle=""
+  dataLocator="myFavStoreLbl"
+  handleComponentChange={[Function]}
+  title=""
+>
+  <Styled(BodyCopy)
+    accessibilityText=""
+    dataLocator=""
+    fontSize="fs16"
+    fontWeight="regular"
+    margin={null}
+    numberOfLines={null}
+    text=""
+    textDecoration={null}
+  />
+  <Styled(BodyCopy)
+    accessibilityText=""
+    dataLocator=""
+    fontSize="fs16"
+    margin={null}
+    numberOfLines={null}
+    text=""
+    textDecoration={null}
+  />
+  <Styled(BodyCopy)
+    accessibilityText=""
+    dataLocator=""
+    fontSize="fs16"
+    margin={null}
+    numberOfLines={null}
+    text=",  "
+    textDecoration={null}
+  />
+  <Styled(BodyCopy)
+    accessibilityText=""
+    dataLocator=""
+    fontSize="fs16"
+    margin={null}
+    numberOfLines={null}
+    text=""
+    textDecoration={null}
+  />
+</MyProfileTile>
+`;
+
+exports[`MyFavoriteStore Component should renders correctly when isMyPreferences is present 1`] = `
+<MyProfileTile
+  birthdaySaving={false}
+  className=""
+  ctaLink="accountOverviewMobile"
+  ctaTitle=""
+  dataLocator="myFavStoreLbl"
+  handleComponentChange={[Function]}
+  title=""
+>
+  <Styled(Styled(BodyCopy))
+    accessibilityText=""
+    dataLocator=""
+    fontSize="fs16"
+    margin={null}
+    numberOfLines={null}
+    spacingStyles="margin-bottom-XXL"
+    text=""
+    textDecoration={null}
+  />
+  <Styled(BodyCopy)
+    accessibilityText=""
+    dataLocator=""
+    fontSize="fs16"
+    fontWeight="semibold"
+    margin={null}
+    numberOfLines={null}
+    text=""
+    textDecoration={null}
+  />
+  <Styled(BodyCopy)
+    accessibilityText=""
+    dataLocator=""
+    fontSize="fs16"
+    margin={null}
+    numberOfLines={null}
+    text=""
+    textDecoration={null}
+  />
+  <Styled(BodyCopy)
+    accessibilityText=""
+    dataLocator=""
+    fontSize="fs16"
+    margin={null}
+    numberOfLines={null}
+    text=",  "
+    textDecoration={null}
+  />
+  <Styled(BodyCopy)
+    accessibilityText=""
+    dataLocator=""
+    fontSize="fs16"
+    margin={null}
+    numberOfLines={null}
+    text=""
     textDecoration={null}
   />
 </MyProfileTile>

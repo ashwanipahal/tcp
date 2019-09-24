@@ -7,7 +7,7 @@ import InputCheckbox from '../../../../../../../../common/atoms/InputCheckbox';
 import AddressFields from '../../../../../../../../common/molecules/AddressFields';
 import Anchor from '../../../../../../../../common/atoms/Anchor';
 import withStyles from '../../../../../../../../common/hoc/withStyles';
-import styles from '../styles/RegisteredShippingForm.styles';
+import styles from '../styles/RegisteredShippingForm.view.style';
 import AddressDropdown from '../../../../../../../account/AddEditCreditCard/molecule/AddressDropdown';
 import Address from '../../../../../../../../common/molecules/Address';
 import Button from '../../../../../../../../common/atoms/Button';

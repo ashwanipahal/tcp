@@ -75,4 +75,29 @@ const getProductName = productDetail => {
   );
 };
 
-export default { CartItemImageWrapper, heartIcon, getProductName };
+const handleMoveItemtoSaveList = props => {
+  const {
+    productDetail,
+    sflItemsCount,
+    sflMaxCount,
+    isCondense,
+    isGenricGuest,
+    addItemToSflList,
+    setCartItemsSflError,
+    labels,
+  } = props;
+  const {
+    itemInfo: { itemId, isGiftItem },
+    productInfo: { skuId, generalProductId },
+  } = productDetail;
+  const catEntryId = isGiftItem ? generalProductId : skuId;
+  const userInfoRequired = isGenricGuest && isGenricGuest.get('userId') && isCondense;
+
+  if (sflItemsCount >= sflMaxCount) {
+    return setCartItemsSflError(labels.sflMaxLimitError);
+  }
+  const payloadData = { itemId, catEntryId, userInfoRequired };
+  return addItemToSflList({ ...payloadData });
+};
+
+export default { CartItemImageWrapper, heartIcon, getProductName, handleMoveItemtoSaveList };
