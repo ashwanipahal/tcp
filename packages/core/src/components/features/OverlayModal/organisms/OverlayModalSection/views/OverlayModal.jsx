@@ -77,7 +77,9 @@ class OverlayModal extends React.Component {
    * @param {*} comp
    */
 
+  // eslint-disable-next-line complexity
   styleModalTriangle = ({ comp }) => {
+    const { showCondensedHeader } = this.props;
     const compRectBoundingX = comp.getBoundingClientRect().x;
     const compWidth = comp.getBoundingClientRect().width / 2;
     const modal = document.getElementById('dialogContent');
@@ -85,7 +87,13 @@ class OverlayModal extends React.Component {
     const modalTriangle = document.getElementById('modalTriangle');
     const modalTrianglePos =
       modalTriangle && window && modalTriangle.getBoundingClientRect().y + window.scrollY;
-    modal.style.maxHeight = this.body && `${this.body.clientHeight - modalTrianglePos - 60}px`;
+    /* istanbul ignore else */
+    if (showCondensedHeader && this.body) {
+      this.body.style.overflow = 'hidden';
+      modal.style.height = window && `${window.innerHeight - 70}px`;
+    } else {
+      modal.style.height = window && `${window.innerHeight - modalTrianglePos}px`;
+    }
     /* istanbul ignore else */
     if (compRectBoundingX && compWidth && modalRectBoundingX && modalTriangle) {
       modalTriangle.style.left = `${compRectBoundingX + compWidth - modalRectBoundingX}px`;
@@ -111,6 +119,9 @@ class OverlayModal extends React.Component {
   closeModal = () => {
     const { closeOverlay } = this.props;
     closeOverlay();
+    if (this.body) {
+      this.body.style.overflow = 'auto';
+    }
   };
 
   /**

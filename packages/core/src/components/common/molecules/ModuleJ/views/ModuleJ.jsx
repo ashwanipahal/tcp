@@ -84,6 +84,7 @@ class ModuleJ extends React.PureComponent {
 
   render() {
     const { className, productTabList, mediaLinkedList, layout, divTabs } = this.props;
+    console.log(mediaLinkedList);
     const { currentCatId } = this.state;
     const { image: promoImage1, link: promoLink1 } = mediaLinkedList[0];
     const { image: promoImage2, link: promoLink2 } = mediaLinkedList[1];

@@ -36,20 +36,20 @@ const StyledModal = css`
     }
   }
   .condensed-overlay {
-    overflow-y: unset;
-    position: fixed;
     top: 0;
-    width: 374px;
 
     @media ${props => props.theme.mediaQuery.medium} {
+      overflow-y: scroll;
+      position: fixed;
       top: 62px;
+      width: 374px;
     }
     @media ${props => props.theme.mediaQuery.large} {
       top: 71px;
     }
   }
   .modal__bar {
-    position: absolute;
+    position: ${props => (props.showCondensedHeader ? 'fixed' : 'absolute')};
     height: 8px;
     width: 100%;
     background-color: ${props =>
