@@ -1,7 +1,6 @@
 import React, { PureComponent } from 'react';
 import { connect } from 'react-redux';
 import { getIconPath } from '@tcp/core/src/utils';
-import { withRouter } from 'next/router'; //eslint-disable-line
 import PropTypes from 'prop-types';
 import { getStoresByCoordinates } from './StoreLanding.actions';
 import StoreLandingView from './views/StoreLanding';
@@ -53,9 +52,7 @@ const mapStateToProps = state => ({
   labels: getPageLabels(state),
 });
 
-export default withRouter(
-  connect(
-    mapStateToProps,
-    mapDispatchToProps
-  )(StoreSearch)
-);
+export default connect(
+  mapStateToProps,
+  mapDispatchToProps
+)(StoreSearch);
