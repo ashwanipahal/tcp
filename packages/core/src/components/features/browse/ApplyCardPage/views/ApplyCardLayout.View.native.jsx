@@ -1,6 +1,7 @@
 /* eslint-disable max-lines */
 import React from 'react';
 import PropTypes from 'prop-types';
+import { getAddressFromPlace } from '@tcp/core/src/utils';
 import { Field, reduxForm, change } from 'redux-form';
 import ModalNative from '../../../../common/molecules/Modal';
 import { RichText, Button } from '../../../../common/atoms';
@@ -81,6 +82,9 @@ class ApplyCardLayoutView extends React.PureComponent<Props> {
       // eslint-disable-next-line react/no-unused-state
       dropDownItem: props.countryState ? props.countryState : this.UScountriesStates[0].displayName,
       isPreScreen: false,
+      date: null,
+      month: null,
+      year: null,
     };
 
     this.locationRef = null;
@@ -106,11 +110,13 @@ class ApplyCardLayoutView extends React.PureComponent<Props> {
    */
   handlePlaceSelected = (place, inputValue) => {
     const { dispatch } = this.props;
-    const address = GooglePlacesInput.getAddressFromPlace(place, inputValue);
+    const address = getAddressFromPlace(place, inputValue);
     dispatch(change('ApplyCardForm', 'city', address.city));
     dispatch(change('ApplyCardForm', 'noCountryZip', address.zip));
     dispatch(change('ApplyCardForm', 'statewocountry', address.state));
     dispatch(change('ApplyCardForm', 'addressLine1', address.street));
+    this.setState({ dropDownItem: address.state });
+    this.locationRef.setAddressText(address.street);
   };
 
   /**
@@ -124,8 +130,8 @@ class ApplyCardLayoutView extends React.PureComponent<Props> {
       width: '100%',
     };
 
-    const { applyCard, toggleModal, plccData, labels, handleSubmit } = this.props;
-    const { dropDownItem, isPreScreen } = this.state;
+    const { applyCard, toggleModal, plccData, labels, handleSubmit, dispatch } = this.props;
+    const { dropDownItem, isPreScreen, date, month, year } = this.state;
 
     return (
       <ModalNative
@@ -248,15 +254,31 @@ class ApplyCardLayoutView extends React.PureComponent<Props> {
             <Field
               headerTitle={getLabelValue(labels, 'lbl_PLCCForm_addressLine1')}
               component={GooglePlacesInput}
-              name="addressLine1"
-              id="addressLine1"
-              // onPlaceSelected={this.handlePlaceSelected}
-              // componentRestrictions={Object.assign({}, { country: [this.siteId] })}
+              onPlaceSelected={this.handlePlaceSelected}
+              componentRestrictions={Object.assign({}, { country: [this.siteId] })}
               onValueChange={(data, inputValue) => {
                 this.handlePlaceSelected(data, inputValue);
               }}
+              onChangeText={text => {
+                setTimeout(() => {
+                  dispatch(change('AddressForm', 'addressLine1', text));
+                });
+              }}
+              refs={instance => {
+                this.locationRef = instance;
+              }}
+              dataLocator="addnewaddress-addressl1"
+            />
+            <Field
+              label=""
+              component={TextBox}
+              title=""
+              type="hidden"
+              id="addressLine1"
+              name="addressLine1"
             />
           </NameFieldContainer>
+
           <NameFieldContainer>
             <Field
               name="addressLine2"
@@ -280,16 +302,26 @@ class ApplyCardLayoutView extends React.PureComponent<Props> {
           <ContainerView>
             <StateContainerView>
               <Field
-                name="statewocountry"
-                id="statewocountry"
                 bounces={false}
                 component={DropDown}
                 heading="State"
-                data={this.siteId === 'us' ? this.CAcountriesStates : this.UScountriesStates}
+                data={this.siteId === 'us' ? this.UScountriesStates : this.CAcountriesStates}
                 variation="secondary"
                 dropDownStyle={{ ...dropDownStyle }}
                 itemStyle={{ ...itemStyle }}
                 selectedValue={dropDownItem}
+                onValueChange={itemValue => {
+                  dispatch(change('ApplyCardForm', 'statewocountry', itemValue));
+                  this.setState({ dropDownItem: itemValue });
+                }}
+              />
+              <Field
+                label=""
+                component={TextBox}
+                title=""
+                type="hidden"
+                id="statewocountry"
+                name="statewocountry"
               />
             </StateContainerView>
             <ZipContainerView>
@@ -367,9 +399,13 @@ class ApplyCardLayoutView extends React.PureComponent<Props> {
                 variation="secondary"
                 dropDownStyle={{ ...dropDownStyle }}
                 itemStyle={{ ...itemStyle }}
-                name="month"
-                id="month"
+                onValueChange={itemValue => {
+                  dispatch(change('ApplyCardForm', 'month', itemValue));
+                  this.setState({ month: itemValue });
+                }}
+                selectedValue={month}
               />
+              <Field label="" component={TextBox} title="" type="hidden" id="month" name="month" />
             </DateContainerView>
 
             <DateContainerView>
@@ -381,10 +417,13 @@ class ApplyCardLayoutView extends React.PureComponent<Props> {
                 variation="secondary"
                 dropDownStyle={{ ...dropDownStyle }}
                 itemStyle={{ ...itemStyle }}
-                selectedValue={dropDownItem}
-                name="date"
-                id="date"
+                selectedValue={date}
+                onValueChange={itemValue => {
+                  dispatch(change('ApplyCardForm', 'date', itemValue));
+                  this.setState({ date: itemValue });
+                }}
               />
+              <Field label="" component={TextBox} title="" type="hidden" id="date" name="date" />
             </DateContainerView>
             <DateContainerView>
               <Field
@@ -395,9 +434,13 @@ class ApplyCardLayoutView extends React.PureComponent<Props> {
                 variation="secondary"
                 dropDownStyle={{ ...dropDownStyle }}
                 itemStyle={{ ...itemStyle }}
-                name="year"
-                id="year"
+                onValueChange={itemValue => {
+                  dispatch(change('ApplyCardForm', 'year', itemValue));
+                  this.setState({ year: itemValue });
+                }}
+                selectedValue={year}
               />
+              <Field label="" component={TextBox} title="" type="hidden" id="year" name="year" />
             </DateContainerView>
           </PersonalInformationContainerView>
 
@@ -463,7 +506,7 @@ class ApplyCardLayoutView extends React.PureComponent<Props> {
             <Button
               fill="BLUE"
               type="submit"
-              onPress={() => handleSubmit}
+              onPress={handleSubmit}
               color="white"
               buttonVariation="variable-width"
               text={getLabelValue(labels, 'lbl_PLCCForm_submitButton')}
