@@ -54,4 +54,31 @@ describe('#Bag Page actions', () => {
       type: BAGPAGE_CONSTANTS.CLOSE_ITEM_DELETE_CONFIRMATION_MODAL,
     });
   });
+
+  it('setSflItemDeleted', () => {
+    expect(BAG_PAGE_ACTIONS.setSflItemDeleted(true)).toEqual({
+      payload: true,
+      type: BAGPAGE_CONSTANTS.SFL_ITEMS_SET_DELETED,
+    });
+  });
+
+  it('SFL delete', () => {
+    const data = {
+      id: 123,
+    };
+    expect(BAG_PAGE_ACTIONS.startSflItemDelete(data)).toEqual({
+      payload: { id: 123 },
+      type: BAGPAGE_CONSTANTS.SFL_ITEMS_DELETE,
+    });
+  });
+
+  it('SFL Move To Bag', () => {
+    const data = {
+      id: 123,
+    };
+    expect(BAG_PAGE_ACTIONS.startSflDataMoveToBag(data)).toEqual({
+      payload: { id: 123 },
+      type: BAGPAGE_CONSTANTS.SFL_ITEMS_MOVE_TO_BAG,
+    });
+  });
 });

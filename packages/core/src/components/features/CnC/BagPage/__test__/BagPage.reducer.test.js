@@ -9,6 +9,7 @@ describe('BagPage Reducer', () => {
     errors: false,
     uiFlags: {
       isItemMovedToSflList: false,
+      isSflItemDeleted: false,
       cartItemSflError: null,
       isCartItemsUpdating: fromJS({}),
     },
@@ -156,6 +157,15 @@ describe('BagPage Reducer', () => {
     const newState = BagPageReducer(initialStateMutated, {
       type: 'CART_SUMMARY_SET_ORDER_ID',
       orderId: '1234',
+    });
+
+    expect(newState).toEqual(initialStateMutated);
+  });
+
+  it('SFL_ITEMS_SET_DELETED', () => {
+    const newState = BagPageReducer(initialStateMutated, {
+      type: BAGPAGE_CONSTANTS.SFL_ITEMS_SET_DELETED,
+      payload: false,
     });
 
     expect(newState).toEqual(initialStateMutated);

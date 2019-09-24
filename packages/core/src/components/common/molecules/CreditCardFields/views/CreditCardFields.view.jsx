@@ -55,8 +55,8 @@ export const CreditCardFields = ({
             </Col>
           </Row>
         ) : (
-            CardNumberField({ cardTypeImgUrl, cardType, isPLCCEnabled, creditFieldLabels })
-          )}
+          CardNumberField({ cardTypeImgUrl, cardType, isPLCCEnabled, creditFieldLabels })
+        )}
       </Col>
       {isExpirationRequired && (
         <React.Fragment>
