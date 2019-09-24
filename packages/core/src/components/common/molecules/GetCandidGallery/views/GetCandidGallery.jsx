@@ -7,7 +7,7 @@ import { BodyCopy, Button } from '../../../atoms';
 import style from '../styles/GetCandidGallery.style';
 import withStyles from '../../../hoc/withStyles';
 import { requireNamedOnlineModule } from '../../../../../utils/resourceLoader';
-import { getAPIConfig } from '../../../../../utils';
+import { getAPIConfig, getLabelValue } from '../../../../../utils';
 
 const CANDID_GALLERY_CONTAINER_ID = 'tcp-get-candid-image-container';
 
@@ -49,7 +49,12 @@ class GetCandidGallery extends React.Component {
     );
   };
 
+  /**
+   * Create a template script for the GetCandid Wall plugin and inject in
+   * the head.
+   */
   injectGetCandidWallTemplate = () => {
+    const { labels } = this.props;
     const script = document.createElement('script');
     script.id = 'mediaTemplate';
     script.type = 'text/x-jsrender';
@@ -57,7 +62,7 @@ class GetCandidGallery extends React.Component {
       <div class="candid-wall-cell">
           <div class="candid-wall-overlay"></div>
           <div class="candid-wall-overlay-text">
-              <div>SHOP NOW</div>
+              <div>${labels.lbl_getCandid_BtnShopNow}</div>
           </div>
           <a class='media' data-media-index='{{> Index }}'>
           <img data-original="{{> Media.Images.LowResolution.Url }}"
@@ -70,7 +75,7 @@ class GetCandidGallery extends React.Component {
   };
 
   onUploadButton = () => {
-    if (window.candid) {
+    if (window && window.candid) {
       window.candid.upload(this.apiConfig.CAND_API_KEY, [], this.apiConfig.CAND_URL);
     }
   };
@@ -112,7 +117,6 @@ class GetCandidGallery extends React.Component {
           <Button
             onClick={this.onUploadButton}
             buttonVariation="fixed-width"
-            type="button"
             className="add-photo-btn"
             data-locator="get_gallery_page_add_photo_btn"
           >
@@ -138,9 +142,18 @@ GetCandidGallery.propTypes = {
   className: PropTypes.string,
 };
 
-const mapStateToProps = state => {
+const mapStateToProps = ({ Labels }) => {
+  const getCandidLabelOf = label => getLabelValue(Labels, label, 'getCandid', 'global');
+
+  const labels = {
+    lbl_getCandid_title: getCandidLabelOf('lbl_getCandid_title'),
+    lbl_getCandid_titleDescription: getCandidLabelOf('lbl_getCandid_titleDescription'),
+    lbl_getCandid_BtnShopNow: getCandidLabelOf('lbl_getCandid_BtnShopNow'),
+    lbl_getCandid_BtnPhoto: getCandidLabelOf('lbl_getCandid_BtnPhoto'),
+  };
+
   return {
-    labels: state.Labels.global && state.Labels.global.getCandid,
+    labels,
   };
 };
 

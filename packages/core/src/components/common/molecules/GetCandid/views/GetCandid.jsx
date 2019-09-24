@@ -61,7 +61,7 @@ class GetCandid extends React.PureComponent {
     // window.location.href = `${window.location.origin}/us/content/mystyleplace?icid=${
     // eslint-disable-line icid[pageType]
     // }`;
-    routerPush('/gallery', '/gallery');
+    routerPush('/content?contentType=mystyleplace', '/content/mystyleplace');
   };
 
   getDefaultHeading = () => {
@@ -139,7 +139,6 @@ class GetCandid extends React.PureComponent {
               <Button
                 onClick={this.handleViewGalleryClick}
                 buttonVariation="fixed-width"
-                type="button"
                 className="gallery-button-left"
                 data-locator="view_gallery_button"
               >
@@ -149,7 +148,6 @@ class GetCandid extends React.PureComponent {
               <Button
                 onClick={this.handleUpload}
                 buttonVariation="fixed-width"
-                type="button"
                 className="gellary-button-right"
                 data-locator="add_photo_button"
               >
