@@ -2,7 +2,6 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import { Col, DamImage, Row } from '../../atoms';
 import withStyles from '../../hoc/withStyles';
-import errorBoundary from '../../hoc/withErrorBoundary';
 import style from './ImageGrid.style';
 
 /**
@@ -115,4 +114,4 @@ ImageGrid.defaultProps = {
 };
 
 export { ImageGrid as ImageGridVanilla };
-export default withStyles(errorBoundary(ImageGrid), style);
+export default withStyles(ImageGrid, style);

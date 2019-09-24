@@ -29,7 +29,6 @@ const Button = ({
   type,
   customStyle,
   buttonVariation,
-  dataLocatorCTA,
   cta,
   uniqueKey,
   noCurve,
@@ -56,7 +55,6 @@ const Button = ({
       uniqueKey={uniqueKey}
       className={className}
       dataLocator={dataLocator}
-      dataLocatorCTA={dataLocatorCTA}
       ariaLabel={ariaLabel}
       type={type}
       fullWidth={fullWidth}
@@ -79,7 +77,6 @@ Button.propTypes = {
   disabled: PropTypes.string,
   fullWidth: PropTypes.string,
   dataLocator: PropTypes.string.isRequired,
-  dataLocatorCTA: PropTypes.string,
   type: PropTypes.string,
   customStyle: PropTypes.string,
   buttonVariation: PropTypes.string.isRequired,
@@ -102,7 +99,6 @@ Button.defaultProps = {
   uniqueKey: '',
   noCurve: true,
   cta: null,
-  dataLocatorCTA: '',
   active: false,
 };
 

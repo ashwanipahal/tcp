@@ -5,6 +5,15 @@ import Anchor from '../../Anchor';
 import withStyles from '../../../hoc/withStyles';
 import styles from '../BodyCopy.style';
 
+const renderComponent = compProps => {
+  const { Component, className, dataLocator, children, ...others } = compProps;
+  return (
+    <Component className={className} data-locator={dataLocator} {...others}>
+      {children}
+    </Component>
+  );
+};
+
 const BodyCopy = props => {
   const {
     children,
@@ -22,12 +31,15 @@ const BodyCopy = props => {
     ...others
   } = props;
 
+  const compProps = {
+    Component,
+    className,
+    dataLocator,
+    children,
+    ...others,
+  };
   if (!link) {
-    return (
-      <Component className={className} data-locator={dataLocator} {...others}>
-        {children}
-      </Component>
-    );
+    return renderComponent(compProps);
   }
 
   const { url: ctaUrl, target, title, actualUrl, className: ctaClassName } = link;
@@ -46,9 +58,7 @@ const BodyCopy = props => {
       title={title}
       dataLocator={`${dataLocator}-link`}
     >
-      <Component className={className} data-locator={dataLocator} {...others}>
-        {children}
-      </Component>
+      {renderComponent(compProps)}
     </Anchor>
   );
 };
@@ -112,6 +122,7 @@ BodyCopy.propTypes = {
     url: PropTypes.string.isRequired,
     title: PropTypes.string.isRequired,
     target: PropTypes.string,
+    text: PropTypes.string,
   }),
 };
 

@@ -41,19 +41,7 @@ const renderImage = imageProps => {
 };
 
 const Image = props => {
-  const {
-    link,
-    className,
-    src,
-    url,
-    srcset,
-    sizes,
-    alt,
-    ref,
-    placeholderSrc,
-    dataLocator,
-    dataLocatorLink,
-  } = props;
+  const { link, className, src, url, srcset, sizes, alt, ref, placeholderSrc } = props;
 
   const imageProps = {
     className,
@@ -84,7 +72,7 @@ const Image = props => {
       asPath={ctaUrl}
       target={target}
       title={title}
-      dataLocator={dataLocatorLink || `${dataLocator}-link`}
+      dataLocator="image-link"
     >
       {renderImage(imageProps)}
     </Anchor>
@@ -94,8 +82,6 @@ const Image = props => {
 Image.propTypes = {
   className: PropTypes.string.isRequired,
   src: PropTypes.string.isRequired,
-  dataLocator: PropTypes.string.isRequired,
-  dataLocatorLink: PropTypes.string,
   alt: PropTypes.string.isRequired,
   link: PropTypes.shape({
     url: PropTypes.string.isRequired,
@@ -116,7 +102,6 @@ Image.defaultProps = {
   ref: () => {},
   url: '',
   link: null,
-  dataLocatorLink: '',
 };
 
 export default withStyles(Image, styles);

@@ -88,7 +88,6 @@ const DamImage = props => {
     lazyLoad,
     link,
     dataLocator,
-    dataLocatorLink,
     ...other
   } = props;
 
@@ -121,7 +120,7 @@ const DamImage = props => {
       asPath={ctaUrl}
       target={target}
       title={title}
-      dataLocator={dataLocatorLink || `${dataLocator}-link`}
+      dataLocator="image-link"
     >
       {renderImage(imgProps)}
     </Anchor>
@@ -183,6 +182,7 @@ DamImage.propTypes = {
     url: PropTypes.string.isRequired,
     target: PropTypes.string,
     title: PropTypes.string.isRequired,
+    text: PropTypes.string,
   }),
 };
 
