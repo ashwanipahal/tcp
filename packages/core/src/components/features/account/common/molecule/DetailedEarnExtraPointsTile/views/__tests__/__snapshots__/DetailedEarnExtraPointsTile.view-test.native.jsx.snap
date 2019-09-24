@@ -42,6 +42,7 @@ exports[`Detailed Earn Extra Points Tile component  should render Detailed Earn 
     >
       <Styled(BodyCopy)
         accessibilityText=""
+        color="gray.900"
         component="p"
         data-locator="earnExtraPointsActivityTitle_AppDownload"
         dataLocator=""
@@ -60,6 +61,7 @@ exports[`Detailed Earn Extra Points Tile component  should render Detailed Earn 
     >
       <Styled(BodyCopy)
         accessibilityText=""
+        color="gray.900"
         component="p"
         data-locator="earnExtraPointsDescription_AppDownload"
         dataLocator=""

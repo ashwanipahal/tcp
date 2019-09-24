@@ -74,6 +74,7 @@ export class EarnPoints extends React.PureComponent {
                 fontFamily="secondary"
                 fontWeight="semibold"
                 textAlign="center"
+                color="gray.900"
                 text={getLabelValue(labels, 'lbl_extraExtraPoints_more_points')}
                 dataLocator="earn-points-morePoints-text"
               />
@@ -123,6 +124,7 @@ export class EarnPoints extends React.PureComponent {
             component="p"
             fontSize="fs14"
             fontFamily="secondary"
+            color="gray.900"
             text={getLabelValue(labels, 'lbl_common_extra_points_terms_conditions')}
             dataLocator="earn-points-mpr-text"
           />

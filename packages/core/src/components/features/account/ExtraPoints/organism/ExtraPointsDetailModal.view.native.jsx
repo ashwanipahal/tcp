@@ -52,6 +52,7 @@ class ExtraPointsDetailModal extends React.PureComponent {
           fontWeight="black"
           fontFamily="primary"
           textAlign="center"
+          color="gray.900"
           spacingStyles="margin-top-LRG"
           text={activityDetails.activityModalTitle}
           data-locator={`earnPointsModal_${activityDetails.activityModalAction}_title`}
@@ -62,6 +63,7 @@ class ExtraPointsDetailModal extends React.PureComponent {
           fontWeight="extrabold"
           fontFamily="secondary"
           textAlign="center"
+          color="gray.900"
           className="elem-mb-MED"
           text={activityDetails.activityModalShortTitle}
           data-locator={`earnPointsModal_${activityDetails.activityModalAction}_shortTitle`}

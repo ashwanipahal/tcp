@@ -63,6 +63,7 @@ export class DetailedEarnExtraPointsTile extends React.PureComponent {
               component="p"
               fontSize="fs16"
               fontWeight="black"
+              color="gray.900"
               fontFamily="secondary"
               textAlign="center"
               text={waysToEarnRow.activityTitle}
@@ -76,6 +77,7 @@ export class DetailedEarnExtraPointsTile extends React.PureComponent {
               fontWeight="regular"
               fontFamily="secondary"
               textAlign="center"
+              color="gray.900"
               text={waysToEarnRow.description}
               data-locator={`earnExtraPointsDescription_${waysToEarnRow.activityCode}`}
             />

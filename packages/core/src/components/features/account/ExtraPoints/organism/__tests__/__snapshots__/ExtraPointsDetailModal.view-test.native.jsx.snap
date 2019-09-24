@@ -13,6 +13,7 @@ exports[`Extra Points Details Modal for native should render correctly native co
   </Styled(View)>
   <Styled(Styled(BodyCopy))
     accessibilityText=""
+    color="gray.900"
     data-locator="earnPointsModal_undefined_title"
     dataLocator=""
     fontFamily="primary"
@@ -27,6 +28,7 @@ exports[`Extra Points Details Modal for native should render correctly native co
   <Styled(BodyCopy)
     accessibilityText=""
     className="elem-mb-MED"
+    color="gray.900"
     component="div"
     data-locator="earnPointsModal_undefined_shortTitle"
     dataLocator=""
