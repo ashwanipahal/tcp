@@ -8,8 +8,16 @@ const TilesWrapper = styled.View`
 `;
 
 const InnerTileWrapper = styled.View`
-  width: 184px;
+  width: 48%;
   margin-bottom: ${props => props.theme.spacing.ELEM_SPACING.LRG};
+`;
+
+const MorePointsWrapper = styled.View`
+  width: 70%;
+  text-align: center;
+  margin-top: ${props => props.theme.spacing.ELEM_SPACING.LRG};
+  margin-left: auto;
+  margin-right: auto;
 `;
 
 const FirstInnerTileWrapper = styled.View`
@@ -24,4 +32,10 @@ const MprTermsWrapper = styled.View`
   margin-top: ${props => props.theme.spacing.ELEM_SPACING.LRG};
 `;
 
-export { TilesWrapper, InnerTileWrapper, FirstInnerTileWrapper, MprTermsWrapper };
+export {
+  TilesWrapper,
+  InnerTileWrapper,
+  FirstInnerTileWrapper,
+  MprTermsWrapper,
+  MorePointsWrapper,
+};

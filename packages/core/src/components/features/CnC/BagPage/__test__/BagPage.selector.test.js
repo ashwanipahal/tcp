@@ -15,7 +15,8 @@ describe('#Added to bag Selectors', () => {
         lbl_sfl_myBagButton: 'myBagButton',
         lbl_sfl_savedForLater: 'savedForLaterText',
         lbl_sfl_savedLaterButton: 'savedLaterButton',
-        lbl_sfl_emptySflMsg: 'emptySflMsg',
+        lbl_sfl_emptySflMsg_1: 'emptySflMsg1',
+        lbl_sfl_emptySflMsg_2: 'emptySflMsg2',
         bl_sfl_actionSuccess: 'sflSuccess',
       },
     },
@@ -52,7 +53,8 @@ describe('#Added to bag Selectors', () => {
       myBagButton: 'myBagButton',
       savedForLaterText: 'savedForLaterText',
       savedLaterButton: 'savedLaterButton',
-      emptySflMsg: 'emptySflMsg',
+      emptySflMsg1: 'emptySflMsg1',
+      emptySflMsg2: 'emptySflMsg2',
       sflSuccess: 'sflSuccess',
     });
   });

@@ -54,18 +54,23 @@ class ModuleJ extends React.PureComponent {
   };
 
   getHeaderText = () => {
-    const { headerText } = this.props;
-    return (
-      headerText && (
-        <div className="promo-header-wrapper">
-          <LinkText
-            component="div"
-            headerText={headerText}
-            className="promo-header"
-            dataLocator={getLocator('moduleJ_header_text')}
-          />
-        </div>
-      )
+    const { headerText, layout } = this.props;
+    return headerText && layout !== 'alt' ? (
+      <div className="promo-header-wrapper">
+        <LinkText
+          component="div"
+          headerText={headerText}
+          className="promo-header"
+          dataLocator={getLocator('moduleJ_header_text')}
+        />
+      </div>
+    ) : (
+      <LinkText
+        component="div"
+        headerText={headerText}
+        className="promo-header"
+        dataLocator={getLocator('moduleJ_header_text')}
+      />
     );
   };
 
@@ -86,8 +91,9 @@ class ModuleJ extends React.PureComponent {
     const { className, productTabList, mediaLinkedList, layout, divTabs } = this.props;
     console.log(mediaLinkedList);
     const { currentCatId } = this.state;
-    const { image: promoImage1, link: promoLink1 } = mediaLinkedList[0];
-    const { image: promoImage2, link: promoLink2 } = mediaLinkedList[1];
+    const promoMediaLinkedList = mediaLinkedList || [];
+    const { image: promoImage1, link: promoLink1 } = promoMediaLinkedList[0] || {};
+    const { image: promoImage2, link: promoLink2 } = promoMediaLinkedList[1] || {};
     const { CAROUSEL_OPTIONS, PROMO_IMG_DATA, TOTAL_IMAGES } = config;
     let data = productTabList[currentCatId] || [];
     data = data.slice(0, TOTAL_IMAGES);
@@ -261,6 +267,7 @@ class ModuleJ extends React.PureComponent {
 }
 
 ModuleJ.defaultProps = {
+  mediaLinkedList: [],
   promoBanner: [],
   layout: 'default',
 };
@@ -295,7 +302,7 @@ ModuleJ.propTypes = {
       image: PropTypes.object,
       link: PropTypes.object,
     })
-  ).isRequired,
+  ),
   layout: PropTypes.string.isRequired,
   divTabs: PropTypes.arrayOf(
     PropTypes.shape({

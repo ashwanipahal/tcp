@@ -3,7 +3,6 @@ import PropTypes from 'prop-types';
 import { Field, FormSection, change } from 'redux-form';
 import InputCheckbox from '../../../../../../common/atoms/InputCheckbox';
 import AddressFields from '../../../../../../common/molecules/AddressFields';
-import { getLabelValue } from '../../../../../../../utils';
 import BodyCopy from '../../../../../../common/atoms/BodyCopy';
 import Address from '../../../../../../common/molecules/Address';
 import Heading from '../../../../../../common/atoms/Heading';
@@ -91,7 +90,7 @@ class CheckoutAddress extends React.Component {
         className="paymentMethodHeading elem-mt-MED elem-mb-LRG"
         dataLocator="billing-payment-billingAddress"
       >
-        {getLabelValue(labels, 'lbl_billing_billingAddress', 'billing', 'checkout')}
+        {labels.billingAddress}
       </Heading>
     );
   };
@@ -141,7 +140,7 @@ class CheckoutAddress extends React.Component {
               onChange={this.onSameAsShippingChange}
             >
               <BodyCopy fontSize="fs16" fontFamily="secondary">
-                {getLabelValue(labels, 'lbl_billing_sameAsShipping', 'billing', 'checkout')}
+                {labels.sameAsShipping}
               </BodyCopy>
             </Field>
           </Col>
@@ -180,7 +179,7 @@ class CheckoutAddress extends React.Component {
                   dataLocator="shipping-defshippinglabel"
                   className="default-badge"
                 >
-                  {getLabelValue(labels, 'lbl_billing_default_card', 'billing', 'checkout')}
+                  {labels.defaultCard}
                 </Badge>
               )}
             </div>
@@ -192,7 +191,7 @@ class CheckoutAddress extends React.Component {
       addressOptions &&
       addressOptions.push({
         value: '',
-        title: 'Add New Address',
+        title: labels.addNewAddress,
         content: (
           <Button
             fullWidth
@@ -201,7 +200,7 @@ class CheckoutAddress extends React.Component {
             onClick={this.toggleAddNewAddressMode}
             disabled={isAddNewAddress || !selectedAddress}
           >
-            {getLabelValue(labels, 'lbl_billing_addNewAddress', 'billing', 'checkout')}
+            {labels.addNewAddress}
           </Button>
         ),
       });

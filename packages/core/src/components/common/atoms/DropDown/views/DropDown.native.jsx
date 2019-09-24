@@ -120,7 +120,7 @@ class DropDown extends React.PureComponent<Props> {
 
       // calculate the list height
       const { data, itemStyle } = this.props;
-      const calculateHeight = data.length * itemStyle.height;
+      const calculateHeight = data && data.length * itemStyle.height;
 
       // checking bottom space
       const bottomSpace = windowHeight - this.rowFrame.y - this.rowFrame.height;

@@ -6,13 +6,39 @@ import { BodyCopy } from '@tcp/core/src/components/common/atoms';
 import style from '../styles/RemoveSoldOut.style';
 
 class RemoveSoldOut extends React.PureComponent {
+  getRemoveString = (labels, removeCartItem, getUnavailableOOSItems) => {
+    const remove = labels.updateUnavailable.split('#remove#');
+    const newRemove = (
+      <BodyCopy
+        fontFamily="secondary"
+        fontSize="fs12"
+        component="span"
+        className="removeErrorMessage"
+        onClick={() => removeCartItem(getUnavailableOOSItems)}
+      >
+        {labels.removeError}
+      </BodyCopy>
+    );
+
+    remove.splice(1, 0, newRemove);
+    return remove;
+  };
+
   render() {
-    const { labels, className, labelForRemove, pageView } = this.props;
+    const {
+      labels,
+      className,
+      pageView,
+      removeCartItem,
+      getUnavailableOOSItems,
+      showLabelForRemove,
+    } = this.props;
     const styleClass = pageView === 'myBag' ? 'bagTileItem' : 'removeItem';
+    const labelForRemove = this.getRemoveString(labels, removeCartItem, getUnavailableOOSItems);
     return (
       <>
         <div className={className}>
-          {labels && (
+          {labels && !showLabelForRemove && (
             <BodyCopy
               className={styleClass}
               component="span"
@@ -22,7 +48,7 @@ class RemoveSoldOut extends React.PureComponent {
               {labels.removeSoldoutHeader}
             </BodyCopy>
           )}
-          {labelForRemove && (
+          {showLabelForRemove && (
             <BodyCopy
               className={`${styleClass} pointer`}
               component="span"
@@ -40,16 +66,19 @@ class RemoveSoldOut extends React.PureComponent {
 
 RemoveSoldOut.propTypes = {
   labels: PropTypes.objectOf(PropTypes.oneOfType([PropTypes.string])),
-  labelForRemove: PropTypes.objectOf(PropTypes.oneOfType([PropTypes.string])),
   className: PropTypes.string,
   pageView: PropTypes.string,
+  removeCartItem: PropTypes.func.isRequired,
+  getUnavailableOOSItems: PropTypes.shape([]),
+  showLabelForRemove: PropTypes.bool,
 };
 
 RemoveSoldOut.defaultProps = {
   labels: '',
   className: '',
-  labelForRemove: '',
   pageView: '',
+  getUnavailableOOSItems: [],
+  showLabelForRemove: false,
 };
 
 export default withStyles(RemoveSoldOut, style);
