@@ -15,11 +15,20 @@ const PointsHistoryList = ({
   labels,
   accountlabels,
   pointHistory,
-  showNotification,
+  showSuccess,
+  showError,
+  claimPointsErrorMessage,
 }) => {
   return (
     <div className={className}>
-      {showNotification && (
+      {showError && (
+        <Notification
+          status="success"
+          colSize={{ large: 12, medium: 8, small: 6 }}
+          message={claimPointsErrorMessage}
+        />
+      )}
+      {showSuccess && (
         <Notification
           status="success"
           colSize={{ large: 12, medium: 8, small: 6 }}
@@ -127,8 +136,10 @@ PointsHistoryList.propTypes = {
     lbl_common_points_earned: PropTypes.string,
     lbl_common_points_history: PropTypes.string,
   }),
-  showNotification: PropTypes.string,
   accountlabels: PropTypes.shape({}),
+  showSuccess: PropTypes.string,
+  showError: PropTypes.string,
+  claimPointsErrorMessage: PropTypes.string,
 };
 
 PointsHistoryList.defaultProps = {
@@ -139,8 +150,10 @@ PointsHistoryList.defaultProps = {
     lbl_common_points_earned: '',
     lbl_common_points_history: '',
   },
-  showNotification: '',
   accountlabels: {},
+  showSuccess: '',
+  showError: '',
+  claimPointsErrorMessage: '',
 };
 
 export default withStyles(PointsHistoryList, styles);

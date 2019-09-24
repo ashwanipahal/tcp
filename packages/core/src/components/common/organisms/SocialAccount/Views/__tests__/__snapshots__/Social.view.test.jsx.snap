@@ -8,7 +8,7 @@ exports[`ForgotPasswordView component should renders correctly 1`] = `
   >
     <p
       className="social-accounts__subTitle"
-      data-locator="linkAccountTxt"
+      data-locator="mypreference-socialaccountheader"
     />
     <ul />
   </section>

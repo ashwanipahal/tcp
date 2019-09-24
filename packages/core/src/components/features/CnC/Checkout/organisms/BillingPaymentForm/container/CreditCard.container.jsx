@@ -7,12 +7,21 @@ import CreditCardSelector from './CreditCard.selectors';
 import constants from './CreditCard.constants';
 import CheckoutSelectors from '../../../container/Checkout.selector';
 
+/**
+ * @class GiftCardsContainer
+ * @extends {PureComponent}
+ * @description container component to render signed in user form.
+ */
 export class GiftCardsContainer extends React.PureComponent<Props> {
   constructor(props) {
     super(props);
     this.initialValues = null;
   }
 
+  /**
+   * @function getCreditCardDefault
+   * @description returns the default credit card of the user
+   */
   getCreditCardDefault = cardList =>
     cardList &&
     cardList.size > 0 &&
@@ -23,10 +32,18 @@ export class GiftCardsContainer extends React.PureComponent<Props> {
         card.defaultInd
     );
 
+  /**
+   * @function getOnFileAddressId
+   * @description returns the on file address id
+   */
   getOnFileAddressId = ({ billingOnFileAddressId, shippingOnFileAddressId }) => {
     return billingOnFileAddressId || shippingOnFileAddressId;
   };
 
+  /**
+   * @function showAddressPrefilled
+   * @description checks whether the address form needs to be prefilled or not
+   */
   showAddressPrefilled = () => {
     const { userAddresses, orderHasShipping, billingData } = this.props;
     if (!orderHasShipping && this.isBillingIfoPresent()) {
@@ -42,6 +59,10 @@ export class GiftCardsContainer extends React.PureComponent<Props> {
     return false;
   };
 
+  /**
+   * @function isBillingIfoPresent
+   * @description checks whether cart item has billing info present or not
+   */
   isBillingIfoPresent = () => {
     const { billingData, shippingAddress, orderHasShipping } = this.props;
     return (
@@ -51,6 +72,10 @@ export class GiftCardsContainer extends React.PureComponent<Props> {
     );
   };
 
+  /**
+   * @function getInitialValues
+   * @description returns the initial values for the billing form
+   */
   getInitialValues = cardList => {
     const {
       billingData,
@@ -142,12 +167,20 @@ export class GiftCardsContainer extends React.PureComponent<Props> {
     };
   };
 
+  /**
+   * @function getSelectedCard
+   * @description returns the selected card from the card list
+   */
   getSelectedCard = (cardList, paymentId) => {
     return cardList.find(card => card.creditCardId === paymentId);
   };
 
+  /**
+   * @function submitBillingData
+   * @description submits the billing data
+   */
   submitBillingData = data => {
-    const { cardList, handleSubmit, userAddresses } = this.props;
+    const { cardList, handleSubmit, userAddresses, navigation } = this.props;
     let onFileAddressKey;
     let addressLine1;
     let addressLine2;
@@ -221,10 +254,15 @@ export class GiftCardsContainer extends React.PureComponent<Props> {
       phoneNumber: cardDetails.addressDetails && cardDetails.addressDetails.phone1,
       saveToAccount: data.saveToAccount,
       isDefault: data.defaultPayment || cardDetails.defaultInd,
+      navigation,
       onFileCardId: data.onFileCardKey,
     });
   };
 
+  /**
+   * @function render
+   * @description render method to be called of component
+   */
   render() {
     const {
       cardList,
@@ -248,6 +286,8 @@ export class GiftCardsContainer extends React.PureComponent<Props> {
       isSaveToAccountChecked,
       userAddresses,
       selectedOnFileAddressId,
+      navigation,
+      creditFieldLabels,
     } = this.props;
     this.initialValues = this.getInitialValues(this.getCreditCardDefault(cardList));
     return (
@@ -275,6 +315,8 @@ export class GiftCardsContainer extends React.PureComponent<Props> {
         isSaveToAccountChecked={isSaveToAccountChecked}
         userAddresses={userAddresses}
         selectedOnFileAddressId={selectedOnFileAddressId}
+        navigation={navigation}
+        creditFieldLabels={creditFieldLabels}
       />
     );
   }

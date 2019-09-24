@@ -83,7 +83,7 @@ class Socialview extends React.PureComponent {
               overlayClassName="TCPModal__Overlay"
               className={`${className} TCPModal__Content`}
               maxWidth="450px"
-              minHeight="505px"
+              minHeight="520px"
             >
               <BodyCopy
                 fontSize="fs22"
@@ -208,7 +208,7 @@ class Socialview extends React.PureComponent {
     return (
       <React.Fragment>
         <section className={className} data-selector="analytics-social-account">
-          <p className="social-accounts__subTitle" data-locator="linkAccountTxt">
+          <p className="social-accounts__subTitle" data-locator="mypreference-socialaccountheader">
             {labels.lbl_prefrence_social_text}
           </p>
           <ul>{this.renderAccountsInformation(this.socialAccounts, saveSocialAcc, labels)}</ul>
