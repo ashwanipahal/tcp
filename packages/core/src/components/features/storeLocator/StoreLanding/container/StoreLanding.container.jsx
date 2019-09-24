@@ -3,11 +3,29 @@ import { connect } from 'react-redux';
 import { getIconPath } from '@tcp/core/src/utils';
 import { withRouter } from 'next/router'; //eslint-disable-line
 import PropTypes from 'prop-types';
-import { getStoresByCoordinates } from './StoreLanding.actions';
+import { getPersonalDataState } from '@tcp/core/src/components/features/account/User/container/User.selectors';
+import { getStoresByCoordinates, setFavoriteStoreActn, getFavoriteStoreActn } from './StoreLanding.actions';
 import StoreLandingView from './views/StoreLanding';
 import { getCurrentCountry, getPageLabels } from './StoreLanding.selectors';
 
-export class StoreSearch extends PureComponent {
+export class StoreLanding extends PureComponent {
+
+  componentDidMount() {
+    this.getFavoriteStoreInititator();
+  }
+
+  componentDidUpdate() {
+    this.getFavoriteStoreInititator();
+  }
+
+  getFavoriteStoreInititator = () => {
+    const { favoriteStore, getFavoriteStore, personalDataState } = this.props;
+    const isGuest = personalDataState && !personalDataState.get('isGuest');
+    if (!favoriteStore && isGuest) {
+      getFavoriteStore({ geoLatLang: { lat: 22, long: 77 }});
+    }
+  }
+
   /**
    * @function loadStoresByCoordinates function to fetch the stores based on coordinates.
    * @param {Promise} coordinatesPromise - Promise that resolves with the coordinates
@@ -36,14 +54,21 @@ export class StoreSearch extends PureComponent {
   }
 }
 
-StoreSearch.propTypes = {
+StoreLanding.propTypes = {
   fetchStoresByCoordinates: PropTypes.func.isRequired,
+  favoriteStore: PropTypes.shape(PropTypes.string),
 };
+
+StoreLanding.defaultProps = {
+  favoriteStore: null,
+}
 
 /* istanbul ignore next  */
 const mapDispatchToProps = dispatch => {
   return {
     fetchStoresByCoordinates: storeConfig => dispatch(getStoresByCoordinates(storeConfig)),
+    setFavoriteStore: payload => dispatch(setFavoriteStoreActn(payload)),
+    getFavoriteStore: payload => dispatch(getFavoriteStoreActn(payload)),
   };
 };
 
@@ -51,11 +76,14 @@ const mapDispatchToProps = dispatch => {
 const mapStateToProps = state => ({
   selectedCountry: getCurrentCountry(state),
   labels: getPageLabels(state),
+  suggestedStoreList: state.StoreLocatorReducer.get('suggestedStores'),
+  favoriteStore: state.User.get('defaultStore'),
+  personalDataState: state.User.get('personalData'),
 });
 
 export default withRouter(
   connect(
     mapStateToProps,
     mapDispatchToProps
-  )(StoreSearch)
+  )(StoreLanding)
 );

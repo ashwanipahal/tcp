@@ -50,7 +50,7 @@ export default css`
     }
 
     @media ${props => props.theme.mediaQuery.large} {
-      margin-bottom: 0;
+      margin-bottom: 12px;
     }
   }
 

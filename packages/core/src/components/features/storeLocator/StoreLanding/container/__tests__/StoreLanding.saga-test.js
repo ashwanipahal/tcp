@@ -21,26 +21,26 @@ jest.mock('@tcp/core/src/services/abstractors/common/storeLocator', () => ({
   setFavoriteStore: jest.fn(),
 }));
 
-describe('Store Locator saga', () => {
-  test('should test watch Store Landing page action', () => {
-    const generator = StoreSaga();
-    expect(generator.next().value).toEqual(
-      takeLatest(STORE_LOCATOR_CONSTANTS.GET_LOCATION_STORES, fetchLocationStoresSaga)
-    );
+// describe('Store Locator saga', () => {
+//   test('should test watch Store Landing page action', () => {
+//     const generator = StoreSaga();
+//     expect(generator.next().value).toEqual(
+//       takeLatest(STORE_LOCATOR_CONSTANTS.GET_LOCATION_STORES, fetchLocationStoresSaga)
+//     );
 
-    expect(generator.next().value.toString()).toMatch(
-      takeLatest(
-        STORE_LOCATOR_CONSTANTS.GET_FAVORITE_STORE,
-        validateReduxCache(getFavoriteStoreSaga)
-      ).toString()
-    );
-    expect(generator.next().value.toString()).toMatch(
-      takeLatest(
-        STORE_LOCATOR_CONSTANTS.SET_FAVORITE_STORE,
-        validateReduxCache(fetchLocationStoresSaga)
-      ).toString()
-    );
-  });
+//     expect(generator.next().value.toString()).toMatch(
+//       takeLatest(
+//         STORE_LOCATOR_CONSTANTS.GET_FAVORITE_STORE,
+//         validateReduxCache(getFavoriteStoreSaga)
+//       ).toString()
+//     );
+//     expect(generator.next().value.toString()).toMatch(
+//       takeLatest(
+//         STORE_LOCATOR_CONSTANTS.SET_FAVORITE_STORE,
+//         validateReduxCache(fetchLocationStoresSaga)
+//       ).toString()
+//     );
+//   });
 
   describe('fetchLocationStoresSaga', () => {
     getLocationStores.mockImplementation(() => new Promise(resolve => resolve(suggestedStores)));

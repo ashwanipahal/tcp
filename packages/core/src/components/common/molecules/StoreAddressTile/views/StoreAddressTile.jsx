@@ -46,7 +46,7 @@ class StoreAddressTile extends PureComponent {
   }
 
   getListingTileFooter() {
-    const { labels, openStoreDetail, isFavorite, setFavoriteStore } = this.props;
+    const { labels, openStoreDetail, isFavorite, store, setFavoriteStore } = this.props;
     return (
       <Fragment>
         <div>
@@ -66,7 +66,7 @@ class StoreAddressTile extends PureComponent {
           {isFavorite && this.getIsFavStoreIcon()}
           {!isFavorite && (
             <Button
-              onClick={setFavoriteStore}
+              onClick={() => setFavoriteStore(store)}
               buttonVariation="fixed-width"
               type="button"
               data-locator="set-favorite-store"
@@ -326,7 +326,7 @@ class StoreAddressTile extends PureComponent {
     const { regularHours, holidayHours, regularAndHolidayHours } = hours;
     const selectedInterval = [...regularHours, ...holidayHours, ...regularAndHolidayHours].filter(
       hour => {
-        const toInterval = hour.openIntervals[0] && hour.openIntervals[0].toHour;
+        const toInterval = hour && hour.openIntervals[0] && hour.openIntervals[0].toHour;
         return (
           parseDate(toInterval).getDate() === todaysDate.getDate() &&
           parseDate(toInterval).getMonth() === todaysDate.getMonth() &&
@@ -334,11 +334,15 @@ class StoreAddressTile extends PureComponent {
         );
       }
     );
-    return toTimeString(parseDate(selectedInterval[0].openIntervals[0].toHour), true);
+    try {
+      return toTimeString(parseDate(selectedInterval[0].openIntervals[0].toHour), true);
+    } catch (err) {
+      return 'random';
+    }
   }
 
   render() {
-    const { className, children, variation, ...rest } = this.props;
+    const { className, children, variation, store, ...rest } = this.props;
     return (
       <div className={className}>
         {variation === listingHeader && this.getListingHeader()}
@@ -352,9 +356,9 @@ class StoreAddressTile extends PureComponent {
               {this.getStoreAddress()}
               {children}
             </TileBody>
-            <TileFooter className="title-footer" variation={variation} {...rest}>
+            <TileFooter className="title-footer" variation={variation} store={store} {...rest}>
               {variation === detailsType && this.getDetailsTileFooter()}
-              {variation === listingType && this.getListingTileFooter()}
+              {variation === listingType && this.getListingTileFooter(store)}
             </TileFooter>
           </Fragment>
         )}

@@ -1,6 +1,7 @@
 import {
   STORE_LOCATOR_REDUCER_KEY,
   SESSIONCONFIG_REDUCER_KEY,
+  USER_REDUCER_KEY,
 } from '@tcp/core/src/constants/reducer.constants';
 
 export const getCurrentCountry = state => {
@@ -17,4 +18,8 @@ export const getPageLabels = state => {
 
 export const getStoreInfo = state => {
   return state[STORE_LOCATOR_REDUCER_KEY];
+};
+
+export const getFavoriteStore = state => {
+  return state[USER_REDUCER_KEY].get('favoriteStore');
 };

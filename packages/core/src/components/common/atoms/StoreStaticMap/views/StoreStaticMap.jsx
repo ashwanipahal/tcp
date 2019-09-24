@@ -77,7 +77,7 @@ const StoreStaticMap = props => {
   useEffect(() => {
     let containerWidth = 0;
     if (refMapContainer && refMapContainer.current && !isMobileApp()) {
-      containerWidth = refMapContainer.current.clientWidth;
+      containerWidth = refMapContainer.current.clientWidth || 630;
       setMapUpdateSize(`${containerWidth}x${mapSize.split('x')[1]}`);
       setImageLoadingState(true);
     }
