@@ -19,6 +19,7 @@ class BillingPage extends React.PureComponent {
     addressLabels: PropTypes.shape({}),
     billingData: PropTypes.shape({}),
     userAddresses: PropTypes.shape({}),
+    creditFieldLabels: PropTypes.shape({}),
   };
 
   static defaultProps = {
@@ -28,6 +29,7 @@ class BillingPage extends React.PureComponent {
     addressLabels: null,
     billingData: {},
     userAddresses: null,
+    creditFieldLabels: {},
   };
 
   render() {
@@ -42,6 +44,7 @@ class BillingPage extends React.PureComponent {
       addressLabels,
       billingData,
       userAddresses,
+      creditFieldLabels,
     } = this.props;
     const { header, backLinkPickup, backLinkShipping, nextSubmitText } = labels;
     return (
@@ -63,6 +66,7 @@ class BillingPage extends React.PureComponent {
               addressLabels={addressLabels}
               shippingAddress={shippingAddress}
               userAddresses={userAddresses}
+              creditFieldLabels={creditFieldLabels}
             />
           </div>
         ) : (
@@ -77,6 +81,7 @@ class BillingPage extends React.PureComponent {
             nextSubmitText={nextSubmitText}
             orderHasShipping={orderHasShipping}
             billingData={billingData}
+            creditFieldLabels={creditFieldLabels}
           />
         )}
       </div>

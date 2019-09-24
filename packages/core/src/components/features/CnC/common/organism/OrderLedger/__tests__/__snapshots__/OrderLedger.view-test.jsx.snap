@@ -170,6 +170,9 @@ exports[`OrderLedger Component OrderLedger should render correctly 1`] = `
       </Styled(Col)>
     </Styled(Row)>
   </Styled(Grid)>
+  <Measure
+    name="render_cart_total"
+  />
 </Fragment>
 `;
 
@@ -670,5 +673,8 @@ exports[`OrderLedger Component OrderLedger should render correctly 2`] = `
       </Styled(Col)>
     </Styled(Row)>
   </Styled(Grid)>
+  <Measure
+    name="render_cart_total"
+  />
 </Fragment>
 `;

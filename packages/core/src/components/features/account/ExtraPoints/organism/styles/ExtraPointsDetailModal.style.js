@@ -6,15 +6,21 @@ const CouponDetailModalStyle = css`
   }
 
   .imageSizeSingle {
-    width: 28px;
-    height: 46px;
+    width: 70px;
+    height: 80px;
+    margin-top: ${props => props.theme.spacing.ELEM_SPACING.SM};
     margin-left: ${props => props.theme.spacing.ELEM_SPACING.SM};
     background-size: contain;
     background-repeat: no-repeat;
   }
 
+  .buttonWrapper {
+    margin-left: ${props => props.theme.spacing.LAYOUT_SPACING.XL};
+    margin-right: ${props => props.theme.spacing.LAYOUT_SPACING.XL};
+  }
+
   .earnExtraPointsTileImage {
-    height: 64px;
+    height: 90px;
     display: flex;
     justify-content: space-around;
     align-items: center;

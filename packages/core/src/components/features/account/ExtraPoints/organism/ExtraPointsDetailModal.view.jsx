@@ -78,7 +78,7 @@ class ExtraPointsDetailModal extends React.PureComponent {
         >
           <RichText richTextHtml={activeActivity.activityModalLongDescription} />
         </BodyCopy>
-        <BodyCopy component="div" textAlign="center">
+        <BodyCopy component="div" textAlign="center" className="buttonWrapper">
           <Button
             fill="BLUE"
             buttonVariation="fixed-width"
@@ -107,7 +107,7 @@ class ExtraPointsDetailModal extends React.PureComponent {
         overlayClassName="TCPModal__Overlay"
         className="TCPModal__Content"
         maxWidth="615px"
-        minHeight="615px"
+        minHeight="650px"
         fixedWidth
         closeIconDataLocator="ExtraPointsDetailModal_crossIcon"
       >

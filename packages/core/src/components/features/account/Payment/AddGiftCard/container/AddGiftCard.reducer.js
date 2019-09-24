@@ -29,6 +29,7 @@ const AddGiftCardReducer = (state = initialState, action: Action) => {
         .set('onAddGiftCardPage', false);
     case ADD_GIFT_CARD_CONSTANTS.RESET_SHOW_NOTIFICATION:
       return state
+        .set('showNotification', false)
         .set('showUpdatedNotification', null)
         .set('onAddGiftCardPage', false)
         .set('error', null);

@@ -31,10 +31,7 @@ const getAddGiftCardResponse = state => {
 };
 
 const getIsRecapchaEnabled = state => {
-  return (
-    (state.session && state.session.siteDetails && state.session.siteDetails.isRecapchaEnabled) ||
-    true
-  );
+  return state.session && state.session.siteDetails && state.session.siteDetails.isRecapchaEnabled;
 };
 
 const getIsLoading = state => {

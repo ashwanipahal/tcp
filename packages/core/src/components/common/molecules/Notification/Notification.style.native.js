@@ -13,17 +13,21 @@ const SectionStyle = css`
 `;
 
 const getTextBaseStyle = props => {
-  const { theme } = props;
+  const { theme, status } = props;
   return `
     color: ${theme.colorPalette.red[500]};
-    border:1px solid ${theme.colorPalette.red[500]};
+    border:1px solid ${
+      status === 'success' ? theme.colorPalette.green[500] : theme.colorPalette.red[500]
+    };
     padding:${theme.spacing.ELEM_SPACING.MED};
     margin: ${theme.spacing.ELEM_SPACING.XS};
+    justify-content: space-between;
     `;
 };
 
 const NotificationWrapper = styled.View`
-  ${getTextBaseStyle}
+  flex-direction: row;
+  ${getTextBaseStyle};
 `;
 
 export { NotificationWrapper, SectionStyle };

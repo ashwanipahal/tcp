@@ -30,7 +30,9 @@ export const addCartEcomItem = params =>
       orderItemId: res.body.orderItemId && res.body.orderItemId[0],
     }))
     .catch(res => {
-      throw res.error || res.body.error;
+      throw res.error ||
+        (res.body && res.body.error) ||
+        (res.errorResponse && res.errorResponse.errorMessage);
     });
 
 export const addCartBopisItem = params =>

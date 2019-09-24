@@ -32,27 +32,60 @@ const EarnPoints = ({ className, labels, waysToEarn, onViewActivityDetails }) =>
   return (
     <div className={className}>
       <FormPageHeadingComponent heading={getLabelValue(labels, 'lbl_common_extraPointsHeading')} />
-      <Row fullBleed className="elem-mt-LRG">
-        {fistRowItem &&
-          fistRowItem.map((item, index) => {
-            return (
-              <>
-                {item && index === 0 && (
-                  <Col colSize={{ small: 6, medium: 4, large: 6 }}>
-                    <DetailedEarnExtraPointsSingleTileComponent
-                      key={index.toString()}
-                      waysToEarnRow={item}
-                      onViewActivityDetails={onViewActivityDetails}
-                      labels={labels}
-                      viewAll
-                    />
-                  </Col>
-                )}
-                {item && index > 0 && (
-                  <Col
-                    colSize={{ small: 3, medium: 2, large: 3 }}
-                    className={`${index === 1 ? 'extraPointsTileCol' : ''}`}
-                  >
+      {waysToEarn && waysToEarn.length && (
+        <>
+          <BodyCopy
+            fontSize="fs18"
+            fontWeight="semibold"
+            textAlign="center"
+            fontFamily="secondary"
+            className="morePointsWrapper"
+          >
+            {getLabelValue(labels, 'lbl_extraExtraPoints_more_points')}
+          </BodyCopy>
+          <Row fullBleed className="elem-mt-LRG">
+            {fistRowItem &&
+              fistRowItem.map((item, index) => {
+                return (
+                  <>
+                    {item && index === 0 && (
+                      <Col colSize={{ small: 6, medium: 4, large: 6 }}>
+                        <DetailedEarnExtraPointsSingleTileComponent
+                          key={index.toString()}
+                          waysToEarnRow={item}
+                          onViewActivityDetails={onViewActivityDetails}
+                          labels={labels}
+                          viewAll
+                        />
+                      </Col>
+                    )}
+                    {item && index > 0 && (
+                      <Col
+                        colSize={{ small: 3, medium: 2, large: 3 }}
+                        className={`${index === 1 ? 'extraPointsTileCol' : ''}`}
+                      >
+                        <DetailedEarnExtraPointsTile
+                          key={index.toString()}
+                          waysToEarnRow={item}
+                          onViewActivityDetails={onViewActivityDetails}
+                          labels={labels}
+                          viewAll
+                        />
+                      </Col>
+                    )}
+                  </>
+                );
+              })}
+          </Row>
+          <Row fullBleed>
+            {secondRowItem &&
+              secondRowItem.map((item, index) => {
+                let ignoreGutter = '';
+                if ((index + 1) % 4 === 0) {
+                  ignoreGutter = { large: true, medium: true, small: true };
+                }
+                return (
+                  <Col colSize={{ small: 3, medium: 2, large: 3 }} ignoreGutter={ignoreGutter}>
                     <DetailedEarnExtraPointsTile
                       key={index.toString()}
                       waysToEarnRow={item}
@@ -61,31 +94,11 @@ const EarnPoints = ({ className, labels, waysToEarn, onViewActivityDetails }) =>
                       viewAll
                     />
                   </Col>
-                )}
-              </>
-            );
-          })}
-      </Row>
-      <Row fullBleed>
-        {secondRowItem &&
-          secondRowItem.map((item, index) => {
-            let ignoreGutter = '';
-            if ((index + 1) % 4 === 0) {
-              ignoreGutter = { large: true, medium: true, small: true };
-            }
-            return (
-              <Col colSize={{ small: 3, medium: 2, large: 3 }} ignoreGutter={ignoreGutter}>
-                <DetailedEarnExtraPointsTile
-                  key={index.toString()}
-                  waysToEarnRow={item}
-                  onViewActivityDetails={onViewActivityDetails}
-                  labels={labels}
-                  viewAll
-                />
-              </Col>
-            );
-          })}
-      </Row>
+                );
+              })}
+          </Row>
+        </>
+      )}
       <BodyCopy fontSize="fs14" fontWeight="regular" fontFamily="secondary" className="elem-mt-XL">
         <Anchor
           noUnderline
@@ -99,12 +112,11 @@ const EarnPoints = ({ className, labels, waysToEarn, onViewActivityDetails }) =>
         >
           {getLabelValue(labels, 'lbl_common_check_here')}
         </Anchor>
-        {getLabelValue(labels, 'lbl_common_extra_ppoints_terms_conditions')}
+        {getLabelValue(labels, 'lbl_common_extra_points_terms_conditions')}
       </BodyCopy>
     </div>
   );
 };
-
 EarnPoints.propTypes = {
   className: PropTypes.string,
   onViewActivityDetails: PropTypes.func.isRequired,

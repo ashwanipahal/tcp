@@ -2,6 +2,8 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import { BodyCopy, Anchor } from '@tcp/core/src/components/common/atoms';
 import createThemeColorPalette from '@tcp/core/styles/themes/createThemeColorPalette';
+import { ViewWithSpacing } from '@tcp/core/src/components/common/atoms/styledWrapper';
+import sourceMap from '../../../../ExtraPoints/imageSourceMap';
 import {
   TileWrapper,
   EarnPointDesc,
@@ -9,34 +11,7 @@ import {
   ImageSize,
 } from '../styles/DetailedEarnExtraPointsTile.style.native';
 
-const AppDownloadImage = require('../../../../../../../assets/download-app.png');
-const ProductReviewImage = require('../../../../../../../assets/review.png');
-const FacebookLinkImage = require('../../../../../../../assets/facebook.png');
-const InstagramLinkImage = require('../../../../../../../assets/instagram.png');
-const ChildProfileImage = require('../../../../../../../assets/child-birthday-profile.png');
-const SMSOptInImage = require('../../../../../../../assets/sms.png');
-const AddMailingAddressImage = require('../../../../../../../assets/mailingAddress.png');
-const AddFavoriteStoreImage = require('../../../../../../../assets/store.png');
-const AddShopperTypeImage = require('../../../../../../../assets/survey.png');
-
 const colorPalette = createThemeColorPalette();
-
-/**
- * DetailedEarnExtraPointsTile component used for show details earn extra points.
- * @sourceMap - sourceMap object for images path
- */
-
-const sourceMap = {
-  AppDownload: AppDownloadImage,
-  ProductReview: ProductReviewImage,
-  FacebookLink: FacebookLinkImage,
-  InstagramLink: InstagramLinkImage,
-  ChildProfile: ChildProfileImage,
-  SMSOptIn: SMSOptInImage,
-  AddMailingAddress: AddMailingAddressImage,
-  AddFavoriteStore: AddFavoriteStoreImage,
-  AddShopperType: AddShopperTypeImage,
-};
 
 /**
  * DetailedEarnExtraPointsTile component used for show details earn extra points.
@@ -48,13 +23,17 @@ export class DetailedEarnExtraPointsTile extends React.PureComponent {
   static propTypes = {
     labels: PropTypes.shape({}),
     handleComponentChange: PropTypes.func,
+    onViewActivityDetails: PropTypes.func,
     waysToEarnRow: PropTypes.shape({}),
+    viewAll: PropTypes.bool,
   };
 
   static defaultProps = {
     labels: {},
     handleComponentChange: () => {},
+    onViewActivityDetails: () => {},
     waysToEarnRow: {},
+    viewAll: false,
   };
 
   boxWithShadow = {
@@ -66,30 +45,39 @@ export class DetailedEarnExtraPointsTile extends React.PureComponent {
   };
 
   render() {
-    const { waysToEarnRow, handleComponentChange } = this.props;
-
+    const { waysToEarnRow, viewAll, handleComponentChange, onViewActivityDetails } = this.props;
     return (
-      <TileWrapper style={this.boxWithShadow}>
-        <Anchor onPress={() => handleComponentChange('accountOverviewMobile')}>
-          <EarnExtraPointsTileImage>
+      <TileWrapper style={this.boxWithShadow} viewAll>
+        <Anchor
+          onPress={() =>
+            viewAll
+              ? onViewActivityDetails(waysToEarnRow)
+              : handleComponentChange('earnExtraPointsPageMobile')
+          }
+        >
+          <EarnExtraPointsTileImage viewAll>
             <ImageSize source={sourceMap[waysToEarnRow.activityCode]} />
           </EarnExtraPointsTileImage>
-          <BodyCopy
-            component="p"
-            fontSize="fs16"
-            fontWeight="black"
-            fontFamily="secondary"
-            textAlign="center"
-            text={waysToEarnRow.activityTitle}
-            data-locator={`earnExtraPointsActivityTitle_${waysToEarnRow.activityCode}`}
-          />
-          <EarnPointDesc>
+          <ViewWithSpacing spacingStyles="margin-top-LRG">
             <BodyCopy
               component="p"
               fontSize="fs16"
+              fontWeight="black"
+              color="gray.900"
+              fontFamily="secondary"
+              textAlign="center"
+              text={waysToEarnRow.activityTitle}
+              data-locator={`earnExtraPointsActivityTitle_${waysToEarnRow.activityCode}`}
+            />
+          </ViewWithSpacing>
+          <EarnPointDesc viewAll>
+            <BodyCopy
+              component="p"
+              fontSize={`${viewAll ? 'fs14' : 'fs16'}`}
               fontWeight="regular"
               fontFamily="secondary"
               textAlign="center"
+              color="gray.900"
               text={waysToEarnRow.description}
               data-locator={`earnExtraPointsDescription_${waysToEarnRow.activityCode}`}
             />
