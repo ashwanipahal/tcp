@@ -13,6 +13,11 @@ const CouponDetailModalStyle = css`
     background-repeat: no-repeat;
   }
 
+  .buttonWrapper {
+    margin-left: ${props => props.theme.spacing.LAYOUT_SPACING.XL};
+    margin-right: ${props => props.theme.spacing.LAYOUT_SPACING.XL};
+  }
+
   .earnExtraPointsTileImage {
     height: 64px;
     display: flex;

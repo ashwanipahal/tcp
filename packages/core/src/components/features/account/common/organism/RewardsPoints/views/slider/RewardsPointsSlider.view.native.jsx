@@ -21,10 +21,6 @@ const RewardsPointsSlider = ({
   totalRewards,
   labels,
 }) => {
-  console.log('furkan-----------');
-  console.log(plccUser);
-  console.log('furkan-----------');
-
   return (
     <React.Fragment>
       <RewardsPointsView plccUser={plccUser}>
