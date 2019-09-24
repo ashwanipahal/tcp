@@ -1,8 +1,9 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import { Anchor, BodyCopy, Button, Col, Row } from '../../../../../common/atoms';
+import { BodyCopy, Button, Col, Row } from '../../../../../common/atoms';
 import ApplicationInProgressWrapper from './styles/ApplicationInProgress.style';
 import { getLabelValue } from '../../../../../../utils';
+import { redirectToBag, redirectToHome } from '../../utils/utility';
 
 /**
  * @const ApplicationInProgress
@@ -11,7 +12,7 @@ import { getLabelValue } from '../../../../../../utils';
  * @description - showcases application in progress screen.
  */
 
-const ApplicationInProgress = ({ bagItems, isPLCCModalFlow, labels }) => {
+const ApplicationInProgress = ({ bagItems, isPLCCModalFlow, labels, resetPLCCResponse }) => {
   return (
     <ApplicationInProgressWrapper isPLCCModalFlow={isPLCCModalFlow}>
       <div className="header-image" />
@@ -33,17 +34,16 @@ const ApplicationInProgress = ({ bagItems, isPLCCModalFlow, labels }) => {
             colSize={{ large: 3, medium: 4, small: 12 }}
             className="underprogress_checkout_button"
           >
-            <Anchor asPath="/bag">
-              <Button
-                buttonVariation="fixed-width"
-                fill="BLUE"
-                type="submit"
-                className="underprogress_checkout_button"
-                data-locator="submit-plcc-btn"
-              >
-                {getLabelValue(labels, 'lbl_PLCCForm_ctcButton')}
-              </Button>
-            </Anchor>
+            <Button
+              buttonVariation="fixed-width"
+              fill="BLUE"
+              type="submit"
+              className="underprogress_checkout_button"
+              data-locator="submit-plcc-btn"
+              onClick={() => redirectToBag(resetPLCCResponse)}
+            >
+              {getLabelValue(labels, 'lbl_PLCCForm_ctcButton')}
+            </Button>
           </Col>
         </Row>
       ) : null}
@@ -53,17 +53,16 @@ const ApplicationInProgress = ({ bagItems, isPLCCModalFlow, labels }) => {
           colSize={{ large: 3, medium: 4, small: 12 }}
           className="underprogress_continue_button"
         >
-          <Anchor asPath="/home">
-            <Button
-              buttonVariation="fixed-width"
-              fill={!bagItems ? 'BLUE' : 'WHITE'}
-              type="submit"
-              className="underprogress_continue_button"
-              data-locator="submit-plcc-btn"
-            >
-              {getLabelValue(labels, 'lbl_PLCCForm_continueShopping')}
-            </Button>
-          </Anchor>
+          <Button
+            buttonVariation="fixed-width"
+            fill={!bagItems ? 'BLUE' : 'WHITE'}
+            type="submit"
+            className="underprogress_continue_button"
+            data-locator="submit-plcc-btn"
+            onClick={() => redirectToHome(resetPLCCResponse)}
+          >
+            {getLabelValue(labels, 'lbl_PLCCForm_continueShopping')}
+          </Button>
         </Col>
       </Row>
     </ApplicationInProgressWrapper>
@@ -74,6 +73,7 @@ ApplicationInProgress.propTypes = {
   labels: PropTypes.shape({}).isRequired,
   isPLCCModalFlow: PropTypes.bool.isRequired,
   bagItems: PropTypes.number.isRequired,
+  resetPLCCResponse: PropTypes.func.isRequired,
 };
 
 export default ApplicationInProgress;

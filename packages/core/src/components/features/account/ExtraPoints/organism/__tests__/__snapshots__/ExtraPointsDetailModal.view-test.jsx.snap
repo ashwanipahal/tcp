@@ -83,7 +83,7 @@ exports[`Extra Points Details Modal should render correctly 1`] = `
       />
     </Styled(BodyCopy)>
     <Styled(BodyCopy)
-      className={null}
+      className="buttonWrapper"
       color="text.primary"
       component="div"
       fontFamily="primary"

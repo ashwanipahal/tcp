@@ -93,7 +93,7 @@ exports[`ProductsGridItem component should renders correctly 1`] = `
     </Styled(Row)>
     <ProductPricesSection
       currencySymbol="$"
-      dataLocator="undefined_122"
+      dataLocator=""
       hidePrefixListPrice={true}
       listPrice={NaN}
       merchantTag=""
@@ -130,23 +130,15 @@ exports[`ProductsGridItem component should renders correctly 1`] = `
       showColorEvenOne={true}
     />
     <PromotionalMessage />
-    <div>
+    <div
+      className="fulfillment-section"
+    >
       <Styled(Button)
         buttonVariation="fixed-width"
         className="added-to-bag"
         dataLocator="global-addtocart-Button"
         fullWidth={true}
         onClick={[Function]}
-      />
-    </div>
-    <div
-      className="fulfillment-section"
-    >
-      <Styled(FulfillmentSection)
-        btnClassName="added-to-bag"
-        buttonLabel="Pickup In Store"
-        dataLocator="global-addtocart-Button"
-        onPickupOpenClick={[Function]}
       />
     </div>
   </div>

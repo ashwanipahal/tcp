@@ -62,6 +62,9 @@ exports[`AddedToBagActions component AddedToBagActions component renders correct
         textAlign="left"
       />
     </Styled(Button)>
+    <Measure
+      name="render_checkout_cta"
+    />
   </Styled(Row)>
 </div>
 `;

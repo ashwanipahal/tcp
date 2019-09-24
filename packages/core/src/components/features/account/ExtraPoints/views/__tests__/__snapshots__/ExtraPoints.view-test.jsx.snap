@@ -90,7 +90,7 @@ exports[`EarnPointsVanilla component should renders correctly 1`] = `
     >
       lbl_common_check_here
     </Styled(Anchor)>
-    lbl_common_extra_ppoints_terms_conditions
+    lbl_common_extra_points_terms_conditions
   </Styled(BodyCopy)>
 </div>
 `;

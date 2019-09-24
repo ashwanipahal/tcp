@@ -20,10 +20,15 @@ import {
   ActiveBagHeaderText,
   ActiveBagHeaderView,
   InActiveBagHeaderView,
+  SuccessTickImage,
+  SuccessMessageContainer,
 } from '../styles/BagPage.style.native';
 import BonusPointsDays from '../../../../common/organisms/BonusPointsDays';
 import InitialPropsHOC from '../../../../common/hoc/InitialPropsHOC/InitialPropsHOC.native';
 import BAGPAGE_CONSTANTS from '../BagPage.constants';
+import BodyCopy from '../../../../common/atoms/BodyCopy';
+
+const tickIcon = require('../../../../../assets/circle-check-fill.png');
 
 class BagPage extends React.Component {
   constructor(props) {
@@ -41,6 +46,14 @@ class BagPage extends React.Component {
       activeSection:
         !totalCount && sflItems.size ? BAGPAGE_CONSTANTS.SFL_STATE : BAGPAGE_CONSTANTS.BAG_STATE,
     });
+  }
+
+  componentDidUpdate() {
+    const { toastMessage, isCartItemSFL, labels } = this.props;
+    const { sflSuccess } = labels;
+    if (isCartItemSFL) {
+      toastMessage(sflSuccess);
+    }
   }
 
   handleChangeActiveSection = sectionName => {
@@ -81,6 +94,31 @@ class BagPage extends React.Component {
     );
   }
 
+  /**
+   *@function //responsible for rendering of success message with tick icon
+   * @memberof BagPage
+   */
+  renderSuccessMessage = () => {
+    const {
+      isCartItemsUpdating: { isDeleting },
+      labels,
+    } = this.props;
+    return (
+      isDeleting && (
+        <SuccessMessageContainer>
+          <SuccessTickImage source={tickIcon} />
+          <BodyCopy
+            component="span"
+            fontSize="fs12"
+            mobilefontFamily={['secondary']}
+            fontWeight="extrabold"
+            text={labels.itemDeleted}
+          />
+        </SuccessMessageContainer>
+      )
+    );
+  };
+
   renderOrderLedgerContainer = isNoNEmptyBag => {
     if (isNoNEmptyBag) {
       return (
@@ -93,20 +131,15 @@ class BagPage extends React.Component {
   };
 
   render() {
-    const {
-      labels,
-      showAddTobag,
-      navigation,
-      handleCartCheckout,
-      isUserLoggedIn,
-      orderItemsCount,
-      sflItems,
-    } = this.props;
+    const { labels, showAddTobag, navigation, orderItemsCount } = this.props;
+    const { handleCartCheckout, isUserLoggedIn, sflItems } = this.props;
     const isNoNEmptyBag = orderItemsCount > 0;
     const { activeSection } = this.state;
     if (!labels.tagLine) {
       return <View />;
     }
+    const isBagStage = activeSection === BAGPAGE_CONSTANTS.BAG_STATE;
+    const isSFLStage = activeSection === BAGPAGE_CONSTANTS.SFL_STATE;
     return (
       <>
         <ScrollViewWrapper showAddTobag={showAddTobag}>
@@ -116,7 +149,7 @@ class BagPage extends React.Component {
                 this.handleChangeActiveSection(BAGPAGE_CONSTANTS.BAG_STATE);
               }}
             >
-              {activeSection === BAGPAGE_CONSTANTS.BAG_STATE ? (
+              {isBagStage ? (
                 <ActiveBagHeaderView>{this.renderBagHeading()}</ActiveBagHeaderView>
               ) : (
                 <InActiveBagHeaderView>{this.renderBagHeading()}</InActiveBagHeaderView>
@@ -127,19 +160,17 @@ class BagPage extends React.Component {
                 this.handleChangeActiveSection(BAGPAGE_CONSTANTS.SFL_STATE);
               }}
             >
-              {activeSection === BAGPAGE_CONSTANTS.SFL_STATE ? (
+              {isSFLStage ? (
                 <ActiveBagHeaderView>{this.renderSflHeading()}</ActiveBagHeaderView>
               ) : (
                 <InActiveBagHeaderView>{this.renderSflHeading()}</InActiveBagHeaderView>
               )}
             </SflHeadingViewStyle>
           </BagHeaderRow>
-
+          {this.renderSuccessMessage()}
           <MainSection>
-            {activeSection === BAGPAGE_CONSTANTS.BAG_STATE && (
-              <ProductTileWrapper bagLabels={labels} />
-            )}
-            {activeSection === BAGPAGE_CONSTANTS.SFL_STATE && (
+            {isBagStage && <ProductTileWrapper bagLabels={labels} />}
+            {isSFLStage && (
               <ProductTileWrapper bagLabels={labels} sflItems={sflItems} isBagPageSflSection />
             )}
             {this.renderOrderLedgerContainer(isNoNEmptyBag)}
@@ -182,9 +213,12 @@ BagPage.propTypes = {
   navigation: PropTypes.shape({}).isRequired,
   isUserLoggedIn: PropTypes.bool.isRequired,
   handleCartCheckout: PropTypes.func.isRequired,
+  isCartItemsUpdating: PropTypes.shape({ isDeleting: PropTypes.bool.isRequired }).isRequired,
   fetchLabels: PropTypes.func.isRequired,
   orderItemsCount: PropTypes.number.isRequired,
   sflItems: PropTypes.shape([]).isRequired,
+  toastMessage: PropTypes.func.isRequired,
+  isCartItemSFL: PropTypes.bool.isRequired,
 };
 
 export default InitialPropsHOC(BagPage);

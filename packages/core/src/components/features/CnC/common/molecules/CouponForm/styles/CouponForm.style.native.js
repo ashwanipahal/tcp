@@ -26,7 +26,7 @@ const InputField = styled.View`
 
 const ApplyButton = {
   height: 42,
-  width: 114,
+  width: 134,
 };
 
 const CouponFormContainer = styled.View`

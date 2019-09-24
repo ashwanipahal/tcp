@@ -370,6 +370,8 @@ class ProductAddToBagContainer extends React.PureComponent<Props> {
       currentProduct,
       currentProduct: { colorFitsSizesMap },
       plpLabels,
+      addToBagEcom,
+      addToBagError,
     } = this.props;
     const {
       selectedColor,
@@ -403,6 +405,8 @@ class ProductAddToBagContainer extends React.PureComponent<Props> {
         onQuantityChange={this.quantityChange}
         addToBagAction={this.addToBagAction}
         generalProductId={generalProductId}
+        addToBagEcom={addToBagEcom}
+        addToBagError={addToBagError}
       />
     );
   }

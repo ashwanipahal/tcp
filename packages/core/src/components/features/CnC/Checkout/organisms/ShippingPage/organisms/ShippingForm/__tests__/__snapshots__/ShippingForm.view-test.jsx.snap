@@ -51,6 +51,7 @@ exports[`Shipping Form should render correctly 1`] = `
       shipmentMethods={null}
       shippingAddressId={null}
       shippingLabels={Object {}}
+      showAccordian={true}
       smsSignUpLabels={Object {}}
       syncErrors={Object {}}
       toggleAddEditModal={[Function]}
@@ -116,6 +117,10 @@ exports[`Shipping Form should render correctly 1`] = `
         />
       </Styled(Col)>
     </Styled(Row)>
+    <Styled(CheckoutOrderInfo)
+      isGuest={false}
+      showAccordian={true}
+    />
     <Styled(CheckoutFooter)
       backLinkText=""
       disableNext={false}
@@ -404,6 +409,10 @@ exports[`Shipping Form should render correctly with logged in user 1`] = `
         />
       </Styled(Col)>
     </Styled(Row)>
+    <Styled(CheckoutOrderInfo)
+      isGuest={true}
+      showAccordian={true}
+    />
     <Styled(CheckoutFooter)
       backLinkText=""
       disableNext={false}
@@ -1034,6 +1043,10 @@ exports[`Shipping Form should render correctly with logged in user having addres
         />
       </Styled(Col)>
     </Styled(Row)>
+    <Styled(CheckoutOrderInfo)
+      isGuest={true}
+      showAccordian={true}
+    />
     <Styled(CheckoutFooter)
       backLinkText=""
       disableNext={false}
@@ -1726,6 +1739,10 @@ exports[`Shipping Form should render correctly with logged in user having addres
         />
       </Styled(Col)>
     </Styled(Row)>
+    <Styled(CheckoutOrderInfo)
+      isGuest={true}
+      showAccordian={true}
+    />
     <Styled(CheckoutFooter)
       backLinkText=""
       disableNext={true}
@@ -2096,6 +2113,10 @@ exports[`Shipping Form should render correctly with logged in user having addres
         />
       </Styled(Col)>
     </Styled(Row)>
+    <Styled(CheckoutOrderInfo)
+      isGuest={true}
+      showAccordian={true}
+    />
     <Styled(CheckoutFooter)
       backLinkText=""
       disableNext={false}

@@ -41,7 +41,7 @@ exports[`DetailedCouponTile should display overlay 1`] = `
       textAlign="left"
     >
       <Styled(Image)
-        src="/static/images/bag.png"
+        src="/static/images/bag-white.svg"
       />
       <Styled(BodyCopy)
         className={null}
@@ -487,7 +487,7 @@ exports[`DetailedCouponTile should render correctly for applied coupon 1`] = `
       textAlign="left"
     >
       <Styled(Image)
-        src="/static/images/bag.png"
+        src="/static/images/bag-white.svg"
       />
       <Styled(BodyCopy)
         className={null}

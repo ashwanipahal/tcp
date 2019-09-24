@@ -44,7 +44,9 @@ class ProductImages extends React.Component {
         superSizeImageUrl: PropTypes.string.isRequired,
       })
     ).isRequired,
-
+    pdpLabels: PropTypes.shape({
+      fullSize: PropTypes.string,
+    }).isRequired,
     /**
      * Flags if we should show big size images, instead of regular size
      * images (default behavior)
@@ -89,6 +91,7 @@ class ProductImages extends React.Component {
       onCloseClick,
       isFullSizeModalOpen,
       isMobile,
+      pdpLabels,
     } = this.props;
     const { currentImageIndex } = this.state;
     const thumbnailImagesPaths = images.map(image => ({
@@ -151,7 +154,7 @@ class ProductImages extends React.Component {
                 onClick={onCloseClick}
                 dataLocator={getLocator('pdp_full_size_btn')}
               >
-                Full Size
+                {pdpLabels.fullSize}
               </Anchor>
             )}
           </div>

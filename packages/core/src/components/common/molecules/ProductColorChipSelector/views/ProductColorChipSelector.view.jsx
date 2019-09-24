@@ -9,6 +9,7 @@
 
 import React from 'react';
 import { PropTypes } from 'prop-types';
+import RenderPerf from '@tcp/web/src/components/common/molecules/RenderPerf';
 import withStyles from '../../../hoc/withStyles';
 import LabeledRadioButtonGroup from '../../LabeledRadioButtonGroup';
 import styles from '../styles/ProductColorChipSelector.style';
@@ -77,11 +78,14 @@ class ProductColorChipsSelector extends React.PureComponent<Props> {
       isDisableZeroInventoryEntries
     );
     return (
-      <LabeledRadioButtonGroup
-        className={`${className} color-chips-selector`}
-        optionsMap={optionsMap}
-        {...otherProps}
-      />
+      <>
+        <LabeledRadioButtonGroup
+          className={`${className} color-chips-selector`}
+          optionsMap={optionsMap}
+          {...otherProps}
+        />
+        <RenderPerf.Measure name="render_product_colors" />
+      </>
     );
   }
 }

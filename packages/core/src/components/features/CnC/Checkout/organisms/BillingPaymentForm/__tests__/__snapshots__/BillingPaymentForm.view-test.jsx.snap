@@ -217,6 +217,10 @@ exports[`ButtonList component renders correctly if  cards present and addNewCCSt
       userAddresses={null}
     />
   </div>
+  <Styled(CheckoutOrderInfo)
+    isGuest={false}
+    showAccordian={true}
+  />
   <Styled(CheckoutFooter)
     backLinkHandler={[Function]}
     backLinkText=""
@@ -355,6 +359,10 @@ exports[`ButtonList component renders correctly if  no cards present  1`] = `
       userAddresses={null}
     />
   </div>
+  <Styled(CheckoutOrderInfo)
+    isGuest={false}
+    showAccordian={true}
+  />
   <Styled(CheckoutFooter)
     backLinkHandler={[Function]}
     backLinkText=""
@@ -415,6 +423,10 @@ exports[`ButtonList component renders correctly if payment method is diff 1`] = 
       className="payment-paypal-container"
     />
   </div>
+  <Styled(CheckoutOrderInfo)
+    isGuest={false}
+    showAccordian={true}
+  />
   <Styled(CheckoutFooter)
     backLinkHandler={[Function]}
     backLinkText=""
@@ -1046,6 +1058,10 @@ exports[`ButtonList component renders correctly without props 1`] = `
       />
     </Styled(Row)>
   </div>
+  <Styled(CheckoutOrderInfo)
+    isGuest={false}
+    showAccordian={true}
+  />
   <Styled(CheckoutFooter)
     backLinkHandler={[Function]}
     backLinkText=""
@@ -1677,6 +1693,10 @@ exports[`ButtonList component renders correctly without props 2`] = `
       />
     </Styled(Row)>
   </div>
+  <Styled(CheckoutOrderInfo)
+    isGuest={false}
+    showAccordian={true}
+  />
   <Styled(CheckoutFooter)
     backLinkHandler={[Function]}
     backLinkText=""
@@ -1693,6 +1713,10 @@ exports[`ButtonList component renders correctly without props with isPaymentDisa
   noValidate={true}
   onSubmit={[MockFunction]}
 >
+  <Styled(CheckoutOrderInfo)
+    isGuest={false}
+    showAccordian={true}
+  />
   <Styled(CheckoutFooter)
     backLinkHandler={[Function]}
     backLinkText=""

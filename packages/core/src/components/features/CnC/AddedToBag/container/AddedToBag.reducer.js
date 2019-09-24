@@ -17,6 +17,8 @@ const AddedToBagReducer = (state = initialState, action) => {
       return state.set('isOpenAddedToBag', false);
     case ADDEDTOBAG_CONSTANTS.SET_ADDED_TO_BAG_ERROR:
       return state.set('error', action.payload);
+    case ADDEDTOBAG_CONSTANTS.CLEAR_ADD_TO_BAG_ERROR_STATE:
+      return state.set('error', null);
     default:
       // TODO: currently when initial state is hydrated on browser, List is getting converted to an JS Array
       if (state instanceof Object) {
