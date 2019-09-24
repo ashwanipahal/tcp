@@ -4,11 +4,16 @@ import { BodyCopy } from '@tcp/core/src/components/common/atoms';
 import withStyles from '@tcp/core/src/components/common/hoc/withStyles';
 import styles from '../styles/DetailedEarnExtraPointsTile.style';
 
+/**
+ * This class component use for return the Detailed Earn Extra Points Tiles
+ * can be passed in the component.
+ * @param waysToEarnRow - waysToEarnRow object used for showing extra points details
+ */
 export class DetailedEarnExtraPointsTile extends React.PureComponent {
   static propTypes = {
     labels: PropTypes.shape({}),
     className: PropTypes.string,
-    onClickHandler: PropTypes.func.isRequired,
+    onViewActivityDetails: PropTypes.func.isRequired,
     waysToEarnRow: PropTypes.shape({}),
   };
 
@@ -18,11 +23,21 @@ export class DetailedEarnExtraPointsTile extends React.PureComponent {
     waysToEarnRow: {},
   };
 
+  /**
+   * @function return  Used to render the JSX of the component
+   * @param    {[Void]} function does not accept anything.
+   * @return   {[Object]} JSX of the component
+   */
+
   render() {
-    const { className, waysToEarnRow, onClickHandler } = this.props;
+    const { className, waysToEarnRow, onViewActivityDetails } = this.props;
     return (
       <BodyCopy component="div" className={className}>
-        <BodyCopy component="div" className="tileWrapper" onClick={onClickHandler}>
+        <BodyCopy
+          component="div"
+          className="tileWrapper"
+          onClick={() => onViewActivityDetails(waysToEarnRow)}
+        >
           <BodyCopy component="div" className="earnExtraPointsTileImage">
             <BodyCopy component="div" className={`imageSize ${waysToEarnRow.activityCode}`} />
           </BodyCopy>

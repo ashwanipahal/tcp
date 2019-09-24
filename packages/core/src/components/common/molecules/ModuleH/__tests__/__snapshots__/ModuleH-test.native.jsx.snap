@@ -22,7 +22,7 @@ exports[`ModuleH component renders correctly 1`] = `
         fontWeight="black"
         letterSpacing="ls167"
         locator=""
-        testID="moduleH_header_text_1"
+        testID="moduleH_header_text1"
         text="New arrivals"
         textAlign="left"
       />
@@ -46,7 +46,7 @@ exports[`ModuleH component renders correctly 1`] = `
         fontWeight="black"
         letterSpacing="ls167"
         locator=""
-        testID="moduleH_header_text_2"
+        testID="moduleH_header_text2"
         text="New adventures"
         textAlign="left"
       />
@@ -160,7 +160,9 @@ exports[`ModuleH component renders correctly 1`] = `
     vertical={true}
     width={750}
   />
-  <Styled(View)>
+  <Styled(View)
+    lines={2}
+  >
     <Styled(Anchor)
       accessibilityLabel=""
       anchorVariation=""

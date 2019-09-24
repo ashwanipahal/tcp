@@ -1,6 +1,7 @@
-// @flow
 import React from 'react';
 import { FlatList } from 'react-native';
+import PropTypes from 'prop-types';
+
 import {
   getLocator,
   getScreenWidth,
@@ -19,13 +20,6 @@ import {
   ListContainer,
 } from '../ModuleL.styles.native';
 import config from '../config';
-
-type Props = {
-  imageGrid: Array<Object>,
-  headerText: Array<Object>,
-  navigation: Object,
-  promoBanner: Array<Object>,
-};
 
 /**
  * To enable the anchorIcon.
@@ -101,8 +95,7 @@ const renderItem = (item, navigation) => {
  * Author can surface teaser content leading to corresponding pages.
  */
 
-const ModuleL = (props: Props) => {
-  const { headerText, imageGrid, navigation, promoBanner } = props;
+const ModuleL = ({ headerText, imageGrid, navigation, promoBanner }) => {
   return (
     <Container>
       {headerText && (
@@ -135,6 +128,33 @@ const ModuleL = (props: Props) => {
       </ListContainer>
     </Container>
   );
+};
+
+ModuleL.defaultProps = {
+  promoBanner: [],
+};
+
+ModuleL.propTypes = {
+  headerText: PropTypes.arrayOf(
+    PropTypes.shape({
+      link: PropTypes.object,
+      textItems: PropTypes.array,
+    })
+  ).isRequired,
+  imageGrid: PropTypes.arrayOf(
+    PropTypes.shape({
+      image: PropTypes.object,
+      link: PropTypes.object,
+      styled: PropTypes.object,
+    })
+  ).isRequired,
+  navigation: PropTypes.shape({}).isRequired,
+  promoBanner: PropTypes.arrayOf(
+    PropTypes.shape({
+      link: PropTypes.object,
+      textItems: PropTypes.array,
+    })
+  ),
 };
 
 export default ModuleL;

@@ -2,6 +2,7 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import { Anchor, Heading, BodyCopy, TextItems } from '../../../atoms';
 import withStyles from '../../../hoc/withStyles';
+import errorBoundary from '../../../hoc/withErrorBoundary';
 import LinkTextStyle from '../LinkText.style';
 import { configurePlpNavigationFromCMSUrl } from '../../../../../utils';
 
@@ -92,5 +93,5 @@ LinkText.propTypes = {
   color: PropTypes.string,
 };
 
-export default withStyles(LinkText, LinkTextStyle);
+export default withStyles(errorBoundary(LinkText), LinkTextStyle);
 export { LinkText as VanillaLinkText };

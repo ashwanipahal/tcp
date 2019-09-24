@@ -14,6 +14,7 @@ import AddressFields from '../../../../../../common/molecules/AddressFields';
 import CheckoutFooter from '../../../molecules/CheckoutFooter';
 import utility from '../../../util/utility';
 import CREDIT_CARD_CONSTANTS from '../../BillingPaymentForm/container/CreditCard.constants';
+import CheckoutOrderInfo from '../../../molecules/CheckoutOrderInfoMobile';
 
 class GuestBillingForm extends React.Component {
   static propTypes = {
@@ -33,6 +34,7 @@ class GuestBillingForm extends React.Component {
     backLinkPickup: PropTypes.string,
     handleSubmit: PropTypes.func.isRequired,
     billingData: PropTypes.shape({}),
+    showAccordian: PropTypes.bool,
   };
 
   static defaultProps = {
@@ -49,6 +51,7 @@ class GuestBillingForm extends React.Component {
     nextSubmitText: '',
     backLinkShipping: '',
     backLinkPickup: '',
+    showAccordian: true,
   };
 
   componentDidUpdate(prevProp) {
@@ -83,6 +86,7 @@ class GuestBillingForm extends React.Component {
       backLinkPickup,
       handleSubmit,
       billingData,
+      showAccordian,
     } = this.props;
     let cvvError;
     if (syncErrorsObj) {
@@ -127,6 +131,7 @@ class GuestBillingForm extends React.Component {
             </>
           ) : null}
         </div>
+        <CheckoutOrderInfo isGuest={isGuest} showAccordian={showAccordian} />
         <CheckoutFooter
           hideBackLink
           backLinkHandler={() => utility.routeToPage(CHECKOUT_ROUTES.shippingPage)}

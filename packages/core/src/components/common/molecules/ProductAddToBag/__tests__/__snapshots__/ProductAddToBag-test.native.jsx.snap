@@ -196,6 +196,7 @@ exports[`ProductAddToBagVanilla native should render correctly should match snap
     />
   </Styled(View)>
   <Styled(WithTheme(CustomButton))
+    accessibilityLabel="Add to Bag"
     buttonVariation="variable-width"
     color="white"
     fill="BLUE"

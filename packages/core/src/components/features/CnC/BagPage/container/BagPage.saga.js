@@ -313,6 +313,7 @@ export function* addItemToSFL({
       countryCurrency,
       isCanadaSIte
     );
+    yield put(BAG_PAGE_ACTIONS.setSflData(res.sflItems));
     if (afterHandler) {
       afterHandler();
     }
@@ -324,9 +325,8 @@ export function* addItemToSFL({
       if (userInfoRequired) {
         yield put(getUserInfo());
       }
-      yield put(removeCartItem(itemId));
+      yield put(removeCartItem({ itemId }));
       yield delay(BAGPAGE_CONSTANTS.ITEM_SFL_SUCCESS_MSG_TIMEOUT);
-      yield put(BAG_PAGE_ACTIONS.setCartItemsSFL(false));
     }
   } catch (err) {
     console.log({ err });

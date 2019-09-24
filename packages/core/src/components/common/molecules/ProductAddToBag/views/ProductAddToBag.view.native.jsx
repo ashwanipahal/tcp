@@ -113,6 +113,7 @@ class ProductAddToBag extends React.PureComponent<Props> {
         fontFamily="secondary"
         onPress={addToBagAction}
         locator="pdp_color_swatch"
+        accessibilityLabel="Add to Bag"
       />
     );
   };

@@ -321,6 +321,7 @@ export default css`
   }
   .sflActions {
     text-decoration: underline;
+    cursor: pointer;
   }
   ${props => (props.inheritedStyles ? props.inheritedStyles : '')};
 `;
