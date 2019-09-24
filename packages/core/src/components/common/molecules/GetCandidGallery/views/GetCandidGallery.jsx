@@ -80,7 +80,7 @@ class GetCandidGallery extends React.Component {
     // DOC: https://support.getcandid.com/support/solutions/articles/5000524031-widget-properties
     // Load All js file in following order.
     /*
-     * jsView is required because sometimes when we switch back and forth using client side routing.
+     * wallJs is required because sometimes when we switch back and forth using client side routing,
      * The gallery page breaks because the jsView is not available.
      */
     const allJsFileLoadPromise = ['jquery', 'wallJs', 'getCandid', 'getCandidIsotope'].reduce(
