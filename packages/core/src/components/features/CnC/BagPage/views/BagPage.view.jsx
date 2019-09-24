@@ -9,7 +9,6 @@ import BodyCopy from '../../../../common/atoms/BodyCopy';
 import AddedToBagActions from '../../AddedToBagActions';
 import CnCTemplate from '../../common/organism/CnCTemplate';
 import BAGPAGE_CONSTANTS from '../BagPage.constants';
-import { isClient } from '../../../../../utils';
 import styles, { addedToBagActionsStyles } from '../styles/BagPage.style';
 
 // @flow
@@ -31,16 +30,6 @@ class BagPageView extends React.Component {
     };
   }
 
-  componentDidUpdate() {
-    if (isClient()) {
-      const urlParams = new URLSearchParams(window.location.search);
-      const isSfl = urlParams.get('isSfl');
-      if (isSfl) {
-        document.querySelector('.save-for-later-section-heading').scrollIntoView(true);
-      }
-    }
-  }
-
   renderLeftSection = () => {
     const { labels, sflItems } = this.props;
     const { activeSection } = this.state;
@@ -57,7 +46,7 @@ class BagPageView extends React.Component {
         <div
           className={`save-for-later-section ${
             activeSection === BAGPAGE_CONSTANTS.SFL_STATE ? 'activeSection' : 'inActiveSection'
-          }`}
+          } ${sflItems.size === 0 ? 'hide-on-desktop' : ''}`}
         >
           <BodyCopy
             fontFamily="secondary"

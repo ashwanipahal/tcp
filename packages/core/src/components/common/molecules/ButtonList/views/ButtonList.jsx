@@ -139,8 +139,10 @@ const ButtonList = props => {
   const { compClassName, ctaInfo, compWrapper, noCurveMobile } = buttonListConfig;
 
   let Component = ButtonCTA;
+  let dataLocator = dataLocatorTextCta;
   if (buttonListVariation === 'imageCTAList') {
     Component = ImageTextCTA;
+    dataLocator = dataLocatorDivisionImages;
   }
 
   let hideOnDesktopClassname = '';
@@ -170,10 +172,7 @@ const ButtonList = props => {
           return (
             <Component
               uniqueKey={key}
-              dataLocator={{
-                image: `${dataLocatorDivisionImages}${index}`,
-                cta: `${dataLocatorTextCta}${index}`,
-              }}
+              dataLocator={`${dataLocator}${index}`}
               {...compProps}
               fontWeight="extrabold"
               fontSize="fs13"

@@ -6,6 +6,9 @@ describe.only('RemoveSoldOut Component', () => {
   let component;
   const props = {
     errorMsg: 'This is test error.',
+    labels: {
+      updateUnavailable: 'Please #remove# one or more sold-out from your bag before you checkout',
+    },
   };
 
   beforeEach(() => {

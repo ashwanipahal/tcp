@@ -52,6 +52,8 @@ export const CartItemTileContainer = ({
   setCartItemsSflError,
   sflItemsCount,
   isBagPageSflSection,
+  startSflItemDelete,
+  startSflDataMoveToBag,
 }) => (
   <CartItemTile
     labels={labels}
@@ -78,6 +80,8 @@ export const CartItemTileContainer = ({
     setCartItemsSflError={setCartItemsSflError}
     sflItemsCount={sflItemsCount}
     isBagPageSflSection={isBagPageSflSection}
+    startSflItemDelete={startSflItemDelete}
+    startSflDataMoveToBag={startSflDataMoveToBag}
   />
 );
 export const mapDispatchToProps = (dispatch: ({}) => void) => {
@@ -99,6 +103,12 @@ export const mapDispatchToProps = (dispatch: ({}) => void) => {
     },
     setCartItemsSflError: payload => {
       dispatch(BAG_PAGE_ACTIONS.setCartItemsSflError(payload));
+    },
+    startSflItemDelete: payload => {
+      dispatch(BAG_PAGE_ACTIONS.startSflItemDelete(payload));
+    },
+    startSflDataMoveToBag: payload => {
+      dispatch(BAG_PAGE_ACTIONS.startSflDataMoveToBag(payload));
     },
   };
 };
