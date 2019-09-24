@@ -6,6 +6,8 @@ import style from '../styles/EmptyBagPage.style';
 import { BodyCopy, Button } from '../../../../common/atoms';
 import { getLocator } from '../../../../../utils';
 import ApplyNowModal from '../../../../common/molecules/ApplyNowPLCCModal';
+import utility from '../../Checkout/util/utility';
+import { CHECKOUT_ROUTES } from '../../Checkout/Checkout.constants';
 
 const renderEmptySFL = bagLabels => {
   return (
@@ -56,8 +58,8 @@ const EmptyBagPage = ({ className, isUserLoggedIn, bagLabels, isBagPageSflSectio
               )}
               className="CTA-button"
               onClick={() => {
-                const page = !isUserLoggedIn ? '/us/login' : '/us/home';
-                Router.push(page);
+                const page = !isUserLoggedIn ? CHECKOUT_ROUTES.login : CHECKOUT_ROUTES.home;
+                utility.routeToPage(page);
               }}
             >
               <BodyCopy
