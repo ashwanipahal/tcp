@@ -194,7 +194,7 @@ class ApplyCardLayoutView extends React.PureComponent<Props> {
           </PreScreenCodeContainer>
 
           <StyledBodyCopy
-            text="CONTACT INFORMATION"
+            text={getLabelValue(labels, 'lbl_PLCCForm_contactInfoHeader')}
             fontSize="fs16"
             color="black"
             fontFamily="secondary"
