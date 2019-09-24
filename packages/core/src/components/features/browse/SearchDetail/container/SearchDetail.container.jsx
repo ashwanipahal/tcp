@@ -4,7 +4,6 @@ import { connect } from 'react-redux';
 import { withRouter } from 'next/router'; //eslint-disable-line
 import { getFormValues } from 'redux-form';
 import { PropTypes } from 'prop-types';
-import { isClient } from '../../../../../utils/index';
 import SearchDetail from '../views/SearchDetail.view';
 import { getSlpProducts, getMoreSlpProducts } from './SearchDetail.actions';
 import { getProductsAndTitleBlocks } from '../container/SearchDetail.util';

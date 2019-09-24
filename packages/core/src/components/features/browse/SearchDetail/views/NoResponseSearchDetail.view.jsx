@@ -8,6 +8,7 @@ import withStyles from '../../../../common/hoc/withStyles';
 import SearchListingStyle from '../SearchDetail.style';
 import { Anchor, Row, Col, BodyCopy } from '../../../../common/atoms';
 import { getSearchResult } from '../container/SearchDetail.actions';
+import searchData from '../../../../../../../web/src/components/features/content/Header/molecules/SearchBar/SearchBar.mock';
 import { routerPush } from '../../../../../utils/index';
 
 class NoResponseSearchDetailView extends React.PureComponent {
@@ -137,12 +138,27 @@ class NoResponseSearchDetailView extends React.PureComponent {
               ) : (
                 <div className="matchBox">
                   <div className="matchLinkBox">
-                    <BodyCopy fontFamily="secondary" className="boxHead matchLinkBoxHead">
+                    <BodyCopy
+                      fontFamily="secondary"
+                      className="boxHead matchLinkBoxHead suggestionHide"
+                    >
                       {getLabelValue(labels, 'lbl_search_looking_for')}
                     </BodyCopy>
                     <BodyCopy component="div" className="matchLinkBoxBody" lineHeight="39">
                       <ul>
-                        <li>{slpLabels.lbl_noresults_found}</li>
+                        {searchData.looking.map(item => {
+                          return (
+                            <BodyCopy
+                              component="li"
+                              fontFamily="secondary"
+                              fontSize="fs14"
+                              key={item.id}
+                              className="linkName"
+                            >
+                              {item.text}
+                            </BodyCopy>
+                          );
+                        })}
                       </ul>
                     </BodyCopy>
                   </div>
@@ -152,7 +168,9 @@ class NoResponseSearchDetailView extends React.PureComponent {
                     </BodyCopy>
                     <BodyCopy className="matchProductBody" lineHeight="39" component="div">
                       <ul>
-                        <li>{slpLabels.lbl_noresults_found}</li>
+                        {searchData.products.map(item => {
+                          return <BodyCopy component="li" key={item.id} className="productBox" />;
+                        })}
                       </ul>
                     </BodyCopy>
                   </div>
@@ -227,6 +245,11 @@ NoResponseSearchDetailView.propTypes = {
     })
   ),
   startSearch: PropTypes.func.isRequired,
+  searchResults: PropTypes.shape({
+    trends: PropTypes.shape({}),
+    categories: PropTypes.shape({}),
+    products: PropTypes.shape({}),
+  }),
   labels: PropTypes.shape({
     lbl_search_whats_trending: PropTypes.string,
     lbl_search_recent_search: PropTypes.string,
@@ -240,6 +263,11 @@ NoResponseSearchDetailView.defaultProps = {
   slpLabels: {},
   searchedText: '',
   searchResultSuggestions: [],
+  searchResults: {
+    trends: {},
+    categories: {},
+    products: {},
+  },
   labels: PropTypes.shape({
     lbl_search_whats_trending: '',
     lbl_search_recent_search: '',
@@ -250,6 +278,7 @@ NoResponseSearchDetailView.defaultProps = {
 
 const mapStateToProps = state => {
   return {
+    searchResults: state.Search.searchResults,
     labels: state.Labels.global && state.Labels.global.Search,
   };
 };
@@ -262,7 +291,6 @@ export const mapDispatchToProps = dispatch => {
   };
 };
 
-// export default withStyles(NoResponseSearchDetailView, SearchListingStyle);
 export default connect(
   mapStateToProps,
   mapDispatchToProps
