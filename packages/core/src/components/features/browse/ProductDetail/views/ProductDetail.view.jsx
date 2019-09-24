@@ -35,6 +35,7 @@ const ProductDetailView = ({
   currency,
   productInfo,
   plpLabels,
+  pdpLabels,
 }) => {
   const currentProduct = productDetails && productDetails.get('currentProduct');
   const isWeb =
@@ -77,6 +78,7 @@ const ProductDetailView = ({
             productName={productInfo.name}
             isThumbnailListVisible={isWeb}
             images={imagesToDisplay}
+            pdpLabels={pdpLabels}
             isZoomEnabled
           />
         </Col>
@@ -147,6 +149,7 @@ ProductDetailView.propTypes = {
   productInfo: PRODUCT_INFO_PROP_TYPE_SHAPE,
   longDescription: PropTypes.string,
   breadCrumbs: PropTypes.shape({}),
+  pdpLabels: PropTypes.shape({}),
   currency: PropTypes.string,
   plpLabels: PropTypes.shape({
     lbl_sort: PropTypes.string,
@@ -163,6 +166,7 @@ ProductDetailView.defaultProps = {
     lbl_sort: '',
   },
   productInfo: {},
+  pdpLabels: {},
 };
 
 export default withStyles(ProductDetailView, ProductDetailStyle);

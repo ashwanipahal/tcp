@@ -37,11 +37,10 @@ const socialStyle = css`
     position: absolute;
     z-index: 1000;
     cursor: pointer;
-    width: 215px;
+    width: 230px;
     height: 55px;
     @media ${props => props.theme.mediaQuery.smallOnly} {
-      right: 120px;
-      width: 160px;
+      right: 110px;
     }
   }
   .social-account-icon {

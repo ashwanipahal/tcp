@@ -20,6 +20,7 @@ exports[`ProfileInfoActions should render correctly for empty state 1`] = `
         fontWeight="extrabold"
         letterSpacing="normal"
         lineHeight="normal"
+        link={null}
         textAlign="left"
       />
       <Styled(BodyCopy)
@@ -32,6 +33,7 @@ exports[`ProfileInfoActions should render correctly for empty state 1`] = `
         fontWeight="regular"
         letterSpacing="normal"
         lineHeight="normal"
+        link={null}
         textAlign="left"
       />
     </div>
@@ -165,6 +167,7 @@ exports[`ProfileInfoActions should render correctly for filled state 1`] = `
         fontWeight="extrabold"
         letterSpacing="normal"
         lineHeight="normal"
+        link={null}
         textAlign="left"
       />
       <Styled(BodyCopy)
@@ -176,6 +179,7 @@ exports[`ProfileInfoActions should render correctly for filled state 1`] = `
         fontWeight="regular"
         letterSpacing="normal"
         lineHeight="normal"
+        link={null}
         textAlign="left"
       />
       <Styled(BodyCopy)
@@ -188,6 +192,7 @@ exports[`ProfileInfoActions should render correctly for filled state 1`] = `
         fontWeight="regular"
         letterSpacing="normal"
         lineHeight="normal"
+        link={null}
         textAlign="left"
       />
       <Styled(BodyCopy)
@@ -199,6 +204,7 @@ exports[`ProfileInfoActions should render correctly for filled state 1`] = `
         fontWeight="regular"
         letterSpacing="normal"
         lineHeight="normal"
+        link={null}
         textAlign="left"
       >
         <Styled(Anchor)

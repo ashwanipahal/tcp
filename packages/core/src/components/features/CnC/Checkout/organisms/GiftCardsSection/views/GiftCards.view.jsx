@@ -11,20 +11,24 @@ import ErrorMessage from '../../../../../../common/hoc/ErrorMessage';
 
 import { propTypes, defaultProps, renderAddGiftCardProps } from './GiftCards.view.utils';
 
-const GiftCardSectionHeading = (labels, isGiftCardApplied = false) => {
+const GiftCardSectionHeading = (giftCardList, labels, isGiftCardApplied = false) => {
   return (
-    <BodyCopy
-      fontFamily="secondary"
-      fontSize="fs16"
-      fontWeight="extrabold"
-      data-locator="gift-cards"
-      className="elem-mt-MED"
-    >
-      {getLabelValue(
-        labels,
-        isGiftCardApplied ? 'lbl_giftcard_appliedCards' : 'lbl_giftcard_availableCards'
+    <>
+      {giftCardList && giftCardList.size > 0 && (
+        <BodyCopy
+          fontFamily="secondary"
+          fontSize="fs16"
+          fontWeight="extrabold"
+          data-locator="gift-cards"
+          className="elem-mt-MED"
+        >
+          {getLabelValue(
+            labels,
+            isGiftCardApplied ? 'lbl_giftcard_appliedCards' : 'lbl_giftcard_availableCards'
+          )}
+        </BodyCopy>
       )}
-    </BodyCopy>
+    </>
   );
 };
 
@@ -158,7 +162,7 @@ export const GiftCards = ({
           >
             {getLabelValue(labels, 'lbl_giftcard_addUptoMsg')}
           </BodyCopy>
-          {GiftCardSectionHeading(labels, true)}
+          {GiftCardSectionHeading(appliedGiftCards, labels, true)}
 
           {appliedGiftCards &&
             appliedGiftCards.size > 0 &&
@@ -185,7 +189,7 @@ export const GiftCards = ({
             {`${getLabelValue(labels, 'lbl_giftcard_headsUpMsg')}`}
           </BodyCopy>
 
-          {GiftCardSectionHeading(labels)}
+          {GiftCardSectionHeading(giftCardList, labels)}
           {giftCardList &&
             giftCardList.size > 0 &&
             giftCardList.map(cardData => (

@@ -6,13 +6,14 @@ import {
   getLabelsCartItemTile,
   getIsCartItemsUpdating,
   getIsCartItemsSFL,
+  getIsSflItemRemoved,
 } from '@tcp/core/src/components/features/CnC/CartItemTile/container/CartItemTile.selectors';
 import {
   getUserLoggedInState,
   isPlccUser,
 } from '@tcp/core/src/components/features/account/User/container/User.selectors';
 import BAG_PAGE_ACTIONS from '@tcp/core/src/components/features/CnC/BagPage/container/BagPage.actions';
-import { removeCartItem, updateCartItem } from '../../../container/CartItemTile.actions';
+import { updateCartItem, confirmRemoveCartItem } from '../../../container/CartItemTile.actions';
 import ProductTileWrapper from '../views/ProductTileWrapper.view';
 
 export class ProductTileWrapperContainer extends React.Component {
@@ -34,6 +35,7 @@ const mapStateToProps = state => {
     isPlcc: isPlccUser(state),
     isCartItemsUpdating: getIsCartItemsUpdating(state),
     isCartItemSFL: getIsCartItemsSFL(state),
+    isSflItemRemoved: getIsSflItemRemoved(state),
   };
 };
 export const mapDispatchToProps = dispatch => {
@@ -41,8 +43,8 @@ export const mapDispatchToProps = dispatch => {
     initialActions: () => {
       dispatch(BAG_PAGE_ACTIONS.getOrderDetails());
     },
-    removeCartItem: orderItemId => {
-      dispatch(removeCartItem(orderItemId));
+    confirmRemoveCartItem: orderItemId => {
+      dispatch(confirmRemoveCartItem(orderItemId));
     },
     updateCartItem: (itemId, skuId, quantity, itemPartNumber, variantNo) => {
       dispatch(updateCartItem({ itemId, skuId, quantity, itemPartNumber, variantNo }));

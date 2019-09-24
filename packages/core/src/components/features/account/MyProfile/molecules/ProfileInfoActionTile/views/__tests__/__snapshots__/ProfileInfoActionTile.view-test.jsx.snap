@@ -18,6 +18,7 @@ exports[`ProfileInfoActionTile should render correctly 1`] = `
     fontWeight="regular"
     letterSpacing="normal"
     lineHeight="normal"
+    link={null}
     textAlign="center"
   >
     <Styled(Image)
@@ -37,6 +38,7 @@ exports[`ProfileInfoActionTile should render correctly 1`] = `
     fontWeight="regular"
     letterSpacing="normal"
     lineHeight="normal"
+    link={null}
     textAlign="left"
   >
     <Styled(BodyCopy)
@@ -49,6 +51,7 @@ exports[`ProfileInfoActionTile should render correctly 1`] = `
       fontWeight="extrabold"
       letterSpacing="normal"
       lineHeight="normal"
+      link={null}
       textAlign="center"
     >
       test
@@ -63,6 +66,7 @@ exports[`ProfileInfoActionTile should render correctly 1`] = `
       fontWeight="regular"
       letterSpacing="normal"
       lineHeight="lh107"
+      link={null}
       textAlign="center"
     >
       test
@@ -96,6 +100,7 @@ exports[`ProfileInfoActionTile should render correctly when activityCompletionSt
     fontWeight="regular"
     letterSpacing="normal"
     lineHeight="normal"
+    link={null}
     textAlign="center"
   >
     <Styled(Image)
@@ -115,6 +120,7 @@ exports[`ProfileInfoActionTile should render correctly when activityCompletionSt
     fontWeight="regular"
     letterSpacing="normal"
     lineHeight="normal"
+    link={null}
     textAlign="left"
   >
     <Styled(BodyCopy)
@@ -127,6 +133,7 @@ exports[`ProfileInfoActionTile should render correctly when activityCompletionSt
       fontWeight="extrabold"
       letterSpacing="normal"
       lineHeight="normal"
+      link={null}
       textAlign="center"
     >
       added
@@ -141,6 +148,7 @@ exports[`ProfileInfoActionTile should render correctly when activityCompletionSt
       fontWeight="regular"
       letterSpacing="normal"
       lineHeight="lh107"
+      link={null}
       textAlign="center"
     >
       test

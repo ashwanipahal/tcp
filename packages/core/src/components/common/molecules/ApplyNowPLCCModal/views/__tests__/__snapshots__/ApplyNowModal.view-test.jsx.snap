@@ -228,6 +228,7 @@ exports[`ApplyNowModalWrapper component should renders correctly 1`] = `
           fontWeight="regular"
           letterSpacing="normal"
           lineHeight="normal"
+          link={null}
           textAlign="center"
         >
           lbl_PLCCModal_applyNowSubText
@@ -308,6 +309,7 @@ exports[`ApplyNowModalWrapper component should renders correctly 1`] = `
       fontWeight="black"
       letterSpacing="normal"
       lineHeight="normal"
+      link={null}
       textAlign="center"
     >
       lbl_PLCCModal_benefitsText
@@ -327,6 +329,7 @@ exports[`ApplyNowModalWrapper component should renders correctly 1`] = `
         fontWeight="regular"
         letterSpacing="normal"
         lineHeight="normal"
+        link={null}
         textAlign="left"
       >
         lbl_PLCCModal_linksTextPrefix

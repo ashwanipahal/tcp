@@ -21,6 +21,7 @@ exports[`Bag page Container should render modal when open true 1`] = `
       fontWeight="normal"
       letterSpacing="normal"
       lineHeight="normal"
+      link={null}
       textAlign="left"
     />
     <div
@@ -46,6 +47,7 @@ exports[`Bag page Container should render modal when open true 1`] = `
           fontWeight="extrabold"
           letterSpacing="normal"
           lineHeight="normal"
+          link={null}
           onClick={[Function]}
           textAlign="left"
         />
@@ -70,6 +72,7 @@ exports[`Bag page Container should render modal when open true 1`] = `
           fontWeight="extrabold"
           letterSpacing="normal"
           lineHeight="normal"
+          link={null}
           onClick={[Function]}
           textAlign="left"
         />
@@ -100,6 +103,7 @@ exports[`Bag page Container should render no modal when isOpen is false 1`] = `
       fontWeight="normal"
       letterSpacing="normal"
       lineHeight="normal"
+      link={null}
       textAlign="left"
     />
     <div
@@ -125,6 +129,7 @@ exports[`Bag page Container should render no modal when isOpen is false 1`] = `
           fontWeight="extrabold"
           letterSpacing="normal"
           lineHeight="normal"
+          link={null}
           onClick={[Function]}
           textAlign="left"
         />
@@ -149,6 +154,7 @@ exports[`Bag page Container should render no modal when isOpen is false 1`] = `
           fontWeight="extrabold"
           letterSpacing="normal"
           lineHeight="normal"
+          link={null}
           onClick={[Function]}
           textAlign="left"
         />

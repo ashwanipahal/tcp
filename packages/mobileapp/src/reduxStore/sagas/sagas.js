@@ -41,6 +41,7 @@ import MailingAddressSaga from '@tcp/core/src/components/features/account/MyProf
 import MyFavoriteStoreSaga from '@tcp/core/src/components/features/account/MyProfile/organism/MyFavoriteStore/container/MyFavoriteStore.saga';
 import SearchPageSaga from '@tcp/core/src/components/features/browse/SearchDetail/container/SearchDetail.saga';
 import BirthdaySavingsSaga from '@tcp/core/src/components/features/account/common/organism/BirthdaySavingsList/container/BirthdaySavingsList.saga';
+import PointsClaimSaga from '@tcp/core/src/components/features/account/PointsClaim/container/PointsClaim.saga';
 import HomePageSaga from '../../components/features/content/HomePage/container/HomePage.saga';
 
 export default function* rootSaga() {
@@ -88,5 +89,6 @@ export default function* rootSaga() {
     MyFavoriteStoreSaga(),
     BirthdaySavingsSaga(),
     QuickViewSaga(),
+    PointsClaimSaga(),
   ]);
 }

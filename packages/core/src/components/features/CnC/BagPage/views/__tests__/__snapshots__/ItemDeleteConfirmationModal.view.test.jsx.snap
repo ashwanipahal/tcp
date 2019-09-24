@@ -22,6 +22,7 @@ exports[`ItemDeleteConfirmation Modal should render modal when open true 1`] = `
       fontWeight="extrabold"
       letterSpacing="normal"
       lineHeight="normal"
+      link={null}
       textAlign="left"
     />
     <Styled(BodyCopy)
@@ -29,10 +30,11 @@ exports[`ItemDeleteConfirmation Modal should render modal when open true 1`] = `
       color="text.primary"
       component="span"
       fontFamily="secondary"
-      fontSize="fs16"
+      fontSize="fs14"
       fontWeight="normal"
       letterSpacing="normal"
       lineHeight="normal"
+      link={null}
       textAlign="left"
     />
     <div
@@ -57,6 +59,7 @@ exports[`ItemDeleteConfirmation Modal should render modal when open true 1`] = `
           fontWeight="extrabold"
           letterSpacing="normal"
           lineHeight="normal"
+          link={null}
           textAlign="left"
         />
       </Styled(Button)>
@@ -79,6 +82,7 @@ exports[`ItemDeleteConfirmation Modal should render modal when open true 1`] = `
           fontWeight="extrabold"
           letterSpacing="normal"
           lineHeight="normal"
+          link={null}
           textAlign="left"
         />
       </Styled(Button)>
@@ -109,6 +113,7 @@ exports[`ItemDeleteConfirmation Modal should render no modal when isOpen is fals
       fontWeight="extrabold"
       letterSpacing="normal"
       lineHeight="normal"
+      link={null}
       textAlign="left"
     />
     <Styled(BodyCopy)
@@ -116,10 +121,11 @@ exports[`ItemDeleteConfirmation Modal should render no modal when isOpen is fals
       color="text.primary"
       component="span"
       fontFamily="secondary"
-      fontSize="fs16"
+      fontSize="fs14"
       fontWeight="normal"
       letterSpacing="normal"
       lineHeight="normal"
+      link={null}
       textAlign="left"
     />
     <div
@@ -144,6 +150,7 @@ exports[`ItemDeleteConfirmation Modal should render no modal when isOpen is fals
           fontWeight="extrabold"
           letterSpacing="normal"
           lineHeight="normal"
+          link={null}
           textAlign="left"
         />
       </Styled(Button)>
@@ -166,6 +173,7 @@ exports[`ItemDeleteConfirmation Modal should render no modal when isOpen is fals
           fontWeight="extrabold"
           letterSpacing="normal"
           lineHeight="normal"
+          link={null}
           textAlign="left"
         />
       </Styled(Button)>

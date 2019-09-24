@@ -1,4 +1,5 @@
 import { getLabelValue } from '@tcp/core/src/utils';
+import CARTPAGE_CONSTANTS from '../CartItemTile.constants';
 
 export const getCartOrderList = state => {
   // needs to do it with get method.
@@ -133,6 +134,10 @@ export const getIsCartItemsSFL = state => {
   return state.CartPageReducer.getIn(['uiFlags', 'isItemMovedToSflList']);
 };
 
+export const getIsSflItemRemoved = state => {
+  return state.CartPageReducer.getIn(['uiFlags', 'isSflItemDeleted']);
+};
+
 export const getLabelsCartItemTile = state => {
   const {
     global: {
@@ -186,6 +191,12 @@ export const getLabelsCartItemTile = state => {
     'checkout'
   );
   const sflSuccess = getLabelValue(state.Labels, 'bl_sfl_actionSuccess', 'bagPage', 'checkout');
+  const sflDeleteSuccess = getLabelValue(
+    state.Labels,
+    'lbl_sfl_itemDeleteSuccess',
+    'bagPage',
+    'checkout'
+  );
   const itemDeleted = getLabelValue(
     state.Labels,
     'lbl_msg_itemDeleteSuccess',
@@ -238,6 +249,8 @@ export const getLabelsCartItemTile = state => {
     moveToBagLink,
     itemDeleted,
     sflSuccess,
+    sflDeleteSuccess,
+    removeError: getLabelValue(state.Labels, 'lbl_minibag_errorRemove', 'minibag', 'global'),
   };
 };
 
@@ -276,4 +289,22 @@ export const getProductDetails = tile => {
       availability: getProductAvailability(tile),
     },
   };
+};
+
+export const getBossBopisFlags = state => {
+  return {
+    isBOSSEnabled_TCP: state.session.getIn(['siteDetails', 'isBOSSEnabled_TCP']),
+    isBOPISEnabled_TCP: state.session.getIn(['siteDetails', 'isBOPISEnabled_TCP']),
+    isBOPISEnabled_GYM: state.session.getIn(['siteDetails', 'isBOPISEnabled_GYM']),
+    isBOSSEnabled_GYM: state.session.getIn(['siteDetails', 'isBOSSEnabled_GYM']),
+  };
+};
+
+export const isItemBossBopisInEligible = (state, { itemBrand, orderItemType } = {}) => {
+  const bossBopisFlags = getBossBopisFlags(state);
+  const flagName = `is${orderItemType}Enabled_${itemBrand}`;
+  return (
+    (orderItemType === CARTPAGE_CONSTANTS.BOSS || orderItemType === CARTPAGE_CONSTANTS.BOPIS) &&
+    !bossBopisFlags[flagName]
+  );
 };

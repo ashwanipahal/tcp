@@ -14,6 +14,7 @@ import {
   getCurrentCurrency,
   getPlpLabels,
   getCurrentProduct,
+  getPDPLabels,
 } from './ProductDetail.selectors';
 
 class ProductListingContainer extends React.PureComponent {
@@ -36,6 +37,7 @@ class ProductListingContainer extends React.PureComponent {
     }
 
     getDetails({ productColorId: productId });
+    window.scrollTo(0, 100);
   }
 
   render() {
@@ -48,6 +50,7 @@ class ProductListingContainer extends React.PureComponent {
       productInfo,
       currency,
       plpLabels,
+      pdpLabels,
       ...otherProps
     } = this.props;
     return (
@@ -59,6 +62,7 @@ class ProductListingContainer extends React.PureComponent {
         otherProps={otherProps}
         defaultImage={defaultImage}
         plpLabels={plpLabels}
+        pdpLabels={pdpLabels}
         currency={currency}
         productInfo={productInfo}
       />
@@ -78,6 +82,7 @@ function mapStateToProps(state) {
     productInfo: getCurrentProduct(state),
     currency: getCurrentCurrency(state),
     plpLabels: getPlpLabels(state),
+    pdpLabels: getPDPLabels(state),
   };
 }
 
@@ -94,6 +99,7 @@ ProductListingContainer.propTypes = {
   getDetails: PropTypes.func.isRequired,
   productInfo: PropTypes.arrayOf(PropTypes.shape({})),
   breadCrumbs: PropTypes.shape({}),
+  pdpLabels: PropTypes.shape({}),
   longDescription: PropTypes.string,
   ratingsProductId: PropTypes.string,
   router: PropTypes.shape({
@@ -119,6 +125,7 @@ ProductListingContainer.defaultProps = {
   plpLabels: {
     lbl_sort: '',
   },
+  pdpLabels: {},
 };
 
 export default withRouter(
