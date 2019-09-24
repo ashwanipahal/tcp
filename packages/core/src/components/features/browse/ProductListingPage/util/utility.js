@@ -90,7 +90,7 @@ export function getMapSliceForFit(colorFitsSizesMap, colorName, fitName) {
     return;
   }
   if (currentColorEntry.hasFits) {
-    return currentColorEntry.fits.find(entry => entry.fitName === fitName);
+    return currentColorEntry.fits.find(entry => entry.fitNameVal === fitName);
   } else {
     return currentColorEntry.fits[0];
   }

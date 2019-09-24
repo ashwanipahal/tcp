@@ -15,23 +15,6 @@ import withStyles from '../../../hoc/withStyles';
 import { Button, Anchor, BodyCopy } from '../../../atoms';
 import ProductPickupStyles from '../styles/ProductPickup.style';
 
-const labels = {
-  CHANGE_STORE: '(Change Store)',
-  PRODUCT_PICKUP: {
-    TITLE_DEFAULT_NOSTORE: 'Select Store',
-    PRODUCT_BOPIS: 'Buy online - Pick up in store',
-    BOPIS_AVAILABLE: 'Pick up TODAY!',
-    BOPIS_ONLY_AVAILABLE: 'Item available for pickup TODAY',
-    BOSS_AVAILABLE: 'Or choose NO RUSH Pickup ',
-    BOSS_ONLY_AVAILABLE: 'Choose NO RUSH Pickup ',
-    PICKUP_IN_STORE: 'PICK UP IN STORE',
-  },
-  SPACE_ONE: ' ',
-  FREE_SHIPPING: 'FREE Shipping Every Day!',
-  NO_MIN_PURCHASE: 'No Minimum Purchase Required.',
-  FIND_STORE: 'FIND A STORE',
-};
-
 const KEY_CODES = {
   ENTER: 13,
 };
@@ -104,7 +87,6 @@ export const PRODUCT_INFO_PROP_TYPE_SHAPE = PropTypes.shape(PRODUCT_INFO_PROP_TY
 class ProductPickup extends React.PureComponent {
   static propTypes = {
     miscInfo: PropTypes.shape({}),
-    offerEspotAvailable: PropTypes.bool,
     className: PropTypes.string,
 
     /**
@@ -134,9 +116,9 @@ class ProductPickup extends React.PureComponent {
      */
     itemValues: PropTypes.shape({
       color: PropTypes.string.isRequired,
-      fit: PropTypes.string,
-      size: PropTypes.string,
-      quantity: PropTypes.number,
+      Fit: PropTypes.string,
+      Size: PropTypes.string,
+      Quantity: PropTypes.number,
     }),
 
     /**
@@ -157,6 +139,21 @@ class ProductPickup extends React.PureComponent {
     showPickupDetails: PropTypes.bool,
     showPickupInfo: PropTypes.bool,
     isSubmitting: PropTypes.bool,
+    labels: PropTypes.shape({
+      lbl_Product_pickup_BOPIS_AVAILABLE: PropTypes.string,
+      lbl_Product_pickup_BOPIS_DISABLED_FITS_HUSKY: PropTypes.string,
+      lbl_Product_pickup_BOPIS_DISABLED_FITS_PLUS: PropTypes.string,
+      lbl_Product_pickup_BOPIS_DISABLED_FITS_SLIM: PropTypes.string,
+      lbl_Product_pickup_BOPIS_ONLY_AVAILABLE: PropTypes.string,
+      lbl_Product_pickup_BOSS_AVAILABLE: PropTypes.string,
+      lbl_Product_pickup_BOSS_ONLY_AVAILABLE: PropTypes.string,
+      lbl_Product_pickup_FIND_STORE: PropTypes.string,
+      lbl_Product_pickup_FREE_SHIPPING: PropTypes.string,
+      lbl_Product_pickup_NO_MIN_PURCHASE: PropTypes.string,
+      lbl_Product_pickup_PICKUP_IN_STORE: PropTypes.string,
+      lbl_Product_pickup_PRODUCT_BOPIS: PropTypes.string,
+      lbl_Product_pickup_TITLE_DEFAULT_NOSTORE: PropTypes.string,
+    }),
   };
 
   static defaultProps = {
@@ -173,13 +170,12 @@ class ProductPickup extends React.PureComponent {
     },
     itemValues: {
       color: '',
-      fit: '',
-      size: '',
-      quantity: null,
+      Fit: '',
+      Size: '',
+      Quantity: null,
     },
     onPickUpOpenClick: null,
     bopisItemInventory: [],
-    offerEspotAvailable: false,
     className: '',
     isBopisEligible: false,
     isBossEligible: false,
@@ -191,6 +187,21 @@ class ProductPickup extends React.PureComponent {
     showPickupDetails: false,
     showPickupInfo: false,
     isSubmitting: false,
+    labels: {
+      lbl_Product_pickup_BOPIS_AVAILABLE: 'Pick up TODAY!',
+      lbl_Product_pickup_BOPIS_DISABLED_FITS_HUSKY: 'husky',
+      lbl_Product_pickup_BOPIS_DISABLED_FITS_PLUS: 'plus',
+      lbl_Product_pickup_BOPIS_DISABLED_FITS_SLIM: 'slim',
+      lbl_Product_pickup_BOPIS_ONLY_AVAILABLE: 'Item available for pickup TODAY',
+      lbl_Product_pickup_BOSS_AVAILABLE: 'Or choose NO RUSH Pickup ',
+      lbl_Product_pickup_BOSS_ONLY_AVAILABLE: 'Choose NO RUSH Pickup ',
+      lbl_Product_pickup_FIND_STORE: 'FIND A STORE',
+      lbl_Product_pickup_FREE_SHIPPING: 'FREE Shipping Every Day!',
+      lbl_Product_pickup_NO_MIN_PURCHASE: 'No Minimum Purchase Required.',
+      lbl_Product_pickup_PICKUP_IN_STORE: 'PICK UP IN STORE',
+      lbl_Product_pickup_PRODUCT_BOPIS: 'Buy online - Pick up in store',
+      lbl_Product_pickup_TITLE_DEFAULT_NOSTORE: 'Select Store',
+    },
   };
 
   /**
@@ -238,6 +249,7 @@ class ProductPickup extends React.PureComponent {
       pickupTitleText,
       userDefaultStore,
       isBossEligBossInvAvail,
+      labels,
     } = this.props;
     if (isSkuResolved) {
       if (userDefaultStore) {
@@ -266,14 +278,14 @@ class ProductPickup extends React.PureComponent {
                 onClick={this.handlePickupModalClick}
                 underline
               >
-                {labels.CHANGE_STORE}
+                {labels.lbl_Product_pickup_CHANGE_STORE}
               </Anchor>
             </React.Fragment>
           );
         }
         return (
           <BodyCopy fontSize="fs16" fontWeight="semibold" fontFamily="secondary">
-            {labels.PRODUCT_PICKUP.TITLE_DEFAULT_NOSTORE}
+            {labels.lbl_Product_pickup_TITLE_DEFAULT_NOSTORE}
           </BodyCopy>
         );
       }
@@ -328,18 +340,18 @@ class ProductPickup extends React.PureComponent {
   renderPickupInfo() {
     const {
       bopisItemInventory,
-      offerEspotAvailable,
       isStoreBopisEligible,
       showPickupDetails,
       isBopisEligible,
+      labels,
     } = this.props;
-
     if (showPickupDetails) {
       return (
         <div className="pickup-info">
           {isStoreBopisEligible && (
             <BodyCopy fontSize="fs12" fontFamily="secondary">
               <BodyCopy
+                fontSize="fs12"
                 className="availability"
                 fontWeight="extrabold"
                 fontFamily="secondary"
@@ -347,9 +359,8 @@ class ProductPickup extends React.PureComponent {
                 component="span"
               >
                 {`${bopisItemInventory[0].status}!`}
-                {labels.SPACE_ONE}
               </BodyCopy>
-              {labels.PRODUCT_PICKUP.BOPIS_AVAILABLE}
+              {labels.lbl_Product_pickup_BOPIS_AVAILABLE}
             </BodyCopy>
           )}
           <BodyCopy
@@ -359,11 +370,8 @@ class ProductPickup extends React.PureComponent {
             component="span"
           >
             {isStoreBopisEligible
-              ? labels.PRODUCT_PICKUP.BOSS_AVAILABLE
-              : labels.PRODUCT_PICKUP.BOSS_ONLY_AVAILABLE}
-            {labels.SPACE_ONE}
-            {offerEspotAvailable && 'and'}
-            {labels.SPACE_ONE}
+              ? labels.lbl_Product_pickup_BOSS_AVAILABLE
+              : labels.lbl_Product_pickup_BOSS_ONLY_AVAILABLE}
           </BodyCopy>
           {/* <ContentSlot className="pickup-espot" contentSlotName="fav_store_pickup_content" /> */}
         </div>
@@ -372,31 +380,34 @@ class ProductPickup extends React.PureComponent {
     if (isBopisEligible) {
       return (
         isStoreBopisEligible && (
-          <BodyCopy className="pickup-info">
-            <span className="availability">
+          <BodyCopy className="pickup-info" fontSize="fs12" fontFamily="secondary">
+            <BodyCopy
+              fontSize="fs12"
+              className="availability"
+              fontWeight="extrabold"
+              fontFamily="secondary"
+              color="success"
+              component="span"
+            >
               {`${bopisItemInventory[0].status}!`}
-              {labels.SPACE_ONE}
-            </span>
-            {labels.PRODUCT_PICKUP.BOPIS_ONLY_AVAILABLE}
+            </BodyCopy>
+            {labels.lbl_Product_pickup_BOPIS_ONLY_AVAILABLE}
           </BodyCopy>
         )
       );
     }
     return (
       <div className="pickup-info">
-        <p className="pickup-boss-info">
-          {labels.PRODUCT_PICKUP.BOSS_ONLY_AVAILABLE}
-          {labels.SPACE_ONE}
-          {offerEspotAvailable && 'and'}
-          {labels.SPACE_ONE}
-        </p>
+        <BodyCopy className="pickup-boss-info">
+          {labels.lbl_Product_pickup_BOSS_ONLY_AVAILABLE}
+        </BodyCopy>
         {/* <ContentSlot className="pickup-espot" contentSlotName="no_fav_pickup_content" /> */}
       </div>
     );
   }
 
   render() {
-    const { className, showPickupInfo, isSubmitting } = this.props;
+    const { className, showPickupInfo, isSubmitting, labels } = this.props;
 
     return (
       <React.Fragment>
@@ -416,10 +427,10 @@ class ProductPickup extends React.PureComponent {
                     fontFamily="secondary"
                     component="span"
                   >
-                    {labels.FREE_SHIPPING}
+                    {labels.lbl_Product_pickup_FREE_SHIPPING}
                   </BodyCopy>
                   <BodyCopy fontSize="fs12" fontFamily="secondary" className="sub-header-pickup">
-                    {labels.NO_MIN_PURCHASE}
+                    {labels.lbl_Product_pickup_NO_MIN_PURCHASE}
                   </BodyCopy>
                 </div>
               </div>
@@ -445,7 +456,9 @@ class ProductPickup extends React.PureComponent {
                 disabled={isSubmitting}
                 onClick={this.handlePickupModalClick}
               >
-                {showPickupInfo ? labels.PRODUCT_PICKUP.PICKUP_IN_STORE : labels.FIND_STORE}
+                {showPickupInfo
+                  ? labels.lbl_Product_pickup_PICKUP_IN_STORE
+                  : labels.lbl_Product_pickup_FIND_STORE}
               </Button>
             </div>
           </div>

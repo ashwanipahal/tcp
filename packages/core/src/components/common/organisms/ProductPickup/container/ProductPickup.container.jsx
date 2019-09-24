@@ -25,23 +25,6 @@ import {
   PRICING_PROP_TYPES,
 } from '../../PickupStoreModal/PickUpStoreModal.proptypes';
 
-const labels = {
-  CHANGE_STORE: '(Change Store)',
-  PRODUCT_PICKUP: {
-    TITLE_DEFAULT_NOSTORE: 'Select Store',
-    PRODUCT_BOPIS: 'Buy online - Pick up in store',
-    BOPIS_AVAILABLE: 'Pick up TODAY!',
-    BOPIS_ONLY_AVAILABLE: 'Item available for pickup TODAY',
-    BOSS_AVAILABLE: 'Or choose NO RUSH Pickup ',
-    BOSS_ONLY_AVAILABLE: 'Choose NO RUSH Pickup ',
-    PICKUP_IN_STORE: 'PICK UP IN STORE',
-  },
-  SPACE_ONE: ' ',
-  FREE_SHIPPING: 'FREE Shipping Every Day!',
-  NO_MIN_PURCHASE: 'No Minimum Purchase Required.',
-  FIND_STORE: 'FIND A STORE',
-};
-
 /**
  *  Describes a general product, not yet specialized by chosing a color, size, etc.
  *  For example, a product shown in reccomendations, or PDP.
@@ -157,6 +140,21 @@ class ProductPickupContainer extends React.PureComponent {
     getBopisInventoryDetails: PropTypes.func.isRequired,
     getGeoDefaultStore: PropTypes.func,
     isRadialInventoryEnabled: PropTypes.bool,
+    labels: PropTypes.shape({
+      lbl_Product_pickup_BOPIS_AVAILABLE: PropTypes.string,
+      lbl_Product_pickup_BOPIS_DISABLED_FITS_HUSKY: PropTypes.string,
+      lbl_Product_pickup_BOPIS_DISABLED_FITS_PLUS: PropTypes.string,
+      lbl_Product_pickup_BOPIS_DISABLED_FITS_SLIM: PropTypes.string,
+      lbl_Product_pickup_BOPIS_ONLY_AVAILABLE: PropTypes.string,
+      lbl_Product_pickup_BOSS_AVAILABLE: PropTypes.string,
+      lbl_Product_pickup_BOSS_ONLY_AVAILABLE: PropTypes.string,
+      lbl_Product_pickup_FIND_STORE: PropTypes.string,
+      lbl_Product_pickup_FREE_SHIPPING: PropTypes.string,
+      lbl_Product_pickup_NO_MIN_PURCHASE: PropTypes.string,
+      lbl_Product_pickup_PICKUP_IN_STORE: PropTypes.string,
+      lbl_Product_pickup_PRODUCT_BOPIS: PropTypes.string,
+      lbl_Product_pickup_TITLE_DEFAULT_NOSTORE: PropTypes.string,
+    }),
   };
 
   static defaultProps = {
@@ -185,6 +183,21 @@ class ProductPickupContainer extends React.PureComponent {
     isBossClearanceProductEnabled: false,
     getGeoDefaultStore: () => {},
     isRadialInventoryEnabled: false,
+    labels: {
+      lbl_Product_pickup_BOPIS_AVAILABLE: 'Pick up TODAY!',
+      lbl_Product_pickup_BOPIS_DISABLED_FITS_HUSKY: 'husky',
+      lbl_Product_pickup_BOPIS_DISABLED_FITS_PLUS: 'plus',
+      lbl_Product_pickup_BOPIS_DISABLED_FITS_SLIM: 'slim',
+      lbl_Product_pickup_BOPIS_ONLY_AVAILABLE: 'Item available for pickup TODAY',
+      lbl_Product_pickup_BOSS_AVAILABLE: 'Or choose NO RUSH Pickup ',
+      lbl_Product_pickup_BOSS_ONLY_AVAILABLE: 'Choose NO RUSH Pickup ',
+      lbl_Product_pickup_FIND_STORE: 'FIND A STORE',
+      lbl_Product_pickup_FREE_SHIPPING: 'FREE Shipping Every Day!',
+      lbl_Product_pickup_NO_MIN_PURCHASE: 'No Minimum Purchase Required.',
+      lbl_Product_pickup_PICKUP_IN_STORE: 'PICK UP IN STORE',
+      lbl_Product_pickup_PRODUCT_BOPIS: 'Buy online - Pick up in store',
+      lbl_Product_pickup_TITLE_DEFAULT_NOSTORE: 'Select Store',
+    },
   };
 
   constructor(props, context) {
@@ -230,14 +243,14 @@ class ProductPickupContainer extends React.PureComponent {
       const itemPartNumber = getVariantId(
         productInfo.colorFitsSizesMap,
         itemValues.color,
-        itemValues.fit,
-        itemValues.size
+        itemValues.Fit.name,
+        itemValues.Size.name
       );
       const currentSizeEntry = getMapSliceForSize(
         productInfo.colorFitsSizesMap,
         itemValues.color,
-        itemValues.fit,
-        itemValues.size
+        itemValues.Fit.name,
+        itemValues.Size.name
       );
       const variantNo =
         currentSizeEntry && currentSizeEntry.variantNo ? currentSizeEntry.variantNo : null;
@@ -280,7 +293,13 @@ class ProductPickupContainer extends React.PureComponent {
    * default store
    */
   setPickupTitle() {
-    const { userDefaultStore, productInfo, itemValues, isRadialInventoryEnabled } = this.props;
+    const {
+      userDefaultStore,
+      productInfo,
+      itemValues,
+      isRadialInventoryEnabled,
+      labels,
+    } = this.props;
 
     let isStoreBossEligible = false;
     if (userDefaultStore) {
@@ -299,14 +318,13 @@ class ProductPickupContainer extends React.PureComponent {
       isbossInventoryAvailable
     );
     let showChangeStore = false;
-    let pickupTitleText = labels.PRODUCT_PICKUP.TITLE_DEFAULT_NOSTORE;
+    let pickupTitleText = labels.lbl_Product_pickup_TITLE_DEFAULT_NOSTORE;
     if (this.isSkuResolved) {
       if (userDefaultStore) {
         if (isBossEligBossInvAvail || this.isBopisEligible) {
           showChangeStore = true;
-          pickupTitleText = labels.CHANGE_STORE;
         }
-        pickupTitleText = labels.PRODUCT_PICKUP.TITLE_DEFAULT_NOSTORE;
+        pickupTitleText = labels.lbl_Product_pickup_TITLE_DEFAULT_NOSTORE;
       }
       if (this.isBopisEligible && !isBossEligBossInvAvail) {
         // bopis only
@@ -314,9 +332,9 @@ class ProductPickupContainer extends React.PureComponent {
          * @returns if the product is only bopis eligible and the sku is resolved
          * then it @returns {labels.PRODUCT_BOPIS}
          */
-        pickupTitleText = labels.PRODUCT_PICKUP.PRODUCT_BOPIS;
+        pickupTitleText = labels.lbl_Product_pickup_PRODUCT_BOPIS;
       }
-      pickupTitleText = labels.PRODUCT_PICKUP.TITLE_DEFAULT_NOSTORE;
+      pickupTitleText = labels.lbl_Product_pickup_TITLE_DEFAULT_NOSTORE;
     }
 
     return { showChangeStore, pickupTitleText, isBossEligBossInvAvail };
@@ -425,6 +443,7 @@ class ProductPickupContainer extends React.PureComponent {
       itemValues,
       bopisItemInventory,
       onPickUpOpenClick,
+      labels,
     } = this.props;
 
     if (this.noBossBopisInfo()) {
@@ -453,6 +472,7 @@ class ProductPickupContainer extends React.PureComponent {
 
     return (
       <ProductPickup
+        labels={labels}
         getBopisInventoryDetails={getBopisInventoryDetails}
         itemValues={itemValues}
         onPickUpOpenClick={onPickUpOpenClick}
@@ -490,6 +510,7 @@ function mapStateToProps(state, ownProps) {
   // const userDefaultStore = null;
 
   return {
+    labels: PickupSelectors.getLabels(state),
     itemValues: selector(state, 'color', 'Fit', 'Size', 'Quantity'),
     isBopisEnabled: PickupSelectors.getIsBopisEnabled(state),
     isBossEnabled: PickupSelectors.getIsBossEnabled(state),
@@ -634,9 +655,14 @@ function mapStateToProps(state, ownProps) {
     // TODO - check if required => userGeoCoordinates: userStoreView.getUserGeoCoordinates(state),
     // TODO - check if required => getGeoDefaultStore: storeOperators.storesOperator.loadDefaultStore,
     disabledFits: PickupSelectors.getBopisDisabledFits(state),
-    bopisItemInventory: PickupSelectors.getBopisItemInventory(state),
+    // bopisItemInventory: PickupSelectors.getBopisItemInventory(state),
     // TODO - This changes to CMS data - offerEspotAvailable: offerEspot && offerEspot.value,
     // isRadialInventoryEnabled: PickupSelectors.getIsRadialInventoryEnabled(state),
+    bopisItemInventory: [
+      {
+        status: 'Limited',
+      },
+    ],
     isRadialInventoryEnabled: true,
   };
 }

@@ -51,3 +51,7 @@ export const getIsRadialInventoryEnabled = state => {
 export const getBopisDisabledFits = () => {
   return BOPIS_DISABLED_FITS;
 };
+
+export const getLabels = state => {
+  return state.Labels && state.Labels.Browse && state.Labels.Browse.ProductPickup;
+};
