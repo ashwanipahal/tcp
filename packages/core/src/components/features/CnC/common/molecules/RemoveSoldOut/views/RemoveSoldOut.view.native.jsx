@@ -10,7 +10,7 @@ class RemoveSoldOut extends React.PureComponent {
       <BodyCopy
         fontFamily="secondary"
         fontSize="fs10"
-        text="remove"
+        text={labels.removeError}
         textDecoration="underline"
         onPress={() => removeCartItem(getUnavailableOOSItems)}
       />

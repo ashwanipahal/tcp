@@ -16,7 +16,7 @@ class RemoveSoldOut extends React.PureComponent {
         className="removeErrorMessage"
         onClick={() => removeCartItem(getUnavailableOOSItems)}
       >
-        remove
+        {labels.removeError}
       </BodyCopy>
     );
 
