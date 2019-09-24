@@ -66,6 +66,8 @@ export class Account extends React.PureComponent<Props, State> {
         return 'myWalletPageMobile';
       case 'pointsHistoryMobile':
         return 'pointHistoryPageMobile';
+      case 'myPreferencePageMobile':
+        return 'myPreferences';
       default:
         return 'addressBookMobile';
     }
