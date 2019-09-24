@@ -99,7 +99,7 @@ const EarnPoints = ({ className, labels, waysToEarn, onViewActivityDetails }) =>
         >
           {getLabelValue(labels, 'lbl_common_check_here')}
         </Anchor>
-        {getLabelValue(labels, 'lbl_common_extra_ppoints_terms_conditions')}
+        {getLabelValue(labels, 'lbl_common_extra_points_terms_conditions')}
       </BodyCopy>
     </div>
   );
