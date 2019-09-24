@@ -1,3 +1,5 @@
+import { getLabelValue } from '../../../../../utils';
+
 export const getNavTree = state => {
   return state.Navigation.navigationData;
 };
@@ -76,17 +78,7 @@ export const getCurrentProduct = state => {
 };
 
 export const getPDPLabels = state => {
-  if (!state.Labels || !state.Labels.Browse)
-    return {
-      fullSize: '',
-    };
-
-  const {
-    Browse: {
-      PDP: { lbl_full_size: fullSize },
-    },
-  } = state.Labels;
   return {
-    fullSize,
+    fullSize: getLabelValue(state.Labels, 'lbl_full_size', 'PDP', 'Browse'),
   };
 };

@@ -1,3 +1,5 @@
+import { getLabelValue } from '../../../../../utils';
+
 export const getProductInfo = state => {
   return state.QuickView.get('quickViewProduct');
 };
@@ -7,19 +9,13 @@ export const getModalState = state => {
 };
 
 export const getQuickViewLabels = state => {
-  if (!state.Labels || !state.Labels.Browse)
-    return {
-      addToBag: '',
-      viewProductDetails: '',
-    };
-
-  const {
-    Browse: {
-      QuickView: { lbl_add_to_bag: addToBag, lbl_view_product_details: viewProductDetails },
-    },
-  } = state.Labels;
   return {
-    addToBag,
-    viewProductDetails,
+    addToBag: getLabelValue(state.Labels, 'lbl_add_to_bag', 'QuickView', 'Browse'),
+    viewProductDetails: getLabelValue(
+      state.Labels,
+      'lbl_view_product_details',
+      'QuickView',
+      'Browse'
+    ),
   };
 };
