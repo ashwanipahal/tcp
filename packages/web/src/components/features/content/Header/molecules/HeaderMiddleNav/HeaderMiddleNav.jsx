@@ -237,6 +237,7 @@ class HeaderMiddleNav extends React.PureComponent {
         >
           <Col
             className="header-middle-nav-bar"
+            id="header-middle-nav"
             colSize={{
               large: 12,
               medium: 8,

@@ -45,7 +45,7 @@ exports[`HeaderMiddleNav component renders correctly 1`] = `
         />
       </Styled(Col)>
       <Styled(Col)
-        className="textRight header-middle-login-section"
+        className="textRight header-middle-login-section false"
         colSize={
           Object {
             "large": 4,
@@ -76,12 +76,10 @@ exports[`HeaderMiddleNav component renders correctly 1`] = `
         >
           Login
         </Styled(Anchor)>
-        <Styled(Image)
-          alt="search"
-          className="rightLink search-image icon"
-          data-locator="close-icon"
-          height="25px"
-          src="/static/images/search-icon.svg"
+        <Connect(Styled(SearchBar))
+          className="rightLink"
+          isSearchOpen={false}
+          setSearchState={[Function]}
         />
         <Styled(Anchor)
           anchorVariation="primary"
@@ -133,7 +131,6 @@ exports[`HeaderMiddleNav component renders correctly 1`] = `
           "small": 6,
         }
       }
-      id="header-middle-nav-bar"
     >
       <Connect(Styled(Navigation))
         closeNavigationDrawer={true}
@@ -192,7 +189,7 @@ exports[`HeaderMiddleNav component renders correctly when props dont change 1`] 
         />
       </Styled(Col)>
       <Styled(Col)
-        className="textRight header-middle-login-section"
+        className="textRight header-middle-login-section false"
         colSize={
           Object {
             "large": 4,
@@ -223,12 +220,10 @@ exports[`HeaderMiddleNav component renders correctly when props dont change 1`] 
         >
           Login
         </Styled(Anchor)>
-        <Styled(Image)
-          alt="search"
-          className="rightLink search-image icon"
-          data-locator="close-icon"
-          height="25px"
-          src="/static/images/search-icon.svg"
+        <Connect(Styled(SearchBar))
+          className="rightLink"
+          isSearchOpen={false}
+          setSearchState={[Function]}
         />
         <Styled(Anchor)
           anchorVariation="primary"
@@ -280,7 +275,6 @@ exports[`HeaderMiddleNav component renders correctly when props dont change 1`] 
           "small": 6,
         }
       }
-      id="header-middle-nav-bar"
     >
       <Connect(Styled(Navigation))
         closeNavigationDrawer={true}

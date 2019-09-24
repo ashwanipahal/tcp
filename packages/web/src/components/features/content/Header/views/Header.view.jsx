@@ -26,7 +26,7 @@ class Header extends React.PureComponent {
   }
 
   getStickyPosition = () => {
-    const header = document.getElementById('header-middle-nav-bar');
+    const header = document.getElementById('header-middle-nav');
     return header && header.offsetTop;
   };
 

@@ -68,6 +68,12 @@ export default css`
   .username {
     cursor: pointer;
     display: inline-block;
+    font-size: 13px;
+    overflow: hidden;
+    padding-left: ${props => props.theme.spacing.ELEM_SPACING.LRG};
+    text-overflow: ellipsis;
+    width: 70px;
+    white-space: nowrap;
   }
 
   .brand-logo-middle {

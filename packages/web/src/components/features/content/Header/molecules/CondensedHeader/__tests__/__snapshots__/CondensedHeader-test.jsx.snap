@@ -74,26 +74,25 @@ exports[`<CondensedHeaderVanilla /> Should match snapshot correctly 1`] = `
           }
         }
       >
-        <Styled(Image)
-          alt="search"
-          className="search-image icon\`"
-          data-locator="search-icon"
-          height="25px"
-          src="/static/images/search-icon.svg"
+        <Connect(Styled(SearchBar))
+          className="rightLink"
+          fromCondensedHeader={true}
+          isSearchOpen={false}
+          setSearchState={[Function]}
         />
         <Styled(Anchor)
           anchorVariation="primary"
           className="leftLink"
           fontSizeVariation="large"
           href="#"
-          id="condensedLogin"
           noLink={true}
           onClick={[Function]}
         >
           <Styled(Image)
             alt="Account"
-            className="rightLink"
+            className="rightLink userIcon"
             data-locator="user-icon"
+            id="condensedLogin"
             src="/static/images/user-icon-blue.svg"
           />
         </Styled(Anchor)>

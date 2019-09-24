@@ -84,25 +84,6 @@ export default css`
     overflow-y: auto;
   }
 
-  .condensed-search {
-    position: fixed;
-    z-index: ${props => props.theme.zindex.zModule};
-    top: 14px;
-    width: 300px;
-
-    @media ${props => props.theme.mediaQuery.smallOnly} {
-      left: 0;
-    }
-    @media ${props => props.theme.mediaQuery.mediumOnly} {
-      right: 5em;
-    }
-
-    @media ${props => props.theme.mediaQuery.large} {
-      right: 11em;
-      top: 14px;
-    }
-  }
-
   .header-search {
     width: 300px;
     position: absolute;
