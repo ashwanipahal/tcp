@@ -362,6 +362,9 @@ exports[`CartItemTile common component renders correctly 1`] = `
           "miscInfo": Object {
             "badge": "",
           },
+          "productInfo": Object {
+            "skuId": "123",
+          },
         }
       }
     />
@@ -749,6 +752,9 @@ exports[`CartItemTile common component renders correctly with Save for later ena
           "miscInfo": Object {
             "availability": "OK",
             "badge": "",
+          },
+          "productInfo": Object {
+            "skuId": "123",
           },
         }
       }
