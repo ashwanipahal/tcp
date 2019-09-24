@@ -94,6 +94,10 @@ class BagPage extends React.Component {
     );
   }
 
+  /**
+   *@function //responsible for rendering of success message with tick icon
+   * @memberof BagPage
+   */
   renderSuccessMessage = () => {
     const {
       isCartItemsUpdating: { isDeleting },
