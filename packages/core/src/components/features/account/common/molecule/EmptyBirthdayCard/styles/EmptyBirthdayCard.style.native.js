@@ -1,7 +1,7 @@
 import styled from 'styled-components/native';
 import constants from '../../../organism/BirthdaySavingsList/BirthdaySavingsList.constants';
 
-const EmptyContainer = styled.View`
+const EmptyContainer = styled.TouchableOpacity`
   border: ${props =>
     props.view === constants.VIEW.EDIT ? `1px solid ${props.theme.colorPalette.gray[600]}` : ''};
   display: flex;

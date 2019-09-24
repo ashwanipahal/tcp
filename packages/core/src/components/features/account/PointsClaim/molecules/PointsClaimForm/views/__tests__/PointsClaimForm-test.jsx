@@ -1,6 +1,5 @@
 import React from 'react';
 import { shallow } from 'enzyme';
-import Notification from '@tcp/core/src/components/common/molecules/Notification';
 import { PointsClaimForm } from '../PointsClaimForm.view';
 
 describe('PointsClaimForm component', () => {
@@ -28,18 +27,6 @@ describe('PointsClaimForm component', () => {
     expect(component.exists()).toBeTruthy();
   });
 
-  it('should renders Noticifaction for error message', () => {
-    const props = {
-      labels: {
-        common: {},
-      },
-      successMessage: 'success',
-      errorMessage: 'error',
-    };
-    const component = shallow(<PointsClaimForm {...props} />);
-    expect(component.find(Notification)).toHaveLength(1);
-  });
-
   it('should renders sample reciept image for in-store option', () => {
     const props = {
       labels: {
@@ -50,7 +37,7 @@ describe('PointsClaimForm component', () => {
     };
 
     const component = shallow(<PointsClaimForm {...props} />);
-    component.setState({ type: 'in-store' });
+    component.setState({ type: 'In-Store' });
     expect(component.find('.image_container')).toHaveLength(1);
   });
 });

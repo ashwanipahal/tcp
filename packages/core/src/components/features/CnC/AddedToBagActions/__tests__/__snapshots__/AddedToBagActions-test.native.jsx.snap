@@ -21,24 +21,6 @@ exports[`AddedToBagActions native component AddedToBagActions native component r
       />
     </Styled(TouchableOpacity)>
   </Styled(View)>
-  <Styled(View)>
-    <Styled(TouchableOpacity)
-      onPress={[Function]}
-    >
-      <Styled(BodyCopy)
-        accessibilityText=""
-        color="white"
-        dataLocator=""
-        fontFamily="secondary"
-        fontSize="fs13"
-        fontWeight="extrabold"
-        margin={null}
-        numberOfLines={null}
-        text=""
-        textDecoration={null}
-      />
-    </Styled(TouchableOpacity)>
-  </Styled(View)>
   <Connect(AddedToBagContainer) />
 </Styled(View)>
 `;

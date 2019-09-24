@@ -39,13 +39,15 @@ const getBagPageLabels = state => {
     'checkout'
   );
   const myBagButton = getLabelValue(state.Labels, 'lbl_sfl_myBagButton', 'bagPage', 'checkout');
-  const emptySflMsg = getLabelValue(state.Labels, 'lbl_sfl_emptySflMsg', 'bagPage', 'checkout');
+  const emptySflMsg1 = getLabelValue(state.Labels, 'lbl_sfl_emptySflMsg_1', 'bagPage', 'checkout');
+  const emptySflMsg2 = getLabelValue(state.Labels, 'lbl_sfl_emptySflMsg_2', 'bagPage', 'checkout');
   const savedLaterButton = getLabelValue(
     state.Labels,
     'lbl_sfl_savedLaterButton',
     'bagPage',
     'checkout'
   );
+  const sflSuccess = getLabelValue(state.Labels, 'bl_sfl_actionSuccess', 'bagPage', 'checkout');
   return {
     addedToBag,
     checkout,
@@ -59,7 +61,9 @@ const getBagPageLabels = state => {
     savedForLaterText,
     myBagButton,
     savedLaterButton,
-    emptySflMsg,
+    emptySflMsg1,
+    emptySflMsg2,
+    sflSuccess,
   };
 };
 

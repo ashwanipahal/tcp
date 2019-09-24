@@ -6,9 +6,12 @@ export default css`
   }
 
   .elm-padding-top {
-    padding-top: ${props => props.theme.spacing.ELEM_SPACING.XS};
+    padding-top: ${props => props.theme.spacing.ELEM_SPACING.LRG};
   }
 
+  .CheckBox__text {
+    padding-top: ${props => props.theme.spacing.ELEM_SPACING.XXS};
+  }
   .favtPageLink {
     padding-right: ${props => props.theme.spacing.ELEM_SPACING.XL};
   }

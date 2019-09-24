@@ -288,20 +288,140 @@ const getDefaultShipping = state => {
   return selector(state, 'defaultShipping');
 };
 
+const getShippingPhoneAndEmail = createSelector(
+  getShippingDestinationValues,
+  shippingDestinationValues => {
+    const { phoneNumber, emailAddress } = shippingDestinationValues;
+    return { phoneNumber, emailAddress };
+  }
+);
+
 const getCurrentPickupFormNumber = createSelector(
   getShippingPickupFields,
   pickUpContact => pickUpContact && pickUpContact.phoneNumber
 );
 
-const getBillingLabels = state => {
-  const getBillingLabelValue = label => getLabelValue(state.Labels, label, 'billing', 'checkout');
-  return {
-    header: getBillingLabelValue('lbl_billing_title'),
-    backLinkPickup: getBillingLabelValue('lbl_billing_backLinkPickup'),
-    backLinkShipping: getBillingLabelValue('lbl_billing_backLinkShipping'),
-    nextSubmitText: getBillingLabelValue('lbl_billing_nextSubmit'),
-  };
-};
+const getBillingLabelValue = state =>
+  state.Labels && state.Labels.checkout && state.Labels.checkout.billing;
+
+const getBillingLabels = createSelector(
+  getBillingLabelValue,
+  billingLabel => {
+    const labels = {};
+    const labelKeys = [
+      'lbl_billing_title',
+      'lbl_billing_backLinkPickup',
+      'lbl_billing_backLinkShipping',
+      'lbl_billing_nextSubmit',
+      'lbl_billing_billingAddress',
+      'lbl_billing_sameAsShipping',
+      'lbl_billing_paymentMethodTitle',
+      'lbl_billing_saveToAccount',
+      'lbl_billing_defaultPayment',
+      'lbl_billing_default_card',
+      'lbl_billing_addNewAddress',
+      'lbl_billing_creditCard',
+      'lbl_billing_selectFromCard',
+      'lbl_billing_addCreditHeading',
+      'lbl_billing_default',
+      'lbl_billing_cardDetailsTitle',
+      'lbl_billing_editBtn',
+      'lbl_billing_creditCardEnd',
+      'lbl_billing_addCreditBtn',
+      'lbl_billing_paypal',
+      'lbl_billing_venmo',
+      'lbl_billing_selectCardTitle',
+      'lbl_billing_select',
+      'lbl_billing_cvvCode',
+    ];
+    labelKeys.forEach(key => {
+      labels[key] = getLabelValue(billingLabel, key);
+    });
+    const {
+      lbl_billing_title: header,
+      lbl_billing_backLinkPickup: backLinkPickup,
+      lbl_billing_backLinkShipping: backLinkShipping,
+      lbl_billing_nextSubmit: nextSubmitText,
+      lbl_billing_billingAddress: billingAddress,
+      lbl_billing_sameAsShipping: sameAsShipping,
+      lbl_billing_default_card: defaultCard,
+      lbl_billing_addNewAddress: addNewAddress,
+      lbl_billing_paymentMethodTitle: paymentMethod,
+      lbl_billing_saveToAccount: saveToAccount,
+      lbl_billing_defaultPayment: defaultPayment,
+      lbl_billing_creditCard: creditCard,
+      lbl_billing_creditCardEnd: creditCardEnd,
+      lbl_billing_selectFromCard: selectFromCard,
+      lbl_billing_addCreditHeading: addCreditHeading,
+      lbl_billing_default: defaultBadge,
+      lbl_billing_cardDetailsTitle: cardDetailsTitle,
+      lbl_billing_editBtn: edit,
+      lbl_billing_addCreditBtn: addCreditBtn,
+      lbl_billing_paypal: paypal,
+      lbl_billing_venmo: venmo,
+      lbl_billing_selectCardTitle: selectCardTitle,
+      lbl_billing_select: select,
+      lbl_billing_cvvCode: cvvCode,
+    } = labels;
+    return {
+      header,
+      backLinkShipping,
+      backLinkPickup,
+      nextSubmitText,
+      billingAddress,
+      sameAsShipping,
+      defaultCard,
+      addNewAddress,
+      paymentMethod,
+      saveToAccount,
+      defaultPayment,
+      creditCard,
+      creditCardEnd,
+      selectFromCard,
+      addCreditHeading,
+      defaultBadge,
+      cardDetailsTitle,
+      edit,
+      addCreditBtn,
+      paypal,
+      venmo,
+      selectCardTitle,
+      select,
+      cvvCode,
+    };
+  }
+);
+
+const getCreditFieldLabelsObj = state =>
+  state.Labels && state.Labels.global && state.Labels.global.creditCardFields;
+
+const getCreditFieldLabels = createSelector(
+  getCreditFieldLabelsObj,
+  creditFieldLabels => {
+    const labels = {};
+    const labelKeys = [
+      'lbl_creditField_cardNumber',
+      'lbl_creditField_expMonth',
+      'lbl_creditField_expYear',
+      'lbl_creditField_cvvCode',
+    ];
+    labelKeys.forEach(key => {
+      labels[key] = getLabelValue(creditFieldLabels, key);
+    });
+    const {
+      lbl_creditField_cardNumber: cardNumber,
+      lbl_creditField_expMonth: expMonth,
+      lbl_creditField_expYear: expYear,
+      lbl_creditField_cvvCode: cvvCode,
+    } = labels;
+    return {
+      cardNumber,
+      expMonth,
+      expYear,
+      cvvCode,
+    };
+  }
+);
 
 const getSmsSignUpLabels = state => {
   const {
@@ -765,4 +885,6 @@ export default {
   getInternationalCheckoutUrl,
   getIsVenmoEnabled,
   getCurrentLanguage,
+  getShippingPhoneAndEmail,
+  getCreditFieldLabels,
 };

@@ -6,7 +6,11 @@ import PointsHistoryList from '../views/PointsHistoryList.view';
 import { getPointHistoryState, getCommonLabels } from './PointsHistory.selectors';
 import { getPointsHistoryList } from './PointsHistory.actions';
 import { resetState } from '../../../../PointsClaim/container/PointsClaim.actions';
-import { getSuccess } from '../../../../PointsClaim/container/PointsClaim.selectors';
+import {
+  getSuccess,
+  getError,
+  getPointsClaimErrorMessage,
+} from '../../../../PointsClaim/container/PointsClaim.selectors';
 import { getLabels } from '../../../../Account/container/Account.selectors';
 
 export class PointsHistoryContainer extends React.PureComponent {
@@ -16,8 +20,8 @@ export class PointsHistoryContainer extends React.PureComponent {
   }
 
   componentWillUnmount() {
-    const { showNotification, resetStateAction } = this.props;
-    if (showNotification) {
+    const { showSuccess, showError, resetStateAction } = this.props;
+    if (showSuccess || showError) {
       resetStateAction();
     }
   }
@@ -52,7 +56,9 @@ const mapStateToProps = state => {
     pointHistory: getPointHistoryState(state),
     labels: getCommonLabels(state),
     accountlabels: getLabels(state),
-    showNotification: getSuccess(state),
+    showSuccess: getSuccess(state),
+    showError: getError(state),
+    claimPointsErrorMessage: getPointsClaimErrorMessage(state),
   };
 };
 
@@ -66,6 +72,8 @@ PointsHistoryContainer.propTypes = {
   showFullHistory: PropTypes.bool,
   showNotification: PropTypes.string,
   resetStateAction: PropTypes.func,
+  showSuccess: PropTypes.string,
+  showError: PropTypes.string,
 };
 
 PointsHistoryContainer.defaultProps = {
@@ -74,6 +82,8 @@ PointsHistoryContainer.defaultProps = {
   showFullHistory: false,
   showNotification: '',
   resetStateAction: () => {},
+  showSuccess: '',
+  showError: '',
 };
 
 export default connect(

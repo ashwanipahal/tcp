@@ -181,6 +181,7 @@ describe('#CartItemTile selector', () => {
             lbl_minibag_errorSize: 'minibag',
             lbl_minibag_errorUpdateUnavailable: 'minibag',
             lbl_minibag_errorRemoveSoldoutHeader: 'minibag',
+            lbl_minibag_errorRemove: 'remove',
           },
         },
         checkout: {
@@ -188,6 +189,7 @@ describe('#CartItemTile selector', () => {
             lbl_sfl_actionLink: 'saveForLaterLink',
             lbl_sfl_maxLimitError: 'sflMaxLimitError',
             lbl_sfl_moveToBag: 'moveToBagLink',
+            bl_sfl_actionSuccess: 'sflSuccess',
           },
         },
       },
@@ -229,6 +231,8 @@ describe('#CartItemTile selector', () => {
       saveForLaterLink: 'saveForLaterLink',
       sflMaxLimitError: 'sflMaxLimitError',
       moveToBagLink: 'moveToBagLink',
+      sflSuccess: 'sflSuccess',
+      removeError: 'remove',
     });
   });
 });

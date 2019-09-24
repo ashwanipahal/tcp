@@ -3,7 +3,6 @@ import PropTypes from 'prop-types';
 import { Field, FormSection, change } from 'redux-form';
 import InputCheckbox from '../../../../../../common/atoms/InputCheckbox';
 import AddressFields from '../../../../../../common/molecules/AddressFields';
-import { getLabelValue } from '../../../../../../../utils';
 import BodyCopy from '../../../../../../common/atoms/BodyCopy';
 import Address from '../../../../../../common/molecules/Address';
 import Heading from '../../../../../../common/atoms/Heading';
@@ -82,6 +81,20 @@ class CheckoutAddress extends React.Component {
     );
   };
 
+  getBillingAddressHeader = () => {
+    const { labels } = this.props;
+    return (
+      <Heading
+        component="h2"
+        variant="listMenu"
+        className="paymentMethodHeading elem-mt-MED elem-mb-LRG"
+        dataLocator="billing-payment-billingAddress"
+      >
+        {labels.billingAddress}
+      </Heading>
+    );
+  };
+
   getAddressFields = () => {
     const { addressLabels, dispatch, isGuest, formName } = this.props;
     return (
@@ -116,14 +129,7 @@ class CheckoutAddress extends React.Component {
     const { labels } = this.props;
     return (
       <>
-        <Heading
-          component="h2"
-          variant="listMenu"
-          className="paymentMethodHeading elem-mt-MED elem-mb-LRG"
-          dataLocator="billing-payment-billingAddress"
-        >
-          {getLabelValue(labels, 'lbl_billing_billingAddress', 'billing', 'checkout')}
-        </Heading>
+        {this.getBillingAddressHeader()}
         <Row fullBleed>
           <Col colSize={{ large: 6, medium: 5, small: 6 }}>
             <Field
@@ -134,7 +140,7 @@ class CheckoutAddress extends React.Component {
               onChange={this.onSameAsShippingChange}
             >
               <BodyCopy fontSize="fs16" fontFamily="secondary">
-                {getLabelValue(labels, 'lbl_billing_sameAsShipping', 'billing', 'checkout')}
+                {labels.sameAsShipping}
               </BodyCopy>
             </Field>
           </Col>
@@ -173,7 +179,7 @@ class CheckoutAddress extends React.Component {
                   dataLocator="shipping-defshippinglabel"
                   className="default-badge"
                 >
-                  {getLabelValue(labels, 'lbl_billing_default_card', 'billing', 'checkout')}
+                  {labels.defaultCard}
                 </Badge>
               )}
             </div>
@@ -185,7 +191,7 @@ class CheckoutAddress extends React.Component {
       addressOptions &&
       addressOptions.push({
         value: '',
-        title: 'Add New Address',
+        title: labels.addNewAddress,
         content: (
           <Button
             fullWidth
@@ -194,7 +200,7 @@ class CheckoutAddress extends React.Component {
             onClick={this.toggleAddNewAddressMode}
             disabled={isAddNewAddress || !selectedAddress}
           >
-            {getLabelValue(labels, 'lbl_billing_addNewAddress', 'billing', 'checkout')}
+            {labels.addNewAddress}
           </Button>
         ),
       });
@@ -242,10 +248,11 @@ class CheckoutAddress extends React.Component {
   };
 
   renderNonShippingAddressForm = () => {
-    const { userAddresses } = this.props;
+    const { userAddresses, orderHasShipping } = this.props;
     const { isAddNewAddress } = this.state;
     return (
       <>
+        {!orderHasShipping && this.getBillingAddressHeader()}
         {(userAddresses && userAddresses.size === 0) || isAddNewAddress || !userAddresses
           ? this.getAddressForm()
           : this.getAddressDropDown()}

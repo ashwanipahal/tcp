@@ -1,7 +1,7 @@
 import React from 'react';
 import { shallow } from 'enzyme';
 import { MyPrefrenceContainer } from '../container/MyPreference.container';
-import MyPrefrence from '../views/MyPrefrence.view';
+import MyPrefrence from '../views';
 
 describe('MyProfile container', () => {
   it('should render MyProfile component', () => {

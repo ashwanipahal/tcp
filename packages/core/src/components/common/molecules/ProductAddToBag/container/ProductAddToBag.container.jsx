@@ -36,7 +36,6 @@ class ProductAddToBagContainer extends React.PureComponent<Props> {
 
   getStateValuesFromProps = (currentProduct, selectedColorProductId) => {
     const initialValues = this.getInitialValues(currentProduct, selectedColorProductId);
-
     return {
       selectedColor: initialValues && initialValues.color,
       selectedFit: initialValues && initialValues.Fit,
@@ -95,6 +94,7 @@ class ProductAddToBagContainer extends React.PureComponent<Props> {
         return '';
       }
     }
+
     return firstSizeName;
   };
 
@@ -116,32 +116,53 @@ class ProductAddToBagContainer extends React.PureComponent<Props> {
             name: this.getDefaultFitForColorSlice(colorFitsSizesMapEntry).fitNameVal,
           }
         : null,
-      Size: currentProduct.isGiftCard
-        ? currentProduct.colorFitsSizesMap[0].fits[0].sizes[0].sizeName // on gift card we need something selected, otherwise no price would show up
-        : this.getDefaultSizeForProduct(currentProduct.colorFitsSizesMap),
+      Size: {
+        name: currentProduct.isGiftCard
+          ? currentProduct.colorFitsSizesMap[0].fits[0].sizes[0].sizeName // on gift card we need something selected, otherwise no price would show up
+          : this.getDefaultSizeForProduct(currentProduct.colorFitsSizesMap),
+      },
       Quantity: 1,
     };
   };
 
+  updateSelectedSize = () => {
+    const {
+      currentProduct: { colorFitsSizesMap },
+    } = this.props;
+    const sizeList = this.getSizeList(colorFitsSizesMap);
+    if (sizeList.length === 1) {
+      this.setState({
+        selectedSize: {
+          name: sizeList[0].displayName,
+        },
+      });
+    }
+  };
+
   fitChange = e => {
     const { persistSelectedFit } = this.state;
-
     if (persistSelectedFit !== e) {
-      this.setState({
-        selectedFit: {
-          name: e,
+      this.setState(
+        {
+          selectedFit: {
+            name: e,
+          },
+          fitChanged: true,
+          isErrorMessageDisplayed: false,
         },
-        fitChanged: true,
-        isErrorMessageDisplayed: false,
-      });
+        this.updateSelectedSize
+      );
     } else {
-      this.setState({
-        selectedFit: {
-          name: e,
+      this.setState(
+        {
+          selectedFit: {
+            name: e,
+          },
+          fitChanged: false,
+          isErrorMessageDisplayed: false,
         },
-        fitChanged: false,
-        isErrorMessageDisplayed: false,
-      });
+        this.updateSelectedSize
+      );
     }
   };
 
@@ -202,6 +223,7 @@ class ProductAddToBagContainer extends React.PureComponent<Props> {
         }
       });
     }
+
     this.getErrorCheck(sizeOptions, selectedFit);
     return sizeOptions;
   };
@@ -348,6 +370,8 @@ class ProductAddToBagContainer extends React.PureComponent<Props> {
       currentProduct,
       currentProduct: { colorFitsSizesMap },
       plpLabels,
+      addToBagEcom,
+      addToBagError,
     } = this.props;
     const {
       selectedColor,
@@ -381,6 +405,8 @@ class ProductAddToBagContainer extends React.PureComponent<Props> {
         onQuantityChange={this.quantityChange}
         addToBagAction={this.addToBagAction}
         generalProductId={generalProductId}
+        addToBagEcom={addToBagEcom}
+        addToBagError={addToBagError}
       />
     );
   }

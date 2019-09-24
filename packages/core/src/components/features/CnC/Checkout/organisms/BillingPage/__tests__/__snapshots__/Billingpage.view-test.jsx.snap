@@ -14,6 +14,7 @@ exports[`CheckoutProgressIndicator component should renders correctly props not 
     <Connect(GiftCardsContainer)
       addressLabels={null}
       billingData={Object {}}
+      creditFieldLabels={Object {}}
       cvvCodeRichText={null}
       labels={Object {}}
       shippingAddress={null}
@@ -34,6 +35,7 @@ exports[`CheckoutProgressIndicator component should renders correctly props not 
   <Connect(GuestBillingContainer)
     addressLabels={null}
     billingData={Object {}}
+    creditFieldLabels={Object {}}
     cvvCodeRichText={null}
     isGuest={true}
     labels={Object {}}

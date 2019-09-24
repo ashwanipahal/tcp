@@ -78,7 +78,7 @@ const Card = ({
             noMargin
             className="card-carddefaultbadge"
           >
-            {labels.lbl_billing_default_card}
+            {labels.defaultCard}
           </Badge>
         ) : (
           ''

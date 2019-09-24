@@ -1,5 +1,6 @@
 import React from 'react';
 import PropTypes from 'prop-types';
+import { getLabelValue } from '@tcp/core/src/utils';
 import { BodyCopy, Anchor } from '../../../../../../common/atoms';
 import {
   PointHistoryView,
@@ -13,7 +14,7 @@ import REWARDSPOINTS_CONSTANTS from '../PointsHistory.constants';
  * @function RewardsPointsView The RewardsPointsView component will provide slider for account drawer
  */
 
-const PointsHistory = ({ labels, pointHistory, handleComponentChange }) => {
+const PointsHistory = ({ labels, accountlabels, pointHistory, navigation }) => {
   let pointHistoryData = [];
 
   if (pointHistory && pointHistory.length > 3) {
@@ -82,7 +83,9 @@ const PointsHistory = ({ labels, pointHistory, handleComponentChange }) => {
           underline
           anchorVariation="primary"
           onPress={() => {
-            handleComponentChange('pointsHistoryMobile');
+            navigation.navigate('PointsHistoryPage', {
+              title: getLabelValue(accountlabels, 'lbl_common_points_history_heading', 'common'),
+            });
           }}
         />
       </PointHistorsWrapper>
@@ -98,7 +101,8 @@ PointsHistory.propTypes = {
     lbl_common_points_earned: PropTypes.string,
     lbl_common_points_history: PropTypes.string,
   }),
-  handleComponentChange: PropTypes.func,
+  accountlabels: PropTypes.shape({}).isRequired,
+  navigation: PropTypes.shape({}).isRequired,
 };
 
 PointsHistory.defaultProps = {
@@ -108,7 +112,6 @@ PointsHistory.defaultProps = {
     lbl_common_points_earned: '',
     lbl_common_points_history: '',
   },
-  handleComponentChange: () => {},
 };
 
 export default PointsHistory;
