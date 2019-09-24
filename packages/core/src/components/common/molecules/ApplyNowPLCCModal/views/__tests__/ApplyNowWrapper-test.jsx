@@ -11,6 +11,7 @@ describe('ApplyNowModalWrapper component', () => {
     className: 'demo',
     isModalOpen: true,
     fetchModuleXContent: jest.fn(),
+    resetPLCCApplicationStatus: jest.fn(),
   };
 
   it('should renders correctly', () => {

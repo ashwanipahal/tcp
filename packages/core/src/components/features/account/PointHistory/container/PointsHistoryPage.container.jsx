@@ -8,6 +8,7 @@ import {
   getPointHistoryRichTextContentId,
   getPointHistoryRichTextSelector,
 } from '../../common/organism/PointsHistory/container/PointsHistory.selectors';
+import { getLabels } from '../../Account/container/Account.selectors';
 import PointsHistoryPage from '../views';
 
 export class PointsHistoryPageContainer extends React.PureComponent {
@@ -40,6 +41,7 @@ export const mapDispatchToProps = dispatch => {
 export const mapStateToProps = state => {
   return {
     labels: getCommonLabels(state),
+    accountLabels: getLabels(state),
     pointHistoryContentId: getPointHistoryRichTextContentId(state),
     pointHistoryRichText: getPointHistoryRichTextSelector(state),
   };

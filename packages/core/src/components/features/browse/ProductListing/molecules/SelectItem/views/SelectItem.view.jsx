@@ -128,7 +128,7 @@ class SelectItem extends React.PureComponent {
           role="option"
           tabIndex="0"
           aria-selected="false"
-          dataLocator={dataLocator}
+          data-Locator={dataLocator}
         >
           {content}
         </div>

@@ -161,6 +161,7 @@ describe('Bag SFL Saga', () => {
     let takeLatestDescriptor = generator.next().value;
     takeLatestDescriptor = generator.next().value;
     takeLatestDescriptor = generator.next().value;
+    takeLatestDescriptor = generator.next().value;
     takeLatestDescriptor = generator.next(res).value;
     takeLatestDescriptor = generator.next(res).value;
     expect(takeLatestDescriptor).toEqual(put(BAG_PAGE_ACTIONS.setCartItemsSFL(true)));

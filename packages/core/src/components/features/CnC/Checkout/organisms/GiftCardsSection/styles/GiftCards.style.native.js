@@ -5,7 +5,6 @@ const PageStyle = css`
 `;
 
 const Container = styled.View`
-  flex: 1;
   margin-top: ${props => props.theme.spacing.ELEM_SPACING.MED};
   margin-bottom: ${props => props.theme.spacing.ELEM_SPACING.MED};
 `;
