@@ -8,6 +8,7 @@ import {
   RichTextWrapper,
   ImageSize,
   EarnExtraPointsTileImage,
+  ButtonWrapper,
 } from './styles/ExtraPointsDetailModal.style.native';
 
 /**
@@ -37,7 +38,7 @@ class ExtraPointsDetailModal extends React.PureComponent {
     const { waysToEarnRow } = this.props;
     const activityDetails = waysToEarnRow.activityModal;
 
-    const richTextStyle = `<meta name="viewport" content="width=device-width, initial-scale=1.0"><div style="font-size:14px; font-family: Nunito; margin-top:24px font-weight: normal;">${
+    const richTextStyle = `<meta name="viewport" content="width=device-width, initial-scale=1.0"><div style="font-size:14px; text-align:center; font-family: Nunito; margin-top:24px font-weight: normal;">${
       activityDetails.activityModalLongDescription
     } </div>`;
 
@@ -46,7 +47,6 @@ class ExtraPointsDetailModal extends React.PureComponent {
         <EarnExtraPointsTileImage>
           <ImageSize source={sourceMap[waysToEarnRow.activityCode]} />
         </EarnExtraPointsTileImage>
-
         <BodyCopyWithSpacing
           fontSize="fs28"
           fontWeight="black"
@@ -72,12 +72,14 @@ class ExtraPointsDetailModal extends React.PureComponent {
             data-locator={`earnPointsModal_${activityDetails.activityModalAction}_ShortDesc`}
           />
         </RichTextWrapper>
-        <Button
-          buttonVariation="variable-width"
-          text={activityDetails.activityModalCtaText}
-          fill="BLUE"
-          color="white"
-        />
+        <ButtonWrapper>
+          <Button
+            buttonVariation="variable-width"
+            text={activityDetails.activityModalCtaText}
+            fill="BLUE"
+            color="white"
+          />
+        </ButtonWrapper>
       </>
     );
   }

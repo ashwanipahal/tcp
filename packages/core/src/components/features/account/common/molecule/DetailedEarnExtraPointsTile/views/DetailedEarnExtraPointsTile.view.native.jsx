@@ -2,6 +2,7 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import { BodyCopy, Anchor } from '@tcp/core/src/components/common/atoms';
 import createThemeColorPalette from '@tcp/core/styles/themes/createThemeColorPalette';
+import { ViewWithSpacing } from '@tcp/core/src/components/common/atoms/styledWrapper';
 import sourceMap from '../../../../ExtraPoints/imageSourceMap';
 import {
   TileWrapper,
@@ -54,18 +55,20 @@ export class DetailedEarnExtraPointsTile extends React.PureComponent {
               : handleComponentChange('earnExtraPointsPageMobile')
           }
         >
-          <EarnExtraPointsTileImage>
+          <EarnExtraPointsTileImage viewAll>
             <ImageSize source={sourceMap[waysToEarnRow.activityCode]} />
           </EarnExtraPointsTileImage>
-          <BodyCopy
-            component="p"
-            fontSize="fs16"
-            fontWeight="black"
-            fontFamily="secondary"
-            textAlign="center"
-            text={waysToEarnRow.activityTitle}
-            data-locator={`earnExtraPointsActivityTitle_${waysToEarnRow.activityCode}`}
-          />
+          <ViewWithSpacing spacingStyles="margin-top-LRG">
+            <BodyCopy
+              component="p"
+              fontSize="fs16"
+              fontWeight="black"
+              fontFamily="secondary"
+              textAlign="center"
+              text={waysToEarnRow.activityTitle}
+              data-locator={`earnExtraPointsActivityTitle_${waysToEarnRow.activityCode}`}
+            />
+          </ViewWithSpacing>
           <EarnPointDesc viewAll>
             <BodyCopy
               component="p"
