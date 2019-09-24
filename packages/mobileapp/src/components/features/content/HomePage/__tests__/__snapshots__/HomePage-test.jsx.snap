@@ -49,5 +49,27 @@ exports[`HomePageView should render correctly 1`] = `
     }
     text="PLP Page"
   />
+  <Styled(WithTheme(CustomButton))
+    buttonVariation="variable-width"
+    fullWidth={true}
+    onPress={[Function]}
+    style={
+      Object {
+        "margin": 30,
+      }
+    }
+    text="Store Details"
+  />
+  <Styled(WithTheme(CustomButton))
+    buttonVariation="variable-width"
+    fullWidth={true}
+    onPress={[Function]}
+    style={
+      Object {
+        "margin": 30,
+      }
+    }
+    text="Store Landing"
+  />
 </LazyloadScrollView>
 `;
