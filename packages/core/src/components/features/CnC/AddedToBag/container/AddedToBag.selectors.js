@@ -14,6 +14,10 @@ export const getOrderItems = state => {
   return getCartOrderDetails(state) && getCartOrderDetails(state).get('orderItems');
 };
 
+export const getAddedToBagError = state => {
+  return state.AddedToBagReducer.get('error');
+};
+
 export const filterItemObject = (arr, searchedValue) => {
   const filteredValue = arr.filter(value => {
     return (

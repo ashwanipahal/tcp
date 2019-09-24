@@ -171,6 +171,10 @@ export default {
   plp_filter_gender: 'plp_filter_gender',
   plp_filter_gender_option_: 'plp_filter_gender_option_',
   plp_filter_gender_apply: 'plp_filter_gender_apply',
+  plp_filter_price: 'plp_filter_price',
+  plp_filter_price_option_: 'plp_filter_price_option_',
+  plp_filter_fit: 'plp_filter_fit',
+  plp_filter_fit_option_: 'plp_filter_price_fit_',
   plp_filter_size_range: 'plp_filter_size_range',
   plp_filter_size_range_option_: 'plp_filter_size_range_option_',
   plp_filter_size_range_apply: 'plp_filter_size_range_apply',
@@ -190,6 +194,9 @@ export default {
   plp_seo_module: 'plp_seo_module',
   plp_seo_readmore: 'plp_seo_module_readmore',
   plp_seo_readless: 'plp_seo_module_readless',
+
+  // PLP Review Ratings
+  plp_rating_review: 'plp_rating_review_text',
 
   // Track Order Locator
   track_order_click_here: 'track_order_click_here',

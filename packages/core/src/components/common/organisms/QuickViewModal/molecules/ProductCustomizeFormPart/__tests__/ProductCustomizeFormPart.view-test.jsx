@@ -6,6 +6,7 @@ import { ProductCustomizeFormPartVanilla } from '../views/ProductCustomizeFormPa
 describe('ProductCustomizeFormPart component', () => {
   it('should renders correctly', () => {
     const props = {
+      quickViewLabels: {},
       className: '',
       productInfo: {
         ratingsProductId: '2100606',
