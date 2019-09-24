@@ -16,6 +16,16 @@ import {
   getMapSliceForColorProductId,
 } from '../../ProductListing/molecules/ProductList/utils/productsCommonUtils';
 
+const getProductColorId = (productInfo, currentProduct) => {
+  let colorProduct = {};
+  if (productInfo && productInfo.colorFitsSizesMap && productInfo.generalProductId) {
+    colorProduct = getMapSliceForColorProductId(
+      productInfo.colorFitsSizesMap,
+      currentProduct.generalProductId
+    );
+  }
+  return colorProduct;
+};
 const ProductDetailView = ({
   className,
   productDetails,
@@ -43,6 +53,9 @@ const ProductDetailView = ({
       isFullSet: true,
     });
   }
+
+  // TODO - replace with correct colorProductId - it should be conditionally generalProductId
+  const colorProduct = getProductColorId(productInfo, currentProduct);
 
   return noProductData ? null : (
     <div className={className}>
@@ -75,11 +88,11 @@ const ProductDetailView = ({
           {currentProduct && (
             <ProductAddToBagContainer currentProduct={currentProduct} plpLabels={plpLabels} />
           )}
-          {productInfo && (
+          {productInfo && colorProduct && (
             <ProductPickupContainer
               productInfo={productInfo}
-              formName="ProductAddToBag"
-              // miscInfo={colorProduct.miscInfo}
+              formName={`ProductAddToBag-${productInfo.generalProductId}`}
+              miscInfo={colorProduct.miscInfo}
               // onPickUpOpenClick={onPickUpOpenClick}
             />
           )}

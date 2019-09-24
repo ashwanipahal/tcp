@@ -1,4 +1,3 @@
-/* eslint-disable max-lines */
 /** @module ProductPickup
  * @summary Shows the BOPIS CTA in PDP
  *
@@ -10,41 +9,11 @@ import {
   COLOR_FITS_SIZES_MAP_PROP_TYPE,
   PRICING_PROP_TYPES,
 } from '../../PickupStoreModal/PickUpStoreModal.proptypes';
-import {
-  validateSkuDetails,
-  validateBossEligibility,
-  validateBopisEligibility,
-  isBOSSProductOOS,
-  isProductOOS,
-  numericStringToBool,
-  handleGenericKeyDown,
-} from '../util';
+import { handleGenericKeyDown } from '../util';
 import withStyles from '../../../hoc/withStyles';
 
-import {
-  getVariantId,
-  getMapSliceForSize,
-} from '../../../../features/browse/ProductListing/molecules/ProductList/utils/productsCommonUtils';
 import { Button, Anchor, BodyCopy } from '../../../atoms';
 import ProductPickupStyles from '../styles/ProductPickup.style';
-
-/** Dummy content slot component - TODO - Remove once it comes from CMS */
-const ContentSlot = props => {
-  const { contentSlotName } = props;
-  return (
-    <BodyCopy fontSize="fs10" component="span" className="espot">
-      {contentSlotName}
-    </BodyCopy>
-  );
-};
-
-ContentSlot.propTypes = {
-  contentSlotName: PropTypes.string,
-};
-
-ContentSlot.defaultProps = {
-  contentSlotName: '',
-};
 
 const labels = {
   CHANGE_STORE: '(Change Store)',
@@ -132,16 +101,11 @@ export const PRODUCT_INFO_PROP_TYPES = {
 
 export const PRODUCT_INFO_PROP_TYPE_SHAPE = PropTypes.shape(PRODUCT_INFO_PROP_TYPES);
 
-class ProductPickup extends React.Component {
+class ProductPickup extends React.PureComponent {
   static propTypes = {
     miscInfo: PropTypes.shape({}),
-    isBossEnabled: PropTypes.bool,
-    isBopisClearanceProductEnabled: PropTypes.bool,
-    isBossClearanceProductEnabled: PropTypes.bool,
     offerEspotAvailable: PropTypes.bool,
     className: PropTypes.string,
-    /** When flase, flags that BOPIS is globaly disabled */
-    isBopisEnabled: PropTypes.bool,
 
     /**
      * Information regarding the product at the swatch/color level.
@@ -179,31 +143,24 @@ class ProductPickup extends React.Component {
      * method responsible for triggering the operator method for BopisQuickViewModal
      */
     onPickUpOpenClick: PropTypes.func,
-
-    /**
-     * method responsible for triggering the operator method to get User's default store with lat long
-     */
-    getGeoDefaultStore: PropTypes.func,
-
-    /**
-     * method fetches the inventory information of item in the default store or favorite
-     * store
-     */
-    getBopisInventoryDetails: PropTypes.func,
-
     /**
      * carries the inventory information of the bopis item selected
      */
     bopisItemInventory: PropTypes.arrayOf(PropTypes.object),
-    isRadialInventoryEnabled: PropTypes.number,
+    isBopisEligible: PropTypes.bool,
+    isBossEligible: PropTypes.bool,
+    isSkuResolved: PropTypes.bool,
+    showChangeStore: PropTypes.bool,
+    pickupTitleText: PropTypes.string,
+    isBossEligBossInvAvail: PropTypes.bool,
+    isStoreBopisEligible: PropTypes.bool,
+    showPickupDetails: PropTypes.bool,
+    showPickupInfo: PropTypes.bool,
+    isSubmitting: PropTypes.bool,
   };
 
   static defaultProps = {
     miscInfo: {},
-    isBossEnabled: true,
-    isBopisClearanceProductEnabled: true,
-    isBossClearanceProductEnabled: false,
-    isBopisEnabled: false,
     userDefaultStore: {
       basicInfo: {
         id: '',
@@ -221,81 +178,20 @@ class ProductPickup extends React.Component {
       quantity: null,
     },
     onPickUpOpenClick: null,
-    getGeoDefaultStore: null,
-    getBopisInventoryDetails: null,
     bopisItemInventory: [],
-    isRadialInventoryEnabled: null,
     offerEspotAvailable: false,
     className: '',
+    isBopisEligible: false,
+    isBossEligible: false,
+    isSkuResolved: false,
+    showChangeStore: false,
+    pickupTitleText: '',
+    isBossEligBossInvAvail: false,
+    isStoreBopisEligible: false,
+    showPickupDetails: false,
+    showPickupInfo: false,
+    isSubmitting: false,
   };
-
-  constructor(props, context) {
-    super(props, context);
-    const {
-      miscInfo,
-      isBossEnabled,
-      isBopisEnabled,
-      isBopisClearanceProductEnabled,
-      isBossClearanceProductEnabled,
-    } = props;
-    const bossValidatingParams = {
-      isBossClearanceProductEnabled,
-      isBossEnabled,
-    };
-    const bopisValidatingParams = {
-      isBopisClearanceProductEnabled,
-      isBopisEnabled,
-    };
-    this.isSkuResolved = false;
-    this.isBopisEligible = validateBopisEligibility({ ...bopisValidatingParams, miscInfo });
-    this.isBossEligible = validateBossEligibility({ ...bossValidatingParams, miscInfo });
-    this.isBopisEligible = false;
-    this.isBossEligible = true;
-    this.isGeoStoreAPIRequested = false;
-    this.state = {
-      isSubmitting: false,
-    };
-  }
-
-  componentDidUpdate(prevProps) {
-    const {
-      userDefaultStore,
-      productInfo,
-      itemValues,
-      getBopisInventoryDetails,
-      userGeoCoordinates: { lat, long },
-      getGeoDefaultStore,
-    } = this.props;
-    if (this.shouldGetInventoryDetails(userDefaultStore, itemValues, prevProps)) {
-      // Added New check for userDefaultStore to fire getBopisInventoryDetails when user has already selected sku and allows location access later.
-      const itemPartNumber = getVariantId(
-        productInfo.colorFitsSizesMap,
-        itemValues.color,
-        itemValues.fit,
-        itemValues.size
-      );
-      const currentSizeEntry = getMapSliceForSize(
-        productInfo.colorFitsSizesMap,
-        itemValues.color,
-        itemValues.fit,
-        itemValues.size
-      );
-      const variantNo =
-        currentSizeEntry && currentSizeEntry.variantNo ? currentSizeEntry.variantNo : null;
-      getBopisInventoryDetails(itemPartNumber, userDefaultStore.basicInfo.id, variantNo);
-    } else if (!userDefaultStore && lat && long && !this.isGeoStoreAPIRequested) {
-      /* Making this call only when preffered store doesn't exist in redux state and lat long are changed by user's access.
-       * Added isGeoStoreAPIRequested to ensure that API for geo store is called only once
-       * (It was being called multiple times when no store is returned in response)
-       * isGeoStoreAPIRequested - was used instead of comparing previous Lat/Long of props to handle edge case when
-       * guest user visits site for 2nd time (1st time allows access to geo loc).
-       * as fav store api for guest login is not being consumed;
-       * In this case, default store API was never being called as prev lat/long == new lat/long.
-       */
-      this.isGeoStoreAPIRequested = true;
-      getGeoDefaultStore();
-    }
-  }
 
   /**
    * @method handlePickupModalClick -
@@ -303,15 +199,21 @@ class ProductPickup extends React.Component {
    */
 
   handlePickupModalClick = () => {
-    const { onPickUpOpenClick, productInfo, itemValues } = this.props;
+    const {
+      onPickUpOpenClick,
+      productInfo,
+      itemValues,
+      isBopisEligible,
+      isBossEligible,
+    } = this.props;
 
     return onPickUpOpenClick(
       productInfo.generalProductId,
       itemValues,
       productInfo.generalProductId,
       productInfo.generalProductId,
-      this.isBopisEligible,
-      this.isBossEligible
+      isBopisEligible,
+      isBossEligible
     );
   };
 
@@ -322,66 +224,6 @@ class ProductPickup extends React.Component {
   handleChangeStoreOnKeyPress = event =>
     handleGenericKeyDown(event, KEY_CODES.ENTER, this.handlePickupModalClick);
 
-  shouldGetInventoryDetails = (userDefaultStore, itemValues, prevProps) => {
-    return (
-      this.isSkuResolved &&
-      userDefaultStore &&
-      (itemValues.size !== prevProps.itemValues.size || this.compareDefaultStore(prevProps))
-    );
-  };
-
-  getBossEligBossInvAvail = (isStoreBossEligible, isbossInventoryAvailable) => {
-    return isStoreBossEligible && this.isBossEligible && isbossInventoryAvailable;
-  };
-
-  getIsStoreBopisEligible = bopisItemInventory => {
-    return bopisItemInventory.length > 0 && bopisItemInventory[0].quantity > 0;
-  };
-
-  getIsStoreAndProductBossEligible = (isBOSSInventoryAvailable, isStoreAndProductBossEligible) => {
-    return isBOSSInventoryAvailable && isStoreAndProductBossEligible;
-  };
-
-  getIsStoreAndProductBossEligible = isStoreBossEligible => {
-    return isStoreBossEligible && this.isBossEligible;
-  };
-
-  pickupRenderCondition = isStoreAndProductBossEligible => {
-    return this.isBopisEligible && isStoreAndProductBossEligible;
-  };
-
-  noBossBopisInfo = () => {
-    return !this.isBopisEligible && !this.isBossEligible;
-  };
-
-  /**
-   * @method compareDefaultStore
-   * @description this method compares the value of userDefaultStore with the previous
-   * and new value received.
-   * @param {object} prevProps - the previous props receiving from the componentDidUpdate
-   * @returns {true} If userDefaultStore exists and  prevProps.userDefaultStore
-   * is null
-   * @returns {true} If both prev and new userDefaultStore exists and the id of both stores
-   * are different
-   * @returns {false} if userDefaultStore doesn't exists
-   *
-   */
-  compareDefaultStore(prevProps) {
-    const { userDefaultStore } = this.props;
-    if (userDefaultStore) {
-      if (!prevProps.userDefaultStore) {
-        return true;
-      }
-      if (
-        prevProps.userDefaultStore &&
-        userDefaultStore.basicInfo.id !== prevProps.userDefaultStore.basicInfo.id
-      ) {
-        return true;
-      }
-    }
-    return false;
-  }
-
   /**
    * @method renderPickupTitle
    * @param {object} miscInfo carries the information of the product with
@@ -390,27 +232,17 @@ class ProductPickup extends React.Component {
    * default store
    */
   renderPickupTitle() {
-    const { userDefaultStore, productInfo, itemValues, isRadialInventoryEnabled } = this.props;
-
-    let isStoreBossEligible = false;
-    if (userDefaultStore) {
-      isStoreBossEligible = numericStringToBool(userDefaultStore.storeBossInfo.isBossEligible);
-    }
-
-    let isbossInventoryAvailable;
-    if (isRadialInventoryEnabled) {
-      // kill switch RAD-171 RAD-74
-      isbossInventoryAvailable = !isBOSSProductOOS(productInfo.colorFitsSizesMap, itemValues);
-    } else {
-      isbossInventoryAvailable = !isProductOOS(productInfo.colorFitsSizesMap, itemValues); // RAD-171 RAD-74 to behave like production in case kill switch is off.
-    }
-    const isBossEligBossInvAvail = this.getBossEligBossInvAvail(
-      isStoreBossEligible,
-      isbossInventoryAvailable
-    );
-    if (this.isSkuResolved) {
+    const {
+      isSkuResolved,
+      isBopisEligible,
+      showChangeStore,
+      pickupTitleText,
+      userDefaultStore,
+      isBossEligBossInvAvail,
+    } = this.props;
+    if (isSkuResolved) {
       if (userDefaultStore) {
-        if (isBossEligBossInvAvail || this.isBopisEligible) {
+        if (showChangeStore) {
           /**
            * if the sku is resolved and the user has added a store to the account
            * then it @returns - store name and the link to change the store
@@ -446,7 +278,7 @@ class ProductPickup extends React.Component {
           </BodyCopy>
         );
       }
-      if (this.isBopisEligible && !isBossEligBossInvAvail) {
+      if (isBopisEligible && !isBossEligBossInvAvail) {
         // bopis only
         /**
          * @returns if the product is only bopis eligible and the sku is resolved
@@ -454,7 +286,7 @@ class ProductPickup extends React.Component {
          */
         return (
           <BodyCopy fontSize="fs16" fontWeight="semibold" fontFamily="secondary">
-            {labels.PRODUCT_PICKUP.PRODUCT_BOPIS}
+            {pickupTitleText}
           </BodyCopy>
         );
       }
@@ -464,13 +296,13 @@ class ProductPickup extends React.Component {
        */
       return (
         <BodyCopy fontSize="fs16" fontWeight="semibold" fontFamily="secondary">
-          {labels.PRODUCT_PICKUP.TITLE_DEFAULT_NOSTORE}
+          {pickupTitleText}
         </BodyCopy>
       );
     }
     return (
       <BodyCopy fontSize="fs16" fontWeight="semibold" fontFamily="secondary">
-        {labels.PRODUCT_PICKUP.TITLE_DEFAULT_NOSTORE}
+        {pickupTitleText}
       </BodyCopy>
     );
   }
@@ -497,31 +329,13 @@ class ProductPickup extends React.Component {
   renderPickupInfo() {
     const {
       bopisItemInventory,
-      userDefaultStore,
       offerEspotAvailable,
-      productInfo,
-      itemValues,
-      isRadialInventoryEnabled,
+      isStoreBopisEligible,
+      showPickupDetails,
+      isBopisEligible,
     } = this.props;
 
-    const isStoreBopisEligible = this.getIsStoreBopisEligible(bopisItemInventory);
-    let isStoreBossEligible = false;
-    if (userDefaultStore) {
-      isStoreBossEligible = numericStringToBool(userDefaultStore.storeBossInfo.isBossEligible);
-    }
-
-    let isStoreAndProductBossEligible = this.getIsStoreAndProductBossEligible(isStoreBossEligible);
-    // derive boss inventory from unbxd attribute v_qty_boss sepately RAD-74
-    if (isRadialInventoryEnabled) {
-      // kill switch RAD-171 RAD-74
-      const isBOSSInventoryAvailable = !isBOSSProductOOS(productInfo.colorFitsSizesMap, itemValues);
-      isStoreAndProductBossEligible = this.getIsStoreAndProductBossEligible(
-        isBOSSInventoryAvailable,
-        isStoreAndProductBossEligible
-      );
-    }
-
-    if (this.pickupRenderCondition(isStoreAndProductBossEligible)) {
+    if (showPickupDetails) {
       return (
         <div className="pickup-info">
           {isStoreBopisEligible && (
@@ -556,7 +370,7 @@ class ProductPickup extends React.Component {
         </div>
       );
     }
-    if (this.isBopisEligible) {
+    if (isBopisEligible) {
       return (
         isStoreBopisEligible && (
           <BodyCopy className="pickup-info">
@@ -583,34 +397,7 @@ class ProductPickup extends React.Component {
   }
 
   render() {
-    const {
-      userDefaultStore,
-      productInfo,
-      itemValues,
-      isRadialInventoryEnabled,
-      className,
-    } = this.props;
-
-    if (this.noBossBopisInfo()) {
-      return null;
-    }
-
-    this.isSkuResolved = validateSkuDetails(productInfo, itemValues);
-    const { isSubmitting } = this.state;
-
-    // RAD-74 Replace Outbound1 Inventory check to Outbound2(Radial/Boss Inventory)
-    let showPickupInfo;
-    if (isRadialInventoryEnabled) {
-      showPickupInfo =
-        userDefaultStore &&
-        this.isSkuResolved &&
-        !isBOSSProductOOS(productInfo.colorFitsSizesMap, itemValues);
-    } else {
-      showPickupInfo =
-        userDefaultStore &&
-        this.isSkuResolved &&
-        !isProductOOS(productInfo.colorFitsSizesMap, itemValues);
-    }
+    const { className, showPickupInfo, isSubmitting } = this.props;
 
     return (
       <React.Fragment>
