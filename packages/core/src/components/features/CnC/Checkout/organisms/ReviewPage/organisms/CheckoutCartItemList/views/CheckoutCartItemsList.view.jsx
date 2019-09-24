@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { Component } from 'react';
 import { PropTypes } from 'prop-types';
 import withStyles from '@tcp/core/src/components/common/hoc/withStyles';
 import { BodyCopy, Col, Row, Image } from '@tcp/core/src/components/common/atoms';
@@ -11,7 +11,14 @@ import { getProductDetails } from '../../../../../../CartItemTile/container/Cart
 import styles from '../styles/CheckoutCartItemsList.style';
 import CheckoutConstants from '../../../../../Checkout.constants';
 
-class CheckoutCartItemsList extends React.Component {
+/**
+ *
+ *
+ * @class CheckoutCartItemsList
+ * @extends {Component}
+ * @summary Component to render and sort items in bag as per shipping,pickups and store vise and show them on review page.
+ */
+class CheckoutCartItemsList extends Component {
   static propTypes = {
     /** amount of items in the cart (not items.length) */
     itemsCount: PropTypes.number.isRequired,
@@ -88,7 +95,13 @@ class CheckoutCartItemsList extends React.Component {
     );
   };
 
+  /**
+   * @function OrderTooltip
+   * @param {Object} deliveryItem - delivery item details
+   * @summary This function accepts a deliveryItem and gives tooltip data
+   */
   OrderTooltip = deliveryItem => {
+    const { labels } = this.props;
     return (
       <>
         {deliveryItem.storeAddress && (
@@ -106,13 +119,13 @@ class CheckoutCartItemsList extends React.Component {
       ${deliveryItem.storeAddress.zipCode}`}
             <br />
             <br />
-            <em>Today:</em>
+            <em>{labels.today}</em>
             {deliveryItem.storeTodayOpenRange}
             <br />
-            <em>Tomorrow:</em>
+            <em>{labels.tomorrow}</em>
             {deliveryItem.storeTomorrowOpenRange}
             <br />
-            <em>Phone:</em>
+            <em>{labels.phone}</em>
             {deliveryItem.storePhoneNumber}
           </p>
         )}
@@ -130,6 +143,7 @@ class CheckoutCartItemsList extends React.Component {
    * @summary This function accepts store details and returns the header html
    */
   getPickupHeader = (deliveryItem, isShowHeader) => {
+    const { labels } = this.props;
     return (
       <div className="title-list-pickup-product">
         {isShowHeader && (
@@ -143,7 +157,7 @@ class CheckoutCartItemsList extends React.Component {
                   fontFamily="secondary"
                   className="title-list-product"
                 >
-                  {`Pickup`}
+                  {labels.pickup}
                 </BodyCopy>
                 <BodyCopy
                   component="span"
@@ -152,11 +166,11 @@ class CheckoutCartItemsList extends React.Component {
                   fontFamily="secondary"
                   className="store-of-product"
                 >
-                  {`At `}
+                  {labels.at}
                 </BodyCopy>
                 <BodyCopy
                   component="span"
-                  fontWeight="semiBold"
+                  fontWeight="extrabold"
                   fontSize="fs10"
                   fontFamily="secondary"
                 >
@@ -198,6 +212,7 @@ class CheckoutCartItemsList extends React.Component {
    */
   getShippingListItems = (pickUpList, index) => {
     const headerClassName = cssClassName('header-list ', 'header-primary ');
+    const { labels } = this.props;
     if (pickUpList && pickUpList.list) {
       return (
         <div key={index}>
@@ -210,7 +225,7 @@ class CheckoutCartItemsList extends React.Component {
                   fontFamily="secondary"
                   className="title-list-product"
                 >
-                  {`Shipping`}
+                  {labels.shipping}
                 </BodyCopy>
               </div>
               <ul className="container-list-shopping-cart">
@@ -278,6 +293,10 @@ class CheckoutCartItemsList extends React.Component {
     return orderItemView;
   };
 
+  /**
+   * @function categorizingItemsForStores
+   * @summary This function categorizes items for stores
+   */
   categorizingItemsForStores = ({
     currentStore,
     currentStoreAddress,
@@ -290,7 +309,7 @@ class CheckoutCartItemsList extends React.Component {
     deliveryType,
     bucketReference,
   }) => {
-    const { currencySymbol } = this.props;
+    const { currencySymbol, labels } = this.props;
     const bucketReferenceTemp = bucketReference;
     const orderItem = {
       store: currentStore,
@@ -311,7 +330,7 @@ class CheckoutCartItemsList extends React.Component {
             fontFamily="secondary"
             className="title-list-product"
           >
-            {`Today, ${bopisDate.month} ${bopisDate.date}`}
+            {`${labels.today}, ${bopisDate.month} ${bopisDate.date}`}
           </BodyCopy>
         ),
     };
@@ -332,6 +351,10 @@ class CheckoutCartItemsList extends React.Component {
     }
   };
 
+  /**
+   * @function renderItems
+   * @summary This function responsible for rendedring view and calling further respective methods.
+   */
   renderItems() {
     const { items, currencySymbol } = this.props;
     const apiConfig = getAPIConfig();
@@ -424,6 +447,10 @@ class CheckoutCartItemsList extends React.Component {
     );
   }
 
+  /**
+   * @function render
+   * @summary This function responsible for rendedring view and calling further respective methods.
+   */
   render() {
     const { itemsCount, className, bagPageLabels } = this.props;
     return (

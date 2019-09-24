@@ -163,6 +163,12 @@ export const getLabelsCartItemTile = state => {
         lbl_cartTile_extra: extra,
         lbl_cartTile_off: off,
         lbl_cartTile_delete: deleteItem,
+        lbl_cartTile_today: today,
+        lbl_cartTile_tomorrow: tomorrow,
+        lbl_cartTile_phone: phone,
+        lbl_cartTile_pickup: pickup,
+        lbl_cartTile_at: at,
+        lbl_cartTile_shipping: shipping,
       },
       minibag: {
         lbl_miniBag_problemWithOrder: problemWithOrder,
@@ -239,6 +245,12 @@ export const getLabelsCartItemTile = state => {
     moveToBagLink,
     itemDeleted,
     sflSuccess,
+    today,
+    tomorrow,
+    phone,
+    pickup,
+    at,
+    shipping,
   };
 };
 
