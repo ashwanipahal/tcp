@@ -34,9 +34,7 @@ export default css`
     }
 
     .empty-sfl-msg {
-      display: flex;
-      flex-direction: column;
-      align-items: center;
+      display: block;
       margin-top: ${props => props.theme.spacing.ELEM_SPACING.MED};
       margin-bottom: ${props => props.theme.spacing.ELEM_SPACING.MED};
       padding: ${props => props.theme.spacing.ELEM_SPACING.MED};

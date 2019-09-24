@@ -17,7 +17,7 @@ exports[`EmptyBagPage component with false should renders correctly for SFL 1`] 
       fontWeight="regular"
       letterSpacing="normal"
       lineHeight="normal"
-      textAlign="left"
+      textAlign="center"
     >
       Not ready to buy anything yet?
     </Styled(BodyCopy)>
@@ -31,7 +31,7 @@ exports[`EmptyBagPage component with false should renders correctly for SFL 1`] 
       fontWeight="regular"
       letterSpacing="normal"
       lineHeight="normal"
-      textAlign="left"
+      textAlign="center"
     >
       You can save it for later and it will appear in this area.
     </Styled(BodyCopy)>

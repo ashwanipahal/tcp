@@ -14,6 +14,7 @@ const renderEmptySFL = bagLabels => {
         color="gray.900"
         fontSize="fs14"
         fontFamily="secondary"
+        textAlign="center"
         dataLocator={getLocator('empty_sfl_Msg_1')}
       >
         {bagLabels.emptySflMsg1}
@@ -22,6 +23,7 @@ const renderEmptySFL = bagLabels => {
         color="gray.900"
         fontSize="fs14"
         fontFamily="secondary"
+        textAlign="center"
         dataLocator={getLocator('empty_sfl_Msg_2')}
       >
         {bagLabels.emptySflMsg2}
