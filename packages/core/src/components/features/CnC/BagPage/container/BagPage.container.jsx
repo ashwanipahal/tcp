@@ -6,6 +6,8 @@ import BagPage from '../views/BagPage.view';
 import BAG_PAGE_ACTIONS from './BagPage.actions';
 import {
   getCartOrderList,
+  getIsCartItemsUpdating,
+  getLabelsCartItemTile,
   getIsCartItemsSFL,
 } from '../../CartItemTile/container/CartItemTile.selectors';
 import { getUserLoggedInState } from '../../../account/User/container/User.selectors';
@@ -48,6 +50,7 @@ export class BagPageContainer extends React.Component<Props> {
       isGuest,
       sflItems,
       fetchLabels,
+      isCartItemsUpdating,
       toastMessage,
       isCartItemSFL,
     } = this.props;
@@ -68,6 +71,7 @@ export class BagPageContainer extends React.Component<Props> {
         handleCartCheckout={handleCartCheckout}
         sflItems={sflItems}
         fetchLabels={fetchLabels}
+        isCartItemsUpdating={isCartItemsUpdating}
         toastMessage={toastMessage}
         isCartItemSFL={isCartItemSFL}
       />
@@ -100,7 +104,7 @@ export const mapDispatchToProps = (dispatch: ({}) => void) => {
 const mapStateToProps = state => {
   const { size = 0 } = getCartOrderList(state) || {};
   return {
-    labels: BagPageSelector.getBagPageLabels(state),
+    labels: { ...BagPageSelector.getBagPageLabels(state), ...getLabelsCartItemTile(state) },
     totalCount: BagPageSelector.getTotalItems(state),
     productsTypes: BagPageSelector.getProductsTypes(state),
     orderItemsCount: size,
@@ -109,6 +113,7 @@ const mapStateToProps = state => {
     isUserLoggedIn: getUserLoggedInState(state),
     isGuest: isGuestUser(state),
     sflItems: BagPageSelector.getsflItemsList(state),
+    isCartItemsUpdating: getIsCartItemsUpdating(state),
     isCartItemSFL: getIsCartItemsSFL(state),
   };
 };

@@ -68,7 +68,6 @@ const styles = css`
   }
 
   .item-delete-button {
-    flex: 1;
     height: 51px;
     background-color: ${props => props.theme.colors.PRIMARY.BLUE};
     &:hover {
