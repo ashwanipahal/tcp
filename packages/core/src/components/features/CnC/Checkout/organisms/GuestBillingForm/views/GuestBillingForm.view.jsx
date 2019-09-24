@@ -8,7 +8,6 @@ import cvvInfo from '../../../molecules/CVVInfo';
 import PaymentMethods from '../../../../common/molecules/PaymentMethods';
 import BodyCopy from '../../../../../../common/atoms/BodyCopy';
 import CONSTANTS, { CHECKOUT_ROUTES } from '../../../Checkout.constants';
-import { getLabelValue } from '../../../../../../../utils';
 import CheckoutBillingAddress from '../../CheckoutBillingAddress';
 import AddressFields from '../../../../../../common/molecules/AddressFields';
 import CheckoutFooter from '../../../molecules/CheckoutFooter';
@@ -35,6 +34,7 @@ class GuestBillingForm extends React.Component {
     backLinkPickup: PropTypes.string,
     handleSubmit: PropTypes.func.isRequired,
     billingData: PropTypes.shape({}),
+    creditFieldLabels: PropTypes.shape({}),
     showAccordian: PropTypes.bool,
   };
 
@@ -52,6 +52,7 @@ class GuestBillingForm extends React.Component {
     nextSubmitText: '',
     backLinkShipping: '',
     backLinkPickup: '',
+    creditFieldLabels: {},
     showAccordian: true,
   };
 
@@ -87,6 +88,7 @@ class GuestBillingForm extends React.Component {
       backLinkPickup,
       handleSubmit,
       billingData,
+      creditFieldLabels,
       showAccordian,
     } = this.props;
     let cvvError;
@@ -103,7 +105,7 @@ class GuestBillingForm extends React.Component {
           data-locator="billing-details"
           className="elem-mb-XS elem-mt-MED"
         >
-          {getLabelValue(labels, 'lbl_billing_paymentMethodTitle')}
+          {labels.paymentMethod}
         </BodyCopy>
         <PaymentMethods labels={labels} />
         <div className="elem-mt-LRG elem-pb-XL">
@@ -117,6 +119,7 @@ class GuestBillingForm extends React.Component {
                 formName="checkoutBilling"
                 isExpirationRequired={isExpirationRequired}
                 isGuest={isGuest}
+                creditFieldLabels={creditFieldLabels}
               />
               <CheckoutBillingAddress
                 isGuest={isGuest}
