@@ -23,7 +23,7 @@ exports[`ContactInformationFormWrapper component should renders correctly 1`] = 
       className="contact_information_form"
       colSize={
         Object {
-          "large": 6,
+          "large": 5,
           "medium": 4,
           "small": 6,
         }
@@ -984,7 +984,7 @@ exports[`ContactInformationFormWrapper component should renders correctly 1`] = 
       className="contact_information_form"
       colSize={
         Object {
-          "large": 6,
+          "large": 5,
           "medium": 4,
           "small": 6,
         }

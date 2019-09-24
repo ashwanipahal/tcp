@@ -113,7 +113,7 @@ class ProductInformation extends React.Component {
       isShowSaveForLater
     ) {
       return (
-        <MarginLeft onPress={() => {}}>
+        <MarginLeft onPress={() => CartItemTileExtension.handleMoveItemtoSaveList(this.props)}>
           <Image
             data-locator="save-for-later-link"
             source={sflIcon}

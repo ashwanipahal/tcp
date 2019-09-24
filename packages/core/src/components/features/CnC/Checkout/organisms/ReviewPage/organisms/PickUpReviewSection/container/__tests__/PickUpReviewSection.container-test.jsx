@@ -3,8 +3,8 @@ import { shallow } from 'enzyme';
 import { PickUpReviewContainer } from '../PickUpReviewSection.container';
 import PickUpReviewSection from '../../../../molecules/PickUpReviewSection';
 
-describe('Coupon Container', () => {
-  it('should render CouponContainer section', () => {
+describe('Pickup Review', () => {
+  it('should render Container section', () => {
     const tree = shallow(
       <PickUpReviewContainer
         cartStores={{}}
