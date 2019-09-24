@@ -10,6 +10,12 @@ const StyledTouchableOpacity = styled.TouchableOpacity`
   align-items: flex-end;
   padding: 0px 0px ${props => props.theme.spacing.ELEM_SPACING.SM}
     ${props => props.theme.spacing.ELEM_SPACING.SM};
+  ${props =>
+    props.isOverlay
+      ? `
+    width: 40px;
+`
+      : ``}
 `;
 
 const ModalHeading = styled.Text`
@@ -29,6 +35,13 @@ const RowWrapper = styled.View`
     ${props => props.theme.spacing.ELEM_SPACING.LRG} 0
     ${props => props.theme.spacing.ELEM_SPACING.LRG};
   flex-direction: row;
+  ${props =>
+    props.isOverlay
+      ? `
+    position: absolute;
+    z-index: 1;
+  `
+      : ``}
 `;
 
 const ImageWrapper = styled.View`

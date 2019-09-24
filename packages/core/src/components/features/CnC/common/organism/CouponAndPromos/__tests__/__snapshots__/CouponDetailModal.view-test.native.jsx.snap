@@ -12,6 +12,7 @@ exports[`Detail Coupon Modal should render correctly 1`] = `
   }
   horizontalBar={false}
   isOpen={true}
+  isOverlay={false}
   onRequestClose={[Function]}
   overlayClassName="TCPModal__Overlay"
 >

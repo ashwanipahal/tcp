@@ -21,6 +21,7 @@ import BodyCopy from '../../../atoms/BodyCopy';
 type Props = {
   isOpen: boolean,
   children: node,
+  isOverlay?: boolean,
 };
 
 const closeIcon = require('../../../../../assets/close.png');
@@ -30,19 +31,25 @@ type CloseIconProps = {
   onRequestClose: Function,
   headerStyle: Object,
   iconType: String,
+  isOverlay: Boolean,
 };
 
-const getCloseIcon = ({ onRequestClose, headerStyle, iconType }: CloseIconProps) => {
+const getCloseIcon = ({ onRequestClose, headerStyle, iconType, isOverlay }: CloseIconProps) => {
   return (
     <ImageWrapper style={headerStyle}>
-      <StyledTouchableOpacity onPress={onRequestClose}>
+      <StyledTouchableOpacity
+        onPress={onRequestClose}
+        accessibilityRole="button"
+        accessibilityLabel="close"
+        isOverlay={isOverlay}
+      >
         <StyledCrossImage source={iconType === 'arrow' ? arrowIcon : closeIcon} />
       </StyledTouchableOpacity>
     </ImageWrapper>
   );
 };
 
-const ModalNative = ({ isOpen, children, ...otherProps }: Props) => {
+const ModalNative = ({ isOpen, children, isOverlay, ...otherProps }: Props) => {
   const {
     heading,
     onRequestClose,
@@ -67,7 +74,7 @@ const ModalNative = ({ isOpen, children, ...otherProps }: Props) => {
       >
         <ToastContainer />
         <StatusBar hidden />
-        <RowWrapper>
+        <RowWrapper isOverlay={isOverlay}>
           {heading && (
             <ModalHeading fullWidth={fullWidth}>
               <BodyCopy
@@ -79,7 +86,7 @@ const ModalNative = ({ isOpen, children, ...otherProps }: Props) => {
               />
             </ModalHeading>
           )}
-          {getCloseIcon({ onRequestClose, headerStyle, iconType })}
+          {getCloseIcon({ onRequestClose, headerStyle, iconType, isOverlay })}
         </RowWrapper>
         {horizontalBar ? (
           <LineWrapper>
@@ -92,6 +99,10 @@ const ModalNative = ({ isOpen, children, ...otherProps }: Props) => {
       </Modal>
     </SafeAreaView>
   );
+};
+
+ModalNative.defaultProps = {
+  isOverlay: false,
 };
 
 export default ModalNative;
