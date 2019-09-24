@@ -30,14 +30,14 @@ class StoreAddressTile extends PureComponent {
   }
 
   getDetailsTileFooter() {
-    const { labels } = this.props;
+    const { labels, locatorGetDirections } = this.props;
     return (
       <div>
         <Button
           buttonVariation="fixed-width"
           fill="BLUE"
           type="button"
-          data-locator="get-store-directions"
+          data-locator={locatorGetDirections}
         >
           {labels.lbl_storelocators_landingpage_getdirections_link}
         </Button>
@@ -46,7 +46,13 @@ class StoreAddressTile extends PureComponent {
   }
 
   getListingTileFooter() {
-    const { labels, openStoreDetail, isFavorite, setFavoriteStore } = this.props;
+    const {
+      labels,
+      openStoreDetail,
+      isFavorite,
+      setFavoriteStore,
+      locatorSetFavStore,
+    } = this.props;
     return (
       <Fragment>
         <div>
@@ -69,7 +75,7 @@ class StoreAddressTile extends PureComponent {
               onClick={setFavoriteStore}
               buttonVariation="fixed-width"
               type="button"
-              data-locator="set-favorite-store"
+              data-locator={locatorSetFavStore}
             >
               {labels.lbl_storelocators_landingpage_setfavStore}
             </Button>
