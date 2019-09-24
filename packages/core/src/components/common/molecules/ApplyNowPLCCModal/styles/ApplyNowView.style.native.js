@@ -8,23 +8,21 @@ export const ImageContainer = styled.View`
 
 export const Container = styled.View`
   width: 85%;
-  margin-top: ${props => props.theme.spacing.LAYOUT_SPACING.XXS};
-  margin-left: ${props => props.theme.spacing.LAYOUT_SPACING.XS};
-  margin-right: ${props => props.theme.spacing.LAYOUT_SPACING.XS};
+  margin: ${props => props.theme.spacing.LAYOUT_SPACING.XXS}
+    ${props => props.theme.spacing.LAYOUT_SPACING.XS} 0
+    ${props => props.theme.spacing.LAYOUT_SPACING.XS};
 `;
 
 export const TextBoxContainer = styled.View`
   width: 100%;
-  padding-top: ${props => props.theme.spacing.LAYOUT_SPACING.XXS};
-  padding-left: ${props => props.theme.spacing.LAYOUT_SPACING.XXS};
-  padding-right: ${props => props.theme.spacing.LAYOUT_SPACING.XXS};
+  padding: ${props => props.theme.spacing.LAYOUT_SPACING.XXS}
+    ${props => props.theme.spacing.LAYOUT_SPACING.XXS} 0
+    ${props => props.theme.spacing.LAYOUT_SPACING.XXS};
 `;
 
 export const StyledBodyCopy = styled(BodyCopy)`
-  padding-top: ${props => props.paddingTop || '0px'};
-  padding-left: ${props => props.paddingLeft || '0px'};
-  padding-right: ${props => props.paddingRight || '0px'};
-  padding-bottom: ${props => props.paddingBottom || '0px'};
+  padding: ${props => props.paddingTop || '0px'} ${props => props.paddingRight || '0px'}
+    ${props => props.paddingBottom || '0px'} ${props => props.paddingLeft || '0px'};
 `;
 
 export const ScrollViewContainer = styled.ScrollView`
@@ -39,19 +37,17 @@ export const ButtonWrapper = styled.View`
 `;
 
 export const StyledAnchor = styled(Anchor)`
-  padding-top: ${props => props.paddingTop || '0px'};
-  padding-left: ${props => props.paddingLeft || '0px'};
-  padding-right: ${props => props.paddingRight || '0px'};
-  padding-bottom: ${props => props.paddingBottom || '0px'};
+  padding: ${props => props.paddingTop || '0px'} ${props => props.paddingRight || '0px'}
+    ${props => props.paddingBottom || '0px'} ${props => props.paddingLeft || '0px'};
   align-items: center;
   justify-content: center;
 `;
 
 export const BottomContainer = styled.View`
   width: 100%;
-  padding-top: ${props => props.theme.spacing.LAYOUT_SPACING.XXS};
-  padding-left: ${props => props.theme.spacing.LAYOUT_SPACING.XXS};
-  padding-right: ${props => props.theme.spacing.LAYOUT_SPACING.XXS};
+  padding: ${props => props.theme.spacing.LAYOUT_SPACING.XXS}
+    ${props => props.theme.spacing.LAYOUT_SPACING.XXS} 0
+    ${props => props.theme.spacing.LAYOUT_SPACING.XXS};
   align-items: center;
   flex-direction: row;
   justify-content: center;
