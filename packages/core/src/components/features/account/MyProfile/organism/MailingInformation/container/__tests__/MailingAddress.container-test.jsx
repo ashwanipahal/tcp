@@ -86,6 +86,7 @@ describe('MailingAddressContainer', () => {
         submitAddressFormAction={jest.fn()}
         verifyAddressAction={jest.fn()}
         backToAddressBookClick={jest.fn()}
+        getAddressListAction={jest.fn()}
         {...props}
       />
     );
