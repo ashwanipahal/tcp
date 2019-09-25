@@ -424,6 +424,20 @@ export const setVenmoPaymentInProgress = payload => {
   };
 };
 
+export const setVenmoPickupMessageState = payload => {
+  return {
+    type: constants.SET_VENMO_PICKUP_MESSAGE_STATE,
+    payload,
+  };
+};
+
+export const setVenmoShippingMessageState = payload => {
+  return {
+    type: constants.SET_VENMO_SHIPPING_MESSAGE_STATE,
+    payload,
+  };
+};
+
 export const resetAddGiftCard = payload => {
   return {
     type: constants.RESET_ADD_GIFT_CARD,

@@ -36,6 +36,8 @@ const ProductDetailView = ({
   productInfo,
   plpLabels,
   pdpLabels,
+  handleAddToBag,
+  addToBagError,
 }) => {
   const currentProduct = productDetails && productDetails.get('currentProduct');
   const isWeb =
@@ -89,7 +91,12 @@ const ProductDetailView = ({
         >
           <Product productDetails={productDetails} currencySymbol={currency} />
           {currentProduct && (
-            <ProductAddToBagContainer currentProduct={currentProduct} plpLabels={plpLabels} />
+            <ProductAddToBagContainer
+              handleFormSubmit={handleAddToBag}
+              errorOnHandleSubmit={addToBagError}
+              currentProduct={currentProduct}
+              plpLabels={plpLabels}
+            />
           )}
           {productInfo && colorProduct && (
             <ProductPickupContainer
@@ -145,6 +152,8 @@ const ProductDetailView = ({
 
 ProductDetailView.propTypes = {
   className: PropTypes.string,
+  addToBagError: PropTypes.string,
+  handleAddToBag: PropTypes.func.isRequired,
   productDetails: PropTypes.shape({}),
   productInfo: PRODUCT_INFO_PROP_TYPE_SHAPE,
   longDescription: PropTypes.string,
@@ -167,6 +176,7 @@ ProductDetailView.defaultProps = {
   },
   productInfo: {},
   pdpLabels: {},
+  addToBagError: '',
 };
 
 export default withStyles(ProductDetailView, ProductDetailStyle);

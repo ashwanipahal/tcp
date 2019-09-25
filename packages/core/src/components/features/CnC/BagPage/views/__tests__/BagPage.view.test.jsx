@@ -16,6 +16,7 @@ describe('Bag page View', () => {
     showConfirmationModal: true,
     closeCheckoutConfirmationModal: jest.fn(),
     removeUnqualifiedItemsAndCheckout: jest.fn(),
+    setVenmoPaymentInProgress: jest.fn(),
     sflItems: {},
   };
 

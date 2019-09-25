@@ -13,6 +13,7 @@ import AddressFields from '../../../../../../common/molecules/AddressFields';
 import CheckoutFooter from '../../../molecules/CheckoutFooter';
 import utility from '../../../util/utility';
 import CREDIT_CARD_CONSTANTS from '../../BillingPaymentForm/container/CreditCard.constants';
+import VenmoPaymentButton from '../../../../../../common/atoms/VenmoPaymentButton';
 import CheckoutOrderInfo from '../../../molecules/CheckoutOrderInfoMobile';
 
 class GuestBillingForm extends React.Component {
@@ -133,6 +134,9 @@ class GuestBillingForm extends React.Component {
               />
             </>
           ) : null}
+          {paymentMethodId === CONSTANTS.PAYMENT_METHOD_VENMO && (
+            <VenmoPaymentButton className="venmo-container" />
+          )}
         </div>
         <CheckoutOrderInfo isGuest={isGuest} showAccordian={showAccordian} />
         <CheckoutFooter

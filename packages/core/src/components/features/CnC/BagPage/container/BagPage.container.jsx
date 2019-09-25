@@ -13,22 +13,21 @@ import {
   getIsSflItemRemoved,
 } from '../../CartItemTile/container/CartItemTile.selectors';
 import { getUserLoggedInState } from '../../../account/User/container/User.selectors';
+import {
+  setVenmoPaymentInProgress,
+  setVenmoPickupMessageState,
+  setVenmoShippingMessageState,
+} from '../../Checkout/container/Checkout.action';
 import { toastMessageInfo } from '../../../../common/atoms/Toast/container/Toast.actions.native';
 import utils, { isClient } from '../../../../../utils';
-
-// @flow
-// type Props = {
-//   closeModal: Function,
-//   addedToBagData: any,
-//   isOpenDialog: boolean,
-//   labels: any,
-//   quantity: number,
-// };
 
 export class BagPageContainer extends React.Component<Props> {
   componentDidMount() {
     const { needHelpContentId, fetchNeedHelpContent } = this.props;
     fetchNeedHelpContent([needHelpContentId]);
+    const { setVenmoPickupState, setVenmoShippingState } = this.props;
+    setVenmoPickupState(false);
+    setVenmoShippingState(false);
   }
 
   componentDidUpdate() {
@@ -63,6 +62,7 @@ export class BagPageContainer extends React.Component<Props> {
       isGuest,
       sflItems,
       fetchLabels,
+      setVenmoInProgress,
       isCartItemsUpdating,
       toastMessage,
       isCartItemSFL,
@@ -85,6 +85,7 @@ export class BagPageContainer extends React.Component<Props> {
         handleCartCheckout={handleCartCheckout}
         sflItems={sflItems}
         fetchLabels={fetchLabels}
+        setVenmoPaymentInProgress={setVenmoInProgress}
         isCartItemsUpdating={isCartItemsUpdating}
         toastMessage={toastMessage}
         isCartItemSFL={isCartItemSFL}
@@ -96,7 +97,7 @@ export class BagPageContainer extends React.Component<Props> {
 
 BagPageContainer.getInitActions = () => BAG_PAGE_ACTIONS.initActions;
 
-export const mapDispatchToProps = (dispatch: ({}) => void) => {
+export const mapDispatchToProps = dispatch => {
   return {
     initialActions: () => {
       dispatch(BAG_PAGE_ACTIONS.getCartData());
@@ -110,6 +111,9 @@ export const mapDispatchToProps = (dispatch: ({}) => void) => {
     fetchLabels: () => {
       dispatch(BAG_PAGE_ACTIONS.initActions[0]);
     },
+    setVenmoInProgress: data => dispatch(setVenmoPaymentInProgress(data)),
+    setVenmoPickupState: data => dispatch(setVenmoPickupMessageState(data)),
+    setVenmoShippingState: data => dispatch(setVenmoShippingMessageState(data)),
     toastMessage: palyoad => {
       dispatch(toastMessageInfo(palyoad));
     },

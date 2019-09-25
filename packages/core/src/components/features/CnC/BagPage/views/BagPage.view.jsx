@@ -11,23 +11,17 @@ import CnCTemplate from '../../common/organism/CnCTemplate';
 import BAGPAGE_CONSTANTS from '../BagPage.constants';
 import styles, { addedToBagActionsStyles } from '../styles/BagPage.style';
 
-// @flow
-// type Props = {
-//   openState: Function,
-//   onRequestClose: Function,
-//   className: string,
-//   addedToBagData: any,
-//   labels: any,
-//   quantity: number,
-//   handleContinueShopping: Function,
-// };
-
 class BagPageView extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
       activeSection: BAGPAGE_CONSTANTS.BAG_STATE,
     };
+  }
+
+  componentDidMount() {
+    const { setVenmoPaymentInProgress } = this.props;
+    setVenmoPaymentInProgress(false);
   }
 
   renderLeftSection = () => {
@@ -164,6 +158,7 @@ BagPageView.propTypes = {
   isGuest: PropTypes.bool.isRequired,
   handleCartCheckout: PropTypes.func.isRequired,
   sflItems: PropTypes.shape([]).isRequired,
+  setVenmoPaymentInProgress: PropTypes.func.isRequired,
 };
 
 export default withStyles(BagPageView, styles);
