@@ -1,5 +1,6 @@
 import React from 'react';
 import { connect } from 'react-redux';
+import { withRouter } from 'next/router'; //eslint-disable-line
 import { isGuest as isGuestUser } from '@tcp/core/src/components/features/CnC/Checkout/container/Checkout.selector';
 import BagPageSelector from './BagPage.selectors';
 import BagPage from '../views/BagPage.view';
@@ -9,6 +10,7 @@ import {
   getIsCartItemsUpdating,
   getLabelsCartItemTile,
   getIsCartItemsSFL,
+  getIsSflItemRemoved,
 } from '../../CartItemTile/container/CartItemTile.selectors';
 import { getUserLoggedInState } from '../../../account/User/container/User.selectors';
 import {
@@ -17,6 +19,7 @@ import {
   setVenmoShippingMessageState,
 } from '../../Checkout/container/Checkout.action';
 import { toastMessageInfo } from '../../../../common/atoms/Toast/container/Toast.actions.native';
+import utils, { isClient } from '../../../../../utils';
 
 export class BagPageContainer extends React.Component<Props> {
   componentDidMount() {
@@ -25,6 +28,16 @@ export class BagPageContainer extends React.Component<Props> {
     const { setVenmoPickupState, setVenmoShippingState } = this.props;
     setVenmoPickupState(false);
     setVenmoShippingState(false);
+  }
+
+  componentDidUpdate() {
+    if (isClient()) {
+      const { router } = this.props;
+      const isSfl = utils.getObjectValue(router, undefined, 'query', 'isSfl');
+      if (isSfl) {
+        document.querySelector('.save-for-later-section-heading').scrollIntoView(true);
+      }
+    }
   }
 
   closeModal = () => {};
@@ -53,6 +66,7 @@ export class BagPageContainer extends React.Component<Props> {
       isCartItemsUpdating,
       toastMessage,
       isCartItemSFL,
+      isSflItemRemoved,
     } = this.props;
 
     const showAddTobag = false;
@@ -75,6 +89,7 @@ export class BagPageContainer extends React.Component<Props> {
         isCartItemsUpdating={isCartItemsUpdating}
         toastMessage={toastMessage}
         isCartItemSFL={isCartItemSFL}
+        isSflItemRemoved={isSflItemRemoved}
       />
     );
   }
@@ -119,10 +134,13 @@ const mapStateToProps = state => {
     sflItems: BagPageSelector.getsflItemsList(state),
     isCartItemsUpdating: getIsCartItemsUpdating(state),
     isCartItemSFL: getIsCartItemsSFL(state),
+    isSflItemRemoved: getIsSflItemRemoved(state),
   };
 };
 
-export default connect(
-  mapStateToProps,
-  mapDispatchToProps
-)(BagPageContainer);
+export default withRouter(
+  connect(
+    mapStateToProps,
+    mapDispatchToProps
+  )(BagPageContainer)
+);

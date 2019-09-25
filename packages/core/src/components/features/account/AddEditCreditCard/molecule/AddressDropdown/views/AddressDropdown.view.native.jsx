@@ -167,12 +167,11 @@ export class AddressDropdown extends React.PureComponent<Props> {
         onPress={this.openAddressBook}
         disableButton={disableBtn}
       />
-    ) :
-      (
-        <AddNewAddressWrapper onPress={this.openAddressBook}>
-          <BodyCopy fontSize="fs14" mobileFontFamily="secondary" fontWeight="black" text={label} />
-        </AddNewAddressWrapper>
-      );
+    ) : (
+      <AddNewAddressWrapper onPress={this.openAddressBook}>
+        <BodyCopy fontSize="fs14" mobileFontFamily="secondary" fontWeight="black" text={label} />
+      </AddNewAddressWrapper>
+    );
   };
 
   /**
@@ -194,8 +193,8 @@ export class AddressDropdown extends React.PureComponent<Props> {
             showDefaultText={item && item.primary}
           />
         ) : (
-            this.renderButton({ item })
-          )}
+          this.renderButton({ item })
+        )}
       </DropDownItemContainer>
     );
   };
@@ -273,7 +272,7 @@ export class AddressDropdown extends React.PureComponent<Props> {
           }}
           onLayout={() => {
             if (this.rowMarker) {
-              this.rowMarker.measure(() => { });
+              this.rowMarker.measure(() => {});
             }
           }}
         >

@@ -18,6 +18,7 @@ exports[`ButtonList component renders correctly if  cards present and addNewCCSt
       fontWeight="regular"
       letterSpacing="normal"
       lineHeight="normal"
+      link={null}
       textAlign="left"
     />
     <Styled(PaymentMethods)
@@ -244,6 +245,7 @@ exports[`ButtonList component renders correctly if  no cards present  1`] = `
       fontWeight="regular"
       letterSpacing="normal"
       lineHeight="normal"
+      link={null}
       textAlign="left"
     />
     <Styled(PaymentMethods)
@@ -384,6 +386,7 @@ exports[`ButtonList component renders correctly if payment method is diff 1`] = 
       fontWeight="regular"
       letterSpacing="normal"
       lineHeight="normal"
+      link={null}
       textAlign="left"
     />
     <Styled(PaymentMethods)
@@ -442,6 +445,7 @@ exports[`ButtonList component renders correctly without props 1`] = `
       fontWeight="regular"
       letterSpacing="normal"
       lineHeight="normal"
+      link={null}
       textAlign="left"
     />
     <Styled(PaymentMethods)
@@ -571,6 +575,7 @@ exports[`ButtonList component renders correctly without props 1`] = `
       fontWeight="regular"
       letterSpacing="normal"
       lineHeight="normal"
+      link={null}
       textAlign="left"
     >
       <Styled(BodyCopy)
@@ -583,6 +588,7 @@ exports[`ButtonList component renders correctly without props 1`] = `
         fontWeight="regular"
         letterSpacing="normal"
         lineHeight="normal"
+        link={null}
         textAlign="left"
       />
       <Styled(Anchor)
@@ -651,7 +657,7 @@ exports[`ButtonList component renders correctly without props 1`] = `
               "$$typeof": Symbol(react.forward_ref),
               "attrs": Array [],
               "componentStyle": ComponentStyle {
-                "componentId": "sc-bwzfXH",
+                "componentId": "sc-htpNat",
                 "isStatic": false,
                 "rules": Array [
                   "
@@ -794,7 +800,7 @@ exports[`ButtonList component renders correctly without props 1`] = `
               "displayName": "Styled(TextBox)",
               "foldedComponentIds": Array [],
               "render": [Function],
-              "styledComponentId": "sc-bwzfXH",
+              "styledComponentId": "sc-htpNat",
               "target": [Function],
               "toString": [Function],
               "warnTooManyClasses": [Function],
@@ -845,7 +851,7 @@ exports[`ButtonList component renders correctly without props 1`] = `
             "$$typeof": Symbol(react.forward_ref),
             "attrs": Array [],
             "componentStyle": ComponentStyle {
-              "componentId": "sc-htpNat",
+              "componentId": "sc-bxivhb",
               "isStatic": false,
               "rules": Array [
                 "
@@ -962,7 +968,7 @@ exports[`ButtonList component renders correctly without props 1`] = `
             "displayName": "Styled(InputCheckbox)",
             "foldedComponentIds": Array [],
             "render": [Function],
-            "styledComponentId": "sc-htpNat",
+            "styledComponentId": "sc-bxivhb",
             "target": [Function],
             "toString": [Function],
             "warnTooManyClasses": [Function],
@@ -982,6 +988,7 @@ exports[`ButtonList component renders correctly without props 1`] = `
           fontWeight="regular"
           letterSpacing="normal"
           lineHeight="normal"
+          link={null}
           textAlign="left"
         />
       </Field>
@@ -1056,6 +1063,7 @@ exports[`ButtonList component renders correctly without props 2`] = `
       fontWeight="regular"
       letterSpacing="normal"
       lineHeight="normal"
+      link={null}
       textAlign="left"
     />
     <Styled(PaymentMethods)
@@ -1185,6 +1193,7 @@ exports[`ButtonList component renders correctly without props 2`] = `
       fontWeight="regular"
       letterSpacing="normal"
       lineHeight="normal"
+      link={null}
       textAlign="left"
     >
       <Styled(BodyCopy)
@@ -1197,6 +1206,7 @@ exports[`ButtonList component renders correctly without props 2`] = `
         fontWeight="regular"
         letterSpacing="normal"
         lineHeight="normal"
+        link={null}
         textAlign="left"
       />
       <Styled(Anchor)
@@ -1265,7 +1275,7 @@ exports[`ButtonList component renders correctly without props 2`] = `
               "$$typeof": Symbol(react.forward_ref),
               "attrs": Array [],
               "componentStyle": ComponentStyle {
-                "componentId": "sc-bwzfXH",
+                "componentId": "sc-htpNat",
                 "isStatic": false,
                 "rules": Array [
                   "
@@ -1408,7 +1418,7 @@ exports[`ButtonList component renders correctly without props 2`] = `
               "displayName": "Styled(TextBox)",
               "foldedComponentIds": Array [],
               "render": [Function],
-              "styledComponentId": "sc-bwzfXH",
+              "styledComponentId": "sc-htpNat",
               "target": [Function],
               "toString": [Function],
               "warnTooManyClasses": [Function],
@@ -1459,7 +1469,7 @@ exports[`ButtonList component renders correctly without props 2`] = `
             "$$typeof": Symbol(react.forward_ref),
             "attrs": Array [],
             "componentStyle": ComponentStyle {
-              "componentId": "sc-htpNat",
+              "componentId": "sc-bxivhb",
               "isStatic": false,
               "rules": Array [
                 "
@@ -1576,7 +1586,7 @@ exports[`ButtonList component renders correctly without props 2`] = `
             "displayName": "Styled(InputCheckbox)",
             "foldedComponentIds": Array [],
             "render": [Function],
-            "styledComponentId": "sc-htpNat",
+            "styledComponentId": "sc-bxivhb",
             "target": [Function],
             "toString": [Function],
             "warnTooManyClasses": [Function],
@@ -1596,6 +1606,7 @@ exports[`ButtonList component renders correctly without props 2`] = `
           fontWeight="regular"
           letterSpacing="normal"
           lineHeight="normal"
+          link={null}
           textAlign="left"
         />
       </Field>

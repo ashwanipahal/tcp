@@ -28,6 +28,7 @@ exports[`AddedToBagActions component AddedToBagActions component renders correct
           fontWeight="extrabold"
           letterSpacing="normal"
           lineHeight="normal"
+          link={null}
           textAlign="left"
         />
       </Styled(Button)>
@@ -61,6 +62,7 @@ exports[`AddedToBagActions component AddedToBagActions component renders correct
         fontWeight="extrabold"
         letterSpacing="normal"
         lineHeight="normal"
+        link={null}
         textAlign="left"
       />
     </Styled(Button)>

@@ -1,7 +1,6 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import 'core-js/stable/string/includes';
-import { configurePlpNavigationFromCMSUrl } from '../../../../utils';
+import { configureInternalNavigationFromCMSUrl } from '../../../../utils';
 import { Anchor, Button } from '../../atoms';
 import errorBoundary from '../../hoc/withErrorBoundary';
 
@@ -20,6 +19,7 @@ const ButtonCTA = props => {
     uniqueKey,
     className,
     dataLocator,
+    dataLocatorCTA,
     ctaInfo: { className: ctaClassName, ctaVariation, link },
     ...otherProps
   } = props;
@@ -28,7 +28,7 @@ const ButtonCTA = props => {
 
   let to = actualUrl;
   if (!actualUrl) {
-    to = configurePlpNavigationFromCMSUrl(url);
+    to = configureInternalNavigationFromCMSUrl(url);
   }
 
   return (
@@ -39,11 +39,12 @@ const ButtonCTA = props => {
       asPath={url}
       target={target}
       title={title}
+      dataLocator={dataLocatorCTA || `${dataLocator}-link`}
     >
       <Button
         className={className}
         buttonVariation={ctaVariation}
-        data-locator={dataLocator && dataLocator.cta}
+        dataLocator={dataLocator}
         {...otherProps}
       >
         {text}
@@ -53,9 +54,10 @@ const ButtonCTA = props => {
 };
 
 ButtonCTA.propTypes = {
-  uniqueKey: PropTypes.string.isRequired,
+  uniqueKey: PropTypes.string,
   className: PropTypes.string.isRequired,
   dataLocator: PropTypes.string.isRequired,
+  dataLocatorCTA: PropTypes.string,
   ctaInfo: PropTypes.shape({
     ctaVariation: PropTypes.string.isRequired,
     className: PropTypes.string.isRequired,
@@ -66,6 +68,11 @@ ButtonCTA.propTypes = {
       text: PropTypes.string.isRequired,
     }).isRequired,
   }).isRequired,
+};
+
+ButtonCTA.defaultProps = {
+  uniqueKey: '',
+  dataLocatorCTA: '',
 };
 
 export default errorBoundary(ButtonCTA);
