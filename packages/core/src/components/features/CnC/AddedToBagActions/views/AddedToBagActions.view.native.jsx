@@ -21,6 +21,7 @@ class AddedToBagActions extends React.PureComponent<Props> {
       navigation,
       closeModal,
       isNoNEmptyBag,
+      fromAddedToBagModal,
     } = this.props;
     return (
       <ActionsWrapper>
@@ -45,7 +46,7 @@ class AddedToBagActions extends React.PureComponent<Props> {
             </ViewBagButton>
           </ButtonWrapper>
         )}
-        {isNoNEmptyBag && (
+        {(isNoNEmptyBag || fromAddedToBagModal) && (
           <ButtonWrapper>
             <CheckoutButton
               onPress={() => {
@@ -79,11 +80,13 @@ AddedToBagActions.propTypes = {
   navigation: PropTypes.shape({}).isRequired,
   closeModal: PropTypes.func,
   isNoNEmptyBag: PropTypes.number.isRequired,
+  fromAddedToBagModal: PropTypes.bool,
 };
 
 AddedToBagActions.defaultProps = {
   showAddTobag: true,
   closeModal: () => {},
+  fromAddedToBagModal: false,
 };
 
 export default AddedToBagActions;
