@@ -30,7 +30,7 @@ class StoreAddressTile extends PureComponent {
   }
 
   getDetailsTileFooter() {
-    const { labels, locatorGetDirections } = this.props;
+    const { labels, locatorGetDirections, openStoreDirections } = this.props;
     return (
       <div>
         <Button
@@ -38,6 +38,7 @@ class StoreAddressTile extends PureComponent {
           fill="BLUE"
           type="button"
           data-locator={locatorGetDirections}
+          onClick={openStoreDirections}
         >
           {labels.lbl_storelocators_landingpage_getdirections_link}
         </Button>

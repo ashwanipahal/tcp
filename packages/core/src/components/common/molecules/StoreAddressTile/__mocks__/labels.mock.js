@@ -10,6 +10,10 @@ const labels = {
     lbl_storelocators_details_getdirections_btn: 'Directions',
     lbl_storelocators_details_callstore_btn: 'Call Store',
     lbl_storelocators_details_changestore_btn: 'Change Favorite Store',
+    lbl_storelocators_detail_mallType: 'Mall Type:',
+    lbl_storelocators_detail_entranceType: 'Type of Entrance:',
+    lbl_storelocators_details_locations_details_btn: 'SEE STORE DETAILS',
+    lbl_storelocators_details_locations_title: 'OTHER LOCATIONS NEAR YOU',
   },
 };
 

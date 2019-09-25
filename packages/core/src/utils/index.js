@@ -29,6 +29,7 @@ export {
   isBopisProduct,
   isBossProduct,
   viewport,
+  fetchStoreIdFromUrlPath,
 } from './utils.web';
 
 export {

@@ -1,0 +1,107 @@
+import React from 'react';
+import PropTypes from 'prop-types';
+import withStyles from '@tcp/core/src/components/common/hoc/withStyles';
+import { Row, Col, StoreStaticMap } from '../../../../../common/atoms';
+import { StoreAddressTile, StoreHours, StoreLocations } from '../../../../../common/molecules';
+import style from '../styles/StoreDetail.style';
+import { getViewportInfo, isCanada, getAPIConfig } from '../../../../../../utils';
+import formatStoreTiming from '../../../../../../utils/formatStoreTiming';
+
+const StoreDetail = ({
+  className,
+  store,
+  labels,
+  otherStores,
+  openStoreDetails,
+  openStoreDirections,
+}) => {
+  const {
+    hours: { regularHours, holidayHours, regularAndHolidayHours },
+    features: { mallType, entranceType },
+  } = store;
+  const storeMeta = [
+    {
+      label: labels.lbl_storelocators_detail_mallType,
+      value: mallType,
+    },
+    {
+      label: labels.lbl_storelocators_detail_entranceType,
+      value: entranceType,
+    },
+  ];
+
+  return (
+    <div className={className}>
+      <Row>
+        <Col colSize={{ small: 6, medium: 4, large: 4 }}>
+          <StoreAddressTile
+            className="storeinfo"
+            variation="detail"
+            store={store}
+            labels={labels}
+            openStoreDirections={openStoreDirections}
+          />
+          <StoreHours
+            title="Store Hours"
+            defaultOpen
+            storeTiming={formatStoreTiming([
+              ...regularHours,
+              ...holidayHours,
+              ...regularAndHolidayHours,
+            ])}
+            storeMeta={storeMeta}
+          />
+        </Col>
+        <Col colSize={{ small: 6, medium: 4, large: 8 }}>
+          <StoreStaticMap
+            storesList={[store]}
+            centeredStoreId={store.basicInfo && store.basicInfo.id}
+            isMobile={getViewportInfo().isMobile}
+            isCanada={isCanada}
+            apiKey={getAPIConfig().googleApiKey}
+          />
+        </Col>
+      </Row>
+      <Row>
+        <Col colSize={{ small: 6, medium: 8, large: 12 }}>
+          <StoreLocations
+            className="storedetail__storelocation"
+            stores={otherStores}
+            labels={labels}
+            openStoreDetails={openStoreDetails}
+          />
+        </Col>
+      </Row>
+    </div>
+  );
+};
+
+StoreDetail.propTypes = {
+  className: PropTypes.string.isRequired,
+  store: PropTypes.shape({
+    basicInfo: PropTypes.shape({
+      id: PropTypes.string,
+      storeName: PropTypes.string,
+      phone: PropTypes.string,
+      address: PropTypes.shape({
+        addressLine1: PropTypes.string,
+        city: PropTypes.string,
+        state: PropTypes.string,
+        country: PropTypes.string,
+        zipCode: PropTypes.string,
+      }),
+      coordinates: PropTypes.shape({
+        lat: PropTypes.number,
+        long: PropTypes.number,
+      }),
+    }),
+    hours: PropTypes.shape({}),
+    features: PropTypes.shape({}),
+  }).isRequired,
+  labels: PropTypes.shape({}).isRequired,
+  otherStores: PropTypes.shape([]).isRequired,
+  openStoreDetails: PropTypes.func.isRequired,
+  openStoreDirections: PropTypes.func.isRequired,
+};
+
+export default withStyles(StoreDetail, style);

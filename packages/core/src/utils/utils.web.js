@@ -493,6 +493,12 @@ export const viewport = () => {
   };
 };
 
+export const fetchStoreIdFromUrlPath = url => {
+  const currentStoreUrl = url || document.location.href;
+  const pathSplit = currentStoreUrl.split('-');
+  return pathSplit[pathSplit.length - 1];
+};
+
 export default {
   importGraphQLClientDynamically,
   importGraphQLQueriesDynamically,
@@ -517,4 +523,5 @@ export default {
   getLocalStorage,
   setLocalStorage,
   viewport,
+  fetchStoreIdFromUrlPath,
 };

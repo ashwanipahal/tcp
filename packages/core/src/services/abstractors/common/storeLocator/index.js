@@ -1,1 +1,7 @@
-export { getFavoriteStore, getLocationStores, setFavoriteStore } from './storeLocator';
+export {
+  getFavoriteStore,
+  getLocationStores,
+  setFavoriteStore,
+  getCurrentStoreInfoApi,
+  getNearByStoreApi,
+} from './storeLocator';

@@ -1,3 +1,4 @@
+/* eslint-disable max-lines */
 import { STORE_LOCATOR_REDUCER_KEY } from '@tcp/core/src/constants/reducer.constants';
 import { executeStatefulAPICall } from '../../../handler';
 import { formatPhoneNumber } from '../../../../utils/formValidation/phoneNumber';
@@ -83,7 +84,8 @@ export const getBasicInfo = storeDetails => {
     storeDetails.uniqueId ||
     storeDetails.storeLocId ||
     storeDetails.storeUniqueID ||
-    storeDetails.stLocId
+    storeDetails.stLocId ||
+    storeDetails.uniqueID
   ).toString();
   const storeNameVal = getStoreNameVal(storeDetails);
   const phoneNumber =
@@ -398,6 +400,132 @@ export const setFavoriteStore = (storeId, state) => {
   return executeStatefulAPICall(payloadData)
     .then(() => {
       return favStore;
+    })
+    .catch(errorHandler);
+};
+
+export const getCurrentStoreInfoApi = storeId => {
+  const payloadData = {
+    header: {
+      stlocId: storeId,
+    },
+    webService: endpoints.getStoreInfo,
+  };
+  const formatStoreType = storeData => {
+    const { storeType, addressLine } = storeData;
+    return storeType || (addressLine && addressLine[addressLine.length - 1]) || '';
+  };
+
+  return (
+    executeStatefulAPICall(payloadData)
+      // eslint-disable-next-line complexity
+      .then(res => {
+        if (res.body.getStoreResponse.PhysicalStore[0] || res.body.PhysicalStore[0]) {
+          const storeInfo = res.body.getStoreResponse.PhysicalStore[0] || res.body.PhysicalStore[0];
+          let hoursOfOperation = [];
+          if (storeInfo.Attribute) {
+            /**
+             * The Attributes array receiving from API contains more than one object with data,
+             * till now we were using first object of array as store hours were only available in the
+             * first object.
+             * In current API changes store hours is not fixed to the first attribute object hence
+             * changing filtering attributes for the object containing store hours.
+             */
+            const storeHours = storeInfo.Attribute.filter(
+              attribute => attribute.name === 'STORE_HOURS_JSON'
+            );
+            hoursOfOperation = JSON.parse(storeHours[0].displayValue || '{}').storehours || [];
+          }
+          const storeType = formatStoreType(storeInfo);
+
+          const parsedResponse = {
+            basicInfo: {
+              ...getBasicInfo(storeInfo),
+              x_stloc: storeInfo.x_stloc
+                ? JSON.parse(storeInfo.x_stloc)
+                : { heading: '', bodyCopy: '', pageTitle: '' },
+            },
+            hours: {
+              regularHours: [],
+              holidayHours: [],
+              regularAndHolidayHours: [],
+            },
+            features: {
+              storeType:
+                STORE_TYPES[storeType] || (storeType === 'PLACE' && STORE_TYPES.RETAIL) || '',
+              mallType: storeInfo.x_mallType,
+              entranceType: storeInfo.x_entranceType,
+              isBopisAvailable:
+                res.body.getStoreResponse && res.body.getStoreResponse.isBopisAvailable,
+            },
+          };
+          if (hoursOfOperation.length) {
+            parsedResponse.hours.regularHours = parseStoreHours(hoursOfOperation);
+          }
+          return parsedResponse;
+        }
+        return null;
+      })
+      .catch(errorHandler)
+  );
+};
+
+export const cleanStr = str => str.replace(/-| |\./g, '');
+
+export const getNearByStoreApi = payload => {
+  const {
+    storeLocationId,
+    getNearby,
+    maxDistance,
+    maxStoreCount,
+    latitude,
+    longitude,
+    currentStore,
+  } = payload;
+  const payloadData = {
+    header: {
+      stlocId: storeLocationId,
+      latitude,
+      longitude,
+    },
+    body: {
+      distance: maxDistance || 25,
+      maxStores: maxStoreCount || 5,
+    },
+    webService: endpoints.getNearByStore,
+  };
+  return executeStatefulAPICall(payloadData)
+    .then(res => {
+      const response = res.body;
+      const parsedStoreInfo = {};
+      const nearByStores = getNearby && response.getStoreLocatorByLatLngResponse.result;
+      const basicInfo = currentStore.get('basicInfo');
+      const filteredNearByStores =
+        getNearby && nearByStores.filter(nStore => nStore.storeUniqueID !== basicInfo.get('id'));
+      parsedStoreInfo.nearByStores = filteredNearByStores.map(fStore => {
+        const nearbyStoreParsedInfo = {
+          basicInfo: getBasicInfo(fStore),
+          hours: {
+            regularHours: [],
+            holidayHours: [],
+            regularAndHolidayHours: [],
+          },
+          features: {
+            storeType:
+              (fStore.storeType === 'PLACE' ? STORE_TYPES.RETAIL : STORE_TYPES[fStore.storeType]) ||
+              '',
+            redirectURL: `${cleanStr(fStore.storeName)}-${cleanStr(fStore.city)}-${cleanStr(
+              fStore.streetLine1
+            )}-${fStore.state}-${fStore.storeUniqueID}`,
+          },
+        };
+        if (fStore.storehours.storehours) {
+          nearbyStoreParsedInfo.hours.regularHours = parseStoreHours(fStore.storehours.storehours);
+        }
+        return nearbyStoreParsedInfo;
+      });
+
+      return parsedStoreInfo;
     })
     .catch(errorHandler);
 };
