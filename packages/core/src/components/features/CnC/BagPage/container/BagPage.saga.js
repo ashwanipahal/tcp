@@ -190,8 +190,9 @@ export function* routeForCartCheckout(recalc, navigation, closeModal, navigation
   const orderHasPickup = yield select(checkoutSelectors.getIsOrderHasPickup);
   const IsInternationalShipping = yield select(getIsInternationalShipping);
   const isVenmoPaymentInProgress = yield select(checkoutSelectors.isVenmoPaymentInProgress);
+  const isVenmoShippingDisplayed = yield select(checkoutSelectors.isVenmoShippingBannerDisplayed);
   const addressList = yield select(getAddressListState);
-  const hasDefaultShippingAddress = addressList && addressList.size > 0;
+  const hasShippingAddress = addressList && addressList.size > 0;
   if (isMobileApp()) {
     if (orderHasPickup) {
       const navigateAction = navigationActions.navigate({
@@ -225,7 +226,7 @@ export function* routeForCartCheckout(recalc, navigation, closeModal, navigation
     yield put(closeMiniBag());
     if (orderHasPickup) {
       utility.routeToPage(CHECKOUT_ROUTES.pickupPage, { recalc });
-    } else if (isVenmoPaymentInProgress && hasDefaultShippingAddress) {
+    } else if (isVenmoPaymentInProgress && hasShippingAddress && !isVenmoShippingDisplayed) {
       utility.routeToPage(CHECKOUT_ROUTES.reviewPage, { recalc });
     } else {
       utility.routeToPage(CHECKOUT_ROUTES.shippingPage, { recalc });
@@ -236,8 +237,9 @@ export function* routeForCartCheckout(recalc, navigation, closeModal, navigation
 }
 
 export function* checkoutCart(recalc, navigation, closeModal, navigationActions) {
+  const isVenmoPaymentInProgress = yield select(checkoutSelectors.isVenmoPaymentInProgress);
   const isLoggedIn = yield select(getUserLoggedInState);
-  if (!isLoggedIn) {
+  if (!isLoggedIn && !isVenmoPaymentInProgress) {
     return yield put(setCheckoutModalMountedState({ state: true }));
   }
   return yield call(routeForCartCheckout, recalc, navigation, closeModal, navigationActions);

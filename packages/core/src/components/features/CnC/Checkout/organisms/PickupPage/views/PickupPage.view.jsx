@@ -128,9 +128,14 @@ class PickUpFormPart extends React.Component {
    * This method is to return the label text based on venmo or normal checkout
    */
   getNextCTAText = () => {
-    const { isVenmoPaymentInProgress, orderHasShipping, pickUpLabels } = this.props;
+    const {
+      isVenmoPaymentInProgress,
+      orderHasShipping,
+      pickUpLabels,
+      isVenmoPickupDisplayed,
+    } = this.props;
     let nextButtonText;
-    if (isVenmoPaymentInProgress && !orderHasShipping) {
+    if (isVenmoPaymentInProgress && !isVenmoPickupDisplayed && !orderHasShipping) {
       nextButtonText = `${pickUpLabels.nextText}: ${pickUpLabels.reviewText}`;
     } else {
       nextButtonText = !orderHasShipping
@@ -333,6 +338,7 @@ PickUpFormPart.propTypes = {
   isVenmoPaymentInProgress: PropTypes.bool,
   setVenmoPickupState: PropTypes.func,
   showAccordian: PropTypes.bool,
+  isVenmoPickupDisplayed: PropTypes.bool,
 };
 
 PickUpFormPart.defaultProps = {
@@ -348,6 +354,7 @@ PickUpFormPart.defaultProps = {
   isVenmoPaymentInProgress: false,
   setVenmoPickupState: () => {},
   showAccordian: true,
+  isVenmoPickupDisplayed: true,
 };
 
 const validateMethod = createValidateMethod({

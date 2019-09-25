@@ -148,6 +148,8 @@ class CheckoutPage extends React.PureComponent {
             navigation={navigation}
             isVenmoPaymentInProgress={isVenmoPaymentInProgress}
             setVenmoPickupState={setVenmoPickupState}
+            /* To handle use cases for venmo banner and next CTA on pickup page. If true then normal checkout flow otherwise venmo scenarios  */
+            isVenmoPickupDisplayed={this.isVenmoPickupDisplayed()}
           />
         )}
         {currentSection.toLowerCase() === CHECKOUT_STAGES.SHIPPING && (
@@ -166,6 +168,8 @@ class CheckoutPage extends React.PureComponent {
             labels={labels}
             isVenmoPaymentInProgress={isVenmoPaymentInProgress}
             setVenmoShippingState={setVenmoShippingState}
+            /* To handle use cases for venmo banner and next CTA on shipping page. If true, then normal checkout flow otherwise venmo scenarios  */
+            isVenmoShippingDisplayed={this.isVenmoShippingDisplayed()}
           />
         )}
         {currentSection.toLowerCase() === CHECKOUT_STAGES.BILLING && (

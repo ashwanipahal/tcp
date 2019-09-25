@@ -41,6 +41,7 @@ export default class ShippingPage extends React.PureComponent {
     syncErrors: PropTypes.shape({}),
     shippingAddress: PropTypes.shape({}),
     isVenmoPaymentInProgress: PropTypes.bool,
+    isVenmoShippingDisplayed: PropTypes.bool,
     setVenmoShippingState: PropTypes.func,
     shippingPhoneAndEmail: PropTypes.shape({}),
   };
@@ -67,6 +68,7 @@ export default class ShippingPage extends React.PureComponent {
     syncErrors: {},
     shippingAddress: null,
     isVenmoPaymentInProgress: false,
+    isVenmoShippingDisplayed: true,
     setVenmoShippingState: () => {},
     shippingPhoneAndEmail: null,
   };
@@ -291,6 +293,7 @@ export default class ShippingPage extends React.PureComponent {
       syncErrors,
       shippingAddress,
       isVenmoPaymentInProgress,
+      isVenmoShippingDisplayed,
     } = this.props;
     const primaryAddressId = this.getPrimaryAddress();
     const { isAddNewAddress, isEditing, defaultAddressId } = this.state;
@@ -339,6 +342,7 @@ export default class ShippingPage extends React.PureComponent {
             syncErrorsObject={syncErrors}
             shippingAddress={shippingAddress}
             isVenmoPaymentInProgress={isVenmoPaymentInProgress}
+            isVenmoShippingDisplayed={isVenmoShippingDisplayed}
           />
         )}
       </>
