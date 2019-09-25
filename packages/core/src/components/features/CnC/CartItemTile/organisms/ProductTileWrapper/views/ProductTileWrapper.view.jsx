@@ -148,13 +148,20 @@ class ProductTileWrapper extends React.PureComponent<props> {
     );
   };
 
-  renderEmptyBag = (productSectionData, bagLabels, isUserLoggedIn, isBagPageSflSection) => {
+  renderEmptyBag = (
+    productSectionData,
+    bagLabels,
+    isUserLoggedIn,
+    isBagPageSflSection,
+    showPlccApplyNow
+  ) => {
     if (productSectionData.size === 0) {
       return (
         <EmptyBag
           bagLabels={bagLabels}
           isUserLoggedIn={isUserLoggedIn}
           isBagPageSflSection={isBagPageSflSection}
+          showPlccApplyNow={showPlccApplyNow}
         />
       );
     }
@@ -174,6 +181,7 @@ class ProductTileWrapper extends React.PureComponent<props> {
       isBagPageSflSection,
       isCartItemsUpdating,
       sflItems,
+      showPlccApplyNow,
       isCartItemSFL,
       isSflItemRemoved,
     } = this.props;
@@ -244,7 +252,15 @@ class ProductTileWrapper extends React.PureComponent<props> {
       );
     }
     return (
-      <>{this.renderEmptyBag(productSectionData, bagLabels, isUserLoggedIn, isBagPageSflSection)}</>
+      <>
+        {this.renderEmptyBag(
+          productSectionData,
+          bagLabels,
+          isUserLoggedIn,
+          isBagPageSflSection,
+          showPlccApplyNow
+        )}
+      </>
     );
   }
 }
@@ -266,6 +282,7 @@ ProductTileWrapper.propTypes = {
   bagLabels: PropTypes.shape(),
   sflItemsCount: PropTypes.number.isRequired,
   isBagPageSflSection: PropTypes.bool,
+  showPlccApplyNow: PropTypes.bool.isRequired,
   isCartItemSFL: PropTypes.bool.isRequired,
   isSflItemRemoved: PropTypes.bool.isRequired,
 };

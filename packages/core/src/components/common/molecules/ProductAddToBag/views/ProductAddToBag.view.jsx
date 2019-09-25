@@ -54,8 +54,8 @@ class ProductAddToBag extends React.PureComponent<Props> {
       selectFit,
       selectSize,
       displayErrorMessage,
-      addToBagEcom,
-      addToBagError,
+      errorOnHandleSubmit,
+      handleFormSubmit,
     } = this.props;
 
     let { sizeList, fitList, colorList } = this.props;
@@ -128,7 +128,7 @@ class ProductAddToBag extends React.PureComponent<Props> {
             </div>
           </Col>
         </Row>
-        {addToBagError && ErrorComp(addToBagError)}
+        {errorOnHandleSubmit && ErrorComp(errorOnHandleSubmit)}
         <Row fullBleed>
           <Col colSize={{ small: 12, medium: 12, large: 12 }}>
             <div className="button-wrapper">
@@ -142,7 +142,7 @@ class ProductAddToBag extends React.PureComponent<Props> {
                   if (fitChanged) {
                     displayErrorMessage(fitChanged);
                   } else {
-                    addToBagEcom();
+                    handleFormSubmit();
                   }
                 }}
               >
