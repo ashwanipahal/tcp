@@ -28,6 +28,7 @@ exports[`Store Detail Page should render StoreDetail 1`] = `
   openStoreDetails={[Function]}
   openStoreDirections={[Function]}
   otherStores={Array []}
+  routesBack={[Function]}
   store={
     Object {
       "test": Immutable.Map {

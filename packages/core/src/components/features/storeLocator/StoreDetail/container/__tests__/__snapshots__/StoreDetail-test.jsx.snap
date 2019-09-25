@@ -16,6 +16,10 @@ exports[`StoreDetail component StoreDetail component renders correctly without p
   .store-name.store-name--details {
     text-transform: capitalize;
   }
+
+  &__backlink {
+    margin-left: 13px;
+  }
 ",
           ";
 ",

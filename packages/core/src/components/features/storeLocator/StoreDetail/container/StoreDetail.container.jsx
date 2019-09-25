@@ -2,9 +2,10 @@ import React, { PureComponent } from 'react';
 import { connect } from 'react-redux';
 import PropTypes from 'prop-types';
 import { fromJS } from 'immutable';
+import Router from 'next/router';
 import { getNearByStore } from './StoreDetail.actions';
 import StoreDetail from './views/StoreDetail';
-import { routerPush } from '../../../../../utils';
+import { getAPIConfig } from '../../../../../utils';
 import {
   getCurrentStore,
   getCurrentStoreBasicInfo,
@@ -16,12 +17,6 @@ import {
 import mockLabels from '../../../../common/molecules/StoreAddressTile/__mocks__/labels.mock';
 
 export class StoreDetailContainer extends PureComponent {
-  constructor(props) {
-    super(props);
-    this.openStoreDetails = this.openStoreDetails.bind(this);
-    this.openStoreDirections = this.openStoreDirections.bind(this);
-  }
-
   componentDidMount() {
     const { loadNearByStoreInfo, currentStoreInfo, currentStoreBasicInfo } = this.props;
     if (currentStoreInfo && currentStoreInfo.size > 0) {
@@ -46,12 +41,14 @@ export class StoreDetailContainer extends PureComponent {
         address: { city, state, zipCode },
       },
     } = store;
-    const url = `/store/${storeName
+    const { siteId } = getAPIConfig();
+    const url = `/${siteId}/store/${storeName
       .replace(/\s/g, '')
       .toLowerCase()}-${state.toLowerCase()}-${city
       .replace(/\s/g, '')
       .toLowerCase()}-${zipCode}-${id}`;
-    routerPush('/store', url);
+
+    if (Router) Router.push(url);
   }
 
   // eslint-disable-next-line class-methods-use-this
@@ -65,10 +62,17 @@ export class StoreDetailContainer extends PureComponent {
     );
   }
 
+  // eslint-disable-next-line class-methods-use-this
+  routesBack(e) {
+    e.preventDefault();
+    window.history.back();
+  }
+
   render() {
     const { currentStoreInfo, formatStore, nearByStores, labels } = this.props;
     const store = formatStore(currentStoreInfo);
-    const otherStores = nearByStores.length > 0 ? nearByStores : [];
+    const otherStores = nearByStores && nearByStores.length > 0 ? nearByStores : [];
+
     return store && Object.keys(store).length > 0 ? (
       <StoreDetail
         className="storedetailinfo"
@@ -77,6 +81,7 @@ export class StoreDetailContainer extends PureComponent {
         otherStores={otherStores}
         openStoreDetails={selectedStore => this.openStoreDetails(selectedStore)}
         openStoreDirections={() => this.openStoreDirections(store)}
+        routesBack={this.routesBack}
       />
     ) : null;
   }

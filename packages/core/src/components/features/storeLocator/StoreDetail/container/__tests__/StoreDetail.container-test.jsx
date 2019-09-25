@@ -4,10 +4,6 @@ import { fromJS, List } from 'immutable';
 import { StoreDetailContainer, mapDispatchToProps } from '../StoreDetail.container';
 import StoreDetail from '../views/StoreDetail';
 
-jest.mock('../../../../../../utils/utils.web', () => ({
-  routerPush: jest.fn(),
-}));
-
 describe('Store Detail Page', () => {
   const labels = {
     StoreLocator: {
@@ -78,26 +74,6 @@ describe('Store Detail Page', () => {
     expect(component.is(StoreDetail)).toBeFalsy();
     expect(component).toMatchSnapshot();
   });
-
-  it('should return open the selected store', () => {
-    const component = shallow(<StoreDetailContainer {...props} />);
-    const store = {
-      basicInfo: {
-        id: '111421',
-        storeName: 'steinway street',
-        address: {
-          addressLine1: '31-53 steinway street',
-          city: 'astoria',
-          state: 'NY',
-          country: 'US ',
-          zipCode: '11103',
-        },
-      },
-    };
-    const spyOn = jest.spyOn(component.instance(), 'openStoreDetails');
-    component.instance().openStoreDetails(store);
-    expect(spyOn).toHaveBeenCalled();
-  });
   it('should return open the google maps for the store direction', () => {
     const component = shallow(<StoreDetailContainer {...props} />);
     const store = {
@@ -115,6 +91,13 @@ describe('Store Detail Page', () => {
     };
     const spyOn = jest.spyOn(component.instance(), 'openStoreDirections');
     component.instance().openStoreDirections(store);
+    expect(spyOn).toHaveBeenCalled();
+  });
+  it('should return to previous page', () => {
+    const component = shallow(<StoreDetailContainer {...props} />);
+    const spyOn = jest.spyOn(component.instance(), 'routesBack');
+    const e = { preventDefault: jest.fn() };
+    component.instance().routesBack(e);
     expect(spyOn).toHaveBeenCalled();
   });
 

@@ -1,7 +1,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import withStyles from '@tcp/core/src/components/common/hoc/withStyles';
-import { Row, Col, StoreStaticMap } from '../../../../../common/atoms';
+import { Row, Col, StoreStaticMap, Anchor } from '../../../../../common/atoms';
 import { StoreAddressTile, StoreHours, StoreLocations } from '../../../../../common/molecules';
 import style from '../styles/StoreDetail.style';
 import { getViewportInfo, isCanada, getAPIConfig } from '../../../../../../utils';
@@ -14,6 +14,7 @@ const StoreDetail = ({
   otherStores,
   openStoreDetails,
   openStoreDirections,
+  routesBack,
 }) => {
   const {
     hours: { regularHours, holidayHours, regularAndHolidayHours },
@@ -32,6 +33,16 @@ const StoreDetail = ({
 
   return (
     <div className={className}>
+      <Anchor
+        fontSizeVariation="xlarge"
+        anchorVariation="secondary"
+        handleLinkClick={routesBack}
+        noLink
+        className={`${className}__backlink`}
+      >
+        <span className="left-arrow"> </span>
+        Back
+      </Anchor>
       <Row>
         <Col colSize={{ small: 6, medium: 4, large: 4 }}>
           <StoreAddressTile
@@ -102,6 +113,7 @@ StoreDetail.propTypes = {
   otherStores: PropTypes.shape([]).isRequired,
   openStoreDetails: PropTypes.func.isRequired,
   openStoreDirections: PropTypes.func.isRequired,
+  routesBack: PropTypes.func.isRequired,
 };
 
 export default withStyles(StoreDetail, style);
