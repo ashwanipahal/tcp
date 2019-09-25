@@ -16,6 +16,7 @@ exports[`PickupMainContactEditFormVanilla component should renders correctly whe
       fontWeight="regular"
       letterSpacing="normal"
       lineHeight="normal"
+      link={null}
       textAlign="left"
     />
   </div>
@@ -70,6 +71,7 @@ exports[`PickupMainContactEditFormVanilla component should renders correctly whe
       fontWeight="regular"
       letterSpacing="normal"
       lineHeight="normal"
+      link={null}
       textAlign="left"
     />
     <div
@@ -108,6 +110,7 @@ exports[`PickupMainContactEditFormVanilla component should renders on click 1`] 
       fontWeight="regular"
       letterSpacing="normal"
       lineHeight="normal"
+      link={null}
       textAlign="left"
     />
     <div

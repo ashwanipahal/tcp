@@ -8,11 +8,10 @@ import { ServiceResponseError } from '../../../../../../../utils/errorMessage.ut
 import CONSTANTS from '../../../../Checkout/Checkout.constants';
 import { getAPIConfig } from '../../../../../../../utils';
 
-const apiConfigObj = getAPIConfig();
-const { paypalEnv } = apiConfigObj;
-
 export class PayPalButtonContainer extends React.PureComponent<Props> {
   initalizePayPalButton = data => {
+    const apiConfigObj = getAPIConfig();
+    const { paypalEnv } = apiConfigObj;
     console.log('paypalEnv', paypalEnv);
     const { startPaypalCheckout, paypalAuthorizationHandle, clearPaypalSettings } = this.props;
     const { containerId, height } = data;

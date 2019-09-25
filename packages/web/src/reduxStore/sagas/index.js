@@ -1,4 +1,6 @@
 import { all } from 'redux-saga/effects';
+import BootstrapSaga from '@tcp/core/src/reduxStore/sagas/bootstrap';
+import LabelsSaga from '@tcp/core/src/reduxStore/sagas/labels';
 import SearchPageSaga from '@tcp/core/src/components/features/browse/SearchDetail/container/SearchDetail.saga';
 import ProductListingPageSaga from '@tcp/core/src/components/features/browse/ProductListingPage/container/ProductListingPage.saga';
 import LoginPageSaga from '@tcp/core/src/components/features/account/LoginPage/container/LoginPage.saga';
@@ -22,8 +24,6 @@ import BonusPointsSaga from '@tcp/core/src/components/common/organisms/BonusPoin
 import { SetDefaultShippingAddressSaga } from '@tcp/core/src/components/features/account/AddressBook/container/DefaultShippingAddress.saga';
 import AddressVerificationSaga from '@tcp/core/src/components/common/organisms/AddressVerification/container/AddressVerification.saga';
 import BirthdaySavingsSaga from '@tcp/core/src/components/features/account/common/organism/BirthdaySavingsList/container/BirthdaySavingsList.saga';
-import BootstrapSaga from '@tcp/core/src/reduxStore/sagas/bootstrap';
-import LabelsSaga from '@tcp/core/src/reduxStore/sagas/labels';
 import AccountSaga from '@tcp/core/src/components/features/account/Account/container/Account.saga';
 import AccountHeaderSaga from '@tcp/core/src/components/features/account/common/organism/AccountHeader/container/AccountHeader.saga';
 import AddEditCreditCardSaga from '@tcp/core/src/components/features/account/AddEditCreditCard/container/AddEditCreditCard.saga';
@@ -49,6 +49,7 @@ import ProductTabListSaga from '@tcp/core/src/components/common/organisms/Produc
 import RecommendationsSaga from '@tcp/core/src/components/common/molecules/Recommendations/container/Recommendations.saga';
 import MyFavoriteStoreSaga from '@tcp/core/src/components/features/account/MyProfile/organism/MyFavoriteStore/container/MyFavoriteStore.saga';
 import PickupStoreSaga from '@tcp/core/src/components/common/organisms/PickupStoreModal/container/PickUpStoreModal.saga';
+import ProductPickup from '@tcp/core/src/components/common/organisms/ProductPickup/container/ProductPickup.saga';
 import PointsClaimSaga from '@tcp/core/src/components/features/account/PointsClaim/container/PointsClaim.saga';
 import HomePageSaga from '../../components/features/content/HomePage/container/HomePage.saga';
 import EmailSignupSaga from '../../components/common/molecules/EmailSignupModal/container/EmailSignupModal.saga';
@@ -58,8 +59,8 @@ import SearchBarSaga from '../../components/features/content/Header/molecules/Se
 
 export default function* rootSaga() {
   yield all([
-    LabelsSaga(),
     BootstrapSaga(),
+    LabelsSaga(),
     HomePageSaga(),
     ProductListingPageSaga(),
     LoginPageSaga(),
@@ -111,6 +112,7 @@ export default function* rootSaga() {
     SearchPageSaga(),
     MyFavoriteStoreSaga(),
     PickupStoreSaga(),
+    ProductPickup(),
     QuickViewSaga(),
     PointsClaimSaga(),
   ]);

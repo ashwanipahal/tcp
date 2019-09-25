@@ -7,7 +7,11 @@ import errorBoundary from '../../../hoc/withErrorBoundary';
 import withStyles from '../../../hoc/withStyles';
 import ProductTabList from '../../../organisms/ProductTabList';
 import moduleJStyle from '../styles/ModuleJ.style';
-import { configurePlpNavigationFromCMSUrl, getIconPath, getLocator } from '../../../../../utils';
+import {
+  configureInternalNavigationFromCMSUrl,
+  getIconPath,
+  getLocator,
+} from '../../../../../utils';
 import config from '../config';
 
 class ModuleJ extends React.PureComponent {
@@ -54,18 +58,23 @@ class ModuleJ extends React.PureComponent {
   };
 
   getHeaderText = () => {
-    const { headerText } = this.props;
-    return (
-      headerText && (
-        <div className="promo-header-wrapper">
-          <LinkText
-            component="div"
-            headerText={headerText}
-            className="promo-header"
-            dataLocator={getLocator('moduleJ_header_text')}
-          />
-        </div>
-      )
+    const { headerText, layout } = this.props;
+    return headerText && layout !== 'alt' ? (
+      <div className="promo-header-wrapper">
+        <LinkText
+          component="div"
+          headerText={headerText}
+          className="promo-header"
+          dataLocator={getLocator('moduleJ_header_text')}
+        />
+      </div>
+    ) : (
+      <LinkText
+        component="div"
+        headerText={headerText}
+        className="promo-header"
+        dataLocator={getLocator('moduleJ_header_text')}
+      />
     );
   };
 
@@ -85,8 +94,9 @@ class ModuleJ extends React.PureComponent {
   render() {
     const { className, productTabList, mediaLinkedList, layout, divTabs } = this.props;
     const { currentCatId } = this.state;
-    const { image: promoImage1, link: promoLink1 } = mediaLinkedList[0];
-    const { image: promoImage2, link: promoLink2 } = mediaLinkedList[1];
+    const promoMediaLinkedList = mediaLinkedList || [];
+    const { image: promoImage1, link: promoLink1 } = promoMediaLinkedList[0] || {};
+    const { image: promoImage2, link: promoLink2 } = promoMediaLinkedList[1] || {};
     const { CAROUSEL_OPTIONS, PROMO_IMG_DATA, TOTAL_IMAGES } = config;
     let data = productTabList[currentCatId] || [];
     data = data.slice(0, TOTAL_IMAGES);
@@ -115,7 +125,7 @@ class ModuleJ extends React.PureComponent {
               }}
             >
               <Anchor
-                to={configurePlpNavigationFromCMSUrl(promoLink1.url)}
+                to={configureInternalNavigationFromCMSUrl(promoLink1.url)}
                 asPath={promoLink1.url}
                 title={promoLink1.title}
                 target={promoLink1.target}
@@ -158,7 +168,7 @@ class ModuleJ extends React.PureComponent {
               }}
             >
               <Anchor
-                to={configurePlpNavigationFromCMSUrl(promoLink2.url)}
+                to={configureInternalNavigationFromCMSUrl(promoLink2.url)}
                 asPath={promoLink2.url}
                 title={promoLink2.title}
                 target={promoLink2.target}
@@ -260,6 +270,7 @@ class ModuleJ extends React.PureComponent {
 }
 
 ModuleJ.defaultProps = {
+  mediaLinkedList: [],
   promoBanner: [],
   layout: 'default',
 };
@@ -294,7 +305,7 @@ ModuleJ.propTypes = {
       image: PropTypes.object,
       link: PropTypes.object,
     })
-  ).isRequired,
+  ),
   layout: PropTypes.string.isRequired,
   divTabs: PropTypes.arrayOf(
     PropTypes.shape({

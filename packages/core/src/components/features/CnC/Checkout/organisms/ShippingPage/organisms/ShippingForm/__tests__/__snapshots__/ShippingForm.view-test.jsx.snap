@@ -15,6 +15,7 @@ exports[`Shipping Form should render correctly 1`] = `
     fontWeight="regular"
     letterSpacing="normal"
     lineHeight="normal"
+    link={null}
     textAlign="left"
   />
   <form
@@ -145,6 +146,7 @@ exports[`Shipping Form should render correctly with logged in user 1`] = `
     fontWeight="regular"
     letterSpacing="normal"
     lineHeight="normal"
+    link={null}
     textAlign="left"
   />
   <form
@@ -318,6 +320,7 @@ exports[`Shipping Form should render correctly with logged in user 1`] = `
             fontWeight="regular"
             letterSpacing="normal"
             lineHeight="normal"
+            link={null}
             textAlign="left"
           />
         </Field>
@@ -334,6 +337,7 @@ exports[`Shipping Form should render correctly with logged in user 1`] = `
             fontWeight="regular"
             letterSpacing="normal"
             lineHeight="normal"
+            link={null}
             textAlign="left"
           />
           <Styled(BodyCopy)
@@ -345,6 +349,7 @@ exports[`Shipping Form should render correctly with logged in user 1`] = `
             fontWeight="regular"
             letterSpacing="normal"
             lineHeight="normal"
+            link={null}
             textAlign="left"
           />
           <Styled(Anchor)
@@ -433,6 +438,7 @@ exports[`Shipping Form should render correctly with logged in user having addres
     fontWeight="regular"
     letterSpacing="normal"
     lineHeight="normal"
+    link={null}
     textAlign="left"
   />
   <form
@@ -774,6 +780,7 @@ exports[`Shipping Form should render correctly with logged in user having addres
             fontWeight="regular"
             letterSpacing="normal"
             lineHeight="normal"
+            link={null}
             textAlign="left"
           />
         </Field>
@@ -790,6 +797,7 @@ exports[`Shipping Form should render correctly with logged in user having addres
             fontWeight="regular"
             letterSpacing="normal"
             lineHeight="normal"
+            link={null}
             textAlign="left"
           />
           <Styled(BodyCopy)
@@ -801,6 +809,7 @@ exports[`Shipping Form should render correctly with logged in user having addres
             fontWeight="regular"
             letterSpacing="normal"
             lineHeight="normal"
+            link={null}
             textAlign="left"
           />
           <Styled(Anchor)
@@ -1063,6 +1072,7 @@ exports[`Shipping Form should render correctly with logged in user having addres
     fontWeight="regular"
     letterSpacing="normal"
     lineHeight="normal"
+    link={null}
     textAlign="left"
   />
   <form
@@ -1435,6 +1445,7 @@ exports[`Shipping Form should render correctly with logged in user having addres
             fontWeight="regular"
             letterSpacing="normal"
             lineHeight="normal"
+            link={null}
             textAlign="left"
           />
         </Field>
@@ -1451,6 +1462,7 @@ exports[`Shipping Form should render correctly with logged in user having addres
             fontWeight="regular"
             letterSpacing="normal"
             lineHeight="normal"
+            link={null}
             textAlign="left"
           />
           <Styled(BodyCopy)
@@ -1462,6 +1474,7 @@ exports[`Shipping Form should render correctly with logged in user having addres
             fontWeight="regular"
             letterSpacing="normal"
             lineHeight="normal"
+            link={null}
             textAlign="left"
           />
           <Styled(Anchor)
@@ -1755,6 +1768,7 @@ exports[`Shipping Form should render correctly with logged in user having addres
     fontWeight="regular"
     letterSpacing="normal"
     lineHeight="normal"
+    link={null}
     textAlign="left"
   />
   <form
@@ -1967,6 +1981,7 @@ exports[`Shipping Form should render correctly with logged in user having addres
             fontWeight="regular"
             letterSpacing="normal"
             lineHeight="normal"
+            link={null}
             textAlign="left"
           />
         </Field>
@@ -1983,6 +1998,7 @@ exports[`Shipping Form should render correctly with logged in user having addres
             fontWeight="regular"
             letterSpacing="normal"
             lineHeight="normal"
+            link={null}
             textAlign="left"
           />
           <Styled(BodyCopy)
@@ -1994,6 +2010,7 @@ exports[`Shipping Form should render correctly with logged in user having addres
             fontWeight="regular"
             letterSpacing="normal"
             lineHeight="normal"
+            link={null}
             textAlign="left"
           />
           <Styled(Anchor)

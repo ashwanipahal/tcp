@@ -9,13 +9,24 @@ import { breakpoints } from '../../../../../../styles/themes/TCP/mediaQuery';
 import Product from '../molecules/Product/views/Product.view';
 import FixedBreadCrumbs from '../../ProductListing/molecules/FixedBreadCrumbs/views';
 import ProductAddToBagContainer from '../../../../common/molecules/ProductAddToBag';
-
+import ProductPickupContainer from '../../../../common/organisms/ProductPickup';
 import ProductImagesWrapper from '../molecules/ProductImagesWrapper/views/ProductImagesWrapper.view';
 import {
   getImagesToDisplay,
   getMapSliceForColorProductId,
 } from '../../ProductListing/molecules/ProductList/utils/productsCommonUtils';
+import PickupStoreModal from '../../../../common/organisms/PickupStoreModal';
 
+const getProductColorId = (productInfo, currentProduct) => {
+  let colorProduct = {};
+  if (productInfo && productInfo.colorFitsSizesMap && productInfo.generalProductId) {
+    colorProduct = getMapSliceForColorProductId(
+      productInfo.colorFitsSizesMap,
+      currentProduct.generalProductId
+    );
+  }
+  return colorProduct;
+};
 const ProductDetailView = ({
   className,
   productDetails,
@@ -44,6 +55,9 @@ const ProductDetailView = ({
       isFullSet: true,
     });
   }
+
+  // TODO - replace with correct colorProductId - it should be conditionally generalProductId
+  const colorProduct = getProductColorId(productInfo, currentProduct);
 
   return noProductData ? null : (
     <div className={className}>
@@ -76,6 +90,14 @@ const ProductDetailView = ({
           <Product productDetails={productDetails} currencySymbol={currency} />
           {currentProduct && (
             <ProductAddToBagContainer currentProduct={currentProduct} plpLabels={plpLabels} />
+          )}
+          {productInfo && colorProduct && (
+            <ProductPickupContainer
+              productInfo={productInfo}
+              formName={`ProductAddToBag-${productInfo.generalProductId}`}
+              miscInfo={colorProduct.miscInfo}
+              // onPickUpOpenClick={onPickUpOpenClick}
+            />
           )}
         </Col>
       </Row>
@@ -116,6 +138,7 @@ const ProductDetailView = ({
           <div className="product-detail-section">RATINGS AND REVIEWS</div>
         </Col>
       </Row>
+      <PickupStoreModal />
     </div>
   );
 };

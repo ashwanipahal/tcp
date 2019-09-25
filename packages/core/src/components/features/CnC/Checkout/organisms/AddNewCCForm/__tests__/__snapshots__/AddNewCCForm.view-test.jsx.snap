@@ -15,10 +15,10 @@ exports[`AddNewCCForm should render correctly 1`] = `
     cardType={null}
     creditFieldLabels={
       Object {
-        "creditCardNumber": "lbl_billing_cardNumber",
-        "cvvCode": "lbl_billing_cvvCode",
-        "expMonth": "lbl_billing_expMonth",
-        "expYear": "lbl_billing_expYear",
+        "creditCardNumber": undefined,
+        "cvvCode": undefined,
+        "expMonth": undefined,
+        "expYear": undefined,
       }
     }
     cvvError={null}
@@ -211,10 +211,9 @@ exports[`AddNewCCForm should render correctly 1`] = `
           fontWeight="regular"
           letterSpacing="normal"
           lineHeight="normal"
+          link={null}
           textAlign="left"
-        >
-          lbl_billing_saveToAccount
-        </Styled(BodyCopy)>
+        />
       </Field>
     </Styled(Col)>
   </Styled(Row)>
@@ -374,10 +373,9 @@ exports[`AddNewCCForm should render correctly 1`] = `
           fontWeight="regular"
           letterSpacing="normal"
           lineHeight="normal"
+          link={null}
           textAlign="left"
-        >
-          lbl_billing_defaultPayment
-        </Styled(BodyCopy)>
+        />
       </Field>
     </Styled(Col)>
   </Styled(Row)>

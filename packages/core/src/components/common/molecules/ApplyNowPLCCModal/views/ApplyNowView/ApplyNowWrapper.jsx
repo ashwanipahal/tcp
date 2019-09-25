@@ -47,15 +47,17 @@ class ApplyNowModalWrapper extends React.Component {
     return (
       <div className={className}>
         <React.Fragment>
-          <StyledApplyNowModal
-            isModalOpen={isModalOpen}
-            isPLCCModalOpen={isPLCCModalOpen}
-            openPLCCModal={this.openPLCCModal}
-            closePLCCModal={this.closePLCCModal}
-            closeModal={this.closeModal}
-            labels={labels}
-            plccBenefitsList={plccBenefitsList}
-          />
+          {isModalOpen || isPLCCModalOpen ? (
+            <StyledApplyNowModal
+              isModalOpen={isModalOpen}
+              isPLCCModalOpen={isPLCCModalOpen}
+              openPLCCModal={this.openPLCCModal}
+              closePLCCModal={this.closePLCCModal}
+              closeModal={this.closeModal}
+              labels={labels}
+              plccBenefitsList={plccBenefitsList}
+            />
+          ) : null}
         </React.Fragment>
         <Anchor
           fontSizeVariation="medium"

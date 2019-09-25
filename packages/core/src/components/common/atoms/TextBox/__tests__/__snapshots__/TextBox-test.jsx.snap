@@ -25,6 +25,7 @@ exports[`Textbox component renders correctly 1`] = `
     fontWeight="regular"
     letterSpacing="normal"
     lineHeight="normal"
+    link={null}
     textAlign="left"
   />
   <div
@@ -46,6 +47,7 @@ exports[`Textbox component renders correctly 1`] = `
       id="textbox__error__undefined"
       letterSpacing="normal"
       lineHeight="normal"
+      link={null}
       role="alert"
       textAlign="left"
     />

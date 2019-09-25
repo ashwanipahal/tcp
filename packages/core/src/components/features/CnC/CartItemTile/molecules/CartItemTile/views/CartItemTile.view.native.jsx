@@ -120,7 +120,7 @@ class ProductInformation extends React.Component {
     }
     if (isBagPageSflSection && isOK) {
       return (
-        <MarginLeft onPress={() => {}}>
+        <MarginLeft onPress={() => CartItemTileExtension.moveToBagSflItem(this.props)}>
           <Image
             data-locator="move-to-bag-link"
             source={moveToBagIcon}
@@ -242,15 +242,17 @@ class ProductInformation extends React.Component {
         {this.renderSflActionsLinks()}
         <MarginLeft
           onPress={() =>
-            removeCartItem({
-              itemId,
-              pageView: 'myBag',
-              catEntryId,
-              userInfoRequired,
-              isBagPageSflSection,
-              itemBrand,
-              orderItemType,
-            })
+            isBagPageSflSection
+              ? CartItemTileExtension.removeSflItem(this.props)
+              : removeCartItem({
+                  itemId,
+                  pageView: 'myBag',
+                  catEntryId,
+                  userInfoRequired,
+                  isBagPageSflSection,
+                  itemBrand,
+                  orderItemType,
+                })
           }
         >
           <Image

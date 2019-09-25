@@ -10,6 +10,7 @@ exports[`DropdownList component should renders correctly 1`] = `
   fontWeight="regular"
   letterSpacing="normal"
   lineHeight="normal"
+  link={null}
   textAlign="left"
 >
   <Styled(BodyCopy)
@@ -21,6 +22,7 @@ exports[`DropdownList component should renders correctly 1`] = `
     fontWeight="regular"
     letterSpacing="normal"
     lineHeight="normal"
+    link={null}
     textAlign="left"
   >
     <Styled(BodyCopy)
@@ -32,6 +34,7 @@ exports[`DropdownList component should renders correctly 1`] = `
       fontWeight="regular"
       letterSpacing="normal"
       lineHeight="normal"
+      link={null}
       textAlign="left"
     >
       <ul
@@ -52,6 +55,7 @@ exports[`DropdownList component should renders correctly 1`] = `
             key="1"
             letterSpacing="normal"
             lineHeight="normal"
+            link={null}
             onClick={[Function]}
             onKeyPress={[Function]}
             role="button"
@@ -66,6 +70,7 @@ exports[`DropdownList component should renders correctly 1`] = `
               fontWeight="regular"
               letterSpacing="normal"
               lineHeight="normal"
+              link={null}
               textAlign="left"
             />
             <div>
@@ -91,6 +96,7 @@ exports[`DropdownList component should renders correctly when optional fields ar
   fontWeight="regular"
   letterSpacing="normal"
   lineHeight="normal"
+  link={null}
   textAlign="left"
 >
   <Styled(BodyCopy)
@@ -102,6 +108,7 @@ exports[`DropdownList component should renders correctly when optional fields ar
     fontWeight="regular"
     letterSpacing="normal"
     lineHeight="normal"
+    link={null}
     textAlign="left"
   >
     <Styled(BodyCopy)
@@ -113,6 +120,7 @@ exports[`DropdownList component should renders correctly when optional fields ar
       fontWeight="regular"
       letterSpacing="normal"
       lineHeight="normal"
+      link={null}
       textAlign="left"
     >
       <ul
@@ -133,6 +141,7 @@ exports[`DropdownList component should renders correctly when optional fields ar
             key="1"
             letterSpacing="normal"
             lineHeight="normal"
+            link={null}
             onClick={[Function]}
             onKeyPress={[Function]}
             role="button"
@@ -147,6 +156,7 @@ exports[`DropdownList component should renders correctly when optional fields ar
               fontWeight="regular"
               letterSpacing="normal"
               lineHeight="normal"
+              link={null}
               textAlign="left"
             />
             <div>
@@ -171,6 +181,7 @@ exports[`DropdownList component should renders correctly when optional fields ar
             key="2"
             letterSpacing="normal"
             lineHeight="normal"
+            link={null}
             onClick={[Function]}
             onKeyPress={[Function]}
             role="button"
@@ -185,6 +196,7 @@ exports[`DropdownList component should renders correctly when optional fields ar
               fontWeight="regular"
               letterSpacing="normal"
               lineHeight="normal"
+              link={null}
               textAlign="left"
             />
             <div>
@@ -209,6 +221,7 @@ exports[`DropdownList component should renders correctly when optional fields ar
             key=""
             letterSpacing="normal"
             lineHeight="normal"
+            link={null}
             onClick={[Function]}
             onKeyPress={[Function]}
             role="button"
@@ -223,6 +236,7 @@ exports[`DropdownList component should renders correctly when optional fields ar
               fontWeight="regular"
               letterSpacing="normal"
               lineHeight="normal"
+              link={null}
               textAlign="left"
             />
             <div>

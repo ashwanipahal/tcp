@@ -111,6 +111,7 @@ exports[`Coupon component should renders correctly when Coupon are not present 1
             fontWeight="semibold"
             letterSpacing="normal"
             lineHeight="normal"
+            link={null}
             textAlign="left"
           />
         </div>
@@ -292,6 +293,7 @@ exports[`Coupon component should renders correctly when Coupon are present 1`] =
             fontWeight="semibold"
             letterSpacing="normal"
             lineHeight="normal"
+            link={null}
             textAlign="left"
           />
         </div>

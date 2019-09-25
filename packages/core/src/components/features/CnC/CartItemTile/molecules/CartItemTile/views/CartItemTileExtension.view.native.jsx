@@ -100,4 +100,35 @@ const handleMoveItemtoSaveList = props => {
   return addItemToSflList({ ...payloadData });
 };
 
-export default { CartItemImageWrapper, heartIcon, getProductName, handleMoveItemtoSaveList };
+const removeSflItem = props => {
+  const { productDetail, startSflItemDelete } = props;
+  const {
+    itemInfo: { isGiftItem },
+    productInfo: { skuId, generalProductId },
+  } = productDetail;
+  const catEntryId = isGiftItem ? generalProductId : skuId;
+
+  const payloadData = { catEntryId };
+  return startSflItemDelete({ ...payloadData });
+};
+
+const moveToBagSflItem = props => {
+  const { productDetail, startSflDataMoveToBag } = props;
+  const {
+    itemInfo: { itemId, isGiftItem },
+    productInfo: { skuId, generalProductId },
+  } = productDetail;
+  const catEntryId = isGiftItem ? generalProductId : skuId;
+
+  const payloadData = { itemId, catEntryId };
+  return startSflDataMoveToBag({ ...payloadData });
+};
+
+export default {
+  CartItemImageWrapper,
+  heartIcon,
+  getProductName,
+  handleMoveItemtoSaveList,
+  removeSflItem,
+  moveToBagSflItem,
+};

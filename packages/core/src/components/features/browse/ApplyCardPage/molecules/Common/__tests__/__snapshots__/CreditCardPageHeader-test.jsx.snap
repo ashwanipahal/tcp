@@ -29,6 +29,7 @@ exports[`CreditCardPageHeader component should renders correctly 1`] = `
           fontWeight="regular"
           letterSpacing="normal"
           lineHeight="normal"
+          link={null}
           textAlign="left"
         >
           back
@@ -61,6 +62,7 @@ exports[`CreditCardPageHeader component should renders correctly 1`] = `
         fontWeight="extrabold"
         letterSpacing="normal"
         lineHeight="normal"
+        link={null}
         tabIndex="0"
         textAlign="left"
       >
