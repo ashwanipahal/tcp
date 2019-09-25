@@ -30,7 +30,7 @@ exports[`ProductListingFiltersForm is shown should render ProductListingFiltersF
             tabIndex={0}
             textAlign="center"
           >
-            undefined
+            undefined:
           </Styled(BodyCopy)>
           <Field
             allowMultipleSelections={true}
