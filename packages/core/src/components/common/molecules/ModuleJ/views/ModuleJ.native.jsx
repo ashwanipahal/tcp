@@ -37,7 +37,7 @@ const PRODUCT_IMAGE_PER_SLIDE = 4;
 const MODULE_HEIGHT = 142;
 const MODULE_WIDTH = (PRODUCT_IMAGE_WIDTH + PRODUCT_IMAGE_GUTTER) * PRODUCT_IMAGE_PER_SLIDE;
 const { IMG_DATA, TOTAL_IMAGES } = config;
-class ModuleJ extends React.PureComponent<Props, State> {
+class ModuleJ extends React.PureComponent {
   constructor(props) {
     super(props);
 
@@ -143,21 +143,25 @@ class ModuleJ extends React.PureComponent<Props, State> {
           <Wrapper>
             <Border layout={layout} />
             <HeaderContainer layout={layout}>
-              <LinkText
-                navigation={navigation}
-                headerText={[headerText[0]]}
-                testID={getLocator('moduleJ_header_text_0')}
-                useStyle
-              />
+              {[headerText[0]] && (
+                <LinkText
+                  navigation={navigation}
+                  headerText={[headerText[0]]}
+                  testID={getLocator('moduleJ_header_text_0')}
+                  useStyle
+                />
+              )}
             </HeaderContainer>
             <SecondHeaderContainer>
-              <LinkText
-                navigation={navigation}
-                headerText={[headerText[1]]}
-                testID={getLocator('moduleJ_header_text_1')}
-                renderComponentInNewLine
-                useStyle
-              />
+              {[headerText[1]] && (
+                <LinkText
+                  navigation={navigation}
+                  headerText={[headerText[1]]}
+                  testID={getLocator('moduleJ_header_text_1')}
+                  renderComponentInNewLine
+                  useStyle
+                />
+              )}
             </SecondHeaderContainer>
           </Wrapper>
 
@@ -225,14 +229,24 @@ class ModuleJ extends React.PureComponent<Props, State> {
 }
 
 ModuleJ.defaultProps = {
-  productTabList: {},
-  navigation: null,
-  mediaLinkedList: [],
-  layout: 'default',
-  divTabs: [],
+  bgColor: '',
+  promoBanner: [],
 };
 
 ModuleJ.propTypes = {
+  bgColor: PropTypes.string,
+  headerText: PropTypes.arrayOf(
+    PropTypes.shape({
+      link: PropTypes.object,
+      textItems: PropTypes.array,
+    })
+  ).isRequired,
+  promoBanner: PropTypes.arrayOf(
+    PropTypes.shape({
+      link: PropTypes.object,
+      textItems: PropTypes.array,
+    })
+  ),
   productTabList: PropTypes.oneOfType(
     PropTypes.objectOf(
       PropTypes.arrayOf(
@@ -243,22 +257,22 @@ ModuleJ.propTypes = {
         })
       )
     )
-  ),
-  navigation: PropTypes.shape({}),
-  layout: PropTypes.string,
+  ).isRequired,
+  navigation: PropTypes.shape({}).isRequired,
+  layout: PropTypes.string.isRequired,
   mediaLinkedList: PropTypes.arrayOf(
     PropTypes.shape({
       image: PropTypes.object,
       link: PropTypes.object,
     })
-  ),
+  ).isRequired,
   divTabs: PropTypes.arrayOf(
     PropTypes.shape({
       text: PropTypes.object,
       category: PropTypes.object,
       singleCTAButton: PropTypes.object,
     })
-  ),
+  ).isRequired,
 };
 
 export default ModuleJ;

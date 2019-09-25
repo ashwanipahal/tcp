@@ -2,6 +2,8 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import { Anchor, BodyCopy, RichText, Button, Col, Row } from '../../../../../common/atoms';
 import ApprovedPLCCApplicationViewStyled from './styles/ApprovedPLCCApplication.style';
+import { getLabelValue } from '../../../../../../utils';
+import { redirectToBag, redirectToHome, getModalSizeForApprovedPLCC } from '../../utils/utility';
 
 const CopyToClipboard = e => {
   e.preventDefault();
@@ -25,11 +27,14 @@ const CopyToClipboard = e => {
  * @param {set of labels to be displayed} labels
  * @param {moduleX content} plccData
  */
-const getCouponCodeBody = (approvedPLCCData, labels = {}, plccData = {}) => {
+const getCouponCodeBody = (approvedPLCCData, labels = {}, plccData = {}, isPLCCModalFlow) => {
   return approvedPLCCData && approvedPLCCData.couponCode ? (
     <React.Fragment>
       <Row fullBleed className="centered">
-        <Col ignoreGutter={{ small: true }} colSize={{ large: 8, medium: 8, small: 12 }}>
+        <Col
+          ignoreGutter={{ small: true }}
+          colSize={{ large: getModalSizeForApprovedPLCC(isPLCCModalFlow), medium: 8, small: 12 }}
+        >
           <Row>
             <Col
               ignoreGutter={{ small: true }}
@@ -41,11 +46,11 @@ const getCouponCodeBody = (approvedPLCCData, labels = {}, plccData = {}) => {
                 fontSize="fs22"
                 fontFamily="secondary"
                 className="credit_limit_heading"
-                aria-label={labels.plcc_form_rewardsCardHeading}
+                aria-label={getLabelValue(labels, 'lbl_PLCCForm_rewardsCardHeading')}
                 textAlign="center"
                 id="couponCode"
               >
-                {labels.plc_welcome_offer_label}
+                {getLabelValue(labels, 'lbl_PLCCForm_welcomeOffer')}
               </BodyCopy>
               <BodyCopy
                 component="div"
@@ -53,14 +58,13 @@ const getCouponCodeBody = (approvedPLCCData, labels = {}, plccData = {}) => {
                 fontSize="fs22"
                 fontFamily="secondary"
                 className="promo_code"
-                aria-label={labels.plcc_form_rewardsCardHeading}
                 tabIndex="0"
                 textAlign="center"
               >
                 {approvedPLCCData && approvedPLCCData.couponCode}
               </BodyCopy>
               <Anchor onClick={CopyToClipboard} asPath="/bag" underline>
-                {labels.plcc_copy_to_clipboard}
+                {getLabelValue(labels, 'lbl_PLCCForm_copyToClipboard')}
               </Anchor>
             </Col>
             <Col
@@ -74,12 +78,18 @@ const getCouponCodeBody = (approvedPLCCData, labels = {}, plccData = {}) => {
         </Col>
       </Row>
       <Row fullBleed className="centered">
-        <Col ignoreGutter={{ small: true }} colSize={{ large: 8, medium: 8, small: 12 }}>
+        <Col
+          ignoreGutter={{ small: true }}
+          colSize={{ large: getModalSizeForApprovedPLCC(isPLCCModalFlow), medium: 8, small: 12 }}
+        >
           <RichText richTextHtml={plccData && plccData.plcc_approved_ps} />
         </Col>
       </Row>
       <Row fullBleed className="centered">
-        <Col ignoreGutter={{ small: true }} colSize={{ large: 8, medium: 8, small: 12 }}>
+        <Col
+          ignoreGutter={{ small: true }}
+          colSize={{ large: getModalSizeForApprovedPLCC(isPLCCModalFlow), medium: 8, small: 12 }}
+        >
           <hr className="horizontal_divider" />
         </Col>
       </Row>
@@ -100,7 +110,8 @@ const totalSavingsFooterContainer = (
   approvedPLCCData = {},
   plccData = {},
   labels = {},
-  bagItems
+  bagItems,
+  resetPLCCResponse
 ) => {
   return (
     <React.Fragment>
@@ -123,16 +134,15 @@ const totalSavingsFooterContainer = (
             colSize={{ large: 3, medium: 4, small: 12 }}
             className="existing_checkout_button"
           >
-            <Anchor asPath="/bag">
-              <Button
-                buttonVariation="fixed-width"
-                fill="BLUE"
-                type="submit"
-                className="existing_checkout_button"
-              >
-                {labels.plcc_checkout}
-              </Button>
-            </Anchor>
+            <Button
+              buttonVariation="fixed-width"
+              fill="BLUE"
+              type="submit"
+              className="existing_checkout_button"
+              onClick={() => redirectToBag(resetPLCCResponse)}
+            >
+              {getLabelValue(labels, 'lbl_PLCCForm_checkout')}
+            </Button>
           </Col>
         </Row>
       ) : null}
@@ -146,16 +156,15 @@ const totalSavingsFooterContainer = (
           ignoreGutter={{ small: true }}
           colSize={{ large: 3, medium: 4, small: 12 }}
         >
-          <Anchor asPath="/home">
-            <Button
-              buttonVariation="fixed-width"
-              fill={!bagItems ? 'BLUE' : 'WHITE'}
-              type="submit"
-              className="existing_continue_button"
-            >
-              {labels.plcc_form_continue_shopping}
-            </Button>
-          </Anchor>
+          <Button
+            buttonVariation="fixed-width"
+            fill={!bagItems ? 'BLUE' : 'WHITE'}
+            type="submit"
+            className="existing_continue_button"
+            onClick={() => redirectToHome(resetPLCCResponse)}
+          >
+            {getLabelValue(labels, 'lbl_PLCCForm_continueShopping')}
+          </Button>
         </Col>
       </Row>
     </React.Fragment>
@@ -177,6 +186,7 @@ const ApprovedPLCCApplicationView = ({
   isPLCCModalFlow,
   approvedPLCCData,
   isGuest,
+  resetPLCCResponse,
 }) => {
   return (
     <ApprovedPLCCApplicationViewStyled isPLCCModalFlow={isPLCCModalFlow}>
@@ -184,7 +194,7 @@ const ApprovedPLCCApplicationView = ({
       <Row fullBleed className="submit_plcc_form">
         <Col
           ignoreGutter={{ small: true }}
-          colSize={{ large: 6, medium: 8, small: 12 }}
+          colSize={{ large: getModalSizeForApprovedPLCC(isPLCCModalFlow), medium: 8, small: 12 }}
           className="congratulations_header"
         >
           <BodyCopy
@@ -192,23 +202,26 @@ const ApprovedPLCCApplicationView = ({
             fontSize="fs22"
             fontFamily="secondary"
             className="credit_card_heading"
-            aria-label={labels.plcc_form_rewardsCardHeading}
+            aria-label={getLabelValue(labels, 'lbl_PLCCForm_rewardsCardHeading')}
             tabIndex="0"
             textAlign="center"
           >
-            {`${labels.plcc_congratulations} ${approvedPLCCData &&
+            {`${getLabelValue(labels, 'lbl_PLCCForm_congratulations')} ${approvedPLCCData &&
               approvedPLCCData.address.firstName}!`}
           </BodyCopy>
         </Col>
       </Row>
       <Row fullBleed className="centered">
-        <Col ignoreGutter={{ small: true }} colSize={{ large: 8, medium: 8, small: 12 }}>
+        <Col
+          ignoreGutter={{ small: true }}
+          colSize={{ large: getModalSizeForApprovedPLCC(isPLCCModalFlow), medium: 8, small: 12 }}
+        >
           <BodyCopy
             fontWeight="bold"
             fontSize="fs22"
             fontFamily="secondary"
             className="credit_card_heading"
-            aria-label={labels.plcc_form_rewardsCardHeading}
+            aria-label={getLabelValue(labels, 'lbl_PLCCForm_rewardsCardHeading')}
             tabIndex="0"
             textAlign="center"
           >
@@ -217,23 +230,28 @@ const ApprovedPLCCApplicationView = ({
         </Col>
       </Row>
       <Row fullBleed className="centered">
-        <Col ignoreGutter={{ small: true }} colSize={{ large: 8, medium: 8, small: 12 }}>
+        <Col
+          ignoreGutter={{ small: true }}
+          colSize={{ large: getModalSizeForApprovedPLCC(isPLCCModalFlow), medium: 8, small: 12 }}
+        >
           <BodyCopy
             fontWeight="extrabold"
             fontSize="fs22"
             fontFamily="secondary"
             className="credit_limit_heading"
-            aria-label={labels.plcc_form_rewardsCardHeading}
             tabIndex="0"
             textAlign="center"
           >
-            {labels.plcc_credit_limit}
+            {getLabelValue(labels, 'lbl_PLCCForm_creditLimit')}
             {`$${approvedPLCCData && approvedPLCCData.creditLimit}`}
           </BodyCopy>
         </Col>
       </Row>
       <Row fullBleed className="centered">
-        <Col ignoreGutter={{ small: true }} colSize={{ large: 7, medium: 8, small: 12 }}>
+        <Col
+          ignoreGutter={{ small: true }}
+          colSize={{ large: getModalSizeForApprovedPLCC(isPLCCModalFlow), medium: 8, small: 12 }}
+        >
           {!isGuest ? (
             <RichText richTextHtml={plccData && plccData.plcc_shipping_info} />
           ) : (
@@ -242,12 +260,15 @@ const ApprovedPLCCApplicationView = ({
         </Col>
       </Row>
       <Row fullBleed className="centered">
-        <Col ignoreGutter={{ small: true }} colSize={{ large: 8, medium: 8, small: 12 }}>
+        <Col
+          ignoreGutter={{ small: true }}
+          colSize={{ large: getModalSizeForApprovedPLCC(isPLCCModalFlow), medium: 8, small: 12 }}
+        >
           <hr className="horizontal_divider" />
         </Col>
       </Row>
-      {getCouponCodeBody(approvedPLCCData, labels, plccData)}
-      {totalSavingsFooterContainer(approvedPLCCData, plccData, labels, bagItems)}
+      {getCouponCodeBody(approvedPLCCData, labels, plccData, isPLCCModalFlow)}
+      {totalSavingsFooterContainer(approvedPLCCData, plccData, labels, bagItems, resetPLCCResponse)}
       <Row fullBleed className="centered">
         <Col
           ignoreGutter={{ small: true }}
@@ -255,17 +276,17 @@ const ApprovedPLCCApplicationView = ({
           className="footer_links"
         >
           <BodyCopy component="span" fontSize="fs12" fontFamily="secondary">
-            {labels.apply_now_links_text}
+            {getLabelValue(labels, 'lbl_PLCCModal_linksTextPrefix')}
           </BodyCopy>
           <Anchor
-            url={labels.details_link}
+            url={getLabelValue(labels, 'lbl_PLCCForm_detailsLink')}
             target="_blank"
             fontSizeVariation="large"
             anchorVariation="primary"
             className="linkIconSeperator"
             underline
           >
-            {labels.apply_now_details}
+            {getLabelValue(labels, 'lbl_PLCCForm_details')}
           </Anchor>
         </Col>
       </Row>
@@ -280,6 +301,7 @@ ApprovedPLCCApplicationView.propTypes = {
   isGuest: PropTypes.bool.isRequired,
   bagItems: PropTypes.bool.isRequired,
   plccData: PropTypes.shape({}).isRequired,
+  resetPLCCResponse: PropTypes.func.isRequired,
 };
 
 export default ApprovedPLCCApplicationView;

@@ -1,5 +1,6 @@
 import React from 'react';
 import PropTypes from 'prop-types';
+import { NavigationActions } from 'react-navigation';
 import BodyCopy from '../../../../common/atoms/BodyCopy';
 import {
   ButtonWrapper,
@@ -19,6 +20,8 @@ class AddedToBagActions extends React.PureComponent<Props> {
       isEditingItem,
       navigation,
       closeModal,
+      isNoNEmptyBag,
+      fromAddedToBagModal,
     } = this.props;
     return (
       <ActionsWrapper>
@@ -43,21 +46,28 @@ class AddedToBagActions extends React.PureComponent<Props> {
             </ViewBagButton>
           </ButtonWrapper>
         )}
-        <ButtonWrapper>
-          <CheckoutButton
-            onPress={() => {
-              handleCartCheckout({ isEditingItem, navigation, closeModal });
-            }}
-          >
-            <BodyCopy
-              color="white"
-              fontWeight="extrabold"
-              fontFamily="secondary"
-              fontSize="fs13"
-              text={labels.checkout && labels.checkout.toUpperCase()}
-            />
-          </CheckoutButton>
-        </ButtonWrapper>
+        {(isNoNEmptyBag || fromAddedToBagModal) && (
+          <ButtonWrapper>
+            <CheckoutButton
+              onPress={() => {
+                handleCartCheckout({
+                  isEditingItem,
+                  navigation,
+                  closeModal,
+                  navigationActions: NavigationActions,
+                });
+              }}
+            >
+              <BodyCopy
+                color="white"
+                fontWeight="extrabold"
+                fontFamily="secondary"
+                fontSize="fs13"
+                text={labels.checkout && labels.checkout.toUpperCase()}
+              />
+            </CheckoutButton>
+          </ButtonWrapper>
+        )}
         <CheckoutModals navigation={navigation} />
       </ActionsWrapper>
     );
@@ -69,11 +79,14 @@ AddedToBagActions.propTypes = {
   showAddTobag: PropTypes.shape,
   navigation: PropTypes.shape({}).isRequired,
   closeModal: PropTypes.func,
+  isNoNEmptyBag: PropTypes.number.isRequired,
+  fromAddedToBagModal: PropTypes.bool,
 };
 
 AddedToBagActions.defaultProps = {
   showAddTobag: true,
   closeModal: () => {},
+  fromAddedToBagModal: false,
 };
 
 export default AddedToBagActions;

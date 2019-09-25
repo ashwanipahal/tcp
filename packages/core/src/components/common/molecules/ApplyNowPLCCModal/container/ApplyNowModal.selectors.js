@@ -15,5 +15,5 @@ export const getIsPLCCModalOpen = state => {
 };
 
 export const getLabels = state => {
-  return state.Labels.PLCC && state.Labels.PLCC.plccForm;
+  return state.Labels.global && state.Labels.global.plccForm;
 };

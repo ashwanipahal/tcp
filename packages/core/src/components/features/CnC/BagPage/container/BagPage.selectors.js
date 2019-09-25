@@ -39,9 +39,18 @@ const getBagPageLabels = state => {
     'checkout'
   );
   const myBagButton = getLabelValue(state.Labels, 'lbl_sfl_myBagButton', 'bagPage', 'checkout');
+  const emptySflMsg1 = getLabelValue(state.Labels, 'lbl_sfl_emptySflMsg_1', 'bagPage', 'checkout');
+  const emptySflMsg2 = getLabelValue(state.Labels, 'lbl_sfl_emptySflMsg_2', 'bagPage', 'checkout');
   const savedLaterButton = getLabelValue(
     state.Labels,
     'lbl_sfl_savedLaterButton',
+    'bagPage',
+    'checkout'
+  );
+  const sflSuccess = getLabelValue(state.Labels, 'bl_sfl_actionSuccess', 'bagPage', 'checkout');
+  const sflDeleteSuccess = getLabelValue(
+    state.Labels,
+    'lbl_sfl_itemDeleteSuccess',
     'bagPage',
     'checkout'
   );
@@ -58,6 +67,10 @@ const getBagPageLabels = state => {
     savedForLaterText,
     myBagButton,
     savedLaterButton,
+    emptySflMsg1,
+    emptySflMsg2,
+    sflSuccess,
+    sflDeleteSuccess,
   };
 };
 
@@ -162,6 +175,41 @@ const getsflItemsList = state => {
   return state.CartPageReducer.get('sfl');
 };
 
+/** @function checkoutIfItemIsUnqualified to check if item is Unavailable
+ * @param {object} state
+ * @param {string|number} itemId
+ */
+const checkoutIfItemIsUnqualified = (state, itemId) => {
+  const items = getOrderItems(state);
+  const indexValue = items.findIndex(
+    item =>
+      item.getIn(['itemInfo', 'itemId']) === itemId.toString() &&
+      item.getIn(['miscInfo', 'availability']) !== AVAILABILITY.OK
+  );
+  return indexValue >= 0;
+};
+
+/** @function getCurrentDeleteSelectedItemInfo to get confirmation modal info
+ * @param {object} state
+ */
+const getCurrentDeleteSelectedItemInfo = state => {
+  return state.CartPageReducer.get('openItemDeleteConfirmationModalInfo');
+};
+
+/** @function itemDeleteModalLabels to get item delete confirmation modal info
+ * @param {object} state
+ */
+const itemDeleteModalLabels = state => {
+  const getBagLabelByLabelName = labelName =>
+    getLabelValue(state.Labels, labelName, 'bagPage', 'checkout');
+  return {
+    modalTitle: getBagLabelByLabelName('lbl_itemDelete_modalTitle'),
+    modalHeading: getBagLabelByLabelName('lbl_itemDelete_modalHeading'),
+    modalButtonSFL: getBagLabelByLabelName('lbl_itemDelete_modalButtonSFL'),
+    modalButtonConfirmDelete: getBagLabelByLabelName('lbl_itemDelete_modalButtonConfirmDelete'),
+  };
+};
+
 export default {
   getBagPageLabels,
   getTotalItems,
@@ -184,4 +232,7 @@ export default {
   getCartStores,
   getCartStoresToJs,
   getsflItemsList,
+  checkoutIfItemIsUnqualified,
+  getCurrentDeleteSelectedItemInfo,
+  itemDeleteModalLabels,
 };

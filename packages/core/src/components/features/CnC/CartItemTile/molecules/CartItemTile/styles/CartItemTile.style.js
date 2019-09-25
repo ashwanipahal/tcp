@@ -10,7 +10,7 @@ export default css`
   .padding-left-10 {
     padding-left: 4px;
     @media ${props => props.theme.mediaQuery.smallMax} {
-      width: 150px;
+      width: ${props => (props.showOnReviewPage ? '150px' : 'auto')};
       display: inline-flex;
     }
   }
@@ -52,6 +52,7 @@ export default css`
     display: inline-block;
   }
   .responsive-edit-css {
+    text-decoration: underline;
     padding-top: 2px;
     cursor: pointer;
     display: flex;
@@ -205,6 +206,7 @@ export default css`
       }
 
       .responsive-edit-css {
+        text-decoration: underline;
         padding-top: 4px;
         cursor: pointer;
         display: flex;
@@ -238,6 +240,7 @@ export default css`
         display: inline-grid;
       }
       .responsive-edit-css {
+        text-decoration: underline;
         position: absolute;
         bottom: 0;
         right: 50%;
@@ -321,6 +324,7 @@ export default css`
   }
   .sflActions {
     text-decoration: underline;
+    cursor: pointer;
   }
   ${props => (props.inheritedStyles ? props.inheritedStyles : '')};
 `;

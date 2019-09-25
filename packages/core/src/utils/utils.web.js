@@ -31,6 +31,14 @@ export const importGraphQLQueriesDynamically = query => {
   return import(`../services/handler/graphQL/queries/${query}`);
 };
 
+export const getLocationOrigin = () => {
+  return window.location.origin;
+};
+
+export const canUseDOM = () => {
+  return typeof window !== 'undefined' && window.document && window.document.createElement;
+};
+
 export const isProduction = () => {
   return process.env.NODE_ENV === ENV_PRODUCTION;
 };
@@ -250,7 +258,10 @@ export const getCountriesMap = data => {
   const countries = defaultCountries;
   data.map(value =>
     countries.push(
-      Object.assign({}, value.country, { siteId: 'us', currencyId: value.currency.id })
+      Object.assign({}, value.country, {
+        siteId: 'us',
+        currencyId: value.currency.id,
+      })
     )
   );
   return countries;
@@ -275,6 +286,27 @@ export const getModifiedLanguageCode = id => {
     default:
       return id;
   }
+};
+
+/**
+ * @method getTranslateDateInformation
+ * @desc returns day, month and day of the respective date provided
+ * @param {string} date date which is to be mutated
+ * @param {upperCase} locale use for convert locate formate
+ */
+export const getTranslateDateInformation = (
+  date,
+  language,
+  dayOption = { weekday: 'short' },
+  monthOption = { month: 'short' }
+) => {
+  const localeType = language ? getModifiedLanguageCode(language).replace('_', '-') : 'en';
+  const currentDate = date ? new Date(date) : new Date();
+  return {
+    day: new Intl.DateTimeFormat(localeType, dayOption).format(currentDate),
+    month: new Intl.DateTimeFormat(localeType, monthOption).format(currentDate),
+    date: currentDate.getDate(),
+  };
 };
 
 export const siteRedirect = (newCountry, oldCountry, newSiteId, oldSiteId) => {
@@ -314,12 +346,25 @@ export const redirectToPdp = (productId, seoToken) => {
 /**
  * This function configure url for Next/Link using CMS defined url string
  */
-export const configurePlpNavigationFromCMSUrl = url => {
-  const route = `${ROUTE_PATH.plp}/`;
-  if (url.includes(route)) {
-    const urlItems = url.split(route);
+export const configureInternalNavigationFromCMSUrl = url => {
+  const plpRoute = `${ROUTE_PATH.plp.name}/`;
+  const pdpRoute = `${ROUTE_PATH.pdp.name}/`;
+  const searchRoute = `${ROUTE_PATH.search.name}/`;
+
+  if (url.includes(plpRoute)) {
+    const urlItems = url.split(plpRoute);
     const queryParam = urlItems[0];
-    return `${ROUTE_PATH.plp}?cid=${queryParam}`;
+    return `${ROUTE_PATH.plp.name}?${ROUTE_PATH.plp.param}=${queryParam}`;
+  }
+  if (url.includes(pdpRoute)) {
+    const urlItems = url.split(pdpRoute);
+    const queryParam = urlItems[0];
+    return `${ROUTE_PATH.pdp.name}?${ROUTE_PATH.pdp.param}=${queryParam}`;
+  }
+  if (url.includes(searchRoute)) {
+    const urlItems = url.split(searchRoute);
+    const queryParam = urlItems[0];
+    return `${ROUTE_PATH.search.name}?${ROUTE_PATH.search.param}=${queryParam}`;
   }
   return url;
 };
@@ -332,13 +377,11 @@ export const configurePlpNavigationFromCMSUrl = url => {
  * @description this method invokes the parameter method received when respective
  * keybord key is triggered
  */
-
 export const handleGenericKeyDown = (event, key, method) => {
   if (event.keyCode === key) {
     method();
   }
 };
-
 const getAPIInfoFromEnv = (apiSiteInfo, processEnv, siteId) => {
   const country = siteId && siteId.toUpperCase();
   const apiEndpoint = processEnv.RWD_WEB_API_DOMAIN || ''; // TO ensure relative URLs for MS APIs
@@ -350,6 +393,8 @@ const getAPIInfoFromEnv = (apiSiteInfo, processEnv, siteId) => {
     assetHost: processEnv.RWD_WEB_ASSETHOST || apiSiteInfo.assetHost,
     domain: `${apiEndpoint}/${processEnv.RWD_WEB_API_IDENTIFIER}/`,
     unbxd: processEnv.RWD_WEB_UNBXD_DOMAIN || apiSiteInfo.unbxd,
+    fbkey: processEnv.RWD_WEB_FACEBOOKKEY,
+    instakey: processEnv.RWD_WEB_INSTAGRAM,
     unboxKey: `${processEnv[`RWD_WEB_UNBXD_API_KEY_${country}_EN`]}/${
       processEnv[`RWD_WEB_UNBXD_SITE_KEY_${country}_EN`]
     }`,
@@ -365,7 +410,6 @@ const getAPIInfoFromEnv = (apiSiteInfo, processEnv, siteId) => {
     paypalEnv: processEnv.RWD_WEB_PAYPAL_ENV,
   };
 };
-
 const getGraphQLApiFromEnv = (apiSiteInfo, processEnv, relHostname) => {
   const graphQlEndpoint = processEnv.RWD_WEB_GRAPHQL_API_ENDPOINT || relHostname;
   return {
@@ -375,19 +419,16 @@ const getGraphQLApiFromEnv = (apiSiteInfo, processEnv, relHostname) => {
     graphql_api_key: processEnv.RWD_WEB_GRAPHQL_API_KEY || '',
   };
 };
-
 /*
  * @method numericStringToBool
  * @description this method returns the bool value of string numeric passed
  * @param {string} str the  string numeric value
  */
 export const numericStringToBool = str => !!+str;
-
 // Parse boolean out of string true|false
 export const parseBoolean = bool => {
   return bool === true || bool === '1' || (bool || '').toUpperCase() === 'TRUE';
 };
-
 /**
  *
  * @param {object} bossDisabledFlags carries the boss disability flags -
@@ -399,7 +440,6 @@ export const isBossProduct = bossDisabledFlags => {
   const { bossCategoryDisabled, bossProductDisabled } = bossDisabledFlags;
   return !(numericStringToBool(bossCategoryDisabled) || numericStringToBool(bossProductDisabled));
 };
-
 /**
  * @function isBopsProduct
  * @param {*} isUSStore
@@ -419,7 +459,6 @@ export const isBopisProduct = (isUSStore, product) => {
   }
   return !isOnlineOnly;
 };
-
 export const createAPIConfig = resLocals => {
   // TODO - Get data from env config - Brand, MellisaKey, BritverifyId, AcquisitionId, Domains, Asset Host, Unbxd Domain;
   // TODO - use isMobile and cookie as well..
@@ -449,7 +488,6 @@ export const createAPIConfig = resLocals => {
     language,
   };
 };
-
 export const viewport = () => {
   if (!window) return null;
 
@@ -459,7 +497,6 @@ export const viewport = () => {
     large: window.matchMedia(mediaQuery.large).matches,
   };
 };
-
 export default {
   importGraphQLClientDynamically,
   importGraphQLQueriesDynamically,
@@ -481,4 +518,5 @@ export default {
   redirectToPdp,
   handleGenericKeyDown,
   viewport,
+  canUseDOM,
 };

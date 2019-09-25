@@ -1,6 +1,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import VenmoPaymentButton from '@tcp/core/src/components/common/atoms/VenmoPaymentButton';
+import RenderPerf from '@tcp/web/src/components/common/molecules/RenderPerf';
 import Button from '../../../../common/atoms/Button';
 import withStyles from '../../../../common/hoc/withStyles';
 import style from '../styles/AddedToBagActions.style';
@@ -20,6 +21,8 @@ class AddedToBagActions extends React.PureComponent<Props> {
       handleCartCheckout,
       isEditingItem,
       isInternationalShipping,
+      isVenmoEnabled,
+      showVenmo,
     } = this.props;
     return (
       <div className={className}>
@@ -45,13 +48,21 @@ class AddedToBagActions extends React.PureComponent<Props> {
           </Row>
         )}
         <Row className="checkout-button">
-          {!isInternationalShipping && (
-            <VenmoPaymentButton
-              className="venmo-container"
-              onSuccess={() => handleCartCheckout(isEditingItem)}
-            />
-          )}
-          {!isInternationalShipping && <PayPalButton className="payPal-button" />}
+          <div className="paypal-venmo">
+            {!isInternationalShipping && (
+              <div className="paypal-wrapper">
+                <PayPalButton className="payPal-button" />
+              </div>
+            )}
+            {!isInternationalShipping && isVenmoEnabled && showVenmo && (
+              <div className="venmo-wrapper">
+                <VenmoPaymentButton
+                  className="venmo-container"
+                  onSuccess={() => handleCartCheckout(isEditingItem)}
+                />
+              </div>
+            )}
+          </div>
           <Button
             data-locator={getLocator('addedtobag_btncheckout')}
             className="checkout"
@@ -67,6 +78,7 @@ class AddedToBagActions extends React.PureComponent<Props> {
               {labels.checkout}
             </BodyCopy>
           </Button>
+          <RenderPerf.Measure name="render_checkout_cta" />
         </Row>
       </div>
     );
@@ -79,9 +91,11 @@ AddedToBagActions.propTypes = {
   labels: PropTypes.shape.isRequired,
   showAddTobag: PropTypes.bool,
   handleCartCheckout: PropTypes.func.isRequired,
+  showVenmo: PropTypes.bool,
 };
 AddedToBagActions.defaultProps = {
   showAddTobag: true,
+  showVenmo: true,
 };
 
 export default withStyles(AddedToBagActions, style);

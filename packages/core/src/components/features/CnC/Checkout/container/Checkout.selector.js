@@ -6,8 +6,7 @@ import {
   SESSIONCONFIG_REDUCER_KEY,
 } from '@tcp/core/src/constants/reducer.constants';
 import { constants as venmoConstants } from '@tcp/core/src/components/common/atoms/VenmoPaymentButton/container/VenmoPaymentButton.util';
-
-/* eslint-disable extra-rules/no-commented-out-code */
+import { getLocalStorage } from '@tcp/core/src/utils/localStorageManagement';
 import { getAPIConfig, isMobileApp, getViewportInfo, getLabelValue } from '../../../../../utils';
 /* eslint-disable extra-rules/no-commented-out-code */
 import CheckoutUtils from '../util/utility';
@@ -288,20 +287,140 @@ const getDefaultShipping = state => {
   return selector(state, 'defaultShipping');
 };
 
+const getShippingPhoneAndEmail = createSelector(
+  getShippingDestinationValues,
+  shippingDestinationValues => {
+    const { phoneNumber, emailAddress } = shippingDestinationValues;
+    return { phoneNumber, emailAddress };
+  }
+);
+
 const getCurrentPickupFormNumber = createSelector(
   getShippingPickupFields,
   pickUpContact => pickUpContact && pickUpContact.phoneNumber
 );
 
-const getBillingLabels = state => {
-  const getBillingLabelValue = label => getLabelValue(state.Labels, label, 'billing', 'checkout');
-  return {
-    header: getBillingLabelValue('lbl_billing_title'),
-    backLinkPickup: getBillingLabelValue('lbl_billing_backLinkPickup'),
-    backLinkShipping: getBillingLabelValue('lbl_billing_backLinkShipping'),
-    nextSubmitText: getBillingLabelValue('lbl_billing_nextSubmit'),
-  };
-};
+const getBillingLabelValue = state =>
+  state.Labels && state.Labels.checkout && state.Labels.checkout.billing;
+
+const getBillingLabels = createSelector(
+  getBillingLabelValue,
+  billingLabel => {
+    const labels = {};
+    const labelKeys = [
+      'lbl_billing_title',
+      'lbl_billing_backLinkPickup',
+      'lbl_billing_backLinkShipping',
+      'lbl_billing_nextSubmit',
+      'lbl_billing_billingAddress',
+      'lbl_billing_sameAsShipping',
+      'lbl_billing_paymentMethodTitle',
+      'lbl_billing_saveToAccount',
+      'lbl_billing_defaultPayment',
+      'lbl_billing_default_card',
+      'lbl_billing_addNewAddress',
+      'lbl_billing_creditCard',
+      'lbl_billing_selectFromCard',
+      'lbl_billing_addCreditHeading',
+      'lbl_billing_default',
+      'lbl_billing_cardDetailsTitle',
+      'lbl_billing_editBtn',
+      'lbl_billing_creditCardEnd',
+      'lbl_billing_addCreditBtn',
+      'lbl_billing_paypal',
+      'lbl_billing_venmo',
+      'lbl_billing_selectCardTitle',
+      'lbl_billing_select',
+      'lbl_billing_cvvCode',
+    ];
+    labelKeys.forEach(key => {
+      labels[key] = getLabelValue(billingLabel, key);
+    });
+    const {
+      lbl_billing_title: header,
+      lbl_billing_backLinkPickup: backLinkPickup,
+      lbl_billing_backLinkShipping: backLinkShipping,
+      lbl_billing_nextSubmit: nextSubmitText,
+      lbl_billing_billingAddress: billingAddress,
+      lbl_billing_sameAsShipping: sameAsShipping,
+      lbl_billing_default_card: defaultCard,
+      lbl_billing_addNewAddress: addNewAddress,
+      lbl_billing_paymentMethodTitle: paymentMethod,
+      lbl_billing_saveToAccount: saveToAccount,
+      lbl_billing_defaultPayment: defaultPayment,
+      lbl_billing_creditCard: creditCard,
+      lbl_billing_creditCardEnd: creditCardEnd,
+      lbl_billing_selectFromCard: selectFromCard,
+      lbl_billing_addCreditHeading: addCreditHeading,
+      lbl_billing_default: defaultBadge,
+      lbl_billing_cardDetailsTitle: cardDetailsTitle,
+      lbl_billing_editBtn: edit,
+      lbl_billing_addCreditBtn: addCreditBtn,
+      lbl_billing_paypal: paypal,
+      lbl_billing_venmo: venmo,
+      lbl_billing_selectCardTitle: selectCardTitle,
+      lbl_billing_select: select,
+      lbl_billing_cvvCode: cvvCode,
+    } = labels;
+    return {
+      header,
+      backLinkShipping,
+      backLinkPickup,
+      nextSubmitText,
+      billingAddress,
+      sameAsShipping,
+      defaultCard,
+      addNewAddress,
+      paymentMethod,
+      saveToAccount,
+      defaultPayment,
+      creditCard,
+      creditCardEnd,
+      selectFromCard,
+      addCreditHeading,
+      defaultBadge,
+      cardDetailsTitle,
+      edit,
+      addCreditBtn,
+      paypal,
+      venmo,
+      selectCardTitle,
+      select,
+      cvvCode,
+    };
+  }
+);
+
+const getCreditFieldLabelsObj = state =>
+  state.Labels && state.Labels.global && state.Labels.global.creditCardFields;
+
+const getCreditFieldLabels = createSelector(
+  getCreditFieldLabelsObj,
+  creditFieldLabels => {
+    const labels = {};
+    const labelKeys = [
+      'lbl_creditField_cardNumber',
+      'lbl_creditField_expMonth',
+      'lbl_creditField_expYear',
+      'lbl_creditField_cvvCode',
+    ];
+    labelKeys.forEach(key => {
+      labels[key] = getLabelValue(creditFieldLabels, key);
+    });
+    const {
+      lbl_creditField_cardNumber: cardNumber,
+      lbl_creditField_expMonth: expMonth,
+      lbl_creditField_expYear: expYear,
+      lbl_creditField_cvvCode: cvvCode,
+    } = labels;
+    return {
+      cardNumber,
+      expMonth,
+      expYear,
+      cvvCode,
+    };
+  }
+);
 
 const getSmsSignUpLabels = state => {
   const {
@@ -517,13 +636,28 @@ const getCurrentOrderId = state => {
 const getSmsNumberForBillingOrderUpdates = state =>
   state.Checkout.getIn(['values', 'smsInfo', 'numberForUpdates']);
 
-const getVenmoData = state => state[CHECKOUT_REDUCER_KEY].getIn(['values', 'venmoData']);
+const getVenmoData = () => {
+  const venmoDataString = getLocalStorage(venmoConstants.VENMO_STORAGE_KEY);
+  return venmoDataString ? JSON.parse(venmoDataString) : {};
+};
 
 const getVenmoClientTokenData = state =>
   state[CHECKOUT_REDUCER_KEY].getIn(['values', 'venmoClientTokenData']);
 
-const isVenmoPaymentInProgress = state =>
-  state[CHECKOUT_REDUCER_KEY].getIn(['uiFlags', 'venmoPaymentInProgress']);
+const isVenmoPaymentInProgress = () => {
+  const venmoProgressString = getLocalStorage(venmoConstants.VENMO_INPROGRESS_KEY);
+  return venmoProgressString ? venmoProgressString === 'true' : false;
+};
+
+const isVenmoPickupBannerDisplayed = () => {
+  const venmoPickupBanner = getLocalStorage(venmoConstants.VENMO_PICKUP_BANNER);
+  return venmoPickupBanner ? venmoPickupBanner === 'true' : false;
+};
+
+const isVenmoShippingBannerDisplayed = () => {
+  const venmoShippingBanner = getLocalStorage(venmoConstants.VENMO_SHIPPING_BANNER);
+  return venmoShippingBanner ? venmoShippingBanner === 'true' : false;
+};
 
 const isGiftOptionsEnabled = state => {
   return state[CHECKOUT_REDUCER_KEY].getIn(['uiFlags', 'isGiftOptionsEnabled']);
@@ -534,7 +668,7 @@ const isGiftOptionsEnabled = state => {
  * @param state
  */
 const isVenmoNonceNotExpired = state => {
-  const venmoData = getVenmoData(state);
+  const venmoData = getVenmoData();
   const expiry = venmoConstants.VENMO_NONCE_EXPIRY_TIMEOUT;
   const { nonce, timestamp } = venmoData;
   const venmoClientTokenData = getVenmoClientTokenData(state);
@@ -553,8 +687,8 @@ const isVenmoPaymentToken = state => {
 };
 
 const isVenmoNonceActive = state => {
-  const venmoData = getVenmoData(state);
-  const venmoPaymentInProgress = isVenmoPaymentInProgress(state);
+  const venmoData = getVenmoData();
+  const venmoPaymentInProgress = isVenmoPaymentInProgress();
   return (
     venmoData &&
     (venmoData.nonce || isVenmoPaymentToken(state)) &&
@@ -564,8 +698,8 @@ const isVenmoNonceActive = state => {
 };
 
 function isVenmoPaymentAvailable(state) {
-  const venmoData = getVenmoData(state);
-  const venmoPaymentInProgress = isVenmoPaymentInProgress(state);
+  const venmoData = getVenmoData();
+  const venmoPaymentInProgress = isVenmoPaymentInProgress();
   return venmoData && (venmoData.nonce || isVenmoPaymentToken(state)) && venmoPaymentInProgress;
 }
 
@@ -628,7 +762,7 @@ function getInternationalCheckoutUrl(state) {
 const getIsVenmoEnabled = state => {
   return (
     state[SESSIONCONFIG_REDUCER_KEY] &&
-    state[SESSIONCONFIG_REDUCER_KEY].getIn(['siteDetails', 'VENMO_ENABLED'])
+    state[SESSIONCONFIG_REDUCER_KEY].getIn(['siteDetails', 'VENMO_ENABLED']) === 'TRUE'
   );
 };
 
@@ -765,4 +899,8 @@ export default {
   getInternationalCheckoutUrl,
   getIsVenmoEnabled,
   getCurrentLanguage,
+  isVenmoShippingBannerDisplayed,
+  isVenmoPickupBannerDisplayed,
+  getShippingPhoneAndEmail,
+  getCreditFieldLabels,
 };

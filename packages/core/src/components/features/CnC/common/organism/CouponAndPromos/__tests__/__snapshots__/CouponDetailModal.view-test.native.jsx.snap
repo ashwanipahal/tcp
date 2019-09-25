@@ -12,6 +12,7 @@ exports[`Detail Coupon Modal should render correctly 1`] = `
   }
   horizontalBar={false}
   isOpen={true}
+  isOverlay={false}
   onRequestClose={[Function]}
   overlayClassName="TCPModal__Overlay"
 >
@@ -73,13 +74,28 @@ exports[`Detail Coupon Modal should render correctly 1`] = `
       <Styled(View)
         spacingStyles="margin-bottom-LRG"
       >
-        <Styled(WithTheme(CustomButton))
+        <Styled(CustomButton)
+          active={false}
           buttonVariation="fixed-width"
+          color=""
+          customStyle={Object {}}
           data-locator="couponDetailModal_applied_AddToBagBtn"
+          disableButton={false}
           disabled={false}
           fill="BLUE"
+          fullWidth=""
+          iconColor="gray.800"
+          iconName="chevron-down"
+          iconSize="fs12"
+          locator=""
+          navigation={Object {}}
           onPress={[Function]}
+          selected={false}
+          selectedIcon="chevron-up"
+          showIcon={false}
           text="APPLY_TO_BAG"
+          theme={Object {}}
+          url=""
         />
       </Styled(View)>
       <Styled(Anchor)

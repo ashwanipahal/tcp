@@ -29,6 +29,7 @@ const propTypes = {
   shippingAddress: PropTypes.shape({}),
   isSameAsShippingChecked: PropTypes.bool,
   billingData: PropTypes.shape({}),
+  showAccordian: PropTypes.bool,
 };
 
 const defaultProps = {
@@ -46,6 +47,7 @@ const defaultProps = {
   shippingAddress: null,
   isSameAsShippingChecked: false,
   billingData: null,
+  showAccordian: true,
 };
 
 const getExpirationRequiredFlag = ({ cardType }) => {
@@ -75,14 +77,14 @@ const getCardOptions = ({
 }) => {
   let cardOptions = creditCardList.map(card => ({
     value: card.creditCardId,
-    title: `${labels.lbl_billing_creditCardEnd}${card.accountNo.slice(-4)} ${
-      card.defaultInd ? `(${labels.lbl_billing_default})` : ''
+    title: `${labels.creditCardEnd}${card.accountNo.slice(-4)} ${
+      card.defaultInd ? `(${labels.defaultBadge})` : ''
     }`,
     content: (
       <Card
         card={card}
         isDefault={card.defaultInd}
-        cardNumber={`${labels.lbl_billing_creditCardEnd}${card.accountNo.slice(-4)}`}
+        cardNumber={`${labels.creditCardEnd}${card.accountNo.slice(-4)}`}
         labels={labels}
         selectedValue={+onFileCardKey}
       />
@@ -91,7 +93,7 @@ const getCardOptions = ({
 
   cardOptions = cardOptions.push({
     value: '',
-    title: labels.lbl_billing_addCreditHeading,
+    title: labels.addCreditHeading,
     content: (
       <Button
         className="addCreditCardBtn"
@@ -101,7 +103,7 @@ const getCardOptions = ({
         onClick={addNewCC}
         disabled={addNewCCState || !selectedCard}
       >
-        {labels.lbl_billing_addCreditBtn}
+        {labels.addCreditBtn}
       </Button>
     ),
   });

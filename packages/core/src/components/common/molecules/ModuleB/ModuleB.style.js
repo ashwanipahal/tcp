@@ -5,7 +5,6 @@ export default css`
 
   .image-container {
     position: relative;
-    background: ${props => props.theme.colorPalette.gray[500]};
     overflow: hidden;
 
     .image {

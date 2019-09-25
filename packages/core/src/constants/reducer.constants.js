@@ -79,6 +79,10 @@ export const PRODUCTLISTINGPAGE_ACTION_PATTERN = '@@PLPDummy-';
 export const PRODUCT_DETAIL_REDUCER_KEY = 'ProductDetail';
 export const PRODUCT_DETAIL_ACTION_PATTERN = '@@PDP-';
 
+// Product Pickup Reducer
+export const PRODUCT_PICKUP_REDUCER_KEY = 'ProductPickup';
+export const PRODUCT_PICKUP_ACTION_PATTERN = '@BOPIS-';
+
 // Quick View Page Reducer
 export const QUICK_VIEW_REDUCER_KEY = 'QuickView';
 export const QUICK_VIEW_ACTION_PATTERN = '@@QV-';

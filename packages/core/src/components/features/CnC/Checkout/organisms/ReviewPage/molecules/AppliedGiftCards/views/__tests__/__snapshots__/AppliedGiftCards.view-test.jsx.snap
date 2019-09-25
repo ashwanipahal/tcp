@@ -10,45 +10,9 @@ exports[`AppliedGiftCards should render correctly for empty state 1`] = `
   fontWeight="regular"
   letterSpacing="normal"
   lineHeight="normal"
+  link={null}
   textAlign="left"
->
-  <Styled(BodyCopy)
-    className="headsup-container"
-    color="text.primary"
-    component="p"
-    fontFamily="primary"
-    fontSize={12}
-    fontWeight="regular"
-    letterSpacing="normal"
-    lineHeight="normal"
-    textAlign="left"
-  >
-    <Styled(BodyCopy)
-      className={null}
-      color="gray[900]"
-      component="span"
-      fontFamily="secondary"
-      fontSize="fs16"
-      fontWeight="extrabold"
-      letterSpacing="normal"
-      lineHeight="normal"
-      textAlign="left"
-    />
-    <Styled(BodyCopy)
-      className={null}
-      color="gray[900]"
-      component="span"
-      fontFamily="secondary"
-      fontSize="fs16"
-      fontWeight="regular"
-      letterSpacing="normal"
-      lineHeight="normal"
-      textAlign="left"
-    >
-       undefined
-    </Styled(BodyCopy)>
-  </Styled(BodyCopy)>
-</Styled(BodyCopy)>
+/>
 `;
 
 exports[`AppliedGiftCards should render correctly for filled state 1`] = `
@@ -61,6 +25,7 @@ exports[`AppliedGiftCards should render correctly for filled state 1`] = `
   fontWeight="regular"
   letterSpacing="normal"
   lineHeight="normal"
+  link={null}
   textAlign="left"
 >
   <Styled(BodyCopy)
@@ -73,6 +38,7 @@ exports[`AppliedGiftCards should render correctly for filled state 1`] = `
     key="1"
     letterSpacing="normal"
     lineHeight="normal"
+    link={null}
     textAlign="left"
   >
     ending in 4321 | Remaining Balance: $0.00
@@ -87,6 +53,7 @@ exports[`AppliedGiftCards should render correctly for filled state 1`] = `
     key="2"
     letterSpacing="normal"
     lineHeight="normal"
+    link={null}
     textAlign="left"
   >
     ending in 1234 | Remaining Balance: $15.00
@@ -100,6 +67,7 @@ exports[`AppliedGiftCards should render correctly for filled state 1`] = `
     fontWeight="regular"
     letterSpacing="normal"
     lineHeight="normal"
+    link={null}
     textAlign="left"
   >
     <Styled(BodyCopy)
@@ -111,6 +79,7 @@ exports[`AppliedGiftCards should render correctly for filled state 1`] = `
       fontWeight="extrabold"
       letterSpacing="normal"
       lineHeight="normal"
+      link={null}
       textAlign="left"
     >
       Heads Up!
@@ -124,6 +93,7 @@ exports[`AppliedGiftCards should render correctly for filled state 1`] = `
       fontWeight="regular"
       letterSpacing="normal"
       lineHeight="normal"
+      link={null}
       textAlign="left"
     >
        Please keep you Gift Card until you receive the item(s) purchased.

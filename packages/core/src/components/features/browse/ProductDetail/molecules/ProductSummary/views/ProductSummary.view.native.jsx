@@ -62,7 +62,7 @@ class ProductSummary extends React.PureComponent {
 
       return (
         <Container>
-          <LineComp marginTop={10} borderColor="#d8d8d8" />
+          <LineComp marginTop={10} borderColor="gray.500" />
           <BazarVoiceContainer>
             <ReviewAndRatingContainer>
               <BodyCopy
@@ -95,7 +95,7 @@ class ProductSummary extends React.PureComponent {
               text="Complete The Look"
             />
           </BazarVoiceContainer>
-          <LineComp marginTop={0} borderColor="#d8d8d8" />
+          <LineComp marginTop={0} borderColor="gray.500" />
           {badge1Value !== '' && (
             <BodyCopy
               dataLocator="pdp_product_badges"
@@ -155,7 +155,7 @@ class ProductSummary extends React.PureComponent {
               dataLocator="pdp_loyalty_text"
             />
           )}
-          <LineComp marginTop={12} borderColor="#d8d8d8" />
+          <LineComp marginTop={12} borderColor="gray.500" />
         </Container>
       );
     }

@@ -9,9 +9,11 @@ describe('BagPage Reducer', () => {
     errors: false,
     uiFlags: {
       isItemMovedToSflList: false,
+      isSflItemDeleted: false,
       cartItemSflError: null,
       isCartItemsUpdating: fromJS({}),
     },
+    openItemDeleteConfirmationModalInfo: { showModal: false },
   };
   const initialStateMutated = fromJS(initialState);
 
@@ -125,10 +127,45 @@ describe('BagPage Reducer', () => {
     expect(newState).toEqual(initialStateMutated);
   });
 
+  it('OPEN_ITEM_DELETE_CONFIRMATION_MODAL', () => {
+    const newState = BagPageReducer(initialStateMutated, {
+      type: BAGPAGE_CONSTANTS.OPEN_ITEM_DELETE_CONFIRMATION_MODAL,
+      payload: { itemId: 123 },
+    });
+
+    expect(newState).toEqual(
+      initialStateMutated.set('openItemDeleteConfirmationModalInfo', {
+        showModal: true,
+        itemId: 123,
+      })
+    );
+  });
+
+  it('CLOSE_ITEM_DELETE_CONFIRMATION_MODAL', () => {
+    const newState = BagPageReducer(initialStateMutated, {
+      type: BAGPAGE_CONSTANTS.CLOSE_ITEM_DELETE_CONFIRMATION_MODAL,
+    });
+
+    expect(newState).toEqual(
+      initialStateMutated.set('openItemDeleteConfirmationModalInfo', {
+        showModal: false,
+      })
+    );
+  });
+
   it('CART_SUMMARY_SET_ORDER_ID', () => {
     const newState = BagPageReducer(initialStateMutated, {
       type: 'CART_SUMMARY_SET_ORDER_ID',
       orderId: '1234',
+    });
+
+    expect(newState).toEqual(initialStateMutated);
+  });
+
+  it('SFL_ITEMS_SET_DELETED', () => {
+    const newState = BagPageReducer(initialStateMutated, {
+      type: BAGPAGE_CONSTANTS.SFL_ITEMS_SET_DELETED,
+      payload: false,
     });
 
     expect(newState).toEqual(initialStateMutated);

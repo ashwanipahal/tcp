@@ -25,10 +25,12 @@ export {
   getAsPathWithSlug,
   getMappedPageHref,
   handleGenericKeyDown,
-  configurePlpNavigationFromCMSUrl,
+  configureInternalNavigationFromCMSUrl,
   isBopisProduct,
   isBossProduct,
   viewport,
+  getLocationOrigin,
+  getTranslateDateInformation,
 } from './utils.web';
 
 export {

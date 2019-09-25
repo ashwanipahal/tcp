@@ -105,6 +105,7 @@ exports[`HeaderMiddleNav component renders correctly 1`] = `
             fontWeight="semibold"
             letterSpacing="normal"
             lineHeight="normal"
+            link={null}
             textAlign="left"
           >
             0
@@ -131,6 +132,7 @@ exports[`HeaderMiddleNav component renders correctly 1`] = `
           "small": 6,
         }
       }
+      id="header-middle-nav"
     >
       <Connect(Styled(Navigation))
         closeNavigationDrawer={true}
@@ -249,6 +251,7 @@ exports[`HeaderMiddleNav component renders correctly when props dont change 1`] 
             fontWeight="semibold"
             letterSpacing="normal"
             lineHeight="normal"
+            link={null}
             textAlign="left"
           >
             0
@@ -275,6 +278,7 @@ exports[`HeaderMiddleNav component renders correctly when props dont change 1`] 
           "small": 6,
         }
       }
+      id="header-middle-nav"
     >
       <Connect(Styled(Navigation))
         closeNavigationDrawer={true}

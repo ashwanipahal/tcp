@@ -21,6 +21,7 @@ import BodyCopy from '../../../atoms/BodyCopy';
 type Props = {
   isOpen: boolean,
   children: node,
+  isOverlay?: boolean,
 };
 
 const closeIcon = require('../../../../../assets/close.png');
@@ -30,19 +31,25 @@ type CloseIconProps = {
   onRequestClose: Function,
   headerStyle: Object,
   iconType: String,
+  isOverlay: Boolean,
 };
 
-const getCloseIcon = ({ onRequestClose, headerStyle, iconType }: CloseIconProps) => {
+const getCloseIcon = ({ onRequestClose, headerStyle, iconType, isOverlay }: CloseIconProps) => {
   return (
     <ImageWrapper style={headerStyle}>
-      <StyledTouchableOpacity onPress={onRequestClose}>
+      <StyledTouchableOpacity
+        onPress={onRequestClose}
+        accessibilityRole="button"
+        accessibilityLabel="close"
+        isOverlay={isOverlay}
+      >
         <StyledCrossImage source={iconType === 'arrow' ? arrowIcon : closeIcon} />
       </StyledTouchableOpacity>
     </ImageWrapper>
   );
 };
 
-const ModalNative = ({ isOpen, children, ...otherProps }: Props) => {
+const ModalNative = ({ isOpen, children, isOverlay, ...otherProps }: Props) => {
   const {
     heading,
     onRequestClose,
@@ -56,42 +63,52 @@ const ModalNative = ({ isOpen, children, ...otherProps }: Props) => {
     borderColor = 'black',
     iconType,
     fullWidth,
+    customTransparent,
   } = otherProps;
   return (
     <SafeAreaView>
       <Modal
-        transparent={false}
+        transparent={customTransparent || false}
         visible={isOpen}
         animationType={animationType}
         onRequestClose={onRequestClose}
       >
-        <ToastContainer />
-        <StatusBar hidden />
-        <RowWrapper>
-          {heading && (
-            <ModalHeading fullWidth={fullWidth}>
-              <BodyCopy
-                mobileFontFamily={headingFontFamily || 'primary'}
-                fontWeight={headingFontWeight || 'extrabold'}
-                textAlign={headingAlign}
-                fontSize={fontSize || 'fs16'}
-                text={heading}
-              />
-            </ModalHeading>
-          )}
-          {getCloseIcon({ onRequestClose, headerStyle, iconType })}
-        </RowWrapper>
-        {horizontalBar ? (
-          <LineWrapper>
-            <LineComp marginTop={5} borderWidth={2} borderColor={borderColor} />
-          </LineWrapper>
-        ) : null}
-        <ScrollView showsVerticalScrollIndicator={false} keyboardShouldPersistTaps="handled">
-          {children}
-        </ScrollView>
+        {!customTransparent && (
+          <>
+            <ToastContainer />
+            <StatusBar hidden />
+            <RowWrapper isOverlay={isOverlay}>
+              {heading && (
+                <ModalHeading fullWidth={fullWidth}>
+                  <BodyCopy
+                    mobileFontFamily={headingFontFamily || 'primary'}
+                    fontWeight={headingFontWeight || 'extrabold'}
+                    textAlign={headingAlign}
+                    fontSize={fontSize || 'fs16'}
+                    text={heading}
+                  />
+                </ModalHeading>
+              )}
+              {getCloseIcon({ onRequestClose, headerStyle, iconType, isOverlay })}
+            </RowWrapper>
+            {horizontalBar ? (
+              <LineWrapper>
+                <LineComp marginTop={5} borderWidth={2} borderColor={borderColor} />
+              </LineWrapper>
+            ) : null}
+            <ScrollView showsVerticalScrollIndicator={false} keyboardShouldPersistTaps="handled">
+              {children}
+            </ScrollView>
+          </>
+        )}
+        {customTransparent && children}
       </Modal>
     </SafeAreaView>
   );
+};
+
+ModalNative.defaultProps = {
+  isOverlay: false,
 };
 
 export default ModalNative;

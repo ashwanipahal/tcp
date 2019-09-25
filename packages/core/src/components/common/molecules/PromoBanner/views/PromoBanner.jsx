@@ -1,10 +1,11 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import { Anchor, BodyCopy } from '../../../atoms';
+import errorBoundary from '../../../hoc/withErrorBoundary';
 import LinkText from '../../LinkText';
 import withStyles from '../../../hoc/withStyles';
 import PromoBannerStyle from '../PromoBanner.style';
-import { configurePlpNavigationFromCMSUrl } from '../../../../../utils';
+import { configureInternalNavigationFromCMSUrl } from '../../../../../utils';
 
 /**
  * Currency & Up variation of Promo Banner
@@ -47,7 +48,7 @@ const PromoBanner = props => {
   } = props;
 
   const navigationUrl = link;
-  navigationUrl.to = configurePlpNavigationFromCMSUrl(link.url);
+  navigationUrl.to = configureInternalNavigationFromCMSUrl(link.url);
   navigationUrl.asPath = link.url;
 
   return (
@@ -145,4 +146,4 @@ PromoBanner.defaultProps = {
 };
 
 export { PromoBanner as PromoBannerVanilla };
-export default withStyles(PromoBanner, PromoBannerStyle);
+export default withStyles(errorBoundary(PromoBanner), PromoBannerStyle);

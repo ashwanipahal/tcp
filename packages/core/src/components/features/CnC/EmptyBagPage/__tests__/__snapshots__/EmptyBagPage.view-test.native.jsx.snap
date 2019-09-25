@@ -16,6 +16,22 @@ exports[`EmptyBagPage component should renders correctly 1`] = `
       textDecoration={null}
     />
   </Text>
+  <Styled(Anchor)
+    accessibilityLabel=""
+    anchorVariation=""
+    colorName={null}
+    customStyle={Object {}}
+    fontSizeVariation="large"
+    locator=""
+    onPress={[Function]}
+    text="Apply Now"
+    underline={true}
+    visible={false}
+  />
+  <Connect(ApplyNowModalWrapper)
+    applyNow={false}
+    toggleModalWrapper={[Function]}
+  />
   <Styled(TouchableOpacity)
     onPress={[Function]}
   >

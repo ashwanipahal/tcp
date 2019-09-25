@@ -1,6 +1,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import { Button, Col, Row } from '@tcp/core/src/components/common/atoms';
+import errorBoundary from '@tcp/core/src/components/common/hoc/withErrorBoundary/errorBoundary';
 import BodyCopy from '@tcp/core/src/components/common/atoms/BodyCopy';
 import withStyles from '@tcp/core/src/components/common/hoc/withStyles';
 import CountrySelector from '../../Header/molecules/CountrySelector';
@@ -178,5 +179,5 @@ Footer.defaultProps = {
   isLoggedIn: false,
 };
 
-export default withStyles(Footer, style);
+export default withStyles(errorBoundary(Footer), style);
 export { Footer as FooterVanilla };

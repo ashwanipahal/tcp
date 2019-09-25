@@ -264,7 +264,7 @@ export const formatAddress = address => ({
 });
 
 export const formatPhoneNumber = phone => {
-  if (phone) return `(${phone.slice(0, 3)})-${phone.slice(3, 6)}-${phone.slice(6, 15)}`;
+  if (phone) return `(${phone.slice(0, 3)}) ${phone.slice(3, 6)}-${phone.slice(6, 15)}`;
   return '';
 };
 
@@ -399,6 +399,7 @@ export const getLabelValue = (labelState, labelKey, subCategory, category) => {
   return typeof labelValue === 'string' ? labelValue : labelKey;
 };
 
+// eslint-disable-next-line
 export const getErrorSelector = (state, labels, errorKey) => {
   const errorParameters = state && state.getIn(['errorParameters', '0']);
   const errorCode = state && state.get('errorKey');
@@ -489,6 +490,11 @@ export const formatPhone = (phoneNum, hyphenFormat) => {
   return phone;
 };
 
+export const getSiteId = () => {
+  const paths = window.location.pathname.split('/', 2);
+  return paths[1];
+};
+// eslint-disable-next-line
 export const parseStoreHours = hoursOfOperation => {
   let carryOverClosingHour;
   const result = [];
@@ -544,6 +550,17 @@ export const parseBoolean = bool => {
   return bool === true || bool === '1' || (bool || '').toUpperCase() === 'TRUE';
 };
 
+export const getFormSKUValue = formValue => {
+  return {
+    color: (typeof formValue.color === 'object' && formValue.color.name) || formValue.Quantity,
+    size: (typeof formValue.Size === 'object' && formValue.Size.name) || formValue.Size,
+    quantity:
+      (typeof formValue.Quantity === 'object' && formValue.Quantity.name) || formValue.Quantity,
+    fit:
+      (formValue.Fit && typeof formValue.Fit === 'object' && formValue.Fit.name) || formValue.Fit,
+  };
+};
+
 export default {
   getPromotionalMessage,
   getIconPath,
@@ -570,4 +587,5 @@ export default {
   formatDate,
   parseStoreHours,
   parseBoolean,
+  getFormSKUValue,
 };

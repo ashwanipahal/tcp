@@ -48,6 +48,7 @@ exports[`EmptyCard Component should render correctly 1`] = `
         fontWeight="semibold"
         letterSpacing="normal"
         lineHeight="lh107"
+        link={null}
         tag="p"
         textAlign="left"
       />
@@ -60,6 +61,7 @@ exports[`EmptyCard Component should render correctly 1`] = `
         fontWeight="regular"
         letterSpacing="normal"
         lineHeight="lh115"
+        link={null}
         tag="p"
         textAlign="left"
       />
@@ -90,6 +92,7 @@ exports[`EmptyCard Component should render correctly 1`] = `
         fontWeight="regular"
         letterSpacing="normal"
         lineHeight="lh115"
+        link={null}
         tag="p"
         textAlign="left"
       />
@@ -146,6 +149,7 @@ exports[`EmptyCard Component should render correctly with credit card 1`] = `
         fontWeight="semibold"
         letterSpacing="normal"
         lineHeight="lh107"
+        link={null}
         tag="p"
         textAlign="left"
       />
@@ -158,6 +162,7 @@ exports[`EmptyCard Component should render correctly with credit card 1`] = `
         fontWeight="regular"
         letterSpacing="normal"
         lineHeight="lh115"
+        link={null}
         tag="p"
         textAlign="left"
       />
@@ -188,6 +193,7 @@ exports[`EmptyCard Component should render correctly with credit card 1`] = `
         fontWeight="regular"
         letterSpacing="normal"
         lineHeight="lh115"
+        link={null}
         tag="p"
         textAlign="left"
       />

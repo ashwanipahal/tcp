@@ -132,7 +132,7 @@ class ModuleR extends React.PureComponent {
     const { selectedCategoryId } = this.state;
     let selectedProductList = productTabList[selectedCategoryId] || [];
 
-    const promoComponentContainer = (
+    const promoComponentContainer = promoBanner && (
       <PromoContainer>
         <PromoBanner promoBanner={promoBanner} navigation={navigation} />
       </PromoContainer>
@@ -154,14 +154,16 @@ class ModuleR extends React.PureComponent {
     return (
       <Container>
         <HeaderContainer>
-          <LinkText
-            navigation={navigation}
-            headerText={headerText}
-            renderComponentInNewLine
-            useStyle
-          />
+          {headerText && (
+            <LinkText
+              navigation={navigation}
+              headerText={headerText}
+              renderComponentInNewLine
+              useStyle
+            />
+          )}
         </HeaderContainer>
-        {bannerPosition === 'top' ? promoComponentContainer : null}
+        {promoBanner && bannerPosition === 'top' ? promoComponentContainer : null}
         <ProductTabListContainer>
           <ProductTabList
             onProductTabChange={this.onProductTabChange}
@@ -178,12 +180,8 @@ class ModuleR extends React.PureComponent {
 }
 
 ModuleR.defaultProps = {
-  headerText: [],
-  productTabList: {},
-  navigation: null,
-  bannerPosition: 'center',
   promoBanner: [],
-  divTabs: [],
+  bannerPosition: 'center',
 };
 
 ModuleR.propTypes = {
@@ -193,7 +191,14 @@ ModuleR.propTypes = {
       link: PropTypes.object,
       icon: PropTypes.object,
     })
-  ),
+  ).isRequired,
+  divTabs: PropTypes.arrayOf(
+    PropTypes.shape({
+      text: PropTypes.object,
+      category: PropTypes.object,
+      singleCTAButton: PropTypes.object,
+    })
+  ).isRequired,
   productTabList: PropTypes.oneOfType(
     PropTypes.objectOf(
       PropTypes.arrayOf(
@@ -204,22 +209,15 @@ ModuleR.propTypes = {
         })
       )
     )
-  ),
-  navigation: PropTypes.shape({}),
-  bannerPosition: PropTypes.string,
+  ).isRequired,
+  navigation: PropTypes.shape({}).isRequired,
   promoBanner: PropTypes.arrayOf(
     PropTypes.shape({
       textItems: PropTypes.array,
       link: PropTypes.object,
     })
   ),
-  divTabs: PropTypes.arrayOf(
-    PropTypes.shape({
-      text: PropTypes.object,
-      category: PropTypes.object,
-      singleCTAButton: PropTypes.object,
-    })
-  ),
+  bannerPosition: PropTypes.string,
 };
 
 export default ModuleR;

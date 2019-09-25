@@ -25,6 +25,7 @@ exports[`BillingSection should render correctly for empty state 1`] = `
         fontWeight="regular"
         letterSpacing="normal"
         lineHeight="normal"
+        link={null}
         textAlign="left"
       >
         undefined 
@@ -44,9 +45,16 @@ exports[`BillingSection should render correctly for empty state 1`] = `
     <Styled(Col)
       colSize={
         Object {
-          "large": 7,
+          "large": 6,
           "medium": 4,
           "small": 6,
+        }
+      }
+      offsetRight={
+        Object {
+          "large": 1,
+          "medium": 0,
+          "small": 0,
         }
       }
     />
@@ -79,6 +87,7 @@ exports[`BillingSection should render correctly without address details 1`] = `
         fontWeight="regular"
         letterSpacing="normal"
         lineHeight="normal"
+        link={null}
         textAlign="left"
       >
         Billing 
@@ -113,6 +122,7 @@ exports[`BillingSection should render correctly without address details 1`] = `
         fontWeight="semibold"
         letterSpacing="normal"
         lineHeight="normal"
+        link={null}
         textAlign="left"
       >
         Payment Method
@@ -126,6 +136,7 @@ exports[`BillingSection should render correctly without address details 1`] = `
         fontWeight="regular"
         letterSpacing="normal"
         lineHeight="normal"
+        link={null}
         textAlign="left"
       >
         <Styled(CardImage)
@@ -143,9 +154,16 @@ exports[`BillingSection should render correctly without address details 1`] = `
     <Styled(Col)
       colSize={
         Object {
-          "large": 7,
+          "large": 6,
           "medium": 4,
           "small": 6,
+        }
+      }
+      offsetRight={
+        Object {
+          "large": 1,
+          "medium": 0,
+          "small": 0,
         }
       }
     >
@@ -158,6 +176,7 @@ exports[`BillingSection should render correctly without address details 1`] = `
         fontWeight="semibold"
         letterSpacing="normal"
         lineHeight="normal"
+        link={null}
         textAlign="left"
       >
         Applied Gift Cards
@@ -217,6 +236,7 @@ exports[`BillingSection should render correctly without card & address details o
         fontWeight="regular"
         letterSpacing="normal"
         lineHeight="normal"
+        link={null}
         textAlign="left"
       >
         Billing 
@@ -236,9 +256,16 @@ exports[`BillingSection should render correctly without card & address details o
     <Styled(Col)
       colSize={
         Object {
-          "large": 7,
+          "large": 6,
           "medium": 4,
           "small": 6,
+        }
+      }
+      offsetRight={
+        Object {
+          "large": 1,
+          "medium": 0,
+          "small": 0,
         }
       }
     >
@@ -251,6 +278,7 @@ exports[`BillingSection should render correctly without card & address details o
         fontWeight="semibold"
         letterSpacing="normal"
         lineHeight="normal"
+        link={null}
         textAlign="left"
       >
         Applied Gift Cards
@@ -297,6 +325,7 @@ exports[`BillingSection should render correctly without card & address details o
         fontWeight="regular"
         letterSpacing="normal"
         lineHeight="normal"
+        link={null}
         textAlign="left"
       >
         Billing 
@@ -316,9 +345,16 @@ exports[`BillingSection should render correctly without card & address details o
     <Styled(Col)
       colSize={
         Object {
-          "large": 7,
+          "large": 6,
           "medium": 4,
           "small": 6,
+        }
+      }
+      offsetRight={
+        Object {
+          "large": 1,
+          "medium": 0,
+          "small": 0,
         }
       }
     >
@@ -331,6 +367,7 @@ exports[`BillingSection should render correctly without card & address details o
         fontWeight="semibold"
         letterSpacing="normal"
         lineHeight="normal"
+        link={null}
         textAlign="left"
       >
         Applied Gift Cards
@@ -390,6 +427,7 @@ exports[`BillingSection should render correctly without card details 1`] = `
         fontWeight="regular"
         letterSpacing="normal"
         lineHeight="normal"
+        link={null}
         textAlign="left"
       >
         Billing 
@@ -424,6 +462,7 @@ exports[`BillingSection should render correctly without card details 1`] = `
         fontWeight="semibold"
         letterSpacing="normal"
         lineHeight="normal"
+        link={null}
         textAlign="left"
       >
         Billing Address
@@ -452,9 +491,16 @@ exports[`BillingSection should render correctly without card details 1`] = `
     <Styled(Col)
       colSize={
         Object {
-          "large": 7,
+          "large": 6,
           "medium": 4,
           "small": 6,
+        }
+      }
+      offsetRight={
+        Object {
+          "large": 1,
+          "medium": 0,
+          "small": 0,
         }
       }
     >
@@ -467,6 +513,7 @@ exports[`BillingSection should render correctly without card details 1`] = `
         fontWeight="semibold"
         letterSpacing="normal"
         lineHeight="normal"
+        link={null}
         textAlign="left"
       >
         Applied Gift Cards

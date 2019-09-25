@@ -1,0 +1,11 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`InstagramLoginComponent login should render the InstagramLoginComponent component correctly  1`] = `
+<Fragment>
+  <input
+    id="instagram-token"
+    onClick={[Function]}
+    type="hidden"
+  />
+</Fragment>
+`;

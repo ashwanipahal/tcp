@@ -1,6 +1,6 @@
-// @flow
 import React from 'react';
 import { FlatList } from 'react-native';
+import PropTypes from 'prop-types';
 import { getLocator, getScreenWidth, LAZYLOAD_HOST_NAME } from '../../../../../utils/index.native';
 import { Anchor, Button, DamImage } from '../../../atoms';
 import PromoBanner from '../../PromoBanner';
@@ -8,14 +8,6 @@ import { ButtonWrapper, Tile, Wrapper } from '../ModuleD.style.native';
 import spacing from '../../../../../../styles/themes/TCP/spacing';
 import LinkText from '../../LinkText';
 import config from '../config';
-
-type Props = {
-  headerText: Object[],
-  promoBanner: Object[],
-  smallCompImage: Object[],
-  singleCTAButton: Object,
-  navigation: Object,
-};
 
 const imageSize = parseInt((getScreenWidth() - 48) / 2, 10);
 const keyExtractor = (_, index) => index.toString();
@@ -64,20 +56,21 @@ const renderItem = (item, navigation) => {
 };
 
 /**
- * @param {object} props : Props for Module D multi grid banner.
+ *
+ * @function ModuleD: Props for Module D multi grid banner.
  * @desc This is Module D global component. It has capability to display
  * featured content module with 2, 4, or 6 images tiles and a CTA.
  * Author can surface teaser content leading to corresponding pages.
  *
  * Props: Includes composites of headerText, smallCompImage and singleCTAButton.
- * @prop {object} headerText: Data for header text and link.
- * @prop {object} smallCompImage: Data for images and their links.
+ * @prop {array} headerText: Data for header text and link.
+ * @prop {array} smallCompImage: Data for images and their links.
  * @prop {object} singleCTAButton: Data for CTA button and its target.
+ * @prop {array} promoBanner: Data for Promo Banner.
+ * @prop {object} navigation: Naviation object.
  */
 
-const ModuleD = (props: Props) => {
-  const { smallCompImage, headerText, promoBanner, singleCTAButton, navigation } = props;
-
+const ModuleD = ({ smallCompImage, headerText, promoBanner, singleCTAButton, navigation }) => {
   return (
     <Wrapper>
       {headerText && (
@@ -126,6 +119,34 @@ const ModuleD = (props: Props) => {
       )}
     </Wrapper>
   );
+};
+
+ModuleD.defaultProps = {
+  promoBanner: [],
+  singleCTAButton: {},
+};
+
+ModuleD.propTypes = {
+  headerText: PropTypes.arrayOf(
+    PropTypes.shape({
+      link: PropTypes.object,
+      textItems: PropTypes.object,
+    })
+  ).isRequired,
+  promoBanner: PropTypes.arrayOf(
+    PropTypes.shape({
+      link: PropTypes.object,
+      textItems: PropTypes.object,
+    })
+  ),
+  smallCompImage: PropTypes.arrayOf(
+    PropTypes.shape({
+      link: PropTypes.object,
+      image: PropTypes.object,
+    })
+  ).isRequired,
+  navigation: PropTypes.shape({}).isRequired,
+  singleCTAButton: PropTypes.objectOf(PropTypes.shape({})),
 };
 
 export default ModuleD;

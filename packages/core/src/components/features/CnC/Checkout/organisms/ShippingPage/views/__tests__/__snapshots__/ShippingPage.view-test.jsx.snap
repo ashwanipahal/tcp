@@ -12,7 +12,7 @@ exports[`Shipping Page should render correctly 1`] = `
     }
     addressPhoneNo={null}
     defaultShipmentId={null}
-    destroyOnUnmount={false}
+    destroyOnUnmount={true}
     enableReinitialize={false}
     forceUnregisterOnUnmount={false}
     form="checkoutShipping"
@@ -36,6 +36,7 @@ exports[`Shipping Page should render correctly 1`] = `
     isOrderUpdateChecked={false}
     isSaveToAddressBookChecked={false}
     isUsSite={true}
+    isVenmoPaymentInProgress={false}
     keepDirtyOnReinitialize={false}
     loadShipmentMethods={[Function]}
     newUserPhoneNo={null}
@@ -84,7 +85,7 @@ exports[`Shipping Page should render correctly with component did update and get
     addressPhoneNo={null}
     defaultAddressId="34789"
     defaultShipmentId={null}
-    destroyOnUnmount={false}
+    destroyOnUnmount={true}
     enableReinitialize={false}
     forceUnregisterOnUnmount={false}
     form="checkoutShipping"
@@ -108,6 +109,7 @@ exports[`Shipping Page should render correctly with component did update and get
     isOrderUpdateChecked={false}
     isSaveToAddressBookChecked={false}
     isUsSite={true}
+    isVenmoPaymentInProgress={false}
     keepDirtyOnReinitialize={false}
     loadShipmentMethods={
       [MockFunction] {
@@ -188,7 +190,7 @@ exports[`Shipping Page should render correctly with component did update and get
     addressPhoneNo={null}
     defaultAddressId="123"
     defaultShipmentId={null}
-    destroyOnUnmount={false}
+    destroyOnUnmount={true}
     enableReinitialize={false}
     forceUnregisterOnUnmount={false}
     form="checkoutShipping"
@@ -212,6 +214,7 @@ exports[`Shipping Page should render correctly with component did update and get
     isOrderUpdateChecked={false}
     isSaveToAddressBookChecked={false}
     isUsSite={true}
+    isVenmoPaymentInProgress={false}
     keepDirtyOnReinitialize={false}
     loadShipmentMethods={
       [MockFunction] {

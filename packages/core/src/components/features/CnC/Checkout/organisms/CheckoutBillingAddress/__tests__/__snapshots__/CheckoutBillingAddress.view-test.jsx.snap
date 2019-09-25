@@ -4,6 +4,14 @@ exports[`CheckoutAddress should call onSameAsShippingChange 1`] = `
 <div
   className=""
 >
+  <Styled(Heading)
+    className="paymentMethodHeading elem-mt-MED elem-mb-LRG"
+    color="text.primary"
+    component="h2"
+    dataLocator="billing-payment-billingAddress"
+    textAlign="left"
+    variant="listMenu"
+  />
   <FormSection
     name="address"
   >
@@ -167,9 +175,7 @@ exports[`CheckoutAddress should render correctly 1`] = `
     dataLocator="billing-payment-billingAddress"
     textAlign="left"
     variant="listMenu"
-  >
-    lbl_billing_billingAddress
-  </Styled(Heading)>
+  />
   <Styled(Row)
     fullBleed={true}
   >
@@ -189,7 +195,7 @@ exports[`CheckoutAddress should render correctly 1`] = `
             "$$typeof": Symbol(react.forward_ref),
             "attrs": Array [],
             "componentStyle": ComponentStyle {
-              "componentId": "sc-bwzfXH",
+              "componentId": "sc-htpNat",
               "isStatic": false,
               "rules": Array [
                 "
@@ -306,7 +312,7 @@ exports[`CheckoutAddress should render correctly 1`] = `
             "displayName": "Styled(InputCheckbox)",
             "foldedComponentIds": Array [],
             "render": [Function],
-            "styledComponentId": "sc-bwzfXH",
+            "styledComponentId": "sc-htpNat",
             "target": [Function],
             "toString": [Function],
             "warnTooManyClasses": [Function],
@@ -326,10 +332,9 @@ exports[`CheckoutAddress should render correctly 1`] = `
           fontWeight="regular"
           letterSpacing="normal"
           lineHeight="normal"
+          link={null}
           textAlign="left"
-        >
-          lbl_billing_sameAsShipping
-        </Styled(BodyCopy)>
+        />
       </Field>
     </Styled(Col)>
   </Styled(Row)>
@@ -354,6 +359,14 @@ exports[`CheckoutAddress should render correctly if order doesnot have shipping 
 <div
   className=""
 >
+  <Styled(Heading)
+    className="paymentMethodHeading elem-mt-MED elem-mb-LRG"
+    color="text.primary"
+    component="h2"
+    dataLocator="billing-payment-billingAddress"
+    textAlign="left"
+    variant="listMenu"
+  />
   <FormSection
     name="address"
   >

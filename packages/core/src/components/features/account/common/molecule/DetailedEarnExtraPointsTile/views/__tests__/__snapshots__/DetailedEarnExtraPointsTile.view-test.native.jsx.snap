@@ -14,6 +14,7 @@ exports[`Detailed Earn Extra Points Tile component  should render Detailed Earn 
       "shadowRadius": 5,
     }
   }
+  viewAll={true}
 >
   <Styled(Anchor)
     accessibilityLabel=""
@@ -25,7 +26,9 @@ exports[`Detailed Earn Extra Points Tile component  should render Detailed Earn 
     text=""
     visible={false}
   >
-    <Styled(View)>
+    <Styled(View)
+      viewAll={true}
+    >
       <Styled(Image)
         source={
           Object {
@@ -34,23 +37,31 @@ exports[`Detailed Earn Extra Points Tile component  should render Detailed Earn 
         }
       />
     </Styled(View)>
-    <Styled(BodyCopy)
-      accessibilityText=""
-      component="p"
-      data-locator="earnExtraPointsActivityTitle_AppDownload"
-      dataLocator=""
-      fontFamily="secondary"
-      fontSize="fs16"
-      fontWeight="black"
-      margin={null}
-      numberOfLines={null}
-      text="Earn 5 Points"
-      textAlign="center"
-      textDecoration={null}
-    />
-    <Styled(View)>
+    <Styled(View)
+      spacingStyles="margin-top-LRG"
+    >
       <Styled(BodyCopy)
         accessibilityText=""
+        color="gray.900"
+        component="p"
+        data-locator="earnExtraPointsActivityTitle_AppDownload"
+        dataLocator=""
+        fontFamily="secondary"
+        fontSize="fs16"
+        fontWeight="black"
+        margin={null}
+        numberOfLines={null}
+        text="Earn 5 Points"
+        textAlign="center"
+        textDecoration={null}
+      />
+    </Styled(View)>
+    <Styled(View)
+      viewAll={true}
+    >
+      <Styled(BodyCopy)
+        accessibilityText=""
+        color="gray.900"
         component="p"
         data-locator="earnExtraPointsDescription_AppDownload"
         dataLocator=""

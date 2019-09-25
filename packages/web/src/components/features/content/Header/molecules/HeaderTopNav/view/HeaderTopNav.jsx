@@ -41,8 +41,7 @@ const HeaderTopNav = ({
             onClick={e => onLinkClick(e)}
             className="track-order"
           >
-            {labels.trackOrder &&
-              labels.trackOrder.lbl_header_trackOrderOverlay_trackOrderHeaderLink}
+            {labels.trackOrder && labels.trackOrder.lbl_trackOrder_trackOrderHeaderLink}
           </Anchor>
         </div>
       </div>
