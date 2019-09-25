@@ -63,11 +63,15 @@ class CondensedHeader extends React.PureComponent {
     }
   };
 
+  getComponentId = value => {
+    return value === 'condensedLogin' ? 'login' : 'accountDrawer';
+  };
+
   onLinkClick = ({ e, openOverlay, userNameClick, triggerLoginCreateAccount }) => {
     e.preventDefault();
     if (userNameClick || triggerLoginCreateAccount) {
       openOverlay({
-        component: e.target.id,
+        component: this.getComponentId(e.target.id),
         variation: 'primary',
       });
     }
@@ -206,7 +210,7 @@ class CondensedHeader extends React.PureComponent {
                   <Image
                     alt={accountIconButton}
                     className="rightLink userIcon"
-                    id="login"
+                    id="condensedLogin"
                     src={getIconPath('user-icon-blue')}
                     data-locator="user-icon"
                   />
