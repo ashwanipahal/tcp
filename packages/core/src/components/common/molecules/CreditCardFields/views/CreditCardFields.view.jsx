@@ -8,7 +8,7 @@ import { getCreditCardExpirationOptionMap } from '../../../../../utils';
 import styles from '../styles/CreditCardFields.style';
 import withStyles from '../../../hoc/withStyles';
 
-const handleEditCreditCardNumber = value => {
+export const handleEditCreditCardNumber = value => {
   return value.startsWith('*') ? '' : value;
 };
 
