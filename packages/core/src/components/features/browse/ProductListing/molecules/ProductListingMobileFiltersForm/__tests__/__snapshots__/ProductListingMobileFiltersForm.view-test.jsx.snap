@@ -2,31 +2,31 @@
 
 exports[`ProductListingFiltersForm is shown should render ProductListingFiltersForm 1`] = `
 <Fragment>
-  <form
-    className=" available-filters-sorting-container"
+  <Styled(Modal)
+    className="ProductFilterBG"
+    heightConfig={
+      Object {
+        "height": "100%",
+      }
+    }
+    isOpen={false}
+    style={
+      Object {
+        "overlay": Object {
+          "zIndex": 9,
+        },
+      }
+    }
+    widthConfig={
+      Object {
+        "large": "100%",
+        "medium": "100%",
+        "small": "100%",
+      }
+    }
   >
-    <Styled(Modal)
-      className="ProductFilterBG"
-      heightConfig={
-        Object {
-          "height": "100%",
-        }
-      }
-      isOpen={false}
-      style={
-        Object {
-          "overlay": Object {
-            "zIndex": 9,
-          },
-        }
-      }
-      widthConfig={
-        Object {
-          "large": "100%",
-          "medium": "100%",
-          "small": "100%",
-        }
-      }
+    <form
+      className=" available-filters-sorting-container"
     >
       <Styled(FilterModal)
         classNames="open-filter-button"
@@ -1720,8 +1720,8 @@ exports[`ProductListingFiltersForm is shown should render ProductListingFiltersF
           </div>
         </div>
       </Styled(FilterModal)>
-    </Styled(Modal)>
-  </form>
+    </form>
+  </Styled(Modal)>
   <Styled(Row)
     centered={true}
     className="filter-row "
