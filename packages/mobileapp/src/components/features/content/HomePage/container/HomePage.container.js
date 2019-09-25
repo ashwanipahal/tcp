@@ -29,6 +29,7 @@ const mapDispatchToProps = dispatch => {
       const payload = {
         ...pages,
         apiConfig,
+        siteConfig: true,
       };
       dispatch(bootstrapData(payload));
     },

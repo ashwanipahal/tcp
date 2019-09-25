@@ -175,6 +175,10 @@ export class GiftCardsContainer extends React.PureComponent<Props> {
     return cardList.find(card => card.creditCardId === paymentId);
   };
 
+  getAddressLine2 = addressLine2 => {
+    return addressLine2 || '';
+  };
+
   /**
    * @function submitBillingData
    * @description submits the billing data
@@ -215,7 +219,7 @@ export class GiftCardsContainer extends React.PureComponent<Props> {
         expYear: data.expYear,
         addressDetails: {
           addressLine1,
-          addressLine2,
+          addressLine2: this.getAddressLine2(addressLine2),
           city,
           country,
           firstName,

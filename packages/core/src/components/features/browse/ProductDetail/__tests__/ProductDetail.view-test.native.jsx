@@ -1,9 +1,11 @@
 import React from 'react';
 import { shallow } from 'enzyme';
-import ProductDetailView from '../views/ProductDetail.view.native';
+import { ProductDetailViewVanilla } from '../views/ProductDetail.view.native';
 
 describe('ProductDetailView component', () => {
-  it('should renders correctly', () => {
+  let wrapper;
+
+  beforeEach(() => {
     const props = {
       selectedColorProductId: '',
       currentProduct: {
@@ -11,7 +13,15 @@ describe('ProductDetailView component', () => {
         shortDescription: '',
       },
     };
-    const component = shallow(<ProductDetailView {...props} />);
-    expect(component).toMatchSnapshot();
+    wrapper = shallow(<ProductDetailViewVanilla {...props} />);
+  });
+
+  it('should renders correctly', () => {
+    expect(wrapper).toMatchSnapshot();
+  });
+
+  it('should open image carousel modal', () => {
+    wrapper.instance().setState({ zoomImage: true });
+    expect(wrapper.find('ModalNative').props().isOpen).toBeTruthy();
   });
 });

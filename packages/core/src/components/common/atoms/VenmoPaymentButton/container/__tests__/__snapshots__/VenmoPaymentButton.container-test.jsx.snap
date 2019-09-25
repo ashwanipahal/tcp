@@ -26,7 +26,9 @@ exports[`Venmo Payment Button Container should render correctly 1`] = `
   }
   isGuest={false}
   isMobile={true}
+  isNonceNotExpired={false}
   mode="client_token"
+  onSuccess={[MockFunction]}
   onVenmoPaymentButtonClick={[Function]}
   onVenmoPaymentButtonError={[Function]}
   orderId={3000332630}

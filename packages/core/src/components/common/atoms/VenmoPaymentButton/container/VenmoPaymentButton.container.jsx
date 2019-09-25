@@ -4,6 +4,7 @@ import { connect } from 'react-redux';
 import selectors, {
   isGuest as isGuestUser,
 } from '../../../../features/CnC/Checkout/container/Checkout.selector';
+import BagSelectors from '../../../../features/CnC/BagPage/container/BagPage.selectors';
 import {
   getVenmoClientToken,
   setVenmoData,
@@ -23,8 +24,8 @@ export class VenmoPaymentButtonContainer extends React.PureComponent<Props> {
    * Fetch venmo token details from the backend api. This is used to create instance of venmo and for authorization
    */
   fetchVenmoClientToken = () => {
-    const { isMobile, isGuest, orderId, enabled } = this.props;
-    if (isMobile && enabled) {
+    const { isGuest, orderId, enabled, isNonceNotExpired } = this.props;
+    if (enabled && !isNonceNotExpired) {
       let userState = '';
       if (isGuest) {
         userState = VENMO_USER_STATES.GUEST;
@@ -90,18 +91,21 @@ const mapStateToProps = state => {
   const { venmoSecurityToken: authorizationKey, venmoPaymentTokenAvailable } =
     venmoClientTokenData || {};
   const mode = venmoPaymentTokenAvailable === 'TRUE' ? modes.PAYMENT_TOKEN : modes.CLIENT_TOKEN;
-  const enabled = selectors.getIsVenmoEnabled(state) === 'TRUE';
+  const enabled = selectors.getIsVenmoEnabled(state);
+  const isOOSItemsCount = BagSelectors.getOOSCount(state);
+  const unAvailableItemsCount = BagSelectors.getUnavailableCount(state);
+  const isRemoveOOSItems = isOOSItemsCount > 0 || unAvailableItemsCount > 0;
   return {
     enabled,
-    isMobile: selectors.getIsMobile(),
     mode,
     authorizationKey,
     isNonceNotExpired: selectors.isVenmoNonceNotExpired(state),
-    venmoData: selectors.getVenmoData(state),
+    venmoData: selectors.getVenmoData(),
     venmoClientTokenData,
     allowNewBrowserTab: true,
     isGuest: isGuestUser(state),
     orderId: getCartOrderId(state),
+    isRemoveOOSItems,
   };
 };
 
