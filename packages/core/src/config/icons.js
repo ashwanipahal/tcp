@@ -57,8 +57,8 @@ export default {
   'checkout-tick': '/static/images/checkout-tick.svg',
   'checkout-white-dot': '/static/images/checkout-white-dot.svg',
   'carrot-large-left': '/static/images/carrot-large-left.png',
-  'close-icon': '/static/images/close.png',
-  'plus-icon': '/static/images/large.png',
+  'close-icon': '/static/images/large.png',
+  'plus-icon': '/static/images/plus.png',
   'mailing-address-icon': '/static/images/mailingAddress.jpg',
   'fav-store-icon': '/static/images/store.jpg',
   'birthday-icon': '/static/images/birthday.jpg',
@@ -80,7 +80,6 @@ export default {
   'search-icon': '/static/images/search-icon.svg',
   'search-close-icon': '/static/images/search-close-icon.svg',
   'venmo-button': '/static/images/venmo_white_logo.svg',
-  'venmo-logo-blue': '/static/images/venmo_logo_blue.png',
   'sample-receipt': '/static/images/sample-receipt.png',
   'cart-icon-white': '/static/images/bag-white.svg',
 };

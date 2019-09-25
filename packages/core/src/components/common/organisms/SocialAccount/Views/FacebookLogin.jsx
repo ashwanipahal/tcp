@@ -152,7 +152,7 @@ const FacebookLoginComponent = props => {
                   />
                 </BodyCopy>
               )}
-              {element.socialAccount === 'facebook' && !element.isConnected && (
+              {element.socialAccount === 'facebook' && element.isConnected && (
                 <BodyCopy
                   className="social-accounts__align social_accounts_cross_plus-icon"
                   onClick={logoutUser}

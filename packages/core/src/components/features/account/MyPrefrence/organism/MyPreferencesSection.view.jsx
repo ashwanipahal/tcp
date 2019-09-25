@@ -194,30 +194,20 @@ class MyPrefrenceSection extends React.PureComponent {
                   <Field
                     name="primary"
                     component={InputCheckbox}
-                    dataLocator="mypreference-apptcpcheckbox"
+                    dataLocator="mypreference-texttcpcheckbox"
                     className="elm-padding-top"
                   >
-                    <BodyCopy
-                      fontSize="fs14"
-                      data-locator="mypreference-texttcpcheckbox"
-                      fontFamily="secondary"
-                      component="span"
-                    >
+                    <BodyCopy fontSize="fs14" fontFamily="secondary" component="span">
                       {getLabelValue(labels, 'lbl_prefrence_tcp_label')}
                     </BodyCopy>
                   </Field>
                   <Field
                     name="primary"
                     component={InputCheckbox}
-                    dataLocator="mypreference-appgymcheckbox"
+                    dataLocator="mypreference-textgymcheckbox"
                     className="elm-padding-top"
                   >
-                    <BodyCopy
-                      fontSize="fs14"
-                      data-locator="mypreference-textgymcheckbox"
-                      fontFamily="secondary"
-                      component="span"
-                    >
+                    <BodyCopy fontSize="fs14" fontFamily="secondary" component="span">
                       {getLabelValue(labels, 'lbl_prefrence_gym_label')}
                     </BodyCopy>
                   </Field>
