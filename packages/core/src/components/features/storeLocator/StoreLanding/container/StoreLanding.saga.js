@@ -1,6 +1,5 @@
 import { call, takeLatest, put, select } from 'redux-saga/effects';
 import { validateReduxCache } from '@tcp/core/src/utils/cache.util';
-import logger from '@tcp/core/src/utils/loggerInstance';
 import {
   getLocationStores,
   getFavoriteStore,
@@ -8,17 +7,16 @@ import {
 } from '@tcp/core/src/services/abstractors/common/storeLocator';
 import { setDefaultStore as setDefaultStoreUserAction } from '@tcp/core/src/components/features/account/User/container/User.actions';
 import STORE_LOCATOR_CONSTANTS from './StoreLanding.constants';
-import {
-  getSetDefaultStoreActn,
-  setStoresByCoordinates,
-  getSetGeoDefaultStoreActn,
-} from './StoreLanding.actions';
-
+import { setStoresByCoordinates } from './StoreLanding.actions';
 
 export function* fetchLocationStoresSaga({ payload }) {
   try {
     const res = yield call(getLocationStores, payload);
-    yield put(setStoresByCoordinates(res));
+    if (res && Array.isArray(res)) {
+      yield put(setStoresByCoordinates(res));
+    } else {
+      throw res;
+    }
   } catch (err) {
     yield null;
   }
@@ -27,7 +25,11 @@ export function* fetchLocationStoresSaga({ payload }) {
 export function* getFavoriteStoreSaga({ payload }) {
   try {
     const res = yield call(getFavoriteStore, payload);
-    yield put(setDefaultStoreUserAction(res));
+    if (res && res.basicInfo) {
+      yield put(setDefaultStoreUserAction(res));
+    } else {
+      throw res;
+    }
   } catch (err) {
     yield null;
   }
@@ -36,17 +38,11 @@ export function* getFavoriteStoreSaga({ payload }) {
 export function* setFavoriteStoreSaga({ payload }) {
   try {
     const state = yield select();
-    console.log('::::', payload)
     const res = yield call(setFavoriteStore, payload.basicInfo.id, state);
-    console.log('////', res)
     if (res) {
-      yield put(
-        setDefaultStoreUserAction(payload)
-      );
+      yield put(setDefaultStoreUserAction(payload));
     }
-    yield;
   } catch (err) {
-    logger(err);
     yield null;
   }
 }

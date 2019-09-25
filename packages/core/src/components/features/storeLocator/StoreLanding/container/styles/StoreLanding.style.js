@@ -3,7 +3,7 @@ import { css } from 'styled-components';
 export default css`
   .favoriteStore__heading {
     font-size: 16px;
-    color: #1a1a1a;
+    color: ${props => props.theme.colors.TEXT.DARK};
     margin: 0;
     text-transform: uppercase;
   }
@@ -12,7 +12,7 @@ export default css`
     display: none;
   }
 
-  @media (max-width: 1199px) and (min-width: 768px) {
+  @media ${props => props.theme.mediaQuery.mediumOnly} {
     .store__list:nth-child(even) {
       margin-right: 0;
     }
@@ -29,17 +29,17 @@ export default css`
   .store__map {
     padding-top: 10px;
 
-    @media (max-width: 1199px) and (min-width: 768px) {
+    @media ${props => props.theme.mediaQuery.mediumOnly} {
       margin-right: 0;
       margin-left: 15px;
     }
 
-    @media (min-width: 1199px) {
+    @media ${props => props.theme.mediaQuery.large} {
       display: none;
     }
   }
 
-  @media (min-width: 1199px) {
+  @media ${props => props.theme.mediaQuery.large} {
     .mapView__desktop {
       display: block;
     }
@@ -51,10 +51,8 @@ export default css`
   }
 
   .favoriteStore__container {
-    @media (max-width: 1199px) and (min-width: 768px) {
-      width: 100%;
-      margin: 0;
-    }
+    width: 100%;
+    margin: 0;
   }
 
   .google-map {
@@ -62,6 +60,4 @@ export default css`
       width: 100%;
     }
   }
-
-
 `;

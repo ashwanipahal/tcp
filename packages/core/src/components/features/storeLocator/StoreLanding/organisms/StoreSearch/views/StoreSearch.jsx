@@ -9,7 +9,6 @@ import {
   Row,
   Col,
 } from '@tcp/core/src/components/common/atoms';
-import { Grid } from '@tcp/core/src/components/common/molecules';
 import PropTypes from 'prop-types';
 import { AutoCompleteComponent } from '@tcp/core/src/components/common/atoms/GoogleAutoSuggest/AutoCompleteComponent';
 import withStyles from '@tcp/core/src/components/common/hoc/withStyles';
@@ -72,28 +71,38 @@ export class StoreSearch extends PureComponent {
     return false;
   };
 
+  /**
+   * @function onSelectStore function to handle the toggling og checkbox
+   * @param {object} event - event object
+   */
   onSelectStore = event => {
     const { target } = event;
     const { selectStoreType } = this.props;
 
     if (target.name === 'gymboreeStoreOption') {
-      this.setState({
-        gymSelected: target.checked,
-      }, () => {
-        const { outletSelected, gymSelected } = this.state;
-        selectStoreType({ outletSelected, gymSelected });
-      });
+      this.setState(
+        {
+          gymSelected: target.checked,
+        },
+        () => {
+          const { outletSelected, gymSelected } = this.state;
+          selectStoreType({ outletSelected, gymSelected });
+        }
+      );
     }
 
     if (target.name === 'outletOption') {
-      this.setState({
-        outletSelected: target.checked,
-      }, () => {
-        const { outletSelected, gymSelected } = this.state;
-        selectStoreType({ outletSelected, gymSelected });
-      });
+      this.setState(
+        {
+          outletSelected: target.checked,
+        },
+        () => {
+          const { outletSelected, gymSelected } = this.state;
+          selectStoreType({ outletSelected, gymSelected });
+        }
+      );
     }
-
+    return true;
   };
 
   render() {
@@ -106,7 +115,7 @@ export class StoreSearch extends PureComponent {
       searchIcon,
       markerIcon,
       toggleMap,
-      mapView
+      mapView,
     } = this.props;
     const { errorNotFound, gymSelected, outletSelected } = this.state;
     const {
@@ -145,13 +154,11 @@ export class StoreSearch extends PureComponent {
         asPath: '',
         to: '',
         label: allUSCAStores,
-        classValue: '',
       },
       {
         asPath: '',
         to: '',
         label: internationalStores,
-        classValue: '',
       },
     ];
 
@@ -233,11 +240,9 @@ export class StoreSearch extends PureComponent {
               </ul>
               <ul className="storeLinksList">
                 <li key={viewMapListLabel} className="mapLink storeLinks">
-                  <Anchor onClick={toggleMap}>
-                    {viewMapListLabel}
-                  </Anchor>
+                  <Anchor onClick={toggleMap}>{viewMapListLabel}</Anchor>
                 </li>
-                {linksConfig.map(({ to, asPath, label, classValue }) => (
+                {linksConfig.map(({ to, asPath, label }) => (
                   <li key={label} className="storeLinks">
                     <Anchor asPath={asPath} className="" to={to}>
                       {label}
@@ -257,17 +262,21 @@ StoreSearch.propTypes = {
   className: PropTypes.string.isRequired,
   selectedCountry: PropTypes.string.isRequired,
   loadStoresByCoordinates: PropTypes.func.isRequired,
+  selectStoreType: PropTypes.func.isRequired,
   submitting: PropTypes.bool,
   error: PropTypes.bool.isRequired,
   handleSubmit: PropTypes.func.isRequired,
   labels: PropTypes.objectOf(PropTypes.string),
   searchIcon: PropTypes.string.isRequired,
   markerIcon: PropTypes.string.isRequired,
+  toggleMap: PropTypes.func.isRequired,
+  mapView: PropTypes.bool,
 };
 
 StoreSearch.defaultProps = {
   submitting: false,
   labels: {},
+  mapView: false,
 };
 
 export default reduxForm({

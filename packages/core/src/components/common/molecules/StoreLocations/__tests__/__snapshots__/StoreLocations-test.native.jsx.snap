@@ -1,0 +1,12 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`StoreLocations component StoreLocations component renders correctly without props 1`] = `
+<Styled(View)>
+  <Styled(WithTheme(CustomButton))
+    buttonVariation="variable-width"
+    onPress={null}
+    text="Directions"
+    type="button"
+  />
+</Styled(View)>
+`;

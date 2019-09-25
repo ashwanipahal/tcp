@@ -3,7 +3,6 @@ import STORE_LOCATOR_CONSTANTS from '../StoreLanding.constants';
 
 import StoreLocatorReducer, { initialState } from '../StoreLanding.reducer';
 import suggestedStores from '../__mocks__/suggestedStore';
-import { setFavStoreResponse, favoriteStore } from '../__mocks__/favoriteStore';
 
 describe('StoreLocatorReducer', () => {
   let state = {};
@@ -37,23 +36,5 @@ describe('StoreLocatorReducer', () => {
     };
     const storeSuggestedStore = StoreLocatorReducer(state, action);
     expect(storeSuggestedStore.get('suggestedStores')).toBe(suggestedStores);
-  });
-
-  test('SET_DEFAULT_STORE', () => {
-    const action = {
-      type: STORE_LOCATOR_CONSTANTS.SET_DEFAULT_STORE,
-      payload: setFavStoreResponse,
-    };
-    const storeSuggestedStore = StoreLocatorReducer(state, action);
-    expect(storeSuggestedStore.get('defaultStore')).toBe(setFavStoreResponse);
-  });
-
-  test('SET_GEO_DEFAULT_STORE', () => {
-    const action = {
-      type: STORE_LOCATOR_CONSTANTS.SET_GEO_DEFAULT_STORE,
-      payload: favoriteStore,
-    };
-    const storeSuggestedStore = StoreLocatorReducer(state, action);
-    expect(storeSuggestedStore.get('geoDefaultStore')).toBe(favoriteStore);
   });
 });
