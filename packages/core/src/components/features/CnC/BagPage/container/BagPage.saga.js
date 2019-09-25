@@ -36,6 +36,7 @@ import { removeCartItem } from '../../CartItemTile/container/CartItemTile.action
 import { imageGenerator } from '../../../../../services/abstractors/CnC/CartItemTile';
 import { getUserInfo } from '../../../account/User/container/User.actions';
 import { getIsInternationalShipping } from '../../../../../reduxStore/selectors/siteDetails.selectors';
+import { getAddressListState } from '../../../account/AddressBook/container/AddressBook.selectors';
 import { closeMiniBag } from '../../../../common/organisms/Header/container/Header.actions';
 import { addToCartEcom } from '../../AddedToBag/container/AddedToBag.actions';
 
@@ -188,6 +189,9 @@ export function* fetchModuleX({ payload = [] }) {
 export function* routeForCartCheckout(recalc, navigation, closeModal) {
   const orderHasPickup = yield select(checkoutSelectors.getIsOrderHasPickup);
   const IsInternationalShipping = yield select(getIsInternationalShipping);
+  const isVenmoPaymentInProgress = yield select(checkoutSelectors.isVenmoPaymentInProgress);
+  const addressList = yield select(getAddressListState);
+  const hasDefaultShippingAddress = addressList && addressList.size > 0;
   if (isMobileApp()) {
     if (orderHasPickup) {
       navigation.navigate(CONSTANTS.CHECKOUT_ROUTES_NAMES.CHECKOUT_PICKUP);
@@ -201,6 +205,8 @@ export function* routeForCartCheckout(recalc, navigation, closeModal) {
     yield put(closeMiniBag());
     if (orderHasPickup) {
       utility.routeToPage(CHECKOUT_ROUTES.pickupPage, { recalc });
+    } else if (isVenmoPaymentInProgress && hasDefaultShippingAddress) {
+      utility.routeToPage(CHECKOUT_ROUTES.reviewPage, { recalc });
     } else {
       utility.routeToPage(CHECKOUT_ROUTES.shippingPage, { recalc });
     }

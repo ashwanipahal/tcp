@@ -5,7 +5,7 @@ import { Col, Row, TextBox } from '../../../atoms';
 import Select from '../../../atoms/Select';
 import CreditCardNumber from '../../../atoms/CreditCardNumber';
 import { getCreditCardExpirationOptionMap } from '../../../../../utils';
-import styles from '../styles/CreditCardFields.styles';
+import styles from '../styles/CreditCardFields.style';
 import withStyles from '../../../hoc/withStyles';
 
 const CardNumberField = ({ cardTypeImgUrl, cardType, isPLCCEnabled, creditFieldLabels }) => {

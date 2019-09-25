@@ -472,7 +472,7 @@ exports[`ButtonList component renders correctly without props 1`] = `
         }
         key="Venmo"
         name="paymentMethodId"
-        selectedValue="Venmo"
+        selectedValue="venmo"
         subtitle=""
         title=""
         variation="secondary"

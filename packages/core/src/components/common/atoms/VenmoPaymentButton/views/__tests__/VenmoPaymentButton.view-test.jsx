@@ -15,6 +15,7 @@ describe('Venmo Payment Button', () => {
     mode: modes.PAYMENT_TOKEN,
     authorizationKey: 'encrytptedauthorizationkey',
     isNonceNotExpired: false,
+    isRemoveOOSItems: false,
     venmoData: {
       venmoClientTokenData: {
         userState: 'R',
@@ -62,7 +63,6 @@ describe('Venmo Payment Button', () => {
     const tree = shallow(<VenmoPaymentButtonVanilla {...props} />);
     const componentInstance = tree.instance();
     componentInstance.setupVenmoInstance(true);
-    expect(tree.state('hasVenmoError')).toBeTruthy();
     expect(props.setVenmoData).not.toHaveBeenCalled();
   });
 
@@ -103,6 +103,21 @@ describe('Venmo Payment Button', () => {
     const tree = shallow(<VenmoPaymentButtonVanilla {...props} />);
     const componentInstance = tree.instance();
     componentInstance.canCallVenmoApi = jest.fn();
+    componentInstance.venmoInstance = {};
+    componentInstance.handleVenmoClick();
+    expect(componentInstance.canCallVenmoApi).not.toBeCalled();
+    expect(props.setVenmoPaymentInProgress).toBeCalled();
+    expect(props.onVenmoPaymentButtonClick).toBeCalled();
+  });
+
+  it('calling handleVenmoClick method for OOS Items', () => {
+    const newProps = {
+      ...props,
+      isRemoveOOSItems: true,
+    };
+    const tree = shallow(<VenmoPaymentButtonVanilla {...newProps} />);
+    const componentInstance = tree.instance();
+    componentInstance.canCallVenmoApi = jest.fn();
     componentInstance.handleVenmoClick();
     expect(componentInstance.canCallVenmoApi).not.toBeCalled();
     expect(props.setVenmoPaymentInProgress).toBeCalled();
@@ -110,7 +125,11 @@ describe('Venmo Payment Button', () => {
   });
 
   it('calling handleVenmoClick method with venmo nonce', () => {
-    const tree = shallow(<VenmoPaymentButtonVanilla {...props} />);
+    const newProps = {
+      ...props,
+      isNonceNotExpired: false,
+    };
+    const tree = shallow(<VenmoPaymentButtonVanilla {...newProps} />);
     const componentInstance = tree.instance();
     const fetchVenmoNonce = jest.spyOn(componentInstance, 'fetchVenmoNonce');
     componentInstance.handleVenmoClick();
