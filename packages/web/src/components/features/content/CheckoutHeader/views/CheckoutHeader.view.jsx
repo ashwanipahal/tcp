@@ -1,8 +1,9 @@
 import React from 'react';
 import { PropTypes } from 'prop-types';
-import Router from 'next/router';
 import withStyles from '@tcp/core/src/components/common/hoc/withStyles';
 import { BodyCopy, Anchor, Image, Row, Col } from '@tcp/core/src/components/common/atoms';
+import checkoutUtil from '@tcp/core/src/components/features/CnC/Checkout/util/utility';
+import { CHECKOUT_ROUTES } from '@tcp/core/src/components/features/CnC/Checkout/Checkout.constants';
 import style from '../CheckoutHeader.style';
 import { BrandTabs } from '../../Header/molecules';
 import CheckoutProgressIndicator from '../../CheckoutProgressIndicator';
@@ -23,7 +24,7 @@ const CheckoutHeader = ({ className, brandTabs, labels, isInternationalShipping,
           <Row className="header-topnav__row">
             <button
               onClick={() => {
-                Router.push('/us/bag');
+                checkoutUtil.routeToPage(CHECKOUT_ROUTES.bagPage);
               }}
               className="exitFromCheckout"
             >
