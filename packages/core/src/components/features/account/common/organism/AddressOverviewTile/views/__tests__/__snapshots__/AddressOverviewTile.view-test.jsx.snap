@@ -16,6 +16,7 @@ exports[`AddressOverviewTile component should render correctly 1`] = `
     fontWeight="regular"
     letterSpacing="normal"
     lineHeight="normal"
+    link={null}
     textAlign="left"
   >
     <Styled(Row)
@@ -39,6 +40,7 @@ exports[`AddressOverviewTile component should render correctly 1`] = `
           fontWeight="extrabold"
           letterSpacing="normal"
           lineHeight="normal"
+          link={null}
           textAlign="left"
         >
           Default Shiping Address
@@ -62,6 +64,7 @@ exports[`AddressOverviewTile component should render correctly 1`] = `
           fontWeight="regular"
           letterSpacing="normal"
           lineHeight="normal"
+          link={null}
           textAlign="left"
         >
           <Styled(Anchor)
@@ -126,6 +129,7 @@ exports[`AddressOverviewTile component should render correctly 1`] = `
     fontWeight="regular"
     letterSpacing="normal"
     lineHeight="normal"
+    link={null}
     textAlign="left"
   >
     <Styled(Row)
@@ -149,6 +153,7 @@ exports[`AddressOverviewTile component should render correctly 1`] = `
           fontWeight="extrabold"
           letterSpacing="normal"
           lineHeight="normal"
+          link={null}
           textAlign="left"
         >
           Default Billing Address
@@ -232,6 +237,7 @@ exports[`AddressOverviewTile render empty address component should render correc
     fontWeight="regular"
     letterSpacing="normal"
     lineHeight="normal"
+    link={null}
     textAlign="left"
   >
     <Styled(Row)
@@ -255,6 +261,7 @@ exports[`AddressOverviewTile render empty address component should render correc
           fontWeight="extrabold"
           letterSpacing="normal"
           lineHeight="normal"
+          link={null}
           textAlign="left"
         />
       </Styled(Col)>
@@ -276,6 +283,7 @@ exports[`AddressOverviewTile render empty address component should render correc
           fontWeight="regular"
           letterSpacing="normal"
           lineHeight="normal"
+          link={null}
           textAlign="left"
         >
           <Styled(Anchor)
@@ -310,6 +318,7 @@ exports[`AddressOverviewTile render empty address component should render correc
           fontWeight="regular"
           letterSpacing="normal"
           lineHeight="normal"
+          link={null}
           textAlign="left"
         />
       </Styled(Col)>
@@ -324,6 +333,7 @@ exports[`AddressOverviewTile render empty address component should render correc
     fontWeight="regular"
     letterSpacing="normal"
     lineHeight="normal"
+    link={null}
     textAlign="left"
   >
     <Styled(Row)
@@ -347,6 +357,7 @@ exports[`AddressOverviewTile render empty address component should render correc
           fontWeight="extrabold"
           letterSpacing="normal"
           lineHeight="normal"
+          link={null}
           textAlign="left"
         />
       </Styled(Col)>
@@ -390,6 +401,7 @@ exports[`AddressOverviewTile render empty address component should render correc
           fontWeight="regular"
           letterSpacing="normal"
           lineHeight="normal"
+          link={null}
           textAlign="left"
         />
       </Styled(Col)>
@@ -412,6 +424,7 @@ exports[`AddressOverviewTile render empty address should render empty address co
     fontWeight="regular"
     letterSpacing="normal"
     lineHeight="normal"
+    link={null}
     textAlign="left"
   >
     <Styled(Row)
@@ -435,6 +448,7 @@ exports[`AddressOverviewTile render empty address should render empty address co
           fontWeight="extrabold"
           letterSpacing="normal"
           lineHeight="normal"
+          link={null}
           textAlign="left"
         />
       </Styled(Col)>
@@ -456,6 +470,7 @@ exports[`AddressOverviewTile render empty address should render empty address co
           fontWeight="regular"
           letterSpacing="normal"
           lineHeight="normal"
+          link={null}
           textAlign="left"
         >
           <Styled(Anchor)
@@ -490,6 +505,7 @@ exports[`AddressOverviewTile render empty address should render empty address co
           fontWeight="regular"
           letterSpacing="normal"
           lineHeight="normal"
+          link={null}
           textAlign="left"
         />
       </Styled(Col)>
@@ -504,6 +520,7 @@ exports[`AddressOverviewTile render empty address should render empty address co
     fontWeight="regular"
     letterSpacing="normal"
     lineHeight="normal"
+    link={null}
     textAlign="left"
   >
     <Styled(Row)
@@ -527,6 +544,7 @@ exports[`AddressOverviewTile render empty address should render empty address co
           fontWeight="extrabold"
           letterSpacing="normal"
           lineHeight="normal"
+          link={null}
           textAlign="left"
         />
       </Styled(Col)>
@@ -570,6 +588,7 @@ exports[`AddressOverviewTile render empty address should render empty address co
           fontWeight="regular"
           letterSpacing="normal"
           lineHeight="normal"
+          link={null}
           textAlign="left"
         />
       </Styled(Col)>

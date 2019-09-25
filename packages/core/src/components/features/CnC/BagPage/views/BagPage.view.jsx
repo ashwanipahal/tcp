@@ -9,7 +9,6 @@ import BodyCopy from '../../../../common/atoms/BodyCopy';
 import AddedToBagActions from '../../AddedToBagActions';
 import CnCTemplate from '../../common/organism/CnCTemplate';
 import BAGPAGE_CONSTANTS from '../BagPage.constants';
-import { isClient } from '../../../../../utils';
 import styles, { addedToBagActionsStyles } from '../styles/BagPage.style';
 
 // @flow
@@ -31,16 +30,6 @@ class BagPageView extends React.Component {
     };
   }
 
-  componentDidUpdate() {
-    if (isClient()) {
-      const urlParams = new URLSearchParams(window.location.search);
-      const isSfl = urlParams.get('isSfl');
-      if (isSfl) {
-        document.querySelector('.save-for-later-section-heading').scrollIntoView(true);
-      }
-    }
-  }
-
   renderLeftSection = () => {
     const { labels, sflItems } = this.props;
     const { activeSection } = this.state;
@@ -52,7 +41,7 @@ class BagPageView extends React.Component {
             activeSection === BAGPAGE_CONSTANTS.BAG_STATE ? 'activeSection' : 'inActiveSection'
           }`}
         >
-          <ProductTileWrapper bagLabels={labels} pageView={myBag} />
+          <ProductTileWrapper bagLabels={labels} pageView={myBag} showPlccApplyNow />
         </div>
         <div
           className={`save-for-later-section ${
@@ -71,6 +60,7 @@ class BagPageView extends React.Component {
             bagLabels={labels}
             pageView={myBag}
             sflItems={sflItems}
+            showPlccApplyNow={false}
             isBagPageSflSection
           />
         </div>

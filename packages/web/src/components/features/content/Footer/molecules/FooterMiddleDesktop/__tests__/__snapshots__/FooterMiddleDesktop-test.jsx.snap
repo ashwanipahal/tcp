@@ -16,6 +16,7 @@ exports[`FooterMiddleDesktop component renders correctly 1`] = `
       colNum={0}
       headerAsImage={true}
       isLoggedIn={false}
+      isSubHeader={false}
       navLinkItems={
         Object {
           "header": "",
@@ -38,6 +39,7 @@ exports[`FooterMiddleDesktop component renders correctly 1`] = `
       colNum={1}
       headerAsImage={true}
       isLoggedIn={false}
+      isSubHeader={false}
       navLinkItems={
         Object {
           "header": "",
@@ -58,7 +60,8 @@ exports[`FooterMiddleDesktop component renders correctly 1`] = `
     <FooterNavLinks
       className="footer-links"
       colNum={2}
-      isLoggedIn={false}
+      isLoggedIn={true}
+      isSubHeader={false}
       navLinkItems={
         Object {
           "header": "",
@@ -79,7 +82,8 @@ exports[`FooterMiddleDesktop component renders correctly 1`] = `
     <FooterNavLinks
       className="footer-links"
       colNum={3}
-      isLoggedIn={false}
+      isLoggedIn={true}
+      isSubHeader={false}
       navLinkItems={
         Object {
           "header": "",
@@ -100,7 +104,8 @@ exports[`FooterMiddleDesktop component renders correctly 1`] = `
     <FooterNavLinks
       className="footer-links"
       colNum={4}
-      isLoggedIn={false}
+      isLoggedIn={true}
+      isSubHeader={false}
       navLinkItems={
         Object {
           "header": "",
@@ -121,7 +126,8 @@ exports[`FooterMiddleDesktop component renders correctly 1`] = `
     <FooterNavLinks
       className="footer-links"
       colNum={5}
-      isLoggedIn={false}
+      isLoggedIn={true}
+      isSubHeader={false}
       navLinkItems={
         Object {
           "header": "",
@@ -152,6 +158,7 @@ exports[`FooterMiddleDesktop component renders correctly 2`] = `
       colNum={0}
       headerAsImage={true}
       isLoggedIn={false}
+      isSubHeader={false}
       navLinkItems={
         Object {
           "header": "",
@@ -174,6 +181,7 @@ exports[`FooterMiddleDesktop component renders correctly 2`] = `
       colNum={1}
       headerAsImage={true}
       isLoggedIn={false}
+      isSubHeader={false}
       navLinkItems={
         Object {
           "header": "",
@@ -204,7 +212,8 @@ exports[`FooterMiddleDesktop component renders correctly 2`] = `
     <FooterNavLinks
       className="footer-links"
       colNum={2}
-      isLoggedIn={false}
+      isLoggedIn={true}
+      isSubHeader={false}
       navLinkItems={
         Object {
           "header": "",
@@ -258,7 +267,8 @@ exports[`FooterMiddleDesktop component renders correctly 2`] = `
     <FooterNavLinks
       className="footer-links"
       colNum={5}
-      isLoggedIn={false}
+      isLoggedIn={true}
+      isSubHeader={false}
       navLinkItems={
         Object {
           "header": "",

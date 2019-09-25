@@ -2,7 +2,7 @@ import React from 'react';
 import PropTypes from 'prop-types';
 
 import { Anchor, BodyCopy, Col, DamImage, Row } from '../../../atoms';
-import { getLocator } from '../../../../../utils';
+import { getLocator, configureInternalNavigationFromCMSUrl } from '../../../../../utils';
 import config from '../config';
 
 /**
@@ -15,8 +15,15 @@ const colSize = { ...config.COL_SIZE_TILE };
  * @param {tileData} tileData Accepts image, link and styled object and index
  */
 const ModuleLTile = ({ tileData: { image, link, styled }, index, tileColor = {} }) => {
+  const { url: ctaUrl, target, title, actualUrl } = link;
+
+  let to = actualUrl;
+  if (!actualUrl) {
+    to = configureInternalNavigationFromCMSUrl(ctaUrl);
+  }
+
   return (
-    <Anchor {...link}>
+    <Anchor to={to} asPath={ctaUrl} target={target} title={title}>
       <Row fullBleed>
         <Col
           colSize={colSize}
@@ -51,7 +58,10 @@ const ModuleLTile = ({ tileData: { image, link, styled }, index, tileColor = {} 
               withCaret
               className="moduleL__tile-link"
               dataLocator={`${getLocator('moduleL_link')}${index + 1}`}
-              {...link}
+              to={to}
+              asPath={ctaUrl}
+              target={target}
+              title={title}
             >
               {link.text}
             </Anchor>

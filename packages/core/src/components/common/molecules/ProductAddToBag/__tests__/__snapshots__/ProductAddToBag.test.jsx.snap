@@ -952,6 +952,7 @@ exports[`ProductAddToBagVanilla should render correctly should match snapshot wi
             fontWeight="regular"
             letterSpacing="normal"
             lineHeight="normal"
+            link={null}
             textAlign="left"
           >
             <Styled(Image)
@@ -969,6 +970,7 @@ exports[`ProductAddToBagVanilla should render correctly should match snapshot wi
               fontWeight="regular"
               letterSpacing="normal"
               lineHeight="normal"
+              link={null}
               textAlign="left"
             />
           </Styled(BodyCopy)>

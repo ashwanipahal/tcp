@@ -34,7 +34,13 @@ const renderEmptySFL = bagLabels => {
   );
 };
 
-const EmptyBagPage = ({ className, isUserLoggedIn, bagLabels, isBagPageSflSection }) => {
+const EmptyBagPage = ({
+  className,
+  isUserLoggedIn,
+  bagLabels,
+  isBagPageSflSection,
+  showPlccApplyNow = true,
+}) => {
   return (
     <div className={className}>
       {isBagPageSflSection ? (
@@ -50,7 +56,7 @@ const EmptyBagPage = ({ className, isUserLoggedIn, bagLabels, isBagPageSflSectio
           >
             {!isUserLoggedIn ? bagLabels.guestUserMsg : bagLabels.loggedInMsg}
           </BodyCopy>
-          <ApplyNowModal />
+          {showPlccApplyNow ? <ApplyNowModal /> : null}
           <div className="element-spacing">
             <Button
               data-locator={getLocator(
@@ -99,6 +105,7 @@ EmptyBagPage.propTypes = {
   className: PropTypes.string.isRequired,
   isUserLoggedIn: PropTypes.bool.isRequired,
   bagLabels: PropTypes.bool.isRequired,
+  showPlccApplyNow: PropTypes.bool.isRequired,
   isBagPageSflSection: PropTypes.bool,
 };
 

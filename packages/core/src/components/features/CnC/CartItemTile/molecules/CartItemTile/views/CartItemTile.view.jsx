@@ -76,6 +76,30 @@ class CartItemTile extends React.Component {
     return addItemToSflList({ ...payloadData });
   };
 
+  removeSflItem = () => {
+    const { productDetail, startSflItemDelete } = this.props;
+    const {
+      itemInfo: { isGiftItem },
+      productInfo: { skuId, generalProductId },
+    } = productDetail;
+    const catEntryId = isGiftItem ? generalProductId : skuId;
+
+    const payloadData = { catEntryId };
+    return startSflItemDelete({ ...payloadData });
+  };
+
+  moveToBagSflItem = () => {
+    const { productDetail, startSflDataMoveToBag } = this.props;
+    const {
+      itemInfo: { itemId, isGiftItem },
+      productInfo: { skuId, generalProductId },
+    } = productDetail;
+    const catEntryId = isGiftItem ? generalProductId : skuId;
+
+    const payloadData = { itemId, catEntryId };
+    return startSflDataMoveToBag({ ...payloadData });
+  };
+
   handleSubmit = (itemId, skuId, quantity, itemPartNumber, variantNo) => {
     const { updateCartItem } = this.props;
     updateCartItem(itemId, skuId, quantity, itemPartNumber, variantNo);
@@ -161,6 +185,9 @@ class CartItemTile extends React.Component {
           fontWeight={['semibold']}
           dataLocator="moveToBagLink"
           className="sflActions"
+          onClick={() => {
+            this.moveToBagSflItem();
+          }}
         >
           {labels.moveToBagLink}
         </BodyCopy>
@@ -440,6 +467,18 @@ class CartItemTile extends React.Component {
     );
   };
 
+  getCrossIconImage = () => {
+    const { isBagPageSflSection } = this.props;
+    return (
+      <Image
+        alt="closeIcon"
+        className="close-icon-image"
+        src={getIconPath('close-icon')}
+        onClick={isBagPageSflSection ? this.removeSflItem : this.removeCartItem}
+      />
+    );
+  };
+
   headerAndAvailabilityErrorContainer = () => {
     const { productDetail, labels, pageView, showOnReviewPage } = this.props;
     const { isEdit } = this.state;
@@ -455,12 +494,7 @@ class CartItemTile extends React.Component {
           )}
           {!isEdit && (
             <div className={pageView === 'myBag' ? 'crossDeleteIconBag' : 'crossDeleteIconMiniBag'}>
-              <Image
-                alt="closeIcon"
-                className="close-icon-image"
-                src={getIconPath('close-icon')}
-                onClick={this.removeCartItem}
-              />
+              {this.getCrossIconImage()}
             </div>
           )}
         </div>
@@ -715,6 +749,8 @@ CartItemTile.propTypes = {
   setCartItemsSflError: PropTypes.func.isRequired,
   isBagPageSflSection: PropTypes.bool,
   showOnReviewPage: PropTypes.bool,
+  startSflItemDelete: PropTypes.func.isRequired,
+  startSflDataMoveToBag: PropTypes.func.isRequired,
 };
 
 export default withStyles(CartItemTile, styles);
