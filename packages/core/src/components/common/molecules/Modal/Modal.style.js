@@ -51,5 +51,12 @@ const ModalStyle = css`
   }
 
   ${props => (props.inheritedStyles ? props.inheritedStyles : '')};
+
+  .ProductFilterBG .TCPModal__InnerContent {
+    background: none;
+  }
+  .ProductFilterBG .close-modal {
+    display: none;
+  }
 `;
 export default ModalStyle;

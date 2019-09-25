@@ -10,6 +10,7 @@ import cssClassName from '../../utils/cssClassName';
 import AccordionList from '../../../../../../common/molecules/AccordionList';
 import FilterModal from '../../FilterModal/views';
 import { Row, Col, Button } from '../../../../../../common/atoms';
+import Modal from '../../../../../../common/molecules/Modal';
 import { getLocator } from '../../../../../../../utils';
 import SortSelector from '../../SortSelector';
 import getSortOptions from '../../SortSelector/views/Sort.util';
@@ -380,27 +381,41 @@ class ProductListingMobileFiltersForm extends React.PureComponent<Props> {
 
     const sortClassName = isSortOpenModal ? 'mobile-sort-container' : '';
 
+    const customStyles = {
+      overlay: {
+        zIndex: 9,
+      },
+    };
+
     return (
       <React.Fragment>
         <form
-          className="available-filters-sorting-container"
+          className={`${className} available-filters-sorting-container`}
           onSubmit={handleSubmit(formValues => {
             this.hideModal(true);
             handleImmediateSubmit(formValues);
           })}
         >
-          <FilterModal
-            show={show}
-            handleClose={this.hideModal}
-            classNames={classNames}
-            labels={labels}
-            isSortOpenModal={isSortOpenModal}
-            sortLabels={sortLabels}
+          <Modal
+            isOpen={show}
+            widthConfig={{ small: '100%', medium: '100%', large: '100%' }}
+            heightConfig={{ height: '100%' }}
+            style={customStyles}
+            className="ProductFilterBG"
           >
-            <div className={`${className} ${sortClassName} new-filter-and-sort-form-container`}>
-              {this.renderMobilePlpFilterForm()}
-            </div>
-          </FilterModal>
+            <FilterModal
+              show={show}
+              handleClose={this.hideModal}
+              classNames={classNames}
+              labels={labels}
+              isSortOpenModal={isSortOpenModal}
+              sortLabels={sortLabels}
+            >
+              <div className={`${className} ${sortClassName} new-filter-and-sort-form-container`}>
+                {this.renderMobilePlpFilterForm()}
+              </div>
+            </FilterModal>
+          </Modal>
         </form>
         <Row centered className={`filter-row ${className}`}>
           <Col
