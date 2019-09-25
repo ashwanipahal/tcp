@@ -2,6 +2,7 @@
 
 exports[`AboutYouInfo should render correctly 1`] = `
 <MyProfileTile
+  birthdaySaving={false}
   ctaLink="accountOverviewMobile"
   ctaTitle="UPDATE INFO"
   dataLocator="moreaboutyou-updateinfo"
@@ -9,11 +10,16 @@ exports[`AboutYouInfo should render correctly 1`] = `
   title="More About You"
 >
   <Styled(Styled(BodyCopy))
+    accessibilityText=""
     data-locator="moreaboutyou-describetext"
+    dataLocator=""
     fontFamily="secondary"
     fontSize="fs13"
     fontWeight="regular"
+    margin={null}
+    numberOfLines={null}
     text="I describe myself as: "
+    textDecoration={null}
   />
   <View
     marginTop={20}
@@ -21,6 +27,7 @@ exports[`AboutYouInfo should render correctly 1`] = `
   <ModalNative
     heading="lbl_profile_about_you_modal_heading"
     isOpen={false}
+    isOverlay={false}
     onRequestClose={[Function]}
   >
     <SafeAreaView>

@@ -10,6 +10,7 @@ exports[`Credit DropdownList component should renders correctly 1`] = `
   fontWeight="regular"
   letterSpacing="normal"
   lineHeight="normal"
+  link={null}
   textAlign="left"
 >
   <Styled(BodyCopy)
@@ -21,6 +22,7 @@ exports[`Credit DropdownList component should renders correctly 1`] = `
     fontWeight="regular"
     letterSpacing="normal"
     lineHeight="normal"
+    link={null}
     textAlign="left"
   >
     <Styled(BodyCopy)
@@ -32,6 +34,7 @@ exports[`Credit DropdownList component should renders correctly 1`] = `
       fontWeight="regular"
       letterSpacing="normal"
       lineHeight="normal"
+      link={null}
       textAlign="left"
     >
       <span
@@ -58,6 +61,7 @@ exports[`Credit DropdownList component should renders correctly 1`] = `
             key="1"
             letterSpacing="normal"
             lineHeight="normal"
+            link={null}
             onClick={[Function]}
             onKeyPress={[Function]}
             role="button"
@@ -72,6 +76,7 @@ exports[`Credit DropdownList component should renders correctly 1`] = `
               fontWeight="regular"
               letterSpacing="normal"
               lineHeight="normal"
+              link={null}
               textAlign="left"
             />
             <div>
@@ -97,6 +102,7 @@ exports[`Credit DropdownList component should renders correctly when optional fi
   fontWeight="regular"
   letterSpacing="normal"
   lineHeight="normal"
+  link={null}
   textAlign="left"
 >
   <Styled(BodyCopy)
@@ -108,6 +114,7 @@ exports[`Credit DropdownList component should renders correctly when optional fi
     fontWeight="regular"
     letterSpacing="normal"
     lineHeight="normal"
+    link={null}
     textAlign="left"
   >
     <Styled(BodyCopy)
@@ -119,6 +126,7 @@ exports[`Credit DropdownList component should renders correctly when optional fi
       fontWeight="regular"
       letterSpacing="normal"
       lineHeight="normal"
+      link={null}
       textAlign="left"
     >
       <span
@@ -145,6 +153,7 @@ exports[`Credit DropdownList component should renders correctly when optional fi
             key="1"
             letterSpacing="normal"
             lineHeight="normal"
+            link={null}
             onClick={[Function]}
             onKeyPress={[Function]}
             role="button"
@@ -159,6 +168,7 @@ exports[`Credit DropdownList component should renders correctly when optional fi
               fontWeight="regular"
               letterSpacing="normal"
               lineHeight="normal"
+              link={null}
               textAlign="left"
             />
             <div>
@@ -183,6 +193,7 @@ exports[`Credit DropdownList component should renders correctly when optional fi
             key="2"
             letterSpacing="normal"
             lineHeight="normal"
+            link={null}
             onClick={[Function]}
             onKeyPress={[Function]}
             role="button"
@@ -197,6 +208,7 @@ exports[`Credit DropdownList component should renders correctly when optional fi
               fontWeight="regular"
               letterSpacing="normal"
               lineHeight="normal"
+              link={null}
               textAlign="left"
             />
             <div>
@@ -221,6 +233,7 @@ exports[`Credit DropdownList component should renders correctly when optional fi
             key=""
             letterSpacing="normal"
             lineHeight="normal"
+            link={null}
             onClick={[Function]}
             onKeyPress={[Function]}
             role="button"
@@ -235,6 +248,7 @@ exports[`Credit DropdownList component should renders correctly when optional fi
               fontWeight="regular"
               letterSpacing="normal"
               lineHeight="normal"
+              link={null}
               textAlign="left"
             />
             <div>

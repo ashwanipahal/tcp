@@ -11,12 +11,17 @@ exports[`PickUpFormPart component should renders correctly props not present 1`]
     <Styled(View)>
       <CheckoutSectionTitleDisplay />
       <Connect(GiftCardsContainer) />
+      <Connect(GuestBillingContainer)
+        addressLabels={Object {}}
+        billingData={null}
+        creditFieldLabels={Object {}}
+        cvvCodeRichText={null}
+        isGuest={true}
+        labels={Object {}}
+        navigation={Object {}}
+        shippingAddress={null}
+      />
     </Styled(View)>
-    <CnCCommonTemplate
-      navigation={Object {}}
-      onBackLinkPress={[Function]}
-      routeToPage=""
-    />
   </ScrollViewMock>
 </Fragment>
 `;

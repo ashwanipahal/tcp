@@ -1,5 +1,5 @@
-const getLabels = state => {
+const getSortLabels = state => {
   return state.Labels.Browse && state.Labels.Browse.Sort;
 };
 
-export default getLabels;
+export default getSortLabels;

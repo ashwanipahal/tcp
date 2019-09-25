@@ -3,9 +3,10 @@ import { LABELS } from '@tcp/core/src/reduxStore/constants';
 
 import BAGPAGE_CONSTANTS from '../BagPage.constants';
 
-const getOrderDetails = () => {
+const getOrderDetails = payload => {
   return {
     type: BAGPAGE_CONSTANTS.GET_ORDER_DETAILS,
+    payload,
   };
 };
 
@@ -140,6 +141,53 @@ const setCartItemsSflError = payload => {
   };
 };
 
+const getSflData = () => {
+  return {
+    type: BAGPAGE_CONSTANTS.GET_SFL_DATA,
+  };
+};
+
+const setSflData = payload => {
+  return {
+    payload,
+    type: BAGPAGE_CONSTANTS.SET_SFL_DATA,
+  };
+};
+
+const startSflItemDelete = payload => {
+  return {
+    type: BAGPAGE_CONSTANTS.SFL_ITEMS_DELETE,
+    payload,
+  };
+};
+
+const setSflItemDeleted = payload => {
+  return {
+    payload,
+    type: BAGPAGE_CONSTANTS.SFL_ITEMS_SET_DELETED,
+  };
+};
+
+const startSflDataMoveToBag = payload => {
+  return {
+    type: BAGPAGE_CONSTANTS.SFL_ITEMS_MOVE_TO_BAG,
+    payload,
+  };
+};
+
+const openItemDeleteConfirmationModal = payload => {
+  return {
+    type: BAGPAGE_CONSTANTS.OPEN_ITEM_DELETE_CONFIRMATION_MODAL,
+    payload,
+  };
+};
+
+const closeItemDeleteConfirmationModal = () => {
+  return {
+    type: BAGPAGE_CONSTANTS.CLOSE_ITEM_DELETE_CONFIRMATION_MODAL,
+  };
+};
+
 const initActions = [loadComponentLabelsData({ category: LABELS.checkout })];
 
 export default {
@@ -164,4 +212,11 @@ export default {
   addItemToSflList,
   setCartItemsSFL,
   setCartItemsSflError,
+  getSflData,
+  setSflData,
+  openItemDeleteConfirmationModal,
+  closeItemDeleteConfirmationModal,
+  startSflItemDelete,
+  startSflDataMoveToBag,
+  setSflItemDeleted,
 };

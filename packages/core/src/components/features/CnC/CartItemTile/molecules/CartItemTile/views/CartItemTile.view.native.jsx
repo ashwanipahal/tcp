@@ -4,22 +4,15 @@ import { View } from 'react-native';
 import ItemAvailability from '@tcp/core/src/components/features/CnC/common/molecules/ItemAvailability';
 import Swipeable from '../../../../../../common/atoms/Swipeable/Swipeable.native';
 import BodyCopy from '../../../../../../common/atoms/BodyCopy';
-import endpoints from '../../../../../../../service/endpoint';
 import Image from '../../../../../../common/atoms/Image';
 import {
-  ProductName,
   ProductDesc,
   OuterContainer,
-  ImgWrapper,
-  ImageStyle,
   ProductDescription,
   ProductSubDetails,
   ProductSubDetailLabel,
   ProductListPrice,
   EditButton,
-  ImageBrandStyle,
-  ImageGymBrandStyle,
-  SoldOutLabel,
   MainWrapper,
   BtnWrapper,
   MarginLeft,
@@ -28,15 +21,17 @@ import {
   IconWidth,
   IconTextDelete,
   IconTextEdit,
+  IconTextMoveToBag,
 } from '../styles/CartItemTile.style.native';
 import { getLocator } from '../../../../../../../utils';
 import CartItemRadioButtons from '../../CartItemRadioButtons';
 import CARTPAGE_CONSTANTS from '../../../CartItemTile.constants';
+import CartItemTileExtension from './CartItemTileExtension.view.native';
 
-const gymboreeImage = require('../../../../../../../assets/gymboree-logo.png');
-const tcpImage = require('../../../../../../../assets/tcp-logo.png');
 const editIcon = require('../../../../../../../assets/edit-icon.png');
 const deleteIcon = require('../../../../../../../assets/delete.png');
+const moveToBagIcon = require('../../../../../../../assets/moveToBag-icon.png');
+const sflIcon = require('../../../../../../../assets/sfl-icon.png');
 
 const getItemStatus = (productDetail, labels) => {
   if (productDetail.miscInfo.availability === 'UNAVAILABLE') {
@@ -49,8 +44,10 @@ const getCartRadioButtons = (
   labels,
   itemIndex,
   openedTile,
-  setSelectedProductTile
+  setSelectedProductTile,
+  isBagPageSflSection
 ) => {
+  if (isBagPageSflSection) return null;
   if (productDetail.miscInfo.availability !== CARTPAGE_CONSTANTS.AVAILABILITY_SOLDOUT) {
     return (
       <CartItemRadioButtons
@@ -102,13 +99,133 @@ const getEditError = (productDetail, labels) => {
 };
 
 class ProductInformation extends React.Component {
-  constructor(props) {
-    super(props);
-    this.swipeable = React.createRef();
-  }
+  swipeable = React.createRef();
+
+  renderSflActionsLinks = () => {
+    const { productDetail, isShowSaveForLater, labels, isBagPageSflSection } = this.props;
+    const { saveForLaterLink, moveToBagLink } = labels;
+    const isOK = productDetail.miscInfo.availability === CARTPAGE_CONSTANTS.AVAILABILITY_OK;
+    if (!isBagPageSflSection && isOK && isShowSaveForLater) {
+      return (
+        <MarginLeft onPress={() => CartItemTileExtension.handleMoveItemtoSaveList(this.props)}>
+          <Image
+            data-locator="save-for-later-link"
+            source={sflIcon}
+            height={IconHeight}
+            width={IconWidth}
+          />
+          <IconTextMoveToBag>{saveForLaterLink}</IconTextMoveToBag>
+        </MarginLeft>
+      );
+    }
+    if (isBagPageSflSection && isOK) {
+      return (
+        <MarginLeft onPress={() => CartItemTileExtension.moveToBagSflItem(this.props)}>
+          <Image
+            data-locator="move-to-bag-link"
+            source={moveToBagIcon}
+            height={IconHeight}
+            width={IconWidth}
+          />
+          <IconTextMoveToBag>{moveToBagLink}</IconTextMoveToBag>
+        </MarginLeft>
+      );
+    }
+    return null;
+  };
+
+  renderPoints = () => {
+    const { labels, productDetail, isBagPageSflSection } = this.props;
+    const { points } = labels;
+    const { itemInfo: { myPlacePoints } = {} } = productDetail;
+    if (isBagPageSflSection) return null;
+    return (
+      <ProductDesc>
+        <ProductSubDetailLabel>
+          <BodyCopy
+            fontSize="fs13"
+            fontWeight={['semibold']}
+            textAlign="left"
+            text={`${points}: `}
+          />
+        </ProductSubDetailLabel>
+        <BodyCopy
+          color="orange.800"
+          fontFamily="secondary"
+          fontSize="fs13"
+          dataLocator={getLocator('cart_item_points')}
+          text={myPlacePoints}
+        />
+      </ProductDesc>
+    );
+  };
+
+  renderQuantity = () => {
+    const { labels, productDetail, isBagPageSflSection } = this.props;
+    const { itemInfo: { qty } = {} } = productDetail;
+    if (isBagPageSflSection) return null;
+    return (
+      <ProductDesc>
+        <ProductSubDetailLabel>
+          <BodyCopy
+            fontSize="fs13"
+            fontWeight={['semibold']}
+            textAlign="left"
+            text={`${labels.qty}: `}
+          />
+        </ProductSubDetailLabel>
+        <BodyCopy color="gray.800" fontFamily="secondary" fontSize="fs13" text={qty} />
+      </ProductDesc>
+    );
+  };
+
+  renderPrice = () => {
+    const { labels, productDetail, isBagPageSflSection } = this.props;
+    return (
+      <ProductDesc>
+        <ProductSubDetailLabel>
+          <BodyCopy
+            fontSize="fs13"
+            fontWeight={['semibold']}
+            textAlign="left"
+            text={`${labels.price}: `}
+          />
+        </ProductSubDetailLabel>
+        <BodyCopy
+          fontSize="fs13"
+          fontWeight={['semibold']}
+          textAlign="left"
+          dataLocator={getLocator('cart_item_price')}
+          text={`$${productDetail.itemInfo.price}`}
+        />
+        {!isBagPageSflSection && (
+          <ProductListPrice>
+            <BodyCopy
+              color="gray.800"
+              fontFamily="secondary"
+              fontSize="fs13"
+              text={
+                productDetail.itemInfo.price !== productDetail.itemInfo.itemPrice
+                  ? `$${productDetail.itemInfo.itemPrice}`
+                  : ''
+              }
+            />
+          </ProductListPrice>
+        )}
+      </ProductDesc>
+    );
+  };
 
   rightButton = () => {
-    const { removeCartItem, productDetail, labels } = this.props;
+    const { removeCartItem, productDetail, labels, isBagPageSflSection } = this.props;
+    const { isGenricGuest, isCondense } = this.props;
+    const {
+      itemInfo: { itemId, isGiftItem, itemBrand },
+      productInfo: { skuId, generalProductId },
+      miscInfo: { orderItemType },
+    } = productDetail;
+    const catEntryId = isGiftItem ? generalProductId : skuId;
+    const userInfoRequired = isGenricGuest && isGenricGuest.get('userId') && isCondense; // Flag to check if getRegisteredUserInfo required after SflList
     return (
       <BtnWrapper>
         {productDetail.miscInfo.availability !== CARTPAGE_CONSTANTS.AVAILABILITY_SOLDOUT && (
@@ -122,7 +239,22 @@ class ProductInformation extends React.Component {
             <IconTextEdit>{labels.edit}</IconTextEdit>
           </View>
         )}
-        <MarginLeft onPress={() => removeCartItem(productDetail.itemInfo.itemId)}>
+        {this.renderSflActionsLinks()}
+        <MarginLeft
+          onPress={() =>
+            isBagPageSflSection
+              ? CartItemTileExtension.removeSflItem(this.props)
+              : removeCartItem({
+                  itemId,
+                  pageView: 'myBag',
+                  catEntryId,
+                  userInfoRequired,
+                  isBagPageSflSection,
+                  itemBrand,
+                  orderItemType,
+                })
+          }
+        >
           <Image
             data-locator={getLocator('cart_item_edit_link')}
             source={deleteIcon}
@@ -144,14 +276,16 @@ class ProductInformation extends React.Component {
   };
 
   render() {
-    const { productDetail, labels, itemIndex, openedTile, setSelectedProductTile } = this.props;
+    const { productDetail, labels, itemIndex } = this.props;
+    const { openedTile, setSelectedProductTile, isBagPageSflSection } = this.props;
+    const { isGiftItem } = productDetail.itemInfo;
     return (
       <Swipeable
         onRef={ref => {
           this.swipeable = ref;
         }}
         rightButtons={[this.rightButton()]}
-        rightButtonWidth={200}
+        rightButtonWidth={250}
         leftButtons={[null]}
         onSwipeComplete={(event, gestureState, swipe) => {
           this.onSwipeComplete(swipe);
@@ -160,38 +294,7 @@ class ProductInformation extends React.Component {
         <MainWrapper>
           <UnavailableView>{getItemStatus(productDetail, labels)}</UnavailableView>
           <OuterContainer>
-            <ImgWrapper>
-              <View>
-                <ImageStyle
-                  data-locator={getLocator('cart_item_image')}
-                  source={{ uri: endpoints.global.baseURI + productDetail.itemInfo.imagePath }}
-                />
-                {productDetail.miscInfo.availability ===
-                  CARTPAGE_CONSTANTS.AVAILABILITY_SOLDOUT && (
-                  <SoldOutLabel>
-                    <BodyCopy
-                      fontFamily="secondary"
-                      textAlign="center"
-                      fontSize="fs12"
-                      color="white"
-                      text={labels.soldOut}
-                    />
-                  </SoldOutLabel>
-                )}
-              </View>
-              {!productDetail.itemInfo.isGiftItem &&
-                (productDetail.itemInfo.itemBrand === 'TCP' ? (
-                  <ImageBrandStyle
-                    data-locator={getLocator('cart_item_brand_logo')}
-                    source={tcpImage}
-                  />
-                ) : (
-                  <ImageGymBrandStyle
-                    data-locator={getLocator('cart_item_brand_logo')}
-                    source={gymboreeImage}
-                  />
-                ))}
-            </ImgWrapper>
+            {CartItemTileExtension.CartItemImageWrapper(productDetail, labels)}
             <ProductDescription>
               {!!productDetail.miscInfo.badge && (
                 <BodyCopy
@@ -201,15 +304,8 @@ class ProductInformation extends React.Component {
                   text={productDetail.miscInfo.badge}
                 />
               )}
-              <ProductName>
-                <BodyCopy
-                  fontFamily="secondary"
-                  fontSize="fs14"
-                  dataLocator={getLocator('cart_item_title')}
-                  fontWeight={['semibold']}
-                  text={productDetail.itemInfo.name}
-                />
-              </ProductName>
+              {CartItemTileExtension.getProductName(productDetail)}
+              {CartItemTileExtension.heartIcon(isBagPageSflSection)}
               <ProductSubDetails>
                 <ProductDesc>
                   <ProductSubDetailLabel>
@@ -217,11 +313,7 @@ class ProductInformation extends React.Component {
                       fontSize="fs13"
                       fontWeight={['semibold']}
                       textAlign="left"
-                      text={
-                        productDetail.itemInfo.isGiftItem === true
-                          ? `${labels.design}: `
-                          : `${labels.color}: `
-                      }
+                      text={isGiftItem === true ? `${labels.design}: ` : `${labels.color}: `}
                     />
                   </ProductSubDetailLabel>
                   <BodyCopy
@@ -238,11 +330,7 @@ class ProductInformation extends React.Component {
                       fontSize="fs13"
                       fontWeight={['semibold']}
                       textAlign="left"
-                      text={
-                        productDetail.itemInfo.isGiftItem === true
-                          ? `${labels.value}: `
-                          : `${labels.size}: `
-                      }
+                      text={isGiftItem === true ? `${labels.value}: ` : `${labels.size}: `}
                     />
                   </ProductSubDetailLabel>
                   <BodyCopy
@@ -263,85 +351,27 @@ class ProductInformation extends React.Component {
                     }
                   />
                 </ProductDesc>
-                <ProductDesc>
-                  <ProductSubDetailLabel>
-                    <BodyCopy
-                      fontSize="fs13"
-                      fontWeight={['semibold']}
-                      textAlign="left"
-                      text={`${labels.qty}: `}
-                    />
-                  </ProductSubDetailLabel>
-                  <BodyCopy
-                    color="gray.800"
-                    fontFamily="secondary"
-                    fontSize="fs13"
-                    text={productDetail.itemInfo.qty}
-                  />
-                </ProductDesc>
-                <ProductDesc>
-                  <ProductSubDetailLabel>
-                    <BodyCopy
-                      fontSize="fs13"
-                      fontWeight={['semibold']}
-                      textAlign="left"
-                      text={`${labels.price}: `}
-                    />
-                  </ProductSubDetailLabel>
-                  <BodyCopy
-                    fontSize="fs13"
-                    fontWeight={['semibold']}
-                    textAlign="left"
-                    dataLocator={getLocator('cart_item_price')}
-                    text={`$${productDetail.itemInfo.price}`}
-                  />
-                  <ProductListPrice>
-                    <BodyCopy
-                      color="gray.800"
-                      fontFamily="secondary"
-                      fontSize="fs13"
-                      text={
-                        productDetail.itemInfo.price !== productDetail.itemInfo.itemPrice
-                          ? `$${productDetail.itemInfo.itemPrice}`
-                          : ''
-                      }
-                    />
-                  </ProductListPrice>
-                </ProductDesc>
-                <ProductDesc>
-                  <ProductSubDetailLabel>
-                    <BodyCopy
-                      fontSize="fs13"
-                      fontWeight={['semibold']}
-                      textAlign="left"
-                      text={`${labels.points}: `}
-                    />
-                  </ProductSubDetailLabel>
-                  <BodyCopy
-                    color="orange.800"
-                    fontFamily="secondary"
-                    fontSize="fs13"
-                    dataLocator={getLocator('cart_item_points')}
-                    text={productDetail.itemInfo.myPlacePoints}
-                  />
-                </ProductDesc>
+                {this.renderQuantity()}
+                {this.renderPrice()}
+                {this.renderPoints()}
               </ProductSubDetails>
-              <EditButton
-                onPress={() => {
-                  this.onSwipeComplete(this.swipeable);
-                  return this.swipeable.toggle('right');
-                }}
-              >
-                {getEditError(productDetail, labels)}
-              </EditButton>
             </ProductDescription>
           </OuterContainer>
+          <EditButton
+            onPress={() => {
+              this.onSwipeComplete(this.swipeable);
+              return this.swipeable.toggle('right');
+            }}
+          >
+            {getEditError(productDetail, labels)}
+          </EditButton>
           {getCartRadioButtons(
             productDetail,
             labels,
             itemIndex,
             openedTile,
-            setSelectedProductTile
+            setSelectedProductTile,
+            isBagPageSflSection
           )}
         </MainWrapper>
       </Swipeable>
@@ -355,15 +385,23 @@ ProductInformation.propTypes = {
   removeCartItem: PropTypes.func.isRequired,
   itemIndex: PropTypes.number,
   openedTile: PropTypes.number,
+  isCondense: PropTypes.bool,
   setSelectedProductTile: PropTypes.func.isRequired,
   swipedElement: PropTypes.shape({}),
   setSwipedElement: PropTypes.func.isRequired,
+  isBagPageSflSection: PropTypes.bool,
+  isShowSaveForLater: PropTypes.bool.isRequired,
+  isGenricGuest: PropTypes.shape({}).isRequired,
 };
+
 ProductInformation.defaultProps = {
   productDetail: {},
   labels: {},
   itemIndex: 0,
   openedTile: 0,
+  isCondense: true,
   swipedElement: null,
+  isBagPageSflSection: false,
 };
+
 export default ProductInformation;

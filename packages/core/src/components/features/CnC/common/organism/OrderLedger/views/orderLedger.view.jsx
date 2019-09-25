@@ -5,6 +5,7 @@ import Col from '@tcp/core/src/components/common/atoms/Col';
 import Grid from '@tcp/core/src/components/common/molecules/Grid';
 import { getLocator } from '@tcp/core/src/utils';
 import ReactToolTip from '@tcp/core/src/components/common/atoms/ReactToolTip';
+import RenderPerf from '@tcp/web/src/components/common/molecules/RenderPerf';
 import { getIconPath } from '../../../../../../../utils';
 import { Image } from '../../../../../../common/atoms';
 import BodyCopy from '../../../../../../common/atoms/BodyCopy';
@@ -24,8 +25,10 @@ const OrderLedger = ({ className, ledgerSummaryData, labels }) => {
     giftCardsTotal,
     orderBalanceTotal,
     totalOrderSavings,
+    isOrderHasShipping,
   } = ledgerSummaryData;
   const toolTipMinWidth = '205px';
+
   return (
     <React.Fragment>
       <Grid
@@ -119,40 +122,42 @@ const OrderLedger = ({ className, ledgerSummaryData, labels }) => {
             </Col>
           </Row>
         ) : null}
-        <Row
-          className="shipping-total rowMargin"
-          data-locator={getLocator('order_ledger_shipping_label')}
-        >
-          <Col colSize={{ large: 6, medium: 4, small: 3 }}>
-            <BodyCopy
-              bodySize="one"
-              color="primary"
-              fontFamily="secondary"
-              fontWeight="semibold"
-              fontSize="fs13"
-            >
-              {`${labels.shippingLabel}:`}
-            </BodyCopy>
-          </Col>
-          <Col colSize={{ large: 6, medium: 4, small: 3 }}>
-            <BodyCopy
-              bodySize="one"
-              color="primary"
-              fontFamily="secondary"
-              fontWeight="semibold"
-              fontSize="fs13"
-              textAlign="right"
-            >
-              {/* eslint-disable-next-line no-nested-ternary */}
-              {shippingTotal !== undefined
-                ? // eslint-disable-next-line no-constant-condition
-                  { shippingTotal } > 0
-                  ? `${currencySymbol}${shippingTotal.toFixed(2)}`
-                  : labels.free
-                : '-'}
-            </BodyCopy>
-          </Col>
-        </Row>
+        {isOrderHasShipping && (
+          <Row
+            className="shipping-total rowMargin"
+            data-locator={getLocator('order_ledger_shipping_label')}
+          >
+            <Col colSize={{ large: 6, medium: 4, small: 3 }}>
+              <BodyCopy
+                bodySize="one"
+                color="primary"
+                fontFamily="secondary"
+                fontWeight="semibold"
+                fontSize="fs13"
+              >
+                {`${labels.shippingLabel}:`}
+              </BodyCopy>
+            </Col>
+            <Col colSize={{ large: 6, medium: 4, small: 3 }}>
+              <BodyCopy
+                bodySize="one"
+                color="primary"
+                fontFamily="secondary"
+                fontWeight="semibold"
+                fontSize="fs13"
+                textAlign="right"
+              >
+                {/* eslint-disable-next-line no-nested-ternary */}
+                {shippingTotal !== undefined
+                  ? // eslint-disable-next-line no-constant-condition
+                    { shippingTotal } > 0
+                    ? `${currencySymbol}${shippingTotal.toFixed(2)}`
+                    : labels.free
+                  : '-'}
+              </BodyCopy>
+            </Col>
+          </Row>
+        )}
         <Row
           className="tax-total rowMargin"
           data-locator={getLocator('order_ledger_estimated_tax_label')}
@@ -311,6 +316,7 @@ const OrderLedger = ({ className, ledgerSummaryData, labels }) => {
           </Row>
         ) : null}
       </Grid>
+      <RenderPerf.Measure name="render_cart_total" />
     </React.Fragment>
   );
 };

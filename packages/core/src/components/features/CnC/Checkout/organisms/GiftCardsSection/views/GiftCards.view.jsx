@@ -1,30 +1,34 @@
-/* eslint-disable max-lines */
 import React from 'react';
-import PropTypes from 'prop-types';
 import { getLabelValue } from '@tcp/core/src/utils';
 import withStyles from '@tcp/core/src/components/common/hoc/withStyles';
 import styles from '../styles/GiftCards.style';
 import { Row, Col, BodyCopy, Button } from '../../../../../../common/atoms';
 import Grid from '../../../../../../common/molecules/Grid';
 import GiftCardTile from '../../../molecules/GiftCardTile';
-import AddGiftCardForm from '../../../../../account/Payment/AddGiftCard/views/AddGiftCardForm';
+import AddGiftCardForm from '../../../../../../common/organisms/AddGiftCardForm/AddGiftCardForm';
 
 import ErrorMessage from '../../../../../../common/hoc/ErrorMessage';
 
-const GiftCardSectionHeading = (labels, isGiftCardApplied = false) => {
+import { propTypes, defaultProps, renderAddGiftCardProps } from './GiftCards.view.utils';
+
+const GiftCardSectionHeading = (giftCardList, labels, isGiftCardApplied = false) => {
   return (
-    <BodyCopy
-      fontFamily="secondary"
-      fontSize="fs16"
-      fontWeight="extrabold"
-      data-locator="gift-cards"
-      className="elem-mt-LRG"
-    >
-      {getLabelValue(
-        labels,
-        isGiftCardApplied ? 'lbl_giftcard_appliedCards' : 'lbl_giftcard_availableCards'
+    <>
+      {giftCardList && giftCardList.size > 0 && (
+        <BodyCopy
+          fontFamily="secondary"
+          fontSize="fs16"
+          fontWeight="extrabold"
+          data-locator="gift-cards"
+          className="elem-mt-MED"
+        >
+          {getLabelValue(
+            labels,
+            isGiftCardApplied ? 'lbl_giftcard_appliedCards' : 'lbl_giftcard_availableCards'
+          )}
+        </BodyCopy>
       )}
-    </BodyCopy>
+    </>
   );
 };
 
@@ -158,7 +162,7 @@ export const GiftCards = ({
           >
             {getLabelValue(labels, 'lbl_giftcard_addUptoMsg')}
           </BodyCopy>
-          {GiftCardSectionHeading(labels, true)}
+          {GiftCardSectionHeading(appliedGiftCards, labels, true)}
 
           {appliedGiftCards &&
             appliedGiftCards.size > 0 &&
@@ -185,7 +189,7 @@ export const GiftCards = ({
             {`${getLabelValue(labels, 'lbl_giftcard_headsUpMsg')}`}
           </BodyCopy>
 
-          {GiftCardSectionHeading(labels)}
+          {GiftCardSectionHeading(giftCardList, labels)}
           {giftCardList &&
             giftCardList.size > 0 &&
             giftCardList.map(cardData => (
@@ -216,51 +220,11 @@ export const GiftCards = ({
   );
 };
 
-renderAddGiftCard.propTypes = {
-  hideAddGiftCard: PropTypes.func.isRequired,
-  onAddGiftCardClick: PropTypes.func.isRequired,
-  getAddGiftCardError: PropTypes.func.isRequired,
-  onClearError: PropTypes.func.isRequired,
-  isGuestUser: PropTypes.bool.isRequired,
-  isRecapchaEnabled: PropTypes.bool.isRequired,
-  labels: PropTypes.shape({}).isRequired,
-  isLoading: PropTypes.bool.isRequired,
-};
+renderAddGiftCard.propTypes = renderAddGiftCardProps;
 
-GiftCards.propTypes = {
-  className: PropTypes.string,
-  giftCardList: PropTypes.shape({}),
-  appliedGiftCards: PropTypes.shape({}),
-  applyExistingGiftCardToOrder: PropTypes.func.isRequired,
-  handleRemoveGiftCard: PropTypes.func.isRequired,
-  labels: PropTypes.shape({}),
-  giftCardErrors: PropTypes.shape({}),
-  orderBalanceTotal: PropTypes.number,
-  showAddGiftCard: PropTypes.func.isRequired,
-  enableAddGiftCard: PropTypes.bool,
-  hideAddGiftCard: PropTypes.func.isRequired,
-  onAddGiftCardClick: PropTypes.func.isRequired,
-  formErrorMessage: PropTypes.shape({}),
-  getAddGiftCardError: PropTypes.func.isRequired,
-  isGuestUser: PropTypes.bool,
-  isRecapchaEnabled: PropTypes.bool,
-  isLoading: PropTypes.bool,
-  onClearError: PropTypes.func.isRequired,
-};
+GiftCards.propTypes = propTypes;
 
-GiftCards.defaultProps = {
-  className: '',
-  giftCardList: {},
-  appliedGiftCards: {},
-  labels: {},
-  giftCardErrors: {},
-  orderBalanceTotal: 0,
-  enableAddGiftCard: false,
-  formErrorMessage: '',
-  isGuestUser: false,
-  isRecapchaEnabled: false,
-  isLoading: false,
-};
+GiftCards.defaultProps = defaultProps;
 
 export default withStyles(GiftCards, styles);
 export { GiftCards as GiftCardsVanilla };

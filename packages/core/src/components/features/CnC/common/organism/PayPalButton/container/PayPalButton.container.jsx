@@ -5,26 +5,29 @@ import PayPalButton from '../organism/PaypalButton';
 import bagPageActions from '../../../../BagPage/container/BagPage.actions';
 import { getSetIsPaypalPaymentSettings } from '../../../../Checkout/container/Checkout.action';
 import { ServiceResponseError } from '../../../../../../../utils/errorMessage.util';
+import CONSTANTS from '../../../../Checkout/Checkout.constants';
+import { getAPIConfig } from '../../../../../../../utils';
 
 export class PayPalButtonContainer extends React.PureComponent<Props> {
   initalizePayPalButton = data => {
+    const apiConfigObj = getAPIConfig();
+    const { paypalEnv } = apiConfigObj;
     const { startPaypalCheckout, paypalAuthorizationHandle, clearPaypalSettings } = this.props;
     const { containerId, height } = data;
     const options = {
-      locale: 'en_US',
+      locale: CONSTANTS.PAYPAL_LOCATE,
       style: {
         size: 'responsive',
         color: 'blue',
         shape: 'rect',
-        label: 'paypal',
+        label: CONSTANTS.PAYPAL_LABEL,
         tagline: false,
         height,
       },
       funding: {
-        // eslint-disable-next-line no-undef
-        disallowed: [paypal && paypal.FUNDING.CREDIT],
+        disallowed: [window.paypal && window.paypal.FUNDING.CREDIT],
       },
-      env: 'sandbox',
+      env: paypalEnv,
       payment: () => {
         return new Promise((resolve, reject) => startPaypalCheckout({ resolve, reject }));
       },

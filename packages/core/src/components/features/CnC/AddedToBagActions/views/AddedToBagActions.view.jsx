@@ -1,54 +1,29 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import VenmoPaymentButton from '@tcp/core/src/components/common/atoms/VenmoPaymentButton';
+import RenderPerf from '@tcp/web/src/components/common/molecules/RenderPerf';
 import Button from '../../../../common/atoms/Button';
 import withStyles from '../../../../common/hoc/withStyles';
-import OpenLoginModal from '../../../account/LoginPage/views/LoginModal';
 import style from '../styles/AddedToBagActions.style';
 import PayPalButton from '../../common/organism/PayPalButton';
 import Row from '../../../../common/atoms/Row';
 import Col from '../../../../common/atoms/Col';
 import BodyCopy from '../../../../common/atoms/BodyCopy';
 import { getLocator } from '../../../../../utils';
-import BagConfirmationModal from '../../BagPage/views/BagConfirmationModal.view';
 
 class AddedToBagActions extends React.PureComponent<Props> {
-  routeToCheckout = e => {
-    const { routeForBagCheckout, closeCheckoutModalMountState, closeMiniBag } = this.props;
-    if (e) {
-      e.preventDefault();
-    }
-    if (closeMiniBag) {
-      closeMiniBag(false, false);
-    }
-    closeCheckoutModalMountState({ state: false });
-    routeForBagCheckout();
-  };
-
-  closeModalAndHandleCheckout = () => {
-    const { closeCheckoutConfirmationModal, handleCartCheckout } = this.props;
-    closeCheckoutConfirmationModal();
-    return handleCartCheckout();
-  };
-
   render() {
     const {
       className,
       labels,
       onClickViewBag,
       showAddTobag,
-      checkoutModalMountedState,
       handleCartCheckout,
-      closeCheckoutModalMountState,
-      modalInfo,
-      closeCheckoutConfirmationModal,
-      removeUnqualifiedItemsAndCheckout,
       isEditingItem,
+      isInternationalShipping,
+      isVenmoEnabled,
+      showVenmo,
     } = this.props;
-    const { showModal, isEditingItem: modalEditingItem } = modalInfo;
-    if (modalEditingItem) {
-      labels.confirmationText = labels.editConfirmationText;
-    }
     return (
       <div className={className}>
         {showAddTobag && (
@@ -73,8 +48,21 @@ class AddedToBagActions extends React.PureComponent<Props> {
           </Row>
         )}
         <Row className="checkout-button">
-          <VenmoPaymentButton className="venmo-container" />
-          <PayPalButton className="payPal-button" />
+          <div className="paypal-venmo">
+            {!isInternationalShipping && (
+              <div className="paypal-wrapper">
+                <PayPalButton className="payPal-button" />
+              </div>
+            )}
+            {!isInternationalShipping && isVenmoEnabled && showVenmo && (
+              <div className="venmo-wrapper">
+                <VenmoPaymentButton
+                  className="venmo-container"
+                  onSuccess={() => handleCartCheckout(isEditingItem)}
+                />
+              </div>
+            )}
+          </div>
           <Button
             data-locator={getLocator('addedtobag_btncheckout')}
             className="checkout"
@@ -90,22 +78,8 @@ class AddedToBagActions extends React.PureComponent<Props> {
               {labels.checkout}
             </BodyCopy>
           </Button>
+          <RenderPerf.Measure name="render_checkout_cta" />
         </Row>
-        <BagConfirmationModal
-          labels={labels}
-          isOpen={showModal}
-          closeCheckoutConfirmationModal={closeCheckoutConfirmationModal}
-          removeUnqualifiedItemsAndCheckout={
-            modalEditingItem ? this.closeModalAndHandleCheckout : removeUnqualifiedItemsAndCheckout
-          }
-        />
-        <OpenLoginModal
-          variation="checkout"
-          openState={checkoutModalMountedState}
-          setLoginModalMountState={closeCheckoutModalMountState}
-          handleContinueAsGuest={this.routeToCheckout}
-          handleAfterLogin={this.routeToCheckout}
-        />
       </div>
     );
   }
@@ -117,10 +91,11 @@ AddedToBagActions.propTypes = {
   labels: PropTypes.shape.isRequired,
   showAddTobag: PropTypes.bool,
   handleCartCheckout: PropTypes.func.isRequired,
-  routeForBagCheckout: PropTypes.func.isRequired,
+  showVenmo: PropTypes.bool,
 };
 AddedToBagActions.defaultProps = {
   showAddTobag: true,
+  showVenmo: true,
 };
 
 export default withStyles(AddedToBagActions, style);

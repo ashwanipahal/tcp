@@ -12,6 +12,8 @@ import {
   authorizePayPalPayment,
   routeForCartCheckout,
   addItemToSFL,
+  getSflDataSaga,
+  startSflItemDelete,
 } from '../container/BagPage.saga';
 import BAG_PAGE_ACTIONS from '../container/BagPage.actions';
 import BAGPAGE_CONSTANTS from '../BagPage.constants';
@@ -22,7 +24,8 @@ import { setCheckoutModalMountedState } from '../../../account/LoginPage/contain
 
 describe('Cart Item saga', () => {
   it('should dispatch getOrderDetailSaga action for success resposnse', () => {
-    const getOrderDetailSagaGen = getOrderDetailSaga();
+    const afterFunc = () => {};
+    const getOrderDetailSagaGen = getOrderDetailSaga({ payload: { after: afterFunc } });
     getOrderDetailSagaGen.next();
 
     const res = {
@@ -37,6 +40,7 @@ describe('Cart Item saga', () => {
     expect(getOrderDetailSagaGen.next(res).value).toEqual(
       put(BAG_PAGE_ACTIONS.getOrderDetailsComplete(res.orderDetails))
     );
+    expect(getOrderDetailSagaGen.next().value).toEqual(call(afterFunc));
   });
 
   it('should dispatch getCartDataSaga action for success resposnse', () => {
@@ -125,7 +129,9 @@ describe('startCartCheckout Saga', () => {
     takeLatestDescriptor = generator.next().value;
     takeLatestDescriptor = generator.next(false, {}).value;
     takeLatestDescriptor = generator.next().value;
-    expect(takeLatestDescriptor).toEqual(call(checkoutCart, false, undefined, undefined));
+    expect(takeLatestDescriptor).toEqual(
+      call(checkoutCart, false, undefined, undefined, undefined)
+    );
   });
 });
 
@@ -154,13 +160,49 @@ describe('Bag SFL Saga', () => {
     const res = {
       errorResponse: null,
     };
-    const generator = addItemToSFL({});
+    const generator = addItemToSFL({ payload: { afterHandler: () => {} } });
+    let takeLatestDescriptor = generator.next().value;
+    takeLatestDescriptor = generator.next().value;
+    takeLatestDescriptor = generator.next().value;
+    takeLatestDescriptor = generator.next().value;
+    takeLatestDescriptor = generator.next(res).value;
+    takeLatestDescriptor = generator.next(res).value;
+    expect(takeLatestDescriptor).toEqual(put(BAG_PAGE_ACTIONS.setCartItemsSFL(true)));
+  });
+
+  it('get all sfl data', () => {
+    const sflItemsData = {
+      productInfo: {},
+      itemInfo: {},
+      miscInfo: {},
+    };
+    const res = {
+      sflItems: sflItemsData,
+    };
+    const generator = getSflDataSaga({});
+
+    let takeLatestDescriptor = generator.next().value;
+    takeLatestDescriptor = generator.next(res).value;
+    takeLatestDescriptor = generator.next(res).value;
+    expect(takeLatestDescriptor).toEqual(put(BAG_PAGE_ACTIONS.setSflData(sflItemsData)));
+  });
+
+  it('DeleteSFL ITEM', () => {
+    const sflItemsData = {
+      productInfo: {},
+      itemInfo: {},
+      miscInfo: {},
+    };
+    const res = {
+      sflItems: sflItemsData,
+    };
+    const generator = startSflItemDelete({});
 
     let takeLatestDescriptor = generator.next().value;
     takeLatestDescriptor = generator.next().value;
     takeLatestDescriptor = generator.next().value;
     takeLatestDescriptor = generator.next(res).value;
     takeLatestDescriptor = generator.next(res).value;
-    expect(takeLatestDescriptor).toEqual(put(BAG_PAGE_ACTIONS.setCartItemsSFL(true)));
+    expect(takeLatestDescriptor).toEqual(put(BAG_PAGE_ACTIONS.setSflData(sflItemsData)));
   });
 });

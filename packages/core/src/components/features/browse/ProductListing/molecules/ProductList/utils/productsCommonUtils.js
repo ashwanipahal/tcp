@@ -18,7 +18,9 @@ export function getMapSliceForFit(colorFitsSizesMap, colorName, fitName) {
   }
   if (currentColorEntry.hasFits) {
     // eslint-disable-next-line
-    return currentColorEntry.fits.find(entry => entry.fitName === fitName);
+    return currentColorEntry.fits.find(entry => {
+      return entry.fitName === fitName || entry.fitNameVal === fitName;
+    });
   }
   // eslint-disable-next-line
   return currentColorEntry.fits[0];
@@ -73,7 +75,11 @@ export function getPrices(productInfo, color, fit, size) {
 
   const currentColorEntry = getMapSliceForColor(productInfo.colorFitsSizesMap, color);
   if (currentColorEntry && currentColorEntry.listPrice) {
-    return { listPrice: currentColorEntry.listPrice, offerPrice: currentColorEntry.offerPrice };
+    return {
+      listPrice: currentColorEntry.listPrice,
+      offerPrice: currentColorEntry.offerPrice,
+      badge2: currentColorEntry.miscInfo.badge2,
+    };
   }
 
   return { listPrice: productInfo.listPrice, offerPrice: productInfo.offerPrice };

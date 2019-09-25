@@ -209,8 +209,8 @@ CountrySelector.propTypes = {
   savedCountry: PropTypes.string.isRequired,
   savedCurrency: PropTypes.string.isRequired,
   savedLanguage: PropTypes.string.isRequired,
-  countriesMap: PropTypes.arrayOf(PropTypes.shape({})),
-  currenciesMap: PropTypes.arrayOf(PropTypes.shape({})),
+  countriesMap: PropTypes.shape({}).isRequired,
+  currenciesMap: PropTypes.shape({}).isRequired,
   getModuleXContent: PropTypes.func.isRequired,
   handleSubmit: PropTypes.func,
   isModalOpen: PropTypes.bool.isRequired,
@@ -227,8 +227,6 @@ CountrySelector.propTypes = {
 };
 
 CountrySelector.defaultProps = {
-  countriesMap: [],
-  currenciesMap: [],
   showInFooter: false,
   handleSubmit: () => {},
   loadCountryListData: () => {},

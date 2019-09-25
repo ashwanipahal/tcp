@@ -31,14 +31,58 @@ const styles = css`
     padding: 20px 0 20px;
     @media ${props => props.theme.mediaQuery.smallOnly} {
       text-align: center;
-      border-bottom: 2px solid ${props => props.theme.colors.TEXT.DARKERGRAY};
       padding: 13px 0 22px;
       margin: 0;
-      font-size: 18px;
-      font-weight: 800;
+      font-size: ${props => props.theme.fonts.fontSize.anchor.xlarge}px;
+      font-weight: ${props => props.theme.fonts.fontWeight.semiBold};
     }
     @media ${props => props.theme.mediaQuery.medium} {
       padding-left: 3px;
+    }
+  }
+
+  .delete-msg {
+    border: solid 2px ${props => props.theme.colors.NOTIFICATION.SUCCESS};
+    text-align: left;
+    padding: ${props => props.theme.spacing.ELEM_SPACING.SM};
+    background: ${props => props.theme.colors.WHITE};
+    display: flex;
+    align-items: center;
+    margin-top: ${props => props.theme.spacing.ELEM_SPACING.SM};
+    .tick-icon {
+      height: 23px;
+      width: 23px;
+      margin-right: ${props => props.theme.spacing.ELEM_SPACING.SM};
+    }
+  }
+
+  @media ${props => props.theme.mediaQuery.smallOnly} {
+    .activeSection {
+      display: block;
+    }
+    .inActiveSection {
+      display: none;
+    }
+    .activeHeader {
+      border-bottom: ${props => props.theme.spacing.ELEM_SPACING.XXXS} solid
+        ${props => props.theme.colors.TEXT.DARKERGRAY};
+      font-weight: ${props => props.theme.fonts.fontWeight.bold};
+      font-size: ${props => props.theme.typography.fontSizes.fs18};
+    }
+  }
+
+  .save-for-later-section-heading {
+    display: block;
+    @media ${props => props.theme.mediaQuery.smallOnly} {
+      display: none;
+    }
+  }
+
+  .bag-header-sfl {
+    display: none;
+    @media ${props => props.theme.mediaQuery.smallOnly} {
+      display: block;
+      font-size: ${props => props.theme.typography.fontSizes.fs18};
     }
   }
 `;

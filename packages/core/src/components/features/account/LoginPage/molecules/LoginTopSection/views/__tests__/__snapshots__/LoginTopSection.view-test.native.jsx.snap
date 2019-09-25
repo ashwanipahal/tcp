@@ -34,18 +34,29 @@ exports[`LoginTopSectionVanilla component should renders correctly 1`] = `
   />
   <Styled(Text) />
   <Styled(BodyCopy)
+    accessibilityText=""
+    dataLocator=""
     fontSize="fs12"
+    margin={null}
+    numberOfLines={null}
     textAlign="center"
+    textDecoration={null}
   />
   <Styled(BodyCopy)
+    accessibilityText=""
+    dataLocator=""
     fontSize="fs12"
+    margin={null}
+    numberOfLines={null}
     textAlign="center"
+    textDecoration={null}
   />
   <Styled(View)>
     <Styled(Anchor)
       accessibilityLabel=""
       anchorVariation=""
       class="clickhere"
+      colorName={null}
       customStyle={Object {}}
       fontSizeVariation="medium"
       id="forgotPasswordForm"
@@ -56,8 +67,13 @@ exports[`LoginTopSectionVanilla component should renders correctly 1`] = `
       visible={false}
     />
     <Styled(BodyCopy)
+      accessibilityText=""
       component="span"
+      dataLocator=""
       fontSize="fs12"
+      margin={null}
+      numberOfLines={null}
+      textDecoration={null}
     />
   </Styled(View)>
   <Styled(LineComp)

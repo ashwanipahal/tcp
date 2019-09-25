@@ -10,6 +10,7 @@ exports[`Detailed Earn Extra Points Tile component  should render Detailed Earn 
   fontWeight="regular"
   letterSpacing="normal"
   lineHeight="normal"
+  link={null}
   textAlign="left"
 >
   <Styled(BodyCopy)
@@ -21,6 +22,7 @@ exports[`Detailed Earn Extra Points Tile component  should render Detailed Earn 
     fontWeight="regular"
     letterSpacing="normal"
     lineHeight="normal"
+    link={null}
     onClick={[Function]}
     textAlign="left"
   >
@@ -33,10 +35,11 @@ exports[`Detailed Earn Extra Points Tile component  should render Detailed Earn 
       fontWeight="regular"
       letterSpacing="normal"
       lineHeight="normal"
+      link={null}
       textAlign="left"
     >
       <Styled(BodyCopy)
-        className="imageSize AppDownload"
+        className="imageSize undefined"
         color="text.primary"
         component="div"
         fontFamily="primary"
@@ -44,6 +47,7 @@ exports[`Detailed Earn Extra Points Tile component  should render Detailed Earn 
         fontWeight="regular"
         letterSpacing="normal"
         lineHeight="normal"
+        link={null}
         textAlign="left"
       />
     </Styled(BodyCopy)>
@@ -51,30 +55,28 @@ exports[`Detailed Earn Extra Points Tile component  should render Detailed Earn 
       className={null}
       color="text.primary"
       component="p"
-      data-locator="earnExtraPointsActivityTitle_AppDownload"
+      data-locator="earnExtraPointsActivityTitle_undefined"
       fontFamily="secondary"
       fontSize="fs16"
       fontWeight="black"
       letterSpacing="normal"
       lineHeight="normal"
+      link={null}
       textAlign="center"
-    >
-      Earn 5 Points
-    </Styled(BodyCopy)>
+    />
     <Styled(BodyCopy)
       className="earnPointDesc"
       color="text.primary"
       component="p"
-      data-locator="earnExtraPointsDescription_AppDownload"
+      data-locator="earnExtraPointsDescription_undefined"
       fontFamily="secondary"
       fontSize="fs16"
       fontWeight="regular"
       letterSpacing="normal"
       lineHeight="normal"
+      link={null}
       textAlign="center"
-    >
-      Download & Log in to our App
-    </Styled(BodyCopy)>
+    />
   </Styled(BodyCopy)>
 </Styled(BodyCopy)>
 `;

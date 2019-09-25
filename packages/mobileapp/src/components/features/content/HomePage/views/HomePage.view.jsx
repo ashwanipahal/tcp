@@ -6,8 +6,6 @@ import { LAZYLOAD_HOST_NAME } from '@tcp/core/src/utils';
 
 import PropTypes from 'prop-types';
 import HomePageSlots from '@tcp/core/src/components/common/molecules/HomePageSlots';
-import moduleJMock from '@tcp/core/src/components/common/molecules/ModuleJ/mock';
-import moduleRMock from '@tcp/core/src/services/abstractors/common/moduleR/mock';
 
 import {
   ModuleD,
@@ -20,7 +18,7 @@ import {
   ModuleJ,
   ModuleR,
 } from '@tcp/core/src/components/common/molecules';
-import InitialPropsHOC from '../../../../common/hoc/InitialPropsHOC/InitialPropsHOC';
+import InitialPropsHOC from '@tcp/core/src/components/common/hoc/InitialPropsHOC/InitialPropsHOC.native';
 import HeaderPromo from '../../../../common/molecules/HeaderPromo';
 import { HeaderPromoContainer } from '../HomePage.style';
 
@@ -33,21 +31,25 @@ const modulesMap = {
   moduleA: ModuleA,
   moduleB: ModuleB,
   moduleJ: ModuleJ,
+  moduleR: ModuleR,
 };
 
 const buttonMargin = { margin: 30 };
 class HomePageView extends React.PureComponent<Props> {
   componentDidMount() {
-    this.loadData();
+    this.loadBootstrapData();
+
+    const { loadNavigationData } = this.props;
+    loadNavigationData();
   }
 
   /**
-   * @function loadData
+   * @function loadBootstrapData
    * Loads bootstrap data
    *
    * @memberof HomePageView
    */
-  loadData = () => {
+  loadBootstrapData = () => {
     const {
       getBootstrapData,
       screenProps: { apiConfig },
@@ -74,7 +76,6 @@ class HomePageView extends React.PureComponent<Props> {
           <HeaderPromo headerPromo={headerPromo} />
         </HeaderPromoContainer>
         <HomePageSlots slots={slots} modules={modulesMap} navigation={navigation} />
-        <ModuleB navigation={navigation} />
         <GetCandid apiConfig={apiConfig} navigation={navigation} />
         <Button
           fullWidth
@@ -83,8 +84,6 @@ class HomePageView extends React.PureComponent<Props> {
           onPress={() => navigation.navigate('ProductListingPageContainer')}
           style={buttonMargin}
         />
-        <ModuleJ navigation={navigation} {...moduleJMock.moduleJ.composites} />
-        <ModuleR navigation={navigation} {...moduleRMock.moduleR.composites} />
       </LazyloadScrollView>
     );
   }

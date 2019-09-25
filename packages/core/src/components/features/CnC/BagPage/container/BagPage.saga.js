@@ -20,15 +20,25 @@ import {
 } from '../../Checkout/container/Checkout.action';
 import BAG_SELECTORS from './BagPage.selectors';
 import { getModuleX } from '../../../../../services/abstractors/common/moduleX';
-import { getUserLoggedInState } from '../../../account/User/container/User.selectors';
+import {
+  getUserLoggedInState,
+  getPersonalDataState,
+} from '../../../account/User/container/User.selectors';
 import { setCheckoutModalMountedState } from '../../../account/LoginPage/container/LoginPage.actions';
 import checkoutSelectors, { isRemembered } from '../../Checkout/container/Checkout.selector';
 import { isMobileApp, isCanada } from '../../../../../utils';
 
-import { addItemToSflList } from '../../../../../services/abstractors/CnC/SaveForLater';
+import {
+  addItemToSflList,
+  getSflItems,
+} from '../../../../../services/abstractors/CnC/SaveForLater';
 import { removeCartItem } from '../../CartItemTile/container/CartItemTile.actions';
 import { imageGenerator } from '../../../../../services/abstractors/CnC/CartItemTile';
 import { getUserInfo } from '../../../account/User/container/User.actions';
+import { getIsInternationalShipping } from '../../../../../reduxStore/selectors/siteDetails.selectors';
+import { getAddressListState } from '../../../account/AddressBook/container/AddressBook.selectors';
+import { closeMiniBag } from '../../../../common/organisms/Header/container/Header.actions';
+import { addToCartEcom } from '../../AddedToBag/container/AddedToBag.actions';
 
 // external helper function
 const PAYPAL_REDIRECT_PARAM = 'isPaypalPostBack';
@@ -98,13 +108,17 @@ function createMatchObject(res, translatedProductInfo) {
   });
 }
 
-export function* getOrderDetailSaga() {
+export function* getOrderDetailSaga(payload) {
+  const { payload: { after } = {} } = payload;
   try {
     const res = yield call(getOrderDetailsData);
     const translatedProductInfo = yield call(getTranslatedProductInfo, res);
 
     createMatchObject(res, translatedProductInfo);
     yield put(BAG_PAGE_ACTIONS.getOrderDetailsComplete(res.orderDetails));
+    if (after) {
+      yield call(after);
+    }
   } catch (err) {
     yield put(BAG_PAGE_ACTIONS.setBagPageError(err));
   }
@@ -138,6 +152,12 @@ export function* getCartDataSaga(payload = {}) {
       createMatchObject(res, translatedProductInfo);
     }
     yield put(BAG_PAGE_ACTIONS.getOrderDetailsComplete(res.orderDetails));
+    if (res.orderDetails.orderItems.length > 0) {
+      const personalData = yield select(getPersonalDataState);
+      if (!personalData || !personalData.get('userId')) {
+        yield put(getUserInfo());
+      }
+    }
     if (isCheckoutFlow) {
       yield put(checkoutSetCartData({ res, isCartNotRequired, updateSmsInfo }));
     }
@@ -160,30 +180,67 @@ export function* fetchModuleX({ payload = [] }) {
   }
 }
 
-export function* routeForCartCheckout(recalc, navigation, closeModal) {
+/**
+ * routeForCartCheckout component. This is responsible for routing our web to specific page of checkout journey.
+ * @param {Boolean} recalc query parameter for recalculation of points
+ * @param {Object} navigation for navigating in mobile app
+ * @param {Boolean} closeModal for closing addedtoBag modal in app
+ */
+export function* routeForCartCheckout(recalc, navigation, closeModal, navigationActions) {
   const orderHasPickup = yield select(checkoutSelectors.getIsOrderHasPickup);
+  const IsInternationalShipping = yield select(getIsInternationalShipping);
+  const isVenmoPaymentInProgress = yield select(checkoutSelectors.isVenmoPaymentInProgress);
+  const addressList = yield select(getAddressListState);
+  const hasDefaultShippingAddress = addressList && addressList.size > 0;
   if (isMobileApp()) {
     if (orderHasPickup) {
-      navigation.navigate(CONSTANTS.CHECKOUT_ROUTES_NAMES.CHECKOUT_PICKUP);
+      const navigateAction = navigationActions.navigate({
+        routeName: CONSTANTS.CHECKOUT_ROOT,
+        params: {},
+        action: navigationActions.navigate({
+          routeName: CONSTANTS.CHECKOUT_ROUTES_NAMES.CHECKOUT_PICKUP,
+          params: {
+            routeTo: CONSTANTS.PICKUP_DEFAULT_PARAM,
+          },
+        }),
+      });
+      navigation.dispatch(navigateAction);
     } else {
-      navigation.navigate(CONSTANTS.CHECKOUT_ROUTES_NAMES.CHECKOUT_SHIPPING);
+      const navigateAction = navigationActions.navigate({
+        routeName: CONSTANTS.CHECKOUT_ROOT,
+        params: {},
+        action: navigationActions.navigate({
+          routeName: CONSTANTS.CHECKOUT_ROUTES_NAMES.CHECKOUT_SHIPPING,
+          params: {
+            routeTo: CONSTANTS.SHIPPING_DEFAULT_PARAM,
+          },
+        }),
+      });
+      navigation.dispatch(navigateAction);
     }
     if (closeModal) {
       closeModal();
     }
-  } else if (orderHasPickup) {
-    utility.routeToPage(CHECKOUT_ROUTES.pickupPage, { recalc });
+  } else if (!IsInternationalShipping) {
+    yield put(closeMiniBag());
+    if (orderHasPickup) {
+      utility.routeToPage(CHECKOUT_ROUTES.pickupPage, { recalc });
+    } else if (isVenmoPaymentInProgress && hasDefaultShippingAddress) {
+      utility.routeToPage(CHECKOUT_ROUTES.reviewPage, { recalc });
+    } else {
+      utility.routeToPage(CHECKOUT_ROUTES.shippingPage, { recalc });
+    }
   } else {
-    utility.routeToPage(CHECKOUT_ROUTES.shippingPage, { recalc });
+    utility.routeToPage(CHECKOUT_ROUTES.internationalCheckout, { recalc });
   }
 }
 
-export function* checkoutCart(recalc, navigation, closeModal) {
+export function* checkoutCart(recalc, navigation, closeModal, navigationActions) {
   const isLoggedIn = yield select(getUserLoggedInState);
   if (!isLoggedIn) {
     return yield put(setCheckoutModalMountedState({ state: true }));
   }
-  return yield call(routeForCartCheckout, recalc, navigation, closeModal);
+  return yield call(routeForCartCheckout, recalc, navigation, closeModal, navigationActions);
 }
 
 function* confirmStartCheckout() {
@@ -206,7 +263,7 @@ function* confirmStartCheckout() {
 }
 
 export function* startCartCheckout({
-  payload: { isEditingItem, navigation, closeModal } = {},
+  payload: { isEditingItem, navigation, closeModal, navigationActions } = {},
 } = {}) {
   if (isEditingItem) {
     yield put(BAG_PAGE_ACTIONS.openCheckoutConfirmationModal(isEditingItem));
@@ -223,7 +280,7 @@ export function* startCartCheckout({
     );
     const oOSModalOpen = yield call(confirmStartCheckout);
     if (!oOSModalOpen) {
-      yield call(checkoutCart, false, navigation, closeModal);
+      yield call(checkoutCart, false, navigation, closeModal, navigationActions);
     }
   }
 }
@@ -275,7 +332,9 @@ export function* removeUnqualifiedItemsAndCheckout({ navigation } = {}) {
   yield call(checkoutCart, true, navigation);
 }
 
-export function* addItemToSFL({ payload: { itemId, catEntryId, userInfoRequired } = {} } = {}) {
+export function* addItemToSFL({
+  payload: { itemId, catEntryId, userInfoRequired, afterHandler } = {},
+} = {}) {
   const isRememberedUser = yield select(isRemembered);
   const isRegistered = yield select(getUserLoggedInState);
   const countryCurrency = yield select(BAG_SELECTORS.getCurrentCurrency);
@@ -290,7 +349,10 @@ export function* addItemToSFL({ payload: { itemId, catEntryId, userInfoRequired 
       countryCurrency,
       isCanadaSIte
     );
-
+    yield put(BAG_PAGE_ACTIONS.setSflData(res.sflItems));
+    if (afterHandler) {
+      afterHandler();
+    }
     if (res.errorResponse && res.errorMessage) {
       const resErr = res.errorMessage[Object.keys(res.errorMessage)[0]];
       yield put(BAG_PAGE_ACTIONS.setCartItemsSflError(resErr));
@@ -299,10 +361,67 @@ export function* addItemToSFL({ payload: { itemId, catEntryId, userInfoRequired 
       if (userInfoRequired) {
         yield put(getUserInfo());
       }
-      yield put(removeCartItem(itemId));
-      yield delay(BAGPAGE_CONSTANTS.ITEM_SFL_SUCCESS_MSG_TIMEOUT);
-      yield put(BAG_PAGE_ACTIONS.setCartItemsSFL(false));
+      yield put(removeCartItem({ itemId }));
     }
+  } catch (err) {
+    yield put(BAG_PAGE_ACTIONS.setCartItemsSflError(err));
+  }
+}
+
+export function* getSflDataSaga() {
+  try {
+    const currencyCode = yield select(BAG_SELECTORS.getCurrentCurrency);
+    const isCanadaSite = isCanada();
+    const res = yield call(getSflItems, imageGenerator, currencyCode, isCanadaSite);
+    yield put(BAG_PAGE_ACTIONS.setSflData(res.sflItems));
+  } catch (err) {
+    yield put(BAG_PAGE_ACTIONS.setBagPageError(err));
+  }
+}
+
+export function* startSflItemDelete({ payload: { catEntryId } = {} } = {}) {
+  const isRememberedUser = yield select(isRemembered);
+  const isRegistered = yield select(getUserLoggedInState);
+  const countryCurrency = yield select(BAG_SELECTORS.getCurrentCurrency);
+  const isCanadaSIte = isCanada();
+  try {
+    const res = yield call(
+      addItemToSflList,
+      catEntryId,
+      isRememberedUser,
+      isRegistered,
+      imageGenerator,
+      countryCurrency,
+      isCanadaSIte,
+      true
+    );
+    yield put(BAG_PAGE_ACTIONS.setSflData(res.sflItems));
+    if (res.errorResponse && res.errorMessage) {
+      const resErr = res.errorMessage[Object.keys(res.errorMessage)[0]];
+      yield put(BAG_PAGE_ACTIONS.setCartItemsSflError(resErr));
+    } else {
+      yield put(BAG_PAGE_ACTIONS.setSflItemDeleted(true));
+      yield delay(BAGPAGE_CONSTANTS.ITEM_SFL_SUCCESS_MSG_TIMEOUT);
+      yield put(BAG_PAGE_ACTIONS.setSflItemDeleted(false));
+    }
+  } catch (err) {
+    yield put(BAG_PAGE_ACTIONS.setCartItemsSflError(err));
+  }
+}
+
+export function* startSflItemMoveToBag({ payload }) {
+  try {
+    const { itemId } = payload;
+    const addToCartData = {
+      skuInfo: {
+        skuId: itemId,
+      },
+      quantity: 1,
+    };
+    yield put(addToCartEcom(addToCartData));
+    yield put(BAG_PAGE_ACTIONS.getCartData());
+    // yield put(BAG_PAGE_ACTIONS.getOrderDetails());
+    yield put(BAG_PAGE_ACTIONS.startSflItemDelete(payload));
   } catch (err) {
     yield put(BAG_PAGE_ACTIONS.setCartItemsSflError(err));
   }
@@ -322,6 +441,9 @@ export function* BagPageSaga() {
   yield takeLatest(BAGPAGE_CONSTANTS.START_BAG_CHECKOUT, startCartCheckout);
   yield takeLatest(BAGPAGE_CONSTANTS.START_PAYPAL_CHECKOUT, startPaypalCheckout);
   yield takeLatest(BAGPAGE_CONSTANTS.AUTHORIZATION_PAYPAL_CHECKOUT, authorizePayPalPayment);
+  yield takeLatest(BAGPAGE_CONSTANTS.GET_SFL_DATA, getSflDataSaga);
+  yield takeLatest(BAGPAGE_CONSTANTS.SFL_ITEMS_DELETE, startSflItemDelete);
+  yield takeLatest(BAGPAGE_CONSTANTS.SFL_ITEMS_MOVE_TO_BAG, startSflItemMoveToBag);
 }
 
 export default BagPageSaga;

@@ -11,6 +11,7 @@ import {
   getLabelsCartItemTile,
   getProductSize,
   getGeneralProdId,
+  getIsCartItemsUpdating,
   getProductSkuId,
 } from '../container/CartItemTile.selectors';
 
@@ -129,6 +130,15 @@ describe('#CartItemTile selector', () => {
     );
   });
 
+  it('#getIsCartItemsUpdating', () => {
+    const CartPageReducer = fromJS({
+      uiFlags: {
+        isCartItemsUpdating: true,
+      },
+    });
+    expect(getIsCartItemsUpdating({ CartPageReducer })).toEqual(true);
+  });
+
   it('#getLabelsCartItemTile should return labels', () => {
     const addedToBagModal = {
       lbl_info_color: 'Color',
@@ -171,12 +181,16 @@ describe('#CartItemTile selector', () => {
             lbl_minibag_errorSize: 'minibag',
             lbl_minibag_errorUpdateUnavailable: 'minibag',
             lbl_minibag_errorRemoveSoldoutHeader: 'minibag',
+            lbl_minibag_errorRemove: 'remove',
           },
         },
         checkout: {
           bagPage: {
             lbl_sfl_actionLink: 'saveForLaterLink',
             lbl_sfl_maxLimitError: 'sflMaxLimitError',
+            lbl_sfl_moveToBag: 'moveToBagLink',
+            bl_sfl_actionSuccess: 'sflSuccess',
+            lbl_sfl_itemDeleteSuccess: 'sflDeleteSuccess',
           },
         },
       },
@@ -196,6 +210,7 @@ describe('#CartItemTile selector', () => {
       errorSize: 'minibag',
       extra: 'extra',
       fit: 'Fit',
+      itemDeleted: 'lbl_msg_itemDeleteSuccess',
       itemSoldOut: 'minibag',
       itemUnavailable: 'minibag',
       off: 'off',
@@ -216,6 +231,10 @@ describe('#CartItemTile selector', () => {
       value: 'Value',
       saveForLaterLink: 'saveForLaterLink',
       sflMaxLimitError: 'sflMaxLimitError',
+      moveToBagLink: 'moveToBagLink',
+      sflSuccess: 'sflSuccess',
+      sflDeleteSuccess: 'sflDeleteSuccess',
+      removeError: 'remove',
     });
   });
 });

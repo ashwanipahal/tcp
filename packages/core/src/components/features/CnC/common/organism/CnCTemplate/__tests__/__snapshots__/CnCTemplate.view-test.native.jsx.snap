@@ -2,11 +2,11 @@
 
 exports[`CnCCommonTemplate Page should render correctly 1`] = `
 <Fragment>
-  <View>
+  <Styled(View)>
     <Connect(CouponContainer)
       isCheckout={true}
     />
-  </View>
+  </Styled(View)>
   <View>
     <Connect(OrderLedgerContainer) />
   </View>
@@ -18,11 +18,16 @@ exports[`CnCCommonTemplate Page should render correctly 1`] = `
       onPress={[MockFunction]}
     >
       <Styled(BodyCopy)
+        accessibilityText=""
         color="white"
+        dataLocator=""
         fontFamily="secondary"
         fontSize="fs13"
         fontWeight="extrabold"
+        margin={null}
+        numberOfLines={null}
         text="Shipping"
+        textDecoration={null}
       />
     </Styled(TouchableOpacity)>
   </Styled(View)>

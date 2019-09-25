@@ -1,23 +1,25 @@
-import { put, takeLatest } from 'redux-saga/effects';
+import { put, takeLatest, call } from 'redux-saga/effects';
 // import { validateReduxCache } from '../../../../../../utils/cache.util';
 import {
   CartPageSaga,
+  confirmRemoveItem,
   removeCartItem,
   updateCartItemSaga,
   getProductSKUInfoSaga,
+  afterRemovingCartItem,
 } from '../container/CartItemTile.saga';
 import { removeCartItemComplete, updateCartItemComplete } from '../container/CartItemTile.actions';
 import CARTPAGE_CONSTANTS from '../CartItemTile.constants';
+import BAG_PAGE_ACTIONS from '../../BagPage/container/BagPage.actions';
 
 describe('Cart Item saga remove', () => {
-  it('should dispatch removeCartItem action for success resposnse', () => {
-    const payload = [
-      {
-        orderItemId: '3001545548',
-        quantity: '0',
+  it('should dispatch confirmRemoveItem action for success resposnse', () => {
+    const payload = {
+      payload: {
+        itemId: '3001545548',
       },
-    ];
-    const removeCartItemGen = removeCartItem(payload);
+    };
+    const removeCartItemGen = confirmRemoveItem(payload);
     removeCartItemGen.next();
 
     const res = {
@@ -26,6 +28,46 @@ describe('Cart Item saga remove', () => {
     };
     const putDescriptor = removeCartItemGen.next(res).value;
     expect(putDescriptor).toEqual(put(removeCartItemComplete(res)));
+  });
+});
+
+it('should dispatch afterRemovingCartItem action for success resposnse', () => {
+  const removeCartItemGen = afterRemovingCartItem();
+  removeCartItemGen.next();
+  removeCartItemGen.next();
+
+  const putDescriptor = removeCartItemGen.next().value;
+  expect(putDescriptor).toEqual(put(BAG_PAGE_ACTIONS.setCartItemsUpdating({ isDeleting: false })));
+});
+
+describe('Cart Item saga remove', () => {
+  it('should dispatch removeCartItem action for success resposnse', () => {
+    const payload = {
+      payload: {
+        itemId: '3001545548',
+      },
+    };
+    const removeCartItemGen = removeCartItem(payload);
+    expect(removeCartItemGen.next().value).toEqual(
+      call(confirmRemoveItem, { payload: '3001545548' })
+    );
+  });
+
+  it('should dispatch removeCartItem action for bagPage', () => {
+    const payloadValue = {
+      itemId: '3001545548',
+      pageView: 'myBag',
+    };
+    const payload = {
+      payload: payloadValue,
+    };
+    const removeCartItemGen = removeCartItem(payload);
+    removeCartItemGen.next();
+    removeCartItemGen.next();
+
+    expect(removeCartItemGen.next().value).toEqual(
+      put(BAG_PAGE_ACTIONS.openItemDeleteConfirmationModal(payloadValue))
+    );
   });
 });
 

@@ -1,0 +1,16 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`ForgotPasswordView component should renders correctly 1`] = `
+<Fragment>
+  <section
+    className=""
+    data-selector="analytics-social-account"
+  >
+    <p
+      className="social-accounts__subTitle"
+      data-locator="mypreference-socialaccountheader"
+    />
+    <ul />
+  </section>
+</Fragment>
+`;

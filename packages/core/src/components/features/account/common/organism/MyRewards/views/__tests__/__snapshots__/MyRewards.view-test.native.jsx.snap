@@ -19,12 +19,17 @@ exports[`MyRewards should render carousel if coupons are avalable 1`] = `
   >
     <Styled(View)>
       <Styled(BodyCopy)
+        accessibilityText=""
         className="my-rewards-heading"
         data-locator="my-rewards-heading"
+        dataLocator=""
         fontFamily="secondary"
         fontSize="fs16"
         fontWeight="extrabold"
+        margin={null}
+        numberOfLines={null}
         text="undefined (2)"
+        textDecoration={null}
       />
     </Styled(View)>
   </Styled(View)>
@@ -71,12 +76,17 @@ exports[`MyRewards should render correctly 1`] = `
   >
     <Styled(View)>
       <Styled(BodyCopy)
+        accessibilityText=""
         className="my-rewards-heading"
         data-locator="my-rewards-heading"
+        dataLocator=""
         fontFamily="secondary"
         fontSize="fs16"
         fontWeight="extrabold"
+        margin={null}
+        numberOfLines={null}
         text="undefined (0)"
+        textDecoration={null}
       />
     </Styled(View)>
   </Styled(View)>

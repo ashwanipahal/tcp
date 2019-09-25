@@ -60,7 +60,7 @@ const CurrencyUpPromoBanner = props => {
           fontFamily="primary"
           textAlign="center"
           lineHeight="28px"
-          text={strArray && strArray[3]}
+          text={strArray && `${strArray[3]}${strArray[4]}`}
           style={bodyCopyTextStyle4}
         />
       </FlexDirectionDefaultView>

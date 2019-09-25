@@ -20,6 +20,7 @@ import {
 } from './ProductListing.selectors';
 import { isPlccUser } from '../../../account/User/container/User.selectors';
 import submitProductListingFiltersForm from './productListingOnSubmitHandler';
+import getSortLabels from '../molecules/SortSelector/views/Sort.selectors';
 
 class ProductListingContainer extends React.PureComponent {
   componentDidMount() {
@@ -61,6 +62,7 @@ class ProductListingContainer extends React.PureComponent {
       categoryId,
       getProducts,
       navigation,
+      sortLabels,
       ...otherProps
     } = this.props;
     return (
@@ -84,6 +86,7 @@ class ProductListingContainer extends React.PureComponent {
         getProducts={getProducts}
         navigation={navigation}
         onGoToPDPPage={this.onGoToPDPPage}
+        sortLabels={sortLabels}
         {...otherProps}
       />
     );
@@ -129,6 +132,7 @@ function mapStateToProps(state) {
     isLoadingMore: getIsLoadingMore(state),
     lastLoadedPageNumber: getLastLoadedPageNumber(state),
     isPlcc: isPlccUser(state),
+    sortLabels: getSortLabels(state),
   };
 }
 
@@ -165,6 +169,7 @@ ProductListingContainer.propTypes = {
   isLoadingMore: PropTypes.bool,
   lastLoadedPageNumber: PropTypes.number,
   router: PropTypes.shape({}).isRequired,
+  sortLabels: PropTypes.arrayOf(PropTypes.shape({})),
 };
 
 ProductListingContainer.defaultProps = {
@@ -182,6 +187,7 @@ ProductListingContainer.defaultProps = {
   labelsFilter: {},
   isLoadingMore: false,
   lastLoadedPageNumber: 0,
+  sortLabels: [],
 };
 
 export default connect(

@@ -152,6 +152,13 @@ exports[`CreditCardForm component should renders correctly in mailingAddress vie
       cardType=""
       cardTypeImgUrl=""
       className=""
+      creditFieldLabels={
+        Object {
+          "creditCardNumber": "lbl_payment_cardNumber",
+          "expMonth": "lbl_payment_expMonth",
+          "expYear": "lbl_payment_expYear",
+        }
+      }
       dispatch={[MockFunction]}
       dto={Object {}}
       expMonthOptionsMap={
@@ -269,6 +276,7 @@ exports[`CreditCardForm component should renders correctly in mailingAddress vie
       pristine={true}
       selectedCard={null}
       showCreditCardFields={true}
+      showCvv={false}
       showEmailAddress={true}
       showUserName={true}
       subHeading={null}
@@ -286,11 +294,16 @@ exports[`CreditCardForm component should renders correctly in mailingAddress vie
       />
       <Styled(View)>
         <Styled(BodyCopy)
+          accessibilityText=""
+          dataLocator=""
           fontFamily="secondary"
           fontSize="fs12"
           fontWeight="black"
+          margin={null}
           marginTop="10"
+          numberOfLines={null}
           textAlign="left"
+          textDecoration={null}
         />
       </Styled(View)>
       <Field
@@ -570,6 +583,13 @@ exports[`CreditCardForm component should renders correctly with address dropdown
       cardType=""
       cardTypeImgUrl=""
       className=""
+      creditFieldLabels={
+        Object {
+          "creditCardNumber": "lbl_payment_cardNumber",
+          "expMonth": "lbl_payment_expMonth",
+          "expYear": "lbl_payment_expYear",
+        }
+      }
       dispatch={
         [MockFunction] {
           "calls": Array [
@@ -710,6 +730,7 @@ exports[`CreditCardForm component should renders correctly with address dropdown
       onFileAddresskey="12345"
       selectedCard={null}
       showCreditCardFields={true}
+      showCvv={false}
       showEmailAddress={true}
       showUserName={true}
       subHeading={null}
@@ -727,11 +748,16 @@ exports[`CreditCardForm component should renders correctly with address dropdown
       />
       <Styled(View)>
         <Styled(BodyCopy)
+          accessibilityText=""
+          dataLocator=""
           fontFamily="secondary"
           fontSize="fs12"
           fontWeight="black"
+          margin={null}
           marginTop="10"
+          numberOfLines={null}
           textAlign="left"
+          textDecoration={null}
         />
       </Styled(View)>
       <Field
@@ -992,6 +1018,13 @@ exports[`CreditCardForm component should renders correctly with addressForm 1`] 
       cardType=""
       cardTypeImgUrl=""
       className=""
+      creditFieldLabels={
+        Object {
+          "creditCardNumber": "lbl_payment_cardNumber",
+          "expMonth": "lbl_payment_expMonth",
+          "expYear": "lbl_payment_expYear",
+        }
+      }
       dispatch={[MockFunction]}
       dto={Object {}}
       expMonthOptionsMap={
@@ -1109,6 +1142,7 @@ exports[`CreditCardForm component should renders correctly with addressForm 1`] 
       pristine={true}
       selectedCard={null}
       showCreditCardFields={true}
+      showCvv={false}
       showEmailAddress={true}
       showUserName={true}
       subHeading={null}
@@ -1126,11 +1160,16 @@ exports[`CreditCardForm component should renders correctly with addressForm 1`] 
       />
       <Styled(View)>
         <Styled(BodyCopy)
+          accessibilityText=""
+          dataLocator=""
           fontFamily="secondary"
           fontSize="fs12"
           fontWeight="black"
+          margin={null}
           marginTop="10"
+          numberOfLines={null}
           textAlign="left"
+          textDecoration={null}
         />
       </Styled(View)>
       <Field

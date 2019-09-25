@@ -3,16 +3,15 @@ import PropTypes from 'prop-types';
 import Carousel from '@tcp/core/src/components/common/molecules/Carousel';
 import withStyles from '@tcp/core/src/components/common/hoc/withStyles';
 import { BodyCopy, Row, Col, Anchor } from '@tcp/core/src/components/common/atoms';
-import { routerPush, getIconPath } from '@tcp/core/src/utils';
+import { routerPush, getIconPath, getLabelValue } from '@tcp/core/src/utils';
 import internalEndpoints from '@tcp/core/src/components/features/account/common/internalEndpoints';
-import { getLabelValue } from '@tcp/core/src/utils/utils';
 import styles from '../styles/EarnExtraPointsTile.style';
 import carouselConfig from '../EarnExtraPointsTile.config';
 import DetailedEarnExtraPointsTile from '../../../molecule/DetailedEarnExtraPointsTile';
 import EARNEXTRAPOINTS_CONSTANTS from '../EarnExtraPointsTile.constants';
 
-const onClickHandler = () => {
-  return routerPush(internalEndpoints.profilePage.link, internalEndpoints.profilePage.path);
+const onViewActivityDetails = () => {
+  return routerPush(internalEndpoints.extraPointsPage.link, internalEndpoints.extraPointsPage.path);
 };
 
 /**
@@ -42,6 +41,8 @@ const EarnExtraPointsTile = ({ className, labels, waysToEarn }) => {
           <Anchor
             fontSizeVariation="medium"
             anchorVariation="primary"
+            to={internalEndpoints.extraPointsPage.link}
+            asPath={internalEndpoints.extraPointsPage.path}
             data-locator="earnExtraPointsViewAll"
             underline
           >
@@ -67,7 +68,7 @@ const EarnExtraPointsTile = ({ className, labels, waysToEarn }) => {
                 <DetailedEarnExtraPointsTile
                   key={index.toString()}
                   waysToEarnRow={item}
-                  onClickHandler={onClickHandler}
+                  onViewActivityDetails={onViewActivityDetails}
                   labels={labels}
                 />
               );

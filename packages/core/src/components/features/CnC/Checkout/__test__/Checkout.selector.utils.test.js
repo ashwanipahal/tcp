@@ -68,7 +68,13 @@ describe('Checkout Selectors', () => {
   });
   it('#getPickUpContactFormLabels', () => {
     const State = {
-      Labels: { global: {}, checkout: { pickup: { lbl_pickup_title: '' }, shipping: {} } },
+      Labels: {
+        global: {},
+        checkout: {
+          pickup: { lbl_pickup_title: '', lbl_pickup_nextToBilling: 'NEXT: SHIPPING' },
+          shipping: {},
+        },
+      },
     };
     expect(CHECKOUT_SELECTORS.getPickUpContactFormLabels(State)).toEqual({
       SMSHeading: undefined,
@@ -97,6 +103,7 @@ describe('Checkout Selectors', () => {
       shippingText: undefined,
       title: '',
       titleEditPickup: undefined,
+      nextToBilling: 'NEXT: SHIPPING',
     });
   });
 
@@ -151,7 +158,7 @@ describe('Checkout Selectors', () => {
         phoneNumber: 212,
         sendOrderUpdate: false,
       },
-      hasAlternatePickup: undefined,
+      hasAlternatePickup: false,
       pickUpAlternate: {},
     });
   });

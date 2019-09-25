@@ -2,6 +2,7 @@
 
 import endpoints from '../../endpoints';
 import { executeStatefulAPICall } from '../../handler';
+import { getAPIConfig } from '../../../utils';
 import {
   responseContainsErrors,
   ServiceResponseError,
@@ -13,7 +14,7 @@ import { sanitizeEntity, flatCurrencyToCents, AVAILABILITY } from './CartItemTil
 export function getProductInfo(item, imageGenerator) {
   const { isGiftCard, itemAtributes } = item;
   const sizeAndFit = itemAtributes;
-  return {
+  const returnProductInfo = {
     generalProductId: isGiftCard ? item.itemCatentryId.toString() : item.productId,
     productPartNumber: item.productInfo && item.productInfo.productPartNumber,
     skuId: isGiftCard ? item.productId : item.itemCatentryId.toString(),
@@ -21,8 +22,6 @@ export function getProductInfo(item, imageGenerator) {
     imagePath: imageGenerator(item.productInfo.productPartNumber)
       ? imageGenerator(item.productInfo.productPartNumber).productImages[500]
       : '',
-    size: sizeAndFit ? sizeAndFit.TCPSize : item.itemUnitDstPrice, // giftCard Size is its price
-    fit: sizeAndFit ? sizeAndFit.TCPFit : null, // no fit for gift cards
     pdpUrl: item.productUrl.replace(/&amp;/g, '&'),
     color: {
       name: item.productInfo.productColor
@@ -35,6 +34,15 @@ export function getProductInfo(item, imageGenerator) {
     isGiftCard,
     colorFitSizeDisplayNames: isGiftCard ? true : {}, // To Do when consuming this data { color: 'Design', size: 'Value' }
   };
+  if (sizeAndFit) {
+    returnProductInfo.size = sizeAndFit.TCPSize;
+    returnProductInfo.fit = sizeAndFit.TCPFit;
+    returnProductInfo.upc = sizeAndFit.UPC;
+  } else {
+    returnProductInfo.size = item.itemUnitDstPrice;
+    returnProductInfo.fit = null;
+  }
+  return returnProductInfo;
 }
 
 export function deriveSflItemAvailability(item, currencyCode) {
@@ -97,9 +105,10 @@ export function addItemToSflList(
   isRegistered,
   imageGenerator,
   currencyCode,
-  isCanada
+  isCanada,
+  isSflItemDelete = false
 ) {
-  const payload = {
+  let payload = {
     body: {
       catentryId: catEntryId,
       isRememberedUser,
@@ -107,6 +116,19 @@ export function addItemToSflList(
     },
     webService: endpoints.addSflItem,
   };
+
+  if (isSflItemDelete) {
+    const apiConfig = getAPIConfig();
+    payload = {
+      header: {
+        'X-Cookie': apiConfig.cookie,
+        catentryId: catEntryId,
+        isRememberedUser,
+        isRegistered,
+      },
+      webService: endpoints.deleteSflItem,
+    };
+  }
 
   return executeStatefulAPICall(payload)
     .then(res => {
@@ -121,8 +143,31 @@ export function addItemToSflList(
     });
 }
 
+export function getSflItems(imageGenerator, currencyCode, isCanada) {
+  const apiConfig = getAPIConfig();
+  const payload = {
+    header: {
+      'X-Cookie': apiConfig.cookie,
+    },
+    webService: endpoints.getAllSfl,
+  };
+
+  return executeStatefulAPICall(payload)
+    .then(response => {
+      if (responseContainsErrors(response)) {
+        throw new ServiceResponseError(response);
+      } else {
+        return formatSflItems(response.body.sflItems, imageGenerator, currencyCode, isCanada);
+      }
+    })
+    .catch(err => {
+      throw getFormattedError(err);
+    });
+}
+
 export default {
   formatSflItems,
   addItemToSflList,
   deriveSflItemAvailability,
+  getSflItems,
 };

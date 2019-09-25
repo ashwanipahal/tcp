@@ -25,6 +25,7 @@ exports[`PaymentOverviewTile component should render correctly 1`] = `
           fontWeight="extrabold"
           letterSpacing="normal"
           lineHeight="normal"
+          link={null}
           textAlign="left"
         />
         <Styled(Anchor)
@@ -57,6 +58,7 @@ exports[`PaymentOverviewTile component should render correctly 1`] = `
             fontWeight="regular"
             letterSpacing="normal"
             lineHeight="normal"
+            link={null}
             textAlign="left"
           />
         </Styled(Col)>
@@ -71,6 +73,7 @@ exports[`PaymentOverviewTile component should render correctly 1`] = `
       fontWeight="regular"
       letterSpacing="normal"
       lineHeight="normal"
+      link={null}
       textAlign="left"
     >
       <div
@@ -85,6 +88,7 @@ exports[`PaymentOverviewTile component should render correctly 1`] = `
           fontWeight="extrabold"
           letterSpacing="normal"
           lineHeight="normal"
+          link={null}
           textAlign="left"
         />
         <Styled(Anchor)
@@ -117,6 +121,7 @@ exports[`PaymentOverviewTile component should render correctly 1`] = `
             fontWeight="regular"
             letterSpacing="normal"
             lineHeight="normal"
+            link={null}
             textAlign="left"
           />
         </Styled(Col)>

@@ -3,7 +3,7 @@
 exports[`BirthdaySaving component should render correctly 1`] = `
 <Styled(AccountOverviewTile)
   ctaLink="/account?id=profile&subSection=birthday-savings"
-  ctaPath="/account/profile"
+  ctaPath="/account/profile/birthday-savings"
   ctaTitle=""
   dataLocator="birthdaySaving"
   title=""
@@ -17,6 +17,7 @@ exports[`BirthdaySaving component should render correctly 1`] = `
     fontWeight="regular"
     letterSpacing="normal"
     lineHeight="normal"
+    link={null}
     textAlign="left"
   >
     <Styled(Row)

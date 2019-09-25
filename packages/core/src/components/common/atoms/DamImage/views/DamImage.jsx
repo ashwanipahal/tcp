@@ -1,7 +1,9 @@
 import React from 'react';
 import { PropTypes } from 'prop-types';
 import { withTheme } from 'styled-components';
+import Anchor from '../../Anchor';
 import LazyLoadImage from '../../LazyImage';
+import { configureInternalNavigationFromCMSUrl } from '../../../../../utils';
 
 const getImgData = props => {
   const { imgData, imgConfigs, imgPathSplitter } = props;
@@ -27,9 +29,7 @@ const getImgData = props => {
 };
 
 const getBreakpointImgUrl = (type, props) => {
-  const {
-    theme: { breakpoints },
-  } = props;
+  const { breakpoints } = props;
 
   const { basePath, imgPath, imgConfigs } = getImgData(props);
 
@@ -43,6 +43,41 @@ const getBreakpointImgUrl = (type, props) => {
   return `${basePath}/${config}/${imgPath}`;
 };
 
+const renderImage = imgProps => {
+  const {
+    breakpoints,
+    imgConfigs,
+    imgData,
+    basePath,
+    imgPathSplitter,
+    lazyLoad,
+    link,
+    ...other
+  } = imgProps;
+
+  const { alt } = imgData;
+
+  return (
+    <picture>
+      <source
+        media={`(min-width: ${breakpoints.values.lg}px)`}
+        data-srcset={getBreakpointImgUrl('lg', imgProps)}
+      />
+
+      <source
+        media={`(min-width: ${breakpoints.values.sm}px)`}
+        data-srcset={getBreakpointImgUrl('sm', imgProps)}
+      />
+
+      {lazyLoad ? (
+        <LazyLoadImage src={getBreakpointImgUrl('xs', imgProps)} alt={alt} {...other} />
+      ) : (
+        <img src={getBreakpointImgUrl('xs', imgProps)} alt={alt} {...other} />
+      )}
+    </picture>
+  );
+};
+
 const DamImage = props => {
   const {
     theme: { breakpoints },
@@ -51,29 +86,44 @@ const DamImage = props => {
     basePath,
     imgPathSplitter,
     lazyLoad,
+    link,
+    dataLocator,
     ...other
   } = props;
 
-  const { alt } = imgData;
+  const imgProps = {
+    breakpoints,
+    imgConfigs,
+    imgData,
+    basePath,
+    imgPathSplitter,
+    lazyLoad,
+    link,
+    ...other,
+  };
+
+  if (!link) {
+    return renderImage(imgProps);
+  }
+
+  const { url: ctaUrl, target, title, actualUrl, className: ctaClassName } = link;
+
+  let to = actualUrl;
+  if (!actualUrl) {
+    to = configureInternalNavigationFromCMSUrl(ctaUrl);
+  }
 
   return (
-    <picture>
-      <source
-        media={`(min-width: ${breakpoints.values.lg}px)`}
-        data-srcset={getBreakpointImgUrl('lg', props)}
-      />
-
-      <source
-        media={`(min-width: ${breakpoints.values.sm}px)`}
-        data-srcset={getBreakpointImgUrl('sm', props)}
-      />
-
-      {lazyLoad ? (
-        <LazyLoadImage src={getBreakpointImgUrl('xs', props)} alt={alt} {...other} />
-      ) : (
-        <img src={getBreakpointImgUrl('xs', props)} alt={alt} {...other} />
-      )}
-    </picture>
+    <Anchor
+      className={ctaClassName}
+      to={to}
+      asPath={ctaUrl}
+      target={target}
+      title={title}
+      dataLocator="image-link"
+    >
+      {renderImage(imgProps)}
+    </Anchor>
   );
 };
 
@@ -88,6 +138,9 @@ DamImage.defaultProps = {
   },
   basePath: 'https://test1.theplace.com/image/upload',
   imgPathSplitter: '/upload',
+  link: null,
+  dataLocator: '',
+  dataLocatorLink: '',
 };
 
 DamImage.propTypes = {
@@ -123,6 +176,14 @@ DamImage.propTypes = {
 
   /* String which will be used to split the URL */
   imgPathSplitter: PropTypes.string,
+  dataLocator: PropTypes.string,
+  dataLocatorLink: PropTypes.string,
+  link: PropTypes.shape({
+    url: PropTypes.string.isRequired,
+    target: PropTypes.string,
+    title: PropTypes.string.isRequired,
+    text: PropTypes.string,
+  }),
 };
 
 export default withTheme(DamImage);

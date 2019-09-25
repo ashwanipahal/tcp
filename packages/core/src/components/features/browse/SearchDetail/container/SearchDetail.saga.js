@@ -1,6 +1,7 @@
 import { call, put, takeLatest, select } from 'redux-saga/effects';
 import logger from '@tcp/core/src/utils/loggerInstance';
 import SLP_CONSTANTS from './SearchDetail.constants';
+import { SLP_PAGE_REDUCER_KEY } from '../../../../../constants/reducer.constants';
 import {
   setSlpProducts,
   setSlpLoadingState,
@@ -9,25 +10,27 @@ import {
 } from './SearchDetail.actions';
 import Abstractor from '../../../../../services/abstractors/productListing';
 import ProductsOperator from '../../ProductListing/container/productsRequestFormatter';
+import { getLastLoadedPageNumber } from './SearchDetail.selectors';
 
 const instanceProductListing = new Abstractor();
 const operatorInstance = new ProductsOperator();
 
 export function* fetchSlpProducts({ payload }) {
   try {
-    const { sq } = payload;
+    const { searchQuery, asPath, formData } = payload;
     const state = yield select();
-    yield put(setSlpSearchTerm({ searchTerm: sq }));
+    yield put(setSlpLoadingState({ isLoadingMore: true }));
+    yield put(setSlpSearchTerm({ searchTerm: searchQuery }));
 
-    const reqObj = operatorInstance.getProductsListingInfo({
+    const reqObj = operatorInstance.getProductsListingFilters({
       state,
-      filtersAndSort: {},
+      formData,
+      asPath,
       pageNumber: 1,
-      // TODO - fix this for mobile APP - location needs to be defined
-      location: window.location, // TODO - this is the prod code - location = routingInfoStoreView.getHistory(this.store.getState()).location,
     });
     const res = yield call(instanceProductListing.getProducts, reqObj, state);
     yield put(setListingFirstProductsPage({ ...res }));
+    yield put(setSlpLoadingState({ isLoadingMore: false }));
   } catch (err) {
     logger.error(err);
   }
@@ -35,21 +38,23 @@ export function* fetchSlpProducts({ payload }) {
 
 export function* fetchMoreProducts() {
   try {
-    let state = yield select();
+    const state = yield select();
     yield put(setSlpLoadingState({ isLoadingMore: true }));
-    const reqObj = operatorInstance.getMoreBucketedProducts(state);
-    if (reqObj && reqObj.categoryId) {
-      state = yield select();
-      const slpProducts = yield call(instanceProductListing.getProducts, reqObj, state);
-      if (
-        slpProducts &&
-        slpProducts.loadedProductsPages &&
-        slpProducts.loadedProductsPages[0] &&
-        slpProducts.loadedProductsPages[0].length
-      ) {
-        yield put(setSlpProducts({ ...slpProducts }));
-      }
-    }
+    const appliedFiltersIds = state[SLP_PAGE_REDUCER_KEY].get('appliedFiltersIds');
+    const sort =
+      (state[SLP_PAGE_REDUCER_KEY] && state[SLP_PAGE_REDUCER_KEY].get('appliedSortId')) || '';
+
+    const appliedFiltersAndSort = { ...appliedFiltersIds, sort };
+
+    const lastLoadedPageNumber = getLastLoadedPageNumber(state);
+    const reqObj = operatorInstance.getProductsListingInfo({
+      state,
+      filtersAndSort: appliedFiltersAndSort,
+      pageNumber: lastLoadedPageNumber + 1,
+    });
+
+    const res = yield call(instanceProductListing.getProducts, reqObj, state);
+    yield put(setSlpProducts({ ...res }));
     yield put(setSlpLoadingState({ isLoadingMore: false }));
   } catch (err) {
     logger.error(err);

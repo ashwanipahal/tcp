@@ -16,9 +16,16 @@ import { Button, BodyCopy } from '../../../atoms';
 import DropDown from '../../../atoms/DropDown/views/DropDown.native';
 
 class ProductAddToBag extends React.PureComponent<Props> {
-  changeQuantity = () => {};
+  /* Have to define empty constructor because test case fail with error 'TypeError: Cannot read property 'find' of undefined'. So if using PureComponent then mendatory to define constructor */
+  // eslint-disable-next-line
+  constructor(props) {
+    super(props);
+  }
 
-  addToBagAction = () => {};
+  changeQuantity = quantity => {
+    const { onQuantityChange } = this.props;
+    if (onQuantityChange) onQuantityChange(quantity);
+  };
 
   /**
    * @function renderColor
@@ -31,16 +38,21 @@ class ProductAddToBag extends React.PureComponent<Props> {
       color: { imagePath, name },
     } = item;
     const { selectedColor, selectColor } = this.props;
-    const isSelected = (selectedColor && name === selectedColor.color.name) || false;
-
+    const isSelected = (selectedColor && name === selectedColor.name) || false;
+    const borderWidth = 2;
+    const componentSize = 30;
+    const imageSize = isSelected ? componentSize - borderWidth : componentSize;
     return (
       <LinkImageIcon
         uri={imagePath}
         selected={isSelected}
-        onPress={() => selectColor(item)}
-        width={30}
-        height={30}
+        onPress={() => selectColor(name)}
+        width={componentSize}
+        height={componentSize}
         borderRadius={15}
+        borderWidth={borderWidth}
+        imageWidth={imageSize}
+        imageHeight={imageSize}
       />
     );
   };
@@ -52,8 +64,11 @@ class ProductAddToBag extends React.PureComponent<Props> {
    * @memberof ProductAddToBag
    */
   renderQuantityView = () => {
-    const { quantityList } = this.props;
-
+    const {
+      quantityList,
+      plpLabels: { quantity },
+    } = this.props;
+    const qunatityText = `${quantity}: `;
     return (
       <RowViewContainer>
         <BodyCopy
@@ -61,7 +76,7 @@ class ProductAddToBag extends React.PureComponent<Props> {
           color="gray.900"
           mobileFontFamily="secondary"
           fontSize="fs14"
-          text="QUANTITY: "
+          text={qunatityText}
         />
         <DropDown
           selectedValue="1"
@@ -85,6 +100,7 @@ class ProductAddToBag extends React.PureComponent<Props> {
   renderAddToBagButton = () => {
     const {
       plpLabels: { addToBag },
+      addToBagAction,
     } = this.props;
     return (
       <Button
@@ -92,10 +108,12 @@ class ProductAddToBag extends React.PureComponent<Props> {
         fill="BLUE"
         buttonVariation="variable-width"
         text={addToBag}
-        fontSize="fs13"
+        fontSize="fs10"
         fontWeight="extrabold"
         fontFamily="secondary"
-        onPress={this.addToBagAction}
+        onPress={addToBagAction}
+        locator="pdp_color_swatch"
+        accessibilityLabel="Add to Bag"
       />
     );
   };
@@ -110,49 +128,55 @@ class ProductAddToBag extends React.PureComponent<Props> {
       selectedSize,
       selectFit,
       selectSize,
+      isErrorMessageDisplayed,
+      plpLabels: { errorMessage, size, fit, color },
     } = this.props;
 
-    const { color } = selectedColor || {};
-    const { name: colorName = '' } = color || {};
-    const { fitNameVal: fitName = '' } = selectedFit || {};
-    const { sizeName = '' } = selectedSize || {};
+    const { name: colorName } = selectedColor || {};
+    const { name: fitName = '' } = selectedFit || {};
+    const { name: sizeName = '' } = selectedSize || {};
+    const sizeError = isErrorMessageDisplayed ? errorMessage : '';
 
     return (
       <View {...this.props}>
         <Field
           id="color"
-          name={selectedColor}
-          component={ProductVariantSelector}
-          title="COLOR"
+          name={colorName}
           itemValue={colorName}
+          component={ProductVariantSelector}
+          title={color}
           renderItem={this.renderColor}
           data={colorList}
-          selectedItem={selectedColor}
+          selectedItem={colorName}
           componentWidth={30}
           separatorWidth={16}
+          locators={{ key: 'pdp_color_label', value: 'pdp_color_value' }}
         />
         <Field
           id="fit"
-          name={selectedFit}
+          name={fitName}
           component={ProductVariantSelector}
-          title="FIT"
+          title={fit}
           itemValue={fitName}
           data={fitList}
-          selectedItem={selectedFit}
+          selectedItem={fitName}
           selectItem={selectFit}
-          itemNameKey="fitNameVal"
+          itemNameKey="displayName"
+          locators={{ key: 'pdp_fit_label', value: 'pdp_fit_value' }}
         />
         <Field
           id="size"
-          name={selectedColor}
+          name={sizeName}
           component={ProductVariantSelector}
-          title="SIZE"
+          title={size}
           itemValue={sizeName}
           renderItem={this.renderSize}
           data={sizeList}
-          selectedItem={selectedSize}
+          selectedItem={sizeName}
           selectItem={selectSize}
-          itemNameKey="sizeName"
+          itemNameKey="displayName"
+          error={sizeError}
+          locators={{ key: 'pdp_size_label', value: 'pdp_size_value' }}
         />
         {this.renderQuantityView()}
         {this.renderAddToBagButton()}
@@ -171,6 +195,8 @@ ProductAddToBag.propTypes = {
   selectedSize: PropTypes.instanceOf(Object),
   quantityList: PropTypes.arrayOf(Object),
   plpLabels: PropTypes.instanceOf(Object),
+  isErrorMessageDisplayed: PropTypes.bool,
+  addToBagAction: PropTypes.func,
 };
 
 ProductAddToBag.defaultProps = {
@@ -182,6 +208,8 @@ ProductAddToBag.defaultProps = {
   selectedSize: null,
   quantityList: [],
   plpLabels: {},
+  isErrorMessageDisplayed: false,
+  addToBagAction: null,
 };
 
 /* export view with redux form */

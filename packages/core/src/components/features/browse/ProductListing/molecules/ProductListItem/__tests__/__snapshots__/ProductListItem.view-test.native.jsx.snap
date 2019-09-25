@@ -57,8 +57,12 @@ exports[`ProductListItem component should renders ProductListItem correctly 1`] 
     props={Object {}}
     setSelectedColorIndex={[Function]}
   />
-  <RenderPromotionalMessage
+  <Styled(PromotionalMessage)
+    dataLocator=""
+    fontSize={null}
+    height="24px"
     isPlcc={false}
+    marginTop={12}
     text=""
   />
   <Styled(View)>

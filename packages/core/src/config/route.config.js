@@ -1,7 +1,18 @@
 const ROUTE_PATH = {
   guestOrderDetails: ({ pathSuffix }) => `/track-order/${pathSuffix}`,
   home: '/home',
-  plp: '/c',
+  plp: {
+    name: '/c',
+    param: 'cid',
+  },
+  pdp: {
+    name: '/p',
+    param: 'pid',
+  },
+  search: {
+    name: '/search',
+    param: 'sq',
+  },
   // TODO - Make all page constants and use them in ROUTES_LIST for mapping
 };
 
@@ -22,6 +33,12 @@ const ROUTES_LIST = [
     noSlugPath: 'login',
     path: '/login',
     resolver: '/login',
+  },
+
+  {
+    noSlugPath: 'instagram',
+    path: '/instagram',
+    resolver: '/instagram',
   },
   {
     noSlugPath: 'account',
@@ -58,9 +75,9 @@ const ROUTES_LIST = [
   },
   {
     noSlugPath: 'search',
-    path: '/search/:sq',
+    path: '/search/:searchQuery',
     resolver: '/SearchDetail',
-    params: ['sq'],
+    params: ['searchQuery'],
   },
   {
     noSlugPath: 'outfit',
@@ -94,11 +111,6 @@ const ROUTES_LIST = [
     resolver: '/cookiesTesting',
   },
   {
-    noSlugPath: 'gallery',
-    path: '/gallery',
-    resolver: '/gallery',
-  },
-  {
     noSlugPath: 'checkout',
     path: '/checkout/:section',
     resolver: '/Checkout',
@@ -108,6 +120,17 @@ const ROUTES_LIST = [
     noSlugPath: 'error',
     path: '/error',
     resolver: '/error',
+  },
+  {
+    noSlugPath: 'international-checkout',
+    path: '/international-checkout',
+    resolver: '/InternationalCheckout',
+  },
+  {
+    noSlugPath: 'content',
+    path: '/content/:contentType',
+    resolver: '/content',
+    params: ['contentType'],
   },
 ];
 

@@ -6,58 +6,97 @@ import style from '../styles/EmptyBagPage.style';
 import { BodyCopy, Button } from '../../../../common/atoms';
 import { getLocator } from '../../../../../utils';
 import ApplyNowModal from '../../../../common/molecules/ApplyNowPLCCModal';
+import utility from '../../Checkout/util/utility';
+import { CHECKOUT_ROUTES } from '../../Checkout/Checkout.constants';
 
-const EmptyBagPage = ({ className, isUserLoggedIn, bagLabels }) => {
+const renderEmptySFL = bagLabels => {
+  return (
+    <div className="empty-sfl-msg">
+      <BodyCopy
+        color="gray.900"
+        fontSize="fs14"
+        fontFamily="secondary"
+        textAlign="center"
+        dataLocator={getLocator('empty_sfl_Msg_1')}
+      >
+        {bagLabels.emptySflMsg1}
+      </BodyCopy>
+      <BodyCopy
+        color="gray.900"
+        fontSize="fs14"
+        fontFamily="secondary"
+        textAlign="center"
+        dataLocator={getLocator('empty_sfl_Msg_2')}
+      >
+        {bagLabels.emptySflMsg2}
+      </BodyCopy>
+    </div>
+  );
+};
+
+const EmptyBagPage = ({
+  className,
+  isUserLoggedIn,
+  bagLabels,
+  isBagPageSflSection,
+  showPlccApplyNow = true,
+}) => {
   return (
     <div className={className}>
-      <BodyCopy
-        className="large-size-message"
-        color="gray.900"
-        fontWeight="extrabold"
-        fontFamily="secondary"
-        dataLocator={getLocator('empty_bag_Msg')}
-      >
-        {!isUserLoggedIn ? bagLabels.guestUserMsg : bagLabels.loggedInMsg}
-      </BodyCopy>
-      <ApplyNowModal />
-      <div className="element-spacing">
-        <Button
-          data-locator={getLocator(
-            isUserLoggedIn ? 'empty_bag_loginUserCTA' : 'empty_bag_guestUserCTA'
-          )}
-          className="CTA-button"
-          onClick={() => {
-            const page = !isUserLoggedIn ? '/us/login' : '/us/home';
-            Router.push(page);
-          }}
-        >
+      {isBagPageSflSection ? (
+        renderEmptySFL(bagLabels)
+      ) : (
+        <>
           <BodyCopy
-            component="span"
-            color="white"
+            className="large-size-message"
+            color="gray.900"
             fontWeight="extrabold"
             fontFamily="secondary"
-            fontSize="fs14"
+            dataLocator={getLocator('empty_bag_Msg')}
           >
-            {!isUserLoggedIn ? bagLabels.login : bagLabels.shopNow}
+            {!isUserLoggedIn ? bagLabels.guestUserMsg : bagLabels.loggedInMsg}
           </BodyCopy>
-        </Button>
-      </div>
-      <BodyCopy
-        className="large-size-message"
-        color="gray.900"
-        fontWeight="extrabold"
-        fontFamily="secondary"
-        dataLocator={getLocator('empty_bag_recommendation_msg')}
-      >
-        {bagLabels.tagLine}
-      </BodyCopy>
-      <BodyCopy
-        dataLocator={getLocator('empty_bag_recommendation_msg')}
-        className="small-spacing"
-        fontFamily="secondary"
-      >
-        {bagLabels.helperMsg}
-      </BodyCopy>
+          {showPlccApplyNow ? <ApplyNowModal /> : null}
+          <div className="element-spacing">
+            <Button
+              data-locator={getLocator(
+                isUserLoggedIn ? 'empty_bag_loginUserCTA' : 'empty_bag_guestUserCTA'
+              )}
+              className="CTA-button"
+              onClick={() => {
+                const page = !isUserLoggedIn ? CHECKOUT_ROUTES.login : CHECKOUT_ROUTES.home;
+                utility.routeToPage(page);
+              }}
+            >
+              <BodyCopy
+                component="span"
+                color="white"
+                fontWeight="extrabold"
+                fontFamily="secondary"
+                fontSize="fs14"
+              >
+                {!isUserLoggedIn ? bagLabels.login : bagLabels.shopNow}
+              </BodyCopy>
+            </Button>
+          </div>
+          <BodyCopy
+            className="large-size-message"
+            color="gray.900"
+            fontWeight="extrabold"
+            fontFamily="secondary"
+            dataLocator={getLocator('empty_bag_recommendation_msg')}
+          >
+            {bagLabels.tagLine}
+          </BodyCopy>
+          <BodyCopy
+            dataLocator={getLocator('empty_bag_recommendation_msg')}
+            className="small-spacing"
+            fontFamily="secondary"
+          >
+            {bagLabels.helperMsg}
+          </BodyCopy>
+        </>
+      )}
     </div>
   );
 };
@@ -66,6 +105,12 @@ EmptyBagPage.propTypes = {
   className: PropTypes.string.isRequired,
   isUserLoggedIn: PropTypes.bool.isRequired,
   bagLabels: PropTypes.bool.isRequired,
+  showPlccApplyNow: PropTypes.bool.isRequired,
+  isBagPageSflSection: PropTypes.bool,
+};
+
+EmptyBagPage.defaultProps = {
+  isBagPageSflSection: false,
 };
 
 export default withStyle(EmptyBagPage, style);

@@ -2,11 +2,19 @@ import { css } from 'styled-components';
 
 const styles = css`
   .venmo-button {
-    background-color: ${props => props.theme.colors.VENMO};
+    background-color: ${props => props.theme.colors.WHITE};
     width: 100%;
-    height: 42px;
-    margin: 10px 0;
-    border-radius: 4px;
+    height: ${props => props.theme.spacing.LAYOUT_SPACING.MED};
+    border-radius: ${props =>
+      props.theme.isGymboree
+        ? props.theme.spacing.ELEM_SPACING.MED
+        : props.theme.spacing.ELEM_SPACING.XXS};
+    border: 1px solid ${props => props.theme.colorPalette.gray[600]};
+  }
+
+  .venmo-button-image {
+    width: ${props => props.theme.spacing.LAYOUT_SPACING.XL};
+    height: ${props => props.theme.spacing.LAYOUT_SPACING.XXS};
   }
 `;
 

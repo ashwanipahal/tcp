@@ -7,6 +7,7 @@ describe('AddGiftCard Reducer', () => {
     error: null,
     showUpdatedNotification: null,
     onAddGiftCardPage: false,
+    showNotification: false,
   });
 
   it('should return empty add gift card as default state', () => {
@@ -18,7 +19,14 @@ describe('AddGiftCard Reducer', () => {
       AddGiftCardReducer(initialState, {
         type: ADD_GIFT_CARD_CONSTANTS.ADD_GIFT_CARD_REQUEST,
       })
-    ).toEqual(fromJS({ onAddGiftCardPage: true, error: null, showUpdatedNotification: null }));
+    ).toEqual(
+      fromJS({
+        showNotification: false,
+        onAddGiftCardPage: true,
+        error: null,
+        showUpdatedNotification: null,
+      })
+    );
   });
 
   it('should be called on add gift card success', () => {
@@ -27,7 +35,12 @@ describe('AddGiftCard Reducer', () => {
         type: ADD_GIFT_CARD_CONSTANTS.ADD_GIFT_CARD_SUCCESS,
       })
     ).toEqual(
-      fromJS({ showUpdatedNotification: 'success', onAddGiftCardPage: false, error: null })
+      fromJS({
+        showNotification: false,
+        showUpdatedNotification: 'success',
+        onAddGiftCardPage: false,
+        error: null,
+      })
     );
   });
 
@@ -56,6 +69,13 @@ describe('AddGiftCard Reducer', () => {
       AddGiftCardReducer(initialState, {
         type: ADD_GIFT_CARD_CONSTANTS.RESET_SHOW_NOTIFICATION,
       })
-    ).toEqual(fromJS({ showUpdatedNotification: null, error: null, onAddGiftCardPage: false }));
+    ).toEqual(
+      fromJS({
+        showNotification: false,
+        showUpdatedNotification: null,
+        error: null,
+        onAddGiftCardPage: false,
+      })
+    );
   });
 });

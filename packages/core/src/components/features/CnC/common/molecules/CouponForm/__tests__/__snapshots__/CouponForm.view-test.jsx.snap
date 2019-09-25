@@ -3,6 +3,7 @@
 exports[`CouponForm Component CouponForm should render correctly 1`] = `
 <div>
   <Styled(ErrorMessage)
+    className="coupon_error_message"
     error=""
   />
   <div
@@ -26,6 +27,7 @@ exports[`CouponForm Component CouponForm should render correctly 1`] = `
         fontWeight="semibold"
         letterSpacing="normal"
         lineHeight="normal"
+        link={null}
         onClick={[Function]}
         textAlign="left"
       />
@@ -60,6 +62,7 @@ exports[`CouponForm Component CouponForm should render correctly 1`] = `
 exports[`CouponForm Component CouponForm should render with error correctly 1`] = `
 <div>
   <Styled(ErrorMessage)
+    className="coupon_error_message"
     error="1234"
   />
   <div
@@ -83,6 +86,7 @@ exports[`CouponForm Component CouponForm should render with error correctly 1`] 
         fontWeight="semibold"
         letterSpacing="normal"
         lineHeight="normal"
+        link={null}
         onClick={[Function]}
         textAlign="left"
       />

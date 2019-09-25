@@ -2,7 +2,7 @@
 import Router from 'next/router';
 import { ENV_PRODUCTION, ENV_DEVELOPMENT } from '../constants/env.config';
 import icons from '../config/icons';
-import { breakpoints } from '../../styles/themes/TCP/mediaQuery';
+import { breakpoints, mediaQuery } from '../../styles/themes/TCP/mediaQuery';
 import { getAPIConfig } from './utils';
 import { API_CONFIG } from '../services/config';
 import { defaultCountries, defaultCurrencies } from '../constants/site.constants';
@@ -29,6 +29,14 @@ export const importGraphQLClientDynamically = module => {
 
 export const importGraphQLQueriesDynamically = query => {
   return import(`../services/handler/graphQL/queries/${query}`);
+};
+
+export const getLocationOrigin = () => {
+  return window.location.origin;
+};
+
+export const canUseDOM = () => {
+  return typeof window !== 'undefined' && window.document && window.document.createElement;
 };
 
 export const isProduction = () => {
@@ -250,7 +258,10 @@ export const getCountriesMap = data => {
   const countries = defaultCountries;
   data.map(value =>
     countries.push(
-      Object.assign({}, value.country, { siteId: 'us', currencyId: value.currency.id })
+      Object.assign({}, value.country, {
+        siteId: 'us',
+        currencyId: value.currency.id,
+      })
     )
   );
   return countries;
@@ -277,6 +288,27 @@ export const getModifiedLanguageCode = id => {
   }
 };
 
+/**
+ * @method getTranslateDateInformation
+ * @desc returns day, month and day of the respective date provided
+ * @param {string} date date which is to be mutated
+ * @param {upperCase} locale use for convert locate formate
+ */
+export const getTranslateDateInformation = (
+  date,
+  language,
+  dayOption = { weekday: 'short' },
+  monthOption = { month: 'short' }
+) => {
+  const localeType = language ? getModifiedLanguageCode(language).replace('_', '-') : 'en';
+  const currentDate = date ? new Date(date) : new Date();
+  return {
+    day: new Intl.DateTimeFormat(localeType, dayOption).format(currentDate),
+    month: new Intl.DateTimeFormat(localeType, monthOption).format(currentDate),
+    date: currentDate.getDate(),
+  };
+};
+
 export const siteRedirect = (newCountry, oldCountry, newSiteId, oldSiteId) => {
   if ((newCountry && newCountry !== oldCountry) || (newSiteId && newSiteId !== oldSiteId)) {
     routerPush(window.location.href, ROUTE_PATH.home, null, newSiteId);
@@ -299,37 +331,40 @@ export const languageRedirect = (newLanguage, oldLanguage) => {
 /**
  * This function will redirect to PDP from HOMEPAGE
  * on the basis of productId
- *
- * TODO: It can be extended as per requirement
- * to redirect from other pages also
  */
-export const redirectToPdp = productId => {
+export const redirectToPdp = (productId, seoToken) => {
   if (!window) return null;
 
-  const { href } = window.location;
-  // TODO
-  if (href.includes('/p/')) {
-    return {
-      url: `/p?pid=${productId}`,
-      asPath: `/p/${productId}`,
-    };
-  }
+  const params = seoToken ? `${seoToken}-${productId}` : productId;
 
   return {
-    url: `/c?cid=toddler-girl-bottoms`,
-    asPath: `/c/toddler-girl-bottoms`,
+    url: `/p?${params}`,
+    asPath: `/p/${params}`,
   };
 };
 
 /**
  * This function configure url for Next/Link using CMS defined url string
  */
-export const configurePlpNavigationFromCMSUrl = url => {
-  const route = `${ROUTE_PATH.plp}/`;
-  if (url.includes(route)) {
-    const urlItems = url.split(route);
+export const configureInternalNavigationFromCMSUrl = url => {
+  const plpRoute = `${ROUTE_PATH.plp.name}/`;
+  const pdpRoute = `${ROUTE_PATH.pdp.name}/`;
+  const searchRoute = `${ROUTE_PATH.search.name}/`;
+
+  if (url.includes(plpRoute)) {
+    const urlItems = url.split(plpRoute);
     const queryParam = urlItems[0];
-    return `${ROUTE_PATH.plp}?cid=${queryParam}`;
+    return `${ROUTE_PATH.plp.name}?${ROUTE_PATH.plp.param}=${queryParam}`;
+  }
+  if (url.includes(pdpRoute)) {
+    const urlItems = url.split(pdpRoute);
+    const queryParam = urlItems[0];
+    return `${ROUTE_PATH.pdp.name}?${ROUTE_PATH.pdp.param}=${queryParam}`;
+  }
+  if (url.includes(searchRoute)) {
+    const urlItems = url.split(searchRoute);
+    const queryParam = urlItems[0];
+    return `${ROUTE_PATH.search.name}?${ROUTE_PATH.search.param}=${queryParam}`;
   }
   return url;
 };
@@ -342,13 +377,11 @@ export const configurePlpNavigationFromCMSUrl = url => {
  * @description this method invokes the parameter method received when respective
  * keybord key is triggered
  */
-
 export const handleGenericKeyDown = (event, key, method) => {
   if (event.keyCode === key) {
     method();
   }
 };
-
 const getAPIInfoFromEnv = (apiSiteInfo, processEnv, siteId) => {
   const country = siteId && siteId.toUpperCase();
   const apiEndpoint = processEnv.RWD_WEB_API_DOMAIN || ''; // TO ensure relative URLs for MS APIs
@@ -370,9 +403,11 @@ const getAPIInfoFromEnv = (apiSiteInfo, processEnv, siteId) => {
     googleApiKey: process.env.RWD_WEB_GOOGLE_MAPS_API_KEY,
     raygunApiKey: processEnv.RWD_WEB_RAYGUN_API_KEY,
     channelId: API_CONFIG.channelIds.Desktop, // TODO - Make it dynamic for all 3 platforms
+    borderFree: processEnv.BORDERS_FREE,
+    borderFreeComm: processEnv.BORDERS_FREE_COMM,
+    paypalEnv: processEnv.RWD_WEB_PAYPAL_ENV,
   };
 };
-
 const getGraphQLApiFromEnv = (apiSiteInfo, processEnv, relHostname) => {
   const graphQlEndpoint = processEnv.RWD_WEB_GRAPHQL_API_ENDPOINT || relHostname;
   return {
@@ -382,19 +417,16 @@ const getGraphQLApiFromEnv = (apiSiteInfo, processEnv, relHostname) => {
     graphql_api_key: processEnv.RWD_WEB_GRAPHQL_API_KEY || '',
   };
 };
-
 /*
  * @method numericStringToBool
  * @description this method returns the bool value of string numeric passed
  * @param {string} str the  string numeric value
  */
 export const numericStringToBool = str => !!+str;
-
 // Parse boolean out of string true|false
 export const parseBoolean = bool => {
   return bool === true || bool === '1' || (bool || '').toUpperCase() === 'TRUE';
 };
-
 /**
  *
  * @param {object} bossDisabledFlags carries the boss disability flags -
@@ -406,7 +438,6 @@ export const isBossProduct = bossDisabledFlags => {
   const { bossCategoryDisabled, bossProductDisabled } = bossDisabledFlags;
   return !(numericStringToBool(bossCategoryDisabled) || numericStringToBool(bossProductDisabled));
 };
-
 /**
  * @function isBopsProduct
  * @param {*} isUSStore
@@ -426,7 +457,6 @@ export const isBopisProduct = (isUSStore, product) => {
   }
   return !isOnlineOnly;
 };
-
 export const createAPIConfig = resLocals => {
   // TODO - Get data from env config - Brand, MellisaKey, BritverifyId, AcquisitionId, Domains, Asset Host, Unbxd Domain;
   // TODO - use isMobile and cookie as well..
@@ -456,7 +486,15 @@ export const createAPIConfig = resLocals => {
     language,
   };
 };
+export const viewport = () => {
+  if (!window) return null;
 
+  return {
+    small: window.matchMedia(mediaQuery.smallOnly).matches,
+    medium: window.matchMedia(mediaQuery.mediumOnly).matches,
+    large: window.matchMedia(mediaQuery.large).matches,
+  };
+};
 export default {
   importGraphQLClientDynamically,
   importGraphQLQueriesDynamically,
@@ -477,4 +515,6 @@ export default {
   languageRedirect,
   redirectToPdp,
   handleGenericKeyDown,
+  viewport,
+  canUseDOM,
 };

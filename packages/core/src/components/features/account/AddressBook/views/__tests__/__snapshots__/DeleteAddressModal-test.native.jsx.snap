@@ -4,15 +4,21 @@ exports[`Delete Address Modal should render correctly 1`] = `
 <ModalNative
   heading=""
   isOpen={true}
+  isOverlay={false}
   onRequestClose={[Function]}
 >
   <Styled(View)>
     <Styled(Styled(BodyCopy))
+      accessibilityText=""
+      dataLocator=""
       fontFamily="secondary"
       fontSize="fs22"
       fontWeight="semibold"
+      margin={null}
+      numberOfLines={null}
       text=""
       textAlign="center"
+      textDecoration={null}
     />
     <Styled(View)>
       <Address

@@ -11,6 +11,7 @@ exports[`ProductListingFiltersForm is shown should render ProductListingFiltersF
       isSortOpenModal={false}
       labels={Object {}}
       show={false}
+      sortLabels={Array []}
     >
       <div
         className="  new-filter-and-sort-form-container"
@@ -86,7 +87,7 @@ exports[`ProductListingFiltersForm is shown should render ProductListingFiltersF
                       "$$typeof": Symbol(react.forward_ref),
                       "attrs": Array [],
                       "componentStyle": ComponentStyle {
-                        "componentId": "sc-ifAKCX",
+                        "componentId": "sc-jTzLTM",
                         "isStatic": false,
                         "rules": Array [
                           "
@@ -154,7 +155,7 @@ exports[`ProductListingFiltersForm is shown should render ProductListingFiltersF
                       "displayName": "Styled(CustomSelect)",
                       "foldedComponentIds": Array [],
                       "render": [Function],
-                      "styledComponentId": "sc-ifAKCX",
+                      "styledComponentId": "sc-jTzLTM",
                       "target": [Function],
                       "toString": [Function],
                       "warnTooManyClasses": [Function],
@@ -441,7 +442,7 @@ exports[`ProductListingFiltersForm is shown should render ProductListingFiltersF
                       "$$typeof": Symbol(react.forward_ref),
                       "attrs": Array [],
                       "componentStyle": ComponentStyle {
-                        "componentId": "sc-ifAKCX",
+                        "componentId": "sc-jTzLTM",
                         "isStatic": false,
                         "rules": Array [
                           "
@@ -509,7 +510,7 @@ exports[`ProductListingFiltersForm is shown should render ProductListingFiltersF
                       "displayName": "Styled(CustomSelect)",
                       "foldedComponentIds": Array [],
                       "render": [Function],
-                      "styledComponentId": "sc-ifAKCX",
+                      "styledComponentId": "sc-jTzLTM",
                       "target": [Function],
                       "toString": [Function],
                       "warnTooManyClasses": [Function],
@@ -546,6 +547,7 @@ exports[`ProductListingFiltersForm is shown should render ProductListingFiltersF
                             fontWeight="regular"
                             letterSpacing="normal"
                             lineHeight="normal"
+                            link={null}
                             outline="none"
                             tabIndex={-1}
                             textAlign="center"
@@ -578,6 +580,7 @@ exports[`ProductListingFiltersForm is shown should render ProductListingFiltersF
                             fontWeight="regular"
                             letterSpacing="normal"
                             lineHeight="normal"
+                            link={null}
                             outline="none"
                             tabIndex={-1}
                             textAlign="center"
@@ -610,6 +613,7 @@ exports[`ProductListingFiltersForm is shown should render ProductListingFiltersF
                             fontWeight="regular"
                             letterSpacing="normal"
                             lineHeight="normal"
+                            link={null}
                             outline="none"
                             tabIndex={-1}
                             textAlign="center"
@@ -642,6 +646,7 @@ exports[`ProductListingFiltersForm is shown should render ProductListingFiltersF
                             fontWeight="regular"
                             letterSpacing="normal"
                             lineHeight="normal"
+                            link={null}
                             outline="none"
                             tabIndex={-1}
                             textAlign="center"
@@ -674,6 +679,7 @@ exports[`ProductListingFiltersForm is shown should render ProductListingFiltersF
                             fontWeight="regular"
                             letterSpacing="normal"
                             lineHeight="normal"
+                            link={null}
                             outline="none"
                             tabIndex={-1}
                             textAlign="center"
@@ -706,6 +712,7 @@ exports[`ProductListingFiltersForm is shown should render ProductListingFiltersF
                             fontWeight="regular"
                             letterSpacing="normal"
                             lineHeight="normal"
+                            link={null}
                             outline="none"
                             tabIndex={-1}
                             textAlign="center"
@@ -738,6 +745,7 @@ exports[`ProductListingFiltersForm is shown should render ProductListingFiltersF
                             fontWeight="regular"
                             letterSpacing="normal"
                             lineHeight="normal"
+                            link={null}
                             outline="none"
                             tabIndex={-1}
                             textAlign="center"
@@ -770,6 +778,7 @@ exports[`ProductListingFiltersForm is shown should render ProductListingFiltersF
                             fontWeight="regular"
                             letterSpacing="normal"
                             lineHeight="normal"
+                            link={null}
                             outline="none"
                             tabIndex={-1}
                             textAlign="center"
@@ -802,6 +811,7 @@ exports[`ProductListingFiltersForm is shown should render ProductListingFiltersF
                             fontWeight="regular"
                             letterSpacing="normal"
                             lineHeight="normal"
+                            link={null}
                             outline="none"
                             tabIndex={-1}
                             textAlign="center"
@@ -834,6 +844,7 @@ exports[`ProductListingFiltersForm is shown should render ProductListingFiltersF
                             fontWeight="regular"
                             letterSpacing="normal"
                             lineHeight="normal"
+                            link={null}
                             outline="none"
                             tabIndex={-1}
                             textAlign="center"
@@ -866,6 +877,7 @@ exports[`ProductListingFiltersForm is shown should render ProductListingFiltersF
                             fontWeight="regular"
                             letterSpacing="normal"
                             lineHeight="normal"
+                            link={null}
                             outline="none"
                             tabIndex={-1}
                             textAlign="center"
@@ -898,6 +910,7 @@ exports[`ProductListingFiltersForm is shown should render ProductListingFiltersF
                             fontWeight="regular"
                             letterSpacing="normal"
                             lineHeight="normal"
+                            link={null}
                             outline="none"
                             tabIndex={-1}
                             textAlign="center"
@@ -930,6 +943,7 @@ exports[`ProductListingFiltersForm is shown should render ProductListingFiltersF
                             fontWeight="regular"
                             letterSpacing="normal"
                             lineHeight="normal"
+                            link={null}
                             outline="none"
                             tabIndex={-1}
                             textAlign="center"
@@ -954,7 +968,7 @@ exports[`ProductListingFiltersForm is shown should render ProductListingFiltersF
                       "$$typeof": Symbol(react.forward_ref),
                       "attrs": Array [],
                       "componentStyle": ComponentStyle {
-                        "componentId": "sc-ifAKCX",
+                        "componentId": "sc-jTzLTM",
                         "isStatic": false,
                         "rules": Array [
                           "
@@ -1022,7 +1036,7 @@ exports[`ProductListingFiltersForm is shown should render ProductListingFiltersF
                       "displayName": "Styled(CustomSelect)",
                       "foldedComponentIds": Array [],
                       "render": [Function],
-                      "styledComponentId": "sc-ifAKCX",
+                      "styledComponentId": "sc-jTzLTM",
                       "target": [Function],
                       "toString": [Function],
                       "warnTooManyClasses": [Function],
@@ -1237,7 +1251,7 @@ exports[`ProductListingFiltersForm is shown should render ProductListingFiltersF
                       "$$typeof": Symbol(react.forward_ref),
                       "attrs": Array [],
                       "componentStyle": ComponentStyle {
-                        "componentId": "sc-ifAKCX",
+                        "componentId": "sc-jTzLTM",
                         "isStatic": false,
                         "rules": Array [
                           "
@@ -1305,7 +1319,7 @@ exports[`ProductListingFiltersForm is shown should render ProductListingFiltersF
                       "displayName": "Styled(CustomSelect)",
                       "foldedComponentIds": Array [],
                       "render": [Function],
-                      "styledComponentId": "sc-ifAKCX",
+                      "styledComponentId": "sc-jTzLTM",
                       "target": [Function],
                       "toString": [Function],
                       "warnTooManyClasses": [Function],
@@ -1349,7 +1363,7 @@ exports[`ProductListingFiltersForm is shown should render ProductListingFiltersF
                       "$$typeof": Symbol(react.forward_ref),
                       "attrs": Array [],
                       "componentStyle": ComponentStyle {
-                        "componentId": "sc-ifAKCX",
+                        "componentId": "sc-jTzLTM",
                         "isStatic": false,
                         "rules": Array [
                           "
@@ -1417,7 +1431,7 @@ exports[`ProductListingFiltersForm is shown should render ProductListingFiltersF
                       "displayName": "Styled(CustomSelect)",
                       "foldedComponentIds": Array [],
                       "render": [Function],
-                      "styledComponentId": "sc-ifAKCX",
+                      "styledComponentId": "sc-jTzLTM",
                       "target": [Function],
                       "toString": [Function],
                       "warnTooManyClasses": [Function],
@@ -1452,7 +1466,7 @@ exports[`ProductListingFiltersForm is shown should render ProductListingFiltersF
                       "$$typeof": Symbol(react.forward_ref),
                       "attrs": Array [],
                       "componentStyle": ComponentStyle {
-                        "componentId": "sc-ifAKCX",
+                        "componentId": "sc-jTzLTM",
                         "isStatic": false,
                         "rules": Array [
                           "
@@ -1520,7 +1534,7 @@ exports[`ProductListingFiltersForm is shown should render ProductListingFiltersF
                       "displayName": "Styled(CustomSelect)",
                       "foldedComponentIds": Array [],
                       "render": [Function],
-                      "styledComponentId": "sc-ifAKCX",
+                      "styledComponentId": "sc-jTzLTM",
                       "target": [Function],
                       "toString": [Function],
                       "warnTooManyClasses": [Function],
@@ -1564,7 +1578,7 @@ exports[`ProductListingFiltersForm is shown should render ProductListingFiltersF
                       "$$typeof": Symbol(react.forward_ref),
                       "attrs": Array [],
                       "componentStyle": ComponentStyle {
-                        "componentId": "sc-ifAKCX",
+                        "componentId": "sc-jTzLTM",
                         "isStatic": false,
                         "rules": Array [
                           "
@@ -1632,7 +1646,7 @@ exports[`ProductListingFiltersForm is shown should render ProductListingFiltersF
                       "displayName": "Styled(CustomSelect)",
                       "foldedComponentIds": Array [],
                       "render": [Function],
-                      "styledComponentId": "sc-ifAKCX",
+                      "styledComponentId": "sc-jTzLTM",
                       "target": [Function],
                       "toString": [Function],
                       "warnTooManyClasses": [Function],

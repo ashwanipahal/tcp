@@ -5,7 +5,7 @@ import { Col, Row, TextBox } from '../../../atoms';
 import Select from '../../../atoms/Select';
 import CreditCardNumber from '../../../atoms/CreditCardNumber';
 import { getCreditCardExpirationOptionMap } from '../../../../../utils';
-import styles from '../styles/CreditCardFields.styles';
+import styles from '../styles/CreditCardFields.style';
 import withStyles from '../../../hoc/withStyles';
 
 const CardNumberField = ({ cardTypeImgUrl, cardType, isPLCCEnabled, creditFieldLabels }) => {
@@ -60,12 +60,7 @@ export const CreditCardFields = ({
       </Col>
       {isExpirationRequired && (
         <React.Fragment>
-          <Col
-            {...expMonthProps}
-            ignoreGutter={{
-              small: true,
-            }}
-          >
+          <Col {...expMonthProps}>
             <Field
               placeholder={creditFieldLabels.expMonth}
               name="expMonth"
@@ -97,7 +92,6 @@ export const CreditCardFields = ({
                 id="cvvCode"
                 component={TextBox}
                 dataLocator="payment-cvv"
-                cvvInfo={cvvInfo}
                 maxLength="4"
                 enableSuccessCheck={false}
               />

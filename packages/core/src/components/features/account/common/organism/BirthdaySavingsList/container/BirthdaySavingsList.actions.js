@@ -19,6 +19,16 @@ export const removeChildAction = payload => ({
 });
 
 /**
+ * @function addChildAction
+ * @param { object } payload
+ * action creator for type: ADD_CHILD_BIRTHDAY
+ */
+export const addChildAction = payload => ({
+  type: constants.ADD_CHILD,
+  payload,
+});
+
+/**
  * @function updateBirthdaySavingSuccess
  * @param { object } payload
  * action creator for type: BIRTHDAY_SAVING_UPDATE_SUCCESS

@@ -1,8 +1,7 @@
 /* eslint-disable extra-rules/no-commented-out-code */
 import React from 'react';
 import productGridItemPropTypes from '../propTypes/ProductGridItemPropTypes';
-// import Button from '../../../../../../common/atoms/Button';
-import FulfillmentSection from '../../../../../../common/organisms/FulfillmentSection';
+import Button from '../../../../../../common/atoms/Button';
 import { getLocator } from '../../../../../../../utils';
 import { getImagesToDisplay, getMapSliceForColorProductId } from '../utils/productsCommonUtils';
 // import { ProductRating } from './ProductRating';
@@ -47,7 +46,7 @@ class ProductsGridItem extends React.PureComponent {
     this.handleAddToWishlist = this.handleAddToWishlist.bind(this);
     this.handleOpenAltImages = this.handleOpenAltImages.bind(this);
     this.handleChangeColor = this.handleChangeColor.bind(this);
-    this.handlePickupOpenClick = this.handlePickupOpenClick.bind(this);
+    this.handleQuickViewOpenClick = this.handleQuickViewOpenClick.bind(this);
     const {
       onQuickViewOpenClick,
       item: {
@@ -178,7 +177,7 @@ class ProductsGridItem extends React.PureComponent {
         noMerchantBadge={badge3}
         merchantTag={isShowBadges ? badge3 : null}
         hidePrefixListPrice
-        dataLocator={`${dataLocatorPrice}_${sqnNmbr - 1}`}
+        dataLocator={dataLocatorPrice && `${dataLocatorPrice}_${sqnNmbr - 1}`}
       />
     );
   };
@@ -199,21 +198,10 @@ class ProductsGridItem extends React.PureComponent {
     );
   };
 
-  handlePickupOpenClick() {
-    const {
-      item: {
-        colorsMap,
-        productInfo: { generalProductId },
-      },
-      onPickUpOpenClick,
-    } = this.props;
+  handleQuickViewOpenClick() {
+    const { onQuickViewOpenClick } = this.props;
     const { selectedColorProductId } = this.state;
-    const colorEntry = getMapSliceForColorProductId(colorsMap, selectedColorProductId);
-    onPickUpOpenClick({
-      generalProductId,
-      initialValues: { color: colorEntry && colorEntry.color.name },
-      isBopisCtaEnabled: colorEntry.miscInfo.isBopisEligible,
-      isBossCtaEnabled: colorEntry.miscInfo.isBossEligible,
+    onQuickViewOpenClick({
       colorProductId: selectedColorProductId,
     });
   }
@@ -424,23 +412,16 @@ class ProductsGridItem extends React.PureComponent {
             promotionalMessageModified,
             promotionalPLCCMessageModified
           )}
-          {/* <div>
+          <div className="fulfillment-section">
             <Button
               className="added-to-bag"
               fullWidth
               buttonVariation="fixed-width"
               dataLocator={dataLocatorAddToBag || getLocator('global_addtocart_Button')}
+              onClick={this.handleQuickViewOpenClick}
             >
               {labels.addToBag}
             </Button>
-          </div> */}
-          <div className="fulfillment-section">
-            <FulfillmentSection
-              btnClassName="added-to-bag"
-              dataLocator={dataLocatorAddToBag || getLocator('global_addtocart_Button')}
-              buttonLabel={labels.addToBag}
-              onPickupOpenClick={this.handlePickupOpenClick}
-            />
           </div>
 
           {/* {error && <ErrorMessage error={error} />} */}
