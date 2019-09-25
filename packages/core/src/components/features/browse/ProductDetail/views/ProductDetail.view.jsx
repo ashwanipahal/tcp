@@ -69,7 +69,7 @@ const ProductDetailView = ({
           {breadCrumbs && <FixedBreadCrumbs crumbs={breadCrumbs} separationChar=">" />}
         </Col>
       </Row>
-      <Row className="placeholder">
+      <Row className="placeholder product-detail-image-wrapper">
         <Col colSize={{ small: 6, medium: 8, large: 12 }}>
           <div className="promo-area-1">PROMO AREA 1</div>
         </Col>

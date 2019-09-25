@@ -137,14 +137,14 @@ export class ProductWishlistIcon extends ServerToClientRenderPatch {
 }
 
 export function BadgeItem(props) {
-  const { text, className, isShowBadges } = props;
+  const { text, className, isShowBadges, customFontWeight } = props;
 
   return (
     <div className={className}>
       <BodyCopy
         dataLocator={getLocator('global_productbadge_txt')}
         fontFamily="secondary"
-        fontWeight="semibold"
+        fontWeight={customFontWeight || 'semibold'}
         fontSize={['fs10', 'fs12', 'fs14']}
       >
         {isShowBadges && text}
@@ -188,6 +188,7 @@ PromotionalMessage.propTypes = {
 BadgeItem.defaultProps = {
   text: '',
   className: '',
+  customFontWeight: '',
   isShowBadges: true,
 };
 
@@ -195,6 +196,7 @@ BadgeItem.propTypes = {
   text: PropTypes.string,
   className: PropTypes.string,
   isShowBadges: PropTypes.bool,
+  customFontWeight: PropTypes.string,
 };
 
 ProductPricesSection.defaultProps = {
