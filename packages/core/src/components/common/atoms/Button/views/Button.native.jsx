@@ -50,7 +50,6 @@ const CustomButton = props => {
   } = props;
   const textValue = text || '';
   const { url, navigation } = otherProps;
-  console.log('bottomBorderOnly===', otherProps.bottomBorderOnly);
   const openUrl = () => {
     if (validateExternalUrl(url)) {
       UrlHandler(url);
