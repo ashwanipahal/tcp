@@ -60,7 +60,7 @@ class GuestBillingContainer extends React.Component {
       expYear: data.expYear,
       address: {
         addressLine1,
-        addressLine2,
+        addressLine2: addressLine2 || '',
         city,
         country,
         firstName,

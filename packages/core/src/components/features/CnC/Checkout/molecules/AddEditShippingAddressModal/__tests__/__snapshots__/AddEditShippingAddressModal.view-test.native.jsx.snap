@@ -6,6 +6,7 @@ exports[`AddEditShippingAddressModal should render correctly 1`] = `
   closeIconDataLocator="closeeditmodal"
   fixedWidth={true}
   heading="lbl_shipping_editHeading"
+  isOverlay={false}
   onRequestClose={[Function]}
   overlayClassName="TCPModal__Overlay"
   visible={true}
@@ -22,6 +23,7 @@ exports[`AddEditShippingAddressModal should render correctly with modalType add 
   closeIconDataLocator="closeaddmodal"
   fixedWidth={true}
   heading="lbl_shipping_addHeading"
+  isOverlay={false}
   onRequestClose={[Function]}
   overlayClassName="TCPModal__Overlay"
   visible={true}

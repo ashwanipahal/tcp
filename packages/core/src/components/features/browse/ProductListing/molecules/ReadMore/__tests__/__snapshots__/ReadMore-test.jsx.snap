@@ -11,6 +11,7 @@ exports[`ReadMore component Read More component renders correctly with props 1`]
   letterSpacing="normal"
   lineHeight="normal"
   link={null}
+  tabIndex="0"
   textAlign="left"
 >
   <Styled(BodyCopy)
@@ -45,6 +46,7 @@ exports[`ReadMore component renders correctly without props 1`] = `
   letterSpacing="normal"
   lineHeight="normal"
   link={null}
+  tabIndex="0"
   textAlign="left"
 >
   <Styled(BodyCopy)
