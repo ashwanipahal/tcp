@@ -71,7 +71,7 @@ const MyFavoriteStore = ({
           </Col>
         </Row>
       )}
-      {defaultStore && (
+      {!!favStoreName && (
         <Row fullBleed>
           <Col
             colSize={{
@@ -86,6 +86,7 @@ const MyFavoriteStore = ({
               data-locator="storeName"
               fontFamily="secondary"
               component="p"
+              fontWeight={isMyPreferences ? 'semibold' : 'regular'}
             >
               {favStoreName}
             </BodyCopy>

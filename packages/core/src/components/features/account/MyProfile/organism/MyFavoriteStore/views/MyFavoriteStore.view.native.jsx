@@ -39,7 +39,7 @@ const MyFavoriteStore = ({
           text={getLabelValue(labels, 'lbl_common_favStoreNotAdded')}
         />
       )}
-      {!!defaultStore && (
+      {!!favStoreName && (
         <>
           <BodyCopy
             fontSize="fs16"
