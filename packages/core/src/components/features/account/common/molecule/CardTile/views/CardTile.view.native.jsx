@@ -66,6 +66,11 @@ class CardTile extends React.Component {
     VENMO: 'venmo-blue-acceptance-mark',
   };
 
+  // eslint-disable-next-line
+  constructor(props) {
+    super(props);
+  }
+
   getCardName = ({ card, labels }) => {
     switch (card.ccType) {
       case 'GiftCard':

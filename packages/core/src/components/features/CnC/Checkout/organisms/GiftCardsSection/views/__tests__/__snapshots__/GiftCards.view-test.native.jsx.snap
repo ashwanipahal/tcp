@@ -438,12 +438,28 @@ exports[`GiftCardsVanilla should render gift card tile with 100 order balance 1`
       />
     </Styled(View)>
     <Styled(View)>
-      <Styled(WithTheme(CustomButton))
+      <Styled(CustomButton)
+        active={false}
+        buttonVariation="fixed-width"
+        color=""
+        customStyle={Object {}}
         data-locator="add-gift-card"
+        disableButton={false}
         fill="DARK"
+        fullWidth=""
+        iconColor="gray.800"
+        iconName="chevron-down"
+        iconSize="fs12"
+        locator=""
+        navigation={Object {}}
         onPress={[Function]}
+        selected={false}
+        selectedIcon="chevron-up"
+        showIcon={false}
         text="lbl_giftcard_newGiftCard"
+        theme={Object {}}
         type="submit"
+        url=""
       />
     </Styled(View)>
   </Styled(View)>
