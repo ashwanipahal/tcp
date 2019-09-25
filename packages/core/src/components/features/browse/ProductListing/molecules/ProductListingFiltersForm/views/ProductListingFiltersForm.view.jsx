@@ -308,23 +308,26 @@ class ProductListingFiltersForm extends React.Component {
         <form className="render-desktop-view" onSubmit={handleSubmit(this.handleImmediateSubmit)}>
           {totalProductsCount > 0 && (
             <div className={`${className} desktop-dropdown`}>
-              <div className="filters-only-container">
-                <BodyCopy
-                  component="span"
-                  role="option"
-                  textAlign="center"
-                  tabIndex={0}
-                  fontSize="fs14"
-                  fontFamily="secondary"
-                  color="gray.900"
-                  outline="none"
-                  data-locator={getLocator('plp_filter_label_filterby')}
-                >
-                  {`${labels.lbl_filter_by}:`}
-                </BodyCopy>
-
-                {filtersMaps && this.renderDesktopFilters(filterKeys, appliedFilters)}
-              </div>
+              {Object.keys(filtersMaps).length > 0 ? (
+                <div className="filters-only-container">
+                  <BodyCopy
+                    component="span"
+                    role="option"
+                    textAlign="center"
+                    tabIndex={0}
+                    fontSize="fs14"
+                    fontFamily="secondary"
+                    color="gray.900"
+                    outline="none"
+                    data-locator={getLocator('plp_filter_label_filterby')}
+                  >
+                    {`${labels.lbl_filter_by}:`}
+                  </BodyCopy>
+                  {filtersMaps && this.renderDesktopFilters(filterKeys, appliedFilters)}
+                </div>
+              ) : (
+                <div className="filters-only-container"> </div>
+              )}
               <div className="sort-selector-wrapper">
                 <SortSelector
                   isMobile={false}
