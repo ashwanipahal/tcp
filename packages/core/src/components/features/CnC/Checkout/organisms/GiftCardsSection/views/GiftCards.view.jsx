@@ -115,6 +115,29 @@ const renderAddNewGiftButton = (labels, orderBalanceTotal, appliedGiftCards, sho
   }
   return null;
 };
+
+const renderHeadsUpHeading = (labels, appliedGiftCards, giftCardList) => {
+  return (
+    <>
+      {((appliedGiftCards && appliedGiftCards.size > 0) ||
+        (giftCardList && giftCardList.size > 0)) && (
+        <BodyCopy
+          fontFamily="secondary"
+          fontSize="fs16"
+          fontWeight="regular"
+          data-locator="gift-cards"
+          className="elem-mt-LRG"
+        >
+          <span className="headsUpMsgBoldTitle">
+            {getLabelValue(labels, 'lbl_giftcard_headsUpTitle')}
+          </span>
+          {`${getLabelValue(labels, 'lbl_giftcard_headsUpMsg')}`}
+        </BodyCopy>
+      )}
+    </>
+  );
+};
+
 export const GiftCards = ({
   giftCardList,
   appliedGiftCards,
@@ -176,18 +199,7 @@ export const GiftCards = ({
               />
             ))}
 
-          <BodyCopy
-            fontFamily="secondary"
-            fontSize="fs16"
-            fontWeight="regular"
-            data-locator="gift-cards"
-            className="elem-mt-LRG"
-          >
-            <span className="headsUpMsgBoldTitle">
-              {getLabelValue(labels, 'lbl_giftcard_headsUpTitle')}
-            </span>
-            {`${getLabelValue(labels, 'lbl_giftcard_headsUpMsg')}`}
-          </BodyCopy>
+          {renderHeadsUpHeading(labels, appliedGiftCards, giftCardList)}
 
           {GiftCardSectionHeading(giftCardList, labels)}
           {giftCardList &&

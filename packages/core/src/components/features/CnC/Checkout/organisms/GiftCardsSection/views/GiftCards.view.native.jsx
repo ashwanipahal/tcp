@@ -118,6 +118,34 @@ class GiftCards extends React.PureComponent {
     );
   };
 
+  renderHeadsUpHeading = (labels, appliedGiftCards, giftCardList) => {
+    return (
+      <>
+        {((appliedGiftCards && appliedGiftCards.size > 0) ||
+          (giftCardList && giftCardList.size > 0)) && (
+          <HeadsUpMessage>
+            <BodyCopyWithSpacing
+              text={`${getLabelValue(labels, 'lbl_giftcard_headsUpTitle')} `}
+              fontSize="fs16"
+              fontWeight="semibold"
+              fontFamily="secondary"
+              spacingStyles="margin-bottom-MED margin-top-MED"
+              color="gray.900"
+            />
+            <BodyCopyWithSpacing
+              text={getLabelValue(labels, 'lbl_giftcard_headsUpMsg')}
+              fontSize="fs16"
+              fontWeight="regular"
+              fontFamily="primary"
+              spacingStyles="margin-left-SM"
+              color="gray.900"
+            />
+          </HeadsUpMessage>
+        )}
+      </>
+    );
+  };
+
   render() {
     const {
       labels,
@@ -179,24 +207,7 @@ class GiftCards extends React.PureComponent {
               );
             })}
 
-          <HeadsUpMessage>
-            <BodyCopyWithSpacing
-              text={`${getLabelValue(labels, 'lbl_giftcard_headsUpTitle')} `}
-              fontSize="fs16"
-              fontWeight="semibold"
-              fontFamily="secondary"
-              spacingStyles="margin-bottom-MED margin-top-MED"
-              color="gray.900"
-            />
-            <BodyCopyWithSpacing
-              text={getLabelValue(labels, 'lbl_giftcard_headsUpMsg')}
-              fontSize="fs16"
-              fontWeight="regular"
-              fontFamily="primary"
-              spacingStyles="margin-left-SM"
-              color="gray.900"
-            />
-          </HeadsUpMessage>
+          {this.renderHeadsUpHeading(labels, appliedGiftCards, giftCardList)}
 
           {this.renderAvailableCardHeading(giftCardList, labels)}
 
