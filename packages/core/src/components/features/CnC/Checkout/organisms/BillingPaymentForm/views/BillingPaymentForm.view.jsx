@@ -9,6 +9,7 @@ import getStandardConfig from '../../../../../../../utils/formValidation/validat
 import InputCheckbox from '../../../../../../common/atoms/InputCheckbox';
 import PaymentMethods from '../../../../common/molecules/PaymentMethods';
 import CreditCardDropdown from './CreditCardDropdown.view';
+// import CreditCardDropdown from './CreditCardDropDown.view.native';
 import Card from '../../../../../../common/molecules/Card';
 import Row from '../../../../../../common/atoms/Row';
 import Col from '../../../../../../common/atoms/Col';
@@ -221,6 +222,14 @@ export class BillingPaymentForm extends React.PureComponent {
             }
             onChange={this.onCCDropDownChange}
           />
+          {/* <CreditCardDropdown
+            creditCardList={creditCardList}
+            labels={labels}
+            onFileCardKey={onFileCardKey}
+            addNewCCState={addNewCCState}
+            addNewCC={this.onAddNewCCClick}
+            selectedCard={selectedCard}
+          /> */}
         </Col>
       </Row>
     );
