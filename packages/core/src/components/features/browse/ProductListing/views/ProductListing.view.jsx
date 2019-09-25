@@ -82,7 +82,7 @@ const ProductListView = ({
           <Col colSize={{ small: 6, medium: 8, large: 12 }} className="show-count-section">
             <LoadedProductsCount
               totalProductsCount={totalProductsCount}
-              showingItemsLabel={sortLabels}
+              showingItemsLabel={slpLabels}
             />
           </Col>
           <Col colSize={{ small: 6, medium: 8, large: 12 }}>
