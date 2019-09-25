@@ -26,7 +26,9 @@ exports[`CartItemTile common component renders correctly 1`] = `
     @media ",
           [Function],
           " {
-      width: 150px;
+      width: ",
+          [Function],
+          ";
       display: inline-flex;
     }
   }
@@ -68,6 +70,7 @@ exports[`CartItemTile common component renders correctly 1`] = `
     display: inline-block;
   }
   .responsive-edit-css {
+    text-decoration: underline;
     padding-top: 2px;
     cursor: pointer;
     display: flex;
@@ -231,6 +234,7 @@ exports[`CartItemTile common component renders correctly 1`] = `
       }
 
       .responsive-edit-css {
+        text-decoration: underline;
         padding-top: 4px;
         cursor: pointer;
         display: flex;
@@ -268,6 +272,7 @@ exports[`CartItemTile common component renders correctly 1`] = `
         display: inline-grid;
       }
       .responsive-edit-css {
+        text-decoration: underline;
         position: absolute;
         bottom: 0;
         right: 50%;
@@ -438,7 +443,9 @@ exports[`CartItemTile common component renders correctly with bag page sfl secti
     @media ",
           [Function],
           " {
-      width: 150px;
+      width: ",
+          [Function],
+          ";
       display: inline-flex;
     }
   }
@@ -480,6 +487,7 @@ exports[`CartItemTile common component renders correctly with bag page sfl secti
     display: inline-block;
   }
   .responsive-edit-css {
+    text-decoration: underline;
     padding-top: 2px;
     cursor: pointer;
     display: flex;
@@ -643,6 +651,7 @@ exports[`CartItemTile common component renders correctly with bag page sfl secti
       }
 
       .responsive-edit-css {
+        text-decoration: underline;
         padding-top: 4px;
         cursor: pointer;
         display: flex;
@@ -680,6 +689,7 @@ exports[`CartItemTile common component renders correctly with bag page sfl secti
         display: inline-grid;
       }
       .responsive-edit-css {
+        text-decoration: underline;
         position: absolute;
         bottom: 0;
         right: 50%;
