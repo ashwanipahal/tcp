@@ -201,6 +201,7 @@ exports[`ProductAddToBagVanilla native should render correctly should match snap
     iconName="chevron-down"
     iconSize="fs12"
     locator="pdp_color_swatch"
+    margin="16px 0 0 0"
     navigation={Object {}}
     onPress={null}
     selected={false}
