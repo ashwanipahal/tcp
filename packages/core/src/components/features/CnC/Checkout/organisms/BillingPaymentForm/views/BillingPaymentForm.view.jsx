@@ -1,5 +1,5 @@
 import React from 'react';
-import { reduxForm, Field } from 'redux-form';
+import { reduxForm, Field, change } from 'redux-form';
 import TextBox from '../../../../../../common/atoms/TextBox';
 import BodyCopy from '../../../../../../common/atoms/BodyCopy';
 import withStyles from '../../../../../../common/hoc/withStyles';
@@ -58,7 +58,12 @@ export class BillingPaymentForm extends React.PureComponent {
    * @description sets the add new credit card state as true
    */
   onAddNewCreditCardClick = () => {
+    const { dispatch } = this.props;
     this.setState({ addNewCCState: true });
+    dispatch(change(constants.FORM_NAME, 'cardNumber', ''));
+    dispatch(change(constants.FORM_NAME, 'expMonth', ''));
+    dispatch(change(constants.FORM_NAME, 'expYear', ''));
+    dispatch(change(constants.FORM_NAME, 'cvvCode', ''));
   };
 
   /**

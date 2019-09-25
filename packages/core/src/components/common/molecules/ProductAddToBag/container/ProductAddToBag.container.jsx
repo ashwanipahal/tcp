@@ -372,6 +372,9 @@ class ProductAddToBagContainer extends React.PureComponent<Props> {
       plpLabels,
       handleFormSubmit,
       errorOnHandleSubmit,
+      addToBagEcom,
+      addToBagError,
+      selectedColorProductId,
     } = this.props;
     const {
       selectedColor,
@@ -407,6 +410,10 @@ class ProductAddToBagContainer extends React.PureComponent<Props> {
         generalProductId={generalProductId}
         handleFormSubmit={handleFormSubmit}
         errorOnHandleSubmit={errorOnHandleSubmit}
+        addToBagEcom={addToBagEcom}
+        addToBagError={addToBagError}
+        currentProduct={currentProduct}
+        selectedColorProductId={selectedColorProductId}
       />
     );
   }

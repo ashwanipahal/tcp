@@ -1,14 +1,15 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import { getLabelValue } from '../../../../../utils';
-import { Anchor } from '../../../atoms';
+import { getLabelValue } from '../../../../../../utils';
+import { Anchor } from '../../../../atoms';
 
-import StyledApplyNowModal from './ApplyNowModal.view';
+import StyledApplyNowModal from '../../molecules/ApplyNowModal/views/ApplyNowModal.view';
 
 /**
  * @class ApplyNowModalWrapper - Invokes apply plccc node application
  * A Modal will be opened by clicking apply now button
  */
+
 class ApplyNowModalWrapper extends React.Component {
   componentDidMount() {
     const { labels, fetchModuleXContent, resetPLCCApplicationStatus } = this.props;

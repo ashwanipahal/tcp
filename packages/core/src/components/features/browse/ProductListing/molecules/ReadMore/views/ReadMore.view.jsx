@@ -23,7 +23,11 @@ class ReadMore extends React.PureComponent {
     const { isExpanded } = this.state;
 
     return (
-      <BodyCopy component="div" className={`${className} ${isExpanded && 'read-more-expanded'}`}>
+      <BodyCopy
+        component="div"
+        className={`${className} ${isExpanded && 'read-more-expanded'}`}
+        tabIndex="0"
+      >
         <BodyCopy
           className="body-copy"
           fontSize="fs14"
@@ -50,6 +54,7 @@ class ReadMore extends React.PureComponent {
               fontWeight="semibold"
               textAlign="center"
               data-locator={getLocator('plp_seo_readmore')}
+              tabIndex="0"
             >
               {labels.readMore}
             </BodyCopy>
@@ -60,6 +65,7 @@ class ReadMore extends React.PureComponent {
               fontWeight="semibold"
               textAlign="center"
               data-locator={getLocator('plp_seo_readless')}
+              tabIndex="0"
             >
               {labels.readLess}
             </BodyCopy>

@@ -1,3 +1,4 @@
+/* istanbul ignore file */
 import React from 'react';
 import PropTypes from 'prop-types';
 import { Col, Row, Image, Anchor, BodyCopy } from '@tcp/core/src/components/common/atoms';
@@ -237,6 +238,7 @@ class HeaderMiddleNav extends React.PureComponent {
         >
           <Col
             className="header-middle-nav-bar"
+            id="header-middle-nav"
             colSize={{
               large: 12,
               medium: 8,

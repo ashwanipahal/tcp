@@ -31,6 +31,7 @@ exports[`AddedToBag Component AddedToBag should render correctly 1`] = `
       />
       <Connect(AddedToBagContainer)
         closeModal={[Function]}
+        fromAddedToBagModal={true}
         labels={Object {}}
         navigation={null}
         showAddTobag={true}

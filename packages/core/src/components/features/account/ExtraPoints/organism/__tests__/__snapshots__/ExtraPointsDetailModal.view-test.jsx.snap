@@ -7,7 +7,6 @@ exports[`Extra Points Details Modal should render correctly 1`] = `
   fixedWidth={true}
   isOpen={false}
   maxWidth="615px"
-  minHeight="650px"
   onRequestClose={[Function]}
   overlayClassName="TCPModal__Overlay"
 >
