@@ -32,7 +32,7 @@ const MyFavoriteStore = ({
           text={getLabelValue(labels, 'lbl_common_accessBuyOnline')}
         />
       )}
-      {!defaultStore && (
+      {!favStoreName && (
         <BodyCopyWithSpacing
           spacingStyles="margin-bottom-LRG"
           fontSize="fs16"

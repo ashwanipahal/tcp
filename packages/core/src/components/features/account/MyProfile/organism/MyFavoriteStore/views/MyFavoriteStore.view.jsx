@@ -51,7 +51,7 @@ const MyFavoriteStore = ({
           </Col>
         </Row>
       )}
-      {!defaultStore && (
+      {!favStoreName && (
         <Row fullBleed>
           <Col
             colSize={{
