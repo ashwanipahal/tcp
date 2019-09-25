@@ -1,5 +1,6 @@
 import React from 'react';
 import PropTypes from 'prop-types';
+import { NavigationActions } from 'react-navigation';
 import BodyCopy from '../../../../common/atoms/BodyCopy';
 import {
   ButtonWrapper,
@@ -48,7 +49,12 @@ class AddedToBagActions extends React.PureComponent<Props> {
           <ButtonWrapper>
             <CheckoutButton
               onPress={() => {
-                handleCartCheckout({ isEditingItem, navigation, closeModal });
+                handleCartCheckout({
+                  isEditingItem,
+                  navigation,
+                  closeModal,
+                  navigationActions: NavigationActions,
+                });
               }}
             >
               <BodyCopy
