@@ -2,7 +2,6 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import get from 'lodash/get';
 import { FlatList, Text, Dimensions } from 'react-native';
-import { withTheme } from 'styled-components/native';
 import CustomImage from '@tcp/core/src/components/common/atoms/CustomImage';
 import PaginationDots from '@tcp/core/src/components/common/molecules/PaginationDots';
 import BodyCopy from '@tcp/core/src/components/common/atoms/BodyCopy';
@@ -27,16 +26,9 @@ const paddingAroundImage = 24;
 const imageWidth = win.width - paddingAroundImage;
 const imageHeight = 400;
 class ImageCarousel extends React.PureComponent {
-  favoriteIconColor;
-
-  favoriteIconSize;
-
   constructor(props) {
     super(props);
     this.state = { activeSlideIndex: 0 };
-    const { theme } = props;
-    this.favoriteIconColor = get(theme, 'colorPalette.gray[600]', '#9b9b9b');
-    this.favoriteIconSize = get(theme, 'typography.fontSizes.fs25', 25);
   }
 
   // this method set current visible image
@@ -127,8 +119,8 @@ class ImageCarousel extends React.PureComponent {
             <FavoriteContainer>
               <CustomIcon
                 name={ICON_NAME.favorite}
-                size={this.favoriteIconSize}
-                color={this.favoriteIconColor}
+                size="fs25"
+                color="gray.600"
                 onPress={this.onFavorite}
                 isButton
                 dataLocator="pdp_favorite_icon"
@@ -169,5 +161,5 @@ ImageCarousel.defaultProps = {
   item: {},
 };
 
-export default withStyles(withTheme(ImageCarousel), styles);
+export default withStyles(ImageCarousel, styles);
 export { ImageCarousel as ImageCarouselVanilla };

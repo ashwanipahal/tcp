@@ -195,16 +195,37 @@ exports[`ProductAddToBagVanilla native should render correctly should match snap
       variation="secondary"
     />
   </Styled(View)>
-  <Styled(WithTheme(CustomButton))
+  <Styled(Fulfillment)
+    labels={Object {}}
+    margins="40px 0 0 0"
+    onChangeStore={[Function]}
+    onPickUpInStore={[Function]}
+  />
+  <Styled(CustomButton)
     accessibilityLabel="Add to Bag"
+    active={false}
     buttonVariation="variable-width"
     color="white"
+    customStyle={Object {}}
+    disableButton={false}
     fill="BLUE"
     fontFamily="secondary"
     fontSize="fs10"
     fontWeight="extrabold"
+    fullWidth=""
+    iconColor="gray.800"
+    iconName="chevron-down"
+    iconSize="fs12"
     locator="pdp_color_swatch"
+    margin="12px 0 0 0"
+    navigation={Object {}}
     onPress={null}
+    selected={false}
+    selectedIcon="chevron-up"
+    showIcon={false}
+    text=""
+    theme={Object {}}
+    url=""
   />
 </View>
 `;

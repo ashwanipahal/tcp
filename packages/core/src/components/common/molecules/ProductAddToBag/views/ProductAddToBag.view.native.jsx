@@ -3,6 +3,7 @@ import { View } from 'react-native';
 import { connect } from 'react-redux';
 import { reduxForm, Field } from 'redux-form';
 import PropTypes from 'prop-types';
+import get from 'lodash/get';
 
 import LinkImageIcon from '../../../../features/browse/ProductListing/atoms/LinkImageIcon';
 import ProductVariantSelector from '../../ProductVariantSelector';
@@ -14,6 +15,9 @@ import styles, {
 } from '../styles/ProductAddToBag.style.native';
 import { Button, BodyCopy } from '../../../atoms';
 import DropDown from '../../../atoms/DropDown/views/DropDown.native';
+import ProductPickupContainer from '../../../organisms/ProductPickup';
+
+import { getMapSliceForColorProductId } from '../../../../features/browse/ProductListing/molecules/ProductList/utils/productsCommonUtils';
 
 class ProductAddToBag extends React.PureComponent<Props> {
   /* Have to define empty constructor because test case fail with error 'TypeError: Cannot read property 'find' of undefined'. So if using PureComponent then mendatory to define constructor */
@@ -104,6 +108,7 @@ class ProductAddToBag extends React.PureComponent<Props> {
     } = this.props;
     return (
       <Button
+        margin="12px 0 0 0"
         color="white"
         fill="BLUE"
         buttonVariation="variable-width"
@@ -130,12 +135,21 @@ class ProductAddToBag extends React.PureComponent<Props> {
       selectSize,
       isErrorMessageDisplayed,
       plpLabels: { errorMessage, size, fit, color },
+      currentProduct,
+      selectedColorProductId,
     } = this.props;
 
     const { name: colorName } = selectedColor || {};
     const { name: fitName = '' } = selectedFit || {};
     const { name: sizeName = '' } = selectedSize || {};
     const sizeError = isErrorMessageDisplayed ? errorMessage : '';
+
+    const colorFitsSizesMap = get(currentProduct, 'colorFitsSizesMap', null);
+    const curentColorEntry = getMapSliceForColorProductId(
+      colorFitsSizesMap,
+      selectedColorProductId
+    );
+    const { miscInfo } = curentColorEntry;
 
     return (
       <View {...this.props}>
@@ -179,6 +193,11 @@ class ProductAddToBag extends React.PureComponent<Props> {
           locators={{ key: 'pdp_size_label', value: 'pdp_size_value' }}
         />
         {this.renderQuantityView()}
+        <ProductPickupContainer
+          productInfo={currentProduct}
+          formName={`ProductAddToBag-${currentProduct.generalProductId}`}
+          miscInfo={miscInfo}
+        />
         {this.renderAddToBagButton()}
       </View>
     );
@@ -197,6 +216,8 @@ ProductAddToBag.propTypes = {
   plpLabels: PropTypes.instanceOf(Object),
   isErrorMessageDisplayed: PropTypes.bool,
   addToBagAction: PropTypes.func,
+  currentProduct: PropTypes.shape({}).isRequired,
+  selectedColorProductId: PropTypes.number.isRequired,
 };
 
 ProductAddToBag.defaultProps = {

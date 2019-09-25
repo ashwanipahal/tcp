@@ -32,8 +32,6 @@ exports[`ProductListItem component should renders ProductListItem correctly 1`] 
     text=""
   />
   <RenderPricesSection
-    favoriteIconColor="#9b9b9b"
-    favoriteIconSize={21}
     miscInfo={Object {}}
     onFavorite={[Function]}
   />
