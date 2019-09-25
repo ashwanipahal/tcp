@@ -128,9 +128,13 @@ export class StoreLanding extends PureComponent {
 
     let modifiedStoreList = suggestedStoreList;
 
-    if (isGym && !isOutlet) {
+    if (isOutlet && isGym) {
+      modifiedStoreList = suggestedStoreList.filter(
+        item => item.isGym || item.features.storeType === 'Outlet'
+      );
+    } else if (isGym) {
       modifiedStoreList = suggestedStoreList.filter(item => item.isGym);
-    } else if (isOutlet && !isGym) {
+    } else if (isOutlet) {
       modifiedStoreList = suggestedStoreList.filter(
         item => !item.isGym && item.features.storeType === 'Outlet'
       );
