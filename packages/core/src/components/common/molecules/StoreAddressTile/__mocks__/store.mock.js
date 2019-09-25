@@ -30,48 +30,93 @@ export default {
   hours: {
     regularHours: [
       {
-        dayName: 'FRIDAY',
-        openIntervals: [{ fromHour: '2019-01-04 10:00:00', toHour: '2019-01-04 21:00:00' }],
-        isClosed: false,
-      },
-      {
-        dayName: 'SATURDAY',
-        openIntervals: [{ fromHour: '2019-01-05 10:00:00', toHour: '2019-01-05 21:00:00' }],
-        isClosed: false,
-      },
-      {
-        dayName: 'THREE KINGS DAY',
-        openIntervals: [{ fromHour: '2019-01-06 11:00:00', toHour: '2019-01-06 19:00:00' }],
-        isClosed: false,
-      },
-      {
-        dayName: 'MONDAY',
-        openIntervals: [{ fromHour: '2019-01-07 10:00:00', toHour: '2019-01-07 20:00:00' }],
-        isClosed: false,
-      },
-      {
         dayName: 'TUESDAY',
-        openIntervals: [{ fromHour: '2019-01-08 10:00:00', toHour: '2019-01-08 20:00:00' }],
+        openIntervals: [
+          {
+            fromHour: '2019-09-17 10:00:00',
+            toHour: '2019-09-17 20:00:00',
+          },
+        ],
         isClosed: false,
       },
       {
         dayName: 'WEDNESDAY',
-        openIntervals: [{ fromHour: '2019-01-09 10:00:00', toHour: '2019-01-09 20:00:00' }],
+        openIntervals: [
+          {
+            fromHour: '2019-09-18 10:00:00',
+            toHour: '2019-09-18 20:00:00',
+          },
+        ],
         isClosed: false,
       },
       {
         dayName: 'THURSDAY',
-        openIntervals: [{ fromHour: '2019-01-10 10:00:00', toHour: '2019-01-10 20:00:00' }],
+        openIntervals: [
+          {
+            fromHour: '2019-09-19 10:00:00',
+            toHour: '2019-09-19 20:00:00',
+          },
+        ],
         isClosed: false,
       },
       {
         dayName: 'FRIDAY',
-        openIntervals: [{ fromHour: '2019-01-11 10:00:00', toHour: '2019-01-11 21:00:00' }],
+        openIntervals: [
+          {
+            fromHour: '2019-09-20 10:00:00',
+            toHour: '2019-09-20 20:00:00',
+          },
+        ],
         isClosed: false,
       },
       {
         dayName: 'SATURDAY',
-        openIntervals: [{ fromHour: '2019-01-12 10:00:00', toHour: '2019-01-12 21:00:00' }],
+        openIntervals: [
+          {
+            fromHour: '2019-09-21 10:00:00',
+            toHour: '2019-09-21 20:00:00',
+          },
+        ],
+        isClosed: false,
+      },
+      {
+        dayName: 'SUNDAY',
+        openIntervals: [
+          {
+            fromHour: '2019-09-22 11:00:00',
+            toHour: '2019-09-22 18:00:00',
+          },
+        ],
+        isClosed: false,
+      },
+      {
+        dayName: 'MONDAY',
+        openIntervals: [
+          {
+            fromHour: '2019-09-23 10:00:00',
+            toHour: '2019-09-23 20:00:00',
+          },
+        ],
+        isClosed: false,
+      },
+      {
+        dayName: 'TUESDAY',
+        openIntervals: [
+          {
+            fromHour: '2019-09-24 10:00:00',
+            toHour: '2019-09-24 20:00:00',
+          },
+        ],
+        isClosed: false,
+      },
+      {
+        dayName: 'WEDNESDAY',
+        openIntervals: [
+          {
+            fromHour: '2019-09-25 10:00:00',
+            toHour: '2019-09-25 20:00:00',
+          },
+        ],
         isClosed: false,
       },
     ],
