@@ -48,6 +48,7 @@ exports[`ProfileInformation component should render correctly 1`] = `
         className="elem-mb-MED"
         color="text.primary"
         component="p"
+        data-locator="mypreference-socialaccountheader"
         fontFamily="secondary"
         fontSize="fs16"
         fontWeight="extrabold"
@@ -328,8 +329,7 @@ exports[`ProfileInformation component should render correctly 1`] = `
                   "withComponent": [Function],
                 }
               }
-              data-locator="mypreference-apptcpcheckbox"
-              dataLocator="InputCheckbox"
+              dataLocator="mypreference-apptcpcheckbox"
               name="primary"
             >
               <Styled(BodyCopy)
@@ -480,8 +480,7 @@ exports[`ProfileInformation component should render correctly 1`] = `
                   "withComponent": [Function],
                 }
               }
-              data-locator="mypreference-appgymcheckbox"
-              dataLocator="InputCheckbox"
+              dataLocator="mypreference-appgymcheckbox"
               name="primary"
             >
               <Styled(BodyCopy)
@@ -663,8 +662,7 @@ exports[`ProfileInformation component should render correctly 1`] = `
                   "withComponent": [Function],
                 }
               }
-              data-locator="mypreference-apptcpcheckbox"
-              dataLocator="InputCheckbox"
+              dataLocator="mypreference-apptcpcheckbox"
               name="primary"
             >
               <Styled(BodyCopy)
@@ -814,8 +812,7 @@ exports[`ProfileInformation component should render correctly 1`] = `
                   "withComponent": [Function],
                 }
               }
-              data-locator="mypreference-appgymcheckbox"
-              dataLocator="InputCheckbox"
+              dataLocator="mypreference-appgymcheckbox"
               name="primary"
             >
               <Styled(BodyCopy)
