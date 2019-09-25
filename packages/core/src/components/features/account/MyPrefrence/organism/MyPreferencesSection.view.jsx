@@ -50,6 +50,7 @@ class MyPrefrenceSection extends React.PureComponent {
               fontFamily="secondary"
               fontSize="fs16"
               fontWeight="extrabold"
+              data-locator="mypreference-socialaccountheader"
             >
               {getLabelValue(labels, 'lbl_prefrence_social_account')}
             </BodyCopy>
@@ -142,9 +143,8 @@ class MyPrefrenceSection extends React.PureComponent {
                   <Field
                     name="primary"
                     component={InputCheckbox}
-                    dataLocator="InputCheckbox"
+                    dataLocator="mypreference-apptcpcheckbox"
                     className="elm-padding-top"
-                    data-locator="mypreference-apptcpcheckbox"
                   >
                     <BodyCopy
                       fontSize="fs14"
@@ -159,9 +159,8 @@ class MyPrefrenceSection extends React.PureComponent {
                   <Field
                     name="primary"
                     component={InputCheckbox}
-                    dataLocator="InputCheckbox"
+                    dataLocator="mypreference-appgymcheckbox"
                     className="elm-padding-top"
-                    data-locator="mypreference-appgymcheckbox"
                   >
                     <BodyCopy
                       fontSize="fs14"
@@ -195,9 +194,8 @@ class MyPrefrenceSection extends React.PureComponent {
                   <Field
                     name="primary"
                     component={InputCheckbox}
-                    dataLocator="InputCheckbox"
+                    dataLocator="mypreference-apptcpcheckbox"
                     className="elm-padding-top"
-                    data-locator="mypreference-apptcpcheckbox"
                   >
                     <BodyCopy
                       fontSize="fs14"
@@ -211,9 +209,8 @@ class MyPrefrenceSection extends React.PureComponent {
                   <Field
                     name="primary"
                     component={InputCheckbox}
-                    dataLocator="InputCheckbox"
+                    dataLocator="mypreference-appgymcheckbox"
                     className="elm-padding-top"
-                    data-locator="mypreference-appgymcheckbox"
                   >
                     <BodyCopy
                       fontSize="fs14"
