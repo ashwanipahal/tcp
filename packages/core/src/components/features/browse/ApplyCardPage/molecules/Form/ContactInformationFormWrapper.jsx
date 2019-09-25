@@ -268,7 +268,6 @@ class ContactInformationFormWrapper extends React.Component {
         </Row>
         <BodyCopy
           className="columnWrapper plcc_min_phone"
-          tabIndex="0"
           fontSize="fs10"
           fontFamily="secondary"
           id="plcc_min_phone"
