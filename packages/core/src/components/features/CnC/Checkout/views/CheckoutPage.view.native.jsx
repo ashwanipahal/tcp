@@ -1,34 +1,19 @@
 import React from 'react';
 import PropTypes from 'prop-types';
+import { Text } from 'react-native';
+import CheckoutConstants from '../Checkout.constants';
 import PickupPage from '../organisms/PickupPage';
 import ShippingPage from '../organisms/ShippingPage';
+import BillingPage from '../organisms/BillingPage';
+import ReviewPage from '../organisms/ReviewPage';
 
 export default class CheckoutPage extends React.PureComponent {
-  onPickUpSubmit = data => {
-    const { onPickupSubmit } = this.props;
-    const { firstName, lastName, phoneNumber, emailAddress } = data.pickUpContact;
-    const { hasAlternatePickup } = data.pickUpAlternate;
-    const params = {
-      pickUpContact: {
-        firstName,
-        lastName,
-        phoneNumber,
-        emailAddress,
-        smsInfo: {
-          wantsSmsOrderUpdates: data.smsSignUp.sendOrderUpdate,
-        },
-      },
-      hasAlternatePickup,
-      pickUpAlternate: {
-        firstName: hasAlternatePickup ? data.pickUpAlternate.firstName : '',
-        lastName: hasAlternatePickup ? data.pickUpAlternate.lastName : '',
-        emailAddress: hasAlternatePickup ? data.pickUpAlternate.emailAddress : '',
-      },
-    };
-    onPickupSubmit(params);
+  submitShippingSection = data => {
+    const { submitShippingSection, navigation } = this.props;
+    submitShippingSection({ ...data, navigation });
   };
 
-  render() {
+  getCurrentPage = () => {
     const {
       isGuest,
       isMobile,
@@ -38,43 +23,105 @@ export default class CheckoutPage extends React.PureComponent {
       currentPhoneNumber,
       navigation,
       shippingProps,
+      billingProps,
+      reviewProps,
+      orderHasShipping,
       loadShipmentMethods,
       orderHasPickUp,
-      submitShippingSection,
       isOrderUpdateChecked,
       isAlternateUpdateChecked,
       pickUpLabels,
       smsSignUpLabels,
       pickupInitialValues,
+      availableStages,
+      labels,
+      submitBilling,
+      updateShippingMethodSelection,
+      updateShippingAddressData,
+      addNewShippingAddressData,
+      // setCheckoutStage,
+      onPickupSubmit,
+      submitReview,
     } = this.props;
-    return (
-      <>
-        <PickupPage
-          isGuest={isGuest}
-          isMobile={isMobile}
-          isUsSite={isUsSite}
-          initialValues={pickupInitialValues}
-          onEditModeChange={onEditModeChange}
-          isSmsUpdatesEnabled={isSmsUpdatesEnabled}
-          currentPhoneNumber={currentPhoneNumber}
-          isOrderUpdateChecked={isOrderUpdateChecked}
-          isAlternateUpdateChecked={isAlternateUpdateChecked}
-          pickUpLabels={pickUpLabels}
-          smsSignUpLabels={smsSignUpLabels}
-          onPickUpSubmit={this.onPickUpSubmit}
-          navigation={navigation}
-        />
-        <ShippingPage
-          {...shippingProps}
-          loadShipmentMethods={loadShipmentMethods}
-          navigation={navigation}
-          isGuest={isGuest}
-          isUsSite={isUsSite}
-          orderHasPickUp={orderHasPickUp}
-          handleSubmit={submitShippingSection}
-        />
-      </>
-    );
+    const { routeTo } = navigation.state.params;
+    const currentRoute = routeTo.toLowerCase();
+    const {
+      PICKUP,
+      SHIPPING,
+      BILLING,
+      REVIEW,
+      CONFIRMATION,
+    } = CheckoutConstants.CHECKOUT_PAGES_NAMES;
+    switch (currentRoute) {
+      case PICKUP.toLowerCase():
+        return (
+          <PickupPage
+            isGuest={isGuest}
+            isMobile={isMobile}
+            isUsSite={isUsSite}
+            initialValues={pickupInitialValues}
+            pickupInitialValues={pickupInitialValues}
+            onEditModeChange={onEditModeChange}
+            isSmsUpdatesEnabled={isSmsUpdatesEnabled}
+            currentPhoneNumber={currentPhoneNumber}
+            isOrderUpdateChecked={isOrderUpdateChecked}
+            isAlternateUpdateChecked={isAlternateUpdateChecked}
+            pickUpLabels={pickUpLabels}
+            smsSignUpLabels={smsSignUpLabels}
+            onPickupSubmit={onPickupSubmit}
+            navigation={navigation}
+            availableStages={availableStages}
+          />
+        );
+      case SHIPPING.toLowerCase():
+        return (
+          <ShippingPage
+            {...shippingProps}
+            loadShipmentMethods={loadShipmentMethods}
+            navigation={navigation}
+            isGuest={isGuest}
+            isUsSite={isUsSite}
+            orderHasPickUp={orderHasPickUp}
+            handleSubmit={this.submitShippingSection}
+            availableStages={availableStages}
+            updateShippingMethodSelection={updateShippingMethodSelection}
+            updateShippingAddressData={updateShippingAddressData}
+            addNewShippingAddressData={addNewShippingAddressData}
+            labels={labels}
+          />
+        );
+      case BILLING.toLowerCase():
+        return (
+          <BillingPage
+            {...billingProps}
+            orderHasShipping={orderHasShipping}
+            navigation={navigation}
+            isGuest={isGuest}
+            isUsSite={isUsSite}
+            availableStages={availableStages}
+            submitBilling={submitBilling}
+          />
+        );
+      case REVIEW.toLowerCase():
+        return (
+          <ReviewPage
+            {...reviewProps}
+            navigation={navigation}
+            submitReview={submitReview}
+            availableStages={availableStages}
+            orderHasPickUp={orderHasPickUp}
+            orderHasShipping={orderHasShipping}
+          />
+        );
+      case CONFIRMATION.toLowerCase():
+        return <Text>Confirmation Page</Text>;
+      default:
+        return null;
+    }
+  };
+
+  render() {
+    return <>{this.getCurrentPage()}</>;
   }
 }
 
@@ -86,6 +133,9 @@ CheckoutPage.propTypes = {
   isSmsUpdatesEnabled: PropTypes.bool.isRequired,
   currentPhoneNumber: PropTypes.number.isRequired,
   shippingProps: PropTypes.shape({}).isRequired,
+  billingProps: PropTypes.shape({}).isRequired,
+  reviewProps: PropTypes.shape({}).isRequired,
+  orderHasShipping: PropTypes.bool.isRequired,
   isOrderUpdateChecked: PropTypes.bool.isRequired,
   isAlternateUpdateChecked: PropTypes.bool.isRequired,
   pickupInitialValues: PropTypes.shape({}).isRequired,
@@ -98,4 +148,12 @@ CheckoutPage.propTypes = {
   loadShipmentMethods: PropTypes.func.isRequired,
   orderHasPickUp: PropTypes.bool.isRequired,
   submitShippingSection: PropTypes.func.isRequired,
+  setCheckoutStage: PropTypes.func.isRequired,
+  submitReview: PropTypes.func.isRequired,
+  submitBilling: PropTypes.func.isRequired,
+  availableStages: PropTypes.shape([]).isRequired,
+  labels: PropTypes.shape({}).isRequired,
+  updateShippingMethodSelection: PropTypes.func.isRequired,
+  updateShippingAddressData: PropTypes.func.isRequired,
+  addNewShippingAddressData: PropTypes.func.isRequired,
 };

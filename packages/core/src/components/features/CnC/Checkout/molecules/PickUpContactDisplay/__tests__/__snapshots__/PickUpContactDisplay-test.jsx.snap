@@ -27,9 +27,10 @@ exports[`PickUpContactDisplayVanilla component should renders correctly when Cou
         fontWeight="regular"
         letterSpacing="normal"
         lineHeight="normal"
+        link={null}
         textAlign="left"
       >
-         
+        undefined undefined
       </Styled(BodyCopy)>
     </Styled(Col)>
   </Styled(Row)>

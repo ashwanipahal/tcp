@@ -21,13 +21,18 @@ class Dropdown extends React.PureComponent {
   componentDidMount() {
     this.dropDown = document.querySelector('.drop_down');
     window.addEventListener('click', this.closeDropdownIfClickOutside);
+    const { options, active } = this.props;
+    this.calNavState(options, {
+      component: active,
+    });
   }
 
   componentDidUpdate(prevProps) {
-    const { options } = this.props;
-    const { navState } = this.state;
-    if (options !== prevProps.options) {
-      this.calNavState(options, navState);
+    const { options = [], active } = this.props;
+    if (active !== prevProps.active || options.length !== prevProps.options.length) {
+      this.calNavState(options, {
+        component: active,
+      });
     }
   }
 
@@ -47,6 +52,7 @@ class Dropdown extends React.PureComponent {
   calNavState = (options, navState) => {
     for (let j = 0; j < options.length; j += 1) {
       const nav = options[j];
+
       if (nav.subSections && nav.subSections.length) {
         for (let i = 0; i < nav.subSections.length; i += 1) {
           if (navState.component === nav.subSections[i].component) {
@@ -111,30 +117,26 @@ class Dropdown extends React.PureComponent {
 
   itemLists = (nav, activeComponent) => {
     return (
-      <>
-        <BodyCopy
-          component="div"
-          role="button"
-          textAlign="center"
-          onClick={e => this.onClickHandler(e, nav)}
-          tabIndex={-1}
-          fontWeight="extrabold"
-          fontSize="fs14"
-        >
-          <Anchor asPath={nav.url} className="dropdownAnchorColor" to={nav.href}>
-            <li
-              key={nav.id}
-              className={`dropDownLists ${
-                activeComponent === nav.component ? 'dropdownActiveClass' : ''
-              }`}
-            >
-              {this.getDisplayName(nav.displayName)}
-            </li>
-          </Anchor>
-        </BodyCopy>
-        {nav.subSections &&
-          nav.subSections.map(subSection => this.subMenuList(subSection, activeComponent))}
-      </>
+      <BodyCopy
+        component="div"
+        role="button"
+        textAlign="center"
+        onClick={e => this.onClickHandler(e, nav)}
+        tabIndex={-1}
+        fontWeight="extrabold"
+        fontSize="fs14"
+      >
+        <Anchor asPath={nav.url} className="dropdownAnchorColor" to={nav.href}>
+          <li
+            key={nav.id}
+            className={`dropDownLists ${
+              activeComponent === nav.component ? 'dropdownActiveClass' : ''
+            }`}
+          >
+            {this.getDisplayName(nav.displayName)}
+          </li>
+        </Anchor>
+      </BodyCopy>
     );
   };
 

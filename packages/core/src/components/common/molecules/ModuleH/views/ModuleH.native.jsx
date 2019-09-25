@@ -1,22 +1,11 @@
 import React from 'react';
-import { Image, BodyCopy, Heading, Anchor } from '../../../atoms';
-import { getLocator, getScreenWidth } from '../../../../../utils/index.native';
+import PropTypes from 'prop-types';
+
+import { DamImage, BodyCopy, Heading, Anchor } from '../../../atoms';
+import { getLocator, getScreenWidth, getPixelRatio } from '../../../../../utils/index.native';
 import { Carousel } from '../..';
 import config from '../config';
-import colors from '../../../../../../styles/themes/colors/common';
-import fonts from '../../../../../../styles/themes/TCP/fonts';
 import { HeaderWrapper, LinksWrapper, Wrapper } from '../ModuleH.style.native';
-
-// @flow
-type Props = {
-  divCTALinks: Array<Object>,
-  headerText: Object,
-  navigation: Object,
-};
-
-type State = {
-  currentIndex: Number,
-};
 
 /**
  * Module height and width.
@@ -28,15 +17,9 @@ const MODULE_WIDTH = getScreenWidth();
 const MODULE_DIRECTION = true;
 
 /**
- * TODO: Link style has to be updated
- * as per gymboree styleguide in future.
+ * TODO: To manage the PixelRatio .
  */
-const linkStyle = {
-  color: colors.white,
-  fontSize: fonts.fontSize.body.bodytext.copy6,
-  lineHeight: 20,
-  marginTop: 28,
-};
+const devicePixelRatio = getPixelRatio();
 
 /**
  * @class ModuleH - global reusable component will provide featured content module
@@ -44,26 +27,16 @@ const linkStyle = {
  * This component is plug and play at any given slot in layout by passing required data.
  * @param {Object} composites the list of data for header texts, links and images for component.
  */
-class ModuleH extends React.PureComponent<Props, State> {
+class ModuleH extends React.PureComponent {
   constructor(props) {
     super(props);
     this.state = {
       currentIndex: 0,
     };
-    this.getUrlWithCrop = this.getUrlWithCrop.bind(this);
     this.renderItem = this.renderItem.bind(this);
     this.renderLinks = this.renderLinks.bind(this);
     this.updateCurrentIndex = this.updateCurrentIndex.bind(this);
   }
-
-  /**
-   * @function getUrlWithCrop : prepare image src with crop details.
-   * @param {String} url : Image url.
-   * @return {String} function returns updated image url.
-   */
-  getUrlWithCrop = (url: String) => {
-    return url.replace('upload/', `upload/c_fill,g_center,h_425,w_${getScreenWidth()}/`);
-  };
 
   /**
    * @function renderItem : renders module H Images.
@@ -73,13 +46,15 @@ class ModuleH extends React.PureComponent<Props, State> {
   renderItem = ({ item, index }) => {
     const { image } = item;
     return (
-      <Image
+      <DamImage
         key={index.toString()}
-        alt={image.alt}
-        source={{ uri: this.getUrlWithCrop(image.url) }}
+        crop={image.crop_m}
+        url={image.url}
         testID={`${getLocator('moduleH_composite_image')}${index + 1}`}
         height={MODULE_HEIGHT}
         width={MODULE_WIDTH}
+        alt={image.alt}
+        imgConfig={config.IMG_DATA.imgConfig[0]}
       />
     );
   };
@@ -91,22 +66,23 @@ class ModuleH extends React.PureComponent<Props, State> {
    */
   renderLinks = (linksData, navigation) => {
     const { currentIndex } = this.state;
-    const { maxLimit } = config.MODULE_H_CTALINKS;
-    const lessThanSixLinkStyle = Object.assign({}, linkStyle, { marginTop: 38 });
     return linksData.map((item, index) => {
       const { link, styled } = item;
+      let customStyle = { opacity: 0.8, marginTop: 16 };
+      if (currentIndex === index) {
+        customStyle = { opacity: 1, marginTop: 16 };
+      }
       return (
         <Anchor url={link.url} navigation={navigation}>
           <BodyCopy
             key={index.toString()}
-            fontFamily="secondary"
-            fontSize="fs20"
-            letterSpacing="ls167"
+            mobilefontFamily="secondary"
+            fontSize="fs22"
             textAlign="left"
             color="white"
-            fontWeight={currentIndex === index ? 'extrabold' : null}
+            fontWeight={currentIndex === index ? 'black' : null}
             text={styled.text}
-            style={linksData.length < maxLimit ? lessThanSixLinkStyle : linkStyle}
+            style={customStyle}
             testID={`${getLocator('moduleH_cta_links')}${index + 1}`}
           />
         </Anchor>
@@ -118,9 +94,16 @@ class ModuleH extends React.PureComponent<Props, State> {
     this.setState({ currentIndex: index });
   };
 
+  /**
+   * @function render : renders module H .
+   */
   render() {
     const { navigation, divCTALinks, headerText: [{ link, textItems }] = {} } = this.props;
-    const headingStyle = { height: 38 };
+    let HeadingFontSize = 'fs36';
+    const headerLines = textItems.length;
+    if (devicePixelRatio === 'xxxhdpi' || devicePixelRatio === 'xhdpi') {
+      HeadingFontSize = 'fs32';
+    }
     return (
       <Wrapper>
         <HeaderWrapper>
@@ -130,27 +113,26 @@ class ModuleH extends React.PureComponent<Props, State> {
                 <Anchor key={index.toString()} url={link.url} navigation={navigation}>
                   <Heading
                     fontFamily="primary"
-                    fontSize="fs36"
+                    fontSize={HeadingFontSize}
                     letterSpacing="ls167"
                     textAlign="left"
                     color="white"
                     fontWeight="black"
                     text={textLine.text}
                     testID={`${getLocator('moduleH_header_text')}${index + 1}`}
-                    style={headingStyle}
                   />
                 </Anchor>
               ) : (
                 <Heading
+                  key={index.toString()}
                   fontFamily="primary"
-                  fontSize="fs36"
+                  fontSize={HeadingFontSize}
                   letterSpacing="ls167"
                   textAlign="left"
                   color="white"
                   fontWeight="black"
                   text={textLine.text}
                   testID={`${getLocator('moduleH_header_text')}${index + 1}`}
-                  style={headingStyle}
                 />
               );
             })}
@@ -171,11 +153,30 @@ class ModuleH extends React.PureComponent<Props, State> {
           />
         )}
         {divCTALinks ? (
-          <LinksWrapper>{this.renderLinks(divCTALinks, navigation)}</LinksWrapper>
+          <LinksWrapper lines={headerLines}>
+            {this.renderLinks(divCTALinks, navigation)}
+          </LinksWrapper>
         ) : null}
       </Wrapper>
     );
   }
 }
+
+ModuleH.propTypes = {
+  headerText: PropTypes.arrayOf(
+    PropTypes.shape({
+      link: PropTypes.object,
+      textItems: PropTypes.array,
+    })
+  ).isRequired,
+  divCTALinks: PropTypes.arrayOf(
+    PropTypes.shape({
+      link: PropTypes.object,
+      image: PropTypes.object,
+      styled: PropTypes.object,
+    })
+  ).isRequired,
+  navigation: PropTypes.shape({}).isRequired,
+};
 
 export default ModuleH;

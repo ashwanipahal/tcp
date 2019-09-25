@@ -1,7 +1,7 @@
 import styled from 'styled-components/native';
 
 export const Container = styled.View`
-  margin-bottom: ${props => props.theme.spacing.LAYOUT_SPACING.XS};
+  margin-bottom: ${props => props.theme.spacing.LAYOUT_SPACING.SM};
 `;
 
 export const HeaderWrapper = styled.View`
@@ -25,11 +25,11 @@ export const ButtonContainer = styled.View`
 `;
 export const ContainerView = styled.View``;
 export const Border = styled.View`
-  height: 1px;
+  height: 0.5px;
   background: ${props =>
     props.background === 'text'
       ? props.theme.colors.BUTTON.WHITE.BORDER
-      : props.theme.colors.BUTTON.WHITE.TEXT};
+      : props.theme.colorPalette.gray[700]};
 `;
 
 export const DivImageCTAContainer = styled.View``;
@@ -40,22 +40,14 @@ export const ButtonLinksContainer = styled.View`
   background: #003057;
 `;
 
-export const PromoRibbonWrapperRight = styled.View`
+export const PromoRibbonWrapper = styled.View`
   width: 174px;
   height: 54px;
-  position: absolute;
   bottom: 10px;
-  right: 0;
-  z-index: ${props => props.theme.zindex.zOverlay};
-`;
-
-export const PromoRibbonWrapperLeft = styled.View`
-  width: 174px;
-  height: 54px;
   position: absolute;
-  bottom: 10px;
-  left: 0;
-  z-index: ${props => props.theme.zindex.zOverlay};
+  z-index: ${props => props.theme.zindex.zOverlay}
+    ${props => (props.viewdirection === 'right' ? ` left:0; ` : '')};
+  ${props => (props.viewdirection === 'left' ? `right:0; ` : '')};
 `;
 
 export const MessageContainer = styled.View`
@@ -89,11 +81,10 @@ export default {
   ContainerView,
   DivImageCTAContainer,
   ButtonLinksContainer,
-  PromoRibbonWrapperLeft,
-  PromoRibbonWrapperRight,
   MessageContainer,
   RibbonBannerHeight,
   RibbonBannerWidth,
   PromoBannerWrapper,
   HeaderView,
+  PromoRibbonWrapper,
 };

@@ -10,18 +10,23 @@ import favIcon from '../../../../../../../../../mobileapp/src/assets/images/empt
 import {
   SectionStyle,
   HeadingStyle,
-  SubHeadingStyle,
-  DescriptionStyle,
+  ResetPassword,
   ImageWrapper,
   FavtHeading,
   FavtSubHeading,
 } from '../LoginTopSection.style.native';
+import Anchor from '../../../../../../common/atoms/Anchor';
 
 /**
  * @param {string} props : props for CustomIcon
  * @return {JSX} IconClass : Return jsx icon component
  * @desc This method based on the props generate icon component.
  */
+const showForgotPassword = props => {
+  const { showForgotPasswordForm } = props;
+  showForgotPasswordForm();
+};
+
 const LoginTopSection = props => {
   const { labels, variation } = props;
   const imgStyle = { alignSelf: 'center', marginTop: 20 };
@@ -33,9 +38,35 @@ const LoginTopSection = props => {
 
           <LineComp marginTop={30} marginBottom={17} />
           <HeadingStyle>{labels.login.lbl_login_heading}</HeadingStyle>
-          <SubHeadingStyle>{labels.login.lbl_login_subHeading}</SubHeadingStyle>
-          <DescriptionStyle>{labels.login.lbl_login_Description_heading_1}</DescriptionStyle>
-          <DescriptionStyle>{labels.login.lbl_login_Description_heading_2}</DescriptionStyle>
+
+          <BodyCopy
+            fontSize="fs12"
+            textAlign="center"
+            text={labels.login.lbl_login_subDescription_heading_1}
+          />
+
+          <BodyCopy
+            fontSize="fs12"
+            textAlign="center"
+            text={labels.login.lbl_login_Description_heading_2}
+          />
+          <ResetPassword>
+            <Anchor
+              id="forgotPasswordForm"
+              class="clickhere"
+              fontSizeVariation="medium"
+              text={labels.login.lbl_login_Description_clickhere}
+              underline
+              onPress={() => {
+                showForgotPassword(props);
+              }}
+            />
+            <BodyCopy
+              component="span"
+              fontSize="fs12"
+              text={labels.login.lbl_login_Description_heading_3}
+            />
+          </ResetPassword>
           <LineComp marginTop={25} marginBottom={0} />
         </React.Fragment>
       )}

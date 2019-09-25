@@ -2,11 +2,17 @@
 
 exports[`RemoveSoldOut Component RemoveSoldOut should render correctly 1`] = `
 <Styled(Text)>
-  <Styled(BodyCopy)
-    color="error"
-    fontFamily="secondary"
-    fontSize="fs10"
-    fontWeight="regular"
-  />
+  <Styled(Text)>
+    <Styled(BodyCopy)
+      accessibilityText=""
+      dataLocator=""
+      fontFamily="secondary"
+      fontSize="fs10"
+      fontWeight="regular"
+      margin={null}
+      numberOfLines={null}
+      textDecoration={null}
+    />
+  </Styled(Text)>
 </Styled(Text)>
 `;

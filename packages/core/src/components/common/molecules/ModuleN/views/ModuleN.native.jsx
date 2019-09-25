@@ -11,7 +11,7 @@ import {
   ContainerView,
   DivImageCTAContainer,
 } from '../ModuleN.styles.native';
-import config from '../ModuleN.config';
+import config from '../config';
 
 /**
  * @param {object} props : Props for Module N multi type of banner list, button list, header text.
@@ -73,7 +73,7 @@ const ModuleN = (props: Props) => {
             navigation={navigation}
             buttonsData={ctaItems}
             locator="moduleN_cta_links"
-            color="red"
+            buttonVariation="cautionary"
           />
           <Border background="red" />
         </ContainerView>

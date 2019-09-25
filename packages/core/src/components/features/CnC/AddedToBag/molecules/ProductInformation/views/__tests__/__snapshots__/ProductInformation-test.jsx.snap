@@ -7,6 +7,7 @@ exports[`BossBannerView component renders correctly 1`] = `
     tagName="ul"
   >
     <Styled(Col)
+      className="product-logo"
       colSize={
         Object {
           "large": 3,
@@ -71,6 +72,7 @@ exports[`BossBannerView component renders correctly 1`] = `
             }
             letterSpacing="normal"
             lineHeight="normal"
+            link={null}
             tag="span"
             textAlign="left"
           >
@@ -107,6 +109,7 @@ exports[`BossBannerView component renders correctly 1`] = `
             }
             letterSpacing="normal"
             lineHeight="normal"
+            link={null}
             tag="span"
             textAlign="left"
           >
@@ -135,6 +138,7 @@ exports[`BossBannerView component renders correctly 1`] = `
             fontWeight="regular"
             letterSpacing="normal"
             lineHeight="normal"
+            link={null}
             tag="span"
             textAlign="left"
           />
@@ -169,6 +173,7 @@ exports[`BossBannerView component renders correctly 1`] = `
             }
             letterSpacing="normal"
             lineHeight="normal"
+            link={null}
             tag="span"
             textAlign="left"
           >
@@ -196,6 +201,7 @@ exports[`BossBannerView component renders correctly 1`] = `
             fontWeight="regular"
             letterSpacing="normal"
             lineHeight="normal"
+            link={null}
             tag="span"
             textAlign="left"
           >
@@ -233,6 +239,7 @@ exports[`BossBannerView component renders correctly 1`] = `
             }
             letterSpacing="normal"
             lineHeight="normal"
+            link={null}
             tag="span"
             textAlign="left"
           >
@@ -262,6 +269,7 @@ exports[`BossBannerView component renders correctly 1`] = `
             fontWeight="regular"
             letterSpacing="normal"
             lineHeight="normal"
+            link={null}
             tag="span"
             textAlign="left"
           >

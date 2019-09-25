@@ -9,6 +9,10 @@ export default css`
   }
   .padding-left-10 {
     padding-left: 4px;
+    @media ${props => props.theme.mediaQuery.smallMax} {
+      width: 150px;
+      display: inline-flex;
+    }
   }
   .padding-left-6 {
     padding-left: 6px;
@@ -74,12 +78,27 @@ export default css`
     display: inline-block;
   }
 
-  .crossDeleteIcon {
+  .crossDeleteIconMiniBag {
     float: right;
     cursor: pointer;
     width: 10px;
     height: 10px;
     padding-top: 0px;
+  }
+
+  .crossDeleteIconBag {
+    float: right;
+    cursor: pointer;
+    width: 15px;
+    height: 15px;
+    padding-top: 0px;
+  }
+
+  @media ${props => props.theme.mediaQuery.mediumMax} {
+    .crossDeleteIconBag {
+      width: 10px;
+      height: 10px;
+    }
   }
 
   .product-detail {
@@ -98,12 +117,16 @@ export default css`
 
   .unavailable-error {
     padding-top: 0px;
+    div {
+      margin-right: 0px;
+      margin-left: 0px;
+      display: inline;
+      width: 100%;
+    }
   }
 
   .product-detail-bag {
-    display: flex;
-    flex-wrap: wrap;
-    width: fit-content;
+    display: inline-block;
   }
 
   .label-responsive {
@@ -115,7 +138,16 @@ export default css`
     margin-right: 0px;
   }
 
+  @media ${props => props.theme.mediaQuery.large} {
+    .product-detail-bag {
+      display: flex;
+      flex-wrap: wrap;
+      width: fit-content;
+    }
+  }
+
   .product-tile-wrapper {
+    font-size: 13px;
     flex-wrap: nowrap;
     @media ${props => props.theme.mediaQuery.mediumMax} {
       position: relative;
@@ -138,41 +170,58 @@ export default css`
     }
 
     .color-size-fit-label {
-      width: 40px;
-      display: inline-block;
+      width: 49px;
     }
 
     .bag-product-detail-wrapper {
       position: relative;
-
+      width: 100%;
       .color-fit-size-separator {
         padding: 0 10px;
       }
 
       .label-responsive {
-        width: fit-content;
-        margin-right: 22px;
+        width: 49px;
+        margin-right: 0px;
+        padding-right: 0px;
       }
 
       .value-responsive {
         flex: 1;
-        padding-left: 10px;
+        padding-left: 4px;
+        width: 49px;
+        margin-right: 0px;
       }
       .label-responsive-wrapper {
-        padding-top: 0;
+        padding-top: 2px;
         display: flex;
         flex: 1;
-        width: auto;
-        margin-right: 22px;
+        padding-right: 0px;
+        /* stylelint-disable */
+        span:not(.list-price) {
+          font-size: ${props => props.theme.fonts.fontSize.listmenu.small}px;
+        }
+        /* stylelint-enable */
       }
 
       .responsive-edit-css {
-        padding-top: 2px;
+        padding-top: 4px;
         cursor: pointer;
         display: flex;
         justify-content: flex-start;
         padding-left: 15px;
+        left: 155px;
+        bottom: 4px;
       }
+
+      /* stylelint-disable */
+      .product-detail-bag {
+        padding-top: 4px;
+        span {
+          font-size: 13px;
+        }
+      }
+      /* stylelint-enable */
     }
 
     @media ${props => props.theme.mediaQuery.mediumMax} {
@@ -182,22 +231,17 @@ export default css`
         right: 0;
       }
       .save-for-later-label {
-        position: absolute;
-        bottom: 0px;
-        left: 0;
+        margin: ${props => props.theme.spacing.ELEM_SPACING.XS} 0;
         width: 100%;
       }
       .color-map-size-fit {
-        display: block;
+        display: inline-grid;
       }
       .responsive-edit-css {
         position: absolute;
         bottom: 0;
         right: 50%;
         cursor: pointer;
-        display: flex;
-        justify-content: flex-start;
-        padding-left: 15px;
       }
       .bag-product-detail-wrapper {
         position: static;
@@ -214,7 +258,7 @@ export default css`
     }
 
     .price-label {
-      margin-left: 170px;
+      margin-left: 122px;
     }
   }
 
@@ -239,18 +283,45 @@ export default css`
     cursor: pointer;
     text-decoration: underline;
   }
+
+  .updateOOSBag {
+    cursor: pointer;
+    text-decoration: underline;
+  }
+
   .parent- {
-    padding: 0px;
-    margin: 0px;
-    position: absolute;
-    bottom: 17px;
-    right: 2px;
-    width: auto;
+    padding-bottom: 0px;
+    .save-for-later-label {
+      float: right;
+      cursor: pointer;
+    }
+  }
+
+  .parent-myBag {
+    @media ${props => props.theme.mediaQuery.large} {
+      padding-bottom: 0px;
+    }
   }
 
   .tile-header {
     position: relative;
   }
 
+  .cart-item-radio-buttons {
+    margin-top: 23px;
+    @media ${props => props.theme.mediaQuery.medium} {
+      margin-top: 19px;
+    }
+    @media ${props => props.theme.mediaQuery.large} {
+      margin-top: 27px;
+    }
+  }
+  .heartIcon {
+    margin-top: ${props => props.theme.spacing.ELEM_SPACING.XS};
+  }
+  .sflActions {
+    text-decoration: underline;
+    cursor: pointer;
+  }
   ${props => (props.inheritedStyles ? props.inheritedStyles : '')};
 `;

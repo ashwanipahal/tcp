@@ -1,0 +1,19 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Credit Card dropdown component renders correctly without props 1`] = `
+<Styled(CustomSelect)
+  activeTitle="name"
+  activeValue={1}
+  childrenComp={[Function]}
+  clickHandler={[Function]}
+  options={
+    Array [
+      Object {
+        "title": "name",
+        "value": 1,
+      },
+    ]
+  }
+  selectListTitle="Select card"
+/>
+`;

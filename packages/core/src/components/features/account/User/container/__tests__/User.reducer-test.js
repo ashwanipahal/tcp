@@ -1,7 +1,7 @@
 import { fromJS } from 'immutable';
 import UserReducer from '../User.reducer';
 import { DEFAULT_REDUCER_KEY } from '../../../../../../utils/cache.util';
-import { setUserInfo } from '../User.actions';
+import { setUserInfo, setUserChildren } from '../User.actions';
 
 describe('User reducer', () => {
   const initialState = fromJS({
@@ -10,6 +10,8 @@ describe('User reducer', () => {
     airmiles: null,
     rewards: null,
     survey: null,
+    children: null,
+    favoriteStore: null,
   });
 
   it('should return default state', () => {
@@ -52,6 +54,20 @@ describe('User reducer', () => {
 
     it('setting survey correctly', () => {
       expect(state.getIn(['survey', 'answers'])).toEqual(fromJS(payload.surveyAnswers));
+    });
+
+    it('should handle SET_CHILDREN correctly', () => {
+      const updatedState = UserReducer(
+        initialState,
+        setUserChildren({
+          children: [{ childId: '12345' }],
+        })
+      );
+      expect(updatedState.getIn(['children', '0', 'childId'])).toEqual('12345');
+    });
+
+    it('setting favorite store correctly', () => {
+      expect(state.getIn(['favoriteStore', 'name'])).toEqual(payload.name);
     });
   });
 });

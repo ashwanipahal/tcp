@@ -22,10 +22,18 @@
 import React from 'react';
 import { PropTypes } from 'prop-types';
 import { Anchor } from '../../../../../../common/atoms';
+import errorBoundary from '../../../../../../common/hoc/withErrorBoundary';
+import withStyles from '../../../../../../common/hoc/withStyles';
+import { getLocator } from '../../../../../../../utils/utils';
+import FixedBreadCrumbsStyles from '../styles/FixedBreadCrumbs.styles';
 
-const FixedBreadCrumbs = ({ crumbs, separationChar }) => {
+const asPathConstructor = url => {
+  return url && url.replace('?cid=', '/');
+};
+
+const FixedBreadCrumbs = ({ crumbs, separationChar, className }) => {
   return (
-    <div className="breadcrum-container">
+    <div className={`${className} breadcrum-container`}>
       {crumbs.map((crumb, index) => {
         const {
           displayName,
@@ -50,7 +58,9 @@ const FixedBreadCrumbs = ({ crumbs, separationChar }) => {
             ) : (
               <Anchor
                 className={itemClassName}
-                to={`/${destination}/${pathSuffix}`}
+                to={`/c?cid=${pathSuffix}`}
+                asPath={`/${asPathConstructor(pathSuffix)}`}
+                data-locator={`${getLocator(`breadCrumb_L${index + 1}_Category`)}`}
                 {...otherHyperLinkProps}
               >
                 {displayName}
@@ -93,10 +103,12 @@ FixedBreadCrumbs.propTypes = {
     ])
   ).isRequired,
   separationChar: PropTypes.string,
+  className: PropTypes.string,
 };
 
 FixedBreadCrumbs.defaultProps = {
   separationChar: '/',
+  className: '',
 };
 
-export default FixedBreadCrumbs;
+export default withStyles(errorBoundary(FixedBreadCrumbs), FixedBreadCrumbsStyles);

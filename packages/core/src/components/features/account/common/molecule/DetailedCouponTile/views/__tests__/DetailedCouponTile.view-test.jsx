@@ -59,8 +59,21 @@ describe('DetailedCouponTile', () => {
     expect(tree).toMatchSnapshot();
   });
 
+  it('should display overlay', () => {
+    const props = {
+      labels,
+      coupon: {
+        status: COUPON_STATUS.APPLIED,
+      },
+    };
+
+    const component = shallow(<DetailedCouponTile {...props} />);
+    expect(component).toMatchSnapshot();
+    expect(component.find('.overlay')).toHaveLength(1);
+  });
+
   describe('#instances', () => {
-    const onApplyCouponToBag = jest.fn();
+    const onApplyCouponToBagFromList = jest.fn();
     const onRemove = jest.fn();
     const onViewCouponDetails = jest.fn();
     let componentInstance;
@@ -68,7 +81,7 @@ describe('DetailedCouponTile', () => {
       const props = {
         labels: {},
         coupon: {},
-        onApplyCouponToBag,
+        onApplyCouponToBagFromList,
         onRemove,
         onViewCouponDetails,
       };
@@ -76,9 +89,9 @@ describe('DetailedCouponTile', () => {
       componentInstance = component.instance();
     });
 
-    it('#handleApplyToBag should call onApplyCouponToBag prop', () => {
+    it('#handleApplyToBag should call onApplyCouponToBagFromList prop', () => {
       componentInstance.handleApplyToBag();
-      expect(onApplyCouponToBag).toBeCalled();
+      expect(onApplyCouponToBagFromList).toBeCalled();
     });
 
     it('#handleRemove should call onRemove prop', () => {
@@ -87,7 +100,9 @@ describe('DetailedCouponTile', () => {
     });
 
     it('#handleViewCouponDetails should call onViewCouponDetails prop', () => {
-      componentInstance.handleViewCouponDetails();
+      componentInstance.handleViewCouponDetails({
+        preventDefault: () => {},
+      });
       expect(onViewCouponDetails).toBeCalled();
     });
   });

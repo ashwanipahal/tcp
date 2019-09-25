@@ -1,7 +1,8 @@
 /* eslint-disable global-require */
 /* eslint-disable import/no-unresolved */
 import { NavigationActions, StackActions } from 'react-navigation';
-import { Dimensions, Linking, Platform } from 'react-native';
+import { Dimensions, Linking, Platform, PixelRatio, StyleSheet } from 'react-native';
+import logger from '@tcp/core/src/utils/loggerInstance';
 import AsyncStorage from '@react-native-community/async-storage';
 import { getAPIConfig } from './utils';
 
@@ -12,6 +13,14 @@ import { resetGraphQLClient } from '../services/handler';
 let currentAppAPIConfig = null;
 let tcpAPIConfig = null;
 let gymAPIConfig = null;
+
+// Host name to be used for lazyload scrollview
+export const LAZYLOAD_HOST_NAME = {
+  HOME: 'lazyload-home',
+  PLP: 'lazyload-plp',
+  ACCOUNT: 'lazyload-account',
+  WALLET: 'lazyload-wallet',
+};
 
 export const isMobileApp = () => {
   return typeof navigator !== 'undefined' && navigator.product === 'ReactNative';
@@ -48,6 +57,15 @@ export const importMoreGraphQLQueries = ({ query, resolve, reject }) => {
       break;
     case 'moduleN':
       resolve(require('../services/handler/graphQL/queries/moduleN'));
+      break;
+    case 'moduleB':
+      resolve(require('../services/handler/graphQL/queries/moduleB'));
+      break;
+    case 'moduleR':
+      resolve(require('../services/handler/graphQL/queries/moduleR'));
+      break;
+    case 'moduleJ':
+      resolve(require('../services/handler/graphQL/queries/moduleJ'));
       break;
     default:
       reject();
@@ -92,7 +110,11 @@ export const importGraphQLQueriesDynamically = query => {
         resolve(require('../services/handler/graphQL/queries/xappConfig'));
         break;
       default:
-        importMoreGraphQLQueries({ query, resolve, reject });
+        importMoreGraphQLQueries({
+          query,
+          resolve,
+          reject,
+        });
     }
   });
 };
@@ -159,19 +181,26 @@ export const navigateToPage = (url, navigation) => {
   const { navigate } = navigation;
   const category = getLandingPage(url);
   const text = url.split('/');
-  const title = text[text.length - 1].replace(/[\W_]+/g, ' ');
+  const titleSplitValue = text[text.length - 1].replace(/[\W_]+/g, ' ');
   switch (category) {
     case URL_PATTERN.PRODUCT_LIST:
       /**
        * /p/Rainbow--The-Birthday-Girl--Graphic-Tee-2098277-10
        * If url starts with “/p” → Create and navigate to a page in stack for Products (Blank page with a Text - “Product List”)
        */
-      return navigate('ProductLanding', { product: title });
+      return navigate('ProductLanding', {
+        product: titleSplitValue,
+      });
+
     case URL_PATTERN.CATEGORY_LANDING:
       /**
        * /c/* - If url starts with “/c” (* can be anything in url) → Select “CATEGORY_LANDING” tab in tabbar and Open CATEGORY_LANDING page
        */
-      return navigate('ProductLanding');
+      return navigate('ProductListing', {
+        url,
+        title: titleSplitValue,
+        reset: true,
+      });
     default:
       return null;
   }
@@ -220,15 +249,29 @@ export const getScreenHeight = () => {
  * @function cropImageUrl function appends or replaces the cropping value in the URL
  * @param {string} url the image url
  * @param {string} crop the crop parameter
+ * @param {string} namedTransformation the namedTransformation parameter
  * @return {string} function returns new Url with the crop value
  */
-export const cropImageUrl = (url, crop) => {
-  const [urlPath, urlData] = (url && url.split('/upload')) || ['', ''];
-  const imgPath = urlPath && urlPath.replace(/^\//, '');
-  if (urlPath && crop) {
-    return `${imgPath}/upload/${crop}/${urlData.replace(/^\//, '')}`;
+export const cropImageUrl = (url, crop, namedTransformation) => {
+  const basePath = 'https://test1.theplace.com/image/upload';
+  let URL = url;
+
+  // Image path transformation in case of absolute image URL
+  if (/^http/.test(url)) {
+    const [urlPath = '', urlData = ''] = url && url.split('/upload');
+    const imgPath = urlPath && urlPath.replace(/^\//, '');
+    if (urlPath && crop) {
+      URL = `${imgPath}/upload/${crop}/${urlData.replace(/^\//, '')}`;
+    }
+    if (namedTransformation) {
+      URL = `${imgPath}/upload/${namedTransformation}/${urlData.replace(/^\//, '')}`;
+    }
+  } else {
+    // Image path transformation in case of relative image URL
+    URL = `${basePath}/${namedTransformation}/url`;
   }
-  return url;
+
+  return URL;
 };
 
 /**
@@ -272,18 +315,18 @@ export const validateExternalUrl = url => {
 
 /**
  * @function resetNavigationStack
- * This function resets data from navigation stack
+ * This function resets data from navigation stack and navigates to Home
  *
  */
 export const resetNavigationStack = navigation => {
-  const { state } = navigation;
-  const { routes, index: activeRouteIndex } = state;
   navigation.dispatch(
     StackActions.reset({
       index: 0,
       key: null,
       actions: [
-        NavigationActions.navigate({ routeName: routes[activeRouteIndex].routes[0].routeName }),
+        NavigationActions.navigate({
+          routeName: 'Home',
+        }),
       ],
     })
   );
@@ -299,10 +342,10 @@ export const resetNavigationStack = navigation => {
 const getAPIInfoFromEnv = (apiSiteInfo, envConfig, appTypeSuffix) => {
   const siteIdKey = `RWD_APP_SITE_ID_${appTypeSuffix}`;
   const country = envConfig[siteIdKey] && envConfig[siteIdKey].toUpperCase();
-  console.log(
+  logger.info(
     'unboxKey',
-    `${envConfig[`RWD_APP_UNBXD_SITE_KEY_${country}_EN`]}/${
-      envConfig[`RWD_APP_UNBXD_SITE_KEY_${country}_EN`]
+    `${envConfig[`RWD_APP_UNBXD_SITE_KEY_${country}_EN_${appTypeSuffix}`]}/${
+      envConfig[`RWD_APP_UNBXD_SITE_KEY_${country}_EN_${appTypeSuffix}`]
     }`
   );
   const apiEndpoint = envConfig[`RWD_APP_API_DOMAIN_${appTypeSuffix}`] || ''; // TO ensure relative URLs for MS APIs
@@ -314,8 +357,8 @@ const getAPIInfoFromEnv = (apiSiteInfo, envConfig, appTypeSuffix) => {
     assetHost: envConfig[`RWD_APP_ASSETHOST_${appTypeSuffix}`] || apiSiteInfo.assetHost,
     domain: `${apiEndpoint}/${envConfig[`RWD_APP_API_IDENTIFIER_${appTypeSuffix}`]}/`,
     unbxd: envConfig[`RWD_APP_UNBXD_DOMAIN_${appTypeSuffix}`] || apiSiteInfo.unbxd,
-    unboxKey: `${envConfig[`RWD_APP_UNBXD_API_KEY_${country}_EN`]}/${
-      envConfig[`RWD_APP_UNBXD_SITE_KEY_${country}_EN`]
+    unboxKey: `${envConfig[`RWD_APP_UNBXD_API_KEY_${country}_EN_${appTypeSuffix}`]}/${
+      envConfig[`RWD_APP_UNBXD_SITE_KEY_${country}_EN_${appTypeSuffix}`]
     }`,
     CANDID_API_KEY: envConfig[`RWD_APP_CANDID_API_KEY_${appTypeSuffix}`],
     CANDID_API_URL: envConfig[`RWD_APP_CANDID_URL_${appTypeSuffix}`],
@@ -361,6 +404,8 @@ export const createAPIConfigForApp = (envConfig, appTypeSuffix) => {
   const apiSiteInfo = API_CONFIG.sitesInfo;
   const basicConfig = getAPIInfoFromEnv(apiSiteInfo, envConfig, appTypeSuffix);
   const graphQLConfig = getGraphQLApiFromEnv(apiSiteInfo, envConfig, appTypeSuffix);
+  const catalogId =
+    API_CONFIG.CATALOGID_CONFIG[isGYMSite ? 'Gymboree' : 'TCP'][isCASite ? 'Canada' : 'USA'];
 
   return {
     ...basicConfig,
@@ -369,6 +414,7 @@ export const createAPIConfigForApp = (envConfig, appTypeSuffix) => {
     ...brandConfig,
     isMobile: false,
     cookie: null,
+    catalogId,
   };
 };
 
@@ -439,7 +485,83 @@ export const bindAllClassMethodsToThis = (obj, namePrefix = '', isExclude = fals
 
 export const isAndroid = () => Platform.OS === 'android';
 
+/**
+ * getPixelRatio
+ * This method returns the PixelRatio for different devices ( Android & ISO)
+ */
+export const getPixelRatio = () => {
+  // for android iPhone iPhone 6 Plus, 7 Plus, 8 Plus , X, XS, XS Max ,Pixel, Pixel 2 devices. (Note: PixelRatio = 3 ).
+  let devicepixel = 'xxhdpi';
+
+  if (PixelRatio.get() === 1) {
+    // for android devices mdpi.
+    devicepixel = 'mdpi';
+    return devicepixel;
+  }
+  if (PixelRatio.get() === 1.5) {
+    // for android devices hdpi
+    devicepixel = 'hdpi';
+    return devicepixel;
+  }
+  if (PixelRatio.get() === 2) {
+    // for android & iPhone 4, 4S ,iPhone 5, 5C, 5S ,iPhone 6, 7, 8 ,iPhone XR devices .
+    devicepixel = 'xhdpi';
+    return devicepixel;
+  }
+  if (PixelRatio.get() > 3.5) {
+    // for android devices, Nexus 6 , Samsung7 , Pixel XL, Pixel 2 XL, xxxhdpi Android devices.
+    devicepixel = 'xxxhdpi';
+    return devicepixel;
+  }
+  return devicepixel;
+};
+
 export default {
   getSiteId,
-  bindAllClassMethodsToThis,
+};
+
+/**
+ * INFO: Use this function only after accessibility props is set.
+ * This adds unique identifier as testId or accessibiliyLabel when the build
+ * type is of automation variant. For dev, alpha, release builds
+ * it will return an empty object and won't override anything.
+ */
+const isAutomation = false;
+export function setTestId(id) {
+  if (id === false) {
+    return {};
+  }
+  if (isAutomation) {
+    return Platform.select({
+      ios: {
+        testID: id,
+      },
+      android: {
+        accessibilityLabel: id,
+      },
+    });
+  }
+  return {};
+}
+
+/**
+ * Avoid breaking of the app if author accidentally pass invalid color from the CMS.
+ * Return null if color is invalid else return the color.
+ * @param {String} color Color string to validate
+ */
+export const validateColor = color => {
+  let colorSheet = { viewColor: { color: null } };
+  try {
+    colorSheet = StyleSheet.create({
+      // eslint-disable-next-line react-native/no-unused-styles
+      viewColor: {
+        color,
+      },
+    });
+  } catch (e) {
+    // eslint-disable-next-line no-console
+    console.warn(`Invalid color: ${color}`);
+  }
+
+  return colorSheet.viewColor.color;
 };

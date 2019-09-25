@@ -15,10 +15,10 @@ exports[`My Account Left Nav should render links with sub section  1`] = `
       key="myWallet"
     >
       <Styled(Anchor)
-        anchorVariation="primary"
+        anchorVariation="grayed"
         asPath="/myWalletPage"
         fontSizeVariation="large"
-        fontWeightVariation="active"
+        fontWeightVariation=""
       >
         My Wallet
       </Styled(Anchor)>
@@ -32,7 +32,7 @@ exports[`My Account Left Nav should render links with sub section  1`] = `
         anchorVariation="grayed"
         asPath="/earnExtraPointsPage"
         fontSizeVariation="large"
-        fontWeightVariation={false}
+        fontWeightVariation=""
       >
         Earn Extra Points
       </Styled(Anchor)>
@@ -43,10 +43,10 @@ exports[`My Account Left Nav should render links with sub section  1`] = `
       key="myPlaceRewards"
     >
       <Styled(Anchor)
-        anchorVariation="grayed"
+        anchorVariation="primary"
         asPath="/account/place-rewards"
         fontSizeVariation="large"
-        fontWeightVariation={false}
+        fontWeightVariation="active"
         to="/account?id=myPlaceRewards"
       >
         My Place Rewards
@@ -63,7 +63,7 @@ exports[`My Account Left Nav should render links with sub section  1`] = `
             anchorVariation="grayed"
             asPath="/account/place-rewards/points-history"
             fontSizeVariation="large"
-            fontWeightVariation={false}
+            fontWeightVariation=""
             to="/account?id=pointsHistoryPage"
           >
             Points History
@@ -101,7 +101,7 @@ exports[`My Account Left Nav should render only 2  links if navData has 2 links 
         anchorVariation="grayed"
         asPath="/earnExtraPointsPage"
         fontSizeVariation="large"
-        fontWeightVariation={false}
+        fontWeightVariation=""
       >
         Earn Extra Points
       </Styled(Anchor)>

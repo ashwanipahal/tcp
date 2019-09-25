@@ -6,10 +6,10 @@ const DropDownStyle = css`
     props.variation === 'primary'
       ? `border: ${props.dropDownStyle.border}px solid ${props.theme.colors.BUTTON.WHITE.BORDER}`
       : `border-bottom-width: ${props.dropDownStyle.border}px; border-bottom-color: ${
-          props.theme.colors.BUTTON.WHITE.BORDER
+          props.theme.colors.BLACK
         }`};
   background-color: ${props =>
-    props.variation === 'primary'
+    props.variation === 'primary' || props.bgColor
       ? props.theme.colorPalette.gray[500]
       : props.theme.colorPalette.white};
 `;
@@ -18,7 +18,7 @@ const HeaderContainer = styled.View`
   margin-right: ${props => props.theme.spacing.ELEM_SPACING.SM};
 `;
 
-const Row = styled.View`
+const Row = styled.TouchableOpacity`
   display: flex;
   flex-direction: row;
   ${props =>
@@ -54,11 +54,16 @@ const StyledLabel = styled.Text`
     !props.isFocused
       ? props.theme.typography.fontSizes.fs14
       : props.theme.typography.fontSizes.fs10};
-  color: ${props => props.theme.colorPalette.gray[900]};
+  color: ${props => props.theme.colors.BLACK};
   font-weight: ${props =>
     !props.isFocused
       ? props.theme.typography.fontWeights.regular
       : props.theme.typography.fontWeights.extrabold};
+`;
+const SelectedLabelView = styled.View`
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
 `;
 
 export {
@@ -70,4 +75,5 @@ export {
   Separator,
   FlatList,
   StyledLabel,
+  SelectedLabelView,
 };

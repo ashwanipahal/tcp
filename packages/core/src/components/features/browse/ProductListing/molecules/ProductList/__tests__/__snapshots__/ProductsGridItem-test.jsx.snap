@@ -12,6 +12,7 @@ exports[`ProductsGridItem component should renders correctly 1`] = `
       className="top-badge-container"
       haveSpace={true}
       isShowBadges={true}
+      text=""
     />
     <Styled(ProductAltImages)
       analyticsData={
@@ -21,6 +22,7 @@ exports[`ProductsGridItem component should renders correctly 1`] = `
           "requestId": "",
         }
       }
+      className="product-image-container"
       colorsMap={
         Array [
           Object {
@@ -32,6 +34,7 @@ exports[`ProductsGridItem component should renders correctly 1`] = `
           },
         ]
       }
+      dataLocator="undefined_122"
       imageUrls={Array []}
       isMobile={false}
       isPLPredesign={false}
@@ -41,6 +44,7 @@ exports[`ProductsGridItem component should renders correctly 1`] = `
       videoUrl=""
     />
     <Styled(Row)
+      className="product-wishlist-container"
       fullBleed={true}
     >
       <Styled(Col)
@@ -68,6 +72,7 @@ exports[`ProductsGridItem component should renders correctly 1`] = `
           fontWeight="extrabold"
           letterSpacing="normal"
           lineHeight="normal"
+          link={null}
           textAlign="left"
         />
       </Styled(Col)>
@@ -88,8 +93,10 @@ exports[`ProductsGridItem component should renders correctly 1`] = `
     </Styled(Row)>
     <ProductPricesSection
       currencySymbol="$"
+      dataLocator=""
       hidePrefixListPrice={true}
       listPrice={NaN}
+      merchantTag=""
       offerPrice={NaN}
     />
     <ProductTitle
@@ -103,6 +110,7 @@ exports[`ProductsGridItem component should renders correctly 1`] = `
       loadedProductCount={12}
     />
     <Styled(ProductColorChipWrapper)
+      className="color-chips-container"
       colorsMap={
         Array [
           Object {
@@ -122,12 +130,15 @@ exports[`ProductsGridItem component should renders correctly 1`] = `
       showColorEvenOne={true}
     />
     <PromotionalMessage />
-    <div>
+    <div
+      className="fulfillment-section"
+    >
       <Styled(Button)
         buttonVariation="fixed-width"
         className="added-to-bag"
         dataLocator="global-addtocart-Button"
         fullWidth={true}
+        onClick={[Function]}
       />
     </div>
   </div>

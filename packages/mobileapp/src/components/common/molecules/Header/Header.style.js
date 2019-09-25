@@ -10,6 +10,8 @@ export const Container = styled.View`
   padding-right: ${props => props.theme.spacing.ELEM_SPACING.XS};
   display: flex;
   background: ${props => props.theme.colorPalette.white};
+  margin-top: ${props => props.theme.spacing.ELEM_SPACING.XXS};
+  margin-bottom: ${props => props.theme.spacing.ELEM_SPACING.MED};
 `;
 
 export const MessageContainer = styled.View`
@@ -64,9 +66,15 @@ export const CartIconView = styled.Image`
   margin-left: ${props => props.theme.spacing.ELEM_SPACING.XXS};
 `;
 
-export const TextStyle = { position: 'absolute', marginTop: 18, paddingRight: 5.6 };
+export const TextStyle = {
+  position: 'absolute',
+  marginTop: 18,
+  paddingRight: 5.6,
+};
 
-export const ImageColor = { tintColor: 'gray' };
+export const ImageColor = {
+  tintColor: 'gray',
+};
 
 export const HeaderPromoContainer = styled.View`
   height: 45px;
@@ -80,6 +88,73 @@ export const Touchable = styled.TouchableOpacity`
   align-items: flex-end;
   align-self: flex-end;
   width: 45px;
+`;
+
+export const CheckoutHeaderContainer = styled.View`
+  flex-direction: row;
+  display: flex;
+  background: ${props => props.theme.colorPalette.white};
+`;
+
+export const CheckoutHeaderTextSection = styled.View`
+  height: 54px;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  border-bottom-color: ${props => props.theme.colorPalette.gray[500]};
+  border-bottom-width: 1;
+`;
+
+export const BackIcon = styled.Image`
+  width: 10px;
+  height: 18px;
+  margin-left: ${props => props.theme.spacing.ELEM_SPACING.XXS};
+  margin-top: ${props => props.theme.spacing.ELEM_SPACING.XS};
+`;
+
+export const BrandIcon = styled.Image`
+  width: 90px;
+  height: 35px;
+`;
+
+export const BrandIconSection = styled.View`
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: row;
+  width: 100%;
+  border-bottom-color: ${props => props.theme.colorPalette.gray[500]};
+  border-bottom-width: 1;
+  height: 54px;
+`;
+
+export const BackIconTouchable = styled.TouchableOpacity`
+  width: 45px;
+`;
+
+export const CloseIcon = styled.Image`
+  width: 15px;
+  height: 15px;
+`;
+
+export const CloseIconTouchable = styled.TouchableOpacity`
+  width: auto;
+`;
+
+export const CloseContainer = styled.View`
+  position: absolute;
+  z-index: ${props => props.theme.zindex.zOverlay};
+  justify-content: space-between;
+  right: ${props => props.theme.spacing.ELEM_SPACING.SM};
+  top: 20px;
+`;
+
+export const BagPageContainer = styled.View`
+  display: flex;
+  flex-direction: row;
 `;
 
 export default {
@@ -96,4 +171,13 @@ export default {
   ImageColor,
   HeaderPromoContainer,
   Touchable,
+  CheckoutHeaderContainer,
+  CheckoutHeaderTextSection,
+  BackIcon,
+  BackIconTouchable,
+  BrandIconSection,
+  CloseIconTouchable,
+  CloseIcon,
+  CloseContainer,
+  BagPageContainer,
 };

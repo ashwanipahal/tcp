@@ -1,8 +1,14 @@
+/* eslint-disable no-underscore-dangle */
 import superagent from 'superagent';
 import { readCookie } from '../../../utils/cookie.util';
 import { API_CONFIG } from '../../config';
 import { isClient, isMobileApp } from '../../../utils';
 
+const modifyUnbxdUrl = unboxKey => {
+  const temp = unboxKey.split('/');
+  temp.splice(0, 1, 'sites');
+  return temp.join('/');
+};
 /**
  * @summary This is to generate and return both the request params and the request URL.
  * @param {string} apiConfig - Api config to be utilized for brand/channel/locale config
@@ -11,9 +17,12 @@ import { isClient, isMobileApp } from '../../../utils';
  */
 const getRequestParams = (apiConfig, reqObj) => {
   const {
-    webService: { URI },
+    webService: { URI, unbxdCustom },
   } = reqObj;
-  const requestUrl = `${apiConfig.unbxd}/${apiConfig.unboxKey}/${URI}`;
+
+  const unboxKey = unbxdCustom ? modifyUnbxdUrl(apiConfig.unboxKey) : apiConfig.unboxKey;
+  const requestUrl = `${apiConfig.unbxd}/${unboxKey}/${URI}`;
+
   const reqHeaders = {};
   // TODO - Check if it works in Mobile app as well or else change it to isServer check
   if (apiConfig.cookie && !isClient()) {
@@ -54,10 +63,11 @@ const UnbxdAPIClient = (apiConfig, reqObj) => {
       // eslint-disable-next-line
       // reqObj.body.uid = 'uid-1563946353348-89276';
     }
+
+    // decode params in body if already encoded in mobile app
     request.query(reqObj.body);
-    // eslint-disable-next-line no-underscore-dangle
+
     if (request._query && request._query.length > 0) {
-      // eslint-disable-next-line no-underscore-dangle
       request._query[0] = decodeURIComponent(request._query[0]);
     }
   } else {

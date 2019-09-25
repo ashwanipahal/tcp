@@ -1,0 +1,81 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`CurrencyUpPromoBanner native component test cases should render overlay banner style 1`] = `
+<Styled(View)>
+  <Styled(Styled(BodyCopy))
+    accessibilityText=""
+    color="black"
+    dataLocator=""
+    fontFamily="primary"
+    fontWeight="black"
+    lineHeight="34px"
+    margin={null}
+    numberOfLines={null}
+    style={
+      Object {
+        "fontSize": 28,
+      }
+    }
+    text=""
+    textAlign="center"
+    textDecoration={null}
+  />
+  <Styled(Styled(BodyCopy))
+    accessibilityText=""
+    color="black"
+    dataLocator=""
+    fontFamily="primary"
+    fontWeight="black"
+    lineHeight="86px"
+    margin={null}
+    numberOfLines={null}
+    style={
+      Object {
+        "fontSize": 86,
+      }
+    }
+    text=""
+    textAlign="center"
+    textDecoration={null}
+  />
+  <Styled(View)>
+    <Styled(Styled(BodyCopy))
+      accessibilityText=""
+      color="black"
+      dataLocator=""
+      fontFamily="primary"
+      fontWeight="black"
+      lineHeight="50px"
+      margin={null}
+      numberOfLines={null}
+      style={
+        Object {
+          "fontSize": 48,
+          "height": 45,
+        }
+      }
+      text=""
+      textDecoration={null}
+    />
+    <Styled(Styled(BodyCopy))
+      accessibilityText=""
+      color="black"
+      dataLocator=""
+      fontFamily="primary"
+      fontSize="fs42"
+      fontWeight="black"
+      lineHeight="28px"
+      margin={null}
+      numberOfLines={null}
+      style={
+        Object {
+          "fontSize": 28,
+        }
+      }
+      text=""
+      textAlign="center"
+      textDecoration={null}
+    />
+  </Styled(View)>
+</Styled(View)>
+`;

@@ -1,8 +1,14 @@
-// @flow
 import React from 'react';
 import { FlatList } from 'react-native';
-import { getLocator, getScreenWidth } from '../../../../../utils/index.native';
-import { Image, BodyCopy, Anchor } from '../../../atoms';
+import PropTypes from 'prop-types';
+
+import {
+  getLocator,
+  getScreenWidth,
+  LAZYLOAD_HOST_NAME,
+  validateColor,
+} from '../../../../../utils/index.native';
+import { DamImage, BodyCopy, Anchor } from '../../../atoms';
 import PromoBanner from '../../PromoBanner';
 import LinkText from '../../LinkText';
 import {
@@ -13,13 +19,7 @@ import {
   LinkContainer,
   ListContainer,
 } from '../ModuleL.styles.native';
-
-type Props = {
-  imageGrid: Array<Object>,
-  headerText: Array<Object>,
-  navigation: Object,
-  promoBanner: Array<Object>,
-};
+import config from '../config';
 
 /**
  * To enable the anchorIcon.
@@ -42,21 +42,25 @@ const keyExtractor = (_, index) => index.toString();
 
 const renderItem = (item, navigation) => {
   const {
-    item: { image, link },
+    item: { image, link, color: { color: tileBgColor } = {} },
     index,
   } = item;
+
   return (
     <Anchor
       url={link.url}
       navigation={navigation}
       testID={`${getLocator('moduleL_tiles')}${index + 1}`}
     >
-      <ChildContainer bgClass={item.item.class.class}>
-        <Image
+      <ChildContainer style={{ backgroundColor: validateColor(tileBgColor) }}>
+        <DamImage
           url={image.url}
           height={127}
           crop={image.crop_m}
           testID={`${getLocator('moduleL_image')}${index + 1}`}
+          imgConfig={config.IMG_DATA.crops[0]}
+          alt={image.alt}
+          host={LAZYLOAD_HOST_NAME.HOME}
         />
         <MessageContainer>
           <BodyCopyContainer width={width}>
@@ -91,8 +95,7 @@ const renderItem = (item, navigation) => {
  * Author can surface teaser content leading to corresponding pages.
  */
 
-const ModuleL = (props: Props) => {
-  const { headerText, imageGrid, navigation, promoBanner } = props;
+const ModuleL = ({ headerText, imageGrid, navigation, promoBanner }) => {
   return (
     <Container>
       {headerText && (
@@ -125,6 +128,33 @@ const ModuleL = (props: Props) => {
       </ListContainer>
     </Container>
   );
+};
+
+ModuleL.defaultProps = {
+  promoBanner: [],
+};
+
+ModuleL.propTypes = {
+  headerText: PropTypes.arrayOf(
+    PropTypes.shape({
+      link: PropTypes.object,
+      textItems: PropTypes.array,
+    })
+  ).isRequired,
+  imageGrid: PropTypes.arrayOf(
+    PropTypes.shape({
+      image: PropTypes.object,
+      link: PropTypes.object,
+      styled: PropTypes.object,
+    })
+  ).isRequired,
+  navigation: PropTypes.shape({}).isRequired,
+  promoBanner: PropTypes.arrayOf(
+    PropTypes.shape({
+      link: PropTypes.object,
+      textItems: PropTypes.array,
+    })
+  ),
 };
 
 export default ModuleL;

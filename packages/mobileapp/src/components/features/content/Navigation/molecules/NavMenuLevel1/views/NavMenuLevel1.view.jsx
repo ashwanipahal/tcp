@@ -2,6 +2,7 @@ import React from 'react';
 import { PropTypes } from 'prop-types';
 import { getScreenWidth, cropImageUrl } from '@tcp/core/src/utils';
 import { Image, BodyCopy } from '@tcp/core/src/components/common/atoms';
+import InitialPropsHOC from '@tcp/core/src/components/common/hoc/InitialPropsHOC/InitialPropsHOC.native';
 import {
   L1TouchableOpacity,
   L1TextView,
@@ -18,11 +19,6 @@ const Icon = require('../../../../../../../../../core/src/assets/carrot-small-ri
  * @param {object} props Props passed from Stack navigator screen
  */
 class NavMenuLevel1 extends React.PureComponent {
-  componentDidMount() {
-    const { loadNavigationData } = this.props;
-    loadNavigationData();
-  }
-
   /**
    * @function ShowL2Navigation populates the L2 menu for the L1 link that has been clicked
    * @param {object} item Details of the L1 menu item that has been clicked
@@ -161,11 +157,11 @@ NavMenuLevel1.propTypes = {
   }).isRequired,
   accessibilityLabels: PropTypes.shape({}),
   navigationMenuObj: PropTypes.arrayOf(PropTypes.shape({})).isRequired,
-  loadNavigationData: PropTypes.func.isRequired,
 };
 
 NavMenuLevel1.defaultProps = {
   accessibilityLabels: {},
 };
 
-export default NavMenuLevel1;
+export { NavMenuLevel1 as NavMenuLevel1View };
+export default InitialPropsHOC(NavMenuLevel1);

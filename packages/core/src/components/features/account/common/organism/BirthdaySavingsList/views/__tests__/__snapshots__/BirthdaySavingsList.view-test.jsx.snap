@@ -1,0 +1,316 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`BirthdaySavingsList component should renders correctly when childrenBirthdays are not present 1`] = `
+<div
+  className=""
+>
+  <InfoMessage
+    labels={
+      Object {
+        "lbl_profile_birthday_saving_info": "Add up to 4 kids’ birthdays to your account and receive special savings during their birthday month!",
+        "lbl_profile_birthday_savings": "Birthday Savings",
+        "lbl_profile_personal_info_back": "back",
+      }
+    }
+  />
+  <Styled(Row)
+    className="elem-mb-XS birthdayList"
+    fullBleed={true}
+  >
+    <Styled(Col)
+      className="elem-mb-MED"
+      colSize={
+        Object {
+          "large": 3,
+          "medium": 2,
+          "small": 3,
+        }
+      }
+      ignoreGutter={
+        Object {
+          "large": false,
+          "medium": false,
+          "small": false,
+        }
+      }
+      key="card_0"
+    >
+      <Styled(EmptyBirthdayCard)
+        active={-1}
+        id={0}
+        labels={
+          Object {
+            "lbl_profile_birthday_saving_info": "Add up to 4 kids’ birthdays to your account and receive special savings during their birthday month!",
+            "lbl_profile_birthday_savings": "Birthday Savings",
+            "lbl_profile_personal_info_back": "back",
+          }
+        }
+        showAddModal={[Function]}
+        toggleSelectedChild={[Function]}
+        view="edit"
+      />
+    </Styled(Col)>
+    <Styled(Col)
+      className="elem-mb-MED"
+      colSize={
+        Object {
+          "large": 3,
+          "medium": 2,
+          "small": 3,
+        }
+      }
+      ignoreGutter={
+        Object {
+          "large": false,
+          "medium": false,
+          "small": true,
+        }
+      }
+      key="card_1"
+    >
+      <Styled(EmptyBirthdayCard)
+        active={-1}
+        id={1}
+        labels={
+          Object {
+            "lbl_profile_birthday_saving_info": "Add up to 4 kids’ birthdays to your account and receive special savings during their birthday month!",
+            "lbl_profile_birthday_savings": "Birthday Savings",
+            "lbl_profile_personal_info_back": "back",
+          }
+        }
+        showAddModal={[Function]}
+        toggleSelectedChild={[Function]}
+        view="edit"
+      />
+    </Styled(Col)>
+    <Styled(Col)
+      className="elem-mb-MED"
+      colSize={
+        Object {
+          "large": 3,
+          "medium": 2,
+          "small": 3,
+        }
+      }
+      ignoreGutter={
+        Object {
+          "large": false,
+          "medium": false,
+          "small": false,
+        }
+      }
+      key="card_2"
+    >
+      <Styled(EmptyBirthdayCard)
+        active={-1}
+        id={2}
+        labels={
+          Object {
+            "lbl_profile_birthday_saving_info": "Add up to 4 kids’ birthdays to your account and receive special savings during their birthday month!",
+            "lbl_profile_birthday_savings": "Birthday Savings",
+            "lbl_profile_personal_info_back": "back",
+          }
+        }
+        showAddModal={[Function]}
+        toggleSelectedChild={[Function]}
+        view="edit"
+      />
+    </Styled(Col)>
+    <Styled(Col)
+      className="elem-mb-MED"
+      colSize={
+        Object {
+          "large": 3,
+          "medium": 2,
+          "small": 3,
+        }
+      }
+      ignoreGutter={
+        Object {
+          "large": true,
+          "medium": true,
+          "small": true,
+        }
+      }
+      key="card_3"
+    >
+      <Styled(EmptyBirthdayCard)
+        active={-1}
+        id={3}
+        labels={
+          Object {
+            "lbl_profile_birthday_saving_info": "Add up to 4 kids’ birthdays to your account and receive special savings during their birthday month!",
+            "lbl_profile_birthday_savings": "Birthday Savings",
+            "lbl_profile_personal_info_back": "back",
+          }
+        }
+        showAddModal={[Function]}
+        toggleSelectedChild={[Function]}
+        view="edit"
+      />
+    </Styled(Col)>
+  </Styled(Row)>
+</div>
+`;
+
+exports[`BirthdaySavingsList component should renders correctly when childrenBirthdays are present 1`] = `
+<div
+  className=""
+>
+  <InfoMessage
+    labels={
+      Object {
+        "lbl_profile_birthday_saving_info": "Add up to 4 kids’ birthdays to your account and receive special savings during their birthday month!",
+        "lbl_profile_birthday_savings": "Birthday Savings",
+        "lbl_profile_personal_info_back": "back",
+      }
+    }
+  />
+  <Styled(Row)
+    className="elem-mb-XS birthdayList"
+    fullBleed={true}
+  >
+    <Styled(Col)
+      className="elem-mb-MED"
+      colSize={
+        Object {
+          "large": 3,
+          "medium": 2,
+          "small": 3,
+        }
+      }
+      ignoreGutter={
+        Object {
+          "large": false,
+          "medium": false,
+          "small": false,
+        }
+      }
+      key="card_12345"
+    >
+      <Styled(BirthdayCard)
+        childId="12345"
+        removeBirthday={[Function]}
+        view="edit"
+      />
+    </Styled(Col)>
+    <Styled(Col)
+      className="elem-mb-MED"
+      colSize={
+        Object {
+          "large": 3,
+          "medium": 2,
+          "small": 3,
+        }
+      }
+      ignoreGutter={
+        Object {
+          "large": false,
+          "medium": false,
+          "small": true,
+        }
+      }
+      key="card_1"
+    >
+      <Styled(EmptyBirthdayCard)
+        active={-1}
+        id={1}
+        labels={
+          Object {
+            "lbl_profile_birthday_saving_info": "Add up to 4 kids’ birthdays to your account and receive special savings during their birthday month!",
+            "lbl_profile_birthday_savings": "Birthday Savings",
+            "lbl_profile_personal_info_back": "back",
+          }
+        }
+        showAddModal={[Function]}
+        toggleSelectedChild={[Function]}
+        view="edit"
+      />
+    </Styled(Col)>
+    <Styled(Col)
+      className="elem-mb-MED"
+      colSize={
+        Object {
+          "large": 3,
+          "medium": 2,
+          "small": 3,
+        }
+      }
+      ignoreGutter={
+        Object {
+          "large": false,
+          "medium": false,
+          "small": false,
+        }
+      }
+      key="card_2"
+    >
+      <Styled(EmptyBirthdayCard)
+        active={-1}
+        id={2}
+        labels={
+          Object {
+            "lbl_profile_birthday_saving_info": "Add up to 4 kids’ birthdays to your account and receive special savings during their birthday month!",
+            "lbl_profile_birthday_savings": "Birthday Savings",
+            "lbl_profile_personal_info_back": "back",
+          }
+        }
+        showAddModal={[Function]}
+        toggleSelectedChild={[Function]}
+        view="edit"
+      />
+    </Styled(Col)>
+    <Styled(Col)
+      className="elem-mb-MED"
+      colSize={
+        Object {
+          "large": 3,
+          "medium": 2,
+          "small": 3,
+        }
+      }
+      ignoreGutter={
+        Object {
+          "large": true,
+          "medium": true,
+          "small": true,
+        }
+      }
+      key="card_3"
+    >
+      <Styled(EmptyBirthdayCard)
+        active={-1}
+        id={3}
+        labels={
+          Object {
+            "lbl_profile_birthday_saving_info": "Add up to 4 kids’ birthdays to your account and receive special savings during their birthday month!",
+            "lbl_profile_birthday_savings": "Birthday Savings",
+            "lbl_profile_personal_info_back": "back",
+          }
+        }
+        showAddModal={[Function]}
+        toggleSelectedChild={[Function]}
+        view="edit"
+      />
+    </Styled(Col)>
+  </Styled(Row)>
+</div>
+`;
+
+exports[`InfoMessage component should render correctly 1`] = `
+<Styled(BodyCopy)
+  className="elem-mb-XXL"
+  color="text.primary"
+  component="p"
+  data-locator="instrText"
+  fontFamily="secondary"
+  fontSize="fs14"
+  fontWeight="regular"
+  letterSpacing="normal"
+  lineHeight="normal"
+  link={null}
+  textAlign="left"
+>
+  Add up to 4 kids’ birthdays to your account and receive special savings during their birthday month!
+</Styled(BodyCopy)>
+`;

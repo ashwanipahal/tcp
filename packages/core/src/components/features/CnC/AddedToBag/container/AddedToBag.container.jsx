@@ -11,6 +11,7 @@ type Props = {
   isOpenDialog: boolean,
   labels: any,
   quantity: number,
+  navigation: object,
 };
 
 export class AddedToBagContainer extends React.Component<Props> {
@@ -26,7 +27,7 @@ export class AddedToBagContainer extends React.Component<Props> {
   }
 
   render() {
-    const { addedToBagData, isOpenDialog, labels, quantity } = this.props;
+    const { addedToBagData, isOpenDialog, labels, quantity, navigation } = this.props;
     return (
       <AddedToBag
         openState={isOpenDialog}
@@ -35,6 +36,7 @@ export class AddedToBagContainer extends React.Component<Props> {
         labels={labels}
         quantity={quantity}
         handleContinueShopping={this.closeModal}
+        navigation={navigation}
       />
     );
   }
@@ -52,8 +54,8 @@ const mapStateToProps = state => {
   // ----------- commenting usage of labels as we are getting labels values from backend intermittently. ------------
 
   const {
-    bag: {
-      addedToBag: {
+    global: {
+      addedToBagModal: {
         lbl_info_color: colorLabel,
         lbl_info_size: sizeLabel,
         lbl_info_Qty: qtyLabel,

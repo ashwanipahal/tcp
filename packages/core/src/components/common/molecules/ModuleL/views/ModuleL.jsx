@@ -1,5 +1,6 @@
-// @flow
 import React from 'react';
+import PropTypes from 'prop-types';
+
 import { Col, Row } from '../../../atoms';
 import errorBoundary from '../../../hoc/withErrorBoundary';
 import withStyles from '../../../hoc/withStyles';
@@ -9,14 +10,6 @@ import config from '../config';
 import ModuleLTile from './ModuleL.Tile';
 import style from '../ModuleL.style';
 
-type Props = {
-  className: string,
-  headerText: Array<Object>,
-  imageGrid: Array<Object>,
-  set: Array<Object>,
-  promoBanner: Array<Object>,
-};
-
 /**
  * @function renderTiles - rendering tiles inside component.
  * @param {tiles} tiles : tiles data in an array format.
@@ -25,7 +18,7 @@ type Props = {
 const renderTiles = tiles => {
   return tiles.map((tile, index) => {
     return (
-      <ModuleLTile key={index.toString()} index={index} tileData={tile} tileColor={tile.class} />
+      <ModuleLTile key={index.toString()} index={index} tileData={tile} tileColor={tile.color} />
     );
   });
 };
@@ -43,7 +36,7 @@ const ModuleL = ({
   imageGrid,
   set: [{ val: imagesPerSlide }],
   promoBanner,
-}: Props) => {
+}) => {
   const options = config.CAROUSEL_OPTIONS;
   options.prevArrow = (
     <button type="button" data-locator="moduleL_left_arrow" className="slick-prev" />
@@ -101,6 +94,33 @@ const ModuleL = ({
       </Col>
     </Row>
   );
+};
+ModuleL.defaultProps = {
+  promoBanner: [],
+};
+
+ModuleL.propTypes = {
+  className: PropTypes.string.isRequired,
+  headerText: PropTypes.arrayOf(
+    PropTypes.shape({
+      link: PropTypes.object,
+      textItems: PropTypes.array,
+    })
+  ).isRequired,
+  imageGrid: PropTypes.arrayOf(
+    PropTypes.shape({
+      image: PropTypes.object,
+      link: PropTypes.object,
+      styled: PropTypes.object,
+    })
+  ).isRequired,
+  set: PropTypes.number.isRequired,
+  promoBanner: PropTypes.arrayOf(
+    PropTypes.shape({
+      link: PropTypes.object,
+      textItems: PropTypes.array,
+    })
+  ),
 };
 
 export default withStyles(errorBoundary(ModuleL), style);

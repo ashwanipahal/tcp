@@ -6,6 +6,7 @@ import BodyCopy from '../../../../../../common/atoms/BodyCopy';
 import Button from '../../../../../../common/atoms/Button';
 import Anchor from '../../../../../../common/atoms/Anchor';
 import TextBox from '../../../../../../common/atoms/TextBox';
+import RichText from '../../../../../../common/atoms/RichText';
 import InputCheckbox from '../../../../../../common/atoms/InputCheckbox';
 import createValidateMethod from '../../../../../../../utils/formValidation/createValidateMethod';
 import getStandardConfig from '../../../../../../../utils/formValidation/validatorStandardConfig';
@@ -17,9 +18,17 @@ import styles from '../styles/LoginForm.styles';
 class LoginForm extends React.PureComponent<Props> {
   showForgotPasswordForm = e => {
     e.preventDefault();
-    const { showForgotPasswordForm, resetForm } = this.props;
+    const { showForgotPasswordForm, resetForm, resetLoginState } = this.props;
     resetForm();
+    resetLoginState();
     showForgotPasswordForm();
+  };
+
+  resetError = () => {
+    const { resetLoginState, loginErrorMessage } = this.props;
+    if (loginErrorMessage) {
+      resetLoginState();
+    }
   };
 
   render() {
@@ -34,13 +43,14 @@ class LoginForm extends React.PureComponent<Props> {
       pristine,
       variation,
       handleContinueAsGuest,
+      tooltipContent,
     } = this.props;
     return (
       <div className={className}>
         <form name="LoginForm" onSubmit={handleSubmit} noValidate className={className}>
           {loginErrorMessage && (
             <BodyCopy fontSize="fs12" fontWeight="semibold" color="red.500" className="elem-mb-XL">
-              {loginErrorMessage}
+              <RichText className="richTextColor" richTextHtml={loginErrorMessage} />
             </BodyCopy>
           )}
           <BodyCopy component="div" className="elem-mb-LRG">
@@ -54,8 +64,10 @@ class LoginForm extends React.PureComponent<Props> {
               showSuccessCheck={false}
               enableSuccessCheck={false}
               className="elem-mb-SM"
+              onKeyPress={this.resetError}
             />
             <Field
+              labels={labels}
               id="password"
               placeholder={labels.login.lbl_login_password}
               name="password"
@@ -65,6 +77,8 @@ class LoginForm extends React.PureComponent<Props> {
               showSuccessCheck={false}
               enableSuccessCheck={false}
               className="elem-mb-SM"
+              tooltipContent={tooltipContent}
+              onKeyPress={this.resetError}
             />
             <BodyCopy component="div">
               <Field

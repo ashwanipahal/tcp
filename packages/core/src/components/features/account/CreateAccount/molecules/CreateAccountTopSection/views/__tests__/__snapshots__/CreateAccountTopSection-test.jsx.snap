@@ -1,0 +1,162 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Create Account component should renders correctly 1`] = `
+<Styled(BodyCopy)
+  className="elem-pr-XS elem-pl-XS"
+  color="text.primary"
+  component="div"
+  fontFamily="primary"
+  fontSize={12}
+  fontWeight="regular"
+  letterSpacing="normal"
+  lineHeight="normal"
+  link={null}
+  textAlign="left"
+>
+  <Styled(BodyCopy)
+    className="img-parent align-center"
+    color="text.primary"
+    component="div"
+    fontFamily="primary"
+    fontSize={12}
+    fontWeight="regular"
+    letterSpacing="normal"
+    lineHeight="normal"
+    link={null}
+    textAlign="left"
+  >
+    <Styled(BodyCopy)
+      className="my-rewards-img-wrapper elem-pb-XL"
+      color="text.primary"
+      component="div"
+      fontFamily="primary"
+      fontSize={12}
+      fontWeight="regular"
+      letterSpacing="normal"
+      lineHeight="normal"
+      link={null}
+      textAlign="left"
+    >
+      <Styled(Image)
+        className="tcp_carousel__play"
+        src="/static/images/my-place-rewards.png"
+      />
+    </Styled(BodyCopy)>
+  </Styled(BodyCopy)>
+  <Styled(BodyCopy)
+    className="bordered elem-pt-MED labels-wrapper"
+    color="text.primary"
+    component="div"
+    fontFamily="primary"
+    fontSize={12}
+    fontWeight="regular"
+    letterSpacing="normal"
+    lineHeight="normal"
+    link={null}
+    textAlign="left"
+  >
+    <Styled(BodyCopy)
+      className="elem-pb-XS"
+      color="text.primary"
+      component="p"
+      fontFamily="secondary"
+      fontSize="fs13"
+      fontWeight="regular"
+      letterSpacing="normal"
+      lineHeight="normal"
+      link={null}
+      textAlign="center"
+    >
+      <span>
+        Create a
+      </span>
+      <span
+        className="my-place-rewards"
+      >
+        My Place Rewards
+      </span>
+      <span>
+        account to earn
+      </span>
+    </Styled(BodyCopy)>
+  </Styled(BodyCopy)>
+  <Styled(BodyCopy)
+    className="my-place-rewards"
+    color="text.primary"
+    component="p"
+    fontFamily="secondary"
+    fontSize="fs14"
+    fontWeight="regular"
+    letterSpacing="normal"
+    lineHeight="normal"
+    link={null}
+    textAlign="center"
+  >
+    points on every purchase
+  </Styled(BodyCopy)>
+  <Styled(BodyCopy)
+    className="my-place-rewards"
+    color="text.primary"
+    component="p"
+    fontFamily="secondary"
+    fontSize="fs14"
+    fontWeight="regular"
+    letterSpacing="normal"
+    lineHeight="normal"
+    link={null}
+    textAlign="center"
+  >
+    $1 Spent = 1 POINT
+  </Styled(BodyCopy)>
+  <Styled(BodyCopy)
+    className="bordered elem-pb-MED signed-up-in-store"
+    color="text.primary"
+    component="div"
+    fontFamily="primary"
+    fontSize={12}
+    fontWeight="regular"
+    letterSpacing="normal"
+    lineHeight="normal"
+    link={null}
+    textAlign="left"
+  >
+    <Styled(BodyCopy)
+      className={null}
+      color="text.primary"
+      component="p"
+      fontFamily="secondary"
+      fontSize="fs12"
+      fontWeight="regular"
+      letterSpacing="normal"
+      lineHeight="normal"
+      link={null}
+      textAlign="center"
+    >
+      <p>
+        Signed up in Store?
+      </p>
+      <p>
+        An online account has been created
+      </p>
+      <Styled(BodyCopy)
+        className={null}
+        color="text.primary"
+        component="div"
+        fontFamily="secondary"
+        fontSize="fs12"
+        fontWeight="regular"
+        letterSpacing="normal"
+        lineHeight="normal"
+        link={null}
+        textAlign="center"
+      >
+        <Styled(Anchor)
+          className="reset-password"
+          onClick={[Function]}
+          underline={true}
+        />
+      </Styled(BodyCopy)>
+    </Styled(BodyCopy)>
+  </Styled(BodyCopy)>
+</Styled(BodyCopy)>
+`;

@@ -22,13 +22,13 @@ exports[`SMSFormFields should render correctly with isOrderUpdateChecked as fals
             "$$typeof": Symbol(react.forward_ref),
             "attrs": Array [],
             "componentStyle": ComponentStyle {
-              "componentId": "sc-htpNat",
+              "componentId": "sc-bxivhb",
               "isStatic": false,
               "rules": Array [
                 "
   ",
                 "
-  display: inline-flex;
+  display: block;
   align-items: ",
                 [Function],
                 ";
@@ -50,6 +50,8 @@ exports[`SMSFormFields should render correctly with isOrderUpdateChecked as fals
     margin-right: ",
                 [Function],
                 ";
+    display: inline-block;
+    vertical-align: top;
   }
 
   & .CheckBox__input:before {
@@ -93,7 +95,14 @@ exports[`SMSFormFields should render correctly with isOrderUpdateChecked as fals
   }
 
   & .CheckBox__text {
-    width: calc(100% - 25px);
+    width: calc(100% - 45px);
+    display: inline-block;
+  }
+
+  & .CheckBox__text a {
+    color: ",
+                [Function],
+                ";
   }
 
   & .disabled {
@@ -105,13 +114,20 @@ exports[`SMSFormFields should render correctly with isOrderUpdateChecked as fals
   & .Checkbox__error {
     display: flex;
     flex-direction: row;
+    padding-left: ",
+                [Function],
+                ";
   }
   & .warning-icon {
     background: transparent url('/static/images/circle-alert-fill.svg') no-repeat 0 0;
     background-size: contain;
     border: none;
-    height: 15px;
-    width: 15px;
+    height: ",
+                [Function],
+                ";
+    width: ",
+                [Function],
+                ";
     margin-right: 4px;
     margin-top: 2px;
   }
@@ -123,7 +139,7 @@ exports[`SMSFormFields should render correctly with isOrderUpdateChecked as fals
             "displayName": "Styled(InputCheckbox)",
             "foldedComponentIds": Array [],
             "render": [Function],
-            "styledComponentId": "sc-htpNat",
+            "styledComponentId": "sc-bxivhb",
             "target": [Function],
             "toString": [Function],
             "warnTooManyClasses": [Function],
@@ -150,6 +166,7 @@ exports[`SMSFormFields should render correctly with isOrderUpdateChecked as fals
           fontWeight="regular"
           letterSpacing="normal"
           lineHeight="normal"
+          link={null}
           textAlign="left"
         />
       </Field>
@@ -180,13 +197,13 @@ exports[`SMSFormFields should render correctly with isOrderUpdateChecked as true
             "$$typeof": Symbol(react.forward_ref),
             "attrs": Array [],
             "componentStyle": ComponentStyle {
-              "componentId": "sc-htpNat",
+              "componentId": "sc-bxivhb",
               "isStatic": false,
               "rules": Array [
                 "
   ",
                 "
-  display: inline-flex;
+  display: block;
   align-items: ",
                 [Function],
                 ";
@@ -208,6 +225,8 @@ exports[`SMSFormFields should render correctly with isOrderUpdateChecked as true
     margin-right: ",
                 [Function],
                 ";
+    display: inline-block;
+    vertical-align: top;
   }
 
   & .CheckBox__input:before {
@@ -251,7 +270,14 @@ exports[`SMSFormFields should render correctly with isOrderUpdateChecked as true
   }
 
   & .CheckBox__text {
-    width: calc(100% - 25px);
+    width: calc(100% - 45px);
+    display: inline-block;
+  }
+
+  & .CheckBox__text a {
+    color: ",
+                [Function],
+                ";
   }
 
   & .disabled {
@@ -263,13 +289,20 @@ exports[`SMSFormFields should render correctly with isOrderUpdateChecked as true
   & .Checkbox__error {
     display: flex;
     flex-direction: row;
+    padding-left: ",
+                [Function],
+                ";
   }
   & .warning-icon {
     background: transparent url('/static/images/circle-alert-fill.svg') no-repeat 0 0;
     background-size: contain;
     border: none;
-    height: 15px;
-    width: 15px;
+    height: ",
+                [Function],
+                ";
+    width: ",
+                [Function],
+                ";
     margin-right: 4px;
     margin-top: 2px;
   }
@@ -281,7 +314,7 @@ exports[`SMSFormFields should render correctly with isOrderUpdateChecked as true
             "displayName": "Styled(InputCheckbox)",
             "foldedComponentIds": Array [],
             "render": [Function],
-            "styledComponentId": "sc-htpNat",
+            "styledComponentId": "sc-bxivhb",
             "target": [Function],
             "toString": [Function],
             "warnTooManyClasses": [Function],
@@ -308,12 +341,15 @@ exports[`SMSFormFields should render correctly with isOrderUpdateChecked as true
           fontWeight="regular"
           letterSpacing="normal"
           lineHeight="normal"
+          link={null}
           textAlign="left"
         />
       </Field>
     </Styled(Col)>
   </Styled(Row)>
-  <Styled(Row)>
+  <Styled(Row)
+    fullBleed={true}
+  >
     <Styled(Col)
       className="phone-field-wrapper"
       colSize={
@@ -336,7 +372,7 @@ exports[`SMSFormFields should render correctly with isOrderUpdateChecked as true
             "$$typeof": Symbol(react.forward_ref),
             "attrs": Array [],
             "componentStyle": ComponentStyle {
-              "componentId": "sc-bwzfXH",
+              "componentId": "sc-htpNat",
               "isStatic": false,
               "rules": Array [
                 "
@@ -479,7 +515,7 @@ exports[`SMSFormFields should render correctly with isOrderUpdateChecked as true
             "displayName": "Styled(TextBox)",
             "foldedComponentIds": Array [],
             "render": [Function],
-            "styledComponentId": "sc-bwzfXH",
+            "styledComponentId": "sc-htpNat",
             "target": [Function],
             "toString": [Function],
             "warnTooManyClasses": [Function],
@@ -494,11 +530,13 @@ exports[`SMSFormFields should render correctly with isOrderUpdateChecked as true
         type="tel"
       />
     </Styled(Col)>
-    <Styled(Row)>
+    <Styled(Row)
+      fullBleed={true}
+    >
       <Styled(Col)
         colSize={
           Object {
-            "large": 5,
+            "large": 7,
             "medium": 8,
             "small": 6,
           }
@@ -513,15 +551,8 @@ exports[`SMSFormFields should render correctly with isOrderUpdateChecked as true
           fontWeight="regular"
           letterSpacing="normal"
           lineHeight="normal"
+          link={null}
           textAlign="left"
-        />
-        <Styled(Anchor)
-          anchorVariation="primary"
-          fontSizeVariation="small"
-          href="#"
-          noLink={true}
-          noUnderline={true}
-          target="_blank"
         />
       </Styled(Col)>
     </Styled(Row)>
@@ -551,13 +582,13 @@ exports[`SMSFormFields should render correctly with isOrderUpdateChecked as true
             "$$typeof": Symbol(react.forward_ref),
             "attrs": Array [],
             "componentStyle": ComponentStyle {
-              "componentId": "sc-htpNat",
+              "componentId": "sc-bxivhb",
               "isStatic": false,
               "rules": Array [
                 "
   ",
                 "
-  display: inline-flex;
+  display: block;
   align-items: ",
                 [Function],
                 ";
@@ -579,6 +610,8 @@ exports[`SMSFormFields should render correctly with isOrderUpdateChecked as true
     margin-right: ",
                 [Function],
                 ";
+    display: inline-block;
+    vertical-align: top;
   }
 
   & .CheckBox__input:before {
@@ -622,7 +655,14 @@ exports[`SMSFormFields should render correctly with isOrderUpdateChecked as true
   }
 
   & .CheckBox__text {
-    width: calc(100% - 25px);
+    width: calc(100% - 45px);
+    display: inline-block;
+  }
+
+  & .CheckBox__text a {
+    color: ",
+                [Function],
+                ";
   }
 
   & .disabled {
@@ -634,13 +674,20 @@ exports[`SMSFormFields should render correctly with isOrderUpdateChecked as true
   & .Checkbox__error {
     display: flex;
     flex-direction: row;
+    padding-left: ",
+                [Function],
+                ";
   }
   & .warning-icon {
     background: transparent url('/static/images/circle-alert-fill.svg') no-repeat 0 0;
     background-size: contain;
     border: none;
-    height: 15px;
-    width: 15px;
+    height: ",
+                [Function],
+                ";
+    width: ",
+                [Function],
+                ";
     margin-right: 4px;
     margin-top: 2px;
   }
@@ -652,7 +699,7 @@ exports[`SMSFormFields should render correctly with isOrderUpdateChecked as true
             "displayName": "Styled(InputCheckbox)",
             "foldedComponentIds": Array [],
             "render": [Function],
-            "styledComponentId": "sc-htpNat",
+            "styledComponentId": "sc-bxivhb",
             "target": [Function],
             "toString": [Function],
             "warnTooManyClasses": [Function],
@@ -679,12 +726,15 @@ exports[`SMSFormFields should render correctly with isOrderUpdateChecked as true
           fontWeight="regular"
           letterSpacing="normal"
           lineHeight="normal"
+          link={null}
           textAlign="left"
         />
       </Field>
     </Styled(Col)>
   </Styled(Row)>
-  <Styled(Row)>
+  <Styled(Row)
+    fullBleed={true}
+  >
     <Styled(Col)
       className="phone-field-wrapper"
       colSize={
@@ -707,7 +757,7 @@ exports[`SMSFormFields should render correctly with isOrderUpdateChecked as true
             "$$typeof": Symbol(react.forward_ref),
             "attrs": Array [],
             "componentStyle": ComponentStyle {
-              "componentId": "sc-bwzfXH",
+              "componentId": "sc-htpNat",
               "isStatic": false,
               "rules": Array [
                 "
@@ -850,7 +900,7 @@ exports[`SMSFormFields should render correctly with isOrderUpdateChecked as true
             "displayName": "Styled(TextBox)",
             "foldedComponentIds": Array [],
             "render": [Function],
-            "styledComponentId": "sc-bwzfXH",
+            "styledComponentId": "sc-htpNat",
             "target": [Function],
             "toString": [Function],
             "warnTooManyClasses": [Function],
@@ -865,11 +915,13 @@ exports[`SMSFormFields should render correctly with isOrderUpdateChecked as true
         type="tel"
       />
     </Styled(Col)>
-    <Styled(Row)>
+    <Styled(Row)
+      fullBleed={true}
+    >
       <Styled(Col)
         colSize={
           Object {
-            "large": 5,
+            "large": 7,
             "medium": 8,
             "small": 6,
           }
@@ -884,15 +936,8 @@ exports[`SMSFormFields should render correctly with isOrderUpdateChecked as true
           fontWeight="regular"
           letterSpacing="normal"
           lineHeight="normal"
+          link={null}
           textAlign="left"
-        />
-        <Styled(Anchor)
-          anchorVariation="primary"
-          fontSizeVariation="small"
-          href="#"
-          noLink={true}
-          noUnderline={true}
-          target="_blank"
         />
       </Styled(Col)>
     </Styled(Row)>

@@ -1,7 +1,7 @@
 // @flow
 import React from 'react';
 import Slider from 'react-slick';
-import config from '../config';
+import config from '../Carousel.config';
 import { Image } from '../../../atoms';
 import { getIconPath } from '../../../../../utils';
 import CarouselStyle from '../Carousel.style';
@@ -12,9 +12,13 @@ const defaults = { ...config.CAROUSEL_DEFAULTS };
 
 type Props = {
   options: Object,
+  nextProps: Object,
   children: any,
   carouselConfig: Object,
   className: String,
+  playIconButtonLabel: String,
+  pauseIconButtonLabel: String,
+  sliderImageIndex: number,
 };
 
 type State = {
@@ -38,6 +42,14 @@ class Carousel extends React.PureComponent<Props, State> {
     };
   }
 
+  componentWillReceiveProps = (nextProps: Object) => {
+    const { sliderImageIndex } = nextProps;
+    const { sliderImageIndex: sliderImage } = this.props;
+    if (sliderImageIndex !== sliderImage) {
+      (this: any).slider.slickGoTo(sliderImageIndex);
+    }
+  };
+
   /**
    * @function getSlider function gets DOM reference of slider component.
    * @param {[Object]} element [Event object of click].
@@ -55,22 +67,56 @@ class Carousel extends React.PureComponent<Props, State> {
    */
   getPlayButton(wrapperConfig: Object) {
     const { autoplay } = this.state;
+    const {
+      playIconButtonLabel,
+      pauseIconButtonLabel,
+      dataLocatorPause,
+      dataLocatorPlay,
+    } = wrapperConfig;
+
+    const buttonClass = 'tcp_carousel__play_pause_button';
     return autoplay ? (
-      <Image
-        className="tcp_carousel__play"
-        data-locator={wrapperConfig.dataLocatorPause}
-        src={getIconPath('icon-pause')}
+      <button
+        className={buttonClass}
+        data-locator={dataLocatorPause}
         onClick={this.pause}
-      />
+        aria-label={playIconButtonLabel}
+      >
+        <Image
+          className="tcp_carousel__play_pause_button_icon"
+          aria-hidden="true"
+          src={getIconPath('icon-pause')}
+        />
+      </button>
     ) : (
-      <Image
-        className="tcp_carousel__play"
-        data-locator={wrapperConfig.dataLocatorPlay}
-        src={getIconPath('icon-play')}
+      <button
+        className={buttonClass}
+        data-locator={dataLocatorPlay}
         onClick={this.play}
-      />
+        aria-label={pauseIconButtonLabel}
+      >
+        <Image
+          className="tcp_carousel__play_pause_button_icon"
+          aria-hidden="true"
+          src={getIconPath('icon-play')}
+        />
+      </button>
     );
   }
+
+  appendDots = dots => {
+    const { carouselConfig, options } = this.props;
+    return (
+      <div>
+        {/*
+          carouselConfig.autoplay has been used to show/hide play icon only, the auto slide will
+          still work. However, the options.autoplay has been used to stop the auto sliding of the carousel.
+         */}
+        {carouselConfig.autoplay && options.autoplay && this.getPlayButton(carouselConfig)}
+        {options.dots && <ul>{dots}</ul>}
+      </div>
+    );
+  };
 
   /**
    * @function play function enable autoplay for carousel
@@ -108,7 +154,17 @@ class Carousel extends React.PureComponent<Props, State> {
    */
   render() {
     const { options, children, carouselConfig, className } = this.props;
-    const settings = { ...defaults, ...options };
+    const settings = {
+      appendDots: this.appendDots,
+      ...defaults,
+      ...options,
+      /*
+         The dots will be created on both cases. we need this as we are putting custom play/pause
+         inside the slick-dots container. So, if some cases if dots not required and we will be able
+         render play/pause button or vice-versa. Also check this.getPlayButton()
+        */
+      dots: options.dots || options.autoplay,
+    };
 
     return (
       <div
@@ -119,7 +175,6 @@ class Carousel extends React.PureComponent<Props, State> {
         <Slider className="tcp_carousel" ref={this.getSlider} {...settings}>
           {!children ? null : children}
         </Slider>
-        {carouselConfig.autoplay && !options.hidePlayPause && this.getPlayButton(carouselConfig)}
       </div>
     );
   }

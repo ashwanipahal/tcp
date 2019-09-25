@@ -1,0 +1,42 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`ApplyNowModalWrapper component should renders correctly 1`] = `
+<div
+  className="demo"
+>
+  <Styled(StyledApplyNowModal)
+    closeModal={[Function]}
+    closePLCCModal={[Function]}
+    isModalOpen={false}
+    isPLCCModalOpen={true}
+    labels={
+      Object {
+        "plcc_form_contact_info_header": "contact information",
+        "referred": Array [],
+      }
+    }
+    openPLCCModal={[Function]}
+  />
+  <Styled(Anchor)
+    anchorVariation="primary"
+    fontSizeVariation="medium"
+    onClick={[Function]}
+    text="lbl_PLCCModal_applyNowLink"
+    underline={true}
+  />
+</div>
+`;
+
+exports[`ApplyNowModalWrapper component should renders correctly for closed plccModal 1`] = `
+<div
+  className="demo"
+>
+  <Styled(Anchor)
+    anchorVariation="primary"
+    fontSizeVariation="medium"
+    onClick={[Function]}
+    text="lbl_PLCCModal_applyNowLink"
+    underline={true}
+  />
+</div>
+`;

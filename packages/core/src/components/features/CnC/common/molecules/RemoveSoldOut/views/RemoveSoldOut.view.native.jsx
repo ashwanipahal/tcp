@@ -1,20 +1,50 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import { BodyCopy } from '../../../../../../common/atoms';
-import { RemoveSoldOutView } from '../styles/RemoveSoldOut.style.native';
+import { RemoveSoldOutView, RowSectionStyle } from '../styles/RemoveSoldOut.style.native';
 
 class RemoveSoldOut extends React.PureComponent {
+  getRemoveString = (labels, removeCartItem, getUnavailableOOSItems) => {
+    const remove = labels.updateUnavailable.split('#remove#');
+    const newRemove = (
+      <BodyCopy
+        fontFamily="secondary"
+        fontSize="fs10"
+        text={labels.removeError}
+        textDecoration="underline"
+        onPress={() => removeCartItem(getUnavailableOOSItems)}
+      />
+    );
+
+    remove.splice(1, 0, newRemove);
+    return remove;
+  };
+
   render() {
-    const { labels } = this.props;
+    const { labels, removeCartItem, getUnavailableOOSItems, showLabelForRemove } = this.props;
+    const labelForRemove = this.getRemoveString(labels, removeCartItem, getUnavailableOOSItems);
     return (
       <RemoveSoldOutView>
-        <BodyCopy
-          color="error"
-          fontFamily="secondary"
-          fontSize="fs10"
-          fontWeight="regular"
-          text={labels.removeSoldOut}
-        />
+        {labels && !showLabelForRemove && (
+          <RowSectionStyle>
+            <BodyCopy
+              fontFamily="secondary"
+              fontSize="fs10"
+              fontWeight="regular"
+              text={labels.removeSoldoutHeader}
+            />
+          </RowSectionStyle>
+        )}
+        {showLabelForRemove && (
+          <RowSectionStyle>
+            <BodyCopy
+              fontFamily="secondary"
+              fontSize="fs10"
+              fontWeight="regular"
+              text={labelForRemove}
+            />
+          </RowSectionStyle>
+        )}
       </RemoveSoldOutView>
     );
   }
@@ -22,10 +52,15 @@ class RemoveSoldOut extends React.PureComponent {
 
 RemoveSoldOut.propTypes = {
   labels: PropTypes.string,
+  removeCartItem: PropTypes.func.isRequired,
+  getUnavailableOOSItems: PropTypes.shape([]),
+  showLabelForRemove: PropTypes.bool,
 };
 
 RemoveSoldOut.defaultProps = {
   labels: '',
+  getUnavailableOOSItems: [],
+  showLabelForRemove: false,
 };
 
 export default RemoveSoldOut;

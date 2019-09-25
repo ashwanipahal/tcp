@@ -3,24 +3,32 @@
 exports[`CouponTile Component should render correctly 1`] = `
 <Styled(View)>
   <Styled(View)>
+    <CouponIcon
+      coupon={Object {}}
+      labels={Object {}}
+    />
     <Styled(View)>
+      <Styled(View)>
+        <Styled(BodyCopy)
+          accessibilityText=""
+          data-locator="accountoverview-myplacerewatdstile-rewardvalue"
+          dataLocator=""
+          fontSize="fs12"
+          fontWeight="semibold"
+          margin={null}
+          numberOfLines={null}
+          textDecoration={null}
+        />
+      </Styled(View)>
       <Styled(BodyCopy)
-        color="white"
-        fontSize="fs13"
-        fontWeight="black"
-        text=""
-      />
-    </Styled(View)>
-    <Styled(View)>
-      <Styled(BodyCopy)
-        data-locator="accountoverview-myplacerewatdstile-rewardvalue"
-        fontSize="fs12"
-        fontWeight="semibold"
-      />
-      <Styled(BodyCopy)
+        accessibilityText=""
         data-locator="accountoverview-myplacerewatdstile-rewarduseby"
+        dataLocator=""
         fontSize="fs10"
+        margin={null}
+        numberOfLines={null}
         text=" undefined"
+        textDecoration={null}
       />
     </Styled(View)>
   </Styled(View)>

@@ -1,3 +1,7 @@
+html > body {
+  opacity: 1 !important;
+}
+
 .dark-overlay {
   display: none;
   background-color: #1a1a1a;
@@ -15,7 +19,7 @@
   }
 }
 
-@media (min-width: 1024px) {
+@media (min-width: 1200px) {
   .dark-overlay {
     display: none !important;
   }

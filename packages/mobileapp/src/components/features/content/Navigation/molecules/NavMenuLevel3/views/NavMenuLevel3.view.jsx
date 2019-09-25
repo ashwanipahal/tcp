@@ -19,18 +19,23 @@ const renderItem = navigate => listProps => {
   const maxWidthItem = getScreenWidth() - 60;
 
   const { item, index } = listProps;
-  const { url } = item;
+  const { url, categoryContent } = item;
+  const { name } = categoryContent;
+
+  const navigateToNextScreen = () => {
+    return navigate('ProductListing', {
+      url,
+      title: name,
+      reset: true,
+    });
+  };
 
   return (
     <ItemViewWithHeading
       accessibilityRole="link"
       accessibilityLabel={item.categoryContent.name}
       testID={`L3_text_links_${index}`}
-      onPress={() =>
-        navigate('ProductListing', {
-          url,
-        })
-      }
+      onPress={() => navigateToNextScreen()}
     >
       <MenuItem
         navigate={navigate}
@@ -67,7 +72,9 @@ const NavMenuLevel3 = props => {
       <HeadingView>
         <TouchableOpacityArrow
           accessibilityRole="button"
-          accessibilityLabel={accessibilityLabels && accessibilityLabels.back_button}
+          accessibilityLabel={
+            accessibilityLabels && accessibilityLabels.lbl_accessibility_backButton
+          }
           testID="back_icon_btn"
           onPress={() => goBack()}
         >

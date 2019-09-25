@@ -1,7 +1,7 @@
 import React, { Fragment } from 'react';
 import { Field, reduxForm, SubmissionError } from 'redux-form';
 import PropTypes from 'prop-types';
-import { Button, Col, Row, Image, TextBox } from '@tcp/core/src/components/common/atoms';
+import { Button, Col, Row, TextBox, DamImage } from '@tcp/core/src/components/common/atoms';
 import BodyCopy from '@tcp/core/src/components/common/atoms/BodyCopy';
 import { formatPhoneNumber } from '@tcp/core/src/utils/formValidation/phoneNumber';
 import { Grid, Modal } from '@tcp/core/src/components/common/molecules';
@@ -10,6 +10,7 @@ import SignupConfirm from '../../SignupConfirm';
 import SignupFormIntro from '../../SignupFormIntro';
 
 import smsSignupModalStyle from '../SmsSignupModal.style';
+import config from '../Config';
 
 class SmsSignupModal extends React.PureComponent {
   constructor(props) {
@@ -102,6 +103,8 @@ class SmsSignupModal extends React.PureComponent {
     } = this.props;
     const { validationStarted = false } = this.state;
 
+    const { IMG_DATA } = config;
+
     return (
       <Fragment>
         <Modal
@@ -113,10 +116,13 @@ class SmsSignupModal extends React.PureComponent {
           onRequestClose={this.closeModal}
           noPadding
           widthConfig={{ small: '375px', medium: '458px', large: '851px' }}
+          heightConfig={{ minHeight: '500px', height: '560px', maxHeight: '560px' }}
           closeIconDataLocator={
             subscription.success ? 'thank_you_modal_close_btn' : 'sms_signup_modal_close_btn'
           }
-          contentLabel={`${formViewConfig.signUpForLabel} ${formViewConfig.offerTypeLabel}`}
+          contentLabel={`${formViewConfig.lbl_SignUp_signUpForLabel} ${
+            formViewConfig.lbl_SignUp_offerTypeLabel
+          }`}
           aria={{
             describedby: subscription.success
               ? 'sign-up-modal-confirm-view'
@@ -132,7 +138,11 @@ class SmsSignupModal extends React.PureComponent {
                   hideCol={{ small: true, medium: true }}
                   className="img-wrapper"
                 >
-                  <Image alt={formViewConfig.imageAltText} src={formViewConfig.imageSrc} />
+                  <DamImage
+                    alt={formViewConfig.imageAltText}
+                    imgConfigs={IMG_DATA.imgConfig}
+                    imgData={formViewConfig.lbl_SignUp_imageSrc}
+                  />
                 </Col>
                 <Col colSize={{ small: 6, medium: 8, large: 8 }} ignoreGutter={{ large: true }}>
                   <SignupConfirm formViewConfig={formViewConfig} susbscriptionType="sms" />
@@ -147,7 +157,7 @@ class SmsSignupModal extends React.PureComponent {
                         onClick={this.closeModal}
                         dataLocator="shop_now_btn"
                       >
-                        {formViewConfig.shopNowLabel}
+                        {formViewConfig.lbl_SignUp_shopNowLabel}
                       </Button>
                     </Col>
                   </Row>
@@ -164,7 +174,11 @@ class SmsSignupModal extends React.PureComponent {
                     hideCol={{ small: true, medium: true }}
                     className="img-wrapper"
                   >
-                    <Image alt={formViewConfig.imageAltText} src={formViewConfig.imageSrc} />
+                    <DamImage
+                      alt={formViewConfig.imageAltText}
+                      imgConfigs={IMG_DATA.imgConfig}
+                      imgData={formViewConfig.lbl_SignUp_imageSrc}
+                    />
                   </Col>
                   <Col colSize={{ small: 6, medium: 8, large: 8 }}>
                     <SignupFormIntro formViewConfig={formViewConfig} />
@@ -174,7 +188,7 @@ class SmsSignupModal extends React.PureComponent {
                       className="field-container"
                     >
                       <Field
-                        placeholder={formViewConfig.placeholderText}
+                        placeholder={formViewConfig.lbl_SignUp_placeholderText}
                         name="signupPhoneNumber"
                         id="signupPhoneNumber"
                         type="text"
@@ -186,7 +200,7 @@ class SmsSignupModal extends React.PureComponent {
                         normalize={formatPhoneNumber}
                       />
                       <BodyCopy fontSize="fs12" fontFamily="secondary" className="terms-label">
-                        {formViewConfig.termsTextLabel}
+                        {formViewConfig.lbl_SignUp_termsTextLabel}
                       </BodyCopy>
                     </Col>
                     <Row className="button-wrapper-form" fullBleed>
@@ -208,7 +222,7 @@ class SmsSignupModal extends React.PureComponent {
                           dataLocator="join_now_btn"
                           onClick={this.submitForm}
                         >
-                          {formViewConfig.joinButtonLabel}
+                          {formViewConfig.lbl_SignUp_joinButtonLabel}
                         </Button>
                       </Col>
                     </Row>

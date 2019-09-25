@@ -14,6 +14,19 @@ export const loadLabelsData = payload => {
     type: GLOBAL_CONSTANTS.LOAD_LABELS_DATA,
   };
 };
+export const setLabelsData = payload => {
+  return {
+    payload,
+    type: GLOBAL_CONSTANTS.SET_LABELS_DATA,
+  };
+};
+
+export const loadComponentLabelsData = payload => {
+  return {
+    payload,
+    type: GLOBAL_CONSTANTS.LOAD_COMPONENT_LABELS_DATA,
+  };
+};
 
 export const loadXappConfigData = payload => {
   return {
@@ -22,10 +35,24 @@ export const loadXappConfigData = payload => {
   };
 };
 
+export const setBossBopisFlags = payload => {
+  return {
+    payload,
+    type: GLOBAL_CONSTANTS.SET_BOSS_BOPIS_FLAGS,
+  };
+};
+
 export const setAPIConfig = payload => {
   return {
     payload,
     type: GLOBAL_CONSTANTS.SET_API_CONFIG,
+  };
+};
+
+export const siteConfigData = payload => {
+  return {
+    type: GLOBAL_CONSTANTS.SITE_CONFIG,
+    payload,
   };
 };
 
@@ -77,9 +104,12 @@ export const setOptimizelyFeaturesList = payload => ({
 export default {
   loadLayoutData,
   loadLabelsData,
+  setLabelsData,
+  loadComponentLabelsData,
   bootstrapData,
   loadModulesData,
   setCountry,
   setCurrency,
   setLanguage,
+  setBossBopisFlags,
 };

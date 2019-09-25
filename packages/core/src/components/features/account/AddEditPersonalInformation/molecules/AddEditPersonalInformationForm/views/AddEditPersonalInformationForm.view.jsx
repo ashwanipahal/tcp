@@ -73,7 +73,9 @@ export const AddEditPersonalInformationForm = ({
             component={TextBox}
             dataLocator="editPersonalInfo-email"
           />
-          <BodyCopy fontSize="fs12">{labels.lbl_profile_email_used_login}</BodyCopy>
+          <BodyCopy fontFamily="secondary" fontSize="fs12">
+            {labels.lbl_profile_email_used_login}
+          </BodyCopy>
         </Col>
         <Col colSize={{ small: 6, medium: 4, large: 6 }} className="addEditPersonalPhoneNumber">
           <Field
@@ -121,7 +123,9 @@ export const AddEditPersonalInformationForm = ({
               />
             </Col>
           </Row>
-          <BodyCopy fontSize="fs12">{labels.lbl_profile_celebration_birthday}</BodyCopy>
+          <BodyCopy className="elem-mt-XS" fontFamily="secondary" fontSize="fs12">
+            {labels.lbl_profile_celebration_birthday}
+          </BodyCopy>
         </Col>
         <Col colSize={{ small: 6, medium: 4, large: 6 }}>
           {isCanada() && (
@@ -269,7 +273,8 @@ const validateMethod = createValidateMethod(
     'associateId',
     'airMilesAccountNumber',
     'Email',
-    { userBirthMonth: 'userDateOfBirth' },
+    'userBirthMonth',
+    'userBirthYear',
   ])
 );
 

@@ -1,41 +1,39 @@
-// @flow
 import React from 'react';
-import { TouchableOpacity } from 'react-native';
-import { StyledText } from '../../../../../../styles/globalStyles/StyledText.style';
-
+import get from 'lodash/get';
+import PropTypes from 'prop-types';
+import { withTheme } from 'styled-components/native';
+import CustomIcon from '@tcp/core/src/components/common/atoms/Icon';
+import { ICON_NAME } from '@tcp/core/src/components/common/atoms/Icon/Icon.constants';
 import { UrlHandler, navigateToPage, validateExternalUrl } from '../../../../../utils/utils.app';
 import withStyles from '../../../hoc/withStyles.native';
-import style from '../Button.style.native';
+import {
+  style,
+  CustomStyleText,
+  TouchableOpacityComponent,
+  IconContainer,
+} from '../Button.style.native';
 import { getLocator } from '../../../../../utils';
 
-/**
- * @param {object} props : Props for button
- * @desc This is a button component. The two variations of buttons are:
- * 1. fixed-width: Takes the width of the column which it occupies.
- * It has the fixed padding as per the zeplin.
+const IconComp = values => {
+  const { showIcon, iconName, selectedIcon, iconColor, iconSize, theme, selected } = values;
+  if (showIcon) {
+    const iconColorValue = get(theme, `colorPalette.${iconColor}`, iconColor);
+    const iconSizeValue = get(theme, `typography.fontSizes.${iconSize}`, iconSize);
+    return (
+      <IconContainer>
+        <CustomIcon
+          name={selected ? selectedIcon : iconName}
+          size={iconSizeValue}
+          color={iconColorValue}
+        />
+      </IconContainer>
+    );
+  }
 
- * 2. variable-width: Takes the width of the text that is inside the button.
- * It has fixed padding as per the zeplin. This variation needs to be mentioned in buttonVariation property.
- * TODO - Not able to add these property here due to linting,
- * need to find a way of doing it. Might be resolved with flow types.
-
- * Additional button Prop:
- * fullWidth: Additional property to mention 100% width of the button.
- * disabled: to have disabled state of the button
- */
-
-type Props = {
-  buttonVariation?: string,
-  fullWidth?: string,
-  customStyle?: Object,
-  text?: string,
-  url?: string,
-  disableButton?: boolean,
-  locator?: string,
-  onPress?: Function,
+  return null;
 };
 
-const CustomButton = (props: Props) => {
+const CustomButton = props => {
   const {
     locator,
     text,
@@ -43,9 +41,13 @@ const CustomButton = (props: Props) => {
     fullWidth,
     customStyle,
     disableButton,
+    color,
+    fill,
     onPress,
+    active,
+    selected,
     ...otherProps
-  }: Props = props;
+  } = props;
   const textValue = text || '';
   const { url, navigation } = otherProps;
 
@@ -58,18 +60,50 @@ const CustomButton = (props: Props) => {
   };
 
   return (
-    <TouchableOpacity
+    <TouchableOpacityComponent
       accessibilityRole="button"
       style={customStyle}
       disabled={disableButton}
       onPress={onPress || openUrl}
       testID={getLocator(locator)}
+      {...otherProps}
     >
-      <StyledText fullWidth={fullWidth} buttonVariation={buttonVariation} {...otherProps}>
+      <CustomStyleText
+        fullWidth={fullWidth}
+        buttonVariation={buttonVariation}
+        color={color}
+        fill={fill}
+        disableButton={disableButton}
+        active={active}
+        selected={selected}
+      >
         {textValue}
-      </StyledText>
-    </TouchableOpacity>
+      </CustomStyleText>
+      {IconComp(props)}
+    </TouchableOpacityComponent>
   );
+};
+
+CustomButton.propTypes = {
+  buttonVariation: PropTypes.string,
+  fullWidth: PropTypes.string,
+  customStyle: PropTypes.shape({}),
+  text: PropTypes.string,
+  url: PropTypes.string,
+  disableButton: PropTypes.bool,
+  locator: PropTypes.string,
+  color: PropTypes.string,
+  onPress: PropTypes.func,
+  fill: PropTypes.string,
+  active: PropTypes.bool,
+  navigation: PropTypes.shape({}),
+  selected: PropTypes.bool,
+  theme: PropTypes.shape({}),
+  showIcon: PropTypes.bool,
+  selectedIcon: PropTypes.string,
+  iconName: PropTypes.string,
+  iconColor: PropTypes.string,
+  iconSize: PropTypes.string,
 };
 
 CustomButton.defaultProps = {
@@ -80,8 +114,19 @@ CustomButton.defaultProps = {
   url: '',
   disableButton: false,
   locator: '',
+  color: '',
   onPress: null,
+  fill: '',
+  active: false,
+  navigation: {},
+  selected: false,
+  theme: {},
+  iconName: ICON_NAME.chevronDown,
+  iconColor: 'gray[800]',
+  iconSize: 'fs12',
+  showIcon: false,
+  selectedIcon: ICON_NAME.chevronUp,
 };
 
-export default withStyles(CustomButton, style);
+export default withStyles(withTheme(CustomButton), style);
 export { CustomButton as CustomButtonVanilla };

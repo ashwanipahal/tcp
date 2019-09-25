@@ -1,6 +1,6 @@
 import { put, takeLatest } from 'redux-saga/effects';
 import { ChangePassword, ChangePasswordSaga } from '../ChangePassword.saga';
-import { changePasswordSuccess, changePasswordError } from '../ChangePassword.actions';
+import { updateProfileSuccess } from '../../../MyProfile/container/MyProfile.actions';
 import constants from '../../ChangePassword.constants';
 
 describe('ChangePassword saga', () => {
@@ -11,16 +11,10 @@ describe('ChangePassword saga', () => {
       gen.next();
     });
 
-    it('should dispatch changePasswordSuccess action for success response', () => {
+    it('should dispatch updateProfileSuccess action for success response', () => {
       const response = 'success';
       const putDescriptor = gen.next(response).value;
-      expect(putDescriptor).toEqual(put(changePasswordSuccess(response)));
-    });
-
-    it('should dispatch changePasswordError action if response is error', () => {
-      const response = 'error';
-      const putDescriptor = gen.throw(response).value;
-      expect(putDescriptor).toEqual(put(changePasswordError(response)));
+      expect(putDescriptor).toEqual(put(updateProfileSuccess(response)));
     });
   });
 

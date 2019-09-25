@@ -5,6 +5,7 @@ import { cacheEnhancerMiddleware } from '@tcp/core/src/utils/cache.util';
 import { setStoreRef } from '@tcp/core/src/utils/store.utils';
 import globalSagas from '../sagas';
 import globalReducers from '../reducers';
+import createAnalyticsMiddleware from '../middlewares/analytics';
 
 const configureStore = preloadedState => {
   /**
@@ -12,7 +13,14 @@ const configureStore = preloadedState => {
    */
 
   const sagaMiddleware = createSagaMiddleware();
-  const enhancers = [applyMiddleware(sagaMiddleware), cacheEnhancerMiddleware()];
+
+  const middlewares = [
+    sagaMiddleware,
+    // Use analytics middleware conditionally
+    process.env.ANALYTICS && createAnalyticsMiddleware(),
+  ];
+
+  const enhancers = [applyMiddleware(...middlewares), cacheEnhancerMiddleware()];
 
   // Choose compose method depending upon environment and platform
   const composeEnhancers =

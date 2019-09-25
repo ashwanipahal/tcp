@@ -36,8 +36,10 @@ export default {
   },
   MODAL_WIDTH: {
     SMALL: '458px',
+    MEDIUM: '600px',
   },
   APP_LAYOUT_SPACING: {
+    XXS: '10px',
     XS: '20px',
     SM: '30px',
   },

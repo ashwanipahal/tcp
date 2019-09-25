@@ -6,7 +6,8 @@ import MyAccountLayout from '../views/MyAccountLayout.view';
 import AccountComponentMapping from '../AccountComponentMapping';
 import utils from '../../../../../utils';
 import { getAccountNavigationState, getLabels } from './Account.selectors';
-import { getAccountNavigationList } from './Account.actions';
+import { getAccountNavigationList, initActions } from './Account.actions';
+import { getUserLoggedInState } from '../../User/container/User.selectors';
 
 /**
  * @function Account The Account component is the main container for the account section
@@ -63,22 +64,34 @@ export class Account extends React.PureComponent {
    */
   render() {
     const { componentToLoad, activeComponent } = this.state;
-    const { router, accountNavigation, labels } = this.props;
+    const { router, accountNavigation, labels, isUserLoggedIn } = this.props;
     let navData = [];
     if (accountNavigation) {
       navData = accountNavigation.accountNav;
     }
-    return (
-      <MyAccountLayout
-        mainContent={AccountComponentMapping[componentToLoad]}
-        active={activeComponent}
-        navData={navData}
-        router={router}
-        labels={labels}
-      />
-    );
+
+    // TODO: currently our views are breaking if account labels are not present
+    // so rendering MyAccountLayout only when labels are present
+    // later on we can either need to add loader or we can prevent rendering from
+    // _app.jsx itself.
+    if (typeof labels === 'object' && isUserLoggedIn !== null) {
+      return (
+        <MyAccountLayout
+          mainContent={AccountComponentMapping[componentToLoad]}
+          active={activeComponent}
+          activeSubComponent={componentToLoad}
+          navData={navData}
+          router={router}
+          labels={labels}
+        />
+      );
+    }
+
+    return null;
   }
 }
+
+Account.getInitActions = () => initActions;
 
 export const mapDispatchToProps = dispatch => {
   return {
@@ -92,6 +105,7 @@ const mapStateToProps = state => {
   return {
     accountNavigation: getAccountNavigationState(state),
     labels: getLabels(state),
+    isUserLoggedIn: getUserLoggedInState(state),
   };
 };
 
@@ -100,6 +114,7 @@ Account.propTypes = {
   router: PropTypes.shape({}).isRequired,
   accountNavigation: PropTypes.shape([]).isRequired,
   labels: PropTypes.shape({}),
+  isUserLoggedIn: PropTypes.bool.isRequired,
 };
 
 Account.defaultProps = {

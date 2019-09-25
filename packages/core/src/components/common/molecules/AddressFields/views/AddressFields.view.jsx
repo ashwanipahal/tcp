@@ -27,10 +27,12 @@ export class AddressFields extends React.PureComponent {
     formName: PropTypes.string.isRequired,
     showDefaultCheckbox: PropTypes.bool,
     showPhoneNumber: PropTypes.bool,
+    showUserName: PropTypes.bool,
     formSection: PropTypes.string,
     className: PropTypes.string,
     variation: PropTypes.string,
     loadShipmentMethods: PropTypes.func.isRequired,
+    isGuest: PropTypes.bool,
   };
 
   static addressValidationConfig = getStandardConfig([
@@ -118,7 +120,10 @@ export class AddressFields extends React.PureComponent {
     const isCA = country === API_CONFIG.siteIds.ca.toUpperCase();
     return (
       <>
-        <Col colSize={{ small: 3, medium: variation === 'primary' ? 2 : 4, large: 3 }}>
+        <Col
+          colSize={{ small: 3, medium: variation === 'primary' ? 2 : 4, large: 3 }}
+          className="margin-right"
+        >
           <Field
             id={`${formSection}.state`}
             placeholder={isCA ? addressFormLabels.province : addressFormLabels.stateLbl}
@@ -139,7 +144,7 @@ export class AddressFields extends React.PureComponent {
             placeholder={isCA ? addressFormLabels.postalCode : addressFormLabels.zipCode}
             id={`${formSection}.zipCode`}
             name="zipCode"
-            maxLength={isCA ? 6 : 5}
+            maxLength={isCA ? 7 : 5}
             component={TextBox}
             dataLocator="addnewaddress-zipcode"
             className="address-field"
@@ -215,37 +220,41 @@ export class AddressFields extends React.PureComponent {
       addressFormLabels,
       variation,
       formSection,
+      isGuest,
+      showUserName,
     } = this.props;
     return (
       <div className={className}>
-        <Row fullBleed>
-          <Col
-            ignoreGutter={{ small: true }}
-            colSize={{ small: 6, medium: variation === 'secondary' ? 8 : 4, large: 6 }}
-          >
-            <Field
-              placeholder={addressFormLabels.firstName}
-              name="firstName"
-              id={`${formSection}.firstName`}
-              type="text"
-              component={TextBox}
-              dataLocator="addnewaddress-firstname"
-              className="address-field"
-              enableSuccessCheck={false}
-            />
-          </Col>
-          <Col colSize={{ small: 6, medium: variation === 'secondary' ? 8 : 4, large: 6 }}>
-            <Field
-              placeholder={addressFormLabels.lastName}
-              name="lastName"
-              id={`${formSection}.lastName`}
-              component={TextBox}
-              dataLocator="addnewaddress-lastname"
-              className="address-field"
-              enableSuccessCheck={false}
-            />
-          </Col>
-        </Row>
+        {showUserName && (
+          <Row fullBleed>
+            <Col
+              ignoreGutter={{ small: true }}
+              colSize={{ small: 6, medium: variation === 'secondary' ? 8 : 4, large: 6 }}
+            >
+              <Field
+                placeholder={addressFormLabels.firstName}
+                name="firstName"
+                id={`${formSection}.firstName`}
+                type="text"
+                component={TextBox}
+                dataLocator="addnewaddress-firstname"
+                className="address-field"
+                enableSuccessCheck={false}
+              />
+            </Col>
+            <Col colSize={{ small: 6, medium: variation === 'secondary' ? 8 : 4, large: 6 }}>
+              <Field
+                placeholder={addressFormLabels.lastName}
+                name="lastName"
+                id={`${formSection}.lastName`}
+                component={TextBox}
+                dataLocator="addnewaddress-lastname"
+                className="address-field"
+                enableSuccessCheck={false}
+              />
+            </Col>
+          </Row>
+        )}
         {this.renderAddressFields()}
         {variation === 'primary' ? (
           <Row fullBleed>
@@ -307,16 +316,18 @@ export class AddressFields extends React.PureComponent {
                 enableSuccessCheck={false}
               />
             </Col>
-            <Col colSize={{ small: 6, medium: 8, large: 6 }}>
-              <Field
-                placeholder="Email (For Order Updates)"
-                name="emailAddress"
-                id={`${formSection}.emailAddress`}
-                component={TextBox}
-                dataLocator="email-address-field"
-                enableSuccessCheck={false}
-              />
-            </Col>
+            {isGuest && (
+              <Col colSize={{ small: 6, medium: 8, large: 6 }}>
+                <Field
+                  placeholder="Email (For Order Updates)"
+                  name="emailAddress"
+                  id={`${formSection}.emailAddress`}
+                  component={TextBox}
+                  dataLocator="email-address-field"
+                  enableSuccessCheck={false}
+                />
+              </Col>
+            )}
           </Row>
         ) : null}
       </div>
@@ -328,9 +339,11 @@ AddressFields.defaultProps = {
   isMakeDefaultDisabled: false,
   showDefaultCheckbox: true,
   showPhoneNumber: true,
+  showUserName: true,
   formSection: '',
   className: '',
   variation: 'primary',
+  isGuest: true,
 };
 
 export default withStyles(AddressFields, styles);

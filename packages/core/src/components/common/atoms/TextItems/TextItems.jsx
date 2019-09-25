@@ -1,9 +1,15 @@
 import React from 'react';
+import errorBoundary from '../../hoc/withErrorBoundary';
 
 const TextItems = ({ textItems }) => {
+  if (!textItems) {
+    return null;
+  }
   return textItems.map(({ style, text }, index) => (
-    <span className={style}>{index ? ` ${text}` : text}</span>
+    <span key={index.toString()} className={style}>
+      {index ? ` ${text}` : text}
+    </span>
   ));
 };
 
-export default TextItems;
+export default errorBoundary(TextItems);

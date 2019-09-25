@@ -1,0 +1,8 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`MiniBagContainer should render correctly 1`] = `
+<withRouter(Styled(MiniBag))
+  closeMiniBagDispatch={[MockFunction]}
+  onRequestClose={[Function]}
+/>
+`;

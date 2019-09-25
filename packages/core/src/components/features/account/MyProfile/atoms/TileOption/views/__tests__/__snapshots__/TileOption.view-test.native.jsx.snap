@@ -1,0 +1,43 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`TileOption should render correctly 1`] = `
+<Styled(TouchableOpacity)
+  isSelected={false}
+  onPress={[Function]}
+>
+  <Styled(View)>
+    <Styled(BodyCopy)
+      accessibilityText=""
+      dataLocator=""
+      fontFamily="secondary"
+      fontSize="fs14"
+      fontWeight="regular"
+      margin={null}
+      numberOfLines={null}
+      text="Parent"
+      textDecoration={null}
+    />
+  </Styled(View)>
+</Styled(TouchableOpacity)>
+`;
+
+exports[`TileOption should render with selected tile 1`] = `
+<Styled(TouchableOpacity)
+  isSelected={true}
+  onPress={[Function]}
+>
+  <Styled(View)>
+    <Styled(BodyCopy)
+      accessibilityText=""
+      dataLocator=""
+      fontFamily="secondary"
+      fontSize="fs14"
+      fontWeight="regular"
+      margin={null}
+      numberOfLines={null}
+      text="Parent"
+      textDecoration={null}
+    />
+  </Styled(View)>
+</Styled(TouchableOpacity)>
+`;

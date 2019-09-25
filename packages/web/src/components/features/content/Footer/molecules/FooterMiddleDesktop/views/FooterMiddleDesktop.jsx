@@ -4,13 +4,43 @@ import PropTypes from 'prop-types';
 import OpenLoginModal from '@tcp/core/src/components/features/account/LoginPage/views/LoginModal';
 import FooterNavLinks from '../../FooterNavLinks';
 
+const renderFooterNavLinks = (
+  navLink,
+  className,
+  colNum,
+  linkConfig,
+  footerActionCreator,
+  { isSubHeader, isLoggedIn, headerAsImage } = {}
+) => {
+  if (!navLink) {
+    return null;
+  }
+
+  return (
+    <FooterNavLinks
+      className={className}
+      isSubHeader={isSubHeader}
+      isLoggedIn={isLoggedIn}
+      headerAsImage={headerAsImage}
+      navLinkItems={{
+        header: navLink.header,
+        links: navLink.links,
+      }}
+      colNum={colNum}
+      linkConfig={linkConfig}
+      footerActionCreator={footerActionCreator}
+    />
+  );
+};
+
 const FooterMiddleDesktop = ({
   navLinks,
   className,
-  setLoginModalMountState,
-  loginModalMountedState,
-  openTrackOrder,
   isLoggedIn,
+  loginModalMountedState,
+  setLoginModalMountState,
+  linkConfig,
+  footerActionCreator,
 }) => {
   let numberOfNavLinkCols = navLinks.length;
 
@@ -30,27 +60,17 @@ const FooterMiddleDesktop = ({
             small: 6,
           }}
         >
-          <FooterNavLinks
-            className={className}
-            navLinkItems={{
-              header: navLinks[i].header,
-              links: navLinks[i].links,
-            }}
-            colNum={i}
-            loginModalMountedState={loginModalMountedState}
-            setLoginModalMountState={setLoginModalMountState}
-          />
-          <FooterNavLinks
-            className={className}
-            isSubHeader
-            navLinkItems={{
-              header: navLinks[i + 1].header,
-              links: navLinks[i + 1].links,
-            }}
-            colNum={i + 1}
-            loginModalMountedState={loginModalMountedState}
-            setLoginModalMountState={setLoginModalMountState}
-          />
+          {renderFooterNavLinks(navLinks[i], className, i, linkConfig, footerActionCreator)}
+          {renderFooterNavLinks(
+            navLinks[i + 1],
+            className,
+            i + 1,
+            linkConfig,
+            footerActionCreator,
+            {
+              isSubHeader: true,
+            }
+          )}
         </Col>
       );
       i += 1;
@@ -63,18 +83,10 @@ const FooterMiddleDesktop = ({
             small: 6,
           }}
         >
-          <FooterNavLinks
-            className={className}
-            navLinkItems={{
-              header: navLinks[i].header,
-              links: navLinks[i].links,
-            }}
-            colNum={i}
-            isLoggedIn={isLoggedIn}
-            openTrackOrder={openTrackOrder}
-            loginModalMountedState={loginModalMountedState}
-            setLoginModalMountState={setLoginModalMountState}
-          />
+          {renderFooterNavLinks(navLinks[i], className, i, linkConfig, footerActionCreator, {
+            isSubHeader: false,
+            isLoggedIn: true,
+          })}
         </Col>
       );
     }
@@ -89,17 +101,11 @@ const FooterMiddleDesktop = ({
           small: 6,
         }}
       >
-        <FooterNavLinks
-          headerAsImage
-          className={className}
-          navLinkItems={{
-            header: navLinks[0].header,
-            links: navLinks[0].links,
-          }}
-          colNum={0}
-          loginModalMountedState={loginModalMountedState}
-          setLoginModalMountState={setLoginModalMountState}
-        />
+        {renderFooterNavLinks(navLinks[0], className, 0, linkConfig, footerActionCreator, {
+          isSubHeader: false,
+          isLoggedIn: false,
+          headerAsImage: true,
+        })}
       </Col>
       <Col
         colSize={{
@@ -108,17 +114,11 @@ const FooterMiddleDesktop = ({
           small: 6,
         }}
       >
-        <FooterNavLinks
-          headerAsImage
-          className={className}
-          navLinkItems={{
-            header: navLinks[1].header,
-            links: navLinks[1].links,
-          }}
-          colNum={1}
-          loginModalMountedState={loginModalMountedState}
-          setLoginModalMountState={setLoginModalMountState}
-        />
+        {renderFooterNavLinks(navLinks[1], className, 1, linkConfig, footerActionCreator, {
+          isSubHeader: false,
+          isLoggedIn: false,
+          headerAsImage: true,
+        })}
       </Col>
       {numberOfNavLinkCols <= 5 ? (
         <Col
@@ -147,14 +147,16 @@ const FooterMiddleDesktop = ({
 FooterMiddleDesktop.propTypes = {
   navLinks: PropTypes.shape([]).isRequired,
   className: PropTypes.string.isRequired,
-  openTrackOrder: PropTypes.func,
-  setLoginModalMountState: PropTypes.bool.isRequired,
   loginModalMountedState: PropTypes.bool.isRequired,
   isLoggedIn: PropTypes.bool.isRequired,
-};
-
-FooterMiddleDesktop.defaultProps = {
-  openTrackOrder: () => null,
+  setLoginModalMountState: PropTypes.func.isRequired,
+  linkConfig: PropTypes.shape({
+    'track-order': PropTypes.func,
+    favorites: PropTypes.func,
+    'log-out': PropTypes.func,
+    'my-account': PropTypes.func,
+  }).isRequired,
+  footerActionCreator: PropTypes.func.isRequired,
 };
 
 export default FooterMiddleDesktop;

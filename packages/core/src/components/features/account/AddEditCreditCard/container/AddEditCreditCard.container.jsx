@@ -10,6 +10,8 @@ import {
   getOnFileAddressKey,
   getAddEditCreditCardSuccess,
   getAddEditCreditCardError,
+  getAddGiftCardErrorMessage,
+  getshowNotification,
 } from './AddEditCreditCard.selectors';
 import constants from './AddEditCreditCard.constants';
 import AddEditCreditCardComponent from '../views/AddEditCreditCard.view';
@@ -34,6 +36,8 @@ export class AddEditCreditCard extends React.PureComponent {
     showSuccessNotification: PropTypes.func.isRequired,
     labels: PropTypes.shape({}),
     addressLabels: PropTypes.shape({}),
+    formErrorMessage: PropTypes.shape({}).isRequired,
+    showNotification: PropTypes.bool.isRequired,
   };
 
   static defaultProps = {
@@ -170,6 +174,8 @@ export class AddEditCreditCard extends React.PureComponent {
       addEditCreditCardError,
       labels,
       addressLabels,
+      formErrorMessage,
+      showNotification,
     } = this.props;
 
     if (addressList === null) {
@@ -197,6 +203,8 @@ export class AddEditCreditCard extends React.PureComponent {
         onSubmit={this.onCreditCardFormSubmit}
         errorMessage={addEditCreditCardError}
         addressFormLabels={addressLabels.addressFormLabels}
+        formErrorMessage={formErrorMessage}
+        showNotification={showNotification}
       />
     );
   }
@@ -212,6 +220,8 @@ const mapStateToProps = (state, ownProps) => {
     addEditCreditCardSuccess: getAddEditCreditCardSuccess(state),
     addEditCreditCardError: getAddEditCreditCardError(state),
     addressLabels: getAddEditAddressLabels(state),
+    formErrorMessage: getAddGiftCardErrorMessage(state),
+    showNotification: getshowNotification(state),
   };
 };
 

@@ -2,7 +2,7 @@
 // TODO: Need fix unused/proptypes eslint error
 /* eslint-disable */
 
-import { executeStatefulAPICall } from '../../handler';
+import { executeStatefulAPICall, executeUnbxdAPICall } from '../../handler';
 import { parseDate, compareDate } from '../../../utils/parseDate';
 import endpoints from '../../endpoints';
 import {
@@ -18,7 +18,7 @@ import {
 } from '../../../utils/errorMessage.util';
 import { isCanada } from '../../../utils';
 
-const ORDER_ITEM_TYPE = {
+export const ORDER_ITEM_TYPE = {
   BOSS: 'BOSS',
   BOPIS: 'BOPIS',
   ECOM: 'ECOM',
@@ -606,11 +606,11 @@ tomorrowClosingTime
       });
     }
   }
-
   if (orderDetailsResponse.giftWrapItem && orderDetailsResponse.giftWrapItem.length) {
     usersOrder.checkout.giftWrap = {
       optionId: orderDetailsResponse.giftWrapItem[0].catentryId.toString(),
       message: orderDetailsResponse.giftWrapItem[0].giftOptionsMessage || '',
+      brand: '',
     };
     usersOrder.giftWrappingTotal = flatCurrencyToCents(
       orderDetailsResponse.giftWrapItem[0].totalPrice
@@ -647,6 +647,25 @@ export const getOrderDetailsData = () => {
     return {
       orderDetails: getCurrentOrderFormatter(orderDetailsResponse, false, false),
     };
+  });
+};
+
+export const getProductInfoForTranslationData = query => {
+  return executeUnbxdAPICall({
+    body: {
+      rows: 20,
+      variants: true,
+      'variants.count': 100,
+      version: 'V2',
+      'facet.multiselect': true,
+      selectedfacet: true,
+      id: query,
+      promotion: false,
+      pagetype: 'boolean',
+      fields:
+        'giftcard,TCPFit,product_name,TCPColor,imagename,favoritedcount,product_short_description,style_long_description,min_list_price,min_offer_price,product_long_description',
+    },
+    webService: endpoints.getProductInfoForTranslationByPartNumber,
   });
 };
 
@@ -794,9 +813,68 @@ export const getUnqualifiedItems = () => {
     });
 };
 
+export const startPaypalCheckoutAPI = (orderId, fromPage) => {
+  let payload = {
+    header: {
+      orderId: orderId,
+      callingPage: fromPage,
+      requestType: 'REST',
+    },
+    webService: endpoints.paypalLookUp,
+  };
+  return executeStatefulAPICall(payload)
+    .then((res = { body: {} }) => {
+      if (responseContainsErrors(res)) {
+        throw new ServiceResponseError(res);
+      }
+      return {
+        centinelPayload: res.body.Centinel_PAYLOAD,
+        centinelOrderId: res.body.Centinel_OrderId,
+        centinelRequestPage: res.body.callingPage,
+        tcpOrderId: res.body.orderId,
+        paypalInContextToken: res.body.processorTransactionId,
+      };
+    })
+    .catch(err => {
+      throw getFormattedError(err);
+    });
+};
+
+export const paypalAuthorizationAPI = (
+  tcpOrderId,
+  centinelRequestPage,
+  centinelPayload,
+  centinelOrderId
+) => {
+  let payload = {
+    header: {
+      tcpOrderId: tcpOrderId,
+      callingPage: centinelRequestPage,
+      PaRes: centinelPayload,
+      MD: centinelOrderId,
+    },
+    webService: endpoints.paypalAuth,
+  };
+  return executeStatefulAPICall(payload)
+    .then((res = { body: {} }) => {
+      if (responseContainsErrors(res)) {
+        throw new ServiceResponseError(res);
+      }
+      return {
+        success: true,
+      };
+    })
+    .catch(err => {
+      throw getFormattedError(err);
+    });
+};
+
 export default {
   getOrderDetailsData,
   removeItem,
   getCartData,
   getUnqualifiedItems,
+  getProductInfoForTranslationData,
+  startPaypalCheckoutAPI,
+  paypalAuthorizationAPI,
 };

@@ -7,9 +7,11 @@
 
 import React from 'react';
 import Dotdotdot from 'react-dotdotdot';
+import PropTypes from 'prop-types';
 // import { isClient, isTouchClient } from 'routing/routingHelper';
 // import { isTouchClient } from '../../../../../../../utils';
 import { isClient, getIconPath, getLocator } from '../../../../../../../utils';
+import { getFormattedLoyaltyText, getProductListToPath } from '../utils/productsCommonUtils';
 // import { labels } from '../labels/labels';
 import { Image, BodyCopy, Anchor } from '../../../../../../common/atoms';
 
@@ -25,59 +27,15 @@ export function productLink(loadedProductCount, pdpUrl, event) {
   }
 }
 
-export function ProductMainImage(props) {
-  // eslint-disable-next-line
-  const { imageUrl, productName, pdpUrl, loadedProductCount, analyticsData, keepAlive } = props;
-  return (
-    <figure className="product-image-container" itemScope itemType="http://schema.org/ImageObject">
-      <a
-        className={keepAlive && 'out-of-stock-overlap'}
-        onClick={e => productLink(loadedProductCount, pdpUrl, e)}
-        title={productName}
-        unbxdattr="product"
-        unbxdparam_sku={analyticsData && analyticsData.pId}
-        unbxdparam_prank={analyticsData && analyticsData.prank}
-        href={pdpUrl}
-      >
-        <img
-          className="product-image-content img-item"
-          src={imageUrl}
-          alt={productName}
-          itemProp="contentUrl"
-        />
-      </a>
-    </figure>
-  );
-}
-
-export function ProductSKUInfo(props) {
-  // eslint-disable-next-line
-  const { color, size, fit } = props;
-
-  if (!color && !size && !fit) {
-    return null;
-  }
-
-  return (
-    <div className="product-sku-info-container">
-      {color && <img src={color.imagePath} alt={color.name} className="img-color" />}
-      {/* eslint-disable-next-line */}
-      {size && <span className="size-container">Size {size}</span>}
-      {size && fit && <i className="separator-bar-icon">|</i>}
-      {fit && <span className="fit-container">{fit}</span>}
-    </div>
-  );
-}
-
-export function ProductTitle(props) {
-  // eslint-disable-next-line
-  const { name, pdpUrl, loadedProductCount, children } = props;
-  // eslint-disable-next-line
+export function ProductTitle(values) {
+  const { name, pdpUrl, loadedProductCount, children } = values;
+  const pdpToPath = getProductListToPath(pdpUrl);
   return (
     <div className="product-title-container">
       <Anchor
         handleLinkClick={e => productLink(loadedProductCount, pdpUrl, e)}
-        to={pdpUrl}
+        to={pdpToPath}
+        asPath={pdpUrl}
         inheritedStyles="product-title-content"
       >
         <Dotdotdot clamp={2}>
@@ -94,14 +52,14 @@ export function ProductTitle(props) {
 /* NOTE: This issue (DT-28867) added isMobile condition. */
 /* NOTE: As per DT-29548, isMobile condition is not valid. "Offer" price should be shown below "List" price (always) */
 /* NOTE: DT-27216, if offerPrice and listPrice are the same, just offerPrice should be shown (and will be black) */
-/* eslint-disable */
 export function ProductPricesSection(props) {
-  const { currencySymbol, listPrice, offerPrice, noMerchantBadge, merchantTag } = props;
+  const { currencySymbol, listPrice, offerPrice, merchantTag, dataLocator } = props;
+
   return (
     <div className="container-price">
       {offerPrice && (
         <BodyCopy
-          dataLocator={getLocator('global_Price_text')}
+          dataLocator={dataLocator || getLocator('global_Price_text')}
           color="red.500"
           fontWeight="extrabold"
           fontFamily="secondary"
@@ -117,7 +75,7 @@ export function ProductPricesSection(props) {
           fontFamily="secondary"
           fontWeight="semibold"
           fontSize={['fs10', 'fs12', 'fs14']}
-          className={'list-price'}
+          className="list-price"
         >
           {currencySymbol + listPrice.toFixed(2)}
         </BodyCopy>
@@ -138,49 +96,22 @@ export function ProductPricesSection(props) {
   );
 }
 
-// export function ProductPickupIcon(props) {
-//   // eslint-disable-next-line
-//   const { isMobile, className, onClick, isShowBopisButton, keepAlive } = props;
-//   const myClassName = isMobile
-//     ? cssClassName('pickup-button-container ', className)
-//     : cssClassName(
-//         'pickup-icon-container ',
-//         { 'hover-button-enabled ': !isTouchClient() },
-//         className,
-//         { ' keep-alive-pickup-icon': keepAlive }
-//       );
-
-//   const spinnerClassName = cssClassName(
-//     isMobile ? 'pickup-button-icon-spinner ' : 'pickup-icon-spinner inline-spinner-item '
-//   );
-
-//   if (!isShowBopisButton) {
-//     return null;
-//   }
-//   return (
-//     <ButtonWithSpinner
-//       spinnerClassName={spinnerClassName}
-//       type="button"
-//       data-analytics={labels.ANALYTICS.PICKUP_BUTTON_EVENT}
-//       className={myClassName}
-//       onClick={onClick}
-//     >
-//       <span className={cssClassName({ 'message-icon ': !isMobile })}>Pick up in store</span>
-//     </ButtonWithSpinner>
-//   );
-// }
-
 export class ProductWishlistIcon extends ServerToClientRenderPatch {
   render() {
-    const { onClick, isRemove, isDisabled, isMobile } = this.props;
-    let { className } = this.props;
+    const { onClick, isRemove, isDisabled, isMobile, className } = this.props;
     const removeTextHeader = isMobile ? 'Tap to Remove' : 'Click to Remove';
     const removeTxtDesc = isMobile
       ? 'Remove this item from your Favorites List by tapping the heart icon again.'
       : 'Remove this item from your Favorites List by clicking the heart icon again.';
 
     return (
-      <div className="fav-icon-wrapper" onClick={onClick} isDisabled={isDisabled}>
+      <BodyCopy
+        component="div"
+        role="button"
+        className="fav-icon-wrapper"
+        onClick={onClick}
+        isDisabled={isDisabled}
+      >
         {isRemove ? (
           <div className="information-remove">
             <p className="information-remove-message">
@@ -190,7 +121,7 @@ export class ProductWishlistIcon extends ServerToClientRenderPatch {
             </p>
           </div>
         ) : (
-          <button class="clear-button">
+          <button className="clear-button">
             <Image
               data-locator={getLocator('global_favorite_button')}
               alt="Add-to-favorite"
@@ -200,13 +131,12 @@ export class ProductWishlistIcon extends ServerToClientRenderPatch {
             />
           </button>
         )}
-      </div>
+      </BodyCopy>
     );
   }
 }
 
 export function BadgeItem(props) {
-  // eslint-disable-next-line
   const { text, className, isShowBadges } = props;
 
   return (
@@ -224,15 +154,61 @@ export function BadgeItem(props) {
 }
 
 export function PromotionalMessage(props) {
-  const { message } = props;
+  const { text } = props;
   return (
-    <BodyCopy
-      fontSize={['fs10', 'fs12', 'fs14']}
-      fontWeight="extrabold"
-      fontFamily="secondary"
-      data-locator={getLocator('global_loyalty_text')}
-      className="loyalty-text-container"
-      dangerouslySetInnerHTML={{ __html: message }}
-    />
+    <Dotdotdot clamp={2}>
+      <BodyCopy
+        fontSize={['fs10', 'fs12', 'fs14']}
+        fontWeight="extrabold"
+        fontFamily="secondary"
+        data-locator={getLocator('global_loyalty_text')}
+        className="loyalty-text-container"
+      >
+        {text && getFormattedLoyaltyText(text)[0]}
+        {text && (
+          <BodyCopy
+            fontSize={['fs10', 'fs12', 'fs14']}
+            fontWeight="extrabold"
+            fontFamily="secondary"
+            component="span"
+            color="gray.900"
+          >
+            {` on${getFormattedLoyaltyText(text)[1]}`}
+          </BodyCopy>
+        )}
+      </BodyCopy>
+    </Dotdotdot>
   );
 }
+
+PromotionalMessage.propTypes = {
+  text: PropTypes.string.isRequired,
+};
+
+BadgeItem.defaultProps = {
+  text: '',
+  className: '',
+  isShowBadges: true,
+};
+
+BadgeItem.propTypes = {
+  text: PropTypes.string,
+  className: PropTypes.string,
+  isShowBadges: PropTypes.bool,
+};
+
+ProductPricesSection.defaultProps = {
+  currencySymbol: '$',
+  listPrice: 0,
+  offerPrice: 0,
+  merchantTag: '',
+  dataLocator: '',
+};
+
+ProductPricesSection.propTypes = {
+  currencySymbol: PropTypes.string,
+  listPrice: PropTypes.number,
+  offerPrice: PropTypes.number,
+  merchantTag: PropTypes.string,
+  dataLocator: PropTypes.string,
+};

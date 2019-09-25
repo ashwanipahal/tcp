@@ -2,7 +2,7 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import withStyles from '../../../hoc/withStyles';
 import BodyCopy from '../../../atoms/BodyCopy';
-import styles from '../styles/style';
+import styles from '../styles/CheckoutSectionTitleDisplay.view.style';
 
 class CheckoutSectionTitleDisplay extends React.PureComponent {
   render() {

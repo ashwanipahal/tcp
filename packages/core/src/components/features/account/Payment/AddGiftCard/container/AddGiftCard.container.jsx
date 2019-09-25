@@ -4,8 +4,13 @@ import { PropTypes } from 'prop-types';
 import AddGiftCardComponent from '../views/AddGiftCard.view';
 import { addGiftCardRequest, resetShowNotification } from './AddGiftCard.actions';
 import { getCardList } from '../../container/Payment.actions';
-import { getAddGiftCardResponse, getAddGiftCardError } from './AddGiftCard.selector';
+import {
+  getAddGiftCardResponse,
+  getAddGiftCardErrorMessage,
+  getshowNotification,
+} from './AddGiftCard.selector';
 import utils, { isMobileApp } from '../../../../../../utils';
+import { getFormValidationErrorMessages } from '../../../Account/container/Account.selectors';
 
 class AddGiftCardContainer extends React.Component {
   componentDidUpdate() {
@@ -32,7 +37,14 @@ class AddGiftCardContainer extends React.Component {
   };
 
   render() {
-    const { onAddGiftCardClick, getAddGiftCardErr, labels, toggleModal } = this.props;
+    const {
+      onAddGiftCardClick,
+      getAddGiftCardErr,
+      labels,
+      toggleModal,
+      formErrorMessage,
+      showNotification,
+    } = this.props;
     return (
       <AddGiftCardComponent
         onAddGiftCardClick={onAddGiftCardClick}
@@ -40,6 +52,8 @@ class AddGiftCardContainer extends React.Component {
         addGiftCardResponse={getAddGiftCardErr}
         goBackToPayment={this.goBackToPayment}
         toggleModal={toggleModal}
+        formErrorMessage={formErrorMessage}
+        showNotification={showNotification}
       />
     );
   }
@@ -62,7 +76,9 @@ export const mapDispatchToProps = dispatch => {
 const mapStateToProps = state => {
   return {
     addGiftCardResponse: getAddGiftCardResponse(state),
-    getAddGiftCardErr: getAddGiftCardError(state),
+    getAddGiftCardErr: getAddGiftCardErrorMessage(state),
+    formErrorMessage: getFormValidationErrorMessages(state),
+    showNotification: getshowNotification(state),
   };
 };
 
@@ -74,6 +90,8 @@ AddGiftCardContainer.propTypes = {
   toggleModal: PropTypes.func,
   resetNotificationStateAction: PropTypes.func,
   getCardListAction: PropTypes.func,
+  formErrorMessage: PropTypes.shape({}).isRequired,
+  showNotification: PropTypes.bool.isRequired,
 };
 
 AddGiftCardContainer.defaultProps = {

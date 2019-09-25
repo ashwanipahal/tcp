@@ -10,6 +10,7 @@ exports[`LoginForm component should renders correctly 1`] = `
         "login": Object {},
         "loginErrorMessage": "",
         "onSubmit": [Function],
+        "registration": Object {},
         "resetForm": [Function],
         "showForgotPasswordForm": [Function],
       }
@@ -34,6 +35,7 @@ exports[`LoginForm component should renders correctly 1`] = `
               "error": "",
               "touched": "",
             },
+            "onChangeText": [Function],
             "secureTextEntry": false,
             "showErrorIcon": true,
             "showSuccessCheck": false,
@@ -83,6 +85,7 @@ exports[`LoginForm component should renders correctly 1`] = `
                 "error": "",
                 "touched": "",
               },
+              "onChangeText": [Function],
               "secureTextEntry": false,
               "showErrorIcon": true,
               "showSuccessCheck": false,
@@ -113,6 +116,7 @@ exports[`LoginForm component should renders correctly 1`] = `
         dataLocator="password"
         id="password"
         name="password"
+        rightText="lbl_createAccount_show"
         secureTextEntry={true}
         type="password"
       />
@@ -120,16 +124,16 @@ exports[`LoginForm component should renders correctly 1`] = `
         <Styled(Anchor)
           accessibilityLabel=""
           anchorVariation="primary"
+          colorName={null}
           customStyle={Object {}}
           dataLocator=""
           fontFamily="secondary"
-          fontSizeVariation="small"
+          fontSizeVariation="medium"
           locator=""
           noLink={true}
           onPress={[Function]}
-          text="show"
+          text="lbl_createAccount_show"
           to="/#"
-          underline={true}
           visible={false}
         />
       </Styled(View)>
@@ -137,37 +141,39 @@ exports[`LoginForm component should renders correctly 1`] = `
     <View
       style={
         Object {
+          "marginBottom": 30,
           "width": "90%",
         }
       }
     >
-      <Field
-        component={[Function]}
-        dataLocator="rememberMe"
-        disabled={false}
-        name="userTouchId"
+      <CreateAccountCheckBox
+        labels={
+          Object {
+            "handleSubmit": [Function],
+            "login": Object {},
+            "loginErrorMessage": "",
+            "onSubmit": [Function],
+            "registration": Object {},
+            "resetForm": [Function],
+            "showForgotPasswordForm": [Function],
+          }
+        }
       />
     </View>
-    <Styled(CustomButton)
+    <Styled(WithTheme(CustomButton))
       buttonVariation="variable-width"
-      color="#fff"
       customStyle={
         Object {
           "marginTop": 30,
         }
       }
-      disableButton={false}
       fill="BLUE"
-      fullWidth=""
-      locator=""
-      onPress={null}
-      text=""
-      url=""
     />
     <Styled(Anchor)
       accessibilityLabel=""
       anchorVariation="secondary"
       class="underlink"
+      colorName={null}
       customStyle={
         Object {
           "marginTop": 10,

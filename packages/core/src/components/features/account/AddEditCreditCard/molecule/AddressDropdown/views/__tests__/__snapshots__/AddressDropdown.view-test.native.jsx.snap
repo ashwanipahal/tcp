@@ -4,7 +4,7 @@ exports[`CreditCardFields component should renders correctly when isExpirationRe
 <View
   style={null}
 >
-  <Styled(View)
+  <Styled(TouchableOpacity)
     data={Array []}
     dropDownStyle={null}
     input={
@@ -22,7 +22,7 @@ exports[`CreditCardFields component should renders correctly when isExpirationRe
       }
     }
     onLayout={[Function]}
-    onStartShouldSetResponder={[Function]}
+    onPress={[Function]}
     onValueChange={null}
     options={
       Array [
@@ -31,16 +31,22 @@ exports[`CreditCardFields component should renders correctly when isExpirationRe
     }
     selectListTitle="Select Address"
     selectedValue={null}
+    showButton={true}
     variation="primary"
   >
     <Styled(View)>
       <Styled(BodyCopy)
+        accessibilityText=""
         color="gray.800"
+        dataLocator=""
         fontFamily="secondary"
         fontSize="fs13"
         fontWeight="black"
+        margin={null}
+        numberOfLines={null}
         text={0}
         textAlign="center"
+        textDecoration={null}
       />
     </Styled(View)>
     <Image
@@ -50,7 +56,7 @@ exports[`CreditCardFields component should renders correctly when isExpirationRe
         }
       }
     />
-  </Styled(View)>
+  </Styled(TouchableOpacity)>
   <Component
     hardwareAccelerated={false}
     transparent={true}
@@ -66,16 +72,15 @@ exports[`CreditCardFields component should renders correctly when isExpirationRe
         Object {
           "height": 1334,
           "left": 0,
-          "marginTop": 0,
-          "width": 0,
+          "paddingTop": 0,
         }
       }
     >
       <Styled(View)
         style={
           Object {
-            "marginBottom": 0,
             "top": 0,
+            "width": 0,
           }
         }
       />

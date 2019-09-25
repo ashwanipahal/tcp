@@ -5,7 +5,25 @@ import BodyCopy from '../../../../../../common/atoms/BodyCopy';
 import LineComp from '../../../../../../common/atoms/Line';
 import ImageComp from '../../../../../../common/atoms/Image';
 import IconInfoLogo from '../../../../../../../assets/info-icon.png';
-import { StyledOrderLedger, StyledRowDataContainer } from '../styles/orderLedger.style.native';
+import {
+  StyledOrderLedger,
+  StyledRowDataContainer,
+  LabelContainer,
+  IconContainer,
+} from '../styles/orderLedger.style.native';
+import ReactTooltip from '../../../../../../common/atoms/ReactToolTip';
+
+const popover = message => {
+  return (
+    <BodyCopy
+      fontSize="fs13"
+      fontFamily="secondary"
+      fontWeight="semibold"
+      color="gray.900"
+      text={message}
+    />
+  );
+};
 
 const OrderLedger = ({ ledgerSummaryData, labels }) => {
   const {
@@ -20,6 +38,7 @@ const OrderLedger = ({ ledgerSummaryData, labels }) => {
     giftCardsTotal,
     orderBalanceTotal,
     totalOrderSavings,
+    isOrderHasShipping,
   } = ledgerSummaryData;
   return (
     <StyledOrderLedger>
@@ -90,35 +109,37 @@ const OrderLedger = ({ ledgerSummaryData, labels }) => {
           </Text>
         </StyledRowDataContainer>
       ) : null}
-      <StyledRowDataContainer>
-        <Text>
-          <BodyCopy
-            bodySize="one"
-            fontFamily="secondary"
-            textAlign="left"
-            fontWeight="regular"
-            fontSize="fs13"
-            text={`${labels.shippingLabel}:`}
-          />
-        </Text>
-        <Text>
-          <BodyCopy
-            bodySize="one"
-            fontFamily="secondary"
-            fontWeight="regular"
-            fontSize="fs13"
-            textAlign="right"
-            text={
-              // eslint-disable-next-line no-nested-ternary
-              shippingTotal !== undefined
-                ? { shippingTotal } > 0
-                  ? `${currencySymbol}${shippingTotal.toFixed(2)}`
-                  : labels.free
-                : '-'
-            }
-          />
-        </Text>
-      </StyledRowDataContainer>
+      {isOrderHasShipping ? (
+        <StyledRowDataContainer>
+          <Text>
+            <BodyCopy
+              bodySize="one"
+              fontFamily="secondary"
+              textAlign="left"
+              fontWeight="regular"
+              fontSize="fs13"
+              text={`${labels.shippingLabel}:`}
+            />
+          </Text>
+          <Text>
+            <BodyCopy
+              bodySize="one"
+              fontFamily="secondary"
+              fontWeight="regular"
+              fontSize="fs13"
+              textAlign="right"
+              text={
+                // eslint-disable-next-line no-nested-ternary
+                shippingTotal !== undefined
+                  ? { shippingTotal } > 0
+                    ? `${currencySymbol}${shippingTotal.toFixed(2)}`
+                    : labels.free
+                  : '-'
+              }
+            />
+          </Text>
+        </StyledRowDataContainer>
+      ) : null}
       <StyledRowDataContainer>
         <Text>
           <BodyCopy
@@ -214,7 +235,7 @@ const OrderLedger = ({ ledgerSummaryData, labels }) => {
       </StyledRowDataContainer>
       {totalOrderSavings ? (
         <StyledRowDataContainer>
-          <Text>
+          <LabelContainer>
             <BodyCopy
               bodySize="one"
               fontFamily="secondary"
@@ -223,8 +244,12 @@ const OrderLedger = ({ ledgerSummaryData, labels }) => {
               fontSize="fs13"
               text={`${labels.totalSavingsLabel}`}
             />
-            <ImageComp source={IconInfoLogo} height={15} width={15} />
-          </Text>
+            <IconContainer>
+              <ReactTooltip withOverlay={false} popover={popover(labels.tooltipText)}>
+                <ImageComp source={IconInfoLogo} height={15} width={15} />
+              </ReactTooltip>
+            </IconContainer>
+          </LabelContainer>
           <Text>
             <BodyCopy
               bodySize="one"

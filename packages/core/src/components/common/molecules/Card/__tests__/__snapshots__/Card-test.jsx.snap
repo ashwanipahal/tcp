@@ -1,0 +1,76 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Card component renders correctly without props 1`] = `
+<Styled(BodyCopy)
+  className=""
+  color="text.primary"
+  component="div"
+  fontFamily="primary"
+  fontSize="fs16"
+  fontWeight="regular"
+  letterSpacing="normal"
+  lineHeight="normal"
+  link={null}
+  textAlign="left"
+>
+  <Styled(BodyCopy)
+    className="card-title"
+    color="text.primary"
+    component="div"
+    fontFamily="secondary"
+    fontSize={12}
+    fontWeight="regular"
+    letterSpacing="normal"
+    lineHeight="normal"
+    link={null}
+    textAlign="left"
+  >
+    <Styled(BodyCopy)
+      className="card-name"
+      color="text.primary"
+      component="p"
+      data-locator=""
+      fontFamily="secondary"
+      fontSize={12}
+      fontWeight=""
+      letterSpacing="normal"
+      lineHeight="normal"
+      link={null}
+      textAlign="left"
+    >
+      undefined undefined
+    </Styled(BodyCopy)>
+  </Styled(BodyCopy)>
+  <Styled(BodyCopy)
+    className={null}
+    color="text.primary"
+    component="div"
+    fontFamily="secondary"
+    fontSize={12}
+    fontWeight="regular"
+    letterSpacing="normal"
+    lineHeight="normal"
+    link={null}
+    textAlign="left"
+  >
+    <Styled(CardImage)
+      card={
+        Object {
+          "accountNo": "************3743",
+          "addressDetails": Object {
+            "addressLine1": "Dorney Park Road",
+            "addressLine2": "",
+            "city": "Allentown",
+            "country": "US",
+          },
+          "ccBrand": "PLACE CARD",
+          "ccType": "PLACE CARD",
+          "creditCardId": 82596,
+          "defaultInd": false,
+        }
+      }
+      cardNumber=""
+    />
+  </Styled(BodyCopy)>
+</Styled(BodyCopy)>
+`;

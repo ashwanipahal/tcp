@@ -1,0 +1,74 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Points History List Page View should render Points History Page Correctly 1`] = `
+<StyledComponent
+  className="className"
+  forwardedComponent={
+    Object {
+      "$$typeof": Symbol(react.forward_ref),
+      "attrs": Array [],
+      "componentStyle": ComponentStyle {
+        "componentId": "sc-VigVT",
+        "isStatic": false,
+        "rules": Array [
+          "
+  ",
+          "
+  .list-fontsizes {
+    font-size: ",
+          [Function],
+          ";
+    @media ",
+          [Function],
+          " {
+      font-size: ",
+          [Function],
+          ";
+    }
+    @media ",
+          [Function],
+          " {
+      font-size: ",
+          [Function],
+          ";
+    }
+  }
+",
+          ";
+",
+        ],
+      },
+      "displayName": "Styled(PointsHistoryList)",
+      "foldedComponentIds": Array [],
+      "render": [Function],
+      "styledComponentId": "sc-VigVT",
+      "target": [Function],
+      "toString": [Function],
+      "warnTooManyClasses": [Function],
+      "withComponent": [Function],
+    }
+  }
+  forwardedRef={null}
+  labels={
+    Object {
+      "lbl_common_order_date": "08/08/19",
+      "lbl_common_points_earned": "5",
+      "lbl_common_points_history": "Points History",
+      "lbl_common_transaction": "Credit",
+    }
+  }
+  pointHistory={
+    Array [
+      Object {
+        "pointAwardedDate": "08/08/19",
+        "pointTransactionType": "Credit",
+        "pointsEarned": 5,
+        "transactionDate": "08/08/19",
+        "transactionType": "non-transactional",
+        "transactionTypeName": "AddBirthDate",
+      },
+    ]
+  }
+  showFullHistory={true}
+/>
+`;

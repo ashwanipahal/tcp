@@ -41,6 +41,7 @@ const buildQuery = ({ type, brand, country, channel }) => `
               text
               external
               class
+              action
             }
             linkList {
               url
@@ -48,6 +49,7 @@ const buildQuery = ({ type, brand, country, channel }) => `
               title
               text
               external
+              action
             }
           }
           linkColumns {
@@ -60,6 +62,7 @@ const buildQuery = ({ type, brand, country, channel }) => `
               title
               text
               external
+              action
             }
           }
         }
@@ -72,6 +75,7 @@ const buildQuery = ({ type, brand, country, channel }) => `
             title
             text
             external
+            action
           }
           richTextList {
             text

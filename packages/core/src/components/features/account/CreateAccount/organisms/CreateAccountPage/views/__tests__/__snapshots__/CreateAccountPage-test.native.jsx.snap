@@ -1,0 +1,83 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Create Account Page should render correctly 1`] = `
+<ScrollViewMock
+  className=""
+  createAccountAction={[MockFunction]}
+  error={Object {}}
+  isIAgreeChecked={false}
+  keyboardShouldPersistTaps="handled"
+  labels={
+    Object {
+      "lbl_createAccount_hide": "hide",
+      "registration": Object {},
+    }
+  }
+  onRequestClose={[Function]}
+  showForgotPasswordForm={[Function]}
+  showsVerticalScrollIndicator={false}
+>
+  <View>
+    <Styled(CreateAccountTopSection)
+      labels={
+        Object {
+          "lbl_createAccount_hide": "hide",
+          "registration": Object {},
+        }
+      }
+      showForgotPasswordForm={[Function]}
+    />
+    <Styled(View)>
+      <Styled(BodyCopy)
+        accessibilityText=""
+        color="error"
+        dataLocator=""
+        fontSize="fs12"
+        fontWeight="semibold"
+        margin={null}
+        mobileFontFamily={
+          Array [
+            "secondary",
+          ]
+        }
+        numberOfLines={null}
+        text={Object {}}
+        textDecoration={null}
+      />
+    </Styled(View)>
+    <ReduxForm
+      confirmHideShowPwd={false}
+      destroyOnUnmount={true}
+      enableReinitialize={true}
+      forceUnregisterOnUnmount={false}
+      form="myCreateAccountForm"
+      getFormState={[Function]}
+      getTouchStatus={false}
+      handleSubmitForm={[Function]}
+      hideShowPwd={false}
+      isIAgreeChecked={false}
+      keepDirtyOnReinitialize={false}
+      labels={
+        Object {
+          "lbl_createAccount_hide": "hide",
+          "registration": Object {},
+        }
+      }
+      onConfirmPwdHideShowClick={[Function]}
+      onPwdHideShowClick={[Function]}
+      onRequestClose={[Function]}
+      persistentSubmitErrors={false}
+      pure={true}
+      shouldAsyncValidate={[Function]}
+      shouldError={[Function]}
+      shouldValidate={[Function]}
+      shouldWarn={[Function]}
+      submitAsSideEffect={false}
+      touchOnBlur={true}
+      touchOnChange={false}
+      updateUnregisteredFields={false}
+      validate={[Function]}
+    />
+  </View>
+</ScrollViewMock>
+`;

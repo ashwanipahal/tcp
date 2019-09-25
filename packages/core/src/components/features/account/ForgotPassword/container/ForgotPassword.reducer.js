@@ -4,6 +4,7 @@ import FORGOTPASSWORD_CONSTANTS from '../ForgotPassword.constants';
 const initialState = fromJS({
   showNotification: false,
   toggleSuccessfulEmailSection: null,
+  error: null,
 });
 
 const ForgotPasswordReducer = (state = initialState, action) => {
@@ -17,7 +18,7 @@ const ForgotPasswordReducer = (state = initialState, action) => {
     case FORGOTPASSWORD_CONSTANTS.RESET_PASSWORD_SUCCESSFULL_EMAIL:
       return state.set('toggleSuccessfulEmailSection', true);
     case FORGOTPASSWORD_CONSTANTS.USER_NOT_AVAILABLE:
-      return fromJS(action.payload);
+      return state.set('error', fromJS(action.payload)).set('showNotification', true);
 
     default:
       // TODO: currently when initial state is hydrated on browser, List is getting converted to an JS Array

@@ -1,30 +1,51 @@
 import React from 'react';
 import { connect } from 'react-redux';
+import { withRouter } from 'next/router'; //eslint-disable-line
+import { isGuest as isGuestUser } from '@tcp/core/src/components/features/CnC/Checkout/container/Checkout.selector';
 import BagPageSelector from './BagPage.selectors';
 import BagPage from '../views/BagPage.view';
 import BAG_PAGE_ACTIONS from './BagPage.actions';
-import { getCartOrderList } from '../../CartItemTile/container/CartItemTile.selectors';
-
-// @flow
-// type Props = {
-//   closeModal: Function,
-//   addedToBagData: any,
-//   isOpenDialog: boolean,
-//   labels: any,
-//   quantity: number,
-// };
+import {
+  getCartOrderList,
+  getIsCartItemsUpdating,
+  getLabelsCartItemTile,
+  getIsCartItemsSFL,
+  getIsSflItemRemoved,
+} from '../../CartItemTile/container/CartItemTile.selectors';
+import { getUserLoggedInState } from '../../../account/User/container/User.selectors';
+import {
+  setVenmoPaymentInProgress,
+  setVenmoPickupMessageState,
+  setVenmoShippingMessageState,
+} from '../../Checkout/container/Checkout.action';
+import { toastMessageInfo } from '../../../../common/atoms/Toast/container/Toast.actions.native';
+import utils, { isClient } from '../../../../../utils';
 
 export class BagPageContainer extends React.Component<Props> {
   componentDidMount() {
     const { needHelpContentId, fetchNeedHelpContent } = this.props;
     fetchNeedHelpContent([needHelpContentId]);
+    const { setVenmoPickupState, setVenmoShippingState } = this.props;
+    setVenmoPickupState(false);
+    setVenmoShippingState(false);
+  }
+
+  componentDidUpdate() {
+    if (isClient()) {
+      const { router } = this.props;
+      const isSfl = utils.getObjectValue(router, undefined, 'query', 'isSfl');
+      if (isSfl) {
+        document.querySelector('.save-for-later-section-heading').scrollIntoView(true);
+      }
+    }
   }
 
   closeModal = () => {};
 
   componentWillMount = () => {
-    const { initialActions } = this.props;
+    const { initialActions, fetchSflData } = this.props;
     initialActions();
+    fetchSflData();
   };
 
   render() {
@@ -33,11 +54,21 @@ export class BagPageContainer extends React.Component<Props> {
       totalCount,
       orderItemsCount,
       navigation,
+      isUserLoggedIn,
       handleCartCheckout,
       showConfirmationModal,
       closeCheckoutConfirmationModal,
       removeUnqualifiedItemsAndCheckout,
+      isGuest,
+      sflItems,
+      fetchLabels,
+      setVenmoInProgress,
+      isCartItemsUpdating,
+      toastMessage,
+      isCartItemSFL,
+      isSflItemRemoved,
     } = this.props;
+
     const showAddTobag = false;
     return (
       <BagPage
@@ -45,17 +76,28 @@ export class BagPageContainer extends React.Component<Props> {
         totalCount={totalCount}
         orderItemsCount={orderItemsCount}
         showAddTobag={showAddTobag}
-        handleCartCheckout={handleCartCheckout}
+        navigation={navigation}
+        isUserLoggedIn={isUserLoggedIn}
+        isGuest={isGuest}
         showConfirmationModal={showConfirmationModal}
         closeCheckoutConfirmationModal={closeCheckoutConfirmationModal}
         removeUnqualifiedItemsAndCheckout={removeUnqualifiedItemsAndCheckout}
-        navigation={navigation}
+        handleCartCheckout={handleCartCheckout}
+        sflItems={sflItems}
+        fetchLabels={fetchLabels}
+        setVenmoPaymentInProgress={setVenmoInProgress}
+        isCartItemsUpdating={isCartItemsUpdating}
+        toastMessage={toastMessage}
+        isCartItemSFL={isCartItemSFL}
+        isSflItemRemoved={isSflItemRemoved}
       />
     );
   }
 }
 
-export const mapDispatchToProps = (dispatch: ({}) => void) => {
+BagPageContainer.getInitActions = () => BAG_PAGE_ACTIONS.initActions;
+
+export const mapDispatchToProps = dispatch => {
   return {
     initialActions: () => {
       dispatch(BAG_PAGE_ACTIONS.getCartData());
@@ -63,14 +105,17 @@ export const mapDispatchToProps = (dispatch: ({}) => void) => {
     fetchNeedHelpContent: contentIds => {
       dispatch(BAG_PAGE_ACTIONS.fetchModuleX(contentIds));
     },
-    handleCartCheckout: () => {
-      dispatch(BAG_PAGE_ACTIONS.startCheckout());
+    fetchSflData: () => {
+      dispatch(BAG_PAGE_ACTIONS.getSflData());
     },
-    closeCheckoutConfirmationModal: () => {
-      dispatch(BAG_PAGE_ACTIONS.closeCheckoutConfirmationModal());
+    fetchLabels: () => {
+      dispatch(BAG_PAGE_ACTIONS.initActions[0]);
     },
-    removeUnqualifiedItemsAndCheckout: () => {
-      dispatch(BAG_PAGE_ACTIONS.removeUnqualifiedItemsAndCheckout());
+    setVenmoInProgress: data => dispatch(setVenmoPaymentInProgress(data)),
+    setVenmoPickupState: data => dispatch(setVenmoPickupMessageState(data)),
+    setVenmoShippingState: data => dispatch(setVenmoShippingMessageState(data)),
+    toastMessage: palyoad => {
+      dispatch(toastMessageInfo(palyoad));
     },
   };
 };
@@ -78,16 +123,24 @@ export const mapDispatchToProps = (dispatch: ({}) => void) => {
 const mapStateToProps = state => {
   const { size = 0 } = getCartOrderList(state) || {};
   return {
-    labels: BagPageSelector.getBagPageLabels(state),
+    labels: { ...BagPageSelector.getBagPageLabels(state), ...getLabelsCartItemTile(state) },
     totalCount: BagPageSelector.getTotalItems(state),
     productsTypes: BagPageSelector.getProductsTypes(state),
     orderItemsCount: size,
     needHelpContentId: BagPageSelector.getNeedHelpContentId(state),
     showConfirmationModal: BagPageSelector.getConfirmationModalFlag(state),
+    isUserLoggedIn: getUserLoggedInState(state),
+    isGuest: isGuestUser(state),
+    sflItems: BagPageSelector.getsflItemsList(state),
+    isCartItemsUpdating: getIsCartItemsUpdating(state),
+    isCartItemSFL: getIsCartItemsSFL(state),
+    isSflItemRemoved: getIsSflItemRemoved(state),
   };
 };
 
-export default connect(
-  mapStateToProps,
-  mapDispatchToProps
-)(BagPageContainer);
+export default withRouter(
+  connect(
+    mapStateToProps,
+    mapDispatchToProps
+  )(BagPageContainer)
+);

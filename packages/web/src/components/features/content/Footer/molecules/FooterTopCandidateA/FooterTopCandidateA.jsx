@@ -59,7 +59,7 @@ class FooterTopCandidateA extends React.PureComponent {
     } = this.props;
 
     return (
-      <Grid className="footer_top_candidate_a">
+      <Grid className="footer_top_candidate_a content-wrapper">
         <Row>
           {/* ------------ Email Sign Up starts here ----------------- */}
           <Col
@@ -96,11 +96,12 @@ class FooterTopCandidateA extends React.PureComponent {
               fieldName={emailSignupFieldName}
             />
 
-            {/* TODO: Zeplin has ["fs9","fs9", "fs13"], which is not in guidline using following for now  */}
-            <BodyCopy fontFamily="secondary" textAlign="center" fontSize={['fs10', 'fs10', 'fs12']}>
-              <RichText richTextHtml={emailSignupLabels.termsTextLabel} />
+            <BodyCopy fontFamily="secondary" textAlign="center" fontSize={['fs9', 'fs9', 'fs12']}>
+              <RichText richTextHtml={emailSignupLabels.lbl_SignUp_termsTextLabel} />
             </BodyCopy>
-            <div className="divider hide-in-medium-up" />
+            <div>
+              <div className="divider hide-in-medium-up" />
+            </div>
           </Col>
 
           {/* ---------- Email Signup ends here ---------- */}
@@ -143,9 +144,8 @@ class FooterTopCandidateA extends React.PureComponent {
               }}
             />
 
-            {/* TODO: Zeplin has ["fs9","fs9", "fs13"], which is not in guidline using following for now  */}
-            <BodyCopy fontFamily="secondary" textAlign="center" fontSize={['fs10', 'fs10', 'fs12']}>
-              <RichText richTextHtml={smsSignupLabels.termsTextLabel} />
+            <BodyCopy fontFamily="secondary" textAlign="center" fontSize={['fs9', 'fs9', 'fs12']}>
+              <RichText richTextHtml={smsSignupLabels.lbl_SignUp_termsTextLabel} />
             </BodyCopy>
           </Col>
           <div className="divider hide-in-large-up" />
@@ -169,7 +169,7 @@ class FooterTopCandidateA extends React.PureComponent {
                 <Col
                   className="col-md-half-width"
                   colSize={{
-                    large: 7,
+                    large: 6,
                     medium: 4,
                     small: 7,
                   }}
@@ -188,7 +188,7 @@ class FooterTopCandidateA extends React.PureComponent {
                 </Col>
                 <Col
                   colSize={{
-                    large: 5,
+                    large: 6,
                     medium: 4,
                     small: 6,
                   }}
@@ -244,7 +244,6 @@ class FooterTopCandidateA extends React.PureComponent {
             <SocialMediaLinks {...socialMediaLinks} className="social-media-links" />
           </Col>
         </Row>
-        <div className="divider hide-in-medium-down" />
       </Grid>
     );
   }
@@ -261,16 +260,16 @@ FooterTopCandidateA.propTypes = {
     text: PropTypes.string,
   }),
   emailSignupLabels: PropTypes.shape({
-    placeholderText: PropTypes.string,
-    validationErrorLabel: PropTypes.string,
-    termsTextLabel: PropTypes.string,
-    submitButtonLabel: PropTypes.string,
+    lbl_SignUp_placeholderText: PropTypes.string,
+    lbl_SignUp_validationErrorLabel: PropTypes.string,
+    lbl_SignUp_termsTextLabel: PropTypes.string,
+    lbl_SignUp_submitButtonLabel: PropTypes.string,
   }),
   smsSignupLabels: PropTypes.shape({
-    placeholderText: PropTypes.string,
-    validationErrorLabel: PropTypes.string,
-    termsTextLabel: PropTypes.string,
-    submitButtonLabel: PropTypes.string,
+    lbl_SignUp_placeholderText: PropTypes.string,
+    lbl_SignUp_validationErrorLabel: PropTypes.string,
+    lbl_SignUp_termsTextLabel: PropTypes.string,
+    lbl_SignUp_submitButtonLabel: PropTypes.string,
   }),
   socialMediaLinks: PropTypes.arrayOf(
     PropTypes.shape({
@@ -312,18 +311,16 @@ FooterTopCandidateA.defaultProps = {
     text: '',
   },
   emailSignupLabels: {
-    placeholderText: 'Enter email address',
-    validationErrorLabel: '',
-    termsTextLabel:
-      '*Applies to new email subscribers only. Exclusions apply. Offer valid onyour next purchase of $40 or more. You may withdraw your consent at any time. Contact Us The Children’s Place, 500 Plaza Drive, Secaucus, NJ 07094, www.childrensplace.com.',
-    submitButtonLabel: 'Submit',
+    lbl_SignUp_placeholderText: '',
+    lbl_SignUp_validationErrorLabel: '',
+    lbl_SignUp_termsTextLabel: '',
+    lbl_SignUp_submitButtonLabel: '',
   },
   smsSignupLabels: {
-    placeholderText: 'Enter phone number',
-    validationErrorLabel: '',
-    termsTextLabel:
-      '*Applies to new email subscribers only. Exclusions apply. Offer valid onyour next purchase of $40 or more. You may withdraw your consent at any time. Contact Us The Children’s Place, 500 Plaza Drive, Secaucus, NJ 07094, www.childrensplace.com.',
-    submitButtonLabel: 'Submit',
+    lbl_SignUp_placeholderText: '',
+    lbl_SignUp_validationErrorLabel: '',
+    lbl_SignUp_termsTextLabel: '',
+    lbl_SignUp_submitButtonLabel: '',
   },
   referAFriend: {
     title: '',

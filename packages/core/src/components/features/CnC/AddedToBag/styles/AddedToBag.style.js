@@ -1,7 +1,7 @@
 import { css } from 'styled-components';
 
 export const modalStyles = css`
-  div.TCPModal__InnerContent {
+  div.TCPModal__InnerContent.atb-innerContent {
     right: 0;
     left: auto;
     top: 0;
@@ -13,17 +13,16 @@ export const modalStyles = css`
     @media ${props => props.theme.mediaQuery.large} {
       width: 375px;
     }
-  }
-  .Modal_Heading {
-    font-size: 16px;
-    font-family: ${props => props.theme.fonts.secondaryFontFamily};
-    font-weight: normal;
-    line-height: 43px;
-    border: none;
-    margin-bottom: 0;
-    padding: 0;
-    @media ${props => props.theme.mediaQuery.medium} {
-      display: block;
+
+    .Modal_Heading {
+      font-size: 16px;
+      font-family: ${props => props.theme.fonts.secondaryFontFamily};
+      font-weight: normal;
+      line-height: 43px;
+      border: none;
+      margin-bottom: 0;
+      padding: 0;
+      display: inline;
     }
   }
 `;

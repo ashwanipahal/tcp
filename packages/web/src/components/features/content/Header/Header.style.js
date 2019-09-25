@@ -6,4 +6,12 @@ export default css`
   @media ${props => props.theme.mediaQuery.large} {
     margin-bottom: 24px;
   }
+
+  .header-middle-nav-bar {
+    border-bottom: 1px solid ${props => props.theme.colorPalette.text.disabled};
+  }
+
+  .checkout-pages & {
+    display: none;
+  }
 `;

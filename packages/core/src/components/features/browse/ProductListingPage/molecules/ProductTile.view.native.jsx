@@ -28,7 +28,7 @@ class ProductTile extends React.Component {
 
   render() {
     const { quantity, storeId, brand } = this.state;
-    const { item, addToBagEcom, addToBagBossBopis } = this.props;
+    const { item, addToBagEcom, addToBagBossBopis, navigation } = this.props;
 
     const { colorFitsSizesMap, imagesByColor } = item;
     const { color, fits, hasFits } = colorFitsSizesMap[0];
@@ -150,7 +150,7 @@ class ProductTile extends React.Component {
           <Text>productId: {item.productId}</Text>
         </View>
         <View>
-          <AddedToBagContainer />
+          <AddedToBagContainer navigation={navigation} />
         </View>
       </ProductListingPageStyle>
     );

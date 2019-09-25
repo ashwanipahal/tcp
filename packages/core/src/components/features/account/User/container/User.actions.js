@@ -1,7 +1,3 @@
-/**
- * These are temporary changes for a dummy login page
- */
-
 import CONSTANTS from '../User.constants';
 
 export const resetUserInfo = () => {
@@ -10,15 +6,59 @@ export const resetUserInfo = () => {
   };
 };
 
-export const getUserInfo = () => {
+export const clearUserInfo = () => {
+  return {
+    type: CONSTANTS.CLEAR_USER_INFO_TTL,
+  };
+};
+
+export const getUserInfo = payload => {
   return {
     type: CONSTANTS.GET_USER_INFO,
+    payload,
   };
 };
 
 export const setUserInfo = payload => {
   return {
     type: CONSTANTS.SET_USER_INFO,
+    payload,
+  };
+};
+
+/**
+ * @function setUserChildren
+ * @param { object } payload
+ * Action creator for setting user children
+ */
+export const setUserChildren = payload => {
+  return {
+    type: CONSTANTS.SET_CHILDREN,
+    payload,
+  };
+};
+
+/**
+ * @function setFavoriteStore
+ * @param { object } payload
+ * Action creator for setting fav store
+ */
+export const setFavoriteStore = payload => {
+  return {
+    type: CONSTANTS.SET_FAVORITE_STORE,
+    payload,
+  };
+};
+export const setSurveyQuestions = payload => {
+  return {
+    type: CONSTANTS.SET_SURVEY_QUESTIONS,
+    payload,
+  };
+};
+
+export const setSurveyAnswers = payload => {
+  return {
+    type: CONSTANTS.SET_SURVEY_ANSWERS,
     payload,
   };
 };

@@ -25,6 +25,7 @@ exports[`Delete Address Modal should render correctly 1`] = `
         fontWeight="semibold"
         letterSpacing="normal"
         lineHeight="normal"
+        link={null}
         textAlign="center"
       >
         Are you sure you want to delete this address?
@@ -45,6 +46,7 @@ exports[`Delete Address Modal should render correctly 1`] = `
         fontWeight="extrabold"
         isDefault={false}
         showCountry={true}
+        showDefault={true}
         showName={true}
         showPhone={true}
       />

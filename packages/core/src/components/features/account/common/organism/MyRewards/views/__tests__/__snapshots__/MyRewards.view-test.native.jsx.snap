@@ -2,15 +2,36 @@
 
 exports[`MyRewards should render carousel if coupons are avalable 1`] = `
 <View>
-  <Styled(View)>
-    <Styled(BodyCopy)
-      className="my-rewards-heading"
-      data-locator="my-rewards-heading"
-      fontFamily="secondary"
-      fontSize="fs16"
-      fontWeight="extrabold"
-      text="undefined (2)"
-    />
+  <Connect(ToastContainer) />
+  <CouponDetailModal
+    commonLabels={Object {}}
+    coupon={Object {}}
+    isApplyingOrRemovingCoupon={false}
+    labels={Object {}}
+    onApplyCouponToBagFromList={[Function]}
+    onRemove={[Function]}
+    onViewCouponDetails={[Function]}
+    openState={true}
+    toastMessage={[Function]}
+  />
+  <Styled(View)
+    spacingStyles="margin-bottom-LRG margin-top-LRG"
+  >
+    <Styled(View)>
+      <Styled(BodyCopy)
+        accessibilityText=""
+        className="my-rewards-heading"
+        data-locator="my-rewards-heading"
+        dataLocator=""
+        fontFamily="secondary"
+        fontSize="fs16"
+        fontWeight="extrabold"
+        margin={null}
+        numberOfLines={null}
+        text="undefined (2)"
+        textDecoration={null}
+      />
+    </Styled(View)>
   </Styled(View)>
   <View>
     <WithTheme(SnapCarousel)
@@ -33,86 +54,50 @@ exports[`MyRewards should render carousel if coupons are avalable 1`] = `
       width={720}
     />
   </View>
-  <Styled(View)>
-    <Styled(Anchor)
-      accessibilityLabel=""
-      anchorVariation="primary"
-      customStyle={Object {}}
-      dataLocator="my-rewards-program-details"
-      fontSizeVariation="medium"
-      locator=""
-      onPress={[Function]}
-      text=""
-      underline={true}
-      visible={false}
-    />
-    <Styled(View)>
-      <Styled(Anchor)
-        accessibilityLabel=""
-        anchorVariation="primary"
-        customStyle={Object {}}
-        dataLocator="my-rewards-tnc"
-        fontSizeVariation="medium"
-        locator=""
-        noLink={true}
-        onPress={[Function]}
-        text=""
-        underline={true}
-        visible={false}
-      />
-    </Styled(View)>
-  </Styled(View)>
 </View>
 `;
 
 exports[`MyRewards should render correctly 1`] = `
 <View>
-  <Styled(View)>
-    <Styled(BodyCopy)
-      className="my-rewards-heading"
-      data-locator="my-rewards-heading"
-      fontFamily="secondary"
-      fontSize="fs16"
-      fontWeight="extrabold"
-      text="undefined (0)"
-    />
+  <Connect(ToastContainer) />
+  <CouponDetailModal
+    commonLabels={Object {}}
+    coupon={Object {}}
+    isApplyingOrRemovingCoupon={false}
+    labels={Object {}}
+    onApplyCouponToBagFromList={[Function]}
+    onRemove={[Function]}
+    onViewCouponDetails={[Function]}
+    openState={true}
+    toastMessage={[Function]}
+  />
+  <Styled(View)
+    spacingStyles="margin-bottom-LRG margin-top-LRG"
+  >
+    <Styled(View)>
+      <Styled(BodyCopy)
+        accessibilityText=""
+        className="my-rewards-heading"
+        data-locator="my-rewards-heading"
+        dataLocator=""
+        fontFamily="secondary"
+        fontSize="fs16"
+        fontWeight="extrabold"
+        margin={null}
+        numberOfLines={null}
+        text="undefined (0)"
+        textDecoration={null}
+      />
+    </Styled(View)>
   </Styled(View)>
   <EmptyRewards
     labels={
       Object {
         "common": Object {},
-        "myPlaceRewards": Object {},
+        "placeRewards": Object {},
       }
     }
+    navigation={Object {}}
   />
-  <Styled(View)>
-    <Styled(Anchor)
-      accessibilityLabel=""
-      anchorVariation="primary"
-      customStyle={Object {}}
-      dataLocator="my-rewards-program-details"
-      fontSizeVariation="medium"
-      locator=""
-      onPress={[Function]}
-      text=""
-      underline={true}
-      visible={false}
-    />
-    <Styled(View)>
-      <Styled(Anchor)
-        accessibilityLabel=""
-        anchorVariation="primary"
-        customStyle={Object {}}
-        dataLocator="my-rewards-tnc"
-        fontSizeVariation="medium"
-        locator=""
-        noLink={true}
-        onPress={[Function]}
-        text=""
-        underline={true}
-        visible={false}
-      />
-    </Styled(View)>
-  </Styled(View)>
 </View>
 `;

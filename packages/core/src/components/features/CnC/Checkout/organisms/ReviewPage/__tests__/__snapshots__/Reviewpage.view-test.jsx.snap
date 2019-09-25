@@ -1,0 +1,32 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`ReviewPageVanilla component should renders correctly props not present 1`] = `
+<div>
+  <Styled(CheckoutSectionTitleDisplay)
+    dataLocator="review-title"
+  />
+  <Connect(BillingSectionContainer) />
+  <Styled(CheckoutFooter)
+    backLinkHandler={[Function]}
+    footerBody={
+      Array [
+        undefined,
+        <ForwardRef
+          dataLocator="termAndConditionText"
+          onClick={[Function]}
+          to="/#"
+          underline={true}
+        />,
+        undefined,
+        <ForwardRef
+          dataLocator="PrivacyText"
+          onClick={[Function]}
+          to="/#"
+          underline={true}
+        />,
+      ]
+    }
+    hideBackLink={true}
+  />
+</div>
+`;

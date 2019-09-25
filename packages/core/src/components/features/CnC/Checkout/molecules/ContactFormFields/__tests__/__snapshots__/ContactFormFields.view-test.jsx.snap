@@ -8,7 +8,7 @@ exports[`Coupon component should renders correctly when Coupon are not present 1
     fullBleed={true}
   >
     <Styled(Col)
-      className="fieldFirstName"
+      className="pickupField fieldFirstName"
       colSize={
         Object {
           "large": 6,
@@ -23,7 +23,7 @@ exports[`Coupon component should renders correctly when Coupon are not present 1
             "$$typeof": Symbol(react.forward_ref),
             "attrs": Array [],
             "componentStyle": ComponentStyle {
-              "componentId": "sc-bwzfXH",
+              "componentId": "sc-htpNat",
               "isStatic": false,
               "rules": Array [
                 "
@@ -166,7 +166,7 @@ exports[`Coupon component should renders correctly when Coupon are not present 1
             "displayName": "Styled(TextBox)",
             "foldedComponentIds": Array [],
             "render": [Function],
-            "styledComponentId": "sc-bwzfXH",
+            "styledComponentId": "sc-htpNat",
             "target": [Function],
             "toString": [Function],
             "warnTooManyClasses": [Function],
@@ -187,11 +187,12 @@ exports[`Coupon component should renders correctly when Coupon are not present 1
         fontWeight="regular"
         letterSpacing="normal"
         lineHeight="normal"
+        link={null}
         textAlign="left"
       />
     </Styled(Col)>
     <Styled(Col)
-      className="fieldLastName"
+      className="pickupField fieldLastName"
       colSize={
         Object {
           "large": 6,
@@ -206,7 +207,7 @@ exports[`Coupon component should renders correctly when Coupon are not present 1
             "$$typeof": Symbol(react.forward_ref),
             "attrs": Array [],
             "componentStyle": ComponentStyle {
-              "componentId": "sc-bwzfXH",
+              "componentId": "sc-htpNat",
               "isStatic": false,
               "rules": Array [
                 "
@@ -349,7 +350,7 @@ exports[`Coupon component should renders correctly when Coupon are not present 1
             "displayName": "Styled(TextBox)",
             "foldedComponentIds": Array [],
             "render": [Function],
-            "styledComponentId": "sc-bwzfXH",
+            "styledComponentId": "sc-htpNat",
             "target": [Function],
             "toString": [Function],
             "warnTooManyClasses": [Function],

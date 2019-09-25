@@ -4,17 +4,18 @@ import { BonusPointsSectionVanilla } from '../views/BonusPoints.section';
 
 describe('BonusPointsAvailabilityVanilla', () => {
   const labels = {
-    common: { lbl_common_details: '' },
-    myPlaceRewards: {
+    placeRewards: {
       lbl_bonus_points_msg: '',
       lbl_bonus_points_apply_any_day: '',
       lbl_place_rewards_bonus: '',
       lbl_place_rewards_points: '',
       lbl_place_rewards_day: '',
+      lbl_common_details: '',
+      lbl_common_applied_to_order: '',
     },
   };
   const mockedToggleBonusPointsModal = jest.fn();
-
+  const showAccordian = true;
   it('should render correctly available_today', () => {
     const bonusData = {
       totalBonusPointDays: 1,
@@ -28,6 +29,7 @@ describe('BonusPointsAvailabilityVanilla', () => {
         labels={labels}
         bonusData={bonusData}
         toggleBonusPointsModal={mockedToggleBonusPointsModal}
+        showAccordian={showAccordian}
       />
     );
     expect(tree).toMatchSnapshot();
@@ -45,6 +47,7 @@ describe('BonusPointsAvailabilityVanilla', () => {
         labels={labels}
         bonusData={bonusData}
         toggleBonusPointsModal={mockedToggleBonusPointsModal}
+        showAccordian={showAccordian}
       />
     );
     expect(tree).toMatchSnapshot();
@@ -62,6 +65,7 @@ describe('BonusPointsAvailabilityVanilla', () => {
         labels={labels}
         bonusData={bonusData}
         toggleBonusPointsModal={mockedToggleBonusPointsModal}
+        showAccordian={showAccordian}
       />
     );
     expect(tree).toMatchSnapshot();
@@ -79,6 +83,7 @@ describe('BonusPointsAvailabilityVanilla', () => {
         labels={labels}
         bonusData={bonusData}
         toggleBonusPointsModal={mockedToggleBonusPointsModal}
+        showAccordian={showAccordian}
       />
     );
     expect(tree).toMatchSnapshot();
@@ -96,6 +101,7 @@ describe('BonusPointsAvailabilityVanilla', () => {
         labels={labels}
         bonusData={bonusData}
         toggleBonusPointsModal={mockedToggleBonusPointsModal}
+        showAccordian={showAccordian}
       />
     );
     expect(tree).toMatchSnapshot();

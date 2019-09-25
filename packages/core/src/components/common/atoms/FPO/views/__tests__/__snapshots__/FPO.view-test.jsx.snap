@@ -1,0 +1,19 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`FPO Component should render correctly 1`] = `
+<Styled(BodyCopy)
+  className={null}
+  color="text.primary"
+  component="p"
+  fontFamily="primary"
+  fontSize="fs22"
+  fontWeight="black"
+  letterSpacing="normal"
+  lineHeight="normal"
+  link={null}
+  textAlign="center"
+>
+  FPO
+   - FPO Text
+</Styled(BodyCopy)>
+`;

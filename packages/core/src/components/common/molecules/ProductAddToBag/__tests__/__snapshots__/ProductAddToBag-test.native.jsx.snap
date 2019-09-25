@@ -1,0 +1,210 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`ProductAddToBagVanilla native should render correctly should match snapshot 1`] = `
+<View
+  addToBagAction={null}
+  colorList={Array []}
+  fitList={Array []}
+  isErrorMessageDisplayed={false}
+  plpLabels={Object {}}
+  quantityList={Array []}
+  selectedColor={null}
+  selectedFit={null}
+  selectedSize={null}
+  sizeList={Array []}
+>
+  <Field
+    component={
+      Object {
+        "$$typeof": Symbol(react.forward_ref),
+        "_foldedDefaultProps": Object {
+          "componentWidth": 80,
+          "data": Array [],
+          "error": null,
+          "itemNameKey": "",
+          "itemValue": "",
+          "keyExtractor": null,
+          "locators": null,
+          "renderItem": null,
+          "selectItem": null,
+          "selectedItem": null,
+          "separatorWidth": 8,
+        },
+        "attrs": Array [],
+        "displayName": "Styled(ProductVariantSelector)",
+        "inlineStyle": InlineStyle {
+          "rules": Array [
+            "
+    ",
+            "
+  margin-bottom: 33px;
+",
+            ";
+  ",
+          ],
+        },
+        "render": [Function],
+        "styledComponentId": "StyledNativeComponent",
+        "target": [Function],
+        "withComponent": [Function],
+      }
+    }
+    componentWidth={30}
+    data={Array []}
+    id="color"
+    locators={
+      Object {
+        "key": "pdp_color_label",
+        "value": "pdp_color_value",
+      }
+    }
+    renderItem={[Function]}
+    separatorWidth={16}
+  />
+  <Field
+    component={
+      Object {
+        "$$typeof": Symbol(react.forward_ref),
+        "_foldedDefaultProps": Object {
+          "componentWidth": 80,
+          "data": Array [],
+          "error": null,
+          "itemNameKey": "",
+          "itemValue": "",
+          "keyExtractor": null,
+          "locators": null,
+          "renderItem": null,
+          "selectItem": null,
+          "selectedItem": null,
+          "separatorWidth": 8,
+        },
+        "attrs": Array [],
+        "displayName": "Styled(ProductVariantSelector)",
+        "inlineStyle": InlineStyle {
+          "rules": Array [
+            "
+    ",
+            "
+  margin-bottom: 33px;
+",
+            ";
+  ",
+          ],
+        },
+        "render": [Function],
+        "styledComponentId": "StyledNativeComponent",
+        "target": [Function],
+        "withComponent": [Function],
+      }
+    }
+    data={Array []}
+    id="fit"
+    itemNameKey="displayName"
+    itemValue=""
+    locators={
+      Object {
+        "key": "pdp_fit_label",
+        "value": "pdp_fit_value",
+      }
+    }
+    name=""
+    selectedItem=""
+  />
+  <Field
+    component={
+      Object {
+        "$$typeof": Symbol(react.forward_ref),
+        "_foldedDefaultProps": Object {
+          "componentWidth": 80,
+          "data": Array [],
+          "error": null,
+          "itemNameKey": "",
+          "itemValue": "",
+          "keyExtractor": null,
+          "locators": null,
+          "renderItem": null,
+          "selectItem": null,
+          "selectedItem": null,
+          "separatorWidth": 8,
+        },
+        "attrs": Array [],
+        "displayName": "Styled(ProductVariantSelector)",
+        "inlineStyle": InlineStyle {
+          "rules": Array [
+            "
+    ",
+            "
+  margin-bottom: 33px;
+",
+            ";
+  ",
+          ],
+        },
+        "render": [Function],
+        "styledComponentId": "StyledNativeComponent",
+        "target": [Function],
+        "withComponent": [Function],
+      }
+    }
+    data={Array []}
+    error=""
+    id="size"
+    itemNameKey="displayName"
+    itemValue=""
+    locators={
+      Object {
+        "key": "pdp_size_label",
+        "value": "pdp_size_value",
+      }
+    }
+    name=""
+    selectedItem=""
+  />
+  <Styled(View)>
+    <Styled(BodyCopy)
+      accessibilityText=""
+      color="gray.900"
+      dataLocator=""
+      fontSize="fs14"
+      fontWeight="black"
+      margin={null}
+      mobileFontFamily="secondary"
+      numberOfLines={null}
+      text="undefined: "
+      textDecoration={null}
+    />
+    <Styled(DropDown)
+      bounces={false}
+      data={Array []}
+      dropDownStyle={
+        Object {
+          "border": 1,
+          "height": 18,
+          "marginLeft": 8,
+          "width": 48,
+        }
+      }
+      itemStyle={
+        Object {
+          "color": "gray.900",
+          "height": 25,
+        }
+      }
+      onValueChange={[Function]}
+      selectedValue="1"
+      variation="secondary"
+    />
+  </Styled(View)>
+  <Styled(WithTheme(CustomButton))
+    accessibilityLabel="Add to Bag"
+    buttonVariation="variable-width"
+    color="white"
+    fill="BLUE"
+    fontFamily="secondary"
+    fontSize="fs10"
+    fontWeight="extrabold"
+    locator="pdp_color_swatch"
+    onPress={null}
+  />
+</View>
+`;

@@ -2,11 +2,11 @@
 import Router from 'next/router';
 import { ENV_PRODUCTION, ENV_DEVELOPMENT } from '../constants/env.config';
 import icons from '../config/icons';
-import { breakpoints } from '../../styles/themes/TCP/mediaQuery';
+import { breakpoints, mediaQuery } from '../../styles/themes/TCP/mediaQuery';
 import { getAPIConfig } from './utils';
 import { API_CONFIG } from '../services/config';
 import { defaultCountries, defaultCurrencies } from '../constants/site.constants';
-import pages from '../config/route.config';
+import { ROUTING_MAP, ROUTE_PATH } from '../config/route.config';
 
 const MONTH_SHORT_FORMAT = {
   JAN: 'Jan',
@@ -31,6 +31,14 @@ export const importGraphQLQueriesDynamically = query => {
   return import(`../services/handler/graphQL/queries/${query}`);
 };
 
+export const getLocationOrigin = () => {
+  return window.location.origin;
+};
+
+export const canUseDOM = () => {
+  return typeof window !== 'undefined' && window.document && window.document.createElement;
+};
+
 export const isProduction = () => {
   return process.env.NODE_ENV === ENV_PRODUCTION;
 };
@@ -44,14 +52,50 @@ export const getSiteId = () => {
   return siteId;
 };
 
-export const routerPush = (href, as, query, siteId = getSiteId()) => {
-  return Router.push(href, `/${siteId}${as}`, { query });
+const isCompleteHTTPUrl = url => /^(http|https):\/\//.test(url);
+
+const getRouteHref = noSlugPath => {
+  const pathArray = noSlugPath ? noSlugPath.replace(/\//, '&').split('&') : ['', ROUTING_MAP.home];
+  const pathValue = pathArray[1];
+  return ROUTING_MAP[pathValue] || ROUTING_MAP.home;
 };
 
-export const identifyBrand = () => {
-  const url = 'http://www.thechildrensplace.com/';
+/**
+ * @summary This is to return the Page (inside of Pages folder) which is mapped to the route path
+ * for ex: /home will return /index file name.
+ * @param {String || Object} toPath - list of color options
+ * @returns {String || Object} Mapped actual page href path
+ */
+export const getMappedPageHref = (toPath = '') => {
+  if (typeof toPath === 'string') {
+    if (isCompleteHTTPUrl(toPath)) return toPath;
+    const [noSlugPath = '/', query = ''] = toPath.split('?');
+    const mappedToHref = getRouteHref(noSlugPath);
+    return query ? `${mappedToHref}?${query}` : mappedToHref;
+  }
+  const { pathname = '', query } = toPath;
+  if (isCompleteHTTPUrl(pathname)) return pathname;
+  const mappedToHref = getRouteHref(pathname);
+  return {
+    pathname: mappedToHref,
+    query,
+  };
+};
 
-  return url.indexOf('thechildrensplace') > -1 ? 'tcp' : 'gymboree';
+/**
+ * @summary This is to return the asPath with additional slug values appended
+ * @param {String} as - asPath
+ * @param {String} siteId - siteId dynamic value to be appended
+ * @returns {String} Path with slug value appended
+ */
+export const getAsPathWithSlug = (as, siteId = getSiteId()) => {
+  return isCompleteHTTPUrl(as) ? as : `/${siteId}${as}`;
+};
+
+export const routerPush = (href, as, query, siteId = getSiteId()) => {
+  const relHref = getMappedPageHref(href);
+  const asPath = getAsPathWithSlug(as, siteId);
+  return Router.push(relHref, asPath, { query });
 };
 
 /**
@@ -144,44 +188,6 @@ export const getCreditCardExpirationOptionMap = () => {
   };
 };
 
-export const getBirthDateOptionMap = () => {
-  const monthOptionsMap = [
-    { id: '1', displayName: MONTH_SHORT_FORMAT.JAN },
-    { id: '2', displayName: MONTH_SHORT_FORMAT.FEB },
-    { id: '3', displayName: MONTH_SHORT_FORMAT.MAR },
-    { id: '4', displayName: MONTH_SHORT_FORMAT.APR },
-    { id: '5', displayName: MONTH_SHORT_FORMAT.MAY },
-    { id: '6', displayName: MONTH_SHORT_FORMAT.JUN },
-    { id: '7', displayName: MONTH_SHORT_FORMAT.JUL },
-    { id: '8', displayName: MONTH_SHORT_FORMAT.AUG },
-    { id: '9', displayName: MONTH_SHORT_FORMAT.SEP },
-    { id: '10', displayName: MONTH_SHORT_FORMAT.OCT },
-    { id: '11', displayName: MONTH_SHORT_FORMAT.NOV },
-    { id: '12', displayName: MONTH_SHORT_FORMAT.DEC },
-  ];
-
-  const yearOptionsMap = [];
-  const dayOptionsMap = [];
-  const nowYear = new Date().getFullYear();
-
-  for (let i = 1900; i < nowYear - 17; i += 1) {
-    yearOptionsMap.push({ id: i.toString(), displayName: i.toString() });
-  }
-
-  for (let i = 1; i < 32; i += 1) {
-    if (i <= 9) {
-      i = 0 + i;
-    }
-    dayOptionsMap.push({ id: i.toString(), displayName: i.toString() });
-  }
-
-  return {
-    daysMap: dayOptionsMap,
-    monthsMap: monthOptionsMap,
-    yearsMap: yearOptionsMap,
-  };
-};
-
 /**
  * Calculates browser width and height, and informs the current viewport as per the defined viewport settings
  */
@@ -252,7 +258,10 @@ export const getCountriesMap = data => {
   const countries = defaultCountries;
   data.map(value =>
     countries.push(
-      Object.assign({}, value.country, { siteId: 'us', currencyId: value.currency.id })
+      Object.assign({}, value.country, {
+        siteId: 'us',
+        currencyId: value.currency.id,
+      })
     )
   );
   return countries;
@@ -279,9 +288,30 @@ export const getModifiedLanguageCode = id => {
   }
 };
 
+/**
+ * @method getTranslateDateInformation
+ * @desc returns day, month and day of the respective date provided
+ * @param {string} date date which is to be mutated
+ * @param {upperCase} locale use for convert locate formate
+ */
+export const getTranslateDateInformation = (
+  date,
+  language,
+  dayOption = { weekday: 'short' },
+  monthOption = { month: 'short' }
+) => {
+  const localeType = language ? getModifiedLanguageCode(language).replace('_', '-') : 'en';
+  const currentDate = date ? new Date(date) : new Date();
+  return {
+    day: new Intl.DateTimeFormat(localeType, dayOption).format(currentDate),
+    month: new Intl.DateTimeFormat(localeType, monthOption).format(currentDate),
+    date: currentDate.getDate(),
+  };
+};
+
 export const siteRedirect = (newCountry, oldCountry, newSiteId, oldSiteId) => {
   if ((newCountry && newCountry !== oldCountry) || (newSiteId && newSiteId !== oldSiteId)) {
-    routerPush(window.location.href, pages.home, null, newSiteId);
+    routerPush(window.location.href, ROUTE_PATH.home, null, newSiteId);
   }
 };
 
@@ -298,28 +328,60 @@ export const languageRedirect = (newLanguage, oldLanguage) => {
   }
 };
 
-export default {
-  importGraphQLClientDynamically,
-  importGraphQLQueriesDynamically,
-  isProduction,
-  isDevelopment,
-  identifyBrand,
-  getObjectValue,
-  createUrlSearchParams,
-  buildUrl,
-  getCreditCardExpirationOptionMap,
-  getBirthDateOptionMap,
-  getSiteId,
-  routerPush,
-  bindAllClassMethodsToThis,
-  scrollPage,
-  getCountriesMap,
-  getCurrenciesMap,
-  getModifiedLanguageCode,
-  siteRedirect,
-  languageRedirect,
+/**
+ * This function will redirect to PDP from HOMEPAGE
+ * on the basis of productId
+ */
+export const redirectToPdp = (productId, seoToken) => {
+  if (!window) return null;
+
+  const params = seoToken ? `${seoToken}-${productId}` : productId;
+
+  return {
+    url: `/p?${params}`,
+    asPath: `/p/${params}`,
+  };
 };
 
+/**
+ * This function configure url for Next/Link using CMS defined url string
+ */
+export const configureInternalNavigationFromCMSUrl = url => {
+  const plpRoute = `${ROUTE_PATH.plp.name}/`;
+  const pdpRoute = `${ROUTE_PATH.pdp.name}/`;
+  const searchRoute = `${ROUTE_PATH.search.name}/`;
+
+  if (url.includes(plpRoute)) {
+    const urlItems = url.split(plpRoute);
+    const queryParam = urlItems[0];
+    return `${ROUTE_PATH.plp.name}?${ROUTE_PATH.plp.param}=${queryParam}`;
+  }
+  if (url.includes(pdpRoute)) {
+    const urlItems = url.split(pdpRoute);
+    const queryParam = urlItems[0];
+    return `${ROUTE_PATH.pdp.name}?${ROUTE_PATH.pdp.param}=${queryParam}`;
+  }
+  if (url.includes(searchRoute)) {
+    const urlItems = url.split(searchRoute);
+    const queryParam = urlItems[0];
+    return `${ROUTE_PATH.search.name}?${ROUTE_PATH.search.param}=${queryParam}`;
+  }
+  return url;
+};
+
+/*
+ *
+ * @param {object} event the HTML element's element
+ * @param {number} key key for which the event needs to be triggered
+ * @param {function} method method passed which is to be invoked.
+ * @description this method invokes the parameter method received when respective
+ * keybord key is triggered
+ */
+export const handleGenericKeyDown = (event, key, method) => {
+  if (event.keyCode === key) {
+    method();
+  }
+};
 const getAPIInfoFromEnv = (apiSiteInfo, processEnv, siteId) => {
   const country = siteId && siteId.toUpperCase();
   const apiEndpoint = processEnv.RWD_WEB_API_DOMAIN || ''; // TO ensure relative URLs for MS APIs
@@ -342,9 +404,11 @@ const getAPIInfoFromEnv = (apiSiteInfo, processEnv, siteId) => {
     ACQUISITION_ID: process.env.RWD_WEB_ACQUISITION_ID,
     raygunApiKey: processEnv.RWD_WEB_RAYGUN_API_KEY,
     channelId: API_CONFIG.channelIds.Desktop, // TODO - Make it dynamic for all 3 platforms
+    borderFree: processEnv.BORDERS_FREE,
+    borderFreeComm: processEnv.BORDERS_FREE_COMM,
+    paypalEnv: processEnv.RWD_WEB_PAYPAL_ENV,
   };
 };
-
 const getGraphQLApiFromEnv = (apiSiteInfo, processEnv, relHostname) => {
   const graphQlEndpoint = processEnv.RWD_WEB_GRAPHQL_API_ENDPOINT || relHostname;
   return {
@@ -354,16 +418,57 @@ const getGraphQLApiFromEnv = (apiSiteInfo, processEnv, relHostname) => {
     graphql_api_key: processEnv.RWD_WEB_GRAPHQL_API_KEY || '',
   };
 };
-
+/*
+ * @method numericStringToBool
+ * @description this method returns the bool value of string numeric passed
+ * @param {string} str the  string numeric value
+ */
+export const numericStringToBool = str => !!+str;
+// Parse boolean out of string true|false
+export const parseBoolean = bool => {
+  return bool === true || bool === '1' || (bool || '').toUpperCase() === 'TRUE';
+};
+/**
+ *
+ * @param {object} bossDisabledFlags carries the boss disability flags -
+ * bossCategoryDisabled,
+ * bossProductDisabled
+ * @returns the disability boolean value
+ */
+export const isBossProduct = bossDisabledFlags => {
+  const { bossCategoryDisabled, bossProductDisabled } = bossDisabledFlags;
+  return !(numericStringToBool(bossCategoryDisabled) || numericStringToBool(bossProductDisabled));
+};
+/**
+ * @function isBopsProduct
+ * @param {*} isUSStore
+ * @param {*} product
+ * @summary This BOPIS logic is to validate if product/color variant is eligible for BOPIS
+ * product is a color variant object of a product.
+ */
+export const isBopisProduct = (isUSStore, product) => {
+  let isOnlineOnly;
+  if (isUSStore) {
+    isOnlineOnly =
+      (product.TCPWebOnlyFlagUSStore && parseBoolean(product.TCPWebOnlyFlagUSStore)) || false;
+  } else {
+    isOnlineOnly =
+      (product.TCPWebOnlyFlagCanadaStore && parseBoolean(product.TCPWebOnlyFlagCanadaStore)) ||
+      false;
+  }
+  return !isOnlineOnly;
+};
 export const createAPIConfig = resLocals => {
   // TODO - Get data from env config - Brand, MellisaKey, BritverifyId, AcquisitionId, Domains, Asset Host, Unbxd Domain;
   // TODO - use isMobile and cookie as well..
 
-  const { siteId, brandId, hostname } = resLocals;
+  const { country, currency, language, siteId, brandId, hostname } = resLocals;
   const isCASite = siteId === API_CONFIG.siteIds.ca;
   const isGYMSite = brandId === API_CONFIG.brandIds.gym;
   const countryConfig = isCASite ? API_CONFIG.CA_CONFIG_OPTIONS : API_CONFIG.US_CONFIG_OPTIONS;
   const brandConfig = isGYMSite ? API_CONFIG.GYM_CONFIG_OPTIONS : API_CONFIG.TCP_CONFIG_OPTIONS;
+  const catalogId =
+    API_CONFIG.CATALOGID_CONFIG[isGYMSite ? 'Gymboree' : 'TCP'][isCASite ? 'Canada' : 'USA'];
   const apiSiteInfo = API_CONFIG.sitesInfo;
   const processEnv = process.env;
   const relHostname = apiSiteInfo.proto + apiSiteInfo.protoSeparator + hostname;
@@ -374,7 +479,43 @@ export const createAPIConfig = resLocals => {
     ...graphQLConfig,
     ...countryConfig,
     ...brandConfig,
+    catalogId,
     isMobile: false,
     cookie: null,
+    country,
+    currency,
+    language,
   };
+};
+export const viewport = () => {
+  if (!window) return null;
+
+  return {
+    small: window.matchMedia(mediaQuery.smallOnly).matches,
+    medium: window.matchMedia(mediaQuery.mediumOnly).matches,
+    large: window.matchMedia(mediaQuery.large).matches,
+  };
+};
+export default {
+  importGraphQLClientDynamically,
+  importGraphQLQueriesDynamically,
+  isProduction,
+  isDevelopment,
+  getObjectValue,
+  createUrlSearchParams,
+  buildUrl,
+  getCreditCardExpirationOptionMap,
+  getSiteId,
+  routerPush,
+  bindAllClassMethodsToThis,
+  scrollPage,
+  getCountriesMap,
+  getCurrenciesMap,
+  getModifiedLanguageCode,
+  siteRedirect,
+  languageRedirect,
+  redirectToPdp,
+  handleGenericKeyDown,
+  viewport,
+  canUseDOM,
 };

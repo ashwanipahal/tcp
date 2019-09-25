@@ -15,6 +15,7 @@ exports[`CheckoutSectionTitleDisplay should render correctly 1`] = `
       fontWeight="extrabold"
       letterSpacing="normal"
       lineHeight="normal"
+      link={null}
       textAlign="left"
     >
       hello

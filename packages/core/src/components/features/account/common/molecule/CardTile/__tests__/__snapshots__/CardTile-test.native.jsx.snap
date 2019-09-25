@@ -33,26 +33,35 @@ exports[`CardTile should render correctly with amex card 1`] = `
   >
     <Styled(Text)>
       <Styled(BodyCopy)
+        accessibilityText=""
         dataLocator="payment-creditdebitnametitle"
         fontSize="fs16"
         fontWeight="regular"
+        margin={null}
         mobilefontFamily={
           Array [
             "secondary",
           ]
         }
+        numberOfLines={null}
+        textDecoration={null}
       />
     </Styled(Text)>
     <Styled(View)>
       <Styled(Text)>
         <Styled(BodyCopy)
+          accessibilityText=""
+          dataLocator=""
           fontSize="fs10"
           fontWeight="semibold"
+          margin={null}
           mobilefontFamily={
             Array [
               "secondary",
             ]
           }
+          numberOfLines={null}
+          textDecoration={null}
         />
       </Styled(Text)>
     </Styled(View)>
@@ -63,17 +72,25 @@ exports[`CardTile should render correctly with amex card 1`] = `
   >
     <View>
       <Styled(BodyCopy)
+        accessibilityText=""
         dataLocator="payment-creditdebitendingtext"
         fontSize="fs14"
         fontWeight="black"
+        margin={null}
+        numberOfLines={null}
         text="undefined6765"
+        textDecoration={null}
       />
       <Styled(Text)>
         <Styled(BodyCopy)
+          accessibilityText=""
           dataLocator="payment-creditdebitexpiretext"
           fontSize="fs14"
           fontWeight="semibold"
+          margin={null}
+          numberOfLines={null}
           text="undefined10/2025"
+          textDecoration={null}
         />
       </Styled(Text)>
     </View>
@@ -135,6 +152,7 @@ exports[`CardTile should render correctly with amex card 1`] = `
       <Styled(Anchor)
         accessibilityLabel=""
         anchorVariation="primary"
+        colorName={null}
         customStyle={Object {}}
         dataLocator="payment-creditdebiteditlink"
         fontSizeVariation="large"
@@ -148,6 +166,7 @@ exports[`CardTile should render correctly with amex card 1`] = `
       <Styled(Anchor)
         accessibilityLabel=""
         anchorVariation="primary"
+        colorName={null}
         customStyle={Object {}}
         dataLocator="payment-creditdebitdeletelink"
         fontSizeVariation="large"
@@ -195,19 +214,24 @@ exports[`CardTile should render correctly with discover card 1`] = `
   >
     <Styled(Text)>
       <Styled(BodyCopy)
+        accessibilityText=""
         dataLocator="payment-creditdebitnametitle"
         fontSize="fs16"
         fontWeight="regular"
+        margin={null}
         mobilefontFamily={
           Array [
             "secondary",
           ]
         }
+        numberOfLines={null}
+        textDecoration={null}
       />
     </Styled(Text)>
     <Styled(Anchor)
       accessibilityLabel=""
       anchorVariation="primary"
+      colorName={null}
       customStyle={Object {}}
       dataLocator="payment-makedefault"
       fontSizeVariation="small"
@@ -225,17 +249,25 @@ exports[`CardTile should render correctly with discover card 1`] = `
   >
     <View>
       <Styled(BodyCopy)
+        accessibilityText=""
         dataLocator="payment-creditdebitendingtext"
         fontSize="fs14"
         fontWeight="black"
+        margin={null}
+        numberOfLines={null}
         text="undefined6765"
+        textDecoration={null}
       />
       <Styled(Text)>
         <Styled(BodyCopy)
+          accessibilityText=""
           dataLocator="payment-creditdebitexpiretext"
           fontSize="fs14"
           fontWeight="semibold"
+          margin={null}
+          numberOfLines={null}
           text="undefined10/2025"
+          textDecoration={null}
         />
       </Styled(Text)>
     </View>
@@ -297,6 +329,7 @@ exports[`CardTile should render correctly with discover card 1`] = `
       <Styled(Anchor)
         accessibilityLabel=""
         anchorVariation="primary"
+        colorName={null}
         customStyle={Object {}}
         dataLocator="payment-creditdebiteditlink"
         fontSizeVariation="large"
@@ -310,6 +343,7 @@ exports[`CardTile should render correctly with discover card 1`] = `
       <Styled(Anchor)
         accessibilityLabel=""
         anchorVariation="primary"
+        colorName={null}
         customStyle={Object {}}
         dataLocator="payment-creditdebitdeletelink"
         fontSizeVariation="large"
@@ -358,15 +392,19 @@ exports[`CardTile should render correctly with gift card 1`] = `
   >
     <Styled(Text)>
       <Styled(BodyCopy)
+        accessibilityText=""
         dataLocator="payment-giftcardnametitle"
         fontSize="fs16"
         fontWeight="regular"
+        margin={null}
         mobilefontFamily={
           Array [
             "secondary",
           ]
         }
+        numberOfLines={null}
         text=""
+        textDecoration={null}
       />
     </Styled(Text)>
   </Styled(View)>
@@ -376,10 +414,14 @@ exports[`CardTile should render correctly with gift card 1`] = `
   >
     <View>
       <Styled(BodyCopy)
+        accessibilityText=""
         dataLocator="payment-giftcardendingtext"
         fontSize="fs14"
         fontWeight="black"
+        margin={null}
+        numberOfLines={null}
         text="undefined6765"
+        textDecoration={null}
       />
     </View>
     <Styled(View)
@@ -448,6 +490,7 @@ exports[`CardTile should render correctly with gift card 1`] = `
               "error": "",
               "touched": "",
             },
+            "onChangeText": [Function],
             "secureTextEntry": false,
             "showErrorIcon": true,
             "showSuccessCheck": false,
@@ -484,23 +527,17 @@ exports[`CardTile should render correctly with gift card 1`] = `
     />
   </View>
   <Styled(View)>
-    <Styled(CustomButton)
+    <Styled(WithTheme(CustomButton))
       buttonVariation="variable-width"
       color="white"
-      customStyle={Object {}}
-      disableButton={false}
       fill="BLUE"
-      fullWidth=""
-      locator=""
-      onPress={null}
-      text=""
-      url=""
     />
     <Styled(View)>
       <Styled(View) />
       <Styled(Anchor)
         accessibilityLabel=""
         anchorVariation="primary"
+        colorName={null}
         customStyle={Object {}}
         dataLocator="payment-giftcarddeletelink"
         fontSizeVariation="large"
@@ -548,15 +585,19 @@ exports[`CardTile should render correctly with gift card with balance 1`] = `
   >
     <Styled(Text)>
       <Styled(BodyCopy)
+        accessibilityText=""
         dataLocator="payment-giftcardnametitle"
         fontSize="fs16"
         fontWeight="regular"
+        margin={null}
         mobilefontFamily={
           Array [
             "secondary",
           ]
         }
+        numberOfLines={null}
         text=""
+        textDecoration={null}
       />
     </Styled(Text)>
   </Styled(View)>
@@ -566,10 +607,14 @@ exports[`CardTile should render correctly with gift card with balance 1`] = `
   >
     <View>
       <Styled(BodyCopy)
+        accessibilityText=""
         dataLocator="payment-giftcardendingtext"
         fontSize="fs14"
         fontWeight="black"
+        margin={null}
+        numberOfLines={null}
         text="undefined6765"
+        textDecoration={null}
       />
     </View>
     <Styled(View)
@@ -637,6 +682,7 @@ exports[`CardTile should render correctly with gift card with balance 1`] = `
               "error": "",
               "touched": "",
             },
+            "onChangeText": [Function],
             "secureTextEntry": false,
             "showErrorIcon": true,
             "showSuccessCheck": false,
@@ -673,23 +719,17 @@ exports[`CardTile should render correctly with gift card with balance 1`] = `
     />
   </View>
   <Styled(View)>
-    <Styled(CustomButton)
+    <Styled(WithTheme(CustomButton))
       buttonVariation="variable-width"
       color="white"
-      customStyle={Object {}}
-      disableButton={false}
       fill="BLUE"
-      fullWidth=""
-      locator=""
-      onPress={null}
-      text=""
-      url=""
     />
     <Styled(View)>
       <Styled(View) />
       <Styled(Anchor)
         accessibilityLabel=""
         anchorVariation="primary"
+        colorName={null}
         customStyle={Object {}}
         dataLocator="payment-giftcarddeletelink"
         fontSizeVariation="large"
@@ -737,19 +777,24 @@ exports[`CardTile should render correctly with master card 1`] = `
   >
     <Styled(Text)>
       <Styled(BodyCopy)
+        accessibilityText=""
         dataLocator="payment-creditdebitnametitle"
         fontSize="fs16"
         fontWeight="regular"
+        margin={null}
         mobilefontFamily={
           Array [
             "secondary",
           ]
         }
+        numberOfLines={null}
+        textDecoration={null}
       />
     </Styled(Text)>
     <Styled(Anchor)
       accessibilityLabel=""
       anchorVariation="primary"
+      colorName={null}
       customStyle={Object {}}
       dataLocator="payment-makedefault"
       fontSizeVariation="small"
@@ -767,17 +812,25 @@ exports[`CardTile should render correctly with master card 1`] = `
   >
     <View>
       <Styled(BodyCopy)
+        accessibilityText=""
         dataLocator="payment-creditdebitendingtext"
         fontSize="fs14"
         fontWeight="black"
+        margin={null}
+        numberOfLines={null}
         text="undefined6765"
+        textDecoration={null}
       />
       <Styled(Text)>
         <Styled(BodyCopy)
+          accessibilityText=""
           dataLocator="payment-creditdebitexpiretext"
           fontSize="fs14"
           fontWeight="semibold"
+          margin={null}
+          numberOfLines={null}
           text="undefined10/2025"
+          textDecoration={null}
         />
       </Styled(Text)>
     </View>
@@ -839,6 +892,7 @@ exports[`CardTile should render correctly with master card 1`] = `
       <Styled(Anchor)
         accessibilityLabel=""
         anchorVariation="primary"
+        colorName={null}
         customStyle={Object {}}
         dataLocator="payment-creditdebiteditlink"
         fontSizeVariation="large"
@@ -852,6 +906,7 @@ exports[`CardTile should render correctly with master card 1`] = `
       <Styled(Anchor)
         accessibilityLabel=""
         anchorVariation="primary"
+        colorName={null}
         customStyle={Object {}}
         dataLocator="payment-creditdebitdeletelink"
         fontSizeVariation="large"
@@ -899,15 +954,19 @@ exports[`CardTile should render correctly with notification  gift card 1`] = `
   >
     <Styled(Text)>
       <Styled(BodyCopy)
+        accessibilityText=""
         dataLocator="payment-giftcardnametitle"
         fontSize="fs16"
         fontWeight="regular"
+        margin={null}
         mobilefontFamily={
           Array [
             "secondary",
           ]
         }
+        numberOfLines={null}
         text=""
+        textDecoration={null}
       />
     </Styled(Text)>
   </Styled(View)>
@@ -917,10 +976,14 @@ exports[`CardTile should render correctly with notification  gift card 1`] = `
   >
     <View>
       <Styled(BodyCopy)
+        accessibilityText=""
         dataLocator="payment-giftcardendingtext"
         fontSize="fs14"
         fontWeight="black"
+        margin={null}
+        numberOfLines={null}
         text="undefined6765"
+        textDecoration={null}
       />
     </View>
     <Styled(View)
@@ -988,6 +1051,7 @@ exports[`CardTile should render correctly with notification  gift card 1`] = `
               "error": "",
               "touched": "",
             },
+            "onChangeText": [Function],
             "secureTextEntry": false,
             "showErrorIcon": true,
             "showSuccessCheck": false,
@@ -1024,23 +1088,17 @@ exports[`CardTile should render correctly with notification  gift card 1`] = `
     />
   </View>
   <Styled(View)>
-    <Styled(CustomButton)
+    <Styled(WithTheme(CustomButton))
       buttonVariation="variable-width"
       color="white"
-      customStyle={Object {}}
-      disableButton={false}
       fill="BLUE"
-      fullWidth=""
-      locator=""
-      onPress={null}
-      text=""
-      url=""
     />
     <Styled(View)>
       <Styled(View) />
       <Styled(Anchor)
         accessibilityLabel=""
         anchorVariation="primary"
+        colorName={null}
         customStyle={Object {}}
         dataLocator="payment-giftcarddeletelink"
         fontSizeVariation="large"
@@ -1088,19 +1146,24 @@ exports[`CardTile should render correctly with plcc card 1`] = `
   >
     <Styled(Text)>
       <Styled(BodyCopy)
+        accessibilityText=""
         dataLocator="payment-creditdebitnametitle"
         fontSize="fs16"
         fontWeight="regular"
+        margin={null}
         mobilefontFamily={
           Array [
             "secondary",
           ]
         }
+        numberOfLines={null}
+        textDecoration={null}
       />
     </Styled(Text)>
     <Styled(Anchor)
       accessibilityLabel=""
       anchorVariation="primary"
+      colorName={null}
       customStyle={Object {}}
       dataLocator="payment-makedefault"
       fontSizeVariation="small"
@@ -1118,10 +1181,14 @@ exports[`CardTile should render correctly with plcc card 1`] = `
   >
     <View>
       <Styled(BodyCopy)
+        accessibilityText=""
         dataLocator="payment-creditdebitendingtext"
         fontSize="fs14"
         fontWeight="black"
+        margin={null}
+        numberOfLines={null}
         text="undefined6765"
+        textDecoration={null}
       />
     </View>
     <Styled(View)
@@ -1182,6 +1249,7 @@ exports[`CardTile should render correctly with plcc card 1`] = `
       <Styled(Anchor)
         accessibilityLabel=""
         anchorVariation="primary"
+        colorName={null}
         customStyle={Object {}}
         dataLocator="payment-creditdebiteditlink"
         fontSizeVariation="large"
@@ -1195,6 +1263,7 @@ exports[`CardTile should render correctly with plcc card 1`] = `
       <Styled(Anchor)
         accessibilityLabel=""
         anchorVariation="primary"
+        colorName={null}
         customStyle={Object {}}
         dataLocator="payment-creditdebitdeletelink"
         fontSizeVariation="large"
@@ -1244,14 +1313,18 @@ exports[`CardTile should render correctly with venmocard 1`] = `
   >
     <Styled(Text)>
       <Styled(BodyCopy)
+        accessibilityText=""
         dataLocator="payment-venmonametitle"
         fontSize="fs16"
         fontWeight="regular"
+        margin={null}
         mobilefontFamily={
           Array [
             "secondary",
           ]
         }
+        numberOfLines={null}
+        textDecoration={null}
       />
     </Styled(Text)>
   </Styled(View)>
@@ -1263,9 +1336,14 @@ exports[`CardTile should render correctly with venmocard 1`] = `
       dataLocator="payment-venmoid"
     >
       <Styled(BodyCopy)
+        accessibilityText=""
+        dataLocator=""
         fontSize="fs14"
         fontWeight="extrabold"
+        margin={null}
+        numberOfLines={null}
         text="1234"
+        textDecoration={null}
       />
     </Styled(Text)>
     <Styled(View)
@@ -1315,6 +1393,7 @@ exports[`CardTile should render correctly with venmocard 1`] = `
       <Styled(Anchor)
         accessibilityLabel=""
         anchorVariation="primary"
+        colorName={null}
         customStyle={Object {}}
         dataLocator="payment-venmodeletelink"
         fontSizeVariation="large"
@@ -1362,19 +1441,24 @@ exports[`CardTile should render correctly with visa card 1`] = `
   >
     <Styled(Text)>
       <Styled(BodyCopy)
+        accessibilityText=""
         dataLocator="payment-creditdebitnametitle"
         fontSize="fs16"
         fontWeight="regular"
+        margin={null}
         mobilefontFamily={
           Array [
             "secondary",
           ]
         }
+        numberOfLines={null}
+        textDecoration={null}
       />
     </Styled(Text)>
     <Styled(Anchor)
       accessibilityLabel=""
       anchorVariation="primary"
+      colorName={null}
       customStyle={Object {}}
       dataLocator="payment-makedefault"
       fontSizeVariation="small"
@@ -1392,17 +1476,25 @@ exports[`CardTile should render correctly with visa card 1`] = `
   >
     <View>
       <Styled(BodyCopy)
+        accessibilityText=""
         dataLocator="payment-creditdebitendingtext"
         fontSize="fs14"
         fontWeight="black"
+        margin={null}
+        numberOfLines={null}
         text="undefined6765"
+        textDecoration={null}
       />
       <Styled(Text)>
         <Styled(BodyCopy)
+          accessibilityText=""
           dataLocator="payment-creditdebitexpiretext"
           fontSize="fs14"
           fontWeight="semibold"
+          margin={null}
+          numberOfLines={null}
           text="undefined10/2025"
+          textDecoration={null}
         />
       </Styled(Text)>
     </View>
@@ -1464,6 +1556,7 @@ exports[`CardTile should render correctly with visa card 1`] = `
       <Styled(Anchor)
         accessibilityLabel=""
         anchorVariation="primary"
+        colorName={null}
         customStyle={Object {}}
         dataLocator="payment-creditdebiteditlink"
         fontSizeVariation="large"
@@ -1477,6 +1570,7 @@ exports[`CardTile should render correctly with visa card 1`] = `
       <Styled(Anchor)
         accessibilityLabel=""
         anchorVariation="primary"
+        colorName={null}
         customStyle={Object {}}
         dataLocator="payment-creditdebitdeletelink"
         fontSizeVariation="large"

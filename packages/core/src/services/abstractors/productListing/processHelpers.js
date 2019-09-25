@@ -6,9 +6,6 @@ const apiHelper = {
     isUSStore: true,
     siteId: utils.getSiteId(),
   },
-  responseContainsErrors: () => {
-    return false;
-  },
 };
 /** @function This function return that category map from the catrgory path of the product bieng iterated on.
  * @param catPath {Array} It is the array of the category path with which the product can be accessed.
@@ -79,7 +76,7 @@ function convertToColorArray(colorSwatches, id, color) {
  */
 const getAppliedFilters = (filters, filterIds) => {
   const appliedFilters = {};
-  const facetKeys = Object.keys(filterIds);
+  const facetKeys = filterIds ? Object.keys(filterIds) : [];
   facetKeys.forEach(facetKey => {
     if (isUnbxdFacetKey(facetKey)) {
       // for facets having facetName as key
@@ -168,7 +165,7 @@ const getDisplayName = (keyValue, data, index) => {
 /**
  * @function getFacetsMappingFromAPIData
  * @param {Object} filterMap - UNBXD API Response for individual facet
- * @param {Function} getFacetSwatchImgPath - Get Color swatch image for the facet option
+ * @param {Function} getFacetsMappingFromAPIData - Get Color swatch image for the facet option
  */
 const getFacetsMappingFromAPIData = (
   filterMap,
@@ -318,6 +315,7 @@ const getBreadCrumbTrail = breadCrumbs => {
     ? breadCrumbs.map(crumb => ({
         displayName: crumb.displayName,
         urlPathSuffix: crumb.urlPathSuffix,
+        categoryId: crumb.categoryId,
       }))
     : [];
 };
@@ -338,7 +336,9 @@ const getColors = (isUSStore, product, uniqueId, defaultColor) => {
     : convertToColorArray(product.TCPSwatchesCanadaStore, uniqueId, defaultColor);
 };
 const getChildLength = bucketingSeqConfig => {
-  return bucketingSeqConfig.requiredChildren ? bucketingSeqConfig.requiredChildren.length : 0;
+  return bucketingSeqConfig && bucketingSeqConfig.requiredChildren
+    ? bucketingSeqConfig.requiredChildren.length
+    : 0;
 };
 const getCatMap = (product, bucketingSeqConfig) => {
   return (
@@ -349,7 +349,7 @@ const getCatMap = (product, bucketingSeqConfig) => {
 const getRequiredL3 = (shouldApplyUnbxdLogic, bucketingSeqConfig, idx) => {
   return shouldApplyUnbxdLogic
     ? bucketingSeqConfig.desiredL3
-    : bucketingSeqConfig.requiredChildren[idx].name;
+    : bucketingSeqConfig.requiredChildren[idx].categoryContent.name;
 };
 const getListPriceResponse = product => {
   return product.min_list_price === product.min_offer_price

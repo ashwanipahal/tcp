@@ -1,29 +1,43 @@
 export default {
   stackedCTAList: {
-    className: 'stacked-cta-wrapper',
-    compProps: {
+    compClassName: 'stacked-cta-wrapper',
+    ctaInfo: {
       className: 'stacked-button',
-      buttonVariation: 'fixed-width',
+      ctaVariation: 'fixed-width',
     },
+    MAX_NUM_OF_BUTTONS_IN_A_ROW: 5,
+    noCurveMobile: true,
   },
   scrollCTAList: {
-    className: 'scroll-cta-wrapper',
-    compProps: {
+    compClassName: 'scroll-cta-wrapper',
+    ctaInfo: {
       className: 'scroll-button',
-      buttonVariation: 'variable-width',
+      ctaVariation: 'variable-width',
     },
+    MAX_NUM_OF_BUTTONS_IN_A_ROW: 5,
+    MIN_NO_OF_BUTTONS_TO_SCROLL: 3,
   },
   imageCTAList: {
-    className: 'scroll-cta-wrapper',
-    compProps: {
+    compClassName: 'scroll-cta-wrapper',
+    ctaInfo: {
       className: 'image-cta',
     },
+    MAX_NUM_OF_BUTTONS_IN_A_ROW: 5,
+    MIN_NO_OF_BUTTONS_TO_SCROLL: 4,
   },
   linkCTAList: {
-    className: 'link-button-wrapper',
-    compProps: {
+    compClassName: 'link-button-wrapper',
+    ctaInfo: {
       className: 'link-button',
-      buttonVariation: 'category-links-dark',
+      ctaVariation: 'category-links-dark',
     },
+    compWrapper: 'link-button-list-wrapper',
+  },
+  buttonListVariations: {
+    STACKED_CTA: 'stackedCTAList',
+    LINK_CTA: 'linkCTAList',
+    SCROLL_CTA: 'scrollCTAList',
+    IMAGE_CTA: 'imageCTAList',
+    DROPDOWN_CTA: 'dropdownButtonCTA',
   },
 };

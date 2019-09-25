@@ -1,24 +1,23 @@
 import { connect } from 'react-redux';
 import { bootstrapData } from '@tcp/core/src/reduxStore/actions';
+import { fetchNavigationData } from '@tcp/core/src/components/features/content/Navigation/container/Navigation.actions';
 import HomePageView from '../views';
-
 import { THEME_WRAPPER_REDUCER_KEY } from '../../../../common/hoc/ThemeWrapper.constants';
 
 const mapStateToProps = state => {
-  const headerPromo = state.Header && state.Header.promoTextBannerCarousel;
-  const homepageSlots = state.Layouts.homepage ? state.Layouts.homepage.slots : '';
-  const modules = state.Modules ? state.Modules : '';
-  const moduleSlots = {};
+  const { Header = {}, Layouts = {}, Modules = {} } = state;
+  const headerPromo = Header.promoTextBannerCarousel;
+  const homepageSlots = Layouts.homepage ? Layouts.homepage.slots : [];
 
-  if (homepageSlots && Object.keys(modules).length) {
-    homepageSlots.forEach(slotItem => {
-      moduleSlots[slotItem.name] = modules[slotItem.contentId];
-      moduleSlots[slotItem.name].name = slotItem.moduleName;
-      return moduleSlots;
-    });
-  }
   return {
-    ...moduleSlots,
+    slots: homepageSlots
+      .map(slot => {
+        return {
+          ...slot,
+          data: Modules[slot.contentId],
+        };
+      })
+      .filter(item => item.data),
     headerPromo,
     appType: state[THEME_WRAPPER_REDUCER_KEY].get('APP_TYPE'),
   };
@@ -33,6 +32,7 @@ const mapDispatchToProps = dispatch => {
       };
       dispatch(bootstrapData(payload));
     },
+    loadNavigationData: () => dispatch(fetchNavigationData()),
   };
 };
 

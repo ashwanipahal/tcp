@@ -1,0 +1,25 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`ApplyNowModalWrapper component should renders correctly 1`] = `
+<Styled(Modal)
+  className="abc TCPModal__Content"
+  dataLocator="plcc_apply_now_modal"
+  dataLocatorHeader="plcc_apply_now_close_btn"
+  fixedWidth={true}
+  inheritedStyles={
+    Object {
+      "header": "secondary",
+    }
+  }
+  isOpen={true}
+  maxWidth="724px"
+  minHeight="646px"
+  onRequestClose={[MockFunction]}
+  overlayClassName="TCPModal__Overlay"
+  shouldCloseOnOverlayClick={false}
+>
+  <Connect(ApplyCardLayoutContainer)
+    isPLCCModalFlow={true}
+  />
+</Styled(Modal)>
+`;

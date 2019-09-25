@@ -16,30 +16,15 @@ exports[`Add gift card component should render component correctly if add gift i
     fontFamily="primaryFontFamily"
     tag="h4"
   />
-  <Styled(Notification)
-    colSize={
-      Object {
-        "large": 12,
-        "medium": 8,
-        "small": 6,
-      }
-    }
-    message="failure"
-    status="error"
-  />
   <ReduxForm
     destroyOnUnmount={true}
     enableReinitialize={true}
     forceUnregisterOnUnmount={false}
     form="AddGiftCardForm"
     getFormState={[Function]}
+    isRecapchaEnabled={true}
     keepDirtyOnReinitialize={false}
-    labels={
-      Object {
-        "common": Object {},
-        "paymentGC": Object {},
-      }
-    }
+    labels={Object {}}
     onAddGiftCardClick={[MockFunction]}
     persistentSubmitErrors={false}
     pure={true}
@@ -72,30 +57,15 @@ exports[`Add gift card component should render component correctly if add gift i
     fontFamily="primaryFontFamily"
     tag="h4"
   />
-  <Styled(Notification)
-    colSize={
-      Object {
-        "large": 12,
-        "medium": 8,
-        "small": 6,
-      }
-    }
-    message="success"
-    status="error"
-  />
   <ReduxForm
     destroyOnUnmount={true}
     enableReinitialize={true}
     forceUnregisterOnUnmount={false}
     form="AddGiftCardForm"
     getFormState={[Function]}
+    isRecapchaEnabled={true}
     keepDirtyOnReinitialize={false}
-    labels={
-      Object {
-        "common": Object {},
-        "paymentGC": Object {},
-      }
-    }
+    labels={Object {}}
     onAddGiftCardClick={[MockFunction]}
     persistentSubmitErrors={false}
     pure={true}

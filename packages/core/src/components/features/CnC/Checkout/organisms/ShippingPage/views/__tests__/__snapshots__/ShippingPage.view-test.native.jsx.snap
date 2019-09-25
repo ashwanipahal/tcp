@@ -1,66 +1,437 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
 exports[`Shipping Page should render correctly 1`] = `
-<ScrollViewMock>
-  <View>
-    <Text>
-      Checkout Progress Bar container
-    </Text>
-  </View>
-  <CheckoutSectionTitleDisplay />
-  <Styled(View)>
-    <Styled(BodyCopy)
-      color="black"
-      fontFamily="primary"
-      fontSize="fs28"
-      fontWeight="regular"
-      text=""
-      textAlign="left"
-    />
-  </Styled(View)>
-  <ReduxForm
-    addressPhoneNo={null}
-    destroyOnUnmount={false}
-    enableReinitialize={false}
-    forceUnregisterOnUnmount={false}
-    form="checkoutShipping"
-    getFormState={[Function]}
-    initialValues={
+<Fragment>
+  <CheckoutProgressIndicator
+    activeStage="shipping"
+    navigation={
       Object {
-        "shipmentMethods": Object {
-          "shippingMethodId": null,
+        "state": Object {
+          "params": Object {
+            "addressLabels": Object {},
+            "defaultShipmentId": "",
+            "emailSignUpLabels": Object {},
+            "handleSubmit": [MockFunction] {
+              "calls": Array [
+                Array [
+                  Object {
+                    "method": Object {
+                      "shippingMethodId": undefined,
+                    },
+                    "shipTo": Object {
+                      "address": Object {
+                        "addressLine1": "pob",
+                        "addressLine2": "",
+                      },
+                      "addressId": undefined,
+                      "emailAddress": undefined,
+                      "emailSignup": true,
+                      "onFileAddressKey": undefined,
+                      "phoneNumber": undefined,
+                      "saveToAccount": undefined,
+                      "setAsDefault": false,
+                    },
+                    "smsInfo": Object {
+                      "smsUpdateNumber": undefined,
+                      "wantsSmsOrderUpdates": undefined,
+                    },
+                  },
+                ],
+              ],
+              "results": Array [
+                Object {
+                  "type": "return",
+                  "value": undefined,
+                },
+              ],
+            },
+            "loadShipmentMethods": [MockFunction],
+            "selectedShipmentId": "",
+            "shipmentMethods": [MockFunction],
+            "shippingLabels": Object {},
+          },
         },
       }
     }
-    isGuest={true}
-    isOrderUpdateChecked={false}
-    isUsSite={true}
-    keepDirtyOnReinitialize={false}
-    loadShipmentMethods={[Function]}
-    orderHasPickUp={false}
-    persistentSubmitErrors={false}
-    pure={true}
-    selectedShipmentId={null}
-    shipmentMethods={
-      Array [
-        Object {},
-      ]
-    }
-    shippingLabels={
-      Object {
-        "sectionHeader": "",
-      }
-    }
-    shouldAsyncValidate={[Function]}
-    shouldError={[Function]}
-    shouldValidate={[Function]}
-    shouldWarn={[Function]}
-    submitAsSideEffect={false}
-    submitShippingForm={[Function]}
-    touchOnBlur={true}
-    touchOnChange={false}
-    updateUnregisteredFields={false}
-    validate={[Function]}
   />
-</ScrollViewMock>
+  <ScrollViewMock
+    keyboardShouldPersistTaps="handled"
+  >
+    <Styled(View)>
+      <CheckoutSectionTitleDisplay
+        title=""
+      />
+    </Styled(View)>
+    <Styled(View)>
+      <Styled(BodyCopy)
+        accessibilityText=""
+        color="black"
+        dataLocator=""
+        fontFamily="primary"
+        fontSize="fs28"
+        fontWeight="regular"
+        margin={null}
+        numberOfLines={null}
+        text=""
+        textAlign="left"
+        textDecoration={null}
+      />
+    </Styled(View)>
+    <ReduxForm
+      addNewShippingAddress={[Function]}
+      address={
+        Object {
+          "addressLine1": "pob",
+          "addressLine2": "",
+        }
+      }
+      addressPhoneNo={null}
+      defaultAddressId={null}
+      destroyOnUnmount={false}
+      enableReinitialize={true}
+      forceUnregisterOnUnmount={false}
+      form="checkoutShipping"
+      getFormState={[Function]}
+      initialValues={
+        Object {
+          "address": Object {
+            "country": "US",
+          },
+          "onFileAddressKey": null,
+          "shipmentMethods": Object {
+            "shippingMethodId": null,
+          },
+        }
+      }
+      isGiftServicesChecked={false}
+      isGuest={true}
+      isOrderUpdateChecked={false}
+      isSaveToAddressBookChecked={false}
+      isUsSite={true}
+      keepDirtyOnReinitialize={true}
+      loadShipmentMethods={[Function]}
+      navigation={
+        Object {
+          "state": Object {
+            "params": Object {
+              "addressLabels": Object {},
+              "defaultShipmentId": "",
+              "emailSignUpLabels": Object {},
+              "handleSubmit": [MockFunction] {
+                "calls": Array [
+                  Array [
+                    Object {
+                      "method": Object {
+                        "shippingMethodId": undefined,
+                      },
+                      "shipTo": Object {
+                        "address": Object {
+                          "addressLine1": "pob",
+                          "addressLine2": "",
+                        },
+                        "addressId": undefined,
+                        "emailAddress": undefined,
+                        "emailSignup": true,
+                        "onFileAddressKey": undefined,
+                        "phoneNumber": undefined,
+                        "saveToAccount": undefined,
+                        "setAsDefault": false,
+                      },
+                      "smsInfo": Object {
+                        "smsUpdateNumber": undefined,
+                        "wantsSmsOrderUpdates": undefined,
+                      },
+                    },
+                  ],
+                ],
+                "results": Array [
+                  Object {
+                    "type": "return",
+                    "value": undefined,
+                  },
+                ],
+              },
+              "loadShipmentMethods": [MockFunction],
+              "selectedShipmentId": "",
+              "shipmentMethods": [MockFunction],
+              "shippingLabels": Object {},
+            },
+          },
+        }
+      }
+      newUserPhoneNo={null}
+      onFileAddressKey={null}
+      orderHasPickUp={false}
+      persistentSubmitErrors={false}
+      pure={true}
+      selectedShipmentId={null}
+      setAsDefaultShipping={false}
+      shipmentMethods={
+        Array [
+          Object {},
+        ]
+      }
+      shouldAsyncValidate={[Function]}
+      shouldError={[Function]}
+      shouldValidate={[Function]}
+      shouldWarn={[Function]}
+      submitAsSideEffect={false}
+      submitShippingForm={[Function]}
+      syncErrorsObject={Object {}}
+      touchOnBlur={true}
+      touchOnChange={false}
+      updateShippingAddress={[Function]}
+      updateUnregisteredFields={false}
+      userAddresses={null}
+      validate={[Function]}
+    />
+  </ScrollViewMock>
+</Fragment>
+`;
+
+exports[`Shipping Page should render correctly with component did update and getDerivedStateFromprops  with addeditaddressresponse 1`] = `
+<Fragment>
+  <CheckoutProgressIndicator
+    activeStage="shipping"
+    navigation={null}
+  />
+  <ScrollViewMock
+    keyboardShouldPersistTaps="handled"
+  >
+    <Styled(View)>
+      <CheckoutSectionTitleDisplay
+        title=""
+      />
+    </Styled(View)>
+    <Styled(View)>
+      <Styled(BodyCopy)
+        accessibilityText=""
+        color="black"
+        dataLocator=""
+        fontFamily="primary"
+        fontSize="fs28"
+        fontWeight="regular"
+        margin={null}
+        numberOfLines={null}
+        text=""
+        textAlign="left"
+        textDecoration={null}
+      />
+    </Styled(View)>
+    <ReduxForm
+      addNewShippingAddress={[Function]}
+      address={
+        Object {
+          "addressLine1": "pob 123",
+          "addressLine2": "pob",
+        }
+      }
+      addressPhoneNo={null}
+      defaultAddressId="34789"
+      destroyOnUnmount={false}
+      enableReinitialize={true}
+      forceUnregisterOnUnmount={false}
+      form="checkoutShipping"
+      getFormState={[Function]}
+      initialValues={
+        Object {
+          "address": Object {
+            "country": "US",
+          },
+          "onFileAddressKey": "34789",
+          "shipmentMethods": Object {
+            "shippingMethodId": null,
+          },
+        }
+      }
+      isGiftServicesChecked={false}
+      isGuest={true}
+      isOrderUpdateChecked={false}
+      isSaveToAddressBookChecked={false}
+      isUsSite={true}
+      keepDirtyOnReinitialize={true}
+      loadShipmentMethods={
+        [MockFunction] {
+          "calls": Array [
+            Array [
+              Object {
+                "formName": "checkoutShipping",
+              },
+            ],
+          ],
+          "results": Array [
+            Object {
+              "type": "return",
+              "value": undefined,
+            },
+          ],
+        }
+      }
+      newUserPhoneNo={null}
+      onFileAddressKey={null}
+      orderHasPickUp={false}
+      persistentSubmitErrors={false}
+      pure={true}
+      selectedShipmentId="336"
+      setAsDefaultShipping={false}
+      shipmentMethods={
+        Array [
+          Object {},
+        ]
+      }
+      shouldAsyncValidate={[Function]}
+      shouldError={[Function]}
+      shouldValidate={[Function]}
+      shouldWarn={[Function]}
+      submitAsSideEffect={false}
+      submitShippingForm={[Function]}
+      syncErrorsObject={Object {}}
+      touchOnBlur={true}
+      touchOnChange={false}
+      updateShippingAddress={[Function]}
+      updateUnregisteredFields={false}
+      userAddresses={
+        Immutable.List [
+          Object {
+            "addressId": "123",
+            "addressLine": Array [
+              "addressline 1",
+              "addressline 2",
+            ],
+            "city": "test city",
+            "country": "test country",
+            "firstName": "test",
+            "lastName": "test",
+            "phone1": "1234567890",
+            "primary": "true",
+          },
+        ]
+      }
+      validate={[Function]}
+    />
+  </ScrollViewMock>
+</Fragment>
+`;
+
+exports[`Shipping Page should render correctly with component did update and getDerivedStateFromprops 1`] = `
+<Fragment>
+  <CheckoutProgressIndicator
+    activeStage="shipping"
+    navigation={null}
+  />
+  <ScrollViewMock
+    keyboardShouldPersistTaps="handled"
+  >
+    <Styled(View)>
+      <CheckoutSectionTitleDisplay
+        title=""
+      />
+    </Styled(View)>
+    <Styled(View)>
+      <Styled(BodyCopy)
+        accessibilityText=""
+        color="black"
+        dataLocator=""
+        fontFamily="primary"
+        fontSize="fs28"
+        fontWeight="regular"
+        margin={null}
+        numberOfLines={null}
+        text=""
+        textAlign="left"
+        textDecoration={null}
+      />
+    </Styled(View)>
+    <ReduxForm
+      addNewShippingAddress={[Function]}
+      address={
+        Object {
+          "addressLine1": "pob 123",
+          "addressLine2": "pob",
+        }
+      }
+      addressPhoneNo={null}
+      destroyOnUnmount={false}
+      enableReinitialize={true}
+      forceUnregisterOnUnmount={false}
+      form="checkoutShipping"
+      getFormState={[Function]}
+      initialValues={
+        Object {
+          "address": Object {
+            "country": "US",
+          },
+          "onFileAddressKey": undefined,
+          "shipmentMethods": Object {
+            "shippingMethodId": null,
+          },
+        }
+      }
+      isGiftServicesChecked={false}
+      isGuest={true}
+      isOrderUpdateChecked={false}
+      isSaveToAddressBookChecked={false}
+      isUsSite={true}
+      keepDirtyOnReinitialize={true}
+      loadShipmentMethods={
+        [MockFunction] {
+          "calls": Array [
+            Array [
+              Object {
+                "formName": "checkoutShipping",
+              },
+            ],
+          ],
+          "results": Array [
+            Object {
+              "type": "return",
+              "value": undefined,
+            },
+          ],
+        }
+      }
+      newUserPhoneNo={null}
+      onFileAddressKey={null}
+      orderHasPickUp={false}
+      persistentSubmitErrors={false}
+      pure={true}
+      selectedShipmentId="336"
+      setAsDefaultShipping={false}
+      shipmentMethods={
+        Array [
+          Object {},
+        ]
+      }
+      shouldAsyncValidate={[Function]}
+      shouldError={[Function]}
+      shouldValidate={[Function]}
+      shouldWarn={[Function]}
+      submitAsSideEffect={false}
+      submitShippingForm={[Function]}
+      syncErrorsObject={Object {}}
+      touchOnBlur={true}
+      touchOnChange={false}
+      updateShippingAddress={[Function]}
+      updateUnregisteredFields={false}
+      userAddresses={
+        Immutable.List [
+          Object {
+            "addressId": "123",
+            "addressLine": Array [
+              "addressline 1",
+              "addressline 2",
+            ],
+            "city": "test city",
+            "country": "test country",
+            "firstName": "test",
+            "lastName": "test",
+            "phone1": "1234567890",
+            "primary": "true",
+          },
+        ]
+      }
+      validate={[Function]}
+    />
+  </ScrollViewMock>
+</Fragment>
 `;

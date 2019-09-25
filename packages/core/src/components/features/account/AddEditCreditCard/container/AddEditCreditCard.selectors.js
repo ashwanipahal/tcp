@@ -3,6 +3,7 @@ import { formValueSelector, isPristine } from 'redux-form';
 import { ADDEDITCREDITCARD_REDUCER_KEY } from '@tcp/core/src/constants/reducer.constants';
 import constants from './AddEditCreditCard.constants';
 import { getCreditDebitCards } from '../../Payment/container/Payment.selectors';
+import { getErrorSelector } from '../../../../../utils/utils';
 
 export const getAddEditCreditCardResponse = state => {
   return state[ADDEDITCREDITCARD_REDUCER_KEY];
@@ -15,7 +16,7 @@ export const getAddEditCreditCardSuccess = createSelector(
 
 export const getAddEditCreditCardError = createSelector(
   getAddEditCreditCardResponse,
-  resp => resp && resp.get('errorMessage')
+  resp => resp && resp.get('error')
 );
 
 export const getCardNumber = state => {
@@ -78,5 +79,26 @@ export const getCardType = createSelector(
     }
 
     return null;
+  }
+);
+
+export const getLabels = state => {
+  return state.Labels.account;
+};
+
+export const getshowNotification = createSelector(
+  getAddEditCreditCardResponse,
+  resp => resp && resp.get('showNotification')
+);
+
+export const getCreditcardLabels = createSelector(
+  getLabels,
+  labels => labels && labels.paymentGC
+);
+
+export const getAddGiftCardErrorMessage = createSelector(
+  [getAddEditCreditCardError, getCreditcardLabels],
+  (state, labels) => {
+    return getErrorSelector(state, labels, 'lbl_paymentCC_error');
   }
 );

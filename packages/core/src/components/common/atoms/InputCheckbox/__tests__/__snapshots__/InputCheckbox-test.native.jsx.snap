@@ -1,83 +1,101 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
 exports[`InputCheckbox component should render correctly 1`] = `
-<Styled(View)
-  fontSize="fs12"
-  id="checkbox"
-  isChecked={false}
-  onChange={[Function]}
-  onClick={[MockFunction]}
-  onStartShouldSetResponder={[Function]}
-  pointerEvents="auto"
-  val=""
->
-  <Styled(View)>
-    <Styled(ImageComp)
-      height="25px"
-      source={
+<Fragment>
+  <Styled(View)
+    fontSize="fs12"
+    id="checkbox"
+    isChecked={false}
+    onChange={[Function]}
+    onClick={[MockFunction]}
+    onStartShouldSetResponder={[Function]}
+    pointerEvents="auto"
+    val=""
+  >
+    <Styled(View)>
+      <Styled(ImageComp)
+        alt=""
+        height="25px"
+        host=""
+        source={
+          Object {
+            "testUri": "../../../../core/src/assets/store-locator-checked.png",
+          }
+        }
+        url=""
+        width="25px"
+      />
+    </Styled(View)>
+    <RenderTree
+      componentMap={
         Object {
-          "testUri": "../../../../core/src/assets/store-locator-checked.png",
+          "a": [Function],
+          "body": [Function],
+          "div": [Function],
+          "head": [Function],
+          "html": [Function],
+          "img": [Function],
+          "p": [Function],
+          "span": [Function],
         }
       }
-      width="25px"
+      tools={
+        Object {
+          "navigate": [Function],
+        }
+      }
+      tree="<div><p>checkbox</p></div>"
     />
   </Styled(View)>
-  <Styled(BodyCopy)
-    fontSize="fs12"
-    mobileFontFamily="secondary"
-    text="checkbox"
-  />
-  <Styled(BodyCopy)
-    className="Checkbox__error"
-    color="error"
-    fontSize="fs12"
-    mobilefontFamily={
-      Array [
-        "secondary",
-      ]
-    }
-    text=""
-  />
-</Styled(View)>
+</Fragment>
 `;
 
 exports[`InputCheckbox component should render correctly with checked state false 1`] = `
-<Styled(View)
-  fontSize="fs12"
-  id="checkbox"
-  isChecked={false}
-  onChange={[Function]}
-  onClick={[MockFunction]}
-  onStartShouldSetResponder={[Function]}
-  pointerEvents="auto"
-  val=""
->
-  <Styled(View)>
-    <Styled(ImageComp)
-      height="25px"
-      source={
+<Fragment>
+  <Styled(View)
+    fontSize="fs12"
+    id="checkbox"
+    isChecked={false}
+    onChange={[Function]}
+    onClick={[MockFunction]}
+    onStartShouldSetResponder={[Function]}
+    pointerEvents="auto"
+    val=""
+  >
+    <Styled(View)>
+      <Styled(ImageComp)
+        alt=""
+        height="25px"
+        host=""
+        source={
+          Object {
+            "testUri": "../../../../core/src/assets/store-locator-check.png",
+          }
+        }
+        url=""
+        width="25px"
+      />
+    </Styled(View)>
+    <RenderTree
+      componentMap={
         Object {
-          "testUri": "../../../../core/src/assets/store-locator-check.png",
+          "a": [Function],
+          "body": [Function],
+          "div": [Function],
+          "head": [Function],
+          "html": [Function],
+          "img": [Function],
+          "p": [Function],
+          "span": [Function],
         }
       }
-      width="25px"
+      tools={
+        Object {
+          "navigate": [Function],
+        }
+      }
+      tree="<div><p>checkbox</p></div>"
     />
   </Styled(View)>
-  <Styled(BodyCopy)
-    fontSize="fs12"
-    mobileFontFamily="secondary"
-    text="checkbox"
-  />
-  <Styled(BodyCopy)
-    className="Checkbox__error"
-    color="error"
-    fontSize="fs12"
-    mobilefontFamily={
-      Array [
-        "secondary",
-      ]
-    }
-    text=""
-  />
-</Styled(View)>
+</Fragment>
 `;

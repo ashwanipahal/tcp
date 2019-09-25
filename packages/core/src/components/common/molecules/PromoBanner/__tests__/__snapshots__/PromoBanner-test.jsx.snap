@@ -40,6 +40,7 @@ exports[`Promo Text Banner component renders correctly 1`] = `
         "fontWeight": "regular",
         "letterSpacing": "normal",
         "lineHeight": "normal",
+        "link": null,
         "textAlign": "left",
       },
       "displayName": "Styled(BodyCopy)",
@@ -55,12 +56,16 @@ exports[`Promo Text Banner component renders correctly 1`] = `
   forwardedRef={null}
   letterSpacing="normal"
   lineHeight="normal"
+  link={null}
   textAlign="left"
 >
   <Styled(Anchor)
+    asPath="http://example.com235"
+    className="promo-text-link"
     external={0}
     target=""
     title=""
+    to="http://example.com235"
     url="http://example.com235"
   >
     <span

@@ -8,7 +8,7 @@ import {
 } from '../container/CheckoutProgressIndicator.container';
 
 const { getAvailableStages } = CheckoutProgressUtils;
-const { getObjectValue, getIconPath } = utils;
+const { getObjectValue, getIconPath, isCanada } = utils;
 
 jest.mock('../utils/utils', () => ({
   getAvailableStages: jest.fn(),
@@ -17,12 +17,14 @@ jest.mock('../utils/utils', () => ({
 jest.mock('../../../../../../../core/src/utils', () => ({
   getObjectValue: jest.fn(),
   getIconPath: jest.fn(),
+  isCanada: jest.fn(),
 }));
 
 describe('CheckoutProgressIndicatorContainer', () => {
   it('should render correctly', () => {
     getObjectValue.mockImplementation(() => 'shipping');
     getIconPath.mockImplementation(() => '');
+    isCanada.mockImplementation(() => '');
     const props = {
       initialActions: jest.fn(),
 
@@ -34,9 +36,8 @@ describe('CheckoutProgressIndicatorContainer', () => {
   describe('#mapDispatchToProps', () => {
     it('should return an action initialActions which will call dispatch function on execution', () => {
       const dispatch = jest.fn();
-      const dispatchProps = mapDispatchToProps(dispatch);
-      dispatchProps.initialActions();
-      expect(dispatch.mock.calls).toHaveLength(2);
+      mapDispatchToProps(dispatch);
+      expect(dispatch.mock.calls).toEqual([]);
     });
     it('should return an action moveToCheckoutStage which will call dispatch function on execution', () => {
       const dispatch = jest.fn();

@@ -18,17 +18,67 @@ exports[`CreditCardForm component should renders correctly with address dropdown
         },
       ]
     }
+    cardNumbProps={
+      Object {
+        "colSize": Object {
+          "large": 6,
+          "medium": 8,
+          "small": 6,
+        },
+      }
+    }
+    cardNumberInnerProps={
+      Object {
+        "colSize": Object {
+          "large": 12,
+          "medium": 4,
+          "small": 6,
+        },
+      }
+    }
+    cardNumberWrapper={true}
     className=""
+    creditFieldLabels={
+      Object {
+        "creditCardNumber": "lbl_payment_cardNumber",
+        "expMonth": "lbl_payment_expMonth",
+        "expYear": "lbl_payment_expYear",
+      }
+    }
+    expMonthProps={
+      Object {
+        "colSize": Object {
+          "large": 3,
+          "medium": 2,
+          "small": 6,
+        },
+      }
+    }
+    expYearProps={
+      Object {
+        "colSize": Object {
+          "large": 3,
+          "medium": 2,
+          "small": 6,
+        },
+      }
+    }
     initialValues={Object {}}
     isEdit={false}
     labels={
       Object {
         "common": Object {},
         "paymentGC": Object {},
+        "profile": Object {},
       }
     }
+    mailingAddress={false}
     onFileAddressKey=""
     onFileAddresskey="12345"
+    showCreditCardFields={true}
+    showCvv={false}
+    showUserName={true}
+    subHeading={null}
   />
   <Styled(Heading)
     className="addressDropdownHeading"
@@ -69,8 +119,12 @@ exports[`CreditCardForm component should renders correctly with address dropdown
                     "primary": "true",
                   }
                 }
+                className=""
+                dataLocatorPrefix=""
+                fontWeight="regular"
                 isDefault={true}
                 showCountry={false}
+                showDefault={true}
                 showName={true}
                 showPhone={false}
               />,
@@ -112,6 +166,7 @@ exports[`CreditCardForm component should renders correctly with address dropdown
         labels={Object {}}
         showDefaultCheckbox={false}
         showPhoneNumber={false}
+        showUserName={true}
       />
     </FormSection>
   </div>
@@ -186,17 +241,67 @@ exports[`CreditCardForm component should renders correctly with addressForm 1`] 
         },
       ]
     }
+    cardNumbProps={
+      Object {
+        "colSize": Object {
+          "large": 6,
+          "medium": 8,
+          "small": 6,
+        },
+      }
+    }
+    cardNumberInnerProps={
+      Object {
+        "colSize": Object {
+          "large": 12,
+          "medium": 4,
+          "small": 6,
+        },
+      }
+    }
+    cardNumberWrapper={true}
     className=""
+    creditFieldLabels={
+      Object {
+        "creditCardNumber": "lbl_payment_cardNumber",
+        "expMonth": "lbl_payment_expMonth",
+        "expYear": "lbl_payment_expYear",
+      }
+    }
+    expMonthProps={
+      Object {
+        "colSize": Object {
+          "large": 3,
+          "medium": 2,
+          "small": 6,
+        },
+      }
+    }
+    expYearProps={
+      Object {
+        "colSize": Object {
+          "large": 3,
+          "medium": 2,
+          "small": 6,
+        },
+      }
+    }
     initialValues={Object {}}
     isEdit={false}
     labels={
       Object {
         "common": Object {},
         "paymentGC": Object {},
+        "profile": Object {},
       }
     }
+    mailingAddress={false}
     onFileAddressKey=""
     pristine={true}
+    showCreditCardFields={true}
+    showCvv={false}
+    showUserName={true}
+    subHeading={null}
   />
   <Styled(Heading)
     className="addressDropdownHeading"
@@ -237,8 +342,12 @@ exports[`CreditCardForm component should renders correctly with addressForm 1`] 
                     "primary": "true",
                   }
                 }
+                className=""
+                dataLocatorPrefix=""
+                fontWeight="regular"
                 isDefault={true}
                 showCountry={false}
+                showDefault={true}
                 showName={true}
                 showPhone={false}
               />,
@@ -280,6 +389,7 @@ exports[`CreditCardForm component should renders correctly with addressForm 1`] 
         labels={Object {}}
         showDefaultCheckbox={false}
         showPhoneNumber={false}
+        showUserName={true}
       />
     </FormSection>
   </div>

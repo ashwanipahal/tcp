@@ -4,8 +4,12 @@ export default styled.div`
   background-color: none;
   padding: 0px 14px;
 
+  @media ${props => props.theme.mediaQuery.medium} {
+    padding: 0px ${props => (props.isPLCCModalFlow ? `0px` : `39px`)};
+  }
+
   @media ${props => props.theme.mediaQuery.large} {
-    padding-left: 200px;
+    padding-left: ${props => (props.isPLCCModalFlow ? `0px` : `250px`)};
   }
 
   .iAgree_terms_conditions {
@@ -26,6 +30,7 @@ export default styled.div`
   }
 
   .contact_information_form {
+    text-align: left;
     > label {
       > p {
         margin-top: ${props => props.theme.spacing.ELEM_SPACING.XS};
@@ -54,6 +59,9 @@ export default styled.div`
     padding: 36px 0px 36px 0px;
     text-underline-position: under;
     text-decoration: underline;
+    > div {
+      cursor: pointer;
+    }
   }
 
   .no_thanks_link_wrapper {
@@ -76,6 +84,9 @@ export default styled.div`
     font-weight: ${props => props.theme.fonts.fontWeight.normal};
     letter-spacing: 1px;
     text-align: center;
+    @media ${props => props.theme.mediaQuery.medium} {
+      width: 50%;
+    }
   }
 
   .pre-approved-offer-criteria {

@@ -1,16 +1,19 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
 exports[`ReviewCreditCardInformation component should renders correctly 1`] = `
-<styled.div>
+<styled.div
+  isPLCCModalFlow={false}
+>
   <Styled(Col)
     className="rewards_card_logo"
     colSize={
       Object {
-        "large": 2,
-        "medium": 2,
+        "large": 3,
+        "medium": 4,
         "small": 6,
       }
     }
+    isPLCCModalFlow={false}
     key="container_header_image"
   >
     <Styled(BodyCopy)
@@ -20,8 +23,10 @@ exports[`ReviewCreditCardInformation component should renders correctly 1`] = `
       fontFamily="primary"
       fontSize={12}
       fontWeight="regular"
+      isPLCCModalFlow={false}
       letterSpacing="normal"
       lineHeight="normal"
+      link={null}
       tabIndex="0"
       textAlign="left"
     />
@@ -31,7 +36,7 @@ exports[`ReviewCreditCardInformation component should renders correctly 1`] = `
     colSize={
       Object {
         "large": 8,
-        "medium": 5,
+        "medium": 6,
         "small": 6,
       }
     }
@@ -46,16 +51,19 @@ exports[`ReviewCreditCardInformation component should renders correctly 1`] = `
 `;
 
 exports[`ReviewCreditCardInformation component should renders correctly when no arguments are passed 1`] = `
-<styled.div>
+<styled.div
+  isPLCCModalFlow={false}
+>
   <Styled(Col)
     className="rewards_card_logo"
     colSize={
       Object {
-        "large": 2,
-        "medium": 2,
+        "large": 3,
+        "medium": 4,
         "small": 6,
       }
     }
+    isPLCCModalFlow={false}
     key="container_header_image"
   >
     <Styled(BodyCopy)
@@ -65,8 +73,10 @@ exports[`ReviewCreditCardInformation component should renders correctly when no 
       fontFamily="primary"
       fontSize={12}
       fontWeight="regular"
+      isPLCCModalFlow={false}
       letterSpacing="normal"
       lineHeight="normal"
+      link={null}
       tabIndex="0"
       textAlign="left"
     />
@@ -76,7 +86,7 @@ exports[`ReviewCreditCardInformation component should renders correctly when no 
     colSize={
       Object {
         "large": 8,
-        "medium": 5,
+        "medium": 6,
         "small": 6,
       }
     }

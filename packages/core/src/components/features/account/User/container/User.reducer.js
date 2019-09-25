@@ -8,6 +8,8 @@ const initialState = fromJS({
   airmiles: null,
   rewards: null,
   survey: null,
+  children: null,
+  favoriteStore: null,
 });
 
 const UserReducer = (state = initialState, { type, payload }) => {
@@ -60,10 +62,33 @@ const UserReducer = (state = initialState, { type, payload }) => {
           })
         )
         .set(DEFAULT_REDUCER_KEY, setCacheTTL(USER_CONSTANTS.GET_USER_INFO_TTL));
+    case USER_CONSTANTS.SET_CHILDREN:
+      return state.set('children', fromJS(payload.children));
+    case USER_CONSTANTS.SET_FAVORITE_STORE:
+      return state.set(
+        'favoriteStore',
+        fromJS({
+          name: payload.favoriteStore.name,
+          address: payload.favoriteStore.address1,
+          phone: payload.favoriteStore.phone,
+          state: payload.favoriteStore.state,
+          zipCode: payload.favoriteStore.zipCode,
+          city: payload.favoriteStore.city,
+        })
+      );
     case USER_CONSTANTS.RESET_USER_INFO:
       return initialState;
     case USER_CONSTANTS.CLEAR_USER_INFO_TTL:
       return state.set(DEFAULT_REDUCER_KEY, null);
+    case USER_CONSTANTS.SET_SURVEY_QUESTIONS:
+      return state.set(
+        'survey',
+        fromJS({
+          questions: payload,
+          answers: [],
+        })
+      );
+
     default:
       if (state instanceof Object) {
         return fromJS(state);

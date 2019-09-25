@@ -10,10 +10,11 @@ exports[`Address component should renders correctly 1`] = `
   fontWeight="regular"
   letterSpacing="normal"
   lineHeight="normal"
+  link={null}
   textAlign="left"
 >
   <Styled(BodyCopy)
-    className="addressTile__name"
+    className="addressTile__name address"
     color="text.primary"
     component="p"
     data-locator=""
@@ -22,12 +23,13 @@ exports[`Address component should renders correctly 1`] = `
     fontWeight="regular"
     letterSpacing="normal"
     lineHeight="normal"
+    link={null}
     textAlign="left"
   >
     test test
   </Styled(BodyCopy)>
   <Styled(BodyCopy)
-    className={null}
+    className="address"
     color="text.primary"
     component="p"
     data-locator=""
@@ -36,12 +38,13 @@ exports[`Address component should renders correctly 1`] = `
     fontWeight="regular"
     letterSpacing="normal"
     lineHeight="normal"
+    link={null}
     textAlign="left"
   >
     addressline 1
   </Styled(BodyCopy)>
   <Styled(BodyCopy)
-    className={null}
+    className="address"
     color="text.primary"
     component="p"
     data-locator=""
@@ -50,12 +53,13 @@ exports[`Address component should renders correctly 1`] = `
     fontWeight="regular"
     letterSpacing="normal"
     lineHeight="normal"
+    link={null}
     textAlign="left"
   >
     addressline 2
   </Styled(BodyCopy)>
   <Styled(BodyCopy)
-    className={null}
+    className="address"
     color="text.primary"
     component="p"
     data-locator=""
@@ -64,12 +68,13 @@ exports[`Address component should renders correctly 1`] = `
     fontWeight="regular"
     letterSpacing="normal"
     lineHeight="normal"
+    link={null}
     textAlign="left"
   >
     test city, test state 111-111
   </Styled(BodyCopy)>
   <Styled(BodyCopy)
-    className={null}
+    className="address"
     color="text.primary"
     component="p"
     fontFamily="secondary"
@@ -77,12 +82,13 @@ exports[`Address component should renders correctly 1`] = `
     fontWeight="regular"
     letterSpacing="normal"
     lineHeight="normal"
+    link={null}
     textAlign="left"
   >
     test country
   </Styled(BodyCopy)>
   <Styled(BodyCopy)
-    className={null}
+    className="address"
     color="text.primary"
     component="p"
     fontFamily="secondary"
@@ -90,6 +96,7 @@ exports[`Address component should renders correctly 1`] = `
     fontWeight="regular"
     letterSpacing="normal"
     lineHeight="normal"
+    link={null}
     textAlign="left"
   >
     1234567890
@@ -107,10 +114,11 @@ exports[`Address component should renders correctly when optional fields are not
   fontWeight="regular"
   letterSpacing="normal"
   lineHeight="normal"
+  link={null}
   textAlign="left"
 >
   <Styled(BodyCopy)
-    className="addressTile__name"
+    className="addressTile__name address"
     color="text.primary"
     component="p"
     data-locator=""
@@ -119,12 +127,13 @@ exports[`Address component should renders correctly when optional fields are not
     fontWeight="regular"
     letterSpacing="normal"
     lineHeight="normal"
+    link={null}
     textAlign="left"
   >
     test test
   </Styled(BodyCopy)>
   <Styled(BodyCopy)
-    className={null}
+    className="address"
     color="text.primary"
     component="p"
     data-locator=""
@@ -133,12 +142,13 @@ exports[`Address component should renders correctly when optional fields are not
     fontWeight="regular"
     letterSpacing="normal"
     lineHeight="normal"
+    link={null}
     textAlign="left"
   >
     addressline 1
   </Styled(BodyCopy)>
   <Styled(BodyCopy)
-    className={null}
+    className="address"
     color="text.primary"
     component="p"
     data-locator=""
@@ -147,12 +157,13 @@ exports[`Address component should renders correctly when optional fields are not
     fontWeight="regular"
     letterSpacing="normal"
     lineHeight="normal"
+    link={null}
     textAlign="left"
   >
     addressline 2
   </Styled(BodyCopy)>
   <Styled(BodyCopy)
-    className={null}
+    className="address"
     color="text.primary"
     component="p"
     data-locator=""
@@ -161,6 +172,7 @@ exports[`Address component should renders correctly when optional fields are not
     fontWeight="regular"
     letterSpacing="normal"
     lineHeight="normal"
+    link={null}
     textAlign="left"
   >
     test city, test state 111-111

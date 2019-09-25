@@ -4,12 +4,13 @@ import styled from 'styled-components';
 export default styled.div`
   display: flex;
   flex-direction: column;
+  padding-top: ${props => (props.isPLCCModalFlow ? props.theme.spacing.LAYOUT_SPACING.MED : `0px`)};
 
   @media ${props => props.theme.mediaQuery.medium} {
     flex-direction: row;
   }
 
- .rewards_card_logo {
+  .rewards_card_logo {
     text-align: center;
     margin: ${props => props.theme.spacing.ELEM_SPACING.XXS} 0px;
     @media ${props => props.theme.mediaQuery.large} {
@@ -25,15 +26,12 @@ export default styled.div`
     height: 135px;
     object-fit: contain;
     margin: auto;
+    @media ${props => props.theme.mediaQuery.medium} {
+      margin: 0;
     }
+  }
 
   .rewards_card_instruction {
-    @media ${props => props.theme.mediaQuery.medium} and ${props =>
-  props.theme.mediaQuery.largeMax} {
-      padding-left: ${props => props.theme.spacing.LAYOUT_SPACING.LRG};
-    }
-
-    @media ${props => props.theme.mediaQuery.large} {
-      padding-left: ${props => props.theme.spacing.LAYOUT_SPACING.MED};
-    }
-  }`;
+    text-align: left;
+  }
+`;

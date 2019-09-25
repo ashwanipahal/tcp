@@ -10,9 +10,31 @@ export default css`
     -webkit-font-smoothing: antialiased;
     -moz-osx-font-smoothing: grayscale;
     width: 100%;
-    max-width: ${breakpoints.xlarge};
     margin: 0 auto;
     position: relative;
+  }
+
+  @media print {
+    .ReactModal__Body--open {
+      position: fixed !important;
+      visibility: hidden !important;
+    }
+    .TCPModal__InnerContent {
+      top: 75% !important;
+      visibility: visible !important;
+    }
+    a {
+      text-decoration: none !important;
+    }
+    .couponModal_btnWrapper,
+    .couponModal_print {
+      display: none !important;
+    }
+  }
+
+  .content-wrapper {
+    max-width: ${breakpoints.xlarge};
+    margin: 0 auto;
   }
 
   .no-scroll {
@@ -23,6 +45,9 @@ export default css`
 
   .ReactModal__Body--open {
     overflow: hidden;
+    .pac-container {
+      z-index: ${props => props.theme.zindex.zGoogleAutosuggest};
+    }
   }
 
   input[type='text']::-ms-clear {
@@ -120,7 +145,7 @@ export default css`
 
   .hide-on-mobile {
     @media ${mediaQuery.smallOnly} {
-      display: none;
+      display: none !important;
     }
   }
 

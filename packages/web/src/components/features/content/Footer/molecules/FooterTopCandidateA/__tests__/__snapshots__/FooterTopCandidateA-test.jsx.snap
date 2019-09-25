@@ -2,7 +2,7 @@
 
 exports[`FooterTopCandidateAVanilla component renders correctly 1`] = `
 <Styled(Grid)
-  className="footer_top_candidate_a"
+  className="footer_top_candidate_a content-wrapper"
 >
   <Styled(Row)>
     <Styled(Col)
@@ -30,6 +30,7 @@ exports[`FooterTopCandidateAVanilla component renders correctly 1`] = `
         fontWeight="black"
         letterSpacing="normal"
         lineHeight="normal"
+        link={null}
         textAlign="left"
       >
         <TextItems />
@@ -62,10 +63,10 @@ exports[`FooterTopCandidateAVanilla component renders correctly 1`] = `
         keepDirtyOnReinitialize={false}
         labels={
           Object {
-            "placeholderText": "Enter email address",
-            "submitButtonLabel": "Submit",
-            "termsTextLabel": "*Applies to new email subscribers only. Exclusions apply. Offer valid onyour next purchase of $40 or more. You may withdraw your consent at any time. Contact Us The Children’s Place, 500 Plaza Drive, Secaucus, NJ 07094, www.childrensplace.com.",
-            "validationErrorLabel": "",
+            "lbl_SignUp_placeholderText": "",
+            "lbl_SignUp_submitButtonLabel": "",
+            "lbl_SignUp_termsTextLabel": "",
+            "lbl_SignUp_validationErrorLabel": "",
           }
         }
         onFormSubmit={[Function]}
@@ -89,23 +90,26 @@ exports[`FooterTopCandidateAVanilla component renders correctly 1`] = `
         fontFamily="secondary"
         fontSize={
           Array [
-            "fs10",
-            "fs10",
+            "fs9",
+            "fs9",
             "fs12",
           ]
         }
         fontWeight="regular"
         letterSpacing="normal"
         lineHeight="normal"
+        link={null}
         textAlign="center"
       >
         <Styled(RichText)
-          richTextHtml="*Applies to new email subscribers only. Exclusions apply. Offer valid onyour next purchase of $40 or more. You may withdraw your consent at any time. Contact Us The Children’s Place, 500 Plaza Drive, Secaucus, NJ 07094, www.childrensplace.com."
+          richTextHtml=""
         />
       </Styled(BodyCopy)>
-      <div
-        className="divider hide-in-medium-up"
-      />
+      <div>
+        <div
+          className="divider hide-in-medium-up"
+        />
+      </div>
     </Styled(Col)>
     <Styled(Col)
       className="col-md-half-width"
@@ -132,6 +136,7 @@ exports[`FooterTopCandidateAVanilla component renders correctly 1`] = `
         fontWeight="black"
         letterSpacing="normal"
         lineHeight="normal"
+        link={null}
         textAlign="left"
       >
         <TextItems />
@@ -169,10 +174,10 @@ exports[`FooterTopCandidateAVanilla component renders correctly 1`] = `
         keepDirtyOnReinitialize={false}
         labels={
           Object {
-            "placeholderText": "Enter phone number",
-            "submitButtonLabel": "Submit",
-            "termsTextLabel": "*Applies to new email subscribers only. Exclusions apply. Offer valid onyour next purchase of $40 or more. You may withdraw your consent at any time. Contact Us The Children’s Place, 500 Plaza Drive, Secaucus, NJ 07094, www.childrensplace.com.",
-            "validationErrorLabel": "",
+            "lbl_SignUp_placeholderText": "",
+            "lbl_SignUp_submitButtonLabel": "",
+            "lbl_SignUp_termsTextLabel": "",
+            "lbl_SignUp_validationErrorLabel": "",
           }
         }
         onFormSubmit={[Function]}
@@ -196,18 +201,19 @@ exports[`FooterTopCandidateAVanilla component renders correctly 1`] = `
         fontFamily="secondary"
         fontSize={
           Array [
-            "fs10",
-            "fs10",
+            "fs9",
+            "fs9",
             "fs12",
           ]
         }
         fontWeight="regular"
         letterSpacing="normal"
         lineHeight="normal"
+        link={null}
         textAlign="center"
       >
         <Styled(RichText)
-          richTextHtml="*Applies to new email subscribers only. Exclusions apply. Offer valid onyour next purchase of $40 or more. You may withdraw your consent at any time. Contact Us The Children’s Place, 500 Plaza Drive, Secaucus, NJ 07094, www.childrensplace.com."
+          richTextHtml=""
         />
       </Styled(BodyCopy)>
     </Styled(Col)>
@@ -238,7 +244,7 @@ exports[`FooterTopCandidateAVanilla component renders correctly 1`] = `
             className="col-md-half-width"
             colSize={
               Object {
-                "large": 7,
+                "large": 6,
                 "medium": 4,
                 "small": 7,
               }
@@ -258,6 +264,7 @@ exports[`FooterTopCandidateAVanilla component renders correctly 1`] = `
               fontWeight="black"
               letterSpacing="normal"
               lineHeight="normal"
+              link={null}
               textAlign="left"
             >
               <TextItems />
@@ -267,7 +274,7 @@ exports[`FooterTopCandidateAVanilla component renders correctly 1`] = `
             className="candidate_a_inline_container_button col-md-half-width"
             colSize={
               Object {
-                "large": 5,
+                "large": 6,
                 "medium": 4,
                 "small": 6,
               }
@@ -340,8 +347,5 @@ exports[`FooterTopCandidateAVanilla component renders correctly 1`] = `
       />
     </Styled(Col)>
   </Styled(Row)>
-  <div
-    className="divider hide-in-medium-down"
-  />
 </Styled(Grid)>
 `;

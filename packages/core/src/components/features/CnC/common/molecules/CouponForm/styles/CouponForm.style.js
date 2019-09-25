@@ -1,7 +1,6 @@
 import { css } from 'styled-components';
 
 export default css`
-  margin-top: 15px;
   .coupon_form_container {
     padding: 18px 16px 12px 14px;
     box-sizing: border-box;
@@ -55,6 +54,14 @@ export default css`
 
     .success__checkmark {
       visibility: hidden;
+    }
+  }
+
+  .coupon_error_message {
+    @media ${props => props.theme.mediaQuery.smallMax} {
+      padding-bottom: 0px;
+      padding-top: 0px;
+      background-color: ${props => props.theme.colors.WHITE};
     }
   }
 `;

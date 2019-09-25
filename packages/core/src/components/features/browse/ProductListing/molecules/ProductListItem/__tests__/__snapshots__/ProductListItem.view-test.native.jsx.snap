@@ -1,0 +1,80 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`ProductListItem component should renders ProductListItem correctly 1`] = `
+<Styled(View)
+  accessible={true}
+>
+  <RenderTopBadge1
+    text=""
+  />
+  <ImageSection
+    item={
+      Object {
+        "colorsMap": Array [
+          Object {
+            "color": Object {
+              "imagePath": "",
+              "name": "TIDAL",
+            },
+            "colorProductId": "3001084_IV",
+            "imageName": "3001084_IV",
+            "miscInfo": Object {},
+          },
+        ],
+        "productInfo": Object {
+          "name": "tcp",
+        },
+      }
+    }
+    selectedColorIndex={0}
+  />
+  <RenderBadge2
+    text=""
+  />
+  <RenderPricesSection
+    favoriteIconColor="#9b9b9b"
+    favoriteIconSize={21}
+    miscInfo={Object {}}
+    onFavorite={[Function]}
+  />
+  <RenderTitle
+    text="tcp"
+  />
+  <Styled(ColorSwitch)
+    colorsMap={
+      Array [
+        Object {
+          "color": Object {
+            "imagePath": "",
+            "name": "TIDAL",
+          },
+          "colorProductId": "3001084_IV",
+          "imageName": "3001084_IV",
+          "miscInfo": Object {},
+        },
+      ]
+    }
+    props={Object {}}
+    setSelectedColorIndex={[Function]}
+  />
+  <Styled(PromotionalMessage)
+    dataLocator=""
+    fontSize={null}
+    height="24px"
+    isPlcc={false}
+    marginTop={12}
+    text=""
+  />
+  <Styled(View)>
+    <Styled(WithTheme(CustomButton))
+      accessibilityLabel="add to bag"
+      buttonVariation="variable-width"
+      data-locator=""
+      fill="BLUE"
+      onPress={[Function]}
+      text="ADD TO BAG"
+      type="button"
+    />
+  </Styled(View)>
+</Styled(View)>
+`;

@@ -38,4 +38,37 @@ export default css`
       letter-spacing: 2.42px;
     }
   }
+
+  /* Module J Heading styles */
+  .small_text_normal {
+    font-family: ${props => props.theme.typography.fonts.primary};
+    font-size: ${props => props.theme.typography.fontSizes.fs14};
+
+    @media ${props => props.theme.mediaQuery.large} {
+      font-size: ${props => props.theme.typography.fontSizes.fs20};
+    }
+  }
+  .medium_text_black {
+    font-family: ${props => props.theme.typography.fonts.primary};
+    font-weight: ${props => props.theme.typography.fontWeights.black};
+    font-size: ${props => props.theme.typography.fontSizes.fs32};
+    letter-spacing: -0.5px;
+    margin-bottom: ${props => props.theme.spacing.ELEM_SPACING.SM};
+
+    @media ${props => props.theme.mediaQuery.large} {
+      font-size: ${props => props.theme.typography.fontSizes.fs48};
+    }
+  }
+
+  /* Module H Heading styles */
+  .medium_text_white_black {
+    color: ${props => props.theme.colorPalette.white};
+    font-family: ${props => props.theme.typography.fonts.primary};
+    font-weight: ${props => props.theme.typography.fontWeights.black};
+    font-size: ${props => props.theme.typography.fontSizes.fs32};
+
+    @media ${props => props.theme.mediaQuery.large} {
+      font-size: ${props => props.theme.typography.fontSizes.fs48};
+    }
+  }
 `;

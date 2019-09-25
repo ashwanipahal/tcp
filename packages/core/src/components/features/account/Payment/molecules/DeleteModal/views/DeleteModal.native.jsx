@@ -118,7 +118,6 @@ class DeleteModal extends React.PureComponent<Props> {
                     text={labels.paymentGC.lbl_payment_modalGCConfirm}
                     buttonVariation="variable-width"
                     fill="BLUE"
-                    color="white"
                     width="162px"
                     font-size="14"
                     onPress={onConfirm}
@@ -128,8 +127,7 @@ class DeleteModal extends React.PureComponent<Props> {
                 <CloseButtonWrapper>
                   <CustomButton
                     text={labels.paymentGC.lbl_payment_modalGCCancel}
-                    buttonVariation="variable-width"
-                    fill="RED"
+                    buttonVariation="cautionary"
                     color={redColor}
                     font-size="14"
                     onPress={onClose}

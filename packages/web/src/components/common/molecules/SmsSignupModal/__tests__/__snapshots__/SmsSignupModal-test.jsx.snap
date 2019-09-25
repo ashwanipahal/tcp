@@ -19,6 +19,13 @@ exports[`SMSSignupModal component renders correctly 1`] = `
     }
     contentLabel="undefined undefined"
     contentRef={[Function]}
+    heightConfig={
+      Object {
+        "height": "560px",
+        "maxHeight": "560px",
+        "minHeight": "500px",
+      }
+    }
     isOpen={false}
     noPadding={true}
     onRequestClose={[Function]}
@@ -58,7 +65,15 @@ exports[`SMSSignupModal component renders correctly 1`] = `
             }
             isNotInlineBlock={true}
           >
-            <Styled(Image) />
+            <WithTheme(DamImage)
+              imgConfigs={
+                Array [
+                  "t_smsSignUp_img_m",
+                  "t_smsSignUp_img_t",
+                  "t_smsSignUp_img_d",
+                ]
+              }
+            />
           </Styled(Col)>
           <Styled(Col)
             colSize={
@@ -263,6 +278,7 @@ exports[`SMSSignupModal component renders correctly 1`] = `
                 fontWeight="regular"
                 letterSpacing="normal"
                 lineHeight="normal"
+                link={null}
                 textAlign="left"
               />
             </Styled(Col)>
@@ -318,6 +334,13 @@ exports[`SMSSignupModal component renders correctly when button is clicked 1`] =
     }
     contentLabel="undefined undefined"
     contentRef={[Function]}
+    heightConfig={
+      Object {
+        "height": "560px",
+        "maxHeight": "560px",
+        "minHeight": "500px",
+      }
+    }
     isOpen={true}
     noPadding={true}
     onRequestClose={[Function]}
@@ -351,7 +374,15 @@ exports[`SMSSignupModal component renders correctly when button is clicked 1`] =
           }
           isNotInlineBlock={true}
         >
-          <Styled(Image) />
+          <WithTheme(DamImage)
+            imgConfigs={
+              Array [
+                "t_smsSignUp_img_m",
+                "t_smsSignUp_img_t",
+                "t_smsSignUp_img_d",
+              ]
+            }
+          />
         </Styled(Col)>
         <Styled(Col)
           colSize={
@@ -422,6 +453,13 @@ exports[`SMSSignupModal component renders correctly when button is clicked 2`] =
     }
     contentLabel="undefined undefined"
     contentRef={[Function]}
+    heightConfig={
+      Object {
+        "height": "560px",
+        "maxHeight": "560px",
+        "minHeight": "500px",
+      }
+    }
     isOpen={true}
     noPadding={true}
     onRequestClose={[Function]}
@@ -461,7 +499,15 @@ exports[`SMSSignupModal component renders correctly when button is clicked 2`] =
             }
             isNotInlineBlock={true}
           >
-            <Styled(Image) />
+            <WithTheme(DamImage)
+              imgConfigs={
+                Array [
+                  "t_smsSignUp_img_m",
+                  "t_smsSignUp_img_t",
+                  "t_smsSignUp_img_d",
+                ]
+              }
+            />
           </Styled(Col)>
           <Styled(Col)
             colSize={
@@ -666,6 +712,7 @@ exports[`SMSSignupModal component renders correctly when button is clicked 2`] =
                 fontWeight="regular"
                 letterSpacing="normal"
                 lineHeight="normal"
+                link={null}
                 textAlign="left"
               />
             </Styled(Col)>

@@ -1,12 +1,12 @@
 import React from 'react';
-import FPO from '../../../core/src/components/common/atoms/FPO/views/FPO.view.native';
+import WalletContainer from '@tcp/core/src/components/features/account/Wallet/container/Wallet.container';
 
-const Login = () => {
+const WalletPage = props => {
   return (
     <React.Fragment>
-      <FPO />
+      <WalletContainer {...props} />
     </React.Fragment>
   );
 };
 
-export default Login;
+export default WalletPage;

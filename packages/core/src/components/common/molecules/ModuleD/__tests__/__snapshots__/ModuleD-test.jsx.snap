@@ -8,7 +8,7 @@ exports[`ModuleD component renders correctly 1`] = `
       "$$typeof": Symbol(react.forward_ref),
       "attrs": Array [],
       "componentStyle": ComponentStyle {
-        "componentId": "sc-fjdhpX",
+        "componentId": "sc-jzJRlG",
         "isStatic": false,
         "rules": Array [
           "
@@ -25,7 +25,7 @@ exports[`ModuleD component renders correctly 1`] = `
       "displayName": "Styled(Grid)",
       "foldedComponentIds": Array [],
       "render": [Function],
-      "styledComponentId": "sc-fjdhpX",
+      "styledComponentId": "sc-jzJRlG",
       "target": [Function],
       "toString": [Function],
       "warnTooManyClasses": [Function],
@@ -103,31 +103,33 @@ exports[`ModuleD component renders correctly 1`] = `
       <div
         className="moduleD__image-container"
       >
-        <Styled(Anchor)
-          className="moduleD_textlink"
-          target=""
-          title="Family Tees"
-          to="https://www.childrensplace.com/us/c/girls-kids-shorts?icid=hp_s3a_imagenbutton_g_050519_shorts"
-        >
-          <WithTheme(DamImage)
-            className="moduleD_image"
-            data-locator="moduleD_image_1"
-            imgConfigs={
-              Array [
-                "ar_1:1,q_80,w_164",
-                "ar_1:1,q_80,w_162",
-                "ar_1:1,q_80,w_330",
-              ]
+        <WithTheme(DamImage)
+          className="moduleD_image"
+          dataLocator="moduleD_image_1"
+          imgConfigs={
+            Array [
+              "t_mod_D_img4_m",
+              "t_mod_D_img4_t",
+              "t_mod_D_img4_d",
+            ]
+          }
+          imgData={
+            Object {
+              "alt": "Family Tees",
+              "title": "Family Tees",
+              "url": "https://res.cloudinary.com/tcp-dam-test/image/upload/v1558543115/ecom/assets/content/tcp/us/home/moduled/US-HP-050519-MINIME1_h9cwcd.jpg",
             }
-            imgData={
-              Object {
-                "alt": "Family Tees",
-                "title": "Family Tees",
-                "url": "https://res.cloudinary.com/tcp-dam-test/image/upload/v1558543115/ecom/assets/content/tcp/us/home/moduled/US-HP-050519-MINIME1_h9cwcd.jpg",
-              }
+          }
+          link={
+            Object {
+              "className": "moduleD_textlink",
+              "external": 0,
+              "target": "",
+              "title": "Family Tees",
+              "url": "https://www.childrensplace.com/us/c/girls-kids-shorts?icid=hp_s3a_imagenbutton_g_050519_shorts",
             }
-          />
-        </Styled(Anchor)>
+          }
+        />
       </div>
       <div
         className="moduleD_link"
@@ -162,32 +164,34 @@ exports[`ModuleD component renders correctly 1`] = `
       <div
         className="moduleD__image-container"
       >
-        <Styled(Anchor)
-          aria-label="Mom & Me Tees"
-          className="moduleD_textlink"
-          target=""
-          title="Mom & Me Tees"
-          to="https://www.childrensplace.com/us/c/girls-kids-shorts?icid=hp_s3a_imagenbutton_g_050519_shorts"
-        >
-          <WithTheme(DamImage)
-            className="moduleD_image"
-            data-locator="moduleD_image_2"
-            imgConfigs={
-              Array [
-                "ar_1:1,q_80,w_164",
-                "ar_1:1,q_80,w_162",
-                "ar_1:1,q_80,w_330",
-              ]
+        <WithTheme(DamImage)
+          className="moduleD_image"
+          dataLocator="moduleD_image_2"
+          imgConfigs={
+            Array [
+              "t_mod_D_img4_m",
+              "t_mod_D_img4_t",
+              "t_mod_D_img4_d",
+            ]
+          }
+          imgData={
+            Object {
+              "alt": "Mom & Me Tees",
+              "title": "Mom & Me Tees",
+              "url": "https://res.cloudinary.com/tcp-dam-test/image/upload/v1558543115/ecom/assets/content/tcp/us/home/moduled/US-HP-050519-MINIME3_vmfhnu.jpg",
             }
-            imgData={
-              Object {
-                "alt": "Mom & Me Tees",
-                "title": "Mom & Me Tees",
-                "url": "https://res.cloudinary.com/tcp-dam-test/image/upload/v1558543115/ecom/assets/content/tcp/us/home/moduled/US-HP-050519-MINIME3_vmfhnu.jpg",
-              }
+          }
+          link={
+            Object {
+              "className": "moduleD_textlink",
+              "external": 0,
+              "target": "",
+              "text": "Mom & Me Tees",
+              "title": "Mom & Me Tees",
+              "url": "https://www.childrensplace.com/us/c/girls-kids-shorts?icid=hp_s3a_imagenbutton_g_050519_shorts",
             }
-          />
-        </Styled(Anchor)>
+          }
+        />
       </div>
       <div
         className="moduleD_link"
@@ -220,32 +224,34 @@ exports[`ModuleD component renders correctly 1`] = `
       <div
         className="moduleD__image-container"
       >
-        <Styled(Anchor)
-          aria-label="Family Tees"
-          className="moduleD_textlink"
-          target=""
-          title="Family Tees"
-          to="https://www.childrensplace.com/us/c/girls-kids-shorts?icid=hp_s3a_imagenbutton_g_050519_shorts"
-        >
-          <WithTheme(DamImage)
-            className="moduleD_image"
-            data-locator="moduleD_image_3"
-            imgConfigs={
-              Array [
-                "ar_1:1,q_80,w_164",
-                "ar_1:1,q_80,w_162",
-                "ar_1:1,q_80,w_330",
-              ]
+        <WithTheme(DamImage)
+          className="moduleD_image"
+          dataLocator="moduleD_image_3"
+          imgConfigs={
+            Array [
+              "t_mod_D_img4_m",
+              "t_mod_D_img4_t",
+              "t_mod_D_img4_d",
+            ]
+          }
+          imgData={
+            Object {
+              "alt": "Family Tees",
+              "title": "Family Tees",
+              "url": "https://res.cloudinary.com/tcp-dam-test/image/upload/v1558543114/ecom/assets/content/tcp/us/home/moduled/US-HP-050519-MINIME4_iuzwmp.jpg",
             }
-            imgData={
-              Object {
-                "alt": "Family Tees",
-                "title": "Family Tees",
-                "url": "https://res.cloudinary.com/tcp-dam-test/image/upload/v1558543114/ecom/assets/content/tcp/us/home/moduled/US-HP-050519-MINIME4_iuzwmp.jpg",
-              }
+          }
+          link={
+            Object {
+              "className": "moduleD_textlink",
+              "external": 0,
+              "target": "",
+              "text": "Family Tees",
+              "title": "Family Tees",
+              "url": "https://www.childrensplace.com/us/c/girls-kids-shorts?icid=hp_s3a_imagenbutton_g_050519_shorts",
             }
-          />
-        </Styled(Anchor)>
+          }
+        />
       </div>
       <div
         className="moduleD_link"
@@ -283,32 +289,34 @@ exports[`ModuleD component renders correctly 1`] = `
       <div
         className="moduleD__image-container"
       >
-        <Styled(Anchor)
-          aria-label="Mom & Me Tees"
-          className="moduleD_textlink"
-          target=""
-          title="Mom & Me Tees"
-          to="https://www.childrensplace.com/us/c/girls-kids-shorts?icid=hp_s3a_imagenbutton_g_050519_shorts"
-        >
-          <WithTheme(DamImage)
-            className="moduleD_image"
-            data-locator="moduleD_image_4"
-            imgConfigs={
-              Array [
-                "ar_1:1,q_80,w_164",
-                "ar_1:1,q_80,w_162",
-                "ar_1:1,q_80,w_330",
-              ]
+        <WithTheme(DamImage)
+          className="moduleD_image"
+          dataLocator="moduleD_image_4"
+          imgConfigs={
+            Array [
+              "t_mod_D_img4_m",
+              "t_mod_D_img4_t",
+              "t_mod_D_img4_d",
+            ]
+          }
+          imgData={
+            Object {
+              "alt": "Mom & Me Tees",
+              "title": "Mom & Me Tees",
+              "url": "https://res.cloudinary.com/tcp-dam-test/image/upload/v1558543114/ecom/assets/content/tcp/us/home/moduled/US-HP-050519-MINIME2_uwtbdd.jpg",
             }
-            imgData={
-              Object {
-                "alt": "Mom & Me Tees",
-                "title": "Mom & Me Tees",
-                "url": "https://res.cloudinary.com/tcp-dam-test/image/upload/v1558543114/ecom/assets/content/tcp/us/home/moduled/US-HP-050519-MINIME2_uwtbdd.jpg",
-              }
+          }
+          link={
+            Object {
+              "className": "moduleD_textlink",
+              "external": 0,
+              "target": "",
+              "text": "Mom & Me Tees",
+              "title": "Mom & Me Tees",
+              "url": "https://www.childrensplace.com/us/c/girls-kids-shorts?icid=hp_s3a_imagenbutton_g_050519_shorts",
             }
-          />
-        </Styled(Anchor)>
+          }
+        />
       </div>
       <div
         className="moduleD_link"
@@ -335,7 +343,7 @@ exports[`ModuleD component renders correctly 1`] = `
       target=""
     >
       <Styled(Button)
-        buttonVariation="variable-width"
+        buttonVariation="fixed-width"
         className="moduleD_button"
         data-locator="moduleD_button"
       >

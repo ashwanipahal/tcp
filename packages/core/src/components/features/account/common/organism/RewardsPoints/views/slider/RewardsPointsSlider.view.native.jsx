@@ -14,16 +14,22 @@ import BodyCopy from '../../../../../../../common/atoms/BodyCopy';
  * @function RewardsPointsView The RewardsPointsView component will provide slider for account drawer
  */
 
-const RewardsPointsSlider = ({ pointsToNextReward, currentPoints, totalRewards, labels }) => {
+const RewardsPointsSlider = ({
+  pointsToNextReward,
+  currentPoints,
+  plccUser,
+  totalRewards,
+  labels,
+}) => {
   return (
     <React.Fragment>
-      <RewardsPointsView>
+      <RewardsPointsView plccUser={plccUser}>
         <PointHeadingWrapper />
         <CurrentPointsWrapper>
           <BodyCopy
             fontSize="fs14"
             fontFamily="secondary"
-            text={`${labels.lbl_common_current_points}: `}
+            text={`${labels.lbl_rewardPoints_currentPoints}: `}
           />
           <BodyCopy
             text={currentPoints}
@@ -34,13 +40,14 @@ const RewardsPointsSlider = ({ pointsToNextReward, currentPoints, totalRewards, 
         </CurrentPointsWrapper>
         <RewardWrapper>
           <BodyCopy
-            text={`${labels.lbl_common_heading}: `}
+            text={`${labels.lbl_rewardPoints_heading}: `}
             fontFamily="secondary"
             fontSize="fs14"
           />
           {totalRewards && (
             <BodyCopy
-              text={`${labels.lbl_common_currency} ${totalRewards && Math.trunc(totalRewards)} `}
+              text={`${labels.lbl_rewardPoints_currency} ${totalRewards &&
+                Math.trunc(totalRewards)} `}
               fontFamily="secondary"
               fontSize="fs14"
               fontWeight="black"
@@ -48,15 +55,15 @@ const RewardsPointsSlider = ({ pointsToNextReward, currentPoints, totalRewards, 
           )}
         </RewardWrapper>
 
-        <ProgressBarWrapper>
-          <ProgressBarRewardWrapper style={{ width: `${currentPoints}%` }} />
+        <ProgressBarWrapper plccUser={plccUser}>
+          <ProgressBarRewardWrapper style={{ width: `${currentPoints}%` }} plccUser={plccUser} />
         </ProgressBarWrapper>
 
         <RewardWrapper>
           <BodyCopy
             fontSize="fs14"
             fontFamily="secondary"
-            text={`${labels.lbl_common_next_reward}: `}
+            text={`${labels.lbl_rewardPoints_nextReward}: `}
           />
           <BodyCopy
             text={pointsToNextReward}
@@ -74,23 +81,25 @@ RewardsPointsSlider.propTypes = {
   pointsToNextReward: PropTypes.number,
   currentPoints: PropTypes.number,
   totalRewards: PropTypes.number,
+  plccUser: PropTypes.bool,
   labels: PropTypes.shape({
-    lbl_common_current_points: PropTypes.string,
-    lbl_common_heading: PropTypes.string,
-    lbl_common_next_reward: PropTypes.string,
-    lbl_common_currency: PropTypes.string,
+    lbl_rewardPoints_currentPoints: PropTypes.string,
+    lbl_rewardPoints_heading: PropTypes.string,
+    lbl_rewardPoints_nextReward: PropTypes.string,
+    lbl_rewardPoints_currency: PropTypes.string,
   }),
 };
 
 RewardsPointsSlider.defaultProps = {
   pointsToNextReward: '0',
   currentPoints: '0',
+  plccUser: false,
   totalRewards: '0',
   labels: {
-    lbl_common_current_points: '',
-    lbl_common_heading: '',
-    lbl_common_next_reward: '',
-    lbl_common_currency: '',
+    lbl_rewardPoints_currentPoints: '',
+    lbl_rewardPoints_heading: '',
+    lbl_rewardPoints_nextReward: '',
+    lbl_rewardPoints_currency: '',
   },
 };
 

@@ -1,9 +1,5 @@
-/** @module productsCommonUtils
- * @summary product related utility functions.
- *
- * @author Ben
- */
 import { isEmpty } from 'lodash';
+import logger from '@tcp/core/src/utils/loggerInstance';
 // import { getClearanceString } from 'service/WebAPIServiceAbstractors/parsers/productsParser';
 
 /* Below functions are used to check whether to show/hide clearance/New Arrivals/Online Only badges in both en and translated sites.
@@ -22,7 +18,9 @@ export function getMapSliceForFit(colorFitsSizesMap, colorName, fitName) {
   }
   if (currentColorEntry.hasFits) {
     // eslint-disable-next-line
-    return currentColorEntry.fits.find(entry => entry.fitName === fitName);
+    return currentColorEntry.fits.find(entry => {
+      return entry.fitName === fitName || entry.fitNameVal === fitName;
+    });
   }
   // eslint-disable-next-line
   return currentColorEntry.fits[0];
@@ -39,7 +37,7 @@ export function getMapSliceForSize(colorFitsSizesMap, colorName, fitName, sizeNa
  * @return the first element in the colorFitsSizesMap array that corresponds to the given colorName.
  */
 export function getMapSliceForColor(colorFitsSizesMap, colorName) {
-  return colorFitsSizesMap.find(entry => entry.color.name === colorName);
+  return colorFitsSizesMap && colorFitsSizesMap.find(entry => entry.color.name === colorName);
 }
 
 export function getIconImageForColor(productInfo, colorId) {
@@ -77,7 +75,11 @@ export function getPrices(productInfo, color, fit, size) {
 
   const currentColorEntry = getMapSliceForColor(productInfo.colorFitsSizesMap, color);
   if (currentColorEntry && currentColorEntry.listPrice) {
-    return { listPrice: currentColorEntry.listPrice, offerPrice: currentColorEntry.offerPrice };
+    return {
+      listPrice: currentColorEntry.listPrice,
+      offerPrice: currentColorEntry.offerPrice,
+      badge2: currentColorEntry.miscInfo.badge2,
+    };
   }
 
   return { listPrice: productInfo.listPrice, offerPrice: productInfo.offerPrice };
@@ -176,7 +178,7 @@ export const getImagesToDisplay = args => {
       ? imagesToDisplay.map(imgData => imgData.regularSizeImageUrl)
       : [];
   } catch (error) {
-    console.error(
+    logger.error(
       'ProductsGridItem: Backend sent us a bad color name so we dont know what image set to map to, see auxdescription in API call'
     );
   }
@@ -208,4 +210,86 @@ export const checkAndGetDefaultFitName = (fitName, colorName, colorFitsSizesMap)
     return fitName;
   }
   return defaultFitName;
+};
+
+export const getFormattedLoyaltyText = text => {
+  return text
+    .replace(/<[^>]*>/g, '')
+    .replace(/\s+/g, ' ')
+    .trim()
+    .split('on');
+};
+
+export const getDefaultSizes = (formValues, productInfo, isShowDefaultSize) => {
+  let showDefaultSizeMsg = false;
+  const defaultSelection = {
+    fit: null,
+    size: null,
+  };
+
+  if (productInfo.categoryId && isShowDefaultSize) {
+    // eslint-disable-next-line extra-rules/no-commented-out-code
+    // defaultSelection = getCustomerSelection(productInfo.categoryId);
+    showDefaultSizeMsg = !!(defaultSelection.size || defaultSelection.fit);
+  }
+
+  const formValuesWithDefaultSizes = {
+    ...formValues,
+    fit: defaultSelection.fit ? defaultSelection.fit : formValues.fit,
+    size: defaultSelection.size ? defaultSelection.size : formValues.size,
+  };
+  const isSelectedSizeDisabled = checkIsSelectedSizeDisabled(
+    productInfo,
+    formValuesWithDefaultSizes
+  );
+  return isSelectedSizeDisabled ||
+    (defaultSelection.size && formValues.size && defaultSelection.size !== formValues.size)
+    ? { showDefaultSizeMsg: false, formValues }
+    : { showDefaultSizeMsg, formValues: formValuesWithDefaultSizes };
+};
+
+/**
+ * @method isProductOOS
+ * @description checks if the selected size variant is having available
+ * quantity
+ */
+export const isProductOOS = (colorFitsSizesMap, selectedSKu) => {
+  const currentFitEntry = getMapSliceForFit(colorFitsSizesMap, selectedSKu.color, selectedSKu.fit);
+  if (currentFitEntry && currentFitEntry.sizes) {
+    const selectedSKuProductInfo = currentFitEntry.sizes.find(
+      size => size.sizeName === selectedSKu.size
+    );
+    const maxAvailableProducts = selectedSKuProductInfo ? selectedSKuProductInfo.maxAvailable : 0;
+
+    return maxAvailableProducts < 1;
+  }
+  return true;
+};
+
+/**
+ * @method isBOSSProductOOSQtyMismatched
+ * @description checks if the selected size variant is having available
+ * quantity
+ */
+export const isBOSSProductOOSQtyMismatched = (colorFitsSizesMap, selectedSKu) => {
+  const currentFitEntry = getMapSliceForFit(colorFitsSizesMap, selectedSKu.color, selectedSKu.fit);
+  if (currentFitEntry && currentFitEntry.sizes) {
+    const selectedSKuProductInfo = currentFitEntry.sizes.find(
+      size => size.sizeName === selectedSKu.size
+    );
+    const maxAvailableBossProducts = selectedSKuProductInfo
+      ? selectedSKuProductInfo.maxAvailableBoss
+      : 0;
+    const qtyMismatch = selectedSKu.quantity > maxAvailableBossProducts;
+    return maxAvailableBossProducts < 1 || qtyMismatch;
+  }
+  return true;
+};
+
+export const getProductListToPath = str => {
+  return `/p?pid=${str.split('/p/')[1]}`;
+};
+
+export const getProductListToPathInMobileApp = str => {
+  return `${str.split('/p/')[1]}`;
 };

@@ -19,6 +19,7 @@ exports[`LoginForm component should renders correctly 1`] = `
       fontWeight="regular"
       letterSpacing="normal"
       lineHeight="normal"
+      link={null}
       textAlign="left"
     >
       <Field
@@ -28,7 +29,7 @@ exports[`LoginForm component should renders correctly 1`] = `
             "$$typeof": Symbol(react.forward_ref),
             "attrs": Array [],
             "componentStyle": ComponentStyle {
-              "componentId": "sc-bxivhb",
+              "componentId": "sc-bZQynM",
               "isStatic": false,
               "rules": Array [
                 "
@@ -171,7 +172,7 @@ exports[`LoginForm component should renders correctly 1`] = `
             "displayName": "Styled(TextBox)",
             "foldedComponentIds": Array [],
             "render": [Function],
-            "styledComponentId": "sc-bxivhb",
+            "styledComponentId": "sc-bZQynM",
             "target": [Function],
             "toString": [Function],
             "warnTooManyClasses": [Function],
@@ -183,6 +184,7 @@ exports[`LoginForm component should renders correctly 1`] = `
         errorDataLocator="login-emailerror"
         id="emailAddress"
         name="emailAddress"
+        onKeyPress={[Function]}
         showSuccessCheck={false}
       />
       <Field
@@ -192,7 +194,7 @@ exports[`LoginForm component should renders correctly 1`] = `
             "$$typeof": Symbol(react.forward_ref),
             "attrs": Array [],
             "componentStyle": ComponentStyle {
-              "componentId": "sc-gzVnrw",
+              "componentId": "sc-VigVT",
               "isStatic": false,
               "rules": Array [
                 "
@@ -234,6 +236,11 @@ exports[`LoginForm component should renders correctly 1`] = `
       height: 10px;
     }
   }
+  .show-hide-password {
+    background: ",
+                [Function],
+                ";
+  }
 ",
                 ";
 ",
@@ -242,7 +249,7 @@ exports[`LoginForm component should renders correctly 1`] = `
             "displayName": "Styled(PasswordField)",
             "foldedComponentIds": Array [],
             "render": [Function],
-            "styledComponentId": "sc-gzVnrw",
+            "styledComponentId": "sc-VigVT",
             "target": [Function],
             "toString": [Function],
             "warnTooManyClasses": [Function],
@@ -253,7 +260,13 @@ exports[`LoginForm component should renders correctly 1`] = `
         enableSuccessCheck={false}
         errorDataLocator="login-passworderror"
         id="password"
+        labels={
+          Object {
+            "login": Object {},
+          }
+        }
         name="password"
+        onKeyPress={[Function]}
         showSuccessCheck={false}
       />
       <Styled(BodyCopy)
@@ -265,6 +278,7 @@ exports[`LoginForm component should renders correctly 1`] = `
         fontWeight="regular"
         letterSpacing="normal"
         lineHeight="normal"
+        link={null}
         textAlign="left"
       >
         <Field
@@ -274,13 +288,13 @@ exports[`LoginForm component should renders correctly 1`] = `
               "$$typeof": Symbol(react.forward_ref),
               "attrs": Array [],
               "componentStyle": ComponentStyle {
-                "componentId": "sc-ifAKCX",
+                "componentId": "sc-iwsKbI",
                 "isStatic": false,
                 "rules": Array [
                   "
   ",
                   "
-  display: inline-flex;
+  display: block;
   align-items: ",
                   [Function],
                   ";
@@ -302,6 +316,8 @@ exports[`LoginForm component should renders correctly 1`] = `
     margin-right: ",
                   [Function],
                   ";
+    display: inline-block;
+    vertical-align: top;
   }
 
   & .CheckBox__input:before {
@@ -345,7 +361,14 @@ exports[`LoginForm component should renders correctly 1`] = `
   }
 
   & .CheckBox__text {
-    width: calc(100% - 25px);
+    width: calc(100% - 45px);
+    display: inline-block;
+  }
+
+  & .CheckBox__text a {
+    color: ",
+                  [Function],
+                  ";
   }
 
   & .disabled {
@@ -357,13 +380,20 @@ exports[`LoginForm component should renders correctly 1`] = `
   & .Checkbox__error {
     display: flex;
     flex-direction: row;
+    padding-left: ",
+                  [Function],
+                  ";
   }
   & .warning-icon {
     background: transparent url('/static/images/circle-alert-fill.svg') no-repeat 0 0;
     background-size: contain;
     border: none;
-    height: 15px;
-    width: 15px;
+    height: ",
+                  [Function],
+                  ";
+    width: ",
+                  [Function],
+                  ";
     margin-right: 4px;
     margin-top: 2px;
   }
@@ -375,7 +405,7 @@ exports[`LoginForm component should renders correctly 1`] = `
               "displayName": "Styled(InputCheckbox)",
               "foldedComponentIds": Array [],
               "render": [Function],
-              "styledComponentId": "sc-ifAKCX",
+              "styledComponentId": "sc-iwsKbI",
               "target": [Function],
               "toString": [Function],
               "warnTooManyClasses": [Function],
@@ -400,6 +430,7 @@ exports[`LoginForm component should renders correctly 1`] = `
         fontWeight="regular"
         letterSpacing="normal"
         lineHeight="normal"
+        link={null}
         textAlign="left"
       />
     </Styled(BodyCopy)>
@@ -412,6 +443,7 @@ exports[`LoginForm component should renders correctly 1`] = `
       fontWeight="regular"
       letterSpacing="normal"
       lineHeight="normal"
+      link={null}
       textAlign="center"
     >
       <Styled(Button)
@@ -454,9 +486,13 @@ exports[`LoginForm component should renders correctly with error 1`] = `
       fontWeight="semibold"
       letterSpacing="normal"
       lineHeight="normal"
+      link={null}
       textAlign="left"
     >
-      test errror
+      <Styled(RichText)
+        className="richTextColor"
+        richTextHtml="test errror"
+      />
     </Styled(BodyCopy)>
     <Styled(BodyCopy)
       className="elem-mb-LRG"
@@ -467,6 +503,7 @@ exports[`LoginForm component should renders correctly with error 1`] = `
       fontWeight="regular"
       letterSpacing="normal"
       lineHeight="normal"
+      link={null}
       textAlign="left"
     >
       <Field
@@ -476,7 +513,7 @@ exports[`LoginForm component should renders correctly with error 1`] = `
             "$$typeof": Symbol(react.forward_ref),
             "attrs": Array [],
             "componentStyle": ComponentStyle {
-              "componentId": "sc-bxivhb",
+              "componentId": "sc-bZQynM",
               "isStatic": false,
               "rules": Array [
                 "
@@ -619,7 +656,7 @@ exports[`LoginForm component should renders correctly with error 1`] = `
             "displayName": "Styled(TextBox)",
             "foldedComponentIds": Array [],
             "render": [Function],
-            "styledComponentId": "sc-bxivhb",
+            "styledComponentId": "sc-bZQynM",
             "target": [Function],
             "toString": [Function],
             "warnTooManyClasses": [Function],
@@ -631,6 +668,7 @@ exports[`LoginForm component should renders correctly with error 1`] = `
         errorDataLocator="login-emailerror"
         id="emailAddress"
         name="emailAddress"
+        onKeyPress={[Function]}
         showSuccessCheck={false}
       />
       <Field
@@ -640,7 +678,7 @@ exports[`LoginForm component should renders correctly with error 1`] = `
             "$$typeof": Symbol(react.forward_ref),
             "attrs": Array [],
             "componentStyle": ComponentStyle {
-              "componentId": "sc-gzVnrw",
+              "componentId": "sc-VigVT",
               "isStatic": false,
               "rules": Array [
                 "
@@ -682,6 +720,11 @@ exports[`LoginForm component should renders correctly with error 1`] = `
       height: 10px;
     }
   }
+  .show-hide-password {
+    background: ",
+                [Function],
+                ";
+  }
 ",
                 ";
 ",
@@ -690,7 +733,7 @@ exports[`LoginForm component should renders correctly with error 1`] = `
             "displayName": "Styled(PasswordField)",
             "foldedComponentIds": Array [],
             "render": [Function],
-            "styledComponentId": "sc-gzVnrw",
+            "styledComponentId": "sc-VigVT",
             "target": [Function],
             "toString": [Function],
             "warnTooManyClasses": [Function],
@@ -701,7 +744,14 @@ exports[`LoginForm component should renders correctly with error 1`] = `
         enableSuccessCheck={false}
         errorDataLocator="login-passworderror"
         id="password"
+        labels={
+          Object {
+            "login": Object {},
+            "registration": Object {},
+          }
+        }
         name="password"
+        onKeyPress={[Function]}
         showSuccessCheck={false}
       />
       <Styled(BodyCopy)
@@ -713,6 +763,7 @@ exports[`LoginForm component should renders correctly with error 1`] = `
         fontWeight="regular"
         letterSpacing="normal"
         lineHeight="normal"
+        link={null}
         textAlign="left"
       >
         <Field
@@ -722,13 +773,13 @@ exports[`LoginForm component should renders correctly with error 1`] = `
               "$$typeof": Symbol(react.forward_ref),
               "attrs": Array [],
               "componentStyle": ComponentStyle {
-                "componentId": "sc-ifAKCX",
+                "componentId": "sc-iwsKbI",
                 "isStatic": false,
                 "rules": Array [
                   "
   ",
                   "
-  display: inline-flex;
+  display: block;
   align-items: ",
                   [Function],
                   ";
@@ -750,6 +801,8 @@ exports[`LoginForm component should renders correctly with error 1`] = `
     margin-right: ",
                   [Function],
                   ";
+    display: inline-block;
+    vertical-align: top;
   }
 
   & .CheckBox__input:before {
@@ -793,7 +846,14 @@ exports[`LoginForm component should renders correctly with error 1`] = `
   }
 
   & .CheckBox__text {
-    width: calc(100% - 25px);
+    width: calc(100% - 45px);
+    display: inline-block;
+  }
+
+  & .CheckBox__text a {
+    color: ",
+                  [Function],
+                  ";
   }
 
   & .disabled {
@@ -805,13 +865,20 @@ exports[`LoginForm component should renders correctly with error 1`] = `
   & .Checkbox__error {
     display: flex;
     flex-direction: row;
+    padding-left: ",
+                  [Function],
+                  ";
   }
   & .warning-icon {
     background: transparent url('/static/images/circle-alert-fill.svg') no-repeat 0 0;
     background-size: contain;
     border: none;
-    height: 15px;
-    width: 15px;
+    height: ",
+                  [Function],
+                  ";
+    width: ",
+                  [Function],
+                  ";
     margin-right: 4px;
     margin-top: 2px;
   }
@@ -823,7 +890,7 @@ exports[`LoginForm component should renders correctly with error 1`] = `
               "displayName": "Styled(InputCheckbox)",
               "foldedComponentIds": Array [],
               "render": [Function],
-              "styledComponentId": "sc-ifAKCX",
+              "styledComponentId": "sc-iwsKbI",
               "target": [Function],
               "toString": [Function],
               "warnTooManyClasses": [Function],
@@ -848,6 +915,7 @@ exports[`LoginForm component should renders correctly with error 1`] = `
         fontWeight="regular"
         letterSpacing="normal"
         lineHeight="normal"
+        link={null}
         textAlign="left"
       />
     </Styled(BodyCopy)>
@@ -860,6 +928,7 @@ exports[`LoginForm component should renders correctly with error 1`] = `
       fontWeight="regular"
       letterSpacing="normal"
       lineHeight="normal"
+      link={null}
       textAlign="center"
     >
       <Styled(Button)

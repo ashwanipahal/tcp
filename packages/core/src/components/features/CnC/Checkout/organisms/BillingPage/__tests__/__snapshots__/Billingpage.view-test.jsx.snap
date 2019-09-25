@@ -1,0 +1,45 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`CheckoutProgressIndicator component should renders correctly props not present 1`] = `
+<div
+  className=""
+>
+  <Styled(CheckoutSectionTitleDisplay)
+    dataLocator="billing-title"
+  />
+  <Connect(GiftCardsContainer) />
+  <div
+    className="payment-container"
+  >
+    <Connect(GiftCardsContainer)
+      addressLabels={null}
+      billingData={Object {}}
+      creditFieldLabels={Object {}}
+      cvvCodeRichText={null}
+      labels={Object {}}
+      shippingAddress={null}
+      userAddresses={null}
+    />
+  </div>
+</div>
+`;
+
+exports[`CheckoutProgressIndicator component should renders correctly props not present and is Guest user 1`] = `
+<div
+  className=""
+>
+  <Styled(CheckoutSectionTitleDisplay)
+    dataLocator="billing-title"
+  />
+  <Connect(GiftCardsContainer) />
+  <Connect(GuestBillingContainer)
+    addressLabels={null}
+    billingData={Object {}}
+    creditFieldLabels={Object {}}
+    cvvCodeRichText={null}
+    isGuest={true}
+    labels={Object {}}
+    shippingAddress={null}
+  />
+</div>
+`;

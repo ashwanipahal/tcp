@@ -62,6 +62,16 @@ export class Account extends React.PureComponent<Props, State> {
         return 'accountOverview';
       case 'profileInformationMobile':
         return 'profile';
+      case 'myWalletPageMobile':
+        return 'myWalletPageMobile';
+      case 'earnExtraPointsPageMobile':
+        return 'earnExtraPointsPageMobile';
+      case 'pointsHistoryMobile':
+        return 'pointHistoryPageMobile';
+      case 'myPreferencePageMobile':
+        return 'myPreferences';
+      case 'PointsClaimPageMobile':
+        return 'PointsClaimPageMobile';
       default:
         return 'addressBookMobile';
     }
@@ -92,7 +102,7 @@ export class Account extends React.PureComponent<Props, State> {
     const { labels, isUserLoggedIn, navigation } = this.props;
     return (
       <StyledKeyboardAvoidingView behavior="padding" enabled keyboardVerticalOffset={82}>
-        <StyledScrollView>
+        <StyledScrollView keyboardShouldPersistTaps="handled">
           <MyAccountLayout
             navData={navDataMobile}
             mainContent={AccountComponentNativeMapping[component]}

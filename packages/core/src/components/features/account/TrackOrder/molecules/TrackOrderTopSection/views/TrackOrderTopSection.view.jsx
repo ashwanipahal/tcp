@@ -1,13 +1,8 @@
 import React from 'react';
+import { PropTypes } from 'prop-types';
 import withStyles from '@tcp/core/src/components/common/hoc/withStyles';
 import BodyCopy from '../../../../../../common/atoms/BodyCopy';
 import styles from '../styles/TrackOrderTopSection.style';
-
-// @flow
-type Props = {
-  labels: object,
-  className: string,
-};
 
 /**
  * @function TrackOrderTopSection - renders the top section for track order modal.
@@ -15,7 +10,7 @@ type Props = {
  * @param {labels} labels object with labels of the header module
  * @param {className} className css to apply
  */
-const TrackOrderTopSection = ({ labels, className }: Props) => {
+const TrackOrderTopSection = ({ labels, className }) => {
   return (
     <BodyCopy className={className} component="div">
       <BodyCopy
@@ -26,7 +21,7 @@ const TrackOrderTopSection = ({ labels, className }: Props) => {
         component="h2"
         id="trackorder__modal__heading"
       >
-        {labels.trackOrder.lbl_header_trackOrderOverlay_header}
+        {labels.trackOrder.lbl_trackOrder_header}
       </BodyCopy>
       <BodyCopy
         fontSize="fs16"
@@ -37,10 +32,17 @@ const TrackOrderTopSection = ({ labels, className }: Props) => {
         component="p"
         id="trackorder__modal__subheading"
       >
-        {labels.trackOrder.lbl_header_trackOrderOverlay_subheader}
+        {labels.trackOrder.lbl_trackOrder_subheader}
       </BodyCopy>
     </BodyCopy>
   );
+};
+
+TrackOrderTopSection.propTypes = {
+  labels: PropTypes.shape({
+    trackOrder: PropTypes.shape({}),
+  }).isRequired,
+  className: PropTypes.string.isRequired,
 };
 
 export default withStyles(TrackOrderTopSection, styles);

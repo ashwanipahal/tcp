@@ -1,36 +1,16 @@
-// @flow
 import React from 'react';
 import { FlatList } from 'react-native';
-import { getLocator, getScreenWidth } from '../../../../../utils/index.native';
-import { Anchor, Button, Image } from '../../../atoms';
+import PropTypes from 'prop-types';
+import { getLocator, getScreenWidth, LAZYLOAD_HOST_NAME } from '../../../../../utils/index.native';
+import { Anchor, Button, DamImage } from '../../../atoms';
 import PromoBanner from '../../PromoBanner';
 import { ButtonWrapper, Tile, Wrapper } from '../ModuleD.style.native';
-import colors from '../../../../../../styles/themes/TCP/colors';
 import spacing from '../../../../../../styles/themes/TCP/spacing';
 import LinkText from '../../LinkText';
-
-type Props = {
-  headerText: Object[],
-  promoBanner: Object[],
-  smallCompImage: Object[],
-  singleCTAButton: Object,
-  navigation: Object,
-};
+import config from '../config';
 
 const imageSize = parseInt((getScreenWidth() - 48) / 2, 10);
 const keyExtractor = (_, index) => index.toString();
-
-/**
- * @function getUrlWithCrop : Return updated image URL.
- * @desc Returns updated image URL with crop details.
- *
- * @param {String} url : Image URL received from CMS.
- * @return {String} function returns updated image URL as a string.
- */
-const getUrlWithCrop = url => {
-  const dimension = imageSize;
-  return url.replace('h_650,w_650', `h_${dimension},w_${dimension}`);
-};
 
 /**
  * @function renderItem : Render method for Flatlist.
@@ -49,13 +29,16 @@ const renderItem = (item, navigation) => {
   return (
     <Tile tileIndex={index} key={index.toString()}>
       <Anchor url={link.url} navigation={navigation}>
-        <Image
+        <DamImage
           alt={image.alt}
           testID={`${getLocator('moduleD_image')}${index + 1}`}
-          source={{ uri: getUrlWithCrop(image.url) }}
+          url={image.url}
+          crop={image.crop_m}
           height={imageSize}
           marginBottom={parseInt(spacing.ELEM_SPACING.XS, 10)}
           width={imageSize}
+          imgConfig={config.IMG_DATA_2.imgConfig[0]}
+          host={LAZYLOAD_HOST_NAME.HOME}
         />
       </Anchor>
 
@@ -73,20 +56,21 @@ const renderItem = (item, navigation) => {
 };
 
 /**
- * @param {object} props : Props for Module D multi grid banner.
+ *
+ * @function ModuleD: Props for Module D multi grid banner.
  * @desc This is Module D global component. It has capability to display
  * featured content module with 2, 4, or 6 images tiles and a CTA.
  * Author can surface teaser content leading to corresponding pages.
  *
  * Props: Includes composites of headerText, smallCompImage and singleCTAButton.
- * @prop {object} headerText: Data for header text and link.
- * @prop {object} smallCompImage: Data for images and their links.
+ * @prop {array} headerText: Data for header text and link.
+ * @prop {array} smallCompImage: Data for images and their links.
  * @prop {object} singleCTAButton: Data for CTA button and its target.
+ * @prop {array} promoBanner: Data for Promo Banner.
+ * @prop {object} navigation: Naviation object.
  */
 
-const ModuleD = (props: Props) => {
-  const { smallCompImage, headerText, promoBanner, singleCTAButton, navigation } = props;
-  const buttonWidth = { width: 225 };
+const ModuleD = ({ smallCompImage, headerText, promoBanner, singleCTAButton, navigation }) => {
   return (
     <Wrapper>
       {headerText && (
@@ -111,27 +95,58 @@ const ModuleD = (props: Props) => {
         />
       )}
 
-      <FlatList
-        numColumns={2}
-        data={smallCompImage}
-        keyExtractor={keyExtractor}
-        renderItem={item => renderItem(item, navigation)}
-      />
-
-      <ButtonWrapper>
-        <Button
-          color={colors.BUTTON.WHITE.TEXT}
-          accessibilityLabel={singleCTAButton.title}
-          buttonVariation="variable-width"
-          style={buttonWidth}
-          text={singleCTAButton.text}
-          testID={getLocator('moduleD_button')}
-          url={singleCTAButton.url}
-          navigation={navigation}
+      {smallCompImage && (
+        <FlatList
+          numColumns={2}
+          data={smallCompImage}
+          keyExtractor={keyExtractor}
+          renderItem={item => renderItem(item, navigation)}
         />
-      </ButtonWrapper>
+      )}
+
+      {singleCTAButton && (
+        <ButtonWrapper>
+          <Button
+            width="225px"
+            accessibilityLabel={singleCTAButton.title}
+            buttonVariation="variable-width"
+            text={singleCTAButton.text}
+            testID={getLocator('moduleD_button')}
+            url={singleCTAButton.url}
+            navigation={navigation}
+          />
+        </ButtonWrapper>
+      )}
     </Wrapper>
   );
+};
+
+ModuleD.defaultProps = {
+  promoBanner: [],
+  singleCTAButton: {},
+};
+
+ModuleD.propTypes = {
+  headerText: PropTypes.arrayOf(
+    PropTypes.shape({
+      link: PropTypes.object,
+      textItems: PropTypes.object,
+    })
+  ).isRequired,
+  promoBanner: PropTypes.arrayOf(
+    PropTypes.shape({
+      link: PropTypes.object,
+      textItems: PropTypes.object,
+    })
+  ),
+  smallCompImage: PropTypes.arrayOf(
+    PropTypes.shape({
+      link: PropTypes.object,
+      image: PropTypes.object,
+    })
+  ).isRequired,
+  navigation: PropTypes.shape({}).isRequired,
+  singleCTAButton: PropTypes.objectOf(PropTypes.shape({})),
 };
 
 export default ModuleD;

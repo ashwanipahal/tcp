@@ -6,6 +6,14 @@ const styles = css`
   .fav-icon-wrapper {
     text-align: right;
   }
+  .item-container-inner {
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+  }
+  .fulfillment-section {
+    margin-top: auto;
+  }
 
   .clear-button {
     border: none;
@@ -28,7 +36,6 @@ const styles = css`
     box-sizing: border-box;
     height: 36px;
     padding-top: ${props => props.theme.spacing.ELEM_SPACING.XXS};
-    overflow: hidden;
   }
 
   .added-to-bag {
@@ -41,7 +48,6 @@ const styles = css`
   }
 
   .loyalty-text-container {
-    height: 28px;
     color: ${props =>
       props.isPlcc
         ? props.theme.colorPalette.userTheme.plcc
@@ -67,9 +73,6 @@ const styles = css`
       padding-top: 11px;
       height: 47px;
     }
-    .loyalty-text-container {
-      height: 32px;
-    }
   }
 
   @media ${props => props.theme.mediaQuery.large} {
@@ -84,9 +87,6 @@ const styles = css`
     .product-title-container {
       padding-top: 8px;
       height: 46px;
-    }
-    .loyalty-text-container {
-      height: 38px;
     }
 
     &:hover {

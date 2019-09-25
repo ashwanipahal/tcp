@@ -2,7 +2,9 @@ import { css } from 'styled-components';
 
 const styles = css`
   position: relative;
-  border: 1px solid ${props => props.theme.colors.BORDER.NORMAL};
+  border: 1px solid
+    ${props =>
+      props.activityCompletionState ? 'rgba(0,0,0,0.1)' : props.theme.colors.BORDER.NORMAL};
   display: block;
   height: 150px;
   pointer-events: ${props => (props.activityCompletionState ? 'none' : 'auto')};

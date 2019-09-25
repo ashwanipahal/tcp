@@ -1,0 +1,70 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`BirthdayCard should render correctly 1`] = `
+<div
+  className="test"
+>
+  <Styled(Image)
+    alt="closeIcon"
+    className="closeIcon"
+    data-locator="crossIconInTile"
+    onClick={[Function]}
+    src="/static/images/close.png"
+  />
+  <Styled(BodyCopy)
+    className="elem-mb-XXXS"
+    color="text.primary"
+    component="p"
+    data-locator="nameOfChildInTile"
+    fontFamily="secondary"
+    fontSize={12}
+    fontWeight="semibold"
+    letterSpacing="normal"
+    lineHeight="normal"
+    link={null}
+    textAlign="center"
+  >
+    test
+  </Styled(BodyCopy)>
+  <div
+    className="cardInfo"
+  >
+    <Styled(BodyCopy)
+      className={null}
+      color="text.primary"
+      component="p"
+      data-locator="childAgeInTile"
+      fontFamily="secondary"
+      fontSize="fs12"
+      fontWeight="semibold"
+      letterSpacing="normal"
+      lineHeight="normal"
+      link={null}
+      textAlign="left"
+    >
+      21 yo
+    </Styled(BodyCopy)>
+    <Styled(Image)
+      alt="userIcon"
+      className="genderIcon"
+      data-locator="childImg"
+      src="/static/images/girl-icon.png"
+    />
+    <Styled(BodyCopy)
+      className={null}
+      color="text.primary"
+      component="p"
+      data-locator="childBirthYearInTile"
+      fontFamily="secondary"
+      fontSize="fs12"
+      fontWeight="semibold"
+      letterSpacing="normal"
+      lineHeight="normal"
+      link={null}
+      textAlign="right"
+    >
+      1998
+    </Styled(BodyCopy)>
+  </div>
+</div>
+`;

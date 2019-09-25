@@ -1,6 +1,6 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import { View, ScrollView, Text } from 'react-native';
+import { View, ScrollView } from 'react-native';
 import {
   ParentContainer,
   StyledHeading,
@@ -14,16 +14,17 @@ import MyRewards from '../../../../common/organism/MyRewards';
 import BonusPointsDays from '../../../molecules/BonusPointsDays';
 import RewardsPoints from '../../../../common/organism/RewardsPoints';
 import PointsHistory from '../../../../common/organism/PointsHistory';
+import EarnExtraPointsTileContainer from '../../../../common/organism/EarnExtraPointsTile';
 
-const PlaceRewardsSection = ({ labels, className }) => {
+const PlaceRewardsSection = ({ labels, className, ...otherProps }) => {
   return (
     <View className={className}>
-      <ScrollView showsVerticalScrollIndicator={false}>
+      <ScrollView showsVerticalScrollIndicator={false} keyboardShouldPersistTaps="handled">
         <StyledHeading>
           <BodyCopy
             fontSize="fs16"
             fontWeight="extrabold"
-            text={labels.myPlaceRewards.ACC_LBL_PLACE_REWARDS_HEADING}
+            text={labels.placeRewards.ACC_LBL_PLACE_REWARDS_HEADING}
           />
         </StyledHeading>
         <UnderlineStyle />
@@ -31,7 +32,7 @@ const PlaceRewardsSection = ({ labels, className }) => {
           <BodyCopy
             fontSize="fs16"
             fontWeight="extrabold"
-            text={labels.common.lbl_common_point_balance}
+            text={labels.placeRewards.lbl_common_point_balance}
           />
           <RewardsPoints />
         </StyledView>
@@ -40,30 +41,30 @@ const PlaceRewardsSection = ({ labels, className }) => {
             <BodyCopy
               fontSize="fs16"
               fontWeight="extrabold"
-              text={labels.myPlaceRewards.lbl_my_rewards_points_history}
+              text={labels.placeRewards.lbl_my_rewards_points_history}
             />
           </StyledHeading>
-          <PointsHistory />
+          <PointsHistory {...otherProps} />
         </StyledView>
         <StyledView>
           <BonusPointsDays />
         </StyledView>
         <StyledViewLargeMargin>
-          <Text>FPO</Text>
+          <EarnExtraPointsTileContainer {...otherProps} />
         </StyledViewLargeMargin>
-        <MyRewards labels={labels} />
+        <MyRewards labels={labels} showLink {...otherProps} />
       </ScrollView>
     </View>
   );
 };
 
 PlaceRewardsSection.propTypes = {
-  labels: PropTypes.shape({ myPlaceRewards: {} }),
+  labels: PropTypes.shape({ placeRewards: {} }),
   className: PropTypes.string,
 };
 
 PlaceRewardsSection.defaultProps = {
-  labels: { myPlaceRewards: { ACC_LBL_PLACE_REWARDS_HEADING: '' } },
+  labels: { placeRewards: { ACC_LBL_PLACE_REWARDS_HEADING: '' } },
   className: '',
 };
 

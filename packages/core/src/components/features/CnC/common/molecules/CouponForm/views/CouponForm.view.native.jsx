@@ -9,7 +9,6 @@ import {
   Header,
   FlexRow,
   ApplyButton,
-  ApplyButtonText,
   FormContainer,
   CouponFormContainer,
   NeedHelpText,
@@ -31,10 +30,11 @@ export class CouponForm extends React.PureComponent<Props, State> {
       error,
       isFetching,
       onNeedHelpTextClick,
+      showAccordian,
     } = this.props;
     return (
       <CouponFormContainer>
-        <ErrorMessage error={error && error.msg} />
+        <ErrorMessage showAccordian={showAccordian} error={error && error.msg} />
         <FormContainer>
           <Header>
             <BodyCopy
@@ -71,9 +71,8 @@ export class CouponForm extends React.PureComponent<Props, State> {
               external
               onPress={handleSubmit}
               buttonVariation="variable-width"
-              customStyle={ApplyButton}
+              style={ApplyButton}
               text={labels.submitButtonLabel}
-              style={ApplyButtonText}
               disabled={isFetching}
               data-locator={dataLocators.submitButton}
             />

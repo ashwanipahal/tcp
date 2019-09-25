@@ -9,7 +9,7 @@ exports[`DropDown Test should render correctly 1`] = `
   >
     foo
   </Styled(Text)>
-  <Styled(View)
+  <Styled(TouchableOpacity)
     bounces={true}
     data={
       Array [
@@ -26,7 +26,7 @@ exports[`DropDown Test should render correctly 1`] = `
         "color": "foo",
       }
     }
-    onStartShouldSetResponder={[Function]}
+    onPress={[Function]}
     onValueChange={[MockFunction]}
     pointerEvents="auto"
     selectedValue="foo"
@@ -34,12 +34,17 @@ exports[`DropDown Test should render correctly 1`] = `
   >
     <Styled(View)>
       <Styled(BodyCopy)
+        accessibilityText=""
         color="gray.800"
+        dataLocator=""
         fontSize="fs13"
         fontWeight="semibold"
+        margin={null}
         mobileFontFamily="secondary"
+        numberOfLines={null}
         text="foo"
         textAlign="center"
+        textDecoration={null}
       />
     </Styled(View)>
     <Image
@@ -49,7 +54,7 @@ exports[`DropDown Test should render correctly 1`] = `
         }
       }
     />
-  </Styled(View)>
+  </Styled(TouchableOpacity)>
   <Component
     hardwareAccelerated={false}
     transparent={true}
@@ -65,8 +70,7 @@ exports[`DropDown Test should render correctly 1`] = `
         Object {
           "height": 1334,
           "left": 0,
-          "marginTop": 0,
-          "width": 0,
+          "paddingTop": 0,
         }
       }
     >
@@ -74,6 +78,7 @@ exports[`DropDown Test should render correctly 1`] = `
         style={
           Object {
             "top": 0,
+            "width": 0,
           }
         }
       />
@@ -91,7 +96,7 @@ exports[`DropDown Test should render with dropdown open state 1`] = `
   >
     foo
   </Styled(Text)>
-  <Styled(View)
+  <Styled(TouchableOpacity)
     bounces={true}
     data={
       Array [
@@ -108,7 +113,7 @@ exports[`DropDown Test should render with dropdown open state 1`] = `
         "color": "foo",
       }
     }
-    onStartShouldSetResponder={[Function]}
+    onPress={[Function]}
     onValueChange={[MockFunction]}
     pointerEvents="auto"
     selectedValue="foo"
@@ -116,12 +121,17 @@ exports[`DropDown Test should render with dropdown open state 1`] = `
   >
     <Styled(View)>
       <Styled(BodyCopy)
+        accessibilityText=""
         color="gray.800"
+        dataLocator=""
         fontSize="fs13"
         fontWeight="semibold"
+        margin={null}
         mobileFontFamily="secondary"
+        numberOfLines={null}
         text="foo"
         textAlign="center"
+        textDecoration={null}
       />
     </Styled(View)>
     <Image
@@ -131,7 +141,7 @@ exports[`DropDown Test should render with dropdown open state 1`] = `
         }
       }
     />
-  </Styled(View)>
+  </Styled(TouchableOpacity)>
   <Component
     hardwareAccelerated={false}
     transparent={true}
@@ -147,8 +157,7 @@ exports[`DropDown Test should render with dropdown open state 1`] = `
         Object {
           "height": 1334,
           "left": 0,
-          "marginTop": 0,
-          "width": 0,
+          "paddingTop": 0,
         }
       }
     >
@@ -156,6 +165,7 @@ exports[`DropDown Test should render with dropdown open state 1`] = `
         style={
           Object {
             "top": 0,
+            "width": 0,
           }
         }
       >

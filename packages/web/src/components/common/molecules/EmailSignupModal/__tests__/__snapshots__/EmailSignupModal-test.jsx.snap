@@ -65,7 +65,15 @@ exports[`EmailSignupModal component renders correctly 1`] = `
             }
             isNotInlineBlock={true}
           >
-            <Styled(Image) />
+            <WithTheme(DamImage)
+              imgConfigs={
+                Array [
+                  "t_emailSignUp_img_m",
+                  "t_emailSignUp_img_t",
+                  "t_emailSignUp_img_d",
+                ]
+              }
+            />
           </Styled(Col)>
           <Styled(Col)
             colSize={
@@ -269,6 +277,7 @@ exports[`EmailSignupModal component renders correctly 1`] = `
                 fontWeight="regular"
                 letterSpacing="normal"
                 lineHeight="normal"
+                link={null}
                 textAlign="left"
               />
             </Styled(Col)>
@@ -370,7 +379,15 @@ exports[`EmailSignupModal component renders correctly when button is clicked 1`]
             }
             isNotInlineBlock={true}
           >
-            <Styled(Image) />
+            <WithTheme(DamImage)
+              imgConfigs={
+                Array [
+                  "t_emailSignUp_img_m",
+                  "t_emailSignUp_img_t",
+                  "t_emailSignUp_img_d",
+                ]
+              }
+            />
           </Styled(Col)>
           <Styled(Col)
             colSize={
@@ -574,6 +591,7 @@ exports[`EmailSignupModal component renders correctly when button is clicked 1`]
                 fontWeight="regular"
                 letterSpacing="normal"
                 lineHeight="normal"
+                link={null}
                 textAlign="left"
               />
             </Styled(Col)>
@@ -675,7 +693,15 @@ exports[`EmailSignupModal component renders correctly when button is clicked 2`]
             }
             isNotInlineBlock={true}
           >
-            <Styled(Image) />
+            <WithTheme(DamImage)
+              imgConfigs={
+                Array [
+                  "t_emailSignUp_img_m",
+                  "t_emailSignUp_img_t",
+                  "t_emailSignUp_img_d",
+                ]
+              }
+            />
           </Styled(Col)>
           <Styled(Col)
             colSize={
@@ -879,6 +905,7 @@ exports[`EmailSignupModal component renders correctly when button is clicked 2`]
                 fontWeight="regular"
                 letterSpacing="normal"
                 lineHeight="normal"
+                link={null}
                 textAlign="left"
               />
             </Styled(Col)>

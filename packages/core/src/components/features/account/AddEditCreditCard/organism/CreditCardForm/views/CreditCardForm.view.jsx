@@ -7,13 +7,45 @@ import getStandardConfig from '../../../../../../../utils/formValidation/validat
 import Row from '../../../../../../common/atoms/Row';
 import Col from '../../../../../../common/atoms/Col';
 import Button from '../../../../../../common/atoms/Button';
+import CreditCardFields from '../../../../../../common/molecules/CreditCardFields';
 import constants from '../../../container/AddEditCreditCard.constants';
-import CreditCardFields from '../../../molecule/CreditCardFields';
 import { Heading } from '../../../../../../common/atoms';
 import AddressDropdown from '../../../molecule/AddressDropdown';
 import AddressFields from '../../../../../../common/molecules/AddressFields';
 import Address from '../../../../../../common/molecules/Address';
 import styles from '../styles/CreditCardForm.style';
+import { getLabelValue } from '../../../../../../../utils';
+
+const creditCardProps = {
+  cardNumbProps: {
+    colSize: {
+      small: 6,
+      medium: 8,
+      large: 6,
+    },
+  },
+  expMonthProps: {
+    colSize: {
+      small: 6,
+      medium: 2,
+      large: 3,
+    },
+  },
+  expYearProps: {
+    colSize: {
+      small: 6,
+      medium: 2,
+      large: 3,
+    },
+  },
+  cardNumberInnerProps: {
+    colSize: {
+      small: 6,
+      medium: 4,
+      large: 12,
+    },
+  },
+};
 
 export class CreditCardForm extends React.PureComponent {
   static propTypes = {
@@ -23,6 +55,7 @@ export class CreditCardForm extends React.PureComponent {
     addressList: PropTypes.shape({}).isRequired,
     onFileAddressKey: PropTypes.string,
     isEdit: PropTypes.bool,
+    mailingAddress: PropTypes.bool,
     backToPaymentClick: PropTypes.func.isRequired,
     pristine: PropTypes.bool.isRequired,
     invalid: PropTypes.bool.isRequired,
@@ -30,12 +63,19 @@ export class CreditCardForm extends React.PureComponent {
     dispatch: PropTypes.func.isRequired,
     initialValues: PropTypes.shape({}).isRequired,
     addressFormLabels: PropTypes.shape({}).isRequired,
+    showCreditCardFields: PropTypes.bool,
+    showUserName: PropTypes.bool,
+    subHeading: PropTypes.string,
   };
 
   static defaultProps = {
     className: '',
     onFileAddressKey: '',
     isEdit: false,
+    mailingAddress: false,
+    showCreditCardFields: true,
+    showUserName: true,
+    subHeading: null,
   };
 
   getAddressOptions = () => {
@@ -72,6 +112,15 @@ export class CreditCardForm extends React.PureComponent {
     return addressList.find(add => add.addressId === onFileAddresskey);
   };
 
+  getCreditFieldLabels = () => {
+    const { labels } = this.props;
+    return {
+      creditCardNumber: getLabelValue(labels, 'lbl_payment_cardNumber', 'paymentGC'),
+      expMonth: getLabelValue(labels, 'lbl_payment_expMonth', 'paymentGC'),
+      expYear: getLabelValue(labels, 'lbl_payment_expYear', 'paymentGC'),
+    };
+  };
+
   render() {
     const {
       className,
@@ -87,18 +136,38 @@ export class CreditCardForm extends React.PureComponent {
       dispatch,
       initialValues,
       addressFormLabels,
+      mailingAddress,
+      showUserName,
+      showCreditCardFields,
+      subHeading,
     } = this.props;
     const showAddressForm = pristine ? !initialValues.onFileAddressKey : !onFileAddressKey;
+
+    const getSubHeading = pagesubHeading => {
+      let subheading = labels.paymentGC.lbl_payment_billingAddress;
+      if (pagesubHeading) {
+        subheading = pagesubHeading;
+      }
+      return subheading;
+    };
     return (
       <form name={constants.FORM_NAME} noValidate onSubmit={handleSubmit} className={className}>
-        <CreditCardFields {...this.props} />
+        {showCreditCardFields && (
+          <CreditCardFields
+            {...this.props}
+            {...creditCardProps}
+            creditFieldLabels={this.getCreditFieldLabels()}
+            cardNumberWrapper
+            showCvv={false}
+          />
+        )}
         <Heading
           component="h3"
           variant="listMenu"
           className="addressDropdownHeading"
           dataLocator="payment-bilingaddresslabel"
         >
-          {labels.paymentGC.lbl_payment_billingAddress}
+          {getSubHeading(subHeading)}
         </Heading>
         {addressList && addressList.size > 0 && (
           <Row fullBleed className="elem-mb-XL">
@@ -150,6 +219,7 @@ export class CreditCardForm extends React.PureComponent {
                 formSection="address"
                 dispatch={dispatch}
                 addressFormLabels={addressFormLabels}
+                showUserName={showUserName}
               />
             </FormSection>
           </div>
@@ -181,7 +251,9 @@ export class CreditCardForm extends React.PureComponent {
               buttonVariation="fixed-width"
               data-locator="payment-addcardbtn"
             >
-              {isEdit ? labels.common.lbl_common_updateCTA : labels.common.lbl_common_addCTA}
+              {!mailingAddress &&
+                (isEdit ? labels.common.lbl_common_updateCTA : labels.common.lbl_common_addCTA)}
+              {mailingAddress && labels.common.lbl_common_saveCTA}
             </Button>
           </Col>
         </Row>

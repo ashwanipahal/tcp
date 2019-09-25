@@ -28,7 +28,7 @@ exports[`AddressFields component should render correctly 1`] = `
             "$$typeof": Symbol(react.forward_ref),
             "attrs": Array [],
             "componentStyle": ComponentStyle {
-              "componentId": "sc-bwzfXH",
+              "componentId": "sc-htpNat",
               "isStatic": false,
               "rules": Array [
                 "
@@ -171,7 +171,7 @@ exports[`AddressFields component should render correctly 1`] = `
             "displayName": "Styled(TextBox)",
             "foldedComponentIds": Array [],
             "render": [Function],
-            "styledComponentId": "sc-bwzfXH",
+            "styledComponentId": "sc-htpNat",
             "target": [Function],
             "toString": [Function],
             "warnTooManyClasses": [Function],
@@ -201,7 +201,7 @@ exports[`AddressFields component should render correctly 1`] = `
             "$$typeof": Symbol(react.forward_ref),
             "attrs": Array [],
             "componentStyle": ComponentStyle {
-              "componentId": "sc-bwzfXH",
+              "componentId": "sc-htpNat",
               "isStatic": false,
               "rules": Array [
                 "
@@ -344,7 +344,7 @@ exports[`AddressFields component should render correctly 1`] = `
             "displayName": "Styled(TextBox)",
             "foldedComponentIds": Array [],
             "render": [Function],
-            "styledComponentId": "sc-bwzfXH",
+            "styledComponentId": "sc-htpNat",
             "target": [Function],
             "toString": [Function],
             "warnTooManyClasses": [Function],
@@ -408,7 +408,7 @@ exports[`AddressFields component should render correctly 1`] = `
             "$$typeof": Symbol(react.forward_ref),
             "attrs": Array [],
             "componentStyle": ComponentStyle {
-              "componentId": "sc-bwzfXH",
+              "componentId": "sc-htpNat",
               "isStatic": false,
               "rules": Array [
                 "
@@ -551,7 +551,7 @@ exports[`AddressFields component should render correctly 1`] = `
             "displayName": "Styled(TextBox)",
             "foldedComponentIds": Array [],
             "render": [Function],
-            "styledComponentId": "sc-bwzfXH",
+            "styledComponentId": "sc-htpNat",
             "target": [Function],
             "toString": [Function],
             "warnTooManyClasses": [Function],
@@ -589,7 +589,7 @@ exports[`AddressFields component should render correctly 1`] = `
             "$$typeof": Symbol(react.forward_ref),
             "attrs": Array [],
             "componentStyle": ComponentStyle {
-              "componentId": "sc-bwzfXH",
+              "componentId": "sc-htpNat",
               "isStatic": false,
               "rules": Array [
                 "
@@ -732,7 +732,7 @@ exports[`AddressFields component should render correctly 1`] = `
             "displayName": "Styled(TextBox)",
             "foldedComponentIds": Array [],
             "render": [Function],
-            "styledComponentId": "sc-bwzfXH",
+            "styledComponentId": "sc-htpNat",
             "target": [Function],
             "toString": [Function],
             "warnTooManyClasses": [Function],
@@ -746,6 +746,7 @@ exports[`AddressFields component should render correctly 1`] = `
       />
     </Styled(Col)>
     <Styled(Col)
+      className="margin-right"
       colSize={
         Object {
           "large": 3,
@@ -761,7 +762,7 @@ exports[`AddressFields component should render correctly 1`] = `
             "$$typeof": Symbol(react.forward_ref),
             "attrs": Array [],
             "componentStyle": ComponentStyle {
-              "componentId": "sc-htpNat",
+              "componentId": "sc-bxivhb",
               "isStatic": false,
               "rules": Array [
                 "
@@ -775,7 +776,10 @@ exports[`AddressFields component should render correctly 1`] = `
     appearance: none;
     background: url(",
                 "/static/images/carrot-small-down.png",
-                ") no-repeat right 0px bottom 6px;
+                ") no-repeat right 0px bottom
+      ",
+                [Function],
+                ";
     border: 0;
     border-bottom: 1px solid ",
                 [Function],
@@ -789,7 +793,7 @@ exports[`AddressFields component should render correctly 1`] = `
                 ";
     font-size: ",
                 [Function],
-                "px;
+                ";
     margin: 0;
     margin-bottom: ",
                 [Function],
@@ -847,7 +851,7 @@ exports[`AddressFields component should render correctly 1`] = `
             "displayName": "Styled(SelectBox)",
             "foldedComponentIds": Array [],
             "render": [Function],
-            "styledComponentId": "sc-htpNat",
+            "styledComponentId": "sc-bxivhb",
             "target": [Function],
             "toString": [Function],
             "warnTooManyClasses": [Function],
@@ -1192,7 +1196,7 @@ exports[`AddressFields component should render correctly 1`] = `
             "$$typeof": Symbol(react.forward_ref),
             "attrs": Array [],
             "componentStyle": ComponentStyle {
-              "componentId": "sc-bwzfXH",
+              "componentId": "sc-htpNat",
               "isStatic": false,
               "rules": Array [
                 "
@@ -1335,7 +1339,7 @@ exports[`AddressFields component should render correctly 1`] = `
             "displayName": "Styled(TextBox)",
             "foldedComponentIds": Array [],
             "render": [Function],
-            "styledComponentId": "sc-bwzfXH",
+            "styledComponentId": "sc-htpNat",
             "target": [Function],
             "toString": [Function],
             "warnTooManyClasses": [Function],
@@ -1374,7 +1378,7 @@ exports[`AddressFields component should render correctly 1`] = `
             "$$typeof": Symbol(react.forward_ref),
             "attrs": Array [],
             "componentStyle": ComponentStyle {
-              "componentId": "sc-htpNat",
+              "componentId": "sc-bxivhb",
               "isStatic": false,
               "rules": Array [
                 "
@@ -1388,7 +1392,10 @@ exports[`AddressFields component should render correctly 1`] = `
     appearance: none;
     background: url(",
                 "/static/images/carrot-small-down.png",
-                ") no-repeat right 0px bottom 6px;
+                ") no-repeat right 0px bottom
+      ",
+                [Function],
+                ";
     border: 0;
     border-bottom: 1px solid ",
                 [Function],
@@ -1402,7 +1409,7 @@ exports[`AddressFields component should render correctly 1`] = `
                 ";
     font-size: ",
                 [Function],
-                "px;
+                ";
     margin: 0;
     margin-bottom: ",
                 [Function],
@@ -1460,7 +1467,7 @@ exports[`AddressFields component should render correctly 1`] = `
             "displayName": "Styled(SelectBox)",
             "foldedComponentIds": Array [],
             "render": [Function],
-            "styledComponentId": "sc-htpNat",
+            "styledComponentId": "sc-bxivhb",
             "target": [Function],
             "toString": [Function],
             "warnTooManyClasses": [Function],
@@ -1502,7 +1509,7 @@ exports[`AddressFields component should render correctly 1`] = `
             "$$typeof": Symbol(react.forward_ref),
             "attrs": Array [],
             "componentStyle": ComponentStyle {
-              "componentId": "sc-bwzfXH",
+              "componentId": "sc-htpNat",
               "isStatic": false,
               "rules": Array [
                 "
@@ -1645,7 +1652,7 @@ exports[`AddressFields component should render correctly 1`] = `
             "displayName": "Styled(TextBox)",
             "foldedComponentIds": Array [],
             "render": [Function],
-            "styledComponentId": "sc-bwzfXH",
+            "styledComponentId": "sc-htpNat",
             "target": [Function],
             "toString": [Function],
             "warnTooManyClasses": [Function],
@@ -1685,13 +1692,13 @@ exports[`AddressFields component should render correctly 1`] = `
             "$$typeof": Symbol(react.forward_ref),
             "attrs": Array [],
             "componentStyle": ComponentStyle {
-              "componentId": "sc-bxivhb",
+              "componentId": "sc-ifAKCX",
               "isStatic": false,
               "rules": Array [
                 "
   ",
                 "
-  display: inline-flex;
+  display: block;
   align-items: ",
                 [Function],
                 ";
@@ -1713,6 +1720,8 @@ exports[`AddressFields component should render correctly 1`] = `
     margin-right: ",
                 [Function],
                 ";
+    display: inline-block;
+    vertical-align: top;
   }
 
   & .CheckBox__input:before {
@@ -1756,7 +1765,14 @@ exports[`AddressFields component should render correctly 1`] = `
   }
 
   & .CheckBox__text {
-    width: calc(100% - 25px);
+    width: calc(100% - 45px);
+    display: inline-block;
+  }
+
+  & .CheckBox__text a {
+    color: ",
+                [Function],
+                ";
   }
 
   & .disabled {
@@ -1768,13 +1784,20 @@ exports[`AddressFields component should render correctly 1`] = `
   & .Checkbox__error {
     display: flex;
     flex-direction: row;
+    padding-left: ",
+                [Function],
+                ";
   }
   & .warning-icon {
     background: transparent url('/static/images/circle-alert-fill.svg') no-repeat 0 0;
     background-size: contain;
     border: none;
-    height: 15px;
-    width: 15px;
+    height: ",
+                [Function],
+                ";
+    width: ",
+                [Function],
+                ";
     margin-right: 4px;
     margin-top: 2px;
   }
@@ -1786,7 +1809,7 @@ exports[`AddressFields component should render correctly 1`] = `
             "displayName": "Styled(InputCheckbox)",
             "foldedComponentIds": Array [],
             "render": [Function],
-            "styledComponentId": "sc-bxivhb",
+            "styledComponentId": "sc-ifAKCX",
             "target": [Function],
             "toString": [Function],
             "warnTooManyClasses": [Function],
@@ -1830,7 +1853,7 @@ exports[`AddressFields component should render correctly without phoneNumber and
             "$$typeof": Symbol(react.forward_ref),
             "attrs": Array [],
             "componentStyle": ComponentStyle {
-              "componentId": "sc-bwzfXH",
+              "componentId": "sc-htpNat",
               "isStatic": false,
               "rules": Array [
                 "
@@ -1973,7 +1996,7 @@ exports[`AddressFields component should render correctly without phoneNumber and
             "displayName": "Styled(TextBox)",
             "foldedComponentIds": Array [],
             "render": [Function],
-            "styledComponentId": "sc-bwzfXH",
+            "styledComponentId": "sc-htpNat",
             "target": [Function],
             "toString": [Function],
             "warnTooManyClasses": [Function],
@@ -2003,7 +2026,7 @@ exports[`AddressFields component should render correctly without phoneNumber and
             "$$typeof": Symbol(react.forward_ref),
             "attrs": Array [],
             "componentStyle": ComponentStyle {
-              "componentId": "sc-bwzfXH",
+              "componentId": "sc-htpNat",
               "isStatic": false,
               "rules": Array [
                 "
@@ -2146,7 +2169,7 @@ exports[`AddressFields component should render correctly without phoneNumber and
             "displayName": "Styled(TextBox)",
             "foldedComponentIds": Array [],
             "render": [Function],
-            "styledComponentId": "sc-bwzfXH",
+            "styledComponentId": "sc-htpNat",
             "target": [Function],
             "toString": [Function],
             "warnTooManyClasses": [Function],
@@ -2210,7 +2233,7 @@ exports[`AddressFields component should render correctly without phoneNumber and
             "$$typeof": Symbol(react.forward_ref),
             "attrs": Array [],
             "componentStyle": ComponentStyle {
-              "componentId": "sc-bwzfXH",
+              "componentId": "sc-htpNat",
               "isStatic": false,
               "rules": Array [
                 "
@@ -2353,7 +2376,7 @@ exports[`AddressFields component should render correctly without phoneNumber and
             "displayName": "Styled(TextBox)",
             "foldedComponentIds": Array [],
             "render": [Function],
-            "styledComponentId": "sc-bwzfXH",
+            "styledComponentId": "sc-htpNat",
             "target": [Function],
             "toString": [Function],
             "warnTooManyClasses": [Function],
@@ -2391,7 +2414,7 @@ exports[`AddressFields component should render correctly without phoneNumber and
             "$$typeof": Symbol(react.forward_ref),
             "attrs": Array [],
             "componentStyle": ComponentStyle {
-              "componentId": "sc-bwzfXH",
+              "componentId": "sc-htpNat",
               "isStatic": false,
               "rules": Array [
                 "
@@ -2534,7 +2557,7 @@ exports[`AddressFields component should render correctly without phoneNumber and
             "displayName": "Styled(TextBox)",
             "foldedComponentIds": Array [],
             "render": [Function],
-            "styledComponentId": "sc-bwzfXH",
+            "styledComponentId": "sc-htpNat",
             "target": [Function],
             "toString": [Function],
             "warnTooManyClasses": [Function],
@@ -2548,6 +2571,7 @@ exports[`AddressFields component should render correctly without phoneNumber and
       />
     </Styled(Col)>
     <Styled(Col)
+      className="margin-right"
       colSize={
         Object {
           "large": 3,
@@ -2563,7 +2587,7 @@ exports[`AddressFields component should render correctly without phoneNumber and
             "$$typeof": Symbol(react.forward_ref),
             "attrs": Array [],
             "componentStyle": ComponentStyle {
-              "componentId": "sc-htpNat",
+              "componentId": "sc-bxivhb",
               "isStatic": false,
               "rules": Array [
                 "
@@ -2577,7 +2601,10 @@ exports[`AddressFields component should render correctly without phoneNumber and
     appearance: none;
     background: url(",
                 "/static/images/carrot-small-down.png",
-                ") no-repeat right 0px bottom 6px;
+                ") no-repeat right 0px bottom
+      ",
+                [Function],
+                ";
     border: 0;
     border-bottom: 1px solid ",
                 [Function],
@@ -2591,7 +2618,7 @@ exports[`AddressFields component should render correctly without phoneNumber and
                 ";
     font-size: ",
                 [Function],
-                "px;
+                ";
     margin: 0;
     margin-bottom: ",
                 [Function],
@@ -2649,7 +2676,7 @@ exports[`AddressFields component should render correctly without phoneNumber and
             "displayName": "Styled(SelectBox)",
             "foldedComponentIds": Array [],
             "render": [Function],
-            "styledComponentId": "sc-htpNat",
+            "styledComponentId": "sc-bxivhb",
             "target": [Function],
             "toString": [Function],
             "warnTooManyClasses": [Function],
@@ -2994,7 +3021,7 @@ exports[`AddressFields component should render correctly without phoneNumber and
             "$$typeof": Symbol(react.forward_ref),
             "attrs": Array [],
             "componentStyle": ComponentStyle {
-              "componentId": "sc-bwzfXH",
+              "componentId": "sc-htpNat",
               "isStatic": false,
               "rules": Array [
                 "
@@ -3137,7 +3164,7 @@ exports[`AddressFields component should render correctly without phoneNumber and
             "displayName": "Styled(TextBox)",
             "foldedComponentIds": Array [],
             "render": [Function],
-            "styledComponentId": "sc-bwzfXH",
+            "styledComponentId": "sc-htpNat",
             "target": [Function],
             "toString": [Function],
             "warnTooManyClasses": [Function],
@@ -3176,7 +3203,7 @@ exports[`AddressFields component should render correctly without phoneNumber and
             "$$typeof": Symbol(react.forward_ref),
             "attrs": Array [],
             "componentStyle": ComponentStyle {
-              "componentId": "sc-htpNat",
+              "componentId": "sc-bxivhb",
               "isStatic": false,
               "rules": Array [
                 "
@@ -3190,7 +3217,10 @@ exports[`AddressFields component should render correctly without phoneNumber and
     appearance: none;
     background: url(",
                 "/static/images/carrot-small-down.png",
-                ") no-repeat right 0px bottom 6px;
+                ") no-repeat right 0px bottom
+      ",
+                [Function],
+                ";
     border: 0;
     border-bottom: 1px solid ",
                 [Function],
@@ -3204,7 +3234,7 @@ exports[`AddressFields component should render correctly without phoneNumber and
                 ";
     font-size: ",
                 [Function],
-                "px;
+                ";
     margin: 0;
     margin-bottom: ",
                 [Function],
@@ -3262,7 +3292,7 @@ exports[`AddressFields component should render correctly without phoneNumber and
             "displayName": "Styled(SelectBox)",
             "foldedComponentIds": Array [],
             "render": [Function],
-            "styledComponentId": "sc-htpNat",
+            "styledComponentId": "sc-bxivhb",
             "target": [Function],
             "toString": [Function],
             "warnTooManyClasses": [Function],
@@ -3320,7 +3350,7 @@ exports[`AddressFields component should render correctly without phoneNumber and
             "$$typeof": Symbol(react.forward_ref),
             "attrs": Array [],
             "componentStyle": ComponentStyle {
-              "componentId": "sc-bwzfXH",
+              "componentId": "sc-htpNat",
               "isStatic": false,
               "rules": Array [
                 "
@@ -3463,7 +3493,7 @@ exports[`AddressFields component should render correctly without phoneNumber and
             "displayName": "Styled(TextBox)",
             "foldedComponentIds": Array [],
             "render": [Function],
-            "styledComponentId": "sc-bwzfXH",
+            "styledComponentId": "sc-htpNat",
             "target": [Function],
             "toString": [Function],
             "warnTooManyClasses": [Function],
@@ -3493,7 +3523,7 @@ exports[`AddressFields component should render correctly without phoneNumber and
             "$$typeof": Symbol(react.forward_ref),
             "attrs": Array [],
             "componentStyle": ComponentStyle {
-              "componentId": "sc-bwzfXH",
+              "componentId": "sc-htpNat",
               "isStatic": false,
               "rules": Array [
                 "
@@ -3636,7 +3666,7 @@ exports[`AddressFields component should render correctly without phoneNumber and
             "displayName": "Styled(TextBox)",
             "foldedComponentIds": Array [],
             "render": [Function],
-            "styledComponentId": "sc-bwzfXH",
+            "styledComponentId": "sc-htpNat",
             "target": [Function],
             "toString": [Function],
             "warnTooManyClasses": [Function],
@@ -3700,7 +3730,7 @@ exports[`AddressFields component should render correctly without phoneNumber and
             "$$typeof": Symbol(react.forward_ref),
             "attrs": Array [],
             "componentStyle": ComponentStyle {
-              "componentId": "sc-bwzfXH",
+              "componentId": "sc-htpNat",
               "isStatic": false,
               "rules": Array [
                 "
@@ -3843,7 +3873,7 @@ exports[`AddressFields component should render correctly without phoneNumber and
             "displayName": "Styled(TextBox)",
             "foldedComponentIds": Array [],
             "render": [Function],
-            "styledComponentId": "sc-bwzfXH",
+            "styledComponentId": "sc-htpNat",
             "target": [Function],
             "toString": [Function],
             "warnTooManyClasses": [Function],
@@ -3881,7 +3911,7 @@ exports[`AddressFields component should render correctly without phoneNumber and
             "$$typeof": Symbol(react.forward_ref),
             "attrs": Array [],
             "componentStyle": ComponentStyle {
-              "componentId": "sc-bwzfXH",
+              "componentId": "sc-htpNat",
               "isStatic": false,
               "rules": Array [
                 "
@@ -4024,7 +4054,7 @@ exports[`AddressFields component should render correctly without phoneNumber and
             "displayName": "Styled(TextBox)",
             "foldedComponentIds": Array [],
             "render": [Function],
-            "styledComponentId": "sc-bwzfXH",
+            "styledComponentId": "sc-htpNat",
             "target": [Function],
             "toString": [Function],
             "warnTooManyClasses": [Function],
@@ -4038,6 +4068,7 @@ exports[`AddressFields component should render correctly without phoneNumber and
       />
     </Styled(Col)>
     <Styled(Col)
+      className="margin-right"
       colSize={
         Object {
           "large": 3,
@@ -4053,7 +4084,7 @@ exports[`AddressFields component should render correctly without phoneNumber and
             "$$typeof": Symbol(react.forward_ref),
             "attrs": Array [],
             "componentStyle": ComponentStyle {
-              "componentId": "sc-htpNat",
+              "componentId": "sc-bxivhb",
               "isStatic": false,
               "rules": Array [
                 "
@@ -4067,7 +4098,10 @@ exports[`AddressFields component should render correctly without phoneNumber and
     appearance: none;
     background: url(",
                 "/static/images/carrot-small-down.png",
-                ") no-repeat right 0px bottom 6px;
+                ") no-repeat right 0px bottom
+      ",
+                [Function],
+                ";
     border: 0;
     border-bottom: 1px solid ",
                 [Function],
@@ -4081,7 +4115,7 @@ exports[`AddressFields component should render correctly without phoneNumber and
                 ";
     font-size: ",
                 [Function],
-                "px;
+                ";
     margin: 0;
     margin-bottom: ",
                 [Function],
@@ -4139,7 +4173,7 @@ exports[`AddressFields component should render correctly without phoneNumber and
             "displayName": "Styled(SelectBox)",
             "foldedComponentIds": Array [],
             "render": [Function],
-            "styledComponentId": "sc-htpNat",
+            "styledComponentId": "sc-bxivhb",
             "target": [Function],
             "toString": [Function],
             "warnTooManyClasses": [Function],
@@ -4484,7 +4518,7 @@ exports[`AddressFields component should render correctly without phoneNumber and
             "$$typeof": Symbol(react.forward_ref),
             "attrs": Array [],
             "componentStyle": ComponentStyle {
-              "componentId": "sc-bwzfXH",
+              "componentId": "sc-htpNat",
               "isStatic": false,
               "rules": Array [
                 "
@@ -4627,7 +4661,7 @@ exports[`AddressFields component should render correctly without phoneNumber and
             "displayName": "Styled(TextBox)",
             "foldedComponentIds": Array [],
             "render": [Function],
-            "styledComponentId": "sc-bwzfXH",
+            "styledComponentId": "sc-htpNat",
             "target": [Function],
             "toString": [Function],
             "warnTooManyClasses": [Function],
@@ -4666,7 +4700,7 @@ exports[`AddressFields component should render correctly without phoneNumber and
             "$$typeof": Symbol(react.forward_ref),
             "attrs": Array [],
             "componentStyle": ComponentStyle {
-              "componentId": "sc-htpNat",
+              "componentId": "sc-bxivhb",
               "isStatic": false,
               "rules": Array [
                 "
@@ -4680,7 +4714,10 @@ exports[`AddressFields component should render correctly without phoneNumber and
     appearance: none;
     background: url(",
                 "/static/images/carrot-small-down.png",
-                ") no-repeat right 0px bottom 6px;
+                ") no-repeat right 0px bottom
+      ",
+                [Function],
+                ";
     border: 0;
     border-bottom: 1px solid ",
                 [Function],
@@ -4694,7 +4731,7 @@ exports[`AddressFields component should render correctly without phoneNumber and
                 ";
     font-size: ",
                 [Function],
-                "px;
+                ";
     margin: 0;
     margin-bottom: ",
                 [Function],
@@ -4752,7 +4789,7 @@ exports[`AddressFields component should render correctly without phoneNumber and
             "displayName": "Styled(SelectBox)",
             "foldedComponentIds": Array [],
             "render": [Function],
-            "styledComponentId": "sc-htpNat",
+            "styledComponentId": "sc-bxivhb",
             "target": [Function],
             "toString": [Function],
             "warnTooManyClasses": [Function],
@@ -4810,7 +4847,7 @@ exports[`AddressFields component should render correctly without phoneNumber and
             "$$typeof": Symbol(react.forward_ref),
             "attrs": Array [],
             "componentStyle": ComponentStyle {
-              "componentId": "sc-bwzfXH",
+              "componentId": "sc-htpNat",
               "isStatic": false,
               "rules": Array [
                 "
@@ -4953,7 +4990,7 @@ exports[`AddressFields component should render correctly without phoneNumber and
             "displayName": "Styled(TextBox)",
             "foldedComponentIds": Array [],
             "render": [Function],
-            "styledComponentId": "sc-bwzfXH",
+            "styledComponentId": "sc-htpNat",
             "target": [Function],
             "toString": [Function],
             "warnTooManyClasses": [Function],
@@ -4983,7 +5020,7 @@ exports[`AddressFields component should render correctly without phoneNumber and
             "$$typeof": Symbol(react.forward_ref),
             "attrs": Array [],
             "componentStyle": ComponentStyle {
-              "componentId": "sc-bwzfXH",
+              "componentId": "sc-htpNat",
               "isStatic": false,
               "rules": Array [
                 "
@@ -5126,7 +5163,7 @@ exports[`AddressFields component should render correctly without phoneNumber and
             "displayName": "Styled(TextBox)",
             "foldedComponentIds": Array [],
             "render": [Function],
-            "styledComponentId": "sc-bwzfXH",
+            "styledComponentId": "sc-htpNat",
             "target": [Function],
             "toString": [Function],
             "warnTooManyClasses": [Function],
@@ -5190,7 +5227,7 @@ exports[`AddressFields component should render correctly without phoneNumber and
             "$$typeof": Symbol(react.forward_ref),
             "attrs": Array [],
             "componentStyle": ComponentStyle {
-              "componentId": "sc-bwzfXH",
+              "componentId": "sc-htpNat",
               "isStatic": false,
               "rules": Array [
                 "
@@ -5333,7 +5370,7 @@ exports[`AddressFields component should render correctly without phoneNumber and
             "displayName": "Styled(TextBox)",
             "foldedComponentIds": Array [],
             "render": [Function],
-            "styledComponentId": "sc-bwzfXH",
+            "styledComponentId": "sc-htpNat",
             "target": [Function],
             "toString": [Function],
             "warnTooManyClasses": [Function],
@@ -5371,7 +5408,7 @@ exports[`AddressFields component should render correctly without phoneNumber and
             "$$typeof": Symbol(react.forward_ref),
             "attrs": Array [],
             "componentStyle": ComponentStyle {
-              "componentId": "sc-bwzfXH",
+              "componentId": "sc-htpNat",
               "isStatic": false,
               "rules": Array [
                 "
@@ -5514,7 +5551,7 @@ exports[`AddressFields component should render correctly without phoneNumber and
             "displayName": "Styled(TextBox)",
             "foldedComponentIds": Array [],
             "render": [Function],
-            "styledComponentId": "sc-bwzfXH",
+            "styledComponentId": "sc-htpNat",
             "target": [Function],
             "toString": [Function],
             "warnTooManyClasses": [Function],
@@ -5528,6 +5565,7 @@ exports[`AddressFields component should render correctly without phoneNumber and
       />
     </Styled(Col)>
     <Styled(Col)
+      className="margin-right"
       colSize={
         Object {
           "large": 3,
@@ -5543,7 +5581,7 @@ exports[`AddressFields component should render correctly without phoneNumber and
             "$$typeof": Symbol(react.forward_ref),
             "attrs": Array [],
             "componentStyle": ComponentStyle {
-              "componentId": "sc-htpNat",
+              "componentId": "sc-bxivhb",
               "isStatic": false,
               "rules": Array [
                 "
@@ -5557,7 +5595,10 @@ exports[`AddressFields component should render correctly without phoneNumber and
     appearance: none;
     background: url(",
                 "/static/images/carrot-small-down.png",
-                ") no-repeat right 0px bottom 6px;
+                ") no-repeat right 0px bottom
+      ",
+                [Function],
+                ";
     border: 0;
     border-bottom: 1px solid ",
                 [Function],
@@ -5571,7 +5612,7 @@ exports[`AddressFields component should render correctly without phoneNumber and
                 ";
     font-size: ",
                 [Function],
-                "px;
+                ";
     margin: 0;
     margin-bottom: ",
                 [Function],
@@ -5629,7 +5670,7 @@ exports[`AddressFields component should render correctly without phoneNumber and
             "displayName": "Styled(SelectBox)",
             "foldedComponentIds": Array [],
             "render": [Function],
-            "styledComponentId": "sc-htpNat",
+            "styledComponentId": "sc-bxivhb",
             "target": [Function],
             "toString": [Function],
             "warnTooManyClasses": [Function],
@@ -5729,7 +5770,7 @@ exports[`AddressFields component should render correctly without phoneNumber and
             "$$typeof": Symbol(react.forward_ref),
             "attrs": Array [],
             "componentStyle": ComponentStyle {
-              "componentId": "sc-bwzfXH",
+              "componentId": "sc-htpNat",
               "isStatic": false,
               "rules": Array [
                 "
@@ -5872,7 +5913,7 @@ exports[`AddressFields component should render correctly without phoneNumber and
             "displayName": "Styled(TextBox)",
             "foldedComponentIds": Array [],
             "render": [Function],
-            "styledComponentId": "sc-bwzfXH",
+            "styledComponentId": "sc-htpNat",
             "target": [Function],
             "toString": [Function],
             "warnTooManyClasses": [Function],
@@ -5882,7 +5923,7 @@ exports[`AddressFields component should render correctly without phoneNumber and
         dataLocator="addnewaddress-zipcode"
         enableSuccessCheck={false}
         id="address.zipCode"
-        maxLength={6}
+        maxLength={7}
         name="zipCode"
       />
     </Styled(Col)>
@@ -5907,7 +5948,7 @@ exports[`AddressFields component should render correctly without phoneNumber and
             "$$typeof": Symbol(react.forward_ref),
             "attrs": Array [],
             "componentStyle": ComponentStyle {
-              "componentId": "sc-htpNat",
+              "componentId": "sc-bxivhb",
               "isStatic": false,
               "rules": Array [
                 "
@@ -5921,7 +5962,10 @@ exports[`AddressFields component should render correctly without phoneNumber and
     appearance: none;
     background: url(",
                 "/static/images/carrot-small-down.png",
-                ") no-repeat right 0px bottom 6px;
+                ") no-repeat right 0px bottom
+      ",
+                [Function],
+                ";
     border: 0;
     border-bottom: 1px solid ",
                 [Function],
@@ -5935,7 +5979,7 @@ exports[`AddressFields component should render correctly without phoneNumber and
                 ";
     font-size: ",
                 [Function],
-                "px;
+                ";
     margin: 0;
     margin-bottom: ",
                 [Function],
@@ -5993,7 +6037,7 @@ exports[`AddressFields component should render correctly without phoneNumber and
             "displayName": "Styled(SelectBox)",
             "foldedComponentIds": Array [],
             "render": [Function],
-            "styledComponentId": "sc-htpNat",
+            "styledComponentId": "sc-bxivhb",
             "target": [Function],
             "toString": [Function],
             "warnTooManyClasses": [Function],
@@ -6050,7 +6094,7 @@ exports[`AddressFields component should render correctly without phoneNumber and
             "$$typeof": Symbol(react.forward_ref),
             "attrs": Array [],
             "componentStyle": ComponentStyle {
-              "componentId": "sc-bwzfXH",
+              "componentId": "sc-htpNat",
               "isStatic": false,
               "rules": Array [
                 "
@@ -6193,7 +6237,7 @@ exports[`AddressFields component should render correctly without phoneNumber and
             "displayName": "Styled(TextBox)",
             "foldedComponentIds": Array [],
             "render": [Function],
-            "styledComponentId": "sc-bwzfXH",
+            "styledComponentId": "sc-htpNat",
             "target": [Function],
             "toString": [Function],
             "warnTooManyClasses": [Function],
@@ -6222,7 +6266,7 @@ exports[`AddressFields component should render correctly without phoneNumber and
             "$$typeof": Symbol(react.forward_ref),
             "attrs": Array [],
             "componentStyle": ComponentStyle {
-              "componentId": "sc-bwzfXH",
+              "componentId": "sc-htpNat",
               "isStatic": false,
               "rules": Array [
                 "
@@ -6365,7 +6409,7 @@ exports[`AddressFields component should render correctly without phoneNumber and
             "displayName": "Styled(TextBox)",
             "foldedComponentIds": Array [],
             "render": [Function],
-            "styledComponentId": "sc-bwzfXH",
+            "styledComponentId": "sc-htpNat",
             "target": [Function],
             "toString": [Function],
             "warnTooManyClasses": [Function],

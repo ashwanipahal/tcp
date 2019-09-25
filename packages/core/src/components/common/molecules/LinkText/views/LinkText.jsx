@@ -1,20 +1,10 @@
-// @flow
 import React from 'react';
+import PropTypes from 'prop-types';
 import { Anchor, Heading, BodyCopy, TextItems } from '../../../atoms';
 import withStyles from '../../../hoc/withStyles';
+import errorBoundary from '../../../hoc/withErrorBoundary';
 import LinkTextStyle from '../LinkText.style';
-
-type Props = {
-  type: String,
-  component: String,
-  headerText: Object[],
-  link: Object,
-  icon?: Object,
-  className: string,
-  dataLocator: string,
-  headingClass: string,
-  color?: string,
-};
+import { configureInternalNavigationFromCMSUrl } from '../../../../../utils';
 
 /**
  * This component creates a link with styled text
@@ -27,12 +17,12 @@ type Props = {
  *
  * [TODO] Can configure icon in heading at start|middle|last
  */
-const LinkText = (props: Props) => {
+const LinkText = props => {
   const {
     className,
     type,
     component,
-    headerText: [{ textItems, link }],
+    headerText,
     headingClass,
     color,
     dataLocator,
@@ -52,23 +42,56 @@ const LinkText = (props: Props) => {
     Component = BodyCopy;
     compProps = {
       component,
+      'data-locator': dataLocator,
       ...otherProps,
     };
   }
 
   return (
-    <Anchor {...link} className={className}>
-      <Component {...compProps} className={`${heading} link-text`}>
-        <TextItems textItems={textItems} />
-      </Component>
-    </Anchor>
+    <div className={className}>
+      {headerText.map((item, index) => {
+        const { link, textItems } = item;
+        const navigationUrl = link;
+        navigationUrl.to = configureInternalNavigationFromCMSUrl(link.url);
+        navigationUrl.asPath = link.url;
+
+        if (type === 'heading') {
+          compProps.dataLocator = `${compProps.dataLocator}_${index}`;
+        } else {
+          compProps['data-locator'] = `${compProps['data-locator']}_${index}`;
+        }
+
+        return (
+          <Anchor key={index.toString()} {...navigationUrl}>
+            <Component {...compProps} className={`${heading} link-text`}>
+              <TextItems textItems={textItems} />
+            </Component>
+          </Anchor>
+        );
+      })}
+    </div>
   );
 };
 
 LinkText.defaultProps = {
-  icon: {},
+  type: '',
+  component: () => null,
+  headerText: [],
+  className: '',
+  dataLocator: '',
+  headingClass: '',
   color: '',
 };
 
-export default withStyles(LinkText, LinkTextStyle);
+LinkText.propTypes = {
+  type: PropTypes.string,
+  component: PropTypes.elementType,
+  headerText: PropTypes.arrayOf(PropTypes.shape({})),
+  className: PropTypes.string,
+  dataLocator: PropTypes.string,
+  headingClass: PropTypes.string,
+  color: PropTypes.string,
+};
+
+export default withStyles(errorBoundary(LinkText), LinkTextStyle);
 export { LinkText as VanillaLinkText };

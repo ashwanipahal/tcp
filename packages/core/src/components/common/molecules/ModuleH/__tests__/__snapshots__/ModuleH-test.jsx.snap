@@ -21,6 +21,9 @@ exports[`ModuleH component renders correctly 1`] = `
   > *:last-child {
     margin-right: 0;
   }
+  &.content-wrapper {
+    margin: 0 auto;
+  }
   ",
           [Function],
           ";
@@ -65,7 +68,10 @@ exports[`ModuleH component renders correctly 1`] = `
       }
     }
   >
-    <moduleHHeader
+    <Styled(LinkText)
+      className="moduleH__header"
+      component="h2"
+      dataLocator="moduleH_header_text"
       headerText={
         Array [
           Object {
@@ -90,6 +96,7 @@ exports[`ModuleH component renders correctly 1`] = `
           },
         ]
       }
+      headingClass="medium_text_white_black"
     />
     <ModuleHCTALinks
       currentIndex={
@@ -209,6 +216,8 @@ exports[`ModuleH component renders correctly 1`] = `
           "autoplay": true,
           "dataLocatorPause": "moduleH_pause_button",
           "dataLocatorPlay": "moduleH_play_button",
+          "pauseIconButtonLabel": "Pause",
+          "playIconButtonLabel": "Play",
           "type": "light",
         }
       }
@@ -235,9 +244,9 @@ exports[`ModuleH component renders correctly 1`] = `
         data-locator="moduleH_composite_image__1"
         imgConfigs={
           Array [
-            "c_fill,g_face,q_80,h_425,w_375",
-            "c_fill,g_face,q_80,h_465,w_768",
-            "c_fill,g_face,q_80,h_541,w_1410",
+            "t_mod_H_img_full_m",
+            "t_mod_H_img_full_t",
+            "t_mod_H_img_full_d",
           ]
         }
         imgData={
@@ -253,9 +262,9 @@ exports[`ModuleH component renders correctly 1`] = `
         data-locator="moduleH_composite_image__2"
         imgConfigs={
           Array [
-            "c_fill,g_face,q_80,h_425,w_375",
-            "c_fill,g_face,q_80,h_465,w_768",
-            "c_fill,g_face,q_80,h_541,w_1410",
+            "t_mod_H_img_full_m",
+            "t_mod_H_img_full_t",
+            "t_mod_H_img_full_d",
           ]
         }
         imgData={
@@ -271,9 +280,9 @@ exports[`ModuleH component renders correctly 1`] = `
         data-locator="moduleH_composite_image__3"
         imgConfigs={
           Array [
-            "c_fill,g_face,q_80,h_425,w_375",
-            "c_fill,g_face,q_80,h_465,w_768",
-            "c_fill,g_face,q_80,h_541,w_1410",
+            "t_mod_H_img_full_m",
+            "t_mod_H_img_full_t",
+            "t_mod_H_img_full_d",
           ]
         }
         imgData={
@@ -289,9 +298,9 @@ exports[`ModuleH component renders correctly 1`] = `
         data-locator="moduleH_composite_image__4"
         imgConfigs={
           Array [
-            "c_fill,g_face,q_80,h_425,w_375",
-            "c_fill,g_face,q_80,h_465,w_768",
-            "c_fill,g_face,q_80,h_541,w_1410",
+            "t_mod_H_img_full_m",
+            "t_mod_H_img_full_t",
+            "t_mod_H_img_full_d",
           ]
         }
         imgData={
@@ -307,9 +316,9 @@ exports[`ModuleH component renders correctly 1`] = `
         data-locator="moduleH_composite_image__5"
         imgConfigs={
           Array [
-            "c_fill,g_face,q_80,h_425,w_375",
-            "c_fill,g_face,q_80,h_465,w_768",
-            "c_fill,g_face,q_80,h_541,w_1410",
+            "t_mod_H_img_full_m",
+            "t_mod_H_img_full_t",
+            "t_mod_H_img_full_d",
           ]
         }
         imgData={

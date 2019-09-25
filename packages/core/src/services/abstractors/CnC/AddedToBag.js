@@ -19,7 +19,7 @@ export const getUnboxResult = (endPoint, query) =>
     webService: endPoint,
   }).then(res => res.body.response.products);
 
-export const getPlpProducts = () => getUnboxResult(endpoints.getProductsBySearchTerm, '2092425');
+export const getPlpProducts = () => getUnboxResult(endpoints.getProductsBySearchTerm, 'denim');
 export const getGiftCardProducts = () =>
   getUnboxResult(endpoints.getProductsBySearchTerm, 'gift card');
 
@@ -30,7 +30,9 @@ export const addCartEcomItem = params =>
       orderItemId: res.body.orderItemId && res.body.orderItemId[0],
     }))
     .catch(res => {
-      throw res.error || res.body.error;
+      throw res.error ||
+        (res.body && res.body.error) ||
+        (res.errorResponse && res.errorResponse.errorMessage);
     });
 
 export const addCartBopisItem = params =>

@@ -1,21 +1,26 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import { Row, Col } from '../../../../common/atoms';
-import ProductList from '../molecules/ProductList/views';
+// import ProductList from '../molecules/ProductList/views';
+import ProductsGrid from '../molecules/ProductsGrid/views';
+import GlobalNavigationMenuDesktopL2 from '../molecules/GlobalNavigationMenuDesktopL2/views';
 import withStyles from '../../../../common/hoc/withStyles';
+import PickupStoreModal from '../../../../common/organisms/PickupStoreModal';
+import QuickViewModal from '../../../../common/organisms/QuickViewModal/container/QuickViewModal.container';
+import AddedToBagContainer from '../../../CnC/AddedToBag';
 
 import ProductListingStyle from '../ProductListing.style';
-import GlobalNavigationMenuDesktopL2 from '../molecules/GlobalNavigationMenuDesktopL2/views';
 
 import FixedBreadCrumbs from '../molecules/FixedBreadCrumbs/views';
 
 import ProductListingFiltersForm from '../molecules/ProductListingFiltersForm';
 import ReadMore from '../molecules/ReadMore/views';
 import SpotlightContainer from '../molecules/Spotlight/container/Spotlight.container';
+import LoadedProductsCount from '../molecules/LoadedProductsCount/views';
 
 const ProductListView = ({
   className,
-  products,
+  productsBlock,
   currentNavIds,
   navTree,
   breadCrumbs,
@@ -27,6 +32,12 @@ const ProductListView = ({
   labels,
   labelsFilter,
   categoryId,
+  formValues,
+  getProducts,
+  onSubmit,
+  sortLabels,
+  slpLabels,
+  onPickUpOpenClick,
   ...otherProps
 }) => {
   return (
@@ -49,7 +60,9 @@ const ProductListView = ({
         </Col>
         <Col colSize={{ small: 6, medium: 8, large: 10 }}>
           <Col colSize={{ small: 6, medium: 8, large: 12 }}>
-            <div className="promo-area">Promo area</div>
+            <div className="promo-area">
+              <img src="/static/images/dummy-banner.bmp" alt="dummy-banner" />
+            </div>
           </Col>
           <Col colSize={{ small: 6, medium: 8, large: 12 }}>
             <div className="filter-section">
@@ -59,16 +72,22 @@ const ProductListView = ({
                 initialValues={initialValues}
                 filtersLength={filtersLength}
                 labels={labelsFilter}
+                onSubmit={onSubmit}
+                formValues={formValues}
+                getProducts={getProducts}
+                sortLabels={sortLabels}
+                slpLabels={slpLabels}
               />
             </div>
           </Col>
-          <Col colSize={{ small: 6, medium: 8, large: 12 }}>
-            <ProductList
-              products={products}
-              className={`${className} product-list`}
-              labels={labels}
-              {...otherProps}
+          <Col colSize={{ small: 6, medium: 8, large: 12 }} className="show-count-section">
+            <LoadedProductsCount
+              totalProductsCount={totalProductsCount}
+              showingItemsLabel={slpLabels}
             />
+          </Col>
+          <Col colSize={{ small: 6, medium: 8, large: 12 }}>
+            <ProductsGrid productsBlock={productsBlock} labels={labels} {...otherProps} />
           </Col>
 
           <Col colSize={{ small: 6, medium: 8, large: 12 }}>
@@ -83,13 +102,16 @@ const ProductListView = ({
           </Col>
         </Col>
       </Row>
+      <PickupStoreModal />
+      <QuickViewModal onPickUpOpenClick={onPickUpOpenClick} />
+      <AddedToBagContainer />
     </div>
   );
 };
 
 ProductListView.propTypes = {
   className: PropTypes.string,
-  products: PropTypes.arrayOf(PropTypes.shape({})),
+  productsBlock: PropTypes.arrayOf(PropTypes.shape({})),
   longDescription: PropTypes.string,
   labels: PropTypes.objectOf(PropTypes.oneOfType([PropTypes.string])),
   /* eslint-disable */
@@ -102,11 +124,17 @@ ProductListView.propTypes = {
   initialValues: PropTypes.shape({}),
   filtersLength: PropTypes.shape({}),
   labelsFilter: PropTypes.objectOf(PropTypes.oneOfType([PropTypes.string])),
+  getProducts: PropTypes.func,
+  onSubmit: PropTypes.func,
+  formValues: PropTypes.shape({}).isRequired,
+  onPickUpOpenClick: PropTypes.func.isRequired,
+  sortLabels: PropTypes.arrayOf(PropTypes.shape({})),
+  slpLabels: PropTypes.objectOf(PropTypes.oneOfType([PropTypes.string])),
 };
 
 ProductListView.defaultProps = {
   className: '',
-  products: [],
+  productsBlock: [],
   longDescription: [],
   currentNavIds: [],
   navTree: {},
@@ -118,6 +146,8 @@ ProductListView.defaultProps = {
   categoryId: '',
   labels: {},
   labelsFilter: {},
+  sortLabels: [],
+  slpLabels: {},
 };
 
 export default withStyles(ProductListView, ProductListingStyle);

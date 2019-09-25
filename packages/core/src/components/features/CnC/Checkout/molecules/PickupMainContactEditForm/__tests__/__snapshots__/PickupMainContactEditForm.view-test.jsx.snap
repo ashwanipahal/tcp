@@ -1,0 +1,134 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`PickupMainContactEditFormVanilla component should renders correctly when data are present 1`] = `
+<div
+  className=""
+>
+  <div
+    className="header"
+  >
+    <Styled(BodyCopy)
+      className={null}
+      color="text.primary"
+      component="p"
+      fontFamily="primary"
+      fontSize="fs26"
+      fontWeight="regular"
+      letterSpacing="normal"
+      lineHeight="normal"
+      link={null}
+      textAlign="left"
+    />
+  </div>
+  <div>
+    <Styled(Modal)
+      className="TCPModal__Content PickupModal"
+      closeIconDataLocator="coupondetailmodalcrossicon"
+      fixedWidth={true}
+      isOpen={true}
+      maxWidth="616px"
+      minHeight="540px"
+      onRequestClose={[MockFunction]}
+      overlayClassName="pick-up-overlay"
+    >
+      <div
+        className="pickupModalContainer"
+      >
+        <div
+          className="pickupModalHeader"
+        />
+        <Styled(ContactFormFields)
+          className="pick-up-input toggle"
+          labels={Object {}}
+          showPhoneNumber={true}
+        />
+        <Styled(Button)
+          buttonVariation="fixed-width"
+          className="saveUpdateButton"
+          data-locator="pickup-modal-save-btn"
+          fill="BLUE"
+          type="button"
+        />
+      </div>
+    </Styled(Modal)>
+  </div>
+</div>
+`;
+
+exports[`PickupMainContactEditFormVanilla component should renders correctly when data not present 1`] = `
+<div
+  className=""
+>
+  <div
+    className="header"
+  >
+    <Styled(BodyCopy)
+      className={null}
+      color="text.primary"
+      component="p"
+      fontFamily="primary"
+      fontSize="fs26"
+      fontWeight="regular"
+      letterSpacing="normal"
+      lineHeight="normal"
+      link={null}
+      textAlign="left"
+    />
+    <div
+      className="EditAnchor"
+    >
+      <Styled(Anchor)
+        anchorVariation="secondary"
+        className="anchorStyle"
+        dataLocator="pickup-pickupContact-edit-anchor"
+        fontFamily="secondary"
+        fontSize="fs12"
+        onClick={[Function]}
+        underline={true}
+      />
+    </div>
+  </div>
+  <Styled(PickUpContactDisplay)
+    formData={Object {}}
+  />
+</div>
+`;
+
+exports[`PickupMainContactEditFormVanilla component should renders on click 1`] = `
+<div
+  className=""
+>
+  <div
+    className="header"
+  >
+    <Styled(BodyCopy)
+      className={null}
+      color="text.primary"
+      component="p"
+      fontFamily="primary"
+      fontSize="fs26"
+      fontWeight="regular"
+      letterSpacing="normal"
+      lineHeight="normal"
+      link={null}
+      textAlign="left"
+    />
+    <div
+      className="EditAnchor"
+    >
+      <Styled(Anchor)
+        anchorVariation="secondary"
+        className="anchorStyle"
+        dataLocator="pickup-pickupContact-edit-anchor"
+        fontFamily="secondary"
+        fontSize="fs12"
+        onClick={[Function]}
+        underline={true}
+      />
+    </div>
+  </div>
+  <Styled(PickUpContactDisplay)
+    formData={Object {}}
+  />
+</div>
+`;

@@ -7,7 +7,6 @@ export default css`
     background-color: ${props => props.theme.colors.PRIMARY.NAVY};
     color: ${props => props.theme.colors.WHITE};
     font-family: ${props => props.theme.fonts.secondaryFontFamily};
-    padding: 8px 0;
 
     @media ${props => props.theme.mediaQuery.medium} {
       display: none;
@@ -40,6 +39,10 @@ export default css`
     display: flex;
     align-items: center;
     justify-content: center;
-    height: 54px;
+    height: 40px;
+
+    @media ${props => props.theme.mediaQuery.medium} {
+      height: 54px;
+    }
   }
 `;

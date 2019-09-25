@@ -1,10 +1,18 @@
 import React, { PureComponent } from 'react';
 import { connect } from 'react-redux';
 import PropTypes from 'prop-types';
+import logger from '@tcp/core/src/utils/loggerInstance';
+import { toastMessageInfo } from '@tcp/core/src/components/common/atoms/Toast/container/Toast.actions.native';
 import utils from '../../../../../utils';
-import { getError, getSuccess, getChangePasswordLabels } from './ChangePassword.selectors';
+import {
+  getError,
+  getChangePasswordLabels,
+  getChangeErrorMessage,
+} from './ChangePassword.selectors';
+import { getSuccess } from '../../MyProfile/container/MyProfile.selectors';
 import ChangePasswordComponent from '../views';
-import { changePassword, changePasswordError } from './ChangePassword.actions';
+import { changePassword, changePasswordError, changePasswordReset } from './ChangePassword.actions';
+import { getFormValidationErrorMessages } from '../../Account/container/Account.selectors';
 
 export class ChangePasswordContainer extends PureComponent {
   static propTypes = {
@@ -14,6 +22,10 @@ export class ChangePasswordContainer extends PureComponent {
     messageSateChangeAction: PropTypes.func.isRequired,
     labels: PropTypes.shape({}).isRequired,
     onClose: PropTypes.func,
+    formErrorMessage: PropTypes.shape({}).isRequired,
+    toastMessage: PropTypes.string.isRequired,
+    resetChangePasswordAction: PropTypes.string.isRequired,
+    changeErrorMessage: PropTypes.string.isRequired,
   };
 
   static defaultProps = {
@@ -27,12 +39,12 @@ export class ChangePasswordContainer extends PureComponent {
         this.hasMobileApp = isMobileApp;
       })
       .catch(error => {
-        console.log('error: ', error);
+        logger.error('error: ', error);
       });
   }
 
   componentDidUpdate() {
-    const { successMessage } = this.props;
+    const { successMessage, errorMessage, toastMessage, resetChangePasswordAction } = this.props;
     const { onClose } = this.props;
     if (successMessage === 'successMessage') {
       if (this.hasMobileApp()) {
@@ -40,6 +52,10 @@ export class ChangePasswordContainer extends PureComponent {
       } else {
         this.goBackToProfile();
       }
+    }
+    if (this.hasMobileApp() && errorMessage) {
+      toastMessage(errorMessage);
+      resetChangePasswordAction();
     }
   }
 
@@ -63,7 +79,14 @@ export class ChangePasswordContainer extends PureComponent {
   };
 
   render() {
-    const { successMessage, errorMessage, labels, onClose } = this.props;
+    const {
+      successMessage,
+      errorMessage,
+      labels,
+      onClose,
+      formErrorMessage,
+      changeErrorMessage,
+    } = this.props;
     return (
       <ChangePasswordComponent
         successMessage={successMessage}
@@ -71,6 +94,8 @@ export class ChangePasswordContainer extends PureComponent {
         onSubmit={this.changePassword}
         labels={labels}
         onClose={onClose}
+        formErrorMessage={formErrorMessage}
+        changeErrorMessage={changeErrorMessage}
       />
     );
   }
@@ -80,6 +105,8 @@ export const mapStateToProps = state => ({
   successMessage: getSuccess(state),
   errorMessage: getError(state),
   labels: getChangePasswordLabels(state),
+  formErrorMessage: getFormValidationErrorMessages(state),
+  changeErrorMessage: getChangeErrorMessage(state),
 });
 
 export const mapDispatchToProps = dispatch => ({
@@ -88,6 +115,12 @@ export const mapDispatchToProps = dispatch => ({
   },
   messageSateChangeAction: payload => {
     dispatch(changePasswordError(payload));
+  },
+  toastMessage: palyoad => {
+    dispatch(toastMessageInfo(palyoad));
+  },
+  resetChangePasswordAction: () => {
+    dispatch(changePasswordReset());
   },
 });
 

@@ -1,7 +1,7 @@
 import React from 'react';
 import { shallow } from 'enzyme';
 
-import HomePageView from '../views/HomePage.view';
+import { HomePageView } from '../views/HomePage.view';
 
 describe('HomePageView', () => {
   let component;
@@ -16,6 +16,7 @@ describe('HomePageView', () => {
       navigation: {
         getParam: () => false,
       },
+      loadNavigationData: () => {},
     };
     component = shallow(<HomePageView {...props} />);
   });
@@ -29,17 +30,13 @@ describe('HomePageView', () => {
   });
 
   it('should refresh data on navigation refresh', () => {
-    const setParams = jest.fn();
-
     component.setProps({
       navigation: {
         getParam: () => true,
-        setParams,
       },
       getBootstrapData,
     });
 
     expect(getBootstrapData).toHaveBeenCalled();
-    expect(setParams).toHaveBeenCalled();
   });
 });

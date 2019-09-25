@@ -40,9 +40,10 @@ exports[`BonusPointsAvailabilityVanilla should render correctly available_today 
               fontWeight="extrabold"
               letterSpacing="normal"
               lineHeight="normal"
+              link={null}
               textAlign="center"
             >
-              
+              lbl_bonusPoints_applyAnyDay
             </ForwardRef>
             <ForwardRef
               className="availability-msg"
@@ -60,9 +61,10 @@ exports[`BonusPointsAvailabilityVanilla should render correctly available_today 
               fontWeight="regular"
               letterSpacing="normal"
               lineHeight="normal"
+              link={null}
               textAlign="center"
             >
-              
+              lbl_bonusPoints_msg
             </ForwardRef>
           </React.Fragment>
           <ForwardRef
@@ -82,7 +84,7 @@ exports[`BonusPointsAvailabilityVanilla should render correctly available_today 
                 bonusPoints={
                   Array [
                     Object {
-                      "buttonText": undefined,
+                      "buttonText": "lbl_bonusPoints_ctaApply",
                       "dataLocator": "availabletodaybtn",
                       "disabled": false,
                     },
@@ -93,12 +95,11 @@ exports[`BonusPointsAvailabilityVanilla should render correctly available_today 
                 getBonusDaysData={[Function]}
                 labels={
                   Object {
-                    "common": Object {
-                      "lbl_common_details": "",
-                    },
-                    "myPlaceRewards": Object {
+                    "placeRewards": Object {
                       "lbl_bonus_points_apply_any_day": "",
                       "lbl_bonus_points_msg": "",
+                      "lbl_common_applied_to_order": "",
+                      "lbl_common_details": "",
                       "lbl_place_rewards_bonus": "",
                       "lbl_place_rewards_day": "",
                       "lbl_place_rewards_points": "",
@@ -118,7 +119,7 @@ exports[`BonusPointsAvailabilityVanilla should render correctly available_today 
             onClick={[Function]}
             underline={true}
           >
-            
+            lbl_bonusPoints_details
           </ForwardRef>
         </React.Fragment>
       }
@@ -143,9 +144,10 @@ exports[`BonusPointsAvailabilityVanilla should render correctly available_today 
             fontWeight="extrabold"
             letterSpacing="normal"
             lineHeight="normal"
+            link={null}
             textAlign="left"
           >
-            
+            lbl_bonusPoints_placeRewardsBonus
           </ForwardRef>
           <ForwardRef
             className="elem-mr-XS"
@@ -162,9 +164,10 @@ exports[`BonusPointsAvailabilityVanilla should render correctly available_today 
             fontWeight="extrabold"
             letterSpacing="normal"
             lineHeight="normal"
+            link={null}
             textAlign="left"
           >
-            
+            lbl_bonusPoints_placeRewardsPoints
           </ForwardRef>
           <ForwardRef
             className={null}
@@ -181,9 +184,10 @@ exports[`BonusPointsAvailabilityVanilla should render correctly available_today 
             fontWeight="extrabold"
             letterSpacing="normal"
             lineHeight="normal"
+            link={null}
             textAlign="left"
           >
-            
+            lbl_bonusPoints_placeRewardsDay
           </ForwardRef>
         </div>
       }
@@ -212,8 +216,11 @@ exports[`BonusPointsAvailabilityVanilla should render correctly available_today 
         fontWeight="extrabold"
         letterSpacing="normal"
         lineHeight="normal"
+        link={null}
         textAlign="left"
-      />
+      >
+        lbl_bonusPoints_placeRewardsBonus
+      </Styled(BodyCopy)>
       <Styled(BodyCopy)
         className="elem-mr-XS"
         color="primary.main"
@@ -229,8 +236,11 @@ exports[`BonusPointsAvailabilityVanilla should render correctly available_today 
         fontWeight="extrabold"
         letterSpacing="normal"
         lineHeight="normal"
+        link={null}
         textAlign="left"
-      />
+      >
+        lbl_bonusPoints_placeRewardsPoints
+      </Styled(BodyCopy)>
       <Styled(BodyCopy)
         className={null}
         color="pink.500"
@@ -246,8 +256,11 @@ exports[`BonusPointsAvailabilityVanilla should render correctly available_today 
         fontWeight="extrabold"
         letterSpacing="normal"
         lineHeight="normal"
+        link={null}
         textAlign="left"
-      />
+      >
+        lbl_bonusPoints_placeRewardsDay
+      </Styled(BodyCopy)>
     </div>
     <Styled(BodyCopy)
       className="apply-any-day-msg"
@@ -265,8 +278,11 @@ exports[`BonusPointsAvailabilityVanilla should render correctly available_today 
       fontWeight="extrabold"
       letterSpacing="normal"
       lineHeight="normal"
+      link={null}
       textAlign="center"
-    />
+    >
+      lbl_bonusPoints_applyAnyDay
+    </Styled(BodyCopy)>
     <Styled(BodyCopy)
       className="availability-msg"
       color="text.primary"
@@ -283,8 +299,11 @@ exports[`BonusPointsAvailabilityVanilla should render correctly available_today 
       fontWeight="regular"
       letterSpacing="normal"
       lineHeight="normal"
+      link={null}
       textAlign="center"
-    />
+    >
+      lbl_bonusPoints_msg
+    </Styled(BodyCopy)>
     <Styled(Row)
       fullBleed={true}
     >
@@ -302,7 +321,7 @@ exports[`BonusPointsAvailabilityVanilla should render correctly available_today 
           bonusPoints={
             Array [
               Object {
-                "buttonText": undefined,
+                "buttonText": "lbl_bonusPoints_ctaApply",
                 "dataLocator": "availabletodaybtn",
                 "disabled": false,
               },
@@ -313,12 +332,11 @@ exports[`BonusPointsAvailabilityVanilla should render correctly available_today 
           getBonusDaysData={[Function]}
           labels={
             Object {
-              "common": Object {
-                "lbl_common_details": "",
-              },
-              "myPlaceRewards": Object {
+              "placeRewards": Object {
                 "lbl_bonus_points_apply_any_day": "",
                 "lbl_bonus_points_msg": "",
+                "lbl_common_applied_to_order": "",
+                "lbl_common_details": "",
                 "lbl_place_rewards_bonus": "",
                 "lbl_place_rewards_day": "",
                 "lbl_place_rewards_points": "",
@@ -337,7 +355,9 @@ exports[`BonusPointsAvailabilityVanilla should render correctly available_today 
       href="#"
       onClick={[Function]}
       underline={true}
-    />
+    >
+      lbl_bonusPoints_details
+    </Styled(Anchor)>
   </div>
 </div>
 `;
@@ -382,9 +402,10 @@ exports[`BonusPointsAvailabilityVanilla should render correctly with applied to 
               fontWeight="extrabold"
               letterSpacing="normal"
               lineHeight="normal"
+              link={null}
               textAlign="center"
             >
-              
+              lbl_bonusPoints_applyAnyDay
             </ForwardRef>
             <ForwardRef
               className="availability-msg"
@@ -402,9 +423,10 @@ exports[`BonusPointsAvailabilityVanilla should render correctly with applied to 
               fontWeight="regular"
               letterSpacing="normal"
               lineHeight="normal"
+              link={null}
               textAlign="center"
             >
-              
+              lbl_bonusPoints_msg
             </ForwardRef>
           </React.Fragment>
           <ForwardRef
@@ -424,17 +446,17 @@ exports[`BonusPointsAvailabilityVanilla should render correctly with applied to 
                 bonusPoints={
                   Array [
                     Object {
-                      "buttonText": "undefined ",
+                      "buttonText": "lbl_bonusPoints_usedOn ",
                       "dataLocator": "usedonbtn",
                       "disabled": true,
                     },
                     Object {
-                      "buttonText": undefined,
+                      "buttonText": "lbl_bonusPoints_ctaApplied",
                       "dataLocator": "appliedtoorderbtn",
                       "disabled": false,
                     },
                     Object {
-                      "buttonText": undefined,
+                      "buttonText": "lbl_bonusPoints_futureUse",
                       "dataLocator": "availableforfutureusebtn",
                       "disabled": true,
                     },
@@ -445,12 +467,11 @@ exports[`BonusPointsAvailabilityVanilla should render correctly with applied to 
                 getBonusDaysData={[Function]}
                 labels={
                   Object {
-                    "common": Object {
-                      "lbl_common_details": "",
-                    },
-                    "myPlaceRewards": Object {
+                    "placeRewards": Object {
                       "lbl_bonus_points_apply_any_day": "",
                       "lbl_bonus_points_msg": "",
+                      "lbl_common_applied_to_order": "",
+                      "lbl_common_details": "",
                       "lbl_place_rewards_bonus": "",
                       "lbl_place_rewards_day": "",
                       "lbl_place_rewards_points": "",
@@ -470,7 +491,7 @@ exports[`BonusPointsAvailabilityVanilla should render correctly with applied to 
             onClick={[Function]}
             underline={true}
           >
-            
+            lbl_bonusPoints_details
           </ForwardRef>
         </React.Fragment>
       }
@@ -495,9 +516,10 @@ exports[`BonusPointsAvailabilityVanilla should render correctly with applied to 
             fontWeight="extrabold"
             letterSpacing="normal"
             lineHeight="normal"
+            link={null}
             textAlign="left"
           >
-            
+            lbl_bonusPoints_placeRewardsBonus
           </ForwardRef>
           <ForwardRef
             className="elem-mr-XS"
@@ -514,9 +536,10 @@ exports[`BonusPointsAvailabilityVanilla should render correctly with applied to 
             fontWeight="extrabold"
             letterSpacing="normal"
             lineHeight="normal"
+            link={null}
             textAlign="left"
           >
-            
+            lbl_bonusPoints_placeRewardsPoints
           </ForwardRef>
           <ForwardRef
             className={null}
@@ -533,9 +556,10 @@ exports[`BonusPointsAvailabilityVanilla should render correctly with applied to 
             fontWeight="extrabold"
             letterSpacing="normal"
             lineHeight="normal"
+            link={null}
             textAlign="left"
           >
-            
+            lbl_bonusPoints_placeRewardsDay
           </ForwardRef>
         </div>
       }
@@ -564,8 +588,11 @@ exports[`BonusPointsAvailabilityVanilla should render correctly with applied to 
         fontWeight="extrabold"
         letterSpacing="normal"
         lineHeight="normal"
+        link={null}
         textAlign="left"
-      />
+      >
+        lbl_bonusPoints_placeRewardsBonus
+      </Styled(BodyCopy)>
       <Styled(BodyCopy)
         className="elem-mr-XS"
         color="primary.main"
@@ -581,8 +608,11 @@ exports[`BonusPointsAvailabilityVanilla should render correctly with applied to 
         fontWeight="extrabold"
         letterSpacing="normal"
         lineHeight="normal"
+        link={null}
         textAlign="left"
-      />
+      >
+        lbl_bonusPoints_placeRewardsPoints
+      </Styled(BodyCopy)>
       <Styled(BodyCopy)
         className={null}
         color="pink.500"
@@ -598,8 +628,11 @@ exports[`BonusPointsAvailabilityVanilla should render correctly with applied to 
         fontWeight="extrabold"
         letterSpacing="normal"
         lineHeight="normal"
+        link={null}
         textAlign="left"
-      />
+      >
+        lbl_bonusPoints_placeRewardsDay
+      </Styled(BodyCopy)>
     </div>
     <Styled(BodyCopy)
       className="apply-any-day-msg"
@@ -617,8 +650,11 @@ exports[`BonusPointsAvailabilityVanilla should render correctly with applied to 
       fontWeight="extrabold"
       letterSpacing="normal"
       lineHeight="normal"
+      link={null}
       textAlign="center"
-    />
+    >
+      lbl_bonusPoints_applyAnyDay
+    </Styled(BodyCopy)>
     <Styled(BodyCopy)
       className="availability-msg"
       color="text.primary"
@@ -635,8 +671,11 @@ exports[`BonusPointsAvailabilityVanilla should render correctly with applied to 
       fontWeight="regular"
       letterSpacing="normal"
       lineHeight="normal"
+      link={null}
       textAlign="center"
-    />
+    >
+      lbl_bonusPoints_msg
+    </Styled(BodyCopy)>
     <Styled(Row)
       fullBleed={true}
     >
@@ -654,17 +693,17 @@ exports[`BonusPointsAvailabilityVanilla should render correctly with applied to 
           bonusPoints={
             Array [
               Object {
-                "buttonText": "undefined ",
+                "buttonText": "lbl_bonusPoints_usedOn ",
                 "dataLocator": "usedonbtn",
                 "disabled": true,
               },
               Object {
-                "buttonText": undefined,
+                "buttonText": "lbl_bonusPoints_ctaApplied",
                 "dataLocator": "appliedtoorderbtn",
                 "disabled": false,
               },
               Object {
-                "buttonText": undefined,
+                "buttonText": "lbl_bonusPoints_futureUse",
                 "dataLocator": "availableforfutureusebtn",
                 "disabled": true,
               },
@@ -675,12 +714,11 @@ exports[`BonusPointsAvailabilityVanilla should render correctly with applied to 
           getBonusDaysData={[Function]}
           labels={
             Object {
-              "common": Object {
-                "lbl_common_details": "",
-              },
-              "myPlaceRewards": Object {
+              "placeRewards": Object {
                 "lbl_bonus_points_apply_any_day": "",
                 "lbl_bonus_points_msg": "",
+                "lbl_common_applied_to_order": "",
+                "lbl_common_details": "",
                 "lbl_place_rewards_bonus": "",
                 "lbl_place_rewards_day": "",
                 "lbl_place_rewards_points": "",
@@ -699,7 +737,9 @@ exports[`BonusPointsAvailabilityVanilla should render correctly with applied to 
       href="#"
       onClick={[Function]}
       underline={true}
-    />
+    >
+      lbl_bonusPoints_details
+    </Styled(Anchor)>
   </div>
 </div>
 `;
@@ -744,9 +784,10 @@ exports[`BonusPointsAvailabilityVanilla should render correctly with future Use 
               fontWeight="extrabold"
               letterSpacing="normal"
               lineHeight="normal"
+              link={null}
               textAlign="center"
             >
-              
+              lbl_bonusPoints_applyAnyDay
             </ForwardRef>
             <ForwardRef
               className="availability-msg"
@@ -764,9 +805,10 @@ exports[`BonusPointsAvailabilityVanilla should render correctly with future Use 
               fontWeight="regular"
               letterSpacing="normal"
               lineHeight="normal"
+              link={null}
               textAlign="center"
             >
-              
+              lbl_bonusPoints_msg
             </ForwardRef>
           </React.Fragment>
           <ForwardRef
@@ -786,17 +828,17 @@ exports[`BonusPointsAvailabilityVanilla should render correctly with future Use 
                 bonusPoints={
                   Array [
                     Object {
-                      "buttonText": "undefined ",
+                      "buttonText": "lbl_bonusPoints_usedOn ",
                       "dataLocator": "usedonbtn",
                       "disabled": true,
                     },
                     Object {
-                      "buttonText": undefined,
+                      "buttonText": "lbl_bonusPoints_ctaApply",
                       "dataLocator": "availabletodaybtn",
                       "disabled": false,
                     },
                     Object {
-                      "buttonText": undefined,
+                      "buttonText": "lbl_bonusPoints_futureUse",
                       "dataLocator": "availableforfutureusebtn",
                       "disabled": true,
                     },
@@ -807,12 +849,11 @@ exports[`BonusPointsAvailabilityVanilla should render correctly with future Use 
                 getBonusDaysData={[Function]}
                 labels={
                   Object {
-                    "common": Object {
-                      "lbl_common_details": "",
-                    },
-                    "myPlaceRewards": Object {
+                    "placeRewards": Object {
                       "lbl_bonus_points_apply_any_day": "",
                       "lbl_bonus_points_msg": "",
+                      "lbl_common_applied_to_order": "",
+                      "lbl_common_details": "",
                       "lbl_place_rewards_bonus": "",
                       "lbl_place_rewards_day": "",
                       "lbl_place_rewards_points": "",
@@ -832,7 +873,7 @@ exports[`BonusPointsAvailabilityVanilla should render correctly with future Use 
             onClick={[Function]}
             underline={true}
           >
-            
+            lbl_bonusPoints_details
           </ForwardRef>
         </React.Fragment>
       }
@@ -857,9 +898,10 @@ exports[`BonusPointsAvailabilityVanilla should render correctly with future Use 
             fontWeight="extrabold"
             letterSpacing="normal"
             lineHeight="normal"
+            link={null}
             textAlign="left"
           >
-            
+            lbl_bonusPoints_placeRewardsBonus
           </ForwardRef>
           <ForwardRef
             className="elem-mr-XS"
@@ -876,9 +918,10 @@ exports[`BonusPointsAvailabilityVanilla should render correctly with future Use 
             fontWeight="extrabold"
             letterSpacing="normal"
             lineHeight="normal"
+            link={null}
             textAlign="left"
           >
-            
+            lbl_bonusPoints_placeRewardsPoints
           </ForwardRef>
           <ForwardRef
             className={null}
@@ -895,9 +938,10 @@ exports[`BonusPointsAvailabilityVanilla should render correctly with future Use 
             fontWeight="extrabold"
             letterSpacing="normal"
             lineHeight="normal"
+            link={null}
             textAlign="left"
           >
-            
+            lbl_bonusPoints_placeRewardsDay
           </ForwardRef>
         </div>
       }
@@ -926,8 +970,11 @@ exports[`BonusPointsAvailabilityVanilla should render correctly with future Use 
         fontWeight="extrabold"
         letterSpacing="normal"
         lineHeight="normal"
+        link={null}
         textAlign="left"
-      />
+      >
+        lbl_bonusPoints_placeRewardsBonus
+      </Styled(BodyCopy)>
       <Styled(BodyCopy)
         className="elem-mr-XS"
         color="primary.main"
@@ -943,8 +990,11 @@ exports[`BonusPointsAvailabilityVanilla should render correctly with future Use 
         fontWeight="extrabold"
         letterSpacing="normal"
         lineHeight="normal"
+        link={null}
         textAlign="left"
-      />
+      >
+        lbl_bonusPoints_placeRewardsPoints
+      </Styled(BodyCopy)>
       <Styled(BodyCopy)
         className={null}
         color="pink.500"
@@ -960,8 +1010,11 @@ exports[`BonusPointsAvailabilityVanilla should render correctly with future Use 
         fontWeight="extrabold"
         letterSpacing="normal"
         lineHeight="normal"
+        link={null}
         textAlign="left"
-      />
+      >
+        lbl_bonusPoints_placeRewardsDay
+      </Styled(BodyCopy)>
     </div>
     <Styled(BodyCopy)
       className="apply-any-day-msg"
@@ -979,8 +1032,11 @@ exports[`BonusPointsAvailabilityVanilla should render correctly with future Use 
       fontWeight="extrabold"
       letterSpacing="normal"
       lineHeight="normal"
+      link={null}
       textAlign="center"
-    />
+    >
+      lbl_bonusPoints_applyAnyDay
+    </Styled(BodyCopy)>
     <Styled(BodyCopy)
       className="availability-msg"
       color="text.primary"
@@ -997,8 +1053,11 @@ exports[`BonusPointsAvailabilityVanilla should render correctly with future Use 
       fontWeight="regular"
       letterSpacing="normal"
       lineHeight="normal"
+      link={null}
       textAlign="center"
-    />
+    >
+      lbl_bonusPoints_msg
+    </Styled(BodyCopy)>
     <Styled(Row)
       fullBleed={true}
     >
@@ -1016,17 +1075,17 @@ exports[`BonusPointsAvailabilityVanilla should render correctly with future Use 
           bonusPoints={
             Array [
               Object {
-                "buttonText": "undefined ",
+                "buttonText": "lbl_bonusPoints_usedOn ",
                 "dataLocator": "usedonbtn",
                 "disabled": true,
               },
               Object {
-                "buttonText": undefined,
+                "buttonText": "lbl_bonusPoints_ctaApply",
                 "dataLocator": "availabletodaybtn",
                 "disabled": false,
               },
               Object {
-                "buttonText": undefined,
+                "buttonText": "lbl_bonusPoints_futureUse",
                 "dataLocator": "availableforfutureusebtn",
                 "disabled": true,
               },
@@ -1037,12 +1096,11 @@ exports[`BonusPointsAvailabilityVanilla should render correctly with future Use 
           getBonusDaysData={[Function]}
           labels={
             Object {
-              "common": Object {
-                "lbl_common_details": "",
-              },
-              "myPlaceRewards": Object {
+              "placeRewards": Object {
                 "lbl_bonus_points_apply_any_day": "",
                 "lbl_bonus_points_msg": "",
+                "lbl_common_applied_to_order": "",
+                "lbl_common_details": "",
                 "lbl_place_rewards_bonus": "",
                 "lbl_place_rewards_day": "",
                 "lbl_place_rewards_points": "",
@@ -1061,7 +1119,9 @@ exports[`BonusPointsAvailabilityVanilla should render correctly with future Use 
       href="#"
       onClick={[Function]}
       underline={true}
-    />
+    >
+      lbl_bonusPoints_details
+    </Styled(Anchor)>
   </div>
 </div>
 `;
@@ -1106,9 +1166,10 @@ exports[`BonusPointsAvailabilityVanilla should render correctly with futureDisab
               fontWeight="extrabold"
               letterSpacing="normal"
               lineHeight="normal"
+              link={null}
               textAlign="center"
             >
-              
+              lbl_bonusPoints_applyAnyDay
             </ForwardRef>
             <ForwardRef
               className="availability-msg"
@@ -1126,9 +1187,10 @@ exports[`BonusPointsAvailabilityVanilla should render correctly with futureDisab
               fontWeight="regular"
               letterSpacing="normal"
               lineHeight="normal"
+              link={null}
               textAlign="center"
             >
-              
+              lbl_bonusPoints_msg
             </ForwardRef>
           </React.Fragment>
           <ForwardRef
@@ -1148,17 +1210,17 @@ exports[`BonusPointsAvailabilityVanilla should render correctly with futureDisab
                 bonusPoints={
                   Array [
                     Object {
-                      "buttonText": "undefined 15/7",
+                      "buttonText": "lbl_bonusPoints_usedOn 15/7",
                       "dataLocator": "usedonbtn",
                       "disabled": true,
                     },
                     Object {
-                      "buttonText": undefined,
+                      "buttonText": "lbl_bonusPoints_ctaApply",
                       "dataLocator": "availabletodaybtn",
                       "disabled": false,
                     },
                     Object {
-                      "buttonText": undefined,
+                      "buttonText": "lbl_bonusPoints_futureUse",
                       "dataLocator": "availableforfutureusebtn",
                       "disabled": true,
                     },
@@ -1169,12 +1231,11 @@ exports[`BonusPointsAvailabilityVanilla should render correctly with futureDisab
                 getBonusDaysData={[Function]}
                 labels={
                   Object {
-                    "common": Object {
-                      "lbl_common_details": "",
-                    },
-                    "myPlaceRewards": Object {
+                    "placeRewards": Object {
                       "lbl_bonus_points_apply_any_day": "",
                       "lbl_bonus_points_msg": "",
+                      "lbl_common_applied_to_order": "",
+                      "lbl_common_details": "",
                       "lbl_place_rewards_bonus": "",
                       "lbl_place_rewards_day": "",
                       "lbl_place_rewards_points": "",
@@ -1194,7 +1255,7 @@ exports[`BonusPointsAvailabilityVanilla should render correctly with futureDisab
             onClick={[Function]}
             underline={true}
           >
-            
+            lbl_bonusPoints_details
           </ForwardRef>
         </React.Fragment>
       }
@@ -1219,9 +1280,10 @@ exports[`BonusPointsAvailabilityVanilla should render correctly with futureDisab
             fontWeight="extrabold"
             letterSpacing="normal"
             lineHeight="normal"
+            link={null}
             textAlign="left"
           >
-            
+            lbl_bonusPoints_placeRewardsBonus
           </ForwardRef>
           <ForwardRef
             className="elem-mr-XS"
@@ -1238,9 +1300,10 @@ exports[`BonusPointsAvailabilityVanilla should render correctly with futureDisab
             fontWeight="extrabold"
             letterSpacing="normal"
             lineHeight="normal"
+            link={null}
             textAlign="left"
           >
-            
+            lbl_bonusPoints_placeRewardsPoints
           </ForwardRef>
           <ForwardRef
             className={null}
@@ -1257,9 +1320,10 @@ exports[`BonusPointsAvailabilityVanilla should render correctly with futureDisab
             fontWeight="extrabold"
             letterSpacing="normal"
             lineHeight="normal"
+            link={null}
             textAlign="left"
           >
-            
+            lbl_bonusPoints_placeRewardsDay
           </ForwardRef>
         </div>
       }
@@ -1288,8 +1352,11 @@ exports[`BonusPointsAvailabilityVanilla should render correctly with futureDisab
         fontWeight="extrabold"
         letterSpacing="normal"
         lineHeight="normal"
+        link={null}
         textAlign="left"
-      />
+      >
+        lbl_bonusPoints_placeRewardsBonus
+      </Styled(BodyCopy)>
       <Styled(BodyCopy)
         className="elem-mr-XS"
         color="primary.main"
@@ -1305,8 +1372,11 @@ exports[`BonusPointsAvailabilityVanilla should render correctly with futureDisab
         fontWeight="extrabold"
         letterSpacing="normal"
         lineHeight="normal"
+        link={null}
         textAlign="left"
-      />
+      >
+        lbl_bonusPoints_placeRewardsPoints
+      </Styled(BodyCopy)>
       <Styled(BodyCopy)
         className={null}
         color="pink.500"
@@ -1322,8 +1392,11 @@ exports[`BonusPointsAvailabilityVanilla should render correctly with futureDisab
         fontWeight="extrabold"
         letterSpacing="normal"
         lineHeight="normal"
+        link={null}
         textAlign="left"
-      />
+      >
+        lbl_bonusPoints_placeRewardsDay
+      </Styled(BodyCopy)>
     </div>
     <Styled(BodyCopy)
       className="apply-any-day-msg"
@@ -1341,8 +1414,11 @@ exports[`BonusPointsAvailabilityVanilla should render correctly with futureDisab
       fontWeight="extrabold"
       letterSpacing="normal"
       lineHeight="normal"
+      link={null}
       textAlign="center"
-    />
+    >
+      lbl_bonusPoints_applyAnyDay
+    </Styled(BodyCopy)>
     <Styled(BodyCopy)
       className="availability-msg"
       color="text.primary"
@@ -1359,8 +1435,11 @@ exports[`BonusPointsAvailabilityVanilla should render correctly with futureDisab
       fontWeight="regular"
       letterSpacing="normal"
       lineHeight="normal"
+      link={null}
       textAlign="center"
-    />
+    >
+      lbl_bonusPoints_msg
+    </Styled(BodyCopy)>
     <Styled(Row)
       fullBleed={true}
     >
@@ -1378,17 +1457,17 @@ exports[`BonusPointsAvailabilityVanilla should render correctly with futureDisab
           bonusPoints={
             Array [
               Object {
-                "buttonText": "undefined 15/7",
+                "buttonText": "lbl_bonusPoints_usedOn 15/7",
                 "dataLocator": "usedonbtn",
                 "disabled": true,
               },
               Object {
-                "buttonText": undefined,
+                "buttonText": "lbl_bonusPoints_ctaApply",
                 "dataLocator": "availabletodaybtn",
                 "disabled": false,
               },
               Object {
-                "buttonText": undefined,
+                "buttonText": "lbl_bonusPoints_futureUse",
                 "dataLocator": "availableforfutureusebtn",
                 "disabled": true,
               },
@@ -1399,12 +1478,11 @@ exports[`BonusPointsAvailabilityVanilla should render correctly with futureDisab
           getBonusDaysData={[Function]}
           labels={
             Object {
-              "common": Object {
-                "lbl_common_details": "",
-              },
-              "myPlaceRewards": Object {
+              "placeRewards": Object {
                 "lbl_bonus_points_apply_any_day": "",
                 "lbl_bonus_points_msg": "",
+                "lbl_common_applied_to_order": "",
+                "lbl_common_details": "",
                 "lbl_place_rewards_bonus": "",
                 "lbl_place_rewards_day": "",
                 "lbl_place_rewards_points": "",
@@ -1423,7 +1501,9 @@ exports[`BonusPointsAvailabilityVanilla should render correctly with futureDisab
       href="#"
       onClick={[Function]}
       underline={true}
-    />
+    >
+      lbl_bonusPoints_details
+    </Styled(Anchor)>
   </div>
 </div>
 `;
@@ -1467,8 +1547,11 @@ exports[`BonusPointsAvailabilityVanilla should render correctly with isUsed 1`] 
             fontWeight="regular"
             letterSpacing="normal"
             lineHeight="normal"
+            link={null}
             textAlign="center"
-          />
+          >
+            lbl_bonusPoints_myRewardsUsedAll
+          </ForwardRef>
           <ForwardRef
             fullBleed={true}
           >
@@ -1486,7 +1569,7 @@ exports[`BonusPointsAvailabilityVanilla should render correctly with isUsed 1`] 
                 bonusPoints={
                   Array [
                     Object {
-                      "buttonText": "undefined ",
+                      "buttonText": "lbl_bonusPoints_usedOn ",
                       "dataLocator": "usedonbtn",
                       "disabled": true,
                     },
@@ -1497,12 +1580,11 @@ exports[`BonusPointsAvailabilityVanilla should render correctly with isUsed 1`] 
                 getBonusDaysData={[Function]}
                 labels={
                   Object {
-                    "common": Object {
-                      "lbl_common_details": "",
-                    },
-                    "myPlaceRewards": Object {
+                    "placeRewards": Object {
                       "lbl_bonus_points_apply_any_day": "",
                       "lbl_bonus_points_msg": "",
+                      "lbl_common_applied_to_order": "",
+                      "lbl_common_details": "",
                       "lbl_place_rewards_bonus": "",
                       "lbl_place_rewards_day": "",
                       "lbl_place_rewards_points": "",
@@ -1522,7 +1604,7 @@ exports[`BonusPointsAvailabilityVanilla should render correctly with isUsed 1`] 
             onClick={[Function]}
             underline={true}
           >
-            
+            lbl_bonusPoints_details
           </ForwardRef>
         </React.Fragment>
       }
@@ -1547,9 +1629,10 @@ exports[`BonusPointsAvailabilityVanilla should render correctly with isUsed 1`] 
             fontWeight="extrabold"
             letterSpacing="normal"
             lineHeight="normal"
+            link={null}
             textAlign="left"
           >
-            
+            lbl_bonusPoints_placeRewardsBonus
           </ForwardRef>
           <ForwardRef
             className="elem-mr-XS"
@@ -1566,9 +1649,10 @@ exports[`BonusPointsAvailabilityVanilla should render correctly with isUsed 1`] 
             fontWeight="extrabold"
             letterSpacing="normal"
             lineHeight="normal"
+            link={null}
             textAlign="left"
           >
-            
+            lbl_bonusPoints_placeRewardsPoints
           </ForwardRef>
           <ForwardRef
             className={null}
@@ -1585,9 +1669,10 @@ exports[`BonusPointsAvailabilityVanilla should render correctly with isUsed 1`] 
             fontWeight="extrabold"
             letterSpacing="normal"
             lineHeight="normal"
+            link={null}
             textAlign="left"
           >
-            
+            lbl_bonusPoints_placeRewardsDay
           </ForwardRef>
         </div>
       }
@@ -1616,8 +1701,11 @@ exports[`BonusPointsAvailabilityVanilla should render correctly with isUsed 1`] 
         fontWeight="extrabold"
         letterSpacing="normal"
         lineHeight="normal"
+        link={null}
         textAlign="left"
-      />
+      >
+        lbl_bonusPoints_placeRewardsBonus
+      </Styled(BodyCopy)>
       <Styled(BodyCopy)
         className="elem-mr-XS"
         color="primary.main"
@@ -1633,8 +1721,11 @@ exports[`BonusPointsAvailabilityVanilla should render correctly with isUsed 1`] 
         fontWeight="extrabold"
         letterSpacing="normal"
         lineHeight="normal"
+        link={null}
         textAlign="left"
-      />
+      >
+        lbl_bonusPoints_placeRewardsPoints
+      </Styled(BodyCopy)>
       <Styled(BodyCopy)
         className={null}
         color="pink.500"
@@ -1650,8 +1741,11 @@ exports[`BonusPointsAvailabilityVanilla should render correctly with isUsed 1`] 
         fontWeight="extrabold"
         letterSpacing="normal"
         lineHeight="normal"
+        link={null}
         textAlign="left"
-      />
+      >
+        lbl_bonusPoints_placeRewardsDay
+      </Styled(BodyCopy)>
     </div>
     <Styled(BodyCopy)
       className="availability-msg"
@@ -1669,8 +1763,11 @@ exports[`BonusPointsAvailabilityVanilla should render correctly with isUsed 1`] 
       fontWeight="regular"
       letterSpacing="normal"
       lineHeight="normal"
+      link={null}
       textAlign="center"
-    />
+    >
+      lbl_bonusPoints_myRewardsUsedAll
+    </Styled(BodyCopy)>
     <Styled(Row)
       fullBleed={true}
     >
@@ -1688,7 +1785,7 @@ exports[`BonusPointsAvailabilityVanilla should render correctly with isUsed 1`] 
           bonusPoints={
             Array [
               Object {
-                "buttonText": "undefined ",
+                "buttonText": "lbl_bonusPoints_usedOn ",
                 "dataLocator": "usedonbtn",
                 "disabled": true,
               },
@@ -1699,12 +1796,11 @@ exports[`BonusPointsAvailabilityVanilla should render correctly with isUsed 1`] 
           getBonusDaysData={[Function]}
           labels={
             Object {
-              "common": Object {
-                "lbl_common_details": "",
-              },
-              "myPlaceRewards": Object {
+              "placeRewards": Object {
                 "lbl_bonus_points_apply_any_day": "",
                 "lbl_bonus_points_msg": "",
+                "lbl_common_applied_to_order": "",
+                "lbl_common_details": "",
                 "lbl_place_rewards_bonus": "",
                 "lbl_place_rewards_day": "",
                 "lbl_place_rewards_points": "",
@@ -1723,7 +1819,9 @@ exports[`BonusPointsAvailabilityVanilla should render correctly with isUsed 1`] 
       href="#"
       onClick={[Function]}
       underline={true}
-    />
+    >
+      lbl_bonusPoints_details
+    </Styled(Anchor)>
   </div>
 </div>
 `;

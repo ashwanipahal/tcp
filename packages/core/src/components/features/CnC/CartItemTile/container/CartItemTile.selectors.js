@@ -1,3 +1,6 @@
+import { getLabelValue } from '@tcp/core/src/utils';
+import CARTPAGE_CONSTANTS from '../CartItemTile.constants';
+
 export const getCartOrderList = state => {
   // needs to do it with get method.
   return state.CartPageReducer.getIn(['orderDetails', 'orderItems']);
@@ -99,6 +102,14 @@ export const getProductItemUpcNumber = product => {
   return product.getIn(['productInfo', 'upc']);
 };
 
+export const getGeneralProdId = product => {
+  return product.getIn(['productInfo', 'generalProductId']);
+};
+
+export const getProductSkuId = product => {
+  return product.getIn(['productInfo', 'skuId']);
+};
+
 export const getProductItemPrice = product => {
   return product.getIn(['itemInfo', 'listPrice']);
 };
@@ -115,10 +126,22 @@ export const getProductItemUnitPrice = product => {
   return product.getIn(['itemInfo', 'listUnitPrice']);
 };
 
+export const getIsCartItemsUpdating = state => {
+  return state.CartPageReducer.getIn(['uiFlags', 'isCartItemsUpdating']);
+};
+
+export const getIsCartItemsSFL = state => {
+  return state.CartPageReducer.getIn(['uiFlags', 'isItemMovedToSflList']);
+};
+
+export const getIsSflItemRemoved = state => {
+  return state.CartPageReducer.getIn(['uiFlags', 'isSflItemDeleted']);
+};
+
 export const getLabelsCartItemTile = state => {
   const {
-    bag: {
-      addedToBag: {
+    global: {
+      addedToBagModal: {
         lbl_info_color: color,
         lbl_info_size: size,
         lbl_info_Qty: qty,
@@ -126,16 +149,13 @@ export const getLabelsCartItemTile = state => {
         lbl_info_giftDesign: design,
         lbl_info_giftValue: value,
       },
-    },
-  } = state.Labels;
-
-  const {
-    bag: {
-      bagOverview: {
+      cartItemTile: {
         lbl_cartTile_fit: fit,
         lbl_cartTile_points: points,
         lbl_cartTile_cancel: cancel,
         lbl_cartTile_edit: edit,
+        lbl_cartTile_update: update,
+        lbl_cartTile_remove: removeEdit,
         lbl_cartTile_saveForLater: saveForLater,
         lbl_cartTile_productBrandAlt: productBandAlt,
         lbl_cartTile_productImageAlt: productImageAlt,
@@ -146,9 +166,10 @@ export const getLabelsCartItemTile = state => {
         lbl_cartTile_shipToHome: ecomShipping,
         lbl_cartTile_extra: extra,
         lbl_cartTile_off: off,
+        lbl_cartTile_delete: deleteItem,
+      },
+      minibag: {
         lbl_miniBag_problemWithOrder: problemWithOrder,
-        lbl_error_please: pleaseText,
-        lbl_error_remove: remove,
         lbl_miniBag_error: removeSoldOut,
         lbl_miniBag_itemUnavailable: itemUnavailable,
         lbl_miniBag_itemSoldOut: itemSoldOut,
@@ -161,6 +182,33 @@ export const getLabelsCartItemTile = state => {
     },
   } = state.Labels;
 
+  const saveForLaterLink = getLabelValue(state.Labels, 'lbl_sfl_actionLink', 'bagPage', 'checkout');
+  const moveToBagLink = getLabelValue(state.Labels, 'lbl_sfl_moveToBag', 'bagPage', 'checkout');
+  const sflMaxLimitError = getLabelValue(
+    state.Labels,
+    'lbl_sfl_maxLimitError',
+    'bagPage',
+    'checkout'
+  );
+  const sflSuccess = getLabelValue(state.Labels, 'bl_sfl_actionSuccess', 'bagPage', 'checkout');
+  const sflDeleteSuccess = getLabelValue(
+    state.Labels,
+    'lbl_sfl_itemDeleteSuccess',
+    'bagPage',
+    'checkout'
+  );
+  const itemDeleted = getLabelValue(
+    state.Labels,
+    'lbl_msg_itemDeleteSuccess',
+    'bagPage',
+    'checkout'
+  );
+  // const {
+  //   bag: {
+  //     bagOverview: { lbl_error_please: pleaseText, lbl_error_remove: remove },
+  //   },
+  // } = state.Labels;
+
   return {
     color,
     size,
@@ -172,6 +220,8 @@ export const getLabelsCartItemTile = state => {
     points,
     cancel,
     edit,
+    update,
+    removeEdit,
     saveForLater,
     productBandAlt,
     productImageAlt,
@@ -183,8 +233,8 @@ export const getLabelsCartItemTile = state => {
     extra,
     off,
     problemWithOrder,
-    pleaseText,
-    remove,
+    // pleaseText,
+    // remove,
     removeSoldOut,
     itemUnavailable,
     itemSoldOut,
@@ -193,6 +243,14 @@ export const getLabelsCartItemTile = state => {
     errorSize,
     updateUnavailable,
     removeSoldoutHeader,
+    deleteItem,
+    saveForLaterLink,
+    sflMaxLimitError,
+    moveToBagLink,
+    itemDeleted,
+    sflSuccess,
+    sflDeleteSuccess,
+    removeError: getLabelValue(state.Labels, 'lbl_minibag_errorRemove', 'minibag', 'global'),
   };
 };
 
@@ -219,6 +277,8 @@ export const getProductDetails = tile => {
       itemPartNumber: getProductItemPartNumber(tile),
       variantNo: getVariantNumber(tile),
       upc: getProductItemUpcNumber(tile),
+      generalProductId: getGeneralProdId(tile),
+      skuId: getProductSkuId(tile),
     },
     miscInfo: {
       badge: getProductBadge(tile),
@@ -229,4 +289,22 @@ export const getProductDetails = tile => {
       availability: getProductAvailability(tile),
     },
   };
+};
+
+export const getBossBopisFlags = state => {
+  return {
+    isBOSSEnabled_TCP: state.session.getIn(['siteDetails', 'isBOSSEnabled_TCP']),
+    isBOPISEnabled_TCP: state.session.getIn(['siteDetails', 'isBOPISEnabled_TCP']),
+    isBOPISEnabled_GYM: state.session.getIn(['siteDetails', 'isBOPISEnabled_GYM']),
+    isBOSSEnabled_GYM: state.session.getIn(['siteDetails', 'isBOSSEnabled_GYM']),
+  };
+};
+
+export const isItemBossBopisInEligible = (state, { itemBrand, orderItemType } = {}) => {
+  const bossBopisFlags = getBossBopisFlags(state);
+  const flagName = `is${orderItemType}Enabled_${itemBrand}`;
+  return (
+    (orderItemType === CARTPAGE_CONSTANTS.BOSS || orderItemType === CARTPAGE_CONSTANTS.BOPIS) &&
+    !bossBopisFlags[flagName]
+  );
 };

@@ -26,12 +26,18 @@ exports[`Payment View should render correctly 1`] = `
   venmoCardList={Object {}}
 >
   <ScrollViewMock
+    keyboardShouldPersistTaps="handled"
     showsVerticalScrollIndicator={false}
   >
     <Styled(Text)>
       <Styled(BodyCopy)
+        accessibilityText=""
+        dataLocator=""
         fontSize="fs16"
         fontWeight="extrabold"
+        margin={null}
+        numberOfLines={null}
+        textDecoration={null}
       />
     </Styled(Text)>
     <Styled(View) />
@@ -197,12 +203,18 @@ exports[`Payment View should render correctly with cardList 1`] = `
   venmoCardList={Object {}}
 >
   <ScrollViewMock
+    keyboardShouldPersistTaps="handled"
     showsVerticalScrollIndicator={false}
   >
     <Styled(Text)>
       <Styled(BodyCopy)
+        accessibilityText=""
+        dataLocator=""
         fontSize="fs16"
         fontWeight="extrabold"
+        margin={null}
+        numberOfLines={null}
+        textDecoration={null}
       />
     </Styled(Text)>
     <Styled(View) />
@@ -342,12 +354,18 @@ exports[`Payment View should render with showGiftCardModal 1`] = `
   venmoCardList={Object {}}
 >
   <ScrollViewMock
+    keyboardShouldPersistTaps="handled"
     showsVerticalScrollIndicator={false}
   >
     <Styled(Text)>
       <Styled(BodyCopy)
+        accessibilityText=""
+        dataLocator=""
         fontSize="fs16"
         fontWeight="extrabold"
+        margin={null}
+        numberOfLines={null}
+        textDecoration={null}
       />
     </Styled(Text)>
     <Styled(View) />

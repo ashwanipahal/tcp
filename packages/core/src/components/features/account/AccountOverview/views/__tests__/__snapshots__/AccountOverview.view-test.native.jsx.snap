@@ -10,81 +10,85 @@ exports[`AccountOverview component should render correctly 1`] = `
 >
   <Styled(View)>
     <Styled(BodyCopy)
+      accessibilityText=""
+      dataLocator=""
       fontSize="fs14"
+      margin={null}
       mobileFontFamily={
         Array [
           "primary",
         ]
       }
+      numberOfLines={null}
       textAlign="center"
+      textDecoration={null}
     />
     <Styled(BodyCopy)
+      accessibilityText=""
+      dataLocator=""
       fontSize="fs14"
+      margin={null}
       mobileFontFamily={
         Array [
           "primary",
         ]
       }
+      numberOfLines={null}
       textAlign="center"
+      textDecoration={null}
     />
   </Styled(View)>
   <Styled(View)>
-    <Styled(CustomButton)
+    <Styled(WithTheme(CustomButton))
       buttonVariation="variable-width"
       className="classBtn"
       color="#575757"
-      customStyle={Object {}}
       data-locator=""
-      disableButton={false}
-      fill="WHITE"
-      fullWidth=""
       id="createAccount"
-      locator=""
       onPress={[Function]}
-      text=""
       type="submit"
-      url=""
       width="150px"
     />
-    <Styled(CustomButton)
+    <Styled(WithTheme(CustomButton))
       buttonVariation="variable-width"
       className="classBtn"
-      color="#fff"
-      customStyle={Object {}}
       data-locator=""
-      disableButton={false}
       fill="BLUE"
-      fullWidth=""
       id="login"
-      locator=""
       onPress={[Function]}
-      text=""
       type="submit"
-      url=""
       width="150px"
     />
   </Styled(View)>
   <Styled(View)>
     <Styled(BodyCopy)
+      accessibilityText=""
       color="gray.900"
+      dataLocator=""
       fontSize="fs13"
       fontWeight="semibold"
+      margin={null}
       mobileFontFamily={
         Array [
           "primary",
         ]
       }
+      numberOfLines={null}
       onPress={[Function]}
       textAlign="left"
+      textDecoration={null}
     />
     <Styled(View)>
       <Styled(ImageComp)
+        alt=""
         height={18}
+        host=""
         source={
           Object {
             "testUri": "../../../src/assets/images/filled-heart.png",
           }
         }
+        url=""
         width={20}
       />
     </Styled(View)>
@@ -141,6 +145,9 @@ exports[`AccountOverview component should render correctly 1`] = `
     isVariationTypeLink={true}
   />
   <Styled(View) />
+  <Connect(TrackOrderContainer)
+    handleToggle={[Function]}
+  />
   <Styled(View) />
 </View>
 `;

@@ -1,3 +1,5 @@
+import CheckoutSelectors from '../../../../Checkout/container/Checkout.selector';
+
 export const getItemsTotalCount = state => {
   return state.CartPageReducer.getIn(['orderDetails', 'totalItems']) || 0;
 };
@@ -43,12 +45,13 @@ export const getLedgerSummaryData = state => {
     orderBalanceTotal: getGrandTotal(state) - getGiftCardsTotal(state),
     totalOrderSavings: getTotalOrderSavings(state),
     currencySymbol: getCurrencySymbol(state),
+    isOrderHasShipping: CheckoutSelectors.getIsOrderHasShipping(state),
   };
 };
 export const getOrderLedgerLabels = state => {
   const {
-    bag: {
-      bagOverview: {
+    checkout: {
+      bagPage: {
         lbl_orderledger_items: itemsLabel,
         lbl_orderledger_coupons: couponsLabel,
         lbl_orderledger_promotions: promotionsLabel,
@@ -60,8 +63,8 @@ export const getOrderLedgerLabels = state => {
         lbl_orderledger_totalsavings: totalSavingsLabel,
         lbl_orderledger_tooltiptext: tooltipText,
         lbl_orderledger_free: free,
-      },
-    },
+      } = {},
+    } = {},
   } = state.Labels;
 
   return {

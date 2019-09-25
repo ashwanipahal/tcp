@@ -3,6 +3,7 @@ import { PropTypes } from 'prop-types';
 import withStyles from '@tcp/core/src/components/common/hoc/withStyles';
 import OverlayModal from '@tcp/core/src/components/features/OverlayModal';
 import TrackOrder from '@tcp/core/src/components/features/account/TrackOrder';
+import errorBoundary from '@tcp/core/src/components/common/hoc/withErrorBoundary/errorBoundary';
 import { HeaderTopNav, HeaderPromo, HeaderMiddleNav } from '../molecules';
 import style from '../Header.style';
 
@@ -20,6 +21,8 @@ const Header = ({
   isLoggedIn,
   cartItemCount,
   labels,
+  openMiniBagDispatch,
+  totalItems,
 }) => {
   return (
     <header className={className}>
@@ -39,6 +42,8 @@ const Header = ({
         openOverlay={openOverlay}
         isLoggedIn={isLoggedIn}
         cartItemCount={cartItemCount}
+        totalItems={totalItems}
+        openMiniBagDispatch={openMiniBagDispatch}
       />
       <HeaderPromo
         mobileMarkup
@@ -65,13 +70,16 @@ Header.propTypes = {
   openTrackOrderOverlay: PropTypes.func.isRequired,
   isLoggedIn: PropTypes.bool.isRequired,
   cartItemCount: PropTypes.func.isRequired,
+  openMiniBagDispatch: PropTypes.func.isRequired,
   labels: PropTypes.shape({}),
+  totalItems: PropTypes.string,
 };
 
 Header.defaultProps = {
   labels: {
     trackOrder: {},
   },
+  totalItems: 0,
 };
 
-export default withStyles(Header, style);
+export default withStyles(errorBoundary(Header), style);

@@ -26,23 +26,26 @@ exports[`Payment View should render correctly 1`] = `
         fontWeight="extrabold"
         letterSpacing="normal"
         lineHeight="normal"
+        link={null}
         textAlign="left"
-      />
+      >
+        lbl_payment_heading
+      </Styled(BodyCopy)>
     </Styled(Col)>
   </Styled(Row)>
   <Styled(DeleteCardModal)
     data={
       Object {
         "buttons": Object {
-          "cancel": undefined,
-          "confirm": undefined,
+          "cancel": "lbl_payment_modalGCCancel",
+          "confirm": "lbl_payment_modalGCConfirm",
         },
         "cardText": Object {
-          "cardEnd": undefined,
-          "expire": undefined,
+          "cardEnd": "lbl_payment_modalGCCardEnd",
+          "expire": "lbl_payment_gcExpire",
         },
         "description": Object {},
-        "heading": undefined,
+        "heading": "lbl_payment_modalDeleteCard",
         "subHeading": "",
       }
     }
@@ -81,6 +84,7 @@ exports[`Payment View should render correctly with cardList 1`] = `
             "small": 6,
           }
         }
+        message="lbl_payment_successMsg"
         status="success"
       />
     </Styled(Col)>
@@ -107,8 +111,11 @@ exports[`Payment View should render correctly with cardList 1`] = `
         fontWeight="extrabold"
         letterSpacing="normal"
         lineHeight="normal"
+        link={null}
         textAlign="left"
-      />
+      >
+        lbl_payment_heading
+      </Styled(BodyCopy)>
     </Styled(Col)>
   </Styled(Row)>
   <Styled(Row)
@@ -217,15 +224,15 @@ exports[`Payment View should render correctly with cardList 1`] = `
     data={
       Object {
         "buttons": Object {
-          "cancel": undefined,
-          "confirm": undefined,
+          "cancel": "lbl_payment_modalGCCancel",
+          "confirm": "lbl_payment_modalGCConfirm",
         },
         "cardText": Object {
-          "cardEnd": undefined,
-          "expire": undefined,
+          "cardEnd": "lbl_payment_modalGCCardEnd",
+          "expire": "lbl_payment_gcExpire",
         },
         "description": Object {},
-        "heading": undefined,
+        "heading": "lbl_payment_modalDeleteCard",
         "subHeading": "",
       }
     }
@@ -264,6 +271,7 @@ exports[`Payment View should render correctly with error 1`] = `
             "small": 6,
           }
         }
+        message="lbl_payment_errorMsg"
         status="error"
       />
     </Styled(Col)>
@@ -290,23 +298,26 @@ exports[`Payment View should render correctly with error 1`] = `
         fontWeight="extrabold"
         letterSpacing="normal"
         lineHeight="normal"
+        link={null}
         textAlign="left"
-      />
+      >
+        lbl_payment_heading
+      </Styled(BodyCopy)>
     </Styled(Col)>
   </Styled(Row)>
   <Styled(DeleteCardModal)
     data={
       Object {
         "buttons": Object {
-          "cancel": undefined,
-          "confirm": undefined,
+          "cancel": "lbl_payment_modalGCCancel",
+          "confirm": "lbl_payment_modalGCConfirm",
         },
         "cardText": Object {
-          "cardEnd": undefined,
-          "expire": undefined,
+          "cardEnd": "lbl_payment_modalGCCardEnd",
+          "expire": "lbl_payment_gcExpire",
         },
         "description": Object {},
-        "heading": undefined,
+        "heading": "lbl_payment_modalDeleteCard",
         "subHeading": "",
       }
     }
@@ -345,6 +356,7 @@ exports[`Payment View should render correctly with success 1`] = `
             "small": 6,
           }
         }
+        message="lbl_payment_successMsg"
         status="success"
       />
     </Styled(Col)>
@@ -371,23 +383,26 @@ exports[`Payment View should render correctly with success 1`] = `
         fontWeight="extrabold"
         letterSpacing="normal"
         lineHeight="normal"
+        link={null}
         textAlign="left"
-      />
+      >
+        lbl_payment_heading
+      </Styled(BodyCopy)>
     </Styled(Col)>
   </Styled(Row)>
   <Styled(DeleteCardModal)
     data={
       Object {
         "buttons": Object {
-          "cancel": undefined,
-          "confirm": undefined,
+          "cancel": "lbl_payment_modalGCCancel",
+          "confirm": "lbl_payment_modalGCConfirm",
         },
         "cardText": Object {
-          "cardEnd": undefined,
-          "expire": undefined,
+          "cardEnd": "lbl_payment_modalGCCardEnd",
+          "expire": "lbl_payment_gcExpire",
         },
         "description": Object {},
-        "heading": undefined,
+        "heading": "lbl_payment_modalDeleteCard",
         "subHeading": "",
       }
     }

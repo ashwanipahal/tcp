@@ -2,7 +2,7 @@
 
 exports[`ModuleA component should render Gymboree variant correctly 1`] = `
 <ForwardRef
-  className="   moduleA"
+  className="undefined   moduleA"
   fullBleed={
     Object {
       "large": false,
@@ -30,6 +30,8 @@ exports[`ModuleA component should render Gymboree variant correctly 1`] = `
             "dataLocatorCarousel": "carousel_banner",
             "dataLocatorPause": "moduleA_pause_button",
             "dataLocatorPlay": "moduleA_play_button",
+            "pauseIconButtonLabel": "Pause",
+            "playIconButtonLabel": "Play",
           }
         }
         options={
@@ -40,7 +42,6 @@ exports[`ModuleA component should render Gymboree variant correctly 1`] = `
             "dots": true,
             "dotsClass": "slick-dots",
             "fade": false,
-            "hidePlayPause": false,
             "nextArrow": <button
               className="slick-prev"
               data-locator="moduleA_right_arrow"
@@ -53,7 +54,7 @@ exports[`ModuleA component should render Gymboree variant correctly 1`] = `
             />,
             "responsive": Array [
               Object {
-                "breakpoint": 1024,
+                "breakpoint": 1200,
                 "settings": Object {
                   "arrows": false,
                 },
@@ -68,13 +69,12 @@ exports[`ModuleA component should render Gymboree variant correctly 1`] = `
           className="banner-slide"
         >
           <ForwardRef
-            alt=""
             data-locator="moduleA_image_0"
             imgConfigs={
               Array [
-                "c_fill,g_face:center,q_auto:best,h_622,w_750",
-                "c_fill,g_face:center,q_auto:best,h_406,w_768",
-                "c_fill,g_face:center,q_auto:best,h_474,w_1410",
+                "t_mod_A_img_m",
+                "t_mod_A_img_t",
+                "t_mod_A_img_d",
               ]
             }
             imgData={
@@ -93,6 +93,7 @@ exports[`ModuleA component should render Gymboree variant correctly 1`] = `
           >
             <ForwardRef
               className="link-text-wrapper"
+              color=""
               component="h2"
               dataLocator="moduleA_header_text_0"
               fontSize="fs16"
@@ -185,13 +186,12 @@ exports[`ModuleA component should render Gymboree variant correctly 1`] = `
           className="banner-slide"
         >
           <ForwardRef
-            alt=""
             data-locator="moduleA_image_1"
             imgConfigs={
               Array [
-                "c_fill,g_face:center,q_auto:best,h_622,w_750",
-                "c_fill,g_face:center,q_auto:best,h_406,w_768",
-                "c_fill,g_face:center,q_auto:best,h_474,w_1410",
+                "t_mod_A_img_m",
+                "t_mod_A_img_t",
+                "t_mod_A_img_d",
               ]
             }
             imgData={
@@ -210,6 +210,7 @@ exports[`ModuleA component should render Gymboree variant correctly 1`] = `
           >
             <ForwardRef
               className="link-text-wrapper"
+              color=""
               component="h2"
               dataLocator="moduleA_header_text_1"
               fontSize="fs16"
@@ -302,13 +303,12 @@ exports[`ModuleA component should render Gymboree variant correctly 1`] = `
           className="banner-slide"
         >
           <ForwardRef
-            alt=""
             data-locator="moduleA_image_2"
             imgConfigs={
               Array [
-                "c_fill,g_face:center,q_auto:best,h_622,w_750",
-                "c_fill,g_face:center,q_auto:best,h_406,w_768",
-                "c_fill,g_face:center,q_auto:best,h_474,w_1410",
+                "t_mod_A_img_m",
+                "t_mod_A_img_t",
+                "t_mod_A_img_d",
               ]
             }
             imgData={
@@ -327,6 +327,7 @@ exports[`ModuleA component should render Gymboree variant correctly 1`] = `
           >
             <ForwardRef
               className="link-text-wrapper"
+              color=""
               component="h2"
               dataLocator="moduleA_header_text_2"
               fontSize="fs16"
@@ -419,13 +420,12 @@ exports[`ModuleA component should render Gymboree variant correctly 1`] = `
           className="banner-slide"
         >
           <ForwardRef
-            alt=""
             data-locator="moduleA_image_3"
             imgConfigs={
               Array [
-                "c_fill,g_face:center,q_auto:best,h_622,w_750",
-                "c_fill,g_face:center,q_auto:best,h_406,w_768",
-                "c_fill,g_face:center,q_auto:best,h_474,w_1410",
+                "t_mod_A_img_m",
+                "t_mod_A_img_t",
+                "t_mod_A_img_d",
               ]
             }
             imgData={
@@ -444,6 +444,7 @@ exports[`ModuleA component should render Gymboree variant correctly 1`] = `
           >
             <ForwardRef
               className="link-text-wrapper"
+              color=""
               component="h2"
               dataLocator="moduleA_header_text_3"
               fontSize="fs16"
@@ -637,7 +638,7 @@ exports[`ModuleA component should render Gymboree variant correctly 1`] = `
 
 exports[`ModuleA component should render TCP or default variant correctly 1`] = `
 <ForwardRef
-  className="   moduleA"
+  className="undefined   moduleA"
   fullBleed={
     Object {
       "large": false,
@@ -665,6 +666,8 @@ exports[`ModuleA component should render TCP or default variant correctly 1`] = 
             "dataLocatorCarousel": "carousel_banner",
             "dataLocatorPause": "moduleA_pause_button",
             "dataLocatorPlay": "moduleA_play_button",
+            "pauseIconButtonLabel": "Pause",
+            "playIconButtonLabel": "Play",
           }
         }
         options={
@@ -675,7 +678,6 @@ exports[`ModuleA component should render TCP or default variant correctly 1`] = 
             "dots": true,
             "dotsClass": "slick-dots",
             "fade": false,
-            "hidePlayPause": false,
             "nextArrow": <button
               className="slick-prev"
               data-locator="moduleA_right_arrow"
@@ -688,7 +690,7 @@ exports[`ModuleA component should render TCP or default variant correctly 1`] = 
             />,
             "responsive": Array [
               Object {
-                "breakpoint": 1024,
+                "breakpoint": 1200,
                 "settings": Object {
                   "arrows": false,
                 },
@@ -703,13 +705,12 @@ exports[`ModuleA component should render TCP or default variant correctly 1`] = 
           className="banner-slide"
         >
           <ForwardRef
-            alt=""
             data-locator="moduleA_image_0"
             imgConfigs={
               Array [
-                "c_fill,g_face:center,q_auto:best,h_622,w_750",
-                "c_fill,g_face:center,q_auto:best,h_406,w_768",
-                "c_fill,g_face:center,q_auto:best,h_474,w_1410",
+                "t_mod_A_img_m",
+                "t_mod_A_img_t",
+                "t_mod_A_img_d",
               ]
             }
             imgData={
@@ -728,6 +729,7 @@ exports[`ModuleA component should render TCP or default variant correctly 1`] = 
           >
             <ForwardRef
               className="link-text-wrapper"
+              color=""
               component="h2"
               dataLocator="moduleA_header_text_0"
               fontSize="fs16"
@@ -820,13 +822,12 @@ exports[`ModuleA component should render TCP or default variant correctly 1`] = 
           className="banner-slide"
         >
           <ForwardRef
-            alt=""
             data-locator="moduleA_image_1"
             imgConfigs={
               Array [
-                "c_fill,g_face:center,q_auto:best,h_622,w_750",
-                "c_fill,g_face:center,q_auto:best,h_406,w_768",
-                "c_fill,g_face:center,q_auto:best,h_474,w_1410",
+                "t_mod_A_img_m",
+                "t_mod_A_img_t",
+                "t_mod_A_img_d",
               ]
             }
             imgData={
@@ -845,6 +846,7 @@ exports[`ModuleA component should render TCP or default variant correctly 1`] = 
           >
             <ForwardRef
               className="link-text-wrapper"
+              color=""
               component="h2"
               dataLocator="moduleA_header_text_1"
               fontSize="fs16"
@@ -937,13 +939,12 @@ exports[`ModuleA component should render TCP or default variant correctly 1`] = 
           className="banner-slide"
         >
           <ForwardRef
-            alt=""
             data-locator="moduleA_image_2"
             imgConfigs={
               Array [
-                "c_fill,g_face:center,q_auto:best,h_622,w_750",
-                "c_fill,g_face:center,q_auto:best,h_406,w_768",
-                "c_fill,g_face:center,q_auto:best,h_474,w_1410",
+                "t_mod_A_img_m",
+                "t_mod_A_img_t",
+                "t_mod_A_img_d",
               ]
             }
             imgData={
@@ -962,6 +963,7 @@ exports[`ModuleA component should render TCP or default variant correctly 1`] = 
           >
             <ForwardRef
               className="link-text-wrapper"
+              color=""
               component="h2"
               dataLocator="moduleA_header_text_2"
               fontSize="fs16"
@@ -1054,13 +1056,12 @@ exports[`ModuleA component should render TCP or default variant correctly 1`] = 
           className="banner-slide"
         >
           <ForwardRef
-            alt=""
             data-locator="moduleA_image_3"
             imgConfigs={
               Array [
-                "c_fill,g_face:center,q_auto:best,h_622,w_750",
-                "c_fill,g_face:center,q_auto:best,h_406,w_768",
-                "c_fill,g_face:center,q_auto:best,h_474,w_1410",
+                "t_mod_A_img_m",
+                "t_mod_A_img_t",
+                "t_mod_A_img_d",
               ]
             }
             imgData={
@@ -1079,6 +1080,7 @@ exports[`ModuleA component should render TCP or default variant correctly 1`] = 
           >
             <ForwardRef
               className="link-text-wrapper"
+              color=""
               component="h2"
               dataLocator="moduleA_header_text_3"
               fontSize="fs16"

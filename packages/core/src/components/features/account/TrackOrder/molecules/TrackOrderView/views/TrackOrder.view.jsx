@@ -1,4 +1,5 @@
 import React from 'react';
+import { PropTypes } from 'prop-types';
 import withStyles from '@tcp/core/src/components/common/hoc/withStyles';
 import Notification from '../../../../../../common/molecules/Notification';
 import BodyCopy from '../../../../../../common/atoms/BodyCopy';
@@ -16,37 +17,26 @@ const getGenericErrorMessage = labels => (
     fontFamily="secondary"
   >
     <BodyCopy fontFamily="secondary">
-      {labels.trackOrder && labels.trackOrder.lbl_header_trackOrderOverlay_genericError1}
+      {labels.trackOrder && labels.trackOrder.lbl_trackOrder_genericError1}
     </BodyCopy>
     <Anchor
       data-locator="contact_us_form_help"
       underline
       anchorVariation="primary"
       fontFamily="secondary"
-      to={labels.trackOrder && labels.trackOrder.lbl_header_trackOrderOverlay_genericErrorLinkHref}
+      to={labels.trackOrder && labels.trackOrder.lbl_trackOrder_genericErrorLinkHref}
       className="trackorder__modal__contactus"
       aria-label=""
       target="_blank"
     >
-      {labels.trackOrder && labels.trackOrder.lbl_header_trackOrderOverlay_genericErrorLink}
+      {labels.trackOrder && labels.trackOrder.lbl_trackOrder_genericErrorLinkText}
     </Anchor>
     <BodyCopy fontFamily="secondary">
-      {labels.trackOrder && labels.trackOrder.lbl_header_trackOrderOverlay_genericError2}
+      {labels.trackOrder && labels.trackOrder.lbl_trackOrder_genericError2}
     </BodyCopy>
   </BodyCopy>
 );
 
-// @flow
-type Props = {
-  labels: object,
-  errorMessage: string,
-  onSubmit: Function,
-  openLoginOverlay: Function,
-  setModalMountState: Function,
-  showNotification: string,
-  onChangeForm: Function,
-  className: string,
-};
 export const TrackOrderView = ({
   labels,
   errorMessage,
@@ -56,7 +46,7 @@ export const TrackOrderView = ({
   showNotification,
   onChangeForm,
   className,
-}: Props) => {
+}) => {
   return (
     <BodyCopy component="div" className={className}>
       <TrackOrderTopSection labels={labels} className="trackorder__modal__topsection" />
@@ -84,6 +74,19 @@ export const TrackOrderView = ({
       />
     </BodyCopy>
   );
+};
+
+TrackOrderView.propTypes = {
+  labels: PropTypes.shape({
+    trackOrder: PropTypes.shape({}),
+  }).isRequired,
+  className: PropTypes.string.isRequired,
+  errorMessage: PropTypes.string.isRequired,
+  onSubmit: PropTypes.func.isRequired,
+  openLoginOverlay: PropTypes.func.isRequired,
+  setModalMountState: PropTypes.func.isRequired,
+  showNotification: PropTypes.string.isRequired,
+  onChangeForm: PropTypes.func.isRequired,
 };
 
 export default withStyles(TrackOrderView, styles);

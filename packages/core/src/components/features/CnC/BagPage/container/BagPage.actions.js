@@ -1,8 +1,12 @@
+import { loadComponentLabelsData } from '@tcp/core/src/reduxStore/actions';
+import { LABELS } from '@tcp/core/src/reduxStore/constants';
+
 import BAGPAGE_CONSTANTS from '../BagPage.constants';
 
-const getOrderDetails = () => {
+const getOrderDetails = payload => {
   return {
     type: BAGPAGE_CONSTANTS.GET_ORDER_DETAILS,
+    payload,
   };
 };
 
@@ -20,9 +24,10 @@ const getOrderDetailsComplete = payload => {
   };
 };
 
-const startCheckout = () => {
+const startCheckout = payload => {
   return {
     type: BAGPAGE_CONSTANTS.START_BAG_CHECKOUT,
+    payload,
   };
 };
 
@@ -47,9 +52,10 @@ const setItemUnavailable = payload => {
   };
 };
 
-const openCheckoutConfirmationModal = () => {
+const openCheckoutConfirmationModal = (payload = false) => {
   return {
     type: BAGPAGE_CONSTANTS.OPEN_CHECKOUT_CONFIRMATION_MODAL,
+    payload,
   };
 };
 
@@ -80,9 +86,10 @@ const setModuleX = payload => {
   };
 };
 
-const removeUnqualifiedItemsAndCheckout = () => {
+const removeUnqualifiedItemsAndCheckout = navigation => {
   return {
     type: BAGPAGE_CONSTANTS.REMOVE_UNQUALIFIED_AND_CHECKOUT,
+    navigation,
   };
 };
 
@@ -99,6 +106,90 @@ const routeForCheckout = () => {
   };
 };
 
+const startPaypalCheckout = payload => {
+  return {
+    type: BAGPAGE_CONSTANTS.START_PAYPAL_CHECKOUT,
+    payload,
+  };
+};
+
+const paypalAuthorization = payload => {
+  return {
+    type: BAGPAGE_CONSTANTS.AUTHORIZATION_PAYPAL_CHECKOUT,
+    payload,
+  };
+};
+
+const addItemToSflList = payload => {
+  return {
+    type: BAGPAGE_CONSTANTS.ADD_ITEM_SAVE_FOR_LATER,
+    payload,
+  };
+};
+
+const setCartItemsSFL = payload => {
+  return {
+    payload,
+    type: BAGPAGE_CONSTANTS.CART_ITEMS_SET_SFL,
+  };
+};
+
+const setCartItemsSflError = payload => {
+  return {
+    payload,
+    type: BAGPAGE_CONSTANTS.CART_ITEMS_SET_SFL_ERROR,
+  };
+};
+
+const getSflData = () => {
+  return {
+    type: BAGPAGE_CONSTANTS.GET_SFL_DATA,
+  };
+};
+
+const setSflData = payload => {
+  return {
+    payload,
+    type: BAGPAGE_CONSTANTS.SET_SFL_DATA,
+  };
+};
+
+const startSflItemDelete = payload => {
+  return {
+    type: BAGPAGE_CONSTANTS.SFL_ITEMS_DELETE,
+    payload,
+  };
+};
+
+const setSflItemDeleted = payload => {
+  return {
+    payload,
+    type: BAGPAGE_CONSTANTS.SFL_ITEMS_SET_DELETED,
+  };
+};
+
+const startSflDataMoveToBag = payload => {
+  return {
+    type: BAGPAGE_CONSTANTS.SFL_ITEMS_MOVE_TO_BAG,
+    payload,
+  };
+};
+
+const openItemDeleteConfirmationModal = payload => {
+  return {
+    type: BAGPAGE_CONSTANTS.OPEN_ITEM_DELETE_CONFIRMATION_MODAL,
+    payload,
+  };
+};
+
+const closeItemDeleteConfirmationModal = () => {
+  return {
+    type: BAGPAGE_CONSTANTS.CLOSE_ITEM_DELETE_CONFIRMATION_MODAL,
+  };
+};
+
+const initActions = [loadComponentLabelsData({ category: LABELS.checkout })];
+
 export default {
   getOrderDetails,
   getOrderDetailsComplete,
@@ -112,7 +203,20 @@ export default {
   removeUnqualifiedItemsAndCheckout,
   openCheckoutConfirmationModal,
   setItemOOS,
+  paypalAuthorization,
+  startPaypalCheckout,
   setCartItemsUpdating,
   setItemUnavailable,
   routeForCheckout,
+  initActions,
+  addItemToSflList,
+  setCartItemsSFL,
+  setCartItemsSflError,
+  getSflData,
+  setSflData,
+  openItemDeleteConfirmationModal,
+  closeItemDeleteConfirmationModal,
+  startSflItemDelete,
+  startSflDataMoveToBag,
+  setSflItemDeleted,
 };

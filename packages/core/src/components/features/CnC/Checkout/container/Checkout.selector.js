@@ -1,10 +1,13 @@
+/* eslint-disable max-lines */
 import { formValueSelector } from 'redux-form';
 import { createSelector } from 'reselect';
-import { CHECKOUT_REDUCER_KEY } from '@tcp/core/src/constants/reducer.constants';
-
-/* eslint-disable extra-rules/no-commented-out-code */
-import { getAPIConfig, isMobileApp, getViewportInfo } from '@tcp/core/src/utils';
-
+import {
+  CHECKOUT_REDUCER_KEY,
+  SESSIONCONFIG_REDUCER_KEY,
+} from '@tcp/core/src/constants/reducer.constants';
+import { constants as venmoConstants } from '@tcp/core/src/components/common/atoms/VenmoPaymentButton/container/VenmoPaymentButton.util';
+import { getLocalStorage } from '@tcp/core/src/utils/localStorageManagement';
+import { getAPIConfig, isMobileApp, getViewportInfo, getLabelValue } from '../../../../../utils';
 /* eslint-disable extra-rules/no-commented-out-code */
 import CheckoutUtils from '../util/utility';
 import {
@@ -16,11 +19,18 @@ import {
 } from '../../../account/User/container/User.selectors';
 import constants from '../Checkout.constants';
 import BagPageSelector from '../../BagPage/container/BagPage.selectors';
+import { getAddressListState } from '../../../account/AddressBook/container/AddressBook.selectors';
+import {
+  getPickUpContactFormLabels,
+  getGiftServicesFormData,
+  getSyncError,
+  getPaypalPaymentSettings,
+} from './Checkout.selector.util';
+
 // import { getAddressListState } from '../../../account/AddressBook/container/AddressBook.selectors';
 
 function getRecalcOrderPointsInterval() {
   return 300000;
-  // return state.session.siteDetails.recalcOrderPointsInterval;
 }
 
 export const getCheckoutState = state => {
@@ -31,9 +41,10 @@ export const getCheckoutUiFlagState = state => {
   return state[CHECKOUT_REDUCER_KEY].get('uiFlags');
 };
 
-export const getCheckoutValuesState = state => {
-  return state[CHECKOUT_REDUCER_KEY].get('values');
-};
+export const getCheckoutValuesState = createSelector(
+  getCheckoutState,
+  state => state && state.get('values')
+);
 
 const getIsOrderHasShipping = createSelector(
   BagPageSelector.getOrderItems,
@@ -47,7 +58,7 @@ const getIsOrderHasPickup = createSelector(
 
 export const isGuest = createSelector(
   getPersonalDataState,
-  state => state && state.get('isGuest')
+  state => (state == null ? true : !!state.get('isGuest'))
 );
 
 function getIsMobile() {
@@ -63,27 +74,15 @@ function getIsMobile() {
   return getViewportInfo().isMobile;
 }
 
-// function isExpressCheckout(state) {
-//   return !!state.User.getIn(['personalData', 'isExpressEligible']);
-// }
-
 export const isExpressCheckout = createSelector(
   getPersonalDataState,
   state => state && state.get('isExpressEligible')
 );
 
-// function getCheckoutStage(state) {
-//   return state.Checkout.getIn(['uiFlags', 'stage']);
-// }
-
 export const getCheckoutStage = createSelector(
   getCheckoutUiFlagState,
   state => state && state.get('stage')
 );
-
-// function isRemembered(state) {
-//   return state.User.getIn(['personalData', 'isRemembered']);
-// }
 
 export const isRemembered = createSelector(
   getPersonalDataState,
@@ -100,17 +99,35 @@ export const getUserContactInfo = createSelector(
 );
 
 function getShippingDestinationValues(state) {
-  const { method, emailAddress, ...result } = JSON.parse(
+  const { emailAddress, ...result } = JSON.parse(
     JSON.stringify(state.Checkout.getIn(['values', 'shipping']))
   );
   // For shipping address when user logged-in, override email address that of user.
   // When user is guest, keep the address he specified in shipping section.
-  const email = getUserEmail(state) || emailAddress;
   return {
-    emailAddress: email,
+    emailAddress: getUserEmail(state) || emailAddress,
     ...result,
   };
 }
+
+const getShippingAddressID = createSelector(
+  getShippingDestinationValues,
+  shippingDestinationValues => {
+    const { onFileAddressId } = shippingDestinationValues;
+    return onFileAddressId;
+  }
+);
+
+const getShippingAddress = createSelector(
+  getShippingDestinationValues,
+  shippingDestinationValues => {
+    const { address } = shippingDestinationValues;
+    return address;
+  }
+);
+
+const getAddEditResponseAddressId = state =>
+  state.Checkout.getIn(['values', 'addEditResponseAddressId']);
 
 // function getAddressBook(state, country, noBillingAddresses) {
 //   let addresses = [];
@@ -150,8 +167,8 @@ function getShippingDestinationValues(state) {
 
 function getDefaultAddress(/* state, country, noBillingAddresses */) {
   return false;
-  // let countryFilteredAddresses = getAddressBook(state, country, noBillingAddresses);
-  // let defaultAddress = countryFilteredAddresses.find(
+  // const countryFilteredAddresses = getAddressBook(state, country, noBillingAddresses);
+  // const defaultAddress = countryFilteredAddresses.find(
   //   addressEntry => addressEntry.get && addressEntry.get('primary')
   // );
 
@@ -180,7 +197,7 @@ export const getPickupAltValues = createSelector(
 // }
 
 function getGiftWrappingValues(state) {
-  return state.Checkout.getIn(['values', 'giftWrap']);
+  return state.Checkout.getIn(['values', 'giftWrap']) || '';
 }
 
 function getCurrentSiteId() {
@@ -199,17 +216,21 @@ function isSmsUpdatesEnabled() {
   return isUsSite() && getIsSmsUpdatesEnabled();
 }
 
-function getCurrentPickupFormNumber(state) {
-  let phoneNumber = '';
+// function getCurrentPickupFormNumber(state) {
+//   let phoneNumber = '';
 
-  try {
-    phoneNumber = state.form.getIn(['checkoutPickup', 'values', 'pickUpContact', 'phoneNumber']);
-  } catch (error) {
-    // Gobble...Gobble.
-  }
+//   try {
+//     phoneNumber = state.form.getIn(['checkoutPickup', 'values', 'pickUpContact', 'phoneNumber']);
+//   } catch (error) {
+//     // Gobble...Gobble.
+//   }
 
-  return phoneNumber;
-}
+//   return phoneNumber;
+// }
+const getShippingGiftServicesField = state => {
+  const selector = formValueSelector('checkoutShipping');
+  return selector(state, 'giftServices');
+};
 
 const getShippingSmsSignUpFields = state => {
   const selector = formValueSelector('checkoutShipping');
@@ -219,6 +240,11 @@ const getShippingSmsSignUpFields = state => {
 const getShipmentMethodsFields = state => {
   const selector = formValueSelector('checkoutShipping');
   return selector(state, 'shipmentMethods');
+};
+
+const getShippingPickupFields = state => {
+  const selector = formValueSelector('checkoutPickup');
+  return selector(state, 'pickUpContact');
 };
 
 const getSelectedShipmentId = createSelector(
@@ -231,6 +257,21 @@ const getShippingSendOrderUpdate = createSelector(
   smsSignUpFields => smsSignUpFields && smsSignUpFields.sendOrderUpdate
 );
 
+export const getGiftServicesSend = createSelector(
+  getShippingGiftServicesField,
+  giftServicesFields => giftServicesFields && giftServicesFields.sendGiftServices
+);
+
+const getSaveToAddressBook = state => {
+  const selector = formValueSelector('checkoutShipping');
+  return selector(state, 'saveToAddressBook');
+};
+
+const getOnFileAddressKey = state => {
+  const selector = formValueSelector('checkoutShipping');
+  return selector(state, 'onFileAddressKey');
+};
+
 const getAddressFields = state => {
   const selector = formValueSelector('checkoutShipping');
   return selector(state, 'address');
@@ -241,26 +282,145 @@ const getAddressPhoneNo = createSelector(
   addressFields => addressFields && addressFields.phoneNumber
 );
 
-const getShippingLabels = state => {
-  const {
-    lbl_shipping_header: header,
-    lbl_shipping_sectionHeader: sectionHeader,
-    lbl_shipping_shipmentHeader: shipmentHeader,
-    lbl_shipping_returnTo: returnTo,
-    lbl_shipping_nextText: nextText,
-    lbl_shipping_backLinkText: backLinkText,
-    lbl_shipping_billingText: billingText,
-  } = state.Labels.checkout && state.Labels.checkout.shipping;
-  return {
-    header,
-    sectionHeader,
-    shipmentHeader,
-    returnTo,
-    nextText,
-    billingText,
-    backLinkText,
-  };
+const getDefaultShipping = state => {
+  const selector = formValueSelector('checkoutShipping');
+  return selector(state, 'defaultShipping');
 };
+
+const getShippingPhoneAndEmail = createSelector(
+  getShippingDestinationValues,
+  shippingDestinationValues => {
+    const { phoneNumber, emailAddress } = shippingDestinationValues;
+    return { phoneNumber, emailAddress };
+  }
+);
+
+const getCurrentPickupFormNumber = createSelector(
+  getShippingPickupFields,
+  pickUpContact => pickUpContact && pickUpContact.phoneNumber
+);
+
+const getBillingLabelValue = state =>
+  state.Labels && state.Labels.checkout && state.Labels.checkout.billing;
+
+const getBillingLabels = createSelector(
+  getBillingLabelValue,
+  billingLabel => {
+    const labels = {};
+    const labelKeys = [
+      'lbl_billing_title',
+      'lbl_billing_backLinkPickup',
+      'lbl_billing_backLinkShipping',
+      'lbl_billing_nextSubmit',
+      'lbl_billing_billingAddress',
+      'lbl_billing_sameAsShipping',
+      'lbl_billing_paymentMethodTitle',
+      'lbl_billing_saveToAccount',
+      'lbl_billing_defaultPayment',
+      'lbl_billing_default_card',
+      'lbl_billing_addNewAddress',
+      'lbl_billing_creditCard',
+      'lbl_billing_selectFromCard',
+      'lbl_billing_addCreditHeading',
+      'lbl_billing_default',
+      'lbl_billing_cardDetailsTitle',
+      'lbl_billing_editBtn',
+      'lbl_billing_creditCardEnd',
+      'lbl_billing_addCreditBtn',
+      'lbl_billing_paypal',
+      'lbl_billing_venmo',
+      'lbl_billing_selectCardTitle',
+      'lbl_billing_select',
+      'lbl_billing_cvvCode',
+    ];
+    labelKeys.forEach(key => {
+      labels[key] = getLabelValue(billingLabel, key);
+    });
+    const {
+      lbl_billing_title: header,
+      lbl_billing_backLinkPickup: backLinkPickup,
+      lbl_billing_backLinkShipping: backLinkShipping,
+      lbl_billing_nextSubmit: nextSubmitText,
+      lbl_billing_billingAddress: billingAddress,
+      lbl_billing_sameAsShipping: sameAsShipping,
+      lbl_billing_default_card: defaultCard,
+      lbl_billing_addNewAddress: addNewAddress,
+      lbl_billing_paymentMethodTitle: paymentMethod,
+      lbl_billing_saveToAccount: saveToAccount,
+      lbl_billing_defaultPayment: defaultPayment,
+      lbl_billing_creditCard: creditCard,
+      lbl_billing_creditCardEnd: creditCardEnd,
+      lbl_billing_selectFromCard: selectFromCard,
+      lbl_billing_addCreditHeading: addCreditHeading,
+      lbl_billing_default: defaultBadge,
+      lbl_billing_cardDetailsTitle: cardDetailsTitle,
+      lbl_billing_editBtn: edit,
+      lbl_billing_addCreditBtn: addCreditBtn,
+      lbl_billing_paypal: paypal,
+      lbl_billing_venmo: venmo,
+      lbl_billing_selectCardTitle: selectCardTitle,
+      lbl_billing_select: select,
+      lbl_billing_cvvCode: cvvCode,
+    } = labels;
+    return {
+      header,
+      backLinkShipping,
+      backLinkPickup,
+      nextSubmitText,
+      billingAddress,
+      sameAsShipping,
+      defaultCard,
+      addNewAddress,
+      paymentMethod,
+      saveToAccount,
+      defaultPayment,
+      creditCard,
+      creditCardEnd,
+      selectFromCard,
+      addCreditHeading,
+      defaultBadge,
+      cardDetailsTitle,
+      edit,
+      addCreditBtn,
+      paypal,
+      venmo,
+      selectCardTitle,
+      select,
+      cvvCode,
+    };
+  }
+);
+
+const getCreditFieldLabelsObj = state =>
+  state.Labels && state.Labels.global && state.Labels.global.creditCardFields;
+
+const getCreditFieldLabels = createSelector(
+  getCreditFieldLabelsObj,
+  creditFieldLabels => {
+    const labels = {};
+    const labelKeys = [
+      'lbl_creditField_cardNumber',
+      'lbl_creditField_expMonth',
+      'lbl_creditField_expYear',
+      'lbl_creditField_cvvCode',
+    ];
+    labelKeys.forEach(key => {
+      labels[key] = getLabelValue(creditFieldLabels, key);
+    });
+    const {
+      lbl_creditField_cardNumber: cardNumber,
+      lbl_creditField_expMonth: expMonth,
+      lbl_creditField_expYear: expYear,
+      lbl_creditField_cvvCode: cvvCode,
+    } = labels;
+    return {
+      cardNumber,
+      expMonth,
+      expYear,
+      cvvCode,
+    };
+  }
+);
 
 const getSmsSignUpLabels = state => {
   const {
@@ -276,17 +436,60 @@ const getSmsSignUpLabels = state => {
 };
 
 const getEmailSignUpLabels = state => {
-  const {
-    lbl_pickup_emailSignupHeading: emailSignupHeading,
-    lbl_pickup_emailSignupSubHeading: emailSignupSubHeading,
-    lbl_pickup_emailSignupSubSubHeading: emailSignupSubSubHeading,
-    lbl_pickup_emailSignupContact: emailSignupContact,
-  } = state.Labels.checkout && state.Labels.checkout.pickup;
   return {
-    emailSignupHeading,
-    emailSignupSubHeading,
-    emailSignupSubSubHeading,
-    emailSignupContact,
+    emailSignupHeading: getLabelValue(
+      state.Labels,
+      'lbl_pickup_emailSignupHeading',
+      'pickup',
+      'checkout'
+    ),
+    emailSignupSubHeading: getLabelValue(
+      state.Labels,
+      'lbl_pickup_emailSignupSubHeading',
+      'pickup',
+      'checkout'
+    ),
+    emailSignupSubSubHeading: getLabelValue(
+      state.Labels,
+      'lbl_pickup_emailSignupSubSubHeading',
+      'pickup',
+      'checkout'
+    ),
+    emailSignupContact: getLabelValue(
+      state.Labels,
+      'lbl_pickup_emailSignupContact',
+      'pickup',
+      'checkout'
+    ),
+  };
+};
+
+const getCheckoutProgressBarLabels = state => {
+  return {
+    pickupLabel: getLabelValue(
+      state.Labels,
+      'lbl_checkoutheader_pickup',
+      'checkoutHeader',
+      'checkout'
+    ),
+    shippingLabel: getLabelValue(
+      state.Labels,
+      'lbl_checkoutHeader_shipping',
+      'checkoutHeader',
+      'checkout'
+    ),
+    billingLabel: getLabelValue(
+      state.Labels,
+      'lbl_checkoutHeader_billing',
+      'checkoutHeader',
+      'checkout'
+    ),
+    reviewLabel: getLabelValue(
+      state.Labels,
+      'lbl_checkoutHeader_review',
+      'checkoutHeader',
+      'checkout'
+    ),
   };
 };
 
@@ -295,10 +498,29 @@ const getShipmentMethods = state => {
 };
 
 const getDefaultShipmentID = createSelector(
-  getShipmentMethods,
-  shipmentMethods => {
-    const defaultMethod = shipmentMethods.find(method => method.isDefault === true);
+  [getShipmentMethods, getShippingDestinationValues],
+  (shipmentMethods, shippingDestinationValues) => {
+    if (shippingDestinationValues && shippingDestinationValues.method) {
+      const {
+        method: { shippingMethodId },
+      } = shippingDestinationValues;
+      if (shippingMethodId) {
+        const defaultShipment = shipmentMethods.find(method => method.id === shippingMethodId);
+        return defaultShipment && defaultShipment.id;
+      }
+    }
+    const defaultMethod = shipmentMethods.find(
+      (method, index) => method.isDefault === true || index === 0
+    );
     return defaultMethod && defaultMethod.id;
+  }
+);
+
+const getSelectedShippingMethodDetails = createSelector(
+  [getDefaultShipmentID, getShipmentMethods],
+  (shippingID, method) => {
+    const selectedMethod = method.filter(item => item.id === shippingID);
+    return selectedMethod.length > 0 && selectedMethod[0];
   }
 );
 
@@ -307,70 +529,12 @@ const getAlternateFormFields = state => {
   return selector(state, 'pickUpAlternate');
 };
 
-const isPickupAlt = createSelector(
-  getAlternateFormFields,
-  pickUpAlternate => pickUpAlternate && pickUpAlternate.firstName
+export const isPickupAlt = createSelector(
+  getPickupAltValues,
+  pickUpAlternate => pickUpAlternate && !!pickUpAlternate.firstName
 );
 
-export const getPickUpContactFormLabels = state => {
-  const {
-    lbl_pickup_title: title,
-    lbl_pickup_firstName: firstName,
-    lbl_pickup_govIdText: govIdText,
-    lbl_pickup_lastName: lastName,
-    lbl_pickup_email: email,
-    lbl_pickup_mobile: mobile,
-    lbl_pickup_SMSHeading: SMSHeading,
-    lbl_pickup_SMSLongText: SMSLongText,
-    lbl_pickup_SMSPrivatePolicy: SMSPrivatePolicy,
-    lbl_pickup_alternativeHeading: alternativeHeading,
-    lbl_pickup_alternativeSubHeading: alternativeSubHeading,
-    lbl_pickup_alternativeFirstName: alternativeFirstName,
-    lbl_pickup_alternativeGovIdText: alternativeGovIdText,
-    lbl_pickup_alternativeLastName: alternativeLastName,
-    lbl_pickup_alternativeEmail: alternativeEmail,
-    lbl_pickup_pickup_contact: pickupContactText,
-    lbl_pickup_btn_cancel: btnCancel,
-    lbl_pickup_btn_update: btnUpdate,
-    lbl_pickup_btnSaveUpdate: btnSaveUpdate,
-    lbl_pickup_titleEditPickUp: titleEditPickup,
-    lbl_pickup_anchor_edit: anchorEdit,
-    lbl_pickup_buttonText: pickupText,
-    lbl_pickup_billingText: billingText,
-    lbl_pickup_nextText: nextText,
-    lbl_pickup_returnTo: returnTo,
-  } = state.Labels.global && state.Labels.checkout.pickup;
-  const { lbl_shipping_header: shippingText } =
-    state.Labels.checkout && state.Labels.checkout.shipping;
-  return {
-    title,
-    firstName,
-    govIdText,
-    lastName,
-    email,
-    mobile,
-    SMSHeading,
-    SMSLongText,
-    SMSPrivatePolicy,
-    alternativeHeading,
-    alternativeSubHeading,
-    alternativeFirstName,
-    alternativeGovIdText,
-    alternativeLastName,
-    alternativeEmail,
-    pickupContactText,
-    btnCancel,
-    btnUpdate,
-    btnSaveUpdate,
-    titleEditPickup,
-    anchorEdit,
-    pickupText,
-    billingText,
-    nextText,
-    returnTo,
-    shippingText,
-  };
-};
+const getLabels = state => state.Labels;
 
 export const getAlternateFormUpdate = createSelector(
   getAlternateFormFields,
@@ -392,12 +556,6 @@ const getSmsNumberForOrderUpdates = createSelector(
   smsSignUpFields => smsSignUpFields && smsSignUpFields.phoneNumber
 );
 
-// export const getUserEmailNew = createSelector(
-//   [isGuest,isRemembered],
-//   (getUserContactInfo)=>
-
-// )
-
 function getPickupInitialPickupSectionValues(state) {
   // let userContactInfo = userStoreView.getUserContactInfo(state);
   // values (if any) entered previously in the checkout process,
@@ -407,7 +565,6 @@ function getPickupInitialPickupSectionValues(state) {
     ...{ hasAlternatePickup: isPickupAlt(state) },
     ...getPickupAltValues(state),
   };
-
   return {
     pickUpContact: {
       firstName: pickupValues.firstName || getUserName(state),
@@ -423,6 +580,251 @@ function getPickupInitialPickupSectionValues(state) {
     pickUpAlternate: isPickupAlt(state) ? alternativeData : {},
   };
 }
+
+function getIsPaymentDisabled(state) {
+  const orderDetails = state.CartPageReducer.get('orderDetails');
+  if (orderDetails) {
+    return orderDetails.get('grandTotal') <= orderDetails.get('giftCardsTotal');
+  }
+  return false;
+}
+
+function getAddressByKey(state, onFileAddressKey) {
+  const addressList = getAddressListState(state);
+  if (addressList) {
+    return addressList.find(address => address.nickName === onFileAddressKey);
+  }
+  return false;
+}
+
+function getBillingValues(state) {
+  return state.Checkout.getIn(['values', 'billing']);
+}
+
+function getDetailedCreditCardById(state, id) {
+  return JSON.parse(JSON.stringify(state.PaymentReducer.get('cardList'))).find(
+    ({ creditCardId }) => (creditCardId && creditCardId.toString()) === id.toString()
+  );
+}
+
+function isCardNotUpdated(state, cardId) {
+  return getBillingValues(state).onFileCardId === cardId;
+}
+
+const getReviewLabels = state => {
+  const getReviewLabelValue = label => getLabelValue(state.Labels, label, 'review', 'checkout');
+  return {
+    header: getReviewLabelValue('lbl_review_title'),
+    backLinkBilling: getReviewLabelValue('lbl_review_backLinkBilling'),
+    nextSubmitText: getReviewLabelValue('lbl_review_nextSubmit'),
+    applyConditionPreText: getReviewLabelValue('lbl_review_applyConditionPreText'),
+    applyConditionTermsText: getReviewLabelValue('lbl_review_applyConditionTermsText'),
+    applyConditionAndText: getReviewLabelValue('lbl_review_applyConditionAndText'),
+    applyConditionPolicyText: getReviewLabelValue('lbl_review_applyConditionPolicyText'),
+    pickupSectionTitle: getReviewLabelValue('lbl_review_pickupSectionTitle'),
+    shippingSectionTitle: getReviewLabelValue('lbl_review_shippingSectionTitle'),
+    billingSectionTitle: getReviewLabelValue('lbl_review_billingSectionTitle'),
+    ariaLabelReviewPageTitle: getReviewLabelValue('lbl_review_ariaLabelReviewPageTitle'),
+    ariaLabelBackLink: getReviewLabelValue('lbl_review_ariaLabelBackLink'),
+  };
+};
+
+const getCurrentOrderId = state => {
+  return state.CartPageReducer.getIn(['orderDetails', 'orderId']);
+};
+
+const getSmsNumberForBillingOrderUpdates = state =>
+  state.Checkout.getIn(['values', 'smsInfo', 'numberForUpdates']);
+
+const getVenmoData = () => {
+  const venmoDataString = getLocalStorage(venmoConstants.VENMO_STORAGE_KEY);
+  return venmoDataString ? JSON.parse(venmoDataString) : {};
+};
+
+const getVenmoClientTokenData = state =>
+  state[CHECKOUT_REDUCER_KEY].getIn(['values', 'venmoClientTokenData']);
+
+const isVenmoPaymentInProgress = () => {
+  const venmoProgressString = getLocalStorage(venmoConstants.VENMO_INPROGRESS_KEY);
+  return venmoProgressString ? venmoProgressString === 'true' : false;
+};
+
+const isVenmoPickupBannerDisplayed = () => {
+  const venmoPickupBanner = getLocalStorage(venmoConstants.VENMO_PICKUP_BANNER);
+  return venmoPickupBanner ? venmoPickupBanner === 'true' : false;
+};
+
+const isVenmoShippingBannerDisplayed = () => {
+  const venmoShippingBanner = getLocalStorage(venmoConstants.VENMO_SHIPPING_BANNER);
+  return venmoShippingBanner ? venmoShippingBanner === 'true' : false;
+};
+
+const isGiftOptionsEnabled = state => {
+  return state[CHECKOUT_REDUCER_KEY].getIn(['uiFlags', 'isGiftOptionsEnabled']);
+};
+
+/**
+ * Mainly used to check for Venmo nonce expiry
+ * @param state
+ */
+const isVenmoNonceNotExpired = state => {
+  const venmoData = getVenmoData();
+  const expiry = venmoConstants.VENMO_NONCE_EXPIRY_TIMEOUT;
+  const { nonce, timestamp } = venmoData;
+  const venmoClientTokenData = getVenmoClientTokenData(state);
+  const venmoPaymentTokenAvailable = venmoClientTokenData
+    ? venmoClientTokenData.venmoPaymentTokenAvailable
+    : false;
+  return venmoPaymentTokenAvailable === 'TRUE' || (nonce && Date.now() - timestamp <= expiry);
+};
+
+const isVenmoPaymentToken = state => {
+  const venmoClientTokenData = getVenmoClientTokenData(state);
+  const venmoPaymentTokenAvailable = venmoClientTokenData
+    ? venmoClientTokenData.venmoPaymentTokenAvailable
+    : false;
+  return venmoPaymentTokenAvailable === 'TRUE';
+};
+
+const isVenmoNonceActive = state => {
+  const venmoData = getVenmoData();
+  const venmoPaymentInProgress = isVenmoPaymentInProgress();
+  return (
+    venmoData &&
+    (venmoData.nonce || isVenmoPaymentToken(state)) &&
+    venmoPaymentInProgress &&
+    isVenmoNonceNotExpired(state)
+  );
+};
+
+function isVenmoPaymentAvailable(state) {
+  const venmoData = getVenmoData();
+  const venmoPaymentInProgress = isVenmoPaymentInProgress();
+  return venmoData && (venmoData.nonce || isVenmoPaymentToken(state)) && venmoPaymentInProgress;
+}
+
+function isVenmoMessageDisplayed(state) {
+  const hasShippingCaptured =
+    state.checkout.values.shipping && state.checkout.values.shipping.onFileAddressId;
+  const hasPickupCaptured =
+    state.checkout.values.pickUpContact && state.checkout.values.pickUpContact.firstName;
+  return (
+    hasPickupCaptured ||
+    hasShippingCaptured ||
+    (state.checkout.uiFlags && state.checkout.uiFlags.venmoInformationMessageDisplayed)
+  );
+}
+
+function getVenmoUserEmail(state) {
+  const pickupValues = getPickupValues(state);
+  return (
+    getUserEmail(state) ||
+    (state.checkout.values.shipping && state.checkout.values.shipping.emailAddress) ||
+    (pickupValues && pickupValues.emailAddress) ||
+    (state.user.personalData.contactInfo && state.user.personalData.contactInfo.emailAddress)
+  );
+}
+
+const getGiftWrapOptions = state => {
+  return state.Checkout.getIn(['options', 'giftWrapOptions']);
+};
+
+const getSelectedGiftWrapDetails = state => {
+  const selectedGiftWrapValues = getGiftWrappingValues(state);
+  const selectedOptionData = getGiftWrapOptions(state);
+  return { ...selectedGiftWrapValues, ...selectedOptionData };
+};
+
+/**
+ * @function getInternationalCheckoutApiUrl
+ * @description this selector gives borderFree url for iframe
+ */
+function getInternationalCheckoutApiUrl() {
+  return getAPIConfig().borderFree;
+}
+/**
+ * @function getInternationalCheckoutCommUrl
+ * @description this selector gives borderFreeComm url for iframe
+ */
+function getInternationalCheckoutCommUrl() {
+  return getAPIConfig().borderFreeComm;
+}
+
+/**
+ *
+ * @function getInternationalCheckoutUrl
+ * @param {*} state
+ * @description this selector gives international url from state.
+ */
+function getInternationalCheckoutUrl(state) {
+  return state.Checkout.getIn(['options', 'internationalUrl']);
+}
+const getIsVenmoEnabled = state => {
+  return (
+    state[SESSIONCONFIG_REDUCER_KEY] &&
+    state[SESSIONCONFIG_REDUCER_KEY].getIn(['siteDetails', 'VENMO_ENABLED']) === 'TRUE'
+  );
+};
+
+const getCurrentLanguage = state => {
+  return state.CountrySelector.get('language') || constants.DEFAULT_LANGUAGE;
+};
+
+const getReviewPageLabels = state =>
+  state.Labels && state.Labels.checkout && state.Labels.checkout.review;
+
+/**
+ * @function getPickupSectionLabels
+ * @param {Object} state
+ * @description This selector provides the state of the review page labels.
+ * @returns {Object}
+ */
+const getPickupSectionLabels = createSelector(
+  getReviewPageLabels,
+  reviewLabels => {
+    const labels = {};
+    const labelKeys = [
+      'lbl_review_pickupSectionTitle',
+      'lbl_review_sectionAnchor',
+      'lbl_review_sectionPickupText',
+      'lbl_review_sectionPickupItem',
+      'lbl_review_sectionPickupItems',
+      'lbl_review_sectionPickupToday',
+      'lbl_review_sectionPickupAlternateHeading',
+      'lbl_review_sectionPickupOrderTitle',
+    ];
+    labelKeys.forEach(key => {
+      labels[key] = getLabelValue(reviewLabels, key);
+    });
+    return labels;
+  }
+);
+
+/**
+ * @function getShippingSectionLabels
+ * @param {Object} state
+ * @description This selector provides the state of the review page labels.
+ * @returns {Object}
+ */
+const getShippingSectionLabels = createSelector(
+  getReviewPageLabels,
+  reviewLabels => {
+    const labels = {};
+    const labelKeys = [
+      'lbl_review_shippingSectionTitle',
+      'lbl_review_sectionAnchor',
+      'lbl_review_sectionShippingHeading',
+      'lbl_review_sectionShippingAddressTitle',
+      'lbl_review_sectionShippingMethodTitle',
+      'lbl_review_sectionShippingGiftServiceTitle',
+      'lbl_review_sectionShippingGiftServiceDefault',
+    ];
+    labelKeys.forEach(key => {
+      labels[key] = getLabelValue(reviewLabels, key);
+    });
+    return labels;
+  }
+);
 
 export default {
   getRecalcOrderPointsInterval,
@@ -445,7 +847,6 @@ export default {
   getSendOrderUpdate,
   getAddressFields,
   getAddressPhoneNo,
-  getShippingLabels,
   getSmsSignUpLabels,
   getIsOrderHasPickup,
   getEmailSignUpLabels,
@@ -457,4 +858,49 @@ export default {
   getAlternateFormUpdate,
   getPickUpContactFormLabels,
   getUserEmail,
+  getSaveToAddressBook,
+  getOnFileAddressKey,
+  getShippingSmsSignUpFields,
+  getShippingAddressID,
+  getDefaultShipping,
+  getAddEditResponseAddressId,
+  getBillingLabels,
+  getLabels,
+  getShippingAddress,
+  getIsPaymentDisabled,
+  getBillingValues,
+  getAddressByKey,
+  isCardNotUpdated,
+  getDetailedCreditCardById,
+  getCheckoutProgressBarLabels,
+  getSyncError,
+  getGiftServicesFormData,
+  getGiftServicesSend,
+  getReviewLabels,
+  getPickupSectionLabels,
+  getShippingSectionLabels,
+  isGiftOptionsEnabled,
+  getPaypalPaymentSettings,
+  getSelectedGiftWrapDetails,
+  getSelectedShippingMethodDetails,
+  getCurrentOrderId,
+  getSmsNumberForBillingOrderUpdates,
+  getVenmoData,
+  getVenmoClientTokenData,
+  isVenmoPaymentAvailable,
+  isVenmoMessageDisplayed,
+  isVenmoNonceActive,
+  getVenmoUserEmail,
+  isVenmoNonceNotExpired,
+  isVenmoPaymentInProgress,
+  isVenmoPaymentToken,
+  getInternationalCheckoutCommUrl,
+  getInternationalCheckoutApiUrl,
+  getInternationalCheckoutUrl,
+  getIsVenmoEnabled,
+  getCurrentLanguage,
+  isVenmoShippingBannerDisplayed,
+  isVenmoPickupBannerDisplayed,
+  getShippingPhoneAndEmail,
+  getCreditFieldLabels,
 };

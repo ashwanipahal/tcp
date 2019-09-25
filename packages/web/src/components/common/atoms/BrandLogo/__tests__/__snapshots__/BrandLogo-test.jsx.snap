@@ -1,11 +1,13 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
 exports[`BrandLogo component BrandLogo component renders correctly without props 1`] = `
-<div>
+<Connect(Component)
+  name="brand_logo"
+>
   <Styled(Anchor)
-    to="/"
+    to="/home"
   >
     <Styled(Image) />
   </Styled(Anchor)>
-</div>
+</Connect(Component)>
 `;

@@ -4,19 +4,24 @@ import HomePageView from '../views/HomePage.view';
 
 HomePageView.pageInfo = {
   name: 'homepage',
+  modules: ['labels', 'header', 'footer', 'navigation'],
 };
+
 HomePageView.getInitActions = () => initActions;
 
 const mapStateToProps = state => {
-  const homepageSlots = state.Layouts.homepage.slots;
-  const newObj = {};
-  homepageSlots.forEach(slotItem => {
-    newObj[slotItem.name] = state.Modules[slotItem.contentId];
-    newObj[slotItem.name].name = slotItem.moduleName;
-    return newObj;
-  });
+  const { Layouts, Modules } = state;
+  const homepageSlots = Layouts.homepage ? Layouts.homepage.slots || [] : [];
+  const accessibility = state.Labels && state.Labels.global && state.Labels.global.accessibility;
+
   return {
-    ...newObj,
+    slots: homepageSlots.map(slot => {
+      return {
+        ...slot,
+        accessibility,
+        data: Modules[slot.contentId],
+      };
+    }),
   };
 };
 

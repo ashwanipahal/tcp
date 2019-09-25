@@ -12,6 +12,11 @@ const CouponInfo = styled.View`
   margin-left: ${props => props.theme.spacing.ELEM_SPACING.XS};
 `;
 
+const TitleWrapper = styled.View`
+  display: flex;
+  padding-right: ${props => props.theme.spacing.LAYOUT_SPACING.MED};
+`;
+
 const CouponWrapper = styled.View`
   flex-direction: row;
   justify-content: center;
@@ -26,4 +31,4 @@ const CouponReward = styled.View`
   background-color: ${props => props.theme.colorPalette.orange[800]};
 `;
 
-export { CouponTileSection, CouponWrapper, CouponInfo, CouponReward };
+export { CouponTileSection, CouponWrapper, CouponInfo, CouponReward, TitleWrapper };

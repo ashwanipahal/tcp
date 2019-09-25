@@ -5,36 +5,79 @@ exports[`ProfileInformation should render correctly 1`] = `
   <ProfileInfoActions
     defaultStore=""
     handleComponentChange={[Function]}
-    labels={Object {}}
+    labels={
+      Object {
+        "profile": Object {},
+      }
+    }
     mailingAddress={Object {}}
+    mountSurveyModal={false}
     percentageIncrement={Object {}}
     profileCompletion=""
+    toggleModalState={[Function]}
     userBirthday=""
-    userSurvey={Array []}
+    userSurvey={
+      Immutable.Map {
+        "answers1": Immutable.List [],
+        "answers2": Immutable.List [],
+      }
+    }
   />
   <PersonalInformation
     airMiles=""
     handleComponentChange={[Function]}
-    labels={Object {}}
+    labels={
+      Object {
+        "profile": Object {},
+      }
+    }
     myPlaceNumber=""
     profileInfoTile={Object {}}
+    toggleModalState={[Function]}
     userBirthday=""
     userEmail=""
     userFullName=""
     userPhoneNumber=""
   />
+  <AboutYouInfo
+    labels={
+      Object {
+        "profile": Object {},
+      }
+    }
+    userSurvey={
+      Immutable.Map {
+        "answers1": Immutable.List [],
+        "answers2": Immutable.List [],
+      }
+    }
+  />
   <ChangePasswordInfo
     handleComponentChange={[Function]}
-    labels={Object {}}
+    labels={
+      Object {
+        "profile": Object {},
+      }
+    }
   />
   <BirthdaySaving
+    childrenBirthdays={Immutable.List []}
     handleComponentChange={[Function]}
-    labels={Object {}}
+    labels={
+      Object {
+        "profile": Object {},
+      }
+    }
+  />
+  <Connect(BirthdaySavings)
+    handleComponentChange={[Function]}
+    mountAddChildModal={false}
   />
   <Styled(View)>
     <Styled(Anchor)
       accessibilityLabel=""
       anchorVariation="primary"
+      colorName={null}
       customStyle={Object {}}
       data-locator="my-rewards-program-details"
       fontSizeVariation="medium"
@@ -48,6 +91,7 @@ exports[`ProfileInformation should render correctly 1`] = `
       <Styled(Anchor)
         accessibilityLabel=""
         anchorVariation="primary"
+        colorName={null}
         customStyle={Object {}}
         data-locator="my-rewards-tnc"
         fontSizeVariation="medium"

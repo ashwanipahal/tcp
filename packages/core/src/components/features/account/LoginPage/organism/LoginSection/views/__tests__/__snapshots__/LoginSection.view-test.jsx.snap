@@ -20,6 +20,7 @@ exports[`LoginSection component should renders correctly 1`] = `
           "login": Object {},
         }
       }
+      showForgotPasswordForm={[Function]}
     />
     <ReduxForm
       className="elem-mb-LRG"
@@ -61,6 +62,7 @@ exports[`LoginSection component should renders correctly 1`] = `
       fontWeight="regular"
       letterSpacing="normal"
       lineHeight="normal"
+      link={null}
       textAlign="left"
     >
       <Styled(BodyCopy)
@@ -72,6 +74,7 @@ exports[`LoginSection component should renders correctly 1`] = `
         fontWeight="regular"
         letterSpacing="normal"
         lineHeight="normal"
+        link={null}
         textAlign="center"
       />
     </Styled(BodyCopy)>

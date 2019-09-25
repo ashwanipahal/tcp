@@ -28,6 +28,7 @@ exports[`EmptyRewards should render correctly 1`] = `
       fontWeight="regular"
       letterSpacing="normal"
       lineHeight="normal"
+      link={null}
       textAlign="left"
     >
       msg
@@ -56,6 +57,7 @@ exports[`EmptyRewards should render correctly 1`] = `
       color="white"
       data-locator="my-rewards-shop-now-btn"
       fill="BLUE"
+      onClick={[Function]}
     >
       shop now
     </Styled(Button)>

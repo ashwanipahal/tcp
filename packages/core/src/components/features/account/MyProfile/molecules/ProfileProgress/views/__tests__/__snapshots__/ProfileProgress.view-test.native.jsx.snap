@@ -30,6 +30,7 @@ exports[`ProfileProgress should render correctly 1`] = `
   >
     <Styled(Styled(ImageComp))
       alt="Completion"
+      host=""
       resizeMode="contain"
       source={
         Object {
@@ -37,12 +38,18 @@ exports[`ProfileProgress should render correctly 1`] = `
         }
       }
       title="profile completion"
+      url=""
     />
   </Styled(View)>
   <Styled(Styled(BodyCopy))
+    accessibilityText=""
+    dataLocator=""
     fontSize="fs18"
     fontWeight="black"
+    margin={null}
+    numberOfLines={null}
     text="20%"
+    textDecoration={null}
   />
 </Styled(View)>
 `;

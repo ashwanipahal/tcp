@@ -14,7 +14,7 @@ describe('ErrorMessageFormatter test', () => {
       original: null,
       response: {
         body: {
-          errors: [
+          error: [
             {
               errorCode: '_CODE_NOT_APPLICABLE',
               errorKey: errMsg,
@@ -26,7 +26,7 @@ describe('ErrorMessageFormatter test', () => {
       },
       status: 400,
     };
-    expect(getFormattedError(err).toString()).toEqual(
+    expect(getFormattedError(err, { DEFAULT: 'oops error occured' }).toString()).toEqual(
       {
         errorCodes: errMsg,
         errorMessages: {

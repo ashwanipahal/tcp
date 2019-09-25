@@ -1,7 +1,7 @@
 import React, { Fragment } from 'react';
 import { Field, reduxForm } from 'redux-form';
 import PropTypes from 'prop-types';
-import { Button, Col, Row, Image, TextBox } from '@tcp/core/src/components/common/atoms';
+import { Button, Col, Row, TextBox, DamImage } from '@tcp/core/src/components/common/atoms';
 import BodyCopy from '@tcp/core/src/components/common/atoms/BodyCopy';
 import { Grid, Modal } from '@tcp/core/src/components/common/molecules';
 import withStyles from '@tcp/core/src/components/common/hoc/withStyles';
@@ -10,6 +10,7 @@ import SignupConfirm from '../../SignupConfirm';
 import SignupFormIntro from '../../SignupFormIntro';
 
 import signupWrapperStyle from '../EmailSignupModal.style';
+import config from '../Config';
 
 class EmailSignupModal extends React.PureComponent {
   constructor(props) {
@@ -78,6 +79,8 @@ class EmailSignupModal extends React.PureComponent {
     } = this.props;
     const { validationStarted = false } = this.state;
 
+    const { IMG_DATA } = config;
+
     return (
       <Fragment>
         <Modal
@@ -93,7 +96,9 @@ class EmailSignupModal extends React.PureComponent {
           closeIconDataLocator={
             subscription.success ? 'thank_you_modal_close_btn' : 'email_signup_modal_close_btn'
           }
-          contentLabel={`${formViewConfig.signUpForLabel} ${formViewConfig.offerTypeLabel}`}
+          contentLabel={`${formViewConfig.lbl_SignUp_signUpForLabel} ${
+            formViewConfig.lbl_SignUp_offerTypeLabel
+          }`}
           aria={{
             describedby: subscription.success
               ? 'sign-up-modal-confirm-view'
@@ -109,7 +114,11 @@ class EmailSignupModal extends React.PureComponent {
                   hideCol={{ small: true, medium: true }}
                   className="img-wrapper"
                 >
-                  <Image alt={formViewConfig.imageAltText} src={formViewConfig.imageSrc} />
+                  <DamImage
+                    alt={formViewConfig.imageAltText}
+                    imgConfigs={IMG_DATA.imgConfig}
+                    imgData={formViewConfig.lbl_SignUp_imageSrc}
+                  />
                 </Col>
                 <Col colSize={{ small: 6, medium: 8, large: 8 }} ignoreGutter={{ large: true }}>
                   <SignupConfirm formViewConfig={formViewConfig} susbscriptionType="email" />
@@ -124,7 +133,7 @@ class EmailSignupModal extends React.PureComponent {
                         dataLocator="shop_now_btn"
                         onClick={this.closeModal}
                       >
-                        {formViewConfig.shopNowLabel}
+                        {formViewConfig.lbl_SignUp_shopNowLabel}
                       </Button>
                     </Col>
                   </Row>
@@ -141,7 +150,11 @@ class EmailSignupModal extends React.PureComponent {
                     hideCol={{ small: true, medium: true }}
                     className="img-wrapper"
                   >
-                    <Image alt={formViewConfig.imageAltText} src={formViewConfig.imageSrc} />
+                    <DamImage
+                      alt={formViewConfig.imageAltText}
+                      imgConfigs={IMG_DATA.imgConfig}
+                      imgData={formViewConfig.lbl_SignUp_imageSrc}
+                    />
                   </Col>
                   <Col colSize={{ small: 6, medium: 8, large: 8 }}>
                     <SignupFormIntro formViewConfig={formViewConfig} />
@@ -151,7 +164,7 @@ class EmailSignupModal extends React.PureComponent {
                       className="field-container"
                     >
                       <Field
-                        placeholder={formViewConfig.placeholderText}
+                        placeholder={formViewConfig.lbl_SignUp_placeholderText}
                         name="signup"
                         id="signup"
                         type="text"
@@ -162,7 +175,7 @@ class EmailSignupModal extends React.PureComponent {
                         onKeyPress={this.onSignUpInputKeyPress}
                       />
                       <BodyCopy fontSize="fs12" fontFamily="secondary" className="terms-label">
-                        {formViewConfig.termsTextLabel}
+                        {formViewConfig.lbl_SignUp_termsTextLabel}
                       </BodyCopy>
                     </Col>
                     <Row className="button-wrapper-form" fullBleed>
@@ -183,7 +196,7 @@ class EmailSignupModal extends React.PureComponent {
                           dataLocator="join_now_btn"
                           onClick={this.submitForm}
                         >
-                          {formViewConfig.joinButtonLabel}
+                          {formViewConfig.lbl_SignUp_joinButtonLabel}
                         </Button>
                       </Col>
                     </Row>

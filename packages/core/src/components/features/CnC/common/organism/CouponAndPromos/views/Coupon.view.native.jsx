@@ -1,11 +1,19 @@
 import React from 'react';
 import PropTypes from 'prop-types';
+import { View } from 'react-native';
 import withStyles from '../../../../../../common/hoc/withStyles';
-import { styles, WrapperStyle, CouponListContainer } from '../styles/Coupon.style.native';
+import {
+  styles,
+  WrapperStyle,
+  CouponListContainer,
+  StyledHeader,
+} from '../styles/Coupon.style.native';
 import CouponForm from '../../../molecules/CouponForm';
 import CouponListSection from '../../../../../../common/organisms/CouponListSection';
 import CouponHelpModal from './CouponHelpModal.view';
 import CouponDetailModal from './CouponDetailModal.view';
+import CollapsibleContainer from '../../../../../../common/molecules/CollapsibleContainer';
+import BodyCopy from '../../../../../../common/atoms/BodyCopy';
 
 class CouponView extends React.PureComponent {
   state = {
@@ -28,20 +36,34 @@ class CouponView extends React.PureComponent {
     });
   };
 
-  render() {
-    const {
-      isFetching,
-      labels,
-      handleApplyCoupon,
-      handleApplyCouponFromList,
-      appliedCouponList,
-      availableCouponList,
-      handleRemoveCoupon,
-      handleErrorCoupon,
-    } = this.props;
+  getHeader = ({ labels }) => {
+    return (
+      <StyledHeader>
+        <BodyCopy
+          mobileFontFamily="secondary"
+          fontSize="fs16"
+          fontWeight="semibold"
+          component="span"
+          text={labels.couponCollapsibleHeader}
+        />
+      </StyledHeader>
+    );
+  };
 
-    const { detailStatus, helpStatus, selectedCoupon } = this.state;
-
+  getContent = ({
+    isFetching,
+    labels,
+    handleApplyCoupon,
+    handleApplyCouponFromList,
+    appliedCouponList,
+    availableCouponList,
+    handleRemoveCoupon,
+    handleErrorCoupon,
+    detailStatus,
+    helpStatus,
+    selectedCoupon,
+    showAccordian,
+  }) => {
     return (
       <WrapperStyle>
         <CouponForm
@@ -50,6 +72,7 @@ class CouponView extends React.PureComponent {
           source="form"
           labels={labels}
           onNeedHelpTextClick={this.toggleNeedHelpModal}
+          showAccordian={showAccordian}
         />
         <CouponListContainer>
           {appliedCouponList && (
@@ -98,11 +121,61 @@ class CouponView extends React.PureComponent {
         />
       </WrapperStyle>
     );
+  };
+
+  render() {
+    const {
+      isFetching,
+      labels,
+      handleApplyCoupon,
+      handleApplyCouponFromList,
+      appliedCouponList,
+      availableCouponList,
+      handleRemoveCoupon,
+      handleErrorCoupon,
+      isCheckout,
+      showAccordian,
+    } = this.props;
+
+    const { detailStatus, helpStatus, selectedCoupon } = this.state;
+
+    const header = this.getHeader({ labels });
+    const body = this.getContent({
+      isFetching,
+      labels,
+      handleApplyCoupon,
+      handleApplyCouponFromList,
+      appliedCouponList,
+      availableCouponList,
+      handleRemoveCoupon,
+      handleErrorCoupon,
+      isCheckout,
+      detailStatus,
+      helpStatus,
+      selectedCoupon,
+      showAccordian,
+    });
+    const defaultOpen = availableCouponList && availableCouponList.size > 0;
+    return (
+      <View>
+        {showAccordian ? (
+          <CollapsibleContainer
+            header={header}
+            body={body}
+            defaultOpen={defaultOpen}
+            iconLocator="arrowicon"
+          />
+        ) : (
+          <>{body}</>
+        )}
+      </View>
+    );
   }
 }
 
 CouponView.propTypes = {
   labels: PropTypes.shape({}).isRequired,
+  isCheckout: PropTypes.bool.isRequired,
   isFetching: PropTypes.bool.isRequired,
   handleApplyCoupon: PropTypes.func.isRequired,
   handleApplyCouponFromList: PropTypes.func.isRequired,
@@ -110,6 +183,11 @@ CouponView.propTypes = {
   appliedCouponList: PropTypes.shape([]).isRequired,
   availableCouponList: PropTypes.shape([]).isRequired,
   handleErrorCoupon: PropTypes.func.isRequired,
+  showAccordian: PropTypes.bool,
+};
+
+CouponView.defaultProps = {
+  showAccordian: true,
 };
 
 export default withStyles(CouponView, styles);

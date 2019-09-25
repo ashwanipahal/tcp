@@ -1,53 +1,43 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
-import AddedToBagActionsView from '../views/AddedToBagActions';
-import { setCheckoutModalMountedState } from '../../../account/LoginPage/container/LoginPage.actions';
-import { checkoutModalOpenState } from '../../../account/LoginPage/container/LoginPage.selectors';
+import AddedToBagActionsView from '../views/AddedToBagActions.view';
 import { getLabelsAddToActions } from '../../AddedToBag/container/AddedToBag.selectors';
-import { routerPush } from '../../../../../utils';
-import { getUserLoggedInState } from '../../../account/User/container/User.selectors';
+import { CHECKOUT_ROUTES } from '../../Checkout/Checkout.constants';
+import utility from '../../Checkout/util/utility';
 import bagPageActions from '../../BagPage/container/BagPage.actions';
+import { getIsInternationalShipping } from '../../../../../reduxStore/selectors/siteDetails.selectors';
+import checkoutSelectors from '../../Checkout/container/Checkout.selector';
 
 export class AddedToBagContainer extends React.Component<Props> {
-  constructor(props) {
-    super(props);
-    this.handleContinueShopping = this.handleContinueShopping.bind(this);
-  }
-
-  handleContinueShopping() {
-    const { closeAddedToBag } = this.props;
-    closeAddedToBag();
-  }
+  onClickViewBag = () => {
+    utility.routeToPage(CHECKOUT_ROUTES.bagPage);
+  };
 
   render() {
     const {
       labels,
       showAddTobag,
-      inheritedStyles,
-      navigation,
       handleCartCheckout,
-      checkoutModalMountedState,
-      closeCheckoutModalMountState,
-      isUserLoggedIn,
-      routeForBagCheckout,
+      isEditingItem,
+      isInternationalShipping,
+      isVenmoEnabled,
+      navigation,
+      showVenmo,
+      isNoNEmptyBag,
     } = this.props;
-    const onClickViewBag = () => {
-      routerPush('/cart', '/bag');
-    };
     return (
       <AddedToBagActionsView
-        onClickViewBag={onClickViewBag}
-        handleCartCheckout={handleCartCheckout}
         labels={labels}
-        handleContinueShopping={this.handleContinueShopping}
+        onClickViewBag={this.onClickViewBag}
         showAddTobag={showAddTobag}
-        routeForBagCheckout={routeForBagCheckout}
-        inheritedStyles={inheritedStyles}
-        closeCheckoutModalMountState={closeCheckoutModalMountState}
-        checkoutModalMountedState={checkoutModalMountedState}
+        handleCartCheckout={handleCartCheckout}
+        isEditingItem={isEditingItem}
+        isInternationalShipping={isInternationalShipping}
+        isVenmoEnabled={isVenmoEnabled}
         navigation={navigation}
-        isUserLoggedIn={isUserLoggedIn}
+        showVenmo={showVenmo}
+        isNoNEmptyBag={isNoNEmptyBag}
       />
     );
   }
@@ -55,17 +45,15 @@ export class AddedToBagContainer extends React.Component<Props> {
 
 AddedToBagContainer.propTypes = {
   labels: PropTypes.shape.isRequired,
-  isUserLoggedIn: PropTypes.bool.isRequired,
-  routeForBagCheckout: PropTypes.func.isRequired,
+  handleCartCheckout: PropTypes.func.isRequired,
+  isInternationalShipping: PropTypes.bool.isRequired,
+  isNoNEmptyBag: PropTypes.number.isRequired,
 };
 
 const mapDispatchToProps = dispatch => {
   return {
-    closeCheckoutModalMountState: payload => {
-      dispatch(setCheckoutModalMountedState(payload));
-    },
-    routeForBagCheckout: () => {
-      dispatch(bagPageActions.routeForCheckout());
+    handleCartCheckout: payload => {
+      dispatch(bagPageActions.startCheckout(payload));
     },
   };
 };
@@ -73,8 +61,8 @@ const mapDispatchToProps = dispatch => {
 const mapStateToProps = state => {
   return {
     labels: getLabelsAddToActions(state),
-    checkoutModalMountedState: checkoutModalOpenState(state),
-    isUserLoggedIn: getUserLoggedInState(state),
+    isInternationalShipping: getIsInternationalShipping(state),
+    isVenmoEnabled: checkoutSelectors.getIsVenmoEnabled(state),
   };
 };
 

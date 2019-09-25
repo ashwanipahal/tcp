@@ -10,23 +10,32 @@ import BodyCopy from '../../../../../../common/atoms/BodyCopy';
 import Anchor from '../../../../../../common/atoms/Anchor';
 import Modal from '../../../../../../common/molecules/Modal';
 import Button from '../../../../../../common/atoms/Button';
-import { Style, ModalHeading } from '../styles/PickupMainContactEditForm.style.native';
+import {
+  Style,
+  ModalContainer,
+  PickupEditHeader,
+  EditAnchor,
+} from '../styles/PickupMainContactEditForm.style.native';
 
 class PickupMainContactEditForm extends React.Component {
   static defaultValidation = getStandardConfig(['firstName', 'lastName', 'phoneNumber']);
 
+  pickupEditSubmit = value => {
+    const { onEditModeChange } = this.props;
+    const { pickUpContact } = value;
+    onEditModeChange(false, pickUpContact);
+  };
+
   SaveButton = () => {
-    const { labels, onClose } = this.props;
+    const { labels, handleSubmit } = this.props;
     return (
-      <View>
-        <Button buttonVariation="variable-width" text="Close" onPress={onClose} />
-        <Button
-          fill="BLUE"
-          buttonVariation="variable-width"
-          text={labels.btnSaveUpdate}
-          onPress={() => {}}
-        />
-      </View>
+      <Button
+        fill="BLUE"
+        color="white"
+        buttonVariation="variable-width"
+        text={labels.btnSaveUpdate}
+        onPress={handleSubmit(this.pickupEditSubmit)}
+      />
     );
   };
 
@@ -37,42 +46,36 @@ class PickupMainContactEditForm extends React.Component {
   };
 
   renderSectionTitle = () => {
-    const { isEditing, labels } = this.props;
-    return isEditing ? (
-      <View className="header">
+    const { labels } = this.props;
+    return (
+      <PickupEditHeader>
         <BodyCopy
           fontFamily="primary"
-          fontSize="fs26"
+          fontSize="fs28"
           fontWeight="regular"
+          color="gray.900"
           text={labels.pickupContactText}
         />
-      </View>
-    ) : (
-      <View className="header">
-        <BodyCopy
-          fontFamily="primary"
-          fontSize="fs26"
-          fontWeight="regular"
-          text={labels.pickupContactText}
-        />
-        <View className="EditAnchor">
+        <EditAnchor>
           <Anchor
-            noUnderline
-            anchorVariation="secondary"
+            underline
+            anchorVariation="primary"
             fontSize="fs12"
             noLink
             href="#"
             target="_blank"
             text={labels.anchorEdit}
             onPress={this.handleEnterEditModeClick}
+            color="gray.900"
           />
-        </View>
-      </View>
+        </EditAnchor>
+      </PickupEditHeader>
     );
   };
 
   render() {
-    const { isMobile, formData, isEditing, labels, isReset, onClose } = this.props;
+    const { isMobile, formData, isEditing, labels, isReset, handleExitEditModeClick } = this.props;
+    const headerIconStyle = { position: 'absolute', top: -2, left: -50 };
     if (isReset) {
       const { dispatch } = this.props;
       dispatch(resetSection('checkoutPickup', 'pickUpContact'));
@@ -82,26 +85,23 @@ class PickupMainContactEditForm extends React.Component {
         {this.renderSectionTitle()}
         {!isEditing && <PickUpContactDisplay formData={formData} />}
         {isEditing && isMobile && (
-          <View>
-            <Modal isOpen={isEditing} onRequestClose={onClose}>
-              <View>
-                <ModalHeading>
-                  <BodyCopy
-                    fontFamily="primary"
-                    fontSize="fs26"
-                    fontWeight="regular"
-                    text={labels.titleEditPickup}
-                  />
-                </ModalHeading>
-                <ContactFormFields
-                  className="pick-up-input toggle"
-                  showPhoneNumber
-                  labels={labels}
-                />
-                {this.SaveButton()}
-              </View>
-            </Modal>
-          </View>
+          <Modal
+            isOpen={isEditing}
+            onRequestClose={handleExitEditModeClick}
+            heading={labels.titleEditPickup}
+            horizontalBar={false}
+            headingAlign="center"
+            fullWidth
+            headerStyle={headerIconStyle}
+            iconType="arrow"
+            headingFontWeight="semibold"
+            fontSize="fs12"
+          >
+            <ModalContainer>
+              <ContactFormFields className="pick-up-input toggle" showPhoneNumber labels={labels} />
+              {this.SaveButton()}
+            </ModalContainer>
+          </Modal>
         )}
       </View>
     );

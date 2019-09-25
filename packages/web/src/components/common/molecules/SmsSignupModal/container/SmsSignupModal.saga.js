@@ -1,4 +1,5 @@
 import { call, put, takeLatest } from 'redux-saga/effects';
+import logger from '@tcp/core/src/utils/loggerInstance';
 import endpoints from '@tcp/core/src/service/endpoint';
 import emailSignupAbstractor from '@tcp/core/src/services/abstractors/common/EmailSmsSignup';
 
@@ -12,8 +13,7 @@ export function* subscribeSms({ payload }) {
     const res = yield call(emailSignupAbstractor.subscribeSms, baseURI, relURI, payload, method);
     yield put(smsSignupStatus({ subscription: res }));
   } catch (err) {
-    // eslint-disable-next-line no-console
-    console.log(err);
+    logger.error(err);
   }
 }
 

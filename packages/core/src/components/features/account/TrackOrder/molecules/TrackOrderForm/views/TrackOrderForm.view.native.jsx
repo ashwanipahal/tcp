@@ -1,4 +1,5 @@
 import React from 'react';
+import { PropTypes } from 'prop-types';
 import { View } from 'react-native';
 import { reduxForm, Field } from 'redux-form';
 import Button from '../../../../../../common/atoms/Button';
@@ -9,15 +10,7 @@ import getStandardConfig from '../../../../../../../utils/formValidation/validat
 import { InputField, CtaView, AnchorView } from '../styles/TrackOrderForm.native.style';
 import constants from '../../../TrackOrder.constants';
 
-// @flow
-type Props = {
-  labels: object,
-  handleSubmit: Function,
-  onChangeForm: Function,
-  invalid: Boolean,
-};
-
-class TrackOrderForm extends React.PureComponent<Props> {
+class TrackOrderForm extends React.PureComponent {
   render() {
     const { labels, handleSubmit, onChangeForm, invalid } = this.props;
     return (
@@ -26,7 +19,7 @@ class TrackOrderForm extends React.PureComponent<Props> {
           <Field
             id="emailAddress"
             type="text"
-            label={labels.trackOrder.lbl_header_trackOrderOverlay_emailAddress_placeholder}
+            label={labels.trackOrder.lbl_trackOrder_emailPlaceholder}
             name="emailAddress"
             component={TextBox}
             dataLocator="track_order_email_address"
@@ -34,13 +27,14 @@ class TrackOrderForm extends React.PureComponent<Props> {
             onChange={onChangeForm}
             showSuccessCheck={false}
             enableSuccessCheck={false}
+            marginBottom={false}
           />
         </InputField>
         <InputField>
           <Field
             id="orderNumber"
             type="text"
-            label={labels.trackOrder.lbl_header_trackOrderOverlay_orderNo_placeholder}
+            label={labels.trackOrder.lbl_trackOrder_orderNoPlaceholder}
             name="orderNumber"
             component={TextBox}
             dataLocator="track_order_no"
@@ -48,14 +42,15 @@ class TrackOrderForm extends React.PureComponent<Props> {
             onChange={onChangeForm}
             showSuccessCheck={false}
             enableSuccessCheck={false}
+            marginBottom={false}
           />
         </InputField>
         <AnchorView>
           <Anchor
             anchorVariation="primary"
             underline
-            url={labels.trackOrder.lbl_header_trackOrderOverlay_needHelpLink}
-            text={labels.trackOrder.lbl_header_trackOrderOverlay_needHelp}
+            url={labels.trackOrder.lbl_trackOrder_needHelpLink}
+            text={labels.trackOrder.lbl_trackOrder_needHelp}
             locator="track_order_need_help"
           />
         </AnchorView>
@@ -63,10 +58,10 @@ class TrackOrderForm extends React.PureComponent<Props> {
           <Button
             fill="BLUE"
             type="submit"
-            onPress={handleSubmit}
+            onPress={!invalid ? handleSubmit : null}
             buttonVariation="variable-width"
             disableButton={invalid}
-            text={labels.trackOrder.lbl_header_trackOrderOverlay_trackOrderBtn}
+            text={labels.trackOrder.lbl_trackOrder_trackOrderBtn}
             color="white"
           />
         </CtaView>
@@ -74,6 +69,15 @@ class TrackOrderForm extends React.PureComponent<Props> {
     );
   }
 }
+
+TrackOrderForm.propTypes = {
+  labels: PropTypes.shape({
+    trackOrder: PropTypes.shape({}),
+  }).isRequired,
+  handleSubmit: PropTypes.func.isRequired,
+  onChangeForm: PropTypes.func.isRequired,
+  invalid: PropTypes.bool.isRequired,
+};
 
 const validateMethod = createValidateMethod(
   getStandardConfig([{ emailAddress: 'emailAddressNoAsync' }, 'orderNumber'])

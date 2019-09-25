@@ -1,0 +1,48 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Image Text CTA component renders correctly 1`] = `
+<div
+  className="img-wrapper"
+>
+  <div>
+    <Styled(Anchor)
+      asPath="/test"
+      className="dropdown-items"
+      fontSizeVariation="large"
+      fontWeightVariation="active"
+      key="test_key"
+      text="text"
+      title="title"
+      to="/test"
+      url="/test"
+    >
+      <WithTheme(DamImage)
+        className="image-cta"
+        imgData={
+          Object {
+            "alt": "test",
+            "crop_d": "",
+            "crop_m": "",
+            "crop_t": "",
+            "url": "/test",
+          }
+        }
+      />
+      <Styled(BodyCopy)
+        className="image-comp"
+        color="text.primary"
+        component="p"
+        fontFamily="secondary"
+        fontSize="fs13"
+        fontWeight="extrabold"
+        letterSpacing="normal"
+        lineHeight="normal"
+        link={null}
+        textAlign="center"
+      >
+        text
+      </Styled(BodyCopy)>
+    </Styled(Anchor)>
+  </div>
+</div>
+`;

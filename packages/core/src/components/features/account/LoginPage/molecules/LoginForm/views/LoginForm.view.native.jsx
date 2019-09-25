@@ -3,17 +3,17 @@ import { View } from 'react-native';
 import { reduxForm, Field } from 'redux-form';
 import { PropTypes } from 'prop-types';
 import { noop } from 'lodash';
+import { getLabelValue } from '@tcp/core/src/utils/utils';
 import createThemeColorPalette from '@tcp/core/styles/themes/createThemeColorPalette';
 import withStyles from '../../../../../../common/hoc/withStyles.native';
-import Notification from '../../../../../../common/molecules/Notification/views/Notification.native';
 import { FormStyle, ShowHideWrapper, HideShowFieldWrapper } from '../styles/LoginForm.style.native';
 import TextBox from '../../../../../../common/atoms/TextBox';
-import InputCheckbox from '../../../../../../common/atoms/InputCheckbox';
 import CustomButton from '../../../../../../common/atoms/Button';
 import Anchor from '../../../../../../common/atoms/Anchor';
 import LineComp from '../../../../../../common/atoms/Line';
 import createValidateMethod from '../../../../../../../utils/formValidation/createValidateMethod';
 import getStandardConfig from '../../../../../../../utils/formValidation/validatorStandardConfig';
+import TouchFaceIdCheckBox from '../../../../common/molecule/FaceTouchCheckBox/views/faceTouchIdCheckBox.native';
 
 const colorPallete = createThemeColorPalette();
 
@@ -32,6 +32,7 @@ const styles = {
 
   inputCheckBoxStyle: {
     width: '90%',
+    marginBottom: 30,
   },
 };
 
@@ -40,7 +41,6 @@ const styles = {
  * @return {JSX} IconClass : Return jsx icon component
  * @desc This method based on the props generate icon component.
  */
-
 class LoginForm extends React.PureComponent<Props> {
   constructor(props) {
     super(props);
@@ -49,10 +49,21 @@ class LoginForm extends React.PureComponent<Props> {
     };
   }
 
+  componentDidUpdate(prevProps) {
+    const { change, setEmailid } = this.props;
+    if (!prevProps.setEmailid && setEmailid) {
+      change('emailAddress', setEmailid);
+    }
+  }
+
   showForgotPassword = () => {
-    const { showForgotPasswordForm, resetForm } = this.props;
-    resetForm();
+    const { showForgotPasswordForm } = this.props;
     showForgotPasswordForm();
+  };
+
+  handleContinueAsGuest = () => {
+    const { handleContinueAsGuest } = this.props;
+    handleContinueAsGuest();
   };
 
   changeType = e => {
@@ -64,18 +75,10 @@ class LoginForm extends React.PureComponent<Props> {
   };
 
   render() {
-    const { labels, handleSubmit, onSubmit, variation, loginErrorMessage, loginError } = this.props;
+    const { labels, handleSubmit, onSubmit, variation, getTouchStatus } = this.props;
     const { type } = this.state;
     return (
       <Fragment>
-        {loginError && (
-          <Notification
-            status="error"
-            colSize={{ large: 11, medium: 7, small: 6 }}
-            message={loginErrorMessage}
-          />
-        )}
-
         <View {...this.props}>
           <Field
             label={labels.login.lbl_login_email}
@@ -95,33 +98,34 @@ class LoginForm extends React.PureComponent<Props> {
               component={TextBox}
               dataLocator="password"
               secureTextEntry={type === 'password'}
+              rightText={
+                type === 'password'
+                  ? getLabelValue(labels, 'lbl_createAccount_show', 'registration')
+                  : getLabelValue(labels, 'lbl_createAccount_hide', 'registration')
+              }
             />
             <HideShowFieldWrapper>
               <Anchor
-                fontSizeVariation="small"
+                fontSizeVariation="medium"
                 fontFamily="secondary"
-                underline
                 anchorVariation="primary"
                 onPress={this.changeType}
                 noLink
                 to="/#"
                 dataLocator=""
-                text={type === 'password' ? 'show' : 'hide'}
+                text={
+                  type === 'password'
+                    ? getLabelValue(labels, 'lbl_createAccount_show', 'registration')
+                    : getLabelValue(labels, 'lbl_createAccount_hide', 'registration')
+                }
               />
             </HideShowFieldWrapper>
           </ShowHideWrapper>
           <View style={styles.inputCheckBoxStyle}>
-            <Field
-              name="userTouchId"
-              component={InputCheckbox}
-              dataLocator="rememberMe"
-              disabled={false}
-              rightText={labels.login.lbl_login_touch_id}
-            />
+            <TouchFaceIdCheckBox labels={labels} getTouchStatus={getTouchStatus} />
           </View>
 
           <CustomButton
-            color={colorPallete.white}
             fill="BLUE"
             text={labels.login.lbl_login_loginCTA}
             buttonVariation="variable-width"
@@ -136,6 +140,7 @@ class LoginForm extends React.PureComponent<Props> {
               buttonVariation="variable-width"
               customStyle={styles.loginButtonStyle}
               text={labels.login.lbl_login_modal_checkout_as_guest}
+              onPress={this.handleContinueAsGuest}
             />
           )}
 

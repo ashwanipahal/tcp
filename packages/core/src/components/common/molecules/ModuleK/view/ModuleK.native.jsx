@@ -3,6 +3,7 @@ import PropTypes from 'prop-types';
 import { getScreenWidth } from '@tcp/core/src/utils';
 import Button from '../../../atoms/Button';
 import LinkText from '../../LinkText';
+import config from '../config';
 
 import {
   MainWrapper,
@@ -15,6 +16,14 @@ import { ImageGrid, PromoBanner, Carousel } from '../..';
 const MODULE_HEIGHT = 260;
 const MODULE_WIDTH = getScreenWidth();
 
+/**
+ * @class ModuleK - global reusable component will provide featured content module
+ * with a composite background image and 2-6 CTAs
+ * This component is plug and play at any given slot in layout by passing required data
+ * @param {mediaLinkedList} mediaLinkedList the list of data for carousel images
+ * @param {promoBanner} promoBanner promo banner data
+ * @param {singleCTAButton} singleCTAButton button data
+ */
 class ModuleK extends React.PureComponent {
   /**
    * @function renderCarouselSlide : renders module K Images.
@@ -23,7 +32,7 @@ class ModuleK extends React.PureComponent {
    */
   renderCarouselSlide = ({ item }, navigation) => {
     const { mediaLinkedList, slideIndex, promoBanner, singleCTAButton } = item;
-
+    const { IMG_DATA } = config;
     return (
       <React.Fragment>
         <HeaderWrapper>
@@ -42,13 +51,13 @@ class ModuleK extends React.PureComponent {
             testID={`moduleK_image_${slideIndex}`}
             mediaList={mediaLinkedList}
             navigation={navigation}
+            IMG_DATA={IMG_DATA}
           />
         )}
         {singleCTAButton && (
           <WrapperView width={getScreenWidth()}>
             <Button
               width="225px"
-              height="42px"
               buttonVariation="variable-width"
               text={singleCTAButton.text || `Shop Now`}
               testID={`moduleK_button_set_${slideIndex}`}

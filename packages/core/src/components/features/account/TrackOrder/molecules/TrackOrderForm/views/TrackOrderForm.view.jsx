@@ -1,4 +1,5 @@
 import React from 'react';
+import { PropTypes } from 'prop-types';
 import { reduxForm, Field } from 'redux-form';
 import withStyles from '../../../../../../common/hoc/withStyles';
 import BodyCopy from '../../../../../../common/atoms/BodyCopy';
@@ -10,16 +11,7 @@ import getStandardConfig from '../../../../../../../utils/formValidation/validat
 import styles from '../styles/TrackOrderForm.style';
 import constants from '../../../TrackOrder.constants';
 
-// @flow
-type Props = {
-  className: String,
-  labels: object,
-  handleSubmit: Function,
-  onChangeForm: Function,
-  invalid: Boolean,
-};
-
-class TrackOrderForm extends React.PureComponent<Props> {
+class TrackOrderForm extends React.PureComponent {
   render() {
     const { className, labels, handleSubmit, onChangeForm, invalid } = this.props;
     return (
@@ -32,7 +24,7 @@ class TrackOrderForm extends React.PureComponent<Props> {
         <BodyCopy component="div" className="elem-mb-LRG">
           <Field
             id="emailAddress"
-            placeholder={labels.trackOrder.lbl_header_trackOrderOverlay_emailAddress_placeholder}
+            placeholder={labels.trackOrder.lbl_trackOrder_emailPlaceholder}
             name="emailAddress"
             component={TextBox}
             dataLocator="track_order_email_address"
@@ -43,7 +35,7 @@ class TrackOrderForm extends React.PureComponent<Props> {
           />
           <Field
             id="orderNumber"
-            placeholder={labels.trackOrder.lbl_header_trackOrderOverlay_orderNo_placeholder}
+            placeholder={labels.trackOrder.lbl_trackOrder_orderNoPlaceholder}
             name="orderNumber"
             component={TextBox}
             dataLocator="track_order_no"
@@ -59,10 +51,10 @@ class TrackOrderForm extends React.PureComponent<Props> {
               fontWeight="semiBold"
               underline
               dataLocator="track_order_need_help"
-              to={labels.trackOrder.lbl_header_trackOrderOverlay_needHelpLink}
+              to={labels.trackOrder.lbl_trackOrder_needHelpLink}
               target="_blank"
             >
-              {labels.trackOrder.lbl_header_trackOrderOverlay_needHelp}
+              {labels.trackOrder.lbl_trackOrder_needHelp}
             </Anchor>
           </BodyCopy>
         </BodyCopy>
@@ -76,13 +68,23 @@ class TrackOrderForm extends React.PureComponent<Props> {
             disabled={invalid}
             className="elem-mb-L trackOrder-trackOrdercta"
           >
-            {labels.trackOrder.lbl_header_trackOrderOverlay_trackOrderBtn}
+            {labels.trackOrder.lbl_trackOrder_trackOrderBtn}
           </Button>
         </BodyCopy>
       </form>
     );
   }
 }
+
+TrackOrderForm.propTypes = {
+  labels: PropTypes.shape({
+    trackOrder: PropTypes.shape({}),
+  }).isRequired,
+  handleSubmit: PropTypes.func.isRequired,
+  onChangeForm: PropTypes.func.isRequired,
+  invalid: PropTypes.bool.isRequired,
+  className: PropTypes.string.isRequired,
+};
 
 const validateMethod = createValidateMethod(
   getStandardConfig([{ emailAddress: 'emailAddressNoAsync' }, 'orderNumber'])

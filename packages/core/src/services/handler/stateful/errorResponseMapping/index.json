@@ -339,7 +339,7 @@
     "errorMessage": "One or more of your coupons have already been redeemed. Please remove the coupon(s) and try again.",
     "formFieldName": ""
   },
-  "_WIC_RTPS_COUPON_NOT_APPLIED": {
+  "WIC_RTPS_COUPON_NOT_APPLIED": {
     "errorMessage": "We attempted to apply your offer, but, it does not combine with offers already applied to your order. We’ve saved your coupon to your My Place Rewards account",
     "formFieldName": ""
   },
@@ -481,5 +481,13 @@
   },
   "ERR_MOVE_TO_BAG_SFL_ITEM": {
     "errorMessage": "Sorry, this item is no longer available in the color, size, or fit selected."
+  },
+  "_ERR_INSUFFICIENT_FUND": {
+    "errorMessage": "There is no balance for the account provided. ",
+    "formFieldName": ""
+  },
+  "DEFAULT_ERROR": {
+    "errorMessage": "We're sorry that we 're unable to complete your birthday savings request at this time.Please try again later.",
+    "formFieldName": ""
   }
 }

@@ -2,7 +2,7 @@ import React from 'react';
 import PropTypes from 'prop-types';
 
 import withStyles from '@tcp/core/src/components/common/hoc/withStyles';
-import { Button, Col, RichText, Row } from '@tcp/core/src/components/common/atoms';
+import { Button, Col, Row, TextItems, BodyCopy } from '@tcp/core/src/components/common/atoms';
 import { getLocator } from '@tcp/core/src/utils';
 import SocialMediaLinks from '../SocialMediaLinks';
 
@@ -20,10 +20,10 @@ const FooterTopCandidateB = props => {
   } = props;
 
   return (
-    <div className="footer-top">
+    <div className="footer-top content-wrapper">
       <Row>
         <Col
-          className="footer-top__slots"
+          className="footer-top__slots col-md-half-width"
           colSize={{
             large: 3,
             medium: 4,
@@ -38,12 +38,15 @@ const FooterTopCandidateB = props => {
             title={emailSignup.title}
             onClick={openEmailSignUpModal}
             dataLocator="footer_email_signup_btn"
+            className="candidate-b_buttons"
           >
-            <RichText richTextHtml={emailSignup.text} />
+            <BodyCopy component="div" fontWeight="black" fontSize="fs15" className="heading_text">
+              <TextItems textItems={emailSignup.textItems} />
+            </BodyCopy>
           </Button>
         </Col>
         <Col
-          className="footer-top__slots"
+          className="footer-top__slots col-md-half-width"
           colSize={{
             large: 3,
             medium: 4,
@@ -59,12 +62,15 @@ const FooterTopCandidateB = props => {
             customStyle="shadow-button"
             title={smsSignup.title}
             onClick={openSmsSignUpModal}
+            className="candidate-b_buttons"
           >
-            <RichText richTextHtml={smsSignup.text} />
+            <BodyCopy component="div" fontWeight="black" fontSize="fs15" className="heading_text">
+              <TextItems textItems={smsSignup.textItems} />
+            </BodyCopy>
           </Button>
         </Col>
         <Col
-          className="footer-top__slots"
+          className="footer-top__slots col-md-half-width"
           colSize={{
             large: 3,
             medium: 4,
@@ -75,20 +81,26 @@ const FooterTopCandidateB = props => {
           }}
         >
           <span id="extole_zone_global_footer" title={referAFriend.title}>
-            <Button customStyle="shadow-button" data-locator={getLocator('refer_friend')}>
-              <RichText richTextHtml={referAFriend.text} />
+            <Button
+              customStyle="shadow-button"
+              data-locator={getLocator('refer_friend')}
+              className="candidate-b_buttons"
+            >
+              <BodyCopy component="div" fontWeight="black" fontSize="fs15" className="heading_text">
+                <TextItems textItems={referAFriend.textItems} />
+              </BodyCopy>
             </Button>
           </span>
         </Col>
         <Col
-          className="footer-top__slot--2"
+          className="footer-top__slot--2 col-md-half-width"
           colSize={{
             large: 3,
             medium: 4,
             small: 6,
           }}
         >
-          <SocialMediaLinks {...socialMediaLinks} />
+          <SocialMediaLinks {...socialMediaLinks} className="social-media-links" />
         </Col>
       </Row>
     </div>

@@ -15,8 +15,8 @@ const SocialMediaLinks = ({ className, connectWithUsLabel, links }) => (
         data-locator={getLocator('label-connect-with-us')}
         component="span"
         fontFamily={['secondary', 'primary']}
-        fontSize={['fs12', 'fs10', 'fs12']}
-        fontWeight={['regular', 'black']}
+        fontSize={['fs10', 'fs10', 'fs12']}
+        fontWeight={['black']}
         textAlign="center"
         color="text.secondary"
       >

@@ -6,80 +6,82 @@ exports[`RewardsPoints Slider View should render RewardsPointsViewVanilla Correc
 >
   <Styled(Row)>
     <Styled(Col)
-      className="current-points"
       colSize={
         Object {
-          "large": 5,
-          "medium": 3,
-          "small": 2,
+          "large": 12,
+          "medium": 8,
+          "small": 6,
         }
       }
     >
-      <Styled(BodyCopy)
-        className={null}
-        color="text.primary"
-        component="p"
-        data-locator="slidercurrentpointslbl"
-        fontFamily="secondary"
-        fontSize="fs14"
-        fontWeight="regular"
-        letterSpacing="normal"
-        lineHeight="normal"
-        textAlign="left"
+      <div
+        className="current-points"
       >
-        Current Points: 
-        <Styled(BodyCopy)
-          className={null}
-          color="text.primary"
-          component="span"
-          data-locator="slidercurrentpointsvalue"
-          fontFamily="secondary"
-          fontSize="fs14"
-          fontWeight="black"
-          letterSpacing="normal"
-          lineHeight="normal"
-          textAlign="left"
-        />
-      </Styled(BodyCopy)>
-    </Styled(Col)>
-    <Styled(Col)
-      className="my-rewards"
-      colSize={
-        Object {
-          "large": 7,
-          "medium": 5,
-          "small": 4,
-        }
-      }
-    >
-      <Styled(BodyCopy)
-        className={null}
-        color="text.primary"
-        component="p"
-        data-locator="slidermyrewardslbl"
-        fontFamily="secondary"
-        fontSize="fs14"
-        fontWeight="regular"
-        letterSpacing="normal"
-        lineHeight="normal"
-        textAlign="left"
-      >
-        My rewards: 
-        <Styled(BodyCopy)
-          className={null}
-          color="text.primary"
-          component="span"
-          data-locator="slidermyrewardsvalue"
-          fontFamily="secondary"
-          fontSize="fs14"
-          fontWeight="black"
-          letterSpacing="normal"
-          lineHeight="normal"
-          textAlign="left"
+        <span>
+          <Styled(BodyCopy)
+            className={null}
+            color="text.primary"
+            component="span"
+            data-locator="slidercurrentpointslbl"
+            fontFamily="secondary"
+            fontSize="fs13"
+            fontWeight="regular"
+            letterSpacing="normal"
+            lineHeight="normal"
+            link={null}
+            textAlign="left"
+          >
+            Current Points: 
+            <Styled(BodyCopy)
+              className={null}
+              color="text.primary"
+              component="span"
+              data-locator="slidercurrentpointsvalue"
+              fontFamily="secondary"
+              fontSize="fs13"
+              fontWeight="black"
+              letterSpacing="normal"
+              lineHeight="normal"
+              link={null}
+              textAlign="left"
+            />
+          </Styled(BodyCopy)>
+        </span>
+        <span
+          className="my-rewards"
         >
-          $
-        </Styled(BodyCopy)>
-      </Styled(BodyCopy)>
+          <Styled(BodyCopy)
+            className={null}
+            color="text.primary"
+            component="span"
+            data-locator="slidermyrewardslbl"
+            fontFamily="secondary"
+            fontSize="fs13"
+            fontWeight="regular"
+            letterSpacing="normal"
+            lineHeight="normal"
+            link={null}
+            textAlign="left"
+          >
+            My rewards: 
+            <Styled(BodyCopy)
+              className={null}
+              color="text.primary"
+              component="span"
+              data-locator="slidermyrewardsvalue"
+              fontFamily="secondary"
+              fontSize="fs13"
+              fontWeight="black"
+              letterSpacing="normal"
+              lineHeight="normal"
+              link={null}
+              textAlign="left"
+            >
+              $
+            </Styled(BodyCopy)>
+          </Styled(BodyCopy)>
+        </span>
+      </div>
     </Styled(Col)>
   </Styled(Row)>
   <Styled(Row)>
@@ -123,10 +125,11 @@ exports[`RewardsPoints Slider View should render RewardsPointsViewVanilla Correc
         component="p"
         data-locator="slidernextrewardspointslbl"
         fontFamily="secondary"
-        fontSize="fs14"
+        fontSize="fs13"
         fontWeight="regular"
         letterSpacing="normal"
         lineHeight="normal"
+        link={null}
         textAlign="left"
       >
         Next Rewards: 
@@ -136,10 +139,11 @@ exports[`RewardsPoints Slider View should render RewardsPointsViewVanilla Correc
           component="span"
           data-locator="slidernextrewardspointsvalue"
           fontFamily="secondary"
-          fontSize="fs14"
+          fontSize="fs13"
           fontWeight="black"
           letterSpacing="normal"
           lineHeight="normal"
+          link={null}
           textAlign="left"
         >
           10

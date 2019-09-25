@@ -1,6 +1,6 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`DetailedCouponTile should render correctly 1`] = `
+exports[`DetailedCouponTile should display overlay 1`] = `
 <Styled(BodyCopy)
   className=""
   color="text.primary"
@@ -11,8 +11,53 @@ exports[`DetailedCouponTile should render correctly 1`] = `
   fontWeight="regular"
   letterSpacing="normal"
   lineHeight="normal"
+  link={null}
   textAlign="left"
 >
+  <Styled(BodyCopy)
+    className="overlay hide-on-desktop hide-on-tablet"
+    color="text.primary"
+    component="div"
+    data-locator="coupon-overlay"
+    fontFamily="primary"
+    fontSize={12}
+    fontWeight="regular"
+    letterSpacing="normal"
+    lineHeight="normal"
+    link={null}
+    textAlign="left"
+  >
+    <Styled(BodyCopy)
+      className="overlay__content"
+      color="white"
+      component="div"
+      data-locator="coupon-overlay-icon"
+      fontFamily="secondary"
+      fontSize="fs16"
+      fontWeight="extrabold"
+      letterSpacing="normal"
+      lineHeight="normal"
+      link={null}
+      textAlign="left"
+    >
+      <Styled(Image)
+        src="/static/images/bag-white.svg"
+      />
+      <Styled(BodyCopy)
+        className={null}
+        color="white"
+        component="p"
+        data-locator="coupon-overlay-info"
+        fontFamily="secondary"
+        fontSize="fs16"
+        fontWeight="extrabold"
+        letterSpacing="normal"
+        lineHeight="normal"
+        link={null}
+        textAlign="center"
+      />
+    </Styled(BodyCopy)>
+  </Styled(BodyCopy)>
   <Styled(BodyCopy)
     className="content elem-pl-SM elem-pr-SM elem-pt-XL"
     color="text.primary"
@@ -22,6 +67,7 @@ exports[`DetailedCouponTile should render correctly 1`] = `
     fontWeight="regular"
     letterSpacing="normal"
     lineHeight="normal"
+    link={null}
     textAlign="left"
   >
     <Styled(BodyCopy)
@@ -33,11 +79,16 @@ exports[`DetailedCouponTile should render correctly 1`] = `
       fontWeight="regular"
       letterSpacing="normal"
       lineHeight="normal"
+      link={null}
       textAlign="center"
     >
       <Styled(CouponIcon)
-        className="elem-mb-XS"
-        coupon={Object {}}
+        className="elem-mb-XS overlap"
+        coupon={
+          Object {
+            "status": "applied",
+          }
+        }
         labels={
           Object {
             "lbl_coupon_applyToBag": "apply",
@@ -51,18 +102,53 @@ exports[`DetailedCouponTile should render correctly 1`] = `
         }
       />
       <Styled(BodyCopy)
-        className="elem-mb-SM"
+        className="elem-mb-SM overlap overlap-text"
         color="text.primary"
         component="p"
         data-locator="myrewards-details"
-        fontFamily="primary"
-        fontSize="fs14"
+        fontFamily="secondary"
+        fontSize="fs16"
         fontWeight="extrabold"
         letterSpacing="normal"
         lineHeight="normal"
+        link={null}
         textAlign="center"
       />
+      <Styled(BodyCopy)
+        className="barcode-content hide-on-desktop hide-on-tablet"
+        color="text.primary"
+        component="div"
+        data-locator="myrewards-barcode"
+        fontFamily="primary"
+        fontSize={12}
+        fontWeight="regular"
+        letterSpacing="normal"
+        lineHeight="normal"
+        link={null}
+        textAlign="left"
+      >
+        <Barcode
+          background="#ffffff"
+          displayValue={true}
+          font="Nunito"
+          fontOptions=""
+          fontSize={20}
+          format="CODE128"
+          height={100}
+          lineColor="#000000"
+          margin={10}
+          renderer="svg"
+          textAlign="center"
+          textMargin={2}
+          textPosition="bottom"
+          width={2}
+        />
+      </Styled(BodyCopy)>
     </Styled(BodyCopy)>
+    <Styled(ErrorMessage)
+      className="error-notification"
+      noBackground={true}
+    />
     <Styled(BodyCopy)
       className="bottom-content"
       color="text.primary"
@@ -72,6 +158,7 @@ exports[`DetailedCouponTile should render correctly 1`] = `
       fontWeight="regular"
       letterSpacing="normal"
       lineHeight="normal"
+      link={null}
       textAlign="left"
     >
       <Styled(BodyCopy)
@@ -83,6 +170,7 @@ exports[`DetailedCouponTile should render correctly 1`] = `
         fontWeight="regular"
         letterSpacing="normal"
         lineHeight="normal"
+        link={null}
         textAlign="left"
       >
         <Styled(BodyCopy)
@@ -95,6 +183,7 @@ exports[`DetailedCouponTile should render correctly 1`] = `
           fontWeight="regular"
           letterSpacing="normal"
           lineHeight="normal"
+          link={null}
           textAlign="left"
         >
           <Styled(BodyCopy)
@@ -106,6 +195,7 @@ exports[`DetailedCouponTile should render correctly 1`] = `
             fontWeight="regular"
             letterSpacing="normal"
             lineHeight="normal"
+            link={null}
             textAlign="left"
           >
             use by
@@ -119,6 +209,7 @@ exports[`DetailedCouponTile should render correctly 1`] = `
             fontWeight="regular"
             letterSpacing="normal"
             lineHeight="normal"
+            link={null}
             textAlign="left"
           >
             undefined
@@ -126,7 +217,8 @@ exports[`DetailedCouponTile should render correctly 1`] = `
         </Styled(BodyCopy)>
         <Styled(Anchor)
           data-locator="myrewards-detailslink"
-          fontSizeVariation="xlarge"
+          fontSizeVariation="large"
+          onClick={[Function]}
           underline={true}
         >
           details
@@ -141,11 +233,196 @@ exports[`DetailedCouponTile should render correctly 1`] = `
         fontWeight="regular"
         letterSpacing="normal"
         lineHeight="normal"
+        link={null}
         textAlign="left"
       >
         <Styled(Button)
           buttonVariation="fixed-width"
-          className="elem-mb-SM"
+          className="elem-mb-SM couponDetailsFont"
+          data-locator="myrewards-view&printbtn"
+          fill="WHITE"
+          fullWidth={true}
+          onClick={[Function]}
+        >
+          view & print
+        </Styled(Button)>
+        <Styled(Button)
+          buttonVariation="fixed-width"
+          className="couponDetailsFont overlap"
+          data-locator="myrewards-removefrombagbtn"
+          fill="WHITE"
+          fullWidth={true}
+          onClick={[Function]}
+        >
+          remove from bag
+        </Styled(Button)>
+      </Styled(BodyCopy)>
+    </Styled(BodyCopy)>
+  </Styled(BodyCopy)>
+</Styled(BodyCopy)>
+`;
+
+exports[`DetailedCouponTile should render correctly 1`] = `
+<Styled(BodyCopy)
+  className=""
+  color="text.primary"
+  component="div"
+  data-locator="myrewards-tile"
+  fontFamily="primary"
+  fontSize={12}
+  fontWeight="regular"
+  letterSpacing="normal"
+  lineHeight="normal"
+  link={null}
+  textAlign="left"
+>
+  <Styled(BodyCopy)
+    className="content elem-pl-SM elem-pr-SM elem-pt-XL"
+    color="text.primary"
+    component="div"
+    fontFamily="primary"
+    fontSize={12}
+    fontWeight="regular"
+    letterSpacing="normal"
+    lineHeight="normal"
+    link={null}
+    textAlign="left"
+  >
+    <Styled(BodyCopy)
+      className="top-content"
+      color="text.primary"
+      component="div"
+      fontFamily="primary"
+      fontSize={12}
+      fontWeight="regular"
+      letterSpacing="normal"
+      lineHeight="normal"
+      link={null}
+      textAlign="center"
+    >
+      <Styled(CouponIcon)
+        className="elem-mb-XS "
+        coupon={Object {}}
+        labels={
+          Object {
+            "lbl_coupon_applyToBag": "apply",
+            "lbl_coupon_couponUseBy": "use by",
+            "lbl_coupon_couponValid": "valid",
+            "lbl_coupon_detailsLink": "details",
+            "lbl_coupon_expiringSoon": "expiring soon",
+            "lbl_coupon_removeFromBag": "remove from bag",
+            "lbl_coupon_viewPrint": "view & print",
+          }
+        }
+      />
+      <Styled(BodyCopy)
+        className="elem-mb-SM  "
+        color="text.primary"
+        component="p"
+        data-locator="myrewards-details"
+        fontFamily="secondary"
+        fontSize="fs16"
+        fontWeight="extrabold"
+        letterSpacing="normal"
+        lineHeight="normal"
+        link={null}
+        textAlign="center"
+      />
+    </Styled(BodyCopy)>
+    <Styled(ErrorMessage)
+      className="error-notification"
+      noBackground={true}
+    />
+    <Styled(BodyCopy)
+      className="bottom-content"
+      color="text.primary"
+      component="div"
+      fontFamily="primary"
+      fontSize={12}
+      fontWeight="regular"
+      letterSpacing="normal"
+      lineHeight="normal"
+      link={null}
+      textAlign="left"
+    >
+      <Styled(BodyCopy)
+        className="coupon-desc elem-mb-SM"
+        color="text.primary"
+        component="div"
+        fontFamily="primary"
+        fontSize={12}
+        fontWeight="regular"
+        letterSpacing="normal"
+        lineHeight="normal"
+        link={null}
+        textAlign="left"
+      >
+        <Styled(BodyCopy)
+          className={null}
+          color="text.primary"
+          component="div"
+          data-locator="myrewards-usebylabel"
+          fontFamily="primary"
+          fontSize={12}
+          fontWeight="regular"
+          letterSpacing="normal"
+          lineHeight="normal"
+          link={null}
+          textAlign="left"
+        >
+          <Styled(BodyCopy)
+            className={null}
+            color="text.primary"
+            component="p"
+            fontFamily="secondary"
+            fontSize="fs14"
+            fontWeight="regular"
+            letterSpacing="normal"
+            lineHeight="normal"
+            link={null}
+            textAlign="left"
+          >
+            use by
+          </Styled(BodyCopy)>
+          <Styled(BodyCopy)
+            className={null}
+            color="text.primary"
+            component="p"
+            fontFamily="secondary"
+            fontSize="fs14"
+            fontWeight="regular"
+            letterSpacing="normal"
+            lineHeight="normal"
+            link={null}
+            textAlign="left"
+          >
+            undefined
+          </Styled(BodyCopy)>
+        </Styled(BodyCopy)>
+        <Styled(Anchor)
+          data-locator="myrewards-detailslink"
+          fontSizeVariation="large"
+          onClick={[Function]}
+          underline={true}
+        >
+          details
+        </Styled(Anchor)>
+      </Styled(BodyCopy)>
+      <Styled(BodyCopy)
+        className="elem-mb-SM"
+        color="text.primary"
+        component="div"
+        fontFamily="primary"
+        fontSize={12}
+        fontWeight="regular"
+        letterSpacing="normal"
+        lineHeight="normal"
+        link={null}
+        textAlign="left"
+      >
+        <Styled(Button)
+          buttonVariation="fixed-width"
+          className="elem-mb-SM couponDetailsFont"
           data-locator="myrewards-view&printbtn"
           fill="WHITE"
           fullWidth={true}
@@ -180,8 +457,53 @@ exports[`DetailedCouponTile should render correctly for applied coupon 1`] = `
   fontWeight="regular"
   letterSpacing="normal"
   lineHeight="normal"
+  link={null}
   textAlign="left"
 >
+  <Styled(BodyCopy)
+    className="overlay hide-on-desktop hide-on-tablet"
+    color="text.primary"
+    component="div"
+    data-locator="coupon-overlay"
+    fontFamily="primary"
+    fontSize={12}
+    fontWeight="regular"
+    letterSpacing="normal"
+    lineHeight="normal"
+    link={null}
+    textAlign="left"
+  >
+    <Styled(BodyCopy)
+      className="overlay__content"
+      color="white"
+      component="div"
+      data-locator="coupon-overlay-icon"
+      fontFamily="secondary"
+      fontSize="fs16"
+      fontWeight="extrabold"
+      letterSpacing="normal"
+      lineHeight="normal"
+      link={null}
+      textAlign="left"
+    >
+      <Styled(Image)
+        src="/static/images/bag-white.svg"
+      />
+      <Styled(BodyCopy)
+        className={null}
+        color="white"
+        component="p"
+        data-locator="coupon-overlay-info"
+        fontFamily="secondary"
+        fontSize="fs16"
+        fontWeight="extrabold"
+        letterSpacing="normal"
+        lineHeight="normal"
+        link={null}
+        textAlign="center"
+      />
+    </Styled(BodyCopy)>
+  </Styled(BodyCopy)>
   <Styled(BodyCopy)
     className="content elem-pl-SM elem-pr-SM elem-pt-XL"
     color="text.primary"
@@ -191,6 +513,7 @@ exports[`DetailedCouponTile should render correctly for applied coupon 1`] = `
     fontWeight="regular"
     letterSpacing="normal"
     lineHeight="normal"
+    link={null}
     textAlign="left"
   >
     <Styled(BodyCopy)
@@ -202,10 +525,11 @@ exports[`DetailedCouponTile should render correctly for applied coupon 1`] = `
       fontWeight="regular"
       letterSpacing="normal"
       lineHeight="normal"
+      link={null}
       textAlign="center"
     >
       <Styled(CouponIcon)
-        className="elem-mb-XS"
+        className="elem-mb-XS overlap"
         coupon={
           Object {
             "status": "applied",
@@ -224,15 +548,16 @@ exports[`DetailedCouponTile should render correctly for applied coupon 1`] = `
         }
       />
       <Styled(BodyCopy)
-        className="elem-mb-SM"
+        className="elem-mb-SM overlap overlap-text"
         color="text.primary"
         component="p"
         data-locator="myrewards-details"
-        fontFamily="primary"
-        fontSize="fs14"
+        fontFamily="secondary"
+        fontSize="fs16"
         fontWeight="extrabold"
         letterSpacing="normal"
         lineHeight="normal"
+        link={null}
         textAlign="center"
       />
       <Styled(BodyCopy)
@@ -245,6 +570,7 @@ exports[`DetailedCouponTile should render correctly for applied coupon 1`] = `
         fontWeight="regular"
         letterSpacing="normal"
         lineHeight="normal"
+        link={null}
         textAlign="left"
       >
         <Barcode
@@ -265,6 +591,10 @@ exports[`DetailedCouponTile should render correctly for applied coupon 1`] = `
         />
       </Styled(BodyCopy)>
     </Styled(BodyCopy)>
+    <Styled(ErrorMessage)
+      className="error-notification"
+      noBackground={true}
+    />
     <Styled(BodyCopy)
       className="bottom-content"
       color="text.primary"
@@ -274,6 +604,7 @@ exports[`DetailedCouponTile should render correctly for applied coupon 1`] = `
       fontWeight="regular"
       letterSpacing="normal"
       lineHeight="normal"
+      link={null}
       textAlign="left"
     >
       <Styled(BodyCopy)
@@ -285,6 +616,7 @@ exports[`DetailedCouponTile should render correctly for applied coupon 1`] = `
         fontWeight="regular"
         letterSpacing="normal"
         lineHeight="normal"
+        link={null}
         textAlign="left"
       >
         <Styled(BodyCopy)
@@ -297,6 +629,7 @@ exports[`DetailedCouponTile should render correctly for applied coupon 1`] = `
           fontWeight="regular"
           letterSpacing="normal"
           lineHeight="normal"
+          link={null}
           textAlign="left"
         >
           <Styled(BodyCopy)
@@ -308,6 +641,7 @@ exports[`DetailedCouponTile should render correctly for applied coupon 1`] = `
             fontWeight="regular"
             letterSpacing="normal"
             lineHeight="normal"
+            link={null}
             textAlign="left"
           >
             use by
@@ -321,6 +655,7 @@ exports[`DetailedCouponTile should render correctly for applied coupon 1`] = `
             fontWeight="regular"
             letterSpacing="normal"
             lineHeight="normal"
+            link={null}
             textAlign="left"
           >
             undefined
@@ -328,7 +663,8 @@ exports[`DetailedCouponTile should render correctly for applied coupon 1`] = `
         </Styled(BodyCopy)>
         <Styled(Anchor)
           data-locator="myrewards-detailslink"
-          fontSizeVariation="xlarge"
+          fontSizeVariation="large"
+          onClick={[Function]}
           underline={true}
         >
           details
@@ -343,11 +679,12 @@ exports[`DetailedCouponTile should render correctly for applied coupon 1`] = `
         fontWeight="regular"
         letterSpacing="normal"
         lineHeight="normal"
+        link={null}
         textAlign="left"
       >
         <Styled(Button)
           buttonVariation="fixed-width"
-          className="elem-mb-SM"
+          className="elem-mb-SM couponDetailsFont"
           data-locator="myrewards-view&printbtn"
           fill="WHITE"
           fullWidth={true}
@@ -357,8 +694,9 @@ exports[`DetailedCouponTile should render correctly for applied coupon 1`] = `
         </Styled(Button)>
         <Styled(Button)
           buttonVariation="fixed-width"
+          className="couponDetailsFont overlap"
           data-locator="myrewards-removefrombagbtn"
-          fill="BLUE"
+          fill="WHITE"
           fullWidth={true}
           onClick={[Function]}
         >
@@ -381,6 +719,7 @@ exports[`DetailedCouponTile should render expiring soon notification if coupon i
   fontWeight="regular"
   letterSpacing="normal"
   lineHeight="normal"
+  link={null}
   textAlign="left"
 >
   <Styled(BodyCopy)
@@ -393,6 +732,7 @@ exports[`DetailedCouponTile should render expiring soon notification if coupon i
     fontWeight="black"
     letterSpacing="normal"
     lineHeight="normal"
+    link={null}
     textAlign="center"
   >
     expiring soon
@@ -406,6 +746,7 @@ exports[`DetailedCouponTile should render expiring soon notification if coupon i
     fontWeight="regular"
     letterSpacing="normal"
     lineHeight="normal"
+    link={null}
     textAlign="left"
   >
     <Styled(BodyCopy)
@@ -417,10 +758,11 @@ exports[`DetailedCouponTile should render expiring soon notification if coupon i
       fontWeight="regular"
       letterSpacing="normal"
       lineHeight="normal"
+      link={null}
       textAlign="center"
     >
       <Styled(CouponIcon)
-        className="elem-mb-XS"
+        className="elem-mb-XS "
         coupon={
           Object {
             "isExpiring": true,
@@ -439,15 +781,16 @@ exports[`DetailedCouponTile should render expiring soon notification if coupon i
         }
       />
       <Styled(BodyCopy)
-        className="elem-mb-SM"
+        className="elem-mb-SM  "
         color="text.primary"
         component="p"
         data-locator="myrewards-details"
-        fontFamily="primary"
-        fontSize="fs14"
+        fontFamily="secondary"
+        fontSize="fs16"
         fontWeight="extrabold"
         letterSpacing="normal"
         lineHeight="normal"
+        link={null}
         textAlign="center"
       />
       <Styled(BodyCopy)
@@ -460,6 +803,7 @@ exports[`DetailedCouponTile should render expiring soon notification if coupon i
         fontWeight="regular"
         letterSpacing="normal"
         lineHeight="normal"
+        link={null}
         textAlign="left"
       >
         <Barcode
@@ -480,6 +824,10 @@ exports[`DetailedCouponTile should render expiring soon notification if coupon i
         />
       </Styled(BodyCopy)>
     </Styled(BodyCopy)>
+    <Styled(ErrorMessage)
+      className="error-notification"
+      noBackground={true}
+    />
     <Styled(BodyCopy)
       className="bottom-content"
       color="text.primary"
@@ -489,6 +837,7 @@ exports[`DetailedCouponTile should render expiring soon notification if coupon i
       fontWeight="regular"
       letterSpacing="normal"
       lineHeight="normal"
+      link={null}
       textAlign="left"
     >
       <Styled(BodyCopy)
@@ -500,6 +849,7 @@ exports[`DetailedCouponTile should render expiring soon notification if coupon i
         fontWeight="regular"
         letterSpacing="normal"
         lineHeight="normal"
+        link={null}
         textAlign="left"
       >
         <Styled(BodyCopy)
@@ -512,6 +862,7 @@ exports[`DetailedCouponTile should render expiring soon notification if coupon i
           fontWeight="regular"
           letterSpacing="normal"
           lineHeight="normal"
+          link={null}
           textAlign="left"
         >
           <Styled(BodyCopy)
@@ -523,6 +874,7 @@ exports[`DetailedCouponTile should render expiring soon notification if coupon i
             fontWeight="regular"
             letterSpacing="normal"
             lineHeight="normal"
+            link={null}
             textAlign="left"
           >
             use by
@@ -536,6 +888,7 @@ exports[`DetailedCouponTile should render expiring soon notification if coupon i
             fontWeight="regular"
             letterSpacing="normal"
             lineHeight="normal"
+            link={null}
             textAlign="left"
           >
             undefined
@@ -543,7 +896,8 @@ exports[`DetailedCouponTile should render expiring soon notification if coupon i
         </Styled(BodyCopy)>
         <Styled(Anchor)
           data-locator="myrewards-detailslink"
-          fontSizeVariation="xlarge"
+          fontSizeVariation="large"
+          onClick={[Function]}
           underline={true}
         >
           details
@@ -558,11 +912,12 @@ exports[`DetailedCouponTile should render expiring soon notification if coupon i
         fontWeight="regular"
         letterSpacing="normal"
         lineHeight="normal"
+        link={null}
         textAlign="left"
       >
         <Styled(Button)
           buttonVariation="fixed-width"
-          className="elem-mb-SM"
+          className="elem-mb-SM couponDetailsFont"
           data-locator="myrewards-view&printbtn"
           fill="WHITE"
           fullWidth={true}

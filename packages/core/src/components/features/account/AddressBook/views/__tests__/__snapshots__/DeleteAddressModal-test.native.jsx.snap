@@ -8,11 +8,16 @@ exports[`Delete Address Modal should render correctly 1`] = `
 >
   <Styled(View)>
     <Styled(Styled(BodyCopy))
+      accessibilityText=""
+      dataLocator=""
       fontFamily="secondary"
       fontSize="fs22"
       fontWeight="semibold"
+      margin={null}
+      numberOfLines={null}
       text=""
       textAlign="center"
+      textDecoration={null}
     />
     <Styled(View)>
       <Address
@@ -35,32 +40,22 @@ exports[`Delete Address Modal should render correctly 1`] = `
       />
     </Styled(View)>
     <Styled(View)>
-      <Styled(CustomButton)
+      <Styled(WithTheme(CustomButton))
         buttonVariation="variable-width"
         color="white"
-        customStyle={Object {}}
-        disableButton={false}
         fill="BLUE"
-        fullWidth=""
-        locator=""
         onPress={[Function]}
         text=""
         type="submit"
-        url=""
       />
     </Styled(View)>
     <Styled(View)>
-      <Styled(CustomButton)
+      <Styled(WithTheme(CustomButton))
         buttonVariation="variable-width"
         color="#c84747"
-        customStyle={Object {}}
-        disableButton={false}
         fill="RED"
-        fullWidth=""
-        locator=""
         onPress={[Function]}
         text=""
-        url=""
       />
     </Styled(View)>
   </Styled(View)>

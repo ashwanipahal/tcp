@@ -5,7 +5,7 @@ import Carousel, { Pagination } from 'react-native-snap-carousel';
 import { getLocator } from '../../../../../utils';
 
 import { Image } from '../../../atoms';
-import config from '../Config.native';
+import config from '../Carousel.config.native';
 
 import {
   ControlsWrapper,
@@ -52,6 +52,7 @@ type Props = {
   hidePlayStopButton?: Boolean,
   autoplayInterval: Number,
   buttonPosition: String,
+  autoplay?: Boolean,
 };
 
 type State = {
@@ -76,12 +77,13 @@ class SnapCarousel extends React.PureComponent<Props, State> {
   constructor(props) {
     super(props);
     this.state = {
-      autoplay: true,
+      autoplay: props.autoplay,
       activeSlide: 0,
     };
     this.getPlayButton = this.getPlayButton.bind(this);
     this.play = this.play.bind(this);
     this.pause = this.pause.bind(this);
+    this.carouselRef = this.updateRef.bind(this, 'carousel');
   }
 
   getPagination() {
@@ -225,6 +227,10 @@ class SnapCarousel extends React.PureComponent<Props, State> {
     onSnapToItem(index);
   };
 
+  updateRef(ref, name) {
+    this[ref] = name;
+  }
+
   /**
    * @function play function enable autoplay for carousel
    * also update component state.
@@ -266,16 +272,26 @@ class SnapCarousel extends React.PureComponent<Props, State> {
       showDots,
       overlap,
       buttonPosition,
-      autoplay,
       darkArrow,
+      options,
     } = this.props;
+
+    const { autoplay, activeSlide } = this.state;
+    const settings = { ...defaults, ...options };
 
     if (!data) {
       return null;
     }
 
-    const iconTypePre = darkArrow ? prevIconDark : prevIcon;
-    const iconTypeNext = darkArrow ? nextIconDark : nextIcon;
+    let iconTypePre = darkArrow ? prevIconDark : prevIcon;
+    let iconTypeNext = darkArrow ? nextIconDark : nextIcon;
+
+    if (settings.loop === false && darkArrow && activeSlide < 1) {
+      iconTypeNext = nextIcon;
+    }
+    if (settings.loop === false && darkArrow && data.length - 1 <= activeSlide) {
+      iconTypePre = prevIcon;
+    }
 
     if (variation === 'show-arrow') {
       // reduce left and right arrow with from the total with to fix center aline issue
@@ -292,7 +308,7 @@ class SnapCarousel extends React.PureComponent<Props, State> {
               <Icon source={iconTypeNext} />
             </TouchableView>
             <Carousel
-              {...defaults}
+              {...settings}
               data={data}
               onSnapToItem={this.onSnapToItemHandler}
               renderItem={renderItem}
@@ -303,9 +319,7 @@ class SnapCarousel extends React.PureComponent<Props, State> {
               slideStyle={slideStyle}
               autoplay={autoplay}
               autoplayInterval={autoplayInterval}
-              ref={c => {
-                this.carousel = c;
-              }}
+              ref={this.carouselRef}
             />
             <TouchableView
               accessibilityRole="button"
@@ -363,3 +377,4 @@ SnapCarousel.defaultProps = {
 };
 
 export default withTheme(SnapCarousel);
+export { SnapCarousel as SnapCarouselVanilla };

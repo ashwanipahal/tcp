@@ -11,21 +11,31 @@ exports[`CouponCard Component should renders correctly when addresses are not pr
         <Styled(View)>
           <Styled(View)>
             <Styled(BodyCopy)
+              accessibilityText=""
               color="white"
               data-locator="available_PublicValidityLbl"
+              dataLocator=""
               fontFamily="secondary"
               fontSize="fs12"
               fontWeight="semibold"
+              margin={null}
+              numberOfLines={null}
+              textDecoration={null}
             />
           </Styled(View)>
         </Styled(View)>
         <Styled(View)>
           <Styled(BodyCopy)
+            accessibilityText=""
             color="white"
             data-locator="available_PublicValidityLbl"
+            dataLocator=""
             fontFamily="secondary"
             fontSize="fs12"
             fontWeight="semibold"
+            margin={null}
+            numberOfLines={null}
+            textDecoration={null}
           />
         </Styled(View)>
       </Styled(View)>
@@ -38,8 +48,13 @@ exports[`CouponCard Component should renders correctly when addresses are not pr
             <View>
               <Styled(Styled(Text))>
                 <Styled(BodyCopy)
+                  accessibilityText=""
                   data-locator="coupon_available_cartUseByValidity"
+                  dataLocator=""
+                  margin={null}
+                  numberOfLines={null}
                   text="Use by 8/10/19"
+                  textDecoration={null}
                 />
               </Styled(Styled(Text))>
             </View>
@@ -47,6 +62,7 @@ exports[`CouponCard Component should renders correctly when addresses are not pr
               <Styled(Anchor)
                 accessibilityLabel=""
                 anchorVariation="primary"
+                colorName={null}
                 customStyle={Object {}}
                 dataLocator=""
                 fontFamily="secondary"
@@ -62,19 +78,13 @@ exports[`CouponCard Component should renders correctly when addresses are not pr
             </Styled(View)>
           </Styled(View)>
           <Styled(View)>
-            <Styled(CustomButton)
+            <Styled(WithTheme(CustomButton))
               buttonVariation="variable-width"
-              color="#fff"
-              customStyle={Object {}}
               data-locator=""
-              disableButton={false}
-              fill="BLACK"
-              fullWidth=""
-              locator=""
+              fill="DARK"
               onPress={[Function]}
               text="APPLY"
               type="submit"
-              url=""
             />
           </Styled(View)>
         </Styled(View)>

@@ -4,11 +4,13 @@ exports[`TextItems component renders correctly 1`] = `
 Array [
   <span
     className="test"
+    key="0"
   >
     test
   </span>,
   <span
     className="test1"
+    key="1"
   >
      test2
   </span>,

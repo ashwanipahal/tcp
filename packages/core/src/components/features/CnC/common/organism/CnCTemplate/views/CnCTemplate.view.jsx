@@ -16,26 +16,44 @@ const CnCTemplate = ({
   showLeftSection,
   className,
   header: Header,
+  isGuest,
+  isCheckoutView,
+  showAccordian,
+  isNonEmptySFL,
 }) => {
+  const isSmallLeftSection = isNonEmptySFL || showLeftSection;
   return (
     <section className={className}>
       {Header && <Header />}
       <Row>
         <Col
-          colSize={{ small: 6, medium: showLeftSection ? 5 : 8, large: showLeftSection ? 8 : 12 }}
+          colSize={{
+            small: 6,
+            medium: isSmallLeftSection ? 5 : 8,
+            large: isSmallLeftSection ? 8 : 12,
+          }}
           className="left-sec"
         >
           <LeftSection />
         </Col>
         {showLeftSection && (
-          <Col colSize={{ small: 6, medium: 3, large: 4 }} className="right-sec">
+          <Col
+            colSize={{ small: 6, medium: 3, large: 4 }}
+            className={`right-sec ${isCheckoutView ? 'hide-mobile' : ''}`}
+          >
             <OrderLedgerContainer />
             {BagActions && <BagActions />}
-            <div className="bonusPointsDaysWrapper">
-              <BonusPointsDays enableApplyCta />
-            </div>
+            {!isGuest && (
+              <div
+                className={`${
+                  showAccordian ? 'bonusPointsDaysWrapperAccordian' : 'bonusPointsDaysWrapper'
+                } elem-mb-MED`}
+              >
+                <BonusPointsDays showAccordian={showAccordian} enableApplyCta />
+              </div>
+            )}
             <AirmilesBanner />
-            <CouponAndPromos />
+            <CouponAndPromos showAccordian={showAccordian} />
           </Col>
         )}
       </Row>
@@ -50,12 +68,19 @@ CnCTemplate.propTypes = {
   header: PropTypes.oneOfType([PropTypes.bool, PropTypes.node]),
   leftSection: PropTypes.node.isRequired,
   showLeftSection: PropTypes.bool,
+  isGuest: PropTypes.bool.isRequired,
+  showAccordian: PropTypes.bool,
+  isNonEmptySFL: PropTypes.bool,
+  isCheckoutView: PropTypes.bool,
 };
 
 CnCTemplate.defaultProps = {
   bagActions: false,
   header: false,
   showLeftSection: true,
+  showAccordian: true,
+  isNonEmptySFL: true,
+  isCheckoutView: false,
 };
 
 export default withStyles(CnCTemplate, styles);

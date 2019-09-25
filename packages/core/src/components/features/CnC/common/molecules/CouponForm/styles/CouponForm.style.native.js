@@ -24,14 +24,9 @@ const InputField = styled.View`
   padding-right: 8px;
 `;
 
-const ApplyButtonText = {
-  fontWeight: 'normal',
-  opacity: 0.5,
-};
-
 const ApplyButton = {
   height: 42,
-  width: 102,
+  width: 134,
 };
 
 const CouponFormContainer = styled.View`
@@ -45,7 +40,6 @@ export {
   Header,
   InputField,
   ApplyButton,
-  ApplyButtonText,
   FormContainer,
   CouponFormContainer,
   NeedHelpText,

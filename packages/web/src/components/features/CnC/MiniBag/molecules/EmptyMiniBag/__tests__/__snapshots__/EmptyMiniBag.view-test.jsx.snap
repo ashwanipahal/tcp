@@ -1,157 +1,194 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
 exports[`Empty Mini Bag Component should render correctly 1`] = `
-<StyledComponent
+<div
   className="cclassName"
-  forwardedComponent={
-    Object {
-      "$$typeof": Symbol(react.forward_ref),
-      "attrs": Array [],
-      "componentStyle": ComponentStyle {
-        "componentId": "sc-bxivhb",
-        "isStatic": false,
-        "rules": Array [
-          "
-  ",
-          "
-  .createAccountWrapper {
-    margin: 48px 0;
-  }
-  .continue-shopping {
-    text-align: center;
-    margin: 24px 0;
-  }
-  .logIn {
-    &:hover {
-      background: ",
-          [Function],
-          ";
-    }
-    height: 51px;
-    width: 210px;
-    background-color: ",
-          [Function],
-          ";
-  }
-  .accountText {
-    text-align: center;
-  }
-  .createAccount {
-    &:hover {
-      background: ",
-          [Function],
-          ";
-    }
-    background-color: ",
-          [Function],
-          ";
-    height: 51px;
-    width: 210px;
-  }
-",
-          ";
-",
-        ],
-      },
-      "displayName": "Styled(MiniBagHeader)",
-      "foldedComponentIds": Array [],
-      "render": [Function],
-      "styledComponentId": "sc-bxivhb",
-      "target": [Function],
-      "toString": [Function],
-      "warnTooManyClasses": [Function],
-      "withComponent": [Function],
-    }
-  }
-  forwardedRef={null}
-  labels={
-    Object {
-      "continueShopping": "continue Shopping",
-      "createAccount": "create Account",
-      "createOne": "Create one now to start earning points!",
-      "dontHaveAccount": "Dont have an account",
-      "logIn": "log In",
-      "yourShoppingBag": "YOUR SHOPPING BAG IS EMPTY",
-    }
-  }
-  userName="User"
-/>
+>
+  <div
+    className="continue-shopping"
+  >
+    <Styled(BodyCopy)
+      className={null}
+      color="gray.800"
+      component="span"
+      fontFamily="secondary"
+      fontSize="fs18"
+      fontWeight="semibold"
+      letterSpacing="normal"
+      lineHeight="normal"
+      link={null}
+      textAlign="left"
+    >
+      YOUR SHOPPING BAG IS EMPTY
+    </Styled(BodyCopy)>
+  </div>
+  <div
+    className="continue-shopping"
+  >
+    <Styled(Anchor)
+      anchorVariation="primary"
+      dataLocator="addedToBag-continueShopping"
+      fontSizeVariation="medium"
+      noLink={true}
+      to=""
+      underline={true}
+    >
+      continue Shopping
+    </Styled(Anchor)>
+  </div>
+</div>
 `;
 
 exports[`Empty Mini Bag Component should render correctly with labels name 1`] = `
-<StyledComponent
+<div
   className="className2"
-  forwardedComponent={
-    Object {
-      "$$typeof": Symbol(react.forward_ref),
-      "attrs": Array [],
-      "componentStyle": ComponentStyle {
-        "componentId": "sc-bxivhb",
-        "isStatic": false,
-        "rules": Array [
-          "
-  ",
-          "
-  .createAccountWrapper {
-    margin: 48px 0;
-  }
-  .continue-shopping {
-    text-align: center;
-    margin: 24px 0;
-  }
-  .logIn {
-    &:hover {
-      background: ",
-          [Function],
-          ";
-    }
-    height: 51px;
-    width: 210px;
-    background-color: ",
-          [Function],
-          ";
-  }
-  .accountText {
-    text-align: center;
-  }
-  .createAccount {
-    &:hover {
-      background: ",
-          [Function],
-          ";
-    }
-    background-color: ",
-          [Function],
-          ";
-    height: 51px;
-    width: 210px;
-  }
-",
-          ";
-",
-        ],
-      },
-      "displayName": "Styled(MiniBagHeader)",
-      "foldedComponentIds": Array [],
-      "render": [Function],
-      "styledComponentId": "sc-bxivhb",
-      "target": [Function],
-      "toString": [Function],
-      "warnTooManyClasses": [Function],
-      "withComponent": [Function],
-    }
-  }
-  forwardedRef={null}
-  labels={
-    Object {
-      "continueShopping": "continue Shopping",
-      "createAccount": "create Account",
-      "createOne": "Create one now to start earning points!",
-      "dontHaveAccount": "Dont have an account",
-      "logIn": "logged In",
-      "yourShoppingBag": "YOUR SHOPPING BAG IS EMPTY",
-    }
-  }
-  userName="User"
-/>
+>
+  <div
+    className="continue-shopping"
+  >
+    <Styled(BodyCopy)
+      className={null}
+      color="gray.800"
+      component="span"
+      fontFamily="secondary"
+      fontSize="fs18"
+      fontWeight="semibold"
+      letterSpacing="normal"
+      lineHeight="normal"
+      link={null}
+      textAlign="left"
+    >
+      YOUR SHOPPING BAG IS EMPTY
+    </Styled(BodyCopy)>
+  </div>
+  <div
+    className="continue-shopping"
+  >
+    <Styled(Anchor)
+      anchorVariation="primary"
+      dataLocator="addedToBag-continueShopping"
+      fontSizeVariation="medium"
+      noLink={true}
+      to=""
+      underline={true}
+    >
+      continue Shopping
+    </Styled(Anchor)>
+  </div>
+</div>
+`;
+
+exports[`Empty Mini Bag Component should render correctly with labels name 2`] = `
+<div
+  className="className2"
+>
+  <div
+    className="continue-shopping"
+  >
+    <Styled(BodyCopy)
+      className={null}
+      color="gray.800"
+      component="span"
+      fontFamily="secondary"
+      fontSize="fs18"
+      fontWeight="semibold"
+      letterSpacing="normal"
+      lineHeight="normal"
+      link={null}
+      textAlign="left"
+    >
+      YOUR SHOPPING BAG IS EMPTY
+    </Styled(BodyCopy)>
+  </div>
+  <div
+    className="continue-shopping"
+  >
+    <Styled(Anchor)
+      anchorVariation="primary"
+      dataLocator="addedToBag-continueShopping"
+      fontSizeVariation="medium"
+      noLink={true}
+      to=""
+      underline={true}
+    >
+      continue Shopping
+    </Styled(Anchor)>
+  </div>
+  <div
+    className="continue-shopping"
+  >
+    <Styled(Button)
+      className="logIn"
+    >
+      <Styled(BodyCopy)
+        className={null}
+        color="white"
+        component="span"
+        fontFamily="secondary"
+        fontSize="fs14"
+        fontWeight="extrabold"
+        letterSpacing="normal"
+        lineHeight="normal"
+        link={null}
+        textAlign="left"
+      >
+        log In
+      </Styled(BodyCopy)>
+    </Styled(Button)>
+  </div>
+  <div
+    className="createAccountWrapper"
+  >
+    <Styled(BodyCopy)
+      className="accountText"
+      color="text.primary"
+      component="p"
+      fontFamily="primary"
+      fontSize="fs14"
+      fontWeight="regular"
+      letterSpacing="normal"
+      lineHeight="normal"
+      link={null}
+      textAlign="left"
+    >
+      Dont have an account
+    </Styled(BodyCopy)>
+    <Styled(BodyCopy)
+      className="accountText"
+      color="text.primary"
+      component="p"
+      fontFamily="primary"
+      fontSize="fs14"
+      fontWeight="regular"
+      letterSpacing="normal"
+      lineHeight="normal"
+      link={null}
+      textAlign="left"
+    >
+      Create one now to start earning points!
+    </Styled(BodyCopy)>
+  </div>
+  <div
+    className="continue-shopping"
+  >
+    <Styled(Button)
+      className="createAccount"
+    >
+      <Styled(BodyCopy)
+        className={null}
+        color="white"
+        component="span"
+        fontFamily="secondary"
+        fontSize="fs14"
+        fontWeight="extrabold"
+        letterSpacing="normal"
+        lineHeight="normal"
+        link={null}
+        textAlign="left"
+      >
+        create Account
+      </Styled(BodyCopy)>
+    </Styled(Button)>
+  </div>
+</div>
 `;

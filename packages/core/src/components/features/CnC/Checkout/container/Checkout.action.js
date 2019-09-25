@@ -1,5 +1,11 @@
+import { loadComponentLabelsData } from '@tcp/core/src/reduxStore/actions';
+import { LABELS } from '@tcp/core/src/reduxStore/constants';
 import constants from '../Checkout.constants';
 
+/**
+ * @function initCheckoutAction
+ * action creator for type: INIT_CHECKOUT
+ */
 export const initCheckoutAction = () => ({
   type: constants.INIT_CHECKOUT,
 });
@@ -11,6 +17,11 @@ export const submitPickupSection = payload => ({
 
 export const checkoutSetCartData = payload => ({
   type: 'CHECKOUT_SET_CART_DATA',
+  payload,
+});
+
+export const updateShipmentMethodSelection = payload => ({
+  type: constants.CHECKOUT_UPDATE_SHIPMENT_METHOD_SELECTION,
   payload,
 });
 
@@ -35,6 +46,13 @@ export function getSetPickupAltValuesActn(pickup) {
   };
 }
 
+export function getSetCheckoutStage(payload) {
+  return {
+    payload,
+    type: 'CHECKOUT_UIFLAGS_SET_STAGE',
+  };
+}
+
 export function getSetShippingValuesActn(shipping) {
   return {
     shipping,
@@ -42,9 +60,9 @@ export function getSetShippingValuesActn(shipping) {
   };
 }
 
-export function getSetBillingValuesActn(shipping) {
+export function getSetBillingValuesActn(billing) {
   return {
-    shipping,
+    billing,
     type: 'CHECKOUT_VALUES_SET_BILLING',
   };
 }
@@ -261,5 +279,195 @@ export const emailSignupStatus = payload => {
 export const routeToPickupPage = () => {
   return {
     type: constants.ROUTE_TO_PICKUP_PAGE,
+  };
+};
+
+// export const initActions = [loadComponentLabelsData({ category: LABELS.checkout })];
+
+export const initActions = [loadComponentLabelsData({ category: LABELS.checkout })];
+
+export const updateShippingAddress = payload => {
+  return {
+    type: constants.UPDATE_SHIPPING_ADDRESS,
+    payload,
+  };
+};
+export function getSetIsBillingVisitedActn(isBillingVisited) {
+  return {
+    isBillingVisited,
+    type: constants.CHECKOUT_FLAGS_SET_BILLING_VISITED,
+  };
+}
+
+export function submitBillingSection(payload) {
+  return {
+    payload,
+    type: constants.SUBMIT_BILLING_SECTION,
+  };
+}
+
+export const setGiftCardError = payload => {
+  return {
+    type: constants.SET_GIFTCARD_ERROR,
+    payload,
+  };
+};
+
+export const addNewShippingAddress = payload => {
+  return {
+    type: constants.ADD_NEW_SHIPPING_ADDRESS,
+    payload,
+  };
+};
+
+export const setOnFileAddressKey = payload => {
+  // when edit on desktop/mobile and add new address on mobile, response address Id needs to be set on onFileAddreskey so that while submitting we get this addressId, not the previous one
+  return {
+    type: constants.SET_ON_FILE_ADDRESS_KEY,
+    payload,
+  };
+};
+export const resetGiftCardError = () => {
+  return {
+    type: constants.RESET_GIFTCARD_ERROR,
+  };
+};
+
+export const setOrderBalanceTotal = payload => {
+  return {
+    type: constants.SET_ORDER_TOTAL,
+    payload,
+  };
+};
+
+export const setGiftWrap = payload => {
+  return {
+    type: 'CHECKOUT_VAlUES_SET_GIFT_WRAP',
+    payload,
+  };
+};
+
+export const getSetIsPaypalPaymentSettings = paypalPaymentSettings => {
+  return {
+    type: constants.CHECKOUT_ORDER_OPTIONS_SET_PAYPAL_PAYMENT,
+    paypalPaymentSettings,
+  };
+};
+
+export const submitReviewSection = payload => {
+  return {
+    type: constants.SUBMIT_REVIEW_SECTION,
+    payload,
+  };
+};
+
+export const getVenmoClientToken = payload => {
+  return {
+    type: constants.GET_VENMO_CLIENT_TOKEN,
+    payload,
+  };
+};
+
+export const setShowGiftCardForm = payload => {
+  return {
+    type: constants.CHECKOUT_FLAGS_SET_BILLING_ADD_GIFT_CARD_SHOW,
+    payload,
+  };
+};
+
+export const getVenmoClientTokenSuccess = payload => {
+  return {
+    type: constants.GET_VENMO_CLIENT_TOKEN_SUCCESS,
+    payload,
+  };
+};
+
+export const setHideGiftCardForm = payload => {
+  return {
+    type: constants.CHECKOUT_FLAGS_SET_BILLING_ADD_GIFT_CARD_HIDE,
+    payload,
+  };
+};
+
+export const getVenmoClientTokenError = payload => {
+  return {
+    type: constants.GET_VENMO_CLIENT_TOKEN_ERROR,
+    payload,
+  };
+};
+
+export const addGiftCardFailure = payload => {
+  return {
+    type: constants.ADD_GIFT_CARD_FAILED,
+    payload,
+  };
+};
+
+export const setVenmoData = payload => {
+  return {
+    type: constants.SET_VENMO_DATA,
+    payload,
+  };
+};
+
+export const addGiftCardSuccess = payload => {
+  return {
+    type: constants.ADD_GIFT_CARD_SUCCESS,
+    payload,
+  };
+};
+
+export const setVenmoPaymentInProgress = payload => {
+  return {
+    type: constants.SET_VENMO_PAYMENT_INPROGRESS,
+    payload,
+  };
+};
+
+export const setVenmoPickupMessageState = payload => {
+  return {
+    type: constants.SET_VENMO_PICKUP_MESSAGE_STATE,
+    payload,
+  };
+};
+
+export const setVenmoShippingMessageState = payload => {
+  return {
+    type: constants.SET_VENMO_SHIPPING_MESSAGE_STATE,
+    payload,
+  };
+};
+
+export const resetAddGiftCard = payload => {
+  return {
+    type: constants.RESET_ADD_GIFT_CARD,
+    payload,
+  };
+};
+
+export const resetAddGiftCardSuccess = payload => {
+  return {
+    type: constants.RESET_ADD_GIFT_CARD_SUCCESS,
+    payload,
+  };
+};
+/**
+ * @function initIntlCheckoutAction
+ *  @param { object } payload
+ * action creator for type: INIT_INTL_CHECKOUT
+ */
+export const initIntlCheckoutAction = payload => ({
+  type: constants.INIT_INTL_CHECKOUT,
+  payload,
+});
+/**
+ * @function getSetIntlUrl
+ *  @param { object } internationalUrl
+ * action creator for type: CHECKOUT_ORDER_OPTIONS_SET_INTL_URL
+ */
+export const getSetIntlUrl = internationalUrl => {
+  return {
+    internationalUrl,
+    type: 'CHECKOUT_ORDER_OPTIONS_SET_INTL_URL',
   };
 };

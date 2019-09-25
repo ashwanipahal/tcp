@@ -9,7 +9,9 @@ exports[`LoginTopSectionVanilla component should renders correctly 1`] = `
   }
 >
   <Styled(ImageComp)
+    alt=""
     height={60}
+    host=""
     source={
       Object {
         "testUri": "../../../../core/src/assets/my-place-rewards.png",
@@ -21,6 +23,7 @@ exports[`LoginTopSectionVanilla component should renders correctly 1`] = `
         "marginTop": 20,
       }
     }
+    url=""
     width={186}
   />
   <Styled(LineComp)
@@ -30,9 +33,49 @@ exports[`LoginTopSectionVanilla component should renders correctly 1`] = `
     marginTop={30}
   />
   <Styled(Text) />
-  <Styled(Text) />
-  <Styled(Text) />
-  <Styled(Text) />
+  <Styled(BodyCopy)
+    accessibilityText=""
+    dataLocator=""
+    fontSize="fs12"
+    margin={null}
+    numberOfLines={null}
+    textAlign="center"
+    textDecoration={null}
+  />
+  <Styled(BodyCopy)
+    accessibilityText=""
+    dataLocator=""
+    fontSize="fs12"
+    margin={null}
+    numberOfLines={null}
+    textAlign="center"
+    textDecoration={null}
+  />
+  <Styled(View)>
+    <Styled(Anchor)
+      accessibilityLabel=""
+      anchorVariation=""
+      class="clickhere"
+      colorName={null}
+      customStyle={Object {}}
+      fontSizeVariation="medium"
+      id="forgotPasswordForm"
+      locator=""
+      onPress={[Function]}
+      text=""
+      underline={true}
+      visible={false}
+    />
+    <Styled(BodyCopy)
+      accessibilityText=""
+      component="span"
+      dataLocator=""
+      fontSize="fs12"
+      margin={null}
+      numberOfLines={null}
+      textDecoration={null}
+    />
+  </Styled(View)>
   <Styled(LineComp)
     borderColor={null}
     borderWidth={0.65}

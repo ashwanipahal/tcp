@@ -1,3 +1,5 @@
+import { breakpoints } from '../../../../../styles/themes/TCP/mediaQuery';
+
 export default {
   CAROUSEL_OPTIONS: {
     autoplay: true,
@@ -10,11 +12,14 @@ export default {
     swipe: true,
     responsive: [
       {
-        breakpoint: 1024,
+        breakpoint: breakpoints.values.lg,
         settings: {
           arrows: false,
         },
       },
     ],
+  },
+  IMG_DATA: {
+    imgConfig: [`t_mod_K_img_m`, `t_mod_K_img_t`, `t_mod_K_img_d`],
   },
 };

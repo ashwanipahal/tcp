@@ -1,0 +1,56 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`FilterModal is shown should render FilterModal when show is false 1`] = `
+<Styled(View)>
+  <Styled(FilterButtons)
+    labelsFilter={Object {}}
+    onPressFilter={[Function]}
+    onPressSort={[Function]}
+    props={Object {}}
+    selected={false}
+  />
+  <Component
+    animationType="slide"
+    hardwareAccelerated={false}
+    transparent={true}
+    visible={false}
+  >
+    <Styled(SafeAreaView)>
+      <Styled(TouchableWithoutFeedback)
+        accessibilityRole="button"
+        activeOpacity={1}
+        onPressOut={[Function]}
+      >
+        <Styled(View) />
+      </Styled(TouchableWithoutFeedback)>
+      <Styled(View)>
+        <Styled(View)>
+          <Styled(Text) />
+          <Styled(TouchableOpacity)
+            accessibilityRole="button"
+            onPress={[Function]}
+          >
+            <Styled(CustomIcon)
+              color="#1a1a1a"
+              dataLocator=""
+              iconFontName="FontAwesome"
+              isButton={false}
+              isDisabled={false}
+              margin={null}
+              name="close"
+              onPress={[Function]}
+              size={20}
+            />
+          </Styled(TouchableOpacity)>
+        </Styled(View)>
+        <Styled(WithTheme(Filters))
+          filters={Object {}}
+          labelsFilter={Object {}}
+          name="filters"
+          onSubmit={[Function]}
+        />
+      </Styled(View)>
+    </Styled(SafeAreaView)>
+  </Component>
+</Styled(View)>
+`;
