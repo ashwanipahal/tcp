@@ -12,6 +12,7 @@ exports[`Venmo Payment Button should render Venmo Button correctly 1`] = `
     <Styled(Image)
       alt="Venmo Payment Button"
       className="venmo-button-image"
+      src="/static/images/venmo_logo_blue.png"
     />
   </button>
 </div>
@@ -29,6 +30,7 @@ exports[`Venmo Payment Button should render correctly 1`] = `
     <Styled(Image)
       alt="Venmo Payment Button"
       className="venmo-button-image"
+      src="/static/images/venmo_logo_blue.png"
     />
   </button>
 </div>
