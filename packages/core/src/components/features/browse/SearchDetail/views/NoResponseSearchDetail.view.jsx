@@ -136,7 +136,7 @@ class NoResponseSearchDetailView extends React.PureComponent {
                   {slpLabels.lbl_noresults_found}
                 </BodyCopy>
               ) : (
-                <div className="matchBox">
+                <div className="matchBox suggestionHide">
                   <div className="matchLinkBox">
                     <BodyCopy
                       fontFamily="secondary"

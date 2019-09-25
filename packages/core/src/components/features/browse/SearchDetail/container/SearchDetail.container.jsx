@@ -86,20 +86,66 @@ class SearchDetailContainer extends React.PureComponent {
   }
 
   render() {
-    const { isLoadingMore, products, isSearchResultsAvailable, ...otherProps } = this.props;
+    const {
+      formValues,
+      productsBlock,
+      products,
+      currentNavIds,
+      navTree,
+      breadCrumbs,
+      filters,
+      totalProductsCount,
+      filtersLength,
+      initialValues,
+      longDescription,
+      labels,
+      isLoadingMore,
+      lastLoadedPageNumber,
+      labelsFilter,
+      categoryId,
+      getProducts,
+      onSubmit,
+      onPickUpOpenClick,
+      searchedText,
+      slpLabels,
+      searchResultSuggestions,
+      sortLabels,
+      isSearchResultsAvailable,
+      ...otherProps
+    } = this.props;
 
     return (
       <>
-        {isSearchResultsAvailable === true ? (
-          <>
-            {products && products.length > 0 ? (
-              <SearchDetail isLoadingMore={isLoadingMore} products={products} {...otherProps} />
-            ) : (
-              <NoResponseSearchDetail {...otherProps} />
-            )}
-          </>
+        {products && products.length > 0 ? (
+          <SearchDetail
+            filters={filters}
+            formValues={formValues}
+            filtersLength={filtersLength}
+            getProducts={getProducts}
+            isLoadingMore={isLoadingMore}
+            initialValues={initialValues}
+            onSubmit={onSubmit}
+            products={products}
+            productsBlock={productsBlock}
+            totalProductsCount={totalProductsCount}
+            labels={labels}
+            labelsFilter={labelsFilter}
+            slpLabels={slpLabels}
+            searchedText={searchedText}
+            sortLabels={sortLabels}
+            searchResultSuggestions={searchResultSuggestions}
+            {...otherProps}
+          />
         ) : (
-          <SearchDetail isLoadingMore={isLoadingMore} products={products} {...otherProps} />
+          <NoResponseSearchDetail
+            totalProductsCount={totalProductsCount}
+            labels={labels}
+            slpLabels={slpLabels}
+            searchedText={searchedText}
+            sortLabels={sortLabels}
+            searchResultSuggestions={searchResultSuggestions}
+            {...otherProps}
+          />
         )}
       </>
     );
