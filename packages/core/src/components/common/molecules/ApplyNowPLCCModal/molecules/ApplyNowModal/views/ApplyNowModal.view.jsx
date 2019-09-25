@@ -7,7 +7,7 @@ import Modal from '../../../../Modal';
 import withStyles from '../../../../../hoc/withStyles';
 import { getLocator } from '../../../../../../../utils';
 import styles, { modalStyles } from '../../../styles/ApplyNowModal.style';
-import ApplyNowPLCCModal from '../../ApplyNowPLCCModal.jsx/views/ApplyNowPLCCModal';
+import ApplyNowPLCCModal from '../../ApplyNowPLCCModal/views/ApplyNowPLCCModal';
 
 /**
  * @constant ApplyNowModal - Opens a Modal containing modal to open apply plcc modal.
