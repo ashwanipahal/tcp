@@ -25,6 +25,10 @@ class ContactInformationFormWrapper extends React.Component {
     labels: PropTypes.shape({}).isRequired,
   };
 
+  static autocompleteRestrictions = {
+    country: 'US',
+  };
+
   constructor(props) {
     super(props);
     this.siteId = getSiteId();

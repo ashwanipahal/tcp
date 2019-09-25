@@ -41,7 +41,7 @@ class BagPageView extends React.Component {
             activeSection === BAGPAGE_CONSTANTS.BAG_STATE ? 'activeSection' : 'inActiveSection'
           }`}
         >
-          <ProductTileWrapper bagLabels={labels} pageView={myBag} />
+          <ProductTileWrapper bagLabels={labels} pageView={myBag} showPlccApplyNow />
         </div>
         <div
           className={`save-for-later-section ${
@@ -60,6 +60,7 @@ class BagPageView extends React.Component {
             bagLabels={labels}
             pageView={myBag}
             sflItems={sflItems}
+            showPlccApplyNow={false}
             isBagPageSflSection
           />
         </div>
