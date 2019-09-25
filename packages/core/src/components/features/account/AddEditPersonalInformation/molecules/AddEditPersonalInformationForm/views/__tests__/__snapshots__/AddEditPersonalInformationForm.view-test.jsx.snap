@@ -1240,11 +1240,6 @@ exports[`AddEditPersonalInformationForm component should renders correctly with 
   name="AddEditPersonalInformationForm"
   noValidate={true}
 >
-  <Styled(Notification)
-    className="elem-mt-MED"
-    message=""
-    status="error"
-  />
   <Styled(Row)
     className="elem-mt-XXL"
     fullBleed={true}

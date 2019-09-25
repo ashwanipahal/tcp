@@ -15,10 +15,6 @@ export function* UpdateProfile({ payload }) {
     let error = {};
     /* istanbul ignore else */
     error = err;
-    console.log('-------------------------');
-    console.log(error);
-    console.log('-------------------------');
-
     if (error && error.errorResponse) {
       return yield put(updateProfileError(error.errorResponse));
     }

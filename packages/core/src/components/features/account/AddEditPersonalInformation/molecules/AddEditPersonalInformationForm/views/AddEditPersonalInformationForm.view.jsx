@@ -36,7 +36,7 @@ export const AddEditPersonalInformationForm = ({
       onSubmit={handleSubmit}
       noValidate
     >
-      {errorMessage && (
+      {errorMessage && errorPersonalInfoMessage && (
         <Notification
           className="elem-mt-MED"
           status="error"
