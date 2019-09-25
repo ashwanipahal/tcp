@@ -40,6 +40,8 @@ export default class ShippingPage extends React.PureComponent {
     labels: PropTypes.shape({}).isRequired,
     syncErrors: PropTypes.shape({}),
     shippingAddress: PropTypes.shape({}),
+    isVenmoPaymentInProgress: PropTypes.bool,
+    setVenmoShippingState: PropTypes.func,
     shippingPhoneAndEmail: PropTypes.shape({}),
   };
 
@@ -64,6 +66,8 @@ export default class ShippingPage extends React.PureComponent {
     saveToAddressBook: false,
     syncErrors: {},
     shippingAddress: null,
+    isVenmoPaymentInProgress: false,
+    setVenmoShippingState: () => {},
     shippingPhoneAndEmail: null,
   };
 
@@ -162,7 +166,7 @@ export default class ShippingPage extends React.PureComponent {
     //   response: 'invalid::false:false',
     //   storeId: '10152',
     // };
-    const { handleSubmit } = this.props;
+    const { handleSubmit, setVenmoShippingState } = this.props;
     handleSubmit({
       method: {
         shippingMethodId: shipmentMethods.shippingMethodId,
@@ -182,6 +186,7 @@ export default class ShippingPage extends React.PureComponent {
         wantsSmsOrderUpdates: smsSignUp.sendOrderUpdate,
       },
     });
+    setVenmoShippingState(true);
   };
 
   updateShippingAddress = () => {
@@ -285,6 +290,7 @@ export default class ShippingPage extends React.PureComponent {
       address,
       syncErrors,
       shippingAddress,
+      isVenmoPaymentInProgress,
     } = this.props;
     const primaryAddressId = this.getPrimaryAddress();
     const { isAddNewAddress, isEditing, defaultAddressId } = this.state;
@@ -332,6 +338,7 @@ export default class ShippingPage extends React.PureComponent {
             setDefaultAddressId={this.setDefaultAddressId}
             syncErrorsObject={syncErrors}
             shippingAddress={shippingAddress}
+            isVenmoPaymentInProgress={isVenmoPaymentInProgress}
           />
         )}
       </>

@@ -18,7 +18,9 @@ export function getMapSliceForFit(colorFitsSizesMap, colorName, fitName) {
   }
   if (currentColorEntry.hasFits) {
     // eslint-disable-next-line
-    return currentColorEntry.fits.find(entry => entry.fitName === fitName);
+    return currentColorEntry.fits.find(entry => {
+      return entry.fitName === fitName || entry.fitNameVal === fitName;
+    });
   }
   // eslint-disable-next-line
   return currentColorEntry.fits[0];

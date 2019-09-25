@@ -41,7 +41,12 @@ const HomeStack = createStackNavigator(
         return getNewHeader(navigation);
       },
     },
-    ProductListingPage,
+    ProductListingPage: {
+      screen: ProductListingPage,
+      navigationOptions: ({ navigation }) => {
+        return getNewHeader(navigation);
+      },
+    },
   },
   {
     defaultNavigationOptions: {

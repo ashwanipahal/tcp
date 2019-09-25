@@ -33,6 +33,7 @@ import {
   getCreditCardList,
   getCardOptions,
 } from './BillingPaymentForm.view.util';
+import VenmoPaymentButton from '../../../../../../common/atoms/VenmoPaymentButton';
 import CheckoutOrderInfo from '../../../molecules/CheckoutOrderInfoMobile';
 
 /**
@@ -420,15 +421,18 @@ export class BillingPaymentForm extends React.PureComponent {
               {labels.paymentMethod}
             </BodyCopy>
             <PaymentMethods labels={labels} className="elem-mb-LRG" />
-            {paymentMethodId === constants.PAYMENT_METHOD_CREDIT_CARD ? (
+            {paymentMethodId === constants.PAYMENT_METHOD_CREDIT_CARD &&
               this.getCreditCardWrapper({
                 labels,
                 creditCardList,
                 cvvCodeRichText,
                 onFileCardKey,
-              })
-            ) : (
+              })}
+            {paymentMethodId === constants.PAYMENT_METHOD_PAYPAL && (
               <div className="payment-paypal-container" />
+            )}
+            {paymentMethodId === constants.PAYMENT_METHOD_VENMO && (
+              <VenmoPaymentButton className="venmo-container" />
             )}
           </div>
         )}

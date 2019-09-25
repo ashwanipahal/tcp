@@ -190,6 +190,7 @@ describe('#CartItemTile selector', () => {
             lbl_sfl_maxLimitError: 'sflMaxLimitError',
             lbl_sfl_moveToBag: 'moveToBagLink',
             bl_sfl_actionSuccess: 'sflSuccess',
+            lbl_sfl_itemDeleteSuccess: 'sflDeleteSuccess',
           },
         },
       },
@@ -232,6 +233,7 @@ describe('#CartItemTile selector', () => {
       sflMaxLimitError: 'sflMaxLimitError',
       moveToBagLink: 'moveToBagLink',
       sflSuccess: 'sflSuccess',
+      sflDeleteSuccess: 'sflDeleteSuccess',
       removeError: 'remove',
     });
   });

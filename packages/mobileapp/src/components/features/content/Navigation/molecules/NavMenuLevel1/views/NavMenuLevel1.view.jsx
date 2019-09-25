@@ -19,15 +19,6 @@ const Icon = require('../../../../../../../../../core/src/assets/carrot-small-ri
  * @param {object} props Props passed from Stack navigator screen
  */
 class NavMenuLevel1 extends React.PureComponent {
-  componentDidMount() {
-    this.loadData();
-  }
-
-  loadData = () => {
-    const { loadNavigationData } = this.props;
-    loadNavigationData();
-  };
-
   /**
    * @function ShowL2Navigation populates the L2 menu for the L1 link that has been clicked
    * @param {object} item Details of the L1 menu item that has been clicked
@@ -166,7 +157,6 @@ NavMenuLevel1.propTypes = {
   }).isRequired,
   accessibilityLabels: PropTypes.shape({}),
   navigationMenuObj: PropTypes.arrayOf(PropTypes.shape({})).isRequired,
-  loadNavigationData: PropTypes.func.isRequired,
 };
 
 NavMenuLevel1.defaultProps = {

@@ -22,6 +22,7 @@ exports[`CartItemRadioButtons Component CartItemRadioButtons should render corre
       fontWeight="regular"
       letterSpacing="normal"
       lineHeight="normal"
+      link={null}
       textAlign="left"
     />
   </Styled(LabeledRadioButton)>
@@ -43,6 +44,7 @@ exports[`CartItemRadioButtons Component CartItemRadioButtons should render corre
       fontWeight="regular"
       letterSpacing="normal"
       lineHeight="normal"
+      link={null}
       textAlign="left"
     />
   </Styled(LabeledRadioButton)>

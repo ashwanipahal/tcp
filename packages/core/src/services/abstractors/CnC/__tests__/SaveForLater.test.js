@@ -66,4 +66,27 @@ describe('Save For Later', () => {
 
     expect(result).toEqual('OK');
   });
+
+  it('Save for Later Delete with', () => {
+    const imageGen = jest.fn();
+    const result = {
+      body: {
+        sflItems: [
+          {
+            inventoryAvail: 9999,
+            isGiftCard: false,
+            productInfo: {
+              productPartNumber: '33232',
+            },
+            productUrl: '/us/p/gift',
+          },
+        ],
+        sflItemsCount: 4,
+      },
+    };
+    executeStatefulAPICall.mockImplementation(() => Promise.resolve(result));
+    addItemToSflList('438177', false, true, imageGen, 'USD', false, true).then(data => {
+      expect(data.body).toMatchObject(result.body);
+    });
+  });
 });
