@@ -6,9 +6,7 @@ exports[`StoreSearch component StoreSearch component renders correctly 1`] = `
 >
   <h3
     className="storeLocatorHeading"
-  >
-    Find a Store
-  </h3>
+  />
   <Styled(Row)
     fullBleed={true}
   >
@@ -37,9 +35,7 @@ exports[`StoreSearch component StoreSearch component renders correctly 1`] = `
           />
           <span
             className="currentLocation"
-          >
-            Use my current location
-          </span>
+          />
         </Styled(Anchor)>
       </div>
       <form
@@ -64,8 +60,6 @@ exports[`StoreSearch component StoreSearch component renders correctly 1`] = `
             id="storeAddressLocator"
             name="storeAddressLocator"
             onPlaceSelected={[Function]}
-            placeholder="ZIP or city, state"
-            title="ZIP or city, state"
           />
           <Styled(Button)
             className="button-search-store"
@@ -252,9 +246,7 @@ exports[`StoreSearch component StoreSearch component renders correctly 1`] = `
                 letterSpacing="normal"
                 lineHeight="normal"
                 textAlign="left"
-              >
-                Gymboree
-              </Styled(BodyCopy)>
+              />
             </Field>
           </li>
           <li
@@ -412,9 +404,7 @@ exports[`StoreSearch component StoreSearch component renders correctly 1`] = `
                 letterSpacing="normal"
                 lineHeight="normal"
                 textAlign="left"
-              >
-                Only Outlet Stores
-              </Styled(BodyCopy)>
+              />
             </Field>
           </li>
         </ul>
@@ -423,35 +413,26 @@ exports[`StoreSearch component StoreSearch component renders correctly 1`] = `
         >
           <li
             className="mapLink storeLinks"
-            key="View Map"
           >
-            <Styled(Anchor)>
-              View Map
-            </Styled(Anchor)>
+            <Styled(Anchor) />
           </li>
           <li
             className="storeLinks"
-            key="All US & Canada Stores"
           >
             <Styled(Anchor)
               asPath=""
               className=""
               to=""
-            >
-              All US & Canada Stores
-            </Styled(Anchor)>
+            />
           </li>
           <li
             className="storeLinks"
-            key="International Stores"
           >
             <Styled(Anchor)
               asPath=""
               className=""
               to=""
-            >
-              International Stores
-            </Styled(Anchor)>
+            />
           </li>
         </ul>
       </div>

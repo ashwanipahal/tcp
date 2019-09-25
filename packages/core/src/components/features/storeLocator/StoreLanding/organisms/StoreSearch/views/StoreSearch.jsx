@@ -119,16 +119,16 @@ export class StoreSearch extends PureComponent {
     } = this.props;
     const { errorNotFound, gymSelected, outletSelected } = this.state;
     const {
-      errorLabel = 'there is an error in the input',
-      storeSearchPlaceholder = 'ZIP or city, state',
-      findStoreHeading = 'Find a Store',
-      gymboreeStores = 'Gymboree',
-      outletStores = 'Only Outlet Stores',
-      currentLocation = 'Use my current location',
-      viewMap = 'View Map',
-      viewList = 'View List',
-      allUSCAStores = 'All US & Canada Stores',
-      internationalStores = 'International Stores',
+      errorLabel,
+      storeSearchPlaceholder,
+      findStoreHeading,
+      gymboreeStores,
+      outletStores,
+      currentLocation,
+      viewMap,
+      viewList,
+      allUSCAStores,
+      internationalStores,
     } = labels;
     const errorMessage = errorNotFound ? errorLabel : error;
 
