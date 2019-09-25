@@ -157,3 +157,12 @@ export default css`
     }
   }
 `;
+
+export const customModalCss = css`
+  div.TCPModal__InnerContent {
+    background: none;
+  }
+  button.close-modal {
+    display: none;
+  }
+`;

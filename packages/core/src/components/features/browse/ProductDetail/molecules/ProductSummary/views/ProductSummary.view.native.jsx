@@ -49,10 +49,13 @@ class ProductSummary extends React.PureComponent {
       const { promotionalMessage, promotionalPLCCMessage, name } = productData;
 
       // calculate default list price
-      const listPriceForColor = `${currencySymbol}${listPrice * currencyExchange[0].exchangevalue}`;
+      const listPriceForColor = `${currencySymbol}${(
+        listPrice * currencyExchange[0].exchangevalue
+      ).toFixed(2)}`;
       // calculate default offer price
-      const offerPriceForColor = `${currencySymbol}${offerPrice *
-        currencyExchange[0].exchangevalue}`;
+      const offerPriceForColor = `${currencySymbol}${(
+        offerPrice * currencyExchange[0].exchangevalue
+      ).toFixed(2)}`;
 
       // get default Loyalty message
       this.loyaltyPromotionMessage = getPromotionalMessage(isPlcc, {
@@ -62,7 +65,7 @@ class ProductSummary extends React.PureComponent {
 
       return (
         <Container>
-          <LineComp marginTop={10} borderColor="#d8d8d8" />
+          <LineComp marginTop={10} borderColor="gray.500" />
           <BazarVoiceContainer>
             <ReviewAndRatingContainer>
               <BodyCopy
@@ -95,7 +98,7 @@ class ProductSummary extends React.PureComponent {
               text="Complete The Look"
             />
           </BazarVoiceContainer>
-          <LineComp marginTop={0} borderColor="#d8d8d8" />
+          <LineComp marginTop={0} borderColor="gray.500" />
           {badge1Value !== '' && (
             <BodyCopy
               dataLocator="pdp_product_badges"
@@ -124,18 +127,20 @@ class ProductSummary extends React.PureComponent {
             fontSize="fs22"
             fontWeight="black"
             color="red.500"
-            text={listPriceForColor}
+            text={offerPriceForColor}
           />
           <OfferPriceAndBadge3Container>
-            <BodyCopy
-              dataLocator="pdp_discounted_product_price"
-              textDecoration="line-through"
-              mobileFontFamily="secondary"
-              fontSize="fs14"
-              fontWeight="regular"
-              color="gray.800"
-              text={offerPriceForColor}
-            />
+            {listPriceForColor !== offerPriceForColor && (
+              <BodyCopy
+                dataLocator="pdp_discounted_product_price"
+                textDecoration="line-through"
+                mobileFontFamily="secondary"
+                fontSize="fs14"
+                fontWeight="regular"
+                color="gray.800"
+                text={listPriceForColor}
+              />
+            )}
             <BodyCopy
               dataLocator="pdp_discounted_percentage"
               margin="0 0 0 10px"
@@ -155,7 +160,7 @@ class ProductSummary extends React.PureComponent {
               dataLocator="pdp_loyalty_text"
             />
           )}
-          <LineComp marginTop={12} borderColor="#d8d8d8" />
+          <LineComp marginTop={12} borderColor="gray.500" />
         </Container>
       );
     }

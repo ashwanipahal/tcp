@@ -4,6 +4,7 @@ import { View } from 'react-native';
 import { connect } from 'react-redux';
 import { reduxForm, Field } from 'redux-form';
 import PropTypes from 'prop-types';
+import get from 'lodash/get';
 
 import LinkImageIcon from '../../../../features/browse/ProductListing/atoms/LinkImageIcon';
 import ProductVariantSelector from '../../ProductVariantSelector';
@@ -11,6 +12,8 @@ import withStyles from '../../../hoc/withStyles';
 import styles, { RowViewContainer } from '../styles/ProductAddToBag.style.native';
 import { Button, BodyCopy } from '../../../atoms';
 import { NativeDropDown } from '../../../atoms/index.native';
+import ProductPickupContainer from '../../../organisms/ProductPickup';
+import { getMapSliceForColorProductId } from '../../../../features/browse/ProductListing/molecules/ProductList/utils/productsCommonUtils';
 
 class ProductAddToBag extends React.PureComponent<Props> {
   /* Have to define empty constructor because test case fail with error 'TypeError: Cannot read property 'find' of undefined'. So if using PureComponent then mendatory to define constructor */
@@ -114,6 +117,26 @@ class ProductAddToBag extends React.PureComponent<Props> {
     );
   };
 
+  renderPickUpStor = () => {
+    const { currentProduct, selectedColorProductId } = this.props;
+    if (currentProduct) {
+      const colorFitsSizesMap = get(currentProduct, 'colorFitsSizesMap', null);
+      const curentColorEntry = getMapSliceForColorProductId(
+        colorFitsSizesMap,
+        selectedColorProductId
+      );
+      const { miscInfo } = curentColorEntry;
+      return (
+        <ProductPickupContainer
+          productInfo={currentProduct}
+          formName={`ProductAddToBag-${currentProduct.generalProductId}`}
+          miscInfo={miscInfo}
+        />
+      );
+    }
+    return null;
+  };
+
   render() {
     const {
       colorList,
@@ -175,6 +198,7 @@ class ProductAddToBag extends React.PureComponent<Props> {
           locators={{ key: 'pdp_size_label', value: 'pdp_size_value' }}
         />
         {this.renderQuantityView()}
+        {this.renderPickUpStor()}
         {this.renderAddToBagButton()}
       </View>
     );
@@ -194,6 +218,8 @@ ProductAddToBag.propTypes = {
   isErrorMessageDisplayed: PropTypes.bool,
   addToBagAction: PropTypes.func,
   selectedQuantity: PropTypes.number,
+  currentProduct: PropTypes.shape({}).isRequired,
+  selectedColorProductId: PropTypes.number.isRequired,
 };
 
 ProductAddToBag.defaultProps = {

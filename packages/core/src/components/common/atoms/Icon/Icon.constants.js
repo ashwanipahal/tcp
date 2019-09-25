@@ -25,4 +25,6 @@ export const ICON_NAME = {
   camera: 'camera',
   caretLargeLeft: 'caret-large-left',
   circleAlertFill: 'circle-alert-fill',
+  fastShipping: 'fast-shipping',
+  markerIcon: 'marker-icon',
 };

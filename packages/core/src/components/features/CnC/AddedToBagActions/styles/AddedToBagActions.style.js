@@ -46,6 +46,12 @@ const CtaStyle = css`
   }
   .paypal-wrapper {
     width: 100%;
+    @media ${props => props.theme.mediaQuery.large} {
+      min-width: 220px;
+    }
+  }
+  .paypal-wrapper-atb {
+    width: 100%;
   }
   .venmo-wrapper {
     display: none;

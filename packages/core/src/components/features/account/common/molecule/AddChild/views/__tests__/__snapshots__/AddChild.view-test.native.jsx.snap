@@ -579,21 +579,52 @@ exports[`AddChildBirthday component should renders correctly 1`] = `
   <Styled(View)
     spacingStyles="margin-top-XXL"
   >
-    <Styled(WithTheme(CustomButton))
+    <Styled(CustomButton)
+      active={false}
       buttonVariation="variable-width"
       color="white"
+      customStyle={Object {}}
+      disableButton={false}
       fill="BLUE"
+      fullWidth=""
+      iconColor="gray.800"
+      iconName="chevron-down"
+      iconSize="fs12"
+      locator=""
+      navigation={Object {}}
       onPress={[MockFunction]}
+      selected={false}
+      selectedIcon="chevron-up"
+      showIcon={false}
+      text=""
+      theme={Object {}}
       type="submit"
+      url=""
     />
   </Styled(View)>
   <Styled(View)
     spacingStyles="margin-top-MED margin-bottom-XL"
   >
-    <Styled(WithTheme(CustomButton))
+    <Styled(CustomButton)
+      active={false}
       buttonVariation="variable-width"
+      color=""
+      customStyle={Object {}}
+      disableButton={false}
       fill="WHITE"
+      fullWidth=""
+      iconColor="gray.800"
+      iconName="chevron-down"
+      iconSize="fs12"
+      locator=""
+      navigation={Object {}}
       onPress={[MockFunction]}
+      selected={false}
+      selectedIcon="chevron-up"
+      showIcon={false}
+      text=""
+      theme={Object {}}
+      url=""
     />
   </Styled(View)>
 </Fragment>

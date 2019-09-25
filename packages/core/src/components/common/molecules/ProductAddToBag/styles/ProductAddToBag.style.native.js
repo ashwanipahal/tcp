@@ -8,7 +8,6 @@ const styles = css`
 export const RowViewContainer = styled.View`
   flex-direction: row;
   align-items: center;
-  margin-bottom: ${props => props.theme.spacing.ELEM_SPACING.XXL};
 `;
 
 export default styles;

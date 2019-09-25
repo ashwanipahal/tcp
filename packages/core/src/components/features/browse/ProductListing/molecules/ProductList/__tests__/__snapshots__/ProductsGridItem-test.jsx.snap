@@ -10,6 +10,7 @@ exports[`ProductsGridItem component should renders correctly 1`] = `
   >
     <BadgeItem
       className="top-badge-container"
+      customFontWeight=""
       haveSpace={true}
       isShowBadges={true}
       text=""
