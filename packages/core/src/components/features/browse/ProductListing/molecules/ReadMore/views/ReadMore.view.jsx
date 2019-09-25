@@ -23,7 +23,11 @@ class ReadMore extends React.PureComponent {
     const { isExpanded } = this.state;
 
     return (
-      <BodyCopy component="div" className={`${className} ${isExpanded && 'read-more-expanded'}`}>
+      <BodyCopy
+        component="div"
+        className={`${className} ${isExpanded && 'read-more-expanded'}`}
+        tabIndex="0"
+      >
         <BodyCopy
           className="body-copy"
           fontSize="fs14"
