@@ -81,7 +81,6 @@ class StoreAddressTile extends PureComponent {
             title={labels.lbl_storelocators_landingpage_storedetails_link}
             noLink
           >
-            aaaa
             {labels.lbl_storelocators_landingpage_storedetails_link}
           </Anchor>
         </div>
