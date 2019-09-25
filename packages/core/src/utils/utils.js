@@ -550,6 +550,17 @@ export const parseBoolean = bool => {
   return bool === true || bool === '1' || (bool || '').toUpperCase() === 'TRUE';
 };
 
+export const getFormSKUValue = formValue => {
+  return {
+    color: (typeof formValue.color === 'object' && formValue.color.name) || formValue.Quantity,
+    size: (typeof formValue.Size === 'object' && formValue.Size.name) || formValue.Size,
+    quantity:
+      (typeof formValue.Quantity === 'object' && formValue.Quantity.name) || formValue.Quantity,
+    fit:
+      (formValue.Fit && typeof formValue.Fit === 'object' && formValue.Fit.name) || formValue.Fit,
+  };
+};
+
 export default {
   getPromotionalMessage,
   getIconPath,
@@ -576,4 +587,5 @@ export default {
   formatDate,
   parseStoreHours,
   parseBoolean,
+  getFormSKUValue,
 };
