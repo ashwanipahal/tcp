@@ -36,9 +36,7 @@ exports[`StoreSearch Container should render StoreLanding Correctly 1`] = `
         >
           <h3
             className="favoriteStore__heading"
-          >
-            Your Favorite Store
-          </h3>
+          />
           <Styled(StoreAddressTile)
             favoriteStore={
               Object {
@@ -175,6 +173,7 @@ exports[`StoreSearch Container should render StoreLanding Correctly 1`] = `
             }
             fetchStoresByLatLng={[MockFunction]}
             isFavorite={true}
+            labels={Object {}}
             store={
               Object {
                 "basicInfo": Object {
@@ -605,6 +604,7 @@ exports[`StoreSearch Container should render StoreLanding Correctly 1`] = `
             form="StoreSearch"
             getFormState={[Function]}
             keepDirtyOnReinitialize={false}
+            labels={Object {}}
             mapView={false}
             persistentSubmitErrors={false}
             pure={true}
@@ -802,9 +802,7 @@ exports[`StoreSearch Container should render StoreLanding Correctly with map 1`]
         >
           <h3
             className="favoriteStore__heading"
-          >
-            Your Favorite Store
-          </h3>
+          />
           <Styled(StoreAddressTile)
             favoriteStore={
               Object {
@@ -941,6 +939,7 @@ exports[`StoreSearch Container should render StoreLanding Correctly with map 1`]
             }
             fetchStoresByLatLng={[MockFunction]}
             isFavorite={true}
+            labels={Object {}}
             store={
               Object {
                 "basicInfo": Object {
@@ -1371,6 +1370,7 @@ exports[`StoreSearch Container should render StoreLanding Correctly with map 1`]
             form="StoreSearch"
             getFormState={[Function]}
             keepDirtyOnReinitialize={false}
+            labels={Object {}}
             mapView={true}
             persistentSubmitErrors={false}
             pure={true}
@@ -1564,6 +1564,7 @@ exports[`StoreSearch Container should render StoreLanding Correctly with map 1`]
                 fetchStoresByLatLng={[MockFunction]}
                 isCanada={[Function]}
                 isMobile={false}
+                labels={Object {}}
                 storesList={Array []}
                 suggestedStoreList={
                   Array [

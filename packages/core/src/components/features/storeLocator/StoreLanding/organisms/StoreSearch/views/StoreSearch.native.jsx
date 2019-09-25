@@ -1,3 +1,4 @@
+/* eslint-disable camelcase */
 import React, { Component } from 'react';
 import { FlatList } from 'react-native';
 import ErrorMessage from '@tcp/core/src/components/common/hoc/ErrorMessage';
@@ -52,28 +53,28 @@ class StoreSearch extends Component {
   render() {
     const { labels, error, selectedCountry } = this.props;
     const {
-      errorLabel,
-      storeSearchPlaceholder,
-      findStoreHeading,
-      gymboreeStores,
-      outletStores,
-      currentLocation,
-      viewMap,
+      lbl_storelocators_detail_errorLabel,
+      lbl_storelocators_detail_storeSearchPlaceholder,
+      lbl_storelocators_detail_findStoreHeading,
+      lbl_storelocators_detail_gymboreeStores,
+      lbl_storelocators_detail_outletStores,
+      lbl_storelocators_detail_currentLocation,
+      lbl_storelocators_detail_viewMap,
     } = labels;
 
     const { errorNotFound } = this.state;
-    const errorMessage = errorNotFound ? errorLabel : error;
+    const errorMessage = errorNotFound ? lbl_storelocators_detail_errorLabel : error;
 
     const storeOptionsConfig = [
       {
         name: 'gymboreeStoreOption',
         dataLocator: 'gymboree-store-option',
-        storeLabel: gymboreeStores,
+        storeLabel: lbl_storelocators_detail_gymboreeStores,
       },
       {
         name: 'outletOption',
         dataLocator: 'only-outlet-option',
-        storeLabel: outletStores,
+        storeLabel: lbl_storelocators_detail_outletStores,
       },
     ];
 
@@ -85,7 +86,7 @@ class StoreSearch extends Component {
             fontWeight="extrabold"
             fontSize="fs16"
             color="#1a1a1a"
-            text={findStoreHeading}
+            text={lbl_storelocators_detail_findStoreHeading}
           />
         </StyledFindStoreTitle>
         <Anchor>
@@ -97,14 +98,14 @@ class StoreSearch extends Component {
                 fontWeight="regular"
                 fontSize="fs12"
                 color="#1a1a1a"
-                text={currentLocation}
+                text={lbl_storelocators_detail_currentLocation}
               />
             </StyledCurrentLocation>
           </StyledStoreLocator>
         </Anchor>
         <StyledAutoComplete>
           <Field
-            headerTitle={storeSearchPlaceholder}
+            headerTitle={lbl_storelocators_detail_storeSearchPlaceholder}
             component={GooglePlacesInput}
             dataLocator="addnewaddress-addressl1"
             componentRestrictions={{ ...{ country: [selectedCountry] } }}
@@ -131,7 +132,12 @@ class StoreSearch extends Component {
           />
         </StyleStoreOptionList>
         <StyledLinks>
-          <Anchor fontWeight="regular" anchorVariation="primary" text={viewMap} underline />
+          <Anchor
+            fontWeight="regular"
+            anchorVariation="primary"
+            text={lbl_storelocators_detail_viewMap}
+            underline
+          />
         </StyledLinks>
       </StyledContainer>
     );

@@ -8,6 +8,7 @@ describe('StoreSearch Container', () => {
     fetchStoresByLatLng: jest.fn(),
     suggestedStoreList: [suggestedStore],
     favoriteStore: suggestedStore,
+    labels: {},
   };
 
   let tree = '';

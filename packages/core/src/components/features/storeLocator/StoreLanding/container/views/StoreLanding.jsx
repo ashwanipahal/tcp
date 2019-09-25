@@ -88,13 +88,15 @@ export class StoreLanding extends PureComponent {
   };
 
   renderFavoriteStore = () => {
-    const { favoriteStore } = this.props;
+    const { favoriteStore, labels } = this.props;
     return (
       <>
         {favoriteStore && (
           <Row className="favoriteStore__container">
             <Col colSize={{ large: 12, medium: 8, small: 6 }} ignoreGutter={{ small: true }}>
-              <h3 className="favoriteStore__heading">Your Favorite Store</h3>
+              <h3 className="favoriteStore__heading">
+                {labels.lbl_storelocators_detail_favStoreHeading}
+              </h3>
               <StoreAddressTile
                 {...this.props}
                 store={favoriteStore}
@@ -187,6 +189,7 @@ StoreLanding.propTypes = {
   setFavoriteStore: PropTypes.func.isRequired,
   favoriteStore: PropTypes.shape(PropTypes.string),
   className: PropTypes.string.isRequired,
+  labels: PropTypes.shape(PropTypes.string).isRequired,
 };
 
 StoreLanding.defaultProps = {
