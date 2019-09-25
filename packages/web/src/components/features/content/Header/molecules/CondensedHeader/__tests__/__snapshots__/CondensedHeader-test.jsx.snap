@@ -115,6 +115,7 @@ exports[`<CondensedHeaderVanilla /> Should match snapshot correctly 1`] = `
             fontWeight="semibold"
             letterSpacing="normal"
             lineHeight="normal"
+            link={null}
             textAlign="left"
           >
             0
