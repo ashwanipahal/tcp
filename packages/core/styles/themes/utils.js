@@ -1,4 +1,7 @@
-const getColor = (colorPalette, colorKey) => {
+const getColor = (colorPalette, colorKey, defaultColor = null) => {
+  if (!colorKey) {
+    return defaultColor || colorPalette.blue[700];
+  }
   const colorSpliter = colorKey.split('.');
   return colorSpliter.length > 1
     ? colorPalette[colorSpliter[0]][colorSpliter[1]]
