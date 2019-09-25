@@ -1,0 +1,135 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`<CondensedHeaderVanilla /> Should match snapshot correctly 1`] = `
+<Fragment>
+  <Styled(Row)
+    className="undefined condensed-header"
+  >
+    <Styled(Row)
+      className="content-wrapper"
+    >
+      <Styled(Col)
+        colSize={
+          Object {
+            "large": 2,
+            "medium": 1,
+            "small": 1,
+          }
+        }
+      >
+        <Styled(BrandLogo)
+          alt="The Children's Place"
+          className="brand-logo-left"
+          dataLocator="global_TCPlink"
+          imgSrc="/static/images/tcp-logo.svg"
+        />
+        <Styled(Image)
+          alt="menu"
+          className="hamburger-menu"
+          data-locator="menu_bar_icon"
+          onClick={[Function]}
+          onKeyDown={[Function]}
+          src="/static/images/grey-menu.svg"
+          tabIndex="0"
+        />
+      </Styled(Col)>
+      <Styled(Col)
+        className="navigation"
+        colSize={
+          Object {
+            "large": 8,
+            "medium": 2,
+            "small": 2,
+          }
+        }
+        offsetLeft={
+          Object {
+            "medium": 2,
+          }
+        }
+      >
+        <Styled(BrandLogo)
+          alt="The Children's Place"
+          className="brand-logo-middle"
+          dataLocator="global_TCPlink"
+          imgSrc="/static/images/tcp-logo.svg"
+        />
+        <Connect(Styled(Navigation))
+          closeNavigationDrawer={true}
+          openNavigationDrawer={false}
+        />
+      </Styled(Col)>
+      <Styled(Col)
+        className="condensed-icons"
+        colSize={
+          Object {
+            "large": 2,
+            "medium": 3,
+            "small": 3,
+          }
+        }
+      >
+        <Connect(Styled(SearchBar))
+          className="rightLink"
+          fromCondensedHeader={true}
+          isSearchOpen={false}
+          setSearchState={[Function]}
+        />
+        <Styled(Anchor)
+          anchorVariation="primary"
+          className="leftLink"
+          fontSizeVariation="large"
+          href="#"
+          noLink={true}
+          onClick={[Function]}
+        >
+          <Styled(Image)
+            alt="Account"
+            className="rightLink userIcon"
+            data-locator="user-icon"
+            id="condensedLogin"
+            src="/static/images/user-icon-blue.svg"
+          />
+        </Styled(Anchor)>
+        <Styled(Anchor)
+          anchorVariation="primary"
+          className="rightLink"
+          fontSizeVariation="small"
+          id="cartIcon"
+          noLink={true}
+          onClick={[Function]}
+          to="#"
+        >
+          <Styled(Image)
+            alt="cart"
+            className="product-image"
+            data-locator="addedtobag-bag-icon"
+            src="/static/images/bag-icon-blue.svg"
+          />
+          <Styled(BodyCopy)
+            className="cartCount"
+            color="text.primary"
+            component="span"
+            fontFamily="primary"
+            fontSize="fs10"
+            fontWeight="semibold"
+            letterSpacing="normal"
+            lineHeight="normal"
+            link={null}
+            textAlign="left"
+          >
+            0
+          </Styled(BodyCopy)>
+        </Styled(Anchor)>
+      </Styled(Col)>
+    </Styled(Row)>
+  </Styled(Row)>
+  <Connect(MiniBagContainer)
+    isOpen={false}
+    toggleMiniBagModal={[Function]}
+  />
+  <Styled(Row)
+    className="undefined condensed-border"
+  />
+</Fragment>
+`;
