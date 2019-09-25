@@ -40,6 +40,7 @@ exports[`BonusPointsAvailabilityVanilla should render correctly available_today 
               fontWeight="extrabold"
               letterSpacing="normal"
               lineHeight="normal"
+              link={null}
               textAlign="center"
             >
               lbl_bonusPoints_applyAnyDay
@@ -60,6 +61,7 @@ exports[`BonusPointsAvailabilityVanilla should render correctly available_today 
               fontWeight="regular"
               letterSpacing="normal"
               lineHeight="normal"
+              link={null}
               textAlign="center"
             >
               lbl_bonusPoints_msg
@@ -142,6 +144,7 @@ exports[`BonusPointsAvailabilityVanilla should render correctly available_today 
             fontWeight="extrabold"
             letterSpacing="normal"
             lineHeight="normal"
+            link={null}
             textAlign="left"
           >
             lbl_bonusPoints_placeRewardsBonus
@@ -161,6 +164,7 @@ exports[`BonusPointsAvailabilityVanilla should render correctly available_today 
             fontWeight="extrabold"
             letterSpacing="normal"
             lineHeight="normal"
+            link={null}
             textAlign="left"
           >
             lbl_bonusPoints_placeRewardsPoints
@@ -180,6 +184,7 @@ exports[`BonusPointsAvailabilityVanilla should render correctly available_today 
             fontWeight="extrabold"
             letterSpacing="normal"
             lineHeight="normal"
+            link={null}
             textAlign="left"
           >
             lbl_bonusPoints_placeRewardsDay
@@ -211,6 +216,7 @@ exports[`BonusPointsAvailabilityVanilla should render correctly available_today 
         fontWeight="extrabold"
         letterSpacing="normal"
         lineHeight="normal"
+        link={null}
         textAlign="left"
       >
         lbl_bonusPoints_placeRewardsBonus
@@ -230,6 +236,7 @@ exports[`BonusPointsAvailabilityVanilla should render correctly available_today 
         fontWeight="extrabold"
         letterSpacing="normal"
         lineHeight="normal"
+        link={null}
         textAlign="left"
       >
         lbl_bonusPoints_placeRewardsPoints
@@ -249,6 +256,7 @@ exports[`BonusPointsAvailabilityVanilla should render correctly available_today 
         fontWeight="extrabold"
         letterSpacing="normal"
         lineHeight="normal"
+        link={null}
         textAlign="left"
       >
         lbl_bonusPoints_placeRewardsDay
@@ -270,6 +278,7 @@ exports[`BonusPointsAvailabilityVanilla should render correctly available_today 
       fontWeight="extrabold"
       letterSpacing="normal"
       lineHeight="normal"
+      link={null}
       textAlign="center"
     >
       lbl_bonusPoints_applyAnyDay
@@ -290,6 +299,7 @@ exports[`BonusPointsAvailabilityVanilla should render correctly available_today 
       fontWeight="regular"
       letterSpacing="normal"
       lineHeight="normal"
+      link={null}
       textAlign="center"
     >
       lbl_bonusPoints_msg
@@ -392,6 +402,7 @@ exports[`BonusPointsAvailabilityVanilla should render correctly with applied to 
               fontWeight="extrabold"
               letterSpacing="normal"
               lineHeight="normal"
+              link={null}
               textAlign="center"
             >
               lbl_bonusPoints_applyAnyDay
@@ -412,6 +423,7 @@ exports[`BonusPointsAvailabilityVanilla should render correctly with applied to 
               fontWeight="regular"
               letterSpacing="normal"
               lineHeight="normal"
+              link={null}
               textAlign="center"
             >
               lbl_bonusPoints_msg
@@ -504,6 +516,7 @@ exports[`BonusPointsAvailabilityVanilla should render correctly with applied to 
             fontWeight="extrabold"
             letterSpacing="normal"
             lineHeight="normal"
+            link={null}
             textAlign="left"
           >
             lbl_bonusPoints_placeRewardsBonus
@@ -523,6 +536,7 @@ exports[`BonusPointsAvailabilityVanilla should render correctly with applied to 
             fontWeight="extrabold"
             letterSpacing="normal"
             lineHeight="normal"
+            link={null}
             textAlign="left"
           >
             lbl_bonusPoints_placeRewardsPoints
@@ -542,6 +556,7 @@ exports[`BonusPointsAvailabilityVanilla should render correctly with applied to 
             fontWeight="extrabold"
             letterSpacing="normal"
             lineHeight="normal"
+            link={null}
             textAlign="left"
           >
             lbl_bonusPoints_placeRewardsDay
@@ -573,6 +588,7 @@ exports[`BonusPointsAvailabilityVanilla should render correctly with applied to 
         fontWeight="extrabold"
         letterSpacing="normal"
         lineHeight="normal"
+        link={null}
         textAlign="left"
       >
         lbl_bonusPoints_placeRewardsBonus
@@ -592,6 +608,7 @@ exports[`BonusPointsAvailabilityVanilla should render correctly with applied to 
         fontWeight="extrabold"
         letterSpacing="normal"
         lineHeight="normal"
+        link={null}
         textAlign="left"
       >
         lbl_bonusPoints_placeRewardsPoints
@@ -611,6 +628,7 @@ exports[`BonusPointsAvailabilityVanilla should render correctly with applied to 
         fontWeight="extrabold"
         letterSpacing="normal"
         lineHeight="normal"
+        link={null}
         textAlign="left"
       >
         lbl_bonusPoints_placeRewardsDay
@@ -632,6 +650,7 @@ exports[`BonusPointsAvailabilityVanilla should render correctly with applied to 
       fontWeight="extrabold"
       letterSpacing="normal"
       lineHeight="normal"
+      link={null}
       textAlign="center"
     >
       lbl_bonusPoints_applyAnyDay
@@ -652,6 +671,7 @@ exports[`BonusPointsAvailabilityVanilla should render correctly with applied to 
       fontWeight="regular"
       letterSpacing="normal"
       lineHeight="normal"
+      link={null}
       textAlign="center"
     >
       lbl_bonusPoints_msg
@@ -764,6 +784,7 @@ exports[`BonusPointsAvailabilityVanilla should render correctly with future Use 
               fontWeight="extrabold"
               letterSpacing="normal"
               lineHeight="normal"
+              link={null}
               textAlign="center"
             >
               lbl_bonusPoints_applyAnyDay
@@ -784,6 +805,7 @@ exports[`BonusPointsAvailabilityVanilla should render correctly with future Use 
               fontWeight="regular"
               letterSpacing="normal"
               lineHeight="normal"
+              link={null}
               textAlign="center"
             >
               lbl_bonusPoints_msg
@@ -876,6 +898,7 @@ exports[`BonusPointsAvailabilityVanilla should render correctly with future Use 
             fontWeight="extrabold"
             letterSpacing="normal"
             lineHeight="normal"
+            link={null}
             textAlign="left"
           >
             lbl_bonusPoints_placeRewardsBonus
@@ -895,6 +918,7 @@ exports[`BonusPointsAvailabilityVanilla should render correctly with future Use 
             fontWeight="extrabold"
             letterSpacing="normal"
             lineHeight="normal"
+            link={null}
             textAlign="left"
           >
             lbl_bonusPoints_placeRewardsPoints
@@ -914,6 +938,7 @@ exports[`BonusPointsAvailabilityVanilla should render correctly with future Use 
             fontWeight="extrabold"
             letterSpacing="normal"
             lineHeight="normal"
+            link={null}
             textAlign="left"
           >
             lbl_bonusPoints_placeRewardsDay
@@ -945,6 +970,7 @@ exports[`BonusPointsAvailabilityVanilla should render correctly with future Use 
         fontWeight="extrabold"
         letterSpacing="normal"
         lineHeight="normal"
+        link={null}
         textAlign="left"
       >
         lbl_bonusPoints_placeRewardsBonus
@@ -964,6 +990,7 @@ exports[`BonusPointsAvailabilityVanilla should render correctly with future Use 
         fontWeight="extrabold"
         letterSpacing="normal"
         lineHeight="normal"
+        link={null}
         textAlign="left"
       >
         lbl_bonusPoints_placeRewardsPoints
@@ -983,6 +1010,7 @@ exports[`BonusPointsAvailabilityVanilla should render correctly with future Use 
         fontWeight="extrabold"
         letterSpacing="normal"
         lineHeight="normal"
+        link={null}
         textAlign="left"
       >
         lbl_bonusPoints_placeRewardsDay
@@ -1004,6 +1032,7 @@ exports[`BonusPointsAvailabilityVanilla should render correctly with future Use 
       fontWeight="extrabold"
       letterSpacing="normal"
       lineHeight="normal"
+      link={null}
       textAlign="center"
     >
       lbl_bonusPoints_applyAnyDay
@@ -1024,6 +1053,7 @@ exports[`BonusPointsAvailabilityVanilla should render correctly with future Use 
       fontWeight="regular"
       letterSpacing="normal"
       lineHeight="normal"
+      link={null}
       textAlign="center"
     >
       lbl_bonusPoints_msg
@@ -1136,6 +1166,7 @@ exports[`BonusPointsAvailabilityVanilla should render correctly with futureDisab
               fontWeight="extrabold"
               letterSpacing="normal"
               lineHeight="normal"
+              link={null}
               textAlign="center"
             >
               lbl_bonusPoints_applyAnyDay
@@ -1156,6 +1187,7 @@ exports[`BonusPointsAvailabilityVanilla should render correctly with futureDisab
               fontWeight="regular"
               letterSpacing="normal"
               lineHeight="normal"
+              link={null}
               textAlign="center"
             >
               lbl_bonusPoints_msg
@@ -1248,6 +1280,7 @@ exports[`BonusPointsAvailabilityVanilla should render correctly with futureDisab
             fontWeight="extrabold"
             letterSpacing="normal"
             lineHeight="normal"
+            link={null}
             textAlign="left"
           >
             lbl_bonusPoints_placeRewardsBonus
@@ -1267,6 +1300,7 @@ exports[`BonusPointsAvailabilityVanilla should render correctly with futureDisab
             fontWeight="extrabold"
             letterSpacing="normal"
             lineHeight="normal"
+            link={null}
             textAlign="left"
           >
             lbl_bonusPoints_placeRewardsPoints
@@ -1286,6 +1320,7 @@ exports[`BonusPointsAvailabilityVanilla should render correctly with futureDisab
             fontWeight="extrabold"
             letterSpacing="normal"
             lineHeight="normal"
+            link={null}
             textAlign="left"
           >
             lbl_bonusPoints_placeRewardsDay
@@ -1317,6 +1352,7 @@ exports[`BonusPointsAvailabilityVanilla should render correctly with futureDisab
         fontWeight="extrabold"
         letterSpacing="normal"
         lineHeight="normal"
+        link={null}
         textAlign="left"
       >
         lbl_bonusPoints_placeRewardsBonus
@@ -1336,6 +1372,7 @@ exports[`BonusPointsAvailabilityVanilla should render correctly with futureDisab
         fontWeight="extrabold"
         letterSpacing="normal"
         lineHeight="normal"
+        link={null}
         textAlign="left"
       >
         lbl_bonusPoints_placeRewardsPoints
@@ -1355,6 +1392,7 @@ exports[`BonusPointsAvailabilityVanilla should render correctly with futureDisab
         fontWeight="extrabold"
         letterSpacing="normal"
         lineHeight="normal"
+        link={null}
         textAlign="left"
       >
         lbl_bonusPoints_placeRewardsDay
@@ -1376,6 +1414,7 @@ exports[`BonusPointsAvailabilityVanilla should render correctly with futureDisab
       fontWeight="extrabold"
       letterSpacing="normal"
       lineHeight="normal"
+      link={null}
       textAlign="center"
     >
       lbl_bonusPoints_applyAnyDay
@@ -1396,6 +1435,7 @@ exports[`BonusPointsAvailabilityVanilla should render correctly with futureDisab
       fontWeight="regular"
       letterSpacing="normal"
       lineHeight="normal"
+      link={null}
       textAlign="center"
     >
       lbl_bonusPoints_msg
@@ -1507,6 +1547,7 @@ exports[`BonusPointsAvailabilityVanilla should render correctly with isUsed 1`] 
             fontWeight="regular"
             letterSpacing="normal"
             lineHeight="normal"
+            link={null}
             textAlign="center"
           >
             lbl_bonusPoints_myRewardsUsedAll
@@ -1588,6 +1629,7 @@ exports[`BonusPointsAvailabilityVanilla should render correctly with isUsed 1`] 
             fontWeight="extrabold"
             letterSpacing="normal"
             lineHeight="normal"
+            link={null}
             textAlign="left"
           >
             lbl_bonusPoints_placeRewardsBonus
@@ -1607,6 +1649,7 @@ exports[`BonusPointsAvailabilityVanilla should render correctly with isUsed 1`] 
             fontWeight="extrabold"
             letterSpacing="normal"
             lineHeight="normal"
+            link={null}
             textAlign="left"
           >
             lbl_bonusPoints_placeRewardsPoints
@@ -1626,6 +1669,7 @@ exports[`BonusPointsAvailabilityVanilla should render correctly with isUsed 1`] 
             fontWeight="extrabold"
             letterSpacing="normal"
             lineHeight="normal"
+            link={null}
             textAlign="left"
           >
             lbl_bonusPoints_placeRewardsDay
@@ -1657,6 +1701,7 @@ exports[`BonusPointsAvailabilityVanilla should render correctly with isUsed 1`] 
         fontWeight="extrabold"
         letterSpacing="normal"
         lineHeight="normal"
+        link={null}
         textAlign="left"
       >
         lbl_bonusPoints_placeRewardsBonus
@@ -1676,6 +1721,7 @@ exports[`BonusPointsAvailabilityVanilla should render correctly with isUsed 1`] 
         fontWeight="extrabold"
         letterSpacing="normal"
         lineHeight="normal"
+        link={null}
         textAlign="left"
       >
         lbl_bonusPoints_placeRewardsPoints
@@ -1695,6 +1741,7 @@ exports[`BonusPointsAvailabilityVanilla should render correctly with isUsed 1`] 
         fontWeight="extrabold"
         letterSpacing="normal"
         lineHeight="normal"
+        link={null}
         textAlign="left"
       >
         lbl_bonusPoints_placeRewardsDay
@@ -1716,6 +1763,7 @@ exports[`BonusPointsAvailabilityVanilla should render correctly with isUsed 1`] 
       fontWeight="regular"
       letterSpacing="normal"
       lineHeight="normal"
+      link={null}
       textAlign="center"
     >
       lbl_bonusPoints_myRewardsUsedAll

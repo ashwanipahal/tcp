@@ -46,6 +46,7 @@ class ProductListingContainer extends React.PureComponent {
     }
 
     getDetails({ productColorId: productId });
+    window.scrollTo(0, 100);
   }
 
   componentWillUnmount = () => {

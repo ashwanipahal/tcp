@@ -31,7 +31,7 @@ const ApplicationInProgress = ({ bagItems, isPLCCModalFlow, labels, resetPLCCRes
         <Row fullBleed className="submit_plcc_form">
           <Col
             ignoreGutter={{ small: true }}
-            colSize={{ large: 3, medium: 4, small: 12 }}
+            colSize={{ large: 4, medium: 4, small: 12 }}
             className="underprogress_checkout_button"
           >
             <Button
@@ -50,7 +50,7 @@ const ApplicationInProgress = ({ bagItems, isPLCCModalFlow, labels, resetPLCCRes
       <Row fullBleed className="submit_plcc_form">
         <Col
           ignoreGutter={{ small: true }}
-          colSize={{ large: 3, medium: 4, small: 12 }}
+          colSize={{ large: 4, medium: 4, small: 12 }}
           className="underprogress_continue_button"
         >
           <Button

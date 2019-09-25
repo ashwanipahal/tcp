@@ -105,6 +105,7 @@ exports[`HeaderMiddleNav component renders correctly 1`] = `
             fontWeight="semibold"
             letterSpacing="normal"
             lineHeight="normal"
+            link={null}
             textAlign="left"
           >
             0
@@ -249,6 +250,7 @@ exports[`HeaderMiddleNav component renders correctly when props dont change 1`] 
             fontWeight="semibold"
             letterSpacing="normal"
             lineHeight="normal"
+            link={null}
             textAlign="left"
           >
             0

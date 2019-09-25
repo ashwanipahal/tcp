@@ -105,9 +105,10 @@ export function addItemToSflList(
   isRegistered,
   imageGenerator,
   currencyCode,
-  isCanada
+  isCanada,
+  isSflItemDelete = false
 ) {
-  const payload = {
+  let payload = {
     body: {
       catentryId: catEntryId,
       isRememberedUser,
@@ -115,6 +116,19 @@ export function addItemToSflList(
     },
     webService: endpoints.addSflItem,
   };
+
+  if (isSflItemDelete) {
+    const apiConfig = getAPIConfig();
+    payload = {
+      header: {
+        'X-Cookie': apiConfig.cookie,
+        catentryId: catEntryId,
+        isRememberedUser,
+        isRegistered,
+      },
+      webService: endpoints.deleteSflItem,
+    };
+  }
 
   return executeStatefulAPICall(payload)
     .then(res => {

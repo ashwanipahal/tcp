@@ -211,6 +211,7 @@ exports[`AddNewCCForm should render correctly 1`] = `
           fontWeight="regular"
           letterSpacing="normal"
           lineHeight="normal"
+          link={null}
           textAlign="left"
         />
       </Field>
@@ -372,6 +373,7 @@ exports[`AddNewCCForm should render correctly 1`] = `
           fontWeight="regular"
           letterSpacing="normal"
           lineHeight="normal"
+          link={null}
           textAlign="left"
         />
       </Field>

@@ -6,8 +6,7 @@ import {
   SESSIONCONFIG_REDUCER_KEY,
 } from '@tcp/core/src/constants/reducer.constants';
 import { constants as venmoConstants } from '@tcp/core/src/components/common/atoms/VenmoPaymentButton/container/VenmoPaymentButton.util';
-
-/* eslint-disable extra-rules/no-commented-out-code */
+import { getLocalStorage } from '@tcp/core/src/utils/localStorageManagement';
 import { getAPIConfig, isMobileApp, getViewportInfo, getLabelValue } from '../../../../../utils';
 /* eslint-disable extra-rules/no-commented-out-code */
 import CheckoutUtils from '../util/utility';
@@ -637,13 +636,28 @@ const getCurrentOrderId = state => {
 const getSmsNumberForBillingOrderUpdates = state =>
   state.Checkout.getIn(['values', 'smsInfo', 'numberForUpdates']);
 
-const getVenmoData = state => state[CHECKOUT_REDUCER_KEY].getIn(['values', 'venmoData']);
+const getVenmoData = () => {
+  const venmoDataString = getLocalStorage(venmoConstants.VENMO_STORAGE_KEY);
+  return venmoDataString ? JSON.parse(venmoDataString) : {};
+};
 
 const getVenmoClientTokenData = state =>
   state[CHECKOUT_REDUCER_KEY].getIn(['values', 'venmoClientTokenData']);
 
-const isVenmoPaymentInProgress = state =>
-  state[CHECKOUT_REDUCER_KEY].getIn(['uiFlags', 'venmoPaymentInProgress']);
+const isVenmoPaymentInProgress = () => {
+  const venmoProgressString = getLocalStorage(venmoConstants.VENMO_INPROGRESS_KEY);
+  return venmoProgressString ? venmoProgressString === 'true' : false;
+};
+
+const isVenmoPickupBannerDisplayed = () => {
+  const venmoPickupBanner = getLocalStorage(venmoConstants.VENMO_PICKUP_BANNER);
+  return venmoPickupBanner ? venmoPickupBanner === 'true' : false;
+};
+
+const isVenmoShippingBannerDisplayed = () => {
+  const venmoShippingBanner = getLocalStorage(venmoConstants.VENMO_SHIPPING_BANNER);
+  return venmoShippingBanner ? venmoShippingBanner === 'true' : false;
+};
 
 const isGiftOptionsEnabled = state => {
   return state[CHECKOUT_REDUCER_KEY].getIn(['uiFlags', 'isGiftOptionsEnabled']);
@@ -654,7 +668,7 @@ const isGiftOptionsEnabled = state => {
  * @param state
  */
 const isVenmoNonceNotExpired = state => {
-  const venmoData = getVenmoData(state);
+  const venmoData = getVenmoData();
   const expiry = venmoConstants.VENMO_NONCE_EXPIRY_TIMEOUT;
   const { nonce, timestamp } = venmoData;
   const venmoClientTokenData = getVenmoClientTokenData(state);
@@ -673,8 +687,8 @@ const isVenmoPaymentToken = state => {
 };
 
 const isVenmoNonceActive = state => {
-  const venmoData = getVenmoData(state);
-  const venmoPaymentInProgress = isVenmoPaymentInProgress(state);
+  const venmoData = getVenmoData();
+  const venmoPaymentInProgress = isVenmoPaymentInProgress();
   return (
     venmoData &&
     (venmoData.nonce || isVenmoPaymentToken(state)) &&
@@ -684,8 +698,8 @@ const isVenmoNonceActive = state => {
 };
 
 function isVenmoPaymentAvailable(state) {
-  const venmoData = getVenmoData(state);
-  const venmoPaymentInProgress = isVenmoPaymentInProgress(state);
+  const venmoData = getVenmoData();
+  const venmoPaymentInProgress = isVenmoPaymentInProgress();
   return venmoData && (venmoData.nonce || isVenmoPaymentToken(state)) && venmoPaymentInProgress;
 }
 
@@ -748,7 +762,7 @@ function getInternationalCheckoutUrl(state) {
 const getIsVenmoEnabled = state => {
   return (
     state[SESSIONCONFIG_REDUCER_KEY] &&
-    state[SESSIONCONFIG_REDUCER_KEY].getIn(['siteDetails', 'VENMO_ENABLED'])
+    state[SESSIONCONFIG_REDUCER_KEY].getIn(['siteDetails', 'VENMO_ENABLED']) === 'TRUE'
   );
 };
 
@@ -885,6 +899,8 @@ export default {
   getInternationalCheckoutUrl,
   getIsVenmoEnabled,
   getCurrentLanguage,
+  isVenmoShippingBannerDisplayed,
+  isVenmoPickupBannerDisplayed,
   getShippingPhoneAndEmail,
   getCreditFieldLabels,
 };

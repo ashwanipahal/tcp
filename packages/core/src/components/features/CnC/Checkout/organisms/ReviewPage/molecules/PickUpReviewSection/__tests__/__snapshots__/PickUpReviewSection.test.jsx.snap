@@ -30,6 +30,7 @@ exports[`PickUp Review Section should render the component correctly with same s
         fontWeight="regular"
         letterSpacing="normal"
         lineHeight="normal"
+        link={null}
         textAlign="left"
       />
     </Styled(Col)>
@@ -147,6 +148,7 @@ exports[`PickUp Review Section should render the component correctly with same s
         fontWeight="extrabold"
         letterSpacing="normal"
         lineHeight="normal"
+        link={null}
         textAlign="left"
       />
       <Styled(PickUpContactDisplay)
@@ -179,6 +181,7 @@ exports[`PickUp Review Section should render the component correctly with same s
         fontWeight="extrabold"
         letterSpacing="normal"
         lineHeight="normal"
+        link={null}
         textAlign="left"
       />
       <Styled(PickUpContactDisplay)

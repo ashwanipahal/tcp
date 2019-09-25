@@ -11,6 +11,7 @@ exports[`AboutYouInformation should render SurveyQuestion correctly 1`] = `
     fontWeight="regular"
     letterSpacing="normal"
     lineHeight="normal"
+    link={null}
     textAlign="left"
   >
     <Styled(Anchor)
@@ -76,6 +77,7 @@ exports[`AboutYouInformation should render correctly 1`] = `
     fontWeight="regular"
     letterSpacing="normal"
     lineHeight="normal"
+    link={null}
     textAlign="left"
   >
     <Styled(Anchor)
