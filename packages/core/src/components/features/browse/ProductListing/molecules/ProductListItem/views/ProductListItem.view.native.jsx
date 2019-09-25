@@ -151,14 +151,18 @@ const RenderPricesSection = values => {
   } = values;
   const { badge3, listPrice, offerPrice } = miscInfo;
   // calculate default list price
-  const listPriceForColor = `${currencySymbol}${listPrice * currencyExchange[0].exchangevalue}`;
+  const listPriceForColor = `${currencySymbol}${(
+    listPrice * currencyExchange[0].exchangevalue
+  ).toFixed(2)}`;
   // calculate default offer price
-  const offerPriceForColor = `${currencySymbol}${offerPrice * currencyExchange[0].exchangevalue}`;
+  const offerPriceForColor = `${currencySymbol}${(
+    offerPrice * currencyExchange[0].exchangevalue
+  ).toFixed(2)}`;
   return (
     <PricesSection>
       <OfferPriceAndFavoriteIconContainer>
-        <ListPrice accessibilityRole="text" accessibilityLabel={`list price ${listPriceForColor}`}>
-          {listPriceForColor}
+        <ListPrice accessibilityRole="text" accessibilityLabel={`list price ${offerPriceForColor}`}>
+          {offerPriceForColor}
         </ListPrice>
         <FavoriteIconContainer accessibilityRole="imagebutton" accessibilityLabel="favorite icon">
           <CustomIcon
@@ -170,12 +174,14 @@ const RenderPricesSection = values => {
         </FavoriteIconContainer>
       </OfferPriceAndFavoriteIconContainer>
       <OfferPriceAndBadge3Container>
-        <ListOfferPrice
-          accessibilityRole="text"
-          accessibilityLabel={`offer price ${offerPriceForColor}`}
-        >
-          {offerPriceForColor}
-        </ListOfferPrice>
+        {listPriceForColor !== offerPriceForColor && (
+          <ListOfferPrice
+            accessibilityRole="text"
+            accessibilityLabel={`offer price ${listPriceForColor}`}
+          >
+            {listPriceForColor}
+          </ListOfferPrice>
+        )}
         <Badge3Text accessible={badge3 !== ''} accessibilityRole="text" accessibilityLabel={badge3}>
           {badge3}
         </Badge3Text>
