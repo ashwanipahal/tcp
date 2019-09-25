@@ -10,6 +10,7 @@ import { Anchor } from '../../../../../../common/atoms';
 import PickUpReviewSectionContainer from '../organisms/PickUpReviewSection';
 import ShippingReviewSection from '../organisms/ShippingReviewSection';
 import BillingSection from '../organisms/BillingSection';
+import CheckoutCartItemList from '../organisms/CheckoutCartItemList';
 
 class ReviewPage extends React.PureComponent {
   static propTypes = {
@@ -60,6 +61,7 @@ class ReviewPage extends React.PureComponent {
           </div>
         )}
         <BillingSection />
+        <CheckoutCartItemList />
         <CheckoutFooter
           hideBackLink
           ariaLabelBackLink={ariaLabelBackLink}
