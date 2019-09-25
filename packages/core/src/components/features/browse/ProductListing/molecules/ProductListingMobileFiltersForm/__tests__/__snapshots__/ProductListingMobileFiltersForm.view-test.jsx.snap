@@ -3,11 +3,22 @@
 exports[`ProductListingFiltersForm is shown should render ProductListingFiltersForm 1`] = `
 <Fragment>
   <Styled(Modal)
-    className="ProductFilterBG"
     heightConfig={
       Object {
         "height": "100%",
       }
+    }
+    inheritedStyles={
+      Array [
+        "
+  div.TCPModal__InnerContent {
+    background: none;
+  }
+  button.close-modal {
+    display: none;
+  }
+",
+      ]
     }
     isOpen={false}
     style={
