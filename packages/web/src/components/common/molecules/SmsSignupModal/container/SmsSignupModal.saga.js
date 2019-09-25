@@ -1,6 +1,5 @@
 import { call, put, takeLatest } from 'redux-saga/effects';
 import logger from '@tcp/core/src/utils/loggerInstance';
-import endpoints from '@tcp/core/src/service/endpoint';
 import emailSignupAbstractor from '@tcp/core/src/services/abstractors/common/EmailSmsSignup';
 
 import EMAIL_SIGNUP_CONSTANTS from './SmsSignupModal.constants';
@@ -8,9 +7,7 @@ import { smsSignupStatus } from './SmsSignupModal.actions';
 
 export function* subscribeSms({ payload }) {
   try {
-    const { baseURI, relURI, method } = endpoints.addSmsSignup;
-
-    const res = yield call(emailSignupAbstractor.subscribeSms, baseURI, relURI, payload, method);
+    const res = yield call(emailSignupAbstractor.subscribeSms, payload);
     yield put(smsSignupStatus({ subscription: res }));
   } catch (err) {
     logger.error(err);

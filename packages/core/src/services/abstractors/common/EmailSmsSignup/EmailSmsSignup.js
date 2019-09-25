@@ -1,9 +1,7 @@
-import fetchData from '../../../../service/API';
-import { executeExternalAPICall } from '../../../handler';
+import { executeExternalAPICall, executeStatefulAPICall } from '../../../handler';
 import { getAPIConfig } from '../../../../utils';
 
 import endpoints from '../../../endpoints';
-
 /**
  * Abstractor layer for loading data from API for SMS and Email Signup
  */
@@ -12,44 +10,49 @@ const SuccessResponse = { success: true };
 
 const Abstractor = {
   /**
-   * @param {String} baseURI Base URL of the API
-   * @param {String} relURI API path
-   * @param {Object} params prams to the API
-   * @param {String} method REST method
+   * @param {Object} reqBody body to the API
    * @return {Object} return promise.
    */
-  subscribeEmail: (baseURI, relURI, params = {}, method) => {
-    return fetchData(baseURI, relURI, params, method)
+  subscribeEmail: reqBody => {
+    const { storeId, catalogId, langId } = getAPIConfig();
+    const reqObj = {
+      webService: endpoints.addEmailSignup,
+      body: {
+        catalogId,
+        storeId,
+        langId,
+        ...reqBody,
+      },
+    };
+
+    return executeStatefulAPICall(reqObj)
       .then(Abstractor.processSubscriptionData)
       .catch(Abstractor.handleSubscriptionError);
   },
   /**
-   * @param {String} baseURI Base URL of the API
-   * @param {String} relURI API path
    * @param {Object} payload payload to the API
-   * @param {String} method REST method
    * @return {Object} return promise.
    */
-  subscribeSms: (baseURI, relURI, payload = '', method = 'post') => {
+  subscribeSms: (payload = '') => {
     const { ACQUISITION_ID } = getAPIConfig();
 
-    const params = {
-      payload: JSON.stringify({
-        acquisition_id: ACQUISITION_ID,
-        mobile_phone: {
-          mdn: payload.replace(/\D/g, ''),
-        },
-        custom_fields: {
-          src_cd: '1',
-          sub_src_cd: 'sms_footer',
-        },
-      }),
-      langId: -1,
-      storeId: 10151,
-      catalogId: 10551,
+    const body = {
+      acquisition_id: ACQUISITION_ID,
+      mobile_phone: {
+        mdn: payload.replace(/\D/g, ''),
+      },
+      custom_fields: {
+        src_cd: '1',
+        sub_src_cd: 'sms_footer',
+      },
     };
 
-    return fetchData(baseURI, relURI, params, method)
+    const reqObj = {
+      webService: endpoints.addSmsSignup,
+      body,
+    };
+
+    return executeStatefulAPICall(reqObj)
       .then(Abstractor.processSmsSubscriptionData)
       .catch(Abstractor.handleValidationError);
   },
