@@ -1,25 +1,16 @@
-import {
-  getColorFormValue,
-  getQuantityFormValue,
-  getFitFormValue,
-  getSizeFormValue,
-} from '../../components/common/organisms/QuickViewModal/utils';
+import { getFormSKUValue } from '../../utils/utils';
 
-const getQuickViewFormValues = state => {
-  const getCurrentProduct = state.QuickView && state.QuickView.get('quickViewProduct');
-  const getGeneralProdId = getCurrentProduct && getCurrentProduct.generalProductId;
-  const formValues =
-    getGeneralProdId &&
-    state.form[`ProductAddToBag-${getGeneralProdId}`] &&
-    state.form[`ProductAddToBag-${getGeneralProdId}`].values;
+const getFormValues = (state, formName) => {
+  return state.form[formName] && state.form[formName].values;
+};
+
+const getAddedToBagFormValues = (state, formName) => {
+  const formValues = getFormValues(state, formName);
   return (
     formValues && {
-      color: getColorFormValue(formValues),
-      size: getSizeFormValue(formValues),
-      quantity: getQuantityFormValue(formValues),
-      fit: getFitFormValue(formValues),
+      ...getFormSKUValue(formValues),
     }
   );
 };
 
-export default getQuickViewFormValues;
+export default getAddedToBagFormValues;

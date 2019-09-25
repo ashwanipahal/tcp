@@ -28,6 +28,7 @@ exports[`AddedToBagActions component AddedToBagActions component renders correct
           fontWeight="extrabold"
           letterSpacing="normal"
           lineHeight="normal"
+          link={null}
           textAlign="left"
         />
       </Styled(Button)>
@@ -36,13 +37,17 @@ exports[`AddedToBagActions component AddedToBagActions component renders correct
   <Styled(Row)
     className="checkout-button"
   >
-    <Connect(VenmoPaymentButtonContainer)
-      className="venmo-container"
-      onSuccess={[Function]}
-    />
-    <withRouter(Connect(PayPalButtonContainer))
-      className="payPal-button"
-    />
+    <div
+      className="paypal-venmo"
+    >
+      <div
+        className="paypal-wrapper"
+      >
+        <withRouter(Connect(PayPalButtonContainer))
+          className="payPal-button"
+        />
+      </div>
+    </div>
     <Styled(Button)
       className="checkout"
       data-locator="addedtobag-btncheckout"
@@ -57,6 +62,7 @@ exports[`AddedToBagActions component AddedToBagActions component renders correct
         fontWeight="extrabold"
         letterSpacing="normal"
         lineHeight="normal"
+        link={null}
         textAlign="left"
       />
     </Styled(Button)>

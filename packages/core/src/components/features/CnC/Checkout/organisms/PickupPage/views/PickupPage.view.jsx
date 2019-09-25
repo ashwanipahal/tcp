@@ -100,7 +100,7 @@ class PickUpFormPart extends React.Component {
   };
 
   pickupSubmit = data => {
-    const { onPickupSubmit } = this.props;
+    const { onPickupSubmit, setVenmoPickupState } = this.props;
     const { firstName, lastName, phoneNumber, emailAddress } = data.pickUpContact;
     const { hasAlternatePickup } = data.pickUpAlternate;
     const params = {
@@ -121,6 +121,23 @@ class PickUpFormPart extends React.Component {
       },
     };
     onPickupSubmit(params);
+    setVenmoPickupState(true);
+  };
+
+  /**
+   * This method is to return the label text based on venmo or normal checkout
+   */
+  getNextCTAText = () => {
+    const { isVenmoPaymentInProgress, orderHasShipping, pickUpLabels } = this.props;
+    let nextButtonText;
+    if (isVenmoPaymentInProgress && !orderHasShipping) {
+      nextButtonText = `${pickUpLabels.nextText}: ${pickUpLabels.reviewText}`;
+    } else {
+      nextButtonText = !orderHasShipping
+        ? `${pickUpLabels.nextText}: ${pickUpLabels.billingText}`
+        : `${pickUpLabels.nextText}: ${pickUpLabels.shippingText}`;
+    }
+    return nextButtonText;
   };
 
   updatePickupForm() {
@@ -159,7 +176,6 @@ class PickUpFormPart extends React.Component {
       isSmsUpdatesEnabled,
       dispatch,
       handleSubmit,
-      orderHasShipping,
       showAccordian,
     } = this.props;
     const { isEditing, pickUpContact, dataUpdated } = this.state;
@@ -288,11 +304,7 @@ class PickUpFormPart extends React.Component {
           <CheckoutFooter
             hideBackLink={false}
             backLinkText={`${pickUpLabels.returnTo} ${pickUpLabels.pickupText}`}
-            nextButtonText={
-              !orderHasShipping
-                ? `${pickUpLabels.nextText}: ${pickUpLabels.billingText}`
-                : `${pickUpLabels.nextText}: ${pickUpLabels.shippingText}`
-            }
+            nextButtonText={this.getNextCTAText()}
             disableNext={isEditing}
           />
         </form>
@@ -318,6 +330,8 @@ PickUpFormPart.propTypes = {
   dispatch: PropTypes.func.isRequired,
   handleSubmit: PropTypes.func.isRequired,
   onPickupSubmit: PropTypes.func.isRequired,
+  isVenmoPaymentInProgress: PropTypes.bool,
+  setVenmoPickupState: PropTypes.func,
   showAccordian: PropTypes.bool,
 };
 
@@ -331,6 +345,8 @@ PickUpFormPart.defaultProps = {
   isAlternateUpdateChecked: false,
   pickupError: '',
   currentPhoneNumber: '',
+  isVenmoPaymentInProgress: false,
+  setVenmoPickupState: () => {},
   showAccordian: true,
 };
 

@@ -154,6 +154,27 @@ const setSflData = payload => {
   };
 };
 
+const startSflItemDelete = payload => {
+  return {
+    type: BAGPAGE_CONSTANTS.SFL_ITEMS_DELETE,
+    payload,
+  };
+};
+
+const setSflItemDeleted = payload => {
+  return {
+    payload,
+    type: BAGPAGE_CONSTANTS.SFL_ITEMS_SET_DELETED,
+  };
+};
+
+const startSflDataMoveToBag = payload => {
+  return {
+    type: BAGPAGE_CONSTANTS.SFL_ITEMS_MOVE_TO_BAG,
+    payload,
+  };
+};
+
 const openItemDeleteConfirmationModal = payload => {
   return {
     type: BAGPAGE_CONSTANTS.OPEN_ITEM_DELETE_CONFIRMATION_MODAL,
@@ -195,4 +216,7 @@ export default {
   setSflData,
   openItemDeleteConfirmationModal,
   closeItemDeleteConfirmationModal,
+  startSflItemDelete,
+  startSflDataMoveToBag,
+  setSflItemDeleted,
 };

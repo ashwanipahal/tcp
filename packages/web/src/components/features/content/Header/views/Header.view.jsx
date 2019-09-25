@@ -2,9 +2,10 @@ import React from 'react';
 import { PropTypes } from 'prop-types';
 import throttle from 'lodash/throttle';
 import withStyles from '@tcp/core/src/components/common/hoc/withStyles';
-import errorBoundary from '@tcp/core/src/components/common/hoc/withErrorBoundary';
+import errorBoundary from '@tcp/core/src/components/common/hoc/withErrorBoundary/errorBoundary';
 import OverlayModal from '@tcp/core/src/components/features/OverlayModal';
 import TrackOrder from '@tcp/core/src/components/features/account/TrackOrder';
+import AddedToBagContainer from '@tcp/core/src/components/features/CnC/AddedToBag';
 import { getViewportInfo } from '@tcp/core/src/utils';
 import { HeaderTopNav, HeaderPromo, HeaderMiddleNav, CondensedHeader } from '../molecules';
 import style from '../Header.style';
@@ -124,6 +125,7 @@ class Header extends React.PureComponent {
         )}
         <OverlayModal showCondensedHeader={showCondensedHeader} />
         <TrackOrder />
+        <AddedToBagContainer />
       </header>
     );
   }

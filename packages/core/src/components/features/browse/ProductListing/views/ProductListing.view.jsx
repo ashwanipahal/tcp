@@ -7,7 +7,6 @@ import GlobalNavigationMenuDesktopL2 from '../molecules/GlobalNavigationMenuDesk
 import withStyles from '../../../../common/hoc/withStyles';
 import PickupStoreModal from '../../../../common/organisms/PickupStoreModal';
 import QuickViewModal from '../../../../common/organisms/QuickViewModal/container/QuickViewModal.container';
-import AddedToBagContainer from '../../../CnC/AddedToBag';
 
 import ProductListingStyle from '../ProductListing.style';
 
@@ -104,7 +103,6 @@ const ProductListView = ({
       </Row>
       <PickupStoreModal />
       <QuickViewModal onPickUpOpenClick={onPickUpOpenClick} />
-      <AddedToBagContainer />
     </div>
   );
 };

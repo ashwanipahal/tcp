@@ -18,6 +18,7 @@ describe('#Added to bag Selectors', () => {
         lbl_sfl_emptySflMsg_1: 'emptySflMsg1',
         lbl_sfl_emptySflMsg_2: 'emptySflMsg2',
         bl_sfl_actionSuccess: 'sflSuccess',
+        lbl_sfl_itemDeleteSuccess: 'sflDeleteSuccess',
       },
     },
     global: {
@@ -56,6 +57,7 @@ describe('#Added to bag Selectors', () => {
       emptySflMsg1: 'emptySflMsg1',
       emptySflMsg2: 'emptySflMsg2',
       sflSuccess: 'sflSuccess',
+      sflDeleteSuccess: 'sflDeleteSuccess',
     });
   });
 

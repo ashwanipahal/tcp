@@ -11,6 +11,7 @@ exports[`ElectronicConsent component should renders correctly considering labels
     fontWeight="regular"
     letterSpacing="normal"
     lineHeight="normal"
+    link={null}
     tabIndex="0"
     textAlign="left"
   >

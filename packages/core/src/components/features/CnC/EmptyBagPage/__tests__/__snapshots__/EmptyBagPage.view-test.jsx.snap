@@ -17,6 +17,7 @@ exports[`EmptyBagPage component with false should renders correctly for SFL 1`] 
       fontWeight="regular"
       letterSpacing="normal"
       lineHeight="normal"
+      link={null}
       textAlign="center"
     >
       Not ready to buy anything yet?
@@ -31,6 +32,7 @@ exports[`EmptyBagPage component with false should renders correctly for SFL 1`] 
       fontWeight="regular"
       letterSpacing="normal"
       lineHeight="normal"
+      link={null}
       textAlign="center"
     >
       You can save it for later and it will appear in this area.
@@ -53,6 +55,7 @@ exports[`EmptyBagPage component with false should renders correctly with false 1
     fontWeight="extrabold"
     letterSpacing="normal"
     lineHeight="normal"
+    link={null}
     textAlign="left"
   />
   <Connect(ApplyNowModalWrapper) />
@@ -73,6 +76,7 @@ exports[`EmptyBagPage component with false should renders correctly with false 1
         fontWeight="extrabold"
         letterSpacing="normal"
         lineHeight="normal"
+        link={null}
         textAlign="left"
       />
     </Styled(Button)>
@@ -87,6 +91,7 @@ exports[`EmptyBagPage component with false should renders correctly with false 1
     fontWeight="extrabold"
     letterSpacing="normal"
     lineHeight="normal"
+    link={null}
     textAlign="left"
   />
   <Styled(BodyCopy)
@@ -99,6 +104,7 @@ exports[`EmptyBagPage component with false should renders correctly with false 1
     fontWeight="regular"
     letterSpacing="normal"
     lineHeight="normal"
+    link={null}
     textAlign="left"
   />
 </div>
@@ -118,6 +124,7 @@ exports[`EmptyBagPage component with true should renders correctly with true 1`]
     fontWeight="extrabold"
     letterSpacing="normal"
     lineHeight="normal"
+    link={null}
     textAlign="left"
   />
   <Connect(ApplyNowModalWrapper) />
@@ -138,6 +145,7 @@ exports[`EmptyBagPage component with true should renders correctly with true 1`]
         fontWeight="extrabold"
         letterSpacing="normal"
         lineHeight="normal"
+        link={null}
         textAlign="left"
       />
     </Styled(Button)>
@@ -152,6 +160,7 @@ exports[`EmptyBagPage component with true should renders correctly with true 1`]
     fontWeight="extrabold"
     letterSpacing="normal"
     lineHeight="normal"
+    link={null}
     textAlign="left"
   />
   <Styled(BodyCopy)
@@ -164,6 +173,7 @@ exports[`EmptyBagPage component with true should renders correctly with true 1`]
     fontWeight="regular"
     letterSpacing="normal"
     lineHeight="normal"
+    link={null}
     textAlign="left"
   />
 </div>

@@ -83,6 +83,7 @@ export default {
   'search-icon-blue': '/static/images/search-icon-blue.svg',
   'search-close-icon': '/static/images/search-close-icon.svg',
   'venmo-button': '/static/images/venmo_white_logo.svg',
+  'venmo-logo-blue': '/static/images/venmo_logo_blue.png',
   'sample-receipt': '/static/images/sample-receipt.png',
   'cart-icon-white': '/static/images/bag-white.svg',
 };
