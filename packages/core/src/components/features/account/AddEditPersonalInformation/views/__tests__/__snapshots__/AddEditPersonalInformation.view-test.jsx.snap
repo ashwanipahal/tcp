@@ -40,7 +40,6 @@ exports[`AddEditPersonalInformation.view component should renders correctly 1`] 
     destroyOnUnmount={true}
     enableReinitialize={true}
     errorMessage="ERROR"
-    errorPersonalInfoMessage=""
     forceUnregisterOnUnmount={false}
     form="AddEditPersonalInformationForm"
     getFormState={[Function]}
@@ -54,6 +53,7 @@ exports[`AddEditPersonalInformation.view component should renders correctly 1`] 
     }
     onSubmit={[Function]}
     persistentSubmitErrors={false}
+    personalInfoErrorMessage=""
     pure={true}
     shouldAsyncValidate={[Function]}
     shouldError={[Function]}

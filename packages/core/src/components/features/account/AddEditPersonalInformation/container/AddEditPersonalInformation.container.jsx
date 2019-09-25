@@ -38,12 +38,12 @@ export class AddEditPersonalInformationContainer extends PureComponent {
     onRequestClose: PropTypes.func.isRequired,
     messageSuccessStateChangeAction: PropTypes.func.isRequired,
     toastMessage: PropTypes.func,
-    errorPersonalInfoMessage: PropTypes.string,
+    personalInfoErrorMessage: PropTypes.string,
   };
 
   static defaultProps = {
     toastMessage: () => {},
-    errorPersonalInfoMessage: '',
+    personalInfoErrorMessage: '',
   };
 
   constructor(props) {
@@ -137,7 +137,7 @@ export class AddEditPersonalInformationContainer extends PureComponent {
       isEmployee,
       formErrorMessage,
       toastMessage,
-      errorPersonalInfoMessage,
+      personalInfoErrorMessage,
     } = this.props;
 
     return (
@@ -153,7 +153,7 @@ export class AddEditPersonalInformationContainer extends PureComponent {
         birthYearOptionsMap={this.yearOptionsMap.yearsMap}
         initialValues={this.initialValues}
         formErrorMessage={formErrorMessage}
-        errorPersonalInfoMessage={errorPersonalInfoMessage}
+        personalInfoErrorMessage={personalInfoErrorMessage}
       />
     );
   }
@@ -172,7 +172,7 @@ export const mapStateToProps = state => ({
   isEmployee: getIsEmployee(state),
   airMilesAccountNumber: getAirmilesDetails(state),
   formErrorMessage: getFormValidationErrorMessages(state),
-  errorPersonalInfoMessage: getPersonalInfoErrorMessage(state),
+  personalInfoErrorMessage: getPersonalInfoErrorMessage(state),
 });
 
 export const mapDispatchToProps = dispatch => ({

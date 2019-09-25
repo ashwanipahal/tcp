@@ -27,7 +27,7 @@ export const AddEditPersonalInformationForm = ({
   birthMonthOptionsMap,
   birthYearOptionsMap,
   isEmployee,
-  errorPersonalInfoMessage,
+  personalInfoErrorMessage,
 }) => {
   return (
     <form
@@ -36,11 +36,11 @@ export const AddEditPersonalInformationForm = ({
       onSubmit={handleSubmit}
       noValidate
     >
-      {errorMessage && errorPersonalInfoMessage && (
+      {errorMessage && personalInfoErrorMessage && (
         <Notification
           className="elem-mt-MED"
           status="error"
-          message={`${errorPersonalInfoMessage}`}
+          message={`${personalInfoErrorMessage}`}
         />
       )}
       <Row fullBleed className="elem-mt-XXL">
@@ -246,7 +246,7 @@ AddEditPersonalInformationForm.propTypes = {
   handleSubmit: PropTypes.func.isRequired,
   className: PropTypes.string,
   isEmployee: PropTypes.string.isRequired,
-  errorPersonalInfoMessage: PropTypes.string,
+  personalInfoErrorMessage: PropTypes.string,
 };
 
 AddEditPersonalInformationForm.defaultProps = {
@@ -265,7 +265,7 @@ AddEditPersonalInformationForm.defaultProps = {
     lbl_profile_personal_info_cancelCta: '',
     lbl_profile_personal_info_updateCta: '',
   },
-  errorPersonalInfoMessage: '',
+  personalInfoErrorMessage: '',
 };
 
 const validateMethod = createValidateMethod(

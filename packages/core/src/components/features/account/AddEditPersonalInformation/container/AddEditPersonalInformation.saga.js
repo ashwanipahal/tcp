@@ -11,14 +11,11 @@ export function* UpdateProfile({ payload }) {
     const res = yield call(UpdateProfileInfo, payload);
     yield put(getUserInfo());
     return yield put(updateProfileSuccess(res));
-  } catch (err) {
-    let error = {};
-    /* istanbul ignore else */
-    error = err;
+  } catch (error) {
     if (error && error.errorResponse) {
       return yield put(updateProfileError(error.errorResponse));
     }
-    return yield put(updateProfileError(err));
+    return yield put(updateProfileError(error));
   }
 }
 

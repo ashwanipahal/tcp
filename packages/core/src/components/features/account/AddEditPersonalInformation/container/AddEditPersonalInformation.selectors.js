@@ -25,12 +25,8 @@ export const getIsEmployee = state => {
   return selector(state, 'isEmployee');
 };
 
-export const getPersonalInfoErrorResponse = state => {
-  return state[UPDATE_PROFILE_REDUCER_KEY].get('error');
-};
-
 export const getPersonalInfoErrorMessage = createSelector(
-  [getPersonalInfoErrorResponse, getProfileLabels],
+  [getError, getProfileLabels],
   (state, labels) => {
     return getErrorSelector(state, labels, 'lbl_profile');
   }

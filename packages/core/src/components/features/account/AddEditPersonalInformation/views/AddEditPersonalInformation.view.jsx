@@ -15,7 +15,7 @@ export const AddEditPersonalInformation = ({
   initialValues,
   isEmployee,
   formErrorMessage,
-  errorPersonalInfoMessage,
+  personalInfoErrorMessage,
 }) => {
   return (
     <React.Fragment>
@@ -46,7 +46,7 @@ export const AddEditPersonalInformation = ({
         initialValues={initialValues}
         isEmployee={isEmployee}
         formErrorMessage={formErrorMessage}
-        errorPersonalInfoMessage={errorPersonalInfoMessage}
+        personalInfoErrorMessage={personalInfoErrorMessage}
       />
     </React.Fragment>
   );
@@ -65,7 +65,7 @@ AddEditPersonalInformation.propTypes = {
   initialValues: PropTypes.shape({}),
   isEmployee: PropTypes.string.isRequired,
   formErrorMessage: PropTypes.shape({}).isRequired,
-  errorPersonalInfoMessage: PropTypes.string,
+  personalInfoErrorMessage: PropTypes.string,
 };
 
 AddEditPersonalInformation.defaultProps = {
@@ -74,6 +74,6 @@ AddEditPersonalInformation.defaultProps = {
     lbl_profile_heading: '',
   },
   initialValues: {},
-  errorPersonalInfoMessage: '',
+  personalInfoErrorMessage: '',
 };
 export default AddEditPersonalInformation;
