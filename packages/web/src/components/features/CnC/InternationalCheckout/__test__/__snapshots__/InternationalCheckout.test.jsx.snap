@@ -14,7 +14,7 @@ exports[`InternationalCheckoutVanilla should render InternationalCheckoutVanilla
     className="envoyId"
     frameBorder="0"
     name="envoy"
-    scrolling="no"
+    scrolling="yes"
     src=""
     title="internationalCheckout"
   />

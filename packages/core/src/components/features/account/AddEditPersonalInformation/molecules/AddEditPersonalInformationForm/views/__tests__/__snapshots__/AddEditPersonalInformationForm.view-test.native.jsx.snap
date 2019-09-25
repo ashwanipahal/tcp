@@ -248,6 +248,7 @@ exports[`AddEditPersonalInformationForm component should renders correctly in in
   background-color: ",
                 [Function],
                 ";
+  width: 100%;
 ",
                 ";
   ",
@@ -370,6 +371,7 @@ exports[`AddEditPersonalInformationForm component should renders correctly in in
   background-color: ",
                 [Function],
                 ";
+  width: 100%;
 ",
                 ";
   ",

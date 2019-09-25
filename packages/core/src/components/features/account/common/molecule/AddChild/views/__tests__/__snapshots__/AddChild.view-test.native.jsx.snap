@@ -98,6 +98,7 @@ exports[`AddChildBirthday component should renders correctly 1`] = `
   background-color: ",
                   [Function],
                   ";
+  width: 100%;
 ",
                   ";
   ",
@@ -214,6 +215,7 @@ exports[`AddChildBirthday component should renders correctly 1`] = `
   background-color: ",
                   [Function],
                   ";
+  width: 100%;
 ",
                   ";
   ",
@@ -328,6 +330,7 @@ exports[`AddChildBirthday component should renders correctly 1`] = `
   background-color: ",
                   [Function],
                   ";
+  width: 100%;
 ",
                   ";
   ",

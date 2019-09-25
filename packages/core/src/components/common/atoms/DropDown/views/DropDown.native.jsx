@@ -14,6 +14,7 @@ import {
   FlatList,
   StyledLabel,
   SelectedLabelView,
+  HeaderItemContainer,
 } from '../DropDown.style.native';
 
 const downIcon = require('../../../../../assets/carrot-small-down.png');
@@ -241,8 +242,8 @@ class DropDown extends React.PureComponent<Props> {
           }}
           pointerEvents={disabled ? 'none' : 'auto'}
         >
-          <HeaderContainer>
-            {typeof selectedLabelState !== 'function' ? (
+          {typeof selectedLabelState !== 'function' ? (
+            <HeaderContainer>
               <BodyCopy
                 mobileFontFamily="secondary"
                 fontSize="fs13"
@@ -251,10 +252,12 @@ class DropDown extends React.PureComponent<Props> {
                 fontWeight="semibold"
                 text={selectedLabelState}
               />
-            ) : (
+            </HeaderContainer>
+          ) : (
+            <HeaderItemContainer>
               <SelectedLabelView>{selectedLabelState(true)}</SelectedLabelView>
-            )}
-          </HeaderContainer>
+            </HeaderItemContainer>
+          )}
           <Image source={dropDownIsOpen ? upIcon : downIcon} />
         </Row>
         <Modal visible={dropDownIsOpen} transparent>
