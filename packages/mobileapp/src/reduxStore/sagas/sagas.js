@@ -43,6 +43,7 @@ import SearchPageSaga from '@tcp/core/src/components/features/browse/SearchDetai
 import BirthdaySavingsSaga from '@tcp/core/src/components/features/account/common/organism/BirthdaySavingsList/container/BirthdaySavingsList.saga';
 import PointsClaimSaga from '@tcp/core/src/components/features/account/PointsClaim/container/PointsClaim.saga';
 import HomePageSaga from '../../components/features/content/HomePage/container/HomePage.saga';
+import SocialAccountSaga from '@tcp/core/src/components/common/organisms/SocialAccount/container/Social.saga';
 
 export default function* rootSaga() {
   yield all([
@@ -90,5 +91,6 @@ export default function* rootSaga() {
     BirthdaySavingsSaga(),
     QuickViewSaga(),
     PointsClaimSaga(),
+    SocialAccountSaga(),
   ]);
 }

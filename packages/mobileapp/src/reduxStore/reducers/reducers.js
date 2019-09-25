@@ -34,6 +34,7 @@ import QuickViewReducer from '@tcp/core/src/components/common/organisms/QuickVie
 import MyFavoriteStoreReducer from '@tcp/core/src/components/features/account/MyProfile/organism/MyFavoriteStore/container/MyFavoriteStore.reducer';
 import BirthdaySavingsListReducer from '@tcp/core/src/components/features/account/common/organism/BirthdaySavingsList/container/BirthdaySavingsList.reducer';
 import PointsClaimReducer from '@tcp/core/src/components/features/account/PointsClaim/container/PointsClaim.reducer';
+import SocialReducer from '@tcp/core/src/components/common/organisms/SocialAccount/container/Social.reducer';
 
 import {
   SESSIONCONFIG_REDUCER_KEY,
@@ -78,6 +79,7 @@ import {
   MY_FAVORITE_STORE_REDUCER_KEY,
   BIRTHDAY_SAVING_LIST_REDUCER_KEY,
   POINTS_CLAIM_REDUCER_KEY,
+  SOCIAL_REDUCER_KEY,
 } from '@tcp/core/src/constants/reducer.constants';
 import HeaderReducer from '@tcp/core/src/components/common/organisms/Header/container/Header.reducer';
 import ModulesReducer from '@tcp/core/src/reduxStore/reducers/modules';
@@ -116,6 +118,7 @@ const filteredAppConfigReducer = createFilteredReducer(ApiConfigReducer, APICONF
 const filteredGetCandidReducer = createFilteredReducer(GetCandidReducer, GET_CANDID_REDUCER_KEY);
 
 const rootReducer = combineReducers({
+  [SOCIAL_REDUCER_KEY]: SocialReducer,
   [APICONFIG_REDUCER_KEY]: filteredAppConfigReducer,
   [TOAST_REDUCER_KEY]: ToastMessageReducer,
   [SESSIONCONFIG_REDUCER_KEY]: SessionConfigReducer,
