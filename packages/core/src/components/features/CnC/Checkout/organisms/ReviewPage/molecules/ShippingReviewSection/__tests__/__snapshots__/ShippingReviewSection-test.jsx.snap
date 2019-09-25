@@ -47,6 +47,7 @@ exports[`GiftWrappingDisplay component should renders correctly props are presen
           fontWeight="extrabold"
           letterSpacing="normal"
           lineHeight="normal"
+          link={null}
           textAlign="left"
         />
       </div>
@@ -71,6 +72,7 @@ exports[`GiftWrappingDisplay component should renders correctly props are presen
         fontWeight="regular"
         letterSpacing="normal"
         lineHeight="normal"
+        link={null}
         textAlign="left"
       />
       <Styled(BodyCopy)
@@ -83,6 +85,7 @@ exports[`GiftWrappingDisplay component should renders correctly props are presen
         fontWeight="regular"
         letterSpacing="normal"
         lineHeight="normal"
+        link={null}
         textAlign="left"
       />
     </Styled(Col)>
@@ -154,6 +157,7 @@ exports[`GiftWrappingDisplay component should renders correctly props not presen
           fontWeight="extrabold"
           letterSpacing="normal"
           lineHeight="normal"
+          link={null}
           textAlign="left"
         />
       </div>
@@ -178,6 +182,7 @@ exports[`GiftWrappingDisplay component should renders correctly props not presen
         fontWeight="regular"
         letterSpacing="normal"
         lineHeight="normal"
+        link={null}
         textAlign="left"
       />
       <Styled(BodyCopy)
@@ -190,6 +195,7 @@ exports[`GiftWrappingDisplay component should renders correctly props not presen
         fontWeight="regular"
         letterSpacing="normal"
         lineHeight="normal"
+        link={null}
         textAlign="left"
       />
     </Styled(Col)>

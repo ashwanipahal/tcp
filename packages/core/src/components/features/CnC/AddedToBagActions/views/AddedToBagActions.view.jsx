@@ -21,6 +21,8 @@ class AddedToBagActions extends React.PureComponent<Props> {
       handleCartCheckout,
       isEditingItem,
       isInternationalShipping,
+      isVenmoEnabled,
+      showVenmo,
     } = this.props;
     return (
       <div className={className}>
@@ -46,13 +48,21 @@ class AddedToBagActions extends React.PureComponent<Props> {
           </Row>
         )}
         <Row className="checkout-button">
-          {!isInternationalShipping && (
-            <VenmoPaymentButton
-              className="venmo-container"
-              onSuccess={() => handleCartCheckout(isEditingItem)}
-            />
-          )}
-          {!isInternationalShipping && <PayPalButton className="payPal-button" />}
+          <div className="paypal-venmo">
+            {!isInternationalShipping && (
+              <div className="paypal-wrapper">
+                <PayPalButton className="payPal-button" />
+              </div>
+            )}
+            {!isInternationalShipping && isVenmoEnabled && showVenmo && (
+              <div className="venmo-wrapper">
+                <VenmoPaymentButton
+                  className="venmo-container"
+                  onSuccess={() => handleCartCheckout(isEditingItem)}
+                />
+              </div>
+            )}
+          </div>
           <Button
             data-locator={getLocator('addedtobag_btncheckout')}
             className="checkout"
@@ -81,9 +91,11 @@ AddedToBagActions.propTypes = {
   labels: PropTypes.shape.isRequired,
   showAddTobag: PropTypes.bool,
   handleCartCheckout: PropTypes.func.isRequired,
+  showVenmo: PropTypes.bool,
 };
 AddedToBagActions.defaultProps = {
   showAddTobag: true,
+  showVenmo: true,
 };
 
 export default withStyles(AddedToBagActions, style);

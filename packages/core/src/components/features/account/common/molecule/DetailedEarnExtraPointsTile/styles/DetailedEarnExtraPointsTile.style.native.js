@@ -26,7 +26,7 @@ const EarnPointDesc = styled.View`
 
 const EarnExtraPointsTileImage = styled.View`
   margin-top: ${props => props.theme.spacing.LAYOUT_SPACING.MED};
-  height: 100px;
+  height: ${props => (props.viewAll ? '60px' : '100px')};
   text-align: center;
   display: flex;
   justify-content: space-around;

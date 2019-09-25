@@ -11,7 +11,7 @@ describe('GuestBillingFormVanilla', () => {
       syncErrorsObj: null,
       labels: {},
       paymentMethodId: null,
-      handleSubmit: jest.fn()
+      handleSubmit: jest.fn(),
     };
     const tree = shallow(<GuestBillingFormVanilla {...props} />);
     expect(tree).toMatchSnapshot();

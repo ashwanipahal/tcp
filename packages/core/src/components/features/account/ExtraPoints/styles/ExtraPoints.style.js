@@ -14,4 +14,12 @@ export default css`
       margin-right: 19px;
     }
   }
+
+  .morePointsWrapper {
+    margin-top: ${props => props.theme.spacing.ELEM_SPACING.LRG};
+    @media ${props => props.theme.mediaQuery.small} {
+      margin-left: ${props => props.theme.spacing.LAYOUT_SPACING.LRG};
+      margin-right: ${props => props.theme.spacing.LAYOUT_SPACING.LRG};
+    }
+  }
 `;

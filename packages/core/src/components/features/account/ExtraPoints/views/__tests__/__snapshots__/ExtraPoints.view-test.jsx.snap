@@ -7,6 +7,20 @@ exports[`EarnPointsVanilla component should renders correctly 1`] = `
   <Styled(FormPageHeading)
     heading="lbl_common_extraPointsHeading"
   />
+  <Styled(BodyCopy)
+    className="morePointsWrapper"
+    color="text.primary"
+    component="p"
+    fontFamily="secondary"
+    fontSize="fs18"
+    fontWeight="semibold"
+    letterSpacing="normal"
+    lineHeight="normal"
+    link={null}
+    textAlign="center"
+  >
+    lbl_extraExtraPoints_more_points
+  </Styled(BodyCopy)>
   <Styled(Row)
     className="elem-mt-LRG"
     fullBleed={true}
@@ -75,6 +89,7 @@ exports[`EarnPointsVanilla component should renders correctly 1`] = `
     fontWeight="regular"
     letterSpacing="normal"
     lineHeight="normal"
+    link={null}
     textAlign="left"
   >
     <Styled(Anchor)

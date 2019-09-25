@@ -1,6 +1,14 @@
 import { css } from 'styled-components';
 
 export default css`
+  .hide {
+    display: none;
+  }
+
+  .no-flex {
+    display: block;
+  }
+
   .get-candid-main-heading {
     margin-bottom: ${props => props.theme.spacing.ELEM_SPACING.MED};
 

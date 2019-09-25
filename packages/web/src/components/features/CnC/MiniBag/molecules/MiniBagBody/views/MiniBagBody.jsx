@@ -178,6 +178,7 @@ class MiniBagBody extends React.PureComponent {
                 showAddTobag={false}
                 isEditingItem={this.isEditing}
                 closeMiniBag={closeMiniBag}
+                showVenmo={false} // No Venmo CTA on Minibag, as per venmo requirement
               />
               <AirmilesBanner />
             </div>

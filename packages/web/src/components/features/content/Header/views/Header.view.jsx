@@ -3,6 +3,8 @@ import { PropTypes } from 'prop-types';
 import withStyles from '@tcp/core/src/components/common/hoc/withStyles';
 import OverlayModal from '@tcp/core/src/components/features/OverlayModal';
 import TrackOrder from '@tcp/core/src/components/features/account/TrackOrder';
+import AddedToBagContainer from '@tcp/core/src/components/features/CnC/AddedToBag';
+import errorBoundary from '@tcp/core/src/components/common/hoc/withErrorBoundary/errorBoundary';
 import { HeaderTopNav, HeaderPromo, HeaderMiddleNav } from '../molecules';
 import style from '../Header.style';
 
@@ -52,6 +54,7 @@ const Header = ({
       <HeaderPromo className="header__promo-area--desktop" dataPromo={headerPromoArea} />
       <OverlayModal />
       <TrackOrder />
+      <AddedToBagContainer />
     </header>
   );
 };
@@ -81,4 +84,4 @@ Header.defaultProps = {
   totalItems: 0,
 };
 
-export default withStyles(Header, style);
+export default withStyles(errorBoundary(Header), style);

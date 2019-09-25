@@ -67,10 +67,9 @@ export default styled.div`
   }
 
   .existing_checkout_button {
-    margin: ${props => props.theme.spacing.ELEM_SPACING.MED} 0px
-      ${props => props.theme.spacing.ELEM_SPACING.XS} 0px;
+    margin-top: ${props => props.theme.spacing.ELEM_SPACING.MED};
     font-weight: normal;
-    width:  ${props => (props.isPLCCModalFlow ? `300px` : ``)};
+    width:  ${props => (props.isPLCCModalFlow ? `300px` : ``)}; 
   }
 
   .existing_continue_button {

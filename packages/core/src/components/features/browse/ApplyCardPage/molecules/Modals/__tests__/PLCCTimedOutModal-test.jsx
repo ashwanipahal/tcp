@@ -11,6 +11,7 @@ describe('ApplicationInProgress component', () => {
     className: 'plcc_modal',
     isModalOpen: true,
     closeModal: jest.fn(),
+    unregisterIdleVerfication: jest.fn(),
     isPLCCModalFlow: false,
     handleFormReset: jest.fn(),
     bagItems: true,
