@@ -2,7 +2,9 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import { Field } from 'redux-form';
 import withStyles from '../../../../../../common/hoc/withStyles';
-import ProductListingMobileFiltersFormStyle from '../styles/ProductListingMobileFiltersForm.style';
+import ProductListingMobileFiltersFormStyle, {
+  customModalCss,
+} from '../styles/ProductListingMobileFiltersForm.style';
 import CustomSelect from '../../CustomSelect/views';
 import BodyCopy from '../../../../../../common/atoms/BodyCopy';
 import Image from '../../../../../../common/atoms/Image';
@@ -394,7 +396,7 @@ class ProductListingMobileFiltersForm extends React.PureComponent<Props> {
           widthConfig={{ small: '100%', medium: '100%', large: '100%' }}
           heightConfig={{ height: '100%' }}
           style={customStyles}
-          className="ProductFilterBG"
+          inheritedStyles={customModalCss}
         >
           <form
             className={`${className} available-filters-sorting-container`}
