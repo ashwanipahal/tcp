@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import PropTypes from 'prop-types';
 import { getIconPath } from '../../../../../utils';
 import styles from '../Notification.style';
@@ -12,9 +12,20 @@ import BodyCopy from '../../../atoms/BodyCopy';
  * @param {String} message - error message
  * @param {node} children - notification child nodes.
  */
-const Notification = ({ className, status, message, children }) => {
+const Notification = ({ className, status, message, children, scrollIntoView }) => {
   const successIcon = getIconPath('circle-check-fill');
   const errorIcon = getIconPath('circle-error-fill');
+
+  // For window scroll up to top once component gets loaded.
+  useEffect(() => {
+    if (scrollIntoView) {
+      window.scrollTo({
+        top: 0,
+        behavior: 'smooth',
+      });
+    }
+  }, []);
+
   return (
     <div className={`${className} elem-pt-SM elem-pr-LRG elem-pb-SM elem-pl-LRG elem-mb-LRG`}>
       <img
@@ -35,11 +46,13 @@ Notification.propTypes = {
   status: PropTypes.string.isRequired,
   message: PropTypes.string.isRequired,
   children: PropTypes.node,
+  scrollIntoView: PropTypes.bool,
 };
 
 Notification.defaultProps = {
   className: '',
   children: null,
+  scrollIntoView: false,
 };
 
 export default withStyles(Notification, styles);

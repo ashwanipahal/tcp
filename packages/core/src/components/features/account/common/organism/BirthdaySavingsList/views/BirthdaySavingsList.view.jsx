@@ -201,7 +201,7 @@ export class BirthdaySavingsList extends PureComponent {
         <div className={className}>
           {isEditMode && (
             <>
-              {status && <Notification status={status} message={message} />}
+              {status && <Notification status={status} message={message} scrollIntoView />}
               <InfoMessage labels={labels} />
             </>
           )}
