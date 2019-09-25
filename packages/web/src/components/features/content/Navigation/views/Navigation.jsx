@@ -37,7 +37,13 @@ const registerRouterChangeEvent = closeNavigationDrawer => () => {
 };
 
 const Navigation = props => {
-  const { openNavigationDrawer, className, closeNavigationDrawer, hideNavigationFooter } = props;
+  const {
+    openNavigationDrawer,
+    className,
+    closeNavigationDrawer,
+    hideNavigationFooter,
+    showCondensedHeader,
+  } = props;
 
   useEffect(registerRouterChangeEvent(closeNavigationDrawer));
 
@@ -54,13 +60,14 @@ const Navigation = props => {
         large: '100%',
       }}
       position={{
-        top: '155px',
+        top: !showCondensedHeader ? '155px' : '316px',
         left: 0,
         topMedium: '111px',
       }}
       renderOverlay
       drawerFooter={Footer}
       hideNavigationFooter={hideNavigationFooter}
+      showCondensedHeader={showCondensedHeader}
     >
       <nav className={`${className} navigation nav-bar`}>
         <NavBar {...props} />
@@ -74,6 +81,7 @@ Navigation.propTypes = {
   closeNavigationDrawer: PropTypes.bool.isRequired,
   className: PropTypes.string.isRequired,
   hideNavigationFooter: PropTypes.bool.isRequired,
+  showCondensedHeader: PropTypes.bool.isRequired,
 };
 
 export { Navigation as NavigationVanilla };

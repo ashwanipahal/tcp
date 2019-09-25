@@ -196,7 +196,7 @@ exports[`ProductItemComponents component PromotionalMessage render Text 1`] = `
     fontFamily="secondary"
     fontSize={
       Array [
-        "fs10",
+        "fs9",
         "fs12",
         "fs14",
       ]

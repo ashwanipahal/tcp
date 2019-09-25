@@ -13,7 +13,9 @@ exports[`CustomSelect component should renders correctly 1`] = `
   link={null}
   textAlign="left"
 >
-  <span>
+  <span
+    className="dropdown-title"
+  >
     Select from address book:
   </span>
   <Styled(BodyCopy)

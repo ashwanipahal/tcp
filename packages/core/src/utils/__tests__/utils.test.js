@@ -7,7 +7,7 @@ import {
 } from '../utils';
 
 const formattedDate = '01/01/1970';
-const formattedPhoneNumber = '(718)-243-1150';
+const formattedPhoneNumber = '(718) 243-1150';
 
 describe('getLabelValue', () => {
   const labelState = {

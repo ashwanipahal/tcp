@@ -264,7 +264,7 @@ export const formatAddress = address => ({
 });
 
 export const formatPhoneNumber = phone => {
-  if (phone) return `(${phone.slice(0, 3)})-${phone.slice(3, 6)}-${phone.slice(6, 15)}`;
+  if (phone) return `(${phone.slice(0, 3)}) ${phone.slice(3, 6)}-${phone.slice(6, 15)}`;
   return '';
 };
 

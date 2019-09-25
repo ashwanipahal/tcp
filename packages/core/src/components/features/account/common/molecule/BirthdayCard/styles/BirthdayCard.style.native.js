@@ -11,7 +11,7 @@ const BirthdayCardContainer = styled.View`
 
 const NameWrapper = styled.View`
   margin-bottom: ${props => props.theme.spacing.ELEM_SPACING.XS};
-  margin-right: ${props => props.theme.spacing.ELEM_SPACING.SM};
+  height: 20px;
 `;
 
 const CardInfo = styled.View`
@@ -26,6 +26,7 @@ const CloseIcon = styled.View`
   right: 3px;
   top: 3px;
   padding: ${props => props.theme.spacing.ELEM_SPACING.XXS};
+  z-index: 99;
 `;
 
 export { CardInfo, BirthdayCardContainer, NameWrapper, CloseIcon };
