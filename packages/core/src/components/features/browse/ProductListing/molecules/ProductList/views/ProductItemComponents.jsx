@@ -158,7 +158,7 @@ export function PromotionalMessage(props) {
   return (
     <Dotdotdot clamp={2}>
       <BodyCopy
-        fontSize={['fs10', 'fs12', 'fs14']}
+        fontSize={['fs9', 'fs12', 'fs14']}
         fontWeight="extrabold"
         fontFamily="secondary"
         data-locator={getLocator('global_loyalty_text')}
@@ -167,7 +167,7 @@ export function PromotionalMessage(props) {
         {text && getFormattedLoyaltyText(text)[0]}
         {text && (
           <BodyCopy
-            fontSize={['fs10', 'fs12', 'fs14']}
+            fontSize={['fs9', 'fs12', 'fs14']}
             fontWeight="extrabold"
             fontFamily="secondary"
             component="span"
