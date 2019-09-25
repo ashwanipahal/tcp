@@ -41,7 +41,7 @@ const renderImage = imageProps => {
 };
 
 const Image = props => {
-  const { link, className, src, url, srcset, sizes, alt, ref, placeholderSrc } = props;
+  const { link, className, src, url, srcset, sizes, alt, ref, placeholderSrc, ...others } = props;
 
   const imageProps = {
     className,
@@ -52,6 +52,7 @@ const Image = props => {
     alt,
     ref,
     placeholderSrc,
+    ...others,
   };
 
   if (!link) {
