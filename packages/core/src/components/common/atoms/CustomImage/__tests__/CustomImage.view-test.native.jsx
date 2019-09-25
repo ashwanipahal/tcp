@@ -14,4 +14,9 @@ describe('CustomImage component', () => {
     const component = shallow(<CustomImageVanilla {...props} />);
     expect(component).toMatchSnapshot();
   });
+
+  it('should renders Zoom Image correctly', () => {
+    const component = shallow(<CustomImageVanilla {...props} allowZoom />);
+    expect(component).toMatchSnapshot();
+  });
 });

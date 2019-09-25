@@ -369,7 +369,7 @@ export const parseProductInfo = (
     productInfo: {
       generalProductId: getGeneralProductId(product),
       name: product.product_name,
-      pdpUrl: `/p/${product.seo_token}`,
+      pdpUrl: `/p/${product.seo_token || product.uniqueId}`,
       uniqueId: product.uniqueId,
       shortDescription: product.product_short_description,
       longDescription: product.product_short_description,

@@ -8,6 +8,7 @@ exports[`Bag page Container should render modal when open true 1`] = `
   headingFontFamily="secondary"
   horizontalBar={false}
   isOpen={true}
+  isOverlay={false}
   onRequestClose={[MockFunction]}
 >
   <Styled(View)>
@@ -54,6 +55,7 @@ exports[`Bag page Container should render no modal when isOpen is false 1`] = `
   headingFontFamily="secondary"
   horizontalBar={false}
   isOpen={false}
+  isOverlay={false}
   onRequestClose={[MockFunction]}
 >
   <Styled(View)>

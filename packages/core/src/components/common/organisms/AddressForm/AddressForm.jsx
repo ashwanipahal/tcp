@@ -243,6 +243,5 @@ const validateMethod = createValidateMethod(
 
 export default reduxForm({
   form: 'AddressForm', // a unique identifier for this form
-  enableReinitialize: true,
   ...validateMethod,
 })(AddressForm);
