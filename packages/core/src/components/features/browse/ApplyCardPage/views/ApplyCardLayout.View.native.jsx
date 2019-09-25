@@ -252,6 +252,8 @@ class ApplyCardLayoutView extends React.PureComponent<Props> {
           </NameFieldContainer>
           <NameFieldContainer>
             <Field
+              id="addressLine1"
+              name="addressLine1"
               headerTitle={getLabelValue(labels, 'lbl_PLCCForm_addressLine1')}
               component={GooglePlacesInput}
               onPlaceSelected={this.handlePlaceSelected}
@@ -267,7 +269,6 @@ class ApplyCardLayoutView extends React.PureComponent<Props> {
               refs={instance => {
                 this.locationRef = instance;
               }}
-              dataLocator="addnewaddress-addressl1"
             />
             <Field
               label=""
@@ -445,8 +446,8 @@ class ApplyCardLayoutView extends React.PureComponent<Props> {
 
           <NameFieldContainer>
             <Field
-              name="ssnName"
-              id="ssnName"
+              name="ssNumber"
+              id="ssNumber"
               label={getLabelValue(labels, 'lbl_PLCCForm_ssn')}
               type="tel"
               component={TextBox}
@@ -483,7 +484,8 @@ class ApplyCardLayoutView extends React.PureComponent<Props> {
           <CheckBoxContainerView>
             <CheckBoxImage>
               <Field
-                name="checkUpdate"
+                name="iAgree"
+                id="iAgree"
                 component={InputCheckbox}
                 enableSuccessCheck={false}
                 // onChange={() => this.handleChange()}
@@ -531,7 +533,6 @@ const validateMethod = createValidateMethod(
     'firstName',
     'lastName',
     'addressLine1',
-    'addressLine2',
     'city',
     'statewocountry',
     'date',

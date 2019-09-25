@@ -95,7 +95,6 @@ export const resetGraphQLClient = () => {
  */
 export const fetchModuleDataFromGraphQL = async modules => {
   const query = await QueryBuilder.getQuery(modules);
-  console.log(query);
   return executeGraphQLQuery(query);
 };
 
