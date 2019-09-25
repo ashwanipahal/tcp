@@ -14,6 +14,8 @@ const FieldWrapper = styled.View`
 const ShortNote = styled.View`
   position: relative;
   top: 0px;
+  left: ${props =>
+    props.Platform.OS === 'android' ? `-${props.theme.spacing.ELEM_SPACING.XXS}` : '0px'};
 `;
 
 const TextWrapper = styled.View`

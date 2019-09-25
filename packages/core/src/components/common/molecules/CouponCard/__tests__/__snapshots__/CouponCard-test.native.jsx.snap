@@ -78,13 +78,28 @@ exports[`CouponCard Component should renders correctly when addresses are not pr
             </Styled(View)>
           </Styled(View)>
           <Styled(View)>
-            <Styled(WithTheme(CustomButton))
+            <Styled(CustomButton)
+              active={false}
               buttonVariation="variable-width"
+              color=""
+              customStyle={Object {}}
               data-locator=""
+              disableButton={false}
               fill="DARK"
+              fullWidth=""
+              iconColor="gray.800"
+              iconName="chevron-down"
+              iconSize="fs12"
+              locator=""
+              navigation={Object {}}
               onPress={[Function]}
+              selected={false}
+              selectedIcon="chevron-up"
+              showIcon={false}
               text="APPLY"
+              theme={Object {}}
               type="submit"
+              url=""
             />
           </Styled(View)>
         </Styled(View)>

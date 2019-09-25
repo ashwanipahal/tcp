@@ -3,7 +3,7 @@
 exports[`ProductSummaryVanilla should render correctly 1`] = `
 <Styled(View)>
   <Styled(LineComp)
-    borderColor="#d8d8d8"
+    borderColor="gray.500"
     borderWidth={0.65}
     marginBottom={0}
     marginTop={10}
@@ -51,7 +51,7 @@ exports[`ProductSummaryVanilla should render correctly 1`] = `
     />
   </Styled(View)>
   <Styled(LineComp)
-    borderColor="#d8d8d8"
+    borderColor="gray.500"
     borderWidth={0.65}
     marginBottom={0}
     marginTop={0}
@@ -126,7 +126,7 @@ exports[`ProductSummaryVanilla should render correctly 1`] = `
     text="<span class='product-loyaltypromotionText user-tier-theme'> EARN DOUBLE/TRIPLE POINTS </span> on all Uniform!"
   />
   <Styled(LineComp)
-    borderColor="#d8d8d8"
+    borderColor="gray.500"
     borderWidth={0.65}
     marginBottom={0}
     marginTop={12}

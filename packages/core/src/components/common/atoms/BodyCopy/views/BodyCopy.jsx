@@ -84,9 +84,11 @@ const fontSizesPropTypes = PropTypes.oneOf([
   'fs22',
   'fs18',
   'fs16',
+  'fs15',
   'fs14',
   'fs12',
   'fs10',
+  'fs9',
 ]);
 
 BodyCopy.defaultProps = {

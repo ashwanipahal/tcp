@@ -19,11 +19,26 @@ exports[`MyProfileTile should render correctly when all props are present 1`] = 
   <Styled(View)
     spacingStyles="margin-bottom-XXL"
   />
-  <Styled(WithTheme(CustomButton))
+  <Styled(CustomButton)
+    active={false}
     buttonVariation="variable-width"
+    color=""
+    customStyle={Object {}}
+    disableButton={false}
     fill="BLUE"
+    fullWidth=""
+    iconColor="gray.800"
+    iconName="chevron-down"
+    iconSize="fs12"
+    locator=""
+    navigation={Object {}}
     onPress={[Function]}
+    selected={false}
+    selectedIcon="chevron-up"
+    showIcon={false}
     text="Test CTA"
+    theme={Object {}}
+    url=""
   />
 </Styled(View)>
 `;

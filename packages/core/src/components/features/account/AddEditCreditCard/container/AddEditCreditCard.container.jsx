@@ -13,6 +13,7 @@ import {
   getAddGiftCardErrorMessage,
   getshowNotification,
 } from './AddEditCreditCard.selectors';
+import { getFormValidationErrorMessages } from '../../Account/container/Account.selectors';
 import constants from './AddEditCreditCard.constants';
 import AddEditCreditCardComponent from '../views/AddEditCreditCard.view';
 import { getAddressListState } from '../../AddressBook/container/AddressBook.selectors';
@@ -38,6 +39,7 @@ export class AddEditCreditCard extends React.PureComponent {
     addressLabels: PropTypes.shape({}),
     formErrorMessage: PropTypes.shape({}).isRequired,
     showNotification: PropTypes.bool.isRequired,
+    addEditCreditCardErrorMsg: PropTypes.string,
   };
 
   static defaultProps = {
@@ -50,6 +52,7 @@ export class AddEditCreditCard extends React.PureComponent {
     creditCard: null,
     labels: {},
     addressLabels: { addressFormLabels: {} },
+    addEditCreditCardErrorMsg: null,
   };
 
   constructor(props) {
@@ -61,10 +64,8 @@ export class AddEditCreditCard extends React.PureComponent {
   }
 
   componentDidMount() {
-    const { addressList, getAddressListAction } = this.props;
-    if (addressList === null) {
-      getAddressListAction();
-    }
+    const { getAddressListAction } = this.props;
+    getAddressListAction();
     this.setInitialValues();
   }
 
@@ -172,6 +173,7 @@ export class AddEditCreditCard extends React.PureComponent {
       addressList,
       isPLCCEnabled,
       addEditCreditCardError,
+      addEditCreditCardErrorMsg,
       labels,
       addressLabels,
       formErrorMessage,
@@ -205,6 +207,7 @@ export class AddEditCreditCard extends React.PureComponent {
         addressFormLabels={addressLabels.addressFormLabels}
         formErrorMessage={formErrorMessage}
         showNotification={showNotification}
+        globalErrorMessage={addEditCreditCardErrorMsg}
       />
     );
   }
@@ -220,8 +223,9 @@ const mapStateToProps = (state, ownProps) => {
     addEditCreditCardSuccess: getAddEditCreditCardSuccess(state),
     addEditCreditCardError: getAddEditCreditCardError(state),
     addressLabels: getAddEditAddressLabels(state),
-    formErrorMessage: getAddGiftCardErrorMessage(state),
+    formErrorMessage: getFormValidationErrorMessages(state),
     showNotification: getshowNotification(state),
+    addEditCreditCardErrorMsg: getAddGiftCardErrorMessage(state),
   };
 };
 

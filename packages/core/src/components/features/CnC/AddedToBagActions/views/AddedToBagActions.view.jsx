@@ -50,7 +50,7 @@ class AddedToBagActions extends React.PureComponent<Props> {
         <Row className="checkout-button">
           <div className="paypal-venmo">
             {!isInternationalShipping && (
-              <div className="paypal-wrapper">
+              <div className={`${showAddTobag ? 'paypal-wrapper-atb' : 'paypal-wrapper'}`}>
                 <PayPalButton className="payPal-button" />
               </div>
             )}

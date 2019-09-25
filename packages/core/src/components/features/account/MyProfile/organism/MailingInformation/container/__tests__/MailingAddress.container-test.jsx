@@ -3,7 +3,7 @@ import { shallow } from 'enzyme';
 import { List } from 'immutable';
 import { AddEditCreditCard } from '../../../../../AddEditCreditCard/container/AddEditCreditCard.container';
 import AddEditCreditCardView from '../../../../../AddEditCreditCard/views/AddEditCreditCard.view';
-import { MailingInformationContainer } from '../MailingInformation.container';
+import { MailingInformationContainer, mapDispatchToProps } from '../MailingInformation.container';
 
 const address = {
   address: {
@@ -86,6 +86,7 @@ describe('MailingAddressContainer', () => {
         submitAddressFormAction={jest.fn()}
         verifyAddressAction={jest.fn()}
         backToAddressBookClick={jest.fn()}
+        getAddressListAction={jest.fn()}
         {...props}
       />
     );
@@ -96,13 +97,16 @@ describe('MailingAddressContainer', () => {
     let instance;
     let verifyAddressSpy;
     let submitNewAddressFormActionSpy;
+    let getAddressListActionSpy;
     beforeEach(() => {
       verifyAddressSpy = jest.fn();
       submitNewAddressFormActionSpy = jest.fn();
+      getAddressListActionSpy = jest.fn();
       const component = shallow(
         <MailingInformationContainer
           submitNewAddressFormAction={submitNewAddressFormActionSpy}
           verifyAddressAction={verifyAddressSpy}
+          getAddressListAction={getAddressListActionSpy}
           addressList={List()}
           labels={labels}
           {...props}
@@ -117,6 +121,12 @@ describe('MailingAddressContainer', () => {
     it('#submitAddressForm should call submitNewAddressFormAction prop in mailing address mode', () => {
       instance.submitAddressForm(address);
       expect(submitNewAddressFormActionSpy).toBeCalled();
+    });
+    it('#getAddressListAction should call on componentDidMount', () => {
+      const dispatch = jest.fn();
+      const dispatchProps = mapDispatchToProps(dispatch);
+      dispatchProps.getAddressListAction();
+      expect(dispatch.mock.calls).toHaveLength(1);
     });
   });
 });
