@@ -12,7 +12,7 @@ exports[`Native Badge component renders correctly with  as false 1`] = `
       margin={null}
       name="check"
       onPress={[Function]}
-      size={10}
+      size="fs10"
     />
     <Styled(BodyCopy)
       accessibilityText=""

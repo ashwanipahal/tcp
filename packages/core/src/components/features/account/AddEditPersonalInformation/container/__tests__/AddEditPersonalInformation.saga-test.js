@@ -20,9 +20,19 @@ describe('UpdateProfile saga', () => {
     });
 
     it('should dispatch updateProfileError action if response is error', () => {
-      const response = 'error';
-      const putDescriptor = gen.throw(response).value;
-      expect(putDescriptor).toEqual(put(updateProfileError(response)));
+      const responseError = {
+        errorCode: 'ASSOCIATE_ID_DOES_NOT_EXIST',
+        errorMessage: {
+          _error: 'The Associate ID you entered does not exist. Please try again.',
+        },
+        errorResponse: {
+          errorCode: '8004',
+          errorKey: 'ASSOCIATE_ID_DOES_NOT_EXIST',
+          errorMessage: 'The given associate ID is incorrect.',
+        },
+      };
+      const putDescriptor = gen.throw(responseError).value;
+      expect(putDescriptor).toEqual(put(updateProfileError(responseError.errorResponse)));
     });
   });
 

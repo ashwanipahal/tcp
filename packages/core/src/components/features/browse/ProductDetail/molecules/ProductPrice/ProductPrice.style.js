@@ -7,6 +7,9 @@ const productPriceStyle = css`
   .badge {
     margin-left: 8px;
   }
+  .list-badge-container {
+    display: flex;
+  }
   ${props => (props.inheritedStyles ? props.inheritedStyles : '')};
 `;
 

@@ -13,14 +13,23 @@ export default css`
   .product-image-wrapper {
     margin-right: 0;
   }
+  .product-detail-image-wrapper {
+    margin-bottom: 8px;
+  }
   @media ${props => props.theme.mediaQuery.medium} {
     .product-image-wrapper {
       margin-right: 30px;
+    }
+    .product-detail-image-wrapper {
+      margin-bottom: 11px;
     }
   }
   @media ${props => props.theme.mediaQuery.large} {
     .product-image-wrapper {
       margin-right: 0;
+    }
+    .product-detail-image-wrapper {
+      margin-bottom: 27px;
     }
   }
 `;

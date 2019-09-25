@@ -4,6 +4,13 @@ import styled, { css } from 'styled-components/native';
 import { StyledText } from '../../../../../styles/globalStyles/StyledText.style';
 import { BUTTON_VARIATION } from '.';
 
+const getAdditionalStyle = props => {
+  const { margin } = props;
+  return {
+    ...(margin && { margin }),
+  };
+};
+
 const getShape = props => {
   const { theme, noCurve, buttonVariation } = props;
   const { isGymboree } = theme;
@@ -122,6 +129,7 @@ const getMobileAppFilterIconButtonTextStyle = props => {
 
 const TouchableOpacityComponent = styled.TouchableOpacity`
   flex-direction: row;
+  ${getAdditionalStyle}
 `;
 
 const IconContainer = styled.View`

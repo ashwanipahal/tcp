@@ -110,13 +110,28 @@ exports[`AboutYouSurvey should render SurveyQuestion correctly 1`] = `
       questionId="question1"
     />
     <Styled(View)>
-      <Styled(WithTheme(CustomButton))
+      <Styled(CustomButton)
+        active={false}
         buttonVariation="variable-width"
+        color=""
+        customStyle={Object {}}
+        disableButton={false}
         disabled={true}
         fill="BLUE"
+        fullWidth=""
+        iconColor="gray.800"
+        iconName="chevron-down"
+        iconSize="fs12"
+        locator=""
+        navigation={Object {}}
         onPress={[Function]}
+        selected={false}
+        selectedIcon="chevron-up"
+        showIcon={false}
         text="SAVE"
+        theme={Object {}}
         type="button"
+        url=""
       />
     </Styled(View)>
   </Styled(View)>
@@ -233,13 +248,28 @@ exports[`AboutYouSurvey should render correctly 1`] = `
       questionId="question1"
     />
     <Styled(View)>
-      <Styled(WithTheme(CustomButton))
+      <Styled(CustomButton)
+        active={false}
         buttonVariation="variable-width"
+        color=""
+        customStyle={Object {}}
+        disableButton={false}
         disabled={true}
         fill="BLUE"
+        fullWidth=""
+        iconColor="gray.800"
+        iconName="chevron-down"
+        iconSize="fs12"
+        locator=""
+        navigation={Object {}}
         onPress={[Function]}
+        selected={false}
+        selectedIcon="chevron-up"
+        showIcon={false}
         text="SAVE"
+        theme={Object {}}
         type="button"
+        url=""
       />
     </Styled(View)>
   </Styled(View)>

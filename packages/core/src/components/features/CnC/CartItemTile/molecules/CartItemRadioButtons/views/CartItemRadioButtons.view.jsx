@@ -4,6 +4,7 @@ import withStyles from '../../../../../../common/hoc/withStyles';
 import style from '../styles/CartItemRadioButtons.style';
 import { BodyCopy, LabeledRadioButton } from '../../../../../../common/atoms';
 import { getLocator, getAPIConfig } from '../../../../../../../utils';
+import { API_CONFIG } from '../../../../../../../services/config';
 
 class CartItemRadioButtons extends React.Component {
   constructor(props) {
@@ -35,7 +36,7 @@ class CartItemRadioButtons extends React.Component {
 
     return (
       <div className={className}>
-        {siteId === 'us' && (
+        {siteId === API_CONFIG.siteIds.us && (
           <LabeledRadioButton
             className={[
               'select-box-1',
@@ -76,7 +77,7 @@ class CartItemRadioButtons extends React.Component {
                 fontFamily="secondary"
                 fontSize="fs10"
               >
-                At
+                {labels.at}
                 <BodyCopy
                   className="padding-horizontal-5"
                   fontWeight="semibold"
@@ -86,7 +87,7 @@ class CartItemRadioButtons extends React.Component {
                 >
                   {productDetail.miscInfo.store}
                 </BodyCopy>
-                by
+                {labels.by}
                 <BodyCopy
                   className="padding-left-5"
                   fontWeight="semibold"
@@ -132,7 +133,7 @@ class CartItemRadioButtons extends React.Component {
               fontFamily="secondary"
               fontSize="fs10"
             >
-              At
+              {labels.at}
               <BodyCopy
                 className="padding-left-5"
                 fontWeight="semibold"

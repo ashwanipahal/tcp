@@ -215,7 +215,11 @@ class CheckoutAddress extends React.Component {
   };
 
   getAddressDropDown = () => {
-    const { userAddresses, selectedOnFileAddressId } = this.props;
+    const {
+      userAddresses,
+      selectedOnFileAddressId,
+      addressLabels: { addressFormLabels },
+    } = this.props;
     const selectedAddress = this.getSelectedAddress(userAddresses, selectedOnFileAddressId);
     return (
       userAddresses &&
@@ -224,7 +228,7 @@ class CheckoutAddress extends React.Component {
           <Row fullBleed>
             <Col colSize={{ large: 6, medium: 4, small: 6 }}>
               <Field
-                selectListTitle="Select from address book"
+                selectListTitle={addressFormLabels.selectFromAddress}
                 name="onFileAddressId"
                 id="onFileAddressId"
                 component={AddressDropdown}
