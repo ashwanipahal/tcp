@@ -13,7 +13,7 @@ export default class PersonalInformationFormWrapper extends React.PureComponent 
     const { labels, isPLCCModalFlow } = this.props;
     return (
       <StyledPersonalFormWrapper>
-        <BodyCopy component="h2" className="title" tabIndex="0">
+        <BodyCopy component="h2" className="title">
           {getLabelValue(labels, 'lbl_PLCCForm_personalInfo')}
         </BodyCopy>
         <Row fullBleed>

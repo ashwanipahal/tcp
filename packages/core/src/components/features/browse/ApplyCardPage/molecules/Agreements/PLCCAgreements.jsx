@@ -12,13 +12,7 @@ import { getLabelValue } from '../../../../../../utils';
 const PLCCAgreements = ({ labels }) => {
   return (
     <PLCCAgreementsWrapper>
-      <BodyCopy
-        component="h2"
-        className="title"
-        fontSize="fs16"
-        fontFamily="secondary"
-        tabIndex="0"
-      >
+      <BodyCopy component="h2" className="title" fontSize="fs16" fontFamily="secondary">
         {getLabelValue(labels, 'lbl_PLCCForm_financialTermsHeading')}
       </BodyCopy>
       <iframe
