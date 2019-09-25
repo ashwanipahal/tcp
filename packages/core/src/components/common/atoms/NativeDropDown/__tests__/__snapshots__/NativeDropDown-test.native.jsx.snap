@@ -2,14 +2,29 @@
 
 exports[`NativeDropDown native should render correctly should match snapshot for android 1`] = `
 <View>
-  <Styled(WithTheme(CustomButton))
+  <Styled(CustomButton)
+    active={false}
     bottomBorderOnly={true}
     buttonVariation="mobileApp-filter"
+    color=""
+    customStyle={Object {}}
     data-locator="pdp_quantity"
+    disableButton={false}
+    fill=""
+    fullWidth=""
+    iconColor="gray.800"
+    iconName="chevron-down"
+    iconSize="fs12"
+    locator=""
+    navigation={Object {}}
     onPress={[Function]}
+    selected={false}
+    selectedIcon="chevron-up"
     showIcon={true}
     text={null}
+    theme={Object {}}
     type="button"
+    url=""
   />
   <Component
     animationType="slide"
