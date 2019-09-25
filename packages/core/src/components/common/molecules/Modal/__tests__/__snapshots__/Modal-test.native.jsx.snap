@@ -14,7 +14,9 @@ exports[`Modal Native should render correctly 1`] = `
       hidden={true}
       showHideTransition="fade"
     />
-    <Styled(View)>
+    <Styled(View)
+      isOverlay={false}
+    >
       <Styled(Text)>
         <Styled(BodyCopy)
           accessibilityText=""
@@ -30,6 +32,9 @@ exports[`Modal Native should render correctly 1`] = `
       </Styled(Text)>
       <Styled(View)>
         <Styled(TouchableOpacity)
+          accessibilityLabel="close"
+          accessibilityRole="button"
+          isOverlay={false}
           onPress={[MockFunction]}
         >
           <Styled(Image)
