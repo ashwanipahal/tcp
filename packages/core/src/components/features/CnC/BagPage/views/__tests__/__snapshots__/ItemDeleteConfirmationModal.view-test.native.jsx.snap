@@ -4,6 +4,7 @@ exports[`Bag page Container should render modal when open true 1`] = `
 <ModalNative
   customTransparent={true}
   isOpen={true}
+  isOverlay={false}
 >
   <Styled(View)>
     <Styled(View)>
@@ -72,6 +73,7 @@ exports[`Bag page Container should render no modal when isOpen is false 1`] = `
 <ModalNative
   customTransparent={true}
   isOpen={false}
+  isOverlay={false}
 >
   <Styled(View)>
     <Styled(View)>
