@@ -1242,6 +1242,7 @@ exports[`AddEditPersonalInformationForm component should renders correctly with 
 >
   <Styled(Notification)
     className="elem-mt-MED"
+    message=""
     status="error"
   />
   <Styled(Row)
