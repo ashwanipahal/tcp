@@ -389,19 +389,19 @@ class ProductListingMobileFiltersForm extends React.PureComponent<Props> {
 
     return (
       <React.Fragment>
-        <form
-          className={`${className} available-filters-sorting-container`}
-          onSubmit={handleSubmit(formValues => {
-            this.hideModal(true);
-            handleImmediateSubmit(formValues);
-          })}
+        <Modal
+          isOpen={show}
+          widthConfig={{ small: '100%', medium: '100%', large: '100%' }}
+          heightConfig={{ height: '100%' }}
+          style={customStyles}
+          className="ProductFilterBG"
         >
-          <Modal
-            isOpen={show}
-            widthConfig={{ small: '100%', medium: '100%', large: '100%' }}
-            heightConfig={{ height: '100%' }}
-            style={customStyles}
-            className="ProductFilterBG"
+          <form
+            className={`${className} available-filters-sorting-container`}
+            onSubmit={handleSubmit(formValues => {
+              this.hideModal(true);
+              handleImmediateSubmit(formValues);
+            })}
           >
             <FilterModal
               show={show}
@@ -415,8 +415,9 @@ class ProductListingMobileFiltersForm extends React.PureComponent<Props> {
                 {this.renderMobilePlpFilterForm()}
               </div>
             </FilterModal>
-          </Modal>
-        </form>
+          </form>
+        </Modal>
+
         <Row centered className={`filter-row ${className}`}>
           <Col
             colSize={{
