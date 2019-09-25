@@ -82,6 +82,8 @@ const BtnWrapper = styled.View`
   flex: 1;
   flex-direction: row;
   align-items: center;
+  justify-content: center;
+  width: 60%;
   text-align: center;
   margin-left: ${props => props.theme.spacing.ELEM_SPACING.XS};
 `;
@@ -127,6 +129,11 @@ const HeartIcon = styled.TouchableOpacity`
   flex: 1;
 `;
 
+const SflIcons = styled.TouchableOpacity`
+  margin-top: ${props => props.theme.spacing.ELEM_SPACING.MED};
+  margin-left: ${props => props.theme.spacing.ELEM_SPACING.MED};
+`;
+
 const IconHeight = '58px';
 const IconWidth = '58px';
 
@@ -154,4 +161,5 @@ export {
   IconTextEdit,
   IconTextMoveToBag,
   HeartIcon,
+  SflIcons,
 };

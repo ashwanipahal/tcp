@@ -22,6 +22,7 @@ import {
   IconTextDelete,
   IconTextEdit,
   IconTextMoveToBag,
+  SflIcons,
 } from '../styles/CartItemTile.style.native';
 import { getLocator } from '../../../../../../../utils';
 import CartItemRadioButtons from '../../CartItemRadioButtons';
@@ -107,7 +108,7 @@ class ProductInformation extends React.Component {
     const isOK = productDetail.miscInfo.availability === CARTPAGE_CONSTANTS.AVAILABILITY_OK;
     if (!isBagPageSflSection && isOK && isShowSaveForLater) {
       return (
-        <MarginLeft onPress={() => CartItemTileExtension.handleMoveItemtoSaveList(this.props)}>
+        <SflIcons onPress={() => CartItemTileExtension.handleMoveItemtoSaveList(this.props)}>
           <Image
             data-locator="save-for-later-link"
             source={sflIcon}
@@ -115,12 +116,12 @@ class ProductInformation extends React.Component {
             width={IconWidth}
           />
           <IconTextMoveToBag>{saveForLaterLink}</IconTextMoveToBag>
-        </MarginLeft>
+        </SflIcons>
       );
     }
     if (isBagPageSflSection && isOK) {
       return (
-        <MarginLeft onPress={() => CartItemTileExtension.moveToBagSflItem(this.props)}>
+        <SflIcons onPress={() => CartItemTileExtension.moveToBagSflItem(this.props)}>
           <Image
             data-locator="move-to-bag-link"
             source={moveToBagIcon}
@@ -128,7 +129,7 @@ class ProductInformation extends React.Component {
             width={IconWidth}
           />
           <IconTextMoveToBag>{moveToBagLink}</IconTextMoveToBag>
-        </MarginLeft>
+        </SflIcons>
       );
     }
     return null;
@@ -285,7 +286,7 @@ class ProductInformation extends React.Component {
           this.swipeable = ref;
         }}
         rightButtons={[this.rightButton()]}
-        rightButtonWidth={250}
+        rightButtonWidth={240}
         leftButtons={[null]}
         onSwipeComplete={(event, gestureState, swipe) => {
           this.onSwipeComplete(swipe);
