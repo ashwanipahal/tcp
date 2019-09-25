@@ -27,6 +27,7 @@ exports[`GiftCardsVanilla should render gift card tile 1`] = `
         fontWeight="regular"
         letterSpacing="normal"
         lineHeight="normal"
+        link={null}
         textAlign="left"
       >
         lbl_giftcard_title
@@ -41,6 +42,7 @@ exports[`GiftCardsVanilla should render gift card tile 1`] = `
         fontWeight="regular"
         letterSpacing="normal"
         lineHeight="normal"
+        link={null}
         textAlign="left"
       >
         lbl_giftcard_addUptoMsg
@@ -55,6 +57,7 @@ exports[`GiftCardsVanilla should render gift card tile 1`] = `
         fontWeight="extrabold"
         letterSpacing="normal"
         lineHeight="normal"
+        link={null}
         textAlign="left"
       >
         lbl_giftcard_appliedCards
@@ -93,6 +96,7 @@ exports[`GiftCardsVanilla should render gift card tile 1`] = `
         fontWeight="regular"
         letterSpacing="normal"
         lineHeight="normal"
+        link={null}
         textAlign="left"
       >
         <span
@@ -112,6 +116,7 @@ exports[`GiftCardsVanilla should render gift card tile 1`] = `
         fontWeight="extrabold"
         letterSpacing="normal"
         lineHeight="normal"
+        link={null}
         textAlign="left"
       >
         lbl_giftcard_availableCards
@@ -172,6 +177,7 @@ exports[`GiftCardsVanilla should render gift card tile with 0 order balance 1`] 
         fontWeight="regular"
         letterSpacing="normal"
         lineHeight="normal"
+        link={null}
         textAlign="left"
       >
         lbl_giftcard_title
@@ -186,6 +192,7 @@ exports[`GiftCardsVanilla should render gift card tile with 0 order balance 1`] 
         fontWeight="regular"
         letterSpacing="normal"
         lineHeight="normal"
+        link={null}
         textAlign="left"
       >
         lbl_giftcard_addUptoMsg
@@ -200,6 +207,7 @@ exports[`GiftCardsVanilla should render gift card tile with 0 order balance 1`] 
         fontWeight="extrabold"
         letterSpacing="normal"
         lineHeight="normal"
+        link={null}
         textAlign="left"
       >
         lbl_giftcard_appliedCards
@@ -238,6 +246,7 @@ exports[`GiftCardsVanilla should render gift card tile with 0 order balance 1`] 
         fontWeight="regular"
         letterSpacing="normal"
         lineHeight="normal"
+        link={null}
         textAlign="left"
       >
         <span
@@ -257,6 +266,7 @@ exports[`GiftCardsVanilla should render gift card tile with 0 order balance 1`] 
         fontWeight="extrabold"
         letterSpacing="normal"
         lineHeight="normal"
+        link={null}
         textAlign="left"
       >
         lbl_giftcard_availableCards
@@ -317,6 +327,7 @@ exports[`GiftCardsVanilla should render gift card tile with 100 order balance 1`
         fontWeight="regular"
         letterSpacing="normal"
         lineHeight="normal"
+        link={null}
         textAlign="left"
       >
         lbl_giftcard_title
@@ -331,6 +342,7 @@ exports[`GiftCardsVanilla should render gift card tile with 100 order balance 1`
         fontWeight="regular"
         letterSpacing="normal"
         lineHeight="normal"
+        link={null}
         textAlign="left"
       >
         lbl_giftcard_addUptoMsg
@@ -345,6 +357,7 @@ exports[`GiftCardsVanilla should render gift card tile with 100 order balance 1`
         fontWeight="extrabold"
         letterSpacing="normal"
         lineHeight="normal"
+        link={null}
         textAlign="left"
       >
         lbl_giftcard_appliedCards
@@ -383,6 +396,7 @@ exports[`GiftCardsVanilla should render gift card tile with 100 order balance 1`
         fontWeight="regular"
         letterSpacing="normal"
         lineHeight="normal"
+        link={null}
         textAlign="left"
       >
         <span
@@ -402,6 +416,7 @@ exports[`GiftCardsVanilla should render gift card tile with 100 order balance 1`
         fontWeight="extrabold"
         letterSpacing="normal"
         lineHeight="normal"
+        link={null}
         textAlign="left"
       >
         lbl_giftcard_availableCards
@@ -488,6 +503,7 @@ exports[`GiftCardsVanilla should render gift card tile with 100 order balance wi
         fontWeight="regular"
         letterSpacing="normal"
         lineHeight="normal"
+        link={null}
         textAlign="left"
       >
         lbl_giftcard_title
@@ -502,6 +518,7 @@ exports[`GiftCardsVanilla should render gift card tile with 100 order balance wi
         fontWeight="regular"
         letterSpacing="normal"
         lineHeight="normal"
+        link={null}
         textAlign="left"
       >
         lbl_giftcard_addUptoMsg
@@ -516,6 +533,7 @@ exports[`GiftCardsVanilla should render gift card tile with 100 order balance wi
         fontWeight="extrabold"
         letterSpacing="normal"
         lineHeight="normal"
+        link={null}
         textAlign="left"
       >
         lbl_giftcard_appliedCards
@@ -554,6 +572,7 @@ exports[`GiftCardsVanilla should render gift card tile with 100 order balance wi
         fontWeight="regular"
         letterSpacing="normal"
         lineHeight="normal"
+        link={null}
         textAlign="left"
       >
         <span
@@ -573,6 +592,7 @@ exports[`GiftCardsVanilla should render gift card tile with 100 order balance wi
         fontWeight="extrabold"
         letterSpacing="normal"
         lineHeight="normal"
+        link={null}
         textAlign="left"
       >
         lbl_giftcard_availableCards
@@ -624,6 +644,7 @@ exports[`GiftCardsVanilla should render gift card tile with 100 order balance wi
         fontWeight="regular"
         letterSpacing="normal"
         lineHeight="normal"
+        link={null}
         textAlign="left"
       >
         <Styled(Row)

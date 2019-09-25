@@ -17,25 +17,26 @@ exports[`Image grid component renders correctly 1`] = `
       }
       key="0"
     >
-      <Styled(Anchor)
-        target=""
-        text="link 1"
-        title=""
-        url="http://example.com"
-      >
-        <WithTheme(DamImage)
-          data-locator="moduleK_image__1"
-          imgData={
-            Object {
-              "alt": "dinos",
-              "crop_d": "",
-              "crop_m": "",
-              "crop_t": "",
-              "url": "https://res.cloudinary.com/tcp-dam-test/image/upload/v1562935881/ecom/assets/content/tcp/us/home/moduleK/K-210x210-1_s0jewf.jpg",
-            }
+      <WithTheme(DamImage)
+        data-locator="moduleK_image__1"
+        imgData={
+          Object {
+            "alt": "dinos",
+            "crop_d": "",
+            "crop_m": "",
+            "crop_t": "",
+            "url": "https://res.cloudinary.com/tcp-dam-test/image/upload/v1562935881/ecom/assets/content/tcp/us/home/moduleK/K-210x210-1_s0jewf.jpg",
           }
-        />
-      </Styled(Anchor)>
+        }
+        link={
+          Object {
+            "target": "",
+            "text": "link 1",
+            "title": "",
+            "url": "http://example.com",
+          }
+        }
+      />
     </Styled(Col)>
     <Styled(Col)
       className="image-col"
@@ -48,25 +49,26 @@ exports[`Image grid component renders correctly 1`] = `
       }
       key="1"
     >
-      <Styled(Anchor)
-        target=""
-        text=""
-        title=""
-        url="http://example.com"
-      >
-        <WithTheme(DamImage)
-          data-locator="moduleK_image__2"
-          imgData={
-            Object {
-              "alt": "",
-              "crop_d": "",
-              "crop_m": "",
-              "crop_t": "",
-              "url": "https://res.cloudinary.com/tcp-dam-test/image/upload/v1562935881/ecom/assets/content/tcp/us/home/moduleK/K-210x210-4_com7vo.jpg",
-            }
+      <WithTheme(DamImage)
+        data-locator="moduleK_image__2"
+        imgData={
+          Object {
+            "alt": "",
+            "crop_d": "",
+            "crop_m": "",
+            "crop_t": "",
+            "url": "https://res.cloudinary.com/tcp-dam-test/image/upload/v1562935881/ecom/assets/content/tcp/us/home/moduleK/K-210x210-4_com7vo.jpg",
           }
-        />
-      </Styled(Anchor)>
+        }
+        link={
+          Object {
+            "target": "",
+            "text": "",
+            "title": "",
+            "url": "http://example.com",
+          }
+        }
+      />
     </Styled(Col)>
     <Styled(Col)
       className="image-col"
@@ -79,25 +81,26 @@ exports[`Image grid component renders correctly 1`] = `
       }
       key="2"
     >
-      <Styled(Anchor)
-        target=""
-        text=""
-        title=""
-        url="http://example.com"
-      >
-        <WithTheme(DamImage)
-          data-locator="moduleK_image__3"
-          imgData={
-            Object {
-              "alt": "",
-              "crop_d": "",
-              "crop_m": "",
-              "crop_t": "",
-              "url": "https://res.cloudinary.com/tcp-dam-test/image/upload/v1562935881/ecom/assets/content/tcp/us/home/moduleK/K-210x210-4_com7vo.jpg",
-            }
+      <WithTheme(DamImage)
+        data-locator="moduleK_image__3"
+        imgData={
+          Object {
+            "alt": "",
+            "crop_d": "",
+            "crop_m": "",
+            "crop_t": "",
+            "url": "https://res.cloudinary.com/tcp-dam-test/image/upload/v1562935881/ecom/assets/content/tcp/us/home/moduleK/K-210x210-4_com7vo.jpg",
           }
-        />
-      </Styled(Anchor)>
+        }
+        link={
+          Object {
+            "target": "",
+            "text": "",
+            "title": "",
+            "url": "http://example.com",
+          }
+        }
+      />
     </Styled(Col)>
     <Styled(Col)
       className="image-col"
@@ -110,25 +113,26 @@ exports[`Image grid component renders correctly 1`] = `
       }
       key="3"
     >
-      <Styled(Anchor)
-        target=""
-        text=""
-        title=""
-        url="http://example.com"
-      >
-        <WithTheme(DamImage)
-          data-locator="moduleK_image__4"
-          imgData={
-            Object {
-              "alt": "",
-              "crop_d": "",
-              "crop_m": "",
-              "crop_t": "",
-              "url": "https://res.cloudinary.com/tcp-dam-test/image/upload/v1562935881/ecom/assets/content/tcp/us/home/moduleK/K-210x210-4_com7vo.jpg",
-            }
+      <WithTheme(DamImage)
+        data-locator="moduleK_image__4"
+        imgData={
+          Object {
+            "alt": "",
+            "crop_d": "",
+            "crop_m": "",
+            "crop_t": "",
+            "url": "https://res.cloudinary.com/tcp-dam-test/image/upload/v1562935881/ecom/assets/content/tcp/us/home/moduleK/K-210x210-4_com7vo.jpg",
           }
-        />
-      </Styled(Anchor)>
+        }
+        link={
+          Object {
+            "target": "",
+            "text": "",
+            "title": "",
+            "url": "http://example.com",
+          }
+        }
+      />
     </Styled(Col)>
   </Styled(Row)>
 </div>

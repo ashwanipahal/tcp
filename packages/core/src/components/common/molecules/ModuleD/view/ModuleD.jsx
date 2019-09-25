@@ -83,20 +83,16 @@ const ModuleD = ({ className, headerText, promoBanner, smallCompImage, singleCTA
                   className="moduleD_tile"
                 >
                   <div className="moduleD__image-container">
-                    <Anchor
-                      className="moduleD_textlink"
-                      to={item.link.url}
-                      aria-label={item.link.text}
-                      title={item.link.title}
-                      target={item.link.target}
-                    >
-                      <DamImage
-                        className="moduleD_image"
-                        data-locator={`${getLocator('moduleD_image')}${index + 1}`}
-                        imgConfigs={imgDataConfig}
-                        imgData={item.image}
-                      />
-                    </Anchor>
+                    <DamImage
+                      className="moduleD_image"
+                      dataLocator={`${getLocator('moduleD_image')}${index + 1}`}
+                      imgConfigs={imgDataConfig}
+                      imgData={item.image}
+                      link={{
+                        className: 'moduleD_textlink',
+                        ...item.link,
+                      }}
+                    />
                   </div>
                   <div className="moduleD_link">
                     <Anchor

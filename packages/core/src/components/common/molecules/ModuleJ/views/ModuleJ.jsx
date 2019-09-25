@@ -7,7 +7,11 @@ import errorBoundary from '../../../hoc/withErrorBoundary';
 import withStyles from '../../../hoc/withStyles';
 import ProductTabList from '../../../organisms/ProductTabList';
 import moduleJStyle from '../styles/ModuleJ.style';
-import { configurePlpNavigationFromCMSUrl, getIconPath, getLocator } from '../../../../../utils';
+import {
+  configureInternalNavigationFromCMSUrl,
+  getIconPath,
+  getLocator,
+} from '../../../../../utils';
 import config from '../config';
 
 class ModuleJ extends React.PureComponent {
@@ -121,7 +125,7 @@ class ModuleJ extends React.PureComponent {
               }}
             >
               <Anchor
-                to={configurePlpNavigationFromCMSUrl(promoLink1.url)}
+                to={configureInternalNavigationFromCMSUrl(promoLink1.url)}
                 asPath={promoLink1.url}
                 title={promoLink1.title}
                 target={promoLink1.target}
@@ -164,7 +168,7 @@ class ModuleJ extends React.PureComponent {
               }}
             >
               <Anchor
-                to={configurePlpNavigationFromCMSUrl(promoLink2.url)}
+                to={configureInternalNavigationFromCMSUrl(promoLink2.url)}
                 asPath={promoLink2.url}
                 title={promoLink2.title}
                 target={promoLink2.target}
