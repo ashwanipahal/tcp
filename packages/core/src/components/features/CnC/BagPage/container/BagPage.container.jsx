@@ -1,6 +1,5 @@
 import React from 'react';
 import { connect } from 'react-redux';
-import { withRouter } from 'next/router'; //eslint-disable-line
 import { isGuest as isGuestUser } from '@tcp/core/src/components/features/CnC/Checkout/container/Checkout.selector';
 import BagPageSelector from './BagPage.selectors';
 import BagPage from '../views/BagPage.view';
@@ -138,9 +137,7 @@ const mapStateToProps = state => {
   };
 };
 
-export default withRouter(
-  connect(
-    mapStateToProps,
-    mapDispatchToProps
-  )(BagPageContainer)
-);
+export default connect(
+  mapStateToProps,
+  mapDispatchToProps
+)(BagPageContainer);
