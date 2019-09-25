@@ -75,9 +75,8 @@ class CheckoutPage extends React.PureComponent {
    * @params {string} currentSection - current checkout section name
    */
   isShowVenmoBanner = currentSection => {
-    const { isMobile, isUsSite, isVenmoPaymentInProgress } = this.props;
+    const { isUsSite, isVenmoPaymentInProgress } = this.props;
     return (
-      isMobile &&
       isUsSite &&
       isVenmoPaymentInProgress &&
       ((currentSection.toLowerCase() === CHECKOUT_STAGES.PICKUP &&
