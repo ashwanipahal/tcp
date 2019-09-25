@@ -12,6 +12,15 @@ export function* UpdateProfile({ payload }) {
     yield put(getUserInfo());
     return yield put(updateProfileSuccess(res));
   } catch (err) {
+    let error = {};
+    /* istanbul ignore else */
+    error = err;
+    if (error && error.errorResponse) {
+      return yield put(updateProfileError(error.errorResponse));
+    }
+    if (error && error.response.body) {
+      return yield put(updateProfileError(error.response.body.errors[0]));
+    }
     return yield put(updateProfileError(err));
   }
 }

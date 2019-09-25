@@ -11,7 +11,7 @@ const UpdateProfileReducer = (state = initialState, action) => {
     case constants.UPDATE_PROFILE_SUCCESS:
       return state.set('error', null).set('success', action.payload);
     case constants.UPDATE_PROFILE_ERROR:
-      return state.set('error', action.payload);
+      return state.set('error', fromJS(action.payload));
     default:
       // TODO: currently when initial state is hydrated on browser, List is getting converted to an JS Array
       if (state instanceof Object) {
