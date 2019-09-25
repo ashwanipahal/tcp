@@ -49,10 +49,13 @@ class ProductSummary extends React.PureComponent {
       const { promotionalMessage, promotionalPLCCMessage, name } = productData;
 
       // calculate default list price
-      const listPriceForColor = `${currencySymbol}${listPrice * currencyExchange[0].exchangevalue}`;
+      const listPriceForColor = `${currencySymbol}${(
+        listPrice * currencyExchange[0].exchangevalue
+      ).toFixed(2)}`;
       // calculate default offer price
-      const offerPriceForColor = `${currencySymbol}${offerPrice *
-        currencyExchange[0].exchangevalue}`;
+      const offerPriceForColor = `${currencySymbol}${(
+        offerPrice * currencyExchange[0].exchangevalue
+      ).toFixed(2)}`;
 
       // get default Loyalty message
       this.loyaltyPromotionMessage = getPromotionalMessage(isPlcc, {
@@ -124,18 +127,20 @@ class ProductSummary extends React.PureComponent {
             fontSize="fs22"
             fontWeight="black"
             color="red.500"
-            text={listPriceForColor}
+            text={offerPriceForColor}
           />
           <OfferPriceAndBadge3Container>
-            <BodyCopy
-              dataLocator="pdp_discounted_product_price"
-              textDecoration="line-through"
-              mobileFontFamily="secondary"
-              fontSize="fs14"
-              fontWeight="regular"
-              color="gray.800"
-              text={offerPriceForColor}
-            />
+            {listPriceForColor !== offerPriceForColor && (
+              <BodyCopy
+                dataLocator="pdp_discounted_product_price"
+                textDecoration="line-through"
+                mobileFontFamily="secondary"
+                fontSize="fs14"
+                fontWeight="regular"
+                color="gray.800"
+                text={listPriceForColor}
+              />
+            )}
             <BodyCopy
               dataLocator="pdp_discounted_percentage"
               margin="0 0 0 10px"
