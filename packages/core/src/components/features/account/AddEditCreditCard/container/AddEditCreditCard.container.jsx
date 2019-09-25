@@ -1,7 +1,6 @@
 import React from 'react';
 import { connect } from 'react-redux';
 import PropTypes from 'prop-types';
-import Router from 'next/router'; //eslint-disable-line
 import { List } from 'immutable';
 import internalEndpoints from '@tcp/core/src/components/features/account/common/internalEndpoints';
 import { routerPush } from '@tcp/core/src/utils';
