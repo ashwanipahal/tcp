@@ -49,12 +49,25 @@ exports[`CouponForm Component CouponForm should render correctly 1`] = `
           type="text"
         />
       </Styled(View)>
-      <Styled(WithTheme(CustomButton))
+      <Styled(CustomButton)
+        active={false}
         buttonVariation="variable-width"
+        color=""
+        customStyle={Object {}}
         data-locator="coupon_submit_btn"
+        disableButton={false}
         external={true}
         fill="WHITE"
+        fullWidth=""
+        iconColor="gray.800"
+        iconName="chevron-down"
+        iconSize="fs12"
+        locator=""
+        navigation={Object {}}
         onPress={[Function]}
+        selected={false}
+        selectedIcon="chevron-up"
+        showIcon={false}
         style={
           Object {
             "height": 42,
@@ -62,7 +75,9 @@ exports[`CouponForm Component CouponForm should render correctly 1`] = `
           }
         }
         text="Apply"
+        theme={Object {}}
         type="submit"
+        url=""
       />
     </Styled(View)>
   </Styled(View)>

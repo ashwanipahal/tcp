@@ -48,11 +48,26 @@ exports[`MyWalletTile component should render correctly when coupons are not pre
     </Styled(View)>
   </View>
   <Styled(View)>
-    <Styled(WithTheme(CustomButton))
+    <Styled(CustomButton)
+      active={false}
       buttonVariation="variable-width"
+      color=""
+      customStyle={Object {}}
+      disableButton={false}
       fill="BLUE"
+      fullWidth=""
+      iconColor="gray.800"
+      iconName="chevron-down"
+      iconSize="fs12"
+      locator=""
+      navigation={Object {}}
       onPress={[Function]}
+      selected={false}
+      selectedIcon="chevron-up"
+      showIcon={false}
       text="lbl_overview_viewMyWalletCTA"
+      theme={Object {}}
+      url=""
     />
   </Styled(View)>
 </Styled(View)>
@@ -104,11 +119,26 @@ exports[`MyWalletTile component should render correctly when coupons are present
     </Styled(View)>
   </Styled(View)>
   <Styled(View)>
-    <Styled(WithTheme(CustomButton))
+    <Styled(CustomButton)
+      active={false}
       buttonVariation="variable-width"
+      color=""
+      customStyle={Object {}}
+      disableButton={false}
       fill="BLUE"
+      fullWidth=""
+      iconColor="gray.800"
+      iconName="chevron-down"
+      iconSize="fs12"
+      locator=""
+      navigation={Object {}}
       onPress={[Function]}
+      selected={false}
+      selectedIcon="chevron-up"
+      showIcon={false}
       text="lbl_overview_walletViewAllCTA"
+      theme={Object {}}
+      url=""
     />
   </Styled(View)>
 </Styled(View)>
