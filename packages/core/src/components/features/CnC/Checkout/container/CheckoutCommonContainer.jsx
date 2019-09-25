@@ -14,6 +14,8 @@ import {
   submitBillingSection,
   initActions,
   submitReviewSection,
+  setVenmoPickupMessageState,
+  setVenmoShippingMessageState,
 } from './Checkout.action';
 
 import CheckoutPage from '../views/CheckoutPage.view';
@@ -56,6 +58,7 @@ const {
   getReviewLabels,
   getBillingValues,
   getShippingPhoneAndEmail,
+  getCreditFieldLabels,
 } = selectors;
 
 export class CheckoutContainer extends React.Component<Props> {
@@ -113,6 +116,9 @@ export class CheckoutContainer extends React.Component<Props> {
       checkoutProgressBarLabels,
       submitReview,
       reviewProps,
+      isVenmoPaymentInProgress,
+      setVenmoPickupState,
+      setVenmoShippingState,
     } = this.props;
     const availableStages = checkoutUtil.getAvailableStages(
       cartOrderItems,
@@ -156,6 +162,9 @@ export class CheckoutContainer extends React.Component<Props> {
         submitBilling={submitBilling}
         submitReview={submitReview}
         reviewProps={reviewProps}
+        isVenmoPaymentInProgress={isVenmoPaymentInProgress}
+        setVenmoPickupState={setVenmoPickupState}
+        setVenmoShippingState={setVenmoShippingState}
       />
     );
   }
@@ -204,6 +213,8 @@ export const mapDispatchToProps = dispatch => {
     submitReview: payload => {
       dispatch(submitReviewSection(payload));
     },
+    setVenmoPickupState: data => dispatch(setVenmoPickupMessageState(data)),
+    setVenmoShippingState: data => dispatch(setVenmoShippingMessageState(data)),
   };
 };
 
@@ -244,6 +255,7 @@ const mapStateToProps = state => {
       shippingAddress: getShippingAddress(state),
       billingData: getBillingValues(state),
       userAddresses: getAddressListState(state),
+      creditFieldLabels: getCreditFieldLabels(state),
     },
     // isAddressVerifyModalOpen: addressesStoreView.isVerifyAddressModalOpen(state),
     // onPickupSubmit: storeOperators.checkoutFormOperator.submitPickupSection,
@@ -278,6 +290,7 @@ const mapStateToProps = state => {
     reviewProps: {
       labels: getReviewLabels(state),
     },
+    isVenmoPaymentInProgress: selectors.isVenmoPaymentInProgress(),
   };
 };
 

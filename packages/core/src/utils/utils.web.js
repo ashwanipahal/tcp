@@ -346,12 +346,25 @@ export const redirectToPdp = (productId, seoToken) => {
 /**
  * This function configure url for Next/Link using CMS defined url string
  */
-export const configurePlpNavigationFromCMSUrl = url => {
-  const route = `${ROUTE_PATH.plp}/`;
-  if (url.includes(route)) {
-    const urlItems = url.split(route);
+export const configureInternalNavigationFromCMSUrl = url => {
+  const plpRoute = `${ROUTE_PATH.plp.name}/`;
+  const pdpRoute = `${ROUTE_PATH.pdp.name}/`;
+  const searchRoute = `${ROUTE_PATH.search.name}/`;
+
+  if (url.includes(plpRoute)) {
+    const urlItems = url.split(plpRoute);
     const queryParam = urlItems[0];
-    return `${ROUTE_PATH.plp}?cid=${queryParam}`;
+    return `${ROUTE_PATH.plp.name}?${ROUTE_PATH.plp.param}=${queryParam}`;
+  }
+  if (url.includes(pdpRoute)) {
+    const urlItems = url.split(pdpRoute);
+    const queryParam = urlItems[0];
+    return `${ROUTE_PATH.pdp.name}?${ROUTE_PATH.pdp.param}=${queryParam}`;
+  }
+  if (url.includes(searchRoute)) {
+    const urlItems = url.split(searchRoute);
+    const queryParam = urlItems[0];
+    return `${ROUTE_PATH.search.name}?${ROUTE_PATH.search.param}=${queryParam}`;
   }
   return url;
 };
@@ -364,13 +377,11 @@ export const configurePlpNavigationFromCMSUrl = url => {
  * @description this method invokes the parameter method received when respective
  * keybord key is triggered
  */
-
 export const handleGenericKeyDown = (event, key, method) => {
   if (event.keyCode === key) {
     method();
   }
 };
-
 const getAPIInfoFromEnv = (apiSiteInfo, processEnv, siteId) => {
   const country = siteId && siteId.toUpperCase();
   const apiEndpoint = processEnv.RWD_WEB_API_DOMAIN || ''; // TO ensure relative URLs for MS APIs
@@ -397,7 +408,6 @@ const getAPIInfoFromEnv = (apiSiteInfo, processEnv, siteId) => {
     paypalEnv: processEnv.RWD_WEB_PAYPAL_ENV,
   };
 };
-
 const getGraphQLApiFromEnv = (apiSiteInfo, processEnv, relHostname) => {
   const graphQlEndpoint = processEnv.RWD_WEB_GRAPHQL_API_ENDPOINT || relHostname;
   return {
@@ -407,19 +417,16 @@ const getGraphQLApiFromEnv = (apiSiteInfo, processEnv, relHostname) => {
     graphql_api_key: processEnv.RWD_WEB_GRAPHQL_API_KEY || '',
   };
 };
-
 /*
  * @method numericStringToBool
  * @description this method returns the bool value of string numeric passed
  * @param {string} str the  string numeric value
  */
 export const numericStringToBool = str => !!+str;
-
 // Parse boolean out of string true|false
 export const parseBoolean = bool => {
   return bool === true || bool === '1' || (bool || '').toUpperCase() === 'TRUE';
 };
-
 /**
  *
  * @param {object} bossDisabledFlags carries the boss disability flags -
@@ -431,7 +438,6 @@ export const isBossProduct = bossDisabledFlags => {
   const { bossCategoryDisabled, bossProductDisabled } = bossDisabledFlags;
   return !(numericStringToBool(bossCategoryDisabled) || numericStringToBool(bossProductDisabled));
 };
-
 /**
  * @function isBopsProduct
  * @param {*} isUSStore
@@ -451,7 +457,6 @@ export const isBopisProduct = (isUSStore, product) => {
   }
   return !isOnlineOnly;
 };
-
 export const createAPIConfig = resLocals => {
   // TODO - Get data from env config - Brand, MellisaKey, BritverifyId, AcquisitionId, Domains, Asset Host, Unbxd Domain;
   // TODO - use isMobile and cookie as well..
@@ -481,7 +486,6 @@ export const createAPIConfig = resLocals => {
     language,
   };
 };
-
 export const viewport = () => {
   if (!window) return null;
 
@@ -491,7 +495,6 @@ export const viewport = () => {
     large: window.matchMedia(mediaQuery.large).matches,
   };
 };
-
 export default {
   importGraphQLClientDynamically,
   importGraphQLQueriesDynamically,

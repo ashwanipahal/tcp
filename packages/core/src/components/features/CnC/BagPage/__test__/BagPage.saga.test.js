@@ -13,6 +13,7 @@ import {
   routeForCartCheckout,
   addItemToSFL,
   getSflDataSaga,
+  startSflItemDelete,
 } from '../container/BagPage.saga';
 import BAG_PAGE_ACTIONS from '../container/BagPage.actions';
 import BAGPAGE_CONSTANTS from '../BagPage.constants';
@@ -179,6 +180,25 @@ describe('Bag SFL Saga', () => {
     const generator = getSflDataSaga({});
 
     let takeLatestDescriptor = generator.next().value;
+    takeLatestDescriptor = generator.next(res).value;
+    takeLatestDescriptor = generator.next(res).value;
+    expect(takeLatestDescriptor).toEqual(put(BAG_PAGE_ACTIONS.setSflData(sflItemsData)));
+  });
+
+  it('DeleteSFL ITEM', () => {
+    const sflItemsData = {
+      productInfo: {},
+      itemInfo: {},
+      miscInfo: {},
+    };
+    const res = {
+      sflItems: sflItemsData,
+    };
+    const generator = startSflItemDelete({});
+
+    let takeLatestDescriptor = generator.next().value;
+    takeLatestDescriptor = generator.next().value;
+    takeLatestDescriptor = generator.next().value;
     takeLatestDescriptor = generator.next(res).value;
     takeLatestDescriptor = generator.next(res).value;
     expect(takeLatestDescriptor).toEqual(put(BAG_PAGE_ACTIONS.setSflData(sflItemsData)));

@@ -15,7 +15,7 @@ exports[`PointsClaimContainer container should not render if site id is ca 1`] =
     getFormState={[Function]}
     initialValues={
       Object {
-        "transactionType": "in-store",
+        "transactionType": "In-Store",
       }
     }
     keepDirtyOnReinitialize={false}

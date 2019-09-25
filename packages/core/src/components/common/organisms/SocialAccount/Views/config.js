@@ -22,8 +22,8 @@ const config = {
   },
   CLIENT_SECRET_KEY: {
     pinterest: '4985207481876624718',
-    facebook: '714709582328956',
-    instagram: 'a94d743f748840d7bd7eeac3af95b743',
+    facebook: '312738492865420',
+    instagram: '1e3babbc821c4dd8aa9a644b7bb97f8e',
   },
   VIEW_MODE: {
     read: 'read',

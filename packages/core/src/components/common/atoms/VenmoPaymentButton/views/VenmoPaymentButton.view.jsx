@@ -5,7 +5,7 @@ import Image from '../../Image/views/Image';
 import { getIconPath } from '../../../../../utils/utils';
 import withStyles from '../../../hoc/withStyles';
 import logger from '../../../../../utils/loggerInstance';
-import { noop, modes, constants } from '../container/VenmoPaymentButton.util';
+import { modes, constants } from '../container/VenmoPaymentButton.util';
 import styles from '../styles/VenmoPaymentButton.style';
 
 let venmoInstance = null;
@@ -19,6 +19,9 @@ export class VenmoPaymentButton extends Component {
     };
   }
 
+  /**
+   * This method is to validate if we can call the venmo client token api.
+   */
   canCallVenmoApi = () => {
     const { authorizationKey, mode, enabled } = this.props;
     return enabled && authorizationKey && mode === modes.CLIENT_TOKEN;
@@ -68,21 +71,28 @@ export class VenmoPaymentButton extends Component {
     this.handleVenmoClickedError(err);
   };
 
-  handleVenmoClick = e => {
+  handleVenmoClick = () => {
     const {
       setVenmoData,
       onVenmoPaymentButtonClick,
       mode,
       isNonceNotExpired,
       setVenmoPaymentInProgress,
+      isRemoveOOSItems,
     } = this.props;
+    // Condition for OOS items in the bag, modal will open and proceed with regular checkout on continue cta trigger
+    if (isRemoveOOSItems) {
+      onVenmoPaymentButtonClick(mode);
+      setVenmoData({ loading: false });
+      this.disableVenmoButton(false);
+    }
     setVenmoData({ loading: true, error: null });
     setVenmoPaymentInProgress(true);
     if (venmoInstance && !isNonceNotExpired && this.canCallVenmoApi()) {
       this.venmoButtonRef.disable = true;
       this.fetchVenmoNonce();
     } else {
-      onVenmoPaymentButtonClick(mode, e);
+      onVenmoPaymentButtonClick(mode);
       setVenmoData({ loading: false });
       this.disableVenmoButton(false);
     }
@@ -130,16 +140,15 @@ export class VenmoPaymentButton extends Component {
     const {
       mode,
       authorizationKey,
-      isMobile,
       enabled,
       venmoData: { nonce },
       setVenmoData,
       isNonceNotExpired,
     } = this.props;
-    if (isMobile && nonce && isNonceNotExpired) {
+    if (nonce && isNonceNotExpired) {
       this.setState({ hasVenmoError: false });
       setVenmoData({ loading: false });
-    } else if (isMobile && mode === modes.CLIENT_TOKEN && enabled && authorizationKey) {
+    } else if (mode === modes.CLIENT_TOKEN && enabled && authorizationKey) {
       this.setupVenmoInstance();
     }
   };
@@ -148,13 +157,7 @@ export class VenmoPaymentButton extends Component {
    * This method with instantiate the venmo button to commence authorization of the venmo app
    */
   setupVenmoInstance = () => {
-    const {
-      authorizationKey: authorization,
-      setVenmoData,
-      allowNewBrowserTab,
-      isMobile,
-    } = this.props;
-    if (!isMobile) return; // Do not process requests if not mobile.
+    const { authorizationKey: authorization, setVenmoData, allowNewBrowserTab } = this.props;
     if (this.canCallVenmoApi()) {
       setVenmoData({ loading: true });
       client
@@ -195,14 +198,13 @@ export class VenmoPaymentButton extends Component {
   };
 
   render() {
-    const { isMobile, venmoData, mode, enabled, className } = this.props;
+    const { venmoData, mode, enabled, className } = this.props;
     const { hasVenmoError } = this.state;
     const { supportedByBrowser } = venmoData || {};
-    const venmoIcon = getIconPath('venmo-button');
+    const venmoIcon = getIconPath('venmo-logo-blue');
     return (
       <div className={className}>
         {enabled &&
-          isMobile &&
           supportedByBrowser &&
           (!hasVenmoError || mode === modes.PAYMENT_TOKEN) &&
           (this.canCallVenmoApi() || mode === modes.PAYMENT_TOKEN) && (
@@ -212,7 +214,7 @@ export class VenmoPaymentButton extends Component {
               className="venmo-button"
               aria-label="Venmo Payment Button"
             >
-              <Image src={venmoIcon} alt="Venmo Payment Button" className="venmo-image" />
+              <Image src={venmoIcon} alt="Venmo Payment Button" className="venmo-button-image" />
             </button>
           )}
       </div>
@@ -227,7 +229,6 @@ VenmoPaymentButton.propTypes = {
   mode: oneOf([modes.CLIENT_TOKEN, modes.PAYMENT_TOKEN]),
   setVenmoData: func,
   allowNewBrowserTab: bool,
-  isMobile: bool,
   venmoData: shape({
     deviceData: string,
     supportedByBrowser: bool,
@@ -247,23 +248,24 @@ VenmoPaymentButton.propTypes = {
   onVenmoPaymentButtonError: func,
   setVenmoPaymentInProgress: func,
   isNonceNotExpired: bool,
+  isRemoveOOSItems: bool,
 };
 
 VenmoPaymentButton.defaultProps = {
   className: '',
   enabled: false,
   authorizationKey: '',
-  setVenmoData: noop,
+  setVenmoData: () => {},
   allowNewBrowserTab: false,
-  isMobile: false,
   venmoData: {
     supportedByBrowser: true,
   },
   mode: modes.CLIENT_TOKEN,
-  onVenmoPaymentButtonClick: noop,
-  onVenmoPaymentButtonError: noop,
-  setVenmoPaymentInProgress: noop,
+  onVenmoPaymentButtonClick: () => {},
+  onVenmoPaymentButtonError: () => {},
+  setVenmoPaymentInProgress: () => {},
   isNonceNotExpired: false,
+  isRemoveOOSItems: false,
 };
 
 export default withStyles(VenmoPaymentButton, styles);

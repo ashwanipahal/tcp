@@ -25,7 +25,7 @@ export {
   getAsPathWithSlug,
   getMappedPageHref,
   handleGenericKeyDown,
-  configurePlpNavigationFromCMSUrl,
+  configureInternalNavigationFromCMSUrl,
   isBopisProduct,
   isBossProduct,
   viewport,

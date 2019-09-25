@@ -19,6 +19,7 @@ import BAG_PAGE_ACTIONS from '../../BagPage/container/BagPage.actions';
 import endpoints from '../../../../../service/endpoint';
 import { removeItem, updateItem } from '../../../../../services/abstractors/CnC';
 import BagPageSelectors from '../../BagPage/container/BagPage.selectors';
+import { isItemBossBopisInEligible } from './CartItemTile.selectors';
 
 const { checkoutIfItemIsUnqualified } = BagPageSelectors;
 
@@ -42,7 +43,7 @@ export function* confirmRemoveItem({ payload, afterHandler }) {
     if (afterHandler) {
       afterHandler();
     }
-    yield put(BAG_PAGE_ACTIONS.getOrderDetails({ after: afterRemovingCartItem }));
+    yield put(BAG_PAGE_ACTIONS.getCartData({ onCartRes: afterRemovingCartItem }));
   } catch (err) {
     logger.error(err);
   }
@@ -59,7 +60,8 @@ export function* removeCartItem({ payload }) {
   const { itemId, pageView } = payload;
   if (pageView === 'myBag') {
     const isUnqualifiedItem = yield select(checkoutIfItemIsUnqualified, itemId);
-    if (isUnqualifiedItem) {
+    const isItemInEligible = yield select(isItemBossBopisInEligible, payload);
+    if (isUnqualifiedItem || isItemInEligible) {
       yield call(confirmRemoveItem, { payload: itemId });
       return;
     }

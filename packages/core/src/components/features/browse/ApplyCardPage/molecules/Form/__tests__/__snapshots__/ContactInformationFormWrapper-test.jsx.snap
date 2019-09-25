@@ -978,6 +978,7 @@ exports[`ContactInformationFormWrapper component should renders correctly 1`] = 
             fontWeight="extrabold"
             letterSpacing="normal"
             lineHeight="normal"
+            link={null}
             textAlign="left"
           >
             state
@@ -1879,6 +1880,7 @@ exports[`ContactInformationFormWrapper component should renders correctly 1`] = 
     id="plcc_min_phone"
     letterSpacing="normal"
     lineHeight="normal"
+    link={null}
     tabIndex="0"
     textAlign="left"
   >

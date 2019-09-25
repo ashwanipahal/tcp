@@ -1,0 +1,8 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Barcode component should renders correctly 1`] = `
+<img
+  alt=""
+  id="2323232"
+/>
+`;

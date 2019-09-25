@@ -1,0 +1,29 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Venmo Banner component should render correctly 1`] = `
+<div
+  className=""
+>
+  <div
+    className="venmo-banner-container"
+  >
+    <Styled(Image)
+      alt="venmo-logo"
+      className="venmo-logo"
+      src="/static/images/venmo_logo_blue.png"
+    />
+    <Styled(BodyCopy)
+      className="venmo-banner-text"
+      color="gray.900"
+      component="div"
+      fontFamily="secondary"
+      fontSize="fs14"
+      fontWeight="regular"
+      letterSpacing="normal"
+      lineHeight="normal"
+      link={null}
+      textAlign="center"
+    />
+  </div>
+</div>
+`;

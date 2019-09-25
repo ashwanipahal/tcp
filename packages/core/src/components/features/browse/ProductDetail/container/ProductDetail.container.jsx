@@ -4,6 +4,7 @@ import { withRouter } from 'next/router'; // eslint-disable-line
 import { PropTypes } from 'prop-types';
 import ProductDetail from '../views';
 import { getProductDetails } from './ProductDetail.actions';
+import { getAddedToBagError } from '../../../CnC/AddedToBag/container/AddedToBag.selectors';
 import {
   getNavTree,
   prodDetails,
@@ -15,7 +16,15 @@ import {
   getPlpLabels,
   getCurrentProduct,
   getPDPLabels,
+  getProductDetailFormValues,
 } from './ProductDetail.selectors';
+
+import {
+  addToCartEcom,
+  clearAddToBagErrorState,
+} from '../../../CnC/AddedToBag/container/AddedToBag.actions';
+
+import { getCartItemInfo } from '../../../CnC/AddedToBag/util/utility';
 
 class ProductListingContainer extends React.PureComponent {
   componentDidMount() {
@@ -37,7 +46,20 @@ class ProductListingContainer extends React.PureComponent {
     }
 
     getDetails({ productColorId: productId });
+    window.scrollTo(0, 100);
   }
+
+  componentWillUnmount = () => {
+    const { clearAddToBagError } = this.props;
+    clearAddToBagError();
+  };
+
+  handleAddToBag = () => {
+    const { addToBagEcom, formValues, productInfo } = this.props;
+    let cartItemInfo = getCartItemInfo(productInfo, formValues);
+    cartItemInfo = { ...cartItemInfo };
+    addToBagEcom(cartItemInfo);
+  };
 
   render() {
     const {
@@ -50,6 +72,7 @@ class ProductListingContainer extends React.PureComponent {
       currency,
       plpLabels,
       pdpLabels,
+      addToBagError,
       ...otherProps
     } = this.props;
     return (
@@ -64,6 +87,8 @@ class ProductListingContainer extends React.PureComponent {
         pdpLabels={pdpLabels}
         currency={currency}
         productInfo={productInfo}
+        handleAddToBag={this.handleAddToBag}
+        addToBagError={addToBagError}
       />
     );
   }
@@ -82,6 +107,8 @@ function mapStateToProps(state) {
     currency: getCurrentCurrency(state),
     plpLabels: getPlpLabels(state),
     pdpLabels: getPDPLabels(state),
+    addToBagError: getAddedToBagError(state),
+    formValues: getProductDetailFormValues(state),
   };
 }
 
@@ -90,12 +117,22 @@ function mapDispatchToProps(dispatch) {
     getDetails: payload => {
       dispatch(getProductDetails(payload));
     },
+    addToBagEcom: payload => {
+      dispatch(addToCartEcom(payload));
+    },
+    clearAddToBagError: () => {
+      dispatch(clearAddToBagErrorState());
+    },
   };
 }
 
 ProductListingContainer.propTypes = {
   productDetails: PropTypes.arrayOf(PropTypes.shape({})),
   getDetails: PropTypes.func.isRequired,
+  addToBagError: PropTypes.string,
+  clearAddToBagError: PropTypes.func.isRequired,
+  formValues: PropTypes.shape({}).isRequired,
+  addToBagEcom: PropTypes.func.isRequired,
   productInfo: PropTypes.arrayOf(PropTypes.shape({})),
   breadCrumbs: PropTypes.shape({}),
   pdpLabels: PropTypes.shape({}),
@@ -116,6 +153,7 @@ ProductListingContainer.propTypes = {
 ProductListingContainer.defaultProps = {
   productDetails: [],
   productInfo: {},
+  addToBagError: '',
   breadCrumbs: null,
   longDescription: '',
   ratingsProductId: '',
