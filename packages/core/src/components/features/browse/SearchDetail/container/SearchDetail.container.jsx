@@ -115,39 +115,65 @@ class SearchDetailContainer extends React.PureComponent {
     } = this.props;
 
     return (
-      <>
-        {products && products.length > 0 ? (
-          <SearchDetail
-            filters={filters}
-            formValues={formValues}
-            filtersLength={filtersLength}
-            getProducts={getProducts}
-            isLoadingMore={isLoadingMore}
-            initialValues={initialValues}
-            onSubmit={onSubmit}
-            products={products}
-            productsBlock={productsBlock}
-            totalProductsCount={totalProductsCount}
-            labels={labels}
-            labelsFilter={labelsFilter}
-            slpLabels={slpLabels}
-            searchedText={searchedText}
-            sortLabels={sortLabels}
-            searchResultSuggestions={searchResultSuggestions}
-            {...otherProps}
-          />
+      <React.Fragment>
+        {isSearchResultsAvailable ? (
+          <div>
+            {products && products.length > 0 ? (
+              <SearchDetail
+                filters={filters}
+                formValues={formValues}
+                filtersLength={filtersLength}
+                getProducts={getProducts}
+                isLoadingMore={isLoadingMore}
+                initialValues={initialValues}
+                onSubmit={onSubmit}
+                products={products}
+                productsBlock={productsBlock}
+                totalProductsCount={totalProductsCount}
+                labels={labels}
+                labelsFilter={labelsFilter}
+                slpLabels={slpLabels}
+                searchedText={searchedText}
+                sortLabels={sortLabels}
+                searchResultSuggestions={searchResultSuggestions}
+                {...otherProps}
+              />
+            ) : (
+              <NoResponseSearchDetail
+                totalProductsCount={totalProductsCount}
+                labels={labels}
+                slpLabels={slpLabels}
+                searchedText={searchedText}
+                sortLabels={sortLabels}
+                searchResultSuggestions={searchResultSuggestions}
+                {...otherProps}
+              />
+            )}
+          </div>
         ) : (
-          <NoResponseSearchDetail
-            totalProductsCount={totalProductsCount}
-            labels={labels}
-            slpLabels={slpLabels}
-            searchedText={searchedText}
-            sortLabels={sortLabels}
-            searchResultSuggestions={searchResultSuggestions}
-            {...otherProps}
-          />
+          <div>
+            <SearchDetail
+              filters={filters}
+              formValues={formValues}
+              filtersLength={filtersLength}
+              getProducts={getProducts}
+              isLoadingMore={isLoadingMore}
+              initialValues={initialValues}
+              onSubmit={onSubmit}
+              products={products}
+              productsBlock={productsBlock}
+              totalProductsCount={totalProductsCount}
+              labels={labels}
+              labelsFilter={labelsFilter}
+              slpLabels={slpLabels}
+              searchedText={searchedText}
+              sortLabels={sortLabels}
+              searchResultSuggestions={searchResultSuggestions}
+              {...otherProps}
+            />
+          </div>
         )}
-      </>
+      </React.Fragment>
     );
   }
 }
