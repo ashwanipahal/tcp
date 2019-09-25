@@ -120,7 +120,8 @@ const Abstractor = {
   /**
    * @return {Object} returns error ({ success: false, error: 'Invalid' }) object.
    */
-  handleSubscriptionError: () => {
+  handleSubscriptionError: E => {
+    console.log(E, '--');
     return ErrorResponse;
   },
 };
