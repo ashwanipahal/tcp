@@ -1,0 +1,65 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`NativeDropDown native should render correctly should match snapshot for android 1`] = `
+<View>
+  <Styled(WithTheme(CustomButton))
+    bottomBorderOnly={true}
+    buttonVariation="mobileApp-filter"
+    data-locator="pdp_quantity"
+    onPress={[Function]}
+    showIcon={true}
+    text={null}
+    type="button"
+  />
+  <Component
+    animationType="slide"
+    hardwareAccelerated={false}
+    transparent={true}
+    visible={false}
+  >
+    <Styled(SafeAreaView)>
+      <Styled(TouchableWithoutFeedback)
+        accessibilityRole="button"
+        activeOpacity={1}
+        onPressOut={[Function]}
+      >
+        <Styled(View) />
+      </Styled(TouchableWithoutFeedback)>
+      <Styled(View)>
+        <Button
+          onPress={[Function]}
+          title="Done"
+        />
+        <Picker
+          mode="dialog"
+          onValueChange={[Function]}
+          selectedValue={null}
+        >
+          <PickerItem
+            label="Test"
+            value="123"
+          />
+        </Picker>
+      </Styled(View)>
+    </Styled(SafeAreaView)>
+  </Component>
+</View>
+`;
+
+exports[`NativeDropDown native should render correctly should match snapshot for ios 1`] = `
+<Styled(View)
+  androidPickerStyle={null}
+  width={null}
+>
+  <Picker
+    mode="dialog"
+    onValueChange={[Function]}
+    selectedValue={null}
+  >
+    <PickerItem
+      label="Test"
+      value="123"
+    />
+  </Picker>
+</Styled(View)>
+`;
