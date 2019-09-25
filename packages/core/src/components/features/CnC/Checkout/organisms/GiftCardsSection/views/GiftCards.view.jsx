@@ -1,5 +1,4 @@
 import React from 'react';
-import { getLabelValue } from '@tcp/core/src/utils';
 import withStyles from '@tcp/core/src/components/common/hoc/withStyles';
 import styles from '../styles/GiftCards.style';
 import { Row, Col, BodyCopy, Button } from '../../../../../../common/atoms';
@@ -22,10 +21,7 @@ const GiftCardSectionHeading = (giftCardList, labels, isGiftCardApplied = false)
           data-locator="gift-cards"
           className="elem-mt-MED"
         >
-          {getLabelValue(
-            labels,
-            isGiftCardApplied ? 'lbl_giftcard_appliedCards' : 'lbl_giftcard_availableCards'
-          )}
+          {`${isGiftCardApplied ? labels.appliedGiftCards : labels.availableGiftCards}`}
         </BodyCopy>
       )}
     </>
@@ -107,7 +103,7 @@ const renderAddNewGiftButton = (labels, orderBalanceTotal, appliedGiftCards, sho
             fullWidth="true"
             disabled={false}
           >
-            {getLabelValue(labels, 'lbl_giftcard_newGiftCard')}
+            {labels.newGiftCard}
           </Button>
         </Col>
       </Row>
@@ -128,10 +124,8 @@ const renderHeadsUpHeading = (labels, appliedGiftCards, giftCardList) => {
           data-locator="gift-cards"
           className="elem-mt-LRG"
         >
-          <span className="headsUpMsgBoldTitle">
-            {getLabelValue(labels, 'lbl_giftcard_headsUpTitle')}
-          </span>
-          {`${getLabelValue(labels, 'lbl_giftcard_headsUpMsg')}`}
+          <span className="headsUpMsgBoldTitle">{labels.giftCardHeadsUpTitle}</span>
+          {`${labels.giftCardHeadsUpMsg}`}
         </BodyCopy>
       )}
     </>
@@ -174,7 +168,7 @@ export const GiftCards = ({
             data-locator="gift-cards"
             className="elem-mt-XXL"
           >
-            {getLabelValue(labels, 'lbl_giftcard_title')}
+            {labels.giftCardTitle}
           </BodyCopy>
           <BodyCopy
             fontFamily="secondary"
@@ -183,7 +177,7 @@ export const GiftCards = ({
             data-locator="gift-cards"
             className="elem-mt-LRG"
           >
-            {getLabelValue(labels, 'lbl_giftcard_addUptoMsg')}
+            {labels.giftCardAddUpToMsg}
           </BodyCopy>
           {GiftCardSectionHeading(appliedGiftCards, labels, true)}
 
