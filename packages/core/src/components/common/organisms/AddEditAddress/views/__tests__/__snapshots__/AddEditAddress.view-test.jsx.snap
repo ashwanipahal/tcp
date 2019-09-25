@@ -13,7 +13,7 @@ exports[`AddressBook component should renders correctly when errors are present 
       addressFormLabels={Object {}}
       backToAddressBookClick={[Function]}
       destroyOnUnmount={true}
-      enableReinitialize={true}
+      enableReinitialize={false}
       forceUnregisterOnUnmount={false}
       form="AddressForm"
       formErrorMessage={Object {}}
@@ -52,7 +52,7 @@ exports[`AddressBook component should renders correctly without any error 1`] = 
       addressFormLabels={Object {}}
       backToAddressBookClick={[Function]}
       destroyOnUnmount={true}
-      enableReinitialize={true}
+      enableReinitialize={false}
       forceUnregisterOnUnmount={false}
       form="AddressForm"
       formErrorMessage={Object {}}
