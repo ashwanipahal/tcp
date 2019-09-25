@@ -62,9 +62,7 @@ class DropDownButton extends React.PureComponent {
                   ctaVariation: 'fixed-width',
                   link: button,
                 },
-                dataLocator: {
-                  cta: `${dataLocatorItemPrefix}${index}`,
-                },
+                dataLocator: `${dataLocatorItemPrefix}${index}`,
                 noCurve: true,
               };
               // Code to generate unique key

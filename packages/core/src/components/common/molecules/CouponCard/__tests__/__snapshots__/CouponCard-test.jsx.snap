@@ -27,6 +27,7 @@ exports[`CouponCard Component CouponCard should render correctly 1`] = `
             fontWeight="regular"
             letterSpacing="normal"
             lineHeight="normal"
+            link={null}
             textAlign="left"
           />
         </div>
@@ -40,6 +41,7 @@ exports[`CouponCard Component CouponCard should render correctly 1`] = `
           fontWeight="regular"
           letterSpacing="normal"
           lineHeight="normal"
+          link={null}
           textAlign="left"
         />
       </div>
@@ -61,6 +63,7 @@ exports[`CouponCard Component CouponCard should render correctly 1`] = `
               fontWeight="regular"
               letterSpacing="normal"
               lineHeight="normal"
+              link={null}
               textAlign="left"
             >
               <Styled(BodyCopy)
@@ -73,6 +76,7 @@ exports[`CouponCard Component CouponCard should render correctly 1`] = `
                 fontWeight="black"
                 letterSpacing="normal"
                 lineHeight="normal"
+                link={null}
                 textAlign="left"
               >
                 $10 OFF On $50
@@ -87,6 +91,7 @@ exports[`CouponCard Component CouponCard should render correctly 1`] = `
                 fontWeight="regular"
                 letterSpacing="normal"
                 lineHeight="normal"
+                link={null}
                 textAlign="left"
               >
                 Use by 8/10/19

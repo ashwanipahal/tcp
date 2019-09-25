@@ -70,6 +70,7 @@ class PLCCTimeoutInterimModal extends React.PureComponent {
       bagItems,
       handleFormReset,
       isTimedOutModalActive,
+      unregisterIdleVerfication,
     } = this.props;
     const { currentTime } = this.state;
     let modalBody;
@@ -83,7 +84,7 @@ class PLCCTimeoutInterimModal extends React.PureComponent {
           className={`${className} TCPModal__Content`}
           dataLocatorHeader={getLocator('plcc_time_out_modal_2_close_btn')}
           maxWidth="458px"
-          minHeight="387px"
+          minHeight="392px"
           inheritedStyles={modalStyles}
           shouldCloseOnOverlayClick={false}
         >
@@ -167,6 +168,7 @@ class PLCCTimeoutInterimModal extends React.PureComponent {
           labels={labels}
           handleFormReset={handleFormReset}
           bagItems={bagItems}
+          unregisterIdleVerfication={unregisterIdleVerfication}
         />
       );
     }

@@ -4,8 +4,12 @@ import {
   addCartEcomItem,
   addCartBopisItem,
 } from '../../../../../services/abstractors/CnC/AddedToBag';
-import { AddToCartError, SetAddedToBagData, openAddedToBag } from './AddedToBag.actions';
-import { closeQuickViewModal } from '../../../../common/organisms/QuickViewModal/container/QuickViewModal.actions';
+import {
+  AddToCartError,
+  SetAddedToBagData,
+  openAddedToBag,
+  clearAddToBagErrorState,
+} from './AddedToBag.actions';
 import BAG_PAGE_ACTIONS from '../../BagPage/container/BagPage.actions';
 import { getAPIConfig } from '../../../../../utils';
 
@@ -21,6 +25,8 @@ export function* addToCartEcom({ payload }) {
       langId,
     };
 
+    const { callBack } = payload;
+
     const params = {
       ...apiConfigParams,
       orderId: '.',
@@ -31,6 +37,7 @@ export function* addToCartEcom({ payload }) {
       'calculationUsage[]': '-7',
       externalId: wishlistItemId || '',
     };
+    yield put(clearAddToBagErrorState());
     const res = yield call(addCartEcomItem, params);
     yield put(
       SetAddedToBagData({
@@ -38,11 +45,16 @@ export function* addToCartEcom({ payload }) {
         ...res,
       })
     );
-    yield put(closeQuickViewModal({ isModalOpen: false }));
+    if (callBack) {
+      callBack();
+    }
+
     yield put(openAddedToBag());
+
     yield put(BAG_PAGE_ACTIONS.getOrderDetails());
   } catch (err) {
-    yield put(AddToCartError(err));
+    const errMsg = err && err.errorResponse && err.errorResponse.errorMessage;
+    yield put(AddToCartError(errMsg));
   }
 }
 

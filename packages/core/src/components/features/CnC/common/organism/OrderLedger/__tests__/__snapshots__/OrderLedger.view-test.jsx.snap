@@ -30,6 +30,7 @@ exports[`OrderLedger Component OrderLedger should render correctly 1`] = `
           fontWeight="semibold"
           letterSpacing="normal"
           lineHeight="normal"
+          link={null}
           textAlign="left"
         >
           undefined (1):
@@ -54,6 +55,7 @@ exports[`OrderLedger Component OrderLedger should render correctly 1`] = `
           fontWeight="semibold"
           letterSpacing="normal"
           lineHeight="normal"
+          link={null}
           textAlign="right"
         >
           0.00
@@ -83,6 +85,7 @@ exports[`OrderLedger Component OrderLedger should render correctly 1`] = `
           fontWeight="semibold"
           letterSpacing="normal"
           lineHeight="normal"
+          link={null}
           tag="span"
           textAlign="left"
         >
@@ -108,6 +111,7 @@ exports[`OrderLedger Component OrderLedger should render correctly 1`] = `
           fontWeight="semibold"
           letterSpacing="normal"
           lineHeight="normal"
+          link={null}
           textAlign="right"
         >
           0.00
@@ -137,6 +141,7 @@ exports[`OrderLedger Component OrderLedger should render correctly 1`] = `
           fontWeight="extrabold"
           letterSpacing="normal"
           lineHeight="normal"
+          link={null}
           tag="span"
           textAlign="left"
         >
@@ -162,6 +167,7 @@ exports[`OrderLedger Component OrderLedger should render correctly 1`] = `
           fontWeight="extrabold"
           letterSpacing="normal"
           lineHeight="normal"
+          link={null}
           tag="span"
           textAlign="right"
         >
@@ -206,6 +212,7 @@ exports[`OrderLedger Component OrderLedger should render correctly 2`] = `
           fontWeight="semibold"
           letterSpacing="normal"
           lineHeight="normal"
+          link={null}
           textAlign="left"
         >
           undefined (1):
@@ -230,6 +237,7 @@ exports[`OrderLedger Component OrderLedger should render correctly 2`] = `
           fontWeight="semibold"
           letterSpacing="normal"
           lineHeight="normal"
+          link={null}
           textAlign="right"
         >
           1.00
@@ -259,6 +267,7 @@ exports[`OrderLedger Component OrderLedger should render correctly 2`] = `
           fontWeight="semibold"
           letterSpacing="normal"
           lineHeight="normal"
+          link={null}
           textAlign="left"
         >
           undefined:
@@ -283,6 +292,7 @@ exports[`OrderLedger Component OrderLedger should render correctly 2`] = `
           fontWeight="semibold"
           letterSpacing="normal"
           lineHeight="normal"
+          link={null}
           textAlign="right"
         >
           -1.00
@@ -312,6 +322,7 @@ exports[`OrderLedger Component OrderLedger should render correctly 2`] = `
           fontWeight="semibold"
           letterSpacing="normal"
           lineHeight="normal"
+          link={null}
           textAlign="left"
         >
           undefined
@@ -336,6 +347,7 @@ exports[`OrderLedger Component OrderLedger should render correctly 2`] = `
           fontWeight="semibold"
           letterSpacing="normal"
           lineHeight="normal"
+          link={null}
           textAlign="right"
         >
           -1.00
@@ -365,6 +377,7 @@ exports[`OrderLedger Component OrderLedger should render correctly 2`] = `
           fontWeight="semibold"
           letterSpacing="normal"
           lineHeight="normal"
+          link={null}
           textAlign="left"
         >
           undefined:
@@ -389,6 +402,7 @@ exports[`OrderLedger Component OrderLedger should render correctly 2`] = `
           fontWeight="semibold"
           letterSpacing="normal"
           lineHeight="normal"
+          link={null}
           textAlign="right"
         />
       </Styled(Col)>
@@ -416,6 +430,7 @@ exports[`OrderLedger Component OrderLedger should render correctly 2`] = `
           fontWeight="semibold"
           letterSpacing="normal"
           lineHeight="normal"
+          link={null}
           tag="span"
           textAlign="left"
         >
@@ -441,6 +456,7 @@ exports[`OrderLedger Component OrderLedger should render correctly 2`] = `
           fontWeight="semibold"
           letterSpacing="normal"
           lineHeight="normal"
+          link={null}
           textAlign="right"
         >
           1.00
@@ -470,6 +486,7 @@ exports[`OrderLedger Component OrderLedger should render correctly 2`] = `
           fontWeight="semibold"
           letterSpacing="normal"
           lineHeight="normal"
+          link={null}
           textAlign="left"
         >
           undefined:
@@ -494,6 +511,7 @@ exports[`OrderLedger Component OrderLedger should render correctly 2`] = `
           fontWeight="semibold"
           letterSpacing="normal"
           lineHeight="normal"
+          link={null}
           textAlign="right"
         >
           1.00
@@ -523,6 +541,7 @@ exports[`OrderLedger Component OrderLedger should render correctly 2`] = `
           fontWeight="semibold"
           letterSpacing="normal"
           lineHeight="normal"
+          link={null}
           textAlign="left"
         >
           undefined:
@@ -547,6 +566,7 @@ exports[`OrderLedger Component OrderLedger should render correctly 2`] = `
           fontWeight="semibold"
           letterSpacing="normal"
           lineHeight="normal"
+          link={null}
           textAlign="right"
         >
           -1.00
@@ -576,6 +596,7 @@ exports[`OrderLedger Component OrderLedger should render correctly 2`] = `
           fontWeight="extrabold"
           letterSpacing="normal"
           lineHeight="normal"
+          link={null}
           tag="span"
           textAlign="left"
         >
@@ -601,6 +622,7 @@ exports[`OrderLedger Component OrderLedger should render correctly 2`] = `
           fontWeight="extrabold"
           letterSpacing="normal"
           lineHeight="normal"
+          link={null}
           tag="span"
           textAlign="right"
         >
@@ -631,6 +653,7 @@ exports[`OrderLedger Component OrderLedger should render correctly 2`] = `
           fontWeight="semibold"
           letterSpacing="normal"
           lineHeight="normal"
+          link={null}
           textAlign="left"
         >
           undefined
@@ -666,6 +689,7 @@ exports[`OrderLedger Component OrderLedger should render correctly 2`] = `
           fontWeight="semibold"
           letterSpacing="normal"
           lineHeight="normal"
+          link={null}
           textAlign="right"
         >
           1.00

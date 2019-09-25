@@ -19,6 +19,7 @@ exports[`LoginForm component should renders correctly 1`] = `
       fontWeight="regular"
       letterSpacing="normal"
       lineHeight="normal"
+      link={null}
       textAlign="left"
     >
       <Field
@@ -28,7 +29,7 @@ exports[`LoginForm component should renders correctly 1`] = `
             "$$typeof": Symbol(react.forward_ref),
             "attrs": Array [],
             "componentStyle": ComponentStyle {
-              "componentId": "sc-bxivhb",
+              "componentId": "sc-bZQynM",
               "isStatic": false,
               "rules": Array [
                 "
@@ -171,7 +172,7 @@ exports[`LoginForm component should renders correctly 1`] = `
             "displayName": "Styled(TextBox)",
             "foldedComponentIds": Array [],
             "render": [Function],
-            "styledComponentId": "sc-bxivhb",
+            "styledComponentId": "sc-bZQynM",
             "target": [Function],
             "toString": [Function],
             "warnTooManyClasses": [Function],
@@ -193,7 +194,7 @@ exports[`LoginForm component should renders correctly 1`] = `
             "$$typeof": Symbol(react.forward_ref),
             "attrs": Array [],
             "componentStyle": ComponentStyle {
-              "componentId": "sc-htoDjs",
+              "componentId": "sc-VigVT",
               "isStatic": false,
               "rules": Array [
                 "
@@ -248,7 +249,7 @@ exports[`LoginForm component should renders correctly 1`] = `
             "displayName": "Styled(PasswordField)",
             "foldedComponentIds": Array [],
             "render": [Function],
-            "styledComponentId": "sc-htoDjs",
+            "styledComponentId": "sc-VigVT",
             "target": [Function],
             "toString": [Function],
             "warnTooManyClasses": [Function],
@@ -277,6 +278,7 @@ exports[`LoginForm component should renders correctly 1`] = `
         fontWeight="regular"
         letterSpacing="normal"
         lineHeight="normal"
+        link={null}
         textAlign="left"
       >
         <Field
@@ -286,7 +288,7 @@ exports[`LoginForm component should renders correctly 1`] = `
               "$$typeof": Symbol(react.forward_ref),
               "attrs": Array [],
               "componentStyle": ComponentStyle {
-                "componentId": "sc-EHOje",
+                "componentId": "sc-iwsKbI",
                 "isStatic": false,
                 "rules": Array [
                   "
@@ -403,7 +405,7 @@ exports[`LoginForm component should renders correctly 1`] = `
               "displayName": "Styled(InputCheckbox)",
               "foldedComponentIds": Array [],
               "render": [Function],
-              "styledComponentId": "sc-EHOje",
+              "styledComponentId": "sc-iwsKbI",
               "target": [Function],
               "toString": [Function],
               "warnTooManyClasses": [Function],
@@ -428,6 +430,7 @@ exports[`LoginForm component should renders correctly 1`] = `
         fontWeight="regular"
         letterSpacing="normal"
         lineHeight="normal"
+        link={null}
         textAlign="left"
       />
     </Styled(BodyCopy)>
@@ -440,6 +443,7 @@ exports[`LoginForm component should renders correctly 1`] = `
       fontWeight="regular"
       letterSpacing="normal"
       lineHeight="normal"
+      link={null}
       textAlign="center"
     >
       <Styled(Button)
@@ -482,6 +486,7 @@ exports[`LoginForm component should renders correctly with error 1`] = `
       fontWeight="semibold"
       letterSpacing="normal"
       lineHeight="normal"
+      link={null}
       textAlign="left"
     >
       <Styled(RichText)
@@ -498,6 +503,7 @@ exports[`LoginForm component should renders correctly with error 1`] = `
       fontWeight="regular"
       letterSpacing="normal"
       lineHeight="normal"
+      link={null}
       textAlign="left"
     >
       <Field
@@ -507,7 +513,7 @@ exports[`LoginForm component should renders correctly with error 1`] = `
             "$$typeof": Symbol(react.forward_ref),
             "attrs": Array [],
             "componentStyle": ComponentStyle {
-              "componentId": "sc-bxivhb",
+              "componentId": "sc-bZQynM",
               "isStatic": false,
               "rules": Array [
                 "
@@ -650,7 +656,7 @@ exports[`LoginForm component should renders correctly with error 1`] = `
             "displayName": "Styled(TextBox)",
             "foldedComponentIds": Array [],
             "render": [Function],
-            "styledComponentId": "sc-bxivhb",
+            "styledComponentId": "sc-bZQynM",
             "target": [Function],
             "toString": [Function],
             "warnTooManyClasses": [Function],
@@ -672,7 +678,7 @@ exports[`LoginForm component should renders correctly with error 1`] = `
             "$$typeof": Symbol(react.forward_ref),
             "attrs": Array [],
             "componentStyle": ComponentStyle {
-              "componentId": "sc-htoDjs",
+              "componentId": "sc-VigVT",
               "isStatic": false,
               "rules": Array [
                 "
@@ -727,7 +733,7 @@ exports[`LoginForm component should renders correctly with error 1`] = `
             "displayName": "Styled(PasswordField)",
             "foldedComponentIds": Array [],
             "render": [Function],
-            "styledComponentId": "sc-htoDjs",
+            "styledComponentId": "sc-VigVT",
             "target": [Function],
             "toString": [Function],
             "warnTooManyClasses": [Function],
@@ -757,6 +763,7 @@ exports[`LoginForm component should renders correctly with error 1`] = `
         fontWeight="regular"
         letterSpacing="normal"
         lineHeight="normal"
+        link={null}
         textAlign="left"
       >
         <Field
@@ -766,7 +773,7 @@ exports[`LoginForm component should renders correctly with error 1`] = `
               "$$typeof": Symbol(react.forward_ref),
               "attrs": Array [],
               "componentStyle": ComponentStyle {
-                "componentId": "sc-EHOje",
+                "componentId": "sc-iwsKbI",
                 "isStatic": false,
                 "rules": Array [
                   "
@@ -883,7 +890,7 @@ exports[`LoginForm component should renders correctly with error 1`] = `
               "displayName": "Styled(InputCheckbox)",
               "foldedComponentIds": Array [],
               "render": [Function],
-              "styledComponentId": "sc-EHOje",
+              "styledComponentId": "sc-iwsKbI",
               "target": [Function],
               "toString": [Function],
               "warnTooManyClasses": [Function],
@@ -908,6 +915,7 @@ exports[`LoginForm component should renders correctly with error 1`] = `
         fontWeight="regular"
         letterSpacing="normal"
         lineHeight="normal"
+        link={null}
         textAlign="left"
       />
     </Styled(BodyCopy)>
@@ -920,6 +928,7 @@ exports[`LoginForm component should renders correctly with error 1`] = `
       fontWeight="regular"
       letterSpacing="normal"
       lineHeight="normal"
+      link={null}
       textAlign="center"
     >
       <Styled(Button)

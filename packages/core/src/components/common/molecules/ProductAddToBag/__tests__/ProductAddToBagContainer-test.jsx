@@ -1,7 +1,7 @@
 import React from 'react';
 import { shallow } from 'enzyme';
 
-import ProductAddToBagContainer from '../container/ProductAddToBag.container';
+import { ProductAddToBagContainerVanilla } from '../container/ProductAddToBag.container';
 
 describe('ProductAddToBagVanilla native should render correctly', () => {
   let wrapper;
@@ -163,7 +163,7 @@ describe('ProductAddToBagVanilla native should render correctly', () => {
   };
 
   beforeEach(() => {
-    wrapper = shallow(<ProductAddToBagContainer {...props} />);
+    wrapper = shallow(<ProductAddToBagContainerVanilla {...props} />);
   });
 
   it('should match snapshot', () => {

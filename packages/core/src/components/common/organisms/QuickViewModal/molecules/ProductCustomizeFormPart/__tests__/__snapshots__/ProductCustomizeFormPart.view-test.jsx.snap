@@ -31,6 +31,7 @@ exports[`ProductCustomizeFormPart component should renders correctly 1`] = `
             fontWeight="regular"
             letterSpacing="normal"
             lineHeight="normal"
+            link={null}
             textAlign="left"
           />
         </Styled(Anchor)>
@@ -47,6 +48,7 @@ exports[`ProductCustomizeFormPart component should renders correctly 1`] = `
           fontWeight="extrabold"
           letterSpacing="normal"
           lineHeight="normal"
+          link={null}
           textAlign="left"
         >
           Boys Uniform V Neck Sweater
@@ -93,6 +95,7 @@ exports[`ProductCustomizeFormPart component should renders correctly 1`] = `
           fontWeight="extrabold"
           letterSpacing="normal"
           lineHeight="normal"
+          link={null}
           textAlign="left"
         >
           Boys Uniform V Neck Sweater
@@ -124,8 +127,6 @@ exports[`ProductCustomizeFormPart component should renders correctly 1`] = `
         />
       </div>
       <ProductAddToBagContainer
-        addToBagEcom={[Function]}
-        addToBagError=""
         currentProduct={
           Object {
             "alternateSizes": Object {},
@@ -297,6 +298,7 @@ exports[`ProductCustomizeFormPart component should renders correctly 1`] = `
             "unbxdProdId": "2100606_IV",
           }
         }
+        errorOnHandleSubmit=""
         onChangeColor={[Function]}
         plpLabels={Object {}}
       />
