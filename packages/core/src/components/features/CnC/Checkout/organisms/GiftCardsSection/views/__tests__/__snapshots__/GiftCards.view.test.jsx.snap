@@ -29,9 +29,7 @@ exports[`GiftCardsVanilla should render gift card tile 1`] = `
         lineHeight="normal"
         link={null}
         textAlign="left"
-      >
-        lbl_giftcard_title
-      </Styled(BodyCopy)>
+      />
       <Styled(BodyCopy)
         className="elem-mt-LRG"
         color="text.primary"
@@ -44,9 +42,7 @@ exports[`GiftCardsVanilla should render gift card tile 1`] = `
         lineHeight="normal"
         link={null}
         textAlign="left"
-      >
-        lbl_giftcard_addUptoMsg
-      </Styled(BodyCopy)>
+      />
       <Styled(BodyCopy)
         className="elem-mt-MED"
         color="text.primary"
@@ -60,7 +56,7 @@ exports[`GiftCardsVanilla should render gift card tile 1`] = `
         link={null}
         textAlign="left"
       >
-        lbl_giftcard_appliedCards
+        undefined
       </Styled(BodyCopy)>
       <Styled(GiftCardTile)
         cardData={
@@ -101,10 +97,8 @@ exports[`GiftCardsVanilla should render gift card tile 1`] = `
       >
         <span
           className="headsUpMsgBoldTitle"
-        >
-          lbl_giftcard_headsUpTitle
-        </span>
-        lbl_giftcard_headsUpMsg
+        />
+        undefined
       </Styled(BodyCopy)>
       <Styled(BodyCopy)
         className="elem-mt-MED"
@@ -119,7 +113,7 @@ exports[`GiftCardsVanilla should render gift card tile 1`] = `
         link={null}
         textAlign="left"
       >
-        lbl_giftcard_availableCards
+        undefined
       </Styled(BodyCopy)>
       <Styled(GiftCardTile)
         applyExistingGiftCardToOrder={[MockFunction]}
@@ -179,9 +173,7 @@ exports[`GiftCardsVanilla should render gift card tile with 0 order balance 1`] 
         lineHeight="normal"
         link={null}
         textAlign="left"
-      >
-        lbl_giftcard_title
-      </Styled(BodyCopy)>
+      />
       <Styled(BodyCopy)
         className="elem-mt-LRG"
         color="text.primary"
@@ -194,9 +186,7 @@ exports[`GiftCardsVanilla should render gift card tile with 0 order balance 1`] 
         lineHeight="normal"
         link={null}
         textAlign="left"
-      >
-        lbl_giftcard_addUptoMsg
-      </Styled(BodyCopy)>
+      />
       <Styled(BodyCopy)
         className="elem-mt-MED"
         color="text.primary"
@@ -210,7 +200,7 @@ exports[`GiftCardsVanilla should render gift card tile with 0 order balance 1`] 
         link={null}
         textAlign="left"
       >
-        lbl_giftcard_appliedCards
+        undefined
       </Styled(BodyCopy)>
       <Styled(GiftCardTile)
         cardData={
@@ -251,10 +241,8 @@ exports[`GiftCardsVanilla should render gift card tile with 0 order balance 1`] 
       >
         <span
           className="headsUpMsgBoldTitle"
-        >
-          lbl_giftcard_headsUpTitle
-        </span>
-        lbl_giftcard_headsUpMsg
+        />
+        undefined
       </Styled(BodyCopy)>
       <Styled(BodyCopy)
         className="elem-mt-MED"
@@ -269,7 +257,7 @@ exports[`GiftCardsVanilla should render gift card tile with 0 order balance 1`] 
         link={null}
         textAlign="left"
       >
-        lbl_giftcard_availableCards
+        undefined
       </Styled(BodyCopy)>
       <Styled(GiftCardTile)
         applyExistingGiftCardToOrder={[MockFunction]}
@@ -329,9 +317,7 @@ exports[`GiftCardsVanilla should render gift card tile with 100 order balance 1`
         lineHeight="normal"
         link={null}
         textAlign="left"
-      >
-        lbl_giftcard_title
-      </Styled(BodyCopy)>
+      />
       <Styled(BodyCopy)
         className="elem-mt-LRG"
         color="text.primary"
@@ -344,9 +330,7 @@ exports[`GiftCardsVanilla should render gift card tile with 100 order balance 1`
         lineHeight="normal"
         link={null}
         textAlign="left"
-      >
-        lbl_giftcard_addUptoMsg
-      </Styled(BodyCopy)>
+      />
       <Styled(BodyCopy)
         className="elem-mt-MED"
         color="text.primary"
@@ -360,7 +344,7 @@ exports[`GiftCardsVanilla should render gift card tile with 100 order balance 1`
         link={null}
         textAlign="left"
       >
-        lbl_giftcard_appliedCards
+        undefined
       </Styled(BodyCopy)>
       <Styled(GiftCardTile)
         cardData={
@@ -401,10 +385,8 @@ exports[`GiftCardsVanilla should render gift card tile with 100 order balance 1`
       >
         <span
           className="headsUpMsgBoldTitle"
-        >
-          lbl_giftcard_headsUpTitle
-        </span>
-        lbl_giftcard_headsUpMsg
+        />
+        undefined
       </Styled(BodyCopy)>
       <Styled(BodyCopy)
         className="elem-mt-MED"
@@ -419,7 +401,7 @@ exports[`GiftCardsVanilla should render gift card tile with 100 order balance 1`
         link={null}
         textAlign="left"
       >
-        lbl_giftcard_availableCards
+        undefined
       </Styled(BodyCopy)>
       <Styled(GiftCardTile)
         applyExistingGiftCardToOrder={[MockFunction]}
@@ -468,9 +450,7 @@ exports[`GiftCardsVanilla should render gift card tile with 100 order balance 1`
         fullWidth="true"
         onClick={[Function]}
         type="submit"
-      >
-        lbl_giftcard_newGiftCard
-      </Styled(Button)>
+      />
     </Styled(Col)>
   </Styled(Row)>
 </Styled(Grid)>
@@ -505,9 +485,7 @@ exports[`GiftCardsVanilla should render gift card tile with 100 order balance wi
         lineHeight="normal"
         link={null}
         textAlign="left"
-      >
-        lbl_giftcard_title
-      </Styled(BodyCopy)>
+      />
       <Styled(BodyCopy)
         className="elem-mt-LRG"
         color="text.primary"
@@ -520,9 +498,7 @@ exports[`GiftCardsVanilla should render gift card tile with 100 order balance wi
         lineHeight="normal"
         link={null}
         textAlign="left"
-      >
-        lbl_giftcard_addUptoMsg
-      </Styled(BodyCopy)>
+      />
       <Styled(BodyCopy)
         className="elem-mt-MED"
         color="text.primary"
@@ -536,7 +512,7 @@ exports[`GiftCardsVanilla should render gift card tile with 100 order balance wi
         link={null}
         textAlign="left"
       >
-        lbl_giftcard_appliedCards
+        undefined
       </Styled(BodyCopy)>
       <Styled(GiftCardTile)
         cardData={
@@ -577,10 +553,8 @@ exports[`GiftCardsVanilla should render gift card tile with 100 order balance wi
       >
         <span
           className="headsUpMsgBoldTitle"
-        >
-          lbl_giftcard_headsUpTitle
-        </span>
-        lbl_giftcard_headsUpMsg
+        />
+        undefined
       </Styled(BodyCopy)>
       <Styled(BodyCopy)
         className="elem-mt-MED"
@@ -595,7 +569,7 @@ exports[`GiftCardsVanilla should render gift card tile with 100 order balance wi
         link={null}
         textAlign="left"
       >
-        lbl_giftcard_availableCards
+        undefined
       </Styled(BodyCopy)>
       <Styled(GiftCardTile)
         applyExistingGiftCardToOrder={[MockFunction]}
