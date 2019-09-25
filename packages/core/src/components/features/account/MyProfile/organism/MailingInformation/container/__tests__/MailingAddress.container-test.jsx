@@ -96,13 +96,16 @@ describe('MailingAddressContainer', () => {
     let instance;
     let verifyAddressSpy;
     let submitNewAddressFormActionSpy;
+    let getAddressListActionSpy;
     beforeEach(() => {
       verifyAddressSpy = jest.fn();
       submitNewAddressFormActionSpy = jest.fn();
+      getAddressListActionSpy = jest.fn();
       const component = shallow(
         <MailingInformationContainer
           submitNewAddressFormAction={submitNewAddressFormActionSpy}
           verifyAddressAction={verifyAddressSpy}
+          getAddressListAction={getAddressListActionSpy}
           addressList={List()}
           labels={labels}
           {...props}
