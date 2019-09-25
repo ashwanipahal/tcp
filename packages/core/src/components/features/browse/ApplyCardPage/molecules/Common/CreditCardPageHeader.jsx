@@ -33,7 +33,6 @@ const CreditCardPageHeader = ({ labels, isPLCCModalFlow }) => {
             component="h2"
             fontWeight="extrabold"
             className="credit_card_heading"
-            tabIndex="0"
             data-locator={getLabelValue(labels, 'lbl_PLCCForm_rewardsCardHeading')}
           >
             {getLabelValue(labels, 'lbl_PLCCForm_rewardsCardHeading')}
