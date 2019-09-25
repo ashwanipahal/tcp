@@ -10,7 +10,6 @@ exports[`Venmo Banner component should render correctly 1`] = `
     <Styled(Image)
       alt="venmo-logo"
       className="venmo-logo"
-      src="/static/images/venmo_logo_blue.png"
     />
     <Styled(BodyCopy)
       className="venmo-banner-text"

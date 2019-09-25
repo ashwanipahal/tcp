@@ -662,14 +662,13 @@ exports[`ProfileInformation component should render correctly 1`] = `
                   "withComponent": [Function],
                 }
               }
-              dataLocator="mypreference-apptcpcheckbox"
+              dataLocator="mypreference-texttcpcheckbox"
               name="primary"
             >
               <Styled(BodyCopy)
                 className={null}
                 color="text.primary"
                 component="span"
-                data-locator="mypreference-texttcpcheckbox"
                 fontFamily="secondary"
                 fontSize="fs14"
                 fontWeight="regular"
@@ -812,14 +811,13 @@ exports[`ProfileInformation component should render correctly 1`] = `
                   "withComponent": [Function],
                 }
               }
-              dataLocator="mypreference-appgymcheckbox"
+              dataLocator="mypreference-textgymcheckbox"
               name="primary"
             >
               <Styled(BodyCopy)
                 className={null}
                 color="text.primary"
                 component="span"
-                data-locator="mypreference-textgymcheckbox"
                 fontFamily="secondary"
                 fontSize="fs14"
                 fontWeight="regular"
