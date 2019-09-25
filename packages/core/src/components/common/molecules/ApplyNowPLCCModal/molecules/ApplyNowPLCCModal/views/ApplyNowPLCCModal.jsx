@@ -1,8 +1,8 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import Modal from '../../Modal';
-import ApplyCardPage from '../../../../features/browse/ApplyCardPage';
-import { getLocator } from '../../../../../utils';
+import Modal from '../../../../Modal';
+import ApplyCardPage from '../../../../../../features/browse/ApplyCardPage';
+import { getLocator } from '../../../../../../../utils';
 
 const ApplyNowPLCCModal = ({ modalStyles, isPLCCModalOpen, closePLCCModal, className }) => {
   return (

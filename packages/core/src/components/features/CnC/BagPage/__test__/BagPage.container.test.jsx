@@ -1,6 +1,6 @@
 import React from 'react';
 import { shallow } from 'enzyme';
-import { BagPageContainer, mapDispatchToProps } from '../container/BagPage.container';
+import { BagPageContainer, mapDispatchToProps } from '../container/BagPageCommonContainer';
 import BagPage from '../views/BagPage.view';
 
 describe('Bag page Container', () => {

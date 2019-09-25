@@ -3,10 +3,11 @@ import styled from 'styled-components/native';
 const MainWrapper = styled.View`
   flex: 1;
   flex-direction: column;
+  margin: 0 10px;
 `;
 const StyledHeading = styled.Text`
   background-color: ${props => props.theme.colors.PROMO.YELLOW};
-  display: flex;
+  text-align: center;
   padding: 5px;
 `;
 const SubHeading = styled.View`

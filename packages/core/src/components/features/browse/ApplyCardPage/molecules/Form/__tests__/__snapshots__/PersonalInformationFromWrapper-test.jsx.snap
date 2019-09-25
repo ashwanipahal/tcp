@@ -12,7 +12,6 @@ exports[`ContactInformationFormWrapper component should renders correctly 1`] = 
     letterSpacing="normal"
     lineHeight="normal"
     link={null}
-    tabIndex="0"
     textAlign="left"
   >
     personal information

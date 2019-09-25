@@ -14,11 +14,17 @@ import { routerPush, isCanada, isMobileApp } from '../../../../../../../utils';
 import { getAddEditAddressLabels } from '../../../../../../common/organisms/AddEditAddress/container/AddEditAddress.selectors';
 import { getOnFileAddressKey } from '../../../../AddEditCreditCard/container/AddEditCreditCard.selectors';
 import internalEndpoints from '../../../../common/internalEndpoints';
+import { getAddressList } from '../../../../AddressBook/container/AddressBook.actions';
 
 export class MailingInformationContainer extends PureComponent {
   constructor(props) {
     super(props);
     this.initialValues = null;
+  }
+
+  componentDidMount() {
+    const { getAddressListAction } = this.props;
+    getAddressListAction();
   }
 
   componentDidUpdate() {
@@ -151,6 +157,9 @@ export const mapDispatchToProps = dispatch => {
     verifyAddressAction: payload => {
       dispatch(verifyAddress(payload));
     },
+    getAddressListAction: () => {
+      dispatch(getAddressList());
+    },
   };
 };
 
@@ -177,6 +186,7 @@ MailingInformationContainer.propTypes = {
   addressKey: PropTypes.string,
   onUpdateMailingAddress: PropTypes.func.isRequired,
   onClose: PropTypes.func,
+  getAddressListAction: PropTypes.func.isRequired,
 };
 
 export default connect(

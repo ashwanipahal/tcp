@@ -8,6 +8,10 @@ import { getCreditCardExpirationOptionMap } from '../../../../../utils';
 import styles from '../styles/CreditCardFields.style';
 import withStyles from '../../../hoc/withStyles';
 
+export const handleEditCreditCardNumber = value => {
+  return value.startsWith('*') ? '' : value;
+};
+
 const CardNumberField = ({ cardTypeImgUrl, cardType, isPLCCEnabled, creditFieldLabels }) => {
   return (
     <Field
@@ -22,6 +26,7 @@ const CardNumberField = ({ cardTypeImgUrl, cardType, isPLCCEnabled, creditFieldL
       cardType={cardType}
       className="field"
       enableSuccessCheck={false}
+      normalize={handleEditCreditCardNumber}
     />
   );
 };

@@ -39,24 +39,56 @@ exports[`AccountOverview component should render correctly 1`] = `
     />
   </Styled(View)>
   <Styled(View)>
-    <Styled(WithTheme(CustomButton))
+    <Styled(CustomButton)
+      active={false}
       buttonVariation="variable-width"
       className="classBtn"
       color="#575757"
+      customStyle={Object {}}
       data-locator=""
+      disableButton={false}
+      fill=""
+      fullWidth=""
+      iconColor="gray.800"
+      iconName="chevron-down"
+      iconSize="fs12"
       id="createAccount"
+      locator=""
+      navigation={Object {}}
       onPress={[Function]}
+      selected={false}
+      selectedIcon="chevron-up"
+      showIcon={false}
+      text=""
+      theme={Object {}}
       type="submit"
+      url=""
       width="150px"
     />
-    <Styled(WithTheme(CustomButton))
+    <Styled(CustomButton)
+      active={false}
       buttonVariation="variable-width"
       className="classBtn"
+      color=""
+      customStyle={Object {}}
       data-locator=""
+      disableButton={false}
       fill="BLUE"
+      fullWidth=""
+      iconColor="gray.800"
+      iconName="chevron-down"
+      iconSize="fs12"
       id="login"
+      locator=""
+      navigation={Object {}}
       onPress={[Function]}
+      selected={false}
+      selectedIcon="chevron-up"
+      showIcon={false}
+      text=""
+      theme={Object {}}
       type="submit"
+      url=""
       width="150px"
     />
   </Styled(View)>
