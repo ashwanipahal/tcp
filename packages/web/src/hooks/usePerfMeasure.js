@@ -4,7 +4,7 @@ const isEnabled = Boolean(process.env.PERF_TIMING);
 
 export default function usePerfMeasure(name, ...args) {
   useEffect(() => {
-    if (isEnabled) {
+    if (isEnabled && typeof performance !== 'undefined') {
       try {
         performance.measure(name, ...args);
       } catch (err) {

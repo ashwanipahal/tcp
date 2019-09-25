@@ -6,12 +6,13 @@ HomePageView.pageInfo = {
   name: 'homepage',
   modules: ['labels', 'header', 'footer', 'navigation'],
 };
+
 HomePageView.getInitActions = () => initActions;
 
 const mapStateToProps = state => {
   const { Layouts, Modules } = state;
   const homepageSlots = Layouts.homepage ? Layouts.homepage.slots || [] : [];
-  const { accessibility } = state.Labels.global;
+  const accessibility = state.Labels && state.Labels.global && state.Labels.global.accessibility;
 
   return {
     slots: homepageSlots.map(slot => {

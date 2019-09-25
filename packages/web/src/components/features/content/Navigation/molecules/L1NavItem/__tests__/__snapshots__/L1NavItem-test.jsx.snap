@@ -25,6 +25,7 @@ exports[`Drawer component renders correctly 1`] = `
       fontWeight="semibold"
       letterSpacing="normal"
       lineHeight="lh115"
+      link={null}
       onBlur={[Function]}
       onFocus={[Function]}
       onMouseOut={[Function]}

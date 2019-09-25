@@ -1,7 +1,18 @@
 const ROUTE_PATH = {
   guestOrderDetails: ({ pathSuffix }) => `/track-order/${pathSuffix}`,
   home: '/home',
-  plp: '/c',
+  plp: {
+    name: '/c',
+    param: 'cid',
+  },
+  pdp: {
+    name: '/p',
+    param: 'pid',
+  },
+  search: {
+    name: '/search',
+    param: 'sq',
+  },
   // TODO - Make all page constants and use them in ROUTES_LIST for mapping
 };
 
@@ -100,11 +111,6 @@ const ROUTES_LIST = [
     resolver: '/cookiesTesting',
   },
   {
-    noSlugPath: 'gallery',
-    path: '/gallery',
-    resolver: '/gallery',
-  },
-  {
     noSlugPath: 'checkout',
     path: '/checkout/:section',
     resolver: '/Checkout',
@@ -119,6 +125,12 @@ const ROUTES_LIST = [
     noSlugPath: 'international-checkout',
     path: '/international-checkout',
     resolver: '/InternationalCheckout',
+  },
+  {
+    noSlugPath: 'content',
+    path: '/content/:contentType',
+    resolver: '/content',
+    params: ['contentType'],
   },
 ];
 

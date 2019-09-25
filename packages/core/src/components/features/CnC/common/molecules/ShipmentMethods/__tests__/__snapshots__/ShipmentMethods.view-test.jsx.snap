@@ -11,6 +11,7 @@ exports[`Shipping Page should render correctly 1`] = `
     fontWeight="extrabold"
     letterSpacing="normal"
     lineHeight="normal"
+    link={null}
     textAlign="left"
   />
   <Styled(Row)
@@ -33,7 +34,7 @@ exports[`Shipping Page should render correctly 1`] = `
             "$$typeof": Symbol(react.forward_ref),
             "attrs": Array [],
             "componentStyle": ComponentStyle {
-              "componentId": "sc-bwzfXH",
+              "componentId": "sc-htpNat",
               "isStatic": false,
               "rules": Array [
                 "
@@ -155,7 +156,7 @@ exports[`Shipping Page should render correctly 1`] = `
             "foldedComponentIds": Array [],
             "labeledRadioButtonCounter": 0,
             "render": [Function],
-            "styledComponentId": "sc-bwzfXH",
+            "styledComponentId": "sc-htpNat",
             "target": [Function],
             "toString": [Function],
             "warnTooManyClasses": [Function],
@@ -187,7 +188,7 @@ exports[`Shipping Page should render correctly 1`] = `
             "$$typeof": Symbol(react.forward_ref),
             "attrs": Array [],
             "componentStyle": ComponentStyle {
-              "componentId": "sc-bwzfXH",
+              "componentId": "sc-htpNat",
               "isStatic": false,
               "rules": Array [
                 "
@@ -309,7 +310,7 @@ exports[`Shipping Page should render correctly 1`] = `
             "foldedComponentIds": Array [],
             "labeledRadioButtonCounter": 0,
             "render": [Function],
-            "styledComponentId": "sc-bwzfXH",
+            "styledComponentId": "sc-htpNat",
             "target": [Function],
             "toString": [Function],
             "warnTooManyClasses": [Function],
@@ -343,6 +344,7 @@ exports[`Shipping Page should render correctly 1`] = `
         fontWeight="semibold"
         letterSpacing="normal"
         lineHeight="normal"
+        link={null}
         textAlign="center"
       >
         standard - 
@@ -355,6 +357,7 @@ exports[`Shipping Page should render correctly 1`] = `
           fontWeight="semibold"
           letterSpacing="normal"
           lineHeight="normal"
+          link={null}
           textAlign="left"
         >
            express

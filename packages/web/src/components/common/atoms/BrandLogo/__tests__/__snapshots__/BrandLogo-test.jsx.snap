@@ -5,7 +5,7 @@ exports[`BrandLogo component BrandLogo component renders correctly without props
   name="brand_logo"
 >
   <Styled(Anchor)
-    to="/"
+    to="/home"
   >
     <Styled(Image) />
   </Styled(Anchor)>

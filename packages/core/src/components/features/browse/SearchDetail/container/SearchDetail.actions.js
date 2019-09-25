@@ -41,10 +41,3 @@ export const setSlpSearchTerm = payload => {
     payload,
   };
 };
-
-export const getSearchResult = payload => {
-  return {
-    type: SLP_CONSTANTS.GET_SLP_SEARCH_RESULTS,
-    payload,
-  };
-};

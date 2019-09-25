@@ -41,7 +41,7 @@ export const ImageGridCol = styled(Col)`
         : ``}
 
     ${props =>
-      !props.promobanner || props.bannerPosition === 'top'
+      !props.promobanner || props.bannerposition === 'top'
         ? `
         &:nth-child(6n) {
           margin-right: 0;
