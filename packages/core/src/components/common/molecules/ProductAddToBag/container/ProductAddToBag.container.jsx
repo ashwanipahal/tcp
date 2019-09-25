@@ -292,8 +292,6 @@ class ProductAddToBagContainer extends React.PureComponent<Props> {
     return quantityArray.map((val, index) => ({
       displayName: index + 1,
       id: index + 1,
-      label: index + 1,
-      value: index + 1,
     }));
   };
 
@@ -357,6 +355,10 @@ class ProductAddToBagContainer extends React.PureComponent<Props> {
         fitList[0].sizes.filter(size => size.sizeName === selectedSize.name).length > 0) ||
       false;
     this.displayErrorMessage(!isSizeAvaiable);
+  };
+
+  quantityChange = selectedQuantity => {
+    this.setState({ selectedQuantity });
   };
 
   /**
