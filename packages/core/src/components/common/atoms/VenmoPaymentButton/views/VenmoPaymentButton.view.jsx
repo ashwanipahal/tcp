@@ -140,13 +140,12 @@ export class VenmoPaymentButton extends Component {
     const {
       mode,
       authorizationKey,
-      isMobile,
       enabled,
       venmoData: { nonce },
       setVenmoData,
       isNonceNotExpired,
     } = this.props;
-    if (isMobile && nonce && isNonceNotExpired) {
+    if (nonce && isNonceNotExpired) {
       this.setState({ hasVenmoError: false });
       setVenmoData({ loading: false });
     } else if (mode === modes.CLIENT_TOKEN && enabled && authorizationKey) {
@@ -158,13 +157,7 @@ export class VenmoPaymentButton extends Component {
    * This method with instantiate the venmo button to commence authorization of the venmo app
    */
   setupVenmoInstance = () => {
-    const {
-      authorizationKey: authorization,
-      setVenmoData,
-      allowNewBrowserTab,
-      isMobile,
-    } = this.props;
-    if (!isMobile) return; // Do not process requests if not mobile.
+    const { authorizationKey: authorization, setVenmoData, allowNewBrowserTab } = this.props;
     if (this.canCallVenmoApi()) {
       setVenmoData({ loading: true });
       client
@@ -236,7 +229,6 @@ VenmoPaymentButton.propTypes = {
   mode: oneOf([modes.CLIENT_TOKEN, modes.PAYMENT_TOKEN]),
   setVenmoData: func,
   allowNewBrowserTab: bool,
-  isMobile: bool,
   venmoData: shape({
     deviceData: string,
     supportedByBrowser: bool,
@@ -265,7 +257,6 @@ VenmoPaymentButton.defaultProps = {
   authorizationKey: '',
   setVenmoData: () => {},
   allowNewBrowserTab: false,
-  isMobile: false,
   venmoData: {
     supportedByBrowser: true,
   },

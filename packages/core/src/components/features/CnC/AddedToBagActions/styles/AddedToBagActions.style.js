@@ -48,8 +48,12 @@ const CtaStyle = css`
     width: 100%;
   }
   .venmo-wrapper {
-    width: 100%;
-    margin-left: 6px;
+    display: none;
+    @media ${props => props.theme.mediaQuery.smallOnly} {
+      display: block;
+      width: 100%;
+      margin-left: 6px;
+    }
   }
   ${props => (props.inheritedStyles ? props.inheritedStyles : '')};
 `;
