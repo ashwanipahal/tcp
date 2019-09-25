@@ -1,26 +1,28 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`Track Order Modal should not render StoreDetail 1`] = `""`;
+exports[`Store Detail Page should not render StoreDetail 1`] = `""`;
 
-exports[`Track Order Modal should render StoreDetail 1`] = `
+exports[`Store Detail Page should render StoreDetail 1`] = `
 <Styled(StoreDetail)
   className="storedetailinfo"
   labels={
     Object {
-      "lbl_storelocators_common_atThisPlace": "at this PLACE!",
-      "lbl_storelocators_detail_entranceType": "Type of Entrance:",
-      "lbl_storelocators_detail_mallType": "Mall Type:",
-      "lbl_storelocators_details_callstore_btn": "Call Store",
-      "lbl_storelocators_details_changestore_btn": "Change Favorite Store",
-      "lbl_storelocators_details_getdirections_btn": "Directions",
-      "lbl_storelocators_details_locations_details_btn": "SEE STORE DETAILS",
-      "lbl_storelocators_details_locations_title": "OTHER LOCATIONS NEAR YOU",
-      "lbl_storelocators_landingpage_favStore": "Your Store",
-      "lbl_storelocators_landingpage_getdirections_link": "Get Directions",
-      "lbl_storelocators_landingpage_milesAway": "miles away",
-      "lbl_storelocators_landingpage_openInterval": "open until",
-      "lbl_storelocators_landingpage_setfavStore": "SET AS FAVORITE",
-      "lbl_storelocators_landingpage_storedetails_link": "Store Details",
+      "StoreLocator": Object {
+        "lbl_storelocators_common_atThisPlace": "at this PLACE!",
+        "lbl_storelocators_detail_entranceType": "Type of Entrance:",
+        "lbl_storelocators_detail_mallType": "Mall Type:",
+        "lbl_storelocators_details_callstore_btn": "Call Store",
+        "lbl_storelocators_details_changestore_btn": "Change Favorite Store",
+        "lbl_storelocators_details_getdirections_btn": "Directions",
+        "lbl_storelocators_details_locations_details_btn": "SEE STORE DETAILS",
+        "lbl_storelocators_details_locations_title": "OTHER LOCATIONS NEAR YOU",
+        "lbl_storelocators_landingpage_favStore": "Your Store",
+        "lbl_storelocators_landingpage_getdirections_link": "Get Directions",
+        "lbl_storelocators_landingpage_milesAway": "miles away",
+        "lbl_storelocators_landingpage_openInterval": "open until",
+        "lbl_storelocators_landingpage_setfavStore": "SET AS FAVORITE",
+        "lbl_storelocators_landingpage_storedetails_link": "Store Details",
+      },
     }
   }
   openStoreDetails={[Function]}
@@ -28,7 +30,27 @@ exports[`Track Order Modal should render StoreDetail 1`] = `
   otherStores={Array []}
   store={
     Object {
-      "test": "test",
+      "test": Immutable.Map {
+        "basicInfo": Immutable.Map {
+          "id": "",
+          "storeName": "",
+          "phone": "",
+          "coordinates": Immutable.Map {
+            "lat": "",
+            "long": "",
+          },
+          "address": Immutable.Map {},
+        },
+        "hours": Immutable.Map {
+          "regularHours": Immutable.List [],
+          "holidayHours": Immutable.List [],
+          "regularAndHolidayHours": Immutable.List [],
+        },
+        "features": Immutable.Map {
+          "mallType": "",
+          "entranceType": "",
+        },
+      },
     }
   }
 />

@@ -8,7 +8,7 @@ jest.mock('../../../../../../utils/utils.web', () => ({
   routerPush: jest.fn(),
 }));
 
-describe('Track Order Modal', () => {
+describe('Store Detail Page', () => {
   const labels = {
     StoreLocator: {
       lbl_storelocators_landingpage_openInterval: 'open until',

@@ -1,0 +1,36 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`StoreDetail component StoreDetail component renders correctly without props 1`] = `
+<StyledComponent
+  forwardedComponent={
+    Object {
+      "$$typeof": Symbol(react.forward_ref),
+      "attrs": Array [],
+      "componentStyle": ComponentStyle {
+        "componentId": "sc-gPEVay",
+        "isStatic": true,
+        "rules": Array [
+          "
+  ",
+          "
+  .store-name.store-name--details {
+    text-transform: capitalize;
+  }
+",
+          ";
+",
+        ],
+      },
+      "displayName": "Styled(StoreDetail)",
+      "foldedComponentIds": Array [],
+      "render": [Function],
+      "styledComponentId": "sc-gPEVay",
+      "target": [Function],
+      "toString": [Function],
+      "warnTooManyClasses": [Function],
+      "withComponent": [Function],
+    }
+  }
+  forwardedRef={null}
+/>
+`;
