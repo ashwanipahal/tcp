@@ -4,11 +4,13 @@ exports[`ProductAddToBagVanilla native should render correctly should match snap
 <View
   addToBagAction={null}
   colorList={Array []}
+  currentProduct={null}
   fitList={Array []}
   isErrorMessageDisplayed={false}
   plpLabels={Object {}}
   quantityList={Array []}
   selectedColor={null}
+  selectedColorProductId={123}
   selectedFit={null}
   selectedSize={null}
   sizeList={Array []}
@@ -195,16 +197,30 @@ exports[`ProductAddToBagVanilla native should render correctly should match snap
       variation="secondary"
     />
   </Styled(View)>
-  <Styled(WithTheme(CustomButton))
+  <Styled(CustomButton)
     accessibilityLabel="Add to Bag"
+    active={false}
     buttonVariation="variable-width"
     color="white"
+    customStyle={Object {}}
+    disableButton={false}
     fill="BLUE"
     fontFamily="secondary"
     fontSize="fs10"
     fontWeight="extrabold"
+    fullWidth=""
+    iconColor="gray.800"
+    iconName="chevron-down"
+    iconSize="fs12"
     locator="pdp_color_swatch"
+    navigation={Object {}}
     onPress={null}
+    selected={false}
+    selectedIcon="chevron-up"
+    showIcon={false}
+    text=""
+    theme={Object {}}
+    url=""
   />
 </View>
 `;

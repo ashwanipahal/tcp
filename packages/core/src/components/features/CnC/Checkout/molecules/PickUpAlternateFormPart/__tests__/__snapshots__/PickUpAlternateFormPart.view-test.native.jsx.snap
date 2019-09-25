@@ -55,7 +55,19 @@ exports[`Coupon component should renders correctly when data is present 1`] = `
   <Styled(View)>
     <Styled(View) />
     <Styled(View)>
-      <Styled(View)>
+      <Styled(View)
+        Platform={
+          Object {
+            "OS": "ios",
+            "Version": undefined,
+            "isPad": false,
+            "isTV": false,
+            "isTVOS": false,
+            "isTesting": undefined,
+            "select": [Function],
+          }
+        }
+      >
         <Styled(BodyCopy)
           accessibilityText=""
           dataLocator=""
