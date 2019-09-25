@@ -54,6 +54,7 @@ class ReadMore extends React.PureComponent {
               fontWeight="semibold"
               textAlign="center"
               data-locator={getLocator('plp_seo_readmore')}
+              tabIndex="0"
             >
               {labels.readMore}
             </BodyCopy>
@@ -64,6 +65,7 @@ class ReadMore extends React.PureComponent {
               fontWeight="semibold"
               textAlign="center"
               data-locator={getLocator('plp_seo_readless')}
+              tabIndex="0"
             >
               {labels.readLess}
             </BodyCopy>
