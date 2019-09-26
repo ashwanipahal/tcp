@@ -95,7 +95,6 @@ const getPromotionalPLCCMessage = product => {
 };
 const catMapExists = (temp, catMap, bucketingSeqConfig) => {
   const desiredL2Val = bucketingSeqConfig.desiredL2 && bucketingSeqConfig.desiredL2.split('|')[0];
-  // console.log('desiredL2Val', desiredL2Val);
   return temp && catMap[desiredL2Val] && catMap[desiredL2Val].indexOf(temp) !== -1;
 };
 const isMatchingFamily = (matchingFamily, excludeBadge, siteAttributes) => {
