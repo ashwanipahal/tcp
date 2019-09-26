@@ -18,6 +18,7 @@ exports[`ApplyCardLayoutView component should renders correctly considering sele
     getFormState={[Function]}
     keepDirtyOnReinitialize={false}
     labels={Object {}}
+    onSubmitFail={[Function]}
     persistentSubmitErrors={false}
     pure={true}
     shouldAsyncValidate={[Function]}

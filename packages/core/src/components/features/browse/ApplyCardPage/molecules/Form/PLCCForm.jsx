@@ -21,7 +21,17 @@ import {
 import { backToHome } from '../../utils/DateOfBirthHelper';
 import StyledPLCCFormWrapper from './styles/PLCCForm.style';
 import PLCCTimeoutInterimModal from '../Modals/PLCCTmeoutInterimModal';
-import { getPageViewGridRowSize } from '../../utils/utility';
+import { getPageViewGridRowSize, fetchPLCCFormErrors } from '../../utils/utility';
+
+const handleSubmitFail = errors => {
+  const formattedErrors = fetchPLCCFormErrors(errors);
+  const errorEl = document.querySelector(
+    errors && `[id="${Object.keys(formattedErrors)[0]}"]`.trim()
+  );
+  if (errorEl && errorEl.focus) {
+    errorEl.focus();
+  }
+};
 
 class PLCCForm extends React.PureComponent {
   static idleUserEvents = [
@@ -226,6 +236,7 @@ class PLCCForm extends React.PureComponent {
                   name="iAgree"
                   component={InputCheckBox}
                   fontSize="fs16"
+                  id="iAgree"
                   dataLocator="plcc_T&C_checkbox"
                   className="iAgree_terms_conditions"
                   disabled={false}
@@ -354,4 +365,5 @@ export default reduxForm({
   ...validateMethod,
   enableReinitialize: true,
   destroyOnUnmount: true,
+  onSubmitFail: errors => handleSubmitFail(errors),
 })(PLCCForm);

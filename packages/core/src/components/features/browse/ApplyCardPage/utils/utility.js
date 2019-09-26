@@ -1,5 +1,23 @@
 import { routerPush } from '../../../../../utils';
 
+const refFields = [
+  'preScreenCode',
+  'firstName',
+  'lastName',
+  'addressLine1',
+  'addressLine2',
+  'city',
+  'statewocountry',
+  'noCountryZip',
+  'phoneNumberWithAlt',
+  'altPhoneNumber',
+  'date',
+  'month',
+  'year',
+  'ssNumber',
+  'iAgree',
+];
+
 const userAddressData = addressTemp => {
   return {
     addressLine1: addressTemp.get('addressLine1') || '',
@@ -29,6 +47,17 @@ const fetchBillingOrShippingAddress = address => {
     });
   }
   return plccAddress;
+};
+
+const fetchPLCCFormErrors = errors => {
+  const plccFormFields = {};
+  refFields.map(fieldName => {
+    if (errors[fieldName]) {
+      plccFormFields[fieldName] = errors[fieldName];
+    }
+    return true;
+  });
+  return plccFormFields;
 };
 
 /**
@@ -74,6 +103,7 @@ const getPageViewGridRowSize = isPLCCModalFlow => {
 };
 
 export {
+  refFields,
   userAddressData,
   fetchBillingOrShippingAddress,
   redirectToBag,
@@ -81,4 +111,5 @@ export {
   getPageViewGridColumnSize,
   getPageViewGridRowSize,
   getModalSizeForApprovedPLCC,
+  fetchPLCCFormErrors,
 };

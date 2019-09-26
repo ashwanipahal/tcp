@@ -1149,7 +1149,7 @@ exports[`ContactInformationFormWrapper component should renders correctly 1`] = 
           }
         }
         data-locator="plcc_SSN"
-        id="lastName"
+        id="ssNumber"
         maxLength="4"
         name="ssNumber"
         placeholder="ssn"

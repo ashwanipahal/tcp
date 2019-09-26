@@ -48,6 +48,7 @@ class ApplyCardLayoutContainer extends React.Component {
     if (!plccData && labels && labels.referred) {
       fetchModuleXContent(labels && labels.referred);
     }
+    window.scrollTo(0, 0);
   }
 
   /**

@@ -20,6 +20,10 @@ const CopyToClipboard = e => {
   }
 };
 
+const scrollToTop = () => {
+  window.scrollTo(0, 0);
+};
+
 /**
  * @description return coupon code container
  *
@@ -28,6 +32,7 @@ const CopyToClipboard = e => {
  * @param {moduleX content} plccData
  */
 const getCouponCodeBody = (approvedPLCCData, labels = {}, plccData = {}, isPLCCModalFlow) => {
+  scrollToTop();
   return approvedPLCCData && approvedPLCCData.couponCode ? (
     <React.Fragment>
       <Row fullBleed className="centered">
