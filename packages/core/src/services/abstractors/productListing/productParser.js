@@ -94,11 +94,9 @@ const getPromotionalPLCCMessage = product => {
   return product.TCPLoyaltyPLCCPromotionTextUSStore || '';
 };
 const catMapExists = (temp, catMap, bucketingSeqConfig) => {
-  return (
-    temp &&
-    catMap[bucketingSeqConfig.desiredL2] &&
-    catMap[bucketingSeqConfig.desiredL2].indexOf(temp) !== -1
-  );
+  const desiredL2Val = bucketingSeqConfig.desiredL2 && bucketingSeqConfig.desiredL2.split('|')[0];
+  // console.log('desiredL2Val', desiredL2Val);
+  return temp && catMap[desiredL2Val] && catMap[desiredL2Val].indexOf(temp) !== -1;
 };
 const isMatchingFamily = (matchingFamily, excludeBadge, siteAttributes) => {
   return matchingFamily && excludeBadge !== siteAttributes.matchingFamily;

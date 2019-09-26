@@ -144,9 +144,14 @@ const getPlpUrlQueryValues = filtersAndSort => {
   routeURL = `${urlPath}${routeURL}`;
 
   routeURL = urlQueryValues === '' ? routeURL.substring(0, routeURL.length - 1) : routeURL;
-  if (routeURL.includes('search')) {
+  console.log('routeURL --> ', routeURL);
+  console.log('urlPathCID --> ', urlPathCID);
+
+  if (routeURL.includes('search') && routeURL !== `/search/${urlPathCID}`) {
+    console.log('in search router push');
     routerPush(`/search?searchQuery=${urlPathCID}`, routeURL, { shallow: true });
-  } else {
+  } else if (routeURL !== `/c/${urlPathCID}`) {
+    console.log('in category router push');
     routerPush(`/c?cid=${urlPathCID}`, routeURL, { shallow: true });
   }
   return true;
