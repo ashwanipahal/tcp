@@ -1,4 +1,3 @@
-/* eslint-disable camelcase */
 import React, { PureComponent } from 'react'; //eslint-disable-line
 import { reduxForm, Field } from 'redux-form';
 import {
@@ -119,35 +118,23 @@ export class StoreSearch extends PureComponent {
       mapView,
     } = this.props;
     const { errorNotFound, gymSelected, outletSelected } = this.state;
-    const {
-      lbl_storelocators_detail_errorLabel,
-      lbl_storelocators_detail_storeSearchPlaceholder,
-      lbl_storelocators_detail_findStoreHeading,
-      lbl_storelocators_detail_gymboreeStores,
-      lbl_storelocators_detail_outletStores,
-      lbl_storelocators_detail_currentLocation,
-      lbl_storelocators_detail_viewMap,
-      lbl_storelocators_detail_viewList,
-      lbl_storelocators_detail_allUSCAStores,
-      lbl_storelocators_detail_internationalStores,
-    } = labels;
-    const errorMessage = errorNotFound ? lbl_storelocators_detail_errorLabel : error;
+    const errorMessage = errorNotFound ? labels.lbl_storelocators_detail_errorLabel : error;
 
     const viewMapListLabel = mapView
-      ? lbl_storelocators_detail_viewList
-      : lbl_storelocators_detail_viewMap;
+      ? labels.lbl_storelocators_detail_viewList
+      : labels.lbl_storelocators_detail_viewMap;
 
     const storeOptionsConfig = [
       {
         name: 'gymboreeStoreOption',
         dataLocator: 'gymboree-store-option',
-        storeLabel: lbl_storelocators_detail_gymboreeStores,
+        storeLabel: labels.lbl_storelocators_detail_gymboreeStores,
         checked: gymSelected,
       },
       {
         name: 'outletOption',
         dataLocator: 'only-outlet-option',
-        storeLabel: lbl_storelocators_detail_outletStores,
+        storeLabel: labels.lbl_storelocators_detail_outletStores,
         checked: outletSelected,
       },
     ];
@@ -156,18 +143,18 @@ export class StoreSearch extends PureComponent {
       {
         asPath: '',
         to: '',
-        label: lbl_storelocators_detail_allUSCAStores,
+        label: labels.lbl_storelocators_detail_allUSCAStores,
       },
       {
         asPath: '',
         to: '',
-        label: lbl_storelocators_detail_internationalStores,
+        label: labels.lbl_storelocators_detail_internationalStores,
       },
     ];
 
     return (
       <div className={className}>
-        <h3 className="storeLocatorHeading">{lbl_storelocators_detail_findStoreHeading}</h3>
+        <h3 className="storeLocatorHeading">{labels.lbl_storelocators_detail_findStoreHeading}</h3>
         <Row fullBleed>
           <Col colSize={{ large: 6.5, medium: 4, small: 6 }}>
             <div className="currentLocationWrapper">
@@ -179,15 +166,17 @@ export class StoreSearch extends PureComponent {
                   data-locator="marker-icon"
                   height="16px"
                 />
-                <span className="currentLocation">{lbl_storelocators_detail_currentLocation}</span>
+                <span className="currentLocation">
+                  {labels.lbl_storelocators_detail_currentLocation}
+                </span>
               </Anchor>
             </div>
             <form onSubmit={handleSubmit(this.onSubmit)} noValidate className="searchForm">
               <div className="searchBar">
                 <Field
                   id="storeAddressLocator"
-                  title={lbl_storelocators_detail_storeSearchPlaceholder}
-                  placeholder={lbl_storelocators_detail_storeSearchPlaceholder}
+                  title={labels.lbl_storelocators_detail_storeSearchPlaceholder}
+                  placeholder={labels.lbl_storelocators_detail_storeSearchPlaceholder}
                   component={AutoCompleteComponent}
                   name="storeAddressLocator"
                   onPlaceSelected={this.handleLocationSelection}

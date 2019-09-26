@@ -43,23 +43,23 @@ export default css`
   }
 
   .currentLocationWrapper {
-    margin-bottom: 16px;
+    margin-bottom: ${props => props.theme.spacing.ELEM_SPACING.MED};
 
     @media ${props => props.theme.mediaQuery.mediumOnly} {
-      margin-bottom: 8px;
+      margin-bottom: ${props => props.theme.spacing.ELEM_SPACING.XS};
     }
 
     @media ${props => props.theme.mediaQuery.large} {
-      margin-bottom: 12px;
+      margin-bottom: ${props => props.theme.spacing.ELEM_SPACING.SM};
     }
   }
 
   .currentLocation {
-    margin-left: 8px;
+    margin-left: ${props => props.theme.spacing.ELEM_SPACING.XS};
   }
 
   .storeOptionList {
-    margin-top: 12px;
+    margin-top: ${props => props.theme.spacing.ELEM_SPACING.SM};
 
     @media ${props => props.theme.mediaQuery.mediumOnly} {
       margin-top: 0;
@@ -84,14 +84,14 @@ export default css`
   }
 
   .storeLinksList {
-    margin-top: 16px;
+    margin-top: ${props => props.theme.spacing.ELEM_SPACING.MED};
 
     @media ${props => props.theme.mediaQuery.mediumOnly} {
       margin-top: 20px;
     }
 
     @media ${props => props.theme.mediaQuery.large} {
-      margin-top: 8px;
+      margin-top: ${props => props.theme.spacing.ELEM_SPACING.XS};
     }
 
     .storeLinks {
