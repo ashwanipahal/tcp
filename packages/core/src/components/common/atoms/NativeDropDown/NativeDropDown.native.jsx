@@ -10,6 +10,7 @@ import {
   ModalOverlay,
   PickerView,
   AndroidPickerView,
+  iOSPickerButtonStyle,
 } from './styles/NativeDropDown.style.native';
 
 /**
@@ -109,6 +110,7 @@ class NativeDropDown extends React.PureComponent {
           }}
           showIcon
           bottomBorderOnly={bottomBorderOnly}
+          customTextStyle={iOSPickerButtonStyle}
         />
         <Modal visible={showPicker} transparent animationType="slide">
           <SafeAreaViewStyle>

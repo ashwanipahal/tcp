@@ -4,7 +4,6 @@ import { connect } from 'react-redux';
 import selectors, {
   isGuest as isGuestUser,
 } from '../../../../features/CnC/Checkout/container/Checkout.selector';
-import BagSelectors from '../../../../features/CnC/BagPage/container/BagPage.selectors';
 import {
   getVenmoClientToken,
   setVenmoData,
@@ -95,9 +94,9 @@ const mapStateToProps = state => {
     venmoClientTokenData || {};
   const mode = venmoPaymentTokenAvailable === 'TRUE' ? modes.PAYMENT_TOKEN : modes.CLIENT_TOKEN;
   const enabled = selectors.getIsVenmoEnabled(state);
-  const isOOSItemsCount = BagSelectors.getOOSCount(state);
-  const unAvailableItemsCount = BagSelectors.getUnavailableCount(state);
-  const isRemoveOOSItems = isOOSItemsCount > 0 || unAvailableItemsCount > 0;
+  // const isOOSItemsCount = BagSelectors.getOOSCount(state);
+  // const unAvailableItemsCount = BagSelectors.getUnavailableCount(state);
+  const isRemoveOOSItems = false;
   return {
     enabled,
     mode,

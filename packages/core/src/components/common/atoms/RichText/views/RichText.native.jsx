@@ -15,11 +15,13 @@ type Props = {
   domStorageEnabled?: boolean,
   thirdPartyCookiesEnabled?: boolean,
 };
+const style = { backgroundColor: 'transparent' };
 
 const RichText = (props: Props) => {
   const { javaScriptEnabled, domStorageEnabled, thirdPartyCookiesEnabled } = props;
   return (
     <WebView
+      style={style}
       originWhitelist={['*']}
       javaScriptEnabled={javaScriptEnabled}
       domStorageEnabled={domStorageEnabled}

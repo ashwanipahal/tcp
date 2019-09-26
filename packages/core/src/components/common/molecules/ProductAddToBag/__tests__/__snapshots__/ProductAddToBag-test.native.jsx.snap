@@ -191,6 +191,7 @@ exports[`ProductAddToBagVanilla native should render correctly should match snap
     buttonVariation="variable-width"
     color="white"
     customStyle={Object {}}
+    customTextStyle={null}
     disableButton={false}
     fill="BLUE"
     fontFamily="secondary"

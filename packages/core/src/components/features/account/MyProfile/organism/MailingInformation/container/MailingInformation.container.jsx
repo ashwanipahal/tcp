@@ -24,7 +24,9 @@ export class MailingInformationContainer extends PureComponent {
 
   componentDidMount() {
     const { getAddressListAction } = this.props;
-    getAddressListAction();
+    getAddressListAction({
+      ignoreCache: true,
+    });
   }
 
   componentDidUpdate() {
@@ -157,8 +159,8 @@ export const mapDispatchToProps = dispatch => {
     verifyAddressAction: payload => {
       dispatch(verifyAddress(payload));
     },
-    getAddressListAction: () => {
-      dispatch(getAddressList());
+    getAddressListAction: payload => {
+      dispatch(getAddressList(payload));
     },
   };
 };
