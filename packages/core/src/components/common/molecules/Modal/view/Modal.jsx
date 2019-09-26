@@ -17,9 +17,9 @@ import withStyles from '../../../hoc/withStyles';
 // import errorBoundary from '../../../hoc/errorBoundary';
 
 function getParent(customWrapperClassName) {
-  // eslint-disable-next-line no-extra-boolean-cast
   const wrapperClassName = customWrapperClassName || 'TCPModal__Wrapper';
-  return document.querySelector('.checkout-pages')
+  // eslint-disable-next-line no-extra-boolean-cast
+  return !!document.querySelector('.checkout-pages')
     ? document.querySelector(`#overlayWrapper .${wrapperClassName}`)
     : document.querySelector(`.${wrapperClassName}`);
 }
