@@ -1,4 +1,4 @@
-/* eslint-disable no-underscore-dangle, no-console */
+/* eslint-disable no-underscore-dangle, no-console, consistent-return */
 /**
  * Tracking target for the Redux-Beacon middleware
  * @see https://rangle.gitbook.io/redux-beacon/examples-and-recipes#how-to-create-your-own-target
@@ -27,16 +27,18 @@ function track(...args) {
 export default function create() {
   return events =>
     events.forEach(event => {
+      // We need an event name
+      if (!event.eventName) return;
+
+      // Logic based on event.hitType (if needed)
       switch (event.hitType) {
         case 'pageView':
-          return track(event.eventName, transformEvent(event));
-
         case 'click':
-          return track(event.eventName, transformEvent(event));
-
         default:
           break;
       }
-      return true;
+
+      // By default, track w/ just the name and payload
+      return track(event.eventName, transformEvent(event));
     });
 }
