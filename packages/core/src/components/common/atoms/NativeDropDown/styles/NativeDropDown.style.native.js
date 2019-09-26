@@ -11,8 +11,6 @@ const PickerView = styled.View`
 const AndroidPickerView = styled.View`
   background: ${props => props.theme.colorPalette.text.lightgray};
   width: ${props => props.width || '35%'};
-  position: absolute;
-  margin-left: 10px;
 `;
 
 const SafeAreaViewStyle = styled.SafeAreaView`
@@ -38,7 +36,7 @@ const Container = styled.View`
   justify-content: center;
   align-items: center;
   width: 100%;
-  margin-top: 20;
+  margin-top: ${props => props.theme.spacing.APP_LAYOUT_SPACING.XS};
 `;
 
 const iOSPickerButtonStyle = {
