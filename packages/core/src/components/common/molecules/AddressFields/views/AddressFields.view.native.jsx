@@ -271,6 +271,7 @@ export class AddressFields extends React.PureComponent {
               component={TextBox}
               dataLocator="addnewaddress-phnumber"
               type="tel"
+              keyboardType="numeric"
             />
           </InputFieldPhoneNumber>
         )}

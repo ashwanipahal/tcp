@@ -56,7 +56,9 @@ class ProductTileWrapper extends React.PureComponent<props> {
           productDetail.miscInfo.availability === CARTPAGE_CONSTANTS.AVAILABILITY_UNAVAILABLE
         );
       });
-      return showError && <ErrorMessage customClass={styles} error={labels.problemWithOrder} />;
+      return (
+        showError && <ErrorMessage bagPage customClass={styles} error={labels.problemWithOrder} />
+      );
     }
     return false;
   };

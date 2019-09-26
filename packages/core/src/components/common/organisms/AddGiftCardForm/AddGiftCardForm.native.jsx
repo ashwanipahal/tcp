@@ -92,6 +92,7 @@ class AddGiftCardForm extends React.PureComponent {
             label={getLabelValue(labels, 'lbl_payment_giftCardNoPlaceholder')}
             name="giftCardNumber"
             type="tel"
+            keyboardType="numeric"
             component={TextBox}
             dataLocator="gift-card-cardnaumberfield"
             onChange={this.handleChange}
@@ -104,6 +105,7 @@ class AddGiftCardForm extends React.PureComponent {
             component={TextBox}
             dataLocator="gift-card-pinnumberfield"
             onChange={this.handleChange}
+            keyboardType="numeric"
           />
 
           <View>

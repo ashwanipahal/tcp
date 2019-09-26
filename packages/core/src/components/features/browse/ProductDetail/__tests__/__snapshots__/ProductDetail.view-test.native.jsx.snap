@@ -42,37 +42,6 @@ exports[`ProductDetailView component should renders correctly 1`] = `
       plpLabels={null}
       selectedColorProductId=""
     />
-    <ModalNative
-      closeIconDataLocator=""
-      closeIconLeftAligned={false}
-      headerStyle={
-        Object {
-          "alignItems": "flex-end",
-          "width": "100%",
-        }
-      }
-      horizontalBar={false}
-      isOpen={false}
-      isOverlay={true}
-      onRequestClose={[Function]}
-      overlayClassName="TCPModal__Overlay"
-    >
-      <Styled(View)
-        height={1334}
-      >
-        <Styled(WithTheme(ImageCarousel))
-          allowZoom={true}
-          item={
-            Object {
-              "name": "",
-              "shortDescription": "",
-            }
-          }
-          selectedColorProductId=""
-          showFavorites={false}
-        />
-      </Styled(View)>
-    </ModalNative>
   </Styled(View)>
 </ScrollViewMock>
 `;
