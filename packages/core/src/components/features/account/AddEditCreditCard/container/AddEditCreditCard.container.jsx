@@ -66,7 +66,9 @@ export class AddEditCreditCard extends React.PureComponent {
 
   componentDidMount() {
     const { getAddressListAction } = this.props;
-    getAddressListAction();
+    getAddressListAction({
+      ignoreCache: true,
+    });
     this.setInitialValues();
   }
 
@@ -232,8 +234,8 @@ const mapStateToProps = (state, ownProps) => {
 
 const mapDispatchToProps = dispatch => {
   return {
-    getAddressListAction: () => {
-      dispatch(getAddressList());
+    getAddressListAction: payload => {
+      dispatch(getAddressList(payload));
     },
     addCreditCardAction: payload => {
       dispatch(addCreditCard(payload));
