@@ -60,7 +60,7 @@ export default {
   'close-icon': '/static/images/close.png',
   'plus-icon': '/static/images/plus.png',
   'mailing-address-icon': '/static/images/mailingAddress.jpg',
-  'fav-store-icon': '/static/images/store.jpg',
+  'fav-store-icon': '/static/images/store.png',
   'birthday-icon': '/static/images/birthday.jpg',
   'survey-icon': '/static/images/survey.png',
   'smiley-icon': '/static/images/smiley-icon.png',
