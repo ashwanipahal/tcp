@@ -70,6 +70,7 @@ exports[`ProductListItem component should renders ProductListItem correctly 1`] 
       buttonVariation="variable-width"
       color=""
       customStyle={Object {}}
+      customTextStyle={null}
       data-locator=""
       disableButton={false}
       fill="BLUE"

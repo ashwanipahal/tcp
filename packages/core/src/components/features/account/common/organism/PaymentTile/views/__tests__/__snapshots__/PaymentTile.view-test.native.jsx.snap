@@ -83,6 +83,7 @@ exports[`PaymentTile component should render correctly 1`] = `
       buttonVariation="variable-width"
       color=""
       customStyle={Object {}}
+      customTextStyle={null}
       disableButton={false}
       fill="BLUE"
       fullWidth=""

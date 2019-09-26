@@ -49,11 +49,18 @@ const CnCTemplate = ({
                   showAccordian ? 'bonusPointsDaysWrapperAccordian' : 'bonusPointsDaysWrapper'
                 } elem-mb-MED`}
               >
-                <BonusPointsDays showAccordian={showAccordian} enableApplyCta />
+                <BonusPointsDays
+                  showAccordian={showAccordian}
+                  enableApplyCta
+                  additionalClassNameModal="bonus-modal-web"
+                />
               </div>
             )}
             <AirmilesBanner />
-            <CouponAndPromos showAccordian={showAccordian} />
+            <CouponAndPromos
+              showAccordian={showAccordian}
+              additionalClassNameModal="coupon-modal-web"
+            />
           </Col>
         )}
       </Row>
