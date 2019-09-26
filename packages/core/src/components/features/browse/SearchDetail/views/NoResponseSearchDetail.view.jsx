@@ -78,7 +78,7 @@ class NoResponseSearchDetailView extends React.PureComponent {
               textAlign="center"
             >
               {slpLabels.lbl_nothing_matched}
-              <span className="empty-searched-label-title">{` "${searchedText}"`}</span>
+              <span className="empty-searched-label-title">{` "${searchedText} ."`}</span>
             </BodyCopy>
           </Col>
         </Row>
