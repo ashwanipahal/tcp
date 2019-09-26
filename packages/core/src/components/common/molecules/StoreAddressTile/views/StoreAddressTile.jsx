@@ -46,26 +46,6 @@ class StoreAddressTile extends PureComponent {
     );
   }
 
-  // eslint-disable-next-line react/sort-comp
-  openStoreDetails = e => {
-    const {
-      store: {
-        basicInfo: {
-          id,
-          storeName,
-          address: { city, state, zipCode },
-        },
-      },
-    } = this.props;
-    e.preventDefault();
-    const url = `/store/${storeName
-      .replace(/\s/g, '')
-      .toLowerCase()}-${state.toLowerCase()}-${city
-      .replace(/\s/g, '')
-      .toLowerCase()}-${zipCode}-${id}`;
-    Router.push(url);
-  };
-
   getListingTileFooter() {
     const { labels, isFavorite, setFavoriteStore, locatorSetFavStore, store } = this.props;
     return (
@@ -378,6 +358,25 @@ class StoreAddressTile extends PureComponent {
       return '';
     }
   }
+
+  openStoreDetails = e => {
+    const {
+      store: {
+        basicInfo: {
+          id,
+          storeName,
+          address: { city, state, zipCode },
+        },
+      },
+    } = this.props;
+    e.preventDefault();
+    const url = `/store/${storeName
+      .replace(/\s/g, '')
+      .toLowerCase()}-${state.toLowerCase()}-${city
+      .replace(/\s/g, '')
+      .toLowerCase()}-${zipCode}-${id}`;
+    Router.push(url);
+  };
 
   render() {
     const { className, children, variation, store, ...rest } = this.props;
