@@ -10,7 +10,7 @@ exports[`NativeDropDown native should render correctly should match snapshot for
     customStyle={Object {}}
     customTextStyle={
       Object {
-        "fontSize": 13,
+        "fontSize": 16,
         "lineHeight": 0,
       }
     }

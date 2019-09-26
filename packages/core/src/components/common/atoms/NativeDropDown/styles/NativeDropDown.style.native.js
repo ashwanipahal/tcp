@@ -42,7 +42,7 @@ const Container = styled.View`
 `;
 
 const iOSPickerButtonStyle = {
-  fontSize: 13,
+  fontSize: 16,
   lineHeight: 0,
 };
 
