@@ -113,7 +113,8 @@ export function extractPrioritizedBadge(product, siteAttributes, categoryType, e
   const isGlowInTheDark = !!extractAttributeValue(product, siteAttributes.glowInTheDark);
   const isLimitedQuantity =
     extractAttributeValue(product, siteAttributes.limitedQuantity) === 'limited quantities';
-  const isOnlineOnly = !!extractAttributeValue(product, siteAttributes.onlineOnly);
+  // The onlineOnly value could be 0 or 1. So parseInt is require otherwise in case of 0 true was returning
+  const isOnlineOnly = !!+extractAttributeValue(product, siteAttributes.onlineOnly);
   const clearanceOrNewArrival = extractAttributeValue(product, siteAttributes.clearance);
   const badges = {};
 
