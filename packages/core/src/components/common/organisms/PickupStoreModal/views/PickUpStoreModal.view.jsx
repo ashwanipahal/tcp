@@ -21,6 +21,7 @@ import styles from '../styles/PickUpStoreModal.style';
 import { SKU_DETAILS } from '../PickUpStoreModal.constants';
 import PickupSkuSelectionForm from '../molecules/PickupSkuSelectionForm';
 import PickupStoreSelectionForm from '../molecules/PickupStoreSelectionForm';
+import errorBoundary from '../../../hoc/withErrorBoundary/errorBoundary';
 
 const DISTANCES_MAP_PROP_TYPE = PropTypes.arrayOf(
   PropTypes.shape({
@@ -517,5 +518,5 @@ class PickUpStoreModalView extends React.Component {
   }
 }
 
-export default withStyles(PickUpStoreModalView, styles);
+export default withStyles(errorBoundary(PickUpStoreModalView), styles);
 export { PickUpStoreModalView as PickUpStoreModalViewVanilla };

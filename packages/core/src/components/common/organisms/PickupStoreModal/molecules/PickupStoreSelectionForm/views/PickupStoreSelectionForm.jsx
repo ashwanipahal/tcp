@@ -86,10 +86,6 @@ class _PickupStoreSelectionForm extends React.Component {
     this.isAutoSearchTrigerred = false;
   }
 
-  componentDidMount() {}
-
-  componentDidUpdate() {}
-
   onSearch(formData) {
     const { colorFitsSizesMap, onSubmit } = this.props;
 

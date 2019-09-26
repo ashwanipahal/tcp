@@ -2,7 +2,6 @@ import { fromJS } from 'immutable';
 import {
   USER_REDUCER_KEY,
   PICKUP_MODAL_REDUCER_KEY,
-  PRODUCT_DETAIL_REDUCER_KEY,
   FORM_REDUCER_KEY,
 } from '../../../../../constants/reducer.constants';
 
@@ -48,8 +47,7 @@ export const getInitialValues = (state, generalProductId) => {
 };
 
 export const getCurrentProduct = state => {
-  let pickupReducer = state[PRODUCT_DETAIL_REDUCER_KEY];
-  pickupReducer = pickupReducer.size === 1 ? state[PICKUP_MODAL_REDUCER_KEY] : pickupReducer;
+  const pickupReducer = state[PICKUP_MODAL_REDUCER_KEY];
   return (pickupReducer && pickupReducer.get('currentProduct')) || null;
 };
 

@@ -53,6 +53,7 @@ export const PICKUP_LABELS = {
   ITEM_UNAVAILABLE: 'This item is not available for pick up in your selected store.',
   PICK_UP_MODAL_LABEL: 'Pick Up In Store',
   VIEW_DETAILS: 'View Product Details',
+  PRICE_LABEL: 'Price',
 };
 
 export const PRODUCT_VALUES = {

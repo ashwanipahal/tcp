@@ -536,7 +536,7 @@ exports[`ProductAddToBagVanilla native should render correctly should call getFi
       "name": "",
     }
   }
-  showCTA={true}
+  showAddToBagCTA={true}
   sizeList={Array []}
 />
 `;
@@ -965,7 +965,7 @@ exports[`ProductAddToBagVanilla native should render correctly should match snap
       "name": "",
     }
   }
-  showCTA={true}
+  showAddToBagCTA={true}
   sizeList={
     Array [
       Object {

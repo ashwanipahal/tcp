@@ -146,7 +146,7 @@ class PickupSkuSelectionForm extends React.Component {
               customFormName={PRODUCT_SKU_SELECTION_FORM}
               selectedColorProductId={this.generalProductId}
               initialFormValues={initialValues}
-              showCTA={false}
+              showAddToBagCTA={false}
             />
           </div>
         </div>

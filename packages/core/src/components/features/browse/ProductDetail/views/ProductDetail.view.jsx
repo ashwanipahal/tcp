@@ -158,7 +158,6 @@ const ProductDetailView = ({
           <div className="product-detail-section">RATINGS AND REVIEWS</div>
         </Col>
       </Row>
-      {/* <PickupStoreModal /> */}
     </div>
   );
 };

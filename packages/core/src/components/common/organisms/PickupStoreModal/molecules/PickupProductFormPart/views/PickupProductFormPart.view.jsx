@@ -3,7 +3,12 @@ import { PropTypes } from 'prop-types';
 import { BOPIS_PRODUCT_INFO_PROP_TYPES } from '../../../PickUpStoreModal.proptypes';
 import { handleGenericKeyDown } from '../../../../../../../utils';
 import cssClassName from '../../../../../../../utils/cssClassName';
-import { ENTER_KEY_CODE, PRODUCT_VALUES, EDIT } from '../../../PickUpStoreModal.constants';
+import {
+  ENTER_KEY_CODE,
+  PRODUCT_VALUES,
+  EDIT,
+  PICKUP_LABELS,
+} from '../../../PickUpStoreModal.constants';
 import Button from '../../../../../atoms/Button';
 import BodyCopy from '../../../../../atoms/BodyCopy';
 import { Row, Col } from '../../../../../atoms';
@@ -88,7 +93,6 @@ class PickupProductFormPart extends React.Component {
     ...BOPIS_PRODUCT_INFO_PROP_TYPES,
     /** This is used to display the correct currency symbol */
     currencySymbol: PropTypes.string.isRequired,
-    isPreferredStoreError: PropTypes.bool.isRequired,
     isPickUpWarningModal: PropTypes.bool,
   };
 
@@ -139,7 +143,6 @@ class PickupProductFormPart extends React.Component {
       name,
       imagePath,
       onEditSku,
-      isPreferredStoreError,
       initialValues,
       isPickUpWarningModal,
       currencySymbol,
@@ -166,33 +169,26 @@ class PickupProductFormPart extends React.Component {
               {name}
             </BodyCopy>
             <div>
-              <p className="product-color">
+              <BodyCopy className="product-color">
                 <DisplayProductSpecification
                   productKey={colorFitSizeDisplayNames.color}
                   productValue={initialValues.color}
                 />
-              </p>
-              <p className="product-values">
+              </BodyCopy>
+              <BodyCopy className="product-values">
                 {this.renderProductValues(initialValues, colorFitSizeDisplayNames.size_alt)}
-              </p>
-              <p className="product-Price">
+              </BodyCopy>
+              <BodyCopy className="product-Price">
                 <BodyCopy fontWeight="semibold" fontSize={['fs12']} component="span">
-                  {'Price:'}
+                  {`${PICKUP_LABELS.PRICE_LABEL}:`}
                 </BodyCopy>
                 <ProductPricesBopisSection
                   currencySymbol={currencySymbol}
                   listPrice={listPrice}
                   offerPrice={offerPrice}
                 />
-              </p>
+              </BodyCopy>
             </div>
-
-            {isPreferredStoreError && (
-              <p className="preferred-store-message">
-                The color and size selected are not available in your favorite store. Please search
-                for another store or try a different color and/or size.
-              </p>
-            )}
             {!isPickUpWarningModal && (
               <Button
                 className="edit-link"
