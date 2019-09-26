@@ -499,34 +499,6 @@ exports[`StoreDetail component StoreDetail component renders correctly with prop
                 "regularHours": Array [],
               },
             },
-            Object {
-              "basicInfo": Object {
-                "address": Object {
-                  "addressLine1": "4402 13th avenue",
-                  "city": "brooklyn",
-                  "country": "US",
-                  "state": "NY",
-                  "zipCode": "11219",
-                },
-                "coordinates": Object {
-                  "lat": 40.63779,
-                  "long": -73.98933,
-                },
-                "id": "111488",
-                "isDefault": false,
-                "phone": "(718) 871-4640",
-                "storeName": "44th street & 13th ave",
-              },
-              "features": Object {
-                "redirectURL": "44thstreet&13thave-brooklyn-440213thavenue-NY-111488",
-                "storeType": "Retail Store",
-              },
-              "hours": Object {
-                "holidayHours": Array [],
-                "regularAndHolidayHours": Array [],
-                "regularHours": Array [],
-              },
-            },
           ]
         }
       />

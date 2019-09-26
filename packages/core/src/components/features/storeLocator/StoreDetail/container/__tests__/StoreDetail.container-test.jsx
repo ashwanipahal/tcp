@@ -71,7 +71,7 @@ describe('Store Detail Page', () => {
       loadNearByStoreInfo: jest.fn(),
     };
     const component = shallow(<StoreDetailContainer {...prop} />);
-    expect(component.is(StoreDetail)).toBeFalsy();
+    expect(component.is(StoreDetail)).toBeTruthy();
     expect(component).toMatchSnapshot();
   });
 
