@@ -25,6 +25,7 @@ exports[`PickUp Review Section should render the component correctly with same s
         className={null}
         color="gray.900"
         component="p"
+        dataLocator="pickup-section-heading-lbl"
         fontFamily="secondary"
         fontSize="fs16"
         fontWeight="regular"
