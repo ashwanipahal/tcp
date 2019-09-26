@@ -363,10 +363,8 @@ export const getLocationStores = ({
     body: {},
     webService: endpoints.findStoresByCoordinates,
   };
-  console.log('ooo')
   return executeStatefulAPICall(payload)
     .then(res => {
-      console.log('LLL',res)
       // unknown structure of response may be nested arrays, may not be nested arrays. all depends on how backend is feeling today.
       const fetchedStores =
         res.body.PhysicalStore &&
@@ -380,10 +378,7 @@ export const getLocationStores = ({
       }
       return fetchedStores.map(storeResponseParser);
     })
-    .catch((e) => {
-      console.log(e)
-      errorHandler(e)
-    });
+    .catch(errorHandler);
 };
 
 /**

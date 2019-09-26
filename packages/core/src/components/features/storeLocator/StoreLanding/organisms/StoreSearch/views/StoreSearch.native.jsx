@@ -1,7 +1,9 @@
 import React, { Component } from 'react';
 import { FlatList } from 'react-native';
+import superagent from 'superagent';
 import ErrorMessage from '@tcp/core/src/components/common/hoc/ErrorMessage';
 import { PropTypes } from 'prop-types';
+import { getAPIConfig } from '@tcp/core/src/utils';
 import { Anchor, BodyCopy, Image } from '@tcp/core/src/components/common/atoms';
 import InputCheckbox from '@tcp/core/src/components/common/atoms/InputCheckbox';
 import { GooglePlacesInput } from '@tcp/core/src/components/common/atoms/GoogleAutoSuggest/AutoCompleteComponent';
@@ -23,15 +25,31 @@ import constants from '../../../container/StoreLanding.constants';
 const MarkerIcon = require('@tcp/core/src/assets/icon-marker.png');
 const SearchIcon = require('@tcp/core/src/assets/icon-mag-glass.png');
 
-const { INITIAL_STORE_LIMIT } = constants;
+const { INITIAL_STORE_LIMIT, GOOGLE_SEARCH_API_ENDPOINT } = constants;
 
 class StoreSearch extends Component {
   state = {
     errorNotFound: null,
   };
 
-  handleLocationSelection = ({ geometry }, inputValue) => {
-    const { location: { lat, lng } } = geometry;
+  locationRef = null;
+
+  componentDidMount() {
+    if (navigator.geolocation) {
+      const { loadStoresByCoordinates } = this.props;
+      navigator.geolocation.getCurrentPosition(pos => {
+        loadStoresByCoordinates(
+          Promise.resolve({ lat: pos.coords.latitude, lng: pos.coords.longitude }),
+          INITIAL_STORE_LIMIT
+        );
+      });
+    }
+  }
+
+  handleLocationSelection = ({ geometry }) => {
+    const {
+      location: { lat, lng },
+    } = geometry;
     const { loadStoresByCoordinates, submitting } = this.props;
     if (!geometry || submitting) {
       return;
@@ -39,7 +57,7 @@ class StoreSearch extends Component {
     loadStoresByCoordinates(Promise.resolve({ lat, lng }), INITIAL_STORE_LIMIT);
   };
 
-  renderStoreTypes = ({ name, dataLocator, storeLabel }) => {
+  renderStoreTypes = ({ name, dataLocator, storeLabel } = {}) => {
     return (
       <StyledCheckbox>
         <Field
@@ -47,6 +65,7 @@ class StoreSearch extends Component {
           component={InputCheckbox}
           dataLocator={dataLocator}
           enableSuccessCheck={false}
+          onChange={(...args) => this.onSelectStore(args)}
         />
         <StyledCheckBoxBodyCopy>
           <BodyCopy
@@ -61,8 +80,58 @@ class StoreSearch extends Component {
     );
   };
 
+  onSelectStore = selectparams => {
+    const [isSelected, , , name] = selectparams;
+    const { selectStoreType } = this.props;
+
+    if (name === 'gymboreeStoreOption') {
+      this.setState(
+        {
+          gymSelected: isSelected,
+        },
+        () => {
+          const { outletSelected, gymSelected } = this.state;
+          selectStoreType({ outletSelected, gymSelected });
+        }
+      );
+    }
+
+    if (name === 'outletOption') {
+      this.setState(
+        {
+          outletSelected: isSelected,
+        },
+        () => {
+          const { outletSelected, gymSelected } = this.state;
+          selectStoreType({ outletSelected, gymSelected });
+        }
+      );
+    }
+  };
+
+  onSearch = (inputSearch = this.locationRef.getAddressText()) => {
+    const { loadStoresByCoordinates } = this.props;
+    const googleSearchAPIKey = getAPIConfig().googleApiKey;
+    const apiUrl = `${GOOGLE_SEARCH_API_ENDPOINT}${inputSearch}&inputtype=textquery&fields=geometry&key=${googleSearchAPIKey}`;
+
+    superagent
+      .get(apiUrl)
+      .accept('application/json')
+      .end((err, res) => {
+        try {
+          const { lat, lng } = res.body.candidates[0].geometry.location;
+          loadStoresByCoordinates(Promise.resolve({ lat, lng }), INITIAL_STORE_LIMIT);
+        } catch (error) {
+          this.setState({
+            errorNotFound: true,
+          });
+        }
+      });
+    return false;
+  };
+
   render() {
-    const { labels, error, selectedCountry } = this.props;
+    const { labels, error, selectedCountry, toggleMap, mapView } = this.props;
     const {
       errorLabel,
       storeSearchPlaceholder,
@@ -71,21 +140,25 @@ class StoreSearch extends Component {
       outletStores,
       currentLocation,
       viewMap,
+      viewList,
     } = labels;
 
-    const { errorNotFound } = this.state;
+    const { errorNotFound, gymSelected, outletSelected } = this.state;
     const errorMessage = errorNotFound ? errorLabel : error;
+    const viewMapListLabel = mapView ? viewList : viewMap;
 
     const storeOptionsConfig = [
       {
         name: 'gymboreeStoreOption',
         dataLocator: 'gymboree-store-option',
         storeLabel: gymboreeStores,
+        checked: gymSelected,
       },
       {
         name: 'outletOption',
         dataLocator: 'only-outlet-option',
         storeLabel: outletStores,
+        checked: outletSelected,
       },
     ];
 
@@ -115,28 +188,34 @@ class StoreSearch extends Component {
           </StyledStoreLocator>
         </Anchor>
         <StyledAutoComplete>
-          <Field
-            headerTitle={storeSearchPlaceholder}
-            component={GooglePlacesInput}
-            dataLocator="addnewaddress-addressl1"
-            componentRestrictions={{ ...{ country: [selectedCountry] } }}
-            onValueChange={(data, inputValue) => {
-              this.handleLocationSelection(data, inputValue);
-            }}
-          />
-          <StyledSearch>
-            <Anchor onPress={() => this.onSearch()}>
-              <Image source={SearchIcon} height="25px" width="25px" />
-            </Anchor>
-          </StyledSearch>
-          {errorMessage && (
-            <ErrorMessage
-              isShowingMessage={errorMessage}
-              errorId="storeSearch_geoLocation"
-              error={errorMessage}
-              withoutErrorDataAttribute
+          <>
+            <StyledSearch>
+              <Anchor onPress={() => this.onSearch()}>
+                <Image source={SearchIcon} height="25px" width="25px" />
+              </Anchor>
+            </StyledSearch>
+            <Field
+              headerTitle={storeSearchPlaceholder}
+              component={GooglePlacesInput}
+              dataLocator="storeAddressLocator"
+              componentRestrictions={{ ...{ country: [selectedCountry] } }}
+              onChange={this.handleChange}
+              onValueChange={this.handleLocationSelection}
+              refs={instance => {
+                this.locationRef = instance;
+              }}
+              clearButtonMode="never"
+              onSubmitEditing={inputSearch => this.onSearch(inputSearch)}
             />
-          )}
+            {errorMessage && (
+              <ErrorMessage
+                isShowingMessage={errorMessage}
+                errorId="storeSearch_geoLocation"
+                error={errorMessage}
+                withoutErrorDataAttribute
+              />
+            )}
+          </>
         </StyledAutoComplete>
         <StyleStoreOptionList>
           <FlatList
@@ -146,7 +225,13 @@ class StoreSearch extends Component {
           />
         </StyleStoreOptionList>
         <StyledLinks>
-          <Anchor fontWeight="regular" anchorVariation="primary" text={viewMap} underline />
+          <Anchor
+            fontWeight="regular"
+            anchorVariation="primary"
+            text={viewMapListLabel}
+            underline
+            onPress={toggleMap}
+          />
         </StyledLinks>
       </StyledContainer>
     );
@@ -159,12 +244,16 @@ StoreSearch.propTypes = {
   labels: PropTypes.objectOf(PropTypes.string),
   loadStoresByCoordinates: PropTypes.func.isRequired,
   submitting: PropTypes.bool,
+  toggleMap: PropTypes.func.isRequired,
+  mapView: PropTypes.bool,
+  selectStoreType: PropTypes.func.isRequired,
 };
 
 StoreSearch.defaultProps = {
   labels: {},
   selectedCountry: 'US',
   submitting: false,
+  mapView: false,
 };
 
 export default reduxForm({

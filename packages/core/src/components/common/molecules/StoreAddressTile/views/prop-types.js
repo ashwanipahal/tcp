@@ -5,7 +5,7 @@ export const listingType = 'listing';
 export const detailsType = 'detail';
 
 export const propTypes = {
-  className: PropTypes.string.isRequired,
+  className: PropTypes.string,
   children: PropTypes.arrayOf(PropTypes.node),
   variation: PropTypes.oneOf([listingType, detailsType, listingHeader]),
   labels: PropTypes.shape({
@@ -16,6 +16,9 @@ export const propTypes = {
     lbl_storelocators_common_atThisPlace: PropTypes.string,
     lbl_storelocators_landingpage_openInterval: PropTypes.string,
     lbl_storelocators_landingpage_milesAway: PropTypes.string,
+    lbl_storelocators_details_getdirections_btn: PropTypes.string,
+    lbl_storelocators_details_callstore_btn: PropTypes.string,
+    lbl_storelocators_details_changestore_btn: PropTypes.string,
   }).isRequired,
   store: PropTypes.shape({
     basicInfo: PropTypes.shape({
@@ -43,17 +46,24 @@ export const propTypes = {
   isListingHeader: PropTypes.bool,
   openStoreDetail: PropTypes.func,
   openStoreDirections: PropTypes.func,
+  openCallStore: PropTypes.func,
   storeIndex: PropTypes.number,
   setFavoriteStore: PropTypes.func,
+  locatorGetDirections: PropTypes.string,
+  locatorSetFavStore: PropTypes.string,
 };
 
 export const defaultProps = {
+  className: null,
   children: null,
   variation: detailsType,
   isFavorite: false,
   isListingHeader: false,
   openStoreDetail: null,
   openStoreDirections: null,
+  openCallStore: null,
   setFavoriteStore: null,
   storeIndex: 0,
+  locatorDirections: 'get-store-directions',
+  locatorSetFavStore: 'set-favorite-store',
 };

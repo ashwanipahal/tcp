@@ -1,6 +1,5 @@
 import { call, takeLatest, put, select } from 'redux-saga/effects';
 import { validateReduxCache } from '@tcp/core/src/utils/cache.util';
-import logger from '@tcp/core/src/utils/loggerInstance';
 import {
   getLocationStores,
   getFavoriteStore,
@@ -13,7 +12,6 @@ import {
   setStoresByCoordinates,
   getSetGeoDefaultStoreActn,
 } from './StoreLanding.actions';
-
 
 export function* fetchLocationStoresSaga({ payload }) {
   try {
@@ -36,17 +34,14 @@ export function* getFavoriteStoreSaga({ payload }) {
 export function* setFavoriteStoreSaga({ payload }) {
   try {
     const state = yield select();
-    console.log('::::', payload)
+    console.log('::::', payload);
     const res = yield call(setFavoriteStore, payload.basicInfo.id, state);
-    console.log('////', res)
+    console.log('////', res);
     if (res) {
-      yield put(
-        setDefaultStoreUserAction(payload)
-      );
+      yield put(setDefaultStoreUserAction(payload));
     }
     yield;
   } catch (err) {
-    logger(err);
     yield null;
   }
 }
