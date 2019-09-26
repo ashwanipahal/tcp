@@ -19,11 +19,13 @@ class Header extends React.PureComponent {
   }
 
   componentDidMount() {
-    this.addScrollListener();
+    // eslint-disable-next-line extra-rules/no-commented-out-code
+    // this.addScrollListener();
   }
 
   componentWillUnmount() {
-    this.removeScrollListener();
+    // eslint-disable-next-line extra-rules/no-commented-out-code
+    // this.removeScrollListener();
   }
 
   getStickyPosition = () => {
