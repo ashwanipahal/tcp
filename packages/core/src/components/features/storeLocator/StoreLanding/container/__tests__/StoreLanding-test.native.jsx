@@ -37,9 +37,21 @@ describe('StoreSearch Container', () => {
     expect(wrapper.instance().state.mapView).toBeTruthy();
   });
 
-  test('should call selectStoreType', () => {
+  test('should call selectStoreType - all selected', () => {
     const wrapper = shallow(<StoreLandingVanilla {...props} />);
     wrapper.instance().selectStoreType({ gymSelected: true, outletSelected: true });
+    expect(wrapper.instance().state.isGym).toBeTruthy();
+  });
+
+  test('should call selectStoreType - isOutlet', () => {
+    const wrapper = shallow(<StoreLandingVanilla {...props} />);
+    wrapper.instance().selectStoreType({ outletSelected: true });
+    expect(wrapper.instance().state.isOutlet).toBeTruthy();
+  });
+
+  test('should call selectStoreType - gymSelected', () => {
+    const wrapper = shallow(<StoreLandingVanilla {...props} />);
+    wrapper.instance().selectStoreType({ gymSelected: true });
     expect(wrapper.instance().state.isGym).toBeTruthy();
   });
 });

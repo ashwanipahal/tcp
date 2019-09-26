@@ -21,15 +21,13 @@ export class StoreLanding extends PureComponent {
   getFavoriteStoreInititator = () => {
     if (navigator.geolocation) {
       const { loadStoresByCoordinates } = this;
-      navigator.geolocation.getCurrentPosition(pos => {
-        loadStoresByCoordinates(
-          Promise.resolve({ lat: pos.coords.latitude, lng: pos.coords.longitude }),
-          INITIAL_STORE_LIMIT
-        );
-      });
       navigator.geolocation.getCurrentPosition(
         pos => {
           this.initiateGetFavoriteStoreRequest(pos.coords.latitude, pos.coords.longitude);
+          loadStoresByCoordinates(
+            Promise.resolve({ lat: pos.coords.latitude, lng: pos.coords.longitude }),
+            INITIAL_STORE_LIMIT
+          );
         },
         () => {
           this.initiateGetFavoriteStoreRequest();
