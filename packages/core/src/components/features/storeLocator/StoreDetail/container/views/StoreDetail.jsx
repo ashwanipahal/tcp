@@ -17,7 +17,7 @@ const StoreDetail = ({
   routesBack,
 }) => {
   const {
-    hours: { regularHours, holidayHours, regularAndHolidayHours },
+    hours,
     features: { mallType, entranceType },
   } = store;
   const storeMeta = [
@@ -30,6 +30,10 @@ const StoreDetail = ({
       value: entranceType,
     },
   ];
+
+  const storeTimings = [];
+  if (hours !== undefined && Object.keys(hours).length > 0)
+    Object.keys(hours).forEach(hour => storeTimings.push(...hours[hour]));
 
   return (
     <div className={className}>
@@ -55,11 +59,7 @@ const StoreDetail = ({
           <StoreHours
             title="Store Hours"
             defaultOpen
-            storeTiming={formatStoreTiming([
-              ...regularHours,
-              ...holidayHours,
-              ...regularAndHolidayHours,
-            ])}
+            storeTiming={formatStoreTiming(storeTimings)}
             storeMeta={storeMeta}
           />
         </Col>
@@ -117,3 +117,5 @@ StoreDetail.propTypes = {
 };
 
 export default withStyles(StoreDetail, style);
+
+export { StoreDetail as StoreDetailVanilla };

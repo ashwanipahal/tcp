@@ -140,7 +140,7 @@ class TCPWebApp extends App {
         optimizelyHeadersObject,
       };
       store.dispatch(bootstrapData(payload));
-      if (asPath.includes('store')) {
+      if (asPath.includes('store') && !asPath.includes('store-locator')) {
         store.dispatch(getCurrentStoreInfo(fetchStoreIdFromUrlPath(asPath)));
       }
     }

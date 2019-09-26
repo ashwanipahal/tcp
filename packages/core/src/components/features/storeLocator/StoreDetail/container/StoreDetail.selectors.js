@@ -15,8 +15,7 @@ export const formatHoursToObject = storeHours => {
   const formattedHrs = {};
   const formatHoursChild = hoursToFormat => {
     const returnedHours = [];
-    // eslint-disable-next-line no-plusplus
-    for (let i = 0; i < hoursToFormat.size; i++) {
+    hoursToFormat.forEach((hr, i) => {
       const tempIntObj = {};
       hoursToFormat.getIn([i, 'openIntervals', 0]).forEach((value, key) => {
         tempIntObj[key] = value;
@@ -26,19 +25,23 @@ export const formatHoursToObject = storeHours => {
         isClosed: hoursToFormat.getIn([i, 'isClosed']),
         openIntervals: [tempIntObj],
       });
-    }
+      return hr;
+    });
     return returnedHours;
   };
   storeHours.forEach((value, key) => {
     formattedHrs[key] = formatHoursChild(storeHours.get(key));
+    return value;
   });
   return formattedHrs;
 };
 
 export const formatGenericMapObject = store => {
   const resultObject = {};
-  // eslint-disable-next-line no-return-assign
-  store.forEach((value, key) => (resultObject[key] = value));
+  store.forEach((value, key) => {
+    resultObject[key] = value;
+    return value;
+  });
   return resultObject;
 };
 
@@ -50,10 +53,14 @@ export const formatCurrentStoreToObject = store => {
     const coordinateState = basicInfoState.get('coordinates');
     const address = {};
     const coordinates = {};
-    // eslint-disable-next-line no-return-assign
-    addressState.forEach((value, key) => (address[key] = value));
-    // eslint-disable-next-line no-return-assign
-    coordinateState.forEach((value, key) => (coordinates[key] = value));
+    addressState.forEach((value, key) => {
+      address[key] = value;
+      return value;
+    });
+    coordinateState.forEach((value, key) => {
+      coordinates[key] = value;
+      return value;
+    });
     formattedStore.basicInfo = {
       id: basicInfoState.get('id'),
       storeName: basicInfoState.get('storeName'),

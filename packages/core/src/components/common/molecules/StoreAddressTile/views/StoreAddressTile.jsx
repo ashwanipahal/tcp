@@ -1,8 +1,8 @@
 import React, { PureComponent, Fragment } from 'react';
+import Router from 'next/router'; // eslint-disable-line
 import withStyles from '@tcp/core/src/components/common/hoc/withStyles';
-import Router from 'next/router';
 import { Anchor, BodyCopy, Image, Button } from '@tcp/core/src/components/common/atoms';
-import { toTimeString, getIconPath } from '@tcp/core/src/utils';
+import { toTimeString, getIconPath, getAPIConfig } from '@tcp/core/src/utils';
 import { parseDate } from '@tcp/core/src/utils/parseDate';
 import style, {
   TileHeader,
@@ -62,7 +62,7 @@ class StoreAddressTile extends PureComponent {
             title={labels.lbl_storelocators_landingpage_storedetails_link}
             noLink
           >
-            {labels.lbl_storelocators_landingpage_storedetails_link}
+            {labels.lbl_storelocators_landingpage_storedetails_link || 'Test Link'}
           </Anchor>
         </div>
         <div>
@@ -96,12 +96,8 @@ class StoreAddressTile extends PureComponent {
   }
 
   getListingHeader() {
-    const {
-      openStoreDetail,
-      store: { isGym, basicInfo, distance },
-      labels,
-      openStoreDirections,
-    } = this.props;
+    const { openStoreDetail, store, labels, openStoreDirections } = this.props;
+    const { isGym, basicInfo, distance } = store;
     const { storeName, address, phone } = basicInfo;
     const { addressLine1, city, state, zipCode } = address;
     return (
@@ -139,7 +135,7 @@ class StoreAddressTile extends PureComponent {
               <Anchor
                 fontSizeVariation="medium"
                 underline
-                handleLinkClick={openStoreDirections}
+                handleLinkClick={() => openStoreDirections(store)}
                 anchorVariation="primary"
                 target="_blank"
                 className="store-directions-link"
@@ -361,17 +357,17 @@ class StoreAddressTile extends PureComponent {
   }
 
   openStoreDetails = e => {
+    const { store, fetchCurrentStore } = this.props;
     const {
-      store: {
-        basicInfo: {
-          id,
-          storeName,
-          address: { city, state, zipCode },
-        },
+      basicInfo: {
+        id,
+        storeName,
+        address: { city, state, zipCode },
       },
-    } = this.props;
+    } = store;
     e.preventDefault();
-    const url = `/store/${storeName
+    fetchCurrentStore(store);
+    const url = `/${getAPIConfig().siteId}/store/${storeName
       .replace(/\s/g, '')
       .toLowerCase()}-${state.toLowerCase()}-${city
       .replace(/\s/g, '')

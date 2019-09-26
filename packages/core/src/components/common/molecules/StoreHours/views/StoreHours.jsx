@@ -14,7 +14,11 @@ class StoreHours extends PureComponent {
         <div className="text-left">{item.label}</div>
         {Array.isArray(item.value) &&
           item.value.length > 0 &&
-          item.value.map(timeArr => <div className="text-right">{timeArr}</div>)}
+          item.value.map(timeArr => (
+            <div className="text-right" key={`${item.id}-${timeArr}`}>
+              {timeArr}
+            </div>
+          ))}
         {!Array.isArray(item.value) ? <div className="text-right">{item.value}</div> : null}
       </li>
     ));

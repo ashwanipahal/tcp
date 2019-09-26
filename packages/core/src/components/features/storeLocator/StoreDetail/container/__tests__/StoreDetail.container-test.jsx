@@ -66,39 +66,13 @@ describe('Store Detail Page', () => {
   it('should not render StoreDetail', () => {
     const prop = {
       currentStoreInfo: fromJS({}),
-      formatStore: jest.fn(),
+      formatStore: store => ({ key: store }),
       nearByStores: [],
       loadNearByStoreInfo: jest.fn(),
     };
     const component = shallow(<StoreDetailContainer {...prop} />);
     expect(component.is(StoreDetail)).toBeFalsy();
     expect(component).toMatchSnapshot();
-  });
-  it('should return open the google maps for the store direction', () => {
-    const component = shallow(<StoreDetailContainer {...props} />);
-    const store = {
-      basicInfo: {
-        id: '111421',
-        storeName: 'steinway street',
-        address: {
-          addressLine1: '31-53 steinway street',
-          city: 'astoria',
-          state: 'NY',
-          country: 'US ',
-          zipCode: '11103',
-        },
-      },
-    };
-    const spyOn = jest.spyOn(component.instance(), 'openStoreDirections');
-    component.instance().openStoreDirections(store);
-    expect(spyOn).toHaveBeenCalled();
-  });
-  it('should return to previous page', () => {
-    const component = shallow(<StoreDetailContainer {...props} />);
-    const spyOn = jest.spyOn(component.instance(), 'routesBack');
-    const e = { preventDefault: jest.fn() };
-    component.instance().routesBack(e);
-    expect(spyOn).toHaveBeenCalled();
   });
 
   describe('#mapDispatchToProps', () => {

@@ -8,7 +8,6 @@ import StoreDetail from './views/StoreDetail';
 import { getAPIConfig } from '../../../../../utils';
 import {
   getCurrentStore,
-  getCurrentStoreBasicInfo,
   formatCurrentStoreToObject,
   getNearByStores,
   getLabels,
@@ -17,23 +16,7 @@ import {
 import mockLabels from '../../../../common/molecules/StoreAddressTile/__mocks__/labels.mock';
 
 export class StoreDetailContainer extends PureComponent {
-  componentDidMount() {
-    const { loadNearByStoreInfo, currentStoreInfo, currentStoreBasicInfo } = this.props;
-    if (currentStoreInfo && currentStoreInfo.size > 0) {
-      const coordinates = currentStoreBasicInfo.get('coordinates');
-      const payloadArgs = {
-        storeLocationId: currentStoreBasicInfo.get('id'),
-        getNearby: true,
-        latitude: coordinates.get('lat'),
-        longitude: coordinates.get('long'),
-        currentStore: currentStoreInfo,
-      };
-      loadNearByStoreInfo(payloadArgs);
-    }
-  }
-
-  // eslint-disable-next-line class-methods-use-this
-  openStoreDetails(store) {
+  static openStoreDetails(store) {
     const {
       basicInfo: {
         id,
@@ -51,8 +34,7 @@ export class StoreDetailContainer extends PureComponent {
     if (Router) Router.push(url);
   }
 
-  // eslint-disable-next-line class-methods-use-this
-  openStoreDirections(store) {
+  static openStoreDirections(store) {
     const {
       basicInfo: { address },
     } = store;
@@ -62,10 +44,26 @@ export class StoreDetailContainer extends PureComponent {
     );
   }
 
-  // eslint-disable-next-line class-methods-use-this
-  routesBack(e) {
+  static routesBack(e) {
     e.preventDefault();
     window.history.back();
+  }
+
+  componentDidMount() {
+    const { loadNearByStoreInfo, currentStoreInfo, formatStore } = this.props;
+    const store = formatStore(currentStoreInfo);
+    if (store.basicInfo && Object.keys(store.basicInfo).length > 0) {
+      const { basicInfo } = store;
+      const { coordinates, id } = basicInfo;
+      const payloadArgs = {
+        storeLocationId: id,
+        getNearby: true,
+        latitude: coordinates.lat,
+        longitude: coordinates.long,
+        currentStore: store,
+      };
+      loadNearByStoreInfo(payloadArgs);
+    }
   }
 
   render() {
@@ -79,9 +77,9 @@ export class StoreDetailContainer extends PureComponent {
         store={store}
         labels={labels || mockLabels.StoreLocator}
         otherStores={otherStores}
-        openStoreDetails={selectedStore => this.openStoreDetails(selectedStore)}
-        openStoreDirections={() => this.openStoreDirections(store)}
-        routesBack={this.routesBack}
+        openStoreDetails={selectedStore => this.constructor.openStoreDetails(selectedStore)}
+        openStoreDirections={() => this.constructor.openStoreDirections(store)}
+        routesBack={this.constructor.routesBack}
       />
     ) : null;
   }
@@ -89,7 +87,6 @@ export class StoreDetailContainer extends PureComponent {
 
 StoreDetailContainer.propTypes = {
   currentStoreInfo: PropTypes.instanceOf(Map),
-  currentStoreBasicInfo: PropTypes.instanceOf(Map),
   formatStore: PropTypes.func.isRequired,
   nearByStores: PropTypes.shape([]).isRequired,
   labels: PropTypes.shape({
@@ -123,21 +120,11 @@ StoreDetailContainer.defaultProps = {
     hours: {},
     features: {},
   }),
-  currentStoreBasicInfo: fromJS({
-    basicInfo: {
-      id: '',
-      storeName: '',
-      phone: '',
-      coordinates: {},
-      address: {},
-    },
-  }),
 };
 
 const mapStateToProps = state => {
   return {
     currentStoreInfo: getCurrentStore(state),
-    currentStoreBasicInfo: getCurrentStoreBasicInfo(state),
     formatStore: store => formatCurrentStoreToObject(store),
     nearByStores: getNearByStores(state),
     labels: getLabels(state),

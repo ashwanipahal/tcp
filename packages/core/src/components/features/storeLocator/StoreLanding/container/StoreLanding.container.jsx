@@ -7,10 +7,21 @@ import {
   setFavoriteStoreActn,
   getFavoriteStoreActn,
 } from './StoreLanding.actions';
+import { getCurrentStoreInfo } from '../../StoreDetail/container/StoreDetail.actions';
 import StoreLandingView from './views/StoreLanding';
 import { getCurrentCountry, getPageLabels } from './StoreLanding.selectors';
 
 export class StoreLanding extends PureComponent {
+  static openStoreDirections(store) {
+    const {
+      basicInfo: { address },
+    } = store;
+    const { addressLine1, city, state, zipCode } = address;
+    window.open(
+      `https://maps.google.com/maps?daddr=${addressLine1},%20${city},%20${state},%20${zipCode}`
+    );
+  }
+
   componentDidMount() {
     this.getFavoriteStoreInititator();
   }
@@ -51,6 +62,14 @@ export class StoreLanding extends PureComponent {
     return false;
   };
 
+  fetchCurrentStoreDetails = store => {
+    const { fetchCurrentStore } = this.props;
+    const {
+      basicInfo: { id },
+    } = store;
+    if (id) fetchCurrentStore(id);
+  };
+
   render() {
     const searchIcon = getIconPath('search-icon');
     const markerIcon = getIconPath('marker-icon');
@@ -60,6 +79,8 @@ export class StoreLanding extends PureComponent {
         loadStoresByCoordinates={this.loadStoresByCoordinates}
         searchIcon={searchIcon}
         markerIcon={markerIcon}
+        fetchCurrentStore={store => this.fetchCurrentStoreDetails(store)}
+        openStoreDirections={store => this.constructor.openStoreDirections(store)}
       />
     );
   }
@@ -69,6 +90,7 @@ StoreLanding.propTypes = {
   fetchStoresByCoordinates: PropTypes.func.isRequired,
   getFavoriteStore: PropTypes.func.isRequired,
   favoriteStore: PropTypes.shape(PropTypes.string),
+  fetchCurrentStore: PropTypes.func.isRequired,
 };
 
 StoreLanding.defaultProps = {
@@ -80,6 +102,7 @@ const mapDispatchToProps = dispatch => ({
   fetchStoresByCoordinates: storeConfig => dispatch(getStoresByCoordinates(storeConfig)),
   setFavoriteStore: payload => dispatch(setFavoriteStoreActn(payload)),
   getFavoriteStore: payload => dispatch(getFavoriteStoreActn(payload)),
+  fetchCurrentStore: payload => dispatch(getCurrentStoreInfo(payload)),
 });
 
 /* istanbul ignore next  */

@@ -68,7 +68,7 @@ export class StoreLanding extends PureComponent {
   };
 
   renderStoreList = suggestedStoreList => {
-    const { setFavoriteStore, favoriteStore } = this.props;
+    const { setFavoriteStore, favoriteStore, fetchCurrentStore, openStoreDirections } = this.props;
     return suggestedStoreList.map(item => (
       <Col
         colSize={{ large: 12, medium: 8, small: 6 }}
@@ -82,6 +82,8 @@ export class StoreLanding extends PureComponent {
           variation="listing"
           setFavoriteStore={setFavoriteStore}
           isFavorite={favoriteStore && favoriteStore.basicInfo.id === item.basicInfo.id}
+          fetchCurrentStore={fetchCurrentStore}
+          openStoreDirections={openStoreDirections}
         />
       </Col>
     ));
@@ -190,6 +192,8 @@ StoreLanding.propTypes = {
   favoriteStore: PropTypes.shape(PropTypes.string),
   className: PropTypes.string.isRequired,
   labels: PropTypes.shape(PropTypes.string).isRequired,
+  fetchCurrentStore: PropTypes.func.isRequired,
+  openStoreDirections: PropTypes.func.isRequired,
 };
 
 StoreLanding.defaultProps = {
