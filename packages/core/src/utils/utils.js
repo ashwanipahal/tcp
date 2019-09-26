@@ -242,7 +242,7 @@ export const getAddressFromPlace = (place, inputValue) => {
     const result = regex.exec(inputValue);
     const inputNum = Array.isArray(result) && result[1] && Number(result[1]);
 
-    if (!Number(inputNum) && parseInt(inputNum, 10) === inputNum) {
+    if (!isNaN(inputNum) && parseInt(inputNum, 10) === inputNum) {
       address.street_number = inputNum;
     }
   }
