@@ -146,17 +146,34 @@ class StoreAddressTile extends PureComponent {
     } = this.props;
     const todaysDate = new Date();
     const { regularHours, holidayHours, regularAndHolidayHours } = hours;
-    const selectedInterval = [...regularHours, ...holidayHours, ...regularAndHolidayHours].filter(
-      hour => {
-        const toInterval = hour.openIntervals[0] && hour.openIntervals[0].toHour;
+    const intervals = [...regularHours, ...holidayHours, ...regularAndHolidayHours];
+    let selectedInterval = intervals.filter(hour => {
+      const toInterval = hour && hour.openIntervals[0] && hour.openIntervals[0].toHour;
+      const parsedDate = new Date(toInterval);
+      return (
+        parsedDate.getDate() === todaysDate.getDate() &&
+        parsedDate.getMonth() === todaysDate.getMonth() &&
+        parsedDate.getFullYear() === todaysDate.getFullYear()
+      );
+    });
+    // Fallback for Date and month not matching.
+    // We check day and year instead.
+    if (!selectedInterval.length) {
+      selectedInterval = intervals.filter(hour => {
+        const toInterval = hour && hour.openIntervals[0] && hour.openIntervals[0].toHour;
+        const parsedDate = new Date(toInterval);
         return (
-          parseDate(toInterval).getDate() === todaysDate.getDate() &&
-          parseDate(toInterval).getMonth() === todaysDate.getMonth() &&
-          parseDate(toInterval).getFullYear() === todaysDate.getFullYear()
+          parsedDate.getDay() === todaysDate.getDay() &&
+          parsedDate.getFullYear() === todaysDate.getFullYear()
         );
-      }
-    );
-    return toTimeString(parseDate(selectedInterval[0].openIntervals[0].toHour), true);
+      });
+    }
+    try {
+      return toTimeString(parseDate(selectedInterval[0].openIntervals[0].toHour), true);
+    } catch (err) {
+      // Show empty incase no data found.
+      return '';
+    }
   }
 
   getStoreAddress() {

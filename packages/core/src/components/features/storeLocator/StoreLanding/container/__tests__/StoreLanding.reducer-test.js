@@ -16,6 +16,12 @@ describe('StoreLocatorReducer', () => {
     expect(storeChanged).toBe(initialState);
   });
 
+  test('DEFAULT - no state', () => {
+    const action = {};
+    const storeChanged = StoreLocatorReducer(undefined, action);
+    expect(storeChanged).toBe(initialState);
+  });
+
   test('DEFAULT - no state instance of object', () => {
     const action = {};
     state = 'string-value';

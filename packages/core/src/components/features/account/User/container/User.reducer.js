@@ -10,6 +10,7 @@ const initialState = fromJS({
   survey: null,
   children: null,
   favoriteStore: null,
+  defaultStore: null,
 });
 
 const UserReducer = (state = initialState, { type, payload }) => {
@@ -82,6 +83,8 @@ const UserReducer = (state = initialState, { type, payload }) => {
       return initialState;
     case USER_CONSTANTS.CLEAR_USER_INFO_TTL:
       return state.set(DEFAULT_REDUCER_KEY, null);
+    case USER_CONSTANTS.SET_DEFAULT_STORE:
+      return state.set('defaultStore', payload);
     case USER_CONSTANTS.SET_SURVEY_QUESTIONS:
       return state.set(
         'survey',

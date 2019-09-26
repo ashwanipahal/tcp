@@ -9,7 +9,6 @@ import {
   Row,
   Col,
 } from '@tcp/core/src/components/common/atoms';
-import { Grid } from '@tcp/core/src/components/common/molecules';
 import PropTypes from 'prop-types';
 import { AutoCompleteComponent } from '@tcp/core/src/components/common/atoms/GoogleAutoSuggest/AutoCompleteComponent';
 import withStyles from '@tcp/core/src/components/common/hoc/withStyles';
@@ -23,6 +22,8 @@ const { INITIAL_STORE_LIMIT } = constants;
 export class StoreSearch extends PureComponent {
   state = {
     errorNotFound: null,
+    gymSelected: false,
+    outletSelected: false,
   };
 
   componentDidMount() {
@@ -70,9 +71,38 @@ export class StoreSearch extends PureComponent {
     return false;
   };
 
-  /* istanbul ignore next  */
-  onSelectStore = () => {
-    // @TODO
+  /**
+   * @function onSelectStore function to handle the toggling og checkbox
+   * @param {object} event - event object
+   */
+  onSelectStore = event => {
+    const { target } = event;
+    const { selectStoreType } = this.props;
+
+    if (target.name === 'gymboreeStoreOption') {
+      this.setState(
+        {
+          gymSelected: target.checked,
+        },
+        () => {
+          const { outletSelected, gymSelected } = this.state;
+          selectStoreType({ outletSelected, gymSelected });
+        }
+      );
+    }
+
+    if (target.name === 'outletOption') {
+      this.setState(
+        {
+          outletSelected: target.checked,
+        },
+        () => {
+          const { outletSelected, gymSelected } = this.state;
+          selectStoreType({ outletSelected, gymSelected });
+        }
+      );
+    }
+    return true;
   };
 
   render() {
@@ -84,34 +114,27 @@ export class StoreSearch extends PureComponent {
       labels,
       searchIcon,
       markerIcon,
-      gymSelected,
-      outletSelected,
+      toggleMap,
+      mapView,
     } = this.props;
-    const { errorNotFound } = this.state;
-    const {
-      errorLabel,
-      storeSearchPlaceholder,
-      findStoreHeading,
-      gymboreeStores,
-      outletStores,
-      currentLocation,
-      viewMap,
-      allUSCAStores,
-      internationalStores,
-    } = labels;
-    const errorMessage = errorNotFound ? errorLabel : error;
+    const { errorNotFound, gymSelected, outletSelected } = this.state;
+    const errorMessage = errorNotFound ? labels.lbl_storelocators_detail_errorLabel : error;
+
+    const viewMapListLabel = mapView
+      ? labels.lbl_storelocators_detail_viewList
+      : labels.lbl_storelocators_detail_viewMap;
 
     const storeOptionsConfig = [
       {
         name: 'gymboreeStoreOption',
         dataLocator: 'gymboree-store-option',
-        storeLabel: gymboreeStores,
+        storeLabel: labels.lbl_storelocators_detail_gymboreeStores,
         checked: gymSelected,
       },
       {
         name: 'outletOption',
         dataLocator: 'only-outlet-option',
-        storeLabel: outletStores,
+        storeLabel: labels.lbl_storelocators_detail_outletStores,
         checked: outletSelected,
       },
     ];
@@ -120,118 +143,109 @@ export class StoreSearch extends PureComponent {
       {
         asPath: '',
         to: '',
-        label: viewMap,
-        classValue: 'mapLink',
+        label: labels.lbl_storelocators_detail_allUSCAStores,
       },
       {
         asPath: '',
         to: '',
-        label: allUSCAStores,
-        classValue: '',
-      },
-      {
-        asPath: '',
-        to: '',
-        label: internationalStores,
-        classValue: '',
+        label: labels.lbl_storelocators_detail_internationalStores,
       },
     ];
 
     return (
-      <Grid>
+      <div className={className}>
+        <h3 className="storeLocatorHeading">{labels.lbl_storelocators_detail_findStoreHeading}</h3>
         <Row fullBleed>
-          <Col colSize={{ large: 6, medium: 8, small: 6 }} ignoreGutter={{ small: true }}>
-            <div className={className}>
-              <h3 className="storeLocatorHeading">{findStoreHeading}</h3>
-              <Row fullBleed>
-                <Col colSize={{ large: 6.5, medium: 4, small: 6 }}>
-                  <div className="currentLocationWrapper">
-                    <Anchor asPath="/" className="" to="/">
-                      <Image
-                        alt="location"
-                        className="location-image icon-small"
-                        src={markerIcon}
-                        data-locator="marker-icon"
-                        height="16px"
-                      />
-                      <span className="currentLocation">{currentLocation}</span>
+          <Col colSize={{ large: 6.5, medium: 4, small: 6 }}>
+            <div className="currentLocationWrapper">
+              <Anchor asPath="/" className="" to="/">
+                <Image
+                  alt="location"
+                  className="location-image icon-small"
+                  src={markerIcon}
+                  data-locator="marker-icon"
+                  height="16px"
+                />
+                <span className="currentLocation">
+                  {labels.lbl_storelocators_detail_currentLocation}
+                </span>
+              </Anchor>
+            </div>
+            <form onSubmit={handleSubmit(this.onSubmit)} noValidate className="searchForm">
+              <div className="searchBar">
+                <Field
+                  id="storeAddressLocator"
+                  title={labels.lbl_storelocators_detail_storeSearchPlaceholder}
+                  placeholder={labels.lbl_storelocators_detail_storeSearchPlaceholder}
+                  component={AutoCompleteComponent}
+                  name="storeAddressLocator"
+                  onPlaceSelected={this.handleLocationSelection}
+                  componentRestrictions={Object.assign({}, { country: [selectedCountry] })}
+                  dataLocator="storeAddressLocator"
+                  className="store-locator-field"
+                  enableSuccessCheck={false}
+                />
+                <Button type="submit" title="search" className="button-search-store">
+                  <Image
+                    alt="search"
+                    className="search-image icon-small"
+                    onClick={this.closeSearchBar}
+                    src={searchIcon}
+                    data-locator="search-icon"
+                    height="25px"
+                  />
+                </Button>
+              </div>
+              {errorMessage && (
+                <ErrorMessage
+                  isShowingMessage={errorMessage}
+                  errorId="storeSearch_geoLocation"
+                  error={errorMessage}
+                  withoutErrorDataAttribute
+                />
+              )}
+            </form>
+          </Col>
+          <Col colSize={{ large: 12, medium: 4, small: 6 }}>
+            <div className="searchFormBody">
+              <ul className="storeOptionList">
+                {storeOptionsConfig.map(({ name, dataLocator, storeLabel, checked }) => (
+                  <li className="storeOptions">
+                    <Field
+                      name={name}
+                      component={InputCheckBox}
+                      dataLocator={dataLocator}
+                      enableSuccessCheck={false}
+                      onChange={this.onSelectStore}
+                      checked={checked}
+                    >
+                      <BodyCopy
+                        fontSize={['fs12', 'fs12', 'fs12']}
+                        fontFamily="secondary"
+                        fontWeight="regular"
+                      >
+                        {storeLabel}
+                      </BodyCopy>
+                    </Field>
+                  </li>
+                ))}
+              </ul>
+              <ul className="storeLinksList">
+                <li key={viewMapListLabel} className="mapLink storeLinks">
+                  <Anchor onClick={toggleMap}>{viewMapListLabel}</Anchor>
+                </li>
+                {linksConfig.map(({ to, asPath, label }) => (
+                  <li key={label} className="storeLinks">
+                    <Anchor asPath={asPath} className="" to={to}>
+                      {label}
                     </Anchor>
-                  </div>
-                  <form onSubmit={handleSubmit(this.onSubmit)} noValidate className="searchForm">
-                    <div className="searchBar">
-                      <Field
-                        id="storeAddressLocator"
-                        title={storeSearchPlaceholder}
-                        placeholder={storeSearchPlaceholder}
-                        component={AutoCompleteComponent}
-                        name="storeAddressLocator"
-                        onPlaceSelected={this.handleLocationSelection}
-                        componentRestrictions={Object.assign({}, { country: [selectedCountry] })}
-                        dataLocator="storeAddressLocator"
-                        className="store-locator-field"
-                        enableSuccessCheck={false}
-                      />
-                      <Button type="submit" title="search" className="button-search-store">
-                        <Image
-                          alt="search"
-                          className="search-image icon-small"
-                          onClick={this.closeSearchBar}
-                          src={searchIcon}
-                          data-locator="search-icon"
-                          height="25px"
-                        />
-                      </Button>
-                    </div>
-                    {errorMessage && (
-                      <ErrorMessage
-                        isShowingMessage={errorMessage}
-                        errorId="storeSearch_geoLocation"
-                        error={errorMessage}
-                        withoutErrorDataAttribute
-                      />
-                    )}
-                  </form>
-                </Col>
-                <Col colSize={{ large: 12, medium: 4, small: 6 }}>
-                  <div className="searchFormBody">
-                    <ul className="storeOptionList">
-                      {storeOptionsConfig.map(({ name, dataLocator, storeLabel, checked }) => (
-                        <li className="storeOptions">
-                          <Field
-                            name={name}
-                            component={InputCheckBox}
-                            dataLocator={dataLocator}
-                            enableSuccessCheck={false}
-                            onChange={this.onSelectStore}
-                            checked={checked}
-                          >
-                            <BodyCopy
-                              fontSize={['fs12', 'fs12', 'fs12']}
-                              fontFamily="secondary"
-                              fontWeight="regular"
-                            >
-                              {storeLabel}
-                            </BodyCopy>
-                          </Field>
-                        </li>
-                      ))}
-                    </ul>
-                    <ul className="storeLinksList">
-                      {linksConfig.map(({ to, asPath, label, classValue }) => (
-                        <li key={label} className={`${classValue} storeLinks`}>
-                          <Anchor asPath={asPath} className="" to={to}>
-                            {label}
-                          </Anchor>
-                        </li>
-                      ))}
-                    </ul>
-                  </div>
-                </Col>
-              </Row>
+                  </li>
+                ))}
+              </ul>
             </div>
           </Col>
         </Row>
-      </Grid>
+      </div>
     );
   }
 }
@@ -240,21 +254,21 @@ StoreSearch.propTypes = {
   className: PropTypes.string.isRequired,
   selectedCountry: PropTypes.string.isRequired,
   loadStoresByCoordinates: PropTypes.func.isRequired,
+  selectStoreType: PropTypes.func.isRequired,
   submitting: PropTypes.bool,
   error: PropTypes.bool.isRequired,
   handleSubmit: PropTypes.func.isRequired,
   labels: PropTypes.objectOf(PropTypes.string),
   searchIcon: PropTypes.string.isRequired,
   markerIcon: PropTypes.string.isRequired,
-  gymSelected: PropTypes.bool,
-  outletSelected: PropTypes.bool,
+  toggleMap: PropTypes.func.isRequired,
+  mapView: PropTypes.bool,
 };
 
 StoreSearch.defaultProps = {
   submitting: false,
   labels: {},
-  gymSelected: false,
-  outletSelected: false,
+  mapView: false,
 };
 
 export default reduxForm({

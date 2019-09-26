@@ -15,10 +15,17 @@ export function getSetGeoDefaultStoreActn(payload) {
   };
 }
 
-export function getFavoriteStore(payload) {
+export function getFavoriteStoreActn(payload) {
   return {
     payload,
     type: STORE_LOCATOR_CONSTANTS.GET_FAVORITE_STORE,
+  };
+}
+
+export function setFavoriteStoreActn(payload) {
+  return {
+    payload,
+    type: STORE_LOCATOR_CONSTANTS.SET_FAVORITE_STORE,
   };
 }
 

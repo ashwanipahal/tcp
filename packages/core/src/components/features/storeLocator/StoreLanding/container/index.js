@@ -1,4 +1,4 @@
 import { withRouter } from 'next/router';
-import StoreLanding from './StoreLanding.container';
+import StoreLandingComp from './StoreLanding.container';
 
-export default withRouter(StoreLanding);
+export default withRouter(StoreLandingComp);
