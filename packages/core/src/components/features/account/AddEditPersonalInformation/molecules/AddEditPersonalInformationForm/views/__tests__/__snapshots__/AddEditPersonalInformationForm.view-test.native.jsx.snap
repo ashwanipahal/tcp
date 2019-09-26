@@ -541,6 +541,7 @@ exports[`AddEditPersonalInformationForm component should renders correctly in in
       buttonVariation="variable-width"
       color="white"
       customStyle={Object {}}
+      customTextStyle={null}
       disableButton={false}
       fill="BLUE"
       fullWidth=""
@@ -565,6 +566,7 @@ exports[`AddEditPersonalInformationForm component should renders correctly in in
       buttonVariation="variable-width"
       color=""
       customStyle={Object {}}
+      customTextStyle={null}
       disableButton={false}
       fill="WHITE"
       fullWidth=""

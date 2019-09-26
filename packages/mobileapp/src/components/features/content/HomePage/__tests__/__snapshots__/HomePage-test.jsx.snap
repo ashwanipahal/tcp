@@ -43,6 +43,7 @@ exports[`HomePageView should render correctly 1`] = `
     buttonVariation="variable-width"
     color=""
     customStyle={Object {}}
+    customTextStyle={null}
     disableButton={false}
     fill=""
     fullWidth={true}

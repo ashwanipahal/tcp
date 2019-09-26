@@ -38,6 +38,7 @@ const CustomButton = props => {
     onPress,
     active,
     selected,
+    customTextStyle,
     ...otherProps
   } = props;
   const textValue = text || '';
@@ -67,6 +68,7 @@ const CustomButton = props => {
         disableButton={disableButton}
         active={active}
         selected={selected}
+        style={customTextStyle}
       >
         {textValue}
       </CustomStyleText>
@@ -95,6 +97,7 @@ CustomButton.propTypes = {
   iconName: PropTypes.string,
   iconColor: PropTypes.string,
   iconSize: PropTypes.string,
+  customTextStyle: PropTypes.shape({}),
 };
 
 CustomButton.defaultProps = {
@@ -117,6 +120,7 @@ CustomButton.defaultProps = {
   iconSize: 'fs12',
   showIcon: false,
   selectedIcon: ICON_NAME.chevronUp,
+  customTextStyle: null,
 };
 
 export default withStyles(CustomButton, style);
