@@ -41,6 +41,11 @@ const Container = styled.View`
   margin-top: 20;
 `;
 
+const iOSPickerButtonStyle = {
+  fontSize: 13,
+  lineHeight: 0,
+};
+
 export {
   Container,
   PickerView,
@@ -48,4 +53,5 @@ export {
   ModalOutsideTouchable,
   ModalOverlay,
   AndroidPickerView,
+  iOSPickerButtonStyle,
 };

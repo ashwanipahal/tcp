@@ -383,6 +383,7 @@ exports[`CreditCardForm component should renders correctly in mailingAddress vie
         buttonVariation="variable-width"
         color=""
         customStyle={Object {}}
+        customTextStyle={null}
         disableButton={false}
         fill="BLUE"
         fullWidth=""
@@ -411,6 +412,7 @@ exports[`CreditCardForm component should renders correctly in mailingAddress vie
         buttonVariation="variable-width"
         color=""
         customStyle={Object {}}
+        customTextStyle={null}
         disableButton={false}
         fill="WHITE"
         fullWidth=""
@@ -873,6 +875,7 @@ exports[`CreditCardForm component should renders correctly with address dropdown
         buttonVariation="variable-width"
         color=""
         customStyle={Object {}}
+        customTextStyle={null}
         disableButton={false}
         fill="BLUE"
         fullWidth=""
@@ -901,6 +904,7 @@ exports[`CreditCardForm component should renders correctly with address dropdown
         buttonVariation="variable-width"
         color=""
         customStyle={Object {}}
+        customTextStyle={null}
         disableButton={false}
         fill="WHITE"
         fullWidth=""
@@ -1291,6 +1295,7 @@ exports[`CreditCardForm component should renders correctly with addressForm 1`] 
         buttonVariation="variable-width"
         color=""
         customStyle={Object {}}
+        customTextStyle={null}
         disableButton={false}
         fill="BLUE"
         fullWidth=""
@@ -1319,6 +1324,7 @@ exports[`CreditCardForm component should renders correctly with addressForm 1`] 
         buttonVariation="variable-width"
         color=""
         customStyle={Object {}}
+        customTextStyle={null}
         disableButton={false}
         fill="WHITE"
         fullWidth=""
