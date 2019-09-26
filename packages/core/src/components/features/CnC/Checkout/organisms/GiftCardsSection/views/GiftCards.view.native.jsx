@@ -1,7 +1,5 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import { getLabelValue } from '@tcp/core/src/utils';
-
 import withStyles from '../../../../../../common/hoc/withStyles';
 import {
   PageStyle,
@@ -43,7 +41,7 @@ class GiftCards extends React.PureComponent {
             fill="DARK"
             type="submit"
             data-locator="add-gift-card"
-            text={getLabelValue(labels, 'lbl_giftcard_newGiftCard')}
+            text={labels.newGiftCard}
             onPress={() => showAddGiftCard()}
           />
         </GiftCardButtonCal>
@@ -106,13 +104,41 @@ class GiftCards extends React.PureComponent {
       <>
         {giftCardList && giftCardList.size > 0 && (
           <BodyCopyWithSpacing
-            text={getLabelValue(labels, 'lbl_giftcard_availableCards')}
+            text={labels.availableGiftCards}
             fontSize="fs16"
             fontWeight="extrabold"
             fontFamily="secondary"
             spacingStyles="margin-bottom-MED margin-top-MED"
             color="gray.900"
           />
+        )}
+      </>
+    );
+  };
+
+  renderHeadsUpHeading = (labels, appliedGiftCards, giftCardList) => {
+    return (
+      <>
+        {((appliedGiftCards && appliedGiftCards.size > 0) ||
+          (giftCardList && giftCardList.size > 0)) && (
+          <HeadsUpMessage>
+            <BodyCopyWithSpacing
+              text={`${labels.giftCardHeadsUpTitle} `}
+              fontSize="fs16"
+              fontWeight="semibold"
+              fontFamily="secondary"
+              spacingStyles="margin-bottom-MED margin-top-MED"
+              color="gray.900"
+            />
+            <BodyCopyWithSpacing
+              text={labels.giftCardHeadsUpMsg}
+              fontSize="fs16"
+              fontWeight="regular"
+              fontFamily="primary"
+              spacingStyles="margin-left-SM"
+              color="gray.900"
+            />
+          </HeadsUpMessage>
         )}
       </>
     );
@@ -134,7 +160,7 @@ class GiftCards extends React.PureComponent {
       <>
         <Container>
           <BodyCopyWithSpacing
-            text={getLabelValue(labels, 'lbl_giftcard_title')}
+            text={labels.giftCardTitle}
             fontSize="fs26"
             fontWeight="regular"
             fontFamily="primary"
@@ -143,7 +169,7 @@ class GiftCards extends React.PureComponent {
           />
 
           <BodyCopyWithSpacing
-            text={getLabelValue(labels, 'lbl_giftcard_addUptoMsg')}
+            text={labels.giftCardAddUpToMsg}
             fontSize="fs16"
             fontWeight="regular"
             fontFamily="primary"
@@ -153,7 +179,7 @@ class GiftCards extends React.PureComponent {
 
           {appliedGiftCards && appliedGiftCards.size > 0 && (
             <BodyCopyWithSpacing
-              text={getLabelValue(labels, 'lbl_giftcard_appliedCards')}
+              text={labels.appliedGiftCards}
               fontSize="fs16"
               fontWeight="extrabold"
               fontFamily="secondary"
@@ -179,24 +205,7 @@ class GiftCards extends React.PureComponent {
               );
             })}
 
-          <HeadsUpMessage>
-            <BodyCopyWithSpacing
-              text={`${getLabelValue(labels, 'lbl_giftcard_headsUpTitle')} `}
-              fontSize="fs16"
-              fontWeight="semibold"
-              fontFamily="secondary"
-              spacingStyles="margin-bottom-MED margin-top-MED"
-              color="gray.900"
-            />
-            <BodyCopyWithSpacing
-              text={getLabelValue(labels, 'lbl_giftcard_headsUpMsg')}
-              fontSize="fs16"
-              fontWeight="regular"
-              fontFamily="primary"
-              spacingStyles="margin-left-SM"
-              color="gray.900"
-            />
-          </HeadsUpMessage>
+          {this.renderHeadsUpHeading(labels, appliedGiftCards, giftCardList)}
 
           {this.renderAvailableCardHeading(giftCardList, labels)}
 
