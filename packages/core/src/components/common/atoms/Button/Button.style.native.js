@@ -141,6 +141,7 @@ const style = css`
       ? `
    width: ${props.width};
    height: ${props.height};
+   background: ${props.theme.colorPalette.gray[300]}
    `
       : ''};
   ${props =>
@@ -180,6 +181,7 @@ const style = css`
         background-color: transparent;
          `
       : ''}
+
   ${getMobileAppFilterButtonViewStyle};
   ${getMobileAppFilterIconButtonViewStyle};
 `;
@@ -198,7 +200,6 @@ const CustomStyleText = styled(StyledText)`
   ${props =>
     props.buttonVariation === 'variable-width'
       ? `
-      width: 100%;
       padding: ${props.theme.spacing.ELEM_SPACING.SM} ${props.theme.spacing.ELEM_SPACING.XL};
   `
       : ''};
