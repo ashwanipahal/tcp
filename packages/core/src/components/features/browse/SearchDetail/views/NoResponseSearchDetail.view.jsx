@@ -78,7 +78,7 @@ class NoResponseSearchDetailView extends React.PureComponent {
               textAlign="center"
             >
               {slpLabels.lbl_nothing_matched}
-              <span className="empty-searched-label-title">{` "${searchedText} ."`}</span>
+              <span className="empty-searched-label-title">{` "${searchedText}".`}</span>
             </BodyCopy>
           </Col>
         </Row>
@@ -120,10 +120,10 @@ class NoResponseSearchDetailView extends React.PureComponent {
                 ref={this.searchInput}
               />
               <Image
-                alt="close"
+                alt="search"
                 className="empty-search-image icon-small"
                 src={getIconPath('search-icon')}
-                data-locator="close-icon"
+                data-locator="search-icon"
                 height="25px"
                 onClick={this.getSearchResults}
               />

@@ -33,6 +33,7 @@ class SearchBar extends React.PureComponent {
     this.openSearchBar = this.openSearchBar.bind(this);
     this.closeSearchBar = this.closeSearchBar.bind(this);
     this.changeSearchText = this.changeSearchText.bind(this);
+    this.initiateSearch = this.initiateSearch.bind(this);
   }
 
   componentDidUpdate(prevProps) {
@@ -53,6 +54,12 @@ class SearchBar extends React.PureComponent {
   };
 
   closeSearchBar = e => {
+    e.preventDefault();
+    const { setSearchState } = this.props;
+    setSearchState(false);
+  };
+
+  initiateSearch = e => {
     e.preventDefault();
     const { setSearchState } = this.props;
     const searchText = this.searchInput.current.value;
@@ -92,11 +99,11 @@ class SearchBar extends React.PureComponent {
                   maxLength="50"
                 />
                 <Image
-                  alt="close"
+                  alt="search"
                   className="search-image icon-small"
-                  onClick={this.closeSearchBar}
+                  onClick={this.initiateSearch}
                   src={getIconPath('search-icon')}
-                  data-locator="close-icon"
+                  data-locator="search-icon"
                   height="25px"
                 />
                 <Image
