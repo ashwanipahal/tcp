@@ -7,6 +7,7 @@ const BadgeStyles = css`
   color: ${props => props.theme.colors.WHITE};
   border-radius: 10px 0 0 10px;
   display: flex;
+  float: right;
   margin-bottom: ${props => (props.noMargin ? 0 : props.theme.spacing.ELEM_SPACING.XS)};
   padding: ${props => props.theme.spacing.ELEM_SPACING.XXXS}
     ${props => props.theme.spacing.ELEM_SPACING.XXS};
