@@ -1,20 +1,17 @@
 import React from 'react';
 import { ScrollView } from 'react-native';
 import { PropTypes } from 'prop-types';
-import ModalNative from '../../../../common/molecules/Modal';
-
 import withStyles from '../../../../common/hoc/withStyles.native';
 import ImageCarousel from '../molecules/ImageCarousel';
-import PageContainer, { ModalCarousel } from '../styles/ProductDetail.style.native';
+import PageContainer from '../styles/ProductDetail.style.native';
 import ProductAddToBagContainer from '../../../../common/molecules/ProductAddToBag';
 import ProductSummary from '../molecules/ProductSummary';
-import { getScreenHeight } from '../../../../../utils/index.native';
-
 import {
+  getImagesToDisplay,
   getMapSliceForColorProductId,
   getMapSliceForColor,
-  getImagesToDisplay,
 } from '../../ProductListing/molecules/ProductList/utils/productsCommonUtils';
+import { FullScreenImageCarousel } from '../../../../common/molecules/index.native';
 
 class ProductDetailView extends React.PureComponent {
   constructor(props) {
@@ -24,7 +21,7 @@ class ProductDetailView extends React.PureComponent {
       selectedColorProductId,
     } = this.props;
     this.state = {
-      zoomImage: false,
+      showCarousel: false,
       currentColorEntry: getMapSliceForColorProductId(colorFitsSizesMap, selectedColorProductId),
     };
   }
@@ -37,43 +34,15 @@ class ProductDetailView extends React.PureComponent {
   };
 
   onImageClick = () => {
-    this.toggleModal();
-  };
-
-  toggleModal = () => {
-    const { zoomImage } = this.state;
-    this.setState({ zoomImage: !zoomImage });
+    const { showCarousel } = this.state;
+    this.setState({ showCarousel: !showCarousel });
   };
 
   renderCarousel = imageUrls => {
-    const { selectedColorProductId } = this.props;
-    const { zoomImage } = this.state;
-    const fullWidth = {
-      width: '100%',
-      alignItems: 'flex-end',
-    };
+    const { showCarousel } = this.state;
+    if (!showCarousel) return null;
 
-    return (
-      <ModalNative
-        isOpen={zoomImage}
-        onRequestClose={this.toggleModal}
-        overlayClassName="TCPModal__Overlay"
-        closeIconDataLocator=""
-        closeIconLeftAligned={false}
-        horizontalBar={false}
-        headerStyle={fullWidth}
-        isOverlay
-      >
-        <ModalCarousel height={getScreenHeight()}>
-          <ImageCarousel
-            imageUrls={imageUrls}
-            selectedColorProductId={selectedColorProductId}
-            showFavorites={false}
-            allowZoom
-          />
-        </ModalCarousel>
-      </ModalNative>
-    );
+    return <FullScreenImageCarousel imageUrls={imageUrls} />;
   };
 
   render() {

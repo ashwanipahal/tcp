@@ -55,7 +55,7 @@
     "styled-components": "^4.2.1",
     "superagent": "^5.0.8",
     "superagent-jsonp": "^0.2.1",
-    "react-native-image-pan-zoom": "^2.1.11"
+    "react-native-image-zoom-viewer": "^2.2.26"
   },
   "devDependencies": {
     "@babel/core": "^7.4.5",
@@ -171,8 +171,8 @@
       "**/react-native-print/**",
       "**/react-native-view-shot",
       "**/react-native-view-shot/**",
-      "**/react-native-image-pan-zoom",
-      "**/react-native-image-pan-zoom/**"
+      "**/react-native-image-zoom-viewer",
+      "**/react-native-image-zoom-viewer/**"
     ]
   }
 }

@@ -193,6 +193,9 @@ export const login = ({
 
   if (userId) {
     payload.body.userId = userId;
+  } else {
+    const GUEST_USER_ID = '-1002';
+    payload.body.userId = GUEST_USER_ID;
   }
 
   return executeStatefulAPICall(payload)

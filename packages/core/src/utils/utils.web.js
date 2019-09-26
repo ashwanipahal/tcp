@@ -403,6 +403,7 @@ const getAPIInfoFromEnv = (apiSiteInfo, processEnv, siteId) => {
     CANDID_API_KEY: process.env.RWD_WEB_CANDID_API_KEY,
     CANDID_API_URL: process.env.RWD_WEB_CANDID_URL,
     googleApiKey: process.env.RWD_WEB_GOOGLE_MAPS_API_KEY,
+    ACQUISITION_ID: process.env.RWD_WEB_ACQUISITION_ID,
     raygunApiKey: processEnv.RWD_WEB_RAYGUN_API_KEY,
     channelId: API_CONFIG.channelIds.Desktop, // TODO - Make it dynamic for all 3 platforms
     borderFree: processEnv.BORDERS_FREE,
