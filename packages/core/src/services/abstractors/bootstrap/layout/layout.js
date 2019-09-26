@@ -1,3 +1,4 @@
+import logger from '@tcp/core/src/utils/loggerInstance';
 import mock from './mock';
 import handler from '../../../handler';
 
@@ -7,17 +8,33 @@ import handler from '../../../handler';
 const LayoutAbstractor = {
   /**
    * This function loads data from graphQL service
-   * @param {String} page
+   * @param {Object} params Object containing {page, brand, country, channel}
    */
-  getLayoutData: async page => {
+  getLayoutData: async ({ page, brand, country, channel }) => {
+    logger.info(`Executing Layout Query for ${page}: `);
+    logger.debug(
+      'Executing Layout Query with params: ',
+      `page:${page}`,
+      `brand:${brand}`,
+      `country:${country}`,
+      `channel:${channel}`
+    );
     return handler
       .fetchModuleDataFromGraphQL({
         name: 'layout',
         data: {
           path: page,
+          brand,
+          country,
+          channel,
         },
       })
-      .then(({ data }) => data[page].items);
+      .then(response => {
+        const result = response.data[page];
+        logger.info('Layout Query Executed Successfully');
+        logger.debug('Layout Query Result: ', result);
+        return result;
+      });
   },
   /**
    * This function loads data for a set of modules from graphQL service
