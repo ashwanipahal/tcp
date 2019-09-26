@@ -1,6 +1,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import ExecutionEnvironment from 'exenv';
+import { isClient } from '@tcp/core/src/utils';
 import { Row, Col, RichText } from '../../../../common/atoms';
 import withStyles from '../../../../common/hoc/withStyles';
 import ProductDetailStyle from '../ProductDetail.style';
@@ -17,6 +18,7 @@ import {
   getMapSliceForColorProductId,
 } from '../../ProductListing/molecules/ProductList/utils/productsCommonUtils';
 import PickupStoreModal from '../../../../common/organisms/PickupStoreModal';
+import ProductReviewsContainer from '../../ProductListing/molecules/ProductReviews/container/ProductReviews.container';
 
 const getProductColorId = (productInfo, currentProduct) => {
   let colorProduct = {};
@@ -141,9 +143,13 @@ const ProductDetailView = ({
           <div className="product-detail-section">MY STYLE PLACE</div>
         </Col>
       </Row>
-      <Row className="placeholder">
+      <Row>
         <Col colSize={{ small: 6, medium: 8, large: 12 }}>
-          <div className="product-detail-section">RATINGS AND REVIEWS</div>
+          <ProductReviewsContainer
+            expanded={false}
+            ratingsProductId={productInfo.ratingsProductId}
+            isClient={isClient()}
+          />
         </Col>
       </Row>
       <PickupStoreModal />

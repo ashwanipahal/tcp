@@ -147,6 +147,10 @@ export const getSpotlightReviewsUrl = () => {
   return getAPIConfig().BAZAARVOICE_SPOTLIGHT;
 };
 
+export const getBazaarvoiceApiUrl = () => {
+  return getAPIConfig().BAZAARVOICE_REVIEWS;
+};
+
 export const getCategoryId = state => {
   const currentNavigationIds =
     state.ProductListing && state.ProductListing.get('currentNavigationIds');
