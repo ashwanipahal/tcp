@@ -18,62 +18,70 @@ const onViewActivityDetails = () => {
  * @function EarnExtraPointsTile The EarnExtraPointsTile component will provide Carousel with tiles data
  */
 
-const EarnExtraPointsTile = ({ className, labels, waysToEarn }) => {
+const EarnExtraPointsTile = ({ className, labels, waysToEarn, isAccountOverview }) => {
   if (waysToEarn && waysToEarn.length > EARNEXTRAPOINTS_CONSTANTS.MAX_TILE_COUNT) {
     carouselConfig.dots = false;
   }
 
   return (
     <div className={className}>
-      <Row>
-        <Col colSize={{ large: 10, medium: 6, small: 4 }}>
-          <BodyCopy
-            component="div"
-            fontSize="fs16"
-            fontWeight="extrabold"
-            fontFamily="secondary"
-            data-locator="earnExtraPointsHeading"
+      {!isAccountOverview && (
+        <Row>
+          <Col colSize={{ large: 10, medium: 6, small: 4 }}>
+            <BodyCopy
+              component="div"
+              fontSize="fs16"
+              fontWeight="extrabold"
+              fontFamily="secondary"
+              data-locator="earnExtraPointsHeading"
+            >
+              {getLabelValue(labels, 'lbl_common_earnExtraPoints')}
+            </BodyCopy>
+          </Col>
+          <Col colSize={{ large: 2, medium: 2, small: 2 }} className="textRight">
+            <Anchor
+              fontSizeVariation="medium"
+              anchorVariation="primary"
+              to={internalEndpoints.extraPointsPage.link}
+              asPath={internalEndpoints.extraPointsPage.path}
+              data-locator="earnExtraPointsViewAll"
+              underline
+            >
+              {getLabelValue(labels, 'lbl_common_viewAll')}
+            </Anchor>
+          </Col>
+        </Row>
+      )}
+      <BodyCopy
+        component="div"
+        textAlign="center"
+        className={isAccountOverview ? 'onAccountOverview' : 'earnExtraPointsWrapper'}
+      >
+        <div className={isAccountOverview ? 'onAccountWrapper' : ''}>
+          <Carousel
+            options={carouselConfig}
+            carouselConfig={{
+              customArrowLeft: getIconPath('smallright'),
+              customArrowRight: getIconPath('smallright'),
+              arrow: 'small',
+              type: 'light',
+            }}
+            carouselTheme="dark"
+            className={className}
           >
-            {getLabelValue(labels, 'lbl_common_earnExtraPoints')}
-          </BodyCopy>
-        </Col>
-        <Col colSize={{ large: 2, medium: 2, small: 2 }} className="textRight">
-          <Anchor
-            fontSizeVariation="medium"
-            anchorVariation="primary"
-            to={internalEndpoints.extraPointsPage.link}
-            asPath={internalEndpoints.extraPointsPage.path}
-            data-locator="earnExtraPointsViewAll"
-            underline
-          >
-            {getLabelValue(labels, 'lbl_common_viewAll')}
-          </Anchor>
-        </Col>
-      </Row>
-      <BodyCopy component="div" textAlign="center" className="earnExtraPointsWrapper">
-        <Carousel
-          options={carouselConfig}
-          carouselConfig={{
-            customArrowLeft: getIconPath('smallright'),
-            customArrowRight: getIconPath('smallright'),
-            arrow: 'small',
-            type: 'light',
-          }}
-          carouselTheme="dark"
-          className={className}
-        >
-          {waysToEarn &&
-            waysToEarn.map((item, index) => {
-              return (
-                <DetailedEarnExtraPointsTile
-                  key={index.toString()}
-                  waysToEarnRow={item}
-                  onViewActivityDetails={onViewActivityDetails}
-                  labels={labels}
-                />
-              );
-            })}
-        </Carousel>
+            {waysToEarn &&
+              waysToEarn.map((item, index) => {
+                return (
+                  <DetailedEarnExtraPointsTile
+                    key={index.toString()}
+                    waysToEarnRow={item}
+                    onViewActivityDetails={onViewActivityDetails}
+                    labels={labels}
+                  />
+                );
+              })}
+          </Carousel>
+        </div>
       </BodyCopy>
     </div>
   );
@@ -86,6 +94,7 @@ EarnExtraPointsTile.propTypes = {
     lbl_common_earnExtraPoints: PropTypes.string,
     lbl_common_viewAll: PropTypes.string,
   }),
+  isAccountOverview: PropTypes.bool,
 };
 
 EarnExtraPointsTile.defaultProps = {
@@ -95,6 +104,7 @@ EarnExtraPointsTile.defaultProps = {
     lbl_common_earnExtraPoints: '',
     lbl_common_viewAll: '',
   },
+  isAccountOverview: false,
 };
 
 export default withStyles(EarnExtraPointsTile, styles);

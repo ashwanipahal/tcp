@@ -21,6 +21,23 @@ const styles = css`
     opacity: 0.5;
     cursor: default;
   }
+  .onAccountOverview {
+    margin-top: ${props => props.theme.spacing.ELEM_SPACING.XL};
+    @media ${props => props.theme.mediaQuery.medium} {
+      margin-left: 0;
+      margin-right: 0;
+    }
+    margin-left: 8px;
+  }
+  .onAccountWrapper {
+    width: 300px;
+    @media ${props => props.theme.mediaQuery.large} {
+      max-width: 320px;
+    }
+    @media ${props => props.theme.mediaQuery.large} {
+      max-width: 308px;
+    }
+  }
 `;
 
 export default styles;
