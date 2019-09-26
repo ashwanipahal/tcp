@@ -1,7 +1,8 @@
 import React from 'react';
-import { View } from 'react-native';
+import { View, TouchableOpacity } from 'react-native';
 import PropTypes from 'prop-types';
 import { getLabelValue } from '@tcp/core/src/utils/utils';
+import { LoginManager, AccessToken } from 'react-native-fbsdk';
 import ImageComp from '@tcp/core/src/components/common/atoms/Image';
 import BodyCopy from '@tcp/core/src/components/common/atoms/BodyCopy';
 import { BodyCopyWithSpacing, ViewWithSpacing } from '../../../atoms/styledWrapper';
@@ -36,7 +37,7 @@ class Socialview extends React.PureComponent {
     };
   }
 
-  renderAccountsInformation = (accounts, saveSocialAcc, labels) => {
+  renderAccountsInformation = (accounts, labels) => {
     return accounts.map(elem => {
       const isSocialAccount =
         config && config.SOCIAL_ACCOUNTS[elem.socialAccount.toLocaleLowerCase()];
@@ -59,7 +60,13 @@ class Socialview extends React.PureComponent {
                     }`
               }
             />
-            <ImageComp source={this.icons[icon]} width={15} height={15} />
+            <TouchableOpacity
+              accessibilityRole="button"
+              accessibilityLabel="button"
+              onPress={() => this.handleSocialNetwork(isSocialAccount, elem.isConnected)}
+            >
+              <ImageComp source={this.icons[icon]} width={15} height={15} />
+            </TouchableOpacity>
           </Row>
         </ViewWithSpacing>
       );
@@ -76,19 +83,43 @@ class Socialview extends React.PureComponent {
           hasUserId: accounts[prop].userId,
         });
       }
-      if (prop === 'pointsAwarded') {
-        this.pointsInformation = {
-          activity: accounts[prop].activity,
-          id: accounts[prop].id,
-          points: accounts[prop].points,
-        };
-      }
     });
     this.socialAccounts = accountsInfo;
   };
 
+  // eslint-disable-next-line class-methods-use-this
+  handleSocialNetwork(isSocialAccount, isConnected) {
+    const { saveSocialAcc } = this.props;
+    switch (isSocialAccount) {
+      case 'Facebook':
+        if (!isConnected) {
+          // Attempt a login using the Facebook login dialog asking for default permissions.
+          return LoginManager.logInWithReadPermissions(['public_profile']).then(result => {
+            if (result.isCancelled) {
+              // do nothing
+            } else {
+              AccessToken.getCurrentAccessToken().then(data => {
+                const socialAccInfo = {
+                  facebook: 'facebook',
+                  accessToken: data.accessToken,
+                  userId: data.userID,
+                  isconnected: false,
+                };
+                saveSocialAcc({ socialAccInfo });
+              });
+            }
+          });
+        }
+        return null;
+      case 'Instagram':
+        return null;
+      default:
+        return null;
+    }
+  }
+
   render() {
-    const { saveSocialAcc, getSocialAcc, labels } = this.props;
+    const { getSocialAcc, labels } = this.props;
 
     if (Object.keys(getSocialAcc).length) {
       this.refactorSocialDetails(getSocialAcc);
@@ -107,7 +138,7 @@ class Socialview extends React.PureComponent {
           fontSize="fs16"
           text={getLabelValue(labels, 'lbl_prefrence_social_text')}
         />
-        {this.renderAccountsInformation(this.socialAccounts, saveSocialAcc, labels)}
+        {this.renderAccountsInformation(this.socialAccounts, labels)}
       </View>
     );
   }
