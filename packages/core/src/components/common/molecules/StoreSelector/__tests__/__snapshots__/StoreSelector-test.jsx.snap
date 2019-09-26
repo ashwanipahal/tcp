@@ -5837,7 +5837,7 @@ exports[`StoreSelector component should default set title as value for selected 
                       "componentStyle": ComponentStyle {
                         "componentId": "sc-jTzLTM",
                         "isStatic": false,
-                        "lastClassName": "dhcsUv",
+                        "lastClassName": "fhMfwY",
                         "rules": Array [
                           "
   ",
@@ -5878,7 +5878,7 @@ exports[`StoreSelector component should default set title as value for selected 
                           ";
   border: 1px solid ",
                           [Function],
-                          "
+                          ";
   padding-right: ",
                           [Function],
                           ";
@@ -5889,24 +5889,24 @@ exports[`StoreSelector component should default set title as value for selected 
                           [Function],
                           ";
 
-  .dropdownListWrapper > div{
+  .dropdownListWrapper > div {
     max-height: 272px;
     left: -1px;
     top: 35px;
     border: 1px solid ",
                           [Function],
-                          "
+                          ";
     border-top-width: 0;
-    background: #FFFFFF;
+    background: #ffffff;
   }
 
-  .dropdownUlBorder{
+  .dropdownUlBorder {
     border: 0;
   }
 
   @media ",
                           [Function],
-                          "{
+                          " {
     min-width: ",
                           "354px",
                           ";
@@ -5914,7 +5914,7 @@ exports[`StoreSelector component should default set title as value for selected 
 
   @media ",
                           [Function],
-                          "{
+                          " {
     border-top-width: 0;
     border-right-width: 0;
     border-left-width: 0;
@@ -5927,8 +5927,45 @@ exports[`StoreSelector component should default set title as value for selected 
   }
 
   .dropdownliBottomBorder {
-    padding:0;
+    padding: 0;
     border: 1px solid transparent;
+    cursor: pointer;
+
+    &:hover {
+      @media ",
+                          [Function],
+                          " {
+        background-color: ",
+                          [Function],
+                          ";
+      }
+    }
+
+    [role='button'] {
+      padding: ",
+                          [Function],
+                          ";
+      font-size: ",
+                          [Function],
+                          "px;
+      @media ",
+                          [Function],
+                          " {
+        padding: ",
+                          [Function],
+                          "
+          ",
+                          [Function],
+                          ";
+        font-size: ",
+                          [Function],
+                          "px;
+        line-height: ",
+                          [Function],
+                          ";
+      }
+    }
+
     &.dropdownActiveClass {
       background-color: ",
                           [Function],
@@ -5938,56 +5975,24 @@ exports[`StoreSelector component should default set title as value for selected 
                           " {
         background-color: inherit;
       }
-     [role=\\"button\\"]{
-      font-family: ",
+      [role='button'] {
+        font-family: ",
                           [Function],
                           ";
-      font-size: ",
+        font-size: ",
                           [Function],
                           "px;
-      font-weight: ",
+        font-weight: ",
                           [Function],
                           ";
-      line-height: ",
+        line-height: ",
                           [Function],
                           "px;
-     }
-    }
-    &:hover{
-      @media ",
-                          [Function],
-                          "{
-        background-color: ",
-                          [Function],
-                          ";
-      }
-    }
-    [role=\\"button\\"]{
-          padding: ",
-                          [Function],
-                          ";
-          font-size: ",
-                          [Function],
-                          "px;
-      @media ",
-                          [Function],
-                          "{
-      padding: ",
-                          [Function],
-                          " ",
-                          [Function],
-                          ";
-      font-size: ",
-                          [Function],
-                          "px;
-      line-height: ",
-                          [Function],
-                          ";
       }
     }
   }
 
-  .dropdownActiveIcon{
+  .dropdownActiveIcon {
     background-image: url(",
                           "/static/images/circle-check-no-circle.svg",
                           ");
@@ -6004,15 +6009,15 @@ exports[`StoreSelector component should default set title as value for selected 
 
     @media ",
                           [Function],
-                          "{
+                          " {
       top: ",
                           [Function],
-                          ";;
+                          ";
       left: 0;
     }
   }
 
-  .customSelectTitle{
+  .customSelectTitle {
     margin: 0;
     text-align: center;
     border: none;
@@ -6038,10 +6043,11 @@ exports[`StoreSelector component should default set title as value for selected 
                           [Function],
                           ";
     text-transform: uppercase;
+    cursor: pointer;
 
     @media ",
                           [Function],
-                          "{
+                          " {
       font-size: ",
                           [Function],
                           "px;
@@ -6049,8 +6055,7 @@ exports[`StoreSelector component should default set title as value for selected 
 
     @media ",
                           [Function],
-                          "{
-      text-align: center;
+                          " {
       text-transform: none;
       text-align: left;
       padding-left: 0;
@@ -7340,7 +7345,7 @@ exports[`StoreSelector component should default set title as value for selected 
                     activeTitle="Canada"
                     activeValue="Canada"
                     childrenComp={null}
-                    className="sc-htpNat sc-jTzLTM dhcsUv"
+                    className="sc-htpNat sc-jTzLTM fhMfwY"
                     clickHandler={[Function]}
                     customSelectClassName=""
                     options={
@@ -8595,7 +8600,7 @@ exports[`StoreSelector component should default set title as value for selected 
                     selectListTitle=""
                   >
                     <Styled(BodyCopy)
-                      className="sc-htpNat sc-jTzLTM dhcsUv custom-select "
+                      className="sc-htpNat sc-jTzLTM fhMfwY custom-select "
                       color="text.primary"
                       component="div"
                       fontFamily="primary"
@@ -8606,7 +8611,7 @@ exports[`StoreSelector component should default set title as value for selected 
                       textAlign="left"
                     >
                       <StyledComponent
-                        className="sc-htpNat sc-jTzLTM dhcsUv custom-select "
+                        className="sc-htpNat sc-jTzLTM fhMfwY custom-select "
                         color="text.primary"
                         component="div"
                         fontFamily="primary"
@@ -8663,7 +8668,7 @@ exports[`StoreSelector component should default set title as value for selected 
                         textAlign="left"
                       >
                         <BodyCopy
-                          className="sc-htpNat sc-jTzLTM dhcsUv custom-select  sc-bdVaJa fQsnvP"
+                          className="sc-htpNat sc-jTzLTM fhMfwY custom-select  sc-bdVaJa fQsnvP"
                           color="text.primary"
                           component="div"
                           fontFamily="primary"
@@ -8674,7 +8679,7 @@ exports[`StoreSelector component should default set title as value for selected 
                           textAlign="left"
                         >
                           <div
-                            className="sc-htpNat sc-jTzLTM dhcsUv custom-select  sc-bdVaJa fQsnvP"
+                            className="sc-htpNat sc-jTzLTM fhMfwY custom-select  sc-bdVaJa fQsnvP"
                           >
                             <Styled(BodyCopy)
                               className="customSelectTitle"
@@ -14618,7 +14623,7 @@ exports[`StoreSelector component should render correctly 1`] = `
                       "componentStyle": ComponentStyle {
                         "componentId": "sc-jTzLTM",
                         "isStatic": false,
-                        "lastClassName": "dhcsUv",
+                        "lastClassName": "fhMfwY",
                         "rules": Array [
                           "
   ",
@@ -14659,7 +14664,7 @@ exports[`StoreSelector component should render correctly 1`] = `
                           ";
   border: 1px solid ",
                           [Function],
-                          "
+                          ";
   padding-right: ",
                           [Function],
                           ";
@@ -14670,24 +14675,24 @@ exports[`StoreSelector component should render correctly 1`] = `
                           [Function],
                           ";
 
-  .dropdownListWrapper > div{
+  .dropdownListWrapper > div {
     max-height: 272px;
     left: -1px;
     top: 35px;
     border: 1px solid ",
                           [Function],
-                          "
+                          ";
     border-top-width: 0;
-    background: #FFFFFF;
+    background: #ffffff;
   }
 
-  .dropdownUlBorder{
+  .dropdownUlBorder {
     border: 0;
   }
 
   @media ",
                           [Function],
-                          "{
+                          " {
     min-width: ",
                           "354px",
                           ";
@@ -14695,7 +14700,7 @@ exports[`StoreSelector component should render correctly 1`] = `
 
   @media ",
                           [Function],
-                          "{
+                          " {
     border-top-width: 0;
     border-right-width: 0;
     border-left-width: 0;
@@ -14708,8 +14713,45 @@ exports[`StoreSelector component should render correctly 1`] = `
   }
 
   .dropdownliBottomBorder {
-    padding:0;
+    padding: 0;
     border: 1px solid transparent;
+    cursor: pointer;
+
+    &:hover {
+      @media ",
+                          [Function],
+                          " {
+        background-color: ",
+                          [Function],
+                          ";
+      }
+    }
+
+    [role='button'] {
+      padding: ",
+                          [Function],
+                          ";
+      font-size: ",
+                          [Function],
+                          "px;
+      @media ",
+                          [Function],
+                          " {
+        padding: ",
+                          [Function],
+                          "
+          ",
+                          [Function],
+                          ";
+        font-size: ",
+                          [Function],
+                          "px;
+        line-height: ",
+                          [Function],
+                          ";
+      }
+    }
+
     &.dropdownActiveClass {
       background-color: ",
                           [Function],
@@ -14719,56 +14761,24 @@ exports[`StoreSelector component should render correctly 1`] = `
                           " {
         background-color: inherit;
       }
-     [role=\\"button\\"]{
-      font-family: ",
+      [role='button'] {
+        font-family: ",
                           [Function],
                           ";
-      font-size: ",
+        font-size: ",
                           [Function],
                           "px;
-      font-weight: ",
+        font-weight: ",
                           [Function],
                           ";
-      line-height: ",
+        line-height: ",
                           [Function],
                           "px;
-     }
-    }
-    &:hover{
-      @media ",
-                          [Function],
-                          "{
-        background-color: ",
-                          [Function],
-                          ";
-      }
-    }
-    [role=\\"button\\"]{
-          padding: ",
-                          [Function],
-                          ";
-          font-size: ",
-                          [Function],
-                          "px;
-      @media ",
-                          [Function],
-                          "{
-      padding: ",
-                          [Function],
-                          " ",
-                          [Function],
-                          ";
-      font-size: ",
-                          [Function],
-                          "px;
-      line-height: ",
-                          [Function],
-                          ";
       }
     }
   }
 
-  .dropdownActiveIcon{
+  .dropdownActiveIcon {
     background-image: url(",
                           "/static/images/circle-check-no-circle.svg",
                           ");
@@ -14785,15 +14795,15 @@ exports[`StoreSelector component should render correctly 1`] = `
 
     @media ",
                           [Function],
-                          "{
+                          " {
       top: ",
                           [Function],
-                          ";;
+                          ";
       left: 0;
     }
   }
 
-  .customSelectTitle{
+  .customSelectTitle {
     margin: 0;
     text-align: center;
     border: none;
@@ -14819,10 +14829,11 @@ exports[`StoreSelector component should render correctly 1`] = `
                           [Function],
                           ";
     text-transform: uppercase;
+    cursor: pointer;
 
     @media ",
                           [Function],
-                          "{
+                          " {
       font-size: ",
                           [Function],
                           "px;
@@ -14830,8 +14841,7 @@ exports[`StoreSelector component should render correctly 1`] = `
 
     @media ",
                           [Function],
-                          "{
-      text-align: center;
+                          " {
       text-transform: none;
       text-align: left;
       padding-left: 0;
@@ -16121,7 +16131,7 @@ exports[`StoreSelector component should render correctly 1`] = `
                     activeTitle="Test Text"
                     activeValue={null}
                     childrenComp={null}
-                    className="sc-htpNat sc-jTzLTM dhcsUv"
+                    className="sc-htpNat sc-jTzLTM fhMfwY"
                     clickHandler={[Function]}
                     customSelectClassName=""
                     options={
@@ -17376,7 +17386,7 @@ exports[`StoreSelector component should render correctly 1`] = `
                     selectListTitle=""
                   >
                     <Styled(BodyCopy)
-                      className="sc-htpNat sc-jTzLTM dhcsUv custom-select "
+                      className="sc-htpNat sc-jTzLTM fhMfwY custom-select "
                       color="text.primary"
                       component="div"
                       fontFamily="primary"
@@ -17387,7 +17397,7 @@ exports[`StoreSelector component should render correctly 1`] = `
                       textAlign="left"
                     >
                       <StyledComponent
-                        className="sc-htpNat sc-jTzLTM dhcsUv custom-select "
+                        className="sc-htpNat sc-jTzLTM fhMfwY custom-select "
                         color="text.primary"
                         component="div"
                         fontFamily="primary"
@@ -17444,7 +17454,7 @@ exports[`StoreSelector component should render correctly 1`] = `
                         textAlign="left"
                       >
                         <BodyCopy
-                          className="sc-htpNat sc-jTzLTM dhcsUv custom-select  sc-bdVaJa fQsnvP"
+                          className="sc-htpNat sc-jTzLTM fhMfwY custom-select  sc-bdVaJa fQsnvP"
                           color="text.primary"
                           component="div"
                           fontFamily="primary"
@@ -17455,7 +17465,7 @@ exports[`StoreSelector component should render correctly 1`] = `
                           textAlign="left"
                         >
                           <div
-                            className="sc-htpNat sc-jTzLTM dhcsUv custom-select  sc-bdVaJa fQsnvP"
+                            className="sc-htpNat sc-jTzLTM fhMfwY custom-select  sc-bdVaJa fQsnvP"
                           >
                             <Styled(BodyCopy)
                               className="customSelectTitle"
