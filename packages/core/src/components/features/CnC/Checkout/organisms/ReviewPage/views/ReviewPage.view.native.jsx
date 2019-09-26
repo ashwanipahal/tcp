@@ -4,6 +4,7 @@ import PropTypes from 'prop-types';
 import CheckoutSectionTitleDisplay from '../../../../../../common/molecules/CheckoutSectionTitleDisplay';
 import CheckoutProgressIndicator from '../../../molecules/CheckoutProgressIndicator';
 import CnCTemplate from '../../../../common/organism/CnCTemplate';
+import PickUpReviewSectionContainer from '../organisms/PickUpReviewSection';
 import style from '../styles/ReviewPage.style.native';
 import CONSTANTS from '../../../Checkout.constants';
 import { BodyCopy } from '../../../../../../common/atoms';
@@ -53,7 +54,6 @@ class ReviewPage extends React.PureComponent {
       header,
       backLinkBilling,
       nextSubmitText,
-      pickupSectionTitle,
       shippingSectionTitle,
       billingSectionTitle,
     } = labels;
@@ -68,7 +68,7 @@ class ReviewPage extends React.PureComponent {
         <ScrollView>
           <Container>
             <CheckoutSectionTitleDisplay title={header} />
-            {!!orderHasPickUp && <TextSection>{pickupSectionTitle}</TextSection>}
+            {!!orderHasPickUp && <PickUpReviewSectionContainer />}
             {!!orderHasShipping && <TextSection>{shippingSectionTitle}</TextSection>}
             <TextSection>{billingSectionTitle}</TextSection>
           </Container>

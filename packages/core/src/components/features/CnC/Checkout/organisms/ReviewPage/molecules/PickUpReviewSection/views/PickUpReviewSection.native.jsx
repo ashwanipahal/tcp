@@ -1,15 +1,26 @@
 import React from 'react';
+import { View } from 'react-native';
 import PropTypes from 'prop-types';
 import withStyles from '../../../../../../../../common/hoc/withStyles';
-import Row from '../../../../../../../../common/atoms/Row';
-import Col from '../../../../../../../../common/atoms/Col';
 import BodyCopy from '../../../../../../../../common/atoms/BodyCopy';
-import styles from '../styles/PickUpReviewSection.style';
+import {
+  Container,
+  SectionOne,
+  SectionTwo,
+  SectionThree,
+} from '../styles/PickUpReviewSection.style.native';
 import TitlePlusEditButton from '../../TitlePlusEditButton';
 import PickupStoreDisplay from '../../PickUpStoreDisplay';
 import PickUpContactDisplay from '../../PickUpContactDisplay';
 import { ORDER_ITEM_TYPE } from '../../../../../../../../../services/abstractors/CnC/CartItemTile';
 
+/**
+ *Section Display pickup details on review page
+ *
+ * @export
+ * @class PickUpReviewSection
+ * @extends {React.PureComponent}
+ */
 export class PickUpReviewSection extends React.PureComponent {
   /**
    * @method generateStoreDetails
@@ -71,7 +82,6 @@ export class PickUpReviewSection extends React.PureComponent {
 
   render() {
     const {
-      className,
       pickUpContactPerson,
       labels,
       cartStores,
@@ -100,79 +110,66 @@ export class PickUpReviewSection extends React.PureComponent {
       });
     const stores = this.generateStoreDetails(pickupStores);
     return (
-      <div className={className} dataLocator="review-pickup-section">
-        <Row fullBleed className="row-one">
-          <Col colSize={{ small: 6, medium: 8, large: 12 }}>
-            {pickUpContactPerson && (
-              <React.Fragment>
-                <TitlePlusEditButton
-                  title={title}
-                  editTitle={edit}
-                  onEdit={onEdit}
-                  dataLocator="pickup-section"
-                />
-                <BodyCopy
-                  fontSize="fs16"
-                  fontFamily="secondary"
-                  color="gray.900"
-                  fontWeight="regular"
-                  dataLocator="pickup-section-heading-lbl"
-                >
-                  {text}
-                </BodyCopy>
-              </React.Fragment>
-            )}
-          </Col>
-        </Row>
-        <Row fullBleed className="row-two">
+      <Container>
+        <SectionOne>
+          <TitlePlusEditButton
+            title={title}
+            editTitle={edit}
+            onEdit={onEdit}
+            dataLocator="pickup-section"
+          />
+          <BodyCopy
+            dataLocator="pickup-section-heading-lbl"
+            fontSize="fs16"
+            mobileFontFamily="secondary"
+            fontWeight="regular"
+            text={text}
+            color="gray.900"
+          />
+        </SectionOne>
+        <SectionTwo>
           {stores.map(store => {
             return (
               store && (
-                <Col key={store.storeId} colSize={{ small: 6, medium: 4, large: 5 }}>
+                <View key={store.storeId}>
                   <PickupStoreDisplay labels={labels} orderType={store.orderType} store={store} />
-                </Col>
+                </View>
               )
             );
           })}
-        </Row>
-        <Row fullBleed>
-          <Col className="pickupContactPersonContainer" colSize={{ small: 6, medium: 4, large: 5 }}>
+        </SectionTwo>
+        <SectionThree>
+          <View>
             <BodyCopy
               fontSize="fs16"
               fontFamily="secondary"
               className="pickupTitle"
               fontWeight="extrabold"
               color="gray.900"
-            >
-              {title}
-            </BodyCopy>
+              text={title}
+            />
             <PickUpContactDisplay formData={pickUpContactPerson} />
-          </Col>
+          </View>
           {isHasPickUpAlternatePerson && (
-            <Col
-              className="pickupContactAlternateContainer"
-              colSize={{ small: 6, medium: 4, large: 5 }}
-            >
+            <View>
               <BodyCopy
                 fontSize="fs16"
                 fontFamily="secondary"
                 className="pickupTitle"
                 fontWeight="extrabold"
                 color="gray.900"
-              >
-                {alternate}
-              </BodyCopy>
+                text={alternate}
+              />
               <PickUpContactDisplay formData={pickUpAlternatePerson} />
-            </Col>
+            </View>
           )}
-        </Row>
-      </div>
+        </SectionThree>
+      </Container>
     );
   }
 }
 
 PickUpReviewSection.propTypes = {
-  className: PropTypes.string.isRequired,
   labels: PropTypes.shape({
     lbl_review_pickupSectionTitle: PropTypes.string,
     lbl_review_sectionPickupAlternateHeading: PropTypes.string,
@@ -211,4 +208,4 @@ PickUpReviewSection.defaultProps = {
   },
 };
 
-export default withStyles(PickUpReviewSection, styles);
+export default withStyles(PickUpReviewSection);
