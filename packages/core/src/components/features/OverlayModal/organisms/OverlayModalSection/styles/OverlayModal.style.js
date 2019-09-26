@@ -12,7 +12,7 @@ const StyledModal = css`
   height: auto;
   right: ${props => (props.variation === 'primary' ? '0' : '')};
   left: ${props => (props.variation === 'secondary' ? '0' : '')};
-  z-index: 999;
+  z-index: ${props => props.theme.zindex.zDrawer};
   ${props =>
     props.component !== 'accountDrawer'
       ? `@media ${props.theme.mediaQuery.smallOnly} {
