@@ -7,6 +7,7 @@ import CnCTemplate from '../../../../common/organism/CnCTemplate';
 import style from '../styles/ReviewPage.style.native';
 import CONSTANTS from '../../../Checkout.constants';
 import { BodyCopy } from '../../../../../../common/atoms';
+import ShippingReviewSection from '../organisms/ShippingReviewSection';
 
 const { Container, TextSection, FooterTextContainer, FooterLink } = style;
 
@@ -54,7 +55,7 @@ class ReviewPage extends React.PureComponent {
       backLinkBilling,
       nextSubmitText,
       pickupSectionTitle,
-      shippingSectionTitle,
+      // shippingSectionTitle,
       billingSectionTitle,
     } = labels;
 
@@ -69,7 +70,7 @@ class ReviewPage extends React.PureComponent {
           <Container>
             <CheckoutSectionTitleDisplay title={header} />
             {!!orderHasPickUp && <TextSection>{pickupSectionTitle}</TextSection>}
-            {!!orderHasShipping && <TextSection>{shippingSectionTitle}</TextSection>}
+            {!!orderHasShipping && <ShippingReviewSection />}
             <TextSection>{billingSectionTitle}</TextSection>
           </Container>
           <CnCTemplate
