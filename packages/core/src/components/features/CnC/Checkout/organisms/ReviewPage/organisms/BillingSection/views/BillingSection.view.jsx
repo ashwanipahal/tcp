@@ -25,35 +25,84 @@ const renderCardNumber = (card, labels) =>
  * @param {Object} props
  * @description Billing Section functional component
  */
-export const BillingSection = ({
-  className,
-  card,
-  address,
-  appliedGiftCards,
-  labels,
-  venmoPayment,
-}) => {
-  return (
-    <Grid className={`${className}`}>
-      <Row fullBleed>
-        <Col colSize={{ small: 6, medium: 8, large: 12 }}>
-          <BodyCopy component="span" fontSize="fs28" fontFamily="primary">
-            {`${labels.lbl_review_billingSectionTitle} `}
-          </BodyCopy>
-          <Anchor
-            fontSizeVariation="large"
-            underline
-            anchorVariation="primary"
-            {...CHECKOUT_ROUTES.billingPage}
+export class BillingSection extends React.PureComponent {
+  constructor(props) {
+    super(props);
+    this.state = {
+      saveVenmoPayment: false,
+    };
+  }
+
+  /**
+   * This method saves venmo checkbox state in the redux store
+   */
+  handleVenmoPaymentSaveChange = () => {
+    const { saveVenmoPaymentOption } = this.props;
+    const { saveVenmoPayment } = this.state;
+    this.setState({ saveVenmoPayment: !saveVenmoPayment });
+    saveVenmoPaymentOption(!saveVenmoPayment);
+  };
+
+  render() {
+    const { className, card, address, appliedGiftCards, labels, venmoPayment } = this.props;
+    const { saveVenmoPayment } = this.state;
+    return (
+      <Grid className={`${className}`}>
+        <Row fullBleed>
+          <Col colSize={{ small: 6, medium: 8, large: 12 }}>
+            <BodyCopy component="span" fontSize="fs28" fontFamily="primary">
+              {`${labels.lbl_review_billingSectionTitle} `}
+            </BodyCopy>
+            <Anchor
+              fontSizeVariation="large"
+              underline
+              anchorVariation="primary"
+              {...CHECKOUT_ROUTES.billingPage}
+            >
+              {labels.lbl_review_billingEdit}
+            </Anchor>
+          </Col>
+        </Row>
+        <Row fullBleed>
+          {(card || address) && (
+            <Col colSize={{ small: 6, medium: 4, large: 5 }}>
+              {card && (
+                <Fragment>
+                  <BodyCopy
+                    fontSize="fs16"
+                    fontWeight="semibold"
+                    color="gray[900]"
+                    fontFamily="secondary"
+                    className="sub-heading"
+                  >
+                    {labels.lbl_review_paymentMethod}
+                  </BodyCopy>
+                  <BodyCopy>
+                    <CardImage card={card} cardNumber={renderCardNumber(card, labels)} />
+                  </BodyCopy>
+                </Fragment>
+              )}
+              {address && (
+                <Fragment>
+                  <BodyCopy
+                    fontSize="fs16"
+                    fontWeight="semibold"
+                    color="gray[900]"
+                    fontFamily="secondary"
+                    className="sub-heading"
+                  >
+                    {labels.lbl_review_billingAddress}
+                  </BodyCopy>
+                  <Address address={address} className="review-billing-address" />
+                </Fragment>
+              )}
+            </Col>
+          )}
+          <Col
+            colSize={{ small: 6, medium: 4, large: 6 }}
+            offsetRight={{ small: 0, medium: 0, large: 1 }}
           >
-            {labels.lbl_review_billingEdit}
-          </Anchor>
-        </Col>
-      </Row>
-      <Row fullBleed>
-        {(card || address) && (
-          <Col colSize={{ small: 6, medium: 4, large: 5 }}>
-            {card && (
+            {appliedGiftCards && (
               <Fragment>
                 <BodyCopy
                   fontSize="fs16"
@@ -62,35 +111,17 @@ export const BillingSection = ({
                   fontFamily="secondary"
                   className="sub-heading"
                 >
-                  {labels.lbl_review_paymentMethod}
+                  {labels.lbl_review_appliedGiftCards}
                 </BodyCopy>
-                <BodyCopy>
-                  <CardImage card={card} cardNumber={renderCardNumber(card, labels)} />
-                </BodyCopy>
-              </Fragment>
-            )}
-            {address && (
-              <Fragment>
-                <BodyCopy
-                  fontSize="fs16"
-                  fontWeight="semibold"
-                  color="gray[900]"
-                  fontFamily="secondary"
-                  className="sub-heading"
-                >
-                  {labels.lbl_review_billingAddress}
-                </BodyCopy>
-                <Address address={address} className="review-billing-address" />
+                <AppliedGiftCards appliedGiftCards={appliedGiftCards} labels={labels} />
               </Fragment>
             )}
           </Col>
-        )}
-        <Col
-          colSize={{ small: 6, medium: 4, large: 6 }}
-          offsetRight={{ small: 0, medium: 0, large: 1 }}
-        >
-          {appliedGiftCards && (
-            <Fragment>
+          {venmoPayment.isVenmoPaymentSelected && (
+            <Col
+              colSize={{ small: 6, medium: 4, large: 6 }}
+              offsetRight={{ small: 0, medium: 0, large: 1 }}
+            >
               <BodyCopy
                 fontSize="fs16"
                 fontWeight="semibold"
@@ -98,45 +129,33 @@ export const BillingSection = ({
                 fontFamily="secondary"
                 className="sub-heading"
               >
-                {labels.lbl_review_appliedGiftCards}
+                {labels.lbl_review_paymentMethod}
               </BodyCopy>
-              <AppliedGiftCards appliedGiftCards={appliedGiftCards} labels={labels} />
-            </Fragment>
-          )}
-        </Col>
-        {venmoPayment.isVenmoPaymentSelected && (
-          <Col
-            colSize={{ small: 6, medium: 4, large: 6 }}
-            offsetRight={{ small: 0, medium: 0, large: 1 }}
-          >
-            <BodyCopy
-              fontSize="fs16"
-              fontWeight="semibold"
-              color="gray[900]"
-              fontFamily="secondary"
-              className="sub-heading"
-            >
-              {labels.lbl_review_paymentMethod}
-            </BodyCopy>
-            <section className="venmo-payment-method-wrapper">
-              <CardImage card={venmoPayment} cardNumber={venmoPayment.userName} />
-            </section>
+              <section className="venmo-payment-method-wrapper">
+                <CardImage card={venmoPayment} cardNumber={venmoPayment.userName} />
+              </section>
 
-            <div className="venmo-save-wrapper">
-              {venmoPayment.venmoSaveToAccountDisplayed === true && (
-                <InputCheckbox component={InputCheckbox} className="venmo-save-checkbox">
-                  <BodyCopy fontSize="fs14" fontFamily="secondary">
-                    Save to my account
-                  </BodyCopy>
-                </InputCheckbox>
-              )}
-            </div>
-          </Col>
-        )}
-      </Row>
-    </Grid>
-  );
-};
+              <div className="venmo-save-wrapper">
+                {venmoPayment.venmoSaveToAccountDisplayed === true && (
+                  <InputCheckbox
+                    component={InputCheckbox}
+                    className="venmo-save-checkbox"
+                    name="save-venmo-data"
+                    input={{ value: saveVenmoPayment, onChange: this.handleVenmoPaymentSaveChange }}
+                  >
+                    <BodyCopy fontSize="fs14" fontFamily="secondary">
+                      {labels.lbl_review_save_venmo}
+                    </BodyCopy>
+                  </InputCheckbox>
+                )}
+              </div>
+            </Col>
+          )}
+        </Row>
+      </Grid>
+    );
+  }
+}
 
 BillingSection.propTypes = {
   card: PropTypes.shape({}),
@@ -151,6 +170,7 @@ BillingSection.propTypes = {
     lbl_review_paymentMethodEndingIn: PropTypes.string,
   }),
   venmoPayment: PropTypes.shape({}),
+  saveVenmoPaymentOption: PropTypes.func,
 };
 
 BillingSection.defaultProps = {
@@ -168,6 +188,7 @@ BillingSection.defaultProps = {
   venmoPayment: {
     userName: '',
   },
+  saveVenmoPaymentOption: () => {},
 };
 
 export default withStyles(BillingSection, styles);

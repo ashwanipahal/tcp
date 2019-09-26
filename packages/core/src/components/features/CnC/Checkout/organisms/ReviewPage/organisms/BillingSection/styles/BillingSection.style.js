@@ -36,7 +36,7 @@ export default css`
     display: none;
     @media ${props => props.theme.mediaQuery.smallOnly} {
       display: block;
-      margin-top: ${props => props.theme.spacing.ELEM_SPACING.SM};
+      margin-top: ${props => props.theme.spacing.ELEM_SPACING.XS};
     }
   }
 
@@ -44,7 +44,11 @@ export default css`
     display: none;
     @media ${props => props.theme.mediaQuery.smallOnly} {
       display: block;
-      margin-top: ${props => props.theme.spacing.ELEM_SPACING.XS};
+      margin-top: ${props => props.theme.spacing.ELEM_SPACING.MED};
     }
+  }
+
+  .venmo-save-checkbox .CheckBox__text {
+    margin-top: ${props => props.theme.spacing.ELEM_SPACING.XXS};
   }
 `;

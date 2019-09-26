@@ -8,6 +8,7 @@ import checkoutSelectors, {
 } from '../../../../../container/Checkout.selector';
 import billingSectionSelectors from './BillingSection.selectors';
 import { modes } from '../../../../../../../../common/atoms/VenmoPaymentButton/container/VenmoPaymentButton.util';
+import { setVenmoPaymentOptionSave } from '../../../../../container/Checkout.action';
 
 /**
  * @class BillingSectionContainer
@@ -19,6 +20,7 @@ class BillingSectionContainer extends PureComponent {
     address: PropTypes.shape({}),
     card: PropTypes.shape({}),
     labels: PropTypes.shape({}),
+    saveVenmoPaymentOption: PropTypes.func,
   };
 
   static defaultProps = {
@@ -26,6 +28,7 @@ class BillingSectionContainer extends PureComponent {
     address: null,
     card: null,
     labels: {},
+    saveVenmoPaymentOption: () => {},
   };
 
   /**
@@ -35,7 +38,8 @@ class BillingSectionContainer extends PureComponent {
    * @memberof BillingSectionContainer
    */
   render() {
-    return <BillingSection {...this.props} />;
+    const { saveVenmoPaymentOption } = this.props;
+    return <BillingSection saveVenmoPaymentOption={saveVenmoPaymentOption} {...this.props} />;
   }
 }
 
@@ -77,5 +81,16 @@ export const mapStateToProps = state => {
   };
 };
 
-export default connect(mapStateToProps)(BillingSectionContainer);
+export const mapDispatchToProps = dispatch => {
+  return {
+    saveVenmoPaymentOption: payload => {
+      dispatch(setVenmoPaymentOptionSave(payload));
+    },
+  };
+};
+
+export default connect(
+  mapStateToProps,
+  mapDispatchToProps
+)(BillingSectionContainer);
 export { BillingSectionContainer as BillingPageContainerVanilla };

@@ -664,6 +664,9 @@ const isVenmoShippingBannerDisplayed = () => {
   return venmoShippingBanner ? venmoShippingBanner === 'true' : false;
 };
 
+const isVenmoPaymentSaveSelected = state =>
+  state[CHECKOUT_REDUCER_KEY].getIn(['uiFlags', 'venmoPaymentOptionSave']);
+
 const isGiftOptionsEnabled = state => {
   return state[CHECKOUT_REDUCER_KEY].getIn(['uiFlags', 'isGiftOptionsEnabled']);
 };
@@ -906,6 +909,7 @@ export default {
   getCurrentLanguage,
   isVenmoShippingBannerDisplayed,
   isVenmoPickupBannerDisplayed,
+  isVenmoPaymentSaveSelected,
   getShippingPhoneAndEmail,
   getCreditFieldLabels,
   isPickupHasValues,
