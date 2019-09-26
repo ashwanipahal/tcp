@@ -2,7 +2,6 @@ import { STORE_LOCATOR_REDUCER_KEY } from '@tcp/core/src/constants/reducer.const
 import { executeStatefulAPICall } from '../../../handler';
 import { formatPhoneNumber } from '../../../../utils/formValidation/phoneNumber';
 import { parseStoreHours } from '../../../../utils/parseStoreHours';
-// import { sanitizeEntity } from '../../../../utils';
 import endpoints from '../../../endpoints';
 import { getPersonalDataState } from '../../../../components/features/account/User/container/User.selectors';
 

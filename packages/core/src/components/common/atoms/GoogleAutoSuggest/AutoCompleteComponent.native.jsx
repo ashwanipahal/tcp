@@ -104,7 +104,7 @@ GooglePlacesInput.propTypes = {
   onEndEditing: PropTypes.func,
   refs: PropTypes.func,
   onChangeText: PropTypes.func,
-  clearButtonMode: PropTypes.bool,
+  clearButtonMode: PropTypes.string,
 };
 
 GooglePlacesInput.defaultProps = {
