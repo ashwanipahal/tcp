@@ -4,6 +4,7 @@ import OpenLoginModal from '../../../../../account/LoginPage/views/LoginModal.na
 import CheckoutConstants from '../../../../Checkout/Checkout.constants';
 import BagConfirmationModal from '../../../../BagPage/views/BagConfirmationModal.view';
 import ItemDeleteConfirmationModal from '../../../../BagPage/views/ItemDeleteConfirmationModal.view';
+import { navigateToNestedRoute } from '../../../../../../../utils/utils.app';
 
 class ModalsCheckout extends React.PureComponent<Props> {
   routeToCheckout = e => {
@@ -12,9 +13,23 @@ class ModalsCheckout extends React.PureComponent<Props> {
       e.preventDefault();
     }
     if (orderHasPickup) {
-      navigation.navigate(CheckoutConstants.CHECKOUT_ROUTES_NAMES.CHECKOUT_PICKUP);
+      navigateToNestedRoute(
+        navigation,
+        CheckoutConstants.CHECKOUT_ROOT,
+        CheckoutConstants.CHECKOUT_ROUTES_NAMES.CHECKOUT_PICKUP,
+        {
+          routeTo: CheckoutConstants.PICKUP_DEFAULT_PARAM,
+        }
+      );
     } else {
-      navigation.navigate(CheckoutConstants.CHECKOUT_ROUTES_NAMES.CHECKOUT_SHIPPING);
+      navigateToNestedRoute(
+        navigation,
+        CheckoutConstants.CHECKOUT_ROOT,
+        CheckoutConstants.CHECKOUT_ROUTES_NAMES.CHECKOUT_SHIPPING,
+        {
+          routeTo: CheckoutConstants.SHIPPING_DEFAULT_PARAM,
+        }
+      );
     }
     if (closeModal) {
       setTimeout(() => {
