@@ -1,11 +1,13 @@
 import React from 'react';
 import { PropTypes } from 'prop-types';
 
+const getSlotNum = slotName => parseInt(slotName.replace(/\D/g, ''), 10);
+
 const HomePageSlots = props => {
   const { slots = [], modules, ...others } = props;
 
   return slots
-    .sort((a, b) => (b.name > a.name ? -1 : 1))
+    .sort((a, b) => getSlotNum(a.name) - getSlotNum(b.name))
     .map(slot => {
       const Module = modules[slot.moduleName];
       const { data: slotData, contentId, accessibility } = slot;

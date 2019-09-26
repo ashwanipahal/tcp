@@ -202,4 +202,61 @@ describe('HomePageSlots component', () => {
       ]
       `);
   });
+
+  it('Should verify sorting of the slots', () => {
+    const component = mount(
+      <HomePageSlots
+        slots={[
+          {
+            contentId: 'id-1',
+            data: { slotData: 'slot-A Data' },
+            moduleName: 'moduleA',
+            name: 'slot_1',
+          },
+          {
+            contentId: 'id-2',
+            data: { slotData: 'slot-B Data' },
+            moduleName: 'moduleB',
+            name: 'slot_2',
+          },
+          {
+            contentId: 'id-3',
+            data: { slotData: 'slot-C Data' },
+            moduleName: 'moduleC',
+            name: 'slot_10',
+          },
+        ]}
+        modules={modulesDataMock}
+      />
+    );
+
+    expect(component.children()).toMatchInlineSnapshot(`
+      Array [
+        <ModuleA
+          key="id-1"
+          slotData="slot-A Data"
+        >
+          <div>
+            Module A
+          </div>
+        </ModuleA>,
+        <ModuleB
+          key="id-2"
+          slotData="slot-B Data"
+        >
+          <div>
+            Module B
+          </div>
+        </ModuleB>,
+        <ModuleC
+          key="id-3"
+          slotData="slot-C Data"
+        >
+          <div>
+            Module C
+          </div>
+        </ModuleC>,
+      ]
+      `);
+  });
 });
