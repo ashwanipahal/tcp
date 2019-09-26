@@ -107,6 +107,7 @@ class ExtraPointsDetailModal extends React.PureComponent {
         overlayClassName="TCPModal__Overlay"
         className="TCPModal__Content"
         maxWidth="615px"
+        minHeight="600px"
         fixedWidth
         closeIconDataLocator="ExtraPointsDetailModal_crossIcon"
       >
