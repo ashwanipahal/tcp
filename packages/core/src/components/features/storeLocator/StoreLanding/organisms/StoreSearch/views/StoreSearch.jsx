@@ -9,7 +9,6 @@ import {
   Row,
   Col,
 } from '@tcp/core/src/components/common/atoms';
-import { Grid } from '@tcp/core/src/components/common/molecules';
 import PropTypes from 'prop-types';
 import { AutoCompleteComponent } from '@tcp/core/src/components/common/atoms/GoogleAutoSuggest/AutoCompleteComponent';
 import withStyles from '@tcp/core/src/components/common/hoc/withStyles';
@@ -72,28 +71,38 @@ export class StoreSearch extends PureComponent {
     return false;
   };
 
+  /**
+   * @function onSelectStore function to handle the toggling og checkbox
+   * @param {object} event - event object
+   */
   onSelectStore = event => {
     const { target } = event;
     const { selectStoreType } = this.props;
 
     if (target.name === 'gymboreeStoreOption') {
-      this.setState({
-        gymSelected: target.checked,
-      }, () => {
-        const { outletSelected, gymSelected } = this.state;
-        selectStoreType({ outletSelected, gymSelected });
-      });
+      this.setState(
+        {
+          gymSelected: target.checked,
+        },
+        () => {
+          const { outletSelected, gymSelected } = this.state;
+          selectStoreType({ outletSelected, gymSelected });
+        }
+      );
     }
 
     if (target.name === 'outletOption') {
-      this.setState({
-        outletSelected: target.checked,
-      }, () => {
-        const { outletSelected, gymSelected } = this.state;
-        selectStoreType({ outletSelected, gymSelected });
-      });
+      this.setState(
+        {
+          outletSelected: target.checked,
+        },
+        () => {
+          const { outletSelected, gymSelected } = this.state;
+          selectStoreType({ outletSelected, gymSelected });
+        }
+      );
     }
-
+    return true;
   };
 
   render() {
@@ -106,36 +115,26 @@ export class StoreSearch extends PureComponent {
       searchIcon,
       markerIcon,
       toggleMap,
-      mapView
+      mapView,
     } = this.props;
     const { errorNotFound, gymSelected, outletSelected } = this.state;
-    const {
-      errorLabel = 'there is an error in the input',
-      storeSearchPlaceholder = 'ZIP or city, state',
-      findStoreHeading = 'Find a Store',
-      gymboreeStores = 'Gymboree',
-      outletStores = 'Only Outlet Stores',
-      currentLocation = 'Use my current location',
-      viewMap = 'View Map',
-      viewList = 'View List',
-      allUSCAStores = 'All US & Canada Stores',
-      internationalStores = 'International Stores',
-    } = labels;
-    const errorMessage = errorNotFound ? errorLabel : error;
+    const errorMessage = errorNotFound ? labels.lbl_storelocators_detail_errorLabel : error;
 
-    const viewMapListLabel = mapView ? viewList : viewMap;
+    const viewMapListLabel = mapView
+      ? labels.lbl_storelocators_detail_viewList
+      : labels.lbl_storelocators_detail_viewMap;
 
     const storeOptionsConfig = [
       {
         name: 'gymboreeStoreOption',
         dataLocator: 'gymboree-store-option',
-        storeLabel: gymboreeStores,
+        storeLabel: labels.lbl_storelocators_detail_gymboreeStores,
         checked: gymSelected,
       },
       {
         name: 'outletOption',
         dataLocator: 'only-outlet-option',
-        storeLabel: outletStores,
+        storeLabel: labels.lbl_storelocators_detail_outletStores,
         checked: outletSelected,
       },
     ];
@@ -144,20 +143,18 @@ export class StoreSearch extends PureComponent {
       {
         asPath: '',
         to: '',
-        label: allUSCAStores,
-        classValue: '',
+        label: labels.lbl_storelocators_detail_allUSCAStores,
       },
       {
         asPath: '',
         to: '',
-        label: internationalStores,
-        classValue: '',
+        label: labels.lbl_storelocators_detail_internationalStores,
       },
     ];
 
     return (
       <div className={className}>
-        <h3 className="storeLocatorHeading">{findStoreHeading}</h3>
+        <h3 className="storeLocatorHeading">{labels.lbl_storelocators_detail_findStoreHeading}</h3>
         <Row fullBleed>
           <Col colSize={{ large: 6.5, medium: 4, small: 6 }}>
             <div className="currentLocationWrapper">
@@ -169,15 +166,17 @@ export class StoreSearch extends PureComponent {
                   data-locator="marker-icon"
                   height="16px"
                 />
-                <span className="currentLocation">{currentLocation}</span>
+                <span className="currentLocation">
+                  {labels.lbl_storelocators_detail_currentLocation}
+                </span>
               </Anchor>
             </div>
             <form onSubmit={handleSubmit(this.onSubmit)} noValidate className="searchForm">
               <div className="searchBar">
                 <Field
                   id="storeAddressLocator"
-                  title={storeSearchPlaceholder}
-                  placeholder={storeSearchPlaceholder}
+                  title={labels.lbl_storelocators_detail_storeSearchPlaceholder}
+                  placeholder={labels.lbl_storelocators_detail_storeSearchPlaceholder}
                   component={AutoCompleteComponent}
                   name="storeAddressLocator"
                   onPlaceSelected={this.handleLocationSelection}
@@ -233,11 +232,9 @@ export class StoreSearch extends PureComponent {
               </ul>
               <ul className="storeLinksList">
                 <li key={viewMapListLabel} className="mapLink storeLinks">
-                  <Anchor onClick={toggleMap}>
-                    {viewMapListLabel}
-                  </Anchor>
+                  <Anchor onClick={toggleMap}>{viewMapListLabel}</Anchor>
                 </li>
-                {linksConfig.map(({ to, asPath, label, classValue }) => (
+                {linksConfig.map(({ to, asPath, label }) => (
                   <li key={label} className="storeLinks">
                     <Anchor asPath={asPath} className="" to={to}>
                       {label}
@@ -257,17 +254,21 @@ StoreSearch.propTypes = {
   className: PropTypes.string.isRequired,
   selectedCountry: PropTypes.string.isRequired,
   loadStoresByCoordinates: PropTypes.func.isRequired,
+  selectStoreType: PropTypes.func.isRequired,
   submitting: PropTypes.bool,
   error: PropTypes.bool.isRequired,
   handleSubmit: PropTypes.func.isRequired,
   labels: PropTypes.objectOf(PropTypes.string),
   searchIcon: PropTypes.string.isRequired,
   markerIcon: PropTypes.string.isRequired,
+  toggleMap: PropTypes.func.isRequired,
+  mapView: PropTypes.bool,
 };
 
 StoreSearch.defaultProps = {
   submitting: false,
   labels: {},
+  mapView: false,
 };
 
 export default reduxForm({

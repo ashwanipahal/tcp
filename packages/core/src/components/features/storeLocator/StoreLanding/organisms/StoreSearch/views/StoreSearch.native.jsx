@@ -132,32 +132,24 @@ class StoreSearch extends Component {
 
   render() {
     const { labels, error, selectedCountry, toggleMap, mapView } = this.props;
-    const {
-      errorLabel,
-      storeSearchPlaceholder,
-      findStoreHeading,
-      gymboreeStores,
-      outletStores,
-      currentLocation,
-      viewMap,
-      viewList,
-    } = labels;
 
     const { errorNotFound, gymSelected, outletSelected } = this.state;
-    const errorMessage = errorNotFound ? errorLabel : error;
-    const viewMapListLabel = mapView ? viewList : viewMap;
+    const errorMessage = errorNotFound ? labels.lbl_storelocators_detail_errorLabel : error;
+    const viewMapListLabel = mapView
+      ? labels.lbl_storelocators_detail_viewList
+      : labels.lbl_storelocators_detail_viewMap;
 
     const storeOptionsConfig = [
       {
         name: 'gymboreeStoreOption',
         dataLocator: 'gymboree-store-option',
-        storeLabel: gymboreeStores,
+        storeLabel: labels.lbl_storelocators_detail_gymboreeStores,
         checked: gymSelected,
       },
       {
         name: 'outletOption',
         dataLocator: 'only-outlet-option',
-        storeLabel: outletStores,
+        storeLabel: labels.lbl_storelocators_detail_outletStores,
         checked: outletSelected,
       },
     ];
@@ -170,7 +162,7 @@ class StoreSearch extends Component {
             fontWeight="extrabold"
             fontSize="fs16"
             color="#1a1a1a"
-            text={findStoreHeading}
+            text={labels.lbl_storelocators_detail_findStoreHeading}
           />
         </StyledFindStoreTitle>
         <Anchor>
@@ -182,7 +174,7 @@ class StoreSearch extends Component {
                 fontWeight="regular"
                 fontSize="fs12"
                 color="#1a1a1a"
-                text={currentLocation}
+                text={labels.lbl_storelocators_detail_currentLocation}
               />
             </StyledCurrentLocation>
           </StyledStoreLocator>
@@ -195,7 +187,7 @@ class StoreSearch extends Component {
               </Anchor>
             </StyledSearch>
             <Field
-              headerTitle={storeSearchPlaceholder}
+              headerTitle={labels.lbl_storelocators_detail_storeSearchPlaceholder}
               component={GooglePlacesInput}
               dataLocator="storeAddressLocator"
               componentRestrictions={{ ...{ country: [selectedCountry] } }}

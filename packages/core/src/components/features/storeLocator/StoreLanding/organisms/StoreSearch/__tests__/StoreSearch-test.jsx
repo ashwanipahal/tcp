@@ -123,4 +123,27 @@ describe('StoreSearch component', () => {
 
     expect(loadStoresByCoordinates).toHaveBeenCalled();
   });
+
+  it('onSelectStore should return', () => {
+    const eventGym = {
+      target: {
+        name: 'gymboreeStoreOption',
+      },
+    };
+    const eventOutlet = {
+      target: {
+        name: 'outletOption',
+      },
+    };
+    const test = {
+      target: '',
+    };
+    const selectStoreType = jest.fn();
+    const component = shallow(<StoreViewVanilla {...props} selectStoreType={selectStoreType} />);
+    const returnValueGym = component.instance().onSelectStore(eventGym);
+    const returnValueOutlet = component.instance().onSelectStore(eventOutlet);
+    component.instance().onSelectStore(test);
+    expect(returnValueGym).toBeTruthy();
+    expect(returnValueOutlet).toBeTruthy();
+  });
 });

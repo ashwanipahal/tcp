@@ -1,5 +1,6 @@
 import React, { PureComponent, Fragment } from 'react';
 import withStyles from '@tcp/core/src/components/common/hoc/withStyles';
+import Router from 'next/router';
 import { Anchor, BodyCopy, Image, Button } from '@tcp/core/src/components/common/atoms';
 import { toTimeString, getIconPath } from '@tcp/core/src/utils';
 import { parseDate } from '@tcp/core/src/utils/parseDate';
@@ -46,25 +47,19 @@ class StoreAddressTile extends PureComponent {
   }
 
   getListingTileFooter() {
-    const {
-      labels,
-      openStoreDetail,
-      isFavorite,
-      setFavoriteStore,
-      locatorSetFavStore,
-      store,
-    } = this.props;
+    const { labels, isFavorite, setFavoriteStore, locatorSetFavStore, store } = this.props;
     return (
       <Fragment>
         <div>
           <Anchor
             fontSizeVariation="medium"
             underline
-            handleLinkClick={openStoreDetail}
+            handleLinkClick={this.openStoreDetails}
             anchorVariation="primary"
             target="_blank"
             className="store-details-link"
             title={labels.lbl_storelocators_landingpage_storedetails_link}
+            noLink
           >
             {labels.lbl_storelocators_landingpage_storedetails_link}
           </Anchor>
@@ -203,6 +198,7 @@ class StoreAddressTile extends PureComponent {
       openStoreDirections,
     } = this.props;
     const { storeName } = basicInfo;
+    const storeHours = this.getStoreHours();
 
     return (
       <div className="store-listing-header">
@@ -218,9 +214,11 @@ class StoreAddressTile extends PureComponent {
             {!!storeIndex && `${storeIndex}. `}
             {storeName}
           </BodyCopy>
-          <BodyCopy fontSize="fs12" component="span" color="text.primary" fontFamily="secondary">
-            {`(${labels.lbl_storelocators_landingpage_openInterval} ${this.getStoreHours()})`}
-          </BodyCopy>
+          {storeHours && (
+            <BodyCopy fontSize="fs12" component="span" color="text.primary" fontFamily="secondary">
+              {`(${labels.lbl_storelocators_landingpage_openInterval} ${storeHours})`}
+            </BodyCopy>
+          )}
         </div>
         <div className="title-two">
           <BodyCopy fontSize="fs12" component="span" color="text.primary" fontFamily="secondary">
@@ -331,22 +329,54 @@ class StoreAddressTile extends PureComponent {
     } = this.props;
     const todaysDate = new Date();
     const { regularHours, holidayHours, regularAndHolidayHours } = hours;
-    const selectedInterval = [...regularHours, ...holidayHours, ...regularAndHolidayHours].filter(
-      hour => {
+    const intervals = [...regularHours, ...holidayHours, ...regularAndHolidayHours];
+    let selectedInterval = intervals.filter(hour => {
+      const toInterval = hour && hour.openIntervals[0] && hour.openIntervals[0].toHour;
+      const parsedDate = new Date(toInterval);
+      return (
+        parsedDate.getDate() === todaysDate.getDate() &&
+        parsedDate.getMonth() === todaysDate.getMonth() &&
+        parsedDate.getFullYear() === todaysDate.getFullYear()
+      );
+    });
+    // Fallback for Date and month not matching.
+    // We check day and year instead.
+    if (!selectedInterval.length) {
+      selectedInterval = intervals.filter(hour => {
         const toInterval = hour && hour.openIntervals[0] && hour.openIntervals[0].toHour;
+        const parsedDate = new Date(toInterval);
         return (
-          parseDate(toInterval).getDate() === todaysDate.getDate() &&
-          parseDate(toInterval).getMonth() === todaysDate.getMonth() &&
-          parseDate(toInterval).getFullYear() === todaysDate.getFullYear()
+          parsedDate.getDay() === todaysDate.getDay() &&
+          parsedDate.getFullYear() === todaysDate.getFullYear()
         );
-      }
-    );
+      });
+    }
     try {
       return toTimeString(parseDate(selectedInterval[0].openIntervals[0].toHour), true);
     } catch (err) {
-      return 'random';
+      // Show empty incase no data found.
+      return '';
     }
   }
+
+  openStoreDetails = e => {
+    const {
+      store: {
+        basicInfo: {
+          id,
+          storeName,
+          address: { city, state, zipCode },
+        },
+      },
+    } = this.props;
+    e.preventDefault();
+    const url = `/store/${storeName
+      .replace(/\s/g, '')
+      .toLowerCase()}-${state.toLowerCase()}-${city
+      .replace(/\s/g, '')
+      .toLowerCase()}-${zipCode}-${id}`;
+    Router.push(url);
+  };
 
   render() {
     const { className, children, variation, store, ...rest } = this.props;
