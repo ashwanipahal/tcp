@@ -10,11 +10,31 @@ import ProductAddToBagContainer from '../../../../common/molecules/ProductAddToB
 import ProductSummary from '../molecules/ProductSummary';
 import { getScreenHeight } from '../../../../../utils/index.native';
 
+import {
+  getMapSliceForColorProductId,
+  getMapSliceForColor,
+  getImagesToDisplay,
+} from '../../ProductListing/molecules/ProductList/utils/productsCommonUtils';
+
 class ProductDetailView extends React.PureComponent {
   constructor(props) {
     super(props);
-    this.state = { zoomImage: false };
+    const {
+      currentProduct: { colorFitsSizesMap },
+      selectedColorProductId,
+    } = this.props;
+    this.state = {
+      zoomImage: false,
+      currentColorEntry: getMapSliceForColorProductId(colorFitsSizesMap, selectedColorProductId),
+    };
   }
+
+  onChangeColor = e => {
+    const {
+      currentProduct: { colorFitsSizesMap },
+    } = this.props;
+    this.setState({ currentColorEntry: getMapSliceForColor(colorFitsSizesMap, e) });
+  };
 
   onImageClick = () => {
     this.toggleModal();
@@ -25,8 +45,8 @@ class ProductDetailView extends React.PureComponent {
     this.setState({ zoomImage: !zoomImage });
   };
 
-  renderCarousel = () => {
-    const { currentProduct, selectedColorProductId } = this.props;
+  renderCarousel = imageUrls => {
+    const { selectedColorProductId } = this.props;
     const { zoomImage } = this.state;
     const fullWidth = {
       width: '100%',
@@ -46,7 +66,7 @@ class ProductDetailView extends React.PureComponent {
       >
         <ModalCarousel height={getScreenHeight()}>
           <ImageCarousel
-            item={currentProduct}
+            imageUrls={imageUrls}
             selectedColorProductId={selectedColorProductId}
             showFavorites={false}
             allowZoom
@@ -57,30 +77,42 @@ class ProductDetailView extends React.PureComponent {
   };
 
   render() {
-    const { currentProduct, selectedColorProductId, plpLabels, handleSubmit } = this.props;
-    const isDataAvailable = JSON.stringify(currentProduct) !== '{}';
+    const {
+      currentProduct,
+      currentProduct: { colorFitsSizesMap },
+      selectedColorProductId,
+      plpLabels,
+      handleSubmit,
+    } = this.props;
+    const { currentColorEntry } = this.state;
+    let imageUrls = [];
+    if (colorFitsSizesMap) {
+      imageUrls = getImagesToDisplay({
+        imagesByColor: currentProduct.imagesByColor,
+        curentColorEntry: currentColorEntry,
+        isAbTestActive: false,
+        isFullSet: true,
+      });
+    }
 
     return (
       <ScrollView>
         <PageContainer>
-          <ImageCarousel
-            item={currentProduct}
-            selectedColorProductId={selectedColorProductId}
-            onImageClick={this.onImageClick}
-          />
+          <ImageCarousel imageUrls={imageUrls} onImageClick={this.onImageClick} />
           <ProductSummary
             productData={currentProduct}
             selectedColorProductId={selectedColorProductId}
           />
-          {isDataAvailable && (
-            <ProductAddToBagContainer
-              currentProduct={currentProduct}
-              plpLabels={plpLabels}
-              handleSubmit={handleSubmit}
-              selectedColorProductId={selectedColorProductId}
-            />
-          )}
-          {this.renderCarousel()}
+
+          <ProductAddToBagContainer
+            currentProduct={currentProduct}
+            plpLabels={plpLabels}
+            handleSubmit={handleSubmit}
+            selectedColorProductId={selectedColorProductId}
+            onChangeColor={this.onChangeColor}
+          />
+
+          {this.renderCarousel(imageUrls)}
         </PageContainer>
       </ScrollView>
     );

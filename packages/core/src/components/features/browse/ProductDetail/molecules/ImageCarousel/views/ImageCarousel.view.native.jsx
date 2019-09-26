@@ -8,10 +8,6 @@ import PaginationDots from '@tcp/core/src/components/common/molecules/Pagination
 import BodyCopy from '@tcp/core/src/components/common/atoms/BodyCopy';
 import withStyles from '../../../../../../common/hoc/withStyles.native';
 import {
-  getImagesToDisplay,
-  getMapSliceForColorProductId,
-} from '../../../../ProductListing/molecules/ProductList/utils/productsCommonUtils';
-import {
   Container,
   FavoriteAndPaginationContainer,
   FavoriteContainer,
@@ -114,21 +110,8 @@ class ImageCarousel extends React.PureComponent {
   };
 
   render() {
-    const { item, selectedColorProductId, showFavorites, allowZoom } = this.props;
+    const { showFavorites, allowZoom, imageUrls } = this.props;
     const { activeSlideIndex } = this.state;
-    const imagesByColor = get(item, 'imagesByColor', null);
-    const colorFitsSizesMap = get(item, 'colorFitsSizesMap', null);
-    let curentColorEntry;
-    let imageUrls;
-    if (colorFitsSizesMap) {
-      curentColorEntry = getMapSliceForColorProductId(colorFitsSizesMap, selectedColorProductId);
-      imageUrls = getImagesToDisplay({
-        imagesByColor,
-        curentColorEntry,
-        isAbTestActive: false,
-        isFullSet: true,
-      });
-    }
 
     if (imageUrls && imageUrls.length > 0) {
       return (
@@ -189,8 +172,7 @@ class ImageCarousel extends React.PureComponent {
 
 ImageCarousel.propTypes = {
   theme: PropTypes.shape({}),
-  item: PropTypes.shape({}),
-  selectedColorProductId: PropTypes.number.isRequired,
+  imageUrls: PropTypes.shape([]),
   onImageClick: PropTypes.func.isRequired,
   showFavorites: PropTypes.bool,
   allowZoom: PropTypes.bool,
@@ -198,7 +180,7 @@ ImageCarousel.propTypes = {
 
 ImageCarousel.defaultProps = {
   theme: {},
-  item: {},
+  imageUrls: [],
   showFavorites: true,
   allowZoom: false,
 };

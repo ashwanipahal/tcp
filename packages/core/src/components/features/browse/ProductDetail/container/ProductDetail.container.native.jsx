@@ -37,14 +37,19 @@ class ProductDetailContainer extends React.PureComponent {
 
   render() {
     const { currentProduct, breadCrumbs, navTree, plpLabels } = this.props;
+    const noProductData = Object.keys(currentProduct).length === 0;
     return (
-      <ProductDetail
-        currentProduct={currentProduct}
-        breadCrumbs={breadCrumbs}
-        navTree={navTree}
-        selectedColorProductId={this.selectedColorProductId}
-        plpLabels={plpLabels}
-      />
+      <React.Fragment>
+        {noProductData ? null : (
+          <ProductDetail
+            currentProduct={currentProduct}
+            breadCrumbs={breadCrumbs}
+            navTree={navTree}
+            selectedColorProductId={this.selectedColorProductId}
+            plpLabels={plpLabels}
+          />
+        )}
+      </React.Fragment>
     );
   }
 }

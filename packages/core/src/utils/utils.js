@@ -552,7 +552,7 @@ export const parseBoolean = bool => {
 
 export const getFormSKUValue = formValue => {
   return {
-    color: (typeof formValue.color === 'object' && formValue.color.name) || formValue.Quantity,
+    color: (typeof formValue.color === 'object' && formValue.color.name) || formValue.color,
     size: (typeof formValue.Size === 'object' && formValue.Size.name) || formValue.Size,
     quantity:
       (typeof formValue.Quantity === 'object' && formValue.Quantity.name) || formValue.Quantity,
