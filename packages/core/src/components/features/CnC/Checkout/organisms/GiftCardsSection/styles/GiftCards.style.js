@@ -72,12 +72,6 @@ const styles = css`
       left: -31px;
       margin-top: -25px;
     }
-    @media ${props => props.theme.mediaQuery.medium} {
-      transform: scale(0.9);
-      position: relative;
-      left: -5px;
-      margin-top: -15px;
-    }
   }
   .cardPin .TextBox__label,
   .giftCardNumber .TextBox__label {
@@ -86,6 +80,17 @@ const styles = css`
   }
   input:not([value='']) ~ .TextBox__label {
     font-size: ${props => props.theme.typography.fontSizes.fs10};
+  }
+  .gift-card-container {
+    margin: 0px 0px 70px;
+    @media ${props => props.theme.mediaQuery.medium}, ${props => props.theme.mediaQuery.smallOnly} {
+      width: 100%;
+    }
+  }
+  @media ${props => props.theme.mediaQuery.large} {
+    .gift-addgiftcard-container .card__row {
+      width: 97%;
+    }
   }
 `;
 
