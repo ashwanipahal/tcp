@@ -9,6 +9,8 @@ const CONSTANTS = {
   },
   EMAIL_REGISTRATION_TYPE_CONSTANT: '10',
   CHECKOUT: 'checkout',
+  PAYMENT_METHOD_VENMO: 'venmo',
+  PAYMENT_METHOD_PAYPAL: 'payPal',
   INTERNATIONAL_CHECKOUT: 'international-checkout',
   CREDIT_CARD_CVV_INFO_LABEL: 'cvv_info',
   PAYMENT_METHOD_CREDIT_CARD: 'creditCard',

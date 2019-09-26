@@ -100,7 +100,7 @@ class PickUpFormPart extends React.Component {
   };
 
   pickupSubmit = data => {
-    const { onPickupSubmit, setVenmoPickupState } = this.props;
+    const { onPickupSubmit } = this.props;
     const { firstName, lastName, phoneNumber, emailAddress } = data.pickUpContact;
     const { hasAlternatePickup } = data.pickUpAlternate;
     const params = {
@@ -121,7 +121,6 @@ class PickUpFormPart extends React.Component {
       },
     };
     onPickupSubmit(params);
-    setVenmoPickupState(true);
   };
 
   /**
@@ -336,7 +335,6 @@ PickUpFormPart.propTypes = {
   handleSubmit: PropTypes.func.isRequired,
   onPickupSubmit: PropTypes.func.isRequired,
   isVenmoPaymentInProgress: PropTypes.bool,
-  setVenmoPickupState: PropTypes.func,
   showAccordian: PropTypes.bool,
   isVenmoPickupDisplayed: PropTypes.bool,
 };
@@ -352,7 +350,6 @@ PickUpFormPart.defaultProps = {
   pickupError: '',
   currentPhoneNumber: '',
   isVenmoPaymentInProgress: false,
-  setVenmoPickupState: () => {},
   showAccordian: true,
   isVenmoPickupDisplayed: true,
 };

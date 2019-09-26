@@ -36,9 +36,9 @@ import { removeCartItem } from '../../CartItemTile/container/CartItemTile.action
 import { imageGenerator } from '../../../../../services/abstractors/CnC/CartItemTile';
 import { getUserInfo } from '../../../account/User/container/User.actions';
 import { getIsInternationalShipping } from '../../../../../reduxStore/selectors/siteDetails.selectors';
-import { getAddressListState } from '../../../account/AddressBook/container/AddressBook.selectors';
 import { closeMiniBag } from '../../../../common/organisms/Header/container/Header.actions';
 import { addToCartEcom } from '../../AddedToBag/container/AddedToBag.actions';
+import { hasVenmoReviewPageRedirect } from './BagPage.saga.util';
 
 // external helper function
 const PAYPAL_REDIRECT_PARAM = 'isPaypalPostBack';
@@ -189,10 +189,6 @@ export function* fetchModuleX({ payload = [] }) {
 export function* routeForCartCheckout(recalc, navigation, closeModal, navigationActions) {
   const orderHasPickup = yield select(checkoutSelectors.getIsOrderHasPickup);
   const IsInternationalShipping = yield select(getIsInternationalShipping);
-  const isVenmoPaymentInProgress = yield select(checkoutSelectors.isVenmoPaymentInProgress);
-  const isVenmoShippingDisplayed = yield select(checkoutSelectors.isVenmoShippingBannerDisplayed);
-  const addressList = yield select(getAddressListState);
-  const hasShippingAddress = addressList && addressList.size > 0;
   if (isMobileApp()) {
     if (orderHasPickup) {
       const navigateAction = navigationActions.navigate({
@@ -224,10 +220,13 @@ export function* routeForCartCheckout(recalc, navigation, closeModal, navigation
     }
   } else if (!IsInternationalShipping) {
     yield put(closeMiniBag());
+    const hasVenmoReviewPage = yield call(hasVenmoReviewPageRedirect, orderHasPickup);
+    if (hasVenmoReviewPage) {
+      utility.routeToPage(CHECKOUT_ROUTES.reviewPage, { recalc });
+      return;
+    }
     if (orderHasPickup) {
       utility.routeToPage(CHECKOUT_ROUTES.pickupPage, { recalc });
-    } else if (isVenmoPaymentInProgress && hasShippingAddress && !isVenmoShippingDisplayed) {
-      utility.routeToPage(CHECKOUT_ROUTES.reviewPage, { recalc });
     } else {
       utility.routeToPage(CHECKOUT_ROUTES.shippingPage, { recalc });
     }

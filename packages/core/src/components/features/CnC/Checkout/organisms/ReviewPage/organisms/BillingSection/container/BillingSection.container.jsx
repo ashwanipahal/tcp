@@ -3,8 +3,11 @@ import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
 import BillingSection from '../views';
 import giftCardSelectors from '../../../../GiftCardsSection/container/GiftCards.selectors';
-import checkoutSelectors from '../../../../../container/Checkout.selector';
+import checkoutSelectors, {
+  isGuest as isGuestUser,
+} from '../../../../../container/Checkout.selector';
 import billingSectionSelectors from './BillingSection.selectors';
+import { modes } from '../../../../../../../../common/atoms/VenmoPaymentButton/container/VenmoPaymentButton.util';
 
 /**
  * @class BillingSectionContainer
@@ -45,11 +48,32 @@ class BillingSectionContainer extends PureComponent {
 /* istanbul ignore next */
 export const mapStateToProps = state => {
   const { address } = checkoutSelectors.getBillingValues(state);
+
+  const venmoClientTokenData = checkoutSelectors.getVenmoClientTokenData(state);
+  const { venmoPaymentTokenAvailable } = venmoClientTokenData || {};
+  const mode = venmoPaymentTokenAvailable === 'TRUE' ? modes.PAYMENT_TOKEN : modes.CLIENT_TOKEN;
+  const enabled = checkoutSelectors.getIsVenmoEnabled(state);
+  // const isNonceNotExpired = checkoutSelectors.isVenmoNonceNotExpired(state);
+  const venmoPaymentInProgress = checkoutSelectors.isVenmoPaymentInProgress();
+  const isGuest = isGuestUser(state);
+  const venmoData = checkoutSelectors.getVenmoData();
+  const userName = (venmoData && venmoData.details && venmoData.details.username) || '';
+
+  const venmoPayment = {
+    ccBrand: 'VENMO',
+    ccType: 'VENMO',
+    userName,
+    venmoSaveToAccountDisplayed: !isGuest && mode === modes.CLIENT_TOKEN,
+    isVenmoPaymentSelected: enabled && venmoPaymentInProgress,
+  };
+
   return {
     appliedGiftCards: giftCardSelectors.getAppliedGiftCards(state),
     card: billingSectionSelectors.getBillingCardDetails(state),
     labels: billingSectionSelectors.getReviewPageLabels(state),
     address,
+    isGuest,
+    venmoPayment,
   };
 };
 

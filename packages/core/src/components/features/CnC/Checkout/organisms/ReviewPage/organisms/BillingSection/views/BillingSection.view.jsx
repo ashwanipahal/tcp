@@ -2,6 +2,7 @@ import React, { Fragment } from 'react';
 import PropTypes from 'prop-types';
 import withStyles from '@tcp/core/src/components/common/hoc/withStyles';
 import { Anchor, BodyCopy, Col, Row } from '@tcp/core/src/components/common/atoms';
+import InputCheckbox from '@tcp/core/src/components/common/atoms/InputCheckbox';
 import { Grid } from '@tcp/core/src/components/common/molecules';
 import Address from '@tcp/core/src/components/common/molecules/Address';
 import CardImage from '@tcp/core/src/components/common/molecules/Card/views/CardImage';
@@ -24,7 +25,14 @@ const renderCardNumber = (card, labels) =>
  * @param {Object} props
  * @description Billing Section functional component
  */
-export const BillingSection = ({ className, card, address, appliedGiftCards, labels }) => {
+export const BillingSection = ({
+  className,
+  card,
+  address,
+  appliedGiftCards,
+  labels,
+  venmoPayment,
+}) => {
   return (
     <Grid className={`${className}`}>
       <Row fullBleed>
@@ -96,6 +104,35 @@ export const BillingSection = ({ className, card, address, appliedGiftCards, lab
             </Fragment>
           )}
         </Col>
+        {venmoPayment.isVenmoPaymentSelected && (
+          <Col
+            colSize={{ small: 6, medium: 4, large: 6 }}
+            offsetRight={{ small: 0, medium: 0, large: 1 }}
+          >
+            <BodyCopy
+              fontSize="fs16"
+              fontWeight="semibold"
+              color="gray[900]"
+              fontFamily="secondary"
+              className="sub-heading"
+            >
+              {labels.lbl_review_paymentMethod}
+            </BodyCopy>
+            <section className="venmo-payment-method-wrapper">
+              <CardImage card={venmoPayment} cardNumber={venmoPayment.userName} />
+            </section>
+
+            <div className="venmo-save-wrapper">
+              {venmoPayment.venmoSaveToAccountDisplayed === true && (
+                <InputCheckbox component={InputCheckbox} className="venmo-save-checkbox">
+                  <BodyCopy fontSize="fs14" fontFamily="secondary">
+                    Save to my account
+                  </BodyCopy>
+                </InputCheckbox>
+              )}
+            </div>
+          </Col>
+        )}
       </Row>
     </Grid>
   );
@@ -113,6 +150,7 @@ BillingSection.propTypes = {
     lbl_review_appliedGiftCards: PropTypes.string,
     lbl_review_paymentMethodEndingIn: PropTypes.string,
   }),
+  venmoPayment: PropTypes.shape({}),
 };
 
 BillingSection.defaultProps = {
@@ -126,6 +164,9 @@ BillingSection.defaultProps = {
     lbl_review_billingAddress: '',
     lbl_review_appliedGiftCards: '',
     lbl_review_paymentMethodEndingIn: '',
+  },
+  venmoPayment: {
+    userName: '',
   },
 };
 

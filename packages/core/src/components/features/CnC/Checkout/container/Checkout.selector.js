@@ -581,6 +581,11 @@ function getPickupInitialPickupSectionValues(state) {
   };
 }
 
+function isPickupHasValues(state) {
+  const pickupValues = getPickupInitialPickupSectionValues(state);
+  return pickupValues && pickupValues.pickUpContact && pickupValues.pickUpContact.firstName;
+}
+
 function getIsPaymentDisabled(state) {
   const orderDetails = state.CartPageReducer.get('orderDetails');
   if (orderDetails) {
@@ -903,4 +908,5 @@ export default {
   isVenmoPickupBannerDisplayed,
   getShippingPhoneAndEmail,
   getCreditFieldLabels,
+  isPickupHasValues,
 };
