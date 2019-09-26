@@ -271,8 +271,8 @@ apply from: "../../node_modules/react-native-vector-icons/fonts.gradle"
 
 
 project.ext.envConfigFiles = [
-    tcpdebug: "src/env/.env.dev",
-    gymboreedebug: "src/env/.env.dev",
+    tcpdebug: "src/env/.env.local",
+    gymboreedebug: "src/env/.env.locak",
     tcprelease: "src/env/.env.local",
     gymboreerelease: "src/env/.env.local",
 
