@@ -78,7 +78,7 @@ const StoreStaticMap = props => {
   const resizeMapOnClientWidth = () => {
     let containerWidth = 0;
     if (refMapContainer && refMapContainer.current && !isMobileApp()) {
-      containerWidth = refMapContainer.current.clientWidth;
+      containerWidth = refMapContainer.current.clientWidth || constants.DEFAULT_MAP_DIMENSION;
       setMapUpdateSize(`${containerWidth}x${mapSize.split('x')[1]}`);
       setImageLoadingState(true);
     }

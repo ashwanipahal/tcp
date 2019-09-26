@@ -374,7 +374,7 @@ export const getLocationStores = ({
  */
 export const setFavoriteStore = (storeId, state) => {
   const personalDataState = getPersonalDataState(state);
-  const userId = personalDataState.get('userId');
+  const userId = personalDataState && personalDataState.get('userId');
 
   const suggestedStore = getSuggestedStoreById(state, storeId);
   const favStore = suggestedStore && {

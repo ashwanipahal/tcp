@@ -1,134 +1,116 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
 exports[`StoreSearch component StoreSearch component renders correctly 1`] = `
-<Styled(Grid)>
+<div
+  className="test-class"
+>
+  <h3
+    className="storeLocatorHeading"
+  />
   <Styled(Row)
     fullBleed={true}
   >
     <Styled(Col)
       colSize={
         Object {
-          "large": 6,
-          "medium": 8,
+          "large": 6.5,
+          "medium": 4,
           "small": 6,
-        }
-      }
-      ignoreGutter={
-        Object {
-          "small": true,
         }
       }
     >
       <div
-        className="test-class"
+        className="currentLocationWrapper"
       >
-        <h3
-          className="storeLocatorHeading"
-        />
-        <Styled(Row)
-          fullBleed={true}
+        <Styled(Anchor)
+          asPath="/"
+          className=""
+          to="/"
         >
-          <Styled(Col)
-            colSize={
+          <Styled(Image)
+            alt="location"
+            className="location-image icon-small"
+            data-locator="marker-icon"
+            height="16px"
+          />
+          <span
+            className="currentLocation"
+          />
+        </Styled(Anchor)>
+      </div>
+      <form
+        className="searchForm"
+        noValidate={true}
+      >
+        <div
+          className="searchBar"
+        >
+          <Field
+            className="store-locator-field"
+            component={[Function]}
+            componentRestrictions={
               Object {
-                "large": 6.5,
-                "medium": 4,
-                "small": 6,
+                "country": Array [
+                  undefined,
+                ],
               }
             }
+            dataLocator="storeAddressLocator"
+            enableSuccessCheck={false}
+            id="storeAddressLocator"
+            name="storeAddressLocator"
+            onPlaceSelected={[Function]}
+          />
+          <Styled(Button)
+            className="button-search-store"
+            title="search"
+            type="submit"
           >
-            <div
-              className="currentLocationWrapper"
-            >
-              <Styled(Anchor)
-                asPath="/"
-                className=""
-                to="/"
-              >
-                <Styled(Image)
-                  alt="location"
-                  className="location-image icon-small"
-                  data-locator="marker-icon"
-                  height="16px"
-                />
-                <span
-                  className="currentLocation"
-                />
-              </Styled(Anchor)>
-            </div>
-            <form
-              className="searchForm"
-              noValidate={true}
-            >
-              <div
-                className="searchBar"
-              >
-                <Field
-                  className="store-locator-field"
-                  component={[Function]}
-                  componentRestrictions={
-                    Object {
-                      "country": Array [
-                        undefined,
-                      ],
-                    }
-                  }
-                  dataLocator="storeAddressLocator"
-                  enableSuccessCheck={false}
-                  id="storeAddressLocator"
-                  name="storeAddressLocator"
-                  onPlaceSelected={[Function]}
-                />
-                <Styled(Button)
-                  className="button-search-store"
-                  title="search"
-                  type="submit"
-                >
-                  <Styled(Image)
-                    alt="search"
-                    className="search-image icon-small"
-                    data-locator="search-icon"
-                    height="25px"
-                  />
-                </Styled(Button)>
-              </div>
-            </form>
-          </Styled(Col)>
-          <Styled(Col)
-            colSize={
-              Object {
-                "large": 12,
-                "medium": 4,
-                "small": 6,
-              }
-            }
+            <Styled(Image)
+              alt="search"
+              className="search-image icon-small"
+              data-locator="search-icon"
+              height="25px"
+            />
+          </Styled(Button)>
+        </div>
+      </form>
+    </Styled(Col)>
+    <Styled(Col)
+      colSize={
+        Object {
+          "large": 12,
+          "medium": 4,
+          "small": 6,
+        }
+      }
+    >
+      <div
+        className="searchFormBody"
+      >
+        <ul
+          className="storeOptionList"
+        >
+          <li
+            className="storeOptions"
           >
-            <div
-              className="searchFormBody"
-            >
-              <ul
-                className="storeOptionList"
-              >
-                <li
-                  className="storeOptions"
-                >
-                  <Field
-                    checked={false}
-                    component={
-                      Object {
-                        "$$typeof": Symbol(react.forward_ref),
-                        "attrs": Array [],
-                        "componentStyle": ComponentStyle {
-                          "componentId": "sc-gZMcBi",
-                          "isStatic": false,
-                          "rules": Array [
-                            "
+            <Field
+              checked={false}
+              component={
+                Object {
+                  "$$typeof": Symbol(react.forward_ref),
+                  "attrs": Array [],
+                  "componentStyle": ComponentStyle {
+                    "componentId": "sc-gZMcBi",
+                    "isStatic": false,
+                    "rules": Array [
+                      "
   ",
-                            "
+                      "
   display: block;
   align-items: ",
-                            [Function],
-                            ";
+                      [Function],
+                      ";
 
   & .CheckBox__input {
     flex: 0 0 auto;
@@ -138,15 +120,15 @@ exports[`StoreSearch component StoreSearch component renders correctly 1`] = `
     outline: 0;
     border: 0;
     height: ",
-                            "25px",
-                            ";
+                      "25px",
+                      ";
     width: ",
-                            "25px",
-                            ";
+                      "25px",
+                      ";
     margin: 0;
     margin-right: ",
-                            [Function],
-                            ";
+                      [Function],
+                      ";
     display: inline-block;
     vertical-align: top;
   }
@@ -158,31 +140,31 @@ exports[`StoreSearch component StoreSearch component renders correctly 1`] = `
     width: 100%;
     left: 0;
     border: 1px solid ",
-                            [Function],
-                            ";
+                      [Function],
+                      ";
   }
 
   & .CheckBox__input:checked:before {
     background: ",
-                            [Function],
-                            ";
+                      [Function],
+                      ";
     border: 1px solid ",
-                            [Function],
-                            ";
+                      [Function],
+                      ";
   }
 
   & .CheckBox__input:checked:after {
     transform: rotate(225deg);
     content: '';
     border: 2px solid ",
-                            [Function],
-                            ";
+                      [Function],
+                      ";
     font-size: ",
-                            [Function],
-                            "px;
+                      [Function],
+                      "px;
     width: ",
-                            [Function],
-                            ";
+                      [Function],
+                      ";
     height: 10px;
     border-right: 0;
     border-bottom: 0;
@@ -198,95 +180,95 @@ exports[`StoreSearch component StoreSearch component renders correctly 1`] = `
 
   & .CheckBox__text a {
     color: ",
-                            [Function],
-                            ";
+                      [Function],
+                      ";
   }
 
   & .disabled {
     opacity: ",
-                            [Function],
-                            ";
+                      [Function],
+                      ";
   }
 
   & .Checkbox__error {
     display: flex;
     flex-direction: row;
     padding-left: ",
-                            [Function],
-                            ";
+                      [Function],
+                      ";
   }
   & .warning-icon {
     background: transparent url('/static/images/circle-alert-fill.svg') no-repeat 0 0;
     background-size: contain;
     border: none;
     height: ",
-                            [Function],
-                            ";
+                      [Function],
+                      ";
     width: ",
-                            [Function],
-                            ";
+                      [Function],
+                      ";
     margin-right: 4px;
     margin-top: 2px;
   }
 ",
-                            ";
+                      ";
 ",
-                          ],
-                        },
-                        "displayName": "Styled(InputCheckbox)",
-                        "foldedComponentIds": Array [],
-                        "render": [Function],
-                        "styledComponentId": "sc-gZMcBi",
-                        "target": [Function],
-                        "toString": [Function],
-                        "warnTooManyClasses": [Function],
-                        "withComponent": [Function],
-                      }
-                    }
-                    dataLocator="gymboree-store-option"
-                    enableSuccessCheck={false}
-                    name="gymboreeStoreOption"
-                    onChange={[Function]}
-                  >
-                    <Styled(BodyCopy)
-                      className={null}
-                      color="text.primary"
-                      component="p"
-                      fontFamily="secondary"
-                      fontSize={
-                        Array [
-                          "fs12",
-                          "fs12",
-                          "fs12",
-                        ]
-                      }
-                      fontWeight="regular"
-                      letterSpacing="normal"
-                      lineHeight="normal"
-                      textAlign="left"
-                    />
-                  </Field>
-                </li>
-                <li
-                  className="storeOptions"
-                >
-                  <Field
-                    checked={false}
-                    component={
-                      Object {
-                        "$$typeof": Symbol(react.forward_ref),
-                        "attrs": Array [],
-                        "componentStyle": ComponentStyle {
-                          "componentId": "sc-gZMcBi",
-                          "isStatic": false,
-                          "rules": Array [
-                            "
+                    ],
+                  },
+                  "displayName": "Styled(InputCheckbox)",
+                  "foldedComponentIds": Array [],
+                  "render": [Function],
+                  "styledComponentId": "sc-gZMcBi",
+                  "target": [Function],
+                  "toString": [Function],
+                  "warnTooManyClasses": [Function],
+                  "withComponent": [Function],
+                }
+              }
+              dataLocator="gymboree-store-option"
+              enableSuccessCheck={false}
+              name="gymboreeStoreOption"
+              onChange={[Function]}
+            >
+              <Styled(BodyCopy)
+                className={null}
+                color="text.primary"
+                component="p"
+                fontFamily="secondary"
+                fontSize={
+                  Array [
+                    "fs12",
+                    "fs12",
+                    "fs12",
+                  ]
+                }
+                fontWeight="regular"
+                letterSpacing="normal"
+                lineHeight="normal"
+                textAlign="left"
+              />
+            </Field>
+          </li>
+          <li
+            className="storeOptions"
+          >
+            <Field
+              checked={false}
+              component={
+                Object {
+                  "$$typeof": Symbol(react.forward_ref),
+                  "attrs": Array [],
+                  "componentStyle": ComponentStyle {
+                    "componentId": "sc-gZMcBi",
+                    "isStatic": false,
+                    "rules": Array [
+                      "
   ",
-                            "
+                      "
   display: block;
   align-items: ",
-                            [Function],
-                            ";
+                      [Function],
+                      ";
 
   & .CheckBox__input {
     flex: 0 0 auto;
@@ -296,15 +278,15 @@ exports[`StoreSearch component StoreSearch component renders correctly 1`] = `
     outline: 0;
     border: 0;
     height: ",
-                            "25px",
-                            ";
+                      "25px",
+                      ";
     width: ",
-                            "25px",
-                            ";
+                      "25px",
+                      ";
     margin: 0;
     margin-right: ",
-                            [Function],
-                            ";
+                      [Function],
+                      ";
     display: inline-block;
     vertical-align: top;
   }
@@ -316,31 +298,31 @@ exports[`StoreSearch component StoreSearch component renders correctly 1`] = `
     width: 100%;
     left: 0;
     border: 1px solid ",
-                            [Function],
-                            ";
+                      [Function],
+                      ";
   }
 
   & .CheckBox__input:checked:before {
     background: ",
-                            [Function],
-                            ";
+                      [Function],
+                      ";
     border: 1px solid ",
-                            [Function],
-                            ";
+                      [Function],
+                      ";
   }
 
   & .CheckBox__input:checked:after {
     transform: rotate(225deg);
     content: '';
     border: 2px solid ",
-                            [Function],
-                            ";
+                      [Function],
+                      ";
     font-size: ",
-                            [Function],
-                            "px;
+                      [Function],
+                      "px;
     width: ",
-                            [Function],
-                            ";
+                      [Function],
+                      ";
     height: 10px;
     border-right: 0;
     border-bottom: 0;
@@ -356,112 +338,105 @@ exports[`StoreSearch component StoreSearch component renders correctly 1`] = `
 
   & .CheckBox__text a {
     color: ",
-                            [Function],
-                            ";
+                      [Function],
+                      ";
   }
 
   & .disabled {
     opacity: ",
-                            [Function],
-                            ";
+                      [Function],
+                      ";
   }
 
   & .Checkbox__error {
     display: flex;
     flex-direction: row;
     padding-left: ",
-                            [Function],
-                            ";
+                      [Function],
+                      ";
   }
   & .warning-icon {
     background: transparent url('/static/images/circle-alert-fill.svg') no-repeat 0 0;
     background-size: contain;
     border: none;
     height: ",
-                            [Function],
-                            ";
+                      [Function],
+                      ";
     width: ",
-                            [Function],
-                            ";
+                      [Function],
+                      ";
     margin-right: 4px;
     margin-top: 2px;
   }
 ",
-                            ";
+                      ";
 ",
-                          ],
-                        },
-                        "displayName": "Styled(InputCheckbox)",
-                        "foldedComponentIds": Array [],
-                        "render": [Function],
-                        "styledComponentId": "sc-gZMcBi",
-                        "target": [Function],
-                        "toString": [Function],
-                        "warnTooManyClasses": [Function],
-                        "withComponent": [Function],
-                      }
-                    }
-                    dataLocator="only-outlet-option"
-                    enableSuccessCheck={false}
-                    name="outletOption"
-                    onChange={[Function]}
-                  >
-                    <Styled(BodyCopy)
-                      className={null}
-                      color="text.primary"
-                      component="p"
-                      fontFamily="secondary"
-                      fontSize={
-                        Array [
-                          "fs12",
-                          "fs12",
-                          "fs12",
-                        ]
-                      }
-                      fontWeight="regular"
-                      letterSpacing="normal"
-                      lineHeight="normal"
-                      textAlign="left"
-                    />
-                  </Field>
-                </li>
-              </ul>
-              <ul
-                className="storeLinksList"
-              >
-                <li
-                  className="mapLink storeLinks"
-                >
-                  <Styled(Anchor)
-                    asPath=""
-                    className=""
-                    to=""
-                  />
-                </li>
-                <li
-                  className=" storeLinks"
-                >
-                  <Styled(Anchor)
-                    asPath=""
-                    className=""
-                    to=""
-                  />
-                </li>
-                <li
-                  className=" storeLinks"
-                >
-                  <Styled(Anchor)
-                    asPath=""
-                    className=""
-                    to=""
-                  />
-                </li>
-              </ul>
-            </div>
-          </Styled(Col)>
-        </Styled(Row)>
+                    ],
+                  },
+                  "displayName": "Styled(InputCheckbox)",
+                  "foldedComponentIds": Array [],
+                  "render": [Function],
+                  "styledComponentId": "sc-gZMcBi",
+                  "target": [Function],
+                  "toString": [Function],
+                  "warnTooManyClasses": [Function],
+                  "withComponent": [Function],
+                }
+              }
+              dataLocator="only-outlet-option"
+              enableSuccessCheck={false}
+              name="outletOption"
+              onChange={[Function]}
+            >
+              <Styled(BodyCopy)
+                className={null}
+                color="text.primary"
+                component="p"
+                fontFamily="secondary"
+                fontSize={
+                  Array [
+                    "fs12",
+                    "fs12",
+                    "fs12",
+                  ]
+                }
+                fontWeight="regular"
+                letterSpacing="normal"
+                lineHeight="normal"
+                textAlign="left"
+              />
+            </Field>
+          </li>
+        </ul>
+        <ul
+          className="storeLinksList"
+        >
+          <li
+            className="mapLink storeLinks"
+          >
+            <Styled(Anchor) />
+          </li>
+          <li
+            className="storeLinks"
+          >
+            <Styled(Anchor)
+              asPath=""
+              className=""
+              to=""
+            />
+          </li>
+          <li
+            className="storeLinks"
+          >
+            <Styled(Anchor)
+              asPath=""
+              className=""
+              to=""
+            />
+          </li>
+        </ul>
       </div>
     </Styled(Col)>
   </Styled(Row)>
-</Styled(Grid)>
+</div>
 `;
