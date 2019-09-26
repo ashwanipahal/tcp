@@ -1,4 +1,3 @@
-/* eslint-disable camelcase */
 import React, { Component } from 'react';
 import { FlatList } from 'react-native';
 import ErrorMessage from '@tcp/core/src/components/common/hoc/ErrorMessage';
