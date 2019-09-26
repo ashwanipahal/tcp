@@ -1,7 +1,7 @@
 import React from 'react';
 import { ScrollView, View } from 'react-native';
 import { Field, reduxForm } from 'redux-form';
-import Recaptcha from '@tcp/core/src/components/common/molecules/recaptcha/recaptcha.native';
+import RecaptchaModal from '@tcp/core/src/components/common/molecules/recaptcha/recaptchaModal.native';
 import { PropTypes } from 'prop-types';
 import { get } from 'lodash';
 import { getLabelValue } from '@tcp/core/src/utils/utils';
@@ -25,23 +25,61 @@ class AddGiftCardForm extends React.PureComponent {
   // eslint-disable-next-line
   constructor(props) {
     super(props);
+    this.state = {
+      setRecaptchaModalMountedState: false,
+      tokenInfomation: '',
+    };
   }
 
+  setRecaptchaModalMountState = () => {
+    const { setRecaptchaModalMountedState } = this.state;
+    this.setState({
+      setRecaptchaModalMountedState: !setRecaptchaModalMountedState,
+    });
+  };
+
   onMessage = event => {
-    const { change } = this.props;
+    const { change, handleSubmit, onAddGiftCardClick } = this.props;
     if (event && event.nativeEvent.data) {
       let value = get(event, 'nativeEvent.data', '');
       if (['cancel', 'error', 'expired'].includes(value)) {
         value = '';
       }
-      change('recaptchaToken', value);
+      this.setState({ tokenInfomation: value });
+      handleSubmit(data => {
+        const { cardPin, giftCardNumber } = data;
+        const addGifteData = {
+          cardPin,
+          giftCardNumber,
+          recaptchaToken: value,
+        };
+        onAddGiftCardClick(addGifteData);
+      })();
+      this.setRecaptchaModalMountState();
     }
+    // change('recaptchaToken', value);
   };
 
   handleChange = () => {
     const { onClearError, addGiftCardError, isRow } = this.props;
     if (addGiftCardError && isRow) {
       onClearError();
+    }
+  };
+
+  onClose = () => {
+    this.setRecaptchaModalMountState();
+  };
+
+  handleAddGiftCardClick = e => {
+    const { tokenInfomation } = this.state;
+    const { handleSubmit, invalid } = this.props;
+    e.preventDefault();
+    if (!tokenInfomation && !invalid) {
+      this.setRecaptchaModalMountState();
+    } else {
+      this.setState({ tokenInfomation: '' });
+      handleSubmit();
     }
   };
 
@@ -70,6 +108,7 @@ class AddGiftCardForm extends React.PureComponent {
       addGiftCardResponse,
       isRow,
     } = this.props;
+    const { setRecaptchaModalMountedState } = this.state;
     return (
       <ScrollView
         showsVerticalScrollIndicator={false}
@@ -107,10 +146,17 @@ class AddGiftCardForm extends React.PureComponent {
           />
 
           <View>
-            <RecaptchaContainer>
-              <Recaptcha onMessage={this.onMessage} />
-            </RecaptchaContainer>
-            <Field
+            <React.Fragment>
+              {setRecaptchaModalMountedState && (
+                <RecaptchaModal
+                  onMessage={this.onMessage}
+                  setRecaptchaModalMountedState={setRecaptchaModalMountedState}
+                  toggleRecaptchaModal={this.setRecaptchaModalMountState}
+                  onClose={this.onClose}
+                />
+              )}
+            </React.Fragment>
+            {/* <Field
               label=""
               component={TextBox}
               title=""
@@ -119,7 +165,7 @@ class AddGiftCardForm extends React.PureComponent {
               id="recaptchaToken"
               data-locator="gift-card-recaptchcb"
               className="visibility-recaptcha"
-            />
+            /> */}
           </View>
           {!isRow && (
             <MessageWrapper>
@@ -127,7 +173,10 @@ class AddGiftCardForm extends React.PureComponent {
                 fontFamily="secondary"
                 fontSize="fs14"
                 color="gray.900"
-                text={getLabelValue(labels, 'lbl_payment_giftCardMessageHeading')}
+                text={getLabelValue(
+                  labels,
+                  'lbl_payment_giftCardMessageHeading'
+                )}
               />
               <MessageTextWrapper>
                 <BodyCopy
@@ -135,7 +184,10 @@ class AddGiftCardForm extends React.PureComponent {
                   fontSize="fs12"
                   color="black"
                   fontWeight="regular"
-                  text={getLabelValue(labels, 'lbl_payment_giftCardMessageDescription')}
+                  text={getLabelValue(
+                    labels,
+                    'lbl_payment_giftCardMessageDescription'
+                  )}
                 />
               </MessageTextWrapper>
             </MessageWrapper>
@@ -159,9 +211,7 @@ class AddGiftCardForm extends React.PureComponent {
                 buttonVariation="variable-width"
                 data-locator="gift-card-addcardbtn"
                 width="164px"
-                onPress={handleSubmit(data => {
-                  onAddGiftCardClick(data);
-                })}
+                onPress={this.handleAddGiftCardClick}
               />
             </FooterButtonWrapper>
           )}
@@ -202,6 +252,7 @@ AddGiftCardForm.propTypes = {
   handleSubmit: PropTypes.func,
   toggleModal: PropTypes.func,
   onAddGiftCardClick: PropTypes.func,
+  invalid: PropTypes.func.isRequired,
   labels: PropTypes.shape({
     paymentGC: PropTypes.shape({
       lbl_payment_giftCardNoPlaceholder: PropTypes.string,

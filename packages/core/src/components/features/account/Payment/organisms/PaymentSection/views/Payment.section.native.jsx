@@ -107,6 +107,7 @@ class PaymentView extends React.Component<Props> {
       setUpdateModalMountedState: false,
       selectedCard: {},
       showGiftCardModal: false,
+      recaptchaToken: '',
     };
     this.isEdit = false;
   }
@@ -195,8 +196,7 @@ class PaymentView extends React.Component<Props> {
       checkbalanceValueInfo,
       updateCardList,
     } = this.props;
-    const { setDeleteModalMountedState, setUpdateModalMountedState, selectedCard } = this.state;
-    const { showGiftCardModal } = this.state;
+    const { setDeleteModalMountedState, setUpdateModalMountedState, selectedCard ,  recaptchaToken  , showGiftCardModal} = this.state;
     let dto = {};
     const cardImg = getIconCard(this.cardIconMapping[selectedCard.ccBrand]);
 
@@ -276,6 +276,8 @@ class PaymentView extends React.Component<Props> {
               toggleModal={this.setDeleteModalMountState}
               setSelectedCard={this.setSelectedCard}
               setCardHandler={this.toggleGiftCardModal}
+              toggleRecaptchaModal={this.setRecaptchaModalMountState}
+              recaptchaToken={recaptchaToken}
             />
           )}
           {setDeleteModalMountedState && (
