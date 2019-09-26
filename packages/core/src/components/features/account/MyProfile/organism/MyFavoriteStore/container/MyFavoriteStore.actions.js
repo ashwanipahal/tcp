@@ -4,8 +4,9 @@ import constants from '../MyFavoriteStore.constants';
  * @function getMyFavoriteStoreAction
  * action creator for type: GET_CHILDREN
  */
-export const getMyFavoriteStoreAction = () => ({
+export const getMyFavoriteStoreAction = payload => ({
   type: constants.GET_MY_FAVORITE_STORE,
+  payload
 });
 
 /**
