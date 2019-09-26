@@ -116,11 +116,11 @@ class StoreAddressTile extends PureComponent {
   }
 
   getListingFooter() {
-    const { openStoreDetail, setFavoriteStore, labels, isFavorite, variation, store } = this.props;
+    const { openStoreDetails, setFavoriteStore, labels, isFavorite, variation, store } = this.props;
     return (
       <Fragment>
         <ListingTitleLink
-          onPress={openStoreDetail}
+          onPress={event => openStoreDetails(event, store)}
           accessibilityRole="link"
           accessibilityLabel={labels.lbl_storelocators_landingpage_storedetails_link}
           text={labels.lbl_storelocators_landingpage_storedetails_link}

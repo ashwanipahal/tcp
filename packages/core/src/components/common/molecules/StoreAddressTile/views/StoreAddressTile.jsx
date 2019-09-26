@@ -1,6 +1,5 @@
 import React, { PureComponent, Fragment } from 'react';
 import withStyles from '@tcp/core/src/components/common/hoc/withStyles';
-import Router from 'next/router';
 import { Anchor, BodyCopy, Image, Button } from '@tcp/core/src/components/common/atoms';
 import { toTimeString, getIconPath } from '@tcp/core/src/utils';
 import { parseDate } from '@tcp/core/src/utils/parseDate';
@@ -47,14 +46,21 @@ class StoreAddressTile extends PureComponent {
   }
 
   getListingTileFooter() {
-    const { labels, isFavorite, setFavoriteStore, locatorSetFavStore, store } = this.props;
+    const {
+      labels,
+      isFavorite,
+      setFavoriteStore,
+      locatorSetFavStore,
+      store,
+      openStoreDetails,
+    } = this.props;
     return (
       <Fragment>
         <div>
           <Anchor
             fontSizeVariation="medium"
             underline
-            handleLinkClick={this.openStoreDetails}
+            handleLinkClick={event => openStoreDetails(event, store)}
             anchorVariation="primary"
             target="_blank"
             className="store-details-link"
@@ -358,25 +364,6 @@ class StoreAddressTile extends PureComponent {
       return '';
     }
   }
-
-  openStoreDetails = e => {
-    const {
-      store: {
-        basicInfo: {
-          id,
-          storeName,
-          address: { city, state, zipCode },
-        },
-      },
-    } = this.props;
-    e.preventDefault();
-    const url = `/store/${storeName
-      .replace(/\s/g, '')
-      .toLowerCase()}-${state.toLowerCase()}-${city
-      .replace(/\s/g, '')
-      .toLowerCase()}-${zipCode}-${id}`;
-    Router.push(url);
-  };
 
   render() {
     const { className, children, variation, store, ...rest } = this.props;

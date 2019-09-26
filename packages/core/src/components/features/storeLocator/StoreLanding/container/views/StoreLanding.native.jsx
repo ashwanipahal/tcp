@@ -4,6 +4,7 @@ import { View, Text } from 'react-native';
 import { isCanada, getAPIConfig } from '@tcp/core/src/utils';
 import StoreStaticMap from '@tcp/core/src/components/common/atoms/StoreStaticMap';
 import StoreAddressTile from '@tcp/core/src/components/common/molecules/StoreAddressTile';
+import { withTheme } from 'styled-components/native';
 import StoreLocatorSearch from '../../organisms/StoreSearch';
 import {
   StyleStoreLandingContainer,
@@ -122,6 +123,6 @@ StoreLanding.defaultProps = {
   favoriteStore: null,
 };
 
-export default StoreLanding;
+export default withTheme(StoreLanding);
 
 export { StoreLanding as StoreLandingVanilla };

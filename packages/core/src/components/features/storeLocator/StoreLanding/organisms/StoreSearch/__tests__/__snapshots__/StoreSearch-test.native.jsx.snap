@@ -56,18 +56,6 @@ exports[`StoreSearch component StoreSearch component renders correctly props 1`]
     </Styled(View)>
   </Styled(Anchor)>
   <Styled(View)>
-    <Field
-      component={[Function]}
-      componentRestrictions={
-        Object {
-          "country": Array [
-            "US",
-          ],
-        }
-      }
-      dataLocator="addnewaddress-addressl1"
-      headerTitle="ZIP or city, state"
-    />
     <Styled(View)>
       <Styled(Anchor)
         accessibilityLabel=""
@@ -93,6 +81,22 @@ exports[`StoreSearch component StoreSearch component renders correctly props 1`]
         />
       </Styled(Anchor)>
     </Styled(View)>
+    <Field
+      clearButtonMode="never"
+      component={[Function]}
+      componentRestrictions={
+        Object {
+          "country": Array [
+            "US",
+          ],
+        }
+      }
+      dataLocator="storeAddressLocator"
+      headerTitle="ZIP or city, state"
+      onSubmitEditing={[Function]}
+      onValueChange={[Function]}
+      refs={[Function]}
+    />
     <ErrorMessage
       className=""
       error="you have an error in the component"
@@ -107,11 +111,13 @@ exports[`StoreSearch component StoreSearch component renders correctly props 1`]
       data={
         Array [
           Object {
+            "checked": undefined,
             "dataLocator": "gymboree-store-option",
             "name": "gymboreeStoreOption",
             "storeLabel": "Gymboree",
           },
           Object {
+            "checked": undefined,
             "dataLocator": "only-outlet-option",
             "name": "outletOption",
             "storeLabel": "Only Outlet Stores",
@@ -205,18 +211,6 @@ exports[`StoreSearch component StoreSearch component renders correctly props 2`]
     </Styled(View)>
   </Styled(Anchor)>
   <Styled(View)>
-    <Field
-      component={[Function]}
-      componentRestrictions={
-        Object {
-          "country": Array [
-            "US",
-          ],
-        }
-      }
-      dataLocator="addnewaddress-addressl1"
-      headerTitle="ZIP or city, state"
-    />
     <Styled(View)>
       <Styled(Anchor)
         accessibilityLabel=""
@@ -242,12 +236,28 @@ exports[`StoreSearch component StoreSearch component renders correctly props 2`]
         />
       </Styled(Anchor)>
     </Styled(View)>
+    <Field
+      clearButtonMode="never"
+      component={[Function]}
+      componentRestrictions={
+        Object {
+          "country": Array [
+            "US",
+          ],
+        }
+      }
+      dataLocator="storeAddressLocator"
+      headerTitle="ZIP or city, state"
+      onSubmitEditing={[Function]}
+      onValueChange={[Function]}
+      refs={[Function]}
+    />
     <ErrorMessage
       className=""
-      error="you have an error in the component"
+      error="there is an error in the input"
       errorId="storeSearch_geoLocation"
       formName=""
-      isShowingMessage="you have an error in the component"
+      isShowingMessage="there is an error in the input"
       withoutErrorDataAttribute={true}
     />
   </Styled(View)>
@@ -256,11 +266,13 @@ exports[`StoreSearch component StoreSearch component renders correctly props 2`]
       data={
         Array [
           Object {
+            "checked": undefined,
             "dataLocator": "gymboree-store-option",
             "name": "gymboreeStoreOption",
             "storeLabel": "Gymboree",
           },
           Object {
+            "checked": undefined,
             "dataLocator": "only-outlet-option",
             "name": "outletOption",
             "storeLabel": "Only Outlet Stores",
@@ -290,7 +302,7 @@ exports[`StoreSearch component StoreSearch component renders correctly props 2`]
       fontWeight="regular"
       locator=""
       onPress={null}
-      text="View Map"
+      text="View List"
       underline={true}
       visible={false}
     />
@@ -298,7 +310,7 @@ exports[`StoreSearch component StoreSearch component renders correctly props 2`]
 </Styled(View)>
 `;
 
-exports[`StoreSearch component renderStoreTypes renders correctly props 1`] = `
+exports[`StoreSearch component StoreSearch component renders with errors 1`] = `
 <Styled(View)>
   <Styled(View)>
     <Styled(BodyCopy)
@@ -354,18 +366,6 @@ exports[`StoreSearch component renderStoreTypes renders correctly props 1`] = `
     </Styled(View)>
   </Styled(Anchor)>
   <Styled(View)>
-    <Field
-      component={[Function]}
-      componentRestrictions={
-        Object {
-          "country": Array [
-            "US",
-          ],
-        }
-      }
-      dataLocator="addnewaddress-addressl1"
-      headerTitle="ZIP or city, state"
-    />
     <Styled(View)>
       <Styled(Anchor)
         accessibilityLabel=""
@@ -391,17 +391,198 @@ exports[`StoreSearch component renderStoreTypes renders correctly props 1`] = `
         />
       </Styled(Anchor)>
     </Styled(View)>
+    <Field
+      clearButtonMode="never"
+      component={[Function]}
+      componentRestrictions={
+        Object {
+          "country": Array [
+            "US",
+          ],
+        }
+      }
+      dataLocator="storeAddressLocator"
+      headerTitle="ZIP or city, state"
+      onSubmitEditing={[Function]}
+      onValueChange={[Function]}
+      refs={[Function]}
+    />
+    <ErrorMessage
+      className=""
+      error="you have an error in the component"
+      errorId="storeSearch_geoLocation"
+      formName=""
+      isShowingMessage="you have an error in the component"
+      withoutErrorDataAttribute={true}
+    />
   </Styled(View)>
   <Styled(View)>
     <FlatList
       data={
         Array [
           Object {
+            "checked": undefined,
             "dataLocator": "gymboree-store-option",
             "name": "gymboreeStoreOption",
             "storeLabel": "Gymboree",
           },
           Object {
+            "checked": undefined,
+            "dataLocator": "only-outlet-option",
+            "name": "outletOption",
+            "storeLabel": "Only Outlet Stores",
+          },
+        ]
+      }
+      disableVirtualization={false}
+      horizontal={true}
+      initialNumToRender={10}
+      keyExtractor={[Function]}
+      maxToRenderPerBatch={10}
+      numColumns={1}
+      onEndReachedThreshold={2}
+      removeClippedSubviews={false}
+      renderItem={[Function]}
+      scrollEventThrottle={50}
+      updateCellsBatchingPeriod={50}
+      windowSize={21}
+    />
+  </Styled(View)>
+  <Styled(View)>
+    <Styled(Anchor)
+      accessibilityLabel=""
+      anchorVariation="primary"
+      colorName={null}
+      customStyle={Object {}}
+      fontWeight="regular"
+      locator=""
+      onPress={null}
+      text="View Map"
+      underline={true}
+      visible={false}
+    />
+  </Styled(View)>
+</Styled(View)>
+`;
+
+exports[`StoreSearch component component renders correctly with proper elements 1`] = `
+<Styled(View)>
+  <Styled(View)>
+    <Styled(BodyCopy)
+      accessibilityText=""
+      color="#1a1a1a"
+      dataLocator=""
+      fontSize="fs16"
+      fontWeight="extrabold"
+      margin={null}
+      mobilefontFamily="primary"
+      numberOfLines={null}
+      text="Find a Store"
+      textDecoration={null}
+    />
+  </Styled(View)>
+  <Styled(Anchor)
+    accessibilityLabel=""
+    anchorVariation=""
+    colorName={null}
+    customStyle={Object {}}
+    locator=""
+    onPress={null}
+    text=""
+    visible={false}
+  >
+    <Styled(View)>
+      <Styled(ImageComp)
+        alt=""
+        height="16px"
+        host=""
+        source={
+          Object {
+            "testUri": "../../../../core/src/assets/icon-marker.png",
+          }
+        }
+        url=""
+        width="16px"
+      />
+      <Styled(View)>
+        <Styled(BodyCopy)
+          accessibilityText=""
+          color="#1a1a1a"
+          dataLocator=""
+          fontSize="fs12"
+          fontWeight="regular"
+          margin={null}
+          mobilefontFamily="primary"
+          numberOfLines={null}
+          text="Use my current location"
+          textDecoration={null}
+        />
+      </Styled(View)>
+    </Styled(View)>
+  </Styled(Anchor)>
+  <Styled(View)>
+    <Styled(View)>
+      <Styled(Anchor)
+        accessibilityLabel=""
+        anchorVariation=""
+        colorName={null}
+        customStyle={Object {}}
+        locator=""
+        onPress={[Function]}
+        text=""
+        visible={false}
+      >
+        <Styled(ImageComp)
+          alt=""
+          height="25px"
+          host=""
+          source={
+            Object {
+              "testUri": "../../../../core/src/assets/icon-mag-glass.png",
+            }
+          }
+          url=""
+          width="25px"
+        />
+      </Styled(Anchor)>
+    </Styled(View)>
+    <Field
+      clearButtonMode="never"
+      component={[Function]}
+      componentRestrictions={
+        Object {
+          "country": Array [
+            "US",
+          ],
+        }
+      }
+      dataLocator="storeAddressLocator"
+      headerTitle="ZIP or city, state"
+      onSubmitEditing={[Function]}
+      onValueChange={[Function]}
+      refs={[Function]}
+    />
+    <ErrorMessage
+      className=""
+      error="there is an error in the input"
+      errorId="storeSearch_geoLocation"
+      formName=""
+      isShowingMessage="there is an error in the input"
+      withoutErrorDataAttribute={true}
+    />
+  </Styled(View)>
+  <Styled(View)>
+    <FlatList
+      data={
+        Array [
+          Object {
+            "checked": undefined,
+            "dataLocator": "gymboree-store-option",
+            "name": "gymboreeStoreOption",
+            "storeLabel": "Gymboree",
+          },
+          Object {
+            "checked": undefined,
             "dataLocator": "only-outlet-option",
             "name": "outletOption",
             "storeLabel": "Only Outlet Stores",

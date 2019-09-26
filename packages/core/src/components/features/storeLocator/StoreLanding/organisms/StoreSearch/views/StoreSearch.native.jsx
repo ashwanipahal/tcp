@@ -34,26 +34,14 @@ class StoreSearch extends Component {
 
   locationRef = null;
 
-  componentDidMount() {
-    if (navigator.geolocation) {
-      const { loadStoresByCoordinates } = this.props;
-      navigator.geolocation.getCurrentPosition(pos => {
-        loadStoresByCoordinates(
-          Promise.resolve({ lat: pos.coords.latitude, lng: pos.coords.longitude }),
-          INITIAL_STORE_LIMIT
-        );
-      });
-    }
-  }
-
   handleLocationSelection = ({ geometry }) => {
-    const {
-      location: { lat, lng },
-    } = geometry;
     const { loadStoresByCoordinates, submitting } = this.props;
     if (!geometry || submitting) {
       return;
     }
+    const {
+      location: { lat, lng },
+    } = geometry;
     loadStoresByCoordinates(Promise.resolve({ lat, lng }), INITIAL_STORE_LIMIT);
   };
 
@@ -107,9 +95,11 @@ class StoreSearch extends Component {
         }
       );
     }
+
+    return true;
   };
 
-  onSearch = (inputSearch = this.locationRef.getAddressText()) => {
+  onSearch = (inputSearch = this.locationRef && this.locationRef.getAddressText()) => {
     const { loadStoresByCoordinates } = this.props;
     const googleSearchAPIKey = getAPIConfig().googleApiKey;
     const apiUrl = `${GOOGLE_SEARCH_API_ENDPOINT}${inputSearch}&inputtype=textquery&fields=geometry&key=${googleSearchAPIKey}`;

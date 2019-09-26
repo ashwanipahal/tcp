@@ -1,4 +1,5 @@
 import React, { PureComponent } from 'react';
+import Router from 'next/router';
 import PropTypes from 'prop-types';
 import { Row, Col } from '@tcp/core/src/components/common/atoms';
 import StoreStaticMap from '@tcp/core/src/components/common/atoms/StoreStaticMap';
@@ -20,6 +21,23 @@ export class StoreLanding extends PureComponent {
     isGym: false,
   };
 
+  openStoreDetails = (event, store) => {
+    const {
+      basicInfo: {
+        id,
+        storeName,
+        address: { city, state, zipCode },
+      },
+    } = store;
+    event.preventDefault();
+    const url = `/store/${storeName
+      .replace(/\s/g, '')
+      .toLowerCase()}-${state.toLowerCase()}-${city
+      .replace(/\s/g, '')
+      .toLowerCase()}-${zipCode}-${id}`;
+    Router.push(url);
+  };
+
   renderMapView = suggestedStoreList => {
     const { setFavoriteStore, favoriteStore, ...others } = this.props;
     const storeList = suggestedStoreList.map((item, index) => (
@@ -32,6 +50,7 @@ export class StoreLanding extends PureComponent {
           setFavoriteStore={setFavoriteStore}
           isFavorite={favoriteStore && favoriteStore.basicInfo.id === item.basicInfo.id}
           key={item.basicInfo.id}
+          openStoreDetails={this.openStoreDetails}
         />
       </Col>
     ));
@@ -82,6 +101,7 @@ export class StoreLanding extends PureComponent {
           variation="listing"
           setFavoriteStore={setFavoriteStore}
           isFavorite={favoriteStore && favoriteStore.basicInfo.id === item.basicInfo.id}
+          openStoreDetails={this.openStoreDetails}
         />
       </Col>
     ));
@@ -102,6 +122,7 @@ export class StoreLanding extends PureComponent {
                 store={favoriteStore}
                 variation="listing-header"
                 isFavorite
+                openStoreDetails={this.openStoreDetails}
               />
             </Col>
           </Row>
