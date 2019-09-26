@@ -420,10 +420,19 @@ class CustomSelect extends React.Component {
   }
 
   // handles key presses for this component
+  // eslint-disable-next-line complexity
   handleKeyDown(event) {
-    const { disabled } = this.props;
+    const { disabled, isSortOpenModal } = this.props;
+    const { expanded } = this.state;
+
     if (disabled) return; // ignore everything if this component is disabled
     switch (event.keyCode) {
+      case KEY_ENTER: // enter
+        if (!expanded) return;
+        if (!isSortOpenModal) return;
+        this.selectHighlightedItem(); // the user selected the currently highlighted item
+        break;
+
       case KEY_ESCAPE: // escape
         this.handleEscapeKeyEvent(this.state, this.props);
 

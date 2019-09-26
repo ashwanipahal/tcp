@@ -424,6 +424,7 @@ exports[`Payment View should render with showGiftCardModal 1`] = `
     />
     <ModalNative
       isOpen={true}
+      isOverlay={false}
       onRequestClose={[Function]}
     >
       <Styled(View)>

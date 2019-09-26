@@ -54,6 +54,7 @@ const ServiceDetailWrapper = styled.View`
   display: flex;
   flex-direction: row;
   justify-content: space-between;
+  width: 100%;
 `;
 
 const PriceWrapper = styled.View`
@@ -62,6 +63,9 @@ const PriceWrapper = styled.View`
 
 const StyledGiftDetails = styled.View`
   margin-top: ${props => props.theme.spacing.APP_LAYOUT_SPACING.XXS};
+`;
+const AddMessageHead = styled.View`
+  margin-bottom: 5px;
 `;
 
 export {
@@ -78,4 +82,5 @@ export {
   ImageBrandStyle,
   RadioButtonWrapperInner,
   StyledGiftDetails,
+  AddMessageHead,
 };

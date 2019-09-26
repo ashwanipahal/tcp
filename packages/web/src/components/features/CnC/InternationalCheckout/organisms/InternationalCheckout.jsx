@@ -59,7 +59,7 @@ class InternationalCheckout extends PureComponent {
           className="envoyId"
           src={iframeUrl}
           frameBorder="0"
-          scrolling="no"
+          scrolling="yes"
         />
       </div>
     );

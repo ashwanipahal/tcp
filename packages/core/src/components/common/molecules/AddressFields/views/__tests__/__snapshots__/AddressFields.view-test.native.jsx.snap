@@ -298,6 +298,7 @@ exports[`AddressFields component should render correctly 1`] = `
   background-color: ",
                 [Function],
                 ";
+  width: 100%;
 ",
                 ";
   ",
@@ -778,6 +779,7 @@ exports[`AddressFields component should render correctly 1`] = `
   background-color: ",
             [Function],
             ";
+  width: 100%;
 ",
             ";
   ",
@@ -1224,6 +1226,7 @@ exports[`AddressFields component should render correctly without phoneNumber and
   background-color: ",
                 [Function],
                 ";
+  width: 100%;
 ",
                 ";
   ",
@@ -1704,6 +1707,7 @@ exports[`AddressFields component should render correctly without phoneNumber and
   background-color: ",
             [Function],
             ";
+  width: 100%;
 ",
             ";
   ",
@@ -2150,6 +2154,7 @@ exports[`AddressFields component should render correctly without phoneNumber and
   background-color: ",
                 [Function],
                 ";
+  width: 100%;
 ",
                 ";
   ",
@@ -2630,6 +2635,7 @@ exports[`AddressFields component should render correctly without phoneNumber and
   background-color: ",
             [Function],
             ";
+  width: 100%;
 ",
             ";
   ",
@@ -3076,6 +3082,7 @@ exports[`AddressFields component should render correctly without phoneNumber and
   background-color: ",
                 [Function],
                 ";
+  width: 100%;
 ",
                 ";
   ",
@@ -3311,6 +3318,7 @@ exports[`AddressFields component should render correctly without phoneNumber and
   background-color: ",
             [Function],
             ";
+  width: 100%;
 ",
             ";
   ",

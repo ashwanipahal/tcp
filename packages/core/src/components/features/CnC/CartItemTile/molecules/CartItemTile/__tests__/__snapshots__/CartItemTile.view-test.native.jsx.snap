@@ -46,7 +46,7 @@ exports[`CartItemTile common component renders correctly 1`] = `
   rightActionActivationDistance={125}
   rightActionReleaseAnimationConfig={null}
   rightActionReleaseAnimationFn={null}
-  rightButtonWidth={250}
+  rightButtonWidth={240}
   rightButtons={
     Array [
       <ForwardRef>
@@ -418,7 +418,7 @@ exports[`CartItemTile common component renders correctly with Save for later ena
   rightActionActivationDistance={125}
   rightActionReleaseAnimationConfig={null}
   rightActionReleaseAnimationFn={null}
-  rightButtonWidth={250}
+  rightButtonWidth={240}
   rightButtons={
     Array [
       <ForwardRef>
@@ -809,7 +809,7 @@ exports[`CartItemTile common component renders correctly with bag page sfl secti
   rightActionActivationDistance={125}
   rightActionReleaseAnimationConfig={null}
   rightActionReleaseAnimationFn={null}
-  rightButtonWidth={250}
+  rightButtonWidth={240}
   rightButtons={
     Array [
       <ForwardRef>

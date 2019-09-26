@@ -35,8 +35,21 @@ const StyledModal = css`
       height: 100%;
     }
   }
+  .condensed-overlay {
+    top: 0;
+
+    @media ${props => props.theme.mediaQuery.medium} {
+      overflow-y: scroll;
+      position: fixed;
+      top: 63px;
+      width: 374px;
+    }
+    @media ${props => props.theme.mediaQuery.large} {
+      top: 71px;
+    }
+  }
   .modal__bar {
-    position: absolute;
+    position: ${props => (props.showCondensedHeader ? 'fixed' : 'absolute')};
     height: 8px;
     width: 100%;
     background-color: ${props =>
@@ -53,6 +66,18 @@ const StyledModal = css`
     position: absolute;
     top: -10px;
     z-index: 99;
+  }
+  .modal__triangle.condensed-modal-triangle {
+    @media ${props => props.theme.mediaQuery.medium} {
+      position: fixed;
+      top: 53px;
+      right: 83px;
+    }
+
+    @media ${props => props.theme.mediaQuery.large} {
+      top: 62px;
+      right: 93px;
+    }
   }
   .modal__closeIcon {
     background: transparent url('/static/images/modal-close.svg') no-repeat 0 0;

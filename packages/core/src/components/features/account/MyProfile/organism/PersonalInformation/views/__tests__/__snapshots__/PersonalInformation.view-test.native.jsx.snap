@@ -29,6 +29,7 @@ exports[`PersonalInformation component should render correctly 1`] = `
   </MyProfileTile>
   <ModalNative
     isOpen={false}
+    isOverlay={false}
     onRequestClose={[Function]}
   >
     <Connect(AddEditPersonalInformationContainer)
@@ -60,6 +61,7 @@ exports[`PersonalInformation component should render emptyu correctly 1`] = `
   </MyProfileTile>
   <ModalNative
     isOpen={false}
+    isOverlay={false}
     onRequestClose={[Function]}
   >
     <Connect(AddEditPersonalInformationContainer)

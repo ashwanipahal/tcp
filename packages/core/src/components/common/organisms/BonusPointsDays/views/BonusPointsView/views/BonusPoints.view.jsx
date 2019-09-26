@@ -20,6 +20,7 @@ class BonusPointsView extends React.Component {
     getBonusDaysData: PropTypes.func,
     orderDetails: PropTypes.shape({}),
     showAccordian: PropTypes.bool.isRequired,
+    additionalClassNameModal: PropTypes.string.isRequired,
   };
 
   static defaultProps = {
@@ -57,6 +58,7 @@ class BonusPointsView extends React.Component {
       getBonusDaysData,
       orderDetails,
       showAccordian,
+      additionalClassNameModal,
     } = this.props;
     const { openModalState } = this.state;
     return (
@@ -103,6 +105,7 @@ class BonusPointsView extends React.Component {
           minHeight="550px"
           showHeading
           inheritedStyles={modalstyles}
+          customWrapperClassName={additionalClassNameModal}
         >
           <RichText richTextHtml={bonusDetailsData} dataLocator="bonus-points-details" />
         </Modal>

@@ -57,10 +57,27 @@ exports[`MyPlaceRewardsOverviewTile component should render correctly when coupo
     marginTop={20}
   />
   <Styled(View)>
-    <Styled(WithTheme(CustomButton))
+    <Styled(CustomButton)
+      active={false}
       buttonVariation="variable-width"
+      color=""
+      customStyle={Object {}}
+      customTextStyle={null}
+      disableButton={false}
       fill="BLUE"
+      fullWidth=""
+      iconColor="gray.800"
+      iconName="chevron-down"
+      iconSize="fs12"
+      locator=""
+      navigation={Object {}}
       onPress={[Function]}
+      selected={false}
+      selectedIcon="chevron-up"
+      showIcon={false}
+      text=""
+      theme={Object {}}
+      url=""
     />
   </Styled(View)>
 </Styled(View)>
@@ -130,10 +147,27 @@ exports[`MyPlaceRewardsOverviewTile component should render correctly when coupo
     view="read"
   />
   <Styled(View)>
-    <Styled(WithTheme(CustomButton))
+    <Styled(CustomButton)
+      active={false}
       buttonVariation="variable-width"
+      color=""
+      customStyle={Object {}}
+      customTextStyle={null}
+      disableButton={false}
       fill="BLUE"
+      fullWidth=""
+      iconColor="gray.800"
+      iconName="chevron-down"
+      iconSize="fs12"
+      locator=""
+      navigation={Object {}}
       onPress={[Function]}
+      selected={false}
+      selectedIcon="chevron-up"
+      showIcon={false}
+      text=""
+      theme={Object {}}
+      url=""
     />
   </Styled(View)>
 </Styled(View)>

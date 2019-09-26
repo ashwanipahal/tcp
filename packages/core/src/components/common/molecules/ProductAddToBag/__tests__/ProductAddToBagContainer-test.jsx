@@ -7,6 +7,7 @@ describe('ProductAddToBagVanilla native should render correctly', () => {
   let wrapper;
 
   const props = {
+    selectedColorProductId: '3000935_IV',
     currentProduct: {
       ratingsProductId: '2100622',
       generalProductId: '3000935_IV',

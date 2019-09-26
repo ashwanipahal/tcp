@@ -1,7 +1,5 @@
 import React from 'react';
-import get from 'lodash/get';
 import PropTypes from 'prop-types';
-import { withTheme } from 'styled-components/native';
 import CustomIcon from '@tcp/core/src/components/common/atoms/Icon';
 import { ICON_NAME } from '@tcp/core/src/components/common/atoms/Icon/Icon.constants';
 import { UrlHandler, navigateToPage, validateExternalUrl } from '../../../../../utils/utils.app';
@@ -15,17 +13,11 @@ import {
 import { getLocator } from '../../../../../utils';
 
 const IconComp = values => {
-  const { showIcon, iconName, selectedIcon, iconColor, iconSize, theme, selected } = values;
+  const { showIcon, iconName, selectedIcon, iconColor, iconSize, selected } = values;
   if (showIcon) {
-    const iconColorValue = get(theme, `colorPalette.${iconColor}`, iconColor);
-    const iconSizeValue = get(theme, `typography.fontSizes.${iconSize}`, iconSize);
     return (
       <IconContainer>
-        <CustomIcon
-          name={selected ? selectedIcon : iconName}
-          size={iconSizeValue}
-          color={iconColorValue}
-        />
+        <CustomIcon name={selected ? selectedIcon : iconName} size={iconSize} color={iconColor} />
       </IconContainer>
     );
   }
@@ -46,11 +38,11 @@ const CustomButton = props => {
     onPress,
     active,
     selected,
+    customTextStyle,
     ...otherProps
   } = props;
   const textValue = text || '';
   const { url, navigation } = otherProps;
-
   const openUrl = () => {
     if (validateExternalUrl(url)) {
       UrlHandler(url);
@@ -76,6 +68,7 @@ const CustomButton = props => {
         disableButton={disableButton}
         active={active}
         selected={selected}
+        style={customTextStyle}
       >
         {textValue}
       </CustomStyleText>
@@ -104,6 +97,7 @@ CustomButton.propTypes = {
   iconName: PropTypes.string,
   iconColor: PropTypes.string,
   iconSize: PropTypes.string,
+  customTextStyle: PropTypes.shape({}),
 };
 
 CustomButton.defaultProps = {
@@ -122,11 +116,12 @@ CustomButton.defaultProps = {
   selected: false,
   theme: {},
   iconName: ICON_NAME.chevronDown,
-  iconColor: 'gray[800]',
+  iconColor: 'gray.800',
   iconSize: 'fs12',
   showIcon: false,
   selectedIcon: ICON_NAME.chevronUp,
+  customTextStyle: null,
 };
 
-export default withStyles(withTheme(CustomButton), style);
+export default withStyles(CustomButton, style);
 export { CustomButton as CustomButtonVanilla };

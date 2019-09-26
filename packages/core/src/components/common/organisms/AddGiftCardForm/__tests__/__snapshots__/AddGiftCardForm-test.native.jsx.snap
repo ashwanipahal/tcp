@@ -258,21 +258,53 @@ exports[`Add gift card form component render error message 1`] = `
       </Styled(Text)>
     </Styled(View)>
     <Styled(View)>
-      <Styled(WithTheme(CustomButton))
+      <Styled(CustomButton)
+        active={false}
         buttonVariation="variable-width"
         color="white"
+        customStyle={Object {}}
+        customTextStyle={null}
         data-locator="gift-card-addcardbtn"
+        disableButton={false}
         fill="BLUE"
+        fullWidth=""
+        iconColor="gray.800"
+        iconName="chevron-down"
+        iconSize="fs12"
+        locator=""
+        navigation={Object {}}
+        onPress={null}
+        selected={false}
+        selectedIcon="chevron-up"
+        showIcon={false}
         text="lbl_payment_addCard"
+        theme={Object {}}
+        url=""
       />
     </Styled(View)>
     <Styled(View)>
-      <Styled(WithTheme(CustomButton))
+      <Styled(CustomButton)
+        active={false}
         buttonVariation="variable-width"
         color="black"
+        customStyle={Object {}}
+        customTextStyle={null}
         data-locator="gift-card-cancelbtn"
+        disableButton={false}
+        fill=""
+        fullWidth=""
+        iconColor="gray.800"
+        iconName="chevron-down"
+        iconSize="fs12"
+        locator=""
+        navigation={Object {}}
         onPress={[Function]}
+        selected={false}
+        selectedIcon="chevron-up"
+        showIcon={false}
         text="lbl_payment_cancelCard"
+        theme={Object {}}
+        url=""
       />
     </Styled(View)>
   </View>
@@ -505,21 +537,53 @@ exports[`Add gift card form component should render component correctly 1`] = `
       </Styled(Text)>
     </Styled(View)>
     <Styled(View)>
-      <Styled(WithTheme(CustomButton))
+      <Styled(CustomButton)
+        active={false}
         buttonVariation="variable-width"
         color="white"
+        customStyle={Object {}}
+        customTextStyle={null}
         data-locator="gift-card-addcardbtn"
+        disableButton={false}
         fill="BLUE"
+        fullWidth=""
+        iconColor="gray.800"
+        iconName="chevron-down"
+        iconSize="fs12"
+        locator=""
+        navigation={Object {}}
+        onPress={null}
+        selected={false}
+        selectedIcon="chevron-up"
+        showIcon={false}
         text="lbl_payment_addCard"
+        theme={Object {}}
+        url=""
       />
     </Styled(View)>
     <Styled(View)>
-      <Styled(WithTheme(CustomButton))
+      <Styled(CustomButton)
+        active={false}
         buttonVariation="variable-width"
         color="black"
+        customStyle={Object {}}
+        customTextStyle={null}
         data-locator="gift-card-cancelbtn"
+        disableButton={false}
+        fill=""
+        fullWidth=""
+        iconColor="gray.800"
+        iconName="chevron-down"
+        iconSize="fs12"
+        locator=""
+        navigation={Object {}}
         onPress={[Function]}
+        selected={false}
+        selectedIcon="chevron-up"
+        showIcon={false}
         text="lbl_payment_cancelCard"
+        theme={Object {}}
+        url=""
       />
     </Styled(View)>
   </View>

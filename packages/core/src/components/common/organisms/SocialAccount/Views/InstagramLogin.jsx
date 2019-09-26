@@ -11,7 +11,7 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import config from './config';
 import { getSiteId, getLocationOrigin } from '../../../../../utils/utils.web';
-import { getIconPath } from '../../../../../utils';
+import { getIconPath, getAPIConfig } from '../../../../../utils';
 import BodyCopy from '../../../atoms/BodyCopy';
 import ImageComp from '../../../atoms/Image';
 
@@ -24,6 +24,7 @@ let closeModal;
  * @return undefined
  */
 export const onClickHandler = () => {
+  const apiConfig = getAPIConfig();
   if (elem[1].isConnected) {
     const socialAccInfo = {
       instagram: elem[1].socialAccount,
@@ -35,7 +36,7 @@ export const onClickHandler = () => {
   } else {
     window.open(
       `${config.AUTH_URL.INSTAGRAM}?client_id=${
-        config.CLIENT_SECRET_KEY.instagram
+        apiConfig.instakey
       }&redirect_uri=${getLocationOrigin()}/${getSiteId()}/instagram&response_type=token`,
       '_blank',
       'toolbar=yes,scrollbars=yes,resizable=yes,top=50,left=50,width=800,height=400'

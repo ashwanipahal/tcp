@@ -2,24 +2,54 @@
 
 exports[`FilterButtons component should renders FilterButtons correctly 1`] = `
 <Styled(View)>
-  <Styled(WithTheme(CustomButton))
+  <Styled(CustomButton)
+    active={false}
     buttonVariation="mobileApp-filter-icon"
+    color=""
+    customStyle={Object {}}
+    customTextStyle={null}
     data-locator="view_gallery_button"
+    disableButton={false}
+    fill=""
+    fullWidth=""
+    iconColor="gray.800"
+    iconName="chevron-down"
+    iconSize="fs12"
+    locator=""
+    navigation={Object {}}
     onPress={[Function]}
     selected={false}
+    selectedIcon="chevron-up"
     showIcon={true}
     text="FILTER"
+    theme={Object {}}
     type="button"
+    url=""
     width="48%"
   />
-  <Styled(WithTheme(CustomButton))
+  <Styled(CustomButton)
+    active={false}
     buttonVariation="mobileApp-filter-icon"
+    color=""
+    customStyle={Object {}}
+    customTextStyle={null}
     data-locator="view_gallery_button"
+    disableButton={false}
+    fill=""
+    fullWidth=""
+    iconColor="gray.800"
+    iconName="chevron-down"
+    iconSize="fs12"
+    locator=""
+    navigation={Object {}}
     onPress={[Function]}
     selected={false}
+    selectedIcon="chevron-up"
     showIcon={true}
     text="SORT"
+    theme={Object {}}
     type="button"
+    url=""
     width="48%"
   />
 </Styled(View)>

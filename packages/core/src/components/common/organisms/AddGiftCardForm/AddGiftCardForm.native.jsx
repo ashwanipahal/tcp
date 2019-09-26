@@ -22,6 +22,11 @@ import BodyCopy from '../../atoms/BodyCopy';
 import InputCheckbox from '../../atoms/InputCheckbox';
 
 class AddGiftCardForm extends React.PureComponent {
+  // eslint-disable-next-line
+  constructor(props) {
+    super(props);
+  }
+
   onMessage = event => {
     const { change } = this.props;
     if (event && event.nativeEvent.data) {

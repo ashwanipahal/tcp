@@ -49,7 +49,9 @@ const CONSTANTS = {
     REVIEW: 'reviewPage',
     CONFIRMATION: 'confirmationPage',
   },
-
+  CHECKOUT_ROOT: 'Checkout',
+  PICKUP_DEFAULT_PARAM: 'PickupPage',
+  SHIPPING_DEFAULT_PARAM: 'ShippingPage',
   CHECKOUT_ROUTES_NAMES: {
     CHECKOUT_PICKUP: 'CheckoutPickup',
     CHECKOUT_SHIPPING: 'CheckoutShipping',
@@ -60,6 +62,22 @@ const CONSTANTS = {
 
   PAYMENT_CARD_TYPE: {
     GC: 'GC',
+  },
+
+  CHECKOUT_ORDER: {
+    ECOM_NO_STORE: 'eComNoStore',
+    REVIEW_PRODUCT_SEQUENCE: ['SHIPIT', 'PICKUP'],
+    PICKUP_ITEM_ORDER: ['BOPIS', 'BOSS'],
+    ORDER_PICKUP_LABEL: 'PICKUP',
+    ORDER_SHIPIT_LABEL: 'SHIPIT',
+    ORDER_BOPIS_LABEL: 'BOPIS',
+    ORDER_BOSS_LABEL: 'BOSS',
+  },
+
+  ORDER_ITEM_TYPE: {
+    BOSS: 'BOSS',
+    BOPIS: 'BOPIS',
+    ECOM: 'ECOM',
   },
 
   CHECKOUT_FLAGS_SET_LOAD_METHODS: 'CHECKOUT_FLAGS_SET_LOAD_METHODS',

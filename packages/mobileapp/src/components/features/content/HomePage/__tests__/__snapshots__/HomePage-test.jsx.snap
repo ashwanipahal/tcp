@@ -38,16 +38,32 @@ exports[`HomePageView should render correctly 1`] = `
       }
     }
   />
-  <Styled(WithTheme(CustomButton))
+  <Styled(CustomButton)
+    active={false}
     buttonVariation="variable-width"
+    color=""
+    customStyle={Object {}}
+    customTextStyle={null}
+    disableButton={false}
+    fill=""
     fullWidth={true}
+    iconColor="gray.800"
+    iconName="chevron-down"
+    iconSize="fs12"
+    locator=""
+    navigation={Object {}}
     onPress={[Function]}
+    selected={false}
+    selectedIcon="chevron-up"
+    showIcon={false}
     style={
       Object {
         "margin": 30,
       }
     }
     text="PLP Page"
+    theme={Object {}}
+    url=""
   />
 </LazyloadScrollView>
 `;
