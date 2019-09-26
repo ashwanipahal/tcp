@@ -13,10 +13,10 @@ export function* deleteCard({ payload }) {
   try {
     const res = yield call(deleteCardApi, payload);
     if (res.statusCode === 200) {
-      yield put(clearCardBalance(payload));
       yield put(getCardList({ ignoreCache: true }));
       yield put(getAddressList({ ignoreCache: true }));
       yield put(setDeleteModalMountedState({ state: false }));
+      yield put(clearCardBalance(payload));
     } else {
       yield put(updateCardListonDeleteErr(res.error));
     }
