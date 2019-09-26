@@ -10,11 +10,15 @@ export function* fetchProductTabListData({ payload }) {
   try {
     const res = yield call(lightweightProductListing.getData, payload);
     if (res) {
-      return yield put(productTabListDataSuccess({ [categoryId]: res }));
+      return yield put(
+        productTabListDataSuccess({ [categoryId]: res, errors: { [categoryId]: null } })
+      );
     }
     throw new Error('Something went wrong while making request!');
   } catch (err) {
-    return yield put(productTabListDataFail({ [categoryId]: { error: err.message } }));
+    return yield put(
+      productTabListDataFail({ [categoryId]: [], errors: { [categoryId]: err.message } })
+    );
   }
 }
 
