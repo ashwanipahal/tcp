@@ -23,6 +23,9 @@ const emailAddress = '123@123.com';
 describe('submitOrderProcessing saga', () => {
   it('submitOrderProcessing review Page', () => {
     const orderProcessing = submitOrderProcessing();
+    orderProcessing.next(false);
+    orderProcessing.next(false);
+    orderProcessing.next({});
     orderProcessing.next();
     orderProcessing.next({ userDetails: { emailAddress } });
     orderProcessing.next();
@@ -33,6 +36,9 @@ describe('submitOrderProcessing saga', () => {
   });
   it('submitOrderProcessing review Page with shipping email', () => {
     const orderProcessing = submitOrderProcessing();
+    orderProcessing.next(false);
+    orderProcessing.next(false);
+    orderProcessing.next({});
     orderProcessing.next();
     orderProcessing.next({ shipping: { emailAddress } });
     orderProcessing.next();
