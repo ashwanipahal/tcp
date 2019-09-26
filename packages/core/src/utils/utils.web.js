@@ -393,6 +393,8 @@ const getAPIInfoFromEnv = (apiSiteInfo, processEnv, siteId) => {
     assetHost: processEnv.RWD_WEB_ASSETHOST || apiSiteInfo.assetHost,
     domain: `${apiEndpoint}/${processEnv.RWD_WEB_API_IDENTIFIER}/`,
     unbxd: processEnv.RWD_WEB_UNBXD_DOMAIN || apiSiteInfo.unbxd,
+    fbkey: processEnv.RWD_WEB_FACEBOOKKEY,
+    instakey: processEnv.RWD_WEB_INSTAGRAM,
     unboxKey: `${processEnv[`RWD_WEB_UNBXD_API_KEY_${country}_EN`]}/${
       processEnv[`RWD_WEB_UNBXD_SITE_KEY_${country}_EN`]
     }`,
@@ -401,6 +403,7 @@ const getAPIInfoFromEnv = (apiSiteInfo, processEnv, siteId) => {
     CANDID_API_KEY: process.env.RWD_WEB_CANDID_API_KEY,
     CANDID_API_URL: process.env.RWD_WEB_CANDID_URL,
     googleApiKey: process.env.RWD_WEB_GOOGLE_MAPS_API_KEY,
+    ACQUISITION_ID: process.env.RWD_WEB_ACQUISITION_ID,
     raygunApiKey: processEnv.RWD_WEB_RAYGUN_API_KEY,
     channelId: API_CONFIG.channelIds.Desktop, // TODO - Make it dynamic for all 3 platforms
     borderFree: processEnv.BORDERS_FREE,

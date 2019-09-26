@@ -33,6 +33,7 @@ class SearchBar extends React.PureComponent {
     this.openSearchBar = this.openSearchBar.bind(this);
     this.closeSearchBar = this.closeSearchBar.bind(this);
     this.changeSearchText = this.changeSearchText.bind(this);
+    this.initiateSearch = this.initiateSearch.bind(this);
   }
 
   componentDidUpdate(prevProps) {
@@ -58,6 +59,18 @@ class SearchBar extends React.PureComponent {
     setSearchState(false);
   };
 
+  initiateSearch = e => {
+    e.preventDefault();
+    const { setSearchState } = this.props;
+    const searchText = this.searchInput.current.value;
+    this.redirectToSearchPage(searchText);
+    setSearchState(false);
+  };
+
+  redirectToSearchPage = searchText => {
+    routerPush(`/search?searchQuery=${searchText}`, `/search/${searchText}`, { shallow: true });
+  };
+
   changeSearchText = e => {
     e.preventDefault();
     const { startSearch } = this.props;
@@ -68,7 +81,7 @@ class SearchBar extends React.PureComponent {
   };
 
   render() {
-    const { className, searchResults, labels, isSearchOpen } = this.props;
+    const { className, fromCondensedHeader, searchResults, labels, isSearchOpen } = this.props;
 
     const { showProduct } = this.state;
 
@@ -86,11 +99,11 @@ class SearchBar extends React.PureComponent {
                   maxLength="50"
                 />
                 <Image
-                  alt="close"
+                  alt="search"
                   className="search-image icon-small"
-                  onClick={this.closeSearchBar}
+                  onClick={this.initiateSearch}
                   src={getIconPath('search-icon')}
-                  data-locator="close-icon"
+                  data-locator="search-icon"
                   height="25px"
                 />
                 <Image
@@ -194,7 +207,7 @@ class SearchBar extends React.PureComponent {
               alt="close"
               className="search-image icon`"
               onClick={this.openSearchBar}
-              src={getIconPath('search-icon')}
+              src={getIconPath(fromCondensedHeader ? 'search-icon-blue' : 'search-icon')}
               data-locator="close-icon"
               height="25px"
             />
@@ -207,6 +220,7 @@ class SearchBar extends React.PureComponent {
 
 SearchBar.propTypes = {
   className: PropTypes.string.isRequired,
+  fromCondensedHeader: PropTypes.bool,
   startSearch: PropTypes.func.isRequired,
   setSearchState: PropTypes.func.isRequired,
   isSearchOpen: PropTypes.bool,
@@ -225,6 +239,7 @@ SearchBar.propTypes = {
 
 SearchBar.defaultProps = {
   isSearchOpen: false,
+  fromCondensedHeader: false,
   searchResults: {
     trends: {},
     categories: {},

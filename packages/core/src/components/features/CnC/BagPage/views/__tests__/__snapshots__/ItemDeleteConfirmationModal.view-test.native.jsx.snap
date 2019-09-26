@@ -4,6 +4,7 @@ exports[`Bag page Container should render modal when open true 1`] = `
 <ModalNative
   customTransparent={true}
   isOpen={true}
+  isOverlay={false}
 >
   <Styled(View)>
     <Styled(View)>
@@ -47,20 +48,54 @@ exports[`Bag page Container should render modal when open true 1`] = `
         />
       </Styled(Text)>
       <Styled(View)>
-        <Styled(WithTheme(CustomButton))
+        <Styled(CustomButton)
+          active={false}
           buttonVariation="variable-width"
           color="white"
+          customStyle={Object {}}
+          customTextStyle={null}
+          disableButton={false}
           fill="BLUE"
+          fullWidth=""
+          iconColor="gray.800"
+          iconName="chevron-down"
+          iconSize="fs12"
+          locator=""
+          navigation={Object {}}
+          onPress={null}
+          selected={false}
+          selectedIcon="chevron-up"
+          showIcon={false}
+          text=""
+          theme={Object {}}
           type="submit"
+          url=""
         />
       </Styled(View)>
       <Styled(View)>
-        <Styled(WithTheme(CustomButton))
+        <Styled(CustomButton)
+          active={false}
           buttonVariation="variable-width"
           color="gray"
+          customStyle={Object {}}
+          customTextStyle={null}
+          disableButton={false}
           fill="WHITE"
           fontWeight="extrabold"
+          fullWidth=""
+          iconColor="gray.800"
+          iconName="chevron-down"
+          iconSize="fs12"
+          locator=""
+          navigation={Object {}}
+          onPress={null}
+          selected={false}
+          selectedIcon="chevron-up"
+          showIcon={false}
+          text=""
+          theme={Object {}}
           type="submit"
+          url=""
         />
       </Styled(View)>
     </Styled(View)>
@@ -72,6 +107,7 @@ exports[`Bag page Container should render no modal when isOpen is false 1`] = `
 <ModalNative
   customTransparent={true}
   isOpen={false}
+  isOverlay={false}
 >
   <Styled(View)>
     <Styled(View)>
@@ -115,20 +151,54 @@ exports[`Bag page Container should render no modal when isOpen is false 1`] = `
         />
       </Styled(Text)>
       <Styled(View)>
-        <Styled(WithTheme(CustomButton))
+        <Styled(CustomButton)
+          active={false}
           buttonVariation="variable-width"
           color="white"
+          customStyle={Object {}}
+          customTextStyle={null}
+          disableButton={false}
           fill="BLUE"
+          fullWidth=""
+          iconColor="gray.800"
+          iconName="chevron-down"
+          iconSize="fs12"
+          locator=""
+          navigation={Object {}}
+          onPress={null}
+          selected={false}
+          selectedIcon="chevron-up"
+          showIcon={false}
+          text=""
+          theme={Object {}}
           type="submit"
+          url=""
         />
       </Styled(View)>
       <Styled(View)>
-        <Styled(WithTheme(CustomButton))
+        <Styled(CustomButton)
+          active={false}
           buttonVariation="variable-width"
           color="gray"
+          customStyle={Object {}}
+          customTextStyle={null}
+          disableButton={false}
           fill="WHITE"
           fontWeight="extrabold"
+          fullWidth=""
+          iconColor="gray.800"
+          iconName="chevron-down"
+          iconSize="fs12"
+          locator=""
+          navigation={Object {}}
+          onPress={null}
+          selected={false}
+          selectedIcon="chevron-up"
+          showIcon={false}
+          text=""
+          theme={Object {}}
           type="submit"
+          url=""
         />
       </Styled(View)>
     </Styled(View)>

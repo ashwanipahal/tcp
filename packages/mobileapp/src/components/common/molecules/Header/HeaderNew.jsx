@@ -2,7 +2,6 @@ import React from 'react';
 import { TouchableOpacity } from 'react-native';
 import PropTypes from 'prop-types';
 import get from 'lodash/get';
-import { withTheme } from 'styled-components/native';
 import { BodyCopy } from '@tcp/core/src/components/common/atoms';
 import { getLocator } from '@tcp/core/src/utils';
 import CustomIcon from '@tcp/core/src/components/common/atoms/Icon';
@@ -62,10 +61,8 @@ class HeaderNew extends React.PureComponent<Props> {
   };
 
   render() {
-    const { title, theme } = this.props;
+    const { title } = this.props;
     const { cartVal } = this.state;
-    const backIconColor = get(theme, 'colorPalette.gray[600]', '#9b9b9b');
-    const backIconSize = get(theme, 'typography.fontSizes.fs20', 20);
     return (
       <SafeAreaViewStyle>
         <Container data-locator={getLocator('global_headerpanel')}>
@@ -76,7 +73,7 @@ class HeaderNew extends React.PureComponent<Props> {
               accessibilityRole="button"
               accessibilityLabel="back button"
             >
-              <CustomIcon name={ICON_NAME.chevronLeft} size={backIconSize} color={backIconColor} />
+              <CustomIcon name={ICON_NAME.chevronLeft} size="fs20" color="gray.600" />
             </TouchableOpacity>
           </LeftSection>
 
@@ -115,4 +112,4 @@ class HeaderNew extends React.PureComponent<Props> {
   }
 }
 
-export default withTheme(HeaderNew);
+export default HeaderNew;

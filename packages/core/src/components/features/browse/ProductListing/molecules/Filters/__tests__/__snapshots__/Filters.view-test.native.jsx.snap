@@ -3,26 +3,58 @@
 exports[`FiltersVanilla is shown should render FiltersVanilla 1`] = `
 <Styled(View)>
   <Styled(View)>
-    <Styled(WithTheme(CustomButton))
+    <Styled(CustomButton)
       accessibilityLabel="Clear"
+      active={false}
       buttonVariation="variable-width"
+      color=""
+      customStyle={Object {}}
+      customTextStyle={null}
       data-locator=""
+      disableButton={false}
       fill="WHITE"
       fontSize="fs14"
+      fullWidth=""
+      iconColor="gray.800"
+      iconName="chevron-down"
+      iconSize="fs12"
+      locator=""
+      navigation={Object {}}
       onPress={[Function]}
+      selected={false}
+      selectedIcon="chevron-up"
+      showIcon={false}
       text="Clear"
+      theme={Object {}}
       type="submit"
+      url=""
       width="48%"
     />
-    <Styled(WithTheme(CustomButton))
+    <Styled(CustomButton)
       accessibilityLabel="Apply"
+      active={false}
       buttonVariation="variable-width"
+      color=""
+      customStyle={Object {}}
+      customTextStyle={null}
       data-locator=""
+      disableButton={false}
       fill="BLACK"
       fontSize="fs14"
+      fullWidth=""
+      iconColor="gray.800"
+      iconName="chevron-down"
+      iconSize="fs12"
+      locator=""
+      navigation={Object {}}
       onPress={[Function]}
+      selected={false}
+      selectedIcon="chevron-up"
+      showIcon={false}
       text="Apply"
+      theme={Object {}}
       type="submit"
+      url=""
       width="48%"
     />
   </Styled(View)>

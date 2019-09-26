@@ -22,6 +22,11 @@ import BodyCopy from '../../atoms/BodyCopy';
 import InputCheckbox from '../../atoms/InputCheckbox';
 
 class AddGiftCardForm extends React.PureComponent {
+  // eslint-disable-next-line
+  constructor(props) {
+    super(props);
+  }
+
   onMessage = event => {
     const { change } = this.props;
     if (event && event.nativeEvent.data) {
@@ -87,6 +92,7 @@ class AddGiftCardForm extends React.PureComponent {
             label={getLabelValue(labels, 'lbl_payment_giftCardNoPlaceholder')}
             name="giftCardNumber"
             type="tel"
+            keyboardType="numeric"
             component={TextBox}
             dataLocator="gift-card-cardnaumberfield"
             onChange={this.handleChange}
@@ -99,6 +105,7 @@ class AddGiftCardForm extends React.PureComponent {
             component={TextBox}
             dataLocator="gift-card-pinnumberfield"
             onChange={this.handleChange}
+            keyboardType="numeric"
           />
 
           <View>

@@ -4,7 +4,6 @@ import { connect } from 'react-redux';
 import { withRouter } from 'next/router'; //eslint-disable-line
 import { getFormValues } from 'redux-form';
 import { PropTypes } from 'prop-types';
-import { isClient } from '../../../../../utils/index';
 import SearchDetail from '../views/SearchDetail.view';
 import { getSlpProducts, getMoreSlpProducts } from './SearchDetail.actions';
 import { getProductsAndTitleBlocks } from '../container/SearchDetail.util';
@@ -28,6 +27,7 @@ import {
   getAppliedFilters,
   getAppliedSortId,
   getIsLoadingMore,
+  checkIfSearchResultsAvailable,
 } from '../container/SearchDetail.selectors';
 
 import { isPlccUser } from '../../../account/User/container/User.selectors';
@@ -110,52 +110,70 @@ class SearchDetailContainer extends React.PureComponent {
       slpLabels,
       searchResultSuggestions,
       sortLabels,
+      isSearchResultsAvailable,
       ...otherProps
     } = this.props;
 
     return (
-      <>
-        {products && products.length > 0 ? (
-          <SearchDetail
-            filters={filters}
-            formValues={formValues}
-            filtersLength={filtersLength}
-            getProducts={getProducts}
-            isLoadingMore={isLoadingMore}
-            initialValues={initialValues}
-            onSubmit={onSubmit}
-            products={products}
-            productsBlock={productsBlock}
-            totalProductsCount={totalProductsCount}
-            labels={labels}
-            labelsFilter={labelsFilter}
-            slpLabels={slpLabels}
-            searchedText={searchedText}
-            sortLabels={sortLabels}
-            searchResultSuggestions={searchResultSuggestions}
-            {...otherProps}
-          />
+      <React.Fragment>
+        {isSearchResultsAvailable ? (
+          <div>
+            {products && products.length > 0 ? (
+              <SearchDetail
+                filters={filters}
+                formValues={formValues}
+                filtersLength={filtersLength}
+                getProducts={getProducts}
+                isLoadingMore={isLoadingMore}
+                initialValues={initialValues}
+                onSubmit={onSubmit}
+                products={products}
+                productsBlock={productsBlock}
+                totalProductsCount={totalProductsCount}
+                labels={labels}
+                labelsFilter={labelsFilter}
+                slpLabels={slpLabels}
+                searchedText={searchedText}
+                sortLabels={sortLabels}
+                searchResultSuggestions={searchResultSuggestions}
+                {...otherProps}
+              />
+            ) : (
+              <NoResponseSearchDetail
+                totalProductsCount={totalProductsCount}
+                labels={labels}
+                slpLabels={slpLabels}
+                searchedText={searchedText}
+                sortLabels={sortLabels}
+                searchResultSuggestions={searchResultSuggestions}
+                {...otherProps}
+              />
+            )}
+          </div>
         ) : (
-          <NoResponseSearchDetail
-            filters={filters}
-            formValues={formValues}
-            filtersLength={filtersLength}
-            getProducts={getProducts}
-            initialValues={initialValues}
-            onSubmit={onSubmit}
-            products={products}
-            productsBlock={productsBlock}
-            totalProductsCount={totalProductsCount}
-            labels={labels}
-            labelsFilter={labelsFilter}
-            slpLabels={slpLabels}
-            searchedText={searchedText}
-            sortLabels={sortLabels}
-            searchResultSuggestions={searchResultSuggestions}
-            {...otherProps}
-          />
+          <div>
+            <SearchDetail
+              filters={filters}
+              formValues={formValues}
+              filtersLength={filtersLength}
+              getProducts={getProducts}
+              isLoadingMore={isLoadingMore}
+              initialValues={initialValues}
+              onSubmit={onSubmit}
+              products={products}
+              productsBlock={productsBlock}
+              totalProductsCount={totalProductsCount}
+              labels={labels}
+              labelsFilter={labelsFilter}
+              slpLabels={slpLabels}
+              searchedText={searchedText}
+              sortLabels={sortLabels}
+              searchResultSuggestions={searchResultSuggestions}
+              {...otherProps}
+            />
+          </div>
         )}
-      </>
+      </React.Fragment>
     );
   }
 }
@@ -194,6 +212,7 @@ function mapStateToProps(state) {
     longDescription: getLongDescription(state),
     labels: getLabelsProductListing(state),
     isLoadingMore: getIsLoadingMore(state),
+    isSearchResultsAvailable: checkIfSearchResultsAvailable(state),
     lastLoadedPageNumber: getLastLoadedPageNumber(state),
     formValues: getFormValues('filter-form')(state),
     onSubmit: submitProductListingFiltersForm,
@@ -233,6 +252,7 @@ SearchDetailContainer.propTypes = {
   }).isRequired,
   onSubmit: PropTypes.func.isRequired,
   isLoadingMore: PropTypes.bool,
+  isSearchResultsAvailable: PropTypes.bool,
 };
 
 SearchDetailContainer.defaultProps = {
@@ -241,6 +261,7 @@ SearchDetailContainer.defaultProps = {
   filtersLength: {},
   initialValues: {},
   isLoadingMore: false,
+  isSearchResultsAvailable: false,
 };
 
 export default withRouter(

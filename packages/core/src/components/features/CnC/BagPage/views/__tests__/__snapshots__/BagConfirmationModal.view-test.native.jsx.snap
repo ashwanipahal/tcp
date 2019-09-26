@@ -8,6 +8,7 @@ exports[`Bag page Container should render modal when open true 1`] = `
   headingFontFamily="secondary"
   horizontalBar={false}
   isOpen={true}
+  isOverlay={false}
   onRequestClose={[MockFunction]}
 >
   <Styled(View)>
@@ -25,21 +26,53 @@ exports[`Bag page Container should render modal when open true 1`] = `
       />
     </Styled(Text)>
     <Styled(View)>
-      <Styled(WithTheme(CustomButton))
+      <Styled(CustomButton)
+        active={false}
         buttonVariation="variable-width"
         color="white"
+        customStyle={Object {}}
+        customTextStyle={null}
+        disableButton={false}
         fill="DARK"
+        fullWidth=""
+        iconColor="gray.800"
+        iconName="chevron-down"
+        iconSize="fs12"
+        locator=""
+        navigation={Object {}}
         onPress={[MockFunction]}
+        selected={false}
+        selectedIcon="chevron-up"
+        showIcon={false}
+        text=""
+        theme={Object {}}
         type="submit"
+        url=""
       />
     </Styled(View)>
     <Styled(View)>
-      <Styled(WithTheme(CustomButton))
+      <Styled(CustomButton)
+        active={false}
         buttonVariation="variable-width"
         color="white"
+        customStyle={Object {}}
+        customTextStyle={null}
+        disableButton={false}
         fill="BLUE"
+        fullWidth=""
+        iconColor="gray.800"
+        iconName="chevron-down"
+        iconSize="fs12"
+        locator=""
+        navigation={Object {}}
         onPress={[MockFunction]}
+        selected={false}
+        selectedIcon="chevron-up"
+        showIcon={false}
+        text=""
+        theme={Object {}}
         type="submit"
+        url=""
       />
     </Styled(View)>
   </Styled(View)>
@@ -54,6 +87,7 @@ exports[`Bag page Container should render no modal when isOpen is false 1`] = `
   headingFontFamily="secondary"
   horizontalBar={false}
   isOpen={false}
+  isOverlay={false}
   onRequestClose={[MockFunction]}
 >
   <Styled(View)>
@@ -71,21 +105,53 @@ exports[`Bag page Container should render no modal when isOpen is false 1`] = `
       />
     </Styled(Text)>
     <Styled(View)>
-      <Styled(WithTheme(CustomButton))
+      <Styled(CustomButton)
+        active={false}
         buttonVariation="variable-width"
         color="white"
+        customStyle={Object {}}
+        customTextStyle={null}
+        disableButton={false}
         fill="DARK"
+        fullWidth=""
+        iconColor="gray.800"
+        iconName="chevron-down"
+        iconSize="fs12"
+        locator=""
+        navigation={Object {}}
         onPress={[MockFunction]}
+        selected={false}
+        selectedIcon="chevron-up"
+        showIcon={false}
+        text=""
+        theme={Object {}}
         type="submit"
+        url=""
       />
     </Styled(View)>
     <Styled(View)>
-      <Styled(WithTheme(CustomButton))
+      <Styled(CustomButton)
+        active={false}
         buttonVariation="variable-width"
         color="white"
+        customStyle={Object {}}
+        customTextStyle={null}
+        disableButton={false}
         fill="BLUE"
+        fullWidth=""
+        iconColor="gray.800"
+        iconName="chevron-down"
+        iconSize="fs12"
+        locator=""
+        navigation={Object {}}
         onPress={[MockFunction]}
+        selected={false}
+        selectedIcon="chevron-up"
+        showIcon={false}
+        text=""
+        theme={Object {}}
         type="submit"
+        url=""
       />
     </Styled(View)>
   </Styled(View)>

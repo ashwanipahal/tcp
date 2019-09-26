@@ -121,7 +121,7 @@ const styles = css`
   .qty-selector {
     display: inline-flex;
     margin-top: 31px;
-
+    width: 100%;
     #quantity {
       font-size: ${props => props.theme.fonts.fontSize.anchor.xlarge}px;
     }

@@ -1,5 +1,6 @@
 import React from 'react';
 import PropTypes from 'prop-types';
+
 import get from 'lodash/get';
 import { FlatList, Text, Dimensions } from 'react-native';
 import { withTheme } from 'styled-components/native';
@@ -69,8 +70,29 @@ class ImageCarousel extends React.PureComponent {
 
   onFavorite = () => {};
 
+  renderNormalImage = imgSource => {
+    const { onImageClick } = this.props;
+    const { activeSlideIndex } = this.state;
+
+    const { index } = imgSource;
+    return (
+      <ImageTouchableOpacity
+        onPress={onImageClick}
+        accessible={index === activeSlideIndex}
+        accessibilityRole="image"
+        accessibilityLabel={`product image ${index + 1}`}
+      >
+        <CustomImage
+          url={imgSource.item.regularSizeImageUrl}
+          width={imageWidth}
+          height={imageHeight}
+        />
+      </ImageTouchableOpacity>
+    );
+  };
+
   render() {
-    const { item, onImageClick, selectedColorProductId } = this.props;
+    const { item, selectedColorProductId } = this.props;
     const { activeSlideIndex } = this.state;
     const imagesByColor = get(item, 'imagesByColor', null);
     const colorFitsSizesMap = get(item, 'colorFitsSizesMap', null);
@@ -105,23 +127,7 @@ class ImageCarousel extends React.PureComponent {
             horizontal
             showsHorizontalScrollIndicator={false}
             listKey={(_, index) => index.toString()}
-            renderItem={imgSource => {
-              const { index } = imgSource;
-              return (
-                <ImageTouchableOpacity
-                  onPress={() => onImageClick()}
-                  accessible={index === activeSlideIndex}
-                  accessibilityRole="image"
-                  accessibilityLabel={`product image ${index + 1}`}
-                >
-                  <CustomImage
-                    url={imgSource.item.regularSizeImageUrl}
-                    width={imageWidth}
-                    height={imageHeight}
-                  />
-                </ImageTouchableOpacity>
-              );
-            }}
+            renderItem={this.renderNormalImage}
           />
           <FavoriteAndPaginationContainer>
             <FavoriteContainer>

@@ -1,19 +1,19 @@
 import React from 'react';
 import { View } from 'react-native';
+
 import { connect } from 'react-redux';
 import { reduxForm, Field } from 'redux-form';
 import PropTypes from 'prop-types';
+import get from 'lodash/get';
 
 import LinkImageIcon from '../../../../features/browse/ProductListing/atoms/LinkImageIcon';
 import ProductVariantSelector from '../../ProductVariantSelector';
 import withStyles from '../../../hoc/withStyles';
-import styles, {
-  RowViewContainer,
-  dropDownStyle,
-  dropDownItemStyle,
-} from '../styles/ProductAddToBag.style.native';
+import styles, { RowViewContainer } from '../styles/ProductAddToBag.style.native';
 import { Button, BodyCopy } from '../../../atoms';
-import DropDown from '../../../atoms/DropDown/views/DropDown.native';
+import { NativeDropDown } from '../../../atoms/index.native';
+import ProductPickupContainer from '../../../organisms/ProductPickup';
+import { getMapSliceForColorProductId } from '../../../../features/browse/ProductListing/molecules/ProductList/utils/productsCommonUtils';
 
 class ProductAddToBag extends React.PureComponent<Props> {
   /* Have to define empty constructor because test case fail with error 'TypeError: Cannot read property 'find' of undefined'. So if using PureComponent then mendatory to define constructor */
@@ -67,8 +67,11 @@ class ProductAddToBag extends React.PureComponent<Props> {
     const {
       quantityList,
       plpLabels: { quantity },
+      selectedQuantity,
+      onQuantityChange,
     } = this.props;
     const qunatityText = `${quantity}: `;
+
     return (
       <RowViewContainer>
         <BodyCopy
@@ -78,14 +81,10 @@ class ProductAddToBag extends React.PureComponent<Props> {
           fontSize="fs14"
           text={qunatityText}
         />
-        <DropDown
-          selectedValue="1"
+        <NativeDropDown
           data={quantityList}
-          onValueChange={this.changeQuantity}
-          bounces={false}
-          dropDownStyle={{ ...dropDownStyle }}
-          itemStyle={{ ...dropDownItemStyle }}
-          variation="secondary"
+          selectedValue={selectedQuantity}
+          onValueChange={onQuantityChange}
         />
       </RowViewContainer>
     );
@@ -104,6 +103,7 @@ class ProductAddToBag extends React.PureComponent<Props> {
     } = this.props;
     return (
       <Button
+        margin="16px 0 0 0"
         color="white"
         fill="BLUE"
         buttonVariation="variable-width"
@@ -116,6 +116,26 @@ class ProductAddToBag extends React.PureComponent<Props> {
         accessibilityLabel="Add to Bag"
       />
     );
+  };
+
+  renderPickUpStor = () => {
+    const { currentProduct, selectedColorProductId } = this.props;
+    if (currentProduct) {
+      const colorFitsSizesMap = get(currentProduct, 'colorFitsSizesMap', null);
+      const curentColorEntry = getMapSliceForColorProductId(
+        colorFitsSizesMap,
+        selectedColorProductId
+      );
+      const { miscInfo } = curentColorEntry;
+      return (
+        <ProductPickupContainer
+          productInfo={currentProduct}
+          formName={`ProductAddToBag-${currentProduct.generalProductId}`}
+          miscInfo={miscInfo}
+        />
+      );
+    }
+    return null;
   };
 
   render() {
@@ -179,6 +199,7 @@ class ProductAddToBag extends React.PureComponent<Props> {
           locators={{ key: 'pdp_size_label', value: 'pdp_size_value' }}
         />
         {this.renderQuantityView()}
+        {this.renderPickUpStor()}
         {this.renderAddToBagButton()}
       </View>
     );
@@ -197,6 +218,9 @@ ProductAddToBag.propTypes = {
   plpLabels: PropTypes.instanceOf(Object),
   isErrorMessageDisplayed: PropTypes.bool,
   addToBagAction: PropTypes.func,
+  selectedQuantity: PropTypes.number,
+  currentProduct: PropTypes.shape({}).isRequired,
+  selectedColorProductId: PropTypes.number.isRequired,
 };
 
 ProductAddToBag.defaultProps = {
@@ -210,6 +234,7 @@ ProductAddToBag.defaultProps = {
   plpLabels: {},
   isErrorMessageDisplayed: false,
   addToBagAction: null,
+  selectedQuantity: 1,
 };
 
 /* export view with redux form */

@@ -292,8 +292,6 @@ class ProductAddToBagContainer extends React.PureComponent<Props> {
     return quantityArray.map((val, index) => ({
       displayName: index + 1,
       id: index + 1,
-      label: index + 1,
-      value: index + 1,
     }));
   };
 
@@ -359,6 +357,10 @@ class ProductAddToBagContainer extends React.PureComponent<Props> {
     this.displayErrorMessage(!isSizeAvaiable);
   };
 
+  quantityChange = selectedQuantity => {
+    this.setState({ selectedQuantity });
+  };
+
   /**
    * @function render
    *
@@ -372,6 +374,9 @@ class ProductAddToBagContainer extends React.PureComponent<Props> {
       plpLabels,
       handleFormSubmit,
       errorOnHandleSubmit,
+      addToBagEcom,
+      addToBagError,
+      selectedColorProductId,
     } = this.props;
     const {
       selectedColor,
@@ -407,6 +412,10 @@ class ProductAddToBagContainer extends React.PureComponent<Props> {
         generalProductId={generalProductId}
         handleFormSubmit={handleFormSubmit}
         errorOnHandleSubmit={errorOnHandleSubmit}
+        addToBagEcom={addToBagEcom}
+        addToBagError={addToBagError}
+        currentProduct={currentProduct}
+        selectedColorProductId={selectedColorProductId}
       />
     );
   }

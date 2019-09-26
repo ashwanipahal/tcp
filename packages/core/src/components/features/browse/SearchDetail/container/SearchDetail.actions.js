@@ -35,9 +35,23 @@ export const setSlpLoadingState = payload => {
   };
 };
 
+export const setSlpResultsAvailableState = payload => {
+  return {
+    type: SLP_CONSTANTS.SET_SLP_RESULTS_AVAILABLE_STATE,
+    payload,
+  };
+};
+
 export const setSlpSearchTerm = payload => {
   return {
     type: SLP_CONSTANTS.SET_SLP_SEARCHTERM_STATE,
+    payload,
+  };
+};
+
+export const getSearchResult = payload => {
+  return {
+    type: SLP_CONSTANTS.GET_SLP_SEARCH_RESULTS,
     payload,
   };
 };

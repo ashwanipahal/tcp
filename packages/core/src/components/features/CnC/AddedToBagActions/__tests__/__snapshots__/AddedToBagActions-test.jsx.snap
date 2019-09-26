@@ -41,7 +41,7 @@ exports[`AddedToBagActions component AddedToBagActions component renders correct
       className="paypal-venmo"
     >
       <div
-        className="paypal-wrapper"
+        className="paypal-wrapper-atb"
       >
         <withRouter(Connect(PayPalButtonContainer))
           className="payPal-button"

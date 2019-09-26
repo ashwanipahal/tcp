@@ -11,6 +11,7 @@ import FixedBreadCrumbs from '../../ProductListing/molecules/FixedBreadCrumbs/vi
 import ProductAddToBagContainer from '../../../../common/molecules/ProductAddToBag';
 import ProductPickupContainer from '../../../../common/organisms/ProductPickup';
 import ProductImagesWrapper from '../molecules/ProductImagesWrapper/views/ProductImagesWrapper.view';
+import AddedToBagContainer from '../../../CnC/AddedToBag';
 import {
   getImagesToDisplay,
   getMapSliceForColorProductId,
@@ -69,7 +70,7 @@ const ProductDetailView = ({
           {breadCrumbs && <FixedBreadCrumbs crumbs={breadCrumbs} separationChar=">" />}
         </Col>
       </Row>
-      <Row className="placeholder">
+      <Row className="placeholder product-detail-image-wrapper">
         <Col colSize={{ small: 6, medium: 8, large: 12 }}>
           <div className="promo-area-1">PROMO AREA 1</div>
         </Col>
@@ -146,6 +147,7 @@ const ProductDetailView = ({
         </Col>
       </Row>
       <PickupStoreModal />
+      <AddedToBagContainer />
     </div>
   );
 };

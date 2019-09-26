@@ -85,7 +85,7 @@ export class AutoCompleteComponent extends React.PureComponent<Props> {
       }
     }
     if (!address.street_number) {
-      const regex = RegExp('^(.*)'`${address.street_name.split(' ', 1)[0]}`);
+      const regex = RegExp(`^(.*)${address.street_name.split(' ', 1)[0]}`);
       const result = regex.exec(inputValue);
       const inputNum = Array.isArray(result) && result[1] && Number(result[1]);
 
@@ -94,7 +94,7 @@ export class AutoCompleteComponent extends React.PureComponent<Props> {
       }
     }
 
-    address.street = `${address.street_number} ${address.street_name}`;
+    address.street = `${address.street_number || ''} ${address.street_name}`.trim();
 
     return address;
   }
