@@ -63,6 +63,7 @@ exports[`PickupMainContactEditFormVanilla component should renders correctly whe
         buttonVariation="variable-width"
         color="white"
         customStyle={Object {}}
+        customTextStyle={null}
         disableButton={false}
         fill="BLUE"
         fullWidth=""

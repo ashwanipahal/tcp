@@ -443,6 +443,7 @@ exports[`GiftCardsVanilla should render gift card tile with 100 order balance 1`
         buttonVariation="fixed-width"
         color=""
         customStyle={Object {}}
+        customTextStyle={null}
         data-locator="add-gift-card"
         disableButton={false}
         fill="DARK"
