@@ -40,23 +40,16 @@ export default css`
     position: relative;
   }
 
-  .facebook {
-    width: 31px;
-    height: 31px;
-    object-fit: contain;
-  }
-  .pinterest {
-    width: 31px;
-    height: 31px;
-    object-fit: contain;
-  }
+  .facebook,
+  .pinterest,
   .twitter {
-    width: 31px;
-    height: 31px;
+    width: 35px;
+    height: 35px;
     object-fit: contain;
   }
+
   .social-connect-wrapper {
-    padding-top: 11px;
+    padding-top: 70px;
     width: 100%;
     display: flex;
     flex-direction: inherit;
@@ -83,9 +76,20 @@ export default css`
       display: inline-flex;
     }
     .social-connect-wrapper {
-      padding-top: 11px;
+      padding-top: 64px;
       width: 100%;
       display: inline-block;
+    }
+    .social-connect-sub-wrapper {
+      display: block;
+      text-align: center;
+    }
+    .facebook,
+    .pinterest,
+    .twitter {
+      width: 35px;
+      height: 35px;
+      object-fit: contain;
     }
   }
   @media ${props => props.theme.mediaQuery.large} {
@@ -105,6 +109,13 @@ export default css`
       display: flex;
       flex-direction: inherit;
       justify-content: space-between;
+    }
+    .facebook,
+    .pinterest,
+    .twitter {
+      width: 31px;
+      height: 31px;
+      object-fit: contain;
     }
   }
 `;
