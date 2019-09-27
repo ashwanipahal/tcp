@@ -110,6 +110,7 @@ describe('PickUpFormPartVanilla component', () => {
       handleSubmit: jest.fn(),
       orderHasShipping: false,
       isVenmoPaymentInProgress: true,
+      isVenmoPickupDisplayed: false,
     };
     const tree = shallow(<PickUpFormPartVanilla {...props} />);
     const componentInstance = tree.instance();

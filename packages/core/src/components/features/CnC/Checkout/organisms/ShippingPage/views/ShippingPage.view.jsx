@@ -41,7 +41,8 @@ export default class ShippingPage extends React.PureComponent {
     syncErrors: PropTypes.shape({}),
     shippingAddress: PropTypes.shape({}),
     isVenmoPaymentInProgress: PropTypes.bool,
-    setVenmoShippingState: PropTypes.func,
+    isVenmoShippingDisplayed: PropTypes.bool,
+    setVenmoPickupState: PropTypes.func,
     shippingPhoneAndEmail: PropTypes.shape({}),
   };
 
@@ -67,7 +68,8 @@ export default class ShippingPage extends React.PureComponent {
     syncErrors: {},
     shippingAddress: null,
     isVenmoPaymentInProgress: false,
-    setVenmoShippingState: () => {},
+    isVenmoShippingDisplayed: true,
+    setVenmoPickupState: () => {},
     shippingPhoneAndEmail: null,
   };
 
@@ -166,7 +168,7 @@ export default class ShippingPage extends React.PureComponent {
     //   response: 'invalid::false:false',
     //   storeId: '10152',
     // };
-    const { handleSubmit, setVenmoShippingState } = this.props;
+    const { handleSubmit, setVenmoPickupState } = this.props;
     handleSubmit({
       method: {
         shippingMethodId: shipmentMethods.shippingMethodId,
@@ -186,7 +188,7 @@ export default class ShippingPage extends React.PureComponent {
         wantsSmsOrderUpdates: smsSignUp.sendOrderUpdate,
       },
     });
-    setVenmoShippingState(true);
+    setVenmoPickupState(true);
   };
 
   updateShippingAddress = () => {
@@ -291,6 +293,7 @@ export default class ShippingPage extends React.PureComponent {
       syncErrors,
       shippingAddress,
       isVenmoPaymentInProgress,
+      isVenmoShippingDisplayed,
     } = this.props;
     const primaryAddressId = this.getPrimaryAddress();
     const { isAddNewAddress, isEditing, defaultAddressId } = this.state;
@@ -339,6 +342,7 @@ export default class ShippingPage extends React.PureComponent {
             syncErrorsObject={syncErrors}
             shippingAddress={shippingAddress}
             isVenmoPaymentInProgress={isVenmoPaymentInProgress}
+            isVenmoShippingDisplayed={isVenmoShippingDisplayed}
           />
         )}
       </>

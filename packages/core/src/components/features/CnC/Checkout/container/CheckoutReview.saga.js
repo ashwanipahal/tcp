@@ -14,6 +14,7 @@ import constants, { CHECKOUT_ROUTES } from '../Checkout.constants';
 import { validateAndSubmitEmailSignup } from './Checkout.saga.util';
 import { getAppliedCouponListState } from '../../common/organism/CouponAndPromos/container/Coupon.selectors';
 import { isMobileApp } from '../../../../../utils';
+import { getUserEmail } from '../../../account/User/container/User.selectors';
 import {
   getSetCouponsValuesActn,
   getSetRewardPointsOrderConfActn,
@@ -125,19 +126,21 @@ export function* loadPersonalizedCoupons(
 }
 
 export function* submitOrderProcessing(orderId, smsOrderInfo, currentLanguage) {
-  // return reviewOrder().then((res) => {
-  const venmoPayloadData = {};
-  // if (venmoPaymentMethodApplied) {
-  // const { nonce: venmoNonce, deviceData: venmo_device_data } = checkoutStoreView.getVenmoData(
-  //   state
-  // );
-  // const email = checkoutStoreView.getVenmoUserEmail(state);
-  // venmoPayloadData = {
-  //   venmoNonce,
-  //   venmo_device_data,
-  //   email,
-  // };
-  // }
+  let venmoPayloadData = {};
+  const isVenmoInProgress = yield select(selectors.isVenmoPaymentInProgress);
+  const isVenmoSaveSelected = yield select(selectors.isVenmoPaymentSaveSelected);
+  const venmoData = yield select(selectors.getVenmoData);
+
+  if (isVenmoInProgress && venmoData) {
+    const { nonce: venmoNonce, deviceData: venmoDeviceData } = venmoData;
+    const email = yield call(getUserEmail);
+    venmoPayloadData = {
+      venmoNonce,
+      venmoDeviceData,
+      email,
+      isVenmoSaveSelected,
+    };
+  }
   const res = yield call(submitOrder, orderId, smsOrderInfo, currentLanguage, venmoPayloadData);
   yield call(loadPersonalizedCoupons, res, orderId);
   yield put(getSetOrderConfirmationActn(res));

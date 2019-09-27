@@ -61,16 +61,19 @@ export class VenmoPaymentButtonContainer extends React.PureComponent<Props> {
    * This method is called once we get error or user interupted the venmo authorization flow.
    */
   onVenmoPaymentButtonError = e => {
+    const { setVenmoProgress } = this.props;
+    setVenmoProgress(false); // Cancelling venmo progress on error
     logger.error(e);
   };
 
   render() {
-    const { ...otherProps } = this.props;
+    const { setVenmoProgress, ...otherProps } = this.props;
     return (
       <VenmoPaymentButton
         setVenmoData={this.setVenmoData}
         onVenmoPaymentButtonClick={this.onVenmoPaymentButtonClick}
         onVenmoPaymentButtonError={this.onVenmoPaymentButtonError}
+        setVenmoPaymentInProgress={setVenmoProgress}
         {...otherProps}
       />
     );
@@ -109,7 +112,7 @@ const mapStateToProps = state => {
 };
 
 export const mapDispatchToProps = dispatch => ({
-  setVenmoPaymentInProgress: data => dispatch(setVenmoPaymentInProgress(data)),
+  setVenmoProgress: data => dispatch(setVenmoPaymentInProgress(data)),
   getVenmoPaymentTokenAction: data => dispatch(getVenmoClientToken(data)),
   setVenmoDataAction: data => dispatch(setVenmoData(data)),
 });
