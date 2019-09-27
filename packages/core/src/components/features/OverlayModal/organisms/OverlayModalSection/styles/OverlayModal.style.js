@@ -41,7 +41,7 @@ const StyledModal = css`
     @media ${props => props.theme.mediaQuery.medium} {
       overflow-y: scroll;
       position: fixed;
-      top: 63px;
+      top: 61px;
       width: 374px;
     }
     @media ${props => props.theme.mediaQuery.large} {
@@ -70,13 +70,12 @@ const StyledModal = css`
   .modal__triangle.condensed-modal-triangle {
     @media ${props => props.theme.mediaQuery.medium} {
       position: fixed;
-      top: 53px;
-      right: 83px;
+      top: 52px;
+      right: 81px;
     }
 
     @media ${props => props.theme.mediaQuery.large} {
-      top: 62px;
-      right: 93px;
+      top: 61px;
     }
   }
   .modal__closeIcon {

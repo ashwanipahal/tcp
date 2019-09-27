@@ -1,5 +1,7 @@
 export {
   default,
+  enableBodyScroll,
+  disableBodyScroll,
   importGraphQLClientDynamically,
   importGraphQLQueriesDynamically,
   isProduction,
@@ -21,7 +23,6 @@ export {
   getModifiedLanguageCode,
   siteRedirect,
   languageRedirect,
-  redirectToPdp,
   getAsPathWithSlug,
   getMappedPageHref,
   handleGenericKeyDown,

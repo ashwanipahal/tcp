@@ -210,6 +210,26 @@ export const getViewportInfo = () => {
 };
 
 /**
+ * Enable Body Scroll
+ */
+export const enableBodyScroll = () => {
+  if (typeof window !== 'undefined') {
+    const [body] = document.getElementsByTagName('body');
+    body.style.overflow = 'auto';
+  }
+};
+
+/**
+ * Disable Body Scroll
+ */
+export const disableBodyScroll = () => {
+  if (typeof window !== 'undefined') {
+    const [body] = document.getElementsByTagName('body');
+    body.style.overflow = 'hidden';
+  }
+};
+
+/**
  * Show Dark Overlay in background
  */
 export const showOverlay = () => {
@@ -326,21 +346,6 @@ export const languageRedirect = (newLanguage, oldLanguage) => {
       window.location = href;
     }
   }
-};
-
-/**
- * This function will redirect to PDP from HOMEPAGE
- * on the basis of productId
- */
-export const redirectToPdp = (productId, seoToken) => {
-  if (!window) return null;
-
-  const params = seoToken ? `${seoToken}-${productId}` : productId;
-
-  return {
-    url: `/p?${params}`,
-    asPath: `/p/${params}`,
-  };
 };
 
 /**
@@ -515,7 +520,6 @@ export default {
   getModifiedLanguageCode,
   siteRedirect,
   languageRedirect,
-  redirectToPdp,
   handleGenericKeyDown,
   viewport,
   canUseDOM,
