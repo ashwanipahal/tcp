@@ -62,6 +62,7 @@ class SMSFormFields extends React.PureComponent {
                   dataLocator="phone-number-field"
                   enableSuccessCheck={false}
                   className="phone-field"
+                  keyboardType="numeric"
                   marginBottom={false}
                 />
               </PhoneFieldWrapper>
