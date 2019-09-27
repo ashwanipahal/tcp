@@ -50,6 +50,7 @@ import SocialReducer from '@tcp/core/src/components/common/organisms/SocialAccou
 import SearchPageReducer from '@tcp/core/src/components/features/browse/SearchDetail/container/SearchDetail.reducer';
 import MyFavoriteStoreReducer from '@tcp/core/src/components/features/account/MyProfile/organism/MyFavoriteStore/container/MyFavoriteStore.reducer';
 import PointsClaimReducer from '@tcp/core/src/components/features/account/PointsClaim/container/PointsClaim.reducer';
+import orderConfirmationReducer from '@tcp/core/src/components/features/CnC/Confirmation/container/Confirmation.reducer';
 
 import {
   APICONFIG_REDUCER_KEY,
@@ -111,6 +112,7 @@ import {
   SLP_PAGE_REDUCER_KEY,
   QUICK_VIEW_REDUCER_KEY,
   POINTS_CLAIM_REDUCER_KEY,
+  CONFIRMATION_REDUCER_KEY,
 } from '@tcp/core/src/constants/reducer.constants';
 import { TRACK_PAGE_VIEW } from '@tcp/core/src/analytics';
 import HeaderReducer from '@tcp/core/src/components/common/organisms/Header/container/Header.reducer';
@@ -224,4 +226,5 @@ export default combineReducers({
   [RECOMMENDATIONS_REDUCER_KEY]: RecommendationsReducer,
   [SLP_PAGE_REDUCER_KEY]: SearchPageReducer,
   [POINTS_CLAIM_REDUCER_KEY]: PointsClaimReducer,
+  [CONFIRMATION_REDUCER_KEY]: orderConfirmationReducer,
 });

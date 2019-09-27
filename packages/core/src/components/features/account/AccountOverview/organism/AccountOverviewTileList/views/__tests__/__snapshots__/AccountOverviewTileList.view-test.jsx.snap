@@ -61,6 +61,26 @@ exports[`AccountOverviewTileList component should render correctly 1`] = `
         "small": true,
       }
     }
+    key="earnExtraPointsOverview"
+  >
+    <Connect(EarnExtraPointsOverviewContainer) />
+  </Styled(Col)>
+  <Styled(Col)
+    className="overviewCol elem-mb-XL"
+    colSize={
+      Object {
+        "large": 4,
+        "medium": 4,
+        "small": 6,
+      }
+    }
+    ignoreGutter={
+      Object {
+        "large": false,
+        "medium": true,
+        "small": true,
+      }
+    }
     key="paymentOverviewTile"
   >
     <Connect(PaymentOverviewTile) />
@@ -77,7 +97,7 @@ exports[`AccountOverviewTileList component should render correctly 1`] = `
     ignoreGutter={
       Object {
         "large": false,
-        "medium": true,
+        "medium": false,
         "small": true,
       }
     }
@@ -96,8 +116,8 @@ exports[`AccountOverviewTileList component should render correctly 1`] = `
     }
     ignoreGutter={
       Object {
-        "large": false,
-        "medium": false,
+        "large": true,
+        "medium": true,
         "small": true,
       }
     }

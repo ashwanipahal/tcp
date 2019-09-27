@@ -18,7 +18,6 @@ export {
   createAPIConfig,
   getCountriesMap,
   getCurrenciesMap,
-  getModifiedLanguageCode,
   siteRedirect,
   languageRedirect,
   redirectToPdp,
@@ -30,7 +29,6 @@ export {
   isBossProduct,
   viewport,
   getLocationOrigin,
-  getTranslateDateInformation,
 } from './utils.web';
 
 export {
@@ -65,4 +63,6 @@ export {
   formatPhone,
   parseStoreHours,
   parseBoolean,
+  getModifiedLanguageCode,
+  getTranslateDateInformation,
 } from './utils';
