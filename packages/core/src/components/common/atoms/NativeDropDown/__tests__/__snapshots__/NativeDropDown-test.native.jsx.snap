@@ -47,10 +47,14 @@ exports[`NativeDropDown native should render correctly should match snapshot for
         <Styled(View) />
       </Styled(TouchableWithoutFeedback)>
       <Styled(View)>
-        <Button
-          onPress={[Function]}
-          title="Done"
-        />
+        <Styled(View)>
+          <Button
+            accessibilityLabel="done"
+            accessibilityRole="button"
+            onPress={[Function]}
+            title="Done"
+          />
+        </Styled(View)>
         <Picker
           mode="dialog"
           onValueChange={[Function]}

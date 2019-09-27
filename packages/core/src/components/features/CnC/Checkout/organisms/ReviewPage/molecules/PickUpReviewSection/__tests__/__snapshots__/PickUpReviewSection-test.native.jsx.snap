@@ -1,52 +1,28 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
 exports[`PickUp Review Section should render the component correctly with same store 1`] = `
-<div
-  dataLocator="review-pickup-section"
->
-  <Styled(Row)
-    className="row-one"
-    fullBleed={true}
-  >
-    <Styled(Col)
-      colSize={
-        Object {
-          "large": 12,
-          "medium": 8,
-          "small": 6,
-        }
-      }
-    >
+<Styled(View)>
+  <Styled(View)>
+    <Styled(View)>
       <Styled(TitlePlusEditButton)
         dataLocator="pickup-section"
         title=""
       />
-      <Styled(BodyCopy)
-        className={null}
-        color="gray.900"
-        component="p"
-        fontFamily="secondary"
-        fontSize="fs16"
-        fontWeight="regular"
-        letterSpacing="normal"
-        lineHeight="normal"
-        link={null}
-        textAlign="left"
-      />
-    </Styled(Col)>
-  </Styled(Row)>
-  <Styled(Row)
-    className="row-two"
-    fullBleed={true}
-  >
-    <Styled(Col)
-      colSize={
-        Object {
-          "large": 5,
-          "medium": 4,
-          "small": 6,
-        }
-      }
+    </Styled(View)>
+    <Styled(BodyCopy)
+      accessibilityText=""
+      color="gray.900"
+      dataLocator="pickup-section-heading-lbl"
+      fontSize="fs16"
+      fontWeight="regular"
+      margin={null}
+      mobileFontFamily="secondary"
+      numberOfLines={null}
+      textDecoration={null}
+    />
+  </Styled(View)>
+  <Styled(View)>
+    <View
       key="111287"
     >
       <Styled(PickupStoreDisplay)
@@ -79,15 +55,8 @@ exports[`PickUp Review Section should render the component correctly with same s
           }
         }
       />
-    </Styled(Col)>
-    <Styled(Col)
-      colSize={
-        Object {
-          "large": 5,
-          "medium": 4,
-          "small": 6,
-        }
-      }
+    </View>
+    <View
       key="111257"
     >
       <Styled(PickupStoreDisplay)
@@ -124,32 +93,22 @@ exports[`PickUp Review Section should render the component correctly with same s
           }
         }
       />
-    </Styled(Col)>
-  </Styled(Row)>
-  <Styled(Row)
-    fullBleed={true}
-  >
-    <Styled(Col)
-      className="pickupContactPersonContainer"
-      colSize={
-        Object {
-          "large": 5,
-          "medium": 4,
-          "small": 6,
-        }
-      }
-    >
+    </View>
+  </Styled(View)>
+  <Styled(View)>
+    <View>
       <Styled(BodyCopy)
+        accessibilityText=""
         className="pickupTitle"
         color="gray.900"
-        component="p"
-        fontFamily="secondary"
+        dataLocator=""
         fontSize="fs16"
-        fontWeight="extrabold"
-        letterSpacing="normal"
-        lineHeight="normal"
-        link={null}
-        textAlign="left"
+        fontWeight="semibold"
+        margin={null}
+        mobileFontFamily="secondary"
+        numberOfLines={null}
+        text=""
+        textDecoration={null}
       />
       <Styled(PickUpContactDisplay)
         formData={
@@ -161,33 +120,25 @@ exports[`PickUp Review Section should render the component correctly with same s
           }
         }
       />
-    </Styled(Col)>
-    <Styled(Col)
-      className="pickupContactAlternateContainer"
-      colSize={
-        Object {
-          "large": 5,
-          "medium": 4,
-          "small": 6,
-        }
-      }
-    >
+    </View>
+    <View>
       <Styled(BodyCopy)
+        accessibilityText=""
         className="pickupTitle"
         color="gray.900"
-        component="p"
-        fontFamily="secondary"
+        dataLocator=""
         fontSize="fs16"
-        fontWeight="extrabold"
-        letterSpacing="normal"
-        lineHeight="normal"
-        link={null}
-        textAlign="left"
+        fontWeight="semibold"
+        margin={null}
+        mobileFontFamily="secondary"
+        numberOfLines={null}
+        text=""
+        textDecoration={null}
       />
       <Styled(PickUpContactDisplay)
         formData={Object {}}
       />
-    </Styled(Col)>
-  </Styled(Row)>
-</div>
+    </View>
+  </Styled(View)>
+</Styled(View)>
 `;
