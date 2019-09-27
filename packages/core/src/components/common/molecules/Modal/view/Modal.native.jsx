@@ -1,5 +1,12 @@
 import React from 'react';
-import { Modal, StatusBar, SafeAreaView, ScrollView } from 'react-native';
+import {
+  Modal,
+  StatusBar,
+  SafeAreaView,
+  ScrollView,
+  KeyboardAvoidingView,
+  Platform,
+} from 'react-native';
 import LineComp from '@tcp/core/src/components/common/atoms/Line';
 import ToastContainer from '@tcp/core/src/components/common/atoms/Toast/container/Toast.container.native';
 import {
@@ -65,6 +72,12 @@ const ModalNative = ({ isOpen, children, isOverlay, ...otherProps }: Props) => {
     fullWidth,
     customTransparent,
   } = otherProps;
+  let behavior = null;
+  let keyboardVerticalOffset = 0;
+  if (Platform.OS === 'ios') {
+    behavior = 'padding';
+    keyboardVerticalOffset = 64;
+  }
   return (
     <SafeAreaView>
       <Modal
@@ -97,7 +110,12 @@ const ModalNative = ({ isOpen, children, isOverlay, ...otherProps }: Props) => {
               </LineWrapper>
             ) : null}
             <ScrollView showsVerticalScrollIndicator={false} keyboardShouldPersistTaps="handled">
-              {children}
+              <KeyboardAvoidingView
+                behavior={behavior}
+                keyboardVerticalOffset={keyboardVerticalOffset}
+              >
+                {children}
+              </KeyboardAvoidingView>
             </ScrollView>
           </>
         )}

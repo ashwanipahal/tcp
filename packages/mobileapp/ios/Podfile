@@ -1,0 +1,12 @@
+
+# Uncomment the next line to define a global platform for your project
+platform :ios, '9.0'
+use_frameworks!
+
+target 'mobileapp' do
+  # Comment the next line if you don't want to use dynamic frameworks
+  pod 'FBSDKCoreKit', '~> 4.35.0'
+  pod 'FBSDKLoginKit', '~> 4.35.0'
+  pod 'FBSDKShareKit', '~> 4.35.0'
+end
+
