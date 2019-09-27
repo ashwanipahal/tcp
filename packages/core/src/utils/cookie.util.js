@@ -74,3 +74,26 @@ export function getSflItemCount(siteId) {
   }
   return parseInt(readCookie(SFL_ITEM_COUNTER) || 0, 10);
 }
+
+export function generateSessionId() {
+  const sessionCookies = ['QuantumMetricSessionID'];
+  let cookie = '';
+
+  // eslint-disable-next-line no-plusplus
+  for (let index = 0; index < sessionCookies.length; index++) {
+    const sessionCookieKey = sessionCookies[index];
+    const cookieValue = readCookie(
+      sessionCookieKey,
+      !isClient() ? this.configOptions.cookie : null
+    );
+
+    if (cookieValue) {
+      cookie = cookieValue;
+      break;
+    }
+  }
+
+  return (
+    cookie && `${cookie.substring(0, 4).toUpperCase()}-${cookie.substring(4, 8).toUpperCase()}`
+  );
+}
