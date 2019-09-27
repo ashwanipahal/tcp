@@ -27,7 +27,7 @@ const cartIcon = require('../../../../assets/images/empty-bag.png');
  * 3. To show the welcome text for guest user
  *     and shoe the name fro register user
  */
-class HeaderNew extends React.PureComponent<Props> {
+class HeaderNew extends React.PureComponent {
   static propTypes = {
     title: PropTypes.string,
   };

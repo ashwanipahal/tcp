@@ -21,7 +21,7 @@ export class ThemeWrapper extends React.PureComponent {
     updateAppTypeHandler(appType);
   }
 
-  componentWillReceiveProps(nextProps) {
+  UNSAFE_componentWillReceiveProps(nextProps) {
     const { appType: prevAppType } = this.props;
     const { appType, switchBrand, resetReduxStoreData, updateAppTypeHandler } = nextProps;
 

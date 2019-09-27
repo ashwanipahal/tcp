@@ -28,7 +28,7 @@ const manageTextStyles = style => {
 /**
  * This Component return the mobile Promo Banner
  */
-class HeaderPromo extends React.PureComponent<props> {
+class HeaderPromo extends React.PureComponent {
   /**
    * @desc Returns updated Banner text details with styles.
    * Content render on the basis of style type .

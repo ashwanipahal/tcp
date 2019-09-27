@@ -37,7 +37,7 @@ const modulesMap = {
 };
 
 const buttonMargin = { margin: 30 };
-class HomePageView extends React.PureComponent<Props> {
+class HomePageView extends React.PureComponent {
   componentDidMount() {
     this.loadBootstrapData();
 
