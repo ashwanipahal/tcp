@@ -78,8 +78,8 @@ project.ext.react = [
 ]
 
 apply from: "../../node_modules/react-native/react.gradle"
-apply from: "../../node_modules/react-native/react.gradle"
 apply from: "../../node_modules/react-native-code-push/android/codepush.gradle"
+
 
 /**
  * Set this to true to create two separate APKs instead of one:
@@ -165,11 +165,13 @@ android {
     buildTypes {
         debug {
             // signingConfig signingConfigs.debug
+            buildConfigField "String", "CODEPUSH_KEY", '""'
         }
         release {
 
             minifyEnabled enableProguardInReleaseBuilds
             proguardFiles getDefaultProguardFile("proguard-android.txt"), "proguard-rules.pro"
+            buildConfigField "String", "CODEPUSH_KEY", 'spClHqj4L07OjWqQEy1iPmC4RMZ5SkveJ0SIQQ'
         }
     }
 
@@ -184,6 +186,7 @@ android {
             versionNameSuffix "-DEV"
             versionName = 'My Place'
             buildConfigField "String", "APP_TYPE", "\""+getTCPAppType()+"\""
+            buildConfigField "String", "CODEPUSH_KEY", '""'
 
         }
         gymboree {
@@ -281,9 +284,11 @@ android {
 }
 
 dependencies {
+    implementation project(':react-native-code-push')
+    implementation project(':react-native-webview')
     implementation fileTree(dir: "libs", include: ["*.jar"])
     implementation "com.facebook.react:react-native:+"  // From node_modules
-    compile project(':react-native-code-push')
+    
 
     if (enableHermes) {
         def hermesPath = "../../node_modules/hermes-engine/android/";

@@ -88,6 +88,8 @@
     "nohoist": [
       "**/react-native-code-push",
       "**/react-native-code-push/**",
+      "**/react-native-webview",
+      "**/react-native-webview/**",
       "**/react",
       "**/react/**",
       "**/@fabulas/astly",
