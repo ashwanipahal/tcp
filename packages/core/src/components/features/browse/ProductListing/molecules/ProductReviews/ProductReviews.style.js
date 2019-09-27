@@ -29,8 +29,8 @@ export default css`
     margin-top: ${props => props.theme.spacing.ELEM_SPACING.LRG};
 
     .accordion-button-toggle {
-      display: none;
       margin-bottom: ${props => props.theme.spacing.ELEM_SPACING.LRG};
+      background: none;
     }
     .ratings-and-reviews-container {
       display: block;

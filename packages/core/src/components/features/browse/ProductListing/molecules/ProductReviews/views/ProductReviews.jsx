@@ -22,14 +22,18 @@ class ProductReviews extends React.Component {
     userId: PropTypes.string,
     /** MPR ID of the User */
     mprId: PropTypes.string,
+    expanded: PropTypes.bool,
+    className: PropTypes.string,
+    reviewsCount: PropTypes.number,
   };
 
   constructor(props, context) {
     super(props, context);
 
+    const { expanded } = this.props;
     this.state = {
       isLoading: true,
-      expanded: this.props.expanded,
+      expanded,
     };
 
     this.captureContainerRef = this.captureContainerRef.bind(this);
@@ -50,10 +54,11 @@ class ProductReviews extends React.Component {
   }
 
   bindWriteReviewClick() {
-    let containerDivId = 'BVRRContainer-' + this.props.ratingsProductId;
-    let summaryContainerDiv = 'BVRRSummaryContainer-' + this.props.ratingsProductId;
+    const { ratingsProductId } = this.props;
+    const containerDivId = `BVRRContainer- ${ratingsProductId}`;
+    const summaryContainerDiv = `BVRRSummaryContainer- ${ratingsProductId}`;
 
-    let buttons = document.querySelectorAll(
+    const buttons = document.querySelectorAll(
       `#${containerDivId} button.bv-write-review, #${containerDivId} .bv-write-review-label, #${summaryContainerDiv} button.bv-write-review, #${summaryContainerDiv} .bv-write-review-label`
     );
     if (buttons.length > 0) {
@@ -68,24 +73,27 @@ class ProductReviews extends React.Component {
   }
 
   handleLoginClick(event) {
-    if (this.props.isGuest) {
+    const { isGuest, onLoginClick } = this.props;
+    if (isGuest) {
       event.preventDefault();
       event.stopPropagation();
-      this.props.onLoginClick();
+      onLoginClick();
       return false;
     }
+    return false;
   }
 
   captureContainerRef(ref) {
+    const { ratingsProductId, isGuest, userId, mprId } = this.props;
     this.containerRef = ref;
 
-    let scope = 'rr';
-    let action = 'show_reviews';
-    let containerDivId = 'BVRRContainer-' + this.props.ratingsProductId;
-    let options = {
+    const scope = 'rr';
+    const action = 'show_reviews';
+    const containerDivId = `BVRRContainer-${ratingsProductId}`;
+    const options = {
       contentContainerDiv: containerDivId,
-      productId: this.props.ratingsProductId,
-      summaryContainerDiv: 'BVRRSummaryContainer-' + this.props.ratingsProductId,
+      productId: ratingsProductId,
+      summaryContainerDiv: `BVRRSummaryContainer-${ratingsProductId}`,
     };
 
     document
@@ -94,37 +102,35 @@ class ProductReviews extends React.Component {
 
     if (window.$BV) {
       // NODE: this code was taken (as is) from TCP production
-      if (!this.props.isGuest) {
+      if (!isGuest) {
         // define the sharedKey
-        let sharedKey = 'Fca3yih00AVeVDFvmaDwnwlWM';
+        const sharedKey = 'Fca3yih00AVeVDFvmaDwnwlWM';
 
         // obtain current date in the format of yyyyMMdd
-        let rightNow = new Date();
-        let res = rightNow
+        const rightNow = new Date();
+        const res = rightNow
           .toISOString()
           .slice(0, 10)
           .replace(/-/g, '');
-        let queryString =
-          'date=' + res.toString() + '&userid=' + this.props.userId + '&MprId=' + this.props.mprId;
+        const queryString = `date=${res.toString()}&userid=${userId}&MprId=${mprId}`;
         // define unhashed security key
-        let unhashed = sharedKey.toString().concat(queryString.toString());
+        const unhashed = sharedKey.toString().concat(queryString.toString());
 
         // obtain HEX representation of queryString
-        let hexQueryString = bin2hex(queryString);
+        const hexQueryString = bin2hex(queryString);
 
         // obtain MD5 hash of the unhashed security key
-        // var hashed = CryptoJS.MD5(unhashed);
-        let hashed = md5(unhashed);
+        const hashed = md5(unhashed);
 
-        let securityToken = hashed.toString() + hexQueryString.toString();
+        const securityToken = hashed.toString() + hexQueryString.toString();
 
         window.$BV.configure('global', {
-          productId: this.props.ratingsProductId,
+          productId: ratingsProductId,
           userToken: securityToken.toString(),
         });
       } else {
         window.$BV.configure('global', {
-          productId: this.props.ratingsProductId,
+          productId: ratingsProductId,
         });
       }
 
@@ -133,22 +139,21 @@ class ProductReviews extends React.Component {
   }
 
   handleToggle() {
-    this.setState({ expanded: !this.state.expanded });
+    const { expanded } = this.state;
+    this.setState({ expanded: !expanded });
   }
 
   render() {
-    let { expanded } = this.state;
-    const { isMobile, className, reviewsCount } = this.props;
+    const { expanded, isLoading } = this.state;
+    const { className, reviewsCount, isClient, ratingsProductId } = this.props;
 
-    if (this.state.isLoading || !this.props.isClient) {
+    if (isLoading || !isClient) {
       return null;
     }
 
-    let accordionClassName = cssClassName(
-      'ratings-and-reviews-accordion ',
-      { 'accordion ': isMobile },
-      { 'accordion-expanded ': expanded }
-    );
+    const accordionClassName = cssClassName('ratings-and-reviews-accordion ', {
+      'accordion-expanded ': expanded,
+    });
 
     return (
       <div className={`${className} ${accordionClassName}`}>
@@ -160,10 +165,10 @@ class ProductReviews extends React.Component {
           fontWeight="black"
           onClick={this.handleToggle}
         >
-          Ratings & Reviews ({`${reviewsCount}`})
+          Ratings & Reviews (<span>{`${reviewsCount}`}</span>)
         </BodyCopy>
         <div
-          id={'BVRRContainer-' + this.props.ratingsProductId}
+          id={`BVRRContainer-${ratingsProductId}`}
           ref={this.captureContainerRef}
           className={`ratings-and-reviews-container ${accordionClassName}`}
         />
@@ -171,6 +176,14 @@ class ProductReviews extends React.Component {
     );
   }
 }
+
+ProductReviews.defaultProps = {
+  expanded: true,
+  userId: '',
+  mprId: '',
+  className: '',
+  reviewsCount: 0,
+};
 
 export default withStyles(ProductReviews, ProductReviewsStyle);
 export { ProductReviews as ProductReviewsVanilla };
