@@ -50,7 +50,6 @@ class TCPWebApp extends App {
   static async getInitialProps({ Component, ctx }) {
     const compProps = TCPWebApp.loadComponentData(Component, ctx, {});
     const pageProps = TCPWebApp.loadGlobalData(Component, ctx, compProps);
-
     return {
       pageProps,
     };
@@ -96,7 +95,7 @@ class TCPWebApp extends App {
     ReactAxe.runAccessibility();
   }
 
-  static loadGlobalData(Component, { store, res, isServer, req, asPath }, pageProps) {
+  static loadGlobalData(Component, { store, res, isServer, req, asPath, query }, pageProps) {
     // getInitialProps of _App is called on every internal page navigation in spa.
     // This check is to avoid unnecessary api call in those cases
     if (isServer) {
@@ -140,8 +139,9 @@ class TCPWebApp extends App {
         optimizelyHeadersObject,
       };
       store.dispatch(bootstrapData(payload));
-      if (asPath.includes('store') && !asPath.includes('store-locator')) {
-        store.dispatch(getCurrentStoreInfo(fetchStoreIdFromUrlPath(asPath)));
+      if (asPath.includes('store') && query && query.storeStr) {
+        const storeId = fetchStoreIdFromUrlPath(query.storeStr);
+        store.dispatch(getCurrentStoreInfo(storeId));
       }
     }
     return pageProps;

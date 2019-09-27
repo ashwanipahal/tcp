@@ -3,6 +3,7 @@ import { shallow } from 'enzyme';
 import { fromJS, List } from 'immutable';
 import { StoreDetailContainer, mapDispatchToProps } from '../StoreDetail.container';
 import StoreDetail from '../views/StoreDetail';
+import mockStore from '../__mocks__/currentStore.mock';
 
 describe('Store Detail Page', () => {
   const labels = {
@@ -75,6 +76,19 @@ describe('Store Detail Page', () => {
     expect(component).toMatchSnapshot();
   });
 
+  it('openStoreDirections should be called', () => {
+    const component = shallow(<StoreDetailContainer {...props} />);
+    let result = '';
+    global.open = url => {
+      result = url;
+      return url;
+    };
+    const expected =
+      'https://maps.google.com/maps?daddr=31-53 steinway street,%20astoria,%20NY,%2011103';
+    component.instance().openStoreDirections(mockStore.currentStore);
+    expect(result).toEqual(expected);
+  });
+
   describe('#mapDispatchToProps', () => {
     it('should return an action onSubmit which will call dispatch function on execution', () => {
       const dispatch = jest.fn();
@@ -91,6 +105,24 @@ describe('Store Detail Page', () => {
       };
       const dispatchProps = mapDispatchToProps(dispatch);
       dispatchProps.loadNearByStoreInfo(payload);
+      expect(dispatch.mock.calls).toHaveLength(1);
+    });
+    it('should return an action getFavoriteStoreActn which will call dispatch function on execution', () => {
+      const dispatch = jest.fn();
+      const payload = {
+        geoLatLang: {
+          lat: 40.76004,
+          long: -73.91805,
+        },
+      };
+      const dispatchProps = mapDispatchToProps(dispatch);
+      dispatchProps.getFavStore(payload);
+      expect(dispatch.mock.calls).toHaveLength(1);
+    });
+    it('should return an action setFavoriteStoreActn which will call dispatch function on execution', () => {
+      const dispatch = jest.fn();
+      const dispatchProps = mapDispatchToProps(dispatch);
+      dispatchProps.setFavStore(mockStore.currentStore);
       expect(dispatch.mock.calls).toHaveLength(1);
     });
   });
