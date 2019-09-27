@@ -1,13 +1,13 @@
 import React from 'react';
 import { shallow } from 'enzyme';
 
-import { SearchDetailVanilla } from '../views/SearchDetail.view.native';
+import { SearchDetailVanilla } from '../SearchDetail.view.native';
 
 describe('ProductAddToBagVanilla native should render correctly', () => {
   let wrapper;
 
   beforeEach(() => {
-    wrapper = shallow(<SearchDetailVanilla searchText="Pink Dress" />);
+    wrapper = shallow(<SearchDetailVanilla searchedText="Pink Dress" />);
   });
 
   it('should match snapshot', () => {
