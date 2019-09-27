@@ -77,3 +77,12 @@ export const formatCurrentStoreToObject = store => {
 export const getNearByStores = state => state[STORE_DETAIL_REDUCER_KEY].get('suggestedStores');
 
 export const getLabels = state => state.Labels.StoreLocator;
+
+export const isFavoriteStore = state => {
+  const defaultStore = state.User.get('defaultStore');
+  const basicInfoDefaultStore = defaultStore && defaultStore.basicInfo;
+  const basicInfoStore = formatCurrentStoreToObject(getCurrentStore(state)).basicInfo;
+  return (
+    (basicInfoStore && basicInfoStore.id) === (basicInfoDefaultStore && basicInfoDefaultStore.id)
+  );
+};

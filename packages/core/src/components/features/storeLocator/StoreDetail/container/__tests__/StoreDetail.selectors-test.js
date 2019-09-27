@@ -6,6 +6,8 @@ import {
   formatGenericMapObject,
   formatHoursToObject,
   getNearByStores,
+  getLabels,
+  isFavoriteStore,
 } from '../StoreDetail.selectors';
 
 describe('# Store Details Selectors', () => {
@@ -151,5 +153,38 @@ describe('# Store Details Selectors', () => {
     };
     const result = getNearByStores(state);
     expect(result.size).toEqual(0);
+  });
+  it('#getLabels - Get Labels', () => {
+    const state = {
+      Labels: {
+        StoreLocator: {},
+      },
+    };
+    const result = getLabels(state);
+    expect(result).toMatchObject({});
+  });
+  it('#isFavoriteStore - send false if gav store', () => {
+    const state = {
+      User: fromJS({
+        defaultStore: {
+          basicInfo: {
+            id: 'test',
+          },
+        },
+      }),
+      StoreDetailReducer: fromJS({
+        currentStore: {
+          basicInfo: {
+            id: 'test1',
+            address: {},
+            coordinates: {},
+          },
+          hours: {},
+          features: {},
+        },
+      }),
+    };
+    const result = isFavoriteStore(state);
+    expect(result).toBeFalsy();
   });
 });

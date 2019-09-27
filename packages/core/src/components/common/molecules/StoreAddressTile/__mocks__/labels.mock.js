@@ -14,6 +14,8 @@ const labels = {
     lbl_storelocators_detail_entranceType: 'Type of Entrance:',
     lbl_storelocators_details_locations_details_btn: 'SEE STORE DETAILS',
     lbl_storelocators_details_locations_title: 'OTHER LOCATIONS NEAR YOU',
+    lbl_storelocators_details_seemorestores_btn: 'SEE MORE STORES',
+    lbl_storelocators_details_setfav_btn: 'Set as favorite',
   },
 };
 

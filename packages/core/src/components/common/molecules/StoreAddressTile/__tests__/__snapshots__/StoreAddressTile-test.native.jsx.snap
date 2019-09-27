@@ -69,7 +69,7 @@ exports[`StoreAddressTile component Details StoreAddressTile component renders c
           color="white"
           fill="BLUE"
           onPress={null}
-          text="Change Favorite Store"
+          text="Set as favorite"
           type="submit"
         />
       </Styled(View)>
@@ -347,7 +347,7 @@ exports[`StoreAddressTile component Listing should not render gymboree store 1`]
     />
     <Styled(WithTheme(CustomButton))
       buttonVariation="fixed-width"
-      onPress={null}
+      onPress={[Function]}
       text="SET AS FAVORITE"
       type="button"
     />
@@ -430,7 +430,7 @@ exports[`StoreAddressTile component Listing should render listing view 1`] = `
     />
     <Styled(WithTheme(CustomButton))
       buttonVariation="fixed-width"
-      onPress={null}
+      onPress={[Function]}
       text="SET AS FAVORITE"
       type="button"
     />
@@ -604,7 +604,7 @@ exports[`StoreAddressTile component Listing should render listing view with inde
     />
     <Styled(WithTheme(CustomButton))
       buttonVariation="fixed-width"
-      onPress={null}
+      onPress={[Function]}
       text="SET AS FAVORITE"
       type="button"
     />

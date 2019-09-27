@@ -43,4 +43,5 @@ export {
   getPromotionalMessage,
   getBirthDateOptionMap,
   calculateAge,
+  sanitizeEntity,
 } from './utils';

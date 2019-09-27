@@ -2,55 +2,48 @@ import React, { PureComponent } from 'react';
 import { connect } from 'react-redux';
 import PropTypes from 'prop-types';
 import { fromJS } from 'immutable';
-import Router from 'next/router';
 import { getNearByStore } from './StoreDetail.actions';
+import {
+  getFavoriteStoreActn,
+  setFavoriteStoreActn,
+} from '../../StoreLanding/container/StoreLanding.actions';
 import StoreDetail from './views/StoreDetail';
-import { getAPIConfig } from '../../../../../utils';
+import { routeToStoreDetails } from '../../../../../utils';
 import {
   getCurrentStore,
   formatCurrentStoreToObject,
   getNearByStores,
   getLabels,
+  isFavoriteStore,
 } from './StoreDetail.selectors';
-// TO DO - To integrate with the labels in CMS
+import googleMapConstants from '../../../../../constants/googleMap.constants';
 import mockLabels from '../../../../common/molecules/StoreAddressTile/__mocks__/labels.mock';
 
 export class StoreDetailContainer extends PureComponent {
-  static openStoreDetails(store) {
-    const {
-      basicInfo: {
-        id,
-        storeName,
-        address: { city, state, zipCode },
-      },
-    } = store;
-    const { siteId } = getAPIConfig();
-    const url = `/${siteId}/store/${storeName
-      .replace(/\s/g, '')
-      .toLowerCase()}-${state.toLowerCase()}-${city
-      .replace(/\s/g, '')
-      .toLowerCase()}-${zipCode}-${id}`;
-
-    if (Router) Router.push(url);
-  }
-
-  static openStoreDirections(store) {
-    const {
-      basicInfo: { address },
-    } = store;
-    const { addressLine1, city, state, zipCode } = address;
-    window.open(
-      `https://maps.google.com/maps?daddr=${addressLine1},%20${city},%20${state},%20${zipCode}`
-    );
-  }
-
   static routesBack(e) {
     e.preventDefault();
     window.history.back();
   }
 
+  constructor(props) {
+    super(props);
+    import('../../../../../utils')
+      .then(
+        ({ isMobileApp, navigateToNestedRoute, UrlHandler, validateExternalUrl, isAndroid }) => {
+          this.hasMobileApp = isMobileApp();
+          this.navigateToNestedRoute = navigateToNestedRoute;
+          this.UrlHandler = UrlHandler;
+          this.validateExternalUrl = validateExternalUrl;
+          this.isAndroid = isAndroid();
+        }
+      )
+      .catch(error => {
+        console.log('error: ', error);
+      });
+  }
+
   componentDidMount() {
-    const { loadNearByStoreInfo, currentStoreInfo, formatStore } = this.props;
+    const { loadNearByStoreInfo, currentStoreInfo, formatStore, getFavStore } = this.props;
     const store = formatStore(currentStoreInfo);
     if (store.basicInfo && Object.keys(store.basicInfo).length > 0) {
       const { basicInfo } = store;
@@ -60,16 +53,63 @@ export class StoreDetailContainer extends PureComponent {
         getNearby: true,
         latitude: coordinates.lat,
         longitude: coordinates.long,
-        currentStore: store,
       };
+      getFavStore({ geoLatLang: { lat: coordinates.lat, long: coordinates.long } });
       loadNearByStoreInfo(payloadArgs);
     }
   }
 
+  openMoreStores = () => {
+    const { navigation } = this.props;
+    this.navigateToNestedRoute(navigation, 'HomeStack', 'StoreLanding');
+  };
+
+  dialStoreNumber = () => {
+    const { currentStoreInfo } = this.props;
+    const {
+      basicInfo: { phone },
+    } = currentStoreInfo;
+    let phoneUrl = '';
+    if (this.isAndroid) {
+      phoneUrl = `tel:$${`{${phone}}`}`;
+    } else phoneUrl = `telprompt:$${`{${phone}}`}`;
+    this.UrlHandler(phoneUrl);
+  };
+
+  openStoreDirections(store) {
+    const {
+      basicInfo: { address, coordinates },
+    } = store;
+    const { addressLine1, city, state, zipCode } = address;
+    const { lat, long } = coordinates;
+    if (this.hasMobileApp) {
+      const url = `${googleMapConstants.OPEN_STORE_DIR_APP}${lat}%2C${long}`;
+      if (this.validateExternalUrl(url)) {
+        this.UrlHandler(url);
+      }
+    } else {
+      window.open(
+        `${
+          googleMapConstants.OPEN_STORE_DIR_WEB
+        }${addressLine1},%20${city},%20${state},%20${zipCode}`
+      );
+    }
+  }
+
   render() {
-    const { currentStoreInfo, formatStore, nearByStores, labels } = this.props;
+    const {
+      currentStoreInfo,
+      formatStore,
+      nearByStores,
+      labels,
+      isFavorite,
+      setFavStore,
+    } = this.props;
     const store = formatStore(currentStoreInfo);
-    const otherStores = nearByStores && nearByStores.length > 0 ? nearByStores : [];
+    const otherStores =
+      nearByStores && nearByStores.length > 0
+        ? nearByStores.filter(nStore => nStore.basicInfo.id !== store.basicInfo.id)
+        : [];
 
     return store && Object.keys(store).length > 0 ? (
       <StoreDetail
@@ -77,9 +117,13 @@ export class StoreDetailContainer extends PureComponent {
         store={store}
         labels={labels || mockLabels.StoreLocator}
         otherStores={otherStores}
-        openStoreDetails={selectedStore => this.constructor.openStoreDetails(selectedStore)}
-        openStoreDirections={() => this.constructor.openStoreDirections(store)}
+        openStoreDetails={selectedStore => routeToStoreDetails(selectedStore)}
+        openStoreDirections={() => this.openStoreDirections(store)}
         routesBack={this.constructor.routesBack}
+        dialStoreNumber={this.dialStoreNumber}
+        openMoreStores={this.openMoreStores}
+        setFavoriteStore={setFavStore}
+        isFavorite={isFavorite}
       />
     ) : null;
   }
@@ -106,6 +150,10 @@ StoreDetailContainer.propTypes = {
     lbl_storelocators_details_locations_title: PropTypes.string,
   }).isRequired,
   loadNearByStoreInfo: PropTypes.func.isRequired,
+  isFavorite: PropTypes.bool.isRequired,
+  getFavStore: PropTypes.func.isRequired,
+  setFavStore: PropTypes.func.isRequired,
+  navigation: PropTypes.shape({}),
 };
 
 StoreDetailContainer.defaultProps = {
@@ -120,6 +168,7 @@ StoreDetailContainer.defaultProps = {
     hours: {},
     features: {},
   }),
+  navigation: {},
 };
 
 const mapStateToProps = state => {
@@ -128,6 +177,7 @@ const mapStateToProps = state => {
     formatStore: store => formatCurrentStoreToObject(store),
     nearByStores: getNearByStores(state),
     labels: getLabels(state),
+    isFavorite: isFavoriteStore(state),
   };
 };
 
@@ -135,6 +185,10 @@ export const mapDispatchToProps = dispatch => ({
   loadNearByStoreInfo: payload => {
     dispatch(getNearByStore(payload));
   },
+  getFavStore: payload => {
+    dispatch(getFavoriteStoreActn(payload));
+  },
+  setFavStore: payload => dispatch(setFavoriteStoreActn({ ...payload, key: 'DETAIL' })),
 });
 
 export default connect(

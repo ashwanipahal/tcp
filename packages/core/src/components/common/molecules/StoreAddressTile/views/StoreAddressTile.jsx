@@ -1,3 +1,4 @@
+/* eslint-disable max-lines */
 import React, { PureComponent, Fragment } from 'react';
 import Router from 'next/router'; // eslint-disable-line
 import withStyles from '@tcp/core/src/components/common/hoc/withStyles';
@@ -286,8 +287,28 @@ class StoreAddressTile extends PureComponent {
     );
   }
 
+  getFavLink() {
+    const { labels, setFavoriteStore, store } = this.props;
+    return (
+      <Anchor
+        fontSizeVariation="medium"
+        underline
+        handleLinkClick={e => {
+          e.preventDefault();
+          setFavoriteStore(store);
+        }}
+        anchorVariation="primary"
+        className="store-details-link"
+        title={labels.lbl_storelocators_landingpage_storedetails_link}
+        noLink
+      >
+        {labels.lbl_storelocators_landingpage_setfavStore}
+      </Anchor>
+    );
+  }
+
   getStoreAddress() {
-    const { store, variation, isFavorite } = this.props;
+    const { store, variation, isFavorite, showSetFavorite } = this.props;
     const { address, phone } = store.basicInfo;
     const { addressLine1, city, state, zipCode } = address;
 
@@ -314,6 +335,7 @@ class StoreAddressTile extends PureComponent {
           </div>
           <div className="address-meta__right">
             {variation === detailsType && isFavorite && this.getIsFavStoreIcon()}
+            {variation === detailsType && (!isFavorite && showSetFavorite) && this.getFavLink()}
           </div>
         </div>
       </div>

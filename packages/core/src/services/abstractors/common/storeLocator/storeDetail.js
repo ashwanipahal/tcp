@@ -86,15 +86,7 @@ export const getCurrentStoreInfoApi = storeId => {
 export const cleanStr = str => str.replace(/-| |\./g, '');
 
 export const getNearByStoreApi = payload => {
-  const {
-    storeLocationId,
-    getNearby,
-    maxDistance,
-    maxStoreCount,
-    latitude,
-    longitude,
-    currentStore,
-  } = payload;
+  const { storeLocationId, getNearby, maxDistance, maxStoreCount, latitude, longitude } = payload;
   const payloadData = {
     header: {
       stlocId: storeLocationId,
@@ -112,9 +104,7 @@ export const getNearByStoreApi = payload => {
       const response = res.body;
       const parsedStoreInfo = {};
       const nearByStores = getNearby && response.getStoreLocatorByLatLngResponse.result;
-      const { basicInfo } = currentStore;
-      const filteredNearByStores =
-        getNearby && nearByStores.filter(nStore => nStore.storeUniqueID !== basicInfo.id);
+      const filteredNearByStores = getNearby && nearByStores;
       parsedStoreInfo.nearByStores = filteredNearByStores.map(fStore => {
         const nearbyStoreParsedInfo = {
           basicInfo: getBasicInfo(fStore),

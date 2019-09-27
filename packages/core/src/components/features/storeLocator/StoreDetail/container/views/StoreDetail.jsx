@@ -15,6 +15,8 @@ const StoreDetail = ({
   openStoreDetails,
   openStoreDirections,
   routesBack,
+  setFavoriteStore,
+  isFavorite,
 }) => {
   const {
     hours,
@@ -55,6 +57,9 @@ const StoreDetail = ({
             store={store}
             labels={labels}
             openStoreDirections={openStoreDirections}
+            setFavoriteStore={setFavoriteStore}
+            isFavorite={isFavorite}
+            showSetFavorite
           />
           <StoreHours
             title="Store Hours"
@@ -114,6 +119,8 @@ StoreDetail.propTypes = {
   openStoreDetails: PropTypes.func.isRequired,
   openStoreDirections: PropTypes.func.isRequired,
   routesBack: PropTypes.func.isRequired,
+  setFavoriteStore: PropTypes.func.isRequired,
+  isFavorite: PropTypes.bool.isRequired,
 };
 
 export default withStyles(StoreDetail, style);

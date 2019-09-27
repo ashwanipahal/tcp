@@ -16,7 +16,15 @@ const StoreHours = ({ children, title, storeTiming }) => {
           {storeTiming.map(item => (
             <TimingsItem key={item.id}>
               <TimingsText textAlign="left">{item.label}</TimingsText>
-              <TimingsText textAlign="right">{item.value}</TimingsText>
+              {Array.isArray(item.value) &&
+                item.value.map(val => (
+                  <TimingsText textAlign="right" key={`${item.id}-${val}`}>
+                    {val}
+                  </TimingsText>
+                ))}
+              {!Array.isArray(item.value) && (
+                <TimingsText textAlign="right">{item.value}</TimingsText>
+              )}
             </TimingsItem>
           ))}
         </TimingsList>

@@ -30,6 +30,7 @@ export {
   isBossProduct,
   viewport,
   fetchStoreIdFromUrlPath,
+  routeToStoreDetails,
 } from './utils.web';
 
 export {

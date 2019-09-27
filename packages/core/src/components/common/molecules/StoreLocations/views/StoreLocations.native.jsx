@@ -9,7 +9,7 @@ const StoreLocations = ({ children, labels, openMoreStores }) => (
       type="button"
       onPress={openMoreStores}
       buttonVariation="variable-width"
-      text={labels.lbl_storelocators_details_getdirections_btn}
+      text={labels.lbl_storelocators_details_seemorestores_btn}
     />
     {children}
   </StoreLocationsRoot>
