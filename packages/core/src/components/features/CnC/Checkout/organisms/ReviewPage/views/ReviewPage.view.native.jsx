@@ -4,6 +4,7 @@ import PropTypes from 'prop-types';
 import CheckoutSectionTitleDisplay from '../../../../../../common/molecules/CheckoutSectionTitleDisplay';
 import CheckoutProgressIndicator from '../../../molecules/CheckoutProgressIndicator';
 import CnCTemplate from '../../../../common/organism/CnCTemplate';
+import PickUpReviewSectionContainer from '../organisms/PickUpReviewSection';
 import style from '../styles/ReviewPage.style.native';
 import CONSTANTS from '../../../Checkout.constants';
 import { BodyCopy } from '../../../../../../common/atoms';
@@ -50,14 +51,7 @@ class ReviewPage extends React.PureComponent {
       orderHasShipping,
       orderHasPickUp,
     } = this.props;
-    const {
-      header,
-      backLinkBilling,
-      nextSubmitText,
-      pickupSectionTitle,
-      // shippingSectionTitle,
-      billingSectionTitle,
-    } = labels;
+    const { header, backLinkBilling, nextSubmitText, billingSectionTitle } = labels;
 
     return (
       <>
@@ -69,7 +63,13 @@ class ReviewPage extends React.PureComponent {
         <ScrollView>
           <Container>
             <CheckoutSectionTitleDisplay title={header} />
-            {!!orderHasPickUp && <TextSection>{pickupSectionTitle}</TextSection>}
+            {!!orderHasPickUp && (
+              <PickUpReviewSectionContainer
+                onEdit={() => {
+                  navigation.navigate(CONSTANTS.CHECKOUT_ROUTES_NAMES.CHECKOUT_PICKUP);
+                }}
+              />
+            )}
             {!!orderHasShipping && (
               <ShippingReviewSection
                 onEdit={() => {

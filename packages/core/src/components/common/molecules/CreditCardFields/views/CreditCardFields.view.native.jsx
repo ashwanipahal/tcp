@@ -80,6 +80,7 @@ export class CreditCardFields extends React.PureComponent<Props> {
             label={creditFieldLabels.creditCardNumber}
             name="cardNumber"
             id="cardNumber"
+            keyboardType="numeric"
             component={CreditCardNumber}
             dataLocator="payment-cardtextfield"
             cardTypeImgUrl={cardTypeImgUrl}
@@ -151,6 +152,7 @@ export class CreditCardFields extends React.PureComponent<Props> {
                 label={creditFieldLabels.cvvCode}
                 name="cvvCode"
                 id="cvvCode"
+                keyboardType="numeric"
                 type="text"
                 component={TextBox}
                 dataLocator="payment-cvv"
