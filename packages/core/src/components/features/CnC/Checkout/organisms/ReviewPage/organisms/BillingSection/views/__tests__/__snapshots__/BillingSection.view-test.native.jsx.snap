@@ -17,14 +17,12 @@ exports[`BillingSection should render correctly for empty state 1`] = `
       <Styled(Anchor)
         accessibilityLabel=""
         anchorVariation="primary"
-        asPath="/checkout/billing"
         colorName={null}
         customStyle={Object {}}
         fontSizeVariation="large"
         locator=""
         onPress={null}
         text=""
-        to="/checkout?section=billing"
         underline={true}
         visible={false}
       />
@@ -50,14 +48,12 @@ exports[`BillingSection should render correctly without address details 1`] = `
       <Styled(Anchor)
         accessibilityLabel=""
         anchorVariation="primary"
-        asPath="/checkout/billing"
         colorName={null}
         customStyle={Object {}}
         fontSizeVariation="large"
         locator=""
         onPress={null}
         text=""
-        to="/checkout?section=billing"
         underline={true}
         visible={false}
       />
@@ -148,14 +144,12 @@ exports[`BillingSection should render correctly without card & address details o
       <Styled(Anchor)
         accessibilityLabel=""
         anchorVariation="primary"
-        asPath="/checkout/billing"
         colorName={null}
         customStyle={Object {}}
         fontSizeVariation="large"
         locator=""
         onPress={null}
         text=""
-        to="/checkout?section=billing"
         underline={true}
         visible={false}
       />
@@ -207,14 +201,12 @@ exports[`BillingSection should render correctly without card & address details o
       <Styled(Anchor)
         accessibilityLabel=""
         anchorVariation="primary"
-        asPath="/checkout/billing"
         colorName={null}
         customStyle={Object {}}
         fontSizeVariation="large"
         locator=""
         onPress={null}
         text=""
-        to="/checkout?section=billing"
         underline={true}
         visible={false}
       />
@@ -279,14 +271,12 @@ exports[`BillingSection should render correctly without card details 1`] = `
       <Styled(Anchor)
         accessibilityLabel=""
         anchorVariation="primary"
-        asPath="/checkout/billing"
         colorName={null}
         customStyle={Object {}}
         fontSizeVariation="large"
         locator=""
         onPress={null}
         text=""
-        to="/checkout?section=billing"
         underline={true}
         visible={false}
       />

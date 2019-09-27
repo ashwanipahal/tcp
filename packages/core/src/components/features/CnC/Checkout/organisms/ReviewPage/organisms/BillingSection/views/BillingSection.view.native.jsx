@@ -4,7 +4,6 @@ import { Anchor, BodyCopy } from '@tcp/core/src/components/common/atoms';
 import Address from '@tcp/core/src/components/common/molecules/Address';
 import CardImage from '@tcp/core/src/components/common/molecules/CardImage';
 import AppliedGiftCards from '../../../molecules/AppliedGiftCards';
-import { CHECKOUT_ROUTES } from '../../../../../Checkout.constants';
 
 import {
   Heading,
@@ -28,7 +27,7 @@ const renderCardNumber = (card, labels) =>
  * @param {Object} props
  * @description Billing Section functional component
  */
-export const BillingSection = ({ card, address, appliedGiftCards, labels }) => {
+export const BillingSection = ({ card, address, appliedGiftCards, labels, onEdit }) => {
   return (
     <Fragment>
       <Heading>
@@ -42,7 +41,7 @@ export const BillingSection = ({ card, address, appliedGiftCards, labels }) => {
             fontSizeVariation="large"
             underline
             anchorVariation="primary"
-            {...CHECKOUT_ROUTES.billingPage}
+            onPress={onEdit}
             text={labels.lbl_review_billingEdit}
           />
         </EditLink>
@@ -104,6 +103,7 @@ BillingSection.propTypes = {
     lbl_review_appliedGiftCards: PropTypes.string,
     lbl_review_paymentMethodEndingIn: PropTypes.string,
   }),
+  onEdit: PropTypes.func.isRequired,
 };
 
 BillingSection.defaultProps = {

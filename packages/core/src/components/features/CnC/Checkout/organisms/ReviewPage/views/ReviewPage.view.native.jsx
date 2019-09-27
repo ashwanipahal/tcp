@@ -78,7 +78,11 @@ class ReviewPage extends React.PureComponent {
                 }}
               />
             )}
-            <BillingSection />
+            <BillingSection
+              onEdit={() => {
+                navigation.navigate(CONSTANTS.CHECKOUT_ROUTES_NAMES.CHECKOUT_BILLING);
+              }}
+            />
           </Container>
           <CnCTemplate
             navigation={navigation}
