@@ -8,7 +8,7 @@ import GiftWrappingDisplay from '../../GiftWrappingDisplay';
 import TitlePlusEditButton from '../../TitlePlusEditButton';
 import style from '../styles/ShippingReviewSection.style.native';
 
-const { ShippingReviewContainer, AddressSection, AddressTitle } = style;
+const { ShippingReviewContainer, AddressSection, AddressTitle, TitlePlusEditSection } = style;
 
 export class ShippingReviewSection extends React.PureComponent {
   render() {
@@ -27,14 +27,14 @@ export class ShippingReviewSection extends React.PureComponent {
     } = labels;
     return (
       <>
-        <View>
+        <TitlePlusEditSection>
           <TitlePlusEditButton
             title={title}
             editTitle={edit}
             onEdit={onEdit}
             dataLocator="shipping-section"
           />
-        </View>
+        </TitlePlusEditSection>
         <ShippingReviewContainer>
           <View>
             <AddressTitle>
@@ -48,7 +48,7 @@ export class ShippingReviewSection extends React.PureComponent {
               />
             </AddressTitle>
             <AddressSection>
-              <Address address={shippingAddress.address} />
+              <Address address={shippingAddress.address} regularName />
               <BodyCopy
                 fontSize="fs16"
                 dataLocator=""
