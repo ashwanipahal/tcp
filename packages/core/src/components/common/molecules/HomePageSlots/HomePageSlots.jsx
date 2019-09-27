@@ -1,24 +1,18 @@
 import React from 'react';
 import { PropTypes } from 'prop-types';
 
-const getSlotNum = slotName => parseInt(slotName.replace(/\D/g, ''), 10);
-
 const HomePageSlots = props => {
   const { slots = [], modules, ...others } = props;
 
-  return slots
-    .sort((a, b) => getSlotNum(a.name) - getSlotNum(b.name))
-    .map(slot => {
-      const Module = modules[slot.moduleName];
-      const { data: slotData, contentId, accessibility } = slot;
+  return slots.map(slot => {
+    const Module = modules[slot.moduleName];
+    const { data: slotData, contentId, accessibility } = slot;
 
-      return (
-        Module &&
-        slotData && (
-          <Module key={contentId} accessibility={accessibility} {...slotData} {...others} />
-        )
-      );
-    });
+    return (
+      Module &&
+      slotData && <Module key={contentId} accessibility={accessibility} {...slotData} {...others} />
+    );
+  });
 };
 
 HomePageSlots.propTypes = {
