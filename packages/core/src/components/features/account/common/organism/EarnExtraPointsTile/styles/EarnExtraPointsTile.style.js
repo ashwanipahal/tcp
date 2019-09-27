@@ -22,20 +22,18 @@ const styles = css`
     cursor: default;
   }
   .onAccountOverview {
-    margin-top: ${props => props.theme.spacing.ELEM_SPACING.XL};
-    @media ${props => props.theme.mediaQuery.medium} {
+    max-width: 285px;
+    margin-left: ${props => props.theme.spacing.ELEM_SPACING.MED};
+
+    @media ${props => props.theme.mediaQuery.large} {
+      max-width: 336px;
       margin-left: 0;
       margin-right: 0;
     }
-    margin-left: 8px;
-  }
-  .onAccountWrapper {
-    width: 300px;
-    @media ${props => props.theme.mediaQuery.large} {
-      max-width: 320px;
-    }
-    @media ${props => props.theme.mediaQuery.large} {
-      max-width: 308px;
+    @media ${props => props.theme.mediaQuery.mediumOnly} {
+      max-width: 318px;
+      margin-left: 0;
+      margin-right: 0;
     }
   }
 `;

@@ -7,6 +7,11 @@ import internalEndpoints from '../../../internalEndpoints';
 import EarnExtraPointsTileContainer from '../../EarnExtraPointsTile';
 import { getLabelValue } from '../../../../../../../utils';
 
+/**
+ *
+ * @function EarnExtraPointsOverview
+ * @description renders the Earn Extra Points component on Account Overview
+ */
 const EarnExtraPointsOverview = ({ labels }) => {
   return (
     <AccountOverviewTile

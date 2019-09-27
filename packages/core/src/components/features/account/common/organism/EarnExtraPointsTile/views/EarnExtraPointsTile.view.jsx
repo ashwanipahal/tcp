@@ -57,31 +57,29 @@ const EarnExtraPointsTile = ({ className, labels, waysToEarn, isAccountOverview 
         textAlign="center"
         className={isAccountOverview ? 'onAccountOverview' : 'earnExtraPointsWrapper'}
       >
-        <div className={isAccountOverview ? 'onAccountWrapper' : ''}>
-          <Carousel
-            options={carouselConfig}
-            carouselConfig={{
-              customArrowLeft: getIconPath('smallright'),
-              customArrowRight: getIconPath('smallright'),
-              arrow: 'small',
-              type: 'light',
-            }}
-            carouselTheme="dark"
-            className={className}
-          >
-            {waysToEarn &&
-              waysToEarn.map((item, index) => {
-                return (
-                  <DetailedEarnExtraPointsTile
-                    key={index.toString()}
-                    waysToEarnRow={item}
-                    onViewActivityDetails={onViewActivityDetails}
-                    labels={labels}
-                  />
-                );
-              })}
-          </Carousel>
-        </div>
+        <Carousel
+          options={carouselConfig}
+          carouselConfig={{
+            customArrowLeft: getIconPath('smallright'),
+            customArrowRight: getIconPath('smallright'),
+            arrow: 'small',
+            type: 'light',
+          }}
+          carouselTheme="dark"
+          className={className}
+        >
+          {waysToEarn &&
+            waysToEarn.map((item, index) => {
+              return (
+                <DetailedEarnExtraPointsTile
+                  key={index.toString()}
+                  waysToEarnRow={item}
+                  onViewActivityDetails={onViewActivityDetails}
+                  labels={labels}
+                />
+              );
+            })}
+        </Carousel>
       </BodyCopy>
     </div>
   );
