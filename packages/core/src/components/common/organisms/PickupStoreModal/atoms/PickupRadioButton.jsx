@@ -84,7 +84,7 @@ export const PickupRadioButton = props => {
     <LabeledRadioButton
       className={className}
       name={radioGroupName}
-      onChange={handleClick}
+      onChange={() => handleClick(isBossPickupButton)}
       checked={isSelected}
       disabled={false}
     >

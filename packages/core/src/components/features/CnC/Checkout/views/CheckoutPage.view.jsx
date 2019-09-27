@@ -9,6 +9,7 @@ import ReviewPage from '../organisms/ReviewPage';
 import CHECKOUT_STAGES from '../../../../../../../web/src/pages/App.constants';
 import VenmoBanner from '../../../../common/molecules/VenmoBanner';
 import checkoutSelectors from '../container/Checkout.selector';
+import Confirmation from '../../Confirmation';
 // import CheckoutProgressUtils from '../../../../../../../web/src/components/features/content/CheckoutProgressIndicator/utils/utils';
 
 class CheckoutPage extends React.PureComponent {
@@ -187,18 +188,22 @@ class CheckoutPage extends React.PureComponent {
             isVenmoPaymentInProgress={isVenmoPaymentInProgress}
           />
         )}
+        {currentSection.toLowerCase() === CHECKOUT_STAGES.CONFIRMATION && <Confirmation />}
       </div>
     );
   };
 
   render() {
-    const { isGuest } = this.props;
+    const { isGuest, router } = this.props;
+    const section = router.query.section || router.query.subSection;
+    const currentSection = section || CHECKOUT_STAGES.SHIPPING;
     return (
       <CnCTemplate
         leftSection={this.renderLeftSection}
-        marginTop
+        marginTop={currentSection.toLowerCase() !== CHECKOUT_STAGES.CONFIRMATION}
         isGuest={isGuest}
         isCheckoutView
+        isConfirmationPage={currentSection.toLowerCase() === CHECKOUT_STAGES.CONFIRMATION}
       />
     );
   }

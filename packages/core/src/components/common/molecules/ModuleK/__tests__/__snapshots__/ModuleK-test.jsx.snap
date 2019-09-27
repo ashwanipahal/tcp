@@ -622,11 +622,13 @@ exports[`ModuleK component renders correctly 1`] = `
             "nextArrow": <button
               className="slick-prev"
               data-locator="moduleK_right_arrow"
+              tabIndex="0"
               type="button"
             />,
             "prevArrow": <button
               className="slick-prev"
               data-locator="moduleK_left_arrow"
+              tabIndex="0"
               type="button"
             />,
             "responsive": Array [

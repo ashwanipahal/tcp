@@ -128,7 +128,7 @@ class CouponDetailModal extends React.PureComponent<Props> {
   };
 
   render() {
-    const { openState, onRequestClose } = this.props;
+    const { openState, onRequestClose, additionalClassNameModal } = this.props;
     return (
       <Modal
         isOpen={openState}
@@ -139,6 +139,7 @@ class CouponDetailModal extends React.PureComponent<Props> {
         minHeight="540px"
         fixedWidth
         closeIconDataLocator="coupondetailmodalcrossicon"
+        customWrapperClassName={additionalClassNameModal}
       >
         {this.renderModal()}
       </Modal>

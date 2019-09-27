@@ -125,9 +125,11 @@ class PickupStoreListItem extends React.Component {
     sameStore: PropTypes.bool.isRequired,
 
     /** boolean values to check BOPIS selection */
+    // eslint-disable-next-line react/no-unused-prop-types
     isBopisSelected: PropTypes.bool.isRequired,
 
     /** boolean values to check BOSS selection */
+    // eslint-disable-next-line react/no-unused-prop-types
     isBossSelected: PropTypes.bool.isRequired,
     /** store id that was selected */
     selectedStoreId: PropTypes.number.isRequired,
@@ -144,6 +146,10 @@ class PickupStoreListItem extends React.Component {
 
   constructor(props) {
     super(props);
+    this.state = {
+      isBossSelected: false,
+      isBopisSelected: false,
+    };
     this.handleStoreSelect = this.handleStoreSelect.bind(this);
     this.handlePickupRadioBtn = this.handlePickupRadioBtn.bind(this);
   }
@@ -178,7 +184,7 @@ class PickupStoreListItem extends React.Component {
    */
   handleStoreSelect() {
     // TODO - const {  isBoss = false } = e.target.something;
-    const isBoss = false;
+    const isBoss = this.isBossSelected;
     // Fetch isBoss from component instead of a new Arrow funct.
     const { onStoreSelect, store } = this.props;
     return onStoreSelect(store.basicInfo.id, isBoss);
@@ -188,15 +194,25 @@ class PickupStoreListItem extends React.Component {
    * @method handlePickupRadioBtn
    * @description this method sets the pickup mode for store
    */
-  handlePickupRadioBtn() {
+  handlePickupRadioBtn(isBossSelected) {
     // TODO - Code for toggle of Radio Button
-    this.isBossSelected = true;
+    this.isBossSelected = isBossSelected;
+    this.setState({
+      isBossSelected,
+      isBopisSelected: !isBossSelected,
+    });
   }
 
   displayPickupCTA(showBopisCTA, showBossCTA, buttonLabel) {
+    const { isBossSelected, isBopisSelected } = this.state;
     return showBopisCTA || showBossCTA ? (
       <div className="pickupCTAWrapper elem-mt-SM">
-        <Button buttonVariation="fixed-width" onClick={this.handleStoreSelect} fill="BLACK">
+        <Button
+          buttonVariation="fixed-width"
+          onClick={this.handleStoreSelect}
+          fill="BLACK"
+          disabled={!isBossSelected && !isBopisSelected}
+        >
           {buttonLabel}
         </Button>
       </div>
@@ -277,8 +293,6 @@ class PickupStoreListItem extends React.Component {
       storeBossInfo,
       isBossAvailable,
       sameStore,
-      isBopisSelected,
-      isBossSelected,
       addToCartError,
       selectedStoreId,
       isBopisCtaEnabled,
@@ -286,6 +300,8 @@ class PickupStoreListItem extends React.Component {
       buttonLabel,
       className,
     } = this.props;
+
+    const { isBopisSelected, isBossSelected } = this.state;
 
     const BopisCtaProps = {
       buttonLabel: PICKUP_CTA_LABELS.bopis,
