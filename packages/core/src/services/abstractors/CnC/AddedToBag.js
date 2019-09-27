@@ -50,7 +50,9 @@ export const addCartBopisItem = params =>
       orderItemId: res.body.orderItemId,
     }))
     .catch(res => {
-      throw res.error || res.body.error;
+      throw (res && res.error) ||
+        (res && res.body && res.body.error) ||
+        'Incorrect response structure';
     });
 
 export default {

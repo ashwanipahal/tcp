@@ -275,40 +275,6 @@ export const getCurrenciesMap = data => {
   );
 };
 
-export const getModifiedLanguageCode = id => {
-  switch (id) {
-    case 'en':
-      return 'en_US';
-    case 'es':
-      return 'es_ES';
-    case 'fr':
-      return 'fr_FR';
-    default:
-      return id;
-  }
-};
-
-/**
- * @method getTranslateDateInformation
- * @desc returns day, month and day of the respective date provided
- * @param {string} date date which is to be mutated
- * @param {upperCase} locale use for convert locate formate
- */
-export const getTranslateDateInformation = (
-  date,
-  language,
-  dayOption = { weekday: 'short' },
-  monthOption = { month: 'short' }
-) => {
-  const localeType = language ? getModifiedLanguageCode(language).replace('_', '-') : 'en';
-  const currentDate = date ? new Date(date) : new Date();
-  return {
-    day: new Intl.DateTimeFormat(localeType, dayOption).format(currentDate),
-    month: new Intl.DateTimeFormat(localeType, monthOption).format(currentDate),
-    date: currentDate.getDate(),
-  };
-};
-
 export const siteRedirect = (newCountry, oldCountry, newSiteId, oldSiteId) => {
   if ((newCountry && newCountry !== oldCountry) || (newSiteId && newSiteId !== oldSiteId)) {
     routerPush(window.location.href, ROUTE_PATH.home, null, newSiteId);
@@ -377,6 +343,7 @@ const getAPIInfoFromEnv = (apiSiteInfo, processEnv, siteId) => {
     CANDID_API_KEY: process.env.RWD_WEB_CANDID_API_KEY,
     CANDID_API_URL: process.env.RWD_WEB_CANDID_URL,
     googleApiKey: process.env.RWD_WEB_GOOGLE_MAPS_API_KEY,
+    ACQUISITION_ID: process.env.RWD_WEB_ACQUISITION_ID,
     raygunApiKey: processEnv.RWD_WEB_RAYGUN_API_KEY,
     channelId: API_CONFIG.channelIds.Desktop, // TODO - Make it dynamic for all 3 platforms
     borderFree: processEnv.BORDERS_FREE,
@@ -486,7 +453,6 @@ export default {
   scrollPage,
   getCountriesMap,
   getCurrenciesMap,
-  getModifiedLanguageCode,
   siteRedirect,
   languageRedirect,
   redirectToPdp,

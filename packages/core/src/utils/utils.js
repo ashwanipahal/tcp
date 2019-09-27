@@ -188,45 +188,25 @@ const GOOGLE_PLACE_PARTS = {
   postal_code: 'short_name',
 };
 
-const returngetAddress = (addressType, val, address) => {
-  const addressRef = { ...address };
-  switch (addressType) {
-    case 'street_number':
-      addressRef.street_number = val;
-      break;
-    case 'route':
-      addressRef.street_name = val;
-      break;
-    case 'locality':
-      addressRef.city = val;
-      break;
-    case 'sublocality_level_1':
-      addressRef.city = val;
-      break;
-    case 'administrative_area_level_1':
-      addressRef.state = val;
-      break;
-    case 'country':
-      addressRef.country = val;
-      break;
-    case 'postal_code':
-      addressRef.zip = val;
-      break;
-    default:
-      addressRef.zip = val;
-  }
-  return addressRef;
+const addressTypeMap = {
+  street_number: 'streetNumber',
+  route: 'streetName',
+  locality: 'city',
+  sublocality_level_1: 'city',
+  administrative_area_level_1: 'state',
+  country: 'country',
+  postal_code: 'zip',
 };
 
 export const getAddressFromPlace = (place, inputValue) => {
-  let address = {
+  const address = {
+    streetNumber: '',
+    streetName: '',
     street: '',
     city: '',
     state: '',
     country: '',
     zip: '',
-    steet_number: '',
-    street_name: '',
   };
   if (typeof place.address_components === 'undefined') {
     return address;
@@ -235,20 +215,20 @@ export const getAddressFromPlace = (place, inputValue) => {
     const addressType = place.address_components[i].types[0];
     if (GOOGLE_PLACE_PARTS[addressType]) {
       const val = place.address_components[i][GOOGLE_PLACE_PARTS[addressType]];
-      address = returngetAddress(addressType, val, address);
+      address[addressTypeMap[addressType]] = val;
     }
   }
-  if (!address.street_number) {
-    const regex = new RegExp(`^(.*)${address.street_name.split(' ', 1)[0]}`);
+  if (!address.streetNumber) {
+    const regex = RegExp(`^(.*)${address.streetName.split(' ', 1)[0]}`);
     const result = regex.exec(inputValue);
     const inputNum = Array.isArray(result) && result[1] && Number(result[1]);
 
-    if (!Number(inputNum) && parseInt(inputNum, 10) === inputNum) {
-      address.street_number = inputNum;
+    if (!isNaN(inputNum) && parseInt(inputNum, 10) === inputNum) {
+      address.streetNumber = inputNum;
     }
   }
 
-  address.street = `${address.street_number} ${address.street_name}`;
+  address.street = `${address.streetNumber} ${address.streetName}`.trim();
 
   return address;
 };
@@ -588,6 +568,40 @@ export const configureInternalNavigationFromCMSUrl = url => {
   return url;
 };
 
+export const getModifiedLanguageCode = id => {
+  switch (id) {
+    case 'en':
+      return 'en_US';
+    case 'es':
+      return 'es_ES';
+    case 'fr':
+      return 'fr_FR';
+    default:
+      return id;
+  }
+};
+
+/**
+ * @method getTranslateDateInformation
+ * @desc returns day, month and day of the respective date provided
+ * @param {string} date date which is to be mutated
+ * @param {upperCase} locale use for convert locate formate
+ */
+export const getTranslateDateInformation = (
+  date,
+  language,
+  dayOption = { weekday: 'short' },
+  monthOption = { month: 'short' }
+) => {
+  const localeType = language ? getModifiedLanguageCode(language).replace('_', '-') : 'en';
+  const currentDate = date ? new Date(date) : new Date();
+  return {
+    day: new Intl.DateTimeFormat(localeType, dayOption).format(currentDate),
+    month: new Intl.DateTimeFormat(localeType, monthOption).format(currentDate),
+    date: currentDate.getDate(),
+  };
+};
+
 export default {
   getPromotionalMessage,
   getIconPath,
@@ -616,4 +630,6 @@ export default {
   parseBoolean,
   getFormSKUValue,
   configureInternalNavigationFromCMSUrl,
+  getModifiedLanguageCode,
+  getTranslateDateInformation,
 };

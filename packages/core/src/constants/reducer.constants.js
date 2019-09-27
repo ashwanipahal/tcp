@@ -167,6 +167,9 @@ export const MY_FAVORITE_STORE_REDUCER_KEY = 'MyFavoriteStore';
 export const POINTS_CLAIM_REDUCER_KEY = 'PointsClaim';
 export const POINTS_CLAIM_ACTION_PATTERN = '@@PointsClaim-';
 
+export const PRODUCT_ADD_TO_BAG = 'ProductAddToBag';
+export const PRODUCT_SKU_SELECTION_FORM = 'PickupSkuSelectionForm';
+
 export const REDUCER_ACTION_MAPPING = {
   [APPLY_PLCC_REDUCER_KEY]: APPLY_PLCC_ACTION_PATTERN,
   [APICONFIG_REDUCER_KEY]: APICONFIG_ACTION_PATTERN,

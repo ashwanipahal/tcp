@@ -14,46 +14,14 @@ exports[`CustomImage component should renders CustomImage correctly 1`] = `
 `;
 
 exports[`CustomImage component should renders Zoom Image correctly 1`] = `
-<ImageViewer
-  clickDistance={10}
-  cropHeight={1334}
-  cropWidth={750}
-  doubleClickInterval={500}
-  enableCenterFocus={true}
-  enableDoubleClickZoom={true}
-  enableSwipeDown={false}
-  horizontalOuterRangeOffset={[Function]}
-  imageHeight={100}
-  imageWidth={100}
-  layoutChange={[Function]}
-  longPressTime={800}
-  maxOverflow={100}
-  maxScale={10}
-  minScale={0.6}
-  onClick={[Function]}
-  onDoubleClick={[Function]}
-  onDragLeft={[Function]}
-  onLongPress={[Function]}
-  onMove={[Function]}
-  onSwipeDown={[Function]}
-  panToMove={true}
-  pinchToZoom={true}
-  responderRelease={[Function]}
-  style={Object {}}
-  swipeDownThreshold={230}
->
-  <Styled(Image)
-    allowZoom={true}
-    enableCenterFocus={false}
-    height={100}
-    resizeMode="contain"
-    source={
-      Object {
-        "uri": null,
-      }
+<Styled(Image)
+  height={100}
+  resizeMode="contain"
+  source={
+    Object {
+      "uri": null,
     }
-    url={null}
-    width={100}
-  />
-</ImageViewer>
+  }
+  width={100}
+/>
 `;
