@@ -160,10 +160,11 @@ class PLCCForm extends React.PureComponent<Props> {
           <StyledBodyCopy
             text={getLabelValue(labels, 'lbl_PLCCForm_preScreenCodeText')}
             fontSize="fs16"
-            color="gray.700"
+            color="gray.900"
             paddingLeft="16px"
             mobilefontFamily="secondary"
             textAlign="center"
+            paddingTop={!isPreScreen ? '22px' : '1px'}
           />
 
           {!isPreScreen ? (
@@ -173,13 +174,15 @@ class PLCCForm extends React.PureComponent<Props> {
               underline
               text={getLabelValue(labels, 'lbl_PLCCForm_clickHere')}
               paddingRight="16px"
+              paddingTop={!isPreScreen ? '22px' : '1px'}
             />
           ) : (
             <StyledBodyCopy
               text={getLabelValue(labels, 'lbl_PLCCForm_enterHere')}
               fontSize="fs16"
-              color="gray.700"
+              color="gray.900"
               textAlign="center"
+              paddingTop={!isPreScreen ? '12px' : '1px'}
             />
           )}
         </PreScreenCodeContainer>
@@ -382,7 +385,7 @@ class PLCCForm extends React.PureComponent<Props> {
           paddingTop="10px"
           fontFamily="secondary"
           textAlign="left"
-          fontWeight="black"
+          fontWeight="extrabold"
         />
         <PersonalInformationContainerView>
           <DateContainerView>
@@ -462,7 +465,7 @@ class PLCCForm extends React.PureComponent<Props> {
           />
         </SSNContainer>
 
-        <MessageViewContainer height="430px">
+        <MessageViewContainer height="635px">
           <RichText source={{ html: plccData && plccData.account_classified_disclaimer }} />
         </MessageViewContainer>
 
@@ -471,14 +474,14 @@ class PLCCForm extends React.PureComponent<Props> {
         </MessageViewContainer>
 
         <StyledBodyCopy
-          text="Financial Terms of Your Account"
+          text={getLabelValue(labels, 'lbl_PLCCForm_financialTermsHeading')}
           fontSize="fs16"
           color="black"
           fontWeight="semibold"
           paddingLeft="16px"
           paddingRight="16px"
           paddingTop="34px"
-          mobilefontFamily="secondary"
+          fontFamily="secondary"
           textAlign="left"
         />
 
@@ -490,23 +493,26 @@ class PLCCForm extends React.PureComponent<Props> {
 
         <CheckBoxContainerView>
           <CheckBoxImage>
-            <Field
-              name="iAgree"
-              id="iAgree"
-              component={InputCheckbox}
-              enableSuccessCheck={false}
-              // onChange={() => this.handleChange()}
-            />
+            <Field id="iAgree" component={InputCheckbox} enableSuccessCheck={false} />
           </CheckBoxImage>
           <CheckMessageView>
             <StyledBodyCopy
               text={getLabelValue(labels, 'lbl_PLCCForm_iAgreeCheckboxText')}
-              fontSize="fs10"
+              fontSize="fs12"
               color="black"
-              mobilefontFamily="secondary"
+              fontFamily="secondary"
               textAlign="left"
-              lineHeight="15px"
             />
+            <FieldContainer>
+              <Field
+                label=""
+                component={TextBox}
+                title=""
+                type="hidden"
+                name="iAgree"
+                id="iAgree"
+              />
+            </FieldContainer>
           </CheckMessageView>
         </CheckBoxContainerView>
 
@@ -527,6 +533,7 @@ class PLCCForm extends React.PureComponent<Props> {
             text={getLabelValue(labels, 'lbl_PLCCForm_noThanks')}
             paddingTop="40px"
             onPress={toggleModal}
+            url=""
           />
         </ButtonWrapper>
       </ScrollViewContainer>
@@ -550,7 +557,6 @@ const validateMethod = createValidateMethod(
     'emailAddress',
     'iAgree',
     'phoneNumberWithAlt',
-    'altPhoneNumber',
   ])
 );
 

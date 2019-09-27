@@ -93,6 +93,7 @@ export const CheckBoxContainerView = styled.View`
 export const CheckBoxImage = styled.View`
   width: 40px;
   height: 40px;
+  padding-top: ${props => props.theme.spacing.ELEM_SPACING.XXS};
 `;
 
 export const CheckMessageView = styled.View`
@@ -109,10 +110,8 @@ export const ButtonWrapper = styled.View`
 export const RichTextContainer = styled.View`
   width: 100%;
   height: 210px;
-  background: ${props => props.theme.colorPalette.gray[500]};
   margin-left: ${props => props.theme.spacing.LAYOUT_SPACING.XXS};
   margin-right: ${props => props.theme.spacing.LAYOUT_SPACING.XXS};
-  margin-bottom: ${props => props.theme.spacing.LAYOUT_SPACING.XXS};
 `;
 
 export const StyledAnchor = styled(Anchor)`
