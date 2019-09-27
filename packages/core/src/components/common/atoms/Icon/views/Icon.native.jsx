@@ -94,8 +94,8 @@ const CustomIcon = props => {
 CustomIcon.propTypes = {
   iconFontName: PropTypes.string,
   name: PropTypes.string.isRequired,
-  size: PropTypes.number,
-  color: PropTypes.string,
+  size: PropTypes.string.isRequired,
+  color: PropTypes.string.isRequired,
   isDisabled: PropTypes.bool,
   onPress: PropTypes.func,
   isButton: PropTypes.bool,
@@ -108,8 +108,6 @@ CustomIcon.defaultProps = {
   isDisabled: false,
   onPress: noop,
   isButton: false,
-  color: '',
-  size: 0,
   dataLocator: '',
   margin: null,
 };

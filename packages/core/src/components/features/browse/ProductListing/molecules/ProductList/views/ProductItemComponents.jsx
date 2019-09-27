@@ -53,13 +53,13 @@ export function ProductTitle(values) {
 /* NOTE: As per DT-29548, isMobile condition is not valid. "Offer" price should be shown below "List" price (always) */
 /* NOTE: DT-27216, if offerPrice and listPrice are the same, just offerPrice should be shown (and will be black) */
 export function ProductPricesSection(props) {
-  const { currencySymbol, listPrice, offerPrice, merchantTag, dataLocator } = props;
+  const { currencySymbol, listPrice, offerPrice, merchantTag } = props;
 
   return (
     <div className="container-price">
       {offerPrice && (
         <BodyCopy
-          dataLocator={dataLocator || getLocator('global_Price_text')}
+          dataLocator={getLocator('global_Price_text')}
           color="red.500"
           fontWeight="extrabold"
           fontFamily="secondary"
@@ -137,14 +137,14 @@ export class ProductWishlistIcon extends ServerToClientRenderPatch {
 }
 
 export function BadgeItem(props) {
-  const { text, className, isShowBadges } = props;
+  const { text, className, isShowBadges, customFontWeight } = props;
 
   return (
     <div className={className}>
       <BodyCopy
         dataLocator={getLocator('global_productbadge_txt')}
         fontFamily="secondary"
-        fontWeight="semibold"
+        fontWeight={customFontWeight || 'semibold'}
         fontSize={['fs10', 'fs12', 'fs14']}
       >
         {isShowBadges && text}
@@ -158,7 +158,7 @@ export function PromotionalMessage(props) {
   return (
     <Dotdotdot clamp={2}>
       <BodyCopy
-        fontSize={['fs10', 'fs12', 'fs14']}
+        fontSize={['fs9', 'fs12', 'fs14']}
         fontWeight="extrabold"
         fontFamily="secondary"
         data-locator={getLocator('global_loyalty_text')}
@@ -167,7 +167,7 @@ export function PromotionalMessage(props) {
         {text && getFormattedLoyaltyText(text)[0]}
         {text && (
           <BodyCopy
-            fontSize={['fs10', 'fs12', 'fs14']}
+            fontSize={['fs9', 'fs12', 'fs14']}
             fontWeight="extrabold"
             fontFamily="secondary"
             component="span"
@@ -188,6 +188,7 @@ PromotionalMessage.propTypes = {
 BadgeItem.defaultProps = {
   text: '',
   className: '',
+  customFontWeight: '',
   isShowBadges: true,
 };
 
@@ -195,6 +196,7 @@ BadgeItem.propTypes = {
   text: PropTypes.string,
   className: PropTypes.string,
   isShowBadges: PropTypes.bool,
+  customFontWeight: PropTypes.string,
 };
 
 ProductPricesSection.defaultProps = {
@@ -202,7 +204,6 @@ ProductPricesSection.defaultProps = {
   listPrice: 0,
   offerPrice: 0,
   merchantTag: '',
-  dataLocator: '',
 };
 
 ProductPricesSection.propTypes = {
@@ -210,5 +211,4 @@ ProductPricesSection.propTypes = {
   listPrice: PropTypes.number,
   offerPrice: PropTypes.number,
   merchantTag: PropTypes.string,
-  dataLocator: PropTypes.string,
 };

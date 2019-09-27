@@ -1,6 +1,6 @@
 import React from 'react';
 import { shallow } from 'enzyme';
-import { StyledApplyNowModalVanilla } from '../ApplyNowModal.view';
+import { StyledApplyNowModalVanilla } from '../../molecules/ApplyNowModal/views/ApplyNowModal.view';
 
 describe('ApplyNowModalWrapper component', () => {
   const props = {

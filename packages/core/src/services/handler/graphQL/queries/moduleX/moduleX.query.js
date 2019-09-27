@@ -1,5 +1,5 @@
-const buildQuery = ({ cid }) => `
-moduleX: moduleById(id: "${cid}") {
+const buildQuery = ({ slot, contentId, cid }) => `
+${slot || `moduleX`}: moduleById(id: "${contentId || cid}") {
   contentId
   name
   type

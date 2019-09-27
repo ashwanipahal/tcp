@@ -52,6 +52,9 @@ export const importMoreGraphQLQueries = ({ query, resolve, reject }) => {
     case 'moduleX':
       resolve(require('../services/handler/graphQL/queries/moduleX'));
       break;
+    case 'moduleXComposite':
+      resolve(require('../services/handler/graphQL/queries/moduleXComposite'));
+      break;
     case 'moduleA':
       resolve(require('../services/handler/graphQL/queries/moduleA'));
       break;
@@ -550,7 +553,11 @@ export function setTestId(id) {
  * @param {String} color Color string to validate
  */
 export const validateColor = color => {
-  let colorSheet = { viewColor: { color: null } };
+  let colorSheet = {
+    viewColor: {
+      color: null,
+    },
+  };
   try {
     colorSheet = StyleSheet.create({
       // eslint-disable-next-line react-native/no-unused-styles

@@ -275,40 +275,6 @@ export const getCurrenciesMap = data => {
   );
 };
 
-export const getModifiedLanguageCode = id => {
-  switch (id) {
-    case 'en':
-      return 'en_US';
-    case 'es':
-      return 'es_ES';
-    case 'fr':
-      return 'fr_FR';
-    default:
-      return id;
-  }
-};
-
-/**
- * @method getTranslateDateInformation
- * @desc returns day, month and day of the respective date provided
- * @param {string} date date which is to be mutated
- * @param {upperCase} locale use for convert locate formate
- */
-export const getTranslateDateInformation = (
-  date,
-  language,
-  dayOption = { weekday: 'short' },
-  monthOption = { month: 'short' }
-) => {
-  const localeType = language ? getModifiedLanguageCode(language).replace('_', '-') : 'en';
-  const currentDate = date ? new Date(date) : new Date();
-  return {
-    day: new Intl.DateTimeFormat(localeType, dayOption).format(currentDate),
-    month: new Intl.DateTimeFormat(localeType, monthOption).format(currentDate),
-    date: currentDate.getDate(),
-  };
-};
-
 export const siteRedirect = (newCountry, oldCountry, newSiteId, oldSiteId) => {
   if ((newCountry && newCountry !== oldCountry) || (newSiteId && newSiteId !== oldSiteId)) {
     routerPush(window.location.href, ROUTE_PATH.home, null, newSiteId);
@@ -343,32 +309,6 @@ export const redirectToPdp = (productId, seoToken) => {
   };
 };
 
-/**
- * This function configure url for Next/Link using CMS defined url string
- */
-export const configureInternalNavigationFromCMSUrl = url => {
-  const plpRoute = `${ROUTE_PATH.plp.name}/`;
-  const pdpRoute = `${ROUTE_PATH.pdp.name}/`;
-  const searchRoute = `${ROUTE_PATH.search.name}/`;
-
-  if (url.includes(plpRoute)) {
-    const urlItems = url.split(plpRoute);
-    const queryParam = urlItems[0];
-    return `${ROUTE_PATH.plp.name}?${ROUTE_PATH.plp.param}=${queryParam}`;
-  }
-  if (url.includes(pdpRoute)) {
-    const urlItems = url.split(pdpRoute);
-    const queryParam = urlItems[0];
-    return `${ROUTE_PATH.pdp.name}?${ROUTE_PATH.pdp.param}=${queryParam}`;
-  }
-  if (url.includes(searchRoute)) {
-    const urlItems = url.split(searchRoute);
-    const queryParam = urlItems[0];
-    return `${ROUTE_PATH.search.name}?${ROUTE_PATH.search.param}=${queryParam}`;
-  }
-  return url;
-};
-
 /*
  *
  * @param {object} event the HTML element's element
@@ -393,6 +333,8 @@ const getAPIInfoFromEnv = (apiSiteInfo, processEnv, siteId) => {
     assetHost: processEnv.RWD_WEB_ASSETHOST || apiSiteInfo.assetHost,
     domain: `${apiEndpoint}/${processEnv.RWD_WEB_API_IDENTIFIER}/`,
     unbxd: processEnv.RWD_WEB_UNBXD_DOMAIN || apiSiteInfo.unbxd,
+    fbkey: processEnv.RWD_WEB_FACEBOOKKEY,
+    instakey: processEnv.RWD_WEB_INSTAGRAM,
     unboxKey: `${processEnv[`RWD_WEB_UNBXD_API_KEY_${country}_EN`]}/${
       processEnv[`RWD_WEB_UNBXD_SITE_KEY_${country}_EN`]
     }`,
@@ -401,6 +343,7 @@ const getAPIInfoFromEnv = (apiSiteInfo, processEnv, siteId) => {
     CANDID_API_KEY: process.env.RWD_WEB_CANDID_API_KEY,
     CANDID_API_URL: process.env.RWD_WEB_CANDID_URL,
     googleApiKey: process.env.RWD_WEB_GOOGLE_MAPS_API_KEY,
+    ACQUISITION_ID: process.env.RWD_WEB_ACQUISITION_ID,
     raygunApiKey: processEnv.RWD_WEB_RAYGUN_API_KEY,
     channelId: API_CONFIG.channelIds.Desktop, // TODO - Make it dynamic for all 3 platforms
     borderFree: processEnv.BORDERS_FREE,
@@ -510,7 +453,6 @@ export default {
   scrollPage,
   getCountriesMap,
   getCurrenciesMap,
-  getModifiedLanguageCode,
   siteRedirect,
   languageRedirect,
   redirectToPdp,

@@ -8,12 +8,14 @@ const mapStateToProps = state => {
   const { Header = {}, Layouts = {}, Modules = {} } = state;
   const headerPromo = Header.promoTextBannerCarousel;
   const homepageSlots = Layouts.homepage ? Layouts.homepage.slots : [];
+  const accessibility = state.Labels && state.Labels.global && state.Labels.global.accessibility;
 
   return {
     slots: homepageSlots
       .map(slot => {
         return {
           ...slot,
+          accessibility,
           data: Modules[slot.contentId],
         };
       })

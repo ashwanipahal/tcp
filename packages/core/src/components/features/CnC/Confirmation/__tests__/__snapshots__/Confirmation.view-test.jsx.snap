@@ -1,0 +1,65 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`ConfirmationViewVanilla should render correctly 1`] = `
+<div
+  className=""
+>
+  <Styled(Row)
+    className="placeholder sms-sign-up"
+    fullBleed={true}
+  >
+    <Styled(Col)
+      colSize={
+        Object {
+          "large": 12,
+          "medium": 8,
+          "small": 6,
+        }
+      }
+    >
+      <div>
+        SMS SIGN UP
+      </div>
+    </Styled(Col)>
+  </Styled(Row)>
+  <Styled(Row)
+    className="placeholder thank-you-component"
+    fullBleed={true}
+  >
+    <Styled(Col)
+      colSize={
+        Object {
+          "large": 12,
+          "medium": 8,
+          "small": 6,
+        }
+      }
+    >
+      <div>
+        THANK YOU COMPONENT
+      </div>
+    </Styled(Col)>
+  </Styled(Row)>
+  <Styled(Row)
+    className="placeholder loyalty-banner"
+    fullBleed={true}
+  >
+    <Styled(Col)
+      colSize={
+        Object {
+          "large": 12,
+          "medium": 8,
+          "small": 6,
+        }
+      }
+    >
+      <div>
+        LOYALTY BANNER
+      </div>
+    </Styled(Col)>
+  </Styled(Row)>
+  <Styled(CheckoutOrderInfo)
+    isConfirmationPage={true}
+  />
+</div>
+`;

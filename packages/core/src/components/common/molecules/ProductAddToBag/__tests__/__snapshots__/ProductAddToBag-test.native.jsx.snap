@@ -4,12 +4,15 @@ exports[`ProductAddToBagVanilla native should render correctly should match snap
 <View
   addToBagAction={null}
   colorList={Array []}
+  currentProduct={null}
   fitList={Array []}
   isErrorMessageDisplayed={false}
   plpLabels={Object {}}
   quantityList={Array []}
   selectedColor={null}
+  selectedColorProductId={123}
   selectedFit={null}
+  selectedQuantity={1}
   selectedSize={null}
   sizeList={Array []}
 >
@@ -173,38 +176,41 @@ exports[`ProductAddToBagVanilla native should render correctly should match snap
       text="undefined: "
       textDecoration={null}
     />
-    <Styled(DropDown)
-      bounces={false}
+    <NativeDropDown
+      androidPickerStyle={null}
+      bottomBorderOnly={true}
       data={Array []}
-      dropDownStyle={
-        Object {
-          "border": 1,
-          "height": 18,
-          "marginLeft": 8,
-          "width": 48,
-        }
-      }
-      itemStyle={
-        Object {
-          "color": "gray.900",
-          "height": 25,
-        }
-      }
-      onValueChange={[Function]}
-      selectedValue="1"
-      variation="secondary"
+      onValueChange={null}
+      selectedValue={1}
+      width={null}
     />
   </Styled(View)>
-  <Styled(WithTheme(CustomButton))
+  <Styled(CustomButton)
     accessibilityLabel="Add to Bag"
+    active={false}
     buttonVariation="variable-width"
     color="white"
+    customStyle={Object {}}
+    customTextStyle={null}
+    disableButton={false}
     fill="BLUE"
     fontFamily="secondary"
     fontSize="fs10"
     fontWeight="extrabold"
+    fullWidth=""
+    iconColor="gray.800"
+    iconName="chevron-down"
+    iconSize="fs12"
     locator="pdp_color_swatch"
+    margin="16px 0 0 0"
+    navigation={Object {}}
     onPress={null}
+    selected={false}
+    selectedIcon="chevron-up"
+    showIcon={false}
+    text=""
+    theme={Object {}}
+    url=""
   />
 </View>
 `;

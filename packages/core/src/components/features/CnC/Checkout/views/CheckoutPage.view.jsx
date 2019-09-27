@@ -9,6 +9,7 @@ import ReviewPage from '../organisms/ReviewPage';
 import CHECKOUT_STAGES from '../../../../../../../web/src/pages/App.constants';
 import VenmoBanner from '../../../../common/molecules/VenmoBanner';
 import checkoutSelectors from '../container/Checkout.selector';
+import Confirmation from '../../Confirmation';
 // import CheckoutProgressUtils from '../../../../../../../web/src/components/features/content/CheckoutProgressIndicator/utils/utils';
 
 class CheckoutPage extends React.PureComponent {
@@ -147,7 +148,8 @@ class CheckoutPage extends React.PureComponent {
             onPickupSubmit={onPickupSubmit}
             navigation={navigation}
             isVenmoPaymentInProgress={isVenmoPaymentInProgress}
-            setVenmoPickupState={setVenmoPickupState}
+            /* To handle use cases for venmo banner and next CTA on pickup page. If true then normal checkout flow otherwise venmo scenarios  */
+            isVenmoPickupDisplayed={this.isVenmoPickupDisplayed()}
           />
         )}
         {currentSection.toLowerCase() === CHECKOUT_STAGES.SHIPPING && (
@@ -165,7 +167,9 @@ class CheckoutPage extends React.PureComponent {
             addNewShippingAddressData={addNewShippingAddressData}
             labels={labels}
             isVenmoPaymentInProgress={isVenmoPaymentInProgress}
-            setVenmoShippingState={setVenmoShippingState}
+            setVenmoPickupState={setVenmoPickupState}
+            /* To handle use cases for venmo banner and next CTA on shipping page. If true, then normal checkout flow otherwise venmo scenarios  */
+            isVenmoShippingDisplayed={this.isVenmoShippingDisplayed()}
           />
         )}
         {currentSection.toLowerCase() === CHECKOUT_STAGES.BILLING && (
@@ -184,21 +188,27 @@ class CheckoutPage extends React.PureComponent {
             navigation={navigation}
             orderHasPickUp={orderHasPickUp}
             orderHasShipping={orderHasShipping}
+            setVenmoShippingState={setVenmoShippingState}
+            setVenmoPickupState={setVenmoPickupState}
             isVenmoPaymentInProgress={isVenmoPaymentInProgress}
           />
         )}
+        {currentSection.toLowerCase() === CHECKOUT_STAGES.CONFIRMATION && <Confirmation />}
       </div>
     );
   };
 
   render() {
-    const { isGuest } = this.props;
+    const { isGuest, router } = this.props;
+    const section = router.query.section || router.query.subSection;
+    const currentSection = section || CHECKOUT_STAGES.SHIPPING;
     return (
       <CnCTemplate
         leftSection={this.renderLeftSection}
-        marginTop
+        marginTop={currentSection.toLowerCase() !== CHECKOUT_STAGES.CONFIRMATION}
         isGuest={isGuest}
         isCheckoutView
+        isConfirmationPage={currentSection.toLowerCase() === CHECKOUT_STAGES.CONFIRMATION}
       />
     );
   }

@@ -116,6 +116,7 @@ export class PickUpReviewSection extends React.PureComponent {
                   fontFamily="secondary"
                   color="gray.900"
                   fontWeight="regular"
+                  dataLocator="pickup-section-heading-lbl"
                 >
                   {text}
                 </BodyCopy>

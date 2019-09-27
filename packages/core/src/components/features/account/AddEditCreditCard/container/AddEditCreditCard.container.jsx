@@ -1,8 +1,9 @@
 import React from 'react';
 import { connect } from 'react-redux';
 import PropTypes from 'prop-types';
-import Router from 'next/router'; //eslint-disable-line
 import { List } from 'immutable';
+import internalEndpoints from '@tcp/core/src/components/features/account/common/internalEndpoints';
+import { routerPush } from '@tcp/core/src/utils';
 import { getAddressList } from '../../AddressBook/container/AddressBook.actions';
 import {
   getCardType,
@@ -64,10 +65,10 @@ export class AddEditCreditCard extends React.PureComponent {
   }
 
   componentDidMount() {
-    const { addressList, getAddressListAction } = this.props;
-    if (addressList === null) {
-      getAddressListAction();
-    }
+    const { getAddressListAction } = this.props;
+    getAddressListAction({
+      ignoreCache: true,
+    });
     this.setInitialValues();
   }
 
@@ -100,7 +101,7 @@ export class AddEditCreditCard extends React.PureComponent {
   };
 
   backToPaymentClick = () => {
-    Router.push('/account?id=payment', '/us/account/payment');
+    routerPush(internalEndpoints.paymentPage.link, internalEndpoints.paymentPage.path);
   };
 
   getExpirationRequiredFlag = () => {
@@ -233,8 +234,8 @@ const mapStateToProps = (state, ownProps) => {
 
 const mapDispatchToProps = dispatch => {
   return {
-    getAddressListAction: () => {
-      dispatch(getAddressList());
+    getAddressListAction: payload => {
+      dispatch(getAddressList(payload));
     },
     addCreditCardAction: payload => {
       dispatch(addCreditCard(payload));

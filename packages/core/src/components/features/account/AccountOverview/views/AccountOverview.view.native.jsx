@@ -265,12 +265,8 @@ class AccountOverview extends PureComponent<Props> {
             </FavtWrapper>
             <UnderlineStyle />
 
-            <Panel
-              title={labels.lbl_overview_apply_today}
-              isVariationTypeLink
-              handleComponentChange={handleComponentChange}
-              isCardApply
-            />
+            <Panel title={labels.lbl_overview_apply_today} isVariationTypeLink isCardApply />
+
             <Panel title={labels.lbl_overview_manage_creditCard} isVariationTypeLink />
 
             <UnderlineStyle />

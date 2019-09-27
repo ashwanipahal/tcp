@@ -79,13 +79,13 @@ const getAddessLines = ({ address, customStyle }) => {
     ));
 };
 
-const getNameFromAddress = (address, customStyle, showDefaultText) => {
+const getNameFromAddress = (address, customStyle, showDefaultText, regularName) => {
   const name = `${address.firstName} ${address.lastName} ${showDefaultText ? '(Default)' : ''}`;
   return (
     <BodyCopy
       fontSize="fs16"
       mobilefontFamily={['secondary']}
-      fontWeight="semibold"
+      fontWeight={regularName ? 'regular' : 'semibold'}
       text={name}
       color="gray.900"
       {...customStyle}
@@ -108,10 +108,11 @@ const Address = ({
   customStyle,
   showName,
   showDefaultText,
+  regularName,
 }: Props) => {
   return address ? (
     <View>
-      {showName && getNameFromAddress(address, customStyle, showDefaultText)}
+      {showName && getNameFromAddress(address, customStyle, showDefaultText, regularName)}
       {address.addressLine
         ? getAddessLines({ address, dataLocatorPrefix, customStyle })
         : getAddressfromDiffLines({ address, dataLocatorPrefix }, { customStyle })}
@@ -153,6 +154,7 @@ Address.propTypes = {
   showName: PropTypes.bool,
   customStyle: PropTypes.shape({}),
   showDefaultText: PropTypes.bool,
+  regularName: PropTypes.bool,
 };
 
 Address.defaultProps = {
@@ -161,6 +163,7 @@ Address.defaultProps = {
   showName: true,
   customStyle: {},
   showDefaultText: false,
+  regularName: false,
 };
 
 export default Address;

@@ -11,6 +11,7 @@ const propTypes = {
   ModalContent: PropTypes.node.isRequired,
   color: PropTypes.shape({}),
   componentProps: PropTypes.shape({}).isRequired,
+  showCondensedHeader: PropTypes.bool.isRequired,
 };
 
 const defaultProps = {
@@ -45,12 +46,17 @@ class OverlayModal extends React.Component {
   }
 
   componentDidUpdate(prevProps) {
-    const { component: nextTargetComponent } = this.props;
-    const { component: prevTargetComponent } = prevProps;
+    const { component: nextTargetComponent, showCondensedHeader: nextCondensedState } = this.props;
+    const { component: prevTargetComponent, showCondensedHeader: prevCondensedState } = prevProps;
     if (nextTargetComponent !== prevTargetComponent) {
       scrollPage();
       return this.getCustomStyles({ styleModal: false });
     }
+
+    if (nextCondensedState !== prevCondensedState) {
+      this.getCustomStyles({ styleModal: true });
+    }
+
     return null;
   }
 
@@ -71,6 +77,7 @@ class OverlayModal extends React.Component {
    * @param {*} comp
    */
 
+  // eslint-disable-next-line complexity
   styleModalTriangle = ({ comp }) => {
     const compRectBoundingX = comp.getBoundingClientRect().x;
     const compWidth = comp.getBoundingClientRect().width / 2;
@@ -122,17 +129,32 @@ class OverlayModal extends React.Component {
   }
 
   render() {
-    const { className, ModalContent, color, componentProps, component } = this.props;
+    const {
+      className,
+      ModalContent,
+      color,
+      componentProps,
+      component,
+      showCondensedHeader,
+    } = this.props;
+
     return (
       <div className={className} id="modalWrapper" color={color} ref={this.setModalRef}>
-        <div id="dialogContent" className="dialog__content">
+        <div
+          id="dialogContent"
+          className={`dialog__content ${showCondensedHeader && 'condensed-overlay'}`}
+        >
           <button
             className={`modal__closeIcon hide-on-tablet hide-on-desktop ${
               component === 'accountDrawer' ? 'hide-on-mobile' : ''
             }`}
             onClick={this.closeModal}
           />
-          <div className="modal__triangle hide-on-mobile " id="modalTriangle" />
+          <div
+            className={`modal__triangle hide-on-mobile ${showCondensedHeader &&
+              'condensed-modal-triangle'}`}
+            id="modalTriangle"
+          />
           <div className="modal__bar hide-on-mobile" />
           <ModalContent className="modal__content" {...componentProps} />
         </div>

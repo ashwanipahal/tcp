@@ -3,7 +3,7 @@ import ReactDOM from 'react-dom';
 import { PropTypes } from 'prop-types';
 import config from './config';
 import ImageComp from '../../../atoms/Image';
-import { getIconPath } from '../../../../../utils';
+import { getIconPath, getAPIConfig } from '../../../../../utils';
 import BodyCopy from '../../../atoms/BodyCopy';
 
 let bodyEle;
@@ -64,8 +64,9 @@ const facebookSDK = () => {
 
   /* istanbul ignore next */
   window.fbAsyncInit = () => {
+    const apiConfig = getAPIConfig();
     window.FB.init({
-      appId: config.CLIENT_SECRET_KEY.facebook,
+      appId: apiConfig.fbkey,
       autoLogAppEvents: true,
       xfbml: true,
       version: 'v3.1',
