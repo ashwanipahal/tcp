@@ -1,6 +1,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import withStyles from '@tcp/core/src/components/common/hoc/withStyles';
+import { breakpoints } from '@tcp/core/styles/themes/TCP/mediaQuery';
 import {
   showOverlay,
   closeOverlay,
@@ -57,14 +58,22 @@ class Drawer extends React.Component {
   getDrawerStyle = () => {
     if (window) {
       const drawer = document.getElementById('tcp-nav-drawer');
-      const header = document.getElementById('condensedHeader');
+      const headerTopNav = document.getElementsByClassName('header-topnav')[0];
+      const middleNav = document.getElementsByClassName('header-middle-nav')[0];
+      const condensedHeader = document.getElementById('condensedHeader');
       const wHeight = window.innerHeight;
-      if (header && drawer) {
-        const height = header.offsetHeight;
-        drawer.style.height = `${wHeight - height}px`;
+      const {
+        values: { lg },
+      } = breakpoints;
+
+      if (window.innerWidth < lg && drawer) {
+        const headerHeight = condensedHeader
+          ? condensedHeader.offsetHeight
+          : headerTopNav.offsetHeight + middleNav.offsetHeight;
+        drawer.style.height = `${wHeight - headerHeight}px`;
         drawer.style.position = 'fixed';
         drawer.style.overflowY = 'scroll';
-        drawer.style.top = `${height}px`;
+        drawer.style.top = `${headerHeight}px`;
         disableBodyScroll();
       }
     }
