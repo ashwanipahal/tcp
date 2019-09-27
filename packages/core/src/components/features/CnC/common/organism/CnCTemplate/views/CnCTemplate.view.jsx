@@ -23,7 +23,11 @@ const getBonusPointsDaysSection = ({ isGuest, showAccordian }) => {
           showAccordian ? 'bonusPointsDaysWrapperAccordian' : 'bonusPointsDaysWrapper'
         } elem-mb-MED`}
       >
-        <BonusPointsDays showAccordian={showAccordian} enableApplyCta />
+        <BonusPointsDays
+          showAccordian={showAccordian}
+          enableApplyCta
+          additionalClassNameModal="bonus-modal-web"
+        />
       </div>
     )
   );
@@ -81,7 +85,10 @@ const CnCTemplate = ({
                 {getBagActions({ BagActions })}
                 {getBonusPointsDaysSection({ isGuest, showAccordian })}
                 <AirmilesBanner />
-                <CouponAndPromos showAccordian={showAccordian} />
+                <CouponAndPromos
+                  showAccordian={showAccordian}
+                  additionalClassNameModal="coupon-modal-web"
+                />
               </>
             )}
           </Col>

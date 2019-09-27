@@ -304,6 +304,7 @@ exports[`AddressForm component should render correctly with default address 1`] 
   background-color: ",
                 [Function],
                 ";
+  width: 100%;
 ",
                 ";
   ",
@@ -791,6 +792,7 @@ exports[`AddressForm component should render correctly with default address 1`] 
   background-color: ",
               [Function],
               ";
+  width: 100%;
 ",
               ";
   ",
@@ -903,6 +905,7 @@ exports[`AddressForm component should render correctly with default address 1`] 
       buttonVariation="variable-width"
       color="white"
       customStyle={Object {}}
+      customTextStyle={null}
       disableButton={false}
       fill="BLUE"
       fullWidth=""
@@ -927,6 +930,7 @@ exports[`AddressForm component should render correctly with default address 1`] 
       buttonVariation="variable-width"
       color=""
       customStyle={Object {}}
+      customTextStyle={null}
       disableButton={false}
       fill="WHITE"
       fullWidth=""
@@ -1251,6 +1255,7 @@ exports[`AddressForm component should renders correctly 1`] = `
   background-color: ",
                 [Function],
                 ";
+  width: 100%;
 ",
                 ";
   ",
@@ -1738,6 +1743,7 @@ exports[`AddressForm component should renders correctly 1`] = `
   background-color: ",
               [Function],
               ";
+  width: 100%;
 ",
               ";
   ",
@@ -1848,6 +1854,7 @@ exports[`AddressForm component should renders correctly 1`] = `
       buttonVariation="variable-width"
       color="white"
       customStyle={Object {}}
+      customTextStyle={null}
       disableButton={false}
       fill="BLUE"
       fullWidth=""
@@ -1872,6 +1879,7 @@ exports[`AddressForm component should renders correctly 1`] = `
       buttonVariation="variable-width"
       color=""
       customStyle={Object {}}
+      customTextStyle={null}
       disableButton={false}
       fill="WHITE"
       fullWidth=""

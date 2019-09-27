@@ -20,15 +20,10 @@ import {
   ActiveBagHeaderText,
   ActiveBagHeaderView,
   InActiveBagHeaderView,
-  SuccessTickImage,
-  SuccessMessageContainer,
 } from '../styles/BagPage.style.native';
 import BonusPointsDays from '../../../../common/organisms/BonusPointsDays';
 import InitialPropsHOC from '../../../../common/hoc/InitialPropsHOC/InitialPropsHOC.native';
 import BAGPAGE_CONSTANTS from '../BagPage.constants';
-import BodyCopy from '../../../../common/atoms/BodyCopy';
-
-const tickIcon = require('../../../../../assets/circle-check-fill.png');
 
 class BagPage extends React.Component {
   constructor(props) {
@@ -49,12 +44,20 @@ class BagPage extends React.Component {
   }
 
   componentDidUpdate() {
-    const { toastMessage, isCartItemSFL, labels, isSflItemRemoved } = this.props;
-    const { sflSuccess, sflDeleteSuccess } = labels;
+    const {
+      toastMessage,
+      isCartItemSFL,
+      labels,
+      isSflItemRemoved,
+      isCartItemsUpdating: { isDeleting },
+    } = this.props;
+    const { sflSuccess, sflDeleteSuccess, itemDeleted } = labels;
     if (isCartItemSFL) {
       toastMessage(sflSuccess);
     } else if (isSflItemRemoved) {
       toastMessage(sflDeleteSuccess);
+    } else if (isDeleting) {
+      toastMessage(itemDeleted);
     }
   }
 
@@ -95,31 +98,6 @@ class BagPage extends React.Component {
       </HeadingTextStyle>
     );
   }
-
-  /**
-   *@function //responsible for rendering of success message with tick icon
-   * @memberof BagPage
-   */
-  renderSuccessMessage = () => {
-    const {
-      isCartItemsUpdating: { isDeleting },
-      labels,
-    } = this.props;
-    return (
-      isDeleting && (
-        <SuccessMessageContainer>
-          <SuccessTickImage source={tickIcon} />
-          <BodyCopy
-            component="span"
-            fontSize="fs12"
-            mobilefontFamily={['secondary']}
-            fontWeight="extrabold"
-            text={labels.itemDeleted}
-          />
-        </SuccessMessageContainer>
-      )
-    );
-  };
 
   renderOrderLedgerContainer = isNoNEmptyBag => {
     if (isNoNEmptyBag) {
@@ -169,7 +147,6 @@ class BagPage extends React.Component {
               )}
             </SflHeadingViewStyle>
           </BagHeaderRow>
-          {this.renderSuccessMessage()}
           <MainSection>
             {isBagStage && <ProductTileWrapper bagLabels={labels} />}
             {isSFLStage && (

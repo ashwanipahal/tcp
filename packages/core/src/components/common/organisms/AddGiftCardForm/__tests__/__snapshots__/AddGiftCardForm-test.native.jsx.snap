@@ -113,6 +113,7 @@ exports[`Add gift card form component render error message 1`] = `
         }
       }
       dataLocator="gift-card-cardnaumberfield"
+      keyboardType="numeric"
       label="lbl_payment_giftCardNoPlaceholder"
       name="giftCardNumber"
       onChange={[Function]}
@@ -163,6 +164,7 @@ exports[`Add gift card form component render error message 1`] = `
         }
       }
       dataLocator="gift-card-pinnumberfield"
+      keyboardType="numeric"
       label="lbl_payment_giftCardPinPlaceholder"
       name="cardPin"
       onChange={[Function]}
@@ -263,6 +265,7 @@ exports[`Add gift card form component render error message 1`] = `
         buttonVariation="variable-width"
         color="white"
         customStyle={Object {}}
+        customTextStyle={null}
         data-locator="gift-card-addcardbtn"
         disableButton={false}
         fill="BLUE"
@@ -287,6 +290,7 @@ exports[`Add gift card form component render error message 1`] = `
         buttonVariation="variable-width"
         color="black"
         customStyle={Object {}}
+        customTextStyle={null}
         data-locator="gift-card-cancelbtn"
         disableButton={false}
         fill=""
@@ -390,6 +394,7 @@ exports[`Add gift card form component should render component correctly 1`] = `
         }
       }
       dataLocator="gift-card-cardnaumberfield"
+      keyboardType="numeric"
       label="lbl_payment_giftCardNoPlaceholder"
       name="giftCardNumber"
       onChange={[Function]}
@@ -440,6 +445,7 @@ exports[`Add gift card form component should render component correctly 1`] = `
         }
       }
       dataLocator="gift-card-pinnumberfield"
+      keyboardType="numeric"
       label="lbl_payment_giftCardPinPlaceholder"
       name="cardPin"
       onChange={[Function]}
@@ -540,6 +546,7 @@ exports[`Add gift card form component should render component correctly 1`] = `
         buttonVariation="variable-width"
         color="white"
         customStyle={Object {}}
+        customTextStyle={null}
         data-locator="gift-card-addcardbtn"
         disableButton={false}
         fill="BLUE"
@@ -564,6 +571,7 @@ exports[`Add gift card form component should render component correctly 1`] = `
         buttonVariation="variable-width"
         color="black"
         customStyle={Object {}}
+        customTextStyle={null}
         data-locator="gift-card-cancelbtn"
         disableButton={false}
         fill=""

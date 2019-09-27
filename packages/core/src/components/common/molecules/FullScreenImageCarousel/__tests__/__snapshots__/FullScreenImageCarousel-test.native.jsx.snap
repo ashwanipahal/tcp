@@ -1,0 +1,97 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`FullScreenImageCarousel should render correctly should match snapshot 1`] = `
+<ModalNative
+  closeIconDataLocator=""
+  closeIconLeftAligned={false}
+  headerStyle={
+    Object {
+      "alignItems": "flex-end",
+      "width": "100%",
+    }
+  }
+  horizontalBar={false}
+  isOpen={true}
+  isOverlay={true}
+  onRequestClose={[Function]}
+  overlayClassName="TCPModal__Overlay"
+>
+  <Styled(View)
+    height={1334}
+  >
+    <ImageViewer
+      backgroundColor="white"
+      doubleClickInterval={500}
+      enableImageZoom={true}
+      enablePreload={true}
+      enableSwipeDown={false}
+      flipThreshold={80}
+      footerContainerStyle={Object {}}
+      imageUrls={
+        Array [
+          Object {
+            "height": 667,
+            "props": Object {
+              "accessibilityLabel": "product image 1",
+              "accessibilityRole": "image",
+              "accessible": true,
+            },
+            "url": "//",
+            "width": 726,
+          },
+        ]
+      }
+      index={0}
+      loadingRender={[Function]}
+      maxOverflow={300}
+      menuContext={
+        Object {
+          "cancel": "cancel",
+          "saveToLocal": "save to the album",
+        }
+      }
+      onCancel={[Function]}
+      onChange={[Function]}
+      onClick={[Function]}
+      onDoubleClick={[Function]}
+      onLongPress={[Function]}
+      onMove={[Function]}
+      onSave={[Function]}
+      onSaveToCamera={[Function]}
+      onShowModal={[Function]}
+      onSwipeDown={[Function]}
+      pageAnimateTime={100}
+      renderArrowLeft={[Function]}
+      renderArrowRight={[Function]}
+      renderFooter={[Function]}
+      renderHeader={[Function]}
+      renderImage={[Function]}
+      renderIndicator={[Function]}
+      saveToLocalByLongPress={false}
+      show={false}
+      style={Object {}}
+    />
+    <Styled(View)>
+      <Styled(PaginationDots)
+        backgroundColor="#575757"
+        borderColor="#ffffff"
+        borderRadius={4}
+        borderWidth={1}
+        dotLeftMargin={2}
+        dotRightMargin={2}
+        marginTop={0}
+        numberOfDots={1}
+        onPress={[Function]}
+        selectedBackgroundColor="#ffffff"
+        selectedBorderColor="#575757"
+        selectedBorderRadius={6}
+        selectedBorderWidth={2}
+        selectedIndex={0}
+        selectedSize={10}
+        size={8}
+        theme={Object {}}
+      />
+    </Styled(View)>
+  </Styled(View)>
+</ModalNative>
+`;

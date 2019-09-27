@@ -59,6 +59,7 @@ exports[`Extra Points Details Modal for native should render correctly native co
       buttonVariation="variable-width"
       color="white"
       customStyle={Object {}}
+      customTextStyle={null}
       disableButton={false}
       fill="BLUE"
       fullWidth=""
