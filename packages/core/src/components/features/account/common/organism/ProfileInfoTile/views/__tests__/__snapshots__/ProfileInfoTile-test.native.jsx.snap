@@ -145,6 +145,7 @@ exports[`ProfileInfoTile component should render correctly 1`] = `
         }
       }
       customStyle={Object {}}
+      regularName={false}
       showCountry={false}
       showDefaultText={false}
       showName={false}
