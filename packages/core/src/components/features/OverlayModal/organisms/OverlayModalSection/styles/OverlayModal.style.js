@@ -45,7 +45,7 @@ const StyledModal = css`
       width: 374px;
     }
     @media ${props => props.theme.mediaQuery.large} {
-      top: 71px;
+      top: 70px;
     }
   }
   .modal__bar {
