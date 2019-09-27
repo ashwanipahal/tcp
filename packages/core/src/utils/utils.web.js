@@ -343,32 +343,6 @@ export const redirectToPdp = (productId, seoToken) => {
   };
 };
 
-/**
- * This function configure url for Next/Link using CMS defined url string
- */
-export const configureInternalNavigationFromCMSUrl = url => {
-  const plpRoute = `${ROUTE_PATH.plp.name}/`;
-  const pdpRoute = `${ROUTE_PATH.pdp.name}/`;
-  const searchRoute = `${ROUTE_PATH.search.name}/`;
-
-  if (url.includes(plpRoute)) {
-    const urlItems = url.split(plpRoute);
-    const queryParam = urlItems[0];
-    return `${ROUTE_PATH.plp.name}?${ROUTE_PATH.plp.param}=${queryParam}`;
-  }
-  if (url.includes(pdpRoute)) {
-    const urlItems = url.split(pdpRoute);
-    const queryParam = urlItems[0];
-    return `${ROUTE_PATH.pdp.name}?${ROUTE_PATH.pdp.param}=${queryParam}`;
-  }
-  if (url.includes(searchRoute)) {
-    const urlItems = url.split(searchRoute);
-    const queryParam = urlItems[0];
-    return `${ROUTE_PATH.search.name}?${ROUTE_PATH.search.param}=${queryParam}`;
-  }
-  return url;
-};
-
 /*
  *
  * @param {object} event the HTML element's element

@@ -25,7 +25,6 @@ export {
   getAsPathWithSlug,
   getMappedPageHref,
   handleGenericKeyDown,
-  configureInternalNavigationFromCMSUrl,
   isBopisProduct,
   isBossProduct,
   viewport,
@@ -65,4 +64,5 @@ export {
   formatPhone,
   parseStoreHours,
   parseBoolean,
+  configureInternalNavigationFromCMSUrl,
 } from './utils';
