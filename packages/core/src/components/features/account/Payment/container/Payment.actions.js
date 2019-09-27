@@ -25,6 +25,11 @@ export const deleteCard = payload => ({
   payload,
 });
 
+export const clearCardBalance = payload => ({
+  type: PAYMENT_CONSTANTS.CLEAR_CARD_BALANCE,
+  payload,
+});
+
 export const updateCardListonDelete = payload => ({
   type: PAYMENT_CONSTANTS.UPDATE_CARD_LIST_ON_DELETE,
   payload,

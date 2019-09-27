@@ -35,6 +35,10 @@ describe('ConfirmationReducer', () => {
     venmoPaymentConfirmationDisplayed: false,
   });
 
+  it('should return initialState', () => {
+    expect(ConfirmationReducer(initialState, { type: 'abc' })).toEqual(initialState);
+  });
+
   it('should set Order confirmation data', () => {
     const orderConfirmation = fromJS({
       currencyCode: 'USD',
