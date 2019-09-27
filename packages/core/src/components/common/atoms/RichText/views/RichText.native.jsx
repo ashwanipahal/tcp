@@ -1,6 +1,6 @@
 // @flow
 import React from 'react';
-import { WebView } from 'react-native';
+import { WebView } from 'react-native-webview';
 
 /**
  * @param {object} props : Props for RichText

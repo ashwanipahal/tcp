@@ -7,7 +7,9 @@ exports[`Tooltip component should display ReactTooltip 1`] = `
   <View
     accessibilityRole="link"
     accessible={true}
+    focusable={true}
     isTVSelectable={true}
+    onClick={[Function]}
     onResponderGrant={[Function]}
     onResponderMove={[Function]}
     onResponderRelease={[Function]}
@@ -36,7 +38,9 @@ exports[`Tooltip component should display ReactTooltip 1`] = `
     <View
       accessibilityRole="link"
       accessible={true}
+      focusable={true}
       isTVSelectable={true}
+      onClick={[Function]}
       onResponderGrant={[Function]}
       onResponderMove={[Function]}
       onResponderRelease={[Function]}
@@ -128,7 +132,9 @@ exports[`Tooltip component should render without issues 1`] = `
   <View
     accessibilityRole="link"
     accessible={true}
+    focusable={true}
     isTVSelectable={true}
+    onClick={[Function]}
     onResponderGrant={[Function]}
     onResponderMove={[Function]}
     onResponderRelease={[Function]}
@@ -157,7 +163,9 @@ exports[`Tooltip component should render without issues 1`] = `
     <View
       accessibilityRole="link"
       accessible={true}
+      focusable={true}
       isTVSelectable={true}
+      onClick={[Function]}
       onResponderGrant={[Function]}
       onResponderMove={[Function]}
       onResponderRelease={[Function]}

@@ -17,7 +17,6 @@ jest.setMock('@react-native-community/async-storage', AsyncStorage);
 
 // Mock Timers for Animation
 jest.useFakeTimers();
-jest.mock('LayoutAnimation');
 
 jest.mock('react-native-cookies', () => ({
   addEventListener: jest.fn(),

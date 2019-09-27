@@ -2,6 +2,7 @@
 
 exports[`RichText should render correctly 1`] = `
 <WebView
+  cacheEnabled={true}
   domStorageEnabled={false}
   javaScriptEnabled={false}
   originWhitelist={
@@ -16,5 +17,6 @@ exports[`RichText should render correctly 1`] = `
     }
   }
   thirdPartyCookiesEnabled={false}
+  useSharedProcessPool={true}
 />
 `;
