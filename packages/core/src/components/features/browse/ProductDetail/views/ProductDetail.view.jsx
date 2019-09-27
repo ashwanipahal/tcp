@@ -11,6 +11,7 @@ import FixedBreadCrumbs from '../../ProductListing/molecules/FixedBreadCrumbs/vi
 import ProductAddToBagContainer from '../../../../common/molecules/ProductAddToBag';
 import ProductPickupContainer from '../../../../common/organisms/ProductPickup';
 import ProductImagesWrapper from '../molecules/ProductImagesWrapper/views/ProductImagesWrapper.view';
+import AddedToBagContainer from '../../../CnC/AddedToBag';
 import {
   getImagesToDisplay,
   getMapSliceForColorProductId,
@@ -146,6 +147,7 @@ const ProductDetailView = ({
         </Col>
       </Row>
       <PickupStoreModal />
+      <AddedToBagContainer />
     </div>
   );
 };

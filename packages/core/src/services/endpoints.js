@@ -22,6 +22,14 @@ const endpoints = {
     JSONP: true,
     reqTimeout: 2000,
   },
+  addSmsSignup: {
+    method: 'post',
+    URI: 'v2/vibes/smsSignUp',
+  },
+  addEmailSignup: {
+    method: 'post',
+    URI: 'v2/store/addSignUpEmail',
+  },
   getOrderDetails: {
     method: API_METHODS.GET,
     URI: 'v2/checkout/getOrderDetails',

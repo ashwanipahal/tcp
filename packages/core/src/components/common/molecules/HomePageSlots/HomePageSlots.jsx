@@ -8,7 +8,14 @@ const HomePageSlots = props => {
     .sort((a, b) => (b.name > a.name ? -1 : 1))
     .map(slot => {
       const Module = modules[slot.moduleName];
-      return Module && slot.data && <Module key={slot.contentId} {...slot.data} {...others} />;
+      const { data: slotData, contentId, accessibility } = slot;
+
+      return (
+        Module &&
+        slotData && (
+          <Module key={contentId} accessibility={accessibility} {...slotData} {...others} />
+        )
+      );
     });
 };
 
