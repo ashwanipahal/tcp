@@ -58,7 +58,7 @@ class NavBar extends React.PureComponent<Props> {
     this.state = { animateCompleteLogo: false };
   }
 
-  componentWillReceiveProps(nextProps) {
+  UNSAFE_componentWillReceiveProps(nextProps) {
     const { appType: prevAppType } = this.props;
     const { appType } = nextProps;
 
