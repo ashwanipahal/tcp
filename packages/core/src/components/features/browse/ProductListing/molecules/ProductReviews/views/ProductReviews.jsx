@@ -43,9 +43,7 @@ class ProductReviews extends React.Component {
   }
 
   componentDidMount() {
-    // TODO remove hardcode url
-    const bazaarvoiceApiUrl =
-      'https://display.ugc.bazaarvoice.com/static/ChildrensPlace/en_US/bvapi.js';
+    const { bazaarvoiceApiUrl } = this.props;
     return requireUrlScript(bazaarvoiceApiUrl).then(() => {
       this.setState({
         isLoading: false,

@@ -11,7 +11,7 @@ export const getPersonalDataState = state => {
 
 export const getUserLoggedInState = createSelector(
   getPersonalDataState,
-  state => state && !state.get('isGuest')
+  state => state && state.get('isGuest')
 );
 
 export const isMprUser = createSelector(
