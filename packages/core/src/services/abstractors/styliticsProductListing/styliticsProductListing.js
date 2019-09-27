@@ -41,16 +41,9 @@ const Abstractor = {
       const { image_url: imageUrl, large_image_url: largeImageUrl, id, items: subItems } = item;
 
       const items = subItems.map(subItem => {
-        const {
-          /* eslint-disable-next-line */
-          large_image_url: largeImageUrl,
-          small_image_url: smallImageUrl,
-          name,
-          remote_id: remoteId,
-        } = subItem;
+        const { small_image_url: smallImageUrl, name, remote_id: remoteId } = subItem;
 
         return {
-          largeImageUrl,
           smallImageUrl,
           name,
           remoteId,
