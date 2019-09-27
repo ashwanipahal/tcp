@@ -9,6 +9,9 @@ import {
 } from './StoreLanding.actions';
 import StoreLandingView from './views/StoreLanding';
 import { getCurrentCountry, getPageLabels } from './StoreLanding.selectors';
+import constants from './StoreLanding.constants';
+
+const { INITIAL_STORE_LIMIT } = constants;
 
 export class StoreLanding extends PureComponent {
   componentDidMount() {
@@ -17,9 +20,14 @@ export class StoreLanding extends PureComponent {
 
   getFavoriteStoreInititator = () => {
     if (navigator.geolocation) {
+      const { loadStoresByCoordinates } = this;
       navigator.geolocation.getCurrentPosition(
         pos => {
           this.initiateGetFavoriteStoreRequest(pos.coords.latitude, pos.coords.longitude);
+          loadStoresByCoordinates(
+            Promise.resolve({ lat: pos.coords.latitude, lng: pos.coords.longitude }),
+            INITIAL_STORE_LIMIT
+          );
         },
         () => {
           this.initiateGetFavoriteStoreRequest();
@@ -86,8 +94,8 @@ const mapDispatchToProps = dispatch => ({
 const mapStateToProps = state => ({
   selectedCountry: getCurrentCountry(state),
   labels: getPageLabels(state),
-  suggestedStoreList: state.StoreLocatorReducer.get('suggestedStores'),
-  favoriteStore: state.User.get('defaultStore'),
+  suggestedStoreList: state.StoreLocatorReducer && state.StoreLocatorReducer.get('suggestedStores'),
+  favoriteStore: state.User && state.User.get('defaultStore'),
 });
 
 export default connect(

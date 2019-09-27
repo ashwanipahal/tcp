@@ -174,6 +174,7 @@ exports[`StoreSearch Container should render StoreLanding Correctly 1`] = `
             fetchStoresByLatLng={[MockFunction]}
             isFavorite={true}
             labels={Object {}}
+            openStoreDetails={[Function]}
             store={
               Object {
                 "basicInfo": Object {
@@ -940,6 +941,7 @@ exports[`StoreSearch Container should render StoreLanding Correctly with map 1`]
             fetchStoresByLatLng={[MockFunction]}
             isFavorite={true}
             labels={Object {}}
+            openStoreDetails={[Function]}
             store={
               Object {
                 "basicInfo": Object {
