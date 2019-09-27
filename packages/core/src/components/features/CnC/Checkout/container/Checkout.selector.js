@@ -767,7 +767,9 @@ const getIsVenmoEnabled = state => {
 };
 
 const getCurrentLanguage = state => {
-  return state.CountrySelector.get('language') || constants.DEFAULT_LANGUAGE;
+  return (
+    (state.CountrySelector && state.CountrySelector.get('language')) || constants.DEFAULT_LANGUAGE
+  );
 };
 
 const getReviewPageLabels = state =>

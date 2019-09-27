@@ -103,13 +103,11 @@ export function* loadPersonalizedCoupons(
   /* istanbul ignore else */
   if (orderResponse) {
     // When brierley fails, backend returns -1 in these fields
-    /* istanbul ignore else */
     if (orderResponse.pointsToNextReward === -1) {
       brierelyPointsInfo.pointsToNextReward = 0;
     } else {
       brierelyPointsInfo.pointsToNextReward = orderResponse.pointsToNextReward;
     }
-    /* istanbul ignore else */
     if (orderResponse.userPoints === -1) {
       brierelyPointsInfo.estimatedRewards = null;
     } else {
@@ -141,9 +139,7 @@ export function* submitOrderProcessing(orderId, smsOrderInfo, currentLanguage) {
   // };
   // }
   const res = yield call(submitOrder, orderId, smsOrderInfo, currentLanguage, venmoPayloadData);
-
   yield call(loadPersonalizedCoupons, res, orderId);
-  // yield put(setCouponList(res));
   yield put(getSetOrderConfirmationActn(res));
   const email = res.userDetails ? res.userDetails.emailAddress : res.shipping.emailAddress;
   const isCaSite = yield call(isCanada);
@@ -349,17 +345,9 @@ function* submitOrderForProcessing({ payload: { navigation } }) {
   //   cartItems.size > 0 && cartItems.getIn(['0', 'miscInfo', 'vendorColorDisplayId']);
 
   yield put(getSetOrderProductDetails(cartItems));
-  // const actions = [
-  //   resetCheckoutReducer(),
-  //   // resetAirmilesReducer(),
-  //   // resetCoupons(),
-  // ]
   yield put(resetCheckoutReducer());
   yield put(resetAirmilesReducer());
   yield put(resetCouponReducer());
-  // getCartOperator(this.store).clearCart();
-  // getUserOperator(this.store).setUserBasicInfo();
-  // getCouponsAndPromosFormOperator(this.store).burstCache();
   // getProductsOperator(this.store).loadProductRecommendations(
   //   RECOMMENDATIONS_SECTIONS.CHECKOUT,
   //   vendorId

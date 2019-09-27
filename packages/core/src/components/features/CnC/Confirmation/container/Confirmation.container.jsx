@@ -1,6 +1,6 @@
 /* eslint-disable extra-rules/no-commented-out-code */
 import React from 'react';
-import ConfirmationView from '../views/Confirmation.view';
+import ConfirmationView from '../views';
 // import selectors from './Confirmation.selectors';
 // import { isGuest, isUsSite } from '../../Checkout/container/Checkout.selector';
 
