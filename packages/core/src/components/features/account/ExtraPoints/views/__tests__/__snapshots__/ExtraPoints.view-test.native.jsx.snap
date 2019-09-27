@@ -2,6 +2,7 @@
 
 exports[`EarnPointsVanilla component should renders correctly 1`] = `
 <Fragment>
+  0
   <Styled(View)>
     <Styled(View)>
       <Styled(BodyCopy)
