@@ -19,9 +19,4 @@ describe('ProductDetailView component', () => {
   it('should renders correctly', () => {
     expect(wrapper).toMatchSnapshot();
   });
-
-  it('should open image carousel modal', () => {
-    wrapper.instance().setState({ zoomImage: true });
-    expect(wrapper.find('ModalNative').props().isOpen).toBeTruthy();
-  });
 });

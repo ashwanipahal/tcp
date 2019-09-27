@@ -10,17 +10,10 @@ const Container = styled.View`
 `;
 
 const FavoriteAndPaginationContainer = styled.View`
-  justify-content: ${props => (props.showFavorites ? 'space-between' : 'center')};
+  justify-content: space-between;
   flex-direction: row;
   align-items: center;
   width: 100%;
-  ${props =>
-    !props.showFavorites
-      ? `
-    position: absolute;
-    bottom: 60;
-  `
-      : ``}
 `;
 
 const FavoriteContainer = styled.View`

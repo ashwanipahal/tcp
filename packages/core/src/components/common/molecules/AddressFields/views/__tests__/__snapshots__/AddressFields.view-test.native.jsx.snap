@@ -871,6 +871,7 @@ exports[`AddressFields component should render correctly 1`] = `
       }
       dataLocator="addnewaddress-phnumber"
       id="phoneNumber"
+      keyboardType="numeric"
       name="phoneNumber"
       type="tel"
     />
@@ -1799,6 +1800,7 @@ exports[`AddressFields component should render correctly without phoneNumber and
       }
       dataLocator="addnewaddress-phnumber"
       id="phoneNumber"
+      keyboardType="numeric"
       name="phoneNumber"
       type="tel"
     />
@@ -2727,6 +2729,7 @@ exports[`AddressFields component should render correctly without phoneNumber and
       }
       dataLocator="addnewaddress-phnumber"
       id="phoneNumber"
+      keyboardType="numeric"
       name="phoneNumber"
       type="tel"
     />
@@ -3410,6 +3413,7 @@ exports[`AddressFields component should render correctly without phoneNumber and
       }
       dataLocator="addnewaddress-phnumber"
       id="phoneNumber"
+      keyboardType="numeric"
       name="phoneNumber"
       type="tel"
     />

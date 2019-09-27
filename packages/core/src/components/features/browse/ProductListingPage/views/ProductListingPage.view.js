@@ -73,6 +73,7 @@ export class ProductListView extends React.Component {
               );
             })}
         </Row>
+        <AddedToBagContainer />
       </ProductListingPageStyle>
     );
   }

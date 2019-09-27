@@ -61,10 +61,13 @@ export function* addToCartEcom({ payload }) {
 export function* addItemToCartBopis({ payload }) {
   try {
     const {
-      storeLocId,
-      isBoss,
-      quantity,
-      skuInfo: { skuId, variantId, variantNo },
+      productInfo: {
+        storeLocId,
+        isBoss,
+        quantity,
+        skuInfo: { skuId, variantId, variantNo },
+      },
+      callback,
     } = payload;
     const PICKUP_TYPE = {
       boss: 'boss',
@@ -80,6 +83,9 @@ export function* addItemToCartBopis({ payload }) {
       itemPartNumber: variantId,
     };
     const res = yield call(addCartBopisItem, params);
+    if (callback) {
+      callback();
+    }
     yield put(
       SetAddedToBagData({
         ...payload,

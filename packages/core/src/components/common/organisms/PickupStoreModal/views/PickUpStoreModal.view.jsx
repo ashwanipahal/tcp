@@ -14,6 +14,7 @@ import {
   getVariantId,
   getMapSliceForColor,
   getIconImageForColor,
+  getMapSliceForSize,
   getPrices,
 } from '../../../../features/browse/ProductListing/molecules/ProductList/utils/productsCommonUtils';
 import withStyles from '../../../hoc/withStyles';
@@ -262,6 +263,7 @@ class PickUpStoreModalView extends React.Component {
 
   /** Validate SKU detils if SKU is resolved or not */
   validateSkuDetails(initialValues = {}, openSkuSelectionForm) {
+    const { currentProduct } = this.props;
     if (openSkuSelectionForm) {
       return false;
     }
@@ -269,6 +271,17 @@ class PickUpStoreModalView extends React.Component {
     const invalidInitialValues =
       !initialValues || (initialValues && !Object.keys(initialValues).length);
     if (invalidInitialValues) {
+      return false;
+    }
+
+    const colorFitsSizesMap = currentProduct && currentProduct.colorFitsSizesMap;
+    const { color, Fit, Size } = initialValues;
+
+    const sizeAvailable = getMapSliceForSize(colorFitsSizesMap, color, Fit, Size);
+    const invalidInitialValuesState =
+      sizeAvailable && sizeAvailable.maxAvailable > 0 ? !sizeAvailable : true;
+
+    if (invalidInitialValuesState) {
       return false;
     }
 

@@ -16,6 +16,7 @@ import ProductListingFiltersForm from '../molecules/ProductListingFiltersForm';
 import ReadMore from '../molecules/ReadMore/views';
 import SpotlightContainer from '../molecules/Spotlight/container/Spotlight.container';
 import LoadedProductsCount from '../molecules/LoadedProductsCount/views';
+import AddedToBagContainer from '../../../CnC/AddedToBag';
 
 const ProductListView = ({
   className,
@@ -104,6 +105,7 @@ const ProductListView = ({
       </Row>
       {isPickupModalOpen ? <PickupStoreModal /> : null}
       <QuickViewModal onPickUpOpenClick={onPickUpOpenClick} />
+      <AddedToBagContainer />
     </div>
   );
 };

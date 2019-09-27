@@ -14,6 +14,7 @@ import ProductPickupContainer from '../../../../common/organisms/ProductPickup';
 import { getLocator } from '../../../../../utils';
 
 import ProductImagesWrapper from '../molecules/ProductImagesWrapper/views/ProductImagesWrapper.view';
+import AddedToBagContainer from '../../../CnC/AddedToBag';
 import {
   getImagesToDisplay,
   getMapSliceForColorProductId,
@@ -158,6 +159,7 @@ const ProductDetailView = ({
           <div className="product-detail-section">RATINGS AND REVIEWS</div>
         </Col>
       </Row>
+      <AddedToBagContainer />
     </div>
   );
 };
