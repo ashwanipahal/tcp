@@ -6,7 +6,7 @@ import { getLabelsAddToActions } from '../../AddedToBag/container/AddedToBag.sel
 import { CHECKOUT_ROUTES } from '../../Checkout/Checkout.constants';
 import utility from '../../Checkout/util/utility';
 import bagPageActions from '../../BagPage/container/BagPage.actions';
-import { getIsInternationalShipping } from '../../../../../reduxStore/selectors/siteDetails.selectors';
+import { getIsInternationalShipping } from '../../../../../reduxStore/selectors/session.selectors';
 import checkoutSelectors from '../../Checkout/container/Checkout.selector';
 
 export class AddedToBagContainer extends React.Component<Props> {

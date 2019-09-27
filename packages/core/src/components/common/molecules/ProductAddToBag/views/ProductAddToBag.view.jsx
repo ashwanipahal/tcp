@@ -3,6 +3,7 @@ import { fromJS } from 'immutable';
 import { compose } from 'redux';
 import { connect } from 'react-redux';
 import { Field, reduxForm } from 'redux-form';
+import { PRODUCT_ADD_TO_BAG } from '@tcp/core/src/constants/reducer.constants';
 import withStyles from '@tcp/core/src/components/common/hoc/withStyles';
 import BodyCopy from '@tcp/core/src/components/common/atoms/BodyCopy';
 import MiniBagSelect from '@tcp/web/src/components/features/CnC/MiniBag/molecules/MiniBagSelectBox/MiniBagSelectBox';
@@ -56,6 +57,7 @@ class ProductAddToBag extends React.PureComponent<Props> {
       displayErrorMessage,
       errorOnHandleSubmit,
       handleFormSubmit,
+      showAddToBagCTA,
     } = this.props;
 
     let { sizeList, fitList, colorList } = this.props;
@@ -129,39 +131,44 @@ class ProductAddToBag extends React.PureComponent<Props> {
           </Col>
         </Row>
         {errorOnHandleSubmit && ErrorComp(errorOnHandleSubmit)}
-        <Row fullBleed>
-          <Col colSize={{ small: 12, medium: 12, large: 12 }}>
-            <div className="button-wrapper">
-              <Button
-                type="submit"
-                className="add-to-bag-button"
-                onClick={e => {
-                  e.preventDefault();
-                  // TODO: with handleSubmit
-                  // eslint-disable-next-line sonarjs/no-all-duplicated-branches
-                  if (fitChanged) {
-                    displayErrorMessage(fitChanged);
-                  } else {
-                    handleFormSubmit();
-                  }
-                }}
-              >
-                {addToBag}
-              </Button>
-              <RenderPerf.Measure name="render_cart_cta" />
-            </div>
-          </Col>
-        </Row>
+        {showAddToBagCTA && (
+          <Row fullBleed>
+            <Col colSize={{ small: 12, medium: 12, large: 12 }}>
+              <div className="button-wrapper">
+                <Button
+                  type="submit"
+                  className="add-to-bag-button"
+                  onClick={e => {
+                    e.preventDefault();
+                    // TODO: with handleSubmit
+                    // eslint-disable-next-line sonarjs/no-all-duplicated-branches
+                    if (fitChanged) {
+                      displayErrorMessage(fitChanged);
+                    } else {
+                      handleFormSubmit();
+                    }
+                  }}
+                >
+                  {addToBag}
+                </Button>
+                <RenderPerf.Measure name="render_cart_cta" />
+              </div>
+            </Col>
+          </Row>
+        )}
       </form>
     );
   }
 }
 
 export default compose(
-  connect((state, props) => ({
-    form: `ProductAddToBag-${props.generalProductId}`,
-    enableReinitialize: true,
-  })),
+  connect((state, props) => {
+    const formName = props.customFormName || PRODUCT_ADD_TO_BAG;
+    return {
+      form: `${formName}-${props.generalProductId}`,
+      enableReinitialize: true,
+    };
+  }),
   reduxForm()
 )(withStyles(ProductAddToBag, styles));
 
