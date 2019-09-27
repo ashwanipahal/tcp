@@ -1,13 +1,11 @@
 import { call, takeLatest, put, select } from 'redux-saga/effects';
 import logger from '@tcp/core/src/utils/loggerInstance';
 import LOGINPAGE_CONSTANTS from '../LoginPage.constants';
-import NAVIGATE_XHR_CONSTANTS from '../../NavigateXHR/NavigateXHR.container/NavigateXHR.constants';
 import { setLoginInfo, setCheckoutModalMountedState } from './LoginPage.actions';
 import { getUserInfo } from '../../User/container/User.actions';
 import { navigateXHRAction } from '../../NavigateXHR/NavigateXHR.container/NavigateXHR.action';
 import fetchData from '../../../../../service/API';
 import { login } from '../../../../../services/abstractors/account';
-import { navigateXHRSaga } from '../../NavigateXHR/NavigateXHR.container/NavigateXHR.saga';
 import endpoints from '../../../../../service/endpoint';
 import { checkoutModalOpenState } from './LoginPage.selectors';
 import { openOverlayModal } from '../../../OverlayModal/container/OverlayModal.actions';
@@ -112,7 +110,6 @@ function* getOrderDetailSaga() {
 
 export function* LoginPageSaga() {
   yield takeLatest(LOGINPAGE_CONSTANTS.LOGIN, loginSaga);
-  yield takeLatest(NAVIGATE_XHR_CONSTANTS.NAVIGATE_XHR_STATE, navigateXHRSaga);
   yield takeLatest('GET_ORDER_DETAIL', getOrderDetailSaga);
   yield takeLatest('GET_USER_DETAIL_POC', getUserInfoPOCSaga);
 }
