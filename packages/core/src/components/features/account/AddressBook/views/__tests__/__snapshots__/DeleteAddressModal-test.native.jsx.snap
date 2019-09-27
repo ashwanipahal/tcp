@@ -33,6 +33,7 @@ exports[`Delete Address Modal should render correctly 1`] = `
           }
         }
         customStyle={Object {}}
+        fontSize="fs14"
         fontWeight="bold"
         showCountry={true}
         showDefaultText={false}

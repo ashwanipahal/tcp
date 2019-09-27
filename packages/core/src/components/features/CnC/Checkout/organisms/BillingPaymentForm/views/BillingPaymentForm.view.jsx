@@ -1,5 +1,6 @@
 import React from 'react';
 import { reduxForm, Field, change } from 'redux-form';
+import CardImage from '@tcp/core/src/components/common/molecules/CardImage';
 import TextBox from '../../../../../../common/atoms/TextBox';
 import BodyCopy from '../../../../../../common/atoms/BodyCopy';
 import withStyles from '../../../../../../common/hoc/withStyles';
@@ -16,7 +17,6 @@ import Col from '../../../../../../common/atoms/Col';
 import { Heading } from '../../../../../../common/atoms';
 import constants from '../container/CreditCard.constants';
 import Anchor from '../../../../../../common/atoms/Anchor';
-import CardImage from '../../../../../../common/molecules/Card/views/CardImage';
 import CheckoutFooter from '../../../molecules/CheckoutFooter';
 import utility from '../../../util/utility';
 import { CHECKOUT_ROUTES } from '../../../Checkout.constants';
