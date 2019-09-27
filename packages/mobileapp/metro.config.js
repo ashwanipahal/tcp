@@ -33,4 +33,12 @@ module.exports = {
     sourceExts: ['jsx', 'js', 'ts'],
   },
   watchFolders,
+  transformer: {
+    getTransformOptions: async () => ({
+      transform: {
+        experimentalImportSupport: false,
+        inlineRequires: false,
+      },
+    }),
+  },
 };

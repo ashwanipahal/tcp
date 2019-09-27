@@ -1,5 +1,7 @@
+// @flow
 import React from 'react';
-import { LazyloadScrollView } from 'react-native-lazyload-deux';
+import { ScrollView } from 'react-native';
+// import {LazyloadScrollView} from 'react-native-lazyload-deux';
 import { Button } from '@tcp/core/src/components/common/atoms';
 import GetCandid from '@tcp/core/src/components/common/molecules/GetCandid/index.native';
 import { LAZYLOAD_HOST_NAME } from '@tcp/core/src/utils';
@@ -71,7 +73,7 @@ class HomePageView extends React.PureComponent<Props> {
       headerPromo,
     } = this.props;
     return (
-      <LazyloadScrollView name={LAZYLOAD_HOST_NAME.HOME}>
+      <ScrollView name={LAZYLOAD_HOST_NAME.HOME}>
         <HeaderPromoContainer>
           <HeaderPromo headerPromo={headerPromo} />
         </HeaderPromoContainer>
@@ -84,7 +86,7 @@ class HomePageView extends React.PureComponent<Props> {
           onPress={() => navigation.navigate('ProductListingPageContainer')}
           style={buttonMargin}
         />
-      </LazyloadScrollView>
+      </ScrollView>
     );
   }
 }

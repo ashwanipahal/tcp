@@ -1,7 +1,7 @@
 // @flow
 import React from 'react';
 import { Image } from 'react-native';
-import { LazyloadImage } from 'react-native-lazyload-deux';
+// import { LazyloadImage } from 'react-native-lazyload-deux';
 import PropTypes from 'prop-types';
 import withStyles from '../../../hoc/withStyles.native';
 import style from '../DamImage.styles';
@@ -19,7 +19,8 @@ const DamImage = (props: Props) => {
   const { url, crop, source, host, imgConfig, alt, ...otherProps } = props;
   const cropVal = crop || '';
   const urlVal = url || '';
-  const ImageComponent = host ? LazyloadImage : Image;
+  // const ImageComponent = host ? Image : Image;
+  const ImageComponent = Image;
   const namedTransformation = imgConfig || '';
 
   return (
