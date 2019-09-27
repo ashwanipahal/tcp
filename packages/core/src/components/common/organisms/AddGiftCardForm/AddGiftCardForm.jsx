@@ -113,7 +113,7 @@ class AddGiftCardForm extends React.PureComponent<Props> {
     return (
       !saveToAccountEnabled &&
       isRow && (
-        <Row fullBleed className="elem-mb-LRG elem-mt-MED savetoaccount">
+        <Row fullBleed className="elem-mb-XL elem-mt-MED savetoaccount">
           <Field
             dataLocator="gift-card-checkbox-field"
             name="saveToAccount"
