@@ -113,6 +113,7 @@ exports[`Add gift card form component render error message 1`] = `
         }
       }
       dataLocator="gift-card-cardnaumberfield"
+      keyboardType="numeric"
       label="lbl_payment_giftCardNoPlaceholder"
       name="giftCardNumber"
       onChange={[Function]}
@@ -163,6 +164,7 @@ exports[`Add gift card form component render error message 1`] = `
         }
       }
       dataLocator="gift-card-pinnumberfield"
+      keyboardType="numeric"
       label="lbl_payment_giftCardPinPlaceholder"
       name="cardPin"
       onChange={[Function]}
@@ -392,6 +394,7 @@ exports[`Add gift card form component should render component correctly 1`] = `
         }
       }
       dataLocator="gift-card-cardnaumberfield"
+      keyboardType="numeric"
       label="lbl_payment_giftCardNoPlaceholder"
       name="giftCardNumber"
       onChange={[Function]}
@@ -442,6 +445,7 @@ exports[`Add gift card form component should render component correctly 1`] = `
         }
       }
       dataLocator="gift-card-pinnumberfield"
+      keyboardType="numeric"
       label="lbl_payment_giftCardPinPlaceholder"
       name="cardPin"
       onChange={[Function]}

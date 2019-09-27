@@ -94,11 +94,8 @@ const getPromotionalPLCCMessage = product => {
   return product.TCPLoyaltyPLCCPromotionTextUSStore || '';
 };
 const catMapExists = (temp, catMap, bucketingSeqConfig) => {
-  return (
-    temp &&
-    catMap[bucketingSeqConfig.desiredL2] &&
-    catMap[bucketingSeqConfig.desiredL2].indexOf(temp) !== -1
-  );
+  const desiredL2Val = bucketingSeqConfig.desiredL2 && bucketingSeqConfig.desiredL2.split('|')[0];
+  return temp && catMap[desiredL2Val] && catMap[desiredL2Val].indexOf(temp) !== -1;
 };
 const isMatchingFamily = (matchingFamily, excludeBadge, siteAttributes) => {
   return matchingFamily && excludeBadge !== siteAttributes.matchingFamily;
@@ -113,7 +110,8 @@ export function extractPrioritizedBadge(product, siteAttributes, categoryType, e
   const isGlowInTheDark = !!extractAttributeValue(product, siteAttributes.glowInTheDark);
   const isLimitedQuantity =
     extractAttributeValue(product, siteAttributes.limitedQuantity) === 'limited quantities';
-  const isOnlineOnly = !!extractAttributeValue(product, siteAttributes.onlineOnly);
+  // The onlineOnly value could be 0 or 1. So parseInt is require otherwise in case of 0 true was returning
+  const isOnlineOnly = !!+extractAttributeValue(product, siteAttributes.onlineOnly);
   const clearanceOrNewArrival = extractAttributeValue(product, siteAttributes.clearance);
   const badges = {};
 
