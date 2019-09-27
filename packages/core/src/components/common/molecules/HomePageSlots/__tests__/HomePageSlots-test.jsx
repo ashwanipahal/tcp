@@ -36,41 +36,6 @@ const modulesDataMock = {
 };
 
 const snapshot = `
-Array [
-  <ModuleA
-    key="id-1"
-    slotData="slot A Data"
-  >
-    <div>
-      Module A
-    </div>
-  </ModuleA>,
-  <ModuleB
-    key="id-2"
-    slotData="slotB Data"
-  >
-    <div>
-      Module B
-    </div>
-  </ModuleB>,
-  <ModuleC
-    key="id-3"
-    slotData="slot C Data"
-  >
-    <div>
-      Module C
-    </div>
-  </ModuleC>,
-]
-`;
-
-describe('HomePageSlots component', () => {
-  it('Should renders slots according to the data', () => {
-    const component = mount(<HomePageSlots slots={slotsCmsDataMock} modules={modulesDataMock} />);
-
-    expect(component.children()).toMatchInlineSnapshot(
-      snapshot,
-      `
       Array [
         <ModuleC
           key="id-3"
@@ -97,8 +62,13 @@ describe('HomePageSlots component', () => {
           </div>
         </ModuleB>,
       ]
-    `
-    );
+    `;
+
+describe('HomePageSlots component', () => {
+  it('Should renders slots according to the data', () => {
+    const component = mount(<HomePageSlots slots={slotsCmsDataMock} modules={modulesDataMock} />);
+
+    expect(component.children()).toMatchInlineSnapshot(snapshot);
   });
 
   it('Should render slots even if the component is not available', () => {
