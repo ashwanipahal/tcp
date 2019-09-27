@@ -13,6 +13,9 @@ import ModuleJ from './ModuleJ';
 import ModuleR from './ModuleR';
 import ButtonTabs from './ButtonTabs';
 import Grid from './Grid';
+import StoreAddressTile from './StoreAddressTile';
+import StoreHours from './StoreHours';
+import StoreLocations from './StoreLocations';
 
 export {
   Carousel,
@@ -30,4 +33,7 @@ export {
   ModuleR,
   ButtonTabs,
   Grid,
+  StoreAddressTile,
+  StoreHours,
+  StoreLocations,
 };

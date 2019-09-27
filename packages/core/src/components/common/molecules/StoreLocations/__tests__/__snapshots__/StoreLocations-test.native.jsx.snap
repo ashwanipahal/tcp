@@ -5,7 +5,7 @@ exports[`StoreLocations component StoreLocations component renders correctly wit
   <Styled(WithTheme(CustomButton))
     buttonVariation="variable-width"
     onPress={null}
-    text="Directions"
+    text="SEE MORE STORES"
     type="button"
   />
 </Styled(View)>

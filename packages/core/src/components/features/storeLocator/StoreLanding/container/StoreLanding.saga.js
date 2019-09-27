@@ -38,7 +38,7 @@ export function* getFavoriteStoreSaga({ payload }) {
 export function* setFavoriteStoreSaga({ payload }) {
   try {
     const state = yield select();
-    const res = yield call(setFavoriteStore, payload.basicInfo.id, state);
+    const res = yield call(setFavoriteStore, payload.basicInfo.id, state, payload.key);
     if (res) {
       yield put(setDefaultStoreUserAction(payload));
     }

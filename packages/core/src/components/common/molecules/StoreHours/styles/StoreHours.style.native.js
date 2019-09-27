@@ -28,6 +28,7 @@ export const TimingsText = styled.Text`
   color: ${props => props.theme.colors.TEXT.DARK};
   text-align: ${props => props.textAlign || 'left'};
   flex: 1;
+  ${props => (props.textAlign === 'left' ? `text-transform: capitalize;` : '')}
 `;
 
 export default styled.View`

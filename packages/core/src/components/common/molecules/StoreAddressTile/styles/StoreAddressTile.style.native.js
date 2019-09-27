@@ -7,6 +7,8 @@ export default styled.View`
   padding-bottom: ${props => props.theme.spacing.ELEM_SPACING.LRG};
   border-bottom-width: ${props => (props.variation === 'detail' ? 0 : 1)};
   border-bottom-color: ${props => props.theme.colors.PRIMARY.LIGHTGRAY};
+  padding-left: ${props => props.theme.spacing.LAYOUT_SPACING.XXS};
+  padding-right: ${props => props.theme.spacing.LAYOUT_SPACING.XXS};
 `;
 
 export const TileHeader = styled.View`

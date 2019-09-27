@@ -466,6 +466,22 @@ export const sanitizeEntity = string => {
     : string;
 };
 
+export const routeToStoreDetails = storeDetail => {
+  const {
+    basicInfo: {
+      id,
+      storeName,
+      address: { city, state, zipCode },
+    },
+  } = storeDetail;
+  const url = `/store/${storeName
+    .replace(/\s/g, '')
+    .toLowerCase()}-${state.toLowerCase()}-${city
+    .replace(/\s/g, '')
+    .toLowerCase()}-${zipCode}-${id}`;
+  routerPush(window.location.href, url);
+};
+
 /**
  * Returns data stored in localstorage
  * @param {string} key - Localstorage item key

@@ -1,4 +1,7 @@
-import { STORE_LOCATOR_REDUCER_KEY } from '@tcp/core/src/constants/reducer.constants';
+import {
+  STORE_LOCATOR_REDUCER_KEY,
+  STORE_DETAIL_REDUCER_KEY,
+} from '@tcp/core/src/constants/reducer.constants';
 import { executeStatefulAPICall } from '../../../handler';
 import { formatPhoneNumber } from '../../../../utils/formValidation/phoneNumber';
 import { parseStoreHours } from '../../../../utils/parseStoreHours';
@@ -17,10 +20,9 @@ const BOPIS_ITEM_AVAILABILITY = {
   UNAVAILABLE: 'UNAVAILABLE',
 };
 
-export const getSuggestedStoreById = (state, storeId) => {
-  return state[STORE_LOCATOR_REDUCER_KEY].get('suggestedStores').find(
-    stores => stores.basicInfo.id === storeId
-  );
+export const getSuggestedStoreById = (state, storeId, key) => {
+  const reducerKey = key === 'DETAIL' ? STORE_DETAIL_REDUCER_KEY : STORE_LOCATOR_REDUCER_KEY;
+  return state[reducerKey].get('suggestedStores').find(stores => stores.basicInfo.id === storeId);
 };
 
 /**
@@ -355,11 +357,11 @@ export const getLocationStores = ({
  * @param {String} storeId - id of the favorite store
  * @param {map} state - current state tree.
  */
-export const setFavoriteStore = (storeId, state) => {
+export const setFavoriteStore = (storeId, state, key = 'LOCATOR') => {
   const personalDataState = getPersonalDataState(state);
   const userId = personalDataState && personalDataState.get('userId');
 
-  const suggestedStore = getSuggestedStoreById(state, storeId);
+  const suggestedStore = getSuggestedStoreById(state, storeId, key);
   const favStore = suggestedStore && {
     ...suggestedStore,
     timeStamp: new Date().getTime(),

@@ -66,6 +66,7 @@ export default css`
     flex: 1;
     text-align: left;
     padding-right: ${props => props.theme.spacing.ELEM_SPACING.XXS};
+    text-transform: capitalize;
   }
   .text-right {
     flex: 1;
