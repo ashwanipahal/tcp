@@ -39,6 +39,12 @@ const Container = styled.View`
   margin-top: ${props => props.theme.spacing.APP_LAYOUT_SPACING.XS};
 `;
 
+const NativeButtonStyledView = styled.View`
+  align-items: flex-end;
+  background: ${props => props.theme.colorPalette.white};
+  padding-right: ${props => props.theme.spacing.APP_LAYOUT_SPACING.XXS};
+`;
+
 const iOSPickerButtonStyle = {
   fontSize: 16,
   lineHeight: 0,
@@ -52,4 +58,5 @@ export {
   ModalOverlay,
   AndroidPickerView,
   iOSPickerButtonStyle,
+  NativeButtonStyledView,
 };
