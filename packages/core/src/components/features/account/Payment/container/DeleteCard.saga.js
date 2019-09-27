@@ -16,7 +16,9 @@ export function* deleteCard({ payload }) {
       yield put(getCardList({ ignoreCache: true }));
       yield put(getAddressList({ ignoreCache: true }));
       yield put(setDeleteModalMountedState({ state: false }));
-      yield put(clearCardBalance(payload));
+      if (payload.ccType === 'GiftCard') {
+        yield put(clearCardBalance(payload));
+      }
     } else {
       yield put(updateCardListonDeleteErr(res.error));
     }

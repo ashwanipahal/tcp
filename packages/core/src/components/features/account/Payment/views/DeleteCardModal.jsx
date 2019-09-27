@@ -47,7 +47,11 @@ class DeleteCardModal extends React.Component<Props> {
   onConfirm = () => {
     const { data, onDeleteCard } = this.props;
     const { description } = data;
-    onDeleteCard({ creditCardId: description.creditCardId, accountNo: description.accountNo });
+    onDeleteCard({
+      creditCardId: description.creditCardId,
+      accountNo: description.accountNo,
+      ccType: description.ccType,
+    });
   };
 
   /**
