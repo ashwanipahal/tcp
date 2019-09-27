@@ -316,5 +316,9 @@ const endpoints = {
     method: 'POST',
     URI: 'v2/account/points/claim',
   },
+  navigateXHR: {
+    method: 'POST',
+    URI: 'v2/appconfig/navigateXHR',
+  },
 };
 export default endpoints;
