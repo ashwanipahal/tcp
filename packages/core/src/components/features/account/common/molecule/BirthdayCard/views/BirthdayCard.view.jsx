@@ -53,8 +53,11 @@ export const BirthdayCard = ({
       <BodyCopy
         textAlign="center"
         fontWeight="semibold"
-        className="elem-mb-XXXS"
+        className={
+          isEditMode ? 'elem-mb-XXXS text-ellipsis add-padding' : 'elem-mb-XXXS text-ellipsis'
+        }
         fontFamily="secondary"
+        title={name}
         data-locator="nameOfChildInTile"
       >
         {name}

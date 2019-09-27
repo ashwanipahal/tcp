@@ -24,6 +24,15 @@ const styles = css`
     justify-content: space-between;
     align-items: flex-end;
   }
+  .text-ellipsis {
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+  }
+  .add-padding {
+    padding-right: 20px;
+    padding-left: 20px;
+  }
 `;
 
 export default styles;
