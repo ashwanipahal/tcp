@@ -58,7 +58,13 @@ exports[`Modal Native should render correctly 1`] = `
     <ScrollViewMock
       keyboardShouldPersistTaps="handled"
       showsVerticalScrollIndicator={false}
-    />
+    >
+      <KeyboardAvoidingView
+        behavior="padding"
+        enabled={true}
+        keyboardVerticalOffset={64}
+      />
+    </ScrollViewMock>
   </Component>
 </SafeAreaView>
 `;
