@@ -320,6 +320,10 @@ const endpoints = {
     method: 'POST',
     URI: 'v2/vendor/getBOPISInvetoryDetails',
   },
+  getUserCartStoresAndInventory: {
+    method: 'GET',
+    URI: 'v2/bopis/getUserBopisStores',
+  },
   claimPoints: {
     method: 'POST',
     URI: 'v2/account/points/claim',
