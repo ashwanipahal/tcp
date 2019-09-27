@@ -167,7 +167,7 @@ class ProductsGridItem extends React.PureComponent {
 
   /* function to get product price section */
   getProductPriceSection = (listPriceForColor, offerPriceForColor, badge3, isShowBadges) => {
-    const { currencySymbol, dataLocatorPrice, sqnNmbr } = this.props;
+    const { currencySymbol } = this.props;
 
     return (
       <ProductPricesSection
@@ -177,7 +177,6 @@ class ProductsGridItem extends React.PureComponent {
         noMerchantBadge={badge3}
         merchantTag={isShowBadges ? badge3 : null}
         hidePrefixListPrice
-        dataLocator={dataLocatorPrice && `${dataLocatorPrice}_${sqnNmbr - 1}`}
       />
     );
   };
@@ -265,8 +264,6 @@ class ProductsGridItem extends React.PureComponent {
       sqnNmbr,
       unbxdId,
       labels,
-      dataLocatorImages,
-      dataLocatorBag,
     } = this.props;
 
     // eslint-disable-next-line camelcase
@@ -330,11 +327,6 @@ class ProductsGridItem extends React.PureComponent {
 
     const videoUrl = this.getVideoUrl(curentColorEntry);
 
-    let dataLocatorAddToBag;
-    if (dataLocatorBag) {
-      dataLocatorAddToBag = `${dataLocatorBag}_${sqnNmb - 1}`;
-    }
-
     return (
       <li
         className={className}
@@ -370,7 +362,6 @@ class ProductsGridItem extends React.PureComponent {
             }}
             isPLPredesign={isPLPredesign}
             keepAlive={isKeepAlive}
-            dataLocator={`${dataLocatorImages}_${sqnNmb - 1}`}
           />
           {
             <Row fullBleed className="product-wishlist-container">
@@ -417,7 +408,7 @@ class ProductsGridItem extends React.PureComponent {
               className="added-to-bag"
               fullWidth
               buttonVariation="fixed-width"
-              dataLocator={dataLocatorAddToBag || getLocator('global_addtocart_Button')}
+              dataLocator={getLocator('global_addtocart_Button')}
               onClick={this.handleQuickViewOpenClick}
             >
               {labels.addToBag}
