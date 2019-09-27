@@ -65,8 +65,9 @@ class Drawer extends React.Component {
   }
 
   handleDarkOverlay = e => {
+    e.preventDefault();
     const { close } = this.props;
-    if (e.target.classList.contains('dark-overlay')) {
+    if (e.target.classList.contains('dark-overlay') && typeof close === 'function') {
       close();
     }
   };
