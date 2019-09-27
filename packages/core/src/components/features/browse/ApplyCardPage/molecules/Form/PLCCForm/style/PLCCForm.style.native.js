@@ -144,6 +144,16 @@ export const MiddleNameContainer = styled.View`
   padding-left: 19px;
 `;
 
+export const FieldContainer = styled.View`
+  margin-top: 12px;
+`;
+
+export const SSNContainer = styled.View`
+  padding-top: ${props => props.theme.spacing.ELEM_SPACING.XXS};
+  padding-left: ${props => props.theme.spacing.LAYOUT_SPACING.XXS};
+  padding-right: ${props => props.theme.spacing.LAYOUT_SPACING.XXS};
+`;
+
 export default {
   ImageContainer,
   StyledBodyCopy,
@@ -165,4 +175,6 @@ export default {
   ParentMessageContainer,
   FirstNameContainer,
   MiddleNameContainer,
+  FieldContainer,
+  SSNContainer,
 };

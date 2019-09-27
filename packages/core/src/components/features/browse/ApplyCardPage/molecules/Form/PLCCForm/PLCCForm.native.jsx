@@ -37,6 +37,8 @@ import {
   ParentMessageContainer,
   FirstNameContainer,
   MiddleNameContainer,
+  FieldContainer,
+  SSNContainer,
 } from './style/PLCCForm.style.native';
 import {
   CAcountriesStatesTable,
@@ -307,14 +309,16 @@ class PLCCForm extends React.PureComponent<Props> {
                 this.setState({ dropDownItem: itemValue });
               }}
             />
-            <Field
-              label=""
-              component={TextBox}
-              title=""
-              type="hidden"
-              id="statewocountry"
-              name="statewocountry"
-            />
+            <FieldContainer>
+              <Field
+                label=""
+                component={TextBox}
+                title=""
+                type="hidden"
+                id="statewocountry"
+                name="statewocountry"
+              />
+            </FieldContainer>
           </StateContainerView>
           <ZipContainerView>
             <Field
@@ -334,7 +338,7 @@ class PLCCForm extends React.PureComponent<Props> {
             label={getLabelValue(labels, 'lbl_PLCCForm_mobilePhoneNumber')}
             type="tel"
             component={TextBox}
-            maxLength={20}
+            maxLength={10}
           />
         </NameFieldContainer>
         <NameFieldContainer>
@@ -344,7 +348,7 @@ class PLCCForm extends React.PureComponent<Props> {
             label={getLabelValue(labels, 'lbl_PLCCForm_alternatePhone')}
             type="tel"
             component={TextBox}
-            maxLength={20}
+            maxLength={10}
           />
         </NameFieldContainer>
         <StyledBodyCopy
@@ -398,7 +402,9 @@ class PLCCForm extends React.PureComponent<Props> {
               }}
               selectedValue={month}
             />
-            <Field label="" component={TextBox} title="" type="hidden" id="month" name="month" />
+            <FieldContainer>
+              <Field label="" component={TextBox} title="" type="hidden" id="month" name="month" />
+            </FieldContainer>
           </DateContainerView>
 
           <DateContainerView>
@@ -418,7 +424,9 @@ class PLCCForm extends React.PureComponent<Props> {
                 this.setState({ date: itemValue });
               }}
             />
-            <Field label="" component={TextBox} title="" type="hidden" id="date" name="date" />
+            <FieldContainer>
+              <Field label="" component={TextBox} title="" type="hidden" id="date" name="date" />
+            </FieldContainer>
           </DateContainerView>
           <DateContainerView>
             <Field
@@ -437,11 +445,13 @@ class PLCCForm extends React.PureComponent<Props> {
               }}
               selectedValue={year}
             />
-            <Field label="" component={TextBox} title="" type="hidden" id="year" name="year" />
+            <FieldContainer>
+              <Field label="" component={TextBox} title="" type="hidden" id="year" name="year" />
+            </FieldContainer>
           </DateContainerView>
         </PersonalInformationContainerView>
 
-        <NameFieldContainer>
+        <SSNContainer>
           <Field
             name="ssNumber"
             id="ssNumber"
@@ -450,7 +460,7 @@ class PLCCForm extends React.PureComponent<Props> {
             component={TextBox}
             maxLength={4}
           />
-        </NameFieldContainer>
+        </SSNContainer>
 
         <MessageViewContainer height="430px">
           <RichText source={{ html: plccData && plccData.account_classified_disclaimer }} />
