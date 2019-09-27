@@ -15,6 +15,11 @@
 #import <AppCenterReactNative.h>
 #import <AppCenterReactNativeAnalytics.h>
 #import <AppCenterReactNativeCrashes.h>
+#import <MPulse/MPulse.h>
+
+
+#define MPULSE_API_KEY @"YOUR_API_KEY"
+
 
 
 //  #if DEBUG
@@ -31,6 +36,12 @@
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions
 {
 //  NSDictionary *props = @{@"appType":launchOptions};
+
+// Initialize the library with your
+// mPulse API key, MPULSE_API_KEY
+[MPulse initializeWithAPIKey:MPULSE_API_KEY];
+
+
   RCTBridge *bridge = [[RCTBridge alloc] initWithDelegate:self launchOptions:launchOptions];
   RCTRootView *rootView = [[RCTRootView alloc] initWithBridge:bridge
                                                    moduleName:@"mobileapp"
