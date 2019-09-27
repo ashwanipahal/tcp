@@ -3,6 +3,11 @@
 exports[`ShippingReviewSection component should renders correctly props are present 1`] = `
 <Fragment>
   <Styled(View)>
+    <Styled(TitlePlusEditButton)
+      dataLocator="shipping-section"
+    />
+  </Styled(View)>
+  <Styled(View)>
     <View>
       <Styled(View)>
         <Styled(BodyCopy)
@@ -20,6 +25,7 @@ exports[`ShippingReviewSection component should renders correctly props are pres
       <Styled(View)>
         <Address
           customStyle={Object {}}
+          regularName={true}
           showCountry={true}
           showDefaultText={false}
           showName={true}
@@ -74,6 +80,11 @@ exports[`ShippingReviewSection component should renders correctly props are pres
 exports[`ShippingReviewSection component should renders correctly props not present 1`] = `
 <Fragment>
   <Styled(View)>
+    <Styled(TitlePlusEditButton)
+      dataLocator="shipping-section"
+    />
+  </Styled(View)>
+  <Styled(View)>
     <View>
       <Styled(View)>
         <Styled(BodyCopy)
@@ -91,6 +102,7 @@ exports[`ShippingReviewSection component should renders correctly props not pres
       <Styled(View)>
         <Address
           customStyle={Object {}}
+          regularName={true}
           showCountry={true}
           showDefaultText={false}
           showName={true}

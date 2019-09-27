@@ -12,7 +12,7 @@ exports[`GiftWrappingDisplay component should renders correctly props are presen
       margin={null}
       mobileFontFamily="secondary"
       numberOfLines={null}
-      text="title"
+      text="Gift Services"
       textDecoration={null}
     />
   </Styled(Text)>
