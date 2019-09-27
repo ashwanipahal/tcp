@@ -78,7 +78,7 @@ exports[`ProfileInfoActions should render correctly for empty state 1`] = `
     >
       <Styled(ProfileInfoActionTile)
         activityCompletionState=""
-        activityIcon="/static/images/store.jpg"
+        activityIcon="/static/images/store.png"
         activityId="favStore"
         activityTitle="+20%"
         dataLocatorPrefix="favStore"
@@ -260,7 +260,7 @@ exports[`ProfileInfoActions should render correctly for filled state 1`] = `
       }
     >
       <Styled(ProfileInfoActionTile)
-        activityIcon="/static/images/store.jpg"
+        activityIcon="/static/images/store.png"
         activityId="favStore"
         activityTitle="+20%"
         dataLocatorPrefix="favStore"
