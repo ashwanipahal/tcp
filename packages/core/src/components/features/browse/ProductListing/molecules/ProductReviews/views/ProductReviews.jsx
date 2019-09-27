@@ -138,8 +138,7 @@ class ProductReviews extends React.Component {
 
   render() {
     let { expanded } = this.state;
-    const { isMobile, className } = this.props;
-    console.info('expanded', expanded);
+    const { isMobile, className, reviewsCount } = this.props;
 
     if (this.state.isLoading || !this.props.isClient) {
       return null;
@@ -153,12 +152,16 @@ class ProductReviews extends React.Component {
 
     return (
       <div className={`${className} ${accordionClassName}`}>
-        <div className="accordion-button-toggle" onClick={this.handleToggle}>
-          Ratings & Reviews
-          <button className="accordion-toggle" title="Ratings & Reviews">
-            Ratings & Reviews
-          </button>
-        </div>
+        <BodyCopy
+          className="accordion-button-toggle"
+          component="div"
+          fontSize="fs14"
+          fontFamily="secondary"
+          fontWeight="black"
+          onClick={this.handleToggle}
+        >
+          Ratings & Reviews ({`${reviewsCount}`})
+        </BodyCopy>
         <div
           id={'BVRRContainer-' + this.props.ratingsProductId}
           ref={this.captureContainerRef}

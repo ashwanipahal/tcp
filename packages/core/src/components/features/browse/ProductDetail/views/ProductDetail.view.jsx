@@ -147,6 +147,7 @@ const ProductDetailView = ({
         <Col colSize={{ small: 6, medium: 8, large: 12 }}>
           <ProductReviewsContainer
             expanded={false}
+            reviewsCount={productInfo.reviewsCount}
             ratingsProductId={productInfo.ratingsProductId}
             isClient={isClient()}
           />
