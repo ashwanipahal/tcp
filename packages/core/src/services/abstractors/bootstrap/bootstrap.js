@@ -170,7 +170,7 @@ const bootstrap = async (pageName = '', modules, cachedData) => {
       logger.info('Executing Modules Query with params: ', bootstrapData[pageName], pageName);
       response.modules =
         bootstrapData[pageName] &&
-        (await layoutAbstractor.processData(
+        (await layoutAbstractor.getModulesFromLayout(
           retrieveCachedData({ ...fetchCachedDataParams, key: pageName })
         ));
       logger.info('Modules Query Executed Successfully');

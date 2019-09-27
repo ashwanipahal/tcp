@@ -24,9 +24,9 @@ describe('abstractor - bootstrap', () => {
       );
       expect(data.homepage.items[0].layout.slots[0].moduleName).toEqual('moduleD');
       expect(data.homepage.items[0].layout.slots[1].moduleName).toEqual('moduleH');
-      expect(data.labels).toMatchObject(LabelsAbstractor.processData(labelsMock));
-      expect(data.header).toMatchObject(HeaderAbstractor.processData(headerMock));
-      expect(data.footer).toMatchObject(FooterAbstractor.processData(footerMock));
+      expect(data.labels).toMatchObject(LabelsAbstractor.getModulesFromLayout(labelsMock));
+      expect(data.header).toMatchObject(HeaderAbstractor.getModulesFromLayout(headerMock));
+      expect(data.footer).toMatchObject(FooterAbstractor.getModulesFromLayout(footerMock));
     });
 
   it('bootstrap - redis disabled', () => {

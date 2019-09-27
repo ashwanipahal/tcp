@@ -52,10 +52,10 @@ const LayoutAbstractor = {
     return handler.fetchModuleDataFromGraphQL(modules);
   },
   /**
-   * Asynchronous function to process data from service for layouts
+   * Asynchronous function to get modules data from service for layouts
    * @param {Object} data Response object for layout query
    */
-  processData: async data => {
+  getModulesFromLayout: async data => {
     const moduleObjects = LayoutAbstractor.collateModuleObject(data.items);
     return LayoutAbstractor.getModulesData(moduleObjects).then(response => {
       return LayoutAbstractor.processModuleData(response.data);

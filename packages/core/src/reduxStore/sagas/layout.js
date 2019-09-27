@@ -18,7 +18,7 @@ function* fetchPageLayout(action) {
     };
     const layoutData = yield call(layoutAbstractor.getLayoutData, layoutParams);
     yield put(loadLayoutData(layoutData.items[0].layout, page));
-    const modulesData = yield call(layoutAbstractor.processData, layoutData);
+    const modulesData = yield call(layoutAbstractor.getModulesFromLayout, layoutData);
     yield put(loadModulesData(modulesData));
   } catch (e) {
     logger.error(e);
