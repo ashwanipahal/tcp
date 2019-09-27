@@ -17,6 +17,7 @@ describe('LoginPage saga', () => {
       loginGen.next({
         success: true,
       });
+      loginGen.next();
       const putDescriptor = loginGen.next().value;
       expect(putDescriptor).toEqual(put(getUserInfo()));
     });

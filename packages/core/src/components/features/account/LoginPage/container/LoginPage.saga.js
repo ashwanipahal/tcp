@@ -10,6 +10,7 @@ import { login } from '../../../../../services/abstractors/account';
 import { navigateXHRSaga } from '../../NavigateXHR/NavigateXHR.container/NavigateXHR.saga';
 import endpoints from '../../../../../service/endpoint';
 import { checkoutModalOpenState } from './LoginPage.selectors';
+import { openOverlayModal } from '../../../OverlayModal/container/OverlayModal.actions';
 
 const errorLabel = 'Error in API';
 
@@ -23,8 +24,16 @@ export function* loginSaga({ payload, afterLoginHandler }) {
     if (response.success) {
       if (afterLoginHandler) {
         yield call(afterLoginHandler);
+      } else {
+        yield put(
+          openOverlayModal({
+            component: 'accountDrawer',
+            variation: 'primary',
+          })
+        );
       }
       yield put(navigateXHRAction());
+
       return yield put(getUserInfo());
     }
     return yield put(setLoginInfo(response));
