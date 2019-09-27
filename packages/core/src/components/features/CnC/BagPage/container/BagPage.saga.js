@@ -417,6 +417,7 @@ export function* startSflItemMoveToBag({ payload }) {
         skuId: itemId,
       },
       quantity: 1,
+      fromMoveToBag: true,
     };
     yield put(addToCartEcom(addToCartData));
     yield put(BAG_PAGE_ACTIONS.getCartData());
