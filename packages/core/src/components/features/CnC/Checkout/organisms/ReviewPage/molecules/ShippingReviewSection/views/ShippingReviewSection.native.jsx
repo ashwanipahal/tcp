@@ -5,6 +5,7 @@ import Address from '../../../../../../../../common/molecules/Address';
 import BodyCopy from '../../../../../../../../common/atoms/BodyCopy';
 import ShippingMethodDisplay from '../../ShippingMethodDisplay';
 import GiftWrappingDisplay from '../../GiftWrappingDisplay';
+import TitlePlusEditButton from '../../TitlePlusEditButton';
 import style from '../styles/ShippingReviewSection.style.native';
 
 const { ShippingReviewContainer, AddressSection, AddressTitle } = style;
@@ -17,21 +18,23 @@ export class ShippingReviewSection extends React.PureComponent {
       isGiftOptionsEnabled,
       giftWrappingDisplayName,
       labels,
+      onEdit,
     } = this.props;
     const {
-      // lbl_review_shippingSectionTitle: title,
-      // lbl_review_sectionAnchor: edit,
+      lbl_review_shippingSectionTitle: title,
+      lbl_review_sectionAnchor: edit,
       lbl_review_sectionShippingAddressTitle: addressTitle,
     } = labels;
     return (
       <>
-        {/* <View>
+        <View>
           <TitlePlusEditButton
             title={title}
             editTitle={edit}
-            dataLocator="pickup-section"
+            onEdit={onEdit}
+            dataLocator="shipping-section"
           />
-        </View> */}
+        </View>
         <ShippingReviewContainer>
           <View>
             <AddressTitle>
@@ -90,6 +93,7 @@ ShippingReviewSection.propTypes = {
     shippingSpeed: PropTypes.string.isRequired,
     isDefault: PropTypes.bool,
   }).isRequired,
+  onEdit: PropTypes.func.isRequired,
 };
 
 ShippingReviewSection.defaultProps = {

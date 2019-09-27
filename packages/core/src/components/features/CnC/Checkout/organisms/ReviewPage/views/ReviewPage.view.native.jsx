@@ -70,7 +70,13 @@ class ReviewPage extends React.PureComponent {
           <Container>
             <CheckoutSectionTitleDisplay title={header} />
             {!!orderHasPickUp && <TextSection>{pickupSectionTitle}</TextSection>}
-            {!!orderHasShipping && <ShippingReviewSection />}
+            {!!orderHasShipping && (
+              <ShippingReviewSection
+                onEdit={() => {
+                  navigation.navigate(CONSTANTS.CHECKOUT_ROUTES_NAMES.CHECKOUT_SHIPPING);
+                }}
+              />
+            )}
             <TextSection>{billingSectionTitle}</TextSection>
           </Container>
           <CnCTemplate
