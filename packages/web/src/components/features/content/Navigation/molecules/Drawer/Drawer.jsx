@@ -45,6 +45,11 @@ class Drawer extends React.Component {
   constructor(props) {
     super(props);
     this.getDrawerStyle = this.getDrawerStyle.bind(this);
+    this.handleDarkOverlay = this.handleDarkOverlay.bind(this);
+  }
+
+  componentDidMount() {
+    document.body.addEventListener('click', this.handleDarkOverlay);
   }
 
   componentDidUpdate() {
@@ -54,6 +59,17 @@ class Drawer extends React.Component {
     }
     return null;
   }
+
+  componentWillUnmount() {
+    document.body.removeEventListener('click', this.handleDarkOverlay);
+  }
+
+  handleDarkOverlay = e => {
+    const { close } = this.props;
+    if (e.target.classList.contains('dark-overlay')) {
+      close();
+    }
+  };
 
   getDrawerStyle = () => {
     if (window) {
