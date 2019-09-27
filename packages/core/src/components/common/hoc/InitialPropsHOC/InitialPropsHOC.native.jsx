@@ -22,7 +22,7 @@ const InitialPropsHOC = Component => {
       this.addDidFocusListener();
     }
 
-    componentWillReceiveProps(nextProps) {
+    UNSAFE_componentWillReceiveProps(nextProps) {
       const { appType } = nextProps;
       const { appType: prevAppType } = this.props;
 

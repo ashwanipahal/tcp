@@ -81,7 +81,7 @@ export class App extends React.PureComponent {
     return (
       <Provider store={this.store}>
         <NetworkProvider>
-          <ThemeWrapperHOC appType={appType} switchBrand={this.switchBrand}>
+          <ThemeWrapperHOC appType={appType || 'gym'} switchBrand={this.switchBrand}>
             <Box style={styles.container}>
               {Platform.OS === 'ios' && <StatusBar barStyle="default" />}
               <AppNavigator

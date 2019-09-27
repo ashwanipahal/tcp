@@ -53,5 +53,7 @@
 	<false/>
 	<key>NSFaceIDUsageDescription</key>
 	<string></string>
+	<key>CodePushDeploymentKey</key>
+	<string></string>
 </dict>
 </plist>
