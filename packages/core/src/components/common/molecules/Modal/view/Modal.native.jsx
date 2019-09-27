@@ -9,6 +9,7 @@ import {
   LineWrapper,
   RowWrapper,
   ImageWrapper,
+  ModalCustomWrapper,
 } from '../Modal.style.native';
 import BodyCopy from '../../../atoms/BodyCopy';
 
@@ -34,7 +35,12 @@ type CloseIconProps = {
   isOverlay: Boolean,
 };
 
-const getCloseIcon = ({ onRequestClose, headerStyle, iconType, isOverlay }: CloseIconProps) => {
+const getCloseIcon = ({
+  onRequestClose,
+  headerStyle,
+  iconType,
+  isOverlay,
+}: CloseIconProps) => {
   return (
     <ImageWrapper style={headerStyle}>
       <StyledTouchableOpacity
@@ -43,11 +49,15 @@ const getCloseIcon = ({ onRequestClose, headerStyle, iconType, isOverlay }: Clos
         accessibilityLabel="close"
         isOverlay={isOverlay}
       >
-        <StyledCrossImage source={iconType === 'arrow' ? arrowIcon : closeIcon} />
+        <StyledCrossImage
+          source={iconType === 'arrow' ? arrowIcon : closeIcon}
+        />
       </StyledTouchableOpacity>
     </ImageWrapper>
   );
 };
+
+
 
 const ModalNative = ({ isOpen, children, isOverlay, ...otherProps }: Props) => {
   const {
@@ -64,6 +74,7 @@ const ModalNative = ({ isOpen, children, isOverlay, ...otherProps }: Props) => {
     iconType,
     fullWidth,
     customTransparent,
+    transparentModal,
   } = otherProps;
   return (
     <SafeAreaView>
@@ -74,11 +85,11 @@ const ModalNative = ({ isOpen, children, isOverlay, ...otherProps }: Props) => {
         onRequestClose={onRequestClose}
       >
         {!customTransparent && (
-          <>
+          <ModalCustomWrapper transparentModal={transparentModal}>
             <ToastContainer />
             <StatusBar hidden />
             <RowWrapper isOverlay={isOverlay}>
-              {heading && (
+              {heading && transparentModal !== 'transparent-captcha' && (
                 <ModalHeading fullWidth={fullWidth}>
                   <BodyCopy
                     mobileFontFamily={headingFontFamily || 'primary'}
@@ -89,17 +100,29 @@ const ModalNative = ({ isOpen, children, isOverlay, ...otherProps }: Props) => {
                   />
                 </ModalHeading>
               )}
-              {getCloseIcon({ onRequestClose, headerStyle, iconType, isOverlay })}
+              {getCloseIcon({
+                onRequestClose,
+                headerStyle,
+                iconType,
+                isOverlay,
+              })}
             </RowWrapper>
-            {horizontalBar ? (
+            {horizontalBar && transparentModal !== 'transparent-captcha' ? (
               <LineWrapper>
-                <LineComp marginTop={5} borderWidth={2} borderColor={borderColor} />
+                <LineComp
+                  marginTop={5}
+                  borderWidth={2}
+                  borderColor={borderColor}
+                />
               </LineWrapper>
             ) : null}
-            <ScrollView showsVerticalScrollIndicator={false} keyboardShouldPersistTaps="handled">
+            <ScrollView
+              showsVerticalScrollIndicator={false}
+              keyboardShouldPersistTaps="handled"
+            >
               {children}
             </ScrollView>
-          </>
+          </ModalCustomWrapper>
         )}
         {customTransparent && children}
       </Modal>

@@ -8,7 +8,6 @@ import { getLabelValue } from '@tcp/core/src/utils/utils';
 import TextBox from '../../atoms/TextBox';
 import CustomButton from '../../atoms/Button';
 import {
-  RecaptchaContainer,
   ErrorWrapper,
   SaveButtonWrapper,
   CancelButtonWrapper,
@@ -56,8 +55,8 @@ class AddGiftCardForm extends React.PureComponent {
         onAddGiftCardClick(addGifteData);
       })();
       this.setRecaptchaModalMountState();
+      change('recaptchaToken', value);
     }
-    // change('recaptchaToken', value);
   };
 
   handleChange = () => {
@@ -73,13 +72,21 @@ class AddGiftCardForm extends React.PureComponent {
 
   handleAddGiftCardClick = e => {
     const { tokenInfomation } = this.state;
-    const { handleSubmit, invalid } = this.props;
+    const { handleSubmit, onAddGiftCardClick, invalid } = this.props;
     e.preventDefault();
     if (!tokenInfomation && !invalid) {
       this.setRecaptchaModalMountState();
     } else {
+      handleSubmit(data => {
+        const { cardPin, giftCardNumber } = data;
+        const addGifteData = {
+          cardPin,
+          giftCardNumber,
+          recaptchaToken: tokenInfomation,
+        };
+        onAddGiftCardClick(addGifteData);
+      })();
       this.setState({ tokenInfomation: '' });
-      handleSubmit();
     }
   };
 
@@ -100,14 +107,7 @@ class AddGiftCardForm extends React.PureComponent {
   }
 
   render() {
-    const {
-      handleSubmit,
-      labels,
-      toggleModal,
-      onAddGiftCardClick,
-      addGiftCardResponse,
-      isRow,
-    } = this.props;
+    const { labels, toggleModal, addGiftCardResponse, isRow } = this.props;
     const { setRecaptchaModalMountedState } = this.state;
     return (
       <ScrollView
@@ -156,7 +156,7 @@ class AddGiftCardForm extends React.PureComponent {
                 />
               )}
             </React.Fragment>
-            {/* <Field
+            <Field
               label=""
               component={TextBox}
               title=""
@@ -165,7 +165,7 @@ class AddGiftCardForm extends React.PureComponent {
               id="recaptchaToken"
               data-locator="gift-card-recaptchcb"
               className="visibility-recaptcha"
-            /> */}
+            />
           </View>
           {!isRow && (
             <MessageWrapper>
@@ -173,10 +173,7 @@ class AddGiftCardForm extends React.PureComponent {
                 fontFamily="secondary"
                 fontSize="fs14"
                 color="gray.900"
-                text={getLabelValue(
-                  labels,
-                  'lbl_payment_giftCardMessageHeading'
-                )}
+                text={getLabelValue(labels, 'lbl_payment_giftCardMessageHeading')}
               />
               <MessageTextWrapper>
                 <BodyCopy
@@ -184,10 +181,7 @@ class AddGiftCardForm extends React.PureComponent {
                   fontSize="fs12"
                   color="black"
                   fontWeight="regular"
-                  text={getLabelValue(
-                    labels,
-                    'lbl_payment_giftCardMessageDescription'
-                  )}
+                  text={getLabelValue(labels, 'lbl_payment_giftCardMessageDescription')}
                 />
               </MessageTextWrapper>
             </MessageWrapper>
@@ -225,9 +219,7 @@ class AddGiftCardForm extends React.PureComponent {
                   text={getLabelValue(labels, 'lbl_payment_addCard')}
                   buttonVariation="variable-width"
                   data-locator="gift-card-addcardbtn"
-                  onPress={handleSubmit(data => {
-                    onAddGiftCardClick(data);
-                  })}
+                  onPress={this.handleAddGiftCardClick}
                 />
               </SaveButtonWrapper>
 
@@ -291,9 +283,7 @@ AddGiftCardForm.defaultProps = {
   isRow: false,
 };
 
-const validateMethod = createValidateMethod(
-  getStandardConfig(['giftCardNumber', 'cardPin', 'recaptchaToken'])
-);
+const validateMethod = createValidateMethod(getStandardConfig(['giftCardNumber', 'cardPin', '']));
 
 export default reduxForm({
   form: 'AddGiftCardMobileForm', // a unique identifier for this form

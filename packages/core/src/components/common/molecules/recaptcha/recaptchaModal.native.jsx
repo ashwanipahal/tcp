@@ -10,7 +10,12 @@ class RecaptchaModal extends React.PureComponent<Props> {
     return (
       <View>
         {setRecaptchaModalMountedState && (
-          <ModalNative isOpen={setRecaptchaModalMountedState} onRequestClose={toggleRecaptchaModal}>
+          <ModalNative
+            transparentModal="transparent-captcha"
+            heading="RECAPTCHA"
+            isOpen={setRecaptchaModalMountedState}
+            onRequestClose={toggleRecaptchaModal}
+          >
             <RecaptchaContainer>
               <Recaptcha onMessage={onMessage} />
             </RecaptchaContainer>
