@@ -1,6 +1,6 @@
 import React from 'react';
 import { View } from 'react-native';
-import { withTheme } from 'styled-components';
+import { withTheme } from 'styled-components/native';
 import Carousel, { Pagination } from 'react-native-snap-carousel';
 import { getLocator } from '../../../../../utils';
 
@@ -94,7 +94,7 @@ class SnapCarousel extends React.PureComponent<Props, State> {
     } = this.props;
 
     /* eslint-disable  */
-    return (
+    return colorPalette ? (
       <Pagination
         dotsLength={data.length}
         activeDotIndex={activeSlide}
@@ -118,7 +118,7 @@ class SnapCarousel extends React.PureComponent<Props, State> {
         inactiveDotOpacity={1}
         inactiveDotScale={1}
       />
-    );
+    ) : null;
     // eslint-enable
   }
 

@@ -32,6 +32,16 @@
 		3656A58C2337836800EF9714 /* icomoon.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 3656A54B2337836800EF9714 /* icomoon.ttf */; };
 		36C9821022E6F96D0002786B /* FontAwesome.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 36C9820F22E6F96D0002786B /* FontAwesome.ttf */; };
 		3CA75B312A38DBB90EFDF2CB /* libPods-mobileappTests.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 7A2DDE1571DB1353FBA4BDA2 /* libPods-mobileappTests.a */; };
+		4C945DC9233E6F5000825846 /* AppCenter-Config.plist in Resources */ = {isa = PBXBuildFile; fileRef = 4C945DC8233E6F5000825846 /* AppCenter-Config.plist */; };
+		4C945DCA233E6F5000825846 /* AppCenter-Config.plist in Resources */ = {isa = PBXBuildFile; fileRef = 4C945DC8233E6F5000825846 /* AppCenter-Config.plist */; };
+		4C945DCB233E6F5000825846 /* AppCenter-Config.plist in Resources */ = {isa = PBXBuildFile; fileRef = 4C945DC8233E6F5000825846 /* AppCenter-Config.plist */; };
+		4C945DCC233E6F5000825846 /* AppCenter-Config.plist in Resources */ = {isa = PBXBuildFile; fileRef = 4C945DC8233E6F5000825846 /* AppCenter-Config.plist */; };
+		4C945DCD233E6F5000825846 /* AppCenter-Config.plist in Resources */ = {isa = PBXBuildFile; fileRef = 4C945DC8233E6F5000825846 /* AppCenter-Config.plist */; };
+		4C945DCE233E6F5000825846 /* AppCenter-Config.plist in Resources */ = {isa = PBXBuildFile; fileRef = 4C945DC8233E6F5000825846 /* AppCenter-Config.plist */; };
+		4C945DCF233E6F5000825846 /* AppCenter-Config.plist in Resources */ = {isa = PBXBuildFile; fileRef = 4C945DC8233E6F5000825846 /* AppCenter-Config.plist */; };
+		4C945DD0233E6F5000825846 /* AppCenter-Config.plist in Resources */ = {isa = PBXBuildFile; fileRef = 4C945DC8233E6F5000825846 /* AppCenter-Config.plist */; };
+		4C945DD1233E6F5000825846 /* AppCenter-Config.plist in Resources */ = {isa = PBXBuildFile; fileRef = 4C945DC8233E6F5000825846 /* AppCenter-Config.plist */; };
+		4C945DD2233E6F5000825846 /* AppCenter-Config.plist in Resources */ = {isa = PBXBuildFile; fileRef = 4C945DC8233E6F5000825846 /* AppCenter-Config.plist */; };
 		4C997219233E5B7500949134 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 4C997217233E5B7400949134 /* AppDelegate.m */; };
 		4C99721A233E5B7500949134 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 4C997217233E5B7400949134 /* AppDelegate.m */; };
 		4C99721B233E5B7500949134 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 4C997217233E5B7400949134 /* AppDelegate.m */; };
@@ -580,6 +590,7 @@
 		356F5162D97E7A13D7859A9A /* Pods-mobileappTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-mobileappTests.debug.xcconfig"; path = "Target Support Files/Pods-mobileappTests/Pods-mobileappTests.debug.xcconfig"; sourceTree = "<group>"; };
 		3656A54B2337836800EF9714 /* icomoon.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; name = icomoon.ttf; path = ../../src/assets/fonts/icomoon.ttf; sourceTree = "<group>"; };
 		36C9820F22E6F96D0002786B /* FontAwesome.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; name = FontAwesome.ttf; path = "../../node_modules/react-native-vector-icons/Fonts/FontAwesome.ttf"; sourceTree = "<group>"; };
+		4C945DC8233E6F5000825846 /* AppCenter-Config.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "AppCenter-Config.plist"; sourceTree = "<group>"; };
 		4C997216233E5B7400949134 /* AppDelegate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = AppDelegate.h; path = mobileapp/AppDelegate.h; sourceTree = "<group>"; };
 		4C997217233E5B7400949134 /* AppDelegate.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = AppDelegate.m; path = mobileapp/AppDelegate.m; sourceTree = "<group>"; };
 		4C997218233E5B7500949134 /* main.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = main.m; path = mobileapp/main.m; sourceTree = "<group>"; };
@@ -921,6 +932,7 @@
 				13B07FB11A68108700A75B9A /* TCPLaunchScreen.xib */,
 				8480854C22D9B4CE00D7D25B /* GymboreeLaunchScreen.xib */,
 				8424F1F222DC60160090ECF1 /* mobileapp-Bridging-Header.h */,
+				4C945DC8233E6F5000825846 /* AppCenter-Config.plist */,
 			);
 			name = mobileapp;
 			sourceTree = "<group>";
@@ -1736,6 +1748,7 @@
 				13B07FBF1A68108700A75B9A /* Images.xcassets in Resources */,
 				D94ECADD22D70C2600D9D051 /* Nunito.ttf in Resources */,
 				36C9821022E6F96D0002786B /* FontAwesome.ttf in Resources */,
+				4C945DC9233E6F5000825846 /* AppCenter-Config.plist in Resources */,
 				D94ECADF22D70C2600D9D051 /* Montserrat.ttf in Resources */,
 				13B07FBD1A68108700A75B9A /* TCPLaunchScreen.xib in Resources */,
 				D94ECADC22D70C2600D9D051 /* Nunito-Black.ttf in Resources */,
@@ -1751,6 +1764,7 @@
 				84677A16230BC69E001F5301 /* Nunito-Bold.ttf in Resources */,
 				84677A17230BC69E001F5301 /* Nunito-SemiBold.ttf in Resources */,
 				84677A18230BC69E001F5301 /* Images.xcassets in Resources */,
+				4C945DCA233E6F5000825846 /* AppCenter-Config.plist in Resources */,
 				84677A19230BC69E001F5301 /* Nunito.ttf in Resources */,
 				84677A1B230BC69E001F5301 /* FontAwesome.ttf in Resources */,
 				84677A1D230BC69E001F5301 /* Montserrat.ttf in Resources */,
@@ -1769,6 +1783,7 @@
 				84677A74230BCD44001F5301 /* Nunito-Bold.ttf in Resources */,
 				84677A75230BCD44001F5301 /* Nunito-SemiBold.ttf in Resources */,
 				84677A76230BCD44001F5301 /* Images.xcassets in Resources */,
+				4C945DCB233E6F5000825846 /* AppCenter-Config.plist in Resources */,
 				84677A77230BCD44001F5301 /* Nunito.ttf in Resources */,
 				84677A79230BCD44001F5301 /* FontAwesome.ttf in Resources */,
 				84677A7B230BCD44001F5301 /* Montserrat.ttf in Resources */,
@@ -1787,6 +1802,7 @@
 				84677AA1230BCDAF001F5301 /* Nunito-Bold.ttf in Resources */,
 				84677AA2230BCDAF001F5301 /* Nunito-SemiBold.ttf in Resources */,
 				84677AA3230BCDAF001F5301 /* Images.xcassets in Resources */,
+				4C945DCC233E6F5000825846 /* AppCenter-Config.plist in Resources */,
 				84677AA4230BCDAF001F5301 /* Nunito.ttf in Resources */,
 				84677AA6230BCDAF001F5301 /* FontAwesome.ttf in Resources */,
 				84677AA8230BCDAF001F5301 /* Montserrat.ttf in Resources */,
@@ -1805,6 +1821,7 @@
 				84677ACE230BCE0A001F5301 /* Nunito-Bold.ttf in Resources */,
 				84677ACF230BCE0A001F5301 /* Nunito-SemiBold.ttf in Resources */,
 				84677AD0230BCE0A001F5301 /* Images.xcassets in Resources */,
+				4C945DCD233E6F5000825846 /* AppCenter-Config.plist in Resources */,
 				84677AD1230BCE0A001F5301 /* Nunito.ttf in Resources */,
 				84677AD3230BCE0A001F5301 /* FontAwesome.ttf in Resources */,
 				84677AD5230BCE0A001F5301 /* Montserrat.ttf in Resources */,
@@ -1823,6 +1840,7 @@
 				84677AFC230BCE94001F5301 /* Montserrat-Black.ttf in Resources */,
 				84677AFD230BCE94001F5301 /* FontAwesome.ttf in Resources */,
 				84677AFE230BCE94001F5301 /* Nunito-SemiBold.ttf in Resources */,
+				4C945DCF233E6F5000825846 /* AppCenter-Config.plist in Resources */,
 				84677AFF230BCE94001F5301 /* Nunito-Bold.ttf in Resources */,
 				84677B00230BCE94001F5301 /* Images.xcassets in Resources */,
 				84677B02230BCE94001F5301 /* Nunito.ttf in Resources */,
@@ -1841,6 +1859,7 @@
 				84677B29230BCECC001F5301 /* Montserrat-Black.ttf in Resources */,
 				84677B2A230BCECC001F5301 /* FontAwesome.ttf in Resources */,
 				84677B2B230BCECC001F5301 /* Nunito-SemiBold.ttf in Resources */,
+				4C945DD0233E6F5000825846 /* AppCenter-Config.plist in Resources */,
 				84677B2C230BCECC001F5301 /* Nunito-Bold.ttf in Resources */,
 				84677B2D230BCECC001F5301 /* Images.xcassets in Resources */,
 				84677B2F230BCECC001F5301 /* Nunito.ttf in Resources */,
@@ -1859,6 +1878,7 @@
 				84677B56230BCF01001F5301 /* Montserrat-Black.ttf in Resources */,
 				84677B57230BCF01001F5301 /* FontAwesome.ttf in Resources */,
 				84677B58230BCF01001F5301 /* Nunito-SemiBold.ttf in Resources */,
+				4C945DD1233E6F5000825846 /* AppCenter-Config.plist in Resources */,
 				84677B59230BCF01001F5301 /* Nunito-Bold.ttf in Resources */,
 				84677B5A230BCF01001F5301 /* Images.xcassets in Resources */,
 				84677B5C230BCF01001F5301 /* Nunito.ttf in Resources */,
@@ -1877,6 +1897,7 @@
 				84677B83230BCF37001F5301 /* Montserrat-Black.ttf in Resources */,
 				84677B84230BCF37001F5301 /* FontAwesome.ttf in Resources */,
 				84677B85230BCF37001F5301 /* Nunito-SemiBold.ttf in Resources */,
+				4C945DD2233E6F5000825846 /* AppCenter-Config.plist in Resources */,
 				84677B86230BCF37001F5301 /* Nunito-Bold.ttf in Resources */,
 				84677B87230BCF37001F5301 /* Images.xcassets in Resources */,
 				84677B89230BCF37001F5301 /* Nunito.ttf in Resources */,
@@ -1895,6 +1916,7 @@
 				8480856722D9B52500D7D25B /* Montserrat-Black.ttf in Resources */,
 				844B13382301654300A82DAA /* FontAwesome.ttf in Resources */,
 				8480856822D9B52500D7D25B /* Nunito-SemiBold.ttf in Resources */,
+				4C945DCE233E6F5000825846 /* AppCenter-Config.plist in Resources */,
 				844B132D2301654300A82DAA /* Nunito-Bold.ttf in Resources */,
 				8480856922D9B52500D7D25B /* Images.xcassets in Resources */,
 				8480856A22D9B52500D7D25B /* Nunito.ttf in Resources */,

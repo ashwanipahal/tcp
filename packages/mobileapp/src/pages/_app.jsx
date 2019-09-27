@@ -32,7 +32,7 @@ export class App extends React.PureComponent {
     apiConfig: null,
   };
 
-  componentWillMount() {
+  UNSAFE_componentWillMount() {
     this.store = initializeStore();
     const { appType } = this.props;
 
