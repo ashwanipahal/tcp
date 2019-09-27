@@ -68,7 +68,13 @@ class ReviewPage extends React.PureComponent {
         <ScrollView>
           <Container>
             <CheckoutSectionTitleDisplay title={header} />
-            {!!orderHasPickUp && <PickUpReviewSectionContainer />}
+            {!!orderHasPickUp && (
+              <PickUpReviewSectionContainer
+                onEdit={() => {
+                  navigation.navigate(CONSTANTS.CHECKOUT_ROUTES_NAMES.CHECKOUT_PICKUP);
+                }}
+              />
+            )}
             {!!orderHasShipping && <TextSection>{shippingSectionTitle}</TextSection>}
             <TextSection>{billingSectionTitle}</TextSection>
           </Container>
