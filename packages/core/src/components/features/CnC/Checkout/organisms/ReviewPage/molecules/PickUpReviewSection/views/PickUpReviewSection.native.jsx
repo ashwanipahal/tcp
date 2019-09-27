@@ -8,6 +8,7 @@ import {
   SectionOne,
   SectionTwo,
   SectionThree,
+  TitlePlusContainer,
 } from '../styles/PickUpReviewSection.style.native';
 import TitlePlusEditButton from '../../TitlePlusEditButton';
 import PickupStoreDisplay from '../../PickUpStoreDisplay';
@@ -112,12 +113,14 @@ export class PickUpReviewSection extends React.PureComponent {
     return (
       <Container>
         <SectionOne>
-          <TitlePlusEditButton
-            title={title}
-            editTitle={edit}
-            onEdit={onEdit}
-            dataLocator="pickup-section"
-          />
+          <TitlePlusContainer>
+            <TitlePlusEditButton
+              title={title}
+              editTitle={edit}
+              onEdit={onEdit}
+              dataLocator="pickup-section"
+            />
+          </TitlePlusContainer>
           <BodyCopy
             dataLocator="pickup-section-heading-lbl"
             fontSize="fs16"
@@ -142,9 +145,9 @@ export class PickUpReviewSection extends React.PureComponent {
           <View>
             <BodyCopy
               fontSize="fs16"
-              fontFamily="secondary"
+              mobileFontFamily="secondary"
               className="pickupTitle"
-              fontWeight="extrabold"
+              fontWeight="semibold"
               color="gray.900"
               text={title}
             />
@@ -154,9 +157,9 @@ export class PickUpReviewSection extends React.PureComponent {
             <View>
               <BodyCopy
                 fontSize="fs16"
-                fontFamily="secondary"
+                mobileFontFamily="secondary"
                 className="pickupTitle"
-                fontWeight="extrabold"
+                fontWeight="semibold"
                 color="gray.900"
                 text={alternate}
               />

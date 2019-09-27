@@ -7,6 +7,10 @@ const Header = styled.View`
   margin-bottom: ${props => props.theme.spacing.LAYOUT_SPACING.SM};
 `;
 
+const FontStyle = styled.Text`
+  font-weight: ${props => props.theme.typography.fontWeights.regular};
+`;
+
 const EditAnchor = styled.View`
   margin-left: ${props => props.theme.spacing.LAYOUT_SPACING.XS};
   align-self: flex-end;
@@ -15,4 +19,4 @@ const ContactBody = styled.View`
   margin-bottom: ${props => props.theme.spacing.LAYOUT_SPACING.MED};
 `;
 
-export { Header, EditAnchor, ContactBody };
+export { Header, EditAnchor, FontStyle, ContactBody };

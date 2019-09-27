@@ -19,7 +19,7 @@ class TitlePlusEditButton extends React.PureComponent {
         <BodyCopy
           fontSize="fs26"
           dataLocator={`review-${dataLocator}-heading`}
-          fontFamily="primary"
+          mobileFontFamily="primary"
           color="gray.900"
           fontWeight="regular"
           text={title}
@@ -27,9 +27,9 @@ class TitlePlusEditButton extends React.PureComponent {
         <EditAnchor>
           <Anchor
             underline
-            anchorVariation="secondary"
+            anchorVariation="primary"
             fontSize="fs12"
-            fontFamily="secondary"
+            mobileFontFamily="secondary"
             dataLocator={`review-${dataLocator}-edit-anchor`}
             onPress={this.handleClick}
             color="gray.900"

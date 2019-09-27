@@ -3,7 +3,6 @@ import styled from 'styled-components';
 const Header = styled.View`
   display: flex;
   flex-direction: row;
-  margin-bottom: ${props => props.theme.spacing.ELEM_SPACING.LRG};
 `;
 
 const EditAnchor = styled.View`

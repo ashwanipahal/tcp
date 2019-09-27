@@ -6,6 +6,7 @@ const PickupStoreDetails = styled.View`
   flex-direction: row;
   border: solid 1px ${props => props.theme.colors.BORDER.NORMAL};
   background-color: ${props => props.theme.colors.WHITE};
+  margin-bottom: ${props => props.theme.spacing.ELEM_SPACING.MED};
 `;
 
 const PickupStoreIcon = styled.View`

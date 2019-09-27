@@ -1,5 +1,5 @@
 import React from 'react';
-import { View, Text } from 'react-native';
+import { View } from 'react-native';
 import PropTypes from 'prop-types';
 import withStyles from '../../../../../../../../common/hoc/withStyles';
 import BodyCopy from '../../../../../../../../common/atoms/BodyCopy';
@@ -35,8 +35,9 @@ const PickupStoreDisplay = props => {
   const today = getTranslateDateInformation('', apiConfig.language);
   const bossDate =
     !!(bossStartDate && bossEndDate) &&
-    `${bossStartDate.day}. ${bossStartDate.month}
-    ${bossStartDate.date} - ${bossEndDate.day}. ${bossEndDate.month} ${bossEndDate.date}`;
+    `${bossStartDate.day}. ${bossStartDate.month} ${bossStartDate.date} - ${bossEndDate.day}. ${
+      bossEndDate.month
+    } ${bossEndDate.date}`;
   const bopisDate = `${pickupToday} ${today.month} ${today.date}`;
   bossItems = bossItems || storeItemsCount;
   bopisItems = bopisItems || storeItemsCount;
@@ -49,23 +50,20 @@ const PickupStoreDisplay = props => {
       <PickupStoreIcon>
         <Image source={pickupIcon} height="25px" width="19px" />
       </PickupStoreIcon>
-
       <View>
-        <Text>{pickupIcon}</Text>
         <BodyCopy
           fontSize="fs14"
-          dataLocator=""
+          dataLocator="pickup-section-store-name"
           color="gray.900"
-          fontFamily="secondary"
-          fontWeight="extrabold"
+          mobileFontFamily="secondary"
+          fontWeight="semibold"
           text={store}
         />
-
         <BodyCopy
           fontSize="fs12"
-          dataLocator=""
+          dataLocator="pickup-section-store-address"
           color="gray.900"
-          fontFamily="secondary"
+          mobileFontFamily="secondary"
           fontWeight="regular"
           text={addressLine1}
         />
@@ -73,18 +71,18 @@ const PickupStoreDisplay = props => {
           <PickupStoreMargin>
             <BodyCopy
               fontSize="fs14"
-              dataLocator=""
-              fontFamily="secondary"
-              fontWeight="extrabold"
+              dataLocator="pickup-section-store-bopis-title"
+              mobileFontFamily="secondary"
+              fontWeight="semibold"
               color="gray.900"
               text={`${title} ${bopisItems} ${bopisItemDisplay}`}
             />
 
             <BodyCopy
               fontSize="fs12"
-              dataLocator=""
+              dataLocator="pickup-section-store-bopis-date"
               color="gray.900"
-              fontFamily="secondary"
+              mobileFontFamily="secondary"
               fontWeight="regular"
               text={bopisDate}
             />
@@ -94,18 +92,18 @@ const PickupStoreDisplay = props => {
           <PickupStoreMargin>
             <BodyCopy
               fontSize="fs14"
-              dataLocator=""
-              fontFamily="secondary"
-              fontWeight="extrabold"
+              dataLocator="pickup-section-store-boss-title"
+              mobileFontFamily="secondary"
+              fontWeight="semibold"
               color="gray.900"
               text={`${title} ${bopisItems} ${bossItemDisplay}`}
             />
 
             <BodyCopy
               fontSize="fs12"
-              dataLocator=""
+              dataLocator="pickup-section-store-boss-date"
               color="gray.900"
-              fontFamily="secondary"
+              mobileFontFamily="secondary"
               fontWeight="regular"
               text={bossDate}
             />
