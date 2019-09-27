@@ -13,13 +13,13 @@ const Abstractor = {
    * @return {Object} return Promise.
    */
   getData: params => {
-    // TODO: Need to config if country need to pick from Env variable
     const { country } = getAPIConfig();
     const { id, count = 7 } = params;
 
     const payload = {
       body: {
         username: 'thechildrensplace',
+        // TODO: Need to config if country need to pick from Env variable
         region: country,
         total: count,
         item_number: id,
