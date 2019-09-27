@@ -3,6 +3,7 @@
 exports[`EarnExtraPointsTileContainer View should render EarnExtraPointsTileContainer Correctly 1`] = `
 <Styled(EarnExtraPointsTile)
   getEarnExtraPointsListAction={[Function]}
+  isAccountOverview={false}
   labels={Object {}}
   waysToEarn={Array []}
 />

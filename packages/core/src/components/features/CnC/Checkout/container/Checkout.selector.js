@@ -208,7 +208,7 @@ function getIsSmsUpdatesEnabled() {
   return getAPIConfig().isSmsUpdatesEnabled || true;
 }
 
-function isUsSite() {
+export function isUsSite() {
   return getCurrentSiteId() === constants.ROUTING_CONST.siteIds.us;
 }
 
@@ -775,7 +775,9 @@ const getIsVenmoEnabled = state => {
 };
 
 const getCurrentLanguage = state => {
-  return state.CountrySelector.get('language') || constants.DEFAULT_LANGUAGE;
+  return (
+    (state.CountrySelector && state.CountrySelector.get('language')) || constants.DEFAULT_LANGUAGE
+  );
 };
 
 const getReviewPageLabels = state =>

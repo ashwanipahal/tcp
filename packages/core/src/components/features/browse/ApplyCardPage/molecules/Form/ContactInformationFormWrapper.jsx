@@ -8,6 +8,7 @@ import {
   SelectBox,
   TextBox,
 } from '@tcp/core/src/components/common/atoms';
+import { getAddressFromPlace } from '@tcp/core/src/utils';
 import PropTypes from 'prop-types';
 import {
   CAcountriesStatesTable,
@@ -44,7 +45,7 @@ class ContactInformationFormWrapper extends React.Component {
    */
   handlePlaceSelected = (place, inputValue) => {
     const { dispatch } = this.props;
-    const address = AutoCompleteComponent.getAddressFromPlace(place, inputValue);
+    const address = getAddressFromPlace(place, inputValue);
     dispatch(change('PLCCForm', 'city', address.city));
     dispatch(change('PLCCForm', 'noCountryZip', address.zip));
     dispatch(change('PLCCForm', 'statewocountry', address.state));

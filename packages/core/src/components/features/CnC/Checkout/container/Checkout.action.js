@@ -478,3 +478,13 @@ export const getSetIntlUrl = internationalUrl => {
     type: 'CHECKOUT_ORDER_OPTIONS_SET_INTL_URL',
   };
 };
+
+/**
+ * @function resetCheckoutReducer
+ * action creator for type: RESET_CHECKOUT_REDUCER
+ */
+export const resetCheckoutReducer = () => {
+  return {
+    type: constants.RESET_CHECKOUT_REDUCER,
+  };
+};

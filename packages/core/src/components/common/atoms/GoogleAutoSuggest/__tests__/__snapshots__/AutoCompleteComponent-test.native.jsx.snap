@@ -46,6 +46,7 @@ exports[`AutoCompleteComponent Native should render correctly 1`] = `
       Object {
         "components": "country:undefined",
         "key": undefined,
+        "types": "address",
       }
     }
     renderDescription={[Function]}

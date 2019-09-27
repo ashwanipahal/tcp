@@ -4,6 +4,7 @@ import {
   isValidDate,
   childOptionsMap,
   formatPhoneNumber,
+  getAddressFromPlace,
 } from '../utils';
 
 const formattedDate = '01/01/1970';
@@ -110,5 +111,31 @@ describe('formatPhoneNumner', () => {
   it('should format the phone number correctly with area code in brackets', () => {
     const phone = formatPhoneNumber('7182431150');
     expect(phone).toBe(formattedPhoneNumber);
+  });
+});
+
+describe('getAddressFromPlace', () => {
+  it('should return the initial address if address_components is undefined', () => {
+    const address = getAddressFromPlace({}, '');
+    expect(address.streetNumber).toBe('');
+  });
+
+  it('should return streetNumber correctly', () => {
+    const address = getAddressFromPlace(
+      {
+        address_components: [
+          {
+            types: ['street_number'],
+            short_name: '1000',
+          },
+          {
+            types: ['route'],
+            long_name: 'test',
+          },
+        ],
+      },
+      ''
+    );
+    expect(address.street).toBe('1000 test');
   });
 });

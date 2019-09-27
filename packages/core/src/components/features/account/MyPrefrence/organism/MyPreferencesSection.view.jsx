@@ -50,6 +50,7 @@ class MyPrefrenceSection extends React.PureComponent {
               fontFamily="secondary"
               fontSize="fs16"
               fontWeight="extrabold"
+              data-locator="mypreference-socialaccountheader"
             >
               {getLabelValue(labels, 'lbl_prefrence_social_account')}
             </BodyCopy>
@@ -142,9 +143,8 @@ class MyPrefrenceSection extends React.PureComponent {
                   <Field
                     name="primary"
                     component={InputCheckbox}
-                    dataLocator="InputCheckbox"
+                    dataLocator="mypreference-apptcpcheckbox"
                     className="elm-padding-top"
-                    data-locator="mypreference-apptcpcheckbox"
                   >
                     <BodyCopy
                       fontSize="fs14"
@@ -159,9 +159,8 @@ class MyPrefrenceSection extends React.PureComponent {
                   <Field
                     name="primary"
                     component={InputCheckbox}
-                    dataLocator="InputCheckbox"
+                    dataLocator="mypreference-appgymcheckbox"
                     className="elm-padding-top"
-                    data-locator="mypreference-appgymcheckbox"
                   >
                     <BodyCopy
                       fontSize="fs14"
@@ -195,32 +194,20 @@ class MyPrefrenceSection extends React.PureComponent {
                   <Field
                     name="primary"
                     component={InputCheckbox}
-                    dataLocator="InputCheckbox"
+                    dataLocator="mypreference-texttcpcheckbox"
                     className="elm-padding-top"
-                    data-locator="mypreference-apptcpcheckbox"
                   >
-                    <BodyCopy
-                      fontSize="fs14"
-                      data-locator="mypreference-texttcpcheckbox"
-                      fontFamily="secondary"
-                      component="span"
-                    >
+                    <BodyCopy fontSize="fs14" fontFamily="secondary" component="span">
                       {getLabelValue(labels, 'lbl_prefrence_tcp_label')}
                     </BodyCopy>
                   </Field>
                   <Field
                     name="primary"
                     component={InputCheckbox}
-                    dataLocator="InputCheckbox"
+                    dataLocator="mypreference-textgymcheckbox"
                     className="elm-padding-top"
-                    data-locator="mypreference-appgymcheckbox"
                   >
-                    <BodyCopy
-                      fontSize="fs14"
-                      data-locator="mypreference-textgymcheckbox"
-                      fontFamily="secondary"
-                      component="span"
-                    >
+                    <BodyCopy fontSize="fs14" fontFamily="secondary" component="span">
                       {getLabelValue(labels, 'lbl_prefrence_gym_label')}
                     </BodyCopy>
                   </Field>

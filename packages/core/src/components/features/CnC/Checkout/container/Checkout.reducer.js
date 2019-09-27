@@ -135,6 +135,8 @@ function uiGiftCardFlagReducer(checkout, action) {
       return checkout.setIn(['values', 'addGiftCardError'], null);
     case CheckoutConstants.RESET_ADD_GIFT_CARD_SUCCESS:
       return checkout.setIn(['values', 'addGiftCardResponse'], null);
+    case CheckoutConstants.RESET_CHECKOUT_REDUCER:
+      return initialState;
     default:
       return paypalReducer(checkout, action);
   }
