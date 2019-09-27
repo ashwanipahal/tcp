@@ -7,7 +7,10 @@ import checkoutSelectors, {
   isGuest as isGuestUser,
 } from '../../../../../container/Checkout.selector';
 import billingSectionSelectors from './BillingSection.selectors';
-import { modes } from '../../../../../../../../common/atoms/VenmoPaymentButton/container/VenmoPaymentButton.util';
+import {
+  modes,
+  constants as VenmoConstants,
+} from '../../../../../../../../common/atoms/VenmoPaymentButton/container/VenmoPaymentButton.util';
 import { setVenmoPaymentOptionSave } from '../../../../../container/Checkout.action';
 
 /**
@@ -52,23 +55,29 @@ class BillingSectionContainer extends PureComponent {
 /* istanbul ignore next */
 export const mapStateToProps = state => {
   const { address } = checkoutSelectors.getBillingValues(state);
-
-  const venmoClientTokenData = checkoutSelectors.getVenmoClientTokenData(state);
+  const {
+    getVenmoClientTokenData,
+    getIsVenmoEnabled,
+    isVenmoNonceNotExpired,
+    isVenmoPaymentInProgress,
+    getVenmoData,
+  } = checkoutSelectors;
+  const venmoClientTokenData = getVenmoClientTokenData(state);
   const { venmoPaymentTokenAvailable } = venmoClientTokenData || {};
   const mode = venmoPaymentTokenAvailable === 'TRUE' ? modes.PAYMENT_TOKEN : modes.CLIENT_TOKEN;
-  const enabled = checkoutSelectors.getIsVenmoEnabled(state);
-  // const isNonceNotExpired = checkoutSelectors.isVenmoNonceNotExpired(state);
-  const venmoPaymentInProgress = checkoutSelectors.isVenmoPaymentInProgress();
+  const enabled = getIsVenmoEnabled(state);
+  const isNonceNotExpired = isVenmoNonceNotExpired(state);
+  const venmoPaymentInProgress = isVenmoPaymentInProgress();
   const isGuest = isGuestUser(state);
-  const venmoData = checkoutSelectors.getVenmoData();
+  const venmoData = getVenmoData();
   const userName = (venmoData && venmoData.details && venmoData.details.username) || '';
 
   const venmoPayment = {
-    ccBrand: 'VENMO',
-    ccType: 'VENMO',
+    ccBrand: VenmoConstants.VENMO,
+    ccType: VenmoConstants.VENMO,
     userName,
     venmoSaveToAccountDisplayed: !isGuest && mode === modes.CLIENT_TOKEN,
-    isVenmoPaymentSelected: enabled && venmoPaymentInProgress,
+    isVenmoPaymentSelected: enabled && venmoPaymentInProgress && isNonceNotExpired,
   };
 
   return {

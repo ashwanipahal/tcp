@@ -1,4 +1,4 @@
-import React, { Fragment } from 'react';
+import React, { Fragment, PureComponent } from 'react';
 import PropTypes from 'prop-types';
 import withStyles from '@tcp/core/src/components/common/hoc/withStyles';
 import { Anchor, BodyCopy, Col, Row } from '@tcp/core/src/components/common/atoms';
@@ -25,7 +25,7 @@ const renderCardNumber = (card, labels) =>
  * @param {Object} props
  * @description Billing Section functional component
  */
-export class BillingSection extends React.PureComponent {
+export class BillingSection extends PureComponent {
   constructor(props) {
     super(props);
     this.state = {
@@ -39,8 +39,9 @@ export class BillingSection extends React.PureComponent {
   handleVenmoPaymentSaveChange = () => {
     const { saveVenmoPaymentOption } = this.props;
     const { saveVenmoPayment } = this.state;
-    this.setState({ saveVenmoPayment: !saveVenmoPayment });
-    saveVenmoPaymentOption(!saveVenmoPayment);
+    this.setState({ saveVenmoPayment: !saveVenmoPayment }, ({ payment }) =>
+      saveVenmoPaymentOption(payment)
+    );
   };
 
   render() {
@@ -136,7 +137,7 @@ export class BillingSection extends React.PureComponent {
               </section>
 
               <div className="venmo-save-wrapper">
-                {venmoPayment.venmoSaveToAccountDisplayed === true && (
+                {venmoPayment.venmoSaveToAccountDisplayed && (
                   <InputCheckbox
                     component={InputCheckbox}
                     className="venmo-save-checkbox"

@@ -126,7 +126,6 @@ export function* loadPersonalizedCoupons(
 }
 
 export function* submitOrderProcessing(orderId, smsOrderInfo, currentLanguage) {
-  // return reviewOrder().then((res) => {
   let venmoPayloadData = {};
   const isVenmoInProgress = yield select(selectors.isVenmoPaymentInProgress);
   const isVenmoSaveSelected = yield select(selectors.isVenmoPaymentSaveSelected);

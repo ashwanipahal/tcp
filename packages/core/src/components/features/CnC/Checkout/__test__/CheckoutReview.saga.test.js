@@ -15,6 +15,7 @@ import { isMobileApp, routerPush } from '../../../../../utils';
 import { resetCheckoutReducer } from '../container/Checkout.action';
 import { resetAirmilesReducer } from '../../common/organism/AirmilesBanner/container/AirmilesBanner.actions';
 import { resetCouponReducer } from '../../common/organism/CouponAndPromos/container/Coupon.actions';
+import { getUserEmail } from '../../../account/User/container/User.selectors';
 
 jest.mock('../../../../../utils', () => ({
   isMobileApp: jest.fn(),
@@ -86,6 +87,13 @@ describe('submitOrderProcessing saga', () => {
     expect(orderProcessing.next(true).value).toEqual(
       call(validateAndSubmitEmailSignup, emailAddress, 'us_guest_checkout')
     );
+  });
+  it('submitOrderProcessing review Page with venmo', () => {
+    const orderProcessing = submitOrderProcessing();
+    orderProcessing.next(true);
+    orderProcessing.next(true);
+    orderProcessing.next({ nonce: 'encrypted-nonce', deviceData: 'test-device-data' });
+    expect(orderProcessing.next('gagandsb').value).toEqual(call(getUserEmail));
   });
 });
 describe('loadPersonalizedCoupons saga', () => {

@@ -38,7 +38,6 @@ import { getUserInfo } from '../../../account/User/container/User.actions';
 import { getIsInternationalShipping } from '../../../../../reduxStore/selectors/session.selectors';
 import { closeMiniBag } from '../../../../common/organisms/Header/container/Header.actions';
 import { addToCartEcom } from '../../AddedToBag/container/AddedToBag.actions';
-import { hasVenmoReviewPageRedirect } from './BagPage.saga.util';
 
 // external helper function
 const PAYPAL_REDIRECT_PARAM = 'isPaypalPostBack';
@@ -187,7 +186,8 @@ export function* fetchModuleX({ payload = [] }) {
  * @param {Boolean} closeModal for closing addedtoBag modal in app
  */
 export function* routeForCartCheckout(recalc, navigation, closeModal, navigationActions) {
-  const orderHasPickup = yield select(checkoutSelectors.getIsOrderHasPickup);
+  const { hasVenmoReviewPageRedirect, getIsOrderHasPickup } = checkoutSelectors;
+  const orderHasPickup = yield select(getIsOrderHasPickup);
   const IsInternationalShipping = yield select(getIsInternationalShipping);
   if (isMobileApp()) {
     if (orderHasPickup) {
@@ -220,7 +220,7 @@ export function* routeForCartCheckout(recalc, navigation, closeModal, navigation
     }
   } else if (!IsInternationalShipping) {
     yield put(closeMiniBag());
-    const hasVenmoReviewPage = yield call(hasVenmoReviewPageRedirect, orderHasPickup);
+    const hasVenmoReviewPage = yield select(hasVenmoReviewPageRedirect);
     if (hasVenmoReviewPage) {
       utility.routeToPage(CHECKOUT_ROUTES.reviewPage, { recalc });
       return;
