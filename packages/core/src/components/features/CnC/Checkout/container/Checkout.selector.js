@@ -208,7 +208,7 @@ function getIsSmsUpdatesEnabled() {
   return getAPIConfig().isSmsUpdatesEnabled || true;
 }
 
-function isUsSite() {
+export function isUsSite() {
   return getCurrentSiteId() === constants.ROUTING_CONST.siteIds.us;
 }
 

@@ -8,7 +8,26 @@ import AirmilesBanner from '../../AirmilesBanner';
 import CouponAndPromos from '../../CouponAndPromos';
 import BonusPointsDays from '../../../../../../common/organisms/BonusPointsDays';
 
+/** The hard coded values are just to show the confirmation template. these will be removed once the components are are in place */
 import styles from '../styles/CnCTemplate.style';
+
+const getBagActions = ({ BagActions }) => {
+  return BagActions && <BagActions />;
+};
+
+const getBonusPointsDaysSection = ({ isGuest, showAccordian }) => {
+  return (
+    !isGuest && (
+      <div
+        className={`${
+          showAccordian ? 'bonusPointsDaysWrapperAccordian' : 'bonusPointsDaysWrapper'
+        } elem-mb-MED`}
+      >
+        <BonusPointsDays showAccordian={showAccordian} enableApplyCta />
+      </div>
+    )
+  );
+};
 
 const CnCTemplate = ({
   leftSection: LeftSection,
@@ -20,6 +39,7 @@ const CnCTemplate = ({
   isCheckoutView,
   showAccordian,
   isNonEmptySFL,
+  isConfirmationPage,
 }) => {
   const isSmallLeftSection = isNonEmptySFL || showLeftSection;
   return (
@@ -41,19 +61,29 @@ const CnCTemplate = ({
             colSize={{ small: 6, medium: 3, large: 4 }}
             className={`right-sec ${isCheckoutView ? 'hide-mobile' : ''}`}
           >
-            <OrderLedgerContainer />
-            {BagActions && <BagActions />}
-            {!isGuest && (
-              <div
-                className={`${
-                  showAccordian ? 'bonusPointsDaysWrapperAccordian' : 'bonusPointsDaysWrapper'
-                } elem-mb-MED`}
-              >
-                <BonusPointsDays showAccordian={showAccordian} enableApplyCta />
-              </div>
+            {isConfirmationPage ? (
+              <>
+                <OrderLedgerContainer />
+                <Row fullBleed className="placeholder-right">
+                  <Col colSize={{ small: 6, medium: 8, large: 12 }}>
+                    <div>COUPONS</div>
+                  </Col>
+                </Row>
+                <Row fullBleed className="placeholder-right">
+                  <Col colSize={{ small: 6, medium: 8, large: 12 }}>
+                    <div>COUPONS</div>
+                  </Col>
+                </Row>
+              </>
+            ) : (
+              <>
+                <OrderLedgerContainer />
+                {getBagActions({ BagActions })}
+                {getBonusPointsDaysSection({ isGuest, showAccordian })}
+                <AirmilesBanner />
+                <CouponAndPromos showAccordian={showAccordian} />
+              </>
             )}
-            <AirmilesBanner />
-            <CouponAndPromos showAccordian={showAccordian} />
           </Col>
         )}
       </Row>
@@ -72,6 +102,7 @@ CnCTemplate.propTypes = {
   showAccordian: PropTypes.bool,
   isNonEmptySFL: PropTypes.bool,
   isCheckoutView: PropTypes.bool,
+  isConfirmationPage: PropTypes.bool,
 };
 
 CnCTemplate.defaultProps = {
@@ -81,6 +112,7 @@ CnCTemplate.defaultProps = {
   showAccordian: true,
   isNonEmptySFL: true,
   isCheckoutView: false,
+  isConfirmationPage: false,
 };
 
 export default withStyles(CnCTemplate, styles);
