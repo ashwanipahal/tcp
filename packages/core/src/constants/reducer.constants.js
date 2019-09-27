@@ -3,7 +3,6 @@ export const FOOTER_REDUCER_KEY = 'Footer';
 export const LABEL_REDUCER_KEY = 'Labels';
 export const LAYOUT_REDUCER_KEY = 'Layouts';
 export const MODULES_REDUCER_KEY = 'Modules';
-export const HOMEPAGE_REDUCER_KEY = 'HomePage';
 export const NAVIGATION_REDUCER_KEY = 'Navigation';
 export const PRODUCT_LISTING_REDUCER_KEY = 'ProductListing';
 export const PRODUCTLISTING_ACTION_PATTERN = '@@PLP-';

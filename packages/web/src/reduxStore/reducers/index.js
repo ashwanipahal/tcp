@@ -25,7 +25,6 @@ import CreateAccountReducer from '@tcp/core/src/components/features/account/Crea
 import BonusPointsDaysReducer from '@tcp/core/src/components/common/organisms/BonusPointsDays/container/BonusPointsDays.reducer';
 import CouponsReducer from '@tcp/core/src/components/features/CnC/common/organism/CouponAndPromos/container/Coupon.reducer';
 import AirmilesBannerReducer from '@tcp/core/src/components/features/CnC/common/organism/AirmilesBanner/container/AirmilesBanner.reducer';
-
 import AccountHeaderReducer from '@tcp/core/src/components/features/account/common/organism/AccountHeader/container/AccountHeader.reducer';
 import PointsHistoryReducer from '@tcp/core/src/components/features/account/common/organism/PointsHistory/container/PointsHistory.reducer';
 import EarnExtraPointsReducer from '@tcp/core/src/components/features/account/common/organism/EarnExtraPointsTile/container/EarnExtraPointsTile.reducer';
@@ -61,7 +60,6 @@ import {
   FOOTER_REDUCER_KEY,
   LABEL_REDUCER_KEY,
   LAYOUT_REDUCER_KEY,
-  HOMEPAGE_REDUCER_KEY,
   LOADER_REDUCER_KEY,
   LOGINPAGE_REDUCER_KEY,
   PRODUCTLISTINGPAGE_REDUCER_KEY,
@@ -121,7 +119,6 @@ import NavigationReducer from '@tcp/core/src/components/features/content/Navigat
 import AddedToBagReducer from '@tcp/core/src/components/features/CnC/AddedToBag/container/AddedToBag.reducer';
 import UserReducer from '@tcp/core/src/components/features/account/User/container/User.reducer';
 import ToastMessageReducer from '@tcp/core/src/components/common/atoms/Toast/container/Toast.reducer.native';
-import HomePageReducer from '../../components/features/content/HomePage/container/HomePage.reducer';
 import LoaderReducer from '../../components/features/content/Loader/container/Loader.reducer';
 import EmailSignupReducer from '../../components/common/molecules/EmailSignupModal/container/EmailSignupModal.reducer';
 import CountrySelectorReducer from '../../components/features/content/Header/molecules/CountrySelector/container/CountrySelector.reducer';
@@ -176,7 +173,6 @@ export default combineReducers({
   [LABEL_REDUCER_KEY]: LabelReducer,
   [LAYOUT_REDUCER_KEY]: LayoutReducer,
   [MODULES_REDUCER_KEY]: ModulesReducer,
-  [HOMEPAGE_REDUCER_KEY]: HomePageReducer,
   [LOADER_REDUCER_KEY]: LoaderReducer,
   [SEARCH_REDUCER_KEY]: SearchBarReducer,
   [PRODUCTLISTINGPAGE_REDUCER_KEY]: filteredProductListingPageReducer,
