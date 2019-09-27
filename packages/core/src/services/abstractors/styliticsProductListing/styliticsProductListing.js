@@ -1,7 +1,6 @@
 import mock from './mock';
 import { executeExternalAPICall } from '../../handler';
 import endpoints from '../../endpoints';
-import { getAPIConfig } from '../../../utils';
 
 /**
  * Abstractor layer for loading Product List Tabs data
@@ -13,14 +12,12 @@ const Abstractor = {
    * @return {Object} return Promise.
    */
   getData: params => {
-    const { country } = getAPIConfig();
     const { id, count = 7 } = params;
 
     const payload = {
       body: {
         username: 'thechildrensplace',
-        // TODO: Need to config if country need to pick from Env variable
-        region: country,
+        region: 'US',
         total: count,
         item_number: id,
       },
