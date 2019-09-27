@@ -35,7 +35,7 @@ import {
 import { removeCartItem } from '../../CartItemTile/container/CartItemTile.actions';
 import { imageGenerator } from '../../../../../services/abstractors/CnC/CartItemTile';
 import { getUserInfo } from '../../../account/User/container/User.actions';
-import { getIsInternationalShipping } from '../../../../../reduxStore/selectors/siteDetails.selectors';
+import { getIsInternationalShipping } from '../../../../../reduxStore/selectors/session.selectors';
 import { getAddressListState } from '../../../account/AddressBook/container/AddressBook.selectors';
 import { closeMiniBag } from '../../../../common/organisms/Header/container/Header.actions';
 import { addToCartEcom } from '../../AddedToBag/container/AddedToBag.actions';
@@ -417,6 +417,7 @@ export function* startSflItemMoveToBag({ payload }) {
         skuId: itemId,
       },
       quantity: 1,
+      fromMoveToBag: true,
     };
     yield put(addToCartEcom(addToCartData));
     yield put(BAG_PAGE_ACTIONS.getCartData());

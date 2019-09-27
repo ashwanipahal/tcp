@@ -11,6 +11,7 @@ import {
   PickerView,
   AndroidPickerView,
   iOSPickerButtonStyle,
+  NativeButtonStyledView,
 } from './styles/NativeDropDown.style.native';
 
 /**
@@ -122,7 +123,14 @@ class NativeDropDown extends React.PureComponent {
               <ModalOverlay />
             </ModalOutsideTouchable>
             <PickerView>
-              <NativeButton title="Done" onPress={this.selectItem} />
+              <NativeButtonStyledView>
+                <NativeButton
+                  title="Done"
+                  onPress={this.selectItem}
+                  accessibilityLabel="done"
+                  accessibilityRole="button"
+                />
+              </NativeButtonStyledView>
               <Picker
                 selectedValue={tempValue}
                 onValueChange={value => {

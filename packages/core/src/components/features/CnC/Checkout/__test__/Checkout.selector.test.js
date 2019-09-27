@@ -7,6 +7,7 @@ import CHECKOUT_SELECTORS, {
   getPickupAltValues,
   getCheckoutState,
   isRemembered,
+  isUsSite,
 } from '../container/Checkout.selector';
 
 import { isMobileApp, getViewportInfo, getAPIConfig } from '../../../../../utils';
@@ -388,7 +389,7 @@ describe('Checkout Selectors', () => {
     getAPIConfig.mockImplementation(() => {
       return { siteId: 'us' };
     });
-    expect(CHECKOUT_SELECTORS.isUsSite()).toEqual(true);
+    expect(isUsSite()).toEqual(true);
   });
   it('#isSmsUpdatesEnabled', () => {
     getAPIConfig.mockImplementation(() => {

@@ -33,12 +33,14 @@ const ModuleLTile = ({ tileData: { image, link, styled }, index, tileColor = {} 
           }}
           data-locator={`${getLocator('moduleL_tiles')}${index + 1}`}
         >
-          <DamImage
-            imgData={image}
-            imgConfigs={config.IMG_DATA.crops}
-            className="moduleL__tile-image"
-            data-locator={`${getLocator('moduleL_image')}${index + 1}`}
-          />
+          <div className="tile-image-wrapper">
+            <DamImage
+              imgData={image}
+              imgConfigs={config.IMG_DATA.crops}
+              className="moduleL__tile-image"
+              data-locator={`${getLocator('moduleL_image')}${index + 1}`}
+            />
+          </div>
           <div className="moduleL__tile-text">
             <BodyCopy
               component="div"

@@ -1,14 +1,21 @@
 import layoutAbstractor from '../layout';
-import HomePageLayout from '../mock';
+import HomePageLayoutMockResponse from '../mock';
 import ModuleDMock from '../../../common/moduleD/mock';
 import ModuleHMock from '../../../common/moduleH/mock';
 
 jest.mock('../../../../handler/handler');
 
 it('abstractor - layout | getLayoutData', () => {
-  return layoutAbstractor.getLayoutData('homepage').then(data => {
-    expect(data).toMatchObject(HomePageLayout.homepage.items);
-  });
+  return layoutAbstractor
+    .getLayoutData({
+      page: 'homepage',
+      brand: 'TCP',
+      channel: 'Desktop',
+      country: 'USA',
+    })
+    .then(data => {
+      expect(data).toMatchObject(HomePageLayoutMockResponse.homepage);
+    });
 });
 
 it('abstractor - layout | getModulesData', () => {
@@ -29,5 +36,5 @@ it('abstractor - layout | getModulesData', () => {
 
 it('abstractor - layout | getMock', () => {
   const mock = layoutAbstractor.getMock();
-  expect(mock).toMatchObject(HomePageLayout);
+  expect(mock).toMatchObject(HomePageLayoutMockResponse);
 });

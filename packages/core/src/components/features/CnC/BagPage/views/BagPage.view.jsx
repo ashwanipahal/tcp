@@ -15,13 +15,18 @@ class BagPageView extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
-      activeSection: BAGPAGE_CONSTANTS.BAG_STATE,
+      activeSection: null,
     };
   }
 
   componentDidMount() {
-    const { setVenmoPaymentInProgress } = this.props;
+    const { setVenmoPaymentInProgress, totalCount, sflItems } = this.props;
     setVenmoPaymentInProgress(false);
+
+    this.setState({
+      activeSection:
+        !totalCount && sflItems.size ? BAGPAGE_CONSTANTS.SFL_STATE : BAGPAGE_CONSTANTS.BAG_STATE,
+    });
   }
 
   renderLeftSection = () => {
