@@ -11,7 +11,7 @@ describe('ProductListTabsAbstractor', () => {
       return Promise.resolve(mock);
     });
 
-    return productListTabsAbstractor.getData({ categoryId: '2044392_10' }).then(data => {
+    return productListTabsAbstractor.getData({ id: '2044392_10' }).then(data => {
       expect(data).toMatchObject(mockResponse);
     });
   });
@@ -22,7 +22,7 @@ describe('ProductListTabsAbstractor', () => {
       return Promise.reject();
     });
 
-    return productListTabsAbstractor.getData({ categoryId: '348734' }).then(data => {
+    return productListTabsAbstractor.getData({ id: '2044392_10' }).then(data => {
       expect(data).toBeUndefined();
     });
   });
