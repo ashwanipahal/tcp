@@ -13,7 +13,7 @@ export default css`
     }
 
     @media ${props => props.theme.mediaQuery.large} {
-      padding: 0 15px 0 6px;
+      padding: 15px 15px 0 6px;
     }
 
     @media ${props => props.theme.mediaQuery.mediumMax} {
@@ -33,7 +33,6 @@ export default css`
   .header-topnav__track-order,
   .header-topnav__promo-area {
     float: left;
-    padding-top: 15px;
   }
 
   .header-topnav__brand-tabs {
