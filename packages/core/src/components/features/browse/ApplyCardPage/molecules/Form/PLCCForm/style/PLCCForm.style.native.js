@@ -1,6 +1,6 @@
 import styled from 'styled-components/native';
 
-import { BodyCopy, Image, Anchor } from '../../../../common/atoms';
+import { BodyCopy, Image, Anchor } from '../../../../../../../common/atoms';
 
 export const ImageContainer = styled.View`
   margin-top: ${props => props.theme.spacing.ELEM_SPACING.XS};

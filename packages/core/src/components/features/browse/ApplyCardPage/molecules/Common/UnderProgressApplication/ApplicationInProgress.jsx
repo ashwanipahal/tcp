@@ -1,9 +1,9 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import { BodyCopy, Button, Col, Row } from '../../../../../common/atoms';
-import ApplicationInProgressWrapper from './styles/ApplicationInProgress.style';
-import { getLabelValue } from '../../../../../../utils';
-import { redirectToBag, redirectToHome } from '../../utils/utility';
+import { BodyCopy, Button, Col, Row } from '../../../../../../common/atoms';
+import ApplicationInProgressWrapper from './style/ApplicationInProgress.style';
+import { getLabelValue } from '../../../../../../../utils';
+import { redirectToBag, redirectToHome } from '../../../utils/utility';
 
 /**
  * @const ApplicationInProgress

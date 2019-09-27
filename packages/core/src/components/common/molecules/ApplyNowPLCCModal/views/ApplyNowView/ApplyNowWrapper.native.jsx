@@ -35,9 +35,11 @@ class ApplyNowModalWrapper extends React.PureComponent {
 
   toggleApplyCard = () => {
     const { applyCard } = this.state;
+    const { resetPLCCApplicationStatus } = this.props;
     this.setState({
       applyCard: !applyCard,
     });
+    resetPLCCApplicationStatus({ status: null });
   };
 
   onClose = () => {
@@ -187,6 +189,7 @@ ApplyNowModalWrapper.propTypes = {
   }).isRequired,
   toggleModalWrapper: PropTypes.func.isRequired,
   fetchModuleXContent: PropTypes.func.isRequired,
+  resetPLCCApplicationStatus: PropTypes.func.isRequired,
 };
 
 export default ApplyNowModalWrapper;

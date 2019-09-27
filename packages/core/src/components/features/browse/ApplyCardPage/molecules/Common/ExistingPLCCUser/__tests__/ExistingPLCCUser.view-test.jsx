@@ -2,7 +2,7 @@ import React from 'react';
 import { shallow } from 'enzyme';
 import ExistingPLCCUserView from '../ExistingPLCCUser.view';
 
-jest.mock('../../../../../../../utils/utils.web', () => ({
+jest.mock('../../../../../../../../utils/utils.web', () => ({
   routerPush: jest.fn(),
 }));
 
