@@ -13,7 +13,7 @@ exports[`ApplicationInProgress component should renders correctly 1`] = `
         }
       }
       url=""
-      width="60%"
+      width="70%"
     />
   </Styled(View)>
   <Styled(Styled(BodyCopy))
@@ -25,10 +25,8 @@ exports[`ApplicationInProgress component should renders correctly 1`] = `
     fontWeight="regular"
     margin={null}
     numberOfLines={null}
-    paddingLeft="14px"
-    paddingRight="14px"
     paddingTop="32px"
-    text="lbl_PLCCForm_underProgress"
+    text="lbl_PLCCForm_congratulationsfirst!"
     textAlign="center"
     textDecoration={null}
   />
@@ -37,17 +35,123 @@ exports[`ApplicationInProgress component should renders correctly 1`] = `
     color="gray.900"
     dataLocator=""
     fontFamily="secondary"
-    fontSize="fs16"
+    fontSize="fs22"
     fontWeight="regular"
     margin={null}
     numberOfLines={null}
-    paddingLeft="14px"
-    paddingRight="14px"
-    paddingTop="24px"
-    text="lbl_PLCCForm_underProcessDetails"
+    text="lbl_PLCCForm_creditLimit $566"
     textAlign="center"
     textDecoration={null}
   />
+  <Styled(View)>
+    <RichText
+      domStorageEnabled={false}
+      javaScriptEnabled={false}
+      source={
+        Object {
+          "html": undefined,
+        }
+      }
+      thirdPartyCookiesEnabled={false}
+    />
+  </Styled(View)>
+  <Styled(View)>
+    <RichText
+      domStorageEnabled={false}
+      javaScriptEnabled={false}
+      source={
+        Object {
+          "html": undefined,
+        }
+      }
+      thirdPartyCookiesEnabled={false}
+    />
+  </Styled(View)>
+  <Styled(View) />
+  <Styled(Styled(BodyCopy))
+    accessibilityText=""
+    color="gray.900"
+    dataLocator=""
+    fontFamily="secondary"
+    fontSize="fs22"
+    fontWeight="regular"
+    margin={null}
+    numberOfLines={null}
+    paddingBottom="16px"
+    text="lbl_PLCCForm_welcomeOffer"
+    textAlign="center"
+    textDecoration={null}
+  />
+  <Styled(Styled(Styled(BodyCopy)))
+    accessibilityText=""
+    color="black"
+    dataLocator=""
+    fontFamily="secondary"
+    fontSize="fs22"
+    fontWeight="regular"
+    margin={null}
+    marginLeft="60px"
+    numberOfLines={null}
+    paddingBottom="16px"
+    paddingTop="16px"
+    text="xyz"
+    textAlign="center"
+    textDecoration={null}
+  />
+  <Styled(Styled(Styled(BodyCopy)))
+    accessibilityText=""
+    color="gray.900"
+    dataLocator=""
+    fontFamily="secondary"
+    fontSize="fs18"
+    fontWeight="regular"
+    margin={null}
+    numberOfLines={null}
+    paddingBottom="24px"
+    paddingTop="16px"
+    text="lbl_PLCCForm_copyToClipboard"
+    textAlign="center"
+    textDecoration={null}
+  />
+  <Styled(View)>
+    <Styled(Styled(ImageComp))
+      alt=""
+      height="125px"
+      host=""
+      source={
+        Object {
+          "testUri": "../../../../core/src/assets/promo.png",
+        }
+      }
+      url=""
+      width="158px"
+    />
+  </Styled(View)>
+  <Styled(View)>
+    <RichText
+      domStorageEnabled={false}
+      javaScriptEnabled={false}
+      source={
+        Object {
+          "html": undefined,
+        }
+      }
+      thirdPartyCookiesEnabled={false}
+    />
+  </Styled(View)>
+  <Styled(View) />
+  <Styled(View)>
+    <RichText
+      domStorageEnabled={false}
+      javaScriptEnabled={false}
+      source={
+        Object {
+          "html": "abc",
+        }
+      }
+      thirdPartyCookiesEnabled={false}
+    />
+  </Styled(View)>
   <Styled(View)>
     <Styled(CustomButton)
       active={false}
@@ -72,7 +176,7 @@ exports[`ApplicationInProgress component should renders correctly 1`] = `
       theme={Object {}}
       type="submit"
       url=""
-      width="90%"
+      width="100%"
     />
   </Styled(View)>
   <Styled(View)>
@@ -98,7 +202,7 @@ exports[`ApplicationInProgress component should renders correctly 1`] = `
       theme={Object {}}
       type="submit"
       url=""
-      width="90%"
+      width="100%"
     />
   </Styled(View)>
   <Styled(View)>
@@ -144,7 +248,7 @@ exports[`ApplicationInProgress component should renders correctly while having n
         }
       }
       url=""
-      width="60%"
+      width="70%"
     />
   </Styled(View)>
   <Styled(Styled(BodyCopy))
@@ -156,10 +260,8 @@ exports[`ApplicationInProgress component should renders correctly while having n
     fontWeight="regular"
     margin={null}
     numberOfLines={null}
-    paddingLeft="14px"
-    paddingRight="14px"
     paddingTop="32px"
-    text="lbl_PLCCForm_underProgress"
+    text="lbl_PLCCForm_congratulationsundefined!"
     textAlign="center"
     textDecoration={null}
   />
@@ -168,17 +270,38 @@ exports[`ApplicationInProgress component should renders correctly while having n
     color="gray.900"
     dataLocator=""
     fontFamily="secondary"
-    fontSize="fs16"
+    fontSize="fs22"
     fontWeight="regular"
     margin={null}
     numberOfLines={null}
-    paddingLeft="14px"
-    paddingRight="14px"
-    paddingTop="24px"
-    text="lbl_PLCCForm_underProcessDetails"
+    text="lbl_PLCCForm_creditLimit $undefined"
     textAlign="center"
     textDecoration={null}
   />
+  <Styled(View)>
+    <RichText
+      domStorageEnabled={false}
+      javaScriptEnabled={false}
+      source={
+        Object {
+          "html": undefined,
+        }
+      }
+      thirdPartyCookiesEnabled={false}
+    />
+  </Styled(View)>
+  <Styled(View)>
+    <RichText
+      domStorageEnabled={false}
+      javaScriptEnabled={false}
+      source={
+        Object {
+          "html": "xyz",
+        }
+      }
+      thirdPartyCookiesEnabled={false}
+    />
+  </Styled(View)>
   <Styled(View)>
     <Styled(CustomButton)
       active={false}
@@ -202,7 +325,7 @@ exports[`ApplicationInProgress component should renders correctly while having n
       theme={Object {}}
       type="submit"
       url=""
-      width="90%"
+      width="100%"
     />
   </Styled(View)>
   <Styled(View)>

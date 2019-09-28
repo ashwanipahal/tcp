@@ -493,7 +493,7 @@ class PLCCForm extends React.PureComponent<Props> {
 
         <CheckBoxContainerView>
           <CheckBoxImage>
-            <Field id="iAgree" component={InputCheckbox} enableSuccessCheck={false} />
+            <Field id="iAgree" name="iAgree" component={InputCheckbox} enableSuccessCheck={false} />
           </CheckBoxImage>
           <CheckMessageView>
             <StyledBodyCopy
@@ -504,14 +504,7 @@ class PLCCForm extends React.PureComponent<Props> {
               textAlign="left"
             />
             <FieldContainer>
-              <Field
-                label=""
-                component={TextBox}
-                title=""
-                type="hidden"
-                name="iAgree"
-                id="iAgree"
-              />
+              <Field label="" component={TextBox} title="" type="hidden" id="iAgree" />
             </FieldContainer>
           </CheckMessageView>
         </CheckBoxContainerView>

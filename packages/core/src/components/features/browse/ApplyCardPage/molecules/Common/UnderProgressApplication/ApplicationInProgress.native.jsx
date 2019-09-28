@@ -15,7 +15,7 @@ import { getLabelValue } from '../../../../../../../utils/utils';
 
 const headerImage = require('../../../../../../../assets/tcp-cc.png');
 
-const ApplicationInProgress = ({ labels, bagItems }) => {
+const ApplicationInProgress = ({ labels, bagItems, navigation, toggleModal }) => {
   return (
     <ScrollViewContainer>
       <ImageContainer>
@@ -50,6 +50,10 @@ const ApplicationInProgress = ({ labels, bagItems }) => {
             type="submit"
             fontWeight="regular"
             color="white"
+            onPress={() => {
+              toggleModal();
+              navigation.navigate('bag');
+            }}
             buttonVariation="variable-width"
             text={getLabelValue(labels, 'lbl_PLCCForm_checkout')}
             width="90%"
@@ -62,6 +66,9 @@ const ApplicationInProgress = ({ labels, bagItems }) => {
           type="submit"
           color={bagItems ? 'black' : 'white'}
           buttonVariation="variable-width"
+          onPress={() => {
+            navigation.navigate('Home');
+          }}
           text={getLabelValue(labels, 'lbl_PLCCForm_continueShopping')}
           width="90%"
         />
@@ -92,6 +99,8 @@ ApplicationInProgress.propTypes = {
     apply_now_link_modal: PropTypes.string,
   }).isRequired,
   bagItems: PropTypes.bool.isRequired,
+  navigation: PropTypes.func.isRequired,
+  toggleModal: PropTypes.func.isRequired,
 };
 
 export default ApplicationInProgress;
