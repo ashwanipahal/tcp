@@ -37,6 +37,7 @@ import ApplyCardReducer from '@tcp/core/src/components/features/browse/ApplyCard
 import ApplyNowModalPLCCReducer from '@tcp/core/src/components/common/molecules/ApplyNowPLCCModal/container/ApplyNowModal.reducer';
 import PointsClaimReducer from '@tcp/core/src/components/features/account/PointsClaim/container/PointsClaim.reducer';
 import SocialReducer from '@tcp/core/src/components/common/organisms/SocialAccount/container/Social.reducer';
+import orderConfirmationReducer from '@tcp/core/src/components/features/CnC/Confirmation/container/Confirmation.reducer';
 
 import {
   SESSIONCONFIG_REDUCER_KEY,
@@ -84,6 +85,7 @@ import {
   APPLY_PLCC_REDUCER_KEY,
   POINTS_CLAIM_REDUCER_KEY,
   SOCIAL_REDUCER_KEY,
+  CONFIRMATION_REDUCER_KEY,
 } from '@tcp/core/src/constants/reducer.constants';
 import HeaderReducer from '@tcp/core/src/components/common/organisms/Header/container/Header.reducer';
 import ModulesReducer from '@tcp/core/src/reduxStore/reducers/modules';
@@ -168,6 +170,7 @@ const rootReducer = combineReducers({
   [APPLY_PLCC_REDUCER_KEY]: ApplyCardReducer,
   [APPLY_NOW_MODAL_REDUCER_KEY]: ApplyNowModalPLCCReducer,
   [POINTS_CLAIM_REDUCER_KEY]: PointsClaimReducer,
+  [CONFIRMATION_REDUCER_KEY]: orderConfirmationReducer,
 });
 
 export default rootReducer;

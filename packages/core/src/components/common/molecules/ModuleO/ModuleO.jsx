@@ -67,9 +67,6 @@ const ModuleO = props => {
         isPLPredesign
         isKeepAliveKillSwitch={false}
         labels={labels}
-        dataLocatorImages="moduleO_image"
-        dataLocatorBag="moduleO_add_to_bag_btn"
-        dataLocatorPrice="moduleO_price"
         hideImageCarousel
       />
     </ul>

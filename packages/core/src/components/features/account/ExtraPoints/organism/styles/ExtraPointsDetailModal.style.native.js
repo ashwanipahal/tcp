@@ -6,7 +6,7 @@ const ImageSize = styled.Image`
 `;
 
 const RichTextWrapper = styled.View`
-  min-height: 200px;
+  min-height: 230px;
   margin-top: ${props => props.theme.spacing.ELEM_SPACING.MED};
   overflow: hidden;
 `;

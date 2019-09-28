@@ -1,7 +1,6 @@
 import { connect } from 'react-redux';
 import React from 'react';
 import { PropTypes } from 'prop-types';
-import { initActions } from '../components/features/content/HomePage/container/HomePage.actions';
 /* eslint-disable */
 import superagent from 'superagent';
 
@@ -265,8 +264,6 @@ class CookiesTestView extends React.Component {
 CookiesTestView.propTypes = {
   links: PropTypes.arrayOf.isRequired,
 };
-
-CookiesTestView.getInitActions = () => initActions;
 
 const mapStateToProps = state => {
   return {
