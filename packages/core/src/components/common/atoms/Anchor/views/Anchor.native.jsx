@@ -1,9 +1,8 @@
 // @flow
 import React from 'react';
 import { TouchableOpacity } from 'react-native';
-import { setTestId, getLocator } from '@tcp/core/src/utils';
+import { setTestId, getLocator, configureInternalNavigationFromCMSUrl } from '@tcp/core/src/utils';
 import { StyledText } from '../../../../../../styles/globalStyles/StyledText.style';
-
 import { UrlHandler, navigateToPage, validateExternalUrl } from '../../../../../utils/index.native';
 import withStyles from '../../../hoc/withStyles.native';
 import { AnchorStyles, AnchorView, AnchorIcon } from '../Anchor.style.native';
@@ -43,6 +42,9 @@ const Anchor = ({
       UrlHandler(url);
     } else if (navigation) {
       navigateToPage(url, navigation);
+    } else {
+      const cmsValidatedUrl = configureInternalNavigationFromCMSUrl(url);
+      navigateToPage(cmsValidatedUrl, navigation);
     }
   };
 

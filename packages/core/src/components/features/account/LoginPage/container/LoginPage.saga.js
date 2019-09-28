@@ -7,6 +7,7 @@ import fetchData from '../../../../../service/API';
 import { login } from '../../../../../services/abstractors/account';
 import endpoints from '../../../../../service/endpoint';
 import { checkoutModalOpenState } from './LoginPage.selectors';
+import { openOverlayModal } from '../../../OverlayModal/container/OverlayModal.actions';
 
 const errorLabel = 'Error in API';
 
@@ -20,7 +21,15 @@ export function* loginSaga({ payload, afterLoginHandler }) {
     if (response.success) {
       if (afterLoginHandler) {
         yield call(afterLoginHandler);
+      } else {
+        yield put(
+          openOverlayModal({
+            component: 'accountDrawer',
+            variation: 'primary',
+          })
+        );
       }
+
       return yield put(getUserInfo());
     }
     return yield put(setLoginInfo(response));

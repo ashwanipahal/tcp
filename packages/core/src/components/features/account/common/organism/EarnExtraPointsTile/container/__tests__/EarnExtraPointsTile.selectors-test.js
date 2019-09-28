@@ -1,5 +1,10 @@
 import { fromJS } from 'immutable';
-import { getEarnExtraPointsDataState, getCommonLabels } from '../EarnExtraPointsTile.selectors';
+import {
+  getEarnExtraPointsDataState,
+  getEarnedPointsNotificationState,
+  getCommonLabels,
+  getEarnExtraPointsLabels,
+} from '../EarnExtraPointsTile.selectors';
 
 describe('#earn Extra Points selector', () => {
   it('#getEarnExtraPointsDataState should return earnExtraPointsDataReducer state', () => {
@@ -15,6 +20,19 @@ describe('#earn Extra Points selector', () => {
     );
   });
 
+  it('#getEarnedPointsNotificationState should return earnExtraPointsDataReducer state', () => {
+    const earnedPointsNotificationState = fromJS({
+      earnedPointsNotificationData: [],
+    });
+    const state = {
+      earnExtraPointsReducer: earnedPointsNotificationState,
+    };
+
+    expect(getEarnedPointsNotificationState(state)).toEqual(
+      earnedPointsNotificationState.get('earnedPointsNotificationData')
+    );
+  });
+
   it('#getCommonLabels should return all the account labels', () => {
     const state = {
       Labels: {
@@ -24,5 +42,16 @@ describe('#earn Extra Points selector', () => {
       },
     };
     expect(getCommonLabels(state)).toMatchObject({});
+  });
+
+  it('#getEarnExtraPointsLabels should return all the account labels', () => {
+    const state = {
+      Labels: {
+        account: {
+          earnExtraPoints: {},
+        },
+      },
+    };
+    expect(getEarnExtraPointsLabels(state)).toMatchObject({});
   });
 });
