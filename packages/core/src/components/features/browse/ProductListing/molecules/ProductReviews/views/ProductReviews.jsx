@@ -1,4 +1,3 @@
-/* eslint-disable */
 import React from 'react';
 import { PropTypes } from 'prop-types';
 import { bin2hex, md5 } from '../encoding';
@@ -13,7 +12,7 @@ class ProductReviews extends React.Component {
     /** id of the product - for BV */
     ratingsProductId: PropTypes.string.isRequired,
 
-    /** indicates the it's broqwser mode, I want it as prop to force a re-render on client */
+    /** indicates the it's browser mode, I want it as prop to force a re-render on client */
     isClient: PropTypes.bool.isRequired,
 
     /** Flag indicates whether the user is a guest */
@@ -25,6 +24,9 @@ class ProductReviews extends React.Component {
     expanded: PropTypes.bool,
     className: PropTypes.string,
     reviewsCount: PropTypes.number,
+    bazaarvoiceApiUrl: PropTypes.string,
+    onLoginClick: PropTypes.func,
+    ratingsAndReviewsLabel: PropTypes.objectOf(PropTypes.oneOfType([PropTypes.string])),
   };
 
   constructor(props, context) {
@@ -169,8 +171,10 @@ class ProductReviews extends React.Component {
           fontWeight="black"
           onClick={this.handleToggle}
         >
-          {ratingsAndReviewsLabel.lbl_ratings_and_reviews} Ratings & Reviews (
-          <span>{`${reviewsCount}`}</span>)
+          {ratingsAndReviewsLabel.lbl_ratings_and_reviews}
+          `Ratings & Reviews (`
+          <span>{`${reviewsCount}`}</span>
+          `)`
         </BodyCopy>
         <div
           id={`BVRRContainer-${ratingsProductId}`}
@@ -188,6 +192,9 @@ ProductReviews.defaultProps = {
   mprId: '',
   className: '',
   reviewsCount: 0,
+  ratingsAndReviewsLabel: '',
+  bazaarvoiceApiUrl: '',
+  onLoginClick: () => {},
 };
 
 export default withStyles(ProductReviews, ProductReviewsStyle);
