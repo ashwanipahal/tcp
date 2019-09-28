@@ -26,6 +26,7 @@ import BagPageSelectors from '../../BagPage/container/BagPage.selectors';
 import { resetCheckoutReducer } from './Checkout.action';
 import { resetAirmilesReducer } from '../../common/organism/AirmilesBanner/container/AirmilesBanner.actions';
 import { resetCouponReducer } from '../../common/organism/CouponAndPromos/container/Coupon.actions';
+import BagActions from '../../BagPage/container/BagPage.actions';
 
 const {
   // isVenmoPaymentAvailable,
@@ -351,6 +352,7 @@ function* submitOrderForProcessing({ payload: { navigation } }) {
   yield put(resetCheckoutReducer());
   yield put(resetAirmilesReducer());
   yield put(resetCouponReducer());
+  yield put(BagActions.resetCartReducer());
   // getProductsOperator(this.store).loadProductRecommendations(
   //   RECOMMENDATIONS_SECTIONS.CHECKOUT,
   //   vendorId
