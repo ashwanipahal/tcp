@@ -602,6 +602,16 @@ export const getTranslateDateInformation = (
   };
 };
 
+export const extractFloat = currency => {
+  try {
+    return !currency
+      ? 0
+      : parseFloat(parseFloat(currency.toString().match(/[+-]?\d+(\.\d+)?/g)[0]).toFixed(2));
+  } catch (e) {
+    return 0;
+  }
+};
+
 export default {
   getPromotionalMessage,
   getIconPath,
@@ -632,4 +642,5 @@ export default {
   configureInternalNavigationFromCMSUrl,
   getModifiedLanguageCode,
   getTranslateDateInformation,
+  extractFloat,
 };
