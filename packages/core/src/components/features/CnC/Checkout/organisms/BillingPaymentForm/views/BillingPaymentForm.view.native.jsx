@@ -33,6 +33,8 @@ import {
   CardDetailEdit,
   SubHeader,
   BillingAddressHeader,
+  CreditCardHeader,
+  CreditCardWrapper,
 } from '../styles/BillingPaymentForm.style.native';
 import Card from '../../../../../../common/molecules/Card/views/Card.native';
 import InputCheckbox from '../../../../../../common/atoms/InputCheckbox';
@@ -147,23 +149,21 @@ export class BillingPaymentForm extends React.PureComponent {
     );
   };
 
-  addNewCCBtn = () => {
-    return null;
-  };
-
   getCardDetailsMethod = labels => {
     return (
       <CardDetailHeader>
-        {labels.lbl_billing_cardDetailsTitle ? (
+        {labels.cardDetailsTitle ? (
           <BodyCopy
-            mobileFontFamily="primary"
+            fontFamily="primary"
             fontSize="fs26"
             fontWeight="regular"
+            spacingStyles="margin-bottom-MED"
+            color="gray.900"
             data-locator="billing-payment-details"
-            text={labels.lbl_billing_cardDetailsTitle}
+            text={labels.cardDetailsTitle}
           />
         ) : null}
-        {labels.lbl_billing_editBtn ? (
+        {labels.edit ? (
           <CardDetailEdit>
             <Anchor
               underline
@@ -172,7 +172,7 @@ export class BillingPaymentForm extends React.PureComponent {
               noLink
               href="#"
               target="_blank"
-              text={labels.lbl_billing_editBtn}
+              text={labels.edit}
             />
           </CardDetailEdit>
         ) : null}
@@ -183,20 +183,19 @@ export class BillingPaymentForm extends React.PureComponent {
   getPaymentMethod = (labels, selectedCard, cvvCodeRichText) => {
     return (
       <>
-        {labels.lbl_billing_paymentMethodTitle ? (
+        {labels.paymentMethod ? (
           <SubHeader>
             <BodyCopy
               mobileFontFamily="primary"
               fontSize="fs16"
               fontWeight="extrabold"
               data-locator="billing-payment-method"
-              text={labels.lbl_billing_paymentMethodTitle}
+              text={labels.paymentMethod}
+              color="gray.900"
             />
           </SubHeader>
         ) : null}
-        {labels.lbl_billing_creditCardEnd
-          ? this.renderCVVField(labels, selectedCard, cvvCodeRichText)
-          : null}
+        {labels.creditCardEnd ? this.renderCVVField(labels, selectedCard, cvvCodeRichText) : null}
       </>
     );
   };
@@ -204,17 +203,16 @@ export class BillingPaymentForm extends React.PureComponent {
   renderCVVField = (labels, selectedCard, cvvCodeRichText) => {
     return (
       <PaymentMethodWrapper>
-        {labels.lbl_billing_creditCardEnd ? (
+        {labels.creditCardEnd ? (
           <CardImage
             card={selectedCard}
-            cardNumber={`${labels.lbl_billing_creditCardEnd}${selectedCard.accountNo.slice(-4)}`}
+            cardNumber={`${labels.creditCardEnd}${selectedCard.accountNo.slice(-4)}`}
           />
         ) : null}
-        {labels.lbl_billing_cvvCode &&
-        selectedCard.ccType !== constants.ACCEPTED_CREDIT_CARDS.PLACE_CARD ? (
+        {labels.cvvCode && selectedCard.ccType !== constants.ACCEPTED_CREDIT_CARDS.PLACE_CARD ? (
           <CvvCode>
             <Field
-              label={labels.lbl_billing_cvvCode}
+              label={labels.cvvCode}
               name="cvvCode"
               id="cvvCode"
               type="text"
@@ -236,30 +234,42 @@ export class BillingPaymentForm extends React.PureComponent {
   getDefaultPayment = (selectedCard, labels) => {
     return (
       <BillingAddressHeader>
-        {!selectedCard.defaultInd && labels.lbl_billing_defaultPayment ? (
+        {!selectedCard.defaultInd && labels.defaultPayment ? (
           <Field
             id="primary"
             name="primary"
             component={InputCheckbox}
             dataLocator="abilling-payment-checkbox-field"
-            rightText={labels.lbl_billing_defaultPayment}
+            rightText={labels.defaultPayment}
           />
         ) : null}
       </BillingAddressHeader>
     );
   };
 
+  /**
+   * @function onCCDropDownChange
+   * @description sets the add new credit card state to false if it is true
+   */
+  onCCDropDownChange = () => {
+    const { addNewCCState } = this.state;
+    if (addNewCCState) {
+      this.setState({ addNewCCState: false });
+    }
+  };
+
   getBillingAddressWrapper = (selectedCard, onFileCardKey, labels) => {
     return (
       <>
-        {labels.lbl_billing_billingAddress ? (
+        {labels.billingAddress ? (
           <BillingAddressHeader>
             <BodyCopy
               mobileFontFamily="primary"
               fontSize="fs16"
               fontWeight="extrabold"
               dataLocator="billing-payment-billingAddress"
-              text={labels.lbl_billing_billingAddress}
+              color="gray.900"
+              text={labels.billingAddress}
             />
           </BillingAddressHeader>
         ) : null}
@@ -286,32 +296,48 @@ export class BillingPaymentForm extends React.PureComponent {
     dispatch,
     cvvCodeRichText,
   }) => {
+    const { addNewCCState } = this.state;
     return (
       <BillingAddressWrapper>
-        <CreditCardDropdown
-          creditCardList={creditCardList}
-          labels={labels}
-          onFileCardKey={onFileCardKey}
-          addNewCC={this.onAddNewCCClick}
-          selectedOnFileCardKey={selectedCard && selectedCard.creditCardId}
-          dispatch={dispatch}
-          formName={constants.FORM_NAME}
-        />
+        <CreditCardWrapper>
+          <CreditCardHeader>
+            <BodyCopy
+              mobileFontFamily="primary"
+              fontSize="fs10"
+              fontWeight="extrabold"
+              dataLocator="billing-payment-bilingcreditcardlabel"
+              text={labels.selectFromCard}
+            />
+          </CreditCardHeader>
+          <CreditCardDropdown
+            creditCardList={creditCardList}
+            labels={labels}
+            onFileCardKey={onFileCardKey}
+            addNewCC={this.onAddNewCreditCardClick}
+            selectedOnFileCardKey={selectedCard && selectedCard.creditCardId}
+            dispatch={dispatch}
+            formName={constants.FORM_NAME}
+            addNewCCState={addNewCCState}
+            onChange={this.onCCDropDownChange}
+          />
+        </CreditCardWrapper>
         {selectedCard ? this.getCardDetailsMethod(labels) : null}
         {selectedCard ? this.getPaymentMethod(labels, selectedCard, cvvCodeRichText) : null}
-        {this.getDefaultPayment(selectedCard, labels)}
-        {this.getBillingAddressWrapper(selectedCard, onFileCardKey, labels)}
+        {selectedCard ? this.getDefaultPayment(selectedCard, labels) : null}
+        {selectedCard ? this.getBillingAddressWrapper(selectedCard, onFileCardKey, labels) : null}
       </BillingAddressWrapper>
     );
   };
 
   addNewBillingInfoForm = () => {
-    const { cardList } = this.props;
+    const { cardList, labels, dispatch, onFileCardKey } = this.props;
     const { addNewCCState } = this.state;
     const creditCardList = getCreditCardList({ cardList });
     return (
       <>
-        {creditCardList && creditCardList.size > 0 && this.addNewCCBtn()}
+        {creditCardList &&
+          creditCardList.size > 0 &&
+          this.getCCDropDown({ labels, creditCardList, onFileCardKey, dispatch })}
         {this.getAddNewCCForm()}
         {this.getCheckoutBillingAddress({ ...this.props, creditCardList, addNewCCState })}
       </>
@@ -343,8 +369,8 @@ export class BillingPaymentForm extends React.PureComponent {
   };
 
   getCreditCardWrapper = ({ labels, creditCardList, cvvCodeRichText, onFileCardKey, dispatch }) => {
-    const { addNewCCState } = this.state;
     const selectedCard = onFileCardKey ? getSelectedCard({ creditCardList, onFileCardKey }) : '';
+    const { addNewCCState } = this.state;
     return (
       <>
         {creditCardList && creditCardList.size > 0 && !addNewCCState
@@ -392,11 +418,13 @@ export class BillingPaymentForm extends React.PureComponent {
       <>
         <PaymentMethodHeader>
           <BodyCopy
-            mobileFontFamily="primary"
+            fontFamily="primary"
             fontSize="fs26"
             fontWeight="regular"
+            spacingStyles="margin-bottom-MED"
+            color="gray.900"
             data-locator="billing-details"
-            text={labels.lbl_billing_paymentMethodTitle}
+            text={labels.paymentMethod}
           />
         </PaymentMethodHeader>
 
@@ -404,7 +432,6 @@ export class BillingPaymentForm extends React.PureComponent {
           <PaymentMethods
             paymentMethods={paymentMethods}
             formName={constants.FORM_NAME}
-            paymentHeader="Credit card"
             selectedPaymentId={paymentMethodId}
             dispatch={dispatch}
           />

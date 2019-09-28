@@ -4,6 +4,7 @@ import { Field, change } from 'redux-form';
 import AddressDropdown from '../../../../../account/AddEditCreditCard/molecule/AddressDropdown';
 import Card from '../../../../../../common/molecules/Card/views/Card.native';
 import withStyles from '../../../../../../common/hoc/withStyles';
+import { CardListWrapper } from '../../../../../../common/molecules/Card/CardImage.style.native';
 
 const dropDownStyle = {
   height: 30,
@@ -14,7 +15,7 @@ const itemStyle = {
   height: 90,
 };
 
-class CreditCardDropDown extends React.Component {
+class CreditCardDropDown extends React.PureComponent {
   getCardOptions = () => {
     const { creditCardList, labels, onFileCardKey } = this.props;
     let cardOptions =
@@ -22,17 +23,19 @@ class CreditCardDropDown extends React.Component {
         creditCardList.size > 0 &&
         creditCardList.map(card => ({
           id: card.creditCardId,
-          label: `${labels.lbl_billing_creditCardEnd}${card.accountNo.slice(-4)} ${
-            card.defaultInd ? `(${labels.lbl_billing_default})` : ''
+          label: `${labels.creditCardEnd}${card.accountNo.slice(-4)} ${
+            card.defaultInd ? `(${labels.defaultBadge})` : ''
           }`,
           content: (
-            <Card
-              card={card}
-              isDefault={card.defaultInd}
-              cardNumber={`${labels.lbl_billing_creditCardEnd}${card.accountNo.slice(-4)}`}
-              labels={labels}
-              selectedValue={+onFileCardKey}
-            />
+            <CardListWrapper>
+              <Card
+                card={card}
+                isDefault={card.defaultInd}
+                cardNumber={`${labels.creditCardEnd}${card.accountNo.slice(-4)}`}
+                labels={labels}
+                selectedValue={+onFileCardKey}
+              />
+            </CardListWrapper>
           ),
           useCustomContent: true,
           primary: card.defaultInd === 'true',
@@ -41,7 +44,7 @@ class CreditCardDropDown extends React.Component {
 
     cardOptions = cardOptions.push({
       id: '',
-      label: labels.lbl_billing_addCreditHeading,
+      label: labels.addCreditBtn,
       content: '',
       primary: false,
     });
@@ -49,32 +52,40 @@ class CreditCardDropDown extends React.Component {
     return cardOptions && cardOptions.toArray();
   };
 
-  onCardDropDownChange = itemValue => {
+  /**
+   * @function toggleAddNewMode
+   */
+  toggleAddNewMode = () => {
     const { dispatch, formName, addNewCC } = this.props;
+    dispatch(change(formName, 'onFileCardKey', ''));
+    addNewCC();
+  };
+
+  onCardDropDownChange = itemValue => {
+    const { dispatch, formName, onChange } = this.props;
     dispatch(change(formName, 'onFileCardKey', itemValue));
-    if (!itemValue) {
-      addNewCC();
-    }
+    onChange();
   };
 
   getCreditCardDropDown = () => {
-    const { selectedOnFileCardKey } = this.props;
+    const { selectedOnFileCardKey, creditCardList } = this.props;
     return (
       <Field
-        selectListTitle="Add a New Credit Card"
+        selectListTitle=""
         name="onFileCardKey"
         id="onFileCardKey"
         component={AddressDropdown}
         data={this.getCardOptions()}
         dropDownStyle={{ ...dropDownStyle }}
         itemStyle={{ ...itemStyle }}
-        toggleModal={this.toggleAddressModal}
+        addAddress={this.toggleAddNewMode}
         onValueChange={itemValue => {
           this.onCardDropDownChange(itemValue);
         }}
         variation="secondary"
         selectedValue={selectedOnFileCardKey}
         labels={{ common: { lbl_common_tapClose: 'close' } }}
+        disableBtn={!selectedOnFileCardKey || (creditCardList && creditCardList.size === 0)}
       />
     );
   };
@@ -93,6 +104,7 @@ CreditCardDropDown.propTypes = {
   labels: PropTypes.shape({}).isRequired,
   addNewCC: PropTypes.func.isRequired,
   formName: PropTypes.string,
+  onChange: PropTypes.func.isRequired,
 };
 
 CreditCardDropDown.defaultProps = {

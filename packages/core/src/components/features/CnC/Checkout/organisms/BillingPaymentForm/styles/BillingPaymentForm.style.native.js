@@ -46,6 +46,12 @@ const SubHeader = styled.View`
 const BillingAddressHeader = styled.View`
   margin-bottom: ${props => props.theme.spacing.ELEM_SPACING.MED};
 `;
+const CreditCardHeader = styled.View`
+  top: ${props => props.theme.spacing.APP_LAYOUT_SPACING.XS};
+`;
+const CreditCardWrapper = styled.View`
+  margin-top: ${props => props.theme.spacing.ELEM_SPACING.XL};
+`;
 export {
   CvvCode,
   CvvTextboxStyle,
@@ -58,4 +64,6 @@ export {
   SubHeader,
   BillingAddressHeader,
   AddNewCCWrapper,
+  CreditCardHeader,
+  CreditCardWrapper,
 };

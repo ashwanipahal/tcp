@@ -64,7 +64,7 @@ const Card = ({
         {isDefault && (
           <BadgeWrapper>
             <Badge showCheckmark dataLocator="creditcard-default">
-              {labels.lbl_billing_default_card}
+              {labels.defaultCard}
             </Badge>
           </BadgeWrapper>
         )}
