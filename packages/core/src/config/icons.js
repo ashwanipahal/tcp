@@ -59,7 +59,7 @@ export default {
   'checkout-tick': '/static/images/checkout-tick.svg',
   'checkout-white-dot': '/static/images/checkout-white-dot.svg',
   'carrot-large-left': '/static/images/carrot-large-left.png',
-  'close-icon': '/static/images/close.png',
+  'close-icon': '/static/images/large.png',
   'plus-icon': '/static/images/plus.png',
   'mailing-address-icon': '/static/images/mailingAddress.jpg',
   'fav-store-icon': '/static/images/store.jpg',

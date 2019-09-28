@@ -4,7 +4,7 @@ import withStyles from '@tcp/core/src/components/common/hoc/withStyles';
 import { BodyCopy, Col, Row, Image } from '@tcp/core/src/components/common/atoms';
 import ReactToolTip from '@tcp/core/src/components/common/atoms/ReactToolTip';
 import cssClassName from '@tcp/core/src/utils/cssClassName';
-import { getTranslateDateInformation } from '@tcp/core/src/utils//utils.web';
+import { getTranslateDateInformation } from '@tcp/core/src/utils';
 import { getAPIConfig, getIconPath } from '@tcp/core/src/utils/utils';
 import CartItemTile from '../../../../../../CartItemTile/molecules/CartItemTile/views/CartItemTile.view';
 import { getProductDetails } from '../../../../../../CartItemTile/container/CartItemTile.selectors';

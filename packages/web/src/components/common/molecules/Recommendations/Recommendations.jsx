@@ -126,6 +126,7 @@ class Recommendations extends Component {
                     variation: 'big-arrows',
                     customArrowLeft: getIconPath('carousel-big-carrot-left'),
                     customArrowRight: getIconPath('carousel-big-carrot'),
+                    dataLocatorCarousel: `${variation}-variation`,
                   }}
                 >
                   {this.loadVariation(variation)}

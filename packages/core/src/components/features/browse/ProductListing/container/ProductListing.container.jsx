@@ -5,7 +5,6 @@ import { getFormValues } from 'redux-form';
 import { PropTypes } from 'prop-types';
 import ProductListing from '../views';
 import { getPlpProducts, getMorePlpProducts } from './ProductListing.actions';
-import { openPickupModalWithValues } from '../../../../common/organisms/PickupStoreModal/container/PickUpStoreModal.actions';
 import { openQuickViewWithValues } from '../../../../common/organisms/QuickViewModal/container/QuickViewModal.actions';
 import { processBreadCrumbs, getProductsAndTitleBlocks } from './ProductListing.util';
 import {
@@ -28,6 +27,7 @@ import {
 import submitProductListingFiltersForm from './productListingOnSubmitHandler';
 import { isPlccUser } from '../../../account/User/container/User.selectors';
 import getSortLabels from '../molecules/SortSelector/views/Sort.selectors';
+import { getIsPickupModalOpen } from '../../../../common/organisms/PickupStoreModal/container/PickUpStoreModal.selectors';
 
 class ProductListingContainer extends React.PureComponent {
   componentDidMount() {
@@ -75,7 +75,6 @@ class ProductListingContainer extends React.PureComponent {
       categoryId,
       getProducts,
       onSubmit,
-      onPickUpOpenClick,
       onQuickViewOpenClick,
       formValues,
       sortLabels,
@@ -101,7 +100,6 @@ class ProductListingContainer extends React.PureComponent {
         lastLoadedPageNumber={lastLoadedPageNumber}
         getProducts={getProducts}
         onSubmit={onSubmit}
-        onPickUpOpenClick={onPickUpOpenClick}
         onQuickViewOpenClick={onQuickViewOpenClick}
         formValues={formValues}
         sortLabels={sortLabels}
@@ -127,6 +125,7 @@ function mapStateToProps(state) {
   }
 
   return {
+    isPickupModalOpen: getIsPickupModalOpen(state),
     productsBlock: getProductsAndTitleBlocks(state, productBlocks),
     products: getProductsSelect(state),
     filters: getProductsFilters(state),
@@ -164,9 +163,6 @@ function mapDispatchToProps(dispatch) {
     getProducts: payload => {
       dispatch(getPlpProducts(payload));
     },
-    onPickUpOpenClick: payload => {
-      dispatch(openPickupModalWithValues(payload));
-    },
     onQuickViewOpenClick: payload => {
       dispatch(openQuickViewWithValues(payload));
     },
@@ -180,7 +176,6 @@ function mapDispatchToProps(dispatch) {
 
 ProductListingContainer.propTypes = {
   getProducts: PropTypes.func.isRequired,
-  onPickUpOpenClick: PropTypes.func.isRequired,
   onQuickViewOpenClick: PropTypes.func.isRequired,
   getMoreProducts: PropTypes.func.isRequired,
   productsBlock: PropTypes.arrayOf(PropTypes.shape({})),
