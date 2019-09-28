@@ -29,8 +29,8 @@ describe('Add gift card form component', () => {
     component
       .find('Styled(CustomButton)')
       .at(0)
-      .simulate('press');
-    expect(handleSubmit).toHaveBeenCalledTimes(1);
+      .simulate('press', { preventDefault: jest.fn() });
+    expect(handleSubmit).toHaveBeenCalledTimes(0);
   });
 
   it('render error message', () => {
