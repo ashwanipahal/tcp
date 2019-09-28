@@ -30,29 +30,6 @@ exports[`Bag page View should not render SFL section 1`] = `
         undefined (10)
       </Styled(Heading)>
     </Styled(Col)>
-    <Styled(Col)
-      className="left-sec"
-      colSize={
-        Object {
-          "large": 6,
-          "medium": 4,
-          "small": 3,
-        }
-      }
-      onClick={[Function]}
-    >
-      <Styled(Heading)
-        className="bag-header bag-header-sfl "
-        color="text.primary"
-        component={null}
-        dataLocator=""
-        fontSize="fs16"
-        textAlign="left"
-        variant="h6"
-      >
-        undefined (undefined)
-      </Styled(Heading)>
-    </Styled(Col)>
   </Styled(Row)>
   <Styled(CnCTemplate)
     bagActions={[Function]}
@@ -94,29 +71,6 @@ exports[`Bag page View should render Added to Bag view section 1`] = `
         undefined (10)
       </Styled(Heading)>
     </Styled(Col)>
-    <Styled(Col)
-      className="left-sec"
-      colSize={
-        Object {
-          "large": 6,
-          "medium": 4,
-          "small": 3,
-        }
-      }
-      onClick={[Function]}
-    >
-      <Styled(Heading)
-        className="bag-header bag-header-sfl "
-        color="text.primary"
-        component={null}
-        dataLocator=""
-        fontSize="fs16"
-        textAlign="left"
-        variant="h6"
-      >
-        undefined (undefined)
-      </Styled(Heading)>
-    </Styled(Col)>
   </Styled(Row)>
   <Styled(CnCTemplate)
     bagActions={[Function]}
@@ -156,29 +110,6 @@ exports[`Bag page View should render SFL section 1`] = `
         variant="h6"
       >
         undefined (10)
-      </Styled(Heading)>
-    </Styled(Col)>
-    <Styled(Col)
-      className="left-sec"
-      colSize={
-        Object {
-          "large": 6,
-          "medium": 4,
-          "small": 3,
-        }
-      }
-      onClick={[Function]}
-    >
-      <Styled(Heading)
-        className="bag-header bag-header-sfl "
-        color="text.primary"
-        component={null}
-        dataLocator=""
-        fontSize="fs16"
-        textAlign="left"
-        variant="h6"
-      >
-        undefined (1)
       </Styled(Heading)>
     </Styled(Col)>
   </Styled(Row)>

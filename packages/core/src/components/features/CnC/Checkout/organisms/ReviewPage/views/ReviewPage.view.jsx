@@ -19,7 +19,20 @@ class ReviewPage extends React.PureComponent {
     submitReview: PropTypes.func.isRequired,
     orderHasShipping: PropTypes.bool.isRequired,
     orderHasPickUp: PropTypes.bool.isRequired,
+    setVenmoShippingState: PropTypes.func,
+    setVenmoPickupState: PropTypes.func,
   };
+
+  static defaultProps = {
+    setVenmoShippingState: () => {},
+    setVenmoPickupState: () => {},
+  };
+
+  componentDidMount() {
+    const { setVenmoShippingState, setVenmoPickupState } = this.props;
+    setVenmoShippingState(true);
+    setVenmoPickupState(true);
+  }
 
   handleDefaultLinkClick = e => {
     e.preventDefault();

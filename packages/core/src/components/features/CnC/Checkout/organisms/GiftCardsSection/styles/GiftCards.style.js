@@ -96,7 +96,6 @@ const styles = css`
   }
 
   .card__row {
-    padding-top: ${props => props.theme.spacing.ELEM_SPACING.MED};
     padding-bottom: ${props => props.theme.spacing.APP_LAYOUT_SPACING.XXS};
   }
 
@@ -111,7 +110,6 @@ const styles = css`
       margin-right: 14px;
     }
     .card__row {
-      padding-top: ${props => props.theme.spacing.ELEM_SPACING.SM};
       padding-bottom: ${props => props.theme.spacing.ELEM_SPACING.XL};
     }
     .savetoaccount {

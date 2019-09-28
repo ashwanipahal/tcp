@@ -150,6 +150,7 @@ describe('checkoutCart Saga', () => {
     const generator = checkoutCart();
 
     let takeLatestDescriptor = generator.next(true).value;
+    takeLatestDescriptor = generator.next(false).value;
     takeLatestDescriptor = generator.next().value;
     expect(takeLatestDescriptor).toEqual(put(setCheckoutModalMountedState({ state: true })));
   });
