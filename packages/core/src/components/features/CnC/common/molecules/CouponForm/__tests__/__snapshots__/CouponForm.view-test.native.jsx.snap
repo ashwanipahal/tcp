@@ -3,6 +3,7 @@
 exports[`CouponForm Component CouponForm should render correctly 1`] = `
 <Styled(View)>
   <ErrorMessage
+    bagPage={false}
     error=""
   />
   <Styled(View)>
@@ -54,6 +55,7 @@ exports[`CouponForm Component CouponForm should render correctly 1`] = `
         buttonVariation="variable-width"
         color=""
         customStyle={Object {}}
+        customTextStyle={null}
         data-locator="coupon_submit_btn"
         disableButton={false}
         external={true}

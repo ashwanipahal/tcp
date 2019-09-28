@@ -45,4 +45,5 @@ export {
   getBirthDateOptionMap,
   childOptionsMap,
   calculateAge,
+  configureInternalNavigationFromCMSUrl,
 } from './utils';

@@ -5,7 +5,6 @@ import styles, { customHeaderStyle } from '../styles/QuickViewModal.style';
 import FulfillmentSection from '../../FulfillmentSection';
 import { getLocator } from '../../../../../utils';
 import Modal from '../../../molecules/Modal';
-import { getMapSliceForColorProductId } from '../../../../features/browse/ProductListing/molecules/ProductList/utils/productsCommonUtils';
 import { PRODUCT_INFO_PROP_TYPE_SHAPE } from '../../../../features/browse/ProductListing/molecules/ProductList/propTypes/productsAndItemsPropTypes';
 import ProductCustomizeFormPart from '../molecules/ProductCustomizeFormPart/views/ProductCustomizeFormPart.view';
 
@@ -18,21 +17,6 @@ class QuickViewModal extends React.Component {
   onCloseClick = () => {
     const { closeQuickViewModal } = this.props;
     closeQuickViewModal();
-  };
-
-  handlePickupOpenClick = () => {
-    const {
-      productInfo: { colorFitsSizesMap, generalProductId },
-      onPickUpOpenClick,
-    } = this.props;
-    const colorEntry = getMapSliceForColorProductId(colorFitsSizesMap, generalProductId);
-    onPickUpOpenClick({
-      generalProductId,
-      initialValues: { color: colorEntry && colorEntry.color.name },
-      isBopisCtaEnabled: colorEntry.miscInfo.isBopisEligible,
-      isBossCtaEnabled: colorEntry.miscInfo.isBossEligible,
-      colorProductId: generalProductId,
-    });
   };
 
   render() {
@@ -70,6 +54,7 @@ class QuickViewModal extends React.Component {
             dataLocator={getLocator('global_addtocart_Button')}
             buttonLabel="Pickup In Store"
             onPickupOpenClick={this.handlePickupOpenClick}
+            currentProduct={productInfo}
           />
         </div>
       </Modal>
@@ -84,7 +69,6 @@ QuickViewModal.propTypes = {
   }).isRequired,
   closeQuickViewModal: PropTypes.func.isRequired,
   clearAddToBagError: PropTypes.func.isRequired,
-  onPickUpOpenClick: PropTypes.func.isRequired,
   isModalOpen: PropTypes.bool.isRequired,
   productInfo: PRODUCT_INFO_PROP_TYPE_SHAPE.isRequired,
 };
