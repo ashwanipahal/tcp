@@ -74,15 +74,15 @@ export class EarnPoints extends React.PureComponent {
     if (earnedPointsNotification && earnedPointsNotification.length) {
       infoMessage = `${earnedPointsNotification[0].transactionDate} ${getLabelValue(
         earnExtraPointsLabels,
-        'lbl_profile_you_earned'
+        'lbl_earnExtraPoints_you_earned'
       )} ${earnedPointsNotification[0].pointsEarned} ${getLabelValue(
         earnExtraPointsLabels,
-        'lbl_profile_place_rewards'
+        'lbl_earnExtraPoints_place_rewards'
       )} `;
     }
     return (
       <>
-        {earnedPointsNotification && earnedPointsNotification.length && (
+        {earnedPointsNotification && earnedPointsNotification.length ? (
           <Notification status="info" className="elem-mt-MED">
             <MessageInfoWrapper>
               <BodyCopy
@@ -98,11 +98,14 @@ export class EarnPoints extends React.PureComponent {
                 onPress={() => handleComponentChange('pointsHistoryMobile')}
                 anchorVariation="primary"
                 dataLocator="earnPoints-points-history"
-                text={getLabelValue(earnExtraPointsLabels, 'lbl_profile_view_points_history')}
+                text={getLabelValue(
+                  earnExtraPointsLabels,
+                  'lbl_earnExtraPoints_view_points_history'
+                )}
               />
             </MessageInfoWrapper>
           </Notification>
-        )}
+        ) : null}
         {waysToEarn && (
           <TilesWrapper>
             <MorePointsWrapper>
@@ -191,9 +194,9 @@ EarnPoints.propTypes = {
   }),
   earnedPointsNotification: PropTypes.shape([]),
   earnExtraPointsLabels: PropTypes.shape({
-    lbl_profile_you_earned: PropTypes.string,
-    lbl_profile_place_rewards: PropTypes.string,
-    lbl_profile_view_points_history: PropTypes.string,
+    lbl_earnExtraPoints_you_earned: PropTypes.string,
+    lbl_earnExtraPoints_place_rewards: PropTypes.string,
+    lbl_earnExtraPoints_view_points_history: PropTypes.string,
   }),
   handleComponentChange: PropTypes.func,
 };
@@ -206,9 +209,9 @@ EarnPoints.defaultProps = {
   },
   earnedPointsNotification: [],
   earnExtraPointsLabels: {
-    lbl_profile_you_earned: '',
-    lbl_profile_place_rewards: '',
-    lbl_profile_view_points_history: '',
+    lbl_earnExtraPoints_you_earned: '',
+    lbl_earnExtraPoints_place_rewards: '',
+    lbl_earnExtraPoints_view_points_history: '',
   },
   handleComponentChange: () => {},
 };

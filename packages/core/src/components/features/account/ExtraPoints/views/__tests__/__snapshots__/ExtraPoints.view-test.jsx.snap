@@ -8,6 +8,7 @@ exports[`EarnPointsVanilla component should renders correctly 1`] = `
     heading="lbl_common_extraPointsHeading"
   />
   <Styled(Notification)
+    alt="lbl_earnExtraPoints_imageAlt"
     className="elem-mt-MED"
     status="info"
   >
@@ -25,7 +26,7 @@ exports[`EarnPointsVanilla component should renders correctly 1`] = `
     >
       09/17/19
     </Styled(BodyCopy)>
-    lbl_profile_you_earned 5 lbl_profile_place_rewards 
+    lbl_earnExtraPoints_you_earned 5 lbl_earnExtraPoints_place_rewards 
     <Styled(Anchor)
       anchorVariation="primary"
       asPath="/account/place-rewards/points-history"
@@ -35,7 +36,7 @@ exports[`EarnPointsVanilla component should renders correctly 1`] = `
       to="/account?id=place-rewards&subSection=points-history"
       underline={true}
     >
-      lbl_profile_view_points_history
+      lbl_earnExtraPoints_view_points_history
     </Styled(Anchor)>
   </Styled(Notification)>
   <Styled(BodyCopy)

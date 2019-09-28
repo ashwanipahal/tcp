@@ -3,7 +3,6 @@ import {
   getEarnedPointsNotificationSaga,
   EarnedPointsNotificationSaga,
 } from '../EarnedPointsNotification.saga';
-import { validateReduxCache } from '../../../../../../../../utils/cache.util';
 import { setEarnedPointsNotification } from '../EarnExtraPointsTile.actions';
 import EARNEXTRAPOINTS_CONSTANTS from '../../EarnExtraPointsTile.constants';
 
@@ -31,11 +30,10 @@ describe('Earned Points Notification Saga', () => {
   describe('Earn Extra Points Saga', () => {
     it('should return correct takeLatest effect', () => {
       const generator = EarnedPointsNotificationSaga();
-      const cachedMethod = validateReduxCache(getEarnedPointsNotificationSaga);
       const takeLatestDescriptor = generator.next().value;
       const expected = takeLatest(
         EARNEXTRAPOINTS_CONSTANTS.GET_EARNEDPOINTS_NOTIFICATION,
-        cachedMethod
+        getEarnedPointsNotificationSaga
       );
       expect(takeLatestDescriptor.toString()).toMatch(expected.toString());
     });

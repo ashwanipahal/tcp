@@ -13,14 +13,18 @@ import DetailedEarnExtraPointsTile from '../../common/molecule/DetailedEarnExtra
 import DetailedEarnExtraPointsSingleTileComponent from '../../common/molecule/DetailedEarnExtraPointsTile/views/DetailedEarnExtraPointsSingleTile.view';
 
 /**
- * This function component use for return the EarnPoints
+ * This function getNotificationMarkup use for return the notification message
  * can be passed in the component.
- * @param waysToEarn - waysToEarn object used for showing extra points details
+ * @param earnedPointsNotification - earnedPointsNotification object used for showing extra date and points details
  */
 
-const showNotification = (earnedPointsNotification, infoMessage, earnExtraPointsLabels) => {
+const getNotificationMarkup = (earnedPointsNotification, infoMessage, earnExtraPointsLabels) => {
   return earnedPointsNotification && earnedPointsNotification.length ? (
-    <Notification status="info" className="elem-mt-MED">
+    <Notification
+      status="info"
+      className="elem-mt-MED"
+      alt={getLabelValue(earnExtraPointsLabels, 'lbl_earnExtraPoints_imageAlt')}
+    >
       <BodyCopy
         component="span"
         fontSize="fs14"
@@ -40,13 +44,19 @@ const showNotification = (earnedPointsNotification, infoMessage, earnExtraPoints
         dataLocator="view-points-history"
         className="elem-ml-XS"
       >
-        {getLabelValue(earnExtraPointsLabels, 'lbl_profile_view_points_history')}
+        {getLabelValue(earnExtraPointsLabels, 'lbl_earnExtraPoints_view_points_history')}
       </Anchor>
     </Notification>
   ) : (
     ''
   );
 };
+
+/**
+ * This function component use for return the EarnPoints
+ * can be passed in the component.
+ * @param waysToEarn - waysToEarn object used for showing extra points details
+ */
 
 const EarnPoints = ({
   className,
@@ -65,9 +75,9 @@ const EarnPoints = ({
   }
 
   if (earnedPointsNotification && earnedPointsNotification.length) {
-    infoMessage = `${getLabelValue(earnExtraPointsLabels, 'lbl_profile_you_earned')} ${
+    infoMessage = `${getLabelValue(earnExtraPointsLabels, 'lbl_earnExtraPoints_you_earned')} ${
       earnedPointsNotification[0].pointsEarned
-    } ${getLabelValue(earnExtraPointsLabels, 'lbl_profile_place_rewards')} `;
+    } ${getLabelValue(earnExtraPointsLabels, 'lbl_earnExtraPoints_place_rewards')} `;
   }
 
   /**
@@ -79,7 +89,7 @@ const EarnPoints = ({
   return (
     <div className={className}>
       <FormPageHeadingComponent heading={getLabelValue(labels, 'lbl_common_extraPointsHeading')} />
-      {showNotification(earnedPointsNotification, infoMessage, earnExtraPointsLabels)}
+      {getNotificationMarkup(earnedPointsNotification, infoMessage, earnExtraPointsLabels)}
       {waysToEarn && waysToEarn.length && (
         <>
           <BodyCopy
@@ -175,9 +185,9 @@ EarnPoints.propTypes = {
   }),
   earnedPointsNotification: PropTypes.shape([]),
   earnExtraPointsLabels: PropTypes.shape({
-    lbl_profile_you_earned: PropTypes.string,
-    lbl_profile_place_rewards: PropTypes.string,
-    lbl_profile_view_points_history: PropTypes.string,
+    lbl_earnExtraPoints_you_earned: PropTypes.string,
+    lbl_earnExtraPoints_place_rewards: PropTypes.string,
+    lbl_earnExtraPoints_view_points_history: PropTypes.string,
   }),
 };
 
@@ -190,9 +200,9 @@ EarnPoints.defaultProps = {
   },
   earnedPointsNotification: [],
   earnExtraPointsLabels: {
-    lbl_profile_you_earned: '',
-    lbl_profile_place_rewards: '',
-    lbl_profile_view_points_history: '',
+    lbl_earnExtraPoints_you_earned: '',
+    lbl_earnExtraPoints_place_rewards: '',
+    lbl_earnExtraPoints_view_points_history: '',
   },
 };
 

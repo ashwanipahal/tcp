@@ -12,7 +12,7 @@ import BodyCopy from '../../../atoms/BodyCopy';
  * @param {String} message - error message
  * @param {node} children - notification child nodes.
  */
-const Notification = ({ className, status, message, children, scrollIntoView }) => {
+const Notification = ({ className, status, alt, message, children, scrollIntoView }) => {
   const successIcon = getIconPath('circle-check-fill');
   const errorIcon = getIconPath('circle-error-fill');
   const infoIcon = getIconPath('circle-info-fill');
@@ -21,15 +21,15 @@ const Notification = ({ className, status, message, children, scrollIntoView }) 
   let imageSrc = '';
   if (status === 'success') {
     imageSrc = successIcon;
-    imageAlt = 'success icon';
+    imageAlt = alt || 'success icon';
   }
   if (status === 'error') {
     imageSrc = errorIcon;
-    imageAlt = 'error icon';
+    imageAlt = alt || 'error icon';
   }
   if (status === 'info') {
     imageSrc = infoIcon;
-    imageAlt = 'info icon';
+    imageAlt = alt || 'info icon';
   }
 
   // For window scroll up to top once component gets loaded.
@@ -57,6 +57,7 @@ Notification.propTypes = {
   className: PropTypes.string,
   status: PropTypes.string.isRequired,
   message: PropTypes.string.isRequired,
+  alt: PropTypes.string,
   children: PropTypes.node,
   scrollIntoView: PropTypes.bool,
 };
@@ -64,6 +65,7 @@ Notification.propTypes = {
 Notification.defaultProps = {
   className: '',
   children: null,
+  alt: '',
   scrollIntoView: false,
 };
 
