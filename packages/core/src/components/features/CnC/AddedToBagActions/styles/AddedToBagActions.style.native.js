@@ -2,7 +2,6 @@ import styled from 'styled-components/native';
 
 export const ActionsWrapper = styled.View`
   display: flex;
-  flex: 1;
 `;
 
 export const ButtonWrapper = styled.View`
