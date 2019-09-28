@@ -23,3 +23,7 @@ export const getUsedId = createSelector(
   getPersonalDataState,
   state => state && state.get('userId')
 );
+
+export const getLabels = state => {
+  return state.Labels.Browse && state.Labels.Browse.PDP;
+};

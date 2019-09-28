@@ -143,7 +143,13 @@ class ProductReviews extends React.Component {
 
   render() {
     const { expanded, isLoading } = this.state;
-    const { className, reviewsCount, isClient, ratingsProductId } = this.props;
+    const {
+      className,
+      reviewsCount,
+      isClient,
+      ratingsProductId,
+      ratingsAndReviewsLabel,
+    } = this.props;
 
     if (isLoading || !isClient) {
       return null;
@@ -163,7 +169,8 @@ class ProductReviews extends React.Component {
           fontWeight="black"
           onClick={this.handleToggle}
         >
-          Ratings & Reviews (<span>{`${reviewsCount}`}</span>)
+          {ratingsAndReviewsLabel.lbl_ratings_and_reviews} Ratings & Reviews (
+          <span>{`${reviewsCount}`}</span>)
         </BodyCopy>
         <div
           id={`BVRRContainer-${ratingsProductId}`}
