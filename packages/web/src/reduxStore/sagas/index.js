@@ -38,6 +38,7 @@ import BagPageSaga from '@tcp/core/src/components/features/CnC/BagPage/container
 import TrackOrderSaga from '@tcp/core/src/components/features/account/TrackOrder/container/TrackOrder.saga';
 import PointsHistorySaga from '@tcp/core/src/components/features/account/common/organism/PointsHistory/container/PointsHistory.saga';
 import EarnExtraPointsSaga from '@tcp/core/src/components/features/account/common/organism/EarnExtraPointsTile/container/EarnExtraPointsTile.saga';
+import EarnedPointsNotificationSaga from '@tcp/core/src/components/features/account/common/organism/EarnExtraPointsTile/container/EarnedPointsNotification.saga';
 import AddAirmilesBannerSaga from '@tcp/core/src/components/features/CnC/common/organism/AirmilesBanner/container/AirmilesBanner.saga';
 import ApplyCreditCardSaga, {
   SubmitInstantCardApplication,
@@ -97,6 +98,7 @@ export default function* rootSaga() {
     CountrySelectorSaga(),
     PointsHistorySaga(),
     EarnExtraPointsSaga(),
+    EarnedPointsNotificationSaga(),
     ResetPasswordSaga(),
     ApplyCreditCardSaga(),
     ChangePasswordSaga(),
