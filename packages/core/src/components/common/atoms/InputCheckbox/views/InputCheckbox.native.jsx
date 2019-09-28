@@ -51,9 +51,11 @@ class InputCheckBox extends React.Component {
 
   componentWillReceiveProps(nextProps) {
     const { isChecked: currentState } = this.state;
-    if (nextProps.isChecked !== currentState) {
+    const { input, isChecked } = nextProps;
+    if (isChecked !== currentState) {
+      input.onChange(isChecked);
       this.setState({
-        isChecked: nextProps.isChecked,
+        isChecked,
       });
     }
   }
