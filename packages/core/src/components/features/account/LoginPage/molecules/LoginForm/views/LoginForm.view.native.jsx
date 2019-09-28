@@ -7,11 +7,7 @@ import { noop, get } from 'lodash';
 import { getLabelValue } from '@tcp/core/src/utils/utils';
 import createThemeColorPalette from '@tcp/core/styles/themes/createThemeColorPalette';
 import withStyles from '../../../../../../common/hoc/withStyles.native';
-import {
-  FormStyle,
-  ShowHideWrapper,
-  HideShowFieldWrapper,
-} from '../styles/LoginForm.style.native';
+import { FormStyle, ShowHideWrapper, HideShowFieldWrapper } from '../styles/LoginForm.style.native';
 import TextBox from '../../../../../../common/atoms/TextBox';
 import CustomButton from '../../../../../../common/atoms/Button';
 import Anchor from '../../../../../../common/atoms/Anchor';
@@ -75,13 +71,7 @@ class LoginForm extends React.PureComponent<Props> {
       const value = get(event, 'nativeEvent.data', '');
       change('recaptchaToken', value);
       handleSubmit(data => {
-        const {
-          emailAddress,
-          password,
-          rememberMe,
-          savePlcc,
-          userTouchId,
-        } = data;
+        const { emailAddress, password, rememberMe, savePlcc, userTouchId } = data;
         const LoginData = {
           emailAddress,
           password,
@@ -130,14 +120,7 @@ class LoginForm extends React.PureComponent<Props> {
   };
 
   render() {
-    const {
-      labels,
-      handleSubmit,
-      onSubmit,
-      variation,
-      getTouchStatus,
-      showRecaptcha,
-    } = this.props;
+    const { labels, variation, getTouchStatus, showRecaptcha } = this.props;
     const { type, setRecaptchaModalMountedState } = this.state;
     return (
       <Fragment>
@@ -162,16 +145,8 @@ class LoginForm extends React.PureComponent<Props> {
               secureTextEntry={type === 'password'}
               rightText={
                 type === 'password'
-                  ? getLabelValue(
-                      labels,
-                      'lbl_createAccount_show',
-                      'registration'
-                    )
-                  : getLabelValue(
-                      labels,
-                      'lbl_createAccount_hide',
-                      'registration'
-                    )
+                  ? getLabelValue(labels, 'lbl_createAccount_show', 'registration')
+                  : getLabelValue(labels, 'lbl_createAccount_hide', 'registration')
               }
             />
             <HideShowFieldWrapper>
@@ -185,25 +160,14 @@ class LoginForm extends React.PureComponent<Props> {
                 dataLocator=""
                 text={
                   type === 'password'
-                    ? getLabelValue(
-                        labels,
-                        'lbl_createAccount_show',
-                        'registration'
-                      )
-                    : getLabelValue(
-                        labels,
-                        'lbl_createAccount_hide',
-                        'registration'
-                      )
+                    ? getLabelValue(labels, 'lbl_createAccount_show', 'registration')
+                    : getLabelValue(labels, 'lbl_createAccount_hide', 'registration')
                 }
               />
             </HideShowFieldWrapper>
           </ShowHideWrapper>
           <View style={styles.inputCheckBoxStyle}>
-            <TouchFaceIdCheckBox
-              labels={labels}
-              getTouchStatus={getTouchStatus}
-            />
+            <TouchFaceIdCheckBox labels={labels} getTouchStatus={getTouchStatus} />
           </View>
 
           <CustomButton
@@ -211,7 +175,7 @@ class LoginForm extends React.PureComponent<Props> {
             text={labels.login.lbl_login_loginCTA}
             buttonVariation="variable-width"
             customStyle={styles.loginButtonStyle}
-            onPress={handleSubmit(onSubmit)}
+            onPress={this.handleLoginClick}
           />
 
           {variation === 'checkout' && (
@@ -281,8 +245,7 @@ LoginForm.defaultProps = {
       lbl_login_loginCTA: 'LOG IN',
       lbl_login_createAccountCTA: 'CREATE ACCOUNT',
       lbl_login_forgetPasswordCTA: 'Forgot password?',
-      lbl_login_createAccountHelp:
-        "Don't have an account? Create one now to start earning points!",
+      lbl_login_createAccountHelp: "Don't have an account? Create one now to start earning points!",
     },
   },
   handleSubmit: noop,

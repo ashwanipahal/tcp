@@ -6,35 +6,7 @@ exports[`Add gift card form component render error message 1`] = `
   addGiftCardResponse="foo"
   change={[MockFunction]}
   goBackToPayment={[MockFunction]}
-  handleSubmit={
-    [MockFunction] {
-      "calls": Array [
-        Array [
-          [Function],
-        ],
-        Array [
-          [Function],
-        ],
-        Array [
-          [Function],
-        ],
-      ],
-      "results": Array [
-        Object {
-          "type": "return",
-          "value": undefined,
-        },
-        Object {
-          "type": "return",
-          "value": undefined,
-        },
-        Object {
-          "type": "return",
-          "value": undefined,
-        },
-      ],
-    }
-  }
+  handleSubmit={[MockFunction]}
   isRow={false}
   keyboardShouldPersistTaps="handled"
   labels={
@@ -169,14 +141,6 @@ exports[`Add gift card form component render error message 1`] = `
       type="tel"
     />
     <View>
-      <Styled(View)>
-        <Recaptcha
-          onMessage={[Function]}
-          siteKey="6LdYiRsTAAAAAHF4Yntsq8mPdWgHaTTFHsk8rax8"
-          style={Object {}}
-          url="https://www.childrensplace.com"
-        />
-      </Styled(View)>
       <Field
         className="visibility-recaptcha"
         component={
@@ -272,7 +236,7 @@ exports[`Add gift card form component render error message 1`] = `
         iconSize="fs12"
         locator=""
         navigation={Object {}}
-        onPress={null}
+        onPress={[Function]}
         selected={false}
         selectedIcon="chevron-up"
         showIcon={false}
@@ -315,21 +279,7 @@ exports[`Add gift card form component should render component correctly 1`] = `
   addGiftCardResponse={null}
   change={[MockFunction]}
   goBackToPayment={[MockFunction]}
-  handleSubmit={
-    [MockFunction] {
-      "calls": Array [
-        Array [
-          [Function],
-        ],
-      ],
-      "results": Array [
-        Object {
-          "type": "return",
-          "value": undefined,
-        },
-      ],
-    }
-  }
+  handleSubmit={[MockFunction]}
   isRow={false}
   keyboardShouldPersistTaps="handled"
   labels={
@@ -446,14 +396,6 @@ exports[`Add gift card form component should render component correctly 1`] = `
       type="tel"
     />
     <View>
-      <Styled(View)>
-        <Recaptcha
-          onMessage={[Function]}
-          siteKey="6LdYiRsTAAAAAHF4Yntsq8mPdWgHaTTFHsk8rax8"
-          style={Object {}}
-          url="https://www.childrensplace.com"
-        />
-      </Styled(View)>
       <Field
         className="visibility-recaptcha"
         component={
@@ -549,7 +491,7 @@ exports[`Add gift card form component should render component correctly 1`] = `
         iconSize="fs12"
         locator=""
         navigation={Object {}}
-        onPress={null}
+        onPress={[Function]}
         selected={false}
         selectedIcon="chevron-up"
         showIcon={false}
