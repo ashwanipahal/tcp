@@ -172,9 +172,9 @@ class ProductReviews extends React.Component {
           onClick={this.handleToggle}
         >
           {ratingsAndReviewsLabel.lbl_ratings_and_reviews}
-          `Ratings & Reviews (`
+          {`Ratings & Reviews (`}
           <span>{`${reviewsCount}`}</span>
-          `)`
+          {`)`}
         </BodyCopy>
         <div
           id={`BVRRContainer-${ratingsProductId}`}
