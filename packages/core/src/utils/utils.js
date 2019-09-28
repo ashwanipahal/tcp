@@ -6,6 +6,7 @@ import { API_CONFIG } from '../services/config';
 import { getStoreRef, resetStoreRef } from './store.utils';
 import { APICONFIG_REDUCER_KEY } from '../constants/reducer.constants';
 import { parseDate } from './parseDate';
+import { ROUTE_PATH } from '../config/route.config';
 
 // setting the apiConfig subtree of whole state in variable; Do we really need it ?
 let apiConfig = null;
@@ -541,6 +542,66 @@ export const getFormSKUValue = formValue => {
   };
 };
 
+/**
+ * This function configure url for Next/Link using CMS defined url string
+ */
+export const configureInternalNavigationFromCMSUrl = url => {
+  const plpRoute = `${ROUTE_PATH.plp.name}/`;
+  const pdpRoute = `${ROUTE_PATH.pdp.name}/`;
+  const searchRoute = `${ROUTE_PATH.search.name}/`;
+
+  if (url.includes(plpRoute)) {
+    const urlItems = url.split(plpRoute);
+    const queryParam = urlItems.join('');
+    return `${ROUTE_PATH.plp.name}?${ROUTE_PATH.plp.param}=${queryParam}`;
+  }
+  if (url.includes(pdpRoute)) {
+    const urlItems = url.split(pdpRoute);
+    const queryParam = urlItems.join('');
+    return `${ROUTE_PATH.pdp.name}?${ROUTE_PATH.pdp.param}=${queryParam}`;
+  }
+  if (url.includes(searchRoute)) {
+    const urlItems = url.split(searchRoute);
+    const queryParam = urlItems.join('');
+    return `${ROUTE_PATH.search.name}?${ROUTE_PATH.search.param}=${queryParam}`;
+  }
+  return url;
+};
+
+export const getModifiedLanguageCode = id => {
+  switch (id) {
+    case 'en':
+      return 'en_US';
+    case 'es':
+      return 'es_ES';
+    case 'fr':
+      return 'fr_FR';
+    default:
+      return id;
+  }
+};
+
+/**
+ * @method getTranslateDateInformation
+ * @desc returns day, month and day of the respective date provided
+ * @param {string} date date which is to be mutated
+ * @param {upperCase} locale use for convert locate formate
+ */
+export const getTranslateDateInformation = (
+  date,
+  language,
+  dayOption = { weekday: 'short' },
+  monthOption = { month: 'short' }
+) => {
+  const localeType = language ? getModifiedLanguageCode(language).replace('_', '-') : 'en';
+  const currentDate = date ? new Date(date) : new Date();
+  return {
+    day: new Intl.DateTimeFormat(localeType, dayOption).format(currentDate),
+    month: new Intl.DateTimeFormat(localeType, monthOption).format(currentDate),
+    date: currentDate.getDate(),
+  };
+};
+
 export default {
   getPromotionalMessage,
   getIconPath,
@@ -568,4 +629,7 @@ export default {
   parseStoreHours,
   parseBoolean,
   getFormSKUValue,
+  configureInternalNavigationFromCMSUrl,
+  getModifiedLanguageCode,
+  getTranslateDateInformation,
 };

@@ -861,6 +861,7 @@ exports[`CreditCardForm component should renders correctly with address dropdown
             }
           }
           dataLocatorPrefix="address"
+          regularName={false}
           showCountry={false}
           showDefaultText={false}
           showName={true}

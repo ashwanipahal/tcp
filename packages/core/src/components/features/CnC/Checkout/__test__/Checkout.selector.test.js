@@ -465,4 +465,24 @@ describe('Checkout Selectors', () => {
       phoneNumber: 2012345678,
     });
   });
+
+  it('#isVenmoPaymentSaveSelected', () => {
+    const { isVenmoPaymentSaveSelected } = CHECKOUT_SELECTORS;
+    const Checkout = fromJS({
+      uiFlags: {
+        venmoPaymentOptionSave: 'true',
+      },
+    });
+
+    const state = {
+      Checkout: fromJS({
+        uiFlags: {
+          venmoPaymentOptionSave: 'true',
+        },
+      }),
+    };
+    expect(isVenmoPaymentSaveSelected(state)).toEqual(
+      Checkout.getIn(['uiFlags', 'venmoPaymentOptionSave'])
+    );
+  });
 });

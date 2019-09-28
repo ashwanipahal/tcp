@@ -26,6 +26,7 @@ export default css`
     text-align: center;
     margin-left: 0;
     margin-right: 0;
+    padding-bottom: ${props => props.theme.spacing.ELEM_SPACING.XXS};
     width: 100%;
   }
 

@@ -25,7 +25,7 @@ export function* addToCartEcom({ payload }) {
       langId,
     };
 
-    const { callBack } = payload;
+    const { callBack, fromMoveToBag } = payload;
 
     const params = {
       ...apiConfigParams,
@@ -48,8 +48,9 @@ export function* addToCartEcom({ payload }) {
     if (callBack) {
       callBack();
     }
-
-    yield put(openAddedToBag());
+    if (!fromMoveToBag) {
+      yield put(openAddedToBag());
+    }
 
     yield put(BAG_PAGE_ACTIONS.getOrderDetails());
   } catch (err) {
