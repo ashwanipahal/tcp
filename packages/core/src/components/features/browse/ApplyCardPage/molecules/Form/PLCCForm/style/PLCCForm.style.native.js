@@ -60,7 +60,6 @@ export const MessageViewContainer = styled.View`
   margin-top: ${props => props.theme.spacing.LAYOUT_SPACING.XXS};
   margin-left: ${props => props.theme.spacing.LAYOUT_SPACING.XXS};
   margin-right: ${props => props.theme.spacing.LAYOUT_SPACING.XXS};
-  background: ${props => props.theme.colorPalette.gray[500]};
 `;
 
 export const PersonalInformationContainerView = styled.View`
@@ -109,7 +108,7 @@ export const ButtonWrapper = styled.View`
 
 export const RichTextContainer = styled.View`
   width: 100%;
-  height: 210px;
+  height: 560px;
   margin-left: ${props => props.theme.spacing.LAYOUT_SPACING.XXS};
   margin-right: ${props => props.theme.spacing.LAYOUT_SPACING.XXS};
 `;

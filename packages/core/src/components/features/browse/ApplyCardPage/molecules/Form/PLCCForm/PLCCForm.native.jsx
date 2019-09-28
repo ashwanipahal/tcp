@@ -363,7 +363,7 @@ class PLCCForm extends React.PureComponent<Props> {
           mobilefontFamily="secondary"
           textAlign="left"
         />
-        <MessageViewContainer height="70px">
+        <MessageViewContainer height="300px">
           <RichText source={{ html: plccData && plccData.contact_information_disclaimer }} />
         </MessageViewContainer>
         <StyledBodyCopy
