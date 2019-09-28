@@ -223,6 +223,7 @@ exports[`ButtonList component renders correctly if  cards present and addNewCCSt
     backLinkText=""
     hideBackLink={true}
     nextButtonText=""
+    showVenmoSubmit={false}
   />
 </form>
 `;
@@ -364,6 +365,7 @@ exports[`ButtonList component renders correctly if  no cards present  1`] = `
     backLinkText=""
     hideBackLink={true}
     nextButtonText=""
+    showVenmoSubmit={false}
   />
 </form>
 `;
@@ -423,6 +425,7 @@ exports[`ButtonList component renders correctly if payment method is diff 1`] = 
     backLinkText=""
     hideBackLink={true}
     nextButtonText=""
+    showVenmoSubmit={false}
   />
 </form>
 `;
@@ -1041,6 +1044,7 @@ exports[`ButtonList component renders correctly without props 1`] = `
     backLinkText=""
     hideBackLink={true}
     nextButtonText=""
+    showVenmoSubmit={false}
   />
 </form>
 `;
@@ -1659,6 +1663,7 @@ exports[`ButtonList component renders correctly without props 2`] = `
     backLinkText=""
     hideBackLink={true}
     nextButtonText=""
+    showVenmoSubmit={false}
   />
 </form>
 `;
@@ -1679,6 +1684,7 @@ exports[`ButtonList component renders correctly without props with isPaymentDisa
     backLinkText=""
     hideBackLink={true}
     nextButtonText=""
+    showVenmoSubmit={false}
   />
 </form>
 `;

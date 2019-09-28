@@ -437,7 +437,10 @@ export class BillingPaymentForm extends React.PureComponent {
               <div className="payment-paypal-container" />
             )}
             {paymentMethodId === constants.PAYMENT_METHOD_VENMO && (
-              <VenmoPaymentButton className="venmo-container" />
+              <VenmoPaymentButton
+                className="venmo-container"
+                continueWithText={labels.continueWith}
+              />
             )}
           </div>
         )}
@@ -447,6 +450,8 @@ export class BillingPaymentForm extends React.PureComponent {
           backLinkHandler={() => utility.routeToPage(CHECKOUT_ROUTES.shippingPage)}
           nextButtonText={nextSubmitText}
           backLinkText={orderHasShipping ? backLinkShipping : backLinkPickup}
+          showVenmoSubmit={paymentMethodId === constants.PAYMENT_METHOD_VENMO}
+          continueWithText={labels.continueWith}
         />
       </form>
     );
