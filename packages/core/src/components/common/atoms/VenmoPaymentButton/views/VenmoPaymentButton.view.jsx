@@ -218,7 +218,7 @@ export class VenmoPaymentButton extends Component {
                   fontFamily="secondary"
                   className="venmo-continue-text"
                 >
-                  Continue with
+                  {continueWithText}
                 </BodyCopy>
               )}
               <button
