@@ -35,12 +35,7 @@ type CloseIconProps = {
   isOverlay: Boolean,
 };
 
-const getCloseIcon = ({
-  onRequestClose,
-  headerStyle,
-  iconType,
-  isOverlay,
-}: CloseIconProps) => {
+const getCloseIcon = ({ onRequestClose, headerStyle, iconType, isOverlay }: CloseIconProps) => {
   return (
     <ImageWrapper style={headerStyle}>
       <StyledTouchableOpacity
@@ -49,15 +44,23 @@ const getCloseIcon = ({
         accessibilityLabel="close"
         isOverlay={isOverlay}
       >
-        <StyledCrossImage
-          source={iconType === 'arrow' ? arrowIcon : closeIcon}
-        />
+        <StyledCrossImage source={iconType === 'arrow' ? arrowIcon : closeIcon} />
       </StyledTouchableOpacity>
     </ImageWrapper>
   );
 };
 
-
+const geLine = (horizontalBar, borderColor, transparentModal) => {
+  return (
+    <>
+      {horizontalBar && transparentModal !== 'transparent-captcha' ? (
+        <LineWrapper>
+          <LineComp marginTop={5} borderWidth={2} borderColor={borderColor} />
+        </LineWrapper>
+      ) : null}
+    </>
+  );
+};
 
 const ModalNative = ({ isOpen, children, isOverlay, ...otherProps }: Props) => {
   const {
@@ -69,12 +72,12 @@ const ModalNative = ({ isOpen, children, isOverlay, ...otherProps }: Props) => {
     headerStyle,
     headingFontWeight,
     fontSize,
-    horizontalBar = true,
-    borderColor = 'black',
     iconType,
     fullWidth,
     customTransparent,
     transparentModal,
+    horizontalBar = true,
+    borderColor = 'black',
   } = otherProps;
   return (
     <SafeAreaView>
@@ -107,19 +110,8 @@ const ModalNative = ({ isOpen, children, isOverlay, ...otherProps }: Props) => {
                 isOverlay,
               })}
             </RowWrapper>
-            {horizontalBar && transparentModal !== 'transparent-captcha' ? (
-              <LineWrapper>
-                <LineComp
-                  marginTop={5}
-                  borderWidth={2}
-                  borderColor={borderColor}
-                />
-              </LineWrapper>
-            ) : null}
-            <ScrollView
-              showsVerticalScrollIndicator={false}
-              keyboardShouldPersistTaps="handled"
-            >
+            {geLine(horizontalBar, borderColor, transparentModal)}
+            <ScrollView showsVerticalScrollIndicator={false} keyboardShouldPersistTaps="handled">
               {children}
             </ScrollView>
           </ModalCustomWrapper>
