@@ -332,6 +332,7 @@ const getBillingLabels = createSelector(
       'lbl_billing_selectCardTitle',
       'lbl_billing_select',
       'lbl_billing_cvvCode',
+      'lbl_billing_continueWith',
     ];
     labelKeys.forEach(key => {
       labels[key] = getLabelValue(billingLabel, key);
@@ -361,6 +362,7 @@ const getBillingLabels = createSelector(
       lbl_billing_selectCardTitle: selectCardTitle,
       lbl_billing_select: select,
       lbl_billing_cvvCode: cvvCode,
+      lbl_billing_continueWith: continueWith,
     } = labels;
     return {
       header,
@@ -387,6 +389,7 @@ const getBillingLabels = createSelector(
       selectCardTitle,
       select,
       cvvCode,
+      continueWith,
     };
   }
 );
