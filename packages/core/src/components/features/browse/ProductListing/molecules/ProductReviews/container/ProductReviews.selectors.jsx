@@ -9,11 +9,6 @@ export const getPersonalDataState = state => {
   return state[USER_REDUCER_KEY].get('personalData');
 };
 
-export const getUserLoggedInState = createSelector(
-  getPersonalDataState,
-  state => state && state.get('isGuest')
-);
-
 export const isMprUser = createSelector(
   getPersonalDataState,
   state => state && state.get('isPlcc') !== 'true'

@@ -7,28 +7,7 @@ import withStyles from '../../../../../../common/hoc/withStyles';
 import ProductReviewsStyle from '../ProductReviews.style';
 import BodyCopy from '../../../../../../common/atoms/BodyCopy/views/BodyCopy';
 
-class ProductReviews extends React.Component {
-  static propTypes = {
-    /** id of the product - for BV */
-    ratingsProductId: PropTypes.string.isRequired,
-
-    /** indicates the it's browser mode, I want it as prop to force a re-render on client */
-    isClient: PropTypes.bool.isRequired,
-
-    /** Flag indicates whether the user is a guest */
-    isGuest: PropTypes.bool.isRequired,
-
-    userId: PropTypes.string,
-    /** MPR ID of the User */
-    mprId: PropTypes.string,
-    expanded: PropTypes.bool,
-    className: PropTypes.string,
-    reviewsCount: PropTypes.number,
-    bazaarvoiceApiUrl: PropTypes.string,
-    onLoginClick: PropTypes.func,
-    ratingsAndReviewsLabel: PropTypes.objectOf(PropTypes.oneOfType([PropTypes.string])),
-  };
-
+class ProductReviews extends React.PureComponent {
   constructor(props, context) {
     super(props, context);
 
@@ -37,7 +16,6 @@ class ProductReviews extends React.Component {
       isLoading: true,
       expanded,
     };
-
     this.captureContainerRef = this.captureContainerRef.bind(this);
     this.handleToggle = this.handleToggle.bind(this);
     this.handleLoginClick = this.handleLoginClick.bind(this);
@@ -185,6 +163,20 @@ class ProductReviews extends React.Component {
     );
   }
 }
+
+ProductReviews.propTypes = {
+  ratingsProductId: PropTypes.string.isRequired,
+  isClient: PropTypes.bool.isRequired,
+  isGuest: PropTypes.bool.isRequired,
+  userId: PropTypes.string,
+  mprId: PropTypes.string,
+  expanded: PropTypes.bool,
+  className: PropTypes.string,
+  reviewsCount: PropTypes.number,
+  bazaarvoiceApiUrl: PropTypes.string,
+  onLoginClick: PropTypes.func,
+  ratingsAndReviewsLabel: PropTypes.objectOf(PropTypes.oneOfType([PropTypes.string])),
+};
 
 ProductReviews.defaultProps = {
   expanded: true,
