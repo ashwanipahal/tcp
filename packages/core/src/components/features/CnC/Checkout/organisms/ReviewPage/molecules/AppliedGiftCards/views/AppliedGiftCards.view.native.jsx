@@ -80,7 +80,7 @@ export const AppliedGiftCards = ({ appliedGiftCards, labels }) => {
         <BodyCopy
           fontSize="fs16"
           mobileFontFamily="secondary"
-          color="gray.700"
+          color="gray.900"
           text={labels.lbl_review_appliedGiftCardsNone}
         />
       )}
