@@ -4,8 +4,8 @@ import { withNavigation } from 'react-navigation';
 import { BodyCopy, Button } from '@tcp/core/src/components/common/atoms';
 import { getLabelValue } from '@tcp/core/src/utils';
 import { ViewWithSpacing } from '@tcp/core/src/components/common/atoms/styledWrapper';
+import { UnderlineStyle } from '../../../styledWrapper';
 import {
-  UnderlineStyle,
   EarnExtraPointsOverviewContainer,
   EarnExtraPointsWrapper,
 } from '../styles/EarnExtraPointsOverview.style.native';
