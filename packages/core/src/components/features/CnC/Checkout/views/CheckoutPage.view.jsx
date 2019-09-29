@@ -193,7 +193,9 @@ class CheckoutPage extends React.PureComponent {
             isVenmoPaymentInProgress={isVenmoPaymentInProgress}
           />
         )}
-        {currentSection.toLowerCase() === CHECKOUT_STAGES.CONFIRMATION && <Confirmation />}
+        {currentSection.toLowerCase() === CHECKOUT_STAGES.CONFIRMATION && (
+          <Confirmation isVenmoPaymentInProgress={isVenmoPaymentInProgress} />
+        )}
       </div>
     );
   };
