@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { Fragment } from 'react';
 import PropTypes from 'prop-types';
 // import { Button } from '../../../../../../common/atoms';
 import withStyles from '../../../../../../common/hoc/withStyles';
@@ -44,7 +44,7 @@ const ProductList = props => {
   let gridIndex = 0;
 
   return (
-    <ul className={className}>
+    <Fragment>
       {productsBlock.map((item, index) => {
         const isEvenElement = gridIndex % 2;
         if (typeof item === 'string') {
@@ -56,11 +56,11 @@ const ProductList = props => {
         return typeof item === 'string' ? (
           /* id={isShowPLPId && (categoryNameTop +`-`+item).replace(/ /g, '-')} */
 
-          <h2 key={item} className="item-title">
+          <h2 key={item} className={`${className} item-title`}>
             {item}
           </h2>
         ) : (
-          <div className="product-tile search-product-tile">
+          <div className={`${className} product-tile search-product-tile`}>
             <ProductsGridItem
               isMobile={isMobileApp()}
               loadedProductCount={loadedProductCount}
@@ -100,7 +100,7 @@ const ProductList = props => {
           </div>
         );
       })}
-    </ul>
+    </Fragment>
   );
 };
 
