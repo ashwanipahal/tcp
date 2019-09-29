@@ -57,7 +57,7 @@ ConfirmationView.propTypes = {
 };
 ConfirmationView.defaultProps = {
   className: '',
-  isVenmoPaymentInProgress: true,
+  isVenmoPaymentInProgress: false,
   venmoPayment: {
     userName: '',
     ccBrand: VenmoConstants.VENMO,
