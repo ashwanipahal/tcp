@@ -1,18 +1,16 @@
 import { getPayloadCookieArray, NavigateXHR } from '../NavigateXHR';
-import { executeStatefulAPICall } from '../../../handler/handler';
+import { executeExternalAPICall } from '../../../handler/handler';
 
 jest.mock('../../../handler/handler', () => ({
-  executeStatefulAPICall: jest.fn(),
+  executeExternalAPICall: jest.fn(),
 }));
 
-describe('#login', () => {
+describe('#navigateXHR', () => {
   it('should get modified cookies in map format', () => {
     const arrCookie = [
       {
-        domain: '.childrensplace.com',
         name: '',
         path: '/',
-        secure: false,
         value: '',
       },
     ];
@@ -21,7 +19,7 @@ describe('#login', () => {
 
   it('should success on navigate XHR', () => {
     const result = {};
-    executeStatefulAPICall.mockImplementation(() => Promise.reject(result));
+    executeExternalAPICall.mockImplementation(() => Promise.reject(result));
 
     NavigateXHR().then(data => {
       expect(data).toMatchObject(result);

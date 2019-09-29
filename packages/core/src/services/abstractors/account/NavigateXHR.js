@@ -1,7 +1,7 @@
-import { executeStatefulAPICall } from '../../handler';
-
 import endpoints from '../../endpoints';
 import { getAllCookies } from '../../../utils/cookie.util';
+import { getAPIConfig } from '../../../utils';
+import { executeExternalAPICall } from '../../handler';
 
 export const getPayloadCookieArray = () => {
   // TODO - Fix this to remove hardcoded values
@@ -9,27 +9,28 @@ export const getPayloadCookieArray = () => {
     .split(';')
     .map(str => {
       const obj = Object.create(null);
-      obj.domain = '.childrensplace.com';
+
       obj.name = str && str.split('=')[0].trim();
       obj.path = '/';
-      obj.secure = false;
       obj.value = str && str.split('=')[1].trim();
       return obj;
     });
 };
 
 export const NavigateXHR = () => {
+  const { brandId } = getAPIConfig();
+  const crossDomain =
+    brandId === 'gym' ? 'https://test5.thechildrensplace.com' : 'https://test6.gymboree.com';
+  endpoints.navigateXHR.URI = `${crossDomain}/api/${endpoints.navigateXHR.URI}`;
+
   const payload = {
     body: {
       cookie: getPayloadCookieArray(),
     },
-    header: {
-      targetDomain: '.gymboree.com',
-    },
     webService: endpoints.navigateXHR,
   };
 
-  return executeStatefulAPICall(payload)
+  return executeExternalAPICall(payload)
     .then(res => {
       return res;
     })

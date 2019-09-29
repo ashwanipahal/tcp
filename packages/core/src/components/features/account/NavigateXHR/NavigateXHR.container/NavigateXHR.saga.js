@@ -1,7 +1,8 @@
-import { call } from 'redux-saga/effects';
+import { call, takeLatest } from 'redux-saga/effects';
 import { NavigateXHR } from '../../../../../services/abstractors/account';
+import NAVIGATE_XHR_CONSTANTS from './NavigateXHR.constants';
 
-export function* navigateXHRSaga() {
+export function* navigateCrossDomainSaga() {
   try {
     const response = yield call(NavigateXHR);
     if (response.success) {
@@ -13,4 +14,8 @@ export function* navigateXHRSaga() {
   }
 }
 
-export default { navigateXHRSaga };
+export function* NavigateXHRSaga() {
+  yield takeLatest(NAVIGATE_XHR_CONSTANTS.NAVIGATE_XHR_STATE, navigateCrossDomainSaga);
+}
+
+export default NavigateXHRSaga;
