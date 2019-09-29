@@ -15,6 +15,7 @@ import { isMobileApp, routerPush } from '../../../../../utils';
 import { resetCheckoutReducer } from '../container/Checkout.action';
 import { resetAirmilesReducer } from '../../common/organism/AirmilesBanner/container/AirmilesBanner.actions';
 import { resetCouponReducer } from '../../common/organism/CouponAndPromos/container/Coupon.actions';
+import BagActions from '../../BagPage/container/BagPage.actions';
 import { getUserEmail } from '../../../account/User/container/User.selectors';
 
 jest.mock('../../../../../utils', () => ({
@@ -39,6 +40,7 @@ describe('CheckoutReview saga', () => {
     expect(CheckoutReviewSaga.next().value).toEqual(put(resetCheckoutReducer()));
     expect(CheckoutReviewSaga.next().value).toEqual(put(resetAirmilesReducer()));
     expect(CheckoutReviewSaga.next().value).toEqual(put(resetCouponReducer()));
+    expect(CheckoutReviewSaga.next().value).toEqual(put(BagActions.resetCartReducer()));
   });
   it('CheckoutReview when mobile app', () => {
     isMobileApp.mockImplementation(() => true);
@@ -56,6 +58,7 @@ describe('CheckoutReview saga', () => {
     expect(CheckoutReviewSaga.next().value).toEqual(put(resetCheckoutReducer()));
     expect(CheckoutReviewSaga.next().value).toEqual(put(resetAirmilesReducer()));
     expect(CheckoutReviewSaga.next().value).toEqual(put(resetCouponReducer()));
+    expect(CheckoutReviewSaga.next().value).toEqual(put(BagActions.resetCartReducer()));
   });
 });
 const emailAddress = '123@123.com';
