@@ -1,6 +1,6 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import CardImage from '../../../../common/molecules/CardImage/views/CardImage.view';
+import CardImage from '../../../../common/molecules/CardImage';
 import withStyles from '../../../../common/hoc/withStyles';
 import styles from '../styles/Confirmation.styles';
 import Row from '../../../../common/atoms/Row';
