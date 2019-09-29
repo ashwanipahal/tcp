@@ -25,6 +25,8 @@ const ProductListingReducer = (state = initialState, action) => {
       return state.merge(action.productsPage).set(DEFAULT_REDUCER_KEY, setCacheTTL());
     case PRODUCTLISTINGPAGE_CONSTANTS.SET_PLP_LOADING_STATE:
       return state.merge(action.payload);
+    case PRODUCTLISTINGPAGE_CONSTANTS.SET_WISHLIST_ITEMS:
+      return state;
     default:
       return getDefaultState(state);
   }

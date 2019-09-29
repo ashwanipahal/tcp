@@ -86,6 +86,10 @@ export const PRODUCT_PICKUP_ACTION_PATTERN = '@BOPIS-';
 export const QUICK_VIEW_REDUCER_KEY = 'QuickView';
 export const QUICK_VIEW_ACTION_PATTERN = '@@QV-';
 
+// Favorites Reducer
+export const FAVORITES_REDUCER_KEY = 'Favorites';
+export const FAVORITES_ACTION_PATTERN = '@@Favorites-';
+
 // Email signup reducer
 export const EMAIL_SIGNUP_REDUCER_KEY = 'EmailSignUp';
 export const SMS_SIGNUP_REDUCER_KEY = 'SmsSignUp';

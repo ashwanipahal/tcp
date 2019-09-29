@@ -112,10 +112,10 @@ class ProductsGridItem extends React.PureComponent {
       onAddItemToFavorites,
     } = this.props;
     const { selectedColorProductId } = this.state;
-    this.setError();
-    onAddItemToFavorites(selectedColorProductId || generalProductId)
-      .then(() => this.setState({ isInDefaultWishlist: true }))
-      .catch(err => this.setError(err));
+    // this.setError();
+    onAddItemToFavorites({ colorProductId: selectedColorProductId || generalProductId });
+    // .then(() => this.setState({ isInDefaultWishlist: true }))
+    // .catch(err => this.setError(err));
   };
 
   renderQuickViewCardOrLink = () => {};

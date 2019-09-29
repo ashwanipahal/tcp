@@ -332,5 +332,9 @@ const endpoints = {
     method: 'POST',
     URI: 'v2/account/points/claim',
   },
+  addOrUpdateWishlist: {
+    method: 'PUT',
+    URI: 'v2/wishlist/addOrUpdateWishlist',
+  },
 };
 export default endpoints;
