@@ -13,9 +13,6 @@ const styles = css`
     margin-bottom: 16px;
     text-align: center;
   }
-  .thank-you-component {
-    height: 500px;
-  }
 
   .loyalty-banner {
     display: none;
