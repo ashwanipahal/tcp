@@ -5,6 +5,7 @@ import Address from '@tcp/core/src/components/common/molecules/Address';
 import CardImage from '@tcp/core/src/components/common/molecules/CardImage';
 import AppliedGiftCards from '../../../molecules/AppliedGiftCards';
 
+/* istanbul ignore next */
 import {
   Heading,
   SubHeading,
