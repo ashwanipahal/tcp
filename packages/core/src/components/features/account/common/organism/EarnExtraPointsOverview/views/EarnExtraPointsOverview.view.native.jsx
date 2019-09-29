@@ -3,11 +3,10 @@ import PropTypes from 'prop-types';
 import { withNavigation } from 'react-navigation';
 import { BodyCopy, Button } from '@tcp/core/src/components/common/atoms';
 import { getLabelValue } from '@tcp/core/src/utils';
-
+import { ViewWithSpacing } from '@tcp/core/src/components/common/atoms/styledWrapper';
 import {
   UnderlineStyle,
   EarnExtraPointsOverviewContainer,
-  ButtonWrapperStyle,
   EarnExtraPointsWrapper,
 } from '../styles/EarnExtraPointsOverview.style.native';
 import EarnExtraPointsTileContainer from '../../EarnExtraPointsTile';
@@ -34,14 +33,14 @@ export const EarnExtraPointsOverview = ({ labels, handleComponentChange }) => {
       <EarnExtraPointsWrapper>
         <EarnExtraPointsTileContainer isAccountOverview />
       </EarnExtraPointsWrapper>
-      <ButtonWrapperStyle>
+      <ViewWithSpacing spacingStyles="margin-top-LRG margin-bottom-MED">
         <Button
           text={getLabelValue(labels, 'lbl_common_viewAll')}
           buttonVariation="variable-width"
           fill="BLUE"
           onPress={() => handleComponentChange('earnExtraPointsPageMobile')}
         />
-      </ButtonWrapperStyle>
+      </ViewWithSpacing>
     </EarnExtraPointsOverviewContainer>
   );
 };

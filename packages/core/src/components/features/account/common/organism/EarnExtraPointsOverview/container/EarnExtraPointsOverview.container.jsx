@@ -17,7 +17,10 @@ export class EarnExtraPointsOverviewContainer extends PureComponent {
 
 EarnExtraPointsOverviewContainer.propTypes = {
   labels: PropTypes.shape({}).isRequired,
-  handleComponentChange: PropTypes.func.isRequired,
+  handleComponentChange: PropTypes.func,
+};
+EarnExtraPointsOverviewContainer.defaultProps = {
+  handleComponentChange: () => {},
 };
 
 export const mapStateToProps = state => {
