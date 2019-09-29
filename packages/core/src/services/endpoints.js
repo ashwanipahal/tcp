@@ -332,5 +332,9 @@ const endpoints = {
     method: 'POST',
     URI: 'v2/account/points/claim',
   },
+  getDetailedOrderHistory: {
+    method: 'GET',
+    URI: 'v2/wallet/getPointsAndOrderHistory',
+  },
 };
 export default endpoints;

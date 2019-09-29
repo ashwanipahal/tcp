@@ -171,6 +171,9 @@ export const CONFIRMATION_REDUCER_KEY = 'Confirmation';
 export const CONFIRMATION_ACTION_PATTERN = '@@Confirmation-';
 export const PRODUCT_ADD_TO_BAG = 'ProductAddToBag';
 export const PRODUCT_SKU_SELECTION_FORM = 'PickupSkuSelectionForm';
+// User Order History
+export const ORDERS_REDUCER_KEY = 'Orders';
+export const ORDERS_ACTION_PATTERN = '@@Orders-';
 
 export const REDUCER_ACTION_MAPPING = {
   [APPLY_PLCC_REDUCER_KEY]: APPLY_PLCC_ACTION_PATTERN,

@@ -4,7 +4,7 @@ import { getIconPath } from '../../../../../utils';
 import { cardIconMapping } from '../../../../features/account/common/molecule/CardTile/views/CardTile.utils';
 import BodyCopy from '../../../atoms/BodyCopy';
 import withStyles from '../../../hoc/withStyles';
-import CardStyle from '../Card.style';
+import CardStyle from '../../Card/Card.style';
 import constants from '../../../../features/CnC/Checkout/organisms/BillingPaymentForm/container/CreditCard.constants';
 
 const CardImage = ({ card, cardNumber }) => {
