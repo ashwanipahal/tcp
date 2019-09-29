@@ -151,16 +151,16 @@ export default css`
 
   .hide-on-desktop {
     @media ${mediaQuery.largeOnly} {
-      display: none;
+      display: none !important;
     }
     @media ${mediaQuery.xlarge} {
-      display: none;
+      display: none !important;
     }
   }
 
   .hide-on-tablet {
     @media ${mediaQuery.mediumOnly} {
-      display: none;
+      display: none !important;
     }
   }
 
