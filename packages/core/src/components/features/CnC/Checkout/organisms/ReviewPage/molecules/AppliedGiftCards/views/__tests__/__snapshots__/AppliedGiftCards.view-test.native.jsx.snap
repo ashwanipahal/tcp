@@ -4,7 +4,7 @@ exports[`AppliedGiftCards should render correctly for empty state 1`] = `
 <Styled(View)>
   <Styled(BodyCopy)
     accessibilityText=""
-    color="gray.700"
+    color="gray.900"
     dataLocator=""
     fontSize="fs16"
     margin={null}
