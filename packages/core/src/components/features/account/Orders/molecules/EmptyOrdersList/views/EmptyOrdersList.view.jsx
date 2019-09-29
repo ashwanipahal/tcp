@@ -31,7 +31,7 @@ export const EmptyOrdersList = ({ className, labels }) => {
         fontWeight="regular"
         className="elem-mt-LRG elem-mb-LRG"
       >
-        {getLabelValue(labels, 'lbl_orders_empty-supporting-text', 'orders')}
+        {getLabelValue(labels, 'lbl_orders_emptySupportingText', 'orders')}
       </BodyCopy>
       <Col
         colSize={{
@@ -44,11 +44,10 @@ export const EmptyOrdersList = ({ className, labels }) => {
           buttonVariation="fixed-width"
           fill="BLUE"
           color="white"
-          className="shop-now-btn"
           onClick={goToHomePage}
           data-locator="orders-shop-now-btn"
         >
-          {getLabelValue(labels, 'lbl_orders_shop-now', 'orders')}
+          {getLabelValue(labels, 'lbl_orders_shopNow', 'orders')}
         </Button>
       </Col>
     </BodyCopy>

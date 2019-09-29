@@ -26,7 +26,7 @@ exports[`RecentOrders component should renders correctly 1`] = `
     link={null}
     textAlign="left"
   >
-    lbl_orders_recent-order
+    lbl_orders_recentOrder
   </Styled(BodyCopy)>
   <EmptyOrdersList
     className=""

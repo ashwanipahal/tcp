@@ -40,7 +40,7 @@ exports[`OrdersListItem component should renders correctly 1`] = `
             link={null}
             textAlign="left"
           >
-            lbl_orders_order-date
+            lbl_orders_orderDate
           </Styled(BodyCopy)>
         </Styled(Col)>
         <Styled(Col)
@@ -65,7 +65,7 @@ exports[`OrdersListItem component should renders correctly 1`] = `
             link={null}
             textAlign="left"
           >
-            lbl_orders_order-number
+            lbl_orders_orderNumber
           </Styled(BodyCopy)>
         </Styled(Col)>
       </Styled(Row)>
@@ -158,7 +158,7 @@ exports[`OrdersListItem component should renders correctly 1`] = `
             link={null}
             textAlign="left"
           >
-            lbl_orders_order-type
+            lbl_orders_orderType
           </Styled(BodyCopy)>
         </Styled(Col)>
         <Styled(Col)
@@ -183,7 +183,7 @@ exports[`OrdersListItem component should renders correctly 1`] = `
             link={null}
             textAlign="left"
           >
-            lbl_orders_order-status
+            lbl_orders_orderStatus
           </Styled(BodyCopy)>
         </Styled(Col)>
         <Styled(Col)
@@ -208,7 +208,7 @@ exports[`OrdersListItem component should renders correctly 1`] = `
             link={null}
             textAlign="right"
           >
-            lbl_orders_order-total
+            lbl_orders_orderTotal
           </Styled(BodyCopy)>
         </Styled(Col)>
       </Styled(Row)>
@@ -238,7 +238,7 @@ exports[`OrdersListItem component should renders correctly 1`] = `
             link={null}
             textAlign="left"
           >
-            lbl_orders_pickup-store
+            lbl_orders_pickupStore
           </Styled(BodyCopy)>
         </Styled(Col)>
         <Styled(Col)

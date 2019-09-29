@@ -31,11 +31,13 @@ class PastOrders extends React.Component {
   render() {
     const { className, labels, ordersListItems } = this.props;
     const { showMore } = this.state;
+    const pastOrdersListItems = ordersListItems.slice(1);
     const buttonText =
       showMore === true
-        ? getLabelValue(labels, 'lbl_orders_show-less', 'orders')
-        : getLabelValue(labels, 'lbl_orders_show-more', 'orders');
-    const ordersListItemsFilter = showMore === true ? ordersListItems : ordersListItems.slice(0, 2);
+        ? getLabelValue(labels, 'lbl_orders_showLess', 'orders')
+        : getLabelValue(labels, 'lbl_orders_showMore', 'orders');
+    const ordersListItemsFilter =
+      showMore === true ? pastOrdersListItems : pastOrdersListItems.slice(0, 10);
 
     return (
       <BodyCopy className={className}>
@@ -47,7 +49,7 @@ class PastOrders extends React.Component {
           fontWeight="semibold"
           className="elem-mt-XL"
         >
-          {getLabelValue(labels, 'lbl_orders_past-orders', 'orders')}
+          {getLabelValue(labels, 'lbl_orders_pastOrders', 'orders')}
         </BodyCopy>
         <Row fullBleed className="hide-on-mobile">
           <Col colSize={{ large: 5, medium: 3, small: 6 }}>
@@ -60,7 +62,7 @@ class PastOrders extends React.Component {
                   fontWeight="extrabold"
                   fontSize="fs14"
                 >
-                  {getLabelValue(labels, 'lbl_orders_order-date', 'orders')}
+                  {getLabelValue(labels, 'lbl_orders_orderDate', 'orders')}
                 </BodyCopy>
               </Col>
               <Col colSize={{ large: 6, medium: 4, small: 4 }}>
@@ -71,7 +73,7 @@ class PastOrders extends React.Component {
                   fontWeight="extrabold"
                   fontSize="fs14"
                 >
-                  {getLabelValue(labels, 'lbl_orders_order-number', 'orders')}
+                  {getLabelValue(labels, 'lbl_orders_orderNumber', 'orders')}
                 </BodyCopy>
               </Col>
             </Row>
@@ -85,7 +87,7 @@ class PastOrders extends React.Component {
                   fontWeight="extrabold"
                   fontSize="fs14"
                 >
-                  {getLabelValue(labels, 'lbl_orders_order-type', 'orders')}
+                  {getLabelValue(labels, 'lbl_orders_orderType', 'orders')}
                 </BodyCopy>
               </Col>
               <Col colSize={{ large: 4, medium: 3, small: 2 }}>
@@ -95,7 +97,7 @@ class PastOrders extends React.Component {
                   fontWeight="extrabold"
                   fontSize="fs14"
                 >
-                  {getLabelValue(labels, 'lbl_orders_order-status', 'orders')}
+                  {getLabelValue(labels, 'lbl_orders_orderStatus', 'orders')}
                 </BodyCopy>
               </Col>
               <Col colSize={{ large: 4, medium: 2, small: 2 }}>
@@ -107,7 +109,7 @@ class PastOrders extends React.Component {
                   fontSize="fs14"
                   textAlign="right"
                 >
-                  {getLabelValue(labels, 'lbl_orders_order-total', 'orders')}
+                  {getLabelValue(labels, 'lbl_orders_orderTotal', 'orders')}
                 </BodyCopy>
               </Col>
             </Row>
@@ -117,7 +119,7 @@ class PastOrders extends React.Component {
           ordersListItemsFilter.map(item => (
             <OrdersListItem labels={labels} key={item.orderNumber} hideHeader orderItem={item} />
           ))}
-        {ordersListItems.length >= 2 && (
+        {ordersListItems.length >= 10 && (
           <Anchor
             fontSizeVariation="large"
             underline

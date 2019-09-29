@@ -22,7 +22,7 @@ exports[`OrdersLinks component should renders correctly 1`] = `
     onClick={[Function]}
     underline={true}
   >
-    lbl_orders_ca-orders-link
+    lbl_orders_caOrdersLink
   </Styled(Anchor)>
   <Styled(Anchor)
     anchorVariation="primary"
@@ -35,7 +35,7 @@ exports[`OrdersLinks component should renders correctly 1`] = `
     target="_blank"
     underline={true}
   >
-    lbl_orders_international-orders-link
+    lbl_orders_internationalOrdersLink
   </Styled(Anchor)>
 </Styled(BodyCopy)>
 `;

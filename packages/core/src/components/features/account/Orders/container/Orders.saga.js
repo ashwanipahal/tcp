@@ -13,7 +13,7 @@ export function* getMyOrders({ payload }) {
     const orders = yield call(getOrderHistory, payload.siteId, payload.currentSiteId);
     yield put(setOrdersList(orders));
   } catch (e) {
-    logger.error('getAllCoupons error', e);
+    logger.error('getOrderHistory error', e);
   }
 }
 

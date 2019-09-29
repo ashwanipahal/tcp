@@ -5,30 +5,30 @@ import { getFormattedError } from '../../../utils/errorMessage.util';
 import { extractFloat } from '../../../utils/utils';
 import { getTranslateDateInformation } from '../../../utils';
 
-const orderReceivedLbl = 'lbl_orders_status_order-received';
-const orderCancelledLbl = 'lbl_orders_status_order-cancelled';
+const orderReceivedLbl = 'lbl_orders_statusOrderReceived';
+const orderCancelledLbl = 'lbl_orders_statusOrderCancelled';
 
-const orderStatusMapper = {
+export const orderStatusMapper = {
   'Pending payment approval': orderReceivedLbl,
   'Order In Process': orderReceivedLbl,
-  'Order Expired': 'lbl_orders_status_order-expired',
+  'Order Expired': 'lbl_orders_statusOrderExpired',
   'Order Canceled': orderCancelledLbl,
   'Order Cancelled': orderCancelledLbl,
-  'Order Shipped': 'lbl_orders_status_order-shipped',
-  'Partially Shipped': 'lbl_orders_status_order-partially-shipped',
-  'Order Partially Shipped': 'lbl_orders_status_order-partially-shipped',
+  'Order Shipped': 'lbl_orders_statusOrderShipped',
+  'Partially Shipped': 'lbl_orders_statusOrderPartiallyShipped',
+  'Order Partially Shipped': 'lbl_orders_statusOrderPartiallyShipped',
   'Order Received': orderReceivedLbl,
-  'Ready for Pickup': 'lbl_orders_status_items-ready-for-pickup',
+  'Ready for Pickup': 'lbl_orders_statusItemsReadyForPickup',
   'Reservation Received': orderReceivedLbl,
-  'Picked Up': 'lbl_orders_status_items-picked-up',
-  'Order Picked Up': 'lbl_orders_status_items-picked-up',
+  'Picked Up': 'lbl_orders_statusItemsPickedUp',
+  'Order Picked Up': 'lbl_orders_statusItemsPickedUp',
   Confirmed: orderReceivedLbl,
-  Expired: 'lbl_orders_status_order-expired',
+  Expired: 'lbl_orders_statusOrderExpired',
   Completed: orderReceivedLbl,
   Canceled: orderCancelledLbl,
   Cancelled: orderCancelledLbl,
-  'N/A': 'lbl_orders_status_na',
-  'Please contact our Customer Service': 'lbl_orders_status_user-call-needed',
+  'N/A': 'lbl_orders_statusNa',
+  'Please contact our Customer Service': 'lbl_orders_statusUserCallNeeded',
 };
 
 /**
@@ -37,7 +37,7 @@ const orderStatusMapper = {
  * @param {String} status -
  * @return orderStatus
  */
-const getOrderStatus = status => {
+export const getOrderStatus = status => {
   let orderStatus = status;
   if (status !== 'USBOSS') {
     orderStatus = orderStatusMapper[status] || status;
@@ -51,9 +51,9 @@ const getOrderStatus = status => {
  * @param {String} orderdate -
  * @return formatted date
  */
-const getTranslatedDate = dateStr => {
-  const dtaeObj = getTranslateDateInformation(dateStr);
-  return `${dtaeObj.month} ${dtaeObj.date}, ${dtaeObj.year}`;
+export const getTranslatedDate = dateStr => {
+  const dateObj = getTranslateDateInformation(dateStr);
+  return `${dateObj.month} ${dateObj.date}, ${dateObj.year}`;
 };
 
 /**

@@ -47,8 +47,8 @@ class OrdersLinks extends React.Component {
     const { currentSiteId } = this.state;
     const buttonText =
       currentSiteId !== API_CONFIG.siteIds.ca
-        ? getLabelValue(labels, 'lbl_orders_ca-orders-link', 'orders')
-        : getLabelValue(labels, 'lbl_orders_us-orders-link', 'orders');
+        ? getLabelValue(labels, 'lbl_orders_caOrdersLink', 'orders')
+        : getLabelValue(labels, 'lbl_orders_usOrdersLink', 'orders');
     return (
       <BodyCopy className={className} textAlign="right">
         <Anchor
@@ -73,7 +73,7 @@ class OrdersLinks extends React.Component {
           href={externalEndpoints.internationalOrdersPage}
           fontFamily="secondary"
         >
-          {getLabelValue(labels, 'lbl_orders_international-orders-link', 'orders')}
+          {getLabelValue(labels, 'lbl_orders_internationalOrdersLink', 'orders')}
         </Anchor>
       </BodyCopy>
     );

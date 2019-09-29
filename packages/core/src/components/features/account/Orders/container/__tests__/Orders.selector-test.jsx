@@ -1,12 +1,15 @@
-import { getLabels } from '../Orders.selectors';
+import { fromJS } from 'immutable';
+import getOrdersListState from '../Orders.selectors';
 
 describe('#pointsHistoryData selector', () => {
-  it('#getLabels should return all the account labels', () => {
+  it('#getOrdersListState should return OrdersListState state', () => {
+    const OrdersListState = fromJS({
+      ordersList: [],
+    });
     const state = {
-      Labels: {
-        account: {},
-      },
+      Orders: OrdersListState,
     };
-    expect(getLabels(state)).toMatchObject({});
+
+    expect(getOrdersListState(state)).toEqual(OrdersListState.get('ordersList'));
   });
 });

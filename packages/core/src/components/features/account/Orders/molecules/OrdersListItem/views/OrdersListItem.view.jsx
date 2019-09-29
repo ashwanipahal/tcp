@@ -24,7 +24,7 @@ export const OrdersListItem = ({ labels, orderItem, hideHeader }) => {
                 fontWeight="extrabold"
                 fontSize="fs14"
               >
-                {getLabelValue(labels, 'lbl_orders_order-date', 'orders')}
+                {getLabelValue(labels, 'lbl_orders_orderDate', 'orders')}
               </BodyCopy>
             </Col>
             <Col colSize={{ large: 6, medium: 4, small: 4 }}>
@@ -34,7 +34,7 @@ export const OrdersListItem = ({ labels, orderItem, hideHeader }) => {
                 fontWeight="extrabold"
                 fontSize="fs14"
               >
-                {getLabelValue(labels, 'lbl_orders_order-number', 'orders')}
+                {getLabelValue(labels, 'lbl_orders_orderNumber', 'orders')}
               </BodyCopy>
             </Col>
           </Row>
@@ -74,7 +74,7 @@ export const OrdersListItem = ({ labels, orderItem, hideHeader }) => {
                 fontWeight="extrabold"
                 fontSize="fs14"
               >
-                {getLabelValue(labels, 'lbl_orders_order-type', 'orders')}
+                {getLabelValue(labels, 'lbl_orders_orderType', 'orders')}
               </BodyCopy>
             </Col>
             <Col colSize={{ large: 4, medium: 3, small: 2 }}>
@@ -84,7 +84,7 @@ export const OrdersListItem = ({ labels, orderItem, hideHeader }) => {
                 fontWeight="extrabold"
                 fontSize="fs14"
               >
-                {getLabelValue(labels, 'lbl_orders_order-status', 'orders')}
+                {getLabelValue(labels, 'lbl_orders_orderStatus', 'orders')}
               </BodyCopy>
             </Col>
             <Col colSize={{ large: 4, medium: 2, small: 2 }}>
@@ -95,7 +95,7 @@ export const OrdersListItem = ({ labels, orderItem, hideHeader }) => {
                 fontSize="fs14"
                 textAlign="right"
               >
-                {getLabelValue(labels, 'lbl_orders_order-total', 'orders')}
+                {getLabelValue(labels, 'lbl_orders_orderTotal', 'orders')}
               </BodyCopy>
             </Col>
           </Row>
@@ -109,7 +109,7 @@ export const OrdersListItem = ({ labels, orderItem, hideHeader }) => {
               >
                 {isEcomOrder
                   ? getLabelValue(labels, 'lbl_orders_online', 'orders')
-                  : getLabelValue(labels, 'lbl_orders_pickup-store', 'orders')}
+                  : getLabelValue(labels, 'lbl_orders_pickupStore', 'orders')}
               </BodyCopy>
             </Col>
             <Col colSize={{ large: 4, medium: 3, small: 2 }}>

@@ -20,7 +20,7 @@ export const RecentOrders = ({ className, ordersListItems, labels }) => {
         fontWeight="semibold"
         className="elem-mt-SM"
       >
-        {getLabelValue(labels, 'lbl_orders_recent-order', 'orders')}
+        {getLabelValue(labels, 'lbl_orders_recentOrder', 'orders')}
       </BodyCopy>
       {ordersListItems && ordersListItems.length ? (
         <OrdersListItem labels={labels} orderItem={ordersListItems[0]} />

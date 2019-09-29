@@ -599,6 +599,7 @@ export const getTranslateDateInformation = (
     day: new Intl.DateTimeFormat(localeType, dayOption).format(currentDate),
     month: new Intl.DateTimeFormat(localeType, monthOption).format(currentDate),
     date: currentDate.getDate(),
+    year: currentDate.getFullYear(),
   };
 };
 

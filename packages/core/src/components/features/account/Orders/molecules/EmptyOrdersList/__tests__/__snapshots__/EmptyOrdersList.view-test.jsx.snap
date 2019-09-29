@@ -26,7 +26,7 @@ exports[`EmptyOrdersList component should renders correctly 1`] = `
     link={null}
     textAlign="left"
   >
-    lbl_orders_empty-supporting-text
+    lbl_orders_emptySupportingText
   </Styled(BodyCopy)>
   <Styled(Col)
     colSize={
@@ -39,13 +39,12 @@ exports[`EmptyOrdersList component should renders correctly 1`] = `
   >
     <Styled(Button)
       buttonVariation="fixed-width"
-      className="shop-now-btn"
       color="white"
       data-locator="orders-shop-now-btn"
       fill="BLUE"
       onClick={[Function]}
     >
-      lbl_orders_shop-now
+      lbl_orders_shopNow
     </Styled(Button)>
   </Styled(Col)>
 </Styled(BodyCopy)>
