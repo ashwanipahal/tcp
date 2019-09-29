@@ -660,7 +660,7 @@ exports[`ButtonList component renders correctly without props 1`] = `
               "$$typeof": Symbol(react.forward_ref),
               "attrs": Array [],
               "componentStyle": ComponentStyle {
-                "componentId": "sc-htpNat",
+                "componentId": "sc-bxivhb",
                 "isStatic": false,
                 "rules": Array [
                   "
@@ -803,7 +803,7 @@ exports[`ButtonList component renders correctly without props 1`] = `
               "displayName": "Styled(TextBox)",
               "foldedComponentIds": Array [],
               "render": [Function],
-              "styledComponentId": "sc-htpNat",
+              "styledComponentId": "sc-bxivhb",
               "target": [Function],
               "toString": [Function],
               "warnTooManyClasses": [Function],
@@ -854,7 +854,7 @@ exports[`ButtonList component renders correctly without props 1`] = `
             "$$typeof": Symbol(react.forward_ref),
             "attrs": Array [],
             "componentStyle": ComponentStyle {
-              "componentId": "sc-bxivhb",
+              "componentId": "sc-ifAKCX",
               "isStatic": false,
               "rules": Array [
                 "
@@ -971,7 +971,7 @@ exports[`ButtonList component renders correctly without props 1`] = `
             "displayName": "Styled(InputCheckbox)",
             "foldedComponentIds": Array [],
             "render": [Function],
-            "styledComponentId": "sc-bxivhb",
+            "styledComponentId": "sc-ifAKCX",
             "target": [Function],
             "toString": [Function],
             "warnTooManyClasses": [Function],
@@ -1279,7 +1279,7 @@ exports[`ButtonList component renders correctly without props 2`] = `
               "$$typeof": Symbol(react.forward_ref),
               "attrs": Array [],
               "componentStyle": ComponentStyle {
-                "componentId": "sc-htpNat",
+                "componentId": "sc-bxivhb",
                 "isStatic": false,
                 "rules": Array [
                   "
@@ -1422,7 +1422,7 @@ exports[`ButtonList component renders correctly without props 2`] = `
               "displayName": "Styled(TextBox)",
               "foldedComponentIds": Array [],
               "render": [Function],
-              "styledComponentId": "sc-htpNat",
+              "styledComponentId": "sc-bxivhb",
               "target": [Function],
               "toString": [Function],
               "warnTooManyClasses": [Function],
@@ -1473,7 +1473,7 @@ exports[`ButtonList component renders correctly without props 2`] = `
             "$$typeof": Symbol(react.forward_ref),
             "attrs": Array [],
             "componentStyle": ComponentStyle {
-              "componentId": "sc-bxivhb",
+              "componentId": "sc-ifAKCX",
               "isStatic": false,
               "rules": Array [
                 "
@@ -1590,7 +1590,7 @@ exports[`ButtonList component renders correctly without props 2`] = `
             "displayName": "Styled(InputCheckbox)",
             "foldedComponentIds": Array [],
             "render": [Function],
-            "styledComponentId": "sc-bxivhb",
+            "styledComponentId": "sc-ifAKCX",
             "target": [Function],
             "toString": [Function],
             "warnTooManyClasses": [Function],

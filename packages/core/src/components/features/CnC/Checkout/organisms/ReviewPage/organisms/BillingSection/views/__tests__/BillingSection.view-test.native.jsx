@@ -46,7 +46,6 @@ describe('BillingSection', () => {
       appliedGiftCards: null,
       className: '',
       labels: {},
-      onEdit: jest.fn(),
     };
     const tree = shallow(<BillingSection {...props} />);
     expect(tree).toMatchSnapshot();
@@ -63,7 +62,6 @@ describe('BillingSection', () => {
       labels: {
         ...labelsMock,
       },
-      onEdit: jest.fn(),
     };
     const tree = shallow(<BillingSection {...props} />);
     expect(tree).toMatchSnapshot();
@@ -80,7 +78,6 @@ describe('BillingSection', () => {
       labels: {
         ...labelsMock,
       },
-      onEdit: jest.fn(),
     };
     const tree = shallow(<BillingSection {...props} />);
     expect(tree).toMatchSnapshot();
@@ -95,7 +92,6 @@ describe('BillingSection', () => {
       labels: {
         ...labelsMock,
       },
-      onEdit: jest.fn(),
     };
     const tree = shallow(<BillingSection {...props} />);
     expect(tree).toMatchSnapshot();
@@ -110,7 +106,6 @@ describe('BillingSection', () => {
       labels: {
         ...labelsMock,
       },
-      onEdit: jest.fn(),
     };
     const tree = shallow(<BillingSection {...props} />);
     expect(tree).toMatchSnapshot();
