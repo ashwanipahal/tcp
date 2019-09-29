@@ -38,6 +38,26 @@ exports[`ConfirmationViewVanilla should render correctly 1`] = `
       <div>
         THANK YOU COMPONENT
       </div>
+      <Styled(VenmoConfirmation)
+        className=""
+        isVenmoPaymentInProgress={true}
+      />
+      <div>
+        <section
+          className="venmo-payment-method-wrapper"
+        >
+          <Styled(CardImage)
+            card={
+              Object {
+                "ccBrand": "VENMO",
+                "ccType": "VENMO",
+                "userName": "",
+              }
+            }
+            cardNumber=""
+          />
+        </section>
+      </div>
     </Styled(Col)>
   </Styled(Row)>
   <Styled(Row)
