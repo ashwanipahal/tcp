@@ -34,7 +34,7 @@ exports[`VenmoConfirmation component renders correctly without props 1`] = `
       <Styled(BodyCopy)
         className="venmo-banner-text"
         color="gray.900"
-        component="div"
+        component="p"
         fontFamily="secondary"
         fontSize="fs14"
         fontWeight="regular"

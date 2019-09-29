@@ -1,6 +1,6 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import CardImage from '@tcp/core/src/components/common/molecules/Card/views/CardImage';
+import CardImage from '../../../../common/molecules/Card/views/CardImage';
 import withStyles from '../../../../common/hoc/withStyles';
 import styles from '../styles/Confirmation.styles';
 import Row from '../../../../common/atoms/Row';
@@ -26,10 +26,7 @@ const ConfirmationView = ({ className, isVenmoPaymentInProgress, venmoPayment })
         <Col colSize={{ small: 6, medium: 8, large: 12 }}>
           <div>THANK YOU COMPONENT</div>
           {isVenmoPaymentInProgress && (
-            <VenmoConfirmation
-              className={className}
-              isVenmoPaymentInProgress={isVenmoPaymentInProgress}
-            />
+            <VenmoConfirmation isVenmoPaymentInProgress={isVenmoPaymentInProgress} />
           )}
           {isVenmoPaymentInProgress && venmoPayment && (
             <div>
@@ -53,7 +50,11 @@ const ConfirmationView = ({ className, isVenmoPaymentInProgress, venmoPayment })
 ConfirmationView.propTypes = {
   className: PropTypes.string,
   isVenmoPaymentInProgress: PropTypes.bool,
-  venmoPayment: PropTypes.shape({}),
+  venmoPayment: PropTypes.shape({
+    userName: PropTypes.string,
+    ccBrand: PropTypes.string,
+    ccType: PropTypes.string,
+  }),
 };
 ConfirmationView.defaultProps = {
   className: '',

@@ -12,7 +12,7 @@ export const VenmoConfirmation = ({ labels, className }) => {
         <div>
           <div className="venmo-logo-wrapper">
             <Image
-              alt="Venmo Logo"
+              alt={labels.lbl_venmo_logo}
               className="venmo-logo elem-pr-XXXS"
               src="https://cdn1.venmo.com/marketing/images/branding/venmo-icon.svg"
             />
@@ -28,7 +28,6 @@ export const VenmoConfirmation = ({ labels, className }) => {
             {labels.lbl_venmo_payment}
           </BodyCopy>
           <BodyCopy
-            component="div"
             color="gray.900"
             fontFamily="secondary"
             fontSize="fs14"
@@ -47,6 +46,7 @@ VenmoConfirmation.propTypes = {
   labels: shape({
     lbl_venmo_confirmation_message: string,
     lbl_venmo_payment: string,
+    lbl_venmo_logo: string,
   }),
   className: string,
 };
@@ -55,6 +55,7 @@ VenmoConfirmation.defaultProps = {
   labels: {
     lbl_venmo_confirmation_message: '',
     lbl_venmo_payment: '',
+    lbl_venmo_logo: '',
   },
   className: '',
 };
