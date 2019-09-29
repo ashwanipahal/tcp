@@ -15,7 +15,10 @@ const UnavailableView = styled.View`
   padding: 5px 2px 2px 14px;
   flex-direction: row;
 `;
-const ProductName = styled.View``;
+const ProductName = styled.View`
+  width: 66%;
+  flex-wrap: wrap;
+`;
 const ProductDesc = styled.View`
   flex-direction: row;
   flex-wrap: wrap;
@@ -137,6 +140,12 @@ const SflIcons = styled.TouchableOpacity`
 const IconHeight = '58px';
 const IconWidth = '58px';
 
+const ProductListPriceOnReview = styled.View`
+  position: absolute;
+  right: 0;
+  top: 15px;
+`;
+
 export {
   OuterContainer,
   ProductName,
@@ -162,4 +171,5 @@ export {
   IconTextMoveToBag,
   HeartIcon,
   SflIcons,
+  ProductListPriceOnReview,
 };

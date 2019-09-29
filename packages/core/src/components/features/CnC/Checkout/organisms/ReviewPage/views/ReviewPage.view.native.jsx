@@ -9,6 +9,7 @@ import style from '../styles/ReviewPage.style.native';
 import CONSTANTS from '../../../Checkout.constants';
 import { BodyCopy } from '../../../../../../common/atoms';
 import ShippingReviewSection from '../organisms/ShippingReviewSection';
+import CheckoutCartItemList from '../organisms/CheckoutCartItemList';
 
 const { Container, TextSection, FooterTextContainer, FooterLink } = style;
 
@@ -78,6 +79,7 @@ class ReviewPage extends React.PureComponent {
               />
             )}
             <TextSection>{billingSectionTitle}</TextSection>
+            <CheckoutCartItemList />
           </Container>
           <CnCTemplate
             navigation={navigation}

@@ -23,6 +23,7 @@ import {
   IconTextEdit,
   IconTextMoveToBag,
   SflIcons,
+  ProductListPriceOnReview,
 } from '../styles/CartItemTile.style.native';
 import { getLocator } from '../../../../../../../utils';
 import CartItemRadioButtons from '../../CartItemRadioButtons';
@@ -46,9 +47,10 @@ const getCartRadioButtons = (
   itemIndex,
   openedTile,
   setSelectedProductTile,
-  isBagPageSflSection
+  isBagPageSflSection,
+  showOnReviewPage
 ) => {
-  if (isBagPageSflSection) return null;
+  if (isBagPageSflSection || !showOnReviewPage) return null;
   if (productDetail.miscInfo.availability !== CARTPAGE_CONSTANTS.AVAILABILITY_SOLDOUT) {
     return (
       <CartItemRadioButtons
@@ -136,10 +138,10 @@ class ProductInformation extends React.Component {
   };
 
   renderPoints = () => {
-    const { labels, productDetail, isBagPageSflSection } = this.props;
+    const { labels, productDetail, isBagPageSflSection, showOnReviewPage } = this.props;
     const { points } = labels;
     const { itemInfo: { myPlacePoints } = {} } = productDetail;
-    if (isBagPageSflSection) return null;
+    if (isBagPageSflSection || !showOnReviewPage) return null;
     return (
       <ProductDesc>
         <ProductSubDetailLabel>
@@ -181,37 +183,42 @@ class ProductInformation extends React.Component {
   };
 
   renderPrice = () => {
-    const { labels, productDetail, isBagPageSflSection } = this.props;
+    const { labels, productDetail, isBagPageSflSection, showOnReviewPage } = this.props;
     return (
       <ProductDesc>
-        <ProductSubDetailLabel>
-          <BodyCopy
-            fontSize="fs13"
-            fontWeight={['semibold']}
-            textAlign="left"
-            text={`${labels.price}: `}
-          />
-        </ProductSubDetailLabel>
-        <BodyCopy
-          fontSize="fs13"
-          fontWeight={['semibold']}
-          textAlign="left"
-          dataLocator={getLocator('cart_item_price')}
-          text={`$${productDetail.itemInfo.price}`}
-        />
-        {!isBagPageSflSection && (
-          <ProductListPrice>
+        {showOnReviewPage && (
+          <>
+            <ProductSubDetailLabel>
+              <BodyCopy
+                fontSize="fs13"
+                fontWeight={['semibold']}
+                textAlign="left"
+                text={`${labels.price}: `}
+              />
+            </ProductSubDetailLabel>
             <BodyCopy
-              color="gray.800"
-              fontFamily="secondary"
               fontSize="fs13"
-              text={
-                productDetail.itemInfo.price !== productDetail.itemInfo.itemPrice
-                  ? `$${productDetail.itemInfo.itemPrice}`
-                  : ''
-              }
+              fontWeight={['semibold']}
+              textAlign="left"
+              dataLocator={getLocator('cart_item_price')}
+              text={`$${productDetail.itemInfo.price}`}
             />
-          </ProductListPrice>
+
+            {!isBagPageSflSection && (
+              <ProductListPrice>
+                <BodyCopy
+                  color="gray.800"
+                  fontFamily="secondary"
+                  fontSize="fs13"
+                  text={
+                    productDetail.itemInfo.price !== productDetail.itemInfo.itemPrice
+                      ? `$${productDetail.itemInfo.itemPrice}`
+                      : ''
+                  }
+                />
+              </ProductListPrice>
+            )}
+          </>
         )}
       </ProductDesc>
     );
@@ -277,7 +284,7 @@ class ProductInformation extends React.Component {
   };
 
   render() {
-    const { productDetail, labels, itemIndex } = this.props;
+    const { productDetail, labels, itemIndex, showOnReviewPage } = this.props;
     const { openedTile, setSelectedProductTile, isBagPageSflSection } = this.props;
     const { isGiftItem } = productDetail.itemInfo;
     return (
@@ -297,7 +304,7 @@ class ProductInformation extends React.Component {
           <OuterContainer>
             {CartItemTileExtension.CartItemImageWrapper(productDetail, labels)}
             <ProductDescription>
-              {!!productDetail.miscInfo.badge && (
+              {showOnReviewPage && !!productDetail.miscInfo.badge && (
                 <BodyCopy
                   fontWeight={['semibold']}
                   fontFamily="secondary"
@@ -306,7 +313,7 @@ class ProductInformation extends React.Component {
                 />
               )}
               {CartItemTileExtension.getProductName(productDetail)}
-              {CartItemTileExtension.heartIcon(isBagPageSflSection)}
+              {showOnReviewPage && CartItemTileExtension.heartIcon(isBagPageSflSection)}
               <ProductSubDetails>
                 <ProductDesc>
                   <ProductSubDetailLabel>
@@ -357,22 +364,35 @@ class ProductInformation extends React.Component {
                 {this.renderPoints()}
               </ProductSubDetails>
             </ProductDescription>
+            {!showOnReviewPage && (
+              <ProductListPriceOnReview>
+                <BodyCopy
+                  fontFamily="secondary"
+                  fontSize="fs16"
+                  fontWeight={['semibold']}
+                  text={`$${productDetail.itemInfo.price}`}
+                />
+              </ProductListPriceOnReview>
+            )}
           </OuterContainer>
-          <EditButton
-            onPress={() => {
-              this.onSwipeComplete(this.swipeable);
-              return this.swipeable.toggle('right');
-            }}
-          >
-            {getEditError(productDetail, labels)}
-          </EditButton>
+          {showOnReviewPage && (
+            <EditButton
+              onPress={() => {
+                this.onSwipeComplete(this.swipeable);
+                return this.swipeable.toggle('right');
+              }}
+            >
+              {getEditError(productDetail, labels)}
+            </EditButton>
+          )}
           {getCartRadioButtons(
             productDetail,
             labels,
             itemIndex,
             openedTile,
             setSelectedProductTile,
-            isBagPageSflSection
+            isBagPageSflSection,
+            showOnReviewPage
           )}
         </MainWrapper>
       </Swipeable>
@@ -393,6 +413,7 @@ ProductInformation.propTypes = {
   isBagPageSflSection: PropTypes.bool,
   isShowSaveForLater: PropTypes.bool.isRequired,
   isGenricGuest: PropTypes.shape({}).isRequired,
+  showOnReviewPage: PropTypes.bool,
 };
 
 ProductInformation.defaultProps = {
@@ -403,6 +424,7 @@ ProductInformation.defaultProps = {
   isCondense: true,
   swipedElement: null,
   isBagPageSflSection: false,
+  showOnReviewPage: true,
 };
 
 export default ProductInformation;
