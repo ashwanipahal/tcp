@@ -53,18 +53,6 @@ export default class CheckoutPage extends React.PureComponent {
       CONFIRMATION,
     } = CheckoutConstants.CHECKOUT_PAGES_NAMES;
     switch (currentRoute) {
-      case BILLING.toLowerCase():
-        return (
-          <BillingPage
-            {...billingProps}
-            orderHasShipping={orderHasShipping}
-            navigation={navigation}
-            isGuest={isGuest}
-            isUsSite={isUsSite}
-            availableStages={availableStages}
-            submitBilling={submitBilling}
-          />
-        );
       case PICKUP.toLowerCase():
         return (
           <PickupPage
@@ -102,7 +90,18 @@ export default class CheckoutPage extends React.PureComponent {
             labels={labels}
           />
         );
-
+      case BILLING.toLowerCase():
+        return (
+          <BillingPage
+            {...billingProps}
+            orderHasShipping={orderHasShipping}
+            navigation={navigation}
+            isGuest={isGuest}
+            isUsSite={isUsSite}
+            availableStages={availableStages}
+            submitBilling={submitBilling}
+          />
+        );
       case REVIEW.toLowerCase():
         return (
           <ReviewPage
