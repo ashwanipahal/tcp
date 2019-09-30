@@ -183,7 +183,8 @@ class ProductInformation extends React.Component {
   };
 
   renderPrice = () => {
-    const { labels, productDetail, isBagPageSflSection, showOnReviewPage } = this.props;
+    const { labels, productDetail } = this.props;
+    const { isBagPageSflSection, showOnReviewPage, currencySymbol } = this.props;
     return (
       <ProductDesc>
         {showOnReviewPage && (
@@ -201,7 +202,7 @@ class ProductInformation extends React.Component {
               fontWeight={['semibold']}
               textAlign="left"
               dataLocator={getLocator('cart_item_price')}
-              text={`$${productDetail.itemInfo.price}`}
+              text={`${currencySymbol}${productDetail.itemInfo.price}`}
             />
 
             {!isBagPageSflSection && (
@@ -212,7 +213,7 @@ class ProductInformation extends React.Component {
                   fontSize="fs13"
                   text={
                     productDetail.itemInfo.price !== productDetail.itemInfo.itemPrice
-                      ? `$${productDetail.itemInfo.itemPrice}`
+                      ? `${currencySymbol}${productDetail.itemInfo.itemPrice}`
                       : ''
                   }
                 />
@@ -284,7 +285,7 @@ class ProductInformation extends React.Component {
   };
 
   render() {
-    const { productDetail, labels, itemIndex, showOnReviewPage } = this.props;
+    const { productDetail, labels, itemIndex, showOnReviewPage, currencySymbol } = this.props;
     const { openedTile, setSelectedProductTile, isBagPageSflSection } = this.props;
     const { isGiftItem } = productDetail.itemInfo;
     return (
@@ -370,7 +371,7 @@ class ProductInformation extends React.Component {
                   fontFamily="secondary"
                   fontSize="fs16"
                   fontWeight={['semibold']}
-                  text={`$${productDetail.itemInfo.price}`}
+                  text={`${currencySymbol}${productDetail.itemInfo.price}`}
                 />
               </ProductListPriceOnReview>
             )}
@@ -414,6 +415,7 @@ ProductInformation.propTypes = {
   isShowSaveForLater: PropTypes.bool.isRequired,
   isGenricGuest: PropTypes.shape({}).isRequired,
   showOnReviewPage: PropTypes.bool,
+  currencySymbol: PropTypes.string.isRequired,
 };
 
 ProductInformation.defaultProps = {

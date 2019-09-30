@@ -46,6 +46,7 @@ class CheckoutCartItemsList extends Component {
     labels: PropTypes.shape({}),
     bagPageLabels: PropTypes.shape({}),
     className: PropTypes.string.isRequired,
+    categorizingItemsForStores: PropTypes.func.isRequired,
   };
 
   /**
@@ -301,75 +302,11 @@ class CheckoutCartItemsList extends Component {
   };
 
   /**
-   * @function categorizingItemsForStores
-   * @summary This function categorizes items for stores
-   */
-  categorizingItemsForStores = ({
-    currentStore,
-    currentStoreAddress,
-    item,
-    orderType,
-    bossStartDate,
-    bossEndDate,
-    bopisDate,
-    bucket,
-    deliveryType,
-    bucketReference,
-  }) => {
-    const { currencySymbol, labels } = this.props;
-    const bucketReferenceTemp = bucketReference;
-    const {
-      storePhoneNumber,
-      storeTodayOpenRange,
-      storeTomorrowOpenRange,
-      orderItemType,
-    } = item.miscInfo;
-    const orderItem = {
-      store: currentStore,
-      storeAddress: currentStoreAddress,
-      storePhoneNumber: storePhoneNumber || '',
-      storeTodayOpenRange: storeTodayOpenRange || '',
-      storeTomorrowOpenRange: storeTomorrowOpenRange || '',
-      orderType,
-      duration:
-        orderItemType === CheckoutConstants.ORDER_ITEM_TYPE.BOSS ? (
-          `${bossStartDate.day}. ${bossStartDate.month} ${bossStartDate.date} - ${
-            bossEndDate.day
-          }. ${bossEndDate.month} ${bossEndDate.date}`
-        ) : (
-          <BodyCopy
-            fontWeight="extrabold"
-            fontSize="fs12"
-            fontFamily="secondary"
-            className="title-list-product"
-          >
-            {`${labels.today}, ${bopisDate.month} ${bopisDate.date}`}
-          </BodyCopy>
-        ),
-    };
-    if (bucket[deliveryType]) {
-      bucketReferenceTemp[deliveryType][currentStore] = bucket[deliveryType][currentStore] || {};
-      const bucketStore = bucket[deliveryType][currentStore];
-      bucketStore[orderType] = bucketStore[orderType] || orderItem;
-      bucketStore[orderType].list = bucketStore[orderType].list || [];
-      bucketStore[orderType].list.push({ item, currencySymbol });
-    } else {
-      bucketReferenceTemp[deliveryType] = {};
-      bucketReferenceTemp[deliveryType][currentStore] = {};
-      const bucketStore = bucketReferenceTemp[deliveryType][currentStore];
-
-      bucketStore[orderType] = orderItem;
-      bucketStore[orderType].list = [];
-      bucketStore[orderType].list.push({ item, currencySymbol });
-    }
-  };
-
-  /**
    * @function renderItems
    * @summary This function responsible for rendedring view and calling further respective methods.
    */
   renderItems() {
-    const { items, currencySymbol } = this.props;
+    const { items, currencySymbol, categorizingItemsForStores, labels } = this.props;
     const apiConfig = getAPIConfig();
     const bopisDate = getTranslateDateInformation('', apiConfig.language);
     /**
@@ -440,7 +377,7 @@ class CheckoutCartItemsList extends Component {
           bucketReference[deliveryType].list = bucket[deliveryType].list || [];
           bucket[deliveryType].list.push({ item, currencySymbol });
         } else {
-          this.categorizingItemsForStores({
+          categorizingItemsForStores({
             currentStore,
             currentStoreAddress,
             item,
@@ -451,6 +388,9 @@ class CheckoutCartItemsList extends Component {
             bucket,
             deliveryType,
             bucketReference,
+            labels,
+            currencySymbol,
+            CheckoutConstants,
           });
         }
         return bucket;
