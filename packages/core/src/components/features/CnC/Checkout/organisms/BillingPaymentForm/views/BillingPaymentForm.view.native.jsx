@@ -1,4 +1,3 @@
-/* eslint-disable max-lines */
 import React from 'react';
 import { FormSection, reduxForm, change, Field } from 'redux-form';
 import BodyCopy from '../../../../../../common/atoms/BodyCopy';
@@ -21,7 +20,6 @@ import CONSTANTS from '../../../Checkout.constants';
 import PaymentMethods from '../../../../common/molecules/PaymentMethods';
 import CreditCardDropdown from './CreditCardDropDown.view.native';
 import CardImage from '../../../../../../common/molecules/Card/views/CardImage.native';
-import Anchor from '../../../../../../common/atoms/Anchor';
 import {
   CvvCode,
   CvvTextboxStyle,
@@ -29,16 +27,17 @@ import {
   BillingAddressWrapper,
   PaymentMethodWrapper,
   PaymentMethodHeader,
-  CardDetailHeader,
-  CardDetailEdit,
   SubHeader,
-  BillingAddressHeader,
   CreditCardHeader,
   CreditCardWrapper,
 } from '../styles/BillingPaymentForm.style.native';
-import Card from '../../../../../../common/molecules/Card/views/Card.native';
-import InputCheckbox from '../../../../../../common/atoms/InputCheckbox';
+
 import TextBox from '../../../../../../common/atoms/TextBox';
+import {
+  getCardDetailsMethod,
+  getDefaultPayment,
+  getBillingAddressWrapper,
+} from './BillingPaymentForm.view.native.util';
 
 export class BillingPaymentForm extends React.PureComponent {
   static propTypes = propTypes;
@@ -149,37 +148,6 @@ export class BillingPaymentForm extends React.PureComponent {
     );
   };
 
-  getCardDetailsMethod = labels => {
-    return (
-      <CardDetailHeader>
-        {labels.cardDetailsTitle ? (
-          <BodyCopy
-            fontFamily="primary"
-            fontSize="fs26"
-            fontWeight="regular"
-            spacingStyles="margin-bottom-MED"
-            color="gray.900"
-            data-locator="billing-payment-details"
-            text={labels.cardDetailsTitle}
-          />
-        ) : null}
-        {labels.edit ? (
-          <CardDetailEdit>
-            <Anchor
-              underline
-              anchorVariation="primary"
-              fontSizeVariation="small"
-              noLink
-              href="#"
-              target="_blank"
-              text={labels.edit}
-            />
-          </CardDetailEdit>
-        ) : null}
-      </CardDetailHeader>
-    );
-  };
-
   getPaymentMethod = (labels, selectedCard, cvvCodeRichText) => {
     return (
       <>
@@ -231,22 +199,6 @@ export class BillingPaymentForm extends React.PureComponent {
     return <CVVInfo>{getCvvInfo({ cvvCodeRichText })}</CVVInfo>;
   };
 
-  getDefaultPayment = (selectedCard, labels) => {
-    return (
-      <BillingAddressHeader>
-        {!selectedCard.defaultInd && labels.defaultPayment ? (
-          <Field
-            id="primary"
-            name="primary"
-            component={InputCheckbox}
-            dataLocator="abilling-payment-checkbox-field"
-            rightText={labels.defaultPayment}
-          />
-        ) : null}
-      </BillingAddressHeader>
-    );
-  };
-
   /**
    * @function onCCDropDownChange
    * @description sets the add new credit card state to false if it is true
@@ -256,36 +208,6 @@ export class BillingPaymentForm extends React.PureComponent {
     if (addNewCCState) {
       this.setState({ addNewCCState: false });
     }
-  };
-
-  getBillingAddressWrapper = (selectedCard, onFileCardKey, labels) => {
-    return (
-      <>
-        {labels.billingAddress ? (
-          <BillingAddressHeader>
-            <BodyCopy
-              mobileFontFamily="primary"
-              fontSize="fs16"
-              fontWeight="extrabold"
-              dataLocator="billing-payment-billingAddress"
-              color="gray.900"
-              text={labels.billingAddress}
-            />
-          </BillingAddressHeader>
-        ) : null}
-        {selectedCard ? (
-          <BillingAddressWrapper>
-            {onFileCardKey && (
-              <Card
-                card={selectedCard}
-                dataLocatorPrefix="billing-payment-card-detail"
-                showAddress
-              />
-            )}
-          </BillingAddressWrapper>
-        ) : null}
-      </>
-    );
   };
 
   getCCDropDown = ({
@@ -321,10 +243,10 @@ export class BillingPaymentForm extends React.PureComponent {
             onChange={this.onCCDropDownChange}
           />
         </CreditCardWrapper>
-        {selectedCard ? this.getCardDetailsMethod(labels) : null}
+        {selectedCard ? getCardDetailsMethod(labels) : null}
         {selectedCard ? this.getPaymentMethod(labels, selectedCard, cvvCodeRichText) : null}
-        {selectedCard ? this.getDefaultPayment(selectedCard, labels) : null}
-        {selectedCard ? this.getBillingAddressWrapper(selectedCard, onFileCardKey, labels) : null}
+        {selectedCard ? getDefaultPayment(selectedCard, labels) : null}
+        {selectedCard ? getBillingAddressWrapper(selectedCard, onFileCardKey, labels) : null}
       </BillingAddressWrapper>
     );
   };
@@ -405,7 +327,6 @@ export class BillingPaymentForm extends React.PureComponent {
       nextSubmitText,
       onSubmit,
       navigation,
-      billingData,
       dispatch,
     } = this.props;
     const paymentMethods = [
@@ -437,7 +358,7 @@ export class BillingPaymentForm extends React.PureComponent {
           />
         </FormSection>
 
-        {paymentMethodId === constants.PAYMENT_METHOD_CREDIT_CARD && billingData ? (
+        {paymentMethodId === constants.PAYMENT_METHOD_CREDIT_CARD ? (
           this.getCreditCardWrapper({
             labels,
             creditCardList,
