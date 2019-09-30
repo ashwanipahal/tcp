@@ -9,6 +9,12 @@ import {
   getCurrentProduct,
   getPlpLabels,
 } from './ProductDetail.selectors';
+import {
+  addToCartEcom,
+  clearAddToBagErrorState,
+} from '../../../CnC/AddedToBag/container/AddedToBag.actions';
+import { getAddedToBagError } from '../../../CnC/AddedToBag/container/AddedToBag.selectors';
+import { getCartItemInfo } from '../../../CnC/AddedToBag/util/utility';
 
 class ProductDetailContainer extends React.PureComponent {
   selectedColorProductId;
@@ -35,8 +41,23 @@ class ProductDetailContainer extends React.PureComponent {
     getDetails({ productColorId: productId, ignoreCache: true });
   }
 
+  handleAddToBag = formValues => {
+    const { addToBagEcom, currentProduct } = this.props;
+    let cartItemInfo = getCartItemInfo(currentProduct, formValues);
+    cartItemInfo = { ...cartItemInfo };
+    addToBagEcom(cartItemInfo);
+  };
+
   render() {
-    const { currentProduct, breadCrumbs, navTree, plpLabels } = this.props;
+    const {
+      currentProduct,
+      breadCrumbs,
+      navTree,
+      plpLabels,
+      navigation,
+      addToBagError,
+      clearAddToBagError,
+    } = this.props;
     const noProductData = Object.keys(currentProduct).length === 0;
     return (
       <React.Fragment>
@@ -47,6 +68,10 @@ class ProductDetailContainer extends React.PureComponent {
             navTree={navTree}
             selectedColorProductId={this.selectedColorProductId}
             plpLabels={plpLabels}
+            handleFormSubmit={this.handleAddToBag}
+            navigation={navigation}
+            addToBagError={addToBagError}
+            clearAddToBagError={clearAddToBagError}
           />
         )}
       </React.Fragment>
@@ -60,6 +85,7 @@ function mapStateToProps(state) {
     currentProduct: getCurrentProduct(state),
     breadCrumbs: getBreadCrumbs(state),
     plpLabels: getPlpLabels(state),
+    addToBagError: getAddedToBagError(state),
   };
 }
 
@@ -68,16 +94,25 @@ function mapDispatchToProps(dispatch) {
     getDetails: payload => {
       dispatch(getProductDetails(payload));
     },
+    addToBagEcom: payload => {
+      dispatch(addToCartEcom(payload));
+    },
+    clearAddToBagError: () => {
+      dispatch(clearAddToBagErrorState());
+    },
   };
 }
 
 ProductDetailContainer.propTypes = {
   currentProduct: PropTypes.shape({}),
   getDetails: PropTypes.func.isRequired,
+  clearAddToBagError: PropTypes.func.isRequired,
   breadCrumbs: PropTypes.shape({}),
   navigation: PropTypes.shape({}).isRequired,
+  addToBagEcom: PropTypes.func.isRequired,
   navTree: PropTypes.shape({}),
   plpLabels: PropTypes.shape({}),
+  addToBagError: PropTypes.string,
 };
 
 ProductDetailContainer.defaultProps = {
@@ -85,6 +120,7 @@ ProductDetailContainer.defaultProps = {
   breadCrumbs: {},
   navTree: {},
   plpLabels: {},
+  addToBagError: '',
 };
 
 export default connect(

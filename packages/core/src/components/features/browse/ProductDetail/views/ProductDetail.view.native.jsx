@@ -12,6 +12,7 @@ import {
   getMapSliceForColor,
 } from '../../ProductListing/molecules/ProductList/utils/productsCommonUtils';
 import { FullScreenImageCarousel } from '../../../../common/molecules/index.native';
+import AddedToBagContainer from '../../../CnC/AddedToBag';
 
 class ProductDetailView extends React.PureComponent {
   constructor(props) {
@@ -25,6 +26,11 @@ class ProductDetailView extends React.PureComponent {
       currentColorEntry: getMapSliceForColorProductId(colorFitsSizesMap, selectedColorProductId),
     };
   }
+
+  componentWillUnmount = () => {
+    const { clearAddToBagError } = this.props;
+    clearAddToBagError();
+  };
 
   onChangeColor = e => {
     const {
@@ -51,7 +57,9 @@ class ProductDetailView extends React.PureComponent {
       currentProduct: { colorFitsSizesMap },
       selectedColorProductId,
       plpLabels,
-      handleSubmit,
+      handleFormSubmit,
+      navigation,
+      addToBagError,
     } = this.props;
     const { currentColorEntry } = this.state;
     let imageUrls = [];
@@ -76,12 +84,14 @@ class ProductDetailView extends React.PureComponent {
           <ProductAddToBagContainer
             currentProduct={currentProduct}
             plpLabels={plpLabels}
-            handleSubmit={handleSubmit}
+            handleFormSubmit={handleFormSubmit}
             selectedColorProductId={selectedColorProductId}
+            errorOnHandleSubmit={addToBagError}
             onChangeColor={this.onChangeColor}
           />
 
           {this.renderCarousel(imageUrls)}
+          <AddedToBagContainer navigation={navigation} />
         </PageContainer>
       </ScrollView>
     );
@@ -90,15 +100,20 @@ class ProductDetailView extends React.PureComponent {
 
 ProductDetailView.propTypes = {
   currentProduct: PropTypes.shape({}),
+  navigation: PropTypes.shape({}),
   selectedColorProductId: PropTypes.number.isRequired,
+  clearAddToBagError: PropTypes.func.isRequired,
   plpLabels: PropTypes.shape({}),
-  handleSubmit: PropTypes.func,
+  handleFormSubmit: PropTypes.func,
+  addToBagError: PropTypes.string,
 };
 
 ProductDetailView.defaultProps = {
   currentProduct: {},
+  navigation: {},
   plpLabels: null,
-  handleSubmit: null,
+  handleFormSubmit: null,
+  addToBagError: '',
 };
 
 export default withStyles(ProductDetailView);
