@@ -45,11 +45,11 @@ class Drawer extends React.Component {
   constructor(props) {
     super(props);
     this.getDrawerStyle = this.getDrawerStyle.bind(this);
-    this.handleDarkOverlay = this.handleDarkOverlay.bind(this);
+    this.closeNavOnOverlayClick = this.closeNavOnOverlayClick.bind(this);
   }
 
   componentDidMount() {
-    document.body.addEventListener('click', this.handleDarkOverlay);
+    document.body.addEventListener('click', this.closeNavOnOverlayClick);
   }
 
   componentDidUpdate() {
@@ -61,17 +61,23 @@ class Drawer extends React.Component {
   }
 
   componentWillUnmount() {
-    document.body.removeEventListener('click', this.handleDarkOverlay);
+    document.body.removeEventListener('click', this.closeNavOnOverlayClick);
   }
 
-  handleDarkOverlay = e => {
+  /* Method to close nav bar on click of dark overlay */
+  closeNavOnOverlayClick = e => {
     e.preventDefault();
     const { close } = this.props;
-    if (e.target.classList.contains('dark-overlay') && typeof close === 'function') {
+    if (
+      e.target.classList &&
+      e.target.classList.contains('dark-overlay') &&
+      typeof close === 'function'
+    ) {
       close();
     }
   };
 
+  /* Style for drawer to make it scrollable within */
   getDrawerStyle = () => {
     if (window) {
       const drawer = document.getElementById('tcp-nav-drawer');
