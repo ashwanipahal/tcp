@@ -113,7 +113,11 @@ class CustomSelect extends React.Component<Props> {
         <BodyCopy component="div" onClick={this.toggleHandler} className="customSelectTitle">
           {activeTitle}
         </BodyCopy>
-        {toggle && <BodyCopy>{this.getDropDownList()}</BodyCopy>}
+        {toggle && (
+          <BodyCopy component="div" className="dropdownListWrapper">
+            {this.getDropDownList()}
+          </BodyCopy>
+        )}
       </BodyCopy>
     );
   }

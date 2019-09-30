@@ -91,39 +91,6 @@ describe('StoreSearch component', () => {
     expect(onSubmitFn).toBeFalsy();
   });
 
-  it('should return undefined when componentDidMount gets called', () => {
-    props = {
-      ...props,
-      submitting: true,
-    };
-    const component = shallow(<StoreViewVanilla {...props} />);
-
-    const returnValue = component.instance().componentDidMount();
-
-    expect(returnValue).toBeFalsy();
-  });
-
-  it('should call loadStoresByCoordinates when componentDidMount gets called', () => {
-    props = {
-      ...props,
-      submitting: true,
-    };
-
-    const mockGeolocation = {
-      getCurrentPosition: cb => cb({ coords: {} }),
-    };
-
-    global.navigator.geolocation = mockGeolocation;
-    const loadStoresByCoordinates = jest.fn();
-    const component = shallow(
-      <StoreViewVanilla {...props} loadStoresByCoordinates={loadStoresByCoordinates} />
-    );
-
-    component.instance().componentDidMount();
-
-    expect(loadStoresByCoordinates).toHaveBeenCalled();
-  });
-
   it('onSelectStore should return', () => {
     const eventGym = {
       target: {

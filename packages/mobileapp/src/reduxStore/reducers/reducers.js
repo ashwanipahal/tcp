@@ -33,6 +33,7 @@ import ProductDetailReducer from '@tcp/core/src/components/features/browse/Produ
 import MyFavoriteStoreReducer from '@tcp/core/src/components/features/account/MyProfile/organism/MyFavoriteStore/container/MyFavoriteStore.reducer';
 import BirthdaySavingsListReducer from '@tcp/core/src/components/features/account/common/organism/BirthdaySavingsList/container/BirthdaySavingsList.reducer';
 import StoreDetailReducer from '@tcp/core/src/components/features/storeLocator/StoreDetail/container/StoreDetail.reducer';
+import StoreLandingReducer from '@tcp/core/src/components/features/storeLocator/StoreLanding/container/StoreLanding.reducer';
 
 import {
   SESSIONCONFIG_REDUCER_KEY,
@@ -76,6 +77,7 @@ import {
   MY_FAVORITE_STORE_REDUCER_KEY,
   BIRTHDAY_SAVING_LIST_REDUCER_KEY,
   STORE_DETAIL_REDUCER_KEY,
+  STORE_LOCATOR_REDUCER_KEY,
 } from '@tcp/core/src/constants/reducer.constants';
 import HeaderReducer from '@tcp/core/src/components/common/organisms/Header/container/Header.reducer';
 import ModulesReducer from '@tcp/core/src/reduxStore/reducers/modules';
@@ -156,6 +158,7 @@ const rootReducer = combineReducers({
   [MY_FAVORITE_STORE_REDUCER_KEY]: MyFavoriteStoreReducer,
   [BIRTHDAY_SAVING_LIST_REDUCER_KEY]: BirthdaySavingsListReducer,
   [STORE_DETAIL_REDUCER_KEY]: StoreDetailReducer,
+  [STORE_LOCATOR_REDUCER_KEY]: StoreLandingReducer,
 });
 
 export default rootReducer;

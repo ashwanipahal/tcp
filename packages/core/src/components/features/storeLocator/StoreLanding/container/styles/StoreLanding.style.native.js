@@ -1,3 +1,16 @@
-import { css } from 'styled-components';
+import styled from 'styled-components';
 
-export default css``;
+export const StyledFavStoreHeading = styled.View`
+  padding: ${props => props.theme.spacing.ELEM_SPACING.MED}
+    ${props => props.theme.spacing.ELEM_SPACING.MED} 0;
+`;
+
+export const StyleStoreLandingContainer = styled.View`
+  width: 100%;
+  font-size: ${props => props.theme.typography.fontSizes.fs12};
+`;
+
+export const StyledStoreListView = styled.View`
+  padding-left: ${props => props.theme.spacing.ELEM_SPACING.MED};
+  padding-right: ${props => props.theme.spacing.ELEM_SPACING.MED};
+`;

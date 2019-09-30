@@ -276,7 +276,7 @@ exports[`StoreAddressTile component Listing Header should render listing-header 
       colorName={null}
       customStyle={Object {}}
       locator=""
-      onPress={null}
+      onPress={[Function]}
       text="Store Details"
       visible={false}
     />
@@ -341,7 +341,7 @@ exports[`StoreAddressTile component Listing should not render gymboree store 1`]
       colorName={null}
       customStyle={Object {}}
       locator=""
-      onPress={null}
+      onPress={[Function]}
       text="Store Details"
       visible={false}
     />
@@ -424,7 +424,7 @@ exports[`StoreAddressTile component Listing should render listing view 1`] = `
       colorName={null}
       customStyle={Object {}}
       locator=""
-      onPress={null}
+      onPress={[Function]}
       text="Store Details"
       visible={false}
     />
@@ -507,7 +507,7 @@ exports[`StoreAddressTile component Listing should render listing view with fav 
       colorName={null}
       customStyle={Object {}}
       locator=""
-      onPress={null}
+      onPress={[Function]}
       text="Store Details"
       visible={false}
     />
@@ -598,7 +598,7 @@ exports[`StoreAddressTile component Listing should render listing view with inde
       colorName={null}
       customStyle={Object {}}
       locator=""
-      onPress={null}
+      onPress={[Function]}
       text="Store Details"
       visible={false}
     />

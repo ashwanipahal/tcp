@@ -49,14 +49,21 @@ class StoreAddressTile extends PureComponent {
   }
 
   getListingTileFooter() {
-    const { labels, isFavorite, setFavoriteStore, locatorSetFavStore, store } = this.props;
+    const {
+      labels,
+      isFavorite,
+      setFavoriteStore,
+      locatorSetFavStore,
+      store,
+      openStoreDetails,
+    } = this.props;
     return (
       <Fragment>
         <div>
           <Anchor
             fontSizeVariation="medium"
             underline
-            handleLinkClick={this.openStoreDetails}
+            handleLinkClick={event => openStoreDetails(event, store)}
             anchorVariation="primary"
             target="_blank"
             className="store-details-link"

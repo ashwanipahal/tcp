@@ -26,18 +26,6 @@ export class StoreSearch extends PureComponent {
     outletSelected: false,
   };
 
-  componentDidMount() {
-    if (navigator.geolocation) {
-      const { loadStoresByCoordinates } = this.props;
-      navigator.geolocation.getCurrentPosition(pos => {
-        loadStoresByCoordinates(
-          Promise.resolve({ lat: pos.coords.latitude, lng: pos.coords.longitude }),
-          INITIAL_STORE_LIMIT
-        );
-      });
-    }
-  }
-
   /**
    * @function handleLocationSelection function to fetch the location coordinates.
    * @param {object} selectedLocation - selected location details

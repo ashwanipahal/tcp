@@ -570,4 +570,5 @@ export default {
   formatDate,
   parseStoreHours,
   parseBoolean,
+  sanitizeEntity,
 };
