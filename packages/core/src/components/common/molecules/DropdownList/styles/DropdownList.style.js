@@ -19,7 +19,7 @@ const dropDownlist = css`
   }
 
   .dropdownDivOverFlow {
-    overflow-y: scroll;
+    overflow-y: auto;
     max-height: 230px;
   }
 
