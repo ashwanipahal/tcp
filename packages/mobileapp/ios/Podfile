@@ -1,12 +1,74 @@
-
 # Uncomment the next line to define a global platform for your project
 platform :ios, '9.0'
 use_frameworks!
 
-target 'mobileapp' do
-  # Comment the next line if you don't want to use dynamic frameworks
+def facebook
   pod 'FBSDKCoreKit', '~> 4.35.0'
   pod 'FBSDKLoginKit', '~> 4.35.0'
   pod 'FBSDKShareKit', '~> 4.35.0'
 end
 
+target 'gymboree' do
+   # Comment the next line if you don't want to use dynamic frameworks
+   facebook
+end
+
+target 'gymboree_dev' do
+   # Comment the next line if you don't want to use dynamic frameworks
+   facebook
+end
+
+target 'gymboree_int' do
+   # Comment the next line if you don't want to use dynamic frameworks
+   facebook
+end
+
+target 'gymboree_prod' do
+   # Comment the next line if you don't want to use dynamic frameworks
+   facebook
+end
+
+target 'gymboree_uat' do
+   # Comment the next line if you don't want to use dynamic frameworks
+   facebook
+end
+
+target 'mobileapp' do
+  facebook
+  target 'mobileappTests' do
+    inherit! :search_paths
+    # Pods for testing
+  end
+
+end
+
+target 'mobileapp-tvOS' do
+  facebook
+  # Pods for mobileapp-tvOS
+
+  target 'mobileapp-tvOSTests' do
+    inherit! :search_paths
+    # Pods for testing
+  end
+
+end
+
+target 'mobileapp_dev' do
+  # Comment the next line if you don't want to use dynamic frameworks
+  facebook
+end
+
+target 'mobileapp_int' do
+  # Comment the next line if you don't want to use dynamic frameworks
+  facebook
+end
+
+target 'mobileapp_prod' do
+   # Comment the next line if you don't want to use dynamic frameworks
+   facebook
+end
+
+target 'mobileapp_uat' do
+  # Comment the next line if you don't want to use dynamic frameworks
+  facebook
+end
