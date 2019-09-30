@@ -23,18 +23,21 @@ export default css`
   .searched-text-wrapper {
     padding-top: ${props => props.theme.spacing.ELEM_SPACING.XS};
   }
-  .product-list .search-product-tile {
+  .search-product-tile {
+    margin-bottom: 20px;
     display: inline-block;
     padding: ${props => props.theme.spacing.ELEM_SPACING.SM} 20px 0 0;
     text-align: center;
     width: calc(50% - 10px);
     @media ${props => props.theme.mediaQuery.medium} {
-      padding: ${props => props.theme.spacing.ELEM_SPACING.SM} 35px 0
+      margin-bottom: 10px;
+      padding: ${props => props.theme.spacing.ELEM_SPACING.LRG} 35px 0
         ${props => props.theme.spacing.ELEM_SPACING.SM};
       width: calc(33.3% - 36px);
     }
     @media ${props => props.theme.mediaQuery.large} {
-      padding: ${props => props.theme.spacing.ELEM_SPACING.SM} 26px 0 0;
+      padding: ${props => props.theme.spacing.ELEM_SPACING.XL} 26px 0 0;
+      margin-bottom: 60px;
       width: calc(20% - 21px);
     }
   }
@@ -50,10 +53,8 @@ export default css`
   }
 
   @media ${props => props.theme.mediaQuery.smallOnly} {
-    .product-list {
-      .search-product-tile:nth-child(2n) {
-        padding-right: 0;
-      }
+    .search-product-tile:nth-child(2n) {
+      padding-right: 0;
     }
     .filter-row {
       margin-left: 0;
@@ -85,10 +86,8 @@ export default css`
     }
   }
   @media ${props => props.theme.mediaQuery.mediumOnly} {
-    .product-list {
-      .search-product-tile:nth-child(3n) {
-        padding-right: 0;
-      }
+    .search-product-tile:nth-child(3n) {
+      padding-right: 0;
     }
     .searched-label {
       padding-bottom: 28px;
@@ -123,10 +122,8 @@ export default css`
     .show-items-count-section {
       display: none;
     }
-    .product-list {
-      .search-product-tile:nth-child(5n) {
-        padding-right: 0;
-      }
+    .search-product-tile:nth-child(5n) {
+      padding-right: 0;
     }
     .render-mobile-view {
       display: none;
@@ -135,7 +132,7 @@ export default css`
       display: flex;
     }
     .searched-label {
-      padding-bottom: 28px;
+      padding-bottom: 0;
     }
 
     .search-by-keywords-container {

@@ -336,6 +336,10 @@ const endpoints = {
     method: 'POST',
     URI: 'v2/appconfig/navigateXHR',
   },
+  getStyliticsProductViewById: {
+    method: API_METHODS.GET,
+    URI: 'https://widget-api.stylitics.com/api/outfits',
+  },
   getDetailedOrderHistory: {
     method: 'GET',
     URI: 'v2/wallet/getPointsAndOrderHistory',
