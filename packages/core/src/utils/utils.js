@@ -613,6 +613,16 @@ export const extractFloat = currency => {
   }
 };
 
+/* @method flattenArray - this function takes takes array of array and merge into single array
+ * @param arr { Array } Array of Array
+ * @return {Array}  return array
+ */
+export const flattenArray = arr => {
+  return arr.reduce((flat, toFlatten) => {
+    return flat.concat(Array.isArray(toFlatten) ? flattenArray(toFlatten) : toFlatten);
+  }, []);
+};
+
 export default {
   getPromotionalMessage,
   getIconPath,
