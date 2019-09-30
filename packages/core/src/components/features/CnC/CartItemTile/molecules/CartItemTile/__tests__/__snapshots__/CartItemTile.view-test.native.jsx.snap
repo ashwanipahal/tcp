@@ -269,7 +269,7 @@ exports[`CartItemTile common component renders correctly 1`] = `
               }
               margin={null}
               numberOfLines={null}
-              text="$123"
+              text="undefined123"
               textAlign="left"
               textDecoration={null}
             />
@@ -282,7 +282,7 @@ exports[`CartItemTile common component renders correctly 1`] = `
                 fontSize="fs13"
                 margin={null}
                 numberOfLines={null}
-                text="$undefined"
+                text="undefinedundefined"
                 textDecoration={null}
               />
             </Styled(View)>
@@ -659,7 +659,7 @@ exports[`CartItemTile common component renders correctly with Save for later ena
               }
               margin={null}
               numberOfLines={null}
-              text="$123"
+              text="undefined123"
               textAlign="left"
               textDecoration={null}
             />
@@ -672,7 +672,7 @@ exports[`CartItemTile common component renders correctly with Save for later ena
                 fontSize="fs13"
                 margin={null}
                 numberOfLines={null}
-                text="$undefined"
+                text="undefinedundefined"
                 textDecoration={null}
               />
             </Styled(View)>
@@ -1019,7 +1019,7 @@ exports[`CartItemTile common component renders correctly with bag page sfl secti
               }
               margin={null}
               numberOfLines={null}
-              text="$123"
+              text="undefined123"
               textAlign="left"
               textDecoration={null}
             />
