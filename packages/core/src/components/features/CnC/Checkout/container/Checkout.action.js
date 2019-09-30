@@ -438,6 +438,17 @@ export const setVenmoShippingMessageState = payload => {
   };
 };
 
+/**
+ * Method to save Venmo payment option in redux.
+ * @param {boolean} payload
+ */
+export const setVenmoPaymentOptionSave = payload => {
+  return {
+    type: constants.SET_VENMO_PAYMENT_OPTION_SAVE,
+    payload,
+  };
+};
+
 export const resetAddGiftCard = payload => {
   return {
     type: constants.RESET_ADD_GIFT_CARD,

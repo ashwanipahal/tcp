@@ -1,1 +1,1 @@
-export { StyledAnchorWrapper, AnchorLeftMargin } from './styledWrapper.native';
+export { StyledAnchorWrapper, AnchorLeftMargin, UnderlineStyle } from './styledWrapper.native';
