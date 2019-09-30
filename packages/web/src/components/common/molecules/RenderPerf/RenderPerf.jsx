@@ -1,5 +1,4 @@
 import React, { useEffect } from 'react';
-// import Safe from 'react-safe';
 import { string } from 'prop-types';
 import ServerOnly from '../../atoms/ServerOnly';
 
@@ -22,9 +21,7 @@ export function Mark({ name }) {
   // NOTE: JSON.stringify used to properly quote the arguments
   return isEnabled ? (
     <ServerOnly>
-      {/* <Safe.script> */}
       <script type="text/javascript">{`performance.mark(${JSON.stringify(name)})`}</script>
-      {/* </Safe.script> */}
     </ServerOnly>
   ) : null;
 }
@@ -49,17 +46,16 @@ export function Measure({ name, start, end }) {
   // NOTE: JSON.stringify used to properly quote the arguments
   return isEnabled && typeof performance !== 'undefined' ? (
     <ServerOnly>
-      {/* <Safe.script> */}
+      {/* TODO: find a replacement for react-safe owing to transpilation issues */}
       <script type="text/javascript">
         {`
-        performance.measure(
-          ${JSON.stringify(name)},
-          ${JSON.stringify(start)},
-          ${JSON.stringify(end)}
-        )
-      `}
+          performance.measure(
+            ${JSON.stringify(name)},
+            ${JSON.stringify(start)},
+            ${JSON.stringify(end)}
+          )
+        `}
       </script>
-      {/* </Safe.script> */}
     </ServerOnly>
   ) : null;
 }
