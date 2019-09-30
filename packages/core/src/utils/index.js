@@ -17,6 +17,7 @@ export {
   closeOverlay,
   bindAllClassMethodsToThis,
   scrollPage,
+  scrollTopElement,
   createAPIConfig,
   getCountriesMap,
   getCurrenciesMap,

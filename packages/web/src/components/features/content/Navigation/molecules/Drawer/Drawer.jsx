@@ -84,9 +84,18 @@ class Drawer extends React.Component {
       } = breakpoints;
 
       if (window.innerWidth < lg && drawer) {
-        const headerHeight = condensedHeader
-          ? condensedHeader.offsetHeight
-          : headerTopNav.offsetHeight + middleNav.offsetHeight;
+        const headerTopNavComp = headerTopNav.getBoundingClientRect();
+        const headerMiddleNavComp = middleNav.getBoundingClientRect();
+        let headerHeight = headerTopNavComp.height + headerMiddleNavComp.height;
+
+        if (headerTopNav && headerTopNavComp.top < 0) {
+          headerHeight -= Math.abs(headerTopNavComp.top);
+        }
+
+        if (condensedHeader) {
+          headerHeight = condensedHeader.getBoundingClientRect().height;
+        }
+
         drawer.style.height = `${wHeight - headerHeight}px`;
         drawer.style.position = 'fixed';
         drawer.style.overflowY = 'scroll';

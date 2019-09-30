@@ -274,6 +274,12 @@ export const scrollPage = (x = 0, y = 0) => {
   }
 };
 
+export const scrollTopElement = elem => {
+  if (window) {
+    document.getElementById(elem).scrollTop = 0;
+  }
+};
+
 export const getCountriesMap = data => {
   const countries = defaultCountries;
   data.map(value =>
@@ -482,6 +488,7 @@ export default {
   routerPush,
   bindAllClassMethodsToThis,
   scrollPage,
+  scrollTopElement,
   getCountriesMap,
   getCurrenciesMap,
   siteRedirect,

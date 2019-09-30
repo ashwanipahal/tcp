@@ -34,6 +34,7 @@ const StyledModal = css`
       max-height: none !important;
       height: 100%;
     }
+    margin-top: 8px;
   }
   .condensed-overlay {
     top: 0;
@@ -51,6 +52,7 @@ const StyledModal = css`
   .modal__bar {
     position: ${props => (props.showCondensedHeader ? 'fixed' : 'absolute')};
     height: 8px;
+    margin-top: -8px;
     width: 100%;
     background-color: ${props =>
       !props.isLoggedIn ? props.theme.colorPalette.userTheme.noMprPlcc : mprplcce};
