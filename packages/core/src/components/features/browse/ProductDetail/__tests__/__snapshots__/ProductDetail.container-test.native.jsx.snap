@@ -1,12 +1,3 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`ProductDetailContainerVanilla component should renders correctly 1`] = `
-<Styled(ProductDetailView)
-  breadCrumbs={Object {}}
-  currentProduct={Object {}}
-  handleSubmit={null}
-  isPickupModalOpen={false}
-  navTree={Object {}}
-  plpLabels={Object {}}
-/>
-`;
+exports[`ProductDetailContainerVanilla component should renders correctly 1`] = `<Fragment />`;
