@@ -188,6 +188,7 @@ class GiftServices extends React.PureComponent {
     const dropDownStyle = {
       height: 30,
       border: 1,
+      lightBorder: true,
     };
     const itemStyle = {
       height: 90,
@@ -275,6 +276,7 @@ class GiftServices extends React.PureComponent {
             <Field
               name="giftServices"
               component={DropDown}
+              customDropDownHeight={270}
               data={giftServicesList}
               dataLocator="giftServices-list"
               variation="secondary"
