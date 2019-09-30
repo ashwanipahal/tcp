@@ -8,7 +8,7 @@ const styles = css`
   justify-content: space-between;
   padding: ${props =>
     `${props.theme.spacing.ELEM_SPACING.MED} ${props.theme.spacing.ELEM_SPACING.SM} ${
-      props.theme.spacing.ELEM_SPACING.XS
+      props.theme.spacing.ELEM_SPACING.MED
     }`};
   height: 100%;
 
@@ -38,6 +38,12 @@ const styles = css`
     display: flex;
     align-items: center;
     justify-content: center;
+  }
+
+  .default-address-label {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-end;
   }
 `;
 
