@@ -29,10 +29,6 @@ const styles = css`
     overflow: hidden;
     text-overflow: ellipsis;
   }
-  .add-padding {
-    padding-right: 20px;
-    padding-left: 20px;
-  }
 `;
 
 export default styles;

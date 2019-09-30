@@ -54,7 +54,9 @@ export const BirthdayCard = ({
         textAlign="center"
         fontWeight="semibold"
         className={
-          isEditMode ? 'elem-mb-XXXS text-ellipsis add-padding' : 'elem-mb-XXXS text-ellipsis'
+          isEditMode
+            ? 'elem-mb-XXXS text-ellipsis layout-pr-XS layout-pl-XS'
+            : 'elem-mb-XXXS text-ellipsis'
         }
         fontFamily="secondary"
         title={name}
