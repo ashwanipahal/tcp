@@ -302,8 +302,8 @@ class ProductInformation extends React.Component {
       >
         <MainWrapper>
           <UnavailableView>{getItemStatus(productDetail, labels)}</UnavailableView>
-          <OuterContainer>
-            {CartItemTileExtension.CartItemImageWrapper(productDetail, labels)}
+          <OuterContainer showOnReviewPage={showOnReviewPage}>
+            {CartItemTileExtension.CartItemImageWrapper(productDetail, labels, showOnReviewPage)}
             <ProductDescription>
               {showOnReviewPage && !!productDetail.miscInfo.badge && (
                 <BodyCopy

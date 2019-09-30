@@ -19,13 +19,14 @@ const gymboreeImage = require('../../../../../../../assets/gymboree-logo.png');
 const tcpImage = require('../../../../../../../assets/tcp-logo.png');
 const heart = require('../../../../../../../assets/heart.png');
 
-const CartItemImageWrapper = (productDetail, labels) => {
+const CartItemImageWrapper = (productDetail, labels, showOnReviewPage) => {
   return (
-    <ImgWrapper>
+    <ImgWrapper showOnReviewPage={showOnReviewPage}>
       <View>
         <ImageStyle
           data-locator={getLocator('cart_item_image')}
           source={{ uri: endpoints.global.baseURI + productDetail.itemInfo.imagePath }}
+          showOnReviewPage={showOnReviewPage}
         />
         {productDetail.miscInfo.availability === CARTPAGE_CONSTANTS.AVAILABILITY_SOLDOUT && (
           <SoldOutLabel>

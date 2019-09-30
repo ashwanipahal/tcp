@@ -70,6 +70,60 @@ const categorizingItemsForStores = ({
   }
 };
 
+const gettingSortedItemList = ({
+  sortedItem,
+  CheckoutConstants,
+  currencySymbol,
+  bopisDate,
+  labels,
+}) => {
+  if (sortedItem) {
+    return sortedItem.reduce((bucket, item) => {
+      const orderType = item.miscInfo.orderItemType;
+      const currentStore = item.miscInfo.store || CheckoutConstants.CHECKOUT_ORDER.ECOM_NO_STORE;
+      const currentStoreAddress = item.miscInfo.storeAddress || '';
+      const { bossStartDate, bossEndDate } = item.miscInfo;
+      const bucketReference = bucket;
+      const {
+        CHECKOUT_ORDER: {
+          ORDER_BOPIS_LABEL,
+          ORDER_BOSS_LABEL,
+          ORDER_PICKUP_LABEL,
+          ORDER_SHIPIT_LABEL,
+        },
+      } = CheckoutConstants;
+      const deliveryType =
+        orderType === ORDER_BOPIS_LABEL || orderType === ORDER_BOSS_LABEL
+          ? ORDER_PICKUP_LABEL
+          : ORDER_SHIPIT_LABEL;
+
+      if (deliveryType === ORDER_SHIPIT_LABEL) {
+        bucketReference[deliveryType] = bucket[deliveryType] || {};
+        bucketReference[deliveryType].list = bucket[deliveryType].list || [];
+        bucket[deliveryType].list.push({ item, currencySymbol });
+      } else {
+        categorizingItemsForStores({
+          currentStore,
+          currentStoreAddress,
+          item,
+          orderType,
+          bossStartDate,
+          bossEndDate,
+          bopisDate,
+          bucket,
+          deliveryType,
+          bucketReference,
+          labels,
+          currencySymbol,
+          CheckoutConstants,
+        });
+      }
+      return bucket;
+    }, {});
+  }
+  return {};
+};
+
 /**
  *
  *
@@ -96,7 +150,7 @@ export const CheckoutCartItemList = ({
       currencySymbol={currencySymbol}
       labels={labels}
       bagPageLabels={bagPageLabels}
-      categorizingItemsForStores={categorizingItemsForStores}
+      gettingSortedItemList={gettingSortedItemList}
     />
   );
 };
@@ -105,7 +159,7 @@ const mapStateToProps = state => {
   return {
     itemsCount: BAGPAGE_SELECTORS.getTotalItems(state),
     items: BAGPAGE_SELECTORS.getOrderItems(state),
-    currencySymbol: BAGPAGE_SELECTORS.getCurrentCurrency(state),
+    currencySymbol: BAGPAGE_SELECTORS.getCurrentCurrency(state) || '$',
     labels: getLabelsCartItemTile(state),
     bagPageLabels: BAGPAGE_SELECTORS.getBagPageLabels(state),
   };

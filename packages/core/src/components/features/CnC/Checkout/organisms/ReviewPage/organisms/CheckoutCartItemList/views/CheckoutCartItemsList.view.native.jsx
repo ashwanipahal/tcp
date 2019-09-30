@@ -55,7 +55,7 @@ class CheckoutCartItemsList extends Component {
     currencySymbol: PropTypes.string.isRequired,
     labels: PropTypes.shape({}),
     bagPageLabels: PropTypes.shape({}),
-    categorizingItemsForStores: PropTypes.func.isRequired,
+    gettingSortedItemList: PropTypes.func.isRequired,
   };
 
   /**
@@ -66,11 +66,16 @@ class CheckoutCartItemsList extends Component {
    * single order item html.
    */
   getOrderItem = item => {
-    const { labels } = this.props;
+    const { labels, currencySymbol } = this.props;
     const showOnReviewPage = false;
     return (
       <CartItemTileContainer>
-        <CartItemTile productDetail={item} labels={labels} showOnReviewPage={showOnReviewPage} />
+        <CartItemTile
+          productDetail={item}
+          labels={labels}
+          showOnReviewPage={showOnReviewPage}
+          currencySymbol={currencySymbol}
+        />
       </CartItemTileContainer>
     );
   };
@@ -272,7 +277,7 @@ class CheckoutCartItemsList extends Component {
    * @summary This function responsible for rendedring view and calling further respective methods.
    */
   renderItems() {
-    const { items, currencySymbol, categorizingItemsForStores, labels } = this.props;
+    const { items, currencySymbol, gettingSortedItemList, labels } = this.props;
     const apiConfig = getAPIConfig();
     const bopisDate = apiConfig && getTranslateDateInformation('', apiConfig.language);
     /**
@@ -317,50 +322,13 @@ class CheckoutCartItemsList extends Component {
               -> BOPIS
                 -> list : [array of order line elements]
     */
-    const orderBucket =
-      sortedItem &&
-      sortedItem.reduce((bucket, item) => {
-        const orderType = item.miscInfo.orderItemType;
-        const currentStore = item.miscInfo.store || CheckoutConstants.CHECKOUT_ORDER.ECOM_NO_STORE;
-        const currentStoreAddress = item.miscInfo.storeAddress || '';
-        const { bossStartDate, bossEndDate } = item.miscInfo;
-        const bucketReference = bucket;
-        const {
-          CHECKOUT_ORDER: {
-            ORDER_BOPIS_LABEL,
-            ORDER_BOSS_LABEL,
-            ORDER_PICKUP_LABEL,
-            ORDER_SHIPIT_LABEL,
-          },
-        } = CheckoutConstants;
-        const deliveryType =
-          orderType === ORDER_BOPIS_LABEL || orderType === ORDER_BOSS_LABEL
-            ? ORDER_PICKUP_LABEL
-            : ORDER_SHIPIT_LABEL;
-
-        if (deliveryType === ORDER_SHIPIT_LABEL) {
-          bucketReference[deliveryType] = bucket[deliveryType] || {};
-          bucketReference[deliveryType].list = bucket[deliveryType].list || [];
-          bucket[deliveryType].list.push({ item, currencySymbol });
-        } else {
-          categorizingItemsForStores({
-            currentStore,
-            currentStoreAddress,
-            item,
-            orderType,
-            bossStartDate,
-            bossEndDate,
-            bopisDate,
-            bucket,
-            deliveryType,
-            bucketReference,
-            labels,
-            currencySymbol,
-            CheckoutConstants,
-          });
-        }
-        return bucket;
-      }, {});
+    const orderBucket = gettingSortedItemList({
+      sortedItem,
+      CheckoutConstants,
+      currencySymbol,
+      bopisDate,
+      labels,
+    });
     const {
       CHECKOUT_ORDER: { REVIEW_PRODUCT_SEQUENCE },
     } = CheckoutConstants;

@@ -122,7 +122,7 @@ export function mapStateToProps(state) {
     isShowSaveForLater: getSaveForLaterSwitch(state),
     sflMaxCount: parseInt(getSflMaxCount(state)),
     isGenricGuest: getPersonalDataState(state),
-    currencySymbol: BAGPAGE_SELECTORS.getCurrentCurrency(state),
+    currencySymbol: BAGPAGE_SELECTORS.getCurrentCurrency(state) || '$',
   };
 }
 

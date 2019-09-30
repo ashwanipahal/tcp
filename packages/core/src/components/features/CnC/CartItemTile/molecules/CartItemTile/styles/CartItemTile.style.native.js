@@ -7,7 +7,10 @@ const MainWrapper = styled.View`
 
 const OuterContainer = styled.View`
   flex-direction: row;
-  padding: 10px;
+  padding: ${props =>
+    props.showOnReviewPage
+      ? props.theme.spacing.APP_LAYOUT_SPACING.XXS
+      : `${props.theme.spacing.APP_LAYOUT_SPACING.XXS} 0`};
   background-color: ${props => props.theme.colorPalette.white};
 `;
 const UnavailableView = styled.View`
@@ -16,7 +19,6 @@ const UnavailableView = styled.View`
   flex-direction: row;
 `;
 const ProductName = styled.View`
-  width: 66%;
   flex-wrap: wrap;
 `;
 const ProductDesc = styled.View`
@@ -42,7 +44,10 @@ const SoldOutLabel = styled.View`
   justify-content: center;
 `;
 const ImgWrapper = styled.View`
-  width: 30%;
+  margin-right: ${props =>
+    props.showOnReviewPage ? `0` : props.theme.spacing.APP_LAYOUT_SPACING.XS};
+  margin-left: ${props => (props.showOnReviewPage ? `0` : props.theme.spacing.ELEM_SPACING.XXS)};
+  width: ${props => (props.showOnReviewPage ? `30%` : `auto`)};
   align-items: center;
 `;
 
@@ -51,7 +56,7 @@ const ProductSubDetails = styled.View`
 `;
 
 const ImageStyle = styled.Image`
-  width: 100px;
+  width: ${props => (props.showOnReviewPage ? `100px` : `55px`)};
   height: 100px;
 `;
 
