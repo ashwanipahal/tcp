@@ -1,4 +1,5 @@
 import React from 'react';
+import { ScrollView } from 'react-native';
 import PropTypes from 'prop-types';
 import { StoreAddressTile, StoreHours, StoreLocations } from '../../../../../common/molecules';
 import StoreDetailRoot from '../styles/StoreDetail.style.native';
@@ -18,20 +19,27 @@ const StoreDetail = ({
   if (hours !== undefined && Object.keys(hours).length > 0)
     Object.keys(hours).forEach(hour => storeTimings.push(...hours[hour]));
   return (
-    <StoreDetailRoot>
-      <StoreAddressTile
-        store={store}
-        labels={labels}
-        openStoreDirections={openStoreDirections}
-        openCallStore={dialStoreNumber}
-        isFavorite={isFavorite}
-        setFavoriteStore={setFavoriteStore}
-      />
-      {storeTimings.length > 0 ? (
-        <StoreHours title="Store Hours" defaultOpen storeTiming={formatStoreTiming(storeTimings)} />
-      ) : null}
-      <StoreLocations labels={labels} openMoreStores={openMoreStores} />
-    </StoreDetailRoot>
+    <ScrollView>
+      <StoreDetailRoot>
+        <StoreAddressTile
+          store={store}
+          labels={labels}
+          openStoreDirections={openStoreDirections}
+          openCallStore={dialStoreNumber}
+          isFavorite={isFavorite}
+          setFavoriteStore={setFavoriteStore}
+          changeFavoriteStore={openMoreStores}
+        />
+        {storeTimings.length > 0 ? (
+          <StoreHours
+            title="Store Hours"
+            defaultOpen
+            storeTiming={formatStoreTiming(storeTimings)}
+          />
+        ) : null}
+        <StoreLocations labels={labels} openMoreStores={openMoreStores} />
+      </StoreDetailRoot>
+    </ScrollView>
   );
 };
 

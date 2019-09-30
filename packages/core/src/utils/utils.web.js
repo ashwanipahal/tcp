@@ -463,7 +463,7 @@ export const routeToStoreDetails = storeDetail => {
     .toLowerCase()}-${state.toLowerCase()}-${city
     .replace(/\s/g, '')
     .toLowerCase()}-${zipCode}-${id}`;
-  routerPush(window.location.href, url);
+  if (isClient()) routerPush(window.location.href, url);
 };
 
 /**

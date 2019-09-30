@@ -46,8 +46,8 @@ export const formatGenericMapObject = store => {
 };
 
 export const formatCurrentStoreToObject = store => {
-  const formattedStore = {};
   if (store && store.size > 0) {
+    const formattedStore = {};
     const basicInfoState = store.get('basicInfo');
     const addressState = basicInfoState.get('address');
     const coordinateState = basicInfoState.get('coordinates');
@@ -70,8 +70,9 @@ export const formatCurrentStoreToObject = store => {
     };
     formattedStore.hours = formatHoursToObject(store.get('hours'));
     formattedStore.features = formatGenericMapObject(store.get('features'));
+    return formattedStore;
   }
-  return formattedStore;
+  return store;
 };
 
 export const getNearByStores = state => state[STORE_DETAIL_REDUCER_KEY].get('suggestedStores');
@@ -81,7 +82,9 @@ export const getLabels = state => state.Labels.StoreLocator;
 export const isFavoriteStore = state => {
   const defaultStore = state.User.get('defaultStore');
   const basicInfoDefaultStore = defaultStore && defaultStore.basicInfo;
-  const basicInfoStore = formatCurrentStoreToObject(getCurrentStore(state)).basicInfo;
+  const currentStoreState = getCurrentStore(state);
+  const basicInfoStore =
+    currentStoreState && formatCurrentStoreToObject(currentStoreState).basicInfo;
   return (
     (basicInfoStore && basicInfoStore.id) === (basicInfoDefaultStore && basicInfoDefaultStore.id)
   );

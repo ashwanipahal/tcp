@@ -43,20 +43,25 @@ export class StoreDetailContainer extends PureComponent {
   }
 
   componentDidMount() {
-    const { loadNearByStoreInfo, currentStoreInfo, formatStore, getFavStore } = this.props;
-    const store = formatStore(currentStoreInfo);
-    if (store.basicInfo && Object.keys(store.basicInfo).length > 0) {
-      const { basicInfo } = store;
-      const { coordinates, id } = basicInfo;
-      const payloadArgs = {
-        storeLocationId: id,
-        getNearby: true,
-        latitude: coordinates.lat,
-        longitude: coordinates.long,
-      };
-      getFavStore({ geoLatLang: { lat: coordinates.lat, long: coordinates.long } });
-      loadNearByStoreInfo(payloadArgs);
+    this.loadCurrentStoreInitialInfo();
+  }
+
+  // eslint-disable-next-line no-unused-vars
+  componentDidUpdate(prevProps, prevState, snapshot) {
+    if (snapshot !== null) {
+      this.loadCurrentStoreInitialInfo();
     }
+  }
+
+  // eslint-disable-next-line no-unused-vars
+  getSnapshotBeforeUpdate(prevProps, prevState) {
+    const { currentStoreInfo, formatStore } = this.props;
+    const prevStore = formatStore(prevProps.currentStoreInfo);
+    const newStore = formatStore(currentStoreInfo);
+    if (prevStore.basicInfo.id !== newStore.basicInfo.id) {
+      return true;
+    }
+    return null;
   }
 
   openMoreStores = () => {
@@ -75,6 +80,23 @@ export class StoreDetailContainer extends PureComponent {
     } else phoneUrl = `telprompt:$${`{${phone}}`}`;
     this.UrlHandler(phoneUrl);
   };
+
+  loadCurrentStoreInitialInfo() {
+    const { loadNearByStoreInfo, currentStoreInfo, formatStore, getFavStore } = this.props;
+    const store = formatStore(currentStoreInfo);
+    if (store.basicInfo && Object.keys(store.basicInfo).length > 0) {
+      const { basicInfo } = store;
+      const { coordinates, id } = basicInfo;
+      const payloadArgs = {
+        storeLocationId: id,
+        getNearby: true,
+        latitude: coordinates.lat,
+        longitude: coordinates.long,
+      };
+      getFavStore({ geoLatLang: { lat: coordinates.lat, long: coordinates.long } });
+      loadNearByStoreInfo(payloadArgs);
+    }
+  }
 
   openStoreDirections(store) {
     const {

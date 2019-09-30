@@ -68,7 +68,7 @@ exports[`StoreAddressTile component Details StoreAddressTile component renders c
           buttonVariation="variable-width"
           color="white"
           fill="BLUE"
-          onPress={null}
+          onPress={[Function]}
           text="Set as favorite"
           type="submit"
         />
@@ -179,7 +179,7 @@ exports[`StoreAddressTile component Details should render details view with fav 
           buttonVariation="variable-width"
           color="white"
           fill="BLUE"
-          onPress={null}
+          onPress={[Function]}
           text="Change Favorite Store"
           type="submit"
         />

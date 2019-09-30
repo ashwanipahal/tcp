@@ -34,6 +34,7 @@ exports[`StoreSearch Container getFavoriteStoreInititator should be called - no 
   }
   loadStoresByCoordinates={[Function]}
   markerIcon="/static/images/marker-icon.png"
+  navigation={Object {}}
   openStoreDirections={[Function]}
   searchIcon="/static/images/search-icon.svg"
 />
@@ -73,6 +74,7 @@ exports[`StoreSearch Container getFavoriteStoreInititator should be called 1`] =
   }
   loadStoresByCoordinates={[Function]}
   markerIcon="/static/images/marker-icon.png"
+  navigation={Object {}}
   openStoreDirections={[Function]}
   searchIcon="/static/images/search-icon.svg"
 />
@@ -105,6 +107,7 @@ exports[`StoreSearch Container should render StoreLanding Correctly - without fa
   }
   loadStoresByCoordinates={[Function]}
   markerIcon="/static/images/marker-icon.png"
+  navigation={Object {}}
   openStoreDirections={[Function]}
   searchIcon="/static/images/search-icon.svg"
 />
@@ -125,6 +128,7 @@ exports[`StoreSearch Container should render StoreLanding Correctly 1`] = `
   getFavoriteStore={[MockFunction]}
   loadStoresByCoordinates={[Function]}
   markerIcon="/static/images/marker-icon.png"
+  navigation={Object {}}
   openStoreDirections={[Function]}
   searchIcon="/static/images/search-icon.svg"
 />

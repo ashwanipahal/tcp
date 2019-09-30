@@ -4,7 +4,7 @@ import withStyles from '@tcp/core/src/components/common/hoc/withStyles';
 import { Row, Col, StoreStaticMap, Anchor } from '../../../../../common/atoms';
 import { StoreAddressTile, StoreHours, StoreLocations } from '../../../../../common/molecules';
 import style from '../styles/StoreDetail.style';
-import { getViewportInfo, isCanada, getAPIConfig } from '../../../../../../utils';
+import { getViewportInfo, isCanada, getAPIConfig, isClient } from '../../../../../../utils';
 import formatStoreTiming from '../../../../../../utils/formatStoreTiming';
 
 const StoreDetail = ({
@@ -72,7 +72,7 @@ const StoreDetail = ({
           <StoreStaticMap
             storesList={[store]}
             centeredStoreId={store.basicInfo && store.basicInfo.id}
-            isMobile={getViewportInfo().isMobile}
+            isMobile={isClient() && getViewportInfo().isMobile}
             isCanada={isCanada}
             apiKey={getAPIConfig().googleApiKey}
           />

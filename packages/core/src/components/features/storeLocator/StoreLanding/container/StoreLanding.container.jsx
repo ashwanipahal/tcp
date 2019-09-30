@@ -79,6 +79,7 @@ export class StoreLanding extends PureComponent {
   };
 
   render() {
+    const { navigation } = this.props;
     const searchIcon = getIconPath('search-icon');
     const markerIcon = getIconPath('marker-icon');
     return (
@@ -89,6 +90,7 @@ export class StoreLanding extends PureComponent {
         markerIcon={markerIcon}
         fetchCurrentStore={store => this.fetchCurrentStoreDetails(store)}
         openStoreDirections={store => this.constructor.openStoreDirections(store)}
+        navigation={navigation}
       />
     );
   }
@@ -99,10 +101,12 @@ StoreLanding.propTypes = {
   getFavoriteStore: PropTypes.func.isRequired,
   favoriteStore: PropTypes.shape(PropTypes.string),
   fetchCurrentStore: PropTypes.func.isRequired,
+  navigation: PropTypes.shape({}),
 };
 
 StoreLanding.defaultProps = {
   favoriteStore: null,
+  navigation: {},
 };
 
 /* istanbul ignore next */

@@ -70,7 +70,7 @@ class StoreAddressTile extends PureComponent {
             title={labels.lbl_storelocators_landingpage_storedetails_link}
             noLink
           >
-            {labels.lbl_storelocators_landingpage_storedetails_link || 'Test Link'}
+            {labels.lbl_storelocators_landingpage_storedetails_link}
           </Anchor>
         </div>
         <div>

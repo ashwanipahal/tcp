@@ -5,7 +5,7 @@ import CollapsibleContainer from '@tcp/core/src/components/common/molecules/Coll
 import StoreAddressTile from '@tcp/core/src/components/common/molecules/StoreAddressTile';
 import { propTypes } from '@tcp/core/src/components/common/molecules/StoreAddressTile/views/prop-types';
 import { Row, Col } from '@tcp/core/src/components/common/atoms';
-import { getViewportInfo } from '@tcp/core/src/utils';
+import { getViewportInfo, isClient } from '@tcp/core/src/utils';
 import style, { collapsibleStyles, tileStyles } from '../styles/StoreLocations.style';
 
 const CollapsibleLocations = withStyles(CollapsibleContainer, collapsibleStyles);
@@ -50,7 +50,7 @@ class StoreLocations extends PureComponent {
 
   render() {
     const { children, className, stores, labels } = this.props;
-    if (getViewportInfo().isMobile) {
+    if (isClient() && getViewportInfo().isMobile) {
       return (
         <CollapsibleLocations
           header={this.getCollapsibleHeader()}
