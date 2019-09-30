@@ -150,9 +150,7 @@ class ProductReviews extends React.PureComponent {
           onClick={this.handleToggle}
         >
           {ratingsAndReviewsLabel.lbl_ratings_and_reviews}
-          {`Ratings & Reviews (`}
-          <span>{`${reviewsCount}`}</span>
-          {`)`}
+          <span>{`(${reviewsCount})`}</span>
         </BodyCopy>
         <div
           id={`BVRRContainer-${ratingsProductId}`}

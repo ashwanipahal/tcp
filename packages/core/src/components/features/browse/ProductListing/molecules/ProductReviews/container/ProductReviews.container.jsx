@@ -2,14 +2,15 @@ import { connect } from 'react-redux';
 import ProductReviews from '../views/ProductReviews';
 
 import { getBazaarvoiceApiUrl } from '../../../container/ProductListing.selectors';
-import { isMprUser, getUsedId, getLabels } from './ProductReviews.selectors';
+import { getLabels, getUserLoggedInState } from './ProductReviews.selectors';
+import { mprUserId, getUserId } from '../../../../../account/User/container/User.selectors';
 
 function mapStateToProps(state) {
   return {
-    userId: getUsedId(state),
+    userId: getUserId(state),
+    isGuest: getUserLoggedInState(state),
     // onLoginClick: storeOperators.globalSignalsOperator.openLoginDrawer,
-    // TODO confirm with account for mpr id or state.
-    mprId: isMprUser(state),
+    mprId: mprUserId(state),
     bazaarvoiceApiUrl: getBazaarvoiceApiUrl(),
     ratingsAndReviewsLabel: getLabels(state),
   };
