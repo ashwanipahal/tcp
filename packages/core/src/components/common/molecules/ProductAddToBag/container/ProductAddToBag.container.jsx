@@ -1,4 +1,5 @@
 import React from 'react';
+import { getFormSKUValue } from '../../../../../utils/utils';
 import ProductAddToBag from '../views/ProductAddToBag.view';
 
 /**
@@ -345,9 +346,10 @@ class ProductAddToBagContainer extends React.PureComponent<Props> {
   };
 
   addToBagAction = () => {
-    const { selectedSize, selectedFit, selectedColor } = this.state;
+    const { selectedSize, selectedFit, selectedColor, selectedQuantity } = this.state;
     const {
       currentProduct: { colorFitsSizesMap },
+      handleFormSubmit,
     } = this.props;
     const colors = colorFitsSizesMap.filter(item => item.color.name === selectedColor.name);
     let fitList = [];
@@ -365,6 +367,14 @@ class ProductAddToBagContainer extends React.PureComponent<Props> {
         fitList[0].sizes.filter(size => size.sizeName === selectedSize.name).length > 0) ||
       false;
     this.displayErrorMessage(!isSizeAvaiable);
+    handleFormSubmit(
+      getFormSKUValue({
+        color: selectedColor,
+        Size: selectedSize,
+        Quantity: selectedQuantity,
+        Fit: selectedFit,
+      })
+    );
   };
 
   quantityChange = selectedQuantity => {

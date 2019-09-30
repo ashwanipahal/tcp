@@ -46,4 +46,5 @@ export {
   childOptionsMap,
   calculateAge,
   configureInternalNavigationFromCMSUrl,
+  flattenArray,
 } from './utils';
