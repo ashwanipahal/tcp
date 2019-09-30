@@ -37,6 +37,11 @@ class Socialview extends React.PureComponent {
     };
   }
 
+  /**
+   * @function renderAccountsInformation Render the social plugins layouts
+   * @param {accounts} accounts list of accounts
+   * @param {labels} labels component labels
+   */
   renderAccountsInformation = (accounts, labels) => {
     return accounts.map(elem => {
       const isSocialAccount =
@@ -87,6 +92,11 @@ class Socialview extends React.PureComponent {
     this.socialAccounts = accountsInfo;
   };
 
+  /**
+   * @function Handling of social plugins - facebook login/log out
+   * @param {*} isSocialAccount what type of social account - Facebook/Instagram/Twitter
+   * @param {*} isConnected - Status to check whether user is connected with social sites
+   */
   handleSocialNetwork(isSocialAccount, isConnected) {
     const { saveSocialAcc } = this.props;
     switch (isSocialAccount) {
@@ -119,11 +129,9 @@ class Socialview extends React.PureComponent {
 
   render() {
     const { getSocialAcc, labels } = this.props;
-
     if (Object.keys(getSocialAcc).length) {
       this.refactorSocialDetails(getSocialAcc);
     }
-
     return (
       <View>
         <BodyCopy

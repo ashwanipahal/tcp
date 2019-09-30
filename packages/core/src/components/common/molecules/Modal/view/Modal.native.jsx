@@ -78,6 +78,7 @@ const ModalNative = ({ isOpen, children, isOverlay, ...otherProps }: Props) => {
     behavior = 'padding';
     keyboardVerticalOffset = 64;
   }
+
   return (
     <SafeAreaView>
       <Modal
@@ -109,14 +110,15 @@ const ModalNative = ({ isOpen, children, isOverlay, ...otherProps }: Props) => {
                 <LineComp marginTop={5} borderWidth={2} borderColor={borderColor} />
               </LineWrapper>
             ) : null}
-            <ScrollView showsVerticalScrollIndicator={false} keyboardShouldPersistTaps="handled">
-              <KeyboardAvoidingView
-                behavior={behavior}
-                keyboardVerticalOffset={keyboardVerticalOffset}
-              >
+            <KeyboardAvoidingView
+              behavior={behavior}
+              keyboardVerticalOffset={keyboardVerticalOffset}
+              enabled
+            >
+              <ScrollView showsVerticalScrollIndicator={false} keyboardShouldPersistTaps="handled">
                 {children}
-              </KeyboardAvoidingView>
-            </ScrollView>
+              </ScrollView>
+            </KeyboardAvoidingView>
           </>
         )}
         {customTransparent && children}
