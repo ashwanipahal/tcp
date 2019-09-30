@@ -87,7 +87,6 @@ class Socialview extends React.PureComponent {
     this.socialAccounts = accountsInfo;
   };
 
-  // eslint-disable-next-line class-methods-use-this
   handleSocialNetwork(isSocialAccount, isConnected) {
     const { saveSocialAcc } = this.props;
     switch (isSocialAccount) {

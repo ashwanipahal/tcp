@@ -36,14 +36,16 @@ const MyAccountLayoutView = (props: Props) => {
   } = props;
   return (
     <View className={className} {...props}>
-      <React.Fragment>
-        <RewardsPoints tableView labels={labels} />
-        <MyAccountDropdownNav
-          navData={navData}
-          handleComponentChange={handleComponentChange}
-          navigation={navigation}
-        />
-      </React.Fragment>
+      {isUserLoggedIn && (
+        <React.Fragment>
+          <RewardsPoints tableView labels={labels} />
+          <MyAccountDropdownNav
+            navData={navData}
+            handleComponentChange={handleComponentChange}
+            navigation={navigation}
+          />
+        </React.Fragment>
+      )}
       <MainContent
         isUserLoggedIn={isUserLoggedIn}
         labels={labels}
