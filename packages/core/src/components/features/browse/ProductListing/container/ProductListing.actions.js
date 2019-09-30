@@ -14,6 +14,13 @@ export const getPlpProducts = payload => {
   };
 };
 
+export const resetPlpProducts = payload => {
+  return {
+    type: PRODUCTLISTINGPAGE_CONSTANTS.RESET_PRODUCTS,
+    payload,
+  };
+};
+
 export const getMorePlpProducts = payload => {
   return {
     type: PRODUCTLISTINGPAGE_CONSTANTS.GET_MORE_PRODUCTS,

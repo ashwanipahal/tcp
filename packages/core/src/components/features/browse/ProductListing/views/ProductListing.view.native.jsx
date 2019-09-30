@@ -1,10 +1,68 @@
 import React from 'react';
-
 import PropTypes from 'prop-types';
+import BodyCopy from '@tcp/core/src/components/common/atoms/BodyCopy';
 import withStyles from '../../../../common/hoc/withStyles.native';
 import ProductList from '../molecules/ProductList/views';
-import { styles, PageContainer } from '../styles/ProductListing.style.native';
+import {
+  styles,
+  PageContainer,
+  ItemCountContainer,
+  ListHeaderContainer,
+} from '../styles/ProductListing.style.native';
 import FilterModal from '../molecules/FilterModal';
+
+const renderItemCountView = itemCount => {
+  if (itemCount === undefined) {
+    return itemCount;
+  }
+
+  return (
+    <ItemCountContainer>
+      <BodyCopy
+        dataLocator="pdp_product_badges"
+        mobileFontFamily="secondary"
+        fontSize="fs14"
+        fontWeight="semibold"
+        color="gray.900"
+        text={`${itemCount} `}
+      />
+      <BodyCopy
+        dataLocator="pdp_product_badges"
+        mobileFontFamily="secondary"
+        fontSize="fs14"
+        fontWeight="regular"
+        color="gray.900"
+        text="Items"
+      />
+    </ItemCountContainer>
+  );
+};
+
+const onRenderHeader = (
+  filters,
+  labelsFilter,
+  onSubmit,
+  getProducts,
+  navigation,
+  sortLabels,
+  totalProductsInCurrCategory
+) => {
+  return (
+    <React.Fragment>
+      <ListHeaderContainer>
+        <FilterModal
+          filters={filters}
+          labelsFilter={labelsFilter}
+          onSubmit={onSubmit}
+          getProducts={getProducts}
+          navigation={navigation}
+          sortLabels={sortLabels}
+        />
+        {renderItemCountView(totalProductsInCurrCategory)}
+      </ListHeaderContainer>
+    </React.Fragment>
+  );
+};
 
 const ProductListView = ({
   products,
@@ -17,20 +75,31 @@ const ProductListView = ({
   getProducts,
   navigation,
   sortLabels,
+  totalProductsInCurrCategory,
+  scrollToTop,
   ...otherProps
 }) => {
   const title = navigation && navigation.getParam('title');
   return (
     <PageContainer>
-      <FilterModal
-        filters={filters}
-        labelsFilter={labelsFilter}
-        onSubmit={onSubmit}
-        getProducts={getProducts}
-        navigation={navigation}
-        sortLabels={sortLabels}
+      <ProductList
+        products={products}
+        title={title}
+        scrollToTop={scrollToTop}
+        totalProductsInCurrCategory={totalProductsInCurrCategory}
+        onRenderHeader={() =>
+          onRenderHeader(
+            filters,
+            labelsFilter,
+            onSubmit,
+            getProducts,
+            navigation,
+            sortLabels,
+            totalProductsInCurrCategory
+          )
+        }
+        {...otherProps}
       />
-      <ProductList products={products} title={title} {...otherProps} />
     </PageContainer>
   );
 };
@@ -46,6 +115,8 @@ ProductListView.propTypes = {
   getProducts: PropTypes.func.isRequired,
   navigation: PropTypes.objectOf(PropTypes.oneOfType([PropTypes.string])),
   sortLabels: PropTypes.arrayOf(PropTypes.shape({})),
+  totalProductsInCurrCategory: PropTypes.number.isRequired,
+  scrollToTop: PropTypes.bool.isRequired,
 };
 
 ProductListView.defaultProps = {

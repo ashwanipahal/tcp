@@ -85,6 +85,7 @@ const SearchListingView = ({
               productsBlock={productsBlock}
               products={products}
               labels={labels}
+              productTileVariation="search-product-tile"
               {...otherProps}
             />
           ) : null}
