@@ -4,14 +4,8 @@ exports[`ProductDetailView component should renders correctly 1`] = `
 <ScrollViewMock>
   <Styled(View)>
     <Styled(WithTheme(ImageCarousel))
-      item={
-        Object {
-          "name": "",
-          "shortDescription": "",
-        }
-      }
+      imageUrls={Array []}
       onImageClick={[Function]}
-      selectedColorProductId=""
     />
     <Styled(ProductSummary)
       currencyExchange={
@@ -25,6 +19,7 @@ exports[`ProductDetailView component should renders correctly 1`] = `
       isPlcc={false}
       productData={
         Object {
+          "colorFitsSizesMap": Array [],
           "name": "",
           "shortDescription": "",
         }
@@ -34,13 +29,19 @@ exports[`ProductDetailView component should renders correctly 1`] = `
     <ProductAddToBagContainer
       currentProduct={
         Object {
+          "colorFitsSizesMap": Array [],
           "name": "",
           "shortDescription": "",
         }
       }
-      handleSubmit={null}
+      errorOnHandleSubmit=""
+      handleFormSubmit={null}
+      onChangeColor={[Function]}
       plpLabels={null}
       selectedColorProductId=""
+    />
+    <Connect(AddedToBagContainer)
+      navigation={Object {}}
     />
   </Styled(View)>
 </ScrollViewMock>
