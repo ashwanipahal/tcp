@@ -3,6 +3,7 @@
 exports[`CheckoutPageVanilla component should renders correctly pickup 1`] = `
 <Styled(CnCTemplate)
   isCheckoutView={true}
+  isConfirmationPage={false}
   leftSection={[Function]}
   marginTop={true}
 />
@@ -11,6 +12,7 @@ exports[`CheckoutPageVanilla component should renders correctly pickup 1`] = `
 exports[`CheckoutPageVanilla component should renders correctly with shipping 1`] = `
 <Styled(CnCTemplate)
   isCheckoutView={true}
+  isConfirmationPage={false}
   leftSection={[Function]}
   marginTop={true}
 />

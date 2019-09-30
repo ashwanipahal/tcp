@@ -210,6 +210,26 @@ export const getViewportInfo = () => {
 };
 
 /**
+ * Enable Body Scroll
+ */
+export const enableBodyScroll = () => {
+  if (typeof window !== 'undefined') {
+    const [body] = document.getElementsByTagName('body');
+    body.style.overflow = 'auto';
+  }
+};
+
+/**
+ * Disable Body Scroll
+ */
+export const disableBodyScroll = () => {
+  if (typeof window !== 'undefined') {
+    const [body] = document.getElementsByTagName('body');
+    body.style.overflow = 'hidden';
+  }
+};
+
+/**
  * Show Dark Overlay in background
  */
 export const showOverlay = () => {
@@ -254,6 +274,12 @@ export const scrollPage = (x = 0, y = 0) => {
   }
 };
 
+export const scrollTopElement = elem => {
+  if (window) {
+    document.getElementById(elem).scrollTop = 0;
+  }
+};
+
 export const getCountriesMap = data => {
   const countries = defaultCountries;
   data.map(value =>
@@ -294,47 +320,6 @@ export const languageRedirect = (newLanguage, oldLanguage) => {
   }
 };
 
-/**
- * This function will redirect to PDP from HOMEPAGE
- * on the basis of productId
- */
-export const redirectToPdp = (productId, seoToken) => {
-  if (!window) return null;
-
-  const params = seoToken ? `${seoToken}-${productId}` : productId;
-
-  return {
-    url: `/p?${params}`,
-    asPath: `/p/${params}`,
-  };
-};
-
-/**
- * This function configure url for Next/Link using CMS defined url string
- */
-export const configureInternalNavigationFromCMSUrl = url => {
-  const plpRoute = `${ROUTE_PATH.plp.name}/`;
-  const pdpRoute = `${ROUTE_PATH.pdp.name}/`;
-  const searchRoute = `${ROUTE_PATH.search.name}/`;
-
-  if (url.includes(plpRoute)) {
-    const urlItems = url.split(plpRoute);
-    const queryParam = urlItems[0];
-    return `${ROUTE_PATH.plp.name}?${ROUTE_PATH.plp.param}=${queryParam}`;
-  }
-  if (url.includes(pdpRoute)) {
-    const urlItems = url.split(pdpRoute);
-    const queryParam = urlItems[0];
-    return `${ROUTE_PATH.pdp.name}?${ROUTE_PATH.pdp.param}=${queryParam}`;
-  }
-  if (url.includes(searchRoute)) {
-    const urlItems = url.split(searchRoute);
-    const queryParam = urlItems[0];
-    return `${ROUTE_PATH.search.name}?${ROUTE_PATH.search.param}=${queryParam}`;
-  }
-  return url;
-};
-
 /*
  *
  * @param {object} event the HTML element's element
@@ -366,6 +351,7 @@ const getAPIInfoFromEnv = (apiSiteInfo, processEnv, siteId) => {
     }`,
     envId: processEnv.RWD_WEB_ENV_ID,
     BAZAARVOICE_SPOTLIGHT: processEnv.RWD_WEB_BAZAARVOICE_API_KEY,
+    BAZAARVOICE_REVIEWS: processEnv.RWD_WEB_BAZAARVOICE_PRODUCT_REVIEWS_API_KEY,
     CANDID_API_KEY: process.env.RWD_WEB_CANDID_API_KEY,
     CANDID_API_URL: process.env.RWD_WEB_CANDID_URL,
     googleApiKey: process.env.RWD_WEB_GOOGLE_MAPS_API_KEY,
@@ -375,6 +361,7 @@ const getAPIInfoFromEnv = (apiSiteInfo, processEnv, siteId) => {
     borderFree: processEnv.BORDERS_FREE,
     borderFreeComm: processEnv.BORDERS_FREE_COMM,
     paypalEnv: processEnv.RWD_WEB_PAYPAL_ENV,
+    crossDomain: processEnv.RWD_WEB_CROSS_DOMAIN,
   };
 };
 const getGraphQLApiFromEnv = (apiSiteInfo, processEnv, relHostname) => {
@@ -477,11 +464,11 @@ export default {
   routerPush,
   bindAllClassMethodsToThis,
   scrollPage,
+  scrollTopElement,
   getCountriesMap,
   getCurrenciesMap,
   siteRedirect,
   languageRedirect,
-  redirectToPdp,
   handleGenericKeyDown,
   viewport,
   canUseDOM,

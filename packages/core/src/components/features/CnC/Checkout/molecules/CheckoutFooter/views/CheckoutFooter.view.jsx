@@ -4,6 +4,7 @@ import withStyles from '@tcp/core/src/components/common/hoc/withStyles';
 import style from '../styles/CheckoutFooter.style';
 import { Button, Image } from '../../../../../../common/atoms';
 import { getIconPath } from '../../../../../../../utils';
+import VenmoPaymentButton from '../../../../../../common/atoms/VenmoPaymentButton';
 
 const carrotLeft = getIconPath('carrot-left');
 
@@ -21,6 +22,8 @@ class CheckoutFooter extends React.PureComponent {
       footerBody,
       ariaLabelBackLink,
       ariaLabelNextButton,
+      showVenmoSubmit, // Show Venmo Submit on billing page on selecting venmo payment method
+      continueWithText,
     } = this.props;
     return (
       <div className={className}>
@@ -40,19 +43,26 @@ class CheckoutFooter extends React.PureComponent {
               </Button>
             )}
           </div>
-          <Button
-            disabled={disableNext}
-            aria-label={ariaLabelNextButton}
-            type="submit"
-            className="footer-button"
-            fontSize="fs14"
-            fontWeight="extrabold"
-            buttonVariation="variable-width"
-            fill="BLUE"
-            onClick={nextHandler}
-          >
-            {nextButtonText}
-          </Button>
+          {showVenmoSubmit ? (
+            <VenmoPaymentButton
+              className="footer-venmo-button"
+              continueWithText={continueWithText}
+            />
+          ) : (
+            <Button
+              disabled={disableNext}
+              aria-label={ariaLabelNextButton}
+              type="submit"
+              className="footer-button"
+              fontSize="fs14"
+              fontWeight="extrabold"
+              buttonVariation="variable-width"
+              fill="BLUE"
+              onClick={nextHandler}
+            >
+              {nextButtonText}
+            </Button>
+          )}
         </div>
       </div>
     );
@@ -71,10 +81,14 @@ CheckoutFooter.propTypes = {
   disableBackLink: PropTypes.bool.isRequired,
   hideBackLink: PropTypes.bool,
   footerBody: PropTypes.shape({}).isRequired,
+  showVenmoSubmit: PropTypes.bool,
+  continueWithText: PropTypes.string,
 };
 
 CheckoutFooter.defaultProps = {
   hideBackLink: false,
+  showVenmoSubmit: false,
+  continueWithText: '',
 };
 
 export default withStyles(CheckoutFooter, style);
