@@ -6,4 +6,18 @@ const Row = styled.View`
   align-items: center;
 `;
 
-export default Row;
+const EarnedMessage = styled.Text`
+  padding-top: ${props => props.theme.spacing.ELEM_SPACING.MED};
+  padding-bottom: ${props => props.theme.spacing.ELEM_SPACING.MED};
+`;
+
+const Points = styled.Text`
+  color: ${props =>
+    props.isPlcc
+      ? props.theme.colorPalette.userTheme.plcc
+      : props.theme.colorPalette.userTheme.mpr};
+  font-size: ${props => props.theme.typography.fontSizes.fs14};
+  font-weight: ${props => props.theme.typography.fontWeights.black};
+`;
+
+export { Row, EarnedMessage, Points };
