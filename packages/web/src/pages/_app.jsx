@@ -183,6 +183,7 @@ class TCPWebApp extends App {
 
   render() {
     const { Component, pageProps, store, router } = this.props;
+    const componentPageName = Component.pageInfo ? Component.pageInfo.name || '' : '';
     let isNonCheckoutPage = true;
     const { PICKUP, SHIPPING, BILLING, REVIEW, INTERNATIONAL_CHECKOUT } = CHECKOUT_STAGES;
     const checkoutPageURL = [PICKUP, SHIPPING, BILLING, REVIEW, INTERNATIONAL_CHECKOUT];
@@ -209,7 +210,7 @@ class TCPWebApp extends App {
                   <Component {...pageProps} />
                 </div>
               </div>
-              <Footer />
+              <Footer pageName={componentPageName} />
               <CheckoutModals />
             </Grid>
             {/* Inject route tracker if analytics is enabled. Must be within store provider. */}

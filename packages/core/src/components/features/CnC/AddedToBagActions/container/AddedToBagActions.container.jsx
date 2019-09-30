@@ -26,6 +26,7 @@ export class AddedToBagContainer extends React.Component<Props> {
       showVenmo,
       isNoNEmptyBag,
       fromAddedToBagModal,
+      closeModal,
     } = this.props;
     return (
       <AddedToBagActionsView
@@ -40,6 +41,7 @@ export class AddedToBagContainer extends React.Component<Props> {
         showVenmo={showVenmo}
         isNoNEmptyBag={isNoNEmptyBag}
         fromAddedToBagModal={fromAddedToBagModal}
+        closeModal={closeModal}
       />
     );
   }

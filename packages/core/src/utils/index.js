@@ -1,5 +1,7 @@
 export {
   default,
+  enableBodyScroll,
+  disableBodyScroll,
   importGraphQLClientDynamically,
   importGraphQLQueriesDynamically,
   isProduction,
@@ -15,12 +17,12 @@ export {
   closeOverlay,
   bindAllClassMethodsToThis,
   scrollPage,
+  scrollTopElement,
   createAPIConfig,
   getCountriesMap,
   getCurrenciesMap,
   siteRedirect,
   languageRedirect,
-  redirectToPdp,
   getAsPathWithSlug,
   getMappedPageHref,
   handleGenericKeyDown,
@@ -65,4 +67,5 @@ export {
   configureInternalNavigationFromCMSUrl,
   getModifiedLanguageCode,
   getTranslateDateInformation,
+  flattenArray,
 } from './utils';
