@@ -16,7 +16,7 @@ export const createAccountApi = payload => {
       rememberMe: payload.rememberMe || false,
       response: 'no_response::false:false',
       xCreditCardId: '',
-      zipCode: payload.noCountryZip,
+      zipCode: payload.noCountryZip || payload.zipCode,
       catalogId: apiConfig.catalogId,
       langId: apiConfig.langId,
       storeId: apiConfig.storeId,

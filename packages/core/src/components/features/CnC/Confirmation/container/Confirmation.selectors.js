@@ -6,7 +6,7 @@ import { createSelector } from 'reselect';
 // import { getAPIConfig } from '../../../../../utils';
 // import constants from '../../Checkout/Checkout.constants';
 
-const getOrderConfirmation = state => {
+export const getOrderConfirmation = state => {
   return state.Confirmation && state.Confirmation.get('orderConfirmation');
 };
 
@@ -103,9 +103,12 @@ const getConfirmationSummary = createSelector(
 //   return pickupStores && sth ? pickupStores.concat(sth) : null;
 // })
 
-// const getInitialCreateAccountValues = createSelector(getOrderConfirmation, orderConfirmation => {
-//   return orderConfirmation &&  orderConfirmation.userDetails;
-// })
+const getInitialCreateAccountValues = createSelector(
+  getOrderConfirmation,
+  orderConfirmation => {
+    return orderConfirmation && orderConfirmation.userDetails;
+  }
+);
 
 // const getEarnedPlaceCashValue = createSelector(getConfirmationSummary, summary => {
 //   return summary && summary.valueOfEarnedPcCoupons;
@@ -199,7 +202,7 @@ export default {
   // getSummary,
   // getFullfilmentCentersMap,
   // getHoldDate,
-  // getInitialCreateAccountValues,
+  getInitialCreateAccountValues,
   // getIsOrderHasShipping,
   // getEarnedPlaceCashValue,
   // getPlaceCashSpotEnabled,

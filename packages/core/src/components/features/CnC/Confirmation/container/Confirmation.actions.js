@@ -59,3 +59,12 @@ export function getSetRewardPointsOrderConfActn(updatedSummary) {
     type: CONFIRMATION_CONSTANTS.CONFIRMATION_SET_REWARDS_POINTS,
   };
 }
+
+/**
+ * @function setCreateAccountSuccess
+ * action creator for type: CONFIRMATION_SET_CREATE_ACCOUNT_SUCCESS
+ */
+export const setCreateAccountSuccess = payload => ({
+  type: CONFIRMATION_CONSTANTS.CONFIRMATION_SET_CREATE_ACCOUNT_SUCCESS,
+  payload,
+});

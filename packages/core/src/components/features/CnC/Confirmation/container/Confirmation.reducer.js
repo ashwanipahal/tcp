@@ -45,6 +45,8 @@ const orderConfirmationReducer = (state = initialState, action) => {
     //   return state.set('venmoPaymentConfirmationDisplayed', action.payload);
     case CONFIRMATION_CONSTANTS.CONFIRMATION_SET_REWARDS_POINTS:
       return state.setIn(['orderConfirmation', 'summary'], action.updatedSummary);
+    case CONFIRMATION_CONSTANTS.CONFIRMATION_SET_CREATE_ACCOUNT_SUCCESS:
+      return state.setIn(['orderConfirmation', 'createAccountSuccess'], action.payload);
     default:
       if (state instanceof Object) {
         return fromJS(state);
