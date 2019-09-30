@@ -1,8 +1,6 @@
 import React from 'react';
 import { ScrollView } from 'react-native';
 import { PropTypes } from 'prop-types';
-import get from 'lodash/get';
-
 import withStyles from '../../../../common/hoc/withStyles.native';
 import ImageCarousel from '../molecules/ImageCarousel';
 import PageContainer from '../styles/ProductDetail.style.native';
@@ -11,67 +9,89 @@ import ProductSummary from '../molecules/ProductSummary';
 import {
   getImagesToDisplay,
   getMapSliceForColorProductId,
+  getMapSliceForColor,
 } from '../../ProductListing/molecules/ProductList/utils/productsCommonUtils';
 import { FullScreenImageCarousel } from '../../../../common/molecules/index.native';
+import AddedToBagContainer from '../../../CnC/AddedToBag';
 
 class ProductDetailView extends React.PureComponent {
   constructor(props) {
     super(props);
-    this.state = { showCarousel: false };
+    const {
+      currentProduct: { colorFitsSizesMap },
+      selectedColorProductId,
+    } = this.props;
+    this.state = {
+      showCarousel: false,
+      currentColorEntry: getMapSliceForColorProductId(colorFitsSizesMap, selectedColorProductId),
+    };
   }
+
+  componentWillUnmount = () => {
+    const { clearAddToBagError } = this.props;
+    clearAddToBagError();
+  };
+
+  onChangeColor = e => {
+    const {
+      currentProduct: { colorFitsSizesMap },
+    } = this.props;
+    this.setState({ currentColorEntry: getMapSliceForColor(colorFitsSizesMap, e) });
+  };
 
   onImageClick = () => {
     const { showCarousel } = this.state;
     this.setState({ showCarousel: !showCarousel });
   };
 
-  renderCarousel = () => {
+  renderCarousel = imageUrls => {
     const { showCarousel } = this.state;
     if (!showCarousel) return null;
-
-    const { currentProduct, selectedColorProductId } = this.props;
-    const imagesByColor = get(currentProduct, 'imagesByColor', null);
-    const colorFitsSizesMap = get(currentProduct, 'colorFitsSizesMap', null);
-    let curentColorEntry;
-    let imageUrls;
-    if (colorFitsSizesMap) {
-      curentColorEntry = getMapSliceForColorProductId(colorFitsSizesMap, selectedColorProductId);
-      imageUrls = getImagesToDisplay({
-        imagesByColor,
-        curentColorEntry,
-        isAbTestActive: false,
-        isFullSet: true,
-      });
-    }
 
     return <FullScreenImageCarousel imageUrls={imageUrls} />;
   };
 
   render() {
-    const { currentProduct, selectedColorProductId, plpLabels, handleSubmit } = this.props;
-    const isDataAvailable = JSON.stringify(currentProduct) !== '{}';
+    const {
+      currentProduct,
+      currentProduct: { colorFitsSizesMap },
+      selectedColorProductId,
+      plpLabels,
+      handleFormSubmit,
+      navigation,
+      addToBagError,
+    } = this.props;
+    const { currentColorEntry } = this.state;
+    let imageUrls = [];
+    if (colorFitsSizesMap) {
+      imageUrls = getImagesToDisplay({
+        imagesByColor: currentProduct.imagesByColor,
+        curentColorEntry: currentColorEntry,
+        isAbTestActive: false,
+        isFullSet: true,
+      });
+    }
 
     return (
       <ScrollView>
         <PageContainer>
-          <ImageCarousel
-            item={currentProduct}
-            selectedColorProductId={selectedColorProductId}
-            onImageClick={this.onImageClick}
-          />
+          <ImageCarousel imageUrls={imageUrls} onImageClick={this.onImageClick} />
           <ProductSummary
             productData={currentProduct}
             selectedColorProductId={selectedColorProductId}
           />
-          {isDataAvailable && (
-            <ProductAddToBagContainer
-              currentProduct={currentProduct}
-              plpLabels={plpLabels}
-              handleSubmit={handleSubmit}
-              selectedColorProductId={selectedColorProductId}
-            />
-          )}
-          {this.renderCarousel()}
+
+          <ProductAddToBagContainer
+            currentProduct={currentProduct}
+            plpLabels={plpLabels}
+            handleFormSubmit={handleFormSubmit}
+            selectedColorProductId={selectedColorProductId}
+            errorOnHandleSubmit={addToBagError}
+            onChangeColor={this.onChangeColor}
+          />
+
+          {this.renderCarousel(imageUrls)}
+          <AddedToBagContainer navigation={navigation} />
         </PageContainer>
       </ScrollView>
     );
@@ -80,15 +100,20 @@ class ProductDetailView extends React.PureComponent {
 
 ProductDetailView.propTypes = {
   currentProduct: PropTypes.shape({}),
+  navigation: PropTypes.shape({}),
   selectedColorProductId: PropTypes.number.isRequired,
+  clearAddToBagError: PropTypes.func.isRequired,
   plpLabels: PropTypes.shape({}),
-  handleSubmit: PropTypes.func,
+  handleFormSubmit: PropTypes.func,
+  addToBagError: PropTypes.string,
 };
 
 ProductDetailView.defaultProps = {
   currentProduct: {},
+  navigation: {},
   plpLabels: null,
-  handleSubmit: null,
+  handleFormSubmit: null,
+  addToBagError: '',
 };
 
 export default withStyles(ProductDetailView);

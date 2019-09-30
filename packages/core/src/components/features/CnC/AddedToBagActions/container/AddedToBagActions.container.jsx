@@ -27,6 +27,7 @@ export class AddedToBagContainer extends React.Component<Props> {
       isNoNEmptyBag,
       fromAddedToBagModal,
       isBagPageStickyHeader,
+      closeModal,
     } = this.props;
     return (
       <AddedToBagActionsView
@@ -42,6 +43,7 @@ export class AddedToBagContainer extends React.Component<Props> {
         isNoNEmptyBag={isNoNEmptyBag}
         fromAddedToBagModal={fromAddedToBagModal}
         isBagPageStickyHeader={isBagPageStickyHeader}
+        closeModal={closeModal}
       />
     );
   }

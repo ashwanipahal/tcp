@@ -11,7 +11,7 @@ import Col from '../../../../../../common/atoms/Col';
 import Button from '../../../../../../common/atoms/Button';
 import styles from './styles/LoginSection.styles';
 import constants from '../../../LoginPage.constants';
-import { isCanada, scrollPage } from '../../../../../../../utils';
+import { isCanada, scrollPage, scrollTopElement } from '../../../../../../../utils';
 
 class LoginSection extends React.PureComponent<Props> {
   constructor(props) {
@@ -53,6 +53,7 @@ class LoginSection extends React.PureComponent<Props> {
       component: 'createAccount',
       variation: 'primary',
     });
+    scrollTopElement('dialogContent');
   };
 
   render() {
