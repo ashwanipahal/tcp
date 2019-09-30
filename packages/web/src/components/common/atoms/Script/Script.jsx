@@ -1,3 +1,4 @@
+/* istanbul ignore file */
 import { useLayoutEffect } from 'react';
 import { bool, string } from 'prop-types';
 

@@ -245,6 +245,7 @@ exports[`StoreSearch component StoreSearch component renders correctly 1`] = `
                 fontWeight="regular"
                 letterSpacing="normal"
                 lineHeight="normal"
+                link={null}
                 textAlign="left"
               />
             </Field>
@@ -403,6 +404,7 @@ exports[`StoreSearch component StoreSearch component renders correctly 1`] = `
                 fontWeight="regular"
                 letterSpacing="normal"
                 lineHeight="normal"
+                link={null}
                 textAlign="left"
               />
             </Field>
