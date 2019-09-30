@@ -26,15 +26,15 @@ exports[`ButtonList component renders correctly if  cards present and addNewCCSt
       paymentMethods={
         Array [
           Object {
-            "displayName": "Credit Card",
+            "displayName": undefined,
             "id": "creditCard",
           },
           Object {
-            "displayName": "Pay Pal",
+            "displayName": "",
             "id": "payPal",
           },
           Object {
-            "displayName": "Venmo",
+            "displayName": "",
             "id": "venmo",
           },
         ]
@@ -233,15 +233,15 @@ exports[`ButtonList component renders correctly if  no cards present  1`] = `
       paymentMethods={
         Array [
           Object {
-            "displayName": "Credit Card",
+            "displayName": undefined,
             "id": "creditCard",
           },
           Object {
-            "displayName": "Pay Pal",
+            "displayName": "",
             "id": "payPal",
           },
           Object {
-            "displayName": "Venmo",
+            "displayName": "",
             "id": "venmo",
           },
         ]
@@ -378,15 +378,15 @@ exports[`ButtonList component renders correctly if payment method is diff 1`] = 
       paymentMethods={
         Array [
           Object {
-            "displayName": "Credit Card",
+            "displayName": undefined,
             "id": "creditCard",
           },
           Object {
-            "displayName": "Pay Pal",
+            "displayName": "",
             "id": "payPal",
           },
           Object {
-            "displayName": "Venmo",
+            "displayName": "",
             "id": "venmo",
           },
         ]
@@ -431,15 +431,15 @@ exports[`ButtonList component renders correctly without props 1`] = `
       paymentMethods={
         Array [
           Object {
-            "displayName": "Credit Card",
+            "displayName": undefined,
             "id": "creditCard",
           },
           Object {
-            "displayName": "Pay Pal",
+            "displayName": "",
             "id": "payPal",
           },
           Object {
-            "displayName": "Venmo",
+            "displayName": "",
             "id": "venmo",
           },
         ]
@@ -710,15 +710,15 @@ exports[`ButtonList component renders correctly without props 2`] = `
       paymentMethods={
         Array [
           Object {
-            "displayName": "Credit Card",
+            "displayName": undefined,
             "id": "creditCard",
           },
           Object {
-            "displayName": "Pay Pal",
+            "displayName": "",
             "id": "payPal",
           },
           Object {
-            "displayName": "Venmo",
+            "displayName": "",
             "id": "venmo",
           },
         ]
@@ -988,15 +988,15 @@ exports[`ButtonList component renders correctly without props with isPaymentDisa
       paymentMethods={
         Array [
           Object {
-            "displayName": "Credit Card",
+            "displayName": undefined,
             "id": "creditCard",
           },
           Object {
-            "displayName": "Pay Pal",
+            "displayName": "",
             "id": "payPal",
           },
           Object {
-            "displayName": "Venmo",
+            "displayName": "",
             "id": "venmo",
           },
         ]

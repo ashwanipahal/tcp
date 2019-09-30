@@ -19,7 +19,7 @@ import CnCTemplate from '../../../../common/organism/CnCTemplate';
 import CONSTANTS from '../../../Checkout.constants';
 import PaymentMethods from '../../../../common/molecules/PaymentMethods';
 import CreditCardDropdown from './CreditCardDropDown.view.native';
-import CardImage from '../../../../../../common/molecules/Card/views/CardImage.native';
+import { CardImage } from '../../../../../../common/molecules/Card/views/CardImage.native';
 import {
   CvvCode,
   CvvTextboxStyle,
@@ -330,9 +330,9 @@ export class BillingPaymentForm extends React.PureComponent {
       dispatch,
     } = this.props;
     const paymentMethods = [
-      { id: 'creditCard', displayName: 'Credit Card' },
-      { id: 'payPal', displayName: 'Pay Pal' },
-      { id: 'venmo', displayName: 'Venmo' },
+      { id: 'creditCard', displayName: labels.creditCard },
+      { id: 'payPal', displayName: '' },
+      { id: 'venmo', displayName: '' },
     ];
     const creditCardList = getCreditCardList({ cardList });
     return (

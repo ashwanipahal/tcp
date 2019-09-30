@@ -1,0 +1,35 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`ButtonList component renders correctly without props 1`] = `
+<Styled(View)>
+  <Styled(View)>
+    <Field
+      component={[Function]}
+      id="creditCard"
+      index={0}
+      name="paymentMethodId"
+      onPress={[Function]}
+      selectedPaymentId={null}
+      title="Credit Card"
+    />
+    <Field
+      component={[Function]}
+      id="payPal"
+      index={1}
+      name="paymentMethodId"
+      onPress={[Function]}
+      selectedPaymentId={null}
+      title="Pay Pal"
+    />
+    <Field
+      component={[Function]}
+      id="venmo"
+      index={2}
+      name="paymentMethodId"
+      onPress={[Function]}
+      selectedPaymentId={null}
+      title="Venmo"
+    />
+  </Styled(View)>
+</Styled(View)>
+`;
