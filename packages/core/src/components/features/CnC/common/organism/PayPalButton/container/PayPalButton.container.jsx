@@ -42,12 +42,13 @@ export class PayPalButtonContainer extends React.PureComponent<Props> {
   };
 
   render() {
-    const { isQualifedOrder } = this.props;
+    const { isQualifedOrder, containerId } = this.props;
     // const { router } = this.props;
     return (
       <PayPalButton
         isQualifedOrder={isQualifedOrder}
         initalizePayPalButton={this.initalizePayPalButton}
+        containerId={containerId}
       />
     );
   }

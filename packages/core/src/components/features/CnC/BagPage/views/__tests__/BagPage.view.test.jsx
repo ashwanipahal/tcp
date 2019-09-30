@@ -18,6 +18,7 @@ describe('Bag page View', () => {
     removeUnqualifiedItemsAndCheckout: jest.fn(),
     setVenmoPaymentInProgress: jest.fn(),
     sflItems: {},
+    orderBalanceTotal: 50,
   };
 
   it('should render Added to Bag view section', () => {

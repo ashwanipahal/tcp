@@ -8,7 +8,7 @@ exports[`PayPalButton component PayPalButton component renders correctly 1`] = `
   <div
     className=""
     data-locator="addedtobag-btnpaypal"
-    id="paypal-button-container"
+    id=""
   />
 </div>
 `;

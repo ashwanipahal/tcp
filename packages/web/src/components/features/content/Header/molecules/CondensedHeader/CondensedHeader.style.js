@@ -9,7 +9,7 @@ export default css`
     left: 0;
     right: 0;
     top: 0;
-    z-index: ${props => props.theme.zindex.zEnlargedImage};
+    z-index: ${props => props.theme.zindex.zLoader};
     background-color: ${props => props.theme.colorPalette.white};
     text-align: center;
     width: 100%;

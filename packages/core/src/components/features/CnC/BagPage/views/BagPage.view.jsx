@@ -1,5 +1,6 @@
 import React from 'react';
 import PropTypes from 'prop-types';
+import throttle from 'lodash/throttle';
 import ProductTileWrapper from '../../CartItemTile/organisms/ProductTileWrapper/container/ProductTileWrapper.container';
 import withStyles from '../../../../common/hoc/withStyles';
 import Heading from '../../../../common/atoms/Heading';
@@ -16,7 +17,10 @@ class BagPageView extends React.Component {
     super(props);
     this.state = {
       activeSection: null,
+      showCondensedHeader: false,
     };
+    this.timer = null;
+    this.bagPageCondenseHeaderBind = false;
   }
 
   componentDidMount() {
@@ -35,6 +39,90 @@ class BagPageView extends React.Component {
           : BAGPAGE_CONSTANTS.BAG_STATE,
     });
   }
+
+  componentDidUpdate() {
+    if (!this.bagPageCondenseHeaderBind) {
+      const checkoutCta = document.getElementById('BagActionsContainer');
+      if (checkoutCta) {
+        this.addScrollListener();
+        this.bagPageCondenseHeaderBind = true;
+      }
+    }
+  }
+
+  componentWillUnmount() {
+    this.removeScrollListener();
+  }
+
+  getStickyPosition = () => {
+    const header = document.getElementById('bagPageHeader');
+    return header && header.offsetTop;
+  };
+
+  getStickyPositionCheckoutCta = () => {
+    const checkoutCta = document.getElementById('BagActionsContainer');
+    return checkoutCta && checkoutCta.offsetTop;
+  };
+
+  addScrollListener = () => {
+    const stickyPos = this.getStickyPosition();
+    const checkoutCtaStickyPos = this.getStickyPositionCheckoutCta();
+    window.addEventListener('scroll', throttle(this.handleScroll.bind(this, stickyPos), 100));
+    window.addEventListener(
+      'scroll',
+      throttle(this.handleBagHeaderScroll.bind(this, checkoutCtaStickyPos), 100)
+    );
+  };
+
+  removeScrollListener = () => {
+    const stickyPos = this.getStickyPosition();
+    const checkoutCtaStickyPos = this.getStickyPositionCheckoutCta();
+    window.removeEventListener('scroll', throttle(this.handleScroll.bind(this, stickyPos), 100));
+    window.removeEventListener(
+      'scroll',
+      throttle(this.handleBagHeaderScroll.bind(this, checkoutCtaStickyPos), 100)
+    );
+  };
+
+  getPageLevelHeaderHeight = () => {
+    return document.getElementsByClassName('condensed-header')[0]
+      ? document.getElementsByClassName('condensed-header')[0].offsetHeight
+      : 0;
+  };
+
+  handleScroll = sticky => {
+    const { bagStickyHeaderInterval } = this.props;
+    const condensedBagHeader = document.getElementById('bagPageHeader');
+    const condensedPageHeaderHeight = this.getPageLevelHeaderHeight();
+    if (window.pageYOffset > sticky - condensedPageHeaderHeight) {
+      document.getElementById(
+        'bagPageHeader'
+      ).style.top = `${condensedPageHeaderHeight.toString()}px`;
+      condensedBagHeader.classList.add('stickyBagHeader');
+      if (this.timer !== null) {
+        clearTimeout(this.timer);
+      }
+
+      this.timer = setTimeout(() => {
+        condensedBagHeader.classList.remove('stickyBagHeader');
+      }, bagStickyHeaderInterval);
+    } else {
+      condensedBagHeader.classList.remove('stickyBagHeader');
+    }
+  };
+
+  handleBagHeaderScroll = sticky => {
+    const condensedPageHeaderHeight = this.getPageLevelHeaderHeight();
+    if (window.pageYOffset > sticky) {
+      this.setState({ showCondensedHeader: true }, () => {
+        document.getElementById(
+          'bag-condensed-header'
+        ).style.top = `${condensedPageHeaderHeight.toString()}px`;
+      });
+    } else {
+      this.setState({ showCondensedHeader: false });
+    }
+  };
 
   renderLeftSection = () => {
     const { labels, sflItems, isShowSaveForLaterSwitch } = this.props;
@@ -80,12 +168,14 @@ class BagPageView extends React.Component {
     const { labels, showAddTobag, handleCartCheckout } = this.props;
 
     return (
-      <AddedToBagActions
-        labels={labels}
-        showAddTobag={showAddTobag}
-        inheritedStyles={addedToBagActionsStyles}
-        handleCartCheckout={handleCartCheckout}
-      />
+      <div id="BagActionsContainer">
+        <AddedToBagActions
+          labels={labels}
+          showAddTobag={showAddTobag}
+          inheritedStyles={addedToBagActionsStyles}
+          handleCartCheckout={handleCartCheckout}
+        />
+      </div>
     );
   };
 
@@ -93,6 +183,40 @@ class BagPageView extends React.Component {
     this.setState({
       activeSection: sectionName,
     });
+  };
+
+  stickyBagCondensedHeader = () => {
+    const { labels, orderBalanceTotal, totalCount, showAddTobag, handleCartCheckout } = this.props;
+    const { showCondensedHeader } = this.state;
+    if (!showCondensedHeader) return null;
+    return (
+      <Row className="bag-condensed-header" id="bag-condensed-header">
+        <Row className="content-wrapper">
+          <Col className="bagHeaderText" colSize={{ large: 8, medium: 4, small: 3 }}>
+            <BodyCopy fontFamily="secondary" fontSize="fs16" fontWeight="semibold">
+              {`${labels.bagHeading} (${totalCount})`}
+              <BodyCopy
+                fontFamily="secondary"
+                fontSize="fs13"
+                component="span"
+                className="elem-ml-SM"
+              >
+                {`${labels.totalLabel}: $${orderBalanceTotal.toFixed(2)}`}
+              </BodyCopy>
+            </BodyCopy>
+          </Col>
+          <Col colSize={{ large: 4, medium: 4, small: 3 }}>
+            <AddedToBagActions
+              labels={labels}
+              showAddTobag={showAddTobag}
+              inheritedStyles={addedToBagActionsStyles}
+              handleCartCheckout={handleCartCheckout}
+              isBagPageStickyHeader
+            />
+          </Col>
+        </Row>
+      </Row>
+    );
   };
 
   render() {
@@ -105,13 +229,15 @@ class BagPageView extends React.Component {
       isGuest,
       sflItems,
       isShowSaveForLaterSwitch,
+      orderBalanceTotal,
     } = this.props;
     const { activeSection } = this.state;
     const isNoNEmptyBag = orderItemsCount > 0;
     const isNonEmptySFL = sflItems.size > 0;
     return (
       <div className={className}>
-        <Row tagName="header">
+        {this.stickyBagCondensedHeader()}
+        <Row tagName="header" id="bagPageHeader">
           <Col
             colSize={{ small: 3, medium: 4, large: 6 }}
             className="left-sec"
@@ -129,6 +255,15 @@ class BagPageView extends React.Component {
             >
               {`${labels.bagHeading} (${totalCount})`}
             </Heading>
+            <BodyCopy
+              fontFamily="secondary"
+              fontSize="fs10"
+              className={`estimatedHeaderText ${
+                activeSection === BAGPAGE_CONSTANTS.BAG_STATE ? 'activeEstimatedHeader' : ''
+              }`}
+            >
+              {`${labels.totalLabel}: $${orderBalanceTotal.toFixed(2)}`}
+            </BodyCopy>
           </Col>
           {isShowSaveForLaterSwitch && (
             <Col
@@ -177,6 +312,8 @@ BagPageView.propTypes = {
   sflItems: PropTypes.shape([]).isRequired,
   setVenmoPaymentInProgress: PropTypes.func.isRequired,
   isShowSaveForLaterSwitch: PropTypes.bool.isRequired,
+  orderBalanceTotal: PropTypes.number.isRequired,
+  bagStickyHeaderInterval: PropTypes.number.isRequired,
 };
 
 export default withStyles(BagPageView, styles);
