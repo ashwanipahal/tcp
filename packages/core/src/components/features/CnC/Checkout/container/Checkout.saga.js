@@ -183,10 +183,11 @@ function* submitPickupSection({ payload }) {
     if (!isMobileApp()) {
       const getIsShippingRequired = yield select(getIsOrderHasShipping);
       const isVenmoInProgress = yield select(selectors.isVenmoPaymentInProgress);
+      const isVenmoPickupDisplayed = yield select(selectors.isVenmoPickupBannerDisplayed);
 
       if (getIsShippingRequired) {
         utility.routeToPage(CHECKOUT_ROUTES.shippingPage);
-      } else if (isVenmoInProgress) {
+      } else if (isVenmoInProgress && !isVenmoPickupDisplayed) {
         utility.routeToPage(CHECKOUT_ROUTES.reviewPage);
       } else {
         utility.routeToPage(CHECKOUT_ROUTES.billingPage);
@@ -684,7 +685,8 @@ function* submitShippingSection({ payload: { navigation, ...formData } }) {
     yield call(getAddressList);
     yield call(getCardList);
     const isVenmoInProgress = yield select(selectors.isVenmoPaymentInProgress);
-    if (isVenmoInProgress) {
+    const isVenmoShippingDisplayed = yield select(selectors.isVenmoShippingBannerDisplayed);
+    if (isVenmoInProgress && !isVenmoShippingDisplayed) {
       utility.routeToPage(CHECKOUT_ROUTES.reviewPage, { recalc: false });
     } else {
       redirectToBilling(navigation);

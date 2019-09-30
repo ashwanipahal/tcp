@@ -84,7 +84,13 @@ class ProductAddToBagContainer extends React.PureComponent<Props> {
   };
 
   getDefaultSizeForProduct = colorFitsSizesMap => {
+    const { initialFormValues } = this.props;
     const firstSizeName = colorFitsSizesMap[0].fits[0].sizes[0].sizeName;
+
+    if (initialFormValues) {
+      return initialFormValues.Size;
+    }
+
     // eslint-disable-next-line no-restricted-syntax
     for (const colorEnrtry of colorFitsSizesMap) {
       if (
@@ -108,13 +114,17 @@ class ProductAddToBagContainer extends React.PureComponent<Props> {
         selectedColorProductId
       );
 
+    const { initialFormValues } = this.props;
+
     return {
       color: {
         name: colorFitsSizesMapEntry.color.name,
       },
       Fit: colorFitsSizesMapEntry.hasFits
         ? {
-            name: this.getDefaultFitForColorSlice(colorFitsSizesMapEntry).fitNameVal,
+            name: !initialFormValues
+              ? this.getDefaultFitForColorSlice(colorFitsSizesMapEntry).fitName
+              : initialFormValues.Fit,
           }
         : null,
       Size: {
@@ -122,7 +132,7 @@ class ProductAddToBagContainer extends React.PureComponent<Props> {
           ? currentProduct.colorFitsSizesMap[0].fits[0].sizes[0].sizeName // on gift card we need something selected, otherwise no price would show up
           : this.getDefaultSizeForProduct(currentProduct.colorFitsSizesMap),
       },
-      Quantity: 1,
+      Quantity: !initialFormValues ? 1 : initialFormValues.Quantity,
     };
   };
 
@@ -207,7 +217,7 @@ class ProductAddToBagContainer extends React.PureComponent<Props> {
     if (colorItem) {
       fits.forEach(fit => {
         if (selectedFit) {
-          if (fit.fitNameVal === selectedFit.name) {
+          if (fit.fitName === selectedFit.name) {
             sizeOptions = fit.sizes.map(size => ({
               displayName: size.sizeName,
               id: size.sizeName,
@@ -316,8 +326,8 @@ class ProductAddToBagContainer extends React.PureComponent<Props> {
       (fits &&
         hasFits &&
         fits.map(fit => ({
-          displayName: fit.fitNameVal,
-          id: fit.fitNameVal,
+          displayName: fit.fitName,
+          id: fit.fitName,
         }))) ||
       []
     );
@@ -345,7 +355,7 @@ class ProductAddToBagContainer extends React.PureComponent<Props> {
     let fitList = [];
     const color = colors && colors.length > 0 && colors[0];
     if (color.hasFits && selectedFit) {
-      fitList = color.fits.filter(fit => fit.fitNameVal === selectedFit.name);
+      fitList = color.fits.filter(fit => fit.fitName === selectedFit.name);
     } else {
       fitList = color.fits;
     }
@@ -387,6 +397,8 @@ class ProductAddToBagContainer extends React.PureComponent<Props> {
       addToBagEcom,
       addToBagError,
       selectedColorProductId,
+      customFormName,
+      showAddToBagCTA = true,
     } = this.props;
     const {
       selectedColor,
@@ -426,6 +438,8 @@ class ProductAddToBagContainer extends React.PureComponent<Props> {
         addToBagError={addToBagError}
         currentProduct={currentProduct}
         selectedColorProductId={selectedColorProductId}
+        customFormName={customFormName}
+        showAddToBagCTA={showAddToBagCTA}
       />
     );
   }

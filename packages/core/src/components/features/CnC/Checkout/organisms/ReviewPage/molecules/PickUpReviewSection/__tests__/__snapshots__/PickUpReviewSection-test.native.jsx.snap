@@ -1,0 +1,144 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`PickUp Review Section should render the component correctly with same store 1`] = `
+<Styled(View)>
+  <Styled(View)>
+    <Styled(View)>
+      <Styled(TitlePlusEditButton)
+        dataLocator="pickup-section"
+        title=""
+      />
+    </Styled(View)>
+    <Styled(BodyCopy)
+      accessibilityText=""
+      color="gray.900"
+      dataLocator="pickup-section-heading-lbl"
+      fontSize="fs16"
+      fontWeight="regular"
+      margin={null}
+      mobileFontFamily="secondary"
+      numberOfLines={null}
+      textDecoration={null}
+    />
+  </Styled(View)>
+  <Styled(View)>
+    <View
+      key="111287"
+    >
+      <Styled(PickupStoreDisplay)
+        labels={
+          Object {
+            "lbl_review_pickupSectionTitle": "",
+            "lbl_review_sectionPickupAlternateHeading": "",
+          }
+        }
+        orderType="BOPIS"
+        store={
+          Object {
+            "bossEndDate": undefined,
+            "bossStartDate": undefined,
+            "orderType": "BOPIS",
+            "store": "Bergenline Ave.",
+            "storeAddress": Object {
+              "address": "5816 Bergenline Ave.",
+              "addressId": 2042844,
+              "addressLine1": "5816 Bergenline Ave.",
+              "addressLine2": "",
+              "addressLine3": "",
+              "city": "West New York",
+              "country": "US",
+              "state": "NJ",
+              "zipCode": "07093",
+            },
+            "storeId": "111287",
+            "storeItemsCount": 2,
+          }
+        }
+      />
+    </View>
+    <View
+      key="111257"
+    >
+      <Styled(PickupStoreDisplay)
+        labels={
+          Object {
+            "lbl_review_pickupSectionTitle": "",
+            "lbl_review_sectionPickupAlternateHeading": "",
+          }
+        }
+        orderType="BOSS"
+        store={
+          Object {
+            "bossEndDate": Object {
+              "date": 9,
+              "day": "Fri",
+              "month": "Aug",
+            },
+            "bossStartDate": Object {},
+            "orderType": "BOSS",
+            "store": "Beenie Ave.",
+            "storeAddress": Object {
+              "address": "5815 Bergenline Ave.",
+              "addressId": 2042844,
+              "addressLine1": "5815 Bergenline Ave.",
+              "addressLine2": "",
+              "addressLine3": "",
+              "city": "West New York",
+              "country": "US",
+              "state": "NJ",
+              "zipCode": "07093",
+            },
+            "storeId": "111257",
+            "storeItemsCount": 1,
+          }
+        }
+      />
+    </View>
+  </Styled(View)>
+  <Styled(View)>
+    <View>
+      <Styled(BodyCopy)
+        accessibilityText=""
+        className="pickupTitle"
+        color="gray.900"
+        dataLocator=""
+        fontSize="fs16"
+        fontWeight="semibold"
+        margin={null}
+        mobileFontFamily="secondary"
+        numberOfLines={null}
+        text=""
+        textDecoration={null}
+      />
+      <Styled(PickUpContactDisplay)
+        formData={
+          Object {
+            "emailAddress": "TESTS@YOPMAIL.COM",
+            "firstName": "ok",
+            "lastName": "ok",
+            "phoneNumber": "9122343456",
+          }
+        }
+      />
+    </View>
+    <View>
+      <Styled(BodyCopy)
+        accessibilityText=""
+        className="pickupTitle"
+        color="gray.900"
+        dataLocator=""
+        fontSize="fs16"
+        fontWeight="semibold"
+        margin={null}
+        mobileFontFamily="secondary"
+        numberOfLines={null}
+        text=""
+        textDecoration={null}
+      />
+      <Styled(PickUpContactDisplay)
+        formData={Object {}}
+      />
+    </View>
+  </Styled(View)>
+</Styled(View)>
+`;

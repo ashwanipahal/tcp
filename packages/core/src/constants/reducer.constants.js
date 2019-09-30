@@ -3,7 +3,6 @@ export const FOOTER_REDUCER_KEY = 'Footer';
 export const LABEL_REDUCER_KEY = 'Labels';
 export const LAYOUT_REDUCER_KEY = 'Layouts';
 export const MODULES_REDUCER_KEY = 'Modules';
-export const HOMEPAGE_REDUCER_KEY = 'HomePage';
 export const NAVIGATION_REDUCER_KEY = 'Navigation';
 export const PRODUCT_LISTING_REDUCER_KEY = 'ProductListing';
 export const PRODUCTLISTING_ACTION_PATTERN = '@@PLP-';
@@ -168,6 +167,14 @@ export const MY_FAVORITE_STORE_REDUCER_KEY = 'MyFavoriteStore';
 export const POINTS_CLAIM_REDUCER_KEY = 'PointsClaim';
 export const POINTS_CLAIM_ACTION_PATTERN = '@@PointsClaim-';
 
+export const CONFIRMATION_REDUCER_KEY = 'Confirmation';
+export const CONFIRMATION_ACTION_PATTERN = '@@Confirmation-';
+export const PRODUCT_ADD_TO_BAG = 'ProductAddToBag';
+export const PRODUCT_SKU_SELECTION_FORM = 'PickupSkuSelectionForm';
+// User Order History
+export const ORDERS_REDUCER_KEY = 'Orders';
+export const ORDERS_ACTION_PATTERN = '@@Orders-';
+
 export const REDUCER_ACTION_MAPPING = {
   [APPLY_PLCC_REDUCER_KEY]: APPLY_PLCC_ACTION_PATTERN,
   [APICONFIG_REDUCER_KEY]: APICONFIG_ACTION_PATTERN,
@@ -197,4 +204,5 @@ export const REDUCER_ACTION_MAPPING = {
   [PICKUP_MODAL_REDUCER_KEY]: PICKUP_MODAL_REDUCER_PATTERN,
   [RECOMMENDATIONS_REDUCER_KEY]: RECOMMENDATIONS_ACTION_PATTERN,
   [SLP_PAGE_REDUCER_KEY]: SEARCH_REDUCER_ACTION_PATTERN,
+  [CONFIRMATION_REDUCER_KEY]: CONFIRMATION_ACTION_PATTERN,
 };

@@ -34,10 +34,14 @@ exports[`ProductDetailView component should renders correctly 1`] = `
           "shortDescription": "",
         }
       }
-      handleSubmit={null}
+      errorOnHandleSubmit=""
+      handleFormSubmit={null}
       onChangeColor={[Function]}
       plpLabels={null}
       selectedColorProductId=""
+    />
+    <Connect(AddedToBagContainer)
+      navigation={Object {}}
     />
   </Styled(View)>
 </ScrollViewMock>

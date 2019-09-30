@@ -1,6 +1,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import withStyles from '@tcp/core/src/components/common/hoc/withStyles';
+import { getAddressFromPlace } from '@tcp/core/src/utils';
 import { Field, change } from 'redux-form';
 import TextBox from '../../../atoms/TextBox';
 import SelectBox from '../../../atoms/Select';
@@ -63,7 +64,7 @@ export class AddressFields extends React.PureComponent {
 
   handlePlaceSelected = (place, inputValue) => {
     const { dispatch, formName, formSection } = this.props;
-    const address = AutoCompleteComponent.getAddressFromPlace(place, inputValue);
+    const address = getAddressFromPlace(place, inputValue);
     dispatch(change(formName, `${formSection ? 'address.' : ''}city`, address.city));
     dispatch(change(formName, `${formSection ? 'address.' : ''}zipCode`, address.zip));
     dispatch(change(formName, `${formSection ? 'address.' : ''}state`, address.state));

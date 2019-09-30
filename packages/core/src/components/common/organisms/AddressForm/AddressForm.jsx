@@ -104,6 +104,7 @@ export class AddressForm extends React.PureComponent {
               onPlaceSelected={this.handlePlaceSelected}
               componentRestrictions={Object.assign({}, { country: [country] })}
               dataLocator="addnewaddress-addressl1"
+              apiFields="address_components"
             />
           </Col>
           <Col colSize={{ small: 6, medium: 4, large: 6 }}>

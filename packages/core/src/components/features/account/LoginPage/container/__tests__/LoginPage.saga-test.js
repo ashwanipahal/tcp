@@ -14,6 +14,9 @@ describe('LoginPage saga', () => {
     });
 
     it('should dispatch getUserInfo action for success resposnse', () => {
+      loginGen.next({
+        success: true,
+      });
       const putDescriptor = loginGen.next({
         success: true,
       }).value;

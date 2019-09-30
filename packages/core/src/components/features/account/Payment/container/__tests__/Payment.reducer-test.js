@@ -107,4 +107,23 @@ describe('Payment Reducer', () => {
       })
     ).toEqual(updatedState);
   });
+
+  it('should return state after clear the account check balance for given account no ', () => {
+    const initialState = fromJS({
+      giftcardBalance: { '1234': 100 },
+    });
+
+    const updatedState = initialState.deleteIn(['giftcardBalance', '1234']);
+    expect(
+      PaymentReducer(initialState, {
+        type: PAYMENT_CONSTANTS.CLEAR_CARD_BALANCE,
+        payload: {
+          creditCardId: '123456',
+          action: 'D',
+          ccType: 'GiftCard',
+          accountNo: '1234',
+        },
+      })
+    ).toEqual(updatedState);
+  });
 });
