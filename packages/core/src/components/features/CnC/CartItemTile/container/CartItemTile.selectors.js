@@ -82,6 +82,10 @@ export const getProductStore = product => {
   return product.getIn(['miscInfo', 'store']);
 };
 
+export const getProductStoreAddress = product => {
+  return product.getIn(['miscInfo', 'storeAddress']);
+};
+
 export const getProductOrderItemType = product => {
   return product.getIn(['miscInfo', 'orderItemType']);
 };
@@ -296,6 +300,7 @@ export const getProductDetails = tile => {
     miscInfo: {
       badge: getProductBadge(tile),
       store: getProductStore(tile),
+      storeAddress: getProductStoreAddress(tile),
       orderItemType: getProductOrderItemType(tile),
       bossStartDate: getBossStartDate(tile),
       bossEndDate: getBossEndDate(tile),
