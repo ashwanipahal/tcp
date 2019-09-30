@@ -37,12 +37,12 @@ type GetAddressLineProps = {
   },
 };
 
-const getAddressfromDiffLines = ({ address }: GetAddressLineProps, { customStyle }) => {
+const getAddressfromDiffLines = ({ address }: GetAddressLineProps, { customStyle, fontSize }) => {
   return (
     <React.Fragment>
       {address.addressLine1 ? (
         <BodyCopy
-          fontSize="fs14"
+          fontSize={fontSize}
           mobilefontFamily={['secondary']}
           fontWeight="regular"
           text={address.addressLine1}
@@ -52,7 +52,7 @@ const getAddressfromDiffLines = ({ address }: GetAddressLineProps, { customStyle
       ) : null}
       {address.addressLine2 ? (
         <BodyCopy
-          fontSize="fs14"
+          fontSize={fontSize}
           mobilefontFamily={['secondary']}
           fontWeight="regular"
           text={address.addressLine2}
@@ -64,12 +64,12 @@ const getAddressfromDiffLines = ({ address }: GetAddressLineProps, { customStyle
   );
 };
 
-const getAddessLines = ({ address, customStyle }) => {
+const getAddessLines = ({ address, customStyle, fontSize }) => {
   return address.addressLine
     .filter(al => al && al.trim() !== '')
     .map(addressLine => (
       <BodyCopy
-        fontSize="fs14"
+        fontSize={fontSize}
         mobilefontFamily={['secondary']}
         fontWeight="regular"
         text={addressLine}
@@ -79,13 +79,13 @@ const getAddessLines = ({ address, customStyle }) => {
     ));
 };
 
-const getNameFromAddress = (address, customStyle, showDefaultText) => {
+const getNameFromAddress = (address, customStyle, showDefaultText, regularName) => {
   const name = `${address.firstName} ${address.lastName} ${showDefaultText ? '(Default)' : ''}`;
   return (
     <BodyCopy
       fontSize="fs16"
       mobilefontFamily={['secondary']}
-      fontWeight="semibold"
+      fontWeight={regularName ? 'regular' : 'semibold'}
       text={name}
       color="gray.900"
       {...customStyle}
@@ -108,15 +108,17 @@ const Address = ({
   customStyle,
   showName,
   showDefaultText,
+  fontSize,
+  regularName,
 }: Props) => {
   return address ? (
     <View>
-      {showName && getNameFromAddress(address, customStyle, showDefaultText)}
+      {showName && getNameFromAddress(address, customStyle, showDefaultText, regularName)}
       {address.addressLine
-        ? getAddessLines({ address, dataLocatorPrefix, customStyle })
-        : getAddressfromDiffLines({ address, dataLocatorPrefix }, { customStyle })}
+        ? getAddessLines({ address, dataLocatorPrefix, customStyle, fontSize })
+        : getAddressfromDiffLines({ address, dataLocatorPrefix }, { customStyle, fontSize })}
       <BodyCopy
-        fontSize="fs14"
+        fontSize={fontSize}
         mobilefontFamily={['secondary']}
         fontWeight="regular"
         text={`${address.city ? `${address.city}, ` : ''}${
@@ -127,7 +129,7 @@ const Address = ({
       />
       {showCountry && address.country && (
         <BodyCopy
-          fontSize="fs14"
+          fontSize={fontSize}
           mobilefontFamily={['secondary']}
           fontWeight="regular"
           text={address.country}
@@ -137,7 +139,7 @@ const Address = ({
       )}
       {showPhone && address.phone1 && (
         <BodyCopy
-          fontSize="fs14"
+          fontSize={fontSize}
           mobilefontFamily={['secondary']}
           fontWeight="regular"
           text={address.phone1}
@@ -153,6 +155,8 @@ Address.propTypes = {
   showName: PropTypes.bool,
   customStyle: PropTypes.shape({}),
   showDefaultText: PropTypes.bool,
+  fontSize: PropTypes.string,
+  regularName: PropTypes.bool,
 };
 
 Address.defaultProps = {
@@ -161,6 +165,8 @@ Address.defaultProps = {
   showName: true,
   customStyle: {},
   showDefaultText: false,
+  fontSize: 'fs14',
+  regularName: false,
 };
 
 export default Address;

@@ -4,7 +4,6 @@ import { connect } from 'react-redux';
 import selectors, {
   isGuest as isGuestUser,
 } from '../../../../features/CnC/Checkout/container/Checkout.selector';
-import BagSelectors from '../../../../features/CnC/BagPage/container/BagPage.selectors';
 import {
   getVenmoClientToken,
   setVenmoData,
@@ -62,16 +61,19 @@ export class VenmoPaymentButtonContainer extends React.PureComponent<Props> {
    * This method is called once we get error or user interupted the venmo authorization flow.
    */
   onVenmoPaymentButtonError = e => {
+    const { setVenmoProgress } = this.props;
+    setVenmoProgress(false); // Cancelling venmo progress on error
     logger.error(e);
   };
 
   render() {
-    const { ...otherProps } = this.props;
+    const { setVenmoProgress, ...otherProps } = this.props;
     return (
       <VenmoPaymentButton
         setVenmoData={this.setVenmoData}
         onVenmoPaymentButtonClick={this.onVenmoPaymentButtonClick}
         onVenmoPaymentButtonError={this.onVenmoPaymentButtonError}
+        setVenmoPaymentInProgress={setVenmoProgress}
         {...otherProps}
       />
     );
@@ -92,9 +94,9 @@ const mapStateToProps = state => {
     venmoClientTokenData || {};
   const mode = venmoPaymentTokenAvailable === 'TRUE' ? modes.PAYMENT_TOKEN : modes.CLIENT_TOKEN;
   const enabled = selectors.getIsVenmoEnabled(state);
-  const isOOSItemsCount = BagSelectors.getOOSCount(state);
-  const unAvailableItemsCount = BagSelectors.getUnavailableCount(state);
-  const isRemoveOOSItems = isOOSItemsCount > 0 || unAvailableItemsCount > 0;
+  // const isOOSItemsCount = BagSelectors.getOOSCount(state);
+  // const unAvailableItemsCount = BagSelectors.getUnavailableCount(state);
+  const isRemoveOOSItems = false;
   return {
     enabled,
     mode,
@@ -110,7 +112,7 @@ const mapStateToProps = state => {
 };
 
 export const mapDispatchToProps = dispatch => ({
-  setVenmoPaymentInProgress: data => dispatch(setVenmoPaymentInProgress(data)),
+  setVenmoProgress: data => dispatch(setVenmoPaymentInProgress(data)),
   getVenmoPaymentTokenAction: data => dispatch(getVenmoClientToken(data)),
   setVenmoDataAction: data => dispatch(setVenmoData(data)),
 });

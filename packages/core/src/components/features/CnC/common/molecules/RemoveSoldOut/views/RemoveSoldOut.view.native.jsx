@@ -9,7 +9,7 @@ class RemoveSoldOut extends React.PureComponent {
     const newRemove = (
       <BodyCopy
         fontFamily="secondary"
-        fontSize="fs10"
+        fontSize="fs12"
         text={labels.removeError}
         textDecoration="underline"
         onPress={() => removeCartItem(getUnavailableOOSItems)}
@@ -29,7 +29,7 @@ class RemoveSoldOut extends React.PureComponent {
           <RowSectionStyle>
             <BodyCopy
               fontFamily="secondary"
-              fontSize="fs10"
+              fontSize="fs12"
               fontWeight="regular"
               text={labels.removeSoldoutHeader}
             />
@@ -39,7 +39,7 @@ class RemoveSoldOut extends React.PureComponent {
           <RowSectionStyle>
             <BodyCopy
               fontFamily="secondary"
-              fontSize="fs10"
+              fontSize="fs12"
               fontWeight="regular"
               text={labelForRemove}
             />

@@ -7,16 +7,16 @@ const alertTriangleIcon = require('../../../../../../../assets/alert-triangle.pn
 
 class ErrorMessage extends React.PureComponent {
   render() {
-    const { error, showAccordian } = this.props;
+    const { error, showAccordian, bagPage } = this.props;
     return (
       <>
         {!!error && (
-          <ErrorView showAccordian={showAccordian}>
+          <ErrorView showAccordian={showAccordian} bagPage={bagPage}>
             <Image source={alertTriangleIcon} style={ErrorIcon} />
             <BodyCopy
               color="error"
               fontFamily="secondary"
-              fontSize="fs10"
+              fontSize={bagPage ? 'fs14' : 'fs10'}
               fontWeight="regular"
               text={error}
               style={ErrorText}
@@ -31,10 +31,12 @@ class ErrorMessage extends React.PureComponent {
 ErrorMessage.propTypes = {
   error: PropTypes.string,
   showAccordian: PropTypes.bool.isRequired,
+  bagPage: PropTypes.bool,
 };
 
 ErrorMessage.defaultProps = {
   error: '',
+  bagPage: false,
 };
 
 export default ErrorMessage;

@@ -97,6 +97,7 @@ exports[`ProductPickupVanilla should render correctly 1`] = `
     buttonVariation="variable-width"
     color="white"
     customStyle={Object {}}
+    customTextStyle={null}
     disableButton={false}
     disabled={false}
     fill="BLACK"
