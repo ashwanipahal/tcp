@@ -108,11 +108,16 @@ exports[`CartItemTile common component renders correctly 1`] = `
 >
   <Styled(View)>
     <Styled(View) />
-    <Styled(View)>
-      <Styled(View)>
+    <Styled(View)
+      showOnReviewPage={true}
+    >
+      <Styled(View)
+        showOnReviewPage={true}
+      >
         <View>
           <Styled(Image)
             data-locator="cartItemImage"
+            showOnReviewPage={true}
             source={
               Object {
                 "uri": "https://test4.childrensplace.comundefined",
@@ -498,11 +503,16 @@ exports[`CartItemTile common component renders correctly with Save for later ena
 >
   <Styled(View)>
     <Styled(View) />
-    <Styled(View)>
-      <Styled(View)>
+    <Styled(View)
+      showOnReviewPage={true}
+    >
+      <Styled(View)
+        showOnReviewPage={true}
+      >
         <View>
           <Styled(Image)
             data-locator="cartItemImage"
+            showOnReviewPage={true}
             source={
               Object {
                 "uri": "https://test4.childrensplace.comundefined",
@@ -871,11 +881,16 @@ exports[`CartItemTile common component renders correctly with bag page sfl secti
 >
   <Styled(View)>
     <Styled(View) />
-    <Styled(View)>
-      <Styled(View)>
+    <Styled(View)
+      showOnReviewPage={true}
+    >
+      <Styled(View)
+        showOnReviewPage={true}
+      >
         <View>
           <Styled(Image)
             data-locator="cartItemImage"
+            showOnReviewPage={true}
             source={
               Object {
                 "uri": "https://test4.childrensplace.comundefined",

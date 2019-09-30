@@ -333,11 +333,16 @@ class CheckoutCartItemsList extends Component {
       CHECKOUT_ORDER: { REVIEW_PRODUCT_SEQUENCE },
     } = CheckoutConstants;
     const orderTypeList = REVIEW_PRODUCT_SEQUENCE;
-    return (
-      <View>
-        {orderTypeList.map((item, index) => this.renderOrderItems(item, orderBucket[item], index))}
-      </View>
-    );
+    if (orderBucket) {
+      return (
+        <View>
+          {orderTypeList.map((item, index) =>
+            this.renderOrderItems(item, orderBucket[item], index)
+          )}
+        </View>
+      );
+    }
+    return {};
   }
 
   /**
