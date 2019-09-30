@@ -8,6 +8,7 @@ import { getUserProfileData, getUserId, getBagItemsSize, isGuest } from './Apply
 import AddressVerification from '../../../../common/organisms/AddressVerification/container/AddressVerification.container';
 import { verifyAddress } from '../../../../common/organisms/AddressVerification/container/AddressVerification.actions';
 import BAG_PAGE_ACTIONS from '../../../CnC/BagPage/container/BagPage.actions';
+import { isMobileApp } from '../../../../../utils';
 
 class ApplyCardLayoutContainer extends React.Component {
   static propTypes = {
@@ -101,6 +102,10 @@ class ApplyCardLayoutContainer extends React.Component {
     submitApplication(userData);
   };
 
+  closeAddressVerificationModal = () => {
+    this.setState({ showAddEditAddressForm: false });
+  };
+
   render() {
     const {
       applicationStatus,
@@ -134,8 +139,13 @@ class ApplyCardLayoutContainer extends React.Component {
           applyCard={applyCard}
           onSubmit={this.submitPLCCForm}
           resetPLCCApplicationStatus={resetPLCCApplicationStatus}
+          showAddEditAddressForm={showAddEditAddressForm}
+          submitForm={this.submitForm}
+          closeAddressVerificationModal={this.closeAddressVerificationModal}
         />
-        {showAddEditAddressForm ? <AddressVerification onSuccess={this.submitForm} /> : null}
+        {!isMobileApp() && showAddEditAddressForm ? (
+          <AddressVerification onSuccess={this.submitForm} />
+        ) : null}
       </React.Fragment>
     );
   }

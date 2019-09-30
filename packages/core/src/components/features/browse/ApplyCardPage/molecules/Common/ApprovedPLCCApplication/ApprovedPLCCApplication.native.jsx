@@ -40,7 +40,7 @@ const getCouponBody = (plccData, labels, approvedPLCCData) => {
       <StyledBodyCopy
         color="gray.900"
         fontFamily="secondary"
-        fontWeight="regular"
+        fontWeight="extrabold"
         fontSize="fs22"
         textAlign="center"
         text={getLabelValue(labels, 'lbl_PLCCForm_welcomeOffer')}
