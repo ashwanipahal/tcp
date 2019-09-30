@@ -8,7 +8,7 @@ import BodyCopy from '../../../../../../common/atoms/BodyCopy';
 const getIcon = type => {
   switch (type) {
     case 'payPal':
-      return getIconCard('paypal-card-small');
+      return getIconCard('paypal-icon');
     case 'venmo':
       return getIconCard('venmo-blue-acceptance-mark');
     default:
