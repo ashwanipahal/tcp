@@ -350,6 +350,7 @@ const getAPIInfoFromEnv = (apiSiteInfo, processEnv, siteId) => {
     borderFree: processEnv.BORDERS_FREE,
     borderFreeComm: processEnv.BORDERS_FREE_COMM,
     paypalEnv: processEnv.RWD_WEB_PAYPAL_ENV,
+    crossDomain: processEnv.RWD_WEB_CROSS_DOMAIN,
   };
 };
 const getGraphQLApiFromEnv = (apiSiteInfo, processEnv, relHostname) => {
