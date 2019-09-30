@@ -1,7 +1,9 @@
+/* eslint-disable max-lines */
 import React, { PureComponent, Fragment } from 'react';
+import Router from 'next/router'; // eslint-disable-line
 import withStyles from '@tcp/core/src/components/common/hoc/withStyles';
 import { Anchor, BodyCopy, Image, Button } from '@tcp/core/src/components/common/atoms';
-import { toTimeString, getIconPath } from '@tcp/core/src/utils';
+import { toTimeString, getIconPath, getAPIConfig } from '@tcp/core/src/utils';
 import { parseDate } from '@tcp/core/src/utils/parseDate';
 import style, {
   TileHeader,
@@ -30,7 +32,7 @@ class StoreAddressTile extends PureComponent {
   }
 
   getDetailsTileFooter() {
-    const { labels, locatorGetDirections } = this.props;
+    const { labels, locatorGetDirections, openStoreDirections } = this.props;
     return (
       <div>
         <Button
@@ -38,6 +40,7 @@ class StoreAddressTile extends PureComponent {
           fill="BLUE"
           type="button"
           data-locator={locatorGetDirections}
+          onClick={openStoreDirections}
         >
           {labels.lbl_storelocators_landingpage_getdirections_link}
         </Button>
@@ -101,12 +104,8 @@ class StoreAddressTile extends PureComponent {
   }
 
   getListingHeader() {
-    const {
-      openStoreDetail,
-      store: { isGym, basicInfo, distance },
-      labels,
-      openStoreDirections,
-    } = this.props;
+    const { openStoreDetail, store, labels, openStoreDirections } = this.props;
+    const { isGym, basicInfo, distance } = store;
     const { storeName, address, phone } = basicInfo;
     const { addressLine1, city, state, zipCode } = address;
     return (
@@ -144,7 +143,7 @@ class StoreAddressTile extends PureComponent {
               <Anchor
                 fontSizeVariation="medium"
                 underline
-                handleLinkClick={openStoreDirections}
+                handleLinkClick={() => openStoreDirections(store)}
                 anchorVariation="primary"
                 target="_blank"
                 className="store-directions-link"
@@ -295,8 +294,28 @@ class StoreAddressTile extends PureComponent {
     );
   }
 
+  getFavLink() {
+    const { labels, setFavoriteStore, store } = this.props;
+    return (
+      <Anchor
+        fontSizeVariation="medium"
+        underline
+        handleLinkClick={e => {
+          e.preventDefault();
+          setFavoriteStore(store);
+        }}
+        anchorVariation="primary"
+        className="store-details-link"
+        title={labels.lbl_storelocators_landingpage_storedetails_link}
+        noLink
+      >
+        {labels.lbl_storelocators_landingpage_setfavStore}
+      </Anchor>
+    );
+  }
+
   getStoreAddress() {
-    const { store, variation, isFavorite } = this.props;
+    const { store, variation, isFavorite, showSetFavorite } = this.props;
     const { address, phone } = store.basicInfo;
     const { addressLine1, city, state, zipCode } = address;
 
@@ -323,6 +342,7 @@ class StoreAddressTile extends PureComponent {
           </div>
           <div className="address-meta__right">
             {variation === detailsType && isFavorite && this.getIsFavStoreIcon()}
+            {variation === detailsType && (!isFavorite && showSetFavorite) && this.getFavLink()}
           </div>
         </div>
       </div>
@@ -364,6 +384,25 @@ class StoreAddressTile extends PureComponent {
       return '';
     }
   }
+
+  openStoreDetails = e => {
+    const { store, fetchCurrentStore } = this.props;
+    const {
+      basicInfo: {
+        id,
+        storeName,
+        address: { city, state, zipCode },
+      },
+    } = store;
+    e.preventDefault();
+    fetchCurrentStore(store);
+    const url = `/${getAPIConfig().siteId}/store/${storeName
+      .replace(/\s/g, '')
+      .toLowerCase()}-${state.toLowerCase()}-${city
+      .replace(/\s/g, '')
+      .toLowerCase()}-${zipCode}-${id}`;
+    Router.push(url);
+  };
 
   render() {
     const { className, children, variation, store, ...rest } = this.props;

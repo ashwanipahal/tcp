@@ -74,13 +74,28 @@ const StoreStaticMap = props => {
   const [mapUpdatedSize, setMapUpdateSize] = useState(mapSize);
   const [imageLoaded, setImageLoadingState] = useState(false);
   const refMapContainer = React.createRef();
-  useEffect(() => {
+
+  const resizeMapOnClientWidth = () => {
     let containerWidth = 0;
     if (refMapContainer && refMapContainer.current && !isMobileApp()) {
       containerWidth = refMapContainer.current.clientWidth || constants.DEFAULT_MAP_DIMENSION;
       setMapUpdateSize(`${containerWidth}x${mapSize.split('x')[1]}`);
       setImageLoadingState(true);
     }
+  };
+
+  // Added an resize event so that map image is generated correctly.
+  const fireResizeEvent = () => {
+    let resizeId = '';
+    window.addEventListener('resize', () => {
+      clearTimeout(resizeId);
+      resizeId = setTimeout(resizeMapOnClientWidth, 500);
+    });
+  };
+
+  useEffect(() => {
+    fireResizeEvent();
+    resizeMapOnClientWidth();
   });
   const centeredStore =
     storesList && storesList.find(store => store.basicInfo.id === centeredStoreId);

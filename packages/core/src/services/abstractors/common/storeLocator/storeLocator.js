@@ -1,5 +1,9 @@
-import { STORE_LOCATOR_REDUCER_KEY } from '@tcp/core/src/constants/reducer.constants';
+import {
+  STORE_LOCATOR_REDUCER_KEY,
+  STORE_DETAIL_REDUCER_KEY,
+} from '@tcp/core/src/constants/reducer.constants';
 import { executeStatefulAPICall } from '../../../handler';
+import { sanitizeEntity } from '../../../../utils';
 import { formatPhoneNumber } from '../../../../utils/formValidation/phoneNumber';
 import { parseStoreHours } from '../../../../utils/parseStoreHours';
 import endpoints from '../../../endpoints';
@@ -16,26 +20,9 @@ const BOPIS_ITEM_AVAILABILITY = {
   UNAVAILABLE: 'UNAVAILABLE',
 };
 
-export const sanitizeEntity = string => {
-  return string && typeof string === 'string'
-    ? string
-        .replace(/&amp;/gi, '&')
-        .replace(/&quot;/gi, '"')
-        .replace(/&ldquo;/gi, '"')
-        .replace(/&acute;/gi, '"')
-        .replace(/&prime;/gi, '"')
-        .replace(/&bdquo;/gi, '"')
-        .replace(/&ldquot;/gi, '"')
-        .replace(/\\u0027/gi, "'")
-        .replace(/&lsquot;/gi, '"')
-        .replace(/%20/gi, ' ')
-    : string;
-};
-
-export const getSuggestedStoreById = (state, storeId) => {
-  return state[STORE_LOCATOR_REDUCER_KEY].get('suggestedStores').find(
-    stores => stores.basicInfo.id === storeId
-  );
+export const getSuggestedStoreById = (state, storeId, key) => {
+  const reducerKey = key === 'DETAIL' ? STORE_DETAIL_REDUCER_KEY : STORE_LOCATOR_REDUCER_KEY;
+  return state[reducerKey].get('suggestedStores').find(stores => stores.basicInfo.id === storeId);
 };
 
 /**
@@ -98,7 +85,8 @@ export const getBasicInfo = storeDetails => {
     storeDetails.uniqueId ||
     storeDetails.storeLocId ||
     storeDetails.storeUniqueID ||
-    storeDetails.stLocId
+    storeDetails.stLocId ||
+    storeDetails.uniqueID
   ).toString();
   const storeNameVal = getStoreNameVal(storeDetails);
   const phoneNumber =
@@ -283,28 +271,12 @@ export const storeResponseParser = (storeDetails, configs = { requestedQuantity:
 };
 
 /**
-   * @function getFavoriteStore
-   * @summary This will get a users favorite store that is saved on their account,
-   *  if the user's favorite store doesn't exist then
-   *  default store on the basis of lat long of user is fetched.
-   * @return empty object if you do not have a default store else you will get back
-   * {
-        id: 123456789,
-        storeName: 'Jersey Garden Mall',
-        address: {
-          addressLine1: '123 ,
-          city: 'Jersey City',
-          state: 'NJ,
-          zipCode: 07047
-        },
-        phone: '2012336989',
-        coordinates: {
-          lat: 40.0583,
-          long: -74.4057
-        }
-      }
-
-  */
+ * @function getFavoriteStore
+ * @summary This will get a users favorite store that is saved on their account,
+ *  if the user's favorite store doesn't exist then
+ *  default store on the basis of lat long of user is fetched.
+ * @return empty object if you do not have a default store else you will get back
+ */
 export const getFavoriteStore = ({
   skuId = null,
   geoLatLang: { lat, long } = {},
@@ -385,11 +357,11 @@ export const getLocationStores = ({
  * @param {String} storeId - id of the favorite store
  * @param {map} state - current state tree.
  */
-export const setFavoriteStore = (storeId, state) => {
+export const setFavoriteStore = (storeId, state, key = 'LOCATOR') => {
   const personalDataState = getPersonalDataState(state);
   const userId = personalDataState && personalDataState.get('userId');
 
-  const suggestedStore = getSuggestedStoreById(state, storeId);
+  const suggestedStore = getSuggestedStoreById(state, storeId, key);
   const favStore = suggestedStore && {
     ...suggestedStore,
     timeStamp: new Date().getTime(),

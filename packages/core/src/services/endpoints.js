@@ -317,5 +317,13 @@ const endpoints = {
     method: 'POST',
     URI: 'v2/coupons/getOffers',
   },
+  getStoreInfo: {
+    method: 'GET',
+    URI: 'v2/store/info',
+  },
+  getNearByStore: {
+    method: 'GET',
+    URI: 'v2/store/nearBy',
+  },
 };
 export default endpoints;

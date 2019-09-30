@@ -450,6 +450,22 @@ export const createAPIConfig = resLocals => {
   };
 };
 
+export const routeToStoreDetails = storeDetail => {
+  const {
+    basicInfo: {
+      id,
+      storeName,
+      address: { city, state, zipCode },
+    },
+  } = storeDetail;
+  const url = `/store/${storeName
+    .replace(/\s/g, '')
+    .toLowerCase()}-${state.toLowerCase()}-${city
+    .replace(/\s/g, '')
+    .toLowerCase()}-${zipCode}-${id}`;
+  if (isClient()) routerPush(window.location.href, url);
+};
+
 /**
  * Returns data stored in localstorage
  * @param {string} key - Localstorage item key
@@ -477,6 +493,12 @@ export const viewport = () => {
   };
 };
 
+export const fetchStoreIdFromUrlPath = url => {
+  const currentStoreUrl = url || document.location.href;
+  const pathSplit = currentStoreUrl.split('-');
+  return pathSplit[pathSplit.length - 1];
+};
+
 export default {
   importGraphQLClientDynamically,
   importGraphQLQueriesDynamically,
@@ -500,4 +522,5 @@ export default {
   getLocalStorage,
   setLocalStorage,
   viewport,
+  fetchStoreIdFromUrlPath,
 };

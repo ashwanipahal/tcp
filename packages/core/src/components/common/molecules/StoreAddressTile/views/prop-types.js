@@ -51,6 +51,7 @@ export const propTypes = {
   setFavoriteStore: PropTypes.func,
   locatorGetDirections: PropTypes.string,
   locatorSetFavStore: PropTypes.string,
+  showSetFavorite: PropTypes.bool,
 };
 
 export const defaultProps = {

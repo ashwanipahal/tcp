@@ -80,7 +80,15 @@ class StoreAddressTile extends PureComponent {
   }
 
   getDetailsFooter() {
-    const { setFavoriteStore, openStoreDirections, openCallStore, labels } = this.props;
+    const {
+      setFavoriteStore,
+      openStoreDirections,
+      openCallStore,
+      labels,
+      isFavorite,
+      store,
+      changeFavoriteStore,
+    } = this.props;
     return (
       <View>
         <FooterBtnWrapper>
@@ -88,9 +96,9 @@ class StoreAddressTile extends PureComponent {
             fill="BLUE"
             type="submit"
             color="white"
-            onPress={setFavoriteStore}
+            onPress={() => (isFavorite ? changeFavoriteStore() : setFavoriteStore(store))}
             buttonVariation="variable-width"
-            text={labels.lbl_storelocators_details_changestore_btn}
+            text={labels[`lbl_storelocators_details_${isFavorite ? 'changestore' : 'setfav'}_btn`]}
           />
         </FooterBtnWrapper>
         <FooterBtnWrapper>
@@ -117,10 +125,11 @@ class StoreAddressTile extends PureComponent {
 
   getListingFooter() {
     const { openStoreDetails, setFavoriteStore, labels, isFavorite, variation, store } = this.props;
+
     return (
       <Fragment>
         <ListingTitleLink
-          onPress={event => openStoreDetails(event, store)}
+          onPress={() => openStoreDetails(store)}
           accessibilityRole="link"
           accessibilityLabel={labels.lbl_storelocators_landingpage_storedetails_link}
           text={labels.lbl_storelocators_landingpage_storedetails_link}

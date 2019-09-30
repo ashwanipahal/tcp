@@ -3,6 +3,7 @@ import { storiesOf } from '@storybook/react';
 import StoreSelector from '../views/StoreSelector';
 import optionsMock from '../__mocks__/options.mock';
 
+// eslint-disable-next-line react/prop-types
 const ContainerComponent = ({ titleText, defaultSelectText, options, selectedLocation }) => {
   const [location, setLocation] = useState(selectedLocation);
   return (

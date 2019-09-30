@@ -5,7 +5,7 @@ import CollapsibleContainer from '@tcp/core/src/components/common/molecules/Coll
 import StoreAddressTile from '@tcp/core/src/components/common/molecules/StoreAddressTile';
 import { propTypes } from '@tcp/core/src/components/common/molecules/StoreAddressTile/views/prop-types';
 import { Row, Col } from '@tcp/core/src/components/common/atoms';
-import { getViewportInfo } from '@tcp/core/src/utils';
+import { getViewportInfo, isClient } from '@tcp/core/src/utils';
 import style, { collapsibleStyles, tileStyles } from '../styles/StoreLocations.style';
 
 const CollapsibleLocations = withStyles(CollapsibleContainer, collapsibleStyles);
@@ -32,7 +32,7 @@ class StoreLocations extends PureComponent {
   }
 
   getAddressTitle(store) {
-    const { labels, openStoreDetail } = this.props;
+    const { labels, openStoreDetails } = this.props;
     const tileLabels = {
       ...labels,
       lbl_storelocators_landingpage_getdirections_link:
@@ -42,7 +42,7 @@ class StoreLocations extends PureComponent {
       <LocationTile
         labels={tileLabels}
         store={store}
-        openStoreDirections={openStoreDetail}
+        openStoreDirections={() => openStoreDetails(store)}
         locatorGetDirections="open-store-details"
       />
     );
@@ -50,7 +50,7 @@ class StoreLocations extends PureComponent {
 
   render() {
     const { children, className, stores, labels } = this.props;
-    if (getViewportInfo().isMobile) {
+    if (isClient() && getViewportInfo().isMobile) {
       return (
         <CollapsibleLocations
           header={this.getCollapsibleHeader()}
@@ -63,7 +63,7 @@ class StoreLocations extends PureComponent {
         <h3 className="locations-title">{labels.lbl_storelocators_details_locations_title}</h3>
         <Row fullBleed>
           {stores.map(store => (
-            <Col key={store.basicInfo.storeName} colSize={{ small: 12, medium: 4, large: 3 }}>
+            <Col key={store.basicInfo.storeName} colSize={{ small: 6, medium: 4, large: 3 }}>
               {this.getAddressTitle(store)}
             </Col>
           ))}
@@ -82,13 +82,13 @@ StoreLocations.propTypes = {
     lbl_storelocators_details_locations_title: PropTypes.string,
   }).isRequired,
   stores: PropTypes.arrayOf(PropTypes.shape(propTypes.store)),
-  openStoreDetail: PropTypes.func,
+  openStoreDetails: PropTypes.func,
 };
 
 StoreLocations.defaultProps = {
   children: null,
   stores: [],
-  openStoreDetail: null,
+  openStoreDetails: null,
 };
 
 export default withStyles(StoreLocations, style);

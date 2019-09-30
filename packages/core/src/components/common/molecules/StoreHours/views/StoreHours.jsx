@@ -12,7 +12,14 @@ class StoreHours extends PureComponent {
     return data.map(item => (
       <li key={item.id}>
         <div className="text-left">{item.label}</div>
-        <div className="text-right">{item.value}</div>
+        {Array.isArray(item.value) &&
+          item.value.length > 0 &&
+          item.value.map(timeArr => (
+            <div className="text-right" key={`${item.id}-${timeArr}`}>
+              {timeArr}
+            </div>
+          ))}
+        {!Array.isArray(item.value) ? <div className="text-right">{item.value}</div> : null}
       </li>
     ));
   }
@@ -64,7 +71,7 @@ StoreHours.propTypes = {
     PropTypes.shape({
       id: PropTypes.number,
       label: PropTypes.string,
-      value: PropTypes.string,
+      value: PropTypes.oneOfType([PropTypes.string, PropTypes.shape([])]),
     })
   ),
 };

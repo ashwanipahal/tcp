@@ -64,6 +64,7 @@ exports[`StoreHours component StoreHours component renders correctly without pro
     padding-right: ",
           [Function],
           ";
+    text-transform: capitalize;
   }
   .text-right {
     flex: 1;
@@ -1319,7 +1320,7 @@ exports[`StoreHours component should render component with timing data 1`] = `
         "componentStyle": ComponentStyle {
           "componentId": "sc-bxivhb",
           "isStatic": false,
-          "lastClassName": "jcyucx",
+          "lastClassName": "hgpGaD",
           "rules": Array [
             "
   ",
@@ -1375,6 +1376,7 @@ exports[`StoreHours component should render component with timing data 1`] = `
     padding-right: ",
             [Function],
             ";
+    text-transform: capitalize;
   }
   .text-right {
     flex: 1;
@@ -2016,7 +2018,7 @@ exports[`StoreHours component should render component with timing data 1`] = `
     title="Store Hours"
   >
     <StoreHours
-      className="sc-bxivhb jcyucx"
+      className="sc-bxivhb hgpGaD"
       defaultOpen={true}
       storeMeta={Array []}
       storeTiming={
@@ -2636,7 +2638,7 @@ exports[`StoreHours component should render component with timing data 1`] = `
       title="Store Hours"
     >
       <div
-        className="sc-bxivhb jcyucx"
+        className="sc-bxivhb hgpGaD"
       >
         <Styled(Styled(CollapsibleContainer))
           body={
@@ -5441,7 +5443,7 @@ exports[`StoreHours component should render component with timing data 2`] = `
         "componentStyle": ComponentStyle {
           "componentId": "sc-bxivhb",
           "isStatic": false,
-          "lastClassName": "jcyucx",
+          "lastClassName": "hgpGaD",
           "rules": Array [
             "
   ",
@@ -5497,6 +5499,7 @@ exports[`StoreHours component should render component with timing data 2`] = `
     padding-right: ",
             [Function],
             ";
+    text-transform: capitalize;
   }
   .text-right {
     flex: 1;
@@ -6142,7 +6145,7 @@ exports[`StoreHours component should render component with timing data 2`] = `
     title="Store Hours"
   >
     <StoreHours
-      className="sc-bxivhb jcyucx"
+      className="sc-bxivhb hgpGaD"
       defaultOpen={true}
       storeMeta={
         Array [
@@ -6765,7 +6768,7 @@ exports[`StoreHours component should render component with timing data 2`] = `
       title="Store Hours"
     >
       <div
-        className="sc-bxivhb jcyucx"
+        className="sc-bxivhb hgpGaD"
       >
         <Styled(Styled(CollapsibleContainer))
           body={

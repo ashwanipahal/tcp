@@ -10,11 +10,17 @@ import GlobalStyle from '@tcp/core/styles/globalStyles';
 import getCurrentTheme from '@tcp/core/styles/themes';
 import Grid from '@tcp/core/src/components/common/molecules/Grid';
 import { bootstrapData } from '@tcp/core/src/reduxStore/actions';
-import { createAPIConfig, getAPIConfig, isDevelopment } from '@tcp/core/src/utils';
+import {
+  createAPIConfig,
+  getAPIConfig,
+  isDevelopment,
+  fetchStoreIdFromUrlPath,
+} from '@tcp/core/src/utils';
 import { initErrorReporter } from '@tcp/core/src/utils/errorReporter.util';
 import { deriveSEOTags } from '@tcp/core/src/config/SEOTags.config';
 import { openOverlayModal } from '@tcp/core/src/components/features/OverlayModal/container/OverlayModal.actions';
 import { getUserInfo } from '@tcp/core/src/components/features/account/User/container/User.actions';
+import { getCurrentStoreInfo } from '@tcp/core/src/components/features/storeLocator/StoreDetail/container/StoreDetail.actions';
 import { Header, Footer } from '../components/features/content';
 import SEOTags from '../components/common/atoms';
 import CheckoutHeader from '../components/features/content/CheckoutHeader';
@@ -44,7 +50,6 @@ class TCPWebApp extends App {
   static async getInitialProps({ Component, ctx }) {
     const compProps = TCPWebApp.loadComponentData(Component, ctx, {});
     const pageProps = TCPWebApp.loadGlobalData(Component, ctx, compProps);
-
     return {
       pageProps,
     };
@@ -90,7 +95,7 @@ class TCPWebApp extends App {
     ReactAxe.runAccessibility();
   }
 
-  static loadGlobalData(Component, { store, res, isServer, req }, pageProps) {
+  static loadGlobalData(Component, { store, res, isServer, req, asPath, query }, pageProps) {
     // getInitialProps of _App is called on every internal page navigation in spa.
     // This check is to avoid unnecessary api call in those cases
     if (isServer) {
@@ -134,6 +139,10 @@ class TCPWebApp extends App {
         optimizelyHeadersObject,
       };
       store.dispatch(bootstrapData(payload));
+      if (asPath.includes('store') && query && query.storeStr) {
+        const storeId = fetchStoreIdFromUrlPath(query.storeStr);
+        store.dispatch(getCurrentStoreInfo(storeId));
+      }
     }
     return pageProps;
   }

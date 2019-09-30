@@ -1,12 +1,12 @@
 import React from 'react';
 import { createStackNavigator } from 'react-navigation';
-import { View, Text } from 'react-native';
 import ProductListingPageContainer from '@tcp/core/src/components/features/browse/ProductListingPage';
 import BagPage from '@tcp/core/src/components/features/CnC/BagPage';
 import LoginPageContainer from '@tcp/core/src/components/features/account/LoginPage';
 import GetCandidGallery from '@tcp/core/src/components/common/molecules/GetCandidGallery/views/GetCandidGallery.native';
 import ProductListingPage from '@tcp/core/src/components/features/browse/ProductListing';
 import StoreLanding from '@tcp/core/src/components/features/storeLocator/StoreLanding/container/StoreLanding.container';
+import StoreDetails from '@tcp/core/src/components/features/storeLocator/StoreDetail';
 import Home from '../components/features/content/HomePage';
 import account from '../components/features/account/account';
 import NavBarIcon from '../components/common/atoms/NavBarIcon';
@@ -40,11 +40,7 @@ const HomeStack = createStackNavigator(
     },
     ProductListingPage,
     StoreDetails: {
-      screen: () => (
-        <View>
-          <Text>Store Details</Text>
-        </View>
-      ),
+      screen: StoreDetails,
       path: 'store-details/:storeId',
       navigationOptions: ({ navigation }) => {
         return getNewHeader(navigation);

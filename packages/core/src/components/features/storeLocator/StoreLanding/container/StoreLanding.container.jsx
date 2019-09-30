@@ -7,6 +7,7 @@ import {
   setFavoriteStoreActn,
   getFavoriteStoreActn,
 } from './StoreLanding.actions';
+import { getCurrentStoreInfo } from '../../StoreDetail/container/StoreDetail.actions';
 import StoreLandingView from './views/StoreLanding';
 import { getCurrentCountry, getPageLabels } from './StoreLanding.selectors';
 import constants from './StoreLanding.constants';
@@ -14,6 +15,16 @@ import constants from './StoreLanding.constants';
 const { INITIAL_STORE_LIMIT } = constants;
 
 export class StoreLanding extends PureComponent {
+  static openStoreDirections(store) {
+    const {
+      basicInfo: { address },
+    } = store;
+    const { addressLine1, city, state, zipCode } = address;
+    window.open(
+      `https://maps.google.com/maps?daddr=${addressLine1},%20${city},%20${state},%20${zipCode}`
+    );
+  }
+
   componentDidMount() {
     this.getFavoriteStoreInititator();
   }
@@ -59,7 +70,16 @@ export class StoreLanding extends PureComponent {
     return false;
   };
 
+  fetchCurrentStoreDetails = store => {
+    const { fetchCurrentStore } = this.props;
+    const {
+      basicInfo: { id },
+    } = store;
+    if (id) fetchCurrentStore(id);
+  };
+
   render() {
+    const { navigation } = this.props;
     const searchIcon = getIconPath('search-icon');
     const markerIcon = getIconPath('marker-icon');
     return (
@@ -68,6 +88,9 @@ export class StoreLanding extends PureComponent {
         loadStoresByCoordinates={this.loadStoresByCoordinates}
         searchIcon={searchIcon}
         markerIcon={markerIcon}
+        fetchCurrentStore={store => this.fetchCurrentStoreDetails(store)}
+        openStoreDirections={store => this.constructor.openStoreDirections(store)}
+        navigation={navigation}
       />
     );
   }
@@ -77,10 +100,13 @@ StoreLanding.propTypes = {
   fetchStoresByCoordinates: PropTypes.func.isRequired,
   getFavoriteStore: PropTypes.func.isRequired,
   favoriteStore: PropTypes.shape(PropTypes.string),
+  fetchCurrentStore: PropTypes.func.isRequired,
+  navigation: PropTypes.shape({}),
 };
 
 StoreLanding.defaultProps = {
   favoriteStore: null,
+  navigation: {},
 };
 
 /* istanbul ignore next */
@@ -88,6 +114,7 @@ const mapDispatchToProps = dispatch => ({
   fetchStoresByCoordinates: storeConfig => dispatch(getStoresByCoordinates(storeConfig)),
   setFavoriteStore: payload => dispatch(setFavoriteStoreActn(payload)),
   getFavoriteStore: payload => dispatch(getFavoriteStoreActn(payload)),
+  fetchCurrentStore: payload => dispatch(getCurrentStoreInfo(payload)),
 });
 
 /* istanbul ignore next  */

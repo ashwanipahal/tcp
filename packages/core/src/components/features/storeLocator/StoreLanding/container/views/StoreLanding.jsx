@@ -1,5 +1,4 @@
 import React, { PureComponent } from 'react';
-import Router from 'next/router';
 import PropTypes from 'prop-types';
 import { Row, Col } from '@tcp/core/src/components/common/atoms';
 import StoreStaticMap from '@tcp/core/src/components/common/atoms/StoreStaticMap';
@@ -7,7 +6,7 @@ import { Grid } from '@tcp/core/src/components/common/molecules';
 import withStyles from '@tcp/core/src/components/common/hoc/withStyles';
 
 import StoreAddressTile from '@tcp/core/src/components/common/molecules/StoreAddressTile';
-import { isCanada, getViewportInfo, getAPIConfig } from '@tcp/core/src/utils';
+import { isCanada, getViewportInfo, getAPIConfig, routeToStoreDetails } from '@tcp/core/src/utils';
 import StoreLocatorSearch from '../../organisms/StoreSearch';
 
 import styles from '../styles/StoreLanding.style';
@@ -22,20 +21,8 @@ export class StoreLanding extends PureComponent {
   };
 
   openStoreDetails = (event, store) => {
-    const {
-      basicInfo: {
-        id,
-        storeName,
-        address: { city, state, zipCode },
-      },
-    } = store;
     event.preventDefault();
-    const url = `/store/${storeName
-      .replace(/\s/g, '')
-      .toLowerCase()}-${state.toLowerCase()}-${city
-      .replace(/\s/g, '')
-      .toLowerCase()}-${zipCode}-${id}`;
-    Router.push(url);
+    routeToStoreDetails(store);
   };
 
   renderMapView = suggestedStoreList => {
@@ -87,7 +74,7 @@ export class StoreLanding extends PureComponent {
   };
 
   renderStoreList = suggestedStoreList => {
-    const { setFavoriteStore, favoriteStore } = this.props;
+    const { setFavoriteStore, favoriteStore, fetchCurrentStore, openStoreDirections } = this.props;
     return suggestedStoreList.map(item => (
       <Col
         colSize={{ large: 12, medium: 8, small: 6 }}
@@ -101,6 +88,8 @@ export class StoreLanding extends PureComponent {
           variation="listing"
           setFavoriteStore={setFavoriteStore}
           isFavorite={favoriteStore && favoriteStore.basicInfo.id === item.basicInfo.id}
+          fetchCurrentStore={fetchCurrentStore}
+          openStoreDirections={openStoreDirections}
           openStoreDetails={this.openStoreDetails}
         />
       </Col>
@@ -211,6 +200,8 @@ StoreLanding.propTypes = {
   favoriteStore: PropTypes.shape(PropTypes.string),
   className: PropTypes.string.isRequired,
   labels: PropTypes.shape(PropTypes.string).isRequired,
+  fetchCurrentStore: PropTypes.func.isRequired,
+  openStoreDirections: PropTypes.func.isRequired,
 };
 
 StoreLanding.defaultProps = {

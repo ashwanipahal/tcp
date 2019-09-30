@@ -49,6 +49,7 @@ import StoreLocatorReducer from '@tcp/core/src/components/features/storeLocator/
 import SocialReducer from '@tcp/core/src/components/common/organisms/SocialAccount/container/Social.reducer';
 import SearchPageReducer from '@tcp/core/src/components/features/browse/SearchDetail/container/SearchDetail.reducer';
 import MyFavoriteStoreReducer from '@tcp/core/src/components/features/account/MyProfile/organism/MyFavoriteStore/container/MyFavoriteStore.reducer';
+import StoreDetailReducer from '@tcp/core/src/components/features/storeLocator/StoreDetail/container/StoreDetail.reducer';
 
 import {
   APICONFIG_REDUCER_KEY,
@@ -109,6 +110,7 @@ import {
   STORE_LOCATOR_REDUCER_KEY,
   SOCIAL_REDUCER_KEY,
   SLP_PAGE_REDUCER_KEY,
+  STORE_DETAIL_REDUCER_KEY,
 } from '@tcp/core/src/constants/reducer.constants';
 import HeaderReducer from '@tcp/core/src/components/common/organisms/Header/container/Header.reducer';
 import FooterReducer from '@tcp/core/src/components/common/organisms/Footer/container/Footer.reducer';
@@ -201,4 +203,5 @@ export default combineReducers({
   [RECOMMENDATIONS_REDUCER_KEY]: RecommendationsReducer,
   [STORE_LOCATOR_REDUCER_KEY]: StoreLocatorReducer,
   [SLP_PAGE_REDUCER_KEY]: SearchPageReducer,
+  [STORE_DETAIL_REDUCER_KEY]: StoreDetailReducer,
 });
