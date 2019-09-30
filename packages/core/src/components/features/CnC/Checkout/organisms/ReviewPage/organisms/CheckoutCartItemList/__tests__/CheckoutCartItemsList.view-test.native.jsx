@@ -1,7 +1,7 @@
 import React from 'react';
 import { fromJS } from 'immutable';
 import { shallow } from 'enzyme';
-import { CheckoutCartItemsListVanilla } from '../views/CheckoutCartItemsList.view';
+import CheckoutCartItemsList from '../views/CheckoutCartItemsList.view.native';
 
 const props = {
   itemsCount: 0,
@@ -44,7 +44,7 @@ const props = {
 };
 describe('testing block for CheckoutCartItemsListVanilla', () => {
   it('CheckoutCartItemsListVanilla should be rendered correclty ', () => {
-    const component = shallow(<CheckoutCartItemsListVanilla {...props} />);
+    const component = shallow(<CheckoutCartItemsList {...props} />);
     expect(component).toBeDefined();
   });
 });
@@ -74,7 +74,7 @@ const bossprops = {
 };
 describe('testing block for CheckoutCartItemsListVanilla', () => {
   it('CheckoutCartItemsListVanilla should be rendered correclty ', () => {
-    const component = shallow(<CheckoutCartItemsListVanilla {...bossprops} />);
+    const component = shallow(<CheckoutCartItemsList {...bossprops} />);
     expect(component).toBeDefined();
   });
 });

@@ -1,22 +1,32 @@
 import React, { Component } from 'react';
+import { View, Text } from 'react-native';
 import { PropTypes } from 'prop-types';
-import withStyles from '@tcp/core/src/components/common/hoc/withStyles';
-import { BodyCopy, Col, Row, Image } from '@tcp/core/src/components/common/atoms';
-import ReactToolTip from '@tcp/core/src/components/common/atoms/ReactToolTip';
-import cssClassName from '@tcp/core/src/utils/cssClassName';
-import { getTranslateDateInformation } from '@tcp/core/src/utils';
-import { getAPIConfig, getIconPath } from '@tcp/core/src/utils/utils';
-import CartItemTile from '../../../../../../CartItemTile/molecules/CartItemTile/views/CartItemTile.view';
+import { BodyCopy, Image } from '../../../../../../../../common/atoms';
+import { getTranslateDateInformation, getAPIConfig } from '../../../../../../../../../utils/utils';
+import ReactTooltip from '../../../../../../../../common/atoms/ReactToolTip';
+import CartItemTile from '../../../../../../CartItemTile/molecules/CartItemTile/views/CartItemTile.view.native';
 import { getProductDetails } from '../../../../../../CartItemTile/container/CartItemTile.selectors';
-import styles from '../styles/CheckoutCartItemsList.style';
 import CheckoutConstants from '../../../../../Checkout.constants';
+import {
+  Container,
+  CartListHeading,
+  SubHeader,
+  PickupSubHeader,
+  PickupProductListTitle,
+  AtTextWrapper,
+  CartItemTileContainer,
+  StoreDetailsWrapper,
+  TooltipWrapper,
+} from '../styles/CheckoutCartItemsList.style.native';
+
+const infoIcon = require('../../../../../../../../../assets/info-icon.png');
 
 /**
  *
  *
  * @class CheckoutCartItemsList
  * @extends {Component}
- * @summary Component to render and sort items in bag as per shipping,pickups and store vise and show them on review page.
+ * @summary Component to render and sort items in bag as per shipping,pickups and store vise and show them on review page(Mobile App).
  */
 class CheckoutCartItemsList extends Component {
   static propTypes = {
@@ -45,7 +55,6 @@ class CheckoutCartItemsList extends Component {
     currencySymbol: PropTypes.string.isRequired,
     labels: PropTypes.shape({}),
     bagPageLabels: PropTypes.shape({}),
-    className: PropTypes.string.isRequired,
     gettingSortedItemList: PropTypes.func.isRequired,
   };
 
@@ -57,87 +66,78 @@ class CheckoutCartItemsList extends Component {
    * single order item html.
    */
   getOrderItem = item => {
-    const { labels } = this.props;
+    const { labels, currencySymbol } = this.props;
     const showOnReviewPage = false;
     return (
-      <div className="cart-item-tile-container">
-        <CartItemTile productDetail={item} labels={labels} showOnReviewPage={showOnReviewPage} />
-      </div>
+      <CartItemTileContainer>
+        <CartItemTile
+          productDetail={item}
+          labels={labels}
+          showOnReviewPage={showOnReviewPage}
+          currencySymbol={currencySymbol}
+        />
+      </CartItemTileContainer>
     );
   };
 
   /**
-   * @function OrderTooltip
+   * @function popover
    * @param {Object} deliveryItem - delivery item details
    * @summary This function accepts a deliveryItem and gives tooltip data
    */
-  OrderTooltip = deliveryItem => {
+  popover = deliveryItem => {
     const { labels } = this.props;
+    const {
+      storeAddress: { addressLine1, addressLine2, city, state, zipCode },
+    } = deliveryItem;
+    const { storeTodayOpenRange, storeTomorrowOpenRange, storePhoneNumber } = deliveryItem;
+    const { today, tomorrow, phone } = labels;
     return (
-      <>
-        {deliveryItem.storeAddress && (
+      <Text>
+        {deliveryItem && deliveryItem.storeAddress && (
           <>
             <BodyCopy
-              component="span"
               fontWeight="regular"
               fontSize="fs12"
               fontFamily="secondary"
-              className="title-list-product"
-            >
-              {deliveryItem.storeAddress.addressLine1}
-            </BodyCopy>
-            {deliveryItem.storeAddress.addressLine2 && (
+              text={addressLine1}
+            />
+
+            {addressLine2 && (
               <BodyCopy
-                component="span"
                 fontWeight="regular"
                 fontSize="fs12"
                 fontFamily="secondary"
-                className="title-list-product"
-              >
-                {deliveryItem.storeAddress.addressLine2}
-              </BodyCopy>
+                text={addressLine2}
+              />
             )}
             <BodyCopy
-              component="span"
               fontWeight="regular"
               fontSize="fs12"
               fontFamily="secondary"
-              className="title-list-product"
-            >
-              {`${deliveryItem.storeAddress.city},${deliveryItem.storeAddress.state}${
-                deliveryItem.storeAddress.zipCode
-              }`}
-            </BodyCopy>
+              text={`${city},${state}${zipCode}`}
+            />
             <BodyCopy
-              component="span"
               fontWeight="regular"
               fontSize="fs12"
               fontFamily="secondary"
-              className="title-list-product"
-            >
-              {`${labels.today}${deliveryItem.storeTodayOpenRange}`}
-            </BodyCopy>
+              text={`${today}${storeTodayOpenRange}`}
+            />
             <BodyCopy
-              component="span"
               fontWeight="regular"
               fontSize="fs12"
               fontFamily="secondary"
-              className="title-list-product"
-            >
-              {`${labels.tomorrow}${deliveryItem.storeTomorrowOpenRange}`}
-            </BodyCopy>
+              text={`${tomorrow}${storeTomorrowOpenRange}`}
+            />
             <BodyCopy
-              component="span"
               fontWeight="regular"
               fontSize="fs12"
               fontFamily="secondary"
-              className="title-list-product"
-            >
-              {`${labels.phone}${deliveryItem.storePhoneNumber}`}
-            </BodyCopy>
+              text={`${phone}${storePhoneNumber}`}
+            />
           </>
         )}
-      </>
+      </Text>
     );
   };
 
@@ -153,62 +153,45 @@ class CheckoutCartItemsList extends Component {
   getPickupHeader = (deliveryItem, isShowHeader) => {
     const { labels } = this.props;
     return (
-      <div className="title-list-pickup-product">
+      <PickupProductListTitle>
         {isShowHeader && (
-          <div className="pickup-header">
-            <Row>
-              <Col colSize={{ small: 6, medium: 8, large: 12 }}>
-                <BodyCopy
-                  component="span"
-                  fontWeight="extrabold"
-                  fontSize="fs16"
-                  fontFamily="secondary"
-                  className="title-list-product"
-                >
-                  {labels.pickup}
-                </BodyCopy>
-                <BodyCopy
-                  component="span"
-                  fontWeight="regular"
-                  fontSize="fs10"
-                  fontFamily="secondary"
-                  className="store-of-product"
-                >
-                  {labels.at}
-                </BodyCopy>
-                <BodyCopy
-                  component="span"
-                  fontWeight="extrabold"
-                  fontSize="fs10"
-                  fontFamily="secondary"
-                >
-                  {deliveryItem.store}
-                </BodyCopy>
-                <ReactToolTip
-                  fontFamily="secondary"
-                  message={this.OrderTooltip(deliveryItem)}
-                  aligned="right"
-                  className="toolTip"
-                >
-                  <Image height="15" width="15" src={getIconPath('info-icon')} />
-                </ReactToolTip>
-              </Col>
-            </Row>
-          </div>
-        )}
-        <Row>
-          <Col colSize={{ small: 6, medium: 8, large: 12 }}>
+          <PickupSubHeader>
             <BodyCopy
               fontWeight="extrabold"
               fontSize="fs16"
               fontFamily="secondary"
-              className="store-date-container"
-            >
-              {deliveryItem.duration}
-            </BodyCopy>
-          </Col>
-        </Row>
-      </div>
+              text={labels.pickup}
+            />
+            <StoreDetailsWrapper>
+              <AtTextWrapper>
+                <BodyCopy
+                  fontWeight="regular"
+                  fontSize="fs10"
+                  fontFamily="secondary"
+                  text={labels.at}
+                />
+              </AtTextWrapper>
+              <BodyCopy
+                fontWeight="extrabold"
+                fontSize="fs10"
+                fontFamily="secondary"
+                text={deliveryItem.store}
+              />
+              <TooltipWrapper>
+                <ReactTooltip withOverlay={false} popover={this.popover(deliveryItem)}>
+                  <Image source={infoIcon} height={15} width={15} />
+                </ReactTooltip>
+              </TooltipWrapper>
+            </StoreDetailsWrapper>
+          </PickupSubHeader>
+        )}
+        <BodyCopy
+          fontWeight="extrabold"
+          fontSize="fs16"
+          fontFamily="secondary"
+          text={deliveryItem.duration}
+        />
+      </PickupProductListTitle>
     );
   };
 
@@ -219,31 +202,24 @@ class CheckoutCartItemsList extends Component {
    * @summary This function accepts shipit order details and returns the header and list item html
    */
   getShippingListItems = (pickUpList, index) => {
-    const headerClassName = cssClassName('header-list ', 'header-primary ');
     const { labels } = this.props;
     if (pickUpList && pickUpList.list) {
       return (
-        <div key={index}>
-          <Row>
-            <Col colSize={{ small: 6, medium: 8, large: 12 }}>
-              <div className={headerClassName}>
-                <BodyCopy
-                  fontWeight="extrabold"
-                  fontSize="fs16"
-                  fontFamily="secondary"
-                  className="title-list-product"
-                >
-                  {labels.shipping}
-                </BodyCopy>
-              </div>
-              <div className="container-list-shopping-cart">
-                {pickUpList.list.map(listItem => {
-                  return this.getOrderItem(listItem.item, listItem.currencySymbol);
-                })}
-              </div>
-            </Col>
-          </Row>
-        </div>
+        <View key={index}>
+          <SubHeader>
+            <BodyCopy
+              fontWeight="extrabold"
+              fontSize="fs16"
+              fontFamily="secondary"
+              text={labels.shipping}
+            />
+          </SubHeader>
+          <View>
+            {pickUpList.list.map(listItem => {
+              return this.getOrderItem(listItem.item, listItem.currencySymbol);
+            })}
+          </View>
+        </View>
       );
     }
     return null;
@@ -275,20 +251,15 @@ class CheckoutCartItemsList extends Component {
               const deliveryItem =
                 storeItemsList[storeItem][PICKUP_ITEM_ORDER[orderCount]] ||
                 storeItemsList[storeItem][deliveryItemList];
-              const headerClassName = cssClassName(
-                'header-list ',
-                { 'header-primary ': isShowHeader },
-                { 'header-secondary ': !isShowHeader }
-              );
               const itemHeader = [
-                <div key={`${index}_${orderCount}_0`} className={headerClassName}>
+                <SubHeader key={`${index}_${orderCount}_0`}>
                   {this.getPickupHeader(deliveryItem, isShowHeader)}
-                </div>,
-                <div key={`${index}_${orderCount}_1`} className="container-list-shopping-cart">
+                </SubHeader>,
+                <View key={`${index}_${orderCount}_1`}>
                   {deliveryItem.list.map(listItem => {
                     return this.getOrderItem(listItem.item, listItem.currencySymbol);
                   })}
-                </div>,
+                </View>,
               ];
               orderItemView.push(itemHeader);
               isShowHeader = false;
@@ -308,7 +279,7 @@ class CheckoutCartItemsList extends Component {
   renderItems() {
     const { items, currencySymbol, gettingSortedItemList, labels } = this.props;
     const apiConfig = getAPIConfig();
-    const bopisDate = getTranslateDateInformation('', apiConfig.language);
+    const bopisDate = apiConfig && getTranslateDateInformation('', apiConfig.language);
     /**
      * @var sortedItem - array of items available in the cart checkout are sorted in a
      * way that the BOPIS selected stores are moved to the top in the list than BOSS
@@ -364,11 +335,11 @@ class CheckoutCartItemsList extends Component {
     const orderTypeList = REVIEW_PRODUCT_SEQUENCE;
     if (orderBucket) {
       return (
-        <div className="checkout-cart-list">
+        <View>
           {orderTypeList.map((item, index) =>
             this.renderOrderItems(item, orderBucket[item], index)
           )}
-        </div>
+        </View>
       );
     }
     return {};
@@ -379,23 +350,19 @@ class CheckoutCartItemsList extends Component {
    * @summary This function responsible for rendedring view and calling further respective methods.
    */
   render() {
-    const { itemsCount, className, bagPageLabels } = this.props;
+    const { itemsCount, bagPageLabels } = this.props;
     return (
-      <div className={className}>
-        <Row tagName="header">
-          <Col colSize={{ small: 6, medium: 8, large: 12 }}>
-            <BodyCopy
-              fontWeight="semibold"
-              fontSize="fs16"
-              fontFamily="secondary"
-              className="checkout-cart-list-heading"
-            >
-              {`${bagPageLabels.bagHeading} (${itemsCount})`}
-            </BodyCopy>
-            {this.renderItems()}
-          </Col>
-        </Row>
-      </div>
+      <Container>
+        <CartListHeading>
+          <BodyCopy
+            fontWeight="semibold"
+            fontSize="fs16"
+            fontFamily="secondary"
+            text={`${bagPageLabels.bagHeading} (${itemsCount}):`}
+          />
+        </CartListHeading>
+        {this.renderItems()}
+      </Container>
     );
   }
 }
@@ -405,5 +372,4 @@ CheckoutCartItemsList.defaultProps = {
   bagPageLabels: {},
 };
 
-export default withStyles(CheckoutCartItemsList, styles);
-export { CheckoutCartItemsList as CheckoutCartItemsListVanilla };
+export default CheckoutCartItemsList;
