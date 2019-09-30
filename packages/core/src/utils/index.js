@@ -67,4 +67,5 @@ export {
   configureInternalNavigationFromCMSUrl,
   getModifiedLanguageCode,
   getTranslateDateInformation,
+  flattenArray,
 } from './utils';

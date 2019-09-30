@@ -1,6 +1,6 @@
 import { createSelector } from 'reselect';
 import { generateGroups } from './ProductListing.util';
-import { getAPIConfig } from '../../../../../utils';
+import { getAPIConfig, flattenArray } from '../../../../../utils';
 import {
   PRODUCTLISTINGPAGE_REDUCER_KEY,
   PRODUCT_LISTING_REDUCER_KEY,
@@ -68,6 +68,14 @@ export const getProductsSelect = createSelector(
   getProductListingState,
   products =>
     products && products.get('loadedProductsPages') && products.get('loadedProductsPages')[0]
+);
+
+export const getAllProductsSelect = createSelector(
+  getProductListingState,
+  products => {
+    const allProducts = products && products.get('loadedProductsPages');
+    return allProducts && flattenArray(allProducts);
+  }
 );
 
 export const getLabels = state => {
@@ -143,8 +151,20 @@ export const getIsLoadingMore = state => {
   return state.ProductListing.get('isLoadingMore');
 };
 
+export const getScrollToTopValue = state => {
+  return state.ProductListing.get('isScrollToTop');
+};
+
+export const getProductsInCurrCategory = state => {
+  return state.ProductListing.get('productsInCurrCategory');
+};
+
 export const getSpotlightReviewsUrl = () => {
   return getAPIConfig().BAZAARVOICE_SPOTLIGHT;
+};
+
+export const getBazaarvoiceApiUrl = () => {
+  return getAPIConfig().BAZAARVOICE_REVIEWS;
 };
 
 export const getCategoryId = state => {
