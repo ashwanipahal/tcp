@@ -7,14 +7,20 @@ import EarnExtraPointsOverview from '../views';
 
 export class EarnExtraPointsOverviewContainer extends PureComponent {
   render() {
-    const { labels } = this.props;
+    const { labels, handleComponentChange } = this.props;
 
-    return <EarnExtraPointsOverview labels={labels} />;
+    return (
+      <EarnExtraPointsOverview labels={labels} handleComponentChange={handleComponentChange} />
+    );
   }
 }
 
 EarnExtraPointsOverviewContainer.propTypes = {
   labels: PropTypes.shape({}).isRequired,
+  handleComponentChange: PropTypes.func,
+};
+EarnExtraPointsOverviewContainer.defaultProps = {
+  handleComponentChange: () => {},
 };
 
 export const mapStateToProps = state => {

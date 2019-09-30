@@ -19,6 +19,7 @@ import {
 } from '../../Checkout/container/Checkout.action';
 import { toastMessageInfo } from '../../../../common/atoms/Toast/container/Toast.actions.native';
 import utils, { isClient } from '../../../../../utils';
+import { getSaveForLaterSwitch } from '../../SaveForLater/container/SaveForLater.selectors';
 
 export class BagPageContainer extends React.Component<Props> {
   componentDidMount() {
@@ -66,6 +67,7 @@ export class BagPageContainer extends React.Component<Props> {
       toastMessage,
       isCartItemSFL,
       isSflItemRemoved,
+      isShowSaveForLaterSwitch,
     } = this.props;
 
     const showAddTobag = false;
@@ -89,6 +91,7 @@ export class BagPageContainer extends React.Component<Props> {
         toastMessage={toastMessage}
         isCartItemSFL={isCartItemSFL}
         isSflItemRemoved={isSflItemRemoved}
+        isShowSaveForLaterSwitch={isShowSaveForLaterSwitch}
       />
     );
   }
@@ -134,6 +137,7 @@ const mapStateToProps = state => {
     isCartItemsUpdating: getIsCartItemsUpdating(state),
     isCartItemSFL: getIsCartItemsSFL(state),
     isSflItemRemoved: getIsSflItemRemoved(state),
+    isShowSaveForLaterSwitch: getSaveForLaterSwitch(state),
   };
 };
 

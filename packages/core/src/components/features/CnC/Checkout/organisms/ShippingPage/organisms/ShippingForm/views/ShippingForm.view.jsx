@@ -246,12 +246,14 @@ class ShippingForm extends React.Component {
       setDefaultAddressId,
       syncErrorsObject,
       isVenmoPaymentInProgress,
+      isVenmoShippingDisplayed,
       showAccordian,
     } = this.props;
     const { isEditing, modalType, modalState } = this.state;
-    const nextButtonText = isVenmoPaymentInProgress
-      ? getLabelValue(labels, 'lbl_shipping_reviewText', 'shipping', 'checkout')
-      : getLabelValue(labels, 'lbl_shipping_billingText', 'shipping', 'checkout');
+    const nextButtonText =
+      isVenmoPaymentInProgress && !isVenmoShippingDisplayed
+        ? getLabelValue(labels, 'lbl_shipping_reviewText', 'shipping', 'checkout')
+        : getLabelValue(labels, 'lbl_shipping_billingText', 'shipping', 'checkout');
     return (
       <>
         <CheckoutSectionTitleDisplay

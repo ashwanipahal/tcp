@@ -7,7 +7,16 @@ export const getCommonLabels = state => {
   return state.Labels && state.Labels.account && state.Labels.account.common;
 };
 
+export const getEarnExtraPointsLabels = state => {
+  return state.Labels && state.Labels.account && state.Labels.account.earnExtraPoints;
+};
+
 export const getEarnExtraPointsDataState = createSelector(
   getState,
   state => state && state.get('earnExtraPointsData')
+);
+
+export const getEarnedPointsNotificationState = createSelector(
+  getState,
+  state => state && state.get('earnedPointsNotificationData')
 );

@@ -131,6 +131,10 @@ const endpoints = {
     method: 'GET',
     URI: 'v2/account/points/waysToEarn',
   },
+  getEarnedPointsNotication: {
+    method: 'GET',
+    URI: 'v2/wallet/points/nontransactional/current',
+  },
   getGifCardBalance: {
     method: API_METHODS.POST,
     URI: 'v2/wallet/getGiftCardBalance',
@@ -327,6 +331,10 @@ const endpoints = {
   claimPoints: {
     method: 'POST',
     URI: 'v2/account/points/claim',
+  },
+  getDetailedOrderHistory: {
+    method: 'GET',
+    URI: 'v2/wallet/getPointsAndOrderHistory',
   },
 };
 export default endpoints;

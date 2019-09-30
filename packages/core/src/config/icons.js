@@ -36,6 +36,7 @@ export default {
   active_icon: '/static/images/circle-check.png',
   'circle-check-fill': '/static/images/circle-check-fill.png',
   'circle-error-fill': '/static/images/circle-error-fill.png',
+  'circle-info-fill': '/static/images/circle-info-fill.svg',
   'carousel-big-carrot': '/static/images/right-carousel-carrot.svg',
   smallright: '/static/images/smallright.svg',
   'carousel-big-carrot-left': '/static/images/left-carousel-carrot.svg',
