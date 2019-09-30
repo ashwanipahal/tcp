@@ -135,7 +135,10 @@ class GuestBillingForm extends React.Component {
             </>
           ) : null}
           {paymentMethodId === CONSTANTS.PAYMENT_METHOD_VENMO && (
-            <VenmoPaymentButton className="venmo-container" />
+            <VenmoPaymentButton
+              className="venmo-container"
+              continueWithText={labels.continueWith}
+            />
           )}
         </div>
         <CheckoutOrderInfo isGuest={isGuest} showAccordian={showAccordian} />
@@ -144,6 +147,8 @@ class GuestBillingForm extends React.Component {
           backLinkHandler={() => utility.routeToPage(CHECKOUT_ROUTES.shippingPage)}
           nextButtonText={nextSubmitText}
           backLinkText={orderHasShipping ? backLinkShipping : backLinkPickup}
+          showVenmoSubmit={paymentMethodId === CONSTANTS.PAYMENT_METHOD_VENMO}
+          continueWithText={labels.continueWith}
         />
       </form>
     );

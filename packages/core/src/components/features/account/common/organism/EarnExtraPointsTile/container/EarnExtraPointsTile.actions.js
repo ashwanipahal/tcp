@@ -6,6 +6,19 @@ export const getEarnExtraPointsList = () => {
   };
 };
 
+export const getEarnedPointsNotification = () => {
+  return {
+    type: EARNEXTRAPOINTS_CONSTANTS.GET_EARNEDPOINTS_NOTIFICATION,
+  };
+};
+
+export const setEarnedPointsNotification = earnedPointsNotification => {
+  return {
+    type: EARNEXTRAPOINTS_CONSTANTS.SET_EARNEDPOINTS_NOTIFICATION,
+    payload: earnedPointsNotification,
+  };
+};
+
 export const setEarnExtraPointsList = extraPointsData => {
   return {
     type: EARNEXTRAPOINTS_CONSTANTS.SET_EARNEXTRAPOINTS_LIST,
