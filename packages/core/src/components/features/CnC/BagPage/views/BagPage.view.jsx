@@ -43,9 +43,12 @@ class BagPageView extends React.Component {
   componentDidUpdate() {
     if (!this.bagPageCondenseHeaderBind) {
       const checkoutCta = document.getElementById('BagActionsContainer');
+      const header = document.getElementById('bagPageHeader');
       if (checkoutCta) {
         this.addScrollListener();
         this.bagPageCondenseHeaderBind = true;
+      } else if (header) {
+        this.addScrollListenerMobileHeader();
       }
     }
   }
@@ -65,13 +68,16 @@ class BagPageView extends React.Component {
   };
 
   addScrollListener = () => {
-    const stickyPos = this.getStickyPosition();
     const checkoutCtaStickyPos = this.getStickyPositionCheckoutCta();
-    window.addEventListener('scroll', throttle(this.handleScroll.bind(this, stickyPos), 100));
     window.addEventListener(
       'scroll',
       throttle(this.handleBagHeaderScroll.bind(this, checkoutCtaStickyPos), 100)
     );
+  };
+
+  addScrollListenerMobileHeader = () => {
+    const stickyPos = this.getStickyPosition();
+    window.addEventListener('scroll', throttle(this.handleScroll.bind(this, stickyPos), 100));
   };
 
   removeScrollListener = () => {
