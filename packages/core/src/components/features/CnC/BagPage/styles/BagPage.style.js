@@ -104,13 +104,12 @@ const styles = css`
         ${props => props.theme.colors.TEXT.DARKERGRAY};
     }
     .stickyBagHeader {
-      left: 0;
-      margin: 0;
-      position: fixed;
+      margin-left: 0;
+      margin-right: 0;
+      position: sticky;
       z-index: ${props => props.theme.zindex.zLoader};
       background: ${props => props.theme.colors.WHITE};
-      padding: ${props => props.theme.spacing.ELEM_SPACING.XS}
-        ${props => props.theme.spacing.ELEM_SPACING.MED};
+      padding: 0 14px;
     }
   }
 
