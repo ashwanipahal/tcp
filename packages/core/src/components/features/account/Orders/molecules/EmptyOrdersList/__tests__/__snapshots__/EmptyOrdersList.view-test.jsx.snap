@@ -1,0 +1,51 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`EmptyOrdersList component should renders correctly 1`] = `
+<Styled(BodyCopy)
+  className=""
+  color="text.primary"
+  component="p"
+  fontFamily="primary"
+  fontSize={12}
+  fontWeight="regular"
+  letterSpacing="normal"
+  lineHeight="normal"
+  link={null}
+  textAlign="left"
+>
+  <Styled(BodyCopy)
+    className="elem-mt-LRG elem-mb-LRG"
+    color="text.primary"
+    component="p"
+    dataLocator="orders-no-order-info"
+    fontFamily="secondary"
+    fontSize="fs14"
+    fontWeight="regular"
+    letterSpacing="normal"
+    lineHeight="normal"
+    link={null}
+    textAlign="left"
+  >
+    lbl_orders_emptySupportingText
+  </Styled(BodyCopy)>
+  <Styled(Col)
+    colSize={
+      Object {
+        "large": 2,
+        "medium": 3,
+        "small": 6,
+      }
+    }
+  >
+    <Styled(Button)
+      buttonVariation="fixed-width"
+      color="white"
+      data-locator="orders-shop-now-btn"
+      fill="BLUE"
+      onClick={[Function]}
+    >
+      lbl_orders_shopNow
+    </Styled(Button)>
+  </Styled(Col)>
+</Styled(BodyCopy)>
+`;

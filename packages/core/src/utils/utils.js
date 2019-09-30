@@ -6,6 +6,7 @@ import { API_CONFIG } from '../services/config';
 import { getStoreRef, resetStoreRef } from './store.utils';
 import { APICONFIG_REDUCER_KEY } from '../constants/reducer.constants';
 import { parseDate } from './parseDate';
+import { ROUTE_PATH } from '../config/route.config';
 
 // setting the apiConfig subtree of whole state in variable; Do we really need it ?
 let apiConfig = null;
@@ -541,6 +542,32 @@ export const getFormSKUValue = formValue => {
   };
 };
 
+/**
+ * This function configure url for Next/Link using CMS defined url string
+ */
+export const configureInternalNavigationFromCMSUrl = url => {
+  const plpRoute = `${ROUTE_PATH.plp.name}/`;
+  const pdpRoute = `${ROUTE_PATH.pdp.name}/`;
+  const searchRoute = `${ROUTE_PATH.search.name}/`;
+
+  if (url.includes(plpRoute)) {
+    const urlItems = url.split(plpRoute);
+    const queryParam = urlItems.join('');
+    return `${ROUTE_PATH.plp.name}?${ROUTE_PATH.plp.param}=${queryParam}`;
+  }
+  if (url.includes(pdpRoute)) {
+    const urlItems = url.split(pdpRoute);
+    const queryParam = urlItems.join('');
+    return `${ROUTE_PATH.pdp.name}?${ROUTE_PATH.pdp.param}=${queryParam}`;
+  }
+  if (url.includes(searchRoute)) {
+    const urlItems = url.split(searchRoute);
+    const queryParam = urlItems.join('');
+    return `${ROUTE_PATH.search.name}?${ROUTE_PATH.search.param}=${queryParam}`;
+  }
+  return url;
+};
+
 export const getModifiedLanguageCode = id => {
   switch (id) {
     case 'en':
@@ -572,7 +599,18 @@ export const getTranslateDateInformation = (
     day: new Intl.DateTimeFormat(localeType, dayOption).format(currentDate),
     month: new Intl.DateTimeFormat(localeType, monthOption).format(currentDate),
     date: currentDate.getDate(),
+    year: currentDate.getFullYear(),
   };
+};
+
+export const extractFloat = currency => {
+  try {
+    return !currency
+      ? 0
+      : parseFloat(parseFloat(currency.toString().match(/[+-]?\d+(\.\d+)?/g)[0]).toFixed(2));
+  } catch (e) {
+    return 0;
+  }
 };
 
 export default {
@@ -602,6 +640,8 @@ export default {
   parseStoreHours,
   parseBoolean,
   getFormSKUValue,
+  configureInternalNavigationFromCMSUrl,
   getModifiedLanguageCode,
   getTranslateDateInformation,
+  extractFloat,
 };

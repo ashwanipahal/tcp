@@ -1,0 +1,66 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`GiftWrappingDisplay component should renders correctly props are present 1`] = `
+<View>
+  <Styled(Text)>
+    <Styled(BodyCopy)
+      accessibilityText=""
+      color="gray.900"
+      dataLocator="gift-wrapping-title"
+      fontSize="fs16"
+      fontWeight="extrabold"
+      margin={null}
+      mobileFontFamily="secondary"
+      numberOfLines={null}
+      text="Gift Services"
+      textDecoration={null}
+    />
+  </Styled(Text)>
+  <Styled(Text)>
+    <Styled(BodyCopy)
+      accessibilityText=""
+      color="gray.900"
+      dataLocator="gift-wrapping-name"
+      fontSize="fs16"
+      fontWeight="regular"
+      margin={null}
+      mobileFontFamily="secondary"
+      numberOfLines={null}
+      text="Free"
+      textDecoration={null}
+    />
+  </Styled(Text)>
+</View>
+`;
+
+exports[`GiftWrappingDisplay component should renders correctly props not present 1`] = `
+<View>
+  <Styled(Text)>
+    <Styled(BodyCopy)
+      accessibilityText=""
+      color="gray.900"
+      dataLocator="gift-wrapping-title"
+      fontSize="fs16"
+      fontWeight="extrabold"
+      margin={null}
+      mobileFontFamily="secondary"
+      numberOfLines={null}
+      textDecoration={null}
+    />
+  </Styled(Text)>
+  <Styled(Text)>
+    <Styled(BodyCopy)
+      accessibilityText=""
+      color="gray.900"
+      dataLocator="gift-wrapping-name"
+      fontSize="fs16"
+      fontWeight="regular"
+      margin={null}
+      mobileFontFamily="secondary"
+      numberOfLines={null}
+      text=""
+      textDecoration={null}
+    />
+  </Styled(Text)>
+</View>
+`;

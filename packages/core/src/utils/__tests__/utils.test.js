@@ -5,6 +5,7 @@ import {
   childOptionsMap,
   formatPhoneNumber,
   getAddressFromPlace,
+  extractFloat,
 } from '../utils';
 
 const formattedDate = '01/01/1970';
@@ -111,6 +112,17 @@ describe('formatPhoneNumner', () => {
   it('should format the phone number correctly with area code in brackets', () => {
     const phone = formatPhoneNumber('7182431150');
     expect(phone).toBe(formattedPhoneNumber);
+  });
+});
+
+describe('extractFloat', () => {
+  it('should extract the floated for single decimal number', () => {
+    const phone = extractFloat('$234.0');
+    expect(phone).toBe(234);
+  });
+  it('should extract the floated for double decimal number', () => {
+    const phone = extractFloat('$20.23');
+    expect(phone).toBe(20.23);
   });
 });
 
