@@ -75,22 +75,26 @@ class ProductDetailContainer extends React.PureComponent {
       addToBagError,
       ...otherProps
     } = this.props;
-
+    const isProductDataAvailable = Object.keys(productInfo).length > 0;
     return (
-      <ProductDetail
-        productDetails={productDetails}
-        breadCrumbs={breadCrumbs}
-        longDescription={longDescription}
-        ratingsProductId={ratingsProductId}
-        otherProps={otherProps}
-        defaultImage={defaultImage}
-        plpLabels={plpLabels}
-        pdpLabels={pdpLabels}
-        currency={currency}
-        productInfo={productInfo}
-        handleAddToBag={this.handleAddToBag}
-        addToBagError={addToBagError}
-      />
+      <React.Fragment>
+        {isProductDataAvailable ? (
+          <ProductDetail
+            productDetails={productDetails}
+            breadCrumbs={breadCrumbs}
+            longDescription={longDescription}
+            ratingsProductId={ratingsProductId}
+            otherProps={otherProps}
+            defaultImage={defaultImage}
+            plpLabels={plpLabels}
+            pdpLabels={pdpLabels}
+            currency={currency}
+            productInfo={productInfo}
+            handleAddToBag={this.handleAddToBag}
+            addToBagError={addToBagError}
+          />
+        ) : null}
+      </React.Fragment>
     );
   }
 }

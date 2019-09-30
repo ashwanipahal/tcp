@@ -191,6 +191,7 @@ class CheckoutPage extends React.PureComponent {
             setVenmoShippingState={setVenmoShippingState}
             setVenmoPickupState={setVenmoPickupState}
             isVenmoPaymentInProgress={isVenmoPaymentInProgress}
+            isGuest={isGuest}
           />
         )}
         {currentSection.toLowerCase() === CHECKOUT_STAGES.CONFIRMATION && (
