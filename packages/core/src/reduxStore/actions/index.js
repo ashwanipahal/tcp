@@ -49,6 +49,13 @@ export const setAPIConfig = payload => {
   };
 };
 
+export const siteConfigData = payload => {
+  return {
+    type: GLOBAL_CONSTANTS.SITE_CONFIG,
+    payload,
+  };
+};
+
 export const bootstrapData = payload => {
   return {
     type: GLOBAL_CONSTANTS.BOOTSTRAP_API,
@@ -93,6 +100,13 @@ export const setOptimizelyFeaturesList = payload => ({
   payload,
   type: GLOBAL_CONSTANTS.SET_OPTIMIZELY_FEATURES_LIST,
 });
+
+export const fetchPageLayout = payload => {
+  return {
+    payload,
+    type: GLOBAL_CONSTANTS.FETCH_PAGE_LAYOUT,
+  };
+};
 
 export default {
   loadLayoutData,

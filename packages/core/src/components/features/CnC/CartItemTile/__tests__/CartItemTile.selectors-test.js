@@ -11,6 +11,7 @@ import {
   getLabelsCartItemTile,
   getProductSize,
   getGeneralProdId,
+  getIsCartItemsUpdating,
   getProductSkuId,
 } from '../container/CartItemTile.selectors';
 
@@ -129,6 +130,15 @@ describe('#CartItemTile selector', () => {
     );
   });
 
+  it('#getIsCartItemsUpdating', () => {
+    const CartPageReducer = fromJS({
+      uiFlags: {
+        isCartItemsUpdating: true,
+      },
+    });
+    expect(getIsCartItemsUpdating({ CartPageReducer })).toEqual(true);
+  });
+
   it('#getLabelsCartItemTile should return labels', () => {
     const addedToBagModal = {
       lbl_info_color: 'Color',
@@ -171,6 +181,7 @@ describe('#CartItemTile selector', () => {
             lbl_minibag_errorSize: 'minibag',
             lbl_minibag_errorUpdateUnavailable: 'minibag',
             lbl_minibag_errorRemoveSoldoutHeader: 'minibag',
+            lbl_minibag_errorRemove: 'remove',
           },
         },
         checkout: {
@@ -178,15 +189,19 @@ describe('#CartItemTile selector', () => {
             lbl_sfl_actionLink: 'saveForLaterLink',
             lbl_sfl_maxLimitError: 'sflMaxLimitError',
             lbl_sfl_moveToBag: 'moveToBagLink',
+            bl_sfl_actionSuccess: 'sflSuccess',
+            lbl_sfl_itemDeleteSuccess: 'sflDeleteSuccess',
           },
         },
       },
     };
     expect(getLabelsCartItemTile(productState)).toEqual({
+      at: undefined,
       bopisLabel: 'bopis',
       bopisPickUp: 'pickup',
       bossLabel: 'boss',
       bossPickUp: 'boss',
+      by: 'lbl_cartTile_by',
       cancel: 'Cancel',
       chooseDiff: 'minibag',
       color: 'Color',
@@ -197,9 +212,13 @@ describe('#CartItemTile selector', () => {
       errorSize: 'minibag',
       extra: 'extra',
       fit: 'Fit',
+      itemDeleted: 'lbl_msg_itemDeleteSuccess',
       itemSoldOut: 'minibag',
       itemUnavailable: 'minibag',
+      moveToBagLink: 'moveToBagLink',
       off: 'off',
+      phone: undefined,
+      pickup: undefined,
       points: 'Points',
       price: 'Price',
       problemWithOrder: 'minibag',
@@ -207,17 +226,22 @@ describe('#CartItemTile selector', () => {
       productImageAlt: 'Product',
       qty: 'Qty',
       removeEdit: 'removeEdit',
+      removeError: 'remove',
       removeSoldOut: 'minibag',
       removeSoldoutHeader: 'minibag',
       saveForLater: 'Save For Later',
+      saveForLaterLink: 'saveForLaterLink',
+      sflDeleteSuccess: 'sflDeleteSuccess',
+      sflMaxLimitError: 'sflMaxLimitError',
+      sflSuccess: 'sflSuccess',
+      shipping: undefined,
       size: 'Size',
       soldOut: 'minibag',
+      today: undefined,
+      tomorrow: undefined,
       update: 'update',
       updateUnavailable: 'minibag',
       value: 'Value',
-      saveForLaterLink: 'saveForLaterLink',
-      sflMaxLimitError: 'sflMaxLimitError',
-      moveToBagLink: 'moveToBagLink',
     });
   });
 });

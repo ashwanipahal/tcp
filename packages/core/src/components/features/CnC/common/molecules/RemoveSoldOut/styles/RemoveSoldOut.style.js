@@ -39,4 +39,7 @@ export default css`
       margin-left: 28px;
     }
   }
+  .removeErrorMessage {
+    text-decoration: underline;
+  }
 `;

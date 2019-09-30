@@ -11,6 +11,7 @@ describe('Venmo Payment Button Container', () => {
       isMobile: true,
       mode: 'client_token',
       authorizationKey: 'encrytptedauthorizationkey',
+      isNonceNotExpired: false,
       venmoData: {
         venmoClientTokenData: 'Object',
         deviceData: '762a73c4175ca24f7b1436a440da5bd0',
@@ -30,6 +31,7 @@ describe('Venmo Payment Button Container', () => {
       setVenmoPaymentInProgress: jest.fn(),
       getVenmoPaymentTokenAction: jest.fn(),
       setVenmoDataAction: jest.fn(),
+      onSuccess: jest.fn(),
     };
   });
 
@@ -42,6 +44,13 @@ describe('Venmo Payment Button Container', () => {
     const tree = shallow(<VenmoPaymentButtonContainer {...props} />);
     const componentInstance = tree.instance();
     expect(componentInstance.setVenmoData()).toEqual(undefined);
+  });
+
+  it('calling onVenmoPaymentButtonClick method', () => {
+    const tree = shallow(<VenmoPaymentButtonContainer {...props} />);
+    const componentInstance = tree.instance();
+    componentInstance.onVenmoPaymentButtonClick();
+    expect(props.onSuccess).toBeCalled();
   });
 
   it('calling fetchVenmoClientToken method', () => {
@@ -57,7 +66,7 @@ describe('#mapDispatchToProps', () => {
   it('should return an action setVenmoPaymentInProgress which will call dispatch function on execution', () => {
     const dispatch = jest.fn();
     const dispatchProps = mapDispatchToProps(dispatch);
-    dispatchProps.setVenmoPaymentInProgress();
+    dispatchProps.setVenmoProgress();
     expect(dispatch.mock.calls).toHaveLength(1);
   });
 

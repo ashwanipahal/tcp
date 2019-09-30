@@ -1,6 +1,6 @@
 import React from 'react';
 import { shallow } from 'enzyme';
-import { BagPageContainer, mapDispatchToProps } from '../container/BagPage.container';
+import { BagPageContainer, mapDispatchToProps } from '../container/BagPageCommonContainer';
 import BagPage from '../views/BagPage.view';
 
 describe('Bag page Container', () => {
@@ -9,6 +9,8 @@ describe('Bag page Container', () => {
     initialActions: jest.fn(),
     fetchNeedHelpContent: jest.fn(),
     fetchSflData: jest.fn(),
+    setVenmoPickupState: jest.fn(),
+    setVenmoShippingState: jest.fn(),
   };
   it('should render Added to Bag view section', () => {
     const tree = shallow(<BagPageContainer {...props} />);

@@ -6,6 +6,7 @@ import { API_CONFIG } from '../services/config';
 import { getStoreRef, resetStoreRef } from './store.utils';
 import { APICONFIG_REDUCER_KEY } from '../constants/reducer.constants';
 import { parseDate } from './parseDate';
+import { ROUTE_PATH } from '../config/route.config';
 
 // setting the apiConfig subtree of whole state in variable; Do we really need it ?
 let apiConfig = null;
@@ -187,45 +188,25 @@ const GOOGLE_PLACE_PARTS = {
   postal_code: 'short_name',
 };
 
-const returngetAddress = (addressType, val, address) => {
-  const addressRef = { ...address };
-  switch (addressType) {
-    case 'street_number':
-      addressRef.street_number = val;
-      break;
-    case 'route':
-      addressRef.street_name = val;
-      break;
-    case 'locality':
-      addressRef.city = val;
-      break;
-    case 'sublocality_level_1':
-      addressRef.city = val;
-      break;
-    case 'administrative_area_level_1':
-      addressRef.state = val;
-      break;
-    case 'country':
-      addressRef.country = val;
-      break;
-    case 'postal_code':
-      addressRef.zip = val;
-      break;
-    default:
-      addressRef.zip = val;
-  }
-  return addressRef;
+const addressTypeMap = {
+  street_number: 'streetNumber',
+  route: 'streetName',
+  locality: 'city',
+  sublocality_level_1: 'city',
+  administrative_area_level_1: 'state',
+  country: 'country',
+  postal_code: 'zip',
 };
 
 export const getAddressFromPlace = (place, inputValue) => {
-  let address = {
+  const address = {
+    streetNumber: '',
+    streetName: '',
     street: '',
     city: '',
     state: '',
     country: '',
     zip: '',
-    steet_number: '',
-    street_name: '',
   };
   if (typeof place.address_components === 'undefined') {
     return address;
@@ -234,20 +215,20 @@ export const getAddressFromPlace = (place, inputValue) => {
     const addressType = place.address_components[i].types[0];
     if (GOOGLE_PLACE_PARTS[addressType]) {
       const val = place.address_components[i][GOOGLE_PLACE_PARTS[addressType]];
-      address = returngetAddress(addressType, val, address);
+      address[addressTypeMap[addressType]] = val;
     }
   }
-  if (!address.street_number) {
-    const regex = new RegExp(`^(.*)${address.street_name.split(' ', 1)[0]}`);
+  if (!address.streetNumber) {
+    const regex = RegExp(`^(.*)${address.streetName.split(' ', 1)[0]}`);
     const result = regex.exec(inputValue);
     const inputNum = Array.isArray(result) && result[1] && Number(result[1]);
 
-    if (!Number(inputNum) && parseInt(inputNum, 10) === inputNum) {
-      address.street_number = inputNum;
+    if (!isNaN(inputNum) && parseInt(inputNum, 10) === inputNum) {
+      address.streetNumber = inputNum;
     }
   }
 
-  address.street = `${address.street_number} ${address.street_name}`;
+  address.street = `${address.streetNumber} ${address.streetName}`.trim();
 
   return address;
 };
@@ -264,7 +245,7 @@ export const formatAddress = address => ({
 });
 
 export const formatPhoneNumber = phone => {
-  if (phone) return `(${phone.slice(0, 3)})-${phone.slice(3, 6)}-${phone.slice(6, 15)}`;
+  if (phone) return `(${phone.slice(0, 3)}) ${phone.slice(3, 6)}-${phone.slice(6, 15)}`;
   return '';
 };
 
@@ -399,6 +380,7 @@ export const getLabelValue = (labelState, labelKey, subCategory, category) => {
   return typeof labelValue === 'string' ? labelValue : labelKey;
 };
 
+// eslint-disable-next-line
 export const getErrorSelector = (state, labels, errorKey) => {
   const errorParameters = state && state.getIn(['errorParameters', '0']);
   const errorCode = state && state.get('errorKey');
@@ -489,6 +471,11 @@ export const formatPhone = (phoneNum, hyphenFormat) => {
   return phone;
 };
 
+export const getSiteId = () => {
+  const paths = window.location.pathname.split('/', 2);
+  return paths[1];
+};
+// eslint-disable-next-line
 export const parseStoreHours = hoursOfOperation => {
   let carryOverClosingHour;
   const result = [];
@@ -544,6 +531,88 @@ export const parseBoolean = bool => {
   return bool === true || bool === '1' || (bool || '').toUpperCase() === 'TRUE';
 };
 
+export const getFormSKUValue = formValue => {
+  return {
+    color: (typeof formValue.color === 'object' && formValue.color.name) || formValue.Quantity,
+    size: (typeof formValue.Size === 'object' && formValue.Size.name) || formValue.Size,
+    quantity:
+      (typeof formValue.Quantity === 'object' && formValue.Quantity.name) || formValue.Quantity,
+    fit:
+      (formValue.Fit && typeof formValue.Fit === 'object' && formValue.Fit.name) || formValue.Fit,
+  };
+};
+
+/**
+ * This function configure url for Next/Link using CMS defined url string
+ */
+export const configureInternalNavigationFromCMSUrl = url => {
+  const plpRoute = `${ROUTE_PATH.plp.name}/`;
+  const pdpRoute = `${ROUTE_PATH.pdp.name}/`;
+  const searchRoute = `${ROUTE_PATH.search.name}/`;
+
+  if (url.includes(plpRoute)) {
+    const urlItems = url.split(plpRoute);
+    const queryParam = urlItems.join('');
+    return `${ROUTE_PATH.plp.name}?${ROUTE_PATH.plp.param}=${queryParam}`;
+  }
+  if (url.includes(pdpRoute)) {
+    const urlItems = url.split(pdpRoute);
+    const queryParam = urlItems.join('');
+    return `${ROUTE_PATH.pdp.name}?${ROUTE_PATH.pdp.param}=${queryParam}`;
+  }
+  if (url.includes(searchRoute)) {
+    const urlItems = url.split(searchRoute);
+    const queryParam = urlItems.join('');
+    return `${ROUTE_PATH.search.name}?${ROUTE_PATH.search.param}=${queryParam}`;
+  }
+  return url;
+};
+
+export const getModifiedLanguageCode = id => {
+  switch (id) {
+    case 'en':
+      return 'en_US';
+    case 'es':
+      return 'es_ES';
+    case 'fr':
+      return 'fr_FR';
+    default:
+      return id;
+  }
+};
+
+/**
+ * @method getTranslateDateInformation
+ * @desc returns day, month and day of the respective date provided
+ * @param {string} date date which is to be mutated
+ * @param {upperCase} locale use for convert locate formate
+ */
+export const getTranslateDateInformation = (
+  date,
+  language,
+  dayOption = { weekday: 'short' },
+  monthOption = { month: 'short' }
+) => {
+  const localeType = language ? getModifiedLanguageCode(language).replace('_', '-') : 'en';
+  const currentDate = date ? new Date(date) : new Date();
+  return {
+    day: new Intl.DateTimeFormat(localeType, dayOption).format(currentDate),
+    month: new Intl.DateTimeFormat(localeType, monthOption).format(currentDate),
+    date: currentDate.getDate(),
+    year: currentDate.getFullYear(),
+  };
+};
+
+export const extractFloat = currency => {
+  try {
+    return !currency
+      ? 0
+      : parseFloat(parseFloat(currency.toString().match(/[+-]?\d+(\.\d+)?/g)[0]).toFixed(2));
+  } catch (e) {
+    return 0;
+  }
+};
+
 export default {
   getPromotionalMessage,
   getIconPath,
@@ -571,4 +640,9 @@ export default {
   parseStoreHours,
   parseBoolean,
   sanitizeEntity,
+  getFormSKUValue,
+  configureInternalNavigationFromCMSUrl,
+  getModifiedLanguageCode,
+  getTranslateDateInformation,
+  extractFloat,
 };

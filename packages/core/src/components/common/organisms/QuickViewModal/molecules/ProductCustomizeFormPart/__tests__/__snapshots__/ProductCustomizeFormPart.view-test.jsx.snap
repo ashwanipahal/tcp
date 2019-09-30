@@ -1,0 +1,312 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`ProductCustomizeFormPart component should renders correctly 1`] = `
+<div
+  className=""
+>
+  <div
+    className="product-customize-form-container"
+  >
+    <div
+      className="image-title-wrapper"
+    >
+      <div
+        className="image-wrapper"
+      >
+        <Styled(Image)
+          alt="Boys Uniform V Neck Sweater"
+          data-locator="quick_view_product_image"
+          src="https://test4.childrensplace.com/wcsstore/GlobalSAS/images/tcp/products/500/2100606_IV.jpg"
+        />
+        <Styled(Anchor)
+          asPath="/p/2100606_IV"
+          className="link-redirect"
+          dataLocator="quick_view_View_Product_details"
+          to="/p?pid=2100606_IV"
+        >
+          <Styled(BodyCopy)
+            className="product-link"
+            color="text.primary"
+            component="p"
+            fontFamily="secondary"
+            fontSize="fs14"
+            fontWeight="regular"
+            letterSpacing="normal"
+            lineHeight="normal"
+            link={null}
+            textAlign="left"
+          />
+        </Styled(Anchor)>
+      </div>
+      <div
+        className="product-details-card-container-separate"
+      >
+        <Styled(BodyCopy)
+          className="product-name"
+          color="text.primary"
+          component="p"
+          dataLocator="quick_view_product_name"
+          fontFamily="secondary"
+          fontSize="fs18"
+          fontWeight="extrabold"
+          letterSpacing="normal"
+          lineHeight="normal"
+          link={null}
+          textAlign="left"
+        >
+          Boys Uniform V Neck Sweater
+        </Styled(BodyCopy)>
+        <Styled(ProductPrice)
+          currencyExchange=""
+          currencySymbol=""
+          customFonts={
+            Object {
+              "listPriceFont": "fs14",
+            }
+          }
+          inheritedStyles={
+            Array [
+              "
+  .list-badge-container {
+    display: flex;
+  }
+",
+            ]
+          }
+          isCanada={false}
+          isInternationalShipping={false}
+          isItemPartNumberVisible={false}
+          isPlcc={false}
+          listPrice={24.95}
+          offerPrice={18.71}
+          priceCurrency=""
+        />
+      </div>
+    </div>
+    <div
+      className="product-detail"
+    >
+      <div
+        className="product-details-card-container"
+      >
+        <Styled(BodyCopy)
+          className="product-name"
+          color="text.primary"
+          component="p"
+          dataLocator="quick_view_product_name"
+          fontFamily="secondary"
+          fontSize="fs18"
+          fontWeight="extrabold"
+          letterSpacing="normal"
+          lineHeight="normal"
+          link={null}
+          textAlign="left"
+        >
+          Boys Uniform V Neck Sweater
+        </Styled(BodyCopy)>
+        <Styled(ProductPrice)
+          currencyExchange=""
+          currencySymbol=""
+          customFonts={
+            Object {
+              "listPriceFont": "fs14",
+            }
+          }
+          inheritedStyles={
+            Array [
+              "
+  .list-badge-container {
+    display: flex;
+  }
+",
+            ]
+          }
+          isCanada={false}
+          isInternationalShipping={false}
+          isItemPartNumberVisible={false}
+          isPlcc={false}
+          listPrice={24.95}
+          offerPrice={18.71}
+          priceCurrency=""
+        />
+      </div>
+      <ProductAddToBagContainer
+        currentProduct={
+          Object {
+            "alternateSizes": Object {},
+            "bundleProducts": Array [],
+            "categoryId": "47503>47539",
+            "colorFitSizeDisplayNames": null,
+            "colorFitsSizesMap": Array [
+              Object {
+                "categoryEntity": "Boy:School Uniforms",
+                "color": Object {
+                  "family": "GRAY",
+                  "imagePath": "https://test4.childrensplace.com/wcsstore/GlobalSAS/images/tcp/products/swatches/2100606_1137.jpg",
+                  "name": "SMOKEB10",
+                },
+                "colorDisplayId": "2100606_1137",
+                "colorProductId": "1118006",
+                "favoritedCount": 991,
+                "fits": Array [
+                  Object {
+                    "fitNameVal": "",
+                    "isDefault": true,
+                    "maxAvailable": 1.7976931348623157e+308,
+                    "sizes": Array [
+                      Object {
+                        "listPrice": 24.95,
+                        "maxAvailable": 218,
+                        "offerPrice": 18.71,
+                        "position": 0,
+                        "sizeName": "XS (4)",
+                        "skuId": "1118990",
+                        "variantId": "00191755242934",
+                        "variantNo": "2100606001",
+                      },
+                      Object {
+                        "listPrice": 24.95,
+                        "maxAvailable": 1065,
+                        "offerPrice": 18.71,
+                        "position": 1,
+                        "sizeName": "S (5/6)",
+                        "skuId": "1119730",
+                        "variantId": "00191755242941",
+                        "variantNo": "2100606002",
+                      },
+                      Object {
+                        "listPrice": 24.95,
+                        "maxAvailable": 1730,
+                        "offerPrice": 18.71,
+                        "position": 2,
+                        "sizeName": "M (7/8)",
+                        "skuId": "1118372",
+                        "variantId": "00191755242958",
+                        "variantNo": "2100606003",
+                      },
+                      Object {
+                        "listPrice": 24.95,
+                        "maxAvailable": 1417,
+                        "offerPrice": 18.71,
+                        "position": 3,
+                        "sizeName": "L (10/12)",
+                        "skuId": "1118586",
+                        "variantId": "00191755242965",
+                        "variantNo": "2100606004",
+                      },
+                      Object {
+                        "listPrice": 24.95,
+                        "maxAvailable": 630,
+                        "offerPrice": 18.71,
+                        "position": 4,
+                        "sizeName": "XL (14)",
+                        "skuId": "1118690",
+                        "variantId": "00191755242972",
+                        "variantNo": "2100606005",
+                      },
+                      Object {
+                        "listPrice": 24.95,
+                        "maxAvailable": 375,
+                        "offerPrice": 18.71,
+                        "position": 5,
+                        "sizeName": "XXL (16)",
+                        "skuId": "1118793",
+                        "variantId": "00191755242989",
+                        "variantNo": "2100606006",
+                      },
+                    ],
+                  },
+                ],
+                "hasFits": false,
+                "imageName": "2100606_1137",
+                "listPrice": 24.95,
+                "maxAvailable": 5435,
+                "maxAvailableBoss": 0,
+                "miscInfo": Object {
+                  "badge1": Object {
+                    "defaultBadge": "ONLINE EXCLUSIVE",
+                    "matchBadge": false,
+                  },
+                  "badge2": "25% OFF",
+                  "isBopisEligible": false,
+                  "isBossEligible": false,
+                  "keepAlive": false,
+                },
+                "offerPrice": 18.71,
+                "pdpUrl": "/p/2100606_1137",
+              },
+            ],
+            "generalProductId": "2100606_IV",
+            "highListPrice": 0,
+            "highOfferPrice": 0,
+            "imagesByColor": Object {
+              "SMOKEB10": Object {
+                "basicImageUrl": "https://test4.childrensplace.com/wcsstore/GlobalSAS/images/tcp/products/500/2100606_1137.jpg",
+                "extraImages": Array [
+                  Object {
+                    "bigSizeImageUrl": "https://test4.childrensplace.com/wcsstore/GlobalSAS/images/tcp/products/900/2100606_1137.jpg",
+                    "iconSizeImageUrl": "https://test4.childrensplace.com/wcsstore/GlobalSAS/images/tcp/products/125/2100606_1137.jpg",
+                    "isOnModalImage": false,
+                    "listingSizeImageUrl": "https://test4.childrensplace.com/wcsstore/GlobalSAS/images/tcp/products/380/2100606_1137.jpg",
+                    "regularSizeImageUrl": "https://test4.childrensplace.com/wcsstore/GlobalSAS/images/tcp/products/500/2100606_1137.jpg",
+                    "superSizeImageUrl": "https://test4.childrensplace.com/wcsstore/GlobalSAS/images/tcp/products/900/2100606_1137.jpg",
+                  },
+                  Object {
+                    "bigSizeImageUrl": "https://test4.childrensplace.com/wcsstore/GlobalSAS/images/tcp/products/900/2100606_1137-1.jpg",
+                    "iconSizeImageUrl": "https://test4.childrensplace.com/wcsstore/GlobalSAS/images/tcp/products/125/2100606_1137-1.jpg",
+                    "isOnModalImage": false,
+                    "listingSizeImageUrl": "https://test4.childrensplace.com/wcsstore/GlobalSAS/images/tcp/products/380/2100606_1137-1.jpg",
+                    "regularSizeImageUrl": "https://test4.childrensplace.com/wcsstore/GlobalSAS/images/tcp/products/500/2100606_1137-1.jpg",
+                    "superSizeImageUrl": "https://test4.childrensplace.com/wcsstore/GlobalSAS/images/tcp/products/900/2100606_1137-1.jpg",
+                  },
+                ],
+              },
+              "TIDAL": Object {
+                "basicImageUrl": "https://test4.childrensplace.com/wcsstore/GlobalSAS/images/tcp/products/500/2100606_IV.jpg",
+                "extraImages": Array [
+                  Object {
+                    "bigSizeImageUrl": "https://test4.childrensplace.com/wcsstore/GlobalSAS/images/tcp/products/900/2100606_IV.jpg",
+                    "iconSizeImageUrl": "https://test4.childrensplace.com/wcsstore/GlobalSAS/images/tcp/products/125/2100606_IV.jpg",
+                    "isOnModalImage": false,
+                    "listingSizeImageUrl": "https://test4.childrensplace.com/wcsstore/GlobalSAS/images/tcp/products/380/2100606_IV.jpg",
+                    "regularSizeImageUrl": "https://test4.childrensplace.com/wcsstore/GlobalSAS/images/tcp/products/500/2100606_IV.jpg",
+                    "superSizeImageUrl": "https://test4.childrensplace.com/wcsstore/GlobalSAS/images/tcp/products/900/2100606_IV.jpg",
+                  },
+                  Object {
+                    "bigSizeImageUrl": "https://test4.childrensplace.com/wcsstore/GlobalSAS/images/tcp/products/900/2100606_IV-1.jpg",
+                    "iconSizeImageUrl": "https://test4.childrensplace.com/wcsstore/GlobalSAS/images/tcp/products/125/2100606_IV-1.jpg",
+                    "isOnModalImage": false,
+                    "listingSizeImageUrl": "https://test4.childrensplace.com/wcsstore/GlobalSAS/images/tcp/products/380/2100606_IV-1.jpg",
+                    "regularSizeImageUrl": "https://test4.childrensplace.com/wcsstore/GlobalSAS/images/tcp/products/500/2100606_IV-1.jpg",
+                    "superSizeImageUrl": "https://test4.childrensplace.com/wcsstore/GlobalSAS/images/tcp/products/900/2100606_IV-1.jpg",
+                  },
+                ],
+              },
+            },
+            "isGiftCard": false,
+            "listPrice": 24.95,
+            "longDescription": "<li>Made of 100% cotton in a sweater knit</li><li>Rib-knit V neck, sleeve cuffs and hem</li><li>Fully-fashioned sleeves for ease of movement</li><li>Pre-washed for added softness and to reduce shrinkage</li><li>Imported</li>",
+            "long_product_title": "Boys Uniform Long Sleeve V Neck Sweater",
+            "lowListPrice": 24.95,
+            "lowOfferPrice": 18.71,
+            "name": "Boys Uniform V Neck Sweater",
+            "offerPrice": 18.71,
+            "pdpUrl": "/p/2100606_IV",
+            "productId": "2100606_IV",
+            "promotionalMessage": "",
+            "promotionalPLCCMessage": "",
+            "ratings": 0,
+            "ratingsProductId": "2100606",
+            "reviewsCount": 0,
+            "shortDescription": "School-approved style for your super cool dude!",
+            "unbxdProdId": "2100606_IV",
+          }
+        }
+        errorOnHandleSubmit=""
+        onChangeColor={[Function]}
+        plpLabels={Object {}}
+      />
+    </div>
+  </div>
+</div>
+`;

@@ -5,9 +5,8 @@ exports[`ReviewPageVanilla component should renders correctly props not present 
   <Styled(CheckoutSectionTitleDisplay)
     dataLocator="review-title"
   />
-  <div
-    className="review-billing"
-  />
+  <Connect(BillingSectionContainer) />
+  <Connect(CheckoutCartItemList) />
   <Styled(CheckoutFooter)
     backLinkHandler={[Function]}
     footerBody={

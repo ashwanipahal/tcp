@@ -23,8 +23,8 @@ export class VenmoPaymentButtonContainer extends React.PureComponent<Props> {
    * Fetch venmo token details from the backend api. This is used to create instance of venmo and for authorization
    */
   fetchVenmoClientToken = () => {
-    const { isMobile, isGuest, orderId, enabled } = this.props;
-    if (isMobile && enabled) {
+    const { isGuest, orderId, enabled, isNonceNotExpired } = this.props;
+    if (enabled && !isNonceNotExpired) {
       let userState = '';
       if (isGuest) {
         userState = VENMO_USER_STATES.GUEST;
@@ -61,16 +61,19 @@ export class VenmoPaymentButtonContainer extends React.PureComponent<Props> {
    * This method is called once we get error or user interupted the venmo authorization flow.
    */
   onVenmoPaymentButtonError = e => {
+    const { setVenmoProgress } = this.props;
+    setVenmoProgress(false); // Cancelling venmo progress on error
     logger.error(e);
   };
 
   render() {
-    const { ...otherProps } = this.props;
+    const { setVenmoProgress, ...otherProps } = this.props;
     return (
       <VenmoPaymentButton
         setVenmoData={this.setVenmoData}
         onVenmoPaymentButtonClick={this.onVenmoPaymentButtonClick}
         onVenmoPaymentButtonError={this.onVenmoPaymentButtonError}
+        setVenmoPaymentInProgress={setVenmoProgress}
         {...otherProps}
       />
     );
@@ -90,23 +93,26 @@ const mapStateToProps = state => {
   const { venmoSecurityToken: authorizationKey, venmoPaymentTokenAvailable } =
     venmoClientTokenData || {};
   const mode = venmoPaymentTokenAvailable === 'TRUE' ? modes.PAYMENT_TOKEN : modes.CLIENT_TOKEN;
-  const enabled = selectors.getIsVenmoEnabled(state) === 'TRUE';
+  const enabled = selectors.getIsVenmoEnabled(state);
+  // const isOOSItemsCount = BagSelectors.getOOSCount(state);
+  // const unAvailableItemsCount = BagSelectors.getUnavailableCount(state);
+  const isRemoveOOSItems = false;
   return {
     enabled,
-    isMobile: selectors.getIsMobile(),
     mode,
     authorizationKey,
     isNonceNotExpired: selectors.isVenmoNonceNotExpired(state),
-    venmoData: selectors.getVenmoData(state),
+    venmoData: selectors.getVenmoData(),
     venmoClientTokenData,
     allowNewBrowserTab: true,
     isGuest: isGuestUser(state),
     orderId: getCartOrderId(state),
+    isRemoveOOSItems,
   };
 };
 
 export const mapDispatchToProps = dispatch => ({
-  setVenmoPaymentInProgress: data => dispatch(setVenmoPaymentInProgress(data)),
+  setVenmoProgress: data => dispatch(setVenmoPaymentInProgress(data)),
   getVenmoPaymentTokenAction: data => dispatch(getVenmoClientToken(data)),
   setVenmoDataAction: data => dispatch(setVenmoData(data)),
 });

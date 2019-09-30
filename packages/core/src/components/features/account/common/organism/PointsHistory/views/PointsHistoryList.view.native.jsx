@@ -1,24 +1,60 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import createThemeColorPalette from '@tcp/core/styles/themes/createThemeColorPalette';
+import Notification from '@tcp/core/src/components/common/molecules/Notification';
+import { getLabelValue } from '@tcp/core/src/utils/utils';
+import { BodyCopyWithSpacing } from '@tcp/core/src/components/common/atoms/styledWrapper';
 import { BodyCopy } from '../../../../../../common/atoms';
 import { PointHistoryView, PointView, PointTransView } from '../styles/PointHistory.style';
 
 /**
  * @function PointsHistoryList The PointsHistory to show points history list
  */
-const colorPalette = createThemeColorPalette();
 
-const PointsHistoryList = ({ labels, pointHistory }) => {
+const PointsHistoryList = ({
+  labels,
+  pointHistory,
+  accountlabels,
+  showSuccess,
+  showError,
+  claimPointsErrorMessage,
+}) => {
   const pointHistoryLen = pointHistory && pointHistory.length;
   return (
     <React.Fragment>
+      {showError && (
+        <Notification
+          status="success"
+          colSize={{ large: 12, medium: 8, small: 6 }}
+          message={claimPointsErrorMessage}
+        />
+      )}
+
+      {showSuccess && (
+        <Notification
+          status="success"
+          colSize={{ large: 12, medium: 8, small: 6 }}
+          message={getLabelValue(
+            accountlabels,
+            'lbl_points_claim_success_message',
+            'myPlaceRewards'
+          )}
+        />
+      )}
+      <BodyCopyWithSpacing
+        text={getLabelValue(labels, 'lbl_common_points_history')}
+        fontSize="fs16"
+        fontWeight="extrabold"
+        fontFamily="secondary"
+        color="gray.900"
+        spacingStyles="margin-bottom-XL margin-top-LRG"
+        dataLocator="points_history_subheading"
+      />
       {pointHistoryLen > 0 && (
         <PointHistoryView>
           <PointView>
             <BodyCopy
               text={labels.lbl_common_order_date}
-              color={colorPalette.gray[900]}
+              color="gray.900"
               fontWeight="semibold"
               fontFamily="secondary"
               fontSize="fs12"
@@ -27,7 +63,7 @@ const PointsHistoryList = ({ labels, pointHistory }) => {
           <PointTransView>
             <BodyCopy
               text={labels.lbl_common_transaction}
-              color={colorPalette.gray[900]}
+              color="gray.900"
               fontWeight="semibold"
               fontFamily="secondary"
               fontSize="fs12"
@@ -38,7 +74,7 @@ const PointsHistoryList = ({ labels, pointHistory }) => {
               text={labels.lbl_common_points_earned}
               fontFamily="secondary"
               fontSize="fs12"
-              color={colorPalette.gray[900]}
+              color="gray.900"
               fontWeight="semibold"
               textAlign="center"
             />
@@ -55,7 +91,7 @@ const PointsHistoryList = ({ labels, pointHistory }) => {
                 fontFamily="secondary"
                 fontSize="fs12"
                 fontWeight="semibold"
-                color={colorPalette.gray[900]}
+                color="gray.900"
               />
             </PointView>
             <PointTransView>
@@ -64,7 +100,7 @@ const PointsHistoryList = ({ labels, pointHistory }) => {
                 fontFamily="secondary"
                 fontSize="fs12"
                 fontWeight="semibold"
-                color={colorPalette.gray[900]}
+                color="gray.900"
               />
             </PointTransView>
             <PointView>
@@ -74,7 +110,7 @@ const PointsHistoryList = ({ labels, pointHistory }) => {
                 fontSize="fs12"
                 fontWeight="semibold"
                 textAlign="center"
-                color={colorPalette.gray[900]}
+                color="gray.900"
               />
             </PointView>
           </PointHistoryView>
@@ -86,7 +122,7 @@ const PointsHistoryList = ({ labels, pointHistory }) => {
           fontFamily="secondary"
           fontSize="fs16"
           fontWeight="semibold"
-          color={colorPalette.gray[900]}
+          color="gray.900"
         />
       )}
     </React.Fragment>
@@ -101,6 +137,10 @@ PointsHistoryList.propTypes = {
     lbl_common_points_earned: PropTypes.string,
     lbl_common_points_history: PropTypes.string,
   }),
+  accountlabels: PropTypes.shape({}),
+  showSuccess: PropTypes.string,
+  showError: PropTypes.string,
+  claimPointsErrorMessage: PropTypes.string,
 };
 
 PointsHistoryList.defaultProps = {
@@ -111,6 +151,10 @@ PointsHistoryList.defaultProps = {
     lbl_common_points_earned: '',
     lbl_common_points_history: '',
   },
+  accountlabels: {},
+  showSuccess: '',
+  showError: '',
+  claimPointsErrorMessage: '',
 };
 
 export default PointsHistoryList;

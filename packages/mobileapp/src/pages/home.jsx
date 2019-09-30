@@ -1,12 +1,12 @@
 import React from 'react';
 import { createStackNavigator } from 'react-navigation';
 import ProductListingPageContainer from '@tcp/core/src/components/features/browse/ProductListingPage';
-import BagPage from '@tcp/core/src/components/features/CnC/BagPage';
 import LoginPageContainer from '@tcp/core/src/components/features/account/LoginPage';
 import GetCandidGallery from '@tcp/core/src/components/common/molecules/GetCandidGallery/views/GetCandidGallery.native';
 import ProductListingPage from '@tcp/core/src/components/features/browse/ProductListing';
 import StoreLanding from '@tcp/core/src/components/features/storeLocator/StoreLanding/container/StoreLanding.container';
 import StoreDetails from '@tcp/core/src/components/features/storeLocator/StoreDetail';
+import ProductDetail from '@tcp/core/src/components/features/browse/ProductDetail';
 import Home from '../components/features/content/HomePage';
 import account from '../components/features/account/account';
 import NavBarIcon from '../components/common/atoms/NavBarIcon';
@@ -30,7 +30,6 @@ const HomeStack = createStackNavigator(
     Navigation,
     ProductLanding,
     ProductListingPageContainer,
-    BagPage,
     LoginPageContainer,
     GetCandidGallery: {
       screen: GetCandidGallery,
@@ -38,7 +37,18 @@ const HomeStack = createStackNavigator(
         return getNewHeader(navigation);
       },
     },
-    ProductListingPage,
+    ProductDetail: {
+      screen: ProductDetail,
+      navigationOptions: ({ navigation }) => {
+        return getNewHeader(navigation);
+      },
+    },
+    ProductListingPage: {
+      screen: ProductListingPage,
+      navigationOptions: ({ navigation }) => {
+        return getNewHeader(navigation);
+      },
+    },
     StoreDetails: {
       screen: StoreDetails,
       path: 'store-details/:storeId',

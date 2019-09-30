@@ -23,11 +23,12 @@ const ProductListingReducer = (state = initialState, action) => {
       );
     case SLP_CONSTANTS.SET_SLP_FIRST_PRODUCTS_PAGE:
       return state.merge(action.productsPage).set(DEFAULT_REDUCER_KEY, setCacheTTL());
-    case SLP_CONSTANTS.SET_PLP_LOADING_STATE:
+    case SLP_CONSTANTS.SET_SLP_LOADING_STATE:
       return state.merge(action.payload);
     case SLP_CONSTANTS.SET_SLP_SEARCHTERM_STATE:
       return state.merge(action.payload);
-
+    case SLP_CONSTANTS.SET_SLP_RESULTS_AVAILABLE_STATE:
+      return state.merge(action.payload);
     default:
       return getDefaultState(state);
   }

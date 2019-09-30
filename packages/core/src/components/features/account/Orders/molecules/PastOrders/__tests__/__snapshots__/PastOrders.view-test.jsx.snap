@@ -1,0 +1,197 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`PastOrders component should renders correctly 1`] = `
+<Styled(BodyCopy)
+  className=""
+  color="text.primary"
+  component="p"
+  fontFamily="primary"
+  fontSize={12}
+  fontWeight="regular"
+  letterSpacing="normal"
+  lineHeight="normal"
+  link={null}
+  textAlign="left"
+>
+  <Styled(BodyCopy)
+    className="elem-mt-XL"
+    color="text.primary"
+    component="h3"
+    dataLocator="past-order_heading"
+    fontFamily="secondary"
+    fontSize="fs16"
+    fontWeight="semibold"
+    letterSpacing="normal"
+    lineHeight="normal"
+    link={null}
+    textAlign="left"
+  >
+    lbl_orders_pastOrders
+  </Styled(BodyCopy)>
+  <Styled(Row)
+    className="hide-on-mobile"
+    fullBleed={true}
+  >
+    <Styled(Col)
+      colSize={
+        Object {
+          "large": 5,
+          "medium": 3,
+          "small": 6,
+        }
+      }
+    >
+      <Styled(Row)
+        className="elem-pb-MED elem-pt-MED"
+        fullBleed={true}
+      >
+        <Styled(Col)
+          colSize={
+            Object {
+              "large": 6,
+              "medium": 4,
+              "small": 2,
+            }
+          }
+        >
+          <Styled(BodyCopy)
+            className="list-fontsizes"
+            color="text.primary"
+            component="p"
+            data-locator="order-date-header"
+            fontFamily="secondary"
+            fontSize="fs14"
+            fontWeight="extrabold"
+            letterSpacing="normal"
+            lineHeight="normal"
+            link={null}
+            textAlign="left"
+          >
+            lbl_orders_orderDate
+          </Styled(BodyCopy)>
+        </Styled(Col)>
+        <Styled(Col)
+          colSize={
+            Object {
+              "large": 6,
+              "medium": 4,
+              "small": 4,
+            }
+          }
+        >
+          <Styled(BodyCopy)
+            className="list-fontsizes"
+            color="text.primary"
+            component="p"
+            data-locator="order-number-header"
+            fontFamily="secondary"
+            fontSize="fs14"
+            fontWeight="extrabold"
+            letterSpacing="normal"
+            lineHeight="normal"
+            link={null}
+            textAlign="left"
+          >
+            lbl_orders_orderNumber
+          </Styled(BodyCopy)>
+        </Styled(Col)>
+      </Styled(Row)>
+    </Styled(Col)>
+    <Styled(Col)
+      colSize={
+        Object {
+          "large": 7,
+          "medium": 5,
+          "small": 6,
+        }
+      }
+      ignoreGutter={
+        Object {
+          "small": true,
+        }
+      }
+    >
+      <Styled(Row)
+        className="elem-pb-MED elem-pt-MED"
+        fullBleed={true}
+      >
+        <Styled(Col)
+          colSize={
+            Object {
+              "large": 4,
+              "medium": 3,
+              "small": 2,
+            }
+          }
+        >
+          <Styled(BodyCopy)
+            className={null}
+            color="text.primary"
+            component="p"
+            data-locator="order-type-header"
+            fontFamily="secondary"
+            fontSize="fs14"
+            fontWeight="extrabold"
+            letterSpacing="normal"
+            lineHeight="normal"
+            link={null}
+            textAlign="left"
+          >
+            lbl_orders_orderType
+          </Styled(BodyCopy)>
+        </Styled(Col)>
+        <Styled(Col)
+          colSize={
+            Object {
+              "large": 4,
+              "medium": 3,
+              "small": 2,
+            }
+          }
+        >
+          <Styled(BodyCopy)
+            className={null}
+            color="text.primary"
+            component="p"
+            data-locator="order-status-header"
+            fontFamily="secondary"
+            fontSize="fs14"
+            fontWeight="extrabold"
+            letterSpacing="normal"
+            lineHeight="normal"
+            link={null}
+            textAlign="left"
+          >
+            lbl_orders_orderStatus
+          </Styled(BodyCopy)>
+        </Styled(Col)>
+        <Styled(Col)
+          colSize={
+            Object {
+              "large": 4,
+              "medium": 2,
+              "small": 2,
+            }
+          }
+        >
+          <Styled(BodyCopy)
+            className="list-fontsizes"
+            color="text.primary"
+            component="p"
+            data-locator="order-total-header"
+            fontFamily="secondary"
+            fontSize="fs14"
+            fontWeight="extrabold"
+            letterSpacing="normal"
+            lineHeight="normal"
+            link={null}
+            textAlign="right"
+          >
+            lbl_orders_orderTotal
+          </Styled(BodyCopy)>
+        </Styled(Col)>
+      </Styled(Row)>
+    </Styled(Col)>
+  </Styled(Row)>
+</Styled(BodyCopy)>
+`;

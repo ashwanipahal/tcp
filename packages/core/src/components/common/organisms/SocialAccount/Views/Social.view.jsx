@@ -1,6 +1,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import FacebookLogin from './FacebookLogin';
+import { InstagramLoginComponent } from './InstagramLogin';
 import config from './config';
 import socialStyle from '../styles/social.style';
 import withStyles from '../../../hoc/withStyles';
@@ -8,9 +9,11 @@ import BodyCopy from '../../../atoms/BodyCopy';
 import Modal from '../../../molecules/Modal';
 import Button from '../../../atoms/Button';
 import { getLabelValue, routerPush } from '../../../../../utils';
+import getLinkedSocialAccountLabel from '../utils';
 
 const loginComponents = {
   Facebook: FacebookLogin,
+  Instagram: InstagramLoginComponent,
 };
 
 class Socialview extends React.PureComponent {
@@ -54,7 +57,9 @@ class Socialview extends React.PureComponent {
       return (
         <li className="social-accounts__infoList" key={index.toString()}>
           <span
-            data-locator={!elem.isConnected ? 'facebookDisabledIcon' : 'facebookEnabledIcon'}
+            data-locator={
+              !elem.isConnected ? `${isSocialAccount}DisabledIcon` : `${isSocialAccount}EnabledIcon`
+            }
             className={`${isSocialAccount}-icon--${
               elem.isConnected ? 'enable' : 'disable'
             } social-accounts__social-icon`}
@@ -71,7 +76,7 @@ class Socialview extends React.PureComponent {
               : `${labels.lbl_prefrence_connectTo} ${config.SOCIAL_ACCOUNTS[elem.socialAccount]}`}
           </BodyCopy>
           {this.renderSocialLogins(loginComponents[isSocialAccount], saveSocialAcc)}
-          {setPointsModal && (
+          {setPointsModal && this.pointsInformation.points > 0 && (
             <Modal
               fixedWidth
               isOpen={setPointsModal}
@@ -79,7 +84,7 @@ class Socialview extends React.PureComponent {
               overlayClassName="TCPModal__Overlay"
               className={`${className} TCPModal__Content`}
               maxWidth="450px"
-              minHeight="500px"
+              minHeight="520px"
             >
               <BodyCopy
                 fontSize="fs22"
@@ -105,9 +110,9 @@ class Socialview extends React.PureComponent {
                   className="points-theme"
                   fontWeight="black"
                 >
-                  {this.pointsInformation && this.pointsInformation.points}
+                  {this.pointsInformation.points}
                 </BodyCopy>
-                {getLabelValue(labels, 'lbl_prefrence_social_points_text_2')}
+                {getLinkedSocialAccountLabel(this.pointsInformation.activity, labels)}
               </BodyCopy>
               <BodyCopy
                 fontSize="fs14"
@@ -125,27 +130,38 @@ class Socialview extends React.PureComponent {
                 className="social-accounts-alignment"
               >
                 {getLabelValue(labels, 'lbl_prefrence_social_points_text_4')}
+                <BodyCopy fontSize="fs14" fontFamily="secondary" textAlign="center">
+                  {getLabelValue(labels, 'lbl_prefrence_social_points_text_5')}
+                </BodyCopy>
               </BodyCopy>
 
-              <Button
-                buttonVariation="fixed-width"
-                fill="BLUE"
-                type="submit"
-                className="button-style"
-                onClick={this.viewAll}
+              <BodyCopy
+                fontSize="fs14"
+                fontFamily="secondary"
+                textAlign="center"
+                className="social-accounts-alignment"
               >
-                {getLabelValue(labels, 'lbl_prefrence_social_points_modal_viewall_btn')}
-              </Button>
+                <Button
+                  buttonVariation="fixed-width"
+                  fill="BLUE"
+                  type="submit"
+                  className="button-style"
+                  onClick={this.viewAll}
+                >
+                  {getLabelValue(labels, 'lbl_prefrence_social_points_modal_viewall_btn')}
+                </Button>
 
-              <Button
-                buttonVariation="fixed-width"
-                fill="WHITE"
-                type="submit"
-                className="button-style"
-                onClick={this.onClose}
-              >
-                {getLabelValue(labels, 'lbl_prefrence_social_points_modal_close_btn')}
-              </Button>
+                <Button
+                  buttonVariation="fixed-width"
+                  fill="WHITE"
+                  type="submit"
+                  className="button-style"
+                  onClick={this.onClose}
+                  component="div"
+                >
+                  {getLabelValue(labels, 'lbl_prefrence_social_points_modal_close_btn')}
+                </Button>
+              </BodyCopy>
             </Modal>
           )}
         </li>
@@ -156,7 +172,7 @@ class Socialview extends React.PureComponent {
   refactorSocialDetails = accounts => {
     const accountsInfo = [];
     Object.keys(accounts).forEach(prop => {
-      if (prop === 'facebook') {
+      if (prop === 'facebook' || prop === 'instagram') {
         accountsInfo.push({
           socialAccount: config.SOCIAL_ACCOUNTS_INFO[prop],
           isConnected: accounts[prop].accessToken,
@@ -193,7 +209,7 @@ class Socialview extends React.PureComponent {
     return (
       <React.Fragment>
         <section className={className} data-selector="analytics-social-account">
-          <p className="social-accounts__subTitle" data-locator="linkAccountTxt">
+          <p className="social-accounts__subTitle" data-locator="mypreference-socialaccountheader">
             {labels.lbl_prefrence_social_text}
           </p>
           <ul>{this.renderAccountsInformation(this.socialAccounts, saveSocialAcc, labels)}</ul>

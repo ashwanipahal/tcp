@@ -1,3 +1,6 @@
+import { getLabelValue } from '../../../../../utils';
+import getAddedToBagFormValues from '../../../../../reduxStore/selectors/form.selectors';
+
 export const getNavTree = state => {
   return state.Navigation.navigationData;
 };
@@ -16,6 +19,15 @@ export const getDescription = state => {
 
 export const getRatingsProductId = state => {
   return state.ProductDetail.getIn(['currentProduct', 'ratingsProductId']);
+};
+
+export const getGeneralProductId = state => {
+  return state.ProductDetail.getIn(['currentProduct', 'generalProductId']);
+};
+
+export const getProductDetailFormValues = state => {
+  const generalProductId = getGeneralProductId(state);
+  return getAddedToBagFormValues(state, `ProductAddToBag-${generalProductId}`);
 };
 
 export const getPlpLabels = state => {
@@ -73,4 +85,10 @@ export const getCurrentCurrency = state => {
 
 export const getCurrentProduct = state => {
   return state.ProductDetail.get('currentProduct');
+};
+
+export const getPDPLabels = state => {
+  return {
+    fullSize: getLabelValue(state.Labels, 'lbl_full_size', 'PDP', 'Browse'),
+  };
 };

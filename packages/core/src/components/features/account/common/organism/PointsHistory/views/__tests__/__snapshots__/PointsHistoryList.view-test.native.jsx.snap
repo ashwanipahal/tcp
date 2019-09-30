@@ -2,11 +2,24 @@
 
 exports[`Points History List Page View should render Points History Page Correctly 1`] = `
 <Fragment>
+  <Styled(Styled(BodyCopy))
+    accessibilityText=""
+    color="gray.900"
+    dataLocator="points_history_subheading"
+    fontFamily="secondary"
+    fontSize="fs16"
+    fontWeight="extrabold"
+    margin={null}
+    numberOfLines={null}
+    spacingStyles="margin-bottom-XL margin-top-LRG"
+    text="Points History"
+    textDecoration={null}
+  />
   <Styled(View)>
     <Styled(View)>
       <Styled(BodyCopy)
         accessibilityText=""
-        color="#1a1a1a"
+        color="gray.900"
         dataLocator=""
         fontFamily="secondary"
         fontSize="fs12"
@@ -20,7 +33,7 @@ exports[`Points History List Page View should render Points History Page Correct
     <Styled(View)>
       <Styled(BodyCopy)
         accessibilityText=""
-        color="#1a1a1a"
+        color="gray.900"
         dataLocator=""
         fontFamily="secondary"
         fontSize="fs12"
@@ -34,7 +47,7 @@ exports[`Points History List Page View should render Points History Page Correct
     <Styled(View)>
       <Styled(BodyCopy)
         accessibilityText=""
-        color="#1a1a1a"
+        color="gray.900"
         dataLocator=""
         fontFamily="secondary"
         fontSize="fs12"
@@ -51,7 +64,7 @@ exports[`Points History List Page View should render Points History Page Correct
     <Styled(View)>
       <Styled(BodyCopy)
         accessibilityText=""
-        color="#1a1a1a"
+        color="gray.900"
         dataLocator=""
         fontFamily="secondary"
         fontSize="fs12"
@@ -65,7 +78,7 @@ exports[`Points History List Page View should render Points History Page Correct
     <Styled(View)>
       <Styled(BodyCopy)
         accessibilityText=""
-        color="#1a1a1a"
+        color="gray.900"
         dataLocator=""
         fontFamily="secondary"
         fontSize="fs12"
@@ -79,7 +92,7 @@ exports[`Points History List Page View should render Points History Page Correct
     <Styled(View)>
       <Styled(BodyCopy)
         accessibilityText=""
-        color="#1a1a1a"
+        color="gray.900"
         dataLocator=""
         fontFamily="secondary"
         fontSize="fs12"
@@ -95,4 +108,20 @@ exports[`Points History List Page View should render Points History Page Correct
 </Fragment>
 `;
 
-exports[`Points History List Page View should render Points History Page Correctly if no PointHistory data is available 1`] = `<Fragment />`;
+exports[`Points History List Page View should render Points History Page Correctly if no PointHistory data is available 1`] = `
+<Fragment>
+  <Styled(Styled(BodyCopy))
+    accessibilityText=""
+    color="gray.900"
+    dataLocator="points_history_subheading"
+    fontFamily="secondary"
+    fontSize="fs16"
+    fontWeight="extrabold"
+    margin={null}
+    numberOfLines={null}
+    spacingStyles="margin-bottom-XL margin-top-LRG"
+    text="Points History"
+    textDecoration={null}
+  />
+</Fragment>
+`;

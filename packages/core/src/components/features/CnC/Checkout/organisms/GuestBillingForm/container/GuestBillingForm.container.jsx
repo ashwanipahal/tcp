@@ -13,9 +13,18 @@ import {
 import { submitBillingSection } from '../../../container/Checkout.action';
 import CreditCardSelector from '../../BillingPaymentForm/container/CreditCard.selectors';
 
+/**
+ * @class GuestBillingContainer
+ * @extends {Component}
+ * @description container component to render guest user form.
+ */
 class GuestBillingContainer extends React.Component {
+  /**
+   * @function submitBillingData
+   * @description submits the billing data
+   */
   submitBillingData = data => {
-    const { submitBilling } = this.props;
+    const { submitBilling, navigation } = this.props;
     const { address, sameAsShipping } = data;
     let addressLine1;
     let addressLine2;
@@ -51,7 +60,7 @@ class GuestBillingContainer extends React.Component {
       expYear: data.expYear,
       address: {
         addressLine1,
-        addressLine2,
+        addressLine2: addressLine2 || '',
         city,
         country,
         firstName,
@@ -62,9 +71,14 @@ class GuestBillingContainer extends React.Component {
         onFileAddressKey,
         onFileAddressId,
       },
+      navigation,
     });
   };
 
+  /**
+   * @function getAddressInitialValues
+   * @description returns the initial values for address fields
+   */
   getAddressInitialValues = () => {
     const { billingData } = this.props;
     if (billingData && billingData.address) {
@@ -98,8 +112,18 @@ class GuestBillingContainer extends React.Component {
     return null;
   };
 
+  /**
+   * @function render
+   * @description render method to be called of component
+   */
   render() {
-    const { billingData, orderHasShipping, syncErrors, shippingOnFileAddressKey } = this.props;
+    const {
+      billingData,
+      orderHasShipping,
+      syncErrors,
+      shippingOnFileAddressKey,
+      isVenmoPaymentInProgress,
+    } = this.props;
     let cardNumber;
     let cardType;
     let expMonth;
@@ -115,7 +139,9 @@ class GuestBillingContainer extends React.Component {
       <GuestBillingPage
         {...this.props}
         initialValues={{
-          paymentMethodId: CONSTANTS.PAYMENT_METHOD_CREDIT_CARD,
+          paymentMethodId: isVenmoPaymentInProgress
+            ? CONSTANTS.PAYMENT_METHOD_VENMO
+            : CONSTANTS.PAYMENT_METHOD_CREDIT_CARD,
           sameAsShipping:
             orderHasShipping &&
             (isEmpty(billingData) || billingOnFileAddressKey === shippingOnFileAddressKey),
@@ -162,6 +188,8 @@ GuestBillingContainer.propTypes = {
   orderHasShipping: PropTypes.bool,
   submitBilling: PropTypes.func.isRequired,
   shippingOnFileAddressKey: PropTypes.string,
+  navigation: PropTypes.shape({}),
+  isVenmoPaymentInProgress: PropTypes.bool,
 };
 
 GuestBillingContainer.defaultProps = {
@@ -175,6 +203,8 @@ GuestBillingContainer.defaultProps = {
   billingData: {},
   orderHasShipping: true,
   shippingOnFileAddressKey: null,
+  navigation: null,
+  isVenmoPaymentInProgress: false,
 };
 
 export default connect(

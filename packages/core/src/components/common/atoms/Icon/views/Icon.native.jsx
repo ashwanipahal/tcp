@@ -2,11 +2,14 @@ import React from 'react';
 import IconFontAwesome from 'react-native-vector-icons/FontAwesome';
 import { PropTypes } from 'prop-types';
 import { get, noop } from 'lodash';
+import { createIconSetFromIcoMoon } from 'react-native-vector-icons';
 import { setTestId, getLocator } from '@tcp/core/src/utils';
 import withStyles from '../../../hoc/withStyles.native';
 import { Container, IconStyle, IconTouchableOpacity } from '../Icon.style.native';
 import { ICON_FONT_CLASS } from '../Icon.constants';
+import IcomoonConfig from '../../../../../../../mobileapp/src/assets/json/icons.json';
 
+const Icomoon = createIconSetFromIcoMoon(IcomoonConfig);
 /**
  * @param {string} iconFontName : require parameter for the method
  * @return {Object} IconFontAwesome : Return font class
@@ -15,6 +18,9 @@ import { ICON_FONT_CLASS } from '../Icon.constants';
 const getFontClass = (iconFontName = ICON_FONT_CLASS.FontAwesome) => {
   if (iconFontName === ICON_FONT_CLASS.FontAwesome) {
     return IconFontAwesome;
+  }
+  if (iconFontName === ICON_FONT_CLASS.Icomoon) {
+    return Icomoon;
   }
   return IconFontAwesome;
 };
@@ -88,8 +94,8 @@ const CustomIcon = props => {
 CustomIcon.propTypes = {
   iconFontName: PropTypes.string,
   name: PropTypes.string.isRequired,
-  size: PropTypes.number,
-  color: PropTypes.string,
+  size: PropTypes.string.isRequired,
+  color: PropTypes.string.isRequired,
   isDisabled: PropTypes.bool,
   onPress: PropTypes.func,
   isButton: PropTypes.bool,
@@ -102,8 +108,6 @@ CustomIcon.defaultProps = {
   isDisabled: false,
   onPress: noop,
   isButton: false,
-  color: '',
-  size: 0,
   dataLocator: '',
   margin: null,
 };

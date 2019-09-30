@@ -1,5 +1,6 @@
 import React from 'react';
 import PropTypes from 'prop-types';
+
 import withStyles from '../../../hoc/withStyles.native';
 import ImageContainer from '../styles/CustomImage.style.native';
 

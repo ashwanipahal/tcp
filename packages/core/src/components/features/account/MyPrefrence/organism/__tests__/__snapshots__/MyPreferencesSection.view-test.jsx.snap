@@ -26,6 +26,7 @@ exports[`ProfileInformation component should render correctly 1`] = `
         fontWeight="extrabold"
         letterSpacing="normal"
         lineHeight="normal"
+        link={null}
         textAlign="left"
       >
         <Connect(MyFavoriteStoreContainer)
@@ -47,11 +48,13 @@ exports[`ProfileInformation component should render correctly 1`] = `
         className="elem-mb-MED"
         color="text.primary"
         component="p"
+        data-locator="mypreference-socialaccountheader"
         fontFamily="secondary"
         fontSize="fs16"
         fontWeight="extrabold"
         letterSpacing="normal"
         lineHeight="normal"
+        link={null}
         textAlign="left"
       >
         lbl_prefrence_social_account
@@ -62,7 +65,7 @@ exports[`ProfileInformation component should render correctly 1`] = `
     </Styled(Col)>
   </Styled(Row)>
   <Styled(Row)
-    className="hideOnMobile elem-pt-LRG elem-pb-LRG"
+    className="hide-on-mobile elem-pt-LRG elem-pb-LRG"
     fullBleed={true}
   >
     <Styled(Col)
@@ -92,11 +95,13 @@ exports[`ProfileInformation component should render correctly 1`] = `
         className="elem-mb-MED"
         color="text.primary"
         component="p"
+        data-locator="mypreference-Myplacerewardpreferheade"
         fontFamily="secondary"
         fontSize="fs16"
         fontWeight="extrabold"
         letterSpacing="normal"
         lineHeight="normal"
+        link={null}
         textAlign="left"
       >
         lbl_prefrence_rewards_prefrence
@@ -105,34 +110,47 @@ exports[`ProfileInformation component should render correctly 1`] = `
         className={null}
         color="text.primary"
         component="p"
+        data-locator="mypreference-Myplacerewardprefertext"
         fontFamily="secondary"
         fontSize="fs16"
         fontWeight="regular"
         letterSpacing="normal"
         lineHeight="normal"
+        link={null}
         textAlign="left"
       >
         lbl_prefrence_access_buy_online_pickup
       </Styled(BodyCopy)>
       <Styled(BodyCopy)
-        className={null}
+        className="elm-padding-top"
         color="text.primary"
         component="p"
         fontFamily="secondary"
-        fontSize="fs16"
+        fontSize="fs14"
         fontWeight="regular"
         letterSpacing="normal"
         lineHeight="normal"
+        link={null}
         textAlign="left"
       >
-        lbl_prefrence_not_added_fvt_store
+        lbl_prefrence_marketing_notification
       </Styled(BodyCopy)>
     </Styled(Col)>
+    <Styled(Col)
+      className="hide-on-mobile elem-mb-XL"
+      colSize={
+        Object {
+          "large": 1,
+          "medium": 4,
+          "small": 6,
+        }
+      }
+    />
     <Styled(Col)
       className="profileInfoCol elem-mb-XL"
       colSize={
         Object {
-          "large": 7,
+          "large": 6,
           "medium": 4,
           "small": 6,
         }
@@ -169,6 +187,7 @@ exports[`ProfileInformation component should render correctly 1`] = `
               fontWeight="extrabold"
               letterSpacing="normal"
               lineHeight="normal"
+              link={null}
               textAlign="left"
             >
               lbl_prefrence_app_text
@@ -310,18 +329,20 @@ exports[`ProfileInformation component should render correctly 1`] = `
                   "withComponent": [Function],
                 }
               }
-              dataLocator="InputCheckbox"
+              dataLocator="mypreference-apptcpcheckbox"
               name="primary"
             >
               <Styled(BodyCopy)
                 className={null}
                 color="text.primary"
                 component="span"
+                data-locator="mypreference-texttcpcheckbox"
                 fontFamily="secondary"
                 fontSize="fs14"
                 fontWeight="regular"
                 letterSpacing="normal"
                 lineHeight="normal"
+                link={null}
                 textAlign="left"
               >
                  
@@ -459,18 +480,20 @@ exports[`ProfileInformation component should render correctly 1`] = `
                   "withComponent": [Function],
                 }
               }
-              dataLocator="InputCheckbox"
+              dataLocator="mypreference-appgymcheckbox"
               name="primary"
             >
               <Styled(BodyCopy)
                 className={null}
                 color="text.primary"
                 component="span"
+                data-locator="mypreference-textgymcheckbox"
                 fontFamily="secondary"
                 fontSize="fs14"
                 fontWeight="regular"
                 letterSpacing="normal"
                 lineHeight="normal"
+                link={null}
                 textAlign="left"
               >
                  
@@ -497,6 +520,7 @@ exports[`ProfileInformation component should render correctly 1`] = `
               fontWeight="extrabold"
               letterSpacing="normal"
               lineHeight="normal"
+              link={null}
               textAlign="left"
             >
               lbl_prefrence_text_text
@@ -638,7 +662,7 @@ exports[`ProfileInformation component should render correctly 1`] = `
                   "withComponent": [Function],
                 }
               }
-              dataLocator="InputCheckbox"
+              dataLocator="mypreference-texttcpcheckbox"
               name="primary"
             >
               <Styled(BodyCopy)
@@ -650,6 +674,7 @@ exports[`ProfileInformation component should render correctly 1`] = `
                 fontWeight="regular"
                 letterSpacing="normal"
                 lineHeight="normal"
+                link={null}
                 textAlign="left"
               >
                 lbl_prefrence_tcp_label
@@ -786,7 +811,7 @@ exports[`ProfileInformation component should render correctly 1`] = `
                   "withComponent": [Function],
                 }
               }
-              dataLocator="InputCheckbox"
+              dataLocator="mypreference-textgymcheckbox"
               name="primary"
             >
               <Styled(BodyCopy)
@@ -798,6 +823,7 @@ exports[`ProfileInformation component should render correctly 1`] = `
                 fontWeight="regular"
                 letterSpacing="normal"
                 lineHeight="normal"
+                link={null}
                 textAlign="left"
               >
                 lbl_prefrence_gym_label
@@ -830,11 +856,13 @@ exports[`ProfileInformation component should render correctly 1`] = `
         fontWeight="regular"
         letterSpacing="normal"
         lineHeight="normal"
+        link={null}
         textAlign="center"
       >
         <Styled(Anchor)
           anchorVariation="primary"
           className="favtPageLink"
+          data-locator="myprefernce-progdetaillink"
           fontSizeVariation="large"
           target="_blank"
           underline={true}
@@ -845,6 +873,7 @@ exports[`ProfileInformation component should render correctly 1`] = `
         <Styled(Anchor)
           anchorVariation="primary"
           className="favtPageLink"
+          data-locator="mypreference-tandclink"
           fontSizeVariation="large"
           target="_blank"
           underline={true}

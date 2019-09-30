@@ -14,6 +14,7 @@ import {
   FlatList,
   StyledLabel,
   SelectedLabelView,
+  HeaderItemContainer,
 } from '../DropDown.style.native';
 
 const downIcon = require('../../../../../assets/carrot-small-down.png');
@@ -120,7 +121,7 @@ class DropDown extends React.PureComponent<Props> {
 
       // calculate the list height
       const { data, itemStyle } = this.props;
-      const calculateHeight = data.length * itemStyle.height;
+      const calculateHeight = data && data.length * itemStyle.height;
 
       // checking bottom space
       const bottomSpace = windowHeight - this.rowFrame.y - this.rowFrame.height;
@@ -241,8 +242,8 @@ class DropDown extends React.PureComponent<Props> {
           }}
           pointerEvents={disabled ? 'none' : 'auto'}
         >
-          <HeaderContainer>
-            {typeof selectedLabelState !== 'function' ? (
+          {typeof selectedLabelState !== 'function' ? (
+            <HeaderContainer>
               <BodyCopy
                 mobileFontFamily="secondary"
                 fontSize="fs13"
@@ -251,10 +252,12 @@ class DropDown extends React.PureComponent<Props> {
                 fontWeight="semibold"
                 text={selectedLabelState}
               />
-            ) : (
+            </HeaderContainer>
+          ) : (
+            <HeaderItemContainer>
               <SelectedLabelView>{selectedLabelState(true)}</SelectedLabelView>
-            )}
-          </HeaderContainer>
+            </HeaderItemContainer>
+          )}
           <Image source={dropDownIsOpen ? upIcon : downIcon} />
         </Row>
         <Modal visible={dropDownIsOpen} transparent>

@@ -77,7 +77,7 @@ const parseProductFromAPI = (
       hasDefaultFit = processHelperUtil.getHasDefaultFit(hasDefaultFit, isDefaultFit);
 
       return {
-        fitNameVal,
+        fitName: fitNameVal,
         isDefault: isDefaultFit,
         maxAvailable: processHelperUtil.validateQuantityAvailable(
           currentColorFitsSizesMap[fitNameVal]
@@ -156,7 +156,7 @@ const getProductInfoById = (productColorId, state) => {
   // const isRadialInvEnabled = generalStoreView.getIsRadialInventoryEnabled(this.store.getState());
   // const location = routingInfoStoreView.getHistory(this.store.getState()).location;
   // const isBundleProduct = matchPath(location.pathname, { path: PAGES.productBundle.pathPattern });
-  const isRadialInvEnabled = false;
+  const isRadialInvEnabled = true;
   const isBundleProduct = false;
 
   const breadCrumb = processHelperUtil.breadCrumbFactory(state);

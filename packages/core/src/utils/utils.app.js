@@ -1,7 +1,7 @@
 /* eslint-disable global-require */
 /* eslint-disable import/no-unresolved */
 import { NavigationActions, StackActions } from 'react-navigation';
-import { Dimensions, Linking, Platform, PixelRatio } from 'react-native';
+import { Dimensions, Linking, Platform, PixelRatio, StyleSheet } from 'react-native';
 import logger from '@tcp/core/src/utils/loggerInstance';
 import AsyncStorage from '@react-native-community/async-storage';
 import { getAPIConfig } from './utils';
@@ -51,6 +51,9 @@ export const importMoreGraphQLQueries = ({ query, resolve, reject }) => {
   switch (query) {
     case 'moduleX':
       resolve(require('../services/handler/graphQL/queries/moduleX'));
+      break;
+    case 'moduleXComposite':
+      resolve(require('../services/handler/graphQL/queries/moduleXComposite'));
       break;
     case 'moduleA':
       resolve(require('../services/handler/graphQL/queries/moduleA'));
@@ -126,6 +129,7 @@ const visaSmall = require('../assets/visa-small.png');
 const placeCard = require('../assets/TCP-CC-small.png');
 const giftCardSmall = require('../assets/TCP-gift-small.png');
 const venmoCard = require('../assets/venmo-small.png');
+const paypal = require('../assets/paypal-small.png');
 
 export const getIconCard = icon => {
   switch (icon) {
@@ -143,6 +147,8 @@ export const getIconCard = icon => {
       return placeCard;
     case 'venmo-blue-acceptance-mark':
       return venmoCard;
+    case 'paypal-icon':
+      return paypal;
     default:
       return visaSmall;
   }
@@ -543,3 +549,29 @@ export function setTestId(id) {
   }
   return {};
 }
+
+/**
+ * Avoid breaking of the app if author accidentally pass invalid color from the CMS.
+ * Return null if color is invalid else return the color.
+ * @param {String} color Color string to validate
+ */
+export const validateColor = color => {
+  let colorSheet = {
+    viewColor: {
+      color: null,
+    },
+  };
+  try {
+    colorSheet = StyleSheet.create({
+      // eslint-disable-next-line react-native/no-unused-styles
+      viewColor: {
+        color,
+      },
+    });
+  } catch (e) {
+    // eslint-disable-next-line no-console
+    console.warn(`Invalid color: ${color}`);
+  }
+
+  return colorSheet.viewColor.color;
+};

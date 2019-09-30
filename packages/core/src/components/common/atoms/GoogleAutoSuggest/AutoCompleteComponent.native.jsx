@@ -61,6 +61,7 @@ export const GooglePlacesInput = props => {
         query={{
           key: googleApiKey,
           components: `country:${componentRestrictions.country[0]}`,
+          types: 'address',
         }}
         textInputProps={{
           onFocus,

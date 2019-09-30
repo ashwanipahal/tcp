@@ -11,14 +11,17 @@ describe('ApplicationInProgress component', () => {
     className: 'plcc_modal',
     isModalOpen: true,
     closeModal: jest.fn(),
+    unregisterIdleVerfication: jest.fn(),
     isPLCCModalFlow: false,
     handleFormReset: jest.fn(),
     bagItems: true,
     labels: {
-      plcc_form_status_detail: 'application card is in progress',
-      plcc_form_status: 'in progress',
-      plcc_form_ctc_buttom: 'continue to checkout',
-      plcc_form_continue_shopping: 'continue shopping',
+      lbl_PLCCTimeoutModal_restartAcceptance: 'restart acceptance',
+      lbl_PLCCTimeoutModal_restartApplication: 'restart application',
+      lbl_PLCCTimeoutModal_returnCheckout: 'continue to checkout',
+      lbl_PLCCTimeoutModal_closureSubHeader: 'closing header',
+      lbl_PLCCTimeoutModal_applicationClosure: 'applicaiton',
+      lbl_PLCCTimeoutModal_preacceptance: 'we have closed your application',
     },
   };
   const tree = shallow(<StyledPLCCTimedoutModalVanilla {...props} />);

@@ -40,6 +40,7 @@ exports[`ModuleK component renders correctly 1`] = `
         "fontWeight": "regular",
         "letterSpacing": "normal",
         "lineHeight": "normal",
+        "link": null,
         "textAlign": "left",
       },
       "displayName": "Styled(BodyCopy)",
@@ -55,6 +56,7 @@ exports[`ModuleK component renders correctly 1`] = `
   forwardedRef={null}
   letterSpacing="normal"
   lineHeight="normal"
+  link={null}
   textAlign="left"
 >
   <Styled(Row)>
@@ -207,6 +209,30 @@ exports[`ModuleK component renders correctly 1`] = `
                 ";
     }
   }
+
+  /* Module H Heading styles */
+  .medium_text_white_black {
+    color: ",
+                [Function],
+                ";
+    font-family: ",
+                [Function],
+                ";
+    font-weight: ",
+                [Function],
+                ";
+    font-size: ",
+                [Function],
+                ";
+
+    @media ",
+                [Function],
+                " {
+      font-size: ",
+                [Function],
+                ";
+    }
+  }
 ",
                 ";
 ",
@@ -259,6 +285,8 @@ exports[`ModuleK component renders correctly 1`] = `
             "customArrowRight": "/static/images/right-carousel-carrot.svg",
             "dataLocatorPause": "moduleK_pause_button",
             "dataLocatorPlay": "moduleK_play_button",
+            "pauseIconButtonLabel": "Pause",
+            "playIconButtonLabel": "Play",
           }
         }
         inheritedStyles={
@@ -432,14 +460,38 @@ exports[`ModuleK component renders correctly 1`] = `
 
   .slick-dots {
     position: absolute;
-    bottom: -25px;
-    display: block;
+    bottom: ",
+                [Function],
+                ";
     width: 100%;
     padding: 0;
     margin: 0;
     list-style: none;
     text-align: center;
+    display: flex;
+    align-items: center;
+    justify-content: center;
   }
+  .slick-dots ul {
+    display: flex;
+    align-items: center;
+  }
+
+  .slick-dots li {
+    position: relative;
+    display: inline-block;
+    background: url('/static/images/carousal-dot.svg') no-repeat 0;
+    width: 10px;
+    height: 10px;
+    button,
+    button:before {
+      margin: 0;
+      padding: 0;
+      width: 7px;
+      height: 7px;
+    }
+  }
+
   .slick-dots li button {
     font-size: 0;
     line-height: 0;
@@ -454,6 +506,7 @@ exports[`ModuleK component renders correctly 1`] = `
     pointer-events: none;
     background: transparent;
   }
+
   .slick-dots li button:before {
     font-family: Arial;
     font-size: 6px;
@@ -469,6 +522,18 @@ exports[`ModuleK component renders correctly 1`] = `
     -webkit-font-smoothing: antialiased;
     -moz-osx-font-smoothing: grayscale;
   }
+
+  li.slick-active {
+    width: 11px;
+    height: 11px;
+    background: url('/static/images/carousal-dot-active.svg') no-repeat 0 0;
+    button,
+    button:before {
+      width: 10px;
+      height: 10px;
+    }
+  }
+
   .slick-dots li.slick-active button:before {
     opacity: 0.75;
     color: black;
@@ -481,45 +546,30 @@ exports[`ModuleK component renders correctly 1`] = `
   .slick-dots li button:focus:before {
     opacity: 1;
   }
-  .tcp_carousel__play {
-    background: ",
+
+  .tcp_carousel__play_pause_button {
+    background: transparent;
+    border: 0;
+    padding: 0;
+    bottom: 12px;
+    cursor: pointer;
+  }
+
+  .tcp_carousel__play_pause_button + ul {
+    margin-left: ",
                 [Function],
                 ";
-    border: 0px;
+  }
+
+  .tcp_carousel__play_pause_button_icon {
+    background-color: ",
+                [Function],
+                ";
     border-radius: 50%;
-    cursor: pointer;
-    position: absolute;
-    bottom: 12px;
-    left: 50%;
-    transform: translateX(-50%);
     width: 30px;
     height: 30px;
   }
-  &.tcp_carousel_wrapper .slick-dots li {
-    position: relative;
-    display: inline-block;
-    background: url('/static/images/carousal-dot.svg') no-repeat;
-    margin: 0 2px 0 0;
-    width: 7px;
-    height: 10px;
-    button,
-    button:before {
-      margin: 0;
-      padding: 0;
-      width: 7px;
-      height: 7px;
-    }
-    &.slick-active {
-      width: 10px;
-      margin: 0 1px 0 0;
-      background: url('/static/images/carousal-dot-active.svg') no-repeat;
-      button,
-      button:before {
-        width: 10px;
-        height: 10px;
-      }
-    }
-  }
+
   ",
                 [Function],
                 "
@@ -544,7 +594,7 @@ exports[`ModuleK component renders correctly 1`] = `
     width: 15px;
   }
   .slick-dots {
-    bottom: -10px;
+    bottom: -20px;
   }
 ",
               ],
@@ -569,15 +619,16 @@ exports[`ModuleK component renders correctly 1`] = `
             "dots": true,
             "dotsClass": "slick-dots",
             "fade": false,
-            "hidePlayPause": false,
             "nextArrow": <button
               className="slick-prev"
               data-locator="moduleK_right_arrow"
+              tabIndex="0"
               type="button"
             />,
             "prevArrow": <button
               className="slick-prev"
               data-locator="moduleK_left_arrow"
+              tabIndex="0"
               type="button"
             />,
             "responsive": Array [
@@ -707,21 +758,22 @@ exports[`ModuleK component renders correctly 1`] = `
             }
           }
         >
-          <Styled(Anchor)
-            external={0}
-            target=""
-            text="SHOP ALL"
-            title=""
-            url="http://example.com"
+          <Styled(Button)
+            buttonVariation="fixed-width"
+            className="carousal-cta"
+            cta={
+              Object {
+                "external": 0,
+                "target": "",
+                "text": "SHOP ALL",
+                "title": "",
+                "url": "http://example.com",
+              }
+            }
+            dataLocator="moduleK_button_set_1"
           >
-            <Styled(Button)
-              buttonVariation="fixed-width"
-              className="carousal-cta"
-              dataLocator="moduleK_button_set_1"
-            >
-              SHOP ALL
-            </Styled(Button)>
-          </Styled(Anchor)>
+            SHOP ALL
+          </Styled(Button)>
         </Styled(Col)>
         <Styled(PromoBanner)
           className="moduleK__promoBanner"
@@ -837,21 +889,22 @@ exports[`ModuleK component renders correctly 1`] = `
             }
           }
         >
-          <Styled(Anchor)
-            external={0}
-            target=""
-            text="SHOP ALL"
-            title=""
-            url="http://example.com"
+          <Styled(Button)
+            buttonVariation="fixed-width"
+            className="carousal-cta"
+            cta={
+              Object {
+                "external": 0,
+                "target": "",
+                "text": "SHOP ALL",
+                "title": "",
+                "url": "http://example.com",
+              }
+            }
+            dataLocator="moduleK_button_set_2"
           >
-            <Styled(Button)
-              buttonVariation="fixed-width"
-              className="carousal-cta"
-              dataLocator="moduleK_button_set_2"
-            >
-              SHOP ALL
-            </Styled(Button)>
-          </Styled(Anchor)>
+            SHOP ALL
+          </Styled(Button)>
         </Styled(Col)>
       </Styled(Styled(Carousel))>
     </Styled(Col)>

@@ -50,6 +50,7 @@ class MyPrefrenceSection extends React.PureComponent {
               fontFamily="secondary"
               fontSize="fs16"
               fontWeight="extrabold"
+              data-locator="mypreference-socialaccountheader"
             >
               {getLabelValue(labels, 'lbl_prefrence_social_account')}
             </BodyCopy>
@@ -57,7 +58,7 @@ class MyPrefrenceSection extends React.PureComponent {
           </Col>
         </Row>
 
-        <Row fullBleed className="hideOnMobile elem-pt-LRG elem-pb-LRG">
+        <Row fullBleed className="hide-on-mobile elem-pt-LRG elem-pb-LRG">
           <Col
             colSize={{
               large: 12,
@@ -80,22 +81,35 @@ class MyPrefrenceSection extends React.PureComponent {
               fontFamily="secondary"
               fontSize="fs16"
               fontWeight="extrabold"
+              data-locator="mypreference-Myplacerewardpreferheade"
             >
               {getLabelValue(labels, 'lbl_prefrence_rewards_prefrence')}
             </BodyCopy>
 
-            <BodyCopy fontSize="fs16" fontFamily="secondary">
+            <BodyCopy
+              data-locator="mypreference-Myplacerewardprefertext"
+              fontSize="fs16"
+              fontFamily="secondary"
+            >
               {getLabelValue(labels, 'lbl_prefrence_access_buy_online_pickup')}
             </BodyCopy>
-            <BodyCopy fontSize="fs16" fontFamily="secondary">
-              {getLabelValue(labels, 'lbl_prefrence_not_added_fvt_store')}
+            <BodyCopy className="elm-padding-top" fontSize="fs14" fontFamily="secondary">
+              {getLabelValue(labels, 'lbl_prefrence_marketing_notification')}
             </BodyCopy>
           </Col>
           <Col
             colSize={{
               small: 6,
               medium: 4,
-              large: 7,
+              large: 1,
+            }}
+            className="hide-on-mobile elem-mb-XL"
+          />
+          <Col
+            colSize={{
+              small: 6,
+              medium: 4,
+              large: 6,
             }}
             className="profileInfoCol elem-mb-XL"
           >
@@ -129,10 +143,15 @@ class MyPrefrenceSection extends React.PureComponent {
                   <Field
                     name="primary"
                     component={InputCheckbox}
-                    dataLocator="InputCheckbox"
+                    dataLocator="mypreference-apptcpcheckbox"
                     className="elm-padding-top"
                   >
-                    <BodyCopy fontSize="fs14" fontFamily="secondary" component="span">
+                    <BodyCopy
+                      fontSize="fs14"
+                      data-locator="mypreference-texttcpcheckbox"
+                      fontFamily="secondary"
+                      component="span"
+                    >
                       {' '}
                       {getLabelValue(labels, 'lbl_prefrence_tcp_label')}
                     </BodyCopy>
@@ -140,10 +159,15 @@ class MyPrefrenceSection extends React.PureComponent {
                   <Field
                     name="primary"
                     component={InputCheckbox}
-                    dataLocator="InputCheckbox"
+                    dataLocator="mypreference-appgymcheckbox"
                     className="elm-padding-top"
                   >
-                    <BodyCopy fontSize="fs14" fontFamily="secondary" component="span">
+                    <BodyCopy
+                      fontSize="fs14"
+                      data-locator="mypreference-textgymcheckbox"
+                      fontFamily="secondary"
+                      component="span"
+                    >
                       {' '}
                       {getLabelValue(labels, 'lbl_prefrence_gym_label')}
                     </BodyCopy>
@@ -170,7 +194,7 @@ class MyPrefrenceSection extends React.PureComponent {
                   <Field
                     name="primary"
                     component={InputCheckbox}
-                    dataLocator="InputCheckbox"
+                    dataLocator="mypreference-texttcpcheckbox"
                     className="elm-padding-top"
                   >
                     <BodyCopy fontSize="fs14" fontFamily="secondary" component="span">
@@ -180,7 +204,7 @@ class MyPrefrenceSection extends React.PureComponent {
                   <Field
                     name="primary"
                     component={InputCheckbox}
-                    dataLocator="InputCheckbox"
+                    dataLocator="mypreference-textgymcheckbox"
                     className="elm-padding-top"
                   >
                     <BodyCopy fontSize="fs14" fontFamily="secondary" component="span">
@@ -208,6 +232,7 @@ class MyPrefrenceSection extends React.PureComponent {
                 underline
                 target="_blank"
                 className="favtPageLink"
+                data-locator="myprefernce-progdetaillink"
               >
                 {getLabelValue(labels, 'lbl_prefrence_program_details')}
               </Anchor>
@@ -218,6 +243,7 @@ class MyPrefrenceSection extends React.PureComponent {
                 underline
                 target="_blank"
                 className="favtPageLink"
+                data-locator="mypreference-tandclink"
               >
                 {getLabelValue(labels, 'lbl_prefrence_term_codition')}
               </Anchor>

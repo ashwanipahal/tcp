@@ -32,7 +32,8 @@ class MiniBagBody extends React.PureComponent {
         fontSizeVariation="medium"
         underline
         anchorVariation="primary"
-        noLink
+        asPath={CHECKOUT_ROUTES.bagPage.asPath}
+        to={`${CHECKOUT_ROUTES.bagPage.to}?isSfl=true`}
         data-locator="cartitem-saveforlater"
         className="elem-ml-MED"
       >
@@ -177,6 +178,7 @@ class MiniBagBody extends React.PureComponent {
                 showAddTobag={false}
                 isEditingItem={this.isEditing}
                 closeMiniBag={closeMiniBag}
+                showVenmo={false} // No Venmo CTA on Minibag, as per venmo requirement
               />
               <AirmilesBanner />
             </div>

@@ -34,6 +34,9 @@ const cardIconMapping = {
   GC: 'gift-card-small',
   'PLACE CARD': 'place-card-small',
   VENMO: 'venmo-blue-acceptance-mark',
+  VISA: 'visa-small',
+  AMEX: 'amex-small',
+  paypal: 'paypal-icon',
 };
 
 const getAddressDetails = ({ card }) => {

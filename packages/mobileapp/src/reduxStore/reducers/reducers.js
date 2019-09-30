@@ -30,10 +30,15 @@ import AddMailingAddressReducer from '@tcp/core/src/components/features/account/
 import UpdateProfileReducer from '@tcp/core/src/components/features/account/AddEditPersonalInformation/container/AddEditPersonalInformation.reducer';
 import MyProfileReducer from '@tcp/core/src/components/features/account/MyProfile/container/MyProfile.reducer';
 import ProductDetailReducer from '@tcp/core/src/components/features/browse/ProductDetail/container/ProductDetail.reducer';
+import QuickViewReducer from '@tcp/core/src/components/common/organisms/QuickViewModal/container/QuickViewModal.reducer';
 import MyFavoriteStoreReducer from '@tcp/core/src/components/features/account/MyProfile/organism/MyFavoriteStore/container/MyFavoriteStore.reducer';
 import BirthdaySavingsListReducer from '@tcp/core/src/components/features/account/common/organism/BirthdaySavingsList/container/BirthdaySavingsList.reducer';
 import StoreDetailReducer from '@tcp/core/src/components/features/storeLocator/StoreDetail/container/StoreDetail.reducer';
 import StoreLandingReducer from '@tcp/core/src/components/features/storeLocator/StoreLanding/container/StoreLanding.reducer';
+import ApplyCardReducer from '@tcp/core/src/components/features/browse/ApplyCardPage/container/ApplyCard.reducer';
+import ApplyNowModalPLCCReducer from '@tcp/core/src/components/common/molecules/ApplyNowPLCCModal/container/ApplyNowModal.reducer';
+import PointsClaimReducer from '@tcp/core/src/components/features/account/PointsClaim/container/PointsClaim.reducer';
+import orderConfirmationReducer from '@tcp/core/src/components/features/CnC/Confirmation/container/Confirmation.reducer';
 
 import {
   SESSIONCONFIG_REDUCER_KEY,
@@ -74,10 +79,15 @@ import {
   UPDATE_PROFILE_REDUCER_KEY,
   MY_PROFILE_REDUCER_KEY,
   PRODUCT_DETAIL_REDUCER_KEY,
+  QUICK_VIEW_REDUCER_KEY,
   MY_FAVORITE_STORE_REDUCER_KEY,
   BIRTHDAY_SAVING_LIST_REDUCER_KEY,
   STORE_DETAIL_REDUCER_KEY,
   STORE_LOCATOR_REDUCER_KEY,
+  APPLY_NOW_MODAL_REDUCER_KEY,
+  APPLY_PLCC_REDUCER_KEY,
+  POINTS_CLAIM_REDUCER_KEY,
+  CONFIRMATION_REDUCER_KEY,
 } from '@tcp/core/src/constants/reducer.constants';
 import HeaderReducer from '@tcp/core/src/components/common/organisms/Header/container/Header.reducer';
 import ModulesReducer from '@tcp/core/src/reduxStore/reducers/modules';
@@ -126,6 +136,7 @@ const rootReducer = combineReducers({
   [PRODUCTLISTINGPAGE_REDUCER_KEY]: filteredProductListingPageReducer,
   [PRODUCT_LISTING_REDUCER_KEY]: filteredProductListingReducer,
   [PRODUCT_DETAIL_REDUCER_KEY]: filteredProductDetailReducer,
+  [QUICK_VIEW_REDUCER_KEY]: QuickViewReducer,
   [LOGINPAGE_REDUCER_KEY]: LoginPageReducer,
   [FORGOTPASSWORD_REDUCER_KEY]: ForgotPasswordReducer,
   [PAYMENT_REDUCER_KEY]: PaymentReducer,
@@ -159,6 +170,10 @@ const rootReducer = combineReducers({
   [BIRTHDAY_SAVING_LIST_REDUCER_KEY]: BirthdaySavingsListReducer,
   [STORE_DETAIL_REDUCER_KEY]: StoreDetailReducer,
   [STORE_LOCATOR_REDUCER_KEY]: StoreLandingReducer,
+  [APPLY_PLCC_REDUCER_KEY]: ApplyCardReducer,
+  [APPLY_NOW_MODAL_REDUCER_KEY]: ApplyNowModalPLCCReducer,
+  [POINTS_CLAIM_REDUCER_KEY]: PointsClaimReducer,
+  [CONFIRMATION_REDUCER_KEY]: orderConfirmationReducer,
 });
 
 export default rootReducer;

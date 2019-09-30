@@ -6,7 +6,7 @@ exports[`AddChildBirthday component should renders correctly 1`] = `
   onSubmit={[MockFunction]}
 >
   <div
-    className="addChildBirthdayTip"
+    className="addChildBirthdayTip hide-on-mobile"
   />
   <Styled(Row)
     className="formHeading"
@@ -50,6 +50,7 @@ exports[`AddChildBirthday component should renders correctly 1`] = `
             fontWeight="black"
             letterSpacing="normal"
             lineHeight="normal"
+            link={null}
             textAlign="left"
           />
         </Styled(Col)>
@@ -73,7 +74,7 @@ exports[`AddChildBirthday component should renders correctly 1`] = `
                 "$$typeof": Symbol(react.forward_ref),
                 "attrs": Array [],
                 "componentStyle": ComponentStyle {
-                  "componentId": "sc-ifAKCX",
+                  "componentId": "sc-EHOje",
                   "isStatic": false,
                   "rules": Array [
                     "
@@ -216,7 +217,7 @@ exports[`AddChildBirthday component should renders correctly 1`] = `
                 "displayName": "Styled(TextBox)",
                 "foldedComponentIds": Array [],
                 "render": [Function],
-                "styledComponentId": "sc-ifAKCX",
+                "styledComponentId": "sc-EHOje",
                 "target": [Function],
                 "toString": [Function],
                 "warnTooManyClasses": [Function],
@@ -249,6 +250,7 @@ exports[`AddChildBirthday component should renders correctly 1`] = `
             fontWeight="black"
             letterSpacing="normal"
             lineHeight="normal"
+            link={null}
             textAlign="left"
           />
         </Styled(Col)>
@@ -270,7 +272,7 @@ exports[`AddChildBirthday component should renders correctly 1`] = `
                   "$$typeof": Symbol(react.forward_ref),
                   "attrs": Array [],
                   "componentStyle": ComponentStyle {
-                    "componentId": "sc-bwzfXH",
+                    "componentId": "sc-htpNat",
                     "isStatic": false,
                     "rules": Array [
                       "
@@ -359,7 +361,7 @@ exports[`AddChildBirthday component should renders correctly 1`] = `
                   "displayName": "Styled(SelectBox)",
                   "foldedComponentIds": Array [],
                   "render": [Function],
-                  "styledComponentId": "sc-bwzfXH",
+                  "styledComponentId": "sc-htpNat",
                   "target": [Function],
                   "toString": [Function],
                   "warnTooManyClasses": [Function],
@@ -438,7 +440,7 @@ exports[`AddChildBirthday component should renders correctly 1`] = `
                   "$$typeof": Symbol(react.forward_ref),
                   "attrs": Array [],
                   "componentStyle": ComponentStyle {
-                    "componentId": "sc-bwzfXH",
+                    "componentId": "sc-htpNat",
                     "isStatic": false,
                     "rules": Array [
                       "
@@ -527,7 +529,7 @@ exports[`AddChildBirthday component should renders correctly 1`] = `
                   "displayName": "Styled(SelectBox)",
                   "foldedComponentIds": Array [],
                   "render": [Function],
-                  "styledComponentId": "sc-bwzfXH",
+                  "styledComponentId": "sc-htpNat",
                   "target": [Function],
                   "toString": [Function],
                   "warnTooManyClasses": [Function],
@@ -632,6 +634,7 @@ exports[`AddChildBirthday component should renders correctly 1`] = `
             fontWeight="black"
             letterSpacing="normal"
             lineHeight="normal"
+            link={null}
             textAlign="left"
           />
         </Styled(Col)>
@@ -650,7 +653,7 @@ exports[`AddChildBirthday component should renders correctly 1`] = `
                 "$$typeof": Symbol(react.forward_ref),
                 "attrs": Array [],
                 "componentStyle": ComponentStyle {
-                  "componentId": "sc-bwzfXH",
+                  "componentId": "sc-htpNat",
                   "isStatic": false,
                   "rules": Array [
                     "
@@ -739,7 +742,7 @@ exports[`AddChildBirthday component should renders correctly 1`] = `
                 "displayName": "Styled(SelectBox)",
                 "foldedComponentIds": Array [],
                 "render": [Function],
-                "styledComponentId": "sc-bwzfXH",
+                "styledComponentId": "sc-htpNat",
                 "target": [Function],
                 "toString": [Function],
                 "warnTooManyClasses": [Function],
@@ -813,6 +816,7 @@ exports[`AddChildBirthday component should renders correctly 1`] = `
             fontWeight="black"
             letterSpacing="normal"
             lineHeight="normal"
+            link={null}
             textAlign="left"
           />
         </Styled(Col)>
@@ -836,7 +840,7 @@ exports[`AddChildBirthday component should renders correctly 1`] = `
                 "$$typeof": Symbol(react.forward_ref),
                 "attrs": Array [],
                 "componentStyle": ComponentStyle {
-                  "componentId": "sc-ifAKCX",
+                  "componentId": "sc-EHOje",
                   "isStatic": false,
                   "rules": Array [
                     "
@@ -979,7 +983,7 @@ exports[`AddChildBirthday component should renders correctly 1`] = `
                 "displayName": "Styled(TextBox)",
                 "foldedComponentIds": Array [],
                 "render": [Function],
-                "styledComponentId": "sc-ifAKCX",
+                "styledComponentId": "sc-EHOje",
                 "target": [Function],
                 "toString": [Function],
                 "warnTooManyClasses": [Function],
@@ -1014,7 +1018,7 @@ exports[`AddChildBirthday component should renders correctly 1`] = `
                 "$$typeof": Symbol(react.forward_ref),
                 "attrs": Array [],
                 "componentStyle": ComponentStyle {
-                  "componentId": "sc-ifAKCX",
+                  "componentId": "sc-EHOje",
                   "isStatic": false,
                   "rules": Array [
                     "
@@ -1157,7 +1161,7 @@ exports[`AddChildBirthday component should renders correctly 1`] = `
                 "displayName": "Styled(TextBox)",
                 "foldedComponentIds": Array [],
                 "render": [Function],
-                "styledComponentId": "sc-ifAKCX",
+                "styledComponentId": "sc-EHOje",
                 "target": [Function],
                 "toString": [Function],
                 "warnTooManyClasses": [Function],
@@ -1190,6 +1194,7 @@ exports[`AddChildBirthday component should renders correctly 1`] = `
             fontWeight="regular"
             letterSpacing="normal"
             lineHeight="normal"
+            link={null}
             textAlign="left"
           >
             undefined 
@@ -1212,7 +1217,7 @@ exports[`AddChildBirthday component should renders correctly 1`] = `
                 "$$typeof": Symbol(react.forward_ref),
                 "attrs": Array [],
                 "componentStyle": ComponentStyle {
-                  "componentId": "sc-htpNat",
+                  "componentId": "sc-bxivhb",
                   "isStatic": false,
                   "rules": Array [
                     "
@@ -1329,7 +1334,7 @@ exports[`AddChildBirthday component should renders correctly 1`] = `
                 "displayName": "Styled(InputCheckbox)",
                 "foldedComponentIds": Array [],
                 "render": [Function],
-                "styledComponentId": "sc-htpNat",
+                "styledComponentId": "sc-bxivhb",
                 "target": [Function],
                 "toString": [Function],
                 "warnTooManyClasses": [Function],
@@ -1349,6 +1354,7 @@ exports[`AddChildBirthday component should renders correctly 1`] = `
               fontWeight="semibold"
               letterSpacing="normal"
               lineHeight="normal"
+              link={null}
               textAlign="left"
             >
               undefined
@@ -1376,6 +1382,7 @@ exports[`AddChildBirthday component should renders correctly 1`] = `
             fontWeight="semibold"
             letterSpacing="normal"
             lineHeight="normal"
+            link={null}
             textAlign="left"
           >
             <Styled(Anchor)

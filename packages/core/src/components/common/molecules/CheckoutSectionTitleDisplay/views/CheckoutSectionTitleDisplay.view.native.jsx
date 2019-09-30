@@ -4,7 +4,7 @@ import BodyCopy from '../../../atoms/BodyCopy';
 import {
   CheckoutSectionTitleWrapper,
   CheckoutSectionTitle,
-} from '../styles/CheckoutSectionTitleDisplay.style.native';
+} from '../styles/CheckoutSectionTitleDisplay.view.style.native';
 
 class CheckoutSectionTitleDisplay extends React.PureComponent {
   render() {
@@ -17,6 +17,7 @@ class CheckoutSectionTitleDisplay extends React.PureComponent {
             fontSize="fs16"
             fontWeight="extrabold"
             data-locator="pickup-title"
+            color="gray.900"
             text={title}
           />
         </CheckoutSectionTitle>

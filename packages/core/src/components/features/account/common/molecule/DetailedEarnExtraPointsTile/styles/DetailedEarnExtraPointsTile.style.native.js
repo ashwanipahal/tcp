@@ -8,9 +8,8 @@ const ImageSize = styled.Image`
 const TileWrapper = styled.View`
   border: 1px solid ${props => props.theme.colorPalette.gray[300]};
   background: ${props => props.theme.colors.WHITE};
-  margin-left: ${props => props.theme.spacing.ELEM_SPACING.LRG};
-  margin-right: ${props => props.theme.spacing.ELEM_SPACING.LRG};
   border-bottom-width: 2px;
+  min-height: 240px;
   border-bottom-color: ${props =>
     props.theme.isGymboree
       ? props.theme.colorPalette.orange[800]
@@ -18,14 +17,16 @@ const TileWrapper = styled.View`
 `;
 
 const EarnPointDesc = styled.View`
-  margin-bottom: ${props => props.theme.spacing.LAYOUT_SPACING.LRG};
+  margin-bottom: ${props =>
+    props.viewAll ? props.theme.spacing.ELEM_SPACING.SM : props.theme.spacing.LAYOUT_SPACING.LRG};
+  margin-top: ${props => props.theme.spacing.ELEM_SPACING.XXS};
   padding-left: ${props => props.theme.spacing.ELEM_SPACING.XS};
   padding-right: ${props => props.theme.spacing.ELEM_SPACING.XS};
 `;
 
 const EarnExtraPointsTileImage = styled.View`
   margin-top: ${props => props.theme.spacing.LAYOUT_SPACING.MED};
-  height: 100px;
+  height: ${props => (props.viewAll ? '60px' : '100px')};
   text-align: center;
   display: flex;
   justify-content: space-around;

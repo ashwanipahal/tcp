@@ -16,6 +16,7 @@ import Grid from './Grid';
 import StoreAddressTile from './StoreAddressTile';
 import StoreHours from './StoreHours';
 import StoreLocations from './StoreLocations';
+import FullScreenImageCarousel from './FullScreenImageCarousel';
 
 export {
   Carousel,
@@ -36,4 +37,5 @@ export {
   StoreAddressTile,
   StoreHours,
   StoreLocations,
+  FullScreenImageCarousel,
 };

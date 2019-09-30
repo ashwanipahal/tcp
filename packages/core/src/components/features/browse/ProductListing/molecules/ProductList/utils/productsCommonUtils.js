@@ -18,7 +18,9 @@ export function getMapSliceForFit(colorFitsSizesMap, colorName, fitName) {
   }
   if (currentColorEntry.hasFits) {
     // eslint-disable-next-line
-    return currentColorEntry.fits.find(entry => entry.fitName === fitName);
+    return currentColorEntry.fits.find(entry => {
+      return entry.fitName === fitName || entry.fitNameVal === fitName;
+    });
   }
   // eslint-disable-next-line
   return currentColorEntry.fits[0];
@@ -73,7 +75,11 @@ export function getPrices(productInfo, color, fit, size) {
 
   const currentColorEntry = getMapSliceForColor(productInfo.colorFitsSizesMap, color);
   if (currentColorEntry && currentColorEntry.listPrice) {
-    return { listPrice: currentColorEntry.listPrice, offerPrice: currentColorEntry.offerPrice };
+    return {
+      listPrice: currentColorEntry.listPrice,
+      offerPrice: currentColorEntry.offerPrice,
+      badge2: currentColorEntry.miscInfo.badge2,
+    };
   }
 
   return { listPrice: productInfo.listPrice, offerPrice: productInfo.offerPrice };
@@ -248,10 +254,10 @@ export const getDefaultSizes = (formValues, productInfo, isShowDefaultSize) => {
  * quantity
  */
 export const isProductOOS = (colorFitsSizesMap, selectedSKu) => {
-  const currentFitEntry = getMapSliceForFit(colorFitsSizesMap, selectedSKu.color, selectedSKu.fit);
+  const currentFitEntry = getMapSliceForFit(colorFitsSizesMap, selectedSKu.color, selectedSKu.Fit);
   if (currentFitEntry && currentFitEntry.sizes) {
     const selectedSKuProductInfo = currentFitEntry.sizes.find(
-      size => size.sizeName === selectedSKu.size
+      size => size.sizeName === selectedSKu.Size
     );
     const maxAvailableProducts = selectedSKuProductInfo ? selectedSKuProductInfo.maxAvailable : 0;
 

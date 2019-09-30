@@ -18,6 +18,7 @@ export {
   getPixelRatio,
   LAZYLOAD_HOST_NAME,
   setTestId,
+  validateColor,
 } from './utils.app';
 
 export { default, getSiteId } from './utils.app';
@@ -42,6 +43,8 @@ export {
   toTimeString,
   getPromotionalMessage,
   getBirthDateOptionMap,
+  childOptionsMap,
   calculateAge,
   sanitizeEntity,
+  configureInternalNavigationFromCMSUrl,
 } from './utils';

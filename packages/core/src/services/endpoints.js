@@ -22,6 +22,14 @@ const endpoints = {
     JSONP: true,
     reqTimeout: 2000,
   },
+  addSmsSignup: {
+    method: 'post',
+    URI: 'v2/vibes/smsSignUp',
+  },
+  addEmailSignup: {
+    method: 'post',
+    URI: 'v2/store/addSignUpEmail',
+  },
   getOrderDetails: {
     method: API_METHODS.GET,
     URI: 'v2/checkout/getOrderDetails',
@@ -122,6 +130,10 @@ const endpoints = {
   getExtraPoints: {
     method: 'GET',
     URI: 'v2/account/points/waysToEarn',
+  },
+  getEarnedPointsNotication: {
+    method: 'GET',
+    URI: 'v2/wallet/points/nontransactional/current',
   },
   getGifCardBalance: {
     method: API_METHODS.POST,
@@ -245,6 +257,10 @@ const endpoints = {
     method: 'POST',
     URI: 'v2/checkout/addGiftOptions',
   },
+  internationalCheckoutSettings: {
+    method: 'POST',
+    URI: 'v2/checkout/internationalCheckout',
+  },
   paypalLookUp: {
     method: 'GET',
     URI: 'v2/checkout/TCPPayPalCCLookUpRESTCmd',
@@ -324,6 +340,26 @@ const endpoints = {
   getNearByStore: {
     method: 'GET',
     URI: 'v2/store/nearBy',
+  },
+  getBOPISInventoryDetails: {
+    method: 'POST',
+    URI: 'v2/vendor/getBOPISInvetoryDetails',
+  },
+  getUserCartStoresAndInventory: {
+    method: 'GET',
+    URI: 'v2/bopis/getUserBopisStores',
+  },
+  claimPoints: {
+    method: 'POST',
+    URI: 'v2/account/points/claim',
+  },
+  getStyliticsProductViewById: {
+    method: API_METHODS.GET,
+    URI: 'https://widget-api.stylitics.com/api/outfits',
+  },
+  getDetailedOrderHistory: {
+    method: 'GET',
+    URI: 'v2/wallet/getPointsAndOrderHistory',
   },
 };
 export default endpoints;

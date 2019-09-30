@@ -2,6 +2,10 @@ import { loadComponentLabelsData } from '@tcp/core/src/reduxStore/actions';
 import { LABELS } from '@tcp/core/src/reduxStore/constants';
 import constants from '../Checkout.constants';
 
+/**
+ * @function initCheckoutAction
+ * action creator for type: INIT_CHECKOUT
+ */
 export const initCheckoutAction = () => ({
   type: constants.INIT_CHECKOUT,
 });
@@ -420,6 +424,31 @@ export const setVenmoPaymentInProgress = payload => {
   };
 };
 
+export const setVenmoPickupMessageState = payload => {
+  return {
+    type: constants.SET_VENMO_PICKUP_MESSAGE_STATE,
+    payload,
+  };
+};
+
+export const setVenmoShippingMessageState = payload => {
+  return {
+    type: constants.SET_VENMO_SHIPPING_MESSAGE_STATE,
+    payload,
+  };
+};
+
+/**
+ * Method to save Venmo payment option in redux.
+ * @param {boolean} payload
+ */
+export const setVenmoPaymentOptionSave = payload => {
+  return {
+    type: constants.SET_VENMO_PAYMENT_OPTION_SAVE,
+    payload,
+  };
+};
+
 export const resetAddGiftCard = payload => {
   return {
     type: constants.RESET_ADD_GIFT_CARD,
@@ -431,5 +460,35 @@ export const resetAddGiftCardSuccess = payload => {
   return {
     type: constants.RESET_ADD_GIFT_CARD_SUCCESS,
     payload,
+  };
+};
+/**
+ * @function initIntlCheckoutAction
+ *  @param { object } payload
+ * action creator for type: INIT_INTL_CHECKOUT
+ */
+export const initIntlCheckoutAction = payload => ({
+  type: constants.INIT_INTL_CHECKOUT,
+  payload,
+});
+/**
+ * @function getSetIntlUrl
+ *  @param { object } internationalUrl
+ * action creator for type: CHECKOUT_ORDER_OPTIONS_SET_INTL_URL
+ */
+export const getSetIntlUrl = internationalUrl => {
+  return {
+    internationalUrl,
+    type: 'CHECKOUT_ORDER_OPTIONS_SET_INTL_URL',
+  };
+};
+
+/**
+ * @function resetCheckoutReducer
+ * action creator for type: RESET_CHECKOUT_REDUCER
+ */
+export const resetCheckoutReducer = () => {
+  return {
+    type: constants.RESET_CHECKOUT_REDUCER,
   };
 };

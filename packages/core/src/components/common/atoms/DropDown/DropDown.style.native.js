@@ -9,13 +9,18 @@ const DropDownStyle = css`
           props.theme.colors.BLACK
         }`};
   background-color: ${props =>
-    props.variation === 'primary'
+    props.variation === 'primary' || props.bgColor
       ? props.theme.colorPalette.gray[500]
       : props.theme.colorPalette.white};
+  width: 100%;
 `;
 
 const HeaderContainer = styled.View`
   margin-right: ${props => props.theme.spacing.ELEM_SPACING.SM};
+`;
+
+const HeaderItemContainer = styled.View`
+  width: 95%;
 `;
 
 const Row = styled.TouchableOpacity`
@@ -76,4 +81,5 @@ export {
   FlatList,
   StyledLabel,
   SelectedLabelView,
+  HeaderItemContainer,
 };

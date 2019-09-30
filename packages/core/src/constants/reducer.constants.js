@@ -3,7 +3,6 @@ export const FOOTER_REDUCER_KEY = 'Footer';
 export const LABEL_REDUCER_KEY = 'Labels';
 export const LAYOUT_REDUCER_KEY = 'Layouts';
 export const MODULES_REDUCER_KEY = 'Modules';
-export const HOMEPAGE_REDUCER_KEY = 'HomePage';
 export const NAVIGATION_REDUCER_KEY = 'Navigation';
 export const PRODUCT_LISTING_REDUCER_KEY = 'ProductListing';
 export const PRODUCTLISTING_ACTION_PATTERN = '@@PLP-';
@@ -78,6 +77,14 @@ export const PRODUCTLISTINGPAGE_ACTION_PATTERN = '@@PLPDummy-';
 // Product Detail Page Reducer
 export const PRODUCT_DETAIL_REDUCER_KEY = 'ProductDetail';
 export const PRODUCT_DETAIL_ACTION_PATTERN = '@@PDP-';
+
+// Product Pickup Reducer
+export const PRODUCT_PICKUP_REDUCER_KEY = 'ProductPickup';
+export const PRODUCT_PICKUP_ACTION_PATTERN = '@BOPIS-';
+
+// Quick View Page Reducer
+export const QUICK_VIEW_REDUCER_KEY = 'QuickView';
+export const QUICK_VIEW_ACTION_PATTERN = '@@QV-';
 
 // Email signup reducer
 export const EMAIL_SIGNUP_REDUCER_KEY = 'EmailSignUp';
@@ -163,6 +170,16 @@ export const MY_FAVORITE_STORE_REDUCER_KEY = 'MyFavoriteStore';
 // Store Detail Reducer
 export const STORE_DETAIL_REDUCER_KEY = 'StoreDetailReducer';
 export const STORE_DETAIL_ACTION_PATTERN = '@@StoreDetail-';
+export const POINTS_CLAIM_REDUCER_KEY = 'PointsClaim';
+export const POINTS_CLAIM_ACTION_PATTERN = '@@PointsClaim-';
+
+export const CONFIRMATION_REDUCER_KEY = 'Confirmation';
+export const CONFIRMATION_ACTION_PATTERN = '@@Confirmation-';
+export const PRODUCT_ADD_TO_BAG = 'ProductAddToBag';
+export const PRODUCT_SKU_SELECTION_FORM = 'PickupSkuSelectionForm';
+// User Order History
+export const ORDERS_REDUCER_KEY = 'Orders';
+export const ORDERS_ACTION_PATTERN = '@@Orders-';
 
 export const REDUCER_ACTION_MAPPING = {
   [APPLY_PLCC_REDUCER_KEY]: APPLY_PLCC_ACTION_PATTERN,
@@ -196,4 +213,5 @@ export const REDUCER_ACTION_MAPPING = {
   [SEARCH_REDUCER_KEY]: SEARCH_REDUCER_ACTION_PATTERN,
   [SLP_PAGE_REDUCER_KEY]: SEARCH_REDUCER_ACTION_PATTERN,
   [STORE_DETAIL_REDUCER_KEY]: STORE_DETAIL_ACTION_PATTERN,
+  [CONFIRMATION_REDUCER_KEY]: CONFIRMATION_ACTION_PATTERN,
 };

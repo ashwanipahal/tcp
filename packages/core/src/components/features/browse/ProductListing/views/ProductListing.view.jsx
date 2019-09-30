@@ -6,6 +6,7 @@ import ProductsGrid from '../molecules/ProductsGrid/views';
 import GlobalNavigationMenuDesktopL2 from '../molecules/GlobalNavigationMenuDesktopL2/views';
 import withStyles from '../../../../common/hoc/withStyles';
 import PickupStoreModal from '../../../../common/organisms/PickupStoreModal';
+import QuickViewModal from '../../../../common/organisms/QuickViewModal/container/QuickViewModal.container';
 
 import ProductListingStyle from '../ProductListing.style';
 
@@ -15,6 +16,7 @@ import ProductListingFiltersForm from '../molecules/ProductListingFiltersForm';
 import ReadMore from '../molecules/ReadMore/views';
 import SpotlightContainer from '../molecules/Spotlight/container/Spotlight.container';
 import LoadedProductsCount from '../molecules/LoadedProductsCount/views';
+import AddedToBagContainer from '../../../CnC/AddedToBag';
 
 const ProductListView = ({
   className,
@@ -35,6 +37,8 @@ const ProductListView = ({
   onSubmit,
   sortLabels,
   slpLabels,
+  isPickupModalOpen,
+  onPickUpOpenClick,
   ...otherProps
 }) => {
   return (
@@ -99,7 +103,9 @@ const ProductListView = ({
           </Col>
         </Col>
       </Row>
-      <PickupStoreModal />
+      {isPickupModalOpen ? <PickupStoreModal /> : null}
+      <QuickViewModal onPickUpOpenClick={onPickUpOpenClick} />
+      <AddedToBagContainer />
     </div>
   );
 };
@@ -121,7 +127,9 @@ ProductListView.propTypes = {
   labelsFilter: PropTypes.objectOf(PropTypes.oneOfType([PropTypes.string])),
   getProducts: PropTypes.func,
   onSubmit: PropTypes.func,
+  isPickupModalOpen: PropTypes.bool,
   formValues: PropTypes.shape({}).isRequired,
+  onPickUpOpenClick: PropTypes.func.isRequired,
   sortLabels: PropTypes.arrayOf(PropTypes.shape({})),
   slpLabels: PropTypes.objectOf(PropTypes.oneOfType([PropTypes.string])),
 };
@@ -142,6 +150,7 @@ ProductListView.defaultProps = {
   labelsFilter: {},
   sortLabels: [],
   slpLabels: {},
+  isPickupModalOpen: false,
 };
 
 export default withStyles(ProductListView, ProductListingStyle);

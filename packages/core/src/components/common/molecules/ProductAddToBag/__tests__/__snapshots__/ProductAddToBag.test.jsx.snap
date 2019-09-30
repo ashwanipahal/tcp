@@ -317,11 +317,7 @@ exports[`ProductAddToBagVanilla should render correctly should match snapshot 1`
             }
             dataLocator="addnewaddress-state"
             id="color"
-            name={
-              Object {
-                "name": "WHITE",
-              }
-            }
+            name="color"
             onChange={[MockFunction]}
             title=":"
             width={87}
@@ -466,29 +462,6 @@ exports[`ProductAddToBagVanilla should render correctly should match snapshot 1`
             width={32}
           />
         </div>
-      </div>
-    </Styled(Col)>
-  </Styled(Row)>
-  <Styled(Row)
-    fullBleed={true}
-  >
-    <Styled(Col)
-      colSize={
-        Object {
-          "large": 12,
-          "medium": 12,
-          "small": 12,
-        }
-      }
-    >
-      <div
-        className="button-wrapper"
-      >
-        <Styled(Button)
-          className="add-to-bag-button"
-          onClick={[Function]}
-          type="submit"
-        />
       </div>
     </Styled(Col)>
   </Styled(Row)>
@@ -812,11 +785,7 @@ exports[`ProductAddToBagVanilla should render correctly should match snapshot wi
             }
             dataLocator="addnewaddress-state"
             id="color"
-            name={
-              Object {
-                "name": "WHITE",
-              }
-            }
+            name="color"
             onChange={[MockFunction]}
             title=":"
             width={87}
@@ -957,6 +926,7 @@ exports[`ProductAddToBagVanilla should render correctly should match snapshot wi
             fontWeight="regular"
             letterSpacing="normal"
             lineHeight="normal"
+            link={null}
             textAlign="left"
           >
             <Styled(Image)
@@ -974,6 +944,7 @@ exports[`ProductAddToBagVanilla should render correctly should match snapshot wi
               fontWeight="regular"
               letterSpacing="normal"
               lineHeight="normal"
+              link={null}
               textAlign="left"
             />
           </Styled(BodyCopy)>
@@ -990,29 +961,6 @@ exports[`ProductAddToBagVanilla should render correctly should match snapshot wi
             width={32}
           />
         </div>
-      </div>
-    </Styled(Col)>
-  </Styled(Row)>
-  <Styled(Row)
-    fullBleed={true}
-  >
-    <Styled(Col)
-      colSize={
-        Object {
-          "large": 12,
-          "medium": 12,
-          "small": 12,
-        }
-      }
-    >
-      <div
-        className="button-wrapper"
-      >
-        <Styled(Button)
-          className="add-to-bag-button"
-          onClick={[Function]}
-          type="submit"
-        />
       </div>
     </Styled(Col)>
   </Styled(Row)>

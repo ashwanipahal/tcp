@@ -13,17 +13,22 @@ const SectionStyle = css`
 `;
 
 const getTextBaseStyle = props => {
-  const { theme } = props;
+  const { theme, status } = props;
   return `
     color: ${theme.colorPalette.red[500]};
-    border:1px solid ${theme.colorPalette.red[500]};
+
+    ${status === 'success' ? `border: 2px solid ${props.theme.colorPalette.green[500]};` : ''};
+      ${status === 'error' ? `border: 2px solid ${props.theme.colorPalette.red[500]};` : ''};
+      ${status === 'info' ? `border: 2px solid ${props.theme.colorPalette.gray[600]};` : ''};
     padding:${theme.spacing.ELEM_SPACING.MED};
     margin: ${theme.spacing.ELEM_SPACING.XS};
+    justify-content: space-between;
     `;
 };
 
 const NotificationWrapper = styled.View`
-  ${getTextBaseStyle}
+  flex-direction: row;
+  ${getTextBaseStyle};
 `;
 
 export { NotificationWrapper, SectionStyle };

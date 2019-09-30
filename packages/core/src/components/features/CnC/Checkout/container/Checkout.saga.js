@@ -9,6 +9,7 @@ import {
   getShippingMethods,
   setShippingMethodAndAddressId,
   addPickupPerson,
+  getInternationCheckoutSettings,
 } from '../../../../../services/abstractors/CnC/index';
 import selectors, { isGuest } from './Checkout.selector';
 import { getUserEmail } from '../../../account/User/container/User.selectors';
@@ -22,6 +23,7 @@ import {
   setIsLoadingShippingMethods,
   setShippingOptions,
   setAddressError,
+  getSetIntlUrl,
 } from './Checkout.action';
 import BAG_PAGE_ACTIONS from '../../BagPage/container/BagPage.actions';
 import BagPageSelectors from '../../BagPage/container/BagPage.selectors';
@@ -180,9 +182,16 @@ function* submitPickupSection({ payload }) {
     yield call(getCardList);
     if (!isMobileApp()) {
       const getIsShippingRequired = yield select(getIsOrderHasShipping);
+      const isVenmoInProgress = yield select(selectors.isVenmoPaymentInProgress);
+      const isVenmoPickupDisplayed = yield select(selectors.isVenmoPickupBannerDisplayed);
+
       if (getIsShippingRequired) {
         utility.routeToPage(CHECKOUT_ROUTES.shippingPage);
-      } else utility.routeToPage(CHECKOUT_ROUTES.billingPage);
+      } else if (isVenmoInProgress && !isVenmoPickupDisplayed) {
+        utility.routeToPage(CHECKOUT_ROUTES.reviewPage);
+      } else {
+        utility.routeToPage(CHECKOUT_ROUTES.billingPage);
+      }
     } else if (navigation) {
       navigation.navigate(CONSTANTS.CHECKOUT_ROUTES_NAMES.CHECKOUT_SHIPPING);
     }
@@ -545,6 +554,18 @@ function* initCheckout() {
   }
 }
 
+/**
+ * initIntlCheckout component. This is responsible for initiating actions required for start of international checkout journey.
+ */
+function* initIntlCheckout() {
+  try {
+    const res = yield call(getInternationCheckoutSettings);
+    yield put(getSetIntlUrl(res.checkoutUrl));
+  } catch (e) {
+    logger.error(`initIntlCheckout:${e}`);
+  }
+}
+
 function* submitShipping({
   isEmailSignUpAllowed,
   emailSignup,
@@ -663,7 +684,13 @@ function* submitShippingSection({ payload: { navigation, ...formData } }) {
     });
     yield call(getAddressList);
     yield call(getCardList);
-    redirectToBilling(navigation);
+    const isVenmoInProgress = yield select(selectors.isVenmoPaymentInProgress);
+    const isVenmoShippingDisplayed = yield select(selectors.isVenmoShippingBannerDisplayed);
+    if (isVenmoInProgress && !isVenmoShippingDisplayed) {
+      utility.routeToPage(CHECKOUT_ROUTES.reviewPage, { recalc: false });
+    } else {
+      redirectToBilling(navigation);
+    }
   } catch (err) {
     // throw getSubmissionError(store, 'submitShippingSection', err);
   }
@@ -673,6 +700,7 @@ export function* submitBillingSection(payload) {
 }
 export function* CheckoutSaga() {
   yield takeLatest(CONSTANTS.INIT_CHECKOUT, initCheckout);
+  yield takeLatest('INIT_INTL_CHECKOUT', initIntlCheckout);
   yield takeLatest('CHECKOUT_SET_CART_DATA', storeUpdatedCheckoutValues);
   yield takeLatest(CONSTANTS.SUBMIT_SHIPPING_SECTION, submitShippingSection);
   yield takeLatest(CONSTANTS.SUBMIT_BILLING_SECTION, submitBillingSection);

@@ -3,6 +3,8 @@ import { createStackNavigator } from 'react-navigation';
 import ProductListingPage from '@tcp/core/src/components/features/browse/ProductListingPage';
 import ProductListing from '@tcp/core/src/components/features/browse/ProductListing';
 import ProductDetail from '@tcp/core/src/components/features/browse/ProductDetail';
+import SearchDetail from '@tcp/core/src/components/features/browse/SearchDetail';
+
 import NavBarIcon from '../components/common/atoms/NavBarIcon';
 import Header from '../components/common/molecules/Header';
 import HeaderNew from '../components/common/molecules/Header/HeaderNew';
@@ -44,6 +46,12 @@ const PlpStack = createStackNavigator(
     },
     [ROUTE_NAMES.PRODUCT_LISTING_PAGE]: {
       screen: ProductListingPage,
+    },
+    [ROUTE_NAMES.SEARCH_RESULTS_PAGE]: {
+      screen: SearchDetail,
+      navigationOptions: ({ navigation }) => {
+        return getNewHeader(navigation);
+      },
     },
   },
   {

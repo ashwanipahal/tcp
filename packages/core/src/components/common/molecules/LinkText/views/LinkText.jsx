@@ -2,8 +2,9 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import { Anchor, Heading, BodyCopy, TextItems } from '../../../atoms';
 import withStyles from '../../../hoc/withStyles';
+import errorBoundary from '../../../hoc/withErrorBoundary';
 import LinkTextStyle from '../LinkText.style';
-import { configurePlpNavigationFromCMSUrl } from '../../../../../utils';
+import { configureInternalNavigationFromCMSUrl } from '../../../../../utils';
 
 /**
  * This component creates a link with styled text
@@ -51,7 +52,7 @@ const LinkText = props => {
       {headerText.map((item, index) => {
         const { link, textItems } = item;
         const navigationUrl = link;
-        navigationUrl.to = configurePlpNavigationFromCMSUrl(link.url);
+        navigationUrl.to = configureInternalNavigationFromCMSUrl(link.url);
         navigationUrl.asPath = link.url;
 
         if (type === 'heading') {
@@ -92,5 +93,5 @@ LinkText.propTypes = {
   color: PropTypes.string,
 };
 
-export default withStyles(LinkText, LinkTextStyle);
+export default withStyles(errorBoundary(LinkText), LinkTextStyle);
 export { LinkText as VanillaLinkText };

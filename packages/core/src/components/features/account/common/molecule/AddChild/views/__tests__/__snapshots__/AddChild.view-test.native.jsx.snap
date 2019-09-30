@@ -1,0 +1,636 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`AddChildBirthday component should renders correctly 1`] = `
+<Fragment>
+  <Styled(View)>
+    <Styled(Styled(BodyCopy))
+      accessibilityText=""
+      dataLocator=""
+      fontFamily="secondary"
+      fontSize="fs16"
+      fontWeight="regular"
+      margin={null}
+      numberOfLines={null}
+      spacingStyles="margin-top-LRG margin-left-LRG margin-bottom-LRG"
+      textDecoration={null}
+    />
+    <Styled(View)
+      spacingStyles="margin-left-LRG margin-right-LRG"
+    >
+      <Field
+        component={
+          Object {
+            "$$typeof": Symbol(react.forward_ref),
+            "_foldedDefaultProps": Object {
+              "ariaLabel": "input",
+              "dataLocator": "input-field",
+              "enableSuccessCheck": false,
+              "id": "input",
+              "keyboardType": "default",
+              "label": "input",
+              "marginBottom": true,
+              "meta": Object {
+                "error": "",
+                "touched": "",
+              },
+              "onChangeText": [Function],
+              "secureTextEntry": false,
+              "showErrorIcon": true,
+              "showSuccessCheck": false,
+              "successText": "",
+              "type": "text",
+            },
+            "attrs": Array [],
+            "displayName": "Styled(TextBox)",
+            "inlineStyle": InlineStyle {
+              "rules": Array [
+                "
+    ",
+                "
+  ",
+                [Function],
+                ";
+",
+                ";
+  ",
+              ],
+            },
+            "render": [Function],
+            "styledComponentId": "StyledNativeComponent",
+            "target": [Function],
+            "withComponent": [Function],
+          }
+        }
+        dataLocator="childNameField"
+        id="childName"
+        name="childName"
+      />
+    </Styled(View)>
+    <Styled(View)>
+      <Styled(View)>
+        <Field
+          bgColor={true}
+          component={
+            Object {
+              "$$typeof": Symbol(react.forward_ref),
+              "_foldedDefaultProps": Object {
+                "bounces": true,
+                "data": Array [],
+                "dropDownStyle": null,
+                "itemStyle": null,
+                "onValueChange": null,
+                "selectedValue": null,
+                "variation": "primary",
+              },
+              "attrs": Array [],
+              "displayName": "Styled(DropDown)",
+              "inlineStyle": InlineStyle {
+                "rules": Array [
+                  "
+    ",
+                  "
+  height: ",
+                  [Function],
+                  "px;
+  ",
+                  [Function],
+                  ";
+  background-color: ",
+                  [Function],
+                  ";
+  width: 100%;
+",
+                  ";
+  ",
+                ],
+              },
+              "render": [Function],
+              "styledComponentId": "StyledNativeComponent",
+              "target": [Function],
+              "withComponent": [Function],
+            }
+          }
+          data={Array []}
+          dataLocator="childBirthdayMonthDD"
+          dropDownStyle={
+            Object {
+              "border": 1,
+              "height": 41,
+            }
+          }
+          itemStyle={
+            Object {
+              "color": "black",
+              "height": 41,
+              "paddingLeft": 6,
+            }
+          }
+          onValueChange={[Function]}
+          variation="secondary"
+        />
+        <Styled(View)
+          spacingStyles="margin-top-SM"
+        >
+          <Field
+            component={
+              Object {
+                "$$typeof": Symbol(react.forward_ref),
+                "_foldedDefaultProps": Object {
+                  "ariaLabel": "input",
+                  "dataLocator": "input-field",
+                  "enableSuccessCheck": false,
+                  "id": "input",
+                  "keyboardType": "default",
+                  "label": "input",
+                  "marginBottom": true,
+                  "meta": Object {
+                    "error": "",
+                    "touched": "",
+                  },
+                  "onChangeText": [Function],
+                  "secureTextEntry": false,
+                  "showErrorIcon": true,
+                  "showSuccessCheck": false,
+                  "successText": "",
+                  "type": "text",
+                },
+                "attrs": Array [],
+                "displayName": "Styled(TextBox)",
+                "inlineStyle": InlineStyle {
+                  "rules": Array [
+                    "
+    ",
+                    "
+  ",
+                    [Function],
+                    ";
+",
+                    ";
+  ",
+                  ],
+                },
+                "render": [Function],
+                "styledComponentId": "StyledNativeComponent",
+                "target": [Function],
+                "withComponent": [Function],
+              }
+            }
+            id="userBirthMonth"
+            name="userBirthMonth"
+            title=""
+            type="hidden"
+          />
+        </Styled(View)>
+      </Styled(View)>
+      <Styled(View)
+        birthYear={true}
+      >
+        <Field
+          bgColor={true}
+          component={
+            Object {
+              "$$typeof": Symbol(react.forward_ref),
+              "_foldedDefaultProps": Object {
+                "bounces": true,
+                "data": Array [],
+                "dropDownStyle": null,
+                "itemStyle": null,
+                "onValueChange": null,
+                "selectedValue": null,
+                "variation": "primary",
+              },
+              "attrs": Array [],
+              "displayName": "Styled(DropDown)",
+              "inlineStyle": InlineStyle {
+                "rules": Array [
+                  "
+    ",
+                  "
+  height: ",
+                  [Function],
+                  "px;
+  ",
+                  [Function],
+                  ";
+  background-color: ",
+                  [Function],
+                  ";
+  width: 100%;
+",
+                  ";
+  ",
+                ],
+              },
+              "render": [Function],
+              "styledComponentId": "StyledNativeComponent",
+              "target": [Function],
+              "withComponent": [Function],
+            }
+          }
+          data={Array []}
+          dataLocator="childBirthdayYearDD"
+          dropDownStyle={
+            Object {
+              "border": 1,
+              "height": 41,
+            }
+          }
+          itemStyle={
+            Object {
+              "color": "black",
+              "height": 41,
+              "paddingLeft": 6,
+            }
+          }
+          onValueChange={[Function]}
+          variation="secondary"
+        />
+        <Field
+          component={
+            Object {
+              "$$typeof": Symbol(react.forward_ref),
+              "_foldedDefaultProps": Object {
+                "ariaLabel": "input",
+                "dataLocator": "input-field",
+                "enableSuccessCheck": false,
+                "id": "input",
+                "keyboardType": "default",
+                "label": "input",
+                "marginBottom": true,
+                "meta": Object {
+                  "error": "",
+                  "touched": "",
+                },
+                "onChangeText": [Function],
+                "secureTextEntry": false,
+                "showErrorIcon": true,
+                "showSuccessCheck": false,
+                "successText": "",
+                "type": "text",
+              },
+              "attrs": Array [],
+              "displayName": "Styled(TextBox)",
+              "inlineStyle": InlineStyle {
+                "rules": Array [
+                  "
+    ",
+                  "
+  ",
+                  [Function],
+                  ";
+",
+                  ";
+  ",
+                ],
+              },
+              "render": [Function],
+              "styledComponentId": "StyledNativeComponent",
+              "target": [Function],
+              "withComponent": [Function],
+            }
+          }
+          id="userBirthYear"
+          name="userBirthYear"
+          title=""
+          type="hidden"
+        />
+      </Styled(View)>
+    </Styled(View)>
+    <Styled(View)
+      chooseGender={true}
+    >
+      <Styled(View)>
+        <Field
+          bgColor={true}
+          component={
+            Object {
+              "$$typeof": Symbol(react.forward_ref),
+              "_foldedDefaultProps": Object {
+                "bounces": true,
+                "data": Array [],
+                "dropDownStyle": null,
+                "itemStyle": null,
+                "onValueChange": null,
+                "selectedValue": null,
+                "variation": "primary",
+              },
+              "attrs": Array [],
+              "displayName": "Styled(DropDown)",
+              "inlineStyle": InlineStyle {
+                "rules": Array [
+                  "
+    ",
+                  "
+  height: ",
+                  [Function],
+                  "px;
+  ",
+                  [Function],
+                  ";
+  background-color: ",
+                  [Function],
+                  ";
+  width: 100%;
+",
+                  ";
+  ",
+                ],
+              },
+              "render": [Function],
+              "styledComponentId": "StyledNativeComponent",
+              "target": [Function],
+              "withComponent": [Function],
+            }
+          }
+          data={Array []}
+          dataLocator="childGenderDD"
+          dropDownStyle={
+            Object {
+              "border": 1,
+              "height": 41,
+            }
+          }
+          itemStyle={
+            Object {
+              "color": "black",
+              "height": 41,
+              "paddingLeft": 6,
+            }
+          }
+          onValueChange={[Function]}
+          variation="secondary"
+        />
+        <Styled(View)
+          spacingStyles="margin-top-SM"
+        >
+          <Field
+            component={
+              Object {
+                "$$typeof": Symbol(react.forward_ref),
+                "_foldedDefaultProps": Object {
+                  "ariaLabel": "input",
+                  "dataLocator": "input-field",
+                  "enableSuccessCheck": false,
+                  "id": "input",
+                  "keyboardType": "default",
+                  "label": "input",
+                  "marginBottom": true,
+                  "meta": Object {
+                    "error": "",
+                    "touched": "",
+                  },
+                  "onChangeText": [Function],
+                  "secureTextEntry": false,
+                  "showErrorIcon": true,
+                  "showSuccessCheck": false,
+                  "successText": "",
+                  "type": "text",
+                },
+                "attrs": Array [],
+                "displayName": "Styled(TextBox)",
+                "inlineStyle": InlineStyle {
+                  "rules": Array [
+                    "
+    ",
+                    "
+  ",
+                    [Function],
+                    ";
+",
+                    ";
+  ",
+                  ],
+                },
+                "render": [Function],
+                "styledComponentId": "StyledNativeComponent",
+                "target": [Function],
+                "withComponent": [Function],
+              }
+            }
+            id="gender"
+            name="gender"
+            title=""
+            type="hidden"
+          />
+        </Styled(View)>
+      </Styled(View)>
+    </Styled(View)>
+    <Styled(Styled(BodyCopy))
+      accessibilityText=""
+      dataLocator=""
+      fontFamily="secondary"
+      fontSize="fs16"
+      fontWeight="regular"
+      margin={null}
+      numberOfLines={null}
+      spacingStyles="margin-top-LRG margin-left-LRG margin-bottom-LRG"
+      textDecoration={null}
+    />
+    <Styled(View)>
+      <Styled(View)>
+        <Field
+          component={
+            Object {
+              "$$typeof": Symbol(react.forward_ref),
+              "_foldedDefaultProps": Object {
+                "ariaLabel": "input",
+                "dataLocator": "input-field",
+                "enableSuccessCheck": false,
+                "id": "input",
+                "keyboardType": "default",
+                "label": "input",
+                "marginBottom": true,
+                "meta": Object {
+                  "error": "",
+                  "touched": "",
+                },
+                "onChangeText": [Function],
+                "secureTextEntry": false,
+                "showErrorIcon": true,
+                "showSuccessCheck": false,
+                "successText": "",
+                "type": "text",
+              },
+              "attrs": Array [],
+              "displayName": "Styled(TextBox)",
+              "inlineStyle": InlineStyle {
+                "rules": Array [
+                  "
+    ",
+                  "
+  ",
+                  [Function],
+                  ";
+",
+                  ";
+  ",
+                ],
+              },
+              "render": [Function],
+              "styledComponentId": "StyledNativeComponent",
+              "target": [Function],
+              "withComponent": [Function],
+            }
+          }
+          dataLocator="firstNameField"
+          id="firstName"
+          name="firstName"
+        />
+      </Styled(View)>
+      <Styled(View)>
+        <Field
+          component={
+            Object {
+              "$$typeof": Symbol(react.forward_ref),
+              "_foldedDefaultProps": Object {
+                "ariaLabel": "input",
+                "dataLocator": "input-field",
+                "enableSuccessCheck": false,
+                "id": "input",
+                "keyboardType": "default",
+                "label": "input",
+                "marginBottom": true,
+                "meta": Object {
+                  "error": "",
+                  "touched": "",
+                },
+                "onChangeText": [Function],
+                "secureTextEntry": false,
+                "showErrorIcon": true,
+                "showSuccessCheck": false,
+                "successText": "",
+                "type": "text",
+              },
+              "attrs": Array [],
+              "displayName": "Styled(TextBox)",
+              "inlineStyle": InlineStyle {
+                "rules": Array [
+                  "
+    ",
+                  "
+  ",
+                  [Function],
+                  ";
+",
+                  ";
+  ",
+                ],
+              },
+              "render": [Function],
+              "styledComponentId": "StyledNativeComponent",
+              "target": [Function],
+              "withComponent": [Function],
+            }
+          }
+          dataLocator="lastNameField"
+          id="lastName"
+          name="lastName"
+        />
+      </Styled(View)>
+    </Styled(View)>
+    <Styled(Styled(BodyCopy))
+      accessibilityText=""
+      dataLocator=""
+      fontFamily="secondary"
+      fontSize="fs14"
+      fontWeight="regular"
+      margin={null}
+      numberOfLines={null}
+      spacingStyles="margin-right-LRG margin-left-LRG"
+      text="undefined "
+      textDecoration={null}
+    />
+    <Styled(View)>
+      <Field
+        component={[Function]}
+        dataLocator="tnccb"
+        id="acceptAddChildAgreement"
+        name="acceptAddChildAgreement"
+        rightText="undefinedundefined"
+      />
+    </Styled(View)>
+    <Styled(View)>
+      <Styled(Anchor)
+        accessibilityLabel=""
+        anchorVariation="primary"
+        colorName={null}
+        customStyle={Object {}}
+        data-locator="privacyLnk"
+        fontSizeVariation="medium"
+        locator=""
+        onPress={[Function]}
+        text=""
+        underline={true}
+        visible={false}
+      />
+      <Styled(Anchor)
+        accessibilityLabel=""
+        anchorVariation="primary"
+        colorName={null}
+        customStyle={Object {}}
+        data-locator="faqLnk"
+        fontSizeVariation="medium"
+        locator=""
+        noLink={true}
+        onPress={[Function]}
+        text=""
+        underline={true}
+        visible={false}
+      />
+    </Styled(View)>
+  </Styled(View)>
+  <Styled(View)
+    spacingStyles="margin-top-XXL"
+  >
+    <Styled(CustomButton)
+      active={false}
+      buttonVariation="variable-width"
+      color="white"
+      customStyle={Object {}}
+      customTextStyle={null}
+      disableButton={false}
+      fill="BLUE"
+      fullWidth=""
+      iconColor="gray.800"
+      iconName="chevron-down"
+      iconSize="fs12"
+      locator=""
+      navigation={Object {}}
+      onPress={[MockFunction]}
+      selected={false}
+      selectedIcon="chevron-up"
+      showIcon={false}
+      text=""
+      theme={Object {}}
+      type="submit"
+      url=""
+    />
+  </Styled(View)>
+  <Styled(View)
+    spacingStyles="margin-top-MED margin-bottom-XL"
+  >
+    <Styled(CustomButton)
+      active={false}
+      buttonVariation="variable-width"
+      color=""
+      customStyle={Object {}}
+      customTextStyle={null}
+      disableButton={false}
+      fill="WHITE"
+      fullWidth=""
+      iconColor="gray.800"
+      iconName="chevron-down"
+      iconSize="fs12"
+      locator=""
+      navigation={Object {}}
+      onPress={[MockFunction]}
+      selected={false}
+      selectedIcon="chevron-up"
+      showIcon={false}
+      text=""
+      theme={Object {}}
+      url=""
+    />
+  </Styled(View)>
+</Fragment>
+`;

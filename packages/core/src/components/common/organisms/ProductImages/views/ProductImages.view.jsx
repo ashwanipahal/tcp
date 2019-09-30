@@ -1,6 +1,5 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import Immutable from 'seamless-immutable';
 import { Anchor } from '../../../atoms';
 import withStyles from '../../../hoc/withStyles';
 import config from '../config';
@@ -45,7 +44,9 @@ class ProductImages extends React.Component {
         superSizeImageUrl: PropTypes.string.isRequired,
       })
     ).isRequired,
-
+    pdpLabels: PropTypes.shape({
+      fullSize: PropTypes.string,
+    }).isRequired,
     /**
      * Flags if we should show big size images, instead of regular size
      * images (default behavior)
@@ -90,15 +91,13 @@ class ProductImages extends React.Component {
       onCloseClick,
       isFullSizeModalOpen,
       isMobile,
+      pdpLabels,
     } = this.props;
     const { currentImageIndex } = this.state;
-
-    const thumbnailImagesPaths = Immutable.asMutable(
-      images.map(image => ({
-        imageUrl: image.iconSizeImageUrl,
-        imageName: productName,
-      }))
-    );
+    const thumbnailImagesPaths = images.map(image => ({
+      imageUrl: image.iconSizeImageUrl,
+      imageName: productName,
+    }));
     const imageSizePropertyName = isShowBigSizeImages ? 'bigSizeImageUrl' : 'regularSizeImageUrl';
 
     const { CAROUSEL_OPTIONS } = config;
@@ -155,7 +154,7 @@ class ProductImages extends React.Component {
                 onClick={onCloseClick}
                 dataLocator={getLocator('pdp_full_size_btn')}
               >
-                Full Size
+                {pdpLabels.fullSize}
               </Anchor>
             )}
           </div>

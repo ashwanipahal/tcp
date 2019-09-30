@@ -3,6 +3,7 @@
 exports[`AboutYouSurveyModal should render correctly 1`] = `
 <ModalNative
   isOpen={true}
+  isOverlay={false}
   onRequestClose={[Function]}
 >
   <SafeAreaView>

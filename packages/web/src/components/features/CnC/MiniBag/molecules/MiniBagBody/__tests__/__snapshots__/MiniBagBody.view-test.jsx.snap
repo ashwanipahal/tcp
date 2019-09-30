@@ -27,6 +27,7 @@ exports[`MiniBagBody component renders main component correctly 1`] = `
           fontWeight="regular"
           letterSpacing="normal"
           lineHeight="normal"
+          link={null}
           textAlign="left"
         >
           <Styled(Anchor)
@@ -41,10 +42,11 @@ exports[`MiniBagBody component renders main component correctly 1`] = `
           </Styled(Anchor)>
           <Styled(Anchor)
             anchorVariation="primary"
+            asPath="/bag"
             className="elem-ml-MED"
             data-locator="cartitem-saveforlater"
             fontSizeVariation="medium"
-            noLink={true}
+            to="/bag?isSfl=true"
             underline={true}
           >
             undefined(undefined)
@@ -62,6 +64,7 @@ exports[`MiniBagBody component renders main component correctly 1`] = `
     fontWeight="regular"
     letterSpacing="normal"
     lineHeight="normal"
+    link={null}
     textAlign="left"
   >
     <Styled(Row)
@@ -93,6 +96,7 @@ exports[`MiniBagBody component renders main component correctly 1`] = `
           fontWeight="extrabold"
           letterSpacing="normal"
           lineHeight="normal"
+          link={null}
           textAlign="center"
         />
       </Styled(Col)>
@@ -113,6 +117,7 @@ exports[`MiniBagBody component renders main component correctly 1`] = `
       fontWeight="semibold"
       letterSpacing="normal"
       lineHeight="normal"
+      link={null}
       tag="span"
       textAlign="left"
     >
@@ -121,6 +126,7 @@ exports[`MiniBagBody component renders main component correctly 1`] = `
     <Connect(AddedToBagContainer)
       isEditingItem={false}
       showAddTobag={false}
+      showVenmo={false}
     />
     <Connect(AirmilesBannerContainer) />
   </div>

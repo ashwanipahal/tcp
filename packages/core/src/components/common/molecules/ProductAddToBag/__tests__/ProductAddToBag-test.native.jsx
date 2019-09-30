@@ -5,9 +5,13 @@ import { ProductAddToBagVanilla } from '../views/ProductAddToBag.view.native';
 
 describe('ProductAddToBagVanilla native should render correctly', () => {
   let wrapper;
+  const props = {
+    currentProduct: null,
+    selectedColorProductId: 123,
+  };
 
   beforeEach(() => {
-    wrapper = shallow(<ProductAddToBagVanilla />);
+    wrapper = shallow(<ProductAddToBagVanilla {...props} />);
   });
 
   it('should match snapshot', () => {
