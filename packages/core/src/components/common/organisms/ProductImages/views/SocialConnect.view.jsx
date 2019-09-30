@@ -9,57 +9,52 @@ class SocialConnect extends React.PureComponent {
   static propTypes = {
     className: PropTypes.string,
 
-    isFbEnabled: PropTypes.bool,
+    isFacebookEnabled: PropTypes.bool,
 
-    isPtEnabled: PropTypes.bool,
+    isPinterestEnabled: PropTypes.bool,
 
-    // isInEnabled: PropTypes.bool,
-
-    isTwEnabled: PropTypes.bool,
+    isTwitterEnabled: PropTypes.bool,
   };
 
   constructor(props, context) {
     super(props, context);
 
-    this.handleTwShare = this.handleTwShare.bind(this);
-    this.handlePtShare = this.handlePtShare.bind(this);
-    this.handleFbShare = this.handleFbShare.bind(this);
-    this.handleInShare = this.handleInShare.bind(this);
+    this.handleTwitterShare = this.handleTwitterShare.bind(this);
+    this.handlePinterestShare = this.handlePinterestShare.bind(this);
+    this.handleFacebookShare = this.handleFacebookShare.bind(this);
   }
 
-  handleTwShare = () => {
+  handleTwitterShare = () => {
     const shareUrl = window.location.href;
     const url = `//twitter.com/share?text=&url=${encodeURIComponent(shareUrl)}&hashtags=`;
 
     window.open(url);
   };
 
-  handlePtShare = () => {
+  handlePinterestShare = () => {
     const shareUrl = window.location.href;
     const url = `http://pinterest.com/pin/create/button/?url=${encodeURIComponent(shareUrl)}`;
 
     window.open(url);
   };
 
-  handleFbShare = () => {
+  handleFacebookShare = () => {
     const shareUrl = window.location.href;
     const url = `https://www.facebook.com/sharer.php?u=${encodeURIComponent(shareUrl)}`;
 
     window.open(url);
   };
 
-  handleInShare = () => {};
-
   render() {
-    const { isFbEnabled, isPtEnabled, isTwEnabled, className } = this.props;
+    const { isFacebookEnabled, isPinterestEnabled, isTwitterEnabled, className } = this.props;
 
     return (
       <span className={`${className} social-connect-sub-wrapper`}>
-        {isTwEnabled && (
+        {isTwitterEnabled && (
           <Anchor
             url="http://instagram.com/childrensplace"
             target="_blank"
-            onClick={this.handleTwShare}
+            onClick={this.handleTwitterShare}
             className="icon-twitter"
             title="Twitter"
           >
@@ -72,12 +67,12 @@ class SocialConnect extends React.PureComponent {
           </Anchor>
         )}
 
-        {isFbEnabled && (
+        {isFacebookEnabled && (
           <Anchor
             url="https://www.facebook.com/childrensplace"
             target="_blank"
-            onClick={this.handleFbShare}
-            className="icon-fcbk"
+            onClick={this.handleFacebookShare}
+            className="icon-facebook"
             title="Facebook"
           >
             <Image
@@ -88,11 +83,11 @@ class SocialConnect extends React.PureComponent {
             />
           </Anchor>
         )}
-        {isPtEnabled && (
+        {isPinterestEnabled && (
           <Anchor
             url="http://www.pinterest.com/childrensplace"
             target="_blank"
-            onClick={this.handlePtShare}
+            onClick={this.handlePinterestShare}
             className="icon-pinterest"
             title="Pinterest"
           >
@@ -111,11 +106,9 @@ class SocialConnect extends React.PureComponent {
 
 SocialConnect.defaultProps = {
   className: '',
-  isTwEnabled: false,
-  isFbEnabled: false,
-  isPtEnabled: false,
-  // isInEnabled:false,
+  isTwitterEnabled: true,
+  isFacebookEnabled: true,
+  isPinterestEnabled: true,
 };
 
 export default withStyles(SocialConnect, styles);
-// export { SocialConnect as ProductImagesVanilla };

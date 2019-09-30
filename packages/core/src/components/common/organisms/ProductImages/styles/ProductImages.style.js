@@ -58,7 +58,7 @@ export default css`
   .icon-twitter {
     margin-right: 14px;
   }
-  .icon-fcbk {
+  .icon-facebook {
     margin-right: 14px;
   }
 
