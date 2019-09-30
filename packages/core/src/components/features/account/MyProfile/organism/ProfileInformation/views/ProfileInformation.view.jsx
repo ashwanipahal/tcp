@@ -17,9 +17,17 @@ import MyFavoriteStore from '../../MyFavoriteStore';
 class ProfileInformation extends React.PureComponent {
   constructor(props) {
     super(props);
-    this.state = {
-      mountSurveyModal: false,
-    };
+    const url = new URL(window.location.href);
+    const isSurvey = url.searchParams.get('survey');
+    if (isSurvey) {
+      this.state = {
+        mountSurveyModal: true,
+      };
+    } else {
+      this.state = {
+        mountSurveyModal: false,
+      };
+    }
   }
 
   toggleModalState = e => {
