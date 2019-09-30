@@ -23,10 +23,10 @@ class ProductList extends React.PureComponent {
     };
   }
 
-  componentWillReceiveProps(nextProps) {
+  componentDidUpdate(prevProps) {
     const isScrollToTopValue = get(this.props, 'scrollToTop');
-    const isScrollToTopNextPropValue = get(nextProps, 'scrollToTop');
-    if (isScrollToTopNextPropValue && isScrollToTopNextPropValue !== isScrollToTopValue) {
+    const isScrollToTopPrevPropValue = get(prevProps, 'scrollToTop');
+    if (isScrollToTopValue && isScrollToTopValue !== isScrollToTopPrevPropValue) {
       this.scrollToTop();
     }
   }
