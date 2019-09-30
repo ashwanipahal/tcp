@@ -1,7 +1,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import PageHeadingWithLinks from '../../common/molecule/PageHeadingWithLinks';
-import MyRewards from '../../common/organism/MyRewards';
+import MyRewards from '../../common/organism/MyRewards/container/MyRewards.container';
 
 const WalletView = ({ labels }) => {
   return (
