@@ -82,10 +82,6 @@ export default css`
     transform: translateX(-50%);
     width: 70%;
 
-    .nav-bar-l1-item:last-of-type {
-      display: none;
-    }
-
     @media ${props => props.theme.mediaQuery.largeOnly} {
       .nav-bar-l1-content {
         padding: 0 15px 5px;
