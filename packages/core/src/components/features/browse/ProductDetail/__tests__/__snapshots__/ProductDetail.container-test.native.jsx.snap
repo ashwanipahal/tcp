@@ -5,6 +5,7 @@ exports[`ProductDetailContainerVanilla component should renders correctly 1`] = 
   breadCrumbs={Object {}}
   currentProduct={Object {}}
   handleSubmit={null}
+  isPickupModalOpen={false}
   navTree={Object {}}
   plpLabels={Object {}}
 />

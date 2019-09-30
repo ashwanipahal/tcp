@@ -9,6 +9,7 @@ import {
   getCurrentProduct,
   getPlpLabels,
 } from './ProductDetail.selectors';
+import { getIsPickupModalOpen } from '../../../../common/organisms/PickupStoreModal/container/PickUpStoreModal.selectors';
 
 class ProductDetailContainer extends React.PureComponent {
   selectedColorProductId;
@@ -36,7 +37,7 @@ class ProductDetailContainer extends React.PureComponent {
   }
 
   render() {
-    const { currentProduct, breadCrumbs, navTree, plpLabels } = this.props;
+    const { currentProduct, breadCrumbs, navTree, plpLabels, isPickupModalOpen } = this.props;
     return (
       <ProductDetail
         currentProduct={currentProduct}
@@ -44,6 +45,7 @@ class ProductDetailContainer extends React.PureComponent {
         navTree={navTree}
         selectedColorProductId={this.selectedColorProductId}
         plpLabels={plpLabels}
+        isPickupModalOpen={isPickupModalOpen}
       />
     );
   }
@@ -55,6 +57,7 @@ function mapStateToProps(state) {
     currentProduct: getCurrentProduct(state),
     breadCrumbs: getBreadCrumbs(state),
     plpLabels: getPlpLabels(state),
+    isPickupModalOpen: getIsPickupModalOpen(state),
   };
 }
 
@@ -73,6 +76,7 @@ ProductDetailContainer.propTypes = {
   navigation: PropTypes.shape({}).isRequired,
   navTree: PropTypes.shape({}),
   plpLabels: PropTypes.shape({}),
+  isPickupModalOpen: PropTypes.bool,
 };
 
 ProductDetailContainer.defaultProps = {
@@ -80,6 +84,7 @@ ProductDetailContainer.defaultProps = {
   breadCrumbs: {},
   navTree: {},
   plpLabels: {},
+  isPickupModalOpen: false,
 };
 
 export default connect(

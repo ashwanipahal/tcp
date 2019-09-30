@@ -198,6 +198,7 @@ exports[`ProductAddToBagVanilla should render correctly should match snapshot 1`
     margin-top: ",
                     [Function],
                     ";
+    cursor: auto;
   }
 
   .color-chips-selector-item {
@@ -666,6 +667,7 @@ exports[`ProductAddToBagVanilla should render correctly should match snapshot wi
     margin-top: ",
                     [Function],
                     ";
+    cursor: auto;
   }
 
   .color-chips-selector-item {
