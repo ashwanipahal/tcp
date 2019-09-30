@@ -30,7 +30,6 @@ const styles = css`
   }
 
   .addressbook-shippinglabel {
-    width: 80px;
     margin-right: 0;
     margin-left: auto;
     background-color: ${props => props.theme.colors.PRIMARY.GRAY};
