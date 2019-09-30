@@ -23,6 +23,9 @@ export const awsAppSync = {
   aws_appsync_graphqlEndpoint: endpoints.graphQL.int,
 };
 
+export const orderConfig = {
+  NON_ECOM_ORDERS: ['USBOPIS', 'CABOPIS', 'USROPIS', 'CAROPIS', 'USBOSS'],
+};
 // TODO - to move it in env config file
 export const API_CONFIG = {
   sites: ['us', 'ca'],
@@ -107,4 +110,5 @@ export default {
   awsAppSync,
   API_CONFIG,
   googleAppConfig,
+  orderConfig,
 };

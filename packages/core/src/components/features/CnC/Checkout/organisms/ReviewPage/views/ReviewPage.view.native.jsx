@@ -8,9 +8,10 @@ import PickUpReviewSectionContainer from '../organisms/PickUpReviewSection';
 import style from '../styles/ReviewPage.style.native';
 import CONSTANTS from '../../../Checkout.constants';
 import { BodyCopy } from '../../../../../../common/atoms';
+import BillingSection from '../organisms/BillingSection';
 import ShippingReviewSection from '../organisms/ShippingReviewSection';
 
-const { Container, TextSection, FooterTextContainer, FooterLink } = style;
+const { Container, FooterTextContainer, FooterLink } = style;
 
 class ReviewPage extends React.PureComponent {
   static propTypes = {
@@ -51,7 +52,7 @@ class ReviewPage extends React.PureComponent {
       orderHasShipping,
       orderHasPickUp,
     } = this.props;
-    const { header, backLinkBilling, nextSubmitText, billingSectionTitle } = labels;
+    const { header, backLinkBilling, nextSubmitText } = labels;
 
     return (
       <>
@@ -77,7 +78,11 @@ class ReviewPage extends React.PureComponent {
                 }}
               />
             )}
-            <TextSection>{billingSectionTitle}</TextSection>
+            <BillingSection
+              onEdit={() => {
+                navigation.navigate(CONSTANTS.CHECKOUT_ROUTES_NAMES.CHECKOUT_BILLING);
+              }}
+            />
           </Container>
           <CnCTemplate
             navigation={navigation}
