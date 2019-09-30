@@ -119,7 +119,7 @@ class BagPageView extends React.Component {
 
   handleBagHeaderScroll = sticky => {
     const condensedPageHeaderHeight = this.getPageLevelHeaderHeight();
-    if (window.pageYOffset > sticky) {
+    if (window.pageYOffset > sticky + 30) {
       this.setState({ showCondensedHeader: true }, () => {
         document.getElementById(
           'bag-condensed-header'

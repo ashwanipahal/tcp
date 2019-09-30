@@ -2,7 +2,8 @@ import { css } from 'styled-components';
 
 const CtaStyle = css`
   display: block;
-  margin-bottom: ${props => props.theme.spacing.ELEM_SPACING.MED};
+  margin-bottom: ${props =>
+    props.isBagPageStickyHeader ? '0' : props.theme.spacing.ELEM_SPACING.MED};
   .check-out-container {
     margin-top: 10px;
     display: flex;
@@ -25,7 +26,7 @@ const CtaStyle = css`
       position: fixed;
       width: 92%;
       background: ${props => props.theme.colors.WHITE};
-      z-index: 1000;
+      z-index: ${props => props.theme.zindex.zLoader};
       margin: 0;
       border-top: ${props => props.theme.spacing.ELEM_SPACING.XXXS} solid
         ${props => props.theme.colors.PRIMARY.LIGHTGRAY};
