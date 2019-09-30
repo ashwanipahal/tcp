@@ -410,6 +410,7 @@ export class BillingPaymentForm extends React.PureComponent {
       isPaymentDisabled,
       showAccordian,
       isGuest,
+      isVenmoEnabled,
     } = this.props;
     const creditCardList = getCreditCardList({ cardList });
     return (
@@ -425,7 +426,11 @@ export class BillingPaymentForm extends React.PureComponent {
             >
               {labels.paymentMethod}
             </BodyCopy>
-            <PaymentMethods labels={labels} className="elem-mb-LRG" />
+            <PaymentMethods
+              labels={labels}
+              className="elem-mb-LRG"
+              isVenmoEnabled={isVenmoEnabled}
+            />
             {paymentMethodId === constants.PAYMENT_METHOD_CREDIT_CARD &&
               this.getCreditCardWrapper({
                 labels,
@@ -436,7 +441,7 @@ export class BillingPaymentForm extends React.PureComponent {
             {paymentMethodId === constants.PAYMENT_METHOD_PAYPAL && (
               <div className="payment-paypal-container" />
             )}
-            {paymentMethodId === constants.PAYMENT_METHOD_VENMO && (
+            {paymentMethodId === constants.PAYMENT_METHOD_VENMO && isVenmoEnabled && (
               <VenmoPaymentButton
                 className="venmo-container"
                 continueWithText={labels.continueWith}

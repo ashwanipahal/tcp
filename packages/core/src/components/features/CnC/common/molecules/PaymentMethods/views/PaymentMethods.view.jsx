@@ -8,7 +8,7 @@ import BodyCopy from '../../../../../../common/atoms/BodyCopy';
 import styles from '../styles/PaymentMethods.style';
 import withStyles from '../../../../../../common/hoc/withStyles';
 
-const PaymentMethods = ({ className, paymentHeader, labels }) => {
+const PaymentMethods = ({ className, paymentHeader, labels, isVenmoEnabled }) => {
   return (
     <>
       <BodyCopy
@@ -50,21 +50,22 @@ const PaymentMethods = ({ className, paymentHeader, labels }) => {
             variation="secondary"
           />
         </Col>
-
-        <Col
-          colSize={{ small: 2, medium: 4, large: 0 }}
-          className="radio-method payment-method-box payment-method-venmo-img hideOnDesktop"
-        >
-          <Field
-            component={LabeledRadioButton}
-            key="Venmo"
-            selectedValue="venmo"
-            title=""
-            subtitle=""
-            name="paymentMethodId"
-            variation="secondary"
-          />
-        </Col>
+        {isVenmoEnabled && (
+          <Col
+            colSize={{ small: 2, medium: 4, large: 0 }}
+            className="radio-method payment-method-box payment-method-venmo-img hideOnDesktop"
+          >
+            <Field
+              component={LabeledRadioButton}
+              key="Venmo"
+              selectedValue="venmo"
+              title=""
+              subtitle=""
+              name="paymentMethodId"
+              variation="secondary"
+            />
+          </Col>
+        )}
       </Row>
     </>
   );
@@ -74,10 +75,12 @@ PaymentMethods.propTypes = {
   className: PropTypes.string,
   paymentHeader: PropTypes.string,
   labels: PropTypes.shape({}).isRequired,
+  isVenmoEnabled: PropTypes.bool, // Venmo Kill Switch
 };
 PaymentMethods.defaultProps = {
   className: '',
   paymentHeader: '',
+  isVenmoEnabled: false,
 };
 
 export default withStyles(PaymentMethods, styles);

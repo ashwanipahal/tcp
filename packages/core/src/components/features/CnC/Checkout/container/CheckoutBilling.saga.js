@@ -183,6 +183,21 @@ export function* submitBillingData(formData, address, loadUpdatedCheckoutValues)
   }
 }
 
+/**
+ * @function submitVenmoBilling
+ * @description - Redirect venmo payment from billing to review. This method is called from the Billing Page
+ * @param {obejct} payload - venmo payload to submit billing and redirect to review page
+ */
+export function* submitVenmoBilling(payload = {}) {
+  const { payload: { navigation } = {} } = payload;
+  yield put(getSetIsBillingVisitedActn(true)); // flag that billing section was visited by the user
+  if (!isMobileApp()) {
+    utility.routeToPage(CHECKOUT_ROUTES.reviewPage);
+  } else if (navigation) {
+    navigation.navigate(CONSTANTS.CHECKOUT_ROUTES_NAMES.CHECKOUT_REVIEW);
+  }
+}
+
 export default function* submitBilling(payload = {}, loadUpdatedCheckoutValues) {
   try {
     // TODO need to remove as it is temp fix to deliver review page for app

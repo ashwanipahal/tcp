@@ -803,6 +803,13 @@ function getInternationalCheckoutCommUrl() {
 function getInternationalCheckoutUrl(state) {
   return state.Checkout.getIn(['options', 'internationalUrl']);
 }
+
+/**
+ * @function getIsVenmoEnabled
+ * @description - Venmo Kill Switch Selector
+ * @param {object} state
+ * @returns {bool}
+ */
 const getIsVenmoEnabled = state => {
   return (
     state[SESSIONCONFIG_REDUCER_KEY] &&
