@@ -4,7 +4,6 @@ import { reduxForm, Field } from 'redux-form';
 import { PropTypes } from 'prop-types';
 import { noop } from 'lodash';
 import { getLabelValue } from '@tcp/core/src/utils/utils';
-import createThemeColorPalette from '@tcp/core/styles/themes/createThemeColorPalette';
 import withStyles from '../../../../../../common/hoc/withStyles.native';
 import { FormStyle, ShowHideWrapper, HideShowFieldWrapper } from '../styles/LoginForm.style.native';
 import TextBox from '../../../../../../common/atoms/TextBox';
@@ -14,8 +13,6 @@ import LineComp from '../../../../../../common/atoms/Line';
 import createValidateMethod from '../../../../../../../utils/formValidation/createValidateMethod';
 import getStandardConfig from '../../../../../../../utils/formValidation/validatorStandardConfig';
 import TouchFaceIdCheckBox from '../../../../common/molecule/FaceTouchCheckBox/views/faceTouchIdCheckBox.native';
-
-const colorPallete = createThemeColorPalette();
 
 const styles = {
   loginButtonStyle: {
@@ -135,9 +132,6 @@ class LoginForm extends React.PureComponent<Props> {
 
           {variation === 'checkout' && (
             <CustomButton
-              color={colorPallete.black}
-              fill="WHITE"
-              buttonVariation="variable-width"
               customStyle={styles.loginButtonStyle}
               text={labels.login.lbl_login_modal_checkout_as_guest}
               onPress={this.handleContinueAsGuest}

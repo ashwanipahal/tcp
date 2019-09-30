@@ -268,7 +268,6 @@ exports[`Add gift card form component render error message 1`] = `
     </Styled(View)>
     <Styled(View)>
       <Styled(WithTheme(CustomButton))
-        buttonVariation="variable-width"
         color="black"
         data-locator="gift-card-cancelbtn"
         onPress={[Function]}
@@ -515,7 +514,6 @@ exports[`Add gift card form component should render component correctly 1`] = `
     </Styled(View)>
     <Styled(View)>
       <Styled(WithTheme(CustomButton))
-        buttonVariation="variable-width"
         color="black"
         data-locator="gift-card-cancelbtn"
         onPress={[Function]}

@@ -39,8 +39,6 @@ exports[`HomePageView should render correctly 1`] = `
     }
   />
   <Styled(WithTheme(CustomButton))
-    buttonVariation="variable-width"
-    fullWidth={true}
     onPress={[Function]}
     style={
       Object {

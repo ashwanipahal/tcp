@@ -79,8 +79,6 @@ exports[`DetailedCouponTile should render correctly 1`] = `
       </Styled(View)>
       <Styled(View)>
         <Styled(WithTheme(CustomButton))
-          buttonVariation="variable-width"
-          fill="WHITE"
           onPress={[Function]}
           text="view & print"
         />
@@ -215,16 +213,12 @@ exports[`DetailedCouponTile should render correctly for applied coupon 1`] = `
       </Styled(View)>
       <Styled(View)>
         <Styled(WithTheme(CustomButton))
-          buttonVariation="variable-width"
-          fill="WHITE"
           onPress={[Function]}
           text="view & print"
         />
         <Styled(Styled(View)) />
       </Styled(View)>
       <Styled(WithTheme(CustomButton))
-        buttonVariation="variable-width"
-        fill="WHITE"
         onPress={[Function]}
         text="remove from bag"
       />
@@ -330,8 +324,6 @@ exports[`DetailedCouponTile should render expiring soon notification if coupon i
       </Styled(View)>
       <Styled(View)>
         <Styled(WithTheme(CustomButton))
-          buttonVariation="variable-width"
-          fill="WHITE"
           onPress={[Function]}
           text="view & print"
         />

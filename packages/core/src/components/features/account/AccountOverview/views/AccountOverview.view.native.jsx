@@ -188,7 +188,6 @@ class AccountOverview extends PureComponent<Props> {
                 id="createAccount"
                 type="submit"
                 width="150px"
-                buttonVariation="variable-width"
                 data-locator=""
                 text={labels.lbl_overview_join_text}
                 onPress={e =>

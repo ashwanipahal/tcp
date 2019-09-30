@@ -40,7 +40,6 @@ exports[`AccountOverview component should render correctly 1`] = `
   </Styled(View)>
   <Styled(View)>
     <Styled(WithTheme(CustomButton))
-      buttonVariation="variable-width"
       className="classBtn"
       color="#575757"
       data-locator=""

@@ -290,7 +290,6 @@ export default class AddressVerification extends React.PureComponent {
                   color={colorPallete.red[300]}
                   fill="WHITE"
                   text={verifyAddressLabels.editAddress}
-                  buttonVariation="variable-width"
                   onPress={this.onClose}
                 />
               </ButtonWrapper>

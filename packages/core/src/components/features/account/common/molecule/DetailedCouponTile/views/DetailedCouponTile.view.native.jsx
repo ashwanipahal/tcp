@@ -244,8 +244,6 @@ export class DetailedCouponTile extends React.Component {
             <ButtonWrapper>
               <CustomButton
                 text={labels.lbl_coupon_viewPrint}
-                buttonVariation="variable-width"
-                fill="WHITE"
                 onPress={() => {
                   this.handleViewCouponDetails();
                 }}
@@ -256,8 +254,6 @@ export class DetailedCouponTile extends React.Component {
             {!coupon.applyAlert && coupon.status === COUPON_STATUS.APPLIED ? (
               <CustomButton
                 text={labels.lbl_coupon_removeFromBag}
-                buttonVariation="variable-width"
-                fill="WHITE"
                 onPress={() => {
                   this.handleRemove();
                 }}

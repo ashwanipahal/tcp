@@ -36,7 +36,6 @@ const keyExtractor = (_, index) => index.toString();
  */
 const renderItem = (item, navigation, showFullWidth, locator, buttonVariation) => {
   const { button } = item;
-
   return (
     <Button
       locator={locator}
