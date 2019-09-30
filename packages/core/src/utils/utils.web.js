@@ -340,6 +340,7 @@ const getAPIInfoFromEnv = (apiSiteInfo, processEnv, siteId) => {
     }`,
     envId: processEnv.RWD_WEB_ENV_ID,
     BAZAARVOICE_SPOTLIGHT: processEnv.RWD_WEB_BAZAARVOICE_API_KEY,
+    BAZAARVOICE_REVIEWS: processEnv.RWD_WEB_BAZAARVOICE_PRODUCT_REVIEWS_API_KEY,
     CANDID_API_KEY: process.env.RWD_WEB_CANDID_API_KEY,
     CANDID_API_URL: process.env.RWD_WEB_CANDID_URL,
     googleApiKey: process.env.RWD_WEB_GOOGLE_MAPS_API_KEY,
