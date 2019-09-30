@@ -51,6 +51,7 @@ class StoreAddressTile extends PureComponent {
 
   getListingHeader() {
     const {
+      storeIndex,
       store: { basicInfo, distance },
       labels,
       openStoreDirections,
@@ -59,7 +60,10 @@ class StoreAddressTile extends PureComponent {
     return (
       <Fragment>
         <ListingTileWrapper>
-          <ListingTitleStoreName>{storeName}</ListingTitleStoreName>
+          <ListingTitleStoreName>
+            {!!storeIndex && `${storeIndex}. `}
+            {storeName}
+          </ListingTitleStoreName>
           <ListingTitleText>
             {`(${labels.lbl_storelocators_landingpage_openInterval} ${this.getStoreHours()})`}
           </ListingTitleText>
