@@ -504,6 +504,7 @@ exports[`QuickViewModal component should renders correctly 1`] = `
         }
       }
       dataLocator="global-addtocart-Button"
+      onPickupClickAddon={[Function]}
     />
   </div>
 </Styled(Modal)>

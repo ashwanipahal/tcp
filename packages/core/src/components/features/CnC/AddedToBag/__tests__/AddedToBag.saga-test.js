@@ -59,13 +59,14 @@ describe('Added to bag saga', () => {
     };
     const addItemToCartBopisGen = addItemToCartBopis({ payload });
     addItemToCartBopisGen.next();
+    addItemToCartBopisGen.next();
 
-    const res = {
-      ...payload,
-      orderItemId: '1111',
-    };
     const response = {
       orderItemId: '1111',
+    };
+    const res = {
+      ...payload.productInfo,
+      ...response,
     };
     let putDescriptor = addItemToCartBopisGen.next(response).value;
     expect(putDescriptor).toEqual(put(SetAddedToBagData(res)));
@@ -78,6 +79,7 @@ describe('Added to bag saga', () => {
 
     const addItemToCartBopisGen1 = addItemToCartBopis({ payload });
     addItemToCartBopisGen1.next();
+    addItemToCartBopisGen1.next();
     const putDescriptorError = addItemToCartBopisGen1.next(err).value;
     expect(putDescriptorError).toEqual(
       put({
@@ -86,16 +88,14 @@ describe('Added to bag saga', () => {
             error: 'error',
           },
           orderItemId: '1111',
-          productInfo: {
-            isBoss: true,
-            quantity: '1',
-            skuInfo: {
-              skuId: 'skuId',
-              variantId: 'variantId',
-              variantNo: 'variantNo',
-            },
-            storeLocId: '345',
+          isBoss: true,
+          quantity: '1',
+          skuInfo: {
+            skuId: 'skuId',
+            variantId: 'variantId',
+            variantNo: 'variantNo',
           },
+          storeLocId: '345',
         },
         type: 'SET_ADDED_TO_BAG',
       })
