@@ -53,7 +53,14 @@ class ApplyCardLayoutView extends React.PureComponent {
         />
       );
     } else {
-      return <PLCCForm onSubmit={onSubmit} labels={labels} plccData={plccData} />;
+      return (
+        <PLCCForm
+          onSubmit={onSubmit}
+          labels={labels}
+          plccData={plccData}
+          toggleModal={toggleModal}
+        />
+      );
     }
   };
 
