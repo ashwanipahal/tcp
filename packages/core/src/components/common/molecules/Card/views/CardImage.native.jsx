@@ -9,7 +9,7 @@ import CardStyle from '../Card.style';
 
 import { ImageWrapper, ImageViewWrapper, CardWrapper } from '../CardImage.style.native';
 
-const CardImage = ({ card, cardNumber }) => {
+export const CardImage = ({ card, cardNumber }) => {
   const cardIcon = getIconCard(cardIconMapping[card.ccBrand]);
   return (
     <ImageViewWrapper>

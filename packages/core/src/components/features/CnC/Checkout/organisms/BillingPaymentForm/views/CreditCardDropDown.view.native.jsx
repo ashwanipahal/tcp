@@ -1,6 +1,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import { Field, change } from 'redux-form';
+import { List } from 'immutable';
 import AddressDropdown from '../../../../../account/AddEditCreditCard/molecule/AddressDropdown';
 import Card from '../../../../../../common/molecules/Card/views/Card.native';
 import withStyles from '../../../../../../common/hoc/withStyles';
@@ -15,7 +16,7 @@ const itemStyle = {
   height: 90,
 };
 
-class CreditCardDropDown extends React.PureComponent {
+export class CreditCardDropDown extends React.PureComponent {
   getCardOptions = () => {
     const { creditCardList, labels, onFileCardKey } = this.props;
     let cardOptions =
@@ -40,7 +41,7 @@ class CreditCardDropDown extends React.PureComponent {
           useCustomContent: true,
           primary: card.defaultInd === 'true',
         }))) ||
-      [];
+      new List([]);
 
     cardOptions = cardOptions.push({
       id: '',

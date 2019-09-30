@@ -1,0 +1,200 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`CreditCardDropDown component renders correctly with props 1`] = `
+<Field
+  addAddress={[Function]}
+  component={[Function]}
+  data={
+    Array [
+      Object {
+        "content": <ForwardRef>
+          <ForwardRef
+            card={
+              Object {
+                "accountNo": "************3743",
+                "addressDetails": Object {
+                  "addressLine1": "Dorney Park Road",
+                  "addressLine2": "",
+                  "city": "Allentown",
+                  "country": "US",
+                },
+                "ccBrand": "PLACE CARD",
+                "ccType": "PLACE CARD1",
+                "creditCardId": 82596,
+                "defaultInd": false,
+              }
+            }
+            cardNumber="creditCardEnd3743"
+            isDefault={false}
+            labels={
+              Object {
+                "creditCardEnd": "creditCardEnd",
+                "defaultBadge": "defaultBadge",
+              }
+            }
+            selectedValue={0}
+            showAddress={false}
+          />
+        </ForwardRef>,
+        "id": 82596,
+        "label": "creditCardEnd3743 ",
+        "primary": false,
+        "useCustomContent": true,
+      },
+      Object {
+        "content": <ForwardRef>
+          <ForwardRef
+            card={
+              Object {
+                "accountNo": "************3744",
+                "addressDetails": Object {
+                  "addressLine1": "Dorney Park Road",
+                  "addressLine2": "",
+                  "city": "Allentown",
+                  "country": "US",
+                },
+                "ccBrand": "PLACE CARD",
+                "ccType": "PLACE CARD1",
+                "creditCardId": 82596,
+                "defaultInd": true,
+              }
+            }
+            cardNumber="creditCardEnd3744"
+            isDefault={true}
+            labels={
+              Object {
+                "creditCardEnd": "creditCardEnd",
+                "defaultBadge": "defaultBadge",
+              }
+            }
+            selectedValue={0}
+            showAddress={false}
+          />
+        </ForwardRef>,
+        "id": 82596,
+        "label": "creditCardEnd3744 (defaultBadge)",
+        "primary": false,
+        "useCustomContent": true,
+      },
+      Object {
+        "content": "",
+        "id": "",
+        "label": undefined,
+        "primary": false,
+      },
+    ]
+  }
+  disableBtn={false}
+  dropDownStyle={
+    Object {
+      "borderBottomWidth": 1,
+      "height": 30,
+      "marginTop": 25,
+    }
+  }
+  id="onFileCardKey"
+  itemStyle={
+    Object {
+      "height": 90,
+    }
+  }
+  labels={
+    Object {
+      "common": Object {
+        "lbl_common_tapClose": "close",
+      },
+    }
+  }
+  name="onFileCardKey"
+  onValueChange={[Function]}
+  selectListTitle=""
+  selectedValue={82596}
+  variation="secondary"
+/>
+`;
+
+exports[`CreditCardDropDown component renders correctly with toggleAddNewMode 1`] = `
+<Field
+  addAddress={[Function]}
+  component={[Function]}
+  data={
+    Array [
+      Object {
+        "content": "",
+        "id": "",
+        "label": undefined,
+        "primary": false,
+      },
+    ]
+  }
+  disableBtn={true}
+  dropDownStyle={
+    Object {
+      "borderBottomWidth": 1,
+      "height": 30,
+      "marginTop": 25,
+    }
+  }
+  id="onFileCardKey"
+  itemStyle={
+    Object {
+      "height": 90,
+    }
+  }
+  labels={
+    Object {
+      "common": Object {
+        "lbl_common_tapClose": "close",
+      },
+    }
+  }
+  name="onFileCardKey"
+  onValueChange={[Function]}
+  selectListTitle=""
+  selectedValue={82596}
+  variation="secondary"
+/>
+`;
+
+exports[`CreditCardDropDown component renders correctly without props 1`] = `
+<Field
+  addAddress={[Function]}
+  component={[Function]}
+  data={
+    Array [
+      Object {
+        "content": "",
+        "id": "",
+        "label": undefined,
+        "primary": false,
+      },
+    ]
+  }
+  disableBtn={true}
+  dropDownStyle={
+    Object {
+      "borderBottomWidth": 1,
+      "height": 30,
+      "marginTop": 25,
+    }
+  }
+  id="onFileCardKey"
+  itemStyle={
+    Object {
+      "height": 90,
+    }
+  }
+  labels={
+    Object {
+      "common": Object {
+        "lbl_common_tapClose": "close",
+      },
+    }
+  }
+  name="onFileCardKey"
+  onValueChange={[Function]}
+  selectListTitle=""
+  selectedValue={82596}
+  variation="secondary"
+/>
+`;

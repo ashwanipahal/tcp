@@ -20,15 +20,15 @@ const card = [
 ];
 
 const labels = {
-  lbl_billing_paymentMethodTitle: 'Payment Method',
+  paymentMethod: 'Payment Method',
   lbl_billing_creditCard: 'Credit Card',
   lbl_billing_selectFromCard: 'Select from card on file',
   lbl_billing_addCreditHeading: '+ Add a new Credit Card',
   lbl_billing_default: 'Default',
   lbl_billing_cardDetailsTitle: 'Card Details',
-  lbl_billing_editBtn: 'Edit',
-  lbl_billing_creditCardEnd: 'ending in ',
-  lbl_billing_cvvCode: 'CVV Code',
+  edit: 'Edit',
+  creditCardEnd: 'ending in ',
+  cvvCode: 'CVV Code',
   lbl_billing_billingAddress: 'Billing Address',
   lbl_billing_defaultPayment: 'Set as default payment method',
   lbl_billing_addCreditBtn: 'ADD A NEW CREDIT CARD',
@@ -58,6 +58,7 @@ describe('ButtonList component', () => {
     backLinkShipping: '',
     nextSubmitText: '',
     isPaymentDisabled,
+    dispatch: jest.fn(),
   };
 
   it('renders correctly without props', () => {
@@ -69,6 +70,15 @@ describe('ButtonList component', () => {
     const component = shallow(<BillingPaymentForm {...props} />);
     expect(component).toMatchSnapshot();
   });
+
+  it('renders correctly with method onAddNewCreditCardClick', () => {
+    const component = shallow(<BillingPaymentForm {...props} />);
+    const instance = component.instance();
+    const spyOnAddNewCreditCardClick = jest.spyOn(instance, 'onAddNewCreditCardClick');
+    instance.onAddNewCreditCardClick();
+    expect(spyOnAddNewCreditCardClick).toHaveBeenCalled();
+  });
+
   it('renders correctly without props with isPaymentDisabled true', () => {
     orderHasShipping = true;
     const props1 = {
@@ -158,5 +168,10 @@ describe('ButtonList component', () => {
     const component = shallow(<BillingPaymentForm {...props2} />);
     component.setState({ addNewCCState: true });
     expect(component).toMatchSnapshot();
+    const instance = component.instance();
+    const spyRenderCVVField = jest.spyOn(instance, 'renderCVVField');
+    const label = {};
+    instance.renderCVVField({ labels: label, selectedCard: card[0] });
+    expect(spyRenderCVVField).toHaveBeenCalled();
   });
 });

@@ -1,0 +1,31 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Card component renders correctly without props 1`] = `
+<Styled(View)>
+  <Styled(View)>
+    <Styled(ImageComp)
+      alt=""
+      height="30"
+      host=""
+      source={
+        Object {
+          "testUri": "../../../../core/src/assets/TCP-CC-small.png",
+        }
+      }
+      url=""
+      width="40"
+    />
+  </Styled(View)>
+  <Styled(View)>
+    <Styled(BodyCopy)
+      accessibilityText=""
+      dataLocator=""
+      margin={null}
+      mobileFontFamily="secondary"
+      numberOfLines={null}
+      text="************3743"
+      textDecoration={null}
+    />
+  </Styled(View)>
+</Styled(View)>
+`;
