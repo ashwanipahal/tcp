@@ -1,0 +1,360 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`BillingSection should render correctly for empty state 1`] = `
+<Fragment>
+  <Styled(View)>
+    <Styled(BodyCopy)
+      accessibilityText=""
+      dataLocator=""
+      fontSize="fs26"
+      margin={null}
+      mobileFontFamily="primary"
+      numberOfLines={null}
+      text="undefined "
+      textDecoration={null}
+    />
+    <Styled(View)>
+      <Styled(Anchor)
+        accessibilityLabel=""
+        anchorVariation="primary"
+        colorName={null}
+        customStyle={Object {}}
+        fontSizeVariation="large"
+        locator=""
+        onPress={null}
+        text=""
+        underline={true}
+        visible={false}
+      />
+    </Styled(View)>
+  </Styled(View)>
+</Fragment>
+`;
+
+exports[`BillingSection should render correctly without address details 1`] = `
+<Fragment>
+  <Styled(View)>
+    <Styled(BodyCopy)
+      accessibilityText=""
+      dataLocator=""
+      fontSize="fs26"
+      margin={null}
+      mobileFontFamily="primary"
+      numberOfLines={null}
+      text="Billing "
+      textDecoration={null}
+    />
+    <Styled(View)>
+      <Styled(Anchor)
+        accessibilityLabel=""
+        anchorVariation="primary"
+        colorName={null}
+        customStyle={Object {}}
+        fontSizeVariation="large"
+        locator=""
+        onPress={null}
+        text=""
+        underline={true}
+        visible={false}
+      />
+    </Styled(View)>
+  </Styled(View)>
+  <Styled(View)>
+    <Styled(View)>
+      <Styled(BodyCopy)
+        accessibilityText=""
+        color="gray.900"
+        dataLocator=""
+        fontSize="fs16"
+        fontWeight="semibold"
+        margin={null}
+        mobileFontFamily="secondary"
+        numberOfLines={null}
+        text="Payment Method"
+        textDecoration={null}
+      />
+    </Styled(View)>
+    <CardImage
+      card={
+        Object {
+          "cardNumber": "1234",
+          "ccBrand": "PLACE CASH",
+          "ccType": "PLACE CASH",
+        }
+      }
+      cardNumber="ending in 1234"
+    />
+  </Styled(View)>
+  <Styled(View)>
+    <Styled(BodyCopy)
+      accessibilityText=""
+      color="gray.900"
+      dataLocator=""
+      fontSize="fs16"
+      fontWeight="semibold"
+      margin={null}
+      mobileFontFamily="secondary"
+      numberOfLines={null}
+      text="Applied Gift Cards"
+      textDecoration={null}
+    />
+  </Styled(View)>
+  <AppliedGiftCards
+    appliedGiftCards={
+      Immutable.List [
+        Immutable.Map {
+          "id": "1",
+          "endingNumbers": "4321",
+          "remainingBalance": 0,
+        },
+        Immutable.Map {
+          "id": "2",
+          "endingNumbers": "1234",
+          "remainingBalance": 15,
+        },
+      ]
+    }
+    labels={
+      Object {
+        "lbl_review_appliedGiftCards": "Applied Gift Cards",
+        "lbl_review_billingAddress": "Billing Address",
+        "lbl_review_billingSectionTitle": "Billing",
+        "lbl_review_paymentMethod": "Payment Method",
+        "lbl_review_paymentMethodEndingIn": "ending in",
+      }
+    }
+  />
+</Fragment>
+`;
+
+exports[`BillingSection should render correctly without card & address details or with gift card empty 1`] = `
+<Fragment>
+  <Styled(View)>
+    <Styled(BodyCopy)
+      accessibilityText=""
+      dataLocator=""
+      fontSize="fs26"
+      margin={null}
+      mobileFontFamily="primary"
+      numberOfLines={null}
+      text="Billing "
+      textDecoration={null}
+    />
+    <Styled(View)>
+      <Styled(Anchor)
+        accessibilityLabel=""
+        anchorVariation="primary"
+        colorName={null}
+        customStyle={Object {}}
+        fontSizeVariation="large"
+        locator=""
+        onPress={null}
+        text=""
+        underline={true}
+        visible={false}
+      />
+    </Styled(View)>
+  </Styled(View)>
+  <Styled(View)>
+    <Styled(BodyCopy)
+      accessibilityText=""
+      color="gray.900"
+      dataLocator=""
+      fontSize="fs16"
+      fontWeight="semibold"
+      margin={null}
+      mobileFontFamily="secondary"
+      numberOfLines={null}
+      text="Applied Gift Cards"
+      textDecoration={null}
+    />
+  </Styled(View)>
+  <AppliedGiftCards
+    appliedGiftCards={Immutable.List []}
+    labels={
+      Object {
+        "lbl_review_appliedGiftCards": "Applied Gift Cards",
+        "lbl_review_billingAddress": "Billing Address",
+        "lbl_review_billingSectionTitle": "Billing",
+        "lbl_review_paymentMethod": "Payment Method",
+        "lbl_review_paymentMethodEndingIn": "ending in",
+      }
+    }
+  />
+</Fragment>
+`;
+
+exports[`BillingSection should render correctly without card & address details or with gift card only 1`] = `
+<Fragment>
+  <Styled(View)>
+    <Styled(BodyCopy)
+      accessibilityText=""
+      dataLocator=""
+      fontSize="fs26"
+      margin={null}
+      mobileFontFamily="primary"
+      numberOfLines={null}
+      text="Billing "
+      textDecoration={null}
+    />
+    <Styled(View)>
+      <Styled(Anchor)
+        accessibilityLabel=""
+        anchorVariation="primary"
+        colorName={null}
+        customStyle={Object {}}
+        fontSizeVariation="large"
+        locator=""
+        onPress={null}
+        text=""
+        underline={true}
+        visible={false}
+      />
+    </Styled(View)>
+  </Styled(View)>
+  <Styled(View)>
+    <Styled(BodyCopy)
+      accessibilityText=""
+      color="gray.900"
+      dataLocator=""
+      fontSize="fs16"
+      fontWeight="semibold"
+      margin={null}
+      mobileFontFamily="secondary"
+      numberOfLines={null}
+      text="Applied Gift Cards"
+      textDecoration={null}
+    />
+  </Styled(View)>
+  <AppliedGiftCards
+    appliedGiftCards={
+      Immutable.List [
+        Immutable.Map {
+          "id": "1",
+          "endingNumbers": "4321",
+          "remainingBalance": 0,
+        },
+        Immutable.Map {
+          "id": "2",
+          "endingNumbers": "1234",
+          "remainingBalance": 15,
+        },
+      ]
+    }
+    labels={
+      Object {
+        "lbl_review_appliedGiftCards": "Applied Gift Cards",
+        "lbl_review_billingAddress": "Billing Address",
+        "lbl_review_billingSectionTitle": "Billing",
+        "lbl_review_paymentMethod": "Payment Method",
+        "lbl_review_paymentMethodEndingIn": "ending in",
+      }
+    }
+  />
+</Fragment>
+`;
+
+exports[`BillingSection should render correctly without card details 1`] = `
+<Fragment>
+  <Styled(View)>
+    <Styled(BodyCopy)
+      accessibilityText=""
+      dataLocator=""
+      fontSize="fs26"
+      margin={null}
+      mobileFontFamily="primary"
+      numberOfLines={null}
+      text="Billing "
+      textDecoration={null}
+    />
+    <Styled(View)>
+      <Styled(Anchor)
+        accessibilityLabel=""
+        anchorVariation="primary"
+        colorName={null}
+        customStyle={Object {}}
+        fontSizeVariation="large"
+        locator=""
+        onPress={null}
+        text=""
+        underline={true}
+        visible={false}
+      />
+    </Styled(View)>
+  </Styled(View)>
+  <Styled(View)>
+    <Styled(View)>
+      <Styled(BodyCopy)
+        accessibilityText=""
+        color="gray.900"
+        dataLocator=""
+        fontSize="fs16"
+        fontWeight="semibold"
+        margin={null}
+        mobileFontFamily="secondary"
+        numberOfLines={null}
+        text="Billing Address"
+        textDecoration={null}
+      />
+    </Styled(View)>
+    <Address
+      address={
+        Object {
+          "addressLine1": "1234 XYZ",
+          "city": "New York",
+          "country": "US",
+          "firstName": "Test",
+          "lastName": "Test",
+          "state": "NY",
+        }
+      }
+      customStyle={Object {}}
+      fontSize="fs16"
+      regularName={true}
+      showCountry={true}
+      showDefaultText={false}
+      showName={true}
+      showPhone={true}
+    />
+  </Styled(View)>
+  <Styled(View)>
+    <Styled(BodyCopy)
+      accessibilityText=""
+      color="gray.900"
+      dataLocator=""
+      fontSize="fs16"
+      fontWeight="semibold"
+      margin={null}
+      mobileFontFamily="secondary"
+      numberOfLines={null}
+      text="Applied Gift Cards"
+      textDecoration={null}
+    />
+  </Styled(View)>
+  <AppliedGiftCards
+    appliedGiftCards={
+      Immutable.List [
+        Immutable.Map {
+          "id": "1",
+          "endingNumbers": "4321",
+          "remainingBalance": 0,
+        },
+        Immutable.Map {
+          "id": "2",
+          "endingNumbers": "1234",
+          "remainingBalance": 15,
+        },
+      ]
+    }
+    labels={
+      Object {
+        "lbl_review_appliedGiftCards": "Applied Gift Cards",
+        "lbl_review_billingAddress": "Billing Address",
+        "lbl_review_billingSectionTitle": "Billing",
+        "lbl_review_paymentMethod": "Payment Method",
+        "lbl_review_paymentMethodEndingIn": "ending in",
+      }
+    }
+  />
+</Fragment>
+`;
