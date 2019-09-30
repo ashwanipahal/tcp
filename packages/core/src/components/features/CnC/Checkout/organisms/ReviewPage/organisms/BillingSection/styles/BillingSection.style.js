@@ -31,4 +31,24 @@ export default css`
     font-size: ${props => props.theme.typography.fontSizes.fs16};
     padding-bottom: ${props => props.theme.spacing.ELEM_SPACING.MED};
   }
+
+  .venmo-payment-method-wrapper {
+    display: none;
+    @media ${props => props.theme.mediaQuery.smallOnly} {
+      display: block;
+      margin-top: ${props => props.theme.spacing.ELEM_SPACING.XS};
+    }
+  }
+
+  .venmo-save-wrapper {
+    display: none;
+    @media ${props => props.theme.mediaQuery.smallOnly} {
+      display: block;
+      margin-top: ${props => props.theme.spacing.ELEM_SPACING.MED};
+    }
+  }
+
+  .venmo-save-checkbox .CheckBox__text {
+    margin-top: ${props => props.theme.spacing.ELEM_SPACING.XXS};
+  }
 `;

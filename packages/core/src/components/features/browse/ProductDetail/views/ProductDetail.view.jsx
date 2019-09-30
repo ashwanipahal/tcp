@@ -2,6 +2,7 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import ExecutionEnvironment from 'exenv';
 import { Row, Col, RichText } from '../../../../common/atoms';
+import FulfillmentSection from '../../../../common/organisms/FulfillmentSection';
 import withStyles from '../../../../common/hoc/withStyles';
 import ProductDetailStyle from '../ProductDetail.style';
 import { PRODUCT_INFO_PROP_TYPE_SHAPE } from '../../ProductListing/molecules/ProductList/propTypes/productsAndItemsPropTypes';
@@ -10,6 +11,8 @@ import Product from '../molecules/Product/views/Product.view';
 import FixedBreadCrumbs from '../../ProductListing/molecules/FixedBreadCrumbs/views';
 import ProductAddToBagContainer from '../../../../common/molecules/ProductAddToBag';
 import ProductPickupContainer from '../../../../common/organisms/ProductPickup';
+import { getLocator } from '../../../../../utils';
+
 import ProductImagesWrapper from '../molecules/ProductImagesWrapper/views/ProductImagesWrapper.view';
 import AddedToBagContainer from '../../../CnC/AddedToBag';
 import {
@@ -36,6 +39,7 @@ const ProductDetailView = ({
   currency,
   productInfo,
   plpLabels,
+  isPickupModalOpen,
   pdpLabels,
   handleAddToBag,
   addToBagError,
@@ -107,6 +111,15 @@ const ProductDetailView = ({
               // onPickUpOpenClick={onPickUpOpenClick}
             />
           )}
+          <div className="fulfillment-section">
+            <FulfillmentSection
+              btnClassName="added-to-bag"
+              dataLocator={getLocator('global_addtocart_Button')}
+              buttonLabel={plpLabels.addToBag}
+              currentProduct={currentProduct}
+            />
+          </div>
+          {isPickupModalOpen ? <PickupStoreModal /> : null}
         </Col>
       </Row>
       <Row className="placeholder">
@@ -146,7 +159,6 @@ const ProductDetailView = ({
           <div className="product-detail-section">RATINGS AND REVIEWS</div>
         </Col>
       </Row>
-      <PickupStoreModal />
       <AddedToBagContainer />
     </div>
   );
@@ -165,6 +177,7 @@ ProductDetailView.propTypes = {
   plpLabels: PropTypes.shape({
     lbl_sort: PropTypes.string,
   }),
+  isPickupModalOpen: PropTypes.bool,
 };
 
 ProductDetailView.defaultProps = {
@@ -179,6 +192,7 @@ ProductDetailView.defaultProps = {
   productInfo: {},
   pdpLabels: {},
   addToBagError: '',
+  isPickupModalOpen: false,
 };
 
 export default withStyles(ProductDetailView, ProductDetailStyle);

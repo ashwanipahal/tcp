@@ -64,6 +64,13 @@ const styles = css`
         width: 210px;
       }
     }
+    .footer-venmo-button {
+      display: none;
+      @media ${props => props.theme.mediaQuery.smallOnly} {
+        display: block;
+        width: 100%;
+      }
+    }
   }
 `;
 

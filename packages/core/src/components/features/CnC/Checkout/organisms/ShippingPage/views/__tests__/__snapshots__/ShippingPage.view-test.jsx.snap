@@ -37,6 +37,7 @@ exports[`Shipping Page should render correctly 1`] = `
     isSaveToAddressBookChecked={false}
     isUsSite={true}
     isVenmoPaymentInProgress={false}
+    isVenmoShippingDisplayed={true}
     keepDirtyOnReinitialize={false}
     loadShipmentMethods={[Function]}
     newUserPhoneNo={null}
@@ -110,6 +111,7 @@ exports[`Shipping Page should render correctly with component did update and get
     isSaveToAddressBookChecked={false}
     isUsSite={true}
     isVenmoPaymentInProgress={false}
+    isVenmoShippingDisplayed={true}
     keepDirtyOnReinitialize={false}
     loadShipmentMethods={
       [MockFunction] {
@@ -215,6 +217,7 @@ exports[`Shipping Page should render correctly with component did update and get
     isSaveToAddressBookChecked={false}
     isUsSite={true}
     isVenmoPaymentInProgress={false}
+    isVenmoShippingDisplayed={true}
     keepDirtyOnReinitialize={false}
     loadShipmentMethods={
       [MockFunction] {
