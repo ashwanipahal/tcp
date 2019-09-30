@@ -2,11 +2,28 @@
 
 exports[`StoreLocations component StoreLocations component renders correctly without props 1`] = `
 <Styled(View)>
-  <Styled(WithTheme(CustomButton))
+  <Styled(CustomButton)
+    active={false}
     buttonVariation="variable-width"
+    color=""
+    customStyle={Object {}}
+    customTextStyle={null}
+    disableButton={false}
+    fill=""
+    fullWidth=""
+    iconColor="gray.800"
+    iconName="chevron-down"
+    iconSize="fs12"
+    locator=""
+    navigation={Object {}}
     onPress={null}
+    selected={false}
+    selectedIcon="chevron-up"
+    showIcon={false}
     text="SEE MORE STORES"
+    theme={Object {}}
     type="button"
+    url=""
   />
 </Styled(View)>
 `;

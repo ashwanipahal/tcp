@@ -64,30 +64,79 @@ exports[`StoreAddressTile component Details StoreAddressTile component renders c
   <Styled(View)>
     <View>
       <Styled(View)>
-        <Styled(WithTheme(CustomButton))
+        <Styled(CustomButton)
+          active={false}
           buttonVariation="variable-width"
           color="white"
+          customStyle={Object {}}
+          customTextStyle={null}
+          disableButton={false}
           fill="BLUE"
+          fullWidth=""
+          iconColor="gray.800"
+          iconName="chevron-down"
+          iconSize="fs12"
+          locator=""
+          navigation={Object {}}
           onPress={[Function]}
+          selected={false}
+          selectedIcon="chevron-up"
+          showIcon={false}
           text="Set as favorite"
+          theme={Object {}}
           type="submit"
+          url=""
         />
       </Styled(View)>
       <Styled(View)>
         <Styled(View)>
-          <Styled(WithTheme(CustomButton))
+          <Styled(CustomButton)
+            active={false}
             buttonVariation="variable-width"
+            color=""
+            customStyle={Object {}}
+            customTextStyle={null}
+            disableButton={false}
+            fill=""
+            fullWidth=""
+            iconColor="gray.800"
+            iconName="chevron-down"
+            iconSize="fs12"
+            locator=""
+            navigation={Object {}}
             onPress={null}
+            selected={false}
+            selectedIcon="chevron-up"
+            showIcon={false}
             text="Directions"
+            theme={Object {}}
             type="button"
+            url=""
           />
         </Styled(View)>
         <Styled(View)>
-          <Styled(WithTheme(CustomButton))
+          <Styled(CustomButton)
+            active={false}
             buttonVariation="variable-width"
+            color=""
+            customStyle={Object {}}
+            customTextStyle={null}
+            disableButton={false}
+            fill=""
+            fullWidth=""
+            iconColor="gray.800"
+            iconName="chevron-down"
+            iconSize="fs12"
+            locator=""
+            navigation={Object {}}
             onPress={null}
+            selected={false}
+            selectedIcon="chevron-up"
+            showIcon={false}
             text="Call Store"
+            theme={Object {}}
             type="button"
+            url=""
           />
         </Styled(View)>
       </Styled(View)>
@@ -175,30 +224,79 @@ exports[`StoreAddressTile component Details should render details view with fav 
   <Styled(View)>
     <View>
       <Styled(View)>
-        <Styled(WithTheme(CustomButton))
+        <Styled(CustomButton)
+          active={false}
           buttonVariation="variable-width"
           color="white"
+          customStyle={Object {}}
+          customTextStyle={null}
+          disableButton={false}
           fill="BLUE"
+          fullWidth=""
+          iconColor="gray.800"
+          iconName="chevron-down"
+          iconSize="fs12"
+          locator=""
+          navigation={Object {}}
           onPress={[Function]}
+          selected={false}
+          selectedIcon="chevron-up"
+          showIcon={false}
           text="Change Favorite Store"
+          theme={Object {}}
           type="submit"
+          url=""
         />
       </Styled(View)>
       <Styled(View)>
         <Styled(View)>
-          <Styled(WithTheme(CustomButton))
+          <Styled(CustomButton)
+            active={false}
             buttonVariation="variable-width"
+            color=""
+            customStyle={Object {}}
+            customTextStyle={null}
+            disableButton={false}
+            fill=""
+            fullWidth=""
+            iconColor="gray.800"
+            iconName="chevron-down"
+            iconSize="fs12"
+            locator=""
+            navigation={Object {}}
             onPress={null}
+            selected={false}
+            selectedIcon="chevron-up"
+            showIcon={false}
             text="Directions"
+            theme={Object {}}
             type="button"
+            url=""
           />
         </Styled(View)>
         <Styled(View)>
-          <Styled(WithTheme(CustomButton))
+          <Styled(CustomButton)
+            active={false}
             buttonVariation="variable-width"
+            color=""
+            customStyle={Object {}}
+            customTextStyle={null}
+            disableButton={false}
+            fill=""
+            fullWidth=""
+            iconColor="gray.800"
+            iconName="chevron-down"
+            iconSize="fs12"
+            locator=""
+            navigation={Object {}}
             onPress={null}
+            selected={false}
+            selectedIcon="chevron-up"
+            showIcon={false}
             text="Call Store"
+            theme={Object {}}
             type="button"
+            url=""
           />
         </Styled(View)>
       </Styled(View)>
@@ -345,11 +443,28 @@ exports[`StoreAddressTile component Listing should not render gymboree store 1`]
       text="Store Details"
       visible={false}
     />
-    <Styled(WithTheme(CustomButton))
+    <Styled(CustomButton)
+      active={false}
       buttonVariation="fixed-width"
+      color=""
+      customStyle={Object {}}
+      customTextStyle={null}
+      disableButton={false}
+      fill=""
+      fullWidth=""
+      iconColor="gray.800"
+      iconName="chevron-down"
+      iconSize="fs12"
+      locator=""
+      navigation={Object {}}
       onPress={[Function]}
+      selected={false}
+      selectedIcon="chevron-up"
+      showIcon={false}
       text="SET AS FAVORITE"
+      theme={Object {}}
       type="button"
+      url=""
     />
   </Styled(View)>
 </Styled(View)>
@@ -428,11 +543,28 @@ exports[`StoreAddressTile component Listing should render listing view 1`] = `
       text="Store Details"
       visible={false}
     />
-    <Styled(WithTheme(CustomButton))
+    <Styled(CustomButton)
+      active={false}
       buttonVariation="fixed-width"
+      color=""
+      customStyle={Object {}}
+      customTextStyle={null}
+      disableButton={false}
+      fill=""
+      fullWidth=""
+      iconColor="gray.800"
+      iconName="chevron-down"
+      iconSize="fs12"
+      locator=""
+      navigation={Object {}}
       onPress={[Function]}
+      selected={false}
+      selectedIcon="chevron-up"
+      showIcon={false}
       text="SET AS FAVORITE"
+      theme={Object {}}
       type="button"
+      url=""
     />
   </Styled(View)>
 </Styled(View)>
@@ -602,11 +734,28 @@ exports[`StoreAddressTile component Listing should render listing view with inde
       text="Store Details"
       visible={false}
     />
-    <Styled(WithTheme(CustomButton))
+    <Styled(CustomButton)
+      active={false}
       buttonVariation="fixed-width"
+      color=""
+      customStyle={Object {}}
+      customTextStyle={null}
+      disableButton={false}
+      fill=""
+      fullWidth=""
+      iconColor="gray.800"
+      iconName="chevron-down"
+      iconSize="fs12"
+      locator=""
+      navigation={Object {}}
       onPress={[Function]}
+      selected={false}
+      selectedIcon="chevron-up"
+      showIcon={false}
       text="SET AS FAVORITE"
+      theme={Object {}}
       type="button"
+      url=""
     />
   </Styled(View)>
 </Styled(View)>
