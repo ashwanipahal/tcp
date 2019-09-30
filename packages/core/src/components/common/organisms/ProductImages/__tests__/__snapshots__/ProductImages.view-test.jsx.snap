@@ -112,9 +112,9 @@ exports[`ProductImages component should renders correctly 1`] = `
           />
         </span>
         <Styled(SocialConnect)
-          isFbEnabled={true}
-          isPtEnabled={true}
-          isTwEnabled={true}
+          isFacebookEnabled={true}
+          isPinterestEnabled={true}
+          isTwitterEnabled={true}
         />
       </div>
     </div>

@@ -161,7 +161,7 @@ class ProductImages extends React.Component {
                   </Anchor>
                 </span>
               )}
-              <SocialConnect isFbEnabled isPtEnabled isTwEnabled />
+              <SocialConnect isFacebookEnabled isPinterestEnabled isTwitterEnabled />
             </div>
           </div>
 
