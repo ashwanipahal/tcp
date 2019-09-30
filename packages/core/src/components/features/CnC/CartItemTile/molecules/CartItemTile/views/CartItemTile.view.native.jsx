@@ -23,7 +23,7 @@ import {
   IconTextEdit,
   IconTextMoveToBag,
   SflIcons,
-  ProductListPriceOnReview,
+  SizeQtyOnReview,
 } from '../styles/CartItemTile.style.native';
 import { getLocator } from '../../../../../../../utils';
 import CartItemRadioButtons from '../../CartItemRadioButtons';
@@ -63,42 +63,6 @@ const getCartRadioButtons = (
     );
   }
   return <></>;
-};
-const getEditError = (productDetail, labels) => {
-  if (productDetail.miscInfo.availability === 'UNAVAILABLE') {
-    return (
-      <BodyCopy
-        fontFamily="secondary"
-        fontSize="fs12"
-        dataLocator={getLocator('cart_item_edit_link')}
-        textDecorationLine="underline"
-        text={labels.update}
-        color="error"
-      />
-    );
-  }
-  if (productDetail.miscInfo.availability === 'SOLDOUT') {
-    return (
-      <BodyCopy
-        color="error"
-        fontFamily="secondary"
-        fontSize="fs12"
-        dataLocator={getLocator('cart_item_edit_link')}
-        textDecorationLine="underline"
-        text={labels.removeEdit}
-      />
-    );
-  }
-  return (
-    <BodyCopy
-      color="gray.900"
-      fontFamily="secondary"
-      fontSize="fs12"
-      dataLocator={getLocator('cart_item_edit_link')}
-      textDecorationLine="underline"
-      text={labels.edit}
-    />
-  );
 };
 
 class ProductInformation extends React.Component {
@@ -178,6 +142,36 @@ class ProductInformation extends React.Component {
           />
         </ProductSubDetailLabel>
         <BodyCopy color="gray.800" fontFamily="secondary" fontSize="fs13" text={qty} />
+      </ProductDesc>
+    );
+  };
+
+  renderSize = () => {
+    const { labels, productDetail, showOnReviewPage } = this.props;
+    const { itemInfo: { isGiftItem, size, fit } = {} } = productDetail;
+    return (
+      <ProductDesc>
+        <ProductSubDetailLabel showOnReviewPage={showOnReviewPage}>
+          <BodyCopy
+            fontSize="fs13"
+            fontWeight={['semibold']}
+            textAlign="left"
+            text={isGiftItem === true ? `${labels.value}: ` : `${labels.size}: `}
+          />
+        </ProductSubDetailLabel>
+        <BodyCopy
+          color="gray.800"
+          fontFamily="secondary"
+          fontSize="fs13"
+          dataLocator={getLocator('cart_item_size')}
+          text={`${size} `}
+        />
+        <BodyCopy
+          fontSize="fs13"
+          color="gray.800"
+          fontFamily="secondary"
+          text={!fit || fit === 'Regular' ? ' ' : fit}
+        />
       </ProductDesc>
     );
   };
@@ -313,7 +307,7 @@ class ProductInformation extends React.Component {
                   text={productDetail.miscInfo.badge}
                 />
               )}
-              {CartItemTileExtension.getProductName(productDetail)}
+              {CartItemTileExtension.getProductName(productDetail, showOnReviewPage)}
               {showOnReviewPage && CartItemTileExtension.heartIcon(isBagPageSflSection)}
               <ProductSubDetails>
                 <ProductDesc>
@@ -333,48 +327,24 @@ class ProductInformation extends React.Component {
                     text={productDetail.itemInfo.color}
                   />
                 </ProductDesc>
-                <ProductDesc>
-                  <ProductSubDetailLabel>
-                    <BodyCopy
-                      fontSize="fs13"
-                      fontWeight={['semibold']}
-                      textAlign="left"
-                      text={isGiftItem === true ? `${labels.value}: ` : `${labels.size}: `}
-                    />
-                  </ProductSubDetailLabel>
-                  <BodyCopy
-                    color="gray.800"
-                    fontFamily="secondary"
-                    fontSize="fs13"
-                    dataLocator={getLocator('cart_item_size')}
-                    text={`${productDetail.itemInfo.size} `}
-                  />
-                  <BodyCopy
-                    fontSize="fs13"
-                    color="gray.800"
-                    fontFamily="secondary"
-                    text={
-                      !productDetail.itemInfo.fit || productDetail.itemInfo.fit === 'Regular'
-                        ? ' '
-                        : productDetail.itemInfo.fit
-                    }
-                  />
-                </ProductDesc>
-                {this.renderQuantity()}
+                {showOnReviewPage ? (
+                  <>
+                    {this.renderSize()}
+                    {this.renderQuantity()}
+                  </>
+                ) : (
+                  <SizeQtyOnReview>
+                    {this.renderSize()}
+                    <BodyCopy fontFamily="secondary" color="gray.800" fontSize="fs13" text="|" />
+                    {this.renderQuantity()}
+                  </SizeQtyOnReview>
+                )}
                 {this.renderPrice()}
                 {this.renderPoints()}
               </ProductSubDetails>
             </ProductDescription>
-            {!showOnReviewPage && (
-              <ProductListPriceOnReview>
-                <BodyCopy
-                  fontFamily="secondary"
-                  fontSize="fs16"
-                  fontWeight={['semibold']}
-                  text={`${currencySymbol}${productDetail.itemInfo.price}`}
-                />
-              </ProductListPriceOnReview>
-            )}
+            {!showOnReviewPage &&
+              CartItemTileExtension.PriceOnReviewPage(currencySymbol, productDetail)}
           </OuterContainer>
           {showOnReviewPage && (
             <EditButton
@@ -383,7 +353,7 @@ class ProductInformation extends React.Component {
                 return this.swipeable.toggle('right');
               }}
             >
-              {getEditError(productDetail, labels)}
+              {CartItemTileExtension.getEditError(productDetail, labels)}
             </EditButton>
           )}
           {getCartRadioButtons(

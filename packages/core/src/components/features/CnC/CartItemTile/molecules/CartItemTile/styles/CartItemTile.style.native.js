@@ -19,6 +19,7 @@ const UnavailableView = styled.View`
   flex-direction: row;
 `;
 const ProductName = styled.View`
+  width: ${props => (props.showOnReviewPage ? '66%' : 'auto')};
   flex-wrap: wrap;
 `;
 const ProductDesc = styled.View`
@@ -73,7 +74,8 @@ const ImageGymBrandStyle = styled.Image`
 `;
 
 const ProductSubDetailLabel = styled.View`
-  min-width: 25%;
+  ${props => (props.showOnReviewPage ? `0` : props.theme.spacing.ELEM_SPACING.XXS)};
+  min-width: ${props => (props.showOnReviewPage ? '25%' : 'auto')};
 `;
 const ProductListPrice = styled.View`
   padding-left: 5px;
@@ -148,7 +150,12 @@ const IconWidth = '58px';
 const ProductListPriceOnReview = styled.View`
   position: absolute;
   right: 0;
-  top: 15px;
+  top: 10px;
+`;
+
+const SizeQtyOnReview = styled.View`
+  flex-direction: row;
+  display: flex;
 `;
 
 export {
@@ -177,4 +184,5 @@ export {
   HeartIcon,
   SflIcons,
   ProductListPriceOnReview,
+  SizeQtyOnReview,
 };

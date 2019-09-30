@@ -9,6 +9,7 @@ import {
   SoldOutLabel,
   HeartIcon,
   ProductName,
+  ProductListPriceOnReview,
 } from '../styles/CartItemTile.style.native';
 import Image from '../../../../../../common/atoms/Image';
 import endpoints from '../../../../../../../service/endpoint';
@@ -53,6 +54,56 @@ const CartItemImageWrapper = (productDetail, labels, showOnReviewPage) => {
   );
 };
 
+const getEditError = (productDetail, labels) => {
+  if (productDetail.miscInfo.availability === 'UNAVAILABLE') {
+    return (
+      <BodyCopy
+        fontFamily="secondary"
+        fontSize="fs12"
+        dataLocator={getLocator('cart_item_edit_link')}
+        textDecorationLine="underline"
+        text={labels.update}
+        color="error"
+      />
+    );
+  }
+  if (productDetail.miscInfo.availability === 'SOLDOUT') {
+    return (
+      <BodyCopy
+        color="error"
+        fontFamily="secondary"
+        fontSize="fs12"
+        dataLocator={getLocator('cart_item_edit_link')}
+        textDecorationLine="underline"
+        text={labels.removeEdit}
+      />
+    );
+  }
+  return (
+    <BodyCopy
+      color="gray.900"
+      fontFamily="secondary"
+      fontSize="fs12"
+      dataLocator={getLocator('cart_item_edit_link')}
+      textDecorationLine="underline"
+      text={labels.edit}
+    />
+  );
+};
+
+const PriceOnReviewPage = (currencySymbol, productDetail) => {
+  return (
+    <ProductListPriceOnReview>
+      <BodyCopy
+        fontFamily="secondary"
+        fontSize="fs16"
+        fontWeight={['semibold']}
+        text={`${currencySymbol}${productDetail.itemInfo.price}`}
+      />
+    </ProductListPriceOnReview>
+  );
+};
+
 const heartIcon = isBagPageSflSection => {
   if (!isBagPageSflSection) return null;
   return (
@@ -62,9 +113,9 @@ const heartIcon = isBagPageSflSection => {
   );
 };
 
-const getProductName = productDetail => {
+const getProductName = (productDetail, showOnReviewPage) => {
   return (
-    <ProductName>
+    <ProductName showOnReviewPage={showOnReviewPage}>
       <BodyCopy
         fontFamily="secondary"
         fontSize="fs14"
@@ -132,4 +183,6 @@ export default {
   handleMoveItemtoSaveList,
   removeSflItem,
   moveToBagSflItem,
+  PriceOnReviewPage,
+  getEditError,
 };

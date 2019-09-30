@@ -127,7 +127,9 @@ exports[`CartItemTile common component renders correctly 1`] = `
         </View>
       </Styled(View)>
       <Styled(View)>
-        <Styled(View)>
+        <Styled(View)
+          showOnReviewPage={true}
+        >
           <Styled(BodyCopy)
             accessibilityText=""
             dataLocator="cartItemTitle"
@@ -175,7 +177,9 @@ exports[`CartItemTile common component renders correctly 1`] = `
             />
           </Styled(View)>
           <Styled(View)>
-            <Styled(View)>
+            <Styled(View)
+              showOnReviewPage={true}
+            >
               <Styled(BodyCopy)
                 accessibilityText=""
                 dataLocator=""
@@ -522,7 +526,9 @@ exports[`CartItemTile common component renders correctly with Save for later ena
         </View>
       </Styled(View)>
       <Styled(View)>
-        <Styled(View)>
+        <Styled(View)
+          showOnReviewPage={true}
+        >
           <Styled(BodyCopy)
             accessibilityText=""
             dataLocator="cartItemTitle"
@@ -570,7 +576,9 @@ exports[`CartItemTile common component renders correctly with Save for later ena
             />
           </Styled(View)>
           <Styled(View)>
-            <Styled(View)>
+            <Styled(View)
+              showOnReviewPage={true}
+            >
               <Styled(BodyCopy)
                 accessibilityText=""
                 dataLocator=""
@@ -900,7 +908,9 @@ exports[`CartItemTile common component renders correctly with bag page sfl secti
         </View>
       </Styled(View)>
       <Styled(View)>
-        <Styled(View)>
+        <Styled(View)
+          showOnReviewPage={true}
+        >
           <Styled(BodyCopy)
             accessibilityText=""
             dataLocator="cartItemTitle"
@@ -965,7 +975,9 @@ exports[`CartItemTile common component renders correctly with bag page sfl secti
             />
           </Styled(View)>
           <Styled(View)>
-            <Styled(View)>
+            <Styled(View)
+              showOnReviewPage={true}
+            >
               <Styled(BodyCopy)
                 accessibilityText=""
                 dataLocator=""
