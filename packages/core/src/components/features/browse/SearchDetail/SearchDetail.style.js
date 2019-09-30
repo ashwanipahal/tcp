@@ -24,17 +24,20 @@ export default css`
     padding-top: ${props => props.theme.spacing.ELEM_SPACING.XS};
   }
   .product-list .search-product-tile {
+    margin-bottom: 20px;
     display: inline-block;
     padding: ${props => props.theme.spacing.ELEM_SPACING.SM} 20px 0 0;
     text-align: center;
     width: calc(50% - 10px);
     @media ${props => props.theme.mediaQuery.medium} {
-      padding: ${props => props.theme.spacing.ELEM_SPACING.SM} 35px 0
+      margin-bottom: 10px;
+      padding: ${props => props.theme.spacing.ELEM_SPACING.LRG} 35px 0
         ${props => props.theme.spacing.ELEM_SPACING.SM};
       width: calc(33.3% - 36px);
     }
     @media ${props => props.theme.mediaQuery.large} {
-      padding: ${props => props.theme.spacing.ELEM_SPACING.SM} 26px 0 0;
+      padding: ${props => props.theme.spacing.ELEM_SPACING.XL} 26px 0 0;
+      margin-bottom: 60px;
       width: calc(20% - 21px);
     }
   }
@@ -135,7 +138,7 @@ export default css`
       display: flex;
     }
     .searched-label {
-      padding-bottom: 28px;
+      padding-bottom: 0;
     }
 
     .search-by-keywords-container {
