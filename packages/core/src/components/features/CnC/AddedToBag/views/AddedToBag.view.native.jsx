@@ -29,12 +29,12 @@ const styles = {
   },
 };
 
-const getCloseIcon = onRequestClose => {
+const getCloseIcon = (onRequestClose, labels) => {
   return (
     <ImageWrapper>
       <StyledTouchableOpacity
         accessibilityRole="button"
-        accessibilityLabel="close"
+        accessibilityLabel={labels.close}
         onPress={onRequestClose}
       >
         <StyledCrossImage source={closeIcon} />
@@ -71,7 +71,7 @@ const AddedToBag = ({
       customTransparent
     >
       <TouchableOpacity
-        accessibilityLabel="Tap to close it"
+        accessibilityLabel={labels.overlayAriaText}
         accessibilityRole="none"
         onPress={onRequestClose}
         style={styles.AddedToBagContainer}
@@ -88,7 +88,7 @@ const AddedToBag = ({
                   text={labels.addedToBag}
                 />
               </ModalHeading>
-              {getCloseIcon(onRequestClose)}
+              {getCloseIcon(onRequestClose, labels)}
             </RowWrapper>
             {/* Below are place holders for   different data on added to Bag Modal. Replace <PlaceHolderView> with <View> and use your component within it. */}
             <AddedToBagWrapper>
