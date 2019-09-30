@@ -35,6 +35,7 @@ class ProductsGrid extends React.Component {
     isGridView: PropTypes.bool,
     className: PropTypes.string,
     labels: PropTypes.string,
+    productTileVariation: PropTypes.string,
   };
 
   static defaultProps = {
@@ -46,6 +47,7 @@ class ProductsGrid extends React.Component {
     isGridView: false,
     className: '',
     labels: '',
+    productTileVariation: '',
   };
 
   constructor(props, context) {
@@ -136,6 +138,7 @@ class ProductsGrid extends React.Component {
       isLoadingMore,
       onPickUpOpenClick,
       onQuickViewOpenClick,
+      productTileVariation,
       ...otherProps
     } = this.props;
 
@@ -164,6 +167,7 @@ class ProductsGrid extends React.Component {
                         className={`${className} product-list`}
                         labels={labels}
                         onQuickViewOpenClick={onQuickViewOpenClick}
+                        productTileVariation={productTileVariation}
                         {...otherProps}
                       />
                     );

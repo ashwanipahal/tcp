@@ -40,6 +40,7 @@ const ProductList = props => {
     loadedProductCount,
     labels,
     isPlcc,
+    productTileVariation,
   } = props;
   let gridIndex = 0;
 
@@ -60,7 +61,7 @@ const ProductList = props => {
             {item}
           </h2>
         ) : (
-          <div className={`${className} product-tile search-product-tile`}>
+          <div className={`${className} product-tile ${productTileVariation}`}>
             <ProductsGridItem
               isMobile={isMobileApp()}
               loadedProductCount={loadedProductCount}
@@ -134,6 +135,7 @@ ProductList.propTypes = {
   loadedProductCount: PropTypes.number.isRequired,
   labels: PropTypes.shape().isRequired,
   isPlcc: PropTypes.bool,
+  productTileVariation: PropTypes.string,
 };
 
 ProductList.defaultProps = {
@@ -157,6 +159,7 @@ ProductList.defaultProps = {
     promotionalPLCCMessage: '',
   },
   isPlcc: false,
+  productTileVariation: '',
 };
 
 export default withStyles(ProductList, ProductListStyle);
