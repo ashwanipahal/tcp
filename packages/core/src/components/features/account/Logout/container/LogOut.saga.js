@@ -3,7 +3,7 @@ import LOGOUT_CONSTANTS from '../LogOut.constants';
 import { resetUserInfo } from '../../User/container/User.actions';
 import { closeOverlayModal } from '../../../OverlayModal/container/OverlayModal.actions';
 import { routerPush, isMobileApp, scrollPage } from '../../../../../utils';
-import { navigateXHRAction } from '../../NavigateXHR/NavigateXHR.container/NavigateXHR.action';
+import { navigateXHRAction } from '../../NavigateXHR/container/NavigateXHR.action';
 import { LogoutApplication } from '../../../../../services/abstractors/account';
 import { resetWalletAppState } from '../../../CnC/common/organism/CouponAndPromos/container/Coupon.actions';
 
