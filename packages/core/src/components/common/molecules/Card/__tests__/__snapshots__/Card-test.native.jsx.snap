@@ -15,7 +15,7 @@ exports[`Card component renders correctly without props 1`] = `
       textDecoration={null}
     />
   </Styled(View)>
-  <Styled(CardImage)
+  <CardImage
     card={
       Object {
         "accountNo": "************3743",

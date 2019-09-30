@@ -1,7 +1,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import BodyCopy from '../../../atoms/BodyCopy';
-import CardImage from './CardImage.native';
+import { CardImage } from './CardImage.native';
 import withStyles from '../../../hoc/withStyles';
 import { HeaderWrapper, HeaderTextWrapper, BadgeWrapper } from '../CardImage.style.native';
 import Badge from '../../../atoms/Badge';
