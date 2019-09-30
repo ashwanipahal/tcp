@@ -18,16 +18,15 @@ export const getPayloadCookieArray = () => {
 };
 
 export const NavigateXHR = () => {
-  const { brandId } = getAPIConfig();
-  const crossDomain =
-    brandId === 'gym' ? 'https://test5.thechildrensplace.com' : 'https://test6.gymboree.com';
-  endpoints.navigateXHR.URI = `${crossDomain}/api/${endpoints.navigateXHR.URI}`;
+  const { crossDomain } = getAPIConfig();
+  const webServiceEndPoints = Object.assign({}, endpoints.navigateXHR);
+  webServiceEndPoints.URI = `${crossDomain}/api/${endpoints.navigateXHR.URI}`;
 
   const payload = {
     body: {
       cookie: getPayloadCookieArray(),
     },
-    webService: endpoints.navigateXHR,
+    webService: webServiceEndPoints,
   };
 
   return executeExternalAPICall(payload)

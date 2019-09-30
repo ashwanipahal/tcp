@@ -2,8 +2,8 @@ import { call, takeLatest, put, select } from 'redux-saga/effects';
 import logger from '@tcp/core/src/utils/loggerInstance';
 import LOGINPAGE_CONSTANTS from '../LoginPage.constants';
 import { setLoginInfo, setCheckoutModalMountedState } from './LoginPage.actions';
-import { getUserInfo } from '../../User/container/User.actions';
 import { navigateXHRAction } from '../../NavigateXHR/NavigateXHR.container/NavigateXHR.action';
+import { getUserInfo } from '../../User/container/User.actions';
 import fetchData from '../../../../../service/API';
 import { login } from '../../../../../services/abstractors/account';
 import endpoints from '../../../../../service/endpoint';
@@ -31,7 +31,6 @@ export function* loginSaga({ payload, afterLoginHandler }) {
         );
       }
       yield put(navigateXHRAction());
-
       return yield put(getUserInfo());
     }
     return yield put(setLoginInfo(response));
