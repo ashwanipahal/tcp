@@ -1,19 +1,14 @@
 import React from 'react';
 import { View, TouchableOpacity } from 'react-native';
 import PropTypes from 'prop-types';
-import { getLabelValue } from '@tcp/core/src/utils/utils';
 import { LoginManager, AccessToken } from 'react-native-fbsdk';
-import ImageComp from '@tcp/core/src/components/common/atoms/Image';
-import BodyCopy from '@tcp/core/src/components/common/atoms/BodyCopy';
+import ImageComp from '../../../atoms/Image';
+import BodyCopy from '../../../atoms/BodyCopy';
 import { BodyCopyWithSpacing, ViewWithSpacing } from '../../../atoms/styledWrapper';
+import { getLabelValue } from '../../../../../utils/utils';
 import config from './config';
 import Row from '../styles/social.style.native';
-import FacebookEnableIcon from '../../../../../../../mobileapp/src/assets/images/facebook.png';
-import InstagramEnableIcon from '../../../../../../../mobileapp/src/assets/images/instagram.png';
-import FacebookDisableIcon from '../../../../../../../mobileapp/src/assets/images/facebook_fade.png';
-import InstagramDisableIcon from '../../../../../../../mobileapp/src/assets/images/instagram_fade.png';
-import CloseIcon from '../../../../../../../mobileapp/src/assets/images/close.png';
-import PlusIcon from '../../../../../../../mobileapp/src/assets/images/plus.png';
+import SOCIAL_ICONS from '../social.icons.constants';
 
 class Socialview extends React.PureComponent {
   static propTypes = {
@@ -23,17 +18,17 @@ class Socialview extends React.PureComponent {
     labels: PropTypes.shape({}).isRequired,
   };
 
-  constructor() {
-    super();
+  constructor(props) {
+    super(props);
     this.socialAccounts = [];
     this.pointsInformation = {};
     this.icons = {
-      FacebookEnable: FacebookEnableIcon,
-      InstagramEnable: InstagramEnableIcon,
-      FacebookDisable: FacebookDisableIcon,
-      InstagramDisable: InstagramDisableIcon,
-      Connected: CloseIcon,
-      Disconnected: PlusIcon,
+      FacebookEnable: SOCIAL_ICONS.FACEBOOK_ENABLE_ICON,
+      InstagramEnable: SOCIAL_ICONS.INSTAGRAM_ENABLE_ICON,
+      FacebookDisable: SOCIAL_ICONS.FACEBOOK_DISABLE_ICON,
+      InstagramDisable: SOCIAL_ICONS.INSTAGRAM_DISABLE_ICON,
+      Connected: SOCIAL_ICONS.CLOSE_ICON,
+      Disconnected: SOCIAL_ICONS.PLUS_ICON,
     };
   }
 

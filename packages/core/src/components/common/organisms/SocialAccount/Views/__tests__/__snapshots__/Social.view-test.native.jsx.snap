@@ -33,7 +33,7 @@ exports[`Social component should render with connected 1`] = `
         host=""
         source={
           Object {
-            "testUri": "../../../src/assets/images/facebook.png",
+            "testUri": "../../../../core/src/assets/facebook_share.png",
           }
         }
         url=""
@@ -61,7 +61,7 @@ exports[`Social component should render with connected 1`] = `
           host=""
           source={
             Object {
-              "testUri": "../../../src/assets/images/close.png",
+              "testUri": "../../../../core/src/assets/close.png",
             }
           }
           url=""
@@ -106,7 +106,7 @@ exports[`Social component should renders correctly 1`] = `
         host=""
         source={
           Object {
-            "testUri": "../../../src/assets/images/facebook_fade.png",
+            "testUri": "../../../../core/src/assets/facebook_fade.png",
           }
         }
         url=""
@@ -134,7 +134,7 @@ exports[`Social component should renders correctly 1`] = `
           host=""
           source={
             Object {
-              "testUri": "../../../src/assets/images/plus.png",
+              "testUri": "../../../../core/src/assets/plus.png",
             }
           }
           url=""
