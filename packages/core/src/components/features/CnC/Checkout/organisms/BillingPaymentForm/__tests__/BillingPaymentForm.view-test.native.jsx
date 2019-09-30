@@ -79,6 +79,22 @@ describe('ButtonList component', () => {
     expect(spyOnAddNewCreditCardClick).toHaveBeenCalled();
   });
 
+  it('renders correctly with method getCreditListView', () => {
+    const component = shallow(<BillingPaymentForm {...props} />);
+    const instance = component.instance();
+    const spyGetCreditListView = jest.spyOn(instance, 'getCreditListView');
+    instance.getCreditListView({ labels });
+    expect(spyGetCreditListView).toHaveBeenCalled();
+  });
+
+  it('renders correctly with method getPaymentMethod', () => {
+    const component = shallow(<BillingPaymentForm {...props} />);
+    const instance = component.instance();
+    const spyGetPaymentMethod = jest.spyOn(instance, 'getPaymentMethod');
+    instance.getPaymentMethod({ labels: {} });
+    expect(spyGetPaymentMethod).toHaveBeenCalled();
+  });
+
   it('renders correctly without props with isPaymentDisabled true', () => {
     orderHasShipping = true;
     const props1 = {
