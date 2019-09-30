@@ -6,7 +6,7 @@
 
 import React, { Fragment } from 'react';
 import PropTypes from 'prop-types';
-import { Row, Image, BodyCopy, Col, Anchor } from '@tcp/core/src/components/common/atoms';
+import { Image, BodyCopy, Anchor } from '@tcp/core/src/components/common/atoms';
 import { PRODUCT_SKU_SELECTION_FORM } from '@tcp/core/src/constants/reducer.constants';
 import withStyles from '../../../hoc/withStyles';
 import styles, {
@@ -103,10 +103,7 @@ class PickupSkuSelectionForm extends React.Component {
     const pdpToPath = getProductListToPath(currentColorPdpUrl);
 
     return (
-      <Row className={className}>
-        <Col className="modal-header" colSize={{ small: 12, medium: 12, large: 12 }}>
-          {PICKUP_LABELS.PICK_UP_MODAL_LABEL}
-        </Col>
+      <div className={className}>
         <div className="product-customize-form-container">
           <div className="image-title-wrapper">
             <div className="image-wrapper">
@@ -150,7 +147,7 @@ class PickupSkuSelectionForm extends React.Component {
             />
           </div>
         </div>
-      </Row>
+      </div>
     );
   };
 
@@ -276,7 +273,7 @@ PickupSkuSelectionForm.propTypes = {
 };
 
 PickupSkuSelectionForm.defaultProps = {
-  colorFitSizeDisplayNames: null,
+  colorFitSizeDisplayNames: {},
   currency: 'USD',
   isHasPlcc: false,
   className: '',

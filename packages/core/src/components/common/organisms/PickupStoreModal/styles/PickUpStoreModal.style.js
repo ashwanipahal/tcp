@@ -5,34 +5,19 @@ const styles = css`
     font-family: Nunito;
     max-height: 760px;
 
-    padding: 14px 0;
+    padding: 14px 14px;
 
     @media ${props => props.theme.mediaQuery.medium} {
-      padding: 24px 9px;
+      padding: 24px 24px;
     }
 
     @media ${props => props.theme.mediaQuery.large} {
-      padding: 24px 17px;
+      padding: 24px 30px;
     }
 
     .close-modal {
       top: 12px;
       height: 14px;
-    }
-
-    .search-store {
-      margin-right: 14px;
-      margin-left: 14px;
-
-      @media ${props => props.theme.mediaQuery.medium} {
-        margin-right: 24px;
-        margin-left: 24px;
-      }
-
-      @media ${props => props.theme.mediaQuery.large} {
-        margin-right: 30px;
-        margin-left: 30px;
-      }
     }
   }
 
@@ -102,21 +87,20 @@ const styles = css`
       margin-top: 19px;
     }
 
+    .actual-price {
+      color: #e02020;
+      font-size: 16px;
+    }
+
+    .original-price {
+      font-size: 12px;
+      color: #595959;
+      margin-left: 5px;
+      line-height: 1.9;
+    }
+
     .price-container {
       display: inline-flex;
-
-      .actual-price {
-        color: #e02020;
-        font-size: 16px;
-      }
-
-      .original-price {
-        font-size: 12px;
-        color: #595959;
-        margin-left: 5px;
-        line-height: 1.9;
-      }
-
       .badge {
         display: none;
       }

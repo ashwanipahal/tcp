@@ -54,12 +54,18 @@ export function* getPickupStores(action) {
 export function* getUserCartStores(action) {
   const { payload } = action;
   try {
+    const { cartItemsCount } = payload;
     yield put(setUserCartStores({ stores: null }));
-    const stores = yield call(getCartStoresPlusInventory, payload);
+    yield put(setStoreSearchError(''));
+    let stores = 0;
+    if (cartItemsCount > 0) {
+      stores = yield call(getCartStoresPlusInventory, payload);
+    }
     const isSearchOnlyInCartStores = stores.length === maxAllowedStoresInCart;
     if (isSearchOnlyInCartStores) {
       yield put(setUserCartStores({ stores }));
     } else {
+      yield put(setUserCartStores({ stores }));
       yield put(getBopisStoresActn(payload));
     }
   } catch (err) {

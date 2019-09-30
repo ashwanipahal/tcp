@@ -62,6 +62,7 @@ export function* addToCartEcom({ payload }) {
 export function* addItemToCartBopis({ payload }) {
   try {
     const {
+      productInfo,
       productInfo: {
         storeLocId,
         isBoss,
@@ -83,13 +84,14 @@ export function* addItemToCartBopis({ payload }) {
       variantNo,
       itemPartNumber: variantId,
     };
+    yield put(clearAddToBagErrorState());
     const res = yield call(addCartBopisItem, params);
     if (callback) {
       callback();
     }
     yield put(
       SetAddedToBagData({
-        ...payload,
+        ...productInfo,
         ...res,
       })
     );

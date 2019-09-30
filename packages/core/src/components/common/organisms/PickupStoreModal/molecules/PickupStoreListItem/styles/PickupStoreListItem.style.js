@@ -35,6 +35,9 @@ export default css`
       margin-left: 0px;
     }
   }
+  .addToCartError {
+    padding-left: ${props => props.theme.spacing.ELEM_SPACING.XXL};
+  }
   .PickupRadioBtn {
     padding-left: ${props => props.theme.spacing.ELEM_SPACING.XXL};
     padding-top: ${props => props.theme.spacing.ELEM_SPACING.SM};
@@ -69,5 +72,10 @@ export default css`
   .marker-icon {
     width: 17px;
     height: 17px;
+  }
+
+  .StoreDetailsAnchor {
+    text-decoration: underline;
+    cursor: pointer;
   }
 `;

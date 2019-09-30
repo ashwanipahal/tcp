@@ -28,6 +28,7 @@ const PickupStoreList = props => {
     isOnlyShowAvailable,
     derivedStoresList,
     addItemToCartInPickup,
+    onPickupRadioBtnToggle,
   } = props;
 
   return (
@@ -64,6 +65,7 @@ const PickupStoreList = props => {
           updateCartItemStore={updateCartItemStore}
           buttonLabel={buttonLabel}
           isGiftCard={isGiftCard}
+          onPickupRadioBtnToggle={onPickupRadioBtnToggle}
         />
       ))}
     </div>
@@ -130,6 +132,7 @@ PickupStoreList.propTypes = {
 
   isGiftCard: PropTypes.bool.isRequired,
   allowBossStoreSearch: PropTypes.bool.isRequired,
+  onPickupRadioBtnToggle: PropTypes.func.isRequired,
   updateCartItemStore: PropTypes.bool.isRequired,
   buttonLabel: PropTypes.string.isRequired,
   isBopisCtaEnabled: PropTypes.bool.isRequired,

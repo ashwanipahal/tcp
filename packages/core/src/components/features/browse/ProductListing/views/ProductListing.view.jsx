@@ -5,7 +5,6 @@ import { Row, Col } from '../../../../common/atoms';
 import ProductsGrid from '../molecules/ProductsGrid/views';
 import GlobalNavigationMenuDesktopL2 from '../molecules/GlobalNavigationMenuDesktopL2/views';
 import withStyles from '../../../../common/hoc/withStyles';
-import PickupStoreModal from '../../../../common/organisms/PickupStoreModal';
 import QuickViewModal from '../../../../common/organisms/QuickViewModal/container/QuickViewModal.container';
 
 import ProductListingStyle from '../ProductListing.style';
@@ -37,7 +36,6 @@ const ProductListView = ({
   onSubmit,
   sortLabels,
   slpLabels,
-  isPickupModalOpen,
   onPickUpOpenClick,
   ...otherProps
 }) => {
@@ -103,7 +101,6 @@ const ProductListView = ({
           </Col>
         </Col>
       </Row>
-      {isPickupModalOpen ? <PickupStoreModal /> : null}
       <QuickViewModal onPickUpOpenClick={onPickUpOpenClick} />
       <AddedToBagContainer />
     </div>
@@ -127,7 +124,6 @@ ProductListView.propTypes = {
   labelsFilter: PropTypes.objectOf(PropTypes.oneOfType([PropTypes.string])),
   getProducts: PropTypes.func,
   onSubmit: PropTypes.func,
-  isPickupModalOpen: PropTypes.bool,
   formValues: PropTypes.shape({}).isRequired,
   onPickUpOpenClick: PropTypes.func.isRequired,
   sortLabels: PropTypes.arrayOf(PropTypes.shape({})),
@@ -150,7 +146,6 @@ ProductListView.defaultProps = {
   labelsFilter: {},
   sortLabels: [],
   slpLabels: {},
-  isPickupModalOpen: false,
 };
 
 export default withStyles(ProductListView, ProductListingStyle);

@@ -154,9 +154,10 @@ class PickUpStoreModalView extends React.Component {
     autoSkipStep1: PropTypes.bool,
     showDefaultSizeMsg: PropTypes.bool,
     isRadialInventoryEnabled: PropTypes.number,
-    itemsCount: PropTypes.number,
+    cartItemsCount: PropTypes.number,
     defaultStore: STORE_SUMMARY_PROP_TYPES,
     storeSearchError: PropTypes.string,
+    addToBagError: PropTypes.string,
     onClearSearchFormError: PropTypes.func.isRequired,
     PickupSkuFormValues: PropTypes.shape({
       /** user's preselected color id from parent instance */
@@ -173,7 +174,7 @@ class PickUpStoreModalView extends React.Component {
   };
 
   static defaultProps = {
-    colorFitSizeDisplayNames: null,
+    colorFitSizeDisplayNames: {},
     updateCartItemStore: false,
     isPickUpWarningModal: false,
     isBossEnabled: false,
@@ -191,9 +192,10 @@ class PickUpStoreModalView extends React.Component {
     requestorKey: '',
     isPreferredStoreError: false,
     isShoppingBag: false,
-    itemsCount: 0,
+    cartItemsCount: 0,
     defaultStore: {},
     storeSearchError: '',
+    addToBagError: '',
     className: '',
     currency: 'USD',
   };
@@ -211,7 +213,6 @@ class PickUpStoreModalView extends React.Component {
     this.state = {
       SkuSelectedValues, //  SkuSelectedValues has the initial and latest sku details to keep step 1 and step 2 in sync
       isSkuResolved,
-      error: null,
       selectedColor: '',
     };
     this.skuId = null;
@@ -300,13 +301,12 @@ class PickUpStoreModalView extends React.Component {
   /** Handle click of Next button on Step 1 - which will switch to Step 2 */
   handleNextStep() {
     const { isSkuResolved } = this.state;
-    const { PickupSkuFormValues, distancesMap } = this.props;
-    const SkuSelectedValues = {
-      ...PickupSkuFormValues,
-      distance: distancesMap[0].id,
-    };
-
     if (!isSkuResolved) {
+      const { PickupSkuFormValues, distancesMap } = this.props;
+      const SkuSelectedValues = {
+        ...PickupSkuFormValues,
+        distance: distancesMap[0].id,
+      };
       this.setState({
         isSkuResolved: true,
         SkuSelectedValues,
@@ -316,27 +316,38 @@ class PickUpStoreModalView extends React.Component {
   }
 
   /** Handle click of Edit button on Step 2 - which will switch to Step 1 */
-  handleEditSkuDetails() {
+  handleEditSkuDetails(e) {
+    e.preventDefault();
     this.setState(oldState => ({ isSkuResolved: !oldState.isSkuResolved }));
   }
 
-  handleSearchAreaStoresSubmit(locationPromise, colorFitsSizesMap, formData) {
-    const { isPickUpWarningModal, getUserCartStoresAndSearch, PickupSkuFormValues } = this.props;
-
-    const skuId = this.getSkuIdForSearch(colorFitsSizesMap, formData);
-
-    const variantId = this.getVariantIdFormSearch(colorFitsSizesMap, formData);
-
-    const quantity =
-      (PickupSkuFormValues && PickupSkuFormValues.Quantity) || formData.Quantity || '1';
+  deriveSkuInfoAndSearch(locationPromise, colorFitsSizesMap, formData, cartItemsCount) {
+    const { SkuSelectedValues } = this.state;
+    const { getUserCartStoresAndSearch } = this.props;
+    const { color, Fit, Size, Quantity: quantity } = SkuSelectedValues;
+    const variantId = getVariantId(colorFitsSizesMap, color, Fit, Size);
+    const skuId = getSkuId(colorFitsSizesMap, color, Fit, Size);
     const { distance } = formData;
-
     this.skuId = skuId;
     this.quantity = quantity;
+    getUserCartStoresAndSearch({
+      skuId,
+      quantity,
+      distance,
+      locationPromise,
+      variantId,
+      cartItemsCount,
+    });
+  }
 
+  handleSearchAreaStoresSubmit(locationPromise, colorFitsSizesMap, formData) {
+    const { isPickUpWarningModal, cartItemsCount } = this.props;
+    this.handleNextStep();
     if (!isPickUpWarningModal) {
-      getUserCartStoresAndSearch({ skuId, quantity, distance, locationPromise, variantId });
-      this.handleNextStep();
+      setTimeout(() => {
+        this.deriveSkuInfoAndSearch(locationPromise, colorFitsSizesMap, formData, cartItemsCount);
+      });
+      // setTimeout is required to make sure corrected sku values are set in state, which derives the correct skuId for api.
     }
   }
 
@@ -384,12 +395,13 @@ class PickUpStoreModalView extends React.Component {
       isBossEnabled,
       showDefaultSizeMsg,
       isRadialInventoryEnabled,
-      itemsCount,
+      cartItemsCount,
       storeSearchError,
       onClearSearchFormError,
       addItemToCartInPickup,
       currency,
       PickupSkuFormValues,
+      addToBagError,
     } = this.props;
     let { colorFitSizeDisplayNames } = this.props;
     let { name } = currentProduct;
@@ -401,7 +413,6 @@ class PickUpStoreModalView extends React.Component {
       SkuSelectedValues = {},
       SkuSelectedValues: { color, Fit, Size } = {},
       isSkuResolved,
-      error,
       selectedColor,
     } = this.state;
 
@@ -486,7 +497,7 @@ class PickUpStoreModalView extends React.Component {
             promotionalMessage={currentProduct.promotionalMessage}
             promotionalPLCCMessage={currentProduct.promotionalPLCCMessage}
             currentProduct={currentProduct}
-            addToCartError={error}
+            addToCartError={addToBagError}
             isBopisCtaEnabled={isBopisCtaEnabled}
             isBossCtaEnabled={isBossCtaEnabled}
             updateCartItemStore={updateCartItemStore}
@@ -498,7 +509,7 @@ class PickUpStoreModalView extends React.Component {
             isGiftCard={currentProduct.isGiftCard}
             isRadialInventoryEnabled={isRadialInventoryEnabled}
             defaultStore={defaultStore}
-            itemsCount={itemsCount}
+            itemsCount={cartItemsCount}
             isCanada={isCanada}
             isPlcc={isPlcc}
             isInternationalShipping={isInternationalShipping}

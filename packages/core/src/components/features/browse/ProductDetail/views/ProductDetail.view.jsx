@@ -19,7 +19,6 @@ import {
   getImagesToDisplay,
   getMapSliceForColorProductId,
 } from '../../ProductListing/molecules/ProductList/utils/productsCommonUtils';
-import PickupStoreModal from '../../../../common/organisms/PickupStoreModal';
 
 const getProductColorId = (productInfo, currentProduct) => {
   let colorProduct = {};
@@ -39,7 +38,6 @@ const ProductDetailView = ({
   currency,
   productInfo,
   plpLabels,
-  isPickupModalOpen,
   pdpLabels,
   handleAddToBag,
   addToBagError,
@@ -119,7 +117,6 @@ const ProductDetailView = ({
               currentProduct={currentProduct}
             />
           </div>
-          {isPickupModalOpen ? <PickupStoreModal /> : null}
         </Col>
       </Row>
       <Row className="placeholder">
@@ -177,7 +174,6 @@ ProductDetailView.propTypes = {
   plpLabels: PropTypes.shape({
     lbl_sort: PropTypes.string,
   }),
-  isPickupModalOpen: PropTypes.bool,
 };
 
 ProductDetailView.defaultProps = {
@@ -192,7 +188,6 @@ ProductDetailView.defaultProps = {
   productInfo: {},
   pdpLabels: {},
   addToBagError: '',
-  isPickupModalOpen: false,
 };
 
 export default withStyles(ProductDetailView, ProductDetailStyle);
