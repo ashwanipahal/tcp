@@ -58,10 +58,10 @@ class ProductDetailContainer extends React.PureComponent {
       addToBagError,
       clearAddToBagError,
     } = this.props;
-    const noProductData = Object.keys(currentProduct).length === 0;
+    const isProductDataAvailable = Object.keys(currentProduct).length > 0;
     return (
       <React.Fragment>
-        {noProductData ? null : (
+        {isProductDataAvailable ? (
           <ProductDetail
             currentProduct={currentProduct}
             breadCrumbs={breadCrumbs}
@@ -73,7 +73,7 @@ class ProductDetailContainer extends React.PureComponent {
             addToBagError={addToBagError}
             clearAddToBagError={clearAddToBagError}
           />
-        )}
+        ) : null}
       </React.Fragment>
     );
   }

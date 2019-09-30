@@ -1,0 +1,5 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`ErrorDisplay should render correctly 1`] = `""`;
+
+exports[`ImageCompVanilla should render correctly 1`] = `""`;

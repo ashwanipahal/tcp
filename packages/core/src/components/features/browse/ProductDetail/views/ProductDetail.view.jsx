@@ -58,7 +58,6 @@ class ProductDetailView extends React.Component {
       addToBagError,
       isPickupModalOpen,
     } = this.props;
-
     const currentProduct = productDetails && productDetails.get('currentProduct');
     const isWeb =
       ExecutionEnvironment.canUseDOM && document.body.offsetWidth >= breakpoints.values.lg;
@@ -85,13 +84,12 @@ class ProductDetailView extends React.Component {
       <div className={className}>
         <Row>
           <Col colSize={{ small: 6, medium: 8, large: 12 }}>
-            {/* <div className="promo-area-1">BREAD CRUMB</div> */}
             {breadCrumbs && <FixedBreadCrumbs crumbs={breadCrumbs} separationChar=">" />}
           </Col>
         </Row>
         <Row className="placeholder product-detail-image-wrapper">
           <Col colSize={{ small: 6, medium: 8, large: 12 }}>
-            <div className="promo-area-1">PROMO AREA 1</div>
+            <div className="promo-area-1">{pdpLabels.promoArea1}</div>
           </Col>
         </Row>
         <Row>
@@ -140,7 +138,7 @@ class ProductDetailView extends React.Component {
         </Row>
         <Row className="placeholder">
           <Col colSize={{ small: 6, medium: 8, large: 12 }}>
-            <div className="product-detail-section">PROMO AREA 3</div>
+            <div className="product-detail-section">{pdpLabels.promoArea3}</div>
           </Col>
         </Row>
         <Row>
@@ -152,27 +150,27 @@ class ProductDetailView extends React.Component {
         </Row>
         <Row className="placeholder">
           <Col colSize={{ small: 6, medium: 8, large: 12 }}>
-            <div className="product-detail-section">COMPLETE THE LOOK</div>
+            <div className="product-detail-section">{pdpLabels.completeTheLook}</div>
           </Col>
         </Row>
         <Row className="placeholder">
           <Col colSize={{ small: 6, medium: 8, large: 12 }}>
-            <div className="product-detail-section">YOU MAY ALSO LIKE</div>
+            <div className="product-detail-section">{pdpLabels.youMayAlsoLike}</div>
           </Col>
         </Row>
         <Row className="placeholder">
           <Col colSize={{ small: 6, medium: 8, large: 12 }}>
-            <div className="product-detail-section">RECENTLY VIEWED</div>
+            <div className="product-detail-section">{pdpLabels.recentlyViewed}</div>
           </Col>
         </Row>
         <Row className="placeholder">
           <Col colSize={{ small: 6, medium: 8, large: 12 }}>
-            <div className="product-detail-section">MY STYLE PLACE</div>
+            <div className="product-detail-section">{pdpLabels.myStylePlace}</div>
           </Col>
         </Row>
         <Row className="placeholder">
           <Col colSize={{ small: 6, medium: 8, large: 12 }}>
-            <div className="product-detail-section">RATINGS AND REVIEWS</div>
+            <div className="product-detail-section">{pdpLabels.ratingReview}</div>
           </Col>
         </Row>
         <AddedToBagContainer />

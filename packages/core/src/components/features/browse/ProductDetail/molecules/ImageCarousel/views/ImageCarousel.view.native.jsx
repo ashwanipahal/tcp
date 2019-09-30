@@ -149,7 +149,13 @@ class ImageCarousel extends React.PureComponent {
 
 ImageCarousel.propTypes = {
   theme: PropTypes.shape({}),
-  imageUrls: PropTypes.shape([]),
+  imageUrls: PropTypes.arrayOf(
+    PropTypes.shape({
+      item: PropTypes.shape({
+        regularSizeImageUrl: PropTypes.string.isRequired,
+      }),
+    })
+  ),
   onImageClick: PropTypes.func.isRequired,
 };
 
