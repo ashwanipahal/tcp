@@ -17,14 +17,21 @@ const getDefaultState = state => {
 const ProductListingReducer = (state = initialState, action) => {
   switch (action.type) {
     case PRODUCTLISTINGPAGE_CONSTANTS.SET_PRODUCTS:
-      return state.set(
-        'loadedProductsPages',
-        state.get('loadedProductsPages').concat([action.payload.loadedProductsPages[0]])
-      );
+      return state
+        .set(
+          'loadedProductsPages',
+          state.get('loadedProductsPages').concat([action.payload.loadedProductsPages[0]])
+        )
+        .set('isFirstTimeLoad', false);
     case PRODUCTLISTINGPAGE_CONSTANTS.SET_FIRST_PRODUCTS_PAGE:
-      return state.merge(action.productsPage).set(DEFAULT_REDUCER_KEY, setCacheTTL());
+      return state
+        .merge(action.productsPage)
+        .set(DEFAULT_REDUCER_KEY, setCacheTTL())
+        .set('isFirstTimeLoad', true);
     case PRODUCTLISTINGPAGE_CONSTANTS.SET_PLP_LOADING_STATE:
       return state.merge(action.payload);
+    case PRODUCTLISTINGPAGE_CONSTANTS.RESET_PRODUCTS:
+      return { ...state };
     default:
       return getDefaultState(state);
   }
