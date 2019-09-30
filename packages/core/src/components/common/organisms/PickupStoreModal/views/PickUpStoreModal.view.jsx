@@ -222,7 +222,6 @@ class PickUpStoreModalView extends React.Component {
     this.handleSearchInCurrentCartStoresSubmit = this.handleSearchInCurrentCartStoresSubmit.bind(
       this
     );
-    this.handleNextStep = this.handleNextStep.bind(this);
     this.handleEditSkuDetails = this.handleEditSkuDetails.bind(this);
     this.onCloseClick = this.onCloseClick.bind(this);
   }
@@ -298,23 +297,6 @@ class PickUpStoreModalView extends React.Component {
     return isValidSKU;
   }
 
-  /** Handle click of Next button on Step 1 - which will switch to Step 2 */
-  handleNextStep() {
-    const { isSkuResolved } = this.state;
-    if (!isSkuResolved) {
-      const { PickupSkuFormValues, distancesMap } = this.props;
-      const SkuSelectedValues = {
-        ...PickupSkuFormValues,
-        distance: distancesMap[0].id,
-      };
-      this.setState({
-        isSkuResolved: true,
-        SkuSelectedValues,
-        selectedColor: PickupSkuFormValues.color,
-      });
-    }
-  }
-
   /** Handle click of Edit button on Step 2 - which will switch to Step 1 */
   handleEditSkuDetails(e) {
     e.preventDefault();
@@ -342,12 +324,31 @@ class PickUpStoreModalView extends React.Component {
 
   handleSearchAreaStoresSubmit(locationPromise, colorFitsSizesMap, formData) {
     const { isPickUpWarningModal, cartItemsCount } = this.props;
-    this.handleNextStep();
-    if (!isPickUpWarningModal) {
-      setTimeout(() => {
-        this.deriveSkuInfoAndSearch(locationPromise, colorFitsSizesMap, formData, cartItemsCount);
-      });
-      // setTimeout is required to make sure corrected sku values are set in state, which derives the correct skuId for api.
+    const { isSkuResolved } = this.state;
+    if (!isSkuResolved) {
+      const { PickupSkuFormValues, distancesMap } = this.props;
+      const SkuSelectedValues = {
+        ...PickupSkuFormValues,
+        distance: distancesMap[0].id,
+      };
+      this.setState(
+        {
+          isSkuResolved: true,
+          SkuSelectedValues,
+          selectedColor: PickupSkuFormValues.color,
+        },
+        () => {
+          if (!isPickUpWarningModal)
+            this.deriveSkuInfoAndSearch(
+              locationPromise,
+              colorFitsSizesMap,
+              formData,
+              cartItemsCount
+            );
+        }
+      );
+    } else if (!isPickUpWarningModal) {
+      this.deriveSkuInfoAndSearch(locationPromise, colorFitsSizesMap, formData, cartItemsCount);
     }
   }
 
@@ -456,7 +457,6 @@ class PickUpStoreModalView extends React.Component {
             promotionalPLCCMessage={currentProduct.promotionalPLCCMessage}
             isPickUpWarningModal={isPickUpWarningModal}
             onColorChange={onColorChange}
-            onSubmit={this.handleNextStep}
             productInfo={currentProduct}
             isCanada={isCanada}
             name={name}

@@ -22,7 +22,7 @@ const getTooltipContent = (basicInfo, address, storeClosingTimeToday, storeClosi
   const city = capitalize(address.city);
 
   return (
-    <BodyCopy fontFamily="secondary" color="text.primary" fontSize="fs12">
+    <div>
       <BodyCopy fontFamily="secondary" color="text.primary" fontWeight="semibold" fontSize="fs16">
         {storeName}
       </BodyCopy>
@@ -64,7 +64,7 @@ const getTooltipContent = (basicInfo, address, storeClosingTimeToday, storeClosi
           {STORE_DETAILS_LABELS.CLOSED_TOMORROW}
         </BodyCopy>
       )}
-    </BodyCopy>
+    </div>
   );
 };
 
