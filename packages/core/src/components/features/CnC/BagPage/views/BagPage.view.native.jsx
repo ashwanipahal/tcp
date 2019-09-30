@@ -7,7 +7,6 @@ import ProductTileWrapper from '../../CartItemTile/organisms/ProductTileWrapper/
 import CouponAndPromos from '../../common/organism/CouponAndPromos';
 import AirmilesBanner from '../../common/organism/AirmilesBanner';
 import AddedToBagActions from '../../AddedToBagActions';
-import withKeyboardAvoidingView from '../../../../common/hoc/withKeyboardAvoidingView.native';
 
 import {
   HeadingViewStyle,
@@ -233,4 +232,4 @@ BagPage.propTypes = {
   isShowSaveForLaterSwitch: PropTypes.bool.isRequired,
 };
 
-export default withKeyboardAvoidingView(InitialPropsHOC(BagPage));
+export default InitialPropsHOC(BagPage);
