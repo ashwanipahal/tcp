@@ -2,7 +2,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import withStyles from '@tcp/core/src/components/common/hoc/withStyles';
-import { Col, Row, Image, Anchor, BodyCopy } from '@tcp/core/src/components/common/atoms';
+import { Row, Image, Anchor, BodyCopy } from '@tcp/core/src/components/common/atoms';
 import MiniBagContainer from '@tcp/web/src/components/features/CnC/MiniBag/container/MiniBag.container';
 import { getCartItemCount } from '@tcp/core/src/utils/cookie.util';
 import { getBrand, getIconPath, routerPush } from '@tcp/core/src/utils';
@@ -109,21 +109,9 @@ class CondensedHeader extends React.PureComponent {
     const { accountIconButton, cartIconButton, hamburgerMenu } = labels.accessibility;
     return (
       <React.Fragment>
-        <Row className={`${className} condensed-header`}>
-          <Row className="content-wrapper">
-            <Col
-              colSize={{
-                large: 2,
-                medium: 1,
-                small: 1,
-              }}
-            >
-              <BrandLogo
-                alt={config[brand].alt}
-                className="brand-logo-left"
-                dataLocator={config[brand].dataLocator}
-                imgSrc={config[brand].imgSrc}
-              />
+        <Row id="condensedHeader" className={`${className} condensed-header`}>
+          <div className="content-wrapper">
+            <div className="condensed-hamburger-menu">
               <Image
                 src={
                   navigationDrawer.open
@@ -148,40 +136,23 @@ class CondensedHeader extends React.PureComponent {
                 }
                 data-locator={navigationDrawer.open ? 'L1_menu_close_Btn' : 'menu_bar_icon'}
               />
-            </Col>
-            <Col
-              className="navigation"
-              colSize={{
-                large: 8,
-                medium: 2,
-                small: 2,
-              }}
-              offsetLeft={{
-                medium: 2,
-              }}
-            >
-              <BrandLogo
-                alt={config[brand].alt}
-                className="brand-logo-middle"
-                dataLocator={config[brand].dataLocator}
-                imgSrc={config[brand].imgSrc}
-              />
+            </div>
+            <BrandLogo
+              alt={config[brand].alt}
+              className="condensed-brand-logo"
+              dataLocator={config[brand].dataLocator}
+              imgSrc={config[brand].imgSrc}
+            />
+            <div className="condensed-navigation">
               <Navigation
                 openNavigationDrawer={navigationDrawer.open}
                 closeNavigationDrawer={!navigationDrawer.open}
                 closeNav={closeNavigationDrawer}
               />
-            </Col>
-            <Col
-              className="condensed-icons"
-              colSize={{
-                large: 2,
-                medium: 3,
-                small: 3,
-              }}
-            >
+            </div>
+            <div className="condensed-header-icons">
               <SearchBar
-                className={!isSearchOpen && 'rightLink'}
+                className={!isSearchOpen && 'rightLink search-icon'}
                 setSearchState={this.setSearchState}
                 isSearchOpen={isSearchOpen}
                 fromCondensedHeader
@@ -202,7 +173,7 @@ class CondensedHeader extends React.PureComponent {
                 <Anchor
                   href="#"
                   noLink
-                  className="leftLink"
+                  className="user-icon-link"
                   onClick={e => this.onLinkClick({ e, openOverlay, triggerLoginCreateAccount })}
                   fontSizeVariation="large"
                   anchorVariation="primary"
@@ -240,8 +211,8 @@ class CondensedHeader extends React.PureComponent {
                   {cartItemCount || 0}
                 </BodyCopy>
               </Anchor>
-            </Col>
-          </Row>
+            </div>
+          </div>
         </Row>
         <MiniBagContainer
           isOpen={isOpenMiniBagModal}
