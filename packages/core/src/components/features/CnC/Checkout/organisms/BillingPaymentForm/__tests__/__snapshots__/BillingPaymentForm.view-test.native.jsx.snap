@@ -544,7 +544,7 @@ exports[`ButtonList component renders correctly without props 1`] = `
       />
     </Styled(View)>
     <Styled(View)>
-      <Styled(CardImage)
+      <CardImage
         card={
           Object {
             "accountNo": "************3743",
@@ -823,7 +823,7 @@ exports[`ButtonList component renders correctly without props 2`] = `
       />
     </Styled(View)>
     <Styled(View)>
-      <Styled(CardImage)
+      <CardImage
         card={
           Object {
             "accountNo": "************3743",
@@ -1100,7 +1100,7 @@ exports[`ButtonList component renders correctly without props with isPaymentDisa
       />
     </Styled(View)>
     <Styled(View)>
-      <Styled(CardImage)
+      <CardImage
         card={
           Object {
             "accountNo": "************3743",
