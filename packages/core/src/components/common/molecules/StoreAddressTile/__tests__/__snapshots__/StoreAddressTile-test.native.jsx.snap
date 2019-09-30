@@ -577,6 +577,7 @@ exports[`StoreAddressTile component Listing should render listing view with fav 
   <Styled(View)>
     <Styled(View)>
       <Styled(Text)>
+        2. 
         86th Street - 3rd Ave.
       </Styled(Text)>
       <Styled(Text)>
@@ -668,6 +669,7 @@ exports[`StoreAddressTile component Listing should render listing view with inde
   <Styled(View)>
     <Styled(View)>
       <Styled(Text)>
+        1. 
         86th Street - 3rd Ave.
       </Styled(Text)>
       <Styled(Text)>
