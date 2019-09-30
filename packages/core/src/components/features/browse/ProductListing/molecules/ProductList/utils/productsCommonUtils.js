@@ -254,10 +254,10 @@ export const getDefaultSizes = (formValues, productInfo, isShowDefaultSize) => {
  * quantity
  */
 export const isProductOOS = (colorFitsSizesMap, selectedSKu) => {
-  const currentFitEntry = getMapSliceForFit(colorFitsSizesMap, selectedSKu.color, selectedSKu.fit);
+  const currentFitEntry = getMapSliceForFit(colorFitsSizesMap, selectedSKu.color, selectedSKu.Fit);
   if (currentFitEntry && currentFitEntry.sizes) {
     const selectedSKuProductInfo = currentFitEntry.sizes.find(
-      size => size.sizeName === selectedSKu.size
+      size => size.sizeName === selectedSKu.Size
     );
     const maxAvailableProducts = selectedSKuProductInfo ? selectedSKuProductInfo.maxAvailable : 0;
 

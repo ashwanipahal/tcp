@@ -18,3 +18,4 @@ export { getSocialAccountsInformation, saveSocialAccountsInfo } from './SocialNe
 export { UpdateProfileInfo, getChildren, deleteChild, addChildBirthday } from './UpdateProfileInfo';
 export { claimPoints } from './PointsClaim';
 export { NavigateXHR } from './NavigateXHR';
+export { getOrderHistory } from './ordersList';

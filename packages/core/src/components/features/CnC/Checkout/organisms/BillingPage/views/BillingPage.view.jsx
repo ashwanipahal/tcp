@@ -20,6 +20,7 @@ class BillingPage extends React.PureComponent {
     billingData: PropTypes.shape({}),
     userAddresses: PropTypes.shape({}),
     creditFieldLabels: PropTypes.shape({}),
+    isVenmoPaymentInProgress: PropTypes.bool,
   };
 
   static defaultProps = {
@@ -30,6 +31,7 @@ class BillingPage extends React.PureComponent {
     billingData: {},
     userAddresses: null,
     creditFieldLabels: {},
+    isVenmoPaymentInProgress: false,
   };
 
   render() {
@@ -45,6 +47,7 @@ class BillingPage extends React.PureComponent {
       billingData,
       userAddresses,
       creditFieldLabels,
+      isVenmoPaymentInProgress,
     } = this.props;
     const { header, backLinkPickup, backLinkShipping, nextSubmitText } = labels;
     return (
@@ -67,6 +70,7 @@ class BillingPage extends React.PureComponent {
               shippingAddress={shippingAddress}
               userAddresses={userAddresses}
               creditFieldLabels={creditFieldLabels}
+              isVenmoPaymentInProgress={isVenmoPaymentInProgress}
             />
           </div>
         ) : (
@@ -82,6 +86,7 @@ class BillingPage extends React.PureComponent {
             orderHasShipping={orderHasShipping}
             billingData={billingData}
             creditFieldLabels={creditFieldLabels}
+            isVenmoPaymentInProgress={isVenmoPaymentInProgress}
           />
         )}
       </div>

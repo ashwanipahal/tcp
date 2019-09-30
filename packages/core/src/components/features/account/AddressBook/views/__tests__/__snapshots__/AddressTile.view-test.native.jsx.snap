@@ -21,7 +21,9 @@ exports[`AddressTile component should renders correctly 1`] = `
         }
         customStyle={Object {}}
         dataLocatorPrefix="addressbook"
+        fontSize="fs14"
         fontWeight="bold"
+        regularName={false}
         showCountry={true}
         showDefaultText={false}
         showName={true}

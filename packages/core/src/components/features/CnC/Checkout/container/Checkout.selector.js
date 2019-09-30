@@ -208,7 +208,7 @@ function getIsSmsUpdatesEnabled() {
   return getAPIConfig().isSmsUpdatesEnabled || true;
 }
 
-function isUsSite() {
+export function isUsSite() {
   return getCurrentSiteId() === constants.ROUTING_CONST.siteIds.us;
 }
 
@@ -332,6 +332,7 @@ const getBillingLabels = createSelector(
       'lbl_billing_selectCardTitle',
       'lbl_billing_select',
       'lbl_billing_cvvCode',
+      'lbl_billing_continueWith',
     ];
     labelKeys.forEach(key => {
       labels[key] = getLabelValue(billingLabel, key);
@@ -361,6 +362,7 @@ const getBillingLabels = createSelector(
       lbl_billing_selectCardTitle: selectCardTitle,
       lbl_billing_select: select,
       lbl_billing_cvvCode: cvvCode,
+      lbl_billing_continueWith: continueWith,
     } = labels;
     return {
       header,
@@ -387,6 +389,7 @@ const getBillingLabels = createSelector(
       selectCardTitle,
       select,
       cvvCode,
+      continueWith,
     };
   }
 );
@@ -581,6 +584,16 @@ function getPickupInitialPickupSectionValues(state) {
   };
 }
 
+/**
+ * Get if Pickup has values in the redux state
+ * @param {object} state
+ * @returns {boolean}
+ */
+const isPickupHasValues = state => {
+  const pickupValues = getPickupInitialPickupSectionValues(state);
+  return pickupValues && pickupValues.pickUpContact && pickupValues.pickUpContact.firstName;
+};
+
 function getIsPaymentDisabled(state) {
   const orderDetails = state.CartPageReducer.get('orderDetails');
   if (orderDetails) {
@@ -659,6 +672,9 @@ const isVenmoShippingBannerDisplayed = () => {
   return venmoShippingBanner ? venmoShippingBanner === 'true' : false;
 };
 
+const isVenmoPaymentSaveSelected = state =>
+  state[CHECKOUT_REDUCER_KEY].getIn(['uiFlags', 'venmoPaymentOptionSave']);
+
 const isGiftOptionsEnabled = state => {
   return state[CHECKOUT_REDUCER_KEY].getIn(['uiFlags', 'isGiftOptionsEnabled']);
 };
@@ -725,6 +741,34 @@ function getVenmoUserEmail(state) {
   );
 }
 
+/**
+ * This method is used to decide if we need to show review page next based on order conditions.
+ */
+const hasVenmoReviewPageRedirect = state => {
+  const isVenmoInProgress = isVenmoPaymentInProgress();
+  const isVenmoShippingDisplayed = isVenmoShippingBannerDisplayed();
+  const orderHasShipping = getIsOrderHasShipping(state);
+  const orderHasPickup = getIsOrderHasPickup(state);
+  const hasPickupValues = isPickupHasValues(state);
+  const addressList = getAddressListState(state);
+  const hasShippingAddress = addressList && addressList.size > 0;
+  let reviewPageRedirect = false;
+  if (!isVenmoInProgress || isVenmoShippingDisplayed) {
+    return reviewPageRedirect;
+  }
+  if (orderHasShipping && orderHasPickup) {
+    // Mix Cart
+    reviewPageRedirect = hasShippingAddress && hasPickupValues;
+  } else if (orderHasShipping) {
+    // Ship to Home Item
+    reviewPageRedirect = hasShippingAddress;
+  } else if (orderHasPickup) {
+    // Boss Bopis scenario
+    reviewPageRedirect = hasPickupValues;
+  }
+  return reviewPageRedirect;
+};
+
 const getGiftWrapOptions = state => {
   return state.Checkout.getIn(['options', 'giftWrapOptions']);
 };
@@ -767,7 +811,9 @@ const getIsVenmoEnabled = state => {
 };
 
 const getCurrentLanguage = state => {
-  return state.CountrySelector.get('language') || constants.DEFAULT_LANGUAGE;
+  return (
+    (state.CountrySelector && state.CountrySelector.get('language')) || constants.DEFAULT_LANGUAGE
+  );
 };
 
 const getReviewPageLabels = state =>
@@ -901,6 +947,9 @@ export default {
   getCurrentLanguage,
   isVenmoShippingBannerDisplayed,
   isVenmoPickupBannerDisplayed,
+  isVenmoPaymentSaveSelected,
+  hasVenmoReviewPageRedirect,
   getShippingPhoneAndEmail,
   getCreditFieldLabels,
+  isPickupHasValues,
 };
