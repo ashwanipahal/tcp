@@ -510,7 +510,7 @@ export default class ProductsOperator {
     ({ ...this.bucketingConfig } = { ...updatedBucketingConfig });
   };
 
-  getProductsListingMoreProducts(state) {
+  getProductsListingMoreProducts(state, location) {
     // if (isOnSeoPlp()) return Promise.resolve(); // scrolling is only supported on pages intended for human users, not for crawlers
     const lastLoadedPageNumber = getLastLoadedPageNumber(state);
     if (lastLoadedPageNumber >= getMaxPageNumber(state)) {
@@ -526,6 +526,7 @@ export default class ProductsOperator {
       state,
       filtersAndSort: appliedFiltersAndSort,
       pageNumber: lastLoadedPageNumber + 1,
+      location,
     });
   }
 
@@ -535,7 +536,7 @@ export default class ProductsOperator {
    *          we need to trigger multiple L3 calls on the basis of what all L3's are left in this.bucketingConfig.L3left variable.
    */
 
-  getMoreBucketedProducts = state => {
+  getMoreBucketedProducts = (state, location) => {
     // if (isOnSeoPlp()) return Promise.resolve(); // scrolling is only supported on pages intended for human users, not for crawlers
     // const state = this.store.getState();
     const sort = getAppliedSortId(state) || '';
@@ -566,6 +567,6 @@ export default class ProductsOperator {
         categoryPathMap,
       });
     }
-    return this.getProductsListingMoreProducts(state);
+    return this.getProductsListingMoreProducts(state, location);
   };
 }
