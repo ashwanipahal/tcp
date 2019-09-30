@@ -62,9 +62,9 @@ class ProductDetailView extends React.Component {
     const isWeb =
       ExecutionEnvironment.canUseDOM && document.body.offsetWidth >= breakpoints.values.lg;
     let imagesToDisplay = [];
-    const noProductData = Object.keys(productInfo).length === 0;
+    const isProductDataAvailable = Object.keys(productInfo).length > 0;
     const { currentColorEntry } = this.state;
-    if (!noProductData) {
+    if (isProductDataAvailable) {
       imagesToDisplay = getImagesToDisplay({
         imagesByColor: productInfo.imagesByColor,
         curentColorEntry: currentColorEntry,
