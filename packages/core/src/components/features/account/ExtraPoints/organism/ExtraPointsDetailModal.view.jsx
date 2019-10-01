@@ -5,7 +5,8 @@ import withStyles from '@tcp/core/src/components/common/hoc/withStyles';
 import PropTypes from 'prop-types';
 import styles from './styles/ExtraPointsDetailModal.style';
 import endpoints from '../../common/externalEndpoints';
-import PATH_CONSTANTS from '../constants';
+import internalEndpoints from '../../common/internalEndpoints';
+
 /**
  * This Class component use for return the Extra Points Detail Modal
  * can be passed in the component.
@@ -41,21 +42,21 @@ class ExtraPointsDetailModal extends React.PureComponent {
       case 'rewardPlaceApp':
         return endpoints.appDownloadPage;
       case 'userAboutYourselfSurvey':
-        return `${PATH_CONSTANTS.profileToUrl}&subSection=?survey=true`;
+        return `${internalEndpoints.profilePage.link}&subSection=?survey=true`;
       case 'userFavoriteStore':
-        return PATH_CONSTANTS.profileToUrl;
+        return internalEndpoints.profilePage.link;
       case 'userMailing':
-        return endpoints.appDownloadPage;
+        return internalEndpoints.mailingAddressPage.link;
       case 'myPreference':
-        return `${PATH_CONSTANTS.myPreferenceToUrl}&subSection=?socialAccount=${
+        return `${internalEndpoints.myPreferencesPage.link}&subSection=?socialAccount=${
           activeActivity.activityModalSocialAccount
         }`;
       case 'birthdaySavings':
-        return `${PATH_CONSTANTS.profileToUrl}/&subSection=birthday-savings`;
+        return internalEndpoints.birthdaySavingsPage.link;
       case 'orders':
-        return PATH_CONSTANTS.ordersToUrl;
+        return '/account?id=orders';
       default:
-        return PATH_CONSTANTS.profileToUrl;
+        return internalEndpoints.profilePage.link;
     }
   };
 
@@ -69,21 +70,21 @@ class ExtraPointsDetailModal extends React.PureComponent {
       case 'rewardPlaceApp':
         return endpoints.appDownloadPage;
       case 'userAboutYourselfSurvey':
-        return `${PATH_CONSTANTS.profile}/?survey=true`;
+        return `${internalEndpoints.profilePage.path}/?survey=true`;
       case 'userFavoriteStore':
-        return PATH_CONSTANTS.profile;
+        return internalEndpoints.profilePage.path;
       case 'userMailing':
-        return PATH_CONSTANTS.profile;
+        return internalEndpoints.mailingAddressPage.path;
       case 'myPreference':
-        return `${PATH_CONSTANTS.myPreference}/socialAccount=${
+        return `${internalEndpoints.myPreferencesPage.path}/socialAccount=${
           activeActivity.activityModalSocialAccount
         }`;
       case 'birthdaySavings':
-        return `${PATH_CONSTANTS.profile}/birthday-savings`;
+        return internalEndpoints.birthdaySavingsPage.path;
       case 'orders':
-        return PATH_CONSTANTS.orders;
+        return '/account/orders';
       default:
-        return PATH_CONSTANTS.profile;
+        return internalEndpoints.profilePage.path;
     }
   };
 
