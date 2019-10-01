@@ -1,0 +1,231 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`GetCandidVanilla component should renders correctly 1`] = `
+<section
+  className=""
+  id="get-candid-container"
+>
+  <Styled(Row)
+    centered={true}
+    className="hide"
+  >
+    <Styled(Col)
+      colSize={
+        Object {
+          "large": 12,
+          "medium": 8,
+          "small": 6,
+        }
+      }
+    >
+      <div
+        className="get-candid-default-heading"
+      >
+        <Styled(BodyCopy)
+          className="get-candid-main-heading"
+          color="text.primary"
+          component="p"
+          data-locator="get_candid_module_header_textImages_1"
+          fontFamily="primary"
+          fontSize={
+            Array [
+              "fs20",
+              "fs20",
+              "fs32",
+            ]
+          }
+          fontWeight="semibold"
+          letterSpacing="normal"
+          lineHeight="normal"
+          link={null}
+          textAlign="center"
+        />
+        <Styled(BodyCopy)
+          className="get-candid-heading-desc"
+          color="text.primary"
+          component="p"
+          data-locator="get_candid_module_header_textImages_2"
+          fontFamily="primary"
+          fontSize={
+            Array [
+              "fs16",
+              "fs16",
+              "fs26",
+            ]
+          }
+          fontWeight="regular"
+          letterSpacing="normal"
+          lineHeight="normal"
+          link={null}
+          textAlign="center"
+        />
+      </div>
+    </Styled(Col)>
+  </Styled(Row)>
+  <Styled(Row)
+    centered={true}
+    className="no-flex"
+  >
+    <Styled(Col)
+      className="no-flex"
+      colSize={
+        Object {
+          "large": 12,
+          "medium": 8,
+          "small": 6,
+        }
+      }
+    >
+      <div
+        id="tcp-get-candid-image-container"
+      />
+    </Styled(Col)>
+  </Styled(Row)>
+  <Styled(Row)
+    centered={true}
+    className="hide"
+  >
+    <div
+      className="get-candid-button-container"
+    >
+      <Styled(Col)
+        colSize={
+          Object {
+            "large": 12,
+            "medium": 8,
+            "small": 6,
+          }
+        }
+      >
+        <Styled(Button)
+          buttonVariation="fixed-width"
+          className="gallery-button-left"
+          data-locator="view_gallery_button"
+          onClick={[Function]}
+        />
+        <Styled(Button)
+          buttonVariation="fixed-width"
+          className="gellary-button-right"
+          data-locator="add_photo_button"
+          onClick={[Function]}
+        />
+      </Styled(Col)>
+    </div>
+  </Styled(Row)>
+</section>
+`;
+
+exports[`GetCandidVanilla component should renders correctly considering selective arguments are passed 1`] = `
+<section
+  className=""
+  id="get-candid-container"
+>
+  <Styled(Row)
+    centered={true}
+    className="hide"
+  >
+    <Styled(Col)
+      colSize={
+        Object {
+          "large": 12,
+          "medium": 8,
+          "small": 6,
+        }
+      }
+    >
+      <div
+        className="get-candid-default-heading"
+      >
+        <Styled(BodyCopy)
+          className="get-candid-main-heading"
+          color="text.primary"
+          component="p"
+          data-locator="get_candid_module_header_textImages_1"
+          fontFamily="primary"
+          fontSize={
+            Array [
+              "fs20",
+              "fs20",
+              "fs32",
+            ]
+          }
+          fontWeight="semibold"
+          letterSpacing="normal"
+          lineHeight="normal"
+          link={null}
+          textAlign="center"
+        />
+        <Styled(BodyCopy)
+          className="get-candid-heading-desc"
+          color="text.primary"
+          component="p"
+          data-locator="get_candid_module_header_textImages_2"
+          fontFamily="primary"
+          fontSize={
+            Array [
+              "fs16",
+              "fs16",
+              "fs26",
+            ]
+          }
+          fontWeight="regular"
+          letterSpacing="normal"
+          lineHeight="normal"
+          link={null}
+          textAlign="center"
+        />
+      </div>
+    </Styled(Col)>
+  </Styled(Row)>
+  <Styled(Row)
+    centered={true}
+    className="no-flex"
+  >
+    <Styled(Col)
+      className="no-flex"
+      colSize={
+        Object {
+          "large": 12,
+          "medium": 8,
+          "small": 6,
+        }
+      }
+    >
+      <div
+        id="tcp-get-candid-image-container"
+      />
+    </Styled(Col)>
+  </Styled(Row)>
+  <Styled(Row)
+    centered={true}
+    className="hide"
+  >
+    <div
+      className="get-candid-button-container"
+    >
+      <Styled(Col)
+        colSize={
+          Object {
+            "large": 12,
+            "medium": 8,
+            "small": 6,
+          }
+        }
+      >
+        <Styled(Button)
+          buttonVariation="fixed-width"
+          className="gallery-button-left"
+          data-locator="view_gallery_button"
+          onClick={[Function]}
+        />
+        <Styled(Button)
+          buttonVariation="fixed-width"
+          className="gellary-button-right"
+          data-locator="add_photo_button"
+          onClick={[Function]}
+        />
+      </Styled(Col)>
+    </div>
+  </Styled(Row)>
+</section>
+`;
