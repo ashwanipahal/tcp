@@ -21,7 +21,13 @@ export function Mark({ name }) {
   // NOTE: JSON.stringify used to properly quote the arguments
   return isEnabled ? (
     <ServerOnly>
-      <script type="text/javascript">{`performance.mark(${JSON.stringify(name)})`}</script>
+      <script type="text/javascript">
+        {`
+          if (typeof performance !== 'undefined') {
+            performance.mark(${JSON.stringify(name)});
+          }
+        `}
+      </script>
     </ServerOnly>
   ) : null;
 }
@@ -49,11 +55,13 @@ export function Measure({ name, start, end }) {
       {/* TODO: find a replacement for react-safe owing to transpilation issues */}
       <script type="text/javascript">
         {`
-          performance.measure(
-            ${JSON.stringify(name)},
-            ${JSON.stringify(start)},
-            ${JSON.stringify(end)}
-          )
+          if (typeof performance !== 'undefined') {
+            performance.measure(
+              ${JSON.stringify(name)},
+              ${JSON.stringify(start)},
+              ${JSON.stringify(end)}
+            );
+          }
         `}
       </script>
     </ServerOnly>
