@@ -26,7 +26,7 @@ const MODULE_WIDTH = getScreenWidth() - 30;
 /**
  * Module width on Account Overview Tile
  */
-const MODULE_WIDTH_ACCOUNT = getScreenWidth() - 70;
+const MODULE_WIDTH_ACCOUNT = getScreenWidth() - 80;
 
 /**
  * @component EarnExtraPointsTile for Native view

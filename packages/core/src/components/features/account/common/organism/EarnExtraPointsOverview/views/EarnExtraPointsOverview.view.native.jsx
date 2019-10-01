@@ -31,7 +31,10 @@ export const EarnExtraPointsOverview = ({ labels, handleComponentChange }) => {
         text={getLabelValue(labels, 'lbl_earnExtraPoints_getReward')}
       />
       <EarnExtraPointsWrapper>
-        <EarnExtraPointsTileContainer isAccountOverview />
+        <EarnExtraPointsTileContainer
+          handleComponentChange={handleComponentChange}
+          isAccountOverview
+        />
       </EarnExtraPointsWrapper>
       <ViewWithSpacing spacingStyles="margin-top-LRG margin-bottom-MED">
         <Button
