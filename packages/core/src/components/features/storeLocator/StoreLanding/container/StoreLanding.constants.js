@@ -10,4 +10,5 @@ export default {
   INITIAL_STORE_LIMIT: 5,
   GOOGLE_SEARCH_API_ENDPOINT:
     'https://maps.googleapis.com/maps/api/place/findplacefromtext/json?input=',
+  FAV_STORE_CACHE_KEY: 'FAVOURITE_STORE_CACHE_KEY',
 };

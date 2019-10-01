@@ -38,7 +38,7 @@ describe('Store Locator Abstractor', () => {
       expect(item).toBe(mockLocResponse);
     });
   });
-  test('getFavoriteStore', () => {
+  test('getFavoriteStore - if user is logged in', () => {
     executeStatefulAPICall.mockImplementation(() => Promise.resolve(getFavoriteStoreMockData));
     const payloadData = {
       geoLatLong: {
@@ -46,7 +46,14 @@ describe('Store Locator Abstractor', () => {
         long: -73.98625,
       },
     };
-    const favStore = getFavoriteStore(payloadData);
+    const state = {
+      User: fromJS({
+        personalData: fromJS({
+          isGuest: false,
+        }),
+      }),
+    };
+    const favStore = getFavoriteStore(payloadData, state);
     expect(typeof favStore).toBe('object');
     favStore.then(stores => {
       expect(stores).toMatchObject(parsedStoreInfoMockData);
