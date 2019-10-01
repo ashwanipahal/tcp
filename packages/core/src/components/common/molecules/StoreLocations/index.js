@@ -1,1 +1,1 @@
-export { default } from './views';
+export { default, CollapsibleLocations, LocationTile } from './views';

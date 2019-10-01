@@ -25,6 +25,14 @@ describe('StoreAddressTile component', () => {
       );
       expect(component.html()).toMatchSnapshot();
     });
+    it('should render details view with clickable title', () => {
+      const component = mount(
+        <ThemeProvider theme={Theme()}>
+          <StoreAddressTile {...props} titleClickCb={() => {}} />
+        </ThemeProvider>
+      );
+      expect(component.html()).toMatchSnapshot();
+    });
     it('should render details view with fav store', () => {
       const testProps = {
         ...props,

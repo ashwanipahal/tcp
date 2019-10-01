@@ -107,10 +107,16 @@ class StoreAddressTile extends PureComponent {
       store: {
         basicInfo: { storeName },
       },
+      titleClickCb,
     } = this.props;
     return (
       <div className="store-details-header">
-        <h4 className="store-name store-name--details">{storeName}</h4>
+        {!titleClickCb && <h4 className="store-name store-name--details">{storeName}</h4>}
+        {titleClickCb && (
+          <button className="store-name store-name--details-btn" onClick={titleClickCb}>
+            {storeName}
+          </button>
+        )}
       </div>
     );
   }
@@ -415,19 +421,19 @@ class StoreAddressTile extends PureComponent {
   render() {
     const { className, children, variation, store, ...rest } = this.props;
     return (
-      <div className={className}>
+      <div className={`address-tile ${className}`}>
         {variation === listingHeader && this.getListingHeader()}
         {variation !== listingHeader && (
           <Fragment>
-            <TileHeader className="title-header" variation={variation} {...rest}>
+            <TileHeader className="tile-header" variation={variation} {...rest}>
               {variation === detailsType && this.getDetailsTileHeader()}
               {variation === listingType && this.getListingTileHeader()}
             </TileHeader>
-            <TileBody className="title-body" variation={variation} {...rest}>
+            <TileBody className="tile-body" variation={variation} {...rest}>
               {this.getStoreAddress()}
               {children}
             </TileBody>
-            <TileFooter className="title-footer" variation={variation} store={store} {...rest}>
+            <TileFooter className="tile-footer" variation={variation} store={store} {...rest}>
               {variation === detailsType && this.getDetailsTileFooter()}
               {variation === listingType && this.getListingTileFooter(store)}
             </TileFooter>
