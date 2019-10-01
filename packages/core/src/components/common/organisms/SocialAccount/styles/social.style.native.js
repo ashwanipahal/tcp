@@ -11,6 +11,10 @@ const EarnedMessage = styled.Text`
   padding-bottom: ${props => props.theme.spacing.ELEM_SPACING.MED};
 `;
 
+const SocialMessage = styled.View`
+  width: 55%;
+`;
+
 const Points = styled.Text`
   color: ${props =>
     props.isPlcc
@@ -20,4 +24,4 @@ const Points = styled.Text`
   font-weight: ${props => props.theme.typography.fontWeights.black};
 `;
 
-export { Row, EarnedMessage, Points };
+export { Row, EarnedMessage, Points, SocialMessage };

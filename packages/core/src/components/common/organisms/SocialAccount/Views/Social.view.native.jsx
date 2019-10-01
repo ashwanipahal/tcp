@@ -6,7 +6,7 @@ import Button from '@tcp/core/src/components/common/atoms/Button';
 import { BodyCopyWithSpacing, ViewWithSpacing } from '../../../atoms/styledWrapper';
 import ModalNative from '../../../molecules/Modal';
 import config from './config';
-import { Row, EarnedMessage, Points } from '../styles/social.style.native';
+import { Row, EarnedMessage, Points, SocialMessage } from '../styles/social.style.native';
 import ImageComp from '../../../atoms/Image';
 import BodyCopy from '../../../atoms/BodyCopy';
 import { getLabelValue } from '../../../../../utils/utils';
@@ -66,19 +66,22 @@ class Socialview extends React.PureComponent {
         <ViewWithSpacing spacingStyles="margin-bottom-XL margin-left-XXS margin-right-XXS">
           <Row>
             <ImageComp source={this.icons[socialIcon]} width={50} height={50} />
-            <BodyCopyWithSpacing
-              fontSize="fs16"
-              spacingStyles="margin-left-MED margin-right-LRG"
-              text={
-                elem.isConnected
-                  ? `${config.SOCIAL_ACCOUNTS[elem.socialAccount]} ${
-                      labels.lbl_prefrence_connected
-                    }`
-                  : `${labels.lbl_prefrence_connectTo} ${
-                      config.SOCIAL_ACCOUNTS[elem.socialAccount]
-                    }`
-              }
-            />
+            <SocialMessage>
+              <BodyCopyWithSpacing
+                fontSize="fs16"
+                spacingStyles="margin-left-MED margin-right-LRG"
+                text={
+                  elem.isConnected
+                    ? `${config.SOCIAL_ACCOUNTS[elem.socialAccount]} ${
+                        labels.lbl_prefrence_connected
+                      }`
+                    : `${labels.lbl_prefrence_connectTo} ${
+                        config.SOCIAL_ACCOUNTS[elem.socialAccount]
+                      }`
+                }
+              />
+            </SocialMessage>
+
             <TouchableOpacity
               accessibilityRole="button"
               accessibilityLabel="button"

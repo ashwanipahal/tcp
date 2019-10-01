@@ -2,7 +2,7 @@ import FacebookEnableIcon from '../../../../assets/facebook_share.png';
 import InstagramEnableIcon from '../../../../assets/instagram_share.png';
 import FacebookDisableIcon from '../../../../assets/facebook_fade.png';
 import InstagramDisableIcon from '../../../../assets/instagram_fade.png';
-import CloseIcon from '../../../../assets/close.png';
+import CloseIcon from '../../../../assets/dark_close.png';
 import PlusIcon from '../../../../assets/plus.png';
 
 const SOCIAL_ICONS = {

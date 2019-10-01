@@ -39,16 +39,18 @@ exports[`Social component should render with connected 1`] = `
         url=""
         width={50}
       />
-      <Styled(Styled(BodyCopy))
-        accessibilityText=""
-        dataLocator=""
-        fontSize="fs16"
-        margin={null}
-        numberOfLines={null}
-        spacingStyles="margin-left-MED margin-right-LRG"
-        text="Facebook undefined"
-        textDecoration={null}
-      />
+      <Styled(View)>
+        <Styled(Styled(BodyCopy))
+          accessibilityText=""
+          dataLocator=""
+          fontSize="fs16"
+          margin={null}
+          numberOfLines={null}
+          spacingStyles="margin-left-MED margin-right-LRG"
+          text="Facebook undefined"
+          textDecoration={null}
+        />
+      </Styled(View)>
       <TouchableOpacity
         accessibilityLabel="button"
         accessibilityRole="button"
@@ -61,7 +63,7 @@ exports[`Social component should render with connected 1`] = `
           host=""
           source={
             Object {
-              "testUri": "../../../../core/src/assets/close.png",
+              "testUri": "../../../../core/src/assets/dark_close.png",
             }
           }
           url=""
@@ -112,16 +114,18 @@ exports[`Social component should renders correctly 1`] = `
         url=""
         width={50}
       />
-      <Styled(Styled(BodyCopy))
-        accessibilityText=""
-        dataLocator=""
-        fontSize="fs16"
-        margin={null}
-        numberOfLines={null}
-        spacingStyles="margin-left-MED margin-right-LRG"
-        text="undefined Facebook"
-        textDecoration={null}
-      />
+      <Styled(View)>
+        <Styled(Styled(BodyCopy))
+          accessibilityText=""
+          dataLocator=""
+          fontSize="fs16"
+          margin={null}
+          numberOfLines={null}
+          spacingStyles="margin-left-MED margin-right-LRG"
+          text="undefined Facebook"
+          textDecoration={null}
+        />
+      </Styled(View)>
       <TouchableOpacity
         accessibilityLabel="button"
         accessibilityRole="button"
