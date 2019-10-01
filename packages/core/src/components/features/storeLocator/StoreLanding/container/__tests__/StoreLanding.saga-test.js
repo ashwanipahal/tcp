@@ -1,9 +1,6 @@
 import { call, takeLatest, select } from 'redux-saga/effects';
 import { validateReduxCache } from '@tcp/core/src/utils/cache.util';
-import {
-  getLocationStores,
-  getFavoriteStore,
-} from '@tcp/core/src/services/abstractors/common/storeLocator';
+import { getLocationStores } from '@tcp/core/src/services/abstractors/common/storeLocator';
 import STORE_LOCATOR_CONSTANTS from '../StoreLanding.constants';
 import StoreSaga, {
   fetchLocationStoresSaga,
@@ -59,7 +56,8 @@ describe('Store Locator saga', () => {
 
     test('default', () => {
       const generator = getFavoriteStoreSaga({ payload });
-      expect(generator.next().value).toEqual(call(getFavoriteStore, payload));
+      expect(generator.next().value).toEqual(select());
+      expect(typeof generator.next().value).toEqual('object');
       expect(generator.next().value).toEqual(null);
     });
   });

@@ -24,7 +24,8 @@ export function* fetchLocationStoresSaga({ payload }) {
 
 export function* getFavoriteStoreSaga({ payload }) {
   try {
-    const res = yield call(getFavoriteStore, payload);
+    const state = yield select();
+    const res = yield call(getFavoriteStore, payload, state);
     if (res && res.basicInfo) {
       yield put(setDefaultStoreUserAction(res));
     } else {

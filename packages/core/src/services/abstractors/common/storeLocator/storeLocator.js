@@ -7,7 +7,14 @@ import { sanitizeEntity } from '../../../../utils';
 import { formatPhoneNumber } from '../../../../utils/formValidation/phoneNumber';
 import { parseStoreHours } from '../../../../utils/parseStoreHours';
 import endpoints from '../../../endpoints';
-import { getPersonalDataState } from '../../../../components/features/account/User/container/User.selectors';
+import {
+  getPersonalDataState,
+  getUserLoggedInState,
+} from '../../../../components/features/account/User/container/User.selectors';
+import {
+  setFavStoreToLocalStorage,
+  getFavStoreFromLocalStorage,
+} from '../../../../components/features/storeLocator/StoreLanding/container/utils/userFavStore';
 
 const DEFAULT_RADIUS = 75;
 const STORE_TYPES = {
@@ -277,42 +284,47 @@ export const storeResponseParser = (storeDetails, configs = { requestedQuantity:
  *  default store on the basis of lat long of user is fetched.
  * @return empty object if you do not have a default store else you will get back
  */
-export const getFavoriteStore = ({
-  skuId = null,
-  geoLatLang: { lat, long } = {},
-  variantId,
-  quantity,
-}) => {
-  const payloadData = {
-    header: {
-      action: 'get',
-      latitude: lat,
-      longitude: long,
-      catEntryId: skuId,
-      itemPartNumber: variantId,
-    },
-    body: {
-      latitude: lat,
-      longitude: long,
-      catEntryId: skuId,
-      itemPartNumber: variantId,
-    },
-    webService: endpoints.getFavoriteStore,
-  };
-  return executeStatefulAPICall(payloadData)
-    .then(res => {
-      if (res.body && res.body.displayValue) {
-        const storeDetailsResponse = {
-          ...res.body,
-          storehours: JSON.parse(res.body.displayValue),
-        };
-        return storeResponseParser(storeDetailsResponse, {
-          requestedQuantity: quantity,
-        });
-      }
-      return null;
-    })
-    .catch(errorHandler);
+export const getFavoriteStore = (
+  { skuId = null, geoLatLang: { lat, long } = {}, variantId, quantity },
+  state
+) => {
+  const favStoreFromStorage = JSON.parse(getFavStoreFromLocalStorage());
+  const isUserLoggedIn = getUserLoggedInState(state);
+  const favStoreCondition =
+    favStoreFromStorage === null || Object.keys(favStoreFromStorage).length <= 0;
+  if (isUserLoggedIn && favStoreCondition) {
+    const payloadData = {
+      header: {
+        action: 'get',
+        latitude: lat,
+        longitude: long,
+        catEntryId: skuId,
+        itemPartNumber: variantId,
+      },
+      body: {
+        latitude: lat,
+        longitude: long,
+        catEntryId: skuId,
+        itemPartNumber: variantId,
+      },
+      webService: endpoints.getFavoriteStore,
+    };
+    return executeStatefulAPICall(payloadData)
+      .then(res => {
+        if (res.body && res.body.displayValue) {
+          const storeDetailsResponse = {
+            ...res.body,
+            storehours: JSON.parse(res.body.displayValue),
+          };
+          return storeResponseParser(storeDetailsResponse, {
+            requestedQuantity: quantity,
+          });
+        }
+        return null;
+      })
+      .catch(errorHandler);
+  }
+  return favStoreFromStorage;
 };
 
 /**
@@ -360,7 +372,7 @@ export const getLocationStores = ({
 export const setFavoriteStore = (storeId, state, key = 'LOCATOR') => {
   const personalDataState = getPersonalDataState(state);
   const userId = personalDataState && personalDataState.get('userId');
-
+  const isUserLoggedIn = getUserLoggedInState(state);
   const suggestedStore = getSuggestedStoreById(state, storeId, key);
   const favStore = suggestedStore && {
     ...suggestedStore,
@@ -371,20 +383,25 @@ export const setFavoriteStore = (storeId, state, key = 'LOCATOR') => {
     },
   };
 
-  const payloadData = {
-    header: {
-      action: 'add',
-      fromPage: 'StoreLocator',
-      userId,
-      storeLocId: storeId,
-    },
-    body: {},
-    webService: endpoints.setFavoriteStore,
-  };
+  if (isUserLoggedIn) {
+    const payloadData = {
+      header: {
+        action: 'add',
+        fromPage: 'StoreLocator',
+        userId,
+        storeLocId: storeId,
+      },
+      body: {},
+      webService: endpoints.setFavoriteStore,
+    };
 
-  return executeStatefulAPICall(payloadData)
-    .then(() => {
-      return favStore;
-    })
-    .catch(errorHandler);
+    return executeStatefulAPICall(payloadData)
+      .then(() => {
+        setFavStoreToLocalStorage(favStore);
+        return favStore;
+      })
+      .catch(errorHandler);
+  }
+  setFavStoreToLocalStorage(favStore);
+  return favStore;
 };
