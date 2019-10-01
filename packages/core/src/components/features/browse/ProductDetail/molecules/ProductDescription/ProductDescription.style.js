@@ -6,7 +6,7 @@ const upArrowIcon = getIconPath('up_arrow_icon');
 
 export default css`
   .button-wrapper {
-    padding: 18px 0 16px;
+    padding: 18px 0 ${props => props.theme.spacing.ELEM_SPACING.MED};
     text-decoration: underline;
     font-size: 10px;
     font-family: ${props => props.theme.typography.fonts.secondary};
@@ -22,7 +22,7 @@ export default css`
     align-items: baseline;
   }
   .claim-message {
-    padding: 24px 0 7px;
+    padding: ${props => props.theme.spacing.ELEM_SPACING.LRG} 0 7px;
   }
 
   .short-description {
@@ -62,7 +62,7 @@ export default css`
       background: none;
     }
     .introduction-text {
-      max-height: 40px;
+      max-height: ${props => props.theme.spacing.ELEM_SPACING.XXL};
     }
     .show-more-expanded {
       max-height: initial;
