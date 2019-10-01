@@ -1,11 +1,9 @@
-/*  eslint-disable */
 import React from 'react';
 import BodyCopy from '@tcp/core/src/components/common/atoms/BodyCopy';
 import { PropTypes } from 'prop-types';
 import errorBoundary from '@tcp/core/src/components/common/hoc/withErrorBoundary';
 import withStyles from '@tcp/core/src/components/common/hoc/withStyles';
 import style from '../ProductDescription.style';
-import cssClassName from '../../../../../../../utils/cssClassName';
 
 class ProductDetailDescription extends React.PureComponent {
   constructor(props) {
@@ -13,111 +11,135 @@ class ProductDetailDescription extends React.PureComponent {
     this.state = {
       isShowMore: !!props.isShowMore,
       isExpanded: true,
+      isAccordionOpen: false,
     };
 
     this.handleToggleShowMoreOrLess = this.handleToggleShowMoreOrLess.bind(this);
-    this.titleClick = this.titleClick.bind(this);
+    this.handleAccordionToggle = this.handleAccordionToggle.bind(this);
   }
 
-  componentDidMount() {
-    if (this.divElement && false) {
-      let height = this.divElement.clientHeight;
-      let displayShowMoreOrLess = height >= 42;
-      this.setState({ displayShowMoreOrLess });
+  getButton = () => {
+    let buttonShowMoreOrLess = null;
+    const { isShowMore } = this.state;
+    if (isShowMore) {
+      buttonShowMoreOrLess = (
+        <div className="button-show-less">
+          <button
+            className="button-wrapper"
+            type="button"
+            onClick={this.handleToggleShowMoreOrLess}
+          >
+            Show Less
+          </button>
+        </div>
+      );
     } else {
-      this.setState({ displayShowMoreOrLess: true });
+      buttonShowMoreOrLess = (
+        <div className="button-show-more">
+          <button
+            className="button-wrapper"
+            type="button"
+            onClick={this.handleToggleShowMoreOrLess}
+          >
+            Show More
+          </button>
+        </div>
+      );
     }
+    return buttonShowMoreOrLess;
+  };
+
+  getDescAvailable = (shortDescription, longDescription) => {
+    return shortDescription || longDescription;
+  };
+
+  getAccordionClass = isAccordionOpen => {
+    return isAccordionOpen ? 'show-accordion-toggle' : '';
+  };
+
+  handleAccordionToggle() {
+    const { isAccordionOpen } = this.state;
+    this.setState({ isAccordionOpen: !isAccordionOpen });
   }
 
   handleToggleShowMoreOrLess() {
+    const { isShowMore } = this.state;
     this.setState({
-      isShowMore: !this.state.isShowMore,
+      isShowMore: !isShowMore,
     });
   }
 
-  titleClick() {
-    const { titleClickable } = this.props;
-    if (titleClickable) {
-      const { isExpanded } = this.state;
-      this.setState({
-        isExpanded: !isExpanded,
-      });
-    }
-  }
-
   render() {
-    const { longDescription, productId, shortDescription, className, titleClickable } = this.props;
-    console.info('Props', this.props);
-    const { isExpanded, displayShowMoreOrLess, isShowMore } = this.state;
-    console.info('State', this.state);
-    const descAvail = shortDescription || longDescription;
-    let buttonShowMoreOrLess = null;
-    let maxHeightOfContainer = null;
-    if (isShowMore) {
-      maxHeightOfContainer = {
-        maxHeight: 'auto',
-        overflow: 'visible',
-      };
-      buttonShowMoreOrLess = (
-        <div className="button-show-less">
-          <button type="button" onClick={this.handleToggleShowMoreOrLess}>
-            Show Less
-          </button>
-        </div>
-      );
-    } else {
-      const lineHeight = true ? '52px' : '85px';
-      maxHeightOfContainer = {
-        maxHeight: false ? lineHeight : '40px',
-        overflow: 'hidden',
-      };
-      buttonShowMoreOrLess = (
-        <div className="button-show-more">
-          <button type="button" onClick={this.handleToggleShowMoreOrLess}>
-            Show More
-          </button>
-        </div>
-      );
-    }
-    const titleClassName = cssClassName(
-      'title-product-description ',
-      { 'have-arrow ': titleClickable },
-      { 'active ': isExpanded }
-    );
+    const { longDescription, productId, shortDescription, className } = this.props;
+    const { isExpanded, isAccordionOpen, isShowMore } = this.state;
+    const descAvail = this.getDescAvailable(shortDescription, longDescription);
+    const getButton = this.getButton();
+    const accordionToggleClass = this.getAccordionClass(isAccordionOpen);
 
     return (
-      <BodyCopy className={`${className} product-description-list`}>
-                
-        <h4 className={titleClassName} onClick={this.titleClick}>
-          Product Description
-        </h4>
+      <div className={`${className} product-description-list`}>
+        <BodyCopy
+          className={`product-desc-heading ${accordionToggleClass}`}
+          fontSize="fs14"
+          component="div"
+          fontFamily="secondary"
+          fontWeight="black"
+          onClick={this.handleAccordionToggle}
+        >
+          Product Description
+        </BodyCopy>
         {isExpanded && (
-          <div>
-            {shortDescription && <p className="short-description">{shortDescription}</p>}      
-            {(!shortDescription ? true : isShowMore) && (
+          <div className={isAccordionOpen ? 'show-description-list' : ''}>
+            {shortDescription && (
+              <BodyCopy className="short-description" fontSize="fs14" fontFamily="secondary">
+                {shortDescription}
+              </BodyCopy>
+            )}
+            {shortDescription && (
               <div
+                className={`${isShowMore ? 'show-more-expanded' : ''} ${
+                  !shortDescription ? 'introduction-text extra-gap' : 'introduction-text'
+                }`}
                 ref={divElement => {
                   this.divElement = divElement;
                 }}
-                style={true ? maxHeightOfContainer : null}
-                className={!shortDescription ? 'introduction-text extra-gap' : 'introduction-text'}
               >
-                     
                 {longDescription && (
-                  <ul
+                  <BodyCopy
                     className="list-content"
+                    component="ul"
                     dangerouslySetInnerHTML={{ __html: longDescription }}
+                    fontSize="fs14"
+                    fontFamily="secondary"
                   />
                 )}
-                            {longDescription && <br />}
-                            <aside className="claim-message">Big Fashion, Little Prices</aside>
-                            {<strong className="product-id">Item #: {productId}</strong>}
+                <BodyCopy
+                  className="claim-message"
+                  component="aside"
+                  fontSize="fs14"
+                  fontFamily="secondary"
+                >
+                  Big Fashion, Little Prices
+                </BodyCopy>
               </div>
             )}
-            {descAvail && displayShowMoreOrLess && buttonShowMoreOrLess}  
+            {descAvail && (
+              <div className="product-detail-footer">
+                {getButton}
+                <BodyCopy
+                  component="span"
+                  className="show-product-id"
+                  fontSize="fs10"
+                  fontFamily="secondary"
+                >
+                  Item #:
+                  {productId}
+                </BodyCopy>
+              </div>
+            )}
           </div>
         )}
-      </BodyCopy>
+      </div>
     );
   }
 }
@@ -125,12 +147,14 @@ class ProductDetailDescription extends React.PureComponent {
 ProductDetailDescription.propTypes = {
   className: PropTypes.string,
   productId: PropTypes.string,
+  isShowMore: PropTypes.bool,
   longDescription: PropTypes.string,
   shortDescription: PropTypes.string,
 };
 
 ProductDetailDescription.defaultProps = {
   className: '',
+  isShowMore: '',
   longDescription: '',
   productId: '',
   shortDescription: '',

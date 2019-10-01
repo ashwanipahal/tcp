@@ -153,7 +153,7 @@ class ProductDetailView extends React.Component {
               <ProductDescription
                 productId={itemPartNumber}
                 titleClickable={false}
-                isShowMore
+                isShowMore={false}
                 shortDescription={shortDescription}
                 longDescription={longDescription}
               />
