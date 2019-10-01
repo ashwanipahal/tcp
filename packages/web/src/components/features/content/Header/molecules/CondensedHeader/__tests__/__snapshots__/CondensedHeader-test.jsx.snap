@@ -4,25 +4,14 @@ exports[`<CondensedHeaderVanilla /> Should match snapshot correctly 1`] = `
 <Fragment>
   <Styled(Row)
     className="undefined condensed-header"
+    id="condensedHeader"
   >
-    <Styled(Row)
+    <div
       className="content-wrapper"
     >
-      <Styled(Col)
-        colSize={
-          Object {
-            "large": 2,
-            "medium": 1,
-            "small": 1,
-          }
-        }
+      <div
+        className="condensed-hamburger-menu"
       >
-        <Styled(BrandLogo)
-          alt="The Children's Place"
-          className="brand-logo-left"
-          dataLocator="global_TCPlink"
-          imgSrc="/static/images/tcp-logo.svg"
-        />
         <Styled(Image)
           alt="menu"
           className="hamburger-menu"
@@ -32,52 +21,33 @@ exports[`<CondensedHeaderVanilla /> Should match snapshot correctly 1`] = `
           src="/static/images/grey-menu.svg"
           tabIndex="0"
         />
-      </Styled(Col)>
-      <Styled(Col)
-        className="navigation"
-        colSize={
-          Object {
-            "large": 8,
-            "medium": 2,
-            "small": 2,
-          }
-        }
-        offsetLeft={
-          Object {
-            "medium": 2,
-          }
-        }
+      </div>
+      <Styled(BrandLogo)
+        alt="The Children's Place"
+        className="condensed-brand-logo"
+        dataLocator="global_TCPlink"
+        imgSrc="/static/images/tcp-logo.svg"
+      />
+      <div
+        className="condensed-navigation"
       >
-        <Styled(BrandLogo)
-          alt="The Children's Place"
-          className="brand-logo-middle"
-          dataLocator="global_TCPlink"
-          imgSrc="/static/images/tcp-logo.svg"
-        />
         <Connect(Styled(Navigation))
           closeNavigationDrawer={true}
           openNavigationDrawer={false}
         />
-      </Styled(Col)>
-      <Styled(Col)
-        className="condensed-icons"
-        colSize={
-          Object {
-            "large": 2,
-            "medium": 3,
-            "small": 3,
-          }
-        }
+      </div>
+      <div
+        className="condensed-header-icons"
       >
         <Connect(Styled(SearchBar))
-          className="rightLink"
+          className="rightLink search-icon"
           fromCondensedHeader={true}
           isSearchOpen={false}
           setSearchState={[Function]}
         />
         <Styled(Anchor)
           anchorVariation="primary"
-          className="leftLink"
+          className="user-icon-link"
           fontSizeVariation="large"
           href="#"
           noLink={true}
@@ -121,8 +91,8 @@ exports[`<CondensedHeaderVanilla /> Should match snapshot correctly 1`] = `
             0
           </Styled(BodyCopy)>
         </Styled(Anchor)>
-      </Styled(Col)>
-    </Styled(Row)>
+      </div>
+    </div>
   </Styled(Row)>
   <Connect(MiniBagContainer)
     isOpen={false}
