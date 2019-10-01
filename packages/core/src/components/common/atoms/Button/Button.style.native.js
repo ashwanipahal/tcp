@@ -7,7 +7,9 @@ import { BUTTON_VARIATION } from '.';
 const getAdditionalStyle = props => {
   const { margin } = props;
   return {
-    ...(margin && { margin }),
+    ...(margin && {
+      margin,
+    }),
   };
 };
 
@@ -205,7 +207,6 @@ const style = css`
         background-color: transparent;
          `
       : ''}
-
   ${getMobileAppFilterButtonViewStyle};
   ${getMobileAppFilterIconButtonViewStyle};
 `;
