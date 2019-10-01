@@ -1,3 +1,4 @@
+/* eslint-disable */
 import AddressBook from '../AddressBook/container/AddressBook.container';
 import AccountOverview from '../AccountOverview/container/AccountOverview.container';
 import AddEditAddress from '../AddEditAddress/container/AddEditAddress.container';
@@ -17,6 +18,7 @@ import PointHistoryPage from '../PointHistory';
 import EarnPoints from '../ExtraPoints';
 import PointsClaimPage from '../PointsClaim';
 import Orders from '../Orders';
+import FavoritesContainer from '../../browse/Favorites/container/Favorites.container';
 
 const AccountComponentMapping = {
   'address-book': AddressBook,
@@ -35,11 +37,12 @@ const AccountComponentMapping = {
   'birthday-savings': BirthdaySavingsPage,
   'edit-mailing-address': MailingInformationContainer,
   'edit-aboutyou-info': AboutYouInformationContainer,
-  'my-preference': MyPrefrenceContainer,
+  'my-preference': FavoritesContainer,
   'points-history': PointHistoryPage,
   'extra-points': EarnPoints,
   'points-claim': PointsClaimPage,
   orders: Orders,
+  favorites: FavoritesContainer,
 };
 
 export default AccountComponentMapping;
