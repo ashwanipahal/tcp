@@ -51,7 +51,9 @@ exports[`AddressTile component should renders correctly 1`] = `
           }
         }
       >
-        <div>
+        <div
+          className="default-address-label"
+        >
           <Styled(Badge)
             dataLocator="addressbook-defshippinglabel"
             showCheckmark={true}

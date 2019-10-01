@@ -2,6 +2,8 @@ package com.mobileapp;
 
 import com.facebook.react.ReactActivity;
 import com.facebook.react.ReactActivityDelegate;
+
+import android.content.Intent;
 import android.os.Bundle;
 
 public class MainActivity extends ReactActivity {
@@ -26,5 +28,11 @@ public class MainActivity extends ReactActivity {
                 return bundle;
             }
         };
+    }
+
+    @Override
+    public void onActivityResult(int requestCode, int resultCode, Intent data) {
+        super.onActivityResult(requestCode, resultCode, data);
+        MainApplication.getCallbackManager().onActivityResult(requestCode, resultCode, data);
     }
 }
