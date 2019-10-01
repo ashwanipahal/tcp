@@ -54,11 +54,22 @@ export class GooglePlacesInput extends PureComponent {
     }, 0);
   };
 
+  onPress = (data, details = null) => {
+    const { onValueChange } = this.props;
+    this.setState(
+      {
+        listViewDisplayed: false,
+      },
+      () => {
+        onValueChange(details, data.description);
+      }
+    );
+  };
+
   render() {
     const {
       headerTitle,
       componentRestrictions,
-      onValueChange,
       onSubmitEditing,
       onEndEditing,
       refs,
@@ -81,16 +92,7 @@ export class GooglePlacesInput extends PureComponent {
           fetchDetails
           renderDescription={row => row.description}
           listViewDisplayed={listViewDisplayed}
-          onPress={(data, details = null) => {
-            this.setState(
-              {
-                listViewDisplayed: false,
-              },
-              () => {
-                onValueChange(details, data.description);
-              }
-            );
-          }}
+          onPress={this.onPress}
           query={{
             key: this.googleApiKey,
             components: `country:${componentRestrictions.country[0]}`,

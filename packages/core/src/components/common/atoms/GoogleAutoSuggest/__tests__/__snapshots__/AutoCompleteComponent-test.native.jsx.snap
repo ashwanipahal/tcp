@@ -2,9 +2,7 @@
 
 exports[`AutoCompleteComponent Native should render correctly 1`] = `
 <Styled(View)>
-  <Styled(Text)
-    isFocused={false}
-  >
+  <Styled(Text)>
     test
   </Styled(Text)>
   <GooglePlacesAutocomplete
@@ -46,7 +44,6 @@ exports[`AutoCompleteComponent Native should render correctly 1`] = `
       Object {
         "components": "country:undefined",
         "key": undefined,
-        "types": "address",
       }
     }
     renderDescription={[Function]}
@@ -95,6 +92,8 @@ exports[`AutoCompleteComponent Native should render correctly 1`] = `
     textInputHide={false}
     textInputProps={
       Object {
+        "name": undefined,
+        "onBlur": [Function],
         "onChangeText": [Function],
         "onEndEditing": [Function],
         "onFocus": [Function],
