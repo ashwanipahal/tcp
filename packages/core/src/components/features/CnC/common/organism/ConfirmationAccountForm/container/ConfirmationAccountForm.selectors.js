@@ -2,17 +2,36 @@ import { createSelector } from 'reselect';
 import { getLabelValue } from '@tcp/core/src/utils';
 import { getOrderConfirmation } from '../../../../Confirmation/container/Confirmation.selectors';
 
+/**
+ * re-select selector to provide create account success value
+ */
 const getCreateAccountSuccess = createSelector(
   getOrderConfirmation,
   orderConfirmation => orderConfirmation.get('createAccountSuccess')
 );
 
+/**
+ * @function getPasswordLabels
+ * @param {Object} state
+ * @returns {Object} Provides password labels slice from bigger portion of labels state.
+ */
 const getPasswordLabels = state =>
   state.Labels && state.Labels.global && state.Labels.global.password;
+
+/**
+ * @function getRegistrationLabels
+ * @param {Object} state
+ * @returns {Object} Provides registration labels slice from bigger portion of labels state.
+ */
 
 const getRegistrationLabels = state =>
   state.Labels && state.Labels.global && state.Labels.global.registration;
 
+/**
+ * @function getConfirmationLabels
+ * @param {Object} state
+ * @returns {Object} Provides confirmation labels slice from bigger portion of labels state.
+ */
 const getConfirmationLabels = state =>
   state.Labels && state.Labels.checkout && state.Labels.checkout.orderConfirmation;
 

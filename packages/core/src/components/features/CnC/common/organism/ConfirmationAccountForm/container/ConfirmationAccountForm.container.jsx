@@ -10,10 +10,16 @@ import ConfirmationAccountForm from '../views';
 import confirmationSelectors from '../../../../Confirmation/container/Confirmation.selectors';
 import confirmationAccountSelectors from './ConfirmationAccountForm.selectors';
 
+/**
+ * @function ConfirmationAccountFormContainer
+ * @param {Object} props
+ * @return {JSX} Render Container
+ */
 export const ConfirmationAccountFormContainer = props => {
   return <ConfirmationAccountForm {...props} />;
 };
 
+/* istanbul ignore next */
 export const mapDispatchToProps = dispatch => {
   return {
     createAccountSubmit: payload => {
@@ -25,6 +31,7 @@ export const mapDispatchToProps = dispatch => {
   };
 };
 
+/* istanbul ignore next */
 const mapStateToProps = state => {
   const userInformation = confirmationSelectors.getInitialCreateAccountValues(state);
   return {

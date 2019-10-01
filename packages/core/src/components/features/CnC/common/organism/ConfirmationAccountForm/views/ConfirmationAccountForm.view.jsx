@@ -21,8 +21,20 @@ import { getIconPath } from '@tcp/core/src/utils';
 import PasswordRequirement from '@tcp/core/src/components/features/account/ResetPassword/molecules/PasswordRequirement';
 import styles from '../styles/ConfirmationAccountForm.style';
 
+/**
+ * @function renderTooltip
+ * @param {Object} labels
+ * @returns Password Requirement component to be shown in tooltip
+ */
 const renderTooltip = labels => <PasswordRequirement labels={labels} />;
 
+/**
+ * @function renderEmailAddress
+ * @param {String} emailAddress
+ * @param {Object} inputColGrid
+ * @param {String} placeHolder
+ * @returns {JSX}
+ */
 const renderEmailAddress = (emailAddress, inputColGrid, placeHolder) => {
   return emailAddress ? (
     <Col {...inputColGrid}>
@@ -65,6 +77,13 @@ const renderEmailAddress = (emailAddress, inputColGrid, placeHolder) => {
   );
 };
 
+/**
+ * @function renderNotification
+ * @param {Boolean} success
+ * @param {String} successMsg
+ * @param {String} error
+ * @returns {JSX} Notification component with error or success state as provided in the input params.
+ */
 const renderNotification = (success, successMsg, error) => {
   return (
     (error || success) && (
@@ -73,6 +92,11 @@ const renderNotification = (success, successMsg, error) => {
   );
 };
 
+/**
+ * @function ConfirmationCreateAccountForm
+ * @param {Object} Props
+ * @returns {JSX} Render method
+ */
 const ConfirmationCreateAccountForm = ({
   className,
   isPromptForUserDetails,
@@ -101,6 +125,8 @@ const ConfirmationCreateAccountForm = ({
   },
   passwordLabels,
 }) => {
+  /* Added istanbul, as method is called via redux form */
+  /* istanbul ignore next */
   const formSubmit = formValues => {
     resetAccountErrorState();
     createAccountSubmit({
@@ -334,6 +360,9 @@ ConfirmationCreateAccountForm.defaultProps = {
   passwordLabels: {},
 };
 
+/**
+ * Redux Form HOC
+ */
 const withReduxForm = reduxForm({
   form: 'ConfirmationCreateAccountForm', // a unique identifier for this form
   ...validateMethod,
@@ -341,4 +370,4 @@ const withReduxForm = reduxForm({
 })(ConfirmationCreateAccountForm);
 
 export default withStyles(withReduxForm, styles);
-export { withReduxForm as ConfirmationCreateAccountFormVanilla };
+export { ConfirmationCreateAccountForm as ConfirmationCreateAccountFormVanilla };

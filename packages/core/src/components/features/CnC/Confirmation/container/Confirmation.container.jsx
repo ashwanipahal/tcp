@@ -14,6 +14,7 @@ const ConfirmationContainer = props => {
   return <ConfirmationView {...props} />;
 };
 
+/* istanbul ignore next */
 export const mapStateToProps = state => {
   return {
     isGuest: isGuest(state),
@@ -46,4 +47,5 @@ export const mapStateToProps = state => {
   };
 };
 
+/* istanbul ignore next */
 export default connect(mapStateToProps)(ConfirmationContainer);
