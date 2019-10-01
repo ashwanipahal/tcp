@@ -135,7 +135,7 @@ export default css`
   }
 
   .gift-message {
-    width: 99%;
+    width: 98%;
     height: 146px;
     resize: none;
     font-size: ${props => props.theme.fonts.fontSize.textbox}px;
