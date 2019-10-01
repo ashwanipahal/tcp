@@ -54,7 +54,6 @@ const ListItem = props => {
   const { productInfo, colorsMap } = item;
   const { name } = productInfo;
   const { miscInfo } = colorsMap[selectedColorIndex];
-
   return (
     <ListContainer accessible>
       <RenderTopBadge1 text={badge1} />
