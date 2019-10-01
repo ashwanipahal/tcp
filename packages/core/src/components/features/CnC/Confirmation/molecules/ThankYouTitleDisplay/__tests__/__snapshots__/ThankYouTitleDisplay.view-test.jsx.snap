@@ -95,7 +95,7 @@ exports[`ThankYouTitleDisplayVanilla should render correctly 1`] = `
         link={null}
         textAlign="center"
       >
-        undefined abc@test.com undefined
+        undefined abcd@test.com undefined
       </Styled(BodyCopy)>
     </Styled(Col)>
   </Styled(Row)>

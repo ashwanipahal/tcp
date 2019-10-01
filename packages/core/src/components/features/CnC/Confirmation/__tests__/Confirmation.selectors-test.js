@@ -9,13 +9,4 @@ describe('Confirmation Selectors', () => {
     const State = { Confirmation };
     expect(ConfirmationSelectors.getOrderConfirmation(State)).toEqual(fromJS({}));
   });
-  it('#getConfirmationSummary', () => {
-    const Confirmation = fromJS({
-      orderConfirmation: {
-        summary: {},
-      },
-    });
-    const State = { Confirmation };
-    expect(ConfirmationSelectors.getConfirmationSummary(State)).toEqual(fromJS({}));
-  });
 });
