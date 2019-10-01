@@ -2,7 +2,7 @@ import styled, { css } from 'styled-components/native';
 
 const ListContainer = styled.View`
   width: 50%;
-  height: 436;
+  min-height: 412;
   background: white;
   padding: ${props => props.theme.spacing.ELEM_SPACING.SM};
 `;
@@ -86,7 +86,11 @@ const TitleText = styled.Text`
 `;
 
 const AddToBagContainer = styled.View`
-  margin-top: ${props => props.theme.spacing.ELEM_SPACING.SM};
+  margin-top: auto;
+`;
+
+const ImageSectionContainer = styled.View`
+  max-height: 205;
 `;
 
 const styles = css``;
@@ -108,4 +112,5 @@ export {
   TitleText,
   AddToBagContainer,
   OfferPriceAndFavoriteIconContainer,
+  ImageSectionContainer,
 };

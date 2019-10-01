@@ -32,6 +32,7 @@ const PromotionalMessagePostfixText = props => {
 
 const PromotionalMessageContainer = styled.View`
   ${getAdditionalStyle}
+  margin-bottom:${props => props.theme.spacing.ELEM_SPACING.SM};
 `;
 
 // Color is hard code as not in the style guide
