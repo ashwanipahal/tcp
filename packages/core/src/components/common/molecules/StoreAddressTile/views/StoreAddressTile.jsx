@@ -32,19 +32,31 @@ class StoreAddressTile extends PureComponent {
   }
 
   getDetailsTileFooter() {
-    const { labels, locatorGetDirections, openStoreDirections } = this.props;
+    const {
+      labels,
+      locatorGetDirections,
+      openStoreDirections,
+      variation,
+      isFavorite,
+      showSetFavorite,
+    } = this.props;
     return (
-      <div>
-        <Button
-          buttonVariation="fixed-width"
-          fill="BLUE"
-          type="button"
-          data-locator={locatorGetDirections}
-          onClick={openStoreDirections}
-        >
-          {labels.lbl_storelocators_landingpage_getdirections_link}
-        </Button>
-      </div>
+      <Fragment>
+        <div>
+          <Button
+            buttonVariation="fixed-width"
+            fill="BLUE"
+            type="button"
+            data-locator={locatorGetDirections}
+            onClick={openStoreDirections}
+          >
+            {labels.lbl_storelocators_landingpage_getdirections_link}
+          </Button>
+        </div>
+        <div>
+          {variation === detailsType && (!isFavorite && showSetFavorite) && this.getFavLink()}
+        </div>
+      </Fragment>
     );
   }
 
@@ -295,27 +307,24 @@ class StoreAddressTile extends PureComponent {
   }
 
   getFavLink() {
-    const { labels, setFavoriteStore, store } = this.props;
+    const { labels, setFavoriteStore, store, locatorSetFavStore } = this.props;
     return (
-      <Anchor
-        fontSizeVariation="medium"
-        underline
-        handleLinkClick={e => {
-          e.preventDefault();
+      <Button
+        buttonVariation="fixed-width"
+        type="button"
+        data-locator={locatorSetFavStore}
+        onClick={() => {
           setFavoriteStore(store);
         }}
-        anchorVariation="primary"
-        className="store-details-link"
         title={labels.lbl_storelocators_landingpage_storedetails_link}
-        noLink
       >
         {labels.lbl_storelocators_landingpage_setfavStore}
-      </Anchor>
+      </Button>
     );
   }
 
   getStoreAddress() {
-    const { store, variation, isFavorite, showSetFavorite } = this.props;
+    const { store, variation, isFavorite } = this.props;
     const { address, phone } = store.basicInfo;
     const { addressLine1, city, state, zipCode } = address;
 
@@ -342,7 +351,6 @@ class StoreAddressTile extends PureComponent {
           </div>
           <div className="address-meta__right">
             {variation === detailsType && isFavorite && this.getIsFavStoreIcon()}
-            {variation === detailsType && (!isFavorite && showSetFavorite) && this.getFavLink()}
           </div>
         </div>
       </div>

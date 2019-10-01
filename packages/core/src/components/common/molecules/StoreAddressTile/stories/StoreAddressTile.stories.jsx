@@ -10,6 +10,9 @@ storeMockNotGym.isGym = false;
 
 storiesOf('StoreAddressTile', module)
   .add('Store Details - No Favorite', () => <StoreAddressTile labels={labels} store={storeMock} />)
+  .add('Store Details - Show Set Fav', () => (
+    <StoreAddressTile labels={labels} store={storeMock} showSetFavorite />
+  ))
   .add('Store Details - Favorite', () => (
     <StoreAddressTile isFavorite labels={labels} store={storeMock} />
   ))
