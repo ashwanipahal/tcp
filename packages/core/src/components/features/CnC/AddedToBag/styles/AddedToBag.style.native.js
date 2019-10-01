@@ -1,5 +1,4 @@
 import styled from 'styled-components';
-import { Platform } from 'react-native';
 
 export const StyledAnchorWrapper = styled.View`
   text-align: center;
@@ -32,12 +31,10 @@ export const StyledWrapper = styled.View`
   background-color: ${props => props.theme.colors.WHITE};
 `;
 
-export const RowWrapper = styled.View`
-  margin: ${Platform.OS === 'ios'
-      ? props => props.theme.spacing.ELEM_SPACING.XXXL
-      : props => props.theme.spacing.ELEM_SPACING.MED}
-    ${props => props.theme.spacing.ELEM_SPACING.LRG} 0
-    ${props => props.theme.spacing.ELEM_SPACING.LRG};
+export const RowWrapper = styled.SafeAreaView`
+  margin: ${props => props.theme.spacing.ELEM_SPACING.MED}
+    ${props => props.theme.spacing.ELEM_SPACING.MED} 0
+    ${props => props.theme.spacing.ELEM_SPACING.MED};
   flex-direction: row;
 `;
 
