@@ -8,6 +8,13 @@ const styles = css`
     padding-bottom: ${props => props.theme.spacing.ELEM_SPACING.XXL};
   }
 
+  .email-address {
+    padding-bottom: ${props => props.theme.spacing.ELEM_SPACING.LRG};
+    @media ${props => props.theme.mediaQuery.smallMax} {
+      padding-bottom: 0;
+    }
+  }
+
   .password-container {
     position: relative;
 

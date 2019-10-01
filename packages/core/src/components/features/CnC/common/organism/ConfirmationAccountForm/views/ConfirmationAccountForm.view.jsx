@@ -38,7 +38,7 @@ const renderTooltip = labels => <PasswordRequirement labels={labels} />;
 const renderEmailAddress = (emailAddress, inputColGrid, placeHolder) => {
   return emailAddress ? (
     <Col {...inputColGrid}>
-      <BodyCopy component="div">
+      <BodyCopy component="div" className="email-address">
         <BodyCopy
           component="p"
           textAlign="center"
