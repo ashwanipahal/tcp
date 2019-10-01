@@ -7,7 +7,7 @@ describe('ModuleD component', () => {
   let ModuleDComp;
 
   beforeEach(() => {
-    const wrapper = shallow(<ModuleD {...mock.moduleD.composites} />).get(0);
+    const wrapper = shallow(<ModuleD {...mock.composites} />).get(0);
     ModuleDComp = shallow(wrapper);
   });
 

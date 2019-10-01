@@ -11,7 +11,7 @@ describe('ModuleH Links Component', () => {
     };
     const props = {
       currentIndex,
-      dataCTALinks: mock.moduleH.composites.divCTALinks,
+      dataCTALinks: mock.composites.divCTALinks,
     };
     const ModuleHCTALinksComp = shallow(<ModuleHCTALinks {...props} />);
     expect(ModuleHCTALinksComp).toMatchSnapshot();
@@ -24,7 +24,7 @@ describe('ModuleH Links Component', () => {
     };
     const props = {
       currentIndex,
-      dataCTALinks: mock.moduleH.composites.divCTALinks,
+      dataCTALinks: mock.composites.divCTALinks,
     };
     const ModuleHCTALinksComp = shallow(<ModuleHCTALinks {...props} />);
     expect(ModuleHCTALinksComp.find('.moduleH__CTALink')).toHaveLength(5);

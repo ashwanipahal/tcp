@@ -11,7 +11,7 @@ describe('ModuleH component', () => {
   beforeEach(() => {
     const wrapper = shallow(
       <ModuleH
-        {...mock.moduleH.composites}
+        {...mock.composites}
         accessibility={{ playIconButton: 'Play', pauseIconButton: 'Pause' }}
       />
     ).get(0);

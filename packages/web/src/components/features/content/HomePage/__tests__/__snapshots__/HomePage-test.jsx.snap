@@ -1,0 +1,11 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`HomePageViewVanilla should render correctly 1`] = `
+<loading
+  error={[Error: Not supported]}
+  isLoading={false}
+  pastDelay={false}
+  retry={[Function]}
+  timedOut={false}
+/>
+`;

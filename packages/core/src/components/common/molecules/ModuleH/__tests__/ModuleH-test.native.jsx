@@ -8,7 +8,7 @@ import mock from '../../../../../services/abstractors/common/moduleH/mock';
 describe('ModuleH component', () => {
   let ModuleHComponent;
   beforeEach(() => {
-    ModuleHComponent = shallow(<ModuleH {...mock.moduleH.composites} />);
+    ModuleHComponent = shallow(<ModuleH {...mock.composites} />);
   });
 
   it('renders correctly', () => {
