@@ -14,9 +14,6 @@ import {
   InputFieldHalf,
   StateZipCodeContainer,
   Separator,
-  GooglePlaceInputWrapper,
-  AddressSecondWrapper,
-  HiddenAddressLineWrapper,
 } from '../styles/AddressFields.style.native';
 import { HiddenStateWrapper } from '../../../organisms/AddressForm/AddressForm.native.style';
 import {
@@ -93,9 +90,8 @@ export class AddressFields extends React.PureComponent {
 
   componentDidMount() {
     const { country } = this.state;
-    const { dispatch, formName, formSection, initialValues } = this.props;
+    const { dispatch, formName, formSection } = this.props;
     dispatch(change(formName, `${formSection}.country`, country));
-    dispatch(change(formName, `${formSection}.addressLine1`, initialValues.addressLine1));
   }
 
   handlePlaceSelected = (place, inputValue) => {
@@ -106,7 +102,6 @@ export class AddressFields extends React.PureComponent {
     dispatch(change(formName, `${formSection}.state`, address.state));
     dispatch(change(formName, `${formSection}.addressLine1`, address.street));
     this.setState({ dropDownItem: address.state });
-    this.locationRef.setAddressText(address.street);
   };
 
   getInitialAddressLine1 = initialValues => {
@@ -161,46 +156,25 @@ export class AddressFields extends React.PureComponent {
             />
           </>
         )}
-        <GooglePlaceInputWrapper>
-          <Field
-            headerTitle={addressFormLabels.addressLine1}
-            component={GooglePlacesInput}
-            onValueChange={(data, inputValue) => {
-              this.handlePlaceSelected(data, inputValue);
-            }}
-            onChangeText={text => {
-              setTimeout(() => {
-                dispatch(change(formName, `${formSection}.addressLine1`, text));
-              });
-            }}
-            refs={instance => {
-              this.locationRef = instance;
-            }}
-            initialValue={this.getInitialAddressLine1(initialValues)}
-            dataLocator="addnewaddress-addressl1"
-            componentRestrictions={{ ...{ country: [country] } }}
-          />
-        </GooglePlaceInputWrapper>
-
-        <HiddenAddressLineWrapper>
-          <Field
-            label=""
-            component={TextBox}
-            title=""
-            type="hidden"
-            id="addressLine1"
-            name="addressLine1"
-          />
-        </HiddenAddressLineWrapper>
-        <AddressSecondWrapper>
-          <Field
-            id="addressLine2"
-            name="addressLine2"
-            label={addressFormLabels.addressLine2}
-            component={TextBox}
-            dataLocator="addnewaddress-addressl2"
-          />
-        </AddressSecondWrapper>
+        <Field
+          headerTitle={addressFormLabels.addressLine1}
+          component={GooglePlacesInput}
+          onValueChange={(data, inputValue) => {
+            this.handlePlaceSelected(data, inputValue);
+          }}
+          initialValue={this.getInitialAddressLine1(initialValues)}
+          dataLocator="addnewaddress-addressl1"
+          componentRestrictions={{ ...{ country: [country] } }}
+          id="addressLine1"
+          name="addressLine1"
+        />
+        <Field
+          id="addressLine2"
+          name="addressLine2"
+          label={addressFormLabels.addressLine2}
+          component={TextBox}
+          dataLocator="addnewaddress-addressl2"
+        />
         <Field
           id="city"
           name="city"

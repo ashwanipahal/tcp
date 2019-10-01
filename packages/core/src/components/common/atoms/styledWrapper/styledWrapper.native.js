@@ -64,3 +64,10 @@ export const ViewWithSpacing = styled.View`
 export const TextWithSpacing = styled.Text`
   ${getSpacingStyles}
 `;
+
+export const StyledErrorWrapper = styled.View`
+  margin-top: ${props => props.theme.spacing.ELEM_SPACING.SM};
+  display: flex;
+  flex-direction: row;
+  align-items: flex-start;
+`;
