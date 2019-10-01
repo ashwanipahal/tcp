@@ -1,6 +1,6 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import { BodyCopy } from '@tcp/core/src/components/common/atoms';
+import { BodyCopy, Row, Col } from '@tcp/core/src/components/common/atoms';
 import withStyles from '@tcp/core/src/components/common/hoc/withStyles';
 import styles from '../styles/OrderDetails.style';
 
@@ -22,15 +22,64 @@ const OrderDetailsView = ({ className }) => {
   return (
     <div className={className}>
       <FormPageHeadingComponent heading="ORDER DETAILS" />
-      <BodyCopy
-        fontSize="fs18"
-        fontWeight="semibold"
-        textAlign="center"
-        fontFamily="secondary"
-        className="morePointsWrapper"
-      >
-        testing order listing page
-      </BodyCopy>
+      <Row className="elem-mt-XL">
+        <Col colSize={{ large: 6, medium: 4, small: 6 }}>
+          <Row>
+            <Col colSize={{ large: 6, medium: 8, small: 6 }}>
+              <BodyCopy component="div">
+                <BodyCopy
+                  fontSize="fs14"
+                  fontWeight="semibold"
+                  fontFamily="secondary"
+                  className="elem-mb-MED"
+                >
+                  Order Number
+                </BodyCopy>
+                <BodyCopy fontSize="fs14" fontWeight="extrabold" fontFamily="secondary">
+                  257332628
+                </BodyCopy>
+              </BodyCopy>
+              <BodyCopy component="div" className="elem-mt-XL">
+                <BodyCopy
+                  fontSize="fs14"
+                  fontWeight="semibold"
+                  fontFamily="secondary"
+                  className="elem-mb-MED"
+                >
+                  Order Date
+                </BodyCopy>
+                <BodyCopy fontSize="fs14" fontFamily="secondary">
+                  July 19, 2019 at 5:12am
+                </BodyCopy>
+              </BodyCopy>
+            </Col>
+            <Col colSize={{ large: 6, medium: 8, small: 6 }}>
+              <BodyCopy component="div">
+                <BodyCopy fontSize="fs14" fontWeight="semibold" fontFamily="secondary">
+                  Shipping
+                </BodyCopy>
+                <BodyCopy fontSize="fs14" fontFamily="secondary">
+                  Address
+                </BodyCopy>
+              </BodyCopy>
+            </Col>
+          </Row>
+        </Col>
+        <Col colSize={{ large: 6, medium: 4, small: 6 }}>
+          <Row>
+            <Col colSize={{ large: 6, medium: 8, small: 6 }}>
+              <BodyCopy fontSize="fs14" fontWeight="semibold" fontFamily="secondary">
+                Billing
+              </BodyCopy>
+            </Col>
+            <Col colSize={{ large: 6, medium: 8, small: 6 }}>
+              <BodyCopy fontSize="fs14" fontWeight="semibold" fontFamily="secondary">
+                Order Summary
+              </BodyCopy>
+            </Col>
+          </Row>
+        </Col>
+      </Row>
     </div>
   );
 };

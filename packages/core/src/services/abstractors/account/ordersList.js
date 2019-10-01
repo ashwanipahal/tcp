@@ -1,3 +1,4 @@
+import config from '@tcp/core/src/utils/config/config';
 import { executeStatefulAPICall } from '../../handler';
 import endpoints from '../../endpoints';
 import { orderConfig, API_CONFIG } from '../../config';
@@ -113,7 +114,7 @@ export const getOrderHistory = (siteId, currentSiteId) => {
  */
 
 /* eslint-disable complexity */
-
+// eslint-disable-next-line sonarjs/cognitive-complexity
 export const getOrderInfoByOrderId = updatedPayload => {
   const payload = {
     header: {
@@ -126,10 +127,10 @@ export const getOrderInfoByOrderId = updatedPayload => {
   if (!updatedPayload.isGuest) {
     payload.header.fromPage = 'orderHistory';
   }
-
   return executeStatefulAPICall(payload)
     .then(res => {
       const giftCardType = 'Gift Card';
+      const OrderShippedKey = 'Order Shipped';
       const { orderDetails } = res.body.orderLookupResponse;
       const orderShipping = res.body.orderLookupResponse.orderSummary.shippingAddress;
       const orderBillingAddress = res.body.orderLookupResponse.orderSummary.billingAddress;
@@ -185,7 +186,7 @@ export const getOrderInfoByOrderId = updatedPayload => {
       // Object used to prevent duplicates
       const shipmentsObj = {};
       shippedItems.forEach(item => {
-        if (item.trackingInfo.length === 0 && orderDetails.orderStatus === 'Order Shipped') {
+        if (item.trackingInfo.length === 0 && orderDetails.orderStatus === OrderShippedKey) {
           item.trackingInfo.push({
             trackingNbr: 'N/A',
             trackingUrl: 'N/A',
@@ -193,11 +194,10 @@ export const getOrderInfoByOrderId = updatedPayload => {
             quantity: item.quantity,
           });
         }
-
         item.trackingInfo.forEach(shipment => {
           if (
-            orderStatusMapper(shipment.status) === 'lbl_orders_statusOrderShipped' ||
-            orderStatusMapper(shipment.status) === 'lbl_orders_statusOrderPartiallyShipped'
+            shipment.status === OrderShippedKey ||
+            shipment.status === 'Order Partially Shipped'
           ) {
             const key = shipment.trackingNbr;
             const items = (shipmentsObj[key] && shipmentsObj[key].items) || [];
@@ -215,7 +215,7 @@ export const getOrderInfoByOrderId = updatedPayload => {
               trackingNumber: shipment.trackingNbr,
               trackingUrl: sanitizeEntity(shipment.trackingUrl),
               shippedDate: shipment.shipDate,
-              status: 'order shipped',
+              status: OrderShippedKey,
               items,
             };
           }
@@ -239,10 +239,7 @@ export const getOrderInfoByOrderId = updatedPayload => {
             if (item.trackingInfo && item.trackingInfo.length > 0) {
               item.trackingInfo
                 .filter(
-                  v =>
-                    v &&
-                    orderStatusMapper(v.status) !== 'lbl_orders_statusOrderShipped' &&
-                    orderStatusMapper(v.status) !== 'lbl_orders_statusOrderPartiallyShipped'
+                  v => v && v.status !== OrderShippedKey && v.status !== 'Order Partially Shipped'
                 )
                 .forEach(({ trackingUrl, trackingNbr: trackingNumber }) => {
                   if (!trackingInfo[trackingUrl]) {
@@ -311,7 +308,7 @@ export const getOrderInfoByOrderId = updatedPayload => {
         status:
           orderDetails.orderType === config.ORDER_ITEM_TYPE.BOSS
             ? orderDetails.orderStatus
-            : orderStatusMapping(orderDetails.orderStatus).replace('-', ' '),
+            : orderStatusMapper[orderDetails.orderStatus],
         trackingNumber: orderDetails.tracking,
         trackingUrl:
           orderDetails.trackingUrl !== 'N/A' ? sanitizeEntity(orderDetails.trackingUrl) : '#',
@@ -422,6 +419,4 @@ export const getOrderInfoByOrderId = updatedPayload => {
     });
 };
 
-export default {
-  getOrderHistory,
-};
+export default { getOrderHistory };
