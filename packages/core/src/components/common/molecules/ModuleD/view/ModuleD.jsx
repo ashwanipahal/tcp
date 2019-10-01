@@ -114,15 +114,14 @@ const ModuleD = ({ className, headerText, promoBanner, smallCompImage, singleCTA
       </Row>
       {singleCTAButton && (
         <Row centered>
-          <Anchor href={singleCTAButton.url} target={singleCTAButton.target}>
-            <Button
-              buttonVariation="fixed-width"
-              className="moduleD_button"
-              data-locator={getLocator('moduleD_button')}
-            >
-              {singleCTAButton.text}
-            </Button>
-          </Anchor>
+          <Button
+            buttonVariation="fixed-width"
+            className="moduleD_button"
+            data-locator={getLocator('moduleD_button')}
+            cta={singleCTAButton}
+          >
+            {singleCTAButton.text}
+          </Button>
         </Row>
       )}
     </Grid>

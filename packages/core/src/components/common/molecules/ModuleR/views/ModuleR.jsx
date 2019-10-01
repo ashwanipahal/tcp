@@ -152,17 +152,14 @@ class ModuleR extends React.PureComponent {
           }}
         >
           {currentSingleCTAButton ? (
-            <Anchor
-              noLink
-              to={currentSingleCTAButton.url}
-              target={currentSingleCTAButton.target}
-              asPath={currentSingleCTAButton.url}
+            <Button
               dataLocator={getLocator('moduleR_cta_btn')}
+              buttonVariation="fixed-width"
+              className="cta-btn"
+              cta={currentSingleCTAButton}
             >
-              <Button buttonVariation="fixed-width" className="cta-btn">
-                {currentSingleCTAButton.text}
-              </Button>
-            </Anchor>
+              {currentSingleCTAButton.text}
+            </Button>
           ) : null}
         </Col>
       </Row>

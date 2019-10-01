@@ -95,7 +95,7 @@ class Recommendations extends Component {
 
     return (
       products &&
-      products.length && (
+      products.length > 0 && (
         <React.Fragment>
           <Heading
             variant="h4"
