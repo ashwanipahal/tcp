@@ -44,11 +44,31 @@ const styles = css`
   .toolTip {
     margin-left: ${props => props.theme.spacing.APP_LAYOUT_SPACING.XXS};
   }
+
+  @media ${props => props.theme.mediaQuery.medium} {
+    .align-product-img {
+      width: auto;
+    }
+  }
+
   @media ${props => props.theme.mediaQuery.medium} {
     .checkout-cart-list-shipping {
       margin-left: 0;
       margin-right: 0;
       width: 100%;
+    }
+    .cart-item-tile-container {
+      .bag-product-detail-wrapper {
+        width: 60%;
+      }
+      .tile-header {
+        padding-left: 0px;
+      }
+      .align-product-img {
+        margin-right: 0px;
+        justify-content: center;
+        align-items: center;
+      }
     }
   }
   @media ${props => props.theme.mediaQuery.smallMax} {
@@ -70,6 +90,9 @@ const styles = css`
       }
       .bag-product-detail-wrapper {
         width: 60%;
+      }
+      .tile-header {
+        padding-left: 0px;
       }
     }
   }
