@@ -46,7 +46,7 @@ const validateStartVal = start => {
   return !Number.isNaN(start) ? start : 0;
 };
 
-export class ProductsDynamicAbstractor {
+class ProductsDynamicAbstractor {
   constructor() {
     this.apiHelper = apiHelper;
     this.unbxdId = null;

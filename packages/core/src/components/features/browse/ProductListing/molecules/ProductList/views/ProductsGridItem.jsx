@@ -113,14 +113,10 @@ class ProductsGridItem extends React.PureComponent {
       isLoggedIn,
     } = this.props;
     const { selectedColorProductId } = this.state;
-    // this.setError();
-    console.log('isLoggedIn', isLoggedIn);
-    console.log('isClient()', isClient());
     onAddItemToFavorites({ colorProductId: selectedColorProductId || generalProductId });
     if (isClient() && isLoggedIn) {
       this.setState({ isInDefaultWishlist: true });
     }
-    // .catch(err => this.setError(err));
   };
 
   renderQuickViewCardOrLink = () => {};
