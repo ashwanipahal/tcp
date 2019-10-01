@@ -45,7 +45,7 @@ exports[`ConfirmationAccountForm component should render component correctly 1`]
         }
       >
         <Styled(BodyCopy)
-          className={null}
+          className="email-address"
           color="text.primary"
           component="div"
           fontFamily="primary"
@@ -790,7 +790,7 @@ exports[`ConfirmationAccountForm component should render component correctly wit
         }
       >
         <Styled(BodyCopy)
-          className={null}
+          className="email-address"
           color="text.primary"
           component="div"
           fontFamily="primary"
@@ -1531,7 +1531,7 @@ exports[`ConfirmationAccountForm component should render component correctly wit
         }
       >
         <Styled(BodyCopy)
-          className={null}
+          className="email-address"
           color="text.primary"
           component="div"
           fontFamily="primary"
@@ -4631,7 +4631,7 @@ exports[`ConfirmationAccountForm component should render component correctly wit
         }
       >
         <Styled(BodyCopy)
-          className={null}
+          className="email-address"
           color="text.primary"
           component="div"
           fontFamily="primary"
