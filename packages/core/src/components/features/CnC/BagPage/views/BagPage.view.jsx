@@ -12,6 +12,7 @@ import CnCTemplate from '../../common/organism/CnCTemplate';
 import BAGPAGE_CONSTANTS from '../BagPage.constants';
 import styles, { addedToBagActionsStyles } from '../styles/BagPage.style';
 import { isClient } from '../../../../../utils';
+import BagPageUtils from './Bagpage.utils';
 
 class BagPageView extends React.Component {
   constructor(props) {
@@ -77,33 +78,19 @@ class BagPageView extends React.Component {
     this.bagCondensedHeader = ref;
   }
 
-  getStickyPosition = () => {
-    const header = this.bagPageHeader;
-    return header && header.offsetTop;
-  };
-
-  getStickyPositionCheckoutCta = () => {
-    const checkoutCta = this.bagActionsContainer;
-    return checkoutCta && checkoutCta.offsetTop;
-  };
-
-  bindScrollEvent = callBack => {
-    window.addEventListener('scroll', throttle(callBack, 100));
-  };
-
   addScrollListener = () => {
-    const checkoutCtaStickyPos = this.getStickyPositionCheckoutCta();
-    this.bindScrollEvent(this.handleBagHeaderScroll.bind(this, checkoutCtaStickyPos));
+    const checkoutCtaStickyPos = BagPageUtils.getElementStickyPosition(this.bagActionsContainer);
+    BagPageUtils.bindScrollEvent(this.handleBagHeaderScroll.bind(this, checkoutCtaStickyPos));
   };
 
   addScrollListenerMobileHeader = () => {
-    const stickyPos = this.getStickyPosition();
-    this.bindScrollEvent(this.handleScroll.bind(this, stickyPos));
+    const stickyPos = BagPageUtils.getElementStickyPosition(this.bagPageHeader);
+    BagPageUtils.bindScrollEvent(this.handleScroll.bind(this, stickyPos));
   };
 
   removeScrollListener = () => {
-    const stickyPos = this.getStickyPosition();
-    const checkoutCtaStickyPos = this.getStickyPositionCheckoutCta();
+    const stickyPos = BagPageUtils.getElementStickyPosition(this.bagPageHeader);
+    const checkoutCtaStickyPos = BagPageUtils.getElementStickyPosition(this.bagActionsContainer);
     window.removeEventListener('scroll', throttle(this.handleScroll.bind(this, stickyPos), 100));
     window.removeEventListener(
       'scroll',
@@ -111,16 +98,10 @@ class BagPageView extends React.Component {
     );
   };
 
-  getPageLevelHeaderHeight = () => {
-    return document.getElementsByClassName('condensed-header')[0]
-      ? document.getElementsByClassName('condensed-header')[0].offsetHeight
-      : 0;
-  };
-
   handleScroll = sticky => {
     const { bagStickyHeaderInterval } = this.props;
     const condensedBagHeader = this.bagPageHeader;
-    const condensedPageHeaderHeight = this.getPageLevelHeaderHeight();
+    const condensedPageHeaderHeight = BagPageUtils.getPageLevelHeaderHeight();
     if (isClient() && window.pageYOffset > sticky - condensedPageHeaderHeight) {
       condensedBagHeader.style.top = `${condensedPageHeaderHeight.toString()}px`;
       this.setState({ showStickyHeaderMob: true });
@@ -137,7 +118,7 @@ class BagPageView extends React.Component {
   };
 
   handleBagHeaderScroll = sticky => {
-    const condensedPageHeaderHeight = this.getPageLevelHeaderHeight();
+    const condensedPageHeaderHeight = BagPageUtils.getPageLevelHeaderHeight();
     if (isClient() && window.pageYOffset > sticky + 30) {
       this.setState({ showCondensedHeader: true }, () => {
         this.bagCondensedHeader.firstElementChild.style.top = `${condensedPageHeaderHeight.toString()}px`;
