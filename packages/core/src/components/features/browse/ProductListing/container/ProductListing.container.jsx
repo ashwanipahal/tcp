@@ -26,7 +26,11 @@ import {
   getLabels,
 } from './ProductListing.selectors';
 import submitProductListingFiltersForm from './productListingOnSubmitHandler';
-import { isPlccUser, getUserLoggedInState } from '../../../account/User/container/User.selectors';
+import {
+  isPlccUser,
+  getUserLoggedInState,
+  isRememberedUser,
+} from '../../../account/User/container/User.selectors';
 import getSortLabels from '../molecules/SortSelector/views/Sort.selectors';
 import { getIsPickupModalOpen } from '../../../../common/organisms/PickupStoreModal/container/PickUpStoreModal.selectors';
 
@@ -80,6 +84,7 @@ class ProductListingContainer extends React.PureComponent {
       formValues,
       sortLabels,
       slpLabels,
+      isLoggedIn,
       ...otherProps
     } = this.props;
     return (
@@ -105,6 +110,7 @@ class ProductListingContainer extends React.PureComponent {
         formValues={formValues}
         sortLabels={sortLabels}
         slpLabels={slpLabels}
+        isLoggedIn={isLoggedIn}
         {...otherProps}
       />
     );
@@ -157,6 +163,7 @@ function mapStateToProps(state) {
     sortLabels: getSortLabels(state),
     slpLabels: getLabels(state),
     isGuest: getUserLoggedInState(state),
+    isLoggedIn: getUserLoggedInState(state) && !isRememberedUser(state),
   };
 }
 
@@ -206,6 +213,7 @@ ProductListingContainer.propTypes = {
   }).isRequired,
   sortLabels: PropTypes.arrayOf(PropTypes.shape({})),
   slpLabels: PropTypes.objectOf(PropTypes.oneOfType([PropTypes.string])),
+  isLoggedIn: PropTypes.bool,
 };
 
 ProductListingContainer.defaultProps = {
@@ -225,6 +233,7 @@ ProductListingContainer.defaultProps = {
   lastLoadedPageNumber: 0,
   sortLabels: [],
   slpLabels: {},
+  isLoggedIn: false,
 };
 
 export default withRouter(

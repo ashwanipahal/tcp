@@ -9,6 +9,10 @@ import {
 import ProductAbstractor from '../../../../../services/abstractors/productListing';
 import ProductsOperator from './productsRequestFormatter';
 import getProductsUserCustomInfo from '../../../../../services/abstractors/productListing/defaultWishlist';
+import {
+  getUserLoggedInState,
+  isRememberedUser,
+} from '../../../account/User/container/User.selectors';
 
 const instanceProductListing = new ProductAbstractor();
 const operatorInstance = new ProductsOperator();
@@ -44,8 +48,8 @@ export function* fetchPlpProducts({ payload }) {
       if (plpProducts) {
         operatorInstance.updateBucketingConfig(plpProducts);
         const products = plpProducts.loadedProductsPages[0];
-        const isGuest = false;
-        const isRemembered = false;
+        const isGuest = !getUserLoggedInState(state);
+        const isRemembered = isRememberedUser(state);
         if (!isGuest && !isRemembered) {
           const generalProductIdsList = products.map(
             product => product.productInfo.generalProductId
@@ -55,8 +59,8 @@ export function* fetchPlpProducts({ payload }) {
             generalProductIdsList,
             products
           );
-          yield put(setListingFirstProductsPage({ ...plpProducts }));
         }
+        yield put(setListingFirstProductsPage({ ...plpProducts }));
       }
     }
     yield put(setPlpLoadingState({ isLoadingMore: false, isScrollToTop: false }));
@@ -94,8 +98,8 @@ export function* fetchMoreProducts({ payload = {} }) {
             generalProductIdsList,
             products
           );
-          yield put(setPlpProducts({ ...plpProducts }));
         }
+        yield put(setPlpProducts({ ...plpProducts }));
       }
     }
     yield put(setPlpLoadingState({ isLoadingMore: false }));

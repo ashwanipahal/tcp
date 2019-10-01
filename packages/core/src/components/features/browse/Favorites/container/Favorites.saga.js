@@ -3,7 +3,7 @@ import logger from '@tcp/core/src/utils/loggerInstance';
 import FAVORITES_CONSTANTS from './Favorites.constants';
 import { setWishlistState } from './Favorites.actions';
 import addItemsToWishlistAbstractor from '../../../../../services/abstractors/productListing/favorites';
-import getUserLoggedInState from '../../../account/User/container/User.selectors';
+import { getUserLoggedInState } from '../../../account/User/container/User.selectors';
 
 export function* addItemsToWishlist({ payload }) {
   const { colorProductId } = payload;
