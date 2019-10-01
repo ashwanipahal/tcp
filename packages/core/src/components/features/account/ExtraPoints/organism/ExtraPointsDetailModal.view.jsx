@@ -31,6 +31,11 @@ class ExtraPointsDetailModal extends React.PureComponent {
     onRequestClose(null);
   };
 
+  /**
+   * @function ctaTo  to get the route to CTA url based on activityModalAction
+   * @param    {Object} activeActivity The activity details of waysToEarn
+   * @returns  {String} to path for CTA anchor
+   */
   ctaTo = activeActivity => {
     switch (activeActivity.activityModalAction) {
       case 'rewardPlaceApp':
@@ -54,6 +59,11 @@ class ExtraPointsDetailModal extends React.PureComponent {
     }
   };
 
+  /**
+   * @function ctaPath  to get the path of CTA url based on activityModalAction
+   * @param    {Object} activeActivity The activity details of waysToEarn
+   * @returns  {String} to ecxact redirect path of CTA anchor
+   */
   ctaPath = activeActivity => {
     switch (activeActivity.activityModalAction) {
       case 'rewardPlaceApp':
