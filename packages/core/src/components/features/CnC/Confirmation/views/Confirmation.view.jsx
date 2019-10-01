@@ -10,6 +10,7 @@ import ThankYouComponent from '../organisms/ThankYouComponent';
 import CONFIRMATION_CONSTANTS from '../Confirmation.constants';
 import VenmoConfirmation from '../../common/molecules/VenmoConfirmation';
 import { constants as VenmoConstants } from '../../../../common/atoms/VenmoPaymentButton/container/VenmoPaymentButton.util';
+import ConfirmationAccountFormContainer from '../../common/organism/ConfirmationAccountForm';
 
 /** The hard coded values are just to show the template. these will be removed once the components are are in place */
 /**
@@ -40,6 +41,18 @@ const checkIfNotShippingFullName = ({ orderNumbersByFullfillmentCenter }) => {
  */
 const checkIffullfillmentCenterMap = orderNumbersByFullfillmentCenter => {
   return orderNumbersByFullfillmentCenter && orderNumbersByFullfillmentCenter.fullfillmentCenterMap;
+};
+
+const renderAccountForm = isGuest => {
+  return (
+    isGuest && (
+      <Row fullBleed>
+        <Col colSize={{ small: 6, medium: 8, large: 12 }}>
+          <ConfirmationAccountFormContainer />
+        </Col>
+      </Row>
+    )
+  );
 };
 
 /** The hard coded values are just to show the template. these will be removed once the components are are in place */
@@ -135,6 +148,7 @@ const ConfirmationView = ({
           <div>LOYALTY BANNER</div>
         </Col>
       </Row>
+      {renderAccountForm(isGuest)}
       <CheckoutOrderInfo isConfirmationPage />
     </div>
   );

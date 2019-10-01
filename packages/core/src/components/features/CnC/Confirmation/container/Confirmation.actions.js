@@ -83,3 +83,11 @@ export function setUpdateOrderDetailsData(payload) {
     type: CONFIRMATION_CONSTANTS.CONFIRMATION_SET_UPDATE_ORDER_DETAILS,
   };
 }
+/**
+ * @function setCreateAccountSuccess
+ * action creator for type: CONFIRMATION_SET_CREATE_ACCOUNT_SUCCESS
+ */
+export const setCreateAccountSuccess = payload => ({
+  type: CONFIRMATION_CONSTANTS.CONFIRMATION_SET_CREATE_ACCOUNT_SUCCESS,
+  payload,
+});

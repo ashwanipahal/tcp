@@ -89,6 +89,21 @@ exports[`ConfirmationViewVanilla should render correctly 1`] = `
       </div>
     </Styled(Col)>
   </Styled(Row)>
+  <Styled(Row)
+    fullBleed={true}
+  >
+    <Styled(Col)
+      colSize={
+        Object {
+          "large": 12,
+          "medium": 8,
+          "small": 6,
+        }
+      }
+    >
+      <Connect(ConfirmationAccountFormContainer) />
+    </Styled(Col)>
+  </Styled(Row)>
   <Styled(CheckoutOrderInfo)
     isConfirmationPage={true}
   />
@@ -191,6 +206,21 @@ exports[`ConfirmationViewVanilla should render correctly with venmo payment prog
       </div>
     </Styled(Col)>
   </Styled(Row)>
+  <Styled(Row)
+    fullBleed={true}
+  >
+    <Styled(Col)
+      colSize={
+        Object {
+          "large": 12,
+          "medium": 8,
+          "small": 6,
+        }
+      }
+    >
+      <Connect(ConfirmationAccountFormContainer) />
+    </Styled(Col)>
+  </Styled(Row)>
   <Styled(CheckoutOrderInfo)
     isConfirmationPage={true}
   />
@@ -291,6 +321,21 @@ exports[`ConfirmationViewVanilla should render correctly without order details 1
       <div>
         LOYALTY BANNER
       </div>
+    </Styled(Col)>
+  </Styled(Row)>
+  <Styled(Row)
+    fullBleed={true}
+  >
+    <Styled(Col)
+      colSize={
+        Object {
+          "large": 12,
+          "medium": 8,
+          "small": 6,
+        }
+      }
+    >
+      <Connect(ConfirmationAccountFormContainer) />
     </Styled(Col)>
   </Styled(Row)>
   <Styled(CheckoutOrderInfo)

@@ -3,10 +3,11 @@ import ConfirmationReducer from '../container/Confirmation.reducer';
 import CONFIRMATION_CONSTANTS from '../Confirmation.constants';
 
 describe('ConfirmationReducer', () => {
-  const initialState = fromJS({
+  const initState = {
     orderConfirmation: {
       emailAddress: '',
       encryptedEmailAddress: '',
+      createAccountSuccess: false,
       summary: {
         itemsTotal: 0,
         itemsCount: 0,
@@ -33,7 +34,8 @@ describe('ConfirmationReducer', () => {
     aquiredCouponCode: [],
     updateOrderDetails: null,
     venmoPaymentConfirmationDisplayed: false,
-  });
+  };
+  const initialState = fromJS(initState);
 
   it('should return initialState', () => {
     expect(ConfirmationReducer(initialState, { type: 'abc' })).toEqual(initialState);
@@ -91,6 +93,7 @@ describe('ConfirmationReducer', () => {
         orderConfirmation: {
           emailAddress: '',
           encryptedEmailAddress: '',
+          createAccountSuccess: false,
           summary: {
             itemsTotal: 0,
             itemsCount: 0,
@@ -158,6 +161,7 @@ describe('ConfirmationReducer', () => {
         orderConfirmation: {
           emailAddress: '',
           encryptedEmailAddress: '',
+          createAccountSuccess: false,
           summary: {
             itemsTotal: 0,
             itemsCount: 0,
@@ -213,6 +217,7 @@ describe('ConfirmationReducer', () => {
         orderConfirmation: {
           emailAddress: '',
           encryptedEmailAddress: '',
+          createAccountSuccess: false,
           summary: {
             couponsTotal: 0,
             giftCardsTotal: 0,
@@ -256,6 +261,7 @@ describe('ConfirmationReducer', () => {
         orderConfirmation: {
           emailAddress: '',
           encryptedEmailAddress: '',
+          createAccountSuccess: false,
           summary: {
             itemsTotal: 0,
             itemsCount: 0,
@@ -284,5 +290,14 @@ describe('ConfirmationReducer', () => {
         venmoPaymentConfirmationDisplayed: false,
       })
     );
+  });
+
+  it('should set the createAccountSuccess state to true', () => {
+    expect(
+      ConfirmationReducer(initialState, {
+        type: CONFIRMATION_CONSTANTS.CONFIRMATION_SET_CREATE_ACCOUNT_SUCCESS,
+        payload: true,
+      }).getIn(['orderConfirmation', 'createAccountSuccess'])
+    ).toBe(true);
   });
 });

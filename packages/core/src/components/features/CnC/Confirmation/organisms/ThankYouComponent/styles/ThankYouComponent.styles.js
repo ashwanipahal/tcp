@@ -23,7 +23,9 @@ const styles = css`
     margin-right: 0;
   }
   .confirmation-update-details {
-    padding: ${props => props.theme.spacing.ELEM_SPACING.XL} 0;
+    padding: ${props =>
+        props.orderNumbersByFullfillmentCenter ? props.theme.spacing.ELEM_SPACING.XL : 0}
+      0 ${props => props.theme.spacing.ELEM_SPACING.XL};
     text-align: left;
     margin-top: ${props =>
       props.orderNumbersByFullfillmentCenter ? props.theme.spacing.ELEM_SPACING.XL : 0};
@@ -40,6 +42,9 @@ const styles = css`
     height: 100px;
     background-color: ${props => props.theme.colorPalette.gray[500]};
     margin-bottom: ${props => props.theme.spacing.ELEM_SPACING.XL};
+  }
+  .place-cash-banner-text {
+    margin-top: ${props => props.theme.spacing.ELEM_SPACING.XL};
   }
 `;
 

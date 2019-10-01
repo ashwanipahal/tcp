@@ -27,6 +27,6 @@ describe('InputCheckbox component', () => {
     const component = shallow(<InputCheckBox {...props} />);
     component.setState({ isChecked: false });
     component.instance().onClick();
-    expect(component.state('isChecked')).toBe(false);
+    expect(component.state('isChecked')).toBe(true);
   });
 });

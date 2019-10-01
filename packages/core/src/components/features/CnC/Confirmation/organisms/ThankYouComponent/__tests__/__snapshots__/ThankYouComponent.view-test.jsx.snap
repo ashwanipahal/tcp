@@ -48,7 +48,7 @@ exports[`ThankYouComponentVanilla should render correctly 1`] = `
       }
     >
       <Styled(BodyCopy)
-        className={null}
+        className="place-cash-banner-text"
         color="text.primary"
         component="p"
         fontFamily="secondary"
@@ -222,7 +222,7 @@ exports[`ThankYouComponentVanilla should render correctly with isBossInList 1`] 
       }
     >
       <Styled(BodyCopy)
-        className={null}
+        className="place-cash-banner-text"
         color="text.primary"
         component="p"
         fontFamily="secondary"

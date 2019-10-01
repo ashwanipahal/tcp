@@ -5,6 +5,7 @@ const initialState = fromJS({
   orderConfirmation: {
     emailAddress: '',
     encryptedEmailAddress: '',
+    createAccountSuccess: false,
     summary: {
       itemsTotal: 0,
       itemsCount: 0,
@@ -47,6 +48,8 @@ const orderConfirmationReducer = (state = initialState, action) => {
       return state.setIn(['orderConfirmation', 'summary'], action.updatedSummary);
     case CONFIRMATION_CONSTANTS.CONFIRMATION_SET_UPDATE_ORDER_DETAILS:
       return state.set('updateOrderDetails', action.payload);
+    case CONFIRMATION_CONSTANTS.CONFIRMATION_SET_CREATE_ACCOUNT_SUCCESS:
+      return state.setIn(['orderConfirmation', 'createAccountSuccess'], action.payload);
     default:
       if (state instanceof Object) {
         return fromJS(state);

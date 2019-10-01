@@ -69,6 +69,7 @@ const ThankYouComponent = ({
             fontFamily="secondary"
             fontWeight="extrabold"
             textAlign="center"
+            className="place-cash-banner-text"
           >
             Place Cash Banner
           </BodyCopy>
