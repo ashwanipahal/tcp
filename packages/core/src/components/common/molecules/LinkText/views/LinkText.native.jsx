@@ -123,7 +123,7 @@ const LinkText = (props: Props) => {
       ...otherProps,
     };
   }
-  console.log(headerText);
+
   return headerText.map((item, index) => {
     const { link, textItems } = item;
     if (useStyle) {

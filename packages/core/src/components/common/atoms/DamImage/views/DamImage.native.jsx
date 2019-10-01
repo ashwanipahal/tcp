@@ -4,7 +4,7 @@ import { Image } from 'react-native';
 import { LazyloadImage } from 'react-native-lazyload-deux';
 import PropTypes from 'prop-types';
 import withStyles from '../../../hoc/withStyles.native';
-import style from '../DamImage.style';
+import style from '../DamImage.styles';
 import { cropImageUrl } from '../../../../../utils/index.native';
 
 /**
