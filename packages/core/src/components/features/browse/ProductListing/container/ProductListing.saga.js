@@ -51,7 +51,7 @@ export function* fetchPlpProducts({ payload }) {
   }
 }
 
-export function* fetchMoreProducts({ payload }) {
+export function* fetchMoreProducts({ payload = {} }) {
   try {
     const { url } = payload;
     const location = getUrl(url);
