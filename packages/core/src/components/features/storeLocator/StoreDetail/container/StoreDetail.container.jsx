@@ -8,7 +8,7 @@ import {
   setFavoriteStoreActn,
 } from '../../StoreLanding/container/StoreLanding.actions';
 import StoreDetail from './views/StoreDetail';
-import { routeToStoreDetails } from '../../../../../utils';
+import { routeToStoreDetails, routerPush } from '../../../../../utils';
 import {
   getCurrentStore,
   formatCurrentStoreToObject,
@@ -16,13 +16,17 @@ import {
   getLabels,
   isFavoriteStore,
 } from './StoreDetail.selectors';
+import { getUserLoggedInState } from '../../../account/User/container/User.selectors';
 import googleMapConstants from '../../../../../constants/googleMap.constants';
 import mockLabels from '../../../../common/molecules/StoreAddressTile/__mocks__/labels.mock';
 
 export class StoreDetailContainer extends PureComponent {
   static routesBack(e) {
     e.preventDefault();
-    window.history.back();
+    if (window.history.length > 2) window.history.back();
+    else {
+      routerPush('/', '/home');
+    }
   }
 
   constructor(props) {
@@ -55,10 +59,13 @@ export class StoreDetailContainer extends PureComponent {
 
   // eslint-disable-next-line no-unused-vars
   getSnapshotBeforeUpdate(prevProps, prevState) {
-    const { currentStoreInfo, formatStore } = this.props;
+    const { currentStoreInfo, formatStore, isUserLoggedIn } = this.props;
     const prevStore = formatStore(prevProps.currentStoreInfo);
     const newStore = formatStore(currentStoreInfo);
-    if (prevStore.basicInfo.id !== newStore.basicInfo.id) {
+    if (
+      prevStore.basicInfo.id !== newStore.basicInfo.id ||
+      prevProps.isUserLoggedIn !== isUserLoggedIn
+    ) {
       return true;
     }
     return null;
@@ -176,6 +183,7 @@ StoreDetailContainer.propTypes = {
   getFavStore: PropTypes.func.isRequired,
   setFavStore: PropTypes.func.isRequired,
   navigation: PropTypes.shape({}),
+  isUserLoggedIn: PropTypes.bool.isRequired,
 };
 
 StoreDetailContainer.defaultProps = {
@@ -200,6 +208,7 @@ const mapStateToProps = state => {
     nearByStores: getNearByStores(state),
     labels: getLabels(state),
     isFavorite: isFavoriteStore(state),
+    isUserLoggedIn: getUserLoggedInState(state),
   };
 };
 

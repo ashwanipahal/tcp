@@ -1,0 +1,98 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`StoreLocatorLinkVanilla component renders correctly when a fav store is passed 1`] = `
+<Fragment>
+  <Styled(Anchor)
+    anchorVariation="primary"
+    className="test"
+    dataLocator=""
+    fontSizeVariation="small"
+  >
+    <div
+      className="storelocatorlink__container"
+    >
+      <div
+        className="storelocatorlink__img"
+      >
+        <Styled(Image)
+          alt="Store Locator"
+          className="storelocator--image"
+          src="/static/images/marker-icon.svg"
+        />
+      </div>
+      <div
+        className="storelocatorlink__detail"
+      >
+        <Styled(BodyCopy)
+          className="storelocatorlink__detail__storename"
+          color="text.primary"
+          component="div"
+          data-locator=""
+          fontFamily="secondary"
+          fontSize="fs13"
+          fontWeight="regular"
+          letterSpacing="normal"
+          lineHeight="normal"
+          link={null}
+          textAlign="left"
+        >
+          steinway street
+        </Styled(BodyCopy)>
+        <Styled(BodyCopy)
+          className="storelocatorlink__detail__storetime"
+          color="text.primary"
+          component="div"
+          data-locator=""
+          fontFamily="secondary"
+          fontSize="fs10"
+          fontWeight="regular"
+          letterSpacing="normal"
+          lineHeight="normal"
+          link={null}
+          textAlign="left"
+        >
+          undefined 8 pm
+        </Styled(BodyCopy)>
+      </div>
+    </div>
+  </Styled(Anchor)>
+</Fragment>
+`;
+
+exports[`StoreLocatorLinkVanilla component renders correctly with no store is passed 1`] = `
+<Fragment>
+  <Styled(Anchor)
+    anchorVariation="primary"
+    className="test"
+    dataLocator=""
+    fontSizeVariation="small"
+  >
+    <div
+      className="storelocatorlink__container--fav"
+    >
+      <div
+        className="storelocatorlink__img"
+      >
+        <Styled(Image)
+          alt="Store Locator"
+          className="storelocator--image"
+          src="/static/images/marker-icon.svg"
+        />
+      </div>
+      <Styled(BodyCopy)
+        className="storelocatorlink__detail"
+        color="text.primary"
+        component="div"
+        data-locator=""
+        fontFamily="secondary"
+        fontSize="fs13"
+        fontWeight="regular"
+        letterSpacing="normal"
+        lineHeight="normal"
+        link={null}
+        textAlign="left"
+      />
+    </div>
+  </Styled(Anchor)>
+</Fragment>
+`;
