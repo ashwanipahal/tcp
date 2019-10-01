@@ -143,6 +143,7 @@ class DropDown extends React.PureComponent<Props> {
    * Set drop down position
    */
   setDropDownPosition = (topMargin, dH, showInBottom, calculateHeight, windowHeight) => {
+    const { customDropDownHeight } = this.props;
     this.setState({ top: topMargin.top });
     let listMargin = 0;
     let listHeight = 0;
@@ -152,6 +153,9 @@ class DropDown extends React.PureComponent<Props> {
         listHeight = dH - 100;
       } else {
         listHeight = calculateHeight - 100;
+      }
+      if (customDropDownHeight) {
+        listHeight = customDropDownHeight;
       }
     } else if (calculateHeight > windowHeight) {
       listMargin = 100;

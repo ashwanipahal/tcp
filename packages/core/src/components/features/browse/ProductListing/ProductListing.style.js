@@ -2,8 +2,7 @@ import { css } from 'styled-components';
 
 export default css`
   .bread-crumb,
-  .filter-area,
-  .product-list {
+  .filter-area {
     padding-top: 20px;
     padding-bottom: 17px;
     margin: 5px 0;
