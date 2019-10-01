@@ -94,7 +94,7 @@ const StyledCol = css`
             key,
             colLength(props, key),
             props.theme.gridDimensions
-          )}) {
+          )}n) {
             margin-right: 0;
           }`}
       }
