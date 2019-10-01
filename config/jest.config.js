@@ -51,6 +51,7 @@ module.exports = {
     '!**/*.styles.native.js',
     '!**/*.constants.js',
     '!**/*.config.js',
+    '!**/config.js',
     '!**/core/styles/**',
     '!**/*.actions.js',
     '!**/*.container.js',
