@@ -10,6 +10,7 @@ type Props = {
   handleComponentChange: Function,
   className: string,
   navigation: Object,
+  component: string,
 };
 
 type State = {
@@ -29,6 +30,15 @@ class MyAccountDropdownNav extends React.Component<Props, State> {
     this.state = {
       dropDownItem: 'accountOverviewMobile',
     };
+  }
+
+  static getDerivedStateFromProps(props, state) {
+    if (props.component !== state.dropDownItem) {
+      return {
+        dropDownItem: props.component,
+      };
+    }
+    return null;
   }
 
   render() {

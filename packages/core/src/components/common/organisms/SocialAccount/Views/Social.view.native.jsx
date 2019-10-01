@@ -25,6 +25,7 @@ class Socialview extends React.PureComponent {
     labels: PropTypes.shape({}).isRequired,
     pointModalClose: PropTypes.func.isRequired,
     setPointsModal: PropTypes.func.isRequired,
+    handleComponentChange: PropTypes.func.isRequired,
   };
 
   constructor() {
@@ -46,7 +47,10 @@ class Socialview extends React.PureComponent {
     pointModalClose({ state: false });
   };
 
-  viewAll = () => {};
+  viewAll = () => {
+    const { handleComponentChange } = this.props;
+    handleComponentChange('earnExtraPointsPageMobile');
+  };
 
   /**
    * @function renderAccountsInformation Render the social plugins layouts
@@ -193,7 +197,7 @@ class Socialview extends React.PureComponent {
    * @param {*} isConnected - Status to check whether user is connected with social sites
    */
   handleSocialNetwork(isSocialAccount, isConnected) {
-    const { saveSocialAcc } = this.props;
+    const { saveSocialAcc, pointModalClose } = this.props;
     switch (isSocialAccount) {
       case 'Facebook':
         if (!isConnected) {
@@ -210,6 +214,7 @@ class Socialview extends React.PureComponent {
                   isconnected: false,
                 };
                 saveSocialAcc({ socialAccInfo });
+                pointModalClose({ state: true });
               });
             }
           });

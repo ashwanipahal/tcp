@@ -52,6 +52,7 @@ export class Account extends React.PureComponent<Props, State> {
    *  @function getComponent takes component and return the component that is required on the drop down click.
    */
 
+  // eslint-disable-next-line complexity
   getComponent = component => {
     switch (component) {
       case 'paymentGiftCardsPageMobile':
@@ -72,8 +73,10 @@ export class Account extends React.PureComponent<Props, State> {
         return 'myPreferences';
       case 'PointsClaimPageMobile':
         return 'PointsClaimPageMobile';
-      default:
+      case 'addressBookMobile':
         return 'addressBookMobile';
+      default:
+        return 'accountOverviewMobile';
     }
   };
 
@@ -105,6 +108,7 @@ export class Account extends React.PureComponent<Props, State> {
         <StyledScrollView keyboardShouldPersistTaps="handled">
           <MyAccountLayout
             navData={navDataMobile}
+            component={this.getComponent(component)}
             mainContent={AccountComponentNativeMapping[component]}
             handleComponentChange={this.handleComponentChange}
             labels={labels}

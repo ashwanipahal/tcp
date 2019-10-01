@@ -12,7 +12,7 @@ import SocialContainer from '../../../../common/organisms/SocialAccount/containe
 
 class MyPrefrenceSection extends React.PureComponent {
   render() {
-    const { labels } = this.props;
+    const { labels, handleComponentChange } = this.props;
     return (
       <View>
         <ScrollView showsVerticalScrollIndicator={false} keyboardShouldPersistTaps="handled">
@@ -27,7 +27,7 @@ class MyPrefrenceSection extends React.PureComponent {
           </StyledHeading>
           <UnderlineStyle />
           <MyFavoriteStore isMyPreferences />
-          <SocialContainer labels={labels} />
+          <SocialContainer labels={labels} handleComponentChange={handleComponentChange} />
         </ScrollView>
       </View>
     );
@@ -36,10 +36,12 @@ class MyPrefrenceSection extends React.PureComponent {
 
 MyPrefrenceSection.propTypes = {
   labels: PropTypes.shape({}),
+  handleComponentChange: PropTypes.func,
 };
 
 MyPrefrenceSection.defaultProps = {
   labels: {},
+  handleComponentChange: () => {},
 };
 
 export default withStyles(MyPrefrenceSection);
