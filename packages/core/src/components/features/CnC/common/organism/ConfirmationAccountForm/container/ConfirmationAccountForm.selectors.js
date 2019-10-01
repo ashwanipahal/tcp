@@ -7,7 +7,7 @@ import { getOrderConfirmation } from '../../../../Confirmation/container/Confirm
  */
 const getCreateAccountSuccess = createSelector(
   getOrderConfirmation,
-  orderConfirmation => orderConfirmation.get('createAccountSuccess')
+  orderConfirmation => orderConfirmation && orderConfirmation.createAccountSuccess
 );
 
 /**

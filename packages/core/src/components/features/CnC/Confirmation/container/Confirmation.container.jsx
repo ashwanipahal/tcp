@@ -10,7 +10,7 @@ import { isGuest } from '../../Checkout/container/Checkout.selector';
  * @function ConfirmationContainer
  * @description container component to render confirmation component.
  */
-const ConfirmationContainer = props => {
+export const ConfirmationContainer = props => {
   return <ConfirmationView {...props} />;
 };
 

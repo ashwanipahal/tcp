@@ -5,6 +5,7 @@ const initialState = fromJS({
   orderConfirmation: {
     emailAddress: '',
     encryptedEmailAddress: '',
+    createAccountSuccess: false,
     summary: {
       itemsTotal: 0,
       itemsCount: 0,

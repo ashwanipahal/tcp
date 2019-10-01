@@ -27,7 +27,7 @@ describe('#ConfirmationAccountForm selectors', () => {
     },
     Confirmation: fromJS({
       orderConfirmation: {
-        createAccountSuccess: true,
+        createAccountSuccess: false,
       },
     }),
   };
@@ -43,7 +43,7 @@ describe('#ConfirmationAccountForm selectors', () => {
     expect(getPasswordLabels(state).lbl_PasswordRule).toBe('PasswordRules');
   });
 
-  it('#getCreateAccountSuccess should return to be true', () => {
-    expect(getCreateAccountSuccess(state)).toBe(true);
+  it('#getCreateAccountSuccess should return to be false', () => {
+    expect(getCreateAccountSuccess(state)).toBeFalsy();
   });
 });
