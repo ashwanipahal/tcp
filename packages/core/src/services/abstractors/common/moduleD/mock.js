@@ -3,113 +3,112 @@ const plpUrl =
 const fmt = 'Family Tees';
 const mmt = 'Mom & Me Tees';
 export default {
-  moduleD: {
-    contentId: '73f6a699-79a4-4874-994f-ab306dd66dca',
-    name: 'moduleD',
-    type: 'module',
-    composites: {
-      headerText: [
-        {
-          textItems: {
-            text: 'Mini me shop',
-            color: 'color2',
+  contentId: 'moduleD',
+  name: 'moduleD',
+  type: 'module',
+  set: [],
+  composites: {
+    headerText: [
+      {
+        textItems: {
+          text: 'Mini me shop',
+          color: 'color2',
+          style: 'style1',
+        },
+        link: {
+          url: plpUrl,
+          title: '',
+          target: '',
+        },
+      },
+    ],
+    promoBanner: [
+      {
+        link: {
+          url: 'http://example.com',
+          title: '',
+          target: '',
+          external: 0,
+        },
+        textItems: [
+          {
+            text: 'ALL TEES',
             style: 'style1',
           },
-          link: {
-            url: plpUrl,
-            title: '',
-            target: '',
+          {
+            text: '67% OFF',
+            style: 'style2',
           },
-        },
-      ],
-      promoBanner: [
-        {
-          link: {
-            url: 'http://example.com',
-            title: '',
-            target: '',
-            external: 0,
-          },
-          textItems: [
-            {
-              text: 'ALL TEES',
-              style: 'style1',
-            },
-            {
-              text: '67% OFF',
-              style: 'style2',
-            },
-          ],
-        },
-      ],
-      smallCompImage: [
-        {
-          link: {
-            url: plpUrl,
-            title: fmt,
-            target: '',
-            external: 0,
-          },
-          image: {
-            url:
-              'https://res.cloudinary.com/tcp-dam-test/image/upload/v1558543115/ecom/assets/content/tcp/us/home/moduled/US-HP-050519-MINIME1_h9cwcd.jpg',
-            title: fmt,
-            alt: fmt,
-          },
-        },
-        {
-          link: {
-            url: plpUrl,
-            text: mmt,
-            title: mmt,
-            target: '',
-            external: 0,
-          },
-          image: {
-            url:
-              'https://res.cloudinary.com/tcp-dam-test/image/upload/v1558543115/ecom/assets/content/tcp/us/home/moduled/US-HP-050519-MINIME3_vmfhnu.jpg',
-            title: mmt,
-            alt: mmt,
-          },
-        },
-        {
-          link: {
-            url: plpUrl,
-            text: fmt,
-            title: fmt,
-            target: '',
-            external: 0,
-          },
-          image: {
-            url:
-              'https://res.cloudinary.com/tcp-dam-test/image/upload/v1558543114/ecom/assets/content/tcp/us/home/moduled/US-HP-050519-MINIME4_iuzwmp.jpg',
-            title: fmt,
-            alt: fmt,
-          },
-        },
-        {
-          link: {
-            url: plpUrl,
-            text: mmt,
-            title: mmt,
-            target: '',
-            external: 0,
-          },
-          image: {
-            url:
-              'https://res.cloudinary.com/tcp-dam-test/image/upload/v1558543114/ecom/assets/content/tcp/us/home/moduled/US-HP-050519-MINIME2_uwtbdd.jpg',
-            title: mmt,
-            alt: mmt,
-          },
-        },
-      ],
-      singleCTAButton: {
-        url: plpUrl,
-        target: '',
-        text: 'SHOP ALL',
-        title: 'SHOP ALL',
-        external: 0,
+        ],
       },
+    ],
+    smallCompImage: [
+      {
+        link: {
+          url: plpUrl,
+          title: fmt,
+          target: '',
+          external: 0,
+        },
+        image: {
+          url:
+            'https://res.cloudinary.com/tcp-dam-test/image/upload/v1558543115/ecom/assets/content/tcp/us/home/moduled/US-HP-050519-MINIME1_h9cwcd.jpg',
+          title: fmt,
+          alt: fmt,
+        },
+      },
+      {
+        link: {
+          url: plpUrl,
+          text: mmt,
+          title: mmt,
+          target: '',
+          external: 0,
+        },
+        image: {
+          url:
+            'https://res.cloudinary.com/tcp-dam-test/image/upload/v1558543115/ecom/assets/content/tcp/us/home/moduled/US-HP-050519-MINIME3_vmfhnu.jpg',
+          title: mmt,
+          alt: mmt,
+        },
+      },
+      {
+        link: {
+          url: plpUrl,
+          text: fmt,
+          title: fmt,
+          target: '',
+          external: 0,
+        },
+        image: {
+          url:
+            'https://res.cloudinary.com/tcp-dam-test/image/upload/v1558543114/ecom/assets/content/tcp/us/home/moduled/US-HP-050519-MINIME4_iuzwmp.jpg',
+          title: fmt,
+          alt: fmt,
+        },
+      },
+      {
+        link: {
+          url: plpUrl,
+          text: mmt,
+          title: mmt,
+          target: '',
+          external: 0,
+        },
+        image: {
+          url:
+            'https://res.cloudinary.com/tcp-dam-test/image/upload/v1558543114/ecom/assets/content/tcp/us/home/moduled/US-HP-050519-MINIME2_uwtbdd.jpg',
+          title: mmt,
+          alt: mmt,
+        },
+      },
+    ],
+    singleCTAButton: {
+      url: plpUrl,
+      target: '',
+      text: 'SHOP ALL',
+      title: 'SHOP ALL',
+      external: 0,
     },
   },
 };
