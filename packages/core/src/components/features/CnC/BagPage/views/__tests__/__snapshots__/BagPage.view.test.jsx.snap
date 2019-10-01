@@ -4,9 +4,10 @@ exports[`Bag page View should not render SFL section 1`] = `
 <div
   className="test"
 >
-  <div>
+  <div
+    className=""
+  >
     <Styled(Row)
-      className="testingMadan"
       tagName="header"
     >
       <Styled(Col)
@@ -62,9 +63,10 @@ exports[`Bag page View should render Added to Bag view section 1`] = `
 <div
   className="test"
 >
-  <div>
+  <div
+    className=""
+  >
     <Styled(Row)
-      className="testingMadan"
       tagName="header"
     >
       <Styled(Col)
@@ -120,9 +122,10 @@ exports[`Bag page View should render SFL section 1`] = `
 <div
   className="test"
 >
-  <div>
+  <div
+    className=""
+  >
     <Styled(Row)
-      className="testingMadan"
       tagName="header"
     >
       <Styled(Col)

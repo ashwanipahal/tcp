@@ -19,6 +19,7 @@ class BagPageView extends React.Component {
     this.state = {
       activeSection: null,
       showCondensedHeader: false,
+      showStickyHeaderMob: false,
     };
     this.bagPageHeader = null;
     this.bagActionsContainer = null;
@@ -86,17 +87,18 @@ class BagPageView extends React.Component {
     return checkoutCta && checkoutCta.offsetTop;
   };
 
+  bindScrollEvent = callBack => {
+    window.addEventListener('scroll', throttle(callBack, 100));
+  };
+
   addScrollListener = () => {
     const checkoutCtaStickyPos = this.getStickyPositionCheckoutCta();
-    window.addEventListener(
-      'scroll',
-      throttle(this.handleBagHeaderScroll.bind(this, checkoutCtaStickyPos), 100)
-    );
+    this.bindScrollEvent(this.handleBagHeaderScroll.bind(this, checkoutCtaStickyPos));
   };
 
   addScrollListenerMobileHeader = () => {
     const stickyPos = this.getStickyPosition();
-    window.addEventListener('scroll', throttle(this.handleScroll.bind(this, stickyPos), 100));
+    this.bindScrollEvent(this.handleScroll.bind(this, stickyPos));
   };
 
   removeScrollListener = () => {
@@ -121,16 +123,16 @@ class BagPageView extends React.Component {
     const condensedPageHeaderHeight = this.getPageLevelHeaderHeight();
     if (isClient() && window.pageYOffset > sticky - condensedPageHeaderHeight) {
       condensedBagHeader.style.top = `${condensedPageHeaderHeight.toString()}px`;
-      condensedBagHeader.classList.add('stickyBagHeader');
+      this.setState({ showStickyHeaderMob: true });
       if (this.timer !== null) {
         clearTimeout(this.timer);
       }
 
       this.timer = setTimeout(() => {
-        condensedBagHeader.classList.remove('stickyBagHeader');
+        this.setState({ showStickyHeaderMob: false });
       }, bagStickyHeaderInterval);
     } else {
-      condensedBagHeader.classList.remove('stickyBagHeader');
+      this.setState({ showStickyHeaderMob: false });
     }
   };
 
@@ -254,14 +256,17 @@ class BagPageView extends React.Component {
       isShowSaveForLaterSwitch,
       orderBalanceTotal,
     } = this.props;
-    const { activeSection } = this.state;
+    const { activeSection, showStickyHeaderMob } = this.state;
     const isNoNEmptyBag = orderItemsCount > 0;
     const isNonEmptySFL = sflItems.size > 0;
     return (
       <div className={className}>
         {this.stickyBagCondensedHeader()}
-        <div ref={this.getBagPageHeaderRef}>
-          <Row tagName="header" className="testingMadan">
+        <div
+          ref={this.getBagPageHeaderRef}
+          className={`${showStickyHeaderMob ? 'stickyBagHeader' : ''}`}
+        >
+          <Row tagName="header">
             <Col
               colSize={{ small: 3, medium: 4, large: 6 }}
               className="left-sec"

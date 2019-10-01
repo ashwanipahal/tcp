@@ -12,14 +12,22 @@ import BodyCopy from '../../../../common/atoms/BodyCopy';
 import { getLocator } from '../../../../../utils';
 
 class AddedToBagActions extends React.PureComponent<Props> {
-  getHeaderPaypalButton() {
+  getPaypalButton() {
     const { isBagPageStickyHeader, showAddTobag } = this.props;
+    const containerId = isBagPageStickyHeader
+      ? 'paypal-button-container-bagHeader'
+      : 'paypal-button-container';
+    return (
+      <div className={`${showAddTobag ? 'paypal-wrapper-atb' : 'paypal-wrapper'}`}>
+        <PayPalButton className="payPal-button" containerId={containerId} />
+      </div>
+    );
+  }
+
+  getHeaderPaypalButton() {
+    const { isBagPageStickyHeader } = this.props;
     if (isBagPageStickyHeader) {
-      return (
-        <div className={`${showAddTobag ? 'paypal-wrapper-atb' : 'paypal-wrapper'}`}>
-          <PayPalButton className="payPal-button" containerId="paypal-button-container-bagHeader" />
-        </div>
-      );
+      return this.getPaypalButton();
     }
     return null;
   }
@@ -103,11 +111,7 @@ class AddedToBagActions extends React.PureComponent<Props> {
           id={`${!isBagPageStickyHeader ? 'checkout-button-section' : ''}`}
         >
           <div className={`paypal-venmo ${isBagPageStickyHeader ? 'checkout-sticky-header' : ''}`}>
-            {!isInternationalShipping && !isBagPageStickyHeader && (
-              <div className={`${showAddTobag ? 'paypal-wrapper-atb' : 'paypal-wrapper'}`}>
-                <PayPalButton className="payPal-button" />
-              </div>
-            )}
+            {!isInternationalShipping && !isBagPageStickyHeader && this.getPaypalButton()}
             {this.getHeaderPaypalButton()}
             {this.getVenmoPaymentButton()}
           </div>
