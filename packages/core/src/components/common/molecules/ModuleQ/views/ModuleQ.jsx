@@ -8,7 +8,7 @@ import withStyles from '../../../hoc/withStyles';
 import StyliticsProductTabList from '../../../organisms/StyliticsProductTabList';
 import moduleQStyle from '../styles/ModuleQ.style';
 import { getIconPath, getLocator } from '../../../../../utils';
-import config from '../config';
+import config from '../moduleQ.config';
 
 /**
  * @class ModuleQ - global reusable component will display a featured content
