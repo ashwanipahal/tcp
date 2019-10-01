@@ -42,7 +42,6 @@ function StyliticsProductTabListContainer(props) {
   const [selectedCategoryId, setSelectedCategoryId] = useState(null);
 
   useEffect(() => {
-    console.log('---sss');
     if (selectedCategoryId) {
       const categoryItem = getTabItemsMap(tabItems)[selectedCategoryId];
       onProductTabChange(selectedCategoryId, categoryItem);
