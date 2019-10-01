@@ -49,11 +49,10 @@ class InputCheckBox extends React.Component {
     };
   }
 
-  componentDidUpdate(prevProps, prevState) {
+  componentDidUpdate(prevProps) {
     const { isChecked: isCheckedProp } = this.props;
     const { isChecked: isCheckedState } = this.state;
-
-    if (prevProps.isChecked !== isCheckedProp || prevState.isChecked !== isCheckedState) {
+    if (prevProps.isChecked !== isCheckedProp && isCheckedProp !== isCheckedState) {
       /* eslint-disable react/no-did-update-set-state */
       this.setState({
         isChecked: isCheckedProp,
