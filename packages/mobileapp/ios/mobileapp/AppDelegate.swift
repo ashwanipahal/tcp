@@ -7,6 +7,9 @@
 //
 
 import UIKit
+import FBSDKLoginKit
+import FBSDKShareKit
+import FBSDKCoreKit
 
 @UIApplicationMain
 class AppDelegate: UIResponder, UIApplicationDelegate {
@@ -38,9 +41,13 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     
     self.window!.rootViewController = rootViewController;
     self.window!.makeKeyAndVisible()
-    
+    FBSDKApplicationDelegate.sharedInstance().application(application, didFinishLaunchingWithOptions: launchOptions)
     return true
     
+  }
+  
+  func application(_ app: UIApplication, open url: URL, options: [UIApplication.OpenURLOptionsKey : Any] = [:]) -> Bool {
+    return FBSDKApplicationDelegate.sharedInstance().application(app, open: url, options: options)
   }
   
 }

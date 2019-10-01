@@ -11,6 +11,7 @@ describe('ProductDetailView component', () => {
       currentProduct: {
         name: '',
         shortDescription: '',
+        colorFitsSizesMap: [],
       },
     };
     wrapper = shallow(<ProductDetailViewVanilla {...props} />);

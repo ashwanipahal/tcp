@@ -238,6 +238,7 @@ export class AddressFields extends React.PureComponent {
               maxLength={isCA ? 6 : 5}
               component={TextBox}
               dataLocator="addnewaddress-zipcode"
+              keyboardType="numeric"
             />
           </InputFieldHalf>
         </StateZipCodeContainer>
