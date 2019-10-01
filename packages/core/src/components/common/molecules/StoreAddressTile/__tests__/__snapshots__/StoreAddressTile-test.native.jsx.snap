@@ -314,11 +314,11 @@ exports[`StoreAddressTile component Listing Header should render listing-header 
       <Styled(Text)>
         86th Street - 3rd Ave.
       </Styled(Text)>
+    </Styled(View)>
+    <Styled(View)>
       <Styled(Text)>
         (open until 8 pm)
       </Styled(Text)>
-    </Styled(View)>
-    <Styled(View)>
       <Styled(Text)>
         0.17 miles away
       </Styled(Text)>
@@ -392,11 +392,11 @@ exports[`StoreAddressTile component Listing should not render gymboree store 1`]
       <Styled(Text)>
         86th Street - 3rd Ave.
       </Styled(Text)>
+    </Styled(View)>
+    <Styled(View)>
       <Styled(Text)>
         (open until 8 pm)
       </Styled(Text)>
-    </Styled(View)>
-    <Styled(View)>
       <Styled(Text)>
         0.17 miles away
       </Styled(Text)>
@@ -479,11 +479,11 @@ exports[`StoreAddressTile component Listing should render listing view 1`] = `
       <Styled(Text)>
         86th Street - 3rd Ave.
       </Styled(Text)>
+    </Styled(View)>
+    <Styled(View)>
       <Styled(Text)>
         (open until 8 pm)
       </Styled(Text)>
-    </Styled(View)>
-    <Styled(View)>
       <Styled(Text)>
         0.17 miles away
       </Styled(Text)>
@@ -580,11 +580,11 @@ exports[`StoreAddressTile component Listing should render listing view with fav 
         2. 
         86th Street - 3rd Ave.
       </Styled(Text)>
+    </Styled(View)>
+    <Styled(View)>
       <Styled(Text)>
         (open until 8 pm)
       </Styled(Text)>
-    </Styled(View)>
-    <Styled(View)>
       <Styled(Text)>
         0.17 miles away
       </Styled(Text)>
@@ -672,11 +672,11 @@ exports[`StoreAddressTile component Listing should render listing view with inde
         1. 
         86th Street - 3rd Ave.
       </Styled(Text)>
+    </Styled(View)>
+    <Styled(View)>
       <Styled(Text)>
         (open until 8 pm)
       </Styled(Text)>
-    </Styled(View)>
-    <Styled(View)>
       <Styled(Text)>
         0.17 miles away
       </Styled(Text)>

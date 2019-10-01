@@ -134,6 +134,8 @@ class StoreAddressTile extends PureComponent {
               >
                 {storeName}
               </BodyCopy>
+            </div>
+            <div className="title__two">
               <BodyCopy
                 fontSize="fs12"
                 component="span"
@@ -142,8 +144,6 @@ class StoreAddressTile extends PureComponent {
               >
                 {`(${labels.lbl_storelocators_landingpage_openInterval} ${this.getStoreHours()})`}
               </BodyCopy>
-            </div>
-            <div className="title__two">
               <BodyCopy
                 fontSize="fs12"
                 component="span"
@@ -231,13 +231,13 @@ class StoreAddressTile extends PureComponent {
             {!!storeIndex && `${storeIndex}. `}
             {storeName}
           </BodyCopy>
+        </div>
+        <div className="title-two">
           {storeHours && (
             <BodyCopy fontSize="fs12" component="span" color="text.primary" fontFamily="secondary">
               {`(${labels.lbl_storelocators_landingpage_openInterval} ${storeHours})`}
             </BodyCopy>
           )}
-        </div>
-        <div className="title-two">
           <BodyCopy fontSize="fs12" component="span" color="text.primary" fontFamily="secondary">
             {`${distance} ${labels.lbl_storelocators_landingpage_milesAway}`}
           </BodyCopy>
@@ -312,7 +312,6 @@ class StoreAddressTile extends PureComponent {
       <Button
         buttonVariation="fixed-width"
         type="button"
-        fill="BLUE"
         data-locator={locatorSetFavStore}
         onClick={() => {
           setFavoriteStore(store);
