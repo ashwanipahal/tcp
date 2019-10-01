@@ -25,6 +25,10 @@ const styles = css`
       &.confirm-pwd {
         top: ${props => props.theme.spacing.ELEM_SPACING.LRG};
       }
+
+      .hide-show-checkbox {
+        font-size: ${props => props.theme.typography.fontSizes.fs12};
+      }
     }
   }
 

@@ -18,12 +18,14 @@ import withStyles from '@tcp/core/src/components/common/hoc/withStyles';
 import createValidateMethod from '@tcp/core/src/utils/formValidation/createValidateMethod';
 import getStandardConfig from '@tcp/core/src/utils/formValidation/validatorStandardConfig';
 import { getIconPath } from '@tcp/core/src/utils';
-// import PasswordRequirement from '@tcp/core/';
+import PasswordRequirement from '@tcp/core/src/components/features/account/ResetPassword/molecules/PasswordRequirement';
 import styles from '../styles/ConfirmationAccountForm.style';
+
+const renderTooltip = labels => <PasswordRequirement labels={labels} />;
 
 const renderEmailAddress = (emailAddress, inputColGrid, placeHolder) => {
   return emailAddress ? (
-    <Col ignoreGutter={{ small: true }} colSize={{ small: 6 }}>
+    <Col {...inputColGrid}>
       <BodyCopy component="div">
         <BodyCopy
           component="p"
@@ -63,6 +65,14 @@ const renderEmailAddress = (emailAddress, inputColGrid, placeHolder) => {
   );
 };
 
+const renderNotification = (success, successMsg, error) => {
+  return (
+    (error || success) && (
+      <Notification status={error ? 'error' : 'success'} message={error || successMsg} />
+    )
+  );
+};
+
 const ConfirmationCreateAccountForm = ({
   className,
   isPromptForUserDetails,
@@ -71,6 +81,8 @@ const ConfirmationCreateAccountForm = ({
   handleSubmit,
   createAccountSubmit,
   createAccountSuccess,
+  createAccountError,
+  resetAccountErrorState,
   labels: {
     lbl_createAccount_emailAddress: lblEmailAddress,
     lbl_createAccount_password: lblPassword,
@@ -87,8 +99,10 @@ const ConfirmationCreateAccountForm = ({
     lbl_createAccount_heading: lblHeading,
     lbl_createAccount_succcessMsg: lblSucccessMsg,
   },
+  passwordLabels,
 }) => {
   const formSubmit = formValues => {
+    resetAccountErrorState();
     createAccountSubmit({
       isOrderConfirmation: true,
       ...userInformation,
@@ -107,7 +121,7 @@ const ConfirmationCreateAccountForm = ({
 
   return (
     <div className={`${className} elem-pt-MED`}>
-      {createAccountSuccess && <Notification status="success" message={lblSucccessMsg} />}
+      {renderNotification(createAccountSuccess, lblSucccessMsg, createAccountError)}
       <BodyCopy className="heading" fontSize="fs26" color="gray[900]" textAlign="center">
         {lblHeading}
       </BodyCopy>
@@ -150,7 +164,7 @@ const ConfirmationCreateAccountForm = ({
             />
             <div className="hide-show">
               <div className="info-icon-img-wrapper">
-                <ReactTooltip message="tooltipContent" aligned="right">
+                <ReactTooltip message={renderTooltip(passwordLabels)} aligned="right">
                   <Image className="tcp_carousel__play tooltip" src={getIconPath('info-icon')} />
                 </ReactTooltip>
               </div>
@@ -162,6 +176,7 @@ const ConfirmationCreateAccountForm = ({
                     event.preventDefault();
                     togglePwd(!showPwd);
                   }}
+                  className="hide-show-checkbox"
                   fontSizeVariation="large"
                   anchorVariation="primary"
                   dataLocator="pwd-hide-show-checkbox"
@@ -190,6 +205,7 @@ const ConfirmationCreateAccountForm = ({
                     event.preventDefault();
                     toggleConfirmPwd(!showConfirmPwd);
                   }}
+                  className="hide-show-checkbox"
                   fontSizeVariation="large"
                   anchorVariation="primary"
                   dataLocator="confirm-hide-show-checkbox"
@@ -274,6 +290,8 @@ ConfirmationCreateAccountForm.propTypes = {
   handleSubmit: PropTypes.func.isRequired,
   createAccountSubmit: PropTypes.func.isRequired,
   createAccountSuccess: PropTypes.bool,
+  createAccountError: PropTypes.string,
+  resetAccountErrorState: PropTypes.func.isRequired,
   labels: PropTypes.shape({
     lbl_createAccount_emailAddress: PropTypes.string,
     lbl_createAccount_password: PropTypes.string,
@@ -289,6 +307,7 @@ ConfirmationCreateAccountForm.propTypes = {
     lbl_createAccount_hide: PropTypes.string,
     lbl_createAccount_heading: PropTypes.string,
   }),
+  passwordLabels: PropTypes.shape({}),
 };
 
 ConfirmationCreateAccountForm.defaultProps = {
@@ -296,6 +315,7 @@ ConfirmationCreateAccountForm.defaultProps = {
   isPromptForUserDetails: false,
   userInformation: {},
   createAccountSuccess: null,
+  createAccountError: '',
   labels: {
     lbl_createAccount_emailAddress: '',
     lbl_createAccount_password: '',
@@ -311,6 +331,7 @@ ConfirmationCreateAccountForm.defaultProps = {
     lbl_createAccount_hide: '',
     lbl_createAccount_heading: '',
   },
+  passwordLabels: {},
 };
 
 const withReduxForm = reduxForm({

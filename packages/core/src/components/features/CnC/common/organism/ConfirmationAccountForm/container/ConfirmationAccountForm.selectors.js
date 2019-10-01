@@ -7,6 +7,9 @@ const getCreateAccountSuccess = createSelector(
   orderConfirmation => orderConfirmation.get('createAccountSuccess')
 );
 
+const getPasswordLabels = state =>
+  state.Labels && state.Labels.global && state.Labels.global.password;
+
 const getRegistrationLabels = state =>
   state.Labels && state.Labels.global && state.Labels.global.registration;
 
@@ -53,4 +56,5 @@ const getCreateAccountLabels = createSelector(
 export default {
   getCreateAccountLabels,
   getCreateAccountSuccess,
+  getPasswordLabels,
 };
