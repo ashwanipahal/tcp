@@ -13,6 +13,7 @@ const GiftServicesHeader = styled.View`
   flex-direction: row;
 `;
 const StyledAnchor = styled.View`
+  margin-top: ${props => props.theme.spacing.ELEM_SPACING.XXXS};
   margin-left: ${props => props.theme.spacing.ELEM_SPACING.XS};
 `;
 
