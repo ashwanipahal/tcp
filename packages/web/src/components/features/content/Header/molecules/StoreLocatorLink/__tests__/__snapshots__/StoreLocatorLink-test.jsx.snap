@@ -1,6 +1,6 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`StoreLocatorLinkVanilla component renders correctly when a fav store is passed 1`] = `
+exports[`StoreLocatorLink component renders correctly when a fav store is passed 1`] = `
 <Fragment>
   <Styled(Anchor)
     anchorVariation="primary"
@@ -59,7 +59,7 @@ exports[`StoreLocatorLinkVanilla component renders correctly when a fav store is
 </Fragment>
 `;
 
-exports[`StoreLocatorLinkVanilla component renders correctly with no store is passed 1`] = `
+exports[`StoreLocatorLink component renders correctly with no store is passed 1`] = `
 <Fragment>
   <Styled(Anchor)
     anchorVariation="primary"

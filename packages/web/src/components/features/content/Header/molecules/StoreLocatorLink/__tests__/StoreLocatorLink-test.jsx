@@ -3,7 +3,7 @@ import { shallow } from 'enzyme';
 import { StoreLocatorLinkVanilla } from '../views/StoreLocatorLink';
 import mockData from '../mock';
 
-describe('StoreLocatorLinkVanilla component', () => {
+describe('StoreLocatorLink component', () => {
   it('renders correctly when a fav store is passed', () => {
     const props = {
       className: 'test',

@@ -38,7 +38,7 @@ export class StoreDetailContainer extends PureComponent {
           this.navigateToNestedRoute = navigateToNestedRoute;
           this.UrlHandler = UrlHandler;
           this.validateExternalUrl = validateExternalUrl;
-          this.isAndroid = isAndroid();
+          this.isAndroid = isAndroid && isAndroid();
         }
       )
       .catch(error => {
@@ -196,7 +196,10 @@ StoreDetailContainer.defaultProps = {
       address: {},
     },
     hours: {},
-    features: {},
+    features: {
+      mallType: '',
+      entranceType: '',
+    },
   }),
   navigation: {},
 };
