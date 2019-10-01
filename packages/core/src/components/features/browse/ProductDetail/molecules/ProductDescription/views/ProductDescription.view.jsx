@@ -95,34 +95,30 @@ class ProductDetailDescription extends React.PureComponent {
                 {shortDescription}
               </BodyCopy>
             )}
-            {shortDescription && (
-              <div
-                className={`${isShowMore ? 'show-more-expanded' : ''} ${
-                  !shortDescription ? 'introduction-text extra-gap' : 'introduction-text'
-                }`}
-                ref={divElement => {
-                  this.divElement = divElement;
-                }}
-              >
-                {longDescription && (
-                  <BodyCopy
-                    className="list-content"
-                    component="ul"
-                    dangerouslySetInnerHTML={{ __html: longDescription }}
-                    fontSize="fs14"
-                    fontFamily="secondary"
-                  />
-                )}
+            <div
+              className={`introduction-text ${isShowMore ? 'show-more-expanded' : ''}`}
+              ref={divElement => {
+                this.divElement = divElement;
+              }}
+            >
+              {longDescription && (
                 <BodyCopy
-                  className="claim-message"
-                  component="aside"
+                  className="list-content"
+                  component="ul"
+                  dangerouslySetInnerHTML={{ __html: longDescription }}
                   fontSize="fs14"
                   fontFamily="secondary"
-                >
-                  Big Fashion, Little Prices
-                </BodyCopy>
-              </div>
-            )}
+                />
+              )}
+              <BodyCopy
+                className="claim-message"
+                component="aside"
+                fontSize="fs14"
+                fontFamily="secondary"
+              >
+                Big Fashion, Little Prices
+              </BodyCopy>
+            </div>
             {descAvail && (
               <div className="product-detail-footer">
                 {getButton}

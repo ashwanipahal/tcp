@@ -70,6 +70,7 @@ export default css`
     }
     .button-wrapper {
       border: none;
+      outline: none;
     }
   }
 `;
