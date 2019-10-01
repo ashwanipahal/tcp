@@ -1814,12 +1814,12 @@ exports[`StoresIntlTile component should render correctly with stores data 1`] =
                                   "componentStyle": ComponentStyle {
                                     "componentId": "sc-bxivhb",
                                     "isStatic": false,
-                                    "lastClassName": "blbuaW",
+                                    "lastClassName": "fVFGLK",
                                     "rules": Array [
                                       "
   ",
                                       "
- padding-top: ",
+  padding-top: ",
                                       [Function],
                                       ";
 ",
@@ -1848,7 +1848,7 @@ exports[`StoresIntlTile component should render correctly with stores data 1`] =
                               storeName="Shoppers Stop GVK Mall"
                             >
                               <StoreAddressIntl
-                                className="sc-bxivhb blbuaW"
+                                className="sc-bxivhb fVFGLK"
                                 isShopInShop={true}
                                 labels={
                                   Object {
@@ -1859,7 +1859,7 @@ exports[`StoresIntlTile component should render correctly with stores data 1`] =
                                 storeName="Shoppers Stop GVK Mall"
                               >
                                 <div
-                                  className="sc-bxivhb blbuaW"
+                                  className="sc-bxivhb fVFGLK"
                                 >
                                   <styled.h5>
                                     <StyledComponent
@@ -1922,7 +1922,7 @@ exports[`StoresIntlTile component should render correctly with stores data 1`] =
                                           "componentStyle": ComponentStyle {
                                             "componentId": "sc-htpNat",
                                             "isStatic": false,
-                                            "lastClassName": "gtQunM",
+                                            "lastClassName": "dzqlYs",
                                             "rules": Array [
                                               "
   display: inline-block;
@@ -1937,7 +1937,7 @@ exports[`StoresIntlTile component should render correctly with stores data 1`] =
                                               ";
   line-height: ",
                                               [Function],
-                                              "
+                                              ";
   padding-top: ",
                                               [Function],
                                               ";
@@ -1953,12 +1953,12 @@ exports[`StoresIntlTile component should render correctly with stores data 1`] =
   background-color: ",
                                               [Function],
                                               ";
-  color: #FFFFFF;
+  color: #ffffff;
   text-transform: uppercase;
   border-top-right-radius: ",
                                               [Function],
                                               ";
-  border-bottom-right-radius:",
+  border-bottom-right-radius: ",
                                               [Function],
                                               ";
   margin-bottom: ",
@@ -1980,7 +1980,7 @@ exports[`StoresIntlTile component should render correctly with stores data 1`] =
                                       forwardedRef={null}
                                     >
                                       <div
-                                        className="sc-htpNat gtQunM"
+                                        className="sc-htpNat dzqlYs"
                                       >
                                         shop-in-shop
                                       </div>
@@ -2148,12 +2148,12 @@ exports[`StoresIntlTile component should render correctly with stores data 1`] =
                                   "componentStyle": ComponentStyle {
                                     "componentId": "sc-bxivhb",
                                     "isStatic": false,
-                                    "lastClassName": "blbuaW",
+                                    "lastClassName": "fVFGLK",
                                     "rules": Array [
                                       "
   ",
                                       "
- padding-top: ",
+  padding-top: ",
                                       [Function],
                                       ";
 ",
@@ -2182,7 +2182,7 @@ exports[`StoresIntlTile component should render correctly with stores data 1`] =
                               storeName="Shoppers Stop Inorbit Cyberabad"
                             >
                               <StoreAddressIntl
-                                className="sc-bxivhb blbuaW"
+                                className="sc-bxivhb fVFGLK"
                                 isShopInShop={true}
                                 labels={
                                   Object {
@@ -2193,7 +2193,7 @@ exports[`StoresIntlTile component should render correctly with stores data 1`] =
                                 storeName="Shoppers Stop Inorbit Cyberabad"
                               >
                                 <div
-                                  className="sc-bxivhb blbuaW"
+                                  className="sc-bxivhb fVFGLK"
                                 >
                                   <styled.h5>
                                     <StyledComponent
@@ -2256,7 +2256,7 @@ exports[`StoresIntlTile component should render correctly with stores data 1`] =
                                           "componentStyle": ComponentStyle {
                                             "componentId": "sc-htpNat",
                                             "isStatic": false,
-                                            "lastClassName": "gtQunM",
+                                            "lastClassName": "dzqlYs",
                                             "rules": Array [
                                               "
   display: inline-block;
@@ -2271,7 +2271,7 @@ exports[`StoresIntlTile component should render correctly with stores data 1`] =
                                               ";
   line-height: ",
                                               [Function],
-                                              "
+                                              ";
   padding-top: ",
                                               [Function],
                                               ";
@@ -2287,12 +2287,12 @@ exports[`StoresIntlTile component should render correctly with stores data 1`] =
   background-color: ",
                                               [Function],
                                               ";
-  color: #FFFFFF;
+  color: #ffffff;
   text-transform: uppercase;
   border-top-right-radius: ",
                                               [Function],
                                               ";
-  border-bottom-right-radius:",
+  border-bottom-right-radius: ",
                                               [Function],
                                               ";
   margin-bottom: ",
@@ -2314,7 +2314,7 @@ exports[`StoresIntlTile component should render correctly with stores data 1`] =
                                       forwardedRef={null}
                                     >
                                       <div
-                                        className="sc-htpNat gtQunM"
+                                        className="sc-htpNat dzqlYs"
                                       >
                                         shop-in-shop
                                       </div>
@@ -2482,12 +2482,12 @@ exports[`StoresIntlTile component should render correctly with stores data 1`] =
                                   "componentStyle": ComponentStyle {
                                     "componentId": "sc-bxivhb",
                                     "isStatic": false,
-                                    "lastClassName": "blbuaW",
+                                    "lastClassName": "fVFGLK",
                                     "rules": Array [
                                       "
   ",
                                       "
- padding-top: ",
+  padding-top: ",
                                       [Function],
                                       ";
 ",
@@ -2516,7 +2516,7 @@ exports[`StoresIntlTile component should render correctly with stores data 1`] =
                               storeName="High Street Phoenix"
                             >
                               <StoreAddressIntl
-                                className="sc-bxivhb blbuaW"
+                                className="sc-bxivhb fVFGLK"
                                 isShopInShop={false}
                                 labels={
                                   Object {
@@ -2527,7 +2527,7 @@ exports[`StoresIntlTile component should render correctly with stores data 1`] =
                                 storeName="High Street Phoenix"
                               >
                                 <div
-                                  className="sc-bxivhb blbuaW"
+                                  className="sc-bxivhb fVFGLK"
                                 >
                                   <styled.h5>
                                     <StyledComponent
@@ -2743,12 +2743,12 @@ exports[`StoresIntlTile component should render correctly with stores data 1`] =
                                   "componentStyle": ComponentStyle {
                                     "componentId": "sc-bxivhb",
                                     "isStatic": false,
-                                    "lastClassName": "blbuaW",
+                                    "lastClassName": "fVFGLK",
                                     "rules": Array [
                                       "
   ",
                                       "
- padding-top: ",
+  padding-top: ",
                                       [Function],
                                       ";
 ",
@@ -2777,7 +2777,7 @@ exports[`StoresIntlTile component should render correctly with stores data 1`] =
                               storeName="Shoppers Stop Majeera"
                             >
                               <StoreAddressIntl
-                                className="sc-bxivhb blbuaW"
+                                className="sc-bxivhb fVFGLK"
                                 isShopInShop={true}
                                 labels={
                                   Object {
@@ -2788,7 +2788,7 @@ exports[`StoresIntlTile component should render correctly with stores data 1`] =
                                 storeName="Shoppers Stop Majeera"
                               >
                                 <div
-                                  className="sc-bxivhb blbuaW"
+                                  className="sc-bxivhb fVFGLK"
                                 >
                                   <styled.h5>
                                     <StyledComponent
@@ -2851,7 +2851,7 @@ exports[`StoresIntlTile component should render correctly with stores data 1`] =
                                           "componentStyle": ComponentStyle {
                                             "componentId": "sc-htpNat",
                                             "isStatic": false,
-                                            "lastClassName": "gtQunM",
+                                            "lastClassName": "dzqlYs",
                                             "rules": Array [
                                               "
   display: inline-block;
@@ -2866,7 +2866,7 @@ exports[`StoresIntlTile component should render correctly with stores data 1`] =
                                               ";
   line-height: ",
                                               [Function],
-                                              "
+                                              ";
   padding-top: ",
                                               [Function],
                                               ";
@@ -2882,12 +2882,12 @@ exports[`StoresIntlTile component should render correctly with stores data 1`] =
   background-color: ",
                                               [Function],
                                               ";
-  color: #FFFFFF;
+  color: #ffffff;
   text-transform: uppercase;
   border-top-right-radius: ",
                                               [Function],
                                               ";
-  border-bottom-right-radius:",
+  border-bottom-right-radius: ",
                                               [Function],
                                               ";
   margin-bottom: ",
@@ -2909,7 +2909,7 @@ exports[`StoresIntlTile component should render correctly with stores data 1`] =
                                       forwardedRef={null}
                                     >
                                       <div
-                                        className="sc-htpNat gtQunM"
+                                        className="sc-htpNat dzqlYs"
                                       >
                                         shop-in-shop
                                       </div>
@@ -3077,12 +3077,12 @@ exports[`StoresIntlTile component should render correctly with stores data 1`] =
                                   "componentStyle": ComponentStyle {
                                     "componentId": "sc-bxivhb",
                                     "isStatic": false,
-                                    "lastClassName": "blbuaW",
+                                    "lastClassName": "fVFGLK",
                                     "rules": Array [
                                       "
   ",
                                       "
- padding-top: ",
+  padding-top: ",
                                       [Function],
                                       ";
 ",
@@ -3111,7 +3111,7 @@ exports[`StoresIntlTile component should render correctly with stores data 1`] =
                               storeName="Iconic Alpha One"
                             >
                               <StoreAddressIntl
-                                className="sc-bxivhb blbuaW"
+                                className="sc-bxivhb fVFGLK"
                                 isShopInShop={true}
                                 labels={
                                   Object {
@@ -3122,7 +3122,7 @@ exports[`StoresIntlTile component should render correctly with stores data 1`] =
                                 storeName="Iconic Alpha One"
                               >
                                 <div
-                                  className="sc-bxivhb blbuaW"
+                                  className="sc-bxivhb fVFGLK"
                                 >
                                   <styled.h5>
                                     <StyledComponent
@@ -3185,7 +3185,7 @@ exports[`StoresIntlTile component should render correctly with stores data 1`] =
                                           "componentStyle": ComponentStyle {
                                             "componentId": "sc-htpNat",
                                             "isStatic": false,
-                                            "lastClassName": "gtQunM",
+                                            "lastClassName": "dzqlYs",
                                             "rules": Array [
                                               "
   display: inline-block;
@@ -3200,7 +3200,7 @@ exports[`StoresIntlTile component should render correctly with stores data 1`] =
                                               ";
   line-height: ",
                                               [Function],
-                                              "
+                                              ";
   padding-top: ",
                                               [Function],
                                               ";
@@ -3216,12 +3216,12 @@ exports[`StoresIntlTile component should render correctly with stores data 1`] =
   background-color: ",
                                               [Function],
                                               ";
-  color: #FFFFFF;
+  color: #ffffff;
   text-transform: uppercase;
   border-top-right-radius: ",
                                               [Function],
                                               ";
-  border-bottom-right-radius:",
+  border-bottom-right-radius: ",
                                               [Function],
                                               ";
   margin-bottom: ",
@@ -3243,7 +3243,7 @@ exports[`StoresIntlTile component should render correctly with stores data 1`] =
                                       forwardedRef={null}
                                     >
                                       <div
-                                        className="sc-htpNat gtQunM"
+                                        className="sc-htpNat dzqlYs"
                                       >
                                         shop-in-shop
                                       </div>
@@ -3411,12 +3411,12 @@ exports[`StoresIntlTile component should render correctly with stores data 1`] =
                                   "componentStyle": ComponentStyle {
                                     "componentId": "sc-bxivhb",
                                     "isStatic": false,
-                                    "lastClassName": "blbuaW",
+                                    "lastClassName": "fVFGLK",
                                     "rules": Array [
                                       "
   ",
                                       "
- padding-top: ",
+  padding-top: ",
                                       [Function],
                                       ";
 ",
@@ -3445,7 +3445,7 @@ exports[`StoresIntlTile component should render correctly with stores data 1`] =
                               storeName="South City Mall"
                             >
                               <StoreAddressIntl
-                                className="sc-bxivhb blbuaW"
+                                className="sc-bxivhb fVFGLK"
                                 isShopInShop={false}
                                 labels={
                                   Object {
@@ -3456,7 +3456,7 @@ exports[`StoresIntlTile component should render correctly with stores data 1`] =
                                 storeName="South City Mall"
                               >
                                 <div
-                                  className="sc-bxivhb blbuaW"
+                                  className="sc-bxivhb fVFGLK"
                                 >
                                   <styled.h5>
                                     <StyledComponent
@@ -3672,12 +3672,12 @@ exports[`StoresIntlTile component should render correctly with stores data 1`] =
                                   "componentStyle": ComponentStyle {
                                     "componentId": "sc-bxivhb",
                                     "isStatic": false,
-                                    "lastClassName": "blbuaW",
+                                    "lastClassName": "fVFGLK",
                                     "rules": Array [
                                       "
   ",
                                       "
- padding-top: ",
+  padding-top: ",
                                       [Function],
                                       ";
 ",
@@ -3706,7 +3706,7 @@ exports[`StoresIntlTile component should render correctly with stores data 1`] =
                               storeName="MBD Ludhiana"
                             >
                               <StoreAddressIntl
-                                className="sc-bxivhb blbuaW"
+                                className="sc-bxivhb fVFGLK"
                                 isShopInShop={false}
                                 labels={
                                   Object {
@@ -3717,7 +3717,7 @@ exports[`StoresIntlTile component should render correctly with stores data 1`] =
                                 storeName="MBD Ludhiana"
                               >
                                 <div
-                                  className="sc-bxivhb blbuaW"
+                                  className="sc-bxivhb fVFGLK"
                                 >
                                   <styled.h5>
                                     <StyledComponent
@@ -3933,12 +3933,12 @@ exports[`StoresIntlTile component should render correctly with stores data 1`] =
                                   "componentStyle": ComponentStyle {
                                     "componentId": "sc-bxivhb",
                                     "isStatic": false,
-                                    "lastClassName": "blbuaW",
+                                    "lastClassName": "fVFGLK",
                                     "rules": Array [
                                       "
   ",
                                       "
- padding-top: ",
+  padding-top: ",
                                       [Function],
                                       ";
 ",
@@ -3967,7 +3967,7 @@ exports[`StoresIntlTile component should render correctly with stores data 1`] =
                               storeName="Iconic Forum Sujana Mall"
                             >
                               <StoreAddressIntl
-                                className="sc-bxivhb blbuaW"
+                                className="sc-bxivhb fVFGLK"
                                 isShopInShop={true}
                                 labels={
                                   Object {
@@ -3978,7 +3978,7 @@ exports[`StoresIntlTile component should render correctly with stores data 1`] =
                                 storeName="Iconic Forum Sujana Mall"
                               >
                                 <div
-                                  className="sc-bxivhb blbuaW"
+                                  className="sc-bxivhb fVFGLK"
                                 >
                                   <styled.h5>
                                     <StyledComponent
@@ -4041,7 +4041,7 @@ exports[`StoresIntlTile component should render correctly with stores data 1`] =
                                           "componentStyle": ComponentStyle {
                                             "componentId": "sc-htpNat",
                                             "isStatic": false,
-                                            "lastClassName": "gtQunM",
+                                            "lastClassName": "dzqlYs",
                                             "rules": Array [
                                               "
   display: inline-block;
@@ -4056,7 +4056,7 @@ exports[`StoresIntlTile component should render correctly with stores data 1`] =
                                               ";
   line-height: ",
                                               [Function],
-                                              "
+                                              ";
   padding-top: ",
                                               [Function],
                                               ";
@@ -4072,12 +4072,12 @@ exports[`StoresIntlTile component should render correctly with stores data 1`] =
   background-color: ",
                                               [Function],
                                               ";
-  color: #FFFFFF;
+  color: #ffffff;
   text-transform: uppercase;
   border-top-right-radius: ",
                                               [Function],
                                               ";
-  border-bottom-right-radius:",
+  border-bottom-right-radius: ",
                                               [Function],
                                               ";
   margin-bottom: ",
@@ -4099,7 +4099,7 @@ exports[`StoresIntlTile component should render correctly with stores data 1`] =
                                       forwardedRef={null}
                                     >
                                       <div
-                                        className="sc-htpNat gtQunM"
+                                        className="sc-htpNat dzqlYs"
                                       >
                                         shop-in-shop
                                       </div>
@@ -4267,12 +4267,12 @@ exports[`StoresIntlTile component should render correctly with stores data 1`] =
                                   "componentStyle": ComponentStyle {
                                     "componentId": "sc-bxivhb",
                                     "isStatic": false,
-                                    "lastClassName": "blbuaW",
+                                    "lastClassName": "fVFGLK",
                                     "rules": Array [
                                       "
   ",
                                       "
- padding-top: ",
+  padding-top: ",
                                       [Function],
                                       ";
 ",
@@ -4301,7 +4301,7 @@ exports[`StoresIntlTile component should render correctly with stores data 1`] =
                               storeName="Shoppers Stop Inorbit Cyberabad"
                             >
                               <StoreAddressIntl
-                                className="sc-bxivhb blbuaW"
+                                className="sc-bxivhb fVFGLK"
                                 isShopInShop={true}
                                 labels={
                                   Object {
@@ -4312,7 +4312,7 @@ exports[`StoresIntlTile component should render correctly with stores data 1`] =
                                 storeName="Shoppers Stop Inorbit Cyberabad"
                               >
                                 <div
-                                  className="sc-bxivhb blbuaW"
+                                  className="sc-bxivhb fVFGLK"
                                 >
                                   <styled.h5>
                                     <StyledComponent
@@ -4375,7 +4375,7 @@ exports[`StoresIntlTile component should render correctly with stores data 1`] =
                                           "componentStyle": ComponentStyle {
                                             "componentId": "sc-htpNat",
                                             "isStatic": false,
-                                            "lastClassName": "gtQunM",
+                                            "lastClassName": "dzqlYs",
                                             "rules": Array [
                                               "
   display: inline-block;
@@ -4390,7 +4390,7 @@ exports[`StoresIntlTile component should render correctly with stores data 1`] =
                                               ";
   line-height: ",
                                               [Function],
-                                              "
+                                              ";
   padding-top: ",
                                               [Function],
                                               ";
@@ -4406,12 +4406,12 @@ exports[`StoresIntlTile component should render correctly with stores data 1`] =
   background-color: ",
                                               [Function],
                                               ";
-  color: #FFFFFF;
+  color: #ffffff;
   text-transform: uppercase;
   border-top-right-radius: ",
                                               [Function],
                                               ";
-  border-bottom-right-radius:",
+  border-bottom-right-radius: ",
                                               [Function],
                                               ";
   margin-bottom: ",
@@ -4433,7 +4433,7 @@ exports[`StoresIntlTile component should render correctly with stores data 1`] =
                                       forwardedRef={null}
                                     >
                                       <div
-                                        className="sc-htpNat gtQunM"
+                                        className="sc-htpNat dzqlYs"
                                       >
                                         shop-in-shop
                                       </div>
@@ -4601,12 +4601,12 @@ exports[`StoresIntlTile component should render correctly with stores data 1`] =
                                   "componentStyle": ComponentStyle {
                                     "componentId": "sc-bxivhb",
                                     "isStatic": false,
-                                    "lastClassName": "blbuaW",
+                                    "lastClassName": "fVFGLK",
                                     "rules": Array [
                                       "
   ",
                                       "
- padding-top: ",
+  padding-top: ",
                                       [Function],
                                       ";
 ",
@@ -4635,7 +4635,7 @@ exports[`StoresIntlTile component should render correctly with stores data 1`] =
                               storeName="High Street Phoenix"
                             >
                               <StoreAddressIntl
-                                className="sc-bxivhb blbuaW"
+                                className="sc-bxivhb fVFGLK"
                                 isShopInShop={false}
                                 labels={
                                   Object {
@@ -4646,7 +4646,7 @@ exports[`StoresIntlTile component should render correctly with stores data 1`] =
                                 storeName="High Street Phoenix"
                               >
                                 <div
-                                  className="sc-bxivhb blbuaW"
+                                  className="sc-bxivhb fVFGLK"
                                 >
                                   <styled.h5>
                                     <StyledComponent
@@ -4862,12 +4862,12 @@ exports[`StoresIntlTile component should render correctly with stores data 1`] =
                                   "componentStyle": ComponentStyle {
                                     "componentId": "sc-bxivhb",
                                     "isStatic": false,
-                                    "lastClassName": "blbuaW",
+                                    "lastClassName": "fVFGLK",
                                     "rules": Array [
                                       "
   ",
                                       "
- padding-top: ",
+  padding-top: ",
                                       [Function],
                                       ";
 ",
@@ -4896,7 +4896,7 @@ exports[`StoresIntlTile component should render correctly with stores data 1`] =
                               storeName="Shoppers Stop Majeera"
                             >
                               <StoreAddressIntl
-                                className="sc-bxivhb blbuaW"
+                                className="sc-bxivhb fVFGLK"
                                 isShopInShop={true}
                                 labels={
                                   Object {
@@ -4907,7 +4907,7 @@ exports[`StoresIntlTile component should render correctly with stores data 1`] =
                                 storeName="Shoppers Stop Majeera"
                               >
                                 <div
-                                  className="sc-bxivhb blbuaW"
+                                  className="sc-bxivhb fVFGLK"
                                 >
                                   <styled.h5>
                                     <StyledComponent
@@ -4970,7 +4970,7 @@ exports[`StoresIntlTile component should render correctly with stores data 1`] =
                                           "componentStyle": ComponentStyle {
                                             "componentId": "sc-htpNat",
                                             "isStatic": false,
-                                            "lastClassName": "gtQunM",
+                                            "lastClassName": "dzqlYs",
                                             "rules": Array [
                                               "
   display: inline-block;
@@ -4985,7 +4985,7 @@ exports[`StoresIntlTile component should render correctly with stores data 1`] =
                                               ";
   line-height: ",
                                               [Function],
-                                              "
+                                              ";
   padding-top: ",
                                               [Function],
                                               ";
@@ -5001,12 +5001,12 @@ exports[`StoresIntlTile component should render correctly with stores data 1`] =
   background-color: ",
                                               [Function],
                                               ";
-  color: #FFFFFF;
+  color: #ffffff;
   text-transform: uppercase;
   border-top-right-radius: ",
                                               [Function],
                                               ";
-  border-bottom-right-radius:",
+  border-bottom-right-radius: ",
                                               [Function],
                                               ";
   margin-bottom: ",
@@ -5028,7 +5028,7 @@ exports[`StoresIntlTile component should render correctly with stores data 1`] =
                                       forwardedRef={null}
                                     >
                                       <div
-                                        className="sc-htpNat gtQunM"
+                                        className="sc-htpNat dzqlYs"
                                       >
                                         shop-in-shop
                                       </div>
@@ -5196,12 +5196,12 @@ exports[`StoresIntlTile component should render correctly with stores data 1`] =
                                   "componentStyle": ComponentStyle {
                                     "componentId": "sc-bxivhb",
                                     "isStatic": false,
-                                    "lastClassName": "blbuaW",
+                                    "lastClassName": "fVFGLK",
                                     "rules": Array [
                                       "
   ",
                                       "
- padding-top: ",
+  padding-top: ",
                                       [Function],
                                       ";
 ",
@@ -5230,7 +5230,7 @@ exports[`StoresIntlTile component should render correctly with stores data 1`] =
                               storeName="Shoppers Stop Inorbit Cyberabad"
                             >
                               <StoreAddressIntl
-                                className="sc-bxivhb blbuaW"
+                                className="sc-bxivhb fVFGLK"
                                 isShopInShop={true}
                                 labels={
                                   Object {
@@ -5241,7 +5241,7 @@ exports[`StoresIntlTile component should render correctly with stores data 1`] =
                                 storeName="Shoppers Stop Inorbit Cyberabad"
                               >
                                 <div
-                                  className="sc-bxivhb blbuaW"
+                                  className="sc-bxivhb fVFGLK"
                                 >
                                   <styled.h5>
                                     <StyledComponent
@@ -5304,7 +5304,7 @@ exports[`StoresIntlTile component should render correctly with stores data 1`] =
                                           "componentStyle": ComponentStyle {
                                             "componentId": "sc-htpNat",
                                             "isStatic": false,
-                                            "lastClassName": "gtQunM",
+                                            "lastClassName": "dzqlYs",
                                             "rules": Array [
                                               "
   display: inline-block;
@@ -5319,7 +5319,7 @@ exports[`StoresIntlTile component should render correctly with stores data 1`] =
                                               ";
   line-height: ",
                                               [Function],
-                                              "
+                                              ";
   padding-top: ",
                                               [Function],
                                               ";
@@ -5335,12 +5335,12 @@ exports[`StoresIntlTile component should render correctly with stores data 1`] =
   background-color: ",
                                               [Function],
                                               ";
-  color: #FFFFFF;
+  color: #ffffff;
   text-transform: uppercase;
   border-top-right-radius: ",
                                               [Function],
                                               ";
-  border-bottom-right-radius:",
+  border-bottom-right-radius: ",
                                               [Function],
                                               ";
   margin-bottom: ",
@@ -5362,7 +5362,7 @@ exports[`StoresIntlTile component should render correctly with stores data 1`] =
                                       forwardedRef={null}
                                     >
                                       <div
-                                        className="sc-htpNat gtQunM"
+                                        className="sc-htpNat dzqlYs"
                                       >
                                         shop-in-shop
                                       </div>
@@ -5530,12 +5530,12 @@ exports[`StoresIntlTile component should render correctly with stores data 1`] =
                                   "componentStyle": ComponentStyle {
                                     "componentId": "sc-bxivhb",
                                     "isStatic": false,
-                                    "lastClassName": "blbuaW",
+                                    "lastClassName": "fVFGLK",
                                     "rules": Array [
                                       "
   ",
                                       "
- padding-top: ",
+  padding-top: ",
                                       [Function],
                                       ";
 ",
@@ -5564,7 +5564,7 @@ exports[`StoresIntlTile component should render correctly with stores data 1`] =
                               storeName="High Street Phoenix"
                             >
                               <StoreAddressIntl
-                                className="sc-bxivhb blbuaW"
+                                className="sc-bxivhb fVFGLK"
                                 isShopInShop={false}
                                 labels={
                                   Object {
@@ -5575,7 +5575,7 @@ exports[`StoresIntlTile component should render correctly with stores data 1`] =
                                 storeName="High Street Phoenix"
                               >
                                 <div
-                                  className="sc-bxivhb blbuaW"
+                                  className="sc-bxivhb fVFGLK"
                                 >
                                   <styled.h5>
                                     <StyledComponent
@@ -5791,12 +5791,12 @@ exports[`StoresIntlTile component should render correctly with stores data 1`] =
                                   "componentStyle": ComponentStyle {
                                     "componentId": "sc-bxivhb",
                                     "isStatic": false,
-                                    "lastClassName": "blbuaW",
+                                    "lastClassName": "fVFGLK",
                                     "rules": Array [
                                       "
   ",
                                       "
- padding-top: ",
+  padding-top: ",
                                       [Function],
                                       ";
 ",
@@ -5825,7 +5825,7 @@ exports[`StoresIntlTile component should render correctly with stores data 1`] =
                               storeName="Shoppers Stop Majeera"
                             >
                               <StoreAddressIntl
-                                className="sc-bxivhb blbuaW"
+                                className="sc-bxivhb fVFGLK"
                                 isShopInShop={true}
                                 labels={
                                   Object {
@@ -5836,7 +5836,7 @@ exports[`StoresIntlTile component should render correctly with stores data 1`] =
                                 storeName="Shoppers Stop Majeera"
                               >
                                 <div
-                                  className="sc-bxivhb blbuaW"
+                                  className="sc-bxivhb fVFGLK"
                                 >
                                   <styled.h5>
                                     <StyledComponent
@@ -5899,7 +5899,7 @@ exports[`StoresIntlTile component should render correctly with stores data 1`] =
                                           "componentStyle": ComponentStyle {
                                             "componentId": "sc-htpNat",
                                             "isStatic": false,
-                                            "lastClassName": "gtQunM",
+                                            "lastClassName": "dzqlYs",
                                             "rules": Array [
                                               "
   display: inline-block;
@@ -5914,7 +5914,7 @@ exports[`StoresIntlTile component should render correctly with stores data 1`] =
                                               ";
   line-height: ",
                                               [Function],
-                                              "
+                                              ";
   padding-top: ",
                                               [Function],
                                               ";
@@ -5930,12 +5930,12 @@ exports[`StoresIntlTile component should render correctly with stores data 1`] =
   background-color: ",
                                               [Function],
                                               ";
-  color: #FFFFFF;
+  color: #ffffff;
   text-transform: uppercase;
   border-top-right-radius: ",
                                               [Function],
                                               ";
-  border-bottom-right-radius:",
+  border-bottom-right-radius: ",
                                               [Function],
                                               ";
   margin-bottom: ",
@@ -5957,7 +5957,7 @@ exports[`StoresIntlTile component should render correctly with stores data 1`] =
                                       forwardedRef={null}
                                     >
                                       <div
-                                        className="sc-htpNat gtQunM"
+                                        className="sc-htpNat dzqlYs"
                                       >
                                         shop-in-shop
                                       </div>
