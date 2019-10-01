@@ -64,11 +64,11 @@ class StoreAddressTile extends PureComponent {
             {!!storeIndex && `${storeIndex}. `}
             {storeName}
           </ListingTitleStoreName>
+        </ListingTileWrapper>
+        <ListingTileWrapper>
           <ListingTitleText>
             {`(${labels.lbl_storelocators_landingpage_openInterval} ${this.getStoreHours()})`}
           </ListingTitleText>
-        </ListingTileWrapper>
-        <ListingTileWrapper>
           <ListingTitleText>
             {`${distance} ${labels.lbl_storelocators_landingpage_milesAway}`}
           </ListingTitleText>
