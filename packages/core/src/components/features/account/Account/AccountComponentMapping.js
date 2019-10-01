@@ -17,6 +17,7 @@ import PointHistoryPage from '../PointHistory';
 import EarnPoints from '../ExtraPoints';
 import PointsClaimPage from '../PointsClaim';
 import Orders from '../Orders';
+import OrderDetails from '../OrderDetails';
 
 const AccountComponentMapping = {
   'address-book': AddressBook,
@@ -40,6 +41,7 @@ const AccountComponentMapping = {
   'extra-points': EarnPoints,
   'points-claim': PointsClaimPage,
   orders: Orders,
+  'order-details': OrderDetails,
 };
 
 export default AccountComponentMapping;
