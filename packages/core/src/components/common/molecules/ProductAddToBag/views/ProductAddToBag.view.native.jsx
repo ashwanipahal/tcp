@@ -14,6 +14,7 @@ import { Button, BodyCopy } from '../../../atoms';
 import { NativeDropDown } from '../../../atoms/index.native';
 import ProductPickupContainer from '../../../organisms/ProductPickup';
 import { getMapSliceForColorProductId } from '../../../../features/browse/ProductListing/molecules/ProductList/utils/productsCommonUtils';
+import ErrorDisplay from '../../../atoms/ErrorDisplay';
 
 class ProductAddToBag extends React.PureComponent<Props> {
   /* Have to define empty constructor because test case fail with error 'TypeError: Cannot read property 'find' of undefined'. So if using PureComponent then mendatory to define constructor */
@@ -100,6 +101,8 @@ class ProductAddToBag extends React.PureComponent<Props> {
     const {
       plpLabels: { addToBag },
       addToBagAction,
+      fitChanged,
+      displayErrorMessage,
     } = this.props;
     return (
       <Button
@@ -111,7 +114,13 @@ class ProductAddToBag extends React.PureComponent<Props> {
         fontSize="fs10"
         fontWeight="extrabold"
         fontFamily="secondary"
-        onPress={addToBagAction}
+        onPress={() => {
+          if (fitChanged) {
+            displayErrorMessage(fitChanged);
+          } else {
+            addToBagAction();
+          }
+        }}
         locator="pdp_color_swatch"
         accessibilityLabel="Add to Bag"
       />
@@ -149,6 +158,7 @@ class ProductAddToBag extends React.PureComponent<Props> {
       selectFit,
       selectSize,
       isErrorMessageDisplayed,
+      errorOnHandleSubmit,
       plpLabels: { errorMessage, size, fit, color },
     } = this.props;
 
@@ -200,6 +210,7 @@ class ProductAddToBag extends React.PureComponent<Props> {
         />
         {this.renderQuantityView()}
         {this.renderPickUpStor()}
+        <ErrorDisplay error={errorOnHandleSubmit} />
         {this.renderAddToBagButton()}
       </View>
     );

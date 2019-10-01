@@ -22,7 +22,14 @@ describe('EarnPointsVanilla component', () => {
           iconImage: '/wcsstore/static/images/download-app.jpg',
         },
       ],
+      earnedPointsNotification: [
+        {
+          transactionDate: '09/17/19',
+          pointsEarned: '5',
+        },
+      ],
       labels: {},
+      earnExtraPointsLabels: {},
       onViewActivityDetails: () => {},
     };
     const component = shallow(<EarnPointsVanilla {...props} />);

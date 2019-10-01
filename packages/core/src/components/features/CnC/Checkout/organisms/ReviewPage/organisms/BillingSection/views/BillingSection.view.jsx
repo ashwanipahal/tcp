@@ -5,7 +5,7 @@ import { Anchor, BodyCopy, Col, Row } from '@tcp/core/src/components/common/atom
 import InputCheckbox from '@tcp/core/src/components/common/atoms/InputCheckbox';
 import { Grid } from '@tcp/core/src/components/common/molecules';
 import Address from '@tcp/core/src/components/common/molecules/Address';
-import CardImage from '@tcp/core/src/components/common/molecules/Card/views/CardImage';
+import CardImage from '@tcp/core/src/components/common/molecules/CardImage';
 import AppliedGiftCards from '../../../molecules/AppliedGiftCards';
 import { CHECKOUT_ROUTES } from '../../../../../Checkout.constants';
 

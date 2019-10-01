@@ -36,6 +36,7 @@ export default {
   active_icon: '/static/images/circle-check.png',
   'circle-check-fill': '/static/images/circle-check-fill.png',
   'circle-error-fill': '/static/images/circle-error-fill.png',
+  'circle-info-fill': '/static/images/circle-info-fill.svg',
   'carousel-big-carrot': '/static/images/right-carousel-carrot.svg',
   smallright: '/static/images/smallright.svg',
   'carousel-big-carrot-left': '/static/images/left-carousel-carrot.svg',
@@ -86,4 +87,7 @@ export default {
   'venmo-logo-blue': '/static/images/venmo_logo_blue.png',
   'sample-receipt': '/static/images/sample-receipt.png',
   'cart-icon-white': '/static/images/bag-white.svg',
+  'facebook-icon': '/static/images/facebook@2x.svg',
+  'twitter-icon': '/static/images/twitter-black.svg',
+  'pinterest-icon': '/static/images/pinterest@2x.svg',
 };

@@ -113,6 +113,8 @@ const BagPageReducer = (state = initialState, action) => {
       return updateItem(state, action.payload, AVAILABILITY.UNAVAILABLE);
     case BAGPAGE_CONSTANTS.SFL_ITEMS_SET_DELETED:
       return setSflItemDeleted(state, action.payload);
+    case BAGPAGE_CONSTANTS.RESET_CART_DATA:
+      return initialState;
     default:
       return returnBagPageReducer(state, action);
   }
