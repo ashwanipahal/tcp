@@ -21,7 +21,6 @@ exports[`AddedToBag Component AddedToBag should render correctly 1`] = `
   onRequestClose={[Function]}
 >
   <TouchableOpacity
-    accessibilityLabel="Tap to close it"
     accessibilityRole="none"
     activeOpacity={0.2}
     onPress={[Function]}
@@ -37,7 +36,7 @@ exports[`AddedToBag Component AddedToBag should render correctly 1`] = `
       accessibilityRole="none"
     >
       <Styled(View)>
-        <Styled(View)>
+        <Styled(SafeAreaView)>
           <Styled(Text)>
             <Styled(BodyCopy)
               accessibilityText=""
@@ -53,7 +52,6 @@ exports[`AddedToBag Component AddedToBag should render correctly 1`] = `
           </Styled(Text)>
           <Styled(View)>
             <Styled(TouchableOpacity)
-              accessibilityLabel="close"
               accessibilityRole="button"
               onPress={[Function]}
             >
@@ -66,7 +64,7 @@ exports[`AddedToBag Component AddedToBag should render correctly 1`] = `
               />
             </Styled(TouchableOpacity)>
           </Styled(View)>
-        </Styled(View)>
+        </Styled(SafeAreaView)>
         <Styled(View)>
           <Styled(ProductInformation)
             data={Object {}}
