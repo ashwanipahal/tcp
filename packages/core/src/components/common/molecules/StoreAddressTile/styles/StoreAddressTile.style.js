@@ -3,9 +3,6 @@ import styled, { css } from 'styled-components';
 export const TileHeader = styled.div`
   .store-listing-header {
     margin-bottom: ${props => props.theme.spacing.ELEM_SPACING.SM};
-    @media ${props => props.theme.mediaQuery.large} {
-      display: flex;
-    }
   }
   .title-one {
     span {

@@ -312,7 +312,6 @@ class StoreAddressTile extends PureComponent {
       <Button
         buttonVariation="fixed-width"
         type="button"
-        fill="BLUE"
         data-locator={locatorSetFavStore}
         onClick={() => {
           setFavoriteStore(store);
