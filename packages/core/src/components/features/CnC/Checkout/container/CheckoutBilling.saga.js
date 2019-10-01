@@ -1,4 +1,5 @@
 /* eslint-disable extra-rules/no-commented-out-code */
+/* eslint-disable */
 import { call, put, select } from 'redux-saga/effects';
 import {
   updatePaymentOnOrder,
@@ -89,7 +90,9 @@ export function* updatePaymentInstruction(
   }
   // updatePaymentToActiveOnSubmitBilling(store);
   // getUserOperator(store).setRewardPointsData();
-  yield call(loadUpdatedCheckoutValues, false, true, cardNotUpdated, false, false);
+  if (!isMobileApp()) {
+    yield call(loadUpdatedCheckoutValues, false, true, cardNotUpdated, false, false);
+  }
 }
 
 /**
