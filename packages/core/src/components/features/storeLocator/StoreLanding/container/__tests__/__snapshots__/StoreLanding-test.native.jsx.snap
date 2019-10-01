@@ -437,6 +437,7 @@ exports[`StoreSearch Container should render StoreLanding Correctly 1`] = `
               },
             }
           }
+          titleClickCb={null}
           variation="listing-header"
         />
       </Styled(View)>
@@ -1162,6 +1163,7 @@ exports[`StoreSearch Container should render StoreLanding Correctly 1`] = `
               },
             }
           }
+          titleClickCb={null}
           variation="listing"
         />
       </Styled(View)>
