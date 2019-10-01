@@ -49,13 +49,13 @@ class InputCheckBox extends React.Component {
     };
   }
 
-  componentWillReceiveProps(nextProps) {
-    const { isChecked: currentState } = this.state;
-    const { input, isChecked } = nextProps;
-    if (isChecked !== currentState) {
-      input.onChange(isChecked);
+  componentDidUpdate(prevProps) {
+    const { isChecked: isCheckedProp } = this.props;
+    const { isChecked: isCheckedState } = this.state;
+    if (prevProps.isChecked !== isCheckedProp && isCheckedProp !== isCheckedState) {
+      /* eslint-disable react/no-did-update-set-state */
       this.setState({
-        isChecked,
+        isChecked: isCheckedProp,
       });
     }
   }
@@ -64,11 +64,15 @@ class InputCheckBox extends React.Component {
     const { isChecked } = this.state;
     const { onClick, id, input } = this.props;
     const checkboxState = !isChecked;
-    input.onChange(checkboxState);
-    this.setState({
-      isChecked: checkboxState,
-    });
-    onClick(checkboxState, id);
+    this.setState(
+      {
+        isChecked: checkboxState,
+      },
+      () => {
+        input.onChange(checkboxState);
+        onClick(checkboxState, id);
+      }
+    );
   };
 
   genCheckedIcon() {
