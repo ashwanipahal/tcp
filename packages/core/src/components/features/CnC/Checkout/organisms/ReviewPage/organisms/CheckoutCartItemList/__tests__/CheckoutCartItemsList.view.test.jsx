@@ -40,6 +40,7 @@ const props = {
   labels: {},
   bagPageLabels: {},
   className: '',
+  gettingSortedItemList: jest.fn(),
 };
 describe('testing block for CheckoutCartItemsListVanilla', () => {
   it('CheckoutCartItemsListVanilla should be rendered correclty ', () => {
@@ -69,6 +70,7 @@ const bossprops = {
   labels: {},
   bagPageLabels: {},
   className: '',
+  gettingSortedItemList: jest.fn(),
 };
 describe('testing block for CheckoutCartItemsListVanilla', () => {
   it('CheckoutCartItemsListVanilla should be rendered correclty ', () => {

@@ -1,6 +1,7 @@
 import { takeLatest, call, put } from 'redux-saga/effects';
 import CREATE_ACCOUNT_CONSTANTS from '../CreateAccount.constants';
 import { getUserInfo } from '../../User/container/User.actions';
+import { navigateXHRAction } from '../../NavigateXHR/container/NavigateXHR.action';
 import { createAccountErr } from './CreateAccount.actions';
 import { createAccountApi } from '../../../../../services/abstractors/account';
 
@@ -21,6 +22,7 @@ export function* createsaga({ payload }) {
         const resErr = getErrorMessage(res);
         return yield put(createAccountErr(resErr));
       }
+      yield put(navigateXHRAction());
       return yield put(getUserInfo());
     }
     const resErr = getErrorMessage(res);

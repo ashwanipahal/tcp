@@ -13,12 +13,6 @@ const styles = css`
     margin-bottom: 16px;
     text-align: center;
   }
-  .thank-you-component {
-    background: ${props => props.theme.colorPalette.white};
-    padding: 20px 0;
-    margin-bottom: 16px;
-    text-align: center;
-  }
 
   .loyalty-banner {
     display: none;

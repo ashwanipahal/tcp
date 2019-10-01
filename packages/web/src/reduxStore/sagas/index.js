@@ -38,6 +38,7 @@ import BagPageSaga from '@tcp/core/src/components/features/CnC/BagPage/container
 import TrackOrderSaga from '@tcp/core/src/components/features/account/TrackOrder/container/TrackOrder.saga';
 import PointsHistorySaga from '@tcp/core/src/components/features/account/common/organism/PointsHistory/container/PointsHistory.saga';
 import EarnExtraPointsSaga from '@tcp/core/src/components/features/account/common/organism/EarnExtraPointsTile/container/EarnExtraPointsTile.saga';
+import EarnedPointsNotificationSaga from '@tcp/core/src/components/features/account/common/organism/EarnExtraPointsTile/container/EarnedPointsNotification.saga';
 import AddAirmilesBannerSaga from '@tcp/core/src/components/features/CnC/common/organism/AirmilesBanner/container/AirmilesBanner.saga';
 import ApplyCreditCardSaga, {
   SubmitInstantCardApplication,
@@ -53,6 +54,8 @@ import PickupStoreSaga from '@tcp/core/src/components/common/organisms/PickupSto
 import ConfirmationPageSaga from '@tcp/core/src/components/features/CnC/Confirmation/container/Confirmation.saga';
 import ProductPickup from '@tcp/core/src/components/common/organisms/ProductPickup/container/ProductPickup.saga';
 import PointsClaimSaga from '@tcp/core/src/components/features/account/PointsClaim/container/PointsClaim.saga';
+import NavigateXHRSaga from '@tcp/core/src/components/features/account/NavigateXHR/container/NavigateXHR.saga';
+import OrdersSaga from '@tcp/core/src/components/features/account/Orders/container/Orders.saga';
 import EmailSignupSaga from '../../components/common/molecules/EmailSignupModal/container/EmailSignupModal.saga';
 import SmsSignupSaga from '../../components/common/molecules/SmsSignupModal/container/SmsSignupModal.saga';
 import CountrySelectorSaga from '../../components/features/content/Header/molecules/CountrySelector/container/CountrySelector.saga';
@@ -98,6 +101,7 @@ export default function* rootSaga() {
     CountrySelectorSaga(),
     PointsHistorySaga(),
     EarnExtraPointsSaga(),
+    EarnedPointsNotificationSaga(),
     ResetPasswordSaga(),
     ApplyCreditCardSaga(),
     ChangePasswordSaga(),
@@ -117,5 +121,7 @@ export default function* rootSaga() {
     QuickViewSaga(),
     PointsClaimSaga(),
     ConfirmationPageSaga(),
+    NavigateXHRSaga(),
+    OrdersSaga(),
   ]);
 }

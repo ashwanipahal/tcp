@@ -4,17 +4,19 @@ exports[`Venmo Payment Button should render Venmo Button correctly 1`] = `
 <div
   className="venmo-container sc-gqjmRU gvHLxz"
 >
-  <button
-    aria-label="Venmo Payment Button"
-    className="venmo-button"
-    onClick={[Function]}
-  >
-    <Styled(Image)
-      alt="Venmo Payment Button"
-      className="venmo-button-image"
-      src="/static/images/venmo_logo_blue.png"
-    />
-  </button>
+  <div>
+    <button
+      aria-label="Venmo Payment Button"
+      className="venmo-button"
+      onClick={[Function]}
+    >
+      <Styled(Image)
+        alt="Venmo Payment Button"
+        className="venmo-button-image"
+        src="/static/images/venmo_logo_blue.png"
+      />
+    </button>
+  </div>
 </div>
 `;
 
@@ -22,16 +24,18 @@ exports[`Venmo Payment Button should render correctly 1`] = `
 <div
   className="venmo-container sc-gqjmRU gvHLxz"
 >
-  <button
-    aria-label="Venmo Payment Button"
-    className="venmo-button"
-    onClick={[Function]}
-  >
-    <Styled(Image)
-      alt="Venmo Payment Button"
-      className="venmo-button-image"
-      src="/static/images/venmo_logo_blue.png"
-    />
-  </button>
+  <div>
+    <button
+      aria-label="Venmo Payment Button"
+      className="venmo-button"
+      onClick={[Function]}
+    >
+      <Styled(Image)
+        alt="Venmo Payment Button"
+        className="venmo-button-image"
+        src="/static/images/venmo_logo_blue.png"
+      />
+    </button>
+  </div>
 </div>
 `;

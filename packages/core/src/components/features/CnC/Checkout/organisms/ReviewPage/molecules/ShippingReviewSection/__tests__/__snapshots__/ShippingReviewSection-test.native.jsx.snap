@@ -25,6 +25,7 @@ exports[`ShippingReviewSection component should renders correctly props are pres
       <Styled(View)>
         <Address
           customStyle={Object {}}
+          fontSize="fs14"
           regularName={true}
           showCountry={true}
           showDefaultText={false}
@@ -102,6 +103,7 @@ exports[`ShippingReviewSection component should renders correctly props not pres
       <Styled(View)>
         <Address
           customStyle={Object {}}
+          fontSize="fs14"
           regularName={true}
           showCountry={true}
           showDefaultText={false}

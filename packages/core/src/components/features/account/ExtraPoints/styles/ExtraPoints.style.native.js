@@ -20,6 +20,13 @@ const MorePointsWrapper = styled.View`
   margin-right: auto;
 `;
 
+const MessageInfoWrapper = styled.View`
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  margin-left: ${props => props.theme.spacing.ELEM_SPACING.SM};
+`;
+
 const FirstInnerTileWrapper = styled.View`
   width: 100%;
   margin-bottom: ${props => props.theme.spacing.ELEM_SPACING.LRG};
@@ -37,5 +44,6 @@ export {
   InnerTileWrapper,
   FirstInnerTileWrapper,
   MprTermsWrapper,
+  MessageInfoWrapper,
   MorePointsWrapper,
 };

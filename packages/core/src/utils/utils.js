@@ -533,7 +533,7 @@ export const parseBoolean = bool => {
 
 export const getFormSKUValue = formValue => {
   return {
-    color: (typeof formValue.color === 'object' && formValue.color.name) || formValue.Quantity,
+    color: (typeof formValue.color === 'object' && formValue.color.name) || formValue.color,
     size: (typeof formValue.Size === 'object' && formValue.Size.name) || formValue.Size,
     quantity:
       (typeof formValue.Quantity === 'object' && formValue.Quantity.name) || formValue.Quantity,
@@ -599,6 +599,7 @@ export const getTranslateDateInformation = (
     day: new Intl.DateTimeFormat(localeType, dayOption).format(currentDate),
     month: new Intl.DateTimeFormat(localeType, monthOption).format(currentDate),
     date: currentDate.getDate(),
+    year: currentDate.getFullYear(),
   };
 };
 const WEEK_DAYS = ['SUN', 'MON', 'TUE', 'WED', 'THU', 'FRI', 'SAT'];
@@ -644,6 +645,26 @@ export function buildStorePageUrlSuffix(storeBasicInfo) {
     .replace(/ /g, '');
 }
 
+export const extractFloat = currency => {
+  try {
+    return !currency
+      ? 0
+      : parseFloat(parseFloat(currency.toString().match(/[+-]?\d+(\.\d+)?/g)[0]).toFixed(2));
+  } catch (e) {
+    return 0;
+  }
+};
+
+/* @method flattenArray - this function takes takes array of array and merge into single array
+ * @param arr { Array } Array of Array
+ * @return {Array}  return array
+ */
+export const flattenArray = arr => {
+  return arr.reduce((flat, toFlatten) => {
+    return flat.concat(Array.isArray(toFlatten) ? flattenArray(toFlatten) : toFlatten);
+  }, []);
+};
+
 export default {
   getPromotionalMessage,
   getIconPath,
@@ -676,4 +697,5 @@ export default {
   getTranslateDateInformation,
   getDateInformation,
   buildStorePageUrlSuffix,
+  extractFloat,
 };

@@ -1,5 +1,6 @@
 import React from 'react';
 import PropTypes from 'prop-types';
+import CardImage from '../../../../common/molecules/CardImage';
 import withStyles from '../../../../common/hoc/withStyles';
 import styles from '../styles/Confirmation.styles';
 import Row from '../../../../common/atoms/Row';
@@ -7,17 +8,38 @@ import Col from '../../../../common/atoms/Col';
 import CheckoutOrderInfo from '../../Checkout/molecules/CheckoutOrderInfoMobile';
 import ThankYouComponent from '../organisms/ThankYouComponent';
 import CONFIRMATION_CONSTANTS from '../Confirmation.constants';
+import VenmoConfirmation from '../../common/molecules/VenmoConfirmation';
+import { constants as VenmoConstants } from '../../../../common/atoms/VenmoPaymentButton/container/VenmoPaymentButton.util';
 
+/** The hard coded values are just to show the template. these will be removed once the components are are in place */
+/**
+ * @function checkIfNotShippingFullName
+ * @description return boolean value if shippingFullname is present .
+ */
 const checkIfShippingFullName = ({ orderNumbersByFullfillmentCenter }) => {
   return orderNumbersByFullfillmentCenter.fullfillmentCenterMap.find(
     center => !!center.shippingFullname
   );
 };
 
+/** The hard coded values are just to show the template. these will be removed once the components are are in place */
+/**
+ * @function checkIfNotShippingFullName
+ * @description return boolean value if shippingFullname is not present .
+ */
 const checkIfNotShippingFullName = ({ orderNumbersByFullfillmentCenter }) => {
   return orderNumbersByFullfillmentCenter.fullfillmentCenterMap.find(
     center => !center.shippingFullname
   );
+};
+
+/** The hard coded values are just to show the template. these will be removed once the components are are in place */
+/**
+ * @function checkIffullfillmentCenterMap
+ * @description return boolean value if fullfillmentCenterMap is present .
+ */
+const checkIffullfillmentCenterMap = orderNumbersByFullfillmentCenter => {
+  return orderNumbersByFullfillmentCenter && orderNumbersByFullfillmentCenter.fullfillmentCenterMap;
 };
 
 /** The hard coded values are just to show the template. these will be removed once the components are are in place */
@@ -36,6 +58,8 @@ const ConfirmationView = ({
   orderDetails,
   orderShippingDetails,
   orderNumbersByFullfillmentCenter,
+  isVenmoPaymentInProgress,
+  venmoPayment,
 }) => {
   const { date, orderNumber, trackingLink } = orderDetails || {};
 
@@ -68,10 +92,7 @@ const ConfirmationView = ({
         orderType: CONFIRMATION_CONSTANTS.ORDER_ITEM_TYPE.ECOM,
       },
     ];
-  } else if (
-    orderNumbersByFullfillmentCenter &&
-    orderNumbersByFullfillmentCenter.fullfillmentCenterMap
-  ) {
+  } else if (checkIffullfillmentCenterMap(orderNumbersByFullfillmentCenter)) {
     fullfillmentCenterData = [...orderNumbersByFullfillmentCenter.fullfillmentCenterMap];
   }
   return (
@@ -96,6 +117,16 @@ const ConfirmationView = ({
             orderNumbersByFullfillmentCenter={orderNumbersByFullfillmentCenter}
             isBossInList={isBossInList}
           />
+          {isVenmoPaymentInProgress && (
+            <VenmoConfirmation isVenmoPaymentInProgress={isVenmoPaymentInProgress} />
+          )}
+          {isVenmoPaymentInProgress && venmoPayment && (
+            <div>
+              <section className="venmo-payment-method-wrapper">
+                <CardImage card={venmoPayment} cardNumber={venmoPayment.userName} />
+              </section>
+            </div>
+          )}
         </Col>
       </Row>
       <Row fullBleed className="placeholder loyalty-banner">
@@ -135,6 +166,12 @@ ConfirmationView.propTypes = {
   labels: PropTypes.shape({}).isRequired,
   encryptedEmailAddress: PropTypes.string,
   orderShippingDetails: PropTypes.shape({}),
+  isVenmoPaymentInProgress: PropTypes.bool,
+  venmoPayment: PropTypes.shape({
+    userName: PropTypes.string,
+    ccBrand: PropTypes.string,
+    ccType: PropTypes.string,
+  }),
 };
 ConfirmationView.defaultProps = {
   className: '',
@@ -143,6 +180,12 @@ ConfirmationView.defaultProps = {
   updateOrderDetailsData: null,
   encryptedEmailAddress: '',
   orderShippingDetails: null,
+  isVenmoPaymentInProgress: false,
+  venmoPayment: {
+    userName: '',
+    ccBrand: VenmoConstants.VENMO,
+    ccType: VenmoConstants.VENMO,
+  },
 };
 export default withStyles(ConfirmationView, styles);
 export { ConfirmationView as ConfirmationViewVanilla };
