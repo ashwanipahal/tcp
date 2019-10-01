@@ -4,6 +4,7 @@ import ModuleH from './ModuleH';
 import ModuleL from './ModuleL';
 import ModuleK from './ModuleK';
 import ModuleN from './ModuleN';
+import ModuleS from './ModuleS';
 import LinkText from './LinkText';
 import ImageGrid from './ImageGrid';
 import PromoBanner from './PromoBanner';
@@ -32,4 +33,5 @@ export {
   ButtonTabs,
   Grid,
   FullScreenImageCarousel,
+  ModuleS,
 };
