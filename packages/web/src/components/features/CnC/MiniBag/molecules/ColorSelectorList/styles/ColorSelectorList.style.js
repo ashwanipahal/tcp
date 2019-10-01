@@ -29,7 +29,7 @@ const dropDownlist = css`
   }
 
   .dropdownDivOverFlow {
-    overflow-y: scroll;
+    overflow-y: auto;
     display: table;
   }
 
