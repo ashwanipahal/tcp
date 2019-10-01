@@ -1,221 +1,146 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
 exports[`DropDownButton component renders correctly 1`] = `
-<StyledComponent
-  buttonsData={
-    Array [
-      Object {
-        "button": Object {
-          "action": "",
-          "external": 0,
-          "target": "",
-          "text": "Girl",
-          "title": "Girl",
-          "url": "/c/girls-clothing",
-        },
-        "image": Object {
-          "alt": "Girl",
-          "crop_d": "",
-          "crop_m": "",
-          "crop_t": "",
-          "title": "Girl",
-          "url": "https://res.cloudinary.com/tcp-dam-test/image/upload/q_auto:best/v1558543115/ecom/assets/content/tcp/us/home/moduled/US-HP-050519-MINIME1_h9cwcd.jpg",
-        },
-      },
-      Object {
-        "button": Object {
-          "action": "",
-          "external": 0,
-          "target": "",
-          "text": "Girl",
-          "title": "Girl",
-          "url": "/c/girls-clothing",
-        },
-        "image": Object {
-          "alt": "Girl",
-          "crop_d": "",
-          "crop_m": "",
-          "crop_t": "",
-          "title": "Girl",
-          "url": "https://res.cloudinary.com/tcp-dam-test/image/upload/q_auto:best/v1558543115/ecom/assets/content/tcp/us/home/moduled/US-HP-050519-MINIME1_h9cwcd.jpg",
-        },
-      },
-      Object {
-        "button": Object {
-          "action": "",
-          "external": 0,
-          "target": "",
-          "text": "Toddler Girl",
-          "title": "Toddler Girl",
-          "url": "/c/toddler-girl-clothes",
-        },
-        "image": Object {
-          "alt": "Girl",
-          "crop_d": "",
-          "crop_m": "",
-          "crop_t": "",
-          "title": "Girl",
-          "url": "https://res.cloudinary.com/tcp-dam-test/image/upload/q_auto:best/v1558543115/ecom/assets/content/tcp/us/home/moduled/US-HP-050519-MINIME1_h9cwcd.jpg",
-        },
-      },
-      Object {
-        "button": Object {
-          "action": "",
-          "external": 0,
-          "target": "",
-          "text": "Boy",
-          "title": "Boy",
-          "url": "/c/boys-clothing",
-        },
-        "image": Object {
-          "alt": "Girl",
-          "crop_d": "",
-          "crop_m": "",
-          "crop_t": "",
-          "title": "Girl",
-          "url": "https://res.cloudinary.com/tcp-dam-test/image/upload/q_auto:best/v1558543115/ecom/assets/content/tcp/us/home/moduled/US-HP-050519-MINIME1_h9cwcd.jpg",
-        },
-      },
-      Object {
-        "button": Object {
-          "action": "",
-          "external": 0,
-          "target": "",
-          "text": "Toddler Boy",
-          "title": "Toddler Boy",
-          "url": "/c/toddler-boy-clothes",
-        },
-        "image": Object {
-          "alt": "Girl",
-          "crop_d": "",
-          "crop_m": "",
-          "crop_t": "",
-          "title": "Girl",
-          "url": "https://res.cloudinary.com/tcp-dam-test/image/upload/q_auto:best/v1558543115/ecom/assets/content/tcp/us/home/moduled/US-HP-050519-MINIME1_h9cwcd.jpg",
-        },
-      },
-      Object {
-        "button": Object {
-          "action": "",
-          "external": 0,
-          "target": "",
-          "text": "Baby",
-          "title": "Baby",
-          "url": "/c/baby-clothes",
-        },
-        "image": Object {
-          "alt": "Girl",
-          "crop_d": "",
-          "crop_m": "",
-          "crop_t": "",
-          "title": "Girl",
-          "url": "https://res.cloudinary.com/tcp-dam-test/image/upload/q_auto:best/v1558543115/ecom/assets/content/tcp/us/home/moduled/US-HP-050519-MINIME1_h9cwcd.jpg",
-        },
-      },
-    ]
-  }
-  className="test"
-  dropdownLabel="Test"
-  forwardedComponent={
-    Object {
-      "$$typeof": Symbol(react.forward_ref),
-      "attrs": Array [],
-      "componentStyle": ComponentStyle {
-        "componentId": "sc-gqjmRU",
-        "isStatic": false,
-        "rules": Array [
-          "
-  ",
-          "
-  &.dropdown-button-wrapper {
-    text-align: center;
-  }
-  .dropdown-button-container {
-    position: relative;
-  }
-  .dropdown-icon {
-    background: url('/static/images/plus.svg');
-    width: 10px;
-    height: 10px;
-    display: inline-block;
-    margin-left: 10px;
-  }
-  .dropdown-icon.is-open {
-    height: 2px;
-    margin-bottom: 3px;
-    background: url('/static/images/minus.svg');
-  }
-  .button-panel {
-    position: absolute;
-    z-index: ",
-          [Function],
-          ";
-    display: none;
-  }
-  .button-panel.is-open {
-    display: block;
-  }
-  .dropdown-button {
-    background: ",
-          [Function],
-          ";
-
-    &.is-open {
-      border-bottom-left-radius: 0;
-      border-bottom-right-radius: 0;
-    }
-  }
-  .dropdown-button:hover,
-  .dropdown-button:focus {
-    background: ",
-          [Function],
-          ";
-  }
-  .dropdown-items {
-    text-align: center;
-  }
-  .dropdown-items:hover,
-  .dropdown-items:focus {
-    background: ",
-          [Function],
-          ";
-  }
-  @media ",
-          [Function],
-          " {
-    .dropdown-button-container {
-      display: inline-block;
-      button {
-        min-width: 188px;
-        height: 42px;
-      }
-    }
-  }
-  @media ",
-          [Function],
-          " {
-    .dropdown-button-container {
-      button {
-        min-width: 210px;
-        height: 51px;
-      }
-    }
-  }
-",
-          ";
-",
-        ],
-      },
-      "displayName": "Styled(DropDownButton)",
-      "foldedComponentIds": Array [],
-      "render": [Function],
-      "styledComponentId": "sc-gqjmRU",
-      "target": [Function],
-      "toString": [Function],
-      "warnTooManyClasses": [Function],
-      "withComponent": [Function],
-    }
-  }
-  forwardedRef={null}
-/>
+<div
+  className="test dropdown-button-wrapper"
+>
+  <div
+    className="dropdown-button-container"
+  >
+    <Styled(Button)
+      buttonVariation="fixed-width"
+      className="dropdown-button "
+      onClick={[Function]}
+    >
+      Test
+      <span
+        className="dropdown-icon "
+      />
+    </Styled(Button)>
+    <div
+      className="button-panel "
+    >
+      <ButtonCTA
+        className="dropdown-items"
+        ctaInfo={
+          Object {
+            "ctaVariation": "fixed-width",
+            "link": Object {
+              "action": "",
+              "external": 0,
+              "target": "",
+              "text": "Girl",
+              "title": "Girl",
+              "url": "/c/girls-clothing",
+            },
+          }
+        }
+        dataLocator="undefined0"
+        dataLocatorCTA=""
+        noCurve={true}
+        uniqueKey="Girl"
+      />
+      <ButtonCTA
+        className="dropdown-items"
+        ctaInfo={
+          Object {
+            "ctaVariation": "fixed-width",
+            "link": Object {
+              "action": "",
+              "external": 0,
+              "target": "",
+              "text": "Girl",
+              "title": "Girl",
+              "url": "/c/girls-clothing",
+            },
+          }
+        }
+        dataLocator="undefined1"
+        dataLocatorCTA=""
+        noCurve={true}
+        uniqueKey="Girl"
+      />
+      <ButtonCTA
+        className="dropdown-items"
+        ctaInfo={
+          Object {
+            "ctaVariation": "fixed-width",
+            "link": Object {
+              "action": "",
+              "external": 0,
+              "target": "",
+              "text": "Toddler Girl",
+              "title": "Toddler Girl",
+              "url": "/c/toddler-girl-clothes",
+            },
+          }
+        }
+        dataLocator="undefined2"
+        dataLocatorCTA=""
+        noCurve={true}
+        uniqueKey="Toddler_Girl"
+      />
+      <ButtonCTA
+        className="dropdown-items"
+        ctaInfo={
+          Object {
+            "ctaVariation": "fixed-width",
+            "link": Object {
+              "action": "",
+              "external": 0,
+              "target": "",
+              "text": "Boy",
+              "title": "Boy",
+              "url": "/c/boys-clothing",
+            },
+          }
+        }
+        dataLocator="undefined3"
+        dataLocatorCTA=""
+        noCurve={true}
+        uniqueKey="Boy"
+      />
+      <ButtonCTA
+        className="dropdown-items"
+        ctaInfo={
+          Object {
+            "ctaVariation": "fixed-width",
+            "link": Object {
+              "action": "",
+              "external": 0,
+              "target": "",
+              "text": "Toddler Boy",
+              "title": "Toddler Boy",
+              "url": "/c/toddler-boy-clothes",
+            },
+          }
+        }
+        dataLocator="undefined4"
+        dataLocatorCTA=""
+        noCurve={true}
+        uniqueKey="Toddler_Boy"
+      />
+      <ButtonCTA
+        className="dropdown-items"
+        ctaInfo={
+          Object {
+            "ctaVariation": "fixed-width",
+            "link": Object {
+              "action": "",
+              "external": 0,
+              "target": "",
+              "text": "Baby",
+              "title": "Baby",
+              "url": "/c/baby-clothes",
+            },
+          }
+        }
+        dataLocator="undefined5"
+        dataLocatorCTA=""
+        noCurve={true}
+        uniqueKey="Baby"
+      />
+    </div>
+  </div>
+</div>
 `;
