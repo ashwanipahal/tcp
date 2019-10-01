@@ -21,10 +21,10 @@ const getUrl = url => {
 };
 export function* fetchPlpProducts({ payload }) {
   try {
-    const { url, formData, sortBySelected } = payload;
+    const { url, formData, sortBySelected, scrollToTop } = payload;
     const location = getUrl(url);
     let state = yield select();
-    yield put(setPlpLoadingState({ isLoadingMore: true }));
+    yield put(setPlpLoadingState({ isLoadingMore: true, isScrollToTop: scrollToTop }));
     let reqObj = operatorInstance.getProductListingBucketedData(
       state,
       location,
@@ -45,17 +45,19 @@ export function* fetchPlpProducts({ payload }) {
         yield put(setListingFirstProductsPage({ ...plpProducts }));
       }
     }
-    yield put(setPlpLoadingState({ isLoadingMore: false }));
+    yield put(setPlpLoadingState({ isLoadingMore: false, isScrollToTop: false }));
   } catch (err) {
     logger.error(err);
   }
 }
 
-export function* fetchMoreProducts() {
+export function* fetchMoreProducts({ payload = {} }) {
   try {
+    const { url } = payload;
+    const location = getUrl(url);
     let state = yield select();
     yield put(setPlpLoadingState({ isLoadingMore: true }));
-    const reqObj = operatorInstance.getMoreBucketedProducts(state);
+    const reqObj = operatorInstance.getMoreBucketedProducts(state, location);
     if (reqObj && reqObj.categoryId) {
       state = yield select();
       const plpProducts = yield call(instanceProductListing.getProducts, reqObj, state);
