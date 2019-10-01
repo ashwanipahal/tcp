@@ -50,6 +50,7 @@ export class BillingPaymentForm extends React.PureComponent {
     super(props);
     this.state = {
       addNewCCState: false,
+      editMode: false,
     };
   }
 
@@ -85,7 +86,7 @@ export class BillingPaymentForm extends React.PureComponent {
    * @function getCheckoutBillingAddress
    * @description returns the checkout billing address form
    */
-  getCheckoutBillingAddress = () => {
+  getCheckoutBillingAddress = ({ editMode } = {}) => {
     const {
       selectedOnFileAddressId,
       userAddresses,
@@ -97,6 +98,8 @@ export class BillingPaymentForm extends React.PureComponent {
       dispatch,
       shippingAddress,
       isSameAsShippingChecked,
+      isEditFormSameAsShippingChecked = false,
+      editFormSelectedOnFileAddressId,
       billingData,
     } = this.props;
     const { addNewCCState } = this.state;
@@ -108,11 +111,16 @@ export class BillingPaymentForm extends React.PureComponent {
         addressLabels={addressLabels}
         dispatch={dispatch}
         shippingAddress={shippingAddress}
-        isSameAsShippingChecked={isSameAsShippingChecked}
+        isSameAsShippingChecked={
+          editMode ? isEditFormSameAsShippingChecked : isSameAsShippingChecked
+        }
         labels={labels}
+        editMode={editMode}
         billingData={billingData}
         userAddresses={userAddresses}
-        selectedOnFileAddressId={selectedOnFileAddressId}
+        selectedOnFileAddressId={
+          editMode ? editFormSelectedOnFileAddressId : selectedOnFileAddressId
+        }
         formName={constants.FORM_NAME}
         addNewCCState={
           addNewCCState ||
@@ -127,7 +135,7 @@ export class BillingPaymentForm extends React.PureComponent {
    * @function getAddNewCCForm
    * @description returns the add new credit card form
    */
-  getAddNewCCForm = () => {
+  getAddNewCCForm = ({ onCardFocus, editMode } = {}) => {
     const {
       cvvCodeRichText,
       cardType,
@@ -152,6 +160,8 @@ export class BillingPaymentForm extends React.PureComponent {
         cvvError={cvvError}
         labels={labels}
         isGuest={isGuest}
+        onCardFocus={onCardFocus}
+        editMode={editMode}
         isSaveToAccountChecked={isSaveToAccountChecked}
         formName={constants.FORM_NAME}
         dispatch={dispatch}
@@ -167,7 +177,6 @@ export class BillingPaymentForm extends React.PureComponent {
    */
   addNewBillingInfoForm = () => {
     const { onFileCardKey, labels, cardList } = this.props;
-    const { addNewCCState } = this.state;
     const creditCardList = getCreditCardList({ cardList });
     return (
       <>
@@ -175,7 +184,7 @@ export class BillingPaymentForm extends React.PureComponent {
           creditCardList.size > 0 &&
           this.getCCDropDown({ labels, creditCardList, onFileCardKey })}
         {this.getAddNewCCForm()}
-        {this.getCheckoutBillingAddress({ ...this.props, creditCardList, addNewCCState })}
+        {this.getCheckoutBillingAddress()}
       </>
     );
   };
@@ -195,7 +204,7 @@ export class BillingPaymentForm extends React.PureComponent {
    * @function getCCDropDown
    * @description returns the credit card drop down if user has credit cards
    */
-  getCCDropDown = ({ labels, creditCardList, onFileCardKey, selectedCard }) => {
+  getCCDropDown = ({ labels, creditCardList, onFileCardKey, selectedCard, editMode }) => {
     const { addNewCCState } = this.state;
     return (
       <Row fullBleed className="elem-mb-XL elem-mt-MED">
@@ -205,7 +214,7 @@ export class BillingPaymentForm extends React.PureComponent {
             small: 6,
             medium: 10,
           }}
-          className="creditCardForm__addressBook"
+          className={`creditCardForm__addressBook ${editMode ? 'disable-drop-down' : ''}`}
         >
           <Field
             selectListTitle=""
@@ -231,12 +240,104 @@ export class BillingPaymentForm extends React.PureComponent {
     );
   };
 
+  setFormToEditState = e => {
+    e.preventDefault();
+    this.cardNumberCleared = false;
+    this.setState({ editMode: true });
+  };
+
+  unsetFormEditState = e => {
+    e.preventDefault();
+    this.setState({ editMode: false });
+  };
+
+  getCartEditForm = React.memo(({ selectedCard }) => {
+    const AddressForm = this.getCheckoutBillingAddress;
+    const { accountNo, ccBrand, ccType, expMonth, expYear, addressDetails: address } = selectedCard;
+    const that = this;
+    class FormView extends React.PureComponent {
+      render() {
+        const { handleSubmit } = this.props;
+        return (
+          <form name={constants.EDIT_FORM_NAME} noValidate onSubmit={handleSubmit}>
+            {that.renderCardDetailsHeading({ hideAnchor: true })}
+            {that.getAddNewCCForm({
+              onCardFocus: that.onEditCardFocus,
+              editMode: true,
+            })}
+            <AddressForm editMode key="123" />
+            <button type="submit">Save</button>
+            <button type="button" onClick={that.unsetFormEditState}>
+              Cancel
+            </button>
+          </form>
+        );
+      }
+    }
+
+    const CartEditForm = reduxForm({
+      form: constants.EDIT_FORM_NAME, // a unique identifier for this form
+      enableReinitialize: true,
+    })(FormView);
+
+    return (
+      <CartEditForm
+        onSubmit={this.handleEditFromSubmit}
+        initialValues={{
+          cardNumber: accountNo,
+          expMonth: expMonth.trim(),
+          expYear,
+          ccBrand,
+          ccType,
+          address,
+        }}
+      />
+    );
+  });
+
+  handleEditFromSubmit = data => {
+    console.log({ data });
+  };
+
+  renderCardDetailsHeading = ({ hideAnchor } = {}) => {
+    const { labels } = this.props;
+    return (
+      <BodyCopy component="div" fontFamily="secondary" className="billing-payment-details">
+        <BodyCopy
+          fontFamily="primary"
+          fontSize="fs26"
+          fontWeight="regular"
+          data-locator="billing-payment-details"
+          className="elem-mb-XS"
+        >
+          {labels.cardDetailsTitle}
+        </BodyCopy>
+        {!hideAnchor && (
+          <Anchor
+            fontSizeVariation="medium"
+            underline
+            to="/#"
+            noLink
+            onClick={this.setFormToEditState}
+            anchorVariation="primary"
+            className="billing-payment-edit"
+            dataLocator="billing-payment-edit"
+          >
+            {labels.edit}
+          </Anchor>
+        )}
+      </BodyCopy>
+    );
+  };
+
   /**
    * @function getCreditListView
    * @description returns the credit card drop down along with selected card
    */
   getCreditListView = ({ labels, cvvCodeRichText, creditCardList, onFileCardKey }) => {
     const selectedCard = onFileCardKey ? getSelectedCard({ creditCardList, onFileCardKey }) : '';
+    const { editMode } = this.state;
+    const CartEditFrom = this.getCartEditForm;
     return (
       <>
         <Heading
@@ -247,132 +348,124 @@ export class BillingPaymentForm extends React.PureComponent {
         >
           {labels.selectFromCard}
         </Heading>
-        <>
-          {this.getCCDropDown({ labels, creditCardList, onFileCardKey, selectedCard })}
-          {selectedCard ? (
-            <>
-              <BodyCopy component="div" fontFamily="secondary" className="billing-payment-details">
-                <BodyCopy
-                  fontFamily="primary"
-                  fontSize="fs26"
-                  fontWeight="regular"
-                  data-locator="billing-payment-details"
-                  className="elem-mb-XS"
+        {this.getCCDropDown({ labels, creditCardList, onFileCardKey, selectedCard, editMode })}
+        {!editMode ? (
+          <>
+            {selectedCard ? (
+              <>
+                {this.renderCardDetailsHeading()}
+                <Heading
+                  component="h2"
+                  variant="listMenu"
+                  className="paymentMethodHeading"
+                  dataLocator="billing-payment-method"
                 >
-                  {labels.cardDetailsTitle}
-                </BodyCopy>
-                <Anchor
-                  fontSizeVariation="medium"
-                  underline
-                  to="/#"
-                  anchorVariation="primary"
-                  className="billing-payment-edit"
-                  dataLocator="billing-payment-edit"
-                >
-                  {labels.edit}
-                </Anchor>
-              </BodyCopy>
+                  {labels.paymentMethod}
+                </Heading>
+                <Row fullBleed>
+                  <Col
+                    colSize={{
+                      large: 3,
+                      small: 4,
+                      medium: 4,
+                    }}
+                    className="billing-payment-card-info"
+                  >
+                    <CardImage
+                      card={selectedCard}
+                      cardNumber={`${labels.creditCardEnd}${selectedCard.accountNo.slice(-4)}`}
+                    />
+                  </Col>
+
+                  {selectedCard.ccType !== constants.ACCEPTED_CREDIT_CARDS.PLACE_CARD && (
+                    <Col
+                      colSize={{
+                        large: 3,
+                        small: 2,
+                        medium: 4,
+                      }}
+                      className="position-relative cvvCode"
+                    >
+                      <Field
+                        placeholder={labels.cvvCode}
+                        name="cvvCode"
+                        id="cvvCode"
+                        component={TextBox}
+                        dataLocator="billing-payment-cvvCode"
+                        className="field"
+                        showSuccessCheck={false}
+                        enableSuccessCheck={false}
+                      />
+                      <span className="hide-show show-hide-icons">
+                        <span className="info-icon-img-wrapper">
+                          {getCvvInfo({ cvvCodeRichText })}
+                        </span>
+                      </span>
+                    </Col>
+                  )}
+                </Row>
+                {!selectedCard.defaultInd && (
+                  <Row fullBleed className="billing-payment-subHeading default-payment">
+                    <Field
+                      dataLocator="billing-payment-checkbox-field"
+                      name="defaultPaymentMethod"
+                      component={InputCheckbox}
+                      className="default-payment"
+                    >
+                      <BodyCopy
+                        dataLocator="billing-payment-default-payment-heading-lbl"
+                        fontSize="fs16"
+                        fontFamily="secondary"
+                        fontWeight="regular"
+                      >
+                        {labels.defaultPayment}
+                      </BodyCopy>
+                    </Field>
+                  </Row>
+                )}
+              </>
+            ) : (
+              this.getAddNewCCForm()
+            )}
+            <Row fullBleed className="billing-payment-subHeading">
               <Heading
                 component="h2"
                 variant="listMenu"
                 className="paymentMethodHeading"
-                dataLocator="billing-payment-method"
+                dataLocator="billing-payment-billingAddress"
               >
-                {labels.paymentMethod}
+                {labels.billingAddress}
               </Heading>
-              <Row fullBleed>
-                <Col
-                  colSize={{
-                    large: 3,
-                    small: 4,
-                    medium: 4,
-                  }}
-                  className="billing-payment-card-info"
-                >
-                  <CardImage
-                    card={selectedCard}
-                    cardNumber={`${labels.creditCardEnd}${selectedCard.accountNo.slice(-4)}`}
-                  />
-                </Col>
+            </Row>
 
-                {selectedCard.ccType !== constants.ACCEPTED_CREDIT_CARDS.PLACE_CARD && (
-                  <Col
-                    colSize={{
-                      large: 3,
-                      small: 2,
-                      medium: 4,
-                    }}
-                    className="position-relative cvvCode"
-                  >
-                    <Field
-                      placeholder={labels.cvvCode}
-                      name="cvvCode"
-                      id="cvvCode"
-                      component={TextBox}
-                      dataLocator="billing-payment-cvvCode"
-                      className="field"
-                      showSuccessCheck={false}
-                      enableSuccessCheck={false}
-                    />
-                    <span className="hide-show show-hide-icons">
-                      <span className="info-icon-img-wrapper">
-                        {getCvvInfo({ cvvCodeRichText })}
-                      </span>
-                    </span>
-                  </Col>
+            {selectedCard ? (
+              <Row fullBleed className="elem-mb-XL">
+                {onFileCardKey && (
+                  <Card
+                    card={selectedCard}
+                    className="CreditCardForm__address"
+                    dataLocatorPrefix="billing-payment-card-detail"
+                    showAddress
+                  />
                 )}
               </Row>
-              {!selectedCard.defaultInd && (
-                <Row fullBleed className="billing-payment-subHeading default-payment">
-                  <Field
-                    dataLocator="billing-payment-checkbox-field"
-                    name="defaultPaymentMethod"
-                    component={InputCheckbox}
-                    className="default-payment"
-                  >
-                    <BodyCopy
-                      dataLocator="billing-payment-default-payment-heading-lbl"
-                      fontSize="fs16"
-                      fontFamily="secondary"
-                      fontWeight="regular"
-                    >
-                      {labels.defaultPayment}
-                    </BodyCopy>
-                  </Field>
-                </Row>
-              )}
-            </>
-          ) : (
-            this.getAddNewCCForm()
-          )}
-          <Row fullBleed className="billing-payment-subHeading">
-            <Heading
-              component="h2"
-              variant="listMenu"
-              className="paymentMethodHeading"
-              dataLocator="billing-payment-billingAddress"
-            >
-              {labels.billingAddress}
-            </Heading>
-          </Row>
-
-          {selectedCard ? (
-            <Row fullBleed className="elem-mb-XL">
-              {onFileCardKey && (
-                <Card
-                  card={selectedCard}
-                  className="CreditCardForm__address"
-                  dataLocatorPrefix="billing-payment-card-detail"
-                  showAddress
-                />
-              )}
-            </Row>
-          ) : (
-            this.getCheckoutBillingAddress()
-          )}
-        </>
+            ) : (
+              this.getCheckoutBillingAddress()
+            )}
+          </>
+        ) : (
+          <CartEditFrom selectedCard={selectedCard} key="cardEditForm" />
+        )}
       </>
     );
+  };
+
+  onEditCardFocus = e => {
+    if (!this.cardNumberCleared) {
+      const { dispatch } = this.props;
+      this.cardNumberCleared = true;
+      dispatch(change(constants.EDIT_FORM_NAME, 'cardNumber', ''));
+    }
   };
 
   /**

@@ -290,6 +290,8 @@ export class GiftCardsContainer extends React.PureComponent<Props> {
       isSaveToAccountChecked,
       userAddresses,
       selectedOnFileAddressId,
+      isEditFormSameAsShippingChecked,
+      editFormSelectedOnFileAddressId,
       navigation,
       creditFieldLabels,
     } = this.props;
@@ -319,8 +321,10 @@ export class GiftCardsContainer extends React.PureComponent<Props> {
         isSaveToAccountChecked={isSaveToAccountChecked}
         userAddresses={userAddresses}
         selectedOnFileAddressId={selectedOnFileAddressId}
+        editFormSelectedOnFileAddressId={editFormSelectedOnFileAddressId}
         navigation={navigation}
         creditFieldLabels={creditFieldLabels}
+        isEditFormSameAsShippingChecked={isEditFormSameAsShippingChecked}
       />
     );
   }
@@ -336,9 +340,11 @@ const mapStateToProps = (state, ownProps) => {
     syncErrorsObj: CreditCardSelector.getSyncError(state),
     cardType: CreditCardSelector.getCardType(state),
     isSameAsShippingChecked: CreditCardSelector.getSameAsShippingValue(state),
+    isEditFormSameAsShippingChecked: CreditCardSelector.getEditFormSameAsShippingValue(state),
     isSaveToAccountChecked: CreditCardSelector.getSaveToAccountValue(state),
     shippingOnFileAddressKey: CreditCardSelector.getShippingOnFileAddressKey(state),
     selectedOnFileAddressId: CreditCardSelector.getSelectedOnFileAddressId(state),
+    editFormSelectedOnFileAddressId: CreditCardSelector.getEditFormSelectedOnFileAddressId(state),
     shippingOnFileAddressId: CreditCardSelector.getShippingOnFileAddressId(state),
   };
 };

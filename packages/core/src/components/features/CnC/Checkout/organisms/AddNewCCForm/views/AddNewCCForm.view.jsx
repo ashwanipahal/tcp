@@ -44,6 +44,7 @@ const creditCardProps = {
 class AddNewCCForm extends React.PureComponent {
   static propTypes = {
     cvvInfo: PropTypes.func.isRequired,
+    editMode: PropTypes.bool,
     cvvError: PropTypes.shape({}),
     cardType: PropTypes.string,
     labels: PropTypes.shape({}),
@@ -58,6 +59,7 @@ class AddNewCCForm extends React.PureComponent {
 
   static defaultProps = {
     cvvError: null,
+    editMode: false,
     cardType: null,
     labels: {},
     isGuest: null,
@@ -124,7 +126,15 @@ class AddNewCCForm extends React.PureComponent {
   };
 
   render() {
-    const { cvvInfo, cardType, cvvError, isGuest, isExpirationRequired } = this.props;
+    const {
+      cvvInfo,
+      cardType,
+      cvvError,
+      editMode,
+      onCardFocus,
+      isGuest,
+      isExpirationRequired,
+    } = this.props;
     return (
       <>
         <CreditCardFields
@@ -133,10 +143,12 @@ class AddNewCCForm extends React.PureComponent {
           variation="secondary"
           cardType={cardType}
           cvvError={cvvError}
+          onCardFocus={onCardFocus}
+          showCvv={!editMode}
           creditFieldLabels={this.getCreditLabelValues()}
           isExpirationRequired={isExpirationRequired}
         />
-        {!isGuest && this.renderSaveToAccountOptions()}
+        {!isGuest && !editMode && this.renderSaveToAccountOptions()}
       </>
     );
   }

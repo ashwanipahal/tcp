@@ -7,6 +7,9 @@ export default css`
     font-size: ${props => props.theme.typography.fontSizes.fs10};
     font-weight: ${props => props.theme.typography.fontWeights.extrabold};
   }
+  .disable-drop-down {
+    pointer-events: none;
+  }
   .billing-payment-details {
     display: flex;
   }

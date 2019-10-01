@@ -12,13 +12,20 @@ export const handleEditCreditCardNumber = value => {
   return value.startsWith('*') ? '' : value;
 };
 
-const CardNumberField = ({ cardTypeImgUrl, cardType, isPLCCEnabled, creditFieldLabels }) => {
+const CardNumberField = ({
+  cardTypeImgUrl,
+  cardType,
+  isPLCCEnabled,
+  creditFieldLabels,
+  onCardFocus,
+}) => {
   return (
     <Field
       placeholder={creditFieldLabels.creditCardNumber}
       name="cardNumber"
       id="cardNumber"
       type="tel"
+      onFocus={onCardFocus}
       component={CreditCardNumber}
       dataLocator="payment-cardtextfield"
       cardTypeImgUrl={cardTypeImgUrl}
@@ -47,6 +54,7 @@ export const CreditCardFields = ({
   showCvv,
   cardNumberWrapper,
   cardNumberInnerProps,
+  onCardFocus,
 }) => {
   const expMonthOptionsMap = getCreditCardExpirationOptionMap().monthsMap;
   const expYearOptionsMap = getCreditCardExpirationOptionMap().yearsMap;
@@ -56,11 +64,23 @@ export const CreditCardFields = ({
         {cardNumberWrapper ? (
           <Row fullBleed>
             <Col {...cardNumberInnerProps}>
-              {CardNumberField({ cardTypeImgUrl, cardType, isPLCCEnabled, creditFieldLabels })}
+              {CardNumberField({
+                cardTypeImgUrl,
+                cardType,
+                isPLCCEnabled,
+                creditFieldLabels,
+                onCardFocus,
+              })}
             </Col>
           </Row>
         ) : (
-          CardNumberField({ cardTypeImgUrl, cardType, isPLCCEnabled, creditFieldLabels })
+          CardNumberField({
+            cardTypeImgUrl,
+            cardType,
+            isPLCCEnabled,
+            creditFieldLabels,
+            onCardFocus,
+          })
         )}
       </Col>
       {isExpirationRequired && (
@@ -112,6 +132,7 @@ export const CreditCardFields = ({
 
 CreditCardFields.propTypes = {
   creditFieldLabels: PropTypes.shape({}),
+  onCardFocus: PropTypes.func,
   isExpirationRequired: PropTypes.bool,
   cardTypeImgUrl: PropTypes.string,
   isPLCCEnabled: PropTypes.bool,
@@ -147,6 +168,7 @@ CreditCardFields.defaultProps = {
   showCvv: true,
   cardNumberWrapper: false,
   cardNumberInnerProps: null,
+  onCardFocus: () => {},
 };
 
 CardNumberField.propTypes = {

@@ -1,4 +1,6 @@
 import Router from 'next/router';
+import { CHECKOUT_ROUTES } from '@tcp/core/src/components/features/CnC/Checkout/Checkout.constants';
+import CheckoutUtil from '@tcp/core/src/components/features/CnC/Checkout/util/utility';
 import CHECKOUT_STAGES, { CHECKOUT_SECTIONS } from '../../../../../pages/App.constants';
 
 export const isOrderHasShipping = cartItems => {
@@ -35,14 +37,7 @@ const moveToStage = (stageName, isReplace) => {
     this.store.dispatch(setVenmoInformationMessageDisplayed(true));
     this.store.dispatch(setReviewVisited(true));
   } */
-
-  const moveToUrl = CHECKOUT_SECTIONS[stageName].pathPattern;
-  if (isReplace) {
-    const as = moveToUrl;
-    Router.push(moveToUrl, as, { shallow: true });
-  } else {
-    Router.push(moveToUrl);
-  }
+  CheckoutUtil.routeToPage(CHECKOUT_ROUTES[`${stageName}Page`]);
 };
 
 const routeToStage = (requestedStage, cartItems, isAllowForward, currentStageName) => {

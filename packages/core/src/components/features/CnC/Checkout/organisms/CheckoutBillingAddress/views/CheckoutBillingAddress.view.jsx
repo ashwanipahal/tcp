@@ -17,9 +17,16 @@ import withStyles from '../../../../../../common/hoc/withStyles';
 class CheckoutAddress extends React.Component {
   constructor(props) {
     super(props);
-    const { addNewCCState, selectedOnFileAddressId, userAddresses, orderHasShipping } = props;
+    const {
+      addNewCCState,
+      selectedOnFileAddressId,
+      userAddresses,
+      orderHasShipping,
+      editMode,
+    } = props;
     this.state = {
       isAddNewAddress:
+        editMode ||
         (addNewCCState &&
           !(
             selectedOnFileAddressId &&
@@ -38,9 +45,9 @@ class CheckoutAddress extends React.Component {
     return selectedAddress;
   };
 
-  toggleAddNewAddressMode = () => {
-    const { isAddNewAddress } = this.state;
-    this.setState({ isAddNewAddress: !isAddNewAddress });
+  openAddNewAddressMode = () => {
+    this.newAddressModeStarted = true;
+    this.setState({ isAddNewAddress: true });
   };
 
   onSameAsShippingChange = () => {
@@ -120,7 +127,7 @@ class CheckoutAddress extends React.Component {
     return (
       <>
         {isAddNewAddress && this.getAddressDropDown()}
-        {this.getAddressFields()}
+        {this.getAddressFields('from getAddressForm')}
       </>
     );
   };
@@ -197,7 +204,7 @@ class CheckoutAddress extends React.Component {
             fullWidth
             buttonVariation="variable-width"
             fill="BLACK"
-            onClick={this.toggleAddNewAddressMode}
+            onClick={this.openAddNewAddressMode}
             disabled={isAddNewAddress || !selectedAddress}
           >
             {labels.addNewAddress}
@@ -209,6 +216,10 @@ class CheckoutAddress extends React.Component {
 
   onAddressDropDownChange = () => {
     const { isAddNewAddress } = this.state;
+    if (this.newAddressModeStarted) {
+      this.newAddressModeStarted = false;
+      return;
+    }
     if (isAddNewAddress) {
       this.setState({ isAddNewAddress: !isAddNewAddress });
     }
@@ -279,6 +290,7 @@ CheckoutAddress.propTypes = {
   orderHasShipping: PropTypes.bool,
   addressLabels: PropTypes.shape({}).isRequired,
   isGuest: PropTypes.bool,
+  editMode: PropTypes.bool,
   labels: PropTypes.shape({}).isRequired,
   shippingAddress: PropTypes.shape({}),
   isSameAsShippingChecked: PropTypes.bool,
@@ -291,6 +303,7 @@ CheckoutAddress.propTypes = {
 
 CheckoutAddress.defaultProps = {
   orderHasShipping: true,
+  editMode: false,
   isGuest: true,
   shippingAddress: {},
   isSameAsShippingChecked: true,
