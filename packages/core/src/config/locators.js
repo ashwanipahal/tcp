@@ -81,6 +81,14 @@ export default {
   moduleJ_cta_link: 'moduleJ_cta_links_',
   moduleJ_cta_btn: 'moduleJ_cta_btn',
 
+  // Module Q
+  moduleQ_header_text: 'moduleQ_header_text',
+  moduleQ_promobanner_text: 'moduleQ_promobanner_text',
+  moduleQ_promobanner_img: 'moduleQ_promobanner_img_',
+  moduleQ_product_image: 'moduleQ_product_image_',
+  moduleQ_cta_link: 'moduleQ_cta_links_',
+  moduleQ_cta_btn: 'moduleQ_cta_btn',
+
   // Module R
   moduleR_header_text: 'moduleR_header_text',
   moduleR_promobanner_text: 'moduleR_promobanner_text',

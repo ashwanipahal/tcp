@@ -41,6 +41,7 @@ import ProductDetailReducer from '@tcp/core/src/components/features/browse/Produ
 import QuickViewReducer from '@tcp/core/src/components/common/organisms/QuickViewModal/container/QuickViewModal.reducer';
 import ApplyNowModalPLCCReducer from '@tcp/core/src/components/common/molecules/ApplyNowPLCCModal/container/ApplyNowModal.reducer';
 import ProductTabListReducer from '@tcp/core/src/components/common/organisms/ProductTabList/container/ProductTabList.reducer';
+import StyliticsProductTabListReducer from '@tcp/core/src/components/common/organisms/StyliticsProductTabList/container/StyliticsProductTabList.reducer';
 import BirthdaySavingsListReducer from '@tcp/core/src/components/features/account/common/organism/BirthdaySavingsList/container/BirthdaySavingsList.reducer';
 import PickupModalReducer from '@tcp/core/src/components/common/organisms/PickupStoreModal/container/PickUpStoreModal.reducer';
 import RecommendationsReducer from '@tcp/core/src/components/common/molecules/Recommendations/container/Recommendations.reducer';
@@ -103,6 +104,7 @@ import {
   PRODUCT_DETAIL_REDUCER_KEY,
   APPLY_NOW_MODAL_REDUCER_KEY,
   PRODUCT_TAB_LIST_REDUCER_KEY,
+  STYLITICS_PRODUCT_TAB_LIST_REDUCER_KEY,
   BIRTHDAY_SAVING_LIST_REDUCER_KEY,
   PICKUP_MODAL_REDUCER_KEY,
   RECOMMENDATIONS_REDUCER_KEY,
@@ -143,6 +145,11 @@ const filteredAppConfigReducer = createFilteredReducer(ApiConfigReducer, APICONF
 const filteredProductTabListReducer = createFilteredReducer(
   ProductTabListReducer,
   PRODUCT_TAB_LIST_REDUCER_KEY
+);
+
+const filteredStyliticsProductTabListReducer = createFilteredReducer(
+  StyliticsProductTabListReducer,
+  STYLITICS_PRODUCT_TAB_LIST_REDUCER_KEY
 );
 
 /**
@@ -219,6 +226,7 @@ export default combineReducers({
   [QUICK_VIEW_REDUCER_KEY]: QuickViewReducer,
   [APPLY_NOW_MODAL_REDUCER_KEY]: ApplyNowModalPLCCReducer,
   [PRODUCT_TAB_LIST_REDUCER_KEY]: filteredProductTabListReducer,
+  [STYLITICS_PRODUCT_TAB_LIST_REDUCER_KEY]: filteredStyliticsProductTabListReducer,
   [BIRTHDAY_SAVING_LIST_REDUCER_KEY]: BirthdaySavingsListReducer,
   [PICKUP_MODAL_REDUCER_KEY]: PickupModalReducer,
   [RECOMMENDATIONS_REDUCER_KEY]: RecommendationsReducer,
