@@ -25,8 +25,9 @@ import {
 } from '../../../CnC/AddedToBag/container/AddedToBag.actions';
 
 import { getCartItemInfo } from '../../../CnC/AddedToBag/util/utility';
+import { getIsPickupModalOpen } from '../../../../common/organisms/PickupStoreModal/container/PickUpStoreModal.selectors';
 
-class ProductListingContainer extends React.PureComponent {
+class ProductDetailContainer extends React.PureComponent {
   componentDidMount() {
     const {
       getDetails,
@@ -71,25 +72,32 @@ class ProductListingContainer extends React.PureComponent {
       productInfo,
       currency,
       plpLabels,
+      isPickupModalOpen,
       pdpLabels,
       addToBagError,
       ...otherProps
     } = this.props;
+    const isProductDataAvailable = Object.keys(productInfo).length > 0;
     return (
-      <ProductDetail
-        productDetails={productDetails}
-        breadCrumbs={breadCrumbs}
-        longDescription={longDescription}
-        ratingsProductId={ratingsProductId}
-        otherProps={otherProps}
-        defaultImage={defaultImage}
-        plpLabels={plpLabels}
-        pdpLabels={pdpLabels}
-        currency={currency}
-        productInfo={productInfo}
-        handleAddToBag={this.handleAddToBag}
-        addToBagError={addToBagError}
-      />
+      <React.Fragment>
+        {isProductDataAvailable ? (
+          <ProductDetail
+            productDetails={productDetails}
+            breadCrumbs={breadCrumbs}
+            longDescription={longDescription}
+            ratingsProductId={ratingsProductId}
+            otherProps={otherProps}
+            defaultImage={defaultImage}
+            plpLabels={plpLabels}
+            pdpLabels={pdpLabels}
+            currency={currency}
+            productInfo={productInfo}
+            handleAddToBag={this.handleAddToBag}
+            addToBagError={addToBagError}
+            isPickupModalOpen={isPickupModalOpen}
+          />
+        ) : null}
+      </React.Fragment>
     );
   }
 }
@@ -106,6 +114,7 @@ function mapStateToProps(state) {
     productInfo: getCurrentProduct(state),
     currency: getCurrentCurrency(state),
     plpLabels: getPlpLabels(state),
+    isPickupModalOpen: getIsPickupModalOpen(state),
     pdpLabels: getPDPLabels(state),
     addToBagError: getAddedToBagError(state),
     formValues: getProductDetailFormValues(state),
@@ -126,7 +135,7 @@ function mapDispatchToProps(dispatch) {
   };
 }
 
-ProductListingContainer.propTypes = {
+ProductDetailContainer.propTypes = {
   productDetails: PropTypes.arrayOf(PropTypes.shape({})),
   getDetails: PropTypes.func.isRequired,
   addToBagError: PropTypes.string,
@@ -148,9 +157,10 @@ ProductListingContainer.propTypes = {
   plpLabels: PropTypes.shape({
     lbl_sort: PropTypes.string,
   }),
+  isPickupModalOpen: PropTypes.bool,
 };
 
-ProductListingContainer.defaultProps = {
+ProductDetailContainer.defaultProps = {
   productDetails: [],
   productInfo: {},
   addToBagError: '',
@@ -163,11 +173,12 @@ ProductListingContainer.defaultProps = {
     lbl_sort: '',
   },
   pdpLabels: {},
+  isPickupModalOpen: false,
 };
 
 export default withRouter(
   connect(
     mapStateToProps,
     mapDispatchToProps
-  )(ProductListingContainer)
+  )(ProductDetailContainer)
 );

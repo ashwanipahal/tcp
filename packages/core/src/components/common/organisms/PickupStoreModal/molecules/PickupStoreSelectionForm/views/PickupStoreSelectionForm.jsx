@@ -5,6 +5,7 @@ import { PropTypes } from 'prop-types';
 import { reduxForm, Field, propTypes as reduxFormPropTypes } from 'redux-form';
 import createValidateMethod from '../../../../../../../utils/formValidation/createValidateMethod';
 import { getAddressLocationInfo } from '../../../../../atoms/GoogleAutoSuggest/AutoCompleteComponent';
+import getStandardConfig from '../../../../../../../utils/formValidation/validatorStandardConfig';
 import {
   getSkuId,
   getVariantId,
@@ -18,10 +19,9 @@ import { PICKUP_LABELS, BOPIS_ITEM_AVAILABILITY } from '../../../PickUpStoreModa
 import { minStoreCount } from '../../../PickUpStoreModal.config';
 import PickupStoreListContainer from '../../PickupStoreList';
 import PickupStoreListItem from '../../PickupStoreListItem';
-import PickupProductFormPart from '../../PickupProductFormPart';
-import { TextBox, SelectBox, Row, Col, Button } from '../../../../../atoms';
 import withStyles from '../../../../../hoc/withStyles';
 import PickupStoreSelectionFormStyle from '../styles/PickupStoreSelectionForm.style';
+import { TextBox, SelectBox, Row, Col, Button } from '../../../../../atoms';
 
 export const DISTANCES_MAP_PROP_TYPE = PropTypes.arrayOf(
   PropTypes.shape({
@@ -55,36 +55,17 @@ class _PickupStoreSelectionForm extends React.Component {
     /** We need to differentiate if Bopis Modal is open from cart or other place to change select item button's message (DT-27100) */
     isShoppingBag: PropTypes.bool.isRequired,
 
-    /** indicates the 'extended' sizes not available for bopis notification needs to show
-     * (only when user attempted to select it)
-     */
-    isShowExtendedSizesNotification: PropTypes.bool.isRequired,
-
-    /**
-     * indicates the modal is shown because of an error trying to add to the preferred store
-     * (required only in PDP)
-     */
-    isPreferredStoreError: PropTypes.bool.isRequired,
-
     // determines if variation is warning modal
     isPickUpWarningModal: PropTypes.bool.isRequired,
 
     /** Props passed by the redux-form Form HOC. */
     ...reduxFormPropTypes,
-    promotionalMessage: PropTypes.string,
-    promotionalPLCCMessage: PropTypes.string,
 
     /** Check to allow display of warning msg */
     /** global switches for BOSS and BOPIS */
     isBossEnabled: PropTypes.bool.isRequired,
     isBopisEnabled: PropTypes.bool.isRequired,
     isRadialInventoryEnabled: PropTypes.number.isRequired,
-    itemsCount: PropTypes.number.isRequired,
-  };
-
-  static defaultProps = {
-    promotionalMessage: '',
-    promotionalPLCCMessage: '',
   };
 
   constructor(props) {
@@ -92,74 +73,17 @@ class _PickupStoreSelectionForm extends React.Component {
     this.place = null;
     this.formData = null;
     this.state = {
-      isLoading: true,
+      isLoading: false,
       selectedStoreId: null,
       isBossSelected: null,
       isShowMessage: false,
     };
     this.onSearch = this.onSearch.bind(this);
     this.untouch = this.untouch.bind(this);
+    this.toggleLoader = this.toggleLoader.bind(this);
+    this.handleAddTobag = this.handleAddTobag.bind(this);
     this.preferredStore = null;
     this.isAutoSearchTrigerred = false;
-  }
-
-  componentDidMount() {
-    const {
-      initialValues,
-      isPickUpWarningModal,
-      onMount,
-      colorFitsSizesMap,
-      itemsCount,
-    } = this.props;
-    const skuId = getSkuId(
-      colorFitsSizesMap,
-      initialValues.color,
-      initialValues.fit,
-      initialValues.size
-    );
-    const currentSizeEntry = getMapSliceForSize(
-      colorFitsSizesMap,
-      initialValues.color,
-      initialValues.fit,
-      initialValues.size
-    );
-    const variantNo = currentSizeEntry && currentSizeEntry.variantNo;
-    const itemPartNumber = getVariantId(
-      colorFitsSizesMap,
-      initialValues.color,
-      initialValues.fit,
-      initialValues.size
-    );
-    // invoking the API for fethhing store in user details
-
-    if (!isPickUpWarningModal && itemsCount > 0) {
-      onMount(skuId, variantNo, initialValues.quantity, itemPartNumber)
-        .then(() => this.setState({ isLoading: false }))
-        .catch(() => this.setState({ isLoading: false }));
-    }
-    if (itemsCount === 0) {
-      this.setState({ isLoading: false });
-    }
-  }
-
-  componentDidUpdate() {
-    if (this.prePopulateZipCode()) {
-      /*
-       * If zipcode needs to be prepupulated then this method triggers
-       * store's search automatically from user's default store zipcode
-       */
-      const { defaultStore, change } = this.props;
-      const {
-        basicInfo: {
-          address: { zipCode },
-        },
-      } = defaultStore;
-      change('addressLocation', zipCode);
-      // submitting the search form forcefully
-      // Adding setTimeout to handle case when fav store comes on the fly from API, not from redux
-      // setTimeout(() => handleSubmit(this.onSearch)(), 1);
-      this.isAutoSearchTrigerred = true;
-    }
   }
 
   onSearch(formData) {
@@ -169,20 +93,11 @@ class _PickupStoreSelectionForm extends React.Component {
       selectedStoreId: null,
       isBossSelected: null,
     });
-    const skuId =
-      getSkuId(colorFitsSizesMap, formData.color, formData.fit, formData.size) || '452001';
-    const variantId =
-      getVariantId(colorFitsSizesMap, formData.color, formData.fit, formData.size) || '452001';
+
     const locationPromise = this.place
       ? Promise.resolve(this.place.geometry.location)
       : getAddressLocationInfo(formData.addressLocation);
-    onSubmit(skuId, formData.quantity || '1', formData.distance, locationPromise, variantId);
-    // return onSubmit(skuId, formData.quantity, formData.distance, locationPromise, variantId).then(
-    //   () => {
-    //     this.formData = { ...formData, skuId };
-    // TODO - see if required after the form is integrated - remove otherwise - this.untouch();
-    //   }
-    // );
+    onSubmit(locationPromise, colorFitsSizesMap, formData);
   }
 
   getDefaultStoreZipcode() {
@@ -207,7 +122,6 @@ class _PickupStoreSelectionForm extends React.Component {
       defaultStore && defaultStore.basicInfo && defaultStore.basicInfo.isDefault
         ? defaultStore
         : null;
-    // - this.preferredStore = DEFAULT_STORE
     return (
       this.preferredStore &&
       this.preferredStore.productAvailability &&
@@ -257,16 +171,29 @@ class _PickupStoreSelectionForm extends React.Component {
     return SELECT_STORE;
   };
 
+  deriveSKUInfo = ({ colorFitsSizesMap } = this.props, { initialValues } = this.props) => {
+    const { color, Fit, Size } = initialValues;
+    const variantId = getVariantId(colorFitsSizesMap, color, Fit, Size);
+    const currentSizeEntry = getMapSliceForSize(colorFitsSizesMap, color, Fit, Size);
+    const variantNo =
+      currentSizeEntry && currentSizeEntry.variantNo ? currentSizeEntry.variantNo : null;
+    const skuId = getSkuId(colorFitsSizesMap, color, Fit, Size);
+    return {
+      skuId,
+      variantId,
+      variantNo,
+    };
+  };
+
   /**
    * @method handleAddTobag
    * @description this method adds item to bag
-   * called in case of mobile only
    */
-  handleAddTobag = (storeId, isBoss) => {
+  handleAddTobag = (storeLocId, isBoss) => {
     const { selectedStoreId, isBossSelected } = this.state;
-    const { colorFitsSizesMap, initialValues, onAddItemToCart } = this.props;
+    const { initialValues, onAddItemToCart, onCloseClick } = this.props;
     this.setState({
-      selectedStoreId: storeId || selectedStoreId,
+      selectedStoreId: storeLocId || selectedStoreId,
       isBossSelected: isBoss || isBossSelected,
       isShowMessage: true,
     });
@@ -276,31 +203,22 @@ class _PickupStoreSelectionForm extends React.Component {
      * If searching is blocked then the intitial values received
      * will be passed as the expected params
      */
-    const itemPartNumber = getVariantId(
-      colorFitsSizesMap,
-      initialValues.color,
-      initialValues.fit,
-      initialValues.size
-    );
-    const currentSizeEntry = getMapSliceForSize(
-      colorFitsSizesMap,
-      initialValues.color,
-      initialValues.fit,
-      initialValues.size
-    );
-    const variantNo =
-      currentSizeEntry && currentSizeEntry.variantNo ? currentSizeEntry.variantNo : null;
-    const skuId = getSkuId(
-      colorFitsSizesMap,
-      initialValues.color,
-      initialValues.fit,
-      initialValues.size
-    );
-    const productDetails = !this.formData
-      ? { ...initialValues, skuId, storeId, isBoss, itemPartNumber, variantNo }
-      : { ...this.formData, storeId, isBoss, itemPartNumber, variantNo };
-    return onAddItemToCart(productDetails);
+    const { Quantity } = initialValues;
+    const payload = {
+      productInfo: {
+        storeLocId,
+        isBoss,
+        quantity: Quantity,
+        skuInfo: this.deriveSKUInfo(),
+      },
+      callback: onCloseClick,
+    };
+    return onAddItemToCart(payload);
   };
+
+  toggleLoader(isLoading = false) {
+    this.setState({ isLoading });
+  }
 
   untouch() {
     const { untouch } = this.props;
@@ -363,13 +281,14 @@ class _PickupStoreSelectionForm extends React.Component {
       maxAllowedStoresInCart,
       isSearchOnlyInCartStores,
       allowBossStoreSearch,
+      isSkuResolved,
     } = this.props;
 
     const storeLimitReached = cartBopisStoresList.length === maxAllowedStoresInCart;
     const sameStore =
       storeLimitReached &&
       cartBopisStoresList[0].basicInfo.id === cartBopisStoresList[1].basicInfo.id;
-    const showStoreSearching = allowBossStoreSearch || !isSearchOnlyInCartStores;
+    const showStoreSearching = !isSkuResolved || allowBossStoreSearch || !isSearchOnlyInCartStores;
 
     return {
       storeLimitReached,
@@ -386,58 +305,6 @@ class _PickupStoreSelectionForm extends React.Component {
         <Button onClick={onCloseClick} type="button" className="button-cancel">
           Cancel
         </Button>
-      </div>
-    ) : null;
-  }
-
-  displayStoreSearchForm(showStoreSearching) {
-    const { distancesMap, pristine, submitting, className, storeSearchError } = this.props;
-    return showStoreSearching ? (
-      <div className={`${className} search-store`}>
-        <BodyCopy
-          className="find-store-label"
-          fontFamily="secondary"
-          fontSize="fs16"
-          fontWeight="semibold"
-        >
-          {PICKUP_LABELS.FIND_STORE}
-        </BodyCopy>
-        <Row fullBleed>
-          <Col colSize={{ small: 6, medium: 4, large: 6 }}>
-            <Field
-              name="addressLocation"
-              id="addressLocation"
-              component={TextBox}
-              className="zipcode-field"
-              placeholder="Zip or City, State"
-              enableSuccessCheck={false}
-            />
-          </Col>
-          <Col colSize={{ small: 2, medium: 2, large: 3 }}>
-            <Field
-              name="distance"
-              component={SelectBox}
-              title="Distance"
-              options={distancesMap}
-              className="distance-input"
-            />
-          </Col>
-          <Col colSize={{ small: 6, medium: 2, large: 3 }} className="button-wrapper">
-            <Button
-              buttonVariation="fixed-width"
-              fill="BLUE"
-              type="submit"
-              title="search"
-              className="button-search-bopis"
-              disabled={pristine || submitting}
-            >
-              Search
-            </Button>
-          </Col>
-        </Row>
-        <BodyCopy fontFamily="secondary" fontSize="fs14" fontWeight="extrabold" textAlign="center">
-          {storeSearchError}
-        </BodyCopy>
       </div>
     ) : null;
   }
@@ -488,8 +355,14 @@ class _PickupStoreSelectionForm extends React.Component {
     );
   }
 
-  displayStoreSearchComp() {
-    const { isLoading, selectedStoreId, isBossSelected, isShowMessage } = this.state;
+  displayFavStore({
+    storeLimitReached,
+    prefStoreWithData,
+    sameStore,
+    buttonLabel,
+    isBossCtaEnabled,
+  }) {
+    const { selectedStoreId, isBossSelected, isShowMessage } = this.state;
     const {
       isShoppingBag,
       addToCartError,
@@ -498,122 +371,172 @@ class _PickupStoreSelectionForm extends React.Component {
       isBossEnabled,
       isBopisEnabled,
       isGiftCard,
-      defaultStore,
     } = this.props;
+    return (
+      !storeLimitReached &&
+      prefStoreWithData && (
+        <div className="favorite-store-box">
+          <PickupStoreListItem
+            sameStore={sameStore}
+            isShoppingBag={isShoppingBag}
+            store={this.preferredStore}
+            onStoreSelect={this.handleAddTobag}
+            isBopisSelected={
+              this.preferredStore.basicInfo.id === selectedStoreId && !isBossSelected
+            }
+            isBossSelected={this.preferredStore.basicInfo.id === selectedStoreId && isBossSelected}
+            selectedStoreId={selectedStoreId}
+            isBopisAvailable={this.getIsBopisAvailable()}
+            isBossAvailable={this.preferredStore.storeBossInfo.isBossEligible}
+            storeBossInfo={this.preferredStore.storeBossInfo}
+            addToCartError={isShowMessage ? addToCartError : ''}
+            isBopisCtaEnabled={isBopisCtaEnabled && isBopisEnabled}
+            isBossCtaEnabled={isBossCtaEnabled && isBossEnabled}
+            updateCartItemStore={updateCartItemStore}
+            buttonLabel={buttonLabel}
+            isGiftCard={isGiftCard}
+          />
+        </div>
+      )
+    );
+  }
+
+  displayStoreSearchForm(showStoreSearching) {
+    const {
+      distancesMap,
+      pristine,
+      submitting,
+      className,
+      storeSearchError,
+      PickupSkuFormValues,
+      colorFitsSizesMap,
+    } = this.props;
+
+    let disableButton = pristine;
+
+    const formExists = Object.entries(PickupSkuFormValues).length === 0;
+
+    const { color, Fit, Size } = PickupSkuFormValues;
+
+    const enableButton = formExists ? pristine : true;
+
+    const sizeAvailable = !formExists && getMapSliceForSize(colorFitsSizesMap, color, Fit, Size);
+    disableButton = sizeAvailable && sizeAvailable.maxAvailable > 0 ? !sizeAvailable : enableButton;
+
+    return showStoreSearching ? (
+      <div className={`${className} search-store`}>
+        <BodyCopy
+          className="find-store-label"
+          fontFamily="secondary"
+          fontSize="fs16"
+          fontWeight="semibold"
+        >
+          {PICKUP_LABELS.FIND_STORE}
+        </BodyCopy>
+        <Row fullBleed>
+          <Col colSize={{ small: 6, medium: 4, large: 6 }}>
+            <Field
+              name="addressLocation"
+              id="addressLocation"
+              component={TextBox}
+              className="zipcode-field"
+              placeholder="Zip or City, State"
+              enableSuccessCheck={false}
+            />
+          </Col>
+          <Col colSize={{ small: 2, medium: 2, large: 3 }}>
+            <Field
+              name="distance"
+              component={SelectBox}
+              title="Distance"
+              options={distancesMap}
+              className="distance-input"
+            />
+          </Col>
+          <Col colSize={{ small: 6, medium: 2, large: 3 }} className="button-wrapper">
+            <Button
+              buttonVariation="fixed-width"
+              fill="BLUE"
+              type="submit"
+              title="search"
+              className="button-search-bopis"
+              disabled={pristine || submitting || disableButton}
+            >
+              Search
+            </Button>
+          </Col>
+        </Row>
+        <BodyCopy fontFamily="secondary" fontSize="fs14" fontWeight="extrabold" textAlign="center">
+          {storeSearchError}
+        </BodyCopy>
+      </div>
+    ) : null;
+  }
+
+  displayStoreSearchComp() {
+    const { isLoading } = this.state;
+    const { updateCartItemStore, defaultStore, isSkuResolved } = this.props;
     const prefStoreWithData = this.getPreferredStoreData(defaultStore);
     const { storeLimitReached, sameStore, showStoreSearching } = this.deriveStoreSearchAttributes();
     const isBossCtaEnabled = this.deriveBossCtaEnabled();
     const buttonLabel = updateCartItemStore ? PICKUP_LABELS.UPDATE : PICKUP_LABELS.ADD_TO_BAG;
 
-    return isLoading ? (
-      <Spinner />
-    ) : (
+    return (
       <React.Fragment>
-        {/* <BodyCopy className="select-store-label">
-        {this.renderVariationText(storeLimitReached, sameStore)}
-      </BodyCopy> */}
-        {!storeLimitReached && prefStoreWithData && (
-          <div className="favorite-store-box">
-            <PickupStoreListItem
-              sameStore={sameStore}
-              isShoppingBag={isShoppingBag}
-              store={this.preferredStore}
-              onStoreSelect={this.handleAddTobag}
-              isBopisSelected={
-                this.preferredStore.basicInfo.id === selectedStoreId && !isBossSelected
-              }
-              isBossSelected={
-                this.preferredStore.basicInfo.id === selectedStoreId && isBossSelected
-              }
-              selectedStoreId={selectedStoreId}
-              isBopisAvailable={this.getIsBopisAvailable()}
-              isBossAvailable={this.preferredStore.storeBossInfo.isBossEligible}
-              // boss details of a store
-              storeBossInfo={this.preferredStore.storeBossInfo}
-              addToCartError={isShowMessage ? addToCartError : ''}
-              isBopisCtaEnabled={isBopisCtaEnabled && isBopisEnabled}
-              isBossCtaEnabled={isBossCtaEnabled && isBossEnabled}
-              updateCartItemStore={updateCartItemStore}
-              buttonLabel={buttonLabel}
-              isGiftCard={isGiftCard}
-            />
-          </div>
+        {isSkuResolved && (
+          <BodyCopy className="select-store-label">
+            {this.renderVariationText(storeLimitReached, sameStore)}
+          </BodyCopy>
         )}
+        {isSkuResolved &&
+          this.displayFavStore({
+            storeLimitReached,
+            prefStoreWithData,
+            sameStore,
+            buttonLabel,
+            isBossCtaEnabled,
+          })}
         {this.displayStoreSearchForm(showStoreSearching)}
-        {this.displayStoreListItems({
-          isBossCtaEnabled,
-          buttonLabel,
-          sameStore,
-        })}
-        {this.displayErrorCopy()}
+        {isLoading ? (
+          <Spinner />
+        ) : (
+          <React.Fragment>
+            {isSkuResolved &&
+              this.displayStoreListItems({
+                isBossCtaEnabled,
+                buttonLabel,
+                sameStore,
+              })}
+            {isSkuResolved && this.displayErrorCopy()}
+          </React.Fragment>
+        )}
       </React.Fragment>
     );
   }
 
   render() {
-    const {
-      isShowExtendedSizesNotification,
-      isPreferredStoreError,
-      submitting,
-      handleSubmit,
-      change,
-      name,
-      listPrice,
-      offerPrice,
-      imagePath,
-      colorFitsSizesMap,
-      promotionalMessage,
-      touch,
-      isInternationalShipping,
-      isCanada,
-      isPlcc,
-      currencySymbol,
-      initialValues,
-      onEditSku,
-      promotionalPLCCMessage,
-      isPickUpWarningModal,
-      colorFitSizeDisplayNames,
-    } = this.props;
+    const { handleSubmit, isPickUpWarningModal } = this.props;
 
     return (
       <form onSubmit={handleSubmit(this.onSearch)}>
         {isPickUpWarningModal && (
           <BodyCopy className="item-unavailable">{PICKUP_LABELS.ITEM_UNAVAILABLE}</BodyCopy>
         )}
-        {
-          <PickupProductFormPart
-            colorFitSizeDisplayNames={colorFitSizeDisplayNames}
-            colorFitsSizesMap={colorFitsSizesMap}
-            name={name}
-            isShowExtendedSizesNotification={isShowExtendedSizesNotification}
-            isPreferredStoreError={isPreferredStoreError}
-            onEditSku={onEditSku}
-            listPrice={listPrice}
-            offerPrice={offerPrice}
-            imagePath={imagePath}
-            change={change}
-            touch={touch}
-            isDisabledSubmitButton={submitting}
-            promotionalMessage={promotionalMessage}
-            initialValues={initialValues}
-            promotionalPLCCMessage={promotionalPLCCMessage}
-            isPickUpWarningModal={isPickUpWarningModal}
-            isCanada={isCanada}
-            isHasPlcc={isPlcc}
-            currencySymbol={currencySymbol}
-            isInternationalShipping={isInternationalShipping}
-          />
-        }
         {!isPickUpWarningModal && this.displayStoreSearchComp()}
       </form>
     );
   }
 }
 
-const validateMethod = createValidateMethod(PickupProductFormPart.defaultValidation);
+const defaultValidation = getStandardConfig(
+  [{ addressLocation: 'addressLine1' }, { distance: 'distance' }],
+  { stopOnFirstError: true }
+);
+
+const validateMethod = createValidateMethod(defaultValidation);
 
 const PickupStoreSelectionForm = reduxForm({
-  form: 'bopisSearchStoresForm',
+  form: 'pickupSearchStoresForm',
   ...validateMethod,
   keepDirtyOnReinitialize: true, // [https://github.com/erikras/redux-form/issues/3690] redux-forms 7.2.0 causes bug that forms will reInit after mount setting changed values back to init values
   touchOnChange: true, // to show validation error messageas even if user did not touch the fields

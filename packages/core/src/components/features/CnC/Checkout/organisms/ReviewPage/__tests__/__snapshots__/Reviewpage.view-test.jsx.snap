@@ -7,6 +7,9 @@ exports[`ReviewPageVanilla component should renders correctly props not present 
   />
   <Connect(BillingSectionContainer) />
   <Connect(CheckoutCartItemList) />
+  <Styled(CheckoutOrderInfo)
+    showAccordian={true}
+  />
   <Styled(CheckoutFooter)
     backLinkHandler={[Function]}
     footerBody={

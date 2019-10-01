@@ -22,6 +22,7 @@ const L3Panel = props => {
 
   return (
     <Drawer
+      className={className}
       id={id}
       small
       medium

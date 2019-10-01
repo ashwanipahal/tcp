@@ -105,7 +105,7 @@ describe('QuickViewModal component', () => {
             },
             fits: [
               {
-                fitNameVal: '',
+                fitName: '',
                 isDefault: true,
                 maxAvailable: 1.7976931348623157e308,
                 sizes: [

@@ -90,11 +90,11 @@ class OverlayModal extends React.Component {
     /* istanbul ignore else */
     if (window && window.innerWidth > 767) {
       if (showCondensedHeader && this.body) {
-        this.body.style.overflow = 'hidden';
         modal.style.height = `${window.innerHeight - 70}px`;
       } else {
         modal.style.height = `${window.innerHeight - modalTrianglePos}px`;
       }
+      this.body.style.overflow = 'hidden';
     }
     /* istanbul ignore else */
     if (

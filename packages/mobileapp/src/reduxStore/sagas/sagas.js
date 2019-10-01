@@ -26,6 +26,8 @@ import BagPageSaga from '@tcp/core/src/components/features/CnC/BagPage/container
 import DeleteCardSaga from '@tcp/core/src/components/features/account/Payment/container/DeleteCard.saga';
 import PointsHistorySaga from '@tcp/core/src/components/features/account/common/organism/PointsHistory/container/PointsHistory.saga';
 import EarnExtraPointsSaga from '@tcp/core/src/components/features/account/common/organism/EarnExtraPointsTile/container/EarnExtraPointsTile.saga';
+import EarnedPointsNotificationSaga from '@tcp/core/src/components/features/account/common/organism/EarnExtraPointsTile/container/EarnedPointsNotification.saga';
+
 import CouponSaga from '@tcp/core/src/components/features/CnC/common/organism/CouponAndPromos/container/Coupon.saga';
 import CheckoutSaga from '@tcp/core/src/components/features/CnC/Checkout/container/Checkout.saga';
 import AddEditCreditCardSaga from '@tcp/core/src/components/features/account/AddEditCreditCard/container/AddEditCreditCard.saga';
@@ -45,6 +47,7 @@ import BirthdaySavingsSaga from '@tcp/core/src/components/features/account/commo
 import ApplyCreditCardSaga, {
   SubmitInstantCardApplication,
 } from '@tcp/core/src/components/features/browse/ApplyCardPage/container/ApplyCard.saga';
+import SocialAccountSaga from '@tcp/core/src/components/common/organisms/SocialAccount/container/Social.saga';
 import PointsClaimSaga from '@tcp/core/src/components/features/account/PointsClaim/container/PointsClaim.saga';
 import HomePageSaga from '../../components/features/content/HomePage/container/HomePage.saga';
 
@@ -75,6 +78,7 @@ export default function* rootSaga() {
     DeleteCardSaga(),
     PointsHistorySaga(),
     EarnExtraPointsSaga(),
+    EarnedPointsNotificationSaga(),
     ProductListingSaga(),
     AddEditCreditCardSaga(),
     UserSaga(),
@@ -96,5 +100,6 @@ export default function* rootSaga() {
     SubmitInstantCardApplication(),
     QuickViewSaga(),
     PointsClaimSaga(),
+    SocialAccountSaga(),
   ]);
 }

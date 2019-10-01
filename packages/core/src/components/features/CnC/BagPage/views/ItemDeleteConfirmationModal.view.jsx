@@ -37,7 +37,7 @@ const ItemDeleteConfirmationModal = ({
           {modalTitle}
         </BodyCopy>
         <BodyCopy
-          fontSize="fs14"
+          fontSize={['fs16', 'fs14', 'fs14']}
           fontFamily="secondary"
           className="item-delete-confirmation-text"
           component="span"
@@ -52,7 +52,7 @@ const ItemDeleteConfirmationModal = ({
               color="white"
               fontWeight="extrabold"
               fontFamily="secondary"
-              fontSize={['fs13', 'fs13', 'fs14']}
+              fontSize="fs14"
             >
               {modalButtonSFL}
             </BodyCopy>
@@ -63,7 +63,7 @@ const ItemDeleteConfirmationModal = ({
               color="text.secondary"
               fontWeight="extrabold"
               fontFamily="secondary"
-              fontSize={['fs13', 'fs13', 'fs14']}
+              fontSize="fs14"
             >
               {modalButtonConfirmDelete}
             </BodyCopy>

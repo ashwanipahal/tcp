@@ -22,6 +22,8 @@ import {
   IconTextDelete,
   IconTextEdit,
   IconTextMoveToBag,
+  SflIcons,
+  SizeQtyOnReview,
 } from '../styles/CartItemTile.style.native';
 import { getLocator } from '../../../../../../../utils';
 import CartItemRadioButtons from '../../CartItemRadioButtons';
@@ -45,9 +47,10 @@ const getCartRadioButtons = (
   itemIndex,
   openedTile,
   setSelectedProductTile,
-  isBagPageSflSection
+  isBagPageSflSection,
+  showOnReviewPage
 ) => {
-  if (isBagPageSflSection) return null;
+  if (isBagPageSflSection || !showOnReviewPage) return null;
   if (productDetail.miscInfo.availability !== CARTPAGE_CONSTANTS.AVAILABILITY_SOLDOUT) {
     return (
       <CartItemRadioButtons
@@ -61,42 +64,6 @@ const getCartRadioButtons = (
   }
   return <></>;
 };
-const getEditError = (productDetail, labels) => {
-  if (productDetail.miscInfo.availability === 'UNAVAILABLE') {
-    return (
-      <BodyCopy
-        fontFamily="secondary"
-        fontSize="fs12"
-        dataLocator={getLocator('cart_item_edit_link')}
-        textDecorationLine="underline"
-        text={labels.update}
-        color="error"
-      />
-    );
-  }
-  if (productDetail.miscInfo.availability === 'SOLDOUT') {
-    return (
-      <BodyCopy
-        color="error"
-        fontFamily="secondary"
-        fontSize="fs12"
-        dataLocator={getLocator('cart_item_edit_link')}
-        textDecorationLine="underline"
-        text={labels.removeEdit}
-      />
-    );
-  }
-  return (
-    <BodyCopy
-      color="gray.900"
-      fontFamily="secondary"
-      fontSize="fs12"
-      dataLocator={getLocator('cart_item_edit_link')}
-      textDecorationLine="underline"
-      text={labels.edit}
-    />
-  );
-};
 
 class ProductInformation extends React.Component {
   swipeable = React.createRef();
@@ -107,7 +74,7 @@ class ProductInformation extends React.Component {
     const isOK = productDetail.miscInfo.availability === CARTPAGE_CONSTANTS.AVAILABILITY_OK;
     if (!isBagPageSflSection && isOK && isShowSaveForLater) {
       return (
-        <MarginLeft onPress={() => CartItemTileExtension.handleMoveItemtoSaveList(this.props)}>
+        <SflIcons onPress={() => CartItemTileExtension.handleMoveItemtoSaveList(this.props)}>
           <Image
             data-locator="save-for-later-link"
             source={sflIcon}
@@ -115,12 +82,12 @@ class ProductInformation extends React.Component {
             width={IconWidth}
           />
           <IconTextMoveToBag>{saveForLaterLink}</IconTextMoveToBag>
-        </MarginLeft>
+        </SflIcons>
       );
     }
     if (isBagPageSflSection && isOK) {
       return (
-        <MarginLeft onPress={() => CartItemTileExtension.moveToBagSflItem(this.props)}>
+        <SflIcons onPress={() => CartItemTileExtension.moveToBagSflItem(this.props)}>
           <Image
             data-locator="move-to-bag-link"
             source={moveToBagIcon}
@@ -128,17 +95,17 @@ class ProductInformation extends React.Component {
             width={IconWidth}
           />
           <IconTextMoveToBag>{moveToBagLink}</IconTextMoveToBag>
-        </MarginLeft>
+        </SflIcons>
       );
     }
     return null;
   };
 
   renderPoints = () => {
-    const { labels, productDetail, isBagPageSflSection } = this.props;
+    const { labels, productDetail, isBagPageSflSection, showOnReviewPage } = this.props;
     const { points } = labels;
     const { itemInfo: { myPlacePoints } = {} } = productDetail;
-    if (isBagPageSflSection) return null;
+    if (isBagPageSflSection || !showOnReviewPage) return null;
     return (
       <ProductDesc>
         <ProductSubDetailLabel>
@@ -179,38 +146,74 @@ class ProductInformation extends React.Component {
     );
   };
 
-  renderPrice = () => {
-    const { labels, productDetail, isBagPageSflSection } = this.props;
+  renderSize = () => {
+    const { labels, productDetail, showOnReviewPage } = this.props;
+    const { itemInfo: { isGiftItem, size, fit } = {} } = productDetail;
     return (
       <ProductDesc>
-        <ProductSubDetailLabel>
+        <ProductSubDetailLabel showOnReviewPage={showOnReviewPage}>
           <BodyCopy
             fontSize="fs13"
             fontWeight={['semibold']}
             textAlign="left"
-            text={`${labels.price}: `}
+            text={isGiftItem === true ? `${labels.value}: ` : `${labels.size}: `}
           />
         </ProductSubDetailLabel>
         <BodyCopy
+          color="gray.800"
+          fontFamily="secondary"
           fontSize="fs13"
-          fontWeight={['semibold']}
-          textAlign="left"
-          dataLocator={getLocator('cart_item_price')}
-          text={`$${productDetail.itemInfo.price}`}
+          dataLocator={getLocator('cart_item_size')}
+          text={`${size} `}
         />
-        {!isBagPageSflSection && (
-          <ProductListPrice>
+        <BodyCopy
+          fontSize="fs13"
+          color="gray.800"
+          fontFamily="secondary"
+          text={!fit || fit === 'Regular' ? ' ' : fit}
+        />
+      </ProductDesc>
+    );
+  };
+
+  renderPrice = () => {
+    const { labels, productDetail } = this.props;
+    const { isBagPageSflSection, showOnReviewPage, currencySymbol } = this.props;
+    return (
+      <ProductDesc>
+        {showOnReviewPage && (
+          <>
+            <ProductSubDetailLabel>
+              <BodyCopy
+                fontSize="fs13"
+                fontWeight={['semibold']}
+                textAlign="left"
+                text={`${labels.price}: `}
+              />
+            </ProductSubDetailLabel>
             <BodyCopy
-              color="gray.800"
-              fontFamily="secondary"
               fontSize="fs13"
-              text={
-                productDetail.itemInfo.price !== productDetail.itemInfo.itemPrice
-                  ? `$${productDetail.itemInfo.itemPrice}`
-                  : ''
-              }
+              fontWeight={['semibold']}
+              textAlign="left"
+              dataLocator={getLocator('cart_item_price')}
+              text={`${currencySymbol}${productDetail.itemInfo.price}`}
             />
-          </ProductListPrice>
+
+            {!isBagPageSflSection && (
+              <ProductListPrice>
+                <BodyCopy
+                  color="gray.800"
+                  fontFamily="secondary"
+                  fontSize="fs13"
+                  text={
+                    productDetail.itemInfo.price !== productDetail.itemInfo.itemPrice
+                      ? `${currencySymbol}${productDetail.itemInfo.itemPrice}`
+                      : ''
+                  }
+                />
+              </ProductListPrice>
+            )}
+          </>
         )}
       </ProductDesc>
     );
@@ -276,7 +279,7 @@ class ProductInformation extends React.Component {
   };
 
   render() {
-    const { productDetail, labels, itemIndex } = this.props;
+    const { productDetail, labels, itemIndex, showOnReviewPage, currencySymbol } = this.props;
     const { openedTile, setSelectedProductTile, isBagPageSflSection } = this.props;
     const { isGiftItem } = productDetail.itemInfo;
     return (
@@ -285,7 +288,7 @@ class ProductInformation extends React.Component {
           this.swipeable = ref;
         }}
         rightButtons={[this.rightButton()]}
-        rightButtonWidth={250}
+        rightButtonWidth={240}
         leftButtons={[null]}
         onSwipeComplete={(event, gestureState, swipe) => {
           this.onSwipeComplete(swipe);
@@ -293,10 +296,10 @@ class ProductInformation extends React.Component {
       >
         <MainWrapper>
           <UnavailableView>{getItemStatus(productDetail, labels)}</UnavailableView>
-          <OuterContainer>
-            {CartItemTileExtension.CartItemImageWrapper(productDetail, labels)}
+          <OuterContainer showOnReviewPage={showOnReviewPage}>
+            {CartItemTileExtension.CartItemImageWrapper(productDetail, labels, showOnReviewPage)}
             <ProductDescription>
-              {!!productDetail.miscInfo.badge && (
+              {showOnReviewPage && !!productDetail.miscInfo.badge && (
                 <BodyCopy
                   fontWeight={['semibold']}
                   fontFamily="secondary"
@@ -304,8 +307,8 @@ class ProductInformation extends React.Component {
                   text={productDetail.miscInfo.badge}
                 />
               )}
-              {CartItemTileExtension.getProductName(productDetail)}
-              {CartItemTileExtension.heartIcon(isBagPageSflSection)}
+              {CartItemTileExtension.getProductName(productDetail, showOnReviewPage)}
+              {showOnReviewPage && CartItemTileExtension.heartIcon(isBagPageSflSection)}
               <ProductSubDetails>
                 <ProductDesc>
                   <ProductSubDetailLabel>
@@ -324,54 +327,43 @@ class ProductInformation extends React.Component {
                     text={productDetail.itemInfo.color}
                   />
                 </ProductDesc>
-                <ProductDesc>
-                  <ProductSubDetailLabel>
-                    <BodyCopy
-                      fontSize="fs13"
-                      fontWeight={['semibold']}
-                      textAlign="left"
-                      text={isGiftItem === true ? `${labels.value}: ` : `${labels.size}: `}
-                    />
-                  </ProductSubDetailLabel>
-                  <BodyCopy
-                    color="gray.800"
-                    fontFamily="secondary"
-                    fontSize="fs13"
-                    dataLocator={getLocator('cart_item_size')}
-                    text={`${productDetail.itemInfo.size} `}
-                  />
-                  <BodyCopy
-                    fontSize="fs13"
-                    color="gray.800"
-                    fontFamily="secondary"
-                    text={
-                      !productDetail.itemInfo.fit || productDetail.itemInfo.fit === 'Regular'
-                        ? ' '
-                        : productDetail.itemInfo.fit
-                    }
-                  />
-                </ProductDesc>
-                {this.renderQuantity()}
+                {showOnReviewPage ? (
+                  <>
+                    {this.renderSize()}
+                    {this.renderQuantity()}
+                  </>
+                ) : (
+                  <SizeQtyOnReview>
+                    {this.renderSize()}
+                    <BodyCopy fontFamily="secondary" color="gray.800" fontSize="fs13" text="|" />
+                    {this.renderQuantity()}
+                  </SizeQtyOnReview>
+                )}
                 {this.renderPrice()}
                 {this.renderPoints()}
               </ProductSubDetails>
             </ProductDescription>
+            {!showOnReviewPage &&
+              CartItemTileExtension.PriceOnReviewPage(currencySymbol, productDetail)}
           </OuterContainer>
-          <EditButton
-            onPress={() => {
-              this.onSwipeComplete(this.swipeable);
-              return this.swipeable.toggle('right');
-            }}
-          >
-            {getEditError(productDetail, labels)}
-          </EditButton>
+          {showOnReviewPage && (
+            <EditButton
+              onPress={() => {
+                this.onSwipeComplete(this.swipeable);
+                return this.swipeable.toggle('right');
+              }}
+            >
+              {CartItemTileExtension.getEditError(productDetail, labels)}
+            </EditButton>
+          )}
           {getCartRadioButtons(
             productDetail,
             labels,
             itemIndex,
             openedTile,
             setSelectedProductTile,
-            isBagPageSflSection
+            isBagPageSflSection,
+            showOnReviewPage
           )}
         </MainWrapper>
       </Swipeable>
@@ -392,6 +384,8 @@ ProductInformation.propTypes = {
   isBagPageSflSection: PropTypes.bool,
   isShowSaveForLater: PropTypes.bool.isRequired,
   isGenricGuest: PropTypes.shape({}).isRequired,
+  showOnReviewPage: PropTypes.bool,
+  currencySymbol: PropTypes.string.isRequired,
 };
 
 ProductInformation.defaultProps = {
@@ -402,6 +396,7 @@ ProductInformation.defaultProps = {
   isCondense: true,
   swipedElement: null,
   isBagPageSflSection: false,
+  showOnReviewPage: true,
 };
 
 export default ProductInformation;

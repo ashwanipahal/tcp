@@ -15,11 +15,13 @@ exports[`ProductCustomizeFormPart component should renders correctly 1`] = `
       >
         <Styled(Image)
           alt="Boys Uniform V Neck Sweater"
+          data-locator="quick_view_product_image"
           src="https://test4.childrensplace.com/wcsstore/GlobalSAS/images/tcp/products/500/2100606_IV.jpg"
         />
         <Styled(Anchor)
           asPath="/p/2100606_IV"
           className="link-redirect"
+          dataLocator="quick_view_View_Product_details"
           to="/p?pid=2100606_IV"
         >
           <Styled(BodyCopy)
@@ -43,6 +45,7 @@ exports[`ProductCustomizeFormPart component should renders correctly 1`] = `
           className="product-name"
           color="text.primary"
           component="p"
+          dataLocator="quick_view_product_name"
           fontFamily="secondary"
           fontSize="fs18"
           fontWeight="extrabold"
@@ -90,6 +93,7 @@ exports[`ProductCustomizeFormPart component should renders correctly 1`] = `
           className="product-name"
           color="text.primary"
           component="p"
+          dataLocator="quick_view_product_name"
           fontFamily="secondary"
           fontSize="fs18"
           fontWeight="extrabold"

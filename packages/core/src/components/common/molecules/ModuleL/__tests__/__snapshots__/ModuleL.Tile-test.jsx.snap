@@ -5,7 +5,7 @@ exports[`ModuleL Header component renders correctly 1`] = `
   asPath="https://www.childrensplace.com/us/c/toddler-girl-clothes"
   target=""
   title="Shop Unicorns & Friends"
-  to="/c?cid=https://www.childrensplace.com/us"
+  to="/c?cid=https://www.childrensplace.com/ustoddler-girl-clothes"
 >
   <Styled(Row)
     fullBleed={true}
@@ -26,27 +26,31 @@ exports[`ModuleL Header component renders correctly 1`] = `
         }
       }
     >
-      <WithTheme(DamImage)
-        className="moduleL__tile-image"
-        data-locator="moduleL_image_NaN"
-        imgConfigs={
-          Array [
-            "t_mod_L_img_m",
-            "t_mod_L_img_t",
-            "t_mod_L_img_d",
-          ]
-        }
-        imgData={
-          Object {
-            "alt": "BE A UNICORN 24/7/365 alt",
-            "crop_d": "c_crop,g_face:center,q_auto:best,w_1440",
-            "crop_m": "c_crop,g_face:center,q_auto:best,w_520",
-            "crop_t": "c_crop,g_face:center,q_auto:best,w_962",
-            "title": "BE A UNICORN 24/7/365 title",
-            "url": "https://res.cloudinary.com/tcp-dam-test/image/upload/v1562061640/senjuti-kundu-7uP2gFMB2ps-unsplash_kxf3r4.jpg",
+      <div
+        className="tile-image-wrapper"
+      >
+        <WithTheme(DamImage)
+          className="moduleL__tile-image"
+          data-locator="moduleL_image_NaN"
+          imgConfigs={
+            Array [
+              "t_mod_L_img_m",
+              "t_mod_L_img_t",
+              "t_mod_L_img_d",
+            ]
           }
-        }
-      />
+          imgData={
+            Object {
+              "alt": "BE A UNICORN 24/7/365 alt",
+              "crop_d": "c_crop,g_face:center,q_auto:best,w_1440",
+              "crop_m": "c_crop,g_face:center,q_auto:best,w_520",
+              "crop_t": "c_crop,g_face:center,q_auto:best,w_962",
+              "title": "BE A UNICORN 24/7/365 title",
+              "url": "https://res.cloudinary.com/tcp-dam-test/image/upload/v1562061640/senjuti-kundu-7uP2gFMB2ps-unsplash_kxf3r4.jpg",
+            }
+          }
+        />
+      </div>
       <div
         className="moduleL__tile-text"
       >
@@ -82,7 +86,7 @@ exports[`ModuleL Header component renders correctly 1`] = `
           dataLocator="moduleL_link_NaN"
           target=""
           title="Shop Unicorns & Friends"
-          to="/c?cid=https://www.childrensplace.com/us"
+          to="/c?cid=https://www.childrensplace.com/ustoddler-girl-clothes"
           withCaret={true}
         >
           Shop Unicorns & Friends
