@@ -31,10 +31,19 @@ const getNotificationMarkup = (earnedPointsNotification, infoMessage, earnExtraP
         fontWeight="extrabold"
         fontFamily="secondary"
         className="elem-mr-LRG"
+        dataLocator="earnextrapoints-notificationdate"
       >
         {earnedPointsNotification[0].transactionDate}
       </BodyCopy>
-      {infoMessage}
+      <BodyCopy
+        component="span"
+        fontSize="fs14"
+        fontWeight="extrabold"
+        fontFamily="secondary"
+        dataLocator="earnextrapoints-notificationtext"
+      >
+        {infoMessage}
+      </BodyCopy>
       <Anchor
         fontSizeVariation="large"
         underline
