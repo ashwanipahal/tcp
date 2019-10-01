@@ -445,6 +445,7 @@ export class BillingPaymentForm extends React.PureComponent {
               <VenmoPaymentButton
                 className="venmo-container"
                 continueWithText={labels.continueWith}
+                onSuccess={handleSubmit}
               />
             )}
           </div>
@@ -457,6 +458,7 @@ export class BillingPaymentForm extends React.PureComponent {
           backLinkText={orderHasShipping ? backLinkShipping : backLinkPickup}
           showVenmoSubmit={paymentMethodId === constants.PAYMENT_METHOD_VENMO}
           continueWithText={labels.continueWith}
+          onVenmoSubmit={handleSubmit}
         />
       </form>
     );

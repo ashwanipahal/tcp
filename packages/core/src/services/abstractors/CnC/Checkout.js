@@ -383,7 +383,17 @@ export function addPaymentToOrder({
   nickName,
   onFileCardId = '',
   cvv = '',
+  venmoDetails = null,
 }) {
+  let venmoInstruction = {};
+  if (venmoDetails) {
+    const { userId, saveVenmoTokenIntoProfile, nonce } = venmoDetails;
+    venmoInstruction = {
+      venmo_user_id: userId,
+      save_venmo_token_into_profile: saveVenmoTokenIntoProfile ? 'true' : 'false',
+      account: nonce,
+    };
+  }
   const paymentInstruction = {
     billing_address_id: billingAddressId.toString(),
     piAmount: orderGrandTotal.toString(),
@@ -393,6 +403,7 @@ export function addPaymentToOrder({
     expire_month: monthExpire.toString(), // PLCC doesn't require exp
     expire_year: yearExpire.toString(), // PLCC doesn't require exp
     isDefault: (!!setAsDefault).toString(),
+    ...venmoInstruction, // Add Venmo Instructions if payment method is Venmo
   };
   const apiConfig = getAPIConfig();
   const header = {
@@ -409,37 +420,6 @@ export function addPaymentToOrder({
   if (cvv) {
     paymentInstruction.cc_cvc = cvv.toString(); // PLCC doesn't require exp
   }
-
-  // Venmo Support
-  // const { venmoData, saveVenmoTokenIntoProfile } = args;
-  // if (venmoData && venmoData.details && venmoData.details.username) {
-  //   const {
-  //     nonce,
-  //     details: { username },
-  //   } = venmoData;
-  //   const {
-  //     // eslint-disable-next-line camelcase
-  //     billing_address_id,
-  //     piAmount,
-  //     payMethodId,
-  //     cc_brand,
-  //   } = paymentInstruction;
-  //   paymentInstruction = {
-  //     billing_address_id,
-  //     piAmount,
-  //     payMethodId,
-  //     cc_brand,
-  //     account: nonce || '',
-  //     isDefault: 'false', // DTN-4190
-  //   };
-  //   header.savePayment = 'false';
-  //   if (nonce) {
-  //     paymentInstruction.venmo_user_id = username;
-  //     paymentInstruction.save_venmo_token_into_profile = saveVenmoTokenIntoProfile
-  //       ? 'true'
-  //       : 'false';
-  //   }
-  // }
 
   const payload = {
     header,

@@ -153,6 +153,7 @@ class GuestBillingForm extends React.Component {
           backLinkText={orderHasShipping ? backLinkShipping : backLinkPickup}
           showVenmoSubmit={paymentMethodId === CONSTANTS.PAYMENT_METHOD_VENMO}
           continueWithText={labels.continueWith}
+          onVenmoSubmit={handleSubmit}
         />
       </form>
     );

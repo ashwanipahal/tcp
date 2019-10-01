@@ -12,30 +12,9 @@ import {
 import { getCartOrderId } from '../../../../features/CnC/CartItemTile/container/CartItemTile.selectors';
 import logger from '../../../../../utils/loggerInstance';
 import VenmoPaymentButton from '../views';
-import { VENMO_USER_STATES, modes } from './VenmoPaymentButton.util';
+import { modes } from './VenmoPaymentButton.util';
 
 export class VenmoPaymentButtonContainer extends React.PureComponent<Props> {
-  componentWillMount() {
-    this.fetchVenmoClientToken();
-  }
-
-  /**
-   * Fetch venmo token details from the backend api. This is used to create instance of venmo and for authorization
-   */
-  fetchVenmoClientToken = () => {
-    const { isGuest, orderId, enabled, isNonceNotExpired } = this.props;
-    if (enabled && !isNonceNotExpired) {
-      let userState = '';
-      if (isGuest) {
-        userState = VENMO_USER_STATES.GUEST;
-      } else {
-        userState = VENMO_USER_STATES.REGISTERED;
-      }
-      const { getVenmoPaymentTokenAction } = this.props;
-      getVenmoPaymentTokenAction({ userState, orderId });
-    }
-  };
-
   /**
    * This method is used for set venmo data in the checkout redux store.
    * @param {object} data - venmo reducer data to store

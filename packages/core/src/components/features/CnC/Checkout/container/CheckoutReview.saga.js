@@ -27,6 +27,7 @@ import { resetCheckoutReducer } from './Checkout.action';
 import { resetAirmilesReducer } from '../../common/organism/AirmilesBanner/container/AirmilesBanner.actions';
 import { resetCouponReducer } from '../../common/organism/CouponAndPromos/container/Coupon.actions';
 import BagActions from '../../BagPage/container/BagPage.actions';
+import { updateVenmoPaymentInstruction } from './CheckoutBilling.saga';
 
 const {
   // isVenmoPaymentAvailable,
@@ -131,13 +132,16 @@ export function* submitOrderProcessing(orderId, smsOrderInfo, currentLanguage) {
   const isVenmoInProgress = yield select(selectors.isVenmoPaymentInProgress);
   const isVenmoSaveSelected = yield select(selectors.isVenmoPaymentSaveSelected);
   const venmoData = yield select(selectors.getVenmoData);
-
+  // Add Venmo Payment method to the registered user account
+  if (isVenmoSaveSelected) {
+    yield call(updateVenmoPaymentInstruction);
+  }
   if (isVenmoInProgress && venmoData) {
     const { nonce: venmoNonce, deviceData: venmoDeviceData } = venmoData;
-    const email = yield call(getUserEmail);
+    const email = yield select(getUserEmail);
     venmoPayloadData = {
-      venmoNonce,
-      venmoDeviceData,
+      venmoNonce: venmoNonce || 'fake-venmo-account-nonce', // for lower environment testing, added sandbox nonce information
+      venmo_device_data: venmoDeviceData,
       email,
       isVenmoSaveSelected,
     };
