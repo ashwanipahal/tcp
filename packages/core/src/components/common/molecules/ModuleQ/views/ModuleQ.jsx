@@ -28,8 +28,7 @@ class ModuleQ extends React.PureComponent {
     };
   }
 
-  onTabChange = (catId, tabItem) => {
-    console.log(catId);
+  onProductTabChange = (catId, tabItem) => {
     this.setState({ currentCatId: catId, currentTabItem: tabItem });
   };
 
