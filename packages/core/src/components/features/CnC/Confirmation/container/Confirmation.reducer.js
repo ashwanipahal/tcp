@@ -29,8 +29,8 @@ const initialState = fromJS({
     userDetails: {},
   },
   aquiredCouponCode: [],
-
   venmoPaymentConfirmationDisplayed: false,
+  updateOrderDetails: null,
 });
 
 const orderConfirmationReducer = (state = initialState, action) => {
@@ -45,6 +45,8 @@ const orderConfirmationReducer = (state = initialState, action) => {
     //   return state.set('venmoPaymentConfirmationDisplayed', action.payload);
     case CONFIRMATION_CONSTANTS.CONFIRMATION_SET_REWARDS_POINTS:
       return state.setIn(['orderConfirmation', 'summary'], action.updatedSummary);
+    case CONFIRMATION_CONSTANTS.CONFIRMATION_SET_UPDATE_ORDER_DETAILS:
+      return state.set('updateOrderDetails', action.payload);
     default:
       if (state instanceof Object) {
         return fromJS(state);

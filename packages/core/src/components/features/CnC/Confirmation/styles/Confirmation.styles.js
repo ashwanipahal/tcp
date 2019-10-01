@@ -14,7 +14,10 @@ const styles = css`
     text-align: center;
   }
   .thank-you-component {
-    height: 500px;
+    background: ${props => props.theme.colorPalette.white};
+    padding: 20px 0;
+    margin-bottom: 16px;
+    text-align: center;
   }
 
   .loyalty-banner {
