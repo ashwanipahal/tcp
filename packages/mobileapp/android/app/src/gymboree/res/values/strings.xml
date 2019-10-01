@@ -1,4 +1,5 @@
 <resources>
     <string name="app_name">Gymboree</string>
     <string name="splash_name">Gymboree</string>
+    <string name="facebook_app_id">512065309359521</string>
 </resources>
