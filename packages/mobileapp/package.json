@@ -57,7 +57,8 @@
     "superagent-jsonp": "^0.2.1",
     "react-native-image-zoom-viewer": "^2.2.26",
     "react-native-image-pan-zoom": "^2.1.11",
-    "react-native-fbsdk": "0.8.0"
+    "react-native-fbsdk": "0.8.0",
+    "react-native-awesome-card-io": "0.8.1"
   },
   "devDependencies": {
     "@babel/core": "^7.4.5",
@@ -178,7 +179,9 @@
       "**/react-native-image-pan-zoom",
       "**/react-native-image-pan-zoom/**",
       "**/react-native-fbsdk",
-      "**/react-native-fbsdk/**"
+      "**/react-native-fbsdk/**",
+      "**/react-native-awesome-card-io",
+      "**/react-native-awesome-card-io/**"
     ]
   }
 }

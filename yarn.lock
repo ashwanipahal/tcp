@@ -14157,6 +14157,13 @@ react-modal@^3.8.1:
     react-lifecycles-compat "^3.0.0"
     warning "^3.0.0"
 
+react-native-awesome-card-io@0.8.1:
+  version "0.8.1"
+  resolved "https://registry.yarnpkg.com/react-native-awesome-card-io/-/react-native-awesome-card-io-0.8.1.tgz#99a49f6929ea2e89ab45afa13893ba46391163ce"
+  integrity sha512-CJwiBzhjKxbPEjmK6JR7al8E+Er0FUcGclpkMbQjhbzlWg9T1SFrNGw7BxsjmVnNSl7ePwBcrpIu6s5kskjdeQ==
+  dependencies:
+    prop-types "^15.6.2"
+
 react-native-barcode-builder@^1.0.5:
   version "1.0.5"
   resolved "https://registry.yarnpkg.com/react-native-barcode-builder/-/react-native-barcode-builder-1.0.5.tgz#dcc93b6afeec56148b8b3c4e5fb9136a532f7883"
