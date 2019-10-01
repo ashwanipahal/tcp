@@ -129,3 +129,4 @@ ThankYouTitleDisplay.defaultProps = {
 };
 
 export default withStyles(ThankYouTitleDisplay, styles);
+export { ThankYouTitleDisplay as ThankYouTitleDisplayVanilla };

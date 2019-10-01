@@ -71,7 +71,7 @@ class ConfirmationContainer extends React.Component {
       fetchUpdateOrderDetails,
       orderNumbersByFullfillmentCenter,
     } = this.props;
-
+    /* istanbul ignore else */
     if (fetchUpdateOrderDetails) {
       const isBossInList =
         orderNumbersByFullfillmentCenter &&
@@ -168,3 +168,4 @@ export default connect(
   mapStateToProps,
   mapDispatchToProps
 )(ConfirmationContainer);
+export { ConfirmationContainer as ConfirmationContainerVanilla };

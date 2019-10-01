@@ -113,3 +113,4 @@ ConfirmationOrderNumberDisplay.defaultProps = {
 };
 
 export default withStyles(ConfirmationOrderNumberDisplay, styles);
+export { ConfirmationOrderNumberDisplay as ConfirmationOrderNumberDisplayVanilla };

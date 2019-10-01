@@ -31,7 +31,7 @@ describe('ConfirmationReducer', () => {
       userDetails: {},
     },
     aquiredCouponCode: [],
-
+    updateOrderDetails: null,
     venmoPaymentConfirmationDisplayed: false,
   });
 
@@ -65,6 +65,7 @@ describe('ConfirmationReducer', () => {
         },
         aquiredCouponCode: [],
         venmoPaymentConfirmationDisplayed: false,
+        updateOrderDetails: null,
       })
     );
   });
@@ -125,6 +126,7 @@ describe('ConfirmationReducer', () => {
             isPastStartDate: false,
           },
         ],
+        updateOrderDetails: null,
       })
     );
   });
@@ -183,6 +185,7 @@ describe('ConfirmationReducer', () => {
 
         venmoPaymentConfirmationDisplayed: false,
         orderProducts,
+        updateOrderDetails: null,
       })
     );
   });
@@ -236,6 +239,48 @@ describe('ConfirmationReducer', () => {
         },
         aquiredCouponCode: [],
 
+        venmoPaymentConfirmationDisplayed: false,
+        updateOrderDetails: null,
+      })
+    );
+  });
+  it('should set module x content', () => {
+    const payload = fromJS([{ richText: '<p>update order details msg</p>' }]);
+    expect(
+      ConfirmationReducer(initialState, {
+        type: CONFIRMATION_CONSTANTS.CONFIRMATION_SET_UPDATE_ORDER_DETAILS,
+        payload,
+      })
+    ).toEqual(
+      fromJS({
+        orderConfirmation: {
+          emailAddress: '',
+          encryptedEmailAddress: '',
+          summary: {
+            itemsTotal: 0,
+            itemsCount: 0,
+            savingsTotal: 0,
+            taxTotal: 0,
+            shippingTotal: 0,
+            estimatedRewards: 0,
+            subTotal: 0,
+            grandTotal: 0,
+            pointsToNextReward: 0,
+            earnedReward: '',
+          },
+
+          orderDetails: {
+            date: null,
+            orderNumber: null,
+            trackingLink: '',
+          },
+
+          rewardedPoints: 0,
+
+          userDetails: {},
+        },
+        aquiredCouponCode: [],
+        updateOrderDetails: [{ richText: '<p>update order details msg</p>' }],
         venmoPaymentConfirmationDisplayed: false,
       })
     );

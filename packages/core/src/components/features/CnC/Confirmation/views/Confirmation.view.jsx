@@ -67,6 +67,7 @@ const ConfirmationView = ({
   let isShowBopisMessage;
   let isShowMixedMessage;
   let isBossInList;
+  /* istanbul ignore else */
   if (orderNumbersByFullfillmentCenter) {
     isShowBopisMessage = !checkIfShippingFullName({ orderNumbersByFullfillmentCenter });
     isShowMixedMessage =

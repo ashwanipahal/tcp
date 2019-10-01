@@ -1,0 +1,102 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`ConfirmationOrderNumberDisplayVanilla should render correctly 1`] = `
+<div
+  className=""
+>
+  <Styled(BodyCopy)
+    className="confirmation-item-count"
+    color="text.primary"
+    component="p"
+    fontFamily="secondary"
+    fontSize="fs16"
+    fontWeight="black"
+    letterSpacing="normal"
+    lineHeight="normal"
+    link={null}
+    textAlign="left"
+  >
+    undefined undefined
+  </Styled(BodyCopy)>
+  <Styled(BodyCopy)
+    className="confirmation-fullfillment-type"
+    color="text.primary"
+    component="p"
+    fontFamily="secondary"
+    fontSize="fs22"
+    fontWeight="extrabold"
+    letterSpacing="normal"
+    lineHeight="normal"
+    link={null}
+    textAlign="center"
+  />
+  <div
+    className="confirmation-order-details-wrapper"
+  >
+    <Styled(ConfirmationItemDisplay)>
+      <Styled(Anchor)
+        underline={true}
+        url="/track-order/undefined/undefined"
+      />
+    </Styled(ConfirmationItemDisplay)>
+    <Styled(ConfirmationItemDisplay) />
+    <Styled(ConfirmationItemDisplay)
+      boldFont={true}
+    >
+      undefined 23.34
+    </Styled(ConfirmationItemDisplay)>
+  </div>
+</div>
+`;
+
+exports[`ConfirmationOrderNumberDisplayVanilla should render correctly with BOPIS 1`] = `
+<div
+  className=""
+>
+  <Styled(BodyCopy)
+    className="confirmation-item-count"
+    color="text.primary"
+    component="p"
+    fontFamily="secondary"
+    fontSize="fs16"
+    fontWeight="black"
+    letterSpacing="normal"
+    lineHeight="normal"
+    link={null}
+    textAlign="left"
+  >
+    2 undefined
+  </Styled(BodyCopy)>
+  <Styled(BodyCopy)
+    className="confirmation-fullfillment-type"
+    color="text.primary"
+    component="p"
+    fontFamily="secondary"
+    fontSize="fs22"
+    fontWeight="extrabold"
+    letterSpacing="normal"
+    lineHeight="normal"
+    link={null}
+    textAlign="center"
+  >
+    undefined undefined undefined
+  </Styled(BodyCopy)>
+  <div
+    className="confirmation-order-details-wrapper"
+  >
+    <Styled(ConfirmationItemDisplay)>
+      <Styled(Anchor)
+        asPath="/account/orders/order-details/undefined"
+        to="/account?id=orders"
+        underline={true}
+      />
+    </Styled(ConfirmationItemDisplay)>
+    <Styled(ConfirmationItemDisplay) />
+    <Styled(ConfirmationItemDisplay)
+      boldFont={true}
+    >
+      undefined 23.00
+    </Styled(ConfirmationItemDisplay)>
+  </div>
+</div>
+`;

@@ -136,3 +136,4 @@ ConfirmationItemTitleDisplay.defaultProps = {
 };
 
 export default withStyles(ConfirmationItemTitleDisplay, styles);
+export { ConfirmationItemTitleDisplay as ConfirmationItemTitleDisplayVanilla };

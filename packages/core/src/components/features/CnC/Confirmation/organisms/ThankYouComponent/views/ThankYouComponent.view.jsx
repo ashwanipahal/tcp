@@ -166,3 +166,4 @@ ThankYouComponent.defaultProps = {
 };
 
 export default withStyles(ThankYouComponent, styles);
+export { ThankYouComponent as ThankYouComponentVanilla };

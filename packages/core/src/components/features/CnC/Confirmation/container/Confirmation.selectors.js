@@ -336,7 +336,7 @@ const getUpdateOrderDetailsBossId = state => {
 const getUpdateOrderDetailsData = state => {
   return (
     state.Confirmation.get('updateOrderDetails') &&
-    state.Confirmation.get('updateOrderDetails')[0].richText
+    state.Confirmation.get('updateOrderDetails').richText
   );
 };
 

@@ -1,0 +1,152 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`ConfirmationItemTitleDisplayVanilla should render correctly 1`] = `
+<div
+  className=""
+>
+  <Styled(Image)
+    alt="Pickup"
+    src="/static/images/marker-icon.svg"
+  />
+  <Styled(Image)
+    alt="Shipping"
+    src="/static/images/fast-shipping.svg"
+  />
+  <div
+    className="confirmation-fullfillment-type"
+  >
+    <div>
+      <Styled(BodyCopy)
+        className={null}
+        color="text.primary"
+        component="span"
+        fontFamily="secondary"
+        fontSize="fs22"
+        fontWeight="semibold"
+        letterSpacing="normal"
+        lineHeight="normal"
+        link={null}
+        textAlign="center"
+      >
+        <Styled(BodyCopy)
+          className="elem-ml-XS"
+          color="text.primary"
+          component="span"
+          fontFamily="primary"
+          fontSize={12}
+          fontWeight="extrabold"
+          letterSpacing="normal"
+          lineHeight="normal"
+          link={null}
+          textAlign="left"
+        >
+          name
+        </Styled(BodyCopy)>
+      </Styled(BodyCopy)>
+      <span>
+        <Styled(Anchor)
+          asPath="/"
+          className="confirmation-fullfillment-store elem-ml-XS"
+          title="union"
+          to="/"
+        >
+          union
+        </Styled(Anchor)>
+      </span>
+    </div>
+    <div
+      className="confirmation-fullfillment-details"
+    >
+      <Styled(ReactTooltip)
+        aligned="right"
+        fontFamily="secondary"
+        message={
+          <p>
+            1123 ab
+            <br />
+            adf
+            <br />
+            AC
+            , 
+            AD
+             
+            10001
+            <br />
+            <br />
+            <em />
+            
+            <br />
+            <em />
+            
+            <br />
+            <em />
+            23456789023
+          </p>
+        }
+      >
+        <Styled(Image)
+          height="15"
+          src="/static/images/info-icon.png"
+          width="15"
+        />
+      </Styled(ReactTooltip)>
+    </div>
+  </div>
+</div>
+`;
+
+exports[`ConfirmationItemTitleDisplayVanilla should render correctly without shipping full name 1`] = `
+<div
+  className=""
+>
+  <Styled(Image)
+    alt="Pickup"
+    src="/static/images/marker-icon.svg"
+  />
+  <div
+    className="confirmation-fullfillment-type"
+  >
+    <div>
+      <Styled(BodyCopy)
+        className={null}
+        color="text.primary"
+        component="span"
+        fontFamily="secondary"
+        fontSize="fs22"
+        fontWeight="semibold"
+        letterSpacing="normal"
+        lineHeight="normal"
+        link={null}
+        textAlign="center"
+      />
+      <span>
+        <Styled(Anchor)
+          asPath="/"
+          className="confirmation-fullfillment-store elem-ml-XS"
+          title="union"
+          to="/"
+        >
+          union
+        </Styled(Anchor)>
+      </span>
+    </div>
+    <div
+      className="confirmation-fullfillment-details"
+    >
+      <Styled(ReactTooltip)
+        aligned="right"
+        fontFamily="secondary"
+        message=""
+      >
+        <Styled(Image)
+          height="15"
+          src="/static/images/info-icon.png"
+          width="15"
+        />
+      </Styled(ReactTooltip)>
+    </div>
+  </div>
+</div>
+`;
+
+exports[`ConfirmationItemTitleDisplayVanilla should render null if center is not present 1`] = `""`;

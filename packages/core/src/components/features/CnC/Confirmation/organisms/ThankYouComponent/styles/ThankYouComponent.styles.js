@@ -1,6 +1,9 @@
 import { css } from 'styled-components';
 
 const styles = css`
+  background: ${props => props.theme.colorPalette.white};
+  text-align: center;
+  margin-bottom: ${props => props.theme.spacing.ELEM_SPACING.MED};
   .variable-width {
     width: 86%;
     margin: 0 auto;

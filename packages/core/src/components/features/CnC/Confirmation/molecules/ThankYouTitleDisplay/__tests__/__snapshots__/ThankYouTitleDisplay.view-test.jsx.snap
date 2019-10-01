@@ -1,0 +1,451 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`ThankYouTitleDisplayVanilla should render correctly 1`] = `
+<div
+  className=""
+>
+  <Styled(Row)
+    fullBleed={true}
+  >
+    <Styled(Col)
+      colSize={
+        Object {
+          "large": 12,
+          "medium": 6,
+          "small": 6,
+        }
+      }
+      offsetLeft={
+        Object {
+          "large": 0,
+          "medium": 1,
+          "small": 0,
+        }
+      }
+      offsetRight={
+        Object {
+          "large": 0,
+          "medium": 1,
+          "small": 0,
+        }
+      }
+    >
+      <Styled(BodyCopy)
+        className="thank-you-heading"
+        color="text.primary"
+        component="p"
+        fontFamily="primary"
+        fontSize={12}
+        fontWeight="black"
+        letterSpacing="normal"
+        lineHeight="normal"
+        link={null}
+        textAlign="center"
+      />
+    </Styled(Col)>
+  </Styled(Row)>
+  <Styled(Row)
+    fullBleed={true}
+  >
+    <Styled(Col)
+      colSize={
+        Object {
+          "large": 12,
+          "medium": 8,
+          "small": 6,
+        }
+      }
+    />
+  </Styled(Row)>
+  <Styled(Row)
+    fullBleed={true}
+  >
+    <Styled(Col)
+      colSize={
+        Object {
+          "large": 10,
+          "medium": 8,
+          "small": 6,
+        }
+      }
+      offsetLeft={
+        Object {
+          "large": 1,
+          "medium": 0,
+          "small": 0,
+        }
+      }
+      offsetRight={
+        Object {
+          "large": 1,
+          "medium": 0,
+          "small": 0,
+        }
+      }
+    >
+      <Styled(BodyCopy)
+        className={null}
+        color="text.primary"
+        component="p"
+        fontFamily="secondary"
+        fontSize="fs18"
+        fontWeight="regular"
+        letterSpacing="normal"
+        lineHeight="normal"
+        link={null}
+        textAlign="center"
+      >
+        undefined abc@test.com undefined
+      </Styled(BodyCopy)>
+    </Styled(Col)>
+  </Styled(Row)>
+</div>
+`;
+
+exports[`ThankYouTitleDisplayVanilla should render correctly with isShowBopisMessage msg 1`] = `
+<div
+  className=""
+>
+  <Styled(Row)
+    fullBleed={true}
+  >
+    <Styled(Col)
+      colSize={
+        Object {
+          "large": 12,
+          "medium": 6,
+          "small": 6,
+        }
+      }
+      offsetLeft={
+        Object {
+          "large": 0,
+          "medium": 1,
+          "small": 0,
+        }
+      }
+      offsetRight={
+        Object {
+          "large": 0,
+          "medium": 1,
+          "small": 0,
+        }
+      }
+    >
+      <Styled(BodyCopy)
+        className="thank-you-heading"
+        color="text.primary"
+        component="p"
+        fontFamily="primary"
+        fontSize={12}
+        fontWeight="black"
+        letterSpacing="normal"
+        lineHeight="normal"
+        link={null}
+        textAlign="center"
+      />
+    </Styled(Col)>
+  </Styled(Row)>
+  <Styled(Row)
+    fullBleed={true}
+  >
+    <Styled(Col)
+      colSize={
+        Object {
+          "large": 12,
+          "medium": 8,
+          "small": 6,
+        }
+      }
+    >
+      <Styled(BodyCopy)
+        className={null}
+        color="text.primary"
+        component="p"
+        fontFamily="secondary"
+        fontSize="fs18"
+        fontWeight="regular"
+        letterSpacing="normal"
+        lineHeight="normal"
+        link={null}
+        textAlign="center"
+      />
+    </Styled(Col)>
+  </Styled(Row)>
+  <Styled(Row)
+    fullBleed={true}
+  >
+    <Styled(Col)
+      colSize={
+        Object {
+          "large": 10,
+          "medium": 8,
+          "small": 6,
+        }
+      }
+      offsetLeft={
+        Object {
+          "large": 1,
+          "medium": 0,
+          "small": 0,
+        }
+      }
+      offsetRight={
+        Object {
+          "large": 1,
+          "medium": 0,
+          "small": 0,
+        }
+      }
+    >
+      <Styled(BodyCopy)
+        className={null}
+        color="text.primary"
+        component="p"
+        fontFamily="secondary"
+        fontSize="fs18"
+        fontWeight="regular"
+        letterSpacing="normal"
+        lineHeight="normal"
+        link={null}
+        textAlign="center"
+      >
+        undefined undefined
+        undefined abc@test.com
+      </Styled(BodyCopy)>
+    </Styled(Col)>
+  </Styled(Row)>
+</div>
+`;
+
+exports[`ThankYouTitleDisplayVanilla should render correctly with isShowShippingMessage msg 1`] = `
+<div
+  className=""
+>
+  <Styled(Row)
+    fullBleed={true}
+  >
+    <Styled(Col)
+      colSize={
+        Object {
+          "large": 12,
+          "medium": 6,
+          "small": 6,
+        }
+      }
+      offsetLeft={
+        Object {
+          "large": 0,
+          "medium": 1,
+          "small": 0,
+        }
+      }
+      offsetRight={
+        Object {
+          "large": 0,
+          "medium": 1,
+          "small": 0,
+        }
+      }
+    >
+      <Styled(BodyCopy)
+        className="thank-you-heading"
+        color="text.primary"
+        component="p"
+        fontFamily="primary"
+        fontSize={12}
+        fontWeight="black"
+        letterSpacing="normal"
+        lineHeight="normal"
+        link={null}
+        textAlign="center"
+      />
+    </Styled(Col)>
+  </Styled(Row)>
+  <Styled(Row)
+    fullBleed={true}
+  >
+    <Styled(Col)
+      colSize={
+        Object {
+          "large": 12,
+          "medium": 8,
+          "small": 6,
+        }
+      }
+    >
+      <Styled(BodyCopy)
+        className={null}
+        color="text.primary"
+        component="p"
+        fontFamily="secondary"
+        fontSize="fs18"
+        fontWeight="regular"
+        letterSpacing="normal"
+        lineHeight="normal"
+        link={null}
+        textAlign="center"
+      />
+    </Styled(Col)>
+  </Styled(Row)>
+  <Styled(Row)
+    fullBleed={true}
+  >
+    <Styled(Col)
+      colSize={
+        Object {
+          "large": 10,
+          "medium": 8,
+          "small": 6,
+        }
+      }
+      offsetLeft={
+        Object {
+          "large": 1,
+          "medium": 0,
+          "small": 0,
+        }
+      }
+      offsetRight={
+        Object {
+          "large": 1,
+          "medium": 0,
+          "small": 0,
+        }
+      }
+    >
+      <Styled(BodyCopy)
+        className={null}
+        color="text.primary"
+        component="p"
+        fontFamily="secondary"
+        fontSize="fs18"
+        fontWeight="regular"
+        letterSpacing="normal"
+        lineHeight="normal"
+        link={null}
+        textAlign="center"
+      >
+        undefined undefined
+        undefined abc@test.com
+      </Styled(BodyCopy)>
+    </Styled(Col)>
+  </Styled(Row)>
+</div>
+`;
+
+exports[`ThankYouTitleDisplayVanilla should render correctly with showbopis msg 1`] = `
+<div
+  className=""
+>
+  <Styled(Row)
+    fullBleed={true}
+  >
+    <Styled(Col)
+      colSize={
+        Object {
+          "large": 12,
+          "medium": 6,
+          "small": 6,
+        }
+      }
+      offsetLeft={
+        Object {
+          "large": 0,
+          "medium": 1,
+          "small": 0,
+        }
+      }
+      offsetRight={
+        Object {
+          "large": 0,
+          "medium": 1,
+          "small": 0,
+        }
+      }
+    >
+      <Styled(BodyCopy)
+        className="thank-you-heading"
+        color="text.primary"
+        component="p"
+        fontFamily="primary"
+        fontSize={12}
+        fontWeight="black"
+        letterSpacing="normal"
+        lineHeight="normal"
+        link={null}
+        textAlign="center"
+      />
+    </Styled(Col)>
+  </Styled(Row)>
+  <Styled(Row)
+    fullBleed={true}
+  >
+    <Styled(Col)
+      colSize={
+        Object {
+          "large": 12,
+          "medium": 8,
+          "small": 6,
+        }
+      }
+    >
+      <Styled(BodyCopy)
+        className={null}
+        color="text.primary"
+        component="p"
+        fontFamily="secondary"
+        fontSize="fs18"
+        fontWeight="regular"
+        letterSpacing="normal"
+        lineHeight="normal"
+        link={null}
+        textAlign="center"
+      />
+    </Styled(Col)>
+  </Styled(Row)>
+  <Styled(Row)
+    fullBleed={true}
+  >
+    <Styled(Col)
+      colSize={
+        Object {
+          "large": 10,
+          "medium": 8,
+          "small": 6,
+        }
+      }
+      offsetLeft={
+        Object {
+          "large": 1,
+          "medium": 0,
+          "small": 0,
+        }
+      }
+      offsetRight={
+        Object {
+          "large": 1,
+          "medium": 0,
+          "small": 0,
+        }
+      }
+    >
+      <Styled(BodyCopy)
+        className={null}
+        color="text.primary"
+        component="p"
+        fontFamily="secondary"
+        fontSize="fs18"
+        fontWeight="regular"
+        letterSpacing="normal"
+        lineHeight="normal"
+        link={null}
+        textAlign="center"
+      >
+        undefined false
+        undefined abcd@test.com
+      </Styled(BodyCopy)>
+    </Styled(Col)>
+  </Styled(Row)>
+</div>
+`;

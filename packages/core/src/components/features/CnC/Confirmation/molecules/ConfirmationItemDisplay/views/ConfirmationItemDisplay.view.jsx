@@ -39,3 +39,4 @@ ConfirmationItemDisplay.defaultProps = {
 };
 
 export default withStyles(ConfirmationItemDisplay, styles);
+export { ConfirmationItemDisplay as ConfirmationItemDisplayVanilla };

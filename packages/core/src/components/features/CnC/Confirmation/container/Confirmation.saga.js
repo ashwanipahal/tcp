@@ -1,12 +1,11 @@
-import { call, takeLatest, put, all } from 'redux-saga/effects';
+import { call, takeLatest, put } from 'redux-saga/effects';
 import CONFIRMATION_CONSTANTS from '../Confirmation.constants';
 import { getModuleX } from '../../../../../services/abstractors/common/moduleX';
 import { setUpdateOrderDetailsData } from './Confirmation.actions';
 
-export function* fetchModuleX({ payload = [] }) {
+export function* fetchModuleX({ payload = '' }) {
   try {
-    let result = yield all(payload.map(uuid => call(getModuleX, uuid)));
-    result = result.map((val, index) => ({ ...val, name: payload[index] }));
+    const result = yield call(getModuleX, payload);
     yield put(setUpdateOrderDetailsData(result));
   } catch (err) {
     yield null;
