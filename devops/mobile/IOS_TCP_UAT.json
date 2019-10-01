@@ -276,9 +276,10 @@
       "certificateFileId": "0cbe1d51-0aea-4538-8f6f-d072a8ad4452",
       "provisioningProfileFileId": "9c62301e-f4ec-4e5e-a6c9-c050ae7e2886",
       "appExtensionProvisioningProfileFiles": [],
-      "projectOrWorkspacePath": "packages/mobileapp/ios/mobileapp.xcodeproj",
+      "projectOrWorkspacePath": "packages/mobileapp/ios/mobileapp.xcworkspace",
       "scheme": "mobileapp_uat",
-      "xcodeVersion": "10.2.1"
+      "xcodeVersion": "10.2.1",
+      "podfilePath": "packages/mobileapp/ios/Podfile"
     }
   },
   "artifactVersioning": {
