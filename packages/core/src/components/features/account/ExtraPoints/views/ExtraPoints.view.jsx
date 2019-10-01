@@ -107,6 +107,7 @@ const EarnPoints = ({
             textAlign="center"
             fontFamily="secondary"
             className="morePointsWrapper"
+            data-locator="extraExtraPoints_more_pointsText"
           >
             {getLabelValue(labels, 'lbl_extraExtraPoints_more_points')}
           </BodyCopy>
