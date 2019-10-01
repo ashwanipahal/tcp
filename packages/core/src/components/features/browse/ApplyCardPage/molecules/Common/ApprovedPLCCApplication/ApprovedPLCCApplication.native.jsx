@@ -24,6 +24,18 @@ const headerImage = require('../../../../../../../assets/tcp-cc.png');
 const couponImage = require('../../../../../../../assets/promo.png');
 
 /**
+ * @function - fetchTotalSavingOnOrder
+ *
+ * @param {*} plccData - richtext data.
+ * @param {*} approvedPLCCData - successful WIC data.
+ */
+const fetchTotalSavingOnOrder = (plccData = {}, approvedPLCCData = {}) => {
+  return (
+    plccData && plccData.total_savings_amount.replace('amount', `$${approvedPLCCData.savingAmount}`)
+  );
+};
+
+/**
  * @const getCouponBody
  *
  * @param - labels
@@ -92,18 +104,14 @@ const getCouponBody = (plccData, labels, approvedPLCCData) => {
  */
 
 const footerBottom = (plccData, labels, approvedPLCCData, bagItems, navigation, toggleModal) => {
+  const totalSavings = fetchTotalSavingOnOrder(plccData, approvedPLCCData);
   return (
     <React.Fragment>
       {approvedPLCCData && approvedPLCCData.savingAmount > 0 ? (
         <SavingAmountWrapper>
           <RichText
             source={{
-              html:
-                plccData &&
-                plccData.total_savings_amount.replace(
-                  'amount',
-                  `$${approvedPLCCData && approvedPLCCData.savingAmount}`
-                ),
+              html: totalSavings,
             }}
           />
         </SavingAmountWrapper>

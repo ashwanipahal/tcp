@@ -23,13 +23,13 @@ class CouponView extends React.PureComponent {
     detailStatus: false,
     helpStatus: false,
     selectedCoupon: {},
-    applyCard: false,
+    showApplyCardModal: false,
   };
 
   toggleApplyNowModal = () => {
-    const { applyCard } = this.state;
+    const { showApplyCardModal } = this.state;
     this.setState({
-      applyCard: !applyCard,
+      showApplyCardModal: !showApplyCardModal,
     });
   };
 
@@ -148,7 +148,7 @@ class CouponView extends React.PureComponent {
       showAccordian,
     } = this.props;
 
-    const { detailStatus, helpStatus, selectedCoupon, applyCard } = this.state;
+    const { detailStatus, helpStatus, selectedCoupon, showApplyCardModal } = this.state;
 
     const header = this.getHeader({ labels });
     const body = this.getContent({
@@ -184,9 +184,12 @@ class CouponView extends React.PureComponent {
             underline
             fontSizeVariation="large"
             onPress={this.toggleApplyNowModal}
-            text={getLabelValue(labels, 'lbl_PLCCModal_applyNowLink')}
+            text={getLabelValue(labels, 'applyNowLink')}
           />
-          <ApplyNowWrapper toggleModalWrapper={this.toggleApplyNowModal} applyNow={applyCard} />
+          <ApplyNowWrapper
+            toggleModalWrapper={this.toggleApplyNowModal}
+            applyNow={showApplyCardModal}
+          />
         </View>
       </View>
     );
