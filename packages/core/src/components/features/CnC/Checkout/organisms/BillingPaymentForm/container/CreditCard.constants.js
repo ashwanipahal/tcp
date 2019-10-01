@@ -9,4 +9,6 @@ export default {
     VENMO: 'VENMO',
     GIFT_CARD: 'GiftCard',
   },
+  PAYMENT_METHOD_PAY_PAL: 'payPal',
+  PAYMENT_METHOD_VENMO: 'venmo',
 };

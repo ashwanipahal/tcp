@@ -33,8 +33,8 @@ const getCardDetailsMethod = labels => {
             anchorVariation="primary"
             fontSizeVariation="small"
             noLink
-            href="#"
-            target="_blank"
+            href=""
+            target=""
             text={labels.edit}
           />
         </CardDetailEdit>

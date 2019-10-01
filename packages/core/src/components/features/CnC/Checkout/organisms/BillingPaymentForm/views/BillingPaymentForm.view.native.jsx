@@ -330,9 +330,9 @@ export class BillingPaymentForm extends React.PureComponent {
       dispatch,
     } = this.props;
     const paymentMethods = [
-      { id: 'creditCard', displayName: labels.creditCard },
-      { id: 'payPal', displayName: '' },
-      { id: 'venmo', displayName: '' },
+      { id: constants.PAYMENT_METHOD_CREDIT_CARD, displayName: labels.creditCard },
+      { id: constants.PAYMENT_METHOD_PAY_PAL, displayName: labels.payPal },
+      { id: constants.PAYMENT_METHOD_VENMO, displayName: labels.venmo },
     ];
     const creditCardList = getCreditCardList({ cardList });
     return (

@@ -30,11 +30,11 @@ exports[`ButtonList component renders correctly if  cards present and addNewCCSt
             "id": "creditCard",
           },
           Object {
-            "displayName": "",
+            "displayName": undefined,
             "id": "payPal",
           },
           Object {
-            "displayName": "",
+            "displayName": undefined,
             "id": "venmo",
           },
         ]
@@ -237,11 +237,11 @@ exports[`ButtonList component renders correctly if  no cards present  1`] = `
             "id": "creditCard",
           },
           Object {
-            "displayName": "",
+            "displayName": undefined,
             "id": "payPal",
           },
           Object {
-            "displayName": "",
+            "displayName": undefined,
             "id": "venmo",
           },
         ]
@@ -382,11 +382,11 @@ exports[`ButtonList component renders correctly if payment method is diff 1`] = 
             "id": "creditCard",
           },
           Object {
-            "displayName": "",
+            "displayName": undefined,
             "id": "payPal",
           },
           Object {
-            "displayName": "",
+            "displayName": undefined,
             "id": "venmo",
           },
         ]
@@ -435,11 +435,11 @@ exports[`ButtonList component renders correctly without props 1`] = `
             "id": "creditCard",
           },
           Object {
-            "displayName": "",
+            "displayName": undefined,
             "id": "payPal",
           },
           Object {
-            "displayName": "",
+            "displayName": undefined,
             "id": "venmo",
           },
         ]
@@ -517,11 +517,11 @@ exports[`ButtonList component renders correctly without props 1`] = `
           colorName={null}
           customStyle={Object {}}
           fontSizeVariation="small"
-          href="#"
+          href=""
           locator=""
           noLink={true}
           onPress={null}
-          target="_blank"
+          target=""
           text="Edit"
           underline={true}
           visible={false}
@@ -714,11 +714,11 @@ exports[`ButtonList component renders correctly without props 2`] = `
             "id": "creditCard",
           },
           Object {
-            "displayName": "",
+            "displayName": undefined,
             "id": "payPal",
           },
           Object {
-            "displayName": "",
+            "displayName": undefined,
             "id": "venmo",
           },
         ]
@@ -796,11 +796,11 @@ exports[`ButtonList component renders correctly without props 2`] = `
           colorName={null}
           customStyle={Object {}}
           fontSizeVariation="small"
-          href="#"
+          href=""
           locator=""
           noLink={true}
           onPress={null}
-          target="_blank"
+          target=""
           text="Edit"
           underline={true}
           visible={false}
@@ -992,11 +992,11 @@ exports[`ButtonList component renders correctly without props with isPaymentDisa
             "id": "creditCard",
           },
           Object {
-            "displayName": "",
+            "displayName": undefined,
             "id": "payPal",
           },
           Object {
-            "displayName": "",
+            "displayName": undefined,
             "id": "venmo",
           },
         ]
@@ -1073,11 +1073,11 @@ exports[`ButtonList component renders correctly without props with isPaymentDisa
           colorName={null}
           customStyle={Object {}}
           fontSizeVariation="small"
-          href="#"
+          href=""
           locator=""
           noLink={true}
           onPress={null}
-          target="_blank"
+          target=""
           text="Edit"
           underline={true}
           visible={false}

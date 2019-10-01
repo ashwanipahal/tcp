@@ -1,7 +1,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import { Field, change } from 'redux-form';
-import { List } from 'immutable';
+import { fromJS } from 'immutable';
 import AddressDropdown from '../../../../../account/AddEditCreditCard/molecule/AddressDropdown';
 import Card from '../../../../../../common/molecules/Card/views/Card.native';
 import withStyles from '../../../../../../common/hoc/withStyles';
@@ -41,7 +41,7 @@ export class CreditCardDropDown extends React.PureComponent {
           useCustomContent: true,
           primary: card.defaultInd === 'true',
         }))) ||
-      new List([]);
+      fromJS([]);
 
     cardOptions = cardOptions.push({
       id: '',
