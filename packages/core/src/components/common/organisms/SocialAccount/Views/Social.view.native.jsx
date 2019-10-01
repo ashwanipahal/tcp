@@ -37,11 +37,17 @@ class Socialview extends React.PureComponent {
     };
   }
 
+  /**
+   * Close the points modal
+   */
   onClose = () => {
     const { pointModalClose } = this.props;
     pointModalClose({ state: false });
   };
 
+  /**
+   * Redirects to earn extra points page
+   */
   viewAll = () => {
     const { handleComponentChange } = this.props;
     handleComponentChange('earnExtraPointsPageMobile');
