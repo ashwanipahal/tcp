@@ -21,6 +21,11 @@ const headerImage = require('../../../../../../assets/tcp-cc.png');
 const PLCC_LOOKUP_2_POINTS = require('../../../../../../assets/PLCC_lockup_2_points.png');
 const PLCC_LOOKUP_1_POINTS = require('../../../../../../assets/PLCC_lockup_1_points.png');
 
+/**
+ * @class - ApplyNowModalWrapper
+ *
+ * @description - used for showing the apply now modal for plcc application flow
+ */
 class ApplyNowModalWrapper extends React.PureComponent {
   constructor(props) {
     super(props);
@@ -34,7 +39,13 @@ class ApplyNowModalWrapper extends React.PureComponent {
     }
   }
 
-  toggleApplyCard = () => {
+  /**
+   * @function - toggleApplyCardModal
+   *
+   * @description - used for toggling the apply card modal state.
+   */
+
+  toggleApplyCardModal = () => {
     const { applyCard } = this.state;
     const { resetPLCCApplicationStatus } = this.props;
     this.setState({
@@ -43,15 +54,15 @@ class ApplyNowModalWrapper extends React.PureComponent {
     resetPLCCApplicationStatus({ status: null });
   };
 
-  onClose = () => {
-    const { setLoginModalMountState } = this.props;
-    setLoginModalMountState({ state: false });
-  };
-
+  /**
+   * @function - closeModal
+   *
+   * @description - closing the apply card modal and finalizing the call.
+   */
   closeModal = () => {
     const { toggleModalWrapper } = this.props;
     toggleModalWrapper();
-    this.toggleApplyCard();
+    this.toggleApplyCardModal();
   };
 
   /**
@@ -71,7 +82,7 @@ class ApplyNowModalWrapper extends React.PureComponent {
     const offerType = getLabelValue(labels, 'oneequalstwopointsoffer');
     return (
       <View>
-        <ApplyCardLayoutView toggleModal={this.toggleApplyCard} applyCard={applyCard} />
+        <ApplyCardLayoutView toggleModal={this.toggleApplyCardModal} applyCard={applyCard} />
         <ModalNative
           onRequestClose={toggleModalWrapper}
           horizontalBar={false}
@@ -163,7 +174,6 @@ class ApplyNowModalWrapper extends React.PureComponent {
               />
 
               <StyledAnchor
-                className="footerLink"
                 url={getLabelValue(labels, 'lbl_PLCCModal_faqLink')}
                 target="_blank"
                 locator="plcc_faq"
@@ -175,7 +185,6 @@ class ApplyNowModalWrapper extends React.PureComponent {
               />
 
               <StyledAnchor
-                className="footerLink"
                 url={getLabelValue(labels, 'lbl_PLCCModal_rewardsProgramLink')}
                 target="_blank"
                 data-locator="plcc_rewards_terms"
@@ -193,7 +202,6 @@ class ApplyNowModalWrapper extends React.PureComponent {
 }
 
 ApplyNowModalWrapper.propTypes = {
-  setLoginModalMountState: PropTypes.bool.isRequired,
   labels: PropTypes.shape({
     apply_now_link_modal: PropTypes.string,
   }).isRequired,

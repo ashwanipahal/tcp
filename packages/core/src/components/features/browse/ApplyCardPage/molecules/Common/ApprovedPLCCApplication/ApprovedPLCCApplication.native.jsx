@@ -91,7 +91,7 @@ const getCouponBody = (plccData, labels, approvedPLCCData) => {
  * @description - showcases user already holds a plcc card.
  */
 
-const footerContainer = (plccData, labels, approvedPLCCData, bagItems, navigation, toggleModal) => {
+const footerBottom = (plccData, labels, approvedPLCCData, bagItems, navigation, toggleModal) => {
   return (
     <React.Fragment>
       {approvedPLCCData && approvedPLCCData.savingAmount > 0 ? (
@@ -216,7 +216,7 @@ const ApprovedPLCCApplicationView = ({
         )}
       </ShippingInfoWrapper>
       {getCouponBody(plccData, labels, approvedPLCCData)}
-      {footerContainer(plccData, labels, approvedPLCCData, bagItems, navigation, toggleModal)}
+      {footerBottom(plccData, labels, approvedPLCCData, bagItems, navigation, toggleModal)}
     </ScrollViewContainer>
   );
 };

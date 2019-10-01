@@ -16,6 +16,7 @@ import CouponDetailModal from './CouponDetailModal.view';
 import CollapsibleContainer from '../../../../../../common/molecules/CollapsibleContainer';
 import BodyCopy from '../../../../../../common/atoms/BodyCopy';
 import ApplyNowWrapper from '../../../../../../common/molecules/ApplyNowPLCCModal';
+import { getLabelValue } from '../../../../../../../utils';
 
 class CouponView extends React.PureComponent {
   state = {
@@ -180,10 +181,10 @@ class CouponView extends React.PureComponent {
         )}
         <View>
           <Anchor
-            text="Apply Now"
             underline
             fontSizeVariation="large"
             onPress={this.toggleApplyNowModal}
+            text={getLabelValue(labels, 'lbl_PLCCModal_applyNowLink')}
           />
           <ApplyNowWrapper toggleModalWrapper={this.toggleApplyNowModal} applyNow={applyCard} />
         </View>
