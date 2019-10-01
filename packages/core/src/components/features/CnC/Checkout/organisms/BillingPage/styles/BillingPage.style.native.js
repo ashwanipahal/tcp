@@ -5,13 +5,4 @@ const Container = styled.View`
   margin-right: ${props => props.theme.spacing.ELEM_SPACING.MED};
 `;
 
-const PaymentMethodWrapper = styled.View`
-  padding-top: ${props => props.theme.spacing.ELEM_SPACING.SM};
-  padding-bottom: ${props => props.theme.spacing.ELEM_SPACING.SM};
-  border-top-width: 1px;
-  border-bottom-width: 1px;
-  border-style: solid;
-  border-color: ${props => props.theme.colors.PRIMARY.GRAY};
-  margin-top: ${props => props.theme.spacing.ELEM_SPACING.XL};
-`;
-export default { Container, PaymentMethodWrapper };
+export default { Container };

@@ -44,12 +44,26 @@ const SubHeader = styled.View`
   margin-bottom: ${props => props.theme.spacing.ELEM_SPACING.MED};
 `;
 const BillingAddressHeader = styled.View`
-  margin-bottom: ${props => props.theme.spacing.ELEM_SPACING.MED};
+  margin-bottom: ${props => props.theme.spacing.ELEM_SPACING.LRG};
+  display: flex;
+  flex-direction: row;
 `;
 const CreditCardHeader = styled.View`
   top: ${props => props.theme.spacing.APP_LAYOUT_SPACING.XS};
 `;
 const CreditCardWrapper = styled.View`
+  margin-top: ${props => props.theme.spacing.ELEM_SPACING.XL};
+`;
+const DefaultPaymentTextWrapper = styled.View`
+  margin-top: ${props => props.theme.spacing.ELEM_SPACING.XXS};
+`;
+const PaymentMethodMainWrapper = styled.View`
+  padding-top: ${props => props.theme.spacing.ELEM_SPACING.SM};
+  padding-bottom: ${props => props.theme.spacing.ELEM_SPACING.SM};
+  border-top-width: 1px;
+  border-bottom-width: 1px;
+  border-style: solid;
+  border-color: ${props => props.theme.colors.PRIMARY.GRAY};
   margin-top: ${props => props.theme.spacing.ELEM_SPACING.XL};
 `;
 export {
@@ -66,4 +80,6 @@ export {
   AddNewCCWrapper,
   CreditCardHeader,
   CreditCardWrapper,
+  DefaultPaymentTextWrapper,
+  PaymentMethodMainWrapper,
 };

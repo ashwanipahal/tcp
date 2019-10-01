@@ -37,20 +37,18 @@ exports[`PickUpFormPart component should renders correctly props not present 2`]
     <Styled(View)>
       <CheckoutSectionTitleDisplay />
       <Connect(GiftCardsContainer) />
-      <Styled(View)>
-        <Connect(GiftCardsContainer)
-          addressLabels={Object {}}
-          billingData={null}
-          creditFieldLabels={Object {}}
-          cvvCodeRichText={null}
-          handleSubmit={[Function]}
-          isGuest={false}
-          labels={Object {}}
-          navigation={Object {}}
-          shippingAddress={null}
-          userAddresses={null}
-        />
-      </Styled(View)>
+      <Connect(GiftCardsContainer)
+        addressLabels={Object {}}
+        billingData={null}
+        creditFieldLabels={Object {}}
+        cvvCodeRichText={null}
+        handleSubmit={[Function]}
+        isGuest={false}
+        labels={Object {}}
+        navigation={Object {}}
+        shippingAddress={null}
+        userAddresses={null}
+      />
     </Styled(View)>
   </ScrollViewMock>
 </Fragment>

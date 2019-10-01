@@ -30,6 +30,7 @@ import {
   SubHeader,
   CreditCardHeader,
   CreditCardWrapper,
+  PaymentMethodMainWrapper,
 } from '../styles/BillingPaymentForm.style.native';
 
 import TextBox from '../../../../../../common/atoms/TextBox';
@@ -328,6 +329,7 @@ export class BillingPaymentForm extends React.PureComponent {
       onSubmit,
       navigation,
       dispatch,
+      isPaymentDisabled,
     } = this.props;
     const paymentMethods = [
       { id: constants.PAYMENT_METHOD_CREDIT_CARD, displayName: labels.creditCard },
@@ -337,37 +339,41 @@ export class BillingPaymentForm extends React.PureComponent {
     const creditCardList = getCreditCardList({ cardList });
     return (
       <>
-        <PaymentMethodHeader>
-          <BodyCopy
-            fontFamily="primary"
-            fontSize="fs26"
-            fontWeight="regular"
-            spacingStyles="margin-bottom-MED"
-            color="gray.900"
-            data-locator="billing-details"
-            text={labels.paymentMethod}
-          />
-        </PaymentMethodHeader>
+        {!isPaymentDisabled && (
+          <PaymentMethodMainWrapper>
+            <PaymentMethodHeader>
+              <BodyCopy
+                fontFamily="primary"
+                fontSize="fs26"
+                fontWeight="regular"
+                spacingStyles="margin-bottom-MED"
+                color="gray.900"
+                data-locator="billing-details"
+                text={labels.paymentMethod}
+              />
+            </PaymentMethodHeader>
 
-        <FormSection name="shipmentMethods">
-          <PaymentMethods
-            paymentMethods={paymentMethods}
-            formName={constants.FORM_NAME}
-            selectedPaymentId={paymentMethodId}
-            dispatch={dispatch}
-          />
-        </FormSection>
+            <FormSection name="shipmentMethods">
+              <PaymentMethods
+                paymentMethods={paymentMethods}
+                formName={constants.FORM_NAME}
+                selectedPaymentId={paymentMethodId}
+                dispatch={dispatch}
+              />
+            </FormSection>
 
-        {paymentMethodId === constants.PAYMENT_METHOD_CREDIT_CARD ? (
-          this.getCreditCardWrapper({
-            labels,
-            creditCardList,
-            cvvCodeRichText,
-            onFileCardKey,
-            dispatch,
-          })
-        ) : (
-          <SubHeader />
+            {paymentMethodId === constants.PAYMENT_METHOD_CREDIT_CARD ? (
+              this.getCreditCardWrapper({
+                labels,
+                creditCardList,
+                cvvCodeRichText,
+                onFileCardKey,
+                dispatch,
+              })
+            ) : (
+              <SubHeader />
+            )}
+          </PaymentMethodMainWrapper>
         )}
         <CnCTemplate
           navigation={navigation}
