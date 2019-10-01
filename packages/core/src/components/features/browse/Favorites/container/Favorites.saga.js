@@ -3,11 +3,12 @@ import logger from '@tcp/core/src/utils/loggerInstance';
 import FAVORITES_CONSTANTS from './Favorites.constants';
 import { setWishlistState } from './Favorites.actions';
 import addItemsToWishlistAbstractor from '../../../../../services/abstractors/productListing/favorites';
+import getUserLoggedInState from '../../../account/User/container/User.selectors';
 
 export function* addItemsToWishlist({ payload }) {
   const { colorProductId } = payload;
   const state = yield select();
-  const isGuest = state.User.getIn(['personalData', 'isGuest']);
+  const isGuest = !getUserLoggedInState(state);
   try {
     if (isGuest) {
       // Prompt user to login
@@ -20,7 +21,9 @@ export function* addItemsToWishlist({ payload }) {
         isProduct: true,
         uniqueId: colorProductId,
       });
-      yield put(setWishlistState({ ...res }));
+      if (res && res.newItemId) {
+        yield put(setWishlistState({ colorProductId, isInDefaultWishlist: true }));
+      }
     }
   } catch (err) {
     logger.error(err);

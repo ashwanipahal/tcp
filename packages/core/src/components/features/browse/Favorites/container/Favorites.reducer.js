@@ -1,4 +1,5 @@
 import { fromJS } from 'immutable';
+import FAVORITES_CONSTANTS from './Favorites.constants';
 import { DEFAULT_REDUCER_KEY } from '../../../../../utils/cache.util';
 
 const initialState = fromJS({
@@ -15,6 +16,8 @@ const getDefaultState = state => {
 
 const FavoritesReducer = (state = initialState, action) => {
   switch (action.type) {
+    case FAVORITES_CONSTANTS.SET_FAVORITES_STATE:
+      return state.merge(action.payload);
     default:
       return getDefaultState(state);
   }

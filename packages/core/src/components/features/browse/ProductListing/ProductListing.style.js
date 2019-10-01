@@ -4,13 +4,12 @@ export default css`
   .bread-crumb,
   .filter-area,
   .product-list {
-    background: #d8d8d8;
-    padding: 20px 0 17px;
+    padding-top: 20px;
+    padding-bottom: 17px;
     margin: 5px 0;
   }
   .bread-crumb,
   .product-list {
-    background: white;
     display: flex;
   }
   @media ${props => props.theme.mediaQuery.large} {
