@@ -25,6 +25,10 @@ export const getGeneralProductId = state => {
   return state.ProductDetail.getIn(['currentProduct', 'generalProductId']);
 };
 
+export const getShortDescription = state => {
+  return state.ProductDetail.getIn(['currentProduct', 'shortDescription']);
+};
+
 export const getProductDetailFormValues = state => {
   const generalProductId = getGeneralProductId(state);
   return getAddedToBagFormValues(state, `ProductAddToBag-${generalProductId}`);
