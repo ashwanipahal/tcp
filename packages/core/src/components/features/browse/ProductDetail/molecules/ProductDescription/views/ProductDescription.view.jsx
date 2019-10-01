@@ -66,7 +66,7 @@ class ProductDetailDescription extends React.PureComponent {
         </div>
       );
     } else {
-      const lineHeight = false ? '52px' : '85px';
+      const lineHeight = true ? '52px' : '85px';
       maxHeightOfContainer = {
         maxHeight: false ? lineHeight : '40px',
         overflow: 'hidden',
@@ -88,16 +88,12 @@ class ProductDetailDescription extends React.PureComponent {
     return (
       <BodyCopy className={`${className} product-description-list`}>
                 
-        <h4 className={'titleClassName'} onClick={this.titleClick}>
+        <h4 className={titleClassName} onClick={this.titleClick}>
           Product Description
         </h4>
-                {/* <h4 className={"titleClassName"} >Product Description</h4> */}
-                
         {isExpanded && (
           <div>
-                      {shortDescription && <p className="short-description">{shortDescription}</p>}
-                      {/* eslint-disable-next-line */}
-                      
+            {shortDescription && <p className="short-description">{shortDescription}</p>}      
             {(!shortDescription ? true : isShowMore) && (
               <div
                 ref={divElement => {
@@ -106,9 +102,7 @@ class ProductDetailDescription extends React.PureComponent {
                 style={true ? maxHeightOfContainer : null}
                 className={!shortDescription ? 'introduction-text extra-gap' : 'introduction-text'}
               >
-                            
-                {shortDescription && <p className="short-description">{shortDescription}</p>}
-                            
+                     
                 {longDescription && (
                   <ul
                     className="list-content"
@@ -118,14 +112,11 @@ class ProductDetailDescription extends React.PureComponent {
                             {longDescription && <br />}
                             <aside className="claim-message">Big Fashion, Little Prices</aside>
                             {<strong className="product-id">Item #: {productId}</strong>}
-                          
               </div>
             )}
-                      {descAvail && displayShowMoreOrLess && buttonShowMoreOrLess}
-                      
+            {descAvail && displayShowMoreOrLess && buttonShowMoreOrLess}  
           </div>
         )}
-              
       </BodyCopy>
     );
   }
