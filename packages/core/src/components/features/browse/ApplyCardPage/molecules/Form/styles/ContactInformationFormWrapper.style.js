@@ -1,9 +1,17 @@
 import styled from 'styled-components';
 
 export default styled.div`
-  .title {
-    margin: 34px 0px 19px 0px;
+  .contactFormTitle {
+    font-family: ${props => props.theme.typography.fonts.secondary};
+    font-size: ${props => props.theme.typography.fontSizes.fs16};
+    font-weight: ${props => props.theme.fonts.fontWeight.semiBold};
+    margin: 34px 0px 0px 0px;
     line-height: 1;
+  }
+  .stateField {
+    .select__input {
+      font-size: ${props => props.theme.typography.fontSizes.fs13};
+    }
   }
 
   .columnWrapper {

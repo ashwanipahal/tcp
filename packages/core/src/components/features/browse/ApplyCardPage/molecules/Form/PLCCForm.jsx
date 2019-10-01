@@ -189,7 +189,7 @@ class PLCCForm extends React.PureComponent {
               </Col>
             </Row>
             <PersonalInformationFormWrapper labels={labels} isPLCCModalFlow={isPLCCModalFlow} />
-            <Row fullBleed>
+            <Row fullBleed className="classifiedInfo">
               <Col
                 key="container_account_info"
                 colSize={{ large: getPageViewGridRowSize(isPLCCModalFlow), medium: 8, small: 6 }}
@@ -231,8 +231,8 @@ class PLCCForm extends React.PureComponent {
                   disabled={false}
                 >
                   <BodyCopy
-                    className="underprogress_application"
-                    fontSize="fs16"
+                    className="iAgreeCheck"
+                    fontSize="fs12"
                     fontFamily="secondary"
                     fontWeight="regular"
                   >

@@ -59,10 +59,8 @@ class ContactInformationFormWrapper extends React.Component {
         <Heading
           fontFamily="secondary"
           fontSize="fs16"
-          variant="h2"
-          color="black"
-          fontWeight="semibold"
-          className="title"
+          fontWeight="semiBold"
+          className="contactFormTitle"
           tabIndex="0"
         >
           {getLabelValue(labels, 'lbl_PLCCForm_contactInfoHeader')}
@@ -199,7 +197,7 @@ class ContactInformationFormWrapper extends React.Component {
                   placeholder={getLabelValue(labels, 'lbl_PLCCForm_statePlaceholder')}
                   options={this.siteId === 'us' ? UScountriesStatesTable : CAcountriesStatesTable}
                   dataLocator={getLocator('plcc_state')}
-                  className="field"
+                  className="field stateField"
                 />
               </Col>
               <Col

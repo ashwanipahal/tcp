@@ -18,12 +18,20 @@ export default styled.div`
     height: auto;
   }
 
+  .classifiedInfo {
+    margin-top: 44px;
+  }
+  
   .table_contact_month {
     @media ${props => props.theme.mediaQuery.medium} and ${props =>
   props.theme.mediaQuery.largeMax} {
       width: 29%;
       margin-right: 20px;
     }
+  }
+
+  .iAgreeCheck {
+    line-height: 2;
   }
 
   .table_contact_day {

@@ -19,6 +19,9 @@ export default styled.div`
   }
 
   .table_contact_month {
+    .select__input {
+      font-size: ${props => props.theme.typography.fontSizes.fs13};
+    }
     @media ${props => props.theme.mediaQuery.medium} and ${props =>
   props.theme.mediaQuery.largeMax} {
       width: 29%;
@@ -27,6 +30,9 @@ export default styled.div`
   }
 
   .table_contact_day {
+    .select__input {
+      font-size: ${props => props.theme.typography.fontSizes.fs13};
+    }
     @media ${props => props.theme.mediaQuery.medium} and ${props =>
   props.theme.mediaQuery.largeMax} {
       width: 29%;
@@ -35,6 +41,9 @@ export default styled.div`
   }
 
   .table_contact_year {
+    .select__input {
+      font-size: ${props => props.theme.typography.fontSizes.fs13};
+    }
     @media ${props => props.theme.mediaQuery.medium} and ${props =>
   props.theme.mediaQuery.largeMax} {
       width: 29%;
