@@ -87,8 +87,8 @@ export function* fetchMoreProducts({ payload = {} }) {
       ) {
         operatorInstance.updateBucketingConfig(plpProducts);
         const products = plpProducts.loadedProductsPages[0];
-        const isGuest = false;
-        const isRemembered = false;
+        const isGuest = !getUserLoggedInState(state);
+        const isRemembered = isRememberedUser(state);
         if (!isGuest && !isRemembered) {
           const generalProductIdsList = products.map(
             product => product.productInfo.generalProductId
