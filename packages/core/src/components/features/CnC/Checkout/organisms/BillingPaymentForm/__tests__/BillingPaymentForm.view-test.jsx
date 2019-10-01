@@ -58,6 +58,7 @@ describe('ButtonList component', () => {
     backLinkShipping: '',
     nextSubmitText: '',
     isPaymentDisabled,
+    dispatch: jest.fn(),
   };
 
   it('renders correctly without props', () => {
@@ -158,5 +159,12 @@ describe('ButtonList component', () => {
     const component = shallow(<BillingPaymentForm {...props2} />);
     component.setState({ addNewCCState: true });
     expect(component).toMatchSnapshot();
+  });
+  it('renders correctly with method onAddNewCreditCardClick', () => {
+    const component = shallow(<BillingPaymentForm {...props} />);
+    const instance = component.instance();
+    const spyOnAddNewCreditCardClick = jest.spyOn(instance, 'onAddNewCreditCardClick');
+    instance.onAddNewCreditCardClick();
+    expect(spyOnAddNewCreditCardClick).toHaveBeenCalled();
   });
 });
