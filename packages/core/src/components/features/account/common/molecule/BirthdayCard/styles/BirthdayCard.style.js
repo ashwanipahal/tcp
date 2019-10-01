@@ -13,6 +13,8 @@ const styles = css`
     position: absolute;
     right: 12px;
     top: 12px;
+    width: 15px;
+    height: 15px;
   }
 
   .genderIcon {
