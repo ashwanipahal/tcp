@@ -49,6 +49,7 @@ class Socialview extends React.PureComponent {
    * Redirects to earn extra points page
    */
   viewAll = () => {
+    this.onClose();
     const { handleComponentChange } = this.props;
     handleComponentChange('earnExtraPointsPageMobile');
   };
