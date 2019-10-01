@@ -61,6 +61,8 @@ class ModuleQ extends React.PureComponent {
     ) : null;
   };
 
+  getUrlWithHttp = url => url.replace(/(^\/\/)/, 'https:$1');
+
   render() {
     const {
       className,
@@ -140,22 +142,20 @@ class ModuleQ extends React.PureComponent {
                   customArrowRight: getIconPath('carousel-big-carrot'),
                 }}
               >
-                {selectedProductList.map(
-                  ({ imageUrl, pdpUrl, pdpAsPath, product_name: productName }, index) => {
-                    return (
-                      <div key={index.toString()}>
-                        <Anchor
-                          className="image-link"
-                          to={pdpUrl}
-                          asPath={pdpAsPath}
-                          dataLocator={`${getLocator('moduleQ_product_image')}${index}`}
-                        >
-                          <Image alt={productName} src={imageUrl[0]} />
-                        </Anchor>
-                      </div>
-                    );
-                  }
-                )}
+                {selectedProductList.map(({ imageUrl, pdpUrl }, index) => {
+                  return (
+                    <div key={index.toString()}>
+                      <Anchor
+                        className="image-link"
+                        to={pdpUrl}
+                        asPath={pdpUrl}
+                        dataLocator={`${getLocator('moduleQ_product_image')}${index}`}
+                      >
+                        <Image alt={imageUrl} src={imageUrl} />
+                      </Anchor>
+                    </div>
+                  );
+                })}
               </Carousel>
             ) : null}
           </Col>

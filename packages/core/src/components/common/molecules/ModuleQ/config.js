@@ -13,14 +13,12 @@ export default {
     speed: 1000,
     dots: false,
     swipe: true,
-    slidesToShow: 6,
-    slidesToScroll: 6,
+    slidesToShow: 3,
+    slidesToScroll: 1,
     responsive: [
       {
         breakpoint: parseInt(breakpoints.medium, 10) - 1,
         settings: {
-          slidesToShow: 4,
-          slidesToScroll: 3,
           arrows: false,
           swipeToSlide: true,
         },
@@ -28,8 +26,6 @@ export default {
       {
         breakpoint: parseInt(breakpoints.large, 10) - 1,
         settings: {
-          slidesToShow: 5,
-          slidesToScroll: 4,
           arrows: false,
           swipeToSlide: true,
         },
