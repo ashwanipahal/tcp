@@ -19,7 +19,7 @@ exports[`InputCheckbox component should render correctly 1`] = `
         host=""
         source={
           Object {
-            "testUri": "../../../../core/src/assets/store-locator-check.png",
+            "testUri": "../../../../core/src/assets/store-locator-checked.png",
           }
         }
         url=""
