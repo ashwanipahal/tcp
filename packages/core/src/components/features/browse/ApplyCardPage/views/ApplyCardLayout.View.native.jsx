@@ -1,6 +1,7 @@
 /* eslint-disable max-params */
 /* eslint-disable no-else-return */
 import React from 'react';
+import { View } from 'react-native';
 import PropTypes from 'prop-types';
 import { withNavigation } from 'react-navigation';
 import ModalNative from '../../../../common/molecules/Modal';
@@ -9,6 +10,7 @@ import constants from '../RewardsCard.constants';
 import ApplicationInProgress from '../molecules/Common/UnderProgressApplication/ApplicationInProgress.native';
 import ExistingPLCCUserView from '../molecules/Common/ExistingPLCCUser/ExistingPLCCUser.view.native';
 import ApprovedPLCCApplicationView from '../molecules/Common/ApprovedPLCCApplication/ApprovedPLCCApplication.native';
+import AddressVerification from '../../../../common/organisms/AddressVerification/container/AddressVerification.container';
 
 class ApplyCardLayoutView extends React.PureComponent {
   renderPLCCView = (
@@ -20,7 +22,8 @@ class ApplyCardLayoutView extends React.PureComponent {
     approvedPLCCData,
     plccUser,
     navigation,
-    toggleModal
+    toggleModal,
+    profileInfo
   ) => {
     if (applicationStatus === constants.APPLICATION_STATE_PENDING) {
       return (
@@ -53,8 +56,21 @@ class ApplyCardLayoutView extends React.PureComponent {
         />
       );
     } else {
-      return <PLCCForm onSubmit={onSubmit} labels={labels} plccData={plccData} />;
+      return (
+        <PLCCForm
+          onSubmit={onSubmit}
+          labels={labels}
+          plccData={plccData}
+          toggleModal={toggleModal}
+          initialValues={profileInfo}
+        />
+      );
     }
+  };
+
+  onCloseCallBack = (resetPLCCApplicationStatus, closeAddressVerificationModal) => {
+    resetPLCCApplicationStatus({ status: null });
+    closeAddressVerificationModal();
   };
 
   render() {
@@ -72,7 +88,14 @@ class ApplyCardLayoutView extends React.PureComponent {
       approvedPLCCData,
       plccUser,
       navigation,
+      showAddEditAddressForm,
+      submitForm,
+      resetPLCCApplicationStatus,
+      closeAddressVerificationModal,
+      profileInfo,
     } = this.props;
+
+    console.info('>>>>>CallBack>>>>');
     return (
       <ModalNative
         onRequestClose={toggleModal}
@@ -83,17 +106,31 @@ class ApplyCardLayoutView extends React.PureComponent {
         headerStyle={fullWidth}
         isOpen={applyCard}
       >
-        {this.renderPLCCView(
-          labels,
-          onSubmit,
-          applicationStatus,
-          bagItems,
-          plccData,
-          approvedPLCCData,
-          plccUser,
-          navigation,
-          toggleModal
-        )}
+        <View>
+          {!showAddEditAddressForm
+            ? this.renderPLCCView(
+                labels,
+                onSubmit,
+                applicationStatus,
+                bagItems,
+                plccData,
+                approvedPLCCData,
+                plccUser,
+                navigation,
+                toggleModal,
+                profileInfo
+              )
+            : null}
+          {showAddEditAddressForm ? (
+            <AddressVerification
+              onSuccess={submitForm}
+              // plccOnSubmit={this.onSubmitCallBack}
+              plccOnClose={() =>
+                this.onCloseCallBack(resetPLCCApplicationStatus, closeAddressVerificationModal)
+              }
+            />
+          ) : null}
+        </View>
       </ModalNative>
     );
   }
@@ -110,6 +147,11 @@ ApplyCardLayoutView.propTypes = {
   approvedPLCCData: PropTypes.shape({}).isRequired,
   navigation: PropTypes.func.isRequired,
   plccUser: PropTypes.bool.isRequired,
+  submitForm: PropTypes.func.isRequired,
+  showAddEditAddressForm: PropTypes.bool.isRequired,
+  profileInfo: PropTypes.shape({}).isRequired,
+  resetPLCCApplicationStatus: PropTypes.func.isRequired,
+  closeAddressVerificationModal: PropTypes.func.isRequired,
 };
 
 export default withNavigation(ApplyCardLayoutView);

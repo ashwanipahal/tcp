@@ -504,7 +504,14 @@ class PLCCForm extends React.PureComponent<Props> {
               textAlign="left"
             />
             <FieldContainer>
-              <Field label="" component={TextBox} title="" type="hidden" id="iAgree" />
+              <Field
+                label=""
+                component={TextBox}
+                title=""
+                type="hidden"
+                id="iAgree"
+                name="iAgree"
+              />
             </FieldContainer>
           </CheckMessageView>
         </CheckBoxContainerView>

@@ -94,7 +94,7 @@ export const ShippingInfoWrapper = styled.View`
 `;
 
 export const SavingAmountWrapper = styled.View`
-  height: 150px;
+  height: 70px;
 `;
 
 export const HorizontalLine = styled.View`
