@@ -204,11 +204,13 @@ exports[`GiftServices component should renders correctly props not present 2`] =
           "withComponent": [Function],
         }
       }
+      customDropDownHeight={270}
       dataLocator="giftServices-list"
       dropDownStyle={
         Object {
           "border": 1,
           "height": 30,
+          "lightBorder": true,
         }
       }
       itemStyle={
