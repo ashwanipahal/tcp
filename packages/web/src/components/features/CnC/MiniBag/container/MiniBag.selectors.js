@@ -8,6 +8,18 @@ export const getIsCartItemsUpdating = state => {
   return state.CartPageReducer.getIn(['uiFlags', 'isCartItemsUpdating']);
 };
 
+export const getIsCartItemsSFL = state => {
+  return state.CartPageReducer.getIn(['uiFlags', 'isItemMovedToSflList']);
+};
+
+export const getCartItemsSflError = state => {
+  return state.CartPageReducer.getIn(['uiFlags', 'cartItemSflError']);
+};
+
+export const getIsMiniBagOpen = state => {
+  return state.Header.miniBag;
+};
+
 export const getLabelsMiniBag = state => {
   return {
     createAccount: getLabelValue(state.Labels, 'lbl_miniBag_createAccount', 'minibag', 'global'),
@@ -45,5 +57,8 @@ export const getLabelsMiniBag = state => {
       'addedToBagModal',
       'global'
     ),
+    viewSfl: getLabelValue(state.Labels, 'lbl_sfl_viewsfl', 'bagPage', 'checkout'),
+    sflSuccess: getLabelValue(state.Labels, 'bl_sfl_actionSuccess', 'bagPage', 'checkout'),
+    tickIcon: getLabelValue(state.Labels, 'lbl_sfl_success_tickIcon', 'bagPage', 'checkout'),
   };
 };

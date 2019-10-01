@@ -152,6 +152,13 @@ exports[`CreditCardForm component should renders correctly in mailingAddress vie
       cardType=""
       cardTypeImgUrl=""
       className=""
+      creditFieldLabels={
+        Object {
+          "creditCardNumber": "lbl_payment_cardNumber",
+          "expMonth": "lbl_payment_expMonth",
+          "expYear": "lbl_payment_expYear",
+        }
+      }
       dispatch={[MockFunction]}
       dto={Object {}}
       expMonthOptionsMap={
@@ -269,6 +276,7 @@ exports[`CreditCardForm component should renders correctly in mailingAddress vie
       pristine={true}
       selectedCard={null}
       showCreditCardFields={true}
+      showCvv={false}
       showEmailAddress={true}
       showUserName={true}
       subHeading={null}
@@ -286,11 +294,16 @@ exports[`CreditCardForm component should renders correctly in mailingAddress vie
       />
       <Styled(View)>
         <Styled(BodyCopy)
+          accessibilityText=""
+          dataLocator=""
           fontFamily="secondary"
           fontSize="fs12"
           fontWeight="black"
+          margin={null}
           marginTop="10"
+          numberOfLines={null}
           textAlign="left"
+          textDecoration={null}
         />
       </Styled(View)>
       <Field
@@ -365,10 +378,24 @@ exports[`CreditCardForm component should renders correctly in mailingAddress vie
       </Styled(View)>
     </Styled(View)>
     <Styled(View)>
-      <Styled(WithTheme(CustomButton))
+      <Styled(CustomButton)
+        active={false}
         buttonVariation="variable-width"
+        color=""
+        customStyle={Object {}}
+        customTextStyle={null}
+        disableButton={false}
         fill="BLUE"
+        fullWidth=""
+        iconColor="gray.800"
+        iconName="chevron-down"
+        iconSize="fs12"
+        locator=""
+        navigation={Object {}}
         onPress={[MockFunction]}
+        selected={false}
+        selectedIcon="chevron-up"
+        showIcon={false}
         style={
           Object {
             "color": "white",
@@ -377,10 +404,27 @@ exports[`CreditCardForm component should renders correctly in mailingAddress vie
           }
         }
         text="lbl_common_saveCTA"
+        theme={Object {}}
+        url=""
       />
-      <Styled(WithTheme(CustomButton))
+      <Styled(CustomButton)
+        active={false}
         buttonVariation="variable-width"
+        color=""
+        customStyle={Object {}}
+        customTextStyle={null}
+        disableButton={false}
         fill="WHITE"
+        fullWidth=""
+        iconColor="gray.800"
+        iconName="chevron-down"
+        iconSize="fs12"
+        locator=""
+        navigation={Object {}}
+        onPress={null}
+        selected={false}
+        selectedIcon="chevron-up"
+        showIcon={false}
         style={
           Object {
             "border": 1,
@@ -389,6 +433,9 @@ exports[`CreditCardForm component should renders correctly in mailingAddress vie
             "marginTop": 15,
           }
         }
+        text=""
+        theme={Object {}}
+        url=""
       />
     </Styled(View)>
   </Styled(View)>
@@ -570,6 +617,13 @@ exports[`CreditCardForm component should renders correctly with address dropdown
       cardType=""
       cardTypeImgUrl=""
       className=""
+      creditFieldLabels={
+        Object {
+          "creditCardNumber": "lbl_payment_cardNumber",
+          "expMonth": "lbl_payment_expMonth",
+          "expYear": "lbl_payment_expYear",
+        }
+      }
       dispatch={
         [MockFunction] {
           "calls": Array [
@@ -710,6 +764,7 @@ exports[`CreditCardForm component should renders correctly with address dropdown
       onFileAddresskey="12345"
       selectedCard={null}
       showCreditCardFields={true}
+      showCvv={false}
       showEmailAddress={true}
       showUserName={true}
       subHeading={null}
@@ -727,11 +782,16 @@ exports[`CreditCardForm component should renders correctly with address dropdown
       />
       <Styled(View)>
         <Styled(BodyCopy)
+          accessibilityText=""
+          dataLocator=""
           fontFamily="secondary"
           fontSize="fs12"
           fontWeight="black"
+          margin={null}
           marginTop="10"
+          numberOfLines={null}
           textAlign="left"
+          textDecoration={null}
         />
       </Styled(View)>
       <Field
@@ -801,6 +861,8 @@ exports[`CreditCardForm component should renders correctly with address dropdown
             }
           }
           dataLocatorPrefix="address"
+          fontSize="fs14"
+          regularName={false}
           showCountry={false}
           showDefaultText={false}
           showName={true}
@@ -810,10 +872,24 @@ exports[`CreditCardForm component should renders correctly with address dropdown
       </Styled(View)>
     </Styled(View)>
     <Styled(View)>
-      <Styled(WithTheme(CustomButton))
+      <Styled(CustomButton)
+        active={false}
         buttonVariation="variable-width"
+        color=""
+        customStyle={Object {}}
+        customTextStyle={null}
+        disableButton={false}
         fill="BLUE"
+        fullWidth=""
+        iconColor="gray.800"
+        iconName="chevron-down"
+        iconSize="fs12"
+        locator=""
+        navigation={Object {}}
         onPress={[MockFunction]}
+        selected={false}
+        selectedIcon="chevron-up"
+        showIcon={false}
         style={
           Object {
             "color": "white",
@@ -822,10 +898,27 @@ exports[`CreditCardForm component should renders correctly with address dropdown
           }
         }
         text="lbl_payment_addCard"
+        theme={Object {}}
+        url=""
       />
-      <Styled(WithTheme(CustomButton))
+      <Styled(CustomButton)
+        active={false}
         buttonVariation="variable-width"
+        color=""
+        customStyle={Object {}}
+        customTextStyle={null}
+        disableButton={false}
         fill="WHITE"
+        fullWidth=""
+        iconColor="gray.800"
+        iconName="chevron-down"
+        iconSize="fs12"
+        locator=""
+        navigation={Object {}}
+        onPress={null}
+        selected={false}
+        selectedIcon="chevron-up"
+        showIcon={false}
         style={
           Object {
             "border": 1,
@@ -834,6 +927,9 @@ exports[`CreditCardForm component should renders correctly with address dropdown
             "marginTop": 15,
           }
         }
+        text=""
+        theme={Object {}}
+        url=""
       />
     </Styled(View)>
   </Styled(View)>
@@ -992,6 +1088,13 @@ exports[`CreditCardForm component should renders correctly with addressForm 1`] 
       cardType=""
       cardTypeImgUrl=""
       className=""
+      creditFieldLabels={
+        Object {
+          "creditCardNumber": "lbl_payment_cardNumber",
+          "expMonth": "lbl_payment_expMonth",
+          "expYear": "lbl_payment_expYear",
+        }
+      }
       dispatch={[MockFunction]}
       dto={Object {}}
       expMonthOptionsMap={
@@ -1109,6 +1212,7 @@ exports[`CreditCardForm component should renders correctly with addressForm 1`] 
       pristine={true}
       selectedCard={null}
       showCreditCardFields={true}
+      showCvv={false}
       showEmailAddress={true}
       showUserName={true}
       subHeading={null}
@@ -1126,11 +1230,16 @@ exports[`CreditCardForm component should renders correctly with addressForm 1`] 
       />
       <Styled(View)>
         <Styled(BodyCopy)
+          accessibilityText=""
+          dataLocator=""
           fontFamily="secondary"
           fontSize="fs12"
           fontWeight="black"
+          margin={null}
           marginTop="10"
+          numberOfLines={null}
           textAlign="left"
+          textDecoration={null}
         />
       </Styled(View)>
       <Field
@@ -1183,10 +1292,24 @@ exports[`CreditCardForm component should renders correctly with addressForm 1`] 
       />
     </Styled(View)>
     <Styled(View)>
-      <Styled(WithTheme(CustomButton))
+      <Styled(CustomButton)
+        active={false}
         buttonVariation="variable-width"
+        color=""
+        customStyle={Object {}}
+        customTextStyle={null}
+        disableButton={false}
         fill="BLUE"
+        fullWidth=""
+        iconColor="gray.800"
+        iconName="chevron-down"
+        iconSize="fs12"
+        locator=""
+        navigation={Object {}}
         onPress={[MockFunction]}
+        selected={false}
+        selectedIcon="chevron-up"
+        showIcon={false}
         style={
           Object {
             "color": "white",
@@ -1195,10 +1318,27 @@ exports[`CreditCardForm component should renders correctly with addressForm 1`] 
           }
         }
         text="lbl_payment_addCard"
+        theme={Object {}}
+        url=""
       />
-      <Styled(WithTheme(CustomButton))
+      <Styled(CustomButton)
+        active={false}
         buttonVariation="variable-width"
+        color=""
+        customStyle={Object {}}
+        customTextStyle={null}
+        disableButton={false}
         fill="WHITE"
+        fullWidth=""
+        iconColor="gray.800"
+        iconName="chevron-down"
+        iconSize="fs12"
+        locator=""
+        navigation={Object {}}
+        onPress={null}
+        selected={false}
+        selectedIcon="chevron-up"
+        showIcon={false}
         style={
           Object {
             "border": 1,
@@ -1207,6 +1347,9 @@ exports[`CreditCardForm component should renders correctly with addressForm 1`] 
             "marginTop": 15,
           }
         }
+        text=""
+        theme={Object {}}
+        url=""
       />
     </Styled(View)>
   </Styled(View)>

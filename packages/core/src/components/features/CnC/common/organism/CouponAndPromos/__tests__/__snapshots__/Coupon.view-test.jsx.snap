@@ -2,136 +2,372 @@
 
 exports[`Coupon component should renders correctly when Coupon are not present 1`] = `
 <div>
-  <ReduxForm
-    destroyOnUnmount={true}
-    enableReinitialize={false}
-    forceUnregisterOnUnmount={false}
-    form="CouponForm"
-    getFormState={[Function]}
-    isFetching={false}
-    keepDirtyOnReinitialize={false}
-    labels={
+  <Styled(Col)
+    className="hideAccordian"
+    colSize={
       Object {
-        "APPLIED_REWARDS_HEADING": "Applied",
-        "AVAILABLE_REWARDS_HEADING": "Available",
+        "large": 12,
+        "medium": 8,
+        "small": 6,
       }
     }
-    onNeedHelpTextClick={[Function]}
-    onSubmit={[Function]}
-    onSubmitSuccess={[Function]}
-    persistentSubmitErrors={false}
-    pure={true}
-    shouldAsyncValidate={[Function]}
-    shouldError={[Function]}
-    shouldValidate={[Function]}
-    shouldWarn={[Function]}
-    source="form"
-    submitAsSideEffect={false}
-    touchOnBlur={true}
-    touchOnChange={false}
-    updateUnregisteredFields={false}
-  />
-  <div
-    className="coupon_list"
+    ignoreGutter={
+      Object {
+        "medium": true,
+        "small": true,
+      }
+    }
   >
-    <Styled(CouponListSection)
-      className="available_coupon"
-      couponDetailClick={[Function]}
-      couponList={Immutable.List []}
-      dataLocator="coupon-cartAvaliableRewards"
-      heading="Available"
-      helpAnchorClick={[Function]}
-      helpSubHeading="true"
-      isFetching={false}
-      labels={
-        Object {
-          "APPLIED_REWARDS_HEADING": "Applied",
-          "AVAILABLE_REWARDS_HEADING": "Available",
-        }
+    <Styled(CollapsibleContainer)
+      body={
+        <div>
+          <ForwardRef
+            destroyOnUnmount={true}
+            enableReinitialize={false}
+            forceUnregisterOnUnmount={false}
+            form="CouponForm"
+            getFormState={[Function]}
+            isFetching={false}
+            keepDirtyOnReinitialize={false}
+            labels={
+              Object {
+                "APPLIED_REWARDS_HEADING": "Applied",
+                "AVAILABLE_REWARDS_HEADING": "Available",
+              }
+            }
+            onNeedHelpTextClick={[Function]}
+            onSubmit={[Function]}
+            onSubmitSuccess={[Function]}
+            persistentSubmitErrors={false}
+            pure={true}
+            shouldAsyncValidate={[Function]}
+            shouldError={[Function]}
+            shouldValidate={[Function]}
+            shouldWarn={[Function]}
+            source="form"
+            submitAsSideEffect={false}
+            touchOnBlur={true}
+            touchOnChange={false}
+            updateUnregisteredFields={false}
+          />
+          <div
+            className="coupon_list"
+          >
+            <ForwardRef
+              className="available_coupon"
+              couponDetailClick={[Function]}
+              couponList={Immutable.List []}
+              dataLocator="coupon-cartAvaliableRewards"
+              heading="Available"
+              helpAnchorClick={[Function]}
+              helpSubHeading="true"
+              isFetching={false}
+              labels={
+                Object {
+                  "APPLIED_REWARDS_HEADING": "Applied",
+                  "AVAILABLE_REWARDS_HEADING": "Available",
+                }
+              }
+            />
+            <ForwardRef
+              coupon={Object {}}
+              labels={
+                Object {
+                  "APPLIED_REWARDS_HEADING": "Applied",
+                  "AVAILABLE_REWARDS_HEADING": "Available",
+                }
+              }
+              onRequestClose={[Function]}
+              openState={false}
+            />
+            <CouponHelpModal
+              coupon={Object {}}
+              heading="Help Modal"
+              labels={
+                Object {
+                  "APPLIED_REWARDS_HEADING": "Applied",
+                  "AVAILABLE_REWARDS_HEADING": "Available",
+                }
+              }
+              onRequestClose={[Function]}
+              openState={false}
+            />
+          </div>
+          <Connect(ApplyNowModalWrapper) />
+        </div>
       }
-    />
-    <Styled(CouponDetailModal)
-      coupon={Object {}}
-      labels={
-        Object {
-          "APPLIED_REWARDS_HEADING": "Applied",
-          "AVAILABLE_REWARDS_HEADING": "Available",
-        }
+      className="undefined "
+      defaultOpen={false}
+      header={
+        <div
+          className="elem-mb-SM rewards-header"
+        >
+          <ForwardRef
+            className={null}
+            color="text.primary"
+            component="span"
+            fontFamily="secondary"
+            fontSize="fs16"
+            fontWeight="semibold"
+            letterSpacing="normal"
+            lineHeight="normal"
+            link={null}
+            textAlign="left"
+          />
+        </div>
       }
-      onRequestClose={[Function]}
-      openState={false}
+      iconLocator="arrowicon"
     />
-    <CouponHelpModal
-      coupon={Object {}}
-      heading="Help Modal"
-      labels={
-        Object {
-          "APPLIED_REWARDS_HEADING": "Applied",
-          "AVAILABLE_REWARDS_HEADING": "Available",
+  </Styled(Col)>
+  <div
+    className=""
+  >
+    <div>
+      <ReduxForm
+        additionalClassNameModal="undefined_1"
+        destroyOnUnmount={true}
+        enableReinitialize={false}
+        forceUnregisterOnUnmount={false}
+        form="CouponForm"
+        getFormState={[Function]}
+        isFetching={false}
+        keepDirtyOnReinitialize={false}
+        labels={
+          Object {
+            "APPLIED_REWARDS_HEADING": "Applied",
+            "AVAILABLE_REWARDS_HEADING": "Available",
+          }
         }
-      }
-      onRequestClose={[Function]}
-      openState={false}
-    />
+        onNeedHelpTextClick={[Function]}
+        onSubmit={[Function]}
+        onSubmitSuccess={[Function]}
+        persistentSubmitErrors={false}
+        pure={true}
+        shouldAsyncValidate={[Function]}
+        shouldError={[Function]}
+        shouldValidate={[Function]}
+        shouldWarn={[Function]}
+        source="form"
+        submitAsSideEffect={false}
+        touchOnBlur={true}
+        touchOnChange={false}
+        updateUnregisteredFields={false}
+      />
+      <div
+        className="coupon_list"
+      >
+        <Styled(CouponListSection)
+          additionalClassNameModal="undefined_1"
+          className="available_coupon"
+          couponDetailClick={[Function]}
+          couponList={Immutable.List []}
+          dataLocator="coupon-cartAvaliableRewards"
+          heading="Available"
+          helpAnchorClick={[Function]}
+          helpSubHeading="true"
+          isFetching={false}
+          labels={
+            Object {
+              "APPLIED_REWARDS_HEADING": "Applied",
+              "AVAILABLE_REWARDS_HEADING": "Available",
+            }
+          }
+        />
+        <Styled(CouponDetailModal)
+          additionalClassNameModal="undefined_1"
+          coupon={Object {}}
+          labels={
+            Object {
+              "APPLIED_REWARDS_HEADING": "Applied",
+              "AVAILABLE_REWARDS_HEADING": "Available",
+            }
+          }
+          onRequestClose={[Function]}
+          openState={false}
+        />
+        <CouponHelpModal
+          additionalClassNameModal="undefined_1"
+          coupon={Object {}}
+          heading="Help Modal"
+          labels={
+            Object {
+              "APPLIED_REWARDS_HEADING": "Applied",
+              "AVAILABLE_REWARDS_HEADING": "Available",
+            }
+          }
+          onRequestClose={[Function]}
+          openState={false}
+        />
+      </div>
+      <Connect(ApplyNowModalWrapper) />
+    </div>
   </div>
 </div>
 `;
 
 exports[`Coupon component should renders correctly when Coupon are present 1`] = `
 <div>
-  <ReduxForm
-    destroyOnUnmount={true}
-    enableReinitialize={false}
-    forceUnregisterOnUnmount={false}
-    form="CouponForm"
-    getFormState={[Function]}
-    keepDirtyOnReinitialize={false}
-    labels={
+  <Styled(Col)
+    className="hideAccordian"
+    colSize={
       Object {
-        "addressBook": Object {},
-        "common": Object {},
+        "large": 12,
+        "medium": 8,
+        "small": 6,
       }
     }
-    onNeedHelpTextClick={[Function]}
-    onSubmitSuccess={[Function]}
-    persistentSubmitErrors={false}
-    pure={true}
-    shouldAsyncValidate={[Function]}
-    shouldError={[Function]}
-    shouldValidate={[Function]}
-    shouldWarn={[Function]}
-    source="form"
-    submitAsSideEffect={false}
-    touchOnBlur={true}
-    touchOnChange={false}
-    updateUnregisteredFields={false}
-  />
-  <div
-    className="coupon_list"
+    ignoreGutter={
+      Object {
+        "medium": true,
+        "small": true,
+      }
+    }
   >
-    <Styled(CouponDetailModal)
-      coupon={Object {}}
-      labels={
-        Object {
-          "addressBook": Object {},
-          "common": Object {},
-        }
+    <Styled(CollapsibleContainer)
+      body={
+        <div>
+          <ForwardRef
+            destroyOnUnmount={true}
+            enableReinitialize={false}
+            forceUnregisterOnUnmount={false}
+            form="CouponForm"
+            getFormState={[Function]}
+            keepDirtyOnReinitialize={false}
+            labels={
+              Object {
+                "addressBook": Object {},
+                "common": Object {},
+              }
+            }
+            onNeedHelpTextClick={[Function]}
+            onSubmitSuccess={[Function]}
+            persistentSubmitErrors={false}
+            pure={true}
+            shouldAsyncValidate={[Function]}
+            shouldError={[Function]}
+            shouldValidate={[Function]}
+            shouldWarn={[Function]}
+            source="form"
+            submitAsSideEffect={false}
+            touchOnBlur={true}
+            touchOnChange={false}
+            updateUnregisteredFields={false}
+          />
+          <div
+            className="coupon_list"
+          >
+            <ForwardRef
+              coupon={Object {}}
+              labels={
+                Object {
+                  "addressBook": Object {},
+                  "common": Object {},
+                }
+              }
+              onRequestClose={[Function]}
+              openState={false}
+            />
+            <CouponHelpModal
+              coupon={Object {}}
+              heading="Help Modal"
+              labels={
+                Object {
+                  "addressBook": Object {},
+                  "common": Object {},
+                }
+              }
+              onRequestClose={[Function]}
+              openState={false}
+            />
+          </div>
+          <Connect(ApplyNowModalWrapper) />
+        </div>
       }
-      onRequestClose={[Function]}
-      openState={false}
-    />
-    <CouponHelpModal
-      coupon={Object {}}
-      heading="Help Modal"
-      labels={
-        Object {
-          "addressBook": Object {},
-          "common": Object {},
-        }
+      className="undefined "
+      header={
+        <div
+          className="elem-mb-SM rewards-header"
+        >
+          <ForwardRef
+            className={null}
+            color="text.primary"
+            component="span"
+            fontFamily="secondary"
+            fontSize="fs16"
+            fontWeight="semibold"
+            letterSpacing="normal"
+            lineHeight="normal"
+            link={null}
+            textAlign="left"
+          />
+        </div>
       }
-      onRequestClose={[Function]}
-      openState={false}
+      iconLocator="arrowicon"
     />
+  </Styled(Col)>
+  <div
+    className=""
+  >
+    <div>
+      <ReduxForm
+        additionalClassNameModal="undefined_1"
+        destroyOnUnmount={true}
+        enableReinitialize={false}
+        forceUnregisterOnUnmount={false}
+        form="CouponForm"
+        getFormState={[Function]}
+        keepDirtyOnReinitialize={false}
+        labels={
+          Object {
+            "addressBook": Object {},
+            "common": Object {},
+          }
+        }
+        onNeedHelpTextClick={[Function]}
+        onSubmitSuccess={[Function]}
+        persistentSubmitErrors={false}
+        pure={true}
+        shouldAsyncValidate={[Function]}
+        shouldError={[Function]}
+        shouldValidate={[Function]}
+        shouldWarn={[Function]}
+        source="form"
+        submitAsSideEffect={false}
+        touchOnBlur={true}
+        touchOnChange={false}
+        updateUnregisteredFields={false}
+      />
+      <div
+        className="coupon_list"
+      >
+        <Styled(CouponDetailModal)
+          additionalClassNameModal="undefined_1"
+          coupon={Object {}}
+          labels={
+            Object {
+              "addressBook": Object {},
+              "common": Object {},
+            }
+          }
+          onRequestClose={[Function]}
+          openState={false}
+        />
+        <CouponHelpModal
+          additionalClassNameModal="undefined_1"
+          coupon={Object {}}
+          heading="Help Modal"
+          labels={
+            Object {
+              "addressBook": Object {},
+              "common": Object {},
+            }
+          }
+          onRequestClose={[Function]}
+          openState={false}
+        />
+      </div>
+      <Connect(ApplyNowModalWrapper) />
+    </div>
   </div>
 </div>
 `;

@@ -6,12 +6,14 @@ import Col from '@tcp/core/src/components/common/atoms/Col';
 import BodyCopy from '@tcp/core/src/components/common/atoms/BodyCopy';
 import Button from '@tcp/core/src/components/common/atoms/Button';
 import withStyles from '@tcp/core/src/components/common/hoc/withStyles';
+import { getBirthDateOptionMap, childOptionsMap } from '@tcp/core/src/utils';
 import Notification from '@tcp/core/src/components/common/molecules/Notification';
 import styles from '../styles/BirthdaySavingsList.style';
 import BirthdayCardComponent from '../../../molecule/BirthdayCard';
 import EmptyBirthdayCard from '../../../molecule/EmptyBirthdayCard';
 import constants from '../BirthdaySavingsList.constants';
 import { getLabelValue } from '../../../../../../../utils';
+import AddChildBirthdayForm from '../../../molecule/AddChild';
 
 /**
  * Functional component to render Birthday Saving Info Message
@@ -45,7 +47,9 @@ export class BirthdaySavingsList extends PureComponent {
     super(props);
     this.state = {
       removeModal: false,
+      addModal: false,
       activeChild: null,
+      selectedChild: -1,
     };
   }
 
@@ -53,6 +57,7 @@ export class BirthdaySavingsList extends PureComponent {
     const { status } = this.props;
     if (status === 'success' && status !== prevProps.status) {
       this.closeRemoveModal();
+      this.closeAddModal();
     }
   }
 
@@ -105,6 +110,7 @@ export class BirthdaySavingsList extends PureComponent {
       removeModal: true,
       activeChild,
     });
+    this.closeAddModal();
   };
 
   /**
@@ -119,6 +125,29 @@ export class BirthdaySavingsList extends PureComponent {
   };
 
   /**
+   * @function showAddModal
+   * @description This function will handle showing of add Children Birthday Confirmation Modal
+   */
+  showAddModal = activeChild => {
+    this.setState({
+      addModal: true,
+      activeChild,
+    });
+    this.closeRemoveModal();
+  };
+
+  /**
+   * @function closeAddModal
+   * @description This function will handle closing of add Children Birthday Confirmation Modal
+   */
+  closeAddModal = () => {
+    this.setState({
+      addModal: false,
+      selectedChild: -1,
+    });
+  };
+
+  /**
    * @function removeBirthdayHandler
    * @description This function will call removeBirthday prop with required params
    * @param {object} activeChild Current active children information to be removed
@@ -128,10 +157,41 @@ export class BirthdaySavingsList extends PureComponent {
     removeBirthday(activeChild);
   };
 
+  toggleSelectedChild = index => {
+    this.setState({
+      selectedChild: index,
+    });
+  };
+
+  getActiveChildOffset = selectedIndex => {
+    if (document) {
+      const birthdayList = document.querySelector('.birthdayList');
+      if (birthdayList && birthdayList.children[selectedIndex]) {
+        const t = birthdayList.children[selectedIndex];
+        return {
+          top: t.offsetTop + t.offsetHeight + 30,
+          left: t.offsetLeft + t.offsetWidth / 2,
+        };
+      }
+    }
+    return null;
+  };
+
   render() {
-    const { labels, childrenBirthdays, view, className, status, message } = this.props;
+    const {
+      labels,
+      childrenBirthdays,
+      view,
+      className,
+      status,
+      message,
+      addChildBirthday,
+    } = this.props;
     const isEditMode = view === 'edit';
-    const { removeModal, activeChild } = this.state;
+    const { removeModal, activeChild, addModal, selectedChild } = this.state;
+    const yearOptionsMap = getBirthDateOptionMap();
+    const childOptions = childOptionsMap();
+
     if (isEditMode || (childrenBirthdays && childrenBirthdays.size > 0)) {
       const birthdays = childrenBirthdays
         ? childrenBirthdays.setSize(constants.MAX_BIRTHDAY_CARDS)
@@ -141,11 +201,11 @@ export class BirthdaySavingsList extends PureComponent {
         <div className={className}>
           {isEditMode && (
             <>
-              {status && <Notification status={status} message={message} />}
+              {status && <Notification status={status} message={message} scrollIntoView />}
               <InfoMessage labels={labels} />
             </>
           )}
-          <Row fullBleed className="elem-mb-XS">
+          <Row fullBleed className="elem-mb-XS birthdayList">
             {birthdays.map((birthday, index) => {
               return (
                 <Col
@@ -165,7 +225,14 @@ export class BirthdaySavingsList extends PureComponent {
                       removeBirthday={this.showRemoveModal}
                     />
                   ) : (
-                    <EmptyBirthdayCard labels={labels} view={view} />
+                    <EmptyBirthdayCard
+                      id={index}
+                      labels={labels}
+                      view={view}
+                      showAddModal={this.showAddModal}
+                      toggleSelectedChild={this.toggleSelectedChild}
+                      active={selectedChild}
+                    />
                   )}
                 </Col>
               );
@@ -212,6 +279,18 @@ export class BirthdaySavingsList extends PureComponent {
               </Row>
             </div>
           )}
+          {addModal && (
+            <AddChildBirthdayForm
+              birthMonthOptionsMap={yearOptionsMap.monthsMap}
+              birthYearOptionsMap={childOptions.yearsMap}
+              timestamp={new Date()}
+              childOptions={childOptions.genderMap}
+              closeAddModal={this.closeAddModal}
+              onSubmit={addChildBirthday}
+              addChildBirthdayLabels={labels}
+              offset={this.getActiveChildOffset(selectedChild)}
+            />
+          )}
         </div>
       );
     }
@@ -227,6 +306,7 @@ BirthdaySavingsList.propTypes = {
   removeBirthday: PropTypes.func,
   status: PropTypes.string,
   message: PropTypes.string,
+  addChildBirthday: PropTypes.func,
 };
 
 BirthdaySavingsList.defaultProps = {
@@ -235,6 +315,7 @@ BirthdaySavingsList.defaultProps = {
   removeBirthday: () => {},
   status: '',
   message: '',
+  addChildBirthday: () => {},
 };
 
 export default withStyles(BirthdaySavingsList, styles);

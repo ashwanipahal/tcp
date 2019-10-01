@@ -4,7 +4,10 @@ import { AVAILABILITY } from '../../../../../services/abstractors/CnC/CartItemTi
 
 const initialState = fromJS({
   orderDetails: {},
+  sfl: [],
   errors: false,
+  openItemDeleteConfirmationModalInfo: { showModal: false },
+  currentItemId: null,
   moduleXContent: [],
   showConfirmationModal: false,
   isEditingItem: false,
@@ -21,8 +24,10 @@ const initialState = fromJS({
       isItemDeleted: false,
       isItemUpdated: false,
     },
+    cartItemSflError: null,
     isPickupStoreUpdating: false,
     isItemMovedToSflList: false,
+    isSflItemDeleted: false,
     cartItemLargeImagesViewer: {
       opened: false,
       currentIndex: 0,
@@ -50,6 +55,18 @@ function setCartItemsUpdating(state, isCartItemUpdating) {
   return state.setIn(['uiFlags', 'isCartItemsUpdating'], isCartItemUpdating);
 }
 
+function setCartItemsSFL(state, isCartItemSFL) {
+  return state.setIn(['uiFlags', 'isItemMovedToSflList'], isCartItemSFL);
+}
+
+function setSflItemDeleted(state, isCartItemSFL) {
+  return state.setIn(['uiFlags', 'isSflItemDeleted'], isCartItemSFL);
+}
+
+function setCartItemsSflError(state, isCartItemSflError) {
+  return state.setIn(['uiFlags', 'cartItemSflError'], isCartItemSflError);
+}
+
 const returnBagPageReducer = (state = initialState, action) => {
   switch (action.type) {
     case BAGPAGE_CONSTANTS.OPEN_CHECKOUT_CONFIRMATION_MODAL:
@@ -58,6 +75,19 @@ const returnBagPageReducer = (state = initialState, action) => {
       return state.set('showConfirmationModal', false).set('isEditingItem', false);
     case BAGPAGE_CONSTANTS.CART_ITEMS_SET_UPDATING:
       return setCartItemsUpdating(state, action.payload);
+    case BAGPAGE_CONSTANTS.CART_ITEMS_SET_SFL:
+      return setCartItemsSFL(state, action.payload);
+    case BAGPAGE_CONSTANTS.CART_ITEMS_SET_SFL_ERROR:
+      return setCartItemsSflError(state, action.payload);
+    case BAGPAGE_CONSTANTS.SET_SFL_DATA:
+      return state.set('sfl', fromJS(action.payload));
+    case BAGPAGE_CONSTANTS.CLOSE_ITEM_DELETE_CONFIRMATION_MODAL:
+      return state.set('openItemDeleteConfirmationModalInfo', { showModal: false });
+    case BAGPAGE_CONSTANTS.OPEN_ITEM_DELETE_CONFIRMATION_MODAL:
+      return state.set('openItemDeleteConfirmationModalInfo', {
+        ...action.payload,
+        showModal: true,
+      });
     default:
       // TODO: currently when initial state is hydrated on browser, List is getting converted to an JS Array
       if (state instanceof Object) {
@@ -81,6 +111,10 @@ const BagPageReducer = (state = initialState, action) => {
       return updateItem(state, action.payload, AVAILABILITY.SOLDOUT);
     case BAGPAGE_CONSTANTS.SET_ITEM_UNAVAILABLE:
       return updateItem(state, action.payload, AVAILABILITY.UNAVAILABLE);
+    case BAGPAGE_CONSTANTS.SFL_ITEMS_SET_DELETED:
+      return setSflItemDeleted(state, action.payload);
+    case BAGPAGE_CONSTANTS.RESET_CART_DATA:
+      return initialState;
     default:
       return returnBagPageReducer(state, action);
   }

@@ -48,6 +48,7 @@ const Drawer = props => {
     renderOverlay,
     drawerFooter,
     hideNavigationFooter,
+    showCondensedHeader,
   } = props;
 
   let openDrawer = open;
@@ -61,6 +62,7 @@ const Drawer = props => {
     showOverlay();
   }
   const classToOpen = openDrawer ? 'tcp-drawer__isOpen' : '';
+  const condensedHeader = showCondensedHeader && 'tcp-condensed-drawer';
   const classToHideOnViewports = hideOnViewport({ small, medium, large });
   const classToShowOnViewports = showOnViewport({ small, medium, large });
 
@@ -73,7 +75,9 @@ const Drawer = props => {
       )}
       {openDrawer && (
         <React.Fragment>
-          <aside className={`tcp-drawer ${classToOpen} ${classToHideOnViewports}`}>
+          <aside
+            className={`tcp-drawer ${classToOpen} ${condensedHeader} ${classToHideOnViewports}`}
+          >
             <div className="tcp-drawer-content">
               {children}
               {renderDrawerFooter(hideNavigationFooter, drawerFooter)}
@@ -97,6 +101,7 @@ Drawer.propTypes = {
   renderOverlay: PropTypes.bool,
   drawerFooter: PropTypes.element,
   hideNavigationFooter: PropTypes.bool,
+  showCondensedHeader: PropTypes.bool.isRequired,
 };
 
 Drawer.defaultProps = {

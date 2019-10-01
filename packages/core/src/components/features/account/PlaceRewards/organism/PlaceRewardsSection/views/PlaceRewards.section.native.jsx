@@ -1,6 +1,6 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import { View, ScrollView, Text } from 'react-native';
+import { View, ScrollView } from 'react-native';
 import {
   ParentContainer,
   StyledHeading,
@@ -14,6 +14,7 @@ import MyRewards from '../../../../common/organism/MyRewards';
 import BonusPointsDays from '../../../molecules/BonusPointsDays';
 import RewardsPoints from '../../../../common/organism/RewardsPoints';
 import PointsHistory from '../../../../common/organism/PointsHistory';
+import EarnExtraPointsTileContainer from '../../../../common/organism/EarnExtraPointsTile';
 
 const PlaceRewardsSection = ({ labels, className, ...otherProps }) => {
   return (
@@ -49,7 +50,7 @@ const PlaceRewardsSection = ({ labels, className, ...otherProps }) => {
           <BonusPointsDays />
         </StyledView>
         <StyledViewLargeMargin>
-          <Text>FPO</Text>
+          <EarnExtraPointsTileContainer {...otherProps} />
         </StyledViewLargeMargin>
         <MyRewards labels={labels} showLink {...otherProps} />
       </ScrollView>

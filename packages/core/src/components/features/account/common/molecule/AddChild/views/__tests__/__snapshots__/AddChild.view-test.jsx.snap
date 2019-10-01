@@ -1,0 +1,1459 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`AddChildBirthday component should renders correctly 1`] = `
+<form
+  className="any"
+  onSubmit={[MockFunction]}
+>
+  <div
+    className="addChildBirthdayTip hide-on-mobile"
+  />
+  <Styled(Row)
+    className="formHeading"
+    fullBleed={true}
+  >
+    <Styled(Col)
+      className="childInfo"
+      colSize={
+        Object {
+          "large": 5,
+          "medium": 4,
+          "small": 6,
+        }
+      }
+      ignoreGutter={
+        Object {
+          "medium": true,
+        }
+      }
+    >
+      <Styled(Row)
+        className="elem-mb-LRG"
+        fullBleed={true}
+      >
+        <Styled(Col)
+          colSize={
+            Object {
+              "large": 12,
+              "medium": 8,
+              "small": 6,
+            }
+          }
+        >
+          <Styled(BodyCopy)
+            className={null}
+            color="gray.900"
+            component="p"
+            dataLocator="childInfoLbl"
+            fontFamily="secondary"
+            fontSize="fs16"
+            fontWeight="black"
+            letterSpacing="normal"
+            lineHeight="normal"
+            link={null}
+            textAlign="left"
+          />
+        </Styled(Col)>
+      </Styled(Row)>
+      <Styled(Row)
+        className="elem-mb-LRG"
+        fullBleed={true}
+      >
+        <Styled(Col)
+          colSize={
+            Object {
+              "large": 12,
+              "medium": 8,
+              "small": 6,
+            }
+          }
+        >
+          <Field
+            component={
+              Object {
+                "$$typeof": Symbol(react.forward_ref),
+                "attrs": Array [],
+                "componentStyle": ComponentStyle {
+                  "componentId": "sc-EHOje",
+                  "isStatic": false,
+                  "rules": Array [
+                    "
+  ",
+                    "
+  position: relative;
+  display: block;
+
+  .TextBox__label {
+    font-size: ",
+                    [Function],
+                    "px;
+    padding: 0;
+    position: absolute;
+    top: ",
+                    [Function],
+                    ";
+    ",
+                    [Function],
+                    "
+  }
+
+  .TextBox__input {
+    margin: 0;
+    outline: 0;
+    font-size: ",
+                    [Function],
+                    "px;
+    color: ",
+                    [Function],
+                    ";
+    width: 100%;
+    background-position: left top;
+    background-repeat: no-repeat;
+    background-size: contain;
+    border: 0 solid transparent;
+    border-bottom: 1px solid ",
+                    [Function],
+                    ";
+    padding-bottom: ",
+                    [Function],
+                    ";
+    margin-bottom: ",
+                    [Function],
+                    ";
+    padding-top: ",
+                    [Function],
+                    ";
+
+    ",
+                    [Function],
+                    "
+
+    ",
+                    [Function],
+                    ";
+
+    &:focus + .TextBox__label {
+      font-size: ",
+                    [Function],
+                    "px;
+      font-weight: ",
+                    [Function],
+                    ";
+      top: ",
+                    [Function],
+                    ";
+    }
+  }
+  .success__checkmark {
+    display: none;
+  }
+  &.textbox_validation_success .TextBox__input {
+    border-bottom: 1px solid ",
+                    [Function],
+                    ";
+  }
+
+  &.textbox_validation_success .success__checkmark {
+    display: ",
+                    [Function],
+                    ";
+    width: 15px;
+    height: 8px;
+    margin-left: ",
+                    [Function],
+                    ";
+    transform: rotate(-45deg);
+    transform-origin: left;
+    position: absolute;
+    right: 0;
+    top: 30px;
+
+    &:before {
+      content: '';
+      position: absolute;
+      width: 3px;
+      height: 100%;
+      background-color: ",
+                    [Function],
+                    ";
+    }
+
+    &:after {
+      content: '';
+      position: absolute;
+      width: 100%;
+      height: 3px;
+      background-color: ",
+                    [Function],
+                    ";
+      bottom: 0;
+    }
+  }
+
+  ",
+                    [Function],
+                    ";
+
+  .TextBox__error {
+    display: flex;
+    flex-direction: row;
+    padding-bottom: ",
+                    [Function],
+                    ";
+  }
+  .warning-icon {
+    background: transparent url('/static/images/circle-alert-fill.svg') no-repeat 0 0;
+    background-size: contain;
+    border: none;
+    height: 14px;
+    width: 16px;
+    margin-right: 7px;
+  }
+",
+                    ";
+",
+                  ],
+                },
+                "displayName": "Styled(TextBox)",
+                "foldedComponentIds": Array [],
+                "render": [Function],
+                "styledComponentId": "sc-EHOje",
+                "target": [Function],
+                "toString": [Function],
+                "warnTooManyClasses": [Function],
+                "withComponent": [Function],
+              }
+            }
+            dataLocator="childNameField"
+            id="childName"
+            name="childName"
+            type="text"
+          />
+        </Styled(Col)>
+        <Styled(Col)
+          className="elem-mt-LRG"
+          colSize={
+            Object {
+              "large": 12,
+              "medium": 8,
+              "small": 6,
+            }
+          }
+        >
+          <Styled(BodyCopy)
+            className={null}
+            color="gray.900"
+            component="p"
+            data-locator="childBirthdayLbl"
+            fontFamily="secondary"
+            fontSize="fs10"
+            fontWeight="black"
+            letterSpacing="normal"
+            lineHeight="normal"
+            link={null}
+            textAlign="left"
+          />
+        </Styled(Col)>
+        <Styled(Row)
+          fullBleed={true}
+        >
+          <Styled(Col)
+            colSize={
+              Object {
+                "large": 6,
+                "medium": 4,
+                "small": 3,
+              }
+            }
+          >
+            <Field
+              component={
+                Object {
+                  "$$typeof": Symbol(react.forward_ref),
+                  "attrs": Array [],
+                  "componentStyle": ComponentStyle {
+                    "componentId": "sc-htpNat",
+                    "isStatic": false,
+                    "rules": Array [
+                      "
+  ",
+                      "
+  position: relative;
+  display: block;
+  height: 70px;
+
+  .select__input {
+    appearance: none;
+    background: url(",
+                      "/static/images/carrot-small-down.png",
+                      ") no-repeat right 0px bottom
+      ",
+                      [Function],
+                      ";
+    border: 0;
+    border-bottom: 1px solid ",
+                      [Function],
+                      ";
+    ",
+                      [Function],
+                      ";
+    border-radius: 0;
+    color: ",
+                      [Function],
+                      ";
+    font-size: ",
+                      [Function],
+                      ";
+    margin: 0;
+    margin-bottom: ",
+                      [Function],
+                      ";
+    outline: 0;
+    padding: ",
+                      "26px",
+                      " 0 ",
+                      [Function],
+                      ";
+    width: 100%;
+
+    ",
+                      [Function],
+                      ";
+  }
+
+  .select__label {
+    font-size: ",
+                      [Function],
+                      "px;
+    font-weight: ",
+                      [Function],
+                      ";
+    padding: 0;
+    position: absolute;
+    top: 0;
+  }
+
+  .SelectBox__error {
+    display: flex;
+    flex-direction: row;
+    padding-bottom: ",
+                      [Function],
+                      ";
+  }
+
+  .warning-icon {
+    background: transparent url('/static/images/circle-alert-fill.svg') no-repeat 0 0;
+    background-size: contain;
+    border: none;
+    height: 14px;
+    width: 16px;
+    margin-right: 7px;
+  }
+
+  ",
+                      [Function],
+                      ";
+",
+                      ";
+",
+                    ],
+                  },
+                  "displayName": "Styled(SelectBox)",
+                  "foldedComponentIds": Array [],
+                  "render": [Function],
+                  "styledComponentId": "sc-htpNat",
+                  "target": [Function],
+                  "toString": [Function],
+                  "warnTooManyClasses": [Function],
+                  "withComponent": [Function],
+                }
+              }
+              dataLocator="childBirthdayMonthDD"
+              id="userBirthMonth"
+              name="userBirthMonth"
+              options={
+                Array [
+                  Object {
+                    "displayName": "Jan",
+                    "id": "1",
+                  },
+                  Object {
+                    "displayName": "Feb",
+                    "id": "2",
+                  },
+                  Object {
+                    "displayName": "Mar",
+                    "id": "3",
+                  },
+                  Object {
+                    "displayName": "Apr",
+                    "id": "4",
+                  },
+                  Object {
+                    "displayName": "May",
+                    "id": "5",
+                  },
+                  Object {
+                    "displayName": "Jun",
+                    "id": "6",
+                  },
+                  Object {
+                    "displayName": "Jul",
+                    "id": "7",
+                  },
+                  Object {
+                    "displayName": "Aug",
+                    "id": "8",
+                  },
+                  Object {
+                    "displayName": "Sep",
+                    "id": "9",
+                  },
+                  Object {
+                    "displayName": "Oct",
+                    "id": "10",
+                  },
+                  Object {
+                    "displayName": "Nov",
+                    "id": "11",
+                  },
+                  Object {
+                    "displayName": "Dec",
+                    "id": "12",
+                  },
+                ]
+              }
+            />
+          </Styled(Col)>
+          <Styled(Col)
+            colSize={
+              Object {
+                "large": 6,
+                "medium": 4,
+                "small": 3,
+              }
+            }
+          >
+            <Field
+              component={
+                Object {
+                  "$$typeof": Symbol(react.forward_ref),
+                  "attrs": Array [],
+                  "componentStyle": ComponentStyle {
+                    "componentId": "sc-htpNat",
+                    "isStatic": false,
+                    "rules": Array [
+                      "
+  ",
+                      "
+  position: relative;
+  display: block;
+  height: 70px;
+
+  .select__input {
+    appearance: none;
+    background: url(",
+                      "/static/images/carrot-small-down.png",
+                      ") no-repeat right 0px bottom
+      ",
+                      [Function],
+                      ";
+    border: 0;
+    border-bottom: 1px solid ",
+                      [Function],
+                      ";
+    ",
+                      [Function],
+                      ";
+    border-radius: 0;
+    color: ",
+                      [Function],
+                      ";
+    font-size: ",
+                      [Function],
+                      ";
+    margin: 0;
+    margin-bottom: ",
+                      [Function],
+                      ";
+    outline: 0;
+    padding: ",
+                      "26px",
+                      " 0 ",
+                      [Function],
+                      ";
+    width: 100%;
+
+    ",
+                      [Function],
+                      ";
+  }
+
+  .select__label {
+    font-size: ",
+                      [Function],
+                      "px;
+    font-weight: ",
+                      [Function],
+                      ";
+    padding: 0;
+    position: absolute;
+    top: 0;
+  }
+
+  .SelectBox__error {
+    display: flex;
+    flex-direction: row;
+    padding-bottom: ",
+                      [Function],
+                      ";
+  }
+
+  .warning-icon {
+    background: transparent url('/static/images/circle-alert-fill.svg') no-repeat 0 0;
+    background-size: contain;
+    border: none;
+    height: 14px;
+    width: 16px;
+    margin-right: 7px;
+  }
+
+  ",
+                      [Function],
+                      ";
+",
+                      ";
+",
+                    ],
+                  },
+                  "displayName": "Styled(SelectBox)",
+                  "foldedComponentIds": Array [],
+                  "render": [Function],
+                  "styledComponentId": "sc-htpNat",
+                  "target": [Function],
+                  "toString": [Function],
+                  "warnTooManyClasses": [Function],
+                  "withComponent": [Function],
+                }
+              }
+              dataLocator="childBirthdayYearDD"
+              id="userBirthYear"
+              name="userBirthYear"
+              options={
+                Array [
+                  Object {
+                    "displayName": "2019",
+                    "id": "2019",
+                  },
+                  Object {
+                    "displayName": "2018",
+                    "id": "2018",
+                  },
+                  Object {
+                    "displayName": "2017",
+                    "id": "2017",
+                  },
+                  Object {
+                    "displayName": "2016",
+                    "id": "2016",
+                  },
+                  Object {
+                    "displayName": "2015",
+                    "id": "2015",
+                  },
+                  Object {
+                    "displayName": "2014",
+                    "id": "2014",
+                  },
+                  Object {
+                    "displayName": "2013",
+                    "id": "2013",
+                  },
+                  Object {
+                    "displayName": "2012",
+                    "id": "2012",
+                  },
+                  Object {
+                    "displayName": "2011",
+                    "id": "2011",
+                  },
+                  Object {
+                    "displayName": "2010",
+                    "id": "2010",
+                  },
+                  Object {
+                    "displayName": "2009",
+                    "id": "2009",
+                  },
+                  Object {
+                    "displayName": "2008",
+                    "id": "2008",
+                  },
+                  Object {
+                    "displayName": "2007",
+                    "id": "2007",
+                  },
+                  Object {
+                    "displayName": "2006",
+                    "id": "2006",
+                  },
+                  Object {
+                    "displayName": "2005",
+                    "id": "2005",
+                  },
+                  Object {
+                    "displayName": "2004",
+                    "id": "2004",
+                  },
+                  Object {
+                    "displayName": "2003",
+                    "id": "2003",
+                  },
+                ]
+              }
+            />
+          </Styled(Col)>
+        </Styled(Row)>
+        <Styled(Col)
+          className="elem-mt-LRG"
+          colSize={
+            Object {
+              "large": 12,
+              "medium": 8,
+              "small": 6,
+            }
+          }
+        >
+          <Styled(BodyCopy)
+            className={null}
+            color="gray.900"
+            component="p"
+            dataLocator="childGenderLbl"
+            fontFamily="secondary"
+            fontSize="fs10"
+            fontWeight="black"
+            letterSpacing="normal"
+            lineHeight="normal"
+            link={null}
+            textAlign="left"
+          />
+        </Styled(Col)>
+        <Styled(Col)
+          colSize={
+            Object {
+              "large": 6,
+              "medium": 4,
+              "small": 3,
+            }
+          }
+        >
+          <Field
+            component={
+              Object {
+                "$$typeof": Symbol(react.forward_ref),
+                "attrs": Array [],
+                "componentStyle": ComponentStyle {
+                  "componentId": "sc-htpNat",
+                  "isStatic": false,
+                  "rules": Array [
+                    "
+  ",
+                    "
+  position: relative;
+  display: block;
+  height: 70px;
+
+  .select__input {
+    appearance: none;
+    background: url(",
+                    "/static/images/carrot-small-down.png",
+                    ") no-repeat right 0px bottom
+      ",
+                    [Function],
+                    ";
+    border: 0;
+    border-bottom: 1px solid ",
+                    [Function],
+                    ";
+    ",
+                    [Function],
+                    ";
+    border-radius: 0;
+    color: ",
+                    [Function],
+                    ";
+    font-size: ",
+                    [Function],
+                    ";
+    margin: 0;
+    margin-bottom: ",
+                    [Function],
+                    ";
+    outline: 0;
+    padding: ",
+                    "26px",
+                    " 0 ",
+                    [Function],
+                    ";
+    width: 100%;
+
+    ",
+                    [Function],
+                    ";
+  }
+
+  .select__label {
+    font-size: ",
+                    [Function],
+                    "px;
+    font-weight: ",
+                    [Function],
+                    ";
+    padding: 0;
+    position: absolute;
+    top: 0;
+  }
+
+  .SelectBox__error {
+    display: flex;
+    flex-direction: row;
+    padding-bottom: ",
+                    [Function],
+                    ";
+  }
+
+  .warning-icon {
+    background: transparent url('/static/images/circle-alert-fill.svg') no-repeat 0 0;
+    background-size: contain;
+    border: none;
+    height: 14px;
+    width: 16px;
+    margin-right: 7px;
+  }
+
+  ",
+                    [Function],
+                    ";
+",
+                    ";
+",
+                  ],
+                },
+                "displayName": "Styled(SelectBox)",
+                "foldedComponentIds": Array [],
+                "render": [Function],
+                "styledComponentId": "sc-htpNat",
+                "target": [Function],
+                "toString": [Function],
+                "warnTooManyClasses": [Function],
+                "withComponent": [Function],
+              }
+            }
+            dataLocator="childGenderDD"
+            enableSuccessCheck={true}
+            id="gender"
+            name="gender"
+            options={
+              Array [
+                Object {
+                  "displayName": "Boy",
+                  "id": "01",
+                },
+                Object {
+                  "displayName": "Girl",
+                  "id": "0",
+                },
+              ]
+            }
+          />
+        </Styled(Col)>
+      </Styled(Row)>
+    </Styled(Col)>
+    <Styled(Col)
+      className="parentInfo"
+      colSize={
+        Object {
+          "large": 5,
+          "medium": 4,
+          "small": 6,
+        }
+      }
+      offsetLeft={
+        Object {
+          "large": 1,
+          "medium": 0,
+          "small": 0,
+        }
+      }
+      offsetRight={
+        Object {
+          "large": 1,
+          "medium": 0,
+          "small": 0,
+        }
+      }
+    >
+      <Styled(Row)
+        className="elem-mb-LRG"
+        fullBleed={true}
+      >
+        <Styled(Col)
+          colSize={
+            Object {
+              "large": 12,
+              "medium": 8,
+              "small": 6,
+            }
+          }
+        >
+          <Styled(BodyCopy)
+            className={null}
+            color="gray.900"
+            component="p"
+            data-locator="parentDigitalSignatureLbl"
+            fontFamily="secondary"
+            fontSize="fs16"
+            fontWeight="black"
+            letterSpacing="normal"
+            lineHeight="normal"
+            link={null}
+            textAlign="left"
+          />
+        </Styled(Col)>
+      </Styled(Row)>
+      <Styled(Row)
+        className="elem-mb-LRG"
+        fullBleed={true}
+      >
+        <Styled(Col)
+          colSize={
+            Object {
+              "large": 12,
+              "medium": 8,
+              "small": 3,
+            }
+          }
+        >
+          <Field
+            component={
+              Object {
+                "$$typeof": Symbol(react.forward_ref),
+                "attrs": Array [],
+                "componentStyle": ComponentStyle {
+                  "componentId": "sc-EHOje",
+                  "isStatic": false,
+                  "rules": Array [
+                    "
+  ",
+                    "
+  position: relative;
+  display: block;
+
+  .TextBox__label {
+    font-size: ",
+                    [Function],
+                    "px;
+    padding: 0;
+    position: absolute;
+    top: ",
+                    [Function],
+                    ";
+    ",
+                    [Function],
+                    "
+  }
+
+  .TextBox__input {
+    margin: 0;
+    outline: 0;
+    font-size: ",
+                    [Function],
+                    "px;
+    color: ",
+                    [Function],
+                    ";
+    width: 100%;
+    background-position: left top;
+    background-repeat: no-repeat;
+    background-size: contain;
+    border: 0 solid transparent;
+    border-bottom: 1px solid ",
+                    [Function],
+                    ";
+    padding-bottom: ",
+                    [Function],
+                    ";
+    margin-bottom: ",
+                    [Function],
+                    ";
+    padding-top: ",
+                    [Function],
+                    ";
+
+    ",
+                    [Function],
+                    "
+
+    ",
+                    [Function],
+                    ";
+
+    &:focus + .TextBox__label {
+      font-size: ",
+                    [Function],
+                    "px;
+      font-weight: ",
+                    [Function],
+                    ";
+      top: ",
+                    [Function],
+                    ";
+    }
+  }
+  .success__checkmark {
+    display: none;
+  }
+  &.textbox_validation_success .TextBox__input {
+    border-bottom: 1px solid ",
+                    [Function],
+                    ";
+  }
+
+  &.textbox_validation_success .success__checkmark {
+    display: ",
+                    [Function],
+                    ";
+    width: 15px;
+    height: 8px;
+    margin-left: ",
+                    [Function],
+                    ";
+    transform: rotate(-45deg);
+    transform-origin: left;
+    position: absolute;
+    right: 0;
+    top: 30px;
+
+    &:before {
+      content: '';
+      position: absolute;
+      width: 3px;
+      height: 100%;
+      background-color: ",
+                    [Function],
+                    ";
+    }
+
+    &:after {
+      content: '';
+      position: absolute;
+      width: 100%;
+      height: 3px;
+      background-color: ",
+                    [Function],
+                    ";
+      bottom: 0;
+    }
+  }
+
+  ",
+                    [Function],
+                    ";
+
+  .TextBox__error {
+    display: flex;
+    flex-direction: row;
+    padding-bottom: ",
+                    [Function],
+                    ";
+  }
+  .warning-icon {
+    background: transparent url('/static/images/circle-alert-fill.svg') no-repeat 0 0;
+    background-size: contain;
+    border: none;
+    height: 14px;
+    width: 16px;
+    margin-right: 7px;
+  }
+",
+                    ";
+",
+                  ],
+                },
+                "displayName": "Styled(TextBox)",
+                "foldedComponentIds": Array [],
+                "render": [Function],
+                "styledComponentId": "sc-EHOje",
+                "target": [Function],
+                "toString": [Function],
+                "warnTooManyClasses": [Function],
+                "withComponent": [Function],
+              }
+            }
+            dataLocator="firstNameField"
+            id="firstName"
+            name="firstName"
+            type="text"
+          />
+        </Styled(Col)>
+        <Styled(Col)
+          className="lastName"
+          colSize={
+            Object {
+              "large": 12,
+              "medium": 8,
+              "small": 3,
+            }
+          }
+          ignoreGutter={
+            Object {
+              "medium": true,
+              "small": true,
+            }
+          }
+        >
+          <Field
+            component={
+              Object {
+                "$$typeof": Symbol(react.forward_ref),
+                "attrs": Array [],
+                "componentStyle": ComponentStyle {
+                  "componentId": "sc-EHOje",
+                  "isStatic": false,
+                  "rules": Array [
+                    "
+  ",
+                    "
+  position: relative;
+  display: block;
+
+  .TextBox__label {
+    font-size: ",
+                    [Function],
+                    "px;
+    padding: 0;
+    position: absolute;
+    top: ",
+                    [Function],
+                    ";
+    ",
+                    [Function],
+                    "
+  }
+
+  .TextBox__input {
+    margin: 0;
+    outline: 0;
+    font-size: ",
+                    [Function],
+                    "px;
+    color: ",
+                    [Function],
+                    ";
+    width: 100%;
+    background-position: left top;
+    background-repeat: no-repeat;
+    background-size: contain;
+    border: 0 solid transparent;
+    border-bottom: 1px solid ",
+                    [Function],
+                    ";
+    padding-bottom: ",
+                    [Function],
+                    ";
+    margin-bottom: ",
+                    [Function],
+                    ";
+    padding-top: ",
+                    [Function],
+                    ";
+
+    ",
+                    [Function],
+                    "
+
+    ",
+                    [Function],
+                    ";
+
+    &:focus + .TextBox__label {
+      font-size: ",
+                    [Function],
+                    "px;
+      font-weight: ",
+                    [Function],
+                    ";
+      top: ",
+                    [Function],
+                    ";
+    }
+  }
+  .success__checkmark {
+    display: none;
+  }
+  &.textbox_validation_success .TextBox__input {
+    border-bottom: 1px solid ",
+                    [Function],
+                    ";
+  }
+
+  &.textbox_validation_success .success__checkmark {
+    display: ",
+                    [Function],
+                    ";
+    width: 15px;
+    height: 8px;
+    margin-left: ",
+                    [Function],
+                    ";
+    transform: rotate(-45deg);
+    transform-origin: left;
+    position: absolute;
+    right: 0;
+    top: 30px;
+
+    &:before {
+      content: '';
+      position: absolute;
+      width: 3px;
+      height: 100%;
+      background-color: ",
+                    [Function],
+                    ";
+    }
+
+    &:after {
+      content: '';
+      position: absolute;
+      width: 100%;
+      height: 3px;
+      background-color: ",
+                    [Function],
+                    ";
+      bottom: 0;
+    }
+  }
+
+  ",
+                    [Function],
+                    ";
+
+  .TextBox__error {
+    display: flex;
+    flex-direction: row;
+    padding-bottom: ",
+                    [Function],
+                    ";
+  }
+  .warning-icon {
+    background: transparent url('/static/images/circle-alert-fill.svg') no-repeat 0 0;
+    background-size: contain;
+    border: none;
+    height: 14px;
+    width: 16px;
+    margin-right: 7px;
+  }
+",
+                    ";
+",
+                  ],
+                },
+                "displayName": "Styled(TextBox)",
+                "foldedComponentIds": Array [],
+                "render": [Function],
+                "styledComponentId": "sc-EHOje",
+                "target": [Function],
+                "toString": [Function],
+                "warnTooManyClasses": [Function],
+                "withComponent": [Function],
+              }
+            }
+            dataLocator="lastNameField"
+            id="lastName"
+            name="lastName"
+            type="text"
+          />
+        </Styled(Col)>
+        <Styled(Col)
+          className="timestamp"
+          colSize={
+            Object {
+              "large": 12,
+              "medium": 8,
+              "small": 6,
+            }
+          }
+        >
+          <Styled(BodyCopy)
+            className={null}
+            color="text.primary"
+            component="p"
+            data-locator="timeStampLbl"
+            fontFamily="secondary"
+            fontSize="fs14"
+            fontWeight="regular"
+            letterSpacing="normal"
+            lineHeight="normal"
+            link={null}
+            textAlign="left"
+          >
+            undefined 
+          </Styled(BodyCopy)>
+        </Styled(Col)>
+        <Styled(Col)
+          className="elem-mt-XL"
+          colSize={
+            Object {
+              "large": 12,
+              "medium": 8,
+              "small": 6,
+            }
+          }
+          fullBleed={true}
+        >
+          <Field
+            component={
+              Object {
+                "$$typeof": Symbol(react.forward_ref),
+                "attrs": Array [],
+                "componentStyle": ComponentStyle {
+                  "componentId": "sc-bxivhb",
+                  "isStatic": false,
+                  "rules": Array [
+                    "
+  ",
+                    "
+  display: block;
+  align-items: ",
+                    [Function],
+                    ";
+
+  & .CheckBox__input {
+    flex: 0 0 auto;
+    position: relative;
+    top: 0;
+    appearance: none;
+    outline: 0;
+    border: 0;
+    height: ",
+                    "25px",
+                    ";
+    width: ",
+                    "25px",
+                    ";
+    margin: 0;
+    margin-right: ",
+                    [Function],
+                    ";
+    display: inline-block;
+    vertical-align: top;
+  }
+
+  & .CheckBox__input:before {
+    content: '';
+    position: absolute;
+    height: 100%;
+    width: 100%;
+    left: 0;
+    border: 1px solid ",
+                    [Function],
+                    ";
+  }
+
+  & .CheckBox__input:checked:before {
+    background: ",
+                    [Function],
+                    ";
+    border: 1px solid ",
+                    [Function],
+                    ";
+  }
+
+  & .CheckBox__input:checked:after {
+    transform: rotate(225deg);
+    content: '';
+    border: 2px solid ",
+                    [Function],
+                    ";
+    font-size: ",
+                    [Function],
+                    "px;
+    width: ",
+                    [Function],
+                    ";
+    height: 10px;
+    border-right: 0;
+    border-bottom: 0;
+    left: 10px;
+    top: 5px;
+    position: absolute;
+  }
+
+  & .CheckBox__text {
+    width: calc(100% - 45px);
+    display: inline-block;
+  }
+
+  & .CheckBox__text a {
+    color: ",
+                    [Function],
+                    ";
+  }
+
+  & .disabled {
+    opacity: ",
+                    [Function],
+                    ";
+  }
+
+  & .Checkbox__error {
+    display: flex;
+    flex-direction: row;
+    padding-left: ",
+                    [Function],
+                    ";
+  }
+  & .warning-icon {
+    background: transparent url('/static/images/circle-alert-fill.svg') no-repeat 0 0;
+    background-size: contain;
+    border: none;
+    height: ",
+                    [Function],
+                    ";
+    width: ",
+                    [Function],
+                    ";
+    margin-right: 4px;
+    margin-top: 2px;
+  }
+",
+                    ";
+",
+                  ],
+                },
+                "displayName": "Styled(InputCheckbox)",
+                "foldedComponentIds": Array [],
+                "render": [Function],
+                "styledComponentId": "sc-bxivhb",
+                "target": [Function],
+                "toString": [Function],
+                "warnTooManyClasses": [Function],
+                "withComponent": [Function],
+              }
+            }
+            dataLocator="tnccb"
+            id="acceptAddChildAgreement"
+            name="acceptAddChildAgreement"
+          >
+            <Styled(BodyCopy)
+              className={null}
+              color="text.primary"
+              component="span"
+              fontFamily="secondary"
+              fontSize="fs14"
+              fontWeight="semibold"
+              letterSpacing="normal"
+              lineHeight="normal"
+              link={null}
+              textAlign="left"
+            >
+              undefined
+                    undefined
+            </Styled(BodyCopy)>
+          </Field>
+        </Styled(Col)>
+        <Styled(Col)
+          className="elem-mt-SM"
+          colSize={
+            Object {
+              "large": 12,
+              "medium": 8,
+              "small": 6,
+            }
+          }
+          fullBleed={true}
+        >
+          <Styled(BodyCopy)
+            className="elem-ml-XXL"
+            color="text.primary"
+            component="span"
+            fontFamily="secondary"
+            fontSize="fs14"
+            fontWeight="semibold"
+            letterSpacing="normal"
+            lineHeight="normal"
+            link={null}
+            textAlign="left"
+          >
+            <Styled(Anchor)
+              data-locator="privacyLnk"
+              noLink={true}
+              to="https://www.childrensplace.com/us/help-center/#policies"
+              underline={true}
+            />
+            <Styled(Anchor)
+              data-locator="faqLnk"
+              noLink={true}
+              to="https://www.childrensplace.com/us/help-center/#faq"
+              underline={true}
+            />
+          </Styled(BodyCopy)>
+        </Styled(Col)>
+      </Styled(Row)>
+    </Styled(Col)>
+    <Styled(Row)
+      className="buttons"
+      fullBleed={true}
+    >
+      <Styled(Col)
+        className="submitBtn"
+        colSize={
+          Object {
+            "large": 4,
+            "medium": 3,
+            "small": 6,
+          }
+        }
+        offsetRight={
+          Object {
+            "large": 2,
+            "medium": 1,
+            "small": 0,
+          }
+        }
+      >
+        <Styled(Button)
+          buttonVariation="fixed-width"
+          dataLocator="SaveChildFormBtn"
+          fill="BLUE"
+          type="submit"
+        />
+      </Styled(Col)>
+      <Styled(Col)
+        className="cancelBtn"
+        colSize={
+          Object {
+            "large": 4,
+            "medium": 3,
+            "small": 6,
+          }
+        }
+        offsetLeft={
+          Object {
+            "large": 2,
+            "medium": 1,
+            "small": 0,
+          }
+        }
+      >
+        <Styled(Button)
+          buttonVariation="fixed-width"
+          dataLocator="cancelChildFormBtn"
+          fill="WHITE"
+          onClick={[MockFunction]}
+        />
+      </Styled(Col)>
+    </Styled(Row)>
+  </Styled(Row)>
+</form>
+`;

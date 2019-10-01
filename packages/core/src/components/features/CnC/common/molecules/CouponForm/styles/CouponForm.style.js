@@ -56,4 +56,12 @@ export default css`
       visibility: hidden;
     }
   }
+
+  .coupon_error_message {
+    @media ${props => props.theme.mediaQuery.smallMax} {
+      padding-bottom: 0px;
+      padding-top: 0px;
+      background-color: ${props => props.theme.colors.WHITE};
+    }
+  }
 `;

@@ -19,6 +19,7 @@ exports[`TileOption should render correctly 1`] = `
       fontWeight="regular"
       letterSpacing="normal"
       lineHeight="normal"
+      link={null}
       textAlign="left"
     >
       Parent
@@ -46,6 +47,7 @@ exports[`TileOption should render with selected tile 1`] = `
       fontWeight="regular"
       letterSpacing="normal"
       lineHeight="normal"
+      link={null}
       textAlign="left"
     >
       Parent

@@ -31,19 +31,16 @@ exports[`FilterModal is shown should render FilterModal when show is false 1`] =
             onPress={[Function]}
           >
             <Styled(CustomIcon)
-              backgroundColor="#ffffff"
-              borderRadius={0}
-              color="#1a1a1a"
+              color="gray.900"
+              dataLocator=""
               iconFontName="FontAwesome"
-              iconStyle={Object {}}
               isButton={false}
               isDisabled={false}
+              margin={null}
               name="close"
               onPress={[Function]}
-              size={20}
-            >
-              <Component />
-            </Styled(CustomIcon)>
+              size="fs20"
+            />
           </Styled(TouchableOpacity)>
         </Styled(View)>
         <Styled(WithTheme(Filters))

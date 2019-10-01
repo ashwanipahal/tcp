@@ -3,10 +3,15 @@
 exports[`AddressOverviewTile component should render correctly 1`] = `
 <Styled(View)>
   <Styled(BodyCopy)
+    accessibilityText=""
     color="black"
+    dataLocator=""
     fontFamily="secondary"
     fontSize="fs16"
+    margin={null}
+    numberOfLines={null}
     text="Address Book"
+    textDecoration={null}
   />
   <Styled(View) />
   <Styled(View)>
@@ -20,10 +25,15 @@ exports[`AddressOverviewTile component should render correctly 1`] = `
       }
     >
       <Styled(BodyCopy)
+        accessibilityText=""
         color="black"
+        dataLocator=""
         fontFamily="secondary"
         fontSize="fs16"
+        margin={null}
+        numberOfLines={null}
         text="Default Shiping Address"
+        textDecoration={null}
       />
     </View>
     <View
@@ -40,6 +50,7 @@ exports[`AddressOverviewTile component should render correctly 1`] = `
         accessibilityLabel=""
         anchorVariation="primary"
         color="gray.900"
+        colorName={null}
         customStyle={Object {}}
         dataLocator="addressbook-overview-edit"
         fontSizeVariation="large"
@@ -53,10 +64,15 @@ exports[`AddressOverviewTile component should render correctly 1`] = `
     </View>
   </Styled(View)>
   <Styled(BodyCopy)
+    accessibilityText=""
+    dataLocator=""
     fontFamily="primary"
     fontSize="fs13"
     fontWeight="regular"
+    margin={null}
+    numberOfLines={null}
     text="You have not added an address yet."
+    textDecoration={null}
   />
   <Styled(View) />
   <Styled(View)>
@@ -70,10 +86,15 @@ exports[`AddressOverviewTile component should render correctly 1`] = `
       }
     >
       <Styled(BodyCopy)
+        accessibilityText=""
         color="black"
+        dataLocator=""
         fontFamily="secondary"
         fontSize="fs16"
+        margin={null}
+        numberOfLines={null}
         text="Default Billing Address"
+        textDecoration={null}
       />
     </View>
     <View
@@ -90,6 +111,7 @@ exports[`AddressOverviewTile component should render correctly 1`] = `
         accessibilityLabel=""
         anchorVariation="primary"
         color="gray.900"
+        colorName={null}
         customStyle={Object {}}
         data-locator="addressbook-makedefault"
         fontSizeVariation="large"
@@ -104,17 +126,38 @@ exports[`AddressOverviewTile component should render correctly 1`] = `
     </View>
   </Styled(View)>
   <Styled(BodyCopy)
+    accessibilityText=""
+    dataLocator=""
     fontFamily="primary"
     fontSize="fs13"
     fontWeight="regular"
+    margin={null}
+    numberOfLines={null}
     text="You have not added an address yet."
+    textDecoration={null}
   />
   <Styled(View)>
-    <Styled(WithTheme(CustomButton))
+    <Styled(CustomButton)
+      active={false}
       buttonVariation="variable-width"
+      color=""
+      customStyle={Object {}}
+      customTextStyle={null}
+      disableButton={false}
       fill="BLUE"
+      fullWidth=""
+      iconColor="gray.800"
+      iconName="chevron-down"
+      iconSize="fs12"
+      locator=""
+      navigation={Object {}}
       onPress={[Function]}
+      selected={false}
+      selectedIcon="chevron-up"
+      showIcon={false}
       text="View Address Book"
+      theme={Object {}}
+      url=""
     />
   </Styled(View)>
 </Styled(View)>
@@ -123,9 +166,14 @@ exports[`AddressOverviewTile component should render correctly 1`] = `
 exports[`AddressOverviewTile render empty address component should render correctly 1`] = `
 <Styled(View)>
   <Styled(BodyCopy)
+    accessibilityText=""
     color="black"
+    dataLocator=""
     fontFamily="secondary"
     fontSize="fs16"
+    margin={null}
+    numberOfLines={null}
+    textDecoration={null}
   />
   <Styled(View) />
   <Styled(View)>
@@ -139,9 +187,14 @@ exports[`AddressOverviewTile render empty address component should render correc
       }
     >
       <Styled(BodyCopy)
+        accessibilityText=""
         color="black"
+        dataLocator=""
         fontFamily="secondary"
         fontSize="fs16"
+        margin={null}
+        numberOfLines={null}
+        textDecoration={null}
       />
     </View>
     <View
@@ -158,6 +211,7 @@ exports[`AddressOverviewTile render empty address component should render correc
         accessibilityLabel=""
         anchorVariation="primary"
         color="gray.900"
+        colorName={null}
         customStyle={Object {}}
         dataLocator="addressbook-overview-edit"
         fontSizeVariation="large"
@@ -171,9 +225,14 @@ exports[`AddressOverviewTile render empty address component should render correc
     </View>
   </Styled(View)>
   <Styled(BodyCopy)
+    accessibilityText=""
+    dataLocator=""
     fontFamily="primary"
     fontSize="fs13"
     fontWeight="regular"
+    margin={null}
+    numberOfLines={null}
+    textDecoration={null}
   />
   <Styled(View) />
   <Styled(View)>
@@ -187,9 +246,14 @@ exports[`AddressOverviewTile render empty address component should render correc
       }
     >
       <Styled(BodyCopy)
+        accessibilityText=""
         color="black"
+        dataLocator=""
         fontFamily="secondary"
         fontSize="fs16"
+        margin={null}
+        numberOfLines={null}
+        textDecoration={null}
       />
     </View>
     <View
@@ -206,6 +270,7 @@ exports[`AddressOverviewTile render empty address component should render correc
         accessibilityLabel=""
         anchorVariation="primary"
         color="gray.900"
+        colorName={null}
         customStyle={Object {}}
         data-locator="addressbook-makedefault"
         fontSizeVariation="large"
@@ -220,15 +285,37 @@ exports[`AddressOverviewTile render empty address component should render correc
     </View>
   </Styled(View)>
   <Styled(BodyCopy)
+    accessibilityText=""
+    dataLocator=""
     fontFamily="primary"
     fontSize="fs13"
     fontWeight="regular"
+    margin={null}
+    numberOfLines={null}
+    textDecoration={null}
   />
   <Styled(View)>
-    <Styled(WithTheme(CustomButton))
+    <Styled(CustomButton)
+      active={false}
       buttonVariation="variable-width"
+      color=""
+      customStyle={Object {}}
+      customTextStyle={null}
+      disableButton={false}
       fill="BLUE"
+      fullWidth=""
+      iconColor="gray.800"
+      iconName="chevron-down"
+      iconSize="fs12"
+      locator=""
+      navigation={Object {}}
       onPress={[Function]}
+      selected={false}
+      selectedIcon="chevron-up"
+      showIcon={false}
+      text=""
+      theme={Object {}}
+      url=""
     />
   </Styled(View)>
 </Styled(View)>

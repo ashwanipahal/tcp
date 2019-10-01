@@ -157,7 +157,7 @@ export class AddressDropdown extends React.PureComponent<Props> {
 
   renderButton = ({ item }) => {
     const { label } = item;
-    const { showButton } = this.props;
+    const { showButton, disableBtn } = this.props;
     return showButton ? (
       <Button
         fullWidth
@@ -165,6 +165,7 @@ export class AddressDropdown extends React.PureComponent<Props> {
         fill="BLUE"
         text={label}
         onPress={this.openAddressBook}
+        disableButton={disableBtn}
       />
     ) : (
       <AddNewAddressWrapper onPress={this.openAddressBook}>

@@ -14,6 +14,9 @@ export default css`
   .text-black {
     font-weight: ${props => props.theme.typography.fontWeights.black};
   }
+  .slick-slide > div {
+    padding: 0 15px;
+  }
   .moduleL__tile {
     display: flex;
     flex-direction: row;
@@ -24,11 +27,32 @@ export default css`
       margin-bottom: 30px;
     }
   }
-  .moduleL__color-gray {
-    background-color: ${props => props.theme.colorPalette.gray['300']};
+  .tile-image-wrapper {
+    display: flex;
+    align-items: center;
+    min-height: 128px;
+
+    @media ${props => props.theme.mediaQuery.medium} {
+      min-height: 200px;
+    }
+
+    @media ${props => props.theme.mediaQuery.large} {
+      min-height: 259px;
+    }
   }
   .moduleL__tile-image {
-    max-width: 210px;
+    max-width: 103px;
+    max-height: 128px;
+
+    @media ${props => props.theme.mediaQuery.medium} {
+      max-width: 162px;
+      max-height: 200px;
+    }
+
+    @media ${props => props.theme.mediaQuery.large} {
+      max-width: 210px;
+      max-height: 259px;
+    }
   }
   .moduleL__tile-text {
     margin: 0 13px;
@@ -81,6 +105,6 @@ export default css`
     right: -70px;
   }
   .slick-dots {
-    bottom: -5px;
+    bottom: ${props => props.theme.spacing.ELEM_SPACING.XS};
   }
 `;

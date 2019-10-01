@@ -3,6 +3,7 @@
 exports[`CouponCard Component should renders correctly when addresses are not present 1`] = `
 <View>
   <ErrorMessage
+    bagPage={false}
     error=""
   />
   <Styled(View)>
@@ -11,21 +12,31 @@ exports[`CouponCard Component should renders correctly when addresses are not pr
         <Styled(View)>
           <Styled(View)>
             <Styled(BodyCopy)
+              accessibilityText=""
               color="white"
               data-locator="available_PublicValidityLbl"
+              dataLocator=""
               fontFamily="secondary"
               fontSize="fs12"
               fontWeight="semibold"
+              margin={null}
+              numberOfLines={null}
+              textDecoration={null}
             />
           </Styled(View)>
         </Styled(View)>
         <Styled(View)>
           <Styled(BodyCopy)
+            accessibilityText=""
             color="white"
             data-locator="available_PublicValidityLbl"
+            dataLocator=""
             fontFamily="secondary"
             fontSize="fs12"
             fontWeight="semibold"
+            margin={null}
+            numberOfLines={null}
+            textDecoration={null}
           />
         </Styled(View)>
       </Styled(View)>
@@ -38,8 +49,13 @@ exports[`CouponCard Component should renders correctly when addresses are not pr
             <View>
               <Styled(Styled(Text))>
                 <Styled(BodyCopy)
+                  accessibilityText=""
                   data-locator="coupon_available_cartUseByValidity"
+                  dataLocator=""
+                  margin={null}
+                  numberOfLines={null}
                   text="Use by 8/10/19"
+                  textDecoration={null}
                 />
               </Styled(Styled(Text))>
             </View>
@@ -47,6 +63,7 @@ exports[`CouponCard Component should renders correctly when addresses are not pr
               <Styled(Anchor)
                 accessibilityLabel=""
                 anchorVariation="primary"
+                colorName={null}
                 customStyle={Object {}}
                 dataLocator=""
                 fontFamily="secondary"
@@ -62,13 +79,29 @@ exports[`CouponCard Component should renders correctly when addresses are not pr
             </Styled(View)>
           </Styled(View)>
           <Styled(View)>
-            <Styled(WithTheme(CustomButton))
+            <Styled(CustomButton)
+              active={false}
               buttonVariation="variable-width"
+              color=""
+              customStyle={Object {}}
+              customTextStyle={null}
               data-locator=""
+              disableButton={false}
               fill="DARK"
+              fullWidth=""
+              iconColor="gray.800"
+              iconName="chevron-down"
+              iconSize="fs12"
+              locator=""
+              navigation={Object {}}
               onPress={[Function]}
+              selected={false}
+              selectedIcon="chevron-up"
+              showIcon={false}
               text="APPLY"
+              theme={Object {}}
               type="submit"
+              url=""
             />
           </Styled(View)>
         </Styled(View)>

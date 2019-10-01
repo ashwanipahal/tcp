@@ -5,7 +5,7 @@ export default {
     autoplay: false,
     arrows: true,
     fade: false,
-    speed: 1000,
+    speed: 0,
     dots: false,
     dotsClass: 'slick-dots',
     swipe: true,

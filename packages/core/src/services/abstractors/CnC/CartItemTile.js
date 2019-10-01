@@ -18,7 +18,7 @@ import {
 } from '../../../utils/errorMessage.util';
 import { isCanada } from '../../../utils';
 
-const ORDER_ITEM_TYPE = {
+export const ORDER_ITEM_TYPE = {
   BOSS: 'BOSS',
   BOPIS: 'BOPIS',
   ECOM: 'ECOM',
@@ -610,6 +610,7 @@ tomorrowClosingTime
     usersOrder.checkout.giftWrap = {
       optionId: orderDetailsResponse.giftWrapItem[0].catentryId.toString(),
       message: orderDetailsResponse.giftWrapItem[0].giftOptionsMessage || '',
+      brand: '',
     };
     usersOrder.giftWrappingTotal = flatCurrencyToCents(
       orderDetailsResponse.giftWrapItem[0].totalPrice
@@ -812,10 +813,68 @@ export const getUnqualifiedItems = () => {
     });
 };
 
+export const startPaypalCheckoutAPI = (orderId, fromPage) => {
+  let payload = {
+    header: {
+      orderId: orderId,
+      callingPage: fromPage,
+      requestType: 'REST',
+    },
+    webService: endpoints.paypalLookUp,
+  };
+  return executeStatefulAPICall(payload)
+    .then((res = { body: {} }) => {
+      if (responseContainsErrors(res)) {
+        throw new ServiceResponseError(res);
+      }
+      return {
+        centinelPayload: res.body.Centinel_PAYLOAD,
+        centinelOrderId: res.body.Centinel_OrderId,
+        centinelRequestPage: res.body.callingPage,
+        tcpOrderId: res.body.orderId,
+        paypalInContextToken: res.body.processorTransactionId,
+      };
+    })
+    .catch(err => {
+      throw getFormattedError(err);
+    });
+};
+
+export const paypalAuthorizationAPI = (
+  tcpOrderId,
+  centinelRequestPage,
+  centinelPayload,
+  centinelOrderId
+) => {
+  let payload = {
+    header: {
+      tcpOrderId: tcpOrderId,
+      callingPage: centinelRequestPage,
+      PaRes: centinelPayload,
+      MD: centinelOrderId,
+    },
+    webService: endpoints.paypalAuth,
+  };
+  return executeStatefulAPICall(payload)
+    .then((res = { body: {} }) => {
+      if (responseContainsErrors(res)) {
+        throw new ServiceResponseError(res);
+      }
+      return {
+        success: true,
+      };
+    })
+    .catch(err => {
+      throw getFormattedError(err);
+    });
+};
+
 export default {
   getOrderDetailsData,
   removeItem,
   getCartData,
   getUnqualifiedItems,
   getProductInfoForTranslationData,
+  startPaypalCheckoutAPI,
+  paypalAuthorizationAPI,
 };

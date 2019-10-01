@@ -1,4 +1,6 @@
 import { fromJS } from 'immutable';
+import { setLocalStorage } from '../../../../../utils/localStorageManagement';
+import { constants as venmoConstants } from '../../../../common/atoms/VenmoPaymentButton/container/VenmoPaymentButton.util';
 import CheckoutConstants from '../Checkout.constants';
 
 const initialState = fromJS({
@@ -16,9 +18,18 @@ const initialState = fromJS({
     giftCards: [],
     venmoData: {
       nonce: '',
-      venmoClientTokenData: '',
       deviceData: '',
       supportedByBrowser: true,
+      loading: false,
+      timestamp: '',
+      error: null,
+    },
+    venmoClientTokenData: {
+      userState: 'G',
+      venmoCustomerIdAvailable: false,
+      venmoIsDefaultPaymentType: false,
+      venmoPaymentTokenAvailable: false,
+      venmoSecurityToken: '',
     },
     addEditResponseAddressId: null,
     giftCardError: null,
@@ -38,7 +49,9 @@ const initialState = fromJS({
     maxGiftCards: 5,
     isPaypalPaymentInProgress: false,
     venmoPaymentInProgress: false,
-    venmoInformationMessageDisplayed: false,
+    venmoPickupMessageDisplayed: false,
+    venmoShppingMessageDisplayed: false,
+    venmoPaymentOptionSave: false,
     isLoadingShippingMethods: false,
     isEditingSubform: false,
     isBillingVisited: false,
@@ -48,6 +61,63 @@ const initialState = fromJS({
     addressError: null,
   },
 });
+
+const mergedVenmoDetails = (state, payload) => {
+  const currentValue = fromJS(state.getIn(['values', 'venmoData']));
+  return currentValue.merge(payload).toObject();
+};
+
+function venmoFlagReducer(checkout, action) {
+  switch (action.type) {
+    case CheckoutConstants.GET_VENMO_CLIENT_TOKEN_SUCCESS:
+      return checkout.setIn(
+        ['values', 'venmoClientTokenData'],
+        action.payload && action.payload.venmoClientTokenData
+      );
+    case CheckoutConstants.GET_VENMO_CLIENT_TOKEN_ERROR:
+      return checkout.setIn(['values', 'venmoData'], action.payload);
+    case CheckoutConstants.SET_VENMO_DATA: {
+      const venmoData = mergedVenmoDetails(checkout, action.payload);
+      setLocalStorage({ key: venmoConstants.VENMO_STORAGE_KEY, value: JSON.stringify(venmoData) });
+      return checkout.setIn(['values', 'venmoData'], venmoData);
+    }
+    case CheckoutConstants.SET_VENMO_PAYMENT_INPROGRESS: {
+      setLocalStorage({
+        key: venmoConstants.VENMO_INPROGRESS_KEY,
+        value: action.payload,
+      });
+      return checkout.setIn(['uiFlags', 'venmoPaymentInProgress'], action.payload);
+    }
+    case CheckoutConstants.SET_VENMO_PICKUP_MESSAGE_STATE: {
+      setLocalStorage({
+        key: venmoConstants.VENMO_PICKUP_BANNER,
+        value: action.payload,
+      });
+      return checkout.setIn(['uiFlags', 'venmoPickupMessageDisplayed'], action.payload);
+    }
+    case CheckoutConstants.SET_VENMO_SHIPPING_MESSAGE_STATE: {
+      setLocalStorage({
+        key: venmoConstants.VENMO_SHIPPING_BANNER,
+        value: action.payload,
+      });
+      return checkout.setIn(['uiFlags', 'venmoShippingMessageDisplayed'], action.payload);
+    }
+    case CheckoutConstants.SET_VENMO_PAYMENT_OPTION_SAVE: {
+      return checkout.setIn(['uiFlags', 'venmoPaymentOptionSave'], action.payload);
+    }
+    default:
+      return checkout;
+  }
+}
+
+function paypalReducer(checkout, action) {
+  switch (action.type) {
+    case CheckoutConstants.CHECKOUT_ORDER_OPTIONS_SET_PAYPAL_PAYMENT:
+      return checkout.setIn(['options', 'paypalPaymentSettings'], action.paypalPaymentSettings);
+    default:
+      return venmoFlagReducer(checkout, action);
+  }
+}
 
 function uiGiftCardFlagReducer(checkout, action) {
   switch (action.type) {
@@ -65,8 +135,10 @@ function uiGiftCardFlagReducer(checkout, action) {
       return checkout.setIn(['values', 'addGiftCardError'], null);
     case CheckoutConstants.RESET_ADD_GIFT_CARD_SUCCESS:
       return checkout.setIn(['values', 'addGiftCardResponse'], null);
+    case CheckoutConstants.RESET_CHECKOUT_REDUCER:
+      return initialState;
     default:
-      return checkout;
+      return paypalReducer(checkout, action);
   }
 }
 
@@ -107,15 +179,14 @@ function uiFlagReducer(checkout, action) {
       return checkout.setIn(['values', 'orderBalanceTotal'], action.payload);
     case CheckoutConstants.CHECKOUT_VAlUES_SET_GIFT_WRAP:
       return checkout.CartPageReducer.setIn(['orderDetails', 'checkout', 'giftWrap']);
-
+    case 'CHECKOUT_ORDER_OPTIONS_SET_INTL_URL':
+      return checkout.setIn(['options', 'internationalUrl'], action.internationalUrl);
     // case 'CHECKOUT_FLAGS_SET_REVIEW_VISTED':
     //   return merge(uiFlags, { isReviewVisited: action.payload });
     // case 'CHECKOUT_FLAGS_SET_PAYMENT_ERROR':
     //   return merge(uiFlags, { paymentError: action.paymentError });
     // case CheckoutConstants.CHECKOUT_FLAGS_SET_ADDRESS_ERROR:
     //   return checkout.setIn(['uiFlags', 'addressError'], action.addressError);
-    //  case 'CHECKOUT_FLAGS_SET_VENMO_PAYMENT_IN_PROGRESS':
-    //    return uiFlags.setIn(['venmoPaymentInProgress'], action.payload);
     // case 'CHECKOUT_FLAGS_SET_VENMO_INFO_MESG_DISPLAYED':
     //   return uiFlags.setIn(['venmoInformationMessageDisplayed'], action.payload);
     // case actionTypes.CHANGE: { // Listen in on redux-form change events and enjoy the pure function approach
@@ -142,7 +213,7 @@ export default function CheckoutReducer(state = initialState, action) {
   // const uiFlags = checkout.get('uiFlags');
   switch (action.type) {
     case 'CHECKOUT_VALUES_SET_PICKUP':
-      return checkout.setIn(['values', 'pickUpContact'], fromJS(action.pickUpContact));
+      return checkout.setIn(['values', 'pickUpContact'], action.pickUpContact);
     case 'CHECKOUT_VALUES_SET_PICKUP_ALT':
       return checkout.setIn(['values', 'pickUpAlternative'], action.pickUpAlternative);
     // case 'CHECKOUT_VALUES_SET_GIFTCARDS':
@@ -165,26 +236,12 @@ export default function CheckoutReducer(state = initialState, action) {
     //   return orderValues.setIn(['smsInfo', 'numberForMarketing'], action.phoneNumber);
     // case 'CHECKOUT_VALUES_SET_SELECTED_SHIPPING_PHONE_NUMBER':
     //   return orderValues.set('selectedShippingPhoneNumber', action.payload);
-    // case 'CHECKOUT_VALUES_SET_VENMO_DATA':
-    //   return merge(orderValues, { venmoData: action.payload }, { deep: true });
-    // case 'CHECKOUT_VALUES_SET_VENMO_CLIENT_TOKEN_DATA':
-    //   return merge(
-    //     orderValues,
-    //     {
-    //       venmoData: {
-    //         venmoClientTokenData: action.payload,
-    //       },
-    //     },
-    //
-    //   );
     case CheckoutConstants.CHECKOUT_ORDER_OPTIONS_SET_SHIPPING:
       return checkout.setIn(['options', 'shippingMethods'], action.shippingMethods);
+    // case CheckoutConstants.CHECKOUT_ORDER_OPTIONS_SET_PAYPAL_PAYMENT:
+    //   return checkout.setIn(['options', 'shippingMethods'], action.shippingMethods);
     // case 'CHECKOUT_ORDER_OPTIONS_SET_GIFT_WRAP':
     //   return merge(orderOptions, { giftWrapOptions: action.giftWrapOptions });
-    // case 'CHECKOUT_ORDER_OPTIONS_SET_PAYPAL_PAYMENT':
-    //   return merge(orderOptions, { paypalPaymentSettings: action.paypalPaymentSettings });
-    // case 'CHECKOUT_ORDER_OPTIONS_SET_INTL_URL':
-    //   return merge(orderOptions, { internationalUrl: action.internationalUrl });
     default:
       return uiFlagReducer(checkout, action);
   }

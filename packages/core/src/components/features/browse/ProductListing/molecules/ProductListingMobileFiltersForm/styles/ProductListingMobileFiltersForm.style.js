@@ -9,7 +9,7 @@ export default css`
     @media ${props => props.theme.mediaQuery.smallOnly} {
       width: 95px;
       .item-select {
-        padding-left: ${props => props.theme.spacing.ELEM_SPACING.MED};
+        padding-left: ${props => props.theme.spacing.ELEM_SPACING.LRG};
       }
     }
   }
@@ -155,5 +155,14 @@ export default css`
         flex-flow: row wrap;
       }
     }
+  }
+`;
+
+export const customModalCss = css`
+  div.TCPModal__InnerContent {
+    background: none;
+  }
+  button.close-modal {
+    display: none;
   }
 `;

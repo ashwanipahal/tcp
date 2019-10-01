@@ -19,22 +19,33 @@ exports[`InputCheckbox component should render correctly 1`] = `
         host=""
         source={
           Object {
-            "testUri": "../../../../core/src/assets/store-locator-check.png",
+            "testUri": "../../../../core/src/assets/store-locator-checked.png",
           }
         }
         url=""
         width="25px"
       />
     </Styled(View)>
-    <Styled(Text)
-      inputVariation="inputVariation"
-    >
-      <Styled(BodyCopy)
-        fontSize="fs12"
-        mobileFontFamily="secondary"
-        text="checkbox"
-      />
-    </Styled(Text)>
+    <RenderTree
+      componentMap={
+        Object {
+          "a": [Function],
+          "body": [Function],
+          "div": [Function],
+          "head": [Function],
+          "html": [Function],
+          "img": [Function],
+          "p": [Function],
+          "span": [Function],
+        }
+      }
+      tools={
+        Object {
+          "navigate": [Function],
+        }
+      }
+      tree="<div><p>checkbox</p></div>"
+    />
   </Styled(View)>
 </Fragment>
 `;
@@ -65,15 +76,26 @@ exports[`InputCheckbox component should render correctly with checked state fals
         width="25px"
       />
     </Styled(View)>
-    <Styled(Text)
-      inputVariation="inputVariation"
-    >
-      <Styled(BodyCopy)
-        fontSize="fs12"
-        mobileFontFamily="secondary"
-        text="checkbox"
-      />
-    </Styled(Text)>
+    <RenderTree
+      componentMap={
+        Object {
+          "a": [Function],
+          "body": [Function],
+          "div": [Function],
+          "head": [Function],
+          "html": [Function],
+          "img": [Function],
+          "p": [Function],
+          "span": [Function],
+        }
+      }
+      tools={
+        Object {
+          "navigate": [Function],
+        }
+      }
+      tree="<div><p>checkbox</p></div>"
+    />
   </Styled(View)>
 </Fragment>
 `;

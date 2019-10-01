@@ -1,0 +1,41 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`PointsClaim View component should renders correctly 1`] = `
+<Fragment>
+  <PointsClaimTopSection
+    className="elem-mb-XL"
+    labels={Object {}}
+  />
+  <ReduxForm
+    destroyOnUnmount={true}
+    enableReinitialize={true}
+    errorMessage="ERROR"
+    forceUnregisterOnUnmount={false}
+    form="PointsClaimForm"
+    getFormState={[Function]}
+    initialValues={
+      Object {
+        "transactionType": "In-Store",
+      }
+    }
+    keepDirtyOnReinitialize={false}
+    labels={Object {}}
+    persistentSubmitErrors={false}
+    pure={true}
+    shouldAsyncValidate={[Function]}
+    shouldError={[Function]}
+    shouldValidate={[Function]}
+    shouldWarn={[Function]}
+    submitAsSideEffect={false}
+    successMessage="SUCCESS"
+    touchOnBlur={true}
+    touchOnChange={false}
+    updateUnregisteredFields={false}
+    validate={[Function]}
+  />
+  <Styled(RewardsFooterLinks)
+    programDetailsCta="lbl_my_rewards_program_details"
+    termsConditionCta="lbl_common_tnc"
+  />
+</Fragment>
+`;

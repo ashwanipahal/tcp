@@ -35,10 +35,32 @@ export const setBopisStores = payload => {
   };
 };
 
+export const setStoreSearchError = payload => {
+  return {
+    payload,
+    type: PICKUP_MODAL_ACTIONS_CONSTANTS.SET_STORE_SEARCH_ERROR,
+  };
+};
+
+export const getUserCartStores = payload => {
+  return {
+    payload,
+    type: PICKUP_MODAL_ACTIONS_CONSTANTS.GET_USER_CART_STORES,
+  };
+};
+
+export const setUserCartStores = payload => {
+  return {
+    payload,
+    type: PICKUP_MODAL_ACTIONS_CONSTANTS.SET_USER_CART_STORES,
+  };
+};
+
 export default {
   togglePickupModal,
   closePickupModal,
   openPickupModalWithValues,
   getBopisStoresActn,
   setBopisStores,
+  setStoreSearchError,
 };

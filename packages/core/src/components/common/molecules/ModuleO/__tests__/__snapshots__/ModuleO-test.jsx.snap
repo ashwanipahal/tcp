@@ -12,9 +12,6 @@ exports[`Module O component renders correctly 1`] = `
       ]
     }
     currencySymbol=""
-    dataLocatorBag="moduleO_add_to_bag_btn"
-    dataLocatorImages="moduleO_image"
-    dataLocatorPrice="moduleO_price"
     gridIndex={0}
     hideImageCarousel={true}
     isBopisEnabled={false}
@@ -68,7 +65,7 @@ exports[`Module O component renders correctly 1`] = `
       }
     }
     sqnNmbr={12312}
-    unbxdId="fc0d2287-4a11-4739-98b4-1e2fd91016c4"
+    unbxdId=""
   />
 </ul>
 `;

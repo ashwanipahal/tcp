@@ -1,5 +1,6 @@
 import { COUPON_REDEMPTION_TYPE } from '../../../../../../../services/abstractors/CnC/CartItemTile';
 import BagPageSelector from '../../../../BagPage/container/BagPage.selectors';
+import { getLabelValue } from '../../../../../../../utils';
 
 export const getCouponFetchingState = state => {
   return state.CouponsAndPromos && state.CouponsAndPromos.get('isFetching');
@@ -64,6 +65,12 @@ export const getCouponsLabels = state => {
     EXPIRING_SOON,
     COUPON_VALIDITY,
     SEE_REDEEM_DATES,
+    couponCollapsibleHeader: getLabelValue(
+      state.Labels,
+      'lbl_coupon_collapsible_header',
+      'bagPage',
+      'checkout'
+    ),
   };
 };
 

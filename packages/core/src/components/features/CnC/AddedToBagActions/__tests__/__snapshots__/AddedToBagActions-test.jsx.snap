@@ -28,6 +28,7 @@ exports[`AddedToBagActions component AddedToBagActions component renders correct
           fontWeight="extrabold"
           letterSpacing="normal"
           lineHeight="normal"
+          link={null}
           textAlign="left"
         />
       </Styled(Button)>
@@ -36,21 +37,17 @@ exports[`AddedToBagActions component AddedToBagActions component renders correct
   <Styled(Row)
     className="checkout-button"
   >
-    <PayPalButton
-      className="payPal-button"
-      containerId="paypal-button-container"
-      locale="en_US"
-      style={
-        Object {
-          "color": "blue",
-          "height": 48,
-          "label": "paypal",
-          "shape": "rect",
-          "size": "responsive",
-          "tagline": false,
-        }
-      }
-    />
+    <div
+      className="paypal-venmo"
+    >
+      <div
+        className="paypal-wrapper-atb"
+      >
+        <withRouter(Connect(PayPalButtonContainer))
+          className="payPal-button"
+        />
+      </div>
+    </div>
     <Styled(Button)
       className="checkout"
       data-locator="addedtobag-btncheckout"
@@ -65,17 +62,13 @@ exports[`AddedToBagActions component AddedToBagActions component renders correct
         fontWeight="extrabold"
         letterSpacing="normal"
         lineHeight="normal"
+        link={null}
         textAlign="left"
       />
     </Styled(Button)>
+    <Measure
+      name="render_checkout_cta"
+    />
   </Styled(Row)>
-  <Styled(BagConfirmationModal)
-    labels={Object {}}
-  />
-  <OpenLoginModal
-    handleAfterLogin={[Function]}
-    handleContinueAsGuest={[Function]}
-    variation="checkout"
-  />
 </div>
 `;

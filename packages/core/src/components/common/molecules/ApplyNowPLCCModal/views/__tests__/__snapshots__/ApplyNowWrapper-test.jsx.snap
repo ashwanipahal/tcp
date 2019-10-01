@@ -7,10 +7,12 @@ exports[`ApplyNowModalWrapper component should renders correctly 1`] = `
   <Styled(StyledApplyNowModal)
     closeModal={[Function]}
     closePLCCModal={[Function]}
-    isModalOpen={true}
+    isModalOpen={false}
+    isPLCCModalOpen={true}
     labels={
       Object {
         "plcc_form_contact_info_header": "contact information",
+        "referred": Array [],
       }
     }
     openPLCCModal={[Function]}
@@ -19,7 +21,21 @@ exports[`ApplyNowModalWrapper component should renders correctly 1`] = `
     anchorVariation="primary"
     fontSizeVariation="medium"
     onClick={[Function]}
-    text="apply_now_link_modal"
+    text="lbl_PLCCModal_applyNowLink"
+    underline={true}
+  />
+</div>
+`;
+
+exports[`ApplyNowModalWrapper component should renders correctly for closed plccModal 1`] = `
+<div
+  className="demo"
+>
+  <Styled(Anchor)
+    anchorVariation="primary"
+    fontSizeVariation="medium"
+    onClick={[Function]}
+    text="lbl_PLCCModal_applyNowLink"
     underline={true}
   />
 </div>

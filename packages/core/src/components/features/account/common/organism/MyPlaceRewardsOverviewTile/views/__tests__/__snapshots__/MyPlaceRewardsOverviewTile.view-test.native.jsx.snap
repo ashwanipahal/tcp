@@ -3,9 +3,14 @@
 exports[`MyPlaceRewardsOverviewTile component should render correctly when coupons are not present 1`] = `
 <Styled(View)>
   <Styled(BodyCopy)
+    accessibilityText=""
     color="black"
+    dataLocator=""
     fontFamily="secondary"
     fontSize="fs16"
+    margin={null}
+    numberOfLines={null}
+    textDecoration={null}
   />
   <Styled(LineComp)
     borderColor="gray"
@@ -15,9 +20,14 @@ exports[`MyPlaceRewardsOverviewTile component should render correctly when coupo
   />
   <View>
     <Styled(BodyCopy)
+      accessibilityText=""
       color="black"
+      dataLocator=""
       fontFamily="secondary"
       fontSize="fs13"
+      margin={null}
+      numberOfLines={null}
+      textDecoration={null}
     />
     <Styled(View)>
       <Styled(Anchor)
@@ -28,6 +38,7 @@ exports[`MyPlaceRewardsOverviewTile component should render correctly when coupo
         borderWidth="1"
         buttonVariation="variable-width"
         centered={true}
+        colorName={null}
         customStyle={Object {}}
         dataLocator="accountoverview-myplacerewardstile-startshopbtn"
         fill="WHITE"
@@ -46,10 +57,27 @@ exports[`MyPlaceRewardsOverviewTile component should render correctly when coupo
     marginTop={20}
   />
   <Styled(View)>
-    <Styled(WithTheme(CustomButton))
+    <Styled(CustomButton)
+      active={false}
       buttonVariation="variable-width"
+      color=""
+      customStyle={Object {}}
+      customTextStyle={null}
+      disableButton={false}
       fill="BLUE"
+      fullWidth=""
+      iconColor="gray.800"
+      iconName="chevron-down"
+      iconSize="fs12"
+      locator=""
+      navigation={Object {}}
       onPress={[Function]}
+      selected={false}
+      selectedIcon="chevron-up"
+      showIcon={false}
+      text=""
+      theme={Object {}}
+      url=""
     />
   </Styled(View)>
 </Styled(View)>
@@ -58,9 +86,14 @@ exports[`MyPlaceRewardsOverviewTile component should render correctly when coupo
 exports[`MyPlaceRewardsOverviewTile component should render correctly when coupons are present 1`] = `
 <Styled(View)>
   <Styled(BodyCopy)
+    accessibilityText=""
     color="black"
+    dataLocator=""
     fontFamily="secondary"
     fontSize="fs16"
+    margin={null}
+    numberOfLines={null}
+    textDecoration={null}
   />
   <Styled(LineComp)
     borderColor="gray"
@@ -71,10 +104,15 @@ exports[`MyPlaceRewardsOverviewTile component should render correctly when coupo
   <Styled(View)>
     <View>
       <Styled(BodyCopy)
+        accessibilityText=""
         data-locator="accountoverview-myplacerewatdstile-youhaverewardtext"
+        dataLocator=""
         fontSize="fs14"
         fontWeight="semibold"
+        margin={null}
+        numberOfLines={null}
         text=""
+        textDecoration={null}
       />
     </View>
     <Styled(View)>
@@ -109,10 +147,27 @@ exports[`MyPlaceRewardsOverviewTile component should render correctly when coupo
     view="read"
   />
   <Styled(View)>
-    <Styled(WithTheme(CustomButton))
+    <Styled(CustomButton)
+      active={false}
       buttonVariation="variable-width"
+      color=""
+      customStyle={Object {}}
+      customTextStyle={null}
+      disableButton={false}
       fill="BLUE"
+      fullWidth=""
+      iconColor="gray.800"
+      iconName="chevron-down"
+      iconSize="fs12"
+      locator=""
+      navigation={Object {}}
       onPress={[Function]}
+      selected={false}
+      selectedIcon="chevron-up"
+      showIcon={false}
+      text=""
+      theme={Object {}}
+      url=""
     />
   </Styled(View)>
 </Styled(View)>

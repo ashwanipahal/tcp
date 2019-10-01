@@ -1,6 +1,9 @@
 import { formValueSelector, getFormSyncErrors } from 'redux-form';
 import { createSelector } from 'reselect';
 import CARD_RANGES from '../../../../../account/AddEditCreditCard/container/AddEditCreditCard.constants';
+import CheckoutSelectors from '../../../container/Checkout.selector';
+
+const { getBillingValues } = CheckoutSelectors;
 
 const getCardNumber = state => {
   const selector = formValueSelector('checkoutBilling');
@@ -8,12 +11,18 @@ const getCardNumber = state => {
 };
 
 const getCardType = createSelector(
-  [getCardNumber],
-  formCardNumber => {
+  [getCardNumber, getBillingValues],
+  (formCardNumber, billingData) => {
     if ((formCardNumber || '').length === 0) {
       return null;
     }
     const cardNumber = formCardNumber;
+    if (cardNumber.startsWith('*') && billingData && billingData.billing) {
+      const {
+        billing: { cardType },
+      } = billingData;
+      return cardType;
+    }
     // look up based on cardNumber
     const type = Object.keys(CARD_RANGES.CREDIT_CARDS_BIN_RANGES).filter(range => {
       const rangeCount = CARD_RANGES.CREDIT_CARDS_BIN_RANGES[range].length;
@@ -48,4 +57,9 @@ const getPaymentMethodId = state => {
   return selector(state, 'paymentMethodId');
 };
 
-export { getCardType, getSyncError, getPaymentMethodId };
+const getSameAsShippingValue = state => {
+  const selector = formValueSelector('checkoutBilling');
+  return selector(state, 'sameAsShipping');
+};
+
+export { getCardType, getSyncError, getPaymentMethodId, getSameAsShippingValue };

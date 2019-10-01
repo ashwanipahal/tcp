@@ -1,0 +1,123 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`ProductSummaryVanilla should render correctly 1`] = `
+<Styled(View)>
+  <Styled(LineComp)
+    borderColor="gray.500"
+    borderWidth={0.65}
+    marginBottom={0}
+    marginTop={10}
+  />
+  <Styled(View)>
+    <Styled(View)>
+      <Styled(BodyCopy)
+        accessibilityText=""
+        color="gray.500"
+        dataLocator="pdp_write_review_icon"
+        fontSize="fs22"
+        fontWeight="regular"
+        margin={null}
+        mobileFontFamily="secondary"
+        numberOfLines={null}
+        text="* * * * *"
+        textDecoration={null}
+      />
+      <Styled(BodyCopy)
+        accessibilityText=""
+        color="gray.900"
+        dataLocator="pdp_write_review_icon"
+        fontSize="fs12"
+        fontWeight="regular"
+        margin="0 0 0 20px"
+        mobileFontFamily="secondary"
+        numberOfLines={null}
+        text="(0)"
+        textDecoration={null}
+      />
+    </Styled(View)>
+    <Styled(Anchor)
+      accessibilityLabel=""
+      anchorVariation="custom"
+      className="details-link"
+      colorName="gray.900"
+      customStyle={Object {}}
+      fontSizeVariation="medium"
+      href="#"
+      locator="pdp_anchor_complete_the_look"
+      onPress={[Function]}
+      text="Complete The Look"
+      underline={true}
+      visible={false}
+    />
+  </Styled(View)>
+  <Styled(LineComp)
+    borderColor="gray.500"
+    borderWidth={0.65}
+    marginBottom={0}
+    marginTop={0}
+  />
+  <Styled(BodyCopy)
+    accessibilityText=""
+    color="gray.900"
+    dataLocator="pdp_product_badges"
+    fontSize="fs10"
+    fontWeight="regular"
+    margin="16px 0 0 0"
+    mobileFontFamily="secondary"
+    numberOfLines={null}
+    text="ONLINE EXCLUSIVE"
+    textDecoration={null}
+  />
+  <Styled(BodyCopy)
+    accessibilityText=""
+    color="gray.900"
+    dataLocator="pdp_product_titles"
+    fontSize="fs18"
+    fontWeight="extrabold"
+    margin="0px"
+    mobileFontFamily="secondary"
+    numberOfLines={2}
+    text="Girls Uniform Short Sleeve Button Front Belted Woven Shirt Dress"
+    textDecoration={null}
+  />
+  <Styled(BodyCopy)
+    accessibilityText=""
+    color="red.500"
+    dataLocator="pdp_current_product_price"
+    fontSize="fs22"
+    fontWeight="black"
+    margin="4px 0 0 0"
+    mobileFontFamily="secondary"
+    numberOfLines={null}
+    text="$24.95"
+    textDecoration={null}
+  />
+  <Styled(View)>
+    <Styled(BodyCopy)
+      accessibilityText=""
+      color="red.500"
+      dataLocator="pdp_discounted_percentage"
+      fontSize="fs14"
+      fontWeight="regular"
+      margin="0 0 0 10px"
+      mobileFontFamily="secondary"
+      numberOfLines={null}
+      textDecoration={null}
+    />
+  </Styled(View)>
+  <Styled(PromotionalMessage)
+    dataLocator="pdp_loyalty_text"
+    fontSize="fs12"
+    height={null}
+    isPlcc={false}
+    marginTop={8}
+    text="<span class='product-loyaltypromotionText user-tier-theme'> EARN DOUBLE/TRIPLE POINTS </span> on all Uniform!"
+  />
+  <Styled(LineComp)
+    borderColor="gray.500"
+    borderWidth={0.65}
+    marginBottom={0}
+    marginTop={12}
+  />
+</Styled(View)>
+`;

@@ -10,9 +10,12 @@ exports[`CustomSelect component should renders correctly 1`] = `
   fontWeight="regular"
   letterSpacing="normal"
   lineHeight="normal"
+  link={null}
   textAlign="left"
 >
-  <span>
+  <span
+    className="dropdown-title"
+  >
     Select from address book:
   </span>
   <Styled(BodyCopy)
@@ -24,6 +27,7 @@ exports[`CustomSelect component should renders correctly 1`] = `
     fontWeight="regular"
     letterSpacing="normal"
     lineHeight="normal"
+    link={null}
     onClick={[Function]}
     textAlign="left"
   >
@@ -42,6 +46,7 @@ exports[`CustomSelect component should renders correctly when optional fields ar
   fontWeight="regular"
   letterSpacing="normal"
   lineHeight="normal"
+  link={null}
   textAlign="left"
 >
   <Styled(BodyCopy)
@@ -53,6 +58,7 @@ exports[`CustomSelect component should renders correctly when optional fields ar
     fontWeight="regular"
     letterSpacing="normal"
     lineHeight="normal"
+    link={null}
     onClick={[Function]}
     textAlign="left"
   />

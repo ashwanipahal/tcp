@@ -1,6 +1,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import withStyles from '@tcp/core/src/components/common/hoc/withStyles';
+import { getAddressFromPlace } from '@tcp/core/src/utils';
 import { Field, change } from 'redux-form';
 import TextBox from '../../../atoms/TextBox';
 import SelectBox from '../../../atoms/Select';
@@ -63,7 +64,7 @@ export class AddressFields extends React.PureComponent {
 
   handlePlaceSelected = (place, inputValue) => {
     const { dispatch, formName, formSection } = this.props;
-    const address = AutoCompleteComponent.getAddressFromPlace(place, inputValue);
+    const address = getAddressFromPlace(place, inputValue);
     dispatch(change(formName, `${formSection ? 'address.' : ''}city`, address.city));
     dispatch(change(formName, `${formSection ? 'address.' : ''}zipCode`, address.zip));
     dispatch(change(formName, `${formSection ? 'address.' : ''}state`, address.state));
@@ -120,7 +121,10 @@ export class AddressFields extends React.PureComponent {
     const isCA = country === API_CONFIG.siteIds.ca.toUpperCase();
     return (
       <>
-        <Col colSize={{ small: 3, medium: variation === 'primary' ? 2 : 4, large: 3 }}>
+        <Col
+          colSize={{ small: 3, medium: variation === 'primary' ? 2 : 4, large: 3 }}
+          className="margin-right"
+        >
           <Field
             id={`${formSection}.state`}
             placeholder={isCA ? addressFormLabels.province : addressFormLabels.stateLbl}
@@ -141,7 +145,7 @@ export class AddressFields extends React.PureComponent {
             placeholder={isCA ? addressFormLabels.postalCode : addressFormLabels.zipCode}
             id={`${formSection}.zipCode`}
             name="zipCode"
-            maxLength={isCA ? 6 : 5}
+            maxLength={isCA ? 7 : 5}
             component={TextBox}
             dataLocator="addnewaddress-zipcode"
             className="address-field"

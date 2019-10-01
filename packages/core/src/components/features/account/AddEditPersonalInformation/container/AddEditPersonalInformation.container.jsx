@@ -2,7 +2,12 @@ import React, { PureComponent } from 'react';
 import { connect } from 'react-redux';
 import PropTypes from 'prop-types';
 import { getBirthDateOptionMap, routerPush, isMobileApp } from '@tcp/core/src/utils';
-import { getError, getIsEmployee, getProfileLabels } from './AddEditPersonalInformation.selectors';
+import {
+  getError,
+  getIsEmployee,
+  getProfileLabels,
+  getPersonalInfoErrorMessage,
+} from './AddEditPersonalInformation.selectors';
 import { getSuccess } from '../../MyProfile/container/MyProfile.selectors';
 import AddEditPersonalInformationComponent from '../views';
 import { updateProfile, updateProfileError } from './AddEditPersonalInformation.actions';
@@ -33,10 +38,12 @@ export class AddEditPersonalInformationContainer extends PureComponent {
     onRequestClose: PropTypes.func.isRequired,
     messageSuccessStateChangeAction: PropTypes.func.isRequired,
     toastMessage: PropTypes.func,
+    personalInfoErrorMessage: PropTypes.string,
   };
 
   static defaultProps = {
     toastMessage: () => {},
+    personalInfoErrorMessage: '',
   };
 
   constructor(props) {
@@ -54,7 +61,8 @@ export class AddEditPersonalInformationContainer extends PureComponent {
         onRequestClose();
       } else this.goBackToProfile();
     }
-    if (errorMessage) {
+
+    if (errorMessage && isMobileApp()) {
       toastMessage(errorMessage);
     }
   }
@@ -129,6 +137,7 @@ export class AddEditPersonalInformationContainer extends PureComponent {
       isEmployee,
       formErrorMessage,
       toastMessage,
+      personalInfoErrorMessage,
     } = this.props;
 
     return (
@@ -144,6 +153,7 @@ export class AddEditPersonalInformationContainer extends PureComponent {
         birthYearOptionsMap={this.yearOptionsMap.yearsMap}
         initialValues={this.initialValues}
         formErrorMessage={formErrorMessage}
+        personalInfoErrorMessage={personalInfoErrorMessage}
       />
     );
   }
@@ -162,6 +172,7 @@ export const mapStateToProps = state => ({
   isEmployee: getIsEmployee(state),
   airMilesAccountNumber: getAirmilesDetails(state),
   formErrorMessage: getFormValidationErrorMessages(state),
+  personalInfoErrorMessage: getPersonalInfoErrorMessage(state),
 });
 
 export const mapDispatchToProps = dispatch => ({

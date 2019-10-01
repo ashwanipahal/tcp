@@ -1,5 +1,7 @@
 import { css } from 'styled-components';
 
+// TODO: Remove style10 when currency_up_style is added to CMS
+
 export default css`
   font-family: ${props => props.theme.typography.fonts.primary};
   text-align: center;
@@ -38,10 +40,10 @@ export default css`
   .promo-banner-header {
     display: block;
     border-bottom: 1px solid ${props => props.theme.colorPalette.gray[900]};
+    padding-bottom: 5px;
     margin: 8px 18px;
     .link-text {
       margin: 0;
-      padding-bottom: 5px;
     }
     .style1,
     .style2 {
@@ -54,9 +56,7 @@ export default css`
 
     @media ${props => props.theme.mediaQuery.large} {
       margin: 12px 38px 15px 38px;
-      .link-text {
-        padding-bottom: 7px;
-      }
+      padding-bottom: 7px;
       .style1,
       .style2 {
         font-size: ${props => props.theme.typography.fontSizes.fs16};
@@ -64,7 +64,8 @@ export default css`
     }
   }
 
-  .currency_up_style {
+  .currency_up_style,
+  .style10 {
     display: inline-flex;
     justify-content: center;
 
@@ -75,22 +76,26 @@ export default css`
     .col-2 {
       flex-direction: column;
     }
-    .currency_up_style-0 {
+    .currency_up_style-0,
+    .style10-0 {
       font-size: ${props => props.theme.typography.fontSizes.fs28};
       font-weight: ${props => props.theme.typography.fontWeights.black};
       line-height: 1.3;
     }
-    .currency_up_style-1 {
+    .currency_up_style-1,
+    .style10-1 {
       line-height: 0.85;
       font-size: 86px;
       font-weight: 900;
     }
-    .currency_up_style-2 {
+    .currency_up_style-2,
+    .style10-2 {
       font-size: 48px;
       font-weight: ${props => props.theme.typography.fontWeights.black};
       line-height: 1;
     }
-    .currency_up_style-3 {
+    .currency_up_style-3,
+    .style10-3 {
       font-size: ${props => props.theme.typography.fontSizes.fs28};
       font-weight: ${props => props.theme.typography.fontWeights.black};
       line-height: 0.6;
@@ -104,22 +109,26 @@ export default css`
       .col-2 {
         flex-direction: column;
       }
-      .currency_up_style-0 {
+      .currency_up_style-0,
+      .style10-0 {
         font-size: ${props => props.theme.typography.fontSizes.fs38};
         font-weight: ${props => props.theme.typography.fontWeights.black};
         line-height: 1.3;
       }
-      .currency_up_style-1 {
+      .currency_up_style-1,
+      .style10-1 {
         line-height: 0.8;
         font-size: 118px;
         font-weight: ${props => props.theme.typography.fontWeights.black};
       }
-      .currency_up_style-2 {
+      .currency_up_style-2,
+      .style10-2 {
         font-size: 66px;
         font-weight: ${props => props.theme.typography.fontWeights.black};
         line-height: 1;
       }
-      .currency_up_style-3 {
+      .currency_up_style-3,
+      .style10-3 {
         font-size: ${props => props.theme.typography.fontSizes.fs40};
         font-weight: ${props => props.theme.typography.fontWeights.black};
         line-height: 0.6;
@@ -146,7 +155,7 @@ export default css`
     letter-spacing: ${props => props.theme.typography.letterSpacings.ls222};
 
     @media ${props => props.theme.mediaQuery.large} {
-      font-size: ${props => props.theme.typography.fontSizes.fs32};
+      font-size: ${props => props.theme.typography.fontSizes.fs36};
       font-weight: ${props => props.theme.typography.fontWeights.black};
       letter-spacing: ${props => props.theme.typography.letterSpacings.ls222};
     }
@@ -351,7 +360,7 @@ export default css`
     font-family: ${props => props.theme.typography.fonts.primary};
     font-size: ${props => props.theme.typography.fontSizes.fs32};
     font-weight: ${props => props.theme.typography.fontWeights.semibold};
-    letter-spacing: ${props => props.theme.typography.letterSpacings.ls222};
+    letter-spacing: ${props => props.theme.typography.letterSpacings.ls2};
 
     @media ${props => props.theme.mediaQuery.large} {
       font-size: ${props => props.theme.typography.fontSizes.fs64};
@@ -361,5 +370,78 @@ export default css`
     font-family: ${props => props.theme.typography.fonts.primary};
     font-size: ${props => props.theme.typography.fontSizes.fs64};
     font-weight: ${props => props.theme.typography.fontWeights.black};
+  }
+
+  /*
+  * Module R Promo Banner styles
+  *********************************/
+  .medium_text_regular {
+    display: block;
+    font-family: ${props => props.theme.typography.fonts.primary};
+    font-size: ${props => props.theme.typography.fontSizes.fs20};
+    font-weight: ${props => props.theme.typography.fontWeights.semibold};
+    line-height: ${props => props.theme.typography.lineHeights.lh107};
+    letter-spacing: ${props => props.theme.typography.letterSpacings.ls1};
+
+    @media ${props => props.theme.mediaQuery.medium} {
+      font-size: ${props => props.theme.typography.fontSizes.fs32};
+    }
+  }
+
+  /*
+  * TODO: Update this class name in CMS
+  */
+  .percentage_all_wrapped_normal {
+    color: ${props => props.theme.colorPalette.black};
+    display: inline-block;
+    font-family: ${props => props.theme.typography.fonts.primary};
+    font-size: ${props => props.theme.typography.fontSizes.fs48};
+    font-weight: ${props => props.theme.typography.fontWeights.black};
+    text-align: center;
+    transform: translateX(-18px);
+    margin-top: -${props => props.theme.spacing.ELEM_SPACING.XS};
+
+    .percentage_all_wrapped_normal-1 {
+      font-size: ${props => props.theme.typography.fontSizes.fs28};
+      position: absolute;
+      top: ${props => props.theme.spacing.ELEM_SPACING.XXS};
+    }
+
+    .percentage_all_wrapped_normal-2 {
+      font-size: ${props => props.theme.typography.fontSizes.fs18};
+      position: absolute;
+      bottom: ${props => props.theme.spacing.ELEM_SPACING.XS};
+    }
+
+    @media ${props => props.theme.mediaQuery.medium} {
+      margin-top: -${props => props.theme.spacing.ELEM_SPACING.XL};
+      transform: translateX(-50px);
+
+      .percentage_all_wrapped_normal-0 {
+        font-size: 152px;
+      }
+
+      .percentage_all_wrapped_normal-1 {
+        font-size: 88px;
+        top: ${props => props.theme.spacing.ELEM_SPACING.MED};
+      }
+
+      .percentage_all_wrapped_normal-2 {
+        font-size: ${props => props.theme.typography.fontSizes.fs48};
+        bottom: ${props => props.theme.spacing.ELEM_SPACING.LRG};
+      }
+    }
+
+    @media ${props => props.theme.mediaQuery.large} {
+      margin-top: -${props => props.theme.spacing.ELEM_SPACING.MED};
+
+      .percentage_all_wrapped_normal-1 {
+        top: ${props => props.theme.spacing.ELEM_SPACING.MED};
+      }
+
+      .percentage_all_wrapped_normal-2 {
+        bottom: ${props => props.theme.spacing.ELEM_SPACING.LRG};
+      }
+    }
   }
 `;

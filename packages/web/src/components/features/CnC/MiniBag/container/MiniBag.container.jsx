@@ -4,8 +4,19 @@ import {
   getGrandTotal,
   getCurrencySymbol,
 } from '@tcp/core/src/components/features/CnC/common/organism/OrderLedger/container/orderLedger.selector';
+import {
+  openMiniBag,
+  closeMiniBag,
+} from '@tcp/core/src/components/common/organisms/Header/container/Header.actions';
 import MiniBagView from '../views/MiniBag.view';
-import { getLabelsMiniBag, getTotalItemCount, getIsCartItemsUpdating } from './MiniBag.selectors';
+import {
+  getLabelsMiniBag,
+  getTotalItemCount,
+  getIsCartItemsUpdating,
+  getIsCartItemsSFL,
+  getCartItemsSflError,
+  getIsMiniBagOpen,
+} from './MiniBag.selectors';
 import {
   getCurrentPointsState,
   getTotalRewardsState,
@@ -16,13 +27,16 @@ type Props = {
   isOpen: boolean,
   totalItems: any,
   labels: any,
-  toggleMiniBagModal: any,
   userName: any,
   subTotal: any,
   currencySymbol: any,
   currentPoints: any,
   totalRewards: any,
   isCartItemsUpdating: any,
+  isCartItemSFL: any,
+  cartItemSflError: any,
+  updateCartItemCount: Function,
+  closeMiniBagDispatch: Function,
 };
 export class MiniBagContainer extends React.Component<Props> {
   constructor(props) {
@@ -30,10 +44,11 @@ export class MiniBagContainer extends React.Component<Props> {
     this.closeModal = this.closeModal.bind(this);
   }
 
-  closeModal(e, isRouting) {
+  closeModal(e) {
     if (e) e.preventDefault();
-    const { toggleMiniBagModal } = this.props;
-    toggleMiniBagModal({ e, isOpen: false, isRouting });
+    const { updateCartItemCount, closeMiniBagDispatch } = this.props;
+    closeMiniBagDispatch();
+    updateCartItemCount();
   }
 
   render() {
@@ -47,6 +62,9 @@ export class MiniBagContainer extends React.Component<Props> {
       currentPoints,
       totalRewards,
       isCartItemsUpdating,
+      isCartItemSFL,
+      cartItemSflError,
+      closeMiniBagDispatch,
     } = this.props;
     return (
       <MiniBagView
@@ -60,6 +78,9 @@ export class MiniBagContainer extends React.Component<Props> {
         currentPoints={currentPoints}
         totalRewards={totalRewards}
         isCartItemsUpdating={isCartItemsUpdating}
+        isCartItemSFL={isCartItemSFL}
+        cartItemSflError={cartItemSflError}
+        closeMiniBagDispatch={closeMiniBagDispatch}
       />
     );
   }
@@ -73,6 +94,24 @@ const mapStateToProps = state => {
     currentPoints: getCurrentPointsState(state),
     totalRewards: getTotalRewardsState(state),
     isCartItemsUpdating: getIsCartItemsUpdating(state),
+    isCartItemSFL: getIsCartItemsSFL(state),
+    cartItemSflError: getCartItemsSflError(state),
+    isOpen: getIsMiniBagOpen(state),
   };
 };
-export default connect(mapStateToProps)(MiniBagContainer);
+
+export const mapDispatchToProps = dispatch => {
+  return {
+    openMiniBagDispatch: () => {
+      dispatch(openMiniBag());
+    },
+    closeMiniBagDispatch: () => {
+      dispatch(closeMiniBag());
+    },
+  };
+};
+
+export default connect(
+  mapStateToProps,
+  mapDispatchToProps
+)(MiniBagContainer);

@@ -23,11 +23,16 @@ exports[`DetailedCouponTile should render correctly 1`] = `
         </Styled(View)>
         <Styled(View)>
           <Styled(BodyCopy)
+            accessibilityText=""
             color="gray.900"
             data-locator="accountoverview-myplacerewatdstile-rewardvalue"
+            dataLocator=""
             fontFamily="secondary"
             fontSize="fs16"
+            margin={null}
+            numberOfLines={null}
             textAlign="center"
+            textDecoration={null}
           />
         </Styled(View)>
       </Styled(View)>
@@ -40,17 +45,28 @@ exports[`DetailedCouponTile should render correctly 1`] = `
       <Styled(View)>
         <View>
           <Styled(BodyCopy)
+            accessibilityText=""
             data-locator="accountoverview-myplacerewatdstile-rewarduseby"
+            dataLocator=""
+            margin={null}
+            numberOfLines={null}
             text="use by"
+            textDecoration={null}
           />
           <Styled(BodyCopy)
+            accessibilityText=""
+            dataLocator=""
+            margin={null}
+            numberOfLines={null}
             text="undefined"
+            textDecoration={null}
           />
         </View>
         <Styled(Anchor)
           accessibilityLabel=""
           anchorVariation="primary"
           color="gray.900"
+          colorName={null}
           customStyle={Object {}}
           data-locator="my-rewards-program-details"
           fontSizeVariation="large"
@@ -62,20 +78,51 @@ exports[`DetailedCouponTile should render correctly 1`] = `
         />
       </Styled(View)>
       <Styled(View)>
-        <Styled(WithTheme(CustomButton))
+        <Styled(CustomButton)
+          active={false}
           buttonVariation="variable-width"
+          color=""
+          customStyle={Object {}}
+          customTextStyle={null}
+          disableButton={false}
           fill="WHITE"
+          fullWidth=""
+          iconColor="gray.800"
+          iconName="chevron-down"
+          iconSize="fs12"
+          locator=""
+          navigation={Object {}}
           onPress={[Function]}
+          selected={false}
+          selectedIcon="chevron-up"
+          showIcon={false}
           text="view & print"
+          theme={Object {}}
+          url=""
         />
       </Styled(View)>
-      <Styled(WithTheme(CustomButton))
+      <Styled(CustomButton)
+        active={false}
         buttonVariation="variable-width"
         color="#fff"
+        customStyle={Object {}}
+        customTextStyle={null}
+        disableButton={false}
         disabled={true}
         fill="BLUE"
+        fullWidth=""
+        iconColor="gray.800"
+        iconName="chevron-down"
+        iconSize="fs12"
+        locator=""
+        navigation={Object {}}
         onPress={[Function]}
+        selected={false}
+        selectedIcon="chevron-up"
+        showIcon={false}
         text="apply"
+        theme={Object {}}
+        url=""
       />
     </Styled(View)>
   </Styled(View)>
@@ -94,7 +141,7 @@ exports[`DetailedCouponTile should render correctly for applied coupon 1`] = `
           host=""
           source={
             Object {
-              "testUri": "../../../../core/src/assets/bag.png",
+              "testUri": "../../../../core/src/assets/bag-white.png",
             }
           }
           url=""
@@ -103,12 +150,17 @@ exports[`DetailedCouponTile should render correctly for applied coupon 1`] = `
       </Styled(View)>
       <Styled(View)>
         <Styled(BodyCopy)
+          accessibilityText=""
           color="white"
+          dataLocator=""
           fontFamily="secondary"
           fontSize="fs16"
           fontWeight="extrabold"
+          margin={null}
+          numberOfLines={null}
           text="lbl_common_applied_to_bag"
           textAlign="center"
+          textDecoration={null}
         />
       </Styled(View)>
     </Styled(Styled(View))>
@@ -136,11 +188,16 @@ exports[`DetailedCouponTile should render correctly for applied coupon 1`] = `
         </Styled(View)>
         <Styled(View)>
           <Styled(BodyCopy)
+            accessibilityText=""
             color="white"
             data-locator="accountoverview-myplacerewatdstile-rewardvalue"
+            dataLocator=""
             fontFamily="secondary"
             fontSize="fs16"
+            margin={null}
+            numberOfLines={null}
             textAlign="center"
+            textDecoration={null}
           />
         </Styled(View)>
       </Styled(View)>
@@ -154,17 +211,28 @@ exports[`DetailedCouponTile should render correctly for applied coupon 1`] = `
       <Styled(View)>
         <View>
           <Styled(BodyCopy)
+            accessibilityText=""
             data-locator="accountoverview-myplacerewatdstile-rewarduseby"
+            dataLocator=""
+            margin={null}
+            numberOfLines={null}
             text="use by"
+            textDecoration={null}
           />
           <Styled(BodyCopy)
+            accessibilityText=""
+            dataLocator=""
+            margin={null}
+            numberOfLines={null}
             text="undefined"
+            textDecoration={null}
           />
         </View>
         <Styled(Anchor)
           accessibilityLabel=""
           anchorVariation="primary"
           color="gray.900"
+          colorName={null}
           customStyle={Object {}}
           data-locator="my-rewards-program-details"
           fontSizeVariation="large"
@@ -177,19 +245,51 @@ exports[`DetailedCouponTile should render correctly for applied coupon 1`] = `
         <Styled(Styled(View)) />
       </Styled(View)>
       <Styled(View)>
-        <Styled(WithTheme(CustomButton))
+        <Styled(CustomButton)
+          active={false}
           buttonVariation="variable-width"
+          color=""
+          customStyle={Object {}}
+          customTextStyle={null}
+          disableButton={false}
           fill="WHITE"
+          fullWidth=""
+          iconColor="gray.800"
+          iconName="chevron-down"
+          iconSize="fs12"
+          locator=""
+          navigation={Object {}}
           onPress={[Function]}
+          selected={false}
+          selectedIcon="chevron-up"
+          showIcon={false}
           text="view & print"
+          theme={Object {}}
+          url=""
         />
         <Styled(Styled(View)) />
       </Styled(View)>
-      <Styled(WithTheme(CustomButton))
+      <Styled(CustomButton)
+        active={false}
         buttonVariation="variable-width"
+        color=""
+        customStyle={Object {}}
+        customTextStyle={null}
+        disableButton={false}
         fill="WHITE"
+        fullWidth=""
+        iconColor="gray.800"
+        iconName="chevron-down"
+        iconSize="fs12"
+        locator=""
+        navigation={Object {}}
         onPress={[Function]}
+        selected={false}
+        selectedIcon="chevron-up"
+        showIcon={false}
         text="remove from bag"
+        theme={Object {}}
+        url=""
       />
     </Styled(View)>
   </Styled(View)>
@@ -201,11 +301,16 @@ exports[`DetailedCouponTile should render expiring soon notification if coupon i
   <Styled(View)>
     <Styled(Styled(View))>
       <Styled(BodyCopy)
+        accessibilityText=""
         color="white"
+        dataLocator=""
         fontFamily="secondary"
         fontSize="fs12"
+        margin={null}
+        numberOfLines={null}
         text="expiring soon"
         textAlign="center"
+        textDecoration={null}
       />
     </Styled(Styled(View))>
     <Styled(View)>
@@ -232,11 +337,16 @@ exports[`DetailedCouponTile should render expiring soon notification if coupon i
         </Styled(View)>
         <Styled(View)>
           <Styled(BodyCopy)
+            accessibilityText=""
             color="gray.900"
             data-locator="accountoverview-myplacerewatdstile-rewardvalue"
+            dataLocator=""
             fontFamily="secondary"
             fontSize="fs16"
+            margin={null}
+            numberOfLines={null}
             textAlign="center"
+            textDecoration={null}
           />
         </Styled(View)>
       </Styled(View)>
@@ -249,17 +359,28 @@ exports[`DetailedCouponTile should render expiring soon notification if coupon i
       <Styled(View)>
         <View>
           <Styled(BodyCopy)
+            accessibilityText=""
             data-locator="accountoverview-myplacerewatdstile-rewarduseby"
+            dataLocator=""
+            margin={null}
+            numberOfLines={null}
             text="use by"
+            textDecoration={null}
           />
           <Styled(BodyCopy)
+            accessibilityText=""
+            dataLocator=""
+            margin={null}
+            numberOfLines={null}
             text="undefined"
+            textDecoration={null}
           />
         </View>
         <Styled(Anchor)
           accessibilityLabel=""
           anchorVariation="primary"
           color="gray.900"
+          colorName={null}
           customStyle={Object {}}
           data-locator="my-rewards-program-details"
           fontSizeVariation="large"
@@ -271,20 +392,51 @@ exports[`DetailedCouponTile should render expiring soon notification if coupon i
         />
       </Styled(View)>
       <Styled(View)>
-        <Styled(WithTheme(CustomButton))
+        <Styled(CustomButton)
+          active={false}
           buttonVariation="variable-width"
+          color=""
+          customStyle={Object {}}
+          customTextStyle={null}
+          disableButton={false}
           fill="WHITE"
+          fullWidth=""
+          iconColor="gray.800"
+          iconName="chevron-down"
+          iconSize="fs12"
+          locator=""
+          navigation={Object {}}
           onPress={[Function]}
+          selected={false}
+          selectedIcon="chevron-up"
+          showIcon={false}
           text="view & print"
+          theme={Object {}}
+          url=""
         />
       </Styled(View)>
-      <Styled(WithTheme(CustomButton))
+      <Styled(CustomButton)
+        active={false}
         buttonVariation="variable-width"
         color="#fff"
+        customStyle={Object {}}
+        customTextStyle={null}
+        disableButton={false}
         disabled={true}
         fill="BLUE"
+        fullWidth=""
+        iconColor="gray.800"
+        iconName="chevron-down"
+        iconSize="fs12"
+        locator=""
+        navigation={Object {}}
         onPress={[Function]}
+        selected={false}
+        selectedIcon="chevron-up"
+        showIcon={false}
         text="apply"
+        theme={Object {}}
+        url=""
       />
     </Styled(View)>
   </Styled(View)>

@@ -25,6 +25,8 @@ export class CouponContainer extends React.PureComponent<Props> {
       needHelpRichText,
       handleErrorCoupon,
       isCheckout,
+      showAccordian,
+      additionalClassNameModal,
     } = this.props;
     const updateLabels = { ...labels, NEED_HELP_RICH_TEXT: needHelpRichText };
     return (
@@ -38,6 +40,8 @@ export class CouponContainer extends React.PureComponent<Props> {
         appliedCouponList={appliedCouponList}
         availableCouponList={availableCouponList}
         handleErrorCoupon={handleErrorCoupon}
+        showAccordian={showAccordian}
+        additionalClassNameModal={additionalClassNameModal}
       />
     );
   }
@@ -52,6 +56,8 @@ CouponContainer.propTypes = {
   handleRemoveCoupon: PropTypes.func.isRequired,
   appliedCouponList: PropTypes.shape({}).isRequired,
   availableCouponList: PropTypes.shape({}).isRequired,
+  showAccordian: PropTypes.bool.isRequired,
+  additionalClassNameModal: PropTypes.string.isRequired,
 };
 
 export const mapDispatchToProps = dispatch => ({

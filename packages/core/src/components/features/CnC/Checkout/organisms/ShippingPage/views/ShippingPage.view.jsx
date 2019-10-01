@@ -1,5 +1,6 @@
 /* eslint-disable extra-rules/no-commented-out-code */
 import React from 'react';
+import { isEmpty } from 'lodash';
 import PropTypes from 'prop-types';
 import ShippingForm from '../organisms/ShippingForm';
 import { getSiteId } from '../../../../../../../utils/utils.web';
@@ -39,6 +40,10 @@ export default class ShippingPage extends React.PureComponent {
     labels: PropTypes.shape({}).isRequired,
     syncErrors: PropTypes.shape({}),
     shippingAddress: PropTypes.shape({}),
+    isVenmoPaymentInProgress: PropTypes.bool,
+    isVenmoShippingDisplayed: PropTypes.bool,
+    setVenmoPickupState: PropTypes.func,
+    shippingPhoneAndEmail: PropTypes.shape({}),
   };
 
   static defaultProps = {
@@ -62,6 +67,10 @@ export default class ShippingPage extends React.PureComponent {
     saveToAddressBook: false,
     syncErrors: {},
     shippingAddress: null,
+    isVenmoPaymentInProgress: false,
+    isVenmoShippingDisplayed: true,
+    setVenmoPickupState: () => {},
+    shippingPhoneAndEmail: null,
   };
 
   constructor(props) {
@@ -159,7 +168,7 @@ export default class ShippingPage extends React.PureComponent {
     //   response: 'invalid::false:false',
     //   storeId: '10152',
     // };
-    const { handleSubmit } = this.props;
+    const { handleSubmit, setVenmoPickupState } = this.props;
     handleSubmit({
       method: {
         shippingMethodId: shipmentMethods.shippingMethodId,
@@ -179,6 +188,7 @@ export default class ShippingPage extends React.PureComponent {
         wantsSmsOrderUpdates: smsSignUp.sendOrderUpdate,
       },
     });
+    setVenmoPickupState(true);
   };
 
   updateShippingAddress = () => {
@@ -225,6 +235,36 @@ export default class ShippingPage extends React.PureComponent {
     });
   };
 
+  getPrimaryAddress = () => {
+    const { userAddresses } = this.props;
+    if (userAddresses && userAddresses.size > 0) {
+      const selectedAddress = userAddresses.find(address => address.primary === 'true');
+      return selectedAddress && selectedAddress.addressId;
+    }
+    return null;
+  };
+
+  getAddressInitialValues = () => {
+    const { shippingAddress, shippingPhoneAndEmail } = this.props;
+    if (!isEmpty(shippingAddress)) {
+      return {
+        addressLine1: shippingAddress.addressLine1,
+        addressLine2: shippingAddress.addressLine2,
+        firstName: shippingAddress.firstName,
+        lastName: shippingAddress.lastName,
+        city: shippingAddress.city,
+        state: shippingAddress.state,
+        zipCode: shippingAddress.zipCode,
+        phoneNumber: shippingPhoneAndEmail.phoneNumber,
+        country: getSiteId() && getSiteId().toUpperCase(),
+        emailAddress: shippingPhoneAndEmail.emailAddress,
+      };
+    }
+    return {
+      country: getSiteId() && getSiteId().toUpperCase(),
+    };
+  };
+
   render() {
     const {
       addressLabels,
@@ -252,8 +292,10 @@ export default class ShippingPage extends React.PureComponent {
       address,
       syncErrors,
       shippingAddress,
+      isVenmoPaymentInProgress,
+      isVenmoShippingDisplayed,
     } = this.props;
-
+    const primaryAddressId = this.getPrimaryAddress();
     const { isAddNewAddress, isEditing, defaultAddressId } = this.state;
     return (
       <>
@@ -265,10 +307,10 @@ export default class ShippingPage extends React.PureComponent {
             isGiftServicesChecked={isGiftServicesChecked}
             smsSignUpLabels={smsSignUpLabels}
             initialValues={{
-              address: { country: getSiteId() && getSiteId().toUpperCase() },
+              address: this.getAddressInitialValues(),
               shipmentMethods: { shippingMethodId: defaultShipmentId },
               saveToAddressBook: !isGuest,
-              onFileAddressKey: shippingAddressId,
+              onFileAddressKey: shippingAddressId || primaryAddressId,
             }}
             selectedShipmentId={selectedShipmentId}
             checkPOBoxAddress={this.checkPOBoxAddress}
@@ -299,6 +341,8 @@ export default class ShippingPage extends React.PureComponent {
             setDefaultAddressId={this.setDefaultAddressId}
             syncErrorsObject={syncErrors}
             shippingAddress={shippingAddress}
+            isVenmoPaymentInProgress={isVenmoPaymentInProgress}
+            isVenmoShippingDisplayed={isVenmoShippingDisplayed}
           />
         )}
       </>

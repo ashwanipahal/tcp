@@ -3,21 +3,31 @@
 exports[`ProfileInfoTile component should render correctly 1`] = `
 <Styled(View)>
   <Styled(BodyCopy)
+    accessibilityText=""
     color="black"
+    dataLocator=""
     fontFamily="secondary"
     fontSize="fs16"
+    margin={null}
+    numberOfLines={null}
     text=""
+    textDecoration={null}
   />
   <Styled(View) />
   <Styled(View)>
     <Styled(View)>
       <Styled(View)>
         <Styled(BodyCopy)
+          accessibilityText=""
           color="gray.900"
+          dataLocator=""
           fontFamily="secondary"
           fontSize="fs14"
           fontWeight="extrabold"
+          margin={null}
+          numberOfLines={null}
           text="First Last"
+          textDecoration={null}
         />
       </Styled(View)>
       <Styled(View)>
@@ -25,6 +35,7 @@ exports[`ProfileInfoTile component should render correctly 1`] = `
           accessibilityLabel=""
           anchorVariation="primary"
           color="gray.900"
+          colorName={null}
           customStyle={Object {}}
           dataLocator="personalInfo-overview-edit"
           fontSizeVariation="large"
@@ -38,39 +49,54 @@ exports[`ProfileInfoTile component should render correctly 1`] = `
       </Styled(View)>
     </Styled(View)>
     <Styled(BodyCopy)
+      accessibilityText=""
       color="gray.900"
+      dataLocator=""
       fontSize="fs14"
       fontWeight="regular"
+      margin={null}
       mobilefontFamily={
         Array [
           "secondary",
         ]
       }
+      numberOfLines={null}
       text=" B100000012222"
+      textDecoration={null}
     />
   </Styled(View)>
   <Styled(View)>
     <Styled(BodyCopy)
+      accessibilityText=""
       color="gray.900"
+      dataLocator=""
       fontSize="fs14"
       fontWeight="regular"
+      margin={null}
       mobilefontFamily={
         Array [
           "secondary",
         ]
       }
+      numberOfLines={null}
       text=""
+      textDecoration={null}
     />
     <Styled(BodyCopy)
+      accessibilityText=""
       color="gray.900"
+      dataLocator=""
       fontSize="fs14"
       fontWeight="regular"
+      margin={null}
       mobilefontFamily={
         Array [
           "secondary",
         ]
       }
+      numberOfLines={null}
       text="first.last@tcp.com"
+      textDecoration={null}
     />
   </Styled(View)>
   <Styled(View) />
@@ -78,11 +104,16 @@ exports[`ProfileInfoTile component should render correctly 1`] = `
     <Styled(View)>
       <Styled(View)>
         <Styled(BodyCopy)
+          accessibilityText=""
           color="gray.900"
+          dataLocator=""
           fontFamily="secondary"
           fontSize="fs14"
           fontWeight="extrabold"
+          margin={null}
+          numberOfLines={null}
           text=""
+          textDecoration={null}
         />
       </Styled(View)>
       <Styled(View)>
@@ -90,6 +121,7 @@ exports[`ProfileInfoTile component should render correctly 1`] = `
           accessibilityLabel=""
           anchorVariation="primary"
           color="gray.900"
+          colorName={null}
           customStyle={Object {}}
           dataLocator="mailingAddress-overview-edit"
           fontSizeVariation="large"
@@ -113,6 +145,8 @@ exports[`ProfileInfoTile component should render correctly 1`] = `
         }
       }
       customStyle={Object {}}
+      fontSize="fs14"
+      regularName={false}
       showCountry={false}
       showDefaultText={false}
       showName={false}
@@ -124,11 +158,16 @@ exports[`ProfileInfoTile component should render correctly 1`] = `
     <Styled(View)>
       <Styled(View)>
         <Styled(BodyCopy)
+          accessibilityText=""
           color="gray.900"
+          dataLocator=""
           fontFamily="secondary"
           fontSize="fs14"
           fontWeight="extrabold"
+          margin={null}
+          numberOfLines={null}
           text=""
+          textDecoration={null}
         />
       </Styled(View)>
       <Styled(View)>
@@ -136,6 +175,7 @@ exports[`ProfileInfoTile component should render correctly 1`] = `
           accessibilityLabel=""
           anchorVariation="primary"
           color="gray.900"
+          colorName={null}
           customStyle={Object {}}
           dataLocator="password-overview-edit"
           fontSizeVariation="large"
@@ -149,19 +189,40 @@ exports[`ProfileInfoTile component should render correctly 1`] = `
       </Styled(View)>
     </Styled(View)>
     <Styled(BodyCopy)
+      accessibilityText=""
       color="gray.900"
+      dataLocator=""
       fontFamily="secondary"
       fontSize="fs14"
       fontWeight="extrabold"
+      margin={null}
+      numberOfLines={null}
       text="**********"
+      textDecoration={null}
     />
   </Styled(View)>
   <Styled(View)>
-    <Styled(WithTheme(CustomButton))
+    <Styled(CustomButton)
+      active={false}
       buttonVariation="variable-width"
+      color=""
+      customStyle={Object {}}
+      customTextStyle={null}
+      disableButton={false}
       fill="BLUE"
+      fullWidth=""
+      iconColor="gray.800"
+      iconName="chevron-down"
+      iconSize="fs12"
+      locator=""
+      navigation={Object {}}
       onPress={[Function]}
+      selected={false}
+      selectedIcon="chevron-up"
+      showIcon={false}
       text=""
+      theme={Object {}}
+      url=""
     />
   </Styled(View)>
 </Styled(View)>

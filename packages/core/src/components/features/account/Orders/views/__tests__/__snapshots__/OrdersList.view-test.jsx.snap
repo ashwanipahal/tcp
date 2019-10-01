@@ -1,0 +1,20 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`OrdersList View component should renders correctly 1`] = `
+<Fragment>
+  <Styled(FormPageHeading)
+    className="elem-mb-XL"
+    data-locator="OrdersListPageLbl"
+    heading="lbl_orders_heading"
+  />
+  <OrdersLinks
+    className=""
+    labels={Object {}}
+  />
+  <RecentOrders
+    className=""
+    labels={Object {}}
+    ordersListItems={Object {}}
+  />
+</Fragment>
+`;

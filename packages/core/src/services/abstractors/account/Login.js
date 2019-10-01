@@ -193,6 +193,9 @@ export const login = ({
 
   if (userId) {
     payload.body.userId = userId;
+  } else {
+    const GUEST_USER_ID = '-1002';
+    payload.body.userId = GUEST_USER_ID;
   }
 
   return executeStatefulAPICall(payload)
@@ -210,6 +213,27 @@ export const login = ({
     .catch(err => {
       throw err;
     });
+};
+
+const deriveBossBopisFlags = payload => {
+  // eslint-disable-next-line camelcase
+  const { x_isBOSSEnabledExt = '{}', x_isBOPISEnabledExt = '{}' } = payload;
+  const xIsBOSSEnabledExt = JSON.parse(x_isBOSSEnabledExt);
+  const xIsBOPISEnabledExt = JSON.parse(x_isBOPISEnabledExt);
+  const isBOSSEnabledKey = 'isBOSSEnabled_';
+  const isBOPISEnabledKey = 'isBOPISEnabled_';
+  const bossFlags = {};
+  const bopisFlags = {};
+  Object.keys(xIsBOSSEnabledExt).forEach(key => {
+    bossFlags[`${isBOSSEnabledKey}${key}`] = xIsBOSSEnabledExt[key];
+  });
+  Object.keys(xIsBOPISEnabledExt).forEach(key => {
+    bopisFlags[`${isBOPISEnabledKey}${key}`] = xIsBOPISEnabledExt[key];
+  });
+  return {
+    ...bossFlags,
+    ...bopisFlags,
+  };
 };
 
 export const getProfile = ({ refreshPoints = true, pageId, source }) => {
@@ -241,6 +265,7 @@ export const getProfile = ({ refreshPoints = true, pageId, source }) => {
         const userRemembered = getIfUserRemembered(res.body);
         const surveyAnswers = getSurveyAnswers(res.body);
         const contextAttributes = getContextAttributes(res.body);
+        const bossBopisFlags = deriveBossBopisFlags(res.body);
 
         return {
           firstName: res.body.firstName,
@@ -263,6 +288,7 @@ export const getProfile = ({ refreshPoints = true, pageId, source }) => {
           hasPreScreenId: res.body.x_preScreenIdAvailability,
           isBopisEnabled: parseBoolean(res.body.x_isBOPISEnabled),
           isBossEnabled: parseBoolean(res.body.x_isBOSSEnabled),
+          bossBopisFlags,
           isRopisEnabled: parseBoolean(res.body.x_isROPISEnabled),
           language: (res.body.x_language || '').substr(0, 2),
           addressBook,

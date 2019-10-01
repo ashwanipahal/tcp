@@ -1,0 +1,640 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`GiftCardsVanilla should render gift card tile 1`] = `
+<Fragment>
+  <Styled(View)>
+    <Styled(Styled(BodyCopy))
+      accessibilityText=""
+      color="gray.900"
+      dataLocator=""
+      fontFamily="primary"
+      fontSize="fs26"
+      fontWeight="regular"
+      margin={null}
+      numberOfLines={null}
+      spacingStyles="margin-bottom-MED"
+      textDecoration={null}
+    />
+    <Styled(Styled(BodyCopy))
+      accessibilityText=""
+      color="gray.900"
+      dataLocator=""
+      fontFamily="primary"
+      fontSize="fs16"
+      fontWeight="regular"
+      margin={null}
+      numberOfLines={null}
+      spacingStyles="margin-bottom-MED"
+      textDecoration={null}
+    />
+    <Styled(Styled(BodyCopy))
+      accessibilityText=""
+      color="gray.900"
+      dataLocator=""
+      fontFamily="secondary"
+      fontSize="fs16"
+      fontWeight="extrabold"
+      margin={null}
+      numberOfLines={null}
+      spacingStyles="margin-bottom-MED"
+      textDecoration={null}
+    />
+    <Styled(View)>
+      <GiftCardTile
+        cardData={
+          Object {
+            "creditCardId": 123,
+            "name": "test",
+          }
+        }
+        giftCardErrors={Object {}}
+        handleRemoveGiftCard={[MockFunction]}
+        isGiftCardApplied={true}
+        labels={Object {}}
+        orderBalanceTotal={0}
+      />
+    </Styled(View)>
+    <Styled(View)>
+      <GiftCardTile
+        cardData={
+          Object {
+            "creditCardId": 123,
+            "name": "test",
+          }
+        }
+        giftCardErrors={Object {}}
+        handleRemoveGiftCard={[MockFunction]}
+        isGiftCardApplied={true}
+        labels={Object {}}
+        orderBalanceTotal={0}
+      />
+    </Styled(View)>
+    <Styled(Text)>
+      <Styled(Styled(BodyCopy))
+        accessibilityText=""
+        color="gray.900"
+        dataLocator=""
+        fontFamily="secondary"
+        fontSize="fs16"
+        fontWeight="semibold"
+        margin={null}
+        numberOfLines={null}
+        spacingStyles="margin-bottom-MED margin-top-MED"
+        text="undefined "
+        textDecoration={null}
+      />
+      <Styled(Styled(BodyCopy))
+        accessibilityText=""
+        color="gray.900"
+        dataLocator=""
+        fontFamily="primary"
+        fontSize="fs16"
+        fontWeight="regular"
+        margin={null}
+        numberOfLines={null}
+        spacingStyles="margin-left-SM"
+        textDecoration={null}
+      />
+    </Styled(Text)>
+    <Styled(Styled(BodyCopy))
+      accessibilityText=""
+      color="gray.900"
+      dataLocator=""
+      fontFamily="secondary"
+      fontSize="fs16"
+      fontWeight="extrabold"
+      margin={null}
+      numberOfLines={null}
+      spacingStyles="margin-bottom-MED margin-top-MED"
+      textDecoration={null}
+    />
+    <Styled(View)>
+      <GiftCardTile
+        applyExistingGiftCardToOrder={[MockFunction]}
+        cardData={
+          Object {
+            "creditCardId": 123,
+            "name": "test",
+          }
+        }
+        giftCardErrors={Object {}}
+        isGiftCardApplied={false}
+        labels={Object {}}
+        orderBalanceTotal={0}
+      />
+    </Styled(View)>
+    <Styled(View)>
+      <GiftCardTile
+        applyExistingGiftCardToOrder={[MockFunction]}
+        cardData={
+          Object {
+            "creditCardId": 123,
+            "name": "test",
+          }
+        }
+        giftCardErrors={Object {}}
+        isGiftCardApplied={false}
+        labels={Object {}}
+        orderBalanceTotal={0}
+      />
+    </Styled(View)>
+  </Styled(View)>
+</Fragment>
+`;
+
+exports[`GiftCardsVanilla should render gift card tile with 0 order balance 1`] = `
+<Fragment>
+  <Styled(View)>
+    <Styled(Styled(BodyCopy))
+      accessibilityText=""
+      color="gray.900"
+      dataLocator=""
+      fontFamily="primary"
+      fontSize="fs26"
+      fontWeight="regular"
+      margin={null}
+      numberOfLines={null}
+      spacingStyles="margin-bottom-MED"
+      textDecoration={null}
+    />
+    <Styled(Styled(BodyCopy))
+      accessibilityText=""
+      color="gray.900"
+      dataLocator=""
+      fontFamily="primary"
+      fontSize="fs16"
+      fontWeight="regular"
+      margin={null}
+      numberOfLines={null}
+      spacingStyles="margin-bottom-MED"
+      textDecoration={null}
+    />
+    <Styled(Styled(BodyCopy))
+      accessibilityText=""
+      color="gray.900"
+      dataLocator=""
+      fontFamily="secondary"
+      fontSize="fs16"
+      fontWeight="extrabold"
+      margin={null}
+      numberOfLines={null}
+      spacingStyles="margin-bottom-MED"
+      textDecoration={null}
+    />
+    <Styled(View)>
+      <GiftCardTile
+        cardData={
+          Object {
+            "creditCardId": 123,
+            "name": "test",
+          }
+        }
+        giftCardErrors={Object {}}
+        handleRemoveGiftCard={[MockFunction]}
+        isGiftCardApplied={true}
+        labels={Object {}}
+        orderBalanceTotal={0}
+      />
+    </Styled(View)>
+    <Styled(View)>
+      <GiftCardTile
+        cardData={
+          Object {
+            "creditCardId": 123,
+            "name": "test",
+          }
+        }
+        giftCardErrors={Object {}}
+        handleRemoveGiftCard={[MockFunction]}
+        isGiftCardApplied={true}
+        labels={Object {}}
+        orderBalanceTotal={0}
+      />
+    </Styled(View)>
+    <Styled(Text)>
+      <Styled(Styled(BodyCopy))
+        accessibilityText=""
+        color="gray.900"
+        dataLocator=""
+        fontFamily="secondary"
+        fontSize="fs16"
+        fontWeight="semibold"
+        margin={null}
+        numberOfLines={null}
+        spacingStyles="margin-bottom-MED margin-top-MED"
+        text="undefined "
+        textDecoration={null}
+      />
+      <Styled(Styled(BodyCopy))
+        accessibilityText=""
+        color="gray.900"
+        dataLocator=""
+        fontFamily="primary"
+        fontSize="fs16"
+        fontWeight="regular"
+        margin={null}
+        numberOfLines={null}
+        spacingStyles="margin-left-SM"
+        textDecoration={null}
+      />
+    </Styled(Text)>
+    <Styled(Styled(BodyCopy))
+      accessibilityText=""
+      color="gray.900"
+      dataLocator=""
+      fontFamily="secondary"
+      fontSize="fs16"
+      fontWeight="extrabold"
+      margin={null}
+      numberOfLines={null}
+      spacingStyles="margin-bottom-MED margin-top-MED"
+      textDecoration={null}
+    />
+    <Styled(View)>
+      <GiftCardTile
+        applyExistingGiftCardToOrder={[MockFunction]}
+        cardData={
+          Object {
+            "creditCardId": 123,
+            "name": "test",
+          }
+        }
+        giftCardErrors={Object {}}
+        isGiftCardApplied={false}
+        labels={Object {}}
+        orderBalanceTotal={0}
+      />
+    </Styled(View)>
+    <Styled(View)>
+      <GiftCardTile
+        applyExistingGiftCardToOrder={[MockFunction]}
+        cardData={
+          Object {
+            "creditCardId": 123,
+            "name": "test",
+          }
+        }
+        giftCardErrors={Object {}}
+        isGiftCardApplied={false}
+        labels={Object {}}
+        orderBalanceTotal={0}
+      />
+    </Styled(View)>
+  </Styled(View)>
+</Fragment>
+`;
+
+exports[`GiftCardsVanilla should render gift card tile with 100 order balance 1`] = `
+<Fragment>
+  <Styled(View)>
+    <Styled(Styled(BodyCopy))
+      accessibilityText=""
+      color="gray.900"
+      dataLocator=""
+      fontFamily="primary"
+      fontSize="fs26"
+      fontWeight="regular"
+      margin={null}
+      numberOfLines={null}
+      spacingStyles="margin-bottom-MED"
+      textDecoration={null}
+    />
+    <Styled(Styled(BodyCopy))
+      accessibilityText=""
+      color="gray.900"
+      dataLocator=""
+      fontFamily="primary"
+      fontSize="fs16"
+      fontWeight="regular"
+      margin={null}
+      numberOfLines={null}
+      spacingStyles="margin-bottom-MED"
+      textDecoration={null}
+    />
+    <Styled(Styled(BodyCopy))
+      accessibilityText=""
+      color="gray.900"
+      dataLocator=""
+      fontFamily="secondary"
+      fontSize="fs16"
+      fontWeight="extrabold"
+      margin={null}
+      numberOfLines={null}
+      spacingStyles="margin-bottom-MED"
+      textDecoration={null}
+    />
+    <Styled(View)>
+      <GiftCardTile
+        cardData={
+          Object {
+            "creditCardId": 123,
+            "name": "test",
+          }
+        }
+        giftCardErrors={Object {}}
+        handleRemoveGiftCard={[MockFunction]}
+        isGiftCardApplied={true}
+        labels={Object {}}
+        orderBalanceTotal={0}
+      />
+    </Styled(View)>
+    <Styled(View)>
+      <GiftCardTile
+        cardData={
+          Object {
+            "creditCardId": 123,
+            "name": "test",
+          }
+        }
+        giftCardErrors={Object {}}
+        handleRemoveGiftCard={[MockFunction]}
+        isGiftCardApplied={true}
+        labels={Object {}}
+        orderBalanceTotal={0}
+      />
+    </Styled(View)>
+    <Styled(Text)>
+      <Styled(Styled(BodyCopy))
+        accessibilityText=""
+        color="gray.900"
+        dataLocator=""
+        fontFamily="secondary"
+        fontSize="fs16"
+        fontWeight="semibold"
+        margin={null}
+        numberOfLines={null}
+        spacingStyles="margin-bottom-MED margin-top-MED"
+        text="undefined "
+        textDecoration={null}
+      />
+      <Styled(Styled(BodyCopy))
+        accessibilityText=""
+        color="gray.900"
+        dataLocator=""
+        fontFamily="primary"
+        fontSize="fs16"
+        fontWeight="regular"
+        margin={null}
+        numberOfLines={null}
+        spacingStyles="margin-left-SM"
+        textDecoration={null}
+      />
+    </Styled(Text)>
+    <Styled(Styled(BodyCopy))
+      accessibilityText=""
+      color="gray.900"
+      dataLocator=""
+      fontFamily="secondary"
+      fontSize="fs16"
+      fontWeight="extrabold"
+      margin={null}
+      numberOfLines={null}
+      spacingStyles="margin-bottom-MED margin-top-MED"
+      textDecoration={null}
+    />
+    <Styled(View)>
+      <GiftCardTile
+        applyExistingGiftCardToOrder={[MockFunction]}
+        cardData={
+          Object {
+            "creditCardId": 123,
+            "name": "test",
+          }
+        }
+        giftCardErrors={Object {}}
+        isGiftCardApplied={false}
+        labels={Object {}}
+        orderBalanceTotal={100}
+      />
+    </Styled(View)>
+    <Styled(View)>
+      <GiftCardTile
+        applyExistingGiftCardToOrder={[MockFunction]}
+        cardData={
+          Object {
+            "creditCardId": 123,
+            "name": "test",
+          }
+        }
+        giftCardErrors={Object {}}
+        isGiftCardApplied={false}
+        labels={Object {}}
+        orderBalanceTotal={100}
+      />
+    </Styled(View)>
+    <Styled(View)>
+      <Styled(CustomButton)
+        active={false}
+        buttonVariation="fixed-width"
+        color=""
+        customStyle={Object {}}
+        customTextStyle={null}
+        data-locator="add-gift-card"
+        disableButton={false}
+        fill="DARK"
+        fullWidth=""
+        iconColor="gray.800"
+        iconName="chevron-down"
+        iconSize="fs12"
+        locator=""
+        navigation={Object {}}
+        onPress={[Function]}
+        selected={false}
+        selectedIcon="chevron-up"
+        showIcon={false}
+        text=""
+        theme={Object {}}
+        type="submit"
+        url=""
+      />
+    </Styled(View)>
+  </Styled(View)>
+</Fragment>
+`;
+
+exports[`GiftCardsVanilla should render gift card tile with 100 order balance with enableAddGiftCard  1`] = `
+<Fragment>
+  <Styled(View)>
+    <Styled(Styled(BodyCopy))
+      accessibilityText=""
+      color="gray.900"
+      dataLocator=""
+      fontFamily="primary"
+      fontSize="fs26"
+      fontWeight="regular"
+      margin={null}
+      numberOfLines={null}
+      spacingStyles="margin-bottom-MED"
+      textDecoration={null}
+    />
+    <Styled(Styled(BodyCopy))
+      accessibilityText=""
+      color="gray.900"
+      dataLocator=""
+      fontFamily="primary"
+      fontSize="fs16"
+      fontWeight="regular"
+      margin={null}
+      numberOfLines={null}
+      spacingStyles="margin-bottom-MED"
+      textDecoration={null}
+    />
+    <Styled(Styled(BodyCopy))
+      accessibilityText=""
+      color="gray.900"
+      dataLocator=""
+      fontFamily="secondary"
+      fontSize="fs16"
+      fontWeight="extrabold"
+      margin={null}
+      numberOfLines={null}
+      spacingStyles="margin-bottom-MED"
+      textDecoration={null}
+    />
+    <Styled(View)>
+      <GiftCardTile
+        cardData={
+          Object {
+            "creditCardId": 123,
+            "name": "test",
+          }
+        }
+        giftCardErrors={Object {}}
+        handleRemoveGiftCard={[MockFunction]}
+        isGiftCardApplied={true}
+        labels={Object {}}
+        orderBalanceTotal={0}
+      />
+    </Styled(View)>
+    <Styled(View)>
+      <GiftCardTile
+        cardData={
+          Object {
+            "creditCardId": 123,
+            "name": "test",
+          }
+        }
+        giftCardErrors={Object {}}
+        handleRemoveGiftCard={[MockFunction]}
+        isGiftCardApplied={true}
+        labels={Object {}}
+        orderBalanceTotal={0}
+      />
+    </Styled(View)>
+    <Styled(Text)>
+      <Styled(Styled(BodyCopy))
+        accessibilityText=""
+        color="gray.900"
+        dataLocator=""
+        fontFamily="secondary"
+        fontSize="fs16"
+        fontWeight="semibold"
+        margin={null}
+        numberOfLines={null}
+        spacingStyles="margin-bottom-MED margin-top-MED"
+        text="undefined "
+        textDecoration={null}
+      />
+      <Styled(Styled(BodyCopy))
+        accessibilityText=""
+        color="gray.900"
+        dataLocator=""
+        fontFamily="primary"
+        fontSize="fs16"
+        fontWeight="regular"
+        margin={null}
+        numberOfLines={null}
+        spacingStyles="margin-left-SM"
+        textDecoration={null}
+      />
+    </Styled(Text)>
+    <Styled(Styled(BodyCopy))
+      accessibilityText=""
+      color="gray.900"
+      dataLocator=""
+      fontFamily="secondary"
+      fontSize="fs16"
+      fontWeight="extrabold"
+      margin={null}
+      numberOfLines={null}
+      spacingStyles="margin-bottom-MED margin-top-MED"
+      textDecoration={null}
+    />
+    <Styled(View)>
+      <GiftCardTile
+        applyExistingGiftCardToOrder={[MockFunction]}
+        cardData={
+          Object {
+            "creditCardId": 123,
+            "name": "test",
+          }
+        }
+        giftCardErrors={Object {}}
+        isGiftCardApplied={false}
+        labels={Object {}}
+        orderBalanceTotal={100}
+      />
+    </Styled(View)>
+    <Styled(View)>
+      <GiftCardTile
+        applyExistingGiftCardToOrder={[MockFunction]}
+        cardData={
+          Object {
+            "creditCardId": 123,
+            "name": "test",
+          }
+        }
+        giftCardErrors={Object {}}
+        isGiftCardApplied={false}
+        labels={Object {}}
+        orderBalanceTotal={100}
+      />
+    </Styled(View)>
+    <Styled(View)>
+      <Styled(Styled(BodyCopy))
+        accessibilityText=""
+        color="error"
+        dataLocator=""
+        fontSize="fs12"
+        fontWeight="semibold"
+        margin={null}
+        mobileFontFamily={
+          Array [
+            "secondary",
+          ]
+        }
+        numberOfLines={null}
+        spacingStyles="margin-bottom-MED"
+        text="Duplicate"
+        textDecoration={null}
+      />
+      <ReduxForm
+        addGiftCardError="Duplicate"
+        destroyOnUnmount={true}
+        enableReinitialize={true}
+        forceUnregisterOnUnmount={false}
+        form="AddGiftCardMobileForm"
+        formErrorMessage=""
+        getFormState={[Function]}
+        isLoading={false}
+        isRecapchaEnabled={false}
+        isRow={true}
+        keepDirtyOnReinitialize={false}
+        labels={Object {}}
+        persistentSubmitErrors={false}
+        pure={true}
+        saveToAccountEnabled={true}
+        shouldAsyncValidate={[Function]}
+        shouldError={[Function]}
+        shouldValidate={[Function]}
+        shouldWarn={[Function]}
+        submitAsSideEffect={false}
+        touchOnBlur={true}
+        touchOnChange={false}
+        updateUnregisteredFields={false}
+        validate={[Function]}
+      />
+    </Styled(View)>
+  </Styled(View)>
+</Fragment>
+`;

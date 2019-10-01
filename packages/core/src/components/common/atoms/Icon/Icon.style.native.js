@@ -1,5 +1,6 @@
-import { css } from 'styled-components/native';
+import styled, { css } from 'styled-components/native';
 import { Platform } from 'react-native';
+import { getColor, getFontSize } from '@tcp/core/styles/themes/utils';
 
 /**
  * @param {Object} props : props for getDisableStyle
@@ -15,9 +16,8 @@ const getDisableStyle = props => {
       color: ${colorPalette.text.disabled};
     `;
   }
-  const colorValue = color === '' ? colorPalette.primary.main : color;
   return `
-  color: ${colorValue}
+  color: ${getColor(colorPalette, color) || colorPalette.primary.main}
   `;
 };
 
@@ -30,11 +30,25 @@ const getDisableStyle = props => {
 const getFontSizeStyle = props => {
   const { theme, size } = props;
   const { typography } = theme;
-  const sizeValue = size === 0 ? typography.fontSizes.fs20 : size;
   return `
-  font-size: ${sizeValue}
+  font-size: ${getFontSize(typography, size)}
   `;
 };
+
+const getAdditionalStyle = props => {
+  const { margin } = props;
+  return {
+    ...(margin && { margin }),
+  };
+};
+
+const IconTouchableOpacity = styled.TouchableOpacity`
+  ${getAdditionalStyle}
+`;
+
+const Container = styled.View`
+  ${getAdditionalStyle}
+`;
 
 const IconStyle = css`
   ${props => (props.isDisabled ? ` opacity: 0.6; ` : 'opacity: 1')};
@@ -42,4 +56,4 @@ const IconStyle = css`
   ${getFontSizeStyle}
 `;
 
-export default IconStyle;
+export { IconStyle, Container, IconTouchableOpacity };

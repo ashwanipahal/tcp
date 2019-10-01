@@ -3,6 +3,7 @@ import theme from '../../../../../styles/themes/TCP';
 const { breakpoints } = theme;
 
 export default {
+  TOTAL_IMAGES: 15,
   CAROUSEL_OPTIONS: {
     autoplay: false,
     arrows: true,

@@ -2,6 +2,7 @@
 
 exports[`ProfileInfoActions should render correctly for empty state 1`] = `
 <MyProfileTile
+  birthdaySaving={false}
   ctaLink="accountOverviewMobile"
   ctaTitle=""
   handleComponentChange={[Function]}
@@ -10,12 +11,22 @@ exports[`ProfileInfoActions should render correctly for empty state 1`] = `
   <Styled(View)>
     <Styled(View)>
       <Styled(Styled(BodyCopy))
+        accessibilityText=""
+        dataLocator=""
         fontSize="fs16"
         fontWeight="semibold"
+        margin={null}
+        numberOfLines={null}
         spacingStyles="margin-bottom-MED"
+        textDecoration={null}
       />
       <Styled(BodyCopy)
+        accessibilityText=""
+        dataLocator=""
         fontSize="fs16"
+        margin={null}
+        numberOfLines={null}
+        textDecoration={null}
       />
     </Styled(View)>
   </Styled(View)>
@@ -29,7 +40,7 @@ exports[`ProfileInfoActions should render correctly for empty state 1`] = `
         }
       }
       activityId="mailingAddress"
-      activityTitle="+20%"
+      activityTitle="lbl_profile_activityPercentage"
       handleComponentChange={[Function]}
     />
     <ProfileInfoActionTile
@@ -41,7 +52,7 @@ exports[`ProfileInfoActions should render correctly for empty state 1`] = `
         }
       }
       activityId="favStore"
-      activityTitle="+20%"
+      activityTitle="lbl_profile_activityPercentage"
       handleComponentChange={[Function]}
     />
     <ProfileInfoActionTile
@@ -53,7 +64,7 @@ exports[`ProfileInfoActions should render correctly for empty state 1`] = `
         }
       }
       activityId="userBirthday"
-      activityTitle="+20%"
+      activityTitle="lbl_profile_activityPercentage"
       handleComponentChange={[Function]}
     />
     <ProfileInfoActionTile
@@ -65,7 +76,7 @@ exports[`ProfileInfoActions should render correctly for empty state 1`] = `
         }
       }
       activityId="aboutYourself"
-      activityTitle="+20%"
+      activityTitle="lbl_profile_activityPercentage"
       handleComponentChange={[Function]}
     />
   </Styled(View)>
@@ -80,6 +91,7 @@ exports[`ProfileInfoActions should render correctly for empty state 1`] = `
 
 exports[`ProfileInfoActions should render correctly for filled state 1`] = `
 <MyProfileTile
+  birthdaySaving={false}
   ctaLink="accountOverviewMobile"
   ctaTitle=""
   handleComponentChange={[Function]}
@@ -88,18 +100,38 @@ exports[`ProfileInfoActions should render correctly for filled state 1`] = `
   <Styled(View)>
     <Styled(View)>
       <Styled(Styled(BodyCopy))
+        accessibilityText=""
+        dataLocator=""
         fontSize="fs16"
         fontWeight="semibold"
+        margin={null}
+        numberOfLines={null}
         spacingStyles="margin-bottom-MED"
+        textDecoration={null}
       />
       <Styled(BodyCopy)
+        accessibilityText=""
+        dataLocator=""
         fontSize="fs16"
+        margin={null}
+        numberOfLines={null}
+        textDecoration={null}
       />
       <Styled(BodyCopy)
+        accessibilityText=""
+        dataLocator=""
         fontSize="fs16"
+        margin={null}
+        numberOfLines={null}
+        textDecoration={null}
       />
       <Styled(BodyCopy)
+        accessibilityText=""
+        dataLocator=""
         fontSize="fs16"
+        margin={null}
+        numberOfLines={null}
+        textDecoration={null}
       />
     </Styled(View)>
     <Styled(View)>
@@ -123,7 +155,7 @@ exports[`ProfileInfoActions should render correctly for filled state 1`] = `
         }
       }
       activityId="mailingAddress"
-      activityTitle="+20%"
+      activityTitle="lbl_profile_activityPercentage"
       handleComponentChange={[Function]}
     />
     <ProfileInfoActionTile
@@ -135,7 +167,7 @@ exports[`ProfileInfoActions should render correctly for filled state 1`] = `
         }
       }
       activityId="favStore"
-      activityTitle="+20%"
+      activityTitle="lbl_profile_activityPercentage"
       handleComponentChange={[Function]}
     />
     <ProfileInfoActionTile
@@ -147,7 +179,7 @@ exports[`ProfileInfoActions should render correctly for filled state 1`] = `
         }
       }
       activityId="userBirthday"
-      activityTitle="+20%"
+      activityTitle="lbl_profile_activityPercentage"
       handleComponentChange={[Function]}
     />
     <ProfileInfoActionTile
@@ -159,7 +191,7 @@ exports[`ProfileInfoActions should render correctly for filled state 1`] = `
         }
       }
       activityId="aboutYourself"
-      activityTitle="+20%"
+      activityTitle="lbl_profile_activityPercentage"
       handleComponentChange={[Function]}
     />
   </Styled(View)>

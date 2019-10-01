@@ -1,6 +1,12 @@
 import { executeUnbxdAPICall, executeStatefulAPICall } from '../../handler';
 import endpoints from '../../endpoints';
 
+import {
+  responseContainsErrors,
+  ServiceResponseError,
+  getFormattedError,
+} from '../../../utils/errorMessage.util';
+
 export const getUnboxResult = (endPoint, query) =>
   executeUnbxdAPICall({
     body: {
@@ -19,18 +25,23 @@ export const getUnboxResult = (endPoint, query) =>
     webService: endPoint,
   }).then(res => res.body.response.products);
 
-export const getPlpProducts = () => getUnboxResult(endpoints.getProductsBySearchTerm, '2092425');
+export const getPlpProducts = () => getUnboxResult(endpoints.getProductsBySearchTerm, 'denim');
 export const getGiftCardProducts = () =>
   getUnboxResult(endpoints.getProductsBySearchTerm, 'gift card');
 
 export const addCartEcomItem = params =>
   executeStatefulAPICall({ body: params, webService: endpoints.addProductToCart })
-    .then(res => ({
-      orderId: res.body.orderId && res.body.orderId[0],
-      orderItemId: res.body.orderItemId && res.body.orderItemId[0],
-    }))
-    .catch(res => {
-      throw res.error || res.body.error;
+    .then(res => {
+      if (responseContainsErrors(res)) {
+        throw new ServiceResponseError(res);
+      }
+      return {
+        orderId: res.body.orderId && res.body.orderId[0],
+        orderItemId: res.body.orderItemId && res.body.orderItemId[0],
+      };
+    })
+    .catch(err => {
+      throw getFormattedError(err);
     });
 
 export const addCartBopisItem = params =>
@@ -39,7 +50,9 @@ export const addCartBopisItem = params =>
       orderItemId: res.body.orderItemId,
     }))
     .catch(res => {
-      throw res.error || res.body.error;
+      throw (res && res.error) ||
+        (res && res.body && res.body.error) ||
+        'Incorrect response structure';
     });
 
 export default {

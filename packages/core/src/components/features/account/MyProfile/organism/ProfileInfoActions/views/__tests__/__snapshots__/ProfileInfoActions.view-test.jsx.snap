@@ -20,6 +20,7 @@ exports[`ProfileInfoActions should render correctly for empty state 1`] = `
         fontWeight="extrabold"
         letterSpacing="normal"
         lineHeight="normal"
+        link={null}
         textAlign="left"
       />
       <Styled(BodyCopy)
@@ -32,6 +33,7 @@ exports[`ProfileInfoActions should render correctly for empty state 1`] = `
         fontWeight="regular"
         letterSpacing="normal"
         lineHeight="normal"
+        link={null}
         textAlign="left"
       />
     </div>
@@ -53,7 +55,7 @@ exports[`ProfileInfoActions should render correctly for empty state 1`] = `
         activityCompletionState=""
         activityIcon="/static/images/mailingAddress.jpg"
         activityId="mailingAddress"
-        activityTitle="+20%"
+        activityTitle="lbl_profile_activityPercentage"
         dataLocatorPrefix="email"
         redirectAsPath="/account/profile"
         redirectTo="/account?id=profile&subSection=edit-mailing-address"
@@ -80,7 +82,7 @@ exports[`ProfileInfoActions should render correctly for empty state 1`] = `
         activityCompletionState=""
         activityIcon="/static/images/store.jpg"
         activityId="favStore"
-        activityTitle="+20%"
+        activityTitle="lbl_profile_activityPercentage"
         dataLocatorPrefix="favStore"
         redirectTo="/account"
       />
@@ -99,7 +101,7 @@ exports[`ProfileInfoActions should render correctly for empty state 1`] = `
         activityCompletionState=""
         activityIcon="/static/images/birthday.jpg"
         activityId="userBirthday"
-        activityTitle="+20%"
+        activityTitle="lbl_profile_activityPercentage"
         dataLocatorPrefix="birthday"
         redirectAsPath="/account/profile"
         redirectTo="/account?id=profile&subSection=edit-personal-info"
@@ -126,7 +128,7 @@ exports[`ProfileInfoActions should render correctly for empty state 1`] = `
         activityCompletionState=""
         activityIcon="/static/images/survey.png"
         activityId="aboutYourself"
-        activityTitle="+20%"
+        activityTitle="lbl_profile_activityPercentage"
         dataLocatorPrefix="survey"
         noLink={true}
         onClick={[Function]}
@@ -165,6 +167,7 @@ exports[`ProfileInfoActions should render correctly for filled state 1`] = `
         fontWeight="extrabold"
         letterSpacing="normal"
         lineHeight="normal"
+        link={null}
         textAlign="left"
       />
       <Styled(BodyCopy)
@@ -176,6 +179,7 @@ exports[`ProfileInfoActions should render correctly for filled state 1`] = `
         fontWeight="regular"
         letterSpacing="normal"
         lineHeight="normal"
+        link={null}
         textAlign="left"
       />
       <Styled(BodyCopy)
@@ -188,6 +192,7 @@ exports[`ProfileInfoActions should render correctly for filled state 1`] = `
         fontWeight="regular"
         letterSpacing="normal"
         lineHeight="normal"
+        link={null}
         textAlign="left"
       />
       <Styled(BodyCopy)
@@ -199,6 +204,7 @@ exports[`ProfileInfoActions should render correctly for filled state 1`] = `
         fontWeight="regular"
         letterSpacing="normal"
         lineHeight="normal"
+        link={null}
         textAlign="left"
       >
         <Styled(Anchor)
@@ -236,7 +242,7 @@ exports[`ProfileInfoActions should render correctly for filled state 1`] = `
       <Styled(ProfileInfoActionTile)
         activityIcon="/static/images/mailingAddress.jpg"
         activityId="mailingAddress"
-        activityTitle="+20%"
+        activityTitle="lbl_profile_activityPercentage"
         dataLocatorPrefix="email"
         redirectAsPath="/account/profile"
         redirectTo="/account?id=profile&subSection=edit-mailing-address"
@@ -262,7 +268,7 @@ exports[`ProfileInfoActions should render correctly for filled state 1`] = `
       <Styled(ProfileInfoActionTile)
         activityIcon="/static/images/store.jpg"
         activityId="favStore"
-        activityTitle="+20%"
+        activityTitle="lbl_profile_activityPercentage"
         dataLocatorPrefix="favStore"
         redirectTo="/account"
       />
@@ -280,7 +286,7 @@ exports[`ProfileInfoActions should render correctly for filled state 1`] = `
       <Styled(ProfileInfoActionTile)
         activityIcon="/static/images/birthday.jpg"
         activityId="userBirthday"
-        activityTitle="+20%"
+        activityTitle="lbl_profile_activityPercentage"
         dataLocatorPrefix="birthday"
         redirectAsPath="/account/profile"
         redirectTo="/account?id=profile&subSection=edit-personal-info"
@@ -306,7 +312,7 @@ exports[`ProfileInfoActions should render correctly for filled state 1`] = `
       <Styled(ProfileInfoActionTile)
         activityIcon="/static/images/survey.png"
         activityId="aboutYourself"
-        activityTitle="+20%"
+        activityTitle="lbl_profile_activityPercentage"
         dataLocatorPrefix="survey"
         noLink={true}
         onClick={[Function]}

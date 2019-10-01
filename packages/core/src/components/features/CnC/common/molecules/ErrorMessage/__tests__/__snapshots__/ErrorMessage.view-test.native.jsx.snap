@@ -2,7 +2,9 @@
 
 exports[`ErrorMessage Component ErrorMessage should render correctly 1`] = `
 <Fragment>
-  <Styled(View)>
+  <Styled(View)
+    bagPage={false}
+  >
     <Styled(ImageComp)
       alt=""
       host=""
@@ -24,10 +26,14 @@ exports[`ErrorMessage Component ErrorMessage should render correctly 1`] = `
       url=""
     />
     <Styled(BodyCopy)
+      accessibilityText=""
       color="error"
+      dataLocator=""
       fontFamily="secondary"
       fontSize="fs10"
       fontWeight="regular"
+      margin={null}
+      numberOfLines={null}
       style={
         Object {
           "flex": 1,
@@ -35,6 +41,7 @@ exports[`ErrorMessage Component ErrorMessage should render correctly 1`] = `
         }
       }
       text="This is test error"
+      textDecoration={null}
     />
   </Styled(View)>
 </Fragment>

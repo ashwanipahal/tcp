@@ -18,16 +18,16 @@ export {
   createAPIConfig,
   getCountriesMap,
   getCurrenciesMap,
-  getModifiedLanguageCode,
   siteRedirect,
   languageRedirect,
   redirectToPdp,
   getAsPathWithSlug,
   getMappedPageHref,
   handleGenericKeyDown,
-  configurePlpNavigationFromCMSUrl,
   isBopisProduct,
   isBossProduct,
+  viewport,
+  getLocationOrigin,
 } from './utils.web';
 
 export {
@@ -53,6 +53,7 @@ export {
   toTimeString,
   getPromotionalMessage,
   getBirthDateOptionMap,
+  childOptionsMap,
   generateUniqueKeyUsingLabel,
   getErrorSelector,
   formatDate,
@@ -60,4 +61,9 @@ export {
   sanitizeEntity,
   formatPhone,
   parseStoreHours,
+  parseBoolean,
+  configureInternalNavigationFromCMSUrl,
+  getModifiedLanguageCode,
+  getTranslateDateInformation,
+  flattenArray,
 } from './utils';

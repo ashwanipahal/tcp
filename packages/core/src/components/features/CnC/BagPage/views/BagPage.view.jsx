@@ -5,27 +5,75 @@ import withStyles from '../../../../common/hoc/withStyles';
 import Heading from '../../../../common/atoms/Heading';
 import Row from '../../../../common/atoms/Row';
 import Col from '../../../../common/atoms/Col';
+import BodyCopy from '../../../../common/atoms/BodyCopy';
 import AddedToBagActions from '../../AddedToBagActions';
 import CnCTemplate from '../../common/organism/CnCTemplate';
-
+import BAGPAGE_CONSTANTS from '../BagPage.constants';
 import styles, { addedToBagActionsStyles } from '../styles/BagPage.style';
 
-// @flow
-// type Props = {
-//   openState: Function,
-//   onRequestClose: Function,
-//   className: string,
-//   addedToBagData: any,
-//   labels: any,
-//   quantity: number,
-//   handleContinueShopping: Function,
-// };
+class BagPageView extends React.Component {
+  constructor(props) {
+    super(props);
+    this.state = {
+      activeSection: null,
+    };
+  }
 
-class BagPageView extends React.PureComponent {
+  componentDidMount() {
+    const {
+      setVenmoPaymentInProgress,
+      totalCount,
+      sflItems,
+      isShowSaveForLaterSwitch,
+    } = this.props;
+    setVenmoPaymentInProgress(false);
+
+    this.setState({
+      activeSection:
+        !totalCount && sflItems.size && isShowSaveForLaterSwitch
+          ? BAGPAGE_CONSTANTS.SFL_STATE
+          : BAGPAGE_CONSTANTS.BAG_STATE,
+    });
+  }
+
   renderLeftSection = () => {
-    const { labels } = this.props;
+    const { labels, sflItems, isShowSaveForLaterSwitch } = this.props;
+    const { activeSection } = this.state;
     const myBag = 'myBag';
-    return <ProductTileWrapper bagLabels={labels} pageView={myBag} />;
+    return (
+      <React.Fragment>
+        <div
+          className={`bag-section ${
+            activeSection === BAGPAGE_CONSTANTS.BAG_STATE ? 'activeSection' : 'inActiveSection'
+          }`}
+        >
+          <ProductTileWrapper bagLabels={labels} pageView={myBag} showPlccApplyNow />
+        </div>
+        {isShowSaveForLaterSwitch && (
+          <div
+            className={`save-for-later-section ${
+              activeSection === BAGPAGE_CONSTANTS.SFL_STATE ? 'activeSection' : 'inActiveSection'
+            } ${sflItems.size === 0 ? 'hide-on-desktop' : ''}`}
+          >
+            <BodyCopy
+              fontFamily="secondary"
+              fontSize="fs16"
+              fontWeight={['semibold']}
+              className="elem-mt-XXL elem-mb-XL save-for-later-section-heading"
+            >
+              {`${labels.savedForLaterText} (${sflItems.size})`}
+            </BodyCopy>
+            <ProductTileWrapper
+              bagLabels={labels}
+              pageView={myBag}
+              sflItems={sflItems}
+              showPlccApplyNow={false}
+              isBagPageSflSection
+            />
+          </div>
+        )}
+      </React.Fragment>
+    );
   };
 
   renderActions = () => {
@@ -41,25 +89,76 @@ class BagPageView extends React.PureComponent {
     );
   };
 
+  handleChangeActiveSection = sectionName => {
+    this.setState({
+      activeSection: sectionName,
+    });
+  };
+
   render() {
-    const { className, labels, totalCount, orderItemsCount, isUserLoggedIn, isGuest } = this.props;
+    const {
+      className,
+      labels,
+      totalCount,
+      orderItemsCount,
+      isUserLoggedIn,
+      isGuest,
+      sflItems,
+      isShowSaveForLaterSwitch,
+    } = this.props;
+    const { activeSection } = this.state;
     const isNoNEmptyBag = orderItemsCount > 0;
+    const isNonEmptySFL = sflItems.size > 0;
     return (
       <div className={className}>
         <Row tagName="header">
-          <Col colSize={{ small: 3, medium: 4, large: 6 }} className="left-sec">
-            <Heading variant="h6" fontSize="fs16" color="text.primary" className="bag-header">
+          <Col
+            colSize={{ small: 3, medium: 4, large: 6 }}
+            className="left-sec"
+            onClick={() => {
+              this.handleChangeActiveSection(BAGPAGE_CONSTANTS.BAG_STATE);
+            }}
+          >
+            <Heading
+              variant="h6"
+              fontSize="fs16"
+              color="text.primary"
+              className={`bag-header ${
+                activeSection === BAGPAGE_CONSTANTS.BAG_STATE ? 'activeHeader' : ''
+              }`}
+            >
               {`${labels.bagHeading} (${totalCount})`}
             </Heading>
           </Col>
+          {isShowSaveForLaterSwitch && (
+            <Col
+              colSize={{ small: 3, medium: 4, large: 6 }}
+              className="left-sec"
+              onClick={() => {
+                this.handleChangeActiveSection(BAGPAGE_CONSTANTS.SFL_STATE);
+              }}
+            >
+              <Heading
+                variant="h6"
+                fontSize="fs16"
+                color="text.primary"
+                className={`bag-header bag-header-sfl ${
+                  activeSection === BAGPAGE_CONSTANTS.SFL_STATE ? 'activeHeader' : ''
+                }`}
+              >
+                {`${labels.savedLaterButton} (${sflItems.size})`}
+              </Heading>
+            </Col>
+          )}
         </Row>
         <CnCTemplate
           leftSection={this.renderLeftSection}
-          showLeftSection={isNoNEmptyBag}
+          showLeftSection={isNoNEmptyBag && activeSection === BAGPAGE_CONSTANTS.BAG_STATE}
           bagActions={this.renderActions}
           isUserLoggedIn={isUserLoggedIn}
           isGuest={isGuest}
           showAccordian={false}
+          isNonEmptySFL={isNonEmptySFL}
         />
       </div>
     );
@@ -75,6 +174,9 @@ BagPageView.propTypes = {
   isUserLoggedIn: PropTypes.bool.isRequired,
   isGuest: PropTypes.bool.isRequired,
   handleCartCheckout: PropTypes.func.isRequired,
+  sflItems: PropTypes.shape([]).isRequired,
+  setVenmoPaymentInProgress: PropTypes.func.isRequired,
+  isShowSaveForLaterSwitch: PropTypes.bool.isRequired,
 };
 
 export default withStyles(BagPageView, styles);

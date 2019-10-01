@@ -2,6 +2,7 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import { BodyCopy } from '@tcp/core/src/components/common/atoms';
 import PLCCAgreementsWrapper from './styles/PLCCAgreements.style';
+import { getLabelValue } from '../../../../../../utils';
 
 /**
  * @constant PLCCAgreements
@@ -11,17 +12,11 @@ import PLCCAgreementsWrapper from './styles/PLCCAgreements.style';
 const PLCCAgreements = ({ labels }) => {
   return (
     <PLCCAgreementsWrapper>
-      <BodyCopy
-        component="h2"
-        className="title"
-        fontSize="fs16"
-        fontFamily="secondary"
-        tabIndex="0"
-      >
-        {labels.plcc_form_financial_terms}
+      <BodyCopy component="h2" className="title" fontSize="fs16" fontFamily="secondary">
+        {getLabelValue(labels, 'lbl_PLCCForm_financialTermsHeading')}
       </BodyCopy>
       <iframe
-        title={labels.plcc_form_financial_terms}
+        title={getLabelValue(labels, 'lbl_PLCCForm_financialTermsHeading')}
         className="financial-terms-disclosures"
         src="https://comenity.net/childrensplace/common/Legal/disclosures.xhtml"
       />

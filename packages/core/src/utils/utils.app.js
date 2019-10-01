@@ -1,7 +1,7 @@
 /* eslint-disable global-require */
 /* eslint-disable import/no-unresolved */
 import { NavigationActions, StackActions } from 'react-navigation';
-import { Dimensions, Linking, Platform, PixelRatio } from 'react-native';
+import { Dimensions, Linking, Platform, PixelRatio, StyleSheet } from 'react-native';
 import logger from '@tcp/core/src/utils/loggerInstance';
 import AsyncStorage from '@react-native-community/async-storage';
 import { getAPIConfig } from './utils';
@@ -52,16 +52,23 @@ export const importMoreGraphQLQueries = ({ query, resolve, reject }) => {
     case 'moduleX':
       resolve(require('../services/handler/graphQL/queries/moduleX'));
       break;
+    case 'moduleXComposite':
+      resolve(require('../services/handler/graphQL/queries/moduleXComposite'));
+      break;
     case 'moduleA':
       resolve(require('../services/handler/graphQL/queries/moduleA'));
       break;
     case 'moduleN':
-      // eslint-disable-next-line global-require
       resolve(require('../services/handler/graphQL/queries/moduleN'));
       break;
     case 'moduleB':
-      // eslint-disable-next-line global-require
       resolve(require('../services/handler/graphQL/queries/moduleB'));
+      break;
+    case 'moduleR':
+      resolve(require('../services/handler/graphQL/queries/moduleR'));
+      break;
+    case 'moduleJ':
+      resolve(require('../services/handler/graphQL/queries/moduleJ'));
       break;
     default:
       reject();
@@ -122,6 +129,7 @@ const visaSmall = require('../assets/visa-small.png');
 const placeCard = require('../assets/TCP-CC-small.png');
 const giftCardSmall = require('../assets/TCP-gift-small.png');
 const venmoCard = require('../assets/venmo-small.png');
+const paypal = require('../assets/paypal-small.png');
 
 export const getIconCard = icon => {
   switch (icon) {
@@ -139,6 +147,8 @@ export const getIconCard = icon => {
       return placeCard;
     case 'venmo-blue-acceptance-mark':
       return venmoCard;
+    case 'paypal-icon':
+      return paypal;
     default:
       return visaSmall;
   }
@@ -177,7 +187,7 @@ export const navigateToPage = (url, navigation) => {
   const { navigate } = navigation;
   const category = getLandingPage(url);
   const text = url.split('/');
-  const title = text[text.length - 1].replace(/[\W_]+/g, ' ');
+  const titleSplitValue = text[text.length - 1].replace(/[\W_]+/g, ' ');
   switch (category) {
     case URL_PATTERN.PRODUCT_LIST:
       /**
@@ -185,13 +195,18 @@ export const navigateToPage = (url, navigation) => {
        * If url starts with “/p” → Create and navigate to a page in stack for Products (Blank page with a Text - “Product List”)
        */
       return navigate('ProductLanding', {
-        product: title,
+        product: titleSplitValue,
       });
+
     case URL_PATTERN.CATEGORY_LANDING:
       /**
        * /c/* - If url starts with “/c” (* can be anything in url) → Select “CATEGORY_LANDING” tab in tabbar and Open CATEGORY_LANDING page
        */
-      return navigate('ProductLanding');
+      return navigate('ProductListing', {
+        url,
+        title: titleSplitValue,
+        reset: true,
+      });
     default:
       return null;
   }
@@ -509,4 +524,54 @@ export const getPixelRatio = () => {
 
 export default {
   getSiteId,
+};
+
+/**
+ * INFO: Use this function only after accessibility props is set.
+ * This adds unique identifier as testId or accessibiliyLabel when the build
+ * type is of automation variant. For dev, alpha, release builds
+ * it will return an empty object and won't override anything.
+ */
+const isAutomation = false;
+export function setTestId(id) {
+  if (id === false) {
+    return {};
+  }
+  if (isAutomation) {
+    return Platform.select({
+      ios: {
+        testID: id,
+      },
+      android: {
+        accessibilityLabel: id,
+      },
+    });
+  }
+  return {};
+}
+
+/**
+ * Avoid breaking of the app if author accidentally pass invalid color from the CMS.
+ * Return null if color is invalid else return the color.
+ * @param {String} color Color string to validate
+ */
+export const validateColor = color => {
+  let colorSheet = {
+    viewColor: {
+      color: null,
+    },
+  };
+  try {
+    colorSheet = StyleSheet.create({
+      // eslint-disable-next-line react-native/no-unused-styles
+      viewColor: {
+        color,
+      },
+    });
+  } catch (e) {
+    // eslint-disable-next-line no-console
+    console.warn(`Invalid color: ${color}`);
+  }
+
+  return colorSheet.viewColor.color;
 };

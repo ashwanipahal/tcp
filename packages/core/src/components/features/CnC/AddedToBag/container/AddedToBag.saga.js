@@ -1,11 +1,15 @@
 import { call, takeLatest, put } from 'redux-saga/effects';
-// import { validateReduxCache } from '../../../../../utils/cache.util';
 import ADDEDTOBAG_CONSTANTS from '../AddedToBag.constants';
 import {
   addCartEcomItem,
   addCartBopisItem,
 } from '../../../../../services/abstractors/CnC/AddedToBag';
-import { AddToCartError, SetAddedToBagData, openAddedToBag } from './AddedToBag.actions';
+import {
+  AddToCartError,
+  SetAddedToBagData,
+  openAddedToBag,
+  clearAddToBagErrorState,
+} from './AddedToBag.actions';
 import BAG_PAGE_ACTIONS from '../../BagPage/container/BagPage.actions';
 import { getAPIConfig } from '../../../../../utils';
 
@@ -21,6 +25,8 @@ export function* addToCartEcom({ payload }) {
       langId,
     };
 
+    const { callBack, fromMoveToBag } = payload;
+
     const params = {
       ...apiConfigParams,
       orderId: '.',
@@ -31,6 +37,7 @@ export function* addToCartEcom({ payload }) {
       'calculationUsage[]': '-7',
       externalId: wishlistItemId || '',
     };
+    yield put(clearAddToBagErrorState());
     const res = yield call(addCartEcomItem, params);
     yield put(
       SetAddedToBagData({
@@ -38,20 +45,30 @@ export function* addToCartEcom({ payload }) {
         ...res,
       })
     );
-    yield put(openAddedToBag());
+    if (callBack) {
+      callBack();
+    }
+    if (!fromMoveToBag) {
+      yield put(openAddedToBag());
+    }
+
     yield put(BAG_PAGE_ACTIONS.getOrderDetails());
   } catch (err) {
-    yield put(AddToCartError(err));
+    const errMsg = err && err.errorResponse && err.errorResponse.errorMessage;
+    yield put(AddToCartError(errMsg));
   }
 }
 
 export function* addItemToCartBopis({ payload }) {
   try {
     const {
-      storeLocId,
-      isBoss,
-      quantity,
-      skuInfo: { skuId, variantId, variantNo },
+      productInfo: {
+        storeLocId,
+        isBoss,
+        quantity,
+        skuInfo: { skuId, variantId, variantNo },
+      },
+      callback,
     } = payload;
     const PICKUP_TYPE = {
       boss: 'boss',
@@ -67,6 +84,9 @@ export function* addItemToCartBopis({ payload }) {
       itemPartNumber: variantId,
     };
     const res = yield call(addCartBopisItem, params);
+    if (callback) {
+      callback();
+    }
     yield put(
       SetAddedToBagData({
         ...payload,

@@ -1,3 +1,4 @@
+/* istanbul ignore file */
 import React from 'react';
 import PropTypes from 'prop-types';
 import { Col, Row, Image, Anchor, BodyCopy } from '@tcp/core/src/components/common/atoms';
@@ -29,7 +30,6 @@ class HeaderMiddleNav extends React.PureComponent {
     const { isLoggedIn, cartItemCount } = props;
     this.state = {
       isSearchOpen: false,
-      isOpenMiniBagModal: false,
       userNameClick: true,
       triggerLoginCreateAccount: true,
       isLoggedIn: isLoggedIn || false,
@@ -72,17 +72,19 @@ class HeaderMiddleNav extends React.PureComponent {
     }
   };
 
-  toggleMiniBagModal = ({ e, isOpen, isRouting }) => {
+  updateCartItemCount = () => {
+    this.setState({
+      cartItemCount: getCartItemCount(),
+    });
+  };
+
+  openMiniBag = e => {
     if (e) e.preventDefault();
-    if (window.innerWidth <= breakpoints.values.lg && !isRouting) {
+    if (window.innerWidth <= breakpoints.values.lg) {
       routerPush('/bag', '/bag');
     } else {
-      this.setState({ isOpenMiniBagModal: isOpen });
-      if (!isOpen) {
-        this.setState({
-          cartItemCount: getCartItemCount(),
-        });
-      }
+      const { openMiniBagDispatch } = this.props;
+      openMiniBagDispatch();
     }
   };
 
@@ -96,13 +98,7 @@ class HeaderMiddleNav extends React.PureComponent {
       userName,
     } = this.props;
     const brand = getBrand();
-    const {
-      isOpenMiniBagModal,
-      userNameClick,
-      triggerLoginCreateAccount,
-      cartItemCount,
-      isSearchOpen,
-    } = this.state;
+    const { userNameClick, triggerLoginCreateAccount, cartItemCount, isSearchOpen } = this.state;
 
     return (
       <React.Fragment>
@@ -210,7 +206,7 @@ class HeaderMiddleNav extends React.PureComponent {
                 to=""
                 id="cartIcon"
                 className="rightLink"
-                onClick={e => this.toggleMiniBagModal({ e, isOpen: true })}
+                onClick={e => this.openMiniBag(e)}
                 fontSizeVariation="small"
                 anchorVariation="primary"
                 noLink
@@ -218,7 +214,7 @@ class HeaderMiddleNav extends React.PureComponent {
                 <Image
                   alt="Product"
                   className="product-image"
-                  src={getIconPath(`cart-icon-${cartItemCount ? cartItemCount.length : 1}`)}
+                  src={getIconPath('cart-icon-1')}
                   data-locator="addedtobag-bag-icon"
                 />
                 <BodyCopy
@@ -242,6 +238,7 @@ class HeaderMiddleNav extends React.PureComponent {
         >
           <Col
             className="header-middle-nav-bar"
+            id="header-middle-nav"
             colSize={{
               large: 12,
               medium: 8,
@@ -255,11 +252,7 @@ class HeaderMiddleNav extends React.PureComponent {
             />
           </Col>
         </Row>
-        <MiniBagContainer
-          isOpen={isOpenMiniBagModal}
-          toggleMiniBagModal={this.toggleMiniBagModal}
-          userName={userName}
-        />
+        <MiniBagContainer userName={userName} updateCartItemCount={this.updateCartItemCount} />
       </React.Fragment>
     );
   }
@@ -274,6 +267,7 @@ HeaderMiddleNav.propTypes = {
   openOverlay: PropTypes.func.isRequired,
   isLoggedIn: PropTypes.bool.isRequired,
   cartItemCount: PropTypes.func.isRequired,
+  openMiniBagDispatch: PropTypes.func.isRequired,
 };
 
 HeaderMiddleNav.defaultProps = {

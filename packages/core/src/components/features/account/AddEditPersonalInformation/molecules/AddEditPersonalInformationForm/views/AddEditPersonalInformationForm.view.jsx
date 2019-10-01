@@ -27,6 +27,7 @@ export const AddEditPersonalInformationForm = ({
   birthMonthOptionsMap,
   birthYearOptionsMap,
   isEmployee,
+  personalInfoErrorMessage,
 }) => {
   return (
     <form
@@ -35,11 +36,11 @@ export const AddEditPersonalInformationForm = ({
       onSubmit={handleSubmit}
       noValidate
     >
-      {errorMessage && (
+      {errorMessage && personalInfoErrorMessage && (
         <Notification
           className="elem-mt-MED"
           status="error"
-          message={labels[`lbl_profile_error_${errorMessage}`]}
+          message={`${personalInfoErrorMessage}`}
         />
       )}
       <Row fullBleed className="elem-mt-XXL">
@@ -123,7 +124,7 @@ export const AddEditPersonalInformationForm = ({
               />
             </Col>
           </Row>
-          <BodyCopy fontFamily="secondary" fontSize="fs12">
+          <BodyCopy className="elem-mt-XS" fontFamily="secondary" fontSize="fs12">
             {labels.lbl_profile_celebration_birthday}
           </BodyCopy>
         </Col>
@@ -245,6 +246,7 @@ AddEditPersonalInformationForm.propTypes = {
   handleSubmit: PropTypes.func.isRequired,
   className: PropTypes.string,
   isEmployee: PropTypes.string.isRequired,
+  personalInfoErrorMessage: PropTypes.string,
 };
 
 AddEditPersonalInformationForm.defaultProps = {
@@ -263,6 +265,7 @@ AddEditPersonalInformationForm.defaultProps = {
     lbl_profile_personal_info_cancelCta: '',
     lbl_profile_personal_info_updateCta: '',
   },
+  personalInfoErrorMessage: '',
 };
 
 const validateMethod = createValidateMethod(
@@ -273,7 +276,8 @@ const validateMethod = createValidateMethod(
     'associateId',
     'airMilesAccountNumber',
     'Email',
-    { userBirthMonth: 'userDateOfBirth' },
+    'userBirthMonth',
+    'userBirthYear',
   ])
 );
 

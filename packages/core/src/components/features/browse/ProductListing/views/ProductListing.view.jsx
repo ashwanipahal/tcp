@@ -5,6 +5,8 @@ import { Row, Col } from '../../../../common/atoms';
 import ProductsGrid from '../molecules/ProductsGrid/views';
 import GlobalNavigationMenuDesktopL2 from '../molecules/GlobalNavigationMenuDesktopL2/views';
 import withStyles from '../../../../common/hoc/withStyles';
+import PickupStoreModal from '../../../../common/organisms/PickupStoreModal';
+import QuickViewModal from '../../../../common/organisms/QuickViewModal/container/QuickViewModal.container';
 
 import ProductListingStyle from '../ProductListing.style';
 
@@ -13,6 +15,8 @@ import FixedBreadCrumbs from '../molecules/FixedBreadCrumbs/views';
 import ProductListingFiltersForm from '../molecules/ProductListingFiltersForm';
 import ReadMore from '../molecules/ReadMore/views';
 import SpotlightContainer from '../molecules/Spotlight/container/Spotlight.container';
+import LoadedProductsCount from '../molecules/LoadedProductsCount/views';
+import AddedToBagContainer from '../../../CnC/AddedToBag';
 
 const ProductListView = ({
   className,
@@ -31,6 +35,10 @@ const ProductListView = ({
   formValues,
   getProducts,
   onSubmit,
+  sortLabels,
+  slpLabels,
+  isPickupModalOpen,
+  onPickUpOpenClick,
   ...otherProps
 }) => {
   return (
@@ -68,21 +76,16 @@ const ProductListView = ({
                 onSubmit={onSubmit}
                 formValues={formValues}
                 getProducts={getProducts}
+                sortLabels={sortLabels}
+                slpLabels={slpLabels}
               />
             </div>
           </Col>
-          <Col colSize={{ small: 6, medium: 8, large: 12 }}>
-            <div className="count-section">
-              {totalProductsCount > 0 && (
-                <span className="items-count-content">
-                  Showing
-                  <span className="items-count-content-number">
-                    {totalProductsCount > 0 ? totalProductsCount : 0}
-                  </span>
-                  {totalProductsCount > 1 ? 'Items' : 'Item'}
-                </span>
-              )}
-            </div>
+          <Col colSize={{ small: 6, medium: 8, large: 12 }} className="show-count-section">
+            <LoadedProductsCount
+              totalProductsCount={totalProductsCount}
+              showingItemsLabel={slpLabels}
+            />
           </Col>
           <Col colSize={{ small: 6, medium: 8, large: 12 }}>
             <ProductsGrid productsBlock={productsBlock} labels={labels} {...otherProps} />
@@ -100,6 +103,9 @@ const ProductListView = ({
           </Col>
         </Col>
       </Row>
+      {isPickupModalOpen ? <PickupStoreModal /> : null}
+      <QuickViewModal onPickUpOpenClick={onPickUpOpenClick} />
+      <AddedToBagContainer />
     </div>
   );
 };
@@ -121,7 +127,11 @@ ProductListView.propTypes = {
   labelsFilter: PropTypes.objectOf(PropTypes.oneOfType([PropTypes.string])),
   getProducts: PropTypes.func,
   onSubmit: PropTypes.func,
+  isPickupModalOpen: PropTypes.bool,
   formValues: PropTypes.shape({}).isRequired,
+  onPickUpOpenClick: PropTypes.func.isRequired,
+  sortLabels: PropTypes.arrayOf(PropTypes.shape({})),
+  slpLabels: PropTypes.objectOf(PropTypes.oneOfType([PropTypes.string])),
 };
 
 ProductListView.defaultProps = {
@@ -138,6 +148,9 @@ ProductListView.defaultProps = {
   categoryId: '',
   labels: {},
   labelsFilter: {},
+  sortLabels: [],
+  slpLabels: {},
+  isPickupModalOpen: false,
 };
 
 export default withStyles(ProductListView, ProductListingStyle);

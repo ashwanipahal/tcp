@@ -154,10 +154,15 @@ exports[`AddEditPersonalInformationForm component should renders correctly in in
   />
   <Styled(View)>
     <Styled(BodyCopy)
+      accessibilityText=""
+      dataLocator=""
       fontFamily="secondary"
       fontSize="fs12"
       fontWeight="regular"
+      margin={null}
+      numberOfLines={null}
       text="lbl_profile_email_used_login"
+      textDecoration={null}
     />
   </Styled(View)>
   <Styled(View)>
@@ -243,6 +248,7 @@ exports[`AddEditPersonalInformationForm component should renders correctly in in
   background-color: ",
                 [Function],
                 ";
+  width: 100%;
 ",
                 ";
   ",
@@ -365,6 +371,7 @@ exports[`AddEditPersonalInformationForm component should renders correctly in in
   background-color: ",
                 [Function],
                 ";
+  width: 100%;
 ",
                 ";
   ",
@@ -455,10 +462,15 @@ exports[`AddEditPersonalInformationForm component should renders correctly in in
   </Styled(View)>
   <Styled(View)>
     <Styled(BodyCopy)
+      accessibilityText=""
+      dataLocator=""
       fontFamily="secondary"
       fontSize="fs12"
       fontWeight="regular"
+      margin={null}
+      numberOfLines={null}
       text="lbl_profile_celebration_birthday"
+      textDecoration={null}
     />
   </Styled(View)>
   <Styled(View)>
@@ -524,19 +536,52 @@ exports[`AddEditPersonalInformationForm component should renders correctly in in
     />
   </Styled(View)>
   <Styled(View)>
-    <Styled(WithTheme(CustomButton))
+    <Styled(CustomButton)
+      active={false}
       buttonVariation="variable-width"
       color="white"
+      customStyle={Object {}}
+      customTextStyle={null}
+      disableButton={false}
       fill="BLUE"
+      fullWidth=""
+      iconColor="gray.800"
+      iconName="chevron-down"
+      iconSize="fs12"
+      locator=""
+      navigation={Object {}}
+      onPress={null}
+      selected={false}
+      selectedIcon="chevron-up"
+      showIcon={false}
       text="lbl_profile_personal_info_updateCta"
+      theme={Object {}}
       type="submit"
+      url=""
     />
   </Styled(View)>
   <Styled(View)>
-    <Styled(WithTheme(CustomButton))
+    <Styled(CustomButton)
+      active={false}
       buttonVariation="variable-width"
+      color=""
+      customStyle={Object {}}
+      customTextStyle={null}
+      disableButton={false}
       fill="WHITE"
+      fullWidth=""
+      iconColor="gray.800"
+      iconName="chevron-down"
+      iconSize="fs12"
+      locator=""
+      navigation={Object {}}
+      onPress={null}
+      selected={false}
+      selectedIcon="chevron-up"
+      showIcon={false}
       text="lbl_profile_personal_info_cancelCta"
+      theme={Object {}}
+      url=""
     />
   </Styled(View)>
 </Styled(View)>

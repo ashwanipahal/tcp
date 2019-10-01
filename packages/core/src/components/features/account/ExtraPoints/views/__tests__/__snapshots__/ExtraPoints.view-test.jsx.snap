@@ -1,0 +1,142 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`EarnPointsVanilla component should renders correctly 1`] = `
+<div
+  className="className"
+>
+  <Styled(FormPageHeading)
+    heading="lbl_common_extraPointsHeading"
+  />
+  <Styled(Notification)
+    alt="lbl_earnExtraPoints_imageAlt"
+    className="elem-mt-MED"
+    status="info"
+  >
+    <Styled(BodyCopy)
+      className="elem-mr-LRG"
+      color="text.primary"
+      component="span"
+      fontFamily="secondary"
+      fontSize="fs14"
+      fontWeight="extrabold"
+      letterSpacing="normal"
+      lineHeight="normal"
+      link={null}
+      textAlign="left"
+    >
+      09/17/19
+    </Styled(BodyCopy)>
+    lbl_earnExtraPoints_you_earned 5 lbl_earnExtraPoints_place_rewards 
+    <Styled(Anchor)
+      anchorVariation="primary"
+      asPath="/account/place-rewards/points-history"
+      className="elem-ml-XS"
+      dataLocator="view-points-history"
+      fontSizeVariation="large"
+      to="/account?id=place-rewards&subSection=points-history"
+      underline={true}
+    >
+      lbl_earnExtraPoints_view_points_history
+    </Styled(Anchor)>
+  </Styled(Notification)>
+  <Styled(BodyCopy)
+    className="morePointsWrapper"
+    color="text.primary"
+    component="p"
+    fontFamily="secondary"
+    fontSize="fs18"
+    fontWeight="semibold"
+    letterSpacing="normal"
+    lineHeight="normal"
+    link={null}
+    textAlign="center"
+  >
+    lbl_extraExtraPoints_more_points
+  </Styled(BodyCopy)>
+  <Styled(Row)
+    className="elem-mt-LRG"
+    fullBleed={true}
+  >
+    <Styled(Col)
+      colSize={
+        Object {
+          "large": 6,
+          "medium": 4,
+          "small": 6,
+        }
+      }
+    >
+      <Styled(DetailedEarnExtraPointsSingleTile)
+        key="0"
+        labels={Object {}}
+        onViewActivityDetails={[Function]}
+        viewAll={true}
+        waysToEarnRow={
+          Object {
+            "activityCode": "AppDownload",
+            "activityTitle": "Earn 5 Points 1",
+            "description": "Download & Log in to our App",
+            "displayOrder": 1,
+            "iconImage": "/wcsstore/static/images/download-app.jpg",
+          }
+        }
+      />
+    </Styled(Col)>
+    <Styled(Col)
+      className="extraPointsTileCol"
+      colSize={
+        Object {
+          "large": 3,
+          "medium": 2,
+          "small": 3,
+        }
+      }
+    >
+      <Styled(DetailedEarnExtraPointsTile)
+        key="1"
+        labels={Object {}}
+        onViewActivityDetails={[Function]}
+        viewAll={true}
+        waysToEarnRow={
+          Object {
+            "activityCode": "AppDownload",
+            "activityTitle": "Earn 5 Points",
+            "description": "Download & Log in to our App",
+            "displayOrder": 1,
+            "iconImage": "/wcsstore/static/images/download-app.jpg",
+          }
+        }
+      />
+    </Styled(Col)>
+  </Styled(Row)>
+  <Styled(Row)
+    fullBleed={true}
+  />
+  <Styled(BodyCopy)
+    className="elem-mt-XL"
+    color="text.primary"
+    component="p"
+    fontFamily="secondary"
+    fontSize="fs14"
+    fontWeight="regular"
+    letterSpacing="normal"
+    lineHeight="normal"
+    link={null}
+    textAlign="left"
+  >
+    <Styled(Anchor)
+      anchorVariation="primary"
+      dataLocator="shipping-email-signUp-contact-anchor"
+      fontSizeVariation="large"
+      href="https://www.childrensplace.com/us/content/mpr-terms"
+      noLink={true}
+      noUnderline={true}
+      target="_blank"
+      underline={true}
+    >
+      lbl_common_check_here
+    </Styled(Anchor)>
+    lbl_common_extra_points_terms_conditions
+  </Styled(BodyCopy)>
+</div>
+`;

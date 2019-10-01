@@ -10,6 +10,7 @@ exports[`PointHistoryPage component should renders correctly 1`] = `
   fontWeight="regular"
   letterSpacing="normal"
   lineHeight="normal"
+  link={null}
   textAlign="left"
 >
   <Styled(BodyCopy)
@@ -21,6 +22,7 @@ exports[`PointHistoryPage component should renders correctly 1`] = `
     fontWeight="regular"
     letterSpacing="normal"
     lineHeight="normal"
+    link={null}
     textAlign="left"
   >
     <Styled(Anchor)
@@ -37,7 +39,7 @@ exports[`PointHistoryPage component should renders correctly 1`] = `
   </Styled(BodyCopy)>
   <Styled(FormPageHeading)
     className="elem-mb-XL"
-    data-locator="historyPointsLbl"
+    dataLocator="points_history_heading"
   />
   <Styled(BodyCopy)
     className="elem-mb-XXL elem-mt-XXL elem-pb-MED"
@@ -48,17 +50,20 @@ exports[`PointHistoryPage component should renders correctly 1`] = `
     fontWeight="regular"
     letterSpacing="normal"
     lineHeight="normal"
+    link={null}
     textAlign="left"
   >
     <Styled(BodyCopy)
       className="hide-on-desktop hide-on-tablet elem-mb-LRG"
       color="text.primary"
       component="p"
+      dataLocator="points_history_subheading"
       fontFamily="secondary"
       fontSize="fs16"
       fontWeight="extrabold"
       letterSpacing="normal"
       lineHeight="normal"
+      link={null}
       textAlign="left"
     />
     <Connect(PointsHistoryContainer)
@@ -71,16 +76,41 @@ exports[`PointHistoryPage component should renders correctly 1`] = `
     className="history-section-separator hide-on-mobile elem-mb-XXL elem-mt-XXL"
     color="text.primary"
     component="div"
+    data-locator="points_history_separator"
     fontFamily="primary"
     fontSize={12}
     fontWeight="regular"
     letterSpacing="normal"
     lineHeight="normal"
+    link={null}
     textAlign="left"
   />
   <Styled(HistoryPointsRichText)
     content=""
   />
+  <Styled(BodyCopy)
+    className="elem-mb-XXL elem-mt-XXL"
+    color="text.primary"
+    component="div"
+    fontFamily="primary"
+    fontSize={12}
+    fontWeight="regular"
+    letterSpacing="normal"
+    lineHeight="normal"
+    link={null}
+    textAlign="left"
+  >
+    <Styled(Anchor)
+      anchorVariation="primary"
+      asPath="/account/place-rewards/points-claim"
+      data-locator="claim form link"
+      fontSizeVariation="xlarge"
+      to="/account?id=place-rewards&subSection=points-claim"
+      underline={true}
+    >
+      Points Claim Form
+    </Styled(Anchor)>
+  </Styled(BodyCopy)>
   <Styled(Row)
     className="elem-pt-XXL"
   >
@@ -107,6 +137,7 @@ exports[`PointHistoryPage component should renders correctly 1`] = `
         fontSizeVariation="large"
         href="https://www.childrensplace.com/us/content/myplace-rewards-page"
         noLink={true}
+        target="_blank"
         underline={true}
       />
       <Styled(Anchor)

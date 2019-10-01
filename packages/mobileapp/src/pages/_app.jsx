@@ -1,9 +1,11 @@
 import React from 'react';
-import { Platform, StatusBar, StyleSheet, View, UIManager } from 'react-native';
+import { Platform, StatusBar, StyleSheet, UIManager } from 'react-native';
+import { Box } from '@fabulas/astly';
 import { Provider } from 'react-redux';
 import { PropTypes } from 'prop-types';
 import NetworkProvider from '@tcp/core/src/components/common/hoc/NetworkProvider.app';
 import { createAPIConfig, switchAPIConfig, resetApiConfig, isAndroid } from '@tcp/core/src/utils';
+import { getUserInfo } from '@tcp/core/src/components/features/account/User/container/User.actions';
 import env from 'react-native-config';
 // eslint-disable-next-line
 import ReactotronConfig from './Reactotron';
@@ -46,6 +48,10 @@ export class App extends React.PureComponent {
     }
   }
 
+  componentDidMount() {
+    this.store.dispatch(getUserInfo());
+  }
+
   removeSplash = () => {
     this.setState({ isSplashVisible: false });
   };
@@ -81,14 +87,14 @@ export class App extends React.PureComponent {
       <Provider store={this.store}>
         <NetworkProvider>
           <ThemeWrapperHOC appType={appType} switchBrand={this.switchBrand}>
-            <View style={styles.container}>
+            <Box style={styles.container}>
               {Platform.OS === 'ios' && <StatusBar barStyle="default" />}
               <AppNavigator
                 screenProps={{ toggleBrandAction: this.toggleBrandAction, apiConfig }}
               />
               {isSplashVisible && <AppSplash appType={appType} removeSplash={this.removeSplash} />}
               {showBrands && <AnimatedBrandChangeIcon toggleBrandAction={this.toggleBrandAction} />}
-            </View>
+            </Box>
           </ThemeWrapperHOC>
         </NetworkProvider>
       </Provider>

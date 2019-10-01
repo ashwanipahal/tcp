@@ -16,12 +16,22 @@ class BillingPage extends React.PureComponent {
     isGuest: PropTypes.bool.isRequired,
     shippingAddress: PropTypes.shape({}),
     cvvCodeRichText: PropTypes.string,
+    addressLabels: PropTypes.shape({}),
+    billingData: PropTypes.shape({}),
+    userAddresses: PropTypes.shape({}),
+    creditFieldLabels: PropTypes.shape({}),
+    isVenmoPaymentInProgress: PropTypes.bool,
   };
 
   static defaultProps = {
     className: '',
     shippingAddress: null,
     cvvCodeRichText: null,
+    addressLabels: null,
+    billingData: {},
+    userAddresses: null,
+    creditFieldLabels: {},
+    isVenmoPaymentInProgress: false,
   };
 
   render() {
@@ -33,9 +43,13 @@ class BillingPage extends React.PureComponent {
       submitBilling,
       shippingAddress,
       cvvCodeRichText,
+      addressLabels,
+      billingData,
+      userAddresses,
+      creditFieldLabels,
+      isVenmoPaymentInProgress,
     } = this.props;
     const { header, backLinkPickup, backLinkShipping, nextSubmitText } = labels;
-
     return (
       <div className={className}>
         <CheckoutSectionTitleDisplay title={header} dataLocator="billing-title" />
@@ -51,6 +65,12 @@ class BillingPage extends React.PureComponent {
               nextSubmitText={nextSubmitText}
               cvvCodeRichText={cvvCodeRichText}
               labels={labels}
+              billingData={billingData}
+              addressLabels={addressLabels}
+              shippingAddress={shippingAddress}
+              userAddresses={userAddresses}
+              creditFieldLabels={creditFieldLabels}
+              isVenmoPaymentInProgress={isVenmoPaymentInProgress}
             />
           </div>
         ) : (
@@ -58,6 +78,15 @@ class BillingPage extends React.PureComponent {
             shippingAddress={shippingAddress}
             cvvCodeRichText={cvvCodeRichText}
             labels={labels}
+            isGuest={isGuest}
+            addressLabels={addressLabels}
+            backLinkPickup={backLinkPickup}
+            backLinkShipping={backLinkShipping}
+            nextSubmitText={nextSubmitText}
+            orderHasShipping={orderHasShipping}
+            billingData={billingData}
+            creditFieldLabels={creditFieldLabels}
+            isVenmoPaymentInProgress={isVenmoPaymentInProgress}
           />
         )}
       </div>

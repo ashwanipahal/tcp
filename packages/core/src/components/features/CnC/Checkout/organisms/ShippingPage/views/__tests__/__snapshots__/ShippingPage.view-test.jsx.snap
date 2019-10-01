@@ -12,7 +12,7 @@ exports[`Shipping Page should render correctly 1`] = `
     }
     addressPhoneNo={null}
     defaultShipmentId={null}
-    destroyOnUnmount={false}
+    destroyOnUnmount={true}
     enableReinitialize={false}
     forceUnregisterOnUnmount={false}
     form="checkoutShipping"
@@ -36,6 +36,8 @@ exports[`Shipping Page should render correctly 1`] = `
     isOrderUpdateChecked={false}
     isSaveToAddressBookChecked={false}
     isUsSite={true}
+    isVenmoPaymentInProgress={false}
+    isVenmoShippingDisplayed={true}
     keepDirtyOnReinitialize={false}
     loadShipmentMethods={[Function]}
     newUserPhoneNo={null}
@@ -84,7 +86,7 @@ exports[`Shipping Page should render correctly with component did update and get
     addressPhoneNo={null}
     defaultAddressId="34789"
     defaultShipmentId={null}
-    destroyOnUnmount={false}
+    destroyOnUnmount={true}
     enableReinitialize={false}
     forceUnregisterOnUnmount={false}
     form="checkoutShipping"
@@ -94,7 +96,7 @@ exports[`Shipping Page should render correctly with component did update and get
         "address": Object {
           "country": "US",
         },
-        "onFileAddressKey": null,
+        "onFileAddressKey": "123",
         "saveToAddressBook": false,
         "shipmentMethods": Object {
           "shippingMethodId": null,
@@ -108,6 +110,8 @@ exports[`Shipping Page should render correctly with component did update and get
     isOrderUpdateChecked={false}
     isSaveToAddressBookChecked={false}
     isUsSite={true}
+    isVenmoPaymentInProgress={false}
+    isVenmoShippingDisplayed={true}
     keepDirtyOnReinitialize={false}
     loadShipmentMethods={
       [MockFunction] {
@@ -188,7 +192,7 @@ exports[`Shipping Page should render correctly with component did update and get
     addressPhoneNo={null}
     defaultAddressId="123"
     defaultShipmentId={null}
-    destroyOnUnmount={false}
+    destroyOnUnmount={true}
     enableReinitialize={false}
     forceUnregisterOnUnmount={false}
     form="checkoutShipping"
@@ -198,7 +202,7 @@ exports[`Shipping Page should render correctly with component did update and get
         "address": Object {
           "country": "US",
         },
-        "onFileAddressKey": null,
+        "onFileAddressKey": "123",
         "saveToAddressBook": false,
         "shipmentMethods": Object {
           "shippingMethodId": null,
@@ -212,6 +216,8 @@ exports[`Shipping Page should render correctly with component did update and get
     isOrderUpdateChecked={false}
     isSaveToAddressBookChecked={false}
     isUsSite={true}
+    isVenmoPaymentInProgress={false}
+    isVenmoShippingDisplayed={true}
     keepDirtyOnReinitialize={false}
     loadShipmentMethods={
       [MockFunction] {

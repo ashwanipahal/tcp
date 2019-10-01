@@ -14,17 +14,27 @@ exports[`Modal Native should render correctly 1`] = `
       hidden={true}
       showHideTransition="fade"
     />
-    <Styled(View)>
+    <Styled(View)
+      isOverlay={false}
+    >
       <Styled(Text)>
         <Styled(BodyCopy)
+          accessibilityText=""
+          dataLocator=""
           fontSize="fs16"
           fontWeight="extrabold"
+          margin={null}
           mobileFontFamily="primary"
+          numberOfLines={null}
           text="Modal Heading"
+          textDecoration={null}
         />
       </Styled(Text)>
       <Styled(View)>
         <Styled(TouchableOpacity)
+          accessibilityLabel="close"
+          accessibilityRole="button"
+          isOverlay={false}
           onPress={[MockFunction]}
         >
           <Styled(Image)
@@ -45,6 +55,10 @@ exports[`Modal Native should render correctly 1`] = `
         marginTop={5}
       />
     </Styled(View)>
+    <ScrollViewMock
+      keyboardShouldPersistTaps="handled"
+      showsVerticalScrollIndicator={false}
+    />
   </Component>
 </SafeAreaView>
 `;

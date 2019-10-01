@@ -1,8 +1,8 @@
 import React from 'react';
 import { connect } from 'react-redux';
 import PropTypes from 'prop-types';
-import ApplyCardLayoutView from '../views/ApplyCardLayout.View';
-import { fetchModuleX, submitInstantCardApplication } from './ApplyCard.actions';
+import ApplyCardLayoutView from '../views';
+import { fetchModuleX, resetPLCCResponse, submitInstantCardApplication } from './ApplyCard.actions';
 import { isPlccUser } from '../../../account/User/container/User.selectors';
 import { getUserProfileData, getUserId, getBagItemsSize, isGuest } from './ApplyCard.selectors';
 import AddressVerification from '../../../../common/organisms/AddressVerification/container/AddressVerification.container';
@@ -25,6 +25,9 @@ class ApplyCardLayoutContainer extends React.Component {
     approvedPLCCData: PropTypes.shape({}).isRequired,
     isGuestUser: PropTypes.bool.isRequired,
     userId: PropTypes.string.isRequired,
+    applyCard: PropTypes.bool.isRequired,
+    toggleModal: PropTypes.shape({}).isRequired,
+    resetPLCCApplicationStatus: PropTypes.func.isRequired,
   };
   /**
    *  @function - constructor
@@ -109,6 +112,9 @@ class ApplyCardLayoutContainer extends React.Component {
       labels,
       plccUser,
       profileInfo,
+      applyCard,
+      toggleModal,
+      resetPLCCApplicationStatus,
     } = this.props;
     const { showAddEditAddressForm } = this.state;
     return (
@@ -124,6 +130,10 @@ class ApplyCardLayoutContainer extends React.Component {
           plccUser={plccUser}
           profileInfo={profileInfo}
           isPLCCModalFlow={isPLCCModalFlow}
+          toggleModal={toggleModal}
+          applyCard={applyCard}
+          onSubmit={this.submitPLCCForm}
+          resetPLCCApplicationStatus={resetPLCCApplicationStatus}
         />
         {showAddEditAddressForm ? <AddressVerification onSuccess={this.submitForm} /> : null}
       </React.Fragment>
@@ -134,14 +144,14 @@ class ApplyCardLayoutContainer extends React.Component {
 export const mapStateToProps = state => {
   const { ApplyCardPage, Labels } = state;
   return {
-    applicationStatus: ApplyCardPage.applicationStatus,
-    approvedPLCCData: ApplyCardPage.approvedPLCCData,
-    plccData: ApplyCardPage.plccData,
+    applicationStatus: ApplyCardPage && ApplyCardPage.applicationStatus,
+    approvedPLCCData: ApplyCardPage && ApplyCardPage.approvedPLCCData,
+    plccData: ApplyCardPage && ApplyCardPage.plccData,
     plccUser: isPlccUser(state),
     bagItems: getBagItemsSize(state),
     isGuestUser: isGuest(state),
     profileInfo: getUserProfileData(state),
-    labels: Labels && Labels.PLCC && Labels.PLCC.plccForm,
+    labels: Labels && Labels.global && Labels.global.plccForm,
     userId: getUserId(state),
   };
 };
@@ -153,6 +163,9 @@ export const mapDispatchToProps = dispatch => {
     },
     fetchModuleXContent: contentId => {
       dispatch(fetchModuleX(contentId));
+    },
+    resetPLCCApplicationStatus: payload => {
+      dispatch(resetPLCCResponse(payload));
     },
     verifyAddressAction: payload => {
       dispatch(verifyAddress(payload));

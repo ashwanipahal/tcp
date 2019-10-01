@@ -1,0 +1,597 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Add gift card form component render error message 1`] = `
+<ScrollViewMock
+  addGiftCardError={true}
+  addGiftCardResponse="foo"
+  change={[MockFunction]}
+  goBackToPayment={[MockFunction]}
+  handleSubmit={
+    [MockFunction] {
+      "calls": Array [
+        Array [
+          [Function],
+        ],
+        Array [
+          [Function],
+        ],
+        Array [
+          [Function],
+        ],
+      ],
+      "results": Array [
+        Object {
+          "type": "return",
+          "value": undefined,
+        },
+        Object {
+          "type": "return",
+          "value": undefined,
+        },
+        Object {
+          "type": "return",
+          "value": undefined,
+        },
+      ],
+    }
+  }
+  isRecapchaEnabled={true}
+  isRow={false}
+  keyboardShouldPersistTaps="handled"
+  labels={
+    Object {
+      "common": Object {},
+      "paymentGC": Object {},
+    }
+  }
+  onAddGiftCardClick={[MockFunction]}
+  onClearError={[MockFunction]}
+  showsVerticalScrollIndicator={false}
+  toggleModal={[Function]}
+  untouch={[MockFunction]}
+>
+  <View>
+    <Styled(View)>
+      <Styled(BodyCopy)
+        accessibilityText=""
+        color="error"
+        dataLocator=""
+        fontSize="fs12"
+        fontWeight="semibold"
+        margin={null}
+        mobileFontFamily={
+          Array [
+            "secondary",
+          ]
+        }
+        numberOfLines={null}
+        text="foo"
+        textDecoration={null}
+      />
+    </Styled(View)>
+    <Field
+      component={
+        Object {
+          "$$typeof": Symbol(react.forward_ref),
+          "_foldedDefaultProps": Object {
+            "ariaLabel": "input",
+            "dataLocator": "input-field",
+            "enableSuccessCheck": false,
+            "id": "input",
+            "keyboardType": "default",
+            "label": "input",
+            "marginBottom": true,
+            "meta": Object {
+              "error": "",
+              "touched": "",
+            },
+            "onChangeText": [Function],
+            "secureTextEntry": false,
+            "showErrorIcon": true,
+            "showSuccessCheck": false,
+            "successText": "",
+            "type": "text",
+          },
+          "attrs": Array [],
+          "displayName": "Styled(TextBox)",
+          "inlineStyle": InlineStyle {
+            "rules": Array [
+              "
+    ",
+              "
+  ",
+              [Function],
+              ";
+",
+              ";
+  ",
+            ],
+          },
+          "render": [Function],
+          "styledComponentId": "StyledNativeComponent",
+          "target": [Function],
+          "withComponent": [Function],
+        }
+      }
+      dataLocator="gift-card-cardnaumberfield"
+      keyboardType="numeric"
+      label="lbl_payment_giftCardNoPlaceholder"
+      name="giftCardNumber"
+      onChange={[Function]}
+      type="tel"
+    />
+    <Field
+      component={
+        Object {
+          "$$typeof": Symbol(react.forward_ref),
+          "_foldedDefaultProps": Object {
+            "ariaLabel": "input",
+            "dataLocator": "input-field",
+            "enableSuccessCheck": false,
+            "id": "input",
+            "keyboardType": "default",
+            "label": "input",
+            "marginBottom": true,
+            "meta": Object {
+              "error": "",
+              "touched": "",
+            },
+            "onChangeText": [Function],
+            "secureTextEntry": false,
+            "showErrorIcon": true,
+            "showSuccessCheck": false,
+            "successText": "",
+            "type": "text",
+          },
+          "attrs": Array [],
+          "displayName": "Styled(TextBox)",
+          "inlineStyle": InlineStyle {
+            "rules": Array [
+              "
+    ",
+              "
+  ",
+              [Function],
+              ";
+",
+              ";
+  ",
+            ],
+          },
+          "render": [Function],
+          "styledComponentId": "StyledNativeComponent",
+          "target": [Function],
+          "withComponent": [Function],
+        }
+      }
+      dataLocator="gift-card-pinnumberfield"
+      keyboardType="numeric"
+      label="lbl_payment_giftCardPinPlaceholder"
+      name="cardPin"
+      onChange={[Function]}
+      type="tel"
+    />
+    <View>
+      <Styled(View)>
+        <Recaptcha
+          onMessage={[Function]}
+          siteKey="6LdYiRsTAAAAAHF4Yntsq8mPdWgHaTTFHsk8rax8"
+          style={Object {}}
+          url="https://www.childrensplace.com"
+        />
+      </Styled(View)>
+      <Field
+        className="visibility-recaptcha"
+        component={
+          Object {
+            "$$typeof": Symbol(react.forward_ref),
+            "_foldedDefaultProps": Object {
+              "ariaLabel": "input",
+              "dataLocator": "input-field",
+              "enableSuccessCheck": false,
+              "id": "input",
+              "keyboardType": "default",
+              "label": "input",
+              "marginBottom": true,
+              "meta": Object {
+                "error": "",
+                "touched": "",
+              },
+              "onChangeText": [Function],
+              "secureTextEntry": false,
+              "showErrorIcon": true,
+              "showSuccessCheck": false,
+              "successText": "",
+              "type": "text",
+            },
+            "attrs": Array [],
+            "displayName": "Styled(TextBox)",
+            "inlineStyle": InlineStyle {
+              "rules": Array [
+                "
+    ",
+                "
+  ",
+                [Function],
+                ";
+",
+                ";
+  ",
+              ],
+            },
+            "render": [Function],
+            "styledComponentId": "StyledNativeComponent",
+            "target": [Function],
+            "withComponent": [Function],
+          }
+        }
+        data-locator="gift-card-recaptchcb"
+        id="recaptchaToken"
+        label=""
+        name="recaptchaToken"
+        title=""
+        type="hidden"
+      />
+    </View>
+    <Styled(View)>
+      <Styled(BodyCopy)
+        accessibilityText=""
+        color="gray.900"
+        dataLocator=""
+        fontFamily="secondary"
+        fontSize="fs14"
+        margin={null}
+        numberOfLines={null}
+        text="lbl_payment_giftCardMessageHeading"
+        textDecoration={null}
+      />
+      <Styled(Text)>
+        <Styled(BodyCopy)
+          accessibilityText=""
+          color="black"
+          dataLocator=""
+          fontFamily="secondary"
+          fontSize="fs12"
+          fontWeight="regular"
+          margin={null}
+          numberOfLines={null}
+          text="lbl_payment_giftCardMessageDescription"
+          textDecoration={null}
+        />
+      </Styled(Text)>
+    </Styled(View)>
+    <Styled(View)>
+      <Styled(CustomButton)
+        active={false}
+        buttonVariation="variable-width"
+        color="white"
+        customStyle={Object {}}
+        customTextStyle={null}
+        data-locator="gift-card-addcardbtn"
+        disableButton={false}
+        fill="BLUE"
+        fullWidth=""
+        iconColor="gray.800"
+        iconName="chevron-down"
+        iconSize="fs12"
+        locator=""
+        navigation={Object {}}
+        onPress={null}
+        selected={false}
+        selectedIcon="chevron-up"
+        showIcon={false}
+        text="lbl_payment_addCard"
+        theme={Object {}}
+        url=""
+      />
+    </Styled(View)>
+    <Styled(View)>
+      <Styled(CustomButton)
+        active={false}
+        buttonVariation="variable-width"
+        color="black"
+        customStyle={Object {}}
+        customTextStyle={null}
+        data-locator="gift-card-cancelbtn"
+        disableButton={false}
+        fill=""
+        fullWidth=""
+        iconColor="gray.800"
+        iconName="chevron-down"
+        iconSize="fs12"
+        locator=""
+        navigation={Object {}}
+        onPress={[Function]}
+        selected={false}
+        selectedIcon="chevron-up"
+        showIcon={false}
+        text="lbl_payment_cancelCard"
+        theme={Object {}}
+        url=""
+      />
+    </Styled(View)>
+  </View>
+</ScrollViewMock>
+`;
+
+exports[`Add gift card form component should render component correctly 1`] = `
+<ScrollViewMock
+  addGiftCardError={true}
+  addGiftCardResponse={null}
+  change={[MockFunction]}
+  goBackToPayment={[MockFunction]}
+  handleSubmit={
+    [MockFunction] {
+      "calls": Array [
+        Array [
+          [Function],
+        ],
+      ],
+      "results": Array [
+        Object {
+          "type": "return",
+          "value": undefined,
+        },
+      ],
+    }
+  }
+  isRecapchaEnabled={true}
+  isRow={false}
+  keyboardShouldPersistTaps="handled"
+  labels={
+    Object {
+      "common": Object {},
+      "paymentGC": Object {},
+    }
+  }
+  onAddGiftCardClick={[MockFunction]}
+  onClearError={[MockFunction]}
+  showsVerticalScrollIndicator={false}
+  toggleModal={[Function]}
+  untouch={[MockFunction]}
+>
+  <View>
+    <Field
+      component={
+        Object {
+          "$$typeof": Symbol(react.forward_ref),
+          "_foldedDefaultProps": Object {
+            "ariaLabel": "input",
+            "dataLocator": "input-field",
+            "enableSuccessCheck": false,
+            "id": "input",
+            "keyboardType": "default",
+            "label": "input",
+            "marginBottom": true,
+            "meta": Object {
+              "error": "",
+              "touched": "",
+            },
+            "onChangeText": [Function],
+            "secureTextEntry": false,
+            "showErrorIcon": true,
+            "showSuccessCheck": false,
+            "successText": "",
+            "type": "text",
+          },
+          "attrs": Array [],
+          "displayName": "Styled(TextBox)",
+          "inlineStyle": InlineStyle {
+            "rules": Array [
+              "
+    ",
+              "
+  ",
+              [Function],
+              ";
+",
+              ";
+  ",
+            ],
+          },
+          "render": [Function],
+          "styledComponentId": "StyledNativeComponent",
+          "target": [Function],
+          "withComponent": [Function],
+        }
+      }
+      dataLocator="gift-card-cardnaumberfield"
+      keyboardType="numeric"
+      label="lbl_payment_giftCardNoPlaceholder"
+      name="giftCardNumber"
+      onChange={[Function]}
+      type="tel"
+    />
+    <Field
+      component={
+        Object {
+          "$$typeof": Symbol(react.forward_ref),
+          "_foldedDefaultProps": Object {
+            "ariaLabel": "input",
+            "dataLocator": "input-field",
+            "enableSuccessCheck": false,
+            "id": "input",
+            "keyboardType": "default",
+            "label": "input",
+            "marginBottom": true,
+            "meta": Object {
+              "error": "",
+              "touched": "",
+            },
+            "onChangeText": [Function],
+            "secureTextEntry": false,
+            "showErrorIcon": true,
+            "showSuccessCheck": false,
+            "successText": "",
+            "type": "text",
+          },
+          "attrs": Array [],
+          "displayName": "Styled(TextBox)",
+          "inlineStyle": InlineStyle {
+            "rules": Array [
+              "
+    ",
+              "
+  ",
+              [Function],
+              ";
+",
+              ";
+  ",
+            ],
+          },
+          "render": [Function],
+          "styledComponentId": "StyledNativeComponent",
+          "target": [Function],
+          "withComponent": [Function],
+        }
+      }
+      dataLocator="gift-card-pinnumberfield"
+      keyboardType="numeric"
+      label="lbl_payment_giftCardPinPlaceholder"
+      name="cardPin"
+      onChange={[Function]}
+      type="tel"
+    />
+    <View>
+      <Styled(View)>
+        <Recaptcha
+          onMessage={[Function]}
+          siteKey="6LdYiRsTAAAAAHF4Yntsq8mPdWgHaTTFHsk8rax8"
+          style={Object {}}
+          url="https://www.childrensplace.com"
+        />
+      </Styled(View)>
+      <Field
+        className="visibility-recaptcha"
+        component={
+          Object {
+            "$$typeof": Symbol(react.forward_ref),
+            "_foldedDefaultProps": Object {
+              "ariaLabel": "input",
+              "dataLocator": "input-field",
+              "enableSuccessCheck": false,
+              "id": "input",
+              "keyboardType": "default",
+              "label": "input",
+              "marginBottom": true,
+              "meta": Object {
+                "error": "",
+                "touched": "",
+              },
+              "onChangeText": [Function],
+              "secureTextEntry": false,
+              "showErrorIcon": true,
+              "showSuccessCheck": false,
+              "successText": "",
+              "type": "text",
+            },
+            "attrs": Array [],
+            "displayName": "Styled(TextBox)",
+            "inlineStyle": InlineStyle {
+              "rules": Array [
+                "
+    ",
+                "
+  ",
+                [Function],
+                ";
+",
+                ";
+  ",
+              ],
+            },
+            "render": [Function],
+            "styledComponentId": "StyledNativeComponent",
+            "target": [Function],
+            "withComponent": [Function],
+          }
+        }
+        data-locator="gift-card-recaptchcb"
+        id="recaptchaToken"
+        label=""
+        name="recaptchaToken"
+        title=""
+        type="hidden"
+      />
+    </View>
+    <Styled(View)>
+      <Styled(BodyCopy)
+        accessibilityText=""
+        color="gray.900"
+        dataLocator=""
+        fontFamily="secondary"
+        fontSize="fs14"
+        margin={null}
+        numberOfLines={null}
+        text="lbl_payment_giftCardMessageHeading"
+        textDecoration={null}
+      />
+      <Styled(Text)>
+        <Styled(BodyCopy)
+          accessibilityText=""
+          color="black"
+          dataLocator=""
+          fontFamily="secondary"
+          fontSize="fs12"
+          fontWeight="regular"
+          margin={null}
+          numberOfLines={null}
+          text="lbl_payment_giftCardMessageDescription"
+          textDecoration={null}
+        />
+      </Styled(Text)>
+    </Styled(View)>
+    <Styled(View)>
+      <Styled(CustomButton)
+        active={false}
+        buttonVariation="variable-width"
+        color="white"
+        customStyle={Object {}}
+        customTextStyle={null}
+        data-locator="gift-card-addcardbtn"
+        disableButton={false}
+        fill="BLUE"
+        fullWidth=""
+        iconColor="gray.800"
+        iconName="chevron-down"
+        iconSize="fs12"
+        locator=""
+        navigation={Object {}}
+        onPress={null}
+        selected={false}
+        selectedIcon="chevron-up"
+        showIcon={false}
+        text="lbl_payment_addCard"
+        theme={Object {}}
+        url=""
+      />
+    </Styled(View)>
+    <Styled(View)>
+      <Styled(CustomButton)
+        active={false}
+        buttonVariation="variable-width"
+        color="black"
+        customStyle={Object {}}
+        customTextStyle={null}
+        data-locator="gift-card-cancelbtn"
+        disableButton={false}
+        fill=""
+        fullWidth=""
+        iconColor="gray.800"
+        iconName="chevron-down"
+        iconSize="fs12"
+        locator=""
+        navigation={Object {}}
+        onPress={[Function]}
+        selected={false}
+        selectedIcon="chevron-up"
+        showIcon={false}
+        text="lbl_payment_cancelCard"
+        theme={Object {}}
+        url=""
+      />
+    </Styled(View)>
+  </View>
+</ScrollViewMock>
+`;

@@ -29,6 +29,7 @@ exports[`CreditCardPageHeader component should renders correctly 1`] = `
           fontWeight="regular"
           letterSpacing="normal"
           lineHeight="normal"
+          link={null}
           textAlign="left"
         >
           back
@@ -52,7 +53,6 @@ exports[`CreditCardPageHeader component should renders correctly 1`] = `
       key="rewards"
     >
       <Styled(BodyCopy)
-        aria-label="rewards"
         className="credit_card_heading"
         color="text.primary"
         component="h2"
@@ -62,7 +62,7 @@ exports[`CreditCardPageHeader component should renders correctly 1`] = `
         fontWeight="extrabold"
         letterSpacing="normal"
         lineHeight="normal"
-        tabIndex="0"
+        link={null}
         textAlign="left"
       >
         rewards

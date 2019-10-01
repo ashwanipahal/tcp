@@ -2,7 +2,9 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import { Field } from 'redux-form';
 import withStyles from '../../../../../../common/hoc/withStyles';
-import ProductListingMobileFiltersFormStyle from '../styles/ProductListingMobileFiltersForm.style';
+import ProductListingMobileFiltersFormStyle, {
+  customModalCss,
+} from '../styles/ProductListingMobileFiltersForm.style';
 import CustomSelect from '../../CustomSelect/views';
 import BodyCopy from '../../../../../../common/atoms/BodyCopy';
 import Image from '../../../../../../common/atoms/Image';
@@ -10,9 +12,10 @@ import cssClassName from '../../utils/cssClassName';
 import AccordionList from '../../../../../../common/molecules/AccordionList';
 import FilterModal from '../../FilterModal/views';
 import { Row, Col, Button } from '../../../../../../common/atoms';
+import Modal from '../../../../../../common/molecules/Modal';
 import { getLocator } from '../../../../../../../utils';
 import SortSelector from '../../SortSelector';
-import config from '../../SortSelector/SortSelector.config';
+import getSortOptions from '../../SortSelector/views/Sort.util';
 import { FACETS_FIELD_KEY } from '../../../../../../../services/abstractors/productListing/productListing.utils';
 
 // @flow
@@ -263,7 +266,9 @@ class ProductListingMobileFiltersForm extends React.PureComponent<Props> {
    */
   renderMobilePlpFilterForm() {
     const { isSortOpenModal } = this.state;
-    const { handleSubmit, handleSubmitOnChange } = this.props;
+    const { handleSubmit, handleSubmitOnChange, sortLabels } = this.props;
+    const sortOptions = getSortOptions(sortLabels);
+
     return (
       <div>
         {!isSortOpenModal && (
@@ -272,7 +277,7 @@ class ProductListingMobileFiltersForm extends React.PureComponent<Props> {
         {isSortOpenModal && (
           <SortSelector
             expanded
-            sortSelectOptions={getSortCustomOptionsMap(config)}
+            sortSelectOptions={getSortCustomOptionsMap(sortOptions)}
             hideTitle
             isSortOpenModal
             onChange={handleSubmit(formValues => {
@@ -352,6 +357,7 @@ class ProductListingMobileFiltersForm extends React.PureComponent<Props> {
       labels,
       removeAllFilters,
       handleImmediateSubmit,
+      sortLabels,
     } = this.props;
     const { isOpenFilterSection, show } = this.state;
     let appliedFiltersCount = this.getAppliedFiltersCount();
@@ -377,27 +383,43 @@ class ProductListingMobileFiltersForm extends React.PureComponent<Props> {
 
     const sortClassName = isSortOpenModal ? 'mobile-sort-container' : '';
 
+    const customStyles = {
+      overlay: {
+        zIndex: 9,
+      },
+    };
+
     return (
       <React.Fragment>
-        <form
-          className="available-filters-sorting-container"
-          onSubmit={handleSubmit(formValues => {
-            this.hideModal(true);
-            handleImmediateSubmit(formValues);
-          })}
+        <Modal
+          isOpen={show}
+          widthConfig={{ small: '100%', medium: '100%', large: '100%' }}
+          heightConfig={{ height: '100%' }}
+          style={customStyles}
+          inheritedStyles={customModalCss}
         >
-          <FilterModal
-            show={show}
-            handleClose={this.hideModal}
-            classNames={classNames}
-            labels={labels}
-            isSortOpenModal={isSortOpenModal}
+          <form
+            className={`${className} available-filters-sorting-container`}
+            onSubmit={handleSubmit(formValues => {
+              this.hideModal(true);
+              handleImmediateSubmit(formValues);
+            })}
           >
-            <div className={`${className} ${sortClassName} new-filter-and-sort-form-container`}>
-              {this.renderMobilePlpFilterForm()}
-            </div>
-          </FilterModal>
-        </form>
+            <FilterModal
+              show={show}
+              handleClose={this.hideModal}
+              classNames={classNames}
+              labels={labels}
+              isSortOpenModal={isSortOpenModal}
+              sortLabels={sortLabels}
+            >
+              <div className={`${className} ${sortClassName} new-filter-and-sort-form-container`}>
+                {this.renderMobilePlpFilterForm()}
+              </div>
+            </FilterModal>
+          </form>
+        </Modal>
+
         <Row centered className={`filter-row ${className}`}>
           <Col
             colSize={{
@@ -450,11 +472,13 @@ ProductListingMobileFiltersForm.propTypes = {
   handleSubmit: PropTypes.func.isRequired,
   handleSubmitOnChange: PropTypes.func,
   removeAllFilters: PropTypes.func,
+  sortLabels: PropTypes.arrayOf(PropTypes.shape({})),
 };
 
 ProductListingMobileFiltersForm.defaultProps = {
   filtersMaps: {},
   labels: {},
+  sortLabels: [],
   handleSubmitOnChange: () => {},
   removeAllFilters: () => {},
 };

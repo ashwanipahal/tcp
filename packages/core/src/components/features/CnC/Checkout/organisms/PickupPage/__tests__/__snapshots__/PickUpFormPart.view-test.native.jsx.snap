@@ -10,6 +10,7 @@ exports[`PickUpFormPart component  should renders correctly props with state upd
     <Styled(View)>
       <Styled(View)>
         <ErrorMessage
+          bagPage={false}
           className="pickupError"
           dataLocator="pickup-error"
           error="Error handle"
@@ -61,10 +62,14 @@ exports[`PickUpFormPart component  should renders correctly props with state upd
             <Styled(View)>
               <Styled(View)>
                 <Styled(BodyCopy)
+                  accessibilityText=""
                   dataLocator="pickup-email-signUp-heading-lbl"
                   fontSize="fs14"
                   fontWeight="regular"
+                  margin={null}
                   mobileFontFamily="secondary"
+                  numberOfLines={null}
+                  textDecoration={null}
                 />
               </Styled(View)>
             </Styled(View)>
@@ -73,20 +78,31 @@ exports[`PickUpFormPart component  should renders correctly props with state upd
             <Styled(View) />
             <Styled(View)>
               <Styled(BodyCopy)
+                accessibilityText=""
+                dataLocator=""
                 fontFamily="primary"
                 fontSize="fs10"
                 fontWeight="regular"
+                margin={null}
+                numberOfLines={null}
+                textDecoration={null}
               />
               <Styled(View)>
                 <Styled(BodyCopy)
+                  accessibilityText=""
+                  dataLocator=""
                   fontFamily="primary"
                   fontSize="fs10"
                   fontWeight="regular"
+                  margin={null}
+                  numberOfLines={null}
+                  textDecoration={null}
                 />
               </Styled(View)>
               <Styled(Anchor)
                 accessibilityLabel=""
                 anchorVariation="primary"
+                colorName={null}
                 customStyle={Object {}}
                 fontSizeVariation="small"
                 href="#"
@@ -119,7 +135,6 @@ exports[`PickUpFormPart component  should renders correctly props with state upd
       </Styled(View)>
     </Styled(View)>
     <CnCCommonTemplate
-      btnText="NEXT:SHIPPING"
       isGuest={true}
       routeToPage="ShippingPage"
     />
@@ -137,6 +152,7 @@ exports[`PickUpFormPart component should renders correctly props  present  1`] =
     <Styled(View)>
       <Styled(View)>
         <ErrorMessage
+          bagPage={false}
           className="pickupError"
           dataLocator="pickup-error"
           error="Error handle"
@@ -188,10 +204,14 @@ exports[`PickUpFormPart component should renders correctly props  present  1`] =
             <Styled(View)>
               <Styled(View)>
                 <Styled(BodyCopy)
+                  accessibilityText=""
                   dataLocator="pickup-email-signUp-heading-lbl"
                   fontSize="fs14"
                   fontWeight="regular"
+                  margin={null}
                   mobileFontFamily="secondary"
+                  numberOfLines={null}
+                  textDecoration={null}
                 />
               </Styled(View)>
             </Styled(View)>
@@ -200,20 +220,31 @@ exports[`PickUpFormPart component should renders correctly props  present  1`] =
             <Styled(View) />
             <Styled(View)>
               <Styled(BodyCopy)
+                accessibilityText=""
+                dataLocator=""
                 fontFamily="primary"
                 fontSize="fs10"
                 fontWeight="regular"
+                margin={null}
+                numberOfLines={null}
+                textDecoration={null}
               />
               <Styled(View)>
                 <Styled(BodyCopy)
+                  accessibilityText=""
+                  dataLocator=""
                   fontFamily="primary"
                   fontSize="fs10"
                   fontWeight="regular"
+                  margin={null}
+                  numberOfLines={null}
+                  textDecoration={null}
                 />
               </Styled(View)>
               <Styled(Anchor)
                 accessibilityLabel=""
                 anchorVariation="primary"
+                colorName={null}
                 customStyle={Object {}}
                 fontSizeVariation="small"
                 href="#"
@@ -246,7 +277,6 @@ exports[`PickUpFormPart component should renders correctly props  present  1`] =
       </Styled(View)>
     </Styled(View)>
     <CnCCommonTemplate
-      btnText="NEXT:SHIPPING"
       isGuest={true}
       routeToPage="ShippingPage"
     />
@@ -264,6 +294,7 @@ exports[`PickUpFormPart component should renders correctly props not present 1`]
     <Styled(View)>
       <Styled(View)>
         <ErrorMessage
+          bagPage={false}
           className="pickupError"
           dataLocator="pickup-error"
           error=""
@@ -339,7 +370,6 @@ exports[`PickUpFormPart component should renders correctly props not present 1`]
       </Styled(View)>
     </Styled(View)>
     <CnCCommonTemplate
-      btnText="NEXT:SHIPPING"
       isGuest={false}
       routeToPage="ShippingPage"
     />

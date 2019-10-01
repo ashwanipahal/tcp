@@ -93,6 +93,10 @@ class GiftServices extends React.PureComponent {
 
   handleToggle = (e, isGymboreeBrand) => {
     this.setState({ isGymboreeBrand });
+    const { dispatch } = this.props;
+    if (dispatch) {
+      dispatch(change('GiftServices', `brand`, isGymboreeBrand ? 'GYM' : 'TCP'));
+    }
   };
 
   giftServiceChanged = (e, value) => {
@@ -183,7 +187,7 @@ class GiftServices extends React.PureComponent {
                   {labels.selectBrand}
                 </BodyCopy>
                 <Col colSize={{ small: 3, medium: 4, large: 6 }} className="phone-field-wrapper">
-                  <LabeledRadioButton
+                  {/* <LabeledRadioButton
                     className="normal-select-box"
                     name="brand"
                     checked={isGymboreeBrand === isGymboree()}
@@ -198,10 +202,28 @@ class GiftServices extends React.PureComponent {
                         data-locator={getLocator('header__brand-tab--tcp')}
                       />
                     </BodyCopy>
-                  </LabeledRadioButton>
+                  </LabeledRadioButton> */}
+                  <Field
+                    component={LabeledRadioButton}
+                    name="brand"
+                    id="brand"
+                    checked={isGymboreeBrand === isGymboree()}
+                    onChange={e => this.handleToggle(e, isGymboree())}
+                    disabled={false}
+                    className="tcp-radio-button"
+                  >
+                    <BodyCopy color="gray.900" fontSize="fs14" fontFamily="secondary">
+                      <Image
+                        alt="Brand"
+                        className="brand-image"
+                        src={getIconPath('header__brand-tab--tcp')}
+                        data-locator={getLocator('header__brand-tab--tcp')}
+                      />
+                    </BodyCopy>
+                  </Field>
                 </Col>
                 <Col colSize={{ small: 3, medium: 4, large: 6 }} className="phone-field-wrapper">
-                  <LabeledRadioButton
+                  {/* <LabeledRadioButton
                     className="normal-select-box"
                     name="brand"
                     checked={isGymboreeBrand === !isGymboree()}
@@ -216,7 +238,24 @@ class GiftServices extends React.PureComponent {
                         data-locator={getLocator('header__brand-tab--gymboree')}
                       />
                     </BodyCopy>
-                  </LabeledRadioButton>
+                  </LabeledRadioButton> */}
+                  <Field
+                    component={LabeledRadioButton}
+                    name="brand"
+                    id="brand"
+                    checked={isGymboreeBrand === !isGymboree()}
+                    onChange={e => this.handleToggle(e, !isGymboree())}
+                    disabled={false}
+                  >
+                    <BodyCopy color="gray.900" fontSize="fs14" fontFamily="secondary">
+                      <Image
+                        alt="Brand"
+                        className="brand-image"
+                        src={getIconPath('header__brand-tab-gymboree')}
+                        data-locator={getLocator('header__brand-tab--gymboree')}
+                      />
+                    </BodyCopy>
+                  </Field>
                 </Col>
               </Row>
               <Row className="edit-form-css">

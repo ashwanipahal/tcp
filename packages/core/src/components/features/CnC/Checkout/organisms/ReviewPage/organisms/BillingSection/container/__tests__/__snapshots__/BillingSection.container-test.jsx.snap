@@ -1,0 +1,11 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Gift Cards Container should render Gift Card view section 1`] = `
+<Styled(BillingSection)
+  address={null}
+  appliedGiftCards={Immutable.List []}
+  card={null}
+  labels={Object {}}
+  saveVenmoPaymentOption={[Function]}
+/>
+`;

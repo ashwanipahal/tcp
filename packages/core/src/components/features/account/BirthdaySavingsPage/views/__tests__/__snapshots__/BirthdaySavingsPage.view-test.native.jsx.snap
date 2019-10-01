@@ -1,0 +1,25 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`BirthdaySavingsPage component should renders correctly 1`] = `
+<ModalNative
+  heading="Birthday Savings"
+  isOpen={false}
+  isOverlay={false}
+  onRequestClose={[MockFunction]}
+>
+  <Styled(View)
+    spacingStyles="margin-left-LRG margin-right-LRG"
+  >
+    <Connect(BirthdaySavings)
+      labels={
+        Object {
+          "lbl_profile_birthday_saving_info": "Add up to 4 kids’ birthdays to your account and receive special savings during their birthday month!",
+          "lbl_profile_birthday_savings": "Birthday Savings",
+          "lbl_profile_personal_info_back": "back",
+        }
+      }
+      view="edit"
+    />
+  </Styled(View)>
+</ModalNative>
+`;

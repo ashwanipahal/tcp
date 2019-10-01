@@ -1,54 +1,74 @@
 import React from 'react';
 import PropTypes from 'prop-types';
+import ExecutionEnvironment from 'exenv';
+import { isClient } from '@tcp/core/src/utils';
 import { Row, Col, RichText } from '../../../../common/atoms';
+import FulfillmentSection from '../../../../common/organisms/FulfillmentSection';
 import withStyles from '../../../../common/hoc/withStyles';
 import ProductDetailStyle from '../ProductDetail.style';
+import { PRODUCT_INFO_PROP_TYPE_SHAPE } from '../../ProductListing/molecules/ProductList/propTypes/productsAndItemsPropTypes';
+import { breakpoints } from '../../../../../../styles/themes/TCP/mediaQuery';
 import Product from '../molecules/Product/views/Product.view';
 import FixedBreadCrumbs from '../../ProductListing/molecules/FixedBreadCrumbs/views';
-import ProductImages from '../../../../common/organisms/ProductImages';
+import ProductAddToBagContainer from '../../../../common/molecules/ProductAddToBag';
+import ProductPickupContainer from '../../../../common/organisms/ProductPickup';
+import { getLocator } from '../../../../../utils';
 
-const productImagesProps = {
-  isZoomEnabled: true,
-  images: [
-    {
-      isOnModalImage: false,
-      iconSizeImageUrl:
-        'https://test4.childrensplace.com/wcsstore/GlobalSAS/images/tcp/products/125/2082931_IV.jpg',
-      listingSizeImageUrl:
-        'https://test4.childrensplace.com/wcsstore/GlobalSAS/images/tcp/products/380/2082931_IV.jpg',
-      regularSizeImageUrl:
-        'https://test4.childrensplace.com/wcsstore/GlobalSAS/images/tcp/products/500/2082931_IV.jpg',
-      bigSizeImageUrl:
-        'https://test4.childrensplace.com/wcsstore/GlobalSAS/images/tcp/products/900/2082931_IV.jpg',
-      superSizeImageUrl:
-        'https://test4.childrensplace.com/wcsstore/GlobalSAS/images/tcp/products/900/2082931_IV.jpg',
-    },
-    {
-      isOnModalImage: false,
-      iconSizeImageUrl:
-        'https://test4.childrensplace.com/wcsstore/GlobalSAS/images/tcp/products/125/2082931_IV-1.jpg',
-      listingSizeImageUrl:
-        'https://test4.childrensplace.com/wcsstore/GlobalSAS/images/tcp/products/380/2082931_IV-1.jpg',
-      regularSizeImageUrl:
-        'https://test4.childrensplace.com/wcsstore/GlobalSAS/images/tcp/products/500/2082931_IV-1.jpg',
-      bigSizeImageUrl:
-        'https://test4.childrensplace.com/wcsstore/GlobalSAS/images/tcp/products/900/2082931_IV-1.jpg',
-      superSizeImageUrl:
-        'https://test4.childrensplace.com/wcsstore/GlobalSAS/images/tcp/products/900/2082931_IV-1.jpg',
-    },
-  ],
-  isThumbnailListVisible: true,
-  productName: 'Girls Uniform Active Shorts',
+import ProductImagesWrapper from '../molecules/ProductImagesWrapper/views/ProductImagesWrapper.view';
+import AddedToBagContainer from '../../../CnC/AddedToBag';
+import {
+  getImagesToDisplay,
+  getMapSliceForColorProductId,
+} from '../../ProductListing/molecules/ProductList/utils/productsCommonUtils';
+import PickupStoreModal from '../../../../common/organisms/PickupStoreModal';
+import ProductReviewsContainer from '../../ProductListing/molecules/ProductReviews/container/ProductReviews.container';
+
+const getProductColorId = (productInfo, currentProduct) => {
+  let colorProduct = {};
+  if (productInfo && productInfo.colorFitsSizesMap && productInfo.generalProductId) {
+    colorProduct = getMapSliceForColorProductId(
+      productInfo.colorFitsSizesMap,
+      currentProduct.generalProductId
+    );
+  }
+  return colorProduct;
 };
-
 const ProductDetailView = ({
   className,
   productDetails,
   longDescription,
   breadCrumbs,
   currency,
+  productInfo,
+  plpLabels,
+  isPickupModalOpen,
+  pdpLabels,
+  handleAddToBag,
+  addToBagError,
 }) => {
-  return (
+  const currentProduct = productDetails && productDetails.get('currentProduct');
+  const isWeb =
+    ExecutionEnvironment.canUseDOM && document.body.offsetWidth >= breakpoints.values.lg;
+  let imagesToDisplay = [];
+  const noProductData = Object.keys(productInfo).length === 0;
+  if (!noProductData) {
+    const colorProduct = getMapSliceForColorProductId(
+      productInfo.colorFitsSizesMap,
+      /* colorProductId would not be hard coded and it will be replaced in near future when it done */
+      productInfo.colorFitsSizesMap[0].colorProductId
+    );
+    imagesToDisplay = getImagesToDisplay({
+      imagesByColor: productInfo.imagesByColor,
+      curentColorEntry: colorProduct,
+      isAbTestActive: false,
+      isFullSet: true,
+    });
+  }
+
+  // TODO - replace with correct colorProductId - it should be conditionally generalProductId
+  const colorProduct = getProductColorId(productInfo, currentProduct);
+
+  return noProductData ? null : (
     <div className={className}>
       <Row>
         <Col colSize={{ small: 6, medium: 8, large: 12 }}>
@@ -56,14 +76,20 @@ const ProductDetailView = ({
           {breadCrumbs && <FixedBreadCrumbs crumbs={breadCrumbs} separationChar=">" />}
         </Col>
       </Row>
-      <Row className="placeholder">
+      <Row className="placeholder product-detail-image-wrapper">
         <Col colSize={{ small: 6, medium: 8, large: 12 }}>
           <div className="promo-area-1">PROMO AREA 1</div>
         </Col>
       </Row>
       <Row>
         <Col className="product-image-wrapper" colSize={{ small: 6, medium: 4, large: 7 }}>
-          <ProductImages {...productImagesProps} />
+          <ProductImagesWrapper
+            productName={productInfo.name}
+            isThumbnailListVisible={isWeb}
+            images={imagesToDisplay}
+            pdpLabels={pdpLabels}
+            isZoomEnabled
+          />
         </Col>
         <Col
           id="productDetailsSection"
@@ -71,6 +97,31 @@ const ProductDetailView = ({
           colSize={{ small: 6, medium: 4, large: 5 }}
         >
           <Product productDetails={productDetails} currencySymbol={currency} />
+          {currentProduct && (
+            <ProductAddToBagContainer
+              handleFormSubmit={handleAddToBag}
+              errorOnHandleSubmit={addToBagError}
+              currentProduct={currentProduct}
+              plpLabels={plpLabels}
+            />
+          )}
+          {productInfo && colorProduct && (
+            <ProductPickupContainer
+              productInfo={productInfo}
+              formName={`ProductAddToBag-${productInfo.generalProductId}`}
+              miscInfo={colorProduct.miscInfo}
+              // onPickUpOpenClick={onPickUpOpenClick}
+            />
+          )}
+          <div className="fulfillment-section">
+            <FulfillmentSection
+              btnClassName="added-to-bag"
+              dataLocator={getLocator('global_addtocart_Button')}
+              buttonLabel={plpLabels.addToBag}
+              currentProduct={currentProduct}
+            />
+          </div>
+          {isPickupModalOpen ? <PickupStoreModal /> : null}
         </Col>
       </Row>
       <Row className="placeholder">
@@ -105,22 +156,35 @@ const ProductDetailView = ({
           <div className="product-detail-section">MY STYLE PLACE</div>
         </Col>
       </Row>
-      <Row className="placeholder">
+      <Row>
         <Col colSize={{ small: 6, medium: 8, large: 12 }}>
-          <div className="product-detail-section">RATINGS AND REVIEWS</div>
+          <ProductReviewsContainer
+            expanded={false}
+            reviewsCount={productInfo.reviewsCount}
+            ratingsProductId={productInfo.ratingsProductId}
+            isClient={isClient()}
+          />
         </Col>
       </Row>
+      <AddedToBagContainer />
     </div>
   );
 };
 
 ProductDetailView.propTypes = {
   className: PropTypes.string,
+  addToBagError: PropTypes.string,
+  handleAddToBag: PropTypes.func.isRequired,
   productDetails: PropTypes.shape({}),
+  productInfo: PRODUCT_INFO_PROP_TYPE_SHAPE,
   longDescription: PropTypes.string,
   breadCrumbs: PropTypes.shape({}),
-  defaultImage: PropTypes.string,
+  pdpLabels: PropTypes.shape({}),
   currency: PropTypes.string,
+  plpLabels: PropTypes.shape({
+    lbl_sort: PropTypes.string,
+  }),
+  isPickupModalOpen: PropTypes.bool,
 };
 
 ProductDetailView.defaultProps = {
@@ -128,8 +192,14 @@ ProductDetailView.defaultProps = {
   productDetails: {},
   longDescription: '',
   breadCrumbs: {},
-  defaultImage: '',
   currency: '',
+  plpLabels: {
+    lbl_sort: '',
+  },
+  productInfo: {},
+  pdpLabels: {},
+  addToBagError: '',
+  isPickupModalOpen: false,
 };
 
 export default withStyles(ProductDetailView, ProductDetailStyle);

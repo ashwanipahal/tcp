@@ -1,7 +1,9 @@
 import ProductListingPageSaga from '@tcp/core/src/components/features/browse/ProductListingPage/container/ProductListingPage.saga';
+import SearchListingPageSaga from '@tcp/core/src/components/features/browse/SearchDetail/container/SearchDetail.saga';
 import LoginPageSaga from '@tcp/core/src/components/features/account/LoginPage/container/LoginPage.saga';
 import LogOutPageSaga from '@tcp/core/src/components/features/account/Logout/container/LogOut.saga';
 import ForgotPasswordSaga from '@tcp/core/src/components/features/account/ForgotPassword/container/ForgotPassword.saga';
+import SocialAccountSaga from '@tcp/core/src/components/common/organisms/SocialAccount/container/Social.saga';
 import AddressBookSaga from '@tcp/core/src/components/features/account/AddressBook/container/AddressBook.saga';
 import DeleteAddressSaga from '@tcp/core/src/components/features/account/AddressBook/container/DeleteAddress.saga';
 import { SetDefaultShippingAddressSaga } from '@tcp/core/src/components/features/account/AddressBook/container/DefaultShippingAddress.saga';
@@ -12,6 +14,7 @@ import GiftCardsSaga from '@tcp/core/src/components/features/CnC/Checkout/organi
 import BagPageSaga from '@tcp/core/src/components/features/CnC/BagPage/container/BagPage.saga';
 import BootstrapSaga from './bootstrap';
 import LabelsSaga from './labels';
+import LayoutSaga from './layout';
 
 export {
   ProductListingPageSaga,
@@ -28,6 +31,9 @@ export {
   BootstrapSaga,
   LabelsSaga,
   GiftCardsSaga,
+  SocialAccountSaga,
+  SearchListingPageSaga,
+  LayoutSaga,
 };
 
 export default {
@@ -45,4 +51,7 @@ export default {
   BootstrapSaga,
   LabelsSaga,
   GiftCardsSaga,
+  SocialAccountSaga,
+  SearchListingPageSaga,
+  LayoutSaga,
 };

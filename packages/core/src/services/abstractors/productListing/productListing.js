@@ -1,7 +1,8 @@
 import logger from '@tcp/core/src/utils/loggerInstance';
 import { executeUnbxdAPICall } from '../../handler';
+
 import endpoints from '../../endpoints';
-import utils, { bindAllClassMethodsToThis } from '../../../utils';
+import utils, { bindAllClassMethodsToThis, isMobileApp } from '../../../utils';
 import processHelpers from './processHelpers';
 import { PRODUCTS_PER_LOAD } from '../../../components/features/browse/ProductListing/container/ProductListing.constants';
 import processResponse from './processResponse';
@@ -72,7 +73,10 @@ class ProductsDynamicAbstractor {
         facetValue.length > 0 &&
         facetKey.indexOf('uFilter') > -1
       ) {
-        facetValue = facetValue.map(facet => `${facetKey}:"${encodeURIComponent(facet)}"`);
+        facetValue = facetValue.map(facet => {
+          const encodedFacet = isMobileApp() ? facet : encodeURIComponent(facet);
+          return `${facetKey}:"${encodedFacet}"`;
+        });
         query += facetValue.length > 0 ? (query ? '&filter=' : '') + facetValue.join(' OR ') : '';
       }
     });
@@ -102,6 +106,10 @@ class ProductsDynamicAbstractor {
 
   handleValidationError = e => {
     logger.error(e);
+  };
+
+  getPlpOrSlpEndpoint = isSearch => {
+    return isSearch ? endpoints.getProductsBySearchTerm : endpoints.getProductviewbyCategory;
   };
 
   getProducts = (reqObj, state) => {
@@ -147,10 +155,11 @@ class ProductsDynamicAbstractor {
         'facet.multiselect': true,
         selectedfacet: true,
         fields:
-          'alt_img,style_partno,giftcard,TCPProductIndUSStore,TCPFitMessageUSSstore,TCPFit,TCPWebOnlyFlagUSStore,TCPWebOnlyFlagCanadaStore,TCPSwatchesUSStore,top_rated,TCPSwatchesCanadaStore,product_name,TCPColor,imagename,productid,uniqueId,favoritedcount,TCPBazaarVoiceReviewCount,categoryPath3_fq,categoryPath3,categoryPath3_catMap,categoryPath2_catMap,product_short_description,min_list_price,min_offer_price,TCPBazaarVoiceRating,seo_token,prodpartno,banner,facets,auxdescription,list_of_attributes,numberOfProducts,redirect,searchMetaData,didYouMean,TCPLoyaltyPromotionTextUSStore,TCPLoyaltyPLCCPromotionTextUSStore,TcpBossCategoryDisabled,TcpBossProductDisabled,long_product_title,TCPOutOfStockFlagUSStore,TCPOutOfStockFlagCanadaStore,product_type,products,low_offer_price,high_offer_price,low_list_price,high_list_price',
+          'alt_img,style_partno,giftcard,TCPProductIndUSStore,TCPFitMessageUSSstore,TCPFit,TCPWebOnlyFlagUSStore,TCPWebOnlyFlagCanadaStore,TCPSwatchesUSStore,top_rated,TCPSwatchesCanadaStore,product_name,TCPColor,imagename,productid,uniqueId,favoritedcount,TCPBazaarVoiceReviewCount,categoryPath3_fq,categoryPath3,categoryPath3_catMap,categoryPath2_catMap,product_short_description,min_list_price,min_offer_price,TCPBazaarVoiceRating,seo_token,prodpartno,banner,facets,auxdescription,list_of_attributes,numberOfProducts,redirect,searchMetaData,didYouMean,TCPLoyaltyPromotionTextUSStore,TCPLoyaltyPLCCPromotionTextUSStore,TcpBossCategoryDisabled,TcpBossProductDisabled,long_product_title,TCPOutOfStockFlagUSStore,TCPOutOfStockFlagCanadaStore,product_type,products,low_offer_price, high_offer_price, low_list_price, high_list_price',
       },
-      webService: endpoints.getProductviewbyCategory, // TODO - existing code - webService: isSearch ? endpoints.getProductsBySearchTerm : endpoints.getProductviewbyCategory
+      webService: this.getPlpOrSlpEndpoint(isSearch),
     };
+
     if (!isSearch) {
       payload.body.pagetype = 'boolean';
       if (categoryId) {
@@ -193,6 +202,7 @@ class ProductsDynamicAbstractor {
           isOutfitPage,
           searchTerm,
           sort,
+          filterSortView: Object.keys(filtersAndSort).length > 0,
         })
       )
       .catch(err => {

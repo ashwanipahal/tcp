@@ -17,8 +17,15 @@ export class EarnExtraPointsTileContainer extends React.PureComponent {
    * @return   {[Object]} JSX of the component
    */
   render() {
-    const { labels, waysToEarn } = this.props;
-    return <EarnExtraPointsTile waysToEarn={waysToEarn} labels={labels} />;
+    const { labels, waysToEarn, isAccountOverview, ...otherProps } = this.props;
+    return (
+      <EarnExtraPointsTile
+        waysToEarn={waysToEarn}
+        labels={labels}
+        isAccountOverview={isAccountOverview}
+        {...otherProps}
+      />
+    );
   }
 }
 
@@ -41,11 +48,13 @@ EarnExtraPointsTileContainer.propTypes = {
   getEarnExtraPointsListAction: PropTypes.func.isRequired,
   labels: PropTypes.shape({}),
   waysToEarn: PropTypes.shape([]),
+  isAccountOverview: PropTypes.bool,
 };
 
 EarnExtraPointsTileContainer.defaultProps = {
   labels: {},
   waysToEarn: [],
+  isAccountOverview: false,
 };
 
 export default connect(

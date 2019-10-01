@@ -1,8 +1,6 @@
 import React from 'react';
 import { Modal, Picker, Button, Platform } from 'react-native';
 import PropTypes from 'prop-types';
-import get from 'lodash/get';
-import { withTheme } from 'styled-components/native';
 import CustomIcon from '@tcp/core/src/components/common/atoms/Icon';
 import { ICON_NAME } from '@tcp/core/src/components/common/atoms/Icon/Icon.constants';
 import withStyles from '@tcp/core/src/components/common/hoc/withStyles';
@@ -20,7 +18,7 @@ import {
 } from '../FilterModal.style.native';
 import FilterButtons from '../../FilterButtons';
 import Filters from '../../Filters';
-import config from '../../SortSelector/SortSelector.config';
+import getSortOptions from '../../SortSelector/views/Sort.util';
 
 class FilterModal extends React.PureComponent {
   static propTypes = {
@@ -30,6 +28,7 @@ class FilterModal extends React.PureComponent {
     onSubmit: PropTypes.func.isRequired,
     getProducts: PropTypes.func.isRequired,
     navigation: PropTypes.objectOf(PropTypes.oneOfType([PropTypes.string])),
+    sortLabels: PropTypes.arrayOf(PropTypes.shape({})),
   };
 
   static defaultProps = {
@@ -37,6 +36,7 @@ class FilterModal extends React.PureComponent {
     theme: {},
     labelsFilter: {},
     navigation: {},
+    sortLabels: [],
   };
 
   constructor(props) {
@@ -62,11 +62,17 @@ class FilterModal extends React.PureComponent {
     });
   };
 
+  resetAppliedFilters = () => {
+    if (this.filterViewRef) this.filterViewRef.clearAllFilters();
+  };
+
   onCloseModal = () => {
+    this.resetAppliedFilters();
     this.setModalVisibilityState(false);
   };
 
   onPressOut = () => {
+    this.resetAppliedFilters();
     this.setModalVisibilityState(false);
   };
 
@@ -127,11 +133,12 @@ class FilterModal extends React.PureComponent {
   };
 
   render() {
-    const { theme, labelsFilter, filters } = this.props;
+    const { labelsFilter, filters, sortLabels } = this.props;
     const { showModal, language, showSortModal } = this.state;
-    const closeIconColor = get(theme, 'colorPalette.gray[900]', '#1a1a1a');
-    const closeIconSize = get(theme, 'typography.fontSizes.fs20', 20);
-    const lapsList = config.map(data => {
+
+    const sortOptions = getSortOptions(sortLabels);
+
+    const lapsList = sortOptions.map(data => {
       return <Picker.Item label={data.displayName} value={data.id} />;
     });
     return (
@@ -157,11 +164,7 @@ class FilterModal extends React.PureComponent {
                 <ModalTitleContainer>
                   <ModalTitle>{labelsFilter.lbl_filter_by}</ModalTitle>
                   <ModalCloseTouchable onPress={this.onCloseModal} accessibilityRole="button">
-                    <CustomIcon
-                      name={ICON_NAME.close}
-                      size={closeIconSize}
-                      color={closeIconColor}
-                    />
+                    <CustomIcon name={ICON_NAME.close} size="fs20" color="gray.900" />
                   </ModalCloseTouchable>
                 </ModalTitleContainer>
                 <Filters
@@ -169,6 +172,9 @@ class FilterModal extends React.PureComponent {
                   labelsFilter={labelsFilter}
                   filters={filters}
                   onSubmit={this.applyFilters}
+                  ref={ref => {
+                    this.filterViewRef = ref;
+                  }}
                 />
               </ModalContent>
             )}
@@ -203,5 +209,5 @@ class FilterModal extends React.PureComponent {
   }
 }
 
-export default withStyles(withTheme(FilterModal), styles);
+export default withStyles(FilterModal, styles);
 export { FilterModal as FilterModalVanilla };

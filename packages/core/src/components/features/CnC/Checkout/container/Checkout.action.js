@@ -2,6 +2,10 @@ import { loadComponentLabelsData } from '@tcp/core/src/reduxStore/actions';
 import { LABELS } from '@tcp/core/src/reduxStore/constants';
 import constants from '../Checkout.constants';
 
+/**
+ * @function initCheckoutAction
+ * action creator for type: INIT_CHECKOUT
+ */
 export const initCheckoutAction = () => ({
   type: constants.INIT_CHECKOUT,
 });
@@ -342,9 +346,24 @@ export const setGiftWrap = payload => {
     payload,
   };
 };
+
+export const getSetIsPaypalPaymentSettings = paypalPaymentSettings => {
+  return {
+    type: constants.CHECKOUT_ORDER_OPTIONS_SET_PAYPAL_PAYMENT,
+    paypalPaymentSettings,
+  };
+};
+
 export const submitReviewSection = payload => {
   return {
-    type: constants.SUBMIT_REVIEW,
+    type: constants.SUBMIT_REVIEW_SECTION,
+    payload,
+  };
+};
+
+export const getVenmoClientToken = payload => {
+  return {
+    type: constants.GET_VENMO_CLIENT_TOKEN,
     payload,
   };
 };
@@ -356,9 +375,23 @@ export const setShowGiftCardForm = payload => {
   };
 };
 
+export const getVenmoClientTokenSuccess = payload => {
+  return {
+    type: constants.GET_VENMO_CLIENT_TOKEN_SUCCESS,
+    payload,
+  };
+};
+
 export const setHideGiftCardForm = payload => {
   return {
     type: constants.CHECKOUT_FLAGS_SET_BILLING_ADD_GIFT_CARD_HIDE,
+    payload,
+  };
+};
+
+export const getVenmoClientTokenError = payload => {
+  return {
+    type: constants.GET_VENMO_CLIENT_TOKEN_ERROR,
     payload,
   };
 };
@@ -370,9 +403,48 @@ export const addGiftCardFailure = payload => {
   };
 };
 
+export const setVenmoData = payload => {
+  return {
+    type: constants.SET_VENMO_DATA,
+    payload,
+  };
+};
+
 export const addGiftCardSuccess = payload => {
   return {
     type: constants.ADD_GIFT_CARD_SUCCESS,
+    payload,
+  };
+};
+
+export const setVenmoPaymentInProgress = payload => {
+  return {
+    type: constants.SET_VENMO_PAYMENT_INPROGRESS,
+    payload,
+  };
+};
+
+export const setVenmoPickupMessageState = payload => {
+  return {
+    type: constants.SET_VENMO_PICKUP_MESSAGE_STATE,
+    payload,
+  };
+};
+
+export const setVenmoShippingMessageState = payload => {
+  return {
+    type: constants.SET_VENMO_SHIPPING_MESSAGE_STATE,
+    payload,
+  };
+};
+
+/**
+ * Method to save Venmo payment option in redux.
+ * @param {boolean} payload
+ */
+export const setVenmoPaymentOptionSave = payload => {
+  return {
+    type: constants.SET_VENMO_PAYMENT_OPTION_SAVE,
     payload,
   };
 };
@@ -383,9 +455,40 @@ export const resetAddGiftCard = payload => {
     payload,
   };
 };
+
 export const resetAddGiftCardSuccess = payload => {
   return {
     type: constants.RESET_ADD_GIFT_CARD_SUCCESS,
     payload,
+  };
+};
+/**
+ * @function initIntlCheckoutAction
+ *  @param { object } payload
+ * action creator for type: INIT_INTL_CHECKOUT
+ */
+export const initIntlCheckoutAction = payload => ({
+  type: constants.INIT_INTL_CHECKOUT,
+  payload,
+});
+/**
+ * @function getSetIntlUrl
+ *  @param { object } internationalUrl
+ * action creator for type: CHECKOUT_ORDER_OPTIONS_SET_INTL_URL
+ */
+export const getSetIntlUrl = internationalUrl => {
+  return {
+    internationalUrl,
+    type: 'CHECKOUT_ORDER_OPTIONS_SET_INTL_URL',
+  };
+};
+
+/**
+ * @function resetCheckoutReducer
+ * action creator for type: RESET_CHECKOUT_REDUCER
+ */
+export const resetCheckoutReducer = () => {
+  return {
+    type: constants.RESET_CHECKOUT_REDUCER,
   };
 };

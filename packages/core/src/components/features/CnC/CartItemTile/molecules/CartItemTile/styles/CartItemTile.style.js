@@ -10,7 +10,7 @@ export default css`
   .padding-left-10 {
     padding-left: 4px;
     @media ${props => props.theme.mediaQuery.smallMax} {
-      width: 150px;
+      width: ${props => (props.showOnReviewPage ? '150px' : 'auto')};
       display: inline-flex;
     }
   }
@@ -52,6 +52,7 @@ export default css`
     display: inline-block;
   }
   .responsive-edit-css {
+    text-decoration: underline;
     padding-top: 2px;
     cursor: pointer;
     display: flex;
@@ -175,7 +176,7 @@ export default css`
 
     .bag-product-detail-wrapper {
       position: relative;
-
+      width: 100%;
       .color-fit-size-separator {
         padding: 0 10px;
       }
@@ -205,6 +206,7 @@ export default css`
       }
 
       .responsive-edit-css {
+        text-decoration: underline;
         padding-top: 4px;
         cursor: pointer;
         display: flex;
@@ -231,15 +233,14 @@ export default css`
         right: 0;
       }
       .save-for-later-label {
-        position: absolute;
-        bottom: 4px;
-        left: 170px;
+        margin: ${props => props.theme.spacing.ELEM_SPACING.XS} 0;
         width: 100%;
       }
       .color-map-size-fit {
         display: inline-grid;
       }
       .responsive-edit-css {
+        text-decoration: underline;
         position: absolute;
         bottom: 0;
         right: 50%;
@@ -294,9 +295,8 @@ export default css`
   .parent- {
     padding-bottom: 0px;
     .save-for-later-label {
-      right: -57px;
-      position: absolute;
-      bottom: 17px;
+      float: right;
+      cursor: pointer;
     }
   }
 
@@ -319,6 +319,12 @@ export default css`
       margin-top: 27px;
     }
   }
-
+  .heartIcon {
+    margin-top: ${props => props.theme.spacing.ELEM_SPACING.XS};
+  }
+  .sflActions {
+    text-decoration: underline;
+    cursor: pointer;
+  }
   ${props => (props.inheritedStyles ? props.inheritedStyles : '')};
 `;

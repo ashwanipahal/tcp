@@ -4,6 +4,12 @@ const styles = css`
   img {
     max-height: 427px;
   }
+
+  .full-size-desktop-image {
+    max-height: none;
+    width: 100%;
+  }
+
   @media ${props => props.theme.mediaQuery.medium} {
     img {
       max-height: 436px;

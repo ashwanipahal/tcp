@@ -10,6 +10,9 @@ const gray = {
   1100: '#4a4a4a',
   1200: '#eeeeee',
   1300: '#9c9c9c',
+  1400: '#90939b',
+  1500: '#c3c3c3',
+  1600: '#979797',
 };
 
 export default gray;

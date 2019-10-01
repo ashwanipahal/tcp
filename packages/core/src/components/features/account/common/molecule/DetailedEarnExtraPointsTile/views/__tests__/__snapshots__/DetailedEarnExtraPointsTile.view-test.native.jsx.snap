@@ -1,0 +1,80 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Detailed Earn Extra Points Tile component  should render Detailed Earn Extra Points Tile component Correctly 1`] = `
+<Styled(View)
+  style={
+    Object {
+      "elevation": 5,
+      "shadowColor": "#6d7278",
+      "shadowOffset": Object {
+        "height": 2,
+        "width": 0,
+      },
+      "shadowOpacity": 0.3,
+      "shadowRadius": 5,
+    }
+  }
+  viewAll={true}
+>
+  <Styled(Anchor)
+    accessibilityLabel=""
+    anchorVariation=""
+    colorName={null}
+    customStyle={Object {}}
+    locator=""
+    onPress={[Function]}
+    text=""
+    visible={false}
+  >
+    <Styled(View)
+      viewAll={true}
+    >
+      <Styled(Image)
+        source={
+          Object {
+            "testUri": "../../../../core/src/assets/download-app.png",
+          }
+        }
+      />
+    </Styled(View)>
+    <Styled(View)
+      spacingStyles="margin-top-LRG"
+    >
+      <Styled(BodyCopy)
+        accessibilityText=""
+        color="gray.900"
+        component="p"
+        data-locator="earnExtraPointsActivityTitle_AppDownload"
+        dataLocator=""
+        fontFamily="secondary"
+        fontSize="fs16"
+        fontWeight="black"
+        margin={null}
+        numberOfLines={null}
+        text="Earn 5 Points"
+        textAlign="center"
+        textDecoration={null}
+      />
+    </Styled(View)>
+    <Styled(View)
+      viewAll={true}
+    >
+      <Styled(BodyCopy)
+        accessibilityText=""
+        color="gray.900"
+        component="p"
+        data-locator="earnExtraPointsDescription_AppDownload"
+        dataLocator=""
+        fontFamily="secondary"
+        fontSize="fs16"
+        fontWeight="regular"
+        margin={null}
+        numberOfLines={null}
+        text="Download & Log in to our App"
+        textAlign="center"
+        textDecoration={null}
+      />
+    </Styled(View)>
+  </Styled(Anchor)>
+</Styled(View)>
+`;

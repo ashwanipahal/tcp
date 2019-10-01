@@ -16,6 +16,7 @@ exports[`AddedToBag Component AddedToBag should render correctly 1`] = `
   headingFontWeight="semibold"
   horizontalBar={false}
   isOpen={[Function]}
+  isOverlay={false}
   onRequestClose={[Function]}
 >
   <Styled(View)>
@@ -30,6 +31,7 @@ exports[`AddedToBag Component AddedToBag should render correctly 1`] = `
       />
       <Connect(AddedToBagContainer)
         closeModal={[Function]}
+        fromAddedToBagModal={true}
         labels={Object {}}
         navigation={null}
         showAddTobag={true}
@@ -41,6 +43,7 @@ exports[`AddedToBag Component AddedToBag should render correctly 1`] = `
         <Styled(Anchor)
           accessibilityLabel=""
           anchorVariation="primary"
+          colorName={null}
           customStyle={Object {}}
           dataLocator="addedToBag-continueShopping"
           fontSizeVariation="medium"

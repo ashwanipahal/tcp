@@ -4,15 +4,21 @@ exports[`Delete Address Modal should render correctly 1`] = `
 <ModalNative
   heading=""
   isOpen={true}
+  isOverlay={false}
   onRequestClose={[Function]}
 >
   <Styled(View)>
     <Styled(Styled(BodyCopy))
+      accessibilityText=""
+      dataLocator=""
       fontFamily="secondary"
       fontSize="fs22"
       fontWeight="semibold"
+      margin={null}
+      numberOfLines={null}
       text=""
       textAlign="center"
+      textDecoration={null}
     />
     <Styled(View)>
       <Address
@@ -27,7 +33,9 @@ exports[`Delete Address Modal should render correctly 1`] = `
           }
         }
         customStyle={Object {}}
+        fontSize="fs14"
         fontWeight="bold"
+        regularName={false}
         showCountry={true}
         showDefaultText={false}
         showName={true}
@@ -35,22 +43,52 @@ exports[`Delete Address Modal should render correctly 1`] = `
       />
     </Styled(View)>
     <Styled(View)>
-      <Styled(WithTheme(CustomButton))
+      <Styled(CustomButton)
+        active={false}
         buttonVariation="variable-width"
         color="white"
+        customStyle={Object {}}
+        customTextStyle={null}
+        disableButton={false}
         fill="BLUE"
+        fullWidth=""
+        iconColor="gray.800"
+        iconName="chevron-down"
+        iconSize="fs12"
+        locator=""
+        navigation={Object {}}
         onPress={[Function]}
+        selected={false}
+        selectedIcon="chevron-up"
+        showIcon={false}
         text=""
+        theme={Object {}}
         type="submit"
+        url=""
       />
     </Styled(View)>
     <Styled(View)>
-      <Styled(WithTheme(CustomButton))
+      <Styled(CustomButton)
+        active={false}
         buttonVariation="variable-width"
         color="#c84747"
+        customStyle={Object {}}
+        customTextStyle={null}
+        disableButton={false}
         fill="RED"
+        fullWidth=""
+        iconColor="gray.800"
+        iconName="chevron-down"
+        iconSize="fs12"
+        locator=""
+        navigation={Object {}}
         onPress={[Function]}
+        selected={false}
+        selectedIcon="chevron-up"
+        showIcon={false}
         text=""
+        theme={Object {}}
+        url=""
       />
     </Styled(View)>
   </Styled(View)>

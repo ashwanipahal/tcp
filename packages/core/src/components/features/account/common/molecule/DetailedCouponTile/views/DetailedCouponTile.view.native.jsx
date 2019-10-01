@@ -30,7 +30,7 @@ import {
 } from '../../../../../../../services/abstractors/CnC/CartItemTile';
 import CouponIcon from '../../CouponIcon';
 
-const bagIcon = require('../../../../../../../assets/bag.png');
+const bagIcon = require('../../../../../../../assets/bag-white.png');
 
 export class DetailedCouponTile extends React.Component {
   static propTypes = {
@@ -132,6 +132,7 @@ export class DetailedCouponTile extends React.Component {
    */
   showOverlay = () => {
     const { coupon, labels } = this.props;
+
     if (coupon.status === COUPON_STATUS.APPLIED) {
       return (
         <Fragment>
@@ -176,10 +177,9 @@ export class DetailedCouponTile extends React.Component {
     const addToBagCTALabel = this.getAddToBagCtaLabel(labels, coupon.isStarted, isPlaceCash);
     const colorPallete = createThemeColorPalette();
     const overlapSiblings = this.showOverlap();
-
     return (
       <TileWrapper>
-        <TileContentWrapper>
+        <TileContentWrapper isError={coupon.error}>
           {this.showOverlay()}
           {coupon.isExpiring && (
             <Notification>

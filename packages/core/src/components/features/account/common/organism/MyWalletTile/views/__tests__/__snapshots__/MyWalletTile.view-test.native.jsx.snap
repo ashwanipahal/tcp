@@ -3,18 +3,28 @@
 exports[`MyWalletTile component should render correctly when coupons are not present 1`] = `
 <Styled(View)>
   <Styled(BodyCopy)
+    accessibilityText=""
     color="black"
+    dataLocator=""
     fontFamily="secondary"
     fontSize="fs16"
+    margin={null}
+    numberOfLines={null}
     text="lbl_overview_myWalletHeading"
+    textDecoration={null}
   />
   <Styled(View) />
   <View>
     <Styled(BodyCopy)
+      accessibilityText=""
       color="black"
+      dataLocator=""
       fontFamily="secondary"
       fontSize="fs13"
+      margin={null}
+      numberOfLines={null}
       text="lbl_overview_myWalletNoOfferAvailable lbl_overview_myWalletStartShop"
+      textDecoration={null}
     />
     <Styled(View)>
       <Styled(Anchor)
@@ -25,6 +35,7 @@ exports[`MyWalletTile component should render correctly when coupons are not pre
         borderWidth="1"
         buttonVariation="variable-width"
         centered={true}
+        colorName={null}
         customStyle={Object {}}
         dataLocator="accountoverview-myWallettile-startshopbtn"
         fill="WHITE"
@@ -37,11 +48,27 @@ exports[`MyWalletTile component should render correctly when coupons are not pre
     </Styled(View)>
   </View>
   <Styled(View)>
-    <Styled(WithTheme(CustomButton))
+    <Styled(CustomButton)
+      active={false}
       buttonVariation="variable-width"
+      color=""
+      customStyle={Object {}}
+      customTextStyle={null}
+      disableButton={false}
       fill="BLUE"
+      fullWidth=""
+      iconColor="gray.800"
+      iconName="chevron-down"
+      iconSize="fs12"
+      locator=""
+      navigation={Object {}}
       onPress={[Function]}
+      selected={false}
+      selectedIcon="chevron-up"
+      showIcon={false}
       text="lbl_overview_viewMyWalletCTA"
+      theme={Object {}}
+      url=""
     />
   </Styled(View)>
 </Styled(View)>
@@ -50,19 +77,29 @@ exports[`MyWalletTile component should render correctly when coupons are not pre
 exports[`MyWalletTile component should render correctly when coupons are present 1`] = `
 <Styled(View)>
   <Styled(BodyCopy)
+    accessibilityText=""
     color="black"
+    dataLocator=""
     fontFamily="secondary"
     fontSize="fs16"
+    margin={null}
+    numberOfLines={null}
     text="lbl_overview_myWalletHeading"
+    textDecoration={null}
   />
   <Styled(View) />
   <Styled(View)>
     <View>
       <Styled(BodyCopy)
+        accessibilityText=""
         data-locator="accountoverview-mywallettile-youhavewallettext"
+        dataLocator=""
         fontSize="fs14"
         fontWeight="semibold"
+        margin={null}
+        numberOfLines={null}
         text="lbl_overview_myWalletOfferAvailable"
+        textDecoration={null}
       />
     </View>
     <Styled(View)>
@@ -83,11 +120,27 @@ exports[`MyWalletTile component should render correctly when coupons are present
     </Styled(View)>
   </Styled(View)>
   <Styled(View)>
-    <Styled(WithTheme(CustomButton))
+    <Styled(CustomButton)
+      active={false}
       buttonVariation="variable-width"
+      color=""
+      customStyle={Object {}}
+      customTextStyle={null}
+      disableButton={false}
       fill="BLUE"
+      fullWidth=""
+      iconColor="gray.800"
+      iconName="chevron-down"
+      iconSize="fs12"
+      locator=""
+      navigation={Object {}}
       onPress={[Function]}
+      selected={false}
+      selectedIcon="chevron-up"
+      showIcon={false}
       text="lbl_overview_walletViewAllCTA"
+      theme={Object {}}
+      url=""
     />
   </Styled(View)>
 </Styled(View)>

@@ -137,7 +137,7 @@ export class DetailedCouponTile extends React.Component {
     const isApplyButtonDisabled = isDisabled || !coupon.isStarted;
     const isPlaceCash = coupon.redemptionType === COUPON_REDEMPTION_TYPE.PLACECASH;
     const addToBagCTALabel = this.getAddToBagCtaLabel(labels, coupon.isStarted, isPlaceCash);
-    const bagIcon = getIconPath('cart-icon');
+    const bagIcon = getIconPath('cart-icon-white');
     const showOverlow = coupon.status === COUPON_STATUS.APPLIED;
     const overlapCls = this.overlapClass(coupon.status);
     const overlapTxtCls = this.overlapTxtClass(coupon.status);
@@ -208,7 +208,7 @@ export class DetailedCouponTile extends React.Component {
               </BodyCopy>
             )}
           </BodyCopy>
-
+          <ErrorMessage className="error-notification" error={coupon.error} noBackground />
           <BodyCopy component="div" className="bottom-content">
             <BodyCopy component="div" className="coupon-desc elem-mb-SM">
               <BodyCopy component="div" data-locator="myrewards-usebylabel">
@@ -266,7 +266,6 @@ export class DetailedCouponTile extends React.Component {
                 </Button>
               )}
             </BodyCopy>
-            <ErrorMessage className="error-notification" error={coupon.error} />
           </BodyCopy>
         </BodyCopy>
       </BodyCopy>

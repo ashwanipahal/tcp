@@ -1,6 +1,5 @@
 import React from 'react';
 import App, { Container } from 'next/app';
-import dynamic from 'next/dynamic';
 import { Provider } from 'react-redux';
 import { ThemeProvider } from 'styled-components';
 import withRedux from 'next-redux-wrapper';
@@ -15,6 +14,7 @@ import { initErrorReporter } from '@tcp/core/src/utils/errorReporter.util';
 import { deriveSEOTags } from '@tcp/core/src/config/SEOTags.config';
 import { openOverlayModal } from '@tcp/core/src/components/features/OverlayModal/container/OverlayModal.actions';
 import { getUserInfo } from '@tcp/core/src/components/features/account/User/container/User.actions';
+import CheckoutModals from '@tcp/core/src/components/features/CnC/common/organism/CheckoutModals';
 import { Header, Footer } from '../components/features/content';
 import SEOTags from '../components/common/atoms';
 import CheckoutHeader from '../components/features/content/CheckoutHeader';
@@ -22,29 +22,29 @@ import Loader from '../components/features/content/Loader';
 import { configureStore } from '../reduxStore';
 import ReactAxe from '../utils/react-axe';
 import CHECKOUT_STAGES from './App.constants';
+import createDataLayer from '../analytics/dataLayer';
 import RenderPerf from '../components/common/molecules/RenderPerf';
+import RouteTracker from '../components/common/atoms/RouteTracker';
 
 // constants
 import constants from '../constants';
 
-// Script injection component
-// This is lazy-loaded so we inject it after SSR
-const Script = dynamic(() => import('../components/common/atoms/Script'), { ssr: false });
-
 // Analytics script injection
 function AnalyticsScript() {
-  return <Script src={process.env.ANALYTICS_SCRIPT_URL} />;
+  return <script src={process.env.ANALYTICS_SCRIPT_URL} />;
 }
+
 class TCPWebApp extends App {
+  static siteConfigSet = false;
+
   constructor(props) {
     super(props);
     this.theme = getCurrentTheme();
   }
 
   static async getInitialProps({ Component, ctx }) {
-    const compProps = TCPWebApp.loadComponentData(Component, ctx, {});
+    const compProps = await TCPWebApp.loadComponentData(Component, ctx, {});
     const pageProps = TCPWebApp.loadGlobalData(Component, ctx, compProps);
-
     return {
       pageProps,
     };
@@ -84,33 +84,49 @@ class TCPWebApp extends App {
       channelId,
       isDevelopment: isDevelopment(),
     });
+
+    /**
+     * This is where we assign window._dataLayer for analytics logic
+     */
+    if (process.env.ANALYTICS) {
+      // eslint-disable-next-line
+      global._dataLayer = createDataLayer(this.props.store);
+    }
   }
 
   componentDidUpdate() {
     ReactAxe.runAccessibility();
   }
 
+  /**
+   * This function parses cookie response
+   */
+  static parseCookieResponse = ({ name, value }) => {
+    let itemValue;
+    try {
+      itemValue = JSON.parse(value);
+    } catch (err) {
+      itemValue = {};
+    }
+    return {
+      [name]: itemValue,
+    };
+  };
+
   static loadGlobalData(Component, { store, res, isServer, req }, pageProps) {
     // getInitialProps of _App is called on every internal page navigation in spa.
     // This check is to avoid unnecessary api call in those cases
-    if (isServer) {
+    let payload = { siteConfig: false };
+    // Get initial props is getting called twice on server
+    // This check ensures this block is executed once since Component is not available in first call
+    if (Component.displayName && isServer) {
       const { locals } = res;
       const { device = {} } = req;
       const apiConfig = createAPIConfig(locals);
 
       // optimizely headers
       const optimizelyHeadersObject = {};
-      const setCookieHeaderList = setCookie.parse(res).map(({ name, value }) => {
-        let itemValue;
-        try {
-          itemValue = JSON.parse(value);
-        } catch (err) {
-          itemValue = {};
-        }
-        return {
-          [name]: itemValue,
-        };
-      });
+      const setCookieHeaderList = setCookie.parse(res).map(TCPWebApp.parseCookieResponse);
 
       const optimizelyHeader = setCookieHeaderList && setCookieHeaderList[0];
       if (optimizelyHeader) {
@@ -127,12 +143,21 @@ class TCPWebApp extends App {
         });
       }
 
-      const payload = {
-        ...Component.pageInfo,
+      payload = {
+        siteConfig: true,
         apiConfig,
         deviceType: device.type,
         optimizelyHeadersObject,
       };
+
+      // Get initial props is getting called twice on server
+      // This check ensures this block is executed once since Component is not available in first call
+      if (Component.pageInfo) {
+        payload = {
+          ...Component.pageInfo,
+          ...payload,
+        };
+      }
       store.dispatch(bootstrapData(payload));
     }
     return pageProps;
@@ -142,7 +167,7 @@ class TCPWebApp extends App {
     const compProps = {};
     if (Component.getInitialProps) {
       // eslint-disable-next-line no-param-reassign
-      pageProps = await Component.getInitialProps({ store, isServer });
+      pageProps = await Component.getInitialProps({ store, isServer }, pageProps);
     }
     if (Component.getInitActions) {
       const actions = Component.getInitActions();
@@ -158,9 +183,10 @@ class TCPWebApp extends App {
 
   render() {
     const { Component, pageProps, store, router } = this.props;
+    const componentPageName = Component.pageInfo ? Component.pageInfo.name || '' : '';
     let isNonCheckoutPage = true;
-    const { PICKUP, SHIPPING, BILLING, REVIEW } = CHECKOUT_STAGES;
-    const checkoutPageURL = [PICKUP, SHIPPING, BILLING, REVIEW];
+    const { PICKUP, SHIPPING, BILLING, REVIEW, INTERNATIONAL_CHECKOUT } = CHECKOUT_STAGES;
+    const checkoutPageURL = [PICKUP, SHIPPING, BILLING, REVIEW, INTERNATIONAL_CHECKOUT];
     for (let i = 0; i < checkoutPageURL.length; i += 1) {
       if (router.asPath.indexOf(checkoutPageURL[i]) > -1) {
         isNonCheckoutPage = false;
@@ -184,11 +210,14 @@ class TCPWebApp extends App {
                   <Component {...pageProps} />
                 </div>
               </div>
-              <Footer />
+              <Footer pageName={componentPageName} />
+              <CheckoutModals />
             </Grid>
+            {/* Inject route tracker if analytics is enabled. Must be within store provider. */}
+            {process.env.ANALYTICS && <RouteTracker />}
           </Provider>
         </ThemeProvider>
-        {/* Inject analytics script if enabled */}
+        {/* Inject analytics script if analytics is enabled. */}
         {process.env.ANALYTICS && <AnalyticsScript />}
         {/* TODO: Remove, this is for testing only */}
         <RenderPerf.Measure name="app_render" start="app_render_start" />

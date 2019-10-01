@@ -12,6 +12,7 @@ const propTypes = {
   plccUser: PropTypes.bool.isRequired,
   componentProps: PropTypes.shape({}).isRequired,
   isLoggedIn: PropTypes.bool.isRequired,
+  showCondensedHeader: PropTypes.bool.isRequired,
 };
 
 const defaultProps = {
@@ -31,6 +32,7 @@ const OverlayModal = ({
   componentProps,
   plccUser,
   isLoggedIn,
+  showCondensedHeader,
 }) => {
   const ModalContent = OverlayModalComponentMapping[component];
   return openState && ModalContent ? (
@@ -44,6 +46,7 @@ const OverlayModal = ({
       componentProps={componentProps}
       plccUser={plccUser}
       isLoggedIn={isLoggedIn}
+      showCondensedHeader={showCondensedHeader}
     />
   ) : null;
 };

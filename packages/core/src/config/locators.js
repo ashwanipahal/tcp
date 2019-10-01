@@ -21,7 +21,7 @@ export default {
   moduleD_textlink: 'moduleD_textlink_',
   moduleD_button: 'moduleD_button',
   // ModuleH
-  moduleH_header_text: 'moduleH_header_text_',
+  moduleH_header_text: 'moduleH_header_text',
   moduleH_cta_links: 'moduleH_cta_links_',
   moduleH_composite_image: 'moduleH_composite_image_',
   moduleH_play_button: 'moduleH_play_button',
@@ -84,9 +84,9 @@ export default {
   // Module R
   moduleR_header_text: 'moduleR_header_text',
   moduleR_promobanner_text: 'moduleR_promobanner_text',
-  moduleR_promobanner_img: 'moduleR_promobanner_img',
   moduleR_product_image: 'moduleR_product_image_',
-  moduleR_cta_link: 'moduleR_cta_links',
+  moduleR_cta_link: 'moduleR_cta_links_',
+  moduleR_cta_btn: 'moduleR_cta_btn',
 
   // Added To Bag
   addedtobag_btnviewbag: 'addedtobag-btnviewbag',
@@ -141,6 +141,8 @@ export default {
   empty_bag_loginUserCTA: 'cartRegisteredShopNowButton',
   empty_bag_guestUserCTA: 'cartGuestLoginCta',
   empty_bag_recommendation_msg: 'cartRecommendationMessage',
+  empty_sfl_Msg_1: 'cartEmptySFLMessage_1',
+  empty_sfl_Msg_2: 'cartEmptySFLMessage_2',
 
   // Country Selector
   header_country_flag: 'header_country_flag',
@@ -171,6 +173,10 @@ export default {
   plp_filter_gender: 'plp_filter_gender',
   plp_filter_gender_option_: 'plp_filter_gender_option_',
   plp_filter_gender_apply: 'plp_filter_gender_apply',
+  plp_filter_price: 'plp_filter_price',
+  plp_filter_price_option_: 'plp_filter_price_option_',
+  plp_filter_fit: 'plp_filter_fit',
+  plp_filter_fit_option_: 'plp_filter_price_fit_',
   plp_filter_size_range: 'plp_filter_size_range',
   plp_filter_size_range_option_: 'plp_filter_size_range_option_',
   plp_filter_size_range_apply: 'plp_filter_size_range_apply',
@@ -190,6 +196,9 @@ export default {
   plp_seo_module: 'plp_seo_module',
   plp_seo_readmore: 'plp_seo_module_readmore',
   plp_seo_readless: 'plp_seo_module_readless',
+
+  // PLP Review Ratings
+  plp_rating_review: 'plp_rating_review_text',
 
   // Track Order Locator
   track_order_click_here: 'track_order_click_here',
@@ -215,6 +224,12 @@ export default {
   plcc_apply_now_close_btn: 'plcc_apply_now_close_btn',
   plcc_apply_btn: 'plcc_apply_btn',
   plcc_apply_now_modal: 'plcc_apply_now_modal',
+  plcc_time_out_modal_close_btn: 'plcc_time_out_modal_close_btn',
+  plcc_time_out_modal_restart_application: 'plcc_time_out_modal_restart_application',
+  plcc_time_out_modal_return_to_checkout: 'plcc_time_out_modal_return_to_checkout',
+  plcc_time_out_modal_logo: 'plcc_time_out_modal_logo',
+  plcc_time_out_modal_text: 'plcc_time_out_modal_text',
+  plcc_time_out_modal_continue: 'plcc_time_out_modal_continue',
 
   // BreadCrumbs Locators
   breadCrumb_L1_Category: 'breadcrumb-L1-link',
@@ -234,4 +249,49 @@ export default {
   plp_sort_newest: 'sortoption-Newest-option',
   plp_sort_favorited: 'sortoption-Most Favorited-option',
   plp_sort_top_rated: 'sortoption-Top Rated-option',
+
+  // PDP ProductImages
+  pdp_product_titles: 'pdp_product_titles',
+  pdp_main_image: 'pdp_main_image',
+  pdp_alt_image: 'pdp_alt_image',
+  pdp_image_carousel_icon: 'pdp_image_carousel_icon',
+  pdp_full_size_btn: 'pdp_full_size_btn',
+  pdp_full_size_image_modal: 'pdp_full_size_image_modal',
+  pdp_zoomed_image_closed_btn: 'pdp_zoomed_image_closed_btn',
+
+  // PDP - Add to Bag section
+  pdp_product_badges: 'pdp_product_badges',
+  pdp_write_review_icon: 'pdp_write_review_icon',
+  pdp_current_product_price: 'pdp_current_product_price',
+  pdp_discounted_product_price: 'pdp_discounted_product_price',
+  pdp_loyalty_text: 'pdp_loyalty_text',
+  pdp_favorite_icon: 'pdp_favorite_icon',
+  pdp_device_image_carousel_btn: 'pdp_device_image_carousel_btn',
+  pdp_color_value: 'pdp_color_value',
+  pdp_color_label: 'pdp_color_label',
+  pdp_color_swatch: 'pdp_color_swatch',
+  pdp_fit_label: 'pdp_fit_label',
+  pdp_fit_value: 'pdp_fit_value',
+  pdp_error_alerts: 'pdp_error_alerts',
+  pdp_size_chart: 'pdp_size_chart',
+  pdp_size_label: 'pdp_size_label',
+  pdp_size_value: 'pdp_size_value',
+  pdp_size_another_available_size: 'pdp_size_another_available_size',
+  pdp_add_to_bag_CTA: 'pdp_add_to_bag_CTA',
+  pdp_quantity: 'pdp_quantity',
+  pdp_choose_store: 'pdp_choose_store',
+  pdp_free_shipping_label: 'pdp_free_shipping_label',
+  pdp_pick_up_in_store: 'pdp_pick_up_in_store',
+  pdp_pick_up_in_store_modal: 'pdp_pick_up_in_store_modal',
+  pdp_discounted_percentage: 'Product Discount Percentage',
+  pdp_favorite_icon_count: 'Favorites count',
+  pdp_anchor_complete_the_look: 'Complete The Look',
+
+  // Quick View Modal
+  quick_view_add_to_bag_header: 'quick_view_add_to_bag_header',
+  quick_view_modal: 'quick_view_modal',
+  quick_view_product_name: 'quick_view_product_name',
+  quick_view_product_image: 'quick_view_product_image',
+  quick_view_View_Product_details: 'quick_view_View_Product_details',
+  quick_view_icon_btn: 'quick_view_icon_btn',
 };

@@ -2,8 +2,9 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import { Anchor, Heading, BodyCopy, TextItems } from '../../../atoms';
 import withStyles from '../../../hoc/withStyles';
+import errorBoundary from '../../../hoc/withErrorBoundary';
 import LinkTextStyle from '../LinkText.style';
-import { configurePlpNavigationFromCMSUrl } from '../../../../../utils';
+import { configureInternalNavigationFromCMSUrl } from '../../../../../utils';
 
 /**
  * This component creates a link with styled text
@@ -46,26 +47,30 @@ const LinkText = props => {
     };
   }
 
-  return headerText.map((item, index) => {
-    const { link, textItems } = item;
-    const navigationUrl = link;
-    navigationUrl.to = configurePlpNavigationFromCMSUrl(link.url);
-    navigationUrl.asPath = link.url;
+  return (
+    <div className={className}>
+      {headerText.map((item, index) => {
+        const { link, textItems } = item;
+        const navigationUrl = link;
+        navigationUrl.to = configureInternalNavigationFromCMSUrl(link.url);
+        navigationUrl.asPath = link.url;
 
-    if (type === 'heading') {
-      compProps.dataLocator = `${compProps.dataLocator}_${index}`;
-    } else {
-      compProps['data-locator'] = `${compProps['data-locator']}_${index}`;
-    }
+        if (type === 'heading') {
+          compProps.dataLocator = `${compProps.dataLocator}_${index}`;
+        } else {
+          compProps['data-locator'] = `${compProps['data-locator']}_${index}`;
+        }
 
-    return (
-      <Anchor key={index.toString()} {...navigationUrl} className={className}>
-        <Component {...compProps} className={`${heading} link-text`}>
-          <TextItems textItems={textItems} />
-        </Component>
-      </Anchor>
-    );
-  });
+        return (
+          <Anchor key={index.toString()} {...navigationUrl}>
+            <Component {...compProps} className={`${heading} link-text`}>
+              <TextItems textItems={textItems} />
+            </Component>
+          </Anchor>
+        );
+      })}
+    </div>
+  );
 };
 
 LinkText.defaultProps = {
@@ -88,5 +93,5 @@ LinkText.propTypes = {
   color: PropTypes.string,
 };
 
-export default withStyles(LinkText, LinkTextStyle);
+export default withStyles(errorBoundary(LinkText), LinkTextStyle);
 export { LinkText as VanillaLinkText };

@@ -4,11 +4,17 @@ exports[`CheckoutSectionTitleDisplay should render correctly 1`] = `
 <Styled(View)>
   <Styled(View)>
     <Styled(BodyCopy)
+      accessibilityText=""
+      color="gray.900"
       data-locator="pickup-title"
+      dataLocator=""
       fontSize="fs16"
       fontWeight="extrabold"
+      margin={null}
       mobileFontFamily="primary"
+      numberOfLines={null}
       text="hello"
+      textDecoration={null}
     />
   </Styled(View)>
 </Styled(View)>

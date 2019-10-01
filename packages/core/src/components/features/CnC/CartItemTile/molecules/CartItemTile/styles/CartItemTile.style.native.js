@@ -24,7 +24,7 @@ const ProductDescription = styled.View`
   flex-wrap: wrap;
   flex-direction: column;
   margin-left: 5px;
-  width: 70%;
+  width: 66%;
 `;
 const SoldOutLabel = styled.View`
   height: 18px;
@@ -73,6 +73,7 @@ const ProductListPrice = styled.View`
 const EditButton = styled.TouchableOpacity`
   align-self: flex-end;
   margin-right: ${props => props.theme.spacing.ELEM_SPACING.XS};
+  margin-bottom: ${props => props.theme.spacing.ELEM_SPACING.XS};
   border-bottom-color: ${props => props.theme.colorPalette.gray[700]};
   border-bottom-width: 1px;
 `;
@@ -81,6 +82,8 @@ const BtnWrapper = styled.View`
   flex: 1;
   flex-direction: row;
   align-items: center;
+  justify-content: center;
+  width: 60%;
   text-align: center;
   margin-left: ${props => props.theme.spacing.ELEM_SPACING.XS};
 `;
@@ -103,6 +106,32 @@ const IconTextDelete = styled.Text`
   color: ${props => props.theme.colorPalette.red[500]};
   font-weight: ${props => props.theme.typography.fontWeights.extrabold};
   font-size: ${props => props.theme.typography.fontSizes.fs12};
+`;
+
+const IconTextMoveToBag = styled.Text`
+  margin-top: ${props => props.theme.spacing.ELEM_SPACING.XXS};
+  margin-left: ${props => props.theme.spacing.ELEM_SPACING.XXS};
+  color: ${props => props.theme.colorPalette.blue[700]};
+  font-weight: ${props => props.theme.typography.fontWeights.extrabold};
+  font-size: ${props => props.theme.typography.fontSizes.fs12};
+  text-align: center;
+  width: 52px;
+`;
+
+const HeartIcon = styled.TouchableOpacity`
+  position: absolute;
+  margin-left: ${props => props.theme.spacing.ELEM_SPACING.XS};
+  margin-top: ${props => props.theme.spacing.ELEM_SPACING.XXS};
+  display: flex;
+  justify-content: flex-end;
+  flex-direction: row;
+  width: 100%;
+  flex: 1;
+`;
+
+const SflIcons = styled.TouchableOpacity`
+  margin-top: ${props => props.theme.spacing.ELEM_SPACING.MED};
+  margin-left: ${props => props.theme.spacing.ELEM_SPACING.MED};
 `;
 
 const IconHeight = '58px';
@@ -130,4 +159,7 @@ export {
   IconWidth,
   IconTextDelete,
   IconTextEdit,
+  IconTextMoveToBag,
+  HeartIcon,
+  SflIcons,
 };

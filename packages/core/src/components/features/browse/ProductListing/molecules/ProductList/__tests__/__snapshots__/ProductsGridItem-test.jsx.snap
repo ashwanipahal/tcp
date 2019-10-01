@@ -10,6 +10,7 @@ exports[`ProductsGridItem component should renders correctly 1`] = `
   >
     <BadgeItem
       className="top-badge-container"
+      customFontWeight=""
       haveSpace={true}
       isShowBadges={true}
       text=""
@@ -34,7 +35,6 @@ exports[`ProductsGridItem component should renders correctly 1`] = `
           },
         ]
       }
-      dataLocator="undefined_122"
       imageUrls={Array []}
       isMobile={false}
       isPLPredesign={false}
@@ -72,6 +72,7 @@ exports[`ProductsGridItem component should renders correctly 1`] = `
           fontWeight="extrabold"
           letterSpacing="normal"
           lineHeight="normal"
+          link={null}
           textAlign="left"
         />
       </Styled(Col)>
@@ -92,7 +93,6 @@ exports[`ProductsGridItem component should renders correctly 1`] = `
     </Styled(Row)>
     <ProductPricesSection
       currencySymbol="$"
-      dataLocator="undefined_122"
       hidePrefixListPrice={true}
       listPrice={NaN}
       merchantTag=""
@@ -129,11 +129,15 @@ exports[`ProductsGridItem component should renders correctly 1`] = `
       showColorEvenOne={true}
     />
     <PromotionalMessage />
-    <div>
-      <Styled(FulfillmentSection)
-        btnClassName="added-to-bag"
+    <div
+      className="fulfillment-section"
+    >
+      <Styled(Button)
+        buttonVariation="fixed-width"
+        className="added-to-bag"
         dataLocator="global-addtocart-Button"
-        onPickupOpenClick={[Function]}
+        fullWidth={true}
+        onClick={[Function]}
       />
     </div>
   </div>

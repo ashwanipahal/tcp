@@ -1,4 +1,5 @@
 import React from 'react';
+import { Platform } from 'react-native';
 import PropTypes from 'prop-types';
 import { Field } from 'redux-form';
 import withStyles from '../../../../../../common/hoc/withStyles';
@@ -39,7 +40,7 @@ class PickUpAlternateFormPart extends React.PureComponent {
           <TextColOne />
           <TextColTwo>
             {showNoteOnToggle && (
-              <ShortNote>
+              <ShortNote Platform={Platform}>
                 <BodyCopy
                   fontSize="fs10"
                   fontFamily="primary"
