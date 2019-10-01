@@ -203,11 +203,9 @@ class AccountOverview extends PureComponent<Props> {
               />
 
               <CustomButton
-                className="classBtn"
                 fill="BLUE"
                 id="login"
                 type="submit"
-                buttonVariation="variable-width"
                 data-locator=""
                 width="150px"
                 text={labels.lbl_overview_login_text}

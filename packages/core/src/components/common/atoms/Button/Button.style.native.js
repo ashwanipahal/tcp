@@ -135,7 +135,12 @@ const style = css`
   border: 1px solid ${props => props.theme.colorPalette.gray[600]};
   opacity: ${props => (props.disableButton ? props.theme.opacity.opacity.medium : '1')};
   background: ${props => props.theme.colorPalette.white};
-  width: ${props => props.width};
+  ${props =>
+    props.width
+      ? `
+      width: ${props.width};
+   `
+      : ''};
   ${props => getShape(props)};
   ${props =>
     props.buttonVariation === 'variable-width'
