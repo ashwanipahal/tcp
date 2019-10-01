@@ -84,6 +84,7 @@ import {
   APPLY_PLCC_REDUCER_KEY,
   POINTS_CLAIM_REDUCER_KEY,
   CONFIRMATION_REDUCER_KEY,
+  STYLITICS_PRODUCT_TAB_LIST_REDUCER_KEY,
 } from '@tcp/core/src/constants/reducer.constants';
 import HeaderReducer from '@tcp/core/src/components/common/organisms/Header/container/Header.reducer';
 import ModulesReducer from '@tcp/core/src/reduxStore/reducers/modules';
@@ -93,6 +94,7 @@ import NavigationReducer from '@tcp/core/src/components/features/content/Navigat
 import UserReducer from '@tcp/core/src/components/features/account/User/container/User.reducer';
 import ToastMessageReducer from '@tcp/core/src/components/common/atoms/Toast/container/Toast.reducer.native';
 import ProductTabListReducer from '@tcp/core/src/components/common/organisms/ProductTabList/container/ProductTabList.reducer';
+import StyliticsProductTabListReducer from '@tcp/core/src/components/common/organisms/StyliticsProductTabList/container/StyliticsProductTabList.reducer';
 
 import ThemeWrapperReducer from '../../components/common/hoc/ThemeWrapper.reducer';
 import { THEME_WRAPPER_REDUCER_KEY } from '../../components/common/hoc/ThemeWrapper.constants';
@@ -110,6 +112,11 @@ const filteredProductListingReducer = createFilteredReducer(
 const filteredProductTabListReducer = createFilteredReducer(
   ProductTabListReducer,
   PRODUCT_TAB_LIST_REDUCER_KEY
+);
+
+const filteredStyliticsProductTabListReducer = createFilteredReducer(
+  StyliticsProductTabListReducer,
+  STYLITICS_PRODUCT_TAB_LIST_REDUCER_KEY
 );
 
 const filteredProductDetailReducer = createFilteredReducer(
@@ -158,6 +165,7 @@ const rootReducer = combineReducers({
   [ADDRESS_VERIFICATION_REDUCER_KEY]: AddressVerificationReducer,
   [TRACK_ORDER_REDUCER_KEY]: TrackOrderReducer,
   [PRODUCT_TAB_LIST_REDUCER_KEY]: filteredProductTabListReducer,
+  [STYLITICS_PRODUCT_TAB_LIST_REDUCER_KEY]: filteredStyliticsProductTabListReducer,
   [GET_CANDID_REDUCER_KEY]: filteredGetCandidReducer,
   [MAILING_ADDRESS_REDUCER_KEY]: AddMailingAddressReducer,
   [UPDATE_PROFILE_REDUCER_KEY]: UpdateProfileReducer,
