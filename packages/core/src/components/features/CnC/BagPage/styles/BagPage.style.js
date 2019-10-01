@@ -75,7 +75,7 @@ const styles = css`
       background: ${props => props.theme.colors.WHITE};
       width: 100%;
       margin: 0;
-      border-bottom: 1px solid #f3f3f3;
+      border-bottom: 1px solid ${props => props.theme.colorPalette.gray[300]};
     }
     .bagHeaderText {
       display: flex;
@@ -109,7 +109,6 @@ const styles = css`
       position: sticky;
       z-index: ${props => props.theme.zindex.zLoader};
       background: ${props => props.theme.colors.WHITE};
-      padding: 0 14px;
     }
   }
 

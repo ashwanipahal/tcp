@@ -4,48 +4,50 @@ exports[`Bag page View should not render SFL section 1`] = `
 <div
   className="test"
 >
-  <Styled(Row)
-    id="bagPageHeader"
-    tagName="header"
-  >
-    <Styled(Col)
-      className="left-sec"
-      colSize={
-        Object {
-          "large": 6,
-          "medium": 4,
-          "small": 3,
-        }
-      }
-      onClick={[Function]}
+  <div>
+    <Styled(Row)
+      className="testingMadan"
+      tagName="header"
     >
-      <Styled(Heading)
-        className="bag-header activeHeader"
-        color="text.primary"
-        component={null}
-        dataLocator=""
-        fontSize="fs16"
-        textAlign="left"
-        variant="h6"
+      <Styled(Col)
+        className="left-sec"
+        colSize={
+          Object {
+            "large": 6,
+            "medium": 4,
+            "small": 3,
+          }
+        }
+        onClick={[Function]}
       >
-        undefined (10)
-      </Styled(Heading)>
-      <Styled(BodyCopy)
-        className="estimatedHeaderText activeEstimatedHeader"
-        color="text.primary"
-        component="p"
-        fontFamily="secondary"
-        fontSize="fs10"
-        fontWeight="regular"
-        letterSpacing="normal"
-        lineHeight="normal"
-        link={null}
-        textAlign="left"
-      >
-        undefined: $50.00
-      </Styled(BodyCopy)>
-    </Styled(Col)>
-  </Styled(Row)>
+        <Styled(Heading)
+          className="bag-header activeHeader"
+          color="text.primary"
+          component={null}
+          dataLocator=""
+          fontSize="fs16"
+          textAlign="left"
+          variant="h6"
+        >
+          undefined (10)
+        </Styled(Heading)>
+        <Styled(BodyCopy)
+          className="estimatedHeaderText activeEstimatedHeader"
+          color="text.primary"
+          component="p"
+          fontFamily="secondary"
+          fontSize="fs10"
+          fontWeight="regular"
+          letterSpacing="normal"
+          lineHeight="normal"
+          link={null}
+          textAlign="left"
+        >
+          undefined: $50.00
+        </Styled(BodyCopy)>
+      </Styled(Col)>
+    </Styled(Row)>
+  </div>
   <Styled(CnCTemplate)
     bagActions={[Function]}
     isNonEmptySFL={false}
@@ -60,48 +62,50 @@ exports[`Bag page View should render Added to Bag view section 1`] = `
 <div
   className="test"
 >
-  <Styled(Row)
-    id="bagPageHeader"
-    tagName="header"
-  >
-    <Styled(Col)
-      className="left-sec"
-      colSize={
-        Object {
-          "large": 6,
-          "medium": 4,
-          "small": 3,
-        }
-      }
-      onClick={[Function]}
+  <div>
+    <Styled(Row)
+      className="testingMadan"
+      tagName="header"
     >
-      <Styled(Heading)
-        className="bag-header activeHeader"
-        color="text.primary"
-        component={null}
-        dataLocator=""
-        fontSize="fs16"
-        textAlign="left"
-        variant="h6"
+      <Styled(Col)
+        className="left-sec"
+        colSize={
+          Object {
+            "large": 6,
+            "medium": 4,
+            "small": 3,
+          }
+        }
+        onClick={[Function]}
       >
-        undefined (10)
-      </Styled(Heading)>
-      <Styled(BodyCopy)
-        className="estimatedHeaderText activeEstimatedHeader"
-        color="text.primary"
-        component="p"
-        fontFamily="secondary"
-        fontSize="fs10"
-        fontWeight="regular"
-        letterSpacing="normal"
-        lineHeight="normal"
-        link={null}
-        textAlign="left"
-      >
-        undefined: $50.00
-      </Styled(BodyCopy)>
-    </Styled(Col)>
-  </Styled(Row)>
+        <Styled(Heading)
+          className="bag-header activeHeader"
+          color="text.primary"
+          component={null}
+          dataLocator=""
+          fontSize="fs16"
+          textAlign="left"
+          variant="h6"
+        >
+          undefined (10)
+        </Styled(Heading)>
+        <Styled(BodyCopy)
+          className="estimatedHeaderText activeEstimatedHeader"
+          color="text.primary"
+          component="p"
+          fontFamily="secondary"
+          fontSize="fs10"
+          fontWeight="regular"
+          letterSpacing="normal"
+          lineHeight="normal"
+          link={null}
+          textAlign="left"
+        >
+          undefined: $50.00
+        </Styled(BodyCopy)>
+      </Styled(Col)>
+    </Styled(Row)>
+  </div>
   <Styled(CnCTemplate)
     bagActions={[Function]}
     isNonEmptySFL={false}
@@ -116,48 +120,50 @@ exports[`Bag page View should render SFL section 1`] = `
 <div
   className="test"
 >
-  <Styled(Row)
-    id="bagPageHeader"
-    tagName="header"
-  >
-    <Styled(Col)
-      className="left-sec"
-      colSize={
-        Object {
-          "large": 6,
-          "medium": 4,
-          "small": 3,
-        }
-      }
-      onClick={[Function]}
+  <div>
+    <Styled(Row)
+      className="testingMadan"
+      tagName="header"
     >
-      <Styled(Heading)
-        className="bag-header activeHeader"
-        color="text.primary"
-        component={null}
-        dataLocator=""
-        fontSize="fs16"
-        textAlign="left"
-        variant="h6"
+      <Styled(Col)
+        className="left-sec"
+        colSize={
+          Object {
+            "large": 6,
+            "medium": 4,
+            "small": 3,
+          }
+        }
+        onClick={[Function]}
       >
-        undefined (10)
-      </Styled(Heading)>
-      <Styled(BodyCopy)
-        className="estimatedHeaderText activeEstimatedHeader"
-        color="text.primary"
-        component="p"
-        fontFamily="secondary"
-        fontSize="fs10"
-        fontWeight="regular"
-        letterSpacing="normal"
-        lineHeight="normal"
-        link={null}
-        textAlign="left"
-      >
-        undefined: $50.00
-      </Styled(BodyCopy)>
-    </Styled(Col)>
-  </Styled(Row)>
+        <Styled(Heading)
+          className="bag-header activeHeader"
+          color="text.primary"
+          component={null}
+          dataLocator=""
+          fontSize="fs16"
+          textAlign="left"
+          variant="h6"
+        >
+          undefined (10)
+        </Styled(Heading)>
+        <Styled(BodyCopy)
+          className="estimatedHeaderText activeEstimatedHeader"
+          color="text.primary"
+          component="p"
+          fontFamily="secondary"
+          fontSize="fs10"
+          fontWeight="regular"
+          letterSpacing="normal"
+          lineHeight="normal"
+          link={null}
+          textAlign="left"
+        >
+          undefined: $50.00
+        </Styled(BodyCopy)>
+      </Styled(Col)>
+    </Styled(Row)>
+  </div>
   <Styled(CnCTemplate)
     bagActions={[Function]}
     isNonEmptySFL={true}
