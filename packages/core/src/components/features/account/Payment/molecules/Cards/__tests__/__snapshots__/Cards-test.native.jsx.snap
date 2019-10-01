@@ -35,11 +35,27 @@ exports[`CardList Component should render correctly 1`] = `
   </Styled(View)>
   <Styled(Text) />
   <Styled(View)>
-    <Styled(WithTheme(CustomButton))
+    <Styled(CustomButton)
+      active={false}
       buttonVariation="variable-width"
+      color=""
+      customStyle={Object {}}
+      customTextStyle={null}
+      disableButton={false}
       fill="BLUE"
+      fullWidth=""
+      iconColor="gray.800"
+      iconName="chevron-down"
+      iconSize="fs12"
+      locator=""
+      navigation={Object {}}
       onPress={[Function]}
+      selected={false}
+      selectedIcon="chevron-up"
+      showIcon={false}
       text=""
+      theme={Object {}}
+      url=""
     />
   </Styled(View)>
 </View>
@@ -97,11 +113,27 @@ exports[`CardList Component should render correctly if list is present 1`] = `
 >
   <Styled(Text) />
   <Styled(View)>
-    <Styled(WithTheme(CustomButton))
+    <Styled(CustomButton)
+      active={false}
       buttonVariation="variable-width"
+      color=""
+      customStyle={Object {}}
+      customTextStyle={null}
+      disableButton={false}
       fill="BLUE"
+      fullWidth=""
+      iconColor="gray.800"
+      iconName="chevron-down"
+      iconSize="fs12"
+      locator=""
+      navigation={Object {}}
       onPress={[Function]}
+      selected={false}
+      selectedIcon="chevron-up"
+      showIcon={false}
       text=""
+      theme={Object {}}
+      url=""
     />
   </Styled(View)>
   <ReduxForm

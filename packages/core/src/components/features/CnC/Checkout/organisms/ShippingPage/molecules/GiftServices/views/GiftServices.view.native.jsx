@@ -19,6 +19,7 @@ import {
   ImageBrandStyle,
   RadioButtonWrapperInner,
   StyledGiftDetails,
+  AddMessageHead,
 } from '../styles/GiftServices.style.native';
 import InputCheckbox from '../../../../../../../../common/atoms/InputCheckbox';
 import LabeledRadioButton from '../../../../../../../../common/atoms/LabeledRadioButton';
@@ -80,7 +81,7 @@ class GiftServices extends React.PureComponent {
               dataLocator="add-gift-services-details-lbl"
               fontSize="fs16"
               mobileFontFamily="secondary"
-              fontWeight="semibold"
+              fontWeight={!hideLongDescription ? 'semibold' : 'regular'}
               text={servicesMap.name}
               textAlign="left"
             />
@@ -90,7 +91,7 @@ class GiftServices extends React.PureComponent {
               dataLocator="add-gift-services-details-lbl"
               fontSize="fs16"
               mobileFontFamily="secondary"
-              fontWeight="semibold"
+              fontWeight={!hideLongDescription ? 'semibold' : 'regular'}
               text={
                 parseInt(servicesMap.price, 10) === 0
                   ? labels.tcpOptionPrice1
@@ -186,7 +187,8 @@ class GiftServices extends React.PureComponent {
     const giftServicesList = this.getServicesOptions(giftWrapOptions, labels);
     const dropDownStyle = {
       height: 30,
-      border: 2,
+      border: 1,
+      lightBorder: true,
     };
     const itemStyle = {
       height: 90,
@@ -274,6 +276,7 @@ class GiftServices extends React.PureComponent {
             <Field
               name="giftServices"
               component={DropDown}
+              customDropDownHeight={270}
               data={giftServicesList}
               dataLocator="giftServices-list"
               variation="secondary"
@@ -283,13 +286,15 @@ class GiftServices extends React.PureComponent {
               selectedValue={selectedGiftService}
             />
             <AddMessageWrapper>
-              <BodyCopy
-                fontSize="fs14"
-                mobileFontFamily="secondary"
-                textAlign="left"
-                text={labels.addMessage}
-                color="gray.900"
-              />
+              <AddMessageHead>
+                <BodyCopy
+                  fontSize="fs14"
+                  mobileFontFamily="secondary"
+                  textAlign="left"
+                  text={labels.addMessage}
+                  color="gray.900"
+                />
+              </AddMessageHead>
 
               <BodyCopy
                 fontSize="fs10"

@@ -5,6 +5,7 @@ import createThemeColorPalette from '@tcp/core/styles/themes/createThemeColorPal
 import TrackOrderContainer from '@tcp/core/src/components/features/account/TrackOrder';
 import MyPlaceRewardsOverviewTile from '@tcp/core/src/components/features/account/common/organism/MyPlaceRewardsOverviewTile';
 import MyWalletTile from '@tcp/core/src/components/features/account/common/organism/MyWalletTile';
+import EarnExtraPointsOverview from '@tcp/core/src/components/features/account/common/organism/EarnExtraPointsOverview';
 import { getLabelValue } from '@tcp/core/src/utils';
 import Panel from '../../../../common/molecules/Panel';
 import PaymentTile from '../../common/organism/PaymentTile';
@@ -150,7 +151,9 @@ class AccountOverview extends PureComponent<Props> {
                 handleComponentChange={handleComponentChange}
               />
             </Panel>
-            <Panel title={labels.lbl_overview_earnPointsHeading} />
+            <Panel title={labels.lbl_overview_earnPointsHeading}>
+              <EarnExtraPointsOverview handleComponentChange={handleComponentChange} />
+            </Panel>
             <Panel title={labels.lbl_overview_ordersHeading} />
             <Panel title={labels.lbl_overview_profileInformationHeading}>
               <ProfileInfoContainer labels={labels} handleComponentChange={handleComponentChange} />
@@ -262,12 +265,8 @@ class AccountOverview extends PureComponent<Props> {
             </FavtWrapper>
             <UnderlineStyle />
 
-            <Panel
-              title={labels.lbl_overview_apply_today}
-              isVariationTypeLink
-              handleComponentChange={handleComponentChange}
-              isCardApply
-            />
+            <Panel title={labels.lbl_overview_apply_today} isVariationTypeLink isCardApply />
+
             <Panel title={labels.lbl_overview_manage_creditCard} isVariationTypeLink />
 
             <UnderlineStyle />

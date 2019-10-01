@@ -6,6 +6,7 @@ describe('CheckoutHeaderVanilla', () => {
   const props = {
     labels: {},
     className: 'test',
+    itemsCount: 1,
   };
 
   it('should render checkout header section', () => {

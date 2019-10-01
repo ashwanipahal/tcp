@@ -20,15 +20,10 @@ import {
   ActiveBagHeaderText,
   ActiveBagHeaderView,
   InActiveBagHeaderView,
-  SuccessTickImage,
-  SuccessMessageContainer,
 } from '../styles/BagPage.style.native';
 import BonusPointsDays from '../../../../common/organisms/BonusPointsDays';
 import InitialPropsHOC from '../../../../common/hoc/InitialPropsHOC/InitialPropsHOC.native';
 import BAGPAGE_CONSTANTS from '../BagPage.constants';
-import BodyCopy from '../../../../common/atoms/BodyCopy';
-
-const tickIcon = require('../../../../../assets/circle-check-fill.png');
 
 class BagPage extends React.Component {
   constructor(props) {
@@ -39,29 +34,42 @@ class BagPage extends React.Component {
   }
 
   componentDidMount() {
-    const { fetchLabels, totalCount, sflItems } = this.props;
+    const { fetchLabels, totalCount, sflItems, isShowSaveForLaterSwitch } = this.props;
     fetchLabels();
 
     this.setState({
       activeSection:
-        !totalCount && sflItems.size ? BAGPAGE_CONSTANTS.SFL_STATE : BAGPAGE_CONSTANTS.BAG_STATE,
+        !totalCount && sflItems.size && isShowSaveForLaterSwitch
+          ? BAGPAGE_CONSTANTS.SFL_STATE
+          : BAGPAGE_CONSTANTS.BAG_STATE,
     });
   }
 
   componentDidUpdate() {
-    const { toastMessage, isCartItemSFL, labels, isSflItemRemoved } = this.props;
-    const { sflSuccess, sflDeleteSuccess } = labels;
+    const {
+      toastMessage,
+      isCartItemSFL,
+      labels,
+      isSflItemRemoved,
+      isCartItemsUpdating: { isDeleting },
+    } = this.props;
+    const { sflSuccess, sflDeleteSuccess, itemDeleted } = labels;
     if (isCartItemSFL) {
       toastMessage(sflSuccess);
     } else if (isSflItemRemoved) {
       toastMessage(sflDeleteSuccess);
+    } else if (isDeleting) {
+      toastMessage(itemDeleted);
     }
   }
 
   handleChangeActiveSection = sectionName => {
-    this.setState({
-      activeSection: sectionName,
-    });
+    const { isShowSaveForLaterSwitch } = this.props;
+    if (isShowSaveForLaterSwitch) {
+      this.setState({
+        activeSection: sectionName,
+      });
+    }
   };
 
   renderBagHeading() {
@@ -82,7 +90,8 @@ class BagPage extends React.Component {
 
   renderSflHeading() {
     const { activeSection } = this.state;
-    const { labels, sflItems } = this.props;
+    const { labels, sflItems, isShowSaveForLaterSwitch } = this.props;
+    if (!isShowSaveForLaterSwitch) return null;
     const { savedLaterButton } = labels;
     const headingTexts = `${savedLaterButton} (${sflItems.size})`;
     return (
@@ -96,36 +105,46 @@ class BagPage extends React.Component {
     );
   }
 
-  /**
-   *@function //responsible for rendering of success message with tick icon
-   * @memberof BagPage
-   */
-  renderSuccessMessage = () => {
-    const {
-      isCartItemsUpdating: { isDeleting },
-      labels,
-    } = this.props;
-    return (
-      isDeleting && (
-        <SuccessMessageContainer>
-          <SuccessTickImage source={tickIcon} />
-          <BodyCopy
-            component="span"
-            fontSize="fs12"
-            mobilefontFamily={['secondary']}
-            fontWeight="extrabold"
-            text={labels.itemDeleted}
-          />
-        </SuccessMessageContainer>
-      )
-    );
-  };
-
-  renderOrderLedgerContainer = isNoNEmptyBag => {
-    if (isNoNEmptyBag) {
+  renderOrderLedgerContainer = (isNoNEmptyBag, isBagStage) => {
+    if (isNoNEmptyBag && isBagStage) {
       return (
         <RowSectionStyle>
           <OrderLedgerContainer />
+        </RowSectionStyle>
+      );
+    }
+    return <></>;
+  };
+
+  renderBonusPoints = (isUserLoggedIn, isNoNEmptyBag, isBagStage) => {
+    if (isUserLoggedIn && isNoNEmptyBag && isBagStage) {
+      return (
+        <RowSectionStyle>
+          <BonusPointsWrapper>
+            <BonusPointsDays isBagPage showAccordian={false} />
+          </BonusPointsWrapper>
+        </RowSectionStyle>
+      );
+    }
+    return <></>;
+  };
+
+  renderAirMiles = isBagStage => {
+    if (isCanada() && isBagStage) {
+      return (
+        <RowSectionStyle>
+          <AirmilesBanner />
+        </RowSectionStyle>
+      );
+    }
+    return <></>;
+  };
+
+  renderCouponPromos = (isNoNEmptyBag, isBagStage) => {
+    if (isNoNEmptyBag && isBagStage) {
+      return (
+        <RowSectionStyle>
+          <CouponAndPromos showAccordian={false} />
         </RowSectionStyle>
       );
     }
@@ -169,40 +188,27 @@ class BagPage extends React.Component {
               )}
             </SflHeadingViewStyle>
           </BagHeaderRow>
-          {this.renderSuccessMessage()}
           <MainSection>
             {isBagStage && <ProductTileWrapper bagLabels={labels} />}
             {isSFLStage && (
               <ProductTileWrapper bagLabels={labels} sflItems={sflItems} isBagPageSflSection />
             )}
-            {this.renderOrderLedgerContainer(isNoNEmptyBag)}
-            {isUserLoggedIn && isNoNEmptyBag && (
-              <RowSectionStyle>
-                <BonusPointsWrapper>
-                  <BonusPointsDays isBagPage showAccordian={false} />
-                </BonusPointsWrapper>
-              </RowSectionStyle>
-            )}
-            {isCanada() && (
-              <RowSectionStyle>
-                <AirmilesBanner />
-              </RowSectionStyle>
-            )}
-            {isNoNEmptyBag && (
-              <RowSectionStyle>
-                <CouponAndPromos showAccordian={false} />
-              </RowSectionStyle>
-            )}
+            {this.renderOrderLedgerContainer(isNoNEmptyBag, isBagStage)}
+            {this.renderBonusPoints(isUserLoggedIn, isNoNEmptyBag, isBagStage)}
+            {this.renderAirMiles(isBagStage)}
+            {this.renderCouponPromos(isNoNEmptyBag, isBagStage)}
           </MainSection>
         </ScrollViewWrapper>
 
-        <AddedToBagActions
-          handleCartCheckout={handleCartCheckout}
-          labels={labels}
-          showAddTobag={showAddTobag}
-          navigation={navigation}
-          isNoNEmptyBag={isNoNEmptyBag}
-        />
+        {isBagStage && (
+          <AddedToBagActions
+            handleCartCheckout={handleCartCheckout}
+            labels={labels}
+            showAddTobag={showAddTobag}
+            navigation={navigation}
+            isNoNEmptyBag={isNoNEmptyBag}
+          />
+        )}
       </>
     );
   }
@@ -222,6 +228,7 @@ BagPage.propTypes = {
   toastMessage: PropTypes.func.isRequired,
   isCartItemSFL: PropTypes.bool.isRequired,
   isSflItemRemoved: PropTypes.bool.isRequired,
+  isShowSaveForLaterSwitch: PropTypes.bool.isRequired,
 };
 
 export default InitialPropsHOC(BagPage);

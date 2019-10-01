@@ -99,11 +99,24 @@ exports[`ProductImages component should renders correctly 1`] = `
           zoomImageUrl="https://test4.childrensplace.com/wcsstore/GlobalSAS/images/tcp/products/900/2082931_IV-1.jpg"
         />
       </Styled(Carousel)>
-      <Styled(Anchor)
-        aria-label="View full size image"
-        className="resize-text"
-        dataLocator="pdp_full_size_btn"
-      />
+      <div
+        className="social-connect-wrapper"
+      >
+        <span
+          className="fullSize-image-label"
+        >
+          <Styled(Anchor)
+            aria-label="View full size image"
+            className="resize-text"
+            dataLocator="pdp_full_size_btn"
+          />
+        </span>
+        <Styled(SocialConnect)
+          isFacebookEnabled={true}
+          isPinterestEnabled={true}
+          isTwitterEnabled={true}
+        />
+      </div>
     </div>
     <div
       className="enlarged-image-container"

@@ -78,18 +78,51 @@ exports[`DetailedCouponTile should render correctly 1`] = `
         />
       </Styled(View)>
       <Styled(View)>
-        <Styled(WithTheme(CustomButton))
+        <Styled(CustomButton)
+          active={false}
+          buttonVariation="fixed-width"
+          color=""
+          customStyle={Object {}}
+          customTextStyle={null}
+          disableButton={false}
+          fill=""
+          fullWidth=""
+          iconColor="gray.800"
+          iconName="chevron-down"
+          iconSize="fs12"
+          locator=""
+          navigation={Object {}}
           onPress={[Function]}
+          selected={false}
+          selectedIcon="chevron-up"
+          showIcon={false}
           text="view & print"
+          theme={Object {}}
+          url=""
         />
       </Styled(View)>
-      <Styled(WithTheme(CustomButton))
+      <Styled(CustomButton)
+        active={false}
         buttonVariation="variable-width"
         color="#fff"
+        customStyle={Object {}}
+        customTextStyle={null}
+        disableButton={false}
         disabled={true}
         fill="BLUE"
+        fullWidth=""
+        iconColor="gray.800"
+        iconName="chevron-down"
+        iconSize="fs12"
+        locator=""
+        navigation={Object {}}
         onPress={[Function]}
+        selected={false}
+        selectedIcon="chevron-up"
+        showIcon={false}
         text="apply"
+        theme={Object {}}
+        url=""
       />
     </Styled(View)>
   </Styled(View)>
@@ -212,15 +245,51 @@ exports[`DetailedCouponTile should render correctly for applied coupon 1`] = `
         <Styled(Styled(View)) />
       </Styled(View)>
       <Styled(View)>
-        <Styled(WithTheme(CustomButton))
+        <Styled(CustomButton)
+          active={false}
+          buttonVariation="fixed-width"
+          color=""
+          customStyle={Object {}}
+          customTextStyle={null}
+          disableButton={false}
+          fill=""
+          fullWidth=""
+          iconColor="gray.800"
+          iconName="chevron-down"
+          iconSize="fs12"
+          locator=""
+          navigation={Object {}}
           onPress={[Function]}
+          selected={false}
+          selectedIcon="chevron-up"
+          showIcon={false}
           text="view & print"
+          theme={Object {}}
+          url=""
         />
         <Styled(Styled(View)) />
       </Styled(View)>
-      <Styled(WithTheme(CustomButton))
+      <Styled(CustomButton)
+        active={false}
+        buttonVariation="fixed-width"
+        color=""
+        customStyle={Object {}}
+        customTextStyle={null}
+        disableButton={false}
+        fill=""
+        fullWidth=""
+        iconColor="gray.800"
+        iconName="chevron-down"
+        iconSize="fs12"
+        locator=""
+        navigation={Object {}}
         onPress={[Function]}
+        selected={false}
+        selectedIcon="chevron-up"
+        showIcon={false}
         text="remove from bag"
+        theme={Object {}}
+        url=""
       />
     </Styled(View)>
   </Styled(View)>
@@ -323,18 +392,51 @@ exports[`DetailedCouponTile should render expiring soon notification if coupon i
         />
       </Styled(View)>
       <Styled(View)>
-        <Styled(WithTheme(CustomButton))
+        <Styled(CustomButton)
+          active={false}
+          buttonVariation="fixed-width"
+          color=""
+          customStyle={Object {}}
+          customTextStyle={null}
+          disableButton={false}
+          fill=""
+          fullWidth=""
+          iconColor="gray.800"
+          iconName="chevron-down"
+          iconSize="fs12"
+          locator=""
+          navigation={Object {}}
           onPress={[Function]}
+          selected={false}
+          selectedIcon="chevron-up"
+          showIcon={false}
           text="view & print"
+          theme={Object {}}
+          url=""
         />
       </Styled(View)>
-      <Styled(WithTheme(CustomButton))
+      <Styled(CustomButton)
+        active={false}
         buttonVariation="variable-width"
         color="#fff"
+        customStyle={Object {}}
+        customTextStyle={null}
+        disableButton={false}
         disabled={true}
         fill="BLUE"
+        fullWidth=""
+        iconColor="gray.800"
+        iconName="chevron-down"
+        iconSize="fs12"
+        locator=""
+        navigation={Object {}}
         onPress={[Function]}
+        selected={false}
+        selectedIcon="chevron-up"
+        showIcon={false}
         text="apply"
+        theme={Object {}}
+        url=""
       />
     </Styled(View)>
   </Styled(View)>

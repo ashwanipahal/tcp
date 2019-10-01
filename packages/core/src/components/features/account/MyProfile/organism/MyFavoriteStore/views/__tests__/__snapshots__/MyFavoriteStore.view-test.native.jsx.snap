@@ -44,7 +44,7 @@ exports[`MyFavoriteStore Component MyFavoriteStore should render correctly 1`] =
     fontSize="fs16"
     margin={null}
     numberOfLines={null}
-    text="(712)-431-1408"
+    text="(712) 431-1408"
     textDecoration={null}
   />
 </MyProfileTile>
@@ -60,40 +60,13 @@ exports[`MyFavoriteStore Component should renders correctly when isMyPreferences
   handleComponentChange={[Function]}
   title=""
 >
-  <Styled(BodyCopy)
-    accessibilityText=""
-    dataLocator=""
-    fontSize="fs16"
-    fontWeight="regular"
-    margin={null}
-    numberOfLines={null}
-    text=""
-    textDecoration={null}
-  />
-  <Styled(BodyCopy)
+  <Styled(Styled(BodyCopy))
     accessibilityText=""
     dataLocator=""
     fontSize="fs16"
     margin={null}
     numberOfLines={null}
-    text=""
-    textDecoration={null}
-  />
-  <Styled(BodyCopy)
-    accessibilityText=""
-    dataLocator=""
-    fontSize="fs16"
-    margin={null}
-    numberOfLines={null}
-    text=",  "
-    textDecoration={null}
-  />
-  <Styled(BodyCopy)
-    accessibilityText=""
-    dataLocator=""
-    fontSize="fs16"
-    margin={null}
-    numberOfLines={null}
+    spacingStyles="margin-bottom-LRG"
     text=""
     textDecoration={null}
   />
@@ -120,40 +93,13 @@ exports[`MyFavoriteStore Component should renders correctly when isMyPreferences
     text=""
     textDecoration={null}
   />
-  <Styled(BodyCopy)
-    accessibilityText=""
-    dataLocator=""
-    fontSize="fs16"
-    fontWeight="semibold"
-    margin={null}
-    numberOfLines={null}
-    text=""
-    textDecoration={null}
-  />
-  <Styled(BodyCopy)
+  <Styled(Styled(BodyCopy))
     accessibilityText=""
     dataLocator=""
     fontSize="fs16"
     margin={null}
     numberOfLines={null}
-    text=""
-    textDecoration={null}
-  />
-  <Styled(BodyCopy)
-    accessibilityText=""
-    dataLocator=""
-    fontSize="fs16"
-    margin={null}
-    numberOfLines={null}
-    text=",  "
-    textDecoration={null}
-  />
-  <Styled(BodyCopy)
-    accessibilityText=""
-    dataLocator=""
-    fontSize="fs16"
-    margin={null}
-    numberOfLines={null}
+    spacingStyles="margin-bottom-LRG"
     text=""
     textDecoration={null}
   />

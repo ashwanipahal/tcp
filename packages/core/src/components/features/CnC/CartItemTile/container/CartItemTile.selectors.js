@@ -260,6 +260,7 @@ export const getLabelsCartItemTile = state => {
     phone,
     pickup,
     at,
+    by: getLabelValue(state.Labels, 'lbl_cartTile_by', 'cartItemTile', 'global'),
     shipping,
     sflDeleteSuccess,
     removeError: getLabelValue(state.Labels, 'lbl_minibag_errorRemove', 'minibag', 'global'),

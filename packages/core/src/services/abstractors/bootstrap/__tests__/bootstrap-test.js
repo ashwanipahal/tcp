@@ -11,7 +11,7 @@ jest.mock('../../../handler/handler');
 
 describe('abstractor - bootstrap', () => {
   const abstractorBootstrap = () =>
-    bootstrap(['homepage'], null, {}).then(data => {
+    bootstrap('homepage', null, {}).then(data => {
       expect(data.homepage.items[0].layout.slots[0]).toHaveProperty(
         'name',
         'moduleName',
@@ -22,6 +22,7 @@ describe('abstractor - bootstrap', () => {
         'moduleName',
         'contentId'
       );
+
       expect(data.homepage.items[0].layout.slots[0].moduleName).toEqual('moduleD');
       expect(data.homepage.items[0].layout.slots[1].moduleName).toEqual('moduleH');
       expect(data.labels).toMatchObject(LabelsAbstractor.processData(labelsMock));

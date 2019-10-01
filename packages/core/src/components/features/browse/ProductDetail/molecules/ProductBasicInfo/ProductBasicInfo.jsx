@@ -36,7 +36,7 @@ const ProductBasicInfo = props => {
 
   return (
     <div className="product-details-header-container">
-      <BadgeItem className="inline-badge-item" text={badge} />
+      <BadgeItem customFontWeight="regular" className="inline-badge-item" text={badge} />
       <div className="information-container">
         {typeof pdpUrl === 'string' ? (
           <Anchor to={pdpUrl} className="product-link-title">

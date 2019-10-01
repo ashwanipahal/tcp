@@ -7,6 +7,11 @@ import { ServerStyleSheet } from 'styled-components';
 // ./pages/_document.js
 import Document, { Html, Head, Main, NextScript } from 'next/document';
 
+// External Style Sheet
+const CSSOverride = () => {
+  return <link href={process.env.RWD_WEB_CSS_OVERRIDE_URL} rel="stylesheet" />;
+};
+
 class MyDocument extends Document {
   static async getInitialProps(ctx) {
     const sheet = new ServerStyleSheet();
@@ -42,6 +47,7 @@ class MyDocument extends Document {
             content="user-scalable=no, initial-scale=1, maximum-scale=1, minimum-scale=1"
           />
           <link href="/static/app.css" rel="stylesheet" />
+          {process.env.RWD_WEB_CSS_OVERRIDE_URL && <CSSOverride />}
         </Head>
         <body
           /* eslint-disable-next-line react-native/no-inline-styles */

@@ -1,7 +1,13 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import withStyles from '@tcp/core/src/components/common/hoc/withStyles';
-import { showOverlay, closeOverlay } from '@tcp/core/src/utils';
+import { breakpoints } from '@tcp/core/styles/themes/TCP/mediaQuery';
+import {
+  showOverlay,
+  closeOverlay,
+  enableBodyScroll,
+  disableBodyScroll,
+} from '@tcp/core/src/utils';
 import style from './Drawer.style';
 
 /**
@@ -35,55 +41,130 @@ const renderDrawerFooter = (hideNavigationFooter, drawerFooter) => {
   return drawerFooter && <Footer className={`navigation-footer ${classToHide}`} />;
 };
 
-const Drawer = props => {
-  const {
-    children,
-    className,
-    small,
-    medium,
-    large,
-    open,
-    id,
-    close,
-    renderOverlay,
-    drawerFooter,
-    hideNavigationFooter,
-  } = props;
+class Drawer extends React.Component {
+  constructor(props) {
+    super(props);
+    this.getDrawerStyle = this.getDrawerStyle.bind(this);
+    this.closeNavOnOverlayClick = this.closeNavOnOverlayClick.bind(this);
+  }
 
-  let openDrawer = open;
-  if (typeof open === 'string') {
-    openDrawer = open === id;
+  componentDidMount() {
+    document.body.addEventListener('click', this.closeNavOnOverlayClick);
   }
-  if (close && renderOverlay) {
-    closeOverlay();
-  }
-  if (openDrawer && renderOverlay) {
-    showOverlay();
-  }
-  const classToOpen = openDrawer ? 'tcp-drawer__isOpen' : '';
-  const classToHideOnViewports = hideOnViewport({ small, medium, large });
-  const classToShowOnViewports = showOnViewport({ small, medium, large });
 
-  return (
-    <div className={className}>
-      {// If Drawer is not required on all viewports then duplicate the DOM for the children without Drawer
-      // User will have to handle display of this element with CSS
-      isDrawerNotRequiredOnAllViewports(small, medium, large) && (
-        <div className={`${classToShowOnViewports}`}>{children}</div>
-      )}
-      {openDrawer && (
-        <React.Fragment>
-          <aside className={`tcp-drawer ${classToOpen} ${classToHideOnViewports}`}>
-            <div className="tcp-drawer-content">
-              {children}
-              {renderDrawerFooter(hideNavigationFooter, drawerFooter)}
-            </div>
-          </aside>
-        </React.Fragment>
-      )}
-    </div>
-  );
-};
+  componentDidUpdate() {
+    const { renderOverlay } = this.props;
+    if (renderOverlay) {
+      this.getDrawerStyle();
+    }
+    return null;
+  }
+
+  componentWillUnmount() {
+    document.body.removeEventListener('click', this.closeNavOnOverlayClick);
+  }
+
+  /* Method to close nav bar on click of dark overlay */
+  closeNavOnOverlayClick = e => {
+    const { close } = this.props;
+    if (
+      e.target.classList &&
+      e.target.classList.contains('dark-overlay') &&
+      typeof close === 'function'
+    ) {
+      close();
+    }
+  };
+
+  /* Style for drawer to make it scrollable within */
+  getDrawerStyle = () => {
+    if (window) {
+      const drawer = document.getElementById('tcp-nav-drawer');
+      const headerTopNav = document.getElementsByClassName('header-topnav')[0];
+      const middleNav = document.getElementsByClassName('header-middle-nav')[0];
+      const condensedHeader = document.getElementById('condensedHeader');
+      const wHeight = window.innerHeight;
+      const {
+        values: { lg },
+      } = breakpoints;
+
+      if (window.innerWidth < lg && drawer) {
+        const headerTopNavComp = headerTopNav.getBoundingClientRect();
+        const headerMiddleNavComp = middleNav.getBoundingClientRect();
+        let headerHeight = headerTopNavComp.height + headerMiddleNavComp.height;
+
+        if (headerTopNav && headerTopNavComp.top < 0) {
+          headerHeight -= Math.abs(headerTopNavComp.top);
+        }
+
+        if (condensedHeader) {
+          headerHeight = condensedHeader.getBoundingClientRect().height;
+        }
+
+        drawer.style.height = `${wHeight - headerHeight}px`;
+        drawer.style.position = 'fixed';
+        drawer.style.overflowY = 'scroll';
+        drawer.style.top = `${headerHeight}px`;
+        disableBodyScroll();
+      }
+    }
+  };
+
+  render() {
+    const {
+      children,
+      className,
+      small,
+      medium,
+      large,
+      open,
+      id,
+      close,
+      renderOverlay,
+      drawerFooter,
+      hideNavigationFooter,
+      showCondensedHeader,
+    } = this.props;
+
+    let openDrawer = open;
+    if (typeof open === 'string') {
+      openDrawer = open === id;
+    }
+    if (close && renderOverlay) {
+      closeOverlay();
+      enableBodyScroll();
+    }
+    if (openDrawer && renderOverlay) {
+      showOverlay();
+    }
+    const classToOpen = openDrawer ? 'tcp-drawer__isOpen' : '';
+    const condensedHeader = showCondensedHeader && 'tcp-condensed-drawer';
+    const classToHideOnViewports = hideOnViewport({ small, medium, large });
+    const classToShowOnViewports = showOnViewport({ small, medium, large });
+
+    return (
+      <div className={className}>
+        {// If Drawer is not required on all viewports then duplicate the DOM for the children without Drawer
+        // User will have to handle display of this element with CSS
+        isDrawerNotRequiredOnAllViewports(small, medium, large) && (
+          <div className={`${classToShowOnViewports}`}>{children}</div>
+        )}
+        {openDrawer && (
+          <React.Fragment>
+            <aside
+              className={`tcp-drawer ${classToOpen} ${condensedHeader} ${classToHideOnViewports}`}
+            >
+              <div id="tcp-nav-drawer" className="tcp-drawer-content">
+                {children}
+                {renderDrawerFooter(hideNavigationFooter, drawerFooter)}
+              </div>
+            </aside>
+          </React.Fragment>
+        )}
+      </div>
+    );
+  }
+}
 
 Drawer.propTypes = {
   children: PropTypes.element.isRequired,
@@ -97,6 +178,7 @@ Drawer.propTypes = {
   renderOverlay: PropTypes.bool,
   drawerFooter: PropTypes.element,
   hideNavigationFooter: PropTypes.bool,
+  showCondensedHeader: PropTypes.bool.isRequired,
 };
 
 Drawer.defaultProps = {

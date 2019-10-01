@@ -9,10 +9,10 @@ exports[`BirthdayCard should render correctly 1`] = `
     className="closeIcon"
     data-locator="crossIconInTile"
     onClick={[Function]}
-    src="/static/images/close.png"
+    src="/static/images/large.png"
   />
   <Styled(BodyCopy)
-    className="elem-mb-XXXS"
+    className="elem-mb-XXXS text-ellipsis layout-pr-XS layout-pl-XS"
     color="text.primary"
     component="p"
     data-locator="nameOfChildInTile"
@@ -23,6 +23,7 @@ exports[`BirthdayCard should render correctly 1`] = `
     lineHeight="normal"
     link={null}
     textAlign="center"
+    title="test"
   >
     test
   </Styled(BodyCopy)>

@@ -42,7 +42,7 @@ const LayoutAbstractor = {
       }
     });
   },
-  processData: data => {
+  getModulesFromLayout: data => {
     const moduleObjects = LayoutAbstractor.collateModuleObject(data.items);
     return LayoutAbstractor.getModulesData(moduleObjects).then(response => {
       return response.data;

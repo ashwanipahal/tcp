@@ -52,6 +52,9 @@ export const importMoreGraphQLQueries = ({ query, resolve, reject }) => {
     case 'moduleX':
       resolve(require('../services/handler/graphQL/queries/moduleX'));
       break;
+    case 'moduleXComposite':
+      resolve(require('../services/handler/graphQL/queries/moduleXComposite'));
+      break;
     case 'moduleA':
       resolve(require('../services/handler/graphQL/queries/moduleA'));
       break;
@@ -126,6 +129,7 @@ const visaSmall = require('../assets/visa-small.png');
 const placeCard = require('../assets/TCP-CC-small.png');
 const giftCardSmall = require('../assets/TCP-gift-small.png');
 const venmoCard = require('../assets/venmo-small.png');
+const paypal = require('../assets/paypal-small.png');
 
 export const getIconCard = icon => {
   switch (icon) {
@@ -143,6 +147,8 @@ export const getIconCard = icon => {
       return placeCard;
     case 'venmo-blue-acceptance-mark':
       return venmoCard;
+    case 'paypal-icon':
+      return paypal;
     default:
       return visaSmall;
   }
@@ -550,7 +556,11 @@ export function setTestId(id) {
  * @param {String} color Color string to validate
  */
 export const validateColor = color => {
-  let colorSheet = { viewColor: { color: null } };
+  let colorSheet = {
+    viewColor: {
+      color: null,
+    },
+  };
   try {
     colorSheet = StyleSheet.create({
       // eslint-disable-next-line react-native/no-unused-styles

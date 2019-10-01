@@ -1,8 +1,6 @@
 import React from 'react';
 import { Modal, Picker, Button, Platform } from 'react-native';
 import PropTypes from 'prop-types';
-import get from 'lodash/get';
-import { withTheme } from 'styled-components/native';
 import CustomIcon from '@tcp/core/src/components/common/atoms/Icon';
 import { ICON_NAME } from '@tcp/core/src/components/common/atoms/Icon/Icon.constants';
 import withStyles from '@tcp/core/src/components/common/hoc/withStyles';
@@ -135,10 +133,8 @@ class FilterModal extends React.PureComponent {
   };
 
   render() {
-    const { theme, labelsFilter, filters, sortLabels } = this.props;
+    const { labelsFilter, filters, sortLabels } = this.props;
     const { showModal, language, showSortModal } = this.state;
-    const closeIconColor = get(theme, 'colorPalette.gray[900]', '#1a1a1a');
-    const closeIconSize = get(theme, 'typography.fontSizes.fs20', 20);
 
     const sortOptions = getSortOptions(sortLabels);
 
@@ -168,11 +164,7 @@ class FilterModal extends React.PureComponent {
                 <ModalTitleContainer>
                   <ModalTitle>{labelsFilter.lbl_filter_by}</ModalTitle>
                   <ModalCloseTouchable onPress={this.onCloseModal} accessibilityRole="button">
-                    <CustomIcon
-                      name={ICON_NAME.close}
-                      size={closeIconSize}
-                      color={closeIconColor}
-                    />
+                    <CustomIcon name={ICON_NAME.close} size="fs20" color="gray.900" />
                   </ModalCloseTouchable>
                 </ModalTitleContainer>
                 <Filters
@@ -217,5 +209,5 @@ class FilterModal extends React.PureComponent {
   }
 }
 
-export default withStyles(withTheme(FilterModal), styles);
+export default withStyles(FilterModal, styles);
 export { FilterModal as FilterModalVanilla };

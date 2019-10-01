@@ -1,5 +1,6 @@
 import React from 'react';
 import PropTypes from 'prop-types';
+
 import get from 'lodash/get';
 import { FlatList, Text, Dimensions } from 'react-native';
 import { withTheme } from 'styled-components/native';
@@ -7,10 +8,6 @@ import CustomImage from '@tcp/core/src/components/common/atoms/CustomImage';
 import PaginationDots from '@tcp/core/src/components/common/molecules/PaginationDots';
 import BodyCopy from '@tcp/core/src/components/common/atoms/BodyCopy';
 import withStyles from '../../../../../../common/hoc/withStyles.native';
-import {
-  getImagesToDisplay,
-  getMapSliceForColorProductId,
-} from '../../../../ProductListing/molecules/ProductList/utils/productsCommonUtils';
 import {
   Container,
   FavoriteAndPaginationContainer,
@@ -21,7 +18,6 @@ import {
 } from '../styles/ImageCarousel.style.native';
 import CustomIcon from '../../../../../../common/atoms/Icon';
 import { ICON_NAME } from '../../../../../../common/atoms/Icon/Icon.constants';
-import { getScreenHeight } from '../../../../../../../utils/index.native';
 
 const win = Dimensions.get('window');
 const paddingAroundImage = 24;
@@ -91,44 +87,10 @@ class ImageCarousel extends React.PureComponent {
     );
   };
 
-  /**
-   * @function renderZoomImage
-   * renders Zoom image
-   *
-   * @memberof ImageCarousel
-   */
-  renderZoomImage = imgSource => {
-    const { activeSlideIndex } = this.state;
-    const { index } = imgSource;
-    return (
-      <CustomImage
-        url={imgSource.item.regularSizeImageUrl}
-        width={imageWidth}
-        height={getScreenHeight() / 2}
-        accessible={index === activeSlideIndex}
-        accessibilityRole="image"
-        accessibilityLabel={`product image ${index + 1}`}
-        allowZoom
-      />
-    );
-  };
-
   render() {
-    const { item, selectedColorProductId, showFavorites, allowZoom } = this.props;
+    const { imageUrls } = this.props;
+
     const { activeSlideIndex } = this.state;
-    const imagesByColor = get(item, 'imagesByColor', null);
-    const colorFitsSizesMap = get(item, 'colorFitsSizesMap', null);
-    let curentColorEntry;
-    let imageUrls;
-    if (colorFitsSizesMap) {
-      curentColorEntry = getMapSliceForColorProductId(colorFitsSizesMap, selectedColorProductId);
-      imageUrls = getImagesToDisplay({
-        imagesByColor,
-        curentColorEntry,
-        isAbTestActive: false,
-        isFullSet: true,
-      });
-    }
 
     if (imageUrls && imageUrls.length > 0) {
       return (
@@ -149,30 +111,28 @@ class ImageCarousel extends React.PureComponent {
             horizontal
             showsHorizontalScrollIndicator={false}
             listKey={(_, index) => index.toString()}
-            renderItem={allowZoom ? this.renderZoomImage : this.renderNormalImage}
+            renderItem={this.renderNormalImage}
           />
-          <FavoriteAndPaginationContainer showFavorites={showFavorites}>
-            {showFavorites && (
-              <FavoriteContainer>
-                <CustomIcon
-                  name={ICON_NAME.favorite}
-                  size={this.favoriteIconSize}
-                  color={this.favoriteIconColor}
-                  onPress={this.onFavorite}
-                  isButton
-                  dataLocator="pdp_favorite_icon"
-                />
-                <BodyCopy
-                  dataLocator="pdp_favorite_icon_count"
-                  margin="0 0 0 8px"
-                  mobileFontFamily="secondary"
-                  fontSize="fs10"
-                  fontWeight="regular"
-                  color="gray.600"
-                  text="100"
-                />
-              </FavoriteContainer>
-            )}
+          <FavoriteAndPaginationContainer>
+            <FavoriteContainer>
+              <CustomIcon
+                name={ICON_NAME.favorite}
+                size={this.favoriteIconSize}
+                color={this.favoriteIconColor}
+                onPress={this.onFavorite}
+                isButton
+                dataLocator="pdp_favorite_icon"
+              />
+              <BodyCopy
+                dataLocator="pdp_favorite_icon_count"
+                margin="0 0 0 8px"
+                mobileFontFamily="secondary"
+                fontSize="fs10"
+                fontWeight="regular"
+                color="gray.600"
+                text="100"
+              />
+            </FavoriteContainer>
             <PaginationDots
               numberOfDots={imageUrls.length}
               selectedIndex={activeSlideIndex}
@@ -189,18 +149,19 @@ class ImageCarousel extends React.PureComponent {
 
 ImageCarousel.propTypes = {
   theme: PropTypes.shape({}),
-  item: PropTypes.shape({}),
-  selectedColorProductId: PropTypes.number.isRequired,
+  imageUrls: PropTypes.arrayOf(
+    PropTypes.shape({
+      item: PropTypes.shape({
+        regularSizeImageUrl: PropTypes.string.isRequired,
+      }),
+    })
+  ),
   onImageClick: PropTypes.func.isRequired,
-  showFavorites: PropTypes.bool,
-  allowZoom: PropTypes.bool,
 };
 
 ImageCarousel.defaultProps = {
   theme: {},
-  item: {},
-  showFavorites: true,
-  allowZoom: false,
+  imageUrls: [],
 };
 
 export default withStyles(withTheme(ImageCarousel), styles);

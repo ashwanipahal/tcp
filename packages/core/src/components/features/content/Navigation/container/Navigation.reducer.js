@@ -5,6 +5,24 @@ const initialState = {
   [DEFAULT_REDUCER_KEY]: null,
 };
 
+const handleMoreEvents = (state, action) => {
+  switch (action.type) {
+    case NAVIGATION_CONSTANTS.HIDE_ALL_DRAWERS:
+      return {
+        ...state,
+        l3Drawer: {
+          closeDrawer: true,
+          openDrawer: false,
+        },
+        closeDrawer: true,
+        openDrawer: false,
+        hideNavigationFooter: false,
+      };
+    default:
+      return state;
+  }
+};
+
 const NavigationReducer = (state = initialState, action) => {
   switch (action.type) {
     case NAVIGATION_CONSTANTS.LOAD_NAVIGATION_DATA:
@@ -26,6 +44,7 @@ const NavigationReducer = (state = initialState, action) => {
         ...state,
         closeDrawer: true,
         openDrawer: false,
+        hideNavigationFooter: false,
       };
     case NAVIGATION_CONSTANTS.OPEN_L3_DRAWER:
       return {
@@ -59,7 +78,7 @@ const NavigationReducer = (state = initialState, action) => {
         removeL1Focus: action.payload,
       };
     default:
-      return state;
+      return handleMoreEvents(state, action);
   }
 };
 
