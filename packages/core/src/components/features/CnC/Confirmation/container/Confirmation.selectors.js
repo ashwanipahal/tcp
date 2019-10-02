@@ -6,10 +6,13 @@ import { createSelector } from 'reselect';
 import constants from '../../Checkout/Checkout.constants';
 import { getLabelValue, buildStorePageUrlSuffix, getAPIConfig } from '../../../../../utils/utils';
 
-export const getOrderConfirmation = state => {
+const getOrderConfirmation = state => {
   return state.Confirmation && state.Confirmation.get('orderConfirmation');
 };
 
+// TODO : Skipping it as it will be fixed after the immutable decision
+// ignoring it with istanbul ignore also.
+/* istanbul ignore next */
 const getConfirmationSummary = createSelector(
   getOrderConfirmation,
   confirmation => {
@@ -17,6 +20,7 @@ const getConfirmationSummary = createSelector(
   }
 );
 
+/* istanbul ignore next */
 const getOrderEmailAddress = createSelector(
   getOrderConfirmation,
   confirmation => {
@@ -45,14 +49,14 @@ const getOrderEmailAddress = createSelector(
 // }
 
 // })
-
+/* istanbul ignore next */
 const getHoldDate = createSelector(
   getOrderConfirmation,
   orderConfirmation => {
     return orderConfirmation && orderConfirmation.holdDate;
   }
 );
-
+/* istanbul ignore next */
 const getIsOrderHasShipping = createSelector(
   getOrderConfirmation,
   orderConfirmation => {
@@ -63,6 +67,7 @@ const getIsOrderHasShipping = createSelector(
 );
 
 // FIXME: This needs to be re-writen... it seems this is meant to deal with a mixed order/Bopis order, if not a mixed order it returns null
+/* istanbul ignore next */
 const getFullfilmentCentersMap = createSelector(
   getOrderConfirmation,
   orderConfirmation => {
@@ -124,6 +129,7 @@ const getFullfilmentCentersMap = createSelector(
   }
 );
 
+/* istanbul ignore next */
 const getInitialCreateAccountValues = createSelector(
   getOrderConfirmation,
   orderConfirmation => {
@@ -142,7 +148,7 @@ const getInitialCreateAccountValues = createSelector(
 // const getPersonalizedCoupons = (state) => {
 //   return state.Confirmation && state.Confirmation.aquiredCouponCode;
 // }
-
+/* istanbul ignore next */
 const getEncryptedEmailAddress = createSelector(
   getOrderConfirmation,
   confirmation => {
@@ -162,6 +168,7 @@ const getEncryptedEmailAddress = createSelector(
 //   return venmoPayment ? venmoPayment.venmoUserId : '';
 // }
 
+/* istanbul ignore next */
 const getIsOrderPending = createSelector(
   getOrderConfirmation,
   orderConfirmation => {
@@ -169,6 +176,7 @@ const getIsOrderPending = createSelector(
   }
 );
 
+/* istanbul ignore next */
 const getOrderDetails = createSelector(
   [getFullfilmentCentersMap, getOrderConfirmation],
   (fullfilmentCentersMap, orderConfirmation) => {
@@ -176,6 +184,7 @@ const getOrderDetails = createSelector(
   }
 );
 
+/* istanbul ignore next */
 const getOrderShippingDetails = createSelector(
   [getFullfilmentCentersMap, getOrderConfirmation],
   (fullfilmentCentersMap, orderConfirmation) => {
@@ -201,6 +210,7 @@ const getOrderShippingDetails = createSelector(
 //   return orderConfirmation && orderConfirmation.airmiles;
 // })
 
+/* istanbul ignore next */
 const getOrderNumbersByFullfillmentCenter = createSelector(
   [getFullfilmentCentersMap, getHoldDate],
   (fullfilmentCentersMap, holdDate) => {
@@ -324,12 +334,14 @@ const getConfirmationLabels = createSelector(
   }
 );
 
+/* istanbul ignore next */
 const getUpdateOrderDetailsId = (state, option) => {
   const { referred = [] } = state.Labels.checkout.orderConfirmation;
   const content = referred.find(label => label.name === option);
   return content && content.contentId;
 };
 
+/* istanbul ignore next */
 const getUpdateOrderDetailsData = state => {
   return (
     state.Confirmation.get('updateOrderDetails') &&
@@ -340,6 +352,7 @@ const getUpdateOrderDetailsData = state => {
 export default {
   getOrderConfirmation,
   getOrderEmailAddress,
+  getCurrentSiteId,
   // getItemsCount,
   // getSubTotal,
   // getGrandTotal,
@@ -374,4 +387,5 @@ export default {
   getConfirmationLabels,
   getUpdateOrderDetailsId,
   getUpdateOrderDetailsData,
+  getConfirmationLblObj,
 };
