@@ -98,6 +98,7 @@ export class CreditCardFields extends React.PureComponent<Props> {
             <Field
               heading={creditFieldLabels.expMonth}
               component={DropDown}
+              name="expMonth"
               data={expMonthOptionsMap}
               dataLocator="addEditCreditCard-expMonth"
               onValueChange={itemValue => {
@@ -124,6 +125,7 @@ export class CreditCardFields extends React.PureComponent<Props> {
             <Field
               heading={creditFieldLabels.expYear}
               component={DropDown}
+              name="expYear"
               data={expYearOptionsMap}
               dataLocator="addEditCreditCard-expYear"
               variation="secondary"

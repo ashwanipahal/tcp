@@ -1,7 +1,7 @@
 import React from 'react';
 import { shallow } from 'enzyme';
 import { List } from 'immutable';
-import { BillingPaymentForm } from '../views/BillingPaymentForm.view';
+import { BillingPaymentForm } from '../views/BillingPaymentForm.view.native';
 
 const card = [
   {
@@ -20,15 +20,15 @@ const card = [
 ];
 
 const labels = {
-  lbl_billing_paymentMethodTitle: 'Payment Method',
+  paymentMethod: 'Payment Method',
   lbl_billing_creditCard: 'Credit Card',
   lbl_billing_selectFromCard: 'Select from card on file',
   lbl_billing_addCreditHeading: '+ Add a new Credit Card',
   lbl_billing_default: 'Default',
   lbl_billing_cardDetailsTitle: 'Card Details',
-  lbl_billing_editBtn: 'Edit',
-  lbl_billing_creditCardEnd: 'ending in ',
-  lbl_billing_cvvCode: 'CVV Code',
+  edit: 'Edit',
+  creditCardEnd: 'ending in ',
+  cvvCode: 'CVV Code',
   lbl_billing_billingAddress: 'Billing Address',
   lbl_billing_defaultPayment: 'Set as default payment method',
   lbl_billing_addCreditBtn: 'ADD A NEW CREDIT CARD',
@@ -70,16 +70,31 @@ describe('ButtonList component', () => {
     const component = shallow(<BillingPaymentForm {...props} />);
     expect(component).toMatchSnapshot();
   });
-  it('renders correctly without props with payPal', () => {
-    props.paymentMethodId = 'payPal';
+
+  it('renders correctly with method onAddNewCreditCardClick', () => {
     const component = shallow(<BillingPaymentForm {...props} />);
-    expect(component).toMatchSnapshot();
+    const instance = component.instance();
+    const spyOnAddNewCreditCardClick = jest.spyOn(instance, 'onAddNewCreditCardClick');
+    instance.onAddNewCreditCardClick();
+    expect(spyOnAddNewCreditCardClick).toHaveBeenCalled();
   });
-  it('renders correctly without props with venmo', () => {
-    props.paymentMethodId = 'venmo';
+
+  it('renders correctly with method getCreditListView', () => {
     const component = shallow(<BillingPaymentForm {...props} />);
-    expect(component).toMatchSnapshot();
+    const instance = component.instance();
+    const spyGetCreditListView = jest.spyOn(instance, 'getCreditListView');
+    instance.getCreditListView({ labels });
+    expect(spyGetCreditListView).toHaveBeenCalled();
   });
+
+  it('renders correctly with method getPaymentMethod', () => {
+    const component = shallow(<BillingPaymentForm {...props} />);
+    const instance = component.instance();
+    const spyGetPaymentMethod = jest.spyOn(instance, 'getPaymentMethod');
+    instance.getPaymentMethod({ labels: {} });
+    expect(spyGetPaymentMethod).toHaveBeenCalled();
+  });
+
   it('renders correctly without props with isPaymentDisabled true', () => {
     orderHasShipping = true;
     const props1 = {
@@ -123,7 +138,7 @@ describe('ButtonList component', () => {
   it('renders correctly if  cards present and addNewCCState is true', () => {
     const props2 = {
       className: '',
-      onFileCardKey: '',
+      onFileCardKey: 82596,
       isMobile: false,
       cvvCodeRichText: null,
       orderHasShipping,
@@ -148,7 +163,7 @@ describe('ButtonList component', () => {
   it('renders correctly if  no cards present ', () => {
     const props2 = {
       className: '',
-      onFileCardKey: 82596,
+      onFileCardKey: '',
       isMobile: false,
       cvvCodeRichText: null,
       orderHasShipping,
@@ -169,27 +184,10 @@ describe('ButtonList component', () => {
     const component = shallow(<BillingPaymentForm {...props2} />);
     component.setState({ addNewCCState: true });
     expect(component).toMatchSnapshot();
-  });
-  it('renders correctly with method onAddNewCreditCardClick', () => {
-    const component = shallow(<BillingPaymentForm {...props} />);
     const instance = component.instance();
-    const spyOnAddNewCreditCardClick = jest.spyOn(instance, 'onAddNewCreditCardClick');
-    instance.onAddNewCreditCardClick();
-    expect(spyOnAddNewCreditCardClick).toHaveBeenCalled();
-  });
-  it('renders correctly with method getCreditCardDropDown', () => {
-    const component = shallow(<BillingPaymentForm {...props} />);
-    const instance = component.instance();
-    const spyOnAddNewCreditCardClick = jest.spyOn(instance, 'getCreditCardDropDown');
-    instance.getCreditCardDropDown();
-    expect(spyOnAddNewCreditCardClick).toHaveBeenCalled();
-  });
-  it('renders correctly with method onCCDropDownChange', () => {
-    const component = shallow(<BillingPaymentForm {...props} />);
-    component.setState({ addNewCCState: true });
-    const instance = component.instance();
-    const spyOnAddNewCreditCardClick = jest.spyOn(instance, 'onCCDropDownChange');
-    instance.onCCDropDownChange();
-    expect(spyOnAddNewCreditCardClick).toHaveBeenCalled();
+    const spyRenderCVVField = jest.spyOn(instance, 'renderCVVField');
+    const label = {};
+    instance.renderCVVField({ labels: label, selectedCard: card[0] });
+    expect(spyRenderCVVField).toHaveBeenCalled();
   });
 });
