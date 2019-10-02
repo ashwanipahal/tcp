@@ -96,6 +96,7 @@ export class GooglePlacesInput extends PureComponent {
           query={{
             key: this.googleApiKey,
             components: `country:${componentRestrictions.country[0]}`,
+            types: 'address',
           }}
           text={input.value}
           getDefaultValue={() => initialValue}
