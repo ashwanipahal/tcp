@@ -4,6 +4,7 @@ const styles = css`
   div.TCPModal__InnerContent {
     .close-modal {
       height: 14px;
+      right: 0px;
       top: 21px;
       @media ${props => props.theme.mediaQuery.medium} {
         top: 12px;
@@ -88,7 +89,7 @@ const styles = css`
       font-size: 22px;
     }
 
-    .product-price-container {
+    .product-customize-form-container .product-price-container {
       margin-top: 19px;
     }
 

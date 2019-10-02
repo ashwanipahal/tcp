@@ -73,9 +73,21 @@ export default css`
     width: 17px;
     height: 17px;
   }
-
   .StoreDetailsAnchor {
     text-decoration: underline;
     cursor: pointer;
+  }
+  .tooltip-bubble {
+    left: 0%;
+    margin-left: 5%;
+    transform: translateX(0);
+    bottom: 60%;
+    ::after {
+      right: 75%;
+    }
+    ::before {
+      right: 71%;
+      bottom: -1px;
+    }
   }
 `;

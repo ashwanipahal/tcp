@@ -16,6 +16,9 @@ export default css`
   .storeSearchError {
     margin: 10px;
   }
+  .zipcode-field {
+    margin-right: 3px;
+  }
   @media ${props => props.theme.mediaQuery.medium} {
     .find-store-label {
       margin-top: 12px;
@@ -26,6 +29,9 @@ export default css`
     }
     .storeSearchError {
       margin: 0;
+    }
+    .zipcode-field {
+      margin-right: 0px;
     }
     margin: 0;
   }
@@ -43,6 +49,9 @@ export default css`
     }
     .storeSearchError {
       margin: 0;
+    }
+    .zipcode-field {
+      margin-right: 0px;
     }
     margin: 0;
   }

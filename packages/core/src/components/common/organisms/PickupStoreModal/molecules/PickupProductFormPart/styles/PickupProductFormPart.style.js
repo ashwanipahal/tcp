@@ -80,6 +80,10 @@ export default css`
     font-size: 16px;
   }
 
+  .product-price-container {
+    margin-top: 0px;
+  }
+
   .original-price {
     font-size: 12px;
     color: #595959;
