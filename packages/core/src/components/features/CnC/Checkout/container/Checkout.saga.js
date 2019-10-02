@@ -203,7 +203,9 @@ function* submitPickupSection({ payload }) {
   // eslint-disable-next-line no-unused-expressions
   // formData.pickUpContact.smsInfo && saveLocalSmsInfo(this.store, formData.pickUpContact.smsInfo);
   const { wantsSmsOrderUpdates } = formData.pickUpContact && formData.pickUpContact.smsInfo;
-  yield call(loadUpdatedCheckoutValues, false, true, true, false, !wantsSmsOrderUpdates);
+  if (!isMobileApp()) {
+    yield call(loadUpdatedCheckoutValues, false, true, true, false, !wantsSmsOrderUpdates);
+  }
   // return getCheckoutOperator(this.store).loadUpdatedCheckoutValues(false, true, true, false, !wantsSmsOrderUpdates);
   // }).catch((err) => {
   //   throw getSubmissionError(this.store, 'submitPickupSection', err);
@@ -634,13 +636,15 @@ function* submitShipping({
   // But how can the reward points change here?
   const isOrderHasPickup = yield select(selectors.getIsOrderHasPickup);
   const smsNumberForOrderUpdates = yield select(selectors.getSmsNumberForOrderUpdates);
-  yield loadUpdatedCheckoutValues(
-    true,
-    false,
-    true,
-    recalcFlag,
-    !(isOrderHasPickup && smsNumberForOrderUpdates)
-  );
+  if (!isMobileApp()) {
+    yield loadUpdatedCheckoutValues(
+      true,
+      false,
+      true,
+      recalcFlag,
+      !(isOrderHasPickup && smsNumberForOrderUpdates)
+    );
+  }
   yield call(getAddressList);
 }
 

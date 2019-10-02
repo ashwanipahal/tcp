@@ -2,16 +2,11 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import { View } from 'react-native';
 import Grid from '../../Grid';
-import { Button, BodyCopy, Image } from '../../../atoms';
+import { Button, BodyCopy } from '../../../atoms';
 import { BUTTON_VARIATION } from '../../../atoms/Button/Button.constants';
 import withStyles from '../../../hoc/withStyles';
-import styles, {
-  SelectedValueContainer,
-  ErrorContainer,
-  errorIconStyle,
-} from '../styles/ProductVariantSelector.style.native';
-
-const errorIcon = require('../../../../../assets/alert-triangle.png');
+import styles, { SelectedValueContainer } from '../styles/ProductVariantSelector.style.native';
+import ErrorDisplay from '../../../atoms/ErrorDisplay';
 
 /**
  * This class returns Product variant selector for Product Add To Bag Page
@@ -46,22 +41,6 @@ class ProductVariantSelector extends React.PureComponent {
     );
   };
 
-  renderError = error => {
-    if (!error) return null;
-    return (
-      <ErrorContainer>
-        <Image source={errorIcon} style={errorIconStyle} />
-        <BodyCopy
-          fontWeight="extrabold"
-          mobileFontFamily="secondary"
-          fontSize="fs10"
-          text={error}
-          color="error"
-        />
-      </ErrorContainer>
-    );
-  };
-
   checkIfSelectedItemIsAvaiableInData = () => {
     const { data, itemNameKey, selectedItem } = this.props;
     if (!itemNameKey) return true;
@@ -85,7 +64,6 @@ class ProductVariantSelector extends React.PureComponent {
     const { key, value } = locators || {};
     const isItemAvailable = this.checkIfSelectedItemIsAvaiableInData();
     const titleValue = isItemAvailable ? `${title}: ` : title;
-
     if (!data || data.length === 0) return null;
 
     return (
@@ -119,7 +97,7 @@ class ProductVariantSelector extends React.PureComponent {
           componentWidth={componentWidth}
           separatorWidth={separatorWidth}
         />
-        {this.renderError(error)}
+        <ErrorDisplay error={error} />
       </View>
     );
   }

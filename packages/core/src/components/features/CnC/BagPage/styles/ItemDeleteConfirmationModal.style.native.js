@@ -4,6 +4,7 @@ export const StyledViewWrapper = styled.View`
   padding: ${props => props.theme.spacing.APP_LAYOUT_SPACING.XXS}
     ${props => props.theme.spacing.APP_LAYOUT_SPACING.XXS};
   align-content: center;
+  padding-bottom: 0;
   background-color: white;
   width: 80%;
 `;

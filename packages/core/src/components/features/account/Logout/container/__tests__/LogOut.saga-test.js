@@ -17,6 +17,7 @@ describe('LoginPage saga', () => {
       };
       global.window = Object.create(window);
       const putDescriptor = logoutGen.next(response).value;
+      logoutGen.next();
       expect(putDescriptor).toEqual(put(resetUserInfo(response)));
     });
   });

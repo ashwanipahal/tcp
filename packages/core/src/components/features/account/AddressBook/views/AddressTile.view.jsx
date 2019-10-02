@@ -85,7 +85,7 @@ class AddressBookTile extends React.Component<Props> {
                 medium: 4,
               }}
             >
-              <div>
+              <div className="default-address-label">
                 {address.primary === 'true' && (
                   <Badge showCheckmark dataLocator="addressbook-defshippinglabel">
                     {labels.addressBook.ACC_LBL_DEFAULT_SHIPPING}

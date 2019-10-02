@@ -115,7 +115,7 @@ export class AddressOverviewTile extends React.PureComponent<Props> {
                   ? labels.lbl_overview_addressBookEdit
                   : labels.lbl_overview_addressBookAdd
               }
-              onPress={() => handleComponentChange('addressBookMobile')}
+              onPress={() => handleComponentChange('paymentGiftCardsPageMobile')}
               underline
               fontSizeVariation="large"
               noLink
