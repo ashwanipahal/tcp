@@ -32,7 +32,7 @@ const mapStateToProps = state => {
 export const mapDispatchToProps = dispatch => {
   return {
     getAddressListAction: () => {
-      dispatch(getAddressList());
+      dispatch(getAddressList({ ignoreCache: true }));
     },
   };
 };
