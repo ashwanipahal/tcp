@@ -4,8 +4,7 @@ import { BodyCopy, RichText, Anchor } from '@tcp/core/src/components/common/atom
 import withStyles from '@tcp/core/src/components/common/hoc/withStyles';
 import PropTypes from 'prop-types';
 import styles from './styles/ExtraPointsDetailModal.style';
-import endpoints from '../../common/externalEndpoints';
-import internalEndpoints from '../../common/internalEndpoints';
+import ctaRedirect from './utils';
 
 /**
  * This Class component use for return the Extra Points Detail Modal
@@ -30,53 +29,6 @@ class ExtraPointsDetailModal extends React.PureComponent {
   onRequestClosePopup = () => {
     const { onRequestClose } = this.props;
     onRequestClose(null);
-  };
-
-  /**
-   * @function ctaRedirect  to get the route to CTA url based on activityModalAction
-   * @param    {Object} activeActivity The activity details of waysToEarn
-   * @returns  {Object} cta to and cta path for anchor
-   */
-  ctaRedirect = activeActivity => {
-    switch (activeActivity.activityModalAction) {
-      case 'rewardPlaceApp':
-        return { to: endpoints.appDownloadPage, path: endpoints.appDownloadPage };
-      case 'userAboutYourselfSurvey':
-        return {
-          to: `${internalEndpoints.profilePage.link}&survey=true`,
-          path: `${internalEndpoints.profilePage.path}/?survey=true`,
-        };
-      case 'userFavoriteStore':
-        return { to: internalEndpoints.profilePage.link, path: internalEndpoints.profilePage.path };
-      case 'userMailing':
-        return {
-          to: internalEndpoints.mailingAddressPage.link,
-          path: internalEndpoints.mailingAddressPage.path,
-        };
-      case 'myPreference':
-        return {
-          to: `${internalEndpoints.myPreferencesPage.link}&socialAccount=${
-            activeActivity.activityModalSocialAccount
-          }`,
-          path: `${internalEndpoints.myPreferencesPage.path}/socialAccount=${
-            activeActivity.activityModalSocialAccount
-          }`,
-        };
-      case 'birthdaySavings':
-        return {
-          to: internalEndpoints.birthdaySavingsPage.link,
-          path: internalEndpoints.birthdaySavingsPage.path,
-        };
-      case 'userBirthday':
-        return {
-          to: internalEndpoints.editProfileInformationPage.link,
-          path: internalEndpoints.editProfileInformationPage.path,
-        };
-      case 'orders':
-        return { to: internalEndpoints.orderPage.link, path: internalEndpoints.orderPage.path };
-      default:
-        return { to: internalEndpoints.profilePage.link, path: internalEndpoints.profilePage.path };
-    }
   };
 
   /**
@@ -129,8 +81,8 @@ class ExtraPointsDetailModal extends React.PureComponent {
         </BodyCopy>
         <BodyCopy component="div" textAlign="center" className="buttonWrapper">
           <Anchor
-            to={this.ctaRedirect(activeActivity).to}
-            asPath={this.ctaRedirect(activeActivity).path}
+            to={ctaRedirect(activeActivity).to}
+            asPath={ctaRedirect(activeActivity).path}
             anchorVariation="button"
             buttonVariation="fixed-width"
             fullWidth
