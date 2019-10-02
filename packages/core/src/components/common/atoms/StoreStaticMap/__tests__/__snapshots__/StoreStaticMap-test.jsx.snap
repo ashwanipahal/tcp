@@ -606,6 +606,7 @@ exports[`StoreStaticMap component canada specific should mount for canada region
         },
       },
       "zindex": Object {
+        "zCondensedHeader": 1100,
         "zDrawer": 1200,
         "zEnlargedImage": 100,
         "zGoogleAutosuggest": 100000,
@@ -4518,6 +4519,7 @@ exports[`StoreStaticMap component mobile viewport and app should mount for mobil
         },
       },
       "zindex": Object {
+        "zCondensedHeader": 1100,
         "zDrawer": 1200,
         "zEnlargedImage": 100,
         "zGoogleAutosuggest": 100000,
@@ -8426,6 +8428,7 @@ exports[`StoreStaticMap component mobile viewport and app should mount for mobil
         },
       },
       "zindex": Object {
+        "zCondensedHeader": 1100,
         "zDrawer": 1200,
         "zEnlargedImage": 100,
         "zGoogleAutosuggest": 100000,
@@ -12338,6 +12341,7 @@ exports[`StoreStaticMap component resize window should update component on windo
         },
       },
       "zindex": Object {
+        "zCondensedHeader": 1100,
         "zDrawer": 1200,
         "zEnlargedImage": 100,
         "zGoogleAutosuggest": 100000,
@@ -13023,6 +13027,7 @@ exports[`StoreStaticMap component should mount with default props 1`] = `
         },
       },
       "zindex": Object {
+        "zCondensedHeader": 1100,
         "zDrawer": 1200,
         "zEnlargedImage": 100,
         "zGoogleAutosuggest": 100000,
