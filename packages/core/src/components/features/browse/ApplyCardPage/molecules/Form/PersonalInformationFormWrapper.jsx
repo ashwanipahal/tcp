@@ -24,7 +24,7 @@ export default class PersonalInformationFormWrapper extends React.PureComponent 
           >
             <BodyCopy
               component="span"
-              fontSize="fs12"
+              fontSize="fs10"
               fontFamily="secondary"
               fontWeight="extrabold"
               className="free_dropdown_label"

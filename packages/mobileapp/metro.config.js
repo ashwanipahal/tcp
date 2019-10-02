@@ -1,4 +1,5 @@
 const path = require('path');
+const blacklist = require('metro-config/src/defaults/blacklist');
 
 const watchFolders = [path.join(__dirname, '/../core/')];
 
@@ -31,6 +32,7 @@ module.exports = {
      */
     extraNodeModules,
     sourceExts: ['jsx', 'js', 'ts'],
+    blacklistRE: blacklist([/node_modules\/.*\/node_modules\/react-native\/.*/]),
   },
   watchFolders,
 };

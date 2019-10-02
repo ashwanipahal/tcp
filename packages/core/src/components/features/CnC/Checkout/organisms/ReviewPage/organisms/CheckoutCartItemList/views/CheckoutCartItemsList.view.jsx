@@ -224,7 +224,7 @@ class CheckoutCartItemsList extends Component {
     if (pickUpList && pickUpList.list) {
       return (
         <div key={index}>
-          <Row>
+          <Row className="checkout-cart-list-shipping">
             <Col colSize={{ small: 6, medium: 8, large: 12 }}>
               <div className={headerClassName}>
                 <BodyCopy
@@ -382,7 +382,7 @@ class CheckoutCartItemsList extends Component {
     const { itemsCount, className, bagPageLabels } = this.props;
     return (
       <div className={className}>
-        <Row tagName="header">
+        <Row tagName="header" className="checkout-cart-list">
           <Col colSize={{ small: 6, medium: 8, large: 12 }}>
             <BodyCopy
               fontWeight="semibold"

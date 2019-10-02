@@ -3,4 +3,5 @@ export {
   StyledUnderline,
   BodyCopyWithSpacing,
   ViewWithSpacing,
+  TextWithSpacing,
 } from './styledWrapper.native';

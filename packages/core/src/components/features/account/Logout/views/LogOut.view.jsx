@@ -6,12 +6,18 @@ class LogOutView extends React.Component {
   constructor(props) {
     super(props);
     this.logoutApp = this.logoutApp.bind(this);
+    const [body] = document.getElementsByTagName('body');
+    this.body = body;
   }
 
   logoutApp(e) {
     e.preventDefault();
     const { triggerLogout } = this.props;
     triggerLogout();
+
+    if (this.body) {
+      this.body.style.overflow = 'auto';
+    }
   }
 
   render() {
