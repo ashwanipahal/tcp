@@ -140,7 +140,7 @@ export function* submitOrderProcessing(orderId, smsOrderInfo, currentLanguage) {
     const { nonce: venmoNonce, deviceData: venmoDeviceData } = venmoData;
     const email = yield select(getUserEmail);
     venmoPayloadData = {
-      venmoNonce: venmoNonce || 'fake-venmo-account-nonce', // for lower environment testing, added sandbox nonce information
+      venmoNonce,
       venmo_device_data: venmoDeviceData,
       email,
       isVenmoSaveSelected,
@@ -163,10 +163,6 @@ function* submitOrderForProcessing({ payload: { navigation } }) {
   const orderId = yield select(getCurrentOrderId);
   const smsOrderInfo = yield select(getSmsNumberForBillingOrderUpdates);
   const currentLanguage = yield select(getCurrentLanguage);
-  // const venmoPaymentAvailable = yield select(isVenmoPaymentAvailable);
-  // const isPaymentDisabled = yield select(getIsPaymentDisabled);
-  // const venmoPaymentMethodApplied = venmoPaymentAvailable && !isPaymentDisabled;
-
   const pendingPromises = [];
   // if (checkoutStoreView.isExpressCheckout(state)) {
   //   // if express checkout
@@ -307,22 +303,6 @@ function* submitOrderForProcessing({ payload: { navigation } }) {
   //     );
   //   }
 
-  //   // We need to add the Venmo payment type
-  //   // We have to add payment information here since we bypassed the billing step.
-  //   /// Need to find the shipping address id from store
-  //   const venmoData = checkoutStoreView.getVenmoData(state);
-  //   let venmoSavedToAccount = false;
-  //   if (formData && formData.billing) {
-  //     venmoSavedToAccount = formData.billing.venmoSavedToAccount;
-  //   } else if (
-  //     !userStoreView.isGuest(state) &&
-  //     venmoData &&
-  //     venmoData.venmoClientTokenData &&
-  //     venmoData.venmoClientTokenData.venmoPaymentTokenAvailable === 'TRUE'
-  //   ) {
-  //     // We need to maintain last saved to account.
-  //     venmoSavedToAccount = true;
-  //   }
   //   const addPaymentData = {
   //     billingAddressId,
   //     venmoData,

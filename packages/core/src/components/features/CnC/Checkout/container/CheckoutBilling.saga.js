@@ -124,7 +124,7 @@ export function* updateVenmoPaymentInstruction() {
     venmoDetails: {
       userId: username || 'test-user',
       saveVenmoTokenIntoProfile: isVenmoSaveSelected,
-      nonce: venmoNonce || 'fake-venmo-account-nonce',
+      nonce: venmoNonce,
       venmoDeviceData,
     },
   };

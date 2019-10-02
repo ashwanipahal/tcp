@@ -52,14 +52,6 @@ describe('Venmo Payment Button Container', () => {
     componentInstance.onVenmoPaymentButtonClick();
     expect(props.onSuccess).toBeCalled();
   });
-
-  it('calling fetchVenmoClientToken method', () => {
-    const getVenmoPaymentTokenAction = jest.fn();
-    const tree = shallow(<VenmoPaymentButtonContainer {...props} />);
-    const componentInstance = tree.instance();
-    componentInstance.fetchVenmoClientToken();
-    expect(getVenmoPaymentTokenAction).not.toHaveBeenCalled();
-  });
 });
 
 describe('#mapDispatchToProps', () => {
