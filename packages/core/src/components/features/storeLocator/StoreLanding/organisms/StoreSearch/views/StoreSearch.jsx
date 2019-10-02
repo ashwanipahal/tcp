@@ -104,6 +104,7 @@ export class StoreSearch extends PureComponent {
       markerIcon,
       toggleMap,
       mapView,
+      getLocationStores,
     } = this.props;
     const { errorNotFound, gymSelected, outletSelected } = this.state;
     const errorMessage = errorNotFound ? labels.lbl_storelocators_detail_errorLabel : error;
@@ -146,7 +147,7 @@ export class StoreSearch extends PureComponent {
         <Row fullBleed>
           <Col colSize={{ large: 6.5, medium: 4, small: 6 }}>
             <div className="currentLocationWrapper">
-              <Anchor asPath="/" className="" to="/">
+              <Button onClick={getLocationStores}>
                 <Image
                   alt="location"
                   className="location-image icon-small"
@@ -157,7 +158,7 @@ export class StoreSearch extends PureComponent {
                 <span className="currentLocation">
                   {labels.lbl_storelocators_detail_currentLocation}
                 </span>
-              </Anchor>
+              </Button>
             </div>
             <form onSubmit={handleSubmit(this.onSubmit)} noValidate className="searchForm">
               <div className="searchBar">
@@ -250,6 +251,7 @@ StoreSearch.propTypes = {
   searchIcon: PropTypes.string.isRequired,
   markerIcon: PropTypes.string.isRequired,
   toggleMap: PropTypes.func.isRequired,
+  getLocationStores: PropTypes.func.isRequired,
   mapView: PropTypes.bool,
 };
 

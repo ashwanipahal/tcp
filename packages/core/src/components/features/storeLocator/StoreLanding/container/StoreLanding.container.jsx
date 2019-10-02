@@ -29,6 +29,18 @@ export class StoreLanding extends PureComponent {
     this.getFavoriteStoreInititator();
   }
 
+  getLocationStores = () => {
+    if (navigator.geolocation) {
+      const { loadStoresByCoordinates } = this;
+      navigator.geolocation.getCurrentPosition(pos => {
+        loadStoresByCoordinates(
+          Promise.resolve({ lat: pos.coords.latitude, lng: pos.coords.longitude }),
+          INITIAL_STORE_LIMIT
+        );
+      });
+    }
+  };
+
   getFavoriteStoreInititator = () => {
     if (navigator.geolocation) {
       const { loadStoresByCoordinates } = this;
@@ -91,6 +103,7 @@ export class StoreLanding extends PureComponent {
         fetchCurrentStore={store => this.fetchCurrentStoreDetails(store)}
         openStoreDirections={store => this.constructor.openStoreDirections(store)}
         navigation={navigation}
+        getLocationStores={this.getLocationStores}
       />
     );
   }
