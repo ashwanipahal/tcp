@@ -22,6 +22,7 @@ exports[`BillingPageContainer should render correctly 1`] = `
     }
   }
   isSameAsShippingChecked={true}
+  isVenmoPaymentInProgress={false}
   keepDirtyOnReinitialize={false}
   labels={Object {}}
   navigation={null}
@@ -84,6 +85,7 @@ exports[`BillingPageContainer should render correctly if billing data is present
     }
   }
   isSameAsShippingChecked={true}
+  isVenmoPaymentInProgress={false}
   keepDirtyOnReinitialize={false}
   labels={Object {}}
   navigation={null}

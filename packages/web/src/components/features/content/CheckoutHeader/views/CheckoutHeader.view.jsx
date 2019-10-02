@@ -36,7 +36,7 @@ const CheckoutHeader = ({ className, brandTabs, labels, isInternationalShipping,
               colSize={{
                 small: 4,
                 medium: 4,
-                large: 3,
+                large: 4,
               }}
             >
               <BrandTabs data={brandTabs} />
@@ -46,7 +46,7 @@ const CheckoutHeader = ({ className, brandTabs, labels, isInternationalShipping,
               colSize={{
                 small: 1,
                 medium: 3,
-                large: 6,
+                large: 4,
               }}
             >
               <BodyCopy component="span" fontSize="fs32">
@@ -59,7 +59,7 @@ const CheckoutHeader = ({ className, brandTabs, labels, isInternationalShipping,
               colSize={{
                 small: 1,
                 medium: 1,
-                large: 3,
+                large: 4,
               }}
             >
               <BodyCopy component="span" fontSize="fs16" fontFamily="secondary">

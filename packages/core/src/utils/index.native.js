@@ -45,4 +45,6 @@ export {
   getBirthDateOptionMap,
   childOptionsMap,
   calculateAge,
+  configureInternalNavigationFromCMSUrl,
+  flattenArray,
 } from './utils';

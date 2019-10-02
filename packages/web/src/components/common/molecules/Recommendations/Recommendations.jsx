@@ -94,7 +94,8 @@ class Recommendations extends Component {
     const headerLabel = config.variations.moduleO ? moduleOHeaderLabel : modulePHeaderLabel;
 
     return (
-      products && (
+      products &&
+      products.length > 0 && (
         <React.Fragment>
           <Heading
             variant="h4"
@@ -126,6 +127,7 @@ class Recommendations extends Component {
                     variation: 'big-arrows',
                     customArrowLeft: getIconPath('carousel-big-carrot-left'),
                     customArrowRight: getIconPath('carousel-big-carrot'),
+                    dataLocatorCarousel: `${variation}-variation`,
                   }}
                 >
                   {this.loadVariation(variation)}

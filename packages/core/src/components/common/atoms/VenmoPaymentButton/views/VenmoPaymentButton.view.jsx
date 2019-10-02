@@ -7,6 +7,7 @@ import withStyles from '../../../hoc/withStyles';
 import logger from '../../../../../utils/loggerInstance';
 import { modes, constants } from '../container/VenmoPaymentButton.util';
 import styles from '../styles/VenmoPaymentButton.style';
+import BodyCopy from '../../BodyCopy';
 
 let venmoInstance = null;
 
@@ -198,7 +199,7 @@ export class VenmoPaymentButton extends Component {
   };
 
   render() {
-    const { venmoData, mode, enabled, className } = this.props;
+    const { venmoData, mode, enabled, className, continueWithText } = this.props;
     const { hasVenmoError } = this.state;
     const { supportedByBrowser } = venmoData || {};
     const venmoIcon = getIconPath('venmo-logo-blue');
@@ -208,14 +209,27 @@ export class VenmoPaymentButton extends Component {
           supportedByBrowser &&
           (!hasVenmoError || mode === modes.PAYMENT_TOKEN) &&
           (this.canCallVenmoApi() || mode === modes.PAYMENT_TOKEN) && (
-            <button
-              onClick={this.handleVenmoClick}
-              ref={this.setVenmoButtonRef}
-              className="venmo-button"
-              aria-label="Venmo Payment Button"
-            >
-              <Image src={venmoIcon} alt="Venmo Payment Button" className="venmo-button-image" />
-            </button>
+            <div>
+              {continueWithText && (
+                <BodyCopy
+                  component="div"
+                  fontSize="fs15"
+                  fontWeight="semibold"
+                  fontFamily="secondary"
+                  className="venmo-continue-text"
+                >
+                  {continueWithText}
+                </BodyCopy>
+              )}
+              <button
+                onClick={this.handleVenmoClick}
+                ref={this.setVenmoButtonRef}
+                className="venmo-button"
+                aria-label="Venmo Payment Button"
+              >
+                <Image src={venmoIcon} alt="Venmo Payment Button" className="venmo-button-image" />
+              </button>
+            </div>
           )}
       </div>
     );
@@ -249,6 +263,7 @@ VenmoPaymentButton.propTypes = {
   setVenmoPaymentInProgress: func,
   isNonceNotExpired: bool,
   isRemoveOOSItems: bool,
+  continueWithText: string,
 };
 
 VenmoPaymentButton.defaultProps = {
@@ -258,7 +273,7 @@ VenmoPaymentButton.defaultProps = {
   setVenmoData: () => {},
   allowNewBrowserTab: false,
   venmoData: {
-    supportedByBrowser: true,
+    supportedByBrowser: false,
   },
   mode: modes.CLIENT_TOKEN,
   onVenmoPaymentButtonClick: () => {},
@@ -266,6 +281,7 @@ VenmoPaymentButton.defaultProps = {
   setVenmoPaymentInProgress: () => {},
   isNonceNotExpired: false,
   isRemoveOOSItems: false,
+  continueWithText: '',
 };
 
 export default withStyles(VenmoPaymentButton, styles);

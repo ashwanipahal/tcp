@@ -1,5 +1,6 @@
 import React from 'react';
 import { reduxForm, Field, change } from 'redux-form';
+import CardImage from '@tcp/core/src/components/common/molecules/CardImage';
 import TextBox from '../../../../../../common/atoms/TextBox';
 import BodyCopy from '../../../../../../common/atoms/BodyCopy';
 import withStyles from '../../../../../../common/hoc/withStyles';
@@ -16,7 +17,6 @@ import Col from '../../../../../../common/atoms/Col';
 import { Heading } from '../../../../../../common/atoms';
 import constants from '../container/CreditCard.constants';
 import Anchor from '../../../../../../common/atoms/Anchor';
-import CardImage from '../../../../../../common/molecules/Card/views/CardImage';
 import CheckoutFooter from '../../../molecules/CheckoutFooter';
 import utility from '../../../util/utility';
 import { CHECKOUT_ROUTES } from '../../../Checkout.constants';
@@ -453,7 +453,10 @@ export class BillingPaymentForm extends React.PureComponent {
               <div className="payment-paypal-container" />
             )}
             {paymentMethodId === constants.PAYMENT_METHOD_VENMO && (
-              <VenmoPaymentButton className="venmo-container" />
+              <VenmoPaymentButton
+                className="venmo-container"
+                continueWithText={labels.continueWith}
+              />
             )}
           </div>
         )}
@@ -464,6 +467,8 @@ export class BillingPaymentForm extends React.PureComponent {
           backLinkHandler={() => utility.routeToPage(CHECKOUT_ROUTES.shippingPage)}
           nextButtonText={nextSubmitText}
           backLinkText={orderHasShipping ? backLinkShipping : backLinkPickup}
+          showVenmoSubmit={paymentMethodId === constants.PAYMENT_METHOD_VENMO}
+          continueWithText={labels.continueWith}
         />
       </form>
     );

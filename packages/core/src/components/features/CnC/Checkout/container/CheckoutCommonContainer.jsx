@@ -26,6 +26,7 @@ import selectors, {
   getSendOrderUpdate,
   getCheckoutStage,
   getGiftServicesSend,
+  isUsSite as isUsSiteUser,
 } from './Checkout.selector';
 import checkoutUtil from '../util/utility';
 import { getAddEditAddressLabels } from '../../../../common/organisms/AddEditAddress/container/AddEditAddress.selectors';
@@ -269,7 +270,7 @@ const mapStateToProps = state => {
 
     //  isPlccOfferModalOpen: generalStoreView.getOpenModalId(state) === MODAL_IDS.plccPromoModalId,
     // isPlccFormModalOpen: generalStoreView.getOpenModalId(state) === MODAL_IDS.plccFormModalId,
-    isUsSite: selectors.isUsSite(),
+    isUsSite: isUsSiteUser(),
     // shouldSkipBillingStep: storeOperators.checkoutOperator.shouldSkipBillingStep(),
     orderHasPickUp: getIsOrderHasPickup(state),
     orderHasShipping: getIsOrderHasShipping(state),

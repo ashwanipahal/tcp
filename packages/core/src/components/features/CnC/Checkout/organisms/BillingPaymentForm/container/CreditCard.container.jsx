@@ -74,6 +74,17 @@ export class GiftCardsContainer extends React.PureComponent<Props> {
   };
 
   /**
+   * @function getPaymentMethodId
+   * @description returns the initial payment method selected during billing page load.
+   */
+  getPaymentMethodId = () => {
+    const { isVenmoPaymentInProgress } = this.props;
+    return isVenmoPaymentInProgress
+      ? constants.PAYMENT_METHOD_VENMO
+      : constants.PAYMENT_METHOD_CREDIT_CARD;
+  };
+
+  /**
    * @function getInitialValues
    * @description returns the initial values for the billing form
    */
@@ -134,7 +145,7 @@ export class GiftCardsContainer extends React.PureComponent<Props> {
     if (!cardList) {
       return {
         onFileCardKey: 0,
-        paymentMethodId: constants.PAYMENT_METHOD_CREDIT_CARD,
+        paymentMethodId: this.getPaymentMethodId(),
         saveToAccount: true,
         sameAsShipping:
           orderHasShipping &&

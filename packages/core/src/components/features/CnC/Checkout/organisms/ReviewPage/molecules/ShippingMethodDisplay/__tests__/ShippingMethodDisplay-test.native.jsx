@@ -1,0 +1,22 @@
+import React from 'react';
+import { shallow } from 'enzyme';
+import { ShippingMethodDisplayanilla } from '../views/ShippingMethodDisplay';
+
+describe('ShippingMethodDisplay component', () => {
+  it('should renders correctly props not present', () => {
+    const props = { labels: {}, displayName: '' };
+    const component = shallow(<ShippingMethodDisplayanilla {...props} />);
+    expect(component).toMatchSnapshot();
+  });
+
+  it('should renders correctly props are present', () => {
+    const props = {
+      labels: {
+        lbl_review_sectionShippingMethodTitle: 'Shipping Method',
+      },
+      displayName: 'Standard - Free',
+    };
+    const component = shallow(<ShippingMethodDisplayanilla {...props} />);
+    expect(component).toMatchSnapshot();
+  });
+});

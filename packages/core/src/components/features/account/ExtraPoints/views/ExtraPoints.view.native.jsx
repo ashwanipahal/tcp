@@ -5,6 +5,7 @@ import { Anchor, BodyCopy } from '@tcp/core/src/components/common/atoms';
 import { UrlHandler } from '@tcp/core/src/utils/utils.app';
 import ModalNative from '@tcp/core/src/components/common/molecules/Modal';
 import { ViewWithSpacing } from '@tcp/core/src/components/common/atoms/styledWrapper';
+import Notification from '@tcp/core/src/components/common/molecules/Notification';
 import endpoints from '../../common/externalEndpoints';
 import DetailedEarnExtraPointsTile from '../../common/molecule/DetailedEarnExtraPointsTile';
 import ExtraPointsDetailModal from '../organism/ExtraPointsDetailModal.view.native';
@@ -14,6 +15,7 @@ import {
   InnerTileWrapper,
   FirstInnerTileWrapper,
   MprTermsWrapper,
+  MessageInfoWrapper,
   MorePointsWrapper,
 } from '../styles/ExtraPoints.style.native';
 
@@ -60,11 +62,51 @@ export class EarnPoints extends React.PureComponent {
    */
 
   render() {
-    const { labels, waysToEarn } = this.props;
+    const {
+      labels,
+      waysToEarn,
+      earnedPointsNotification,
+      earnExtraPointsLabels,
+      handleComponentChange,
+    } = this.props;
     const { waysToEarnRow, showModal } = this.state;
-
+    let infoMessage = '';
+    if (earnedPointsNotification && earnedPointsNotification.length) {
+      infoMessage = `${earnedPointsNotification[0].transactionDate} ${getLabelValue(
+        earnExtraPointsLabels,
+        'lbl_earnExtraPoints_you_earned'
+      )} ${earnedPointsNotification[0].pointsEarned} ${getLabelValue(
+        earnExtraPointsLabels,
+        'lbl_earnExtraPoints_place_rewards'
+      )} `;
+    }
     return (
       <>
+        {earnedPointsNotification && earnedPointsNotification.length ? (
+          <Notification status="info" className="elem-mt-MED">
+            <MessageInfoWrapper>
+              <BodyCopy
+                fontSize="fs14"
+                fontWeight="extrabold"
+                fontFamily="secondary"
+                dataLocator="earnPoints-message"
+                text={infoMessage}
+                color="gray.900"
+              />
+              <Anchor
+                fontSizeVariation="large"
+                underline
+                onPress={() => handleComponentChange('pointsHistoryMobile')}
+                anchorVariation="primary"
+                dataLocator="earnPoints-points-history"
+                text={getLabelValue(
+                  earnExtraPointsLabels,
+                  'lbl_earnExtraPoints_view_points_history'
+                )}
+              />
+            </MessageInfoWrapper>
+          </Notification>
+        ) : null}
         {waysToEarn && (
           <TilesWrapper>
             <MorePointsWrapper>
@@ -151,6 +193,13 @@ EarnPoints.propTypes = {
     lbl_common_earnExtraPoints: PropTypes.string,
     lbl_common_viewAll: PropTypes.string,
   }),
+  earnedPointsNotification: PropTypes.shape([]),
+  earnExtraPointsLabels: PropTypes.shape({
+    lbl_earnExtraPoints_you_earned: PropTypes.string,
+    lbl_earnExtraPoints_place_rewards: PropTypes.string,
+    lbl_earnExtraPoints_view_points_history: PropTypes.string,
+  }),
+  handleComponentChange: PropTypes.func,
 };
 
 EarnPoints.defaultProps = {
@@ -159,6 +208,13 @@ EarnPoints.defaultProps = {
     lbl_common_earnExtraPoints: '',
     lbl_common_viewAll: '',
   },
+  earnedPointsNotification: [],
+  earnExtraPointsLabels: {
+    lbl_earnExtraPoints_you_earned: '',
+    lbl_earnExtraPoints_place_rewards: '',
+    lbl_earnExtraPoints_view_points_history: '',
+  },
+  handleComponentChange: () => {},
 };
 
 export default EarnPoints;

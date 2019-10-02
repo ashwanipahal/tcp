@@ -210,6 +210,26 @@ export const getViewportInfo = () => {
 };
 
 /**
+ * Enable Body Scroll
+ */
+export const enableBodyScroll = () => {
+  if (typeof window !== 'undefined') {
+    const [body] = document.getElementsByTagName('body');
+    body.style.overflow = 'auto';
+  }
+};
+
+/**
+ * Disable Body Scroll
+ */
+export const disableBodyScroll = () => {
+  if (typeof window !== 'undefined') {
+    const [body] = document.getElementsByTagName('body');
+    body.style.overflow = 'hidden';
+  }
+};
+
+/**
  * Show Dark Overlay in background
  */
 export const showOverlay = () => {
@@ -254,6 +274,12 @@ export const scrollPage = (x = 0, y = 0) => {
   }
 };
 
+export const scrollTopElement = elem => {
+  if (window) {
+    document.getElementById(elem).scrollTop = 0;
+  }
+};
+
 export const getCountriesMap = data => {
   const countries = defaultCountries;
   data.map(value =>
@@ -275,40 +301,6 @@ export const getCurrenciesMap = data => {
   );
 };
 
-export const getModifiedLanguageCode = id => {
-  switch (id) {
-    case 'en':
-      return 'en_US';
-    case 'es':
-      return 'es_ES';
-    case 'fr':
-      return 'fr_FR';
-    default:
-      return id;
-  }
-};
-
-/**
- * @method getTranslateDateInformation
- * @desc returns day, month and day of the respective date provided
- * @param {string} date date which is to be mutated
- * @param {upperCase} locale use for convert locate formate
- */
-export const getTranslateDateInformation = (
-  date,
-  language,
-  dayOption = { weekday: 'short' },
-  monthOption = { month: 'short' }
-) => {
-  const localeType = language ? getModifiedLanguageCode(language).replace('_', '-') : 'en';
-  const currentDate = date ? new Date(date) : new Date();
-  return {
-    day: new Intl.DateTimeFormat(localeType, dayOption).format(currentDate),
-    month: new Intl.DateTimeFormat(localeType, monthOption).format(currentDate),
-    date: currentDate.getDate(),
-  };
-};
-
 export const siteRedirect = (newCountry, oldCountry, newSiteId, oldSiteId) => {
   if ((newCountry && newCountry !== oldCountry) || (newSiteId && newSiteId !== oldSiteId)) {
     routerPush(window.location.href, ROUTE_PATH.home, null, newSiteId);
@@ -326,47 +318,6 @@ export const languageRedirect = (newLanguage, oldLanguage) => {
       window.location = href;
     }
   }
-};
-
-/**
- * This function will redirect to PDP from HOMEPAGE
- * on the basis of productId
- */
-export const redirectToPdp = (productId, seoToken) => {
-  if (!window) return null;
-
-  const params = seoToken ? `${seoToken}-${productId}` : productId;
-
-  return {
-    url: `/p?${params}`,
-    asPath: `/p/${params}`,
-  };
-};
-
-/**
- * This function configure url for Next/Link using CMS defined url string
- */
-export const configureInternalNavigationFromCMSUrl = url => {
-  const plpRoute = `${ROUTE_PATH.plp.name}/`;
-  const pdpRoute = `${ROUTE_PATH.pdp.name}/`;
-  const searchRoute = `${ROUTE_PATH.search.name}/`;
-
-  if (url.includes(plpRoute)) {
-    const urlItems = url.split(plpRoute);
-    const queryParam = urlItems[0];
-    return `${ROUTE_PATH.plp.name}?${ROUTE_PATH.plp.param}=${queryParam}`;
-  }
-  if (url.includes(pdpRoute)) {
-    const urlItems = url.split(pdpRoute);
-    const queryParam = urlItems[0];
-    return `${ROUTE_PATH.pdp.name}?${ROUTE_PATH.pdp.param}=${queryParam}`;
-  }
-  if (url.includes(searchRoute)) {
-    const urlItems = url.split(searchRoute);
-    const queryParam = urlItems[0];
-    return `${ROUTE_PATH.search.name}?${ROUTE_PATH.search.param}=${queryParam}`;
-  }
-  return url;
 };
 
 /*
@@ -390,7 +341,7 @@ const getAPIInfoFromEnv = (apiSiteInfo, processEnv, siteId) => {
     langId: processEnv.RWD_WEB_LANGID || apiSiteInfo.langId,
     MELISSA_KEY: processEnv.RWD_WEB_MELISSA_KEY || apiSiteInfo.MELISSA_KEY,
     BV_API_KEY: processEnv.RWD_WEB_BV_API_KEY || apiSiteInfo.BV_API_KEY,
-    assetHost: processEnv.RWD_WEB_ASSETHOST || apiSiteInfo.assetHost,
+    assetHost: processEnv.RWD_WEB_DAM_HOST || apiSiteInfo.assetHost,
     domain: `${apiEndpoint}/${processEnv.RWD_WEB_API_IDENTIFIER}/`,
     unbxd: processEnv.RWD_WEB_UNBXD_DOMAIN || apiSiteInfo.unbxd,
     fbkey: processEnv.RWD_WEB_FACEBOOKKEY,
@@ -400,6 +351,7 @@ const getAPIInfoFromEnv = (apiSiteInfo, processEnv, siteId) => {
     }`,
     envId: processEnv.RWD_WEB_ENV_ID,
     BAZAARVOICE_SPOTLIGHT: processEnv.RWD_WEB_BAZAARVOICE_API_KEY,
+    BAZAARVOICE_REVIEWS: processEnv.RWD_WEB_BAZAARVOICE_PRODUCT_REVIEWS_API_KEY,
     CANDID_API_KEY: process.env.RWD_WEB_CANDID_API_KEY,
     CANDID_API_URL: process.env.RWD_WEB_CANDID_URL,
     googleApiKey: process.env.RWD_WEB_GOOGLE_MAPS_API_KEY,
@@ -409,6 +361,7 @@ const getAPIInfoFromEnv = (apiSiteInfo, processEnv, siteId) => {
     borderFree: processEnv.BORDERS_FREE,
     borderFreeComm: processEnv.BORDERS_FREE_COMM,
     paypalEnv: processEnv.RWD_WEB_PAYPAL_ENV,
+    crossDomain: processEnv.RWD_WEB_CROSS_DOMAIN,
   };
 };
 const getGraphQLApiFromEnv = (apiSiteInfo, processEnv, relHostname) => {
@@ -511,12 +464,11 @@ export default {
   routerPush,
   bindAllClassMethodsToThis,
   scrollPage,
+  scrollTopElement,
   getCountriesMap,
   getCurrenciesMap,
-  getModifiedLanguageCode,
   siteRedirect,
   languageRedirect,
-  redirectToPdp,
   handleGenericKeyDown,
   viewport,
   canUseDOM,

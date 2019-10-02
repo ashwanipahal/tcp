@@ -40,7 +40,9 @@ class NoResponseSearchDetailView extends React.PureComponent {
   getSearchResults = e => {
     e.preventDefault();
     const searchText = this.searchInput.current.value;
-    this.redirectToSearchPage(searchText);
+    if (searchText) {
+      this.redirectToSearchPage(searchText);
+    }
   };
 
   render() {

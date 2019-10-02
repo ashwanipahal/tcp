@@ -253,6 +253,7 @@ export default {
   // PDP ProductImages
   pdp_product_titles: 'pdp_product_titles',
   pdp_main_image: 'pdp_main_image',
+  pdp_alt_image: 'pdp_alt_image',
   pdp_image_carousel_icon: 'pdp_image_carousel_icon',
   pdp_full_size_btn: 'pdp_full_size_btn',
   pdp_full_size_image_modal: 'pdp_full_size_image_modal',
@@ -285,4 +286,12 @@ export default {
   pdp_discounted_percentage: 'Product Discount Percentage',
   pdp_favorite_icon_count: 'Favorites count',
   pdp_anchor_complete_the_look: 'Complete The Look',
+
+  // Quick View Modal
+  quick_view_add_to_bag_header: 'quick_view_add_to_bag_header',
+  quick_view_modal: 'quick_view_modal',
+  quick_view_product_name: 'quick_view_product_name',
+  quick_view_product_image: 'quick_view_product_image',
+  quick_view_View_Product_details: 'quick_view_View_Product_details',
+  quick_view_icon_btn: 'quick_view_icon_btn',
 };

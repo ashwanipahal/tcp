@@ -66,7 +66,7 @@ describe('#mapDispatchToProps', () => {
   it('should return an action setVenmoPaymentInProgress which will call dispatch function on execution', () => {
     const dispatch = jest.fn();
     const dispatchProps = mapDispatchToProps(dispatch);
-    dispatchProps.setVenmoPaymentInProgress();
+    dispatchProps.setVenmoProgress();
     expect(dispatch.mock.calls).toHaveLength(1);
   });
 

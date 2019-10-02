@@ -129,6 +129,7 @@ const visaSmall = require('../assets/visa-small.png');
 const placeCard = require('../assets/TCP-CC-small.png');
 const giftCardSmall = require('../assets/TCP-gift-small.png');
 const venmoCard = require('../assets/venmo-small.png');
+const paypal = require('../assets/paypal-small.png');
 
 export const getIconCard = icon => {
   switch (icon) {
@@ -146,6 +147,8 @@ export const getIconCard = icon => {
       return placeCard;
     case 'venmo-blue-acceptance-mark':
       return venmoCard;
+    case 'paypal-icon':
+      return paypal;
     default:
       return visaSmall;
   }

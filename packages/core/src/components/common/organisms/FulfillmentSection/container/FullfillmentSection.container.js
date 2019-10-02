@@ -1,6 +1,6 @@
 import { connect } from 'react-redux';
 import FullfillmentSectionView from '../views/FullfillmentSection.view';
-import { togglePickupModal } from '../../PickupStoreModal/container/PickUpStoreModal.actions';
+import { openPickupModalWithValues } from '../../PickupStoreModal/container/PickUpStoreModal.actions';
 import { getIsPickupModalOpen } from '../../PickupStoreModal/container/PickUpStoreModal.selectors';
 
 export const mapStateToProps = state => {
@@ -11,8 +11,8 @@ export const mapStateToProps = state => {
 
 export const mapDispatchToProps = dispatch => {
   return {
-    togglePickupModal: payload => {
-      dispatch(togglePickupModal(payload));
+    onPickUpOpenClick: payload => {
+      dispatch(openPickupModalWithValues(payload));
     },
   };
 };

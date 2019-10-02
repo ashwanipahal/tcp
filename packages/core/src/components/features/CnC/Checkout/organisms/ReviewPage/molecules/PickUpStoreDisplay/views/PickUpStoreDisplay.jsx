@@ -2,7 +2,6 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import withStyles from '../../../../../../../../common/hoc/withStyles';
 import BodyCopy from '../../../../../../../../common/atoms/BodyCopy';
-// import { getTranslateDateInformation } from '../../../../../../../../../utils/badge.util';
 import { ORDER_ITEM_TYPE } from '../../../../../../../../../services/abstractors/CnC/CartItemTile';
 import { Image } from '../../../../../../../../common/atoms';
 import {

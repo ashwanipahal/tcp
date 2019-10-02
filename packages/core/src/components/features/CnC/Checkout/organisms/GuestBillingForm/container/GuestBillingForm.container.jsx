@@ -117,7 +117,13 @@ class GuestBillingContainer extends React.Component {
    * @description render method to be called of component
    */
   render() {
-    const { billingData, orderHasShipping, syncErrors, shippingOnFileAddressKey } = this.props;
+    const {
+      billingData,
+      orderHasShipping,
+      syncErrors,
+      shippingOnFileAddressKey,
+      isVenmoPaymentInProgress,
+    } = this.props;
     let cardNumber;
     let cardType;
     let expMonth;
@@ -133,7 +139,9 @@ class GuestBillingContainer extends React.Component {
       <GuestBillingPage
         {...this.props}
         initialValues={{
-          paymentMethodId: CONSTANTS.PAYMENT_METHOD_CREDIT_CARD,
+          paymentMethodId: isVenmoPaymentInProgress
+            ? CONSTANTS.PAYMENT_METHOD_VENMO
+            : CONSTANTS.PAYMENT_METHOD_CREDIT_CARD,
           sameAsShipping:
             orderHasShipping &&
             (isEmpty(billingData) || billingOnFileAddressKey === shippingOnFileAddressKey),
@@ -181,6 +189,7 @@ GuestBillingContainer.propTypes = {
   submitBilling: PropTypes.func.isRequired,
   shippingOnFileAddressKey: PropTypes.string,
   navigation: PropTypes.shape({}),
+  isVenmoPaymentInProgress: PropTypes.bool,
 };
 
 GuestBillingContainer.defaultProps = {
@@ -195,6 +204,7 @@ GuestBillingContainer.defaultProps = {
   orderHasShipping: true,
   shippingOnFileAddressKey: null,
   navigation: null,
+  isVenmoPaymentInProgress: false,
 };
 
 export default connect(

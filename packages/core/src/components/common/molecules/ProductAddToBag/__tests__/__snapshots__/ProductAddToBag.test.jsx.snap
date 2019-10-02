@@ -198,6 +198,7 @@ exports[`ProductAddToBagVanilla should render correctly should match snapshot 1`
     margin-top: ",
                     [Function],
                     ";
+    cursor: auto;
   }
 
   .color-chips-selector-item {
@@ -465,32 +466,6 @@ exports[`ProductAddToBagVanilla should render correctly should match snapshot 1`
       </div>
     </Styled(Col)>
   </Styled(Row)>
-  <Styled(Row)
-    fullBleed={true}
-  >
-    <Styled(Col)
-      colSize={
-        Object {
-          "large": 12,
-          "medium": 12,
-          "small": 12,
-        }
-      }
-    >
-      <div
-        className="button-wrapper"
-      >
-        <Styled(Button)
-          className="add-to-bag-button"
-          onClick={[Function]}
-          type="submit"
-        />
-        <Measure
-          name="render_cart_cta"
-        />
-      </div>
-    </Styled(Col)>
-  </Styled(Row)>
 </form>
 `;
 
@@ -692,6 +667,7 @@ exports[`ProductAddToBagVanilla should render correctly should match snapshot wi
     margin-top: ",
                     [Function],
                     ";
+    cursor: auto;
   }
 
   .color-chips-selector-item {
@@ -987,32 +963,6 @@ exports[`ProductAddToBagVanilla should render correctly should match snapshot wi
             width={32}
           />
         </div>
-      </div>
-    </Styled(Col)>
-  </Styled(Row)>
-  <Styled(Row)
-    fullBleed={true}
-  >
-    <Styled(Col)
-      colSize={
-        Object {
-          "large": 12,
-          "medium": 12,
-          "small": 12,
-        }
-      }
-    >
-      <div
-        className="button-wrapper"
-      >
-        <Styled(Button)
-          className="add-to-bag-button"
-          onClick={[Function]}
-          type="submit"
-        />
-        <Measure
-          name="render_cart_cta"
-        />
       </div>
     </Styled(Col)>
   </Styled(Row)>

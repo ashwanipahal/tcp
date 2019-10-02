@@ -60,7 +60,8 @@ class CardTile extends React.Component<Props> {
 
   getGiftCardBalance = key => {
     const { checkbalanceValueInfo } = this.props;
-    return checkbalanceValueInfo && checkbalanceValueInfo.get(key);
+    const balance = checkbalanceValueInfo && checkbalanceValueInfo.get(key);
+    return typeof balance === 'number' ? balance.toString() : balance;
   };
 
   getMakeDefaultBadge = () => {

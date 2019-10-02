@@ -19,7 +19,8 @@ const AirmilesBannerReducer = (state = initialState, action: Action) => {
       return state.set('onAddAirmilesBanner', true);
     case AIRMILES_BANNER_CONSTANTS.ADD_AIRMILES_BANNER_FAILED:
       return state.set('error', action.payload).set('onAddAirmilesBanner', false);
-
+    case AIRMILES_BANNER_CONSTANTS.RESET_AIRMILES_BANNER:
+      return initialState;
     default:
       if (state instanceof Object) {
         return fromJS(state);

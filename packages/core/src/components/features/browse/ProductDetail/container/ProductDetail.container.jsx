@@ -26,7 +26,7 @@ import {
 
 import { getCartItemInfo } from '../../../CnC/AddedToBag/util/utility';
 
-class ProductListingContainer extends React.PureComponent {
+class ProductDetailContainer extends React.PureComponent {
   componentDidMount() {
     const {
       getDetails,
@@ -75,21 +75,26 @@ class ProductListingContainer extends React.PureComponent {
       addToBagError,
       ...otherProps
     } = this.props;
+    const isProductDataAvailable = Object.keys(productInfo).length > 0;
     return (
-      <ProductDetail
-        productDetails={productDetails}
-        breadCrumbs={breadCrumbs}
-        longDescription={longDescription}
-        ratingsProductId={ratingsProductId}
-        otherProps={otherProps}
-        defaultImage={defaultImage}
-        plpLabels={plpLabels}
-        pdpLabels={pdpLabels}
-        currency={currency}
-        productInfo={productInfo}
-        handleAddToBag={this.handleAddToBag}
-        addToBagError={addToBagError}
-      />
+      <React.Fragment>
+        {isProductDataAvailable ? (
+          <ProductDetail
+            productDetails={productDetails}
+            breadCrumbs={breadCrumbs}
+            longDescription={longDescription}
+            ratingsProductId={ratingsProductId}
+            otherProps={otherProps}
+            defaultImage={defaultImage}
+            plpLabels={plpLabels}
+            pdpLabels={pdpLabels}
+            currency={currency}
+            productInfo={productInfo}
+            handleAddToBag={this.handleAddToBag}
+            addToBagError={addToBagError}
+          />
+        ) : null}
+      </React.Fragment>
     );
   }
 }
@@ -126,7 +131,7 @@ function mapDispatchToProps(dispatch) {
   };
 }
 
-ProductListingContainer.propTypes = {
+ProductDetailContainer.propTypes = {
   productDetails: PropTypes.arrayOf(PropTypes.shape({})),
   getDetails: PropTypes.func.isRequired,
   addToBagError: PropTypes.string,
@@ -150,7 +155,7 @@ ProductListingContainer.propTypes = {
   }),
 };
 
-ProductListingContainer.defaultProps = {
+ProductDetailContainer.defaultProps = {
   productDetails: [],
   productInfo: {},
   addToBagError: '',
@@ -169,5 +174,5 @@ export default withRouter(
   connect(
     mapStateToProps,
     mapDispatchToProps
-  )(ProductListingContainer)
+  )(ProductDetailContainer)
 );

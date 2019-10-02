@@ -54,6 +54,14 @@ const internalEndpoints = {
     link: '/account?id=extra-points',
     path: '/account/extra-points',
   },
+  orderPage: {
+    link: '/account?id=orders&subSection=order-details',
+    path: '/account/orders/order-details',
+  },
+  myPreferencesPage: {
+    link: '/account?id=my-preference',
+    path: '/account//my-preference',
+  },
 };
 
 export default internalEndpoints;

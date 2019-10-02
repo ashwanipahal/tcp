@@ -48,6 +48,7 @@ const getReviewPageLabels = createSelector(
       'lbl_review_giftCardHeadsup',
       'lbl_review_giftCardMessage',
       'lbl_review_billingEdit',
+      'lbl_review_save_venmo',
     ];
     labelKeys.forEach(key => {
       labels[key] = getLabelValue(reviewLabels, key);

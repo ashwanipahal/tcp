@@ -11,6 +11,7 @@ import PickUpReviewSectionContainer from '../organisms/PickUpReviewSection';
 import ShippingReviewSection from '../organisms/ShippingReviewSection';
 import BillingSection from '../organisms/BillingSection';
 import CheckoutCartItemList from '../organisms/CheckoutCartItemList';
+import CheckoutOrderInfo from '../../../molecules/CheckoutOrderInfoMobile';
 
 class ReviewPage extends React.PureComponent {
   static propTypes = {
@@ -19,14 +20,38 @@ class ReviewPage extends React.PureComponent {
     submitReview: PropTypes.func.isRequired,
     orderHasShipping: PropTypes.bool.isRequired,
     orderHasPickUp: PropTypes.bool.isRequired,
+    setVenmoShippingState: PropTypes.func,
+    setVenmoPickupState: PropTypes.func,
+    showAccordian: PropTypes.bool,
+    isGuest: PropTypes.bool.isRequired,
   };
+
+  static defaultProps = {
+    setVenmoShippingState: () => {},
+    setVenmoPickupState: () => {},
+    showAccordian: true,
+  };
+
+  componentDidMount() {
+    const { setVenmoShippingState, setVenmoPickupState } = this.props;
+    setVenmoShippingState(true);
+    setVenmoPickupState(true);
+  }
 
   handleDefaultLinkClick = e => {
     e.preventDefault();
   };
 
   render() {
-    const { className, labels, orderHasPickUp, orderHasShipping, submitReview } = this.props;
+    const {
+      className,
+      labels,
+      orderHasPickUp,
+      orderHasShipping,
+      submitReview,
+      isGuest,
+      showAccordian,
+    } = this.props;
     const {
       header,
       backLinkBilling,
@@ -62,6 +87,7 @@ class ReviewPage extends React.PureComponent {
         )}
         <BillingSection />
         <CheckoutCartItemList />
+        <CheckoutOrderInfo showAccordian={showAccordian} isGuest={isGuest} />
         <CheckoutFooter
           hideBackLink
           ariaLabelBackLink={ariaLabelBackLink}

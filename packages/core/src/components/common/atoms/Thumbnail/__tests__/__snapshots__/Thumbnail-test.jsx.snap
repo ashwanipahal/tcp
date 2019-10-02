@@ -12,6 +12,7 @@ exports[`Thumbnail component should renders correctly 1`] = `
   >
     <Styled(Image)
       alt=""
+      data-locator="pdp_alt_image_0"
       itemProp="thumbnailUrl"
       src=""
       title=""

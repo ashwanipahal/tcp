@@ -36,6 +36,9 @@ import BirthdaySavingsListReducer from '@tcp/core/src/components/features/accoun
 import ApplyCardReducer from '@tcp/core/src/components/features/browse/ApplyCardPage/container/ApplyCard.reducer';
 import ApplyNowModalPLCCReducer from '@tcp/core/src/components/common/molecules/ApplyNowPLCCModal/container/ApplyNowModal.reducer';
 import PointsClaimReducer from '@tcp/core/src/components/features/account/PointsClaim/container/PointsClaim.reducer';
+import SocialReducer from '@tcp/core/src/components/common/organisms/SocialAccount/container/Social.reducer';
+import orderConfirmationReducer from '@tcp/core/src/components/features/CnC/Confirmation/container/Confirmation.reducer';
+import PickupModalReducer from '@tcp/core/src/components/common/organisms/PickupStoreModal/container/PickUpStoreModal.reducer';
 
 import {
   SESSIONCONFIG_REDUCER_KEY,
@@ -82,6 +85,9 @@ import {
   APPLY_NOW_MODAL_REDUCER_KEY,
   APPLY_PLCC_REDUCER_KEY,
   POINTS_CLAIM_REDUCER_KEY,
+  SOCIAL_REDUCER_KEY,
+  CONFIRMATION_REDUCER_KEY,
+  PICKUP_MODAL_REDUCER_KEY,
 } from '@tcp/core/src/constants/reducer.constants';
 import HeaderReducer from '@tcp/core/src/components/common/organisms/Header/container/Header.reducer';
 import ModulesReducer from '@tcp/core/src/reduxStore/reducers/modules';
@@ -120,6 +126,7 @@ const filteredAppConfigReducer = createFilteredReducer(ApiConfigReducer, APICONF
 const filteredGetCandidReducer = createFilteredReducer(GetCandidReducer, GET_CANDID_REDUCER_KEY);
 
 const rootReducer = combineReducers({
+  [SOCIAL_REDUCER_KEY]: SocialReducer,
   [APICONFIG_REDUCER_KEY]: filteredAppConfigReducer,
   [TOAST_REDUCER_KEY]: ToastMessageReducer,
   [SESSIONCONFIG_REDUCER_KEY]: SessionConfigReducer,
@@ -165,6 +172,8 @@ const rootReducer = combineReducers({
   [APPLY_PLCC_REDUCER_KEY]: ApplyCardReducer,
   [APPLY_NOW_MODAL_REDUCER_KEY]: ApplyNowModalPLCCReducer,
   [POINTS_CLAIM_REDUCER_KEY]: PointsClaimReducer,
+  [CONFIRMATION_REDUCER_KEY]: orderConfirmationReducer,
+  [PICKUP_MODAL_REDUCER_KEY]: PickupModalReducer,
 });
 
 export default rootReducer;

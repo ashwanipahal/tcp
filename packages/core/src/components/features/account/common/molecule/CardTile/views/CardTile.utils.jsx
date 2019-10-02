@@ -36,6 +36,7 @@ const cardIconMapping = {
   VENMO: 'venmo-blue-acceptance-mark',
   VISA: 'visa-small',
   AMEX: 'amex-small',
+  paypal: 'paypal-icon',
 };
 
 const getAddressDetails = ({ card }) => {

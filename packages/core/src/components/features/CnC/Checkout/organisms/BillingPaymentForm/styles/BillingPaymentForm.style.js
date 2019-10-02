@@ -59,7 +59,7 @@ export default css`
     }
   }
   .cvvCode {
-    width: 90px;
+    width: 100px;
     bottom: ${props => props.theme.spacing.APP_LAYOUT_SPACING.XXS};
     .TextBox__input {
       background-color: ${props => props.theme.colors.PRIMARY.PALEGRAY};

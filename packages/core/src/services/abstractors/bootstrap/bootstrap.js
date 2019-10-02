@@ -158,7 +158,7 @@ const bootstrap = async (pageName = '', modules, cachedData) => {
   const bootstrapModules = modules || ['labels', 'header', 'footer', 'navigation'];
 
   try {
-    logger.info('Executing Bootstrap Query for modules: ', bootstrapModules);
+    logger.info('Executing Bootstrap Query for global modules: ', bootstrapModules);
     logger.debug('Executing Bootstrap Query with params: ', bootstrapParams, pageName);
     const bootstrapData = await fetchBootstrapData(bootstrapParams, bootstrapModules);
     logger.info('Bootstrap Query Executed Successfully');
@@ -170,7 +170,7 @@ const bootstrap = async (pageName = '', modules, cachedData) => {
       logger.info('Executing Modules Query with params: ', bootstrapData[pageName], pageName);
       response.modules =
         bootstrapData[pageName] &&
-        (await layoutAbstractor.processData(
+        (await layoutAbstractor.getModulesFromLayout(
           retrieveCachedData({ ...fetchCachedDataParams, key: pageName })
         ));
       logger.info('Modules Query Executed Successfully');

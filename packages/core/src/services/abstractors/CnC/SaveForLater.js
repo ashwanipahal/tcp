@@ -12,7 +12,7 @@ import { extractPrioritizedBadge, getProductAttributes } from '../../../utils/ba
 import { sanitizeEntity, flatCurrencyToCents, AVAILABILITY } from './CartItemTile';
 
 export function getProductInfo(item, imageGenerator) {
-  const { isGiftCard, itemAtributes } = item;
+  const { isGiftCard, itemAtributes, itemBrand } = item;
   const sizeAndFit = itemAtributes;
   const returnProductInfo = {
     generalProductId: isGiftCard ? item.itemCatentryId.toString() : item.productId,
@@ -33,6 +33,7 @@ export function getProductInfo(item, imageGenerator) {
     },
     isGiftCard,
     colorFitSizeDisplayNames: isGiftCard ? true : {}, // To Do when consuming this data { color: 'Design', size: 'Value' }
+    itemBrand,
   };
   if (sizeAndFit) {
     returnProductInfo.size = sizeAndFit.TCPSize;

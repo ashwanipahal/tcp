@@ -15,6 +15,8 @@ exports[`Footer component Footer component renders correctly with props 1`] = `
       legalLinks={Array []}
       navLinks={Array []}
       openEmailSignUpModal={[Function]}
+      openSmsSignUpModal={[Function]}
+      pageName=""
       referenceID=""
     />
     <Connect(Styled(ReduxForm)) />
@@ -147,6 +149,8 @@ exports[`Footer component Footer component renders correctly without props 1`] =
       legalLinks={Array []}
       navLinks={Array []}
       openEmailSignUpModal={[Function]}
+      openSmsSignUpModal={[Function]}
+      pageName=""
       referenceID=""
     />
     <Connect(Styled(ReduxForm)) />

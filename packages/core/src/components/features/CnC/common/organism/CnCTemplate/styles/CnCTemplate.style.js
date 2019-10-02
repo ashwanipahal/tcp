@@ -4,7 +4,8 @@ const styles = css`
   ${props => `
   background: ${props.theme.colors.PRIMARY.PALEGRAY};
   padding: ${props.theme.spacing.ELEM_SPACING.XXXS};
-  margin-bottom: 3px;`}
+  margin-bottom: 3px;
+  padding-top:${props.isConfirmationPage ? props.theme.spacing.ELEM_SPACING.MED : 0}`}
 
   .bonusPointsDaysWrapper {
     background-color: ${props => props.theme.colorPalette.white};
@@ -48,6 +49,13 @@ const styles = css`
     @media ${props => props.theme.mediaQuery.medium} {
       display: block;
     }
+  }
+
+  .placeholder-right div {
+    background: ${props => props.theme.colorPalette.white};
+    padding: 10px 0;
+    margin-bottom: 5px;
+    text-align: center;
   }
 `;
 

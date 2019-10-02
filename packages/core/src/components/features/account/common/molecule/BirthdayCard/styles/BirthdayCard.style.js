@@ -24,6 +24,11 @@ const styles = css`
     justify-content: space-between;
     align-items: flex-end;
   }
+  .text-ellipsis {
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+  }
 `;
 
 export default styles;

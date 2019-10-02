@@ -6,5 +6,6 @@ exports[`Gift Cards Container should render Gift Card view section 1`] = `
   appliedGiftCards={Immutable.List []}
   card={null}
   labels={Object {}}
+  saveVenmoPaymentOption={[Function]}
 />
 `;

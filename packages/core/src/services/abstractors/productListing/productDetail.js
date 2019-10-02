@@ -77,7 +77,7 @@ const parseProductFromAPI = (
       hasDefaultFit = processHelperUtil.getHasDefaultFit(hasDefaultFit, isDefaultFit);
 
       return {
-        fitNameVal,
+        fitName: fitNameVal,
         isDefault: isDefaultFit,
         maxAvailable: processHelperUtil.validateQuantityAvailable(
           currentColorFitsSizesMap[fitNameVal]
