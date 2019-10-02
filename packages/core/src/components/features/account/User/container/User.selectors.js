@@ -229,3 +229,8 @@ export const getPercentageIncrement = () => ({
   percentageUserBirthday: 20,
   percentageFavStore: 20,
 });
+
+export const isRememberedUser = createSelector(
+  getPersonalDataState,
+  state => state && state.get('isRemembered')
+);
