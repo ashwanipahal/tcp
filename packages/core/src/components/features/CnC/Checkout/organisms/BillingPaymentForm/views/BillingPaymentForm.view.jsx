@@ -463,7 +463,7 @@ export class BillingPaymentForm extends React.PureComponent {
         <CheckoutOrderInfo isGuest={isGuest} showAccordian={showAccordian} />
         <CheckoutFooter
           hideBackLink
-          disableNext={editMode}
+          disableDesktopOnlyNext={editMode}
           backLinkHandler={() => utility.routeToPage(CHECKOUT_ROUTES.shippingPage)}
           nextButtonText={nextSubmitText}
           backLinkText={orderHasShipping ? backLinkShipping : backLinkPickup}

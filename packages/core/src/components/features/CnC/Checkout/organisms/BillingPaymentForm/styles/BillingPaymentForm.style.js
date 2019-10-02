@@ -197,6 +197,7 @@ export default css`
 
     .card-edit-cancel {
       margin-top: ${props => props.theme.spacing.APP_LAYOUT_SPACING.XS};
+      margin-bottom: ${props => props.theme.spacing.APP_LAYOUT_SPACING.XS};
       border: 1px solid ${props => props.theme.colors.PRIMARY.GRAY};
       background: ${props => props.theme.colors.WHITE};
       &:hover {
@@ -204,6 +205,7 @@ export default css`
       }
       @media ${props => props.theme.mediaQuery.medium} {
         margin-top: 0;
+        margin-bottom: 0;
       }
     }
 
