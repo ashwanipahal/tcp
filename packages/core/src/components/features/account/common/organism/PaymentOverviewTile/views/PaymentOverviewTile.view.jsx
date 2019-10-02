@@ -2,6 +2,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import withStyles from '@tcp/core/src/components/common/hoc/withStyles';
+import { getLabelValue } from '@tcp/core/src/utils/utils';
 import styles from './PaymentOverviewTile.style';
 import { getIconPath } from '../../../../../../../utils';
 import { Row, Col, BodyCopy, Image } from '../../../../../../common/atoms';
@@ -26,8 +27,8 @@ export const PaymentOverviewTile = ({
   };
   return (
     <AccountOverviewTile
-      title={labels.lbl_overview_paymentHeading}
-      ctaTitle={labels.lbl_overview_paymentCTA}
+      title={getLabelValue(labels, 'lbl_overview_paymentHeading')}
+      ctaTitle={getLabelValue(labels, 'lbl_overview_paymentCTA')}
       ctaLink="/account?id=payment"
       ctaPath="/account/payment"
     >
@@ -35,7 +36,7 @@ export const PaymentOverviewTile = ({
         <div className="heading">
           <div className="section-heading">
             <BodyCopy fontSize="fs14" fontWeight="extrabold" fontFamily="secondary">
-              {labels.lbl_overview_default_creditCard}
+              {getLabelValue(labels, 'lbl_overview_default_creditCard')}
             </BodyCopy>
             {creditCardDefault && creditCardDefault.ccType ? (
               <Anchor
@@ -45,7 +46,7 @@ export const PaymentOverviewTile = ({
                 to="/account?id=payment"
                 asPath="/account/payment"
               >
-                {labels.lbl_overview_addressBookEdit}
+                {getLabelValue(labels, 'lbl_overview_addressBookEdit')}
               </Anchor>
             ) : (
               <Anchor
@@ -55,7 +56,7 @@ export const PaymentOverviewTile = ({
                 to="/account?id=payment"
                 asPath="/account/payment"
               >
-                {labels.lbl_overview_addressBookAdd}
+                {getLabelValue(labels, 'lbl_overview_addressBookAdd')}
               </Anchor>
             )}
           </div>
@@ -76,12 +77,12 @@ export const PaymentOverviewTile = ({
                   />
                   <BodyCopy component="div" className="cardDescriptionWrapper">
                     <BodyCopy fontSize="fs12" fontFamily="secondary" fontWeight="extrabold">
-                      <span>{labels.lbl_overview_card_ending}</span>
+                      <span>{getLabelValue(labels, 'lbl_overview_card_ending')}</span>
                       <span> </span>
                       <span>{creditCardDefault.accountNo.slice(-4)}</span>
                     </BodyCopy>
                     <BodyCopy fontSize="fs10" fontFamily="secondary">
-                      <span>{labels.lbl_overview_expires}</span>
+                      <span>{getLabelValue(labels, 'lbl_overview_expires')}</span>
                       <span> </span>
                       <span>{`0${creditCardDefault.expMonth.trim()}`.slice(-2)}</span>
                       <span>/</span>
@@ -91,7 +92,7 @@ export const PaymentOverviewTile = ({
                 </BodyCopy>
               ) : (
                 <BodyCopy fontSize="fs14" fontFamily="secondary">
-                  {labels.lbl_overview_add_creditCard}
+                  {getLabelValue(labels, 'lbl_overview_add_creditCard')}
                 </BodyCopy>
               )}
             </Col>
@@ -116,7 +117,7 @@ export const PaymentOverviewTile = ({
                     fontWeight="extrabold"
                     fontFamily="secondary"
                   >
-                    {labels.lbl_overview_venmo}
+                    {getLabelValue(labels, 'lbl_overview_venmo')}
                   </BodyCopy>
                   <Anchor
                     fontSizeVariation="large"
@@ -125,7 +126,7 @@ export const PaymentOverviewTile = ({
                     to="/account?id=payment"
                     asPath="/account/payment"
                   >
-                    {labels.lbl_overview_addressBookEdit}
+                    {getLabelValue(labels, 'lbl_overview_addressBookEdit')}
                   </Anchor>
                 </Col>
               </Row>
@@ -161,7 +162,7 @@ export const PaymentOverviewTile = ({
         <BodyCopy component="div" className="elem-mt-LRG">
           <div className="section-heading">
             <BodyCopy component="div" fontSize="fs14" fontWeight="extrabold" fontFamily="secondary">
-              {labels.lbl_overview_giftCard}
+              {getLabelValue(labels, 'lbl_overview_giftCard')}
             </BodyCopy>
             {giftCardList && giftCardList.ccType ? (
               ''
@@ -173,7 +174,7 @@ export const PaymentOverviewTile = ({
                 to="/account?id=payment"
                 asPath="/account/payment"
               >
-                {labels.lbl_overview_addressBookAdd}
+                {getLabelValue(labels, 'lbl_overview_addressBookAdd')}
               </Anchor>
             )}
           </div>
@@ -192,14 +193,14 @@ export const PaymentOverviewTile = ({
                     src={getIconPath(cardIconMapping[giftCardList.ccBrand])}
                   />
                   <BodyCopy fontSize="fs12" fontFamily="secondary" fontWeight="extrabold">
-                    <span>{labels.lbl_overview_card_ending}</span>
+                    <span>{getLabelValue(labels, 'lbl_overview_card_ending')}</span>
                     <span> </span>
                     <span>{giftCardList.accountNo.slice(-4)}</span>
                   </BodyCopy>
                 </BodyCopy>
               ) : (
                 <BodyCopy fontSize="fs14" fontFamily="secondary">
-                  {labels.lbl_overview_add_giftCard}
+                  {getLabelValue(labels, 'lbl_overview_add_giftCard')}
                 </BodyCopy>
               )}
             </Col>

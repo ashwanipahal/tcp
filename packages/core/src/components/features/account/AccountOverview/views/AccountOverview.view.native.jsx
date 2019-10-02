@@ -118,10 +118,10 @@ class AccountOverview extends PureComponent<Props> {
   getModalHeader = (getComponentId, labels) => {
     let header = null;
     if (getComponentId.login || getComponentId.favorites) {
-      header = labels.lbl_overview_login_text;
+      header = getLabelValue(labels, 'lbl_overview_login_text');
     }
     if (getComponentId.createAccount) {
-      header = labels.lbl_overview_createAccount;
+      header = getLabelValue(labels, 'lbl_overview_createAccount');
     }
     return header;
   };
@@ -137,7 +137,7 @@ class AccountOverview extends PureComponent<Props> {
       <View style={viewContainerStyle}>
         {isUserLoggedIn && (
           <React.Fragment>
-            <Panel title={labels.lbl_overview_myPlaceRewardsHeading}>
+            <Panel title={getLabelValue(labels, 'lbl_overview_myPlaceRewardsHeading')}>
               <MyPlaceRewardsOverviewTile
                 labels={labels}
                 commonLabels={commonLabels}
@@ -151,21 +151,21 @@ class AccountOverview extends PureComponent<Props> {
                 handleComponentChange={handleComponentChange}
               />
             </Panel>
-            <Panel title={labels.lbl_overview_earnPointsHeading}>
+            <Panel title={getLabelValue(labels, 'lbl_overview_earnPointsHeading')}>
               <EarnExtraPointsOverview handleComponentChange={handleComponentChange} />
             </Panel>
-            <Panel title={labels.lbl_overview_ordersHeading} />
-            <Panel title={labels.lbl_overview_profileInformationHeading}>
+            <Panel title={getLabelValue(labels, 'lbl_overview_ordersHeading')} />
+            <Panel title={getLabelValue(labels, 'lbl_overview_profileInformationHeading')}>
               <ProfileInfoContainer labels={labels} handleComponentChange={handleComponentChange} />
             </Panel>
-            <Panel title={labels.lbl_overview_addressBookHeading}>
+            <Panel title={getLabelValue(labels, 'lbl_overview_addressBookHeading')}>
               <AddressOverviewTile labels={labels} handleComponentChange={handleComponentChange} />
             </Panel>
-            <Panel title={labels.lbl_overview_paymentHeading}>
+            <Panel title={getLabelValue(labels, 'lbl_overview_paymentHeading')}>
               <PaymentTile labels={labels} handleComponentChange={handleComponentChange} />
             </Panel>
-            <Panel title={labels.lbl_overview_myPreferencesHeading} />
-            <Panel title={labels.lbl_overview_myPlaceRewardsCardHeading} />
+            <Panel title={getLabelValue(labels, 'lbl_overview_myPreferencesHeading')} />
+            <Panel title={getLabelValue(labels, 'lbl_overview_myPlaceRewardsCardHeading')} />
           </React.Fragment>
         )}
         {!isUserLoggedIn && (
@@ -175,13 +175,13 @@ class AccountOverview extends PureComponent<Props> {
                 mobileFontFamily={['primary']}
                 fontSize="fs14"
                 textAlign="center"
-                text={labels.lbl_overview_logout_heading_Text_1}
+                text={getLabelValue(labels, 'lbl_overview_logout_heading_Text_1')}
               />
               <BodyCopy
                 mobileFontFamily={['primary']}
                 fontSize="fs14"
                 textAlign="center"
-                text={labels.lbl_overview_logout_heading_Text_2}
+                text={getLabelValue(labels, 'lbl_overview_logout_heading_Text_2')}
               />
             </LoggedinTextWrapper>
             <LoggedinWrapper>
@@ -193,7 +193,7 @@ class AccountOverview extends PureComponent<Props> {
                 width="150px"
                 buttonVariation="variable-width"
                 data-locator=""
-                text={labels.lbl_overview_join_text}
+                text={getLabelValue(labels, 'lbl_overview_join_text')}
                 onPress={e =>
                   this.toggleModal({
                     e,
@@ -214,7 +214,7 @@ class AccountOverview extends PureComponent<Props> {
                 buttonVariation="variable-width"
                 data-locator=""
                 width="150px"
-                text={labels.lbl_overview_login_text}
+                text={getLabelValue(labels, 'lbl_overview_login_text')}
                 onPress={e =>
                   this.toggleModal({
                     e,
@@ -254,7 +254,7 @@ class AccountOverview extends PureComponent<Props> {
                 fontSize="fs13"
                 textAlign="left"
                 fontWeight="semibold"
-                text={labels.lbl_overview_myFavoritesHeading}
+                text={getLabelValue(labels, 'lbl_overview_myFavoritesHeading')}
                 onPress={e =>
                   this.toggleModal({
                     e,
@@ -268,23 +268,33 @@ class AccountOverview extends PureComponent<Props> {
             </FavtWrapper>
             <UnderlineStyle />
 
-            <Panel title={labels.lbl_overview_apply_today} isVariationTypeLink isCardApply />
+            <Panel
+              title={getLabelValue(labels, 'lbl_overview_apply_today')}
+              isVariationTypeLink
+              isCardApply
+            />
 
-            <Panel title={labels.lbl_overview_manage_creditCard} isVariationTypeLink />
+            <Panel
+              title={getLabelValue(labels, 'lbl_overview_manage_creditCard')}
+              isVariationTypeLink
+            />
 
             <UnderlineStyle />
 
-            <Panel title={labels.lbl_overview_purchase_giftCards} isVariationTypeLink />
-            <Panel title={labels.lbl_overview_refer_friend} isVariationTypeLink />
             <Panel
-              title={labels.lbl_overview_trackYourOrder}
+              title={getLabelValue(labels, 'lbl_overview_purchase_giftCards')}
+              isVariationTypeLink
+            />
+            <Panel title={getLabelValue(labels, 'lbl_overview_refer_friend')} isVariationTypeLink />
+            <Panel
+              title={getLabelValue(labels, 'lbl_overview_trackYourOrder')}
               isVariationTypeLink
               handleComponentChange={this.showTrackOrderModal}
             />
             <UnderlineStyle />
-            <Panel title={labels.lbl_overview_app_settings} isVariationTypeLink />
-            <Panel title={labels.lbl_overview_help} isVariationTypeLink />
-            <Panel title={labels.lbl_overview_messages} isVariationTypeLink />
+            <Panel title={getLabelValue(labels, 'lbl_overview_app_settings')} isVariationTypeLink />
+            <Panel title={getLabelValue(labels, 'lbl_overview_help')} isVariationTypeLink />
+            <Panel title={getLabelValue(labels, 'lbl_overview_messages')} isVariationTypeLink />
           </React.Fragment>
         )}
 

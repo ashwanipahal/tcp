@@ -4,6 +4,7 @@ exports[`MyProfile component should render correctly 1`] = `
 <div>
   <Styled(FormPageHeading)
     className="margin-none"
+    heading="lbl_profile_heading"
   />
   <Styled(ProfileInformation)
     labels={Object {}}

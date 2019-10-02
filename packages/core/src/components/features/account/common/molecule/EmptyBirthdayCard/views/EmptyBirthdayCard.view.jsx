@@ -3,6 +3,7 @@ import PropTypes from 'prop-types';
 import BodyCopy from '@tcp/core/src/components/common/atoms/BodyCopy';
 import Anchor from '@tcp/core/src/components/common/atoms/Anchor';
 import withStyles from '@tcp/core/src/components/common/hoc/withStyles';
+import { getLabelValue } from '@tcp/core/src/utils/utils';
 import styles from '../styles/EmptyBirthdayCard.style';
 
 /**
@@ -44,7 +45,7 @@ class EmptyBirthdayCard extends React.PureComponent {
                 onClick={this.toggleClass}
                 noLink
               >
-                {labels.lbl_profile_addChildBirthdayCta}
+                {getLabelValue(labels, 'lbl_profile_addChildBirthdayCta')}
               </Anchor>
             </div>
           )}

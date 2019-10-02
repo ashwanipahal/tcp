@@ -2,6 +2,7 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import Anchor from '@tcp/core/src/components/common/atoms/Anchor';
 import { ViewWithSpacing } from '@tcp/core/src/components/common/atoms/styledWrapper';
+import { getLabelValue } from '@tcp/core/src/utils/utils';
 import { fromJS } from 'immutable';
 import { UrlHandler } from '../../../../../../../utils/utils.app';
 import ProfileInfoActions from '../../ProfileInfoActions';
@@ -111,7 +112,7 @@ export class ProfileInformation extends React.PureComponent {
             }}
             anchorVariation="primary"
             data-locator="my-rewards-program-details"
-            text={labels.lbl_profile_program_details}
+            text={getLabelValue(labels, 'lbl_profile_program_details')}
           />
           <AnchorLeftMargin>
             <Anchor
@@ -123,7 +124,7 @@ export class ProfileInformation extends React.PureComponent {
               }}
               anchorVariation="primary"
               data-locator="my-rewards-tnc"
-              text={labels.lbl_profile_terms_condition}
+              text={getLabelValue(labels, 'lbl_profile_terms_condition')}
             />
           </AnchorLeftMargin>
         </StyledAnchorWrapper>

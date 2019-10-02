@@ -42,27 +42,27 @@ export const ProfileInfoActions = ({
             fontWeight="extrabold"
             data-locator="enhanceExpHdr"
           >
-            {labels.lbl_profile_Enhance_Experience}
+            {getLabelValue(labels, 'lbl_profile_Enhance_Experience')}
           </BodyCopy>
           {profileCompletion === '100' ? (
             <>
               <BodyCopy fontSize="fs16" fontFamily="secondary">
-                {labels.lbl_profile_profileCompletionExclamation}
+                {getLabelValue(labels, 'lbl_profile_profileCompletionExclamation')}
               </BodyCopy>
               <BodyCopy fontSize="fs16" fontFamily="secondary" data-locator="infoAddedTxt">
-                {labels.lbl_profile_profileCompletionMessage}
+                {getLabelValue(labels, 'lbl_profile_profileCompletionMessage')}
               </BodyCopy>
               <BodyCopy fontSize="fs16" fontFamily="secondary">
-                {labels.lbl_profile_getMorePoints}
+                {getLabelValue(labels, 'lbl_profile_getMorePoints')}
                 <Anchor to="/account" underline fontSizeVariation="xlarge" dataLocator="hereLink">
-                  {labels.lbl_profile_getMorePointsLink}
+                  {getLabelValue(labels, 'lbl_profile_getMorePointsLink')}
                 </Anchor>
                 {'?'}
               </BodyCopy>
             </>
           ) : (
             <BodyCopy fontSize="fs16" fontFamily="secondary" data-locator="instructionTxt">
-              {labels.lbl_profile_profileInCompleteMessage}
+              {getLabelValue(labels, 'lbl_profile_profileInCompleteMessage')}
             </BodyCopy>
           )}
         </div>
@@ -89,7 +89,7 @@ export const ProfileInfoActions = ({
             activityIcon={getIconPath('mailing-address-icon')}
             activityTitle={getLabelValue(labels, 'lbl_profile_activityPercentage')}
             activityCompletionState={getMailingAddressState(mailingAddress, labels)}
-            activityDescription={labels.lbl_profile_mailingAddressDescription}
+            activityDescription={getLabelValue(labels, 'lbl_profile_mailingAddressDescription')}
             redirectTo={internalEndpoints.mailingAddressPage.link}
             redirectAsPath={internalEndpoints.mailingAddressPage.path}
             dataLocatorPrefix="email"
@@ -113,7 +113,7 @@ export const ProfileInfoActions = ({
             activityIcon={getIconPath('fav-store-icon')}
             activityTitle={getLabelValue(labels, 'lbl_profile_activityPercentage')}
             activityCompletionState={getFavStoreState(defaultStore, labels)}
-            activityDescription={labels.lbl_profile_favStoreDescription}
+            activityDescription={getLabelValue(labels, 'lbl_profile_favStoreDescription')}
             redirectTo="/account"
             dataLocatorPrefix="favStore"
           />
@@ -131,7 +131,7 @@ export const ProfileInfoActions = ({
             activityIcon={getIconPath('birthday-icon')}
             activityTitle={getLabelValue(labels, 'lbl_profile_activityPercentage')}
             activityCompletionState={getUserBirthdayState(userBirthday, labels)}
-            activityDescription={labels.lbl_profile_userBirthdayDescription}
+            activityDescription={getLabelValue(labels, 'lbl_profile_userBirthdayDescription')}
             redirectTo="/account?id=profile&subSection=edit-personal-info"
             redirectAsPath="/account/profile"
             dataLocatorPrefix="birthday"
@@ -155,7 +155,7 @@ export const ProfileInfoActions = ({
             activityIcon={getIconPath('survey-icon')}
             activityTitle={getLabelValue(labels, 'lbl_profile_activityPercentage')}
             activityCompletionState={getAboutYourselfState(userSurvey, labels)}
-            activityDescription={labels.lbl_profile_aboutYourselfDescription}
+            activityDescription={getLabelValue(labels, 'lbl_profile_aboutYourselfDescription')}
             redirectTo=""
             redirectAsPath=""
             dataLocatorPrefix="survey"

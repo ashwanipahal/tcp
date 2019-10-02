@@ -5,7 +5,9 @@ exports[`MyPlaceRewardsOverviewTile component should render correctly when coupo
   className=""
   ctaLink="/account?id=place-rewards"
   ctaPath="/account/place-rewards"
+  ctaTitle="lbl_overview_myPlaceRewardsCTA"
   dataLocatorPrefix="myrewardstile"
+  title="lbl_overview_myPlaceRewardsHeading"
 >
   <section
     className="elem-pb-MED "
@@ -22,7 +24,9 @@ exports[`MyPlaceRewardsOverviewTile component should render correctly when coupo
       lineHeight="normal"
       link={null}
       textAlign="left"
-    />
+    >
+      lbl_overview_myPlaceRewardsDesc
+    </Styled(BodyCopy)>
     <CouponList
       commonLabels={Object {}}
       coupons={Immutable.List []}
@@ -38,7 +42,9 @@ exports[`MyPlaceRewardsOverviewTile component should render correctly when coupo
         fill="WHITE"
         fullWidth={true}
         to="/home"
-      />
+      >
+        lbl_overview_myPlaceRewardsShopNow
+      </Styled(Anchor)>
     </div>
   </section>
 </Styled(AccountOverviewTile)>
@@ -49,7 +55,9 @@ exports[`MyPlaceRewardsOverviewTile component should render correctly when coupo
   className=""
   ctaLink="/account?id=place-rewards"
   ctaPath="/account/place-rewards"
+  ctaTitle="lbl_overview_myPlaceRewardsCTA"
   dataLocatorPrefix="myrewardstile"
+  title="lbl_overview_myPlaceRewardsHeading"
 >
   <section
     className="elem-pb-MED bordered"

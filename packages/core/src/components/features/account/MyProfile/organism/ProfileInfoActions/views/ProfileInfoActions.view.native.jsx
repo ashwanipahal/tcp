@@ -41,19 +41,28 @@ export const ProfileInfoActions = ({
       <TopRowWrapper>
         <ProfileTextWrapper>
           <BodyCopyWithSpacing
-            text={labels.lbl_profile_Enhance_Experience}
+            text={getLabelValue(labels, 'lbl_profile_Enhance_Experience')}
             fontSize="fs16"
             fontWeight="semibold"
             spacingStyles="margin-bottom-MED"
           />
           {profileCompletion === '100' ? (
             <>
-              <BodyCopy fontSize="fs16" text={labels.lbl_profile_profileCompletionExclamation} />
-              <BodyCopy fontSize="fs16" text={labels.lbl_profile_profileCompletionMessage} />
-              <BodyCopy fontSize="fs16" text={labels.lbl_profile_getMorePoints} />
+              <BodyCopy
+                fontSize="fs16"
+                text={getLabelValue(labels, 'lbl_profile_profileCompletionExclamation')}
+              />
+              <BodyCopy
+                fontSize="fs16"
+                text={getLabelValue(labels, 'lbl_profile_profileCompletionMessage')}
+              />
+              <BodyCopy fontSize="fs16" text={getLabelValue(labels, 'lbl_profile_getMorePoints')} />
             </>
           ) : (
-            <BodyCopy fontSize="fs16" text={labels.lbl_profile_profileInCompleteMessage} />
+            <BodyCopy
+              fontSize="fs16"
+              text={getLabelValue(labels, 'lbl_profile_profileInCompleteMessage')}
+            />
           )}
         </ProfileTextWrapper>
         {!!profileCompletion && (
@@ -68,7 +77,7 @@ export const ProfileInfoActions = ({
           activityIcon={mailingAddressIcon}
           activityTitle={getLabelValue(labels, 'lbl_profile_activityPercentage')}
           activityCompletionState={getMailingAddressState(mailingAddress, labels)}
-          activityDescription={labels.lbl_profile_mailingAddressDescription}
+          activityDescription={getLabelValue(labels, 'lbl_profile_mailingAddressDescription')}
           handleComponentChange={() => toggleModalState('mountMailingAddressModal')}
         />
         <ProfileInfoActionTile
@@ -76,7 +85,7 @@ export const ProfileInfoActions = ({
           activityIcon={favStoreIcon}
           activityTitle={getLabelValue(labels, 'lbl_profile_activityPercentage')}
           activityCompletionState={getFavStoreState(defaultStore, labels)}
-          activityDescription={labels.lbl_profile_favStoreDescription}
+          activityDescription={getLabelValue(labels, 'lbl_profile_favStoreDescription')}
           handleComponentChange={() => handleComponentChange('accountOverviewMobile')}
         />
         <ProfileInfoActionTile
@@ -84,7 +93,7 @@ export const ProfileInfoActions = ({
           activityIcon={birthdayIcon}
           activityTitle={getLabelValue(labels, 'lbl_profile_activityPercentage')}
           activityCompletionState={getUserBirthdayState(userBirthday, labels)}
-          activityDescription={labels.lbl_profile_userBirthdayDescription}
+          activityDescription={getLabelValue(labels, 'lbl_profile_userBirthdayDescription')}
           handleComponentChange={() => handleComponentChange('accountOverviewMobile')}
         />
         <ProfileInfoActionTile
@@ -92,7 +101,7 @@ export const ProfileInfoActions = ({
           activityIcon={surveyIcon}
           activityTitle={getLabelValue(labels, 'lbl_profile_activityPercentage')}
           activityCompletionState={getAboutYourselfState(userSurvey, labels)}
-          activityDescription={labels.lbl_profile_aboutYourselfDescription}
+          activityDescription={getLabelValue(labels, 'lbl_profile_aboutYourselfDescription')}
           handleComponentChange={() => toggleModalState('mountSurveyModal')}
         />
       </ProfileTileWrapper>

@@ -23,7 +23,7 @@ exports[`AboutYouSurvey should render SurveyQuestion correctly 1`] = `
         link={null}
         textAlign="left"
       >
-        undefined, TCP
+        lbl_profile_survey_hi, TCP
       </Styled(BodyCopy)>
     </Styled(Row)>
     <Styled(Row)
@@ -186,7 +186,7 @@ exports[`AboutYouSurvey should render correctly 1`] = `
         link={null}
         textAlign="left"
       >
-        undefined, TCP
+        lbl_profile_survey_hi, TCP
       </Styled(BodyCopy)>
     </Styled(Row)>
     <Styled(Row)
