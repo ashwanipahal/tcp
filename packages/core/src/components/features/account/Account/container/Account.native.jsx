@@ -80,10 +80,11 @@ export class Account extends React.PureComponent<Props, State> {
   /**
    *  @function handleComponentChange triggered when dropdown clicked
    */
-  handleComponentChange = component => {
+  handleComponentChange = (component, otherProps) => {
     const componentName = this.getComponent(component);
     this.setState({
       component: componentName,
+      activeComponent: otherProps,
     });
   };
 
@@ -98,7 +99,7 @@ export class Account extends React.PureComponent<Props, State> {
    * @return   {[Object]} JSX of the component
    */
   render() {
-    const { component } = this.state;
+    const { component, activeComponent } = this.state;
     const { labels, isUserLoggedIn, navigation } = this.props;
     return (
       <StyledKeyboardAvoidingView behavior="padding" enabled keyboardVerticalOffset={82}>
@@ -106,6 +107,7 @@ export class Account extends React.PureComponent<Props, State> {
           <MyAccountLayout
             navData={navDataMobile}
             component={this.getComponent(component)}
+            activeComponent={activeComponent}
             mainContent={AccountComponentNativeMapping[component]}
             handleComponentChange={this.handleComponentChange}
             labels={labels}

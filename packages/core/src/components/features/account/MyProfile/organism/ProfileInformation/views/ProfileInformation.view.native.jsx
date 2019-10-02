@@ -16,13 +16,21 @@ import MailingInformationContainer from '../../MailingInformation';
 import ModalNative from '../../../../../../common/molecules/Modal';
 import BirthdaySavingsPage from '../../../../BirthdaySavingsPage';
 
+const map = {
+  userAboutYourselfSurvey: 'mountSurveyModal',
+  userMailing: 'mountMailingAddressModal',
+  birthdaySavings: 'mountAddChildModal',
+};
+
 export class ProfileInformation extends React.PureComponent {
   constructor(props) {
     super(props);
+    const { activeComponent } = this.props;
+
     this.state = {
-      mountSurveyModal: false,
-      mountMailingAddressModal: false,
-      mountAddChildModal: false,
+      mountSurveyModal: map[activeComponent] === map.userAboutYourselfSurvey,
+      mountMailingAddressModal: map[activeComponent] === map.userMailing,
+      mountAddChildModal: map[activeComponent] === map.birthdaySavings,
     };
   }
 
@@ -60,6 +68,7 @@ export class ProfileInformation extends React.PureComponent {
       userSurvey,
       percentageIncrement,
       childrenBirthdays,
+      activeComponent,
     } = this.props;
     const { mountSurveyModal, mountMailingAddressModal, mountAddChildModal } = this.state;
     return (
@@ -87,6 +96,7 @@ export class ProfileInformation extends React.PureComponent {
           airMiles={airMiles}
           myPlaceNumber={myPlaceNumber}
           toggleModalState={this.toggleModalState}
+          activeComponent={activeComponent}
         />
         {userSurvey !== null && userSurvey.getIn(['0', '0']) !== '' && (
           <AboutYouInfo labels={labels} userSurvey={userSurvey} />
@@ -164,6 +174,7 @@ ProfileInformation.propTypes = {
   percentageIncrement: PropTypes.shape({}),
   defaultStore: PropTypes.string,
   childrenBirthdays: PropTypes.shape({}),
+  activeComponent: PropTypes.string,
 };
 
 ProfileInformation.defaultProps = {
@@ -183,6 +194,7 @@ ProfileInformation.defaultProps = {
   percentageIncrement: {},
   defaultStore: '',
   childrenBirthdays: fromJS([]),
+  activeComponent: '',
 };
 
 export default ProfileInformation;

@@ -8,9 +8,14 @@ import Address from '../../../../../../common/molecules/Address';
 import MyProfileTile from '../../../../../../common/molecules/MyProfileTile';
 
 export class PersonalInformation extends React.PureComponent {
-  constructor() {
-    super();
-    this.state = { isOpenBool: false };
+  constructor(props) {
+    super(props);
+    const { activeComponent } = this.props;
+    if (activeComponent === 'userBirthday') {
+      this.state = { isOpenBool: true };
+    } else {
+      this.state = { isOpenBool: false };
+    }
   }
 
   toggleModal = () => {
@@ -91,6 +96,7 @@ PersonalInformation.propTypes = {
   airMiles: PropTypes.string,
   myPlaceNumber: PropTypes.string,
   toggleModalState: PropTypes.func.isRequired,
+  activeComponent: PropTypes.string,
 };
 
 PersonalInformation.defaultProps = {
@@ -105,6 +111,7 @@ PersonalInformation.defaultProps = {
   userPhoneNumber: '',
   airMiles: '',
   myPlaceNumber: '',
+  activeComponent: '',
 };
 
 export default PersonalInformation;

@@ -32,22 +32,33 @@ class ExtraPointsDetailModal extends React.PureComponent {
     handleComponentChange: () => {},
   };
 
+  /**
+   * @function handleButtonClick  to get the route to CTA url based on activityModalAction
+   * @param    {Object} activeActivity The activity details of waysToEarn
+   * @returns  {String} cta path for redirection mapping
+   */
   handleButtonClick = activityDetails => {
     const { handleComponentChange } = this.props;
-
     switch (activityDetails.activityModalAction) {
       case 'rewardPlaceApp':
         return UrlHandler(endpoints.appDownloadPage);
       case 'userAboutYourselfSurvey':
-        return handleComponentChange('profileInformationMobile');
+      case 'userMailing':
+      case 'birthdaySavings':
+      case 'userBirthday':
+        return handleComponentChange(
+          'profileInformationMobile',
+          activityDetails.activityModalAction
+        );
       case 'userFavoriteStore':
         return handleComponentChange('profileInformationMobile');
-      case 'userMailing':
-        return handleComponentChange('profileInformationMobile');
+
       case 'myPreference':
-        return handleComponentChange('myPreferencePageMobile');
-      case 'birthdaySavings':
-        return handleComponentChange('profileInformationMobile');
+        return handleComponentChange(
+          'myPreferencePageMobile',
+          activityDetails.activityModalSocialAccount
+        );
+
       case 'orders':
         return handleComponentChange('accountOverviewMobile');
       default:
