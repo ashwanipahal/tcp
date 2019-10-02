@@ -55,19 +55,19 @@ class CheckoutAddress extends React.Component {
   };
 
   onSameAsShippingChange = (e, value) => {
-    const { dispatch, shippingAddress, formName, editMode } = this.props;
-    const {
-      firstName,
-      lastName,
-      addressLine1,
-      addressLine2,
-      state,
-      city,
-      zipCode,
-      country,
-      addressId,
-    } = shippingAddress;
+    const { dispatch, shippingAddress, formName, editMode, userAddresses } = this.props;
     if (value) {
+      const {
+        firstName,
+        lastName,
+        addressLine1,
+        addressLine2,
+        state,
+        city,
+        zipCode,
+        country,
+        addressId,
+      } = shippingAddress;
       if (editMode) {
         dispatch(change(formName, `address.addressId`, addressId));
       }
@@ -79,8 +79,32 @@ class CheckoutAddress extends React.Component {
       dispatch(change(formName, `address.city`, city));
       dispatch(change(formName, `address.zipCode`, zipCode));
       dispatch(change(formName, `address.country`, country));
-    } else {
-      dispatch(change(formName, `address.addressId`, ''));
+    } else if (editMode) {
+      const index = userAddresses.findIndex(
+        val => val.primary && val.primary.toString() === 'true'
+      );
+      const {
+        firstName,
+        lastName,
+        addressLine1,
+        addressLine2,
+        state,
+        city,
+        zipCode,
+        country,
+        addressId,
+      } = userAddresses.get(index);
+      dispatch(change(formName, `onFileAddressId`, addressId));
+      dispatch(change(formName, `address.addressId`, addressId));
+      dispatch(change(formName, `address.firstName`, firstName));
+      dispatch(change(formName, `address.lastName`, lastName));
+      dispatch(change(formName, `address.addressLine1`, addressLine1));
+      dispatch(change(formName, `address.addressLine2`, addressLine2));
+      dispatch(change(formName, `address.state`, state));
+      dispatch(change(formName, `address.city`, city));
+      dispatch(change(formName, `address.zipCode`, zipCode));
+      dispatch(change(formName, `address.country`, country));
+      this.setState({ isAddNewAddress: false });
     }
   };
 
