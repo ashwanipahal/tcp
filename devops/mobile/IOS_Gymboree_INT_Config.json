@@ -279,9 +279,10 @@
       "certificateFileId": "4a99762d-6cfa-49c4-bbb2-4ae66abf5ed8",
       "provisioningProfileFileId": "1f270d1c-fc3e-47ac-8b93-6092fe73f9f6",
       "appExtensionProvisioningProfileFiles": [],
-      "projectOrWorkspacePath": "packages/mobileapp/ios/mobileapp.xcodeproj",
+      "projectOrWorkspacePath": "packages/mobileapp/ios/mobileapp.xcworkspace",
       "scheme": "gymboree_int",
-      "xcodeVersion": "10.2.1"
+      "xcodeVersion": "10.2.1",
+      "podfilePath": "packages/mobileapp/ios/Podfile"
     }
   },
   "artifactVersioning": {
