@@ -15,9 +15,7 @@ class StoreLocations extends PureComponent {
   getCollapsibleHeader() {
     const { labels } = this.props;
     return (
-      <span className="collapsible-header-text">
-        {labels.lbl_storelocators_details_locations_title}
-      </span>
+      <span className="collapsible-header-text">{labels.lbl_storedetails_locations_title}</span>
     );
   }
 
@@ -35,8 +33,7 @@ class StoreLocations extends PureComponent {
     const { labels, openStoreDetails } = this.props;
     const tileLabels = {
       ...labels,
-      lbl_storelocators_landingpage_getdirections_link:
-        labels.lbl_storelocators_details_locations_details_btn,
+      lbl_storelanding_getdirections_link: labels.lbl_storedetails_locations_details_btn,
     };
     return (
       <LocationTile
@@ -60,7 +57,7 @@ class StoreLocations extends PureComponent {
     }
     return (
       <div className={className}>
-        <h3 className="locations-title">{labels.lbl_storelocators_details_locations_title}</h3>
+        <h3 className="locations-title">{labels.lbl_storedetails_locations_title}</h3>
         <Row fullBleed>
           {stores.map(store => (
             <Col key={store.basicInfo.storeName} colSize={{ small: 6, medium: 4, large: 3 }}>
@@ -78,8 +75,8 @@ StoreLocations.propTypes = {
   className: PropTypes.string.isRequired,
   children: PropTypes.arrayOf(PropTypes.node),
   labels: PropTypes.shape({
-    lbl_storelocators_details_locations_details_btn: PropTypes.string,
-    lbl_storelocators_details_locations_title: PropTypes.string,
+    lbl_storedetails_locations_details_btn: PropTypes.string,
+    lbl_storedetails_locations_title: PropTypes.string,
   }).isRequired,
   stores: PropTypes.arrayOf(PropTypes.shape(propTypes.store)),
   openStoreDetails: PropTypes.func,

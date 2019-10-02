@@ -13,7 +13,7 @@ const StoreAddressIntl = ({
 }) => (
   <div className={className}>
     <StoreName>{storeName}</StoreName>
-    {isShopInShop && <ShopInShop>{labels.lbl_storelocators_list_shop_in_shop}</ShopInShop>}
+    {isShopInShop && <ShopInShop>{labels.lbl_storelist_shop_in_shop}</ShopInShop>}
     <StoreLocation>{storeLocation}</StoreLocation>
     {children}
   </div>
@@ -26,7 +26,7 @@ StoreAddressIntl.propTypes = {
   storeLocation: PropTypes.string.isRequired,
   isShopInShop: PropTypes.bool,
   labels: PropTypes.shape({
-    lbl_storelocators_list_shop_in_shop: PropTypes.string,
+    lbl_storelist_shop_in_shop: PropTypes.string,
   }).isRequired,
 };
 

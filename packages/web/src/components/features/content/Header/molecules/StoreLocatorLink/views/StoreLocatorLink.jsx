@@ -40,7 +40,7 @@ const StoreLocatorLink = ({ className, labels, store }) => {
         dataLocator=""
         fontSizeVariation="small"
         anchorVariation="primary"
-        to={labels.storelocatorlink}
+        to="/store-locator"
         className={className}
       >
         <div className={`storelocatorlink__container${!isInfoPresent ? '--fav' : ''}`}>
@@ -69,7 +69,7 @@ const StoreLocatorLink = ({ className, labels, store }) => {
                 fontSize="fs10"
                 className="storelocatorlink__detail__storetime"
               >
-                {storeTime ? `${labels.openUntilTxt} ${storeTime}` : ''}
+                {storeTime ? `${labels.store.lbl_storelocator_openUntilTxt} ${storeTime}` : ''}
               </BodyCopy>
             </div>
           ) : (
@@ -80,7 +80,7 @@ const StoreLocatorLink = ({ className, labels, store }) => {
               fontSize="fs13"
               className="storelocatorlink__detail"
             >
-              {labels.findAStoreLink}
+              {labels.store.lbl_storelocator_findAStoreLink}
             </BodyCopy>
           )}
         </div>

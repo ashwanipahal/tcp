@@ -9,7 +9,7 @@ const StoreLocations = ({ children, labels, openMoreStores }) => (
       type="button"
       onPress={openMoreStores}
       buttonVariation="variable-width"
-      text={labels.lbl_storelocators_details_seemorestores_btn}
+      text={labels.lbl_storedetails_seemorestores_btn}
     />
     {children}
   </StoreLocationsRoot>
@@ -18,7 +18,7 @@ const StoreLocations = ({ children, labels, openMoreStores }) => (
 StoreLocations.propTypes = {
   children: PropTypes.arrayOf(PropTypes.node),
   labels: PropTypes.shape({
-    lbl_storelocators_details_locations_more_store: PropTypes.string,
+    lbl_storedetails_locations_more_store: PropTypes.string,
   }).isRequired,
   openMoreStores: PropTypes.func,
 };

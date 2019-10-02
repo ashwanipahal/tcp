@@ -106,23 +106,23 @@ export class StoreSearch extends PureComponent {
       mapView,
     } = this.props;
     const { errorNotFound, gymSelected, outletSelected } = this.state;
-    const errorMessage = errorNotFound ? labels.lbl_storelocators_detail_errorLabel : error;
+    const errorMessage = errorNotFound ? labels.lbl_storelanding_errorLabel : error;
 
     const viewMapListLabel = mapView
-      ? labels.lbl_storelocators_detail_viewList
-      : labels.lbl_storelocators_detail_viewMap;
+      ? labels.lbl_storelanding_viewList
+      : labels.lbl_storelanding_viewMap;
 
     const storeOptionsConfig = [
       {
         name: 'gymboreeStoreOption',
         dataLocator: 'gymboree-store-option',
-        storeLabel: labels.lbl_storelocators_detail_gymboreeStores,
+        storeLabel: labels.lbl_storelanding_gymboreeStores,
         checked: gymSelected,
       },
       {
         name: 'outletOption',
         dataLocator: 'only-outlet-option',
-        storeLabel: labels.lbl_storelocators_detail_outletStores,
+        storeLabel: labels.lbl_storelanding_outletStores,
         checked: outletSelected,
       },
     ];
@@ -131,18 +131,18 @@ export class StoreSearch extends PureComponent {
       {
         asPath: '',
         to: '',
-        label: labels.lbl_storelocators_detail_allUSCAStores,
+        label: labels.lbl_storelanding_allUSCAStores,
       },
       {
         asPath: '',
         to: '',
-        label: labels.lbl_storelocators_detail_internationalStores,
+        label: labels.lbl_storelanding_internationalStores,
       },
     ];
 
     return (
       <div className={className}>
-        <h3 className="storeLocatorHeading">{labels.lbl_storelocators_detail_findStoreHeading}</h3>
+        <h3 className="storeLocatorHeading">{labels.lbl_storelanding_findStoreHeading}</h3>
         <Row fullBleed>
           <Col colSize={{ large: 6.5, medium: 4, small: 6 }}>
             <div className="currentLocationWrapper">
@@ -154,17 +154,15 @@ export class StoreSearch extends PureComponent {
                   data-locator="marker-icon"
                   height="16px"
                 />
-                <span className="currentLocation">
-                  {labels.lbl_storelocators_detail_currentLocation}
-                </span>
+                <span className="currentLocation">{labels.lbl_storelanding_currentLocation}</span>
               </Anchor>
             </div>
             <form onSubmit={handleSubmit(this.onSubmit)} noValidate className="searchForm">
               <div className="searchBar">
                 <Field
                   id="storeAddressLocator"
-                  title={labels.lbl_storelocators_detail_storeSearchPlaceholder}
-                  placeholder={labels.lbl_storelocators_detail_storeSearchPlaceholder}
+                  title={labels.lbl_storelanding_storeSearchPlaceholder}
+                  placeholder={labels.lbl_storelanding_storeSearchPlaceholder}
                   component={AutoCompleteComponent}
                   name="storeAddressLocator"
                   onPlaceSelected={this.handleLocationSelection}

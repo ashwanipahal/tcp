@@ -24,11 +24,11 @@ const StoreDetail = ({
   } = store;
   const storeMeta = [
     {
-      label: labels.lbl_storelocators_detail_mallType,
+      label: labels.lbl_storedetails_mallType,
       value: mallType,
     },
     {
-      label: labels.lbl_storelocators_detail_entranceType,
+      label: labels.lbl_storedetails_entranceType,
       value: entranceType,
     },
   ];

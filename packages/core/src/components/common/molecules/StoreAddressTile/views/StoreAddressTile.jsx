@@ -20,12 +20,12 @@ class StoreAddressTile extends PureComponent {
       <FavStore>
         <Image
           src={getIconPath('star-icon')}
-          alt={labels.lbl_storelocators_landingpage_favStore}
-          title={labels.lbl_storelocators_landingpage_favStore}
+          alt={labels.lbl_storelanding_favStore}
+          title={labels.lbl_storelanding_favStore}
           className="favorite-store-icon"
         />
         <BodyCopy component="span" fontSize="fs12">
-          {labels.lbl_storelocators_landingpage_favStore}
+          {labels.lbl_storelanding_favStore}
         </BodyCopy>
       </FavStore>
     );
@@ -50,7 +50,7 @@ class StoreAddressTile extends PureComponent {
             data-locator={locatorGetDirections}
             onClick={openStoreDirections}
           >
-            {labels.lbl_storelocators_landingpage_getdirections_link}
+            {labels.lbl_storelanding_getdirections_link}
           </Button>
         </div>
         <div>
@@ -79,10 +79,10 @@ class StoreAddressTile extends PureComponent {
             anchorVariation="primary"
             target="_blank"
             className="store-details-link"
-            title={labels.lbl_storelocators_landingpage_storedetails_link}
+            title={labels.lbl_storelanding_storedetails_link}
             noLink
           >
-            {labels.lbl_storelocators_landingpage_storedetails_link}
+            {labels.lbl_storelanding_storedetails_link}
           </Anchor>
         </div>
         <div>
@@ -94,7 +94,7 @@ class StoreAddressTile extends PureComponent {
               type="button"
               data-locator={locatorSetFavStore}
             >
-              {labels.lbl_storelocators_landingpage_setfavStore}
+              {labels.lbl_storelanding_setfavStore}
             </Button>
           )}
         </div>
@@ -148,7 +148,7 @@ class StoreAddressTile extends PureComponent {
                 color="text.primary"
                 fontFamily="secondary"
               >
-                {`(${labels.lbl_storelocators_landingpage_openInterval} ${this.getStoreHours()})`}
+                {`(${labels.lbl_storelanding_openInterval} ${this.getStoreHours()})`}
               </BodyCopy>
               <BodyCopy
                 fontSize="fs12"
@@ -156,7 +156,7 @@ class StoreAddressTile extends PureComponent {
                 color="text.primary"
                 fontFamily="secondary"
               >
-                {`${distance} ${labels.lbl_storelocators_landingpage_milesAway}`}
+                {`${distance} ${labels.lbl_storelanding_milesAway}`}
               </BodyCopy>
               <Anchor
                 fontSizeVariation="medium"
@@ -165,9 +165,9 @@ class StoreAddressTile extends PureComponent {
                 anchorVariation="primary"
                 target="_blank"
                 className="store-directions-link"
-                title={labels.lbl_storelocators_landingpage_getdirections_link}
+                title={labels.lbl_storelanding_getdirections_link}
               >
-                {labels.lbl_storelocators_landingpage_getdirections_link}
+                {labels.lbl_storelanding_getdirections_link}
               </Anchor>
             </div>
           </div>
@@ -204,9 +204,9 @@ class StoreAddressTile extends PureComponent {
             anchorVariation="primary"
             target="_blank"
             className="store-details-link"
-            title={labels.lbl_storelocators_landingpage_storedetails_link}
+            title={labels.lbl_storelanding_storedetails_link}
           >
-            {labels.lbl_storelocators_landingpage_storedetails_link}
+            {labels.lbl_storelanding_storedetails_link}
           </Anchor>
         </div>
       </div>
@@ -241,11 +241,11 @@ class StoreAddressTile extends PureComponent {
         <div className="title-two">
           {storeHours && (
             <BodyCopy fontSize="fs12" component="span" color="text.primary" fontFamily="secondary">
-              {`(${labels.lbl_storelocators_landingpage_openInterval} ${storeHours})`}
+              {`(${labels.lbl_storelanding_openInterval} ${storeHours})`}
             </BodyCopy>
           )}
           <BodyCopy fontSize="fs12" component="span" color="text.primary" fontFamily="secondary">
-            {`${distance} ${labels.lbl_storelocators_landingpage_milesAway}`}
+            {`${distance} ${labels.lbl_storelanding_milesAway}`}
           </BodyCopy>
           <Anchor
             fontSizeVariation="medium"
@@ -254,9 +254,9 @@ class StoreAddressTile extends PureComponent {
             anchorVariation="primary"
             target="_blank"
             className="store-directions-link"
-            title={labels.lbl_storelocators_landingpage_getdirections_link}
+            title={labels.lbl_storelanding_getdirections_link}
           >
-            {labels.lbl_storelocators_landingpage_getdirections_link}
+            {labels.lbl_storelanding_getdirections_link}
           </Anchor>
         </div>
       </div>
@@ -306,7 +306,7 @@ class StoreAddressTile extends PureComponent {
           className="brand-store__image"
         />
         <BodyCopy className="brand-store__text" component="span">
-          {labels.lbl_storelocators_common_atThisPlace}
+          {labels.lbl_storelanding_atThisPlace}
         </BodyCopy>
       </BodyCopy>
     );
@@ -322,9 +322,9 @@ class StoreAddressTile extends PureComponent {
         onClick={() => {
           setFavoriteStore(store);
         }}
-        title={labels.lbl_storelocators_landingpage_storedetails_link}
+        title={labels.lbl_storelanding_storedetails_link}
       >
-        {labels.lbl_storelocators_landingpage_setfavStore}
+        {labels.lbl_storelanding_setfavStore}
       </Button>
     );
   }

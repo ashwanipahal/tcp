@@ -103,9 +103,7 @@ export class StoreLanding extends PureComponent {
         {favoriteStore && (
           <Row className="favoriteStore__container">
             <Col colSize={{ large: 12, medium: 8, small: 6 }} ignoreGutter={{ small: true }}>
-              <h3 className="favoriteStore__heading">
-                {labels.lbl_storelocators_detail_favStoreHeading}
-              </h3>
+              <h3 className="favoriteStore__heading">{labels.lbl_storelanding_favStoreHeading}</h3>
               <StoreAddressTile
                 {...this.props}
                 store={favoriteStore}

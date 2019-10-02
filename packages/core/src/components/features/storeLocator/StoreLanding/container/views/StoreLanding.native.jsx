@@ -73,7 +73,7 @@ export class StoreLanding extends PureComponent {
                     fontWeight: 'bold',
                   }}
                 >
-                  {labels.lbl_storelocators_detail_favStoreHeading}
+                  {labels.lbl_storelanding_favStoreHeading}
                 </Text>
                 <StoreAddressTile
                   {...this.props}
