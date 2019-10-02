@@ -3,6 +3,7 @@ import PropTypes from 'prop-types';
 import { Row, Col } from '@tcp/core/src/components/common/atoms';
 import withStyles from '@tcp/core/src/components/common/hoc/withStyles';
 import config from '@tcp/core/src/utils/config/config';
+import { getLabelValue } from '@tcp/core/src/utils/utils';
 import styles from '../styles/OrderDetails.style';
 import OrderBasicDetails from '../organism/OrderBasicDetails';
 import OrderShippingDetails from '../organism/OrderShippingDetails';
@@ -29,7 +30,7 @@ class OrderDetailsView extends PureComponent {
 
     return (
       <div className={className}>
-        <FormPageHeadingComponent heading={OrdersLabels.lbl_orderDetails_heading} />
+        <FormPageHeadingComponent heading={getLabelValue(OrdersLabels, 'lbl_orderDetails_heading')} />
         {OrderDetailsData && (
           <>
             <Row fullBleed className="elem-mt-XL">

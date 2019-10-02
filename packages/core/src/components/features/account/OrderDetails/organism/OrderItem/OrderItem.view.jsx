@@ -3,6 +3,7 @@ import PropTypes from 'prop-types';
 import { Image, BodyCopy, Row, Col, Anchor } from '@tcp/core/src/components/common/atoms';
 import withStyles from '@tcp/core/src/components/common/hoc/withStyles';
 import { getIconPath } from '@tcp/core/src/utils';
+import { getLabelValue } from '@tcp/core/src/utils/utils';
 import styles from './styles/OrderItem.style';
 
 /**
@@ -11,7 +12,7 @@ import styles from './styles/OrderItem.style';
  * @param waysToEarn - waysToEarn object used for showing extra points details
  */
 
-const OrderItemsWithStatus = ({ className, ...otherProps }) => {
+const OrderItems = ({ className, ...otherProps }) => {
   /**
    * @function return  Used to render the JSX of the component
    * @param    {[Void]} function does not accept anything.
@@ -30,7 +31,7 @@ const OrderItemsWithStatus = ({ className, ...otherProps }) => {
     currencySymbol,
     isCanceledList,
     isShowWriteReview,
-    OrdersLabels,
+    OrdersLabels
   } = otherProps;
 
   // const idemListAndOfferPrice = listPrice === offerPrice;
@@ -62,11 +63,11 @@ const OrderItemsWithStatus = ({ className, ...otherProps }) => {
           </BodyCopy>
 
           <BodyCopy component="div" fontSize="fs14" fontFamily="secondary" className="elem-mt-SM">
-            {`UPC: `}
+            {getLabelValue(OrdersLabels, 'lbl_orderDetails_upc')}
             {upc}
           </BodyCopy>
           <BodyCopy component="div" fontSize="fs14" fontFamily="secondary">
-            {`Color: `}
+            {getLabelValue(OrdersLabels, 'lbl_orderDetails_color')}
             {color.name}
           </BodyCopy>
 
@@ -77,12 +78,12 @@ const OrderItemsWithStatus = ({ className, ...otherProps }) => {
               fontFamily="secondary"
               className="elem-mr-XL"
             >
-              {`Fit: `}
+              {getLabelValue(OrdersLabels, 'lbl_orderDetails_fit')}
               {fit}
             </BodyCopy>
             {size && (
               <BodyCopy component="span" fontSize="fs14" fontFamily="secondary">
-                {`Size: `}
+                {getLabelValue(OrdersLabels, 'lbl_orderDetails_size')}
                 {size}
               </BodyCopy>
             )}
@@ -91,7 +92,7 @@ const OrderItemsWithStatus = ({ className, ...otherProps }) => {
           <BodyCopy component="div" className="elem-mt-SM itemInfo_details">
             <BodyCopy component="div" className="itemInfo_details_items">
               <BodyCopy component="span" fontSize="fs14" fontWeight="black" fontFamily="secondary">
-                Price
+                {getLabelValue(OrdersLabels, 'lbl_orderDetails_price')}
               </BodyCopy>
               <BodyCopy component="span" fontSize="fs14" fontFamily="secondary">
                 {currencySymbol}
@@ -101,7 +102,7 @@ const OrderItemsWithStatus = ({ className, ...otherProps }) => {
 
             <BodyCopy component="div" className="itemInfo_details_items">
               <BodyCopy component="span" fontSize="fs14" fontWeight="black" fontFamily="secondary">
-                You Paid
+                {getLabelValue(OrdersLabels, 'lbl_orderDetails_youPaid')}
               </BodyCopy>
               <BodyCopy component="span" fontSize="fs14" fontFamily="secondary">
                 {currencySymbol}
@@ -111,16 +112,15 @@ const OrderItemsWithStatus = ({ className, ...otherProps }) => {
 
             <BodyCopy component="div" className="itemInfo_details_items">
               <BodyCopy component="span" fontSize="fs14" fontWeight="black" fontFamily="secondary">
-                Quantity
+                {getLabelValue(OrdersLabels, 'lbl_orderDetails_quantity')}
               </BodyCopy>
               <BodyCopy component="span" fontSize="fs14" fontFamily="secondary">
                 {quantity}
               </BodyCopy>
             </BodyCopy>
-
             <BodyCopy component="div" className="itemInfo_details_items">
               <BodyCopy component="span" fontSize="fs14" fontWeight="black" fontFamily="secondary">
-                Subtotal
+                {getLabelValue(OrdersLabels, 'lbl_orderDetails_subTotal')}
               </BodyCopy>
               <BodyCopy component="span" fontSize="fs14" fontFamily="secondary">
                 {currencySymbol}
@@ -136,7 +136,8 @@ const OrderItemsWithStatus = ({ className, ...otherProps }) => {
                 anchorVariation="primary"
                 underline
               >
-                Write a Review
+                {getLabelValue(OrdersLabels, 'lbl_orderDetails_writeReview')}
+
               </Anchor>
             </BodyCopy>
             {/* )} */}
@@ -146,16 +147,16 @@ const OrderItemsWithStatus = ({ className, ...otherProps }) => {
     </BodyCopy>
   );
 };
-OrderItemsWithStatus.propTypes = {
+OrderItems.propTypes = {
   className: PropTypes.string,
   currencySymbol: PropTypes.string.isRequired,
   isBopisOrder: PropTypes.bool.isRequired,
   orderGroup: PropTypes.shape({}).isRequired,
 };
 
-OrderItemsWithStatus.defaultProps = {
+OrderItems.defaultProps = {
   className: '',
 };
 
-export default withStyles(OrderItemsWithStatus, styles);
-export { OrderItemsWithStatus as OrderItemsWithStatusVanilla };
+export default withStyles(OrderItems, styles);
+export { OrderItems as OrderItemsVanilla };

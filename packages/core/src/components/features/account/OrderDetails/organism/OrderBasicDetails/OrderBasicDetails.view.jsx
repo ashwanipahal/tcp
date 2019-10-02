@@ -7,6 +7,7 @@ import moment from 'moment';
 import { BodyCopy } from '@tcp/core/src/components/common/atoms';
 import { getDateInformation } from '@tcp/core/src//utils/badge.util';
 import withStyles from '@tcp/core/src/components/common/hoc/withStyles';
+import { getLabelValue } from '@tcp/core/src/utils/utils';
 import styles from './styles/OrderBasicDetails.style';
 
 /**
@@ -15,7 +16,7 @@ import styles from './styles/OrderBasicDetails.style';
  * @param waysToEarn - waysToEarn object used for showing extra points details
  */
 
-const OrderBasicDetails = ({ className, OrderDetailsData }) => {
+const OrderBasicDetails = ({ className, OrderDetailsData, OrdersLabels }) => {
   /**
    * @function return  Used to render the JSX of the component
    * @param    {[Void]} function does not accept anything.
@@ -45,7 +46,7 @@ const OrderBasicDetails = ({ className, OrderDetailsData }) => {
           fontFamily="secondary"
           className="elem-mb-MED"
         >
-          Order Number
+          {getLabelValue(OrdersLabels, 'lbl_orderDetails_orderNumber')}
         </BodyCopy>
         <BodyCopy fontSize="fs14" fontWeight="black" fontFamily="secondary">
           {orderNumber}
@@ -58,7 +59,7 @@ const OrderBasicDetails = ({ className, OrderDetailsData }) => {
           fontFamily="secondary"
           className="elem-mb-MED"
         >
-          Order Date
+          {getLabelValue(OrdersLabels, 'lbl_orderDetails_orderDate')}
         </BodyCopy>
         <BodyCopy fontSize="fs14" fontFamily="secondary">
           {orderDate.format('LL')}
@@ -70,7 +71,8 @@ const OrderBasicDetails = ({ className, OrderDetailsData }) => {
                 className="elem-mr-XXS elem-ml-XXS"
                 fontFamily="secondary"
               >
-                at
+                {getLabelValue(OrdersLabels, 'lbl_orderDetails_at')}
+
               </BodyCopy>
               <BodyCopy component="span" fontSize="fs14" fontFamily="secondary">
                 {orderTime.format('hh:mma')}
@@ -85,11 +87,13 @@ const OrderBasicDetails = ({ className, OrderDetailsData }) => {
 OrderBasicDetails.propTypes = {
   className: PropTypes.string,
   OrderDetailsData: PropTypes.shape([]),
+  OrdersLabels: PropTypes.shape({}),
 };
 
 OrderBasicDetails.defaultProps = {
   className: '',
   OrderDetailsData: [],
+  OrdersLabels: {},
 };
 
 export default withStyles(OrderBasicDetails, styles);
