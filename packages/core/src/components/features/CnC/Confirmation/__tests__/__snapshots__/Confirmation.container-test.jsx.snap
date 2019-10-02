@@ -1,3 +1,43 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`ConfirmationContainer should render correctly 1`] = `<Styled(ConfirmationView) />`;
+exports[`ConfirmationContainer should render correctly 1`] = `
+<Styled(ConfirmationView)
+  encryptedEmailAddress=""
+  isCanadaSite={false}
+  isGuest={true}
+  isOrderPending={false}
+  isUsSite={true}
+  orderNumbersByFullfillmentCenter={
+    Object {
+      "fullfillmentCenterMap": Array [
+        Object {
+          "orderType": "BOSS",
+        },
+      ],
+    }
+  }
+  orderShippingDetails={null}
+  updateOrderDetailsData={null}
+/>
+`;
+
+exports[`ConfirmationContainer should render correctly with Bopis item 1`] = `
+<Styled(ConfirmationView)
+  encryptedEmailAddress=""
+  isCanadaSite={false}
+  isGuest={true}
+  isOrderPending={false}
+  isUsSite={true}
+  orderNumbersByFullfillmentCenter={
+    Object {
+      "fullfillmentCenterMap": Array [
+        Object {
+          "orderType": "BOPIS",
+        },
+      ],
+    }
+  }
+  orderShippingDetails={null}
+  updateOrderDetailsData={null}
+/>
+`;

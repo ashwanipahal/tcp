@@ -140,7 +140,7 @@ const ProfileInfoTile = ({ labels, handleComponentChange, profileInfo }) => {
           text={labels.lbl_overview_profileInfoViewCTA}
           buttonVariation="variable-width"
           fill="BLUE"
-          onPress={() => handleComponentChange('profileInfoMobile')}
+          onPress={() => handleComponentChange('profileInformationMobile')}
         />
       </ButtonWrapperStyle>
     </ProfileInfoTileContainer>

@@ -5,8 +5,15 @@ import { setFavoriteStore } from '../../../../../User/container/User.actions';
 describe('MyFavoriteStore saga', () => {
   describe('getMyFavoriteStoreSaga', () => {
     let gen;
+    const payload = {
+      name: 'new hatom',
+      basicInfo: {
+        id: 1221,
+        city: 'NY',
+      },
+    };
     beforeEach(() => {
-      gen = getMyFavoriteStoreSaga();
+      gen = getMyFavoriteStoreSaga({ payload });
       gen.next();
     });
 

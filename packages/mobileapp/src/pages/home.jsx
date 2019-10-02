@@ -3,7 +3,9 @@ import { createStackNavigator } from 'react-navigation';
 import ProductListingPageContainer from '@tcp/core/src/components/features/browse/ProductListingPage';
 import LoginPageContainer from '@tcp/core/src/components/features/account/LoginPage';
 import GetCandidGallery from '@tcp/core/src/components/common/molecules/GetCandidGallery/views/GetCandidGallery.native';
-import ProductListingPage from '@tcp/core/src/components/features/browse/ProductListing';
+import StoreLanding from '@tcp/core/src/components/features/storeLocator/StoreLanding/container/StoreLanding.container';
+import StoreDetails from '@tcp/core/src/components/features/storeLocator/StoreDetail';
+import ProductListing from '@tcp/core/src/components/features/browse/ProductListing';
 import ProductDetail from '@tcp/core/src/components/features/browse/ProductDetail';
 import Home from '../components/features/content/HomePage';
 import account from '../components/features/account/account';
@@ -41,8 +43,22 @@ const HomeStack = createStackNavigator(
         return getNewHeader(navigation);
       },
     },
-    ProductListingPage: {
-      screen: ProductListingPage,
+    ProductListing: {
+      screen: ProductListing,
+      navigationOptions: ({ navigation }) => {
+        return getNewHeader(navigation);
+      },
+    },
+    StoreDetails: {
+      screen: StoreDetails,
+      path: 'store-details/:storeId',
+      navigationOptions: ({ navigation }) => {
+        return getNewHeader(navigation);
+      },
+    },
+    StoreLanding: {
+      screen: StoreLanding,
+      path: 'store-landing',
       navigationOptions: ({ navigation }) => {
         return getNewHeader(navigation);
       },

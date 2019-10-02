@@ -17,17 +17,33 @@ export default css`
   }
 
   .header-middle-nav-search {
-    @media ${props => props.theme.mediaQuery.small} and ${props =>
-  props.theme.mediaQuery.mediumMax} {
-    width:20%;
+    @media ${props => props.theme.mediaQuery.mediumMax} {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      width: 24%;
+    }
+    @media ${props => props.theme.mediaQuery.smallOnly} {
+      width: 20%;
+    }
+
+    .storelocatorlink__container,
+    .storelocatorlink__container--fav {
+      display: none;
+
+      @media ${props => props.theme.mediaQuery.mediumOnly} {
+        display: flex;
+      }
     }
   }
   .header-middle-login-section {
     margin-top: 30px;
-    @media ${props => props.theme.mediaQuery.small} and ${props =>
-  props.theme.mediaQuery.mediumMax} {
-    width: 74%;
-    margin-top: auto;
+    @media ${props => props.theme.mediaQuery.mediumMax} {
+      width: 71%;
+      margin-top: auto;
+    }
+    @media ${props => props.theme.mediaQuery.smallOnly} {
+      width: 74%;
     }
   }
   .username {
@@ -66,6 +82,22 @@ export default css`
   @media ${props => props.theme.mediaQuery.large} {
     padding: 31px 0 0;
     .hamburger-menu {
+      display: none;
+    }
+  }
+
+  @media ${props => props.theme.mediaQuery.smallOnly} {
+    .storelocatorlink__container,
+    .storelocatorlink__container--fav {
+      display: none;
+    }
+  }
+
+  .header-middle-nav-storelocator {
+    display: flex;
+    align-items: center;
+
+    @media ${props => props.theme.mediaQuery.mediumMax} {
       display: none;
     }
   }
