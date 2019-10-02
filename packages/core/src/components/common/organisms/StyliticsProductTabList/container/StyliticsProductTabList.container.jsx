@@ -3,6 +3,7 @@ import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
 
 import { styliticsProductTabListDataReq } from './StyliticsProductTabList.actions';
+import { getStyliticsProductTabListSelector } from './StyliticsProductTabList.selector';
 import ProductTabListView from '../views';
 
 /*
@@ -97,10 +98,8 @@ StyliticsProductTabListContainer.propTypes = {
 };
 
 export const mapStateToProps = state => {
-  const { StyliticsProductTabList } = state;
-
   return {
-    styliticsProductTabList: StyliticsProductTabList,
+    styliticsProductTabList: getStyliticsProductTabListSelector(state),
   };
 };
 

@@ -11,149 +11,6 @@ exports[`HomePageView should render correctly 1`] = `
   <Styled(View)>
     <HeaderPromo />
   </Styled(View)>
-  <Connect(ModuleQ)
-    bgColor="#d8d8d8"
-    divTabs={
-      Array [
-        Object {
-          "category": Object {
-            "cat_id": "2044392_10",
-          },
-          "singleCTAButton": Object {
-            "action": "",
-            "external": 0,
-            "target": "",
-            "text": "SHOP ALL 1",
-            "title": "SHOP ALL",
-            "url": "http://www.childrensplace.com",
-          },
-          "text": Object {
-            "text": "GIRL",
-          },
-        },
-        Object {
-          "category": Object {
-            "cat_id": "2044391_10",
-          },
-          "singleCTAButton": Object {
-            "action": "",
-            "external": 0,
-            "target": "",
-            "text": "SHOP ALL 2",
-            "title": "SHOP ALL",
-            "url": "http://www.childrensplace.com",
-          },
-          "text": Object {
-            "text": "TODDLER GIRL",
-          },
-        },
-        Object {
-          "category": Object {
-            "cat_id": "2044393_10",
-          },
-          "singleCTAButton": Object {
-            "action": "",
-            "external": 0,
-            "target": "",
-            "text": "SHOP ALL 3",
-            "title": "SHOP ALL",
-            "url": "http://www.childrensplace.com",
-          },
-          "text": Object {
-            "text": "BOY",
-          },
-        },
-        Object {
-          "category": Object {
-            "cat_id": "2044394_10",
-          },
-          "singleCTAButton": null,
-          "text": Object {
-            "text": "TODDLER BOY",
-          },
-        },
-      ]
-    }
-    headerText={
-      Array [
-        Object {
-          "icon": Object {
-            "icon": "",
-            "placement": "",
-          },
-          "link": Object {
-            "action": "",
-            "external": 0,
-            "target": "",
-            "text": "",
-            "title": "",
-            "url": "/p/",
-          },
-          "textItems": Array [
-            Object {
-              "style": "small_text_normal",
-              "text": "Every Length, ",
-            },
-            Object {
-              "style": "small_text_normal",
-              "text": "Style, ",
-            },
-            Object {
-              "style": "small_text_normal",
-              "text": " Color & Size",
-            },
-          ],
-        },
-        Object {
-          "icon": Object {
-            "icon": "",
-            "placement": "",
-          },
-          "link": Object {
-            "action": "",
-            "external": 0,
-            "target": "",
-            "text": "",
-            "title": "",
-            "url": "/p/",
-          },
-          "textItems": Array [
-            Object {
-              "style": "medium_text_black",
-              "text": "THE SHORT SHOP",
-            },
-          ],
-        },
-      ]
-    }
-    promoBanner={
-      Array [
-        Object {
-          "link": Object {
-            "class": "",
-            "external": 0,
-            "target": "",
-            "text": "",
-            "title": "",
-            "url": "/c/",
-          },
-          "textItems": Array [
-            Object {
-              "style": "medium_text_semibold",
-              "style2": "extra_large_text_regular",
-              "text": "ALL UNIFORMS",
-              "text2": "ALL SHORTS",
-            },
-            Object {
-              "style": "fixed_medium_text_black",
-              "style2": "extra_large_text_black",
-              "text": "60% OFF",
-            },
-          ],
-        },
-      ]
-    }
-  />
   <HomePageSlots
     modules={
       Object {
@@ -205,6 +62,60 @@ exports[`HomePageView should render correctly 1`] = `
       }
     }
     text="PLP Page"
+    theme={Object {}}
+    url=""
+  />
+  <Styled(CustomButton)
+    active={false}
+    buttonVariation="variable-width"
+    color=""
+    customStyle={Object {}}
+    customTextStyle={null}
+    disableButton={false}
+    fill=""
+    fullWidth={true}
+    iconColor="gray.800"
+    iconName="chevron-down"
+    iconSize="fs12"
+    locator=""
+    navigation={Object {}}
+    onPress={[Function]}
+    selected={false}
+    selectedIcon="chevron-up"
+    showIcon={false}
+    style={
+      Object {
+        "margin": 30,
+      }
+    }
+    text="Store Details"
+    theme={Object {}}
+    url=""
+  />
+  <Styled(CustomButton)
+    active={false}
+    buttonVariation="variable-width"
+    color=""
+    customStyle={Object {}}
+    customTextStyle={null}
+    disableButton={false}
+    fill=""
+    fullWidth={true}
+    iconColor="gray.800"
+    iconName="chevron-down"
+    iconSize="fs12"
+    locator=""
+    navigation={Object {}}
+    onPress={[Function]}
+    selected={false}
+    selectedIcon="chevron-up"
+    showIcon={false}
+    style={
+      Object {
+        "margin": 30,
+      }
+    }
+    text="Store Landing"
     theme={Object {}}
     url=""
   />

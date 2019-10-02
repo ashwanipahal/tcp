@@ -19,3 +19,4 @@ packages/web/server/
 .storybook
 /src/static/libs/
 out
+packages/**/__mocks__/

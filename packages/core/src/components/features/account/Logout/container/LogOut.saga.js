@@ -6,6 +6,7 @@ import { routerPush, isMobileApp, scrollPage } from '../../../../../utils';
 import { navigateXHRAction } from '../../NavigateXHR/container/NavigateXHR.action';
 import { LogoutApplication } from '../../../../../services/abstractors/account';
 import { resetWalletAppState } from '../../../CnC/common/organism/CouponAndPromos/container/Coupon.actions';
+import { setFavStoreToLocalStorage } from '../../../storeLocator/StoreLanding/container/utils/userFavStore';
 
 export function* logoutSaga() {
   try {
@@ -18,6 +19,7 @@ export function* logoutSaga() {
       yield put(resetUserInfo());
       yield put(navigateXHRAction());
       if (!isMobileApp()) {
+        setFavStoreToLocalStorage(null);
         yield put(closeOverlayModal());
         if (window.location.href.indexOf('account') > 0) {
           routerPush('/', '/home');

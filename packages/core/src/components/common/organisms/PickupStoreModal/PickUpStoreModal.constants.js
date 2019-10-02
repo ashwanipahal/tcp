@@ -66,6 +66,7 @@ export const PRODUCT_VALUES = {
 export const STORE_DETAILS_LABELS = {
   STORE_DETAILS: 'Store Details',
   SPACE_ONE: ' ',
+  COMMA_ONE: ',',
   CLOSING_TOMORROW: 'Open tomorrow until',
   CLOSING_TODAY: 'Open until',
   CLOSED_TODAY: 'Closed Today',

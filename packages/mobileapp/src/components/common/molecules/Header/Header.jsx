@@ -68,7 +68,12 @@ class Header extends React.PureComponent<Props> {
    * This function validate the iconView.
    */
   validateIcon = () => {
+    const { navigation, labels } = this.props;
     const { isDownIcon } = this.state;
+    navigation.navigate({
+      routeName: 'StoreDetails',
+      params: { title: labels.lbl_header_storeDefaultTitle.toUpperCase() },
+    });
     this.setState({
       isDownIcon: !isDownIcon,
     });
