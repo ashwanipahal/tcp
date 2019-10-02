@@ -33,58 +33,49 @@ class ExtraPointsDetailModal extends React.PureComponent {
   };
 
   /**
-   * @function ctaTo  to get the route to CTA url based on activityModalAction
+   * @function ctaRedirect  to get the route to CTA url based on activityModalAction
    * @param    {Object} activeActivity The activity details of waysToEarn
-   * @returns  {String} to path for CTA anchor
+   * @returns  {Object} cta to and cta path for anchor
    */
-  ctaTo = activeActivity => {
+  ctaRedirect = activeActivity => {
     switch (activeActivity.activityModalAction) {
       case 'rewardPlaceApp':
-        return endpoints.appDownloadPage;
+        return { to: endpoints.appDownloadPage, path: endpoints.appDownloadPage };
       case 'userAboutYourselfSurvey':
-        return `${internalEndpoints.profilePage.link}&survey=true`;
+        return {
+          to: `${internalEndpoints.profilePage.link}&survey=true`,
+          path: `${internalEndpoints.profilePage.path}/?survey=true`,
+        };
       case 'userFavoriteStore':
-        return internalEndpoints.profilePage.link;
+        return { to: internalEndpoints.profilePage.link, path: internalEndpoints.profilePage.path };
       case 'userMailing':
-        return internalEndpoints.mailingAddressPage.link;
+        return {
+          to: internalEndpoints.mailingAddressPage.link,
+          path: internalEndpoints.mailingAddressPage.path,
+        };
       case 'myPreference':
-        return `${internalEndpoints.myPreferencesPage.link}&socialAccount=${
-          activeActivity.activityModalSocialAccount
-        }`;
+        return {
+          to: `${internalEndpoints.myPreferencesPage.link}&socialAccount=${
+            activeActivity.activityModalSocialAccount
+          }`,
+          path: `${internalEndpoints.myPreferencesPage.path}/socialAccount=${
+            activeActivity.activityModalSocialAccount
+          }`,
+        };
       case 'birthdaySavings':
-        return internalEndpoints.birthdaySavingsPage.link;
+        return {
+          to: internalEndpoints.birthdaySavingsPage.link,
+          path: internalEndpoints.birthdaySavingsPage.path,
+        };
+      case 'userBirthday':
+        return {
+          to: internalEndpoints.editProfileInformationPage.link,
+          path: internalEndpoints.editProfileInformationPage.path,
+        };
       case 'orders':
-        return '/account?id=orders';
+        return { to: internalEndpoints.orderPage.link, path: internalEndpoints.orderPage.path };
       default:
-        return internalEndpoints.profilePage.link;
-    }
-  };
-
-  /**
-   * @function ctaPath  to get the path of CTA url based on activityModalAction
-   * @param    {Object} activeActivity The activity details of waysToEarn
-   * @returns  {String} to ecxact redirect path of CTA anchor
-   */
-  ctaPath = activeActivity => {
-    switch (activeActivity.activityModalAction) {
-      case 'rewardPlaceApp':
-        return endpoints.appDownloadPage;
-      case 'userAboutYourselfSurvey':
-        return `${internalEndpoints.profilePage.path}/?survey=true`;
-      case 'userFavoriteStore':
-        return internalEndpoints.profilePage.path;
-      case 'userMailing':
-        return internalEndpoints.mailingAddressPage.path;
-      case 'myPreference':
-        return `${internalEndpoints.myPreferencesPage.path}/socialAccount=${
-          activeActivity.activityModalSocialAccount
-        }`;
-      case 'birthdaySavings':
-        return internalEndpoints.birthdaySavingsPage.path;
-      case 'orders':
-        return '/account/orders';
-      default:
-        return internalEndpoints.profilePage.path;
+        return { to: internalEndpoints.profilePage.link, path: internalEndpoints.profilePage.path };
     }
   };
 
@@ -138,8 +129,8 @@ class ExtraPointsDetailModal extends React.PureComponent {
         </BodyCopy>
         <BodyCopy component="div" textAlign="center" className="buttonWrapper">
           <Anchor
-            to={this.ctaTo(activeActivity)}
-            asPath={this.ctaPath(activeActivity)}
+            to={this.ctaRedirect(activeActivity).to}
+            asPath={this.ctaRedirect(activeActivity).path}
             anchorVariation="button"
             buttonVariation="fixed-width"
             fullWidth
