@@ -11,35 +11,7 @@ export default {
         {
           textItems: [
             {
-              text: 'Every Length, ',
-              style: 'small_text_normal',
-            },
-            {
-              text: 'Style, ',
-              style: 'small_text_normal',
-            },
-            {
-              text: ' Color & Size',
-              style: 'small_text_normal',
-            },
-          ],
-          link: {
-            url: '/p/',
-            text: '',
-            title: '',
-            target: '',
-            external: 0,
-            action: '',
-          },
-          icon: {
-            icon: '',
-            placement: '',
-          },
-        },
-        {
-          textItems: [
-            {
-              text: 'THE SHORT SHOP',
+              text: 'SHOP THE LOOK',
               style: 'medium_text_black',
             },
           ],
@@ -55,31 +27,6 @@ export default {
             icon: '',
             placement: '',
           },
-        },
-      ],
-      promoBanner: [
-        {
-          link: {
-            url: '/c/',
-            text: '',
-            title: '',
-            target: '',
-            external: 0,
-            class: '',
-          },
-          textItems: [
-            {
-              text2: 'ALL SHORTS',
-              text: 'ALL UNIFORMS',
-              style: 'medium_text_semibold',
-              style2: 'extra_large_text_regular',
-            },
-            {
-              text: '60% OFF',
-              style: 'fixed_medium_text_black',
-              style2: 'extra_large_text_black',
-            },
-          ],
         },
       ],
 

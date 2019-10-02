@@ -58,7 +58,7 @@ function getCarouselSlide(item, navigation) {
                 })
               }
               navigation={navigation}
-              testID={`${getLocator('moduleJ_product_image')}${productItemIndex}`}
+              testID={`${getLocator('moduleQ_product_image')}${productItemIndex}`}
             >
               <StyledImage
                 alt={productName}
@@ -122,33 +122,33 @@ function ModuleQ(props) {
     <Container className={bgClass}>
       <MessageContainer layout={layout}>
         <Wrapper>
-          <HeaderContainer layout={layout}>
-            {[headerText[0]] && (
+          {headerText[0] && (
+            <HeaderContainer layout={layout}>
               <LinkText
                 navigation={navigation}
                 headerText={[headerText[0]]}
-                testID={getLocator('moduleJ_header_text_0')}
+                testID={getLocator('moduleQ_header_text_0')}
                 useStyle
               />
-            )}
-          </HeaderContainer>
-          <SecondHeaderContainer>
-            {[headerText[1]] && (
+            </HeaderContainer>
+          )}
+          {headerText[1] && (
+            <SecondHeaderContainer>
               <LinkText
                 navigation={navigation}
                 headerText={[headerText[1]]}
-                testID={getLocator('moduleJ_header_text_1')}
+                testID={getLocator('moduleQ_header_text_1')}
                 renderComponentInNewLine
                 useStyle
               />
-            )}
-          </SecondHeaderContainer>
+            </SecondHeaderContainer>
+          )}
         </Wrapper>
 
         {promoBanner && (
           <PromoContainer layout={layout}>
             <PromoBanner
-              testID={getLocator('moduleJ_promobanner_text')}
+              testID={getLocator('moduleQ_promobanner_text')}
               promoBanner={promoBanner}
               navigation={navigation}
             />
@@ -160,7 +160,7 @@ function ModuleQ(props) {
           onProductTabChange={onProductTabChange}
           tabItems={divTabs}
           navigation={navigation}
-          testID={getLocator('moduleJ_cta_link')}
+          testID={getLocator('moduleQ_cta_link')}
         />
       </ProductTabListContainer>
 
@@ -187,7 +187,7 @@ function ModuleQ(props) {
             text={selectedSingleCTAButton.text}
             url={selectedSingleCTAButton.url}
             navigation={navigation}
-            testID={getLocator('moduleJ_cta_btn')}
+            testID={getLocator('moduleQ_cta_btn')}
           />
         </ButtonContainer>
       ) : null}
@@ -197,7 +197,7 @@ function ModuleQ(props) {
 
 ModuleQ.defaultProps = {
   bgClass: '',
-  promoBanner: [],
+  promoBanner: null,
 };
 
 ModuleQ.propTypes = {
