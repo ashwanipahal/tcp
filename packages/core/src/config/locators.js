@@ -286,6 +286,9 @@ export default {
   pdp_discounted_percentage: 'Product Discount Percentage',
   pdp_favorite_icon_count: 'Favorites count',
   pdp_anchor_complete_the_look: 'Complete The Look',
+  pdp_rating_reviews: 'ratings_and_reviews_section',
+  pdp_rating_reviews_title: 'ratings_and_reviews_title',
+  pdp_rating_reviews_count: 'ratings_and_reviews_count',
 
   // Quick View Modal
   quick_view_add_to_bag_header: 'quick_view_add_to_bag_header',

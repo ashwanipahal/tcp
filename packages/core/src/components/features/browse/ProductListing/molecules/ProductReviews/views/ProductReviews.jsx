@@ -5,6 +5,7 @@ import cssClassName from '../../../../../../../utils/cssClassName';
 import { requireUrlScript } from '../../../../../../../utils/resourceLoader';
 import withStyles from '../../../../../../common/hoc/withStyles';
 import ProductReviewsStyle from '../ProductReviews.style';
+import { getLocator } from '../../../../../../../utils';
 import BodyCopy from '../../../../../../common/atoms/BodyCopy/views/BodyCopy';
 
 class ProductReviews extends React.PureComponent {
@@ -139,7 +140,10 @@ class ProductReviews extends React.PureComponent {
     });
 
     return (
-      <div className={`${className} ${accordionClassName}`}>
+      <div
+        className={`${className} ${accordionClassName}`}
+        data-locator={getLocator('pdp_rating_reviews')}
+      >
         <BodyCopy
           className="accordion-button-toggle"
           component="div"
@@ -147,9 +151,10 @@ class ProductReviews extends React.PureComponent {
           fontFamily="secondary"
           fontWeight="black"
           onClick={this.handleToggle}
+          data-locator={getLocator('pdp_rating_reviews_title')}
         >
           {ratingsAndReviewsLabel.lbl_ratings_and_reviews}
-          <span>{`(${reviewsCount})`}</span>
+          <span data-locator={getLocator('pdp_rating_reviews_count')}>{`(${reviewsCount})`}</span>
         </BodyCopy>
         <div
           id={`BVRRContainer-${ratingsProductId}`}
