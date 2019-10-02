@@ -27,6 +27,9 @@ export const TileHeader = styled.div`
         font-size: ${props => props.theme.fonts.fontSize.body.bodytext.copy4}px;
         padding: 0;
         border: 0;
+        background: none;
+        cursor: pointer;
+        outline: inherit;
       }
     }
   }

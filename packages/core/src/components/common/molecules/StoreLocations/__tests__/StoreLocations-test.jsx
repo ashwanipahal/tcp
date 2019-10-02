@@ -13,7 +13,7 @@ jest.mock('@tcp/core/src/utils', () => ({
     brandId: 'tcp',
   }),
   isCanada: jest.fn(),
-  isClient: jest.fn(),
+  isClient: jest.fn().mockImplementation(() => true),
   getIconPath: jest.fn(),
 }));
 
@@ -43,5 +43,20 @@ describe('StoreLocations component', () => {
       </ThemeProvider>
     );
     expect(component.html()).toMatchSnapshot();
+  });
+
+  it('should trigger openStoreDetails callback on click of details link', () => {
+    getViewportInfo.mockImplementation(() => ({ isMobile: false }));
+    const mockFn = jest.fn();
+    const component = mount(
+      <ThemeProvider theme={Theme()}>
+        <StoreLocations {...props} openStoreDetails={mockFn} />
+      </ThemeProvider>
+    );
+    component
+      .find('[data-locator="open-store-details"]')
+      .last()
+      .simulate('click');
+    expect(mockFn).toHaveBeenCalled();
   });
 });
