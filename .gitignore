@@ -24,8 +24,6 @@ DerivedData
 *.hmap
 *.ipa
 *.xcuserstate
-project.xcworkspace
-*.xcworkspace
 Pods
 
 # Android/IntelliJ
@@ -46,3 +44,4 @@ yarn-error.log
 TestComponent
 TestContainer
 withTest
+node_modules
