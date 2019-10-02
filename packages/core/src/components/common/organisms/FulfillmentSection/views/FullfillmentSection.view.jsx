@@ -43,7 +43,7 @@ class FulfillmentSection extends React.Component {
           onClick={this.pickupOpenClick}
           dataLocator={dataLocator}
         >
-          {buttonLabel}
+          {"Pick Up In Store"}
         </Button>
       </React.Fragment>
     );
