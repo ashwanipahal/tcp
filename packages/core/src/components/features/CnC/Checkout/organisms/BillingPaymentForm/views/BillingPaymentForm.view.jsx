@@ -426,7 +426,7 @@ export class BillingPaymentForm extends React.PureComponent {
     const { onFileCardKey, labels, cvvCodeRichText } = this.props;
     const { paymentMethodId, orderHasShipping, backLinkPickup } = this.props;
     const { backLinkShipping, nextSubmitText, isPaymentDisabled, showAccordian } = this.props;
-    const { editMode } = this.props;
+    const { editMode } = this.state;
     const creditCardList = getCreditCardList({ cardList });
     return (
       <form name={constants.FORM_NAME} noValidate className={className} onSubmit={handleSubmit}>
