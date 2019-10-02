@@ -38,6 +38,7 @@ import StoreLandingReducer from '@tcp/core/src/components/features/storeLocator/
 import ApplyCardReducer from '@tcp/core/src/components/features/browse/ApplyCardPage/container/ApplyCard.reducer';
 import ApplyNowModalPLCCReducer from '@tcp/core/src/components/common/molecules/ApplyNowPLCCModal/container/ApplyNowModal.reducer';
 import PointsClaimReducer from '@tcp/core/src/components/features/account/PointsClaim/container/PointsClaim.reducer';
+import SocialReducer from '@tcp/core/src/components/common/organisms/SocialAccount/container/Social.reducer';
 import orderConfirmationReducer from '@tcp/core/src/components/features/CnC/Confirmation/container/Confirmation.reducer';
 
 import {
@@ -87,6 +88,7 @@ import {
   APPLY_NOW_MODAL_REDUCER_KEY,
   APPLY_PLCC_REDUCER_KEY,
   POINTS_CLAIM_REDUCER_KEY,
+  SOCIAL_REDUCER_KEY,
   CONFIRMATION_REDUCER_KEY,
 } from '@tcp/core/src/constants/reducer.constants';
 import HeaderReducer from '@tcp/core/src/components/common/organisms/Header/container/Header.reducer';
@@ -126,6 +128,7 @@ const filteredAppConfigReducer = createFilteredReducer(ApiConfigReducer, APICONF
 const filteredGetCandidReducer = createFilteredReducer(GetCandidReducer, GET_CANDID_REDUCER_KEY);
 
 const rootReducer = combineReducers({
+  [SOCIAL_REDUCER_KEY]: SocialReducer,
   [APICONFIG_REDUCER_KEY]: filteredAppConfigReducer,
   [TOAST_REDUCER_KEY]: ToastMessageReducer,
   [SESSIONCONFIG_REDUCER_KEY]: SessionConfigReducer,

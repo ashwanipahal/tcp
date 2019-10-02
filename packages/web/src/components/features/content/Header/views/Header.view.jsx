@@ -22,13 +22,13 @@ class Header extends React.PureComponent {
     // this.addScrollListener();
     const { loadFavoriteStore } = this.props;
     loadFavoriteStore({});
+    this.addScrollListener();
   }
 
   componentDidUpdate() {}
 
   componentWillUnmount() {
-    // eslint-disable-next-line extra-rules/no-commented-out-code
-    // this.removeScrollListener();
+    this.removeScrollListener();
   }
 
   getStickyPosition = () => {

@@ -8,6 +8,7 @@ import withStyles from '../../../../common/hoc/withStyles.native';
 import { UnderlineStyle } from '../styles/MyPreference.style.native';
 import MyFavoriteStore from '../../MyProfile/organism/MyFavoriteStore';
 import BodyCopy from '../../../../common/atoms/BodyCopy';
+import SocialContainer from '../../../../common/organisms/SocialAccount/container/Social.container';
 
 class MyPrefrenceSection extends React.PureComponent {
   render() {
@@ -26,6 +27,7 @@ class MyPrefrenceSection extends React.PureComponent {
           </StyledHeading>
           <UnderlineStyle />
           <MyFavoriteStore isMyPreferences />
+          <SocialContainer labels={labels} />
         </ScrollView>
       </View>
     );

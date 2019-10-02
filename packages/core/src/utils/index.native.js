@@ -47,4 +47,5 @@ export {
   calculateAge,
   sanitizeEntity,
   configureInternalNavigationFromCMSUrl,
+  flattenArray,
 } from './utils';
