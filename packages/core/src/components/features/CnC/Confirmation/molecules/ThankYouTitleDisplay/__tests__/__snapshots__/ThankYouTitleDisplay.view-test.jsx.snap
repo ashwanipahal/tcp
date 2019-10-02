@@ -35,7 +35,13 @@ exports[`ThankYouTitleDisplayVanilla should render correctly 1`] = `
         color="text.primary"
         component="p"
         fontFamily="primary"
-        fontSize={12}
+        fontSize={
+          Array [
+            "fs36",
+            "fs36",
+            "fs38",
+          ]
+        }
         fontWeight="black"
         letterSpacing="normal"
         lineHeight="normal"
@@ -137,7 +143,13 @@ exports[`ThankYouTitleDisplayVanilla should render correctly with isShowBopisMes
         color="text.primary"
         component="p"
         fontFamily="primary"
-        fontSize={12}
+        fontSize={
+          Array [
+            "fs36",
+            "fs36",
+            "fs38",
+          ]
+        }
         fontWeight="black"
         letterSpacing="normal"
         lineHeight="normal"
@@ -253,7 +265,13 @@ exports[`ThankYouTitleDisplayVanilla should render correctly with isShowShipping
         color="text.primary"
         component="p"
         fontFamily="primary"
-        fontSize={12}
+        fontSize={
+          Array [
+            "fs36",
+            "fs36",
+            "fs38",
+          ]
+        }
         fontWeight="black"
         letterSpacing="normal"
         lineHeight="normal"
@@ -369,7 +387,13 @@ exports[`ThankYouTitleDisplayVanilla should render correctly with showbopis msg 
         color="text.primary"
         component="p"
         fontFamily="primary"
-        fontSize={12}
+        fontSize={
+          Array [
+            "fs36",
+            "fs36",
+            "fs38",
+          ]
+        }
         fontWeight="black"
         letterSpacing="normal"
         lineHeight="normal"

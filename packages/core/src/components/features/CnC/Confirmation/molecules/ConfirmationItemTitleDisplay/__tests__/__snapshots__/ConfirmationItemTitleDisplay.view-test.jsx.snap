@@ -61,7 +61,18 @@ exports[`ConfirmationItemTitleDisplayVanilla should render correctly 1`] = `
         aligned="right"
         fontFamily="secondary"
         message={
-          <p>
+          <ForwardRef
+            className={null}
+            color="text.primary"
+            component="p"
+            fontFamily="secondary"
+            fontSize="fs14"
+            fontWeight="regular"
+            letterSpacing="normal"
+            lineHeight="normal"
+            link={null}
+            textAlign="center"
+          >
             1123 ab
             <br />
             adf
@@ -81,7 +92,7 @@ exports[`ConfirmationItemTitleDisplayVanilla should render correctly 1`] = `
             <br />
             <em />
             23456789023
-          </p>
+          </ForwardRef>
         }
       >
         <Styled(Image)

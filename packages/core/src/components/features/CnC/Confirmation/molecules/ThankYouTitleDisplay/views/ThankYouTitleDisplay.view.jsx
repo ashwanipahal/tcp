@@ -61,6 +61,7 @@ const ThankYouTitleDisplay = ({
             fontFamily="primary"
             textAlign="center"
             fontWeight="black"
+            fontSize={['fs36', 'fs36', 'fs38']}
           >
             {labels.thankYouHeading}
           </BodyCopy>

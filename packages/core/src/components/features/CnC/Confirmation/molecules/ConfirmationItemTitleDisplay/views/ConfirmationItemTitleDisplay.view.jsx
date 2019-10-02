@@ -17,7 +17,7 @@ const shippingIcon = getIconPath('fast-shipping');
  */
 const getAddress = (address, labels, todayOpenRange, tomorrowOpenRange, phoneNumber) => {
   return address ? (
-    <p>
+    <BodyCopy fontFamily="secondary" fontSize="fs14" textAlign="center">
       {address.addressLine1}
       <br />
       {address.addressLine2 && [address.addressLine2, <br />]}
@@ -32,7 +32,7 @@ const getAddress = (address, labels, todayOpenRange, tomorrowOpenRange, phoneNum
       <br />
       <em>{labels.phone}</em>
       {phoneNumber}
-    </p>
+    </BodyCopy>
   ) : (
     ''
   );

@@ -87,7 +87,7 @@ exports[`ConfirmationOrderNumberDisplayVanilla should render correctly with BOPI
     <Styled(ConfirmationItemDisplay)>
       <Styled(Anchor)
         asPath="/account/orders/order-details/undefined"
-        to="/account?id=orders"
+        to="/account?id=orders&subSection=order-details"
         underline={true}
       />
     </Styled(ConfirmationItemDisplay)>

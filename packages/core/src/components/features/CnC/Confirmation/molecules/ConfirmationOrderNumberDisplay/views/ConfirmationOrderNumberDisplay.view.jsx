@@ -8,6 +8,9 @@ import BodyCopy from '../../../../../../common/atoms/BodyCopy';
 import styles from '../styles/ConfirmationOrderNumberDisplay.styles';
 import withStyles from '../../../../../../common/hoc/withStyles';
 import { ROUTE_PATH } from '../../../../../../../config/route.config';
+import internalEndpoints from '../../../../../account/common/internalEndpoints';
+
+const { orderPage } = internalEndpoints;
 
 /**
  * @function ConfirmationOrderNumberDisplay
@@ -78,11 +81,7 @@ const ConfirmationOrderNumberDisplay = ({ center, isGuest, labels, className }) 
               {orderNumber}
             </Anchor>
           ) : (
-            <Anchor
-              underline
-              to="/account?id=orders"
-              asPath={`/account/orders/order-details/${orderNumber}`}
-            >
+            <Anchor underline to={orderPage.link} asPath={`${orderPage.path}/${orderNumber}`}>
               {orderNumber}
             </Anchor>
           )}

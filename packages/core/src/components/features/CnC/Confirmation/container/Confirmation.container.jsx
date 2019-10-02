@@ -158,8 +158,11 @@ export const mapStateToProps = state => {
 
     orderNumbersByFullfillmentCenter: selectors.getOrderNumbersByFullfillmentCenter(state),
     labels: selectors.getConfirmationLabels(state),
-    updateOrderDetailsBopisId: selectors.getUpdateOrderDetailsBopisId(state),
-    updateOrderDetailsBossId: selectors.getUpdateOrderDetailsBossId(state),
+    updateOrderDetailsBopisId: selectors.getUpdateOrderDetailsId(
+      state,
+      'Update_Order_Details_BOPIS'
+    ),
+    updateOrderDetailsBossId: selectors.getUpdateOrderDetailsId(state, 'Update_Order_Details_BOSS'),
     updateOrderDetailsData: selectors.getUpdateOrderDetailsData(state),
   };
 };

@@ -324,15 +324,9 @@ const getConfirmationLabels = createSelector(
   }
 );
 
-const getUpdateOrderDetailsBopisId = state => {
+const getUpdateOrderDetailsId = (state, option) => {
   const { referred = [] } = state.Labels.checkout.orderConfirmation;
-  const content = referred.find(label => label.name === 'Update_Order_Details_BOPIS');
-  return content && content.contentId;
-};
-
-const getUpdateOrderDetailsBossId = state => {
-  const { referred = [] } = state.Labels.checkout.orderConfirmation;
-  const content = referred.find(label => label.name === 'Update_Order_Details_BOSS');
+  const content = referred.find(label => label.name === option);
   return content && content.contentId;
 };
 
@@ -378,7 +372,6 @@ export default {
   // shouldHideConfirmationEspot
   isCanadaSite,
   getConfirmationLabels,
-  getUpdateOrderDetailsBopisId,
-  getUpdateOrderDetailsBossId,
+  getUpdateOrderDetailsId,
   getUpdateOrderDetailsData,
 };

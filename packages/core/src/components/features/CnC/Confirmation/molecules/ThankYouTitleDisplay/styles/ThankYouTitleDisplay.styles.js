@@ -7,10 +7,8 @@ const styles = css`
     padding: 0;
   }
   .thank-you-heading {
-    font-size: ${props => props.theme.typography.fontSizes.fs36};
     margin: ${props => props.theme.spacing.ELEM_SPACING.MED} 0;
     @media ${props => props.theme.mediaQuery.large} {
-      font-size: ${props => props.theme.typography.fontSizes.fs38};
       margin: ${props => props.theme.spacing.ELEM_SPACING.XL} 0
         ${props => props.theme.spacing.ELEM_SPACING.MED};
     }
