@@ -1,9 +1,10 @@
-import { call, takeLatest, put } from 'redux-saga/effects';
+import { call, takeLatest, put, select } from 'redux-saga/effects';
 import constants from '../RewardsCard.constants';
 import { setModuleX, obtainInstantCardApplication } from './ApplyCard.actions';
 import { getModuleX } from '../../../../../services/abstractors/common/moduleXComposite';
 import applyInstantCard from '../../../../../services/abstractors/common/PLCC';
 import { validateReduxCache } from '../../../../../utils/cache.util';
+import { getErrorMapping } from './ApplyCard.selectors';
 
 /*
  * @Generator - fetchModuleX Saga -
@@ -30,7 +31,8 @@ export function* fetchModuleX({ payload = '' }) {
 
 export function* submitCreditCardForm({ payload = '' }) {
   try {
-    const res = yield call(applyInstantCard, payload);
+    const labels = yield select(getErrorMapping);
+    const res = yield call(applyInstantCard, payload, labels);
     yield put(obtainInstantCardApplication(res));
   } catch (err) {
     yield null;

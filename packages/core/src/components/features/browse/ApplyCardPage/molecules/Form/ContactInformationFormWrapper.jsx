@@ -227,7 +227,7 @@ class ContactInformationFormWrapper extends React.Component {
             <Field
               placeholder={getLabelValue(labels, 'lbl_PLCCForm_mobilePhoneNumber')}
               name="phoneNumberWithAlt"
-              id="phoneNumber"
+              id="phoneNumberWithAlt"
               component={TextBox}
               dataLocator={getLocator('plc_mobile_no')}
               type="tel"

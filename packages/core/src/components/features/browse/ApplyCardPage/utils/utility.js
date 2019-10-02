@@ -11,8 +11,8 @@ const refFields = [
   'noCountryZip',
   'phoneNumberWithAlt',
   'altPhoneNumber',
-  'date',
   'month',
+  'date',
   'year',
   'ssNumber',
   'iAgree',
@@ -50,12 +50,11 @@ const fetchBillingOrShippingAddress = address => {
 };
 
 const fetchPLCCFormErrors = errors => {
-  const plccFormFields = {};
-  refFields.map(fieldName => {
+  const plccFormFields = [];
+  refFields.forEach(fieldName => {
     if (errors[fieldName]) {
-      plccFormFields[fieldName] = errors[fieldName];
+      plccFormFields.push(fieldName);
     }
-    return true;
   });
   return plccFormFields;
 };

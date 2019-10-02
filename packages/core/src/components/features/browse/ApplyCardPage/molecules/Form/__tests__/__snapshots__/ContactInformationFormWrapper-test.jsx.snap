@@ -1511,7 +1511,7 @@ exports[`ContactInformationFormWrapper component should renders correctly 1`] = 
           }
         }
         dataLocator="plc_mobile_no"
-        id="phoneNumber"
+        id="phoneNumberWithAlt"
         name="phoneNumberWithAlt"
         placeholder="mobile phone"
         type="tel"
