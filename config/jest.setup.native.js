@@ -28,6 +28,12 @@ jest.mock('react-native-cookies', () => ({
   get: () => Promise.resolve(null),
 }));
 
+jest.mock('react-native-awesome-card-io', () => {
+  return {
+    DETECTION_MODE: 'IMAGE_AND_NUMBER',
+  };
+});
+
 // Mock NetInfo for react-native modules
 NativeModules.RNCNetInfo = {
   getCurrentState: jest.fn(() => Promise.resolve()),

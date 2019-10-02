@@ -3,6 +3,7 @@
 exports[`AddNewCCForm should render correctly 1`] = `
 <Fragment>
   <CreditCardFields
+    cameraIcon={true}
     cardType={null}
     cardTypeImgUrl=""
     creditFieldLabels={
@@ -119,6 +120,7 @@ exports[`AddNewCCForm should render correctly 1`] = `
     isPLCCEnabled={true}
     selectedCard={null}
     showCvv={true}
+    updateCardDetails={[Function]}
     updateExpiryDate={[Function]}
     variation="secondary"
   />

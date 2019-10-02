@@ -149,6 +149,7 @@ exports[`CreditCardForm component should renders correctly in mailingAddress vie
           },
         ]
       }
+      cameraIcon={false}
       cardType=""
       cardTypeImgUrl=""
       className=""
@@ -614,6 +615,7 @@ exports[`CreditCardForm component should renders correctly with address dropdown
           },
         ]
       }
+      cameraIcon={false}
       cardType=""
       cardTypeImgUrl=""
       className=""
@@ -1085,6 +1087,7 @@ exports[`CreditCardForm component should renders correctly with addressForm 1`] 
           },
         ]
       }
+      cameraIcon={false}
       cardType=""
       cardTypeImgUrl=""
       className=""
