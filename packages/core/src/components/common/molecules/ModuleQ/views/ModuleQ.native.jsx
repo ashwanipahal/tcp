@@ -6,7 +6,7 @@ import { LAZYLOAD_HOST_NAME } from '@tcp/core/src/utils';
 import { Button, Anchor } from '../../../atoms';
 import { getLocator } from '../../../../../utils/index.native';
 import { Carousel } from '../..';
-import config from '../config';
+import config from '../ModuleQ.config';
 
 import {
   Container,
@@ -33,7 +33,7 @@ const PRODUCT_IMAGE_GUTTER = 16;
 const PRODUCT_IMAGE_PER_SLIDE = 4;
 const MODULE_HEIGHT = 142;
 const MODULE_WIDTH = (PRODUCT_IMAGE_WIDTH + PRODUCT_IMAGE_GUTTER) * PRODUCT_IMAGE_PER_SLIDE;
-const { IMG_DATA, TOTAL_IMAGES } = config;
+const { IMG_DATA, TOTAL_IMAGES, CAROUSEL_OPTIONS } = config;
 
 const getCarouselSlide = (item, navigation) => {
   return (
@@ -172,9 +172,9 @@ const ModuleQ = props => {
             height={MODULE_HEIGHT}
             width={MODULE_WIDTH}
             carouselConfig={{
-              autoplay: false,
+              autoplay: CAROUSEL_OPTIONS.autoplay,
             }}
-            autoplay={false}
+            autoplay={CAROUSEL_OPTIONS.autoplay}
           />
         ) : null}
       </ImageSlidesWrapper>
