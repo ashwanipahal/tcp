@@ -97,7 +97,7 @@ class CondensedHeader extends React.PureComponent {
     } = this.props;
     const brand = getBrand();
     const { isSearchOpen, userNameClick, triggerLoginCreateAccount, cartItemCount } = this.state;
-    const { accountIconButton, cartIconButton, hamburgerMenu } = labels.accessibility;
+    const { accessibility: { accountIconButton, cartIconButton, hamburgerMenu } = {} } = labels;
     return (
       <React.Fragment>
         <Row id="condensedHeader" className={`${className} condensed-header`}>
