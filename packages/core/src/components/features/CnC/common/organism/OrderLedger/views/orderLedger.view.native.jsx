@@ -1,5 +1,5 @@
 import React from 'react';
-import { Text } from 'react-native';
+import { Text, View } from 'react-native';
 import PropTypes from 'prop-types';
 import BodyCopy from '../../../../../../common/atoms/BodyCopy';
 import LineComp from '../../../../../../common/atoms/Line';
@@ -10,8 +10,10 @@ import {
   StyledRowDataContainer,
   LabelContainer,
   IconContainer,
+  StyledHeader,
 } from '../styles/orderLedger.style.native';
 import ReactTooltip from '../../../../../../common/atoms/ReactToolTip';
+import CollapsibleContainer from '../../../../../../common/molecules/CollapsibleContainer';
 
 const popover = message => {
   return (
@@ -25,7 +27,7 @@ const popover = message => {
   );
 };
 
-const OrderLedger = ({ ledgerSummaryData, labels }) => {
+const getBody = (ledgerSummaryData, labels) => {
   const {
     itemsCount,
     currencySymbol,
@@ -266,6 +268,34 @@ const OrderLedger = ({ ledgerSummaryData, labels }) => {
   );
 };
 
+const getHeader = labels => {
+  return (
+    <StyledHeader>
+      <BodyCopy
+        mobileFontFamily="secondary"
+        fontSize="fs16"
+        fontWeight="semibold"
+        component="span"
+        text={labels.orderLedgerTitle}
+      />
+    </StyledHeader>
+  );
+};
+
+const OrderLedger = ({ ledgerSummaryData, labels, showAccordian }) => {
+  const header = getHeader(labels);
+  const body = getBody(ledgerSummaryData, labels);
+  return (
+    <View>
+      {showAccordian ? (
+        <CollapsibleContainer header={header} body={body} defaultOpen iconLocator="arrowicon" />
+      ) : (
+        <>{body}</>
+      )}
+    </View>
+  );
+};
+
 OrderLedger.propTypes = {
   ledgerSummaryData: PropTypes.shape({
     itemsCount: PropTypes.number.isRequired,
@@ -313,6 +343,7 @@ OrderLedger.propTypes = {
     totalOrderSavings: PropTypes.number,
   }),
   labels: PropTypes.shape({}),
+  showAccordian: PropTypes.bool.isRequired,
   /** Flag indicates whether cart savings section will display */
   // isDisplayCartSavings: PropTypes.bool,
 };
