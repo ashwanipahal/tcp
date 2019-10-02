@@ -33,6 +33,15 @@
 		1668AB23231EC93400F75A14 /* libART.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 1668AB18231EA3EA00F75A14 /* libART.a */; };
 		1668AB24231EC93D00F75A14 /* libART.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 1668AB18231EA3EA00F75A14 /* libART.a */; };
 		1F4D4D5AD0BB4E52A1A7F580 /* libRNCNetInfo-tvOS.a in Frameworks */ = {isa = PBXBuildFile; fileRef = CF6A1233B6EA45C89439E363 /* libRNCNetInfo-tvOS.a */; };
+		205AA73123435148000A190A /* libRCTFBSDK.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 202455B6233C9ADB009D482E /* libRCTFBSDK.a */; };
+		205AA73223435175000A190A /* libRCTFBSDK.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 202455B6233C9ADB009D482E /* libRCTFBSDK.a */; };
+		205AA733234351A6000A190A /* libRCTFBSDK.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 202455B6233C9ADB009D482E /* libRCTFBSDK.a */; };
+		205AA734234351B1000A190A /* libRCTFBSDK.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 202455B6233C9ADB009D482E /* libRCTFBSDK.a */; };
+		205AA735234351BD000A190A /* libRCTFBSDK.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 202455B6233C9ADB009D482E /* libRCTFBSDK.a */; };
+		205AA736234351C7000A190A /* libRCTFBSDK.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 202455B6233C9ADB009D482E /* libRCTFBSDK.a */; };
+		205AA737234351D3000A190A /* libRCTFBSDK.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 202455B6233C9ADB009D482E /* libRCTFBSDK.a */; };
+		205AA738234351E1000A190A /* libRCTFBSDK.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 202455B6233C9ADB009D482E /* libRCTFBSDK.a */; };
+		205AA739234351EB000A190A /* libRCTFBSDK.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 202455B6233C9ADB009D482E /* libRCTFBSDK.a */; };
 		234A1B7E7F3443E511A1082B /* Pods_mobileappTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 2259B145AC157807363185CA /* Pods_mobileappTests.framework */; };
 		25D5AE82AE664358A8DBBBE1 /* libRNKeychain.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 883722ADA401457E84C798C9 /* libRNKeychain.a */; };
 		2D02E4BD1E0B4A84006451C7 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 13B07FB51A68108700A75B9A /* Images.xcassets */; };
@@ -1017,6 +1026,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				205AA73123435148000A190A /* libRCTFBSDK.a in Frameworks */,
 				79538AC8232FBC4F00908A8B /* libRNPrint.a in Frameworks */,
 				79538AC9232FBC4F00908A8B /* libRNViewShot.a in Frameworks */,
 				1668AB1C231EAA8100F75A14 /* libART.a in Frameworks */,
@@ -1049,6 +1059,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				205AA73223435175000A190A /* libRCTFBSDK.a in Frameworks */,
 				79538ACA232FBC5E00908A8B /* libRNPrint.a in Frameworks */,
 				79538ACB232FBC5E00908A8B /* libRNViewShot.a in Frameworks */,
 				1668AB1D231EAA9500F75A14 /* libART.a in Frameworks */,
@@ -1081,6 +1092,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				205AA733234351A6000A190A /* libRCTFBSDK.a in Frameworks */,
 				79538ACC232FBD0600908A8B /* libRNPrint.a in Frameworks */,
 				79538ACD232FBD0600908A8B /* libRNViewShot.a in Frameworks */,
 				1668AB1E231EAA9F00F75A14 /* libART.a in Frameworks */,
@@ -1113,6 +1125,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				205AA734234351B1000A190A /* libRCTFBSDK.a in Frameworks */,
 				79538ACE232FBD1200908A8B /* libRNPrint.a in Frameworks */,
 				79538ACF232FBD1200908A8B /* libRNViewShot.a in Frameworks */,
 				1668AB1F231EAAA900F75A14 /* libART.a in Frameworks */,
@@ -1145,6 +1158,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				205AA736234351C7000A190A /* libRCTFBSDK.a in Frameworks */,
 				79538AD2232FBD2900908A8B /* libRNPrint.a in Frameworks */,
 				79538AD3232FBD2900908A8B /* libRNViewShot.a in Frameworks */,
 				1668AB21231EC92300F75A14 /* libART.a in Frameworks */,
@@ -1177,6 +1191,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				205AA737234351D3000A190A /* libRCTFBSDK.a in Frameworks */,
 				79538AD4232FBD3900908A8B /* libRNPrint.a in Frameworks */,
 				79538AD5232FBD3900908A8B /* libRNViewShot.a in Frameworks */,
 				1668AB22231EC92B00F75A14 /* libART.a in Frameworks */,
@@ -1209,6 +1224,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				205AA738234351E1000A190A /* libRCTFBSDK.a in Frameworks */,
 				79538AD6232FBD4600908A8B /* libRNPrint.a in Frameworks */,
 				79538AD7232FBD4600908A8B /* libRNViewShot.a in Frameworks */,
 				1668AB23231EC93400F75A14 /* libART.a in Frameworks */,
@@ -1241,6 +1257,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				205AA739234351EB000A190A /* libRCTFBSDK.a in Frameworks */,
 				79538AD8232FBD5000908A8B /* libRNPrint.a in Frameworks */,
 				79538AD9232FBD5000908A8B /* libRNViewShot.a in Frameworks */,
 				1668AB24231EC93D00F75A14 /* libART.a in Frameworks */,
@@ -1273,6 +1290,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				205AA735234351BD000A190A /* libRCTFBSDK.a in Frameworks */,
 				79538AD0232FBD1E00908A8B /* libRNPrint.a in Frameworks */,
 				79538AD1232FBD1E00908A8B /* libRNViewShot.a in Frameworks */,
 				1668AB20231EC91A00F75A14 /* libART.a in Frameworks */,

@@ -39,3 +39,4 @@ HomePageView.propTypes = {
 };
 
 export default errorBoundary(HomePageView);
+export { HomePageView as HomePageViewVanilla };
