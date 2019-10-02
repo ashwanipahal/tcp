@@ -55,7 +55,7 @@ exports[`ProfileInfoActions should render correctly for empty state 1`] = `
         activityCompletionState=""
         activityIcon="/static/images/mailingAddress.jpg"
         activityId="mailingAddress"
-        activityTitle="lbl_profile_activityPercentage"
+        activityTitle="lbl_profile_mailingAddressActivityTitle"
         dataLocatorPrefix="email"
         redirectAsPath="/account/profile"
         redirectTo="/account?id=profile&subSection=edit-mailing-address"
@@ -82,7 +82,7 @@ exports[`ProfileInfoActions should render correctly for empty state 1`] = `
         activityCompletionState=""
         activityIcon="/static/images/store.png"
         activityId="favStore"
-        activityTitle="lbl_profile_activityPercentage"
+        activityTitle="lbl_profile_favStoreActivityTitle"
         dataLocatorPrefix="favStore"
         redirectTo="/account"
       />
@@ -101,7 +101,7 @@ exports[`ProfileInfoActions should render correctly for empty state 1`] = `
         activityCompletionState=""
         activityIcon="/static/images/birthday.jpg"
         activityId="userBirthday"
-        activityTitle="lbl_profile_activityPercentage"
+        activityTitle="lbl_profile_userBirthdayActivityTitle"
         dataLocatorPrefix="birthday"
         redirectAsPath="/account/profile"
         redirectTo="/account?id=profile&subSection=edit-personal-info"
@@ -128,7 +128,7 @@ exports[`ProfileInfoActions should render correctly for empty state 1`] = `
         activityCompletionState=""
         activityIcon="/static/images/survey.png"
         activityId="aboutYourself"
-        activityTitle="lbl_profile_activityPercentage"
+        activityTitle="lbl_profile_surveyActivityTitle"
         dataLocatorPrefix="survey"
         noLink={true}
         onClick={[Function]}
@@ -242,7 +242,7 @@ exports[`ProfileInfoActions should render correctly for filled state 1`] = `
       <Styled(ProfileInfoActionTile)
         activityIcon="/static/images/mailingAddress.jpg"
         activityId="mailingAddress"
-        activityTitle="lbl_profile_activityPercentage"
+        activityTitle="lbl_profile_mailingAddressActivityTitle"
         dataLocatorPrefix="email"
         redirectAsPath="/account/profile"
         redirectTo="/account?id=profile&subSection=edit-mailing-address"
@@ -268,7 +268,7 @@ exports[`ProfileInfoActions should render correctly for filled state 1`] = `
       <Styled(ProfileInfoActionTile)
         activityIcon="/static/images/store.png"
         activityId="favStore"
-        activityTitle="lbl_profile_activityPercentage"
+        activityTitle="lbl_profile_favStoreActivityTitle"
         dataLocatorPrefix="favStore"
         redirectTo="/account"
       />
@@ -286,7 +286,7 @@ exports[`ProfileInfoActions should render correctly for filled state 1`] = `
       <Styled(ProfileInfoActionTile)
         activityIcon="/static/images/birthday.jpg"
         activityId="userBirthday"
-        activityTitle="lbl_profile_activityPercentage"
+        activityTitle="lbl_profile_userBirthdayActivityTitle"
         dataLocatorPrefix="birthday"
         redirectAsPath="/account/profile"
         redirectTo="/account?id=profile&subSection=edit-personal-info"
@@ -312,7 +312,7 @@ exports[`ProfileInfoActions should render correctly for filled state 1`] = `
       <Styled(ProfileInfoActionTile)
         activityIcon="/static/images/survey.png"
         activityId="aboutYourself"
-        activityTitle="lbl_profile_activityPercentage"
+        activityTitle="lbl_profile_surveyActivityTitle"
         dataLocatorPrefix="survey"
         noLink={true}
         onClick={[Function]}
