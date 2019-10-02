@@ -1,9 +1,9 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import { Anchor, BodyCopy, RichText, Button, Col, Row } from '../../../../../common/atoms';
-import ApprovedPLCCApplicationViewStyled from './styles/ApprovedPLCCApplication.style';
-import { getLabelValue } from '../../../../../../utils';
-import { redirectToBag, redirectToHome, getModalSizeForApprovedPLCC } from '../../utils/utility';
+import { Anchor, BodyCopy, RichText, Button, Col, Row } from '../../../../../../common/atoms';
+import ApprovedPLCCApplicationViewStyled from './style/ApprovedPLCCApplication.style';
+import { getLabelValue } from '../../../../../../../utils';
+import { redirectToBag, redirectToHome, getModalSizeForApprovedPLCC } from '../../../utils/utility';
 
 const CopyToClipboard = e => {
   e.preventDefault();
