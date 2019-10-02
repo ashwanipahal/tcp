@@ -1,6 +1,6 @@
 import styled from 'styled-components/native';
 
-import { BodyCopy, Image, Anchor } from '../../../../common/atoms';
+import { BodyCopy, Image, Anchor } from '../../../../../../../common/atoms';
 
 export const ImageContainer = styled.View`
   margin-top: ${props => props.theme.spacing.ELEM_SPACING.XS};
@@ -60,7 +60,6 @@ export const MessageViewContainer = styled.View`
   margin-top: ${props => props.theme.spacing.LAYOUT_SPACING.XXS};
   margin-left: ${props => props.theme.spacing.LAYOUT_SPACING.XXS};
   margin-right: ${props => props.theme.spacing.LAYOUT_SPACING.XXS};
-  background: ${props => props.theme.colorPalette.gray[500]};
 `;
 
 export const PersonalInformationContainerView = styled.View`
@@ -93,6 +92,7 @@ export const CheckBoxContainerView = styled.View`
 export const CheckBoxImage = styled.View`
   width: 40px;
   height: 40px;
+  padding-top: ${props => props.theme.spacing.ELEM_SPACING.XXS};
 `;
 
 export const CheckMessageView = styled.View`
@@ -108,11 +108,9 @@ export const ButtonWrapper = styled.View`
 
 export const RichTextContainer = styled.View`
   width: 100%;
-  height: 210px;
-  background: ${props => props.theme.colorPalette.gray[500]};
+  height: 560px;
   margin-left: ${props => props.theme.spacing.LAYOUT_SPACING.XXS};
   margin-right: ${props => props.theme.spacing.LAYOUT_SPACING.XXS};
-  margin-bottom: ${props => props.theme.spacing.LAYOUT_SPACING.XXS};
 `;
 
 export const StyledAnchor = styled(Anchor)`
@@ -144,6 +142,16 @@ export const MiddleNameContainer = styled.View`
   padding-left: 19px;
 `;
 
+export const FieldContainer = styled.View`
+  margin-top: 12px;
+`;
+
+export const SSNContainer = styled.View`
+  padding-top: ${props => props.theme.spacing.ELEM_SPACING.XXS};
+  padding-left: ${props => props.theme.spacing.LAYOUT_SPACING.XXS};
+  padding-right: ${props => props.theme.spacing.LAYOUT_SPACING.XXS};
+`;
+
 export default {
   ImageContainer,
   StyledBodyCopy,
@@ -165,4 +173,6 @@ export default {
   ParentMessageContainer,
   FirstNameContainer,
   MiddleNameContainer,
+  FieldContainer,
+  SSNContainer,
 };
