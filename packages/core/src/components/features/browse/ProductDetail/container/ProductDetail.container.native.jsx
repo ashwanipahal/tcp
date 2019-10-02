@@ -9,6 +9,7 @@ import {
   getCurrentProduct,
   getPlpLabels,
 } from './ProductDetail.selectors';
+import { getIsPickupModalOpen } from '../../../../common/organisms/PickupStoreModal/container/PickUpStoreModal.selectors';
 import {
   addToCartEcom,
   clearAddToBagErrorState,
@@ -57,6 +58,7 @@ class ProductDetailContainer extends React.PureComponent {
       navigation,
       addToBagError,
       clearAddToBagError,
+      isPickupModalOpen,
     } = this.props;
     const isProductDataAvailable = Object.keys(currentProduct).length > 0;
     return (
@@ -72,6 +74,7 @@ class ProductDetailContainer extends React.PureComponent {
             navigation={navigation}
             addToBagError={addToBagError}
             clearAddToBagError={clearAddToBagError}
+            isPickupModalOpen={isPickupModalOpen}
           />
         ) : null}
       </React.Fragment>
@@ -85,6 +88,7 @@ function mapStateToProps(state) {
     currentProduct: getCurrentProduct(state),
     breadCrumbs: getBreadCrumbs(state),
     plpLabels: getPlpLabels(state),
+    isPickupModalOpen: getIsPickupModalOpen(state),
     addToBagError: getAddedToBagError(state),
   };
 }
@@ -112,6 +116,7 @@ ProductDetailContainer.propTypes = {
   addToBagEcom: PropTypes.func.isRequired,
   navTree: PropTypes.shape({}),
   plpLabels: PropTypes.shape({}),
+  isPickupModalOpen: PropTypes.bool,
   addToBagError: PropTypes.string,
 };
 
@@ -120,6 +125,7 @@ ProductDetailContainer.defaultProps = {
   breadCrumbs: {},
   navTree: {},
   plpLabels: {},
+  isPickupModalOpen: false,
   addToBagError: '',
 };
 

@@ -158,7 +158,7 @@ function mapStateToProps(state, ownProps) {
   return {
     storesList: suggestedStores,
     isShowFilterCheckbox: suggestedStores && suggestedStores.length > 0,
-    defaultStoreName: defaultStore ? defaultStore && defaultStore.basicInfo.storeName : null,
+    defaultStoreName: (defaultStore && defaultStore.basicInfo.storeName) || null,
     ...ownProps,
   };
 }

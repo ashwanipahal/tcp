@@ -2,7 +2,8 @@ import { css } from 'styled-components';
 
 const CtaStyle = css`
   display: block;
-  margin-bottom: ${props => props.theme.spacing.ELEM_SPACING.MED};
+  margin-bottom: ${props =>
+    props.isBagPageStickyHeader ? '0' : props.theme.spacing.ELEM_SPACING.MED};
   .check-out-container {
     margin-top: 10px;
     display: flex;
@@ -19,6 +20,27 @@ const CtaStyle = css`
 
   .checkout-button {
     padding-top: 10px;
+    @media ${props => props.theme.mediaQuery.smallOnly} {
+      bottom: 0;
+      left: 0;
+      position: fixed;
+      width: 92%;
+      background: ${props => props.theme.colors.WHITE};
+      z-index: ${props => props.theme.zindex.zLoader};
+      margin: 0;
+      border-top: ${props => props.theme.spacing.ELEM_SPACING.XXXS} solid
+        ${props => props.theme.colors.PRIMARY.LIGHTGRAY};
+      padding: ${props => props.theme.spacing.ELEM_SPACING.XS}
+        ${props => props.theme.spacing.ELEM_SPACING.MED};
+    }
+  }
+
+  .checkout-button-bagHeader {
+    flex-direction: row;
+  }
+
+  .checkout-sticky-header {
+    margin-right: ${props => props.theme.spacing.ELEM_SPACING.XS};
   }
 
   .checkout {
