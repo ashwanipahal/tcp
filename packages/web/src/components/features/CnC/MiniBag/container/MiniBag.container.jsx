@@ -8,6 +8,7 @@ import {
   openMiniBag,
   closeMiniBag,
 } from '@tcp/core/src/components/common/organisms/Header/container/Header.actions';
+import BAG_PAGE_ACTIONS from '@tcp/core/src/components/features/CnC/BagPage/container/BagPage.actions';
 import MiniBagView from '../views/MiniBag.view';
 import {
   getLabelsMiniBag,
@@ -103,6 +104,7 @@ const mapStateToProps = state => {
 export const mapDispatchToProps = dispatch => {
   return {
     openMiniBagDispatch: () => {
+      dispatch(BAG_PAGE_ACTIONS.getOrderDetails());
       dispatch(openMiniBag());
     },
     closeMiniBagDispatch: () => {
