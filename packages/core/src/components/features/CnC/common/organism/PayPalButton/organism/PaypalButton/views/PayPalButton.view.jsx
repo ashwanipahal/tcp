@@ -26,7 +26,7 @@ class PayPalButton extends React.Component {
   };
 
   render() {
-    const { className, error, isAddToBagModal } = this.props;
+    const { className, error, isAddToBagModal, containerId } = this.props;
     return (
       <div>
         {error && !isAddToBagModal && <ErrorMessage error={error} />}
@@ -34,7 +34,7 @@ class PayPalButton extends React.Component {
         <div
           data-locator={getLocator('addedtobag_btnpaypal')}
           className={className}
-          id="paypal-button-container"
+          id={containerId}
         />
       </div>
     );
