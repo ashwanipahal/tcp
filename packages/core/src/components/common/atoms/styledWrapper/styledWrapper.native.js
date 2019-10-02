@@ -1,5 +1,20 @@
 import styled from 'styled-components/native';
+import {
+  typography as typographyStyleSystem,
+  color as colorStyleSystem,
+} from '@tcp/core/styles/rwdStyleSystem';
+
 import BodyCopy from '../BodyCopy';
+
+import { androidFontStyles } from '../../../../../styles/globalStyles/StyledText.style';
+
+const getAdditionalStyle = props => {
+  const { margin, textDecoration } = props;
+  return {
+    ...(margin && { margin }),
+    ...(textDecoration && { 'text-decoration-line': textDecoration }),
+  };
+};
 
 /**
  * @param {*} props
@@ -63,4 +78,8 @@ export const ViewWithSpacing = styled.View`
 
 export const TextWithSpacing = styled.Text`
   ${getSpacingStyles}
+  ${typographyStyleSystem}
+  ${colorStyleSystem}
+  ${androidFontStyles}
+  ${getAdditionalStyle}
 `;

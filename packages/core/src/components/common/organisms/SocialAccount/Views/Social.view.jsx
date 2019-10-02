@@ -196,7 +196,7 @@ class Socialview extends React.PureComponent {
   };
 
   viewAll = () => {
-    routerPush('/account?id=payment', '/account/payment');
+    routerPush('/account?id=extra-points', '/account/extra-points');
   };
 
   render() {

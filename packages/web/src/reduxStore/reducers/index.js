@@ -45,9 +45,11 @@ import BirthdaySavingsListReducer from '@tcp/core/src/components/features/accoun
 import PickupModalReducer from '@tcp/core/src/components/common/organisms/PickupStoreModal/container/PickUpStoreModal.reducer';
 import RecommendationsReducer from '@tcp/core/src/components/common/molecules/Recommendations/container/Recommendations.reducer';
 import SearchBarReducer from '@tcp/web/src/components/features/content/Header/molecules/SearchBar/SearchBar.reducer';
+import StoreLocatorReducer from '@tcp/core/src/components/features/storeLocator/StoreLanding/container/StoreLanding.reducer';
 import SocialReducer from '@tcp/core/src/components/common/organisms/SocialAccount/container/Social.reducer';
 import SearchPageReducer from '@tcp/core/src/components/features/browse/SearchDetail/container/SearchDetail.reducer';
 import MyFavoriteStoreReducer from '@tcp/core/src/components/features/account/MyProfile/organism/MyFavoriteStore/container/MyFavoriteStore.reducer';
+import StoreDetailReducer from '@tcp/core/src/components/features/storeLocator/StoreDetail/container/StoreDetail.reducer';
 import PointsClaimReducer from '@tcp/core/src/components/features/account/PointsClaim/container/PointsClaim.reducer';
 import orderConfirmationReducer from '@tcp/core/src/components/features/CnC/Confirmation/container/Confirmation.reducer';
 import OrdersReducer from '@tcp/core/src/components/features/account/Orders/container/Orders.reducer';
@@ -107,8 +109,10 @@ import {
   PICKUP_MODAL_REDUCER_KEY,
   RECOMMENDATIONS_REDUCER_KEY,
   SEARCH_REDUCER_KEY,
+  STORE_LOCATOR_REDUCER_KEY,
   SOCIAL_REDUCER_KEY,
   SLP_PAGE_REDUCER_KEY,
+  STORE_DETAIL_REDUCER_KEY,
   QUICK_VIEW_REDUCER_KEY,
   POINTS_CLAIM_REDUCER_KEY,
   CONFIRMATION_REDUCER_KEY,
@@ -222,7 +226,9 @@ export default combineReducers({
   [BIRTHDAY_SAVING_LIST_REDUCER_KEY]: BirthdaySavingsListReducer,
   [PICKUP_MODAL_REDUCER_KEY]: PickupModalReducer,
   [RECOMMENDATIONS_REDUCER_KEY]: RecommendationsReducer,
+  [STORE_LOCATOR_REDUCER_KEY]: StoreLocatorReducer,
   [SLP_PAGE_REDUCER_KEY]: SearchPageReducer,
+  [STORE_DETAIL_REDUCER_KEY]: StoreDetailReducer,
   [POINTS_CLAIM_REDUCER_KEY]: PointsClaimReducer,
   [CONFIRMATION_REDUCER_KEY]: orderConfirmationReducer,
   [ORDERS_REDUCER_KEY]: OrdersReducer,

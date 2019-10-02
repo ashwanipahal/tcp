@@ -10,7 +10,7 @@ import {
   TouchableOpacityComponent,
   IconContainer,
 } from '../Button.style.native';
-import { getLocator } from '../../../../../utils';
+import { getLocator, configureInternalNavigationFromCMSUrl } from '../../../../../utils';
 
 const IconComp = values => {
   const { showIcon, iconName, selectedIcon, iconColor, iconSize, selected } = values;
@@ -43,11 +43,13 @@ const CustomButton = props => {
   } = props;
   const textValue = text || '';
   const { url, navigation } = otherProps;
+
   const openUrl = () => {
     if (validateExternalUrl(url)) {
       UrlHandler(url);
     } else {
-      navigateToPage(url, navigation);
+      const cmsValidatedUrl = configureInternalNavigationFromCMSUrl(url);
+      navigateToPage(cmsValidatedUrl, navigation);
     }
   };
 

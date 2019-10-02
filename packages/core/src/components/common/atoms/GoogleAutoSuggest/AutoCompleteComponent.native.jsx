@@ -14,6 +14,48 @@ import {
   item,
   container,
 } from './AutoCompleteComponent.native.style';
+import { getCacheData, setCacheData } from '../../../../utils/multipleLocalStorageManagement';
+import { requireNamedOnlineModule } from '../../../../utils/resourceLoader';
+
+export function getAddressLocationInfo(address) {
+  const googleApiStoredDataObj = getCacheData('geocode-response', address);
+  if (googleApiStoredDataObj) {
+    // Available in storage, don't trigger the google API call
+    return new Promise(resolve => {
+      resolve({
+        lat: googleApiStoredDataObj.lat,
+        lng: googleApiStoredDataObj.lng,
+        country: googleApiStoredDataObj.country,
+      });
+    });
+  }
+  return requireNamedOnlineModule('google.maps').then(() => {
+    const geocoder = new window.google.maps.Geocoder();
+    return new Promise(resolve => {
+      geocoder.geocode({ address }, (results, status) => {
+        if (status === 'OK') {
+          const country = results[0].address_components.find(component => {
+            return component.types && component.types.find(type => type === 'country');
+          });
+          const timeStamp = new Date().getTime();
+          const storeDataObject = {
+            lat: results[0].geometry.location.lat(),
+            lng: results[0].geometry.location.lng(),
+            country: country && country.short_name,
+          };
+          setCacheData({
+            key: 'geocode-response',
+            storageKey: address,
+            storageValue: { ...storeDataObject, timeStamp },
+          });
+          resolve(storeDataObject);
+        } else {
+          resolve({ error: status });
+        }
+      });
+    });
+  });
+}
 
 export const GooglePlacesInput = props => {
   const {
@@ -25,6 +67,7 @@ export const GooglePlacesInput = props => {
     onEndEditing,
     refs,
     onChangeText,
+    clearButtonMode,
   } = props;
   const [focussed, setFocussed] = useState(false);
   const onFocus = () => {
@@ -64,6 +107,7 @@ export const GooglePlacesInput = props => {
         }}
         textInputProps={{
           onFocus,
+          clearButtonMode,
           onSubmitEditing: text => {
             onSubmitEditing(text.nativeEvent.text);
           },
@@ -103,6 +147,7 @@ GooglePlacesInput.propTypes = {
   onEndEditing: PropTypes.func,
   refs: PropTypes.func,
   onChangeText: PropTypes.func,
+  clearButtonMode: PropTypes.string,
 };
 
 GooglePlacesInput.defaultProps = {
@@ -116,6 +161,7 @@ GooglePlacesInput.defaultProps = {
   onEndEditing: () => {},
   refs: () => {},
   onChangeText: () => {},
+  clearButtonMode: 'while-editing',
 };
 
 export default GooglePlacesInput;
