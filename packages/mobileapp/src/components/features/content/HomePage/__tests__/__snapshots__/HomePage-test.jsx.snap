@@ -91,63 +91,8 @@ exports[`HomePageView should render correctly 1`] = `
           },
           "textItems": Array [
             Object {
-              "style": "small_text_normal",
-              "text": "Every Length, ",
-            },
-            Object {
-              "style": "small_text_normal",
-              "text": "Style, ",
-            },
-            Object {
-              "style": "small_text_normal",
-              "text": " Color & Size",
-            },
-          ],
-        },
-        Object {
-          "icon": Object {
-            "icon": "",
-            "placement": "",
-          },
-          "link": Object {
-            "action": "",
-            "external": 0,
-            "target": "",
-            "text": "",
-            "title": "",
-            "url": "/p/",
-          },
-          "textItems": Array [
-            Object {
               "style": "medium_text_black",
-              "text": "THE SHORT SHOP",
-            },
-          ],
-        },
-      ]
-    }
-    promoBanner={
-      Array [
-        Object {
-          "link": Object {
-            "class": "",
-            "external": 0,
-            "target": "",
-            "text": "",
-            "title": "",
-            "url": "/c/",
-          },
-          "textItems": Array [
-            Object {
-              "style": "medium_text_semibold",
-              "style2": "extra_large_text_regular",
-              "text": "ALL UNIFORMS",
-              "text2": "ALL SHORTS",
-            },
-            Object {
-              "style": "fixed_medium_text_black",
-              "style2": "extra_large_text_black",
-              "text": "60% OFF",
+              "text": "SHOP THE LOOK",
             },
           ],
         },
