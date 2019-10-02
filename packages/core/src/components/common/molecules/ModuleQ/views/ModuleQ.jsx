@@ -32,6 +32,33 @@ class ModuleQ extends React.PureComponent {
     this.setState({ currentCatId: catId, currentTabItem: tabItem });
   };
 
+  getUrlWithHttp = url => url.replace(/(^\/\/)/, 'https:$1');
+
+  getSlideItem = item => {
+    const { id, items, largeImageUrl, pdpUrl } = item;
+    const looksImage = items.slice(0, 2);
+    const hiddenImagesCount = items.length - looksImage.length;
+    return (
+      <Anchor
+        key={id}
+        className="moduleQ-image-link"
+        to={pdpUrl}
+        asPath={pdpUrl}
+        dataLocator={`${getLocator('moduleQ_product_image')}`}
+      >
+        <div className="looks-large-image">
+          <Image alt={id} src={this.getUrlWithHttp(largeImageUrl)} />
+        </div>
+        <div className="looks-small-images">
+          {looksImage.map(({ smallImageUrl, name, remoteId }) => {
+            return <Image key={remoteId} alt={name} src={this.getUrlWithHttp(smallImageUrl)} />;
+          })}
+          <div className="looks-last-item">{hiddenImagesCount}</div>
+        </div>
+      </Anchor>
+    );
+  };
+
   getCurrentCtaButton = () => {
     const { currentTabItem: { singleCTAButton: currentSingleCTAButton } = {} } = this.state;
 
@@ -60,8 +87,6 @@ class ModuleQ extends React.PureComponent {
       </Row>
     ) : null;
   };
-
-  getUrlWithHttp = url => url.replace(/(^\/\/)/, 'https:$1');
 
   render() {
     const {
@@ -112,7 +137,7 @@ class ModuleQ extends React.PureComponent {
             />
           </div>
         </Row>
-        <Row>
+        <Row fullBleed={{ small: true, medium: true }}>
           <Col
             className="moduleQ__carousel-wrapper"
             colSize={{
@@ -141,20 +166,7 @@ class ModuleQ extends React.PureComponent {
                   customArrowRight: getIconPath('carousel-big-carrot'),
                 }}
               >
-                {selectedProductList.map(({ imageUrl, pdpUrl }, index) => {
-                  return (
-                    <div key={index.toString()}>
-                      <Anchor
-                        className="moduleQ-image-link"
-                        to={pdpUrl}
-                        asPath={pdpUrl}
-                        dataLocator={`${getLocator('moduleQ_product_image')}${index}`}
-                      >
-                        <Image alt={imageUrl} src={this.getUrlWithHttp(imageUrl)} />
-                      </Anchor>
-                    </div>
-                  );
-                })}
+                {selectedProductList.map(item => this.getSlideItem(item))}
               </Carousel>
             ) : null}
           </Col>

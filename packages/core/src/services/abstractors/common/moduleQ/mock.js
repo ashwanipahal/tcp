@@ -11,34 +11,6 @@ export default {
         {
           textItems: [
             {
-              text: 'Every Length, ',
-              style: 'small_text_normal',
-            },
-            {
-              text: 'Style, ',
-              style: 'small_text_normal',
-            },
-            {
-              text: ' Color & Size',
-              style: 'small_text_normal',
-            },
-          ],
-          link: {
-            url: '/p/',
-            text: '',
-            title: '',
-            target: '',
-            external: 0,
-            action: '',
-          },
-          icon: {
-            icon: '',
-            placement: '',
-          },
-        },
-        {
-          textItems: [
-            {
               text: 'THE SHORT SHOP',
               style: 'medium_text_black',
             },

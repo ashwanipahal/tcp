@@ -5,11 +5,12 @@ const { breakpoints } = theme;
 export default {
   TOTAL_IMAGES: 7,
   CAROUSEL_OPTIONS: {
+    adaptiveHeight: true,
     autoplay: false,
     arrows: true,
     autoplaySpeed: 2000,
     centerMode: true,
-    centerPadding: '60px',
+    centerPadding: '0px',
     fade: false,
     speed: 1000,
     dots: true,
@@ -20,6 +21,9 @@ export default {
       {
         breakpoint: parseInt(breakpoints.medium, 10) - 1,
         settings: {
+          slidesToShow: 1,
+          slidesToScroll: 1,
+          centerPadding: '75px',
           arrows: false,
           swipeToSlide: true,
         },
@@ -27,6 +31,9 @@ export default {
       {
         breakpoint: parseInt(breakpoints.large, 10) - 1,
         settings: {
+          slidesToShow: 1,
+          slidesToScroll: 1,
+          centerPadding: '177px',
           arrows: false,
           swipeToSlide: true,
         },
