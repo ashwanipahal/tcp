@@ -143,7 +143,11 @@ class OverlayModal extends React.Component {
 
   handleWindowClick(e) {
     /* istanbul ignore else */
-    if (this.modalRef && !this.modalRef.contains(e.target)) {
+    if (
+      this.modalRef &&
+      !this.modalRef.contains(e.target) &&
+      !e.target.closest('.TCPModal__InnerContent')
+    ) {
       this.closeModal();
     }
   }

@@ -88,6 +88,26 @@ const styles = css`
   .couponCard__container_error_text {
     color: ${props => props.theme.colors.TEXT.RED};
   }
+
+  .couponCard_slick {
+    margin: ${props => props.theme.spacing.ELEM_SPACING.MED}
+      ${props => props.theme.spacing.ELEM_SPACING.LRG};
+    .couponCard__row {
+      margin: ${props => props.theme.spacing.ELEM_SPACING.SM} 0;
+    }
+    .coupon__button_black {
+      padding-left: ${props => props.theme.spacing.ELEM_SPACING.MED};
+      padding-right: ${props => props.theme.spacing.ELEM_SPACING.MED};
+    }
+    .coupon__button_white {
+      padding-left: ${props => props.theme.spacing.ELEM_SPACING.MED};
+      padding-right: ${props => props.theme.spacing.ELEM_SPACING.MED};
+    }
+  }
+
+  .transparent-box {
+    background: none;
+  }
 `;
 
 export default styles;

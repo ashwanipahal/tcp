@@ -6,6 +6,7 @@ import AccountDrawerHeading from '../../../molecules/AccountDrawerHeading';
 import RewardsPoints from '../../../../common/organism/RewardsPoints';
 import ExtraPointsTeaser from '../../../molecules/ExtraPointsTeaser';
 import AccountDrawerBottomLinks from '../../../molecules/AccountDrawerBottomLinks';
+import MyOffersCoupons from '../../../../common/organism/MyOffersCoupons';
 import { isCanada } from '../../../../../../../utils';
 
 const AccountDrawerPage = props => {
@@ -20,6 +21,9 @@ const AccountDrawerPage = props => {
           <ExtraPointsTeaser plccUser={plccUser} />
         </>
       )}
+      <div className="accountDrawer_coupons">
+        <MyOffersCoupons closedOverlay={closedOverlay} />
+      </div>
       <AccountDrawerBottomLinks />
     </div>
   );
