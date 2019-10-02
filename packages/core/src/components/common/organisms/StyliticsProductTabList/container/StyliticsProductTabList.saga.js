@@ -17,10 +17,10 @@ export function* fetchStyliticsProductTabListData({ payload }) {
         styliticsProductTabListDataSuccess({ [categoryId]: res, errors: { [categoryId]: null } })
       );
     }
-    throw new Error('Something went wrong while making request!');
+    throw new Error();
   } catch (err) {
     return yield put(
-      styliticsProductTabListDataFail({ [categoryId]: [], errors: { [categoryId]: err.message } })
+      styliticsProductTabListDataFail({ [categoryId]: [], errors: { [categoryId]: true } })
     );
   }
 }

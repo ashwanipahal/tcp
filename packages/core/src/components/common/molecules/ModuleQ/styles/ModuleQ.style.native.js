@@ -45,15 +45,7 @@ export const PromoContainer = styled.View`
 
 export const HeaderContainer = styled.View`
   align-items: center;
-  ${props =>
-    props.layout === 'alt'
-      ? ` width:100%;
-      `
-      : `background:white;
- margin-left:62px;
- margin-right:62px;
- width:70%;
- `};
+  width: 100%;
 `;
 
 export const SecondHeaderContainer = styled.View`

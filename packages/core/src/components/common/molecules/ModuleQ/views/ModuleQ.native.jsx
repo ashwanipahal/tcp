@@ -33,9 +33,10 @@ const PRODUCT_IMAGE_GUTTER = 16;
 const PRODUCT_IMAGE_PER_SLIDE = 4;
 const MODULE_HEIGHT = 142;
 const MODULE_WIDTH = (PRODUCT_IMAGE_WIDTH + PRODUCT_IMAGE_GUTTER) * PRODUCT_IMAGE_PER_SLIDE;
-const { IMG_DATA, TOTAL_IMAGES } = config;
+const { IMG_DATA, TOTAL_IMAGES, CAROUSEL_OPTIONS } = config;
 
-function getCarouselSlide(item, navigation) {
+/* SnapCarousel slide item handler */
+const getCarouselSlide = (item, navigation) => {
   return (
     <ImageSlideWrapper>
       {item.map(productItem => {
@@ -58,7 +59,7 @@ function getCarouselSlide(item, navigation) {
                 })
               }
               navigation={navigation}
-              testID={`${getLocator('moduleJ_product_image')}${productItemIndex}`}
+              testID={`${getLocator('moduleQ_product_image')}${productItemIndex}`}
             >
               <StyledImage
                 alt={productName}
@@ -74,9 +75,9 @@ function getCarouselSlide(item, navigation) {
       })}
     </ImageSlideWrapper>
   );
-}
+};
 
-function ModuleQ(props) {
+const ModuleQ = props => {
   const [selectedCategoryId, setSelectedCategoryId] = useState(null);
   const [selectedTabItem, setSelectedTabItem] = useState(null);
 
@@ -94,19 +95,8 @@ function ModuleQ(props) {
   let selectedProductList = styliticsProductTabList[selectedCategoryId] || [];
   selectedProductList = selectedProductList.slice(0, TOTAL_IMAGES);
 
-  const selectedProductCarouselList = selectedProductList.reduce(
-    (list, item, index) => {
-      const lastList = list[list.length - 1];
-      if (lastList.length === PRODUCT_IMAGE_PER_SLIDE) {
-        list.push([{ ...item, productItemIndex: index }]);
-      } else {
-        lastList.push({ ...item, productItemIndex: index });
-      }
-
-      return list;
-    },
-    [[]]
-  );
+  // TODO: will be updated in next PR
+  const selectedProductCarouselList = selectedProductList;
 
   const renderCarouselSlide = slideProps => {
     const { item } = slideProps;
@@ -122,33 +112,33 @@ function ModuleQ(props) {
     <Container className={bgClass}>
       <MessageContainer layout={layout}>
         <Wrapper>
-          <HeaderContainer layout={layout}>
-            {[headerText[0]] && (
+          {headerText[0] && (
+            <HeaderContainer layout={layout}>
               <LinkText
                 navigation={navigation}
                 headerText={[headerText[0]]}
-                testID={getLocator('moduleJ_header_text_0')}
+                testID={getLocator('moduleQ_header_text_0')}
                 useStyle
               />
-            )}
-          </HeaderContainer>
-          <SecondHeaderContainer>
-            {[headerText[1]] && (
+            </HeaderContainer>
+          )}
+          {headerText[1] && (
+            <SecondHeaderContainer>
               <LinkText
                 navigation={navigation}
                 headerText={[headerText[1]]}
-                testID={getLocator('moduleJ_header_text_1')}
+                testID={getLocator('moduleQ_header_text_1')}
                 renderComponentInNewLine
                 useStyle
               />
-            )}
-          </SecondHeaderContainer>
+            </SecondHeaderContainer>
+          )}
         </Wrapper>
 
         {promoBanner && (
           <PromoContainer layout={layout}>
             <PromoBanner
-              testID={getLocator('moduleJ_promobanner_text')}
+              testID={getLocator('moduleQ_promobanner_text')}
               promoBanner={promoBanner}
               navigation={navigation}
             />
@@ -160,7 +150,7 @@ function ModuleQ(props) {
           onProductTabChange={onProductTabChange}
           tabItems={divTabs}
           navigation={navigation}
-          testID={getLocator('moduleJ_cta_link')}
+          testID={getLocator('moduleQ_cta_link')}
         />
       </ProductTabListContainer>
 
@@ -172,9 +162,9 @@ function ModuleQ(props) {
             height={MODULE_HEIGHT}
             width={MODULE_WIDTH}
             carouselConfig={{
-              autoplay: false,
+              autoplay: CAROUSEL_OPTIONS.autoplay,
             }}
-            autoplay={false}
+            autoplay={CAROUSEL_OPTIONS.autoplay}
           />
         ) : null}
       </ImageSlidesWrapper>
@@ -187,17 +177,17 @@ function ModuleQ(props) {
             text={selectedSingleCTAButton.text}
             url={selectedSingleCTAButton.url}
             navigation={navigation}
-            testID={getLocator('moduleJ_cta_btn')}
+            testID={getLocator('moduleQ_cta_btn')}
           />
         </ButtonContainer>
       ) : null}
     </Container>
   );
-}
+};
 
 ModuleQ.defaultProps = {
   bgClass: '',
-  promoBanner: [],
+  promoBanner: null,
 };
 
 ModuleQ.propTypes = {

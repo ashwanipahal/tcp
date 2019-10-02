@@ -19,8 +19,14 @@ class Header extends React.PureComponent {
   }
 
   componentDidMount() {
+    // eslint-disable-next-line extra-rules/no-commented-out-code
+    // this.addScrollListener();
+    const { loadFavoriteStore } = this.props;
+    loadFavoriteStore({});
     this.addScrollListener();
   }
+
+  componentDidUpdate() {}
 
   componentWillUnmount() {
     this.removeScrollListener();
@@ -78,6 +84,7 @@ class Header extends React.PureComponent {
       labels,
       openMiniBagDispatch,
       totalItems,
+      favStore,
       isPickupModalOpen,
     } = this.props;
     const { showCondensedHeader } = this.state;
@@ -90,6 +97,7 @@ class Header extends React.PureComponent {
           openOverlay={openTrackOrderOverlay}
           isUserLoggedIn={isLoggedIn}
           labels={labels}
+          store={favStore}
         />
 
         <HeaderMiddleNav
@@ -102,6 +110,8 @@ class Header extends React.PureComponent {
           cartItemCount={cartItemCount}
           totalItems={totalItems}
           openMiniBagDispatch={openMiniBagDispatch}
+          store={favStore}
+          labels={labels}
         />
         <HeaderPromo
           mobileMarkup
@@ -148,6 +158,16 @@ Header.propTypes = {
   openMiniBagDispatch: PropTypes.func.isRequired,
   labels: PropTypes.shape({}),
   totalItems: PropTypes.string,
+  favStore: PropTypes.shape({
+    basicInfo: PropTypes.shape({}),
+    hours: PropTypes.shape({
+      regularHours: PropTypes.shape([]),
+      regularAndHolidayHours: PropTypes.shape([]),
+      holidayHours: PropTypes.shape([]),
+    }),
+    features: PropTypes.shape({}),
+  }),
+  loadFavoriteStore: PropTypes.func.isRequired,
   isPickupModalOpen: PropTypes.bool,
 };
 
@@ -156,6 +176,21 @@ Header.defaultProps = {
     trackOrder: {},
   },
   totalItems: 0,
+  favStore: {
+    basicInfo: {
+      id: '',
+      storeName: '',
+      phone: '',
+      coordinates: {},
+      address: {},
+    },
+    hours: {
+      regularHours: [],
+      regularAndHolidayHours: [],
+      holidayHours: [],
+    },
+    features: {},
+  },
   isPickupModalOpen: false,
 };
 

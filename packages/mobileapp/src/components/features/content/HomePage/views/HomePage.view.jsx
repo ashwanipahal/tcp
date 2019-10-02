@@ -6,9 +6,6 @@ import { LAZYLOAD_HOST_NAME } from '@tcp/core/src/utils';
 
 import PropTypes from 'prop-types';
 import HomePageSlots from '@tcp/core/src/components/common/molecules/HomePageSlots';
-
-import moduleQMock from '@tcp/core/src/services/abstractors/common/moduleQ/mock';
-
 import {
   ModuleD,
   ModuleH,
@@ -19,7 +16,6 @@ import {
   ModuleB,
   ModuleJ,
   ModuleR,
-  ModuleQ,
 } from '@tcp/core/src/components/common/molecules';
 import InitialPropsHOC from '@tcp/core/src/components/common/hoc/InitialPropsHOC/InitialPropsHOC.native';
 import HeaderPromo from '../../../../common/molecules/HeaderPromo';
@@ -78,7 +74,6 @@ class HomePageView extends React.PureComponent<Props> {
         <HeaderPromoContainer>
           <HeaderPromo headerPromo={headerPromo} />
         </HeaderPromoContainer>
-        <ModuleQ {...moduleQMock.moduleQ.composites} />
         <HomePageSlots slots={slots} modules={modulesMap} navigation={navigation} />
         <GetCandid apiConfig={apiConfig} navigation={navigation} />
         <Button
@@ -86,6 +81,30 @@ class HomePageView extends React.PureComponent<Props> {
           buttonVariation="variable-width"
           text="PLP Page"
           onPress={() => navigation.navigate('ProductListingPageContainer')}
+          style={buttonMargin}
+        />
+        <Button
+          fullWidth
+          buttonVariation="variable-width"
+          text="Store Details"
+          onPress={() =>
+            navigation.navigate({
+              routeName: 'StoreDetails',
+              params: { title: 'Store Details'.toUpperCase() },
+            })
+          }
+          style={buttonMargin}
+        />
+        <Button
+          fullWidth
+          buttonVariation="variable-width"
+          text="Store Landing"
+          onPress={() =>
+            navigation.navigate({
+              routeName: 'StoreLanding',
+              params: { title: 'Find A Store'.toUpperCase() },
+            })
+          }
           style={buttonMargin}
         />
       </LazyloadScrollView>
@@ -105,6 +124,7 @@ HomePageView.propTypes = {
   navigation: PropTypes.shape({}).isRequired,
   getBootstrapData: PropTypes.func.isRequired,
   screenProps: PropTypes.shape({}),
+  labels: PropTypes.shape({}).isRequired,
 };
 
 HomePageView.defaultProps = {
