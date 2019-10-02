@@ -1754,6 +1754,7 @@ exports[`ButtonList component renders correctly without props with payPal 1`] = 
   <Styled(CheckoutFooter)
     backLinkHandler={[Function]}
     backLinkText=""
+    disableNext={false}
     hideBackLink={true}
     nextButtonText=""
     showVenmoSubmit={false}
@@ -1817,6 +1818,7 @@ exports[`ButtonList component renders correctly without props with venmo 1`] = `
   <Styled(CheckoutFooter)
     backLinkHandler={[Function]}
     backLinkText=""
+    disableNext={false}
     hideBackLink={true}
     nextButtonText=""
     showVenmoSubmit={true}
