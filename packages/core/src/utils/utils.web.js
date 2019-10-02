@@ -210,6 +210,26 @@ export const getViewportInfo = () => {
 };
 
 /**
+ * Enable Body Scroll
+ */
+export const enableBodyScroll = () => {
+  if (typeof window !== 'undefined') {
+    const [body] = document.getElementsByTagName('body');
+    body.style.overflow = 'auto';
+  }
+};
+
+/**
+ * Disable Body Scroll
+ */
+export const disableBodyScroll = () => {
+  if (typeof window !== 'undefined') {
+    const [body] = document.getElementsByTagName('body');
+    body.style.overflow = 'hidden';
+  }
+};
+
+/**
  * Show Dark Overlay in background
  */
 export const showOverlay = () => {
@@ -254,6 +274,12 @@ export const scrollPage = (x = 0, y = 0) => {
   }
 };
 
+export const scrollTopElement = elem => {
+  if (window) {
+    document.getElementById(elem).scrollTop = 0;
+  }
+};
+
 export const getCountriesMap = data => {
   const countries = defaultCountries;
   data.map(value =>
@@ -294,21 +320,6 @@ export const languageRedirect = (newLanguage, oldLanguage) => {
   }
 };
 
-/**
- * This function will redirect to PDP from HOMEPAGE
- * on the basis of productId
- */
-export const redirectToPdp = (productId, seoToken) => {
-  if (!window) return null;
-
-  const params = seoToken ? `${seoToken}-${productId}` : productId;
-
-  return {
-    url: `/p?${params}`,
-    asPath: `/p/${params}`,
-  };
-};
-
 /*
  *
  * @param {object} event the HTML element's element
@@ -330,7 +341,7 @@ const getAPIInfoFromEnv = (apiSiteInfo, processEnv, siteId) => {
     langId: processEnv.RWD_WEB_LANGID || apiSiteInfo.langId,
     MELISSA_KEY: processEnv.RWD_WEB_MELISSA_KEY || apiSiteInfo.MELISSA_KEY,
     BV_API_KEY: processEnv.RWD_WEB_BV_API_KEY || apiSiteInfo.BV_API_KEY,
-    assetHost: processEnv.RWD_WEB_ASSETHOST || apiSiteInfo.assetHost,
+    assetHost: processEnv.RWD_WEB_DAM_HOST || apiSiteInfo.assetHost,
     domain: `${apiEndpoint}/${processEnv.RWD_WEB_API_IDENTIFIER}/`,
     unbxd: processEnv.RWD_WEB_UNBXD_DOMAIN || apiSiteInfo.unbxd,
     fbkey: processEnv.RWD_WEB_FACEBOOKKEY,
@@ -350,6 +361,7 @@ const getAPIInfoFromEnv = (apiSiteInfo, processEnv, siteId) => {
     borderFree: processEnv.BORDERS_FREE,
     borderFreeComm: processEnv.BORDERS_FREE_COMM,
     paypalEnv: processEnv.RWD_WEB_PAYPAL_ENV,
+    crossDomain: processEnv.RWD_WEB_CROSS_DOMAIN,
   };
 };
 const getGraphQLApiFromEnv = (apiSiteInfo, processEnv, relHostname) => {
@@ -452,11 +464,11 @@ export default {
   routerPush,
   bindAllClassMethodsToThis,
   scrollPage,
+  scrollTopElement,
   getCountriesMap,
   getCurrenciesMap,
   siteRedirect,
   languageRedirect,
-  redirectToPdp,
   handleGenericKeyDown,
   viewport,
   canUseDOM,

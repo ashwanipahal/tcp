@@ -1,3 +1,4 @@
+/* eslint-disable */
 import React from 'react';
 import PropTypes from 'prop-types';
 import Button from '../../../atoms/Button';
@@ -16,16 +17,19 @@ class FulfillmentSection extends React.Component {
   }
 
   pickupOpenClick() {
-    const { currentProduct, onPickUpOpenClick } = this.props;
+    const { currentProduct, onPickUpOpenClick, onPickupClickAddon } = this.props;
     const { colorFitsSizesMap, generalProductId } = currentProduct;
-    const colorEntry = getMapSliceForColorProductId(colorFitsSizesMap, generalProductId);
+    // const colorEntry = getMapSliceForColorProductId(colorFitsSizesMap, generalProductId);
     onPickUpOpenClick({
       generalProductId,
       colorProductId: generalProductId,
-      isBopisCtaEnabled: colorEntry.miscInfo.isBopisEligible,
-      isBossCtaEnabled: colorEntry.miscInfo.isBossEligible,
+      // isBopisCtaEnabled: colorEntry.miscInfo.isBopisEligible,
+      // isBossCtaEnabled: colorEntry.miscInfo.isBossEligible,
       currentProduct,
     });
+    if (onPickupClickAddon) {
+      onPickupClickAddon();
+    }
   }
 
   render() {
@@ -39,7 +43,7 @@ class FulfillmentSection extends React.Component {
           onClick={this.pickupOpenClick}
           dataLocator={dataLocator}
         >
-          {buttonLabel}
+          {'Pick Up In Store'}
         </Button>
       </React.Fragment>
     );

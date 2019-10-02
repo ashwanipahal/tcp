@@ -332,6 +332,10 @@ const endpoints = {
     method: 'POST',
     URI: 'v2/account/points/claim',
   },
+  navigateXHR: {
+    method: 'POST',
+    URI: 'v2/appconfig/navigateXHR',
+  },
   getStyliticsProductViewById: {
     method: API_METHODS.GET,
     URI: 'https://widget-api.stylitics.com/api/outfits',
@@ -339,6 +343,10 @@ const endpoints = {
   getDetailedOrderHistory: {
     method: 'GET',
     URI: 'v2/wallet/getPointsAndOrderHistory',
+  },
+  addOrUpdateWishlist: {
+    method: 'PUT',
+    URI: 'v2/wishlist/addOrUpdateWishlist',
   },
 };
 export default endpoints;

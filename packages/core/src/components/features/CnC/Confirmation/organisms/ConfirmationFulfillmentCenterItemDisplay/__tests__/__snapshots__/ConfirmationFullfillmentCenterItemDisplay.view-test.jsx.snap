@@ -1,0 +1,51 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`ConfirmationFulfillmentCenterItemDisplay should render correctly 1`] = `
+<div>
+  <Styled(ConfirmationItemTitleDisplay)
+    center={
+      Object {
+        "isSamePickUpStore": true,
+      }
+    }
+    labels={Object {}}
+  />
+  <div
+    className="confirmation-item-wrapper"
+  >
+    <Styled(ConfirmationOrderNumberDisplay)
+      center={
+        Object {
+          "isSamePickUpStore": true,
+        }
+      }
+      labels={Object {}}
+    />
+  </div>
+</div>
+`;
+
+exports[`ConfirmationFulfillmentCenterItemDisplay should render correctly when isSamePickUpStore is false 1`] = `
+<div>
+  <div
+    className="confirmation-item-wrapper"
+  >
+    <Styled(ConfirmationItemTitleDisplay)
+      center={
+        Object {
+          "isSamePickUpStore": false,
+        }
+      }
+      labels={Object {}}
+    />
+    <Styled(ConfirmationOrderNumberDisplay)
+      center={
+        Object {
+          "isSamePickUpStore": false,
+        }
+      }
+      labels={Object {}}
+    />
+  </div>
+</div>
+`;

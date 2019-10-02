@@ -8,10 +8,11 @@ import withStyles from '../../../../common/hoc/withStyles.native';
 import { UnderlineStyle } from '../styles/MyPreference.style.native';
 import MyFavoriteStore from '../../MyProfile/organism/MyFavoriteStore';
 import BodyCopy from '../../../../common/atoms/BodyCopy';
+import SocialContainer from '../../../../common/organisms/SocialAccount/container/Social.container';
 
 class MyPrefrenceSection extends React.PureComponent {
   render() {
-    const { labels } = this.props;
+    const { labels, handleComponentChange } = this.props;
     return (
       <View>
         <ScrollView showsVerticalScrollIndicator={false} keyboardShouldPersistTaps="handled">
@@ -26,6 +27,7 @@ class MyPrefrenceSection extends React.PureComponent {
           </StyledHeading>
           <UnderlineStyle />
           <MyFavoriteStore isMyPreferences />
+          <SocialContainer labels={labels} handleComponentChange={handleComponentChange} />
         </ScrollView>
       </View>
     );
@@ -34,10 +36,12 @@ class MyPrefrenceSection extends React.PureComponent {
 
 MyPrefrenceSection.propTypes = {
   labels: PropTypes.shape({}),
+  handleComponentChange: PropTypes.func,
 };
 
 MyPrefrenceSection.defaultProps = {
   labels: {},
+  handleComponentChange: () => {},
 };
 
 export default withStyles(MyPrefrenceSection);

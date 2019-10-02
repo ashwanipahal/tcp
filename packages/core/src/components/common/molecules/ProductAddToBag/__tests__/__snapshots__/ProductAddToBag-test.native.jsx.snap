@@ -185,6 +185,7 @@ exports[`ProductAddToBagVanilla native should render correctly should match snap
       width={null}
     />
   </Styled(View)>
+  <ErrorDisplay />
   <Styled(CustomButton)
     accessibilityLabel="Add to Bag"
     active={false}
@@ -204,7 +205,7 @@ exports[`ProductAddToBagVanilla native should render correctly should match snap
     locator="pdp_color_swatch"
     margin="16px 0 0 0"
     navigation={Object {}}
-    onPress={null}
+    onPress={[Function]}
     selected={false}
     selectedIcon="chevron-up"
     showIcon={false}

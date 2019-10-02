@@ -22,6 +22,7 @@ const ignorePsuedoCodeDir = [
   '/services/abstractors/CnC/Checkout.js',
   '/GoogleAutoSuggest/',
   '/utils/localStorageManagement.js',
+  '/Favorites/',
 ];
 
 module.exports = {
@@ -47,11 +48,17 @@ module.exports = {
     '**/*.jsx',
     '!**/*.style.js',
     '!**/*.style.native.js',
+    '!**/*.styles.js',
+    '!**/*.styles.native.js',
     '!**/*.constants.js',
     '!**/*.config.js',
+    '!**/config.js',
     '!**/core/styles/**',
     '!**/*.actions.js',
     '!**/*.container.js',
+    '!**/*.container.native.js',
+    '!**/*.container.native.jsx',
+    '!**/*.container.jsx',
     '!**/*.query.js',
     '!**/__mocks__/**',
     '!**/*.native.js',
