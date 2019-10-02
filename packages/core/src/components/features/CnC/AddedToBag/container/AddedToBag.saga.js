@@ -1,4 +1,4 @@
-import { call, takeLatest, put } from 'redux-saga/effects';
+import { call, takeLatest, put, select } from 'redux-saga/effects';
 import ADDEDTOBAG_CONSTANTS from '../AddedToBag.constants';
 import {
   addCartEcomItem,
@@ -11,6 +11,7 @@ import {
   clearAddToBagErrorState,
 } from './AddedToBag.actions';
 import BAG_PAGE_ACTIONS from '../../BagPage/container/BagPage.actions';
+import BagPageSelectors from '../../BagPage/container/BagPage.selectors';
 import { getAPIConfig } from '../../../../../utils';
 
 export function* addToCartEcom({ payload }) {
@@ -85,7 +86,8 @@ export function* addItemToCartBopis({ payload }) {
       itemPartNumber: variantId,
     };
     yield put(clearAddToBagErrorState());
-    const res = yield call(addCartBopisItem, params);
+    const errorMapping = yield select(BagPageSelectors.getErrorMapping);
+    const res = yield call(addCartBopisItem, params, errorMapping);
     if (callback) {
       callback();
     }
@@ -98,7 +100,11 @@ export function* addItemToCartBopis({ payload }) {
     yield put(openAddedToBag());
     yield put(BAG_PAGE_ACTIONS.getOrderDetails());
   } catch (err) {
-    yield put(AddToCartError(err));
+    const errorMapping = yield select(BagPageSelectors.getErrorMapping);
+    const errorMessage =
+      // eslint-disable-next-line no-underscore-dangle
+      (err && err.errorMessages && err.errorMessages._error) || errorMapping.DEFAULT;
+    yield put(AddToCartError(errorMessage));
   }
 }
 

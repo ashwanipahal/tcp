@@ -44,7 +44,7 @@ export const addCartEcomItem = params =>
       throw getFormattedError(err);
     });
 
-export const addCartBopisItem = params =>
+export const addCartBopisItem = (params, errorMapping) =>
   executeStatefulAPICall({ body: params, webService: endpoints.addOrderBopisItem })
     .then(res => {
       if (responseContainsErrors(res)) {
@@ -54,12 +54,8 @@ export const addCartBopisItem = params =>
         orderItemId: res.body.orderItemId,
       };
     })
-    // eslint-disable-next-line no-unused-vars
     .catch(err => {
-      // TODO - Will correct in next PR
-      // eslint-disable-next-line no-throw-literal
-      throw 'Incorrect response structure';
-      // - throw getFormattedError(err);
+      throw getFormattedError(err, errorMapping);
     });
 
 export default {

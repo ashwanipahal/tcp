@@ -494,6 +494,7 @@ class _PickupStoreSelectionForm extends React.Component {
         </Row>
         {isSkuResolved && (
           <BodyCopy
+            className="storeSearchError"
             fontFamily="secondary"
             fontSize="fs14"
             fontWeight="extrabold"

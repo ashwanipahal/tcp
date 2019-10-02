@@ -86,17 +86,6 @@ DisplayProductSpecification.propTypes = {
   productValue: PropTypes.string.isRequired,
 };
 
-const getColorFitsSizesMap = props => {
-  return (
-    props.colorFitsSizesMap &&
-    props.colorFitsSizesMap.filter(
-      colorEntry =>
-        colorEntry.miscInfo &&
-        (colorEntry.miscInfo.isBopisEligible || colorEntry.miscInfo.isBossEligible)
-    )
-  );
-};
-
 class PickupProductFormPart extends React.Component {
   static propTypes = {
     /** the whole product detail to have it engaged on BOPIS form */
@@ -109,19 +98,6 @@ class PickupProductFormPart extends React.Component {
   static defaultProps = {
     isPickUpWarningModal: false,
   };
-
-  constructor(props) {
-    super(props);
-
-    this.colorFitsSizesMap = getColorFitsSizesMap(props);
-  }
-
-  componentWillReceiveProps(nextProps) {
-    const { colorFitsSizesMap } = this.props;
-    if (colorFitsSizesMap !== nextProps.colorFitsSizesMap) {
-      this.colorFitsSizesMap = getColorFitsSizesMap(nextProps);
-    }
-  }
 
   renderProductValues = (initialValues, size) => {
     const fitSize = `${initialValues.Size} ${initialValues.Fit || ''}`;

@@ -169,6 +169,7 @@ class PickupSkuSelectionForm extends React.Component {
       isPickUpWarningModal,
       currentProduct,
       prices,
+      className,
     } = this.props;
 
     const { currentColorEntry, selectedColor } = this.state;
@@ -180,28 +181,32 @@ class PickupSkuSelectionForm extends React.Component {
     const listPrice = prices && prices.listPrice;
     const offerPrice = prices && prices.offerPrice;
 
-    return isSkuResolved ? (
-      <PickupProductFormPart
-        colorFitSizeDisplayNames={colorFitSizeDisplayNames}
-        colorFitsSizesMap={this.colorFitsSizesMap}
-        name={name}
-        isShowExtendedSizesNotification={isShowExtendedSizesNotification}
-        isPreferredStoreError={isPreferredStoreError}
-        onEditSku={onEditSku}
-        promotionalMessage={promotionalMessage}
-        initialValues={initialValues}
-        promotionalPLCCMessage={promotionalPLCCMessage}
-        isPickUpWarningModal={isPickUpWarningModal}
-        isCanada={isCanada}
-        isHasPlcc={isPlcc}
-        currencySymbol={currencySymbol}
-        isInternationalShipping={isInternationalShipping}
-        imagePath={imageUrl}
-        listPrice={listPrice}
-        offerPrice={offerPrice}
-      />
-    ) : (
-      this.getPickUpSKUSection(imageUrl, currentColorEntry)
+    return (
+      <div className={className}>
+        {isSkuResolved ? (
+          <PickupProductFormPart
+            colorFitSizeDisplayNames={colorFitSizeDisplayNames}
+            colorFitsSizesMap={this.colorFitsSizesMap}
+            name={name}
+            isShowExtendedSizesNotification={isShowExtendedSizesNotification}
+            isPreferredStoreError={isPreferredStoreError}
+            onEditSku={onEditSku}
+            promotionalMessage={promotionalMessage}
+            initialValues={initialValues}
+            promotionalPLCCMessage={promotionalPLCCMessage}
+            isPickUpWarningModal={isPickUpWarningModal}
+            isCanada={isCanada}
+            isHasPlcc={isPlcc}
+            currencySymbol={currencySymbol}
+            isInternationalShipping={isInternationalShipping}
+            imagePath={imageUrl}
+            listPrice={listPrice}
+            offerPrice={offerPrice}
+          />
+        ) : (
+          this.getPickUpSKUSection(imageUrl, currentColorEntry)
+        )}
+      </div>
     );
   }
 }

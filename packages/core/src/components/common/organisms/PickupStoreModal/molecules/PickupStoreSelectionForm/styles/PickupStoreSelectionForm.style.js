@@ -13,12 +13,18 @@ export default css`
     margin: 18px 0 12px;
   }
   margin: 0 0 24px 0;
+  .storeSearchError {
+    margin: 10px;
+  }
   @media ${props => props.theme.mediaQuery.medium} {
     .find-store-label {
       margin-top: 12px;
       margin-bottom: 20px;
     }
     .distance-input {
+      margin: 0;
+    }
+    .storeSearchError {
       margin: 0;
     }
     margin: 0;
@@ -34,6 +40,9 @@ export default css`
     .TextBox__input,
     .select__input {
       padding-top: 26px;
+    }
+    .storeSearchError {
+      margin: 0;
     }
     margin: 0;
   }

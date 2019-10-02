@@ -18,7 +18,7 @@ import {
   getPrices,
 } from '../../../../features/browse/ProductListing/molecules/ProductList/utils/productsCommonUtils';
 import withStyles from '../../../hoc/withStyles';
-import styles from '../styles/PickUpStoreModal.style';
+import styles, { modalstyles } from '../styles/PickUpStoreModal.style';
 import { SKU_DETAILS } from '../PickUpStoreModal.constants';
 import PickupSkuSelectionForm from '../molecules/PickupSkuSelectionForm';
 import PickupStoreSelectionForm from '../molecules/PickupStoreSelectionForm';
@@ -137,7 +137,7 @@ class PickUpStoreModalView extends React.Component {
     /** an optional identifier to be passed to addItemToCartInPickup */
     // eslint-disable-next-line react/no-unused-prop-types
     requestorKey: PropTypes.string,
-    pickupHeading: PropTypes.string.isRequired,
+    pickupModalHeading: PropTypes.string.isRequired,
     isCanada: PropTypes.bool.isRequired,
     isPlcc: PropTypes.bool,
     /* The session currency symbol */
@@ -524,15 +524,17 @@ class PickUpStoreModalView extends React.Component {
   }
 
   render() {
-    const { pickupHeading, className } = this.props;
+    const { pickupModalHeading, className } = this.props;
     return (
       <Modal
         isOpen
         onRequestClose={this.onCloseClick}
         overlayClassName="TCPModal__Overlay"
         className={`${className} TCPModal__Content`}
-        heading={pickupHeading}
+        heading={pickupModalHeading}
         fixedWidth
+        stickyHeader
+        inheritedStyles={modalstyles}
         widthConfig={{ small: '375px', medium: '600px', large: '704px' }}
         heightConfig={{ minHeight: '534px', height: '620', maxHeight: '650' }}
       >
