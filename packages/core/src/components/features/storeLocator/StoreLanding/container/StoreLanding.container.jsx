@@ -29,6 +29,10 @@ export class StoreLanding extends PureComponent {
     this.getFavoriteStoreInititator();
   }
 
+  /**
+   * @function getLocationStores function to fetch the
+   * stores list based on the user location coordinates
+   */
   getLocationStores = () => {
     if (navigator.geolocation) {
       const { loadStoresByCoordinates } = this;
