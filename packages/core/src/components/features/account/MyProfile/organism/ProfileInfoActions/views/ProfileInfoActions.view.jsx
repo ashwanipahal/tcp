@@ -87,7 +87,7 @@ export const ProfileInfoActions = ({
           <ProfileInfoActionTile
             activityId="mailingAddress"
             activityIcon={getIconPath('mailing-address-icon')}
-            activityTitle={getLabelValue(labels, 'lbl_profile_activityPercentage')}
+            activityTitle={getLabelValue(labels, 'lbl_profile_mailingAddressActivityTitle')}
             activityCompletionState={getMailingAddressState(mailingAddress, labels)}
             activityDescription={getLabelValue(labels, 'lbl_profile_mailingAddressDescription')}
             redirectTo={internalEndpoints.mailingAddressPage.link}
@@ -111,7 +111,7 @@ export const ProfileInfoActions = ({
           <ProfileInfoActionTile
             activityId="favStore"
             activityIcon={getIconPath('fav-store-icon')}
-            activityTitle={getLabelValue(labels, 'lbl_profile_activityPercentage')}
+            activityTitle={getLabelValue(labels, 'lbl_profile_favStoreActivityTitle')}
             activityCompletionState={getFavStoreState(defaultStore, labels)}
             activityDescription={getLabelValue(labels, 'lbl_profile_favStoreDescription')}
             redirectTo="/account"
@@ -129,7 +129,7 @@ export const ProfileInfoActions = ({
           <ProfileInfoActionTile
             activityId="userBirthday"
             activityIcon={getIconPath('birthday-icon')}
-            activityTitle={getLabelValue(labels, 'lbl_profile_activityPercentage')}
+            activityTitle={getLabelValue(labels, 'lbl_profile_userBirthdayActivityTitle')}
             activityCompletionState={getUserBirthdayState(userBirthday, labels)}
             activityDescription={getLabelValue(labels, 'lbl_profile_userBirthdayDescription')}
             redirectTo="/account?id=profile&subSection=edit-personal-info"
@@ -153,7 +153,7 @@ export const ProfileInfoActions = ({
           <ProfileInfoActionTile
             activityId="aboutYourself"
             activityIcon={getIconPath('survey-icon')}
-            activityTitle={getLabelValue(labels, 'lbl_profile_activityPercentage')}
+            activityTitle={getLabelValue(labels, 'lbl_profile_surveyActivityTitle')}
             activityCompletionState={getAboutYourselfState(userSurvey, labels)}
             activityDescription={getLabelValue(labels, 'lbl_profile_aboutYourselfDescription')}
             redirectTo=""

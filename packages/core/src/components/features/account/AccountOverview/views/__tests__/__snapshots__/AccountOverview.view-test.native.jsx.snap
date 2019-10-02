@@ -131,12 +131,57 @@ exports[`AccountOverview component should render correctly 1`] = `
     </Styled(View)>
   </Styled(View)>
   <Styled(View) />
-  <Panel
-    handleComponentChange={[Function]}
-    isCardApply={true}
-    isFavorite={false}
-    isVariationTypeLink={true}
-    title="lbl_overview_apply_today"
+  <Styled(TouchableOpacity)
+    onPress={[Function]}
+  >
+    <Styled(View)>
+      <Styled(View)>
+        <Styled(Styled(ImageComp))
+          alt=""
+          height={30}
+          host=""
+          source={
+            Object {
+              "testUri": "../../../src/assets/images/tcp-cc.png",
+            }
+          }
+          url=""
+          width={47}
+        />
+      </Styled(View)>
+      <Styled(View)>
+        <Styled(BodyCopy)
+          accessibilityText=""
+          color="gray.900"
+          dataLocator=""
+          fontFamily="secondary"
+          fontSize="fs13"
+          fontWeight="regular"
+          margin={null}
+          numberOfLines={null}
+          textAlign="center"
+          textDecoration={null}
+        />
+      </Styled(View)>
+    </Styled(View)>
+    <Styled(View)>
+      <Styled(ImageComp)
+        alt=""
+        height={10}
+        host=""
+        source={
+          Object {
+            "testUri": "../../../src/assets/images/carrot-small-right-gray.png",
+          }
+        }
+        url=""
+        width={7}
+      />
+    </Styled(View)>
+  </Styled(TouchableOpacity)>
+  <Connect(ApplyNowModalWrapper)
+    applyNow={false}
+    toggleModalWrapper={[Function]}
   />
   <Panel
     handleComponentChange={[Function]}

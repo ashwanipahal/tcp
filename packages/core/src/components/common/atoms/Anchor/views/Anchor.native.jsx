@@ -40,7 +40,7 @@ const Anchor = ({
   const openUrl = () => {
     if (validateExternalUrl(url)) {
       UrlHandler(url);
-    } else {
+    } else if (navigation) {
       const cmsValidatedUrl = configureInternalNavigationFromCMSUrl(url);
       navigateToPage(cmsValidatedUrl, navigation);
     }

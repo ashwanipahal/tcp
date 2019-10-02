@@ -75,7 +75,7 @@ export const ProfileInfoActions = ({
         <ProfileInfoActionTile
           activityId="mailingAddress"
           activityIcon={mailingAddressIcon}
-          activityTitle={getLabelValue(labels, 'lbl_profile_activityPercentage')}
+          activityTitle={getLabelValue(labels, 'lbl_profile_mailingAddressActivityTitle')}
           activityCompletionState={getMailingAddressState(mailingAddress, labels)}
           activityDescription={getLabelValue(labels, 'lbl_profile_mailingAddressDescription')}
           handleComponentChange={() => toggleModalState('mountMailingAddressModal')}
@@ -83,7 +83,7 @@ export const ProfileInfoActions = ({
         <ProfileInfoActionTile
           activityId="favStore"
           activityIcon={favStoreIcon}
-          activityTitle={getLabelValue(labels, 'lbl_profile_activityPercentage')}
+          activityTitle={getLabelValue(labels, 'lbl_profile_favStoreActivityTitle')}
           activityCompletionState={getFavStoreState(defaultStore, labels)}
           activityDescription={getLabelValue(labels, 'lbl_profile_favStoreDescription')}
           handleComponentChange={() => handleComponentChange('accountOverviewMobile')}
@@ -91,7 +91,7 @@ export const ProfileInfoActions = ({
         <ProfileInfoActionTile
           activityId="userBirthday"
           activityIcon={birthdayIcon}
-          activityTitle={getLabelValue(labels, 'lbl_profile_activityPercentage')}
+          activityTitle={getLabelValue(labels, 'lbl_profile_userBirthdayActivityTitle')}
           activityCompletionState={getUserBirthdayState(userBirthday, labels)}
           activityDescription={getLabelValue(labels, 'lbl_profile_userBirthdayDescription')}
           handleComponentChange={() => handleComponentChange('accountOverviewMobile')}
@@ -99,7 +99,7 @@ export const ProfileInfoActions = ({
         <ProfileInfoActionTile
           activityId="aboutYourself"
           activityIcon={surveyIcon}
-          activityTitle={getLabelValue(labels, 'lbl_profile_activityPercentage')}
+          activityTitle={getLabelValue(labels, 'lbl_profile_surveyActivityTitle')}
           activityCompletionState={getAboutYourselfState(userSurvey, labels)}
           activityDescription={getLabelValue(labels, 'lbl_profile_aboutYourselfDescription')}
           handleComponentChange={() => toggleModalState('mountSurveyModal')}

@@ -1,7 +1,8 @@
 import { createSelector } from 'reselect';
 import { getLabelValue } from '@tcp/core/src/utils';
-import { getOrderConfirmation } from '../../../../Confirmation/container/Confirmation.selectors';
+import ConfirmationSelectors from '../../../../Confirmation/container/Confirmation.selectors';
 
+const { getOrderConfirmation } = ConfirmationSelectors;
 /**
  * re-select selector to provide create account success value
  */

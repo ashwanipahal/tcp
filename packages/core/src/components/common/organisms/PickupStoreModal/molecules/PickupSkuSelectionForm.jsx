@@ -6,7 +6,7 @@
 
 import React, { Fragment } from 'react';
 import PropTypes from 'prop-types';
-import { Row, Image, BodyCopy, Col, Anchor } from '@tcp/core/src/components/common/atoms';
+import { Image, BodyCopy, Anchor } from '@tcp/core/src/components/common/atoms';
 import { PRODUCT_SKU_SELECTION_FORM } from '@tcp/core/src/constants/reducer.constants';
 import withStyles from '../../../hoc/withStyles';
 import styles, {
@@ -103,10 +103,7 @@ class PickupSkuSelectionForm extends React.Component {
     const pdpToPath = getProductListToPath(currentColorPdpUrl);
 
     return (
-      <Row className={className}>
-        <Col className="modal-header" colSize={{ small: 12, medium: 12, large: 12 }}>
-          {PICKUP_LABELS.PICK_UP_MODAL_LABEL}
-        </Col>
+      <div className={className}>
         <div className="product-customize-form-container">
           <div className="image-title-wrapper">
             <div className="image-wrapper">
@@ -150,7 +147,7 @@ class PickupSkuSelectionForm extends React.Component {
             />
           </div>
         </div>
-      </Row>
+      </div>
     );
   };
 
@@ -172,6 +169,7 @@ class PickupSkuSelectionForm extends React.Component {
       isPickUpWarningModal,
       currentProduct,
       prices,
+      className,
     } = this.props;
 
     const { currentColorEntry, selectedColor } = this.state;
@@ -183,28 +181,32 @@ class PickupSkuSelectionForm extends React.Component {
     const listPrice = prices && prices.listPrice;
     const offerPrice = prices && prices.offerPrice;
 
-    return isSkuResolved ? (
-      <PickupProductFormPart
-        colorFitSizeDisplayNames={colorFitSizeDisplayNames}
-        colorFitsSizesMap={this.colorFitsSizesMap}
-        name={name}
-        isShowExtendedSizesNotification={isShowExtendedSizesNotification}
-        isPreferredStoreError={isPreferredStoreError}
-        onEditSku={onEditSku}
-        promotionalMessage={promotionalMessage}
-        initialValues={initialValues}
-        promotionalPLCCMessage={promotionalPLCCMessage}
-        isPickUpWarningModal={isPickUpWarningModal}
-        isCanada={isCanada}
-        isHasPlcc={isPlcc}
-        currencySymbol={currencySymbol}
-        isInternationalShipping={isInternationalShipping}
-        imagePath={imageUrl}
-        listPrice={listPrice}
-        offerPrice={offerPrice}
-      />
-    ) : (
-      this.getPickUpSKUSection(imageUrl, currentColorEntry)
+    return (
+      <div className={className}>
+        {isSkuResolved ? (
+          <PickupProductFormPart
+            colorFitSizeDisplayNames={colorFitSizeDisplayNames}
+            colorFitsSizesMap={this.colorFitsSizesMap}
+            name={name}
+            isShowExtendedSizesNotification={isShowExtendedSizesNotification}
+            isPreferredStoreError={isPreferredStoreError}
+            onEditSku={onEditSku}
+            promotionalMessage={promotionalMessage}
+            initialValues={initialValues}
+            promotionalPLCCMessage={promotionalPLCCMessage}
+            isPickUpWarningModal={isPickUpWarningModal}
+            isCanada={isCanada}
+            isHasPlcc={isPlcc}
+            currencySymbol={currencySymbol}
+            isInternationalShipping={isInternationalShipping}
+            imagePath={imageUrl}
+            listPrice={listPrice}
+            offerPrice={offerPrice}
+          />
+        ) : (
+          this.getPickUpSKUSection(imageUrl, currentColorEntry)
+        )}
+      </div>
     );
   }
 }
@@ -276,7 +278,7 @@ PickupSkuSelectionForm.propTypes = {
 };
 
 PickupSkuSelectionForm.defaultProps = {
-  colorFitSizeDisplayNames: null,
+  colorFitSizeDisplayNames: {},
   currency: 'USD',
   isHasPlcc: false,
   className: '',
