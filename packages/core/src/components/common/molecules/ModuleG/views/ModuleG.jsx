@@ -135,7 +135,7 @@ class ModuleG extends React.PureComponent {
             />
           </Col>
         </Row>
-        <Row className="wrapper">
+        <Row className="wrapper" fullBleed={{ small: true, medium: true, large: false }}>
           <Col
             className="moduleG__carousel-wrapper moduleG__carousel-top"
             colSize={{

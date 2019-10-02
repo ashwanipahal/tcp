@@ -9,26 +9,20 @@ export default {
     arrows: true,
     autoplaySpeed: 2000,
     centerMode: true,
+    centerPadding: '20px',
     fade: false,
     speed: 1000,
     dots: false,
     swipe: true,
     slidesToShow: 5,
     slidesToScroll: 1,
-    initialSlide: 5,
+    initialSlide: -1,
     responsive: [
       {
         breakpoint: parseInt(breakpoints.medium, 10) - 1,
         settings: {
-          slidesToShow: 4,
-          arrows: false,
-          swipeToSlide: true,
-        },
-      },
-      {
-        breakpoint: parseInt(breakpoints.large, 10) - 1,
-        settings: {
-          slidesToShow: 5,
+          slidesToShow: 3,
+          // centerPadding: '50px',
           arrows: false,
           swipeToSlide: true,
         },

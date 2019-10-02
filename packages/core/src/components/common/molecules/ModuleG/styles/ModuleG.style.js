@@ -31,9 +31,14 @@ export default css`
     height: 110px;
     margin: 0 auto;
 
+    @media ${props => props.theme.mediaQuery.small} {
+      width: 203px;
+      height: 256px;
+    }
+
     @media ${props => props.theme.mediaQuery.medium} {
       width: 146px;
-      height: 180px;
+      height: 185px;
     }
 
     @media ${props => props.theme.mediaQuery.large} {
