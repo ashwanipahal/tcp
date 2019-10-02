@@ -98,7 +98,7 @@ export function ProductPricesSection(props) {
 
 export class ProductWishlistIcon extends ServerToClientRenderPatch {
   render() {
-    const { onClick, isRemove, isDisabled, isMobile, className } = this.props;
+    const { onClick, isRemove, isDisabled, isMobile, className, activeButton } = this.props;
     const removeTextHeader = isMobile ? 'Tap to Remove' : 'Click to Remove';
     const removeTxtDesc = isMobile
       ? 'Remove this item from your Favorites List by tapping the heart icon again.'
@@ -126,8 +126,8 @@ export class ProductWishlistIcon extends ServerToClientRenderPatch {
               data-locator={getLocator('global_favorite_button')}
               alt="Add-to-favorite"
               title="addToFavorite"
-              className={className}
-              src={getIconPath('add-to-favorite')}
+              className={activeButton ? `${className} active` : className}
+              src={activeButton ? getIconPath('added-to-favorite') : getIconPath('add-to-favorite')}
             />
           </button>
         )}
