@@ -1,9 +1,9 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import { RichText, Button, Col, Row } from '../../../../../common/atoms';
-import ExistingPLCCUserStyle from './styles/ExistingPLCCUser.view.style';
-import { getLabelValue } from '../../../../../../utils';
-import { redirectToBag, redirectToHome } from '../../utils/utility';
+import { RichText, Button, Col, Row } from '../../../../../../common/atoms';
+import ExistingPLCCUserStyle from './style/ExistingPLCCUser.view.style';
+import { getLabelValue } from '../../../../../../../utils';
+import { redirectToBag, redirectToHome } from '../../../utils/utility';
 
 /**
  * @const ExistingPLCCUserView
