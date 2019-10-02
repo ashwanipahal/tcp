@@ -13,9 +13,7 @@ export default css`
 
   .storelocatorlink__detail {
     .storelocatorlink__detail__storename {
-      font-family: Nunito;
-      font-size: 13px;
-      font-weight: normal;
+      text-transform: capitalize;
     }
   }
 `;
