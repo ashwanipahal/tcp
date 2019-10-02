@@ -344,5 +344,9 @@ const endpoints = {
     method: 'GET',
     URI: 'v2/wallet/getPointsAndOrderHistory',
   },
+  addOrUpdateWishlist: {
+    method: 'PUT',
+    URI: 'v2/wishlist/addOrUpdateWishlist',
+  },
 };
 export default endpoints;

@@ -32,6 +32,7 @@ import CartPageSaga from '@tcp/core/src/components/features/CnC/CartItemTile/con
 import ProductListingSaga from '@tcp/core/src/components/features/browse/ProductListing/container/ProductListing.saga';
 import ProductDetailSaga from '@tcp/core/src/components/features/browse/ProductDetail/container/ProductDetail.saga';
 import QuickViewSaga from '@tcp/core/src/components/common/organisms/QuickViewModal/container/QuickViewModal.saga';
+import FavoriteSaga from '@tcp/core/src/components/features/browse/Favorites/container/Favorites.saga';
 import CouponSaga from '@tcp/core/src/components/features/CnC/common/organism/CouponAndPromos/container/Coupon.saga';
 import CheckoutSaga from '@tcp/core/src/components/features/CnC/Checkout/container/Checkout.saga';
 import BagPageSaga from '@tcp/core/src/components/features/CnC/BagPage/container/BagPage.saga';
@@ -51,6 +52,7 @@ import ProductTabListSaga from '@tcp/core/src/components/common/organisms/Produc
 import RecommendationsSaga from '@tcp/core/src/components/common/molecules/Recommendations/container/Recommendations.saga';
 import MyFavoriteStoreSaga from '@tcp/core/src/components/features/account/MyProfile/organism/MyFavoriteStore/container/MyFavoriteStore.saga';
 import PickupStoreSaga from '@tcp/core/src/components/common/organisms/PickupStoreModal/container/PickUpStoreModal.saga';
+import ConfirmationPageSaga from '@tcp/core/src/components/features/CnC/Confirmation/container/Confirmation.saga';
 import ProductPickup from '@tcp/core/src/components/common/organisms/ProductPickup/container/ProductPickup.saga';
 import PointsClaimSaga from '@tcp/core/src/components/features/account/PointsClaim/container/PointsClaim.saga';
 import NavigateXHRSaga from '@tcp/core/src/components/features/account/NavigateXHR/container/NavigateXHR.saga';
@@ -119,7 +121,9 @@ export default function* rootSaga() {
     ProductPickup(),
     QuickViewSaga(),
     PointsClaimSaga(),
+    ConfirmationPageSaga(),
     NavigateXHRSaga(),
     OrdersSaga(),
+    FavoriteSaga(),
   ]);
 }
