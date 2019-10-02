@@ -6,7 +6,6 @@ import { LAZYLOAD_HOST_NAME } from '@tcp/core/src/utils';
 
 import PropTypes from 'prop-types';
 import HomePageSlots from '@tcp/core/src/components/common/molecules/HomePageSlots';
-
 import {
   ModuleD,
   ModuleH,
@@ -84,6 +83,30 @@ class HomePageView extends React.PureComponent<Props> {
           onPress={() => navigation.navigate('ProductListingPageContainer')}
           style={buttonMargin}
         />
+        <Button
+          fullWidth
+          buttonVariation="variable-width"
+          text="Store Details"
+          onPress={() =>
+            navigation.navigate({
+              routeName: 'StoreDetails',
+              params: { title: 'Store Details'.toUpperCase() },
+            })
+          }
+          style={buttonMargin}
+        />
+        <Button
+          fullWidth
+          buttonVariation="variable-width"
+          text="Store Landing"
+          onPress={() =>
+            navigation.navigate({
+              routeName: 'StoreLanding',
+              params: { title: 'Find A Store'.toUpperCase() },
+            })
+          }
+          style={buttonMargin}
+        />
       </LazyloadScrollView>
     );
   }
@@ -101,6 +124,7 @@ HomePageView.propTypes = {
   navigation: PropTypes.shape({}).isRequired,
   getBootstrapData: PropTypes.func.isRequired,
   screenProps: PropTypes.shape({}),
+  labels: PropTypes.shape({}).isRequired,
 };
 
 HomePageView.defaultProps = {

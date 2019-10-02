@@ -5,7 +5,7 @@ import { PropTypes } from 'prop-types';
 import { reduxForm, Field, propTypes as reduxFormPropTypes } from 'redux-form';
 import { getBrand } from '../../../../../../../utils';
 import createValidateMethod from '../../../../../../../utils/formValidation/createValidateMethod';
-import { getAddressLocationInfo } from '../../../../../atoms/GoogleAutoSuggest/AutoCompleteComponent';
+import { getAddressLocationInfo } from '../../../../../../../utils/addressLocation';
 import getStandardConfig from '../../../../../../../utils/formValidation/validatorStandardConfig';
 import {
   getSkuId,

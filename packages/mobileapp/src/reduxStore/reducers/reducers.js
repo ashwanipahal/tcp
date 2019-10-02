@@ -33,6 +33,8 @@ import ProductDetailReducer from '@tcp/core/src/components/features/browse/Produ
 import QuickViewReducer from '@tcp/core/src/components/common/organisms/QuickViewModal/container/QuickViewModal.reducer';
 import MyFavoriteStoreReducer from '@tcp/core/src/components/features/account/MyProfile/organism/MyFavoriteStore/container/MyFavoriteStore.reducer';
 import BirthdaySavingsListReducer from '@tcp/core/src/components/features/account/common/organism/BirthdaySavingsList/container/BirthdaySavingsList.reducer';
+import StoreDetailReducer from '@tcp/core/src/components/features/storeLocator/StoreDetail/container/StoreDetail.reducer';
+import StoreLandingReducer from '@tcp/core/src/components/features/storeLocator/StoreLanding/container/StoreLanding.reducer';
 import ApplyCardReducer from '@tcp/core/src/components/features/browse/ApplyCardPage/container/ApplyCard.reducer';
 import ApplyNowModalPLCCReducer from '@tcp/core/src/components/common/molecules/ApplyNowPLCCModal/container/ApplyNowModal.reducer';
 import PointsClaimReducer from '@tcp/core/src/components/features/account/PointsClaim/container/PointsClaim.reducer';
@@ -82,6 +84,8 @@ import {
   QUICK_VIEW_REDUCER_KEY,
   MY_FAVORITE_STORE_REDUCER_KEY,
   BIRTHDAY_SAVING_LIST_REDUCER_KEY,
+  STORE_DETAIL_REDUCER_KEY,
+  STORE_LOCATOR_REDUCER_KEY,
   APPLY_NOW_MODAL_REDUCER_KEY,
   APPLY_PLCC_REDUCER_KEY,
   POINTS_CLAIM_REDUCER_KEY,
@@ -169,6 +173,8 @@ const rootReducer = combineReducers({
   [MY_PROFILE_REDUCER_KEY]: MyProfileReducer,
   [MY_FAVORITE_STORE_REDUCER_KEY]: MyFavoriteStoreReducer,
   [BIRTHDAY_SAVING_LIST_REDUCER_KEY]: BirthdaySavingsListReducer,
+  [STORE_DETAIL_REDUCER_KEY]: StoreDetailReducer,
+  [STORE_LOCATOR_REDUCER_KEY]: StoreLandingReducer,
   [APPLY_PLCC_REDUCER_KEY]: ApplyCardReducer,
   [APPLY_NOW_MODAL_REDUCER_KEY]: ApplyNowModalPLCCReducer,
   [POINTS_CLAIM_REDUCER_KEY]: PointsClaimReducer,
