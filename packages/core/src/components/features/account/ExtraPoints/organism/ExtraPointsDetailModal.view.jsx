@@ -42,13 +42,13 @@ class ExtraPointsDetailModal extends React.PureComponent {
       case 'rewardPlaceApp':
         return endpoints.appDownloadPage;
       case 'userAboutYourselfSurvey':
-        return `${internalEndpoints.profilePage.link}&subSection=?survey=true`;
+        return `${internalEndpoints.profilePage.link}&survey=true`;
       case 'userFavoriteStore':
         return internalEndpoints.profilePage.link;
       case 'userMailing':
         return internalEndpoints.mailingAddressPage.link;
       case 'myPreference':
-        return `${internalEndpoints.myPreferencesPage.link}&subSection=?socialAccount=${
+        return `${internalEndpoints.myPreferencesPage.link}&socialAccount=${
           activeActivity.activityModalSocialAccount
         }`;
       case 'birthdaySavings':

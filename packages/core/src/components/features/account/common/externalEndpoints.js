@@ -6,5 +6,4 @@ export default {
   policiesPage: 'https://www.childrensplace.com/us/help-center/#policies',
   mprTermsPage: 'https://www.childrensplace.com/us/content/mpr-terms',
   internationalOrdersPage: 'https://www.borderfree.com/order-status/',
-  appDownloadPage: 'https://www.childrensplace.com/us/content/mobile',
 };
