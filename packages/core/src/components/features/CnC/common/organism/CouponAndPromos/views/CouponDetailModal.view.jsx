@@ -27,7 +27,7 @@ class CouponDetailModal extends React.PureComponent<Props> {
    */
   handleApplyToBag = () => {
     const { onApplyCouponToBagFromList, coupon, onRequestClose } = this.props;
-    onApplyCouponToBagFromList({
+    onApplyCouponToBagFromList(coupon, {
       couponCode: coupon.id,
       id: coupon.id,
       coupon: coupon.id,
