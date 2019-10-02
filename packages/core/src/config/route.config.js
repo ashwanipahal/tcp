@@ -30,6 +30,17 @@ const ROUTES_LIST = [
     resolver: '/index',
   },
   {
+    noSlugPath: 'store',
+    path: '/store-locator',
+    resolver: '/storeLocator',
+  },
+  {
+    noSlugPath: 'store',
+    path: '/store/:storeStr?',
+    resolver: '/storeDetail',
+    params: ['storeStr'],
+  },
+  {
     noSlugPath: 'login',
     path: '/login',
     resolver: '/login',
@@ -131,6 +142,12 @@ const ROUTES_LIST = [
     path: '/content/:contentType',
     resolver: '/content',
     params: ['contentType'],
+  },
+  {
+    noSlugPath: 'store',
+    path: '/store/:storeStr?',
+    resolver: '/storeDetail',
+    params: ['storeStr'],
   },
 ];
 

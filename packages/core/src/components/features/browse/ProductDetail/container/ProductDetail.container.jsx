@@ -27,7 +27,6 @@ import {
 } from '../../../CnC/AddedToBag/container/AddedToBag.actions';
 
 import { getCartItemInfo } from '../../../CnC/AddedToBag/util/utility';
-import { getIsPickupModalOpen } from '../../../../common/organisms/PickupStoreModal/container/PickUpStoreModal.selectors';
 
 class ProductDetailContainer extends React.PureComponent {
   componentDidMount() {
@@ -76,7 +75,6 @@ class ProductDetailContainer extends React.PureComponent {
       productInfo,
       currency,
       plpLabels,
-      isPickupModalOpen,
       pdpLabels,
       addToBagError,
       ...otherProps
@@ -100,7 +98,6 @@ class ProductDetailContainer extends React.PureComponent {
             productInfo={productInfo}
             handleAddToBag={this.handleAddToBag}
             addToBagError={addToBagError}
-            isPickupModalOpen={isPickupModalOpen}
           />
         ) : null}
       </React.Fragment>
@@ -122,7 +119,6 @@ function mapStateToProps(state) {
     productInfo: getCurrentProduct(state),
     currency: getCurrentCurrency(state),
     plpLabels: getPlpLabels(state),
-    isPickupModalOpen: getIsPickupModalOpen(state),
     pdpLabels: getPDPLabels(state),
     addToBagError: getAddedToBagError(state),
     formValues: getProductDetailFormValues(state),
@@ -167,7 +163,6 @@ ProductDetailContainer.propTypes = {
   plpLabels: PropTypes.shape({
     lbl_sort: PropTypes.string,
   }),
-  isPickupModalOpen: PropTypes.bool,
 };
 
 ProductDetailContainer.defaultProps = {
@@ -185,7 +180,6 @@ ProductDetailContainer.defaultProps = {
   },
   itemPartNumber: '',
   pdpLabels: {},
-  isPickupModalOpen: false,
 };
 
 export default withRouter(

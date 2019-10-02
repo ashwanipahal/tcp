@@ -1,0 +1,764 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`StoreAddressTile component Details StoreAddressTile component renders correctly 1`] = `
+<Styled(View)
+  variation="detail"
+>
+  <Styled(View)>
+    <Styled(Text)
+      textAlign="left"
+    >
+      86th Street - 3rd Ave.
+    </Styled(Text)>
+  </Styled(View)>
+  <Styled(View)>
+    <Styled(Text)
+      key="471-485 fulton street0"
+    >
+      471-485 fulton street
+    </Styled(Text)>
+    <Styled(Text)
+      key="brooklyn, NY, 112011"
+    >
+      brooklyn, NY, 11201
+    </Styled(Text)>
+    <Styled(Text)
+      key="(718) 243-11502"
+    >
+      (718) 243-1150
+    </Styled(Text)>
+    <Styled(View)>
+      <Styled(View)>
+        <Styled(View)>
+          <Styled(Image)
+            accessibilityLabel="Icon Marker"
+            accessibilityRole="image"
+            source={
+              Object {
+                "testUri": "../../../../core/src/assets/icon-marker.png",
+              }
+            }
+          />
+          <Styled(Text)>
+            at this PLACE!
+          </Styled(Text)>
+        </Styled(View)>
+        <Styled(View)>
+          <Styled(Image)
+            accessibilityLabel="Gymboree"
+            accessibilityRole="image"
+            source={
+              Object {
+                "testUri": "../../../../core/src/assets/gymboree-logo.png",
+              }
+            }
+          />
+          <Styled(Text)>
+            at this PLACE!
+          </Styled(Text)>
+        </Styled(View)>
+      </Styled(View)>
+      <Styled(View) />
+    </Styled(View)>
+  </Styled(View)>
+  <Styled(View)>
+    <View>
+      <Styled(View)>
+        <Styled(CustomButton)
+          active={false}
+          buttonVariation="variable-width"
+          color="white"
+          customStyle={Object {}}
+          customTextStyle={null}
+          disableButton={false}
+          fill="BLUE"
+          fullWidth=""
+          iconColor="gray.800"
+          iconName="chevron-down"
+          iconSize="fs12"
+          locator=""
+          navigation={Object {}}
+          onPress={[Function]}
+          selected={false}
+          selectedIcon="chevron-up"
+          showIcon={false}
+          text="Set as favorite"
+          theme={Object {}}
+          type="submit"
+          url=""
+        />
+      </Styled(View)>
+      <Styled(View)>
+        <Styled(View)>
+          <Styled(CustomButton)
+            active={false}
+            buttonVariation="variable-width"
+            color=""
+            customStyle={Object {}}
+            customTextStyle={null}
+            disableButton={false}
+            fill=""
+            fullWidth=""
+            iconColor="gray.800"
+            iconName="chevron-down"
+            iconSize="fs12"
+            locator=""
+            navigation={Object {}}
+            onPress={null}
+            selected={false}
+            selectedIcon="chevron-up"
+            showIcon={false}
+            text="Directions"
+            theme={Object {}}
+            type="button"
+            url=""
+          />
+        </Styled(View)>
+        <Styled(View)>
+          <Styled(CustomButton)
+            active={false}
+            buttonVariation="variable-width"
+            color=""
+            customStyle={Object {}}
+            customTextStyle={null}
+            disableButton={false}
+            fill=""
+            fullWidth=""
+            iconColor="gray.800"
+            iconName="chevron-down"
+            iconSize="fs12"
+            locator=""
+            navigation={Object {}}
+            onPress={null}
+            selected={false}
+            selectedIcon="chevron-up"
+            showIcon={false}
+            text="Call Store"
+            theme={Object {}}
+            type="button"
+            url=""
+          />
+        </Styled(View)>
+      </Styled(View)>
+    </View>
+  </Styled(View)>
+</Styled(View)>
+`;
+
+exports[`StoreAddressTile component Details should render details view with fav store 1`] = `
+<Styled(View)
+  variation="detail"
+>
+  <Styled(View)>
+    <Styled(Text)
+      textAlign="left"
+    >
+      86th Street - 3rd Ave.
+    </Styled(Text)>
+  </Styled(View)>
+  <Styled(View)>
+    <Styled(Text)
+      key="471-485 fulton street0"
+    >
+      471-485 fulton street
+    </Styled(Text)>
+    <Styled(Text)
+      key="brooklyn, NY, 112011"
+    >
+      brooklyn, NY, 11201
+    </Styled(Text)>
+    <Styled(Text)
+      key="(718) 243-11502"
+    >
+      (718) 243-1150
+    </Styled(Text)>
+    <Styled(View)>
+      <Styled(View)>
+        <Styled(View)>
+          <Styled(Image)
+            accessibilityLabel="Icon Marker"
+            accessibilityRole="image"
+            source={
+              Object {
+                "testUri": "../../../../core/src/assets/icon-marker.png",
+              }
+            }
+          />
+          <Styled(Text)>
+            at this PLACE!
+          </Styled(Text)>
+        </Styled(View)>
+        <Styled(View)>
+          <Styled(Image)
+            accessibilityLabel="Gymboree"
+            accessibilityRole="image"
+            source={
+              Object {
+                "testUri": "../../../../core/src/assets/gymboree-logo.png",
+              }
+            }
+          />
+          <Styled(Text)>
+            at this PLACE!
+          </Styled(Text)>
+        </Styled(View)>
+      </Styled(View)>
+      <Styled(View)>
+        <Styled(View)>
+          <Styled(Image)
+            accessibilityLabel="Your Store"
+            accessibilityRole="image"
+            source={
+              Object {
+                "testUri": "../../../../core/src/assets/star.png",
+              }
+            }
+          />
+          <Styled(Text)>
+            Your Store
+          </Styled(Text)>
+        </Styled(View)>
+      </Styled(View)>
+    </Styled(View)>
+  </Styled(View)>
+  <Styled(View)>
+    <View>
+      <Styled(View)>
+        <Styled(CustomButton)
+          active={false}
+          buttonVariation="variable-width"
+          color="white"
+          customStyle={Object {}}
+          customTextStyle={null}
+          disableButton={false}
+          fill="BLUE"
+          fullWidth=""
+          iconColor="gray.800"
+          iconName="chevron-down"
+          iconSize="fs12"
+          locator=""
+          navigation={Object {}}
+          onPress={[Function]}
+          selected={false}
+          selectedIcon="chevron-up"
+          showIcon={false}
+          text="Change Favorite Store"
+          theme={Object {}}
+          type="submit"
+          url=""
+        />
+      </Styled(View)>
+      <Styled(View)>
+        <Styled(View)>
+          <Styled(CustomButton)
+            active={false}
+            buttonVariation="variable-width"
+            color=""
+            customStyle={Object {}}
+            customTextStyle={null}
+            disableButton={false}
+            fill=""
+            fullWidth=""
+            iconColor="gray.800"
+            iconName="chevron-down"
+            iconSize="fs12"
+            locator=""
+            navigation={Object {}}
+            onPress={null}
+            selected={false}
+            selectedIcon="chevron-up"
+            showIcon={false}
+            text="Directions"
+            theme={Object {}}
+            type="button"
+            url=""
+          />
+        </Styled(View)>
+        <Styled(View)>
+          <Styled(CustomButton)
+            active={false}
+            buttonVariation="variable-width"
+            color=""
+            customStyle={Object {}}
+            customTextStyle={null}
+            disableButton={false}
+            fill=""
+            fullWidth=""
+            iconColor="gray.800"
+            iconName="chevron-down"
+            iconSize="fs12"
+            locator=""
+            navigation={Object {}}
+            onPress={null}
+            selected={false}
+            selectedIcon="chevron-up"
+            showIcon={false}
+            text="Call Store"
+            theme={Object {}}
+            type="button"
+            url=""
+          />
+        </Styled(View)>
+      </Styled(View)>
+    </View>
+  </Styled(View)>
+</Styled(View)>
+`;
+
+exports[`StoreAddressTile component Listing Header should render listing-header view 1`] = `
+<Styled(View)
+  variation="listing-header"
+>
+  <Styled(View)>
+    <Styled(View)>
+      <Styled(Text)>
+        86th Street - 3rd Ave.
+      </Styled(Text)>
+    </Styled(View)>
+    <Styled(View)>
+      <Styled(Text)>
+        (open until 8 pm)
+      </Styled(Text)>
+      <Styled(Text)>
+        0.17 miles away
+      </Styled(Text)>
+      <Styled(Styled(Anchor))
+        accessibilityLabel="Get Directions"
+        accessibilityRole="link"
+        anchorVariation=""
+        colorName={null}
+        customStyle={Object {}}
+        locator=""
+        onPress={null}
+        text="Get Directions"
+        visible={false}
+      />
+    </Styled(View)>
+  </Styled(View)>
+  <Styled(View)>
+    <Styled(Text)
+      key="471-485 fulton street0"
+    >
+      471-485 fulton street
+    </Styled(Text)>
+    <Styled(Text)
+      key="brooklyn, NY, 112011"
+    >
+      brooklyn, NY, 11201
+    </Styled(Text)>
+    <Styled(Text)
+      key="(718) 243-11502"
+    >
+      (718) 243-1150
+    </Styled(Text)>
+    <Styled(View)>
+      <Styled(Image)
+        accessibilityLabel="Gymboree"
+        accessibilityRole="image"
+        source={
+          Object {
+            "testUri": "../../../../core/src/assets/gymboree-logo.png",
+          }
+        }
+      />
+      <Styled(Text)>
+        at this PLACE!
+      </Styled(Text)>
+    </Styled(View)>
+  </Styled(View)>
+  <Styled(View)>
+    <Styled(Styled(Anchor))
+      accessibilityLabel="Store Details"
+      accessibilityRole="link"
+      anchorVariation=""
+      colorName={null}
+      customStyle={Object {}}
+      locator=""
+      onPress={[Function]}
+      text="Store Details"
+      visible={false}
+    />
+    <Styled(View) />
+  </Styled(View)>
+</Styled(View)>
+`;
+
+exports[`StoreAddressTile component Listing should not render gymboree store 1`] = `
+<Styled(View)
+  variation="listing"
+>
+  <Styled(View)>
+    <Styled(View)>
+      <Styled(Text)>
+        86th Street - 3rd Ave.
+      </Styled(Text)>
+    </Styled(View)>
+    <Styled(View)>
+      <Styled(Text)>
+        (open until 8 pm)
+      </Styled(Text)>
+      <Styled(Text)>
+        0.17 miles away
+      </Styled(Text)>
+      <Styled(Styled(Anchor))
+        accessibilityLabel="Get Directions"
+        accessibilityRole="link"
+        anchorVariation=""
+        colorName={null}
+        customStyle={Object {}}
+        locator=""
+        onPress={null}
+        text="Get Directions"
+        visible={false}
+      />
+    </Styled(View)>
+  </Styled(View)>
+  <Styled(View)>
+    <Styled(Text)
+      key="471-485 fulton street0"
+    >
+      471-485 fulton street
+    </Styled(Text)>
+    <Styled(Text)
+      key="brooklyn, NY, 112011"
+    >
+      brooklyn, NY, 11201
+    </Styled(Text)>
+    <Styled(Text)
+      key="(718) 243-11502"
+    >
+      (718) 243-1150
+    </Styled(Text)>
+    <Styled(View) />
+  </Styled(View)>
+  <Styled(View)>
+    <Styled(Styled(Anchor))
+      accessibilityLabel="Store Details"
+      accessibilityRole="link"
+      anchorVariation=""
+      colorName={null}
+      customStyle={Object {}}
+      locator=""
+      onPress={[Function]}
+      text="Store Details"
+      visible={false}
+    />
+    <Styled(CustomButton)
+      active={false}
+      buttonVariation="fixed-width"
+      color=""
+      customStyle={Object {}}
+      customTextStyle={null}
+      disableButton={false}
+      fill=""
+      fullWidth=""
+      iconColor="gray.800"
+      iconName="chevron-down"
+      iconSize="fs12"
+      locator=""
+      navigation={Object {}}
+      onPress={[Function]}
+      selected={false}
+      selectedIcon="chevron-up"
+      showIcon={false}
+      text="SET AS FAVORITE"
+      theme={Object {}}
+      type="button"
+      url=""
+    />
+  </Styled(View)>
+</Styled(View)>
+`;
+
+exports[`StoreAddressTile component Listing should render listing view 1`] = `
+<Styled(View)
+  variation="listing"
+>
+  <Styled(View)>
+    <Styled(View)>
+      <Styled(Text)>
+        86th Street - 3rd Ave.
+      </Styled(Text)>
+    </Styled(View)>
+    <Styled(View)>
+      <Styled(Text)>
+        (open until 8 pm)
+      </Styled(Text)>
+      <Styled(Text)>
+        0.17 miles away
+      </Styled(Text)>
+      <Styled(Styled(Anchor))
+        accessibilityLabel="Get Directions"
+        accessibilityRole="link"
+        anchorVariation=""
+        colorName={null}
+        customStyle={Object {}}
+        locator=""
+        onPress={null}
+        text="Get Directions"
+        visible={false}
+      />
+    </Styled(View)>
+  </Styled(View)>
+  <Styled(View)>
+    <Styled(Text)
+      key="471-485 fulton street0"
+    >
+      471-485 fulton street
+    </Styled(Text)>
+    <Styled(Text)
+      key="brooklyn, NY, 112011"
+    >
+      brooklyn, NY, 11201
+    </Styled(Text)>
+    <Styled(Text)
+      key="(718) 243-11502"
+    >
+      (718) 243-1150
+    </Styled(Text)>
+    <Styled(View)>
+      <Styled(Image)
+        accessibilityLabel="Gymboree"
+        accessibilityRole="image"
+        source={
+          Object {
+            "testUri": "../../../../core/src/assets/gymboree-logo.png",
+          }
+        }
+      />
+      <Styled(Text)>
+        at this PLACE!
+      </Styled(Text)>
+    </Styled(View)>
+  </Styled(View)>
+  <Styled(View)>
+    <Styled(Styled(Anchor))
+      accessibilityLabel="Store Details"
+      accessibilityRole="link"
+      anchorVariation=""
+      colorName={null}
+      customStyle={Object {}}
+      locator=""
+      onPress={[Function]}
+      text="Store Details"
+      visible={false}
+    />
+    <Styled(CustomButton)
+      active={false}
+      buttonVariation="fixed-width"
+      color=""
+      customStyle={Object {}}
+      customTextStyle={null}
+      disableButton={false}
+      fill=""
+      fullWidth=""
+      iconColor="gray.800"
+      iconName="chevron-down"
+      iconSize="fs12"
+      locator=""
+      navigation={Object {}}
+      onPress={[Function]}
+      selected={false}
+      selectedIcon="chevron-up"
+      showIcon={false}
+      text="SET AS FAVORITE"
+      theme={Object {}}
+      type="button"
+      url=""
+    />
+  </Styled(View)>
+</Styled(View)>
+`;
+
+exports[`StoreAddressTile component Listing should render listing view with fav store 1`] = `
+<Styled(View)
+  variation="listing"
+>
+  <Styled(View)>
+    <Styled(View)>
+      <Styled(Text)>
+        2. 
+        86th Street - 3rd Ave.
+      </Styled(Text)>
+    </Styled(View)>
+    <Styled(View)>
+      <Styled(Text)>
+        (open until 8 pm)
+      </Styled(Text)>
+      <Styled(Text)>
+        0.17 miles away
+      </Styled(Text)>
+      <Styled(Styled(Anchor))
+        accessibilityLabel="Get Directions"
+        accessibilityRole="link"
+        anchorVariation=""
+        colorName={null}
+        customStyle={Object {}}
+        locator=""
+        onPress={null}
+        text="Get Directions"
+        visible={false}
+      />
+    </Styled(View)>
+  </Styled(View)>
+  <Styled(View)>
+    <Styled(Text)
+      key="471-485 fulton street0"
+    >
+      471-485 fulton street
+    </Styled(Text)>
+    <Styled(Text)
+      key="brooklyn, NY, 112011"
+    >
+      brooklyn, NY, 11201
+    </Styled(Text)>
+    <Styled(Text)
+      key="(718) 243-11502"
+    >
+      (718) 243-1150
+    </Styled(Text)>
+    <Styled(View)>
+      <Styled(Image)
+        accessibilityLabel="Gymboree"
+        accessibilityRole="image"
+        source={
+          Object {
+            "testUri": "../../../../core/src/assets/gymboree-logo.png",
+          }
+        }
+      />
+      <Styled(Text)>
+        at this PLACE!
+      </Styled(Text)>
+    </Styled(View)>
+  </Styled(View)>
+  <Styled(View)>
+    <Styled(Styled(Anchor))
+      accessibilityLabel="Store Details"
+      accessibilityRole="link"
+      anchorVariation=""
+      colorName={null}
+      customStyle={Object {}}
+      locator=""
+      onPress={[Function]}
+      text="Store Details"
+      visible={false}
+    />
+    <Styled(View)>
+      <Styled(Image)
+        accessibilityLabel="Your Store"
+        accessibilityRole="image"
+        source={
+          Object {
+            "testUri": "../../../../core/src/assets/star.png",
+          }
+        }
+      />
+      <Styled(Text)>
+        Your Store
+      </Styled(Text)>
+    </Styled(View)>
+  </Styled(View)>
+</Styled(View)>
+`;
+
+exports[`StoreAddressTile component Listing should render listing view with index 1`] = `
+<Styled(View)
+  variation="listing"
+>
+  <Styled(View)>
+    <Styled(View)>
+      <Styled(Text)>
+        1. 
+        86th Street - 3rd Ave.
+      </Styled(Text)>
+    </Styled(View)>
+    <Styled(View)>
+      <Styled(Text)>
+        (open until 8 pm)
+      </Styled(Text)>
+      <Styled(Text)>
+        0.17 miles away
+      </Styled(Text)>
+      <Styled(Styled(Anchor))
+        accessibilityLabel="Get Directions"
+        accessibilityRole="link"
+        anchorVariation=""
+        colorName={null}
+        customStyle={Object {}}
+        locator=""
+        onPress={null}
+        text="Get Directions"
+        visible={false}
+      />
+    </Styled(View)>
+  </Styled(View)>
+  <Styled(View)>
+    <Styled(Text)
+      key="471-485 fulton street0"
+    >
+      471-485 fulton street
+    </Styled(Text)>
+    <Styled(Text)
+      key="brooklyn, NY, 112011"
+    >
+      brooklyn, NY, 11201
+    </Styled(Text)>
+    <Styled(Text)
+      key="(718) 243-11502"
+    >
+      (718) 243-1150
+    </Styled(Text)>
+    <Styled(View)>
+      <Styled(Image)
+        accessibilityLabel="Gymboree"
+        accessibilityRole="image"
+        source={
+          Object {
+            "testUri": "../../../../core/src/assets/gymboree-logo.png",
+          }
+        }
+      />
+      <Styled(Text)>
+        at this PLACE!
+      </Styled(Text)>
+    </Styled(View)>
+  </Styled(View)>
+  <Styled(View)>
+    <Styled(Styled(Anchor))
+      accessibilityLabel="Store Details"
+      accessibilityRole="link"
+      anchorVariation=""
+      colorName={null}
+      customStyle={Object {}}
+      locator=""
+      onPress={[Function]}
+      text="Store Details"
+      visible={false}
+    />
+    <Styled(CustomButton)
+      active={false}
+      buttonVariation="fixed-width"
+      color=""
+      customStyle={Object {}}
+      customTextStyle={null}
+      disableButton={false}
+      fill=""
+      fullWidth=""
+      iconColor="gray.800"
+      iconName="chevron-down"
+      iconSize="fs12"
+      locator=""
+      navigation={Object {}}
+      onPress={[Function]}
+      selected={false}
+      selectedIcon="chevron-up"
+      showIcon={false}
+      text="SET AS FAVORITE"
+      theme={Object {}}
+      type="button"
+      url=""
+    />
+  </Styled(View)>
+</Styled(View)>
+`;

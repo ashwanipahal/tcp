@@ -3,8 +3,9 @@
 import React from 'react';
 import { PropTypes } from 'prop-types';
 import { reduxForm, Field, propTypes as reduxFormPropTypes } from 'redux-form';
+import { getBrand } from '../../../../../../../utils';
 import createValidateMethod from '../../../../../../../utils/formValidation/createValidateMethod';
-import { getAddressLocationInfo } from '../../../../../atoms/GoogleAutoSuggest/AutoCompleteComponent';
+import { getAddressLocationInfo } from '../../../../../../../utils/addressLocation';
 import getStandardConfig from '../../../../../../../utils/formValidation/validatorStandardConfig';
 import {
   getSkuId,
@@ -22,6 +23,7 @@ import PickupStoreListItem from '../../PickupStoreListItem';
 import withStyles from '../../../../../hoc/withStyles';
 import PickupStoreSelectionFormStyle from '../styles/PickupStoreSelectionForm.style';
 import { TextBox, SelectBox, Row, Col, Button } from '../../../../../atoms';
+import { getCartItemInfo } from '../../../../../../features/CnC/AddedToBag/util/utility';
 
 export const DISTANCES_MAP_PROP_TYPE = PropTypes.arrayOf(
   PropTypes.shape({
@@ -82,6 +84,7 @@ class _PickupStoreSelectionForm extends React.Component {
     this.untouch = this.untouch.bind(this);
     this.toggleLoader = this.toggleLoader.bind(this);
     this.handleAddTobag = this.handleAddTobag.bind(this);
+    this.handlePickupRadioBtn = this.handlePickupRadioBtn.bind(this);
     this.preferredStore = null;
     this.isAutoSearchTrigerred = false;
   }
@@ -190,31 +193,51 @@ class _PickupStoreSelectionForm extends React.Component {
    * @description this method adds item to bag
    */
   handleAddTobag = (storeLocId, isBoss) => {
-    const { selectedStoreId, isBossSelected } = this.state;
-    const { initialValues, onAddItemToCart, onCloseClick } = this.props;
+    const { initialValues, onAddItemToCart, onCloseClick, currentProduct } = this.props;
     this.setState({
-      selectedStoreId: storeLocId || selectedStoreId,
-      isBossSelected: isBoss || isBossSelected,
       isShowMessage: true,
     });
+    const brand = getBrand();
     /**
      * added initial values to send in AddItem params.
      * Previously it was only handled post user searching
      * If searching is blocked then the intitial values received
      * will be passed as the expected params
      */
-    const { Quantity } = initialValues;
+    const { color, Fit: fit, Size: size, Quantity: quantity } = initialValues;
+    const formIntialValues = {
+      // This is required as different teams have used different 'Fit' or 'fit' labels
+      color,
+      fit,
+      size,
+    };
+    const productFormData = {
+      ...formIntialValues,
+      wishlistItemId: false,
+      quantity,
+      isBoss,
+      brand,
+      storeLocId,
+    };
+    const productInfo = getCartItemInfo(currentProduct, productFormData);
     const payload = {
-      productInfo: {
-        storeLocId,
-        isBoss,
-        quantity: Quantity,
-        skuInfo: this.deriveSKUInfo(),
-      },
+      productInfo,
       callback: onCloseClick,
     };
+
     return onAddItemToCart(payload);
   };
+
+  /**
+   * @method handlePickupRadioBtn
+   * @description this method sets the pickup mode for store
+   */
+  handlePickupRadioBtn(selectedStoreId, isBossSelected) {
+    this.setState({
+      isBossSelected,
+      selectedStoreId,
+    });
+  }
 
   toggleLoader(isLoading = false) {
     this.setState({ isLoading });
@@ -334,6 +357,7 @@ class _PickupStoreSelectionForm extends React.Component {
       <PickupStoreListContainer
         isShoppingBag={isShoppingBag}
         onStoreSelect={this.handleAddTobag}
+        onPickupRadioBtnToggle={this.handlePickupRadioBtn}
         isResultOfSearchingInCartStores={isSearchOnlyInCartStores}
         onCancel={onCloseClick}
         sameStore={sameStore}
@@ -381,6 +405,7 @@ class _PickupStoreSelectionForm extends React.Component {
             isShoppingBag={isShoppingBag}
             store={this.preferredStore}
             onStoreSelect={this.handleAddTobag}
+            onPickupRadioBtnToggle={this.handlePickupRadioBtn}
             isBopisSelected={
               this.preferredStore.basicInfo.id === selectedStoreId && !isBossSelected
             }
@@ -410,6 +435,7 @@ class _PickupStoreSelectionForm extends React.Component {
       storeSearchError,
       PickupSkuFormValues,
       colorFitsSizesMap,
+      isSkuResolved,
     } = this.props;
 
     let disableButton = pristine;
@@ -424,7 +450,7 @@ class _PickupStoreSelectionForm extends React.Component {
     disableButton = sizeAvailable && sizeAvailable.maxAvailable > 0 ? !sizeAvailable : enableButton;
 
     return showStoreSearching ? (
-      <div className={`${className} search-store`}>
+      <div className={className}>
         <BodyCopy
           className="find-store-label"
           fontFamily="secondary"
@@ -466,9 +492,17 @@ class _PickupStoreSelectionForm extends React.Component {
             </Button>
           </Col>
         </Row>
-        <BodyCopy fontFamily="secondary" fontSize="fs14" fontWeight="extrabold" textAlign="center">
-          {storeSearchError}
-        </BodyCopy>
+        {isSkuResolved && (
+          <BodyCopy
+            className="storeSearchError"
+            fontFamily="secondary"
+            fontSize="fs14"
+            fontWeight="extrabold"
+            textAlign="center"
+          >
+            {storeSearchError}
+          </BodyCopy>
+        )}
       </div>
     ) : null;
   }
@@ -484,7 +518,7 @@ class _PickupStoreSelectionForm extends React.Component {
     return (
       <React.Fragment>
         {isSkuResolved && (
-          <BodyCopy className="select-store-label">
+          <BodyCopy fontFamily="secondary" fontSize="fs14">
             {this.renderVariationText(storeLimitReached, sameStore)}
           </BodyCopy>
         )}

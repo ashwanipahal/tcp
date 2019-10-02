@@ -22,7 +22,6 @@ import {
   getMapSliceForColorProductId,
   getMapSliceForColor,
 } from '../../ProductListing/molecules/ProductList/utils/productsCommonUtils';
-import PickupStoreModal from '../../../../common/organisms/PickupStoreModal';
 import ProductReviewsContainer from '../../ProductListing/molecules/ProductReviews/container/ProductReviews.container';
 
 class ProductDetailView extends React.Component {
@@ -61,7 +60,6 @@ class ProductDetailView extends React.Component {
       pdpLabels,
       handleAddToBag,
       addToBagError,
-      isPickupModalOpen,
     } = this.props;
     const currentProduct = productDetails && productDetails.get('currentProduct');
     const isWeb =
@@ -138,7 +136,6 @@ class ProductDetailView extends React.Component {
                 currentProduct={currentProduct}
               />
             </div>
-            {isPickupModalOpen ? <PickupStoreModal /> : null}
           </Col>
         </Row>
         <Row className="placeholder">
@@ -211,7 +208,6 @@ ProductDetailView.propTypes = {
   plpLabels: PropTypes.shape({
     lbl_sort: PropTypes.string,
   }),
-  isPickupModalOpen: PropTypes.bool,
 };
 
 ProductDetailView.defaultProps = {
@@ -228,7 +224,6 @@ ProductDetailView.defaultProps = {
   productInfo: {},
   pdpLabels: {},
   addToBagError: '',
-  isPickupModalOpen: false,
 };
 
 export default withStyles(ProductDetailView, ProductDetailStyle);
