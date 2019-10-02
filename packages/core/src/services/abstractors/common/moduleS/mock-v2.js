@@ -30,7 +30,8 @@ export default {
       linkedImage: [
         {
           image: {
-            url: '',
+            url:
+              'https://test5.childrensplace.com/image/upload/v1565027643/homepagetest/gymboree/images/PlayB_Spring-1_2x_diwsan.png',
             alt: 'Pool',
             title: 'Pool',
             crop_d: 'c_crop,g_face:center,q_auto:best,w_450',
@@ -59,10 +60,6 @@ export default {
             {
               text: '20% OFF',
               style: 'style1',
-            },
-            {
-              text: 'For Easter Delivery!',
-              style: 'ribbon_default_text',
             },
           ],
           link: {

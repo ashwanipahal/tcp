@@ -1,12 +1,11 @@
-/* eslint-disable react-native/no-color-literals */
-/* eslint-disable react-native/no-inline-styles */
 import React from 'react';
 import PropTypes from 'prop-types';
 import { View } from 'react-native';
-import { DamImage, Image } from '../../../atoms';
+import { DamImage } from '../../../atoms';
 import PromoBanner from '../../PromoBanner';
 import LinkText from '../../LinkText';
 import { isGymboree, getScreenWidth, LAZYLOAD_HOST_NAME } from '../../../../../utils/index.native';
+import { RibbonContainer, StyledImage, StyledPromoBanner } from '../ModuleS.style.native';
 
 /**
  * Module height and width.
@@ -33,17 +32,54 @@ const RibbonView = ({ ribbonBanner, navigation, position }) => {
     };
   }
   return (
-    <View>
+    <RibbonContainer>
       {ribbonBanner && (
         <React.Fragment>
-          <Image {...ribbonConfig} style={{ tintColor: 'red' }} />
-          <PromoBanner
-            promoBanner={ribbonBanner}
-            navigation={navigation}
-            locator="moduleS_promoribbonbanner_text"
-          />
+          <StyledImage {...ribbonConfig} />
+          <StyledPromoBanner>
+            <PromoBanner
+              promoBanner={ribbonBanner}
+              navigation={navigation}
+              locator="moduleS_promoribbonbanner_text"
+              color="white"
+            />
+          </StyledPromoBanner>
         </React.Fragment>
       )}
+    </RibbonContainer>
+  );
+};
+
+const RibbonBannerVariation = props => {
+  const {
+    headerText,
+    navigation,
+    linkedImage: [{ image }],
+  } = props;
+
+  return (
+    <View>
+      {headerText && (
+        <LinkText
+          type="heading"
+          fontFamily="primary"
+          fontSize="fs36"
+          fontWeight="black"
+          navigation={navigation}
+          headerText={headerText}
+          locator="moduleS_header_text"
+          textAlign="center"
+        />
+      )}
+      <DamImage
+        width={MODULE_WIDTH}
+        height={isGymboree() ? MODULE_GYM_HEIGHT : MODULE_TCP_HEIGHT}
+        url={image.url}
+        host={LAZYLOAD_HOST_NAME.HOME}
+        crop={image.crop_m}
+        // imgConfig={isGymboree() ? IMG_DATA_GYM.crops[0] : IMG_DATA_TCP.crops[0]}
+      />
+      <RibbonView {...props} />
     </View>
   );
 };
@@ -53,7 +89,13 @@ const ModuleS = props => {
     headerText,
     navigation,
     linkedImage: [{ image }],
+    ribbonBanner,
   } = props;
+
+  if (ribbonBanner) {
+    return <RibbonBannerVariation {...props} />;
+  }
+
   return (
     <View>
       <DamImage
@@ -76,18 +118,11 @@ const ModuleS = props => {
           textAlign="center"
         />
       )}
-      <RibbonView {...props} />
     </View>
   );
 };
 
-RibbonView.propTypes = {
-  ribbonBanner: PropTypes.shape({}).isRequired,
-  navigation: PropTypes.shape({}).isRequired,
-  position: PropTypes.string.isRequired,
-};
-
-ModuleS.propTypes = {
+const ModulePropTypes = {
   headerText: PropTypes.shape({}).isRequired,
   navigation: PropTypes.shape({}).isRequired,
   linkedImage: PropTypes.arrayOf(
@@ -108,6 +143,14 @@ ModuleS.propTypes = {
       })
     )
   ).isRequired,
+  ribbonBanner: PropTypes.shape({}).isRequired,
+  position: PropTypes.string.isRequired,
 };
+
+RibbonView.propTypes = ModulePropTypes;
+
+RibbonBannerVariation.propTypes = ModulePropTypes;
+
+ModuleS.propTypes = ModulePropTypes;
 
 export default ModuleS;
