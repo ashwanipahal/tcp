@@ -95,19 +95,8 @@ const ModuleQ = props => {
   let selectedProductList = styliticsProductTabList[selectedCategoryId] || [];
   selectedProductList = selectedProductList.slice(0, TOTAL_IMAGES);
 
-  const selectedProductCarouselList = selectedProductList.reduce(
-    (list, item, index) => {
-      const lastList = list[list.length - 1];
-      if (lastList.length === PRODUCT_IMAGE_PER_SLIDE) {
-        list.push([{ ...item, productItemIndex: index }]);
-      } else {
-        lastList.push({ ...item, productItemIndex: index });
-      }
-
-      return list;
-    },
-    [[]]
-  );
+  // TODO: will be updated in next PR
+  const selectedProductCarouselList = selectedProductList;
 
   const renderCarouselSlide = slideProps => {
     const { item } = slideProps;
