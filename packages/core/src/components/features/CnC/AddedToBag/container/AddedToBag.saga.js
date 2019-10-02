@@ -103,7 +103,9 @@ export function* addItemToCartBopis({ payload }) {
     const errorMapping = yield select(BagPageSelectors.getErrorMapping);
     const errorMessage =
       // eslint-disable-next-line no-underscore-dangle
-      (err && err.errorMessages && err.errorMessages._error) || errorMapping.DEFAULT;
+      (err && err.errorMessages && err.errorMessages._error) ||
+      (errorMapping && errorMapping.DEFAULT) ||
+      'ERROR';
     yield put(AddToCartError(errorMessage));
   }
 }
