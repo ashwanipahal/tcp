@@ -1,11 +1,12 @@
+/* eslint-disable react-native/no-color-literals */
 import React from 'react';
 import PropTypes from 'prop-types';
 import { View } from 'react-native';
-import { DamImage } from '../../../atoms';
+import { DamImage, Image } from '../../../atoms';
 import PromoBanner from '../../PromoBanner';
 import LinkText from '../../LinkText';
 import { isGymboree, getScreenWidth, LAZYLOAD_HOST_NAME } from '../../../../../utils/index.native';
-import { RibbonContainer, StyledImage, StyledPromoBanner } from '../ModuleS.style.native';
+import { RibbonContainer, StyledPromoBanner } from '../ModuleS.style.native';
 
 /**
  * Module height and width.
@@ -35,7 +36,13 @@ const RibbonView = ({ ribbonBanner, navigation, position }) => {
     <RibbonContainer>
       {ribbonBanner && (
         <React.Fragment>
-          <StyledImage {...ribbonConfig} />
+          <Image
+            {...ribbonConfig}
+            // eslint-disable-next-line react-native/no-inline-styles
+            style={{
+              tintColor: '#c9182e',
+            }}
+          />
           <StyledPromoBanner>
             <PromoBanner
               promoBanner={ribbonBanner}
