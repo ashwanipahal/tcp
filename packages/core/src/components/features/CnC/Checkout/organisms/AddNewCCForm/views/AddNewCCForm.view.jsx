@@ -45,6 +45,7 @@ class AddNewCCForm extends React.PureComponent {
   static propTypes = {
     cvvInfo: PropTypes.func.isRequired,
     editMode: PropTypes.bool,
+    onCardFocus: PropTypes.func,
     cvvError: PropTypes.shape({}),
     cardType: PropTypes.string,
     labels: PropTypes.shape({}),
@@ -67,6 +68,7 @@ class AddNewCCForm extends React.PureComponent {
     isSaveToAccountChecked: true,
     isExpirationRequired: true,
     creditFieldLabels: {},
+    onCardFocus: () => {},
   };
 
   getCreditLabelValues = () => {

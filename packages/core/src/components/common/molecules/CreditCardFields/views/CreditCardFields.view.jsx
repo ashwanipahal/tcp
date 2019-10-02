@@ -175,6 +175,7 @@ CardNumberField.propTypes = {
   cardTypeImgUrl: PropTypes.string,
   isPLCCEnabled: PropTypes.bool,
   cardType: PropTypes.string,
+  onCardFocus: PropTypes.func,
   creditFieldLabels: PropTypes.shape({}),
 };
 
@@ -188,6 +189,7 @@ CardNumberField.defaultProps = {
   cardTypeImgUrl: '',
   cardType: '',
   isPLCCEnabled: true,
+  onCardFocus: () => {},
 };
 
 export default withStyles(CreditCardFields, styles);
