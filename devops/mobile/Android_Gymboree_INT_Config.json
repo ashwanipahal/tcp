@@ -248,6 +248,14 @@
     {
       "name": "RWD_APP_UNBXD_API_KEY_CA_FR_GYM",
       "value": ""
+    },
+    {
+      "name": "RWD_APP_INSTAGRAM_GYM",
+      "value": "f0eaf419384f43a0acd059c4f87163c1"
+    },
+    {
+      "name": "RWD_APP_INSTAGRAM_TCP",
+      "value": "1e3babbc821c4dd8aa9a644b7bb97f8e"
     }
   ],
   "signed": true,

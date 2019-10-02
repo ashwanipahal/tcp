@@ -211,10 +211,9 @@ exports[`Social component should render with connected 1`] = `
     </ModalNative>
   </Styled(View)>
   <Instagram
-    clientId="f0eaf419384f43a0acd059c4f87163c1"
     onLoginFailure={[Function]}
     onLoginSuccess={[Function]}
-    redirectUrl="https://google.com"
+    redirectUrl="undefined/undefined/instagram"
     responseType="token"
     scopes={
       Array [
@@ -437,10 +436,9 @@ exports[`Social component should renders correctly 1`] = `
     </ModalNative>
   </Styled(View)>
   <Instagram
-    clientId="f0eaf419384f43a0acd059c4f87163c1"
     onLoginFailure={[Function]}
     onLoginSuccess={[Function]}
-    redirectUrl="https://google.com"
+    redirectUrl="undefined/undefined/instagram"
     responseType="token"
     scopes={
       Array [
@@ -736,10 +734,9 @@ exports[`Social component should simulate instagram connect 1`] = `
     </ModalNative>
   </Styled(View)>
   <Instagram
-    clientId="f0eaf419384f43a0acd059c4f87163c1"
     onLoginFailure={[Function]}
     onLoginSuccess={[Function]}
-    redirectUrl="https://google.com"
+    redirectUrl="undefined/undefined/instagram"
     responseType="token"
     scopes={
       Array [
