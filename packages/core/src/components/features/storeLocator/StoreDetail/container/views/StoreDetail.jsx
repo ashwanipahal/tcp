@@ -80,12 +80,14 @@ const StoreDetail = ({
       </Row>
       <Row>
         <Col colSize={{ small: 6, medium: 8, large: 12 }}>
-          <StoreLocations
-            className="storedetail__storelocation"
-            stores={otherStores}
-            labels={labels}
-            openStoreDetails={openStoreDetails}
-          />
+          {otherStores && otherStores.length > 0 ? (
+            <StoreLocations
+              className="storedetail__storelocation"
+              stores={otherStores}
+              labels={labels}
+              openStoreDetails={openStoreDetails}
+            />
+          ) : null}
         </Col>
       </Row>
     </div>
