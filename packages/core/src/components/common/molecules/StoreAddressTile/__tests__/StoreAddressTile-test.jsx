@@ -33,6 +33,14 @@ describe('StoreAddressTile component', () => {
       );
       expect(component.html()).toMatchSnapshot();
     });
+    it('should render details view with set fav button', () => {
+      const component = mount(
+        <ThemeProvider theme={Theme()}>
+          <StoreAddressTile {...props} showSetFavorite />
+        </ThemeProvider>
+      );
+      expect(component.html()).toMatchSnapshot();
+    });
     it('should render details view with fav store', () => {
       const testProps = {
         ...props,

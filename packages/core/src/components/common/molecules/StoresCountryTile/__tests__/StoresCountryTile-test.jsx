@@ -13,7 +13,7 @@ jest.mock('@tcp/core/src/utils', () => ({
     brandId: 'tcp',
   }),
   isCanada: jest.fn(),
-  isClient: jest.fn(),
+  isClient: jest.fn().mockImplementation(() => true),
   getIconPath: jest.fn(),
 }));
 
@@ -44,5 +44,20 @@ describe('StoresCountryTile component', () => {
       </ThemeProvider>
     );
     expect(component.html()).toMatchSnapshot();
+  });
+
+  it('should trigger click on button when title function provided', () => {
+    getViewportInfo.mockImplementation(() => ({ isMobile: false, isTablet: false }));
+    const mockFn = jest.fn();
+    const component = mount(
+      <ThemeProvider theme={Theme()}>
+        <StoresCountryTile {...props} titleClickCb={mockFn} />
+      </ThemeProvider>
+    );
+    component
+      .find('.store-name--details-btn')
+      .last()
+      .simulate('click');
+    expect(mockFn).toHaveBeenCalled();
   });
 });
