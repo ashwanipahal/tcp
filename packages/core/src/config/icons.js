@@ -62,6 +62,7 @@ export default {
   'carrot-large-left': '/static/images/carrot-large-left.png',
   'close-icon': '/static/images/large.png',
   'plus-icon': '/static/images/plus.png',
+  'minus-icon': '/static/images/minus.svg',
   'mailing-address-icon': '/static/images/mailingAddress.jpg',
   'fav-store-icon': '/static/images/store.png',
   'birthday-icon': '/static/images/birthday.jpg',

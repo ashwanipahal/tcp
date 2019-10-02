@@ -1,1 +1,1 @@
-export { default } from './StoreLocations';
+export { default, CollapsibleLocations, LocationTile } from './StoreLocations';

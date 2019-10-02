@@ -163,6 +163,7 @@ exports[`StoreDetail component StoreDetail component renders correctly with prop
         }
       }
       storeIndex={0}
+      titleClickCb={null}
       variation="detail"
     />
     <StoreHours

@@ -20,6 +20,14 @@ export const TileHeader = styled.div`
       margin-top: 0;
       margin-bottom: ${props => props.theme.spacing.ELEM_SPACING.SM};
       color: ${props => props.theme.colors.TEXT.DARK};
+      &-btn {
+        font-family: ${props => props.theme.fonts.secondaryFontBlackFamily};
+        font-weight: ${props => props.theme.fonts.fontWeight.black};
+        line-height: ${props => props.theme.fonts.lineHeight.normal};
+        font-size: ${props => props.theme.fonts.fontSize.body.bodytext.copy4}px;
+        padding: 0;
+        border: 0;
+      }
     }
   }
 `;

@@ -68,7 +68,7 @@ export const tileStyles = css`
   .store-type {
     display: none;
   }
-  .title-footer {
+  .tile-footer {
     padding-top: ${props => props.theme.spacing.ELEM_SPACING.XL};
   }
 `;
