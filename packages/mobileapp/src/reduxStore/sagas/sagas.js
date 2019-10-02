@@ -46,6 +46,7 @@ import BirthdaySavingsSaga from '@tcp/core/src/components/features/account/commo
 import StoreDetailSaga from '@tcp/core/src/components/features/storeLocator/StoreDetail/container/StoreDetail.saga';
 import StoreLandingSaga from '@tcp/core/src/components/features/storeLocator/StoreLanding/container/StoreLanding.saga';
 
+import ConfirmationPageSaga from '@tcp/core/src/components/features/CnC/Confirmation/container/Confirmation.saga';
 import ApplyCreditCardSaga, {
   SubmitInstantCardApplication,
 } from '@tcp/core/src/components/features/browse/ApplyCardPage/container/ApplyCard.saga';
@@ -105,5 +106,6 @@ export default function* rootSaga() {
     QuickViewSaga(),
     PointsClaimSaga(),
     SocialAccountSaga(),
+    ConfirmationPageSaga(),
   ]);
 }

@@ -602,6 +602,48 @@ export const getTranslateDateInformation = (
     year: currentDate.getFullYear(),
   };
 };
+const WEEK_DAYS = ['SUN', 'MON', 'TUE', 'WED', 'THU', 'FRI', 'SAT'];
+const WEEK_DAYS_SMALL = ['Sun', 'Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat'];
+const MONTHS = ['JAN', 'FEB', 'MAR', 'APR', 'MAY', 'JUN', 'JUL', 'AUG', 'SEP', 'OCT', 'NOV', 'DEC'];
+const MONTHS_SMALL = [
+  'Jan',
+  'Feb',
+  'Mar',
+  'Apr',
+  'May',
+  'Jun',
+  'Jul',
+  'Aug',
+  'Sep',
+  'Oct',
+  'Nov',
+  'Dec',
+];
+
+/**
+ * @method getDateInformation
+ * @desc returns day, month and day of the respective date provided
+ * @param {string} date date which is to be mutated
+ * @param {upperCase} date determines case
+ */
+
+export const getDateInformation = (date, upperCase) => {
+  const currentDate = date ? new Date(date) : new Date();
+  return {
+    // added a case for upper and lower case values
+    day: upperCase ? WEEK_DAYS[currentDate.getDay()] : WEEK_DAYS_SMALL[currentDate.getDay()],
+    month: upperCase ? MONTHS[currentDate.getMonth()] : MONTHS_SMALL[currentDate.getMonth()],
+    date: currentDate.getDate(),
+  };
+};
+
+export function buildStorePageUrlSuffix(storeBasicInfo) {
+  const { id, storeName, address } = storeBasicInfo;
+  return [storeName, address.state, address.city, address.zipCode, id]
+    .join('-')
+    .toLowerCase()
+    .replace(/ /g, '');
+}
 
 export const extractFloat = currency => {
   try {
@@ -654,5 +696,7 @@ export default {
   configureInternalNavigationFromCMSUrl,
   getModifiedLanguageCode,
   getTranslateDateInformation,
+  getDateInformation,
+  buildStorePageUrlSuffix,
   extractFloat,
 };

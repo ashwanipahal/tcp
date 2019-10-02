@@ -23,7 +23,56 @@ exports[`ConfirmationViewVanilla should render correctly 1`] = `
     </Styled(Col)>
   </Styled(Row)>
   <Styled(Row)
-    className="placeholder thank-you-component"
+    className="thank-you-component"
+    fullBleed={true}
+  >
+    <Styled(Col)
+      colSize={
+        Object {
+          "large": 12,
+          "medium": 8,
+          "small": 6,
+        }
+      }
+    >
+      <Styled(ThankYouComponent)
+        fullfillmentCenterData={
+          Array [
+            Object {
+              "encryptedEmailAddress": "",
+              "isGuest": true,
+              "orderDate": "",
+              "orderLink": "/",
+              "orderNumber": 2345,
+              "orderTotal": 23.45,
+              "orderType": "ECOM",
+              "productsCount": 5,
+              "shippingFullname": undefined,
+            },
+          ]
+        }
+        isGuest={true}
+        isOrderPending={false}
+        isShowBopisMessage={true}
+        isShowShippingMessage={true}
+        orderNumbersByFullfillmentCenter={
+          Object {
+            "fullfillmentCenterMap": Array [
+              Object {
+                "center": Object {
+                  "orderType": "BOSS",
+                  "shippingFullname": "ship",
+                },
+              },
+            ],
+          }
+        }
+        updateOrderDetailsData={null}
+      />
+    </Styled(Col)>
+  </Styled(Row)>
+  <Styled(Row)
+    className="placeholder loyalty-banner"
     fullBleed={true}
   >
     <Styled(Col)
@@ -36,7 +85,223 @@ exports[`ConfirmationViewVanilla should render correctly 1`] = `
       }
     >
       <div>
-        THANK YOU COMPONENT
+        LOYALTY BANNER
+      </div>
+    </Styled(Col)>
+  </Styled(Row)>
+  <Styled(Row)
+    fullBleed={true}
+  >
+    <Styled(Col)
+      colSize={
+        Object {
+          "large": 12,
+          "medium": 8,
+          "small": 6,
+        }
+      }
+    >
+      <Connect(ConfirmationAccountFormContainer) />
+    </Styled(Col)>
+  </Styled(Row)>
+  <Styled(CheckoutOrderInfo)
+    isConfirmationPage={true}
+  />
+</div>
+`;
+
+exports[`ConfirmationViewVanilla should render correctly with venmo payment progress 1`] = `
+<div
+  className=""
+>
+  <Styled(Row)
+    className="placeholder sms-sign-up"
+    fullBleed={true}
+  >
+    <Styled(Col)
+      colSize={
+        Object {
+          "large": 12,
+          "medium": 8,
+          "small": 6,
+        }
+      }
+    >
+      <div>
+        SMS SIGN UP
+      </div>
+    </Styled(Col)>
+  </Styled(Row)>
+  <Styled(Row)
+    className="thank-you-component"
+    fullBleed={true}
+  >
+    <Styled(Col)
+      colSize={
+        Object {
+          "large": 12,
+          "medium": 8,
+          "small": 6,
+        }
+      }
+    >
+      <Styled(ThankYouComponent)
+        fullfillmentCenterData={
+          Array [
+            Object {
+              "center": Object {
+                "orderType": "BOSS",
+                "shippingFullname": "ship",
+              },
+            },
+          ]
+        }
+        isGuest={true}
+        isOrderPending={false}
+        isShowBopisMessage={true}
+        isShowShippingMessage={false}
+        orderNumbersByFullfillmentCenter={
+          Object {
+            "fullfillmentCenterMap": Array [
+              Object {
+                "center": Object {
+                  "orderType": "BOSS",
+                  "shippingFullname": "ship",
+                },
+              },
+            ],
+          }
+        }
+        updateOrderDetailsData={null}
+      />
+      <Styled(VenmoConfirmation)
+        isVenmoPaymentInProgress={true}
+      />
+      <div>
+        <section
+          className="venmo-payment-method-wrapper"
+        >
+          <Styled(CardImage)
+            card={Object {}}
+          />
+        </section>
+      </div>
+    </Styled(Col)>
+  </Styled(Row)>
+  <Styled(Row)
+    className="placeholder loyalty-banner"
+    fullBleed={true}
+  >
+    <Styled(Col)
+      colSize={
+        Object {
+          "large": 12,
+          "medium": 8,
+          "small": 6,
+        }
+      }
+    >
+      <div>
+        LOYALTY BANNER
+      </div>
+    </Styled(Col)>
+  </Styled(Row)>
+  <Styled(Row)
+    fullBleed={true}
+  >
+    <Styled(Col)
+      colSize={
+        Object {
+          "large": 12,
+          "medium": 8,
+          "small": 6,
+        }
+      }
+    >
+      <Connect(ConfirmationAccountFormContainer) />
+    </Styled(Col)>
+  </Styled(Row)>
+  <Styled(CheckoutOrderInfo)
+    isConfirmationPage={true}
+  />
+</div>
+`;
+
+exports[`ConfirmationViewVanilla should render correctly without order details 1`] = `
+<div
+  className=""
+>
+  <Styled(Row)
+    className="placeholder sms-sign-up"
+    fullBleed={true}
+  >
+    <Styled(Col)
+      colSize={
+        Object {
+          "large": 12,
+          "medium": 8,
+          "small": 6,
+        }
+      }
+    >
+      <div>
+        SMS SIGN UP
+      </div>
+    </Styled(Col)>
+  </Styled(Row)>
+  <Styled(Row)
+    className="thank-you-component"
+    fullBleed={true}
+  >
+    <Styled(Col)
+      colSize={
+        Object {
+          "large": 12,
+          "medium": 8,
+          "small": 6,
+        }
+      }
+    >
+      <Styled(ThankYouComponent)
+        fullfillmentCenterData={
+          Array [
+            Object {
+              "center": Object {
+                "orderType": "BOSS",
+                "shippingFullname": "ship",
+              },
+            },
+          ]
+        }
+        isGuest={true}
+        isOrderPending={false}
+        isShowBopisMessage={true}
+        isShowShippingMessage={false}
+        orderNumbersByFullfillmentCenter={
+          Object {
+            "fullfillmentCenterMap": Array [
+              Object {
+                "center": Object {
+                  "orderType": "BOSS",
+                  "shippingFullname": "ship",
+                },
+              },
+            ],
+          }
+        }
+        updateOrderDetailsData={null}
+      />
+      <Styled(VenmoConfirmation)
+        isVenmoPaymentInProgress={true}
+      />
+      <div>
+        <section
+          className="venmo-payment-method-wrapper"
+        >
+          <Styled(CardImage)
+            card={Object {}}
+          />
+        </section>
       </div>
     </Styled(Col)>
   </Styled(Row)>
