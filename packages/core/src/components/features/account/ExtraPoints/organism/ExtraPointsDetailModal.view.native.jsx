@@ -3,6 +3,8 @@ import { BodyCopy, RichText, Button } from '@tcp/core/src/components/common/atom
 import { BodyCopyWithSpacing } from '@tcp/core/src/components/common/atoms/styledWrapper';
 import PropTypes from 'prop-types';
 import sourceMap from '../imageSourceMap';
+import endpoints from '../../common/externalEndpoints';
+import { UrlHandler } from '../../../../../utils/utils.app';
 
 import {
   RichTextWrapper,
@@ -22,10 +24,35 @@ import {
 class ExtraPointsDetailModal extends React.PureComponent {
   static propTypes = {
     waysToEarnRow: PropTypes.shape({}),
+    handleComponentChange: PropTypes.func,
   };
 
   static defaultProps = {
     waysToEarnRow: {},
+    handleComponentChange: () => {},
+  };
+
+  handleButtonClick = activityDetails => {
+    const { handleComponentChange } = this.props;
+
+    switch (activityDetails.activityModalAction) {
+      case 'rewardPlaceApp':
+        return UrlHandler(endpoints.policiesPage);
+      case 'userAboutYourselfSurvey':
+        return handleComponentChange('profileInformationMobile');
+      case 'userFavoriteStore':
+        return handleComponentChange('profileInformationMobile');
+      case 'userMailing':
+        return handleComponentChange('profileInformationMobile');
+      case 'myPreference':
+        return handleComponentChange('myPreferencePageMobile');
+      case 'birthdaySavings':
+        return handleComponentChange('profileInformationMobile');
+      case 'orders':
+        return handleComponentChange('accountOverviewMobile');
+      default:
+        return handleComponentChange('profileInformationMobile');
+    }
   };
 
   /**
@@ -80,6 +107,7 @@ class ExtraPointsDetailModal extends React.PureComponent {
             text={activityDetails.activityModalCtaText}
             fill="BLUE"
             color="white"
+            onPress={() => this.handleButtonClick(activityDetails)}
           />
         </ButtonWrapper>
       </>
