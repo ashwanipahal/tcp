@@ -1,7 +1,9 @@
 import React from 'react';
 import { shallow } from 'enzyme';
 import { List } from 'immutable';
-import MyOffersCouponsVanilla from '../MyOffersCoupons.view';
+import Carousel from '@tcp/core/src/components/common/molecules/Carousel';
+import { MyOffersCouponViewVanilla } from '../MyOffersCoupons.view';
+import { EmptyOffersList } from '../EmptyOffersList.view';
 
 const coupons = [
   {
@@ -99,14 +101,79 @@ const coupons = [
 describe('CouponListCarousel component', () => {
   it('should renders offersandcoupons list', () => {
     const props = {
-      couponList: new List(coupons),
+      allCouponList: new List(coupons),
       labels: {},
       helpSubHeading: 'true',
       heading: 'Heading',
       couponDetailClick: () => {},
       helpAnchorClick: () => {},
     };
-    const component = shallow(<MyOffersCouponsVanilla {...props} />);
+    const component = shallow(<MyOffersCouponViewVanilla {...props} />);
     expect(component).toMatchSnapshot();
+  });
+
+  it('should render EmptyOffersList section for empty coupon list', () => {
+    const props = {
+      allCouponList: [],
+      labels: {},
+      helpSubHeading: 'true',
+      heading: 'Heading',
+      couponDetailClick: () => {},
+      helpAnchorClick: () => {},
+    };
+    const component = shallow(<MyOffersCouponViewVanilla {...props} />);
+    expect(component.find(EmptyOffersList)).toBeTruthy();
+  });
+
+  it('should render EmptyOffersList section for empty coupon list', () => {
+    const props = {
+      allCouponList: new List(coupons),
+      labels: {},
+      helpSubHeading: 'true',
+      heading: 'Heading',
+      couponDetailClick: () => {},
+      helpAnchorClick: () => {},
+    };
+    const component = shallow(<MyOffersCouponViewVanilla {...props} />);
+    expect(component.find(Carousel)).toBeTruthy();
+  });
+
+  it('should not render view all link for empty coupon list', () => {
+    const props = {
+      allCouponList: [],
+      labels: {},
+      helpSubHeading: 'true',
+      heading: 'Heading',
+      couponDetailClick: () => {},
+      helpAnchorClick: () => {},
+    };
+    const component = shallow(<MyOffersCouponViewVanilla {...props} />);
+    expect(component.find('.view_all')).toHaveLength(0);
+  });
+
+  it('should not render help link for empty coupon list', () => {
+    const props = {
+      allCouponList: [],
+      labels: {},
+      helpSubHeading: 'true',
+      heading: 'Heading',
+      couponDetailClick: () => {},
+      helpAnchorClick: () => {},
+    };
+    const component = shallow(<MyOffersCouponViewVanilla {...props} />);
+    expect(component.find('.couponList_iconContainer')).toHaveLength(0);
+  });
+
+  it('should render view all link', () => {
+    const props = {
+      allCouponList: new List(coupons),
+      labels: {},
+      helpSubHeading: 'true',
+      heading: 'Heading',
+      couponDetailClick: () => {},
+      helpAnchorClick: () => {},
+    };
+    const component = shallow(<MyOffersCouponViewVanilla {...props} />);
+    expect(component.find('.view_all')).toHaveLength(1);
   });
 });

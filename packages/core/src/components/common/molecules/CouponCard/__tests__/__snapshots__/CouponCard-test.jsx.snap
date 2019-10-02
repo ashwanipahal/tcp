@@ -75,7 +75,7 @@ exports[`CouponCard Component CouponCard should render correctly 1`] = `
                 fontSize="fs12"
                 fontWeight="black"
                 letterSpacing="normal"
-                lineHeight="normal"
+                lineHeight="lh115"
                 link={null}
                 textAlign="left"
               >

@@ -10,9 +10,9 @@ import ErrorMessage from '../../../../features/CnC/common/molecules/ErrorMessage
 import { COUPON_REDEMPTION_TYPE } from '../../../../../services/abstractors/CnC/CartItemTile';
 
 class CouponCard extends React.Component<Props> {
-  componentDidUpdate() {
+  componentDidUpdate(prevProps) {
     const { coupon, handleErrorCoupon } = this.props;
-    if (coupon.error) {
+    if (!prevProps.coupon.error && coupon.error) {
       handleErrorCoupon(coupon);
     }
   }
@@ -161,6 +161,7 @@ class CouponCard extends React.Component<Props> {
                     <BodyCopy
                       component="p"
                       fontSize="fs12"
+                      lineHeight="lh115"
                       fontWeight="black"
                       fontFamily="secondary"
                       data-locator={`coupon_${coupon.status}_couponNameLbl`}

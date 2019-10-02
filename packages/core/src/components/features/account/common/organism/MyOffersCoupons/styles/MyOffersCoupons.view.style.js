@@ -5,7 +5,7 @@ const styles = css`
   flex-direction: column;
 
   .couponList_title {
-    margin-bottom: ${props => props.theme.spacing.ELEM_SPACING.LRG};
+    margin-bottom: ${props => props.theme.spacing.ELEM_SPACING.SM};
   }
   .couponList_iconContainer {
     display: flex;

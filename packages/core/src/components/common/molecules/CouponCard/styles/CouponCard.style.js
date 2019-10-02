@@ -70,11 +70,19 @@ const styles = css`
   }
   .couponCard__col {
     flex: 1;
+    ${props =>
+      props.isCarouselView ? `padding-right: ${props.theme.spacing.ELEM_SPACING.SM};` : ''}
   }
   .coupon__button_black {
     background-color: ${props => props.theme.colors.BLACK};
     color: ${props => props.theme.colors.WHITE};
     font-size: ${props => props.theme.typography.fontSizes.fs10};
+    ${props =>
+      props.isCarouselView
+        ? `padding-left: ${props.theme.spacing.ELEM_SPACING.MED}; padding-right: ${
+            props.theme.spacing.ELEM_SPACING.MED
+          };`
+        : ''}
   }
   .coupon__button_black:hover,
   .coupon__button_black:focus {
@@ -84,6 +92,12 @@ const styles = css`
 
   .coupon__button_white {
     font-size: ${props => props.theme.typography.fontSizes.fs10};
+    ${props =>
+      props.isCarouselView
+        ? `padding-right: ${props.theme.spacing.ELEM_SPACING.MED}; padding-left: ${
+            props.theme.spacing.ELEM_SPACING.MED
+          }; `
+        : ''}
   }
   .couponCard__container_error_text {
     color: ${props => props.theme.colors.TEXT.RED};
@@ -93,20 +107,14 @@ const styles = css`
     margin: ${props => props.theme.spacing.ELEM_SPACING.MED}
       ${props => props.theme.spacing.ELEM_SPACING.LRG};
     .couponCard__row {
-      margin: ${props => props.theme.spacing.ELEM_SPACING.SM} 0;
-    }
-    .coupon__button_black {
-      padding-left: ${props => props.theme.spacing.ELEM_SPACING.MED};
-      padding-right: ${props => props.theme.spacing.ELEM_SPACING.MED};
-    }
-    .coupon__button_white {
-      padding-left: ${props => props.theme.spacing.ELEM_SPACING.MED};
-      padding-right: ${props => props.theme.spacing.ELEM_SPACING.MED};
+      margin: ${props => props.theme.spacing.ELEM_SPACING.XS} 0
+        ${props => props.theme.spacing.ELEM_SPACING.SM};
     }
   }
 
   .transparent-box {
     background: none;
+    padding-bottom: 0;
   }
 `;
 
