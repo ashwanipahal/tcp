@@ -4,7 +4,7 @@ import Theme from '@tcp/core/styles/themes';
 import { ThemeProvider } from 'styled-components';
 import { isMobileApp } from '@tcp/core/src/utils';
 import StoreStaticMap from '../views/StoreStaticMap';
-import list from '../stories/storesList';
+import list from '../__mocks__/storesList.mock';
 
 jest.mock('@tcp/core/src/utils', () => ({
   getViewportInfo: jest.fn(),

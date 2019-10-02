@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 import PropTypes from 'prop-types';
 import { storiesOf } from '@storybook/react';
 import StoreStaticMap from '../views/StoreStaticMap';
-import list from './storesList';
+import list from '../__mocks__/storesList.mock';
 import { getViewportInfo } from '../../../../../utils';
 
 const StoreStaticMapTest = ({ storesList, isCanada, isMobile, apiKey, centeredStoreId = '' }) => {
