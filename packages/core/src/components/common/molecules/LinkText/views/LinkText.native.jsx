@@ -16,7 +16,7 @@ type Props = {
 };
 
 export const bodyCopyStyles = {
-  // small text with regular font
+  //  small text with regular font
   style1: props => (
     <BodyCopy
       color="text.primary"
