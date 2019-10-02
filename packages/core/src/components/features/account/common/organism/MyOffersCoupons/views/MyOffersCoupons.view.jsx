@@ -75,6 +75,7 @@ class MyOffersCouponView extends PureComponent {
     } = this.props;
 
     const { detailStatus, helpStatus, selectedCoupon } = this.state;
+    const couponListSize = allCouponList && allCouponList.size;
 
     const CAROUSEL_OPTIONS = {
       autoplay: false,
@@ -110,7 +111,7 @@ class MyOffersCouponView extends PureComponent {
               <Row fullBleed>
                 <Col
                   colSize={{
-                    small: 3,
+                    small: 4,
                     medium: 4,
                     large: 8,
                   }}
@@ -127,17 +128,17 @@ class MyOffersCouponView extends PureComponent {
                       commonLabels,
                       'lbl_my_rewards_drawerHeading',
                       'placeRewards'
-                    )} (${allCouponList.size})`}
+                    )} (${couponListSize})`}
                   </BodyCopy>
                 </Col>
                 <Col
                   colSize={{
-                    small: 3,
+                    small: 2,
                     medium: 4,
                     large: 4,
                   }}
                 >
-                  {allCouponList.size > 0 && (
+                  {couponListSize > 0 && (
                     <BodyCopy className="view_all" component="div" textAlign="right">
                       <Anchor
                         fontSizeVariation="medium"
@@ -158,7 +159,7 @@ class MyOffersCouponView extends PureComponent {
                 </Col>
               </Row>
 
-              {allCouponList.size > 0 && (
+              {couponListSize > 0 && (
                 <BodyCopy component="div" className="couponList_iconContainer">
                   <BodyCopy component="div" className="couponList_helpIcon">
                     ?
@@ -188,7 +189,7 @@ class MyOffersCouponView extends PureComponent {
                 }}
                 carouselTheme="dark"
               >
-                {allCouponList.size > 0 &&
+                {couponListSize > 0 &&
                   allCouponList.slice(0, sliceCount).map(coupon => {
                     return (
                       <CouponCard
@@ -206,7 +207,7 @@ class MyOffersCouponView extends PureComponent {
                       />
                     );
                   })}
-                {allCouponList.size > 0 && (
+                {couponListSize > 0 && (
                   <BodyCopy component="div" className="coupon_viewall_tile">
                     <BodyCopy className="elem-mt-XXXL" component="div" textAlign="center">
                       <Button
@@ -223,7 +224,7 @@ class MyOffersCouponView extends PureComponent {
                 )}
               </Carousel>
 
-              {!allCouponList.size > 0 && (
+              {couponListSize && couponListSize === 0 && (
                 <Row>
                   <Col
                     colSize={{

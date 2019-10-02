@@ -1,7 +1,9 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`CnC template should render correctly 1`] = `
-<ContextConsumer>
-  <Component />
-</ContextConsumer>
+exports[`MyOffersCoupons container should render correctly 1`] = `
+<Connect(CouponContainer)
+  closedOverlay={[Function]}
+  isCarouselView={true}
+  showAccordian={false}
+/>
 `;
