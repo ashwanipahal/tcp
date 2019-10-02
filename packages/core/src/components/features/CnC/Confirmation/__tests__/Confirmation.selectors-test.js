@@ -1,14 +1,18 @@
 import { fromJS } from 'immutable';
-import ConfirmationSelectors from '../container/Confirmation.selectors';
+import ConfirmationSelectors, { getOrderConfirmation } from '../container/Confirmation.selectors';
 
 describe('Confirmation Selectors', () => {
   it('#getOrderConfirmation', () => {
     const Confirmation = fromJS({
-      orderConfirmation: {},
+      orderConfirmation: {
+        createAccountSuccess: false,
+      },
     });
     const State = { Confirmation };
-    expect(ConfirmationSelectors.getOrderConfirmation(State)).toEqual(fromJS({}));
+    const orderConfirmation = getOrderConfirmation(State);
+    expect(orderConfirmation.get('createAccountSuccess')).toEqual(false);
   });
+
   it('#getConfirmationSummary', () => {
     const Confirmation = fromJS({
       orderConfirmation: {
