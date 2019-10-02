@@ -39,7 +39,15 @@ class EmptyBagPage extends React.PureComponent {
               fontSize="fs14"
               fontFamily="secondary"
               dataLocator={getLocator('empty_bag_Msg')}
-              text={bagLabels.emptySflMsg}
+              text={bagLabels.emptySflMsg1}
+            />
+          </Text>
+          <Text>
+            <BodyCopy
+              fontSize="fs14"
+              fontFamily="secondary"
+              dataLocator={getLocator('empty_bag_Msg')}
+              text={bagLabels.emptySflMsg2}
             />
           </Text>
         </StyledEmptyBag>
