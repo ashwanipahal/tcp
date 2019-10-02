@@ -21,8 +21,16 @@ describe('ModuleB component', () => {
     linkedImage,
   };
 
+  const props = {
+    largeCompImage: mock.composites.largeCompImage,
+    ctaItems: mock.composites.ctaItems,
+    bannerPosition: mock.bannerPosition,
+    ctaType: mock.ctaType,
+    expandableTitle: mock.expandableTitle,
+  };
+
   it('should render TCP or default variant correctly', () => {
-    const wrapper = shallow(<ModuleB {...mock} />);
+    const wrapper = shallow(<ModuleB {...props} />);
     expect(wrapper).toMatchSnapshot();
   });
 

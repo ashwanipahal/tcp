@@ -15,17 +15,6 @@ type PercentageStyleProps = {
   text: string,
 };
 
-const PromoStyleBlack = props => (
-  <BodyCopy
-    color="gray.900"
-    mobilefontFamily="primary"
-    fontSize="fs48"
-    textAlign="center"
-    lineHeight="47px"
-    {...props}
-  />
-);
-
 /* bodyCopyStyles is a array of BodyCopy component with key of style1,style2,style3 etc.
     The keys are coming from CMS */
 export const bodyCopyStyles = {
@@ -78,6 +67,8 @@ export const bodyCopyStyles = {
   percentage_wrapped_large: props => <PercentageStyle {...props} />,
   percentage_wrapped_extra_large: props => <PercentagePinkStyle {...props} />,
   currency_up_style: props => <CurrencyUpPromoBanner {...props} />,
+  // TODO: Remove .style10 when currency_up_style is available in CMS
+  style10: props => <CurrencyUpPromoBanner {...props} />,
   small_text_bold: props => (
     <BodyCopy
       fontSize="fs16"
@@ -143,15 +134,45 @@ export const bodyCopyStyles = {
       {...props}
     />
   ),
-  medium_text_semibold: PromoStyleBlack,
-  extra_large_text_black: PromoStyleBlack,
-  fixed_medium_text_black: props => (
+  medium_text_semibold: props => (
+    <BodyCopy
+      color="gray.900"
+      mobilefontFamily="primary"
+      fontSize="fs32"
+      textAlign="center"
+      lineHeight="47px"
+      letterSpacing="ls2"
+      {...props}
+    />
+  ),
+  extra_large_text_black: props => (
     <BodyCopy
       color="gray.900"
       mobilefontFamily="primary"
       fontSize="fs48"
       textAlign="center"
-      lineHeight="48px"
+      lineHeight="47px"
+      fontWeight="black"
+      {...props}
+    />
+  ),
+  extra_large_text_regular: props => (
+    <BodyCopy
+      color="gray.900"
+      mobilefontFamily="primary"
+      fontSize="fs48"
+      textAlign="center"
+      lineHeight="47px"
+      {...props}
+    />
+  ),
+  fixed_medium_text_black: props => (
+    <BodyCopy
+      color="gray.900"
+      mobilefontFamily="primary"
+      fontSize="fs64"
+      textAlign="center"
+      lineHeight="64px"
       fontWeight="black"
       {...props}
     />

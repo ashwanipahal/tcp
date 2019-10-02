@@ -4,6 +4,19 @@ exports[`RemoveSoldOut Component ItemAvailability should render correctly 1`] = 
 <Fragment>
   <div
     className=""
-  />
+  >
+    <Styled(BodyCopy)
+      className="removeItem"
+      color="text.primary"
+      component="span"
+      fontFamily="secondary"
+      fontSize="fs12"
+      fontWeight="regular"
+      letterSpacing="normal"
+      lineHeight="normal"
+      link={null}
+      textAlign="left"
+    />
+  </div>
 </Fragment>
 `;

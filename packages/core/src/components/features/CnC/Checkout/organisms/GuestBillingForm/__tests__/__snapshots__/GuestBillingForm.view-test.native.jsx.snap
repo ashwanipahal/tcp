@@ -1,0 +1,205 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`GuestBillingFormVanilla should render correctly 1`] = `
+<Fragment>
+  <Styled(View)>
+    <Styled(BodyCopy)
+      accessibilityText=""
+      className="elem-mb-XS elem-mt-MED"
+      data-locator="billing-details"
+      dataLocator=""
+      fontSize="fs26"
+      fontWeight="regular"
+      margin={null}
+      mobileFontFamily="primary"
+      numberOfLines={null}
+      textDecoration={null}
+    />
+    <AddNewCCForm
+      addNewCCState={false}
+      billingData={Object {}}
+      cardList={null}
+      cardType={null}
+      creditFieldLabels={Object {}}
+      cvvError={null}
+      cvvInfo={
+        <ReactTooltip
+          backgroundColor="#fff"
+          height={96}
+          onClose={[Function]}
+          onOpen={[Function]}
+          overlayColor="rgba(250, 250, 250, 0.80)"
+          pointerColor="#fff"
+          popover=""
+          toggleOnPress={true}
+          width={240}
+          withOverlay={false}
+          withPointer={true}
+        >
+          <ForwardRef
+            alt=""
+            height={15}
+            host=""
+            source={
+              Object {
+                "testUri": "../../../../core/src/assets/info-icon.png",
+              }
+            }
+            url=""
+            width={15}
+          />
+        </ReactTooltip>
+      }
+      formName="checkoutBilling"
+      isExpirationRequired={true}
+      isGuest={true}
+      isSaveToAccountChecked={true}
+      labels={Object {}}
+    />
+    <Styled(CheckoutAddress)
+      billingData={Object {}}
+      formName="checkoutBilling"
+      isGuest={true}
+      isSameAsShippingChecked={true}
+      labels={Object {}}
+      onFileAddressId={null}
+      orderHasShipping={true}
+      selectedOnFileAddressId={null}
+      shippingAddress={null}
+      userAddresses={null}
+    />
+    <CnCCommonTemplate
+      backLinkText=""
+      btnText=""
+      onBackLinkPress={[Function]}
+      routeToPage=""
+    />
+  </Styled(View)>
+</Fragment>
+`;
+
+exports[`GuestBillingFormVanilla should render correctly when props change 1`] = `
+<Fragment>
+  <Styled(View)>
+    <Styled(BodyCopy)
+      accessibilityText=""
+      className="elem-mb-XS elem-mt-MED"
+      data-locator="billing-details"
+      dataLocator=""
+      fontSize="fs26"
+      fontWeight="regular"
+      margin={null}
+      mobileFontFamily="primary"
+      numberOfLines={null}
+      textDecoration={null}
+    />
+    <AddNewCCForm
+      addNewCCState={false}
+      billingData={Object {}}
+      cardList={null}
+      cardType="VISA"
+      creditFieldLabels={Object {}}
+      cvvError="error"
+      cvvInfo={
+        <ReactTooltip
+          backgroundColor="#fff"
+          height={96}
+          onClose={[Function]}
+          onOpen={[Function]}
+          overlayColor="rgba(250, 250, 250, 0.80)"
+          pointerColor="#fff"
+          popover=""
+          toggleOnPress={true}
+          width={240}
+          withOverlay={false}
+          withPointer={true}
+        >
+          <ForwardRef
+            alt=""
+            height={15}
+            host=""
+            source={
+              Object {
+                "testUri": "../../../../core/src/assets/info-icon.png",
+              }
+            }
+            url=""
+            width={15}
+          />
+        </ReactTooltip>
+      }
+      dispatch={
+        [MockFunction] {
+          "calls": Array [
+            Array [
+              Object {
+                "meta": Object {
+                  "field": "cardType",
+                  "form": "checkoutBilling",
+                  "persistentSubmitErrors": undefined,
+                  "touch": undefined,
+                },
+                "payload": "VISA",
+                "type": "@@redux-form/CHANGE",
+              },
+            ],
+          ],
+          "results": Array [
+            Object {
+              "type": "return",
+              "value": undefined,
+            },
+          ],
+        }
+      }
+      formName="checkoutBilling"
+      isExpirationRequired={true}
+      isGuest={true}
+      isSaveToAccountChecked={true}
+      labels={Object {}}
+    />
+    <Styled(CheckoutAddress)
+      billingData={Object {}}
+      dispatch={
+        [MockFunction] {
+          "calls": Array [
+            Array [
+              Object {
+                "meta": Object {
+                  "field": "cardType",
+                  "form": "checkoutBilling",
+                  "persistentSubmitErrors": undefined,
+                  "touch": undefined,
+                },
+                "payload": "VISA",
+                "type": "@@redux-form/CHANGE",
+              },
+            ],
+          ],
+          "results": Array [
+            Object {
+              "type": "return",
+              "value": undefined,
+            },
+          ],
+        }
+      }
+      formName="checkoutBilling"
+      isGuest={true}
+      isSameAsShippingChecked={true}
+      labels={Object {}}
+      onFileAddressId={null}
+      orderHasShipping={true}
+      selectedOnFileAddressId={null}
+      shippingAddress={null}
+      userAddresses={null}
+    />
+    <CnCCommonTemplate
+      backLinkText=""
+      btnText=""
+      onBackLinkPress={[Function]}
+      routeToPage=""
+    />
+  </Styled(View)>
+</Fragment>
+`;

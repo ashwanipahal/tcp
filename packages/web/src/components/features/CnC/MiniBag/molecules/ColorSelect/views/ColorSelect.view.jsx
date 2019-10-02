@@ -10,14 +10,26 @@ import styles, { customSelectTile } from '../styles/ColorSelect.style';
 //   return (selectedOption && selectedOption.value) || 'color';
 // };
 
-const ColorSelectorDropDown = ({ options, input, className, selectListTitle }) => {
+const ColorSelectorDropDown = ({
+  options,
+  input,
+  className,
+  selectListTitle,
+  selectedColorOption,
+}) => {
+  let activeTitle = '';
+  let activeValue = '';
+  if (selectedColorOption) {
+    activeTitle = selectedColorOption.title;
+    activeValue = selectedColorOption.value;
+  }
   return (
     <CustomSelect
       inheritedStyles={customSelectTile}
       className={className}
       options={options}
-      activeValue={input.name.name}
-      activeTitle={input.name.name}
+      activeValue={activeValue}
+      activeTitle={activeTitle}
       clickHandler={(e, value) => input.onChange(value)}
       selectListTitle={selectListTitle}
       renderList={ColorSelectorList}
@@ -30,6 +42,7 @@ ColorSelectorDropDown.propTypes = {
   input: PropTypes.shape({}).isRequired,
   className: PropTypes.string.isRequired,
   selectListTitle: PropTypes.string.isRequired,
+  selectedColorOption: PropTypes.shape({}).isRequired,
 };
 
 export default withStyles(ColorSelectorDropDown, styles);

@@ -108,6 +108,7 @@ exports[`RegisteredShippingFormVanilla should render correctly  1`] = `
         fontWeight="regular"
         letterSpacing="normal"
         lineHeight="normal"
+        link={null}
         textAlign="left"
       />
     </Styled(Col)>
@@ -318,6 +319,7 @@ exports[`RegisteredShippingFormVanilla should render correctly onAddressDropDown
         fontWeight="regular"
         letterSpacing="normal"
         lineHeight="normal"
+        link={null}
         textAlign="left"
       />
     </Styled(Col)>
@@ -431,7 +433,7 @@ exports[`RegisteredShippingFormVanilla should render correctly onAddressDropDown
             "$$typeof": Symbol(react.forward_ref),
             "attrs": Array [],
             "componentStyle": ComponentStyle {
-              "componentId": "sc-bxivhb",
+              "componentId": "sc-ifAKCX",
               "isStatic": false,
               "rules": Array [
                 "
@@ -548,7 +550,7 @@ exports[`RegisteredShippingFormVanilla should render correctly onAddressDropDown
             "displayName": "Styled(InputCheckbox)",
             "foldedComponentIds": Array [],
             "render": [Function],
-            "styledComponentId": "sc-bxivhb",
+            "styledComponentId": "sc-ifAKCX",
             "target": [Function],
             "toString": [Function],
             "warnTooManyClasses": [Function],
@@ -568,6 +570,7 @@ exports[`RegisteredShippingFormVanilla should render correctly onAddressDropDown
           fontWeight="regular"
           letterSpacing="normal"
           lineHeight="normal"
+          link={null}
           textAlign="left"
         />
       </Field>
@@ -724,6 +727,7 @@ exports[`RegisteredShippingFormVanilla should render correctly with isAddNewAddr
         fontWeight="regular"
         letterSpacing="normal"
         lineHeight="normal"
+        link={null}
         textAlign="left"
       />
     </Styled(Col)>
@@ -820,7 +824,7 @@ exports[`RegisteredShippingFormVanilla should render correctly with isAddNewAddr
             "$$typeof": Symbol(react.forward_ref),
             "attrs": Array [],
             "componentStyle": ComponentStyle {
-              "componentId": "sc-bxivhb",
+              "componentId": "sc-ifAKCX",
               "isStatic": false,
               "rules": Array [
                 "
@@ -937,7 +941,7 @@ exports[`RegisteredShippingFormVanilla should render correctly with isAddNewAddr
             "displayName": "Styled(InputCheckbox)",
             "foldedComponentIds": Array [],
             "render": [Function],
-            "styledComponentId": "sc-bxivhb",
+            "styledComponentId": "sc-ifAKCX",
             "target": [Function],
             "toString": [Function],
             "warnTooManyClasses": [Function],
@@ -957,6 +961,7 @@ exports[`RegisteredShippingFormVanilla should render correctly with isAddNewAddr
           fontWeight="regular"
           letterSpacing="normal"
           lineHeight="normal"
+          link={null}
           textAlign="left"
         />
       </Field>
@@ -978,7 +983,7 @@ exports[`RegisteredShippingFormVanilla should render correctly with isAddNewAddr
             "$$typeof": Symbol(react.forward_ref),
             "attrs": Array [],
             "componentStyle": ComponentStyle {
-              "componentId": "sc-bxivhb",
+              "componentId": "sc-ifAKCX",
               "isStatic": false,
               "rules": Array [
                 "
@@ -1095,7 +1100,7 @@ exports[`RegisteredShippingFormVanilla should render correctly with isAddNewAddr
             "displayName": "Styled(InputCheckbox)",
             "foldedComponentIds": Array [],
             "render": [Function],
-            "styledComponentId": "sc-bxivhb",
+            "styledComponentId": "sc-ifAKCX",
             "target": [Function],
             "toString": [Function],
             "warnTooManyClasses": [Function],
@@ -1115,6 +1120,7 @@ exports[`RegisteredShippingFormVanilla should render correctly with isAddNewAddr
           fontWeight="regular"
           letterSpacing="normal"
           lineHeight="normal"
+          link={null}
           textAlign="left"
         />
       </Field>
@@ -1230,6 +1236,7 @@ exports[`RegisteredShippingFormVanilla should render correctly with isAddNewAddr
         fontWeight="regular"
         letterSpacing="normal"
         lineHeight="normal"
+        link={null}
         textAlign="left"
       />
     </Styled(Col)>
@@ -1326,7 +1333,7 @@ exports[`RegisteredShippingFormVanilla should render correctly with isAddNewAddr
             "$$typeof": Symbol(react.forward_ref),
             "attrs": Array [],
             "componentStyle": ComponentStyle {
-              "componentId": "sc-bxivhb",
+              "componentId": "sc-ifAKCX",
               "isStatic": false,
               "rules": Array [
                 "
@@ -1443,7 +1450,7 @@ exports[`RegisteredShippingFormVanilla should render correctly with isAddNewAddr
             "displayName": "Styled(InputCheckbox)",
             "foldedComponentIds": Array [],
             "render": [Function],
-            "styledComponentId": "sc-bxivhb",
+            "styledComponentId": "sc-ifAKCX",
             "target": [Function],
             "toString": [Function],
             "warnTooManyClasses": [Function],
@@ -1463,6 +1470,7 @@ exports[`RegisteredShippingFormVanilla should render correctly with isAddNewAddr
           fontWeight="regular"
           letterSpacing="normal"
           lineHeight="normal"
+          link={null}
           textAlign="left"
         />
       </Field>
@@ -1484,7 +1492,7 @@ exports[`RegisteredShippingFormVanilla should render correctly with isAddNewAddr
             "$$typeof": Symbol(react.forward_ref),
             "attrs": Array [],
             "componentStyle": ComponentStyle {
-              "componentId": "sc-bxivhb",
+              "componentId": "sc-ifAKCX",
               "isStatic": false,
               "rules": Array [
                 "
@@ -1601,7 +1609,7 @@ exports[`RegisteredShippingFormVanilla should render correctly with isAddNewAddr
             "displayName": "Styled(InputCheckbox)",
             "foldedComponentIds": Array [],
             "render": [Function],
-            "styledComponentId": "sc-bxivhb",
+            "styledComponentId": "sc-ifAKCX",
             "target": [Function],
             "toString": [Function],
             "warnTooManyClasses": [Function],
@@ -1621,6 +1629,7 @@ exports[`RegisteredShippingFormVanilla should render correctly with isAddNewAddr
           fontWeight="regular"
           letterSpacing="normal"
           lineHeight="normal"
+          link={null}
           textAlign="left"
         />
       </Field>
@@ -1736,6 +1745,7 @@ exports[`RegisteredShippingFormVanilla should render correctly with isEditing tr
         fontWeight="regular"
         letterSpacing="normal"
         lineHeight="normal"
+        link={null}
         textAlign="left"
       />
     </Styled(Col)>
@@ -1833,7 +1843,7 @@ exports[`RegisteredShippingFormVanilla should render correctly with isEditing tr
             "$$typeof": Symbol(react.forward_ref),
             "attrs": Array [],
             "componentStyle": ComponentStyle {
-              "componentId": "sc-bxivhb",
+              "componentId": "sc-ifAKCX",
               "isStatic": false,
               "rules": Array [
                 "
@@ -1950,7 +1960,7 @@ exports[`RegisteredShippingFormVanilla should render correctly with isEditing tr
             "displayName": "Styled(InputCheckbox)",
             "foldedComponentIds": Array [],
             "render": [Function],
-            "styledComponentId": "sc-bxivhb",
+            "styledComponentId": "sc-ifAKCX",
             "target": [Function],
             "toString": [Function],
             "warnTooManyClasses": [Function],
@@ -1970,6 +1980,7 @@ exports[`RegisteredShippingFormVanilla should render correctly with isEditing tr
           fontWeight="regular"
           letterSpacing="normal"
           lineHeight="normal"
+          link={null}
           textAlign="left"
         />
       </Field>
@@ -2116,7 +2127,7 @@ exports[`RegisteredShippingFormVanilla should render correctly with no addresses
             "$$typeof": Symbol(react.forward_ref),
             "attrs": Array [],
             "componentStyle": ComponentStyle {
-              "componentId": "sc-bxivhb",
+              "componentId": "sc-ifAKCX",
               "isStatic": false,
               "rules": Array [
                 "
@@ -2233,7 +2244,7 @@ exports[`RegisteredShippingFormVanilla should render correctly with no addresses
             "displayName": "Styled(InputCheckbox)",
             "foldedComponentIds": Array [],
             "render": [Function],
-            "styledComponentId": "sc-bxivhb",
+            "styledComponentId": "sc-ifAKCX",
             "target": [Function],
             "toString": [Function],
             "warnTooManyClasses": [Function],
@@ -2253,6 +2264,7 @@ exports[`RegisteredShippingFormVanilla should render correctly with no addresses
           fontWeight="regular"
           letterSpacing="normal"
           lineHeight="normal"
+          link={null}
           textAlign="left"
         />
       </Field>
@@ -2274,7 +2286,7 @@ exports[`RegisteredShippingFormVanilla should render correctly with no addresses
             "$$typeof": Symbol(react.forward_ref),
             "attrs": Array [],
             "componentStyle": ComponentStyle {
-              "componentId": "sc-bxivhb",
+              "componentId": "sc-ifAKCX",
               "isStatic": false,
               "rules": Array [
                 "
@@ -2391,7 +2403,7 @@ exports[`RegisteredShippingFormVanilla should render correctly with no addresses
             "displayName": "Styled(InputCheckbox)",
             "foldedComponentIds": Array [],
             "render": [Function],
-            "styledComponentId": "sc-bxivhb",
+            "styledComponentId": "sc-ifAKCX",
             "target": [Function],
             "toString": [Function],
             "warnTooManyClasses": [Function],
@@ -2411,6 +2423,7 @@ exports[`RegisteredShippingFormVanilla should render correctly with no addresses
           fontWeight="regular"
           letterSpacing="normal"
           lineHeight="normal"
+          link={null}
           textAlign="left"
         />
       </Field>
@@ -2549,7 +2562,7 @@ exports[`RegisteredShippingFormVanilla should render correctly with no addresses
             "$$typeof": Symbol(react.forward_ref),
             "attrs": Array [],
             "componentStyle": ComponentStyle {
-              "componentId": "sc-bxivhb",
+              "componentId": "sc-ifAKCX",
               "isStatic": false,
               "rules": Array [
                 "
@@ -2666,7 +2679,7 @@ exports[`RegisteredShippingFormVanilla should render correctly with no addresses
             "displayName": "Styled(InputCheckbox)",
             "foldedComponentIds": Array [],
             "render": [Function],
-            "styledComponentId": "sc-bxivhb",
+            "styledComponentId": "sc-ifAKCX",
             "target": [Function],
             "toString": [Function],
             "warnTooManyClasses": [Function],
@@ -2686,6 +2699,7 @@ exports[`RegisteredShippingFormVanilla should render correctly with no addresses
           fontWeight="regular"
           letterSpacing="normal"
           lineHeight="normal"
+          link={null}
           textAlign="left"
         />
       </Field>
@@ -2707,7 +2721,7 @@ exports[`RegisteredShippingFormVanilla should render correctly with no addresses
             "$$typeof": Symbol(react.forward_ref),
             "attrs": Array [],
             "componentStyle": ComponentStyle {
-              "componentId": "sc-bxivhb",
+              "componentId": "sc-ifAKCX",
               "isStatic": false,
               "rules": Array [
                 "
@@ -2824,7 +2838,7 @@ exports[`RegisteredShippingFormVanilla should render correctly with no addresses
             "displayName": "Styled(InputCheckbox)",
             "foldedComponentIds": Array [],
             "render": [Function],
-            "styledComponentId": "sc-bxivhb",
+            "styledComponentId": "sc-ifAKCX",
             "target": [Function],
             "toString": [Function],
             "warnTooManyClasses": [Function],
@@ -2844,6 +2858,7 @@ exports[`RegisteredShippingFormVanilla should render correctly with no addresses
           fontWeight="regular"
           letterSpacing="normal"
           lineHeight="normal"
+          link={null}
           textAlign="left"
         />
       </Field>
@@ -2982,7 +2997,7 @@ exports[`RegisteredShippingFormVanilla should render correctly with no addresses
             "$$typeof": Symbol(react.forward_ref),
             "attrs": Array [],
             "componentStyle": ComponentStyle {
-              "componentId": "sc-bxivhb",
+              "componentId": "sc-ifAKCX",
               "isStatic": false,
               "rules": Array [
                 "
@@ -3099,7 +3114,7 @@ exports[`RegisteredShippingFormVanilla should render correctly with no addresses
             "displayName": "Styled(InputCheckbox)",
             "foldedComponentIds": Array [],
             "render": [Function],
-            "styledComponentId": "sc-bxivhb",
+            "styledComponentId": "sc-ifAKCX",
             "target": [Function],
             "toString": [Function],
             "warnTooManyClasses": [Function],
@@ -3119,6 +3134,7 @@ exports[`RegisteredShippingFormVanilla should render correctly with no addresses
           fontWeight="regular"
           letterSpacing="normal"
           lineHeight="normal"
+          link={null}
           textAlign="left"
         />
       </Field>
@@ -3140,7 +3156,7 @@ exports[`RegisteredShippingFormVanilla should render correctly with no addresses
             "$$typeof": Symbol(react.forward_ref),
             "attrs": Array [],
             "componentStyle": ComponentStyle {
-              "componentId": "sc-bxivhb",
+              "componentId": "sc-ifAKCX",
               "isStatic": false,
               "rules": Array [
                 "
@@ -3257,7 +3273,7 @@ exports[`RegisteredShippingFormVanilla should render correctly with no addresses
             "displayName": "Styled(InputCheckbox)",
             "foldedComponentIds": Array [],
             "render": [Function],
-            "styledComponentId": "sc-bxivhb",
+            "styledComponentId": "sc-ifAKCX",
             "target": [Function],
             "toString": [Function],
             "warnTooManyClasses": [Function],
@@ -3277,6 +3293,7 @@ exports[`RegisteredShippingFormVanilla should render correctly with no addresses
           fontWeight="regular"
           letterSpacing="normal"
           lineHeight="normal"
+          link={null}
           textAlign="left"
         />
       </Field>
@@ -3382,7 +3399,7 @@ exports[`RegisteredShippingFormVanilla should render correctly with no addresses
             "$$typeof": Symbol(react.forward_ref),
             "attrs": Array [],
             "componentStyle": ComponentStyle {
-              "componentId": "sc-bxivhb",
+              "componentId": "sc-ifAKCX",
               "isStatic": false,
               "rules": Array [
                 "
@@ -3499,7 +3516,7 @@ exports[`RegisteredShippingFormVanilla should render correctly with no addresses
             "displayName": "Styled(InputCheckbox)",
             "foldedComponentIds": Array [],
             "render": [Function],
-            "styledComponentId": "sc-bxivhb",
+            "styledComponentId": "sc-ifAKCX",
             "target": [Function],
             "toString": [Function],
             "warnTooManyClasses": [Function],
@@ -3519,6 +3536,7 @@ exports[`RegisteredShippingFormVanilla should render correctly with no addresses
           fontWeight="regular"
           letterSpacing="normal"
           lineHeight="normal"
+          link={null}
           textAlign="left"
         />
       </Field>
@@ -3540,7 +3558,7 @@ exports[`RegisteredShippingFormVanilla should render correctly with no addresses
             "$$typeof": Symbol(react.forward_ref),
             "attrs": Array [],
             "componentStyle": ComponentStyle {
-              "componentId": "sc-bxivhb",
+              "componentId": "sc-ifAKCX",
               "isStatic": false,
               "rules": Array [
                 "
@@ -3657,7 +3675,7 @@ exports[`RegisteredShippingFormVanilla should render correctly with no addresses
             "displayName": "Styled(InputCheckbox)",
             "foldedComponentIds": Array [],
             "render": [Function],
-            "styledComponentId": "sc-bxivhb",
+            "styledComponentId": "sc-ifAKCX",
             "target": [Function],
             "toString": [Function],
             "warnTooManyClasses": [Function],
@@ -3677,6 +3695,7 @@ exports[`RegisteredShippingFormVanilla should render correctly with no addresses
           fontWeight="regular"
           letterSpacing="normal"
           lineHeight="normal"
+          link={null}
           textAlign="left"
         />
       </Field>

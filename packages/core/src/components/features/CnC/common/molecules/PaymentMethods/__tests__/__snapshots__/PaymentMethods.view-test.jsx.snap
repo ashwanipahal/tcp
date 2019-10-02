@@ -11,6 +11,7 @@ exports[`ButtonList component renders correctly without props 1`] = `
     fontWeight="extrabold"
     letterSpacing="normal"
     lineHeight="normal"
+    link={null}
     textAlign="left"
   />
   <Styled(Row)
@@ -33,7 +34,7 @@ exports[`ButtonList component renders correctly without props 1`] = `
             "$$typeof": Symbol(react.forward_ref),
             "attrs": Array [],
             "componentStyle": ComponentStyle {
-              "componentId": "sc-bwzfXH",
+              "componentId": "sc-htpNat",
               "isStatic": false,
               "rules": Array [
                 "
@@ -155,7 +156,7 @@ exports[`ButtonList component renders correctly without props 1`] = `
             "foldedComponentIds": Array [],
             "labeledRadioButtonCounter": 0,
             "render": [Function],
-            "styledComponentId": "sc-bwzfXH",
+            "styledComponentId": "sc-htpNat",
             "target": [Function],
             "toString": [Function],
             "warnTooManyClasses": [Function],
@@ -186,7 +187,7 @@ exports[`ButtonList component renders correctly without props 1`] = `
             "$$typeof": Symbol(react.forward_ref),
             "attrs": Array [],
             "componentStyle": ComponentStyle {
-              "componentId": "sc-bwzfXH",
+              "componentId": "sc-htpNat",
               "isStatic": false,
               "rules": Array [
                 "
@@ -308,7 +309,7 @@ exports[`ButtonList component renders correctly without props 1`] = `
             "foldedComponentIds": Array [],
             "labeledRadioButtonCounter": 0,
             "render": [Function],
-            "styledComponentId": "sc-bwzfXH",
+            "styledComponentId": "sc-htpNat",
             "target": [Function],
             "toString": [Function],
             "warnTooManyClasses": [Function],
@@ -340,7 +341,7 @@ exports[`ButtonList component renders correctly without props 1`] = `
             "$$typeof": Symbol(react.forward_ref),
             "attrs": Array [],
             "componentStyle": ComponentStyle {
-              "componentId": "sc-bwzfXH",
+              "componentId": "sc-htpNat",
               "isStatic": false,
               "rules": Array [
                 "
@@ -462,7 +463,7 @@ exports[`ButtonList component renders correctly without props 1`] = `
             "foldedComponentIds": Array [],
             "labeledRadioButtonCounter": 0,
             "render": [Function],
-            "styledComponentId": "sc-bwzfXH",
+            "styledComponentId": "sc-htpNat",
             "target": [Function],
             "toString": [Function],
             "warnTooManyClasses": [Function],
@@ -471,7 +472,7 @@ exports[`ButtonList component renders correctly without props 1`] = `
         }
         key="Venmo"
         name="paymentMethodId"
-        selectedValue="Venmo"
+        selectedValue="venmo"
         subtitle=""
         title=""
         variation="secondary"

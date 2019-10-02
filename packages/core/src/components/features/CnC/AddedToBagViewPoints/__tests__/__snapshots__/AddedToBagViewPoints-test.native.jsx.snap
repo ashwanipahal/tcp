@@ -4,68 +4,118 @@ exports[`AddedToBagViewPoints native component renders correctly 1`] = `
 <Styled(View)>
   <Styled(View)>
     <Styled(BodyCopy)
+      accessibilityText=""
+      dataLocator=""
       fontFamily="secondary"
       fontSize="fs13"
+      margin={null}
+      numberOfLines={null}
+      textDecoration={null}
     />
     <Styled(BodyCopy)
+      accessibilityText=""
+      dataLocator=""
       fontFamily="secondary"
       fontSize="fs13"
+      margin={null}
+      numberOfLines={null}
       text="$12"
+      textDecoration={null}
     />
   </Styled(View)>
   <Styled(View)>
     <Styled(BodyCopy)
+      accessibilityText=""
+      dataLocator=""
       fontFamily="secondary"
       fontSize="fs13"
       fontWeight="extrabold"
+      margin={null}
+      numberOfLines={null}
+      textDecoration={null}
     />
     <Styled(BodyCopy)
+      accessibilityText=""
       color="orange.500"
+      dataLocator=""
       fontFamily="secondary"
       fontSize="fs13"
       fontWeight="extrabold"
+      margin={null}
+      numberOfLines={null}
       text={23}
+      textDecoration={null}
     />
   </Styled(View)>
   <Styled(View) />
   <Styled(View)>
     <Styled(BodyCopy)
+      accessibilityText=""
+      dataLocator=""
       fontFamily="secondary"
       fontSize="fs13"
+      margin={null}
+      numberOfLines={null}
       text="123"
+      textDecoration={null}
     />
     <Styled(BodyCopy)
+      accessibilityText=""
+      dataLocator=""
       fontFamily="secondary"
       fontSize="fs13"
+      margin={null}
+      numberOfLines={null}
       text="$0"
+      textDecoration={null}
     />
   </Styled(View)>
   <Styled(View)>
     <Styled(BodyCopy)
+      accessibilityText=""
+      dataLocator=""
       fontFamily="secondary"
       fontSize="fs13"
       fontWeight="extrabold"
+      margin={null}
+      numberOfLines={null}
+      textDecoration={null}
     />
     <Styled(BodyCopy)
+      accessibilityText=""
       color="orange.500"
+      dataLocator=""
       fontFamily="secondary"
       fontSize="fs13"
       fontWeight="extrabold"
+      margin={null}
+      numberOfLines={null}
       text={60}
+      textDecoration={null}
     />
   </Styled(View)>
   <Styled(View)>
     <Styled(BodyCopy)
+      accessibilityText=""
+      dataLocator=""
       fontFamily="secondary"
       fontSize="fs13"
       fontWeight="extrabold"
+      margin={null}
+      numberOfLines={null}
+      textDecoration={null}
     />
     <Styled(BodyCopy)
+      accessibilityText=""
       color="orange.500"
+      dataLocator=""
       fontFamily="secondary"
       fontSize="fs13"
       fontWeight="extrabold"
+      margin={null}
+      numberOfLines={null}
       text={12}
+      textDecoration={null}
     />
   </Styled(View)>
 </Styled(View)>

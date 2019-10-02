@@ -3,20 +3,35 @@
 exports[`PickUpContactDisplayVanilla component should renders correctly when Coupon are not present 1`] = `
 <View>
   <Styled(BodyCopy)
+    accessibilityText=""
     color="gray.900"
+    dataLocator=""
     fontFamily="secondary"
     fontSize="fs16"
+    margin={null}
+    numberOfLines={null}
     text="undefined undefined"
+    textDecoration={null}
   />
   <Styled(BodyCopy)
+    accessibilityText=""
     color="gray.900"
+    dataLocator=""
     fontFamily="secondary"
     fontSize="fs16"
+    margin={null}
+    numberOfLines={null}
+    textDecoration={null}
   />
   <Styled(BodyCopy)
+    accessibilityText=""
     color="gray.900"
+    dataLocator=""
     fontFamily="secondary"
     fontSize="fs16"
+    margin={null}
+    numberOfLines={null}
+    textDecoration={null}
   />
 </View>
 `;

@@ -5,11 +5,17 @@ exports[`CouponIcon should render correctly 1`] = `
   type="rewards"
 >
   <Styled(BodyCopy)
+    accessibilityText=""
     color="white"
+    dataLocator=""
     fontFamily="secondary"
     fontSize="fs14"
     fontWeight="black"
+    margin={null}
+    numberOfLines={null}
     text="reward"
+    textAlign="center"
+    textDecoration={null}
   />
 </Styled(View)>
 `;

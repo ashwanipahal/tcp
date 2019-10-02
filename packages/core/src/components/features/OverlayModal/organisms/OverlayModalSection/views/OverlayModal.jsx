@@ -11,6 +11,7 @@ const propTypes = {
   ModalContent: PropTypes.node.isRequired,
   color: PropTypes.shape({}),
   componentProps: PropTypes.shape({}).isRequired,
+  showCondensedHeader: PropTypes.bool.isRequired,
 };
 
 const defaultProps = {
@@ -45,12 +46,17 @@ class OverlayModal extends React.Component {
   }
 
   componentDidUpdate(prevProps) {
-    const { component: nextTargetComponent } = this.props;
-    const { component: prevTargetComponent } = prevProps;
+    const { component: nextTargetComponent, showCondensedHeader: nextCondensedState } = this.props;
+    const { component: prevTargetComponent, showCondensedHeader: prevCondensedState } = prevProps;
     if (nextTargetComponent !== prevTargetComponent) {
       scrollPage();
       return this.getCustomStyles({ styleModal: false });
     }
+
+    if (nextCondensedState !== prevCondensedState) {
+      this.getCustomStyles({ styleModal: true });
+    }
+
     return null;
   }
 
@@ -71,7 +77,9 @@ class OverlayModal extends React.Component {
    * @param {*} comp
    */
 
+  // eslint-disable-next-line complexity
   styleModalTriangle = ({ comp }) => {
+    const { showCondensedHeader } = this.props;
     const compRectBoundingX = comp.getBoundingClientRect().x;
     const compWidth = comp.getBoundingClientRect().width / 2;
     const modal = document.getElementById('dialogContent');
@@ -79,10 +87,26 @@ class OverlayModal extends React.Component {
     const modalTriangle = document.getElementById('modalTriangle');
     const modalTrianglePos =
       modalTriangle && window && modalTriangle.getBoundingClientRect().y + window.scrollY;
-    modal.style.maxHeight = this.body && `${this.body.clientHeight - modalTrianglePos - 60}px`;
     /* istanbul ignore else */
-    if (compRectBoundingX && compWidth && modalRectBoundingX && modalTriangle) {
+    if (window && window.innerWidth > 767) {
+      if (showCondensedHeader && this.body) {
+        modal.style.height = `${window.innerHeight - 70}px`;
+      } else {
+        modal.style.height = `${window.innerHeight - modalTrianglePos}px`;
+      }
+      this.body.style.overflow = 'hidden';
+    }
+    /* istanbul ignore else */
+    if (
+      !showCondensedHeader &&
+      compRectBoundingX &&
+      compWidth &&
+      modalRectBoundingX &&
+      modalTriangle
+    ) {
       modalTriangle.style.left = `${compRectBoundingX + compWidth - modalRectBoundingX}px`;
+    } else {
+      modalTriangle.style.left = 'auto';
     }
   };
 
@@ -105,6 +129,9 @@ class OverlayModal extends React.Component {
   closeModal = () => {
     const { closeOverlay } = this.props;
     closeOverlay();
+    if (this.body) {
+      this.body.style.overflow = 'auto';
+    }
   };
 
   /**
@@ -122,17 +149,32 @@ class OverlayModal extends React.Component {
   }
 
   render() {
-    const { className, ModalContent, color, componentProps, component } = this.props;
+    const {
+      className,
+      ModalContent,
+      color,
+      componentProps,
+      component,
+      showCondensedHeader,
+    } = this.props;
+
     return (
       <div className={className} id="modalWrapper" color={color} ref={this.setModalRef}>
-        <div id="dialogContent" className="dialog__content">
+        <div
+          id="dialogContent"
+          className={`dialog__content ${showCondensedHeader && 'condensed-overlay'}`}
+        >
           <button
             className={`modal__closeIcon hide-on-tablet hide-on-desktop ${
               component === 'accountDrawer' ? 'hide-on-mobile' : ''
             }`}
             onClick={this.closeModal}
           />
-          <div className="modal__triangle hide-on-mobile " id="modalTriangle" />
+          <div
+            className={`modal__triangle hide-on-mobile ${showCondensedHeader &&
+              'condensed-modal-triangle'}`}
+            id="modalTriangle"
+          />
           <div className="modal__bar hide-on-mobile" />
           <ModalContent className="modal__content" {...componentProps} />
         </div>

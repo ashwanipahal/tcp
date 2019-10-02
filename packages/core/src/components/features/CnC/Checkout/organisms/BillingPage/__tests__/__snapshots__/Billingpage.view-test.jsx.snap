@@ -12,8 +12,14 @@ exports[`CheckoutProgressIndicator component should renders correctly props not 
     className="payment-container"
   >
     <Connect(GiftCardsContainer)
+      addressLabels={null}
+      billingData={Object {}}
+      creditFieldLabels={Object {}}
       cvvCodeRichText={null}
+      isVenmoPaymentInProgress={false}
       labels={Object {}}
+      shippingAddress={null}
+      userAddresses={null}
     />
   </div>
 </div>
@@ -28,7 +34,12 @@ exports[`CheckoutProgressIndicator component should renders correctly props not 
   />
   <Connect(GiftCardsContainer) />
   <Connect(GuestBillingContainer)
+    addressLabels={null}
+    billingData={Object {}}
+    creditFieldLabels={Object {}}
     cvvCodeRichText={null}
+    isGuest={true}
+    isVenmoPaymentInProgress={false}
     labels={Object {}}
     shippingAddress={null}
   />

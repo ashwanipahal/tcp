@@ -4,15 +4,10 @@ const styles = css`
   .review-pickup {
     margin-top: ${props => props.theme.spacing.ELEM_SPACING.XL};
     border-bottom: 1px solid ${props => props.theme.colors.BLACK};
-    height: 697px;
-    @media ${props => props.theme.mediaQuery.medium} {
-      height: 431px;
-    }
   }
 
   .review-shipping {
     margin-top: ${props => props.theme.spacing.ELEM_SPACING.XL};
-    height: 431px;
     border-bottom: 1px solid ${props => props.theme.colors.BLACK};
   }
 

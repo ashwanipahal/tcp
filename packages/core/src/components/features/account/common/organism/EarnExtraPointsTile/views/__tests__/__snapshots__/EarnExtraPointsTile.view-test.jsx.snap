@@ -24,6 +24,7 @@ exports[`Earn Extra Points Tile component  should render Earn Extra Points Tile 
         fontWeight="extrabold"
         letterSpacing="normal"
         lineHeight="normal"
+        link={null}
         textAlign="left"
       >
         Earn Extra Points
@@ -41,8 +42,10 @@ exports[`Earn Extra Points Tile component  should render Earn Extra Points Tile 
     >
       <Styled(Anchor)
         anchorVariation="primary"
+        asPath="/account/extra-points"
         data-locator="earnExtraPointsViewAll"
         fontSizeVariation="medium"
+        to="/account?id=extra-points"
         underline={true}
       >
         View All
@@ -58,6 +61,7 @@ exports[`Earn Extra Points Tile component  should render Earn Extra Points Tile 
     fontWeight="regular"
     letterSpacing="normal"
     lineHeight="normal"
+    link={null}
     textAlign="center"
   >
     <Styled(Carousel)
@@ -103,11 +107,86 @@ exports[`Earn Extra Points Tile component  should render Earn Extra Points Tile 
             "lbl_common_viewAll": "View All",
           }
         }
-        onClickHandler={[Function]}
+        onViewActivityDetails={[Function]}
         waysToEarnRow={
           Object {
             "activityCode": "AppDownload",
             "activityTitle": "Earn 5 Points",
+            "description": "Download & Log in to our App",
+            "displayOrder": 1,
+            "iconImage": "/wcsstore/static/images/download-app.jpg",
+          }
+        }
+      />
+    </Styled(Carousel)>
+  </Styled(BodyCopy)>
+</div>
+`;
+
+exports[`Earn Extra Points Tile component  should render Earn Extra Points Tile component Correctly in account overview 1`] = `
+<div
+  className="className"
+>
+  <Styled(BodyCopy)
+    className="onAccountOverview"
+    color="text.primary"
+    component="div"
+    fontFamily="primary"
+    fontSize={12}
+    fontWeight="regular"
+    letterSpacing="normal"
+    lineHeight="normal"
+    link={null}
+    textAlign="center"
+  >
+    <Styled(Carousel)
+      carouselConfig={
+        Object {
+          "arrow": "small",
+          "customArrowLeft": "/static/images/smallright.svg",
+          "customArrowRight": "/static/images/smallright.svg",
+          "type": "light",
+        }
+      }
+      carouselTheme="dark"
+      className="className"
+      options={
+        Object {
+          "arrows": true,
+          "autoplay": false,
+          "autoplaySpeed": 4000,
+          "dots": true,
+          "dotsClass": "slick-dots",
+          "fade": false,
+          "focusOnSelect": true,
+          "infinite": false,
+          "initialSlide": 0,
+          "responsive": Array [
+            Object {
+              "breakpoint": 1200,
+              "settings": Object {
+                "arrows": true,
+              },
+            },
+          ],
+          "speed": 1000,
+          "swipe": true,
+        }
+      }
+    >
+      <Styled(DetailedEarnExtraPointsTile)
+        key="0"
+        labels={
+          Object {
+            "lbl_common_earnExtraPoints": "Earn Extra Points",
+            "lbl_common_viewAll": "View All",
+          }
+        }
+        onViewActivityDetails={[Function]}
+        waysToEarnRow={
+          Object {
+            "activityCode": "App",
+            "activityTitle": "Earn 10 Points",
             "description": "Download & Log in to our App",
             "displayOrder": 1,
             "iconImage": "/wcsstore/static/images/download-app.jpg",

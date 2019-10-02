@@ -6,7 +6,12 @@ import { ModuleKVanilla as ModuleK } from '../view/ModuleK';
 let ModuleKComp;
 
 beforeEach(() => {
-  const wrapper = shallow(<ModuleK {...mock.moduleK.composites} />).get(0);
+  const wrapper = shallow(
+    <ModuleK
+      {...mock.moduleK.composites}
+      accessibility={{ playIconButton: 'Play', pauseIconButton: 'Pause' }}
+    />
+  ).get(0);
   ModuleKComp = shallow(wrapper);
 });
 

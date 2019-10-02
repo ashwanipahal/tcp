@@ -1,9 +1,10 @@
-import React, { Fragment } from 'react';
+import React from 'react';
 import PropTypes from 'prop-types';
-import { View } from 'react-native';
+import { View, SafeAreaView } from 'react-native';
 import Toast from 'react-native-easy-toast';
 import colors from '@tcp/core/styles/themes/TCP/colors';
 import { ToastWrapper, ToastCross, ToastText } from './ToastMsg.style.native';
+import { DEFAULT_TOAST_ERROR_MESSAGE_TTL } from '../../../../../config/site.config';
 
 /**
  * @param {object} props : Props for FPO
@@ -11,6 +12,9 @@ import { ToastWrapper, ToastCross, ToastText } from './ToastMsg.style.native';
  */
 
 const styles = {
+  Container: {
+    zIndex: 2,
+  },
   ToastStyle: {
     backgroundColor: colors.BLACK,
     width: '100%',
@@ -50,18 +54,18 @@ class ToastView extends React.PureComponent {
 
   render() {
     return (
-      <Fragment>
+      <SafeAreaView style={styles.Container}>
         <Toast
           ref={this.toastRef}
           style={styles.ToastStyle}
           position="top"
           positionValue={0}
           fadeInDuration={750}
-          fadeOutDuration={1000}
+          fadeOutDuration={DEFAULT_TOAST_ERROR_MESSAGE_TTL}
           opacity={1}
           textStyle={{ color: colors.WHITE }}
         />
-      </Fragment>
+      </SafeAreaView>
     );
   }
 }

@@ -1,6 +1,23 @@
 import { executeStatefulAPICall } from '../../handler';
 import endpoints from '../../endpoints';
 import PAGES from '../../../constants/pages.constants';
+import { parseBoolean } from '../../../utils/utils';
+
+export function formatAddressBookResponse(arr) {
+  let containsDefault = false;
+  const addresses = arr.map(address => {
+    containsDefault = containsDefault || parseBoolean(address.primary);
+    return {
+      ...address,
+    };
+  });
+
+  // if no default, flag the first one as default
+  if (!containsDefault && addresses.length) {
+    addresses[0].primary = 'true';
+  }
+  return addresses;
+}
 
 export const getAddressListData = () => {
   const payload = {
@@ -14,7 +31,7 @@ export const getAddressListData = () => {
       throw new Error('res body is null');
       // TODO - Set API Helper to filter if error exists in response
     }
-    return res.body.contact || [];
+    return formatAddressBookResponse(res.body.contact || []);
   });
 };
 

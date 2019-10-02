@@ -4,39 +4,72 @@ exports[`EmptyBagPage component should renders correctly 1`] = `
 <Styled(View)>
   <Text>
     <Styled(BodyCopy)
+      accessibilityText=""
       className="large-size-message"
       color="gray.900"
       dataLocator="cartEmptyBagMessage"
       fontFamily="secondary"
       fontSize="fs16"
       fontWeight="extrabold"
+      margin={null}
+      numberOfLines={null}
+      textDecoration={null}
     />
   </Text>
+  <Styled(Anchor)
+    accessibilityLabel=""
+    anchorVariation=""
+    colorName={null}
+    customStyle={Object {}}
+    fontSizeVariation="large"
+    locator=""
+    onPress={[Function]}
+    text="Apply Now"
+    underline={true}
+    visible={false}
+  />
+  <Connect(ApplyNowModalWrapper)
+    applyNow={false}
+    toggleModalWrapper={[Function]}
+  />
   <Styled(TouchableOpacity)
     onPress={[Function]}
   >
     <Styled(BodyCopy)
+      accessibilityText=""
       color="white"
+      dataLocator=""
       fontFamily="secondary"
       fontSize="fs13"
       fontWeight="extrabold"
+      margin={null}
+      numberOfLines={null}
+      textDecoration={null}
       textTransform="uppercase"
     />
   </Styled(TouchableOpacity)>
   <Text>
     <Styled(BodyCopy)
+      accessibilityText=""
       className="large-size-message"
       color="gray.900"
       dataLocator="cartRecommendationMessage"
       fontFamily="secondary"
       fontWeight="extrabold"
+      margin={null}
+      numberOfLines={null}
+      textDecoration={null}
     />
   </Text>
   <Styled(View)>
     <Styled(BodyCopy)
+      accessibilityText=""
       className="small-spacing"
       dataLocator="cartRecommendationMessage"
       fontFamily="secondary"
+      margin={null}
+      numberOfLines={null}
+      textDecoration={null}
     />
   </Styled(View)>
 </Styled(View)>

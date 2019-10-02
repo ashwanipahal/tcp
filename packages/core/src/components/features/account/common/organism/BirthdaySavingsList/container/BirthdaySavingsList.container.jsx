@@ -6,9 +6,11 @@ import {
   getChildrenAction,
   removeChildAction,
   resetBirthdaySavingMessageAction,
+  addChildAction,
 } from './BirthdaySavingsList.actions';
 import { getStatus, getMessage } from './BirthdaySavingsList.selectors';
 import BirthdaySavingsComponent from '../views';
+import { toastMessageInfo } from '../../../../../../common/atoms/Toast/container/Toast.actions.native';
 
 /**
  * @function BirthdaySavings
@@ -69,8 +71,14 @@ export const mapDispatchToProps = dispatch => ({
   removeBirthday: childId => {
     dispatch(removeChildAction(childId));
   },
+  addChildBirthday: payload => {
+    dispatch(addChildAction(payload));
+  },
   resetBirthdaySavingMessage: () => {
     dispatch(resetBirthdaySavingMessageAction());
+  },
+  toastMessage: palyoad => {
+    dispatch(toastMessageInfo(palyoad));
   },
 });
 

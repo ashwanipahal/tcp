@@ -26,6 +26,7 @@ type Props = {
   defaultValue: any,
   dataLocator?: string,
   disabled?: boolean,
+  title?: string,
 };
 
 const SelectBox = ({
@@ -39,6 +40,7 @@ const SelectBox = ({
   meta: { touched, error },
   dataLocator,
   disabled,
+  title,
   ...otherProps
 }: Props): Node => {
   const errorMessagea11yLbl = `selectbox__error__${name}`;
@@ -71,12 +73,15 @@ const SelectBox = ({
             );
           })}
       </select>
-      {!placeholder ? (
+      {/* the placeholder should not be used as title since different text
+      is being used for placeholder and title in multiple instances */}
+      {title ? (
         <BodyCopy fontSize="fs12" fontFamily="secondary" className="select__label">
-          {placeholder}
+          {title}
         </BodyCopy>
-      ) : null}
-
+      ) : (
+        ''
+      )}
       <div className="SelectBox__error">
         <div className={touched && error ? 'warning-icon' : ''} aria-disabled="true" />
         {touched && error && (
@@ -106,6 +111,7 @@ SelectBox.defaultProps = {
   placeholder: '',
   dataLocator: '',
   disabled: false,
+  title: '',
 };
 
 export default withStyles(SelectBox, StyledTextBox);

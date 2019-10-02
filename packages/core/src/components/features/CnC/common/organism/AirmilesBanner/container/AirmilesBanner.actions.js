@@ -13,3 +13,12 @@ export const addAirmilesBannerFailure = (payload: {}) => {
     payload,
   };
 };
+/**
+ * @function resetAirmilesReducer
+ * action creator for type: RESET_AIRMILES_BANNER
+ */
+export const resetAirmilesReducer = () => {
+  return {
+    type: AIRMILES_BANNER_CONSTANTS.RESET_AIRMILES_BANNER,
+  };
+};

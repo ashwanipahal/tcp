@@ -14,7 +14,9 @@ describe('CartItemTile common component', () => {
           myPlacePoints: 123,
           isGiftItem: true,
           fit: 'regular',
+          itemBrand: 'TCP',
         },
+        productInfo: { skuId: '123' },
         miscInfo: {
           badge: '',
         },
@@ -28,6 +30,67 @@ describe('CartItemTile common component', () => {
       },
     };
     const component = shallow(<CartItemTile {...props} />);
+    expect(component).toMatchSnapshot();
+  });
+
+  it('renders correctly with Save for later enabled', () => {
+    const props = {
+      productDetail: {
+        productInfo: { skuId: '123' },
+        itemInfo: {
+          name: 'Boys Basic',
+          qty: '1',
+          size: '1',
+          price: 123,
+          myPlacePoints: 123,
+          isGiftItem: true,
+          fit: 'regular',
+          itemBrand: 'TCP',
+        },
+        miscInfo: {
+          badge: '',
+          availability: 'OK',
+        },
+      },
+      labels: {
+        color: 'Color',
+        sizeL: 'Size',
+        qty: 'Qty',
+        design: 'Design',
+        price: 'Price',
+      },
+    };
+    const component = shallow(<CartItemTile {...props} isShowSaveForLater />);
+    expect(component).toMatchSnapshot();
+  });
+
+  it('renders correctly with bag page sfl section', () => {
+    const props = {
+      productDetail: {
+        productInfo: { skuId: '123' },
+        itemInfo: {
+          name: 'Boys Basic Skinny Jeans',
+          qty: '1',
+          size: '1',
+          price: 123,
+          myPlacePoints: 123,
+          isGiftItem: true,
+          fit: 'regular',
+          itemBrand: 'TCP',
+        },
+        miscInfo: {
+          badge: '',
+        },
+      },
+      labels: {
+        color: 'Color',
+        sizeL: 'Size',
+        qty: 'Qty',
+        design: 'Design',
+        price: 'Price',
+      },
+    };
+    const component = shallow(<CartItemTile {...props} isBagPageSflSection />);
     expect(component).toMatchSnapshot();
   });
 });

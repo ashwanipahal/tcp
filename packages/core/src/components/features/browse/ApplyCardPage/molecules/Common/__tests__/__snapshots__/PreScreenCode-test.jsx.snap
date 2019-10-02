@@ -11,6 +11,7 @@ exports[`PreScreenCode component should renders correctly 1`] = `
     fontWeight="regular"
     letterSpacing="normal"
     lineHeight="normal"
+    link={null}
     textAlign="left"
   >
     Click here to unbox the link

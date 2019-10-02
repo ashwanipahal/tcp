@@ -5,7 +5,7 @@ import Notification from '@tcp/core/src/components/common/molecules/Notification
 import withStyles from '../../../../../common/hoc/withStyles';
 import styles from '../styles/AddGiftCard.style';
 import Anchor from '../../../../../common/atoms/Anchor';
-import AddGiftCardForm from './AddGiftCardForm';
+import AddGiftCardForm from '../../../../../common/organisms/AddGiftCardForm/AddGiftCardForm';
 
 // @flow
 type Props = {

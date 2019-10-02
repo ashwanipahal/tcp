@@ -4,6 +4,29 @@ exports[`GiftCardsContainer Container should render CheckoutPage view section 1`
 <ReduxForm
   backLinkPickup={true}
   backLinkShipping={true}
+  billingData={
+    Object {
+      "address": Object {
+        "addressLine1": "",
+        "addressLine2": "",
+        "city": "",
+        "country": "",
+        "firstName": "",
+        "lastName": "",
+        "onFileAddressId": "1234",
+        "onFileAddressKey": "",
+        "state": "",
+        "zipCode": "",
+      },
+      "billing": Object {
+        "cardNumber": "",
+        "cardType": "",
+        "cvvCode": "",
+        "expMonth": "",
+        "expYear": "",
+      },
+    }
+  }
   cardList={
     Immutable.List [
       Object {
@@ -23,12 +46,21 @@ exports[`GiftCardsContainer Container should render CheckoutPage view section 1`
   destroyOnUnmount={true}
   enableReinitialize={true}
   forceUnregisterOnUnmount={false}
-  form="checkoutBilling"
+  form="checkoutBillingPayment"
   getFormState={[Function]}
   initialValues={
     Object {
-      "onFileCardKey": undefined,
+      "address": undefined,
+      "cardNumber": undefined,
+      "cardType": undefined,
+      "cvvCode": undefined,
+      "expMonth": undefined,
+      "expYear": undefined,
+      "onFileAddressId": undefined,
+      "onFileCardKey": false,
       "paymentMethodId": "creditCard",
+      "sameAsShipping": true,
+      "saveToAccount": true,
     }
   }
   isGuest={true}
@@ -69,6 +101,13 @@ exports[`GiftCardsContainer Container should render CheckoutPage view section 1`
   touchOnBlur={true}
   touchOnChange={false}
   updateUnregisteredFields={false}
+  userAddresses={
+    Immutable.List [
+      Object {
+        "addressId": "1234",
+      },
+    ]
+  }
   validate={[Function]}
 />
 `;

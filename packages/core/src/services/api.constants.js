@@ -13,6 +13,8 @@ export const PRODUCTS_URI = {
   PRODUCTS_AUTOSUGGEST: 'autosuggest',
 };
 
+export const SAVE_FOR_LATER = 'v2/cart/saveForLater';
+
 export const graphQLClient = 'graphQL';
 export const defaultCountry = 'USA';
 export const defaultBrand = 'TCP';

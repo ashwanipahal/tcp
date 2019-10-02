@@ -24,6 +24,7 @@ exports[`MiniBagHeader component renders correctly 1`] = `
         fontWeight="extrabold"
         letterSpacing="normal"
         lineHeight="normal"
+        link={null}
         textAlign="left"
       >
         undefined, User 
@@ -37,6 +38,7 @@ exports[`MiniBagHeader component renders correctly 1`] = `
         fontWeight="semibold"
         letterSpacing="normal"
         lineHeight="normal"
+        link={null}
         textAlign="left"
       >
         (undefined points, $NaN rewards)
@@ -82,6 +84,7 @@ exports[`MiniBagHeader component renders correctly 1`] = `
         fontWeight="semibold"
         letterSpacing="normal"
         lineHeight="normal"
+        link={null}
         textAlign="left"
       >
         12
@@ -115,6 +118,7 @@ exports[`MiniBagHeader component renders correctly without username 1`] = `
         fontWeight="regular"
         letterSpacing="normal"
         lineHeight="normal"
+        link={null}
         textAlign="left"
       >
         <Styled(Anchor)
@@ -132,6 +136,7 @@ exports[`MiniBagHeader component renders correctly without username 1`] = `
           fontWeight="regular"
           letterSpacing="normal"
           lineHeight="normal"
+          link={null}
           textAlign="left"
         />
         <Styled(Anchor)
@@ -182,6 +187,7 @@ exports[`MiniBagHeader component renders correctly without username 1`] = `
         fontWeight="semibold"
         letterSpacing="normal"
         lineHeight="normal"
+        link={null}
         textAlign="left"
       >
         12

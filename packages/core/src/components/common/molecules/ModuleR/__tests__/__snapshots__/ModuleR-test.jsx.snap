@@ -1,0 +1,117 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Module R Component renders correctly 1`] = `
+<Styled(Grid)
+  className="undefined moduleR"
+>
+  <div>
+    <Styled(LinkText)
+      className="promo-header"
+      component="div"
+      dataLocator="moduleR_header_text"
+      headerText={
+        Array [
+          Object {
+            "icon": Object {
+              "icon": "",
+              "placement": "",
+            },
+            "link": Object {
+              "action": "",
+              "external": 0,
+              "target": "",
+              "text": "",
+              "title": "",
+              "url": "http://www.childrensplace.com",
+            },
+            "textItems": Array [
+              Object {
+                "style": "medium_text_black",
+                "text": "THE SHIRT SHOP",
+              },
+            ],
+          },
+        ]
+      }
+      headingClass="moduleR-promo-header"
+    />
+  </div>
+  <div>
+    <Connect(ProductTabListContainer)
+      dataLocator="moduleR_cta_links_"
+      onProductTabChange={[Function]}
+      tabItems={
+        Array [
+          Object {
+            "category": Object {
+              "cat_id": "49007",
+            },
+            "singleCTAButton": Object {
+              "action": "",
+              "external": 0,
+              "target": "",
+              "text": "SHOP ALL",
+              "title": "SHOP ALL",
+              "url": "http://www.childrensplace.com",
+            },
+            "text": Object {
+              "text": "GIRL",
+            },
+          },
+          Object {
+            "category": Object {
+              "cat_id": "47502>47535>54071",
+            },
+            "singleCTAButton": Object {
+              "action": "",
+              "external": 0,
+              "target": "",
+              "text": "SHOP ALL",
+              "title": "SHOP ALL",
+              "url": "http://www.childrensplace.com",
+            },
+            "text": Object {
+              "text": "TODDLER GIRL",
+            },
+          },
+          Object {
+            "category": Object {
+              "cat_id": "47503>47544",
+            },
+            "singleCTAButton": Object {
+              "action": "",
+              "external": 0,
+              "target": "",
+              "text": "SHOP ALL",
+              "title": "SHOP ALL",
+              "url": "http://www.childrensplace.com",
+            },
+            "text": Object {
+              "text": "BOY",
+            },
+          },
+          Object {
+            "category": Object {
+              "cat_id": "47501>47526",
+            },
+            "singleCTAButton": Object {
+              "action": "",
+              "external": 0,
+              "target": "",
+              "text": "SHOP ALL",
+              "title": "SHOP ALL",
+              "url": "http://www.childrensplace.com",
+            },
+            "text": Object {
+              "text": "TODDLER BOY",
+            },
+          },
+        ]
+      }
+    />
+  </div>
+  <Styled(Row)
+    className="image-items-container"
+  />
+</Styled(Grid)>
+`;

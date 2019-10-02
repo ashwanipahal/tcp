@@ -1,0 +1,43 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`ExistingPLCCUserView component should renders correctly 1`] = `
+<styled.div>
+  <div
+    className="header-image"
+  />
+  <Styled(RichText)
+    className="existing_account_info"
+    richTextHtml="exiting user"
+  />
+  <Styled(Row)
+    className="submit_buttons_set"
+    fullBleed={true}
+  >
+    <Styled(Col)
+      className="existing_continue_button"
+      colSize={
+        Object {
+          "large": 3,
+          "medium": 4,
+          "small": 12,
+        }
+      }
+      ignoreGutter={
+        Object {
+          "small": true,
+        }
+      }
+    >
+      <Styled(Button)
+        buttonVariation="fixed-width"
+        className="existing_continue_button"
+        fill="BLUE"
+        onClick={[Function]}
+        type="submit"
+      >
+        continue
+      </Styled(Button)>
+    </Styled(Col)>
+  </Styled(Row)>
+</styled.div>
+`;

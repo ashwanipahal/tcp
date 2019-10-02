@@ -18,6 +18,7 @@ import { getCommonLabels } from '../../../../Account/container/Account.selectors
 import MyRewards from '../views';
 import CouponDetailModal from '../../../../../CnC/common/organism/CouponAndPromos/views/CouponDetailModal.view';
 import { toastMessageInfo } from '../../../../../../common/atoms/Toast/container/Toast.actions.native';
+import { DEFAULT_TOAST_ERROR_MESSAGE_TTL } from '../../../../../../../config/site.config';
 
 export class MyRewardsContainer extends PureComponent {
   static propTypes = {
@@ -145,11 +146,13 @@ export const mapDispatchToProps = dispatch => ({
   handleErrorCoupon: coupon => {
     setTimeout(() => {
       dispatch(setError({ msg: null, couponCode: coupon.id }));
-    }, 5000);
+    }, DEFAULT_TOAST_ERROR_MESSAGE_TTL);
   },
   toastMessage: coupon => {
     dispatch(toastMessageInfo(coupon.error));
-    dispatch(setError({ msg: null, couponCode: coupon.id }));
+    setTimeout(() => {
+      dispatch(setError({ msg: null, couponCode: coupon.id }));
+    }, DEFAULT_TOAST_ERROR_MESSAGE_TTL);
   },
 });
 

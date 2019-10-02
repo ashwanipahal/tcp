@@ -8,7 +8,7 @@ import {
 } from '../container/CheckoutProgressIndicator.container';
 
 const { getAvailableStages } = CheckoutProgressUtils;
-const { getObjectValue, getIconPath } = utils;
+const { getObjectValue, getIconPath, isCanada } = utils;
 
 jest.mock('../utils/utils', () => ({
   getAvailableStages: jest.fn(),
@@ -17,12 +17,14 @@ jest.mock('../utils/utils', () => ({
 jest.mock('../../../../../../../core/src/utils', () => ({
   getObjectValue: jest.fn(),
   getIconPath: jest.fn(),
+  isCanada: jest.fn(),
 }));
 
 describe('CheckoutProgressIndicatorContainer', () => {
   it('should render correctly', () => {
     getObjectValue.mockImplementation(() => 'shipping');
     getIconPath.mockImplementation(() => '');
+    isCanada.mockImplementation(() => '');
     const props = {
       initialActions: jest.fn(),
 

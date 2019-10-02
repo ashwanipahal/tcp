@@ -7,8 +7,11 @@ import { getMapSliceForColorProductId } from '../utils/productsCommonUtils';
 import { getPromotionalMessage } from '../utils/utility';
 import withStyles from '../../../../../../common/hoc/withStyles.native';
 import { styles, PageContainer } from '../styles/ProductList.style.native';
+import CustomButton from '../../../../../../common/atoms/Button';
 
 class ProductList extends React.PureComponent {
+  flatListRef = null;
+
   constructor(props) {
     super(props);
     const { products } = this.props;
@@ -18,6 +21,14 @@ class ProductList extends React.PureComponent {
     this.colorsExtraInfo = {
       [colorName]: miscInfo,
     };
+  }
+
+  componentDidUpdate(prevProps) {
+    const isScrollToTopValue = get(this.props, 'scrollToTop');
+    const isScrollToTopPrevPropValue = get(prevProps, 'scrollToTop');
+    if (isScrollToTopValue && isScrollToTopValue !== isScrollToTopPrevPropValue) {
+      this.scrollToTop();
+    }
   }
 
   // eslint-disable-next-line
@@ -77,6 +88,48 @@ class ProductList extends React.PureComponent {
     );
   };
 
+  onLoadMoreProductsHandler = () => {
+    const { onLoadMoreProducts } = this.props;
+    if (onLoadMoreProducts) {
+      onLoadMoreProducts();
+    }
+  };
+
+  /**
+   * @desc This is render product list load more footer
+   */
+  renderFooter = () => {
+    const { products } = this.props;
+    const productsLen = get(products, 'length', 0);
+    const totalProductsInCurrCategory = get(this.props, 'totalProductsInCurrCategory', 0);
+    if (productsLen === totalProductsInCurrCategory) {
+      return null;
+    }
+
+    return (
+      <CustomButton
+        margin="0 12px 20px 12px"
+        fill="WHITE"
+        type="button"
+        buttonVariation="variable-width"
+        data-locator="lod more"
+        text="LOAD MORE"
+        onPress={() => {
+          this.onLoadMoreProductsHandler();
+        }}
+        accessibilityLabel="load more"
+      />
+    );
+  };
+
+  /**
+   * @desc This is render product list load more footer
+   */
+  renderHeader = () => {
+    const { onRenderHeader } = this.props;
+    return onRenderHeader();
+  };
+
   /**
    * @desc This is render product list
    */
@@ -84,15 +137,25 @@ class ProductList extends React.PureComponent {
     const { products } = this.props;
     return (
       <FlatList
+        ref={ref => {
+          this.flatListRef = ref;
+        }}
         data={products}
         renderItem={this.renderItemList}
-        keyExtractor={item => item.generalProductId}
+        keyExtractor={item => item.productInfo.generalProductId}
         initialNumToRender={4}
         maxToRenderPerBatch={2}
         numColumns={2}
         extraData={this.props}
+        ListFooterComponent={this.renderFooter}
+        ListHeaderComponent={this.renderHeader}
+        stickyHeaderIndices={[0]}
       />
     );
+  };
+
+  scrollToTop = () => {
+    this.flatListRef.scrollToOffset({ animated: true, offset: 0 });
   };
 
   render() {
@@ -135,6 +198,8 @@ ProductList.propTypes = {
   /* eslint-enable */
   onGoToPDPPage: PropTypes.func.isRequired,
   title: PropTypes.string.isRequired,
+  onLoadMoreProducts: PropTypes.func.isRequired,
+  onRenderHeader: PropTypes.func.isRequired,
 };
 
 ProductList.defaultProps = {

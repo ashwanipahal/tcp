@@ -2,11 +2,9 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import BodyCopy from '../../../atoms/BodyCopy';
 import Badge from '../../../atoms/Badge';
-import CardImage from './CardImage';
+import CardImage from '../../CardImage';
 import withStyles from '../../../hoc/withStyles';
 import CardStyle from '../Card.style';
-import Anchor from '../../../atoms/Anchor';
-import Button from '../../../atoms/Button';
 
 /**
  * @function Card The card component will render an card
@@ -51,15 +49,6 @@ const getFormattedAddress = (address, dataLocatorPrefix) => {
   );
 };
 
-const getSelectWrapper = (isDefault, labels) => {
-  return (
-    <BodyCopy component="div" textAlign="right" fontFamily="secondary" className="hideOnDesktop">
-      <Button buttonVariation="variable-width" fill="BLACK">
-        {labels.lbl_billing_select}
-      </Button>
-    </BodyCopy>
-  );
-};
 const Card = ({
   card,
   className,
@@ -69,7 +58,6 @@ const Card = ({
   cardNumber,
   showAddress,
   labels,
-  selectedValue,
 }) =>
   card && (
     <BodyCopy component="div" fontSize="fs16" color="text.primary" className={className}>
@@ -90,7 +78,7 @@ const Card = ({
             noMargin
             className="card-carddefaultbadge"
           >
-            {labels.lbl_billing_default_card}
+            {labels.defaultCard}
           </Badge>
         ) : (
           ''
@@ -101,27 +89,12 @@ const Card = ({
       ) : (
         <BodyCopy component="div" fontFamily="secondary">
           <CardImage card={card} cardNumber={cardNumber} />
-          {selectedValue !== card.creditCardId && getSelectWrapper(isDefault, labels)}
         </BodyCopy>
       )}
       {showAddress && getFormattedAddress(card.addressDetails, dataLocatorPrefix)}
       {showAddress && card.addressDetails.country && (
         <BodyCopy component="p" fontFamily="secondary">
           {card.addressDetails.country}
-        </BodyCopy>
-      )}
-      {labels && (
-        <BodyCopy component="div" textAlign="right" className="hideOnDesktop">
-          <Anchor
-            fontSizeVariation="medium"
-            underline
-            to="/"
-            anchorVariation="primary"
-            className="billing-payment-edit"
-            dataLocator="billing-payment-edit"
-          >
-            {labels.lbl_billing_editBtn}
-          </Anchor>
         </BodyCopy>
       )}
     </BodyCopy>

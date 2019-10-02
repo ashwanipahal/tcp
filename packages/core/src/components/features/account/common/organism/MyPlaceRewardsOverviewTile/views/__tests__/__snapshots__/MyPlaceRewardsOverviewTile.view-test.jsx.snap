@@ -20,6 +20,7 @@ exports[`MyPlaceRewardsOverviewTile component should render correctly when coupo
       fontWeight="semibold"
       letterSpacing="normal"
       lineHeight="normal"
+      link={null}
       textAlign="left"
     />
     <CouponList
@@ -63,6 +64,7 @@ exports[`MyPlaceRewardsOverviewTile component should render correctly when coupo
       fontWeight="semibold"
       letterSpacing="normal"
       lineHeight="normal"
+      link={null}
       textAlign="left"
     />
     <CouponList

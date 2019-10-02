@@ -1,5 +1,5 @@
 import { fromJS } from 'immutable';
-import { userAddressData } from '../utility';
+import { userAddressData, getModalSizeForApprovedPLCC, getPageViewGridRowSize } from '../utility';
 
 let address = {
   addressLine1: 'Address Line 1',
@@ -18,4 +18,24 @@ test(`userAddressData to return some empty values when no data is provided`, asy
   address = {};
   const response = await userAddressData(fromJS(address));
   expect(response).not.toBe(null);
+});
+
+test(`getModalSizeForApprovedPLCC return size correctly when not plcc modal flow`, async () => {
+  const response = await getModalSizeForApprovedPLCC(false);
+  expect(response).toBe(8);
+});
+
+test(`getModalSizeForApprovedPLCC return size correctly when plcc modal flow`, async () => {
+  const response = await getModalSizeForApprovedPLCC(true);
+  expect(response).toBe(12);
+});
+
+test(`getPageViewGridRowSize return size correctly when plcc modal flow`, async () => {
+  const response = await getPageViewGridRowSize(false);
+  expect(response).toBe(10);
+});
+
+test(`getPageViewGridRowSize return size correctly when plcc modal flow`, async () => {
+  const response = await getPageViewGridRowSize(true);
+  expect(response).toBe(12);
 });

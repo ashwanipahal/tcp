@@ -316,7 +316,7 @@ class PickUpFormPart extends React.Component {
           </Container>
           <CnCTemplate
             navigation={navigation}
-            btnText="NEXT:SHIPPING"
+            btnText={pickUpLabels.nextToBilling}
             routeToPage="ShippingPage"
             isGuest={isGuest}
             onPress={handleSubmit(this.pickupSubmit)}

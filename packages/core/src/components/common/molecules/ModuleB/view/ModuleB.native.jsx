@@ -18,7 +18,6 @@ import {
   MainContainerView,
 } from '../ModuleB.style.native';
 import { ctaTypes, bannerPositionTypes, IMG_DATA } from '../config';
-import mock from '../../../../../services/abstractors/common/moduleB/mock';
 
 /**
  * Module height and width.
@@ -152,19 +151,21 @@ const renderButtonList = (ctaType, navigation, ctaItems, locator, color) => {
 
 const ModuleB = (props: Props) => {
   // TODO: All items need to be derived from props once cms integration is done
-  const {
-    composites: { ctaItems, largeCompImage },
-    ctaType: ctaItemsType,
-    bannerPosition,
-  } = mock;
-
-  const { navigation } = props;
+  const { ctaItems, largeCompImage, ctaType: ctaItemsType, bannerPosition, navigation } = props;
 
   const ctaType = ctaTypes[ctaItemsType];
 
-  return (
+  let bannerPositionInterpreted = bannerPosition;
+  if (bannerPosition === 'topAlt') {
+    bannerPositionInterpreted = 'top';
+  }
+
+  return largeCompImage ? (
     <Container>
-      {renderImageComponent({ item: largeCompImage[0], bannerPosition }, navigation)}
+      {renderImageComponent(
+        { item: largeCompImage[0], bannerPosition: bannerPositionInterpreted },
+        navigation
+      )}
 
       {ctaType === 'imageCTAList' && (
         <DivImageCTAContainer>
@@ -186,6 +187,8 @@ const ModuleB = (props: Props) => {
         </ButtonContainer>
       )}
     </Container>
+  ) : (
+    <Container />
   );
 };
 

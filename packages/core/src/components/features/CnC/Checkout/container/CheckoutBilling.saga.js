@@ -1,4 +1,5 @@
 /* eslint-disable extra-rules/no-commented-out-code */
+/* eslint-disable */
 import { call, put, select } from 'redux-saga/effects';
 import {
   updatePaymentOnOrder,
@@ -16,6 +17,8 @@ import {
 } from '../../../../common/organisms/AddEditAddress/container/AddEditAddress.saga';
 import CONSTANTS, { CHECKOUT_ROUTES } from '../Checkout.constants';
 import { isMobileApp } from '../../../../../utils';
+import { getAddressList } from '../../../account/AddressBook/container/AddressBook.saga';
+import { getCardList } from '../../../account/Payment/container/Payment.saga';
 
 const {
   getIsPaymentDisabled,
@@ -27,7 +30,7 @@ const {
 } = selectors;
 const { getCreditCardType } = utility;
 
-function* updatePaymentInstruction(
+export function* updatePaymentInstruction(
   formData,
   cardDetails,
   isGuestUser,
@@ -87,7 +90,9 @@ function* updatePaymentInstruction(
   }
   // updatePaymentToActiveOnSubmitBilling(store);
   // getUserOperator(store).setRewardPointsData();
-  yield call(loadUpdatedCheckoutValues, false, true, cardNotUpdated, false, false);
+  if (!isMobileApp()) {
+    yield call(loadUpdatedCheckoutValues, false, true, cardNotUpdated, false, false);
+  }
 }
 
 function* getAddressData(formData) {
@@ -96,10 +101,17 @@ function* getAddressData(formData) {
   return existingAddress ? existingAddress.addressId : shippingDetails.onFileAddressId;
 }
 
-function* submitBillingData(formData, address, loadUpdatedCheckoutValues) {
+function addressIdToString(addressId) {
+  if (addressId) {
+    return addressId.toString();
+  }
+  return null;
+}
+
+export function* submitBillingData(formData, address, loadUpdatedCheckoutValues) {
   let res;
   let cardDetails;
-  let updatePaymentRequired = true;
+  const updatePaymentRequired = true;
   const isGuestUser = yield select(isGuest);
   if (formData.address.sameAsShipping) {
     const shippingDetails = yield select(getShippingDestinationValues);
@@ -114,12 +126,13 @@ function* submitBillingData(formData, address, loadUpdatedCheckoutValues) {
     res = yield call(updateAddress, {
       checkoutUpdateOnly: true,
       addressKey: cardDetails.addressKey,
-      addressId: cardDetails.addressId || cardDetails.billingAddressId,
+      addressId:
+        addressIdToString(cardDetails.addressId) || addressIdToString(cardDetails.billingAddressId),
     });
     res = res.body;
   } else if (formData.address.onFileAddressKey && !isGuestUser) {
     // return submitPaymentInformation({addressId: formData.address.onFileAddressKey});
-    const addressId = getAddressData(formData);
+    const addressId = yield call(getAddressData, formData);
     res = yield call(updateAddress, {
       checkoutUpdateOnly: true,
       addressKey: formData.address.onFileAddressKey,
@@ -128,7 +141,7 @@ function* submitBillingData(formData, address, loadUpdatedCheckoutValues) {
     res = res.body;
   } else if (formData.address.onFileAddressKey && isGuestUser) {
     // send update
-    const addressId = getAddressData(formData);
+    const addressId = yield call(getAddressData, formData);
     res = yield updateAddressPut(
       {
         payload: {
@@ -144,9 +157,7 @@ function* submitBillingData(formData, address, loadUpdatedCheckoutValues) {
       },
       { profileUpdate: false }
     );
-    res = res.payload;
   } else {
-    updatePaymentRequired = false;
     res = yield call(
       addAddressGet,
       {
@@ -161,6 +172,7 @@ function* submitBillingData(formData, address, loadUpdatedCheckoutValues) {
       },
       false
     );
+    res = res.body;
   }
   if (updatePaymentRequired) {
     yield call(
@@ -178,25 +190,25 @@ export default function* submitBilling(payload = {}, loadUpdatedCheckoutValues) 
   try {
     // TODO need to remove as it is temp fix to deliver review page for app
     const { payload: { navigation, ...formData } = {} } = payload;
-    if (!isMobileApp()) {
-      formData.phoneNumber = formData.phoneNumber || '';
-      const {
-        addressLine1: address1,
-        addressLine2: address2,
-        city,
-        country,
-        firstName,
-        lastName,
-        state,
-        zipCode: zip,
-      } = formData.address;
-      const address = { address1, address2, city, country, firstName, lastName, state, zip };
-      yield put(getSetIsBillingVisitedActn(true)); // flag that billing section was visited by the user
-      const isPaymentDisabled = yield select(getIsPaymentDisabled);
-      if (!isPaymentDisabled) {
-        yield call(submitBillingData, formData, address, loadUpdatedCheckoutValues);
-      }
+    formData.phoneNumber = formData.phoneNumber || '';
+    const {
+      addressLine1: address1,
+      addressLine2: address2,
+      city,
+      country,
+      firstName,
+      lastName,
+      state,
+      zipCode: zip,
+    } = formData.address;
+    const address = { address1, address2, city, country, firstName, lastName, state, zip };
+    yield put(getSetIsBillingVisitedActn(true)); // flag that billing section was visited by the user
+    const isPaymentDisabled = yield select(getIsPaymentDisabled);
+    if (!isPaymentDisabled) {
+      yield call(submitBillingData, formData, address, loadUpdatedCheckoutValues);
     }
+    yield call(getAddressList);
+    yield call(getCardList);
     if (!isMobileApp()) {
       utility.routeToPage(CHECKOUT_ROUTES.reviewPage);
     } else if (navigation) {

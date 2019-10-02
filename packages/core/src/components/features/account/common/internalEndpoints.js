@@ -36,7 +36,7 @@ const internalEndpoints = {
   },
   birthdaySavingsPage: {
     link: '/account?id=profile&subSection=birthday-savings',
-    path: profilePath,
+    path: `${profilePath}/birthday-savings`,
   },
   placeRewardsPage: {
     link: '/account?id=place-rewards',
@@ -44,7 +44,23 @@ const internalEndpoints = {
   },
   pointsHistoryPage: {
     link: '/account?id=place-rewards&subSection=points-history',
-    path: placeRewardsPath,
+    path: `${placeRewardsPath}/points-history`,
+  },
+  pointsClaimPage: {
+    link: '/account?id=place-rewards&subSection=points-claim',
+    path: `${placeRewardsPath}/points-claim`,
+  },
+  extraPointsPage: {
+    link: '/account?id=extra-points',
+    path: '/account/extra-points',
+  },
+  orderPage: {
+    link: '/account?id=orders&subSection=order-details',
+    path: '/account/orders/order-details',
+  },
+  myPreferencesPage: {
+    link: '/account?id=my-preference',
+    path: '/account//my-preference',
   },
 };
 

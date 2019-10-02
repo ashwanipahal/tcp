@@ -4,7 +4,7 @@ exports[`CustomButton should render correctly 1`] = `
 <Styled(TouchableOpacity)
   accessibilityRole="button"
   disabled={false}
-  iconColor="gray[800]"
+  iconColor="gray.800"
   iconName="chevron-down"
   iconSize="fs12"
   navigation={Object {}}
@@ -23,6 +23,7 @@ exports[`CustomButton should render correctly 1`] = `
     fill=""
     fullWidth=""
     selected={false}
+    style={null}
   />
 </Styled(TouchableOpacity)>
 `;

@@ -35,10 +35,24 @@ export const loadXappConfigData = payload => {
   };
 };
 
+export const setBossBopisFlags = payload => {
+  return {
+    payload,
+    type: GLOBAL_CONSTANTS.SET_BOSS_BOPIS_FLAGS,
+  };
+};
+
 export const setAPIConfig = payload => {
   return {
     payload,
     type: GLOBAL_CONSTANTS.SET_API_CONFIG,
+  };
+};
+
+export const siteConfigData = payload => {
+  return {
+    type: GLOBAL_CONSTANTS.SITE_CONFIG,
+    payload,
   };
 };
 
@@ -87,6 +101,13 @@ export const setOptimizelyFeaturesList = payload => ({
   type: GLOBAL_CONSTANTS.SET_OPTIMIZELY_FEATURES_LIST,
 });
 
+export const fetchPageLayout = payload => {
+  return {
+    payload,
+    type: GLOBAL_CONSTANTS.FETCH_PAGE_LAYOUT,
+  };
+};
+
 export default {
   loadLayoutData,
   loadLabelsData,
@@ -97,4 +118,5 @@ export default {
   setCountry,
   setCurrency,
   setLanguage,
+  setBossBopisFlags,
 };

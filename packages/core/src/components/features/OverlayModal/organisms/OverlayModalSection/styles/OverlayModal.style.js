@@ -12,7 +12,7 @@ const StyledModal = css`
   height: auto;
   right: ${props => (props.variation === 'primary' ? '0' : '')};
   left: ${props => (props.variation === 'secondary' ? '0' : '')};
-  z-index: 999;
+  z-index: ${props => props.theme.zindex.zDrawer};
   ${props =>
     props.component !== 'accountDrawer'
       ? `@media ${props.theme.mediaQuery.smallOnly} {
@@ -34,10 +34,25 @@ const StyledModal = css`
       max-height: none !important;
       height: 100%;
     }
+    margin-top: 8px;
+  }
+  .condensed-overlay {
+    top: 0;
+
+    @media ${props => props.theme.mediaQuery.medium} {
+      overflow-y: scroll;
+      position: fixed;
+      top: 61px;
+      width: 374px;
+    }
+    @media ${props => props.theme.mediaQuery.large} {
+      top: 70px;
+    }
   }
   .modal__bar {
-    position: absolute;
+    position: ${props => (props.showCondensedHeader ? 'fixed' : 'absolute')};
     height: 8px;
+    margin-top: -8px;
     width: 100%;
     background-color: ${props =>
       !props.isLoggedIn ? props.theme.colorPalette.userTheme.noMprPlcc : mprplcce};
@@ -53,6 +68,17 @@ const StyledModal = css`
     position: absolute;
     top: -10px;
     z-index: 99;
+  }
+  .modal__triangle.condensed-modal-triangle {
+    @media ${props => props.theme.mediaQuery.medium} {
+      position: fixed;
+      top: 52px;
+      right: 81px;
+    }
+
+    @media ${props => props.theme.mediaQuery.large} {
+      top: 61px;
+    }
   }
   .modal__closeIcon {
     background: transparent url('/static/images/modal-close.svg') no-repeat 0 0;

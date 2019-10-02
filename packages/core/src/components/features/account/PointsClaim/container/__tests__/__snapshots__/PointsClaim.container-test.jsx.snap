@@ -1,0 +1,44 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`PointsClaimContainer container should not render if site id is ca 1`] = `
+<Fragment>
+  <PointsClaimTopSection
+    className="elem-mb-XL"
+    labels={Object {}}
+  />
+  <ReduxForm
+    destroyOnUnmount={true}
+    enableReinitialize={true}
+    errorMessage=""
+    forceUnregisterOnUnmount={false}
+    form="PointsClaimForm"
+    getFormState={[Function]}
+    initialValues={
+      Object {
+        "transactionType": "In-Store",
+      }
+    }
+    keepDirtyOnReinitialize={false}
+    labels={Object {}}
+    onSubmit={[MockFunction]}
+    persistentSubmitErrors={false}
+    pure={true}
+    shouldAsyncValidate={[Function]}
+    shouldError={[Function]}
+    shouldValidate={[Function]}
+    shouldWarn={[Function]}
+    showNotification=""
+    submitAsSideEffect={false}
+    successMessage=""
+    touchOnBlur={true}
+    touchOnChange={false}
+    transactionTypesMap={Array []}
+    updateUnregisteredFields={false}
+    validate={[Function]}
+  />
+  <Styled(RewardsFooterLinks)
+    programDetailsCta="lbl_my_rewards_program_details"
+    termsConditionCta="lbl_common_tnc"
+  />
+</Fragment>
+`;

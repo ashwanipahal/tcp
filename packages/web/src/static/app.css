@@ -1,3 +1,7 @@
+html > body {
+  opacity: 1 !important;
+}
+
 .dark-overlay {
   display: none;
   background-color: #1a1a1a;
@@ -11,7 +15,7 @@
 
 @media (min-width: 768px) {
   .dark-overlay {
-    top: 111px;
+    top: 117px;
   }
 }
 

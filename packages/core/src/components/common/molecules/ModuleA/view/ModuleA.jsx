@@ -10,10 +10,9 @@ import { getIconPath, getLocator, isGymboree } from '../../../../../utils';
 
 import config from '../config';
 
+const { ctaTypes, CAROUSEL_OPTIONS, IMG_DATA_TCP, IMG_DATA_GYM } = config;
 const bigCarrotIcon = 'carousel-big-carrot';
 const bigCarrotIconGym = 'carousel-big-carrot-white';
-
-const { ctaTypes, CAROUSEL_OPTIONS, IMG_DATA_TCP, IMG_DATA_GYM } = config;
 
 class ModuleA extends React.Component {
   constructor(props) {
@@ -43,11 +42,27 @@ class ModuleA extends React.Component {
   };
 
   render() {
-    const { largeCompImageCarousel, ctaItems, ctaType, className } = this.props;
+    const {
+      largeCompImageCarousel,
+      ctaItems,
+      ctaType,
+      className,
+      accessibility: { playIconButton, pauseIconButton } = {},
+    } = this.props;
+
     const buttonListCtaType = ctaTypes[ctaType];
     const { isRibbonLeftAligned } = this.state;
     const isLinkList = buttonListCtaType === 'linkCTAList';
     const carouselIcon = isGymboree() ? bigCarrotIconGym : bigCarrotIcon;
+
+    const carouselConfig = {
+      autoplay: true,
+      dataLocatorPlay: getLocator('moduleA_play_button'),
+      dataLocatorPause: getLocator('moduleA_pause_button'),
+      customArrowLeft: getIconPath(carouselIcon),
+      customArrowRight: getIconPath(carouselIcon),
+      dataLocatorCarousel: 'carousel_banner',
+    };
 
     CAROUSEL_OPTIONS.prevArrow = (
       <button type="button" data-locator="moduleA_left_arrow" className="slick-prev" />
@@ -55,7 +70,9 @@ class ModuleA extends React.Component {
     CAROUSEL_OPTIONS.nextArrow = (
       <button type="button" data-locator="moduleA_right_arrow" className="slick-prev" />
     );
-    CAROUSEL_OPTIONS.hidePlayPause = largeCompImageCarousel.length === 1;
+    carouselConfig.autoplay = carouselConfig.autoplay && largeCompImageCarousel.length > 1;
+    carouselConfig.pauseIconButtonLabel = pauseIconButton;
+    carouselConfig.playIconButtonLabel = playIconButton;
 
     return (
       <Row
@@ -72,17 +89,7 @@ class ModuleA extends React.Component {
           }}
         >
           <div>
-            <Carousel
-              options={CAROUSEL_OPTIONS}
-              carouselConfig={{
-                autoplay: true,
-                dataLocatorCarousel: getLocator('carousel_banner'),
-                dataLocatorPlay: getLocator('moduleA_play_button'),
-                dataLocatorPause: getLocator('moduleA_pause_button'),
-                customArrowLeft: getIconPath(carouselIcon),
-                customArrowRight: getIconPath(carouselIcon),
-              }}
-            >
+            <Carousel options={CAROUSEL_OPTIONS} carouselConfig={carouselConfig}>
               {largeCompImageCarousel.map((item, i) => {
                 const {
                   headerText,
@@ -90,25 +97,26 @@ class ModuleA extends React.Component {
                   promoBanner,
                   ribbonBanner,
                 } = item;
-                const imageConfig = isGymboree() ? IMG_DATA_GYM : IMG_DATA_TCP;
+                const imageConfig = isGymboree() ? IMG_DATA_GYM.crops : IMG_DATA_TCP.crops;
                 return (
-                  <div className="banner-slide">
+                  <div key={i.toString()} className="banner-slide">
                     <DamImage
                       imgData={linkedImage.image}
-                      alt=""
                       imgConfigs={imageConfig}
                       data-locator={`${getLocator('moduleA_image')}${i}`}
                     />
                     <div className="banner-content">
-                      <LinkText
-                        type="heading"
-                        component="h2"
-                        fontSize={isLinkList ? ['fs32', 'fs32', 'fs64'] : 'fs16'}
-                        headerText={headerText}
-                        color={isGymboree() ? 'white' : ''}
-                        className="link-text-wrapper"
-                        dataLocator={`${getLocator('moduleA_header_text')}${i}`}
-                      />
+                      {headerText && (
+                        <LinkText
+                          type="heading"
+                          component="h2"
+                          fontSize={isLinkList ? ['fs32', 'fs32', 'fs64'] : 'fs16'}
+                          headerText={headerText}
+                          color={isGymboree() ? 'white' : ''}
+                          className="link-text-wrapper"
+                          dataLocator={`${getLocator('moduleA_header_text')}${i}`}
+                        />
+                      )}
                       {promoBanner && (
                         <PromoBanner
                           promoBanner={promoBanner}
@@ -134,12 +142,14 @@ class ModuleA extends React.Component {
             </Carousel>
 
             <div className={`button-list-container ${buttonListCtaType}`}>
-              <ButtonList
-                buttonsData={ctaItems}
-                buttonListVariation={buttonListCtaType}
-                dataLocatorDivisionImages={getLocator('moduleA_cta_image')}
-                dataLocatorTextCta={getLocator('moduleA_cta_links')}
-              />
+              {ctaItems && (
+                <ButtonList
+                  buttonsData={ctaItems}
+                  buttonListVariation={buttonListCtaType}
+                  dataLocatorDivisionImages={getLocator('moduleA_cta_image')}
+                  dataLocatorTextCta={getLocator('moduleA_cta_links')}
+                />
+              )}
             </div>
           </div>
         </Col>
@@ -149,17 +159,31 @@ class ModuleA extends React.Component {
 }
 
 ModuleA.defaultProps = {
-  largeCompImageCarousel: [],
-  ctaItems: [],
-  ctaType: 'stackedCTAList',
-  className: '',
+  accessibility: {},
 };
 
 ModuleA.propTypes = {
-  largeCompImageCarousel: PropTypes.shape([]),
-  ctaItems: PropTypes.shape([]),
-  ctaType: PropTypes.oneOf(['stackedCTAList', 'linkCTAList', 'scrollCTAList', 'imageCTAList']),
-  className: PropTypes.string,
+  accessibility: PropTypes.shape({
+    playIconButton: PropTypes.string,
+    pauseIconButton: PropTypes.string,
+  }),
+  className: PropTypes.string.isRequired,
+  largeCompImageCarousel: PropTypes.arrayOf(
+    PropTypes.shape({
+      headerText: PropTypes.arrayOf(
+        PropTypes.shape({
+          link: PropTypes.object,
+          textItems: PropTypes.array,
+        })
+      ),
+      linkedImage: PropTypes.arrayOf(PropTypes.shape({})),
+      promoBanner: PropTypes.arrayOf(PropTypes.shape({})),
+      ribbonBanner: PropTypes.arrayOf(PropTypes.shape({})),
+    })
+  ).isRequired,
+  ctaItems: PropTypes.arrayOf(PropTypes.shape({})).isRequired,
+  ctaType: PropTypes.oneOf(['stackedCTAButtons', 'linkCTAList', 'scrollCTAList', 'imageCTAList'])
+    .isRequired,
 };
 
 export default withStyles(errorBoundary(ModuleA), style);

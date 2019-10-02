@@ -120,8 +120,8 @@ export default {
     submodules: {},
     set: [
       {
-        key: 'bgClass',
-        val: '',
+        key: 'bannerPosition',
+        val: 'center',
       },
     ],
   },

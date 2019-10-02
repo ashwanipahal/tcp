@@ -25,8 +25,11 @@ const getPickUpContactFormLabels = state => {
     lbl_pickup_anchor_edit: anchorEdit,
     lbl_pickup_buttonText: pickupText,
     lbl_pickup_billingText: billingText,
+    lbl_pickup_reviewText: reviewText,
     lbl_pickup_nextText: nextText,
     lbl_pickup_returnTo: returnTo,
+    lbl_pickup_venmo_banner: venmoBannerText,
+    lbl_pickup_nextToBilling: nextToBilling,
   } = state.Labels.global && state.Labels.checkout.pickup;
   const { lbl_shipping_header: shippingText } =
     state.Labels.checkout && state.Labels.checkout.shipping;
@@ -57,6 +60,9 @@ const getPickUpContactFormLabels = state => {
     nextText,
     returnTo,
     shippingText,
+    venmoBannerText,
+    reviewText,
+    nextToBilling,
   };
 };
 
@@ -75,4 +81,13 @@ const getGiftServicesFormData = state => {
   };
 };
 
-export { getPickUpContactFormLabels, getGiftServicesFormData, getSyncError };
+const getPaypalPaymentSettings = state => {
+  return state.Checkout.getIn(['options', 'paypalPaymentSettings']);
+};
+
+export {
+  getPickUpContactFormLabels,
+  getGiftServicesFormData,
+  getSyncError,
+  getPaypalPaymentSettings,
+};

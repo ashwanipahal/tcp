@@ -35,6 +35,7 @@ exports[`FooterTopCandidateBVanilla component renders correctly 1`] = `
           fontWeight="black"
           letterSpacing="normal"
           lineHeight="normal"
+          link={null}
           textAlign="left"
         >
           <TextItems />
@@ -72,6 +73,7 @@ exports[`FooterTopCandidateBVanilla component renders correctly 1`] = `
           fontWeight="black"
           letterSpacing="normal"
           lineHeight="normal"
+          link={null}
           textAlign="left"
         >
           <TextItems />
@@ -110,6 +112,7 @@ exports[`FooterTopCandidateBVanilla component renders correctly 1`] = `
             fontWeight="black"
             letterSpacing="normal"
             lineHeight="normal"
+            link={null}
             textAlign="left"
           >
             <TextItems />

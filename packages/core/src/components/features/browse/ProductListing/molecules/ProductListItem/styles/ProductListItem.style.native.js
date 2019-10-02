@@ -2,7 +2,7 @@ import styled, { css } from 'styled-components/native';
 
 const ListContainer = styled.View`
   width: 50%;
-  height: 436;
+  min-height: 412;
   background: white;
   padding: ${props => props.theme.spacing.ELEM_SPACING.SM};
 `;
@@ -85,28 +85,12 @@ const TitleText = styled.Text`
   line-height: 14.4;
 `;
 
-const PromotionalMessageContainer = styled.View`
-  margin-top: ${props => props.theme.spacing.ELEM_SPACING.SM};
-  height: 24;
-`;
-
-// Color is hard code as not in the style guide
-const PromotionalMessage = styled.Text`
-  color: ${props =>
-    props.isPlcc
-      ? props.theme.colorPalette.userTheme.plcc
-      : props.theme.colorPalette.userTheme.mpr};
-  font-family: ${props => props.theme.typography.fonts.secondary};
-  font-size: ${props => props.theme.typography.fontSizes.fs9};
-  line-height: 11;
-`;
-
-const PromotionalMessagePostfix = styled.Text`
-  color: ${props => props.theme.colorPalette.gray[900]};
-`;
-
 const AddToBagContainer = styled.View`
-  margin-top: ${props => props.theme.spacing.ELEM_SPACING.SM};
+  margin-top: auto;
+`;
+
+const ImageSectionContainer = styled.View`
+  max-height: 205;
 `;
 
 const styles = css``;
@@ -126,9 +110,7 @@ export {
   Badge3Text,
   TitleContainer,
   TitleText,
-  PromotionalMessageContainer,
-  PromotionalMessage,
   AddToBagContainer,
-  PromotionalMessagePostfix,
   OfferPriceAndFavoriteIconContainer,
+  ImageSectionContainer,
 };

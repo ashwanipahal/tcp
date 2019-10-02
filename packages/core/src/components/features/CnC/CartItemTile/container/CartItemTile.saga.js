@@ -3,7 +3,7 @@
  */
 // TODO: Need fix unused/proptypes eslint error
 
-import { call, takeLatest, put, delay } from 'redux-saga/effects';
+import { call, takeLatest, put, delay, select } from 'redux-saga/effects';
 import logger from '@tcp/core/src/utils/loggerInstance';
 import { parseProductFromAPI } from '@tcp/core/src/components/features/browse/ProductListingPage/container/ProductListingPage.dataMassage';
 import { getImgPath } from '@tcp/core/src/components/features/browse/ProductListingPage/util/utility';
@@ -18,17 +18,56 @@ import {
 import BAG_PAGE_ACTIONS from '../../BagPage/container/BagPage.actions';
 import endpoints from '../../../../../service/endpoint';
 import { removeItem, updateItem } from '../../../../../services/abstractors/CnC';
+import BagPageSelectors from '../../BagPage/container/BagPage.selectors';
+import { isItemBossBopisInEligible } from './CartItemTile.selectors';
 
-export function* removeCartItem({ payload }) {
+const { checkoutIfItemIsUnqualified } = BagPageSelectors;
+
+export function* afterRemovingCartItem() {
+  yield put(BAG_PAGE_ACTIONS.setCartItemsUpdating({ isDeleting: true }));
+  yield delay(3000);
+  yield put(BAG_PAGE_ACTIONS.setCartItemsUpdating({ isDeleting: false }));
+  yield put(BAG_PAGE_ACTIONS.setCartItemsSFL(false));
+}
+
+/**
+ *@function confirmRemoveItem to be invoked to delete item form cart
+ *
+ * @export
+ * @param {*} { payload, afterHandler }
+ */
+export function* confirmRemoveItem({ payload, afterHandler }) {
   try {
     const res = yield call(removeItem, payload);
     yield put(removeCartItemComplete(res));
-    yield put(BAG_PAGE_ACTIONS.setCartItemsUpdating({ isDeleting: true }));
-    yield put(BAG_PAGE_ACTIONS.getOrderDetails());
-    yield delay(3000);
-    yield put(BAG_PAGE_ACTIONS.setCartItemsUpdating({ isDeleting: false }));
+    if (afterHandler) {
+      afterHandler();
+    }
+    yield put(BAG_PAGE_ACTIONS.getCartData({ onCartRes: afterRemovingCartItem }));
   } catch (err) {
     logger.error(err);
+  }
+}
+
+/**
+ *
+ * @function removeCartItem to be called when item delete from cart is required it opens the confirmation modal if function is invoked from bag page and item is available
+ * @export
+ * @param {*} { payload }
+ *
+ */
+export function* removeCartItem({ payload }) {
+  const { itemId, pageView } = payload;
+  if (pageView === 'myBag') {
+    const isUnqualifiedItem = yield select(checkoutIfItemIsUnqualified, itemId);
+    const isItemInEligible = yield select(isItemBossBopisInEligible, payload);
+    if (isUnqualifiedItem || isItemInEligible) {
+      yield call(confirmRemoveItem, { payload: itemId });
+      return;
+    }
+    yield put(BAG_PAGE_ACTIONS.openItemDeleteConfirmationModal(payload));
+  } else {
+    yield call(confirmRemoveItem, { payload: itemId });
   }
 }
 
@@ -92,6 +131,7 @@ export function* CartPageSaga() {
   yield takeLatest(CARTPAGE_CONSTANTS.REMOVE_CART_ITEM, removeCartItem);
   yield takeLatest(CARTPAGE_CONSTANTS.UPDATE_CART_ITEM, updateCartItemSaga);
   yield takeLatest(CARTPAGE_CONSTANTS.GET_PRODUCT_SKU_INFO, getProductSKUInfoSaga);
+  yield takeLatest(CARTPAGE_CONSTANTS.CONFIRM_REMOVE_CART_ITEM, confirmRemoveItem);
 }
 
 export default CartPageSaga;

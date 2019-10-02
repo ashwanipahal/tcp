@@ -19,7 +19,10 @@ export const ModuleXCompositeDataAbstractor = {
     return handler
       .fetchModuleDataFromGraphQL({
         name: 'moduleXComposite',
-        data: { cids: ids, type: 'moduleX' },
+        data: {
+          cids: ids,
+          type: 'moduleX',
+        },
       })
       .then(response => response);
   },

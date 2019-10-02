@@ -1,8 +1,9 @@
 import { useEffect } from 'react';
-import { mark } from '../utils/performance';
+
+const isEnabled = Boolean(process.env.PERF_TIMING);
 
 export default function usePerfMark(name) {
   useEffect(() => {
-    mark(name);
+    if (isEnabled) performance.mark(name);
   }, [name]);
 }

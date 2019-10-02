@@ -8,6 +8,27 @@ export default css`
     width: 100%;
     height: 40px;
     display: inline-block;
+
+    ${props =>
+      props.fromCondensedHeader
+        ? `
+
+        position: fixed;
+        width: 66%;
+        right: 120px;
+        top: ${props.theme.spacing.ELEM_SPACING.XS};
+
+        @media ${props.theme.mediaQuery.large} {
+          width: 74%;
+        }
+
+        @media ${props.theme.mediaQuery.large} {
+          width: 31.8%;
+          right: 130px;
+          top: ${props.theme.spacing.ELEM_SPACING.SM};
+        }
+      `
+        : ``};
   }
 
   .searchbar {
@@ -60,6 +81,24 @@ export default css`
     z-index: 100000;
     position: relative;
     background-color: ${props => props.theme.colors.WHITE};
+    overflow-y: auto;
+  }
+
+  .header-search {
+    width: 300px;
+    position: absolute;
+    float: right;
+    top: 108px;
+    z-index: 2;
+
+    @media ${props => props.theme.mediaQuery.mediumOnly} {
+      right: 5em;
+      top: 66px;
+    }
+
+    @media ${props => props.theme.mediaQuery.large} {
+      right: 11em;
+    }
   }
 
   .boxHead {

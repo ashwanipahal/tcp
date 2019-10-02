@@ -18,6 +18,7 @@ exports[`AboutYouInfo should render correctly 1`] = `
     fontWeight="regular"
     letterSpacing="normal"
     lineHeight="normal"
+    link={null}
     textAlign="left"
   >
     <Styled(Row)
@@ -43,6 +44,7 @@ exports[`AboutYouInfo should render correctly 1`] = `
           fontWeight="regular"
           letterSpacing="normal"
           lineHeight="normal"
+          link={null}
           textAlign="left"
         >
           I describe myself as: 

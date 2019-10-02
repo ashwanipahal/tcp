@@ -48,7 +48,7 @@ export default css`
     @media ${props => props.theme.mediaQuery.medium} {
       width: 80%;
       max-width: 600px;
-      max-height: 100vh;
+      max-height: 80vh;
     }
 
     .filter-row {

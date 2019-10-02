@@ -4,9 +4,11 @@ import Thumbnail from '../../atoms/Thumbnail';
 
 const ThumbnailsList = props => {
   const { images, onThumbnailClick, selectedImageIndex } = props;
+  const size = 5; // number of images to show in ThumbnailList
+  const items = images.slice(0, size);
   return (
     <ul>
-      {images.map((image, index) => (
+      {items.map((image, index) => (
         <li>
           <Thumbnail
             key={image.imageUrl}

@@ -50,7 +50,7 @@ export const arrowWrapper = css`
   align-items: center;
   height: 15px;
   width: 19px;
-  top: 0;
+  top: 8px;
 
   @media ${props => props.theme.mediaQuery.large} {
     height: 20px;

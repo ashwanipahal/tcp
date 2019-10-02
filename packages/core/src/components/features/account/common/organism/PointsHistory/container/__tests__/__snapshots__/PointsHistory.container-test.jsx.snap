@@ -6,6 +6,7 @@ exports[`PointsHistoryContainer View should render PointsHistory container Corre
   getPointsHistoryAction={[Function]}
   labels={[Function]}
   pointHistory={[Function]}
+  resetStateAction={[Function]}
   router={
     Object {
       "query": Object {
@@ -13,6 +14,9 @@ exports[`PointsHistoryContainer View should render PointsHistory container Corre
       },
     }
   }
+  showError=""
+  showNotification=""
+  showSuccess=""
 />
 `;
 
@@ -22,5 +26,9 @@ exports[`PointsHistoryContainer View should render PointsHistoryContainer Correc
   getPointsHistoryAction={[Function]}
   labels={[Function]}
   pointHistory={[Function]}
+  resetStateAction={[Function]}
+  showError=""
+  showNotification=""
+  showSuccess=""
 />
 `;

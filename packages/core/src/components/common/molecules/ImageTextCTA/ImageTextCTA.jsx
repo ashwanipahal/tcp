@@ -1,6 +1,6 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import { configurePlpNavigationFromCMSUrl } from '../../../../utils';
+import { configureInternalNavigationFromCMSUrl } from '../../../../utils';
 import { Anchor, DamImage, BodyCopy } from '../../atoms';
 
 /**
@@ -23,7 +23,7 @@ const ImageTextCTA = props => {
 
   const navigationUrl = link;
   const { text } = navigationUrl;
-  navigationUrl.to = configurePlpNavigationFromCMSUrl(link.url);
+  navigationUrl.to = configureInternalNavigationFromCMSUrl(link.url);
   navigationUrl.asPath = link.url;
 
   return (

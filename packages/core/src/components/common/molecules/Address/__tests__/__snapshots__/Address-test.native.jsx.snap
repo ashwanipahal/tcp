@@ -3,70 +3,100 @@
 exports[`Address component should renders correctly 1`] = `
 <View>
   <Styled(BodyCopy)
+    accessibilityText=""
     color="gray.900"
+    dataLocator=""
     fontSize="fs16"
     fontWeight="semibold"
+    margin={null}
     mobilefontFamily={
       Array [
         "secondary",
       ]
     }
+    numberOfLines={null}
     text="test test "
+    textDecoration={null}
   />
   <Styled(BodyCopy)
+    accessibilityText=""
     color="gray.900"
+    dataLocator=""
     fontSize="fs14"
     fontWeight="regular"
+    margin={null}
     mobilefontFamily={
       Array [
         "secondary",
       ]
     }
+    numberOfLines={null}
     text="addressline 1"
+    textDecoration={null}
   />
   <Styled(BodyCopy)
+    accessibilityText=""
     color="gray.900"
+    dataLocator=""
     fontSize="fs14"
     fontWeight="regular"
+    margin={null}
     mobilefontFamily={
       Array [
         "secondary",
       ]
     }
+    numberOfLines={null}
     text="addressline 2"
+    textDecoration={null}
   />
   <Styled(BodyCopy)
+    accessibilityText=""
     color="gray.900"
+    dataLocator=""
     fontSize="fs14"
     fontWeight="regular"
+    margin={null}
     mobilefontFamily={
       Array [
         "secondary",
       ]
     }
+    numberOfLines={null}
     text="test city, test state 111-111"
+    textDecoration={null}
   />
   <Styled(BodyCopy)
+    accessibilityText=""
     color="gray.900"
+    dataLocator=""
     fontSize="fs14"
     fontWeight="regular"
+    margin={null}
     mobilefontFamily={
       Array [
         "secondary",
       ]
     }
+    numberOfLines={null}
     text="test country"
+    textDecoration={null}
   />
   <Styled(BodyCopy)
+    accessibilityText=""
     color="gray.900"
+    dataLocator=""
     fontSize="fs14"
     fontWeight="regular"
+    margin={null}
     mobilefontFamily={
       Array [
         "secondary",
       ]
     }
+    numberOfLines={null}
     text="1234567890"
+    textDecoration={null}
   />
 </View>
 `;
@@ -74,48 +104,68 @@ exports[`Address component should renders correctly 1`] = `
 exports[`Address component should renders correctly when address Line 1 and 2 are not present 1`] = `
 <View>
   <Styled(BodyCopy)
+    accessibilityText=""
     color="gray.900"
+    dataLocator=""
     fontSize="fs16"
     fontWeight="semibold"
+    margin={null}
     mobilefontFamily={
       Array [
         "secondary",
       ]
     }
+    numberOfLines={null}
     text="test test "
+    textDecoration={null}
   />
   <Styled(BodyCopy)
+    accessibilityText=""
     color="gray.900"
+    dataLocator=""
     fontSize="fs14"
     fontWeight="regular"
+    margin={null}
     mobilefontFamily={
       Array [
         "secondary",
       ]
     }
+    numberOfLines={null}
     text="test city, test state 111-111"
+    textDecoration={null}
   />
   <Styled(BodyCopy)
+    accessibilityText=""
     color="gray.900"
+    dataLocator=""
     fontSize="fs14"
     fontWeight="regular"
+    margin={null}
     mobilefontFamily={
       Array [
         "secondary",
       ]
     }
+    numberOfLines={null}
     text="test country"
+    textDecoration={null}
   />
   <Styled(BodyCopy)
+    accessibilityText=""
     color="gray.900"
+    dataLocator=""
     fontSize="fs14"
     fontWeight="regular"
+    margin={null}
     mobilefontFamily={
       Array [
         "secondary",
       ]
     }
+    numberOfLines={null}
     text="1234567890"
+    textDecoration={null}
   />
 </View>
 `;
@@ -123,70 +173,100 @@ exports[`Address component should renders correctly when address Line 1 and 2 ar
 exports[`Address component should renders correctly when city & state are not present 1`] = `
 <View>
   <Styled(BodyCopy)
+    accessibilityText=""
     color="gray.900"
+    dataLocator=""
     fontSize="fs16"
     fontWeight="semibold"
+    margin={null}
     mobilefontFamily={
       Array [
         "secondary",
       ]
     }
+    numberOfLines={null}
     text="test test "
+    textDecoration={null}
   />
   <Styled(BodyCopy)
+    accessibilityText=""
     color="gray.900"
+    dataLocator=""
     fontSize="fs14"
     fontWeight="regular"
+    margin={null}
     mobilefontFamily={
       Array [
         "secondary",
       ]
     }
+    numberOfLines={null}
     text="addressline 1"
+    textDecoration={null}
   />
   <Styled(BodyCopy)
+    accessibilityText=""
     color="gray.900"
+    dataLocator=""
     fontSize="fs14"
     fontWeight="regular"
+    margin={null}
     mobilefontFamily={
       Array [
         "secondary",
       ]
     }
+    numberOfLines={null}
     text="addressline 2"
+    textDecoration={null}
   />
   <Styled(BodyCopy)
+    accessibilityText=""
     color="gray.900"
+    dataLocator=""
     fontSize="fs14"
     fontWeight="regular"
+    margin={null}
     mobilefontFamily={
       Array [
         "secondary",
       ]
     }
+    numberOfLines={null}
     text="111-111"
+    textDecoration={null}
   />
   <Styled(BodyCopy)
+    accessibilityText=""
     color="gray.900"
+    dataLocator=""
     fontSize="fs14"
     fontWeight="regular"
+    margin={null}
     mobilefontFamily={
       Array [
         "secondary",
       ]
     }
+    numberOfLines={null}
     text="test country"
+    textDecoration={null}
   />
   <Styled(BodyCopy)
+    accessibilityText=""
     color="gray.900"
+    dataLocator=""
     fontSize="fs14"
     fontWeight="regular"
+    margin={null}
     mobilefontFamily={
       Array [
         "secondary",
       ]
     }
+    numberOfLines={null}
     text="1234567890"
+    textDecoration={null}
   />
 </View>
 `;
@@ -194,70 +274,100 @@ exports[`Address component should renders correctly when city & state are not pr
 exports[`Address component should renders correctly when city is not present 1`] = `
 <View>
   <Styled(BodyCopy)
+    accessibilityText=""
     color="gray.900"
+    dataLocator=""
     fontSize="fs16"
     fontWeight="semibold"
+    margin={null}
     mobilefontFamily={
       Array [
         "secondary",
       ]
     }
+    numberOfLines={null}
     text="test test "
+    textDecoration={null}
   />
   <Styled(BodyCopy)
+    accessibilityText=""
     color="gray.900"
+    dataLocator=""
     fontSize="fs14"
     fontWeight="regular"
+    margin={null}
     mobilefontFamily={
       Array [
         "secondary",
       ]
     }
+    numberOfLines={null}
     text="addressline 1"
+    textDecoration={null}
   />
   <Styled(BodyCopy)
+    accessibilityText=""
     color="gray.900"
+    dataLocator=""
     fontSize="fs14"
     fontWeight="regular"
+    margin={null}
     mobilefontFamily={
       Array [
         "secondary",
       ]
     }
+    numberOfLines={null}
     text="addressline 2"
+    textDecoration={null}
   />
   <Styled(BodyCopy)
+    accessibilityText=""
     color="gray.900"
+    dataLocator=""
     fontSize="fs14"
     fontWeight="regular"
+    margin={null}
     mobilefontFamily={
       Array [
         "secondary",
       ]
     }
+    numberOfLines={null}
     text="test state 111-111"
+    textDecoration={null}
   />
   <Styled(BodyCopy)
+    accessibilityText=""
     color="gray.900"
+    dataLocator=""
     fontSize="fs14"
     fontWeight="regular"
+    margin={null}
     mobilefontFamily={
       Array [
         "secondary",
       ]
     }
+    numberOfLines={null}
     text="test country"
+    textDecoration={null}
   />
   <Styled(BodyCopy)
+    accessibilityText=""
     color="gray.900"
+    dataLocator=""
     fontSize="fs14"
     fontWeight="regular"
+    margin={null}
     mobilefontFamily={
       Array [
         "secondary",
       ]
     }
+    numberOfLines={null}
     text="1234567890"
+    textDecoration={null}
   />
 </View>
 `;
@@ -265,70 +375,100 @@ exports[`Address component should renders correctly when city is not present 1`]
 exports[`Address component should renders correctly when optional fields are not present 1`] = `
 <View>
   <Styled(BodyCopy)
+    accessibilityText=""
     color="gray.900"
+    dataLocator=""
     fontSize="fs16"
     fontWeight="semibold"
+    margin={null}
     mobilefontFamily={
       Array [
         "secondary",
       ]
     }
+    numberOfLines={null}
     text="test test "
+    textDecoration={null}
   />
   <Styled(BodyCopy)
+    accessibilityText=""
     color="gray.900"
+    dataLocator=""
     fontSize="fs14"
     fontWeight="regular"
+    margin={null}
     mobilefontFamily={
       Array [
         "secondary",
       ]
     }
+    numberOfLines={null}
     text="addressLine1"
+    textDecoration={null}
   />
   <Styled(BodyCopy)
+    accessibilityText=""
     color="gray.900"
+    dataLocator=""
     fontSize="fs14"
     fontWeight="regular"
+    margin={null}
     mobilefontFamily={
       Array [
         "secondary",
       ]
     }
+    numberOfLines={null}
     text="addressLine2"
+    textDecoration={null}
   />
   <Styled(BodyCopy)
+    accessibilityText=""
     color="gray.900"
+    dataLocator=""
     fontSize="fs14"
     fontWeight="regular"
+    margin={null}
     mobilefontFamily={
       Array [
         "secondary",
       ]
     }
+    numberOfLines={null}
     text="test city, test state 111-111"
+    textDecoration={null}
   />
   <Styled(BodyCopy)
+    accessibilityText=""
     color="gray.900"
+    dataLocator=""
     fontSize="fs14"
     fontWeight="regular"
+    margin={null}
     mobilefontFamily={
       Array [
         "secondary",
       ]
     }
+    numberOfLines={null}
     text="test country"
+    textDecoration={null}
   />
   <Styled(BodyCopy)
+    accessibilityText=""
     color="gray.900"
+    dataLocator=""
     fontSize="fs14"
     fontWeight="regular"
+    margin={null}
     mobilefontFamily={
       Array [
         "secondary",
       ]
     }
+    numberOfLines={null}
     text="1234567890"
+    textDecoration={null}
   />
 </View>
 `;
@@ -336,59 +476,84 @@ exports[`Address component should renders correctly when optional fields are not
 exports[`Address component should renders correctly when showName is switched off 1`] = `
 <View>
   <Styled(BodyCopy)
+    accessibilityText=""
     color="gray.900"
+    dataLocator=""
     fontSize="fs14"
     fontWeight="regular"
+    margin={null}
     mobilefontFamily={
       Array [
         "secondary",
       ]
     }
+    numberOfLines={null}
     text="addressline 1"
+    textDecoration={null}
   />
   <Styled(BodyCopy)
+    accessibilityText=""
     color="gray.900"
+    dataLocator=""
     fontSize="fs14"
     fontWeight="regular"
+    margin={null}
     mobilefontFamily={
       Array [
         "secondary",
       ]
     }
+    numberOfLines={null}
     text="addressline 2"
+    textDecoration={null}
   />
   <Styled(BodyCopy)
+    accessibilityText=""
     color="gray.900"
+    dataLocator=""
     fontSize="fs14"
     fontWeight="regular"
+    margin={null}
     mobilefontFamily={
       Array [
         "secondary",
       ]
     }
+    numberOfLines={null}
     text="test city, test state 111-111"
+    textDecoration={null}
   />
   <Styled(BodyCopy)
+    accessibilityText=""
     color="gray.900"
+    dataLocator=""
     fontSize="fs14"
     fontWeight="regular"
+    margin={null}
     mobilefontFamily={
       Array [
         "secondary",
       ]
     }
+    numberOfLines={null}
     text="test country"
+    textDecoration={null}
   />
   <Styled(BodyCopy)
+    accessibilityText=""
     color="gray.900"
+    dataLocator=""
     fontSize="fs14"
     fontWeight="regular"
+    margin={null}
     mobilefontFamily={
       Array [
         "secondary",
       ]
     }
+    numberOfLines={null}
     text="1234567890"
+    textDecoration={null}
   />
 </View>
 `;

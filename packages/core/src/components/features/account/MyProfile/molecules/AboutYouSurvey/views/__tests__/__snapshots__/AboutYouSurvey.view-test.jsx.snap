@@ -20,6 +20,7 @@ exports[`AboutYouSurvey should render SurveyQuestion correctly 1`] = `
         fontWeight="black"
         letterSpacing="normal"
         lineHeight="normal"
+        link={null}
         textAlign="left"
       >
         undefined, TCP
@@ -48,6 +49,7 @@ exports[`AboutYouSurvey should render SurveyQuestion correctly 1`] = `
           fontWeight="regular"
           letterSpacing="normal"
           lineHeight="normal"
+          link={null}
           textAlign="left"
         />
       </Styled(Col)>
@@ -181,6 +183,7 @@ exports[`AboutYouSurvey should render correctly 1`] = `
         fontWeight="black"
         letterSpacing="normal"
         lineHeight="normal"
+        link={null}
         textAlign="left"
       >
         undefined, TCP
@@ -209,6 +212,7 @@ exports[`AboutYouSurvey should render correctly 1`] = `
           fontWeight="regular"
           letterSpacing="normal"
           lineHeight="normal"
+          link={null}
           textAlign="left"
         />
       </Styled(Col)>

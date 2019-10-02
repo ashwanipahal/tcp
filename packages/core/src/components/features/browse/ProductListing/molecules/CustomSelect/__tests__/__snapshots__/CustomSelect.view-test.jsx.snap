@@ -16,7 +16,7 @@ exports[`Custom Select is shown should render Custom Select  1`] = `
       "$$typeof": Symbol(react.forward_ref),
       "attrs": Array [],
       "componentStyle": ComponentStyle {
-        "componentId": "sc-ifAKCX",
+        "componentId": "sc-jTzLTM",
         "isStatic": false,
         "rules": Array [
           "
@@ -84,7 +84,7 @@ exports[`Custom Select is shown should render Custom Select  1`] = `
       "displayName": "Styled(CustomSelect)",
       "foldedComponentIds": Array [],
       "render": [Function],
-      "styledComponentId": "sc-ifAKCX",
+      "styledComponentId": "sc-jTzLTM",
       "target": [Function],
       "toString": [Function],
       "warnTooManyClasses": [Function],

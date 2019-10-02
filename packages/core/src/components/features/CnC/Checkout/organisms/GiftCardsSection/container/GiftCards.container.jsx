@@ -14,6 +14,7 @@ import {
   setShowGiftCardForm,
   setHideGiftCardForm,
   resetAddGiftCardSuccess,
+  resetAddGiftCard,
 } from '../../../container/Checkout.action';
 import { toastMessageInfo } from '../../../../../../common/atoms/Toast/container/Toast.actions.native';
 import { getFormValidationErrorMessages } from '../../../../../account/Account/container/Account.selectors';
@@ -70,6 +71,11 @@ export class GiftCardsContainer extends React.PureComponent<Props> {
     });
   };
 
+  onClearError = () => {
+    const { clearResetAddGiftCard } = this.props;
+    clearResetAddGiftCard();
+  };
+
   render() {
     const {
       giftCardList,
@@ -119,6 +125,7 @@ export class GiftCardsContainer extends React.PureComponent<Props> {
         isGuestUser={isGuestUser}
         isRecapchaEnabled={isRecapchaEnabled}
         isLoading={isLoading}
+        onClearError={this.onClearError}
       />
     );
   }
@@ -153,6 +160,9 @@ export const mapDispatchToProps = dispatch => {
     resetAddGiftCardAction: () => {
       dispatch(resetAddGiftCardSuccess());
     },
+    clearResetAddGiftCard: () => {
+      dispatch(resetAddGiftCard());
+    },
   };
 };
 
@@ -162,7 +172,10 @@ const mapStateToProps = state => {
     appliedGiftCards: GiftCardSelector.getAppliedGiftCards(state),
     itemOrderGrandTotal: GiftCardSelector.getGrandTotal(state),
     itemsGiftCardTotal: GiftCardSelector.getGiftCardsTotal(state),
-    labels: GiftCardSelector.getGiftSectionLabels(state),
+    labels: {
+      ...GiftCardSelector.getGiftSectionLabels(state),
+      ...GiftCardSelector.getGiftCardSectionLabels(state),
+    },
     giftCardErrors: GiftCardSelector.getGiftCardErrors(state),
     enableAddGiftCard: GiftCardSelector.getShowAddGiftCard(state),
     formErrorMessage: getFormValidationErrorMessages(state),

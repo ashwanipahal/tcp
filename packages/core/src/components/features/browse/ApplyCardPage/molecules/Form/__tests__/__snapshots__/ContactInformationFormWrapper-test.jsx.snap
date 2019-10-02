@@ -3,16 +3,16 @@
 exports[`ContactInformationFormWrapper component should renders correctly 1`] = `
 <styled.div>
   <Styled(Heading)
-    className="title"
-    color="black"
+    className="contactFormTitle"
+    color="text.primary"
     component={null}
     dataLocator=""
     fontFamily="secondary"
     fontSize="fs16"
-    fontWeight="semibold"
+    fontWeight="semiBold"
     tabIndex="0"
     textAlign="left"
-    variant="h2"
+    variant="h1"
   >
     contact information
   </Styled(Heading)>
@@ -23,7 +23,7 @@ exports[`ContactInformationFormWrapper component should renders correctly 1`] = 
       className="contact_information_form columnWrapper"
       colSize={
         Object {
-          "large": 6,
+          "large": 5,
           "medium": 4,
           "small": 6,
         }
@@ -389,7 +389,7 @@ exports[`ContactInformationFormWrapper component should renders correctly 1`] = 
       className="contact_information_form columnWrapper"
       colSize={
         Object {
-          "large": 6,
+          "large": 5,
           "medium": 4,
           "small": 6,
         }
@@ -568,7 +568,7 @@ exports[`ContactInformationFormWrapper component should renders correctly 1`] = 
       className="contact_information_form columnWrapper"
       colSize={
         Object {
-          "large": 6,
+          "large": 5,
           "medium": 4,
           "small": 6,
         }
@@ -587,6 +587,7 @@ exports[`ContactInformationFormWrapper component should renders correctly 1`] = 
         }
         dataLocator="plcc_address_1"
         id="addressLine1"
+        maxLength="30"
         name="addressLine1"
         onPlaceSelected={[Function]}
         placeholder="Address Line 1"
@@ -596,7 +597,7 @@ exports[`ContactInformationFormWrapper component should renders correctly 1`] = 
       className="contact_information_form columnWrapper"
       colSize={
         Object {
-          "large": 6,
+          "large": 5,
           "medium": 4,
           "small": 6,
         }
@@ -774,7 +775,7 @@ exports[`ContactInformationFormWrapper component should renders correctly 1`] = 
       className="contact_information_form columnWrapper"
       colSize={
         Object {
-          "large": 6,
+          "large": 5,
           "medium": 4,
           "small": 6,
         }
@@ -948,7 +949,7 @@ exports[`ContactInformationFormWrapper component should renders correctly 1`] = 
       className="columnWrapper"
       colSize={
         Object {
-          "large": 6,
+          "large": 5,
           "medium": 4,
           "small": 6,
         }
@@ -977,10 +978,13 @@ exports[`ContactInformationFormWrapper component should renders correctly 1`] = 
             fontWeight="extrabold"
             letterSpacing="normal"
             lineHeight="normal"
+            link={null}
             textAlign="left"
-          />
+          >
+            state
+          </Styled(BodyCopy)>
           <Field
-            className="field"
+            className="field stateField"
             component={
               Object {
                 "$$typeof": Symbol(react.forward_ref),
@@ -1154,6 +1158,7 @@ exports[`ContactInformationFormWrapper component should renders correctly 1`] = 
                 },
               ]
             }
+            placeholder="state select"
           />
         </Styled(Col)>
         <Styled(Col)
@@ -1341,7 +1346,7 @@ exports[`ContactInformationFormWrapper component should renders correctly 1`] = 
       className="contact_information_form columnWrapper"
       colSize={
         Object {
-          "large": 6,
+          "large": 5,
           "medium": 4,
           "small": 6,
         }
@@ -1516,190 +1521,11 @@ exports[`ContactInformationFormWrapper component should renders correctly 1`] = 
       className="contact_information_form columnWrapper"
       colSize={
         Object {
-          "large": 6,
+          "large": 5,
           "medium": 4,
           "small": 6,
         }
       }
-    >
-      <Field
-        className="field"
-        component={
-          Object {
-            "$$typeof": Symbol(react.forward_ref),
-            "attrs": Array [],
-            "componentStyle": ComponentStyle {
-              "componentId": "sc-gzVnrw",
-              "isStatic": false,
-              "rules": Array [
-                "
-  ",
-                "
-  position: relative;
-  display: block;
-
-  .TextBox__label {
-    font-size: ",
-                [Function],
-                "px;
-    padding: 0;
-    position: absolute;
-    top: ",
-                [Function],
-                ";
-    ",
-                [Function],
-                "
-  }
-
-  .TextBox__input {
-    margin: 0;
-    outline: 0;
-    font-size: ",
-                [Function],
-                "px;
-    color: ",
-                [Function],
-                ";
-    width: 100%;
-    background-position: left top;
-    background-repeat: no-repeat;
-    background-size: contain;
-    border: 0 solid transparent;
-    border-bottom: 1px solid ",
-                [Function],
-                ";
-    padding-bottom: ",
-                [Function],
-                ";
-    margin-bottom: ",
-                [Function],
-                ";
-    padding-top: ",
-                [Function],
-                ";
-
-    ",
-                [Function],
-                "
-
-    ",
-                [Function],
-                ";
-
-    &:focus + .TextBox__label {
-      font-size: ",
-                [Function],
-                "px;
-      font-weight: ",
-                [Function],
-                ";
-      top: ",
-                [Function],
-                ";
-    }
-  }
-  .success__checkmark {
-    display: none;
-  }
-  &.textbox_validation_success .TextBox__input {
-    border-bottom: 1px solid ",
-                [Function],
-                ";
-  }
-
-  &.textbox_validation_success .success__checkmark {
-    display: ",
-                [Function],
-                ";
-    width: 15px;
-    height: 8px;
-    margin-left: ",
-                [Function],
-                ";
-    transform: rotate(-45deg);
-    transform-origin: left;
-    position: absolute;
-    right: 0;
-    top: 30px;
-
-    &:before {
-      content: '';
-      position: absolute;
-      width: 3px;
-      height: 100%;
-      background-color: ",
-                [Function],
-                ";
-    }
-
-    &:after {
-      content: '';
-      position: absolute;
-      width: 100%;
-      height: 3px;
-      background-color: ",
-                [Function],
-                ";
-      bottom: 0;
-    }
-  }
-
-  ",
-                [Function],
-                ";
-
-  .TextBox__error {
-    display: flex;
-    flex-direction: row;
-    padding-bottom: ",
-                [Function],
-                ";
-  }
-  .warning-icon {
-    background: transparent url('/static/images/circle-alert-fill.svg') no-repeat 0 0;
-    background-size: contain;
-    border: none;
-    height: 14px;
-    width: 16px;
-    margin-right: 7px;
-  }
-",
-                ";
-",
-              ],
-            },
-            "displayName": "Styled(TextBox)",
-            "foldedComponentIds": Array [],
-            "render": [Function],
-            "styledComponentId": "sc-gzVnrw",
-            "target": [Function],
-            "toString": [Function],
-            "warnTooManyClasses": [Function],
-            "withComponent": [Function],
-          }
-        }
-        dataLocator="plcc_email"
-        id="emailAddress"
-        name="emailAddress"
-        placeholder="email"
-      />
-    </Styled(Col)>
-  </Styled(Row)>
-  <Styled(Row)
-    fullBleed={true}
-  >
-    <Styled(Col)
-      className="prescreen_code_link_container contact_information_form columnWrapper"
-      colSize={
-        Object {
-          "large": 6,
-          "medium": 4,
-          "small": 6,
-        }
-      }
-      data-locator="Prescreen_code_link"
-      key="Prescreen_code_link"
     >
       <Field
         className="field"
@@ -1865,6 +1691,185 @@ exports[`ContactInformationFormWrapper component should renders correctly 1`] = 
       />
     </Styled(Col)>
   </Styled(Row)>
+  <Styled(Row)
+    fullBleed={true}
+  >
+    <Styled(Col)
+      className="prescreen_code_link_container contact_information_form columnWrapper"
+      colSize={
+        Object {
+          "large": 5,
+          "medium": 4,
+          "small": 6,
+        }
+      }
+      data-locator="Prescreen_code_link"
+      key="Prescreen_code_link"
+    >
+      <Field
+        className="field"
+        component={
+          Object {
+            "$$typeof": Symbol(react.forward_ref),
+            "attrs": Array [],
+            "componentStyle": ComponentStyle {
+              "componentId": "sc-gzVnrw",
+              "isStatic": false,
+              "rules": Array [
+                "
+  ",
+                "
+  position: relative;
+  display: block;
+
+  .TextBox__label {
+    font-size: ",
+                [Function],
+                "px;
+    padding: 0;
+    position: absolute;
+    top: ",
+                [Function],
+                ";
+    ",
+                [Function],
+                "
+  }
+
+  .TextBox__input {
+    margin: 0;
+    outline: 0;
+    font-size: ",
+                [Function],
+                "px;
+    color: ",
+                [Function],
+                ";
+    width: 100%;
+    background-position: left top;
+    background-repeat: no-repeat;
+    background-size: contain;
+    border: 0 solid transparent;
+    border-bottom: 1px solid ",
+                [Function],
+                ";
+    padding-bottom: ",
+                [Function],
+                ";
+    margin-bottom: ",
+                [Function],
+                ";
+    padding-top: ",
+                [Function],
+                ";
+
+    ",
+                [Function],
+                "
+
+    ",
+                [Function],
+                ";
+
+    &:focus + .TextBox__label {
+      font-size: ",
+                [Function],
+                "px;
+      font-weight: ",
+                [Function],
+                ";
+      top: ",
+                [Function],
+                ";
+    }
+  }
+  .success__checkmark {
+    display: none;
+  }
+  &.textbox_validation_success .TextBox__input {
+    border-bottom: 1px solid ",
+                [Function],
+                ";
+  }
+
+  &.textbox_validation_success .success__checkmark {
+    display: ",
+                [Function],
+                ";
+    width: 15px;
+    height: 8px;
+    margin-left: ",
+                [Function],
+                ";
+    transform: rotate(-45deg);
+    transform-origin: left;
+    position: absolute;
+    right: 0;
+    top: 30px;
+
+    &:before {
+      content: '';
+      position: absolute;
+      width: 3px;
+      height: 100%;
+      background-color: ",
+                [Function],
+                ";
+    }
+
+    &:after {
+      content: '';
+      position: absolute;
+      width: 100%;
+      height: 3px;
+      background-color: ",
+                [Function],
+                ";
+      bottom: 0;
+    }
+  }
+
+  ",
+                [Function],
+                ";
+
+  .TextBox__error {
+    display: flex;
+    flex-direction: row;
+    padding-bottom: ",
+                [Function],
+                ";
+  }
+  .warning-icon {
+    background: transparent url('/static/images/circle-alert-fill.svg') no-repeat 0 0;
+    background-size: contain;
+    border: none;
+    height: 14px;
+    width: 16px;
+    margin-right: 7px;
+  }
+",
+                ";
+",
+              ],
+            },
+            "displayName": "Styled(TextBox)",
+            "foldedComponentIds": Array [],
+            "render": [Function],
+            "styledComponentId": "sc-gzVnrw",
+            "target": [Function],
+            "toString": [Function],
+            "warnTooManyClasses": [Function],
+            "withComponent": [Function],
+          }
+        }
+        dataLocator="plcc_email"
+        id="emailAddress"
+        name="emailAddress"
+        placeholder="email"
+      />
+    </Styled(Col)>
+  </Styled(Row)>
   <Styled(BodyCopy)
     className="columnWrapper plcc_min_phone"
     color="text.primary"
@@ -1875,7 +1880,7 @@ exports[`ContactInformationFormWrapper component should renders correctly 1`] = 
     id="plcc_min_phone"
     letterSpacing="normal"
     lineHeight="normal"
-    tabIndex="0"
+    link={null}
     textAlign="left"
   >
     min phone

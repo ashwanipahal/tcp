@@ -5,20 +5,41 @@ exports[`MyProfileTile should render correctly when all props are present 1`] = 
   spacingStyles="margin-bottom-XXXL"
 >
   <Styled(Styled(BodyCopy))
+    accessibilityText=""
+    dataLocator=""
     fontFamily="secondary"
     fontSize="fs16"
     fontWeight="extrabold"
+    margin={null}
+    numberOfLines={null}
     spacingStyles="margin-bottom-MED"
     text="Test"
+    textDecoration={null}
   />
   <Styled(View)
-    spacingStyles="margin-bottom-XXXL"
+    spacingStyles="margin-bottom-XXL"
   />
-  <Styled(WithTheme(CustomButton))
+  <Styled(CustomButton)
+    active={false}
     buttonVariation="variable-width"
+    color=""
+    customStyle={Object {}}
+    customTextStyle={null}
+    disableButton={false}
     fill="BLUE"
+    fullWidth=""
+    iconColor="gray.800"
+    iconName="chevron-down"
+    iconSize="fs12"
+    locator=""
+    navigation={Object {}}
     onPress={[Function]}
+    selected={false}
+    selectedIcon="chevron-up"
+    showIcon={false}
     text="Test CTA"
+    theme={Object {}}
+    url=""
   />
 </Styled(View)>
 `;

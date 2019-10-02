@@ -5,51 +5,81 @@ exports[`Points History Slider View should render Points History Correctly 1`] =
   <Styled(View)>
     <Styled(View)>
       <Styled(BodyCopy)
+        accessibilityText=""
+        dataLocator=""
         fontFamily="secondary"
         fontSize="fs12"
+        margin={null}
+        numberOfLines={null}
         text="08/08/19"
+        textDecoration={null}
       />
     </Styled(View)>
     <Styled(View)>
       <Styled(BodyCopy)
+        accessibilityText=""
+        dataLocator=""
         fontFamily="secondary"
         fontSize="fs12"
+        margin={null}
+        numberOfLines={null}
         text="Credit"
+        textDecoration={null}
       />
     </Styled(View)>
     <Styled(View)>
       <Styled(BodyCopy)
+        accessibilityText=""
         component="p"
+        dataLocator=""
         fontFamily="secondary"
         fontSize="fs12"
+        margin={null}
+        numberOfLines={null}
         text="5"
+        textDecoration={null}
       />
     </Styled(View)>
   </Styled(View)>
   <Styled(View)>
     <Styled(View)>
       <Styled(BodyCopy)
+        accessibilityText=""
+        dataLocator=""
         fontFamily="secondary"
         fontSize="fs12"
         fontWeight="semibold"
+        margin={null}
+        numberOfLines={null}
         text="08/08/19"
+        textDecoration={null}
       />
     </Styled(View)>
     <Styled(View)>
       <Styled(BodyCopy)
+        accessibilityText=""
+        dataLocator=""
         fontFamily="secondary"
         fontSize="fs12"
         fontWeight="semibold"
+        margin={null}
+        numberOfLines={null}
         text="AddBirthDate"
+        textDecoration={null}
       />
     </Styled(View)>
     <Styled(View)>
       <Styled(BodyCopy)
+        accessibilityText=""
+        dataLocator=""
         fontFamily="secondary"
         fontSize="fs12"
         fontWeight="semibold"
+        margin={null}
+        numberOfLines={null}
         text={5}
         textAlign="center"
+        textDecoration={null}
       />
     </Styled(View)>
   </Styled(View)>
@@ -57,6 +87,7 @@ exports[`Points History Slider View should render Points History Correctly 1`] =
     <Styled(Anchor)
       accessibilityLabel=""
       anchorVariation="primary"
+      colorName={null}
       customStyle={Object {}}
       fontSizeVariation="medium"
       locator=""

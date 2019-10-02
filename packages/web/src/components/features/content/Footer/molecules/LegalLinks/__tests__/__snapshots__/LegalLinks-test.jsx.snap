@@ -7,6 +7,7 @@ exports[`Legal Links component renders correctly 1`] = `
   >
     <li
       data-locator="legal_links_0"
+      key="0"
     >
       <Styled(Anchor)
         anchorVariation="primary"
@@ -19,6 +20,7 @@ exports[`Legal Links component renders correctly 1`] = `
     </li>
     <li
       data-locator="legal_links_1"
+      key="1"
     >
       <Styled(Anchor)
         anchorVariation="primary"
@@ -31,6 +33,7 @@ exports[`Legal Links component renders correctly 1`] = `
     </li>
     <li
       data-locator="legal_links_2"
+      key="2"
     >
       <Styled(Anchor)
         anchorVariation="primary"
@@ -43,6 +46,7 @@ exports[`Legal Links component renders correctly 1`] = `
     </li>
     <li
       data-locator="legal_links_3"
+      key="3"
     >
       <Styled(Anchor)
         anchorVariation="primary"
@@ -55,6 +59,7 @@ exports[`Legal Links component renders correctly 1`] = `
     </li>
     <li
       data-locator="legal_links_4"
+      key="4"
     >
       <Styled(Anchor)
         anchorVariation="primary"

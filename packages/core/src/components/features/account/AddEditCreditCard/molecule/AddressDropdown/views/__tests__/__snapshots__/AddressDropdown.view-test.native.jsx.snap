@@ -36,12 +36,17 @@ exports[`CreditCardFields component should renders correctly when isExpirationRe
   >
     <Styled(View)>
       <Styled(BodyCopy)
+        accessibilityText=""
         color="gray.800"
+        dataLocator=""
         fontFamily="secondary"
         fontSize="fs13"
         fontWeight="black"
+        margin={null}
+        numberOfLines={null}
         text={0}
         textAlign="center"
+        textDecoration={null}
       />
     </Styled(View)>
     <Image
@@ -79,6 +84,128 @@ exports[`CreditCardFields component should renders correctly when isExpirationRe
           }
         }
       />
+    </TouchableOpacity>
+  </Component>
+</View>
+`;
+
+exports[`CreditCardFields component should renders correctly when isExpirationRequired is true 2`] = `
+<View
+  style={null}
+>
+  <Styled(TouchableOpacity)
+    addAddress={[MockFunction]}
+    data={
+      Array [
+        Object {
+          "id": 1,
+          "label": "ok",
+          "primary": true,
+        },
+      ]
+    }
+    dropDownIsOpen={true}
+    dropDownStyle={null}
+    input={
+      Object {
+        "onChange": [Function],
+        "value": "",
+      }
+    }
+    itemStyle={Object {}}
+    labels={
+      Object {
+        "common": Object {
+          "lbl_common_tapClose": "Tap to close",
+        },
+      }
+    }
+    onLayout={[Function]}
+    onPress={[Function]}
+    onValueChange={[MockFunction]}
+    options={
+      Array [
+        Object {},
+      ]
+    }
+    selectListTitle="Select Address"
+    selectedValue={null}
+    showButton={true}
+    toggleModal={[MockFunction]}
+    useCustomContent={false}
+    variation="primary"
+  >
+    <Styled(View)>
+      <Styled(BodyCopy)
+        accessibilityText=""
+        color="gray.800"
+        dataLocator=""
+        fontFamily="secondary"
+        fontSize="fs13"
+        fontWeight="black"
+        margin={null}
+        numberOfLines={null}
+        text="ok"
+        textAlign="center"
+        textDecoration={null}
+      />
+    </Styled(View)>
+    <Image
+      source={
+        Object {
+          "testUri": "../../../../core/src/assets/carrot-small-up.png",
+        }
+      }
+    />
+  </Styled(TouchableOpacity)>
+  <Component
+    hardwareAccelerated={false}
+    transparent={true}
+    visible={true}
+  >
+    <TouchableOpacity
+      accessibilityLabel="Tap to close"
+      accessibilityRole="none"
+      accessible={true}
+      activeOpacity={1}
+      onPress={[Function]}
+      style={
+        Object {
+          "height": 1334,
+          "left": 0,
+          "paddingTop": 0,
+        }
+      }
+    >
+      <Styled(View)
+        style={
+          Object {
+            "top": 0,
+            "width": 0,
+          }
+        }
+      >
+        <Styled(FlatList)
+          ItemSeparatorComponent={[Function]}
+          bounces={false}
+          data={
+            Array [
+              Object {
+                "id": 1,
+                "label": "ok",
+                "primary": true,
+              },
+            ]
+          }
+          keyExtractor={[Function]}
+          renderItem={[Function]}
+          style={
+            Object {
+              "height": 0,
+            }
+          }
+        />
+      </Styled(View)>
     </TouchableOpacity>
   </Component>
 </View>

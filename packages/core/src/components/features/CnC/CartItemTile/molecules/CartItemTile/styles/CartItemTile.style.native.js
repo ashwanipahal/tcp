@@ -7,7 +7,10 @@ const MainWrapper = styled.View`
 
 const OuterContainer = styled.View`
   flex-direction: row;
-  padding: 10px;
+  padding: ${props =>
+    props.showOnReviewPage
+      ? props.theme.spacing.APP_LAYOUT_SPACING.XXS
+      : `${props.theme.spacing.APP_LAYOUT_SPACING.XXS} 0`};
   background-color: ${props => props.theme.colorPalette.white};
 `;
 const UnavailableView = styled.View`
@@ -15,7 +18,10 @@ const UnavailableView = styled.View`
   padding: 5px 2px 2px 14px;
   flex-direction: row;
 `;
-const ProductName = styled.View``;
+const ProductName = styled.View`
+  width: ${props => (props.showOnReviewPage ? '66%' : 'auto')};
+  flex-wrap: wrap;
+`;
 const ProductDesc = styled.View`
   flex-direction: row;
   flex-wrap: wrap;
@@ -24,7 +30,7 @@ const ProductDescription = styled.View`
   flex-wrap: wrap;
   flex-direction: column;
   margin-left: 5px;
-  width: 70%;
+  width: 66%;
 `;
 const SoldOutLabel = styled.View`
   height: 18px;
@@ -39,7 +45,10 @@ const SoldOutLabel = styled.View`
   justify-content: center;
 `;
 const ImgWrapper = styled.View`
-  width: 30%;
+  margin-right: ${props =>
+    props.showOnReviewPage ? `0` : props.theme.spacing.APP_LAYOUT_SPACING.XS};
+  margin-left: ${props => (props.showOnReviewPage ? `0` : props.theme.spacing.ELEM_SPACING.XXS)};
+  width: ${props => (props.showOnReviewPage ? `30%` : `auto`)};
   align-items: center;
 `;
 
@@ -48,7 +57,7 @@ const ProductSubDetails = styled.View`
 `;
 
 const ImageStyle = styled.Image`
-  width: 100px;
+  width: ${props => (props.showOnReviewPage ? `100px` : `55px`)};
   height: 100px;
 `;
 
@@ -65,7 +74,8 @@ const ImageGymBrandStyle = styled.Image`
 `;
 
 const ProductSubDetailLabel = styled.View`
-  min-width: 25%;
+  ${props => (props.showOnReviewPage ? `0` : props.theme.spacing.ELEM_SPACING.XXS)};
+  min-width: ${props => (props.showOnReviewPage ? '25%' : 'auto')};
 `;
 const ProductListPrice = styled.View`
   padding-left: 5px;
@@ -73,6 +83,7 @@ const ProductListPrice = styled.View`
 const EditButton = styled.TouchableOpacity`
   align-self: flex-end;
   margin-right: ${props => props.theme.spacing.ELEM_SPACING.XS};
+  margin-bottom: ${props => props.theme.spacing.ELEM_SPACING.XS};
   border-bottom-color: ${props => props.theme.colorPalette.gray[700]};
   border-bottom-width: 1px;
 `;
@@ -81,6 +92,8 @@ const BtnWrapper = styled.View`
   flex: 1;
   flex-direction: row;
   align-items: center;
+  justify-content: center;
+  width: 60%;
   text-align: center;
   margin-left: ${props => props.theme.spacing.ELEM_SPACING.XS};
 `;
@@ -105,8 +118,45 @@ const IconTextDelete = styled.Text`
   font-size: ${props => props.theme.typography.fontSizes.fs12};
 `;
 
+const IconTextMoveToBag = styled.Text`
+  margin-top: ${props => props.theme.spacing.ELEM_SPACING.XXS};
+  margin-left: ${props => props.theme.spacing.ELEM_SPACING.XXS};
+  color: ${props => props.theme.colorPalette.blue[700]};
+  font-weight: ${props => props.theme.typography.fontWeights.extrabold};
+  font-size: ${props => props.theme.typography.fontSizes.fs12};
+  text-align: center;
+  width: 52px;
+`;
+
+const HeartIcon = styled.TouchableOpacity`
+  position: absolute;
+  margin-left: ${props => props.theme.spacing.ELEM_SPACING.XS};
+  margin-top: ${props => props.theme.spacing.ELEM_SPACING.XXS};
+  display: flex;
+  justify-content: flex-end;
+  flex-direction: row;
+  width: 100%;
+  flex: 1;
+`;
+
+const SflIcons = styled.TouchableOpacity`
+  margin-top: ${props => props.theme.spacing.ELEM_SPACING.MED};
+  margin-left: ${props => props.theme.spacing.ELEM_SPACING.MED};
+`;
+
 const IconHeight = '58px';
 const IconWidth = '58px';
+
+const ProductListPriceOnReview = styled.View`
+  position: absolute;
+  right: 0;
+  top: 10px;
+`;
+
+const SizeQtyOnReview = styled.View`
+  flex-direction: row;
+  display: flex;
+`;
 
 export {
   OuterContainer,
@@ -130,4 +180,9 @@ export {
   IconWidth,
   IconTextDelete,
   IconTextEdit,
+  IconTextMoveToBag,
+  HeartIcon,
+  SflIcons,
+  ProductListPriceOnReview,
+  SizeQtyOnReview,
 };

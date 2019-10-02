@@ -41,6 +41,15 @@ const ErrorWrapper = styled.View`
   padding: ${props => props.theme.spacing.ELEM_SPACING.XS};
 `;
 
+const FooterButtonWrapper = styled.View`
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  font-size: ${props => props.theme.typography.fontSizes.fs12};
+  padding-top: ${props => props.theme.spacing.ELEM_SPACING.SM};
+`;
+
 export {
   RecaptchaContainer,
   ErrorWrapper,
@@ -49,4 +58,5 @@ export {
   MessageWrapper,
   MessageTitle,
   MessageTextWrapper,
+  FooterButtonWrapper,
 };

@@ -20,56 +20,8 @@ const renderMobileMarkup = (dataPromo, className) => {
       carouselTheme="dark"
       className={className}
     >
-      {dataPromo.map(promoItem => (
-        <Anchor
-          dataLocator={getLocator('promo_item')}
-          className="header-promo__item"
-          to={promoItem.linkClass.url}
-          target={promoItem.linkClass.target}
-        >
-          <div className={`header-promo-item__icon ${promoItem.linkClass.class}`}>
-            <Image src={getIconPath(promoItem.linkClass.class)} alt={promoItem.linkClass.title} />
-          </div>
-          <div className="header-promo-item__content">
-            {promoItem.textItems[0] && (
-              <BodyCopy
-                className={`styled-text ${promoItem.textItems[0].style}`}
-                fontWeight="black"
-                fontFamily="secondary"
-                fontSize={['fs12', 'fs12', 'fs14']}
-                textAlign="center"
-              >
-                {promoItem.textItems[0].text}
-              </BodyCopy>
-            )}
-            {promoItem.textItems[1] && (
-              <BodyCopy
-                className={`styled-text-line ${promoItem.textItems[1].style}`}
-                fontFamily="secondary"
-                fontSize={['fs12', 'fs12', 'fs14']}
-                textAlign="center"
-              >
-                {promoItem.textItems[1].text}
-              </BodyCopy>
-            )}
-          </div>
-        </Anchor>
-      ))}
-    </Carousel>
-  );
-};
-
-const renderDesktopMarkup = (dataPromo, className) => {
-  return (
-    <Row centered className={className}>
-      {dataPromo.map(promoItem => (
-        <Col
-          colSize={{
-            large: 4,
-            medium: 8,
-            small: 6,
-          }}
-        >
+      {dataPromo &&
+        dataPromo.map(promoItem => (
           <Anchor
             dataLocator={getLocator('promo_item')}
             className="header-promo__item"
@@ -103,8 +55,61 @@ const renderDesktopMarkup = (dataPromo, className) => {
               )}
             </div>
           </Anchor>
-        </Col>
-      ))}
+        ))}
+    </Carousel>
+  );
+};
+
+const renderDesktopMarkup = (dataPromo, className) => {
+  return (
+    <Row centered className={className}>
+      {dataPromo &&
+        dataPromo.map(promoItem => (
+          <Col
+            colSize={{
+              large: 4,
+              medium: 8,
+              small: 6,
+            }}
+          >
+            <Anchor
+              dataLocator={getLocator('promo_item')}
+              className="header-promo__item"
+              to={promoItem.linkClass.url}
+              target={promoItem.linkClass.target}
+            >
+              <div className={`header-promo-item__icon ${promoItem.linkClass.class}`}>
+                <Image
+                  src={getIconPath(promoItem.linkClass.class)}
+                  alt={promoItem.linkClass.title}
+                />
+              </div>
+              <div className="header-promo-item__content">
+                {promoItem.textItems[0] && (
+                  <BodyCopy
+                    className={`styled-text ${promoItem.textItems[0].style}`}
+                    fontWeight="black"
+                    fontFamily="secondary"
+                    fontSize={['fs12', 'fs12', 'fs14']}
+                    textAlign="center"
+                  >
+                    {promoItem.textItems[0].text}
+                  </BodyCopy>
+                )}
+                {promoItem.textItems[1] && (
+                  <BodyCopy
+                    className={`styled-text-line ${promoItem.textItems[1].style}`}
+                    fontFamily="secondary"
+                    fontSize={['fs12', 'fs12', 'fs14']}
+                    textAlign="center"
+                  >
+                    {promoItem.textItems[1].text}
+                  </BodyCopy>
+                )}
+              </div>
+            </Anchor>
+          </Col>
+        ))}
     </Row>
   );
 };

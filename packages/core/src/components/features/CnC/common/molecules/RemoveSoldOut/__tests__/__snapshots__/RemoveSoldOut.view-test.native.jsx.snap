@@ -4,9 +4,14 @@ exports[`RemoveSoldOut Component RemoveSoldOut should render correctly 1`] = `
 <Styled(Text)>
   <Styled(Text)>
     <Styled(BodyCopy)
+      accessibilityText=""
+      dataLocator=""
       fontFamily="secondary"
-      fontSize="fs10"
+      fontSize="fs12"
       fontWeight="regular"
+      margin={null}
+      numberOfLines={null}
+      textDecoration={null}
     />
   </Styled(Text)>
 </Styled(Text)>

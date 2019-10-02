@@ -1,0 +1,50 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`PointsClaimTopSection component should renders correctly 1`] = `
+<Styled(BodyCopy)
+  className=""
+  color="text.primary"
+  component="p"
+  fontFamily="primary"
+  fontSize={12}
+  fontWeight="regular"
+  letterSpacing="normal"
+  lineHeight="normal"
+  link={null}
+  textAlign="left"
+>
+  <Styled(BodyCopy)
+    className="elem-mb-LRG"
+    color="text.primary"
+    component="p"
+    fontFamily="primary"
+    fontSize={12}
+    fontWeight="regular"
+    letterSpacing="normal"
+    lineHeight="normal"
+    link={null}
+    textAlign="left"
+  >
+    <Styled(Anchor)
+      anchorVariation="secondary"
+      asPath="/account/place-rewards/points-history"
+      className="elem-mb-LRG"
+      dataLocator="ponints-claim-back"
+      fontSizeVariation="xlarge"
+      to="/account?id=place-rewards&subSection=points-history"
+    >
+      <span
+        className="left-arrow"
+      >
+         
+      </span>
+      lbl_common_backLink
+    </Styled(Anchor)>
+  </Styled(BodyCopy)>
+  <Styled(FormPageHeading)
+    className="elem-mb-XL"
+    data-locator="historyPointsLbl"
+    heading="lbl_points_claim_heading"
+  />
+</Styled(BodyCopy)>
+`;

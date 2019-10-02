@@ -14,7 +14,7 @@ import { fromJS } from 'immutable';
 import createValidateMethod from '../../../../../../../utils/formValidation/createValidateMethod';
 import getStandardConfig from '../../../../../../../utils/formValidation/validatorStandardConfig';
 import constants from '../../../container/AddEditCreditCard.constants';
-import { CreditCardFields } from '../../../molecule/CreditCardFields/views/CreditCardFields.view.native';
+import CreditCardFields from '../../../../../../common/molecules/CreditCardFields';
 import AddressFields from '../../../../../../common/molecules/AddressFields';
 import {
   AddressWrapper,
@@ -169,6 +169,15 @@ export class CreditCardForm extends React.PureComponent<Props, State> {
       : getLabelValue(labels, 'lbl_payment_addCard', 'paymentGC');
   };
 
+  getCreditFieldLabels = () => {
+    const { labels } = this.props;
+    return {
+      creditCardNumber: getLabelValue(labels, 'lbl_payment_cardNumber', 'paymentGC'),
+      expMonth: getLabelValue(labels, 'lbl_payment_expMonth', 'paymentGC'),
+      expYear: getLabelValue(labels, 'lbl_payment_expYear', 'paymentGC'),
+    };
+  };
+
   render() {
     const {
       labels,
@@ -203,6 +212,7 @@ export class CreditCardForm extends React.PureComponent<Props, State> {
       this.updateExpiryDate(expMonth, expYear);
       dispatch(change(constants.FORM_NAME, 'creditCardId', selectedCard.creditCardId));
     }
+
     return (
       <ScrollView
         showsVerticalScrollIndicator={false}
@@ -216,6 +226,8 @@ export class CreditCardForm extends React.PureComponent<Props, State> {
               updateExpiryDate={this.updateExpiryDate}
               dto={dto}
               selectedCard={selectedCard}
+              creditFieldLabels={this.getCreditFieldLabels()}
+              showCvv={false}
             />
           )}
           <AddressWrapper>

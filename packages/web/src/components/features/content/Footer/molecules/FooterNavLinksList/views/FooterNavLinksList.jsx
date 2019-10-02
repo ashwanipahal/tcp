@@ -3,7 +3,7 @@ import PropTypes from 'prop-types';
 import withStyles from '@tcp/core/src/components/common/hoc/withStyles';
 import Anchor from '@tcp/core/src/components/common/atoms/Anchor';
 import Button from '@tcp/core/src/components/common/atoms/Button';
-import { routerPush, scrollPage } from '@tcp/core/src/utils';
+import { routerPush, scrollPage, configureInternalNavigationFromCMSUrl } from '@tcp/core/src/utils';
 import styles from '../FooterNavLinksList.style';
 
 /**
@@ -94,6 +94,13 @@ const FooterNavLinksList = ({
       false;
     const onClick = linkAction ? getOnClickAction(linkAction, dispatchFn) : null;
 
+    const { url: ctaUrl, target, title, actualUrl } = linkItems;
+
+    let to = actualUrl;
+    if (!actualUrl) {
+      to = configureInternalNavigationFromCMSUrl(ctaUrl);
+    }
+
     return !hideLogoutMyActLink ? (
       <li>
         {linkAction ? (
@@ -109,13 +116,13 @@ const FooterNavLinksList = ({
         ) : (
           <Anchor
             className={className}
-            noLink
-            to={linkItems.url}
             anchorVariation="primary"
             fontSizeVariation="large"
             dataLocator={`col_${colNum}_link_${index}`}
-            target={linkItems.target}
-            title={linkItems.title}
+            to={to}
+            asPath={ctaUrl}
+            target={target}
+            title={title}
           >
             {linkItems.text}
           </Anchor>

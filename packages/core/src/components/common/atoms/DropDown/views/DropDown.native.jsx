@@ -13,6 +13,8 @@ import {
   Separator,
   FlatList,
   StyledLabel,
+  SelectedLabelView,
+  HeaderItemContainer,
 } from '../DropDown.style.native';
 
 const downIcon = require('../../../../../assets/carrot-small-down.png');
@@ -119,7 +121,7 @@ class DropDown extends React.PureComponent<Props> {
 
       // calculate the list height
       const { data, itemStyle } = this.props;
-      const calculateHeight = data.length * itemStyle.height;
+      const calculateHeight = data && data.length * itemStyle.height;
 
       // checking bottom space
       const bottomSpace = windowHeight - this.rowFrame.y - this.rowFrame.height;
@@ -141,6 +143,7 @@ class DropDown extends React.PureComponent<Props> {
    * Set drop down position
    */
   setDropDownPosition = (topMargin, dH, showInBottom, calculateHeight, windowHeight) => {
+    const { customDropDownHeight } = this.props;
     this.setState({ top: topMargin.top });
     let listMargin = 0;
     let listHeight = 0;
@@ -150,6 +153,9 @@ class DropDown extends React.PureComponent<Props> {
         listHeight = dH - 100;
       } else {
         listHeight = calculateHeight - 100;
+      }
+      if (customDropDownHeight) {
+        listHeight = customDropDownHeight;
       }
     } else if (calculateHeight > windowHeight) {
       listMargin = 100;
@@ -172,14 +178,18 @@ class DropDown extends React.PureComponent<Props> {
     }
     return (
       <DropDownItemContainer onPress={() => this.onDropDownItemClick(item)} style={itemStyle}>
-        <BodyCopy
-          mobileFontFamily="secondary"
-          fontSize="fs13"
-          textAlign={variation === 'primary' ? 'center' : ''}
-          color={itemStyle.color}
-          fontWeight="semibold"
-          text={label}
-        />
+        {typeof label !== 'function' ? (
+          <BodyCopy
+            mobileFontFamily="secondary"
+            fontSize="fs13"
+            textAlign={variation === 'primary' ? 'center' : ''}
+            color={itemStyle.color}
+            fontWeight="semibold"
+            text={label}
+          />
+        ) : (
+          <View>{label()}</View>
+        )}
       </DropDownItemContainer>
     );
   };
@@ -236,16 +246,22 @@ class DropDown extends React.PureComponent<Props> {
           }}
           pointerEvents={disabled ? 'none' : 'auto'}
         >
-          <HeaderContainer>
-            <BodyCopy
-              mobileFontFamily="secondary"
-              fontSize="fs13"
-              textAlign="center"
-              color="gray.800"
-              fontWeight="semibold"
-              text={selectedLabelState}
-            />
-          </HeaderContainer>
+          {typeof selectedLabelState !== 'function' ? (
+            <HeaderContainer>
+              <BodyCopy
+                mobileFontFamily="secondary"
+                fontSize="fs13"
+                textAlign="center"
+                color="gray.800"
+                fontWeight="semibold"
+                text={selectedLabelState}
+              />
+            </HeaderContainer>
+          ) : (
+            <HeaderItemContainer>
+              <SelectedLabelView>{selectedLabelState(true)}</SelectedLabelView>
+            </HeaderItemContainer>
+          )}
           <Image source={dropDownIsOpen ? upIcon : downIcon} />
         </Row>
         <Modal visible={dropDownIsOpen} transparent>

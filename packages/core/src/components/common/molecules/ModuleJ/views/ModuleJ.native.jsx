@@ -5,9 +5,9 @@ import PropTypes from 'prop-types';
 import { LAZYLOAD_HOST_NAME } from '@tcp/core/src/utils';
 
 import { Button, Anchor, DamImage } from '../../../atoms';
-import { getLocator } from '../../../../../utils';
+import { getLocator, validateColor } from '../../../../../utils/index.native';
 import { Carousel } from '../..';
-import config from '../config';
+import config from '../moduleJ.config';
 
 import {
   Container,
@@ -18,6 +18,7 @@ import {
   StyledImage,
   PromoContainer,
   HeaderContainer,
+  SecondHeaderContainer,
   ImageContainer,
   MessageContainer,
   Border,
@@ -26,7 +27,6 @@ import {
 } from '../styles/ModuleJ.style.native';
 
 import ProductTabList from '../../../organisms/ProductTabList';
-import categoryListMock from './categoryListMock';
 import PromoBanner from '../../PromoBanner';
 import LinkText from '../../LinkText';
 
@@ -36,19 +36,21 @@ const PRODUCT_IMAGE_GUTTER = 16;
 const PRODUCT_IMAGE_PER_SLIDE = 4;
 const MODULE_HEIGHT = 142;
 const MODULE_WIDTH = (PRODUCT_IMAGE_WIDTH + PRODUCT_IMAGE_GUTTER) * PRODUCT_IMAGE_PER_SLIDE;
-const { IMG_DATA } = config;
-class ModuleJ extends React.PureComponent<Props, State> {
+const { IMG_DATA, TOTAL_IMAGES } = config;
+class ModuleJ extends React.PureComponent {
   constructor(props) {
     super(props);
 
     this.state = {
       selectedCategoryId: null,
+      selectedTabItem: {},
     };
   }
 
-  onProductTabChange = catId => {
+  onProductTabChange = (catId, tabItem) => {
     this.setState({
       selectedCategoryId: catId,
+      selectedTabItem: tabItem,
     });
   };
 
@@ -56,27 +58,38 @@ class ModuleJ extends React.PureComponent<Props, State> {
     const { item } = slideProps;
     const { navigation, productTabList } = this.props;
     const { selectedCategoryId } = this.state;
-    const selectedProductList = productTabList[selectedCategoryId];
+    let selectedProductList = productTabList[selectedCategoryId];
+    selectedProductList = selectedProductList ? selectedProductList.slice(0, TOTAL_IMAGES) : [];
 
     return (
       <ImageSlideWrapper>
         {item.map(productItem => {
           const {
-            seo_token: seoToken,
-            uniqueId,
             imageUrl: [imageUrl],
+            uniqueId,
+            product_name: productName,
             productItemIndex,
           } = productItem;
 
-          const pdpUrl = `/p/${seoToken || uniqueId}`;
           return (
-            <ImageItemWrapper isFullMargin={productItemIndex === selectedProductList.length - 1}>
+            <ImageItemWrapper
+              key={uniqueId}
+              isFullMargin={productItemIndex === selectedProductList.length - 1}
+            >
               <Anchor
-                url={pdpUrl}
+                onPress={() =>
+                  navigation.navigate('ProductDetail', {
+                    title: productName,
+                    pdpUrl: uniqueId,
+                    selectedColorProductId: uniqueId,
+                    reset: true,
+                  })
+                }
                 navigation={navigation}
-                locator={`${getLocator('moduleJ_product_image')}${productItemIndex}`}
+                testID={`${getLocator('moduleJ_product_image')}${productItemIndex}`}
               >
                 <StyledImage
+                  alt={productName}
                   host={LAZYLOAD_HOST_NAME.HOME}
                   url={imageUrl}
                   height={PRODUCT_IMAGE_HEIGHT}
@@ -92,7 +105,10 @@ class ModuleJ extends React.PureComponent<Props, State> {
   };
 
   render() {
-    const { selectedCategoryId } = this.state;
+    const {
+      selectedCategoryId,
+      selectedTabItem: { singleCTAButton: selectedSingleCTAButton } = {},
+    } = this.state;
     const {
       productTabList,
       navigation,
@@ -100,9 +116,12 @@ class ModuleJ extends React.PureComponent<Props, State> {
       mediaLinkedList,
       headerText,
       promoBanner,
+      divTabs,
+      bgColor,
     } = this.props;
 
-    const selectedProductList = productTabList[selectedCategoryId] || [];
+    let selectedProductList = productTabList[selectedCategoryId] || [];
+    selectedProductList = selectedProductList.slice(0, TOTAL_IMAGES);
 
     const selectedProductCarouselList = selectedProductList.reduce(
       (list, item, index) => {
@@ -120,28 +139,48 @@ class ModuleJ extends React.PureComponent<Props, State> {
 
     return (
       <Container>
-        <MessageContainer layout={layout}>
+        <MessageContainer layout={layout} bgColor={validateColor(bgColor)}>
           <Wrapper>
             <Border layout={layout} />
             <HeaderContainer layout={layout}>
-              <LinkText
-                navigation={navigation}
-                headerText={headerText}
-                renderComponentInNewLine
-                useStyle
-              />
+              {[headerText[0]] && (
+                <LinkText
+                  navigation={navigation}
+                  headerText={[headerText[0]]}
+                  testID={getLocator('moduleJ_header_text_0')}
+                  useStyle
+                />
+              )}
             </HeaderContainer>
+            <SecondHeaderContainer>
+              {[headerText[1]] && (
+                <LinkText
+                  navigation={navigation}
+                  headerText={[headerText[1]]}
+                  testID={getLocator('moduleJ_header_text_1')}
+                  renderComponentInNewLine
+                  useStyle
+                />
+              )}
+            </SecondHeaderContainer>
           </Wrapper>
 
-          <PromoContainer layout={layout}>
-            <PromoBanner promoBanner={promoBanner} navigation={navigation} />
-          </PromoContainer>
+          {promoBanner && (
+            <PromoContainer layout={layout}>
+              <PromoBanner
+                testID={getLocator('moduleJ_promobanner_text')}
+                promoBanner={promoBanner}
+                navigation={navigation}
+              />
+            </PromoContainer>
+          )}
         </MessageContainer>
         <ProductTabListContainer>
           <ProductTabList
             onProductTabChange={this.onProductTabChange}
-            categoryList={categoryListMock}
+            tabItems={divTabs}
             navigation={navigation}
+            testID={getLocator('moduleJ_cta_link')}
           />
         </ProductTabListContainer>
         <ImageContainer layout={layout}>
@@ -150,6 +189,7 @@ class ModuleJ extends React.PureComponent<Props, State> {
               url={mediaLinkedList[1] && mediaLinkedList[1].image.url}
               height="300px"
               width="100%"
+              testID={`${getLocator('moduleJ_promobanner_img')}${1}`}
               alt={mediaLinkedList[1] && mediaLinkedList[1].image.alt}
               imgConfig={IMG_DATA.promoImgConfig[0]}
             />
@@ -170,28 +210,43 @@ class ModuleJ extends React.PureComponent<Props, State> {
             />
           ) : null}
         </ImageSlidesWrapper>
-        <ButtonContainer>
-          {/* TODO: The URL and text will be updated once we have CMS integration */}
-          <Button
-            buttonVariation="variable-width"
-            width="225px"
-            text="SHOP ALL"
-            navigation={navigation}
-          />
-        </ButtonContainer>
+
+        {selectedSingleCTAButton ? (
+          <ButtonContainer>
+            <Button
+              buttonVariation="variable-width"
+              width="225px"
+              text={selectedSingleCTAButton.text}
+              url={selectedSingleCTAButton.url}
+              navigation={navigation}
+              testID={getLocator('moduleJ_cta_btn')}
+            />
+          </ButtonContainer>
+        ) : null}
       </Container>
     );
   }
 }
 
 ModuleJ.defaultProps = {
-  productTabList: {},
-  navigation: null,
-  mediaLinkedList: [],
-  layout: 'alt',
+  bgColor: '',
+  promoBanner: [],
 };
 
 ModuleJ.propTypes = {
+  bgColor: PropTypes.string,
+  headerText: PropTypes.arrayOf(
+    PropTypes.shape({
+      link: PropTypes.object,
+      textItems: PropTypes.array,
+    })
+  ).isRequired,
+  promoBanner: PropTypes.arrayOf(
+    PropTypes.shape({
+      link: PropTypes.object,
+      textItems: PropTypes.array,
+    })
+  ),
   productTabList: PropTypes.oneOfType(
     PropTypes.objectOf(
       PropTypes.arrayOf(
@@ -202,15 +257,22 @@ ModuleJ.propTypes = {
         })
       )
     )
-  ),
-  navigation: PropTypes.shape({}),
-  layout: PropTypes.string,
+  ).isRequired,
+  navigation: PropTypes.shape({}).isRequired,
+  layout: PropTypes.string.isRequired,
   mediaLinkedList: PropTypes.arrayOf(
     PropTypes.shape({
       image: PropTypes.object,
       link: PropTypes.object,
     })
-  ),
+  ).isRequired,
+  divTabs: PropTypes.arrayOf(
+    PropTypes.shape({
+      text: PropTypes.object,
+      category: PropTypes.object,
+      singleCTAButton: PropTypes.object,
+    })
+  ).isRequired,
 };
 
 export default ModuleJ;

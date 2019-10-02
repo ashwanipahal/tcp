@@ -69,6 +69,7 @@ exports[`L3 Panel component renders correctly 1`] = `
               fontWeight="regular"
               letterSpacing="normal"
               lineHeight="lh107"
+              link={null}
               textAlign="left"
             >
               <span
@@ -99,6 +100,7 @@ exports[`L3 Panel component renders correctly 1`] = `
               fontWeight="regular"
               letterSpacing="normal"
               lineHeight="lh107"
+              link={null}
               textAlign="left"
             >
               <span

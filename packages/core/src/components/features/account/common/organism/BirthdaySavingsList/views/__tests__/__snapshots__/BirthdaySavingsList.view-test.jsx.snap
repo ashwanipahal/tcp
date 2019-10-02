@@ -14,7 +14,7 @@ exports[`BirthdaySavingsList component should renders correctly when childrenBir
     }
   />
   <Styled(Row)
-    className="elem-mb-XS"
+    className="elem-mb-XS birthdayList"
     fullBleed={true}
   >
     <Styled(Col)
@@ -36,6 +36,8 @@ exports[`BirthdaySavingsList component should renders correctly when childrenBir
       key="card_0"
     >
       <Styled(EmptyBirthdayCard)
+        active={-1}
+        id={0}
         labels={
           Object {
             "lbl_profile_birthday_saving_info": "Add up to 4 kids’ birthdays to your account and receive special savings during their birthday month!",
@@ -43,6 +45,8 @@ exports[`BirthdaySavingsList component should renders correctly when childrenBir
             "lbl_profile_personal_info_back": "back",
           }
         }
+        showAddModal={[Function]}
+        toggleSelectedChild={[Function]}
         view="edit"
       />
     </Styled(Col)>
@@ -65,6 +69,8 @@ exports[`BirthdaySavingsList component should renders correctly when childrenBir
       key="card_1"
     >
       <Styled(EmptyBirthdayCard)
+        active={-1}
+        id={1}
         labels={
           Object {
             "lbl_profile_birthday_saving_info": "Add up to 4 kids’ birthdays to your account and receive special savings during their birthday month!",
@@ -72,6 +78,8 @@ exports[`BirthdaySavingsList component should renders correctly when childrenBir
             "lbl_profile_personal_info_back": "back",
           }
         }
+        showAddModal={[Function]}
+        toggleSelectedChild={[Function]}
         view="edit"
       />
     </Styled(Col)>
@@ -94,6 +102,8 @@ exports[`BirthdaySavingsList component should renders correctly when childrenBir
       key="card_2"
     >
       <Styled(EmptyBirthdayCard)
+        active={-1}
+        id={2}
         labels={
           Object {
             "lbl_profile_birthday_saving_info": "Add up to 4 kids’ birthdays to your account and receive special savings during their birthday month!",
@@ -101,6 +111,8 @@ exports[`BirthdaySavingsList component should renders correctly when childrenBir
             "lbl_profile_personal_info_back": "back",
           }
         }
+        showAddModal={[Function]}
+        toggleSelectedChild={[Function]}
         view="edit"
       />
     </Styled(Col)>
@@ -123,6 +135,8 @@ exports[`BirthdaySavingsList component should renders correctly when childrenBir
       key="card_3"
     >
       <Styled(EmptyBirthdayCard)
+        active={-1}
+        id={3}
         labels={
           Object {
             "lbl_profile_birthday_saving_info": "Add up to 4 kids’ birthdays to your account and receive special savings during their birthday month!",
@@ -130,6 +144,8 @@ exports[`BirthdaySavingsList component should renders correctly when childrenBir
             "lbl_profile_personal_info_back": "back",
           }
         }
+        showAddModal={[Function]}
+        toggleSelectedChild={[Function]}
         view="edit"
       />
     </Styled(Col)>
@@ -151,7 +167,7 @@ exports[`BirthdaySavingsList component should renders correctly when childrenBir
     }
   />
   <Styled(Row)
-    className="elem-mb-XS"
+    className="elem-mb-XS birthdayList"
     fullBleed={true}
   >
     <Styled(Col)
@@ -197,6 +213,8 @@ exports[`BirthdaySavingsList component should renders correctly when childrenBir
       key="card_1"
     >
       <Styled(EmptyBirthdayCard)
+        active={-1}
+        id={1}
         labels={
           Object {
             "lbl_profile_birthday_saving_info": "Add up to 4 kids’ birthdays to your account and receive special savings during their birthday month!",
@@ -204,6 +222,8 @@ exports[`BirthdaySavingsList component should renders correctly when childrenBir
             "lbl_profile_personal_info_back": "back",
           }
         }
+        showAddModal={[Function]}
+        toggleSelectedChild={[Function]}
         view="edit"
       />
     </Styled(Col)>
@@ -226,6 +246,8 @@ exports[`BirthdaySavingsList component should renders correctly when childrenBir
       key="card_2"
     >
       <Styled(EmptyBirthdayCard)
+        active={-1}
+        id={2}
         labels={
           Object {
             "lbl_profile_birthday_saving_info": "Add up to 4 kids’ birthdays to your account and receive special savings during their birthday month!",
@@ -233,6 +255,8 @@ exports[`BirthdaySavingsList component should renders correctly when childrenBir
             "lbl_profile_personal_info_back": "back",
           }
         }
+        showAddModal={[Function]}
+        toggleSelectedChild={[Function]}
         view="edit"
       />
     </Styled(Col)>
@@ -255,6 +279,8 @@ exports[`BirthdaySavingsList component should renders correctly when childrenBir
       key="card_3"
     >
       <Styled(EmptyBirthdayCard)
+        active={-1}
+        id={3}
         labels={
           Object {
             "lbl_profile_birthday_saving_info": "Add up to 4 kids’ birthdays to your account and receive special savings during their birthday month!",
@@ -262,6 +288,8 @@ exports[`BirthdaySavingsList component should renders correctly when childrenBir
             "lbl_profile_personal_info_back": "back",
           }
         }
+        showAddModal={[Function]}
+        toggleSelectedChild={[Function]}
         view="edit"
       />
     </Styled(Col)>
@@ -280,6 +308,7 @@ exports[`InfoMessage component should render correctly 1`] = `
   fontWeight="regular"
   letterSpacing="normal"
   lineHeight="normal"
+  link={null}
   textAlign="left"
 >
   Add up to 4 kids’ birthdays to your account and receive special savings during their birthday month!

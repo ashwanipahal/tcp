@@ -53,7 +53,7 @@ export const StyledAnchor = styled.View`
   top: ${props => props.theme.spacing.ELEM_SPACING.XXL};
   position: absolute;
   width: 70px;
-  left: -${props => props.theme.spacing.ELEM_SPACING.SM};
+  left: -${props => props.theme.spacing.ELEM_SPACING.LRG};
 `;
 
 export const ProgressStepLabels = styled.View`

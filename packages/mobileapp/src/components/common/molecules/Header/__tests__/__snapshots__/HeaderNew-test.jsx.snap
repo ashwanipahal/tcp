@@ -1,7 +1,66 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
 exports[`HeaderNew Component HeaderNew should render correctly 1`] = `
-<ContextConsumer>
-  <Component />
-</ContextConsumer>
+<Styled(SafeAreaView)>
+  <Styled(View)
+    data-locator="global_headerpanel"
+  >
+    <Styled(View)>
+      <TouchableOpacity
+        accessibilityLabel="back button"
+        accessibilityRole="button"
+        accessible={true}
+        activeOpacity={0.2}
+        onPress={[Function]}
+      >
+        <Styled(CustomIcon)
+          color="gray.600"
+          dataLocator=""
+          iconFontName="FontAwesome"
+          isButton={false}
+          isDisabled={false}
+          margin={null}
+          name="chevron-left"
+          onPress={[Function]}
+          size="fs20"
+        />
+      </TouchableOpacity>
+    </Styled(View)>
+    <Styled(View)>
+      <Styled(Text)
+        accessibilityLabel=""
+        accessibilityRole="text"
+        numberOfLines={1}
+      />
+    </Styled(View)>
+    <Styled(View)>
+      <Styled(TouchableOpacity)
+        accessibilityRole="button"
+        onPress={[Function]}
+      >
+        <Styled(Image)
+          data-locator="global_headerpanelbagicon"
+          source={
+            Object {
+              "testUri": "../../../src/assets/images/empty-bag.png",
+            }
+          }
+        />
+        <Styled(View)>
+          <Styled(BodyCopy)
+            accessibilityText="Mini bag with count"
+            color="white"
+            data-locator="obal_headerpanelbagicon"
+            dataLocator=""
+            fontSize="fs10"
+            margin={null}
+            numberOfLines={null}
+            text={0}
+            textDecoration={null}
+          />
+        </Styled(View)>
+      </Styled(TouchableOpacity)>
+    </Styled(View)>
+  </Styled(View)>
+</Styled(SafeAreaView)>
 `;

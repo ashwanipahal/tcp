@@ -11,6 +11,9 @@ const styles = css`
     font-size: ${props => props.theme.fonts.fontSize.body.bodytext.copy1}px;
     text-align: right;
     color: ${props => props.theme.colorPalette.gray[800]};
+    @media ${props => props.theme.mediaQuery.smallOnly} {
+      text-align: center;
+    }
   }
   .footer-buttons {
     flex-direction: column-reverse;
@@ -62,6 +65,13 @@ const styles = css`
       }
       @media ${props => props.theme.mediaQuery.large} {
         width: 210px;
+      }
+    }
+    .footer-venmo-button {
+      display: none;
+      @media ${props => props.theme.mediaQuery.smallOnly} {
+        display: block;
+        width: 100%;
       }
     }
   }

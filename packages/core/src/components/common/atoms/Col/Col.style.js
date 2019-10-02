@@ -119,7 +119,8 @@ const StyledCol = css`
           width: ${getColumnWidth(props.colSize[key], key, props.theme.gridDimensions)}%;
         ${key !== 'small' ? `}` : ''}
         ${key !== 'small' ? `@media ${props.theme.mediaQuery[`${key}Only`]} {` : ''}
-        ${props.hideCol && props.hideCol[key] ? 'display: none' : ''};
+          ${props.hideCol && props.hideCol[key] ? 'display: none' : ''};
+        ${key !== 'small' ? `}` : ''}
       `
     )}
   ${props => (props.inheritedStyles ? props.inheritedStyles : '')};

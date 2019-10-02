@@ -11,6 +11,7 @@ exports[`AddEditPersonalInformation.view component should renders correctly 1`] 
     fontWeight="regular"
     letterSpacing="normal"
     lineHeight="normal"
+    link={null}
     textAlign="left"
   >
     <Styled(Anchor)
@@ -52,6 +53,7 @@ exports[`AddEditPersonalInformation.view component should renders correctly 1`] 
     }
     onSubmit={[Function]}
     persistentSubmitErrors={false}
+    personalInfoErrorMessage=""
     pure={true}
     shouldAsyncValidate={[Function]}
     shouldError={[Function]}

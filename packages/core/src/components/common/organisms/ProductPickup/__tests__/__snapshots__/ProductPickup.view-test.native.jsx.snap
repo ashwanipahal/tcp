@@ -1,0 +1,123 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`ProductPickupVanilla should render correctly 1`] = `
+<Styled(View)
+  margins="40px 0 0 0"
+>
+  <Styled(View)>
+    <Styled(CustomIcon)
+      color="gray.900"
+      dataLocator="pdp_fast_shipping_icon"
+      iconFontName="Icomoon"
+      isButton={false}
+      isDisabled={false}
+      margin={null}
+      name="fast-shipping"
+      onPress={[Function]}
+      size="fs25"
+    />
+    <Styled(View)>
+      <Styled(BodyCopy)
+        accessibilityText=""
+        color="gray.900"
+        dataLocator="pdp_free_shipping_label"
+        fontFamily="secondary"
+        fontSize="fs16"
+        fontWeight="semibold"
+        margin={null}
+        numberOfLines={null}
+        text="FREE Shipping Every Day!"
+        textDecoration={null}
+      />
+      <Styled(BodyCopy)
+        accessibilityText=""
+        color="gray.900"
+        dataLocator="pdp_free_shipping_label"
+        fontFamily="secondary"
+        fontSize="fs12"
+        fontWeight="regular"
+        margin={null}
+        numberOfLines={null}
+        text="No Minimum Purchase Required."
+        textDecoration={null}
+      />
+    </Styled(View)>
+  </Styled(View)>
+  <Styled(LineComp)
+    borderColor="gray.1600"
+    borderWidth={0.65}
+    marginBottom={0}
+    marginTop={16}
+  />
+  <Styled(View)>
+    <Styled(CustomIcon)
+      color="gray.900"
+      dataLocator="pdp_store_marker_icon"
+      iconFontName="Icomoon"
+      isButton={false}
+      isDisabled={false}
+      margin={null}
+      name="marker-icon"
+      onPress={[Function]}
+      size="fs24"
+    />
+    <Styled(View)
+      margins="0 0 0 20px"
+    >
+      <Styled(View)>
+        <Styled(BodyCopy)
+          accessibilityText=""
+          color="gray.900"
+          dataLocator="pdp_store_name_value"
+          fontFamily="secondary"
+          fontSize="fs16"
+          fontWeight="semibold"
+          margin="0 12px 0 0"
+          numberOfLines={null}
+          text=""
+          textDecoration={null}
+        />
+      </Styled(View)>
+      <Styled(BodyCopy)
+        accessibilityText=""
+        color="red.500"
+        dataLocator="pdp_pick_up_error_info"
+        fontFamily="secondary"
+        fontSize="fs10"
+        fontWeight="black"
+        margin={null}
+        numberOfLines={null}
+        text="undefined UNAVAILABLE IN STORES"
+        textDecoration={null}
+      />
+    </Styled(View)>
+  </Styled(View)>
+  <Styled(CustomButton)
+    active={false}
+    buttonVariation="variable-width"
+    color="white"
+    customStyle={Object {}}
+    customTextStyle={null}
+    disableButton={false}
+    disabled={false}
+    fill="BLACK"
+    fontFamily="secondary"
+    fontSize="fs12"
+    fontWeight="extrabold"
+    fullWidth=""
+    iconColor="gray.800"
+    iconName="chevron-down"
+    iconSize="fs12"
+    locator="pdp_pick_up_in_store_btn"
+    margin="12px 12px 0 12px"
+    navigation={Object {}}
+    onPress={[Function]}
+    selected={false}
+    selectedIcon="chevron-up"
+    showIcon={false}
+    text="FIND A STORE"
+    theme={Object {}}
+    url=""
+  />
+</Styled(View)>
+`;

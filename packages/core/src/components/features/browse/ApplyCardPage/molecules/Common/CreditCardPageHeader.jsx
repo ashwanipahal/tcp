@@ -4,6 +4,7 @@ import PropTypes from 'prop-types';
 import Router from 'next/router';
 import { Anchor, BodyCopy, Col, Row } from '../../../../../common/atoms';
 import CreditCardPageHeaderWrapper from './styles/CreditCardPageHeader.style';
+import { getLabelValue } from '../../../../../../utils';
 
 const CreditCardPageHeader = ({ labels, isPLCCModalFlow }) => {
   return !isPLCCModalFlow ? (
@@ -11,12 +12,13 @@ const CreditCardPageHeader = ({ labels, isPLCCModalFlow }) => {
       <Row fullBleed>
         <Col
           className="back_button_container"
-          key={labels.plcc_form_back_button}
+          key={getLabelValue(labels, 'lbl_PLCCForm_backButton')}
           colSize={{ large: 12, medium: 8, small: 6 }}
         >
           <Anchor data-locator="plcc_back_btn" onClick={() => Router.back()}>
+            <span className="left-arrow"> </span>
             <BodyCopy component="span" className="back_button">
-              {labels.plcc_form_back_button}
+              {getLabelValue(labels, 'lbl_PLCCForm_backButton')}
             </BodyCopy>
           </Anchor>
         </Col>
@@ -24,19 +26,17 @@ const CreditCardPageHeader = ({ labels, isPLCCModalFlow }) => {
       <Row fullBleed>
         <Col
           className="apply_Card_Header_Text"
-          key={labels.plcc_form_rewardsCardHeading}
-          aria-label={labels.plcc_form_rewardsCardHeading}
+          key={getLabelValue(labels, 'lbl_PLCCForm_rewardsCardHeading')}
+          aria-label={getLabelValue(labels, 'lbl_PLCCForm_rewardsCardHeading')}
           colSize={{ large: 12, medium: 8, small: 6 }}
         >
           <BodyCopy
             component="h2"
             fontWeight="extrabold"
             className="credit_card_heading"
-            aria-label={labels.plcc_form_rewardsCardHeading}
-            tabIndex="0"
-            data-locator={labels.plcc_form_rewardsCardHeading}
+            data-locator={getLabelValue(labels, 'lbl_PLCCForm_rewardsCardHeading')}
           >
-            {labels.plcc_form_rewardsCardHeading}
+            {getLabelValue(labels, 'lbl_PLCCForm_rewardsCardHeading')}
           </BodyCopy>
         </Col>
       </Row>

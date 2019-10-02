@@ -114,7 +114,8 @@ export default css`
   }
   @media ${props => props.theme.mediaQuery.large} {
     display: none;
-    top: 67px;
+    top: 66px;
+    border-top: 1px solid ${props => props.theme.colors.PRIMARY.LIGHTGRAY};
     box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.25);
 
     .s-display-none {

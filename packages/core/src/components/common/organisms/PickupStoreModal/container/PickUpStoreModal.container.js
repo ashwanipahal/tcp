@@ -1,19 +1,40 @@
 import { connect } from 'react-redux';
+import {
+  PRODUCT_ADD_TO_BAG,
+  PRODUCT_SKU_SELECTION_FORM,
+} from '@tcp/core/src/constants/reducer.constants';
 import PickUpStoreModalView from '../views/PickUpStoreModal.view';
 import * as PickupSelectors from './PickUpStoreModal.selectors';
+import * as sessionSelectors from '../../../../../reduxStore/selectors/session.selectors';
 import { maxAllowedStoresInCart, distancesMap } from '../PickUpStoreModal.config';
 import { PICKUP_HEADING } from '../PickUpStoreModal.constants';
 import { isCanada } from '../../../../../utils';
-import { closePickupModal, getBopisStoresActn } from './PickUpStoreModal.actions';
-import errorBoundary from '../../../hoc/withErrorBoundary';
+import {
+  closePickupModal,
+  getBopisStoresActn,
+  setStoreSearchError,
+  getUserCartStores,
+} from './PickUpStoreModal.actions';
+import { addItemToCartBopis } from '../../../../features/CnC/AddedToBag/container/AddedToBag.actions';
+import { getCurrentCurrency } from '../../../../features/browse/ProductDetail/container/ProductDetail.selectors';
+import { getAddedToBagError } from '../../../../features/CnC/AddedToBag/container/AddedToBag.selectors';
 
 export const mapDispatchToProps = dispatch => {
   return {
     closePickupModal: payload => {
       dispatch(closePickupModal(payload));
     },
-    onSearchAreaStoresSubmit: (skuId, quantity, distance, locationPromise, variantId) => {
-      dispatch(getBopisStoresActn({ skuId, quantity, distance, locationPromise, variantId }));
+    onSearchAreaStoresSubmit: payload => {
+      dispatch(getBopisStoresActn(payload));
+    },
+    onClearSearchFormError: () => {
+      dispatch(setStoreSearchError({ errorMessage: '' }));
+    },
+    getUserCartStoresAndSearch: payload => {
+      dispatch(getUserCartStores(payload));
+    },
+    addItemToCartInPickup: payload => {
+      dispatch(addItemToCartBopis(payload));
     },
   };
 };
@@ -24,39 +45,39 @@ const mapStateToProps = (state, ownProps) => {
   const favStore = PickupSelectors.getDefaultStore(state);
   const geoDefaultStore = PickupSelectors.getGeoDefaultStore(state);
   const defaultStore = favStore || geoDefaultStore || null;
-  const productInfo = {}; // TODO - In cart - quickViewStoreView.getQuickViewProduct(state);
-  const { colorFitSizeDisplayNames = null } = productInfo;
-  const {
-    initialValues = {},
-    onAddItemToCart,
-    isShowAddItemSuccessNotification,
-    onSubmit,
-    onSubmitSuccess,
-  } = ownProps;
+  const { isShowAddItemSuccessNotification, onSubmit, onSubmitSuccess } = ownProps;
   const isShowDefaultSize = false; // TODO - Do we need this ? abTestingStoreView.getIsShowDefaultSize(state);
-  const initialValueFromQuickView = initialValues; // TODO - IN QV - quickViewStoreView.getQuickViewFormInitialValues(state, ownProps.initialValues, true);
-  const itemValues = { showDefaultSizeMsg: false, initialValueFromQuickView };
+
+  const currentProduct = PickupSelectors.getCurrentProduct(state);
+  const generalProductId = currentProduct && currentProduct.generalProductId;
+  const atbProductFormId = `${PRODUCT_ADD_TO_BAG}-${generalProductId}`;
+  const initialValueFromQuickView = {
+    ...PickupSelectors.getInitialValues(state, atbProductFormId),
+  }; // TODO - IN QV - quickViewStoreView.getQuickViewFormInitialValues(state, ownProps.initialValues, true);
+  const itemValues = { showDefaultSizeMsg: false, formValues: initialValueFromQuickView };
+  const { colorFitSizeDisplayNames = null } = currentProduct;
   const isPickupModalOpen = PickupSelectors.getIsPickupModalOpen(state);
   const isBopisCtaEnabled = PickupSelectors.getIsBopisCtaEnabled(state);
   const isBossCtaEnabled = PickupSelectors.getIsBossCtaEnabled(state);
   const isPickUpWarningModal = PickupSelectors.getIsPickUpWarningModal(state);
   const openSkuSelectionForm = PickupSelectors.getOpenSkuSelectionForm(state);
+  const storeSearchError = PickupSelectors.getStoreSearchError(state);
+  const pickupSkuFormId = `${PRODUCT_SKU_SELECTION_FORM}-${generalProductId}`;
+  const PickupSkuFormValues = { ...PickupSelectors.getInitialValues(state, pickupSkuFormId) };
 
   return {
-    onAddItemToCart,
     onAddItemToCartSuccess: isShowAddItemSuccessNotification,
     onSubmit,
+    colorFitSizeDisplayNames,
     onSubmitSuccess,
     maxAllowedStoresInCart,
-    cartBopisStoresList: 0, // TODO - IN QV  - storesStoreView.getBopisStoresOnCart(state),
+    cartBopisStoresList: PickupSelectors.getStoresOnCart(state),
     distancesMap,
     isShowExtendedSizesNotification: false,
-    productInfo,
-    colorFitSizeDisplayNames,
     initialValues: itemValues.formValues,
     showDefaultSizeMsg: itemValues.showDefaultSizeMsg,
-    isPickupStoreUpdating: false, // TODO - IN CART -  cartStoreView.getIsPickupStoreUpdating(state),
-    requestorKey: '', // TODO - IN QV  - quickViewStoreView.getQuickViewRequestInfo(state).requestorKey,
+    isPickupStoreUpdating: false,
+    requestorKey: '',
     defaultStore,
     isPickupModalOpen,
     isBopisCtaEnabled,
@@ -64,19 +85,24 @@ const mapStateToProps = (state, ownProps) => {
     isPickUpWarningModal,
     openSkuSelectionForm,
     isCanada: isCanada(),
+    addToBagError: getAddedToBagError(state),
     isPlcc: PickupSelectors.getUserIsPlcc(state),
-    currencySymbol: PickupSelectors.getCurrentCurrencySymbol(state),
-    isInternationalShipping: PickupSelectors.getIsInternationalShipping(state),
-    isBopisEnabled: PickupSelectors.getIsBopisEnabled(state),
-    isBossEnabled: PickupSelectors.getIsBossEnabled(state),
-    isRadialInventoryEnabled: PickupSelectors.getIsRadialInventoryEnabled(state),
+    currencySymbol: sessionSelectors.getCurrentCurrencySymbol(state),
+    isInternationalShipping: sessionSelectors.getIsInternationalShipping(state),
+    isBopisEnabled: sessionSelectors.getIsBopisEnabled(state),
+    isBossEnabled: sessionSelectors.getIsBossEnabled(state),
+    isRadialInventoryEnabled: sessionSelectors.getIsRadialInventoryEnabled(state),
     isShowDefaultSize,
-    itemsCount: PickupSelectors.getItemsCount(state),
+    cartItemsCount: PickupSelectors.getItemsCount(state),
     pickupModalHeading: PICKUP_HEADING,
+    storeSearchError,
+    currentProduct,
+    PickupSkuFormValues,
+    currency: getCurrentCurrency(state),
   };
 };
 
 export default connect(
   mapStateToProps,
   mapDispatchToProps
-)(errorBoundary(PickUpStoreModalView));
+)(PickUpStoreModalView);

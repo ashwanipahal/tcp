@@ -2,6 +2,7 @@
 
 exports[`BillingPageContainer should render correctly 1`] = `
 <ReduxForm
+  billingData={Object {}}
   cardType={null}
   cvvCodeRichText=""
   destroyOnUnmount={true}
@@ -11,20 +12,132 @@ exports[`BillingPageContainer should render correctly 1`] = `
   getFormState={[Function]}
   initialValues={
     Object {
+      "address": null,
+      "cardNumber": undefined,
+      "cardType": undefined,
+      "expMonth": undefined,
+      "expYear": undefined,
       "paymentMethodId": "creditCard",
+      "sameAsShipping": true,
     }
   }
+  isSameAsShippingChecked={true}
+  isVenmoPaymentInProgress={false}
   keepDirtyOnReinitialize={false}
   labels={Object {}}
+  navigation={null}
+  onSubmit={[Function]}
+  orderHasShipping={true}
   paymentMethodId={null}
   persistentSubmitErrors={false}
   pure={true}
   shippingAddress={null}
+  shippingOnFileAddressKey={null}
   shouldAsyncValidate={[Function]}
   shouldError={[Function]}
   shouldValidate={[Function]}
   shouldWarn={[Function]}
   submitAsSideEffect={false}
+  syncErrors={null}
+  syncErrorsObj={null}
+  touchOnBlur={true}
+  touchOnChange={false}
+  updateUnregisteredFields={false}
+  validate={[Function]}
+/>
+`;
+
+exports[`BillingPageContainer should render correctly if billing data is present 1`] = `
+<ReduxForm
+  billingData={
+    Object {
+      "address": Object {},
+      "billing": Object {},
+    }
+  }
+  cardType={null}
+  cvvCodeRichText=""
+  destroyOnUnmount={true}
+  enableReinitialize={true}
+  forceUnregisterOnUnmount={false}
+  form="checkoutBilling"
+  getFormState={[Function]}
+  initialValues={
+    Object {
+      "address": Object {
+        "addressLine1": undefined,
+        "addressLine2": undefined,
+        "city": undefined,
+        "country": undefined,
+        "firstName": undefined,
+        "lastName": undefined,
+        "onFileAddressId": undefined,
+        "onFileAddressKey": undefined,
+        "state": undefined,
+        "zipCode": undefined,
+      },
+      "cardNumber": undefined,
+      "cardType": undefined,
+      "expMonth": undefined,
+      "expYear": undefined,
+      "paymentMethodId": "creditCard",
+      "sameAsShipping": false,
+    }
+  }
+  isSameAsShippingChecked={true}
+  isVenmoPaymentInProgress={false}
+  keepDirtyOnReinitialize={false}
+  labels={Object {}}
+  navigation={null}
+  onSubmit={[Function]}
+  orderHasShipping={true}
+  paymentMethodId={null}
+  persistentSubmitErrors={false}
+  pure={true}
+  shippingAddress={null}
+  shippingOnFileAddressKey={null}
+  shouldAsyncValidate={[Function]}
+  shouldError={[Function]}
+  shouldValidate={[Function]}
+  shouldWarn={[Function]}
+  submitAsSideEffect={false}
+  submitBilling={
+    [MockFunction] {
+      "calls": Array [
+        Array [
+          Object {
+            "address": Object {
+              "addressLine1": "",
+              "addressLine2": "",
+              "city": "",
+              "country": "",
+              "firstName": "",
+              "lastName": "",
+              "onFileAddressId": "",
+              "onFileAddressKey": "",
+              "sameAsShipping": true,
+              "state": "",
+              "zipCode": "",
+            },
+            "cardNumber": undefined,
+            "cardType": undefined,
+            "cvv": undefined,
+            "emailAddress": undefined,
+            "expMonth": undefined,
+            "expYear": undefined,
+            "navigation": null,
+          },
+        ],
+      ],
+      "results": Array [
+        Object {
+          "type": "return",
+          "value": undefined,
+        },
+      ],
+    }
+  }
+  syncErrors={null}
   syncErrorsObj={null}
   touchOnBlur={true}
   touchOnChange={false}

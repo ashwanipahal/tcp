@@ -12,3 +12,16 @@ exports[`CustomImage component should renders CustomImage correctly 1`] = `
   width={100}
 />
 `;
+
+exports[`CustomImage component should renders Zoom Image correctly 1`] = `
+<Styled(Image)
+  height={100}
+  resizeMode="contain"
+  source={
+    Object {
+      "uri": null,
+    }
+  }
+  width={100}
+/>
+`;

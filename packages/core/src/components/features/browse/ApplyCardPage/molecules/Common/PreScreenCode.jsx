@@ -3,6 +3,7 @@ import PropTypes from 'prop-types';
 import { Field } from 'redux-form';
 import { Anchor, BodyCopy, Col, Row, TextBox } from '../../../../../common/atoms';
 import PreScreenCodeWrapper from './styles/PreScreenCode.style';
+import { getLabelValue } from '../../../../../../utils';
 
 export default class PrescreenCode extends React.PureComponent {
   static propTypes = {
@@ -32,7 +33,7 @@ export default class PrescreenCode extends React.PureComponent {
               colSize={{ large: 6, medium: 4, small: 6 }}
             >
               <Field
-                placeholder={labels.plcc_form_prescreen_optional}
+                placeholder={getLabelValue(labels, 'lbl_PLCCForm_preScreenCodeOpt')}
                 name="preScreenCode"
                 id="preScreenCode"
                 maxLength={12}
@@ -44,14 +45,14 @@ export default class PrescreenCode extends React.PureComponent {
           </Row>
         ) : null}
         <BodyCopy fontFamily="secondary">
-          {labels.plcc_form_prescreencodetext}
+          {getLabelValue(labels, 'lbl_PLCCForm_preScreenCodeText')}
           {!showPreScreenCode ? (
             <Anchor onClick={this.handleClick} className="click-here-link">
-              {labels.plcc_form_clickHere}
+              {getLabelValue(labels, 'lbl_PLCCForm_clickHere')}
             </Anchor>
           ) : (
             <BodyCopy component="span" role="button" className="prescreen-code">
-              {labels.plcc_form_enterHere}
+              {getLabelValue(labels, 'lbl_PLCCForm_enterHere')}
             </BodyCopy>
           )}
         </BodyCopy>

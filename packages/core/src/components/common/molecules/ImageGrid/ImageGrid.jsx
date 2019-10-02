@@ -1,19 +1,8 @@
-// @flow
 import React from 'react';
-import { Anchor, Col, DamImage, Row } from '../../atoms';
+import PropTypes from 'prop-types';
+import { Col, DamImage, Row } from '../../atoms';
 import withStyles from '../../hoc/withStyles';
 import style from './ImageGrid.style';
-
-type Props = {
-  mediaLinkedList: Object[],
-  colD?: Number,
-  colT?: Number,
-  colM?: Number,
-  className: string,
-  dataLocator?: string,
-  dataLocatorContainer: string,
-  imageConfig: Object[],
-};
 
 /**
  * Array reducer which reduces array of media into sets of defined limit as per desktop
@@ -46,7 +35,7 @@ const gridReducer = (accumulator, currentValue, currentIndex, list) => {
  * }
  * @param {*} props
  */
-const ImageGrid = (props: Props) => {
+const ImageGrid = props => {
   const {
     mediaLinkedList,
     colD,
@@ -81,13 +70,12 @@ const ImageGrid = (props: Props) => {
           {medList.map(({ image, link }, index) => {
             return (
               <Col key={index.toString()} colSize={colSize} className="image-col">
-                <Anchor {...link}>
-                  <DamImage
-                    data-locator={`${dataLocator}_${index + 1}`}
-                    imgConfigs={imageConfig}
-                    imgData={image}
-                  />
-                </Anchor>
+                <DamImage
+                  data-locator={`${dataLocator}_${index + 1}`}
+                  imgConfigs={imageConfig}
+                  imgData={image}
+                  link={link}
+                />
               </Col>
             );
           })}
@@ -97,11 +85,32 @@ const ImageGrid = (props: Props) => {
   );
 };
 
+ImageGrid.propTypes = {
+  mediaLinkedList: PropTypes.arrayOf(
+    PropTypes.oneOfType(
+      PropTypes.shape({
+        image: PropTypes.shape({
+          url: PropTypes.string.isRequired,
+        }),
+        link: PropTypes.shape({
+          url: PropTypes.string.isRequired,
+        }),
+      })
+    )
+  ).isRequired,
+  colD: PropTypes.number,
+  colT: PropTypes.number,
+  colM: PropTypes.number,
+  className: PropTypes.string.isRequired,
+  dataLocator: PropTypes.string.isRequired,
+  dataLocatorContainer: PropTypes.string.isRequired,
+  imageConfig: PropTypes.arrayOf(PropTypes.oneOf(PropTypes.string)).isRequired,
+};
+
 ImageGrid.defaultProps = {
   colD: 4,
   colT: 4,
   colM: 2,
-  dataLocator: '',
 };
 
 export { ImageGrid as ImageGridVanilla };

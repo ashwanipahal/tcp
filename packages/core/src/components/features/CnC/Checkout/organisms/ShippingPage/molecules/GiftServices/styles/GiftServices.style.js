@@ -1,8 +1,14 @@
 import { css } from 'styled-components';
 
 export default css`
+  @media ${props => props.theme.mediaQuery.mediumMax} {
+    margin-bottom: ${props => props.theme.spacing.ELEM_SPACING.MED};
+  }
   .brand-image {
     width: 83px;
+    @media ${props => props.theme.mediaQuery.smallMax} {
+      padding-top: 11px;
+    }
   }
   .shortDesc {
     font-weight: ${props => props.theme.fonts.fontWeight.semiBold};
@@ -66,6 +72,14 @@ export default css`
     width: auto;
     margin-left: -12px;
     padding-right: 15px;
+    display: flex;
+    align-self: center;
+  }
+
+  .tcp-radio-button {
+    .radio-button-checked {
+      top: 18px;
+    }
   }
 
   .normal-select-box {
@@ -121,7 +135,7 @@ export default css`
   }
 
   .gift-message {
-    width: 99%;
+    width: 98%;
     height: 146px;
     resize: none;
     font-size: ${props => props.theme.fonts.fontSize.textbox}px;

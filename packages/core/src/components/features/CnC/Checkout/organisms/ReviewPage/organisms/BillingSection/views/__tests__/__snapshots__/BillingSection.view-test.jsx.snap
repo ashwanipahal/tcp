@@ -1,0 +1,549 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`BillingSection should render correctly for empty state 1`] = `
+<Styled(Grid)
+  className=""
+>
+  <Styled(Row)
+    fullBleed={true}
+  >
+    <Styled(Col)
+      colSize={
+        Object {
+          "large": 12,
+          "medium": 8,
+          "small": 6,
+        }
+      }
+    >
+      <Styled(BodyCopy)
+        className={null}
+        color="text.primary"
+        component="span"
+        fontFamily="primary"
+        fontSize="fs28"
+        fontWeight="regular"
+        letterSpacing="normal"
+        lineHeight="normal"
+        link={null}
+        textAlign="left"
+      >
+        undefined 
+      </Styled(BodyCopy)>
+      <Styled(Anchor)
+        anchorVariation="primary"
+        asPath="/checkout/billing"
+        fontSizeVariation="large"
+        to="/checkout?section=billing"
+        underline={true}
+      />
+    </Styled(Col)>
+  </Styled(Row)>
+  <Styled(Row)
+    fullBleed={true}
+  >
+    <Styled(Col)
+      colSize={
+        Object {
+          "large": 6,
+          "medium": 4,
+          "small": 6,
+        }
+      }
+      offsetRight={
+        Object {
+          "large": 1,
+          "medium": 0,
+          "small": 0,
+        }
+      }
+    />
+  </Styled(Row)>
+</Styled(Grid)>
+`;
+
+exports[`BillingSection should render correctly without address details 1`] = `
+<Styled(Grid)
+  className=""
+>
+  <Styled(Row)
+    fullBleed={true}
+  >
+    <Styled(Col)
+      colSize={
+        Object {
+          "large": 12,
+          "medium": 8,
+          "small": 6,
+        }
+      }
+    >
+      <Styled(BodyCopy)
+        className={null}
+        color="text.primary"
+        component="span"
+        fontFamily="primary"
+        fontSize="fs28"
+        fontWeight="regular"
+        letterSpacing="normal"
+        lineHeight="normal"
+        link={null}
+        textAlign="left"
+      >
+        Billing 
+      </Styled(BodyCopy)>
+      <Styled(Anchor)
+        anchorVariation="primary"
+        asPath="/checkout/billing"
+        fontSizeVariation="large"
+        to="/checkout?section=billing"
+        underline={true}
+      />
+    </Styled(Col)>
+  </Styled(Row)>
+  <Styled(Row)
+    fullBleed={true}
+  >
+    <Styled(Col)
+      colSize={
+        Object {
+          "large": 5,
+          "medium": 4,
+          "small": 6,
+        }
+      }
+    >
+      <Styled(BodyCopy)
+        className="sub-heading"
+        color="gray[900]"
+        component="p"
+        fontFamily="secondary"
+        fontSize="fs16"
+        fontWeight="semibold"
+        letterSpacing="normal"
+        lineHeight="normal"
+        link={null}
+        textAlign="left"
+      >
+        Payment Method
+      </Styled(BodyCopy)>
+      <Styled(BodyCopy)
+        className={null}
+        color="text.primary"
+        component="p"
+        fontFamily="primary"
+        fontSize={12}
+        fontWeight="regular"
+        letterSpacing="normal"
+        lineHeight="normal"
+        link={null}
+        textAlign="left"
+      >
+        <Styled(CardImage)
+          card={
+            Object {
+              "cardNumber": "1234",
+              "ccBrand": "PLACE CASH",
+              "ccType": "PLACE CASH",
+            }
+          }
+          cardNumber="ending in 1234"
+        />
+      </Styled(BodyCopy)>
+    </Styled(Col)>
+    <Styled(Col)
+      colSize={
+        Object {
+          "large": 6,
+          "medium": 4,
+          "small": 6,
+        }
+      }
+      offsetRight={
+        Object {
+          "large": 1,
+          "medium": 0,
+          "small": 0,
+        }
+      }
+    >
+      <Styled(BodyCopy)
+        className="sub-heading"
+        color="gray[900]"
+        component="p"
+        fontFamily="secondary"
+        fontSize="fs16"
+        fontWeight="semibold"
+        letterSpacing="normal"
+        lineHeight="normal"
+        link={null}
+        textAlign="left"
+      >
+        Applied Gift Cards
+      </Styled(BodyCopy)>
+      <Styled(AppliedGiftCards)
+        appliedGiftCards={
+          Immutable.List [
+            Immutable.Map {
+              "id": "1",
+              "endingNumbers": "4321",
+              "remainingBalance": 0,
+            },
+            Immutable.Map {
+              "id": "2",
+              "endingNumbers": "1234",
+              "remainingBalance": 15,
+            },
+          ]
+        }
+        labels={
+          Object {
+            "lbl_review_appliedGiftCards": "Applied Gift Cards",
+            "lbl_review_billingAddress": "Billing Address",
+            "lbl_review_billingSectionTitle": "Billing",
+            "lbl_review_paymentMethod": "Payment Method",
+            "lbl_review_paymentMethodEndingIn": "ending in",
+          }
+        }
+      />
+    </Styled(Col)>
+  </Styled(Row)>
+</Styled(Grid)>
+`;
+
+exports[`BillingSection should render correctly without card & address details or with gift card empty 1`] = `
+<Styled(Grid)
+  className=""
+>
+  <Styled(Row)
+    fullBleed={true}
+  >
+    <Styled(Col)
+      colSize={
+        Object {
+          "large": 12,
+          "medium": 8,
+          "small": 6,
+        }
+      }
+    >
+      <Styled(BodyCopy)
+        className={null}
+        color="text.primary"
+        component="span"
+        fontFamily="primary"
+        fontSize="fs28"
+        fontWeight="regular"
+        letterSpacing="normal"
+        lineHeight="normal"
+        link={null}
+        textAlign="left"
+      >
+        Billing 
+      </Styled(BodyCopy)>
+      <Styled(Anchor)
+        anchorVariation="primary"
+        asPath="/checkout/billing"
+        fontSizeVariation="large"
+        to="/checkout?section=billing"
+        underline={true}
+      />
+    </Styled(Col)>
+  </Styled(Row)>
+  <Styled(Row)
+    fullBleed={true}
+  >
+    <Styled(Col)
+      colSize={
+        Object {
+          "large": 6,
+          "medium": 4,
+          "small": 6,
+        }
+      }
+      offsetRight={
+        Object {
+          "large": 1,
+          "medium": 0,
+          "small": 0,
+        }
+      }
+    >
+      <Styled(BodyCopy)
+        className="sub-heading"
+        color="gray[900]"
+        component="p"
+        fontFamily="secondary"
+        fontSize="fs16"
+        fontWeight="semibold"
+        letterSpacing="normal"
+        lineHeight="normal"
+        link={null}
+        textAlign="left"
+      >
+        Applied Gift Cards
+      </Styled(BodyCopy)>
+      <Styled(AppliedGiftCards)
+        appliedGiftCards={Immutable.List []}
+        labels={
+          Object {
+            "lbl_review_appliedGiftCards": "Applied Gift Cards",
+            "lbl_review_billingAddress": "Billing Address",
+            "lbl_review_billingSectionTitle": "Billing",
+            "lbl_review_paymentMethod": "Payment Method",
+            "lbl_review_paymentMethodEndingIn": "ending in",
+          }
+        }
+      />
+    </Styled(Col)>
+  </Styled(Row)>
+</Styled(Grid)>
+`;
+
+exports[`BillingSection should render correctly without card & address details or with gift card only 1`] = `
+<Styled(Grid)
+  className=""
+>
+  <Styled(Row)
+    fullBleed={true}
+  >
+    <Styled(Col)
+      colSize={
+        Object {
+          "large": 12,
+          "medium": 8,
+          "small": 6,
+        }
+      }
+    >
+      <Styled(BodyCopy)
+        className={null}
+        color="text.primary"
+        component="span"
+        fontFamily="primary"
+        fontSize="fs28"
+        fontWeight="regular"
+        letterSpacing="normal"
+        lineHeight="normal"
+        link={null}
+        textAlign="left"
+      >
+        Billing 
+      </Styled(BodyCopy)>
+      <Styled(Anchor)
+        anchorVariation="primary"
+        asPath="/checkout/billing"
+        fontSizeVariation="large"
+        to="/checkout?section=billing"
+        underline={true}
+      />
+    </Styled(Col)>
+  </Styled(Row)>
+  <Styled(Row)
+    fullBleed={true}
+  >
+    <Styled(Col)
+      colSize={
+        Object {
+          "large": 6,
+          "medium": 4,
+          "small": 6,
+        }
+      }
+      offsetRight={
+        Object {
+          "large": 1,
+          "medium": 0,
+          "small": 0,
+        }
+      }
+    >
+      <Styled(BodyCopy)
+        className="sub-heading"
+        color="gray[900]"
+        component="p"
+        fontFamily="secondary"
+        fontSize="fs16"
+        fontWeight="semibold"
+        letterSpacing="normal"
+        lineHeight="normal"
+        link={null}
+        textAlign="left"
+      >
+        Applied Gift Cards
+      </Styled(BodyCopy)>
+      <Styled(AppliedGiftCards)
+        appliedGiftCards={
+          Immutable.List [
+            Immutable.Map {
+              "id": "1",
+              "endingNumbers": "4321",
+              "remainingBalance": 0,
+            },
+            Immutable.Map {
+              "id": "2",
+              "endingNumbers": "1234",
+              "remainingBalance": 15,
+            },
+          ]
+        }
+        labels={
+          Object {
+            "lbl_review_appliedGiftCards": "Applied Gift Cards",
+            "lbl_review_billingAddress": "Billing Address",
+            "lbl_review_billingSectionTitle": "Billing",
+            "lbl_review_paymentMethod": "Payment Method",
+            "lbl_review_paymentMethodEndingIn": "ending in",
+          }
+        }
+      />
+    </Styled(Col)>
+  </Styled(Row)>
+</Styled(Grid)>
+`;
+
+exports[`BillingSection should render correctly without card details 1`] = `
+<Styled(Grid)
+  className=""
+>
+  <Styled(Row)
+    fullBleed={true}
+  >
+    <Styled(Col)
+      colSize={
+        Object {
+          "large": 12,
+          "medium": 8,
+          "small": 6,
+        }
+      }
+    >
+      <Styled(BodyCopy)
+        className={null}
+        color="text.primary"
+        component="span"
+        fontFamily="primary"
+        fontSize="fs28"
+        fontWeight="regular"
+        letterSpacing="normal"
+        lineHeight="normal"
+        link={null}
+        textAlign="left"
+      >
+        Billing 
+      </Styled(BodyCopy)>
+      <Styled(Anchor)
+        anchorVariation="primary"
+        asPath="/checkout/billing"
+        fontSizeVariation="large"
+        to="/checkout?section=billing"
+        underline={true}
+      />
+    </Styled(Col)>
+  </Styled(Row)>
+  <Styled(Row)
+    fullBleed={true}
+  >
+    <Styled(Col)
+      colSize={
+        Object {
+          "large": 5,
+          "medium": 4,
+          "small": 6,
+        }
+      }
+    >
+      <Styled(BodyCopy)
+        className="sub-heading"
+        color="gray[900]"
+        component="p"
+        fontFamily="secondary"
+        fontSize="fs16"
+        fontWeight="semibold"
+        letterSpacing="normal"
+        lineHeight="normal"
+        link={null}
+        textAlign="left"
+      >
+        Billing Address
+      </Styled(BodyCopy)>
+      <Address
+        address={
+          Object {
+            "addressLine1": "1234 XYZ",
+            "city": "New York",
+            "country": "US",
+            "firstName": "Test",
+            "lastName": "Test",
+            "state": "NY",
+          }
+        }
+        className="review-billing-address"
+        dataLocatorPrefix=""
+        fontWeight="regular"
+        isDefault={false}
+        showCountry={true}
+        showDefault={true}
+        showName={true}
+        showPhone={true}
+      />
+    </Styled(Col)>
+    <Styled(Col)
+      colSize={
+        Object {
+          "large": 6,
+          "medium": 4,
+          "small": 6,
+        }
+      }
+      offsetRight={
+        Object {
+          "large": 1,
+          "medium": 0,
+          "small": 0,
+        }
+      }
+    >
+      <Styled(BodyCopy)
+        className="sub-heading"
+        color="gray[900]"
+        component="p"
+        fontFamily="secondary"
+        fontSize="fs16"
+        fontWeight="semibold"
+        letterSpacing="normal"
+        lineHeight="normal"
+        link={null}
+        textAlign="left"
+      >
+        Applied Gift Cards
+      </Styled(BodyCopy)>
+      <Styled(AppliedGiftCards)
+        appliedGiftCards={
+          Immutable.List [
+            Immutable.Map {
+              "id": "1",
+              "endingNumbers": "4321",
+              "remainingBalance": 0,
+            },
+            Immutable.Map {
+              "id": "2",
+              "endingNumbers": "1234",
+              "remainingBalance": 15,
+            },
+          ]
+        }
+        labels={
+          Object {
+            "lbl_review_appliedGiftCards": "Applied Gift Cards",
+            "lbl_review_billingAddress": "Billing Address",
+            "lbl_review_billingSectionTitle": "Billing",
+            "lbl_review_paymentMethod": "Payment Method",
+            "lbl_review_paymentMethodEndingIn": "ending in",
+          }
+        }
+      />
+    </Styled(Col)>
+  </Styled(Row)>
+</Styled(Grid)>
+`;

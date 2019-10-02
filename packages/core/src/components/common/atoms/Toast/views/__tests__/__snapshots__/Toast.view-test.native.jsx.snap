@@ -1,10 +1,16 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
 exports[`Toast msg view render should render correctly 1`] = `
-<Fragment>
+<SafeAreaView
+  style={
+    Object {
+      "zIndex": 2,
+    }
+  }
+>
   <Toast
     fadeInDuration={750}
-    fadeOutDuration={1000}
+    fadeOutDuration={5000}
     opacity={1}
     position="top"
     positionValue={0}
@@ -22,5 +28,5 @@ exports[`Toast msg view render should render correctly 1`] = `
       }
     }
   />
-</Fragment>
+</SafeAreaView>
 `;

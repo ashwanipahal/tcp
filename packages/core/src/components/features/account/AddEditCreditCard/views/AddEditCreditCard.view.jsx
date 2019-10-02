@@ -26,6 +26,7 @@ export const AddEditCreditCard = ({
   showCreditCardFields,
   formErrorMessage,
   showNotification,
+  globalErrorMessage,
   ...otherProps
 }) => {
   const backLink = pageBackLink || internalEndpoints.paymentPage.link;
@@ -57,11 +58,11 @@ export const AddEditCreditCard = ({
         heading={pageHeading(pageheading)}
         data-locator="payment-addcreditordebitcardheader"
       />
-      {formErrorMessage && showNotification && (
+      {globalErrorMessage && showNotification && (
         <Notification
           status="error"
           colSize={{ large: 12, medium: 8, small: 6 }}
-          message={formErrorMessage}
+          message={globalErrorMessage}
         />
       )}
       {!showCreditCardFields && (
@@ -123,6 +124,7 @@ AddEditCreditCard.propTypes = {
   pageheading: PropTypes.string,
   formErrorMessage: PropTypes.shape({}).isRequired,
   showNotification: PropTypes.bool.isRequired,
+  globalErrorMessage: PropTypes.string,
 };
 
 AddEditCreditCard.defaultProps = {
@@ -139,6 +141,7 @@ AddEditCreditCard.defaultProps = {
   pageBackLink: null,
   pageBackPath: null,
   pageheading: null,
+  globalErrorMessage: null,
 };
 
 export default AddEditCreditCard;

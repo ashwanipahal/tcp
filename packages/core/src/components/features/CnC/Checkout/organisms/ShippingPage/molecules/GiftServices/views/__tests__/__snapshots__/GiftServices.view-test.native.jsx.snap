@@ -1,0 +1,272 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`GiftServices component should renders correctly props not present 1`] = `
+<Styled(View)>
+  <Styled(View)>
+    <Styled(View)>
+      <Field
+        component={[Function]}
+        dataLocator="hide-show-checkbox"
+        enableSuccessCheck={false}
+        name="hasGiftWrapping"
+        onChange={[Function]}
+      />
+      <Styled(BodyCopy)
+        accessibilityText=""
+        dataLocator=""
+        fontFamily="secondary"
+        fontSize="fs14"
+        fontWeight="extrabold"
+        margin={null}
+        numberOfLines={null}
+        textDecoration={null}
+      />
+    </Styled(View)>
+    <Styled(View)>
+      <Styled(Anchor)
+        accessibilityLabel=""
+        anchorVariation="primary"
+        colorName={null}
+        customStyle={Object {}}
+        fontFamily="secondary"
+        fontSizeVariation="medium"
+        locator=""
+        onPress={[Function]}
+        text=""
+        underline={true}
+        visible={false}
+      />
+    </Styled(View)>
+  </Styled(View)>
+  <Styled(View)>
+    <Styled(BodyCopy)
+      accessibilityText=""
+      dataLocator="add-gift-services-details-lbl"
+      fontSize="fs14"
+      fontWeight="regular"
+      margin={null}
+      mobileFontFamily="secondary"
+      numberOfLines={null}
+      textDecoration={null}
+    />
+  </Styled(View)>
+  <GiftServicesDetailsModal
+    labels={Object {}}
+    onRequestClose={[Function]}
+    openState={false}
+  />
+</Styled(View)>
+`;
+
+exports[`GiftServices component should renders correctly props not present 2`] = `
+<Styled(View)>
+  <Styled(View)>
+    <Styled(View)>
+      <Field
+        component={[Function]}
+        dataLocator="hide-show-checkbox"
+        enableSuccessCheck={false}
+        name="hasGiftWrapping"
+        onChange={[Function]}
+      />
+      <Styled(BodyCopy)
+        accessibilityText=""
+        dataLocator=""
+        fontFamily="secondary"
+        fontSize="fs14"
+        fontWeight="extrabold"
+        margin={null}
+        numberOfLines={null}
+        textDecoration={null}
+      />
+    </Styled(View)>
+    <Styled(View)>
+      <Styled(Anchor)
+        accessibilityLabel=""
+        anchorVariation="primary"
+        colorName={null}
+        customStyle={Object {}}
+        fontFamily="secondary"
+        fontSizeVariation="medium"
+        locator=""
+        onPress={[Function]}
+        text=""
+        underline={true}
+        visible={false}
+      />
+    </Styled(View)>
+  </Styled(View)>
+  <Styled(View)>
+    <Styled(BodyCopy)
+      accessibilityText=""
+      dataLocator="add-gift-services-details-lbl"
+      fontSize="fs14"
+      fontWeight="regular"
+      margin={null}
+      mobileFontFamily="secondary"
+      numberOfLines={null}
+      textDecoration={null}
+    />
+  </Styled(View)>
+  <View>
+    <Styled(View)>
+      <Styled(BodyCopy)
+        accessibilityText=""
+        dataLocator="brand-gift-services-details-lbl"
+        fontSize="fs14"
+        fontWeight="regular"
+        margin={null}
+        mobileFontFamily="secondary"
+        numberOfLines={null}
+        textDecoration={null}
+      />
+      <Styled(View)>
+        <Styled(View)>
+          <LabeledRadioButton
+            buttonInnerColor="#000"
+            buttonOuterColor="#000"
+            checked={true}
+            disabled={false}
+            index={-1}
+            obj={Object {}}
+            onPress={[Function]}
+          />
+          <Styled(Image)
+            data-locator="cartItemBrandLogo"
+            resizeMode="contain"
+            source={
+              Object {
+                "testUri": "../../../../core/src/assets/tcp-logo.png",
+              }
+            }
+          />
+        </Styled(View)>
+        <Styled(View)>
+          <LabeledRadioButton
+            buttonInnerColor="#000"
+            buttonOuterColor="#000"
+            checked={false}
+            disabled={false}
+            index={-1}
+            obj={Object {}}
+            onPress={[Function]}
+          />
+          <Styled(Image)
+            data-locator="cartItemBrandLogo"
+            resizeMode="contain"
+            source={
+              Object {
+                "testUri": "../../../../core/src/assets/gymboree-logo.png",
+              }
+            }
+          />
+        </Styled(View)>
+      </Styled(View)>
+    </Styled(View)>
+    <Field
+      component={
+        Object {
+          "$$typeof": Symbol(react.forward_ref),
+          "_foldedDefaultProps": Object {
+            "bounces": true,
+            "data": Array [],
+            "dropDownStyle": null,
+            "itemStyle": null,
+            "onValueChange": null,
+            "selectedValue": null,
+            "variation": "primary",
+          },
+          "attrs": Array [],
+          "displayName": "Styled(DropDown)",
+          "inlineStyle": InlineStyle {
+            "rules": Array [
+              "
+    ",
+              "
+  height: ",
+              [Function],
+              "px;
+  ",
+              [Function],
+              ";
+  background-color: ",
+              [Function],
+              ";
+  width: 100%;
+",
+              ";
+  ",
+            ],
+          },
+          "render": [Function],
+          "styledComponentId": "StyledNativeComponent",
+          "target": [Function],
+          "withComponent": [Function],
+        }
+      }
+      customDropDownHeight={270}
+      dataLocator="giftServices-list"
+      dropDownStyle={
+        Object {
+          "border": 1,
+          "height": 30,
+          "lightBorder": true,
+        }
+      }
+      itemStyle={
+        Object {
+          "border": 2,
+          "color": "black",
+          "height": 90,
+          "paddingLeft": 10,
+          "paddingRight": 10,
+        }
+      }
+      name="giftServices"
+      onValueChange={[Function]}
+      selectedValue="standard"
+      variation="secondary"
+    />
+    <Styled(View)>
+      <Styled(View)>
+        <Styled(BodyCopy)
+          accessibilityText=""
+          color="gray.900"
+          dataLocator=""
+          fontSize="fs14"
+          margin={null}
+          mobileFontFamily="secondary"
+          numberOfLines={null}
+          textAlign="left"
+          textDecoration={null}
+        />
+      </Styled(View)>
+      <Styled(BodyCopy)
+        accessibilityText=""
+        color="gray.900"
+        dataLocator=""
+        fontSize="fs10"
+        margin={null}
+        mobileFontFamily="secondary"
+        numberOfLines={null}
+        textAlign="right"
+        textDecoration={null}
+      />
+    </Styled(View)>
+    <Styled(TextInput)
+      dataLocator="gift-message"
+      id="message"
+      maxLength={100}
+      multiline={true}
+      name="message"
+      onChangeText={[Function]}
+      type="text"
+    />
+  </View>
+  <GiftServicesDetailsModal
+    labels={Object {}}
+    onRequestClose={[Function]}
+    openState={true}
+  />
+</Styled(View)>
+`;

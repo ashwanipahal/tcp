@@ -28,6 +28,7 @@ exports[`RewardsPoints Slider View should render RewardsPointsViewVanilla Correc
             fontWeight="regular"
             letterSpacing="normal"
             lineHeight="normal"
+            link={null}
             textAlign="left"
           >
             Current Points: 
@@ -41,6 +42,7 @@ exports[`RewardsPoints Slider View should render RewardsPointsViewVanilla Correc
               fontWeight="black"
               letterSpacing="normal"
               lineHeight="normal"
+              link={null}
               textAlign="left"
             />
           </Styled(BodyCopy)>
@@ -58,6 +60,7 @@ exports[`RewardsPoints Slider View should render RewardsPointsViewVanilla Correc
             fontWeight="regular"
             letterSpacing="normal"
             lineHeight="normal"
+            link={null}
             textAlign="left"
           >
             My rewards: 
@@ -71,6 +74,7 @@ exports[`RewardsPoints Slider View should render RewardsPointsViewVanilla Correc
               fontWeight="black"
               letterSpacing="normal"
               lineHeight="normal"
+              link={null}
               textAlign="left"
             >
               $
@@ -125,6 +129,7 @@ exports[`RewardsPoints Slider View should render RewardsPointsViewVanilla Correc
         fontWeight="regular"
         letterSpacing="normal"
         lineHeight="normal"
+        link={null}
         textAlign="left"
       >
         Next Rewards: 
@@ -138,6 +143,7 @@ exports[`RewardsPoints Slider View should render RewardsPointsViewVanilla Correc
           fontWeight="black"
           letterSpacing="normal"
           lineHeight="normal"
+          link={null}
           textAlign="left"
         >
           10

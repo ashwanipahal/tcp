@@ -24,6 +24,13 @@ class LoginForm extends React.PureComponent<Props> {
     showForgotPasswordForm();
   };
 
+  resetError = () => {
+    const { resetLoginState, loginErrorMessage } = this.props;
+    if (loginErrorMessage) {
+      resetLoginState();
+    }
+  };
+
   render() {
     const {
       handleSubmit,
@@ -57,6 +64,7 @@ class LoginForm extends React.PureComponent<Props> {
               showSuccessCheck={false}
               enableSuccessCheck={false}
               className="elem-mb-SM"
+              onKeyPress={this.resetError}
             />
             <Field
               labels={labels}
@@ -70,6 +78,7 @@ class LoginForm extends React.PureComponent<Props> {
               enableSuccessCheck={false}
               className="elem-mb-SM"
               tooltipContent={tooltipContent}
+              onKeyPress={this.resetError}
             />
             <BodyCopy component="div">
               <Field

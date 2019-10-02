@@ -36,7 +36,7 @@ describe('#getIsPLCCModalOpen selector', () => {
 
 describe('#getLabels selector', () => {
   const LabelsState = fromJS({
-    PLCC: {
+    global: {
       plccForm: {
         header: 'dummy',
       },
@@ -52,7 +52,7 @@ describe('#getLabels selector', () => {
 
 describe('#getLabels selector', () => {
   const LabelsState = {
-    PLCC: {
+    global: {
       plccForm: null,
     },
   };

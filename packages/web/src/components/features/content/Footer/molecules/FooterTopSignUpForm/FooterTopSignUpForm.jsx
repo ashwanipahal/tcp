@@ -102,7 +102,7 @@ class FooterTopSignUpForm extends React.PureComponent {
               }}
             >
               <Field
-                placeholder={labels.placeholderText}
+                placeholder={labels.lbl_SignUp_placeholderText}
                 name={fieldName}
                 id={fieldName}
                 type="text"
@@ -140,7 +140,7 @@ class FooterTopSignUpForm extends React.PureComponent {
                 onClick={this.submitForm}
                 className="candidate_a_form_button"
               >
-                {labels.submitButtonLabel}
+                {labels.lbl_SignUp_submitButtonLabel}
               </Button>
             </Col>
           </Row>
@@ -152,10 +152,10 @@ class FooterTopSignUpForm extends React.PureComponent {
 
 FooterTopSignUpForm.propTypes = {
   labels: PropTypes.shape({
-    placeholderText: PropTypes.string,
+    lbl_SignUp_placeholderText: PropTypes.string,
     validationErrorLabel: PropTypes.string,
-    termsTextLabel: PropTypes.string,
-    submitButtonLabel: PropTypes.string,
+    lbl_SignUp_termsTextLabel: PropTypes.string,
+    lbl_SignUp_submitButtonLabel: PropTypes.string,
   }),
   dataLocators: PropTypes.shape({
     submitButton: PropTypes.string,
@@ -177,10 +177,10 @@ FooterTopSignUpForm.propTypes = {
 
 FooterTopSignUpForm.defaultProps = {
   labels: {
-    placeholderText: 'Enter email address',
+    lbl_SignUp_placeholderText: 'Enter email address',
     validationErrorLabel: '',
-    termsTextLabel: '',
-    submitButtonLabel: 'Submit',
+    lbl_SignUp_termsTextLabel: '',
+    lbl_SignUp_submitButtonLabel: 'Submit',
   },
   dataLocators: {
     submitButton: 'email_submit_btn',

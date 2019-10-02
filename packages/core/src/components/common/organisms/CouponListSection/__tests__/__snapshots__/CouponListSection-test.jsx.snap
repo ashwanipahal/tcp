@@ -16,6 +16,7 @@ exports[`CouponList component should renders applied list 1`] = `
       fontWeight="semibold"
       letterSpacing="normal"
       lineHeight="normal"
+      link={null}
       textAlign="left"
     >
       Heading (6)
@@ -170,6 +171,7 @@ exports[`CouponList component should renders available list 1`] = `
       fontWeight="semibold"
       letterSpacing="normal"
       lineHeight="normal"
+      link={null}
       textAlign="left"
     >
       Heading (6)

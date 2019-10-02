@@ -7,6 +7,10 @@ import { StyledHeading, SubHeading, MainWrapper } from '../styles/BossBanner.sty
 const getItemLabel = labels => {
   return `${labels.simplyChooseText.replace('#type', `${labels.noRushText}`)}`;
 };
+
+const getModifiedHeaderText = labels => {
+  return `${labels.pickUpText.replace('#value', `5%`)}`;
+};
 const BossBanner = ({ labels }) => {
   return (
     <MainWrapper>
@@ -15,7 +19,7 @@ const BossBanner = ({ labels }) => {
           fontSize="fs12"
           fontWeight={['semibold']}
           textAlign="center"
-          text={labels.pickUpText}
+          text={getModifiedHeaderText(labels)}
         />
       </StyledHeading>
       <SubHeading>

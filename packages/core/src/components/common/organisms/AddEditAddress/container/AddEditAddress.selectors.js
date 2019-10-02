@@ -3,7 +3,7 @@ import {
   LOGINPAGE_REDUCER_KEY,
   ADDEDITADDRESS_REDUCER_KEY,
 } from '../../../../../constants/reducer.constants';
-import { getLabelValue, getErrorSelector } from '../../../../../utils';
+import { getLabelValue, getErrorSelector } from '../../../../../utils/utils';
 import { getAddressListState } from '../../../../features/account/AddressBook/container/AddressBook.selectors';
 
 export const getAddressResponse = state => {
@@ -47,73 +47,97 @@ export const getAddEditErrorMessage = createSelector(
     return getErrorSelector(state, labels, 'lbl_addEditAddress_error');
   }
 );
+const globalAddressLabelsObj = state =>
+  state.Labels && state.Labels.global && state.Labels.global.addEditAddress;
+const getAddressBookLabels = state =>
+  state.Labels && state.Labels.account && state.Labels.account.addressBook;
 
-export const getAddEditAddressLabels = state => {
-  const {
-    lbl_addEditAddress_editAddress: editAddress,
-    lbl_addEditAddress_addAddress: addAddressHeading,
-    lbl_addEditAddress_fname: firstName,
-    lbl_addEditAddress_lname: lastName,
-    lbl_addEditAddress_addressLine1: addressLine1,
-    lbl_addEditAddress_addressLine2: addressLine2,
-    lbl_addEditAddress_city: city,
-    lbl_addEditAddress_state: stateLbl,
-    lbl_addEditAddress_province: province,
-    lbl_addEditAddress_zipCode: zipCode,
-    lbl_addEditAddress_postalCode: postalCode,
-    lbl_addEditAddress_country: country,
-    lbl_addEditAddress_phoneNumber: phoneNumber,
-    lbl_addEditAddress_setDefault: setDefaultMsg,
-    lbl_addEditAddress_addressButton: addAddress,
-    lbl_addEditAddress_update: update,
-    lbl_addEditAddress_cancel: cancel,
-    lbl_addEditAddress_internationalShipping: shipInternationally,
-  } = state.Labels.global && state.Labels.global.addEditAddress;
+export const getAddEditAddressLabels = createSelector(
+  [globalAddressLabelsObj, getAddressBookLabels],
+  (addressLabels, addressBookLabels) => {
+    const labels = {};
+    const addressLabelsKeys = [
+      'lbl_addEditAddress_fname',
+      'lbl_addEditAddress_lname',
+      'lbl_addEditAddress_addressLine1',
+      'lbl_addEditAddress_addressLine2',
+      'lbl_addEditAddress_city',
+      'lbl_addEditAddress_state',
+      'lbl_addEditAddress_province',
+      'lbl_addEditAddress_zipCode',
+      'lbl_addEditAddress_postalCode',
+      'lbl_addEditAddress_country',
+      'lbl_addEditAddress_phoneNumber',
+      'lbl_addEditAddress_addNewAddress',
+      'lbl_addEditAddress_selectFromAddress',
+      'lbl_addEditAddress_update',
+      'lbl_addEditAddress_cancel',
+      'lbl_addEditAddress_setDefault',
+      'lbl_addEditAddress_addressButton',
+    ];
 
-  // const {
-  //   ACC_LBL_ADD_ADDRESS_FORM_HEADING: addNewAddress,
-  //   ACC_LBL_EDIT_ADDRESS_FORM_HEADING: editAddressLbl,
-  //   ACC_LBL_VERIFY_YOUR_ADDRESS_HEADER: verifyAddress,
-  // } = state.Labels.account && state.Labels.account.addressBook;
-
-  return {
-    addressFormLabels: {
-      firstName,
-      lastName,
-      addressLine1,
-      addressLine2,
-      city,
-      stateLbl,
-      province,
-      zipCode,
-      postalCode,
-      country,
-      phoneNumber,
-      setDefaultMsg,
-      addAddress,
-      update,
-      cancel,
-      editAddress,
-      addAddressHeading,
-      shipInternationally,
-      editAddressLbl: getLabelValue(
-        state.Labels,
-        'ACC_LBL_VERIFY_YOUR_ADDRESS_HEADER',
-        'addressBook',
-        'account'
-      ),
-      addNewAddress: getLabelValue(
-        state.Labels,
-        'ACC_LBL_EDIT_ADDRESS_FORM_HEADING',
-        'addressBook',
-        'account'
-      ),
-      verifyAddress: getLabelValue(
-        state.Labels,
-        'ACC_LBL_VERIFY_YOUR_ADDRESS_HEADER',
-        'addressBook',
-        'account'
-      ),
-    },
-  };
-};
+    addressLabelsKeys.forEach(key => {
+      labels[key] = getLabelValue(addressLabels, key);
+    });
+    const addrBookLbl = [
+      'ACC_LBL_VERIFY_YOUR_ADDRESS_HEADER',
+      'ACC_LBL_EDIT_ADDRESS_FORM_HEADING',
+      'ACC_LBL_VERIFY_YOUR_ADDRESS_HEADER',
+    ];
+    addrBookLbl.forEach(key => {
+      labels[key] = getLabelValue(addressBookLabels, key);
+    });
+    const {
+      lbl_addEditAddress_editAddress: editAddress,
+      lbl_addEditAddress_addAddress: addAddressHeading,
+      lbl_addEditAddress_fname: firstName,
+      lbl_addEditAddress_lname: lastName,
+      lbl_addEditAddress_addressLine1: addressLine1,
+      lbl_addEditAddress_addressLine2: addressLine2,
+      lbl_addEditAddress_city: city,
+      lbl_addEditAddress_state: stateLbl,
+      lbl_addEditAddress_province: province,
+      lbl_addEditAddress_zipCode: zipCode,
+      lbl_addEditAddress_postalCode: postalCode,
+      lbl_addEditAddress_country: country,
+      lbl_addEditAddress_phoneNumber: phoneNumber,
+      lbl_addEditAddress_setDefault: setDefaultMsg,
+      lbl_addEditAddress_addressButton: addAddress,
+      lbl_addEditAddress_update: update,
+      lbl_addEditAddress_cancel: cancel,
+      lbl_addEditAddress_internationalShipping: shipInternationally,
+      lbl_addEditAddress_addNewAddress: addNewAddressSign,
+      lbl_addEditAddress_selectFromAddress: selectFromAddress,
+      ACC_LBL_VERIFY_YOUR_ADDRESS_HEADER: editAddressLbl,
+      ACC_LBL_EDIT_ADDRESS_FORM_HEADING: addNewAddress,
+      ACC_LBL_VERIFY_YOUR_ADDRESS_HEADER: verifyAddress,
+    } = labels;
+    return {
+      addressFormLabels: {
+        firstName,
+        lastName,
+        addressLine1,
+        addressLine2,
+        city,
+        stateLbl,
+        province,
+        zipCode,
+        postalCode,
+        country,
+        phoneNumber,
+        setDefaultMsg,
+        addAddress,
+        update,
+        cancel,
+        editAddress,
+        addAddressHeading,
+        shipInternationally,
+        addNewAddressSign,
+        selectFromAddress,
+        editAddressLbl,
+        addNewAddress,
+        verifyAddress,
+      },
+    };
+  }
+);

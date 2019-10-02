@@ -97,7 +97,7 @@ class FooterTopCandidateA extends React.PureComponent {
             />
 
             <BodyCopy fontFamily="secondary" textAlign="center" fontSize={['fs9', 'fs9', 'fs12']}>
-              <RichText richTextHtml={emailSignupLabels.termsTextLabel} />
+              <RichText richTextHtml={emailSignupLabels.lbl_SignUp_termsTextLabel} />
             </BodyCopy>
             <div>
               <div className="divider hide-in-medium-up" />
@@ -145,7 +145,7 @@ class FooterTopCandidateA extends React.PureComponent {
             />
 
             <BodyCopy fontFamily="secondary" textAlign="center" fontSize={['fs9', 'fs9', 'fs12']}>
-              <RichText richTextHtml={smsSignupLabels.termsTextLabel} />
+              <RichText richTextHtml={smsSignupLabels.lbl_SignUp_termsTextLabel} />
             </BodyCopy>
           </Col>
           <div className="divider hide-in-large-up" />
@@ -260,16 +260,16 @@ FooterTopCandidateA.propTypes = {
     text: PropTypes.string,
   }),
   emailSignupLabels: PropTypes.shape({
-    placeholderText: PropTypes.string,
-    validationErrorLabel: PropTypes.string,
-    termsTextLabel: PropTypes.string,
-    submitButtonLabel: PropTypes.string,
+    lbl_SignUp_placeholderText: PropTypes.string,
+    lbl_SignUp_validationErrorLabel: PropTypes.string,
+    lbl_SignUp_termsTextLabel: PropTypes.string,
+    lbl_SignUp_submitButtonLabel: PropTypes.string,
   }),
   smsSignupLabels: PropTypes.shape({
-    placeholderText: PropTypes.string,
-    validationErrorLabel: PropTypes.string,
-    termsTextLabel: PropTypes.string,
-    submitButtonLabel: PropTypes.string,
+    lbl_SignUp_placeholderText: PropTypes.string,
+    lbl_SignUp_validationErrorLabel: PropTypes.string,
+    lbl_SignUp_termsTextLabel: PropTypes.string,
+    lbl_SignUp_submitButtonLabel: PropTypes.string,
   }),
   socialMediaLinks: PropTypes.arrayOf(
     PropTypes.shape({
@@ -311,18 +311,16 @@ FooterTopCandidateA.defaultProps = {
     text: '',
   },
   emailSignupLabels: {
-    placeholderText: 'Enter email address',
-    validationErrorLabel: '',
-    termsTextLabel:
-      '*Applies to new email subscribers only. Exclusions apply. Offer valid onyour next purchase of $40 or more. You may withdraw your consent at any time. Contact Us The Children’s Place, 500 Plaza Drive, Secaucus, NJ 07094, www.childrensplace.com.',
-    submitButtonLabel: 'Submit',
+    lbl_SignUp_placeholderText: '',
+    lbl_SignUp_validationErrorLabel: '',
+    lbl_SignUp_termsTextLabel: '',
+    lbl_SignUp_submitButtonLabel: '',
   },
   smsSignupLabels: {
-    placeholderText: 'Enter phone number',
-    validationErrorLabel: '',
-    termsTextLabel:
-      '*Applies to new email subscribers only. Exclusions apply. Offer valid onyour next purchase of $40 or more. You may withdraw your consent at any time. Contact Us The Children’s Place, 500 Plaza Drive, Secaucus, NJ 07094, www.childrensplace.com.',
-    submitButtonLabel: 'Submit',
+    lbl_SignUp_placeholderText: '',
+    lbl_SignUp_validationErrorLabel: '',
+    lbl_SignUp_termsTextLabel: '',
+    lbl_SignUp_submitButtonLabel: '',
   },
   referAFriend: {
     title: '',

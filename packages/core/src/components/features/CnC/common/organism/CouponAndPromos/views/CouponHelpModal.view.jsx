@@ -4,7 +4,7 @@ import { RichText } from '../../../../../../common/atoms';
 
 class CouponHelpModal extends React.PureComponent<Props> {
   render() {
-    const { openState, onRequestClose, labels } = this.props;
+    const { openState, onRequestClose, labels, additionalClassNameModal } = this.props;
     return (
       <Modal
         isOpen={openState}
@@ -16,6 +16,7 @@ class CouponHelpModal extends React.PureComponent<Props> {
         heightConfig={{ height: '90%' }}
         closeIconDataLocator="helpmodalcrossicon"
         fixedWidth
+        customWrapperClassName={additionalClassNameModal}
       >
         <RichText richTextHtml={labels.NEED_HELP_RICH_TEXT} />
       </Modal>

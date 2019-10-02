@@ -1,0 +1,90 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`testing block for PickupStoreDisplay PickupStoreDisplay should be rendered correclty when order type is BOSS 1`] = `
+<div
+  className=""
+>
+  <div
+    className="pickup-store-details"
+  >
+    <div
+      className="pickup-store-icon"
+    >
+      <Styled(Image)
+        className="back-link-image"
+        src="/static/images/marker-icon.png"
+      />
+    </div>
+    <div
+      className="pickup-store-content"
+    >
+      <Styled(BodyCopy)
+        className={null}
+        color="gray.900"
+        component="p"
+        dataLocator=""
+        fontFamily="secondary"
+        fontSize="fs14"
+        fontWeight="extrabold"
+        letterSpacing="normal"
+        lineHeight="normal"
+        link={null}
+        textAlign="left"
+      >
+        Fulton Street
+      </Styled(BodyCopy)>
+      <Styled(BodyCopy)
+        className={null}
+        color="gray.900"
+        component="p"
+        dataLocator=""
+        fontFamily="secondary"
+        fontSize="fs12"
+        fontWeight="regular"
+        letterSpacing="normal"
+        lineHeight="normal"
+        link={null}
+        textAlign="left"
+      >
+        471-485 Fulton Street
+      </Styled(BodyCopy)>
+      <div
+        className="pickup-store-margin"
+      >
+        <Styled(BodyCopy)
+          className={null}
+          color="gray.900"
+          component="p"
+          dataLocator=""
+          fontFamily="secondary"
+          fontSize="fs14"
+          fontWeight="extrabold"
+          letterSpacing="normal"
+          lineHeight="normal"
+          link={null}
+          textAlign="left"
+        >
+          Title 1 
+          item
+        </Styled(BodyCopy)>
+        <Styled(BodyCopy)
+          className={null}
+          color="gray.900"
+          component="p"
+          dataLocator=""
+          fontFamily="secondary"
+          fontSize="fs12"
+          fontWeight="regular"
+          letterSpacing="normal"
+          lineHeight="normal"
+          link={null}
+          textAlign="left"
+        >
+          Thu. Jan
+    3 - Fri. Jan 4
+        </Styled(BodyCopy)>
+      </div>
+    </div>
+  </div>
+</div>
+`;

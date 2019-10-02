@@ -12,6 +12,7 @@ exports[`Detail Coupon Modal should render correctly 1`] = `
   }
   horizontalBar={false}
   isOpen={true}
+  isOverlay={false}
   onRequestClose={[Function]}
   overlayClassName="TCPModal__Overlay"
 >
@@ -21,55 +22,93 @@ exports[`Detail Coupon Modal should render correctly 1`] = `
   >
     <Styled(View)>
       <Styled(BodyCopy)
+        accessibilityText=""
         data-locator="couponDetailModal_applied_NameLbl"
+        dataLocator=""
         fontFamily="primary"
         fontSize="fs42"
         fontWeight="black"
+        margin={null}
+        numberOfLines={null}
         text="$10 OFF On $80"
+        textDecoration={null}
       />
       <Styled(View)
         spacingStyles="margin-top-SM"
       >
         <Styled(BodyCopy)
+          accessibilityText=""
           data-locator="couponDetailModal_applied_ValidityDateLbl"
+          dataLocator=""
           fontFamily="secondary"
           fontSize="fs24"
           fontWeight="semibold"
+          margin={null}
+          numberOfLines={null}
           text="USE_BY_TEXT 8/10/19"
+          textDecoration={null}
         />
       </Styled(View)>
       <Styled(View) />
       <View
         data-locator="couponDetailModal_applied_BarCode"
       >
-        <BarcodeView
-          format="CODE128"
-          height="50"
-          value="Y00105578"
-        />
+        <ScreenViewShot
+          options={
+            Object {
+              "format": "png",
+              "quality": 0.9,
+              "result": "base64",
+            }
+          }
+          setScreenViewShotRef={[Function]}
+        >
+          <BarcodeView
+            format="CODE128"
+            height="50"
+            value="Y00105578"
+          />
+        </ScreenViewShot>
       </View>
       <Styled(View) />
       <Styled(View)
         spacingStyles="margin-bottom-LRG"
       >
-        <Styled(WithTheme(CustomButton))
+        <Styled(CustomButton)
+          active={false}
           buttonVariation="fixed-width"
+          color=""
+          customStyle={Object {}}
+          customTextStyle={null}
           data-locator="couponDetailModal_applied_AddToBagBtn"
+          disableButton={false}
           disabled={false}
           fill="BLUE"
+          fullWidth=""
+          iconColor="gray.800"
+          iconName="chevron-down"
+          iconSize="fs12"
+          locator=""
+          navigation={Object {}}
           onPress={[Function]}
+          selected={false}
+          selectedIcon="chevron-up"
+          showIcon={false}
           text="APPLY_TO_BAG"
+          theme={Object {}}
+          url=""
         />
       </Styled(View)>
       <Styled(Anchor)
         accessibilityLabel=""
         anchorVariation="secondary"
         class="clickhere"
+        colorName={null}
         customStyle={Object {}}
         dataLocator="couponDetailModal_applied_printAch"
         fontSizeVariation="large"
         locator=""
-        onPress={null}
+        onPress={[Function]}
         text="PRINT_ANCHOR_TEXT"
         underlineBlue={true}
         visible={false}
@@ -155,15 +194,21 @@ exports[`Detail Coupon Modal should render correctly 1`] = `
       </Styled(View)>
       <Styled(View)>
         <Styled(BodyCopy)
+          accessibilityText=""
           data-locator="couponDetailModal_applied_ShortDesc"
+          dataLocator=""
           fontFamily="primary"
           fontSize="fs12"
           fontWeight="regular"
+          margin={null}
+          numberOfLines={null}
           text="MODAL_SHORT_DESCRIPTION"
+          textDecoration={null}
         />
         <Styled(Anchor)
           accessibilityLabel=""
           anchorVariation="primary"
+          colorName={null}
           customStyle={Object {}}
           dataLocator="couponDetailModal_applied_tAndC"
           fontFamily="secondary"
@@ -176,15 +221,21 @@ exports[`Detail Coupon Modal should render correctly 1`] = `
           visible={false}
         />
         <Styled(BodyCopy)
+          accessibilityText=""
           data-locator="couponDetailModal_applied_and"
+          dataLocator=""
           fontFamily="primary"
           fontSize="fs12"
           fontWeight="regular"
+          margin={null}
+          numberOfLines={null}
           text=" and "
+          textDecoration={null}
         />
         <Styled(Anchor)
           accessibilityLabel=""
           anchorVariation="primary"
+          colorName={null}
           customStyle={Object {}}
           dataLocator="couponDetailModal_applied_pp"
           fontSizeVariation="medium"

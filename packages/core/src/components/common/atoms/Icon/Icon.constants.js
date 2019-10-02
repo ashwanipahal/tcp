@@ -1,5 +1,6 @@
 export const ICON_FONT_CLASS = {
   FontAwesome: 'FontAwesome',
+  Icomoon: 'Icomoon',
 };
 
 export const ICON_NAME = {
@@ -15,4 +16,15 @@ export const ICON_NAME = {
   checkmark: 'check',
   favorite: 'heart-o',
   close: 'close',
+  addCreditCard: 'add-credit-card',
+  addGiftCard: 'add-gift-card',
+  amexCardIcon: 'amex',
+  atIcon: 'at',
+  backToTop: 'back-to-top',
+  bag: 'bag',
+  camera: 'camera',
+  caretLargeLeft: 'caret-large-left',
+  circleAlertFill: 'circle-alert-fill',
+  fastShipping: 'fast-shipping',
+  markerIcon: 'marker-icon',
 };

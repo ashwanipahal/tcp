@@ -62,15 +62,20 @@ exports[`CreditCardTextBox component render enableSuccessCheck on validation fai
     <Styled(View)>
       <Styled(View)>
         <Styled(BodyCopy)
+          accessibilityText=""
           color="error"
+          dataLocator=""
           fontSize="fs12"
           fontWeight="semibold"
+          margin={null}
           mobilefontFamily={
             Array [
               "secondary",
             ]
           }
+          numberOfLines={null}
           text="food"
+          textDecoration={null}
         />
       </Styled(View)>
     </Styled(View)>

@@ -9,6 +9,7 @@ exports[`Anchor Native should render correctly 1`] = `
 >
   <Styled(Text)
     anchorVariation=""
+    colorName={null}
     internal={true}
     name="Anchor"
     navigation={

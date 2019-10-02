@@ -1,20 +1,11 @@
 import React from 'react';
+import PropTypes from 'prop-types';
+
 import { DamImage, BodyCopy, Heading, Anchor } from '../../../atoms';
 import { getLocator, getScreenWidth, getPixelRatio } from '../../../../../utils/index.native';
 import { Carousel } from '../..';
 import config from '../config';
 import { HeaderWrapper, LinksWrapper, Wrapper } from '../ModuleH.style.native';
-
-// @flow
-type Props = {
-  divCTALinks: Array<Object>,
-  headerText: Object,
-  navigation: Object,
-};
-
-type State = {
-  currentIndex: Number,
-};
 
 /**
  * Module height and width.
@@ -36,7 +27,7 @@ const devicePixelRatio = getPixelRatio();
  * This component is plug and play at any given slot in layout by passing required data.
  * @param {Object} composites the list of data for header texts, links and images for component.
  */
-class ModuleH extends React.PureComponent<Props, State> {
+class ModuleH extends React.PureComponent {
   constructor(props) {
     super(props);
     this.state = {
@@ -109,6 +100,7 @@ class ModuleH extends React.PureComponent<Props, State> {
   render() {
     const { navigation, divCTALinks, headerText: [{ link, textItems }] = {} } = this.props;
     let HeadingFontSize = 'fs36';
+    const headerLines = textItems.length;
     if (devicePixelRatio === 'xxxhdpi' || devicePixelRatio === 'xhdpi') {
       HeadingFontSize = 'fs32';
     }
@@ -132,6 +124,7 @@ class ModuleH extends React.PureComponent<Props, State> {
                 </Anchor>
               ) : (
                 <Heading
+                  key={index.toString()}
                   fontFamily="primary"
                   fontSize={HeadingFontSize}
                   letterSpacing="ls167"
@@ -160,11 +153,30 @@ class ModuleH extends React.PureComponent<Props, State> {
           />
         )}
         {divCTALinks ? (
-          <LinksWrapper>{this.renderLinks(divCTALinks, navigation)}</LinksWrapper>
+          <LinksWrapper lines={headerLines}>
+            {this.renderLinks(divCTALinks, navigation)}
+          </LinksWrapper>
         ) : null}
       </Wrapper>
     );
   }
 }
+
+ModuleH.propTypes = {
+  headerText: PropTypes.arrayOf(
+    PropTypes.shape({
+      link: PropTypes.object,
+      textItems: PropTypes.array,
+    })
+  ).isRequired,
+  divCTALinks: PropTypes.arrayOf(
+    PropTypes.shape({
+      link: PropTypes.object,
+      image: PropTypes.object,
+      styled: PropTypes.object,
+    })
+  ).isRequired,
+  navigation: PropTypes.shape({}).isRequired,
+};
 
 export default ModuleH;

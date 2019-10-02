@@ -11,6 +11,7 @@ exports[`PageHeadingWithLinks View should empty render correctly 1`] = `
     fontWeight="regular"
     letterSpacing="normal"
     lineHeight="normal"
+    link={null}
     textAlign="left"
   >
     <Styled(Heading)
@@ -36,6 +37,7 @@ exports[`PageHeadingWithLinks View should render correctly 1`] = `
     fontWeight="regular"
     letterSpacing="normal"
     lineHeight="normal"
+    link={null}
     textAlign="left"
   >
     <Styled(Heading)
@@ -71,10 +73,9 @@ exports[`PageHeadingWithLinks View should render correctly 1`] = `
     >
       <Styled(Anchor)
         anchorVariation="primary"
-        className="elem-ml-MED"
-        dataLocator="terms_condition_cta"
+        dataLocator="program_details_cta"
         fontSizeVariation="large"
-        href="https://www.childrensplace.com/us/help-center/#termsAndConditionsli"
+        href="https://www.childrensplace.com/us/content/myplace-rewards-page"
         noLink={true}
         target="_blank"
         underline={true}
@@ -83,10 +84,10 @@ exports[`PageHeadingWithLinks View should render correctly 1`] = `
       </Styled(Anchor)>
       <Styled(Anchor)
         anchorVariation="primary"
-        className="elem-ml-LRG"
-        dataLocator="program_details_cta"
+        className="elem-ml-XL"
+        dataLocator="terms_condition_cta"
         fontSizeVariation="large"
-        href="https://www.childrensplace.com/us/content/myplace-rewards-page"
+        href="https://www.childrensplace.com/us/help-center/#termsAndConditionsli"
         noLink={true}
         underline={true}
       >

@@ -28,7 +28,7 @@ export const LINE_HEIGHTS = { normal: 'normal', lh115: '1.15', lh107: '1.07' };
 export const TEXT_ALIGNS = { left: 'left', center: 'center', right: 'right' };
 
 export const FONT_WEIGHTS = {
-  regular: '500',
+  regular: '400',
   semibold: '600',
   extrabold: '800',
   black: '900',

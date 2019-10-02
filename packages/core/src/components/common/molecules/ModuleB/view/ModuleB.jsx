@@ -6,6 +6,7 @@ import { Row, Col } from '../../../atoms';
 import { getLocator } from '../../../../../utils';
 import { ctaTypes, ctaTypeProps, MODULE_WIDTH_HALF } from '../config';
 import withStyles from '../../../hoc/withStyles';
+import errorBoundary from '../../../hoc/withErrorBoundary/errorBoundary';
 import style from '../ModuleB.style';
 
 /**
@@ -13,7 +14,10 @@ import style from '../ModuleB.style';
  * @param {*} ctaType
  */
 const getButtonListVariation = ctaType => {
-  return ctaTypes[ctaType];
+  const buttonTypes = {
+    ...ctaTypes,
+  };
+  return buttonTypes[ctaType];
 };
 
 /**
@@ -21,7 +25,10 @@ const getButtonListVariation = ctaType => {
  * @param {*} ctaType
  */
 const getButtonListVariationProps = ctaType => {
-  return ctaTypeProps[ctaType];
+  const buttonTypeProps = {
+    ...ctaTypeProps,
+  };
+  return buttonTypeProps[ctaType];
 };
 
 /**
@@ -48,10 +55,8 @@ const getColSize = moduleWidth => {
 const ModuleB = props => {
   const {
     className,
-    composites: {
-      ctaItems,
-      largeCompImage: [{ headerText, promoBanner, linkedImage }],
-    },
+    ctaItems,
+    largeCompImage: [{ headerText, promoBanner, linkedImage }],
     moduleWidth,
     ctaType,
     bannerPosition,
@@ -62,9 +67,7 @@ const ModuleB = props => {
   const buttonListProps = getButtonListVariationProps(ctaType);
   const colSize = getColSize(moduleWidth);
 
-  if (ctaItems.length < 3) {
-    buttonListProps.dualVariation = null;
-  }
+  const dualVariation = ctaItems.length < 3 ? null : buttonListProps.dualVariation;
 
   const imageBannerProps = {
     bannerPosition,
@@ -98,7 +101,7 @@ const ModuleB = props => {
             dataLocatorDivisionImages={getLocator('moduleB_cta_image')}
             dataLocatorTextCta={getLocator('moduleB_cta_links')}
             dropdownLabel={expandableTitle}
-            {...buttonListProps}
+            dualVariation={dualVariation}
           />
         </Col>
       </Row>
@@ -108,12 +111,17 @@ const ModuleB = props => {
 
 ModuleB.propTypes = {
   className: PropTypes.string.isRequired,
-  composites: PropTypes.shape({}).isRequired,
-  moduleWidth: PropTypes.string.isRequired,
+  moduleWidth: PropTypes.string,
+  ctaItems: PropTypes.arrayOf(PropTypes.oneOfType(PropTypes.shape({}))).isRequired,
+  largeCompImage: PropTypes.arrayOf(PropTypes.oneOfType(PropTypes.shape({}))).isRequired,
   ctaType: PropTypes.string.isRequired,
   bannerPosition: PropTypes.string.isRequired,
   expandableTitle: PropTypes.string.isRequired,
 };
 
+ModuleB.defaultProps = {
+  moduleWidth: MODULE_WIDTH_HALF,
+};
+
 export { ModuleB as ModuleBVanilla };
-export default withStyles(ModuleB, style);
+export default withStyles(errorBoundary(ModuleB), style);

@@ -4,6 +4,7 @@ import { withRouter } from 'next/router'; // eslint-disable-line
 import { PropTypes } from 'prop-types';
 import ProductDetail from '../views';
 import { getProductDetails } from './ProductDetail.actions';
+import { getAddedToBagError } from '../../../CnC/AddedToBag/container/AddedToBag.selectors';
 import {
   getNavTree,
   prodDetails,
@@ -12,9 +13,20 @@ import {
   getRatingsProductId,
   getDefaultImage,
   getCurrentCurrency,
+  getPlpLabels,
+  getCurrentProduct,
+  getPDPLabels,
+  getProductDetailFormValues,
 } from './ProductDetail.selectors';
 
-class ProductListingContainer extends React.PureComponent {
+import {
+  addToCartEcom,
+  clearAddToBagErrorState,
+} from '../../../CnC/AddedToBag/container/AddedToBag.actions';
+
+import { getCartItemInfo } from '../../../CnC/AddedToBag/util/utility';
+
+class ProductDetailContainer extends React.PureComponent {
   componentDidMount() {
     const {
       getDetails,
@@ -34,7 +46,20 @@ class ProductListingContainer extends React.PureComponent {
     }
 
     getDetails({ productColorId: productId });
+    window.scrollTo(0, 100);
   }
+
+  componentWillUnmount = () => {
+    const { clearAddToBagError } = this.props;
+    clearAddToBagError();
+  };
+
+  handleAddToBag = () => {
+    const { addToBagEcom, formValues, productInfo } = this.props;
+    let cartItemInfo = getCartItemInfo(productInfo, formValues);
+    cartItemInfo = { ...cartItemInfo };
+    addToBagEcom(cartItemInfo);
+  };
 
   render() {
     const {
@@ -43,19 +68,33 @@ class ProductListingContainer extends React.PureComponent {
       longDescription,
       ratingsProductId,
       defaultImage,
+      productInfo,
       currency,
+      plpLabels,
+      pdpLabels,
+      addToBagError,
       ...otherProps
     } = this.props;
+    const isProductDataAvailable = Object.keys(productInfo).length > 0;
     return (
-      <ProductDetail
-        productDetails={productDetails}
-        breadCrumbs={breadCrumbs}
-        longDescription={longDescription}
-        ratingsProductId={ratingsProductId}
-        otherProps={otherProps}
-        defaultImage={defaultImage}
-        currency={currency}
-      />
+      <React.Fragment>
+        {isProductDataAvailable ? (
+          <ProductDetail
+            productDetails={productDetails}
+            breadCrumbs={breadCrumbs}
+            longDescription={longDescription}
+            ratingsProductId={ratingsProductId}
+            otherProps={otherProps}
+            defaultImage={defaultImage}
+            plpLabels={plpLabels}
+            pdpLabels={pdpLabels}
+            currency={currency}
+            productInfo={productInfo}
+            handleAddToBag={this.handleAddToBag}
+            addToBagError={addToBagError}
+          />
+        ) : null}
+      </React.Fragment>
     );
   }
 }
@@ -69,7 +108,12 @@ function mapStateToProps(state) {
     ratingsProductId: getRatingsProductId(state),
     // This is just to check if the product is correct
     defaultImage: getDefaultImage(state),
+    productInfo: getCurrentProduct(state),
     currency: getCurrentCurrency(state),
+    plpLabels: getPlpLabels(state),
+    pdpLabels: getPDPLabels(state),
+    addToBagError: getAddedToBagError(state),
+    formValues: getProductDetailFormValues(state),
   };
 }
 
@@ -78,13 +122,25 @@ function mapDispatchToProps(dispatch) {
     getDetails: payload => {
       dispatch(getProductDetails(payload));
     },
+    addToBagEcom: payload => {
+      dispatch(addToCartEcom(payload));
+    },
+    clearAddToBagError: () => {
+      dispatch(clearAddToBagErrorState());
+    },
   };
 }
 
-ProductListingContainer.propTypes = {
+ProductDetailContainer.propTypes = {
   productDetails: PropTypes.arrayOf(PropTypes.shape({})),
   getDetails: PropTypes.func.isRequired,
+  addToBagError: PropTypes.string,
+  clearAddToBagError: PropTypes.func.isRequired,
+  formValues: PropTypes.shape({}).isRequired,
+  addToBagEcom: PropTypes.func.isRequired,
+  productInfo: PropTypes.arrayOf(PropTypes.shape({})),
   breadCrumbs: PropTypes.shape({}),
+  pdpLabels: PropTypes.shape({}),
   longDescription: PropTypes.string,
   ratingsProductId: PropTypes.string,
   router: PropTypes.shape({
@@ -94,20 +150,29 @@ ProductListingContainer.propTypes = {
   }).isRequired,
   defaultImage: PropTypes.string,
   currency: PropTypes.string,
+  plpLabels: PropTypes.shape({
+    lbl_sort: PropTypes.string,
+  }),
 };
 
-ProductListingContainer.defaultProps = {
+ProductDetailContainer.defaultProps = {
   productDetails: [],
+  productInfo: {},
+  addToBagError: '',
   breadCrumbs: null,
   longDescription: '',
   ratingsProductId: '',
   defaultImage: '',
   currency: '',
+  plpLabels: {
+    lbl_sort: '',
+  },
+  pdpLabels: {},
 };
 
 export default withRouter(
   connect(
     mapStateToProps,
     mapDispatchToProps
-  )(ProductListingContainer)
+  )(ProductDetailContainer)
 );

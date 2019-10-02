@@ -68,9 +68,13 @@ export const UpdateProfileInfo = args => {
     payload.body.customMemberAttributes = [{ airMilesCard: airmiles }];
   }
 
-  return executeStatefulAPICall(payload, errorHandler).then(() => {
-    return 'successMessage';
-  });
+  return executeStatefulAPICall(payload)
+    .then(() => {
+      return 'successMessage';
+    })
+    .catch(err => {
+      throw err;
+    });
 };
 
 /**
@@ -124,6 +128,38 @@ export const deleteChild = args => {
       ],
     },
     webService: endpoints.deleteChild,
+  };
+
+  return executeStatefulAPICall(payload)
+    .then(res => res.body)
+    .catch(err => {
+      throw err;
+    });
+};
+
+/**
+ * @function add child birthday
+ * @summary
+ * @param {type} paramName -
+ * @return TDB
+ */
+export const addChildBirthday = args => {
+  const d = new Date();
+  const payload = {
+    body: {
+      firstName: args.firstName,
+      lastName: args.lastName,
+      timestamp: `${d.getFullYear()}-${d.getMonth()}-${d.getDate()} ${d.getHours()}:${d.getMinutes()}:${d.getSeconds()}.${d.getMilliseconds()}`,
+      childDetails: [
+        {
+          childName: args.childName,
+          birthMonth: args.userBirthMonth,
+          birthYear: args.userBirthYear,
+          gender: args.gender,
+        },
+      ],
+    },
+    webService: endpoints.addChild,
   };
 
   return executeStatefulAPICall(payload)

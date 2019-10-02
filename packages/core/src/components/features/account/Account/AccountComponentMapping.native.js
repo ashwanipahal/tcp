@@ -4,7 +4,10 @@ import PlaceRewardsContainer from '../PlaceRewards/container/PlaceRewards.contai
 import AccountOverviewViewContainer from '../AccountOverview/container/AccountOverview.container';
 import MyProfile from '../MyProfile/container/MyProfile.container';
 import Wallet from '../Wallet/container/Wallet.container';
+import ExtraPoints from '../ExtraPoints/container/ExtraPoints.container';
 import PointHistoryPage from '../PointHistory';
+import { MyPrefrenceContainer } from '../MyPrefrence/container/MyPreference.container';
+import PointsClaimPage from '../PointsClaim';
 
 const AccountComponentNativeMapping = {
   addressBookMobile: AddressBookMobile,
@@ -13,7 +16,10 @@ const AccountComponentNativeMapping = {
   accountOverview: AccountOverviewViewContainer,
   profile: MyProfile,
   myWalletPageMobile: Wallet,
+  earnExtraPointsPageMobile: ExtraPoints,
   pointHistoryPageMobile: PointHistoryPage,
+  myPreferences: MyPrefrenceContainer,
+  PointsClaimPageMobile: PointsClaimPage,
 };
 
 export default AccountComponentNativeMapping;

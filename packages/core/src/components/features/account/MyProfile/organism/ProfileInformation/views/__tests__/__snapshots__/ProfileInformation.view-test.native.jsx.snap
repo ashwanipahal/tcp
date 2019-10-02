@@ -61,6 +61,7 @@ exports[`ProfileInformation should render correctly 1`] = `
     }
   />
   <BirthdaySaving
+    childrenBirthdays={Immutable.List []}
     handleComponentChange={[Function]}
     labels={
       Object {
@@ -68,10 +69,15 @@ exports[`ProfileInformation should render correctly 1`] = `
       }
     }
   />
+  <Connect(BirthdaySavings)
+    handleComponentChange={[Function]}
+    mountAddChildModal={false}
+  />
   <Styled(View)>
     <Styled(Anchor)
       accessibilityLabel=""
       anchorVariation="primary"
+      colorName={null}
       customStyle={Object {}}
       data-locator="my-rewards-program-details"
       fontSizeVariation="medium"
@@ -85,6 +91,7 @@ exports[`ProfileInformation should render correctly 1`] = `
       <Styled(Anchor)
         accessibilityLabel=""
         anchorVariation="primary"
+        colorName={null}
         customStyle={Object {}}
         data-locator="my-rewards-tnc"
         fontSizeVariation="medium"

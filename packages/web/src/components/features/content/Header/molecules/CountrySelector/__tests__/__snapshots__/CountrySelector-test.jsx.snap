@@ -13,6 +13,7 @@ exports[`Country Selector Component renders correctly 1`] = `
     fontWeight="regular"
     letterSpacing="normal"
     lineHeight="normal"
+    link={null}
     textAlign="left"
   >
     Ship To
@@ -132,6 +133,7 @@ exports[`Country Selector Component renders correctly 1`] = `
       key="0"
       letterSpacing="normal"
       lineHeight="normal"
+      link={null}
       onClick={[Function]}
       textAlign="left"
     >
@@ -148,6 +150,7 @@ exports[`Country Selector Component renders correctly 1`] = `
       key="1"
       letterSpacing="normal"
       lineHeight="normal"
+      link={null}
       onClick={[Function]}
       textAlign="left"
     >

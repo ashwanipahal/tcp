@@ -1,0 +1,77 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`TitlePlusEditButton component should renders correctly props are present 1`] = `
+<div
+  className=""
+>
+  <div
+    className="header"
+  >
+    <Styled(BodyCopy)
+      className={null}
+      color="gray.900"
+      component="p"
+      dataLocator="review--heading"
+      fontFamily="primary"
+      fontSize="fs26"
+      fontWeight="regular"
+      letterSpacing="normal"
+      lineHeight="normal"
+      link={null}
+      textAlign="left"
+    />
+    <div
+      className="EditAnchor"
+    >
+      <Styled(Anchor)
+        anchorVariation="secondary"
+        className="anchorStyle"
+        color="gray.900"
+        dataLocator="review--edit-anchor"
+        fontFamily="secondary"
+        fontSize="fs12"
+        onClick={[Function]}
+        underline={true}
+      />
+    </div>
+  </div>
+</div>
+`;
+
+exports[`TitlePlusEditButton component should renders correctly props not present 1`] = `
+<div
+  className=""
+>
+  <div
+    className="header"
+  >
+    <Styled(BodyCopy)
+      className={null}
+      color="gray.900"
+      component="p"
+      dataLocator="review--heading"
+      fontFamily="primary"
+      fontSize="fs26"
+      fontWeight="regular"
+      letterSpacing="normal"
+      lineHeight="normal"
+      link={null}
+      textAlign="left"
+    />
+    <div
+      className="EditAnchor"
+    >
+      <Styled(Anchor)
+        anchorVariation="secondary"
+        className="anchorStyle"
+        color="gray.900"
+        dataLocator="review--edit-anchor"
+        fontFamily="secondary"
+        fontSize="fs12"
+        onClick={[Function]}
+        underline={true}
+      />
+    </div>
+  </div>
+</div>
+`;

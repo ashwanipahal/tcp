@@ -1,0 +1,81 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Extra Points Details Modal for native should render correctly native component 1`] = `
+<Fragment>
+  <Styled(View)>
+    <Styled(Image)
+      source={
+        Object {
+          "testUri": "../../../../core/src/assets/download-app.png",
+        }
+      }
+    />
+  </Styled(View)>
+  <Styled(Styled(BodyCopy))
+    accessibilityText=""
+    color="gray.900"
+    data-locator="earnPointsModal_undefined_title"
+    dataLocator=""
+    fontFamily="primary"
+    fontSize="fs28"
+    fontWeight="black"
+    margin={null}
+    numberOfLines={null}
+    spacingStyles="margin-top-LRG"
+    textAlign="center"
+    textDecoration={null}
+  />
+  <Styled(BodyCopy)
+    accessibilityText=""
+    className="elem-mb-MED"
+    color="gray.900"
+    component="div"
+    data-locator="earnPointsModal_undefined_shortTitle"
+    dataLocator=""
+    fontFamily="secondary"
+    fontSize="fs18"
+    fontWeight="extrabold"
+    margin={null}
+    numberOfLines={null}
+    textAlign="center"
+    textDecoration={null}
+  />
+  <Styled(View)>
+    <RichText
+      data-locator="earnPointsModal_undefined_ShortDesc"
+      domStorageEnabled={false}
+      javaScriptEnabled={false}
+      source={
+        Object {
+          "html": "<meta name=\\"viewport\\" content=\\"width=device-width, initial-scale=1.0\\"><div style=\\"font-size:14px; text-align:center; font-family: Nunito; margin-top:24px font-weight: normal;\\">test1 test1<br/><br/>test2 test2 </div>",
+        }
+      }
+      thirdPartyCookiesEnabled={false}
+    />
+  </Styled(View)>
+  <Styled(View)>
+    <Styled(CustomButton)
+      active={false}
+      buttonVariation="variable-width"
+      color="white"
+      customStyle={Object {}}
+      customTextStyle={null}
+      disableButton={false}
+      fill="BLUE"
+      fullWidth=""
+      iconColor="gray.800"
+      iconName="chevron-down"
+      iconSize="fs12"
+      locator=""
+      navigation={Object {}}
+      onPress={null}
+      selected={false}
+      selectedIcon="chevron-up"
+      showIcon={false}
+      text=""
+      theme={Object {}}
+      url=""
+    />
+  </Styled(View)>
+</Fragment>
+`;

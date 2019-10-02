@@ -1,17 +1,23 @@
 import React from 'react';
 import { shallow } from 'enzyme';
-import ProductDetailView from '../views/ProductDetail.view.native';
+import { ProductDetailViewVanilla } from '../views/ProductDetail.view.native';
 
 describe('ProductDetailView component', () => {
-  it('should renders correctly', () => {
+  let wrapper;
+
+  beforeEach(() => {
     const props = {
       selectedColorProductId: '',
       currentProduct: {
         name: '',
         shortDescription: '',
+        colorFitsSizesMap: [],
       },
     };
-    const component = shallow(<ProductDetailView {...props} />);
-    expect(component).toMatchSnapshot();
+    wrapper = shallow(<ProductDetailViewVanilla {...props} />);
+  });
+
+  it('should renders correctly', () => {
+    expect(wrapper).toMatchSnapshot();
   });
 });

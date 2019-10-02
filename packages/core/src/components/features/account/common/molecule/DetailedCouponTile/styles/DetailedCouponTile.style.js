@@ -1,7 +1,9 @@
 import { css } from 'styled-components';
 
 const styles = css`
-  border: 1px solid ${props => props.theme.colorPalette.gray[500]};
+  border: 1px solid
+    ${props =>
+      props.coupon.error ? props.theme.colorPalette.red[500] : props.theme.colorPalette.gray[500]};
   height: 100%;
   position: relative;
   width: 100%;

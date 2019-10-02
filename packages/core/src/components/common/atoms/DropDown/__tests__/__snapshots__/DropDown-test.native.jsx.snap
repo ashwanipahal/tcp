@@ -34,12 +34,17 @@ exports[`DropDown Test should render correctly 1`] = `
   >
     <Styled(View)>
       <Styled(BodyCopy)
+        accessibilityText=""
         color="gray.800"
+        dataLocator=""
         fontSize="fs13"
         fontWeight="semibold"
+        margin={null}
         mobileFontFamily="secondary"
+        numberOfLines={null}
         text="foo"
         textAlign="center"
+        textDecoration={null}
       />
     </Styled(View)>
     <Image
@@ -116,12 +121,17 @@ exports[`DropDown Test should render with dropdown open state 1`] = `
   >
     <Styled(View)>
       <Styled(BodyCopy)
+        accessibilityText=""
         color="gray.800"
+        dataLocator=""
         fontSize="fs13"
         fontWeight="semibold"
+        margin={null}
         mobileFontFamily="secondary"
+        numberOfLines={null}
         text="foo"
         textAlign="center"
+        textDecoration={null}
       />
     </Styled(View)>
     <Image

@@ -1,6 +1,6 @@
 import React from 'react';
 import { shallow } from 'enzyme';
-import ApplyNowPLCCModal from '../ApplyNowPLCCModal';
+import ApplyNowPLCCModal from '../../molecules/ApplyNowPLCCModal/views/ApplyNowPLCCModal';
 
 describe('ApplyNowModalWrapper component', () => {
   const props = {

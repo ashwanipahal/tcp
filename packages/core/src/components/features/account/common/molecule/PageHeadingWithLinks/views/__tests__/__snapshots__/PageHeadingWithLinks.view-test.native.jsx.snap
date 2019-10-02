@@ -4,10 +4,14 @@ exports[`PageHeadingWithLinks native View should empty render correctly 1`] = `
 <View>
   <Styled(Text)>
     <Styled(BodyCopy)
+      accessibilityText=""
       dataLocator="Page_Heading_link_header"
       fontSize="fs16"
       fontWeight="extrabold"
+      margin={null}
+      numberOfLines={null}
       text=""
+      textDecoration={null}
     />
   </Styled(Text)>
   <Styled(LineComp)
@@ -20,6 +24,7 @@ exports[`PageHeadingWithLinks native View should empty render correctly 1`] = `
     <Styled(Anchor)
       accessibilityLabel=""
       anchorVariation="primary"
+      colorName={null}
       customStyle={Object {}}
       dataLocator="my-rewards-program-details"
       fontSizeVariation="medium"
@@ -33,6 +38,7 @@ exports[`PageHeadingWithLinks native View should empty render correctly 1`] = `
       <Styled(Anchor)
         accessibilityLabel=""
         anchorVariation="primary"
+        colorName={null}
         customStyle={Object {}}
         dataLocator="my-rewards-tnc"
         fontSizeVariation="medium"
@@ -52,10 +58,14 @@ exports[`PageHeadingWithLinks native View should render correctly 1`] = `
 <View>
   <Styled(Text)>
     <Styled(BodyCopy)
+      accessibilityText=""
       dataLocator="Page_Heading_link_header"
       fontSize="fs16"
       fontWeight="extrabold"
+      margin={null}
+      numberOfLines={null}
       text="Test"
+      textDecoration={null}
     />
   </Styled(Text)>
   <Styled(LineComp)
@@ -68,6 +78,7 @@ exports[`PageHeadingWithLinks native View should render correctly 1`] = `
     <Styled(Anchor)
       accessibilityLabel=""
       anchorVariation="primary"
+      colorName={null}
       customStyle={Object {}}
       dataLocator="my-rewards-program-details"
       fontSizeVariation="medium"
@@ -81,6 +92,7 @@ exports[`PageHeadingWithLinks native View should render correctly 1`] = `
       <Styled(Anchor)
         accessibilityLabel=""
         anchorVariation="primary"
+        colorName={null}
         customStyle={Object {}}
         dataLocator="my-rewards-tnc"
         fontSizeVariation="medium"

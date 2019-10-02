@@ -1,4 +1,5 @@
 import styled from 'styled-components/native';
+import { getColor } from '@tcp/core/styles/themes/utils';
 
 /**
  * @param {Object} props : props for getDisableStyle
@@ -7,13 +8,13 @@ import styled from 'styled-components/native';
  */
 
 const getLineStyle = props => {
-  const { marginTop, marginBottom, borderWidth, borderColor } = props;
-
+  const { marginTop, marginBottom, borderWidth, borderColor, theme } = props;
+  const { colorPalette } = theme;
   return `
   margin-top: ${marginTop};
   margin-bottom: ${marginBottom};
   border-width: ${borderWidth};
-  border-color: ${borderColor || props.theme.colorPalette.blue[700]};
+  border-color: ${getColor(colorPalette, borderColor) || colorPalette.blue[700]};
   `;
 };
 
@@ -22,7 +23,7 @@ const LineStyle = styled.View`
   ${props =>
     props.small
       ? `
-    width:40%; 
+    width:40%;
     margin:20px auto;
                 `
       : ''};

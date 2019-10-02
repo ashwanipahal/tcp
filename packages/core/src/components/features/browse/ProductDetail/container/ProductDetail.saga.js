@@ -5,6 +5,7 @@ import getProductInfoById from '../../../../../services/abstractors/productListi
 
 function* fetchProductDetail({ payload: { productColorId } }) {
   try {
+    yield put(setProductDetails({ product: {} }));
     const state = yield select();
     const productDetail = yield call(getProductInfoById, productColorId, state);
     yield put(setProductDetails({ ...productDetail }));

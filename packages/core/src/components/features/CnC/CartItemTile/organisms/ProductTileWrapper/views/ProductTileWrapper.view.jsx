@@ -5,8 +5,8 @@ import {
   getProductName,
   getProductDetails,
 } from '@tcp/core/src/components/features/CnC/CartItemTile/container/CartItemTile.selectors';
-
-import { BodyCopy } from '@tcp/core/src/components/common/atoms';
+import { getIconPath } from '@tcp/core/src/utils';
+import { BodyCopy, Image } from '@tcp/core/src/components/common/atoms';
 import ErrorMessage from '@tcp/core/src/components/features/CnC/common/molecules/ErrorMessage';
 import EmptyBag from '@tcp/core/src/components/features/CnC/EmptyBagPage/views/EmptyBagPage.view';
 import productTileCss, {
@@ -42,6 +42,10 @@ class ProductTileWrapper extends React.PureComponent<props> {
     this.setState({ swipedElement: elem });
   };
 
+  getTickIcon = () => {
+    return <Image alt="closeIcon" className="tick-icon" src={getIconPath('circle-check-fill')} />;
+  };
+
   getHeaderError = (labels, orderItems, pageView) => {
     const styles = pageView === 'myBag' ? bagTileCSS : customStyles;
     if (orderItems && orderItems.size > 0) {
@@ -52,27 +56,11 @@ class ProductTileWrapper extends React.PureComponent<props> {
           productDetail.miscInfo.availability === CARTPAGE_CONSTANTS.AVAILABILITY_UNAVAILABLE
         );
       });
-      return showError && <ErrorMessage customClass={styles} error={labels.problemWithOrder} />;
+      return (
+        showError && <ErrorMessage bagPage customClass={styles} error={labels.problemWithOrder} />
+      );
     }
     return false;
-  };
-
-  getRemoveString = (labels, removeCartItem, getUnavailableOOSItems) => {
-    const remove = labels.updateUnavailable.split('#remove#');
-    const newRemove = (
-      <BodyCopy
-        fontFamily="secondary"
-        fontSize="fs12"
-        component="span"
-        className="removeErrorMessage"
-        onClick={() => removeCartItem(getUnavailableOOSItems)}
-      >
-        <u>remove</u>
-      </BodyCopy>
-    );
-
-    remove.splice(1, 0, newRemove);
-    return remove;
   };
 
   setSelectedProductTile = ({ index }) => {
@@ -91,23 +79,123 @@ class ProductTileWrapper extends React.PureComponent<props> {
     return isEditAllowed;
   };
 
+  renderItemDeleteSuccessMsg = (
+    isBagPageSflSection,
+    isBagPage,
+    isDeleting,
+    itemDeleteSuccessMsg
+  ) => {
+    const { isCartItemSFL } = this.props;
+    return (
+      !isCartItemSFL &&
+      !isBagPageSflSection &&
+      isBagPage &&
+      isDeleting && (
+        <div className="delete-msg">
+          {this.getTickIcon()}
+          <BodyCopy
+            component="span"
+            fontSize="fs12"
+            textAlign="center"
+            fontFamily="secondary"
+            fontWeight="extrabold"
+          >
+            {itemDeleteSuccessMsg}
+          </BodyCopy>
+        </div>
+      )
+    );
+  };
+
+  renderItemSflSuccessMsg = (isBagPage, isCartItemSFL, itemSflSuccessMsg) => {
+    const { isBagPageSflSection } = this.props;
+    return (
+      !isBagPageSflSection &&
+      isBagPage &&
+      isCartItemSFL && (
+        <div className="delete-msg">
+          {this.getTickIcon()}
+          <BodyCopy
+            component="span"
+            fontSize="fs12"
+            textAlign="center"
+            fontFamily="secondary"
+            fontWeight="extrabold"
+          >
+            {itemSflSuccessMsg}
+          </BodyCopy>
+        </div>
+      )
+    );
+  };
+
+  renderSflItemRemovedMessage = (isSflItemRemoved, sflDeleteSuccessMsg) => {
+    const { isBagPageSflSection } = this.props;
+    return (
+      isBagPageSflSection &&
+      isSflItemRemoved && (
+        <div className="delete-msg">
+          {this.getTickIcon()}
+          <BodyCopy
+            component="span"
+            fontSize="fs12"
+            textAlign="center"
+            fontFamily="secondary"
+            fontWeight="extrabold"
+          >
+            {sflDeleteSuccessMsg}
+          </BodyCopy>
+        </div>
+      )
+    );
+  };
+
+  renderEmptyBag = (
+    productSectionData,
+    bagLabels,
+    isUserLoggedIn,
+    isBagPageSflSection,
+    showPlccApplyNow
+  ) => {
+    if (productSectionData.size === 0) {
+      return (
+        <EmptyBag
+          bagLabels={bagLabels}
+          isUserLoggedIn={isUserLoggedIn}
+          isBagPageSflSection={isBagPageSflSection}
+          showPlccApplyNow={showPlccApplyNow}
+        />
+      );
+    }
+    return <></>;
+  };
+
   render() {
     const {
       orderItems,
       bagLabels,
       labels,
       pageView,
-      removeCartItem,
+      confirmRemoveCartItem,
       isUserLoggedIn,
       isPlcc,
+      sflItemsCount,
+      isBagPageSflSection,
+      isCartItemsUpdating,
+      sflItems,
+      showPlccApplyNow,
+      isCartItemSFL,
+      isSflItemRemoved,
     } = this.props;
+    const productSectionData = isBagPageSflSection ? sflItems : orderItems;
     let isUnavailable;
     let isSoldOut;
-    const inheritedStyles = pageView === 'myBag' ? productTileCss : miniBagCSS;
+    const isBagPage = pageView === 'myBag';
+    const inheritedStyles = isBagPage ? productTileCss : miniBagCSS;
     const getUnavailableOOSItems = [];
     const { openedTile, swipedElement } = this.state;
-    if (orderItems && orderItems.size > 0) {
-      const orderItemsView = orderItems.map((tile, index) => {
+    if (productSectionData && productSectionData.size > 0) {
+      const orderItemsView = productSectionData.map((tile, index) => {
         const productDetail = getProductDetails(tile);
         if (productDetail.miscInfo.availability === CARTPAGE_CONSTANTS.AVAILABILITY_SOLDOUT) {
           getUnavailableOOSItems.push(productDetail.itemInfo.itemId);
@@ -132,41 +220,73 @@ class ProductTileWrapper extends React.PureComponent<props> {
             setSelectedProductTile={this.setSelectedProductTile}
             setSwipedElement={this.setSwipedElement}
             swipedElement={swipedElement}
+            sflItemsCount={sflItemsCount}
+            isBagPageSflSection={isBagPageSflSection}
           />
         );
       });
+      const { isDeleting } = isCartItemsUpdating;
       return (
         <>
-          {this.getHeaderError(labels, orderItems, pageView)}
-          {isSoldOut && (
+          {!isBagPageSflSection && this.getHeaderError(labels, productSectionData, pageView)}
+          {!isBagPageSflSection && isSoldOut && (
             <RemoveSoldOut
               pageView={pageView}
-              labelForRemove={this.getRemoveString(labels, removeCartItem, getUnavailableOOSItems)}
+              labels={labels}
+              removeCartItem={confirmRemoveCartItem}
+              getUnavailableOOSItems={getUnavailableOOSItems}
+              showLabelForRemove
             />
           )}
-          {isUnavailable && <RemoveSoldOut pageView={pageView} labels={labels} />}
-
+          {!isBagPageSflSection && isUnavailable && (
+            <RemoveSoldOut pageView={pageView} labels={labels} />
+          )}
+          {this.renderItemDeleteSuccessMsg(
+            isBagPageSflSection,
+            isBagPage,
+            isDeleting,
+            labels.itemDeleted
+          )}
+          {this.renderItemSflSuccessMsg(isBagPage, isCartItemSFL, labels.sflSuccess)}
+          {this.renderSflItemRemovedMessage(isSflItemRemoved, labels.sflDeleteSuccess)}
           {orderItemsView}
         </>
       );
     }
-    return <EmptyBag bagLabels={bagLabels} isUserLoggedIn={isUserLoggedIn} />;
+    return (
+      <>
+        {this.renderEmptyBag(
+          productSectionData,
+          bagLabels,
+          isUserLoggedIn,
+          isBagPageSflSection,
+          showPlccApplyNow
+        )}
+      </>
+    );
   }
 }
 
 ProductTileWrapper.defaultProps = {
   pageView: '',
   bagLabels: {},
+  isBagPageSflSection: false,
 };
 
 ProductTileWrapper.propTypes = {
   orderItems: PropTypes.shape([]).isRequired,
+  sflItems: PropTypes.shape([]).isRequired,
   labels: PropTypes.shape({}).isRequired,
-  removeCartItem: PropTypes.func.isRequired,
+  confirmRemoveCartItem: PropTypes.func.isRequired,
   isUserLoggedIn: PropTypes.bool.isRequired,
   isPlcc: PropTypes.bool.isRequired,
   pageView: PropTypes.string,
   bagLabels: PropTypes.shape(),
+  sflItemsCount: PropTypes.number.isRequired,
+  isBagPageSflSection: PropTypes.bool,
+  showPlccApplyNow: PropTypes.bool.isRequired,
+  isCartItemSFL: PropTypes.bool.isRequired,
+  isSflItemRemoved: PropTypes.bool.isRequired,
 };
 
 export default ProductTileWrapper;

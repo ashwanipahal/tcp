@@ -2,6 +2,7 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import withStyles from '../../hoc/withStyles';
 import styles from './Thumbnail.style';
+import { getLocator } from '../../../../utils';
 import Image from '../Image';
 import Anchor from '../Anchor';
 
@@ -57,6 +58,7 @@ class Thumbnail extends React.Component {
             alt={image.name}
             title={image.name}
             itemProp="thumbnailUrl"
+            data-locator={`${getLocator('pdp_alt_image')}_${index}`}
           />
         </Anchor>
       </div>

@@ -1,0 +1,95 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Detailed Earn Extra Points Tile component  should render Detailed Earn Extra Points Tile component Correctly 1`] = `
+<Styled(BodyCopy)
+  className="className"
+  color="text.primary"
+  component="div"
+  fontFamily="primary"
+  fontSize={12}
+  fontWeight="regular"
+  letterSpacing="normal"
+  lineHeight="normal"
+  link={null}
+  textAlign="left"
+>
+  <Styled(BodyCopy)
+    className="tileWrapper firstColImage"
+    color="text.primary"
+    component="div"
+    fontFamily="primary"
+    fontSize={12}
+    fontWeight="regular"
+    letterSpacing="normal"
+    lineHeight="normal"
+    link={null}
+    onClick={[Function]}
+    textAlign="left"
+  >
+    <Styled(BodyCopy)
+      className="earnExtraPointsTileImageSingle"
+      color="text.primary"
+      component="div"
+      fontFamily="primary"
+      fontSize={12}
+      fontWeight="regular"
+      letterSpacing="normal"
+      lineHeight="normal"
+      link={null}
+      textAlign="left"
+    >
+      <Styled(BodyCopy)
+        className="imageSizeSingle undefined"
+        color="text.primary"
+        component="div"
+        fontFamily="primary"
+        fontSize={12}
+        fontWeight="regular"
+        letterSpacing="normal"
+        lineHeight="normal"
+        link={null}
+        textAlign="left"
+      />
+    </Styled(BodyCopy)>
+    <Styled(BodyCopy)
+      className="earnExtraPointsTileTextMargin"
+      color="text.primary"
+      component="div"
+      fontFamily="primary"
+      fontSize={12}
+      fontWeight="regular"
+      letterSpacing="normal"
+      lineHeight="normal"
+      link={null}
+      textAlign="left"
+    >
+      <Styled(BodyCopy)
+        className="activityTitleMargin"
+        color="text.primary"
+        component="p"
+        data-locator="earnExtraPointsActivityTitle_undefined"
+        fontFamily="secondary"
+        fontSize="fs16"
+        fontWeight="black"
+        letterSpacing="normal"
+        lineHeight="normal"
+        link={null}
+        textAlign="center"
+      />
+      <Styled(BodyCopy)
+        className="earnPointDesc"
+        color="text.primary"
+        component="p"
+        data-locator="earnExtraPointsDescription_undefined"
+        fontFamily="secondary"
+        fontSize="fs16"
+        fontWeight="regular"
+        letterSpacing="normal"
+        lineHeight="normal"
+        link={null}
+        textAlign="center"
+      />
+    </Styled(BodyCopy)>
+  </Styled(BodyCopy)>
+</Styled(BodyCopy)>
+`;

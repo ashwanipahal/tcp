@@ -142,7 +142,7 @@ const NavMenuLevel2 = props => {
       <HeadingContainer>
         <TouchableOpacityArrow
           accessibilityRole="button"
-          accessibilityLabel={accessibilityLabels.back_button}
+          accessibilityLabel={accessibilityLabels.lbl_accessibility_backButton}
           onPress={() => goBack()}
         >
           <ArrowBackIcon source={BackIcon} />

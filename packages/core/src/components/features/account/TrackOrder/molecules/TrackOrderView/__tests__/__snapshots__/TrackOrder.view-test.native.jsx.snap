@@ -67,17 +67,23 @@ exports[`TrackOrderView component should renders correctly with generic error me
   >
     <Styled(View)>
       <Styled(BodyCopy)
+        accessibilityText=""
+        dataLocator=""
         fontSize="fs14"
+        margin={null}
         mobilefontFamily={
           Array [
             "secondary",
           ]
         }
+        numberOfLines={null}
+        textDecoration={null}
       />
       <Styled(View)>
         <Styled(Anchor)
           accessibilityLabel=""
           anchorVariation="primary"
+          colorName={null}
           customStyle={Object {}}
           data-locator="contact_us_form_help"
           locator=""
@@ -88,12 +94,17 @@ exports[`TrackOrderView component should renders correctly with generic error me
         />
       </Styled(View)>
       <Styled(BodyCopy)
+        accessibilityText=""
+        dataLocator=""
         fontSize="fs14"
+        margin={null}
         mobilefontFamily={
           Array [
             "secondary",
           ]
         }
+        numberOfLines={null}
+        textDecoration={null}
       />
     </Styled(View)>
   </Styled(Notification)>

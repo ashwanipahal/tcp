@@ -10,58 +10,107 @@ exports[`AccountOverview component should render correctly 1`] = `
 >
   <Styled(View)>
     <Styled(BodyCopy)
+      accessibilityText=""
+      dataLocator=""
       fontSize="fs14"
+      margin={null}
       mobileFontFamily={
         Array [
           "primary",
         ]
       }
+      numberOfLines={null}
       textAlign="center"
+      textDecoration={null}
     />
     <Styled(BodyCopy)
+      accessibilityText=""
+      dataLocator=""
       fontSize="fs14"
+      margin={null}
       mobileFontFamily={
         Array [
           "primary",
         ]
       }
+      numberOfLines={null}
       textAlign="center"
+      textDecoration={null}
     />
   </Styled(View)>
   <Styled(View)>
-    <Styled(WithTheme(CustomButton))
+    <Styled(CustomButton)
+      active={false}
       buttonVariation="variable-width"
       className="classBtn"
       color="#575757"
+      customStyle={Object {}}
+      customTextStyle={null}
       data-locator=""
+      disableButton={false}
+      fill=""
+      fullWidth=""
+      iconColor="gray.800"
+      iconName="chevron-down"
+      iconSize="fs12"
       id="createAccount"
+      locator=""
+      navigation={Object {}}
       onPress={[Function]}
+      selected={false}
+      selectedIcon="chevron-up"
+      showIcon={false}
+      text=""
+      theme={Object {}}
       type="submit"
+      url=""
       width="150px"
     />
-    <Styled(WithTheme(CustomButton))
+    <Styled(CustomButton)
+      active={false}
       buttonVariation="variable-width"
       className="classBtn"
+      color=""
+      customStyle={Object {}}
+      customTextStyle={null}
       data-locator=""
+      disableButton={false}
       fill="BLUE"
+      fullWidth=""
+      iconColor="gray.800"
+      iconName="chevron-down"
+      iconSize="fs12"
       id="login"
+      locator=""
+      navigation={Object {}}
       onPress={[Function]}
+      selected={false}
+      selectedIcon="chevron-up"
+      showIcon={false}
+      text=""
+      theme={Object {}}
       type="submit"
+      url=""
       width="150px"
     />
   </Styled(View)>
   <Styled(View)>
     <Styled(BodyCopy)
+      accessibilityText=""
       color="gray.900"
+      dataLocator=""
       fontSize="fs13"
       fontWeight="semibold"
+      margin={null}
       mobileFontFamily={
         Array [
           "primary",
         ]
       }
+      numberOfLines={null}
       onPress={[Function]}
       textAlign="left"
+      textDecoration={null}
     />
     <Styled(View)>
       <Styled(ImageComp)
@@ -79,11 +128,57 @@ exports[`AccountOverview component should render correctly 1`] = `
     </Styled(View)>
   </Styled(View)>
   <Styled(View) />
-  <Panel
-    handleComponentChange={[Function]}
-    isCardApply={true}
-    isFavorite={false}
-    isVariationTypeLink={true}
+  <Styled(TouchableOpacity)
+    onPress={[Function]}
+  >
+    <Styled(View)>
+      <Styled(View)>
+        <Styled(Styled(ImageComp))
+          alt=""
+          height={30}
+          host=""
+          source={
+            Object {
+              "testUri": "../../../src/assets/images/tcp-cc.png",
+            }
+          }
+          url=""
+          width={47}
+        />
+      </Styled(View)>
+      <Styled(View)>
+        <Styled(BodyCopy)
+          accessibilityText=""
+          color="gray.900"
+          dataLocator=""
+          fontFamily="secondary"
+          fontSize="fs13"
+          fontWeight="regular"
+          margin={null}
+          numberOfLines={null}
+          textAlign="center"
+          textDecoration={null}
+        />
+      </Styled(View)>
+    </Styled(View)>
+    <Styled(View)>
+      <Styled(ImageComp)
+        alt=""
+        height={10}
+        host=""
+        source={
+          Object {
+            "testUri": "../../../src/assets/images/carrot-small-right-gray.png",
+          }
+        }
+        url=""
+        width={7}
+      />
+    </Styled(View)>
+  </Styled(TouchableOpacity)>
+  <Connect(ApplyNowModalWrapper)
+    applyNow={false}
+    toggleModalWrapper={[Function]}
   />
   <Panel
     handleComponentChange={[Function]}

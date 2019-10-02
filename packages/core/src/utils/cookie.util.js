@@ -1,6 +1,8 @@
 import { isClient, isMobileApp } from './utils';
 
 export const CART_ITEM_COUNTER = 'cartItemsCount';
+export const SFL_ITEM_COUNTER = 'sflItemsCount_US';
+export const SFL_ITEM_COUNTER_CA = 'sflItemsCount_CA';
 
 /**
  * @summary This is to read cookie from a Mobile App.
@@ -64,3 +66,19 @@ export const removeCookie = key => {
 export function getCartItemCount() {
   return parseInt(readCookie(CART_ITEM_COUNTER) || 0, 10);
 }
+
+export function getSflItemCount(siteId) {
+  // If CA site, fetch CA cookies. Else pick the US cookies for sflCount by default.
+  if (siteId === 'CA') {
+    return parseInt(readCookie(SFL_ITEM_COUNTER_CA) || 0, 10);
+  }
+  return parseInt(readCookie(SFL_ITEM_COUNTER) || 0, 10);
+}
+
+/**
+ * @summary This returns all cookies in string format.
+ * @return  {String}  - string of cookies
+ */
+export const getAllCookies = () => {
+  return document.cookie;
+};

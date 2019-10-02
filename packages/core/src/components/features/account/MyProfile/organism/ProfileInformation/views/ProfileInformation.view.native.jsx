@@ -1,18 +1,20 @@
 import React from 'react';
-import { SafeAreaView } from 'react-native';
 import PropTypes from 'prop-types';
 import Anchor from '@tcp/core/src/components/common/atoms/Anchor';
 import { ViewWithSpacing } from '@tcp/core/src/components/common/atoms/styledWrapper';
+import { fromJS } from 'immutable';
 import { UrlHandler } from '../../../../../../../utils/utils.app';
 import ProfileInfoActions from '../../ProfileInfoActions';
 import PersonalInformation from '../../PersonalInformation';
 import ChangePasswordInfo from '../../ChangePasswordInfo';
 import BirthdaySaving from '../../BirthdaySaving';
+import MyFavoriteStore from '../../MyFavoriteStore';
 import { StyledAnchorWrapper, AnchorLeftMargin } from '../../../../common/styledWrapper';
 import endpoints from '../../../../common/externalEndpoints';
 import AboutYouInfo from '../../AboutYouInfo';
 import MailingInformationContainer from '../../MailingInformation';
 import ModalNative from '../../../../../../common/molecules/Modal';
+import BirthdaySavingsPage from '../../../../BirthdaySavingsPage';
 
 export class ProfileInformation extends React.PureComponent {
   constructor(props) {
@@ -20,6 +22,7 @@ export class ProfileInformation extends React.PureComponent {
     this.state = {
       mountSurveyModal: false,
       mountMailingAddressModal: false,
+      mountAddChildModal: false,
     };
   }
 
@@ -33,6 +36,10 @@ export class ProfileInformation extends React.PureComponent {
 
   toggleMailingAddressModal = () => {
     this.toggleModalState('mountMailingAddressModal');
+  };
+
+  toggleAddChildModal = () => {
+    this.toggleModalState('mountAddChildModal');
   };
 
   render() {
@@ -52,8 +59,9 @@ export class ProfileInformation extends React.PureComponent {
       myPlaceNumber,
       userSurvey,
       percentageIncrement,
+      childrenBirthdays,
     } = this.props;
-    const { mountSurveyModal, mountMailingAddressModal } = this.state;
+    const { mountSurveyModal, mountMailingAddressModal, mountAddChildModal } = this.state;
     return (
       <>
         <ProfileInfoActions
@@ -84,7 +92,16 @@ export class ProfileInformation extends React.PureComponent {
           <AboutYouInfo labels={labels} userSurvey={userSurvey} />
         )}
         <ChangePasswordInfo labels={labels} handleComponentChange={handleComponentChange} />
-        <BirthdaySaving labels={labels} handleComponentChange={handleComponentChange} />
+        {!!defaultStore && <MyFavoriteStore defaultStore={defaultStore} />}
+        <BirthdaySaving
+          labels={labels}
+          childrenBirthdays={childrenBirthdays}
+          handleComponentChange={this.toggleAddChildModal}
+        />
+        <BirthdaySavingsPage
+          mountAddChildModal={mountAddChildModal}
+          handleComponentChange={this.toggleAddChildModal}
+        />
         <StyledAnchorWrapper>
           <Anchor
             fontSizeVariation="medium"
@@ -116,15 +133,13 @@ export class ProfileInformation extends React.PureComponent {
             onRequestClose={this.toggleMailingAddressModal}
             heading={labelsObj.profile.lbl_profile_heading}
           >
-            <SafeAreaView>
-              <ViewWithSpacing spacingStyles="margin-left-SM margin-right-SM">
-                <MailingInformationContainer
-                  labels={labelsObj}
-                  onUpdateMailingAddress={this.toggleMailingAddressModal}
-                  onClose={this.toggleMailingAddressModal}
-                />
-              </ViewWithSpacing>
-            </SafeAreaView>
+            <ViewWithSpacing spacingStyles="margin-left-SM margin-right-SM">
+              <MailingInformationContainer
+                labels={labelsObj}
+                onUpdateMailingAddress={this.toggleMailingAddressModal}
+                onClose={this.toggleMailingAddressModal}
+              />
+            </ViewWithSpacing>
           </ModalNative>
         )}
       </>
@@ -148,6 +163,7 @@ ProfileInformation.propTypes = {
   userSurvey: PropTypes.shape([]),
   percentageIncrement: PropTypes.shape({}),
   defaultStore: PropTypes.string,
+  childrenBirthdays: PropTypes.shape({}),
 };
 
 ProfileInformation.defaultProps = {
@@ -166,6 +182,7 @@ ProfileInformation.defaultProps = {
   userSurvey: [],
   percentageIncrement: {},
   defaultStore: '',
+  childrenBirthdays: fromJS([]),
 };
 
 export default ProfileInformation;

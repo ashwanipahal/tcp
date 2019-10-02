@@ -2,7 +2,7 @@
 import Router from 'next/router';
 import { ENV_PRODUCTION, ENV_DEVELOPMENT } from '../constants/env.config';
 import icons from '../config/icons';
-import { breakpoints } from '../../styles/themes/TCP/mediaQuery';
+import { breakpoints, mediaQuery } from '../../styles/themes/TCP/mediaQuery';
 import { getAPIConfig } from './utils';
 import { API_CONFIG } from '../services/config';
 import { defaultCountries, defaultCurrencies } from '../constants/site.constants';
@@ -29,6 +29,14 @@ export const importGraphQLClientDynamically = module => {
 
 export const importGraphQLQueriesDynamically = query => {
   return import(`../services/handler/graphQL/queries/${query}`);
+};
+
+export const getLocationOrigin = () => {
+  return window.location.origin;
+};
+
+export const canUseDOM = () => {
+  return typeof window !== 'undefined' && window.document && window.document.createElement;
 };
 
 export const isProduction = () => {
@@ -202,6 +210,26 @@ export const getViewportInfo = () => {
 };
 
 /**
+ * Enable Body Scroll
+ */
+export const enableBodyScroll = () => {
+  if (typeof window !== 'undefined') {
+    const [body] = document.getElementsByTagName('body');
+    body.style.overflow = 'auto';
+  }
+};
+
+/**
+ * Disable Body Scroll
+ */
+export const disableBodyScroll = () => {
+  if (typeof window !== 'undefined') {
+    const [body] = document.getElementsByTagName('body');
+    body.style.overflow = 'hidden';
+  }
+};
+
+/**
  * Show Dark Overlay in background
  */
 export const showOverlay = () => {
@@ -246,11 +274,20 @@ export const scrollPage = (x = 0, y = 0) => {
   }
 };
 
+export const scrollTopElement = elem => {
+  if (window) {
+    document.getElementById(elem).scrollTop = 0;
+  }
+};
+
 export const getCountriesMap = data => {
   const countries = defaultCountries;
   data.map(value =>
     countries.push(
-      Object.assign({}, value.country, { siteId: 'us', currencyId: value.currency.id })
+      Object.assign({}, value.country, {
+        siteId: 'us',
+        currencyId: value.currency.id,
+      })
     )
   );
   return countries;
@@ -262,19 +299,6 @@ export const getCurrenciesMap = data => {
   return currencies.filter(
     (currency, index, self) => index === self.findIndex(cur => cur.id === currency.id)
   );
-};
-
-export const getModifiedLanguageCode = id => {
-  switch (id) {
-    case 'en':
-      return 'en_US';
-    case 'es':
-      return 'es_ES';
-    case 'fr':
-      return 'fr_FR';
-    default:
-      return id;
-  }
 };
 
 export const siteRedirect = (newCountry, oldCountry, newSiteId, oldSiteId) => {
@@ -296,44 +320,6 @@ export const languageRedirect = (newLanguage, oldLanguage) => {
   }
 };
 
-/**
- * This function will redirect to PDP from HOMEPAGE
- * on the basis of productId
- *
- * TODO: It can be extended as per requirement
- * to redirect from other pages also
- */
-export const redirectToPdp = productId => {
-  if (!window) return null;
-
-  const { href } = window.location;
-  // TODO
-  if (href.includes('/p/')) {
-    return {
-      url: `/p?pid=${productId}`,
-      asPath: `/p/${productId}`,
-    };
-  }
-
-  return {
-    url: `/c?cid=toddler-girl-bottoms`,
-    asPath: `/c/toddler-girl-bottoms`,
-  };
-};
-
-/**
- * This function configure url for Next/Link using CMS defined url string
- */
-export const configurePlpNavigationFromCMSUrl = url => {
-  const route = `${ROUTE_PATH.plp}/`;
-  if (url.includes(route)) {
-    const urlItems = url.split(route);
-    const queryParam = urlItems[0];
-    return `${ROUTE_PATH.plp}?cid=${queryParam}`;
-  }
-  return url;
-};
-
 /*
  *
  * @param {object} event the HTML element's element
@@ -342,13 +328,11 @@ export const configurePlpNavigationFromCMSUrl = url => {
  * @description this method invokes the parameter method received when respective
  * keybord key is triggered
  */
-
 export const handleGenericKeyDown = (event, key, method) => {
   if (event.keyCode === key) {
     method();
   }
 };
-
 const getAPIInfoFromEnv = (apiSiteInfo, processEnv, siteId) => {
   const country = siteId && siteId.toUpperCase();
   const apiEndpoint = processEnv.RWD_WEB_API_DOMAIN || ''; // TO ensure relative URLs for MS APIs
@@ -360,19 +344,26 @@ const getAPIInfoFromEnv = (apiSiteInfo, processEnv, siteId) => {
     assetHost: processEnv.RWD_WEB_DAM_HOST || apiSiteInfo.assetHost,
     domain: `${apiEndpoint}/${processEnv.RWD_WEB_API_IDENTIFIER}/`,
     unbxd: processEnv.RWD_WEB_UNBXD_DOMAIN || apiSiteInfo.unbxd,
+    fbkey: processEnv.RWD_WEB_FACEBOOKKEY,
+    instakey: processEnv.RWD_WEB_INSTAGRAM,
     unboxKey: `${processEnv[`RWD_WEB_UNBXD_API_KEY_${country}_EN`]}/${
       processEnv[`RWD_WEB_UNBXD_SITE_KEY_${country}_EN`]
     }`,
     envId: processEnv.RWD_WEB_ENV_ID,
     BAZAARVOICE_SPOTLIGHT: processEnv.RWD_WEB_BAZAARVOICE_API_KEY,
+    BAZAARVOICE_REVIEWS: processEnv.RWD_WEB_BAZAARVOICE_PRODUCT_REVIEWS_API_KEY,
     CANDID_API_KEY: process.env.RWD_WEB_CANDID_API_KEY,
     CANDID_API_URL: process.env.RWD_WEB_CANDID_URL,
     googleApiKey: process.env.RWD_WEB_GOOGLE_MAPS_API_KEY,
+    ACQUISITION_ID: process.env.RWD_WEB_ACQUISITION_ID,
     raygunApiKey: processEnv.RWD_WEB_RAYGUN_API_KEY,
     channelId: API_CONFIG.channelIds.Desktop, // TODO - Make it dynamic for all 3 platforms
+    borderFree: processEnv.BORDERS_FREE,
+    borderFreeComm: processEnv.BORDERS_FREE_COMM,
+    paypalEnv: processEnv.RWD_WEB_PAYPAL_ENV,
+    crossDomain: processEnv.RWD_WEB_CROSS_DOMAIN,
   };
 };
-
 const getGraphQLApiFromEnv = (apiSiteInfo, processEnv, relHostname) => {
   const graphQlEndpoint = processEnv.RWD_WEB_GRAPHQL_API_ENDPOINT || relHostname;
   return {
@@ -382,19 +373,16 @@ const getGraphQLApiFromEnv = (apiSiteInfo, processEnv, relHostname) => {
     graphql_api_key: processEnv.RWD_WEB_GRAPHQL_API_KEY || '',
   };
 };
-
 /*
  * @method numericStringToBool
  * @description this method returns the bool value of string numeric passed
  * @param {string} str the  string numeric value
  */
 export const numericStringToBool = str => !!+str;
-
 // Parse boolean out of string true|false
 export const parseBoolean = bool => {
   return bool === true || bool === '1' || (bool || '').toUpperCase() === 'TRUE';
 };
-
 /**
  *
  * @param {object} bossDisabledFlags carries the boss disability flags -
@@ -406,7 +394,6 @@ export const isBossProduct = bossDisabledFlags => {
   const { bossCategoryDisabled, bossProductDisabled } = bossDisabledFlags;
   return !(numericStringToBool(bossCategoryDisabled) || numericStringToBool(bossProductDisabled));
 };
-
 /**
  * @function isBopsProduct
  * @param {*} isUSStore
@@ -426,7 +413,6 @@ export const isBopisProduct = (isUSStore, product) => {
   }
   return !isOnlineOnly;
 };
-
 export const createAPIConfig = resLocals => {
   // TODO - Get data from env config - Brand, MellisaKey, BritverifyId, AcquisitionId, Domains, Asset Host, Unbxd Domain;
   // TODO - use isMobile and cookie as well..
@@ -456,7 +442,15 @@ export const createAPIConfig = resLocals => {
     language,
   };
 };
+export const viewport = () => {
+  if (!window) return null;
 
+  return {
+    small: window.matchMedia(mediaQuery.smallOnly).matches,
+    medium: window.matchMedia(mediaQuery.mediumOnly).matches,
+    large: window.matchMedia(mediaQuery.large).matches,
+  };
+};
 export default {
   importGraphQLClientDynamically,
   importGraphQLQueriesDynamically,
@@ -470,11 +464,12 @@ export default {
   routerPush,
   bindAllClassMethodsToThis,
   scrollPage,
+  scrollTopElement,
   getCountriesMap,
   getCurrenciesMap,
-  getModifiedLanguageCode,
   siteRedirect,
   languageRedirect,
-  redirectToPdp,
   handleGenericKeyDown,
+  viewport,
+  canUseDOM,
 };

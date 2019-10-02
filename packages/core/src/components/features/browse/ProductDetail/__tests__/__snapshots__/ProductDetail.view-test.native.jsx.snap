@@ -1,38 +1,60 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
 exports[`ProductDetailView component should renders correctly 1`] = `
-<StyledNativeComponent
-  currentProduct={
-    Object {
-      "name": "",
-      "shortDescription": "",
-    }
-  }
-  forwardedComponent={
-    Object {
-      "$$typeof": Symbol(react.forward_ref),
-      "_foldedDefaultProps": Object {
-        "currentProduct": Object {},
-        "plpLabels": null,
-      },
-      "attrs": Array [],
-      "displayName": "Styled(ProductDetailView)",
-      "inlineStyle": InlineStyle {
-        "rules": Array [
-          "
-    ",
-          ";
-  ",
-        ],
-      },
-      "render": [Function],
-      "styledComponentId": "StyledNativeComponent",
-      "target": [Function],
-      "withComponent": [Function],
-    }
-  }
-  forwardedRef={null}
-  plpLabels={null}
-  selectedColorProductId=""
-/>
+<ScrollViewMock>
+  <Styled(View)>
+    <Styled(WithTheme(ImageCarousel))
+      imageUrls={Array []}
+      onImageClick={[Function]}
+    />
+    <Styled(ProductSummary)
+      currencyExchange={
+        Array [
+          Object {
+            "exchangevalue": 1,
+          },
+        ]
+      }
+      currencySymbol="$"
+      isPlcc={false}
+      productData={
+        Object {
+          "colorFitsSizesMap": Array [],
+          "name": "",
+          "shortDescription": "",
+        }
+      }
+      selectedColorProductId=""
+    />
+    <ProductAddToBagContainer
+      currentProduct={
+        Object {
+          "colorFitsSizesMap": Array [],
+          "name": "",
+          "shortDescription": "",
+        }
+      }
+      errorOnHandleSubmit=""
+      handleFormSubmit={null}
+      handleSubmit={null}
+      onChangeColor={[Function]}
+      plpLabels={null}
+      selectedColorProductId=""
+    />
+    <Connect(AddedToBagContainer)
+      navigation={Object {}}
+    />
+    <Connect(Styled(FulfillmentSection))
+      btnClassName="added-to-bag"
+      buttonLabel="Add To Bag"
+      currentProduct={
+        Object {
+          "colorFitsSizesMap": Array [],
+          "name": "",
+          "shortDescription": "",
+        }
+      }
+    />
+  </Styled(View)>
+</ScrollViewMock>
 `;

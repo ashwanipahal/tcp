@@ -8,7 +8,7 @@ exports[`ColorSelectorDropDown component ColorSelectorDropDown component renders
       "$$typeof": Symbol(react.forward_ref),
       "attrs": Array [],
       "componentStyle": ComponentStyle {
-        "componentId": "sc-ifAKCX",
+        "componentId": "sc-EHOje",
         "isStatic": true,
         "rules": Array [
           "
@@ -26,7 +26,7 @@ exports[`ColorSelectorDropDown component ColorSelectorDropDown component renders
       "displayName": "Styled(ColorSelectorDropDown)",
       "foldedComponentIds": Array [],
       "render": [Function],
-      "styledComponentId": "sc-ifAKCX",
+      "styledComponentId": "sc-EHOje",
       "target": [Function],
       "toString": [Function],
       "warnTooManyClasses": [Function],

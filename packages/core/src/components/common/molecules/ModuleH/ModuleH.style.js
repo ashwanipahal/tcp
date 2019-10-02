@@ -37,14 +37,12 @@ export default css`
   }
 
   .moduleH__header {
-    color: ${props => props.theme.colors.WHITE};
-    font-family: ${props => props.theme.fonts.primaryFontBlackFamily};
-    line-height: 34px;
-    margin: 0px;
+    .link-text {
+      text-align: left;
 
-    @media ${props => props.theme.mediaQuery.large} {
-      font-size: ${props => props.theme.fonts.fontSize.heading.large.h2}px;
-      line-height: 52px;
+      span {
+        display: block;
+      }
     }
   }
 

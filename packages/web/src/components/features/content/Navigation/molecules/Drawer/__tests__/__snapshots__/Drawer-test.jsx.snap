@@ -8,10 +8,11 @@ exports[`Drawer component renders correctly 1`] = `
     Renders correctly
   </div>
   <aside
-    className="tcp-drawer tcp-drawer__isOpen display-small-none display-medium-none display-large-none"
+    className="tcp-drawer tcp-drawer__isOpen undefined display-small-none display-medium-none display-large-none"
   >
     <div
       className="tcp-drawer-content"
+      id="tcp-nav-drawer"
     >
       Renders correctly
     </div>

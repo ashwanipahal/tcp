@@ -1,21 +1,8 @@
-// @flow
 import React from 'react';
-import type { Node } from 'react';
+import PropTypes from 'prop-types';
+import ButtonCTA from '../../../molecules/ButtonCTA';
 import withStyles from '../../../hoc/withStyles';
-
 import styles from '../Button.style';
-
-type Props = {
-  children: Node,
-  className: string,
-  ariaLabel: string,
-  disabled: boolean,
-  fullWidth?: boolean,
-  type?: string,
-  dataLocator?: string,
-  customStyle?: string,
-  buttonVariation?: string,
-};
 
 /**
  * @param {object} props : Props for button
@@ -42,27 +29,77 @@ const Button = ({
   type,
   customStyle,
   buttonVariation,
+  cta,
+  uniqueKey,
+  noCurve,
+  active,
   ...otherProps
-}: Props): Node => (
-  <button
-    disabled={disabled}
-    aria-label={ariaLabel}
-    className={className}
-    type={type}
-    fullWidth={fullWidth}
-    data-locator={dataLocator}
-    {...otherProps}
-  >
-    {children}
-  </button>
-);
+}) => {
+  if (!cta) {
+    return (
+      <button
+        disabled={disabled}
+        aria-label={ariaLabel}
+        className={className}
+        type={type}
+        fullWidth={fullWidth}
+        data-locator={dataLocator}
+        {...otherProps}
+      >
+        {children}
+      </button>
+    );
+  }
+  return (
+    <ButtonCTA
+      uniqueKey={uniqueKey}
+      className={className}
+      dataLocator={dataLocator}
+      ariaLabel={ariaLabel}
+      type={type}
+      fullWidth={fullWidth}
+      disabled={disabled}
+      noCurve={noCurve}
+      ctaInfo={{
+        ctaVariation: buttonVariation,
+        link: {
+          ...cta,
+        },
+      }}
+    />
+  );
+};
+
+Button.propTypes = {
+  children: PropTypes.element.isRequired,
+  className: PropTypes.string.isRequired,
+  ariaLabel: PropTypes.string.isRequired,
+  disabled: PropTypes.string,
+  fullWidth: PropTypes.string,
+  dataLocator: PropTypes.string.isRequired,
+  type: PropTypes.string,
+  customStyle: PropTypes.string,
+  buttonVariation: PropTypes.string.isRequired,
+  cta: PropTypes.shape({
+    url: PropTypes.string.isRequired,
+    text: PropTypes.string.isRequired,
+    title: PropTypes.string.isRequired,
+    target: PropTypes.string,
+  }),
+  uniqueKey: PropTypes.string,
+  noCurve: PropTypes.bool,
+  active: PropTypes.bool,
+};
 
 Button.defaultProps = {
+  disabled: '',
   fullWidth: true,
   type: 'button',
-  dataLocator: 'btn',
   customStyle: '',
-  buttonVariation: '',
+  uniqueKey: '',
+  noCurve: true,
+  cta: null,
+  active: false,
 };
 
 export default withStyles(Button, styles);

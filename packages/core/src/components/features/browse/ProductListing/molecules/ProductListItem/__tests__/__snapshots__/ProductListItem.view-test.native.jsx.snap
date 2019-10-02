@@ -32,8 +32,6 @@ exports[`ProductListItem component should renders ProductListItem correctly 1`] 
     text=""
   />
   <RenderPricesSection
-    favoriteIconColor="#9b9b9b"
-    favoriteIconSize={21}
     miscInfo={Object {}}
     onFavorite={[Function]}
   />
@@ -57,19 +55,31 @@ exports[`ProductListItem component should renders ProductListItem correctly 1`] 
     props={Object {}}
     setSelectedColorIndex={[Function]}
   />
-  <RenderPromotionalMessage
-    isPlcc={false}
-    text=""
-  />
   <Styled(View)>
-    <Styled(WithTheme(CustomButton))
+    <Styled(CustomButton)
       accessibilityLabel="add to bag"
+      active={false}
       buttonVariation="variable-width"
+      color=""
+      customStyle={Object {}}
+      customTextStyle={null}
       data-locator=""
+      disableButton={false}
       fill="BLUE"
+      fullWidth=""
+      iconColor="gray.800"
+      iconName="chevron-down"
+      iconSize="fs12"
+      locator=""
+      navigation={Object {}}
       onPress={[Function]}
+      selected={false}
+      selectedIcon="chevron-up"
+      showIcon={false}
       text="ADD TO BAG"
+      theme={Object {}}
       type="button"
+      url=""
     />
   </Styled(View)>
 </Styled(View)>

@@ -1,0 +1,70 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`FullSizeImageWithQuickViewModal component should renders correctly 1`] = `
+<Styled(Modal)
+  className="TCPModal__Content"
+  closeIconDataLocator="pdp_zoomed_image_closed_btn"
+  dataLocator="pdp_full_size_image_modal"
+  dataLocatorHeader="pdp_product_titles"
+  fixedWidth={true}
+  heading=""
+  heightConfig={
+    Object {
+      "height": "95%",
+    }
+  }
+  inheritedStyles={
+    Array [
+      "
+  .Modal_Heading {
+    border-bottom: none;
+    margin-bottom: ",
+      [Function],
+      ";
+    font-size: ",
+      [Function],
+      ";
+    display: none;
+    padding-bottom: ",
+      [Function],
+      ";
+    @media ",
+      [Function],
+      " {
+      display: block;
+    }
+  }
+",
+    ]
+  }
+  isOpen={true}
+  onRequestClose={[MockFunction]}
+  overlayClassName="TCPModal__Overlay"
+  widthConfig={
+    Object {
+      "large": "1200px",
+      "medium": "760px",
+      "small": "375px",
+    }
+  }
+>
+  <div
+    className="overlay-content"
+  >
+    <Styled(ProductImages)
+      images={
+        Array [
+          Object {},
+        ]
+      }
+      isFullSizeForTab={true}
+      isFullSizeVisible={false}
+      isMobile={false}
+      isShowBigSizeImages={true}
+      isThumbnailListVisible={true}
+      isZoomEnabled={false}
+      productName=""
+    />
+  </div>
+</Styled(Modal)>
+`;

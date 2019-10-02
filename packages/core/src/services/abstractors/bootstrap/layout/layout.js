@@ -1,3 +1,4 @@
+import logger from '@tcp/core/src/utils/loggerInstance';
 import mock from './mock';
 import handler from '../../../handler';
 
@@ -7,17 +8,33 @@ import handler from '../../../handler';
 const LayoutAbstractor = {
   /**
    * This function loads data from graphQL service
-   * @param {String} page
+   * @param {Object} params Object containing {page, brand, country, channel}
    */
-  getLayoutData: async page => {
+  getLayoutData: async ({ page, brand, country, channel }) => {
+    logger.info(`Executing Layout Query for ${page}: `);
+    logger.debug(
+      'Executing Layout Query with params: ',
+      `page:${page}`,
+      `brand:${brand}`,
+      `country:${country}`,
+      `channel:${channel}`
+    );
     return handler
       .fetchModuleDataFromGraphQL({
         name: 'layout',
         data: {
           path: page,
+          brand,
+          country,
+          channel,
         },
       })
-      .then(({ data }) => data[page].items);
+      .then(response => {
+        const result = response.data[page];
+        logger.info('Layout Query Executed Successfully');
+        logger.debug('Layout Query Result: ', result);
+        return result;
+      });
   },
   /**
    * This function loads data for a set of modules from graphQL service
@@ -35,10 +52,10 @@ const LayoutAbstractor = {
     return handler.fetchModuleDataFromGraphQL(modules);
   },
   /**
-   * Asynchronous function to process data from service for layouts
+   * Asynchronous function to get modules data from service for layouts
    * @param {Object} data Response object for layout query
    */
-  processData: async data => {
+  getModulesFromLayout: async data => {
     const moduleObjects = LayoutAbstractor.collateModuleObject(data.items);
     return LayoutAbstractor.getModulesData(moduleObjects).then(response => {
       return LayoutAbstractor.processModuleData(response.data);
@@ -67,17 +84,14 @@ const LayoutAbstractor = {
     const modulesObject = {};
     Object.keys(moduleData).forEach(slotKey => {
       const { set = [] } = moduleData[slotKey];
-
       modulesObject[moduleData[slotKey].contentId] = {
         ...moduleData[slotKey].composites,
         set,
       };
-
       set.forEach(({ key, val }) => {
         modulesObject[moduleData[slotKey].contentId][key] = val;
       });
     });
-
     return modulesObject;
   },
   /**

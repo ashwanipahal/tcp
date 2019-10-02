@@ -11,6 +11,7 @@ exports[`Help Coupon Modal should call correctly 1`] = `
     }
   }
   isOpen={false}
+  isOverlay={false}
   onRequestClose={[MockFunction]}
   overlayClassName="TCPModal__Overlay"
 >

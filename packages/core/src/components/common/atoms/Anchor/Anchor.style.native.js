@@ -2,6 +2,16 @@ import styled, { css } from 'styled-components/native';
 
 export const AnchorStyles = css`
   ${props =>
+    props.anchorVariation === 'custom'
+      ? `
+            color: ${
+              props.colorName
+                ? props.theme.colorPalette[props.colorName]
+                : props.theme.colors.ANCHOR.PRIMARY
+            };
+          `
+      : ''};
+  ${props =>
     props.anchorVariation === 'primary'
       ? `
               color: ${props.theme.colors.ANCHOR.PRIMARY};
@@ -71,14 +81,14 @@ export const AnchorStyles = css`
     props.underline
       ? `
                       text-decoration: underline;
-                     
+
                         `
       : 'text-decoration: none;'};
   ${props =>
     props.underlineBlue
       ? `             text-decoration: underline;
                       text-decoration-color: ${props.theme.colors.ANCHOR.SECONDARY};
-                     
+
                         `
       : ''};
 

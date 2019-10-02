@@ -124,11 +124,11 @@ class SelectItem extends React.PureComponent {
           ref={this.handleRef}
           className={`${className} selected-items sort-selected-item`}
           onMouseDown={this.handleClick}
-          onKeyPress={this.handleClick}
+          onKeyDown={this.handleClick}
           role="option"
           tabIndex="0"
           aria-selected="false"
-          dataLocator={dataLocator}
+          data-Locator={dataLocator}
         >
           {content}
         </div>

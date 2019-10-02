@@ -1,5 +1,5 @@
 import styled from 'styled-components';
-import config from './Config.native';
+import config from './Carousel.config.native';
 
 const { playIconHeight, playIconWidth } = config.CAROUSEL_APP_CONFIG;
 

@@ -6,7 +6,7 @@ export default css`
   padding-top: 6px;
   padding-bottom: 13px;
   padding-left: 1px;
-  background-color: ${props => props.theme.colors.PRIMARY.PALEGRAY};
+  background-color: ${props => (props.noBackground ? 'none' : props.theme.colors.PRIMARY.PALEGRAY)};
   img {
     height: 13px;
     width: 13px;

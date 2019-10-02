@@ -3,15 +3,25 @@
 exports[`TrackOrderTopSection component should renders correctly 1`] = `
 <Styled(View)>
   <Styled(BodyCopy)
+    accessibilityText=""
     data-locator="trackordermodal-overlayheading"
+    dataLocator=""
     fontSize="fs22"
     fontWeight="extrabold"
     id="trackorder__modal__heading"
+    margin={null}
     mobileFontFamily="secondary"
+    numberOfLines={null}
+    textDecoration={null}
   />
   <Styled(BodyCopy)
+    accessibilityText=""
     data-locator="trackordermodal-overlaysubheading"
+    dataLocator=""
     id="trackorder__modal__subheading"
+    margin={null}
+    numberOfLines={null}
+    textDecoration={null}
   />
 </Styled(View)>
 `;

@@ -1,6 +1,8 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import withStyles from '@tcp/core/src/components/common/hoc/withStyles';
+import Notification from '@tcp/core/src/components/common/molecules/Notification';
+import { getLabelValue } from '@tcp/core/src/utils/utils';
 import styles from '../styles/PointsHistoryList.view.style';
 import { Row, Col, BodyCopy } from '../../../../../../common/atoms';
 
@@ -8,9 +10,35 @@ import { Row, Col, BodyCopy } from '../../../../../../common/atoms';
  * @function RewardsPointsView The RewardsPointsView component will provide slider for account drawer
  */
 
-const PointsHistoryList = ({ className, labels, pointHistory }) => {
+const PointsHistoryList = ({
+  className,
+  labels,
+  accountlabels,
+  pointHistory,
+  showSuccess,
+  showError,
+  claimPointsErrorMessage,
+}) => {
   return (
     <div className={className}>
+      {showError && (
+        <Notification
+          status="success"
+          colSize={{ large: 12, medium: 8, small: 6 }}
+          message={claimPointsErrorMessage}
+        />
+      )}
+      {showSuccess && (
+        <Notification
+          status="success"
+          colSize={{ large: 12, medium: 8, small: 6 }}
+          message={getLabelValue(
+            accountlabels,
+            'lbl_points_claim_success_message',
+            'myPlaceRewards'
+          )}
+        />
+      )}
       {pointHistory && pointHistory.length && (
         <Row fullBleed className="elem-mb-SM elem-mt-SM">
           <Col colSize={{ large: 3, medium: 2, small: 2 }}>
@@ -40,6 +68,7 @@ const PointsHistoryList = ({ className, labels, pointHistory }) => {
               fontFamily="secondary"
               className="list-fontsizes"
               fontWeight="semibold"
+              textAlign="center"
             >
               {labels.lbl_common_points_earned}
             </BodyCopy>
@@ -76,6 +105,7 @@ const PointsHistoryList = ({ className, labels, pointHistory }) => {
                 fontFamily="secondary"
                 className="list-fontsizes"
                 fontWeight="regular"
+                textAlign="center"
               >
                 {pointHistoryRow.pointsEarned}
               </BodyCopy>
@@ -106,6 +136,10 @@ PointsHistoryList.propTypes = {
     lbl_common_points_earned: PropTypes.string,
     lbl_common_points_history: PropTypes.string,
   }),
+  accountlabels: PropTypes.shape({}),
+  showSuccess: PropTypes.string,
+  showError: PropTypes.string,
+  claimPointsErrorMessage: PropTypes.string,
 };
 
 PointsHistoryList.defaultProps = {
@@ -116,6 +150,10 @@ PointsHistoryList.defaultProps = {
     lbl_common_points_earned: '',
     lbl_common_points_history: '',
   },
+  accountlabels: {},
+  showSuccess: '',
+  showError: '',
+  claimPointsErrorMessage: '',
 };
 
 export default withStyles(PointsHistoryList, styles);

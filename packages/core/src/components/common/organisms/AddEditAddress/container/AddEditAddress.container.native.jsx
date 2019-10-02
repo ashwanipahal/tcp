@@ -4,7 +4,7 @@ import { reset } from 'redux-form';
 import { Map } from 'immutable';
 
 import PropTypes from 'prop-types';
-import { addAddressReq, updateAddressReq } from './AddEditAddress.actions';
+import { addAddressReq, updateAddressReq, resetState } from './AddEditAddress.actions';
 
 import { getAddressList } from '../../../../features/account/AddressBook/container/AddressBook.actions';
 import AddAddressComponent from '../views/AddEditAddress.view';
@@ -76,11 +76,18 @@ export class AddEditAddressContainer extends React.PureComponent<Props> {
   }
 
   componentWillUnmount() {
-    const { resetFormState, toggleAddressModal, currentForm, resetAddressLine1 } = this.props;
+    const {
+      resetFormState,
+      toggleAddressModal,
+      currentForm,
+      resetAddressLine1,
+      resetAddressState,
+    } = this.props;
     resetFormState();
     if (currentForm === 'VerificationModal') toggleAddressModal();
 
     if (resetAddressLine1) resetAddressLine1();
+    resetAddressState();
   }
 
   getInitialValues = (addressList, address) => {
@@ -205,6 +212,9 @@ export const mapDispatchToProps = dispatch => {
     },
     resetFormState: () => {
       dispatch(reset('AddressForm'));
+    },
+    resetAddressState: () => {
+      dispatch(resetState());
     },
   };
 };

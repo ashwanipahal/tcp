@@ -1,5 +1,4 @@
 import { connect } from 'react-redux';
-import { fetchNavigationData } from '@tcp/core/src/components/features/content/Navigation/container/Navigation.actions';
 import NavMenuLevel1View from '../molecules/NavMenuLevel1';
 import { THEME_WRAPPER_REDUCER_KEY } from '../../../../common/hoc/ThemeWrapper.constants';
 
@@ -12,13 +11,4 @@ const mapStateToProps = state => {
   };
 };
 
-const mapDispatchToProps = dispatch => {
-  return {
-    loadNavigationData: () => dispatch(fetchNavigationData()),
-  };
-};
-
-export default connect(
-  mapStateToProps,
-  mapDispatchToProps
-)(NavMenuLevel1View);
+export default connect(mapStateToProps)(NavMenuLevel1View);

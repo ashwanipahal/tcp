@@ -5,30 +5,31 @@ import { BodyCopy, Col, Row, SelectBox, TextBox } from '../../../../../common/at
 import { calendarDaysMap, calendarYearsMap } from '../../utils/DateOfBirthHelper';
 import { MONTH_OPTIONS_MAP_WITH_EMPTY as months } from '../../RewardsCard.constants';
 import StyledPersonalFormWrapper from './styles/PersonalInformationFormWrapper.style';
-import { getLocator } from '../../../../../../utils';
+import { getLocator, getLabelValue } from '../../../../../../utils';
+import { getPageViewGridColumnSize } from '../../utils/utility';
 
 export default class PersonalInformationFormWrapper extends React.PureComponent {
   render() {
-    const { labels } = this.props;
+    const { labels, isPLCCModalFlow } = this.props;
     return (
       <StyledPersonalFormWrapper>
-        <BodyCopy component="h2" className="title" tabIndex="0">
-          {labels.plcc_form_personal_info}
+        <BodyCopy component="h2" className="title">
+          {getLabelValue(labels, 'lbl_PLCCForm_personalInfo')}
         </BodyCopy>
         <Row fullBleed>
           <Col
             className="contact_information_form"
             key="contact_information_form"
-            colSize={{ large: 6, medium: 4, small: 6 }}
+            colSize={{ large: getPageViewGridColumnSize(isPLCCModalFlow), medium: 4, small: 6 }}
           >
             <BodyCopy
               component="span"
-              fontSize="fs12"
+              fontSize="fs10"
               fontFamily="secondary"
               fontWeight="extrabold"
               className="free_dropdown_label"
             >
-              {labels.plcc_form_dob}
+              {getLabelValue(labels, 'lbl_PLCCForm_dob')}
             </BodyCopy>
             <Row fullBleed>
               <Col
@@ -81,12 +82,12 @@ export default class PersonalInformationFormWrapper extends React.PureComponent 
           <Col
             className="contact_information_form"
             key="contact_information_form_plcc_SSN"
-            colSize={{ large: 6, medium: 4, small: 6 }}
+            colSize={{ large: getPageViewGridColumnSize(isPLCCModalFlow), medium: 4, small: 6 }}
           >
             <Field
               component={TextBox}
-              title={labels.plcc_form_ssn}
-              placeholder={labels.plcc_form_ssn}
+              title={getLabelValue(labels, 'lbl_PLCCForm_ssn')}
+              placeholder={getLabelValue(labels, 'lbl_PLCCForm_ssn')}
               name="ssNumber"
               maxLength="4"
               id="lastName"
@@ -101,4 +102,5 @@ export default class PersonalInformationFormWrapper extends React.PureComponent 
 
 PersonalInformationFormWrapper.propTypes = {
   labels: PropTypes.shape({}).isRequired,
+  isPLCCModalFlow: PropTypes.func.isRequired,
 };

@@ -3,9 +3,14 @@
 exports[`PaymentTile component should render correctly 1`] = `
 <Styled(View)>
   <Styled(BodyCopy)
+    accessibilityText=""
     color="black"
+    dataLocator=""
     fontFamily="secondary"
     fontSize="fs16"
+    margin={null}
+    numberOfLines={null}
+    textDecoration={null}
   />
   <Styled(View) />
   <ReduxForm
@@ -73,10 +78,27 @@ exports[`PaymentTile component should render correctly 1`] = `
     validate={[Function]}
   />
   <Styled(View)>
-    <Styled(WithTheme(CustomButton))
+    <Styled(CustomButton)
+      active={false}
       buttonVariation="variable-width"
+      color=""
+      customStyle={Object {}}
+      customTextStyle={null}
+      disableButton={false}
       fill="BLUE"
+      fullWidth=""
+      iconColor="gray.800"
+      iconName="chevron-down"
+      iconSize="fs12"
+      locator=""
+      navigation={Object {}}
       onPress={[Function]}
+      selected={false}
+      selectedIcon="chevron-up"
+      showIcon={false}
+      text=""
+      theme={Object {}}
+      url=""
     />
   </Styled(View)>
 </Styled(View)>

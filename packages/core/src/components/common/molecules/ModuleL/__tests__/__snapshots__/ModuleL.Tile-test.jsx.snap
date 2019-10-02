@@ -2,16 +2,16 @@
 
 exports[`ModuleL Header component renders correctly 1`] = `
 <Styled(Anchor)
-  class=""
-  external={0}
+  asPath="https://www.childrensplace.com/us/c/toddler-girl-clothes"
   target=""
-  text="Shop Unicorns & Friends"
   title="Shop Unicorns & Friends"
-  url="https://www.childrensplace.com/us/c/toddler-girl-clothes"
+  to="/c?cid=https://www.childrensplace.com/ustoddler-girl-clothes"
 >
-  <Styled(Row)>
+  <Styled(Row)
+    fullBleed={true}
+  >
     <Styled(Col)
-      className="moduleL__tile moduleL__red"
+      className="moduleL__tile"
       colSize={
         Object {
           "large": 12,
@@ -20,28 +20,37 @@ exports[`ModuleL Header component renders correctly 1`] = `
         }
       }
       data-locator="moduleL_tiles_NaN"
+      style={
+        Object {
+          "backgroundColor": "red",
+        }
+      }
     >
-      <WithTheme(DamImage)
-        className="moduleL__tile-image"
-        data-locator="moduleL_image_NaN"
-        imgConfigs={
-          Array [
-            "t_mod_L_img_m",
-            "t_mod_L_img_t",
-            "t_mod_L_img_d",
-          ]
-        }
-        imgData={
-          Object {
-            "alt": "BE A UNICORN 24/7/365 alt",
-            "crop_d": "c_crop,g_face:center,q_auto:best,w_1440",
-            "crop_m": "c_crop,g_face:center,q_auto:best,w_520",
-            "crop_t": "c_crop,g_face:center,q_auto:best,w_962",
-            "title": "BE A UNICORN 24/7/365 title",
-            "url": "https://res.cloudinary.com/tcp-dam-test/image/upload/v1562061640/senjuti-kundu-7uP2gFMB2ps-unsplash_kxf3r4.jpg",
+      <div
+        className="tile-image-wrapper"
+      >
+        <WithTheme(DamImage)
+          className="moduleL__tile-image"
+          data-locator="moduleL_image_NaN"
+          imgConfigs={
+            Array [
+              "t_mod_L_img_m",
+              "t_mod_L_img_t",
+              "t_mod_L_img_d",
+            ]
           }
-        }
-      />
+          imgData={
+            Object {
+              "alt": "BE A UNICORN 24/7/365 alt",
+              "crop_d": "c_crop,g_face:center,q_auto:best,w_1440",
+              "crop_m": "c_crop,g_face:center,q_auto:best,w_520",
+              "crop_t": "c_crop,g_face:center,q_auto:best,w_962",
+              "title": "BE A UNICORN 24/7/365 title",
+              "url": "https://res.cloudinary.com/tcp-dam-test/image/upload/v1562061640/senjuti-kundu-7uP2gFMB2ps-unsplash_kxf3r4.jpg",
+            }
+          }
+        />
+      </div>
       <div
         className="moduleL__tile-text"
       >
@@ -66,19 +75,18 @@ exports[`ModuleL Header component renders correctly 1`] = `
           }
           letterSpacing="ls222"
           lineHeight="lh107"
+          link={null}
           textAlign="left"
         >
           BE A UNICORN 24/7/365
         </Styled(BodyCopy)>
         <Styled(Anchor)
-          class=""
+          asPath="https://www.childrensplace.com/us/c/toddler-girl-clothes"
           className="moduleL__tile-link"
           dataLocator="moduleL_link_NaN"
-          external={0}
           target=""
-          text="Shop Unicorns & Friends"
           title="Shop Unicorns & Friends"
-          url="https://www.childrensplace.com/us/c/toddler-girl-clothes"
+          to="/c?cid=https://www.childrensplace.com/ustoddler-girl-clothes"
           withCaret={true}
         >
           Shop Unicorns & Friends

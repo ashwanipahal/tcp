@@ -4,13 +4,16 @@ import { MiniBagContainer } from '../container/MiniBag.container';
 
 describe('MiniBagContainer', () => {
   it('should render correctly', () => {
-    const mockedToggleMiniBagModal = jest.fn();
+    const props = {
+      updateCartItemCount: jest.fn(),
+      closeMiniBagDispatch: jest.fn(),
+    };
     const e = {
       preventDefault: jest.fn(),
     };
-    const tree = shallow(<MiniBagContainer toggleMiniBagModal={mockedToggleMiniBagModal} />);
+    const tree = shallow(<MiniBagContainer {...props} />);
     expect(tree).toMatchSnapshot();
     tree.instance().closeModal(e);
-    expect(mockedToggleMiniBagModal).toBeCalled();
+    expect(props.updateCartItemCount).toBeCalled();
   });
 });

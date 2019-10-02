@@ -4,6 +4,7 @@ exports[`CreditCardFields component should renders correctly when isExpirationRe
 <Styled(CustomSelect)
   activeValue=""
   clickHandler={[Function]}
+  customSelectClassName=""
   options={
     Array [
       Object {},

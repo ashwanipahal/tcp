@@ -6,7 +6,7 @@ describe('MiniBag template', () => {
   it('should render correctly', () => {
     const props = {
       className: '',
-      onRequestClose: jest.fn(),
+      closeMiniBagDispatch: jest.fn(),
       openState: true,
       labels: {},
       router: {},

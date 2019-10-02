@@ -10,15 +10,25 @@ exports[`CouponTile Component should render correctly 1`] = `
     <Styled(View)>
       <Styled(View)>
         <Styled(BodyCopy)
+          accessibilityText=""
           data-locator="accountoverview-myplacerewatdstile-rewardvalue"
+          dataLocator=""
           fontSize="fs12"
           fontWeight="semibold"
+          margin={null}
+          numberOfLines={null}
+          textDecoration={null}
         />
       </Styled(View)>
       <Styled(BodyCopy)
+        accessibilityText=""
         data-locator="accountoverview-myplacerewatdstile-rewarduseby"
+        dataLocator=""
         fontSize="fs10"
+        margin={null}
+        numberOfLines={null}
         text=" undefined"
+        textDecoration={null}
       />
     </Styled(View)>
   </Styled(View)>

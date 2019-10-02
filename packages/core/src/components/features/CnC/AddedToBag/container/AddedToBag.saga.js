@@ -1,12 +1,17 @@
-import { call, takeLatest, put } from 'redux-saga/effects';
-// import { validateReduxCache } from '../../../../../utils/cache.util';
+import { call, takeLatest, put, select } from 'redux-saga/effects';
 import ADDEDTOBAG_CONSTANTS from '../AddedToBag.constants';
 import {
   addCartEcomItem,
   addCartBopisItem,
 } from '../../../../../services/abstractors/CnC/AddedToBag';
-import { AddToCartError, SetAddedToBagData, openAddedToBag } from './AddedToBag.actions';
+import {
+  AddToCartError,
+  SetAddedToBagData,
+  openAddedToBag,
+  clearAddToBagErrorState,
+} from './AddedToBag.actions';
 import BAG_PAGE_ACTIONS from '../../BagPage/container/BagPage.actions';
+import BagPageSelectors from '../../BagPage/container/BagPage.selectors';
 import { getAPIConfig } from '../../../../../utils';
 
 export function* addToCartEcom({ payload }) {
@@ -21,6 +26,8 @@ export function* addToCartEcom({ payload }) {
       langId,
     };
 
+    const { callBack, fromMoveToBag } = payload;
+
     const params = {
       ...apiConfigParams,
       orderId: '.',
@@ -31,6 +38,7 @@ export function* addToCartEcom({ payload }) {
       'calculationUsage[]': '-7',
       externalId: wishlistItemId || '',
     };
+    yield put(clearAddToBagErrorState());
     const res = yield call(addCartEcomItem, params);
     yield put(
       SetAddedToBagData({
@@ -38,20 +46,31 @@ export function* addToCartEcom({ payload }) {
         ...res,
       })
     );
-    yield put(openAddedToBag());
+    if (callBack) {
+      callBack();
+    }
+    if (!fromMoveToBag) {
+      yield put(openAddedToBag());
+    }
+
     yield put(BAG_PAGE_ACTIONS.getOrderDetails());
   } catch (err) {
-    yield put(AddToCartError(err));
+    const errMsg = err && err.errorResponse && err.errorResponse.errorMessage;
+    yield put(AddToCartError(errMsg));
   }
 }
 
 export function* addItemToCartBopis({ payload }) {
   try {
     const {
-      storeLocId,
-      isBoss,
-      quantity,
-      skuInfo: { skuId, variantId, variantNo },
+      productInfo,
+      productInfo: {
+        storeLocId,
+        isBoss,
+        quantity,
+        skuInfo: { skuId, variantId, variantNo },
+      },
+      callback,
     } = payload;
     const PICKUP_TYPE = {
       boss: 'boss',
@@ -66,17 +85,28 @@ export function* addItemToCartBopis({ payload }) {
       variantNo,
       itemPartNumber: variantId,
     };
-    const res = yield call(addCartBopisItem, params);
+    yield put(clearAddToBagErrorState());
+    const errorMapping = yield select(BagPageSelectors.getErrorMapping);
+    const res = yield call(addCartBopisItem, params, errorMapping);
+    if (callback) {
+      callback();
+    }
     yield put(
       SetAddedToBagData({
-        ...payload,
+        ...productInfo,
         ...res,
       })
     );
     yield put(openAddedToBag());
     yield put(BAG_PAGE_ACTIONS.getOrderDetails());
   } catch (err) {
-    yield put(AddToCartError(err));
+    const errorMapping = yield select(BagPageSelectors.getErrorMapping);
+    const errorMessage =
+      // eslint-disable-next-line no-underscore-dangle
+      (err && err.errorMessages && err.errorMessages._error) ||
+      (errorMapping && errorMapping.DEFAULT) ||
+      'ERROR';
+    yield put(AddToCartError(errorMessage));
   }
 }
 

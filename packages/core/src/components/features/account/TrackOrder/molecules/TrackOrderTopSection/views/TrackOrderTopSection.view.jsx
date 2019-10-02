@@ -21,7 +21,7 @@ const TrackOrderTopSection = ({ labels, className }) => {
         component="h2"
         id="trackorder__modal__heading"
       >
-        {labels.trackOrder.lbl_header_trackOrderOverlay_header}
+        {labels.trackOrder.lbl_trackOrder_header}
       </BodyCopy>
       <BodyCopy
         fontSize="fs16"
@@ -32,7 +32,7 @@ const TrackOrderTopSection = ({ labels, className }) => {
         component="p"
         id="trackorder__modal__subheading"
       >
-        {labels.trackOrder.lbl_header_trackOrderOverlay_subheader}
+        {labels.trackOrder.lbl_trackOrder_subheader}
       </BodyCopy>
     </BodyCopy>
   );

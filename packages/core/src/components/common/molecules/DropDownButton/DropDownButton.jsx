@@ -12,17 +12,23 @@ class DropDownButton extends React.PureComponent {
   };
 
   componentDidMount() {
-    document.body.addEventListener('click', e => {
-      if (e.target.classList.contains('dropdown-button')) {
-        return false;
-      }
-      this.setState({
-        open: false,
-      });
-
-      return true;
-    });
+    document.body.addEventListener('click', this.openDropDown);
   }
+
+  componentWillUnmount() {
+    document.body.removeEventListener('click', this.openDropDown);
+  }
+
+  openDropDown = e => {
+    if (e.target.classList.contains('dropdown-button')) {
+      return false;
+    }
+    this.setState({
+      open: false,
+    });
+
+    return true;
+  };
 
   togglePanel = () => {
     const { open } = this.state;
@@ -62,9 +68,7 @@ class DropDownButton extends React.PureComponent {
                   ctaVariation: 'fixed-width',
                   link: button,
                 },
-                dataLocator: {
-                  cta: `${dataLocatorItemPrefix}${index}`,
-                },
+                dataLocator: `${dataLocatorItemPrefix}${index}`,
                 noCurve: true,
               };
               // Code to generate unique key
@@ -81,10 +85,11 @@ class DropDownButton extends React.PureComponent {
 
 DropDownButton.propTypes = {
   className: PropTypes.string.isRequired,
-  buttonsData: PropTypes.arrayOf(PropTypes.oneOfType(PropTypes.object)).isRequired,
+  buttonsData: PropTypes.arrayOf(PropTypes.oneOfType(PropTypes.shape({}))).isRequired,
   dropdownLabel: PropTypes.string.isRequired,
   dataLocator: PropTypes.string.isRequired,
   dataLocatorItemPrefix: PropTypes.string.isRequired,
 };
 
+export { DropDownButton as DropDownButtonVanilla };
 export default withStyles(DropDownButton, style);

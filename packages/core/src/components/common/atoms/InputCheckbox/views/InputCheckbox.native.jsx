@@ -1,12 +1,9 @@
 import React, { Fragment } from 'React';
 import PropTypes from 'prop-types';
+import { Alert } from 'react-native';
+import { RenderTree, ComponentMap } from '@fabulas/astly';
 import BodyCopy from '../../BodyCopy';
-import {
-  StyledCheckBox,
-  StyledImage,
-  StyledText,
-  StyledErrorIcon,
-} from '../InputCheckbox.style.native';
+import { StyledCheckBox, StyledImage, StyledErrorIcon } from '../InputCheckbox.style.native';
 
 import { StyledErrorWrapper } from '../../TextBox/TextBox.style.native';
 
@@ -52,34 +49,30 @@ class InputCheckBox extends React.Component {
     };
   }
 
-  componentDidUpdate() {
-    const { isChecked: currentState } = this.state;
-    const { isChecked, input } = this.props;
-    if (currentState !== isChecked) {
-      this.updateState({ isChecked, input });
+  componentDidUpdate(prevProps) {
+    const { isChecked: isCheckedProp } = this.props;
+    const { isChecked: isCheckedState } = this.state;
+    if (prevProps.isChecked !== isCheckedProp && isCheckedProp !== isCheckedState) {
+      /* eslint-disable react/no-did-update-set-state */
+      this.setState({
+        isChecked: isCheckedProp,
+      });
     }
   }
-
-  updateState = ({ isChecked, input }) => {
-    this.setState(
-      {
-        isChecked,
-      },
-      () => {
-        input.onChange(isChecked);
-      }
-    );
-  };
 
   onClick = () => {
     const { isChecked } = this.state;
     const { onClick, id, input } = this.props;
     const checkboxState = !isChecked;
-    input.onChange(checkboxState);
-    this.setState({
-      isChecked: checkboxState,
-    });
-    onClick(checkboxState, id);
+    this.setState(
+      {
+        isChecked: checkboxState,
+      },
+      () => {
+        input.onChange(checkboxState);
+        onClick(checkboxState, id);
+      }
+    );
   };
 
   genCheckedIcon() {
@@ -94,7 +87,45 @@ class InputCheckBox extends React.Component {
 
   renderRight() {
     const { rightText, fontSize } = this.props;
-    return <BodyCopy mobileFontFamily="secondary" fontSize={fontSize || 'fs12'} text={rightText} />;
+    const astlyBag = {
+      navigate(node) {
+        const { tagName, properties } = node;
+        const { href } = properties;
+
+        Alert.alert(
+          `You just clicked on an ${tagName} tag for ${href}`,
+          JSON.stringify(node, null, 2)
+        );
+      },
+    };
+
+    return (
+      <RenderTree
+        tree={`<div><p>${rightText}</p></div>`}
+        tools={astlyBag}
+        componentMap={{
+          ...ComponentMap,
+          span: props => (
+            <BodyCopy
+              mobileFontFamily="secondary"
+              fontSize={fontSize || 'fs12'}
+              text={props.children}
+              {...props}
+            />
+          ),
+          a: props => {
+            return (
+              <BodyCopy
+                mobileFontFamily="secondary"
+                fontSize={fontSize || 'fs12'}
+                text={props.children}
+                {...props}
+              />
+            );
+          },
+        }}
+      />
+    );
   }
 
   render() {
@@ -120,9 +151,7 @@ class InputCheckBox extends React.Component {
           pointerEvents={disabled ? 'none' : 'auto'}
         >
           {!hideCheckboxIcon && this.genCheckedIcon()}
-          {rightText && (
-            <StyledText inputVariation={inputVariation}>{this.renderRight()}</StyledText>
-          )}
+          {rightText && this.renderRight()}
         </StyledCheckBox>
         <Fragment>
           {isError ? (

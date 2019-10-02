@@ -4,6 +4,35 @@ import PropTypes from 'prop-types';
 import OpenLoginModal from '@tcp/core/src/components/features/account/LoginPage/views/LoginModal';
 import FooterNavLinks from '../../FooterNavLinks';
 
+const renderFooterNavLinks = (
+  navLink,
+  className,
+  colNum,
+  linkConfig,
+  footerActionCreator,
+  { isSubHeader, isLoggedIn, headerAsImage } = {}
+) => {
+  if (!navLink) {
+    return null;
+  }
+
+  return (
+    <FooterNavLinks
+      className={className}
+      isSubHeader={isSubHeader}
+      isLoggedIn={isLoggedIn}
+      headerAsImage={headerAsImage}
+      navLinkItems={{
+        header: navLink.header,
+        links: navLink.links,
+      }}
+      colNum={colNum}
+      linkConfig={linkConfig}
+      footerActionCreator={footerActionCreator}
+    />
+  );
+};
+
 const FooterMiddleDesktop = ({
   navLinks,
   className,
@@ -31,27 +60,17 @@ const FooterMiddleDesktop = ({
             small: 6,
           }}
         >
-          <FooterNavLinks
-            className={className}
-            navLinkItems={{
-              header: navLinks[i].header,
-              links: navLinks[i].links,
-            }}
-            colNum={i}
-            linkConfig={linkConfig}
-            footerActionCreator={footerActionCreator}
-          />
-          <FooterNavLinks
-            className={className}
-            isSubHeader
-            navLinkItems={{
-              header: navLinks[i + 1].header,
-              links: navLinks[i + 1].links,
-            }}
-            colNum={i + 1}
-            linkConfig={linkConfig}
-            footerActionCreator={footerActionCreator}
-          />
+          {renderFooterNavLinks(navLinks[i], className, i, linkConfig, footerActionCreator)}
+          {renderFooterNavLinks(
+            navLinks[i + 1],
+            className,
+            i + 1,
+            linkConfig,
+            footerActionCreator,
+            {
+              isSubHeader: true,
+            }
+          )}
         </Col>
       );
       i += 1;
@@ -64,17 +83,10 @@ const FooterMiddleDesktop = ({
             small: 6,
           }}
         >
-          <FooterNavLinks
-            className={className}
-            navLinkItems={{
-              header: navLinks[i].header,
-              links: navLinks[i].links,
-            }}
-            colNum={i}
-            isLoggedIn={isLoggedIn}
-            linkConfig={linkConfig}
-            footerActionCreator={footerActionCreator}
-          />
+          {renderFooterNavLinks(navLinks[i], className, i, linkConfig, footerActionCreator, {
+            isSubHeader: false,
+            isLoggedIn: true,
+          })}
         </Col>
       );
     }
@@ -89,17 +101,11 @@ const FooterMiddleDesktop = ({
           small: 6,
         }}
       >
-        <FooterNavLinks
-          headerAsImage
-          className={className}
-          navLinkItems={{
-            header: navLinks[0].header,
-            links: navLinks[0].links,
-          }}
-          colNum={0}
-          linkConfig={linkConfig}
-          footerActionCreator={footerActionCreator}
-        />
+        {renderFooterNavLinks(navLinks[0], className, 0, linkConfig, footerActionCreator, {
+          isSubHeader: false,
+          isLoggedIn: false,
+          headerAsImage: true,
+        })}
       </Col>
       <Col
         colSize={{
@@ -108,17 +114,11 @@ const FooterMiddleDesktop = ({
           small: 6,
         }}
       >
-        <FooterNavLinks
-          headerAsImage
-          className={className}
-          navLinkItems={{
-            header: navLinks[1].header,
-            links: navLinks[1].links,
-          }}
-          colNum={1}
-          linkConfig={linkConfig}
-          footerActionCreator={footerActionCreator}
-        />
+        {renderFooterNavLinks(navLinks[1], className, 1, linkConfig, footerActionCreator, {
+          isSubHeader: false,
+          isLoggedIn: false,
+          headerAsImage: true,
+        })}
       </Col>
       {numberOfNavLinkCols <= 5 ? (
         <Col

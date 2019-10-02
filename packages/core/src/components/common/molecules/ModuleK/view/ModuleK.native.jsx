@@ -16,6 +16,14 @@ import { ImageGrid, PromoBanner, Carousel } from '../..';
 const MODULE_HEIGHT = 260;
 const MODULE_WIDTH = getScreenWidth();
 
+/**
+ * @class ModuleK - global reusable component will provide featured content module
+ * with a composite background image and 2-6 CTAs
+ * This component is plug and play at any given slot in layout by passing required data
+ * @param {mediaLinkedList} mediaLinkedList the list of data for carousel images
+ * @param {promoBanner} promoBanner promo banner data
+ * @param {singleCTAButton} singleCTAButton button data
+ */
 class ModuleK extends React.PureComponent {
   /**
    * @function renderCarouselSlide : renders module K Images.

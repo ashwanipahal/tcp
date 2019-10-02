@@ -26,6 +26,7 @@ export const CouponIcon = ({ coupon, labels }) => {
         fontWeight="black"
         text={couponTextLabel}
         color="white"
+        textAlign="center"
       />
     </IconText>
   );

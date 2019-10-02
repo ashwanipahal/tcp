@@ -24,7 +24,7 @@ const styles = css`
 
   .arrowImg {
     transform: rotate(180deg);
-    height: 10px;
+    height: 15px;
     width: 6px;
   }
 

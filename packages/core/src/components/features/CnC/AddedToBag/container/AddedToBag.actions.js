@@ -26,3 +26,7 @@ export const openAddedToBag = () => ({
 export const closeAddedToBag = () => ({
   type: ADDEDTOBAG_CONSTANTS.CLOSE_ADDED_TO_BAG,
 });
+
+export const clearAddToBagErrorState = () => ({
+  type: ADDEDTOBAG_CONSTANTS.CLEAR_ADD_TO_BAG_ERROR_STATE,
+});

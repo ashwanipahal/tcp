@@ -1,0 +1,16 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`HeadingVanilla should render correctly 1`] = `
+<Styled(View)
+  accessibilityRole="text"
+  height={null}
+  marginTop={null}
+>
+  <Styled(Text)
+    accessibilityRole="text"
+    fontSize={null}
+    isPlcc={false}
+    numberOfLines={2}
+  />
+</Styled(View)>
+`;

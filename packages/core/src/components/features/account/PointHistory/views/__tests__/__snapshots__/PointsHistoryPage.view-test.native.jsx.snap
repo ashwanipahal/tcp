@@ -1,63 +1,82 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
 exports[`PointHistoryPage component should renders correctly 1`] = `
-<ScrollViewMock>
-  <Styled(Styled(BodyCopy))
-    fontFamily="secondary"
-    fontSize="fs16"
-    fontWeight="extrabold"
-    spacingStyles="margin-bottom-XL margin-top-LRG"
-    text="lbl_common_points_history"
-  />
-  <Connect(PointsHistoryContainer)
-    labels={Object {}}
-    showFullHistory={true}
-    view="edit"
-  />
-  <Styled(View)>
-    <RichText
-      domStorageEnabled={false}
-      javaScriptEnabled={false}
-      source={
-        Object {
-          "html": "",
-        }
-      }
-      style={
-        Object {
-          "minHeight": 640,
-        }
-      }
-      thirdPartyCookiesEnabled={false}
+<ScrollViewMock
+  keyboardShouldPersistTaps="handled"
+  showsVerticalScrollIndicator={false}
+>
+  <Styled(View)
+    spacingStyles="margin-LRG"
+  >
+    <Connect(PointsHistoryContainer)
+      labels={Object {}}
+      showFullHistory={true}
+      view="edit"
     />
-  </Styled(View)>
-  <Styled(View)>
-    <Styled(Anchor)
-      accessibilityLabel=""
-      anchorVariation="primary"
-      customStyle={Object {}}
-      dataLocator="my-rewards-program-details"
-      fontSizeVariation="large"
-      locator=""
-      onPress={[Function]}
-      text="lbl_points_history_program_details"
-      underline={true}
-      visible={false}
-    />
+    <Styled(View)
+      dataLocator="points_history_rte"
+    >
+      <RichText
+        domStorageEnabled={false}
+        javaScriptEnabled={false}
+        source={
+          Object {
+            "html": "",
+          }
+        }
+        style={
+          Object {
+            "minHeight": 600,
+          }
+        }
+        thirdPartyCookiesEnabled={false}
+      />
+    </Styled(View)>
     <Styled(View)>
       <Styled(Anchor)
         accessibilityLabel=""
         anchorVariation="primary"
+        colorName={null}
         customStyle={Object {}}
-        dataLocator="my-rewards-tnc"
         fontSizeVariation="medium"
         locator=""
         noLink={true}
         onPress={[Function]}
-        text="lbl_common_tnc"
+        text="Points claim form"
         underline={true}
         visible={false}
       />
+    </Styled(View)>
+    <Styled(View)>
+      <Styled(Anchor)
+        accessibilityLabel=""
+        anchorVariation="primary"
+        colorName={null}
+        customStyle={Object {}}
+        dataLocator="my-rewards-program-details"
+        fontSizeVariation="medium"
+        locator=""
+        onPress={[Function]}
+        text="lbl_points_history_program_details"
+        underline={true}
+        visible={false}
+      />
+      <Styled(View)>
+        <Styled(Anchor)
+          accessibilityLabel=""
+          anchorVariation="primary"
+          colorName={null}
+          customStyle={Object {}}
+          dataLocator="my-rewards-tnc"
+          fontSizeVariation="medium"
+          locator=""
+          noLink={true}
+          onPress={[Function]}
+          text="lbl_common_tnc"
+          underline={true}
+          visible={false}
+        />
+      </Styled(View)>
     </Styled(View)>
   </Styled(View)>
 </ScrollViewMock>

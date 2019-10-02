@@ -16,6 +16,7 @@ exports[`Empty Mini Bag Component should render correctly 1`] = `
       fontWeight="semibold"
       letterSpacing="normal"
       lineHeight="normal"
+      link={null}
       textAlign="left"
     >
       YOUR SHOPPING BAG IS EMPTY
@@ -54,6 +55,7 @@ exports[`Empty Mini Bag Component should render correctly with labels name 1`] =
       fontWeight="semibold"
       letterSpacing="normal"
       lineHeight="normal"
+      link={null}
       textAlign="left"
     >
       YOUR SHOPPING BAG IS EMPTY
@@ -92,6 +94,7 @@ exports[`Empty Mini Bag Component should render correctly with labels name 2`] =
       fontWeight="semibold"
       letterSpacing="normal"
       lineHeight="normal"
+      link={null}
       textAlign="left"
     >
       YOUR SHOPPING BAG IS EMPTY
@@ -126,6 +129,7 @@ exports[`Empty Mini Bag Component should render correctly with labels name 2`] =
         fontWeight="extrabold"
         letterSpacing="normal"
         lineHeight="normal"
+        link={null}
         textAlign="left"
       >
         log In
@@ -144,6 +148,7 @@ exports[`Empty Mini Bag Component should render correctly with labels name 2`] =
       fontWeight="regular"
       letterSpacing="normal"
       lineHeight="normal"
+      link={null}
       textAlign="left"
     >
       Dont have an account
@@ -157,6 +162,7 @@ exports[`Empty Mini Bag Component should render correctly with labels name 2`] =
       fontWeight="regular"
       letterSpacing="normal"
       lineHeight="normal"
+      link={null}
       textAlign="left"
     >
       Create one now to start earning points!
@@ -177,6 +183,7 @@ exports[`Empty Mini Bag Component should render correctly with labels name 2`] =
         fontWeight="extrabold"
         letterSpacing="normal"
         lineHeight="normal"
+        link={null}
         textAlign="left"
       >
         create Account

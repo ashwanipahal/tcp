@@ -1,30 +1,30 @@
-/* eslint-disable max-lines */
 import React from 'react';
-import PropTypes from 'prop-types';
-import { getLabelValue } from '@tcp/core/src/utils';
 import withStyles from '@tcp/core/src/components/common/hoc/withStyles';
 import styles from '../styles/GiftCards.style';
 import { Row, Col, BodyCopy, Button } from '../../../../../../common/atoms';
 import Grid from '../../../../../../common/molecules/Grid';
 import GiftCardTile from '../../../molecules/GiftCardTile';
-import AddGiftCardForm from '../../../../../account/Payment/AddGiftCard/views/AddGiftCardForm';
+import AddGiftCardForm from '../../../../../../common/organisms/AddGiftCardForm/AddGiftCardForm';
 
 import ErrorMessage from '../../../../../../common/hoc/ErrorMessage';
 
-const GiftCardSectionHeading = (labels, isGiftCardApplied = false) => {
+import { propTypes, defaultProps, renderAddGiftCardProps } from './GiftCards.view.utils';
+
+const GiftCardSectionHeading = (giftCardList, labels, isGiftCardApplied = false) => {
   return (
-    <BodyCopy
-      fontFamily="secondary"
-      fontSize="fs16"
-      fontWeight="extrabold"
-      data-locator="gift-cards"
-      className="elem-mb-XS elem-mt-XXL"
-    >
-      {getLabelValue(
-        labels,
-        isGiftCardApplied ? 'lbl_giftcard_appliedCards' : 'lbl_giftcard_availableCards'
+    <>
+      {giftCardList && giftCardList.size > 0 && (
+        <BodyCopy
+          fontFamily="secondary"
+          fontSize="fs16"
+          fontWeight="extrabold"
+          data-locator="gift-cards"
+          className="elem-mt-MED"
+        >
+          {`${isGiftCardApplied ? labels.appliedGiftCards : labels.availableGiftCards}`}
+        </BodyCopy>
       )}
-    </BodyCopy>
+    </>
   );
 };
 
@@ -46,15 +46,16 @@ const renderAddGiftCardError = getAddGiftCardError => {
   return null;
 };
 
-const renderAddGiftCard = (
+const renderAddGiftCard = ({
   hideAddGiftCard,
   onAddGiftCardClick,
   getAddGiftCardError,
   isGuestUser,
   isRecapchaEnabled,
   labels,
-  isLoading
-) => {
+  isLoading,
+  onClearError,
+}) => {
   return (
     <Row className="gift-card-container elem-mb-LRG">
       <Col
@@ -75,6 +76,7 @@ const renderAddGiftCard = (
             addGiftCardError={getAddGiftCardError}
             isRow
             isLoading={isLoading}
+            onClearError={onClearError}
           />
         </BodyCopy>
       </Col>
@@ -84,7 +86,7 @@ const renderAddGiftCard = (
 const renderAddNewGiftButton = (labels, orderBalanceTotal, appliedGiftCards, showAddGiftCard) => {
   if (orderBalanceTotal > 0 && appliedGiftCards && appliedGiftCards.size < 5) {
     return (
-      <Row className="elem-mt-LRG elem-mb-LRG">
+      <Row fullBleed className="elem-mt-LRG elem-mb-LRG">
         <Col
           colSize={{
             small: 4,
@@ -101,7 +103,7 @@ const renderAddNewGiftButton = (labels, orderBalanceTotal, appliedGiftCards, sho
             fullWidth="true"
             disabled={false}
           >
-            {getLabelValue(labels, 'lbl_giftcard_newGiftCard')}
+            {labels.newGiftCard}
           </Button>
         </Col>
       </Row>
@@ -109,6 +111,27 @@ const renderAddNewGiftButton = (labels, orderBalanceTotal, appliedGiftCards, sho
   }
   return null;
 };
+
+const renderHeadsUpHeading = (labels, appliedGiftCards, giftCardList) => {
+  return (
+    <>
+      {((appliedGiftCards && appliedGiftCards.size > 0) ||
+        (giftCardList && giftCardList.size > 0)) && (
+        <BodyCopy
+          fontFamily="secondary"
+          fontSize="fs16"
+          fontWeight="regular"
+          data-locator="gift-cards"
+          className="elem-mt-LRG"
+        >
+          <span className="headsUpMsgBoldTitle">{labels.giftCardHeadsUpTitle}</span>
+          {`${labels.giftCardHeadsUpMsg}`}
+        </BodyCopy>
+      )}
+    </>
+  );
+};
+
 export const GiftCards = ({
   giftCardList,
   appliedGiftCards,
@@ -126,10 +149,11 @@ export const GiftCards = ({
   isGuestUser,
   isRecapchaEnabled,
   isLoading,
+  onClearError,
 }) => {
   return (
     <Grid className={className}>
-      <Row className="gift-section-container elem-mb-LRG">
+      <Row fullBleed className="gift-section-container elem-mb-LRG">
         <Col
           colSize={{
             small: 6,
@@ -142,20 +166,20 @@ export const GiftCards = ({
             fontSize="fs26"
             fontWeight="regular"
             data-locator="gift-cards"
-            className="elem-mb-XS elem-mt-XXL"
+            className="elem-mt-XXL"
           >
-            {getLabelValue(labels, 'lbl_giftcard_title')}
+            {labels.giftCardTitle}
           </BodyCopy>
           <BodyCopy
             fontFamily="secondary"
             fontSize="fs16"
             fontWeight="regular"
             data-locator="gift-cards"
-            className="elem-mb-XS elem-mt-MED"
+            className="elem-mt-LRG"
           >
-            {getLabelValue(labels, 'lbl_giftcard_addUptoMsg')}
+            {labels.giftCardAddUpToMsg}
           </BodyCopy>
-          {GiftCardSectionHeading(labels, true)}
+          {GiftCardSectionHeading(appliedGiftCards, labels, true)}
 
           {appliedGiftCards &&
             appliedGiftCards.size > 0 &&
@@ -169,20 +193,9 @@ export const GiftCards = ({
               />
             ))}
 
-          <BodyCopy
-            fontFamily="secondary"
-            fontSize="fs16"
-            fontWeight="regular"
-            data-locator="gift-cards"
-            className="elem-mb-XS elem-mt-MED"
-          >
-            <span className="headsUpMsgBoldTitle">
-              {getLabelValue(labels, 'lbl_giftcard_headsUpTitle')}
-            </span>
-            {`${getLabelValue(labels, 'lbl_giftcard_headsUpMsg')}`}
-          </BodyCopy>
+          {renderHeadsUpHeading(labels, appliedGiftCards, giftCardList)}
 
-          {GiftCardSectionHeading(labels)}
+          {GiftCardSectionHeading(giftCardList, labels)}
           {giftCardList &&
             giftCardList.size > 0 &&
             giftCardList.map(cardData => (
@@ -199,52 +212,25 @@ export const GiftCards = ({
       {!enableAddGiftCard &&
         renderAddNewGiftButton(labels, orderBalanceTotal, appliedGiftCards, showAddGiftCard)}
       {enableAddGiftCard &&
-        renderAddGiftCard(
+        renderAddGiftCard({
           hideAddGiftCard,
           onAddGiftCardClick,
           getAddGiftCardError,
           isGuestUser,
           isRecapchaEnabled,
           labels,
-          isLoading
-        )}
+          isLoading,
+          onClearError,
+        })}
     </Grid>
   );
 };
 
-GiftCards.propTypes = {
-  className: PropTypes.string,
-  giftCardList: PropTypes.shape({}),
-  appliedGiftCards: PropTypes.shape({}),
-  applyExistingGiftCardToOrder: PropTypes.func.isRequired,
-  handleRemoveGiftCard: PropTypes.func.isRequired,
-  labels: PropTypes.shape({}),
-  giftCardErrors: PropTypes.shape({}),
-  orderBalanceTotal: PropTypes.number,
-  showAddGiftCard: PropTypes.func.isRequired,
-  enableAddGiftCard: PropTypes.bool,
-  hideAddGiftCard: PropTypes.func.isRequired,
-  onAddGiftCardClick: PropTypes.func.isRequired,
-  formErrorMessage: PropTypes.shape({}),
-  getAddGiftCardError: PropTypes.func.isRequired,
-  isGuestUser: PropTypes.bool,
-  isRecapchaEnabled: PropTypes.bool,
-  isLoading: PropTypes.bool,
-};
+renderAddGiftCard.propTypes = renderAddGiftCardProps;
 
-GiftCards.defaultProps = {
-  className: '',
-  giftCardList: {},
-  appliedGiftCards: {},
-  labels: {},
-  giftCardErrors: {},
-  orderBalanceTotal: 0,
-  enableAddGiftCard: false,
-  formErrorMessage: '',
-  isGuestUser: false,
-  isRecapchaEnabled: false,
-  isLoading: false,
-};
+GiftCards.propTypes = propTypes;
+
+GiftCards.defaultProps = defaultProps;
 
 export default withStyles(GiftCards, styles);
 export { GiftCards as GiftCardsVanilla };

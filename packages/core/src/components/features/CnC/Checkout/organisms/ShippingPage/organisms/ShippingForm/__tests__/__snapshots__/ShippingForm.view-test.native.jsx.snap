@@ -45,6 +45,15 @@ exports[`Shipping Form should render correctly 1`] = `
         shipmentMethods={null}
       />
     </FormSection>
+    <FormSection
+      name="giftServices"
+    >
+      <Connect(GiftServicesContainer)
+        formSection="giftServices"
+        showDefaultCheckbox={false}
+        variation="secondary"
+      />
+    </FormSection>
   </Styled(View)>
   <CnCCommonTemplate
     backLinkText={false}
@@ -88,29 +97,43 @@ exports[`Shipping Form should render correctly with non us site 1`] = `
             name="sendEmailSignup"
           />
           <Styled(BodyCopy)
+            accessibilityText=""
             dataLocator="shipping-email-signUp-heading-lbl"
             fontSize="fs14"
             fontWeight="regular"
+            margin={null}
             mobileFontFamily="secondary"
+            numberOfLines={null}
             text=""
+            textDecoration={null}
           />
         </Styled(View)>
         <Styled(BodyCopy)
+          accessibilityText=""
           dataLocator="shipping-email-signUp-sub-heading-text"
           fontSize="fs12"
           fontWeight="regular"
+          margin={null}
           mobileFontFamily="secondary"
+          numberOfLines={null}
           text=""
+          textDecoration={null}
         />
         <Styled(BodyCopy)
+          accessibilityText=""
+          dataLocator=""
           fontSize="fs12"
           fontWeight="regular"
+          margin={null}
           mobileFontFamily="secondary"
+          numberOfLines={null}
           text=""
+          textDecoration={null}
         />
         <Styled(Anchor)
           accessibilityLabel=""
           anchorVariation="primary"
+          colorName={null}
           customStyle={Object {}}
           dataLocator="shipping-email-signUp-contact-anchor"
           fontSizeVariation="small"
@@ -134,6 +157,15 @@ exports[`Shipping Form should render correctly with non us site 1`] = `
         selectedShipmentId={null}
         shipmentHeader=""
         shipmentMethods={null}
+      />
+    </FormSection>
+    <FormSection
+      name="giftServices"
+    >
+      <Connect(GiftServicesContainer)
+        formSection="giftServices"
+        showDefaultCheckbox={false}
+        variation="secondary"
       />
     </FormSection>
   </Styled(View)>
@@ -189,6 +221,15 @@ exports[`Shipping Form should render correctly with signed in 1`] = `
         selectedShipmentId={null}
         shipmentHeader=""
         shipmentMethods={null}
+      />
+    </FormSection>
+    <FormSection
+      name="giftServices"
+    >
+      <Connect(GiftServicesContainer)
+        formSection="giftServices"
+        showDefaultCheckbox={false}
+        variation="secondary"
       />
     </FormSection>
   </Styled(View)>

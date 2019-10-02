@@ -14,11 +14,12 @@ import Anchor from '../../../../../../../../common/atoms/Anchor';
 import getStandardConfig from '../../../../../../../../../utils/formValidation/validatorStandardConfig';
 import withStyles from '../../../../../../../../common/hoc/withStyles';
 import RegisteredShippingForm from '../../RegisteredShippingForm';
+import CheckoutOrderInfo from '../../../../../molecules/CheckoutOrderInfoMobile';
 import { getLabelValue } from '../../../../../../../../../utils';
 import { propTypes, defaultProps } from './ShippingForm.view.utils';
 import GiftServices from '../../../molecules/GiftServices';
 
-import styles from '../styles/ShippingForm.styles';
+import styles from '../styles/ShippingForm.view.style';
 
 const formName = 'checkoutShipping';
 
@@ -244,8 +245,15 @@ class ShippingForm extends React.Component {
       shippingAddress,
       setDefaultAddressId,
       syncErrorsObject,
+      isVenmoPaymentInProgress,
+      isVenmoShippingDisplayed,
+      showAccordian,
     } = this.props;
     const { isEditing, modalType, modalState } = this.state;
+    const nextButtonText =
+      isVenmoPaymentInProgress && !isVenmoShippingDisplayed
+        ? getLabelValue(labels, 'lbl_shipping_reviewText', 'shipping', 'checkout')
+        : getLabelValue(labels, 'lbl_shipping_billingText', 'shipping', 'checkout');
     return (
       <>
         <CheckoutSectionTitleDisplay
@@ -349,16 +357,11 @@ class ShippingForm extends React.Component {
               />
             </Col>
           </Row>
-
+          <CheckoutOrderInfo showAccordian={showAccordian} isGuest={isGuest} />
           <CheckoutFooter
             hideBackLink={!!orderHasPickUp}
             backLinkHandler={routeToPickupPage}
-            nextButtonText={getLabelValue(
-              labels,
-              'lbl_shipping_billingText',
-              'shipping',
-              'checkout'
-            )}
+            nextButtonText={nextButtonText}
             backLinkText={getLabelValue(
               labels,
               'lbl_shipping_backLinkText',
@@ -386,6 +389,5 @@ const validateMethod = createValidateMethod({
 export default reduxForm({
   form: formName, // a unique identifier for this form
   ...validateMethod,
-  destroyOnUnmount: false,
 })(withStyles(ShippingForm, styles));
 export { ShippingForm as ShippingFormVanilla };

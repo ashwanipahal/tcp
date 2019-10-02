@@ -1,6 +1,9 @@
 import React from 'react';
 import { shallow } from 'enzyme';
-import { CreditCardFieldsVanilla } from '../views/CreditCardFields.view';
+import {
+  CreditCardFieldsVanilla,
+  handleEditCreditCardNumber,
+} from '../views/CreditCardFields.view';
 
 describe('CreditCardFields component', () => {
   it('should renders correctly when isExpirationRequired is true', () => {
@@ -79,5 +82,17 @@ describe('CreditCardFields component', () => {
     };
     const component = shallow(<CreditCardFieldsVanilla {...props} />);
     expect(component).toMatchSnapshot();
+  });
+
+  it('should empty credit card number which starts with "*" field while editing', () => {
+    const inputValue = '**************6789';
+    const outputValue = '';
+    expect(handleEditCreditCardNumber(inputValue)).toStrictEqual(outputValue);
+  });
+
+  it('should NOT empty credit card number which starts with "*" field while editing', () => {
+    const inputValue = '123456789123456';
+    const outputValue = '123456789123456';
+    expect(handleEditCreditCardNumber(inputValue)).toStrictEqual(outputValue);
   });
 });

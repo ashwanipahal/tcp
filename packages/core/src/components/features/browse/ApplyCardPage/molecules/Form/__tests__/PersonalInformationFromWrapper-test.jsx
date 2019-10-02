@@ -6,9 +6,9 @@ describe('ContactInformationFormWrapper component', () => {
   const props = {
     dispatch: jest.fn(),
     labels: {
-      plcc_form_personal_info: 'personal information',
-      plcc_form_dob: 'Date of Birth',
-      plcc_form_ssn: 'ssn',
+      lbl_PLCCForm_personalInfo: 'personal information',
+      lbl_PLCCForm_dob: 'Date of Birth',
+      lbl_PLCCForm_ssn: 'ssn',
     },
   };
 

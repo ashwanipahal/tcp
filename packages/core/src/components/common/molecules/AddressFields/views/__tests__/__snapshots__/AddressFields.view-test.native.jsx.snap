@@ -298,6 +298,7 @@ exports[`AddressFields component should render correctly 1`] = `
   background-color: ",
                 [Function],
                 ";
+  width: 100%;
 ",
                 ";
   ",
@@ -744,6 +745,7 @@ exports[`AddressFields component should render correctly 1`] = `
         }
         dataLocator="addnewaddress-zipcode"
         id="zipCode"
+        keyboardType="numeric"
         maxLength={5}
         name="zipCode"
       />
@@ -778,6 +780,7 @@ exports[`AddressFields component should render correctly 1`] = `
   background-color: ",
             [Function],
             ";
+  width: 100%;
 ",
             ";
   ",
@@ -869,6 +872,7 @@ exports[`AddressFields component should render correctly 1`] = `
       }
       dataLocator="addnewaddress-phnumber"
       id="phoneNumber"
+      keyboardType="numeric"
       name="phoneNumber"
       type="tel"
     />
@@ -1224,6 +1228,7 @@ exports[`AddressFields component should render correctly without phoneNumber and
   background-color: ",
                 [Function],
                 ";
+  width: 100%;
 ",
                 ";
   ",
@@ -1670,6 +1675,7 @@ exports[`AddressFields component should render correctly without phoneNumber and
         }
         dataLocator="addnewaddress-zipcode"
         id="zipCode"
+        keyboardType="numeric"
         maxLength={5}
         name="zipCode"
       />
@@ -1704,6 +1710,7 @@ exports[`AddressFields component should render correctly without phoneNumber and
   background-color: ",
             [Function],
             ";
+  width: 100%;
 ",
             ";
   ",
@@ -1795,6 +1802,7 @@ exports[`AddressFields component should render correctly without phoneNumber and
       }
       dataLocator="addnewaddress-phnumber"
       id="phoneNumber"
+      keyboardType="numeric"
       name="phoneNumber"
       type="tel"
     />
@@ -2150,6 +2158,7 @@ exports[`AddressFields component should render correctly without phoneNumber and
   background-color: ",
                 [Function],
                 ";
+  width: 100%;
 ",
                 ";
   ",
@@ -2596,6 +2605,7 @@ exports[`AddressFields component should render correctly without phoneNumber and
         }
         dataLocator="addnewaddress-zipcode"
         id="zipCode"
+        keyboardType="numeric"
         maxLength={5}
         name="zipCode"
       />
@@ -2630,6 +2640,7 @@ exports[`AddressFields component should render correctly without phoneNumber and
   background-color: ",
             [Function],
             ";
+  width: 100%;
 ",
             ";
   ",
@@ -2721,6 +2732,7 @@ exports[`AddressFields component should render correctly without phoneNumber and
       }
       dataLocator="addnewaddress-phnumber"
       id="phoneNumber"
+      keyboardType="numeric"
       name="phoneNumber"
       type="tel"
     />
@@ -3076,6 +3088,7 @@ exports[`AddressFields component should render correctly without phoneNumber and
   background-color: ",
                 [Function],
                 ";
+  width: 100%;
 ",
                 ";
   ",
@@ -3277,6 +3290,7 @@ exports[`AddressFields component should render correctly without phoneNumber and
         }
         dataLocator="addnewaddress-zipcode"
         id="zipCode"
+        keyboardType="numeric"
         maxLength={6}
         name="zipCode"
       />
@@ -3311,6 +3325,7 @@ exports[`AddressFields component should render correctly without phoneNumber and
   background-color: ",
             [Function],
             ";
+  width: 100%;
 ",
             ";
   ",
@@ -3402,6 +3417,7 @@ exports[`AddressFields component should render correctly without phoneNumber and
       }
       dataLocator="addnewaddress-phnumber"
       id="phoneNumber"
+      keyboardType="numeric"
       name="phoneNumber"
       type="tel"
     />

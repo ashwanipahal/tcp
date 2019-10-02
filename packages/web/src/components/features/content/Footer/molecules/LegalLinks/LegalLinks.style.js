@@ -28,6 +28,7 @@ export default css`
 
     li {
       padding: 0 20px;
+      white-space: nowrap;
       border-left: 1px solid ${props => props.theme.colors.TEXT.DARKERGRAY};
     }
 

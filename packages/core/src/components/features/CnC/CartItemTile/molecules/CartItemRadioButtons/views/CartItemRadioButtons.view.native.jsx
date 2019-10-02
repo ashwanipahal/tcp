@@ -117,30 +117,32 @@ class CartItemRadioButtons extends React.Component {
     );
   };
 
-  header = () => {
+  header = (index, openedTile) => {
     const { selectedOrder, currentExpandedState } = this.state;
-    const { labels, openedTile, index } = this.props;
+    const {
+      labels: { bossPickUp, bopisPickUp, ecomShipping },
+    } = this.props;
+    const { BOSS, BOPIS, ECOM } = CARTPAGE_CONSTANTS;
+    const labelsMapping = {
+      [BOSS]: bossPickUp,
+      [BOPIS]: bopisPickUp,
+      [ECOM]: ecomShipping,
+    };
+    let obj = {};
     if (index !== openedTile || !currentExpandedState) {
-      switch (selectedOrder) {
-        case CARTPAGE_CONSTANTS.BOSS:
-          return this.renderHeader({ key: CARTPAGE_CONSTANTS.BOSS, label: labels.bossPickUp });
-        case CARTPAGE_CONSTANTS.BOPIS:
-          return this.renderHeader({ key: CARTPAGE_CONSTANTS.BOPIS, label: labels.bopisPickUp });
-        case CARTPAGE_CONSTANTS.ECOM:
-          return this.renderHeader({ key: CARTPAGE_CONSTANTS.ECOM, label: labels.ecomShipping });
-        default:
-          return this.renderHeader({ key: CARTPAGE_CONSTANTS.BOSS, label: labels.bossPickUp });
-      }
-    } else return this.renderHeader({ key: CARTPAGE_CONSTANTS.BOSS, label: labels.bossPickUp });
+      obj = { key: selectedOrder, label: labelsMapping[selectedOrder] };
+    } else {
+      obj = { key: BOSS, label: labelsMapping[BOSS] };
+    }
+    return this.renderHeader(obj);
   };
 
   render() {
-    const header = this.header();
     const { index, openedTile } = this.props;
     return (
       <StyledWrapper>
         <CollapsibleContainer
-          header={header}
+          header={this.header(index, openedTile)}
           body={this.renderRadioButtons()}
           getExpandedState={this.getExpandedState}
           defaultOpen={index === openedTile}

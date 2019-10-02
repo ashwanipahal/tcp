@@ -11,10 +11,14 @@ exports[`SMSFormFields should render correctly with isOrderUpdateChecked as fals
       onChange={[Function]}
     />
     <Styled(BodyCopy)
+      accessibilityText=""
       dataLocator="pickup-email-signUp-heading-lbl"
       fontSize="fs14"
       fontWeight="regular"
+      margin={null}
       mobileFontFamily="secondary"
+      numberOfLines={null}
+      textDecoration={null}
     />
   </Styled(View)>
 </Styled(View)>
@@ -31,10 +35,14 @@ exports[`SMSFormFields should render correctly with isOrderUpdateChecked as true
       onChange={[Function]}
     />
     <Styled(BodyCopy)
+      accessibilityText=""
       dataLocator="pickup-email-signUp-heading-lbl"
       fontSize="fs14"
       fontWeight="regular"
+      margin={null}
       mobileFontFamily="secondary"
+      numberOfLines={null}
+      textDecoration={null}
     />
   </Styled(View)>
   <View>
@@ -91,6 +99,7 @@ exports[`SMSFormFields should render correctly with isOrderUpdateChecked as true
           dataLocator="phone-number-field"
           enableSuccessCheck={false}
           id=".phoneNumber"
+          keyboardType="numeric"
           label="Phone Number"
           marginBottom={false}
           maxLength={50}
@@ -101,13 +110,19 @@ exports[`SMSFormFields should render correctly with isOrderUpdateChecked as true
     </Styled(View)>
     <Styled(View)>
       <Styled(BodyCopy)
+        accessibilityText=""
+        dataLocator=""
         fontFamily="primary"
         fontSize="fs10"
         fontWeight="regular"
+        margin={null}
+        numberOfLines={null}
+        textDecoration={null}
       />
       <Styled(Anchor)
         accessibilityLabel=""
         anchorVariation="primary"
+        colorName={null}
         customStyle={Object {}}
         fontSizeVariation="small"
         href="#"
@@ -135,10 +150,14 @@ exports[`SMSFormFields should render correctly with isOrderUpdateChecked as true
       onChange={[Function]}
     />
     <Styled(BodyCopy)
+      accessibilityText=""
       dataLocator="pickup-email-signUp-heading-lbl"
       fontSize="fs14"
       fontWeight="regular"
+      margin={null}
       mobileFontFamily="secondary"
+      numberOfLines={null}
+      textDecoration={null}
     />
   </Styled(View)>
   <View>
@@ -195,6 +214,7 @@ exports[`SMSFormFields should render correctly with isOrderUpdateChecked as true
           dataLocator="phone-number-field"
           enableSuccessCheck={false}
           id=".phoneNumber"
+          keyboardType="numeric"
           label="Phone Number"
           marginBottom={false}
           maxLength={50}
@@ -205,13 +225,19 @@ exports[`SMSFormFields should render correctly with isOrderUpdateChecked as true
     </Styled(View)>
     <Styled(View)>
       <Styled(BodyCopy)
+        accessibilityText=""
+        dataLocator=""
         fontFamily="primary"
         fontSize="fs10"
         fontWeight="regular"
+        margin={null}
+        numberOfLines={null}
+        textDecoration={null}
       />
       <Styled(Anchor)
         accessibilityLabel=""
         anchorVariation="primary"
+        colorName={null}
         customStyle={Object {}}
         fontSizeVariation="small"
         href="#"

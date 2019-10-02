@@ -25,6 +25,7 @@ exports[`CreditCardModalInfo Component should render correctly 1`] = `
         fontWeight="extrabold"
         letterSpacing="normal"
         lineHeight="normal"
+        link={null}
         textAlign="left"
       />
     </Styled(Col)>
@@ -57,6 +58,7 @@ exports[`CreditCardModalInfo Component should render correctly 1`] = `
         fontWeight="regular"
         letterSpacing="normal"
         lineHeight="normal"
+        link={null}
         textAlign="left"
       >
         <Styled(Image)
@@ -100,6 +102,7 @@ exports[`CreditCardModalInfo Component should render correctly 1`] = `
             fontWeight="extrabold"
             letterSpacing="normal"
             lineHeight="normal"
+            link={null}
             textAlign="left"
           >
             111
@@ -129,6 +132,7 @@ exports[`CreditCardModalInfo Component should render correctly 1`] = `
             fontWeight="regular"
             letterSpacing="normal"
             lineHeight="normal"
+            link={null}
             textAlign="left"
           >
             fgh
@@ -162,6 +166,7 @@ exports[`CreditCardModalInfo Component should render correctly 1`] = `
             fontWeight="regular"
             letterSpacing="normal"
             lineHeight="normal"
+            link={null}
             textAlign="left"
           >
             <Address

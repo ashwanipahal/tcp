@@ -12,6 +12,7 @@ exports[`TrackOrderModal component should renders correctly 1`] = `
   headingFontFamily="secondary"
   horizontalBar={false}
   isOpen={true}
+  isOverlay={false}
   onRequestClose={[Function]}
 >
   <SafeAreaView>

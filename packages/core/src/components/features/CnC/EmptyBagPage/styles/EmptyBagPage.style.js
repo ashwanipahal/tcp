@@ -5,7 +5,7 @@ export default css`
   display: flex;
   flex-direction: column;
   align-items: center;
-  padding-top: ${props => props.theme.spacing.ELEM_SPACING.XXL};
+  padding-top: ${props => (props.isBagPageSflSection ? 0 : props.theme.spacing.ELEM_SPACING.XXL)};
   .large-size-message {
     font-size: ${props => props.theme.typography.fontSizes.fs22};
   }
@@ -16,6 +16,11 @@ export default css`
   .element-spacing {
     margin: ${props => props.theme.spacing.ELEM_SPACING.XXXL} 0px;
   }
+
+  .empty-sfl-msg {
+    display: none;
+  }
+
   @media ${props => props.theme.mediaQuery.smallMax} {
     .large-size-message {
       font-size: ${props => props.theme.typography.fontSizes.fs16};
@@ -26,6 +31,14 @@ export default css`
     }
     .element-spacing {
       margin: ${props => props.theme.spacing.ELEM_SPACING.XL} 0px;
+    }
+
+    .empty-sfl-msg {
+      display: block;
+      margin-top: ${props => props.theme.spacing.ELEM_SPACING.MED};
+      margin-bottom: ${props => props.theme.spacing.ELEM_SPACING.MED};
+      padding: ${props => props.theme.spacing.ELEM_SPACING.MED};
+      background-color: ${props => props.theme.colors.WHITE};
     }
   }
 

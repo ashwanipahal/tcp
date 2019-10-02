@@ -9,7 +9,7 @@ const MiniBagSelect = props => {
   } = props;
   return (
     <React.Fragment>
-      <BodyCopy fontSize="fs10" fontFamily="secondary" fontWeight="extrabold">
+      <BodyCopy fontSize="fs10" fontFamily="secondary" fontWeight="extrabold" className="pdp-qty">
         <span>{`${name}:`}</span>
       </BodyCopy>
       <BodyCopy fontSize="fs12" fontFamily="secondary">

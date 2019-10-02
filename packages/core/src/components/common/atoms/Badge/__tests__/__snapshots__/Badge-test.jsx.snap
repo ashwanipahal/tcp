@@ -10,6 +10,7 @@ exports[`Badge component renders correctly with showCheckmark as false 1`] = `
   fontWeight="extrabold"
   letterSpacing="normal"
   lineHeight="normal"
+  link={null}
   textAlign="left"
 >
   <span
@@ -30,6 +31,7 @@ exports[`Badge component renders correctly with showCheckmark as true 1`] = `
   fontWeight="extrabold"
   letterSpacing="normal"
   lineHeight="normal"
+  link={null}
   textAlign="left"
 >
   <span

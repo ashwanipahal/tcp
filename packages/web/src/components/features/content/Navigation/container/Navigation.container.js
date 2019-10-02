@@ -9,7 +9,9 @@ import {
   hideNavigationFooter,
   showNavigationFooter,
   removeL1Focus,
+  hideAllDrawers,
 } from '@tcp/core/src/components/features/content/Navigation/container/Navigation.actions';
+import { closeNavigationDrawer } from '@tcp/core/src/components/common/organisms/Header/container/Header.actions';
 import NavigationView from '../views/Navigation';
 
 const mapStateToProps = state => {
@@ -42,30 +44,34 @@ const mapDispatchToProps = dispatch => {
     },
 
     /**
-     *  @fatarrow - hideL2Drawer
+     * @arrow - hideL2Drawer
      * @params - @param - id - Navigation category id.
-     *           @param - e - Event object of click
-     *           @param - isPropagate - A boolean value for handling default event execution.
+     * @param - e - Event object of click
+     * @param - isPropagate - A boolean value for handling default event execution.
      */
 
     hideL2Drawer: id => (e, isPropagate) => {
+      e.stopPropagation();
       if (!isPropagate) {
         e.preventDefault();
-        e.stopPropagation();
       }
       dispatch(showNavigationFooter());
       dispatch(hideL2Drawer(id));
       dispatch(removeL1Focus(true));
     },
     openL3Drawer: (id, hasL3) => e => {
+      e.stopPropagation();
       if (!getViewportInfo().isDesktop && hasL3) {
         e.preventDefault();
-        e.stopPropagation();
         dispatch(openL3Drawer(id));
       }
     },
     hideL3Drawer: id => () => {
       dispatch(hideL3Drawer(id));
+    },
+    closeNavigationDrawer: () => {
+      dispatch(hideAllDrawers());
+      dispatch(closeNavigationDrawer());
     },
   };
 };

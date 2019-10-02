@@ -6,13 +6,17 @@ exports[`MenuItems should render correctly 1`] = `
     maxWidth=""
   >
     <Styled(BodyCopy)
+      accessibilityText=""
       color="text.primary"
+      dataLocator=""
       fontFamily="secondary"
       fontSize="fs16"
       fontWeight="regular"
+      margin={null}
       numberOfLines={1}
       text="abcd"
       textAlign="left"
+      textDecoration={null}
     />
   </Styled(View)>
   <Styled(TouchableOpacity)
@@ -27,13 +31,17 @@ exports[`MenuItems should render correctly with badges and submenu 1`] = `
     maxWidth=""
   >
     <Styled(BodyCopy)
+      accessibilityText=""
       color="text.primary"
+      dataLocator=""
       fontFamily="secondary"
       fontSize="fs16"
       fontWeight="regular"
+      margin={null}
       numberOfLines={1}
       text="abcd"
       textAlign="left"
+      textDecoration={null}
     />
   </Styled(View)>
   <Styled(TouchableOpacity)
@@ -43,11 +51,16 @@ exports[`MenuItems should render correctly with badges and submenu 1`] = `
       marginRight=""
     >
       <Styled(BodyCopy)
+        accessibilityText=""
         color="white"
+        dataLocator=""
         fontFamily="primary"
         fontSize="fs10"
         fontWeight="black"
+        margin={null}
+        numberOfLines={null}
         text="promo"
+        textDecoration={null}
       />
     </Styled(View)>
     <Styled(Image)
@@ -68,13 +81,17 @@ exports[`MenuItems should trigger the press event with l3 1`] = `
     maxWidth=""
   >
     <Styled(BodyCopy)
+      accessibilityText=""
       color="text.primary"
+      dataLocator=""
       fontFamily="secondary"
       fontSize="fs16"
       fontWeight="regular"
+      margin={null}
       numberOfLines={1}
       text="abcd"
       textAlign="left"
+      textDecoration={null}
     />
   </Styled(View)>
   <Styled(TouchableOpacity)
@@ -84,11 +101,16 @@ exports[`MenuItems should trigger the press event with l3 1`] = `
       marginRight=""
     >
       <Styled(BodyCopy)
+        accessibilityText=""
         color="white"
+        dataLocator=""
         fontFamily="primary"
         fontSize="fs10"
         fontWeight="black"
+        margin={null}
+        numberOfLines={null}
         text="promo"
+        textDecoration={null}
       />
     </Styled(View)>
     <Styled(Image)
@@ -109,13 +131,17 @@ exports[`MenuItems should trigger the press event without l3 1`] = `
     maxWidth=""
   >
     <Styled(BodyCopy)
+      accessibilityText=""
       color="text.primary"
+      dataLocator=""
       fontFamily="secondary"
       fontSize="fs16"
       fontWeight="regular"
+      margin={null}
       numberOfLines={1}
       text="abcd"
       textAlign="left"
+      textDecoration={null}
     />
   </Styled(View)>
   <Styled(TouchableOpacity)
@@ -125,11 +151,16 @@ exports[`MenuItems should trigger the press event without l3 1`] = `
       marginRight=""
     >
       <Styled(BodyCopy)
+        accessibilityText=""
         color="white"
+        dataLocator=""
         fontFamily="primary"
         fontSize="fs10"
         fontWeight="black"
+        margin={null}
+        numberOfLines={null}
         text="promo"
+        textDecoration={null}
       />
     </Styled(View)>
   </Styled(TouchableOpacity)>

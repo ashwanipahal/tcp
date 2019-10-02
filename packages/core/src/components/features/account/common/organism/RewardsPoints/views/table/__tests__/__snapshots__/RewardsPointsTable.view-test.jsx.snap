@@ -13,6 +13,7 @@ exports[`RewardsPointsTable Component should render correctly 1`] = `
     fontWeight="regular"
     letterSpacing="normal"
     lineHeight="normal"
+    link={null}
     textAlign="left"
   >
     <Styled(BodyCopy)
@@ -24,6 +25,7 @@ exports[`RewardsPointsTable Component should render correctly 1`] = `
       fontWeight="regular"
       letterSpacing="normal"
       lineHeight="normal"
+      link={null}
       textAlign="left"
     >
       <Styled(BodyCopy)
@@ -35,6 +37,7 @@ exports[`RewardsPointsTable Component should render correctly 1`] = `
         fontWeight="extrabold"
         letterSpacing="normal"
         lineHeight="normal"
+        link={null}
         textAlign="center"
       />
       <Styled(BodyCopy)
@@ -46,6 +49,7 @@ exports[`RewardsPointsTable Component should render correctly 1`] = `
         fontWeight="regular"
         letterSpacing="normal"
         lineHeight="normal"
+        link={null}
         textAlign="center"
       />
     </Styled(BodyCopy)>
@@ -58,6 +62,7 @@ exports[`RewardsPointsTable Component should render correctly 1`] = `
       fontWeight="regular"
       letterSpacing="normal"
       lineHeight="normal"
+      link={null}
       textAlign="left"
     >
       <Styled(BodyCopy)
@@ -69,6 +74,7 @@ exports[`RewardsPointsTable Component should render correctly 1`] = `
         fontWeight="extrabold"
         letterSpacing="normal"
         lineHeight="normal"
+        link={null}
         textAlign="center"
       />
       <Styled(BodyCopy)
@@ -80,6 +86,7 @@ exports[`RewardsPointsTable Component should render correctly 1`] = `
         fontWeight="regular"
         letterSpacing="normal"
         lineHeight="normal"
+        link={null}
         textAlign="center"
       />
     </Styled(BodyCopy)>
@@ -92,6 +99,7 @@ exports[`RewardsPointsTable Component should render correctly 1`] = `
       fontWeight="regular"
       letterSpacing="normal"
       lineHeight="normal"
+      link={null}
       textAlign="left"
     >
       <Styled(BodyCopy)
@@ -103,6 +111,7 @@ exports[`RewardsPointsTable Component should render correctly 1`] = `
         fontWeight="extrabold"
         letterSpacing="normal"
         lineHeight="normal"
+        link={null}
         textAlign="center"
       />
       <Styled(BodyCopy)
@@ -114,6 +123,7 @@ exports[`RewardsPointsTable Component should render correctly 1`] = `
         fontWeight="regular"
         letterSpacing="normal"
         lineHeight="normal"
+        link={null}
         textAlign="center"
       />
     </Styled(BodyCopy)>

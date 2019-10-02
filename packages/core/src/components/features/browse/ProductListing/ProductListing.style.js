@@ -2,17 +2,21 @@ import { css } from 'styled-components';
 
 export default css`
   .bread-crumb,
-  .filter-area,
-  .product-list {
-    background: #d8d8d8;
-    padding: 20px 0 17px;
+  .filter-area {
+    padding-top: 20px;
+    padding-bottom: 17px;
     margin: 5px 0;
   }
   .bread-crumb,
   .product-list {
-    background: white;
     display: flex;
   }
+  @media ${props => props.theme.mediaQuery.large} {
+    .show-count-web {
+      display: none;
+    }
+  }
+
   .sidebar {
     display: none;
   }
@@ -33,7 +37,11 @@ export default css`
       display: block;
     }
   }
-
+  .show-count-section {
+    @media ${props => props.theme.mediaQuery.large} {
+      display: none;
+    }
+  }
   .render-mobile-view {
     width: auto;
     padding: 0;
@@ -53,6 +61,7 @@ export default css`
   }
 
   .count-section {
+    text-align: right;
     position: relative;
     font-size: ${props => props.theme.typography.fontSizes.fs14};
     font-family: ${props => props.theme.typography.fonts.secondary};
@@ -62,10 +71,5 @@ export default css`
   .items-count-content-number {
     font-weight: ${props => props.theme.typography.fontWeights.black};
     padding: ${props => props.theme.spacing.ELEM_SPACING.XXS};
-  }
-
-  .items-count-content {
-    position: absolute;
-    right: 0;
   }
 `;

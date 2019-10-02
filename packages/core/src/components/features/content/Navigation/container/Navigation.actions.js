@@ -68,3 +68,9 @@ export const removeL1Focus = payload => {
     type: NAVIGATION_CONSTANTS.REMOVE_L1_FOCUS,
   };
 };
+
+export const hideAllDrawers = () => {
+  return {
+    type: NAVIGATION_CONSTANTS.HIDE_ALL_DRAWERS,
+  };
+};

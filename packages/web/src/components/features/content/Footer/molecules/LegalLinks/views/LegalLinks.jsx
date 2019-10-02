@@ -9,7 +9,7 @@ const LegalLinks = ({ className, links }) => (
   <React.Fragment>
     <ul className={className}>
       {links.map((link, index) => (
-        <li data-locator={`${getLocator('legal_links')}${index}`}>
+        <li key={index.toString()} data-locator={`${getLocator('legal_links')}${index}`}>
           <Anchor anchorVariation="primary" to={link.url} target={link.target} title={link.title}>
             {link.text}
           </Anchor>

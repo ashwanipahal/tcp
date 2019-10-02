@@ -26,4 +26,20 @@ describe('ColorSelectorDropDown component', () => {
     const tree = shallow(<ColorSelectorDropDownVanilla {...props} />);
     expect(tree.find(CustomSelect)).toBeTruthy();
   });
+
+  it('should render CustomSelect view section with selected option', () => {
+    const props = {
+      className: 'checkout',
+      options: [],
+      input: {
+        name: {},
+      },
+      selectedColorOption: {
+        title: 'active title',
+        value: 'active value',
+      },
+    };
+    const tree = shallow(<ColorSelectorDropDownVanilla {...props} />);
+    expect(tree.find(CustomSelect)).toBeTruthy();
+  });
 });

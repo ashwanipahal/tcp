@@ -35,8 +35,9 @@ class ProductPrice extends React.Component {
     promotionalMessage: PropTypes.string,
     isPlcc: PropTypes.bool.isRequired,
     promotionalPLCCMessage: PropTypes.string,
-    badge2: PropTypes.shape({}),
+    badge2: PropTypes.string,
     favIconContainer: PropTypes.shape({}),
+    customFonts: PropTypes.shape({ listPriceFont: PropTypes.string }),
     className: PropTypes.string,
   };
 
@@ -48,19 +49,37 @@ class ProductPrice extends React.Component {
     promotionalPLCCMessage: '',
     highOfferPrice: '',
     highListPrice: '',
-    badge2: null,
+    badge2: '',
     favIconContainer: null,
     className: '',
+    customFonts: {},
+  };
+
+  getBadge = badge2 => {
+    return badge2 ? (
+      <BodyCopy
+        className="badge"
+        color="red.500"
+        fontSize="fs14"
+        fontWeight="semibold"
+        fontFamily="secondary"
+      >
+        {badge2}
+      </BodyCopy>
+    ) : null;
   };
 
   getPriceMarkUp = () => {
     let { listPrice, offerPrice, highOfferPrice, highListPrice } = this.props;
+    const { badge2 } = this.props;
     const {
       className,
       currencySymbol,
       currencyExchange,
       priceCurrency /* , isBundleProduct, isBundleList */,
+      customFonts: { listPriceFont },
     } = this.props;
+    const currency = currencySymbol === 'USD' ? '$' : currencySymbol;
     const exchangeValue = getExchangeValue(currencyExchange);
     if (exchangeValue) {
       offerPrice *= exchangeValue;
@@ -76,7 +95,7 @@ class ProductPrice extends React.Component {
       (highOfferPrice && highOfferPrice !== highListPrice);
     if (showBothPrice) {
       return (
-        <div className={`${className}`}>
+        <div className={`${className} price-container`}>
           <BodyCopy
             className="price-item actual-price"
             fontSize="fs22"
@@ -84,21 +103,24 @@ class ProductPrice extends React.Component {
             fontWeight="black"
             color="red.500"
           >
-            {currencySymbol}
+            {currency}
             {offerPrice.toFixed(2)}
             {offerPricePostFix}
           </BodyCopy>
-          <BodyCopy
-            className="price-item original-price"
-            fontSize="fs13"
-            fontFamily="secondary"
-            color="gray.600"
-          >
-            {/* TODO - fix it with bundle {!(isBundleProduct || isBundleList) ? 'Was' : ''}  */}
-            {currencySymbol}
-            {listPrice.toFixed(2)}
-            {listPricePostFix}
-          </BodyCopy>
+          <div className="list-badge-container">
+            <BodyCopy
+              className="price-item original-price"
+              fontSize={listPriceFont || 'fs13'}
+              fontFamily="secondary"
+              color="gray.800"
+            >
+              {/* TODO - fix it with bundle {!(isBundleProduct || isBundleList) ? 'Was' : ''}  */}
+              {currency}
+              {listPrice.toFixed(2)}
+              {listPricePostFix}
+            </BodyCopy>
+            {this.getBadge(badge2)}
+          </div>
         </div>
       );
     }
@@ -111,7 +133,7 @@ class ProductPrice extends React.Component {
           fontWeight="black"
           color="red.500"
         >
-          {currencySymbol}
+          {currency}
           {offerPrice.toFixed(2)}
           {offerPricePostFix}
         </BodyCopy>
@@ -124,7 +146,7 @@ class ProductPrice extends React.Component {
         fontFamily="secondary"
         color="gray.500"
       >
-        {currencySymbol}
+        {currency}
         {listPrice.toFixed(2)}
         {listPricePostFix}
       </BodyCopy>
@@ -142,7 +164,6 @@ class ProductPrice extends React.Component {
       isPlcc,
       // isInternationalShipping,
       // isBundleProduct,
-      badge2,
       className,
       // isBundleList,
     } = this.props;
@@ -155,7 +176,7 @@ class ProductPrice extends React.Component {
       >
         <div>
           {this.getPriceMarkUp()}
-          {badge2 && <span className="bundle-badge-container">{badge2}</span>}
+
           {isItemPartNumberVisible && (
             <strong className="number-item">
               Item #:

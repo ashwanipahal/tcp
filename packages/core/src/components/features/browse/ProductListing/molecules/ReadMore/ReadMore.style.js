@@ -28,15 +28,13 @@ export default css`
     display: none;
   }
   .read-more-target {
-    max-height: 0;
-    font-size: 0;
-    transition: 0.25s ease;
+    display: none;
   }
 
   &.read-more-expanded .read-more-target {
+    display: block;
     font-size: ${props => props.theme.typography.fontSizes.fs14};
     font-weight: ${props => props.theme.typography.fontWeights.regular};
-    max-height: 999em;
   }
 
   .read-more-trigger {

@@ -2,30 +2,50 @@
 
 exports[`RewardsPoints Slider View should render RewardsPointsViewVanilla Correctly 1`] = `
 <Fragment>
-  <Styled(View)>
+  <Styled(View)
+    plccUser={false}
+  >
     <Styled(Text) />
     <Styled(Text)>
       <Styled(BodyCopy)
+        accessibilityText=""
+        dataLocator=""
         fontFamily="secondary"
         fontSize="fs14"
+        margin={null}
+        numberOfLines={null}
         text="Current Points: "
+        textDecoration={null}
       />
       <Styled(BodyCopy)
+        accessibilityText=""
+        dataLocator=""
         fontFamily="secondary"
         fontSize="fs14"
         fontWeight="black"
+        margin={null}
+        numberOfLines={null}
         text=""
+        textDecoration={null}
       />
     </Styled(Text)>
     <Styled(Text)>
       <Styled(BodyCopy)
+        accessibilityText=""
+        dataLocator=""
         fontFamily="secondary"
         fontSize="fs14"
+        margin={null}
+        numberOfLines={null}
         text="My rewards: "
+        textDecoration={null}
       />
     </Styled(Text)>
-    <Styled(View)>
+    <Styled(View)
+      plccUser={false}
+    >
       <Styled(Text)
+        plccUser={false}
         style={
           Object {
             "width": "%",
@@ -35,15 +55,25 @@ exports[`RewardsPoints Slider View should render RewardsPointsViewVanilla Correc
     </Styled(View)>
     <Styled(Text)>
       <Styled(BodyCopy)
+        accessibilityText=""
+        dataLocator=""
         fontFamily="secondary"
         fontSize="fs14"
+        margin={null}
+        numberOfLines={null}
         text="Next Rewards: "
+        textDecoration={null}
       />
       <Styled(BodyCopy)
+        accessibilityText=""
+        dataLocator=""
         fontFamily="secondary"
         fontSize="fs14"
         fontWeight="black"
+        margin={null}
+        numberOfLines={null}
         text="10"
+        textDecoration={null}
       />
     </Styled(Text)>
   </Styled(View)>

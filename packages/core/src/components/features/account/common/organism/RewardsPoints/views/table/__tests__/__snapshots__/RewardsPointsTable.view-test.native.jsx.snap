@@ -4,60 +4,90 @@ exports[`RewardsPointsTable Component should render correctly 1`] = `
 <Styled(View)>
   <Styled(View)>
     <Styled(BodyCopy)
+      accessibilityText=""
       color="gray.900"
+      dataLocator=""
       fontFamily="secondary"
       fontSize="fs18"
       fontWeight="black"
+      margin={null}
+      numberOfLines={null}
       text="$0"
+      textDecoration={null}
     />
     <Styled(View)>
       <Styled(BodyCopy)
+        accessibilityText=""
         color="black"
+        dataLocator=""
         fontFamily="secondary"
         fontSize="fs13"
         fontWeight="regular"
+        margin={null}
+        numberOfLines={null}
         text="My Rewards"
         textAlign="center"
+        textDecoration={null}
       />
     </Styled(View)>
   </Styled(View)>
   <Styled(View) />
   <Styled(View)>
     <Styled(BodyCopy)
+      accessibilityText=""
       color="gray.900"
+      dataLocator=""
       fontFamily="secondary"
       fontSize="fs18"
       fontWeight="black"
+      margin={null}
+      numberOfLines={null}
       text={10}
+      textDecoration={null}
     />
     <Styled(View)>
       <Styled(BodyCopy)
+        accessibilityText=""
         color="black"
+        dataLocator=""
         fontFamily="secondary"
         fontSize="fs13"
         fontWeight="regular"
+        margin={null}
+        numberOfLines={null}
         text="Current Points"
         textAlign="center"
+        textDecoration={null}
       />
     </Styled(View)>
   </Styled(View)>
   <Styled(View) />
   <Styled(View)>
     <Styled(BodyCopy)
+      accessibilityText=""
       color="gray.900"
+      dataLocator=""
       fontFamily="secondary"
       fontSize="fs18"
       fontWeight="black"
+      margin={null}
+      numberOfLines={null}
       text={90}
+      textDecoration={null}
     />
     <Styled(View)>
       <Styled(BodyCopy)
+        accessibilityText=""
         color="black"
+        dataLocator=""
         fontFamily="secondary"
         fontSize="fs13"
         fontWeight="regular"
+        margin={null}
+        numberOfLines={null}
         text="Points to Next Reward"
         textAlign="center"
+        textDecoration={null}
       />
     </Styled(View)>
   </Styled(View)>
@@ -68,59 +98,89 @@ exports[`RewardsPointsTable Component should render correctly with values 1`] = 
 <Styled(View)>
   <Styled(View)>
     <Styled(BodyCopy)
+      accessibilityText=""
       color="gray.900"
+      dataLocator=""
       fontFamily="secondary"
       fontSize="fs18"
       fontWeight="black"
+      margin={null}
+      numberOfLines={null}
       text="0"
+      textDecoration={null}
     />
     <Styled(View)>
       <Styled(BodyCopy)
+        accessibilityText=""
         color="black"
+        dataLocator=""
         fontFamily="secondary"
         fontSize="fs13"
         fontWeight="regular"
+        margin={null}
+        numberOfLines={null}
         textAlign="center"
+        textDecoration={null}
       />
     </Styled(View)>
   </Styled(View)>
   <Styled(View) />
   <Styled(View)>
     <Styled(BodyCopy)
+      accessibilityText=""
       color="gray.900"
+      dataLocator=""
       fontFamily="secondary"
       fontSize="fs18"
       fontWeight="black"
+      margin={null}
+      numberOfLines={null}
       text={10}
+      textDecoration={null}
     />
     <Styled(View)>
       <Styled(BodyCopy)
+        accessibilityText=""
         color="black"
+        dataLocator=""
         fontFamily="secondary"
         fontSize="fs13"
         fontWeight="regular"
+        margin={null}
+        numberOfLines={null}
         text="Current Points"
         textAlign="center"
+        textDecoration={null}
       />
     </Styled(View)>
   </Styled(View)>
   <Styled(View) />
   <Styled(View)>
     <Styled(BodyCopy)
+      accessibilityText=""
       color="gray.900"
+      dataLocator=""
       fontFamily="secondary"
       fontSize="fs18"
       fontWeight="black"
+      margin={null}
+      numberOfLines={null}
       text={90}
+      textDecoration={null}
     />
     <Styled(View)>
       <Styled(BodyCopy)
+        accessibilityText=""
         color="black"
+        dataLocator=""
         fontFamily="secondary"
         fontSize="fs13"
         fontWeight="regular"
+        margin={null}
+        numberOfLines={null}
         text="Points to Next Reward"
         textAlign="center"
+        textDecoration={null}
       />
     </Styled(View)>
   </Styled(View)>

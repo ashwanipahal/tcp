@@ -1,0 +1,12 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`CheckoutCartItemListContainer should render CheckoutCartItemListContainer 1`] = `
+<Styled(CheckoutCartItemsList)
+  bagPageLabels={Object {}}
+  currencySymbol="$"
+  gettingSortedItemList={[Function]}
+  items={Object {}}
+  itemsCount={2}
+  labels={Object {}}
+/>
+`;

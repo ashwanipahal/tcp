@@ -11,22 +11,32 @@ exports[`BonusPointsAvailabilityVanilla should render correctly available_today 
         <React.Fragment>
           <ForwardRef>
             <ForwardRef
+              accessibilityText=""
               data-locator="msgtextinbold"
+              dataLocator=""
               fontSize="fs14"
               fontWeight="extrabold"
+              margin={null}
               mobileFontFamily="secondary"
+              numberOfLines={null}
               text="lbl_bonusPoints_applyAnyDay"
               textAlign="center"
+              textDecoration={null}
             />
           </ForwardRef>
           <ForwardRef>
             <ForwardRef
+              accessibilityText=""
               data-locator="infomsg"
+              dataLocator=""
               fontSize="fs12"
               fontWeight="regular"
+              margin={null}
               mobileFontFamily="secondary"
+              numberOfLines={null}
               text="lbl_bonusPoints_msg"
               textAlign="center"
+              textDecoration={null}
             />
           </ForwardRef>
         </React.Fragment>
@@ -63,6 +73,7 @@ exports[`BonusPointsAvailabilityVanilla should render correctly available_today 
           accessibilityLabel=""
           anchorVariation="primary"
           className="details-link"
+          colorName={null}
           customStyle={Object {}}
           dataLocator="detailslink"
           fontSizeVariation="medium"
@@ -84,38 +95,52 @@ exports[`BonusPointsAvailabilityVanilla should render correctly available_today 
       >
         <ForwardRef>
           <ForwardRef
+            accessibilityText=""
             color="orange.800"
             component="span"
+            dataLocator=""
             fontSize="fs16"
             fontWeight="extrabold"
+            margin={null}
             mobileFontFamily="primary"
+            numberOfLines={null}
             text="lbl_bonusPoints_placeRewardsBonus"
+            textDecoration={null}
           />
         </ForwardRef>
         <ForwardRef>
           <ForwardRef
+            accessibilityText=""
             color="primary.main"
             component="span"
+            dataLocator=""
             fontSize="fs16"
             fontWeight="extrabold"
+            margin={null}
             mobileFontFamily="primary"
+            numberOfLines={null}
             text="lbl_bonusPoints_placeRewardsPoints"
+            textDecoration={null}
           />
         </ForwardRef>
         <ForwardRef
+          accessibilityText=""
           color="pink.500"
           component="span"
+          dataLocator=""
           fontSize="fs16"
           fontWeight="extrabold"
+          margin={null}
           mobileFontFamily="primary"
+          numberOfLines={null}
           text="lbl_bonusPoints_placeRewardsDay"
+          textDecoration={null}
         />
       </ForwardRef>
     }
     height={null}
     iconLocator="arrowicon"
     index={null}
-    isBag={false}
   />
 </View>
 `;
@@ -131,22 +156,32 @@ exports[`BonusPointsAvailabilityVanilla should render correctly with applied to 
         <React.Fragment>
           <ForwardRef>
             <ForwardRef
+              accessibilityText=""
               data-locator="msgtextinbold"
+              dataLocator=""
               fontSize="fs14"
               fontWeight="extrabold"
+              margin={null}
               mobileFontFamily="secondary"
+              numberOfLines={null}
               text="lbl_bonusPoints_applyAnyDay"
               textAlign="center"
+              textDecoration={null}
             />
           </ForwardRef>
           <ForwardRef>
             <ForwardRef
+              accessibilityText=""
               data-locator="infomsg"
+              dataLocator=""
               fontSize="fs12"
               fontWeight="regular"
+              margin={null}
               mobileFontFamily="secondary"
+              numberOfLines={null}
               text="lbl_bonusPoints_msg"
               textAlign="center"
+              textDecoration={null}
             />
           </ForwardRef>
         </React.Fragment>
@@ -193,6 +228,7 @@ exports[`BonusPointsAvailabilityVanilla should render correctly with applied to 
           accessibilityLabel=""
           anchorVariation="primary"
           className="details-link"
+          colorName={null}
           customStyle={Object {}}
           dataLocator="detailslink"
           fontSizeVariation="medium"
@@ -214,38 +250,52 @@ exports[`BonusPointsAvailabilityVanilla should render correctly with applied to 
       >
         <ForwardRef>
           <ForwardRef
+            accessibilityText=""
             color="orange.800"
             component="span"
+            dataLocator=""
             fontSize="fs16"
             fontWeight="extrabold"
+            margin={null}
             mobileFontFamily="primary"
+            numberOfLines={null}
             text="lbl_bonusPoints_placeRewardsBonus"
+            textDecoration={null}
           />
         </ForwardRef>
         <ForwardRef>
           <ForwardRef
+            accessibilityText=""
             color="primary.main"
             component="span"
+            dataLocator=""
             fontSize="fs16"
             fontWeight="extrabold"
+            margin={null}
             mobileFontFamily="primary"
+            numberOfLines={null}
             text="lbl_bonusPoints_placeRewardsPoints"
+            textDecoration={null}
           />
         </ForwardRef>
         <ForwardRef
+          accessibilityText=""
           color="pink.500"
           component="span"
+          dataLocator=""
           fontSize="fs16"
           fontWeight="extrabold"
+          margin={null}
           mobileFontFamily="primary"
+          numberOfLines={null}
           text="lbl_bonusPoints_placeRewardsDay"
+          textDecoration={null}
         />
       </ForwardRef>
     }
     height={null}
     iconLocator="arrowicon"
     index={null}
-    isBag={false}
   />
 </View>
 `;
@@ -261,22 +311,32 @@ exports[`BonusPointsAvailabilityVanilla should render correctly with future Use 
         <React.Fragment>
           <ForwardRef>
             <ForwardRef
+              accessibilityText=""
               data-locator="msgtextinbold"
+              dataLocator=""
               fontSize="fs14"
               fontWeight="extrabold"
+              margin={null}
               mobileFontFamily="secondary"
+              numberOfLines={null}
               text="lbl_bonusPoints_applyAnyDay"
               textAlign="center"
+              textDecoration={null}
             />
           </ForwardRef>
           <ForwardRef>
             <ForwardRef
+              accessibilityText=""
               data-locator="infomsg"
+              dataLocator=""
               fontSize="fs12"
               fontWeight="regular"
+              margin={null}
               mobileFontFamily="secondary"
+              numberOfLines={null}
               text="lbl_bonusPoints_msg"
               textAlign="center"
+              textDecoration={null}
             />
           </ForwardRef>
         </React.Fragment>
@@ -323,6 +383,7 @@ exports[`BonusPointsAvailabilityVanilla should render correctly with future Use 
           accessibilityLabel=""
           anchorVariation="primary"
           className="details-link"
+          colorName={null}
           customStyle={Object {}}
           dataLocator="detailslink"
           fontSizeVariation="medium"
@@ -344,38 +405,52 @@ exports[`BonusPointsAvailabilityVanilla should render correctly with future Use 
       >
         <ForwardRef>
           <ForwardRef
+            accessibilityText=""
             color="orange.800"
             component="span"
+            dataLocator=""
             fontSize="fs16"
             fontWeight="extrabold"
+            margin={null}
             mobileFontFamily="primary"
+            numberOfLines={null}
             text="lbl_bonusPoints_placeRewardsBonus"
+            textDecoration={null}
           />
         </ForwardRef>
         <ForwardRef>
           <ForwardRef
+            accessibilityText=""
             color="primary.main"
             component="span"
+            dataLocator=""
             fontSize="fs16"
             fontWeight="extrabold"
+            margin={null}
             mobileFontFamily="primary"
+            numberOfLines={null}
             text="lbl_bonusPoints_placeRewardsPoints"
+            textDecoration={null}
           />
         </ForwardRef>
         <ForwardRef
+          accessibilityText=""
           color="pink.500"
           component="span"
+          dataLocator=""
           fontSize="fs16"
           fontWeight="extrabold"
+          margin={null}
           mobileFontFamily="primary"
+          numberOfLines={null}
           text="lbl_bonusPoints_placeRewardsDay"
+          textDecoration={null}
         />
       </ForwardRef>
     }
     height={null}
     iconLocator="arrowicon"
     index={null}
-    isBag={false}
   />
 </View>
 `;
@@ -391,22 +466,32 @@ exports[`BonusPointsAvailabilityVanilla should render correctly with futureDisab
         <React.Fragment>
           <ForwardRef>
             <ForwardRef
+              accessibilityText=""
               data-locator="msgtextinbold"
+              dataLocator=""
               fontSize="fs14"
               fontWeight="extrabold"
+              margin={null}
               mobileFontFamily="secondary"
+              numberOfLines={null}
               text="lbl_bonusPoints_applyAnyDay"
               textAlign="center"
+              textDecoration={null}
             />
           </ForwardRef>
           <ForwardRef>
             <ForwardRef
+              accessibilityText=""
               data-locator="infomsg"
+              dataLocator=""
               fontSize="fs12"
               fontWeight="regular"
+              margin={null}
               mobileFontFamily="secondary"
+              numberOfLines={null}
               text="lbl_bonusPoints_msg"
               textAlign="center"
+              textDecoration={null}
             />
           </ForwardRef>
         </React.Fragment>
@@ -453,6 +538,7 @@ exports[`BonusPointsAvailabilityVanilla should render correctly with futureDisab
           accessibilityLabel=""
           anchorVariation="primary"
           className="details-link"
+          colorName={null}
           customStyle={Object {}}
           dataLocator="detailslink"
           fontSizeVariation="medium"
@@ -474,38 +560,52 @@ exports[`BonusPointsAvailabilityVanilla should render correctly with futureDisab
       >
         <ForwardRef>
           <ForwardRef
+            accessibilityText=""
             color="orange.800"
             component="span"
+            dataLocator=""
             fontSize="fs16"
             fontWeight="extrabold"
+            margin={null}
             mobileFontFamily="primary"
+            numberOfLines={null}
             text="lbl_bonusPoints_placeRewardsBonus"
+            textDecoration={null}
           />
         </ForwardRef>
         <ForwardRef>
           <ForwardRef
+            accessibilityText=""
             color="primary.main"
             component="span"
+            dataLocator=""
             fontSize="fs16"
             fontWeight="extrabold"
+            margin={null}
             mobileFontFamily="primary"
+            numberOfLines={null}
             text="lbl_bonusPoints_placeRewardsPoints"
+            textDecoration={null}
           />
         </ForwardRef>
         <ForwardRef
+          accessibilityText=""
           color="pink.500"
           component="span"
+          dataLocator=""
           fontSize="fs16"
           fontWeight="extrabold"
+          margin={null}
           mobileFontFamily="primary"
+          numberOfLines={null}
           text="lbl_bonusPoints_placeRewardsDay"
+          textDecoration={null}
         />
       </ForwardRef>
     }
     height={null}
     iconLocator="arrowicon"
     index={null}
-    isBag={false}
   />
 </View>
 `;
@@ -520,12 +620,17 @@ exports[`BonusPointsAvailabilityVanilla should render correctly with isUsed 1`] 
       >
         <ForwardRef>
           <ForwardRef
+            accessibilityText=""
             data-locator="infomsg"
+            dataLocator=""
             fontSize="fs12"
             fontWeight="regular"
+            margin={null}
             mobileFontFamily="secondary"
+            numberOfLines={null}
             text="lbl_bonusPoints_myRewardsUsedAll"
             textAlign="center"
+            textDecoration={null}
           />
         </ForwardRef>
         <BonusPointsAvailability
@@ -561,6 +666,7 @@ exports[`BonusPointsAvailabilityVanilla should render correctly with isUsed 1`] 
           accessibilityLabel=""
           anchorVariation="primary"
           className="details-link"
+          colorName={null}
           customStyle={Object {}}
           dataLocator="detailslink"
           fontSizeVariation="medium"
@@ -582,38 +688,52 @@ exports[`BonusPointsAvailabilityVanilla should render correctly with isUsed 1`] 
       >
         <ForwardRef>
           <ForwardRef
+            accessibilityText=""
             color="orange.800"
             component="span"
+            dataLocator=""
             fontSize="fs16"
             fontWeight="extrabold"
+            margin={null}
             mobileFontFamily="primary"
+            numberOfLines={null}
             text="lbl_bonusPoints_placeRewardsBonus"
+            textDecoration={null}
           />
         </ForwardRef>
         <ForwardRef>
           <ForwardRef
+            accessibilityText=""
             color="primary.main"
             component="span"
+            dataLocator=""
             fontSize="fs16"
             fontWeight="extrabold"
+            margin={null}
             mobileFontFamily="primary"
+            numberOfLines={null}
             text="lbl_bonusPoints_placeRewardsPoints"
+            textDecoration={null}
           />
         </ForwardRef>
         <ForwardRef
+          accessibilityText=""
           color="pink.500"
           component="span"
+          dataLocator=""
           fontSize="fs16"
           fontWeight="extrabold"
+          margin={null}
           mobileFontFamily="primary"
+          numberOfLines={null}
           text="lbl_bonusPoints_placeRewardsDay"
+          textDecoration={null}
         />
       </ForwardRef>
     }
     height={null}
     iconLocator="arrowicon"
     index={null}
-    isBag={false}
   />
 </View>
 `;

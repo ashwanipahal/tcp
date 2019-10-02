@@ -61,3 +61,13 @@ export const resetWalletAppState = () => {
     type: COUPON_CONSTANTS.RESET_COUPON_STATE,
   };
 };
+
+/**
+ * @function resetCouponReducer
+ * action creator for type: RESET_COUPON_REDUCER
+ */
+export const resetCouponReducer = () => {
+  return {
+    type: COUPON_CONSTANTS.RESET_COUPON_REDUCER,
+  };
+};

@@ -8,17 +8,16 @@ const CreateAccountCheckBox = props => {
   const { labels, getTouchStatus } = props;
   return (
     <Fragment>
-      {getTouchStatus === 'TouchID' ||
-        (getTouchStatus === true && (
-          <Field
-            name="useTouchID"
-            component={InputCheckbox}
-            dataLocator="useTouchID"
-            disabled={false}
-            marginTop={13}
-            rightText={getLabelValue(labels, 'lbl_createAccount_useTouchId', 'registration')}
-          />
-        ))}
+      {(getTouchStatus === 'TouchID' || getTouchStatus === true) && (
+        <Field
+          name="useTouchID"
+          component={InputCheckbox}
+          dataLocator="useTouchID"
+          disabled={false}
+          marginTop={13}
+          rightText={getLabelValue(labels, 'lbl_createAccount_useTouchId', 'registration')}
+        />
+      )}
 
       {getTouchStatus === 'FaceID' && (
         <Field

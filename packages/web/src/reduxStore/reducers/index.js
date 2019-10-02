@@ -25,7 +25,6 @@ import CreateAccountReducer from '@tcp/core/src/components/features/account/Crea
 import BonusPointsDaysReducer from '@tcp/core/src/components/common/organisms/BonusPointsDays/container/BonusPointsDays.reducer';
 import CouponsReducer from '@tcp/core/src/components/features/CnC/common/organism/CouponAndPromos/container/Coupon.reducer';
 import AirmilesBannerReducer from '@tcp/core/src/components/features/CnC/common/organism/AirmilesBanner/container/AirmilesBanner.reducer';
-
 import AccountHeaderReducer from '@tcp/core/src/components/features/account/common/organism/AccountHeader/container/AccountHeader.reducer';
 import PointsHistoryReducer from '@tcp/core/src/components/features/account/common/organism/PointsHistory/container/PointsHistory.reducer';
 import EarnExtraPointsReducer from '@tcp/core/src/components/features/account/common/organism/EarnExtraPointsTile/container/EarnExtraPointsTile.reducer';
@@ -39,13 +38,19 @@ import ApplyCardReducer from '@tcp/core/src/components/features/browse/ApplyCard
 import OptimizelyFeaturesReducer from '@tcp/core/src/reduxStore/reducers/optimizelyFeatures';
 import AddMailingAddressReducer from '@tcp/core/src/components/features/account/MyProfile/organism/MailingInformation/container/MailingAddress.reducer';
 import ProductDetailReducer from '@tcp/core/src/components/features/browse/ProductDetail/container/ProductDetail.reducer';
+import QuickViewReducer from '@tcp/core/src/components/common/organisms/QuickViewModal/container/QuickViewModal.reducer';
 import ApplyNowModalPLCCReducer from '@tcp/core/src/components/common/molecules/ApplyNowPLCCModal/container/ApplyNowModal.reducer';
 import ProductTabListReducer from '@tcp/core/src/components/common/organisms/ProductTabList/container/ProductTabList.reducer';
 import BirthdaySavingsListReducer from '@tcp/core/src/components/features/account/common/organism/BirthdaySavingsList/container/BirthdaySavingsList.reducer';
 import PickupModalReducer from '@tcp/core/src/components/common/organisms/PickupStoreModal/container/PickUpStoreModal.reducer';
 import RecommendationsReducer from '@tcp/core/src/components/common/molecules/Recommendations/container/Recommendations.reducer';
 import SearchBarReducer from '@tcp/web/src/components/features/content/Header/molecules/SearchBar/SearchBar.reducer';
+import SocialReducer from '@tcp/core/src/components/common/organisms/SocialAccount/container/Social.reducer';
+import SearchPageReducer from '@tcp/core/src/components/features/browse/SearchDetail/container/SearchDetail.reducer';
 import MyFavoriteStoreReducer from '@tcp/core/src/components/features/account/MyProfile/organism/MyFavoriteStore/container/MyFavoriteStore.reducer';
+import PointsClaimReducer from '@tcp/core/src/components/features/account/PointsClaim/container/PointsClaim.reducer';
+import orderConfirmationReducer from '@tcp/core/src/components/features/CnC/Confirmation/container/Confirmation.reducer';
+import OrdersReducer from '@tcp/core/src/components/features/account/Orders/container/Orders.reducer';
 
 import {
   APICONFIG_REDUCER_KEY,
@@ -56,7 +61,6 @@ import {
   FOOTER_REDUCER_KEY,
   LABEL_REDUCER_KEY,
   LAYOUT_REDUCER_KEY,
-  HOMEPAGE_REDUCER_KEY,
   LOADER_REDUCER_KEY,
   LOGINPAGE_REDUCER_KEY,
   PRODUCTLISTINGPAGE_REDUCER_KEY,
@@ -103,14 +107,20 @@ import {
   PICKUP_MODAL_REDUCER_KEY,
   RECOMMENDATIONS_REDUCER_KEY,
   SEARCH_REDUCER_KEY,
+  SOCIAL_REDUCER_KEY,
+  SLP_PAGE_REDUCER_KEY,
+  QUICK_VIEW_REDUCER_KEY,
+  POINTS_CLAIM_REDUCER_KEY,
+  CONFIRMATION_REDUCER_KEY,
+  ORDERS_REDUCER_KEY,
 } from '@tcp/core/src/constants/reducer.constants';
+import { TRACK_PAGE_VIEW } from '@tcp/core/src/analytics';
 import HeaderReducer from '@tcp/core/src/components/common/organisms/Header/container/Header.reducer';
 import FooterReducer from '@tcp/core/src/components/common/organisms/Footer/container/Footer.reducer';
 import NavigationReducer from '@tcp/core/src/components/features/content/Navigation/container/Navigation.reducer';
 import AddedToBagReducer from '@tcp/core/src/components/features/CnC/AddedToBag/container/AddedToBag.reducer';
 import UserReducer from '@tcp/core/src/components/features/account/User/container/User.reducer';
 import ToastMessageReducer from '@tcp/core/src/components/common/atoms/Toast/container/Toast.reducer.native';
-import HomePageReducer from '../../components/features/content/HomePage/container/HomePage.reducer';
 import LoaderReducer from '../../components/features/content/Loader/container/Loader.reducer';
 import EmailSignupReducer from '../../components/common/molecules/EmailSignupModal/container/EmailSignupModal.reducer';
 import CountrySelectorReducer from '../../components/features/content/Header/molecules/CountrySelector/container/CountrySelector.reducer';
@@ -135,7 +145,27 @@ const filteredProductTabListReducer = createFilteredReducer(
   PRODUCT_TAB_LIST_REDUCER_KEY
 );
 
+/**
+ * TODO: This reducer is fragile. We should handle page
+ * name changes in a cleaner way.
+ *
+ * @see RouteTracker.js
+ */
+function pageNameReducer(state = '', action) {
+  switch (action.type) {
+    case TRACK_PAGE_VIEW: {
+      const { props } = action.payload;
+      const { pageName = '' } = (props && props.initialProps && props.initialProps.pageProps) || {};
+      return pageName;
+    }
+    default:
+      return state;
+  }
+}
+
 export default combineReducers({
+  pageName: pageNameReducer,
+  [SOCIAL_REDUCER_KEY]: SocialReducer,
   [APICONFIG_REDUCER_KEY]: filteredAppConfigReducer,
   [APPLY_PLCC_REDUCER_KEY]: ApplyCardReducer,
   [SESSIONCONFIG_REDUCER_KEY]: SessionConfigReducer,
@@ -145,7 +175,6 @@ export default combineReducers({
   [LABEL_REDUCER_KEY]: LabelReducer,
   [LAYOUT_REDUCER_KEY]: LayoutReducer,
   [MODULES_REDUCER_KEY]: ModulesReducer,
-  [HOMEPAGE_REDUCER_KEY]: HomePageReducer,
   [LOADER_REDUCER_KEY]: LoaderReducer,
   [SEARCH_REDUCER_KEY]: SearchBarReducer,
   [PRODUCTLISTINGPAGE_REDUCER_KEY]: filteredProductListingPageReducer,
@@ -187,9 +216,14 @@ export default combineReducers({
   [OPTIMIZELY_FEATURES_REDUCER]: OptimizelyFeaturesReducer,
   [MAILING_ADDRESS_REDUCER_KEY]: AddMailingAddressReducer,
   [PRODUCT_DETAIL_REDUCER_KEY]: ProductDetailReducer,
+  [QUICK_VIEW_REDUCER_KEY]: QuickViewReducer,
   [APPLY_NOW_MODAL_REDUCER_KEY]: ApplyNowModalPLCCReducer,
   [PRODUCT_TAB_LIST_REDUCER_KEY]: filteredProductTabListReducer,
   [BIRTHDAY_SAVING_LIST_REDUCER_KEY]: BirthdaySavingsListReducer,
   [PICKUP_MODAL_REDUCER_KEY]: PickupModalReducer,
   [RECOMMENDATIONS_REDUCER_KEY]: RecommendationsReducer,
+  [SLP_PAGE_REDUCER_KEY]: SearchPageReducer,
+  [POINTS_CLAIM_REDUCER_KEY]: PointsClaimReducer,
+  [CONFIRMATION_REDUCER_KEY]: orderConfirmationReducer,
+  [ORDERS_REDUCER_KEY]: OrdersReducer,
 });

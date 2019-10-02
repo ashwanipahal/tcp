@@ -1,0 +1,103 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`EarnPointsVanilla component should renders correctly 1`] = `
+<Fragment>
+  <Styled(View)>
+    <Styled(View)>
+      <Styled(BodyCopy)
+        accessibilityText=""
+        color="gray.900"
+        component="p"
+        dataLocator="earn-points-morePoints-text"
+        fontFamily="secondary"
+        fontSize="fs18"
+        fontWeight="semibold"
+        margin={null}
+        numberOfLines={null}
+        text="lbl_extraExtraPoints_more_points"
+        textAlign="center"
+        textDecoration={null}
+      />
+    </Styled(View)>
+    <Styled(View)>
+      <DetailedEarnExtraPointsTile
+        handleComponentChange={[Function]}
+        key="0"
+        labels={Object {}}
+        onViewActivityDetails={[Function]}
+        viewAll={true}
+        waysToEarnRow={
+          Object {
+            "activityCode": "AppDownload",
+            "activityTitle": "Earn 5 Points",
+            "description": "Download & Log in to our App",
+            "displayOrder": 1,
+            "iconImage": "/wcsstore/static/images/download-app.jpg",
+          }
+        }
+      />
+    </Styled(View)>
+    <Styled(View)>
+      <DetailedEarnExtraPointsTile
+        handleComponentChange={[Function]}
+        key="1"
+        labels={Object {}}
+        onViewActivityDetails={[Function]}
+        viewAll={true}
+        waysToEarnRow={
+          Object {
+            "activityCode": "AppDownload",
+            "activityTitle": "Earn 5 Points",
+            "description": "Download & Log in to our App",
+            "displayOrder": 1,
+            "iconImage": "/wcsstore/static/images/download-app.jpg",
+          }
+        }
+      />
+    </Styled(View)>
+  </Styled(View)>
+  <Styled(View)>
+    <Styled(Anchor)
+      accessibilityLabel=""
+      anchorVariation="primary"
+      colorName={null}
+      customStyle={Object {}}
+      dataLocator="earn-points-mpr-link"
+      fontSizeVariation="large"
+      locator=""
+      noLink={true}
+      onPress={[Function]}
+      text="lbl_common_check_here"
+      underline={true}
+      visible={false}
+    />
+    <Styled(BodyCopy)
+      accessibilityText=""
+      color="gray.900"
+      component="p"
+      dataLocator="earn-points-mpr-text"
+      fontFamily="secondary"
+      fontSize="fs14"
+      margin={null}
+      numberOfLines={null}
+      text="lbl_common_extra_points_terms_conditions"
+      textDecoration={null}
+    />
+  </Styled(View)>
+  <ModalNative
+    heading=" "
+    horizontalBar={false}
+    isOpen={true}
+    isOverlay={false}
+    onRequestClose={[Function]}
+  >
+    <Styled(View)
+      spacingStyles="margin-left-LRG margin-right-LRG"
+    >
+      <ExtraPointsDetailModal
+        waysToEarnRow={Object {}}
+      />
+    </Styled(View)>
+  </ModalNative>
+</Fragment>
+`;

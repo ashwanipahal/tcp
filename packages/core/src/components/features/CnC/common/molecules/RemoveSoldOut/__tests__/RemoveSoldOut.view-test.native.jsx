@@ -5,7 +5,9 @@ import RemoveSoldOut from '../views/RemoveSoldOut.view.native';
 describe('RemoveSoldOut Component', () => {
   let component;
   const Props = {
-    labels: 'This is test error',
+    labels: {
+      updateUnavailable: 'Please #remove# one or more sold-out from your bag before you checkout',
+    },
   };
 
   beforeEach(() => {

@@ -25,7 +25,7 @@ exports[`ProductImages component should renders correctly 1`] = `
     />
   </div>
   <div
-    className="main-image-container-wrap"
+    className="main-image-container-wrap "
   >
     <div
       className="main-image-container"
@@ -61,6 +61,7 @@ exports[`ProductImages component should renders correctly 1`] = `
           Object {
             "arrows": true,
             "autoplay": false,
+            "beforeChange": [Function],
             "dots": false,
             "dotsClass": "slick-dots",
             "fade": false,
@@ -75,7 +76,7 @@ exports[`ProductImages component should renders correctly 1`] = `
               },
             ],
             "slidesToShow": 1,
-            "speed": 1000,
+            "speed": 0,
             "swipe": true,
           }
         }
@@ -83,17 +84,39 @@ exports[`ProductImages component should renders correctly 1`] = `
       >
         <Styled(ProductDetailImage)
           imageName="Girls Uniform Active Shorts"
-          imageUrl="https://test4.childrensplace.com/wcsstore/GlobalSAS/images/tcp/products/900/2082931_IV.jpg"
+          imageUrl="https://test4.childrensplace.com/wcsstore/GlobalSAS/images/tcp/products/500/2082931_IV.jpg"
+          isFullSizeModalOpen={false}
+          isMobile={true}
           isZoomEnabled={true}
           zoomImageUrl="https://test4.childrensplace.com/wcsstore/GlobalSAS/images/tcp/products/900/2082931_IV.jpg"
         />
         <Styled(ProductDetailImage)
           imageName="Girls Uniform Active Shorts"
-          imageUrl="https://test4.childrensplace.com/wcsstore/GlobalSAS/images/tcp/products/900/2082931_IV-1.jpg"
+          imageUrl="https://test4.childrensplace.com/wcsstore/GlobalSAS/images/tcp/products/500/2082931_IV-1.jpg"
+          isFullSizeModalOpen={false}
+          isMobile={true}
           isZoomEnabled={true}
           zoomImageUrl="https://test4.childrensplace.com/wcsstore/GlobalSAS/images/tcp/products/900/2082931_IV-1.jpg"
         />
       </Styled(Carousel)>
+      <div
+        className="social-connect-wrapper"
+      >
+        <span
+          className="fullSize-image-label"
+        >
+          <Styled(Anchor)
+            aria-label="View full size image"
+            className="resize-text"
+            dataLocator="pdp_full_size_btn"
+          />
+        </span>
+        <Styled(SocialConnect)
+          isFacebookEnabled={true}
+          isPinterestEnabled={true}
+          isTwitterEnabled={true}
+        />
+      </div>
     </div>
     <div
       className="enlarged-image-container"

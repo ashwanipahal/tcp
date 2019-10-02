@@ -68,7 +68,10 @@ exports[`ModuleH component renders correctly 1`] = `
       }
     }
   >
-    <moduleHHeader
+    <Styled(LinkText)
+      className="moduleH__header"
+      component="h2"
+      dataLocator="moduleH_header_text"
       headerText={
         Array [
           Object {
@@ -93,6 +96,7 @@ exports[`ModuleH component renders correctly 1`] = `
           },
         ]
       }
+      headingClass="medium_text_white_black"
     />
     <ModuleHCTALinks
       currentIndex={
@@ -212,6 +216,8 @@ exports[`ModuleH component renders correctly 1`] = `
           "autoplay": true,
           "dataLocatorPause": "moduleH_pause_button",
           "dataLocatorPlay": "moduleH_play_button",
+          "pauseIconButtonLabel": "Pause",
+          "playIconButtonLabel": "Play",
           "type": "light",
         }
       }

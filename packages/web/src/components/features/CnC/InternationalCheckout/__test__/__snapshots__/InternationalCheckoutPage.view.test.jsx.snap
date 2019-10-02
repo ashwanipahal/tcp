@@ -1,0 +1,15 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`InternationalCheckoutPage should render InternationalCheckoutPage section 1`] = `
+<div>
+  <main
+    className="checkout-container"
+  >
+    <Styled(InternationalCheckout)
+      apiUrl=""
+      communicationUrl=""
+      iframeUrl=""
+    />
+  </main>
+</div>
+`;

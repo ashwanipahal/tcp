@@ -14,15 +14,25 @@ exports[`GuestBillingFormVanilla should render correctly 1`] = `
     fontWeight="regular"
     letterSpacing="normal"
     lineHeight="normal"
+    link={null}
     textAlign="left"
-  >
-    lbl_billing_paymentMethodTitle
-  </Styled(BodyCopy)>
+  />
   <Styled(PaymentMethods)
     labels={Object {}}
   />
   <div
-    className="elem-mt-LRG"
+    className="elem-mt-LRG elem-pb-XL"
+  />
+  <Styled(CheckoutOrderInfo)
+    isGuest={true}
+    showAccordian={true}
+  />
+  <Styled(CheckoutFooter)
+    backLinkHandler={[Function]}
+    backLinkText=""
+    hideBackLink={true}
+    nextButtonText=""
+    showVenmoSubmit={false}
   />
 </form>
 `;
@@ -41,18 +51,19 @@ exports[`GuestBillingFormVanilla should render correctly when props change 1`] =
     fontWeight="regular"
     letterSpacing="normal"
     lineHeight="normal"
+    link={null}
     textAlign="left"
-  >
-    lbl_billing_paymentMethodTitle
-  </Styled(BodyCopy)>
+  />
   <Styled(PaymentMethods)
     labels={Object {}}
   />
   <div
-    className="elem-mt-LRG"
+    className="elem-mt-LRG elem-pb-XL"
   >
     <AddNewCCForm
+      cardList={null}
       cardType="VISA"
+      creditFieldLabels={Object {}}
       cvvError="error"
       cvvInfo={
         <ForwardRef
@@ -67,14 +78,62 @@ exports[`GuestBillingFormVanilla should render correctly when props change 1`] =
           }
         >
           <ForwardRef
-            height="10"
+            height="15"
             src="/static/images/info-icon.png"
-            width="10"
+            width="15"
           />
         </ForwardRef>
       }
+      formName="checkoutBilling"
+      isExpirationRequired={true}
+      isGuest={true}
+      isSaveToAccountChecked={true}
       labels={Object {}}
     />
+    <Styled(CheckoutAddress)
+      billingData={Object {}}
+      dispatch={
+        [MockFunction] {
+          "calls": Array [
+            Array [
+              Object {
+                "meta": Object {
+                  "field": "cardType",
+                  "form": "checkoutBilling",
+                  "persistentSubmitErrors": undefined,
+                  "touch": undefined,
+                },
+                "payload": "VISA",
+                "type": "@@redux-form/CHANGE",
+              },
+            ],
+          ],
+          "results": Array [
+            Object {
+              "type": "return",
+              "value": undefined,
+            },
+          ],
+        }
+      }
+      formName="checkoutBilling"
+      isGuest={true}
+      isSameAsShippingChecked={true}
+      labels={Object {}}
+      orderHasShipping={true}
+      shippingAddress={null}
+    />
   </div>
+  <Styled(CheckoutOrderInfo)
+    isGuest={true}
+    showAccordian={true}
+  />
+  <Styled(CheckoutFooter)
+    backLinkHandler={[Function]}
+    backLinkText=""
+    hideBackLink={true}
+    nextButtonText=""
+    showVenmoSubmit={false}
+  />
 </form>
 `;

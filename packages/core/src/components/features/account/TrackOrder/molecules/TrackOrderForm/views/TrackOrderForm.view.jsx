@@ -24,7 +24,7 @@ class TrackOrderForm extends React.PureComponent {
         <BodyCopy component="div" className="elem-mb-LRG">
           <Field
             id="emailAddress"
-            placeholder={labels.trackOrder.lbl_header_trackOrderOverlay_emailAddress_placeholder}
+            placeholder={labels.trackOrder.lbl_trackOrder_emailPlaceholder}
             name="emailAddress"
             component={TextBox}
             dataLocator="track_order_email_address"
@@ -35,7 +35,7 @@ class TrackOrderForm extends React.PureComponent {
           />
           <Field
             id="orderNumber"
-            placeholder={labels.trackOrder.lbl_header_trackOrderOverlay_orderNo_placeholder}
+            placeholder={labels.trackOrder.lbl_trackOrder_orderNoPlaceholder}
             name="orderNumber"
             component={TextBox}
             dataLocator="track_order_no"
@@ -51,10 +51,10 @@ class TrackOrderForm extends React.PureComponent {
               fontWeight="semiBold"
               underline
               dataLocator="track_order_need_help"
-              to={labels.trackOrder.lbl_header_trackOrderOverlay_needHelpLink}
+              to={labels.trackOrder.lbl_trackOrder_needHelpLink}
               target="_blank"
             >
-              {labels.trackOrder.lbl_header_trackOrderOverlay_needHelp}
+              {labels.trackOrder.lbl_trackOrder_needHelp}
             </Anchor>
           </BodyCopy>
         </BodyCopy>
@@ -68,7 +68,7 @@ class TrackOrderForm extends React.PureComponent {
             disabled={invalid}
             className="elem-mb-L trackOrder-trackOrdercta"
           >
-            {labels.trackOrder.lbl_header_trackOrderOverlay_trackOrderBtn}
+            {labels.trackOrder.lbl_trackOrder_trackOrderBtn}
           </Button>
         </BodyCopy>
       </form>

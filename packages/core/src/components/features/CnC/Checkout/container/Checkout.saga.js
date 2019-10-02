@@ -3,15 +3,13 @@ import { call, takeLatest, put, all, select } from 'redux-saga/effects';
 import logger from '@tcp/core/src/utils/loggerInstance';
 import { formValueSelector } from 'redux-form';
 import { getImgPath } from '@tcp/core/src/components/features/browse/ProductListingPage/util/utility';
-import endpoints from '../../../../../service/endpoint';
-import emailSignupAbstractor from '../../../../../services/abstractors/common/EmailSmsSignup/EmailSmsSignup';
 import CONSTANTS, { CHECKOUT_ROUTES } from '../Checkout.constants';
 import {
   getGiftWrappingOptions,
   getShippingMethods,
-  briteVerifyStatusExtraction,
   setShippingMethodAndAddressId,
   addPickupPerson,
+  getInternationCheckoutSettings,
 } from '../../../../../services/abstractors/CnC/index';
 import selectors, { isGuest } from './Checkout.selector';
 import { getUserEmail } from '../../../account/User/container/User.selectors';
@@ -25,18 +23,14 @@ import {
   setIsLoadingShippingMethods,
   setShippingOptions,
   setAddressError,
-  setSmsNumberForUpdates,
-  emailSignupStatus,
+  getSetIntlUrl,
 } from './Checkout.action';
 import BAG_PAGE_ACTIONS from '../../BagPage/container/BagPage.actions';
 import BagPageSelectors from '../../BagPage/container/BagPage.selectors';
 // import { getUserEmail } from '../../../account/User/container/User.selectors';
 import { isCanada } from '../../../../../utils/utils';
-import {
-  addAddressGet,
-  updateAddressPut,
-} from '../../../../common/organisms/AddEditAddress/container/AddEditAddress.saga';
 import { getAddressList } from '../../../account/AddressBook/container/AddressBook.saga';
+import { getCardList } from '../../../account/Payment/container/Payment.saga';
 // import { addAddress } from '../../../../../services/abstractors/account/AddEditAddress';
 import { isMobileApp } from '../../../../../utils';
 import {
@@ -46,8 +40,13 @@ import {
   addRegisteredUserAddress,
   routeToPickupPage,
   addAndSetGiftWrappingOptions,
+  validateAndSubmitEmailSignup,
+  getVenmoClientTokenSaga,
+  saveLocalSmsInfo,
+  addOrEditGuestUserAddress,
 } from './Checkout.saga.util';
 import submitBilling from './CheckoutBilling.saga';
+import submitOrderForProcessing from './CheckoutReview.saga';
 
 const {
   getRecalcOrderPointsInterval,
@@ -64,30 +63,6 @@ const {
 } = selectors;
 const { getOrderPointsRecalcFlag, hasPOBox, redirectToBilling } = utility;
 let oldHasPOB = {};
-
-export function* subscribeEmailAddress(emailObj, status) {
-  try {
-    const { baseURI, relURI, method } = endpoints.addEmailSignup;
-    const params = {
-      payload: JSON.stringify({
-        storeId: 10151,
-        catalogId: 10551,
-        langId: '-1',
-        emailaddr: emailObj.payload,
-        URL: 'email-confirmation',
-        response: `${status}:::false:false`,
-        registrationType: '10',
-      }),
-      langId: -1,
-      storeId: 10151,
-      catalogId: 10551,
-    };
-    const res = yield call(emailSignupAbstractor.subscribeEmail, baseURI, relURI, params, method);
-    yield put(emailSignupStatus({ subscription: res }));
-  } catch (err) {
-    logger.error(err);
-  }
-}
 
 function* loadGiftWrappingOptions() {
   try {
@@ -203,8 +178,20 @@ function* submitPickupSection({ payload }) {
   //  }
   const result = yield call(callPickupSubmitMethod, formData);
   if (result.addressId) {
+    yield call(getAddressList);
+    yield call(getCardList);
     if (!isMobileApp()) {
-      utility.routeToPage(CHECKOUT_ROUTES.shippingPage);
+      const getIsShippingRequired = yield select(getIsOrderHasShipping);
+      const isVenmoInProgress = yield select(selectors.isVenmoPaymentInProgress);
+      const isVenmoPickupDisplayed = yield select(selectors.isVenmoPickupBannerDisplayed);
+
+      if (getIsShippingRequired) {
+        utility.routeToPage(CHECKOUT_ROUTES.shippingPage);
+      } else if (isVenmoInProgress && !isVenmoPickupDisplayed) {
+        utility.routeToPage(CHECKOUT_ROUTES.reviewPage);
+      } else {
+        utility.routeToPage(CHECKOUT_ROUTES.billingPage);
+      }
     } else if (navigation) {
       navigation.navigate(CONSTANTS.CHECKOUT_ROUTES_NAMES.CHECKOUT_SHIPPING);
     }
@@ -216,7 +203,9 @@ function* submitPickupSection({ payload }) {
   // eslint-disable-next-line no-unused-expressions
   // formData.pickUpContact.smsInfo && saveLocalSmsInfo(this.store, formData.pickUpContact.smsInfo);
   const { wantsSmsOrderUpdates } = formData.pickUpContact && formData.pickUpContact.smsInfo;
-  yield call(loadUpdatedCheckoutValues, false, true, true, false, !wantsSmsOrderUpdates);
+  if (!isMobileApp()) {
+    yield call(loadUpdatedCheckoutValues, false, true, true, false, !wantsSmsOrderUpdates);
+  }
   // return getCheckoutOperator(this.store).loadUpdatedCheckoutValues(false, true, true, false, !wantsSmsOrderUpdates);
   // }).catch((err) => {
   //   throw getSubmissionError(this.store, 'submitPickupSection', err);
@@ -567,24 +556,96 @@ function* initCheckout() {
   }
 }
 
-function* saveLocalSmsInfo(smsInfo = {}) {
-  let returnVal;
-  const { wantsSmsOrderUpdates, smsUpdateNumber } = smsInfo;
-  if (smsUpdateNumber) {
-    if (wantsSmsOrderUpdates) {
-      returnVal = yield call(setSmsNumberForUpdates, smsUpdateNumber);
-    } else {
-      returnVal = yield call(setSmsNumberForUpdates(null));
-    }
+/**
+ * initIntlCheckout component. This is responsible for initiating actions required for start of international checkout journey.
+ */
+function* initIntlCheckout() {
+  try {
+    const res = yield call(getInternationCheckoutSettings);
+    yield put(getSetIntlUrl(res.checkoutUrl));
+  } catch (e) {
+    logger.error(`initIntlCheckout:${e}`);
   }
-  return returnVal;
 }
 
-function* validateAndSubmitEmailSignup(isEmailSignUpAllowed, emailSignup, emailAddress) {
-  if (isEmailSignUpAllowed && emailSignup && emailAddress) {
-    const statusCode = call(briteVerifyStatusExtraction, emailAddress);
-    yield subscribeEmailAddress({ payload: emailAddress }, statusCode);
+function* submitShipping({
+  isEmailSignUpAllowed,
+  emailSignup,
+  emailAddress,
+  isGuestUser,
+  address,
+  onFileAddressKey,
+  setAsDefault,
+  phoneNumber,
+  saveToAccount,
+  method,
+  smsInfo,
+  recalcFlag,
+}) {
+  const giftServicesFormData = yield select(getGiftServicesFormData);
+  yield addAndSetGiftWrappingOptions(giftServicesFormData);
+  yield put(setAddressError(null));
+  const pendingPromises = [
+    // add the requested gift wrap options
+    // giftWrap.hasGiftWrapping && call(addGiftWrappingOption, giftWrap.message, giftWrap.optionId),
+    // remove old gift wrap option (if any)
+    // !giftWrap.hasGiftWrapping && giftWrappingStoreOptionID && call(removeGiftWrappingOption),
+    // sign up to receive mail newsletter
+    isEmailSignUpAllowed && emailSignup && validateAndSubmitEmailSignup(emailAddress),
+  ];
+  let addOrEditAddressRes;
+  if (isGuestUser) {
+    const oldShippingDestination = yield select(getShippingDestinationValues);
+    addOrEditAddressRes = yield addOrEditGuestUserAddress({
+      oldShippingDestination,
+      address,
+      phoneNumber,
+      emailAddress,
+      saveToAccount,
+      setAsDefault,
+    });
+  } else {
+    addOrEditAddressRes = yield addRegisteredUserAddress({
+      onFileAddressKey,
+      address,
+      phoneNumber,
+      emailAddress,
+      setAsDefault,
+      saveToAccount,
+    });
   }
+  const {
+    payload: { addressId },
+    addressKey,
+  } = addOrEditAddressRes;
+  // Retrieve phone number info for sms updates
+  yield saveLocalSmsInfo(smsInfo);
+  yield all(pendingPromises);
+  yield call(
+    setShippingMethodAndAddressId,
+    method.shippingMethodId,
+    addressId,
+    false, // generalStoreView.getIsPrescreenFormEnabled(storeState) && !giftWrap.hasGiftWrapping && !userStoreView.getUserIsPlcc(storeState)
+    smsInfo ? smsInfo.smsUpdateNumber : null,
+    addressKey,
+    yield select(BagPageSelectors.getErrorMapping)
+  );
+  // return getPlccOperator(store)
+  //   .optionalPlccOfferModal(res.plccEligible, res.prescreenCode)
+  // REVIEW: the true indicates to load the reward data for user.
+  // But how can the reward points change here?
+  const isOrderHasPickup = yield select(selectors.getIsOrderHasPickup);
+  const smsNumberForOrderUpdates = yield select(selectors.getSmsNumberForOrderUpdates);
+  if (!isMobileApp()) {
+    yield loadUpdatedCheckoutValues(
+      true,
+      false,
+      true,
+      recalcFlag,
+      !(isOrderHasPickup && smsNumberForOrderUpdates)
+    );
+  }
+  yield call(getAddressList);
 }
 
 function* submitShippingSection({ payload: { navigation, ...formData } }) {
@@ -593,21 +654,18 @@ function* submitShippingSection({ payload: { navigation, ...formData } }) {
       // giftWrap,
       method,
       smsInfo,
-      shipTo: { onFileAddressKey, address, setAsDefault, phoneNumber, saveToAccount, emailSignup },
+      shipTo,
     } = formData;
     let {
       shipTo: { emailAddress },
     } = formData;
-    let isEmailSignUpAllowed = true;
-    const recalcFlag = false;
+    const isCanadaUser = yield select(isCanada);
     const isGuestUser = yield select(isGuest);
+    const isEmailSignUpAllowed = !(!isCanadaUser && isGuestUser);
+    const recalcFlag = false;
     if (!emailAddress || !isGuestUser) {
       // on registered user entering a new address the email field is not visible -> emailAddress = null
       emailAddress = yield select(getUserEmail);
-    }
-    const isCanadaUser = yield select(isCanada);
-    if (!isCanadaUser && isGuestUser) {
-      isEmailSignUpAllowed = false;
     }
     // let getGiftWrappingValues = yield select(getGiftWrappingValues);
     // let initialGiftWrappingVal = getGiftWrappingValues.hasGiftWrapping;
@@ -620,112 +678,33 @@ function* submitShippingSection({ payload: { navigation, ...formData } }) {
     // ) {
     //   recalcFlag = true;
     // }
-    const giftServicesFormData = yield select(getGiftServicesFormData);
-    yield addAndSetGiftWrappingOptions(giftServicesFormData);
-    yield put(setAddressError(null));
-    const pendingPromises = [
-      // add the requested gift wrap options
-      // giftWrap.hasGiftWrapping && call(addGiftWrappingOption, giftWrap.message, giftWrap.optionId),
-      // remove old gift wrap option (if any)
-      // !giftWrap.hasGiftWrapping && giftWrappingStoreOptionID && call(removeGiftWrappingOption),
-      // sign up to receive mail newsletter
-      validateAndSubmitEmailSignup(isEmailSignUpAllowed, emailSignup, emailAddress),
-    ];
-    let addOrEditAddressRes;
-    if (isGuestUser) {
-      const oldShippingDestination = yield select(getShippingDestinationValues);
-      if (!oldShippingDestination.onFileAddressKey) {
-        // guest user that is using a new address
-        addOrEditAddressRes = yield call(
-          addAddressGet,
-          {
-            payload: {
-              ...address,
-              address1: address.addressLine1,
-              address2: address.addressLine2,
-              zip: address.zipCode,
-              phoneNumber,
-              emailAddress,
-              primary: setAsDefault,
-              phone1Publish: `${saveToAccount}`,
-              fromPage: 'checkout',
-            },
-          },
-          false
-        );
-        addOrEditAddressRes = { payload: addOrEditAddressRes.body };
-      } else {
-        // guest user is editing a previously entered shipping address
-        addOrEditAddressRes = yield call(
-          updateAddressPut,
-          {
-            payload: {
-              ...address,
-              address1: address.addressLine1,
-              address2: address.addressLine2,
-              zip: address.zipCode,
-              phoneNumber,
-              nickName: oldShippingDestination.onFileAddressKey,
-              emailAddress,
-            },
-          },
-          {}
-        );
-      }
-      addOrEditAddressRes = { payload: addOrEditAddressRes };
-    } else {
-      addOrEditAddressRes = yield addRegisteredUserAddress({
-        onFileAddressKey,
-        address,
-        phoneNumber,
-        emailAddress,
-        setAsDefault,
-        saveToAccount,
-      });
-    }
-    const {
-      payload: { addressId },
-    } = addOrEditAddressRes;
-    // Retrieve phone number info for sms updates
-    const transVibesSmsPhoneNo = smsInfo ? smsInfo.smsUpdateNumber : null;
-    yield saveLocalSmsInfo(smsInfo);
-    yield all(pendingPromises);
-    const labels = yield select(BagPageSelectors.getErrorMapping);
-    yield call(
-      setShippingMethodAndAddressId,
-      method.shippingMethodId,
-      addressId,
-      false, // generalStoreView.getIsPrescreenFormEnabled(storeState) && !giftWrap.hasGiftWrapping && !userStoreView.getUserIsPlcc(storeState)
-      transVibesSmsPhoneNo,
-      addOrEditAddressRes.addressKey,
-      labels
-    );
-    // return getPlccOperator(store)
-    //   .optionalPlccOfferModal(res.plccEligible, res.prescreenCode)
-    // REVIEW: the true indicates to load the reward data for user.
-    // But how can the reward points change here?
-    const isOrderHasPickup = yield select(selectors.getIsOrderHasPickup);
-    const smsNumberForOrderUpdates = yield select(selectors.getSmsNumberForOrderUpdates);
-    yield loadUpdatedCheckoutValues(
-      true,
-      false,
-      true,
+    yield submitShipping({
+      ...shipTo,
+      method,
+      smsInfo,
+      isEmailSignUpAllowed,
       recalcFlag,
-      !(isOrderHasPickup && smsNumberForOrderUpdates)
-    );
+      emailAddress,
+    });
     yield call(getAddressList);
-    redirectToBilling(navigation);
+    yield call(getCardList);
+    const isVenmoInProgress = yield select(selectors.isVenmoPaymentInProgress);
+    const isVenmoShippingDisplayed = yield select(selectors.isVenmoShippingBannerDisplayed);
+    if (isVenmoInProgress && !isVenmoShippingDisplayed) {
+      utility.routeToPage(CHECKOUT_ROUTES.reviewPage, { recalc: false });
+    } else {
+      redirectToBilling(navigation);
+    }
   } catch (err) {
     // throw getSubmissionError(store, 'submitShippingSection', err);
   }
 }
-
 export function* submitBillingSection(payload) {
   yield call(submitBilling, payload, loadUpdatedCheckoutValues);
 }
-
 export function* CheckoutSaga() {
   yield takeLatest(CONSTANTS.INIT_CHECKOUT, initCheckout);
+  yield takeLatest('INIT_INTL_CHECKOUT', initIntlCheckout);
   yield takeLatest('CHECKOUT_SET_CART_DATA', storeUpdatedCheckoutValues);
   yield takeLatest(CONSTANTS.SUBMIT_SHIPPING_SECTION, submitShippingSection);
   yield takeLatest(CONSTANTS.SUBMIT_BILLING_SECTION, submitBillingSection);
@@ -738,5 +717,7 @@ export function* CheckoutSaga() {
   );
   yield takeLatest(CONSTANTS.UPDATE_SHIPPING_ADDRESS, updateShippingAddress);
   yield takeLatest(CONSTANTS.ADD_NEW_SHIPPING_ADDRESS, addNewShippingAddress);
+  yield takeLatest(CONSTANTS.SUBMIT_REVIEW_SECTION, submitOrderForProcessing);
+  yield takeLatest(CONSTANTS.GET_VENMO_CLIENT_TOKEN, getVenmoClientTokenSaga);
 }
 export default CheckoutSaga;

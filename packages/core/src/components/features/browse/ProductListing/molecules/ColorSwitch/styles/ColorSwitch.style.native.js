@@ -11,7 +11,7 @@ const getImageStyle = props => {
     width: ${width};
     height: ${height};
     border-radius: ${borderRadius};
-    resize-mode: contain;
+    resize-mode: cover;
     border-width: 0;
   `;
 };

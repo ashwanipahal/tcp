@@ -136,6 +136,8 @@ exports[`RegisteredShippingForm should call save Btn click handler 1`] = `
         }
       }
       dataLocatorPrefix="address"
+      fontSize="fs14"
+      regularName={false}
       showCountry={false}
       showDefaultText={false}
       showName={true}
@@ -144,6 +146,7 @@ exports[`RegisteredShippingForm should call save Btn click handler 1`] = `
     <Styled(Anchor)
       accessibilityLabel=""
       anchorVariation="primary"
+      colorName={null}
       customStyle={Object {}}
       dataLocator="shipping-edit-contact-anchor"
       fontSizeVariation="small"
@@ -239,6 +242,8 @@ exports[`RegisteredShippingForm should call save to account change 1`] = `
         }
       }
       dataLocatorPrefix="address"
+      fontSize="fs14"
+      regularName={false}
       showCountry={false}
       showDefaultText={false}
       showName={true}
@@ -247,6 +252,7 @@ exports[`RegisteredShippingForm should call save to account change 1`] = `
     <Styled(Anchor)
       accessibilityLabel=""
       anchorVariation="primary"
+      colorName={null}
       customStyle={Object {}}
       dataLocator="shipping-edit-contact-anchor"
       fontSizeVariation="small"
@@ -499,6 +505,8 @@ exports[`RegisteredShippingForm should render correctly  1`] = `
         }
       }
       dataLocatorPrefix="address"
+      fontSize="fs14"
+      regularName={false}
       showCountry={false}
       showDefaultText={false}
       showName={true}
@@ -507,6 +515,7 @@ exports[`RegisteredShippingForm should render correctly  1`] = `
     <Styled(Anchor)
       accessibilityLabel=""
       anchorVariation="primary"
+      colorName={null}
       customStyle={Object {}}
       dataLocator="shipping-edit-contact-anchor"
       fontSizeVariation="small"
@@ -607,6 +616,8 @@ exports[`RegisteredShippingForm should render correctly with  addresses and call
         }
       }
       dataLocatorPrefix="address"
+      fontSize="fs14"
+      regularName={false}
       showCountry={false}
       showDefaultText={false}
       showName={true}
@@ -615,6 +626,7 @@ exports[`RegisteredShippingForm should render correctly with  addresses and call
     <Styled(Anchor)
       accessibilityLabel=""
       anchorVariation="primary"
+      colorName={null}
       customStyle={Object {}}
       dataLocator="shipping-edit-contact-anchor"
       fontSizeVariation="small"
@@ -725,6 +737,8 @@ exports[`RegisteredShippingForm should render correctly with  addresses and call
         }
       }
       dataLocatorPrefix="address"
+      fontSize="fs14"
+      regularName={false}
       showCountry={false}
       showDefaultText={false}
       showName={true}
@@ -733,6 +747,7 @@ exports[`RegisteredShippingForm should render correctly with  addresses and call
     <Styled(Anchor)
       accessibilityLabel=""
       anchorVariation="primary"
+      colorName={null}
       customStyle={Object {}}
       dataLocator="shipping-edit-contact-anchor"
       fontSizeVariation="small"
@@ -828,6 +843,8 @@ exports[`RegisteredShippingForm should render correctly with  addresses and call
         }
       }
       dataLocatorPrefix="address"
+      fontSize="fs14"
+      regularName={false}
       showCountry={false}
       showDefaultText={false}
       showName={true}
@@ -836,6 +853,7 @@ exports[`RegisteredShippingForm should render correctly with  addresses and call
     <Styled(Anchor)
       accessibilityLabel=""
       anchorVariation="primary"
+      colorName={null}
       customStyle={Object {}}
       dataLocator="shipping-edit-contact-anchor"
       fontSizeVariation="small"

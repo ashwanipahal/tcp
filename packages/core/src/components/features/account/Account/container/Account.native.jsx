@@ -39,12 +39,8 @@ export class Account extends React.PureComponent<Props, State> {
   componentDidUpdate(prevProps) {
     const { isUserLoggedIn, closeOverlay } = this.props;
     const hasMobile = isMobileApp();
-    if (!prevProps.isUserLoggedIn && isUserLoggedIn) {
-      if (hasMobile) {
-        this.navigattePage();
-      } else {
-        closeOverlay();
-      }
+    if (!prevProps.isUserLoggedIn && isUserLoggedIn && !hasMobile) {
+      closeOverlay();
     }
   }
 
@@ -52,6 +48,8 @@ export class Account extends React.PureComponent<Props, State> {
    *  @function getComponent takes component and return the component that is required on the drop down click.
    */
 
+  // TODO break down this function
+  // eslint-disable-next-line complexity
   getComponent = component => {
     switch (component) {
       case 'paymentGiftCardsPageMobile':
@@ -64,10 +62,18 @@ export class Account extends React.PureComponent<Props, State> {
         return 'profile';
       case 'myWalletPageMobile':
         return 'myWalletPageMobile';
+      case 'earnExtraPointsPageMobile':
+        return 'earnExtraPointsPageMobile';
       case 'pointsHistoryMobile':
         return 'pointHistoryPageMobile';
-      default:
+      case 'myPreferencePageMobile':
+        return 'myPreferences';
+      case 'PointsClaimPageMobile':
+        return 'PointsClaimPageMobile';
+      case 'addressBookMobile':
         return 'addressBookMobile';
+      default:
+        return 'accountOverviewMobile';
     }
   };
 
@@ -99,6 +105,7 @@ export class Account extends React.PureComponent<Props, State> {
         <StyledScrollView keyboardShouldPersistTaps="handled">
           <MyAccountLayout
             navData={navDataMobile}
+            component={this.getComponent(component)}
             mainContent={AccountComponentNativeMapping[component]}
             handleComponentChange={this.handleComponentChange}
             labels={labels}

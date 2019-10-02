@@ -1,3 +1,5 @@
+import { routerPush } from '../../../../../utils';
+
 const userAddressData = addressTemp => {
   return {
     addressLine1: addressTemp.get('addressLine1') || '',
@@ -29,4 +31,54 @@ const fetchBillingOrShippingAddress = address => {
   return plccAddress;
 };
 
-export { userAddressData, fetchBillingOrShippingAddress };
+/**
+ * @const getModalSizeForApprovedPLCC - returning grid row size for approved plcc modal.
+ *
+ */
+const getModalSizeForApprovedPLCC = isPLCCModalFlow => {
+  return isPLCCModalFlow ? 12 : 8;
+};
+
+/**
+ * @const redirectToBag - function to return to bag page.
+ *
+ */
+const redirectToBag = resetPLCCResponse => {
+  resetPLCCResponse({ status: null });
+  routerPush(window.location.href, '/bag');
+};
+
+/**
+ * @const redirectToHome - function to return home.
+ *
+ */
+const redirectToHome = resetPLCCResponse => {
+  resetPLCCResponse({ status: null });
+  routerPush(window.location.href, '/home');
+};
+
+/**
+ * @const getPageViewGridColumnSize - returning grid columns for plcc forms
+ *
+ */
+const getPageViewGridColumnSize = isPLCCModalFlow => {
+  return isPLCCModalFlow ? 6 : 5;
+};
+
+/**
+ * @const getPageViewGridRowSize - returning grid rows for plcc forms
+ *
+ */
+const getPageViewGridRowSize = isPLCCModalFlow => {
+  return isPLCCModalFlow ? 12 : 10;
+};
+
+export {
+  userAddressData,
+  fetchBillingOrShippingAddress,
+  redirectToBag,
+  redirectToHome,
+  getPageViewGridColumnSize,
+  getPageViewGridRowSize,
+  getModalSizeForApprovedPLCC,
+};

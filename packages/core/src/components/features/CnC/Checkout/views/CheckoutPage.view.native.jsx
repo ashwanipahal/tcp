@@ -1,5 +1,6 @@
 import React from 'react';
 import PropTypes from 'prop-types';
+import { Text } from 'react-native';
 import CheckoutConstants from '../Checkout.constants';
 import PickupPage from '../organisms/PickupPage';
 import ShippingPage from '../organisms/ShippingPage';
@@ -44,7 +45,13 @@ export default class CheckoutPage extends React.PureComponent {
     } = this.props;
     const { routeTo } = navigation.state.params;
     const currentRoute = routeTo.toLowerCase();
-    const { PICKUP, SHIPPING, BILLING, REVIEW } = CheckoutConstants.CHECKOUT_PAGES_NAMES;
+    const {
+      PICKUP,
+      SHIPPING,
+      BILLING,
+      REVIEW,
+      CONFIRMATION,
+    } = CheckoutConstants.CHECKOUT_PAGES_NAMES;
     switch (currentRoute) {
       case PICKUP.toLowerCase():
         return (
@@ -106,6 +113,8 @@ export default class CheckoutPage extends React.PureComponent {
             orderHasShipping={orderHasShipping}
           />
         );
+      case CONFIRMATION.toLowerCase():
+        return <Text>Confirmation Page</Text>;
       default:
         return null;
     }

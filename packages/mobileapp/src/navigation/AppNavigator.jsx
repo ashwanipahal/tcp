@@ -13,6 +13,7 @@ import WalletStack from '../pages/login';
 import BrandSwitchStack from '../pages/brandSwitch';
 import Header from '../components/common/molecules/Header';
 import CheckoutStack from '../pages/checkout';
+import BagStack from '../pages/bag';
 
 const TabNavigator = createBottomTabNavigator(
   {
@@ -32,6 +33,9 @@ const RootStack = createStackNavigator(
   {
     Home: {
       screen: TabNavigator,
+    },
+    Bag: {
+      screen: BagStack,
     },
     Checkout: {
       screen: CheckoutStack,

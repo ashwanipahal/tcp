@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { Fragment } from 'react';
 import PropTypes from 'prop-types';
 // import { Button } from '../../../../../../common/atoms';
 import withStyles from '../../../../../../common/hoc/withStyles';
@@ -40,11 +40,12 @@ const ProductList = props => {
     loadedProductCount,
     labels,
     isPlcc,
+    productTileVariation,
   } = props;
   let gridIndex = 0;
 
   return (
-    <ul className={className}>
+    <Fragment>
       {productsBlock.map((item, index) => {
         const isEvenElement = gridIndex % 2;
         if (typeof item === 'string') {
@@ -56,11 +57,11 @@ const ProductList = props => {
         return typeof item === 'string' ? (
           /* id={isShowPLPId && (categoryNameTop +`-`+item).replace(/ /g, '-')} */
 
-          <h2 key={item} className="item-title">
+          <h2 key={item} className={`${className} item-title`}>
             {item}
           </h2>
         ) : (
-          <div className="product-tile">
+          <div className={`${className} product-tile ${productTileVariation}`}>
             <ProductsGridItem
               isMobile={isMobileApp()}
               loadedProductCount={loadedProductCount}
@@ -100,7 +101,7 @@ const ProductList = props => {
           </div>
         );
       })}
-    </ul>
+    </Fragment>
   );
 };
 
@@ -134,6 +135,7 @@ ProductList.propTypes = {
   loadedProductCount: PropTypes.number.isRequired,
   labels: PropTypes.shape().isRequired,
   isPlcc: PropTypes.bool,
+  productTileVariation: PropTypes.string,
 };
 
 ProductList.defaultProps = {
@@ -157,6 +159,7 @@ ProductList.defaultProps = {
     promotionalPLCCMessage: '',
   },
   isPlcc: false,
+  productTileVariation: '',
 };
 
 export default withStyles(ProductList, ProductListStyle);

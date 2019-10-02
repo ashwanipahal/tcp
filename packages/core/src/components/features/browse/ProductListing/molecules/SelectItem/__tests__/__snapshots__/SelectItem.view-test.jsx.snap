@@ -36,14 +36,10 @@ exports[`Select Item is shown should render select item  1`] = `
   .selected-items {
     text-transform: capitalize;
     text-align: left;
-
-    @media ",
-          [Function],
-          " {
-      padding-left: ",
+    padding-left: ",
           [Function],
           ";
-    }
+
     @media ",
           [Function],
           " {

@@ -1,0 +1,245 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Bag page Container should render modal when open true 1`] = `
+<ModalNative
+  customTransparent={true}
+  isOpen={true}
+  isOverlay={false}
+>
+  <TouchableOpacity
+    accessibilityLabel="Tap to close it"
+    accessibilityRole="none"
+    activeOpacity={0.2}
+    onPress={[MockFunction]}
+    style={
+      Object {
+        "alignItems": "center",
+        "backgroundColor": "rgba(0, 0, 0, 0.5)",
+        "flex": 1,
+        "justifyContent": "center",
+      }
+    }
+  >
+    <View>
+      <TouchableWithoutFeedback
+        accessibilityRole="none"
+      >
+        <Styled(View)>
+          <Styled(View)>
+            <Styled(TouchableOpacity)
+              onPress={[MockFunction]}
+            >
+              <Styled(Image)
+                source={
+                  Object {
+                    "testUri": "../../../../core/src/assets/close.png",
+                  }
+                }
+              />
+            </Styled(TouchableOpacity)>
+          </Styled(View)>
+          <Styled(Text)>
+            <Styled(BodyCopy)
+              accessibilityText=""
+              dataLocator=""
+              fontFamily="secondary"
+              fontSize="fs16"
+              fontWeight="regular"
+              margin={null}
+              numberOfLines={null}
+              textAlign="center"
+              textDecoration={null}
+            />
+          </Styled(Text)>
+          <Styled(Text)>
+            <Styled(BodyCopy)
+              accessibilityText=""
+              dataLocator=""
+              fontSize="fs16"
+              fontWeight="regular"
+              margin={null}
+              mobileFontFamily="secondary"
+              numberOfLines={null}
+              textAlign="center"
+              textDecoration={null}
+            />
+          </Styled(Text)>
+          <Styled(View)>
+            <Styled(CustomButton)
+              active={false}
+              buttonVariation="variable-width"
+              color="white"
+              customStyle={Object {}}
+              customTextStyle={null}
+              disableButton={false}
+              fill="BLUE"
+              fullWidth=""
+              iconColor="gray.800"
+              iconName="chevron-down"
+              iconSize="fs12"
+              locator=""
+              navigation={Object {}}
+              onPress={null}
+              selected={false}
+              selectedIcon="chevron-up"
+              showIcon={false}
+              text=""
+              theme={Object {}}
+              type="submit"
+              url=""
+            />
+          </Styled(View)>
+          <Styled(View)>
+            <Styled(CustomButton)
+              active={false}
+              buttonVariation="variable-width"
+              color="gray"
+              customStyle={Object {}}
+              customTextStyle={null}
+              disableButton={false}
+              fill="WHITE"
+              fontWeight="extrabold"
+              fullWidth=""
+              iconColor="gray.800"
+              iconName="chevron-down"
+              iconSize="fs12"
+              locator=""
+              navigation={Object {}}
+              onPress={null}
+              selected={false}
+              selectedIcon="chevron-up"
+              showIcon={false}
+              text=""
+              theme={Object {}}
+              type="submit"
+              url=""
+            />
+          </Styled(View)>
+        </Styled(View)>
+      </TouchableWithoutFeedback>
+    </View>
+  </TouchableOpacity>
+</ModalNative>
+`;
+
+exports[`Bag page Container should render no modal when isOpen is false 1`] = `
+<ModalNative
+  customTransparent={true}
+  isOpen={false}
+  isOverlay={false}
+>
+  <TouchableOpacity
+    accessibilityLabel="Tap to close it"
+    accessibilityRole="none"
+    activeOpacity={0.2}
+    onPress={[MockFunction]}
+    style={
+      Object {
+        "alignItems": "center",
+        "backgroundColor": "rgba(0, 0, 0, 0.5)",
+        "flex": 1,
+        "justifyContent": "center",
+      }
+    }
+  >
+    <View>
+      <TouchableWithoutFeedback
+        accessibilityRole="none"
+      >
+        <Styled(View)>
+          <Styled(View)>
+            <Styled(TouchableOpacity)
+              onPress={[MockFunction]}
+            >
+              <Styled(Image)
+                source={
+                  Object {
+                    "testUri": "../../../../core/src/assets/close.png",
+                  }
+                }
+              />
+            </Styled(TouchableOpacity)>
+          </Styled(View)>
+          <Styled(Text)>
+            <Styled(BodyCopy)
+              accessibilityText=""
+              dataLocator=""
+              fontFamily="secondary"
+              fontSize="fs16"
+              fontWeight="regular"
+              margin={null}
+              numberOfLines={null}
+              textAlign="center"
+              textDecoration={null}
+            />
+          </Styled(Text)>
+          <Styled(Text)>
+            <Styled(BodyCopy)
+              accessibilityText=""
+              dataLocator=""
+              fontSize="fs16"
+              fontWeight="regular"
+              margin={null}
+              mobileFontFamily="secondary"
+              numberOfLines={null}
+              textAlign="center"
+              textDecoration={null}
+            />
+          </Styled(Text)>
+          <Styled(View)>
+            <Styled(CustomButton)
+              active={false}
+              buttonVariation="variable-width"
+              color="white"
+              customStyle={Object {}}
+              customTextStyle={null}
+              disableButton={false}
+              fill="BLUE"
+              fullWidth=""
+              iconColor="gray.800"
+              iconName="chevron-down"
+              iconSize="fs12"
+              locator=""
+              navigation={Object {}}
+              onPress={null}
+              selected={false}
+              selectedIcon="chevron-up"
+              showIcon={false}
+              text=""
+              theme={Object {}}
+              type="submit"
+              url=""
+            />
+          </Styled(View)>
+          <Styled(View)>
+            <Styled(CustomButton)
+              active={false}
+              buttonVariation="variable-width"
+              color="gray"
+              customStyle={Object {}}
+              customTextStyle={null}
+              disableButton={false}
+              fill="WHITE"
+              fontWeight="extrabold"
+              fullWidth=""
+              iconColor="gray.800"
+              iconName="chevron-down"
+              iconSize="fs12"
+              locator=""
+              navigation={Object {}}
+              onPress={null}
+              selected={false}
+              selectedIcon="chevron-up"
+              showIcon={false}
+              text=""
+              theme={Object {}}
+              type="submit"
+              url=""
+            />
+          </Styled(View)>
+        </Styled(View)>
+      </TouchableWithoutFeedback>
+    </View>
+  </TouchableOpacity>
+</ModalNative>
+`;

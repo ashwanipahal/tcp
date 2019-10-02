@@ -6,5 +6,16 @@ import BodyCopy from './BodyCopy';
 import Heading from './Heading';
 import LabeledRadioButton from './LabeledRadioButton';
 import DamImage from './DamImage';
+import NativeDropDown from './NativeDropDown';
 
-export { Button, Image, RichText, Anchor, BodyCopy, Heading, LabeledRadioButton, DamImage };
+export {
+  Button,
+  Image,
+  RichText,
+  Anchor,
+  BodyCopy,
+  Heading,
+  LabeledRadioButton,
+  DamImage,
+  NativeDropDown,
+};

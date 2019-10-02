@@ -1,18 +1,27 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import { BodyCopyWithSpacing } from '@tcp/core/src/components/common/atoms/styledWrapper';
-
+import { fromJS } from 'immutable';
 import MyProfileTile from '@tcp/core/src/components/common/molecules/MyProfileTile';
+import BirthdaySavingsList from '../../../../common/organism/BirthdaySavingsList';
+import { getLabelValue } from '../../../../../../../utils';
 
-export const BirthdaySaving = ({ labels, handleComponentChange }) => {
+const BirthdaySaving = ({ labels, handleComponentChange, childrenBirthdays }) => {
+  const ctaTitle = getLabelValue(
+    labels,
+    childrenBirthdays && childrenBirthdays.size > 0
+      ? 'lbl_profile_edit_birthday_info'
+      : 'lbl_profile_add_birthday_info'
+  );
+
   return (
     <MyProfileTile
       title={labels.lbl_profile_birthday_savings}
-      ctaTitle={labels.lbl_profile_add_birthday_info}
+      ctaTitle={ctaTitle}
       dataLocator="pi-addbirthdayinfo"
       handleComponentChange={handleComponentChange}
+      birthdaySaving
     >
-      <BodyCopyWithSpacing fontSize="fs14" text={labels.lbl_profile_birthday_saving_info} />
+      <BirthdaySavingsList view="read" labels={labels} />
     </MyProfileTile>
   );
 };
@@ -23,6 +32,7 @@ BirthdaySaving.propTypes = {
     lbl_profile_add_birthday_info: PropTypes.string,
     lbl_profile_birthday_saving_info: PropTypes.string,
   }),
+  childrenBirthdays: PropTypes.shape({}),
   handleComponentChange: PropTypes.func.isRequired,
 };
 
@@ -32,6 +42,7 @@ BirthdaySaving.defaultProps = {
     lbl_profile_add_birthday_info: '',
     lbl_profile_birthday_saving_info: '',
   },
+  childrenBirthdays: fromJS([]),
 };
 
 export default BirthdaySaving;

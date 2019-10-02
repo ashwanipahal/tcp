@@ -20,12 +20,8 @@ exports[`ButtonList component renders correctly 1`] = `
           },
         }
       }
-      dataLocator={
-        Object {
-          "cta": "moduleN_cta_links_0",
-          "image": "0",
-        }
-      }
+      dataLocator="moduleN_cta_links_0"
+      dataLocatorCTA=""
       fill=""
       fontFamily="secondary"
       fontSize="fs13"
@@ -58,12 +54,8 @@ exports[`ButtonList component renders correctly 1`] = `
           },
         }
       }
-      dataLocator={
-        Object {
-          "cta": "moduleN_cta_links_1",
-          "image": "1",
-        }
-      }
+      dataLocator="moduleN_cta_links_1"
+      dataLocatorCTA=""
       fill=""
       fontFamily="secondary"
       fontSize="fs13"
@@ -96,12 +88,8 @@ exports[`ButtonList component renders correctly 1`] = `
           },
         }
       }
-      dataLocator={
-        Object {
-          "cta": "moduleN_cta_links_2",
-          "image": "2",
-        }
-      }
+      dataLocator="moduleN_cta_links_2"
+      dataLocatorCTA=""
       fill=""
       fontFamily="secondary"
       fontSize="fs13"
@@ -134,12 +122,8 @@ exports[`ButtonList component renders correctly 1`] = `
           },
         }
       }
-      dataLocator={
-        Object {
-          "cta": "moduleN_cta_links_3",
-          "image": "3",
-        }
-      }
+      dataLocator="moduleN_cta_links_3"
+      dataLocatorCTA=""
       fill=""
       fontFamily="secondary"
       fontSize="fs13"
@@ -172,12 +156,8 @@ exports[`ButtonList component renders correctly 1`] = `
           },
         }
       }
-      dataLocator={
-        Object {
-          "cta": "moduleN_cta_links_4",
-          "image": "4",
-        }
-      }
+      dataLocator="moduleN_cta_links_4"
+      dataLocatorCTA=""
       fill=""
       fontFamily="secondary"
       fontSize="fs13"
@@ -210,12 +190,8 @@ exports[`ButtonList component renders correctly 1`] = `
           },
         }
       }
-      dataLocator={
-        Object {
-          "cta": "moduleN_cta_links_5",
-          "image": "5",
-        }
-      }
+      dataLocator="moduleN_cta_links_5"
+      dataLocatorCTA=""
       fill=""
       fontFamily="secondary"
       fontSize="fs13"
@@ -257,12 +233,8 @@ exports[`ButtonList component renders correctly for Dual Variation 1`] = `
           },
         }
       }
-      dataLocator={
-        Object {
-          "cta": "moduleB_cta_links_0",
-          "image": "moduleB_image_0",
-        }
-      }
+      dataLocator="moduleB_cta_links_0"
+      dataLocatorCTA=""
       fill=""
       fontFamily="secondary"
       fontSize="fs13"
@@ -296,12 +268,8 @@ exports[`ButtonList component renders correctly for Dual Variation 1`] = `
           },
         }
       }
-      dataLocator={
-        Object {
-          "cta": "moduleB_cta_links_1",
-          "image": "moduleB_image_1",
-        }
-      }
+      dataLocator="moduleB_cta_links_1"
+      dataLocatorCTA=""
       fill=""
       fontFamily="secondary"
       fontSize="fs13"
@@ -335,12 +303,8 @@ exports[`ButtonList component renders correctly for Dual Variation 1`] = `
           },
         }
       }
-      dataLocator={
-        Object {
-          "cta": "moduleB_cta_links_2",
-          "image": "moduleB_image_2",
-        }
-      }
+      dataLocator="moduleB_cta_links_2"
+      dataLocatorCTA=""
       fill=""
       fontFamily="secondary"
       fontSize="fs13"
@@ -374,12 +338,8 @@ exports[`ButtonList component renders correctly for Dual Variation 1`] = `
           },
         }
       }
-      dataLocator={
-        Object {
-          "cta": "moduleB_cta_links_3",
-          "image": "moduleB_image_3",
-        }
-      }
+      dataLocator="moduleB_cta_links_3"
+      dataLocatorCTA=""
       fill=""
       fontFamily="secondary"
       fontSize="fs13"
@@ -413,12 +373,8 @@ exports[`ButtonList component renders correctly for Dual Variation 1`] = `
           },
         }
       }
-      dataLocator={
-        Object {
-          "cta": "moduleB_cta_links_4",
-          "image": "moduleB_image_4",
-        }
-      }
+      dataLocator="moduleB_cta_links_4"
+      dataLocatorCTA=""
       fill=""
       fontFamily="secondary"
       fontSize="fs13"
@@ -452,12 +408,8 @@ exports[`ButtonList component renders correctly for Dual Variation 1`] = `
           },
         }
       }
-      dataLocator={
-        Object {
-          "cta": "moduleB_cta_links_5",
-          "image": "moduleB_image_5",
-        }
-      }
+      dataLocator="moduleB_cta_links_5"
+      dataLocatorCTA=""
       fill=""
       fontFamily="secondary"
       fontSize="fs13"
@@ -610,12 +562,7 @@ exports[`ButtonList component renders correctly for image cta List 1`] = `
           },
         }
       }
-      dataLocator={
-        Object {
-          "cta": "moduleN_cta_links_0",
-          "image": "moduleN_image_0",
-        }
-      }
+      dataLocator="moduleN_image_0"
       fill=""
       fontFamily="secondary"
       fontSize="fs13"
@@ -647,12 +594,7 @@ exports[`ButtonList component renders correctly for image cta List 1`] = `
           },
         }
       }
-      dataLocator={
-        Object {
-          "cta": "moduleN_cta_links_1",
-          "image": "moduleN_image_1",
-        }
-      }
+      dataLocator="moduleN_image_1"
       fill=""
       fontFamily="secondary"
       fontSize="fs13"
@@ -684,12 +626,7 @@ exports[`ButtonList component renders correctly for image cta List 1`] = `
           },
         }
       }
-      dataLocator={
-        Object {
-          "cta": "moduleN_cta_links_2",
-          "image": "moduleN_image_2",
-        }
-      }
+      dataLocator="moduleN_image_2"
       fill=""
       fontFamily="secondary"
       fontSize="fs13"
@@ -721,12 +658,7 @@ exports[`ButtonList component renders correctly for image cta List 1`] = `
           },
         }
       }
-      dataLocator={
-        Object {
-          "cta": "moduleN_cta_links_3",
-          "image": "moduleN_image_3",
-        }
-      }
+      dataLocator="moduleN_image_3"
       fill=""
       fontFamily="secondary"
       fontSize="fs13"
@@ -758,12 +690,7 @@ exports[`ButtonList component renders correctly for image cta List 1`] = `
           },
         }
       }
-      dataLocator={
-        Object {
-          "cta": "moduleN_cta_links_4",
-          "image": "moduleN_image_4",
-        }
-      }
+      dataLocator="moduleN_image_4"
       fill=""
       fontFamily="secondary"
       fontSize="fs13"
@@ -795,12 +722,7 @@ exports[`ButtonList component renders correctly for image cta List 1`] = `
           },
         }
       }
-      dataLocator={
-        Object {
-          "cta": "moduleN_cta_links_5",
-          "image": "moduleN_image_5",
-        }
-      }
+      dataLocator="moduleN_image_5"
       fill=""
       fontFamily="secondary"
       fontSize="fs13"
@@ -842,12 +764,8 @@ exports[`ButtonList component renders correctly for scroll cta buttons 1`] = `
           },
         }
       }
-      dataLocator={
-        Object {
-          "cta": "moduleN_cta_links_0",
-          "image": "0",
-        }
-      }
+      dataLocator="moduleN_cta_links_0"
+      dataLocatorCTA=""
       fill=""
       fontFamily="secondary"
       fontSize="fs13"
@@ -880,12 +798,8 @@ exports[`ButtonList component renders correctly for scroll cta buttons 1`] = `
           },
         }
       }
-      dataLocator={
-        Object {
-          "cta": "moduleN_cta_links_1",
-          "image": "1",
-        }
-      }
+      dataLocator="moduleN_cta_links_1"
+      dataLocatorCTA=""
       fill=""
       fontFamily="secondary"
       fontSize="fs13"
@@ -918,12 +832,8 @@ exports[`ButtonList component renders correctly for scroll cta buttons 1`] = `
           },
         }
       }
-      dataLocator={
-        Object {
-          "cta": "moduleN_cta_links_2",
-          "image": "2",
-        }
-      }
+      dataLocator="moduleN_cta_links_2"
+      dataLocatorCTA=""
       fill=""
       fontFamily="secondary"
       fontSize="fs13"
@@ -956,12 +866,8 @@ exports[`ButtonList component renders correctly for scroll cta buttons 1`] = `
           },
         }
       }
-      dataLocator={
-        Object {
-          "cta": "moduleN_cta_links_3",
-          "image": "3",
-        }
-      }
+      dataLocator="moduleN_cta_links_3"
+      dataLocatorCTA=""
       fill=""
       fontFamily="secondary"
       fontSize="fs13"
@@ -994,12 +900,8 @@ exports[`ButtonList component renders correctly for scroll cta buttons 1`] = `
           },
         }
       }
-      dataLocator={
-        Object {
-          "cta": "moduleN_cta_links_4",
-          "image": "4",
-        }
-      }
+      dataLocator="moduleN_cta_links_4"
+      dataLocatorCTA=""
       fill=""
       fontFamily="secondary"
       fontSize="fs13"
@@ -1032,12 +934,8 @@ exports[`ButtonList component renders correctly for scroll cta buttons 1`] = `
           },
         }
       }
-      dataLocator={
-        Object {
-          "cta": "moduleN_cta_links_5",
-          "image": "5",
-        }
-      }
+      dataLocator="moduleN_cta_links_5"
+      dataLocatorCTA=""
       fill=""
       fontFamily="secondary"
       fontSize="fs13"
@@ -1079,12 +977,8 @@ exports[`ButtonList component renders correctly with props for stacked CTA butto
           },
         }
       }
-      dataLocator={
-        Object {
-          "cta": "moduleN_cta_links_0",
-          "image": "0",
-        }
-      }
+      dataLocator="moduleN_cta_links_0"
+      dataLocatorCTA=""
       fill=""
       fontFamily="secondary"
       fontSize="fs13"
@@ -1118,12 +1012,8 @@ exports[`ButtonList component renders correctly with props for stacked CTA butto
           },
         }
       }
-      dataLocator={
-        Object {
-          "cta": "moduleN_cta_links_1",
-          "image": "1",
-        }
-      }
+      dataLocator="moduleN_cta_links_1"
+      dataLocatorCTA=""
       fill=""
       fontFamily="secondary"
       fontSize="fs13"
@@ -1157,12 +1047,8 @@ exports[`ButtonList component renders correctly with props for stacked CTA butto
           },
         }
       }
-      dataLocator={
-        Object {
-          "cta": "moduleN_cta_links_2",
-          "image": "2",
-        }
-      }
+      dataLocator="moduleN_cta_links_2"
+      dataLocatorCTA=""
       fill=""
       fontFamily="secondary"
       fontSize="fs13"
@@ -1196,12 +1082,8 @@ exports[`ButtonList component renders correctly with props for stacked CTA butto
           },
         }
       }
-      dataLocator={
-        Object {
-          "cta": "moduleN_cta_links_3",
-          "image": "3",
-        }
-      }
+      dataLocator="moduleN_cta_links_3"
+      dataLocatorCTA=""
       fill=""
       fontFamily="secondary"
       fontSize="fs13"
@@ -1235,12 +1117,8 @@ exports[`ButtonList component renders correctly with props for stacked CTA butto
           },
         }
       }
-      dataLocator={
-        Object {
-          "cta": "moduleN_cta_links_4",
-          "image": "4",
-        }
-      }
+      dataLocator="moduleN_cta_links_4"
+      dataLocatorCTA=""
       fill=""
       fontFamily="secondary"
       fontSize="fs13"
@@ -1274,12 +1152,8 @@ exports[`ButtonList component renders correctly with props for stacked CTA butto
           },
         }
       }
-      dataLocator={
-        Object {
-          "cta": "moduleN_cta_links_5",
-          "image": "5",
-        }
-      }
+      dataLocator="moduleN_cta_links_5"
+      dataLocatorCTA=""
       fill=""
       fontFamily="secondary"
       fontSize="fs13"
@@ -1322,12 +1196,8 @@ exports[`ButtonList component renders correctly without props 1`] = `
           },
         }
       }
-      dataLocator={
-        Object {
-          "cta": "0",
-          "image": "0",
-        }
-      }
+      dataLocator="0"
+      dataLocatorCTA=""
       fill=""
       fontFamily="secondary"
       fontSize="fs13"
@@ -1361,12 +1231,8 @@ exports[`ButtonList component renders correctly without props 1`] = `
           },
         }
       }
-      dataLocator={
-        Object {
-          "cta": "1",
-          "image": "1",
-        }
-      }
+      dataLocator="1"
+      dataLocatorCTA=""
       fill=""
       fontFamily="secondary"
       fontSize="fs13"
@@ -1400,12 +1266,8 @@ exports[`ButtonList component renders correctly without props 1`] = `
           },
         }
       }
-      dataLocator={
-        Object {
-          "cta": "2",
-          "image": "2",
-        }
-      }
+      dataLocator="2"
+      dataLocatorCTA=""
       fill=""
       fontFamily="secondary"
       fontSize="fs13"
@@ -1439,12 +1301,8 @@ exports[`ButtonList component renders correctly without props 1`] = `
           },
         }
       }
-      dataLocator={
-        Object {
-          "cta": "3",
-          "image": "3",
-        }
-      }
+      dataLocator="3"
+      dataLocatorCTA=""
       fill=""
       fontFamily="secondary"
       fontSize="fs13"
@@ -1478,12 +1336,8 @@ exports[`ButtonList component renders correctly without props 1`] = `
           },
         }
       }
-      dataLocator={
-        Object {
-          "cta": "4",
-          "image": "4",
-        }
-      }
+      dataLocator="4"
+      dataLocatorCTA=""
       fill=""
       fontFamily="secondary"
       fontSize="fs13"
@@ -1517,12 +1371,8 @@ exports[`ButtonList component renders correctly without props 1`] = `
           },
         }
       }
-      dataLocator={
-        Object {
-          "cta": "5",
-          "image": "5",
-        }
-      }
+      dataLocator="5"
+      dataLocatorCTA=""
       fill=""
       fontFamily="secondary"
       fontSize="fs13"

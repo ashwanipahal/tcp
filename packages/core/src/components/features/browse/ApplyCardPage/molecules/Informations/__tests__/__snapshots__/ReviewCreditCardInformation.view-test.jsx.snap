@@ -26,6 +26,7 @@ exports[`ReviewCreditCardInformation component should renders correctly 1`] = `
       isPLCCModalFlow={false}
       letterSpacing="normal"
       lineHeight="normal"
+      link={null}
       tabIndex="0"
       textAlign="left"
     />
@@ -75,6 +76,7 @@ exports[`ReviewCreditCardInformation component should renders correctly when no 
       isPLCCModalFlow={false}
       letterSpacing="normal"
       lineHeight="normal"
+      link={null}
       tabIndex="0"
       textAlign="left"
     />

@@ -1,43 +1,47 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
 exports[`Promo Text Banner component renders correctly 1`] = `
-<Styled(Anchor)
-  asPath="http://example.com3367"
+<div
   className=""
-  external={0}
-  key="0"
-  target=""
-  text="aaaa"
-  title=""
-  to="http://example.com3367"
-  url="http://example.com3367"
 >
-  <Styled(BodyCopy)
-    className=" link-text"
-    color="text.primary"
-    component={[Function]}
-    data-locator="_0"
-    fontFamily="primary"
-    fontSize={12}
-    fontWeight="regular"
-    letterSpacing="normal"
-    lineHeight="normal"
-    textAlign="left"
+  <Styled(Anchor)
+    asPath="http://example.com3367"
+    external={0}
+    key="0"
+    target=""
+    text="aaaa"
+    title=""
+    to="http://example.com3367"
+    url="http://example.com3367"
   >
-    <TextItems
-      textItems={
-        Array [
-          Object {
-            "style": "style1",
-            "text": "UNICORNS",
-          },
-          Object {
-            "style": "style2",
-            "text": ", DINOS & MORE!",
-          },
-        ]
-      }
-    />
-  </Styled(BodyCopy)>
-</Styled(Anchor)>
+    <Styled(BodyCopy)
+      className=" link-text"
+      color="text.primary"
+      component={[Function]}
+      data-locator="_0"
+      fontFamily="primary"
+      fontSize={12}
+      fontWeight="regular"
+      letterSpacing="normal"
+      lineHeight="normal"
+      link={null}
+      textAlign="left"
+    >
+      <TextItems
+        textItems={
+          Array [
+            Object {
+              "style": "style1",
+              "text": "UNICORNS",
+            },
+            Object {
+              "style": "style2",
+              "text": ", DINOS & MORE!",
+            },
+          ]
+        }
+      />
+    </Styled(BodyCopy)>
+  </Styled(Anchor)>
+</div>
 `;

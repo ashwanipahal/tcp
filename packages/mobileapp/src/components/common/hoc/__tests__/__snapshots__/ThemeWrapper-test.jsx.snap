@@ -45,6 +45,9 @@ exports[`#ThemeWrapper.container should render correctly 1`] = `
           "1100": "#4a4a4a",
           "1200": "#eeeeee",
           "1300": "#9c9c9c",
+          "1400": "#90939b",
+          "1500": "#c3c3c3",
+          "1600": "#979797",
           "300": "#f3f3f3",
           "400": "#4a4a4a",
           "500": "#d8d8d8",
@@ -82,6 +85,7 @@ exports[`#ThemeWrapper.container should render correctly 1`] = `
           "200": "#f3d7d7",
           "300": "#c84747",
           "500": "#c8102e",
+          "600": "#c01f1f",
         },
         "secondary": Object {
           "dark": "#c84747",
@@ -90,6 +94,7 @@ exports[`#ThemeWrapper.container should render correctly 1`] = `
         },
         "success": "#26762c",
         "text": Object {
+          "darkgray": "#595959",
           "disabled": "#d8d8d8",
           "hint": "#9b9b9b",
           "lightgray": "#f3f3f3",
@@ -228,6 +233,7 @@ exports[`#ThemeWrapper.container should render correctly 1`] = `
           "FOCUS_BORDER": "#439ad4",
           "SUCCESS_BORDER": "#6dc927",
         },
+        "VENMO": "#3d95ce",
         "WHITE": "#ffffff",
       },
       "fonts": Object {
@@ -422,6 +428,7 @@ exports[`#ThemeWrapper.container should render correctly 1`] = `
           "XXXL": "320px",
         },
         "MODAL_WIDTH": Object {
+          "MEDIUM": "600px",
           "SMALL": "458px",
         },
       },
@@ -439,8 +446,10 @@ exports[`#ThemeWrapper.container should render correctly 1`] = `
           "fs16": "16px",
           "fs18": "18px",
           "fs20": "20px",
+          "fs21": "21px",
           "fs22": "22px",
           "fs24": "24px",
+          "fs25": "25px",
           "fs26": "26px",
           "fs28": "28px",
           "fs32": "32px",
@@ -586,6 +595,7 @@ exports[`#ThemeWrapper.container should render correctly 1`] = `
         },
       },
       "zindex": Object {
+        "zCondensedHeader": 1100,
         "zDrawer": 1200,
         "zEnlargedImage": 100,
         "zGoogleAutosuggest": 100000,

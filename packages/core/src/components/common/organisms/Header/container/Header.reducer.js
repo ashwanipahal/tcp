@@ -1,6 +1,10 @@
 import HEADER_CONSTANTS from './Header.constants';
 
-const HeaderReducer = (state = {}, action) => {
+const initailState = {
+  miniBag: false,
+};
+
+const HeaderReducer = (state = initailState, action) => {
   switch (action.type) {
     case HEADER_CONSTANTS.LOAD_HEADER_DATA:
       return { ...state, ...action.payload };
@@ -13,6 +17,16 @@ const HeaderReducer = (state = {}, action) => {
       return {
         ...state,
         navigationDrawer: { close: true, open: false },
+      };
+    case HEADER_CONSTANTS.CLOSE_MINI_BAG:
+      return {
+        ...state,
+        miniBag: false,
+      };
+    case HEADER_CONSTANTS.OPEN_MINI_BAG:
+      return {
+        ...state,
+        miniBag: true,
       };
     default:
       return state;

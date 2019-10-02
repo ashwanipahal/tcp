@@ -3,10 +3,15 @@
 exports[`AboutYouInformationForm should render correctly 1`] = `
 <Styled(View)>
   <Styled(BodyCopy)
+    accessibilityText=""
     data-locator="moreaboutyou-edit-q1text"
+    dataLocator=""
     fontFamily="secondary"
     fontSize="fs14"
+    margin={null}
+    numberOfLines={null}
     text="Question 1"
+    textDecoration={null}
   />
   <Styled(View)>
     <Styled(View)>
@@ -84,10 +89,15 @@ exports[`AboutYouInformationForm should render correctly 1`] = `
   </Styled(View)>
   <View>
     <Styled(BodyCopy)
+      accessibilityText=""
       data-locator="moreaboutyou-edit-q2text"
+      dataLocator=""
       fontFamily="secondary"
       fontSize="fs14"
+      margin={null}
+      numberOfLines={null}
       text="Question 2"
+      textDecoration={null}
     />
   </View>
   <Styled(View)>
@@ -149,21 +159,54 @@ exports[`AboutYouInformationForm should render correctly 1`] = `
   </Styled(View)>
   <Styled(View)>
     <Styled(View)>
-      <Styled(WithTheme(CustomButton))
+      <Styled(CustomButton)
+        active={false}
         buttonVariation="variable-width"
+        color=""
+        customStyle={Object {}}
+        customTextStyle={null}
         data-locator="moreaboutyou-savebtn"
+        disableButton={false}
         disabled={true}
         fill="BLUE"
+        fullWidth=""
+        iconColor="gray.800"
+        iconName="chevron-down"
+        iconSize="fs12"
+        locator=""
+        navigation={Object {}}
         onPress={[Function]}
+        selected={false}
+        selectedIcon="chevron-up"
+        showIcon={false}
         text="SAVE"
+        theme={Object {}}
+        url=""
       />
     </Styled(View)>
     <Styled(View)>
-      <Styled(WithTheme(CustomButton))
+      <Styled(CustomButton)
+        active={false}
         buttonVariation="variable-width"
+        color=""
+        customStyle={Object {}}
+        customTextStyle={null}
         data-locator="moreaboutyou-cancelbtn"
+        disableButton={false}
+        fill=""
+        fullWidth=""
+        iconColor="gray.800"
+        iconName="chevron-down"
+        iconSize="fs12"
+        locator=""
+        navigation={Object {}}
         onPress={[MockFunction]}
+        selected={false}
+        selectedIcon="chevron-up"
+        showIcon={false}
         text="lbl_profile_personal_info_cancelCta"
+        theme={Object {}}
+        url=""
       />
     </Styled(View)>
   </Styled(View)>

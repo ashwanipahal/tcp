@@ -1,6 +1,6 @@
 import { createSelector } from 'reselect';
 import { FORGOTPASSWORD_REDUCER_KEY } from '@tcp/core/src/constants/reducer.constants';
-import { getErrorSelector } from '../../../../../utils';
+import { getErrorSelector } from '../../../../../utils/utils';
 
 export const getResetEmailResponse = state => {
   return state[FORGOTPASSWORD_REDUCER_KEY];

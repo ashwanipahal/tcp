@@ -1,6 +1,6 @@
 import { createSelector } from 'reselect';
 import { RESET_PASSWORD_REDUCER_KEY } from '../../../../../constants/reducer.constants';
-import { getErrorSelector } from '../../../../../utils';
+import { getErrorSelector } from '../../../../../utils/utils';
 
 const getState = state => state[RESET_PASSWORD_REDUCER_KEY];
 

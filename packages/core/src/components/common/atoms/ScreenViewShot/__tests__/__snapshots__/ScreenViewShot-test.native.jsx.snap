@@ -1,0 +1,17 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`ScreenViewShot component ScreenViewShot capture view correctly 1`] = `
+<ViewShot
+  options={
+    Object {
+      "format": "png",
+      "quality": 0.9,
+      "result": "base64",
+    }
+  }
+>
+  <div>
+    Test
+  </div>
+</ViewShot>
+`;

@@ -39,7 +39,7 @@ export const Wrapper = styled.View`
 export const PromoContainer = styled.View`
   ${props =>
     props.layout === 'alt'
-      ? `margin-top: ${props.theme.spacing.LAYOUT_SPACING.XS}; `
+      ? `margin-top: ${props.theme.spacing.ELEM_SPACING.SM}; `
       : `margin-top: ${props.theme.spacing.ELEM_SPACING.XXS};`};
 `;
 
@@ -56,13 +56,18 @@ export const HeaderContainer = styled.View`
  `};
 `;
 
+export const SecondHeaderContainer = styled.View`
+  ${props =>
+    props.layout === 'alt' ? `margin-bottom: ${props.theme.spacing.ELEM_SPACING.SM};` : ''};
+`;
+
 export const Border = styled.View`
   width: 100%;
   height: 1px;
   top: 8px;
   position: absolute;
   ${props =>
-    props.layout === 'alt' ? `` : `border: 1px solid ${props.theme.colorPalette.yellow[500]};`};
+    props.layout === 'alt' ? `` : `border: 1px solid ${props.theme.colorPalette.gray['500']};`};
 `;
 
 export const ImageContainer = styled.View`
@@ -75,7 +80,7 @@ export const MessageContainer = styled.View`
   justify-content: center;
   width: 100%;
   background: ${props =>
-    props.layout === 'alt' ? props.theme.colorPalette.gray[500] : props.theme.colorPalette.white};
+    props.layout === 'alt' && props.bgColor ? props.bgColor : props.theme.colorPalette.white};
   padding-top: ${props => props.theme.spacing.LAYOUT_SPACING.SM};
   ${props => props.theme.spacing.LAYOUT_SPACING.SM};
   padding-bottom: ${props =>

@@ -1,7 +1,6 @@
 import React, { useState } from 'react';
-import get from 'lodash/get';
 import PropTypes from 'prop-types';
-import { withTheme } from 'styled-components/native';
+import PromotionalMessage from '@tcp/core/src/components/common/atoms/PromotionalMessage';
 import withStyles from '../../../../../../common/hoc/withStyles.native';
 import {
   styles,
@@ -18,13 +17,10 @@ import {
   Badge3Text,
   TitleContainer,
   TitleText,
-  PromotionalMessageContainer,
-  PromotionalMessage,
   AddToBagContainer,
-  PromotionalMessagePostfix,
   OfferPriceAndFavoriteIconContainer,
+  ImageSectionContainer,
 } from '../styles/ProductListItem.style.native';
-import { getFormattedLoyaltyText } from '../../ProductList/utils/productsCommonUtils';
 import CustomButton from '../../../../../../common/atoms/Button';
 import ColorSwitch from '../../ColorSwitch';
 import CustomIcon from '../../../../../../common/atoms/Icon';
@@ -50,7 +46,6 @@ const ListItem = props => {
     onAddToBag,
     onFavorite,
     currencyExchange,
-    theme,
     currencySymbol,
     isPlcc,
     onGoToPDPPage,
@@ -59,8 +54,6 @@ const ListItem = props => {
   const { productInfo, colorsMap } = item;
   const { name } = productInfo;
   const { miscInfo } = colorsMap[selectedColorIndex];
-  const favoriteIconColor = get(theme, 'colorPalette.gray[600]', '#9b9b9b');
-  const favoriteIconSize = get(theme, 'typography.fontSizes.fs21', 21);
   return (
     <ListContainer accessible>
       <RenderTopBadge1 text={badge1} />
@@ -72,15 +65,20 @@ const ListItem = props => {
       <RenderBadge2 text={badge2} />
       <RenderPricesSection
         onFavorite={onFavorite}
-        favoriteIconColor={favoriteIconColor}
-        favoriteIconSize={favoriteIconSize}
         miscInfo={miscInfo}
         currencyExchange={currencyExchange}
         currencySymbol={currencySymbol}
       />
       <RenderTitle text={name} />
       <ColorSwitch colorsMap={colorsMap} setSelectedColorIndex={setSelectedColorIndex} />
-      <RenderPromotionalMessage isPlcc={isPlcc} text={loyaltyPromotionMessage} />
+      {loyaltyPromotionMessage ? (
+        <PromotionalMessage
+          isPlcc={isPlcc}
+          text={loyaltyPromotionMessage}
+          height="24px"
+          marginTop={12}
+        />
+      ) : null}
       <AddToBagContainer>
         <CustomButton
           fill="BLUE"
@@ -112,11 +110,13 @@ RenderTopBadge1.propTypes = TextProps;
 
 const ImageSection = ({ item, selectedColorIndex, onGoToPDPPage }) => {
   return (
-    <ImageCarousel
-      item={item}
-      selectedColorIndex={selectedColorIndex}
-      onGoToPDPPage={onGoToPDPPage}
-    />
+    <ImageSectionContainer>
+      <ImageCarousel
+        item={item}
+        selectedColorIndex={selectedColorIndex}
+        onGoToPDPPage={onGoToPDPPage}
+      />
+    </ImageSectionContainer>
   );
 };
 
@@ -139,41 +139,35 @@ const RenderBadge2 = ({ text }) => {
 RenderBadge2.propTypes = TextProps;
 
 const RenderPricesSection = values => {
-  const {
-    miscInfo,
-    currencyExchange,
-    currencySymbol,
-    onFavorite,
-    favoriteIconColor,
-    favoriteIconSize,
-  } = values;
+  const { miscInfo, currencyExchange, currencySymbol, onFavorite } = values;
   const { badge3, listPrice, offerPrice } = miscInfo;
   // calculate default list price
-  const listPriceForColor = `${currencySymbol}${listPrice * currencyExchange[0].exchangevalue}`;
+  const listPriceForColor = `${currencySymbol}${(
+    listPrice * currencyExchange[0].exchangevalue
+  ).toFixed(2)}`;
   // calculate default offer price
-  const offerPriceForColor = `${currencySymbol}${offerPrice * currencyExchange[0].exchangevalue}`;
+  const offerPriceForColor = `${currencySymbol}${(
+    offerPrice * currencyExchange[0].exchangevalue
+  ).toFixed(2)}`;
   return (
     <PricesSection>
       <OfferPriceAndFavoriteIconContainer>
-        <ListPrice accessibilityRole="text" accessibilityLabel={`list price ${listPriceForColor}`}>
-          {listPriceForColor}
+        <ListPrice accessibilityRole="text" accessibilityLabel={`list price ${offerPriceForColor}`}>
+          {offerPriceForColor}
         </ListPrice>
         <FavoriteIconContainer accessibilityRole="imagebutton" accessibilityLabel="favorite icon">
-          <CustomIcon
-            name={ICON_NAME.favorite}
-            size={favoriteIconSize}
-            color={favoriteIconColor}
-            onPress={onFavorite}
-          />
+          <CustomIcon name={ICON_NAME.favorite} size="fs21" color="gray.600" onPress={onFavorite} />
         </FavoriteIconContainer>
       </OfferPriceAndFavoriteIconContainer>
       <OfferPriceAndBadge3Container>
-        <ListOfferPrice
-          accessibilityRole="text"
-          accessibilityLabel={`offer price ${offerPriceForColor}`}
-        >
-          {offerPriceForColor}
-        </ListOfferPrice>
+        {listPriceForColor !== offerPriceForColor && (
+          <ListOfferPrice
+            accessibilityRole="text"
+            accessibilityLabel={`offer price ${listPriceForColor}`}
+          >
+            {listPriceForColor}
+          </ListOfferPrice>
+        )}
         <Badge3Text accessible={badge3 !== ''} accessibilityRole="text" accessibilityLabel={badge3}>
           {badge3}
         </Badge3Text>
@@ -193,23 +187,6 @@ const RenderTitle = ({ text }) => {
 };
 
 RenderTitle.propTypes = TextProps;
-
-const RenderPromotionalMessage = ({ text, isPlcc }) => {
-  return (
-    <PromotionalMessageContainer>
-      <PromotionalMessage isPlcc={isPlcc} accessibilityRole="text" numberOfLines={2}>
-        {text && getFormattedLoyaltyText(text)[0]}
-        {text && (
-          <PromotionalMessagePostfix>
-            {` on${getFormattedLoyaltyText(text)[1]}`}
-          </PromotionalMessagePostfix>
-        )}
-      </PromotionalMessage>
-    </PromotionalMessageContainer>
-  );
-};
-
-RenderPromotionalMessage.propTypes = { ...TextProps, isPlcc: PropTypes.bool };
 
 ListItem.propTypes = {
   theme: PropTypes.shape({}),
@@ -236,9 +213,5 @@ ListItem.defaultProps = {
   isPlcc: false,
 };
 
-RenderPromotionalMessage.defaultProps = {
-  isPlcc: false,
-};
-
-export default withStyles(withTheme(ListItem), styles);
+export default withStyles(ListItem, styles);
 export { ListItem as ListItemVanilla };

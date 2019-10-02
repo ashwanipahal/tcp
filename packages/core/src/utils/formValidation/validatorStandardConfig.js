@@ -1,3 +1,4 @@
+/* eslint max-lines: ["error", 500] */
 const enterPhoneNumber = 'lbl_err_phonenumber_required';
 const validPhoneNumber = 'lbl_err_phonenumber_phone';
 const validStreetAddress = 'lbl_err_validstreetaddress';
@@ -5,6 +6,17 @@ const validExpirationDate = 'lbl_err_validexpirationedate';
 const ssnMessage = 'lbl_err_ssnumber_ssn';
 
 export const formValidationMessages = {
+  gender: {
+    required: 'lbl_err_gender_required',
+  },
+  childName: {
+    nonEmpty: 'lbl_err_name_nonempty',
+    name: 'lbl_err_name_name',
+    maxLength: 'lbl_err_name_maxlength',
+  },
+  acceptAddChildAgreement: {
+    required: 'lbl_err_accept_tna_required',
+  },
   addressLine1: {
     required: validStreetAddress,
     address: 'lbl_err_addressline1_address',
@@ -88,6 +100,9 @@ export const formValidationMessages = {
     required: 'lbl_err_confirmemailaddress_required',
     matchEmail: 'lbl_err_confirmemailaddress_matchemail',
   },
+  legacyPassword: {
+    required: 'lbl_err_req',
+  },
   password: {
     required: 'lbl_err_password_required',
     password: 'lbl_err_password_password',
@@ -151,9 +166,41 @@ export const formValidationMessages = {
     phone: validPhoneNumber,
     notEqualTo: 'lbl_err_altphonenumber_notequalto',
   },
+  storeNumber: {
+    required: 'lbl_err_store_number_required',
+    maxLength: 'lbl_err_store_number_invalid',
+    number: 'lbl_err_store_number_invalid',
+  },
+  registerNumber: {
+    required: 'lbl_err_register_number_required',
+    maxLength: 'lbl_err_register_number_invalid',
+    number: 'lbl_err_register_number_invalid',
+  },
+  transactionNumber: {
+    required: 'lbl_err_transaction_number_required',
+    maxLength: 'lbl_err_transaction_number_invalid',
+    number: 'lbl_err_transaction_number_invalid',
+  },
+  transactionDate: {
+    required: 'lbl_err_transaction_date_required',
+  },
+  orderDate: {
+    required: 'lbl_err_order_date_required',
+  },
 };
 
 export const formValidationRules = {
+  gender: {
+    required: true,
+  },
+  childName: {
+    nonEmpty: true,
+    name: true,
+    maxLength: 50,
+  },
+  acceptAddChildAgreement: {
+    required: true,
+  },
   addressLine1: {
     required: true,
     address: true,
@@ -343,6 +390,27 @@ export const formValidationRules = {
     notEqualTo: {
       linkedFields: ['phoneNumberWithAlt'],
     },
+  },
+  storeNumber: {
+    required: true,
+    maxLength: 4,
+    number: true,
+  },
+  registerNumber: {
+    required: true,
+    maxLength: 2,
+    number: true,
+  },
+  transactionNumber: {
+    required: true,
+    maxLength: 4,
+    number: true,
+  },
+  orderDate: {
+    required: true,
+  },
+  transactionDate: {
+    required: true,
   },
 };
 

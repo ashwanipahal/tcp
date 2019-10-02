@@ -1,6 +1,6 @@
 import { executeStatefulAPICall } from '../../../handler';
 import endpoints from '../../../endpoints';
-import { getSiteId } from '../../../../utils/utils.web';
+import { getSiteId } from '../../../../utils';
 import { API_CONFIG } from '../../../config';
 
 export const errorHandler = err => {
@@ -20,9 +20,13 @@ const getStatusCodeRes = (returnCode, body, args) => {
     const { address } = body;
     switch (body.returnCode) {
       case '02':
-        return { status: 'PENDING' };
+        return {
+          status: 'PENDING',
+        };
       case '04':
-        return { status: 'TIMEOUT' };
+        return {
+          status: 'TIMEOUT',
+        };
       case '01':
         return {
           onFileCardId: body.xCardId.toString(),
@@ -54,9 +58,13 @@ const getStatusCodeRes = (returnCode, body, args) => {
           discount: parseFloat(body.percentOff), // '30%' but we'll need to calculate on it, so parseFloat
         };
       case '13007':
-        return { status: 'INVALID_PRESCREEN_CODE' };
+        return {
+          status: 'INVALID_PRESCREEN_CODE',
+        };
       default:
-        return { status: 'ERROR' };
+        return {
+          status: 'ERROR',
+        };
     }
   }
   return false;

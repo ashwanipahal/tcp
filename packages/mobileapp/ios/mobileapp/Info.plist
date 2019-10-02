@@ -46,6 +46,7 @@
 	<key>UIAppFonts</key>
 	<array>
 		<string>FontAwesome.ttf</string>
+		<string>icomoon.ttf</string>
 		<string>Montserrat-Black.ttf</string>
 		<string>Montserrat.ttf</string>
 		<string>Montserrat-SemiBold.ttf</string>
@@ -66,5 +67,25 @@
 	</array>
 	<key>UIViewControllerBasedStatusBarAppearance</key>
 	<false/>
+  <key>CFBundleURLTypes</key>
+  <array>
+    <dict>
+      <key>CFBundleURLSchemes</key>
+      <array>
+        <string>fb512065309359521</string>
+      </array>
+    </dict>
+  </array>
+  <key>FacebookAppID</key>
+  <string>512065309359521</string>
+  <key>FacebookDisplayName</key>
+  <string>My Place</string>
+  <key>LSApplicationQueriesSchemes</key>
+  <array>
+    <string>fbapi</string>
+    <string>fb-messenger-share-api</string>
+    <string>fbauth2</string>
+    <string>fbshareextension</string>
+  </array>
 </dict>
 </plist>

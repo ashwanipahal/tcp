@@ -26,7 +26,10 @@ const mapStateToProps = state => {
   const { Footer } = state;
   const {
     global: {
-      footerDefault: { CONNECT_WITH_US: connectWithUsLabel, REFERENCE_ID: referenceID } = {},
+      footerDefault: {
+        lbl_footerDefault_connectwithus: connectWithUsLabel,
+        lbl_footerDefault_referenceId: referenceID,
+      } = {},
       emailSignup: emailSignupLabels,
       smsSignup: smsSignupLabels,
       referAFriend: referAFriendButtonLabels,

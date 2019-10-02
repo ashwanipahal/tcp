@@ -1,0 +1,3 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Facebook login should render the FaceBook component correctly  1`] = `<Fragment />`;

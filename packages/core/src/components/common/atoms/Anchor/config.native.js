@@ -3,8 +3,8 @@
  */
 const config = {
   URL_PATTERN: {
-    CATEGORY_LANDING: '/c/',
-    PRODUCT_LIST: '/p/',
+    CATEGORY_LANDING: '/c',
+    PRODUCT_LIST: '/p',
   },
 };
 

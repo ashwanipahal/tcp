@@ -2,13 +2,11 @@
 /* eslint-disable no-else-return */
 import React from 'react';
 import PropTypes from 'prop-types';
-import ApplyRewardsCreditCardStyle from '../styles/ApplyCardPage.style';
-import PLCCForm from '../molecules/Form/PLCCForm';
-import {
-  ApplicationInProgress,
-  ApprovedPLCCApplicationView,
-  ExistingPLCCUserView,
-} from '../molecules';
+import ApplyRewardsCreditCardStyle from '../style/ApplyCardPage.style';
+import PLCCForm from '../molecules/Form/PLCCForm/PLCCForm';
+import ApplicationInProgress from '../molecules/Common/UnderProgressApplication';
+import ApprovedPLCCApplicationView from '../molecules/Common/ApprovedPLCCApplication';
+import ExistingPLCCUserView from '../molecules/Common/ExistingPLCCUser';
 import constants from '../RewardsCard.constants';
 
 const getApplyCardLayoutView = (
@@ -21,7 +19,8 @@ const getApplyCardLayoutView = (
   isGuest,
   plccUser,
   profileInfo,
-  approvedPLCCData
+  approvedPLCCData,
+  resetPLCCApplicationStatus
 ) => {
   if (applicationStatus === constants.APPLICATION_STATE_EXISTING) {
     return (
@@ -30,6 +29,7 @@ const getApplyCardLayoutView = (
         labels={labels}
         existingCustomerDetails={plccData && plccData.plcc_existing_customer_details}
         isPLCCModalFlow={isPLCCModalFlow}
+        resetPLCCResponse={resetPLCCApplicationStatus}
       />
     );
   } else if (applicationStatus === constants.APPLICATION_STATE_PENDING && !plccUser) {
@@ -38,6 +38,7 @@ const getApplyCardLayoutView = (
         bagItems={bagItems}
         labels={labels}
         isPLCCModalFlow={isPLCCModalFlow}
+        resetPLCCResponse={resetPLCCApplicationStatus}
       />
     );
   } else if (applicationStatus === constants.APPLICATION_STATE_APPROVED) {
@@ -49,6 +50,7 @@ const getApplyCardLayoutView = (
         plccData={plccData}
         isPLCCModalFlow={isPLCCModalFlow}
         approvedPLCCData={approvedPLCCData}
+        resetPLCCResponse={resetPLCCApplicationStatus}
       />
     );
   } else {
@@ -56,6 +58,7 @@ const getApplyCardLayoutView = (
       <PLCCForm
         plccData={plccData}
         labels={labels}
+        bagItems={bagItems}
         isPLCCModalFlow={isPLCCModalFlow}
         onSubmit={submitPLCCForm}
         initialValues={profileInfo}
@@ -75,6 +78,7 @@ const ApplyCardLayoutView = ({
   isGuest,
   profileInfo,
   approvedPLCCData,
+  resetPLCCApplicationStatus,
 }) => {
   return (
     <ApplyRewardsCreditCardStyle isPLCCModalFlow={isPLCCModalFlow}>
@@ -88,7 +92,8 @@ const ApplyCardLayoutView = ({
         isGuest,
         plccUser,
         profileInfo,
-        approvedPLCCData
+        approvedPLCCData,
+        resetPLCCApplicationStatus
       )}
     </ApplyRewardsCreditCardStyle>
   );
@@ -105,6 +110,7 @@ ApplyCardLayoutView.propTypes = {
   approvedPLCCData: PropTypes.shape({}).isRequired,
   isGuest: PropTypes.bool.isRequired,
   bagItems: PropTypes.bool.isRequired,
+  resetPLCCApplicationStatus: PropTypes.func.isRequired,
 };
 
 export default ApplyCardLayoutView;

@@ -15,7 +15,8 @@ const Abstractor = {
       body: {
         id: CANDID_API_KEY,
         tag: 'gallery',
-        pageSize: 20,
+        // pageSize value needs to be configured. Hardcoded value is a temporary fix.
+        pageSize: 40,
         approvalFilter: 'Approved',
         sort: 'Date',
         cache: true,

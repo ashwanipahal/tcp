@@ -20,6 +20,7 @@ import {
   getRequiredCategoryData,
   getPlpCutomizersFromUrlQueryString,
 } from './ProductListing.util';
+import { isSearched } from '../../SearchDetail/container/SearchDetail.util';
 import PAGES from '../../../../../constants/pages.constants';
 import {
   getLastLoadedPageNumber,
@@ -359,39 +360,42 @@ export default class ProductsOperator {
       : '';
   };
 
-  getProductsListingInfo = ({
-    state,
-    filtersAndSort,
-    pageNumber,
-    // TODO - fix this for mobile APP - location needs to be defined
-    location = window.location, // TODO - this is the prod code - location = routingInfoStoreView.getHistory(this.store.getState()).location,
-    startProductCount,
-    numberOfProducts,
+  isPageSearch = location => {
+    return location.pathname.includes('search') ? isSearched() : isSearch();
+  };
+
+  isMatchSearch = (isSearchPage, searchTerm, location) => {
+    return isSearchPage ? searchTerm : matchValue(isSearchPage, location.pathname);
+  };
+
+  getSeoForSearch = (isSearchPage, match) => {
+    return isSearchPage ? match : getSeoKeywordOrCategoryIdOrSearchTerm(match);
+  };
+
+  getBucketingSeqConfig = (isSearchPage, bucketingSeqConfig) => {
+    return isSearchPage ? {} : bucketingSeqConfig;
+  };
+
+  checkUnbxdLogic = isSearchPage => {
+    return isSearchPage ? false : this.shouldApplyUnbxdLogic;
+  };
+
+  getPlpBucketDetails = ({
+    bucketingSeqConfigArg,
+    categoryNameList,
     categoryPathMap,
     catNameL3,
+    isUnbxdSequencing,
+    navigationTree,
+    categoryIdArg,
+    clickedL2,
+    isSearchPage,
   }) => {
-    const isSearchPage = isSearch(); // const isSearchPage = routingStoreView.getCurrentPageId(state) === PAGES.search.id;
-    const match = matchValue(isSearchPage, location.pathname);
-    const categoryKey = getCategoryKey(isSearchPage, match);
-    const navigationTree = state.Navigation.navigationData;
-    const categoryNameList = findCategoryIdandName(navigationTree, categoryKey).reverse();
-    const breadCrumb = getBreadCrumb(categoryNameList);
-    const currentCatId = getCurrentCatId(breadCrumb);
-    const excludeBage = this.isExportBadge(currentCatId, navigationTree);
-    const isUnbxdSequencing = !isSearchPage; /* && abTestingStoreView.getIsUnbxdSequencing(state, match.params.listingKey) */
-    const hasShortImage = this.shortImage(isSearchPage, currentCatId, navigationTree);
     let requiredChildren;
-    let categoryId;
-    const clickedL2 = categoryNameList[1];
-    const clickedl1 = categoryNameList[0];
-    const bucketingSeqConfig = {};
 
-    if (isRequiredL2L1(isUnbxdSequencing, this.shouldApplyUnbxdLogic)) {
-      bucketingSeqConfig.desiredL2 = getDesiredNav(clickedL2);
-      bucketingSeqConfig.desiredl1 = getDesiredNav(clickedl1);
-    }
-
-    if (this.shouldApplyUnbxdLogic) {
+    const bucketingSeqConfig = bucketingSeqConfigArg;
+    let categoryId = categoryIdArg;
+    if (this.checkUnbxdLogic(isSearchPage)) {
       bucketingSeqConfig.requiredChildren = this.bucketingConfig.availableL3;
       bucketingSeqConfig.bucketingRequired = this.bucketingConfig.bucketingSeqScenario;
       bucketingSeqConfig.desiredL3 = getDesiredL3(catNameL3, this.bucketingConfig); // Fix me: Make catNameL3 available for all getProductsListingInfo calls.
@@ -414,15 +418,77 @@ export default class ProductsOperator {
       }
       categoryId = getCatId(categoryNameList);
     }
+    return { bucketingSeqConfig, categoryId };
+  };
+
+  getProductsListingFilters({ state, asPath, pageNumber, formData }) {
+    const filtersAndSort = formData || getPlpCutomizersFromUrlQueryString(asPath);
+    return this.getProductsListingInfo({
+      state,
+      filtersAndSort,
+      pageNumber,
+      location: window.location,
+    });
+  }
+
+  getProductsListingInfo = ({
+    state,
+    filtersAndSort,
+    pageNumber,
+    // TODO - fix this for mobile APP - location needs to be defined
+    location = window.location, // TODO - this is the prod code - location = routingInfoStoreView.getHistory(this.store.getState()).location,
+    startProductCount,
+    numberOfProducts,
+    categoryPathMap,
+    catNameL3,
+  }) => {
+    const isSearchPage = this.isPageSearch(location);
+    const searchTerm = location.pathname.substr(11);
+    const match = this.isMatchSearch(isSearchPage, searchTerm, location);
+    const categoryKey = getCategoryKey(isSearchPage, match);
+    const navigationTree = state.Navigation.navigationData;
+    const categoryNameList = findCategoryIdandName(navigationTree, categoryKey).reverse();
+    const breadCrumb = getBreadCrumb(categoryNameList);
+    const currentCatId = getCurrentCatId(breadCrumb);
+    const excludeBage = this.isExportBadge(currentCatId, navigationTree);
+    const isUnbxdSequencing = !isSearchPage; /* && abTestingStoreView.getIsUnbxdSequencing(state, match.params.listingKey) */
+    const hasShortImage = this.shortImage(isSearchPage, currentCatId, navigationTree);
+    let categoryId;
+    const clickedL2 = categoryNameList[1];
+    const clickedl1 = categoryNameList[0];
+    const bucketingSeqConfig = {};
+    let filteredBucketingSeqConfig = {};
+
+    if (!isSearchPage) {
+      if (isRequiredL2L1(isUnbxdSequencing, this.checkUnbxdLogic(isSearchPage))) {
+        bucketingSeqConfig.desiredL2 = getDesiredNav(clickedL2);
+        bucketingSeqConfig.desiredl1 = getDesiredNav(clickedl1);
+      }
+
+      filteredBucketingSeqConfig = this.getPlpBucketDetails({
+        bucketingSeqConfigArg: bucketingSeqConfig,
+        categoryNameList,
+        categoryPathMap,
+        catNameL3,
+        isUnbxdSequencing,
+        navigationTree,
+        categoryIdArg: categoryId,
+        clickedL2,
+      });
+    }
+
     return {
-      seoKeywordOrCategoryIdOrSearchTerm: getSeoKeywordOrCategoryIdOrSearchTerm(match),
+      seoKeywordOrCategoryIdOrSearchTerm: this.getSeoForSearch(isSearchPage, match),
       isSearch: isSearchPage,
       filtersAndSort,
       pageNumber,
       getImgPath: this.getImgPath,
-      categoryId,
+      categoryId: filteredBucketingSeqConfig.categoryId,
       breadCrumbs: breadCrumb,
-      bucketingSeqConfig,
+      bucketingSeqConfig: this.getBucketingSeqConfig(
+        isSearchPage,
+        filteredBucketingSeqConfig.bucketingSeqConfig
+      ),
       getFacetSwatchImgPath: this.getFacetSwatchImgPath,
       isUnbxdSequencing,
       excludeBadge: excludeBage,
@@ -430,7 +496,7 @@ export default class ProductsOperator {
       numberOfProducts,
       cacheFiltersAndCount: false,
       extraParams: '',
-      shouldApplyUnbxdLogic: this.shouldApplyUnbxdLogic,
+      shouldApplyUnbxdLogic: this.checkUnbxdLogic(isSearchPage),
       hasShortImage,
       categoryNameList,
     };
@@ -444,7 +510,7 @@ export default class ProductsOperator {
     ({ ...this.bucketingConfig } = { ...updatedBucketingConfig });
   };
 
-  getProductsListingMoreProducts(state) {
+  getProductsListingMoreProducts(state, location) {
     // if (isOnSeoPlp()) return Promise.resolve(); // scrolling is only supported on pages intended for human users, not for crawlers
     const lastLoadedPageNumber = getLastLoadedPageNumber(state);
     if (lastLoadedPageNumber >= getMaxPageNumber(state)) {
@@ -460,6 +526,7 @@ export default class ProductsOperator {
       state,
       filtersAndSort: appliedFiltersAndSort,
       pageNumber: lastLoadedPageNumber + 1,
+      location,
     });
   }
 
@@ -469,7 +536,7 @@ export default class ProductsOperator {
    *          we need to trigger multiple L3 calls on the basis of what all L3's are left in this.bucketingConfig.L3left variable.
    */
 
-  getMoreBucketedProducts = state => {
+  getMoreBucketedProducts = (state, location) => {
     // if (isOnSeoPlp()) return Promise.resolve(); // scrolling is only supported on pages intended for human users, not for crawlers
     // const state = this.store.getState();
     const sort = getAppliedSortId(state) || '';
@@ -500,6 +567,6 @@ export default class ProductsOperator {
         categoryPathMap,
       });
     }
-    return this.getProductsListingMoreProducts(state);
+    return this.getProductsListingMoreProducts(state, location);
   };
 }

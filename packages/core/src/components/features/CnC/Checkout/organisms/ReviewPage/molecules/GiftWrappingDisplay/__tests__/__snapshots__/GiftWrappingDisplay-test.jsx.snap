@@ -1,0 +1,79 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`GiftWrappingDisplay component should renders correctly props are present 1`] = `
+<div
+  className=""
+>
+  <div
+    className="gift-wrapping-container"
+  >
+    <Styled(BodyCopy)
+      className={null}
+      color="gray.900"
+      component="p"
+      dataLocator="gift-wrapping-title"
+      fontFamily="secondary"
+      fontSize="fs16"
+      fontWeight="extrabold"
+      letterSpacing="normal"
+      lineHeight="normal"
+      link={null}
+      textAlign="left"
+    >
+      title
+    </Styled(BodyCopy)>
+    <Styled(BodyCopy)
+      className={null}
+      color="gray.900"
+      component="p"
+      dataLocator="gift-wrapping-name"
+      fontFamily="secondary"
+      fontSize="fs16"
+      fontWeight="regular"
+      letterSpacing="normal"
+      lineHeight="normal"
+      link={null}
+      textAlign="left"
+    >
+      Free
+    </Styled(BodyCopy)>
+  </div>
+</div>
+`;
+
+exports[`GiftWrappingDisplay component should renders correctly props not present 1`] = `
+<div
+  className=""
+>
+  <div
+    className="gift-wrapping-container"
+  >
+    <Styled(BodyCopy)
+      className={null}
+      color="gray.900"
+      component="p"
+      dataLocator="gift-wrapping-title"
+      fontFamily="secondary"
+      fontSize="fs16"
+      fontWeight="extrabold"
+      letterSpacing="normal"
+      lineHeight="normal"
+      link={null}
+      textAlign="left"
+    />
+    <Styled(BodyCopy)
+      className={null}
+      color="gray.900"
+      component="p"
+      dataLocator="gift-wrapping-name"
+      fontFamily="secondary"
+      fontSize="fs16"
+      fontWeight="regular"
+      letterSpacing="normal"
+      lineHeight="normal"
+      link={null}
+      textAlign="left"
+    />
+  </div>
+</div>
+`;

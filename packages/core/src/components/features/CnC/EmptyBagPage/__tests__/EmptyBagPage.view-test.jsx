@@ -39,6 +39,27 @@ describe('EmptyBagPage component with false', () => {
     expect(component).toMatchSnapshot();
   });
 });
+
+describe('EmptyBagPage component with false', () => {
+  it('should renders correctly for SFL', () => {
+    const props = {
+      isUserLoggedIn: false,
+      className: '',
+      isBagPageSflSection: true,
+      bagLabels: {
+        guestUserMsg: '',
+        login: '',
+        shopNow: '',
+        loggedInMsg: '',
+        emptySflMsg1: 'Not ready to buy anything yet?',
+        emptySflMsg2: 'You can save it for later and it will appear in this area.',
+      },
+    };
+    const component = shallow(<EmptyBagPageVanilla {...props} />);
+    expect(component).toMatchSnapshot();
+  });
+});
+
 describe('EmptyBagPage component click simulation', () => {
   it('should renders correctly with click', () => {
     const props = {

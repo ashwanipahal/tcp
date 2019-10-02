@@ -5,7 +5,7 @@ import { getFormValues } from 'redux-form';
 import { PropTypes } from 'prop-types';
 import ProductListing from '../views';
 import { getPlpProducts, getMorePlpProducts } from './ProductListing.actions';
-import { openPickupModalWithValues } from '../../../../common/organisms/PickupStoreModal/container/PickUpStoreModal.actions';
+import { openQuickViewWithValues } from '../../../../common/organisms/QuickViewModal/container/QuickViewModal.actions';
 import { processBreadCrumbs, getProductsAndTitleBlocks } from './ProductListing.util';
 import {
   getProductsSelect,
@@ -22,9 +22,11 @@ import {
   getTotalProductsCount,
   getAppliedFilters,
   getAppliedSortId,
+  getLabels,
 } from './ProductListing.selectors';
 import submitProductListingFiltersForm from './productListingOnSubmitHandler';
 import { isPlccUser } from '../../../account/User/container/User.selectors';
+import getSortLabels from '../molecules/SortSelector/views/Sort.selectors';
 
 class ProductListingContainer extends React.PureComponent {
   componentDidMount() {
@@ -72,8 +74,10 @@ class ProductListingContainer extends React.PureComponent {
       categoryId,
       getProducts,
       onSubmit,
-      onPickUpOpenClick,
+      onQuickViewOpenClick,
       formValues,
+      sortLabels,
+      slpLabels,
       ...otherProps
     } = this.props;
     return (
@@ -95,8 +99,10 @@ class ProductListingContainer extends React.PureComponent {
         lastLoadedPageNumber={lastLoadedPageNumber}
         getProducts={getProducts}
         onSubmit={onSubmit}
-        onPickUpOpenClick={onPickUpOpenClick}
+        onQuickViewOpenClick={onQuickViewOpenClick}
         formValues={formValues}
+        sortLabels={sortLabels}
+        slpLabels={slpLabels}
         {...otherProps}
       />
     );
@@ -145,6 +151,8 @@ function mapStateToProps(state) {
     // Need to pass form values in as prop so we can compare current values to previous values
     formValues: getFormValues('filter-form')(state),
     isPlcc: isPlccUser(state),
+    sortLabels: getSortLabels(state),
+    slpLabels: getLabels(state),
   };
 }
 
@@ -153,8 +161,8 @@ function mapDispatchToProps(dispatch) {
     getProducts: payload => {
       dispatch(getPlpProducts(payload));
     },
-    onPickUpOpenClick: payload => {
-      dispatch(openPickupModalWithValues(payload));
+    onQuickViewOpenClick: payload => {
+      dispatch(openQuickViewWithValues(payload));
     },
     getMoreProducts: payload => {
       dispatch(getMorePlpProducts(payload));
@@ -166,7 +174,7 @@ function mapDispatchToProps(dispatch) {
 
 ProductListingContainer.propTypes = {
   getProducts: PropTypes.func.isRequired,
-  onPickUpOpenClick: PropTypes.func.isRequired,
+  onQuickViewOpenClick: PropTypes.func.isRequired,
   getMoreProducts: PropTypes.func.isRequired,
   productsBlock: PropTypes.arrayOf(PropTypes.shape({})),
   categoryId: PropTypes.string.isRequired,
@@ -189,6 +197,8 @@ ProductListingContainer.propTypes = {
   formValues: PropTypes.shape({
     sort: PropTypes.string.isRequired,
   }).isRequired,
+  sortLabels: PropTypes.arrayOf(PropTypes.shape({})),
+  slpLabels: PropTypes.objectOf(PropTypes.oneOfType([PropTypes.string])),
 };
 
 ProductListingContainer.defaultProps = {
@@ -206,6 +216,8 @@ ProductListingContainer.defaultProps = {
   labelsFilter: {},
   isLoadingMore: false,
   lastLoadedPageNumber: 0,
+  sortLabels: [],
+  slpLabels: {},
 };
 
 export default withRouter(

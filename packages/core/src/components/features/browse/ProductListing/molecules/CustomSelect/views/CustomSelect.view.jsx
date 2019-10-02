@@ -38,12 +38,14 @@ import BodyCopy from '../../../../../../common/atoms/BodyCopy';
 import withStyles from '../../../../../../common/hoc/withStyles';
 import CustomSelectStyle from '../CustomSelect.style';
 import { getLocator } from '../../../../../../../utils';
+import { keyboard } from '../../../../../../../../../web/src/constants/constants';
 
 // TODO Fix This import {ErrorMessage, ERROR_FORM_NAME_DATA_ATTRIBUTE} from '../ErrorMessage.jsx';
 // TODO Fix This import warning from 'warning';
 
 const UNSELECTED_VALUE = '';
 const UNSELECTED_ARRAY_VALUE = [];
+const { KEY_ENTER, KEY_SPACE, KEY_ESCAPE, KEY_UP, KEY_DOWN, KEY_HOME_KEY, KEY_END_KEY } = keyboard;
 
 // returns the index (or indices) of the item(s) with the given value(s) in the given optionsMap
 function getIndexOrIndicesOfValue(optionsMap, valueOrValues) {
@@ -344,7 +346,7 @@ class CustomSelect extends React.Component {
       input: { value },
     } = this.props;
 
-    if (event.button !== 0) return; // ignore clicks not on the main (left) mouse button
+    if (event.button !== 0 && event.keyCode !== KEY_ENTER) return; // ignore clicks not on the main (left) mouse button
     if (!optionsMap[clickedItemIndex].disabled) {
       // ignore clicks on disabled items
       this.setHighlightedIndex(clickedItemIndex); // make the clicked item highlighted
@@ -418,33 +420,37 @@ class CustomSelect extends React.Component {
   }
 
   // handles key presses for this component
+  // eslint-disable-next-line complexity
   handleKeyDown(event) {
-    const { disabled } = this.props;
+    const { disabled, isSortOpenModal } = this.props;
     const { expanded } = this.state;
+
     if (disabled) return; // ignore everything if this component is disabled
     switch (event.keyCode) {
-      case 13: // enter
+      case KEY_ENTER: // enter
         if (!expanded) return;
+        if (!isSortOpenModal) return;
         this.selectHighlightedItem(); // the user selected the currently highlighted item
         break;
-      case 27: // escape
+
+      case KEY_ESCAPE: // escape
         this.handleEscapeKeyEvent(this.state, this.props);
 
         break;
-      case 32: // space
+      case KEY_SPACE: // space
         this.handleSpaceKeyEvent(this.state);
 
         break;
-      case 38: // up
+      case KEY_UP: // up
         this.moveHighlightOrExpand('up');
         break;
-      case 40: // down
+      case KEY_DOWN: // down
         this.moveHighlightOrExpand('down');
         break;
-      case 35: // end key
+      case KEY_END_KEY: // end key
         this.moveHighlightOrExpand('end');
         break;
-      case 36: // home key
+      case KEY_HOME_KEY: // home key
         this.moveHighlightOrExpand('start');
         break;
       default:

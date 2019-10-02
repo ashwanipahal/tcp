@@ -2,9 +2,13 @@ import { Map, fromJS } from 'immutable';
 import EarnExtraPointsReducer from '../EarnExtraPointsTile.reducer';
 import EARNEXTRAPOINTS_CONSTANTS from '../../EarnExtraPointsTile.constants';
 
-describe('Account Navigation reducer', () => {
-  it('should return empty Account Navigation as default state', () => {
+describe('earn Extra Points reducer', () => {
+  it('should return empty earn Extra Points reducer as default state', () => {
     expect(EarnExtraPointsReducer(undefined, {}).get('earnExtraPointsData')).toBeNull();
+  });
+
+  it('should return empty earned Points Notification Data as default state', () => {
+    expect(EarnExtraPointsReducer(undefined, {}).get('earnedPointsNotificationData')).toBeNull();
   });
 
   it('should return List object for the earnExtraPointsData if state is passed as an array', () => {
@@ -30,5 +34,26 @@ describe('Account Navigation reducer', () => {
       payload,
     });
     expect(updatedState.get('earnExtraPointsData')).toEqual(payload);
+  });
+
+  it('should handle default earned Points Notification Data', () => {
+    const payload = [
+      {
+        pointAwardedDate: '09/17/19',
+        pointTransactionType: 'Credit',
+        pointsEarned: 1,
+        transactionDate: '09/17/19',
+        transactionType: 'non-transactional',
+        transactionTypeName: 'AddBirthDate',
+      },
+    ];
+    const initialState = fromJS({
+      earnedPointsNotificationData: null,
+    });
+    const updatedState = EarnExtraPointsReducer(initialState, {
+      type: EARNEXTRAPOINTS_CONSTANTS.SET_EARNEDPOINTS_NOTIFICATION,
+      payload,
+    });
+    expect(updatedState.get('earnedPointsNotificationData')).toEqual(payload);
   });
 });

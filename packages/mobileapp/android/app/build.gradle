@@ -241,6 +241,9 @@ android {
 }
 
 dependencies {
+    implementation project(':react-native-fbsdk')
+    implementation project(':react-native-view-shot')
+    implementation project(':react-native-print')
     implementation project(':react-native-cookies')
     implementation project(':react-native-config')
     implementation project(':react-native-touch-id')
@@ -262,7 +265,7 @@ task copyDownloadableDepsToLibs(type: Copy) {
 }
 
 project.ext.vectoricons = [
-    iconFontNames: [ 'FontAwesome.ttf' ] // Name of the font files you want to copy
+    iconFontNames: [ 'FontAwesome.ttf', 'icomoon.ttf' ] // Name of the font files you want to copy
 ]
 
 apply from: "../../node_modules/react-native-vector-icons/fonts.gradle"

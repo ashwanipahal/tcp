@@ -50,3 +50,83 @@ exports[`MyFavoriteStore Component MyFavoriteStore should render correctly 1`] =
   }
 />
 `;
+
+exports[`MyFavoriteStore Component should renders correctly when isMyPreferences is false 1`] = `
+<StyledComponent
+  defaultStore="34334"
+  forwardedComponent={
+    Object {
+      "$$typeof": Symbol(react.forward_ref),
+      "attrs": Array [],
+      "componentStyle": ComponentStyle {
+        "componentId": "sc-EHOje",
+        "isStatic": true,
+        "rules": Array [
+          "
+  ",
+          "
+  .favStoreData {
+    padding: 0;
+  }
+  .capFirstLetter {
+    text-transform: capitalize;
+  }
+",
+          ";
+",
+        ],
+      },
+      "displayName": "Styled(MyFavoriteStore)",
+      "foldedComponentIds": Array [],
+      "render": [Function],
+      "styledComponentId": "sc-EHOje",
+      "target": [Function],
+      "toString": [Function],
+      "warnTooManyClasses": [Function],
+      "withComponent": [Function],
+    }
+  }
+  forwardedRef={null}
+  isMyPreferences={false}
+/>
+`;
+
+exports[`MyFavoriteStore Component should renders correctly when isMyPreferences is present 1`] = `
+<StyledComponent
+  defaultStore="12313"
+  forwardedComponent={
+    Object {
+      "$$typeof": Symbol(react.forward_ref),
+      "attrs": Array [],
+      "componentStyle": ComponentStyle {
+        "componentId": "sc-EHOje",
+        "isStatic": true,
+        "rules": Array [
+          "
+  ",
+          "
+  .favStoreData {
+    padding: 0;
+  }
+  .capFirstLetter {
+    text-transform: capitalize;
+  }
+",
+          ";
+",
+        ],
+      },
+      "displayName": "Styled(MyFavoriteStore)",
+      "foldedComponentIds": Array [],
+      "render": [Function],
+      "styledComponentId": "sc-EHOje",
+      "target": [Function],
+      "toString": [Function],
+      "warnTooManyClasses": [Function],
+      "withComponent": [Function],
+    }
+  }
+  forwardedRef={null}
+  isMyPreferences={true}
+/>
+`;

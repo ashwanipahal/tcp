@@ -1,8 +1,18 @@
 import React from 'react';
 import { PropTypes } from 'prop-types';
-
+import { configureInternalNavigationFromCMSUrl } from '../../../../../utils';
+import Anchor from '../../Anchor';
 import withStyles from '../../../hoc/withStyles';
 import styles from '../BodyCopy.style';
+
+const renderComponent = compProps => {
+  const { Component, className, dataLocator, children, ...others } = compProps;
+  return (
+    <Component className={className} data-locator={dataLocator} {...others}>
+      {children}
+    </Component>
+  );
+};
 
 const BodyCopy = props => {
   const {
@@ -17,14 +27,69 @@ const BodyCopy = props => {
     textAlign,
     color,
     dataLocator,
+    link,
     ...others
   } = props;
+
+  const compProps = {
+    Component,
+    className,
+    dataLocator,
+    children,
+    ...others,
+  };
+  if (!link) {
+    return renderComponent(compProps);
+  }
+
+  const { url: ctaUrl, target, title, actualUrl, className: ctaClassName } = link;
+
+  let to = actualUrl;
+  if (!actualUrl) {
+    to = configureInternalNavigationFromCMSUrl(ctaUrl);
+  }
+
   return (
-    <Component className={className} data-locator={dataLocator} {...others}>
-      {children}
-    </Component>
+    <Anchor
+      className={ctaClassName}
+      to={to}
+      asPath={ctaUrl}
+      target={target}
+      title={title}
+      dataLocator={`${dataLocator}-link`}
+    >
+      {renderComponent(compProps)}
+    </Anchor>
   );
 };
+
+const fontFamilyPropTypes = PropTypes.oneOf(['primary', 'secondary']);
+const fontWeightPropTypes = PropTypes.oneOf(['regular', 'semibold', 'extrabold', 'black']);
+const letterSpacingPropTypes = PropTypes.oneOf(['ls271', 'ls257', 'ls222', 'ls167', 'normal']);
+const textAlignPropTypes = PropTypes.oneOf(['left', 'center', 'right']);
+const colorPropTypes = PropTypes.oneOf([
+  'text.primary',
+  'text.secondary',
+  'text.hint',
+  'text.disabled',
+  'white',
+]);
+const fontSizesPropTypes = PropTypes.oneOf([
+  'fs48',
+  'fs42',
+  'fs36',
+  'fs32',
+  'fs28',
+  'fs24',
+  'fs22',
+  'fs18',
+  'fs16',
+  'fs15',
+  'fs14',
+  'fs12',
+  'fs10',
+  'fs9',
+]);
 
 BodyCopy.defaultProps = {
   component: 'p',
@@ -37,48 +102,30 @@ BodyCopy.defaultProps = {
   letterSpacing: 'normal',
   textAlign: 'left',
   color: 'text.primary',
+  link: null,
 };
 
 BodyCopy.propTypes = {
   component: PropTypes.elementType,
   className: PropTypes.string,
   children: PropTypes.node,
-  // TODO: Need fix unused/proptypes eslint error
-  /* eslint-disable */
-  fontFamily: PropTypes.oneOfType([PropTypes.Array, PropTypes.oneOf(['primary', 'secondary'])]),
-  fontSize: PropTypes.oneOfType([
-    PropTypes.Array,
-    PropTypes.oneOf([
-      'fs48',
-      'fs42',
-      'fs36',
-      'fs32',
-      'fs28',
-      'fs24',
-      'fs22',
-      'fs18',
-      'fs16',
-      'fs14',
-      'fs12',
-      'fs10',
-    ]),
-  ]),
-  fontWeight: PropTypes.oneOfType([
-    PropTypes.Array,
-    PropTypes.oneOf(['regular', 'semibold', 'extrabold', 'black']),
-  ]),
+  fontFamily: PropTypes.oneOfType([PropTypes.arrayOf(fontFamilyPropTypes), fontFamilyPropTypes]),
+  fontSize: PropTypes.oneOfType([PropTypes.arrayOf(fontSizesPropTypes), fontSizesPropTypes]),
+  fontWeight: PropTypes.oneOfType([PropTypes.arrayOf(fontWeightPropTypes), fontWeightPropTypes]),
   lineHeight: PropTypes.oneOf(['normal']),
   letterSpacing: PropTypes.oneOfType([
-    PropTypes.Array,
-    PropTypes.oneOf(['ls271', 'ls257', 'ls222', 'ls167', 'normal']),
+    PropTypes.arrayOf(letterSpacingPropTypes),
+    letterSpacingPropTypes,
   ]),
-  textAlign: PropTypes.oneOfType([PropTypes.Array, PropTypes.oneOf(['left', 'center', 'right'])]),
-  color: PropTypes.oneOfType([
-    PropTypes.Array,
-    PropTypes.oneOf(['text.primary', 'text.secondary', 'text.hint', 'text.disabled', 'white']),
-  ]),
+  textAlign: PropTypes.oneOfType([PropTypes.arrayOf(textAlignPropTypes), textAlignPropTypes]),
+  color: PropTypes.oneOfType([PropTypes.arrayOf(colorPropTypes), colorPropTypes]),
   dataLocator: PropTypes.string,
-  /* eslint-enable */
+  link: PropTypes.shape({
+    url: PropTypes.string.isRequired,
+    title: PropTypes.string.isRequired,
+    target: PropTypes.string,
+    text: PropTypes.string,
+  }),
 };
 
 const StyledBodyCopy = withStyles(BodyCopy, styles);

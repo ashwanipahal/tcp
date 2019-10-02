@@ -37,7 +37,6 @@ const ReviewCreditCardInformation = ({ isPLCCModalFlow = false, creditCardHeader
 };
 
 ReviewCreditCardInformation.propTypes = {
-  labels: PropTypes.shape({}).isRequired,
   creditCardHeader: PropTypes.string.isRequired,
   isPLCCModalFlow: PropTypes.bool.isRequired,
 };

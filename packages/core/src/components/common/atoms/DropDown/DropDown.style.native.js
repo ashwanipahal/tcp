@@ -1,21 +1,36 @@
 import styled, { css } from 'styled-components/native';
 
+const getSecondaryVariation = props => {
+  return `${
+    props.dropDownStyle.lightBorder
+      ? `border-bottom-width: ${props.dropDownStyle.border}px; border-bottom-color: ${
+          props.theme.colors.FOOTER.DIVIDER
+        }`
+      : `border-bottom-width: ${props.dropDownStyle.border}px; border-bottom-color: ${
+          props.theme.colors.BLACK
+        }`
+  }`;
+};
+
 const DropDownStyle = css`
   height: ${props => props.dropDownStyle.height}px;
   ${props =>
     props.variation === 'primary'
       ? `border: ${props.dropDownStyle.border}px solid ${props.theme.colors.BUTTON.WHITE.BORDER}`
-      : `border-bottom-width: ${props.dropDownStyle.border}px; border-bottom-color: ${
-          props.theme.colors.BLACK
-        }`};
+      : getSecondaryVariation(props)};
   background-color: ${props =>
-    props.variation === 'primary'
+    props.variation === 'primary' || props.bgColor
       ? props.theme.colorPalette.gray[500]
       : props.theme.colorPalette.white};
+  width: 100%;
 `;
 
 const HeaderContainer = styled.View`
   margin-right: ${props => props.theme.spacing.ELEM_SPACING.SM};
+`;
+
+const HeaderItemContainer = styled.View`
+  width: 95%;
 `;
 
 const Row = styled.TouchableOpacity`
@@ -60,6 +75,11 @@ const StyledLabel = styled.Text`
       ? props.theme.typography.fontWeights.regular
       : props.theme.typography.fontWeights.extrabold};
 `;
+const SelectedLabelView = styled.View`
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+`;
 
 export {
   DropDownStyle,
@@ -70,4 +90,6 @@ export {
   Separator,
   FlatList,
   StyledLabel,
+  SelectedLabelView,
+  HeaderItemContainer,
 };

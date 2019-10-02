@@ -1,5 +1,5 @@
 import { createSelector } from 'reselect';
-import { getErrorSelector } from '../../../../../../utils';
+import { getErrorSelector } from '../../../../../../utils/utils';
 
 export const getAddGiftCardResponse = state => {
   return state.AddGiftCardReducer.get('showUpdatedNotification');

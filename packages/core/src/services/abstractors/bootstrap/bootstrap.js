@@ -16,32 +16,26 @@ import { setDataInRedis } from '../../../utils/redis.util';
  * Asynchronous function to fetch data from service for given array of moduleIds
  * @param {String} page Page name to be loaded, needs to be in sync with GraphQL query
  */
-const fetchBootstrapData = async ({ pages, labels, brand, country, channel }, modules) => {
-  /**
-   * Config Responsible for making all the http requests that need to be resolved before loading the application
-   *  -   Header
-   *  -   Footer
-   *  -   Labels
-   *  -   Navigation
-   */
-  const bootstrapModules = modules || ['labels', 'header', 'footer', 'navigation'];
+const fetchBootstrapData = async ({ page, labels, brand, country, channel }, bootstrapModules) => {
   /**
    * Sets up query params for page requests
    */
-  const pageBootstrapParams = pages.map(page => ({
-    name: 'layout',
-    data: {
-      path: page,
-      brand,
-      country,
-      channel,
-    },
-  }));
+  const pageBootstrapParams = page
+    ? {
+        name: 'layout',
+        data: {
+          path: page,
+          brand,
+          country,
+          channel,
+        },
+      }
+    : {};
 
   /**
-   * Sets up query params for modules requests
+   * Sets up query params for global modules requests - (labels, header, footer, navigation)
    */
-  const modulesBootstrapParams = bootstrapModules.map(module => {
+  const globalBootstrapParams = bootstrapModules.map(module => {
     let data = {};
     switch (module) {
       case 'labels':
@@ -77,7 +71,7 @@ const fetchBootstrapData = async ({ pages, labels, brand, country, channel }, mo
         };
         break;
       default:
-        data = pages;
+        data = page;
     }
 
     return {
@@ -85,7 +79,10 @@ const fetchBootstrapData = async ({ pages, labels, brand, country, channel }, mo
       data,
     };
   });
-  const bootstrapParams = [...pageBootstrapParams, ...modulesBootstrapParams];
+  const bootstrapParams = globalBootstrapParams;
+  if (pageBootstrapParams.data) {
+    bootstrapParams.push(pageBootstrapParams);
+  }
   return handler.fetchModuleDataFromGraphQL(bootstrapParams).then(response => response.data);
 };
 
@@ -143,26 +140,43 @@ export const retrieveCachedData = ({ cachedData, key, bootstrapData }) => {
  *  -   Header
  *  -   Footer
  *  -   Labels
- * @param {Array} pages
+ * @param {String} pageName
+ * @param {module} Array ['header', 'footer', 'layout', 'navigation']
  */
-const bootstrap = async (pages, modules, cachedData) => {
+const bootstrap = async (pageName = '', modules, cachedData) => {
   const response = {};
-  const bootstrapParams = { pages, ...createBootstrapParams() };
+
+  const bootstrapParams = { page: pageName, ...createBootstrapParams() };
+
+  /**
+   * Config Responsible for making all the http requests that need to be resolved before loading the application
+   *  -   Header
+   *  -   Footer
+   *  -   Labels
+   *  -   Navigation
+   */
+  const bootstrapModules = modules || ['labels', 'header', 'footer', 'navigation'];
 
   try {
-    const bootstrapData = await fetchBootstrapData(bootstrapParams, modules);
-    for (let i = 0; i < pages.length; i += 1) {
-      const page = pages[i];
-      // eslint-disable-next-line no-await-in-loop
-      response[page] = bootstrapData[page];
+    logger.info('Executing Bootstrap Query for global modules: ', bootstrapModules);
+    logger.debug('Executing Bootstrap Query with params: ', bootstrapParams, pageName);
+    const bootstrapData = await fetchBootstrapData(bootstrapParams, bootstrapModules);
+    logger.info('Bootstrap Query Executed Successfully');
+    logger.debug('Bootstrap Query Result: ', bootstrapData);
+    const fetchCachedDataParams = { bootstrapData, cachedData };
+
+    if (pageName) {
+      response[pageName] = bootstrapData[pageName];
+      logger.info('Executing Modules Query with params: ', bootstrapData[pageName], pageName);
+      response.modules =
+        bootstrapData[pageName] &&
+        (await layoutAbstractor.getModulesFromLayout(
+          retrieveCachedData({ ...fetchCachedDataParams, key: pageName })
+        ));
+      logger.info('Modules Query Executed Successfully');
+      logger.debug('Modules Query Result: ', response.modules);
     }
 
-    const fetchCachedDataParams = { bootstrapData, cachedData };
-    response.modules =
-      bootstrapData.homepage &&
-      (await layoutAbstractor.processData(
-        retrieveCachedData({ ...fetchCachedDataParams, key: 'homepage' })
-      ));
     response.header = headerAbstractor.processData(
       retrieveCachedData({ ...fetchCachedDataParams, key: 'header' })
     );

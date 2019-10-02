@@ -16,6 +16,7 @@ describe('HomePageView', () => {
       navigation: {
         getParam: () => false,
       },
+      loadNavigationData: () => {},
     };
     component = shallow(<HomePageView {...props} />);
   });

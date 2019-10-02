@@ -1,0 +1,90 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`NativeDropDown native should render correctly should match snapshot for android 1`] = `
+<View>
+  <Styled(CustomButton)
+    active={false}
+    bottomBorderOnly={true}
+    buttonVariation="mobileApp-filter"
+    color=""
+    customStyle={Object {}}
+    customTextStyle={
+      Object {
+        "fontSize": 16,
+        "lineHeight": 0,
+      }
+    }
+    data-locator="pdp_quantity"
+    disableButton={false}
+    fill=""
+    fullWidth=""
+    iconColor="gray.800"
+    iconName="chevron-down"
+    iconSize="fs12"
+    locator=""
+    navigation={Object {}}
+    onPress={[Function]}
+    selected={false}
+    selectedIcon="chevron-up"
+    showIcon={true}
+    text={null}
+    theme={Object {}}
+    type="button"
+    url=""
+  />
+  <Component
+    animationType="slide"
+    hardwareAccelerated={false}
+    transparent={true}
+    visible={false}
+  >
+    <Styled(SafeAreaView)>
+      <Styled(TouchableWithoutFeedback)
+        accessibilityRole="button"
+        activeOpacity={1}
+        onPressOut={[Function]}
+      >
+        <Styled(View) />
+      </Styled(TouchableWithoutFeedback)>
+      <Styled(View)>
+        <Styled(View)>
+          <Button
+            accessibilityLabel="done"
+            accessibilityRole="button"
+            onPress={[Function]}
+            title="Done"
+          />
+        </Styled(View)>
+        <Picker
+          mode="dialog"
+          onValueChange={[Function]}
+          selectedValue={null}
+        >
+          <PickerItem
+            label="Test"
+            value="123"
+          />
+        </Picker>
+      </Styled(View)>
+    </Styled(SafeAreaView)>
+  </Component>
+</View>
+`;
+
+exports[`NativeDropDown native should render correctly should match snapshot for ios 1`] = `
+<Styled(View)
+  androidPickerStyle={null}
+  width={null}
+>
+  <Picker
+    mode="dialog"
+    onValueChange={[Function]}
+    selectedValue={null}
+  >
+    <PickerItem
+      label="Test"
+      value="123"
+    />
+  </Picker>
+</Styled(View)>
+`;

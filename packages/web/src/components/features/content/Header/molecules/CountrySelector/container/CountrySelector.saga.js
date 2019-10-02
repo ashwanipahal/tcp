@@ -9,6 +9,7 @@ import {
   getModifiedLanguageCode,
   siteRedirect,
   languageRedirect,
+  isGymboree,
 } from '@tcp/core/src/utils';
 import { API_CONFIG } from '@tcp/core/src/services/config';
 import endpoints from '@tcp/core/src/services/endpoints';
@@ -52,14 +53,25 @@ export function* fetchCountryListData() {
 export function* submitCountrySelectionData({ payload: data }) {
   try {
     const { ca } = sites;
-    const siteConfig =
-      data.country === ca.countryCode ? API_CONFIG.CA_CONFIG_OPTIONS : API_CONFIG.US_CONFIG_OPTIONS;
+    const {
+      CATALOGID_CONFIG: { TCP, Gymboree },
+      CA_CONFIG_OPTIONS,
+      US_CONFIG_OPTIONS,
+    } = API_CONFIG;
+    const storeId =
+      data.country === ca.countryCode ? CA_CONFIG_OPTIONS.storeId : US_CONFIG_OPTIONS.storeId;
+    let catalogId;
+    if (isGymboree()) {
+      catalogId = data.country === ca.countryCode ? Gymboree.Canada : Gymboree.USA;
+    } else {
+      catalogId = data.country === ca.countryCode ? TCP.Canada : TCP.USA;
+    }
     const { addShipToStore } = endpoints;
     const { sitesInfo } = API_CONFIG;
     const payload = {
       body: {
-        storeId: siteConfig.storeId,
-        catalogId: siteConfig.catalogId,
+        storeId,
+        catalogId,
         langId: sitesInfo.langId,
         ccd: data.country,
         languageTCP: getModifiedLanguageCode(data.language),

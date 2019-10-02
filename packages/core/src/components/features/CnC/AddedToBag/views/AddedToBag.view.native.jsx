@@ -48,6 +48,7 @@ const AddedToBag = ({
             navigation={navigation}
             closeModal={onRequestClose}
             showAddTobag
+            fromAddedToBagModal
           />
           <BossBanner labels={labels} />
           <StyledAnchorWrapper>

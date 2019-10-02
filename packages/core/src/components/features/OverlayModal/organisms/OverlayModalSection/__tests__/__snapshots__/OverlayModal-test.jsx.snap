@@ -7,7 +7,7 @@ exports[`OverlayModal should render correctly 1`] = `
   id="modalWrapper"
 >
   <div
-    className="dialog__content"
+    className="dialog__content undefined"
     id="dialogContent"
   >
     <button
@@ -15,7 +15,7 @@ exports[`OverlayModal should render correctly 1`] = `
       onClick={[Function]}
     />
     <div
-      className="modal__triangle hide-on-mobile "
+      className="modal__triangle hide-on-mobile undefined"
       id="modalTriangle"
     />
     <div

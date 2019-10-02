@@ -13,6 +13,7 @@ export const ChangePassword = ({
   errorMessage,
   onSubmit,
   formErrorMessage,
+  changeErrorMessage,
 }) => {
   return (
     <React.Fragment>
@@ -54,6 +55,7 @@ export const ChangePassword = ({
         errorMessage={errorMessage}
         onSubmit={onSubmit}
         formErrorMessage={formErrorMessage}
+        changeErrorMessage={changeErrorMessage}
       />
     </React.Fragment>
   );
@@ -69,6 +71,7 @@ ChangePassword.propTypes = {
   errorMessage: PropTypes.string.isRequired,
   onSubmit: PropTypes.func.isRequired,
   formErrorMessage: PropTypes.shape({}).isRequired,
+  changeErrorMessage: PropTypes.string.isRequired,
 };
 
 ChangePassword.defaultProps = {

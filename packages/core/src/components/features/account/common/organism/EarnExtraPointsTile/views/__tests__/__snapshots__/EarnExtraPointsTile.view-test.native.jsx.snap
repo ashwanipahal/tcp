@@ -1,0 +1,99 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Earn Extra Points Tile app component  should render Earn Extra Points Tile app component Correctly 1`] = `
+<View>
+  <Styled(View)>
+    <Styled(BodyCopy)
+      accessibilityText=""
+      component="div"
+      data-locator="earnExtraPointsHeading"
+      dataLocator=""
+      fontFamily="secondary"
+      fontSize="fs16"
+      fontWeight="extrabold"
+      margin={null}
+      numberOfLines={null}
+      text="Earn Extra Points"
+      textDecoration={null}
+    />
+    <Styled(Anchor)
+      accessibilityLabel=""
+      anchorVariation="primary"
+      colorName={null}
+      customStyle={Object {}}
+      data-locator="earnExtraPointsViewAll"
+      fontSizeVariation="medium"
+      locator=""
+      onPress={[Function]}
+      text="View All"
+      underline={true}
+      visible={false}
+    />
+  </Styled(View)>
+  <Styled(View)>
+    <View>
+      <WithTheme(SnapCarousel)
+        autoplay={false}
+        darkArrow={true}
+        data={
+          Array [
+            Object {
+              "activityCode": "AppDownload",
+              "activityTitle": "Earn 5 Points",
+              "description": "Download & Log in to our App",
+              "displayOrder": 1,
+              "iconImage": "/wcsstore/static/images/download-app.jpg",
+            },
+          ]
+        }
+        height={220}
+        options={
+          Object {
+            "enableSnap": true,
+            "loop": false,
+          }
+        }
+        renderItem={[Function]}
+        showDots={true}
+        variation="show-arrow"
+        width={720}
+      />
+    </View>
+  </Styled(View)>
+</View>
+`;
+
+exports[`Earn Extra Points Tile app component  should render Earn Extra Points Tile component Correctly in account overview 1`] = `
+<View>
+  <Styled(View)>
+    <View>
+      <WithTheme(SnapCarousel)
+        autoplay={false}
+        darkArrow={true}
+        data={
+          Array [
+            Object {
+              "activityCode": "App",
+              "activityTitle": "Earn 15 Points",
+              "description": "Download our App",
+              "displayOrder": 1,
+              "iconImage": "/wcsstore/static/images/download-app.jpg",
+            },
+          ]
+        }
+        height={220}
+        options={
+          Object {
+            "enableSnap": true,
+            "loop": false,
+          }
+        }
+        renderItem={[Function]}
+        showDots={true}
+        variation="show-arrow"
+        width={670}
+      />
+    </View>
+  </Styled(View)>
+</View>
+`;

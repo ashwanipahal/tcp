@@ -67,9 +67,6 @@ const ModuleO = props => {
         isPLPredesign
         isKeepAliveKillSwitch={false}
         labels={labels}
-        dataLocatorImages="moduleO_image"
-        dataLocatorBag="moduleO_add_to_bag_btn"
-        dataLocatorPrice="moduleO_price"
         hideImageCarousel
       />
     </ul>
@@ -115,7 +112,7 @@ ModuleO.defaultProps = {
   onPickUpOpenClick: () => {},
   onColorChange: () => {},
   isBopisEnabled: false,
-  unbxdId: 'fc0d2287-4a11-4739-98b4-1e2fd91016c4',
+  unbxdId: '',
   onProductCardHover: () => {},
   isBopisEnabledForClearance: false,
   onQuickBopisOpenClick: () => {},

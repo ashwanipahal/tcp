@@ -46,7 +46,7 @@ exports[`CartItemTile common component renders correctly 1`] = `
   rightActionActivationDistance={125}
   rightActionReleaseAnimationConfig={null}
   rightActionReleaseAnimationFn={null}
-  rightButtonWidth={200}
+  rightButtonWidth={240}
   rightButtons={
     Array [
       <ForwardRef>
@@ -108,11 +108,16 @@ exports[`CartItemTile common component renders correctly 1`] = `
 >
   <Styled(View)>
     <Styled(View) />
-    <Styled(View)>
-      <Styled(View)>
+    <Styled(View)
+      showOnReviewPage={true}
+    >
+      <Styled(View)
+        showOnReviewPage={true}
+      >
         <View>
           <Styled(Image)
             data-locator="cartItemImage"
+            showOnReviewPage={true}
             source={
               Object {
                 "uri": "https://test4.childrensplace.comundefined",
@@ -122,8 +127,11 @@ exports[`CartItemTile common component renders correctly 1`] = `
         </View>
       </Styled(View)>
       <Styled(View)>
-        <Styled(View)>
+        <Styled(View)
+          showOnReviewPage={true}
+        >
           <Styled(BodyCopy)
+            accessibilityText=""
             dataLocator="cartItemTitle"
             fontFamily="secondary"
             fontSize="fs14"
@@ -132,91 +140,135 @@ exports[`CartItemTile common component renders correctly 1`] = `
                 "semibold",
               ]
             }
+            margin={null}
+            numberOfLines={null}
             text="Boys Basic Skinny Jeans"
+            textDecoration={null}
           />
         </Styled(View)>
         <Styled(View)>
           <Styled(View)>
             <Styled(View)>
               <Styled(BodyCopy)
+                accessibilityText=""
+                dataLocator=""
                 fontSize="fs13"
                 fontWeight={
                   Array [
                     "semibold",
                   ]
                 }
+                margin={null}
+                numberOfLines={null}
                 text="Design: "
                 textAlign="left"
+                textDecoration={null}
               />
             </Styled(View)>
             <Styled(BodyCopy)
+              accessibilityText=""
               color="gray.800"
               dataLocator="cartItemColor"
               fontFamily="secondary"
               fontSize="fs13"
+              margin={null}
+              numberOfLines={null}
+              textDecoration={null}
             />
           </Styled(View)>
           <Styled(View)>
-            <Styled(View)>
+            <Styled(View)
+              showOnReviewPage={true}
+            >
               <Styled(BodyCopy)
+                accessibilityText=""
+                dataLocator=""
                 fontSize="fs13"
                 fontWeight={
                   Array [
                     "semibold",
                   ]
                 }
+                margin={null}
+                numberOfLines={null}
                 text="undefined: "
                 textAlign="left"
+                textDecoration={null}
               />
             </Styled(View)>
             <Styled(BodyCopy)
+              accessibilityText=""
               color="gray.800"
               dataLocator="cartItemSize"
               fontFamily="secondary"
               fontSize="fs13"
+              margin={null}
+              numberOfLines={null}
               text="1 "
+              textDecoration={null}
             />
             <Styled(BodyCopy)
+              accessibilityText=""
               color="gray.800"
+              dataLocator=""
               fontFamily="secondary"
               fontSize="fs13"
+              margin={null}
+              numberOfLines={null}
               text="regular"
+              textDecoration={null}
             />
           </Styled(View)>
           <Styled(View)>
             <Styled(View)>
               <Styled(BodyCopy)
+                accessibilityText=""
+                dataLocator=""
                 fontSize="fs13"
                 fontWeight={
                   Array [
                     "semibold",
                   ]
                 }
+                margin={null}
+                numberOfLines={null}
                 text="Qty: "
                 textAlign="left"
+                textDecoration={null}
               />
             </Styled(View)>
             <Styled(BodyCopy)
+              accessibilityText=""
               color="gray.800"
+              dataLocator=""
               fontFamily="secondary"
               fontSize="fs13"
+              margin={null}
+              numberOfLines={null}
               text="1"
+              textDecoration={null}
             />
           </Styled(View)>
           <Styled(View)>
             <Styled(View)>
               <Styled(BodyCopy)
+                accessibilityText=""
+                dataLocator=""
                 fontSize="fs13"
                 fontWeight={
                   Array [
                     "semibold",
                   ]
                 }
+                margin={null}
+                numberOfLines={null}
                 text="Price: "
                 textAlign="left"
+                textDecoration={null}
               />
             </Styled(View)>
             <Styled(BodyCopy)
+              accessibilityText=""
               dataLocator="cartItemPrice"
               fontSize="fs13"
               fontWeight={
@@ -224,53 +276,74 @@ exports[`CartItemTile common component renders correctly 1`] = `
                   "semibold",
                 ]
               }
-              text="$123"
+              margin={null}
+              numberOfLines={null}
+              text="undefined123"
               textAlign="left"
+              textDecoration={null}
             />
             <Styled(View)>
               <Styled(BodyCopy)
+                accessibilityText=""
                 color="gray.800"
+                dataLocator=""
                 fontFamily="secondary"
                 fontSize="fs13"
-                text="$undefined"
+                margin={null}
+                numberOfLines={null}
+                text="undefinedundefined"
+                textDecoration={null}
               />
             </Styled(View)>
           </Styled(View)>
           <Styled(View)>
             <Styled(View)>
               <Styled(BodyCopy)
+                accessibilityText=""
+                dataLocator=""
                 fontSize="fs13"
                 fontWeight={
                   Array [
                     "semibold",
                   ]
                 }
+                margin={null}
+                numberOfLines={null}
                 text="undefined: "
                 textAlign="left"
+                textDecoration={null}
               />
             </Styled(View)>
             <Styled(BodyCopy)
+              accessibilityText=""
               color="orange.800"
               dataLocator="cartItemPoints"
               fontFamily="secondary"
               fontSize="fs13"
+              margin={null}
+              numberOfLines={null}
               text={123}
+              textDecoration={null}
             />
           </Styled(View)>
         </Styled(View)>
-        <Styled(TouchableOpacity)
-          onPress={[Function]}
-        >
-          <Styled(BodyCopy)
-            color="gray.900"
-            dataLocator="cartItemEditLink"
-            fontFamily="secondary"
-            fontSize="fs12"
-            textDecorationLine="underline"
-          />
-        </Styled(TouchableOpacity)>
       </Styled(View)>
     </Styled(View)>
+    <Styled(TouchableOpacity)
+      onPress={[Function]}
+    >
+      <Styled(BodyCopy)
+        accessibilityText=""
+        color="gray.900"
+        dataLocator="cartItemEditLink"
+        fontFamily="secondary"
+        fontSize="fs12"
+        margin={null}
+        numberOfLines={null}
+        textDecoration={null}
+        textDecorationLine="underline"
+      />
+    </Styled(TouchableOpacity)>
     <CartItemRadioButtons
       index={0}
       labels={
@@ -288,6 +361,7 @@ exports[`CartItemTile common component renders correctly 1`] = `
           "itemInfo": Object {
             "fit": "regular",
             "isGiftItem": true,
+            "itemBrand": "TCP",
             "myPlacePoints": 123,
             "name": "Boys Basic Skinny Jeans",
             "price": 123,
@@ -297,9 +371,704 @@ exports[`CartItemTile common component renders correctly 1`] = `
           "miscInfo": Object {
             "badge": "",
           },
+          "productInfo": Object {
+            "skuId": "123",
+          },
         }
       }
     />
+  </Styled(View)>
+</Swipeable>
+`;
+
+exports[`CartItemTile common component renders correctly with Save for later enabled 1`] = `
+<Swipeable
+  leftActionActivationDistance={125}
+  leftActionReleaseAnimationConfig={null}
+  leftActionReleaseAnimationFn={null}
+  leftButtonWidth={75}
+  leftButtons={
+    Array [
+      null,
+    ]
+  }
+  leftButtonsActivationDistance={75}
+  leftButtonsCloseReleaseAnimationConfig={null}
+  leftButtonsCloseReleaseAnimationFn={null}
+  leftButtonsOpenReleaseAnimationConfig={null}
+  leftButtonsOpenReleaseAnimationFn={null}
+  leftContent={null}
+  onLeftActionActivate={[Function]}
+  onLeftActionComplete={[Function]}
+  onLeftActionDeactivate={[Function]}
+  onLeftActionRelease={[Function]}
+  onLeftButtonsActivate={[Function]}
+  onLeftButtonsCloseComplete={[Function]}
+  onLeftButtonsCloseRelease={[Function]}
+  onLeftButtonsDeactivate={[Function]}
+  onLeftButtonsOpenComplete={[Function]}
+  onLeftButtonsOpenRelease={[Function]}
+  onPanAnimatedValueRef={[Function]}
+  onRef={[Function]}
+  onRightActionActivate={[Function]}
+  onRightActionComplete={[Function]}
+  onRightActionDeactivate={[Function]}
+  onRightActionRelease={[Function]}
+  onRightButtonsActivate={[Function]}
+  onRightButtonsCloseComplete={[Function]}
+  onRightButtonsCloseRelease={[Function]}
+  onRightButtonsDeactivate={[Function]}
+  onRightButtonsOpenComplete={[Function]}
+  onRightButtonsOpenRelease={[Function]}
+  onSwipeComplete={[Function]}
+  onSwipeMove={[Function]}
+  onSwipeRelease={[Function]}
+  onSwipeStart={[Function]}
+  rightActionActivationDistance={125}
+  rightActionReleaseAnimationConfig={null}
+  rightActionReleaseAnimationFn={null}
+  rightButtonWidth={240}
+  rightButtons={
+    Array [
+      <ForwardRef>
+        <View>
+          <ForwardRef
+            alt=""
+            data-locator="cartItemEditLink"
+            height="58px"
+            host=""
+            source={
+              Object {
+                "testUri": "../../../../core/src/assets/edit-icon.png",
+              }
+            }
+            url=""
+            width="58px"
+          />
+          <ForwardRef />
+        </View>
+        <ForwardRef
+          onPress={[Function]}
+        >
+          <ForwardRef
+            alt=""
+            data-locator="save-for-later-link"
+            height="58px"
+            host=""
+            source={
+              Object {
+                "testUri": "../../../../core/src/assets/sfl-icon.png",
+              }
+            }
+            url=""
+            width="58px"
+          />
+          <ForwardRef />
+        </ForwardRef>
+        <ForwardRef
+          onPress={[Function]}
+        >
+          <ForwardRef
+            alt=""
+            data-locator="cartItemEditLink"
+            height="58px"
+            host=""
+            source={
+              Object {
+                "testUri": "../../../../core/src/assets/delete.png",
+              }
+            }
+            url=""
+            width="58px"
+          />
+          <ForwardRef />
+        </ForwardRef>
+      </ForwardRef>,
+    ]
+  }
+  rightButtonsActivationDistance={75}
+  rightButtonsCloseReleaseAnimationConfig={null}
+  rightButtonsCloseReleaseAnimationFn={null}
+  rightButtonsOpenReleaseAnimationConfig={null}
+  rightButtonsOpenReleaseAnimationFn={null}
+  rightContent={null}
+  swipeReleaseAnimationConfig={
+    Object {
+      "duration": 250,
+      "easing": [Function],
+      "toValue": Object {
+        "x": 0,
+        "y": 0,
+      },
+    }
+  }
+  swipeReleaseAnimationFn={[Function]}
+  swipeStartMinDistance={15}
+>
+  <Styled(View)>
+    <Styled(View) />
+    <Styled(View)
+      showOnReviewPage={true}
+    >
+      <Styled(View)
+        showOnReviewPage={true}
+      >
+        <View>
+          <Styled(Image)
+            data-locator="cartItemImage"
+            showOnReviewPage={true}
+            source={
+              Object {
+                "uri": "https://test4.childrensplace.comundefined",
+              }
+            }
+          />
+        </View>
+      </Styled(View)>
+      <Styled(View)>
+        <Styled(View)
+          showOnReviewPage={true}
+        >
+          <Styled(BodyCopy)
+            accessibilityText=""
+            dataLocator="cartItemTitle"
+            fontFamily="secondary"
+            fontSize="fs14"
+            fontWeight={
+              Array [
+                "semibold",
+              ]
+            }
+            margin={null}
+            numberOfLines={null}
+            text="Boys Basic"
+            textDecoration={null}
+          />
+        </Styled(View)>
+        <Styled(View)>
+          <Styled(View)>
+            <Styled(View)>
+              <Styled(BodyCopy)
+                accessibilityText=""
+                dataLocator=""
+                fontSize="fs13"
+                fontWeight={
+                  Array [
+                    "semibold",
+                  ]
+                }
+                margin={null}
+                numberOfLines={null}
+                text="Design: "
+                textAlign="left"
+                textDecoration={null}
+              />
+            </Styled(View)>
+            <Styled(BodyCopy)
+              accessibilityText=""
+              color="gray.800"
+              dataLocator="cartItemColor"
+              fontFamily="secondary"
+              fontSize="fs13"
+              margin={null}
+              numberOfLines={null}
+              textDecoration={null}
+            />
+          </Styled(View)>
+          <Styled(View)>
+            <Styled(View)
+              showOnReviewPage={true}
+            >
+              <Styled(BodyCopy)
+                accessibilityText=""
+                dataLocator=""
+                fontSize="fs13"
+                fontWeight={
+                  Array [
+                    "semibold",
+                  ]
+                }
+                margin={null}
+                numberOfLines={null}
+                text="undefined: "
+                textAlign="left"
+                textDecoration={null}
+              />
+            </Styled(View)>
+            <Styled(BodyCopy)
+              accessibilityText=""
+              color="gray.800"
+              dataLocator="cartItemSize"
+              fontFamily="secondary"
+              fontSize="fs13"
+              margin={null}
+              numberOfLines={null}
+              text="1 "
+              textDecoration={null}
+            />
+            <Styled(BodyCopy)
+              accessibilityText=""
+              color="gray.800"
+              dataLocator=""
+              fontFamily="secondary"
+              fontSize="fs13"
+              margin={null}
+              numberOfLines={null}
+              text="regular"
+              textDecoration={null}
+            />
+          </Styled(View)>
+          <Styled(View)>
+            <Styled(View)>
+              <Styled(BodyCopy)
+                accessibilityText=""
+                dataLocator=""
+                fontSize="fs13"
+                fontWeight={
+                  Array [
+                    "semibold",
+                  ]
+                }
+                margin={null}
+                numberOfLines={null}
+                text="Qty: "
+                textAlign="left"
+                textDecoration={null}
+              />
+            </Styled(View)>
+            <Styled(BodyCopy)
+              accessibilityText=""
+              color="gray.800"
+              dataLocator=""
+              fontFamily="secondary"
+              fontSize="fs13"
+              margin={null}
+              numberOfLines={null}
+              text="1"
+              textDecoration={null}
+            />
+          </Styled(View)>
+          <Styled(View)>
+            <Styled(View)>
+              <Styled(BodyCopy)
+                accessibilityText=""
+                dataLocator=""
+                fontSize="fs13"
+                fontWeight={
+                  Array [
+                    "semibold",
+                  ]
+                }
+                margin={null}
+                numberOfLines={null}
+                text="Price: "
+                textAlign="left"
+                textDecoration={null}
+              />
+            </Styled(View)>
+            <Styled(BodyCopy)
+              accessibilityText=""
+              dataLocator="cartItemPrice"
+              fontSize="fs13"
+              fontWeight={
+                Array [
+                  "semibold",
+                ]
+              }
+              margin={null}
+              numberOfLines={null}
+              text="undefined123"
+              textAlign="left"
+              textDecoration={null}
+            />
+            <Styled(View)>
+              <Styled(BodyCopy)
+                accessibilityText=""
+                color="gray.800"
+                dataLocator=""
+                fontFamily="secondary"
+                fontSize="fs13"
+                margin={null}
+                numberOfLines={null}
+                text="undefinedundefined"
+                textDecoration={null}
+              />
+            </Styled(View)>
+          </Styled(View)>
+          <Styled(View)>
+            <Styled(View)>
+              <Styled(BodyCopy)
+                accessibilityText=""
+                dataLocator=""
+                fontSize="fs13"
+                fontWeight={
+                  Array [
+                    "semibold",
+                  ]
+                }
+                margin={null}
+                numberOfLines={null}
+                text="undefined: "
+                textAlign="left"
+                textDecoration={null}
+              />
+            </Styled(View)>
+            <Styled(BodyCopy)
+              accessibilityText=""
+              color="orange.800"
+              dataLocator="cartItemPoints"
+              fontFamily="secondary"
+              fontSize="fs13"
+              margin={null}
+              numberOfLines={null}
+              text={123}
+              textDecoration={null}
+            />
+          </Styled(View)>
+        </Styled(View)>
+      </Styled(View)>
+    </Styled(View)>
+    <Styled(TouchableOpacity)
+      onPress={[Function]}
+    >
+      <Styled(BodyCopy)
+        accessibilityText=""
+        color="gray.900"
+        dataLocator="cartItemEditLink"
+        fontFamily="secondary"
+        fontSize="fs12"
+        margin={null}
+        numberOfLines={null}
+        textDecoration={null}
+        textDecorationLine="underline"
+      />
+    </Styled(TouchableOpacity)>
+    <CartItemRadioButtons
+      index={0}
+      labels={
+        Object {
+          "color": "Color",
+          "design": "Design",
+          "price": "Price",
+          "qty": "Qty",
+          "sizeL": "Size",
+        }
+      }
+      openedTile={0}
+      productDetail={
+        Object {
+          "itemInfo": Object {
+            "fit": "regular",
+            "isGiftItem": true,
+            "itemBrand": "TCP",
+            "myPlacePoints": 123,
+            "name": "Boys Basic",
+            "price": 123,
+            "qty": "1",
+            "size": "1",
+          },
+          "miscInfo": Object {
+            "availability": "OK",
+            "badge": "",
+          },
+          "productInfo": Object {
+            "skuId": "123",
+          },
+        }
+      }
+    />
+  </Styled(View)>
+</Swipeable>
+`;
+
+exports[`CartItemTile common component renders correctly with bag page sfl section 1`] = `
+<Swipeable
+  leftActionActivationDistance={125}
+  leftActionReleaseAnimationConfig={null}
+  leftActionReleaseAnimationFn={null}
+  leftButtonWidth={75}
+  leftButtons={
+    Array [
+      null,
+    ]
+  }
+  leftButtonsActivationDistance={75}
+  leftButtonsCloseReleaseAnimationConfig={null}
+  leftButtonsCloseReleaseAnimationFn={null}
+  leftButtonsOpenReleaseAnimationConfig={null}
+  leftButtonsOpenReleaseAnimationFn={null}
+  leftContent={null}
+  onLeftActionActivate={[Function]}
+  onLeftActionComplete={[Function]}
+  onLeftActionDeactivate={[Function]}
+  onLeftActionRelease={[Function]}
+  onLeftButtonsActivate={[Function]}
+  onLeftButtonsCloseComplete={[Function]}
+  onLeftButtonsCloseRelease={[Function]}
+  onLeftButtonsDeactivate={[Function]}
+  onLeftButtonsOpenComplete={[Function]}
+  onLeftButtonsOpenRelease={[Function]}
+  onPanAnimatedValueRef={[Function]}
+  onRef={[Function]}
+  onRightActionActivate={[Function]}
+  onRightActionComplete={[Function]}
+  onRightActionDeactivate={[Function]}
+  onRightActionRelease={[Function]}
+  onRightButtonsActivate={[Function]}
+  onRightButtonsCloseComplete={[Function]}
+  onRightButtonsCloseRelease={[Function]}
+  onRightButtonsDeactivate={[Function]}
+  onRightButtonsOpenComplete={[Function]}
+  onRightButtonsOpenRelease={[Function]}
+  onSwipeComplete={[Function]}
+  onSwipeMove={[Function]}
+  onSwipeRelease={[Function]}
+  onSwipeStart={[Function]}
+  rightActionActivationDistance={125}
+  rightActionReleaseAnimationConfig={null}
+  rightActionReleaseAnimationFn={null}
+  rightButtonWidth={240}
+  rightButtons={
+    Array [
+      <ForwardRef>
+        <View>
+          <ForwardRef
+            alt=""
+            data-locator="cartItemEditLink"
+            height="58px"
+            host=""
+            source={
+              Object {
+                "testUri": "../../../../core/src/assets/edit-icon.png",
+              }
+            }
+            url=""
+            width="58px"
+          />
+          <ForwardRef />
+        </View>
+        <ForwardRef
+          onPress={[Function]}
+        >
+          <ForwardRef
+            alt=""
+            data-locator="cartItemEditLink"
+            height="58px"
+            host=""
+            source={
+              Object {
+                "testUri": "../../../../core/src/assets/delete.png",
+              }
+            }
+            url=""
+            width="58px"
+          />
+          <ForwardRef />
+        </ForwardRef>
+      </ForwardRef>,
+    ]
+  }
+  rightButtonsActivationDistance={75}
+  rightButtonsCloseReleaseAnimationConfig={null}
+  rightButtonsCloseReleaseAnimationFn={null}
+  rightButtonsOpenReleaseAnimationConfig={null}
+  rightButtonsOpenReleaseAnimationFn={null}
+  rightContent={null}
+  swipeReleaseAnimationConfig={
+    Object {
+      "duration": 250,
+      "easing": [Function],
+      "toValue": Object {
+        "x": 0,
+        "y": 0,
+      },
+    }
+  }
+  swipeReleaseAnimationFn={[Function]}
+  swipeStartMinDistance={15}
+>
+  <Styled(View)>
+    <Styled(View) />
+    <Styled(View)
+      showOnReviewPage={true}
+    >
+      <Styled(View)
+        showOnReviewPage={true}
+      >
+        <View>
+          <Styled(Image)
+            data-locator="cartItemImage"
+            showOnReviewPage={true}
+            source={
+              Object {
+                "uri": "https://test4.childrensplace.comundefined",
+              }
+            }
+          />
+        </View>
+      </Styled(View)>
+      <Styled(View)>
+        <Styled(View)
+          showOnReviewPage={true}
+        >
+          <Styled(BodyCopy)
+            accessibilityText=""
+            dataLocator="cartItemTitle"
+            fontFamily="secondary"
+            fontSize="fs14"
+            fontWeight={
+              Array [
+                "semibold",
+              ]
+            }
+            margin={null}
+            numberOfLines={null}
+            text="Boys Basic Skinny Jeans"
+            textDecoration={null}
+          />
+        </Styled(View)>
+        <Styled(TouchableOpacity)
+          onPress={[Function]}
+        >
+          <Styled(ImageComp)
+            alt=""
+            data-locator="heartIcon"
+            height={13}
+            host=""
+            source={
+              Object {
+                "testUri": "../../../../core/src/assets/heart.png",
+              }
+            }
+            url=""
+            width={15}
+          />
+        </Styled(TouchableOpacity)>
+        <Styled(View)>
+          <Styled(View)>
+            <Styled(View)>
+              <Styled(BodyCopy)
+                accessibilityText=""
+                dataLocator=""
+                fontSize="fs13"
+                fontWeight={
+                  Array [
+                    "semibold",
+                  ]
+                }
+                margin={null}
+                numberOfLines={null}
+                text="Design: "
+                textAlign="left"
+                textDecoration={null}
+              />
+            </Styled(View)>
+            <Styled(BodyCopy)
+              accessibilityText=""
+              color="gray.800"
+              dataLocator="cartItemColor"
+              fontFamily="secondary"
+              fontSize="fs13"
+              margin={null}
+              numberOfLines={null}
+              textDecoration={null}
+            />
+          </Styled(View)>
+          <Styled(View)>
+            <Styled(View)
+              showOnReviewPage={true}
+            >
+              <Styled(BodyCopy)
+                accessibilityText=""
+                dataLocator=""
+                fontSize="fs13"
+                fontWeight={
+                  Array [
+                    "semibold",
+                  ]
+                }
+                margin={null}
+                numberOfLines={null}
+                text="undefined: "
+                textAlign="left"
+                textDecoration={null}
+              />
+            </Styled(View)>
+            <Styled(BodyCopy)
+              accessibilityText=""
+              color="gray.800"
+              dataLocator="cartItemSize"
+              fontFamily="secondary"
+              fontSize="fs13"
+              margin={null}
+              numberOfLines={null}
+              text="1 "
+              textDecoration={null}
+            />
+            <Styled(BodyCopy)
+              accessibilityText=""
+              color="gray.800"
+              dataLocator=""
+              fontFamily="secondary"
+              fontSize="fs13"
+              margin={null}
+              numberOfLines={null}
+              text="regular"
+              textDecoration={null}
+            />
+          </Styled(View)>
+          <Styled(View)>
+            <Styled(View)>
+              <Styled(BodyCopy)
+                accessibilityText=""
+                dataLocator=""
+                fontSize="fs13"
+                fontWeight={
+                  Array [
+                    "semibold",
+                  ]
+                }
+                margin={null}
+                numberOfLines={null}
+                text="Price: "
+                textAlign="left"
+                textDecoration={null}
+              />
+            </Styled(View)>
+            <Styled(BodyCopy)
+              accessibilityText=""
+              dataLocator="cartItemPrice"
+              fontSize="fs13"
+              fontWeight={
+                Array [
+                  "semibold",
+                ]
+              }
+              margin={null}
+              numberOfLines={null}
+              text="undefined123"
+              textAlign="left"
+              textDecoration={null}
+            />
+          </Styled(View)>
+        </Styled(View)>
+      </Styled(View)>
+    </Styled(View)>
+    <Styled(TouchableOpacity)
+      onPress={[Function]}
+    >
+      <Styled(BodyCopy)
+        accessibilityText=""
+        color="gray.900"
+        dataLocator="cartItemEditLink"
+        fontFamily="secondary"
+        fontSize="fs12"
+        margin={null}
+        numberOfLines={null}
+        textDecoration={null}
+        textDecorationLine="underline"
+      />
+    </Styled(TouchableOpacity)>
   </Styled(View)>
 </Swipeable>
 `;

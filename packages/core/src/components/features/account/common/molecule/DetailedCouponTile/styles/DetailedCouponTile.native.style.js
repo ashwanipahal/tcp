@@ -51,7 +51,10 @@ const Notification = styled(AbsoluteElement)`
 
 const TileContentWrapper = styled.View`
   justify-content: space-between;
-  border: 1px solid ${props => props.theme.colorPalette.gray[500]};
+
+  border: 1px solid
+    ${props =>
+      props.isError ? props.theme.colorPalette.red[500] : props.theme.colorPalette.gray[500]};
   width: 100%;
   min-height: 390px;
 `;

@@ -23,7 +23,7 @@ export const mapDispatchToProps = dispatch => {
 };
 
 const mapStateToProps = state => {
-  const { ApplyCardPage } = state;
+  const { ApplyCardPage = {} } = state;
   return {
     isModalOpen: getIsModalOpen(state),
     labels: getLabels(state),

@@ -10,6 +10,7 @@ exports[`CouponIcon should render correctly 1`] = `
   fontWeight="black"
   letterSpacing="normal"
   lineHeight="normal"
+  link={null}
   textAlign="center"
 >
   <span>

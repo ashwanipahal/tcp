@@ -1,1 +1,1 @@
-export { default } from './views/FullfillmentSection.view';
+export { default } from './container/FullfillmentSection.container';

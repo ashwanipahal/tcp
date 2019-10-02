@@ -4,6 +4,13 @@ import styled, { css } from 'styled-components/native';
 import { StyledText } from '../../../../../styles/globalStyles/StyledText.style';
 import { BUTTON_VARIATION } from '.';
 
+const getAdditionalStyle = props => {
+  const { margin } = props;
+  return {
+    ...(margin && { margin }),
+  };
+};
+
 const getShape = props => {
   const { theme, noCurve, buttonVariation } = props;
   const { isGymboree } = theme;
@@ -17,11 +24,12 @@ const getShape = props => {
 };
 
 const getMobileAppFilterButtonViewStyle = props => {
-  const { theme, selected, buttonVariation } = props;
+  const { theme, selected, buttonVariation, bottomBorderOnly } = props;
   const { colorPalette, spacing } = theme;
   const bgColor = selected ? colorPalette.gray[900] : 'transparent';
   const borderColor = colorPalette.gray[900];
   const padding = spacing.ELEM_SPACING.XXS;
+
   if (buttonVariation === BUTTON_VARIATION.mobileAppFilter) {
     return `
       min-width: 80px;
@@ -33,6 +41,15 @@ const getMobileAppFilterButtonViewStyle = props => {
       border-radius: 6px;
       justify-content: center;
       align-items: center;
+      ${
+        bottomBorderOnly
+          ? `
+          border-top-width: 0;
+          border-left-width: 0;
+          border-right-width: 0;
+          `
+          : ''
+      };
     `;
   }
   return `
@@ -122,6 +139,7 @@ const getMobileAppFilterIconButtonTextStyle = props => {
 
 const TouchableOpacityComponent = styled.TouchableOpacity`
   flex-direction: row;
+  ${getAdditionalStyle}
 `;
 
 const IconContainer = styled.View`

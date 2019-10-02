@@ -1,0 +1,22 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`InternationalCheckoutVanilla should render InternationalCheckoutVanilla section 1`] = `
+<div>
+  <iframe
+    className="__frame"
+    frameBorder="0"
+    height="0"
+    src="https://stagecheckout.fiftyone.com/utils/empty.jsp"
+    title="internationalCheckout"
+    width="0"
+  />
+  <iframe
+    className="envoyId"
+    frameBorder="0"
+    name="envoy"
+    scrolling="yes"
+    src=""
+    title="internationalCheckout"
+  />
+</div>
+`;

@@ -1,8 +1,13 @@
 /* eslint-disable extra-rules/no-commented-out-code */
 import { call, put, select } from 'redux-saga/effects';
+import logger from '../../../../../utils/loggerInstance';
 import selectors from './Checkout.selector';
-import { setShippingMethodAndAddressId } from '../../../../../services/abstractors/CnC/index';
-
+import {
+  setShippingMethodAndAddressId,
+  briteVerifyStatusExtraction,
+  getVenmoToken,
+} from '../../../../../services/abstractors/CnC/index';
+import emailSignupAbstractor from '../../../../../services/abstractors/common/EmailSmsSignup/EmailSmsSignup';
 import { getUserEmail } from '../../../account/User/container/User.selectors';
 import { getAddressListState } from '../../../account/AddressBook/container/AddressBook.selectors';
 import {
@@ -10,9 +15,16 @@ import {
   updateAddressPut,
 } from '../../../../common/organisms/AddEditAddress/container/AddEditAddress.saga';
 import { getAddressList } from '../../../account/AddressBook/container/AddressBook.saga';
-import { setOnFileAddressKey, setGiftWrap } from './Checkout.action';
+import {
+  setOnFileAddressKey,
+  setGiftWrap,
+  getVenmoClientTokenSuccess,
+  getVenmoClientTokenError,
+  setSmsNumberForUpdates,
+  emailSignupStatus,
+} from './Checkout.action';
 import utility from '../util/utility';
-import { CHECKOUT_ROUTES } from '../Checkout.constants';
+import constants, { CHECKOUT_ROUTES } from '../Checkout.constants';
 import {
   addGiftWrappingOption,
   removeGiftWrappingOption,
@@ -39,7 +51,7 @@ export function* addRegisteredUserAddress({ address, phoneNumber, emailAddress, 
         payload: {
           ...address,
           address1: address.addressLine1,
-          address2: address.addressLine2,
+          address2: address.addressLine2 ? address.addressLine2 : '',
           zip: address.zipCode,
           phoneNumber,
           emailAddress,
@@ -94,7 +106,7 @@ export function* updateShippingAddress({ payload }) {
     payload: {
       ...address,
       address1: address.addressLine1,
-      address2: address.addressLine2,
+      address2: address.addressLine2 ? address.addressLine2 : '',
       zip: address.zipCode,
       phoneNumber,
       email: emailAddress,
@@ -125,7 +137,7 @@ export function* addNewShippingAddress({ payload }) {
       payload: {
         ...address,
         address1: address.addressLine1,
-        address2: address.addressLine2,
+        address2: address.addressLine2 ? address.addressLine2 : '',
         zip: address.zipCode,
         phoneNumber,
         emailAddress,
@@ -163,4 +175,104 @@ export function* addAndSetGiftWrappingOptions(payload) {
       // throw getSubmissionError(store, 'submitShippingSection', err);
     }
   }
+}
+
+export function* subscribeEmailAddress(emailObj, status, field1) {
+  try {
+    const payloadObject = {
+      emailaddr: emailObj.payload,
+      URL: 'email-confirmation',
+      response: `${status}:::false:false`,
+      registrationType: constants.EMAIL_REGISTRATION_TYPE_CONSTANT,
+    };
+
+    if (field1) {
+      payloadObject.field1 = field1;
+    }
+
+    const res = yield call(emailSignupAbstractor.subscribeEmail, payloadObject);
+    yield put(emailSignupStatus({ subscription: res }));
+  } catch (err) {
+    logger.error(err);
+  }
+}
+
+export function* validateAndSubmitEmailSignup(emailAddress, field1) {
+  if (emailAddress) {
+    const statusCode = call(briteVerifyStatusExtraction, emailAddress);
+    yield subscribeEmailAddress({ payload: emailAddress }, statusCode, field1);
+  }
+}
+
+export function* getVenmoClientTokenSaga(payload) {
+  try {
+    const response = yield call(getVenmoToken, payload.payload);
+    yield put(getVenmoClientTokenSuccess(response));
+  } catch (ex) {
+    yield put(getVenmoClientTokenError({ error: 'Error' }));
+  }
+}
+export function* saveLocalSmsInfo(smsInfo = {}) {
+  let returnVal;
+  const { wantsSmsOrderUpdates, smsUpdateNumber } = smsInfo;
+  if (smsUpdateNumber) {
+    if (wantsSmsOrderUpdates) {
+      returnVal = yield call(setSmsNumberForUpdates, smsUpdateNumber);
+    } else {
+      returnVal = yield call(setSmsNumberForUpdates(null));
+    }
+  }
+  return returnVal;
+}
+
+export function* addOrEditGuestUserAddress({
+  oldShippingDestination,
+  address,
+  phoneNumber,
+  emailAddress,
+  saveToAccount,
+  setAsDefault,
+}) {
+  let addOrEditAddressRes;
+  if (!oldShippingDestination.onFileAddressKey) {
+    // guest user that is using a new address
+    addOrEditAddressRes = yield call(
+      addAddressGet,
+      {
+        payload: {
+          ...address,
+          address1: address.addressLine1,
+          address2: address.addressLine2 ? address.addressLine2 : '',
+          zip: address.zipCode,
+          phoneNumber,
+          emailAddress,
+          primary: setAsDefault,
+          phone1Publish: `${saveToAccount}`,
+          fromPage: 'checkout',
+        },
+      },
+      false
+    );
+    addOrEditAddressRes = { payload: addOrEditAddressRes.body };
+  } else {
+    // guest user is editing a previously entered shipping address
+    addOrEditAddressRes = yield call(
+      updateAddressPut,
+      {
+        payload: {
+          ...address,
+          address1: address.addressLine1,
+          address2: address.addressLine2 ? address.addressLine2 : '',
+          zip: address.zipCode,
+          phoneNumber,
+          nickName: oldShippingDestination.onFileAddressKey,
+          emailAddress,
+        },
+      },
+      {}
+    );
+  }
+  addOrEditAddressRes = { payload: addOrEditAddressRes };
+
+  return addOrEditAddressRes;
 }

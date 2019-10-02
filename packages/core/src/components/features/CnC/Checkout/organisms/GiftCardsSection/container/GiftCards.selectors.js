@@ -1,5 +1,21 @@
+import { getLabelValue } from '../../../../../../../utils';
+
 const getGiftSectionLabels = state => {
   return state.Labels.checkout.billing;
+};
+
+const getGiftCardSectionLabels = state => {
+  const getGiftSectionLabelValue = label =>
+    getLabelValue(state.Labels, label, 'billing', 'checkout');
+  return {
+    giftCardAddUpToMsg: getGiftSectionLabelValue('lbl_giftcard_addUptoMsg'),
+    giftCardTitle: getGiftSectionLabelValue('lbl_giftcard_title'),
+    giftCardHeadsUpMsg: getGiftSectionLabelValue('lbl_giftcard_headsUpMsg'),
+    giftCardHeadsUpTitle: getGiftSectionLabelValue('lbl_giftcard_headsUpTitle'),
+    newGiftCard: getGiftSectionLabelValue('lbl_giftcard_newGiftCard'),
+    availableGiftCards: getGiftSectionLabelValue('lbl_giftcard_availableCards'),
+    appliedGiftCards: getGiftSectionLabelValue('lbl_giftcard_appliedCards'),
+  };
 };
 
 const getGrandTotal = state => {
@@ -31,10 +47,7 @@ const getAddGiftCardResponse = state => {
 };
 
 const getIsRecapchaEnabled = state => {
-  return (
-    (state.session && state.session.siteDetails && state.session.siteDetails.isRecapchaEnabled) ||
-    true
-  );
+  return state.session && state.session.siteDetails && state.session.siteDetails.isRecapchaEnabled;
 };
 
 const getIsLoading = state => {
@@ -51,4 +64,5 @@ export default {
   getIsRecapchaEnabled,
   getAddGiftCardResponse,
   getIsLoading,
+  getGiftCardSectionLabels,
 };

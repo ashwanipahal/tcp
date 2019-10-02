@@ -2,6 +2,7 @@ import { call, put, takeLatest } from 'redux-saga/effects';
 import RecommendationsAbstractor from '../../../../../services/abstractors/common/recommendations';
 import { loadRecommendationsData } from './Recommendations.actions';
 import { FETCH_RECOMMENDATIONS_DATA } from './Recommendations.constants';
+import logger from '../../../../../utils/loggerInstance';
 
 function* fetchRecommendationsData() {
   try {
@@ -11,7 +12,7 @@ function* fetchRecommendationsData() {
 
     yield put(loadRecommendationsData(result));
   } catch (e) {
-    console.log(e);
+    logger.log(e);
   }
 }
 

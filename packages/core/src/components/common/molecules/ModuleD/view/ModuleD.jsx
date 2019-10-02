@@ -1,5 +1,5 @@
-// @flow
 import React from 'react';
+import PropTypes from 'prop-types';
 import { Anchor, Button, Col, DamImage, Row } from '../../../atoms';
 import { Grid, LinkText, PromoBanner } from '../..';
 import config from '../config';
@@ -7,14 +7,6 @@ import { getLocator } from '../../../../../utils';
 import style from '../ModuleD.style';
 import withStyles from '../../../hoc/withStyles';
 import errorBoundary from '../../../hoc/withErrorBoundary';
-
-type Props = {
-  className: string,
-  headerText: Array<Object>,
-  promoBanner: Array<Object>,
-  smallCompImage: Array<Object>,
-  singleCTAButton: Object,
-};
 
 const colSize2Elements = {
   small: 3,
@@ -43,8 +35,7 @@ const ignoreGutter = [
   { small: true, medium: true },
 ];
 
-const ModuleD = (props: Props) => {
-  const { className, headerText, promoBanner, smallCompImage, singleCTAButton } = props;
+const ModuleD = ({ className, headerText, promoBanner, smallCompImage, singleCTAButton }) => {
   let colSize;
   let imgDataConfig;
   const checkPromo = promoBanner && promoBanner.length;
@@ -92,20 +83,16 @@ const ModuleD = (props: Props) => {
                   className="moduleD_tile"
                 >
                   <div className="moduleD__image-container">
-                    <Anchor
-                      className="moduleD_textlink"
-                      to={item.link.url}
-                      aria-label={item.link.text}
-                      title={item.link.title}
-                      target={item.link.target}
-                    >
-                      <DamImage
-                        className="moduleD_image"
-                        data-locator={`${getLocator('moduleD_image')}${index + 1}`}
-                        imgConfigs={imgDataConfig}
-                        imgData={item.image}
-                      />
-                    </Anchor>
+                    <DamImage
+                      className="moduleD_image"
+                      dataLocator={`${getLocator('moduleD_image')}${index + 1}`}
+                      imgConfigs={imgDataConfig}
+                      imgData={item.image}
+                      link={{
+                        className: 'moduleD_textlink',
+                        ...item.link,
+                      }}
+                    />
                   </div>
                   <div className="moduleD_link">
                     <Anchor
@@ -127,19 +114,46 @@ const ModuleD = (props: Props) => {
       </Row>
       {singleCTAButton && (
         <Row centered>
-          <Anchor href={singleCTAButton.url} target={singleCTAButton.target}>
-            <Button
-              buttonVariation="fixed-width"
-              className="moduleD_button"
-              data-locator={getLocator('moduleD_button')}
-            >
-              {singleCTAButton.text}
-            </Button>
-          </Anchor>
+          <Button
+            buttonVariation="fixed-width"
+            className="moduleD_button"
+            data-locator={getLocator('moduleD_button')}
+            cta={singleCTAButton}
+          >
+            {singleCTAButton.text}
+          </Button>
         </Row>
       )}
     </Grid>
   );
+};
+
+ModuleD.defaultProps = {
+  promoBanner: [],
+  singleCTAButton: {},
+};
+
+ModuleD.propTypes = {
+  className: PropTypes.string.isRequired,
+  headerText: PropTypes.arrayOf(
+    PropTypes.shape({
+      link: PropTypes.object,
+      textItems: PropTypes.object,
+    })
+  ).isRequired,
+  promoBanner: PropTypes.arrayOf(
+    PropTypes.shape({
+      link: PropTypes.object,
+      textItems: PropTypes.object,
+    })
+  ),
+  smallCompImage: PropTypes.arrayOf(
+    PropTypes.shape({
+      link: PropTypes.object,
+      image: PropTypes.object,
+    })
+  ).isRequired,
+  singleCTAButton: PropTypes.objectOf(PropTypes.shape({})),
 };
 
 export default withStyles(errorBoundary(ModuleD), style);
