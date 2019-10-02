@@ -76,6 +76,7 @@ class ModuleQ extends React.PureComponent {
     const { CAROUSEL_OPTIONS, TOTAL_IMAGES } = config;
     let selectedProductList = styliticsProductTabList[currentCatId] || [];
     selectedProductList = selectedProductList.slice(0, TOTAL_IMAGES);
+    selectedProductList = selectedProductList.concat(selectedProductList);
 
     console.log(selectedProductList);
 
@@ -132,7 +133,7 @@ class ModuleQ extends React.PureComponent {
               large: 1,
             }}
           >
-            {selectedProductList ? (
+            {selectedProductList.length ? (
               <Carousel
                 options={CAROUSEL_OPTIONS}
                 carouselConfig={{
@@ -146,12 +147,12 @@ class ModuleQ extends React.PureComponent {
                   return (
                     <div key={index.toString()}>
                       <Anchor
-                        className="image-link"
+                        className="moduleQ-image-link"
                         to={pdpUrl}
                         asPath={pdpUrl}
                         dataLocator={`${getLocator('moduleQ_product_image')}${index}`}
                       >
-                        <Image alt={imageUrl} src={imageUrl} />
+                        <Image alt={imageUrl} src={this.getUrlWithHttp(imageUrl)} />
                       </Anchor>
                     </div>
                   );
