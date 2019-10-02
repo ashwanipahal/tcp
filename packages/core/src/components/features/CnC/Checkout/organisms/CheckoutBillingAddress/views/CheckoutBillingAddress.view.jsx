@@ -55,7 +55,7 @@ class CheckoutAddress extends React.Component {
   };
 
   onSameAsShippingChange = (e, value) => {
-    const { dispatch, shippingAddress, formName, editMode, userAddresses } = this.props;
+    const { shippingAddress, editMode, userAddresses } = this.props;
     if (value) {
       const {
         firstName,
@@ -68,17 +68,24 @@ class CheckoutAddress extends React.Component {
         country,
         addressId,
       } = shippingAddress;
+      let fieldsToUpdate = [];
       if (editMode) {
-        dispatch(change(formName, `address.addressId`, addressId));
+        fieldsToUpdate.push({ fieldName: `address.addressId`, value: addressId });
       }
-      dispatch(change(formName, `address.firstName`, firstName));
-      dispatch(change(formName, `address.lastName`, lastName));
-      dispatch(change(formName, `address.addressLine1`, addressLine1));
-      dispatch(change(formName, `address.addressLine2`, addressLine2));
-      dispatch(change(formName, `address.state`, state));
-      dispatch(change(formName, `address.city`, city));
-      dispatch(change(formName, `address.zipCode`, zipCode));
-      dispatch(change(formName, `address.country`, country));
+      const fields = [
+        { fieldName: `address.firstName`, value: firstName },
+        { fieldName: `address.lastName`, value: lastName },
+        { fieldName: `address.addressLine1`, value: addressLine1 },
+        { fieldName: `address.addressLine2`, value: addressLine2 },
+        { fieldName: `address.state`, value: state },
+        { fieldName: `address.city`, value: city },
+        { fieldName: `address.zipCode`, value: zipCode },
+        { fieldName: `address.country`, value: country },
+      ];
+      fieldsToUpdate = [...fieldsToUpdate, ...fields];
+      fieldsToUpdate.forEach(({ fieldName, value: fieldValue }) => {
+        this.updateFormField(fieldName, fieldValue);
+      });
     } else if (editMode) {
       const index = userAddresses.findIndex(
         val => val.primary && val.primary.toString() === 'true'
@@ -94,16 +101,21 @@ class CheckoutAddress extends React.Component {
         country,
         addressId,
       } = userAddresses.get(index);
-      dispatch(change(formName, `onFileAddressId`, addressId));
-      dispatch(change(formName, `address.addressId`, addressId));
-      dispatch(change(formName, `address.firstName`, firstName));
-      dispatch(change(formName, `address.lastName`, lastName));
-      dispatch(change(formName, `address.addressLine1`, addressLine1));
-      dispatch(change(formName, `address.addressLine2`, addressLine2));
-      dispatch(change(formName, `address.state`, state));
-      dispatch(change(formName, `address.city`, city));
-      dispatch(change(formName, `address.zipCode`, zipCode));
-      dispatch(change(formName, `address.country`, country));
+      const fields = [
+        { fieldName: `onFileAddressId`, value: addressId },
+        { fieldName: `address.addressId`, value: addressId },
+        { fieldName: `address.firstName`, value: firstName },
+        { fieldName: `address.lastName`, value: lastName },
+        { fieldName: `address.addressLine1`, value: addressLine1 },
+        { fieldName: `address.addressLine2`, value: addressLine2 },
+        { fieldName: `address.state`, value: state },
+        { fieldName: `address.city`, value: city },
+        { fieldName: `address.zipCode`, value: zipCode },
+        { fieldName: `address.country`, value: country },
+      ];
+      fields.forEach(({ fieldName, value: fieldValue }) => {
+        this.updateFormField(fieldName, fieldValue);
+      });
       this.setState({ isAddNewAddress: false });
     }
   };
@@ -316,6 +328,11 @@ class CheckoutAddress extends React.Component {
       )
     );
   };
+
+  updateFormField(fieldName, value) {
+    const { dispatch, formName } = this.props;
+    dispatch(change(formName, fieldName, value));
+  }
 
   renderNonShippingAddressForm = () => {
     const { userAddresses, orderHasShipping } = this.props;

@@ -225,7 +225,9 @@ export class BillingPaymentForm extends React.PureComponent {
   };
 
   renderCardDetailsHeading = ({ hideAnchor } = {}) => {
-    const { labels } = this.props;
+    const {
+      labels: { cardDetailsTitle, edit },
+    } = this.props;
     return (
       <BodyCopy component="div" fontFamily="secondary" className="billing-payment-details">
         <BodyCopy
@@ -235,20 +237,19 @@ export class BillingPaymentForm extends React.PureComponent {
           data-locator="billing-payment-details"
           className="elem-mb-XS"
         >
-          {labels.cardDetailsTitle}
+          {cardDetailsTitle}
         </BodyCopy>
         {!hideAnchor && (
           <Anchor
             fontSizeVariation="medium"
             underline
-            to="/#"
             noLink
             onClick={this.setFormToEditState}
             anchorVariation="primary"
             className="billing-payment-edit"
             dataLocator="billing-payment-edit"
           >
-            {labels.edit}
+            {edit}
           </Anchor>
         )}
       </BodyCopy>
@@ -260,6 +261,7 @@ export class BillingPaymentForm extends React.PureComponent {
    * @description returns the credit card drop down along with selected card
    */
   getCreditListView = ({ labels, cvvCodeRichText, creditCardList, onFileCardKey }) => {
+    const { defaultPayment, selectFromCard, paymentMethod, creditCardEnd, cvvCode } = labels;
     const selectedCard = onFileCardKey ? getSelectedCard({ creditCardList, onFileCardKey }) : '';
     const { editMode } = this.state;
     const { dispatch } = this.props;
@@ -273,7 +275,7 @@ export class BillingPaymentForm extends React.PureComponent {
           className="cardDropdownHeading"
           dataLocator="billing-payment-bilingcreditcardlabel"
         >
-          {labels.selectFromCard}
+          {selectFromCard}
         </Heading>
         {this.getCCDropDown({ labels, creditCardList, onFileCardKey, selectedCard, editMode })}
         {!editMode ? (
@@ -287,20 +289,20 @@ export class BillingPaymentForm extends React.PureComponent {
                   className="paymentMethodHeading"
                   dataLocator="billing-payment-method"
                 >
-                  {labels.paymentMethod}
+                  {paymentMethod}
                 </Heading>
                 <Row fullBleed>
                   <Col colSize={billingPaymentFormWidthCol} className="billing-payment-card-info">
                     <CardImage
                       card={selectedCard}
-                      cardNumber={`${labels.creditCardEnd}${selectedCard.accountNo.slice(-4)}`}
+                      cardNumber={`${creditCardEnd}${selectedCard.accountNo.slice(-4)}`}
                     />
                   </Col>
 
                   {selectedCard.ccType !== constants.ACCEPTED_CREDIT_CARDS.PLACE_CARD && (
                     <Col colSize={cvvCodeColWidth} className="position-relative cvvCode">
                       <Field
-                        placeholder={labels.cvvCode}
+                        placeholder={cvvCode}
                         name="cvvCode"
                         id="cvvCode"
                         component={TextBox}
@@ -331,7 +333,7 @@ export class BillingPaymentForm extends React.PureComponent {
                         fontFamily="secondary"
                         fontWeight="regular"
                       >
-                        {labels.defaultPayment}
+                        {defaultPayment}
                       </BodyCopy>
                     </Field>
                   </Row>

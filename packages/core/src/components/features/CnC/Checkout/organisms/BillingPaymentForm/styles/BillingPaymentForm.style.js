@@ -183,8 +183,8 @@ export default css`
     @media ${props => props.theme.mediaQuery.medium} {
       flex-direction: row;
       justify-content: flex-end;
-      margin-right: 20px;
-      margin-bottom: 20px;
+      margin-right: ${props => props.theme.spacing.APP_LAYOUT_SPACING.XS};
+      margin-bottom: ${props => props.theme.spacing.APP_LAYOUT_SPACING.XS};
     }
 
     .card-edit-button {
