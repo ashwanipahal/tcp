@@ -68,6 +68,6 @@ export const getCurrentCurrencySymbol = state => {
   if (country === 'US' || country === 'CA') {
     return '$';
   }
-  const { currency } = getCurrentCurrency(state);
+  const currency = getCurrentCurrency(state);
   return currency === USA_VALUES.currency ? USA_VALUES.currencySymbol : `${currency} `;
 };
