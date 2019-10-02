@@ -3,7 +3,7 @@ import React, { PureComponent, Fragment } from 'react';
 import Router from 'next/router'; // eslint-disable-line
 import withStyles from '@tcp/core/src/components/common/hoc/withStyles';
 import { Anchor, BodyCopy, Image, Button } from '@tcp/core/src/components/common/atoms';
-import { toTimeString, getIconPath, getAPIConfig } from '@tcp/core/src/utils';
+import { toTimeString, getIconPath } from '@tcp/core/src/utils';
 import { parseDate } from '@tcp/core/src/utils/parseDate';
 import style, {
   TileHeader,
@@ -398,25 +398,6 @@ class StoreAddressTile extends PureComponent {
       return '';
     }
   }
-
-  openStoreDetails = e => {
-    const { store, fetchCurrentStore } = this.props;
-    const {
-      basicInfo: {
-        id,
-        storeName,
-        address: { city, state, zipCode },
-      },
-    } = store;
-    e.preventDefault();
-    fetchCurrentStore(store);
-    const url = `/${getAPIConfig().siteId}/store/${storeName
-      .replace(/\s/g, '')
-      .toLowerCase()}-${state.toLowerCase()}-${city
-      .replace(/\s/g, '')
-      .toLowerCase()}-${zipCode}-${id}`;
-    Router.push(url);
-  };
 
   render() {
     const { className, children, variation, store, ...rest } = this.props;
