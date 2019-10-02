@@ -33,9 +33,8 @@ class ProductReviews extends React.PureComponent {
 
   bindWriteReviewClick() {
     const { ratingsProductId } = this.props;
-    const containerDivId = `BVRRContainer- ${ratingsProductId}`;
-    const summaryContainerDiv = `BVRRSummaryContainer- ${ratingsProductId}`;
-
+    const containerDivId = `BVRRContainer-${ratingsProductId}`;
+    const summaryContainerDiv = `BVRRSummaryContainer-${ratingsProductId}`;
     const buttons = document.querySelectorAll(
       `#${containerDivId} button.bv-write-review, #${containerDivId} .bv-write-review-label, #${summaryContainerDiv} button.bv-write-review, #${summaryContainerDiv} .bv-write-review-label`
     );
