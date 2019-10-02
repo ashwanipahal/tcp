@@ -32,6 +32,7 @@ import CartPageSaga from '@tcp/core/src/components/features/CnC/CartItemTile/con
 import ProductListingSaga from '@tcp/core/src/components/features/browse/ProductListing/container/ProductListing.saga';
 import ProductDetailSaga from '@tcp/core/src/components/features/browse/ProductDetail/container/ProductDetail.saga';
 import QuickViewSaga from '@tcp/core/src/components/common/organisms/QuickViewModal/container/QuickViewModal.saga';
+import FavoriteSaga from '@tcp/core/src/components/features/browse/Favorites/container/Favorites.saga';
 import CouponSaga from '@tcp/core/src/components/features/CnC/common/organism/CouponAndPromos/container/Coupon.saga';
 import CheckoutSaga from '@tcp/core/src/components/features/CnC/Checkout/container/Checkout.saga';
 import BagPageSaga from '@tcp/core/src/components/features/CnC/BagPage/container/BagPage.saga';
@@ -127,5 +128,6 @@ export default function* rootSaga() {
     ConfirmationPageSaga(),
     NavigateXHRSaga(),
     OrdersSaga(),
+    FavoriteSaga(),
   ]);
 }
