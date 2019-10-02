@@ -68,6 +68,7 @@ VenmoPaymentButton.defaultProps = {
 };
 
 const mapStateToProps = state => {
+  /* istanbul ignore next */
   const venmoClientTokenData = selectors.getVenmoClientTokenData(state);
   const { venmoSecurityToken: authorizationKey, venmoPaymentTokenAvailable } =
     venmoClientTokenData || {};

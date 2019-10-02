@@ -27,7 +27,7 @@ const UserReducer = (state = initialState, { type, payload }) => {
               profileAddress: payload.profileAddress,
             },
             userId: payload.userId,
-            isGuest: payload.x_isRegistered === 'false',
+            isGuest: !payload.isLoggedin,
             isRemembered: payload.isRemembered,
             contextAttributes: payload.contextAttributes,
             isPlcc: payload.isPlcc,
