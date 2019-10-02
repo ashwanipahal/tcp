@@ -8,13 +8,14 @@ import Col from '../../../../common/atoms/Col';
 import CheckoutOrderInfo from '../../Checkout/molecules/CheckoutOrderInfoMobile';
 import VenmoConfirmation from '../../common/molecules/VenmoConfirmation';
 import { constants as VenmoConstants } from '../../../../common/atoms/VenmoPaymentButton/container/VenmoPaymentButton.util';
+import ConfirmationAccountFormContainer from '../../common/organism/ConfirmationAccountForm';
 
 /** The hard coded values are just to show the template. these will be removed once the components are are in place */
 /**
  * @function ConfirmationView
  * @description component to render confirmation component.
  */
-const ConfirmationView = ({ className, isVenmoPaymentInProgress, venmoPayment }) => {
+const ConfirmationView = ({ className, isVenmoPaymentInProgress, venmoPayment, isGuest }) => {
   return (
     <div className={className}>
       <Row fullBleed className="placeholder sms-sign-up">
@@ -42,6 +43,13 @@ const ConfirmationView = ({ className, isVenmoPaymentInProgress, venmoPayment })
           <div>LOYALTY BANNER</div>
         </Col>
       </Row>
+      {isGuest && (
+        <Row fullBleed>
+          <Col colSize={{ small: 6, medium: 8, large: 12 }}>
+            <ConfirmationAccountFormContainer />
+          </Col>
+        </Row>
+      )}
       <CheckoutOrderInfo isConfirmationPage />
     </div>
   );
@@ -50,6 +58,7 @@ const ConfirmationView = ({ className, isVenmoPaymentInProgress, venmoPayment })
 ConfirmationView.propTypes = {
   className: PropTypes.string,
   isVenmoPaymentInProgress: PropTypes.bool,
+  isGuest: PropTypes.bool.isRequired,
   venmoPayment: PropTypes.shape({
     userName: PropTypes.string,
     ccBrand: PropTypes.string,
