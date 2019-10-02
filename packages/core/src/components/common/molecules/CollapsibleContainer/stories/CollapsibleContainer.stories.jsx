@@ -55,16 +55,7 @@ const WrapperComponent = withStyles(CollapsibleContainer, overrideStyles);
 storiesOf('CollapsibleContainer', module).add('Store Locator Collapsible', () => (
   <WrapperComponent
     theme={tcpTheme}
-    header={<span className="collapsible-header-text">Hell World</span>}
-    body={
-      <div className="collapsible-content">
-        Aliqua reprehenderit quis deserunt ex pariatur minim occaecat magna ad do officia fugiat.
-        Exercitation aute exercitation fugiat adipisicing adipisicing excepteur irure minim dolor
-        laboris qui incididunt. Ad fugiat eu irure cillum magna reprehenderit do pariatur deserunt
-        aute nulla quis dolor qui. Laborum reprehenderit culpa mollit laboris eu magna laborum. Enim
-        nulla irure ad eu reprehenderit amet aliquip veniam minim proident sit esse occaecat.
-        Laborum qui labore duis id magna deserunt mollit aute ea est aliqua ipsum.
-      </div>
-    }
+    header={<span className="collapsible-header-text">Hello World</span>}
+    body={<div className="collapsible-content">Test Content...</div>}
   />
 ));
