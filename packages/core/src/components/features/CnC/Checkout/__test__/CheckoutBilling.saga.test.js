@@ -1,4 +1,5 @@
 import { call } from 'redux-saga/effects';
+// eslint-disable-next-line import/no-unresolved
 import submitBilling, {
   submitBillingData,
   submitVenmoBilling,
@@ -8,6 +9,9 @@ import submitBilling, {
   addressIdToString,
 } from '../container/CheckoutBilling.saga';
 import { getAddressList } from '../../../account/AddressBook/container/AddressBook.saga';
+import { isMobileApp } from '../../../../../utils';
+import CONSTANTS from '../Checkout.constants';
+// import utility from '../util/utility';
 
 describe('CheckoutBilling saga', () => {
   it('CheckoutBilling', () => {
@@ -54,12 +58,43 @@ describe('CheckoutBilling saga', () => {
     expect(CheckoutReviewSaga.next(false).value).toEqual(undefined);
   });
 
-  it('submitVenmoBillingData Method', () => {
-    const isMobileApp = () => false;
+  it('submitBillingData with CardId', () => {
+    const CheckoutReviewSaga = submitBillingData(
+      { address: { sameAsShipping: false }, onFileCardId: '21331232' },
+      { addressKey: '12345', addressId: '12345', billingAddressId: '54321' }
+    );
+    CheckoutReviewSaga.next(); // select isGuest
+    CheckoutReviewSaga.next();
+    CheckoutReviewSaga.next({ onFileAddressKey: '234' });
+    expect(CheckoutReviewSaga.next(false).value).not.toEqual(undefined);
+  });
+
+  it('submitBillingData with onFileAddressKey and not guest user', () => {
+    const CheckoutReviewSaga = submitBillingData(
+      { address: { sameAsShipping: false, onFileAddressKey: '54321' } },
+      { addressKey: '12345', addressId: '12345', billingAddressId: '54321' }
+    );
+    CheckoutReviewSaga.next();
+    CheckoutReviewSaga.next({ onFileAddressKey: '234' });
+    expect(CheckoutReviewSaga.next(false).value).not.toEqual(undefined);
+  });
+
+  it('submitVenmoBilling Method', () => {
     const CheckoutReviewSaga = submitVenmoBilling({});
     CheckoutReviewSaga.next();
     expect(CheckoutReviewSaga.next().value).toEqual(call(updateVenmoPaymentInstruction));
-    expect(isMobileApp()).toBeFalsy();
+    const navigate = jest.fn();
+    const navigation = {
+      navigate,
+    };
+    const routeToPage = jest.fn();
+    const utility = { routeToPage };
+    const spyUtility = jest.spyOn(utility, 'routeToPage');
+    if (!isMobileApp()) {
+      expect(spyUtility).not.toBeCalled();
+    } else if (navigation) {
+      expect(navigation.navigate(CONSTANTS.CHECKOUT_ROUTES_NAMES.CHECKOUT_REVIEW)).toBeCalled();
+    }
   });
 
   it('getAddressData Method', () => {
@@ -115,6 +150,31 @@ describe('CheckoutBilling saga', () => {
       call(func, false, true, true, false, false)
     );
     expect(CheckoutReviewSaga.next(false).value).toEqual(undefined);
+  });
+
+  it('updatePaymentInstruction', () => {
+    const func = () => {};
+    const CheckoutReviewSaga = updatePaymentInstruction(
+      {
+        address: { sameAsShipping: true },
+        cardNumber: '1234',
+        onFileCardId: '243434',
+        accountNo: '232322',
+        cvv: 323,
+        monthExpire: '',
+        yearExpire: '',
+        setAsDefault: false,
+        saveToAccount: false,
+      },
+      { accountNo: '232322', billingAddressId: '43423423', ccBrand: 'VISA' },
+      undefined,
+      {},
+      func
+    );
+    CheckoutReviewSaga.next();
+    CheckoutReviewSaga.next({ billing: {}, paymentId: '123' });
+    CheckoutReviewSaga.next();
+    expect(CheckoutReviewSaga.next(false).value).not.toEqual(undefined);
   });
 
   it('updateVenmoPaymentInstruction Method', () => {
