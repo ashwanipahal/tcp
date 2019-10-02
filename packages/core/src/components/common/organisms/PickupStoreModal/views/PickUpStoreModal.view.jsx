@@ -262,14 +262,14 @@ class PickUpStoreModalView extends React.Component {
   }
 
   /** Validate SKU detils if SKU is resolved or not */
-  validateSkuDetails(initialValues = {}, openSkuSelectionForm) {
+  validateSkuDetails(initialValues, openSkuSelectionForm) {
     const { currentProduct } = this.props;
     if (openSkuSelectionForm) {
       return false;
     }
 
-    const invalidInitialValues =
-      !initialValues || (initialValues && !Object.keys(initialValues).length);
+    const invalidInitialValues = !initialValues || !Object.keys(initialValues).length;
+
     if (invalidInitialValues) {
       return false;
     }

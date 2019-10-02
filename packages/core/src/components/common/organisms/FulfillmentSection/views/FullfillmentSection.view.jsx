@@ -19,7 +19,7 @@ class FulfillmentSection extends React.Component {
   pickupOpenClick() {
     const { currentProduct, onPickUpOpenClick, onPickupClickAddon } = this.props;
     const { colorFitsSizesMap, generalProductId } = currentProduct;
-    const colorEntry = getMapSliceForColorProductId(colorFitsSizesMap, generalProductId);
+    // const colorEntry = getMapSliceForColorProductId(colorFitsSizesMap, generalProductId);
     onPickUpOpenClick({
       generalProductId,
       colorProductId: generalProductId,
@@ -43,7 +43,7 @@ class FulfillmentSection extends React.Component {
           onClick={this.pickupOpenClick}
           dataLocator={dataLocator}
         >
-          {"Pick Up In Store"}
+          {'Pick Up In Store'}
         </Button>
       </React.Fragment>
     );
