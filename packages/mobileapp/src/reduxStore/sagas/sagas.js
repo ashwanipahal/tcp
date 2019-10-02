@@ -43,6 +43,7 @@ import MailingAddressSaga from '@tcp/core/src/components/features/account/MyProf
 import MyFavoriteStoreSaga from '@tcp/core/src/components/features/account/MyProfile/organism/MyFavoriteStore/container/MyFavoriteStore.saga';
 import SearchPageSaga from '@tcp/core/src/components/features/browse/SearchDetail/container/SearchDetail.saga';
 import BirthdaySavingsSaga from '@tcp/core/src/components/features/account/common/organism/BirthdaySavingsList/container/BirthdaySavingsList.saga';
+import PickupStoreSaga from '@tcp/core/src/components/common/organisms/PickupStoreModal/container/PickUpStoreModal.saga';
 import ConfirmationPageSaga from '@tcp/core/src/components/features/CnC/Confirmation/container/Confirmation.saga';
 import ApplyCreditCardSaga, {
   SubmitInstantCardApplication,
@@ -102,5 +103,6 @@ export default function* rootSaga() {
     PointsClaimSaga(),
     SocialAccountSaga(),
     ConfirmationPageSaga(),
+    PickupStoreSaga(),
   ]);
 }
