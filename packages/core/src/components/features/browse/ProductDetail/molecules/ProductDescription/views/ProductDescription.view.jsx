@@ -20,6 +20,8 @@ class ProductDetailDescription extends React.PureComponent {
 
   getButton = () => {
     let buttonShowMoreOrLess = null;
+    const { pdpLabels } = this.props;
+    const { ShowMore, ShowLess } = pdpLabels;
     const { isShowMore } = this.state;
     if (isShowMore) {
       buttonShowMoreOrLess = (
@@ -29,7 +31,7 @@ class ProductDetailDescription extends React.PureComponent {
             type="button"
             onClick={this.handleToggleShowMoreOrLess}
           >
-            Show Less
+            {ShowLess}
           </button>
         </div>
       );
@@ -41,7 +43,7 @@ class ProductDetailDescription extends React.PureComponent {
             type="button"
             onClick={this.handleToggleShowMoreOrLess}
           >
-            Show More
+            {ShowMore}
           </button>
         </div>
       );
@@ -57,6 +59,10 @@ class ProductDetailDescription extends React.PureComponent {
     return isAccordionOpen ? 'show-accordion-toggle' : '';
   };
 
+  getClaimMessageClass = descAvail => {
+    return !descAvail ? 'common-claim-message' : '';
+  };
+
   handleAccordionToggle() {
     const { isAccordionOpen } = this.state;
     this.setState({ isAccordionOpen: !isAccordionOpen });
@@ -70,11 +76,13 @@ class ProductDetailDescription extends React.PureComponent {
   }
 
   render() {
-    const { longDescription, productId, shortDescription, className } = this.props;
+    const { longDescription, productId, shortDescription, className, pdpLabels } = this.props;
+    const { ProductDescription, ClaimMessage, PartNumber } = pdpLabels;
     const { isExpanded, isAccordionOpen, isShowMore } = this.state;
     const descAvail = this.getDescAvailable(shortDescription, longDescription);
     const getButton = this.getButton();
     const accordionToggleClass = this.getAccordionClass(isAccordionOpen);
+    const claimMessageClass = this.getClaimMessageClass(!!descAvail);
 
     return (
       <div className={`${className} product-description-list`}>
@@ -86,11 +94,11 @@ class ProductDetailDescription extends React.PureComponent {
           fontWeight="black"
           onClick={this.handleAccordionToggle}
         >
-          Product Description
+          {ProductDescription}
         </BodyCopy>
         {isExpanded && (
           <div className={isAccordionOpen ? 'show-description-list' : ''}>
-            {shortDescription && (
+            {!shortDescription && (
               <BodyCopy className="short-description" fontSize="fs14" fontFamily="secondary">
                 {shortDescription}
               </BodyCopy>
@@ -111,12 +119,12 @@ class ProductDetailDescription extends React.PureComponent {
                 />
               )}
               <BodyCopy
-                className="claim-message"
+                className={`claim-message ${claimMessageClass}`}
                 component="aside"
                 fontSize="fs14"
                 fontFamily="secondary"
               >
-                Big Fashion, Little Prices
+                {ClaimMessage}
               </BodyCopy>
             </div>
             {descAvail && (
@@ -128,7 +136,7 @@ class ProductDetailDescription extends React.PureComponent {
                   fontSize="fs10"
                   fontFamily="secondary"
                 >
-                  Item #:
+                  {PartNumber}
                   {productId}
                 </BodyCopy>
               </div>
@@ -144,6 +152,7 @@ ProductDetailDescription.propTypes = {
   className: PropTypes.string,
   productId: PropTypes.string,
   isShowMore: PropTypes.bool,
+  pdpLabels: PropTypes.shape({}),
   longDescription: PropTypes.string,
   shortDescription: PropTypes.string,
 };
@@ -153,6 +162,7 @@ ProductDetailDescription.defaultProps = {
   isShowMore: '',
   longDescription: '',
   productId: '',
+  pdpLabels: {},
   shortDescription: '',
 };
 

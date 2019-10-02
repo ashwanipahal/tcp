@@ -39,7 +39,9 @@ export default css`
   .show-accordion-toggle {
     background: url(${downArrowIcon}) no-repeat right 0 bottom 7px;
   }
-
+  .common-claim-message {
+    padding-top: 0;
+  }
   .introduction-text {
     max-height: 90px;
     overflow: hidden;

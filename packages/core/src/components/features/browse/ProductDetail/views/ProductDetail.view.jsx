@@ -149,11 +149,11 @@ class ProductDetailView extends React.Component {
         <Row>
           <Col colSize={{ small: 6, medium: 8, large: 12 }}>
             <div className="product-detail-section">
-              {/* <RichText richTextHtml={longDescription} /> */}
               <ProductDescription
                 productId={itemPartNumber}
                 titleClickable={false}
                 isShowMore={false}
+                pdpLabels={pdpLabels}
                 shortDescription={shortDescription}
                 longDescription={longDescription}
               />
