@@ -3,6 +3,7 @@ import { View, TouchableOpacity } from 'react-native';
 import PropTypes from 'prop-types';
 import { LoginManager, AccessToken } from 'react-native-fbsdk';
 import Button from '@tcp/core/src/components/common/atoms/Button';
+import InstagramLogin from 'react-native-instagram-login';
 import {
   BodyCopyWithSpacing,
   ViewWithSpacing,
@@ -230,6 +231,9 @@ class Socialview extends React.PureComponent {
         }
         return null;
       case 'Instagram':
+        if (!isConnected) {
+          this.instagramLogin.show();
+        }
         return null;
       default:
         return null;
@@ -255,6 +259,15 @@ class Socialview extends React.PureComponent {
           text={getLabelValue(labels, 'lbl_prefrence_social_text')}
         />
         {this.renderAccountsInformation(this.socialAccounts, labels)}
+        <InstagramLogin
+          ref={ref => {
+            this.instagramLogin = ref;
+          }}
+          clientId="f0eaf419384f43a0acd059c4f87163c1"
+          scopes={['basic']}
+          onLoginSuccess={token => console.log(token)}
+          onLoginFailure={data => console.log(data)}
+        />
       </View>
     );
   }

@@ -3,6 +3,7 @@ package com.mobileapp;
 import android.app.Application;
 
 import com.facebook.react.ReactApplication;
+import com.reactnativecommunity.webview.RNCWebViewPackage;
 import fr.greweb.reactnativeviewshot.RNViewShotPackage;
 import com.christopherdro.RNPrint.RNPrintPackage;
 import com.psykar.cookiemanager.CookieManagerPackage;
@@ -39,6 +40,7 @@ public class MainApplication extends Application implements ReactApplication {
     @Override
     protected List<ReactPackage> getPackages() {
       return Arrays.<ReactPackage>asList(new MainReactPackage(),
+            new RNCWebViewPackage(),
             new RNViewShotPackage(),
             new RNPrintPackage(),
             new CookieManagerPackage(),
