@@ -1,18 +1,9 @@
-import React from 'react';
+import React, { PureComponent } from 'react';
+import PropTypes from 'prop-types';
 import { requireNamedOnlineModule } from '../../../../utils/resourceLoader';
 import TextBox from '../TextBox'; // this comment prevents linting errors
 
-// @flow
-type Props = {
-  types: ['address'],
-  componentRestrictions: any,
-  bounds: any,
-  apiFields: any,
-  input: any,
-  onPlaceSelected: any,
-};
-
-export class AutoCompleteComponent extends React.PureComponent<Props> {
+export class AutoCompleteComponent extends PureComponent {
   static GOOGLE_PLACE_PARTS = {
     street_number: 'short_name',
     route: 'long_name',
@@ -172,5 +163,14 @@ export class AutoCompleteComponent extends React.PureComponent<Props> {
 
   // --------------- end of private methods --------------- //
 }
+
+AutoCompleteComponent.propTypes = {
+  types: PropTypes.oneOf(['address']).isRequired,
+  componentRestrictions: PropTypes.shape({}).isRequired,
+  bounds: PropTypes.shape({}).isRequired,
+  apiFields: PropTypes.shape({}).isRequired,
+  input: PropTypes.shape({}).isRequired,
+  onPlaceSelected: PropTypes.func.isRequired,
+};
 
 export default AutoCompleteComponent;
