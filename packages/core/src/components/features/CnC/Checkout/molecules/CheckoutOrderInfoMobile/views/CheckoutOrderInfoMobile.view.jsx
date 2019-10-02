@@ -8,6 +8,7 @@ import BonusPointsDays from '../../../../../../common/organisms/BonusPointsDays'
 import Row from '../../../../../../common/atoms/Row';
 import Col from '../../../../../../common/atoms/Col';
 import style from '../styles/CheckoutOrderInfoMobile.style';
+import PersonalizedCoupons from '../../../../Confirmation/organisms/PersonalizedCoupons';
 
 /** The hard coded values are just to show the template of confirmation page. these will be removed once the components are are in place */
 class CheckoutOrderInfo extends React.PureComponent {
@@ -25,12 +26,7 @@ class CheckoutOrderInfo extends React.PureComponent {
             </Row>
             <Row fullBleed className="placeholder">
               <Col colSize={{ small: 6, medium: 8, large: 12 }}>
-                <div>COUPONS</div>
-              </Col>
-            </Row>
-            <Row fullBleed className="placeholder ">
-              <Col colSize={{ small: 6, medium: 8, large: 12 }}>
-                <div>COUPONS</div>
+                <PersonalizedCoupons />
               </Col>
             </Row>
           </>
