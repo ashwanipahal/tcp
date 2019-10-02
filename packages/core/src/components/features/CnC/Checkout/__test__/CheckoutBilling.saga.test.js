@@ -5,6 +5,7 @@ import submitBilling, {
   updatePaymentInstruction,
   updateVenmoPaymentInstruction,
   getAddressData,
+  addressIdToString,
 } from '../container/CheckoutBilling.saga';
 import { getAddressList } from '../../../account/AddressBook/container/AddressBook.saga';
 
@@ -66,6 +67,16 @@ describe('CheckoutBilling saga', () => {
     CheckoutReviewSaga.next();
     const shippingDetails = CheckoutReviewSaga.next().value;
     expect(shippingDetails.onFileAddressId).toEqual(undefined);
+  });
+
+  it('addressIdToString Method', () => {
+    const addressIdMethod = addressIdToString(12345);
+    expect(addressIdMethod).toEqual('12345');
+  });
+
+  it('addressIdToString Method without address', () => {
+    const addressIdMethod = addressIdToString();
+    expect(addressIdMethod).toEqual(null);
   });
 
   it('updatePaymentInstruction', () => {

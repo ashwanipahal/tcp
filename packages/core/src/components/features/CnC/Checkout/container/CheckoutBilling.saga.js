@@ -138,7 +138,7 @@ export function* getAddressData(formData) {
   return existingAddress ? existingAddress.addressId : shippingDetails.onFileAddressId;
 }
 
-function addressIdToString(addressId) {
+export function addressIdToString(addressId) {
   if (addressId) {
     return addressId.toString();
   }

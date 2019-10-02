@@ -1,5 +1,43 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
+exports[`Venmo Payment Button Container should render VenmoPaymentButton correctly 1`] = `
+<Styled(VenmoPaymentButton)
+  allowNewBrowserTab={true}
+  authorizationKey="encrytptedauthorizationkey"
+  className="venmo-container"
+  enabled={true}
+  getVenmoPaymentTokenAction={[MockFunction]}
+  isGuest={false}
+  isMobile={true}
+  isNonceNotExpired={false}
+  mode="client_token"
+  onSuccess={[MockFunction]}
+  onVenmoPaymentButtonClick={[Function]}
+  onVenmoPaymentButtonError={[Function]}
+  orderId={3000332630}
+  setVenmoData={[Function]}
+  setVenmoDataAction={[MockFunction]}
+  setVenmoPaymentInProgress={[MockFunction]}
+  venmoClientTokenData={
+    Object {
+      "userState": "R",
+      "venmoCustomerIdAvailable": "FALSE",
+      "venmoIsDefaultPaymentType": "FALSE",
+      "venmoPaymentTokenAvailable": "FALSE",
+      "venmoSecurityToken": "encrytptedauthorizationkey",
+    }
+  }
+  venmoData={
+    Object {
+      "deviceData": "762a73c4175ca24f7b1436a440da5bd0",
+      "loading": false,
+      "supportedByBrowser": true,
+      "venmoClientTokenData": "Object",
+    }
+  }
+/>
+`;
+
 exports[`Venmo Payment Button Container should render correctly 1`] = `
 <Styled(VenmoPaymentButton)
   allowNewBrowserTab={true}
