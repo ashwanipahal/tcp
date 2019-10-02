@@ -1,0 +1,98 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`SPayment Method Types should render correctly 1`] = `
+<Styled(TouchableOpacity)
+  checked={true}
+  index={null}
+  onPress={[Function]}
+>
+  <Styled(BodyCopy)
+    accessibilityText=""
+    checked={true}
+    color="gray.700"
+    dataLocator=""
+    fontSize="fs13"
+    fontWeight="extrabold"
+    margin={null}
+    mobileFontFamily="secondary"
+    numberOfLines={null}
+    text=""
+    textAlign="center"
+    textDecoration={null}
+  />
+</Styled(TouchableOpacity)>
+`;
+
+exports[`SPayment Method Types should render correctly with props 1`] = `
+<Styled(TouchableOpacity)
+  checked={true}
+  index={null}
+  onPress={[Function]}
+>
+  <Styled(BodyCopy)
+    accessibilityText=""
+    checked={true}
+    color="white"
+    dataLocator=""
+    fontSize="fs13"
+    fontWeight="extrabold"
+    margin={null}
+    mobileFontFamily="secondary"
+    numberOfLines={null}
+    text=""
+    textAlign="center"
+    textDecoration={null}
+  />
+  <Styled(View)>
+    <Styled(ImageComp)
+      alt=""
+      height="30"
+      host=""
+      source={
+        Object {
+          "testUri": "../../../../core/src/assets/paypal-small.png",
+        }
+      }
+      url=""
+      width="95"
+    />
+  </Styled(View)>
+</Styled(TouchableOpacity)>
+`;
+
+exports[`SPayment Method Types should render correctly with props venmo 1`] = `
+<Styled(TouchableOpacity)
+  checked={true}
+  index={null}
+  onPress={[Function]}
+>
+  <Styled(BodyCopy)
+    accessibilityText=""
+    checked={true}
+    color="white"
+    dataLocator=""
+    fontSize="fs13"
+    fontWeight="extrabold"
+    margin={null}
+    mobileFontFamily="secondary"
+    numberOfLines={null}
+    text=""
+    textAlign="center"
+    textDecoration={null}
+  />
+  <Styled(View)>
+    <Styled(ImageComp)
+      alt=""
+      height="30"
+      host=""
+      source={
+        Object {
+          "testUri": "../../../../core/src/assets/venmo-small.png",
+        }
+      }
+      url=""
+      width="95"
+    />
+  </Styled(View)>
+</Styled(TouchableOpacity)>
+`;

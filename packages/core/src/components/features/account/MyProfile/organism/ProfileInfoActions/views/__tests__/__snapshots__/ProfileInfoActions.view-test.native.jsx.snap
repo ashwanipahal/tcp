@@ -40,7 +40,7 @@ exports[`ProfileInfoActions should render correctly for empty state 1`] = `
         }
       }
       activityId="mailingAddress"
-      activityTitle="lbl_profile_activityPercentage"
+      activityTitle="lbl_profile_mailingAddressActivityTitle"
       handleComponentChange={[Function]}
     />
     <ProfileInfoActionTile
@@ -52,7 +52,7 @@ exports[`ProfileInfoActions should render correctly for empty state 1`] = `
         }
       }
       activityId="favStore"
-      activityTitle="lbl_profile_activityPercentage"
+      activityTitle="lbl_profile_favStoreActivityTitle"
       handleComponentChange={[Function]}
     />
     <ProfileInfoActionTile
@@ -64,7 +64,7 @@ exports[`ProfileInfoActions should render correctly for empty state 1`] = `
         }
       }
       activityId="userBirthday"
-      activityTitle="lbl_profile_activityPercentage"
+      activityTitle="lbl_profile_userBirthdayActivityTitle"
       handleComponentChange={[Function]}
     />
     <ProfileInfoActionTile
@@ -76,7 +76,7 @@ exports[`ProfileInfoActions should render correctly for empty state 1`] = `
         }
       }
       activityId="aboutYourself"
-      activityTitle="lbl_profile_activityPercentage"
+      activityTitle="lbl_profile_surveyActivityTitle"
       handleComponentChange={[Function]}
     />
   </Styled(View)>
@@ -155,7 +155,7 @@ exports[`ProfileInfoActions should render correctly for filled state 1`] = `
         }
       }
       activityId="mailingAddress"
-      activityTitle="lbl_profile_activityPercentage"
+      activityTitle="lbl_profile_mailingAddressActivityTitle"
       handleComponentChange={[Function]}
     />
     <ProfileInfoActionTile
@@ -167,7 +167,7 @@ exports[`ProfileInfoActions should render correctly for filled state 1`] = `
         }
       }
       activityId="favStore"
-      activityTitle="lbl_profile_activityPercentage"
+      activityTitle="lbl_profile_favStoreActivityTitle"
       handleComponentChange={[Function]}
     />
     <ProfileInfoActionTile
@@ -179,7 +179,7 @@ exports[`ProfileInfoActions should render correctly for filled state 1`] = `
         }
       }
       activityId="userBirthday"
-      activityTitle="lbl_profile_activityPercentage"
+      activityTitle="lbl_profile_userBirthdayActivityTitle"
       handleComponentChange={[Function]}
     />
     <ProfileInfoActionTile
@@ -191,7 +191,7 @@ exports[`ProfileInfoActions should render correctly for filled state 1`] = `
         }
       }
       activityId="aboutYourself"
-      activityTitle="lbl_profile_activityPercentage"
+      activityTitle="lbl_profile_surveyActivityTitle"
       handleComponentChange={[Function]}
     />
   </Styled(View)>

@@ -1,0 +1,301 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`ModuleJ component renders correctly 1`] = `
+<StyledComponent
+  className="undefined moduleJ layout-alt"
+  forwardedComponent={
+    Object {
+      "$$typeof": Symbol(react.forward_ref),
+      "attrs": Array [],
+      "componentStyle": ComponentStyle {
+        "componentId": "sc-jzJRlG",
+        "isStatic": false,
+        "rules": Array [
+          "
+  ",
+          "
+  ",
+          [Function],
+          ";
+",
+          ";
+",
+        ],
+      },
+      "displayName": "Styled(Grid)",
+      "foldedComponentIds": Array [],
+      "render": [Function],
+      "styledComponentId": "sc-jzJRlG",
+      "target": [Function],
+      "toString": [Function],
+      "warnTooManyClasses": [Function],
+      "withComponent": [Function],
+    }
+  }
+  forwardedRef={null}
+>
+  <Styled(Row)
+    className="topview"
+    fullBleed={
+      Object {
+        "large": true,
+        "medium": true,
+        "small": true,
+      }
+    }
+  >
+    <Styled(Col)
+      className="promo-alt"
+      colSize={
+        Object {
+          "large": 12,
+          "medium": 8,
+          "small": 6,
+        }
+      }
+      ignoreGutter={
+        Object {
+          "large": true,
+          "medium": true,
+          "small": true,
+        }
+      }
+    >
+      <Styled(LinkText)
+        className="promo-header"
+        component="div"
+        dataLocator="moduleJ_header_text"
+        headerText={
+          Array [
+            Object {
+              "icon": Object {
+                "icon": "",
+                "placement": "",
+              },
+              "link": Object {
+                "action": "",
+                "external": 0,
+                "target": "",
+                "text": "",
+                "title": "",
+                "url": "/p/",
+              },
+              "textItems": Array [
+                Object {
+                  "style": "small_text_normal",
+                  "text": "Every Length, ",
+                },
+                Object {
+                  "style": "small_text_normal",
+                  "text": "Style, ",
+                },
+                Object {
+                  "style": "small_text_normal",
+                  "text": " Color & Size",
+                },
+              ],
+            },
+            Object {
+              "icon": Object {
+                "icon": "",
+                "placement": "",
+              },
+              "link": Object {
+                "action": "",
+                "external": 0,
+                "target": "",
+                "text": "",
+                "title": "",
+                "url": "/p/",
+              },
+              "textItems": Array [
+                Object {
+                  "style": "medium_text_black",
+                  "text": "THE SHORT SHOP",
+                },
+              ],
+            },
+          ]
+        }
+      />
+      <Styled(PromoBanner)
+        className="promoBanner"
+        dataLocator="moduleJ_promobanner_text"
+        promoBanner={
+          Array [
+            Object {
+              "link": Object {
+                "class": "",
+                "external": 0,
+                "target": "",
+                "text": "",
+                "title": "",
+                "url": "/c/",
+              },
+              "textItems": Array [
+                Object {
+                  "style": "medium_text_semibold",
+                  "style2": "extra_large_text_regular",
+                  "text": "ALL UNIFORMS",
+                  "text2": "ALL SHORTS",
+                },
+                Object {
+                  "style": "fixed_medium_text_black",
+                  "style2": "extra_large_text_black",
+                  "text": "60% OFF",
+                },
+              ],
+            },
+          ]
+        }
+      />
+    </Styled(Col)>
+    <Styled(Col)
+      colSize={
+        Object {
+          "large": 12,
+          "medium": 8,
+          "small": 6,
+        }
+      }
+    >
+      <Connect(ProductTabListContainer)
+        dataLocator="moduleJ_cta_links_"
+        onProductTabChange={[Function]}
+        tabItems={
+          Array [
+            Object {
+              "category": Object {
+                "cat_id": "47526",
+              },
+              "singleCTAButton": Object {
+                "action": "",
+                "external": 0,
+                "target": "",
+                "text": "SHOP ALL 1",
+                "title": "SHOP ALL",
+                "url": "http://www.childrensplace.com",
+              },
+              "text": Object {
+                "text": "GIRL",
+              },
+            },
+            Object {
+              "category": Object {
+                "cat_id": "47502>47535>54071",
+              },
+              "singleCTAButton": Object {
+                "action": "",
+                "external": 0,
+                "target": "",
+                "text": "SHOP ALL 2",
+                "title": "SHOP ALL",
+                "url": "http://www.childrensplace.com",
+              },
+              "text": Object {
+                "text": "TODDLER GIRL",
+              },
+            },
+            Object {
+              "category": Object {
+                "cat_id": "47503>47544",
+              },
+              "singleCTAButton": Object {
+                "action": "",
+                "external": 0,
+                "target": "",
+                "text": "SHOP ALL 3",
+                "title": "SHOP ALL",
+                "url": "http://www.childrensplace.com",
+              },
+              "text": Object {
+                "text": "BOY",
+              },
+            },
+            Object {
+              "category": Object {
+                "cat_id": "47501>47526",
+              },
+              "singleCTAButton": null,
+              "text": Object {
+                "text": "TODDLER BOY",
+              },
+            },
+          ]
+        }
+      />
+    </Styled(Col)>
+  </Styled(Row)>
+  <Styled(Row)>
+    <Styled(Col)
+      className="moduleJ__carousel-wrapper"
+      colSize={
+        Object {
+          "large": 10,
+          "medium": 8,
+          "small": 6,
+        }
+      }
+      offsetLeft={
+        Object {
+          "large": 1,
+          "medium": 0,
+          "small": 0,
+        }
+      }
+      offsetRight={
+        Object {
+          "large": 1,
+          "medium": 0,
+          "small": 0,
+        }
+      }
+    >
+      <Styled(Carousel)
+        carouselConfig={
+          Object {
+            "autoplay": false,
+            "customArrowLeft": "/static/images/right-carousel-carrot.svg",
+            "customArrowRight": "/static/images/right-carousel-carrot.svg",
+            "variation": "big-arrows",
+          }
+        }
+        options={
+          Object {
+            "arrows": true,
+            "autoplay": false,
+            "autoplaySpeed": 2000,
+            "centerMode": false,
+            "dots": false,
+            "fade": false,
+            "responsive": Array [
+              Object {
+                "breakpoint": 767,
+                "settings": Object {
+                  "arrows": false,
+                  "slidesToScroll": 3,
+                  "slidesToShow": 4,
+                  "swipeToSlide": true,
+                },
+              },
+              Object {
+                "breakpoint": 1199,
+                "settings": Object {
+                  "arrows": false,
+                  "slidesToScroll": 4,
+                  "slidesToShow": 5,
+                  "swipeToSlide": true,
+                },
+              },
+            ],
+            "slidesToScroll": 6,
+            "slidesToShow": 6,
+            "speed": 1000,
+            "swipe": true,
+          }
+        }
+      />
+    </Styled(Col)>
+  </Styled(Row)>
+</StyledComponent>
+`;
