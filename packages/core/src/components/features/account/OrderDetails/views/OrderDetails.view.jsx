@@ -1,8 +1,14 @@
-import React from 'react';
+import React, { PureComponent } from 'react';
 import PropTypes from 'prop-types';
-import { BodyCopy, Row, Col } from '@tcp/core/src/components/common/atoms';
+import { Row, Col } from '@tcp/core/src/components/common/atoms';
 import withStyles from '@tcp/core/src/components/common/hoc/withStyles';
+import config from '@tcp/core/src/utils/config/config';
 import styles from '../styles/OrderDetails.style';
+import OrderBasicDetails from '../organism/OrderBasicDetails';
+import OrderShippingDetails from '../organism/OrderShippingDetails';
+import OrderBillingDetails from '../organism/OrderBillingDetails';
+import OrderSummaryDetails from '../organism/OrderSummaryDetails';
+import OrderItemsWithStatus from '../organism/OrderItemsWithStatus';
 
 import FormPageHeadingComponent from '../../common/molecule/FormPageHeading';
 
@@ -12,83 +18,86 @@ import FormPageHeadingComponent from '../../common/molecule/FormPageHeading';
  * @param waysToEarn - waysToEarn object used for showing extra points details
  */
 
-const OrderDetailsView = ({ className }) => {
-  /**
-   * @function return  Used to render the JSX of the component
-   * @param    {[Void]} function does not accept anything.
-   * @return   {[Object]} JSX of the component
-   */
+class OrderDetailsView extends PureComponent {
+  render() {
+    const { OrderDetailsData, className, OrdersLabels } = this.props;
+    const { purchasedItems } = OrderDetailsData || {};
 
-  return (
-    <div className={className}>
-      <FormPageHeadingComponent heading="ORDER DETAILS" />
-      <Row className="elem-mt-XL">
-        <Col colSize={{ large: 6, medium: 4, small: 6 }}>
-          <Row>
-            <Col colSize={{ large: 6, medium: 8, small: 6 }}>
-              <BodyCopy component="div">
-                <BodyCopy
-                  fontSize="fs14"
-                  fontWeight="semibold"
-                  fontFamily="secondary"
-                  className="elem-mb-MED"
-                >
-                  Order Number
-                </BodyCopy>
-                <BodyCopy fontSize="fs14" fontWeight="extrabold" fontFamily="secondary">
-                  257332628
-                </BodyCopy>
-              </BodyCopy>
-              <BodyCopy component="div" className="elem-mt-XL">
-                <BodyCopy
-                  fontSize="fs14"
-                  fontWeight="semibold"
-                  fontFamily="secondary"
-                  className="elem-mb-MED"
-                >
-                  Order Date
-                </BodyCopy>
-                <BodyCopy fontSize="fs14" fontFamily="secondary">
-                  July 19, 2019 at 5:12am
-                </BodyCopy>
-              </BodyCopy>
-            </Col>
-            <Col colSize={{ large: 6, medium: 8, small: 6 }}>
-              <BodyCopy component="div">
-                <BodyCopy fontSize="fs14" fontWeight="semibold" fontFamily="secondary">
-                  Shipping
-                </BodyCopy>
-                <BodyCopy fontSize="fs14" fontFamily="secondary">
-                  Address
-                </BodyCopy>
-              </BodyCopy>
-            </Col>
-          </Row>
-        </Col>
-        <Col colSize={{ large: 6, medium: 4, small: 6 }}>
-          <Row>
-            <Col colSize={{ large: 6, medium: 8, small: 6 }}>
-              <BodyCopy fontSize="fs14" fontWeight="semibold" fontFamily="secondary">
-                Billing
-              </BodyCopy>
-            </Col>
-            <Col colSize={{ large: 6, medium: 8, small: 6 }}>
-              <BodyCopy fontSize="fs14" fontWeight="semibold" fontFamily="secondary">
-                Order Summary
-              </BodyCopy>
-            </Col>
-          </Row>
-        </Col>
-      </Row>
-    </div>
-  );
-};
+    console.log('------------------------------');
+    console.log(purchasedItems);
+    console.log('------------------------------');
+
+    return (
+      <div className={className}>
+        <FormPageHeadingComponent heading={OrdersLabels.lbl_orderDetails_heading} />
+        {OrderDetailsData && (
+          <>
+            <Row fullBleed className="elem-mt-XL">
+              <Col colSize={{ large: 6, medium: 4, small: 6 }}>
+                <Row fullBleed>
+                  <Col colSize={{ large: 6, medium: 8, small: 6 }}>
+                    <OrderBasicDetails
+                      OrderDetailsData={OrderDetailsData}
+                      OrdersLabels={OrdersLabels}
+                    />
+                  </Col>
+                  <Col colSize={{ large: 6, medium: 8, small: 6 }}>
+                    <OrderShippingDetails
+                      OrderDetailsData={OrderDetailsData}
+                      OrdersLabels={OrdersLabels}
+                    />
+                  </Col>
+                </Row>
+              </Col>
+              <Col colSize={{ large: 6, medium: 4, small: 6 }}>
+                <Row fullBleed>
+                  <Col colSize={{ large: 6, medium: 8, small: 6 }}>
+                    <OrderBillingDetails
+                      OrderDetailsData={OrderDetailsData}
+                      OrdersLabels={OrdersLabels}
+                    />
+                  </Col>
+                  <Col colSize={{ large: 6, medium: 8, small: 6 }}>
+                    <OrderSummaryDetails
+                      OrderDetailsData={OrderDetailsData}
+                      OrdersLabels={OrdersLabels}
+                    />
+                  </Col>
+                </Row>
+              </Col>
+            </Row>
+            {purchasedItems && (
+              <Row fullBleed className="purchasedItemsMargin">
+                {OrderDetailsData.orderType === config.ORDER_ITEM_TYPE.ECOM &&
+                  purchasedItems.length > 0 &&
+                  purchasedItems.map((orderGroup, index) => (
+                    <Col colSize={{ large: 6, medium: 3, small: 6 }}>
+                      <OrderItemsWithStatus
+                        key={index.toString()}
+                        {...{ orderGroup }}
+                        OrdersLabels={OrdersLabels}
+                      />
+                    </Col>
+                  ))}
+              </Row>
+            )}
+          </>
+        )}
+      </div>
+    );
+  }
+}
+
 OrderDetailsView.propTypes = {
   className: PropTypes.string,
+  OrderDetailsData: PropTypes.shape([]),
+  OrdersLabels: PropTypes.shape([]),
 };
 
 OrderDetailsView.defaultProps = {
   className: '',
+  OrdersLabels: [],
+  OrderDetailsData: [],
 };
 
 export default withStyles(OrderDetailsView, styles);

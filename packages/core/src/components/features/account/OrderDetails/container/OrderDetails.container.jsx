@@ -3,7 +3,7 @@ import { connect } from 'react-redux';
 import { PropTypes } from 'prop-types';
 import OrderDetailsView from '../views';
 import { getOrderDetailsList } from './OrderDetails.actions';
-import { getOrderDetailsDataState } from './OrderDetails.selectors';
+import { getOrderDetailsDataState, getOrdersLabels } from './OrderDetails.selectors';
 
 /**
  * This Class component use for return the Order Details data
@@ -31,11 +31,14 @@ export class OrderDetailsContainer extends PureComponent {
    */
 
   render() {
-    const { orderId, OrderDetailsData } = this.props;
-    console.log('furkanm-------------------------');
-    console.log(OrderDetailsData);
-    console.log('furkanm-------------------------');
-    return <OrderDetailsView OrderDetailsData={OrderDetailsData} orderId={orderId} />;
+    const { orderId, OrderDetailsData, OrdersLabels } = this.props;
+    return (
+      <OrderDetailsView
+        OrderDetailsData={OrderDetailsData}
+        OrdersLabels={OrdersLabels}
+        orderId={orderId}
+      />
+    );
   }
 }
 
@@ -51,17 +54,20 @@ export const mapStateToProps = (state, ownProps) => {
   return {
     orderId: ownProps.router.query.orderId,
     OrderDetailsData: getOrderDetailsDataState(state),
+    OrdersLabels: getOrdersLabels(state),
   };
 };
 
 OrderDetailsContainer.propTypes = {
   orderId: PropTypes.string,
   OrderDetailsData: PropTypes.shape([]),
+  OrdersLabels: PropTypes.shape([]),
   getOrderDetailsListAction: PropTypes.func.isRequired,
 };
 
 OrderDetailsContainer.defaultProps = {
   orderId: '',
+  OrdersLabels: [],
   OrderDetailsData: [],
 };
 

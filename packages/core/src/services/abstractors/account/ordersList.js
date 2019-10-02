@@ -172,6 +172,7 @@ export const getOrderInfoByOrderId = updatedPayload => {
           quantityShipped: parseInt(item.quantityShipped, 10) || 0,
           quantityReturned: parseInt(item.quantityReturned, 10) || 0,
           quantityOOS: 0, // no support from backend
+          itemBrand: item.brand ? item.brand : '',
         },
         trackingInfo: item.shipmentAndStatusInfo ? item.shipmentAndStatusInfo : [],
         isShippedItem: parseInt(item.quantity, 10) === parseInt(item.quantityShipped, 10),
