@@ -1,5 +1,3 @@
-/* eslint-disable max-params */
-/* eslint-disable no-else-return */
 import React from 'react';
 import { View } from 'react-native';
 import PropTypes from 'prop-types';
@@ -19,53 +17,50 @@ class ApplyCardLayoutView extends React.PureComponent {
     applicationStatus,
     bagItems,
     plccData,
-    approvedPLCCData,
-    plccUser,
-    navigation,
-    toggleModal,
-    profileInfo
+    renderViewArgs = {}
   ) => {
     if (applicationStatus === constants.APPLICATION_STATE_PENDING) {
       return (
         <ApplicationInProgress
           labels={labels}
           bagItems={bagItems}
-          navigation={navigation}
-          toggleModal={toggleModal}
+          navigation={renderViewArgs.navigation}
+          toggleModal={renderViewArgs.toggleModal}
         />
       );
-    } else if (applicationStatus === constants.APPLICATION_STATE_EXISTING && !plccUser) {
+    }
+    if (applicationStatus === constants.APPLICATION_STATE_EXISTING && !renderViewArgs.plccUser) {
       return (
         <ExistingPLCCUserView
           bagItems={bagItems}
           labels={labels}
           existingCustomerDetails={plccData && plccData.plcc_existing_customer_details}
-          navigation={navigation}
-          toggleModal={toggleModal}
+          navigation={renderViewArgs.navigation}
+          toggleModal={renderViewArgs.toggleModal}
         />
       );
-    } else if (applicationStatus === constants.APPLICATION_STATE_APPROVED) {
+    }
+    if (applicationStatus === constants.APPLICATION_STATE_APPROVED) {
       return (
         <ApprovedPLCCApplicationView
           bagItems={bagItems}
           labels={labels}
           plccData={plccData}
-          approvedPLCCData={approvedPLCCData}
-          navigation={navigation}
-          toggleModal={toggleModal}
-        />
-      );
-    } else {
-      return (
-        <PLCCForm
-          onSubmit={onSubmit}
-          labels={labels}
-          plccData={plccData}
-          toggleModal={toggleModal}
-          initialValues={profileInfo}
+          approvedPLCCData={renderViewArgs.approvedPLCCData}
+          navigation={renderViewArgs.navigation}
+          toggleModal={renderViewArgs.toggleModal}
         />
       );
     }
+    return (
+      <PLCCForm
+        onSubmit={onSubmit}
+        labels={labels}
+        plccData={plccData}
+        toggleModal={renderViewArgs.toggleModal}
+        initialValues={renderViewArgs.profileInfo}
+      />
+    );
   };
 
   onCloseCallBack = (resetPLCCApplicationStatus, closeAddressVerificationModal) => {
@@ -94,8 +89,6 @@ class ApplyCardLayoutView extends React.PureComponent {
       closeAddressVerificationModal,
       profileInfo,
     } = this.props;
-
-    console.info('>>>>>CallBack>>>>');
     return (
       <ModalNative
         onRequestClose={toggleModal}
@@ -108,18 +101,13 @@ class ApplyCardLayoutView extends React.PureComponent {
       >
         <View>
           {!showAddEditAddressForm
-            ? this.renderPLCCView(
-                labels,
-                onSubmit,
-                applicationStatus,
-                bagItems,
-                plccData,
+            ? this.renderPLCCView(labels, onSubmit, applicationStatus, bagItems, plccData, {
                 approvedPLCCData,
                 plccUser,
                 navigation,
                 toggleModal,
-                profileInfo
-              )
+                profileInfo,
+              })
             : null}
           {showAddEditAddressForm ? (
             <AddressVerification
