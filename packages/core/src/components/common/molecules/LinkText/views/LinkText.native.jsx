@@ -65,7 +65,7 @@ export const bodyCopyStyles = {
  * accepts all parameters for BodyCopy and Heading atom
  */
 
-const getTextItems = (textItems, renderComponentInNewLine, useStyle) => {
+const getTextItems = (textItems, renderComponentInNewLine, useStyle, otherProps) => {
   const textItemsSize = textItems.length;
   return (
     textItems &&
@@ -82,6 +82,7 @@ const getTextItems = (textItems, renderComponentInNewLine, useStyle) => {
             accessibilityLabel={updatedText}
             text={updatedText}
             key={index.toString()}
+            {...otherProps}
           />
         );
       }
@@ -129,7 +130,7 @@ const LinkText = (props: Props) => {
     if (useStyle) {
       return (
         <Anchor url={link.url} navigation={navigation}>
-          <Text>{getTextItems(textItems, renderComponentInNewLine, useStyle)}</Text>
+          <Text>{getTextItems(textItems, renderComponentInNewLine, useStyle, compProps)}</Text>
         </Anchor>
       );
     }

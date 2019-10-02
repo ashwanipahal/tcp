@@ -9,7 +9,7 @@ export default {
           textItems: [
             {
               text: 'A Very Cherry Valentines',
-              style: 'style1',
+              style: 'medium_text_black',
             },
           ],
           link: {
@@ -31,7 +31,7 @@ export default {
         {
           image: {
             url:
-              'https://test5.childrensplace.com/image/upload/v1565027643/homepagetest/gymboree/images/PlayB_Spring-1_2x_diwsan.png',
+              'https://test5.childrensplace.com/image/upload/v1567846221/Module-H_TCP_ybjasx.jpg',
             alt: 'Pool',
             title: 'Pool',
             crop_d: 'c_crop,g_face:center,q_auto:best,w_450',
@@ -50,8 +50,8 @@ export default {
       ],
       singleCTAButton: {
         url: '/c/girls-clothes',
-        text: 'BUTTON TEXT',
-        title: 'BUTTON TEXT',
+        text: 'SHOP OPENING DAY',
+        title: 'SHOP OPENING DAY',
         target: '',
       },
       ribbonBanner: [
@@ -68,7 +68,7 @@ export default {
             title: 'Girls',
             target: '',
           },
-          ribbonPlacement: 'right',
+          ribbonPlacement: 'left',
           ribbonClass: 'ribbon-color-cherry',
         },
       ],

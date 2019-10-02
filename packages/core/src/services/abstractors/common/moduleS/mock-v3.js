@@ -8,12 +8,16 @@ export default {
         {
           textItems: [
             {
-              text: 'Home Run Ready!',
+              text: 'SHOP ALL SUMMER',
               style: 'medium_text_black',
             },
             {
-              text: 'Lets Play.',
-              style: 'medium_text_black',
+              text: 'SURFS UP',
+              style: 'small_text_normal',
+            },
+            {
+              text: 'POOL SIDE',
+              style: 'small_text_normal',
             },
           ],
           link: {
@@ -34,12 +38,12 @@ export default {
         {
           image: {
             url:
-              'https://test5.childrensplace.com/image/upload/v1565027643/homepagetest/gymboree/images/PlayB_Spring-1_2x_diwsan.png',
+              'https://test5.childrensplace.com/image/upload/v1567846221/Module-H_TCP_ybjasx.jpg',
             alt: 'Pool',
             title: 'Pool',
             crop_d: 'c_crop,g_face:center,q_auto:best,w_690',
             crop_t: 'c_crop,g_face:center,q_auto:best,w_768',
-            crop_m: 'c_crop,g_face:center,q_auto:best,w_375',
+            crop_m: 'c_crop,g_face:center,q_auto:best,w_375,h_356',
             url_m: '',
             url_t: '',
           },

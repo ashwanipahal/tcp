@@ -8,15 +8,12 @@ export default {
         {
           textItems: [
             {
-              text: 'Home Run Ready!',
-              style: 'medium_text_black',
-            },
-            {
-              text: 'Lets Play.',
+              text: 'A Very Cherry Valentines',
               style: 'medium_text_black',
             },
           ],
           link: {
+            // eslint-disable-next-line sonarjs/no-duplicate-string
             url: '/c/girls-clothes',
             text: 'Girls',
             title: 'Girls',
@@ -34,12 +31,12 @@ export default {
         {
           image: {
             url:
-              'https://test5.childrensplace.com/image/upload/v1565027643/homepagetest/gymboree/images/PlayB_Spring-1_2x_diwsan.png',
+              'https://test5.childrensplace.com/image/upload/v1567846221/Module-H_TCP_ybjasx.jpg',
             alt: 'Pool',
             title: 'Pool',
-            crop_d: 'c_crop,g_face:center,q_auto:best,w_690',
-            crop_t: 'c_crop,g_face:center,q_auto:best,w_768',
-            crop_m: 'c_crop,g_face:center,q_auto:best,w_375',
+            crop_d: 'c_crop,g_face:center,q_auto:best,w_450',
+            crop_t: 'c_crop,g_face:center,q_auto:best,w_500',
+            crop_m: 'c_crop,g_face:center,q_auto:best,w_347',
             url_m: '',
             url_t: '',
           },
@@ -57,6 +54,24 @@ export default {
         title: 'SHOP OPENING DAY',
         target: '',
       },
+      ribbonBanner: [
+        {
+          textItems: [
+            {
+              text: '20% OFF',
+              style: 'style1',
+            },
+          ],
+          link: {
+            url: '/c/girls-clothes',
+            text: 'Girls',
+            title: 'Girls',
+            target: '',
+          },
+          ribbonPlacement: 'right',
+          ribbonClass: 'ribbon-color-cherry',
+        },
+      ],
       moduleWidth: 'half',
     },
     set: [
