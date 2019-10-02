@@ -37,7 +37,7 @@ class ExtraPointsDetailModal extends React.PureComponent {
 
     switch (activityDetails.activityModalAction) {
       case 'rewardPlaceApp':
-        return UrlHandler(endpoints.policiesPage);
+        return UrlHandler(endpoints.appDownloadPage);
       case 'userAboutYourselfSurvey':
         return handleComponentChange('profileInformationMobile');
       case 'userFavoriteStore':
