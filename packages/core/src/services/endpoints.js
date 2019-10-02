@@ -348,5 +348,13 @@ const endpoints = {
     method: 'PUT',
     URI: 'v2/wishlist/addOrUpdateWishlist',
   },
+  getListofWishList: {
+    method: 'GET',
+    URI: 'v2/wishlist/getListOfWishlist',
+  },
+  getWishListbyId: {
+    method: 'GET',
+    URI: 'v2/wishlist/getWishListbyId',
+  },
 };
 export default endpoints;

@@ -18,6 +18,10 @@ const FavoritesReducer = (state = initialState, action) => {
   switch (action.type) {
     case FAVORITES_CONSTANTS.SET_FAVORITES_STATE:
       return state.merge(action.payload);
+    case FAVORITES_CONSTANTS.FAVORITES_SET_AVAILABLE_WISHLISTS:
+      console.log('action ==> ', action);
+      console.log('action.wishlistsSummaries ==> ', action.wishlistsSummaries);
+      return state.merge('favorites', { wishlistsSummaries: action.wishlistsSummaries });
     default:
       return getDefaultState(state);
   }
