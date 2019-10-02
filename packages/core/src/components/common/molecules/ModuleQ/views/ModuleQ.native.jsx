@@ -6,7 +6,7 @@ import { LAZYLOAD_HOST_NAME } from '@tcp/core/src/utils';
 import { Button, Anchor } from '../../../atoms';
 import { getLocator } from '../../../../../utils/index.native';
 import { Carousel } from '../..';
-import config from '../moduleQ.config';
+import config from '../ModuleQ.config';
 
 import {
   Container,
