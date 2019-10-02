@@ -106,7 +106,8 @@ export function* updateVenmoPaymentInstruction() {
   const shippingDetails = yield select(getShippingDestinationValues);
   const isVenmoSaveSelected = yield select(selectors.isVenmoPaymentSaveSelected);
   const venmoData = yield select(selectors.getVenmoData);
-  const { nonce: venmoNonce, deviceData: venmoDeviceData, details: { username } = {} } = venmoData;
+  const { nonce: venmoNonce, deviceData: venmoDeviceData, details: { username } = {} } =
+    venmoData || {};
   const billingAddressId = shippingDetails.onFileAddressId;
   const paymentMethod = PAYMENT_METHOD_VENMO && PAYMENT_METHOD_VENMO.toUpperCase();
   const requestData = {
@@ -131,7 +132,7 @@ export function* updateVenmoPaymentInstruction() {
   yield call(addPaymentToOrder, requestData);
 }
 
-function* getAddressData(formData) {
+export function* getAddressData(formData) {
   const existingAddress = yield select(getAddressByKey, formData.address.onFileAddressKey);
   const shippingDetails = yield select(getShippingDestinationValues);
   return existingAddress ? existingAddress.addressId : shippingDetails.onFileAddressId;

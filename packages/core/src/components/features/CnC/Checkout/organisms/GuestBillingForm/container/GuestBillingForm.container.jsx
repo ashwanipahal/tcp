@@ -55,7 +55,7 @@ class GuestBillingContainer extends React.Component {
         onFileAddressId,
       } = address);
     }
-    if (paymentMethodId !== 'venmo') {
+    if (paymentMethodId !== CONSTANTS.PAYMENT_METHOD_VENMO) {
       submitData = {
         cardNumber: data.cardNumber,
         cardType: data.cardType,

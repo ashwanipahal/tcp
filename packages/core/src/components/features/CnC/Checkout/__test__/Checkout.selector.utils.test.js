@@ -1,5 +1,6 @@
 import { fromJS } from 'immutable';
 import CHECKOUT_SELECTORS, { getSendOrderUpdate } from '../container/Checkout.selector';
+import { isMobileApp } from '../../../../../utils';
 
 describe('Checkout Selectors', () => {
   const FormState = {
@@ -185,5 +186,53 @@ describe('Checkout Selectors', () => {
       User: UserState,
     };
     expect(CHECKOUT_SELECTORS.getShippingAddress(State)).toEqual({ addressLine: ['abc', 'def'] });
+  });
+
+  it('#getIsVenmoEnabled', () => {
+    const { getIsVenmoEnabled } = CHECKOUT_SELECTORS;
+    const session = fromJS({
+      siteDetails: {
+        VENMO_ENABLED: 'TRUE',
+      },
+    });
+
+    const state = {
+      session,
+    };
+    isMobileApp.mockImplementation(() => true);
+    expect(CHECKOUT_SELECTORS.getIsMobile()).toEqual(true);
+    expect(getIsVenmoEnabled(state)).toEqual(true);
+  });
+
+  it('#getVenmoClientTokenData', () => {
+    const { getVenmoClientTokenData } = CHECKOUT_SELECTORS;
+    const Checkout = fromJS({
+      values: {
+        venmoClientTokenData: {
+          userState: 'G',
+          venmoCustomerIdAvailable: false,
+          venmoIsDefaultPaymentType: false,
+          venmoPaymentTokenAvailable: false,
+          venmoSecurityToken: '',
+        },
+      },
+    });
+
+    const state = {
+      Checkout: fromJS({
+        values: {
+          venmoClientTokenData: {
+            userState: 'G',
+            venmoCustomerIdAvailable: false,
+            venmoIsDefaultPaymentType: false,
+            venmoPaymentTokenAvailable: false,
+            venmoSecurityToken: '',
+          },
+        },
+      }),
+    };
+    expect(getVenmoClientTokenData(state)).toEqual(
+      Checkout.getIn(['values', 'venmoClientTokenData'])
+    );
   });
 });
