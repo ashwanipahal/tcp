@@ -1,4 +1,6 @@
 import React from 'react';
+import { change } from 'redux-form';
+import { connect } from 'react-redux';
 import { getFormSKUValue } from '../../../../../utils/utils';
 import ProductAddToBag from '../views/ProductAddToBag.view';
 
@@ -379,6 +381,8 @@ class ProductAddToBagContainer extends React.PureComponent<Props> {
 
   quantityChange = selectedQuantity => {
     this.setState({ selectedQuantity });
+    const { dispatch } = this.props;
+    dispatch(change('ProductAddToBag', 'Quantity', selectedQuantity));
   };
 
   /**
@@ -447,6 +451,6 @@ class ProductAddToBagContainer extends React.PureComponent<Props> {
 
 /* Export container */
 
-export default ProductAddToBagContainer;
+export default connect()(ProductAddToBagContainer);
 
 export { ProductAddToBagContainer as ProductAddToBagContainerVanilla };
