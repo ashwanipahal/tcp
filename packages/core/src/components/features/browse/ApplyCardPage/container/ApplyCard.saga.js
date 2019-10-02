@@ -1,10 +1,12 @@
 import { call, takeLatest, put, select } from 'redux-saga/effects';
-import constants from '../RewardsCard.constants';
+import constants, { ERR_CONFIG } from '../RewardsCard.constants';
 import { setModuleX, obtainInstantCardApplication } from './ApplyCard.actions';
 import { getModuleX } from '../../../../../services/abstractors/common/moduleXComposite';
 import applyInstantCard from '../../../../../services/abstractors/common/PLCC';
 import { validateReduxCache } from '../../../../../utils/cache.util';
 import { getErrorMapping } from './ApplyCard.selectors';
+import { toastMessageInfo } from '../../../../common/atoms/Toast/container/Toast.actions.native';
+import { isMobileApp } from '../../../../../utils';
 
 /*
  * @Generator - fetchModuleX Saga -
@@ -33,6 +35,9 @@ export function* submitCreditCardForm({ payload = '' }) {
   try {
     const labels = yield select(getErrorMapping);
     const res = yield call(applyInstantCard, payload, labels);
+    if (isMobileApp() && ERR_CONFIG.indexOf(res.status) === -1) {
+      yield put(toastMessageInfo(res.status));
+    }
     yield put(obtainInstantCardApplication(res));
   } catch (err) {
     yield null;

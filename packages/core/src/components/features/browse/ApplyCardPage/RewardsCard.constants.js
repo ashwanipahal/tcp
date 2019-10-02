@@ -17,20 +17,61 @@ export const MONTH_SHORT_FORMAT = {
 };
 
 export const MONTH_OPTIONS_MAP_WITH_EMPTY = [
-  { id: 'Mm', displayName: 'Mm' },
-  { id: '01', displayName: MONTH_SHORT_FORMAT.JAN },
-  { id: '02', displayName: MONTH_SHORT_FORMAT.FEB },
-  { id: '03', displayName: MONTH_SHORT_FORMAT.MAR },
-  { id: '04', displayName: MONTH_SHORT_FORMAT.APR },
-  { id: '05', displayName: MONTH_SHORT_FORMAT.MAY },
-  { id: '06', displayName: MONTH_SHORT_FORMAT.JUN },
-  { id: '07', displayName: MONTH_SHORT_FORMAT.JUL },
-  { id: '08', displayName: MONTH_SHORT_FORMAT.AUG },
-  { id: '09', displayName: MONTH_SHORT_FORMAT.SEP },
-  { id: '10', displayName: MONTH_SHORT_FORMAT.OCT },
-  { id: '11', displayName: MONTH_SHORT_FORMAT.NOV },
-  { id: '12', displayName: MONTH_SHORT_FORMAT.DEC },
+  {
+    id: 'Mm',
+    displayName: 'Mm',
+  },
+  {
+    id: '01',
+    displayName: MONTH_SHORT_FORMAT.JAN,
+  },
+  {
+    id: '02',
+    displayName: MONTH_SHORT_FORMAT.FEB,
+  },
+  {
+    id: '03',
+    displayName: MONTH_SHORT_FORMAT.MAR,
+  },
+  {
+    id: '04',
+    displayName: MONTH_SHORT_FORMAT.APR,
+  },
+  {
+    id: '05',
+    displayName: MONTH_SHORT_FORMAT.MAY,
+  },
+  {
+    id: '06',
+    displayName: MONTH_SHORT_FORMAT.JUN,
+  },
+  {
+    id: '07',
+    displayName: MONTH_SHORT_FORMAT.JUL,
+  },
+  {
+    id: '08',
+    displayName: MONTH_SHORT_FORMAT.AUG,
+  },
+  {
+    id: '09',
+    displayName: MONTH_SHORT_FORMAT.SEP,
+  },
+  {
+    id: '10',
+    displayName: MONTH_SHORT_FORMAT.OCT,
+  },
+  {
+    id: '11',
+    displayName: MONTH_SHORT_FORMAT.NOV,
+  },
+  {
+    id: '12',
+    displayName: MONTH_SHORT_FORMAT.DEC,
+  },
 ];
+
+export const ERR_CONFIG = ['PENDING', 'APPROVED', 'EXISTING'];
 
 export default {
   FETCH_MODULEX_CONTENT: `${APPLY_PLCC_ACTION_PATTERN}FETCH_MODULEX_CONTENT`,

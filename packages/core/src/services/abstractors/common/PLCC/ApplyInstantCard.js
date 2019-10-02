@@ -94,7 +94,9 @@ const applyInstantCard = (args, errorsMapping) => {
     .then(res => {
       const response = res.body;
       if (!response) {
-        return { status: errorsMapping.INTERNAL_SERVER_ERROR };
+        return {
+          status: errorsMapping.INTERNAL_SERVER_ERROR,
+        };
       }
       const body = res.body && res.body.response ? res.body.response : res.body;
       const returnCode = body.returnCode || body.errorCode;

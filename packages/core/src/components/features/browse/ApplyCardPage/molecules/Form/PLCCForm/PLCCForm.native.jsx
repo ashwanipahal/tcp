@@ -532,6 +532,7 @@ class PLCCForm extends React.PureComponent<Props> {
             underline
             text={getLabelValue(labels, 'lbl_PLCCForm_noThanks')}
             paddingTop="40px"
+            paddingBottom="60px"
             onPress={toggleModal}
             url=""
           />

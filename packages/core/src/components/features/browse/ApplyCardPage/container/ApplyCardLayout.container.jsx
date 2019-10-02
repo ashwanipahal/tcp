@@ -30,7 +30,6 @@ class ApplyCardLayoutContainer extends React.Component {
     if (!plccData && labels && labels.referred) {
       fetchModuleXContent(labels && labels.referred);
     }
-    window.scrollTo(0, 0);
   }
 
   /**
@@ -105,6 +104,7 @@ class ApplyCardLayoutContainer extends React.Component {
       resetPLCCApplicationStatus,
     } = this.props;
     const { showAddEditAddressForm } = this.state;
+
     return (
       <React.Fragment>
         <ApplyCardLayoutView
