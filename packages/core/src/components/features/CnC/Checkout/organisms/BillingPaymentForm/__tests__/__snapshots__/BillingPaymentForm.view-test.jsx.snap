@@ -223,7 +223,7 @@ exports[`ButtonList component renders correctly if  cards present and addNewCCSt
   <Styled(CheckoutFooter)
     backLinkHandler={[Function]}
     backLinkText=""
-    disableNext={false}
+    disableDesktopOnlyNext={false}
     hideBackLink={true}
     nextButtonText=""
     showVenmoSubmit={false}
@@ -368,7 +368,7 @@ exports[`ButtonList component renders correctly if  no cards present  1`] = `
   <Styled(CheckoutFooter)
     backLinkHandler={[Function]}
     backLinkText=""
-    disableNext={false}
+    disableDesktopOnlyNext={false}
     hideBackLink={true}
     nextButtonText=""
     showVenmoSubmit={false}
@@ -429,7 +429,7 @@ exports[`ButtonList component renders correctly if payment method is diff 1`] = 
   <Styled(CheckoutFooter)
     backLinkHandler={[Function]}
     backLinkText=""
-    disableNext={false}
+    disableDesktopOnlyNext={false}
     hideBackLink={true}
     nextButtonText=""
     showVenmoSubmit={false}
@@ -1051,7 +1051,7 @@ exports[`ButtonList component renders correctly without props 1`] = `
   <Styled(CheckoutFooter)
     backLinkHandler={[Function]}
     backLinkText=""
-    disableNext={false}
+    disableDesktopOnlyNext={false}
     hideBackLink={true}
     nextButtonText=""
     showVenmoSubmit={false}
@@ -1673,7 +1673,7 @@ exports[`ButtonList component renders correctly without props 2`] = `
   <Styled(CheckoutFooter)
     backLinkHandler={[Function]}
     backLinkText=""
-    disableNext={false}
+    disableDesktopOnlyNext={false}
     hideBackLink={true}
     nextButtonText=""
     showVenmoSubmit={false}
@@ -1695,7 +1695,7 @@ exports[`ButtonList component renders correctly without props with isPaymentDisa
   <Styled(CheckoutFooter)
     backLinkHandler={[Function]}
     backLinkText=""
-    disableNext={false}
+    disableDesktopOnlyNext={false}
     hideBackLink={true}
     nextButtonText=""
     showVenmoSubmit={false}
@@ -1756,7 +1756,7 @@ exports[`ButtonList component renders correctly without props with payPal 1`] = 
   <Styled(CheckoutFooter)
     backLinkHandler={[Function]}
     backLinkText=""
-    disableNext={false}
+    disableDesktopOnlyNext={false}
     hideBackLink={true}
     nextButtonText=""
     showVenmoSubmit={false}
@@ -1820,7 +1820,7 @@ exports[`ButtonList component renders correctly without props with venmo 1`] = `
   <Styled(CheckoutFooter)
     backLinkHandler={[Function]}
     backLinkText=""
-    disableNext={false}
+    disableDesktopOnlyNext={false}
     hideBackLink={true}
     nextButtonText=""
     showVenmoSubmit={true}

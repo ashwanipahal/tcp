@@ -59,6 +59,16 @@ exports[`ButtonList component renders correctly without props 2`] = `
     className="card-edit-buttons"
   >
     <Styled(Button)
+      buttonVariation="variable-width"
+      className="card-edit-button card-edit-save-mob"
+      fill="BLUE"
+      fontSize="fs14"
+      fontWeight="extrabold"
+      type="submit"
+    >
+      Save
+    </Styled(Button)>
+    <Styled(Button)
       className="card-edit-button card-edit-cancel"
       type="button"
     >
