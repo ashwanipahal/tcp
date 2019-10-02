@@ -78,8 +78,6 @@ class ModuleQ extends React.PureComponent {
     selectedProductList = selectedProductList.slice(0, TOTAL_IMAGES);
     selectedProductList = selectedProductList.concat(selectedProductList);
 
-    console.log(selectedProductList);
-
     return (
       <Grid className={`${className} ${bgClass} moduleQ`}>
         <Row centered>

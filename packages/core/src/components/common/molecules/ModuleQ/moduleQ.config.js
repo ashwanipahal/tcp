@@ -9,6 +9,7 @@ export default {
     arrows: true,
     autoplaySpeed: 2000,
     centerMode: true,
+    centerPadding: '60px',
     fade: false,
     speed: 1000,
     dots: true,
