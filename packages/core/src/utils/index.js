@@ -67,5 +67,7 @@ export {
   configureInternalNavigationFromCMSUrl,
   getModifiedLanguageCode,
   getTranslateDateInformation,
+  getDateInformation,
+  buildStorePageUrlSuffix,
   flattenArray,
 } from './utils';
