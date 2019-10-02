@@ -608,7 +608,6 @@ exports[`ButtonList component renders correctly without props 1`] = `
         fontSizeVariation="medium"
         noLink={true}
         onClick={[Function]}
-        to="/#"
         underline={true}
       />
     </Styled(BodyCopy)>
@@ -1230,7 +1229,6 @@ exports[`ButtonList component renders correctly without props 2`] = `
         fontSizeVariation="medium"
         noLink={true}
         onClick={[Function]}
-        to="/#"
         underline={true}
       />
     </Styled(BodyCopy)>
