@@ -1,6 +1,7 @@
 import React from 'react';
 import { View } from 'react-native';
 import PropTypes from 'prop-types';
+import throttle from 'lodash/throttle';
 import OrderLedgerContainer from '@tcp/core/src/components/features/CnC/common/organism/OrderLedger';
 import { isCanada } from '@tcp/core/src/utils';
 import ProductTileWrapper from '../../CartItemTile/organisms/ProductTileWrapper/container/ProductTileWrapper.container';
@@ -11,25 +12,36 @@ import {
   HeadingViewStyle,
   MainSection,
   RowSectionStyle,
-  HeadingTextStyle,
   ScrollViewWrapper,
   BonusPointsWrapper,
   BagHeaderRow,
   SflHeadingViewStyle,
-  InActiveBagHeaderText,
-  ActiveBagHeaderText,
   ActiveBagHeaderView,
   InActiveBagHeaderView,
+  HeadingTextStyleView,
+  EstimateTextStyle,
+  ActiveBagHeaderTextNew,
+  InActiveBagHeaderTextView,
+  InActiveEstimateTextStyle,
 } from '../styles/BagPage.style.native';
 import BonusPointsDays from '../../../../common/organisms/BonusPointsDays';
 import InitialPropsHOC from '../../../../common/hoc/InitialPropsHOC/InitialPropsHOC.native';
 import BAGPAGE_CONSTANTS from '../BagPage.constants';
+import BagPageUtils from './Bagpage.utils';
+import { isClient } from '../../../../../utils';
 
 class BagPage extends React.Component {
+  bagPageHeader = React.createRef();
+
+  itemStyle = {
+    position: 'relative',
+  };
+
   constructor(props) {
     super(props);
     this.state = {
       activeSection: null,
+      showCondensedHeader: false,
     };
   }
 
@@ -61,6 +73,14 @@ class BagPage extends React.Component {
     } else if (isDeleting) {
       toastMessage(itemDeleted);
     }
+    const header = this.bagPageHeader;
+    if (header) {
+      this.addScrollListener();
+    }
+  }
+
+  componentWillUnmount() {
+    this.removeScrollListener();
   }
 
   handleChangeActiveSection = sectionName => {
@@ -72,19 +92,54 @@ class BagPage extends React.Component {
     }
   };
 
+  addScrollListener = () => {
+    const stickyPos = BagPageUtils.getElementStickyPosition(this.bagPageHeader);
+    BagPageUtils.bindScrollEvent(this.handleScroll.bind(this, stickyPos));
+  };
+
+  removeScrollListener = () => {
+    const stickyPos = BagPageUtils.getElementStickyPosition(this.bagPageHeader);
+    window.removeEventListener('scroll', throttle(this.handleScroll.bind(this, stickyPos), 100));
+  };
+
+  handleScroll = sticky => {
+    const { bagStickyHeaderInterval } = this.props;
+    const condensedBagHeader = this.bagPageHeader;
+    const condensedPageHeaderHeight = BagPageUtils.getPageLevelHeaderHeight();
+    if (isClient() && window.pageYOffset > sticky - condensedPageHeaderHeight) {
+      condensedBagHeader.style.top = `${condensedPageHeaderHeight.toString()}px`;
+      this.setState({ showCondensedHeader: true });
+      if (this.timer !== null) {
+        clearTimeout(this.timer);
+      }
+      this.timer = setTimeout(() => {
+        this.setState({ showCondensedHeader: false });
+      }, bagStickyHeaderInterval);
+    } else {
+      this.setState({ showCondensedHeader: false });
+    }
+  };
+
   renderBagHeading() {
     const { activeSection } = this.state;
-    const { labels, totalCount } = this.props;
+    const { labels, totalCount, orderBalanceTotal } = this.props;
     const { bagHeading } = labels;
     const bagHeadingTexts = `${bagHeading} (${totalCount})`;
+    const estimateTotal = `${labels.totalLabel}: $${orderBalanceTotal.toFixed(2)}`;
     return (
-      <HeadingTextStyle>
+      <HeadingTextStyleView>
         {activeSection === BAGPAGE_CONSTANTS.SFL_STATE ? (
-          <InActiveBagHeaderText>{bagHeadingTexts}</InActiveBagHeaderText>
+          <>
+            <InActiveBagHeaderTextView>{bagHeadingTexts}</InActiveBagHeaderTextView>
+            <InActiveEstimateTextStyle>{estimateTotal}</InActiveEstimateTextStyle>
+          </>
         ) : (
-          <ActiveBagHeaderText>{bagHeadingTexts}</ActiveBagHeaderText>
+          <>
+            <ActiveBagHeaderTextNew>{bagHeadingTexts}</ActiveBagHeaderTextNew>
+            <EstimateTextStyle>{estimateTotal}</EstimateTextStyle>
+          </>
         )}
-      </HeadingTextStyle>
+      </HeadingTextStyleView>
     );
   }
 
@@ -95,13 +150,19 @@ class BagPage extends React.Component {
     const { savedLaterButton } = labels;
     const headingTexts = `${savedLaterButton} (${sflItems.size})`;
     return (
-      <HeadingTextStyle>
+      <HeadingTextStyleView>
         {activeSection === BAGPAGE_CONSTANTS.BAG_STATE ? (
-          <InActiveBagHeaderText>{headingTexts}</InActiveBagHeaderText>
+          <>
+            <InActiveBagHeaderTextView>{headingTexts}</InActiveBagHeaderTextView>
+            <EstimateTextStyle />
+          </>
         ) : (
-          <ActiveBagHeaderText>{headingTexts}</ActiveBagHeaderText>
+          <>
+            <ActiveBagHeaderTextNew>{headingTexts}</ActiveBagHeaderTextNew>
+            <EstimateTextStyle />
+          </>
         )}
-      </HeadingTextStyle>
+      </HeadingTextStyleView>
     );
   }
 
@@ -155,7 +216,7 @@ class BagPage extends React.Component {
     const { labels, showAddTobag, navigation, orderItemsCount } = this.props;
     const { handleCartCheckout, isUserLoggedIn, sflItems } = this.props;
     const isNoNEmptyBag = orderItemsCount > 0;
-    const { activeSection } = this.state;
+    const { activeSection, showCondensedHeader } = this.state;
     if (!labels.tagLine) {
       return <View />;
     }
@@ -164,7 +225,7 @@ class BagPage extends React.Component {
     return (
       <>
         <ScrollViewWrapper showAddTobag={showAddTobag}>
-          <BagHeaderRow>
+          <BagHeaderRow ref={this.bagPageHeader} style={showCondensedHeader ? this.itemStyle : ''}>
             <HeadingViewStyle
               onPress={() => {
                 this.handleChangeActiveSection(BAGPAGE_CONSTANTS.BAG_STATE);
@@ -229,6 +290,8 @@ BagPage.propTypes = {
   isCartItemSFL: PropTypes.bool.isRequired,
   isSflItemRemoved: PropTypes.bool.isRequired,
   isShowSaveForLaterSwitch: PropTypes.bool.isRequired,
+  orderBalanceTotal: PropTypes.number.isRequired,
+  bagStickyHeaderInterval: PropTypes.number.isRequired,
 };
 
 export default InitialPropsHOC(BagPage);

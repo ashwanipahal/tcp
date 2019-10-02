@@ -86,6 +86,49 @@ export const SuccessMessageContainer = styled.View`
   padding: ${props => props.theme.spacing.ELEM_SPACING.SM};
 `;
 
+export const HeadingTextStyleView = styled.View`
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+`;
+
+export const ActiveBagHeaderTextNew = styled.Text`
+  font-weight: ${props => props.theme.fonts.fontWeight.black};
+  font-size: ${props => props.theme.typography.fontSizes.fs18};
+  font-family: ${props => props.theme.typography.fonts.secondary};
+  text-align: center;
+  margin-top: ${props => props.theme.spacing.ELEM_SPACING.SM};
+  margin-bottom: ${props => props.theme.spacing.ELEM_SPACING.XXXS};
+`;
+
+export const InActiveBagHeaderTextView = styled.Text`
+  font-weight: ${props => props.theme.fonts.fontWeight.semiBold};
+  color: ${props => props.theme.colors.TEXT.DARKGRAY};
+  font-size: ${props => props.theme.typography.fontSizes.fs18};
+  font-family: ${props => props.theme.typography.fonts.secondary};
+  text-align: center;
+  margin-top: ${props => props.theme.spacing.ELEM_SPACING.SM};
+  margin-bottom: ${props => props.theme.spacing.ELEM_SPACING.XXXS};
+`;
+
+export const EstimateTextStyle = styled.Text`
+  font-size: ${props => props.theme.typography.fontSizes.fs10};
+  margin-bottom: ${props => props.theme.spacing.ELEM_SPACING.XS};
+  font-weight: ${props => props.theme.fonts.fontWeight.light};
+  text-align: center;
+  width: 100%;
+`;
+export const InActiveEstimateTextStyle = styled.Text`
+  font-size: ${props => props.theme.typography.fontSizes.fs10};
+  margin-bottom: ${props => props.theme.spacing.ELEM_SPACING.XS};
+  font-weight: ${props => props.theme.fonts.fontWeight.semiBold};
+  color: ${props => props.theme.colors.TEXT.DARKGRAY};
+  text-align: center;
+  width: 100%;
+`;
+
 export default {
   HeadingViewStyle,
   MainSection,
@@ -101,4 +144,9 @@ export default {
   InActiveBagHeaderView,
   SuccessTickImage,
   SuccessMessageContainer,
+  HeadingTextStyleView,
+  EstimateTextStyle,
+  ActiveBagHeaderTextNew,
+  InActiveBagHeaderTextView,
+  InActiveEstimateTextStyle,
 };
