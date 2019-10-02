@@ -14157,10 +14157,10 @@ react-modal@^3.8.1:
     react-lifecycles-compat "^3.0.0"
     warning "^3.0.0"
 
-react-native-awesome-card-io@0.8.1:
-  version "0.8.1"
-  resolved "https://registry.yarnpkg.com/react-native-awesome-card-io/-/react-native-awesome-card-io-0.8.1.tgz#99a49f6929ea2e89ab45afa13893ba46391163ce"
-  integrity sha512-CJwiBzhjKxbPEjmK6JR7al8E+Er0FUcGclpkMbQjhbzlWg9T1SFrNGw7BxsjmVnNSl7ePwBcrpIu6s5kskjdeQ==
+react-native-awesome-card-io@^0.8.2:
+  version "0.8.2"
+  resolved "https://registry.yarnpkg.com/react-native-awesome-card-io/-/react-native-awesome-card-io-0.8.2.tgz#842f8df89a55f15db21b3d2a145b5c7e4de55269"
+  integrity sha512-nMeusW4M74pTFgc/HqKyaor7qKvLo/lJbZcqmFWWdxuyt4+ihcVZvhj/d1DSDXL098AJETvD+KVy98D7WSM3uQ==
   dependencies:
     prop-types "^15.6.2"
 

@@ -136,6 +136,17 @@ class AddNewCCForm extends React.PureComponent {
   };
 
   /**
+   * @function updateCardDetails
+   * @description called when scan any card through camera scanner
+   */
+  updateCardDetails = (cardNumber, year, month) => {
+    const { dispatch, formName } = this.props;
+    dispatch(change(formName, 'cardNumber', cardNumber));
+    dispatch(change(formName, 'expYear', year));
+    dispatch(change(formName, 'expMonth', month));
+  };
+
+  /**
    * @function render
    * @description render method to be called of component
    */
@@ -154,8 +165,10 @@ class AddNewCCForm extends React.PureComponent {
           expMonthOptionsMap={this.creditCardExpirationOptionMap.monthsMap}
           expYearOptionsMap={this.creditCardExpirationOptionMap.yearsMap}
           updateExpiryDate={this.updateExpiryDate}
+          updateCardDetails={this.updateCardDetails}
           selectedExpYear={expYear}
           selectedExpMonth={expMonth}
+          cameraIcon
         />
         {!isGuest && this.renderSaveToAccountOptions()}
       </>

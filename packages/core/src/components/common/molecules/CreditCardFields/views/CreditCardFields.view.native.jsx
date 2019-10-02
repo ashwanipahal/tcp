@@ -1,7 +1,11 @@
 import React from 'react';
+import { Platform } from 'react-native';
+import { CardIOModule, CardIOUtilities } from 'react-native-awesome-card-io';
 import PropTypes from 'prop-types';
 import { Field } from 'redux-form';
 import DropDown from '@tcp/core/src/components/common/atoms/DropDown/views/DropDown.native';
+import CustomIcon from '../../../atoms/Icon';
+import { ICON_NAME } from '../../../atoms/Icon/Icon.constants';
 import CreditCardNumber from '../../../atoms/CreditCardNumber';
 import TextBox from '../../../atoms/TextBox';
 import {
@@ -15,6 +19,7 @@ import {
   CvvTextboxStyle,
   HiddenExpiryWrapper,
   CVVInfo,
+  StyledImageWrapper,
 } from '../styles/CreditCardFields.styles.native';
 
 /**
@@ -42,6 +47,34 @@ export class CreditCardFields extends React.PureComponent<Props> {
     }
   }
 
+  componentWillMount() {
+    if (Platform.OS === 'ios') {
+      CardIOUtilities.preload();
+    }
+  }
+
+  scanCard = () => {
+    const { updateCardDetails } = this.props;
+    const config = {
+      hideCardIOLogo: true,
+      requireCVV: false,
+      requireExpiry: true,
+      scanInstructions: 'Position your card in the frame',
+    };
+    CardIOModule.scanCard(config)
+      .then(card => {
+        this.setState(
+          { selectedMonth: card.expiryMonth.toString(), selectedYear: card.expiryYear.toString() },
+          () => {
+            updateCardDetails(card.cardNumber, card.expiryMonth, card.expiryYear);
+          }
+        );
+      })
+      .catch(error => {
+        console.log('scanCard', error);
+      });
+  };
+
   /**
    * @function render
    * @description render method to be called of component
@@ -60,6 +93,7 @@ export class CreditCardFields extends React.PureComponent<Props> {
       creditFieldLabels,
       cvvInfo,
       showCvv,
+      cameraIcon,
     } = this.props;
     const { selectedMonth, selectedYear } = this.state;
     const dropDownStyle = {
@@ -91,7 +125,18 @@ export class CreditCardFields extends React.PureComponent<Props> {
             val={isEdit ? dto.accountNo : ''}
             creditCard={creditCard}
             customStyle={CardTextboxStyle}
+            cameraIcon={cameraIcon}
           />
+          {cameraIcon && cardType == null && (
+            <StyledImageWrapper onPress={this.scanCard}>
+              <CustomIcon
+                name={ICON_NAME.camera}
+                size="fs25"
+                color="gray.900"
+                dataLocator="pdp_fast_shipping_icon"
+              />
+            </StyledImageWrapper>
+          )}
         </CardContainer>
         <ExpiryContainer showCvv={showCvv}>
           <ExpiryMonth>
@@ -101,6 +146,7 @@ export class CreditCardFields extends React.PureComponent<Props> {
               data={expMonthOptionsMap}
               dataLocator="addEditCreditCard-expMonth"
               onValueChange={itemValue => {
+                console.log('expMonth', itemValue, selectedYear);
                 this.setState({ selectedMonth: itemValue });
                 updateExpiryDate(itemValue, selectedYear);
               }}
@@ -176,6 +222,7 @@ CreditCardFields.propTypes = {
   dto: PropTypes.shape({}),
   selectedCard: PropTypes.shape({}),
   showCvv: PropTypes.bool,
+  cameraIcon: PropTypes.bool,
 };
 
 CreditCardFields.defaultProps = {
@@ -191,6 +238,7 @@ CreditCardFields.defaultProps = {
   dto: {},
   selectedCard: null,
   showCvv: true,
+  cameraIcon: false,
 };
 
 export default CreditCardFields;
