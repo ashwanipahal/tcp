@@ -177,6 +177,32 @@ export default css`
     padding: 0px ${props => props.theme.spacing.ELEM_SPACING.XL};
     min-height: 42px;
   }
+  .card-edit-buttons {
+    display: flex;
+    justify-content: flex-end;
+    margin-right: 20px;
+    margin-bottom: 20px;
+
+    .card-edit-button {
+      height: 51px;
+      width: 210px;
+      margin-left: ${props => props.theme.spacing.ELEM_SPACING.XL};
+    }
+    .card-edit-cancel {
+      border: 1px solid ${props => props.theme.colors.PRIMARY.GRAY};
+      background: ${props => props.theme.colors.WHITE};
+      &:hover {
+        background: ${props => props.theme.colors.WHITE};
+      }
+    }
+    .card-edit-save {
+      background: ${props => props.theme.colors.PRIMARY.BLUE};
+      &:hover {
+        background: ${props => props.theme.colors.PRIMARY.BLUE};
+      }
+    }
+  }
+
   @media ${props => props.theme.mediaQuery.smallOnly} {
     .ulBorderWithLastRow li:last-child {
       padding: 0px ${props => props.theme.spacing.ELEM_SPACING.SM}

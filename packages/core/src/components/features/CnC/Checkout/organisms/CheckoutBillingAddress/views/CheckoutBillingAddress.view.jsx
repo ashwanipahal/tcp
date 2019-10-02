@@ -46,12 +46,16 @@ class CheckoutAddress extends React.Component {
   };
 
   openAddNewAddressMode = () => {
+    const { editMode, dispatch, formName } = this.props;
     this.newAddressModeStarted = true;
+    if (editMode) {
+      dispatch(change(formName, `address.addressId`, ''));
+    }
     this.setState({ isAddNewAddress: true });
   };
 
-  onSameAsShippingChange = () => {
-    const { isSameAsShippingChecked, dispatch, shippingAddress, formName } = this.props;
+  onSameAsShippingChange = (e, value) => {
+    const { dispatch, shippingAddress, formName, editMode } = this.props;
     const {
       firstName,
       lastName,
@@ -61,8 +65,12 @@ class CheckoutAddress extends React.Component {
       city,
       zipCode,
       country,
+      addressId,
     } = shippingAddress;
-    if (isSameAsShippingChecked) {
+    if (value) {
+      if (editMode) {
+        dispatch(change(formName, `address.addressId`, addressId));
+      }
       dispatch(change(formName, `address.firstName`, firstName));
       dispatch(change(formName, `address.lastName`, lastName));
       dispatch(change(formName, `address.addressLine1`, addressLine1));
@@ -71,6 +79,8 @@ class CheckoutAddress extends React.Component {
       dispatch(change(formName, `address.city`, city));
       dispatch(change(formName, `address.zipCode`, zipCode));
       dispatch(change(formName, `address.country`, country));
+    } else {
+      dispatch(change(formName, `address.addressId`, ''));
     }
   };
 
@@ -214,11 +224,32 @@ class CheckoutAddress extends React.Component {
     return addressOptions;
   };
 
-  onAddressDropDownChange = () => {
+  onAddressDropDownChange = addressId => {
     const { isAddNewAddress } = this.state;
+    const { editMode, userAddresses, dispatch, formName } = this.props;
     if (this.newAddressModeStarted) {
       this.newAddressModeStarted = false;
       return;
+    }
+    if (editMode) {
+      const {
+        addressLine: [addressLine1, addressLine2],
+        firstName,
+        lastName,
+        state,
+        city,
+        zipCode,
+        country,
+      } = userAddresses.find(address => addressId.toString() === address.addressId.toString());
+      dispatch(change(formName, `address.addressId`, addressId));
+      dispatch(change(formName, `address.firstName`, firstName));
+      dispatch(change(formName, `address.lastName`, lastName));
+      dispatch(change(formName, `address.addressLine1`, addressLine1));
+      dispatch(change(formName, `address.addressLine2`, addressLine2));
+      dispatch(change(formName, `address.state`, state));
+      dispatch(change(formName, `address.city`, city));
+      dispatch(change(formName, `address.zipCode`, zipCode));
+      dispatch(change(formName, `address.country`, country));
     }
     if (isAddNewAddress) {
       this.setState({ isAddNewAddress: !isAddNewAddress });

@@ -23,129 +23,17 @@ exports[`CheckoutAddress should call onSameAsShippingChange 1`] = `
             Array [
               Object {
                 "meta": Object {
-                  "field": "address.firstName",
+                  "field": "address.addressId",
                   "form": undefined,
                   "persistentSubmitErrors": undefined,
                   "touch": undefined,
                 },
-                "payload": undefined,
-                "type": "@@redux-form/CHANGE",
-              },
-            ],
-            Array [
-              Object {
-                "meta": Object {
-                  "field": "address.lastName",
-                  "form": undefined,
-                  "persistentSubmitErrors": undefined,
-                  "touch": undefined,
-                },
-                "payload": undefined,
-                "type": "@@redux-form/CHANGE",
-              },
-            ],
-            Array [
-              Object {
-                "meta": Object {
-                  "field": "address.addressLine1",
-                  "form": undefined,
-                  "persistentSubmitErrors": undefined,
-                  "touch": undefined,
-                },
-                "payload": undefined,
-                "type": "@@redux-form/CHANGE",
-              },
-            ],
-            Array [
-              Object {
-                "meta": Object {
-                  "field": "address.addressLine2",
-                  "form": undefined,
-                  "persistentSubmitErrors": undefined,
-                  "touch": undefined,
-                },
-                "payload": undefined,
-                "type": "@@redux-form/CHANGE",
-              },
-            ],
-            Array [
-              Object {
-                "meta": Object {
-                  "field": "address.state",
-                  "form": undefined,
-                  "persistentSubmitErrors": undefined,
-                  "touch": undefined,
-                },
-                "payload": undefined,
-                "type": "@@redux-form/CHANGE",
-              },
-            ],
-            Array [
-              Object {
-                "meta": Object {
-                  "field": "address.city",
-                  "form": undefined,
-                  "persistentSubmitErrors": undefined,
-                  "touch": undefined,
-                },
-                "payload": undefined,
-                "type": "@@redux-form/CHANGE",
-              },
-            ],
-            Array [
-              Object {
-                "meta": Object {
-                  "field": "address.zipCode",
-                  "form": undefined,
-                  "persistentSubmitErrors": undefined,
-                  "touch": undefined,
-                },
-                "payload": undefined,
-                "type": "@@redux-form/CHANGE",
-              },
-            ],
-            Array [
-              Object {
-                "meta": Object {
-                  "field": "address.country",
-                  "form": undefined,
-                  "persistentSubmitErrors": undefined,
-                  "touch": undefined,
-                },
-                "payload": undefined,
+                "payload": "",
                 "type": "@@redux-form/CHANGE",
               },
             ],
           ],
           "results": Array [
-            Object {
-              "type": "return",
-              "value": undefined,
-            },
-            Object {
-              "type": "return",
-              "value": undefined,
-            },
-            Object {
-              "type": "return",
-              "value": undefined,
-            },
-            Object {
-              "type": "return",
-              "value": undefined,
-            },
-            Object {
-              "type": "return",
-              "value": undefined,
-            },
-            Object {
-              "type": "return",
-              "value": undefined,
-            },
-            Object {
-              "type": "return",
-              "value": undefined,
-            },
             Object {
               "type": "return",
               "value": undefined,

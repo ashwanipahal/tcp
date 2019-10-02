@@ -50,7 +50,7 @@ exports[`ButtonList component renders correctly if  cards present and addNewCCSt
       fullBleed={true}
     >
       <Styled(Col)
-        className="creditCardForm__addressBook"
+        className="creditCardForm__addressBook "
         colSize={
           Object {
             "large": 6,
@@ -155,6 +155,7 @@ exports[`ButtonList component renders correctly if  cards present and addNewCCSt
           />
         </ForwardRef>
       }
+      editMode={false}
       formName="checkoutBillingPayment"
       isExpirationRequired={true}
       isGuest={false}
@@ -296,6 +297,7 @@ exports[`ButtonList component renders correctly if  no cards present  1`] = `
           />
         </ForwardRef>
       }
+      editMode={false}
       formName="checkoutBillingPayment"
       isExpirationRequired={true}
       isGuest={false}
@@ -485,7 +487,7 @@ exports[`ButtonList component renders correctly without props 1`] = `
       fullBleed={true}
     >
       <Styled(Col)
-        className="creditCardForm__addressBook"
+        className="creditCardForm__addressBook "
         colSize={
           Object {
             "large": 6,
@@ -596,6 +598,8 @@ exports[`ButtonList component renders correctly without props 1`] = `
         className="billing-payment-edit"
         dataLocator="billing-payment-edit"
         fontSizeVariation="medium"
+        noLink={true}
+        onClick={[Function]}
         to="/#"
         underline={true}
       />
@@ -1103,7 +1107,7 @@ exports[`ButtonList component renders correctly without props 2`] = `
       fullBleed={true}
     >
       <Styled(Col)
-        className="creditCardForm__addressBook"
+        className="creditCardForm__addressBook "
         colSize={
           Object {
             "large": 6,
@@ -1214,6 +1218,8 @@ exports[`ButtonList component renders correctly without props 2`] = `
         className="billing-payment-edit"
         dataLocator="billing-payment-edit"
         fontSizeVariation="medium"
+        noLink={true}
+        onClick={[Function]}
         to="/#"
         underline={true}
       />
