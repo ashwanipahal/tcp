@@ -81,9 +81,9 @@ const ROUTES_LIST = [
   },
   {
     noSlugPath: 'outfit',
-    path: '/outfit/:oid',
-    resolver: '/OutfitDetail',
-    params: ['oid'],
+    path: '/outfit/:outfitId/:vendorColorProductIdsList',
+    resolver: '/OutfitDetails',
+    params: ['outfitId', 'vendorColorProductIdsList'],
   },
   {
     noSlugPath: 'place-card',
