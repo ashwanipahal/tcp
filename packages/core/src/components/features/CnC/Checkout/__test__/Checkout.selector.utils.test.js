@@ -2,6 +2,10 @@ import { fromJS } from 'immutable';
 import CHECKOUT_SELECTORS, { getSendOrderUpdate } from '../container/Checkout.selector';
 import { isMobileApp } from '../../../../../utils';
 
+jest.mock('../../../../../utils', () => ({
+  isMobileApp: jest.fn(),
+}));
+
 describe('Checkout Selectors', () => {
   const FormState = {
     checkoutShipping: {
