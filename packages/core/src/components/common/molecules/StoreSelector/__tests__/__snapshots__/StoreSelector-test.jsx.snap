@@ -594,6 +594,7 @@ exports[`StoreSelector component should default set title as value for selected 
         },
       },
       "zindex": Object {
+        "zCondensedHeader": 1100,
         "zDrawer": 1200,
         "zEnlargedImage": 100,
         "zGoogleAutosuggest": 100000,
@@ -9393,6 +9394,7 @@ exports[`StoreSelector component should render correctly 1`] = `
         },
       },
       "zindex": Object {
+        "zCondensedHeader": 1100,
         "zDrawer": 1200,
         "zEnlargedImage": 100,
         "zGoogleAutosuggest": 100000,
