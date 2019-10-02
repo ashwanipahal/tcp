@@ -35,16 +35,18 @@ exports[`AddedToBagActions component AddedToBagActions component renders correct
     </Styled(Col)>
   </Styled(Row)>
   <Styled(Row)
-    className="checkout-button"
+    className="checkout-button "
+    id="checkout-button-section"
   >
     <div
-      className="paypal-venmo"
+      className="paypal-venmo "
     >
       <div
         className="paypal-wrapper-atb"
       >
         <withRouter(Connect(PayPalButtonContainer))
           className="payPal-button"
+          containerId="paypal-button-container"
         />
       </div>
     </div>

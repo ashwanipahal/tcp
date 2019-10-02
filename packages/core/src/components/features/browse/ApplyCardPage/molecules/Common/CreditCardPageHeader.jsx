@@ -16,6 +16,7 @@ const CreditCardPageHeader = ({ labels, isPLCCModalFlow }) => {
           colSize={{ large: 12, medium: 8, small: 6 }}
         >
           <Anchor data-locator="plcc_back_btn" onClick={() => Router.back()}>
+            <span className="left-arrow"> </span>
             <BodyCopy component="span" className="back_button">
               {getLabelValue(labels, 'lbl_PLCCForm_backButton')}
             </BodyCopy>

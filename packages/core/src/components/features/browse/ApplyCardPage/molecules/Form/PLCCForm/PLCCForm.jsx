@@ -1,12 +1,12 @@
 import React from 'react';
 import { Field, reduxForm } from 'redux-form';
 import PropTypes from 'prop-types';
-import { BodyCopy, Button, Col, Row } from '../../../../../common/atoms';
-import { Grid } from '../../../../../common/molecules';
-import { getLabelValue } from '../../../../../../utils';
-import createValidateMethod from '../../../../../../utils/formValidation/createValidateMethod';
-import InputCheckBox from '../../../../../common/atoms/InputCheckbox';
-import getStandardConfig from '../../../../../../utils/formValidation/validatorStandardConfig';
+import { BodyCopy, Button, Col, Row } from '../../../../../../common/atoms';
+import { Grid } from '../../../../../../common/molecules';
+import { getLabelValue } from '../../../../../../../utils';
+import createValidateMethod from '../../../../../../../utils/formValidation/createValidateMethod';
+import InputCheckBox from '../../../../../../common/atoms/InputCheckbox';
+import getStandardConfig from '../../../../../../../utils/formValidation/validatorStandardConfig';
 import {
   AccountInformations,
   ContactInformation,
@@ -17,11 +17,11 @@ import {
   PLCCAgreements,
   PersonalInformationFormWrapper,
   ReviewCreditCardInformation,
-} from '../index';
-import { backToHome } from '../../utils/DateOfBirthHelper';
-import StyledPLCCFormWrapper from './styles/PLCCForm.style';
-import PLCCTimeoutInterimModal from '../Modals/PLCCTmeoutInterimModal';
-import { getPageViewGridRowSize } from '../../utils/utility';
+} from '../../index';
+import { backToHome } from '../../../utils/DateOfBirthHelper';
+import StyledPLCCFormWrapper from './style/PLCCForm.style';
+import PLCCTimeoutInterimModal from '../../Modals/PLCCTmeoutInterimModal';
+import { getPageViewGridRowSize } from '../../../utils/utility';
 
 class PLCCForm extends React.PureComponent {
   static idleUserEvents = [
@@ -189,7 +189,7 @@ class PLCCForm extends React.PureComponent {
               </Col>
             </Row>
             <PersonalInformationFormWrapper labels={labels} isPLCCModalFlow={isPLCCModalFlow} />
-            <Row fullBleed>
+            <Row fullBleed className="classifiedInfo">
               <Col
                 key="container_account_info"
                 colSize={{ large: getPageViewGridRowSize(isPLCCModalFlow), medium: 8, small: 6 }}
@@ -231,8 +231,8 @@ class PLCCForm extends React.PureComponent {
                   disabled={false}
                 >
                   <BodyCopy
-                    className="underprogress_application"
-                    fontSize="fs16"
+                    className="iAgreeCheck"
+                    fontSize="fs12"
                     fontFamily="secondary"
                     fontWeight="regular"
                   >
