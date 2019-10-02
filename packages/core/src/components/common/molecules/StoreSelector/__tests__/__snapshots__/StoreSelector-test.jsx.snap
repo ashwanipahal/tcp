@@ -5901,7 +5901,9 @@ exports[`StoreSelector component should default set title as value for selected 
                           [Function],
                           ";
     border-top-width: 0;
-    background: #ffffff;
+    background: ",
+                          [Function],
+                          ";
   }
 
   .dropdownUlBorder {
@@ -14699,7 +14701,9 @@ exports[`StoreSelector component should render correctly 1`] = `
                           [Function],
                           ";
     border-top-width: 0;
-    background: #ffffff;
+    background: ",
+                          [Function],
+                          ";
   }
 
   .dropdownUlBorder {

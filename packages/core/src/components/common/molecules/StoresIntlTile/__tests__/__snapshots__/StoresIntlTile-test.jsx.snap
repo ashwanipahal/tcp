@@ -1955,7 +1955,9 @@ exports[`StoresIntlTile component should render correctly with stores data 1`] =
   background-color: ",
                                               [Function],
                                               ";
-  color: #ffffff;
+  color: ",
+                                              [Function],
+                                              ";
   text-transform: uppercase;
   border-top-right-radius: ",
                                               [Function],
@@ -2289,7 +2291,9 @@ exports[`StoresIntlTile component should render correctly with stores data 1`] =
   background-color: ",
                                               [Function],
                                               ";
-  color: #ffffff;
+  color: ",
+                                              [Function],
+                                              ";
   text-transform: uppercase;
   border-top-right-radius: ",
                                               [Function],
@@ -2884,7 +2888,9 @@ exports[`StoresIntlTile component should render correctly with stores data 1`] =
   background-color: ",
                                               [Function],
                                               ";
-  color: #ffffff;
+  color: ",
+                                              [Function],
+                                              ";
   text-transform: uppercase;
   border-top-right-radius: ",
                                               [Function],
@@ -3218,7 +3224,9 @@ exports[`StoresIntlTile component should render correctly with stores data 1`] =
   background-color: ",
                                               [Function],
                                               ";
-  color: #ffffff;
+  color: ",
+                                              [Function],
+                                              ";
   text-transform: uppercase;
   border-top-right-radius: ",
                                               [Function],
@@ -4074,7 +4082,9 @@ exports[`StoresIntlTile component should render correctly with stores data 1`] =
   background-color: ",
                                               [Function],
                                               ";
-  color: #ffffff;
+  color: ",
+                                              [Function],
+                                              ";
   text-transform: uppercase;
   border-top-right-radius: ",
                                               [Function],
@@ -4408,7 +4418,9 @@ exports[`StoresIntlTile component should render correctly with stores data 1`] =
   background-color: ",
                                               [Function],
                                               ";
-  color: #ffffff;
+  color: ",
+                                              [Function],
+                                              ";
   text-transform: uppercase;
   border-top-right-radius: ",
                                               [Function],
@@ -5003,7 +5015,9 @@ exports[`StoresIntlTile component should render correctly with stores data 1`] =
   background-color: ",
                                               [Function],
                                               ";
-  color: #ffffff;
+  color: ",
+                                              [Function],
+                                              ";
   text-transform: uppercase;
   border-top-right-radius: ",
                                               [Function],
@@ -5337,7 +5351,9 @@ exports[`StoresIntlTile component should render correctly with stores data 1`] =
   background-color: ",
                                               [Function],
                                               ";
-  color: #ffffff;
+  color: ",
+                                              [Function],
+                                              ";
   text-transform: uppercase;
   border-top-right-radius: ",
                                               [Function],
@@ -5932,7 +5948,9 @@ exports[`StoresIntlTile component should render correctly with stores data 1`] =
   background-color: ",
                                               [Function],
                                               ";
-  color: #ffffff;
+  color: ",
+                                              [Function],
+                                              ";
   text-transform: uppercase;
   border-top-right-radius: ",
                                               [Function],

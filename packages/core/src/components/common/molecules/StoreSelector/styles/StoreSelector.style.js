@@ -21,7 +21,7 @@ export const customSelectStyles = css`
     top: 35px;
     border: 1px solid ${props => props.theme.colorPalette.gray[1300]};
     border-top-width: 0;
-    background: #ffffff;
+    background: ${props => props.theme.colors.WHITE};
   }
 
   .dropdownUlBorder {

@@ -764,7 +764,9 @@ exports[`StoreAddressIntl component StoreAddressIntl component renders correctly
   background-color: ",
                       [Function],
                       ";
-  color: #ffffff;
+  color: ",
+                      [Function],
+                      ";
   text-transform: uppercase;
   border-top-right-radius: ",
                       [Function],

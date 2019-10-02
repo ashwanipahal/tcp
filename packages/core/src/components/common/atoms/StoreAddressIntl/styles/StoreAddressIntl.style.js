@@ -27,7 +27,7 @@ export const ShopInShop = styled.div`
   padding-left: ${props => props.theme.spacing.ELEM_SPACING.XS};
   padding-right: ${props => props.theme.spacing.ELEM_SPACING.SM};
   background-color: ${props => props.theme.colorPalette.blue[800]};
-  color: #ffffff;
+  color: ${props => props.theme.colors.WHITE};
   text-transform: uppercase;
   border-top-right-radius: ${props => props.theme.spacing.ELEM_SPACING.SM};
   border-bottom-right-radius: ${props => props.theme.spacing.ELEM_SPACING.SM};
