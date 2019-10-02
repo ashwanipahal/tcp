@@ -2,7 +2,8 @@ import React from 'react';
 import PropTypes from 'prop-types';
 
 import get from 'lodash/get';
-import { FlatList, Text, Dimensions } from 'react-native';
+import { FlatList, Text, Dimensions, Share } from 'react-native';
+// import Share from 'react-native-share';
 import { withTheme } from 'styled-components/native';
 import CustomImage from '@tcp/core/src/components/common/atoms/CustomImage';
 import PaginationDots from '@tcp/core/src/components/common/molecules/PaginationDots';
@@ -17,7 +18,7 @@ import {
   styles,
 } from '../styles/ImageCarousel.style.native';
 import CustomIcon from '../../../../../../common/atoms/Icon';
-import { ICON_NAME } from '../../../../../../common/atoms/Icon/Icon.constants';
+import { ICON_NAME, ICON_FONT_CLASS } from '../../../../../../common/atoms/Icon/Icon.constants';
 
 const win = Dimensions.get('window');
 const paddingAroundImage = 24;
@@ -65,6 +66,28 @@ class ImageCarousel extends React.PureComponent {
   };
 
   onFavorite = () => {};
+
+  onShare = async () => {
+    try {
+      const result = await Share.share({
+        message: 'Share the details on different platforms',
+        url: 'http://local.childrensplace.com:3000/us/p/3000332_2155',
+      });
+
+      if (result.action === Share.sharedAction) {
+        if (result.activityType) {
+          console.log('shared with activity type of result.activityType');
+          // shared with activity type of result.activityType
+        } else {
+          // shared
+        }
+      } else if (result.action === Share.dismissedAction) {
+        // dismissed
+      }
+    } catch (error) {
+      console.log(error.message);
+    }
+  };
 
   renderNormalImage = imgSource => {
     const { onImageClick } = this.props;
@@ -138,7 +161,18 @@ class ImageCarousel extends React.PureComponent {
               selectedIndex={activeSlideIndex}
               onPress={this.onPageChange}
             />
-            <DownloadContainer />
+            <DownloadContainer>
+              <CustomIcon
+                iconFontName={ICON_FONT_CLASS.Icomoon}
+                name={ICON_NAME.iconShare}
+                size="fs18"
+                color="gray.1600"
+                dataLocator="pdp_social_connect"
+                onPress={this.onShare}
+                title="Share"
+                isButton
+              />
+            </DownloadContainer>
           </FavoriteAndPaginationContainer>
         </Container>
       );
