@@ -43,13 +43,11 @@ const CustomButton = props => {
   } = props;
   const textValue = text || '';
   const { url, navigation } = otherProps;
-  console.log(url);
   const openUrl = () => {
     if (validateExternalUrl(url)) {
       UrlHandler(url);
     } else {
       const cmsValidatedUrl = configureInternalNavigationFromCMSUrl(url);
-      console.log('cmsValidatedUrl ', cmsValidatedUrl);
       navigateToPage(cmsValidatedUrl, navigation);
     }
   };
