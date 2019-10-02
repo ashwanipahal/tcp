@@ -35,7 +35,7 @@ const MODULE_HEIGHT = 142;
 const MODULE_WIDTH = (PRODUCT_IMAGE_WIDTH + PRODUCT_IMAGE_GUTTER) * PRODUCT_IMAGE_PER_SLIDE;
 const { IMG_DATA, TOTAL_IMAGES } = config;
 
-function getCarouselSlide(item, navigation) {
+const getCarouselSlide = (item, navigation) => {
   return (
     <ImageSlideWrapper>
       {item.map(productItem => {
@@ -74,9 +74,9 @@ function getCarouselSlide(item, navigation) {
       })}
     </ImageSlideWrapper>
   );
-}
+};
 
-function ModuleQ(props) {
+const ModuleQ = props => {
   const [selectedCategoryId, setSelectedCategoryId] = useState(null);
   const [selectedTabItem, setSelectedTabItem] = useState(null);
 
@@ -193,7 +193,7 @@ function ModuleQ(props) {
       ) : null}
     </Container>
   );
-}
+};
 
 ModuleQ.defaultProps = {
   bgClass: '',
