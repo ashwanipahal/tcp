@@ -56,6 +56,7 @@ class QuickViewModal extends React.Component {
             buttonLabel="Pickup In Store"
             onPickupOpenClick={this.handlePickupOpenClick}
             currentProduct={productInfo}
+            onPickupClickAddon={this.onCloseClick}
           />
         </div>
       </Modal>

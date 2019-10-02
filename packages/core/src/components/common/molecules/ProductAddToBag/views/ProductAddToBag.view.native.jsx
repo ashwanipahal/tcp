@@ -1,8 +1,11 @@
 import React from 'react';
 import { View } from 'react-native';
+import { compose } from 'redux';
+import { connect } from 'react-redux';
 import { reduxForm, Field } from 'redux-form';
 import PropTypes from 'prop-types';
 import get from 'lodash/get';
+import { PRODUCT_ADD_TO_BAG } from '@tcp/core/src/constants/reducer.constants';
 import ProductVariantSelector from '../../ProductVariantSelector';
 import withStyles from '../../../hoc/withStyles';
 import styles, { RowViewContainer } from '../styles/ProductAddToBag.style.native';
@@ -239,9 +242,15 @@ ProductAddToBag.defaultProps = {
 };
 
 /* export view with redux form */
-export default reduxForm({
-  form: 'ProductAddToBag',
-  enableReinitialize: true,
-})(withStyles(ProductAddToBag, styles));
+export default compose(
+  connect((state, props) => {
+    const formName = props.customFormName || PRODUCT_ADD_TO_BAG;
+    return {
+      form: `${formName}-${props.generalProductId}`,
+      enableReinitialize: true,
+    };
+  }),
+  reduxForm()
+)(withStyles(ProductAddToBag, styles));
 
 export { ProductAddToBag as ProductAddToBagVanilla };

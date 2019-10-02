@@ -47,4 +47,5 @@ export {
   calculateAge,
   configureInternalNavigationFromCMSUrl,
   flattenArray,
+  getBrand,
 } from './utils';

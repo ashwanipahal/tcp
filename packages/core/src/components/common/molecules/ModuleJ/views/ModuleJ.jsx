@@ -1,4 +1,3 @@
-/* istanbul ignore file */
 import React from 'react';
 import PropTypes from 'prop-types';
 import { Anchor, Button, Col, DamImage, Image, Row } from '../../../atoms';
@@ -8,7 +7,7 @@ import withStyles from '../../../hoc/withStyles';
 import ProductTabList from '../../../organisms/ProductTabList';
 import moduleJStyle from '../styles/ModuleJ.style';
 import { getIconPath, getLocator } from '../../../../../utils';
-import config from '../config';
+import config from '../moduleJ.config';
 
 class ModuleJ extends React.PureComponent {
   constructor(props) {

@@ -2,13 +2,11 @@
 /* eslint-disable no-else-return */
 import React from 'react';
 import PropTypes from 'prop-types';
-import ApplyRewardsCreditCardStyle from '../styles/ApplyCardPage.style';
-import PLCCForm from '../molecules/Form/PLCCForm';
-import {
-  ApplicationInProgress,
-  ApprovedPLCCApplicationView,
-  ExistingPLCCUserView,
-} from '../molecules';
+import ApplyRewardsCreditCardStyle from '../style/ApplyCardPage.style';
+import PLCCForm from '../molecules/Form/PLCCForm/PLCCForm';
+import ApplicationInProgress from '../molecules/Common/UnderProgressApplication';
+import ApprovedPLCCApplicationView from '../molecules/Common/ApprovedPLCCApplication';
+import ExistingPLCCUserView from '../molecules/Common/ExistingPLCCUser';
 import constants from '../RewardsCard.constants';
 
 const getApplyCardLayoutView = (

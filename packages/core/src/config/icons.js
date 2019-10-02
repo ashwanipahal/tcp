@@ -49,6 +49,8 @@ export default {
   'cart-icon': '/static/images/bag.png',
   'cart-icon-blue': '/static/images/bag-icon-blue.svg',
   'marker-icon': '/static/images/marker-icon.png',
+  'fast-shipping': '/static/images/fast-shipping.svg',
+  'marker-icon-svg': '/static/images/marker-icon.svg',
   'cart-icon-1': '/static/images/bag.svg',
   'cart-icon-2': '/static/images/bag-2.svg',
   'cart-icon-3': '/static/images/bag-3.svg',
