@@ -21,7 +21,12 @@ class CardEditFormView extends React.PureComponent {
       renderCardDetailsHeading,
       getAddNewCCForm,
       unsetFormEditState,
-      labels: { saveButtonText, cancelButtonText },
+      labels: {
+        saveButtonText,
+        cancelButtonText,
+        ariaLabelSaveButtonText,
+        ariaLabelCancelButtonText,
+      },
       AddressForm,
       onEditCardFocus,
     } = this.props;
@@ -35,7 +40,19 @@ class CardEditFormView extends React.PureComponent {
         <AddressForm editMode key="cardEditAddressForm" />
         <div className="card-edit-buttons">
           <Button
-            // aria-label={ariaLabelBackLink}
+            aria-label={ariaLabelSaveButtonText}
+            type="submit"
+            className="card-edit-button card-edit-save-mob"
+            fontSize="fs14"
+            fontWeight="extrabold"
+            buttonVariation="variable-width"
+            fill="BLUE"
+          >
+            {saveButtonText}
+          </Button>
+
+          <Button
+            aria-label={ariaLabelCancelButtonText}
             type="button"
             className="card-edit-button card-edit-cancel"
             onClick={unsetFormEditState}
@@ -51,7 +68,7 @@ class CardEditFormView extends React.PureComponent {
             </BodyCopy>
           </Button>
           <Button
-            // aria-label={ariaLabelNextButton}
+            aria-label={ariaLabelSaveButtonText}
             type="submit"
             className="card-edit-button card-edit-save"
             fontSize="fs14"
@@ -71,6 +88,8 @@ CardEditFormView.propTypes = {
   labels: PropTypes.shape({
     saveButtonText: PropTypes.string,
     cancelButtonText: PropTypes.string,
+    ariaLabelCancelButtonText: PropTypes.string,
+    ariaLabelSaveButtonText: PropTypes.string,
   }).isRequired,
   renderCardDetailsHeading: PropTypes.func.isRequired,
   getAddNewCCForm: PropTypes.func.isRequired,

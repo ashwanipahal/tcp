@@ -179,26 +179,48 @@ export default css`
   }
   .card-edit-buttons {
     display: flex;
-    justify-content: flex-end;
-    margin-right: 20px;
-    margin-bottom: 20px;
+    flex-direction: column;
+    @media ${props => props.theme.mediaQuery.medium} {
+      flex-direction: row;
+      justify-content: flex-end;
+      margin-right: 20px;
+      margin-bottom: 20px;
+    }
 
     .card-edit-button {
-      height: 51px;
-      width: 210px;
-      margin-left: ${props => props.theme.spacing.ELEM_SPACING.XL};
+      @media ${props => props.theme.mediaQuery.medium} {
+        height: 51px;
+        width: 210px;
+        margin-left: ${props => props.theme.spacing.ELEM_SPACING.XL};
+      }
     }
+
     .card-edit-cancel {
+      margin-top: ${props => props.theme.spacing.APP_LAYOUT_SPACING.XS};
       border: 1px solid ${props => props.theme.colors.PRIMARY.GRAY};
       background: ${props => props.theme.colors.WHITE};
       &:hover {
         background: ${props => props.theme.colors.WHITE};
       }
+      @media ${props => props.theme.mediaQuery.medium} {
+        margin-top: 0;
+      }
     }
+
     .card-edit-save {
+      display: none;
       background: ${props => props.theme.colors.PRIMARY.BLUE};
       &:hover {
         background: ${props => props.theme.colors.PRIMARY.BLUE};
+      }
+      @media ${props => props.theme.mediaQuery.medium} {
+        display: inline-block;
+      }
+    }
+
+    .card-edit-save-mob {
+      @media ${props => props.theme.mediaQuery.medium} {
+        display: none;
       }
     }
   }
