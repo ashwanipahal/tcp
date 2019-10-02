@@ -3,6 +3,7 @@
 import React from 'react';
 import { connect } from 'react-redux';
 import BAG_PAGE_ACTIONS from '../../BagPage/container/BagPage.actions';
+import BAGPAGE_SELECTORS from '../../BagPage/container/BagPage.selectors';
 import { removeCartItem, updateCartItem, getProductSKUInfo } from './CartItemTile.actions';
 import CartItemTile from '../molecules/CartItemTile/views/CartItemTile.view';
 import { getCartOrderList, getEditableProductInfo } from './CartItemTile.selectors';
@@ -54,6 +55,7 @@ export const CartItemTileContainer = ({
   isBagPageSflSection,
   startSflItemDelete,
   startSflDataMoveToBag,
+  currencySymbol,
 }) => (
   <CartItemTile
     labels={labels}
@@ -82,6 +84,7 @@ export const CartItemTileContainer = ({
     isBagPageSflSection={isBagPageSflSection}
     startSflItemDelete={startSflItemDelete}
     startSflDataMoveToBag={startSflDataMoveToBag}
+    currencySymbol={currencySymbol}
   />
 );
 export const mapDispatchToProps = (dispatch: ({}) => void) => {
@@ -119,6 +122,7 @@ export function mapStateToProps(state) {
     isShowSaveForLater: getSaveForLaterSwitch(state),
     sflMaxCount: parseInt(getSflMaxCount(state)),
     isGenricGuest: getPersonalDataState(state),
+    currencySymbol: BAGPAGE_SELECTORS.getCurrentCurrency(state) || '$',
   };
 }
 

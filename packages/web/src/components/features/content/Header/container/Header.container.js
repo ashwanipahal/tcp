@@ -6,6 +6,7 @@ import {
 } from '@tcp/core/src/components/common/organisms/Header/container/Header.actions';
 import { setTrackOrderModalMountedState } from '@tcp/core/src/components/features/account/TrackOrder/container/TrackOrder.actions';
 import { openOverlayModal } from '@tcp/core/src/components/features/OverlayModal/container/OverlayModal.actions';
+import { getFavoriteStoreActn } from '@tcp/core/src/components/features/storeLocator/StoreLanding/container/StoreLanding.actions';
 import {
   getUserName,
   getUserLoggedInState,
@@ -27,6 +28,7 @@ const mapStateToProps = state => {
     cartItemCount: getCartItemCount(),
     totalItems: BAGPAGE_SELECTORS.getTotalItems(state),
     labels: state.Labels.global,
+    favStore: state.User && state.User.get('defaultStore'),
   };
 };
 
@@ -43,6 +45,7 @@ const mapDispatchToProps = dispatch => {
     },
     openOverlay: component => dispatch(openOverlayModal(component)),
     openTrackOrderOverlay: payload => dispatch(setTrackOrderModalMountedState(payload)),
+    loadFavoriteStore: payload => dispatch(getFavoriteStoreActn(payload)),
   };
 };
 

@@ -5,6 +5,7 @@ const submitProductListingFiltersForm = (formData, submit, getProducts, url) => 
     url,
     sortBySelected: true,
     formData,
+    scrollToTop: true,
   };
   getProducts(data);
 };

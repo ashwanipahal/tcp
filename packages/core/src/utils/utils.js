@@ -533,7 +533,7 @@ export const parseBoolean = bool => {
 
 export const getFormSKUValue = formValue => {
   return {
-    color: (typeof formValue.color === 'object' && formValue.color.name) || formValue.Quantity,
+    color: (typeof formValue.color === 'object' && formValue.color.name) || formValue.color,
     size: (typeof formValue.Size === 'object' && formValue.Size.name) || formValue.Size,
     quantity:
       (typeof formValue.Quantity === 'object' && formValue.Quantity.name) || formValue.Quantity,
@@ -611,6 +611,16 @@ export const extractFloat = currency => {
   } catch (e) {
     return 0;
   }
+};
+
+/* @method flattenArray - this function takes takes array of array and merge into single array
+ * @param arr { Array } Array of Array
+ * @return {Array}  return array
+ */
+export const flattenArray = arr => {
+  return arr.reduce((flat, toFlatten) => {
+    return flat.concat(Array.isArray(toFlatten) ? flattenArray(toFlatten) : toFlatten);
+  }, []);
 };
 
 export default {

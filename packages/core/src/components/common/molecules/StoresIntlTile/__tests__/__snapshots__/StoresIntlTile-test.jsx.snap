@@ -594,6 +594,7 @@ exports[`StoresIntlTile component StoresIntlTile component renders correctly wit
         },
       },
       "zindex": Object {
+        "zCondensedHeader": 1100,
         "zDrawer": 1200,
         "zEnlargedImage": 100,
         "zGoogleAutosuggest": 100000,
@@ -1274,6 +1275,7 @@ exports[`StoresIntlTile component should render correctly with stores data 1`] =
         },
       },
       "zindex": Object {
+        "zCondensedHeader": 1100,
         "zDrawer": 1200,
         "zEnlargedImage": 100,
         "zGoogleAutosuggest": 100000,

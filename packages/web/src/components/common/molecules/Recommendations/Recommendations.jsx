@@ -94,7 +94,8 @@ class Recommendations extends Component {
     const headerLabel = config.variations.moduleO ? moduleOHeaderLabel : modulePHeaderLabel;
 
     return (
-      products && (
+      products &&
+      products.length && (
         <React.Fragment>
           <Heading
             variant="h4"

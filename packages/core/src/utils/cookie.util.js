@@ -99,3 +99,11 @@ export function getSflItemCount(siteId) {
   }
   return parseInt(readCookie(SFL_ITEM_COUNTER) || 0, 10);
 }
+
+/**
+ * @summary This returns all cookies in string format.
+ * @return  {String}  - string of cookies
+ */
+export const getAllCookies = () => {
+  return document.cookie;
+};

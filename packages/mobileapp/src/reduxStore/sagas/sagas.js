@@ -49,6 +49,7 @@ import StoreLandingSaga from '@tcp/core/src/components/features/storeLocator/Sto
 import ApplyCreditCardSaga, {
   SubmitInstantCardApplication,
 } from '@tcp/core/src/components/features/browse/ApplyCardPage/container/ApplyCard.saga';
+import SocialAccountSaga from '@tcp/core/src/components/common/organisms/SocialAccount/container/Social.saga';
 import PointsClaimSaga from '@tcp/core/src/components/features/account/PointsClaim/container/PointsClaim.saga';
 import HomePageSaga from '../../components/features/content/HomePage/container/HomePage.saga';
 
@@ -103,5 +104,6 @@ export default function* rootSaga() {
     SubmitInstantCardApplication(),
     QuickViewSaga(),
     PointsClaimSaga(),
+    SocialAccountSaga(),
   ]);
 }

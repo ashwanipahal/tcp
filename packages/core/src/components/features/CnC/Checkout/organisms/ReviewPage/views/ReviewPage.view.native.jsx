@@ -10,6 +10,7 @@ import CONSTANTS from '../../../Checkout.constants';
 import { BodyCopy } from '../../../../../../common/atoms';
 import BillingSection from '../organisms/BillingSection';
 import ShippingReviewSection from '../organisms/ShippingReviewSection';
+import CheckoutCartItemList from '../organisms/CheckoutCartItemList';
 
 const { Container, FooterTextContainer, FooterLink } = style;
 
@@ -78,11 +79,13 @@ class ReviewPage extends React.PureComponent {
                 }}
               />
             )}
+
             <BillingSection
               onEdit={() => {
                 navigation.navigate(CONSTANTS.CHECKOUT_ROUTES_NAMES.CHECKOUT_BILLING);
               }}
             />
+            <CheckoutCartItemList />
           </Container>
           <CnCTemplate
             navigation={navigation}
