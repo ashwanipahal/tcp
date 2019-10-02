@@ -3,10 +3,14 @@ import { View, TouchableOpacity } from 'react-native';
 import PropTypes from 'prop-types';
 import { LoginManager, AccessToken } from 'react-native-fbsdk';
 import Button from '@tcp/core/src/components/common/atoms/Button';
-import { BodyCopyWithSpacing, ViewWithSpacing } from '../../../atoms/styledWrapper';
+import {
+  BodyCopyWithSpacing,
+  ViewWithSpacing,
+  TextWithSpacing,
+} from '../../../atoms/styledWrapper';
 import ModalNative from '../../../molecules/Modal';
 import config from './config';
-import { Row, EarnedMessage, Points, SocialMessage } from '../styles/social.style.native';
+import { Row, Points, SocialMessage } from '../styles/social.style.native';
 import ImageComp from '../../../atoms/Image';
 import BodyCopy from '../../../atoms/BodyCopy';
 import { getLabelValue } from '../../../../../utils/utils';
@@ -112,7 +116,7 @@ class Socialview extends React.PureComponent {
                 text={getLabelValue(labels, 'lbl_prefrence_social_points_heading')}
               />
               <ViewWithSpacing spacingStyles="margin-left-XXXL margin-right-XXXL">
-                <EarnedMessage>
+                <TextWithSpacing spacingStyles="padding-top-MED padding-bottom-LRG">
                   <BodyCopyWithSpacing
                     fontSize="fs14"
                     textAlign="center"
@@ -125,7 +129,7 @@ class Socialview extends React.PureComponent {
                     textAlign="center"
                     text={getLabelValue(labels, 'lbl_prefrence_social_points_text_2')}
                   />
-                </EarnedMessage>
+                </TextWithSpacing>
 
                 <BodyCopyWithSpacing
                   fontSize="fs14"

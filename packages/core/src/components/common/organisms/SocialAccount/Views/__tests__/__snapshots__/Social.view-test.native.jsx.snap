@@ -93,7 +93,9 @@ exports[`Social component should render with connected 1`] = `
       <Styled(View)
         spacingStyles="margin-left-XXXL margin-right-XXXL"
       >
-        <Styled(Text)>
+        <Styled(Text)
+          spacingStyles="padding-top-MED padding-bottom-LRG"
+        >
           <Styled(Styled(BodyCopy))
             accessibilityText=""
             dataLocator=""
@@ -304,7 +306,9 @@ exports[`Social component should renders correctly 1`] = `
       <Styled(View)
         spacingStyles="margin-left-XXXL margin-right-XXXL"
       >
-        <Styled(Text)>
+        <Styled(Text)
+          spacingStyles="padding-top-MED padding-bottom-LRG"
+        >
           <Styled(Styled(BodyCopy))
             accessibilityText=""
             dataLocator=""
@@ -588,7 +592,9 @@ exports[`Social component should simulate instagram connect 1`] = `
       <Styled(View)
         spacingStyles="margin-left-XXXL margin-right-XXXL"
       >
-        <Styled(Text)>
+        <Styled(Text)
+          spacingStyles="padding-top-MED padding-bottom-LRG"
+        >
           <Styled(Styled(BodyCopy))
             accessibilityText=""
             dataLocator=""

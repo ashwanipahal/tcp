@@ -52,6 +52,7 @@ export class Account extends React.PureComponent<Props, State> {
    *  @function getComponent takes component and return the component that is required on the drop down click.
    */
 
+  // TODO break down this function
   // eslint-disable-next-line complexity
   getComponent = component => {
     switch (component) {

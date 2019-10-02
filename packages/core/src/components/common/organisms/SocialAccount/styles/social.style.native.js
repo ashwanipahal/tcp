@@ -6,11 +6,6 @@ const Row = styled.View`
   align-items: center;
 `;
 
-const EarnedMessage = styled.Text`
-  padding-top: ${props => props.theme.spacing.ELEM_SPACING.MED};
-  padding-bottom: ${props => props.theme.spacing.ELEM_SPACING.MED};
-`;
-
 const SocialMessage = styled.View`
   width: 55%;
 `;
@@ -24,4 +19,4 @@ const Points = styled.Text`
   font-weight: ${props => props.theme.typography.fontWeights.black};
 `;
 
-export { Row, EarnedMessage, Points, SocialMessage };
+export { Row, Points, SocialMessage };
