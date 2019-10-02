@@ -132,7 +132,7 @@ export class ProfileInformation extends React.PureComponent {
           <ModalNative
             isOpen={mountMailingAddressModal}
             onRequestClose={this.toggleMailingAddressModal}
-            heading={labelsObj.profile.lbl_profile_heading}
+            heading={getLabelValue(labelsObj, 'lbl_profile_heading', 'profile')}
           >
             <ViewWithSpacing spacingStyles="margin-left-SM margin-right-SM">
               <MailingInformationContainer

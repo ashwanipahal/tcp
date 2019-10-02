@@ -81,7 +81,7 @@ class LoginForm extends React.PureComponent<Props> {
       <Fragment>
         <View {...this.props}>
           <Field
-            label={labels.login.lbl_login_email}
+            label={getLabelValue(labels, 'lbl_login_email', 'login')}
             name="emailAddress"
             id="emailAddress"
             type="text"
@@ -91,7 +91,7 @@ class LoginForm extends React.PureComponent<Props> {
           />
           <ShowHideWrapper>
             <Field
-              label={labels.login.lbl_login_password}
+              label={getLabelValue(labels, 'lbl_login_password', 'login')}
               name="password"
               id="password"
               type={type}
@@ -127,7 +127,7 @@ class LoginForm extends React.PureComponent<Props> {
 
           <CustomButton
             fill="BLUE"
-            text={labels.login.lbl_login_loginCTA}
+            text={getLabelValue(labels, 'lbl_login_loginCTA', 'login')}
             buttonVariation="variable-width"
             customStyle={styles.loginButtonStyle}
             onPress={handleSubmit(onSubmit)}
@@ -139,7 +139,7 @@ class LoginForm extends React.PureComponent<Props> {
               fill="WHITE"
               buttonVariation="variable-width"
               customStyle={styles.loginButtonStyle}
-              text={labels.login.lbl_login_modal_checkout_as_guest}
+              text={getLabelValue(labels, 'lbl_login_modal_checkout_as_guest', 'login')}
               onPress={this.handleContinueAsGuest}
             />
           )}
@@ -150,7 +150,7 @@ class LoginForm extends React.PureComponent<Props> {
             underlineBlue
             fontSizeVariation="xlarge"
             anchorVariation="secondary"
-            text={labels.login.lbl_login_forgetPasswordCTA}
+            text={getLabelValue(labels, 'lbl_login_forgetPasswordCTA', 'login')}
             customStyle={styles.forgotPasswordStyle}
             onPress={this.showForgotPassword}
           />

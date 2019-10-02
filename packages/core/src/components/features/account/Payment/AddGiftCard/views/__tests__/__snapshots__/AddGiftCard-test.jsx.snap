@@ -8,14 +8,18 @@ exports[`Add gift card component should render component correctly if add gift i
     dataLocator="gift-card-addcardbacklink"
     fontSizeVariation="xlarge"
     to="/account?id=payment"
-  />
+  >
+    lbl_common_backLink
+  </Styled(Anchor)>
   <Styled(HeadingStyle)
     HeadingLarge="six"
     className="card__separator"
     dataLocator="gift-card-addcardheader"
     fontFamily="primaryFontFamily"
     tag="h4"
-  />
+  >
+    lbl_payment_addGiftCard
+  </Styled(HeadingStyle)>
   <ReduxForm
     destroyOnUnmount={true}
     enableReinitialize={true}
@@ -24,7 +28,7 @@ exports[`Add gift card component should render component correctly if add gift i
     getFormState={[Function]}
     isRecapchaEnabled={true}
     keepDirtyOnReinitialize={false}
-    labels={Object {}}
+    labels="paymentGC"
     onAddGiftCardClick={[MockFunction]}
     persistentSubmitErrors={false}
     pure={true}
@@ -49,14 +53,18 @@ exports[`Add gift card component should render component correctly if add gift i
     dataLocator="gift-card-addcardbacklink"
     fontSizeVariation="xlarge"
     to="/account?id=payment"
-  />
+  >
+    lbl_common_backLink
+  </Styled(Anchor)>
   <Styled(HeadingStyle)
     HeadingLarge="six"
     className="card__separator"
     dataLocator="gift-card-addcardheader"
     fontFamily="primaryFontFamily"
     tag="h4"
-  />
+  >
+    lbl_payment_addGiftCard
+  </Styled(HeadingStyle)>
   <ReduxForm
     destroyOnUnmount={true}
     enableReinitialize={true}
@@ -65,7 +73,7 @@ exports[`Add gift card component should render component correctly if add gift i
     getFormState={[Function]}
     isRecapchaEnabled={true}
     keepDirtyOnReinitialize={false}
-    labels={Object {}}
+    labels="paymentGC"
     onAddGiftCardClick={[MockFunction]}
     persistentSubmitErrors={false}
     pure={true}

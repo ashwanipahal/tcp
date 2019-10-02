@@ -37,7 +37,9 @@ exports[`TrackOrderBottomSection component should renders correctly 1`] = `
       lineHeight="normal"
       link={null}
       textAlign="left"
-    />
+    >
+      lbl_trackOrder_haveAccount
+    </Styled(BodyCopy)>
     <Styled(BodyCopy)
       className="trackorder__modal__overlaycontent"
       color="text.primary"
@@ -53,15 +55,18 @@ exports[`TrackOrderBottomSection component should renders correctly 1`] = `
     >
       <Styled(Anchor)
         anchorVariation="primary"
-        aria-label="undefined
-                undefined"
+        aria-label="lbl_trackOrder_login
+                lbl_trackOrder_content"
         className="trackorder__modal__loginlink"
         dataLocator="track_order_login"
         fontSize="fs12"
         href="#"
         onClick={[Function]}
         underline={true}
-      />
+      >
+        lbl_trackOrder_login
+      </Styled(Anchor)>
+      lbl_trackOrder_content
     </Styled(BodyCopy)>
   </Styled(BodyCopy)>
   <Styled(BodyCopy)
@@ -79,14 +84,18 @@ exports[`TrackOrderBottomSection component should renders correctly 1`] = `
   >
     <Styled(Anchor)
       anchorVariation="primary"
-      aria-label="undefined
-                undefined"
+      aria-label="lbl_trackOrder_clickHere
+                lbl_trackOrder_subContent"
       className="trackorder__modal__clickhere_link"
       dataLocator="track_order_click_here"
       fontSize="fs12"
       target="_blank"
+      to="lbl_trackOrder_internationTrackOrderLink"
       underline={true}
-    />
+    >
+      lbl_trackOrder_clickHere
+    </Styled(Anchor)>
+    lbl_trackOrder_subContent
   </Styled(BodyCopy)>
 </Styled(BodyCopy)>
 `;
