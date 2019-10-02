@@ -3,7 +3,7 @@ import logger from '@tcp/core/src/utils/loggerInstance';
 import FAVORITES_CONSTANTS from './Favorites.constants';
 import {
   setWishlistState,
-  getSetWishlistsSummariesActn,
+  setWishlistsSummariesActn,
   getSetIsWishlistReadOnlyActn,
   getSetActiveWishlistActn,
 } from './Favorites.actions';
@@ -48,11 +48,9 @@ export function* loadWishlistsSummaries() {
     const state = yield select();
     const userName = getUserContactInfo(state).get('firstName');
     const wishlists = yield call(getUserWishLists, userName);
-    this.store.dispatch(getSetWishlistsSummariesActn(wishlists));
-    return wishlists;
+    yield put(setWishlistsSummariesActn(wishlists));
   } catch (err) {
-    console.log('err', err);
-    return [];
+    yield null;
   }
 }
 
@@ -103,7 +101,7 @@ export function* loadActiveWishlistByGuestKey(wishlistId, guestAccessKey) {
 
 function* ProductListingSaga() {
   yield takeLatest(FAVORITES_CONSTANTS.SET_FAVORITES, addItemsToWishlist);
-  // yield takeLatest(FAVORITES_CONSTANTS.SET_WISHLISTS_SUMMARIES, loadWishlistsSummaries);
+  yield takeLatest(FAVORITES_CONSTANTS.GET_FAVORITES_WISHLIST, loadWishlistsSummaries);
 }
 
 export default ProductListingSaga;

@@ -16,7 +16,14 @@ export const setWishlistState = payload => {
 
 export const getSetWishlistsSummariesActn = payload => {
   return {
-    type: FAVORITES_CONSTANTS.FAVORITES_SET_AVAILABLE_WISHLISTS,
+    type: FAVORITES_CONSTANTS.GET_FAVORITES_WISHLIST,
+    payload,
+  };
+};
+
+export const setWishlistsSummariesActn = payload => {
+  return {
+    type: FAVORITES_CONSTANTS.SET_FAVORITES_WISHLIST,
     payload,
   };
 };

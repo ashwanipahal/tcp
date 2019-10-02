@@ -1,7 +1,11 @@
 /* eslint-disable extra-rules/no-commented-out-code */
+import { getAPIConfig, parseBoolean } from '@tcp/core/src/utils';
+import {
+  responseContainsErrors,
+  ServiceResponseError,
+} from '@tcp/core/src/utils/errorMessage.util';
 import { executeStatefulAPICall } from '../../handler';
 import endpoints from '../../endpoints';
-import { parseBoolean } from '../../../utils';
 
 const FAKE_WISHLIST_ID = 'fake_sv2a9';
 // const noImgPath = '/wcsstore/static/images/im_NotFound.svg';
@@ -61,44 +65,47 @@ export const getUserWishLists = userName => {
   const payload = {
     webService: endpoints.getListofWishList,
   };
+  const { assetHost, siteId } = getAPIConfig();
 
   return executeStatefulAPICall(payload)
     .then(res => {
-      // if (this.apiHelper.responseContainsErrors(res)) {
-      //   TODO - throw new ServiceResponseError(res);
-      // }
+      if (responseContainsErrors(res)) {
+        throw new ServiceResponseError(res);
+      } else {
+        if (!res.body || !res.body.length) {
+          // Backend won't create a default one, so we need to mimic one
+          return [
+            {
+              id: FAKE_WISHLIST_ID,
+              displayName: `${userName}'s Favorites`,
+              isDefault: true,
+              itemsCount: 0,
+              shareableLink: '',
+            },
+          ];
+        }
 
-      if (!res.body || !res.body.length) {
-        // Fucking backend won't create a default one, so we need to mimic one
-        return [
-          {
-            id: FAKE_WISHLIST_ID,
-            displayName: `${userName}'s Favorites`,
-            isDefault: true,
-            itemsCount: 0,
-            shareableLink: '',
-          },
-        ];
+        let containsDefaultWishlist = false;
+        const wishlists = res.body.map(wishlist => {
+          containsDefaultWishlist = containsDefaultWishlist || wishlist.status === 'Default';
+          return {
+            id: `${wishlist.giftListExternalIdentifier}`,
+            displayName: wishlist.nameIdentifier,
+            isDefault: wishlist.status === 'Default',
+            itemsCount: wishlist.itemCount,
+            shareableLink: `${assetHost}/${siteId}/favorites?wishlistId=${
+              wishlist.giftListExternalIdentifier
+            }&guestAccessKey=${wishlist.guestAccessKey}`,
+          };
+        });
+
+        // Incase there is no default wishlist item is passed from the API
+        if (!containsDefaultWishlist) {
+          wishlists[0].isDefault = true;
+        }
+
+        return wishlists;
       }
-
-      let containsDefaultWishlist = false;
-      const wishlists = res.body.map(wishlist => {
-        containsDefaultWishlist = containsDefaultWishlist || wishlist.status === 'Default';
-        return {
-          id: `${wishlist.giftListExternalIdentifier}`,
-          displayName: wishlist.nameIdentifier,
-          isDefault: wishlist.status === 'Default',
-          itemsCount: wishlist.itemCount,
-          // TODO - fix this - shareableLink: `${this.apiHelper.configOptions.assetHost}/${this.apiHelper.configOptions.siteId }/favorites?wishlistId=${wishlist.giftListExternalIdentifier}&guestAccessKey=${wishlist.guestAccessKey}` // FIXME: this should be at routing level
-        };
-      });
-
-      // wonderful, service might not return a default one
-      if (!containsDefaultWishlist) {
-        wishlists[0].isDefault = true;
-      }
-
-      return wishlists;
     })
     .catch(err => {
       if (

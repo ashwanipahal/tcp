@@ -51,6 +51,7 @@ import MyFavoriteStoreReducer from '@tcp/core/src/components/features/account/My
 import PointsClaimReducer from '@tcp/core/src/components/features/account/PointsClaim/container/PointsClaim.reducer';
 import orderConfirmationReducer from '@tcp/core/src/components/features/CnC/Confirmation/container/Confirmation.reducer';
 import OrdersReducer from '@tcp/core/src/components/features/account/Orders/container/Orders.reducer';
+import FavoriteReducer from '@tcp/core/src/components/features/browse/Favorites/container/Favorites.reducer';
 
 import {
   APICONFIG_REDUCER_KEY,
@@ -113,6 +114,7 @@ import {
   POINTS_CLAIM_REDUCER_KEY,
   CONFIRMATION_REDUCER_KEY,
   ORDERS_REDUCER_KEY,
+  FAVORITES_REDUCER_KEY,
 } from '@tcp/core/src/constants/reducer.constants';
 import { TRACK_PAGE_VIEW } from '@tcp/core/src/analytics';
 import HeaderReducer from '@tcp/core/src/components/common/organisms/Header/container/Header.reducer';
@@ -226,4 +228,5 @@ export default combineReducers({
   [POINTS_CLAIM_REDUCER_KEY]: PointsClaimReducer,
   [CONFIRMATION_REDUCER_KEY]: orderConfirmationReducer,
   [ORDERS_REDUCER_KEY]: OrdersReducer,
+  [FAVORITES_REDUCER_KEY]: FavoriteReducer,
 });

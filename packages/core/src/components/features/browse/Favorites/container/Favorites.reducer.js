@@ -4,6 +4,7 @@ import { DEFAULT_REDUCER_KEY } from '../../../../../utils/cache.util';
 
 const initialState = fromJS({
   [DEFAULT_REDUCER_KEY]: null,
+  wishlistsSummaries: [],
 });
 
 const getDefaultState = state => {
@@ -15,13 +16,12 @@ const getDefaultState = state => {
 };
 
 const FavoritesReducer = (state = initialState, action) => {
-  switch (action.type) {
+  const { type, payload } = action;
+  switch (type) {
     case FAVORITES_CONSTANTS.SET_FAVORITES_STATE:
       return state.merge(action.payload);
-    case FAVORITES_CONSTANTS.FAVORITES_SET_AVAILABLE_WISHLISTS:
-      console.log('action ==> ', action);
-      console.log('action.wishlistsSummaries ==> ', action.wishlistsSummaries);
-      return state.merge('favorites', { wishlistsSummaries: action.wishlistsSummaries });
+    case FAVORITES_CONSTANTS.SET_FAVORITES_WISHLIST:
+      return state.set('wishlistsSummaries', payload);
     default:
       return getDefaultState(state);
   }
