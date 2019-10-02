@@ -35,6 +35,7 @@ const MODULE_HEIGHT = 142;
 const MODULE_WIDTH = (PRODUCT_IMAGE_WIDTH + PRODUCT_IMAGE_GUTTER) * PRODUCT_IMAGE_PER_SLIDE;
 const { IMG_DATA, TOTAL_IMAGES, CAROUSEL_OPTIONS } = config;
 
+/* SnapCarousel slide item handler */
 const getCarouselSlide = (item, navigation) => {
   return (
     <ImageSlideWrapper>
