@@ -3,7 +3,7 @@
 exports[`CouponCard Component CouponCard should render correctly 1`] = `
 <div>
   <div
-    className="couponCard__container"
+    className="couponCard__container "
   >
     <Styled(ErrorMessage)
       error=""

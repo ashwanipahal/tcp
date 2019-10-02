@@ -1,0 +1,212 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`CouponListCarousel component should renders offersandcoupons list 1`] = `
+<StyledComponent
+  couponDetailClick={[Function]}
+  couponList={
+    Immutable.List [
+      Object {
+        "details": null,
+        "detailsOpen": false,
+        "effectiveDate": "8/6/19",
+        "error": null,
+        "expirationDate": "8/10/19",
+        "expirationDateTimeStamp": "2019-08-11T18:29:00.001Z",
+        "id": "Y00105575",
+        "isExpiring": true,
+        "isStarted": true,
+        "legalText": "$10 OFF On $60",
+        "promotionType": "public",
+        "status": "available",
+        "title": "$10 OFF on $50",
+      },
+      Object {
+        "details": null,
+        "detailsOpen": false,
+        "effectiveDate": "8/6/19",
+        "error": null,
+        "expirationDate": "8/10/19",
+        "expirationDateTimeStamp": "2019-08-12T18:29:00.001Z",
+        "id": "Y00105578",
+        "isExpiring": true,
+        "isStarted": true,
+        "legalText": "$10 OFF On $70",
+        "promotionType": "public",
+        "status": "available",
+        "title": "$20 OFF On $50",
+      },
+      Object {
+        "details": null,
+        "detailsOpen": false,
+        "effectiveDate": "8/6/19",
+        "error": null,
+        "expirationDate": "8/10/19",
+        "expirationDateTimeStamp": "2019-08-13T18:29:00.001Z",
+        "id": "Y00105575",
+        "isExpiring": true,
+        "isStarted": true,
+        "legalText": "$10 OFF On $80",
+        "promotionType": "public",
+        "status": "available",
+        "title": "$30 OFF On $50",
+      },
+      Object {
+        "details": null,
+        "detailsOpen": false,
+        "effectiveDate": "8/6/19",
+        "error": null,
+        "expirationDate": "8/10/19",
+        "expirationDateTimeStamp": "2019-08-14T18:29:00.001Z",
+        "id": "Y00105578",
+        "isExpiring": true,
+        "isStarted": true,
+        "legalText": "$10 OFF On $150",
+        "promotionType": "public",
+        "status": "available",
+        "title": "$40 OFF On $50",
+      },
+      Object {
+        "details": null,
+        "detailsOpen": false,
+        "effectiveDate": "8/6/19",
+        "error": null,
+        "expirationDate": "8/10/19",
+        "expirationDateTimeStamp": "2019-08-15T18:29:00.001Z",
+        "id": "Y00105575",
+        "isExpiring": true,
+        "isStarted": true,
+        "legalText": "$10 OFF On $520",
+        "promotionType": "public",
+        "status": "available",
+        "title": "$50 OFF On $50",
+      },
+      Object {
+        "details": null,
+        "detailsOpen": false,
+        "effectiveDate": "8/6/19",
+        "error": null,
+        "expirationDate": "8/10/19",
+        "expirationDateTimeStamp": "2019-08-16T18:29:00.001Z",
+        "id": "Y00105578",
+        "isExpiring": true,
+        "isStarted": true,
+        "legalText": "$10 OFF On $350",
+        "promotionType": "public",
+        "status": "available",
+        "title": "$60 OFF On $50",
+      },
+    ]
+  }
+  forwardedComponent={
+    Object {
+      "$$typeof": Symbol(react.forward_ref),
+      "attrs": Array [],
+      "componentStyle": ComponentStyle {
+        "componentId": "sc-kpOJdX",
+        "isStatic": false,
+        "rules": Array [
+          "
+  ",
+          "
+  display: flex;
+  flex-direction: column;
+
+  .couponList_title {
+    margin-bottom: ",
+          [Function],
+          ";
+  }
+  .couponList_iconContainer {
+    display: flex;
+    flex-direction: row;
+    margin-top: ",
+          [Function],
+          ";
+  }
+  .coupon_viewall_tile {
+    display: flex;
+    justify-content: center;
+  }
+  .coupon_button_black {
+    background-color: ",
+          [Function],
+          ";
+    color: ",
+          [Function],
+          ";
+    font-size: ",
+          [Function],
+          ";
+  }
+  .couponList_helpIcon {
+    text-align: center;
+    line-height: ",
+          [Function],
+          ";
+    font-size: ",
+          [Function],
+          ";
+    background: ",
+          [Function],
+          ";
+    color: ",
+          [Function],
+          ";
+    margin-right: ",
+          [Function],
+          ";
+    border-radius: ",
+          [Function],
+          ";
+    width: ",
+          [Function],
+          ";
+    height: ",
+          [Function],
+          ";
+  }
+
+  .coupon_carousel {
+    margin: 0 -",
+          [Function],
+          ";
+
+    .coupon_available_couponNameLbl {
+      font-size: 11px;
+    }
+    .couponCard__header_text {
+      font-size: 11px;
+      font-weight: 900;
+    }
+  }
+
+  .coupon_carousel_container {
+    margin: 0 -",
+          [Function],
+          ";
+  }
+  .view_all {
+    text-align: right;
+  }
+",
+          ";
+",
+        ],
+      },
+      "displayName": "Styled(MyOffersCouponView)",
+      "foldedComponentIds": Array [],
+      "render": [Function],
+      "styledComponentId": "sc-kpOJdX",
+      "target": [Function],
+      "toString": [Function],
+      "warnTooManyClasses": [Function],
+      "withComponent": [Function],
+    }
+  }
+  forwardedRef={null}
+  heading="Heading"
+  helpAnchorClick={[Function]}
+  helpSubHeading="true"
+  labels={Object {}}
+/>
+`;
