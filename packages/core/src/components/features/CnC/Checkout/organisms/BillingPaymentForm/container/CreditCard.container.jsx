@@ -6,6 +6,7 @@ import BillingPaymentForm from '../views';
 import CreditCardSelector from './CreditCard.selectors';
 import constants from './CreditCard.constants';
 import CheckoutSelectors from '../../../container/Checkout.selector';
+import { updateCardData } from '../../../container/Checkout.action';
 
 /**
  * @class GiftCardsContainer
@@ -294,6 +295,7 @@ export class GiftCardsContainer extends React.PureComponent<Props> {
       editFormSelectedOnFileAddressId,
       navigation,
       creditFieldLabels,
+      updateCardDetail,
     } = this.props;
     this.initialValues = this.getInitialValues(this.getCreditCardDefault(cardList));
     return (
@@ -324,6 +326,7 @@ export class GiftCardsContainer extends React.PureComponent<Props> {
         editFormSelectedOnFileAddressId={editFormSelectedOnFileAddressId}
         navigation={navigation}
         creditFieldLabels={creditFieldLabels}
+        updateCardDetail={updateCardDetail}
         isEditFormSameAsShippingChecked={isEditFormSameAsShippingChecked}
       />
     );
@@ -349,4 +352,15 @@ const mapStateToProps = (state, ownProps) => {
   };
 };
 
-export default connect(mapStateToProps)(GiftCardsContainer);
+const mapDispatchToProps = dispatch => {
+  return {
+    updateCardDetail: payload => {
+      dispatch(updateCardData(payload));
+    },
+  };
+};
+
+export default connect(
+  mapStateToProps,
+  mapDispatchToProps
+)(GiftCardsContainer);

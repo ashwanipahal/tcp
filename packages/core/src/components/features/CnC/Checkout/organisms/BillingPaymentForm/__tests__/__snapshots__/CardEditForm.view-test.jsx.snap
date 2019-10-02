@@ -1,0 +1,92 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`ButtonList component renders correctly without props 1`] = `
+<ReduxForm
+  AddressForm={[Function]}
+  destroyOnUnmount={true}
+  enableReinitialize={true}
+  forceUnregisterOnUnmount={false}
+  form="checkoutCardEditPayment"
+  getAddNewCCForm={[Function]}
+  getFormState={[Function]}
+  initialValues={
+    Object {
+      "address": undefined,
+      "cardNumber": "123",
+      "ccBrand": undefined,
+      "ccType": undefined,
+      "creditCardId": undefined,
+      "expMonth": "2",
+      "expYear": undefined,
+    }
+  }
+  keepDirtyOnReinitialize={false}
+  labels={
+    Object {
+      "cancelButtonText": "Cancel",
+      "saveButtonText": "Save",
+    }
+  }
+  onSubmitSuccess={[Function]}
+  persistentSubmitErrors={false}
+  pure={true}
+  renderCardDetailsHeading={[Function]}
+  shouldAsyncValidate={[Function]}
+  shouldError={[Function]}
+  shouldValidate={[Function]}
+  shouldWarn={[Function]}
+  submitAsSideEffect={false}
+  touchOnBlur={true}
+  touchOnChange={false}
+  updateUnregisteredFields={false}
+  validate={[Function]}
+/>
+`;
+
+exports[`ButtonList component renders correctly without props 2`] = `
+<form
+  name="checkoutCardEditPayment"
+  noValidate={true}
+  onSubmit={[Function]}
+>
+  Hello
+  CCForm
+  <Component
+    editMode={true}
+    key="cardEditAddressForm"
+  />
+  <div
+    className="card-edit-buttons"
+  >
+    <Styled(Button)
+      className="card-edit-button card-edit-cancel"
+      type="button"
+    >
+      <Styled(BodyCopy)
+        className={null}
+        color="text.secondary"
+        component="span"
+        fontFamily="secondary"
+        fontSize="fs14"
+        fontWeight="extrabold"
+        letterSpacing="normal"
+        lineHeight="normal"
+        link={null}
+        textAlign="left"
+      >
+        Cancel
+      </Styled(BodyCopy)>
+    </Styled(Button)>
+    <Styled(Button)
+      buttonVariation="variable-width"
+      className="card-edit-button card-edit-save"
+      fill="BLUE"
+      fontSize="fs14"
+      fontWeight="extrabold"
+      type="submit"
+    >
+      Save
+    </Styled(Button)>
+  </div>
+</form>
+`;

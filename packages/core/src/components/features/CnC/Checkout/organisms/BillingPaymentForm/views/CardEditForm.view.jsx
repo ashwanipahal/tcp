@@ -1,14 +1,23 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import { reduxForm } from 'redux-form';
+import { reduxForm, submit } from 'redux-form';
 import BodyCopy from '../../../../../../common/atoms/BodyCopy';
 import Button from '../../../../../../common/atoms/Button';
 import constants from '../container/CreditCard.constants';
+import AddressFields from '../../../../../../common/molecules/AddressFields';
+import createValidateMethod from '../../../../../../../utils/formValidation/createValidateMethod';
+import getStandardConfig from '../../../../../../../utils/formValidation/validatorStandardConfig';
 
 class CardEditFormView extends React.PureComponent {
+  handleSubmit = e => {
+    const { dispatch } = this.props;
+    e.preventDefault();
+    e.stopPropagation();
+    dispatch(submit(constants.EDIT_FORM_NAME));
+  };
+
   render() {
     const {
-      handleSubmit,
       renderCardDetailsHeading,
       getAddNewCCForm,
       unsetFormEditState,
@@ -17,7 +26,7 @@ class CardEditFormView extends React.PureComponent {
       onEditCardFocus,
     } = this.props;
     return (
-      <form name={constants.EDIT_FORM_NAME} noValidate onSubmit={handleSubmit}>
+      <form name={constants.EDIT_FORM_NAME} noValidate onSubmit={this.handleSubmit}>
         {renderCardDetailsHeading({ hideAnchor: true })}
         {getAddNewCCForm({
           onCardFocus: onEditCardFocus,
@@ -64,14 +73,14 @@ CardEditFormView.propTypes = {
     cancelButtonText: PropTypes.string,
   }).isRequired,
   renderCardDetailsHeading: PropTypes.func.isRequired,
-  handleSubmit: PropTypes.func.isRequired,
   getAddNewCCForm: PropTypes.func.isRequired,
   unsetFormEditState: PropTypes.func.isRequired,
   AddressForm: PropTypes.shape({}).isRequired,
   onEditCardFocus: PropTypes.func.isRequired,
+  dispatch: PropTypes.func.isRequired,
 };
 
-const CardEditReduxForm = props => {
+const CardEditReduxForm = React.memo(props => {
   const {
     selectedCard,
     addressForm: AddressForm,
@@ -81,11 +90,30 @@ const CardEditReduxForm = props => {
     unsetFormEditState,
     onEditCardFocus,
     labels,
+    dispatch,
   } = props;
-  const { accountNo, ccBrand, ccType, expMonth, expYear, addressDetails: address } = selectedCard;
+  const {
+    accountNo,
+    ccBrand,
+    ccType,
+    expMonth,
+    expYear,
+    addressDetails: address,
+    creditCardId,
+  } = selectedCard;
+
+  const validateMethod = createValidateMethod({
+    address: AddressFields.addressValidationConfig,
+    ...getStandardConfig(['expYear', 'expMonth']),
+  });
+
   const CartEditForm = reduxForm({
     form: constants.EDIT_FORM_NAME, // a unique identifier for this form
     enableReinitialize: true,
+    ...validateMethod,
+    onSubmitSuccess: () => {
+      unsetFormEditState();
+    },
   })(CardEditFormView);
 
   return (
@@ -98,7 +126,9 @@ const CardEditReduxForm = props => {
         ccBrand,
         ccType,
         address,
+        creditCardId,
       }}
+      dispatch={dispatch}
       onEditCardFocus={onEditCardFocus}
       AddressForm={AddressForm}
       renderCardDetailsHeading={renderCardDetailsHeading}
@@ -107,7 +137,7 @@ const CardEditReduxForm = props => {
       labels={labels}
     />
   );
-};
+});
 
 CardEditReduxForm.propTypes = {
   labels: PropTypes.shape({
@@ -120,6 +150,7 @@ CardEditReduxForm.propTypes = {
   addressForm: PropTypes.shape({}).isRequired,
   onEditCardFocus: PropTypes.func.isRequired,
   handleEditFromSubmit: PropTypes.func.isRequired,
+  dispatch: PropTypes.func.isRequired,
   selectedCard: PropTypes.shape({
     accountNo: PropTypes.string,
     ccBrand: PropTypes.string,
@@ -131,3 +162,5 @@ CardEditReduxForm.propTypes = {
 };
 
 export default CardEditReduxForm;
+
+export { CardEditFormView as CardEditFormViewVanilla };
