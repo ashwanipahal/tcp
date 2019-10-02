@@ -12,6 +12,7 @@ import {
   getUserLoggedInState,
 } from '@tcp/core/src/components/features/account/User/container/User.selectors';
 import BAGPAGE_SELECTORS from '@tcp/core/src/components/features/CnC/BagPage/container/BagPage.selectors';
+import { getIsPickupModalOpen } from '@tcp/core/src/components/common/organisms/PickupStoreModal/container/PickUpStoreModal.selectors';
 import BAG_PAGE_ACTIONS from '@tcp/core/src/components/features/CnC/BagPage/container/BagPage.actions';
 
 import { getCartItemCount } from '@tcp/core/src/utils/cookie.util';
@@ -30,6 +31,7 @@ const mapStateToProps = state => {
     totalItems: BAGPAGE_SELECTORS.getTotalItems(state),
     labels: state.Labels.global,
     favStore: state.User && state.User.get('defaultStore'),
+    isPickupModalOpen: getIsPickupModalOpen(state),
   };
 };
 

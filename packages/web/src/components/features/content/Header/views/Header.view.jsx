@@ -5,6 +5,7 @@ import withStyles from '@tcp/core/src/components/common/hoc/withStyles';
 import errorBoundary from '@tcp/core/src/components/common/hoc/withErrorBoundary/errorBoundary';
 import OverlayModal from '@tcp/core/src/components/features/OverlayModal';
 import TrackOrder from '@tcp/core/src/components/features/account/TrackOrder';
+import PickupStoreModal from '@tcp/core/src/components/common/organisms/PickupStoreModal';
 import { getViewportInfo } from '@tcp/core/src/utils';
 import { HeaderTopNav, HeaderPromo, HeaderMiddleNav, CondensedHeader } from '../molecules';
 import style from '../Header.style';
@@ -84,6 +85,7 @@ class Header extends React.PureComponent {
       openMiniBagDispatch,
       totalItems,
       favStore,
+      isPickupModalOpen,
     } = this.props;
     const { showCondensedHeader } = this.state;
     return (
@@ -134,6 +136,7 @@ class Header extends React.PureComponent {
         )}
         <OverlayModal showCondensedHeader={showCondensedHeader} />
         <TrackOrder />
+        {isPickupModalOpen ? <PickupStoreModal /> : null}
       </header>
     );
   }
@@ -165,6 +168,7 @@ Header.propTypes = {
     features: PropTypes.shape({}),
   }),
   loadFavoriteStore: PropTypes.func.isRequired,
+  isPickupModalOpen: PropTypes.bool,
 };
 
 Header.defaultProps = {
@@ -187,6 +191,7 @@ Header.defaultProps = {
     },
     features: {},
   },
+  isPickupModalOpen: false,
 };
 
 export default withStyles(errorBoundary(Header), style);
