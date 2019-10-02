@@ -90,6 +90,7 @@ exports[`GuestBillingFormVanilla should render correctly when props change 1`] =
       isGuest={true}
       isSaveToAccountChecked={true}
       labels={Object {}}
+      onCardFocus={[Function]}
     />
     <Styled(CheckoutAddress)
       billingData={Object {}}

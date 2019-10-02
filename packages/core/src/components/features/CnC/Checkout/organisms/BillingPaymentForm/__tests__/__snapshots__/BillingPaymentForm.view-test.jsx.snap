@@ -181,6 +181,7 @@ exports[`ButtonList component renders correctly if  cards present and addNewCCSt
           "lbl_billing_venmo": "Venmo",
         }
       }
+      onCardFocus={[Function]}
     />
     <Styled(CheckoutAddress)
       addNewCCState={true}
@@ -325,6 +326,7 @@ exports[`ButtonList component renders correctly if  no cards present  1`] = `
           "lbl_billing_venmo": "Venmo",
         }
       }
+      onCardFocus={[Function]}
     />
     <Styled(CheckoutAddress)
       addNewCCState={true}
