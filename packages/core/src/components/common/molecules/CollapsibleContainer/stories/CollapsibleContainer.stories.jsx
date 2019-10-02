@@ -56,6 +56,6 @@ storiesOf('CollapsibleContainer', module).add('Store Locator Collapsible', () =>
   <WrapperComponent
     theme={tcpTheme}
     header={<span className="collapsible-header-text">Hello World</span>}
-    body={<div className="collapsible-content">Test Content...</div>}
+    body={<div className="collapsible-content">Test Content....</div>}
   />
 ));
