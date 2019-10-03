@@ -1,6 +1,7 @@
 import React, { PureComponent } from 'react';
 import PropTypes from 'prop-types';
 import { View, Text, ScrollView } from 'react-native';
+import { isGymboree } from '@tcp/core/src/utils/index.native';
 import { isCanada, getAPIConfig, navigateToNestedRoute } from '@tcp/core/src/utils';
 import StoreStaticMap from '@tcp/core/src/components/common/atoms/StoreStaticMap';
 import StoreAddressTile from '@tcp/core/src/components/common/molecules/StoreAddressTile';
@@ -16,7 +17,7 @@ export class StoreLanding extends PureComponent {
   state = {
     mapView: false,
     isOutlet: false,
-    isGym: false,
+    isGym: isGymboree(),
   };
 
   toggleMap = event => {

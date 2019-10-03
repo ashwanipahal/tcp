@@ -4,6 +4,7 @@ import superagent from 'superagent';
 import ErrorMessage from '@tcp/core/src/components/common/hoc/ErrorMessage';
 import { PropTypes } from 'prop-types';
 import { getAPIConfig } from '@tcp/core/src/utils';
+import { isGymboree } from '@tcp/core/src/utils/index.native';
 import { Anchor, BodyCopy, Image } from '@tcp/core/src/components/common/atoms';
 import InputCheckbox from '@tcp/core/src/components/common/atoms/InputCheckbox';
 import { GooglePlacesInput } from '@tcp/core/src/components/common/atoms/GoogleAutoSuggest/AutoCompleteComponent';
@@ -30,6 +31,8 @@ const { INITIAL_STORE_LIMIT, GOOGLE_SEARCH_API_ENDPOINT } = constants;
 class StoreSearch extends Component {
   state = {
     errorNotFound: null,
+    gymSelected: isGymboree(),
+    outletSelected: false,
   };
 
   locationRef = null;

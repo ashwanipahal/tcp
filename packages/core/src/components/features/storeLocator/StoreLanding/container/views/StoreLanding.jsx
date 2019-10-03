@@ -6,7 +6,13 @@ import { Grid } from '@tcp/core/src/components/common/molecules';
 import withStyles from '@tcp/core/src/components/common/hoc/withStyles';
 
 import StoreAddressTile from '@tcp/core/src/components/common/molecules/StoreAddressTile';
-import { isCanada, getViewportInfo, getAPIConfig, routeToStoreDetails } from '@tcp/core/src/utils';
+import {
+  isCanada,
+  getViewportInfo,
+  getAPIConfig,
+  routeToStoreDetails,
+  isGymboree,
+} from '@tcp/core/src/utils';
 import StoreLocatorSearch from '../../organisms/StoreSearch';
 
 import styles from '../styles/StoreLanding.style';
@@ -17,7 +23,7 @@ export class StoreLanding extends PureComponent {
   state = {
     mapView: false,
     isOutlet: false,
-    isGym: false,
+    isGym: isGymboree(),
   };
 
   openStoreDetails = (event, store) => {
