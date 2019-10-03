@@ -22,6 +22,7 @@ const ignorePsuedoCodeDir = [
   '/services/abstractors/CnC/Checkout.js',
   '/GoogleAutoSuggest/',
   '/utils/localStorageManagement.js',
+  '/Favorites/',
 ];
 
 module.exports = {
@@ -51,6 +52,7 @@ module.exports = {
     '!**/*.styles.native.js',
     '!**/*.constants.js',
     '!**/*.config.js',
+    '!**/config.js',
     '!**/core/styles/**',
     '!**/*.actions.js',
     '!**/*.container.js',
@@ -71,6 +73,8 @@ module.exports = {
     '/pages/',
     '/*.app.js',
     '/*.app.jsx',
+    '/stories/',
+    '/*.stories.jsx',
     ...ignorePsuedoCodeDir,
   ],
   coverageReporters: ['json', 'lcov', 'text', 'text-summary'],

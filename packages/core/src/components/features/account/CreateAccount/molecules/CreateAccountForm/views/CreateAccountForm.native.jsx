@@ -2,7 +2,7 @@ import React, { PureComponent } from 'react';
 import { View } from 'react-native';
 import { reduxForm, Field } from 'redux-form';
 import { PropTypes } from 'prop-types';
-
+import { getLabelValue } from '@tcp/core/src/utils/utils';
 import TextBox from '../../../../../../common/atoms/TextBox';
 import withStyles from '../../../../../../common/hoc/withStyles.native';
 import {
@@ -54,7 +54,7 @@ class CreateAccountForm extends PureComponent<Props> {
       <View {...this.props}>
         <ParentView>
           <Field
-            label={labels.registration.lbl_createAccount_firstName}
+            label={getLabelValue(labels, 'lbl_createAccount_firstName', 'registration')}
             name="firstName"
             id="firstName"
             type="text"
@@ -62,7 +62,7 @@ class CreateAccountForm extends PureComponent<Props> {
             dataLocator="firstName"
           />
           <Field
-            label={labels.registration.lbl_createAccount_lastName}
+            label={getLabelValue(labels, 'lbl_createAccount_lastName', 'registration')}
             name="lastName"
             id="lastName"
             type="text"
@@ -70,7 +70,7 @@ class CreateAccountForm extends PureComponent<Props> {
             dataLocator="lastName"
           />
           <Field
-            label={labels.registration.lbl_createAccount_phoneNumber}
+            label={getLabelValue(labels, 'lbl_createAccount_phoneNumber', 'registration')}
             name="phoneNumber"
             id="phoneNumber"
             type="text"
@@ -78,7 +78,7 @@ class CreateAccountForm extends PureComponent<Props> {
             dataLocator="phoneNumber"
           />
           <Field
-            label={labels.registration.lbl_createAccount_zipCode}
+            label={getLabelValue(labels, 'lbl_createAccount_zipCode', 'registration')}
             name="noCountryZip"
             id="ZipCode"
             type="text"
@@ -86,7 +86,7 @@ class CreateAccountForm extends PureComponent<Props> {
             dataLocator="Zip-Code"
           />
           <Field
-            label={labels.registration.lbl_createAccount_emailAddress}
+            label={getLabelValue(labels, 'lbl_createAccount_emailAddress', 'registration')}
             name="emailAddress"
             id="emailAddress"
             type="text"
@@ -94,7 +94,7 @@ class CreateAccountForm extends PureComponent<Props> {
             dataLocator="emailAddress"
           />
           <Field
-            label={labels.registration.lbl_createAccount_confirmEmail}
+            label={getLabelValue(labels, 'lbl_createAccount_confirmEmail', 'registration')}
             name="confirmEmailAddress"
             id="confirmEmailAddress"
             type="text"
@@ -103,7 +103,7 @@ class CreateAccountForm extends PureComponent<Props> {
           />
           <PasswordWrapper>
             <Field
-              label={labels.registration.lbl_createAccount_password}
+              label={getLabelValue(labels, 'lbl_createAccount_password', 'registration')}
               name="password"
               id="password"
               type="text"
@@ -120,8 +120,8 @@ class CreateAccountForm extends PureComponent<Props> {
                 disabled={false}
                 rightText={
                   hideShowPwd
-                    ? labels.registration.lbl_createAccount_hide
-                    : labels.registration.lbl_createAccount_show
+                    ? getLabelValue(labels, 'lbl_createAccount_hide', 'registration')
+                    : getLabelValue(labels, 'lbl_createAccount_show', 'registration')
                 }
                 onClick={onPwdHideShowClick}
                 hideCheckboxIcon
@@ -130,7 +130,7 @@ class CreateAccountForm extends PureComponent<Props> {
           </PasswordWrapper>
           <ConfirmPasswordWrapper>
             <Field
-              label={labels.registration.lbl_createAccount_confirmPassword}
+              label={getLabelValue(labels, 'lbl_createAccount_confirmPassword', 'registration')}
               name="confirmPassword"
               id="confirmPassword"
               type="text"
@@ -146,8 +146,8 @@ class CreateAccountForm extends PureComponent<Props> {
                 disabled={false}
                 rightText={
                   confirmHideShowPwd
-                    ? labels.registration.lbl_createAccount_hide
-                    : labels.registration.lbl_createAccount_show
+                    ? getLabelValue(labels, 'lbl_createAccount_hide', 'registration')
+                    : getLabelValue(labels, 'lbl_createAccount_show', 'registration')
                 }
                 onClick={onConfirmPwdHideShowClick}
                 hideCheckboxIcon
@@ -162,15 +162,17 @@ class CreateAccountForm extends PureComponent<Props> {
             component={InputCheckbox}
             dataLocator="iAgree"
             disabled={false}
-            rightText={`${labels.registration.lbl_createAccount_termsConditions} ${
-              labels.registration.lbl_createAccount_termsConditions_1
-            }`}
+            rightText={`${getLabelValue(
+              labels,
+              'lbl_createAccount_termsConditions',
+              'registration'
+            )} ${getLabelValue(labels, 'lbl_createAccount_termsConditions_1', 'registration')}`}
             marginTop={13}
           />
           <TouchFaceIdCheckBox labels={labels} getTouchStatus={getTouchStatus} />
           <ButtonWrapper>
             <CustomButton
-              text={labels.registration.lbl_createAccount_createAccount}
+              text={getLabelValue(labels, 'lbl_createAccount_createAccount', 'registration')}
               buttonVariation="variable-width"
               onPress={handleSubmit(handleSubmitForm)}
               fill="BLUE"
@@ -180,7 +182,7 @@ class CreateAccountForm extends PureComponent<Props> {
             <Anchor
               fontSizeVariation="xlarge"
               anchorVariation="secondary"
-              text={labels.registration.lbl_createAccount_alreadyAccount}
+              text={getLabelValue(labels, 'lbl_createAccount_alreadyAccount', 'registration')}
               onPress={this.showLoginSection}
               underlineBlue
             />

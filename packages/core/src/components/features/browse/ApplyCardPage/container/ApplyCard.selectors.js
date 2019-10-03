@@ -5,6 +5,7 @@ import {
   CARTPAGE_REDUCER_KEY,
 } from '../../../../../constants/reducer.constants';
 import { fetchBillingOrShippingAddress } from '../utils/utility';
+import getErrorList from '../../../CnC/BagPage/container/Errors.selector';
 
 export const getPersonalDataState = state => {
   return state[USER_REDUCER_KEY].get('personalData');
@@ -22,6 +23,10 @@ export const getAddressListState = state => {
 export const getUserContactInfo = state => {
   const personalData = state[USER_REDUCER_KEY].get('personalData');
   return personalData && personalData.get('contactInfo');
+};
+
+export const getErrorMapping = state => {
+  return getErrorList(state);
 };
 
 export const getUserId = state => {

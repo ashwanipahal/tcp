@@ -2,12 +2,7 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import MyComponentRoot from '../styles/MyComponent.style.native';
 
-const MyComponent = ({ children }) => (
-  <MyComponentRoot>
-    MyComponent
-    {children}
-  </MyComponentRoot>
-);
+const MyComponent = ({ children }) => <MyComponentRoot>{children}</MyComponentRoot>;
 
 MyComponent.propTypes = {
   children: PropTypes.arrayOf(PropTypes.node),

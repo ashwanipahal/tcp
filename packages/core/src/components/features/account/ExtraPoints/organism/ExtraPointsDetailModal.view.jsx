@@ -1,9 +1,10 @@
 import React from 'react';
 import Modal from '@tcp/core/src/components/common/molecules/Modal';
-import { BodyCopy, RichText, Button } from '@tcp/core/src/components/common/atoms';
+import { BodyCopy, RichText, Anchor } from '@tcp/core/src/components/common/atoms';
 import withStyles from '@tcp/core/src/components/common/hoc/withStyles';
 import PropTypes from 'prop-types';
 import styles from './styles/ExtraPointsDetailModal.style';
+import ctaRedirect from './utils';
 
 /**
  * This Class component use for return the Extra Points Detail Modal
@@ -79,14 +80,19 @@ class ExtraPointsDetailModal extends React.PureComponent {
           <RichText richTextHtml={activeActivity.activityModalLongDescription} />
         </BodyCopy>
         <BodyCopy component="div" textAlign="center" className="buttonWrapper">
-          <Button
-            fill="BLUE"
+          <Anchor
+            to={ctaRedirect(activeActivity).to}
+            asPath={ctaRedirect(activeActivity).path}
+            anchorVariation="button"
             buttonVariation="fixed-width"
-            data-locator={`earnPointsModal_${activeActivity.activityModalAction}_activityCta`}
             fullWidth
+            fill="BLUE"
+            centered
+            className="elem-mb-SM"
+            dataLocator={`earnPointsModal_${activeActivity.activityModalAction}_activityCta`}
           >
             {activeActivity.activityModalCtaText}
-          </Button>
+          </Anchor>
         </BodyCopy>
       </div>
     );

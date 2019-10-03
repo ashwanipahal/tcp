@@ -39,12 +39,8 @@ export class Account extends React.PureComponent<Props, State> {
   componentDidUpdate(prevProps) {
     const { isUserLoggedIn, closeOverlay } = this.props;
     const hasMobile = isMobileApp();
-    if (!prevProps.isUserLoggedIn && isUserLoggedIn) {
-      if (hasMobile) {
-        this.navigattePage();
-      } else {
-        closeOverlay();
-      }
+    if (!prevProps.isUserLoggedIn && isUserLoggedIn && !hasMobile) {
+      closeOverlay();
     }
   }
 
@@ -84,10 +80,11 @@ export class Account extends React.PureComponent<Props, State> {
   /**
    *  @function handleComponentChange triggered when dropdown clicked
    */
-  handleComponentChange = component => {
+  handleComponentChange = (component, otherProps) => {
     const componentName = this.getComponent(component);
     this.setState({
       component: componentName,
+      componentProps: otherProps,
     });
   };
 
@@ -102,7 +99,7 @@ export class Account extends React.PureComponent<Props, State> {
    * @return   {[Object]} JSX of the component
    */
   render() {
-    const { component } = this.state;
+    const { component, componentProps } = this.state;
     const { labels, isUserLoggedIn, navigation } = this.props;
     return (
       <StyledKeyboardAvoidingView behavior="padding" enabled keyboardVerticalOffset={82}>
@@ -110,6 +107,7 @@ export class Account extends React.PureComponent<Props, State> {
           <MyAccountLayout
             navData={navDataMobile}
             component={this.getComponent(component)}
+            componentProps={componentProps}
             mainContent={AccountComponentNativeMapping[component]}
             handleComponentChange={this.handleComponentChange}
             labels={labels}

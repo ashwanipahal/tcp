@@ -34,6 +34,13 @@ it('abstractor - layout | getModulesData', () => {
     });
 });
 
+it('abstractor - layout | getModulesFromLayout', () => {
+  return layoutAbstractor.getModulesFromLayout(HomePageLayoutMockResponse.homepage).then(data => {
+    expect(data.moduleD).toMatchObject(ModuleDMock.composites);
+    expect(data.moduleH).toMatchObject(ModuleHMock.composites);
+  });
+});
+
 it('abstractor - layout | getMock', () => {
   const mock = layoutAbstractor.getMock();
   expect(mock).toMatchObject(HomePageLayoutMockResponse);

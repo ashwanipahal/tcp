@@ -13,7 +13,7 @@ export const getShippingTotal = state => {
   return state.CartPageReducer.getIn(['orderDetails', 'shippingTotal']) || 0;
 };
 export const getTotalTax = state => {
-  return state.CartPageReducer.getIn(['orderDetails', 'totaltax']) || 0;
+  return state.CartPageReducer.getIn(['orderDetails', 'totalTax']) || 0;
 };
 export const getGrandTotal = state => {
   return state.CartPageReducer.getIn(['orderDetails', 'grandTotal']) || 0;
@@ -63,6 +63,7 @@ export const getOrderLedgerLabels = state => {
         lbl_orderledger_totalsavings: totalSavingsLabel,
         lbl_orderledger_tooltiptext: tooltipText,
         lbl_orderledger_free: free,
+        lbl_orderledger_title: orderLedgerTitle,
       } = {},
     } = {},
   } = state.Labels;
@@ -79,5 +80,6 @@ export const getOrderLedgerLabels = state => {
     totalSavingsLabel,
     tooltipText,
     free,
+    orderLedgerTitle,
   };
 };

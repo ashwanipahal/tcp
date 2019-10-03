@@ -14,11 +14,9 @@ export function* fetchProductTabListData({ payload }) {
         productTabListDataSuccess({ [categoryId]: res, errors: { [categoryId]: null } })
       );
     }
-    throw new Error('Something went wrong while making request!');
+    throw new Error();
   } catch (err) {
-    return yield put(
-      productTabListDataFail({ [categoryId]: [], errors: { [categoryId]: err.message } })
-    );
+    return yield put(productTabListDataFail({ [categoryId]: [], errors: { [categoryId]: true } }));
   }
 }
 

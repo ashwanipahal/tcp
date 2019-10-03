@@ -1,4 +1,5 @@
 import React from 'react';
+import { getLabelValue } from '@tcp/core/src/utils/utils';
 import Address from '../../../../common/molecules/Address';
 import Button from '../../../../common/atoms/Button';
 import withStyles from '../../../../common/hoc/withStyles';
@@ -142,7 +143,7 @@ class DeleteAddressModal extends React.Component<Props> {
           <Notification
             status={showUpdatedNotificationOnModal}
             colSize={{ large: 11, medium: 7, small: 6 }}
-            message={labels.common.lbl_common_errorMessage}
+            message={getLabelValue(labels, 'lbl_common_errorMessage', 'common')}
           />
         )}
 

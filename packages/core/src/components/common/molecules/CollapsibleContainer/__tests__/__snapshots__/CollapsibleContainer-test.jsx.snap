@@ -8,7 +8,6 @@ exports[`CollapsibleContainer should render correctly 1`] = `
     aria-expanded={false}
     className="collapsible-header"
     onClick={[Function]}
-    onKeyPress={[Function]}
   >
     <Styled(Image)
       className="collapsible-icon"
