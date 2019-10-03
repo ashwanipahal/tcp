@@ -55,7 +55,9 @@ exports[`DetailedCouponTile should display overlay 1`] = `
         lineHeight="normal"
         link={null}
         textAlign="center"
-      />
+      >
+        lbl_common_applied_to_bag
+      </Styled(BodyCopy)>
     </Styled(BodyCopy)>
   </Styled(BodyCopy)>
   <Styled(BodyCopy)
@@ -501,7 +503,9 @@ exports[`DetailedCouponTile should render correctly for applied coupon 1`] = `
         lineHeight="normal"
         link={null}
         textAlign="center"
-      />
+      >
+        lbl_common_applied_to_bag
+      </Styled(BodyCopy)>
     </Styled(BodyCopy)>
   </Styled(BodyCopy)>
   <Styled(BodyCopy)

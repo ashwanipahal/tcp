@@ -1,6 +1,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import BodyCopy from '@tcp/core/src/components/common/atoms/BodyCopy';
+import { getLabelValue } from '@tcp/core/src/utils/utils';
 import { EmptyContainer, Row } from '../styles/EmptyBirthdayCard.style.native';
 
 /**
@@ -26,7 +27,7 @@ export const EmptyBirthdayCard = ({ labels, view, showAddModal }) => {
             fontSize="fs14"
             mobileFontFamily="secondary"
             fontFamily="secondary"
-            text={labels.lbl_profile_addChildBirthdayCta}
+            text={getLabelValue(labels, 'lbl_profile_addChildBirthdayCta')}
             color="gray.900"
           />
         </Row>

@@ -5,6 +5,7 @@ import Button from '@tcp/core/src/components/common/atoms/Button';
 import { BodyCopyWithSpacing } from '@tcp/core/src/components/common/atoms/styledWrapper';
 import ModalNative from '@tcp/core/src/components/common/molecules/Modal';
 import createThemeColorPalette from '@tcp/core/styles/themes/createThemeColorPalette';
+import { getLabelValue } from '@tcp/core/src/utils/utils';
 import {
   DeleteAddressBody,
   AddressWrapper,
@@ -90,7 +91,7 @@ class DeleteAddressModal extends PureComponent {
         <ModalNative
           isOpen={isOpen}
           onRequestClose={this.onClose}
-          heading={labels.addressBook.ACC_LBL_DELETE_ADDRESS_HEADING}
+          heading={getLabelValue(labels, 'ACC_LBL_DELETE_ADDRESS_HEADING', 'addressBook')}
         >
           <DeleteAddressBody>
             <BodyCopyWithSpacing
@@ -98,7 +99,7 @@ class DeleteAddressModal extends PureComponent {
               textAlign="center"
               fontWeight="semibold"
               fontFamily="secondary"
-              text={labels.addressBook.ACC_LBL_DELETE_ADDRESS_TITLE}
+              text={getLabelValue(labels, 'ACC_LBL_DELETE_ADDRESS_TITLE', 'addressBook')}
             />
             {address.xcont_isBillingAddress === 'true' && (
               <BodyCopyWithSpacing
@@ -108,7 +109,11 @@ class DeleteAddressModal extends PureComponent {
                 fontFamily="secondary"
                 color="red.500"
                 spacingStyles="margin-left-XL margin-right-XL margin-top-XS margin-bottom-XS"
-                text={labels.addressBook.lbl_deleteAddressModal_ccAssociatedAddressMsg}
+                text={getLabelValue(
+                  labels,
+                  'lbl_deleteAddressModal_ccAssociatedAddressMsg',
+                  'addressBook'
+                )}
               />
             )}
             <AddressWrapper>
@@ -121,7 +126,7 @@ class DeleteAddressModal extends PureComponent {
                 color="white"
                 onPress={this.onConfirm}
                 buttonVariation="variable-width"
-                text={labels.common.lbl_common_YesDelete}
+                text={getLabelValue(labels, 'lbl_common_YesDelete', 'common')}
               />
             </CustomButtonWrapper>
             <CustomButtonWrapper>
@@ -130,7 +135,7 @@ class DeleteAddressModal extends PureComponent {
                 color={colorPallete.red[300]}
                 onPress={this.onClose}
                 buttonVariation="variable-width"
-                text={labels.common.lbl_common_dontDelete}
+                text={getLabelValue(labels, 'lbl_common_dontDelete', 'common')}
               />
             </CustomButtonWrapper>
           </DeleteAddressBody>

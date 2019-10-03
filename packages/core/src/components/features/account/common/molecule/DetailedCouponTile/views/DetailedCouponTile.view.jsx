@@ -3,6 +3,7 @@ import PropTypes from 'prop-types';
 import Barcode from '@tcp/core/src/components/common/molecules/Barcode';
 import { BodyCopy, Image } from '@tcp/core/src/components/common/atoms';
 import withStyles from '@tcp/core/src/components/common/hoc/withStyles';
+import { getLabelValue } from '@tcp/core/src/utils/utils';
 import styles from '../styles/DetailedCouponTile.style';
 import {
   COUPON_REDEMPTION_TYPE,
@@ -108,8 +109,8 @@ export class DetailedCouponTile extends React.Component {
    */
   getAddToBagCtaLabel = (labels, isStarted, isPlaceCash) => {
     return !isStarted && isPlaceCash
-      ? labels.lbl_coupon_seeRedeemDates
-      : labels.lbl_coupon_applyToBag;
+      ? getLabelValue(labels, 'lbl_coupon_seeRedeemDates')
+      : getLabelValue(labels, 'lbl_coupon_applyToBag');
   };
 
   /**
@@ -168,7 +169,7 @@ export class DetailedCouponTile extends React.Component {
                 color="white"
                 data-locator="coupon-overlay-info"
               >
-                {labels.lbl_common_applied_to_bag}
+                {getLabelValue(labels, 'lbl_common_applied_to_bag')}
               </BodyCopy>
             </BodyCopy>
           </BodyCopy>
@@ -181,7 +182,7 @@ export class DetailedCouponTile extends React.Component {
             textAlign="center"
             data-locator="myrewards-expiringsoonheader"
           >
-            {labels.lbl_coupon_expiringSoon}
+            {getLabelValue(labels, 'lbl_coupon_expiringSoon')}
           </BodyCopy>
         )}
         <BodyCopy component="div" className="content elem-pl-SM elem-pr-SM elem-pt-XL">
@@ -213,7 +214,11 @@ export class DetailedCouponTile extends React.Component {
             <BodyCopy component="div" className="coupon-desc elem-mb-SM">
               <BodyCopy component="div" data-locator="myrewards-usebylabel">
                 <BodyCopy fontSize="fs14" fontFamily="secondary">
-                  {`${isPlaceCash ? labels.lbl_coupon_couponValid : labels.lbl_coupon_couponUseBy}`}
+                  {`${
+                    isPlaceCash
+                      ? getLabelValue(labels, 'lbl_coupon_couponValid')
+                      : getLabelValue(labels, 'lbl_coupon_couponUseBy')
+                  }`}
                 </BodyCopy>
                 <BodyCopy fontSize="fs14" fontFamily="secondary">
                   {isPlaceCash
@@ -227,7 +232,7 @@ export class DetailedCouponTile extends React.Component {
                 underline
                 data-locator="myrewards-detailslink"
               >
-                {labels.lbl_coupon_detailsLink}
+                {getLabelValue(labels, 'lbl_coupon_detailsLink')}
               </Anchor>
             </BodyCopy>
             <BodyCopy component="div" className="elem-mb-SM">
@@ -239,7 +244,7 @@ export class DetailedCouponTile extends React.Component {
                 className="elem-mb-SM couponDetailsFont"
                 data-locator="myrewards-view&printbtn"
               >
-                {labels.lbl_coupon_viewPrint}
+                {getLabelValue(labels, 'lbl_coupon_viewPrint')}
               </Button>
               {coupon.applyAlert && <BodyCopy>{coupon.applyAlert}</BodyCopy>}
               {!coupon.applyAlert && coupon.status === COUPON_STATUS.APPLIED ? (
@@ -251,7 +256,7 @@ export class DetailedCouponTile extends React.Component {
                   className={`couponDetailsFont ${overlapCls}`}
                   data-locator="myrewards-removefrombagbtn"
                 >
-                  {labels.lbl_coupon_removeFromBag}
+                  {getLabelValue(labels, 'lbl_coupon_removeFromBag')}
                 </Button>
               ) : (
                 <Button

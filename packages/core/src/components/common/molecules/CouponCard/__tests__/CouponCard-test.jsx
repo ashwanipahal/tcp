@@ -7,6 +7,7 @@ describe('CouponCard Component', () => {
   let component;
   const props = {
     labels: {},
+    commonLabels: {},
     coupon: {
       id: 'Y00105578',
       status: 'available',
@@ -42,6 +43,7 @@ describe('CouponCard Component', () => {
     const couponJestDetailClick = jest.fn();
     const propsNew = {
       labels: {},
+      commonLabels: {},
       coupon: {
         id: 'Y00105580',
         status: 'applied',

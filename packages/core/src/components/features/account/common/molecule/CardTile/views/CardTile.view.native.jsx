@@ -4,6 +4,7 @@ import { Field, reduxForm } from 'redux-form';
 import { get } from 'lodash';
 import { View, Text } from 'react-native';
 import Recaptcha from '@tcp/core/src/components/common/molecules/recaptcha/recaptcha.native';
+import { getLabelValue } from '@tcp/core/src/utils/utils';
 import Anchor from '../../../../../../common/atoms/Anchor';
 import {
   CardTileWrapper,
@@ -74,13 +75,13 @@ class CardTile extends React.Component {
   getCardName = ({ card, labels }) => {
     switch (card.ccType) {
       case 'GiftCard':
-        return labels.paymentGC.lbl_payment_giftCard;
+        return getLabelValue(labels, 'lbl_payment_giftCard', 'paymentGC');
       case 'PLACE CARD':
-        return labels.paymentGC.lbl_payment_plccCard;
+        return getLabelValue(labels, 'lbl_payment_plccCard', 'paymentGC');
       case 'VENMO':
-        return labels.paymentGC.lbl_payment_venmoAccount;
+        return getLabelValue(labels, 'lbl_payment_venmoAccount', 'paymentGC');
       default:
-        return labels.paymentGC.lbl_payment_defaultCardName;
+        return getLabelValue(labels, 'lbl_payment_defaultCardName', 'paymentGC');
     }
   };
 
@@ -117,7 +118,7 @@ class CardTile extends React.Component {
             mobilefontFamily={['secondary']}
             fontWeight="semibold"
             fontSize="fs10"
-            text={labels.paymentGC.lbl_payment_defaultPayment}
+            text={getLabelValue(labels, 'lbl_payment_defaultPayment', 'paymentGC')}
           />
         </BadgeContent>
       </DefaultBadgeWrapper>
@@ -129,7 +130,7 @@ class CardTile extends React.Component {
         anchorVariation="primary"
         dataLocator="payment-makedefault"
         onPress={e => this.handleDefaultLinkClick(e, card, setDefaultPaymentMethod)}
-        text={labels.common.lbl_common_makeDefault}
+        text={getLabelValue(labels, 'lbl_common_makeDefault', 'common')}
       />
     );
   };
@@ -145,10 +146,16 @@ class CardTile extends React.Component {
   };
 
   getCardDetails = ({ dataLocatorPrefix, card, labels }) => {
-    const cardNum = `${labels.paymentGC.lbl_payment_cardNum}${card.accountNo.slice(-4)}`;
-    const expDate = `${labels.paymentGC.lbl_payment_expDate}${card.expMonth.trim()}/${
-      card.expYear
-    }`;
+    const cardNum = `${getLabelValue(
+      labels,
+      'lbl_payment_cardNum',
+      'paymentGC'
+    )}${card.accountNo.slice(-4)}`;
+    const expDate = `${getLabelValue(
+      labels,
+      'lbl_payment_expDate',
+      'paymentGC'
+    )}${card.expMonth.trim()}/${card.expYear}`;
     return (
       <View>
         <BodyCopy
@@ -230,7 +237,7 @@ class CardTile extends React.Component {
           <CustomButton
             color="white"
             fill="BLUE"
-            text={labels.paymentGC.lbl_payment_checkBalance}
+            text={getLabelValue(labels, 'lbl_payment_checkBalance', 'paymentGC')}
             buttonVariation="variable-width"
             onPress={handleSubmit(formData =>
               this.handleGetGiftCardBalanceClick(formData, card, onGetBalanceCard)
@@ -245,7 +252,7 @@ class CardTile extends React.Component {
               underline
               anchorVariation="primary"
               dataLocator={`payment-${dataLocatorPrefix}editlink`}
-              text={labels.common.lbl_common_edit}
+              text={getLabelValue(labels, 'lbl_common_edit', 'common')}
               onPress={e => this.onUpdateCardClick(e)}
             />
           )}
@@ -255,7 +262,7 @@ class CardTile extends React.Component {
             underline
             anchorVariation="primary"
             dataLocator={`payment-${dataLocatorPrefix}deletelink`}
-            text={labels.common.lbl_common_delete}
+            text={getLabelValue(labels, 'lbl_common_delete', 'common')}
             onPress={e => this.onDeleteCardClick(e)}
           />
         </CardCtaLinks>
@@ -324,7 +331,7 @@ class CardTile extends React.Component {
               mobilefontFamily={['secondary']}
               fontSize="fs14"
               color="gray.900"
-              text={labels.paymentGC.lbl_payment_remainingBalance}
+              text={getLabelValue(labels, 'lbl_payment_remainingBalance', 'paymentGC')}
             />
           </CardCtaRow>
         )}
