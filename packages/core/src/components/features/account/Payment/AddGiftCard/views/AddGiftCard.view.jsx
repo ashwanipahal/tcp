@@ -68,7 +68,7 @@ class AddGiftCard extends React.PureComponent<Props> {
         )}
         <AddGiftCardForm
           onAddGiftCardClick={onAddGiftCardClick}
-          labels={labels && getLabelValue(labels, 'paymentGC')}
+          labels={labels && labels.paymentGC}
           goBackToPayment={goBackToPayment}
           formErrorMessage={formErrorMessage}
           isRecapchaEnabled
