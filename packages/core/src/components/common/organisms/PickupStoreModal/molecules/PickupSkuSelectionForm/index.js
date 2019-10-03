@@ -1,1 +1,1 @@
-export { default } from './views/PickupSkuSelectionForm.view';
+export { default } from './container/PickupSkuSelectionForm.container';
