@@ -1,6 +1,7 @@
 import React from 'react';
 import { PropTypes } from 'prop-types';
 import withStyles from '@tcp/core/src/components/common/hoc/withStyles';
+import { getLabelValue } from '@tcp/core/src/utils/utils';
 import Notification from '../../../../../../common/molecules/Notification';
 import BodyCopy from '../../../../../../common/atoms/BodyCopy';
 import Anchor from '../../../../../../common/atoms/Anchor';
@@ -17,22 +18,22 @@ const getGenericErrorMessage = labels => (
     fontFamily="secondary"
   >
     <BodyCopy fontFamily="secondary">
-      {labels.trackOrder && labels.trackOrder.lbl_trackOrder_genericError1}
+      {getLabelValue(labels, 'lbl_trackOrder_genericError1', 'trackOrder')}
     </BodyCopy>
     <Anchor
       data-locator="contact_us_form_help"
       underline
       anchorVariation="primary"
       fontFamily="secondary"
-      to={labels.trackOrder && labels.trackOrder.lbl_trackOrder_genericErrorLinkHref}
+      to={getLabelValue(labels, 'lbl_trackOrder_genericErrorLinkHref', 'trackOrder')}
       className="trackorder__modal__contactus"
       aria-label=""
       target="_blank"
     >
-      {labels.trackOrder && labels.trackOrder.lbl_trackOrder_genericErrorLinkText}
+      {getLabelValue(labels, 'lbl_trackOrder_genericErrorLinkText', 'trackOrder')}
     </Anchor>
     <BodyCopy fontFamily="secondary">
-      {labels.trackOrder && labels.trackOrder.lbl_trackOrder_genericError2}
+      {getLabelValue(labels, 'lbl_trackOrder_genericError2', 'trackOrder')}
     </BodyCopy>
   </BodyCopy>
 );

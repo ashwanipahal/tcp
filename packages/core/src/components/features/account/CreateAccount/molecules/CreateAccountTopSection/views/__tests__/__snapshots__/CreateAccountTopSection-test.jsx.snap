@@ -154,7 +154,10 @@ exports[`Create Account component should renders correctly 1`] = `
           className="reset-password"
           onClick={[Function]}
           underline={true}
-        />
+        >
+          lbl_createAccount_clickhere
+        </Styled(Anchor)>
+        lbl_createAccount_resetPassword
       </Styled(BodyCopy)>
     </Styled(BodyCopy)>
   </Styled(BodyCopy)>

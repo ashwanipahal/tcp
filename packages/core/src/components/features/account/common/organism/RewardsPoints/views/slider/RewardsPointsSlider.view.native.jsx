@@ -1,5 +1,6 @@
 import React from 'react';
 import PropTypes from 'prop-types';
+import { getLabelValue } from '@tcp/core/src/utils/utils';
 import {
   RewardsPointsView,
   CurrentPointsWrapper,
@@ -29,7 +30,7 @@ const RewardsPointsSlider = ({
           <BodyCopy
             fontSize="fs14"
             fontFamily="secondary"
-            text={`${labels.lbl_rewardPoints_currentPoints}: `}
+            text={`${getLabelValue(labels, 'lbl_rewardPoints_currentPoints')}: `}
           />
           <BodyCopy
             text={currentPoints}
@@ -40,13 +41,13 @@ const RewardsPointsSlider = ({
         </CurrentPointsWrapper>
         <RewardWrapper>
           <BodyCopy
-            text={`${labels.lbl_rewardPoints_heading}: `}
+            text={`${getLabelValue(labels, 'lbl_rewardPoints_heading')}: `}
             fontFamily="secondary"
             fontSize="fs14"
           />
           {totalRewards && (
             <BodyCopy
-              text={`${labels.lbl_rewardPoints_currency} ${totalRewards &&
+              text={`${getLabelValue(labels, 'lbl_rewardPoints_currency')} ${totalRewards &&
                 Math.trunc(totalRewards)} `}
               fontFamily="secondary"
               fontSize="fs14"
@@ -63,7 +64,7 @@ const RewardsPointsSlider = ({
           <BodyCopy
             fontSize="fs14"
             fontFamily="secondary"
-            text={`${labels.lbl_rewardPoints_nextReward}: `}
+            text={`${getLabelValue(labels, 'lbl_rewardPoints_nextReward')}: `}
           />
           <BodyCopy
             text={pointsToNextReward}

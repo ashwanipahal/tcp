@@ -6,7 +6,7 @@ import constants from '../MyFavoriteStore.constants';
  */
 export const getMyFavoriteStoreAction = payload => ({
   type: constants.GET_MY_FAVORITE_STORE,
-  payload
+  payload,
 });
 
 /**

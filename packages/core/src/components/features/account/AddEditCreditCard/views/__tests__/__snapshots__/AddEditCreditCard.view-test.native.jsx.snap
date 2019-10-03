@@ -43,6 +43,7 @@ exports[`AddEditCreditCard component should renders correctly 1`] = `
 exports[`AddEditCreditCard component should renders correctly when showCreditCardFields is false 1`] = `
 <Fragment>
   <Connect(AddressVerification)
+    heading="ACC_LBL_VERIFY_YOUR_ADDRESS_HEADING_ADD"
     labels={
       Object {
         "addressBook": Object {},

@@ -1,6 +1,7 @@
 import React from 'react';
 import { PropTypes } from 'prop-types';
 import withStyles from '@tcp/core/src/components/common/hoc/withStyles';
+import { getLabelValue } from '@tcp/core/src/utils/utils';
 import BodyCopy from '../../../../../../common/atoms/BodyCopy';
 import styles from '../styles/TrackOrderTopSection.style';
 
@@ -21,7 +22,7 @@ const TrackOrderTopSection = ({ labels, className }) => {
         component="h2"
         id="trackorder__modal__heading"
       >
-        {labels.trackOrder.lbl_trackOrder_header}
+        {getLabelValue(labels, 'lbl_trackOrder_header', 'trackOrder')}
       </BodyCopy>
       <BodyCopy
         fontSize="fs16"
@@ -32,7 +33,7 @@ const TrackOrderTopSection = ({ labels, className }) => {
         component="p"
         id="trackorder__modal__subheading"
       >
-        {labels.trackOrder.lbl_trackOrder_subheader}
+        {getLabelValue(labels, 'lbl_trackOrder_subheader', 'trackOrder')}
       </BodyCopy>
     </BodyCopy>
   );

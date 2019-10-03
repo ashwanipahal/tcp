@@ -1,5 +1,6 @@
 import React from 'react';
 import PropTypes from 'prop-types';
+import { getLabelValue } from '@tcp/core/src/utils/utils';
 import { Field, reduxForm } from 'redux-form';
 import SelectBox from '@tcp/core/src/components/common/atoms/Select';
 import withStyles from '@tcp/core/src/components/common/hoc/withStyles';
@@ -67,14 +68,14 @@ export class AddChildBirthdayForm extends React.PureComponent {
                   color="gray.900"
                   dataLocator="childInfoLbl"
                 >
-                  {addChildBirthdayLabels.lbl_add_child_child_information}
+                  {getLabelValue(addChildBirthdayLabels, 'lbl_add_child_child_information')}
                 </BodyCopy>
               </Col>
             </Row>
             <Row fullBleed className="elem-mb-LRG">
               <Col colSize={{ small: 6, medium: 8, large: 12 }}>
                 <Field
-                  placeholder={addChildBirthdayLabels.lbl_add_child_child_name}
+                  placeholder={getLabelValue(addChildBirthdayLabels, 'lbl_add_child_child_name')}
                   name="childName"
                   id="childName"
                   type="text"
@@ -90,13 +91,16 @@ export class AddChildBirthdayForm extends React.PureComponent {
                   color="gray.900"
                   data-locator="childBirthdayLbl"
                 >
-                  {addChildBirthdayLabels.lbl_add_child_birthday_heading}
+                  {getLabelValue(addChildBirthdayLabels, 'lbl_add_child_birthday_heading')}
                 </BodyCopy>
               </Col>
               <Row fullBleed>
                 <Col colSize={{ small: 3, medium: 4, large: 6 }}>
                   <Field
-                    placeholder={addChildBirthdayLabels.lbl_add_child_birthday_month}
+                    placeholder={getLabelValue(
+                      addChildBirthdayLabels,
+                      'lbl_add_child_birthday_month'
+                    )}
                     name="userBirthMonth"
                     id="userBirthMonth"
                     component={SelectBox}
@@ -106,7 +110,10 @@ export class AddChildBirthdayForm extends React.PureComponent {
                 </Col>
                 <Col colSize={{ small: 3, medium: 4, large: 6 }}>
                   <Field
-                    placeholder={addChildBirthdayLabels.lbl_add_child_birthday_year}
+                    placeholder={getLabelValue(
+                      addChildBirthdayLabels,
+                      'lbl_add_child_birthday_year'
+                    )}
                     name="userBirthYear"
                     id="userBirthYear"
                     component={SelectBox}
@@ -123,12 +130,12 @@ export class AddChildBirthdayForm extends React.PureComponent {
                   color="gray.900"
                   dataLocator="childGenderLbl"
                 >
-                  {addChildBirthdayLabels.lbl_add_child_gender_heading}
+                  {getLabelValue(addChildBirthdayLabels, 'add_child_gender_heading')}
                 </BodyCopy>
               </Col>
               <Col colSize={{ small: 3, medium: 4, large: 6 }}>
                 <Field
-                  placeholder={addChildBirthdayLabels.lbl_add_child_choose_gender}
+                  placeholder={getLabelValue(addChildBirthdayLabels, 'lbl_add_child_choose_gender')}
                   name="gender"
                   id="gender"
                   component={SelectBox}
@@ -155,14 +162,14 @@ export class AddChildBirthdayForm extends React.PureComponent {
                   color="gray.900"
                   data-locator="parentDigitalSignatureLbl"
                 >
-                  {addChildBirthdayLabels.lbl_add_child_parent_digital_signature}
+                  {getLabelValue(addChildBirthdayLabels, 'lbl_add_child_parent_digital_signature')}
                 </BodyCopy>
               </Col>
             </Row>
             <Row fullBleed className="elem-mb-LRG">
               <Col colSize={{ small: 3, medium: 8, large: 12 }}>
                 <Field
-                  placeholder={addChildBirthdayLabels.lbl_add_child_first_name}
+                  placeholder={getLabelValue(addChildBirthdayLabels, 'lbl_add_child_first_name')}
                   name="firstName"
                   id="firstName"
                   type="text"
@@ -176,7 +183,7 @@ export class AddChildBirthdayForm extends React.PureComponent {
                 ignoreGutter={{ small: true, medium: true }}
               >
                 <Field
-                  placeholder={addChildBirthdayLabels.lbl_add_child_last_name}
+                  placeholder={getLabelValue(addChildBirthdayLabels, 'lbl_add_child_last_name')}
                   name="lastName"
                   id="lastName"
                   type="text"
@@ -186,7 +193,10 @@ export class AddChildBirthdayForm extends React.PureComponent {
               </Col>
               <Col colSize={{ small: 6, medium: 8, large: 12 }} className="timestamp">
                 <BodyCopy fontFamily="secondary" fontSize="fs14" data-locator="timeStampLbl">
-                  {`${addChildBirthdayLabels.lbl_add_child_timestamp} ${timestamp.toLocaleString(
+                  {`${getLabelValue(
+                    addChildBirthdayLabels,
+                    'lbl_add_child_timestamp'
+                  )} ${timestamp.toLocaleString(
                     'en-US',
                     AddChildBirthdayForm.timestampFormatOptions
                   )}`}
@@ -206,8 +216,11 @@ export class AddChildBirthdayForm extends React.PureComponent {
                     fontFamily="secondary"
                     fontWeight="semibold"
                   >
-                    {`${addChildBirthdayLabels.lbl_add_child_terms_agreement}
-                    ${addChildBirthdayLabels.lbl_add_child_terms_agreement_second}`}
+                    {`${getLabelValue(addChildBirthdayLabels, 'lbl_add_child_terms_agreement')}
+                    ${getLabelValue(
+                      addChildBirthdayLabels,
+                      'lbl_add_child_terms_agreement_second'
+                    )}`}
                   </BodyCopy>
                 </Field>
               </Col>
@@ -221,10 +234,10 @@ export class AddChildBirthdayForm extends React.PureComponent {
                   className="elem-ml-XXL"
                 >
                   <Anchor underline noLink to={endpoints.policiesPage} data-locator="privacyLnk">
-                    {addChildBirthdayLabels.lbl_add_child_privacy}
+                    {getLabelValue(addChildBirthdayLabels, 'lbl_add_child_privacy')}
                   </Anchor>
                   <Anchor underline noLink to={endpoints.faqPage} data-locator="faqLnk">
-                    {addChildBirthdayLabels.lbl_add_child_faq}
+                    {getLabelValue(addChildBirthdayLabels, 'lbl_add_child_faq')}
                   </Anchor>
                 </BodyCopy>
               </Col>
@@ -244,7 +257,7 @@ export class AddChildBirthdayForm extends React.PureComponent {
                 fill="BLUE"
                 dataLocator="SaveChildFormBtn"
               >
-                {addChildBirthdayLabels.lbl_add_child_save}
+                {getLabelValue(addChildBirthdayLabels, 'lbl_add_child_save')}
               </Button>
             </Col>
             <Col
@@ -258,7 +271,7 @@ export class AddChildBirthdayForm extends React.PureComponent {
                 onClick={closeAddModal}
                 dataLocator="cancelChildFormBtn"
               >
-                {addChildBirthdayLabels.lbl_add_child_cancel}
+                {getLabelValue(addChildBirthdayLabels, 'lbl_add_child_cancel')}
               </Button>
             </Col>
           </Row>

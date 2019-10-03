@@ -13,14 +13,12 @@ export default {
     speed: 1000,
     dots: false,
     swipe: true,
-    slidesToShow: 6,
-    slidesToScroll: 6,
+    slidesToShow: 3,
+    slidesToScroll: 1,
     responsive: [
       {
         breakpoint: parseInt(breakpoints.medium, 10) - 1,
         settings: {
-          slidesToShow: 4,
-          slidesToScroll: 3,
           arrows: false,
           swipeToSlide: true,
         },
@@ -28,8 +26,6 @@ export default {
       {
         breakpoint: parseInt(breakpoints.large, 10) - 1,
         settings: {
-          slidesToShow: 5,
-          slidesToScroll: 4,
           arrows: false,
           swipeToSlide: true,
         },
@@ -37,8 +33,8 @@ export default {
     ],
   },
   IMG_DATA: {
-    productImgConfig: ['t_mod_J_product_m', 't_mod_J_img_product_t', 't_mod_J_img_product_d'],
-    promoImgConfig: ['t_mod_J_img_promo_m', 't_mod_J_img_promo_t', 't_mod_J_img_promo_d'],
+    productImgConfig: ['t_mod_Q_product_m', 't_mod_Q_img_product_t', 't_mod_Q_img_product_d'],
+    promoImgConfig: ['t_mod_Q_img_promo_m', 't_mod_Q_img_promo_t', 't_mod_Q_img_promo_d'],
   },
   PROMO_IMG_DATA: {
     imgConfig: [
