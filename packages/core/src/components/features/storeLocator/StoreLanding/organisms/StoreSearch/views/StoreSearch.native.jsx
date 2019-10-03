@@ -121,7 +121,7 @@ class StoreSearch extends Component {
   };
 
   render() {
-    const { labels, error, selectedCountry, toggleMap, mapView } = this.props;
+    const { labels, error, selectedCountry, toggleMap, mapView, getLocationStores } = this.props;
 
     const { errorNotFound, gymSelected, outletSelected } = this.state;
     const errorMessage = errorNotFound ? labels.lbl_storelocators_detail_errorLabel : error;
@@ -155,7 +155,7 @@ class StoreSearch extends Component {
             text={labels.lbl_storelocators_detail_findStoreHeading}
           />
         </StyledFindStoreTitle>
-        <Anchor>
+        <Anchor onPress={getLocationStores}>
           <StyledStoreLocator>
             <Image source={MarkerIcon} height="16px" width="16px" />
             <StyledCurrentLocation>
@@ -229,6 +229,7 @@ StoreSearch.propTypes = {
   toggleMap: PropTypes.func.isRequired,
   mapView: PropTypes.bool,
   selectStoreType: PropTypes.func.isRequired,
+  getLocationStores: PropTypes.func.isRequired,
 };
 
 StoreSearch.defaultProps = {
