@@ -33,7 +33,7 @@ class CouponCard extends React.Component<Props> {
             {type}
           </BodyCopy>
         </div>
-        {coupon.isExpiring && !isCarouselView && coupon.status !== 'applied' && (
+        {coupon.isExpiring && (!isCarouselView || (isCarouselView && coupon.status !== 'applied')) && (
           <BodyCopy
             data-locator={`coupon_${coupon.status}_header_expired`}
             className="couponCard__header_expired"
