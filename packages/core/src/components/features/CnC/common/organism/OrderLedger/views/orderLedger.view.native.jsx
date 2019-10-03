@@ -290,7 +290,7 @@ const OrderLedger = ({ ledgerSummaryData, labels, showAccordian }) => {
       {showAccordian ? (
         <CollapsibleContainer header={header} body={body} defaultOpen iconLocator="arrowicon" />
       ) : (
-        <>{body}</>
+        body
       )}
     </View>
   );
