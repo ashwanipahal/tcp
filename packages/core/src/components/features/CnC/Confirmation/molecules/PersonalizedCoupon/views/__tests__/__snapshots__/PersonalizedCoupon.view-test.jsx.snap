@@ -64,7 +64,7 @@ exports[`PersonalizedCoupon View should render correctly for empty state with on
         className="print-icon-img"
         height="20px"
         onClick={[Function]}
-        src="/static/images/star-filled.svg"
+        src="/static/images/icon-printer.png"
         width="20px"
       />
     </Styled(BodyCopy)>
@@ -148,7 +148,7 @@ exports[`PersonalizedCoupon View should render correctly for empty state with on
         className="print-icon-img"
         height="20px"
         onClick={[Function]}
-        src="/static/images/star-filled.svg"
+        src="/static/images/icon-printer.png"
         width="20px"
       />
     </Styled(BodyCopy)>
@@ -340,7 +340,7 @@ exports[`PersonalizedCoupon View should render correctly for full filled state 1
         className="print-icon-img"
         height="20px"
         onClick={[Function]}
-        src="/static/images/star-filled.svg"
+        src="/static/images/icon-printer.png"
         width="20px"
       />
     </Styled(BodyCopy)>
@@ -424,7 +424,7 @@ exports[`PersonalizedCoupon View should render correctly for full filled state f
         className="print-icon-img"
         height="20px"
         onClick={[Function]}
-        src="/static/images/star-filled.svg"
+        src="/static/images/icon-printer.png"
         width="20px"
       />
     </Styled(BodyCopy)>
@@ -541,7 +541,7 @@ exports[`PersonalizedCoupon View should render correctly for partial state with 
         className="print-icon-img"
         height="20px"
         onClick={[Function]}
-        src="/static/images/star-filled.svg"
+        src="/static/images/icon-printer.png"
         width="20px"
       />
     </Styled(BodyCopy)>
@@ -625,7 +625,7 @@ exports[`PersonalizedCoupon View should render correctly for partial state with 
         className="print-icon-img"
         height="20px"
         onClick={[Function]}
-        src="/static/images/star-filled.svg"
+        src="/static/images/icon-printer.png"
         width="20px"
       />
     </Styled(BodyCopy)>
@@ -742,7 +742,7 @@ exports[`PersonalizedCoupon View should render correctly for partial state with 
         className="print-icon-img"
         height="20px"
         onClick={[Function]}
-        src="/static/images/star-filled.svg"
+        src="/static/images/icon-printer.png"
         width="20px"
       />
     </Styled(BodyCopy)>
@@ -826,7 +826,7 @@ exports[`PersonalizedCoupon View should render correctly for partial state with 
         className="print-icon-img"
         height="20px"
         onClick={[Function]}
-        src="/static/images/star-filled.svg"
+        src="/static/images/icon-printer.png"
         width="20px"
       />
     </Styled(BodyCopy)>
