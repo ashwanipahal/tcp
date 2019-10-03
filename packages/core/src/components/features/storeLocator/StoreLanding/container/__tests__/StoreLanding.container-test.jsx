@@ -55,4 +55,14 @@ describe('StoreSearch Container', () => {
     const wrapper = shallow(<StoreLanding {...props} />);
     expect(wrapper).toMatchSnapshot();
   });
+
+  test('getFavoriteStoreInititator should be called - no position', () => {
+    const mockGeolocation = {
+      getCurrentPosition: cb => cb({ coords: {} }),
+    };
+    global.navigator.geolocation = mockGeolocation;
+    const wrapper = shallow(<StoreLanding {...props} />);
+    wrapper.instance().getLocationStores();
+    expect(wrapper).toMatchSnapshot();
+  });
 });
