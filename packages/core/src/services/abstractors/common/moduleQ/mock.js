@@ -6,7 +6,7 @@ export default {
     name: 'moduleQ',
     type: 'module',
     composites: {
-      bgColor: '#d8d8d8',
+      bgClass: 'yellow-bg',
       headerText: [
         {
           textItems: [

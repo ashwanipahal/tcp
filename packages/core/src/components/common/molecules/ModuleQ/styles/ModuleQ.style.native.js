@@ -10,10 +10,20 @@ const TILE_SHADOW = `
   elevation: 2;
 `;
 
+const applyBackgroundClassStyle = props => {
+  if (props.bgClass === 'yellow-bg') {
+    return `
+      background-color: #F5F5BE;
+    `;
+  }
+  return '';
+};
+
 export const Container = styled.View`
   width: 100%;
   margin-bottom: ${props => props.theme.spacing.LAYOUT_SPACING.SM};
   padding: ${props => props.theme.spacing.ELEM_SPACING.LRG} 0;
+  ${applyBackgroundClassStyle}
 `;
 
 export const ImageSlidesWrapper = styled.View`

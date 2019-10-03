@@ -151,7 +151,7 @@ const ModuleQ = props => {
   };
 
   return (
-    <Container className={bgClass}>
+    <Container bgClass={bgClass}>
       <MessageContainer>
         <Wrapper>
           {headerText[0] && (
