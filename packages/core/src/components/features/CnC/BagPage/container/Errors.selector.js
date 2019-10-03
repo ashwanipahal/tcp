@@ -517,6 +517,24 @@ const getErrorList = state => {
       'errorMessages',
       'global'
     ),
+    ERR_ADDRESS_NOT_ELIGIBLE: getLabelValue(
+      state.Labels,
+      'lbl_errorMessages_ADDRESS_NOT_ELIGIBLE',
+      'errorMessages',
+      'global'
+    ),
+    ERR_NO_ADDR_AVAILABLE: getLabelValue(
+      state.Labels,
+      'lbl_errorMessages_NO_ADDR_AVAILABLE',
+      'errorMessages',
+      'global'
+    ),
+    ERR_REQUEST_TIMEOUT: getLabelValue(
+      state.Labels,
+      'lbl_errorMessages_PROCESS_REQUEST_ERROR',
+      'errorMessages',
+      'global'
+    ),
   };
 };
 

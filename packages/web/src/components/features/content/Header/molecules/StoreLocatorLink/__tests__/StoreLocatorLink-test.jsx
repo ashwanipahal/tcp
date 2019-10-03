@@ -8,7 +8,9 @@ describe('StoreLocatorLink component', () => {
     const props = {
       className: 'test',
       store: mockData.currentStore,
-      labels: {},
+      labels: {
+        store: {},
+      },
     };
     const component = shallow(<StoreLocatorLinkVanilla {...props} />);
     expect(component).toMatchSnapshot();
@@ -20,7 +22,9 @@ describe('StoreLocatorLink component', () => {
     const props = {
       className: 'test',
       store: {},
-      labels: {},
+      labels: {
+        store: {},
+      },
     };
     const component = shallow(<StoreLocatorLinkVanilla {...props} />);
     expect(component).toMatchSnapshot();

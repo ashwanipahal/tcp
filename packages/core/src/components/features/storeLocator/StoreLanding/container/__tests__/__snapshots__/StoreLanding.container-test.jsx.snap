@@ -32,6 +32,48 @@ exports[`StoreSearch Container getFavoriteStoreInititator should be called - no 
       ],
     }
   }
+  getLocationStores={[Function]}
+  loadStoresByCoordinates={[Function]}
+  markerIcon="/static/images/marker-icon.png"
+  navigation={Object {}}
+  openStoreDirections={[Function]}
+  searchIcon="/static/images/search-icon.svg"
+/>
+`;
+
+exports[`StoreSearch Container getFavoriteStoreInititator should be called - no position 2`] = `
+<Styled(StoreLanding)
+  favoriteStore={
+    Object {
+      "basicInfo": Object {
+        "id": 1211,
+      },
+      "name": "saint andreas",
+    }
+  }
+  fetchCurrentStore={[Function]}
+  fetchStoresByLatLng={[MockFunction]}
+  getFavoriteStore={
+    [MockFunction] {
+      "calls": Array [
+        Array [
+          Object {
+            "geoLatLang": Object {
+              "lat": undefined,
+              "long": undefined,
+            },
+          },
+        ],
+      ],
+      "results": Array [
+        Object {
+          "type": "return",
+          "value": undefined,
+        },
+      ],
+    }
+  }
+  getLocationStores={[Function]}
   loadStoresByCoordinates={[Function]}
   markerIcon="/static/images/marker-icon.png"
   navigation={Object {}}
@@ -72,6 +114,7 @@ exports[`StoreSearch Container getFavoriteStoreInititator should be called 1`] =
       ],
     }
   }
+  getLocationStores={[Function]}
   loadStoresByCoordinates={[Function]}
   markerIcon="/static/images/marker-icon.png"
   navigation={Object {}}
@@ -105,6 +148,7 @@ exports[`StoreSearch Container should render StoreLanding Correctly - without fa
       ],
     }
   }
+  getLocationStores={[Function]}
   loadStoresByCoordinates={[Function]}
   markerIcon="/static/images/marker-icon.png"
   navigation={Object {}}
@@ -126,6 +170,7 @@ exports[`StoreSearch Container should render StoreLanding Correctly 1`] = `
   fetchCurrentStore={[Function]}
   fetchStoresByLatLng={[MockFunction]}
   getFavoriteStore={[MockFunction]}
+  getLocationStores={[Function]}
   loadStoresByCoordinates={[Function]}
   markerIcon="/static/images/marker-icon.png"
   navigation={Object {}}

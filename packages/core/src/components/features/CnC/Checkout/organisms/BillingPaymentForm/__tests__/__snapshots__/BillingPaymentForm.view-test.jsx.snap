@@ -50,7 +50,7 @@ exports[`ButtonList component renders correctly if  cards present and addNewCCSt
       fullBleed={true}
     >
       <Styled(Col)
-        className="creditCardForm__addressBook"
+        className="creditCardForm__addressBook "
         colSize={
           Object {
             "large": 6,
@@ -155,6 +155,7 @@ exports[`ButtonList component renders correctly if  cards present and addNewCCSt
           />
         </ForwardRef>
       }
+      editMode={false}
       formName="checkoutBillingPayment"
       isExpirationRequired={true}
       isGuest={false}
@@ -180,6 +181,7 @@ exports[`ButtonList component renders correctly if  cards present and addNewCCSt
           "lbl_billing_venmo": "Venmo",
         }
       }
+      onCardFocus={[Function]}
     />
     <Styled(CheckoutAddress)
       addNewCCState={true}
@@ -221,6 +223,7 @@ exports[`ButtonList component renders correctly if  cards present and addNewCCSt
   <Styled(CheckoutFooter)
     backLinkHandler={[Function]}
     backLinkText=""
+    disableDesktopOnlyNext={false}
     hideBackLink={true}
     nextButtonText=""
     onVenmoSubmit={[MockFunction]}
@@ -298,6 +301,7 @@ exports[`ButtonList component renders correctly if  no cards present  1`] = `
           />
         </ForwardRef>
       }
+      editMode={false}
       formName="checkoutBillingPayment"
       isExpirationRequired={true}
       isGuest={false}
@@ -323,6 +327,7 @@ exports[`ButtonList component renders correctly if  no cards present  1`] = `
           "lbl_billing_venmo": "Venmo",
         }
       }
+      onCardFocus={[Function]}
     />
     <Styled(CheckoutAddress)
       addNewCCState={true}
@@ -364,6 +369,7 @@ exports[`ButtonList component renders correctly if  no cards present  1`] = `
   <Styled(CheckoutFooter)
     backLinkHandler={[Function]}
     backLinkText=""
+    disableDesktopOnlyNext={false}
     hideBackLink={true}
     nextButtonText=""
     onVenmoSubmit={[MockFunction]}
@@ -425,6 +431,7 @@ exports[`ButtonList component renders correctly if payment method is diff 1`] = 
   <Styled(CheckoutFooter)
     backLinkHandler={[Function]}
     backLinkText=""
+    disableDesktopOnlyNext={false}
     hideBackLink={true}
     nextButtonText=""
     onVenmoSubmit={[MockFunction]}
@@ -491,7 +498,7 @@ exports[`ButtonList component renders correctly without props 1`] = `
       fullBleed={true}
     >
       <Styled(Col)
-        className="creditCardForm__addressBook"
+        className="creditCardForm__addressBook "
         colSize={
           Object {
             "large": 6,
@@ -602,7 +609,8 @@ exports[`ButtonList component renders correctly without props 1`] = `
         className="billing-payment-edit"
         dataLocator="billing-payment-edit"
         fontSizeVariation="medium"
-        to="/#"
+        noLink={true}
+        onClick={[Function]}
         underline={true}
       />
     </Styled(BodyCopy)>
@@ -1045,6 +1053,7 @@ exports[`ButtonList component renders correctly without props 1`] = `
   <Styled(CheckoutFooter)
     backLinkHandler={[Function]}
     backLinkText=""
+    disableDesktopOnlyNext={false}
     hideBackLink={true}
     nextButtonText=""
     onVenmoSubmit={[MockFunction]}
@@ -1111,7 +1120,7 @@ exports[`ButtonList component renders correctly without props 2`] = `
       fullBleed={true}
     >
       <Styled(Col)
-        className="creditCardForm__addressBook"
+        className="creditCardForm__addressBook "
         colSize={
           Object {
             "large": 6,
@@ -1222,7 +1231,8 @@ exports[`ButtonList component renders correctly without props 2`] = `
         className="billing-payment-edit"
         dataLocator="billing-payment-edit"
         fontSizeVariation="medium"
-        to="/#"
+        noLink={true}
+        onClick={[Function]}
         underline={true}
       />
     </Styled(BodyCopy)>
@@ -1665,6 +1675,7 @@ exports[`ButtonList component renders correctly without props 2`] = `
   <Styled(CheckoutFooter)
     backLinkHandler={[Function]}
     backLinkText=""
+    disableDesktopOnlyNext={false}
     hideBackLink={true}
     nextButtonText=""
     onVenmoSubmit={[MockFunction]}
@@ -1687,6 +1698,7 @@ exports[`ButtonList component renders correctly without props with isPaymentDisa
   <Styled(CheckoutFooter)
     backLinkHandler={[Function]}
     backLinkText=""
+    disableDesktopOnlyNext={false}
     hideBackLink={true}
     nextButtonText=""
     onVenmoSubmit={[MockFunction]}
@@ -1740,6 +1752,9 @@ exports[`ButtonList component renders correctly without props with payPal 1`] = 
         }
       }
     />
+    <div
+      className="payment-paypal-container"
+    />
   </div>
   <Styled(CheckoutOrderInfo)
     isGuest={false}
@@ -1748,8 +1763,10 @@ exports[`ButtonList component renders correctly without props with payPal 1`] = 
   <Styled(CheckoutFooter)
     backLinkHandler={[Function]}
     backLinkText=""
+    disableDesktopOnlyNext={false}
     hideBackLink={true}
     nextButtonText=""
+    onVenmoSubmit={[MockFunction]}
     showVenmoSubmit={false}
   />
 </form>
@@ -1800,9 +1817,6 @@ exports[`ButtonList component renders correctly without props with venmo 1`] = `
         }
       }
     />
-    <Connect(VenmoPaymentButtonContainer)
-      className="venmo-container"
-    />
   </div>
   <Styled(CheckoutOrderInfo)
     isGuest={false}
@@ -1811,8 +1825,10 @@ exports[`ButtonList component renders correctly without props with venmo 1`] = `
   <Styled(CheckoutFooter)
     backLinkHandler={[Function]}
     backLinkText=""
+    disableDesktopOnlyNext={false}
     hideBackLink={true}
     nextButtonText=""
+    onVenmoSubmit={[MockFunction]}
     showVenmoSubmit={true}
   />
 </form>

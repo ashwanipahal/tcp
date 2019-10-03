@@ -97,6 +97,7 @@ class ReviewPage extends React.PureComponent {
               navigation.navigate(CONSTANTS.CHECKOUT_ROUTES_NAMES.CHECKOUT_BILLING)
             }
             footerBody={this.renderFooter()}
+            showAccordian
           />
         </ScrollView>
       </>

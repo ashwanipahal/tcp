@@ -1,7 +1,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import { Anchor, Image, BodyCopy } from '@tcp/core/src/components/common/atoms';
-import { getIconPath, toTimeString } from '@tcp/core/src/utils';
+import { getIconPath, toTimeString, getLabelValue, getLocator } from '@tcp/core/src/utils';
 import { parseDate, compareDate } from '@tcp/core/src/utils/parseDate';
 import withStyles from '@tcp/core/src/components/common/hoc/withStyles';
 import style from '../styles/StoreLocatorLink.style';
@@ -37,10 +37,10 @@ const StoreLocatorLink = ({ className, labels, store }) => {
   return (
     <React.Fragment>
       <Anchor
-        dataLocator=""
+        dataLocator={getLocator('store_drawerlink')}
         fontSizeVariation="small"
         anchorVariation="primary"
-        to={labels.storelocatorlink}
+        to="/store-locator"
         className={className}
       >
         <div className={`storelocatorlink__container${!isInfoPresent ? '--fav' : ''}`}>
@@ -49,13 +49,14 @@ const StoreLocatorLink = ({ className, labels, store }) => {
               src={getIconPath('map-marker-icon')}
               alt="Store Locator"
               className="storelocator--image"
+              data-locator={getLocator('store_markericon')}
             />
           </div>
           {isInfoPresent ? (
             <div className="storelocatorlink__detail">
               <BodyCopy
                 component="div"
-                data-locator=""
+                data-locator={getLocator('store_namelabel')}
                 fontFamily="secondary"
                 fontSize="fs13"
                 className="storelocatorlink__detail__storename"
@@ -64,23 +65,25 @@ const StoreLocatorLink = ({ className, labels, store }) => {
               </BodyCopy>
               <BodyCopy
                 component="div"
-                data-locator=""
+                data-locator={getLocator('store_storetime')}
                 fontFamily="secondary"
                 fontSize="fs10"
                 className="storelocatorlink__detail__storetime"
               >
-                {storeTime ? `${labels.openUntilTxt} ${storeTime}` : ''}
+                {storeTime
+                  ? `${getLabelValue(labels, 'lbl_storelocator_openUntilTxt')} ${storeTime}`
+                  : ''}
               </BodyCopy>
             </div>
           ) : (
             <BodyCopy
               component="div"
-              data-locator=""
+              data-locator={getLocator('store_findastore')}
               fontFamily="secondary"
               fontSize="fs13"
               className="storelocatorlink__detail"
             >
-              {labels.findAStoreLink}
+              {getLabelValue(labels, 'lbl_storelocator_findAStoreLink')}
             </BodyCopy>
           )}
         </div>

@@ -58,7 +58,8 @@ class ApplyCardLayoutContainer extends React.Component {
    *  @description - submits for an instant credit card
    */
   submitPLCCForm = formData => {
-    const { verifyAddressAction } = this.props;
+    const { verifyAddressAction, resetPLCCApplicationStatus } = this.props;
+    resetPLCCApplicationStatus({ status: null });
     const payload = Object.assign({}, formData);
     const formattedPayload = this.formatPayload(payload);
     if (Object.keys(formattedPayload).length) {
@@ -103,6 +104,7 @@ class ApplyCardLayoutContainer extends React.Component {
       resetPLCCApplicationStatus,
     } = this.props;
     const { showAddEditAddressForm } = this.state;
+
     return (
       <React.Fragment>
         <ApplyCardLayoutView
