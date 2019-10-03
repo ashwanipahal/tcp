@@ -18,7 +18,15 @@ exports[`ModuleSVanilla should match snapshot 1`] = `
       crop=""
       height={356}
       host="lazyload-home"
-      imgConfig=""
+      imgConfig={
+        Object {
+          "crops": Array [
+            "t_mod_S_TCP_img_m",
+            "t_mod_S_GYM_img_t",
+            "t_mod_S_TCP_img_d",
+          ],
+        }
+      }
       source=""
       url="https://test5.childrensplace.com/image/upload/v1565027643/homepagetest/gymboree/images/PlayB_Spring-1_2x_diwsan.png"
       width={750}
@@ -87,6 +95,7 @@ exports[`ModuleSVanilla should match snapshot 1`] = `
       }
     />
     <ButtonView
+      hasRibbon={false}
       headerText={
         Array [
           Object {
