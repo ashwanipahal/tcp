@@ -24,7 +24,7 @@ class CheckoutOrderInfo extends React.PureComponent {
                 <div>LOYALTY BANNER</div>
               </Col>
             </Row>
-            <Row fullBleed className="placeholder">
+            <Row fullBleed>
               <Col colSize={{ small: 6, medium: 8, large: 12 }}>
                 <PersonalizedCoupons />
               </Col>

@@ -146,7 +146,7 @@ const getInitialCreateAccountValues = createSelector(
 // })
 
 const getPersonalizedCoupons = state => {
-  return state.Confirmation && state.Confirmation.aquiredCouponCode;
+  return state.Confirmation && state.Confirmation.get('aquiredCouponCode');
 };
 
 /* istanbul ignore next */
