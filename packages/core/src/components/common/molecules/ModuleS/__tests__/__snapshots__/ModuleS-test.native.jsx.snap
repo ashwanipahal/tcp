@@ -13,10 +13,10 @@ exports[`ModuleSVanilla should match snapshot 1`] = `
     url="/c/boys-clothes"
     visible={false}
   >
-    <Styled(DamImage)
+    <Styled(Styled(DamImage))
       alt=""
       crop=""
-      height={356}
+      height=""
       host="lazyload-home"
       imgConfig={
         Object {
