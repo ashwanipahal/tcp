@@ -37,7 +37,7 @@ const StoreLocatorLink = ({ className, labels, store }) => {
   return (
     <React.Fragment>
       <Anchor
-        dataLocator=""
+        dataLocator="store_locator_link"
         fontSizeVariation="small"
         anchorVariation="primary"
         to="/store-locator"
@@ -49,13 +49,14 @@ const StoreLocatorLink = ({ className, labels, store }) => {
               src={getIconPath('map-marker-icon')}
               alt="Store Locator"
               className="storelocator--image"
+              data-locator="store_markericon"
             />
           </div>
           {isInfoPresent ? (
             <div className="storelocatorlink__detail">
               <BodyCopy
                 component="div"
-                data-locator=""
+                data-locator="store_namelabel"
                 fontFamily="secondary"
                 fontSize="fs13"
                 className="storelocatorlink__detail__storename"
@@ -64,7 +65,7 @@ const StoreLocatorLink = ({ className, labels, store }) => {
               </BodyCopy>
               <BodyCopy
                 component="div"
-                data-locator=""
+                data-locator="store_storetime"
                 fontFamily="secondary"
                 fontSize="fs10"
                 className="storelocatorlink__detail__storetime"
@@ -77,7 +78,7 @@ const StoreLocatorLink = ({ className, labels, store }) => {
           ) : (
             <BodyCopy
               component="div"
-              data-locator=""
+              data-locator="store_findastore"
               fontFamily="secondary"
               fontSize="fs13"
               className="storelocatorlink__detail"
