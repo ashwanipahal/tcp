@@ -1,11 +1,13 @@
+/* eslint-disable max-lines */
 // eslint-disable-next-line import/no-unresolved
 import Router from 'next/router';
 import { ENV_PRODUCTION, ENV_DEVELOPMENT } from '../constants/env.config';
 import icons from '../config/icons';
 import { breakpoints, mediaQuery } from '../../styles/themes/TCP/mediaQuery';
-import { getAPIConfig } from './utils';
+import { getAPIConfig, isClient } from './utils';
 import { API_CONFIG } from '../services/config';
 import { defaultCountries, defaultCurrencies } from '../constants/site.constants';
+import { readCookie, setCookie } from './cookie.util';
 import { ROUTING_MAP, ROUTE_PATH } from '../config/route.config';
 
 const MONTH_SHORT_FORMAT = {
@@ -210,6 +212,26 @@ export const getViewportInfo = () => {
 };
 
 /**
+ * Enable Body Scroll
+ */
+export const enableBodyScroll = () => {
+  if (typeof window !== 'undefined') {
+    const [body] = document.getElementsByTagName('body');
+    body.style.overflow = 'auto';
+  }
+};
+
+/**
+ * Disable Body Scroll
+ */
+export const disableBodyScroll = () => {
+  if (typeof window !== 'undefined') {
+    const [body] = document.getElementsByTagName('body');
+    body.style.overflow = 'hidden';
+  }
+};
+
+/**
  * Show Dark Overlay in background
  */
 export const showOverlay = () => {
@@ -254,6 +276,12 @@ export const scrollPage = (x = 0, y = 0) => {
   }
 };
 
+export const scrollTopElement = elem => {
+  if (window) {
+    document.getElementById(elem).scrollTop = 0;
+  }
+};
+
 export const getCountriesMap = data => {
   const countries = defaultCountries;
   data.map(value =>
@@ -294,21 +322,6 @@ export const languageRedirect = (newLanguage, oldLanguage) => {
   }
 };
 
-/**
- * This function will redirect to PDP from HOMEPAGE
- * on the basis of productId
- */
-export const redirectToPdp = (productId, seoToken) => {
-  if (!window) return null;
-
-  const params = seoToken ? `${seoToken}-${productId}` : productId;
-
-  return {
-    url: `/p?${params}`,
-    asPath: `/p/${params}`,
-  };
-};
-
 /*
  *
  * @param {object} event the HTML element's element
@@ -330,7 +343,7 @@ const getAPIInfoFromEnv = (apiSiteInfo, processEnv, siteId) => {
     langId: processEnv.RWD_WEB_LANGID || apiSiteInfo.langId,
     MELISSA_KEY: processEnv.RWD_WEB_MELISSA_KEY || apiSiteInfo.MELISSA_KEY,
     BV_API_KEY: processEnv.RWD_WEB_BV_API_KEY || apiSiteInfo.BV_API_KEY,
-    assetHost: processEnv.RWD_WEB_ASSETHOST || apiSiteInfo.assetHost,
+    assetHost: processEnv.RWD_WEB_DAM_HOST || apiSiteInfo.assetHost,
     domain: `${apiEndpoint}/${processEnv.RWD_WEB_API_IDENTIFIER}/`,
     unbxd: processEnv.RWD_WEB_UNBXD_DOMAIN || apiSiteInfo.unbxd,
     fbkey: processEnv.RWD_WEB_FACEBOOKKEY,
@@ -340,6 +353,7 @@ const getAPIInfoFromEnv = (apiSiteInfo, processEnv, siteId) => {
     }`,
     envId: processEnv.RWD_WEB_ENV_ID,
     BAZAARVOICE_SPOTLIGHT: processEnv.RWD_WEB_BAZAARVOICE_API_KEY,
+    BAZAARVOICE_REVIEWS: processEnv.RWD_WEB_BAZAARVOICE_PRODUCT_REVIEWS_API_KEY,
     CANDID_API_KEY: process.env.RWD_WEB_CANDID_API_KEY,
     CANDID_API_URL: process.env.RWD_WEB_CANDID_URL,
     googleApiKey: process.env.RWD_WEB_GOOGLE_MAPS_API_KEY,
@@ -349,6 +363,7 @@ const getAPIInfoFromEnv = (apiSiteInfo, processEnv, siteId) => {
     borderFree: processEnv.BORDERS_FREE,
     borderFreeComm: processEnv.BORDERS_FREE_COMM,
     paypalEnv: processEnv.RWD_WEB_PAYPAL_ENV,
+    crossDomain: processEnv.RWD_WEB_CROSS_DOMAIN,
   };
 };
 const getGraphQLApiFromEnv = (apiSiteInfo, processEnv, relHostname) => {
@@ -429,6 +444,40 @@ export const createAPIConfig = resLocals => {
     language,
   };
 };
+
+export const routeToStoreDetails = storeDetail => {
+  const {
+    basicInfo: {
+      id,
+      storeName,
+      address: { city, state, zipCode },
+    },
+  } = storeDetail;
+  const url = `/store/${storeName
+    .replace(/\s/g, '')
+    .toLowerCase()}-${state.toLowerCase()}-${city
+    .replace(/\s/g, '')
+    .toLowerCase()}-${zipCode}-${id}`;
+  if (isClient()) routerPush(window.location.href, url);
+};
+
+/**
+ * Returns data stored in localstorage
+ * @param {string} key - Localstorage item key
+ * @returns {string} - Localstorage item data
+ */
+export const getLocalStorage = key =>
+  isClient ? window.localStorage.getItem(key) : readCookie(key);
+
+/**
+ * Set key/value data to localstorage
+ * @param {Object} arg - Key/Value paired data to be set in localstorage
+ */
+export const setLocalStorage = arg => {
+  const { key, value } = arg;
+  return isClient() ? window.localStorage.setItem(key, value) : setCookie(arg);
+};
+
 export const viewport = () => {
   if (!window) return null;
 
@@ -438,6 +487,13 @@ export const viewport = () => {
     large: window.matchMedia(mediaQuery.large).matches,
   };
 };
+
+export const fetchStoreIdFromUrlPath = url => {
+  const currentStoreUrl = url || document.location.href;
+  const pathSplit = currentStoreUrl.split('-');
+  return pathSplit[pathSplit.length - 1];
+};
+
 export default {
   importGraphQLClientDynamically,
   importGraphQLQueriesDynamically,
@@ -451,12 +507,15 @@ export default {
   routerPush,
   bindAllClassMethodsToThis,
   scrollPage,
+  scrollTopElement,
   getCountriesMap,
   getCurrenciesMap,
   siteRedirect,
   languageRedirect,
-  redirectToPdp,
   handleGenericKeyDown,
+  getLocalStorage,
+  setLocalStorage,
   viewport,
+  fetchStoreIdFromUrlPath,
   canUseDOM,
 };

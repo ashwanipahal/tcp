@@ -174,27 +174,31 @@ export class AddressDropdown extends React.PureComponent<Props> {
     );
   };
 
+  getContext = item => {
+    const { content, useCustomContent } = item;
+    return useCustomContent ? (
+      content
+    ) : (
+      <Address
+        address={content}
+        showCountry={false}
+        showPhone={false}
+        className="CreditCardForm__address"
+        dataLocatorPrefix="payment"
+        showName
+        showDefaultText={item && item.primary}
+      />
+    );
+  };
+
   /**
    * Render drop down item
    */
   dropDownLayout = ({ item }) => {
     const { itemStyle } = this.props;
-    const { content } = item;
     return (
       <DropDownItemContainer onPress={() => this.onDropDownItemClick(item)} style={itemStyle}>
-        {item.id ? (
-          <Address
-            address={content}
-            showCountry={false}
-            showPhone={false}
-            className="CreditCardForm__address"
-            dataLocatorPrefix="payment"
-            showName
-            showDefaultText={item && item.primary}
-          />
-        ) : (
-          this.renderButton({ item })
-        )}
+        {item.id ? this.getContext(item) : this.renderButton({ item })}
       </DropDownItemContainer>
     );
   };

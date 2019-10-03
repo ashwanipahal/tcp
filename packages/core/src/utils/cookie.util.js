@@ -63,6 +63,31 @@ export const removeCookie = key => {
   }
 };
 
+const setCookieMobileApp = () => {
+  // TODO - work on it to set cookie from Mobile APP
+  return null;
+};
+
+const setCookieWeb = args => {
+  const { key, value, daysAlive } = args;
+  const isBrowser = isClient();
+
+  if (isBrowser && window.satellite && window.satellite.setCookie) {
+    window.satellite.setCookie(key, value, daysAlive);
+  } else if (isBrowser) {
+    const date = new Date();
+    date.setTime(date.getTime() + daysAlive * 24 * 60 * 60 * 1000);
+    document.cookie = `${key}=${value};expires=${date.toUTCString()};path=/`;
+  }
+};
+
+export const setCookie = args => {
+  if (isMobileApp()) {
+    return setCookieMobileApp();
+  }
+  return setCookieWeb(args);
+};
+
 export function getCartItemCount() {
   return parseInt(readCookie(CART_ITEM_COUNTER) || 0, 10);
 }
@@ -74,3 +99,11 @@ export function getSflItemCount(siteId) {
   }
   return parseInt(readCookie(SFL_ITEM_COUNTER) || 0, 10);
 }
+
+/**
+ * @summary This returns all cookies in string format.
+ * @return  {String}  - string of cookies
+ */
+export const getAllCookies = () => {
+  return document.cookie;
+};

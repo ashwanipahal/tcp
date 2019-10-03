@@ -91,6 +91,7 @@ export class EarnPoints extends React.PureComponent {
                 fontFamily="secondary"
                 dataLocator="earnPoints-message"
                 text={infoMessage}
+                color="gray.900"
               />
               <Anchor
                 fontSizeVariation="large"

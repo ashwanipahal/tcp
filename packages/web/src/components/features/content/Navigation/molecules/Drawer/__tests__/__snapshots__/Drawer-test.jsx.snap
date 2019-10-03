@@ -12,6 +12,7 @@ exports[`Drawer component renders correctly 1`] = `
   >
     <div
       className="tcp-drawer-content"
+      id="tcp-nav-drawer"
     >
       Renders correctly
     </div>

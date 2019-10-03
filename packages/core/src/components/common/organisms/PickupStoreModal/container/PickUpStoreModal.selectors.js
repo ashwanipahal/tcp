@@ -4,6 +4,7 @@ import {
   PICKUP_MODAL_REDUCER_KEY,
   FORM_REDUCER_KEY,
 } from '../../../../../constants/reducer.constants';
+import { getCartItemCount } from '../../../../../utils/cookie.util';
 
 const getColorSizeFitName = (type, values) => {
   let displayName = values && values.get(type);
@@ -68,9 +69,7 @@ export const getOrderConfirmation = state => {
 };
 
 export const getItemsCount = () => {
-  // TODO - Integrate it with redux original state
-  return 0;
-  // return getOrderConfirmation(state).summary.itemsCount;
+  return getCartItemCount();
 };
 
 export const getUserIsPlcc = state => {

@@ -14,6 +14,7 @@ type Props = {
   labels: object,
   isUserLoggedIn: string,
   navigation: object,
+  component: string,
 };
 
 /**
@@ -33,6 +34,7 @@ const MyAccountLayoutView = (props: Props) => {
     labels,
     isUserLoggedIn,
     navigation,
+    component,
   } = props;
   return (
     <View className={className} {...props}>
@@ -41,6 +43,7 @@ const MyAccountLayoutView = (props: Props) => {
           <RewardsPoints tableView labels={labels} />
           <MyAccountDropdownNav
             navData={navData}
+            component={component}
             handleComponentChange={handleComponentChange}
             navigation={navigation}
           />

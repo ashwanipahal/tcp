@@ -23,7 +23,7 @@ export default css`
   .searched-text-wrapper {
     padding-top: ${props => props.theme.spacing.ELEM_SPACING.XS};
   }
-  .product-list .search-product-tile {
+  .search-product-tile {
     margin-bottom: 20px;
     display: inline-block;
     padding: ${props => props.theme.spacing.ELEM_SPACING.SM} 20px 0 0;
@@ -53,10 +53,8 @@ export default css`
   }
 
   @media ${props => props.theme.mediaQuery.smallOnly} {
-    .product-list {
-      .search-product-tile:nth-child(2n) {
-        padding-right: 0;
-      }
+    .search-product-tile:nth-child(2n) {
+      padding-right: 0;
     }
     .filter-row {
       margin-left: 0;
@@ -88,10 +86,8 @@ export default css`
     }
   }
   @media ${props => props.theme.mediaQuery.mediumOnly} {
-    .product-list {
-      .search-product-tile:nth-child(3n) {
-        padding-right: 0;
-      }
+    .search-product-tile:nth-child(3n) {
+      padding-right: 0;
     }
     .searched-label {
       padding-bottom: 28px;
@@ -126,10 +122,8 @@ export default css`
     .show-items-count-section {
       display: none;
     }
-    .product-list {
-      .search-product-tile:nth-child(5n) {
-        padding-right: 0;
-      }
+    .search-product-tile:nth-child(5n) {
+      padding-right: 0;
     }
     .render-mobile-view {
       display: none;
