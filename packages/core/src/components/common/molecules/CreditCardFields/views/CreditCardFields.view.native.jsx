@@ -4,7 +4,6 @@ import { CardIOModule, CardIOUtilities } from 'react-native-awesome-card-io';
 import PropTypes from 'prop-types';
 import { Field } from 'redux-form';
 import DropDown from '@tcp/core/src/components/common/atoms/DropDown/views/DropDown.native';
-import logger from '@tcp/core/src/utils/loggerInstance';
 import CustomIcon from '../../../atoms/Icon';
 import { ICON_NAME } from '../../../atoms/Icon/Icon.constants';
 import CreditCardNumber from '../../../atoms/CreditCardNumber';
@@ -22,8 +21,6 @@ import {
   CVVInfo,
   StyledImageWrapper,
 } from '../styles/CreditCardFields.styles.native';
-
-const CardText = 'Position your card in the frame';
 
 /**
  *
@@ -60,26 +57,23 @@ export class CreditCardFields extends React.PureComponent<Props> {
    * @function scanCard
    * @description on click on camera icon scan card will call
    */
-  scanCard = () => {
-    const { updateCardDetails } = this.props;
+  scanCard = async () => {
+    const { updateCardDetails, creditFieldLabels } = this.props;
     const config = {
       hideCardIOLogo: true,
       requireCVV: true,
       requireExpiry: true,
-      scanInstructions: CardText,
+      scanInstructions: creditFieldLabels.cameraText,
     };
-    CardIOModule.scanCard(config)
-      .then(card => {
-        this.setState(
-          { selectedMonth: card.expiryMonth.toString(), selectedYear: card.expiryYear.toString() },
-          () => {
-            updateCardDetails(card.cardNumber, card.expiryMonth, card.expiryYear, card.cvv);
-          }
-        );
-      })
-      .catch(error => {
-        logger.error('error: ', error);
-      });
+    const card = await CardIOModule.scanCard(config);
+    if (card) {
+      this.setState(
+        { selectedMonth: card.expiryMonth.toString(), selectedYear: card.expiryYear.toString() },
+        () => {
+          updateCardDetails(card.cardNumber, card.expiryMonth, card.expiryYear, card.cvv);
+        }
+      );
+    }
   };
 
   /**
@@ -239,6 +233,7 @@ CreditCardFields.defaultProps = {
     expMonth: '',
     expYear: '',
     cvvCode: '',
+    cameraText: '',
   },
   cardTypeImgUrl: '',
   cardType: '',

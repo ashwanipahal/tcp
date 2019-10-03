@@ -59,6 +59,7 @@ class AddNewCCForm extends React.PureComponent {
       expMonth: creditFieldLabels.expMonth,
       expYear: creditFieldLabels.expYear,
       cvvCode: creditFieldLabels.cvvCode,
+      cameraText: creditFieldLabels.cameraText,
     };
   };
 

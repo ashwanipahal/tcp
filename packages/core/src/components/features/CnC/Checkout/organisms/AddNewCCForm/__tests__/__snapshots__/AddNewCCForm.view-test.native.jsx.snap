@@ -8,6 +8,7 @@ exports[`AddNewCCForm should render correctly 1`] = `
     cardTypeImgUrl=""
     creditFieldLabels={
       Object {
+        "cameraText": undefined,
         "creditCardNumber": undefined,
         "cvvCode": undefined,
         "expMonth": undefined,
