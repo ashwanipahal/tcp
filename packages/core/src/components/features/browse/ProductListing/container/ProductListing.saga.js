@@ -6,10 +6,15 @@ import {
   setListingFirstProductsPage,
   setPlpLoadingState,
 } from './ProductListing.actions';
-import Abstractor from '../../../../../services/abstractors/productListing';
+import ProductAbstractor from '../../../../../services/abstractors/productListing';
 import ProductsOperator from './productsRequestFormatter';
+import getProductsUserCustomInfo from '../../../../../services/abstractors/productListing/defaultWishlist';
+import {
+  getUserLoggedInState,
+  isRememberedUser,
+} from '../../../account/User/container/User.selectors';
 
-const instanceProductListing = new Abstractor();
+const instanceProductListing = new ProductAbstractor();
 const operatorInstance = new ProductsOperator();
 
 const getUrl = url => {
@@ -42,6 +47,19 @@ export function* fetchPlpProducts({ payload }) {
       const plpProducts = yield call(instanceProductListing.getProducts, reqObj, state);
       if (plpProducts) {
         operatorInstance.updateBucketingConfig(plpProducts);
+        const products = plpProducts.loadedProductsPages[0];
+        const isGuest = !getUserLoggedInState(state);
+        const isRemembered = isRememberedUser(state);
+        if (!isGuest && !isRemembered) {
+          const generalProductIdsList = products.map(
+            product => product.productInfo.generalProductId
+          );
+          plpProducts.loadedProductsPages[0] = yield call(
+            getProductsUserCustomInfo,
+            generalProductIdsList,
+            products
+          );
+        }
         yield put(setListingFirstProductsPage({ ...plpProducts }));
       }
     }
@@ -51,7 +69,7 @@ export function* fetchPlpProducts({ payload }) {
   }
 }
 
-export function* fetchMoreProducts({ payload }) {
+export function* fetchMoreProducts({ payload = {} }) {
   try {
     const { url } = payload;
     const location = getUrl(url);
@@ -68,6 +86,19 @@ export function* fetchMoreProducts({ payload }) {
         plpProducts.loadedProductsPages[0].length
       ) {
         operatorInstance.updateBucketingConfig(plpProducts);
+        const products = plpProducts.loadedProductsPages[0];
+        const isGuest = !getUserLoggedInState(state);
+        const isRemembered = isRememberedUser(state);
+        if (!isGuest && !isRemembered) {
+          const generalProductIdsList = products.map(
+            product => product.productInfo.generalProductId
+          );
+          plpProducts.loadedProductsPages[0] = yield call(
+            getProductsUserCustomInfo,
+            generalProductIdsList,
+            products
+          );
+        }
         yield put(setPlpProducts({ ...plpProducts }));
       }
     }

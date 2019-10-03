@@ -35,6 +35,7 @@ export const getCouponsLabels = state => {
         lbl_couponlist_expiring: EXPIRING_SOON,
         lbl_coupon_couponValid: COUPON_VALIDITY = 'Validity',
         lbl_coupon_seeRedeemDates: SEE_REDEEM_DATES = 'See Redeem Dates',
+        lbl_PLCCModal_applyNowLink: applyNowLink,
       } = {},
     } = {},
   } = state.Labels;
@@ -65,6 +66,7 @@ export const getCouponsLabels = state => {
     EXPIRING_SOON,
     COUPON_VALIDITY,
     SEE_REDEEM_DATES,
+    applyNowLink,
     couponCollapsibleHeader: getLabelValue(
       state.Labels,
       'lbl_coupon_collapsible_header',

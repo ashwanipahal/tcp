@@ -6,4 +6,8 @@ const Row = styled.View`
   align-items: center;
 `;
 
-export default Row;
+const SocialMessage = styled.View`
+  width: 220px;
+`;
+
+export { Row, SocialMessage };

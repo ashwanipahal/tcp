@@ -8,6 +8,13 @@ const styles = css`
     margin-top: ${props => props.theme.spacing.ELEM_SPACING.MED};
   }
 
+  @media ${props => props.theme.mediaQuery.smallMax} {
+    .order-summary {
+      padding: 0;
+      margin-bottom: ${props => props.theme.spacing.ELEM_SPACING.MED};
+    }
+  }
+
   .bonusPointsDaysWrapper {
     background-color: ${props => props.theme.colorPalette.white};
     padding: ${props => props.theme.spacing.ELEM_SPACING.LRG}

@@ -40,7 +40,7 @@ class CheckoutOrderInfo extends React.PureComponent {
               showAccordian={showAccordian}
               additionalClassNameModal="coupon-modal-mob"
             />
-            <OrderLedgerContainer />
+            <OrderLedgerContainer showAccordian={showAccordian} />
             {!isGuest && (
               <div
                 className={`${

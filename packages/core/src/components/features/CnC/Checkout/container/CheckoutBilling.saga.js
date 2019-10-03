@@ -1,4 +1,5 @@
 /* eslint-disable extra-rules/no-commented-out-code */
+/* eslint-disable */
 import { call, put, select } from 'redux-saga/effects';
 import {
   updatePaymentOnOrder,
@@ -89,16 +90,55 @@ export function* updatePaymentInstruction(
   }
   // updatePaymentToActiveOnSubmitBilling(store);
   // getUserOperator(store).setRewardPointsData();
-  yield call(loadUpdatedCheckoutValues, false, true, cardNotUpdated, false, false);
+  if (!isMobileApp()) {
+    yield call(loadUpdatedCheckoutValues, false, true, cardNotUpdated, false, false);
+  }
 }
 
-function* getAddressData(formData) {
+/**
+ * @function updateVenmoPaymentInstruction
+ * @description - Update payment instruction for venmo checkout
+ * @param {object} venmoDetails
+ */
+export function* updateVenmoPaymentInstruction() {
+  const { PAYMENT_METHOD_VENMO } = CONSTANTS;
+  const grandTotal = yield select(getGrandTotal);
+  const shippingDetails = yield select(getShippingDestinationValues);
+  const isVenmoSaveSelected = yield select(selectors.isVenmoPaymentSaveSelected);
+  const venmoData = yield select(selectors.getVenmoData);
+  const { nonce: venmoNonce, deviceData: venmoDeviceData, details: { username } = {} } =
+    venmoData || {};
+  const billingAddressId = shippingDetails.onFileAddressId;
+  const paymentMethod = PAYMENT_METHOD_VENMO && PAYMENT_METHOD_VENMO.toUpperCase();
+  const requestData = {
+    billingAddressId,
+    cardType: paymentMethod,
+    cc_brand: paymentMethod,
+    cardNumber: username || 'test-user', // Venmo User Id, for all the scenario's it will have user information from the venmo, for dev, added test-user
+    isDefault: 'false',
+    orderGrandTotal: grandTotal,
+    applyToOrder: true,
+    monthExpire: '',
+    yearExpire: '',
+    setAsDefault: false,
+    saveToAccount: false,
+    venmoDetails: {
+      userId: username || 'test-user',
+      saveVenmoTokenIntoProfile: isVenmoSaveSelected,
+      nonce: venmoNonce,
+      venmoDeviceData,
+    },
+  };
+  yield call(addPaymentToOrder, requestData);
+}
+
+export function* getAddressData(formData) {
   const existingAddress = yield select(getAddressByKey, formData.address.onFileAddressKey);
   const shippingDetails = yield select(getShippingDestinationValues);
   return existingAddress ? existingAddress.addressId : shippingDetails.onFileAddressId;
 }
 
-function addressIdToString(addressId) {
+export function addressIdToString(addressId) {
   if (addressId) {
     return addressId.toString();
   }
@@ -180,6 +220,22 @@ export function* submitBillingData(formData, address, loadUpdatedCheckoutValues)
       res,
       loadUpdatedCheckoutValues
     );
+  }
+}
+
+/**
+ * @function submitVenmoBilling
+ * @description - Redirect venmo payment from billing to review. This method is called from the Billing Page
+ * @param {obejct} payload - venmo payload to submit billing and redirect to review page
+ */
+export function* submitVenmoBilling(payload = {}) {
+  const { payload: { navigation } = {} } = payload;
+  yield put(getSetIsBillingVisitedActn(true)); // flag that billing section was visited by the user
+  yield call(updateVenmoPaymentInstruction);
+  if (!isMobileApp()) {
+    utility.routeToPage(CHECKOUT_ROUTES.reviewPage);
+  } else if (navigation) {
+    navigation.navigate(CONSTANTS.CHECKOUT_ROUTES_NAMES.CHECKOUT_REVIEW);
   }
 }
 
