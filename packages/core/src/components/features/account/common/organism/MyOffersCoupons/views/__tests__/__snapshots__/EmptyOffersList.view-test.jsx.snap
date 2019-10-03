@@ -1,0 +1,54 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`EmptyOffersList should render correctly 1`] = `
+<Styled(BodyCopy)
+  className=""
+  color="text.primary"
+  component="p"
+  fontFamily="primary"
+  fontSize={12}
+  fontWeight="regular"
+  letterSpacing="normal"
+  lineHeight="normal"
+  link={null}
+  textAlign="left"
+>
+  <Styled(BodyCopy)
+    className="elem-mb-LRG"
+    color="text.primary"
+    component="p"
+    dataLocator="rewards-no-rewards-info"
+    fontFamily="secondary"
+    fontSize="fs14"
+    fontWeight="regular"
+    letterSpacing="normal"
+    lineHeight="normal"
+    link={null}
+    textAlign="left"
+  >
+    Supporting text
+  </Styled(BodyCopy)>
+  <Styled(BodyCopy)
+    className="coupon_viewall_tile elem-mb-LRG"
+    color="text.primary"
+    component="div"
+    fontFamily="primary"
+    fontSize={12}
+    fontWeight="regular"
+    letterSpacing="normal"
+    lineHeight="normal"
+    link={null}
+    textAlign="left"
+  >
+    <Styled(Button)
+      buttonVariation="variable-width"
+      className="coupon_button_black"
+      data-locator="my-rewards-shop-now-btn"
+      onClick={[Function]}
+      type="submit"
+    >
+      shop now
+    </Styled(Button)>
+  </Styled(BodyCopy)>
+</Styled(BodyCopy)>
+`;
