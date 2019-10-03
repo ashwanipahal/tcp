@@ -79,7 +79,6 @@ const getLinkedImage = (props, hasRibbon) => {
         height={getImageHeight(hasRibbon)}
         url={image.url}
         host={LAZYLOAD_HOST_NAME.HOME}
-        crop={image.crop_m}
         imgConfig={getImageConfig(hasRibbon)}
       />
     </Anchor>
@@ -89,14 +88,20 @@ const getLinkedImage = (props, hasRibbon) => {
       height={getImageHeight(hasRibbon)}
       url={image.url}
       host={LAZYLOAD_HOST_NAME.HOME}
-      crop={image.crop_m}
       imgConfig={getImageConfig(hasRibbon)}
     />
   );
 };
 
 const ButtonView = props => {
-  const { singleCTAButton, navigation } = props;
+  const { singleCTAButton, navigation, hasRibbon } = props;
+
+  let transparent = false;
+
+  if (isGymboree() && !hasRibbon) {
+    transparent = true;
+  }
+
   return (
     <ButtonContainer>
       <Button
@@ -107,6 +112,7 @@ const ButtonView = props => {
         testID={getLocator('moduleD_button')}
         url={singleCTAButton.url}
         navigation={navigation}
+        transparent={transparent}
       />
     </ButtonContainer>
   );
@@ -140,8 +146,8 @@ const ribbonRightImage = require('../../../../../assets/module-a-ribbon-right.pn
 
 const RibbonView = ({ ribbonBanner, navigation }) => {
   let ribbonConfig = {
-    width: RIBBON_HEIGHT,
-    height: RIBBON_WIDTH,
+    width: RIBBON_WIDTH,
+    height: RIBBON_HEIGHT,
     source: ribbonLeftImage,
   };
   if (ribbonBanner && ribbonBanner[0].ribbonPlacement === 'right') {
@@ -185,7 +191,7 @@ const RibbonBannerVariation = props => {
       <HeaderView {...props} />
       <ImageContainer>{getLinkedImage(props, hasRibbon)}</ImageContainer>
       <RibbonView {...props} />
-      <ButtonView {...props} />
+      <ButtonView {...props} hasRibbon />
     </ModuleContainer>
   );
 };
@@ -225,7 +231,13 @@ RibbonView.propTypes = {
 };
 RibbonBannerVariation.propTypes = ModulePropTypes;
 ModuleS.propTypes = ModulePropTypes;
-ButtonView.propTypes = ModulePropTypes;
+ButtonView.propTypes = {
+  ...ModulePropTypes,
+  hasRibbon: PropTypes.bool,
+};
+ButtonView.defaultProps = {
+  hasRibbon: false,
+};
 HeaderView.propTypes = ModulePropTypes;
 getLinkedImage.propTypes = {
   ...ModulePropTypes,

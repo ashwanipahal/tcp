@@ -198,6 +198,14 @@ const style = css`
         background-color: transparent;
          `
       : ''}
+
+  ${props =>
+    props.transparent
+      ? `
+      background-color: transparent;
+    `
+      : ''};
+
   ${getMobileAppFilterButtonViewStyle};
   ${getMobileAppFilterIconButtonViewStyle};
 `;
@@ -245,6 +253,7 @@ const CustomStyleText = styled(StyledText)`
         letter-spacing: 0.3px;
          `
       : ''}
+
   ${getMobileAppFilterButtonTextStyle};
   ${getMobileAppFilterIconButtonTextStyle};
 `;
