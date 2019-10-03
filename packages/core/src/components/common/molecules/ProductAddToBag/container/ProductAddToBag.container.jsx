@@ -379,10 +379,10 @@ class ProductAddToBagContainer extends React.PureComponent<Props> {
     );
   };
 
-  quantityChange = selectedQuantity => {
+  quantityChange = (selectedQuantity, form) => {
     this.setState({ selectedQuantity });
     const { dispatch } = this.props;
-    dispatch(change('ProductAddToBag', 'Quantity', selectedQuantity));
+    dispatch(change(form, 'Quantity', selectedQuantity));
   };
 
   /**

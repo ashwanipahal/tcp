@@ -4,15 +4,13 @@
  * doesn't open when sku is resolved
  */
 
-import React, { Fragment } from 'react';
+import React from 'react';
 import PropTypes from 'prop-types';
-import { Row, Image, BodyCopy, Col, Anchor } from '@tcp/core/src/components/common/atoms';
+import { TouchableOpacity } from 'react-native';
+import { Image, BodyCopy } from '@tcp/core/src/components/common/atoms';
 import { PRODUCT_SKU_SELECTION_FORM } from '@tcp/core/src/constants/reducer.constants';
 import withStyles from '../../../../../hoc/withStyles';
-import styles, {
-  customPriceStyles,
-} from '../../../../QuickViewModal/molecules/ProductCustomizeFormPart/styles/ProductCustomizeFormPart.style';
-import ProductPrice from '../../../../../../features/browse/ProductDetail/molecules/ProductPrice/ProductPrice';
+import styles from '../../../../QuickViewModal/molecules/ProductCustomizeFormPart/styles/ProductCustomizeFormPart.style';
 import ProductAddToBagContainer from '../../../../../molecules/ProductAddToBag';
 import { PRODUCT_INFO_PROP_TYPE_SHAPE } from '../../../../../../features/browse/ProductListing/molecules/ProductList/propTypes/productsAndItemsPropTypes';
 import { SKU_DETAILS, PICKUP_LABELS } from '../../../PickUpStoreModal.constants';
@@ -22,6 +20,13 @@ import {
   getMapSliceForColor,
   getProductListToPath,
 } from '../../../../../../features/browse/ProductListing/molecules/ProductList/utils/productsCommonUtils';
+import {
+  PickUpSkUSectionContainer,
+  ImageWrapper,
+  ProductSummaryContainer,
+  ProductDetailSummary,
+  OfferPriceAndBadge3Container,
+} from '../styles/PickupSkuSelectionForm.style.native';
 
 class PickupSkuSelectionForm extends React.Component {
   constructor(props) {
@@ -56,101 +61,103 @@ class PickupSkuSelectionForm extends React.Component {
     onCloseClick();
   };
 
-  getProductDetailContainer = (productPriceProps, pdpToPath, currentColorPdpUrl) => {
-    return (
-      <Fragment>
-        <ProductPrice {...productPriceProps} />
-
-        <Anchor
-          onClick={this.navigateToPDP}
-          className="link-redirect"
-          to={pdpToPath}
-          asPath={currentColorPdpUrl}
-        >
-          <BodyCopy className="product-link" fontSize="fs14" fontFamily="secondary">
-            {PICKUP_LABELS.VIEW_DETAILS}
-          </BodyCopy>
-        </Anchor>
-      </Fragment>
-    );
+  onGoToPDPPage = (pdpUrl, selectedColorProductId) => {
+    const { navigation } = this.props;
+    const title = navigation && navigation.getParam('title');
+    navigation.navigate('ProductDetail', {
+      title,
+      pdpUrl,
+      selectedColorProductId,
+      reset: true,
+    });
   };
 
   getPickUpSKUSection = (imageUrl, currentColorEntry) => {
-    const {
-      currentProduct,
-      initialValues,
-      currency,
-      prices,
-      isCanada,
-      isInternationalShipping,
-      isHasPlcc,
-      className,
-    } = this.props;
-
-    const productPriceProps = {
-      currencySymbol: currency,
-      isItemPartNumberVisible: false,
-      ...prices,
-      isCanada,
-      inheritedStyles: customPriceStyles,
-      customFonts: { listPriceFont: 'fs14' },
-      isPlcc: isHasPlcc,
-      isInternationalShipping,
-    };
-
+    const { currentProduct, initialValues, currency, prices } = this.props;
+    const listPrice = prices && prices.listPrice;
+    const offerPrice = prices && prices.offerPrice;
+    const badge2 = prices && prices.badge2;
+    const currencyPrefix = currency === 'USD' ? '$' : currency;
     const currentColorPdpUrl = currentColorEntry && currentColorEntry.pdpUrl;
+    const colorProductId = currentColorEntry && currentColorEntry.colorProductId;
 
     const pdpToPath = getProductListToPath(currentColorPdpUrl);
 
     return (
-      <Row className={className}>
-        <Col className="modal-header" colSize={{ small: 12, medium: 12, large: 12 }}>
-          {PICKUP_LABELS.PICK_UP_MODAL_LABEL}
-        </Col>
-        <div className="product-customize-form-container">
-          <div className="image-title-wrapper">
-            <div className="image-wrapper">
-              <Image alt="Error" src={imageUrl} />
-            </div>
-            <div className="product-details-card-container-separate">
-              <BodyCopy
-                fontSize="fs18"
-                fontWeight="extrabold"
-                fontFamily="secondary"
-                className="product-name"
-              >
-                {currentProduct.name}
-              </BodyCopy>
-              {this.getProductDetailContainer(productPriceProps, pdpToPath, currentColorPdpUrl)}
-            </div>
-          </div>
-          <div className="product-detail">
-            <div className="product-details-card-container">
-              <BodyCopy
-                fontSize="fs18"
-                fontWeight="extrabold"
-                fontFamily="secondary"
-                className="product-name"
-              >
-                {currentProduct.name}
-              </BodyCopy>
-              <div className="product-view-details">
-                {this.getProductDetailContainer(productPriceProps, pdpToPath, currentColorPdpUrl)}
-              </div>
-            </div>
-
-            <ProductAddToBagContainer
-              onChangeColor={this.onChangeColor}
-              plpLabels={SKU_DETAILS}
-              currentProduct={currentProduct}
-              customFormName={PRODUCT_SKU_SELECTION_FORM}
-              selectedColorProductId={this.generalProductId}
-              initialFormValues={initialValues}
-              showAddToBagCTA={false}
+      <PickUpSkUSectionContainer>
+        <ProductSummaryContainer>
+          <ImageWrapper>
+            <Image resizeMode="contain" height="202px" width="164px" url={imageUrl} />
+          </ImageWrapper>
+          <ProductDetailSummary>
+            <BodyCopy
+              fontSize="fs14"
+              fontWeight="extrabold"
+              mobileFontFamily="secondary"
+              text={currentProduct.name}
+              margin="0 0 24px 0"
             />
-          </div>
-        </div>
-      </Row>
+            <OfferPriceAndBadge3Container>
+              <BodyCopy
+                dataLocator="pdp_current_product_price"
+                mobileFontFamily="secondary"
+                fontSize="fs16"
+                fontWeight="black"
+                color="red.500"
+                text={`${currencyPrefix}${offerPrice}`}
+              />
+
+              {listPrice !== offerPrice ? (
+                <BodyCopy
+                  dataLocator="pdp_discounted_product_price"
+                  textDecoration="line-through"
+                  mobileFontFamily="secondary"
+                  fontSize="fs12"
+                  margin="0 0 0 10px"
+                  fontWeight="regular"
+                  color="gray.800"
+                  text={`${currencyPrefix}${listPrice}`}
+                />
+              ) : null}
+              {badge2 ? (
+                <BodyCopy
+                  dataLocator="pdp_discounted_percentage"
+                  margin="0 0 0 10px"
+                  mobileFontFamily="secondary"
+                  fontSize="fs12"
+                  fontWeight="regular"
+                  color="red.500"
+                  text={badge2}
+                />
+              ) : null}
+            </OfferPriceAndBadge3Container>
+            <TouchableOpacity
+              onPress={() => this.onGoToPDPPage(pdpToPath, colorProductId)}
+              accessible
+              accessibilityRole="button"
+              accessibilityLabel={`${currentProduct.name}`}
+            >
+              <BodyCopy
+                fontSize="fs14"
+                fontWeight="regular"
+                mobileFontFamily="secondary"
+                textDecoration="underline"
+                text={PICKUP_LABELS.VIEW_DETAILS}
+              />
+            </TouchableOpacity>
+          </ProductDetailSummary>
+        </ProductSummaryContainer>
+
+        <ProductAddToBagContainer
+          onChangeColor={this.onChangeColor}
+          plpLabels={SKU_DETAILS}
+          currentProduct={currentProduct}
+          customFormName={PRODUCT_SKU_SELECTION_FORM}
+          selectedColorProductId={this.generalProductId}
+          initialFormValues={initialValues}
+          showAddToBagCTA={false}
+        />
+      </PickUpSkUSectionContainer>
     );
   };
 
@@ -164,7 +171,7 @@ class PickupSkuSelectionForm extends React.Component {
       isInternationalShipping,
       name,
       isShowExtendedSizesNotification,
-      isSkuResolved,
+      //  isSkuResolved, TODO - need to Fix with pickup modal 2
       isPreferredStoreError,
       promotionalMessage,
       promotionalPLCCMessage,
@@ -182,7 +189,8 @@ class PickupSkuSelectionForm extends React.Component {
 
     const listPrice = prices && prices.listPrice;
     const offerPrice = prices && prices.offerPrice;
-    return isSkuResolved ? (
+    const conditionToRender = false; // it will replace by isSkuResolved
+    return conditionToRender ? (
       <PickupProductFormPart
         colorFitSizeDisplayNames={colorFitSizeDisplayNames}
         colorFitsSizesMap={this.colorFitsSizesMap}
@@ -219,7 +227,7 @@ PickupSkuSelectionForm.propTypes = {
     size: PropTypes.string,
   }),
 
-  colorFitsSizesMap: PropTypes.arrayOf(PropTypes.object).isRequired,
+  // colorFitsSizesMap: PropTypes.arrayOf(PropTypes.object).isRequired,
 
   /** seed values for the form */
   initialValues: PropTypes.shape({
@@ -233,7 +241,7 @@ PickupSkuSelectionForm.propTypes = {
     quantity: PropTypes.number,
   }).isRequired,
 
-  productInfo: PRODUCT_INFO_PROP_TYPE_SHAPE.isRequired,
+  // productInfo: PRODUCT_INFO_PROP_TYPE_SHAPE.isRequired,
   isCanada: PropTypes.bool.isRequired,
   /** This is used to display the correct currency symbol */
   currencySymbol: PropTypes.string.isRequired,
@@ -251,15 +259,13 @@ PickupSkuSelectionForm.propTypes = {
     offerPrice: PropTypes.number,
   }).isRequired,
 
-  isHasPlcc: PropTypes.bool,
-
-  className: PropTypes.string,
+  // isHasPlcc: PropTypes.bool,
 
   name: PropTypes.string,
 
   isShowExtendedSizesNotification: PropTypes.bool,
 
-  isSkuResolved: PropTypes.bool,
+  // isSkuResolved: PropTypes.bool, TODO: need to implement
 
   isPreferredStoreError: PropTypes.bool,
 
@@ -272,16 +278,17 @@ PickupSkuSelectionForm.propTypes = {
   isPickUpWarningModal: PropTypes.bool,
 
   onCloseClick: PropTypes.func,
+  navigation: PropTypes.func,
 };
 
 PickupSkuSelectionForm.defaultProps = {
   colorFitSizeDisplayNames: null,
+  navigation: null,
   currency: 'USD',
-  isHasPlcc: false,
-  className: '',
+  // isHasPlcc: false,
   name: '',
   isShowExtendedSizesNotification: false,
-  isSkuResolved: false,
+  // isSkuResolved: false,
   isPreferredStoreError: false,
   promotionalMessage: '',
   promotionalPLCCMessage: '',

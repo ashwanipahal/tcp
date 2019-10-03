@@ -22,44 +22,6 @@ class ProductAddToBag extends React.PureComponent<Props> {
     super(props);
   }
 
-  changeQuantity = quantity => {
-    const { onQuantityChange } = this.props;
-    if (onQuantityChange) onQuantityChange(quantity);
-  };
-
-  /**
-   * @function renderQuantityView
-   * @returns quantity view with dropdown
-   *
-   * @memberof ProductAddToBag
-   */
-  renderQuantityView = () => {
-    const {
-      quantityList,
-      plpLabels: { quantity },
-      selectedQuantity,
-      onQuantityChange,
-    } = this.props;
-    const qunatityText = `${quantity}: `;
-
-    return (
-      <RowViewContainer>
-        <BodyCopy
-          fontWeight="black"
-          color="gray.900"
-          mobileFontFamily="secondary"
-          fontSize="fs14"
-          text={qunatityText}
-        />
-        <NativeDropDown
-          data={quantityList}
-          selectedValue={selectedQuantity}
-          onValueChange={onQuantityChange}
-        />
-      </RowViewContainer>
-    );
-  };
-
   /**
    * @function renderAddToBagButton
    * @returns Add To Bag Butyon
@@ -116,6 +78,13 @@ class ProductAddToBag extends React.PureComponent<Props> {
     return null;
   };
 
+  onQuantityValueChange = selectedQuantity => {
+    const { onQuantityChange, form } = this.props;
+    if (onQuantityChange) {
+      onQuantityChange(selectedQuantity, form);
+    }
+  };
+
   render() {
     const {
       colorList,
@@ -132,8 +101,8 @@ class ProductAddToBag extends React.PureComponent<Props> {
       quantityList,
       plpLabels: { quantity },
       selectedQuantity,
-      onQuantityChange,
       selectColor,
+      showAddToBagCTA,
     } = this.props;
     const qunatityText = `${quantity}: `;
     const { name: colorName } = selectedColor || {};
@@ -195,8 +164,9 @@ class ProductAddToBag extends React.PureComponent<Props> {
           <Field
             component={NativeDropDown}
             data={quantityList}
+            id="quantity"
             selectedValue={selectedQuantity}
-            onValueChange={onQuantityChange}
+            onValueChange={this.onQuantityValueChange}
             heading={qunatityText}
             name="Quantity"
           />
@@ -204,7 +174,7 @@ class ProductAddToBag extends React.PureComponent<Props> {
 
         {this.renderPickUpStor()}
         <ErrorDisplay error={errorOnHandleSubmit} />
-        {this.renderAddToBagButton()}
+        {showAddToBagCTA && this.renderAddToBagButton()}
       </View>
     );
   }
@@ -221,6 +191,7 @@ ProductAddToBag.propTypes = {
   quantityList: PropTypes.arrayOf(Object),
   plpLabels: PropTypes.instanceOf(Object),
   isErrorMessageDisplayed: PropTypes.bool,
+  showAddToBagCTA: PropTypes.bool,
   addToBagAction: PropTypes.func,
   selectedQuantity: PropTypes.number,
   currentProduct: PropTypes.shape({}).isRequired,
@@ -239,6 +210,7 @@ ProductAddToBag.defaultProps = {
   isErrorMessageDisplayed: false,
   addToBagAction: null,
   selectedQuantity: 1,
+  showAddToBagCTA: true,
 };
 
 /* export view with redux form */
