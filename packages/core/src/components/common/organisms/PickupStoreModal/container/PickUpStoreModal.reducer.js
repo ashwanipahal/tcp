@@ -33,7 +33,7 @@ const PickupModalReducer = (state = fromJS(initialState), action) => {
     case PICKUP_MODAL_ACTIONS_CONSTANTS.PICKUP_MODAL_TOGGLE:
       return state.set('isModalOpen', action.payload.isModalOpen); // TODO - Make this one action - and use merge instead of set
     case PICKUP_MODAL_ACTIONS_CONSTANTS.PICKUP_MODAL_CLOSE:
-      return state.set('isModalOpen', action.payload.isModalOpen);
+      return state.merge(mergePickupModalState(state, action.payload));
     case PICKUP_MODAL_ACTIONS_CONSTANTS.PICKUP_MODAL_OPEN:
       return state
         .merge(mergePickupModalState(state, action.payload))

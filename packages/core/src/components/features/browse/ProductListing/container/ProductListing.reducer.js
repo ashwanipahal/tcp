@@ -30,6 +30,8 @@ const ProductListingReducer = (state = initialState, action) => {
         .set('isFirstTimeLoad', true);
     case PRODUCTLISTINGPAGE_CONSTANTS.SET_PLP_LOADING_STATE:
       return state.merge(action.payload);
+    case PRODUCTLISTINGPAGE_CONSTANTS.SET_WISHLIST_ITEMS:
+      return state;
     case PRODUCTLISTINGPAGE_CONSTANTS.RESET_PRODUCTS:
       return { ...state };
     default:

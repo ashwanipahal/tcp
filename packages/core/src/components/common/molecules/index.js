@@ -12,6 +12,9 @@ import ModuleN from './ModuleN';
 import PromoBanner from './PromoBanner';
 import LinkText from './LinkText';
 import ImageGrid from './ImageGrid';
+import StoreAddressTile from './StoreAddressTile';
+import StoreHours from './StoreHours';
+import StoreLocations from './StoreLocations';
 
 export {
   AccordionHeader,
@@ -28,4 +31,7 @@ export {
   PromoBanner,
   LinkText,
   ImageGrid,
+  StoreAddressTile,
+  StoreHours,
+  StoreLocations,
 };

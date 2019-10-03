@@ -8,6 +8,8 @@ export default css`
     padding: 0 14px;
     position: relative;
     box-sizing: border-box;
+    display: flex;
+    align-items: center;
 
     @media ${props => props.theme.mediaQuery.medium} {
       padding: 0 15px;
@@ -63,6 +65,14 @@ export default css`
 
     @media ${props => props.theme.mediaQuery.large} {
       font-size: ${props => props.theme.fonts.fontSize.body.bodytext.copy4}px;
+    }
+  }
+
+  .header-topnav__storelocator {
+    display: none;
+
+    @media ${props => props.theme.mediaQuery.smallOnly} {
+      display: block;
     }
   }
 `;

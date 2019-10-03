@@ -22,4 +22,9 @@ const IconContainer = styled.View`
   width: ${props => props.theme.spacing.ELEM_SPACING.MED};
 `;
 
-export { StyledOrderLedger, StyledRowDataContainer, LabelContainer, IconContainer };
+const StyledHeader = styled.View`
+  padding-left: ${props => props.theme.spacing.ELEM_SPACING.SM};
+  padding-top: ${props => props.theme.spacing.ELEM_SPACING.XS};
+`;
+
+export { StyledOrderLedger, StyledRowDataContainer, LabelContainer, IconContainer, StyledHeader };

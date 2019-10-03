@@ -44,6 +44,7 @@ export default css`
       width: 90px;
       text-align: right;
       padding-right: 32px;
+      cursor: pointer;
     }
   }
   .subHeaderTextLogin {

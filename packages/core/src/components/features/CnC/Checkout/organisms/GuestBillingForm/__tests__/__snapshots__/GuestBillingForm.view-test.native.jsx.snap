@@ -73,6 +73,7 @@ exports[`GuestBillingFormVanilla should render correctly 1`] = `
       btnText=""
       onBackLinkPress={[Function]}
       routeToPage=""
+      showAccordian={true}
     />
   </Styled(View)>
 </Fragment>
@@ -199,6 +200,7 @@ exports[`GuestBillingFormVanilla should render correctly when props change 1`] =
       btnText=""
       onBackLinkPress={[Function]}
       routeToPage=""
+      showAccordian={true}
     />
   </Styled(View)>
 </Fragment>

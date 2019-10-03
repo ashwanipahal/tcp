@@ -2,7 +2,7 @@
 import React from 'react';
 import productGridItemPropTypes from '../propTypes/ProductGridItemPropTypes';
 import Button from '../../../../../../common/atoms/Button';
-import { getLocator } from '../../../../../../../utils';
+import { getLocator, isClient } from '../../../../../../../utils';
 import { getImagesToDisplay, getMapSliceForColorProductId } from '../utils/productsCommonUtils';
 // import { ProductRating } from './ProductRating';
 import withStyles from '../../../../../../common/hoc/withStyles';
@@ -110,12 +110,13 @@ class ProductsGridItem extends React.PureComponent {
         productInfo: { generalProductId },
       },
       onAddItemToFavorites,
+      isLoggedIn,
     } = this.props;
     const { selectedColorProductId } = this.state;
-    this.setError();
-    onAddItemToFavorites(selectedColorProductId || generalProductId)
-      .then(() => this.setState({ isInDefaultWishlist: true }))
-      .catch(err => this.setError(err));
+    onAddItemToFavorites({ colorProductId: selectedColorProductId || generalProductId });
+    if (isClient() && isLoggedIn) {
+      this.setState({ isInDefaultWishlist: true });
+    }
   };
 
   renderQuickViewCardOrLink = () => {};

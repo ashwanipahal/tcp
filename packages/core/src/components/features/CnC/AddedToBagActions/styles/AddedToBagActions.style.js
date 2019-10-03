@@ -35,7 +35,7 @@ const CtaStyle = css`
     }
   }
 
-  .checkout-button-bagHeader {
+  .checkout-button.checkout-button-bagHeader {
     flex-direction: row;
   }
 

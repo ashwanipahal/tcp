@@ -22,6 +22,7 @@ const CnCCommonTemplate = ({
   onBackLinkPress,
   footerBody,
   isGuest,
+  showAccordian,
 }) => {
   return (
     <>
@@ -29,7 +30,7 @@ const CnCCommonTemplate = ({
         <CouponAndPromos isCheckout />
       </CouponAndPromosWrapper>
       <View>
-        <OrderLedgerContainer />
+        <OrderLedgerContainer showAccordian={showAccordian} />
       </View>
       {!isGuest && (
         <BonusPointsWrapper>
@@ -67,6 +68,7 @@ CnCCommonTemplate.propTypes = {
   backLinkText: PropTypes.string.isRequired,
   onBackLinkPress: PropTypes.func.isRequired,
   isGuest: PropTypes.func.isRequired,
+  showAccordian: PropTypes.bool.isRequired,
 };
 
 export default CnCCommonTemplate;

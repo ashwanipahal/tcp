@@ -10,7 +10,7 @@ import {
 } from '../../../atoms/styledWrapper';
 import ModalNative from '../../../molecules/Modal';
 import config from './config';
-import { Row, Points, SocialMessage } from '../styles/social.style.native';
+import { Row, SocialMessage } from '../styles/social.style.native';
 import ImageComp from '../../../atoms/Image';
 import BodyCopy from '../../../atoms/BodyCopy';
 import { getLabelValue } from '../../../../../utils/utils';
@@ -25,6 +25,7 @@ class Socialview extends React.PureComponent {
     pointModalClose: PropTypes.func.isRequired,
     setPointsModal: PropTypes.func.isRequired,
     handleComponentChange: PropTypes.func.isRequired,
+    isPlcc: PropTypes.isRequired,
   };
 
   constructor(props) {
@@ -64,7 +65,7 @@ class Socialview extends React.PureComponent {
    * @param {labels} labels component labels
    */
   renderAccountsInformation = (accounts, labels) => {
-    const { setPointsModal } = this.props;
+    const { setPointsModal, isPlcc } = this.props;
     const { points } = this.pointsInformation;
     const rewardPoints = ` ${points} `;
 
@@ -83,10 +84,11 @@ class Socialview extends React.PureComponent {
                 spacingStyles="margin-left-MED margin-right-LRG"
                 text={
                   elem.isConnected
-                    ? `${config.SOCIAL_ACCOUNTS[elem.socialAccount]} ${
-                        labels.lbl_prefrence_connected
-                      }`
-                    : `${labels.lbl_prefrence_connectTo} ${
+                    ? `${config.SOCIAL_ACCOUNTS[elem.socialAccount]} ${getLabelValue(
+                        labels,
+                        'lbl_prefrence_connected'
+                      )}`
+                    : `${getLabelValue(labels, 'lbl_prefrence_connectTo')} ${
                         config.SOCIAL_ACCOUNTS[elem.socialAccount]
                       }`
                 }
@@ -123,7 +125,13 @@ class Socialview extends React.PureComponent {
                     spacingStyles="margin-top-LRG"
                     text={getLabelValue(labels, 'lbl_prefrence_social_points_text_1')}
                   />
-                  <Points>{rewardPoints}</Points>
+                  <BodyCopy
+                    fontSize="fs14"
+                    textAlign="center"
+                    fontWeight="black"
+                    color={isPlcc ? 'blue.800' : 'orange.800'}
+                    text={rewardPoints}
+                  />
                   <BodyCopy
                     fontSize="fs14"
                     textAlign="center"

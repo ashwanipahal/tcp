@@ -181,6 +181,7 @@ exports[`Add gift card form component should render component correctly 1`] = `
         maxLength={50}
         name="giftCardNumber"
         onChange={[Function]}
+        placeholder="lbl_payment_giftCardNoPlaceholder"
         type="tel"
       />
     </Styled(Col)>
@@ -357,6 +358,7 @@ exports[`Add gift card form component should render component correctly 1`] = `
         dataLocator="gift-card-pinnumberfield"
         name="cardPin"
         onChange={[Function]}
+        placeholder="lbl_payment_giftCardPinPlaceholder"
         type="tel"
       />
     </Styled(Col)>
@@ -395,7 +397,9 @@ exports[`Add gift card form component should render component correctly 1`] = `
           link={null}
           tag="p"
           textAlign="left"
-        />
+        >
+          lbl_payment_giftCardMessageHeading
+        </Styled(BodyCopy)>
         <Styled(BodyCopy)
           className="card__msg"
           color="text.primary"
@@ -409,7 +413,9 @@ exports[`Add gift card form component should render component correctly 1`] = `
           link={null}
           tag="p"
           textAlign="left"
-        />
+        >
+          lbl_payment_giftCardMessageDescription
+        </Styled(BodyCopy)>
       </div>
     </Styled(Col)>
     <Styled(Col)
@@ -446,7 +452,9 @@ exports[`Add gift card form component should render component correctly 1`] = `
         data-locator="gift-card-cancelbtn"
         onClick={[Function]}
         type="button"
-      />
+      >
+        lbl_payment_cancelCard
+      </Styled(Button)>
     </Styled(Col)>
     <Styled(Col)
       className="card__btn--medium"
@@ -482,7 +490,9 @@ exports[`Add gift card form component should render component correctly 1`] = `
         data-locator="gift-card-addcardbtn"
         fill="BLUE"
         type="submit"
-      />
+      >
+        lbl_payment_addCard
+      </Styled(Button)>
     </Styled(Col)>
   </Styled(Row)>
 </form>

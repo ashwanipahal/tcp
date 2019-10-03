@@ -63,7 +63,7 @@ exports[`RewardsPoints Slider View should render RewardsPointsViewVanilla Correc
             link={null}
             textAlign="left"
           >
-            My rewards: 
+            My rewards
             <Styled(BodyCopy)
               className={null}
               color="text.primary"

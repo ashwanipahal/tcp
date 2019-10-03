@@ -4,6 +4,7 @@ import PropTypes from 'prop-types';
 import { BodyCopyWithSpacing } from '@tcp/core/src/components/common/atoms/styledWrapper';
 import MyProfileTile from '@tcp/core/src/components/common/molecules/MyProfileTile';
 import ModalNative from '@tcp/core/src/components/common/molecules/Modal';
+import { getLabelValue } from '@tcp/core/src/utils/utils';
 import ChangePasswordContainer from '@tcp/core/src/components/features/account/ChangePassword/container/ChangePassword.container';
 import ModalViewWrapper from '../styles/ChangePasswordInfo.style.native';
 
@@ -28,27 +29,30 @@ export class ChangePasswordInfo extends React.PureComponent {
     return (
       <View>
         <MyProfileTile
-          title={labels.lbl_profile_password}
-          ctaTitle={labels.lbl_profile_change_password}
+          title={getLabelValue(labels, 'lbl_profile_password')}
+          ctaTitle={getLabelValue(labels, 'lbl_profile_change_password')}
           handleComponentChange={this.toggleModal}
         >
           <BodyCopyWithSpacing
             fontSize="fs16"
             spacingStyles="margin-bottom-MED"
-            text={labels.lbl_profile_change_your_password}
+            text={getLabelValue(labels, 'lbl_profile_change_your_password')}
           />
           <BodyCopyWithSpacing
             fontSize="fs14"
             spacingStyles="margin-bottom-MED"
-            text={labels.lbl_profile_password_info_line1}
+            text={getLabelValue(labels, 'lbl_profile_password_info_line1')}
           />
-          <BodyCopyWithSpacing fontSize="fs14" text={labels.lbl_profile_password_info_line2} />
+          <BodyCopyWithSpacing
+            fontSize="fs14"
+            text={getLabelValue(labels, 'lbl_profile_password_info_line2')}
+          />
         </MyProfileTile>
 
         <ModalNative
           isOpen={showChangePasswordModal}
           onRequestClose={this.toggleModal}
-          heading={labels.lbl_profile_change_password}
+          heading={getLabelValue(labels, 'lbl_profile_change_password')}
         >
           <SafeAreaView>
             <ModalViewWrapper>
