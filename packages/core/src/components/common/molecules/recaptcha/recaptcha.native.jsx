@@ -39,6 +39,7 @@ const generateTheWebViewContent = siteKey => {
           </html>`;
 };
 
+const color = { backgroundColor: 'transparent' };
 const Recaptcha = ({ onMessage, siteKey, url }) => (
   <WebView
     originWhitelist={['*']}
@@ -47,8 +48,7 @@ const Recaptcha = ({ onMessage, siteKey, url }) => (
     javaScriptEnabled
     injectedJavaScript={patchPostMessageJsCode}
     automaticallyAdjustContentInsets
-    // eslint-disable-next-line
-    style={{ backgroundColor: 'transparent' }}
+    style={color}
     source={{
       html: generateTheWebViewContent(siteKey),
       baseUrl: `${url}`,

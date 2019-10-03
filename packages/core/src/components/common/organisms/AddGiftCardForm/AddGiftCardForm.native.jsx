@@ -158,16 +158,15 @@ class AddGiftCardForm extends React.PureComponent {
           />
 
           <View>
-            <React.Fragment>
-              {setRecaptchaModalMountedState && (
-                <RecaptchaModal
-                  onMessage={this.onMessage}
-                  setRecaptchaModalMountedState={setRecaptchaModalMountedState}
-                  toggleRecaptchaModal={this.setRecaptchaModalMountState}
-                  onClose={this.onClose}
-                />
-              )}
-            </React.Fragment>
+            {setRecaptchaModalMountedState && (
+              <RecaptchaModal
+                onMessage={this.onMessage}
+                setRecaptchaModalMountedState={setRecaptchaModalMountedState}
+                toggleRecaptchaModal={this.setRecaptchaModalMountState}
+                onClose={this.onClose}
+              />
+            )}
+
             <Field
               label=""
               component={TextBox}
@@ -297,7 +296,7 @@ AddGiftCardForm.defaultProps = {
   isRecapchaEnabled: true,
 };
 
-const validateMethod = createValidateMethod(getStandardConfig(['giftCardNumber', 'cardPin', '']));
+const validateMethod = createValidateMethod(getStandardConfig(['giftCardNumber', 'cardPin']));
 
 export default reduxForm({
   form: 'AddGiftCardMobileForm', // a unique identifier for this form
