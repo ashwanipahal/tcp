@@ -87,7 +87,7 @@ export const PersonalizedCoupon = ({ className, coupon, printCoupon, detailCoupo
   const small = isClient() && viewport().small;
   const [showDetail, setShowDetail] = useState(false);
   const carrotIcon = getIconPath('carrot-left');
-  const printIcon = getIconPath('star-filled');
+  const printIcon = getIconPath('icon-printer');
 
   return (
     <div className={className}>
