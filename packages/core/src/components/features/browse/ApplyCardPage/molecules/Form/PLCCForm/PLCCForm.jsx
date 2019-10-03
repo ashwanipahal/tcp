@@ -19,9 +19,18 @@ import {
   ReviewCreditCardInformation,
 } from '../../index';
 import { backToHome } from '../../../utils/DateOfBirthHelper';
-import StyledPLCCFormWrapper from './style/PLCCForm.style';
+import StyledPLCCFormWrapper from '../styles/PLCCForm.style';
 import PLCCTimeoutInterimModal from '../../Modals/PLCCTmeoutInterimModal';
-import { getPageViewGridRowSize } from '../../../utils/utility';
+import { getPageViewGridRowSize, fetchPLCCFormErrors } from '../../../utils/utility';
+import Notification from '../../../../../../common/molecules/Notification';
+
+const handleSubmitFail = errors => {
+  const formattedErrors = fetchPLCCFormErrors(errors);
+  const errorEl = document.querySelector(errors && `[id="${formattedErrors[0]}"]`.trim());
+  if (errorEl && errorEl.focus) {
+    errorEl.focus();
+  }
+};
 
 class PLCCForm extends React.PureComponent {
   static idleUserEvents = [
@@ -151,7 +160,15 @@ class PLCCForm extends React.PureComponent {
   };
 
   render() {
-    const { dispatch, plccData, handleSubmit, labels, isPLCCModalFlow, bagItems } = this.props;
+    const {
+      dispatch,
+      plccData,
+      handleSubmit,
+      labels,
+      isPLCCModalFlow,
+      bagItems,
+      applicationStatus,
+    } = this.props;
     const { isIdleModalActive, isTimedOutModalActive } = this.state;
     return (
       <StyledPLCCFormWrapper isPLCCModalFlow={isPLCCModalFlow}>
@@ -226,6 +243,7 @@ class PLCCForm extends React.PureComponent {
                   name="iAgree"
                   component={InputCheckBox}
                   fontSize="fs16"
+                  id="iAgree"
                   dataLocator="plcc_T&C_checkbox"
                   className="iAgree_terms_conditions"
                   disabled={false}
@@ -241,6 +259,15 @@ class PLCCForm extends React.PureComponent {
                 </Field>
               </Col>
             </Row>
+            <Row fullBleed>
+              <Col
+                key="container_plcc_agreement"
+                colSize={{ large: getPageViewGridRowSize(isPLCCModalFlow), medium: 8, small: 6 }}
+              >
+                {applicationStatus && <Notification status="error" message={applicationStatus} />}
+              </Col>
+            </Row>
+            {/* {applicationStatus && <ErrorMessage error={applicationStatus} />} */}
             <BodyCopy
               className="underprogress_application"
               fontSize="fs16"
@@ -318,6 +345,7 @@ PLCCForm.propTypes = {
   handleSubmit: PropTypes.func.isRequired,
   reset: PropTypes.func.isRequired,
   bagItems: PropTypes.bool.isRequired,
+  applicationStatus: PropTypes.string.isRequired,
   labels: PropTypes.shape({
     plcc_form_checkbox_text: PropTypes.string.isRequired,
     plcc_form_submit_button: PropTypes.string.isRequired,
@@ -354,4 +382,5 @@ export default reduxForm({
   ...validateMethod,
   enableReinitialize: true,
   destroyOnUnmount: true,
+  onSubmitFail: errors => handleSubmitFail(errors),
 })(PLCCForm);
