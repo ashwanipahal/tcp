@@ -1,4 +1,5 @@
 import React from 'react';
+import PropTypes from 'prop-types';
 import withStyles from '@tcp/core/src/components/common/hoc/withStyles';
 import Row from '../../../../common/atoms/Row';
 import Col from '../../../../common/atoms/Col';
@@ -7,14 +8,15 @@ import styles from '../styles/AddressList.style';
 
 // @flow
 
-type Props = {
-  addresses: Object[],
-  labels: {},
-  className: string,
-  onDefaultShippingAddressClick: Object,
-  setDeleteModalMountState: Function,
-  setSelectedAddress: Function,
-};
+// type Props = {
+//   addresses: Object[],
+//   labels: {},
+//   className: string,
+//   onDefaultShippingAddressClick: Object,
+//   setDeleteModalMountState: Function,
+//   setSelectedAddress: Function,
+// };
+
 export const AddressList = ({
   addresses,
   labels,
@@ -49,4 +51,23 @@ export const AddressList = ({
     </Row>
   );
 };
+
+AddressList.defaultProps = {
+  addresses: {},
+  className: '',
+  labels: {},
+  onDefaultShippingAddressClick: null,
+  setDeleteModalMountState: null,
+  setSelectedAddress: null,
+};
+
+AddressList.propTypes = {
+  addresses: PropTypes.shape([]),
+  className: PropTypes.string,
+  labels: PropTypes.shape({}),
+  onDefaultShippingAddressClick: PropTypes.func,
+  setDeleteModalMountState: PropTypes.func,
+  setSelectedAddress: PropTypes.func,
+};
+
 export default withStyles(AddressList, styles);

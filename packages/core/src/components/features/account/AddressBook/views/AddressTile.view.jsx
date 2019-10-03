@@ -1,4 +1,5 @@
 import React from 'react';
+import PropTypes from 'prop-types';
 import Router from 'next/router'; //eslint-disable-line
 import withStyles from '@tcp/core/src/components/common/hoc/withStyles';
 import { getLabelValue } from '@tcp/core/src/utils/utils';
@@ -11,15 +12,14 @@ import Col from '../../../../common/atoms/Col';
 import Row from '../../../../common/atoms/Row';
 
 // @flow
-
-type Props = {
-  address: Object,
-  labels: Object,
-  className: string,
-  onDefaultShippingAddressClick(address: {}): Object,
-  setSelectedAddress: Function,
-  setDeleteModalMountState: Function,
-};
+// type Props = {
+//   address: Object,
+//   labels: Object,
+//   className: string,
+//   onDefaultShippingAddressClick(address: {}): Object,
+//   setSelectedAddress: Function,
+//   setDeleteModalMountState: Function,
+// };
 
 class AddressBookTile extends React.Component<Props> {
   handleDefaultLinkClick = event => {
@@ -150,6 +150,23 @@ class AddressBookTile extends React.Component<Props> {
     );
   }
 }
+
+AddressBookTile.defaultProps = {
+  address: {},
+  className: '',
+  labels: {},
+  onDefaultShippingAddressClick: null,
+  setDeleteModalMountState: null,
+  setSelectedAddress: null,
+};
+AddressBookTile.propTypes = {
+  address: PropTypes.shape([]),
+  className: PropTypes.string,
+  labels: PropTypes.shape({}),
+  onDefaultShippingAddressClick: PropTypes.func,
+  setDeleteModalMountState: PropTypes.func,
+  setSelectedAddress: PropTypes.func,
+};
 
 export default withStyles(AddressBookTile, styles);
 export { AddressBookTile as AddressBookTileVanilla };

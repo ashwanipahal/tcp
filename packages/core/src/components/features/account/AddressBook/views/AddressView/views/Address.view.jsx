@@ -30,6 +30,15 @@ type Props = {
   setDeleteModalMountState: Function,
 };
 
+// AddressView.propTypes = {
+//   addresses: PropTypes.shape([]),
+//   className: PropTypes.string,
+//   labels: PropTypes.shape({ }),
+//   onDefaultShippingAddressClick: PropTypes.func,
+//   setDeleteModalMountState: PropTypes.func,
+//   setSelectedAddress:PropTypes.func,
+// };
+
 export class AddressView extends React.PureComponent<Props> {
   constructor(props: Props) {
     super(props);

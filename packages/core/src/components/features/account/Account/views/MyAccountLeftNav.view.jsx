@@ -1,15 +1,16 @@
 import React from 'react';
+import PropTypes from 'prop-types';
 import Anchor from '../../../../common/atoms/Anchor';
 import withStyles from '../../../../common/hoc/withStyles';
 import styles from '../styles/MyAccountLayout.style';
 
 // @flow
-type Props = {
-  navData: Array<Object>,
-  active: String,
-  className: String,
-  activeSubComponent: String,
-};
+// type Props = {
+//   navData: Array<Object>,
+//   active: String,
+//   className: String,
+//   activeSubComponent: String,
+// };
 
 type NavProps = {
   nav: Object,
@@ -86,6 +87,18 @@ const MyAccountLeftNav = ({ navData, active, className, activeSubComponent }: Pr
       </ul>
     </React.Fragment>
   );
+};
+MyAccountLeftNav.defaultProps = {
+  navData: {},
+  active: '',
+  activeSubComponent: '',
+  className: '',
+};
+MyAccountLeftNav.propTypes = {
+  navData: PropTypes.shape([]),
+  active: PropTypes.string,
+  activeSubComponent: PropTypes.string,
+  className: PropTypes.string,
 };
 
 export default withStyles(MyAccountLeftNav, styles);
