@@ -24,6 +24,7 @@ class CheckoutFooter extends React.PureComponent {
       ariaLabelNextButton,
       showVenmoSubmit, // Show Venmo Submit on billing page on selecting venmo payment method
       continueWithText,
+      onVenmoSubmit,
     } = this.props;
     return (
       <div className={className}>
@@ -47,6 +48,7 @@ class CheckoutFooter extends React.PureComponent {
             <VenmoPaymentButton
               className="footer-venmo-button"
               continueWithText={continueWithText}
+              onSuccess={onVenmoSubmit}
             />
           ) : (
             <Button
@@ -83,12 +85,14 @@ CheckoutFooter.propTypes = {
   footerBody: PropTypes.shape({}).isRequired,
   showVenmoSubmit: PropTypes.bool,
   continueWithText: PropTypes.string,
+  onVenmoSubmit: PropTypes.func, // Venmo Submit for billing page, redirect to review page once already authorized or new authorization with the venmo app.
 };
 
 CheckoutFooter.defaultProps = {
   hideBackLink: false,
   showVenmoSubmit: false,
   continueWithText: '',
+  onVenmoSubmit: () => {},
 };
 
 export default withStyles(CheckoutFooter, style);

@@ -38,14 +38,27 @@ export class BillingSection extends PureComponent {
    */
   handleVenmoPaymentSaveChange = () => {
     const { saveVenmoPaymentOption } = this.props;
-    const { saveVenmoPayment } = this.state;
-    this.setState({ saveVenmoPayment: !saveVenmoPayment }, ({ payment }) =>
-      saveVenmoPaymentOption(payment)
+    this.setState(
+      prevState => ({
+        saveVenmoPayment: !prevState.saveVenmoPayment,
+      }),
+      () => {
+        const { saveVenmoPayment } = this.state;
+        saveVenmoPaymentOption(saveVenmoPayment);
+      }
     );
   };
 
   render() {
-    const { className, card, address, appliedGiftCards, labels, venmoPayment } = this.props;
+    const {
+      className,
+      card,
+      address,
+      appliedGiftCards,
+      labels,
+      venmoPayment,
+      venmoPayment: { isVenmoPaymentSelected, venmoSaveToAccountDisplayed, userName },
+    } = this.props;
     const { saveVenmoPayment } = this.state;
     return (
       <Grid className={`${className}`}>
@@ -67,7 +80,7 @@ export class BillingSection extends PureComponent {
         <Row fullBleed>
           {(card || address) && (
             <Col colSize={{ small: 6, medium: 4, large: 5 }}>
-              {card && (
+              {card && !isVenmoPaymentSelected && (
                 <Fragment>
                   <BodyCopy
                     fontSize="fs16"
@@ -118,7 +131,7 @@ export class BillingSection extends PureComponent {
               </Fragment>
             )}
           </Col>
-          {venmoPayment.isVenmoPaymentSelected && (
+          {isVenmoPaymentSelected && (
             <Col
               colSize={{ small: 6, medium: 4, large: 6 }}
               offsetRight={{ small: 0, medium: 0, large: 1 }}
@@ -133,11 +146,11 @@ export class BillingSection extends PureComponent {
                 {labels.lbl_review_paymentMethod}
               </BodyCopy>
               <section className="venmo-payment-method-wrapper">
-                <CardImage card={venmoPayment} cardNumber={venmoPayment.userName} />
+                <CardImage card={venmoPayment} cardNumber={userName} />
               </section>
 
               <div className="venmo-save-wrapper">
-                {venmoPayment.venmoSaveToAccountDisplayed && (
+                {venmoSaveToAccountDisplayed && (
                   <InputCheckbox
                     component={InputCheckbox}
                     className="venmo-save-checkbox"

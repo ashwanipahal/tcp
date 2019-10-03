@@ -6,7 +6,8 @@ import DropDown from '@tcp/core/src/components/common/atoms/DropDown/views/DropD
 import TextBox from '@tcp/core/src/components/common/atoms/TextBox';
 // import CustomIcon from '@tcp/core/src/components/common/atoms/Icon';
 // import { ICON_NAME } from '@tcp/core/src/components/common/atoms/Icon/Icon.constants';
-import { getAddressLocationInfo } from '../../../../../atoms/GoogleAutoSuggest/AutoCompleteComponent';
+import { getAddressLocationInfo } from '../../../../../atoms/GoogleAutoSuggest/AutoCompleteComponent.native';
+
 import createValidateMethod from '../../../../../../../utils/formValidation/createValidateMethod';
 import getStandardConfig from '../../../../../../../utils/formValidation/validatorStandardConfig';
 import { Button } from '../../../../../atoms';

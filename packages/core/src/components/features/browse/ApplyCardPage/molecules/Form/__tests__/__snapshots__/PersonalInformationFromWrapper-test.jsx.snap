@@ -173,39 +173,39 @@ exports[`ContactInformationFormWrapper component should renders correctly 1`] = 
                 },
                 Object {
                   "displayName": "Jan",
-                  "id": "01",
+                  "id": "1",
                 },
                 Object {
                   "displayName": "Feb",
-                  "id": "02",
+                  "id": "2",
                 },
                 Object {
                   "displayName": "Mar",
-                  "id": "03",
+                  "id": "3",
                 },
                 Object {
                   "displayName": "Apr",
-                  "id": "04",
+                  "id": "4",
                 },
                 Object {
                   "displayName": "May",
-                  "id": "05",
+                  "id": "5",
                 },
                 Object {
                   "displayName": "Jun",
-                  "id": "06",
+                  "id": "6",
                 },
                 Object {
                   "displayName": "Jul",
-                  "id": "07",
+                  "id": "7",
                 },
                 Object {
                   "displayName": "Aug",
-                  "id": "08",
+                  "id": "8",
                 },
                 Object {
                   "displayName": "Sep",
-                  "id": "09",
+                  "id": "9",
                 },
                 Object {
                   "displayName": "Oct",
@@ -1149,7 +1149,7 @@ exports[`ContactInformationFormWrapper component should renders correctly 1`] = 
           }
         }
         data-locator="plcc_SSN"
-        id="lastName"
+        id="ssNumber"
         maxLength="4"
         name="ssNumber"
         placeholder="ssn"

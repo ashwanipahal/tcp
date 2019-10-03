@@ -62,3 +62,15 @@ export const setSurveyAnswers = payload => {
     payload,
   };
 };
+
+export function setUserGeoCoordinates(payload) {
+  return {
+    payload,
+    type: CONSTANTS.SET_GEO_COORDINATES,
+  };
+}
+
+export const setDefaultStore = payload => ({
+  payload,
+  type: CONSTANTS.SET_DEFAULT_STORE,
+});

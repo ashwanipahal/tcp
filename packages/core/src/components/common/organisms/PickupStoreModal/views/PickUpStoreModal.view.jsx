@@ -41,9 +41,9 @@ const ERRORS_MAP = require('../../../../../services/handler/stateful/errorRespon
 class PickUpStoreModalView extends React.Component {
   static propTypes = {
     /* the list of stores currently in the cart */
-    cartBopisStoresList: CART_BOPIS_STORE_LIST.isRequired,
+    cartBopisStoresList: CART_BOPIS_STORE_LIST.cartBopisStoresList.isRequired,
     /** labels for selection fields */
-    colorFitSizeDisplayNames: COLOR_FIT_SIZE_DISPLAY_NAME,
+    colorFitSizeDisplayNames: COLOR_FIT_SIZE_DISPLAY_NAME.colorFitSizeDisplayNames,
     /** The map of distances options to select the radius of search */
     distancesMap: DISTANCES_MAP_PROP_TYPE.isRequired,
     /** seed values for the form */

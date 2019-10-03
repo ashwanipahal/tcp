@@ -20,7 +20,7 @@ describe('ProductAddToBagVanilla native should render correctly', () => {
 
   it('should render expected number of components', () => {
     expect(wrapper.find('View').length).toBe(1);
-    expect(wrapper.find('Field').length).toBe(3);
+    expect(wrapper.find('Field').length).toBe(4);
   });
 
   it('should render color', () => {
