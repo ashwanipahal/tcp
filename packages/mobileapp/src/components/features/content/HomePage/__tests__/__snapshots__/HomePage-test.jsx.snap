@@ -12,7 +12,7 @@ exports[`HomePageView should render correctly 1`] = `
     <HeaderPromo />
   </Styled(View)>
   <Connect(ModuleQ)
-    bgColor="#d8d8d8"
+    bgClass="yellow-bg"
     divTabs={
       Array [
         Object {
@@ -93,26 +93,6 @@ exports[`HomePageView should render correctly 1`] = `
             Object {
               "style": "medium_text_black",
               "text": "SHOP THE LOOK",
-            },
-          ],
-        },
-        Object {
-          "icon": Object {
-            "icon": "",
-            "placement": "",
-          },
-          "link": Object {
-            "action": "",
-            "external": 0,
-            "target": "",
-            "text": "",
-            "title": "",
-            "url": "/p/",
-          },
-          "textItems": Array [
-            Object {
-              "style": "small_text_normal",
-              "text": "Build her head-to-toe party outfit sprinkled with all the extra-sweet details!",
             },
           ],
         },
