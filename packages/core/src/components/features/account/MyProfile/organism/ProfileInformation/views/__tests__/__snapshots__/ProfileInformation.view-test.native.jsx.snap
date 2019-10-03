@@ -25,6 +25,7 @@ exports[`ProfileInformation should render correctly 1`] = `
   />
   <PersonalInformation
     airMiles=""
+    componentProps={Object {}}
     handleComponentChange={[Function]}
     labels={
       Object {

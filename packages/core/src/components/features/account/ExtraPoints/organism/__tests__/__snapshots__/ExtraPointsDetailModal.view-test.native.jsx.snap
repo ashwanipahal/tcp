@@ -68,7 +68,7 @@ exports[`Extra Points Details Modal for native should render correctly native co
       iconSize="fs12"
       locator=""
       navigation={Object {}}
-      onPress={null}
+      onPress={[Function]}
       selected={false}
       selectedIcon="chevron-up"
       showIcon={false}
