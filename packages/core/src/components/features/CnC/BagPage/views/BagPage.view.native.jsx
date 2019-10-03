@@ -23,6 +23,8 @@ import {
   InActiveBagHeaderTextView,
   InActiveEstimateTextStyle,
   BagHeaderMain,
+  FooterView,
+  ContainerMain,
 } from '../styles/BagPage.style.native';
 import BonusPointsDays from '../../../../common/organisms/BonusPointsDays';
 import InitialPropsHOC from '../../../../common/hoc/InitialPropsHOC/InitialPropsHOC.native';
@@ -94,8 +96,25 @@ export class BagPage extends React.Component {
     }).start();
   };
 
-  handleScroll = event => {
+  hideHeader = () => {
     const { bagStickyHeaderInterval } = this.props;
+    this.timer = setTimeout(() => {
+      this.setAnimation(false);
+      this.setState({ showCondensedHeader: true });
+    }, bagStickyHeaderInterval);
+  };
+
+  handleScrollEnd = () => {
+    this.hideHeader();
+  };
+
+  handleMomentumScrollEnd = event => {
+    if (event.nativeEvent.contentOffset.y > 0) {
+      this.hideHeader();
+    }
+  };
+
+  handleScroll = event => {
     const contentOffset = event.nativeEvent.contentOffset.y;
     if (contentOffset > 0) {
       this.setAnimation(true);
@@ -104,10 +123,6 @@ export class BagPage extends React.Component {
       if (this.timer !== null) {
         clearTimeout(this.timer);
       }
-      this.timer = setTimeout(() => {
-        this.setAnimation(false);
-        this.setState({ showCondensedHeader: true });
-      }, bagStickyHeaderInterval);
     } else {
       if (this.timer !== null) {
         clearTimeout(this.timer);
@@ -222,56 +237,61 @@ export class BagPage extends React.Component {
     const viewHeight = showCondensedHeader ? '74%' : '65%';
     return (
       <>
-        <AnimatedBagHeaderMain style={{ height }}>
-          <BagHeaderRow>
-            <HeadingViewStyle
-              onPress={() => {
-                this.handleChangeActiveSection(BAGPAGE_CONSTANTS.BAG_STATE);
-              }}
-            >
-              {isBagStage ? (
-                <ActiveBagHeaderView>{this.renderBagHeading()}</ActiveBagHeaderView>
-              ) : (
-                <InActiveBagHeaderView>{this.renderBagHeading()}</InActiveBagHeaderView>
+        <ContainerMain>
+          <AnimatedBagHeaderMain style={{ height }}>
+            <BagHeaderRow>
+              <HeadingViewStyle
+                onPress={() => {
+                  this.handleChangeActiveSection(BAGPAGE_CONSTANTS.BAG_STATE);
+                }}
+              >
+                {isBagStage ? (
+                  <ActiveBagHeaderView>{this.renderBagHeading()}</ActiveBagHeaderView>
+                ) : (
+                  <InActiveBagHeaderView>{this.renderBagHeading()}</InActiveBagHeaderView>
+                )}
+              </HeadingViewStyle>
+              <SflHeadingViewStyle
+                onPress={() => {
+                  this.handleChangeActiveSection(BAGPAGE_CONSTANTS.SFL_STATE);
+                }}
+              >
+                {isSFLStage ? (
+                  <ActiveBagHeaderView>{this.renderSflHeading()}</ActiveBagHeaderView>
+                ) : (
+                  <InActiveBagHeaderView>{this.renderSflHeading()}</InActiveBagHeaderView>
+                )}
+              </SflHeadingViewStyle>
+            </BagHeaderRow>
+          </AnimatedBagHeaderMain>
+          <ScrollViewWrapper
+            viewHeight={showAddTobag ? '60%' : viewHeight}
+            onScroll={this.handleScroll}
+            onScrollEndDrag={this.handleScrollEnd}
+            onMomentumScrollEnd={this.handleMomentumScrollEnd}
+          >
+            <MainSection>
+              {isBagStage && <ProductTileWrapper bagLabels={labels} />}
+              {isSFLStage && (
+                <ProductTileWrapper bagLabels={labels} sflItems={sflItems} isBagPageSflSection />
               )}
-            </HeadingViewStyle>
-            <SflHeadingViewStyle
-              onPress={() => {
-                this.handleChangeActiveSection(BAGPAGE_CONSTANTS.SFL_STATE);
-              }}
-            >
-              {isSFLStage ? (
-                <ActiveBagHeaderView>{this.renderSflHeading()}</ActiveBagHeaderView>
-              ) : (
-                <InActiveBagHeaderView>{this.renderSflHeading()}</InActiveBagHeaderView>
-              )}
-            </SflHeadingViewStyle>
-          </BagHeaderRow>
-        </AnimatedBagHeaderMain>
-        <ScrollViewWrapper
-          viewHeight={showAddTobag ? '60%' : viewHeight}
-          onScroll={this.handleScroll}
-        >
-          <MainSection>
-            {isBagStage && <ProductTileWrapper bagLabels={labels} />}
-            {isSFLStage && (
-              <ProductTileWrapper bagLabels={labels} sflItems={sflItems} isBagPageSflSection />
-            )}
-            {this.renderOrderLedgerContainer(isNoNEmptyBag, isBagStage)}
-            {this.renderBonusPoints(isUserLoggedIn, isNoNEmptyBag, isBagStage)}
-            {this.renderAirMiles(isBagStage)}
-            {this.renderCouponPromos(isNoNEmptyBag, isBagStage)}
-          </MainSection>
-        </ScrollViewWrapper>
-
+              {this.renderOrderLedgerContainer(isNoNEmptyBag, isBagStage)}
+              {this.renderBonusPoints(isUserLoggedIn, isNoNEmptyBag, isBagStage)}
+              {this.renderAirMiles(isBagStage)}
+              {this.renderCouponPromos(isNoNEmptyBag, isBagStage)}
+            </MainSection>
+          </ScrollViewWrapper>
+        </ContainerMain>
         {isBagStage && (
-          <AddedToBagActions
-            handleCartCheckout={handleCartCheckout}
-            labels={labels}
-            showAddTobag={showAddTobag}
-            navigation={navigation}
-            isNoNEmptyBag={isNoNEmptyBag}
-          />
+          <FooterView>
+            <AddedToBagActions
+              handleCartCheckout={handleCartCheckout}
+              labels={labels}
+              showAddTobag={showAddTobag}
+              navigation={navigation}
+              isNoNEmptyBag={isNoNEmptyBag}
+            />
+          </FooterView>
         )}
       </>
     );

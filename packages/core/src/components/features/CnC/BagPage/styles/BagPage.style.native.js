@@ -132,6 +132,19 @@ export const InActiveEstimateTextStyle = styled.Text`
   width: 100%;
 `;
 
+export const FooterView = styled.View`
+  width: 100%;
+  height: 100px;
+  position: absolute;
+  bottom: 0;
+  background-color: ${props => props.theme.colors.WHITE};
+`;
+
+export const ContainerMain = styled.View`
+  flex: 1;
+  margin-bottom: 100px;
+`;
+
 export default {
   HeadingViewStyle,
   MainSection,
@@ -153,4 +166,6 @@ export default {
   InActiveBagHeaderTextView,
   InActiveEstimateTextStyle,
   BagHeaderMain,
+  FooterView,
+  ContainerMain,
 };
