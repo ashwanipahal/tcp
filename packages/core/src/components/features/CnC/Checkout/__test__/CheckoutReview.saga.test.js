@@ -41,6 +41,7 @@ describe('CheckoutReview saga', () => {
       call(submitOrderProcessing, undefined, undefined, undefined)
     );
     CheckoutReviewSaga.next();
+    CheckoutReviewSaga.next();
     expect(CheckoutReviewSaga.next().value).toEqual(put(getSetOrderProductDetails()));
     expect(CheckoutReviewSaga.next().value).toEqual(put(resetCheckoutReducer()));
     expect(CheckoutReviewSaga.next().value).toEqual(put(resetAirmilesReducer()));
@@ -58,6 +59,7 @@ describe('CheckoutReview saga', () => {
     expect(CheckoutReviewSaga.next().value).toEqual(
       call(submitOrderProcessing, undefined, undefined, undefined)
     );
+    CheckoutReviewSaga.next();
     CheckoutReviewSaga.next();
     expect(CheckoutReviewSaga.next().value).toEqual(put(getSetOrderProductDetails()));
     expect(CheckoutReviewSaga.next().value).toEqual(put(resetCheckoutReducer()));
@@ -78,7 +80,6 @@ describe('submitOrderProcessing saga', () => {
     orderProcessing.next({ userDetails: { emailAddress } }, orderId);
     orderProcessing.next(res);
     orderProcessing.next();
-    orderProcessing.next();
     expect(orderProcessing.next().value).toEqual(select(isGuest));
     expect(orderProcessing.next(true).value).toEqual(
       call(validateAndSubmitEmailSignup, emailAddress, 'us_guest_checkout')
@@ -93,7 +94,6 @@ describe('submitOrderProcessing saga', () => {
     const res = { userDetails: { emailAddress } };
     orderProcessing.next({ shipping: { emailAddress } }, orderId);
     orderProcessing.next(res);
-    orderProcessing.next();
     orderProcessing.next();
     expect(orderProcessing.next().value).toEqual(select(isGuest));
     expect(orderProcessing.next(true).value).toEqual(

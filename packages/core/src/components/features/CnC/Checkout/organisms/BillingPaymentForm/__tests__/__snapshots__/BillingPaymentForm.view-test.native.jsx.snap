@@ -203,6 +203,7 @@ exports[`ButtonList component renders correctly if  cards present and addNewCCSt
   <CnCCommonTemplate
     backLinkText=""
     btnText=""
+    isConfirmationPage={false}
     onBackLinkPress={[Function]}
     routeToPage=""
     showAccordian={true}
@@ -351,6 +352,7 @@ exports[`ButtonList component renders correctly if  no cards present  1`] = `
   <CnCCommonTemplate
     backLinkText=""
     btnText=""
+    isConfirmationPage={false}
     onBackLinkPress={[Function]}
     routeToPage=""
     showAccordian={true}
@@ -406,6 +408,7 @@ exports[`ButtonList component renders correctly if payment method is diff 1`] = 
   <CnCCommonTemplate
     backLinkText=""
     btnText=""
+    isConfirmationPage={false}
     onBackLinkPress={[Function]}
     routeToPage=""
     showAccordian={true}
@@ -688,6 +691,7 @@ exports[`ButtonList component renders correctly without props 1`] = `
   <CnCCommonTemplate
     backLinkText=""
     btnText=""
+    isConfirmationPage={false}
     onBackLinkPress={[Function]}
     routeToPage=""
     showAccordian={true}
@@ -970,6 +974,7 @@ exports[`ButtonList component renders correctly without props 2`] = `
   <CnCCommonTemplate
     backLinkText=""
     btnText=""
+    isConfirmationPage={false}
     onBackLinkPress={[Function]}
     routeToPage=""
     showAccordian={true}
@@ -982,6 +987,7 @@ exports[`ButtonList component renders correctly without props with isPaymentDisa
   <CnCCommonTemplate
     backLinkText=""
     btnText=""
+    isConfirmationPage={false}
     onBackLinkPress={[Function]}
     routeToPage=""
     showAccordian={true}

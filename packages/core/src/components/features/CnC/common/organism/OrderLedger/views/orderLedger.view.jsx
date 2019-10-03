@@ -13,11 +13,12 @@ import withStyles from '../../../../../../common/hoc/withStyles';
 import styles from '../styles/orderLedger.style';
 import CollapsibleContainer from '../../../../../../common/molecules/CollapsibleContainer';
 
-const getHeader = labels => {
+const getHeader = (labels, ledgerSummaryData) => {
+  const { currencySymbol, orderBalanceTotal } = ledgerSummaryData;
   return (
     <div className="elem-mb-SM order-ledger-header">
       <BodyCopy fontFamily="secondary" fontSize="fs16" fontWeight="semibold" component="span">
-        {labels.orderLedgerTitle}
+        {`${labels.orderLedgerTitle} (${currencySymbol}${orderBalanceTotal.toFixed(2)})`}
       </BodyCopy>
     </div>
   );
@@ -112,7 +113,7 @@ const getBody = (className, ledgerSummaryData, labels) => {
                 fontWeight="semibold"
                 fontSize="fs13"
               >
-                {`${labels.promotionsLabel}`}
+                {`${labels.promotionsLabel}:`}
               </BodyCopy>
             </Col>
             <Col colSize={{ large: 6, medium: 4, small: 3 }}>
@@ -157,7 +158,7 @@ const getBody = (className, ledgerSummaryData, labels) => {
                 {/* eslint-disable-next-line no-nested-ternary */}
                 {shippingTotal !== undefined
                   ? // eslint-disable-next-line no-constant-condition
-                    { shippingTotal } > 0
+                    shippingTotal > 0
                     ? `${currencySymbol}${shippingTotal.toFixed(2)}`
                     : labels.free
                   : '-'}
@@ -358,7 +359,7 @@ const OrderLedger = ({
           header={header}
           body={body}
           iconLocator="arrowicon"
-          defaultOpen
+          defaultOpen={false}
         />
       </Col>
       <div className={showAccordian ? 'hide-in-medium-down' : ''}>{body}</div>

@@ -203,7 +203,7 @@ exports[`OrderLedger Component OrderLedger should render correctly 1`] = `
         </React.Fragment>
       }
       className=" "
-      defaultOpen={true}
+      defaultOpen={false}
       header={
         <div
           className="elem-mb-SM order-ledger-header"
@@ -219,7 +219,9 @@ exports[`OrderLedger Component OrderLedger should render correctly 1`] = `
             lineHeight="normal"
             link={null}
             textAlign="left"
-          />
+          >
+            undefined (0.00)
+          </ForwardRef>
         </div>
       }
       iconLocator="arrowicon"
@@ -573,7 +575,7 @@ exports[`OrderLedger Component OrderLedger should render correctly 2`] = `
                   link={null}
                   textAlign="left"
                 >
-                  undefined
+                  undefined:
                 </ForwardRef>
               </ForwardRef>
               <ForwardRef
@@ -652,7 +654,9 @@ exports[`OrderLedger Component OrderLedger should render correctly 2`] = `
                   lineHeight="normal"
                   link={null}
                   textAlign="right"
-                />
+                >
+                  1.00
+                </ForwardRef>
               </ForwardRef>
             </ForwardRef>
             <ForwardRef
@@ -953,7 +957,7 @@ exports[`OrderLedger Component OrderLedger should render correctly 2`] = `
         </React.Fragment>
       }
       className=" "
-      defaultOpen={true}
+      defaultOpen={false}
       header={
         <div
           className="elem-mb-SM order-ledger-header"
@@ -969,7 +973,9 @@ exports[`OrderLedger Component OrderLedger should render correctly 2`] = `
             lineHeight="normal"
             link={null}
             textAlign="left"
-          />
+          >
+            undefined (1.00)
+          </ForwardRef>
         </div>
       }
       iconLocator="arrowicon"
@@ -1119,7 +1125,7 @@ exports[`OrderLedger Component OrderLedger should render correctly 2`] = `
             link={null}
             textAlign="left"
           >
-            undefined
+            undefined:
           </Styled(BodyCopy)>
         </Styled(Col)>
         <Styled(Col)
@@ -1198,7 +1204,9 @@ exports[`OrderLedger Component OrderLedger should render correctly 2`] = `
             lineHeight="normal"
             link={null}
             textAlign="right"
-          />
+          >
+            1.00
+          </Styled(BodyCopy)>
         </Styled(Col)>
       </Styled(Row)>
       <Styled(Row)

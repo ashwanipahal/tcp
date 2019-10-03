@@ -18,6 +18,15 @@ const StyledTouchableOpacity = styled.TouchableOpacity`
       : ``}
 `;
 
+const ModalCustomWrapper = styled.View`
+  ${props =>
+    props.transparentModal === 'transparent-captcha'
+      ? `
+      background-color: rgba(0,0,0,.5);
+`
+      : ``}
+`;
+
 const ModalHeading = styled.Text`
   padding-bottom: ${props => props.theme.spacing.ELEM_SPACING.SM};
   width: ${props => (props.fullWidth ? '100%' : '80%')};
@@ -55,4 +64,5 @@ export {
   ModalHeading,
   LineWrapper,
   RowWrapper,
+  ModalCustomWrapper,
 };
