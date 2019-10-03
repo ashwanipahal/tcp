@@ -481,7 +481,7 @@ storiesOf('StoreSelector', module)
         </div>
       </div>
       <pre>
-        Note: Inspect element here and find `div` with class 'store-selector-static'. Right-click
+        Note: Inspect element here and find `div` with class 'store-selector-html'. Right-click
         and copy the outer HTML.
       </pre>
     </div>
