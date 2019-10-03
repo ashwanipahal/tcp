@@ -29,6 +29,13 @@ export const importGraphQLClientDynamically = module => {
   return import(`../services/handler/${module}`);
 };
 
+export const getUrlParameter = name => {
+    const replacedName = name.replace(/[[]/, '\\[').replace(/[\]]/, '\\]');
+    let regex = new RegExp('[\\?&]' + replacedName + '=([^&#]*)');
+    let results = regex.exec(window.location.search);
+    return results === null ? '' : decodeURIComponent(results[1].replace(/\+/g, ' '));
+  };
+
 export const importGraphQLQueriesDynamically = query => {
   return import(`../services/handler/graphQL/queries/${query}`);
 };
