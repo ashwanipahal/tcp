@@ -11,6 +11,7 @@ import {
   LabelContainer,
   IconContainer,
   StyledHeader,
+  OrderSummaryWrapper,
 } from '../styles/orderLedger.style.native';
 import ReactTooltip from '../../../../../../common/atoms/ReactToolTip';
 import CollapsibleContainer from '../../../../../../common/molecules/CollapsibleContainer';
@@ -292,12 +293,14 @@ const OrderLedger = ({ ledgerSummaryData, labels, showAccordian }) => {
   return (
     <View>
       {showAccordian ? (
-        <CollapsibleContainer
-          header={header}
-          body={body}
-          defaultOpen={false}
-          iconLocator="arrowicon"
-        />
+        <OrderSummaryWrapper>
+          <CollapsibleContainer
+            header={header}
+            body={body}
+            defaultOpen={false}
+            iconLocator="arrowicon"
+          />
+        </OrderSummaryWrapper>
       ) : (
         body
       )}
