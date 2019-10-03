@@ -341,7 +341,7 @@ const OrderLedger = ({
   if (isConfirmationPage) {
     summaryData = confirmationPageLedgerSummaryData;
   }
-  const header = getHeader(labels);
+  const header = getHeader(labels, summaryData);
   const body = getBody(className, summaryData, labels);
   return (
     <div className={`${className} elem-mb-MED`}>
