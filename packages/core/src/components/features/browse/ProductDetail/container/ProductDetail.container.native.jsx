@@ -8,6 +8,9 @@ import {
   getBreadCrumbs,
   getCurrentProduct,
   getPlpLabels,
+  getShortDescription,
+  getGeneralProductId,
+  getDescription,
 } from './ProductDetail.selectors';
 import { getIsPickupModalOpen } from '../../../../common/organisms/PickupStoreModal/container/PickUpStoreModal.selectors';
 import {
@@ -59,6 +62,9 @@ class ProductDetailContainer extends React.PureComponent {
       addToBagError,
       clearAddToBagError,
       isPickupModalOpen,
+      longDescription,
+      shortDescription,
+      itemPartNumber,
     } = this.props;
     const isProductDataAvailable = Object.keys(currentProduct).length > 0;
     return (
@@ -75,6 +81,9 @@ class ProductDetailContainer extends React.PureComponent {
             addToBagError={addToBagError}
             clearAddToBagError={clearAddToBagError}
             isPickupModalOpen={isPickupModalOpen}
+            shortDescription={shortDescription}
+            itemPartNumber={itemPartNumber}
+            longDescription={longDescription}
           />
         ) : null}
       </React.Fragment>
@@ -90,6 +99,9 @@ function mapStateToProps(state) {
     plpLabels: getPlpLabels(state),
     isPickupModalOpen: getIsPickupModalOpen(state),
     addToBagError: getAddedToBagError(state),
+    shortDescription: getShortDescription(state),
+    itemPartNumber: getGeneralProductId(state),
+    longDescription: getDescription(state),
   };
 }
 
@@ -118,6 +130,9 @@ ProductDetailContainer.propTypes = {
   plpLabels: PropTypes.shape({}),
   isPickupModalOpen: PropTypes.bool,
   addToBagError: PropTypes.string,
+  shortDescription: PropTypes.string,
+  itemPartNumber: PropTypes.string,
+  longDescription: PropTypes.string,
 };
 
 ProductDetailContainer.defaultProps = {
@@ -127,6 +142,9 @@ ProductDetailContainer.defaultProps = {
   plpLabels: {},
   isPickupModalOpen: false,
   addToBagError: '',
+  shortDescription: '',
+  itemPartNumber: '',
+  longDescription: '',
 };
 
 export default connect(
