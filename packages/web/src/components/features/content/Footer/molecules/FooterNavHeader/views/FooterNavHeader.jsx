@@ -34,7 +34,6 @@ const FooterNavHeader = ({
   return (
     <Anchor
       to={titleObj.url}
-      tabIndex="0"
       aria-label={titleText}
       className={`${className} img-link`}
       dataLocator={`col_heading_${colNum}`}
