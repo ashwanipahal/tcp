@@ -1,7 +1,7 @@
 /* istanbul ignore file */
 import React from 'react';
 import PropTypes from 'prop-types';
-import { Anchor, Button, Col, Image, Row } from '../../../atoms';
+import { Anchor, Button, BodyCopy, Col, Image, Row } from '../../../atoms';
 import { Carousel, Grid, LinkText, PromoBanner } from '../..';
 import errorBoundary from '../../../hoc/withErrorBoundary';
 import withStyles from '../../../hoc/withStyles';
@@ -49,11 +49,24 @@ class ModuleQ extends React.PureComponent {
         <div className="looks-large-image">
           <Image alt={id} src={this.getUrlWithHttp(largeImageUrl)} />
         </div>
-        <div className="looks-small-images">
+        <div className="looks-images-wrapper">
           {looksImage.map(({ smallImageUrl, name, remoteId }) => {
-            return <Image key={remoteId} alt={name} src={this.getUrlWithHttp(smallImageUrl)} />;
+            return (
+              <div className="looks-image">
+                <Image key={remoteId} alt={name} src={this.getUrlWithHttp(smallImageUrl)} />
+              </div>
+            );
           })}
-          <div className="looks-last-item">{hiddenImagesCount}</div>
+          <div className="looks-image looks-image-last">
+            <BodyCopy
+              component="span"
+              fontFamily="secondary"
+              fontSize="fs22"
+              fontWeight="extrabold"
+            >
+              {`+${hiddenImagesCount}`}
+            </BodyCopy>
+          </div>
         </div>
       </Anchor>
     );
@@ -143,17 +156,17 @@ class ModuleQ extends React.PureComponent {
             colSize={{
               small: 6,
               medium: 8,
-              large: 10,
+              large: 8,
             }}
             offsetLeft={{
               small: 0,
               medium: 0,
-              large: 1,
+              large: 2,
             }}
             offsetRight={{
               small: 0,
               medium: 0,
-              large: 1,
+              large: 2,
             }}
           >
             {selectedProductList.length ? (
