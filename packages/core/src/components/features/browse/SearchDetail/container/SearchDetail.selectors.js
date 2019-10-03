@@ -1,6 +1,6 @@
 import { createSelector } from 'reselect';
 import { generateGroups } from '../../ProductListing/container/ProductListing.util';
-import { getAPIConfig } from '../../../../../utils';
+import { getAPIConfig, flattenArray } from '../../../../../utils';
 import { PRODUCTS_PER_LOAD } from './SearchDetail.constants';
 import { SLP_PAGE_REDUCER_KEY } from '../../../../../constants/reducer.constants';
 
@@ -67,6 +67,14 @@ export const getProductsSelect = createSelector(
   getSearchListingState,
   products =>
     products && products.get('loadedProductsPages') && products.get('loadedProductsPages')[0]
+);
+
+export const getAllProductsSelect = createSelector(
+  getSearchListingState,
+  products => {
+    const allProducts = products && products.get('loadedProductsPages');
+    return allProducts && flattenArray(allProducts);
+  }
 );
 
 export const getLabels = state => {

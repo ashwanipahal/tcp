@@ -18,9 +18,18 @@ import { getLastLoadedPageNumber } from './SearchDetail.selectors';
 const instanceProductListing = new Abstractor();
 const operatorInstance = new ProductsOperator();
 
+const getUrl = url => {
+  return url
+    ? {
+        pathname: url,
+      }
+    : window.location;
+};
+
 export function* fetchSlpProducts({ payload }) {
   try {
-    const { searchQuery, asPath, formData } = payload;
+    const { searchQuery, asPath, formData, url } = payload;
+    const location = getUrl(url);
     const state = yield select();
     yield put(setSlpLoadingState({ isLoadingMore: true }));
     yield put(setSlpResultsAvailableState({ isSearchResultsAvailable: false }));
@@ -32,6 +41,7 @@ export function* fetchSlpProducts({ payload }) {
       formData,
       asPath,
       pageNumber: 1,
+      location,
     });
     const res = yield call(instanceProductListing.getProducts, reqObj, state);
     yield put(setListingFirstProductsPage({ ...res }));
@@ -42,9 +52,11 @@ export function* fetchSlpProducts({ payload }) {
   }
 }
 
-export function* fetchMoreProducts() {
+export function* fetchMoreProducts({ payload }) {
   try {
+    const { url } = payload;
     const state = yield select();
+    const location = getUrl(url);
     yield put(setSlpLoadingState({ isLoadingMore: true }));
     yield put(setSlpResultsAvailableState({ isSearchResultsAvailable: false }));
 
@@ -59,8 +71,8 @@ export function* fetchMoreProducts() {
       state,
       filtersAndSort: appliedFiltersAndSort,
       pageNumber: lastLoadedPageNumber + 1,
+      location,
     });
-
     const res = yield call(instanceProductListing.getProducts, reqObj, state);
     yield put(setSlpProducts({ ...res }));
     yield put(setSlpLoadingState({ isLoadingMore: false }));
