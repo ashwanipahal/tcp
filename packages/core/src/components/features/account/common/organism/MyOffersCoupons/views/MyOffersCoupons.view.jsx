@@ -195,6 +195,7 @@ class MyOffersCouponView extends PureComponent {
                       <CouponCard
                         key={coupon.id}
                         labels={labels}
+                        commonLabels={commonLabels}
                         isFetching={isFetching}
                         coupon={coupon}
                         handleErrorCoupon={handleErrorCoupon}
