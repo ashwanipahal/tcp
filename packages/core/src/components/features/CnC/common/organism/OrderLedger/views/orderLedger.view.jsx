@@ -157,7 +157,7 @@ const getBody = (className, ledgerSummaryData, labels) => {
                 {/* eslint-disable-next-line no-nested-ternary */}
                 {shippingTotal !== undefined
                   ? // eslint-disable-next-line no-constant-condition
-                    { shippingTotal } > 0
+                    shippingTotal > 0
                     ? `${currencySymbol}${shippingTotal.toFixed(2)}`
                     : labels.free
                   : '-'}

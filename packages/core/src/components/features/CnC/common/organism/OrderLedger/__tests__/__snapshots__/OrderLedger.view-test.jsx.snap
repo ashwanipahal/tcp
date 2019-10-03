@@ -652,7 +652,9 @@ exports[`OrderLedger Component OrderLedger should render correctly 2`] = `
                   lineHeight="normal"
                   link={null}
                   textAlign="right"
-                />
+                >
+                  1.00
+                </ForwardRef>
               </ForwardRef>
             </ForwardRef>
             <ForwardRef
@@ -1198,7 +1200,9 @@ exports[`OrderLedger Component OrderLedger should render correctly 2`] = `
             lineHeight="normal"
             link={null}
             textAlign="right"
-          />
+          >
+            1.00
+          </Styled(BodyCopy)>
         </Styled(Col)>
       </Styled(Row)>
       <Styled(Row)
