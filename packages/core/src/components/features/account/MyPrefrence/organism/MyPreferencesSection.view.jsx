@@ -16,7 +16,7 @@ import MyFavoriteStore from '../../MyProfile/organism/MyFavoriteStore';
 
 class MyPrefrenceSection extends React.PureComponent {
   render() {
-    const { className, labels } = this.props;
+    const { className, labels, isMyPreferences } = this.props;
     return (
       <div className={`elem-pt-LRG ${className}`}>
         <Row fullBleed>
@@ -34,7 +34,7 @@ class MyPrefrenceSection extends React.PureComponent {
               fontSize="fs16"
               fontWeight="extrabold"
             >
-              <MyFavoriteStore isMyPreferences />
+              <MyFavoriteStore isMyPreferences={isMyPreferences} />
             </BodyCopy>
           </Col>
           <Col
@@ -258,10 +258,12 @@ class MyPrefrenceSection extends React.PureComponent {
 MyPrefrenceSection.propTypes = {
   labels: PropTypes.shape({}),
   className: PropTypes.string.isRequired,
+  isMyPreferences: PropTypes.bool,
 };
 
 MyPrefrenceSection.defaultProps = {
   labels: {},
+  isMyPreferences: true,
 };
 
 export default reduxForm({
