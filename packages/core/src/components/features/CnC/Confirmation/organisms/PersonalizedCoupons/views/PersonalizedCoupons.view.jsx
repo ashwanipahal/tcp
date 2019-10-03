@@ -7,6 +7,7 @@ import withStyles from '@tcp/core/src/components/common/hoc/withStyles';
 import CouponDetailModal from '../../../../common/organism/CouponAndPromos/views/CouponDetailModal.view';
 import PersonalizedCoupon from '../../../molecules/PersonalizedCoupon';
 import styles from '../styles/PersonalizedCoupons.style';
+import CONSTANTS from '../container/PersonalizedCoupons.constants';
 
 export const PersonalizedCoupons = ({ className, coupons, couponLabels, labels }) => {
   const [selectedCoupon, selectCoupon] = useState(null);
@@ -38,7 +39,8 @@ export const PersonalizedCoupons = ({ className, coupons, couponLabels, labels }
   let couponsList = coupons;
   if (isCanada()) {
     couponsList =
-      couponsList && couponsList.filter(coupon => coupon.categoryType !== 'Loyalty_Offers');
+      couponsList &&
+      couponsList.filter(coupon => coupon.categoryType !== CONSTANTS.LOYALITY_OFFERS);
   }
 
   return couponsList ? (
