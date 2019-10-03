@@ -8,7 +8,7 @@ import { createAPIConfig, switchAPIConfig, resetApiConfig, isAndroid } from '@tc
 import { getUserInfo } from '@tcp/core/src/components/features/account/User/container/User.actions';
 import env from 'react-native-config';
 // eslint-disable-next-line
-import ReactotronConfig from './Reactotron';
+import './Reactotron';
 
 import ThemeWrapperHOC from '../components/common/hoc/ThemeWrapper.container';
 import AppNavigator from '../navigation/AppNavigator';

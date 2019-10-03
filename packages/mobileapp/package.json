@@ -9,6 +9,8 @@
     "run:android": "react-native run-android"
   },
   "dependencies": {
+    "@adobe/react-native-acpanalytics": "^1.1.0",
+    "@adobe/react-native-acpcore": "^1.1.1",
     "@fabulas/astly": "^0.0.12",
     "@react-native-community/async-storage": "^1.6.1",
     "@react-native-community/netinfo": "^3.2.1",
@@ -74,7 +76,8 @@
     "react-test-renderer": "16.8.3",
     "reactotron-core-client": "^2.8.3",
     "reactotron-react-native": "^3.6.5",
-    "reactotron-redux": "^3.1.1"
+    "reactotron-redux": "^3.1.1",
+    "reactotron-redux-saga": "^4.2.2"
   },
   "jest": {
     "preset": "react-native"
@@ -86,6 +89,8 @@
   },
   "workspaces": {
     "nohoist": [
+      "**/@adobe/react-native-*",
+      "**/@adobe/react-native-*/**",
       "**/redux-beacon",
       "**/redux-beacon/**",
       "**/@fabulas/astly",
