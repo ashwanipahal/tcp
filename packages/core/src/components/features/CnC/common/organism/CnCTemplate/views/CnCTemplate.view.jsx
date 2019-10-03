@@ -7,6 +7,7 @@ import OrderLedgerContainer from '../../OrderLedger';
 import AirmilesBanner from '../../AirmilesBanner';
 import CouponAndPromos from '../../CouponAndPromos';
 import BonusPointsDays from '../../../../../../common/organisms/BonusPointsDays';
+import LoyaltyBanner from '../../../../LoyaltyBanner';
 
 /** The hard coded values are just to show the confirmation template. these will be removed once the components are are in place */
 import styles from '../styles/CnCTemplate.style';
@@ -83,6 +84,7 @@ const CnCTemplate = ({
               <>
                 <OrderLedgerContainer />
                 {getBagActions({ BagActions })}
+                <LoyaltyBanner />
                 {getBonusPointsDaysSection({ isGuest, showAccordian })}
                 <AirmilesBanner />
                 <CouponAndPromos

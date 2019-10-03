@@ -1,0 +1,415 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`LoyaltyBanner View Component OrderLedger should render correctly 1`] = `
+<div
+  className=" elem-mb-MED"
+>
+  <div
+    className="backgroundWhite elem-pt-SM elem-pb-SM elem-pl-MED elem-pr-MED"
+  >
+    <Styled(BodyCopy)
+      className="loyaltyBannerSectionWrapper"
+      color="text.primary"
+      component="div"
+      fontFamily="secondary"
+      fontSize={12}
+      fontWeight="regular"
+      letterSpacing="normal"
+      lineHeight="normal"
+      link={null}
+      textAlign="left"
+    >
+      <Styled(BodyCopy)
+        className="youCanEarnPoints alignCenter elem-pt-MED"
+        color="text.primary"
+        component="div"
+        fontFamily="secondary"
+        fontSize="fs16"
+        fontWeight="extrabold"
+        letterSpacing="normal"
+        lineHeight="normal"
+        link={null}
+        textAlign="left"
+      >
+        <Styled(BodyCopy)
+          className="estimatedRewardsVal colorOrange"
+          color="text.primary"
+          component="span"
+          fontFamily="secondary"
+          fontSize="fs16"
+          fontWeight="extrabold"
+          letterSpacing="normal"
+          lineHeight="normal"
+          link={null}
+          textAlign="left"
+        >
+          20
+        </Styled(BodyCopy)>
+      </Styled(BodyCopy)>
+      <Styled(BodyCopy)
+        className="save30Today alignCenter colorOrange elem-pt-MED"
+        color="text.primary"
+        component="div"
+        fontFamily="primary"
+        fontSize="fs18"
+        fontWeight="extrabold"
+        letterSpacing="normal"
+        lineHeight="normal"
+        link={null}
+        textAlign="left"
+      />
+      <Styled(BodyCopy)
+        className="earnDoublePoints alignCenter elem-pt-MED elem-pb-MED elem-pl-SM elem-pr-SM"
+        color="text.primary"
+        component="div"
+        fontFamily="secondary"
+        fontSize="fs16"
+        fontWeight="extrabold"
+        letterSpacing="normal"
+        lineHeight="normal"
+        link={null}
+        textAlign="left"
+      />
+      <div
+        className="subtotalPointsSection elem-pt-MED elem-pl-SM elem-pr-SM"
+      >
+        <Styled(Row)
+          className="currentSubtotalRow"
+          fullBleed={true}
+        >
+          <Styled(Col)
+            className="currentSubtotalTextCol"
+            colSize={
+              Object {
+                "large": 7,
+                "medium": 5,
+                "small": 4,
+              }
+            }
+          >
+            <Styled(BodyCopy)
+              className="currentSubtotalText"
+              color="text.primary"
+              component="span"
+              fontFamily="secondary"
+              fontSize="fs14"
+              fontWeight="extrabold"
+              letterSpacing="normal"
+              lineHeight="normal"
+              link={null}
+              textAlign="left"
+            />
+          </Styled(Col)>
+          <Styled(Col)
+            className="currentSubtotalValCol"
+            colSize={
+              Object {
+                "large": 5,
+                "medium": 3,
+                "small": 2,
+              }
+            }
+          >
+            <Styled(BodyCopy)
+              className="currentSubtotalVal"
+              color="text.primary"
+              component="span"
+              fontFamily="secondary"
+              fontSize="fs16"
+              fontWeight="semibold"
+              letterSpacing="normal"
+              lineHeight="normal"
+              link={null}
+              textAlign="left"
+            >
+              $
+              21
+            </Styled(BodyCopy)>
+          </Styled(Col)>
+        </Styled(Row)>
+        <Styled(Row)
+          className="estimatedSubtotalRow elem-pt-SM elem-pb-MED"
+          fullBleed={true}
+        >
+          <Styled(Col)
+            className="estimatedSubtotalTextCol"
+            colSize={
+              Object {
+                "large": 7,
+                "medium": 5,
+                "small": 4,
+              }
+            }
+          >
+            <Styled(BodyCopy)
+              className="estimatedSubtotalText"
+              color="text.primary"
+              component="span"
+              fontFamily="secondary"
+              fontSize="fs14"
+              fontWeight="extrabold"
+              letterSpacing="normal"
+              lineHeight="normal"
+              link={null}
+              textAlign="left"
+            />
+          </Styled(Col)>
+          <Styled(Col)
+            className="estimatedSubtotalValCol"
+            colSize={
+              Object {
+                "large": 5,
+                "medium": 3,
+                "small": 2,
+              }
+            }
+          >
+            <Styled(BodyCopy)
+              className="estimatedSubtotalVal"
+              color="text.primary"
+              component="span"
+              fontFamily="secondary"
+              fontSize="fs18"
+              fontWeight="extrabold"
+              letterSpacing="normal"
+              lineHeight="normal"
+              link={null}
+              textAlign="left"
+            >
+              $
+              33
+            </Styled(BodyCopy)>
+          </Styled(Col)>
+        </Styled(Row)>
+      </div>
+      <div
+        className="alignCenter elem-pt-MED elem-pb-MED"
+      >
+        <Styled(Anchor)
+          anchorVariation="primary"
+          className="applyNow"
+          dataLocator="payment-makedefault"
+          fontSizeVariation="medium"
+          to="/#"
+          underline={true}
+        />
+        <Styled(Anchor)
+          anchorVariation="primary"
+          className="learnMore elem-pl-XL"
+          dataLocator="payment-makedefault"
+          fontSizeVariation="medium"
+          to="/#"
+          underline={true}
+        />
+      </div>
+    </Styled(BodyCopy)>
+  </div>
+</div>
+`;
+
+exports[`LoyaltyBanner View Component OrderLedger should render correctly 2`] = `
+<div
+  className=" elem-mb-MED"
+>
+  <div
+    className="backgroundWhite elem-pt-SM elem-pb-SM elem-pl-MED elem-pr-MED"
+  >
+    <Styled(BodyCopy)
+      className="loyaltyBannerSectionWrapper"
+      color="text.primary"
+      component="div"
+      fontFamily="secondary"
+      fontSize={12}
+      fontWeight="regular"
+      letterSpacing="normal"
+      lineHeight="normal"
+      link={null}
+      textAlign="left"
+    >
+      <Styled(BodyCopy)
+        className="youCanEarnPoints alignCenter elem-pt-MED"
+        color="text.primary"
+        component="div"
+        fontFamily="secondary"
+        fontSize="fs16"
+        fontWeight="extrabold"
+        letterSpacing="normal"
+        lineHeight="normal"
+        link={null}
+        textAlign="left"
+      >
+        <Styled(BodyCopy)
+          className="estimatedRewardsVal colorOrange"
+          color="text.primary"
+          component="span"
+          fontFamily="secondary"
+          fontSize="fs16"
+          fontWeight="extrabold"
+          letterSpacing="normal"
+          lineHeight="normal"
+          link={null}
+          textAlign="left"
+        >
+          200
+        </Styled(BodyCopy)>
+      </Styled(BodyCopy)>
+      <Styled(BodyCopy)
+        className="save30Today alignCenter colorOrange elem-pt-MED"
+        color="text.primary"
+        component="div"
+        fontFamily="primary"
+        fontSize="fs18"
+        fontWeight="extrabold"
+        letterSpacing="normal"
+        lineHeight="normal"
+        link={null}
+        textAlign="left"
+      />
+      <Styled(BodyCopy)
+        className="earnDoublePoints alignCenter elem-pt-MED elem-pb-MED elem-pl-SM elem-pr-SM"
+        color="text.primary"
+        component="div"
+        fontFamily="secondary"
+        fontSize="fs16"
+        fontWeight="extrabold"
+        letterSpacing="normal"
+        lineHeight="normal"
+        link={null}
+        textAlign="left"
+      />
+      <div
+        className="subtotalPointsSection elem-pt-MED elem-pl-SM elem-pr-SM"
+      >
+        <Styled(Row)
+          className="currentSubtotalRow"
+          fullBleed={true}
+        >
+          <Styled(Col)
+            className="currentSubtotalTextCol"
+            colSize={
+              Object {
+                "large": 7,
+                "medium": 5,
+                "small": 4,
+              }
+            }
+          >
+            <Styled(BodyCopy)
+              className="currentSubtotalText"
+              color="text.primary"
+              component="span"
+              fontFamily="secondary"
+              fontSize="fs14"
+              fontWeight="extrabold"
+              letterSpacing="normal"
+              lineHeight="normal"
+              link={null}
+              textAlign="left"
+            />
+          </Styled(Col)>
+          <Styled(Col)
+            className="currentSubtotalValCol"
+            colSize={
+              Object {
+                "large": 5,
+                "medium": 3,
+                "small": 2,
+              }
+            }
+          >
+            <Styled(BodyCopy)
+              className="currentSubtotalVal"
+              color="text.primary"
+              component="span"
+              fontFamily="secondary"
+              fontSize="fs16"
+              fontWeight="semibold"
+              letterSpacing="normal"
+              lineHeight="normal"
+              link={null}
+              textAlign="left"
+            >
+              $
+              21
+            </Styled(BodyCopy)>
+          </Styled(Col)>
+        </Styled(Row)>
+        <Styled(Row)
+          className="estimatedSubtotalRow elem-pt-SM elem-pb-MED"
+          fullBleed={true}
+        >
+          <Styled(Col)
+            className="estimatedSubtotalTextCol"
+            colSize={
+              Object {
+                "large": 7,
+                "medium": 5,
+                "small": 4,
+              }
+            }
+          >
+            <Styled(BodyCopy)
+              className="estimatedSubtotalText"
+              color="text.primary"
+              component="span"
+              fontFamily="secondary"
+              fontSize="fs14"
+              fontWeight="extrabold"
+              letterSpacing="normal"
+              lineHeight="normal"
+              link={null}
+              textAlign="left"
+            />
+          </Styled(Col)>
+          <Styled(Col)
+            className="estimatedSubtotalValCol"
+            colSize={
+              Object {
+                "large": 5,
+                "medium": 3,
+                "small": 2,
+              }
+            }
+          >
+            <Styled(BodyCopy)
+              className="estimatedSubtotalVal"
+              color="text.primary"
+              component="span"
+              fontFamily="secondary"
+              fontSize="fs18"
+              fontWeight="extrabold"
+              letterSpacing="normal"
+              lineHeight="normal"
+              link={null}
+              textAlign="left"
+            >
+              $
+              33
+            </Styled(BodyCopy)>
+          </Styled(Col)>
+        </Styled(Row)>
+      </div>
+      <div
+        className="alignCenter elem-pt-MED elem-pb-MED"
+      >
+        <Styled(Anchor)
+          anchorVariation="primary"
+          className="applyNow"
+          dataLocator="payment-makedefault"
+          fontSizeVariation="medium"
+          to="/#"
+          underline={true}
+        />
+        <Styled(Anchor)
+          anchorVariation="primary"
+          className="learnMore elem-pl-XL"
+          dataLocator="payment-makedefault"
+          fontSizeVariation="medium"
+          to="/#"
+          underline={true}
+        />
+      </div>
+    </Styled(BodyCopy)>
+  </div>
+</div>
+`;

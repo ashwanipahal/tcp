@@ -1,0 +1,26 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`LoyaltyBanner View Component OrderLedger should render correctly 1`] = `
+<Styled(LoyaltyBanner)
+  isGuest={false}
+  labels={
+    Object {
+      "applyNow": "Apply Now",
+      "becomeMember": "Become a member to get a ",
+      "currentSubtotal": "Current Subtotal: ",
+      "earnDoublePoints": "+ EARN DOUBLE POINTS* when you open & use a MY PLACE REWARDS CREDIT CARD",
+      "estimatedSubtotal": "Estimated Subtotal with a My Place Rewards Credit Card: ",
+      "learnMore": "Learn More",
+      "pointsOnPurchase": " points on this purchase!",
+      "reward": " Reward ",
+      "rewardOnPurchase": " on this purchase!",
+      "save30Today": "SAVE 30% TODAY! ",
+      "withThisPurchase": " with this purchase!",
+      "youCanEarn": "You can earn ",
+      "youllEarn": "You’ll earn ",
+      "youllGetA": "You’ll get a ",
+    }
+  }
+  thresholdValue={16.66}
+/>
+`;
