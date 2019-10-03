@@ -7,18 +7,6 @@ import BodyCopy from '../../../../common/atoms/BodyCopy';
 import Modal from '../../../../common/molecules/Modal';
 import Notification from '../../../../common/molecules/Notification';
 
-// @flow
-
-type Props = {
-  data: Object,
-  className: string,
-  onDeleteAddress: Function,
-  setDeleteModalMountState: Function,
-  openState: boolean,
-  showUpdatedNotificationOnModal: boolean,
-  labels: Object,
-};
-
 /**
  * @function DeleteAddressModal The DeleteAddressModal component shows the address to delete.
  * This component includes the adress view, and confirm and cancel buttons

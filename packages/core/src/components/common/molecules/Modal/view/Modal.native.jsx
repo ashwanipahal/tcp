@@ -57,10 +57,10 @@ const getCloseIcon = ({ onRequestClose, headerStyle, iconType, isOverlay }: Clos
   );
 };
 
-const geLine = (horizontalBar, borderColor, transparentModal) => {
+const geLine = (horizontalBar, borderColor) => {
   return (
     <>
-      {horizontalBar && transparentModal !== 'transparent-captcha' ? (
+      {horizontalBar ? (
         <LineWrapper>
           <LineComp marginTop={5} borderWidth={2} borderColor={borderColor} />
         </LineWrapper>
@@ -106,7 +106,7 @@ const ModalNative = ({ isOpen, children, isOverlay, ...otherProps }: Props) => {
             <ToastContainer />
             <StatusBar hidden />
             <RowWrapper isOverlay={isOverlay}>
-              {heading && transparentModal !== 'transparent-captcha' && (
+              {heading && (
                 <ModalHeading fullWidth={fullWidth}>
                   <BodyCopy
                     mobileFontFamily={headingFontFamily || 'primary'}
@@ -124,7 +124,7 @@ const ModalNative = ({ isOpen, children, isOverlay, ...otherProps }: Props) => {
                 isOverlay,
               })}
             </RowWrapper>
-            {geLine(horizontalBar, borderColor, transparentModal)}
+            {geLine(horizontalBar, borderColor)}
             <KeyboardAvoidingView
               behavior={behavior}
               keyboardVerticalOffset={keyboardVerticalOffset}

@@ -93,7 +93,8 @@ const RecaptchaContainer = styled.View`
   width: 100%;
   background-color: transparent;
   height: 700px;
-  margin-left: ${props => props.theme.spacing.ELEM_SPACING.XXXL};
+  margin-left: 90px;
+  margin-top: 20px;
 `;
 
 export {

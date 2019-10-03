@@ -1,6 +1,6 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import { Field, reduxForm } from 'redux-form';
+import { reduxForm } from 'redux-form';
 import { get } from 'lodash';
 import { View, Text } from 'react-native';
 import RecaptchaModal from '@tcp/core/src/components/common/molecules/recaptcha/recaptchaModal.native';
@@ -24,7 +24,6 @@ import {
 import { getIconCard } from '../../../../../../../utils/index.native';
 import BodyCopy from '../../../../../../common/atoms/BodyCopy';
 import CustomButton from '../../../../../../common/atoms/Button';
-import TextBox from '../../../../../../common/atoms/TextBox';
 import createValidateMethod from '../../../../../../../utils/formValidation/createValidateMethod';
 import getStandardConfig from '../../../../../../../utils/formValidation/validatorStandardConfig';
 
@@ -34,7 +33,6 @@ class CardTile extends React.Component {
     labels: PropTypes.shape({}),
     setDefaultPaymentMethod: PropTypes.func,
     onGetBalanceCard: PropTypes.func,
-    change: PropTypes.func,
     handleSubmit: PropTypes.func,
     toggleModal: PropTypes.func,
     openUpdateModal: PropTypes.func,
@@ -47,7 +45,6 @@ class CardTile extends React.Component {
     labels: {},
     setDefaultPaymentMethod: () => {},
     onGetBalanceCard: () => {},
-    change: () => {},
     handleSubmit: () => {},
     toggleModal: () => {},
     openUpdateModal: () => {},
@@ -144,9 +141,7 @@ class CardTile extends React.Component {
         to="/#"
         anchorVariation="primary"
         dataLocator="payment-makedefault"
-        onPress={e =>
-          this.handleDefaultLinkClick(e, card, setDefaultPaymentMethod)
-        }
+        onPress={e => this.handleDefaultLinkClick(e, card, setDefaultPaymentMethod)}
         text={labels.common.lbl_common_makeDefault}
       />
     );
@@ -156,23 +151,17 @@ class CardTile extends React.Component {
     return (
       card.properties && (
         <VenmoCardTileHeading dataLocator="payment-venmoid">
-          <BodyCopy
-            fontSize="fs14"
-            fontWeight="extrabold"
-            text={card.properties.venmoUserId}
-          />
+          <BodyCopy fontSize="fs14" fontWeight="extrabold" text={card.properties.venmoUserId} />
         </VenmoCardTileHeading>
       )
     );
   };
 
   getCardDetails = ({ dataLocatorPrefix, card, labels }) => {
-    const cardNum = `${
-      labels.paymentGC.lbl_payment_cardNum
-    }${card.accountNo.slice(-4)}`;
-    const expDate = `${
-      labels.paymentGC.lbl_payment_expDate
-    }${card.expMonth.trim()}/${card.expYear}`;
+    const cardNum = `${labels.paymentGC.lbl_payment_cardNum}${card.accountNo.slice(-4)}`;
+    const expDate = `${labels.paymentGC.lbl_payment_expDate}${card.expMonth.trim()}/${
+      card.expYear
+    }`;
     return (
       <View>
         <BodyCopy
@@ -200,16 +189,15 @@ class CardTile extends React.Component {
     return (
       addressDetails && (
         <CardAddress>
-          <Text>{`${addressDetails.firstName} ${
-            addressDetails.lastName
-          }`}</Text>
+          <Text>{`${addressDetails.firstName} ${addressDetails.lastName}`}</Text>
           <Text>{addressDetails.addressLine1}</Text>
-          {addressDetails.addressLine2 ? (
-            <Text>{addressDetails.addressLine2}</Text>
-          ) : null}
-          <Text>{`${addressDetails.city}, ${addressDetails.state} ${
-            addressDetails.zipCode
-          }`}</Text>
+          {addressDetails.addressLine2 ? <Text>{addressDetails.addressLine2}</Text> : null}
+          <Text>
+            {`
+            ${addressDetails.city}, 
+            ${addressDetails.state} 
+            ${addressDetails.zipCode}`}
+          </Text>
         </CardAddress>
       )
     );
@@ -238,10 +226,7 @@ class CardTile extends React.Component {
     isVenmo,
     balance,
     labels,
-    dataLocatorPrefix,
-    card,
-    onGetBalanceCard,
-    handleSubmit
+    dataLocatorPrefix
     // eslint-disable-next-line max-params
   ) => {
     return (
@@ -313,28 +298,17 @@ class CardTile extends React.Component {
       setDefaultPaymentMethod,
       checkbalanceValueInfo,
       onGetBalanceCard,
-      change,
       handleSubmit,
     } = this.props;
     const { setRecaptchaModalMountedState } = this.state;
-  
+
     const isCreditCard = card.ccType !== 'GiftCard' && card.ccType !== 'VENMO';
     const isVenmo = card.ccType === 'VENMO';
     const isGiftCard = card.ccType === 'GiftCard';
-    const balance = this.getGiftCardBalance(
-      card.accountNo,
-      checkbalanceValueInfo
-    );
+    const balance = this.getGiftCardBalance(card.accountNo, checkbalanceValueInfo);
     const cardName = this.getCardName({ card, labels });
     const cardIcon = getIconCard(this.cardIconMapping[card.ccBrand]);
     const dataLocatorPrefix = this.getDataLocatorPrefix({ card });
-    // const onMessage = event => {
-    //   if (event && event.nativeEvent.data) {
-    //     const value = get(event, 'nativeEvent.data', '');
-    //     change('recaptchaToken', value);
-    //   }
-    // };
-
     const onMessage = event => {
       if (event && event.nativeEvent.data) {
         const value = get(event, 'nativeEvent.data', '');
@@ -393,11 +367,11 @@ class CardTile extends React.Component {
         )}
         {isGiftCard && (balance === undefined || balance === null) && (
           <View>
-          {this.recaptchaRender({
-            labels,
-            onMessage,
-            setRecaptchaModalMountedState,
-          })}
+            {this.recaptchaRender({
+              labels,
+              onMessage,
+              setRecaptchaModalMountedState,
+            })}
             {/* <Field
               label=""
               component={TextBox}
@@ -425,9 +399,7 @@ class CardTile extends React.Component {
   }
 }
 
-const validateMethod = createValidateMethod(
-  getStandardConfig(['recaptchaToken'])
-);
+const validateMethod = createValidateMethod(getStandardConfig(['recaptchaToken']));
 
 export default reduxForm({
   form: 'CardTileForm', // a unique identifier for this form
