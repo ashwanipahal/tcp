@@ -145,9 +145,10 @@ const getInitialCreateAccountValues = createSelector(
 //   return earnedPlaceCashValue > 0;
 // })
 
-// const getPersonalizedCoupons = (state) => {
-//   return state.Confirmation && state.Confirmation.aquiredCouponCode;
-// }
+const getPersonalizedCoupons = state => {
+  return state.Confirmation && state.Confirmation.get('aquiredCouponCode');
+};
+
 /* istanbul ignore next */
 const getEncryptedEmailAddress = createSelector(
   getOrderConfirmation,
@@ -367,7 +368,7 @@ export default {
   // getIsOrderHasShipping,
   // getEarnedPlaceCashValue,
   // getPlaceCashSpotEnabled,
-  // getPersonalizedCoupons,
+  getPersonalizedCoupons,
   getEncryptedEmailAddress,
   // getPeronsalizedCoupons,
   // isVenmoPaymentConfirmationDisplayed,
