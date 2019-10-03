@@ -16,7 +16,7 @@ const styles = css`
     }
   }
   .footer-buttons {
-    flex-direction: column-reverse;
+    flex-direction: column;
     display: flex;
     justify-content: space-between;
     box-sizing: border-box;
@@ -52,19 +52,29 @@ const styles = css`
     .footer-button {
       background-color: ${props => props.theme.colors.PRIMARY.BLUE};
       color: ${props => props.theme.colors.WHITE};
-      height: 42px;
       font-size: ${props => props.theme.typography.fontSizes.fs14};
       font-weight: ${props => props.theme.typography.fontWeights.fontWeights};
       &:hover {
         background: ${props => props.theme.colors.PRIMARY.BLUE};
+        display: inline-block;
       }
-      width: 100%;
+    }
+    .footer-button-web {
+      display: none;
       @media ${props => props.theme.mediaQuery.medium} {
+        display: block;
         width: 192px;
         height: 51px;
       }
       @media ${props => props.theme.mediaQuery.large} {
         width: 210px;
+      }
+    }
+    .footer-button-mob {
+      height: 42px;
+      width: 100%;
+      @media ${props => props.theme.mediaQuery.medium} {
+        display: none;
       }
     }
     .footer-venmo-button {

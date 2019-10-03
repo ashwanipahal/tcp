@@ -64,14 +64,15 @@ class Drawer extends React.Component {
     document.body.removeEventListener('click', this.closeNavOnOverlayClick);
   }
 
+  /* Set drawer ref */
+  setDrawerRef = node => {
+    this.drawerRef = node;
+  };
+
   /* Method to close nav bar on click of dark overlay */
   closeNavOnOverlayClick = e => {
     const { close } = this.props;
-    if (
-      e.target.classList &&
-      e.target.classList.contains('dark-overlay') &&
-      typeof close === 'function'
-    ) {
+    if (this.drawerRef && !this.drawerRef.contains(e.target) && typeof close === 'function') {
       close();
     }
   };
@@ -143,7 +144,7 @@ class Drawer extends React.Component {
     const classToShowOnViewports = showOnViewport({ small, medium, large });
 
     return (
-      <div className={className}>
+      <div className={className} ref={this.setDrawerRef}>
         {// If Drawer is not required on all viewports then duplicate the DOM for the children without Drawer
         // User will have to handle display of this element with CSS
         isDrawerNotRequiredOnAllViewports(small, medium, large) && (

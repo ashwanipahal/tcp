@@ -482,7 +482,17 @@ export const getSetIntlUrl = internationalUrl => {
     type: 'CHECKOUT_ORDER_OPTIONS_SET_INTL_URL',
   };
 };
-
+/**
+ * @function updateCardData
+ *  @param { object } payload
+ * action creator for type: UPDATE_CARD_DATA
+ */
+export const updateCardData = payload => {
+  return {
+    payload,
+    type: constants.UPDATE_CARD_DATA,
+  };
+};
 /**
  * @function resetCheckoutReducer
  * action creator for type: RESET_CHECKOUT_REDUCER
