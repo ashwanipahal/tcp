@@ -1,5 +1,5 @@
 import React, { PureComponent, Fragment } from 'react';
-import { toTimeString } from '@tcp/core/src/utils';
+import { toTimeString, getLabelValue } from '@tcp/core/src/utils';
 import { parseDate } from '@tcp/core/src/utils/parseDate';
 import Anchor from '@tcp/core/src/components/common/atoms/Anchor';
 import Button from '@tcp/core/src/components/common/atoms/Button';
@@ -67,14 +67,16 @@ class StoreAddressTile extends PureComponent {
         </ListingTileWrapper>
         <ListingTileWrapper>
           <ListingTitleText>
-            {`(${labels.lbl_storelanding_openInterval} ${this.getStoreHours()})`}
+            {`(${getLabelValue(labels, 'lbl_storelanding_openInterval')} ${this.getStoreHours()})`}
           </ListingTitleText>
-          <ListingTitleText>{`${distance} ${labels.lbl_storelanding_milesAway}`}</ListingTitleText>
+          <ListingTitleText>
+            {`${distance} ${getLabelValue(labels, 'lbl_storelanding_milesAway')}`}
+          </ListingTitleText>
           <ListingTitleLink
             onPress={openStoreDirections}
             accessibilityRole="link"
-            accessibilityLabel={labels.lbl_storelanding_getdirections_link}
-            text={labels.lbl_storelanding_getdirections_link}
+            accessibilityLabel={getLabelValue(labels, 'lbl_storelanding_getdirections_link')}
+            text={getLabelValue(labels, 'lbl_storelanding_getdirections_link')}
           />
         </ListingTileWrapper>
       </Fragment>
@@ -100,7 +102,10 @@ class StoreAddressTile extends PureComponent {
             color="white"
             onPress={() => (isFavorite ? changeFavoriteStore() : setFavoriteStore(store))}
             buttonVariation="variable-width"
-            text={labels[`lbl_storedetails_${isFavorite ? 'changestore' : 'setfav'}_btn`]}
+            text={getLabelValue(
+              labels,
+              `lbl_storedetails_${isFavorite ? 'changestore' : 'setfav'}_btn`
+            )}
           />
         </FooterBtnWrapper>
         <FooterBtnWrapper>
@@ -109,7 +114,7 @@ class StoreAddressTile extends PureComponent {
               type="button"
               onPress={openStoreDirections}
               buttonVariation="variable-width"
-              text={labels.lbl_storedetails_getdirections_btn}
+              text={getLabelValue(labels, 'lbl_storedetails_getdirections_btn')}
             />
           </FooterBtnLeft>
           <FooterBtnRight>
@@ -117,7 +122,7 @@ class StoreAddressTile extends PureComponent {
               type="button"
               onPress={openCallStore}
               buttonVariation="variable-width"
-              text={labels.lbl_storedetails_callstore_btn}
+              text={getLabelValue(labels, 'lbl_storedetails_callstore_btn')}
             />
           </FooterBtnRight>
         </FooterBtnWrapper>
@@ -133,8 +138,8 @@ class StoreAddressTile extends PureComponent {
         <ListingTitleLink
           onPress={() => openStoreDetails(store)}
           accessibilityRole="link"
-          accessibilityLabel={labels.lbl_storelanding_storedetails_link}
-          text={labels.lbl_storelanding_storedetails_link}
+          accessibilityLabel={getLabelValue(labels, 'lbl_storelanding_storedetails_link')}
+          text={getLabelValue(labels, 'lbl_storelanding_storedetails_link')}
         />
 
         {isFavorite && variation === listingType && this.getIsFavStoreIcon()}
@@ -143,7 +148,7 @@ class StoreAddressTile extends PureComponent {
             type="button"
             onPress={() => setFavoriteStore(store)}
             buttonVariation="fixed-width"
-            text={labels.lbl_storelanding_setfavStore}
+            text={getLabelValue(labels, 'lbl_storelanding_setfavStore')}
           />
         )}
         {variation === listingHeader && <ButtonPlaceHolder />}
@@ -204,7 +209,7 @@ class StoreAddressTile extends PureComponent {
     return isGym ? (
       <StoryType>
         <BrandImage source={gymboreeLogo} accessibilityLabel="Gymboree" accessibilityRole="image" />
-        <ListingTitleText>{labels.lbl_storelanding_atThisPlace}</ListingTitleText>
+        <ListingTitleText>{getLabelValue(labels, 'lbl_storelanding_atThisPlace')}</ListingTitleText>
       </StoryType>
     ) : (
       <StoryType />
@@ -221,7 +226,9 @@ class StoreAddressTile extends PureComponent {
       storeType && (
         <StoryType>
           <MarkerImage source={marker} accessibilityLabel="Icon Marker" accessibilityRole="image" />
-          <ListingTitleText>{labels.lbl_storelanding_atThisPlace}</ListingTitleText>
+          <ListingTitleText>
+            {getLabelValue(labels, 'lbl_storelanding_atThisPlace')}
+          </ListingTitleText>
         </StoryType>
       )
     );
@@ -233,10 +240,10 @@ class StoreAddressTile extends PureComponent {
       <FavStore>
         <FavStoreIcon
           source={starIcon}
-          accessibilityLabel={labels.lbl_storelanding_favStore}
+          accessibilityLabel={getLabelValue(labels, 'lbl_storelanding_favStore')}
           accessibilityRole="image"
         />
-        <FavStoreText>{labels.lbl_storelanding_favStore}</FavStoreText>
+        <FavStoreText>{getLabelValue(labels, 'lbl_storelanding_favStore')}</FavStoreText>
       </FavStore>
     );
   }

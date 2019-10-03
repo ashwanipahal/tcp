@@ -1,6 +1,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import withStyles from '@tcp/core/src/components/common/hoc/withStyles';
+import { getLabelValue } from '@tcp/core/src/utils';
 import style, { StoreName, StoreLocation, ShopInShop } from '../styles/StoreAddressIntl.style';
 
 const StoreAddressIntl = ({
@@ -13,7 +14,7 @@ const StoreAddressIntl = ({
 }) => (
   <div className={className}>
     <StoreName>{storeName}</StoreName>
-    {isShopInShop && <ShopInShop>{labels.lbl_storelist_shop_in_shop}</ShopInShop>}
+    {isShopInShop && <ShopInShop>{getLabelValue(labels, 'lbl_storelist_shop_in_shop')}</ShopInShop>}
     <StoreLocation>{storeLocation}</StoreLocation>
     {children}
   </div>
