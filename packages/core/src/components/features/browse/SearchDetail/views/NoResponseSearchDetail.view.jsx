@@ -8,7 +8,6 @@ import withStyles from '../../../../common/hoc/withStyles';
 import SearchListingStyle from '../SearchDetail.style';
 import { Anchor, Row, Col, BodyCopy } from '../../../../common/atoms';
 import { getSearchResult } from '../container/SearchDetail.actions';
-import searchData from '../../../../../../../web/src/components/features/content/Header/molecules/SearchBar/SearchBar.mock';
 import { routerPush } from '../../../../../utils/index';
 
 class NoResponseSearchDetailView extends React.PureComponent {
@@ -46,7 +45,14 @@ class NoResponseSearchDetailView extends React.PureComponent {
   };
 
   render() {
-    const { className, slpLabels, searchedText, searchResultSuggestions, labels } = this.props;
+    const {
+      className,
+      slpLabels,
+      searchedText,
+      searchResultSuggestions,
+      labels,
+      searchResults,
+    } = this.props;
 
     const { showProduct } = this.state;
 
@@ -138,31 +144,42 @@ class NoResponseSearchDetailView extends React.PureComponent {
                   {slpLabels.lbl_noresults_found}
                 </BodyCopy>
               ) : (
-                <div className="matchBox suggestionHide">
+                <div className="matchBox">
                   <div className="matchLinkBox">
-                    <BodyCopy
-                      fontFamily="secondary"
-                      className="boxHead matchLinkBoxHead suggestionHide"
-                    >
-                      {getLabelValue(labels, 'lbl_search_looking_for')}
-                    </BodyCopy>
-                    <BodyCopy component="div" className="matchLinkBoxBody" lineHeight="39">
-                      <ul>
-                        {searchData.looking.map(item => {
-                          return (
-                            <BodyCopy
-                              component="li"
-                              fontFamily="secondary"
-                              fontSize="fs14"
-                              key={item.id}
-                              className="linkName"
-                            >
-                              {item.text}
+                    (
+                    {searchResults &&
+                      searchResults.autosuggestList &&
+                      searchResults.autosuggestList.map(item => {
+                        return (
+                          <div>
+                            {item && item.suggestions.length > 0 && (
+                              <BodyCopy fontFamily="secondary" className="boxHead matchLinkBoxHead">
+                                {item.heading}
+                              </BodyCopy>
+                            )}
+
+                            <BodyCopy component="div" className="matchLinkBoxBody" lineHeight="39">
+                              <ul>
+                                {item &&
+                                  item.suggestions &&
+                                  item.suggestions.map(itemData => {
+                                    return (
+                                      <BodyCopy
+                                        component="li"
+                                        fontFamily="secondary"
+                                        fontSize="fs14"
+                                        className="linkName"
+                                      >
+                                        {itemData.text}
+                                      </BodyCopy>
+                                    );
+                                  })}
+                              </ul>
                             </BodyCopy>
-                          );
-                        })}
-                      </ul>
-                    </BodyCopy>
+                          </div>
+                        );
+                      })}
+                    )
                   </div>
                   <div className="matchProductBox">
                     <BodyCopy fontFamily="secondary" className="boxHead matchProductHead">
@@ -170,9 +187,21 @@ class NoResponseSearchDetailView extends React.PureComponent {
                     </BodyCopy>
                     <BodyCopy className="matchProductBody" lineHeight="39" component="div">
                       <ul>
-                        {searchData.products.map(item => {
-                          return <BodyCopy component="li" key={item.id} className="productBox" />;
-                        })}
+                        {searchResults &&
+                          searchResults.autosuggestProducts &&
+                          searchResults.autosuggestProducts.map(item => {
+                            return (
+                              <BodyCopy
+                                component="li"
+                                fontFamily="secondary"
+                                fontSize="fs14"
+                                key={item.uniqueId}
+                                className="productBox"
+                              >
+                                {item.name}
+                              </BodyCopy>
+                            );
+                          })}
                       </ul>
                     </BodyCopy>
                   </div>
