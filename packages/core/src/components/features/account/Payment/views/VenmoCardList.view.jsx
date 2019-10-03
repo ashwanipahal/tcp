@@ -1,4 +1,5 @@
 import React from 'react';
+import { getLabelValue } from '@tcp/core/src/utils/utils';
 import Heading from '../../../../common/atoms/Heading';
 import styles from '../styles/CardList.style';
 import withStyles from '../../../../common/hoc/withStyles';
@@ -37,7 +38,7 @@ const VenmoCardList = ({
   return (
     <div className={className}>
       <Heading variant="h6" className="cardList__heading" dataLocator="payment-venmocardtile">
-        {labels.paymentGC.lbl_payment_venmoHeading}
+        {getLabelValue(labels, 'lbl_payment_venmoHeading', 'paymentGC')}
       </Heading>
       {venmoCardList.size !== 0 && (
         <CardView

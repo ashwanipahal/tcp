@@ -5,7 +5,9 @@ exports[`MyWalletTile component should render correctly when coupons are not pre
   className=""
   ctaLink="/account?id=wallet"
   ctaPath="/account/wallet"
+  ctaTitle="lbl_overview_viewMyWalletCTA"
   dataLocatorPrefix="mywallettile"
+  title="lbl_overview_myWalletHeading"
 >
   <section
     className="elem-pb-MED"
@@ -22,7 +24,9 @@ exports[`MyWalletTile component should render correctly when coupons are not pre
       lineHeight="normal"
       link={null}
       textAlign="left"
-    />
+    >
+      lbl_overview_myWalletNoOfferAvailable
+    </Styled(BodyCopy)>
     <Styled(BodyCopy)
       className="elem-mb-LRG"
       color="text.primary"
@@ -35,7 +39,9 @@ exports[`MyWalletTile component should render correctly when coupons are not pre
       lineHeight="normal"
       link={null}
       textAlign="left"
-    />
+    >
+      lbl_overview_myWalletStartShop
+    </Styled(BodyCopy)>
     <div>
       <Styled(Anchor)
         anchorVariation="button"
@@ -46,7 +52,9 @@ exports[`MyWalletTile component should render correctly when coupons are not pre
         fill="WHITE"
         fullWidth={true}
         to="/home"
-      />
+      >
+        lbl_overview_myWalletShopCTA
+      </Styled(Anchor)>
     </div>
     <CouponList
       coupons={Immutable.List []}
@@ -62,7 +70,9 @@ exports[`MyWalletTile component should render correctly when coupons are present
   className=""
   ctaLink="/account?id=wallet"
   ctaPath="/account/wallet"
+  ctaTitle="lbl_overview_walletViewAllCTA"
   dataLocatorPrefix="mywallettile"
+  title="lbl_overview_myWalletHeading"
 >
   <section
     className="elem-pb-MED"

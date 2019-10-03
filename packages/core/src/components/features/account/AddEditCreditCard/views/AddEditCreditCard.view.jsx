@@ -1,6 +1,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import BodyCopy from '@tcp/core/src/components/common/atoms/BodyCopy';
+import { getLabelValue } from '@tcp/core/src/utils/utils';
 import Anchor from '../../../../common/atoms/Anchor';
 import FormPageHeading from '../../common/molecule/FormPageHeading';
 import CreditCardForm from '../organism/CreditCardForm';
@@ -33,8 +34,8 @@ export const AddEditCreditCard = ({
   const backLinkPath = pageBackPath || internalEndpoints.paymentPage.path;
   const pageHeading = heading => {
     let headingStr = isEdit
-      ? labels.paymentGC.lbl_payment_editCCHeading
-      : labels.paymentGC.lbl_payment_addCCHeading;
+      ? getLabelValue(labels, 'lbl_payment_editCCHeading', 'paymentGC')
+      : getLabelValue(labels, 'lbl_payment_addCCHeading', 'paymentGC');
     if (heading) {
       headingStr = heading;
     }
@@ -51,7 +52,7 @@ export const AddEditCreditCard = ({
           asPath={backLinkPath}
         >
           <span className="left-arrow"> </span>
-          {labels.common.lbl_common_backLink}
+          {getLabelValue(labels, 'lbl_common_backLink', 'common')}
         </Anchor>
       </BodyCopy>
       <FormPageHeading
@@ -71,8 +72,8 @@ export const AddEditCreditCard = ({
             onSuccess={submitAddressFormAction}
             heading={
               isEdit
-                ? labels.addressBook.ACC_LBL_EDIT_ADDRESS
-                : labels.addressBook.ACC_LBL_VERIFY_YOUR_ADDRESS_HEADING_ADD
+                ? getLabelValue(labels, 'ACC_LBL_EDIT_ADDRESS', 'addressBook')
+                : getLabelValue(labels, 'ACC_LBL_VERIFY_YOUR_ADDRESS_HEADING_ADD', 'addressBook')
             }
             labels={labels}
             onError={submitAddressFormAction}

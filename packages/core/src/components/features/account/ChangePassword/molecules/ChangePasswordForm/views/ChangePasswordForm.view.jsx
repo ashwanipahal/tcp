@@ -2,6 +2,7 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import { reduxForm, Field } from 'redux-form';
 import Notification from '@tcp/core/src/components/common/molecules/Notification';
+import { getLabelValue } from '@tcp/core/src/utils/utils';
 import BodyCopy from '../../../../../../common/atoms/BodyCopy';
 import Row from '../../../../../../common/atoms/Row';
 import Col from '../../../../../../common/atoms/Col';
@@ -43,7 +44,7 @@ export const ChangePasswordForm = ({
           >
             <Field
               id="currentPassword"
-              placeholder={labels.lbl_changePassword_current_password}
+              placeholder={getLabelValue(labels, 'lbl_changePassword_current_password')}
               name="currentPassword"
               component={PasswordField}
               dataLocator="currentPasswordtxtfield"
@@ -53,7 +54,7 @@ export const ChangePasswordForm = ({
             />
             <Field
               id="password"
-              placeholder={labels.lbl_changePassword_new_password}
+              placeholder={getLabelValue(labels, 'lbl_changePassword_new_password')}
               name="password"
               component={PasswordField}
               dataLocator="newPasswordtxtfield"
@@ -64,7 +65,7 @@ export const ChangePasswordForm = ({
             />
             <Field
               id="confirmPassword"
-              placeholder={labels.lbl_changePassword_confirm_password}
+              placeholder={getLabelValue(labels, 'lbl_changePassword_confirm_password')}
               name="confirmPassword"
               component={PasswordField}
               dataLocator="confirmPasswordtxtfield"
@@ -97,7 +98,7 @@ export const ChangePasswordForm = ({
                 fullWidth
                 className="elem-mb-XS"
               >
-                {labels.lbl_changePassword_cancelCta}
+                {getLabelValue(labels, 'lbl_changePassword_cancelCta')}
               </Button>
             </Anchor>
           </Col>
@@ -118,7 +119,7 @@ export const ChangePasswordForm = ({
               className="elem-mb-XS"
               disabled={pristine}
             >
-              {labels.lbl_changePassword_saveCta}
+              {getLabelValue(labels, 'lbl_changePassword_saveCta')}
             </Button>
           </Col>
         </Row>

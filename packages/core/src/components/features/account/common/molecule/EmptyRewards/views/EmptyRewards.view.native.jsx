@@ -3,6 +3,7 @@ import PropTypes from 'prop-types';
 import { View } from 'react-native';
 import { ViewWithSpacing } from '@tcp/core/src/components/common/atoms/styledWrapper';
 import { navigateToNestedRoute } from '@tcp/core/src/utils/utils.app';
+import { getLabelValue } from '@tcp/core/src/utils/utils';
 import BodyCopy from '../../../../../../common/atoms/BodyCopy';
 import { StyledBodyCopy } from '../styles/EmptyRewards.style.native';
 import Button from '../../../../../../common/atoms/Button';
@@ -16,14 +17,14 @@ const EmptyRewards = ({ labels, navigation }) => {
           fontSize="fs14"
           fontWeight="regular"
           data-locator="no_rewards_msg"
-          text={labels.placeRewards.lbl_my_rewards_no_available_rewards}
+          text={getLabelValue(labels, 'lbl_my_rewards_no_available_rewards', 'placeRewards')}
         />
         <BodyCopy
           mobileFontFamily="secondary"
           fontSize="fs14"
           fontWeight="regular"
           data-locator="no_rewards_msg"
-          text={labels.placeRewards.lbl_my_rewards_start_shopping}
+          text={getLabelValue(labels, 'lbl_my_rewards_start_shopping', 'placeRewards')}
         />
       </StyledBodyCopy>
       <ViewWithSpacing spacingStyles="margin-bottom-LRG">
@@ -33,7 +34,7 @@ const EmptyRewards = ({ labels, navigation }) => {
           color="white"
           onPress={() => navigateToNestedRoute(navigation, 'HomeStack', 'home')}
           data-locator="my-rewards-shop-now-btn"
-          text={labels.placeRewards.lbl_my_rewards_shop_now}
+          text={getLabelValue(labels, 'lbl_my_rewards_shop_now', 'placeRewards')}
         />
       </ViewWithSpacing>
     </View>

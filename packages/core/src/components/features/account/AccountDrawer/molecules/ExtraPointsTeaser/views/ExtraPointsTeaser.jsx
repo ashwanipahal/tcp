@@ -1,5 +1,6 @@
 import React from 'react';
 import PropTypes from 'prop-types';
+import { getLabelValue } from '@tcp/core/src/utils/utils';
 import withStyles from '../../../../../../common/hoc/withStyles';
 import styles from '../styles/ExtraPointsTeaser.style';
 import Anchor from '../../../../../../common/atoms/Anchor';
@@ -13,7 +14,7 @@ const ExtraPointsTeaser = props => {
       <div className={`extraPointsWrapper${plccUser ? '_plcc' : ''} elem-pt-LRG elem-pb-SM`}>
         <div className="earnExtra alignCenter">
           <BodyCopy fontFamily="secondary" fontWeight="extrabold" fontSize="fs14">
-            {labels.ACC_DRAWER_EARN_EXTRA}
+            {getLabelValue(labels, 'lbl_drawer_earn_extra')}
           </BodyCopy>
         </div>
         <div className="getCloser alignCenter elem-pt-XS">
@@ -23,14 +24,14 @@ const ExtraPointsTeaser = props => {
             fontSize="fs12"
             color="text.secondary"
           >
-            {labels.ACC_DRAWER_GET_CLOSER}
+            {getLabelValue(labels, 'lbl_drawer_get_closer')}
           </BodyCopy>
         </div>
         <div className="learnMore alignCenter elem-pt-XS">
           <Anchor
             fontSizeVariation="medium"
             anchorVariation="primary"
-            text={labels.ACC_DRAWER_LEARN_MORE}
+            text={getLabelValue(labels, 'lbl_drawer_learn_more')}
             underline
           />
         </div>
