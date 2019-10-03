@@ -1,5 +1,6 @@
 import React from 'react';
 import { connect } from 'react-redux';
+import { getLabelValue } from '@tcp/core/src/utils';
 import { closeAddedToBag } from './AddedToBag.actions';
 import { getAddedToBagData, isOpenAddedToBag, getQuantityValue } from './AddedToBag.selectors';
 import AddedToBag from '../views/AddedToBag.view';
@@ -98,6 +99,13 @@ const mapStateToProps = state => {
       continueShopping,
       viewBag,
       checkout,
+      close: getLabelValue(state.Labels, 'lbl_aria_close', 'addedToBagModal', 'global'),
+      overlayAriaText: getLabelValue(
+        state.Labels,
+        'lbl_aria_overlay_text',
+        'addedToBagModal',
+        'global'
+      ),
     },
   };
 };

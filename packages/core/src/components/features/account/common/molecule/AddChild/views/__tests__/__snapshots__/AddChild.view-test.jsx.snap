@@ -52,7 +52,9 @@ exports[`AddChildBirthday component should renders correctly 1`] = `
             lineHeight="normal"
             link={null}
             textAlign="left"
-          />
+          >
+            lbl_add_child_child_information
+          </Styled(BodyCopy)>
         </Styled(Col)>
       </Styled(Row)>
       <Styled(Row)
@@ -227,6 +229,7 @@ exports[`AddChildBirthday component should renders correctly 1`] = `
             dataLocator="childNameField"
             id="childName"
             name="childName"
+            placeholder="lbl_add_child_child_name"
             type="text"
           />
         </Styled(Col)>
@@ -252,7 +255,9 @@ exports[`AddChildBirthday component should renders correctly 1`] = `
             lineHeight="normal"
             link={null}
             textAlign="left"
-          />
+          >
+            lbl_add_child_birthday_heading
+          </Styled(BodyCopy)>
         </Styled(Col)>
         <Styled(Row)
           fullBleed={true}
@@ -423,6 +428,7 @@ exports[`AddChildBirthday component should renders correctly 1`] = `
                   },
                 ]
               }
+              placeholder="lbl_add_child_birthday_month"
             />
           </Styled(Col)>
           <Styled(Col)
@@ -611,6 +617,7 @@ exports[`AddChildBirthday component should renders correctly 1`] = `
                   },
                 ]
               }
+              placeholder="lbl_add_child_birthday_year"
             />
           </Styled(Col)>
         </Styled(Row)>
@@ -636,7 +643,9 @@ exports[`AddChildBirthday component should renders correctly 1`] = `
             lineHeight="normal"
             link={null}
             textAlign="left"
-          />
+          >
+            add_child_gender_heading
+          </Styled(BodyCopy)>
         </Styled(Col)>
         <Styled(Col)
           colSize={
@@ -765,6 +774,7 @@ exports[`AddChildBirthday component should renders correctly 1`] = `
                 },
               ]
             }
+            placeholder="lbl_add_child_choose_gender"
           />
         </Styled(Col)>
       </Styled(Row)>
@@ -818,7 +828,9 @@ exports[`AddChildBirthday component should renders correctly 1`] = `
             lineHeight="normal"
             link={null}
             textAlign="left"
-          />
+          >
+            lbl_add_child_parent_digital_signature
+          </Styled(BodyCopy)>
         </Styled(Col)>
       </Styled(Row)>
       <Styled(Row)
@@ -993,6 +1005,7 @@ exports[`AddChildBirthday component should renders correctly 1`] = `
             dataLocator="firstNameField"
             id="firstName"
             name="firstName"
+            placeholder="lbl_add_child_first_name"
             type="text"
           />
         </Styled(Col)>
@@ -1171,6 +1184,7 @@ exports[`AddChildBirthday component should renders correctly 1`] = `
             dataLocator="lastNameField"
             id="lastName"
             name="lastName"
+            placeholder="lbl_add_child_last_name"
             type="text"
           />
         </Styled(Col)>
@@ -1197,7 +1211,7 @@ exports[`AddChildBirthday component should renders correctly 1`] = `
             link={null}
             textAlign="left"
           >
-            undefined 
+            lbl_add_child_timestamp 
           </Styled(BodyCopy)>
         </Styled(Col)>
         <Styled(Col)
@@ -1357,8 +1371,8 @@ exports[`AddChildBirthday component should renders correctly 1`] = `
               link={null}
               textAlign="left"
             >
-              undefined
-                    undefined
+              lbl_add_child_terms_agreement
+                    lbl_add_child_terms_agreement_second
             </Styled(BodyCopy)>
           </Field>
         </Styled(Col)>
@@ -1390,13 +1404,17 @@ exports[`AddChildBirthday component should renders correctly 1`] = `
               noLink={true}
               to="https://www.childrensplace.com/us/help-center/#policies"
               underline={true}
-            />
+            >
+              lbl_add_child_privacy
+            </Styled(Anchor)>
             <Styled(Anchor)
               data-locator="faqLnk"
               noLink={true}
               to="https://www.childrensplace.com/us/help-center/#faq"
               underline={true}
-            />
+            >
+              lbl_add_child_faq
+            </Styled(Anchor)>
           </Styled(BodyCopy)>
         </Styled(Col)>
       </Styled(Row)>
@@ -1427,7 +1445,9 @@ exports[`AddChildBirthday component should renders correctly 1`] = `
           dataLocator="SaveChildFormBtn"
           fill="BLUE"
           type="submit"
-        />
+        >
+          lbl_add_child_save
+        </Styled(Button)>
       </Styled(Col)>
       <Styled(Col)
         className="cancelBtn"
@@ -1451,7 +1471,9 @@ exports[`AddChildBirthday component should renders correctly 1`] = `
           dataLocator="cancelChildFormBtn"
           fill="WHITE"
           onClick={[MockFunction]}
-        />
+        >
+          lbl_add_child_cancel
+        </Styled(Button)>
       </Styled(Col)>
     </Styled(Row)>
   </Styled(Row)>

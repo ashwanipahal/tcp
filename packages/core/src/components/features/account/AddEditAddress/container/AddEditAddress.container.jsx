@@ -1,6 +1,7 @@
 import React from 'react';
 import { connect } from 'react-redux';
 import PropTypes from 'prop-types';
+import { getLabelValue } from '@tcp/core/src/utils/utils';
 import AddAddressComponent from '../views/AddEditAddress.view';
 import { getAddressList } from '../../AddressBook/container/AddressBook.actions';
 import { getAddressResponse, getAddressById } from './AddEditAddress.selectors';
@@ -36,7 +37,7 @@ export class AddEditAddressContainer extends React.PureComponent<Props> {
         labels={labels}
         onCancel={onCancel}
         showHeading={showHeading}
-        addressBookLabels={labels.addressBook}
+        addressBookLabels={getLabelValue(labels, 'addressBook')}
       />
     );
   }

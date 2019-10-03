@@ -1,5 +1,6 @@
 import React from 'react';
 import PropTypes from 'prop-types';
+import { getLabelValue } from '@tcp/core/src/utils/utils';
 import Row from '../../../../../../common/atoms/Row';
 import Col from '../../../../../../common/atoms/Col';
 import BodyCopy from '../../../../../../common/atoms/BodyCopy';
@@ -9,8 +10,8 @@ import MyProfileTile from '../../../../../../common/molecules/MyProfileTile';
 const ChangePassword = ({ labels }) => {
   return (
     <MyProfileTile
-      title={labels.lbl_profile_password}
-      ctaTitle={labels.lbl_profile_change_password}
+      title={getLabelValue(labels, 'lbl_profile_password')}
+      ctaTitle={getLabelValue(labels, 'lbl_profile_change_password')}
       ctaPath="/account/profile"
       ctaLink="/account?id=profile&subSection=change-password"
       dataLocator="pi-changepassword"
@@ -30,7 +31,7 @@ const ChangePassword = ({ labels }) => {
               data-locator="pi-passwordtextheader"
               fontFamily="secondary"
             >
-              {labels.lbl_profile_change_your_password}
+              {getLabelValue(labels, 'lbl_profile_change_your_password')}
             </BodyCopy>
           </Col>
         </Row>
@@ -43,7 +44,7 @@ const ChangePassword = ({ labels }) => {
             }}
           >
             <BodyCopy data-locator="pi-passwordtextinfo1" fontSize="fs14" fontFamily="secondary">
-              {labels.lbl_profile_password_info_line1}
+              {getLabelValue(labels, 'lbl_profile_password_info_line1')}
             </BodyCopy>
           </Col>
         </Row>
@@ -56,7 +57,7 @@ const ChangePassword = ({ labels }) => {
             }}
           >
             <BodyCopy data-locator="pi-passwordtextinfo2" fontSize="fs14" fontFamily="secondary">
-              {labels.lbl_profile_password_info_line2}
+              {getLabelValue(labels, 'lbl_profile_password_info_line2')}
             </BodyCopy>
           </Col>
         </Row>

@@ -29,11 +29,9 @@ const mapStateToProps = state => {
   };
 };
 
-export const mapDispatchToProps = dispatch => {
+export const mapDispatchToProps = () => {
   return {
-    moveToCheckoutStage: stageName => {
-      dispatch(CheckoutProgressUtils.moveToStage(stageName));
-    },
+    moveToCheckoutStage: CheckoutProgressUtils.moveToStage,
   };
 };
 

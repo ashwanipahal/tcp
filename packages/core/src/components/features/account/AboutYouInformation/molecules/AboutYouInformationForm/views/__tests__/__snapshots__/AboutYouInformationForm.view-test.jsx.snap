@@ -20,7 +20,9 @@ exports[`AboutYouInformationForm should render correctly 1`] = `
       lineHeight="normal"
       link={null}
       textAlign="left"
-    />
+    >
+      lbl_profile_survey_question1
+    </Styled(BodyCopy)>
   </Styled(Row)>
   <Styled(Row)
     className="aboutyou-wrapper"
@@ -742,7 +744,9 @@ exports[`AboutYouInformationForm should render correctly 1`] = `
       lineHeight="normal"
       link={null}
       textAlign="left"
-    />
+    >
+      lbl_profile_survey_question2
+    </Styled(BodyCopy)>
   </Styled(Row)>
   <Styled(Row)
     className="aboutyou-wrapper"
@@ -1634,7 +1638,9 @@ exports[`AboutYouInformationForm should render correctly 1`] = `
           data-locator="moreaboutyou-cancelbtn"
           fullWidth={true}
           type="button"
-        />
+        >
+          lbl_profile_personal_info_cancelCta
+        </Styled(Button)>
       </Styled(Anchor)>
     </Styled(Col)>
   </Styled(Row)>
