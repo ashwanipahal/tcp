@@ -3,7 +3,7 @@ import { FlatList } from 'react-native';
 import superagent from 'superagent';
 import ErrorMessage from '@tcp/core/src/components/common/hoc/ErrorMessage';
 import { PropTypes } from 'prop-types';
-import { getAPIConfig } from '@tcp/core/src/utils';
+import { getAPIConfig, getLabelValue } from '@tcp/core/src/utils';
 import { Anchor, BodyCopy, Image } from '@tcp/core/src/components/common/atoms';
 import InputCheckbox from '@tcp/core/src/components/common/atoms/InputCheckbox';
 import { GooglePlacesInput } from '@tcp/core/src/components/common/atoms/GoogleAutoSuggest/AutoCompleteComponent';
@@ -124,22 +124,24 @@ class StoreSearch extends Component {
     const { labels, error, selectedCountry, toggleMap, mapView, getLocationStores } = this.props;
 
     const { errorNotFound, gymSelected, outletSelected } = this.state;
-    const errorMessage = errorNotFound ? labels.lbl_storelocators_detail_errorLabel : error;
+    const errorMessage = errorNotFound
+      ? getLabelValue(labels, 'lbl_storelanding_errorLabel')
+      : error;
     const viewMapListLabel = mapView
-      ? labels.lbl_storelocators_detail_viewList
-      : labels.lbl_storelocators_detail_viewMap;
+      ? getLabelValue(labels, 'lbl_storelanding_viewList')
+      : getLabelValue(labels, 'lbl_storelanding_viewMap');
 
     const storeOptionsConfig = [
       {
         name: 'gymboreeStoreOption',
         dataLocator: 'gymboree-store-option',
-        storeLabel: labels.lbl_storelocators_detail_gymboreeStores,
+        storeLabel: getLabelValue(labels, 'lbl_storelanding_gymboreeStores'),
         checked: gymSelected,
       },
       {
         name: 'outletOption',
         dataLocator: 'only-outlet-option',
-        storeLabel: labels.lbl_storelocators_detail_outletStores,
+        storeLabel: getLabelValue(labels, 'lbl_storelanding_outletStores'),
         checked: outletSelected,
       },
     ];
@@ -152,7 +154,7 @@ class StoreSearch extends Component {
             fontWeight="extrabold"
             fontSize="fs16"
             color="#1a1a1a"
-            text={labels.lbl_storelocators_detail_findStoreHeading}
+            text={getLabelValue(labels, 'lbl_storelanding_findStoreHeading')}
           />
         </StyledFindStoreTitle>
         <Anchor onPress={getLocationStores}>
@@ -164,7 +166,7 @@ class StoreSearch extends Component {
                 fontWeight="regular"
                 fontSize="fs12"
                 color="#1a1a1a"
-                text={labels.lbl_storelocators_detail_currentLocation}
+                text={getLabelValue(labels, 'lbl_storelanding_currentLocation')}
               />
             </StyledCurrentLocation>
           </StyledStoreLocator>
@@ -177,7 +179,7 @@ class StoreSearch extends Component {
               </Anchor>
             </StyledSearch>
             <Field
-              headerTitle={labels.lbl_storelocators_detail_storeSearchPlaceholder}
+              headerTitle={getLabelValue(labels, 'lbl_storelanding_storeSearchPlaceholder')}
               component={GooglePlacesInput}
               dataLocator="storeAddressLocator"
               componentRestrictions={{ ...{ country: [selectedCountry] } }}
