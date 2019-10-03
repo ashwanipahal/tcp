@@ -4,6 +4,7 @@ import { CardIOModule, CardIOUtilities } from 'react-native-awesome-card-io';
 import PropTypes from 'prop-types';
 import { Field } from 'redux-form';
 import DropDown from '@tcp/core/src/components/common/atoms/DropDown/views/DropDown.native';
+import logger from '@tcp/core/src/utils/loggerInstance';
 import CustomIcon from '../../../atoms/Icon';
 import { ICON_NAME } from '../../../atoms/Icon/Icon.constants';
 import CreditCardNumber from '../../../atoms/CreditCardNumber';
@@ -21,6 +22,8 @@ import {
   CVVInfo,
   StyledImageWrapper,
 } from '../styles/CreditCardFields.styles.native';
+
+const CardText = 'Position your card in the frame';
 
 /**
  *
@@ -53,13 +56,17 @@ export class CreditCardFields extends React.PureComponent<Props> {
     }
   }
 
+  /**
+   * @function scanCard
+   * @description on click on camera icon scan card will call
+   */
   scanCard = () => {
     const { updateCardDetails } = this.props;
     const config = {
       hideCardIOLogo: true,
-      requireCVV: false,
+      requireCVV: true,
       requireExpiry: true,
-      scanInstructions: 'Position your card in the frame',
+      scanInstructions: CardText,
     };
     CardIOModule.scanCard(config)
       .then(card => {
@@ -71,7 +78,7 @@ export class CreditCardFields extends React.PureComponent<Props> {
         );
       })
       .catch(error => {
-        console.log('scanCard', error);
+        logger.error('error: ', error);
       });
   };
 
