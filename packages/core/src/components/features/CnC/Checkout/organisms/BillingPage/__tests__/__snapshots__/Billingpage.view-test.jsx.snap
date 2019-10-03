@@ -16,6 +16,7 @@ exports[`CheckoutProgressIndicator component should renders correctly props not 
       billingData={Object {}}
       creditFieldLabels={Object {}}
       cvvCodeRichText={null}
+      isVenmoEnabled={false}
       isVenmoPaymentInProgress={false}
       labels={Object {}}
       shippingAddress={null}
@@ -39,6 +40,7 @@ exports[`CheckoutProgressIndicator component should renders correctly props not 
     creditFieldLabels={Object {}}
     cvvCodeRichText={null}
     isGuest={true}
+    isVenmoEnabled={false}
     isVenmoPaymentInProgress={false}
     labels={Object {}}
     shippingAddress={null}

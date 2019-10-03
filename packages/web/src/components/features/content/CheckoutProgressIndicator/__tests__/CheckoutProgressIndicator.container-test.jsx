@@ -43,7 +43,7 @@ describe('CheckoutProgressIndicatorContainer', () => {
       const dispatch = jest.fn();
       const dispatchProps = mapDispatchToProps(dispatch);
       dispatchProps.moveToCheckoutStage();
-      expect(dispatch.mock.calls).toHaveLength(1);
+      expect(dispatch.mock.calls).toHaveLength(0);
     });
   });
 });

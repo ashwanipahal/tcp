@@ -7,6 +7,7 @@ exports[`PersonalInformation component should render correctly 1`] = `
     ctaPath="/account/profile"
     ctaTitle="Edit personal Info"
     dataLocator="pi-editpersonalinfo"
+    title="lbl_profile_personal_information"
   >
     <PersonalInformationDisplay
       airMiles="XXXXXXX"
@@ -35,7 +36,9 @@ exports[`PersonalInformation component should render emptyu correctly 1`] = `
   <Styled(AccountOverviewTile)
     ctaLink="/account?id=profile&subSection=edit-personal-info"
     ctaPath="/account/profile"
+    ctaTitle="lbl_profile_edit_personal_info"
     dataLocator="pi-editpersonalinfo"
+    title="lbl_profile_personal_information"
   >
     <PersonalInformationDisplay
       airMiles=""

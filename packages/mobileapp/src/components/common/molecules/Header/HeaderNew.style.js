@@ -1,14 +1,21 @@
 import styled from 'styled-components/native';
-import { isDisplayWithNotch } from '@tcp/core/src/utils/dimensions';
+import { isAndroid } from '@tcp/core/src/utils/utils.app';
+
+const getAdditionalStyle = props => {
+  const { theme, showSearch } = props;
+  const headerHeight = showSearch
+    ? theme.spacing.LAYOUT_SPACING.LRGS
+    : theme.spacing.LAYOUT_SPACING.LRG;
+
+  return {
+    ...(isAndroid() && { height: headerHeight }),
+  };
+};
 
 const getSafeAreaStyle = props => {
   const { theme } = props;
-  const headerHeight = isDisplayWithNotch()
-    ? theme.spacing.LAYOUT_SPACING.XL
-    : theme.spacing.LAYOUT_SPACING.LRG;
   return `
   background: ${theme.colorPalette.white};
-  height: ${headerHeight};
   border-bottom-color: ${theme.colorPalette.gray[500]};
   border-bottom-width: 1;
   `;
@@ -16,13 +23,21 @@ const getSafeAreaStyle = props => {
 
 export const SafeAreaViewStyle = styled.SafeAreaView`
   ${getSafeAreaStyle}
+  ${getAdditionalStyle}
 `;
 
 export const Container = styled.View`
-  flex-direction: row;
   height: 100%;
+  align-items: center;
+  justify-content: center;
+`;
+
+export const HeaderContainer = styled.View`
+  flex-direction: row;
   justify-content: center;
   align-items: center;
+  padding-top: ${props => props.theme.spacing.LAYOUT_SPACING.XXS};
+  padding-bottom: ${props => props.theme.spacing.LAYOUT_SPACING.XXS};
 `;
 
 export const CartCountContainer = styled.View`

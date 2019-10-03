@@ -14,6 +14,7 @@ exports[`LogOutView Page should render correctly 1`] = `
     margin={null}
     numberOfLines={null}
     onPress={[Function]}
+    text="lbl_overview_logout"
     textDecoration={null}
   />
 </Fragment>

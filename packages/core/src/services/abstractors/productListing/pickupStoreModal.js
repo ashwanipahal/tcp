@@ -265,9 +265,7 @@ export const getStoresPlusInventorybyLatLng = ({
           stores: stores.map(store => storeAPIParser(store, { requestedQuantity: quantity })),
         };
       }
-      if (!stores.length) {
-        apiError = { error: ERROR_MESSAGES_BOPIS.noAddressFound };
-      }
+      apiError = { error: ERROR_MESSAGES_BOPIS.noAddressFound };
       return { error: apiError.error, stores: [] };
     })
     .catch(err => {

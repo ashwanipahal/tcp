@@ -1,6 +1,7 @@
 import React from 'react';
 import { View } from 'react-native';
 import { PropTypes } from 'prop-types';
+import { getLabelValue } from '@tcp/core/src/utils/utils';
 import withStyles from '../../../../../../common/hoc/withStyles.native';
 import ImageComp from '../../../../../../common/atoms/Image';
 import LineComp from '../../../../../../common/atoms/Line';
@@ -37,25 +38,25 @@ const LoginTopSection = props => {
           <ImageComp source={TheMarketPlaceLogo} width={186} height={60} style={imgStyle} />
 
           <LineComp marginTop={30} marginBottom={17} />
-          <HeadingStyle>{labels.login.lbl_login_heading}</HeadingStyle>
+          <HeadingStyle>{getLabelValue(labels, 'lbl_login_heading', 'login')}</HeadingStyle>
 
           <BodyCopy
             fontSize="fs12"
             textAlign="center"
-            text={labels.login.lbl_login_subDescription_heading_1}
+            text={getLabelValue(labels, 'lbl_login_subDescription_heading_1', 'login')}
           />
 
           <BodyCopy
             fontSize="fs12"
             textAlign="center"
-            text={labels.login.lbl_login_Description_heading_2}
+            text={getLabelValue(labels, 'lbl_login_Description_heading_2', 'login')}
           />
           <ResetPassword>
             <Anchor
               id="forgotPasswordForm"
               class="clickhere"
               fontSizeVariation="medium"
-              text={labels.login.lbl_login_Description_clickhere}
+              text={getLabelValue(labels, 'lbl_login_Description_clickhere', 'login')}
               underline
               onPress={() => {
                 showForgotPassword(props);
@@ -64,7 +65,7 @@ const LoginTopSection = props => {
             <BodyCopy
               component="span"
               fontSize="fs12"
-              text={labels.login.lbl_login_Description_heading_3}
+              text={getLabelValue(labels, 'lbl_login_Description_heading_3', 'login')}
             />
           </ResetPassword>
           <LineComp marginTop={25} marginBottom={0} />
@@ -78,7 +79,7 @@ const LoginTopSection = props => {
           </ImageWrapper>
           <FavtHeading>
             <BodyCopy
-              text={labels.login.lbl_login_favorites_modal_heading}
+              text={getLabelValue(labels, 'lbl_login_favorites_modal_heading', 'login')}
               fontSize="fs16"
               fontWeight="black"
               mobilefontFamily={['secondary']}
@@ -91,7 +92,7 @@ const LoginTopSection = props => {
               fontSize="fs12"
               mobilefontFamily={['secondary']}
               textAlign="center"
-              text={labels.login.lbl_login_favorites_modal_heading_1}
+              text={getLabelValue(labels, 'lbl_login_favorites_modal_heading_1', 'login')}
             />
           </FavtSubHeading>
         </>
@@ -104,7 +105,7 @@ const LoginTopSection = props => {
             fontWeight="black"
             mobilefontFamily={['primary']}
             textAlign="center"
-            text={labels.login.lbl_login_checkout_modal_heading}
+            text={getLabelValue(labels, 'lbl_login_checkout_modal_heading', 'login')}
           />
 
           <BodyCopy
@@ -112,7 +113,7 @@ const LoginTopSection = props => {
             fontSize="fs18"
             mobilefontFamily={['secondary']}
             textAlign="center"
-            text={labels.login.lbl_login_checkout_modal_heading_1}
+            text={getLabelValue(labels, 'lbl_login_checkout_modal_heading_1', 'login')}
           />
 
           <BodyCopy
@@ -121,7 +122,7 @@ const LoginTopSection = props => {
             fontWeight="black"
             mobilefontFamily={['secondary']}
             textAlign="center"
-            text={labels.login.lbl_login_checkout_modal_heading_2}
+            text={getLabelValue(labels, 'lbl_login_checkout_modal_heading_2', 'login')}
           />
           <LineComp small marginTop={25} marginBottom={0} />
         </>

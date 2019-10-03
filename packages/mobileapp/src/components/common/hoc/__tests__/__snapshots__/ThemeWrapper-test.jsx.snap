@@ -106,7 +106,7 @@ exports[`#ThemeWrapper.container should render correctly 1`] = `
           "mprLight": "#fdead2",
           "mprPrimary": "#fbd5a5",
           "noMprPlcc": "#6d7278",
-          "plcc": "#254f6e",
+          "plcc": "#00A7E0",
           "plccLight": "#dbebf8",
         },
         "white": "#fff",
@@ -419,6 +419,7 @@ exports[`#ThemeWrapper.container should render correctly 1`] = `
         "FORM_FIELD_HEIGHT": "70px",
         "LAYOUT_SPACING": Object {
           "LRG": "64px",
+          "LRGS": "110px",
           "MED": "48px",
           "SM": "32px",
           "XL": "96px",

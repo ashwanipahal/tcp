@@ -1,70 +1,9 @@
-import React from 'react';
+import React, { PureComponent } from 'react';
 import PropTypes from 'prop-types';
 import { requireNamedOnlineModule } from '../../../../utils/resourceLoader';
 import TextBox from '../TextBox'; // this comment prevents linting errors
-import { getCacheData, setCacheData } from '../../../../utils/multipleLocalStorageManagement';
 
-export function getAddressLocationInfo(address) {
-  const googleApiStoredDataObj = getCacheData('geocode-response', address);
-  if (googleApiStoredDataObj) {
-    // Available in storage, don't trigger the google API call
-    return new Promise(resolve => {
-      resolve({
-        lat: googleApiStoredDataObj.lat,
-        lng: googleApiStoredDataObj.lng,
-        country: googleApiStoredDataObj.country,
-      });
-    });
-  }
-  return requireNamedOnlineModule('google.maps').then(() => {
-    const geocoder = new window.google.maps.Geocoder();
-    return new Promise(resolve => {
-      geocoder.geocode({ address }, (results, status) => {
-        if (status === 'OK') {
-          const country = results[0].address_components.find(component => {
-            return component.types && component.types.find(type => type === 'country');
-          });
-          const timeStamp = new Date().getTime();
-          const storeDataObject = {
-            lat: results[0].geometry.location.lat(),
-            lng: results[0].geometry.location.lng(),
-            country: country && country.short_name,
-          };
-          setCacheData({
-            key: 'geocode-response',
-            storageKey: address,
-            storageValue: { ...storeDataObject, timeStamp },
-          });
-          resolve(storeDataObject);
-        } else {
-          resolve({ error: status });
-        }
-      });
-    });
-  });
-}
-export class AutoCompleteComponent extends React.PureComponent {
-  static propTypes = {
-    types: PropTypes.arrayOf(PropTypes.string),
-    componentRestrictions: PropTypes.shape({
-      country: PropTypes.string.isRequired,
-    }),
-    bounds: PropTypes.shape({
-      getSouthWest: PropTypes.func,
-      getNorthEast: PropTypes.func,
-    }),
-    apiFields: PropTypes.string,
-    onPlaceSelected: PropTypes.func.isRequired,
-    input: PropTypes.shape({}).isRequired,
-  };
-
-  static defaultProps = {
-    types: ['address'],
-    bounds: null,
-    apiFields: '',
-    componentRestrictions: {},
-  };
-
+export class AutoCompleteComponent extends PureComponent {
   static GOOGLE_PLACE_PARTS = {
     street_number: 'short_name',
     route: 'long_name',
@@ -73,6 +12,72 @@ export class AutoCompleteComponent extends React.PureComponent {
     sublocality_level_1: 'short_name',
     country: 'long_name',
     postal_code: 'short_name',
+  };
+
+  static getAddressFromPlace(place, inputValue) {
+    let address = {
+      street: '',
+      city: '',
+      state: '',
+      country: '',
+      zip: '',
+      steet_number: '',
+      street_name: '',
+    };
+    if (typeof place.address_components === 'undefined') {
+      return address;
+    }
+    for (let i = 0; i < place.address_components.length; i += 1) {
+      const addressType = place.address_components[i].types[0];
+      if (AutoCompleteComponent.GOOGLE_PLACE_PARTS[addressType]) {
+        const val =
+          place.address_components[i][AutoCompleteComponent.GOOGLE_PLACE_PARTS[addressType]];
+        address = AutoCompleteComponent.returngetAddress(addressType, val, address);
+      }
+    }
+    if (!address.street_number) {
+      const regex = RegExp('^(.*)'`${address.street_name.split(' ', 1)[0]}`);
+      const result = regex.exec(inputValue);
+      const inputNum = Array.isArray(result) && result[1] && Number(result[1]);
+
+      if (!Number(inputNum) && parseInt(inputNum, 10) === inputNum) {
+        address.street_number = inputNum;
+      }
+    }
+
+    address.street = `${address.street_number} ${address.street_name}`;
+
+    return address;
+  }
+
+  static returngetAddress = (addressType, val, address) => {
+    const addressRef = Object.assign({}, address);
+    switch (addressType) {
+      case 'street_number':
+        addressRef.street_number = val;
+        break;
+      case 'route':
+        addressRef.street_name = val;
+        break;
+      case 'locality':
+        addressRef.city = val;
+        break;
+      case 'sublocality_level_1':
+        addressRef.city = val;
+        break;
+      case 'administrative_area_level_1':
+        addressRef.state = val;
+        break;
+      case 'country':
+        addressRef.country = val;
+        break;
+      case 'postal_code':
+        addressRef.zip = val;
+        break;
+      default:
+        addressRef.zip = val;
+    }
+    return addressRef;
   };
 
   constructor(props) {
@@ -124,7 +129,7 @@ export class AutoCompleteComponent extends React.PureComponent {
           .then(() => {
             this.googleAutocomplete = new window.google.maps.places.Autocomplete(
               refToInputElement,
-              this.getAutoCompleteConfigObject(this.props)
+              this.getAutoCompleteConfigObject()
             );
             this.googleAutocomplete.setFields(apiFieldsArray);
             this.googleAutocomplete.addListener('place_changed', this.handleOnPlaceSelected);
@@ -133,7 +138,7 @@ export class AutoCompleteComponent extends React.PureComponent {
       } else {
         this.googleAutocomplete = new window.google.maps.places.Autocomplete(
           refToInputElement,
-          this.getAutoCompleteConfigObject(this.props)
+          this.getAutoCompleteConfigObject()
         );
         this.googleAutocomplete.setFields(apiFieldsArray);
         this.googleAutocomplete.addListener('place_changed', this.handleOnPlaceSelected);
@@ -158,3 +163,14 @@ export class AutoCompleteComponent extends React.PureComponent {
 
   // --------------- end of private methods --------------- //
 }
+
+AutoCompleteComponent.propTypes = {
+  types: PropTypes.oneOf(['address']).isRequired,
+  componentRestrictions: PropTypes.shape({}).isRequired,
+  bounds: PropTypes.shape({}).isRequired,
+  apiFields: PropTypes.shape({}).isRequired,
+  input: PropTypes.shape({}).isRequired,
+  onPlaceSelected: PropTypes.func.isRequired,
+};
+
+export default AutoCompleteComponent;
