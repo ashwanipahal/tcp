@@ -179,7 +179,10 @@ export class EarnPoints extends React.PureComponent {
           heading=" "
         >
           <ViewWithSpacing spacingStyles="margin-left-LRG margin-right-LRG">
-            <ExtraPointsDetailModal waysToEarnRow={waysToEarnRow} />
+            <ExtraPointsDetailModal
+              waysToEarnRow={waysToEarnRow}
+              handleComponentChange={handleComponentChange}
+            />
           </ViewWithSpacing>
         </ModalNative>
       </>
