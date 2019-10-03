@@ -33,7 +33,7 @@ const Abstractor = {
     return mock;
   },
   processData: res => {
-    const rootPath = 'https://www.childrensplace.com/us/outfit';
+    const rootPath = '/outfit';
 
     return res.body.map(item => {
       const { image_url: imageUrl, large_image_url: largeImageUrl, id, items: subItems } = item;

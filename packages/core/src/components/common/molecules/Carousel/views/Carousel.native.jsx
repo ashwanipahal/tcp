@@ -36,7 +36,7 @@ const nextIconDark = require('../../../../../assets/carrot-small-left.png');
 
 // @flow
 type Props = {
-  carouselConfig: Object,
+  carouselConfig?: Object,
   data: Array<Object>,
   renderItem: Function,
   onSnapToItem?: Function,
@@ -53,6 +53,7 @@ type Props = {
   autoplayInterval: Number,
   buttonPosition: String,
   autoplay?: Boolean,
+  paginationProps?: Object,
 };
 
 type State = {
@@ -91,15 +92,23 @@ class SnapCarousel extends React.PureComponent<Props, State> {
     const {
       data,
       theme: { colorPalette },
+      paginationProps,
     } = this.props;
+
+    const {
+      containerStyle: containerStyleOverride,
+      dotContainerStyle: dotContainerStyleOverride,
+      dotStyle: dotStyleOverride,
+      inactiveDotStyle: inactiveDotStyleOverride,
+    } = paginationProps;
 
     /* eslint-disable  */
     return (
       <Pagination
         dotsLength={data.length}
         activeDotIndex={activeSlide}
-        containerStyle={{ paddingVertical: 22, paddingHorizontal: 10 }}
-        dotContainerStyle={{ marginHorizontal: 4 }}
+        containerStyle={{ paddingVertical: 22, paddingHorizontal: 10, ...containerStyleOverride }}
+        dotContainerStyle={{ marginHorizontal: 4, ...dotContainerStyleOverride }}
         dotStyle={{
           width: 10,
           height: 10,
@@ -109,11 +118,13 @@ class SnapCarousel extends React.PureComponent<Props, State> {
           borderColor: colorPalette.gray[700],
           borderWidth: 1,
           backgroundColor: colorPalette.white,
+          ...dotStyleOverride,
         }}
         inactiveDotStyle={{
           backgroundColor: colorPalette.gray[700],
           width: 6,
           height: 6,
+          ...inactiveDotStyleOverride,
         }}
         inactiveDotOpacity={1}
         inactiveDotScale={1}
@@ -308,7 +319,6 @@ class SnapCarousel extends React.PureComponent<Props, State> {
               <Icon source={iconTypeNext} />
             </TouchableView>
             <Carousel
-              {...settings}
               data={data}
               onSnapToItem={this.onSnapToItemHandler}
               renderItem={renderItem}
@@ -320,6 +330,7 @@ class SnapCarousel extends React.PureComponent<Props, State> {
               autoplay={autoplay}
               autoplayInterval={autoplayInterval}
               ref={this.carouselRef}
+              {...settings}
             />
             <TouchableView
               accessibilityRole="button"
@@ -338,7 +349,6 @@ class SnapCarousel extends React.PureComponent<Props, State> {
     return (
       <View>
         <Carousel
-          {...defaults}
           ref={c => {
             this.carousel = c;
           }}
@@ -353,6 +363,7 @@ class SnapCarousel extends React.PureComponent<Props, State> {
           autoplay={autoplay}
           vertical={vertical}
           autoplayInterval={autoplayInterval}
+          {...settings}
         />
 
         {data.length > 1 && (
@@ -374,6 +385,8 @@ SnapCarousel.defaultProps = {
   hidePlayStopButton: false,
   overlap: false,
   darkArrow: false,
+  paginationProps: {},
+  carouselConfig: {},
 };
 
 export default withTheme(SnapCarousel);

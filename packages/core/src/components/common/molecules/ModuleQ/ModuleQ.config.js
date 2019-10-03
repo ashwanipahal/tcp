@@ -35,6 +35,17 @@ export default {
         },
       },
     ],
+    APP: {
+      PRODUCT_IMAGE_WIDTH: 193,
+      PRODUCT_IMAGE_HEIGHT: 237,
+      MODULE_HEIGHT: 400,
+      OUTFIT_ITEM_IMAGE_HEIGHT: 78,
+      OUTFIT_ITEM_IMAGE_WIDTH: 63,
+      LOOP_CLONES_PER_SIDE: 2,
+      INACTIVE_SLIDE_SCALE: 0.85,
+      INACTIVE_SLIDE_OPACITY: 0.6,
+      ITEM_WIDTH: 230,
+    },
   },
   IMG_DATA: {
     productImgConfig: ['t_mod_J_product_m', 't_mod_J_img_product_t', 't_mod_J_img_product_d'],

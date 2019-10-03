@@ -28,6 +28,27 @@ export default {
             placement: '',
           },
         },
+        {
+          textItems: [
+            {
+              text:
+                'Build her head-to-toe party outfit sprinkled with all the extra-sweet details!',
+              style: 'small_text_normal',
+            },
+          ],
+          link: {
+            url: '/p/',
+            text: '',
+            title: '',
+            target: '',
+            external: 0,
+            action: '',
+          },
+          icon: {
+            icon: '',
+            placement: '',
+          },
+        },
       ],
 
       divTabs: [
@@ -68,7 +89,7 @@ export default {
             text: 'BOY',
           },
           category: {
-            cat_id: '2044393_10',
+            cat_id: '3002623_BQ',
           },
           singleCTAButton: {
             url: dummyUrl,
@@ -84,7 +105,7 @@ export default {
             text: 'TODDLER BOY',
           },
           category: {
-            cat_id: '2044394_10',
+            cat_id: '2081262_K3',
           },
           singleCTAButton: null,
         },
