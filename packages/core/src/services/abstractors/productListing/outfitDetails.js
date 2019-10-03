@@ -1,6 +1,8 @@
 import { executeUnbxdAPICall } from '../../handler';
 import endpoints from '../../endpoints';
 import { parseProductFromAPI } from './productDetail';
+import logger from '../../../utils/loggerInstance';
+
 /**
  * @function getOutfitProdutsDetails
  * @summary This API is used for outfits. You can pass the URI that will be a list of concated part numbers.
@@ -55,7 +57,7 @@ const getOutfitProdutsDetails = ({ outfitId, vendorColorProductIdsList, getImgPa
       };
     })
     .catch(err => {
-      console.log('err', err);
+      logger.error('error: ', err);
     });
 };
 

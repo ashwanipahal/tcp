@@ -2,6 +2,7 @@ import { call, put, takeLatest, select } from 'redux-saga/effects';
 import OUTFIT_DETAILS_CONSTANTS from './OutfitDetails.constants';
 import { setCurrentOutfitAction } from './OutfitDetails.actions';
 import getOutfitProdutsDetails from '../../../../../services/abstractors/productListing/outfitDetails';
+import logger from '../../../../../utils/loggerInstance';
 
 function* loadOutfitDetails({ payload: { outfitId, vendorColorProductIdsList } }) {
   try {
@@ -15,7 +16,7 @@ function* loadOutfitDetails({ payload: { outfitId, vendorColorProductIdsList } }
     });
     yield put(setCurrentOutfitAction({ ...res }));
   } catch (err) {
-    console.log(err);
+    logger.error('error: ', err);
   }
 }
 
