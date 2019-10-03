@@ -25,7 +25,6 @@ exports[`FooterNavHeader component renders image in header variation correctly 1
   aria-label="Title"
   className="footer-nav-header img-link"
   dataLocator="col_heading_3"
-  tabIndex="0"
   to=""
 >
   <Styled(Image)
