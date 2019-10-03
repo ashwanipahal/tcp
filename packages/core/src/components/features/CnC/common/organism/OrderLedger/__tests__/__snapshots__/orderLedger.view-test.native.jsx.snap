@@ -229,7 +229,6 @@ exports[`OrderLedger Component OrderLedger should render correctly 2`] = `
           fontWeight="regular"
           margin={null}
           numberOfLines={null}
-          text="1.00"
           textAlign="right"
           textDecoration={null}
         />

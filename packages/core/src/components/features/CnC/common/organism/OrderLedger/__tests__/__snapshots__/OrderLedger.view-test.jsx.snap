@@ -573,7 +573,7 @@ exports[`OrderLedger Component OrderLedger should render correctly 2`] = `
                   link={null}
                   textAlign="left"
                 >
-                  undefined:
+                  undefined
                 </ForwardRef>
               </ForwardRef>
               <ForwardRef
@@ -599,6 +599,60 @@ exports[`OrderLedger Component OrderLedger should render correctly 2`] = `
                   textAlign="right"
                 >
                   -1.00
+                </ForwardRef>
+              </ForwardRef>
+            </ForwardRef>
+            <ForwardRef
+              className="shipping-total rowMargin"
+            >
+              <ForwardRef
+                colSize={
+                  Object {
+                    "large": 6,
+                    "medium": 4,
+                    "small": 3,
+                  }
+                }
+              >
+                <ForwardRef
+                  bodySize="one"
+                  className={null}
+                  color="primary"
+                  component="p"
+                  fontFamily="secondary"
+                  fontSize="fs13"
+                  fontWeight="semibold"
+                  letterSpacing="normal"
+                  lineHeight="normal"
+                  link={null}
+                  textAlign="left"
+                >
+                  undefined:
+                </ForwardRef>
+              </ForwardRef>
+              <ForwardRef
+                colSize={
+                  Object {
+                    "large": 6,
+                    "medium": 4,
+                    "small": 3,
+                  }
+                }
+              >
+                <ForwardRef
+                  bodySize="one"
+                  className={null}
+                  color="primary"
+                  component="p"
+                  fontFamily="secondary"
+                  fontSize="fs13"
+                  fontWeight="semibold"
+                  letterSpacing="normal"
+                  lineHeight="normal"
+                  link={null}
+                  textAlign="right"
+                >
+                  1.00
                 </ForwardRef>
               </ForwardRef>
             </ForwardRef>
@@ -1121,7 +1175,7 @@ exports[`OrderLedger Component OrderLedger should render correctly 2`] = `
             link={null}
             textAlign="left"
           >
-            undefined:
+            undefined
           </Styled(BodyCopy)>
         </Styled(Col)>
         <Styled(Col)
@@ -1147,6 +1201,60 @@ exports[`OrderLedger Component OrderLedger should render correctly 2`] = `
             textAlign="right"
           >
             -1.00
+          </Styled(BodyCopy)>
+        </Styled(Col)>
+      </Styled(Row)>
+      <Styled(Row)
+        className="shipping-total rowMargin"
+      >
+        <Styled(Col)
+          colSize={
+            Object {
+              "large": 6,
+              "medium": 4,
+              "small": 3,
+            }
+          }
+        >
+          <Styled(BodyCopy)
+            bodySize="one"
+            className={null}
+            color="primary"
+            component="p"
+            fontFamily="secondary"
+            fontSize="fs13"
+            fontWeight="semibold"
+            letterSpacing="normal"
+            lineHeight="normal"
+            link={null}
+            textAlign="left"
+          >
+            undefined:
+          </Styled(BodyCopy)>
+        </Styled(Col)>
+        <Styled(Col)
+          colSize={
+            Object {
+              "large": 6,
+              "medium": 4,
+              "small": 3,
+            }
+          }
+        >
+          <Styled(BodyCopy)
+            bodySize="one"
+            className={null}
+            color="primary"
+            component="p"
+            fontFamily="secondary"
+            fontSize="fs13"
+            fontWeight="semibold"
+            letterSpacing="normal"
+            lineHeight="normal"
+            link={null}
+            textAlign="right"
+          >
+            1.00
           </Styled(BodyCopy)>
         </Styled(Col)>
       </Styled(Row)>

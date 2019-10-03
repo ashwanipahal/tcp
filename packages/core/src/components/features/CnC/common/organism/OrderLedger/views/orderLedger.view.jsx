@@ -23,6 +23,46 @@ const getHeader = labels => {
   );
 };
 
+export const createRowForGiftServiceTotal = (
+  className,
+  currencySymbol,
+  giftServiceTotal,
+  labels
+) => {
+  return (
+    giftServiceTotal > 0 && (
+      <Row
+        className="shipping-total rowMargin"
+        data-locator={getLocator('order_ledger_giftService_label')}
+      >
+        <Col colSize={{ large: 6, medium: 4, small: 3 }}>
+          <BodyCopy
+            bodySize="one"
+            color="primary"
+            fontFamily="secondary"
+            fontWeight="semibold"
+            fontSize="fs13"
+          >
+            {`${labels.giftServiceLabel}:`}
+          </BodyCopy>
+        </Col>
+        <Col colSize={{ large: 6, medium: 4, small: 3 }}>
+          <BodyCopy
+            bodySize="one"
+            color="primary"
+            fontFamily="secondary"
+            fontWeight="semibold"
+            fontSize="fs13"
+            textAlign="right"
+          >
+            {`${currencySymbol}${giftServiceTotal.toFixed(2)}`}
+          </BodyCopy>
+        </Col>
+      </Row>
+    )
+  );
+};
+
 const getBody = (className, ledgerSummaryData, labels) => {
   const {
     itemsCount,
@@ -30,6 +70,7 @@ const getBody = (className, ledgerSummaryData, labels) => {
     subTotal,
     couponsTotal,
     savingsTotal,
+    giftServiceTotal,
     shippingTotal,
     taxesTotal,
     grandTotal,
@@ -38,6 +79,7 @@ const getBody = (className, ledgerSummaryData, labels) => {
     totalOrderSavings,
     isOrderHasShipping,
   } = ledgerSummaryData;
+
   const toolTipMinWidth = '205px';
   return (
     <React.Fragment>
@@ -129,6 +171,7 @@ const getBody = (className, ledgerSummaryData, labels) => {
             </Col>
           </Row>
         ) : null}
+        {createRowForGiftServiceTotal(className, currencySymbol, giftServiceTotal, labels)}
         {isOrderHasShipping && (
           <Row
             className="shipping-total rowMargin"
