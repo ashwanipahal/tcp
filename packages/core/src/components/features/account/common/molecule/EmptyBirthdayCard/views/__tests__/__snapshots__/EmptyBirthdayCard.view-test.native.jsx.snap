@@ -25,6 +25,7 @@ exports[`EmptyBirthdayCard should render correctly for edit view 1`] = `
       margin={null}
       mobileFontFamily="secondary"
       numberOfLines={null}
+      text="lbl_profile_addChildBirthdayCta"
       textDecoration={null}
     />
   </Styled(View)>

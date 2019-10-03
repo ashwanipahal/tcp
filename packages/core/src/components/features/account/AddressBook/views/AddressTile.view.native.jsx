@@ -1,6 +1,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import { View } from 'react-native';
+import { getLabelValue } from '@tcp/core/src/utils/utils';
 import {
   AddressTileWrapper,
   AddressTileContext,
@@ -74,18 +75,18 @@ class AddressBookTile extends React.Component<Props> {
           <View>
             {address.primary === 'true' && (
               <Badge showCheckmark dataLocator="addressbook-defshippinglabel">
-                {labels.addressBook.ACC_LBL_DEFAULT_SHIPPING}
+                {getLabelValue(labels, 'ACC_LBL_DEFAULT_SHIPPING', 'addressBook')}
               </Badge>
             )}
             {address.xcont_isDefaultBilling === 'true' && (
               <Badge showCheckmark dataLocator="addressbook-defbillinglabel">
-                {labels.addressBook.ACC_LBL_DEFAULT_BILLING}
+                {getLabelValue(labels, 'ACC_LBL_DEFAULT_BILLING', 'addressBook')}
               </Badge>
             )}
             {address.primary !== 'true' && address.xcont_isShippingAddress === 'true' && (
               <AddressLabelsPrimary>
                 <Badge dataLocator="addressbook-shippinglabel" primary>
-                  {labels.addressBook.ACC_LBL_SHIPPING}
+                  {getLabelValue(labels, 'ACC_LBL_SHIPPING', 'addressBook')}
                 </Badge>
               </AddressLabelsPrimary>
             )}
@@ -99,7 +100,7 @@ class AddressBookTile extends React.Component<Props> {
                   noLink
                   to="/#"
                   dataLocator="addressbook-makedefault"
-                  text={labels.common.lbl_common_makeDefault}
+                  text={getLabelValue(labels, 'lbl_common_makeDefault', 'common')}
                   color="gray.900"
                 />
               </View>
@@ -114,7 +115,7 @@ class AddressBookTile extends React.Component<Props> {
               to="/#"
               onPress={this.onEditAddressClick}
               anchorVariation="primary"
-              text={labels.common.lbl_common_edit}
+              text={getLabelValue(labels, 'lbl_common_edit', 'common')}
               color="gray.900"
             />
           </AddressLinkLeftMargin>
@@ -124,7 +125,7 @@ class AddressBookTile extends React.Component<Props> {
             to="/#"
             onPress={this.onDeleteAddressClick}
             anchorVariation="primary"
-            text={labels.common.lbl_common_delete}
+            text={getLabelValue(labels, 'lbl_common_delete', 'common')}
             color="gray.900"
           />
         </AddressLinks>

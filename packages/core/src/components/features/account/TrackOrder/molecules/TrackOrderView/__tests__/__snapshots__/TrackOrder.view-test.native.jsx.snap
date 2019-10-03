@@ -77,6 +77,7 @@ exports[`TrackOrderView component should renders correctly with generic error me
           ]
         }
         numberOfLines={null}
+        text="lbl_trackOrder_genericErrorTryAgain"
         textDecoration={null}
       />
       <Styled(View)>
@@ -88,8 +89,9 @@ exports[`TrackOrderView component should renders correctly with generic error me
           data-locator="contact_us_form_help"
           locator=""
           onPress={null}
-          text=""
+          text="lbl_trackOrder_genericErrorLinkText"
           underline={true}
+          url="lbl_trackOrder_genericErrorLinkHref"
           visible={false}
         />
       </Styled(View)>
@@ -104,6 +106,7 @@ exports[`TrackOrderView component should renders correctly with generic error me
           ]
         }
         numberOfLines={null}
+        text="lbl_trackOrder_genericErrorAssistance"
         textDecoration={null}
       />
     </Styled(View)>
