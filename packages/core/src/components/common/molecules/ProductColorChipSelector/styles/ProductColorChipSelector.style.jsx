@@ -11,6 +11,7 @@ const styles = css`
     position: relative;
     width: 100%;
     margin-top: ${props => props.theme.spacing.ELEM_SPACING.SM};
+    cursor: auto;
   }
 
   .color-chips-selector-item {

@@ -1,6 +1,6 @@
 import React from 'react';
 import { Anchor, Button, Col, Row } from '../../../../../common/atoms';
-import StyledPLCCLandingPage from '../../styles/ApplyPLCCLandingPage.style';
+import StyledPLCCLandingPage from '../../style/ApplyCardPage.style';
 
 /**
  * @const PLCCLandingPage

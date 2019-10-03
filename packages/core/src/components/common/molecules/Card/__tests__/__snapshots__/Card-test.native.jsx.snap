@@ -1,0 +1,37 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Card component renders correctly without props 1`] = `
+<Styled(View)>
+  <Styled(View)>
+    <Styled(BodyCopy)
+      accessibilityText=""
+      data-locator=""
+      dataLocator=""
+      fontWeight=""
+      margin={null}
+      mobileFontFamily="secondary"
+      numberOfLines={null}
+      text="undefined undefined"
+      textDecoration={null}
+    />
+  </Styled(View)>
+  <CardImage
+    card={
+      Object {
+        "accountNo": "************3743",
+        "addressDetails": Object {
+          "addressLine1": "Dorney Park Road",
+          "addressLine2": "",
+          "city": "Allentown",
+          "country": "US",
+        },
+        "ccBrand": "PLACE CARD",
+        "ccType": "PLACE CARD",
+        "creditCardId": 82596,
+        "defaultInd": false,
+      }
+    }
+    cardNumber="************3743"
+  />
+</Styled(View)>
+`;

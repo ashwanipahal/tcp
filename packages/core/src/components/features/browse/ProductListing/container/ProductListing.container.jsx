@@ -32,7 +32,6 @@ import {
   isRememberedUser,
 } from '../../../account/User/container/User.selectors';
 import getSortLabels from '../molecules/SortSelector/views/Sort.selectors';
-import { getIsPickupModalOpen } from '../../../../common/organisms/PickupStoreModal/container/PickUpStoreModal.selectors';
 
 class ProductListingContainer extends React.PureComponent {
   componentDidMount() {
@@ -132,7 +131,6 @@ function mapStateToProps(state) {
   }
 
   return {
-    isPickupModalOpen: getIsPickupModalOpen(state),
     productsBlock: getProductsAndTitleBlocks(state, productBlocks),
     products: getProductsSelect(state),
     filters: getProductsFilters(state),

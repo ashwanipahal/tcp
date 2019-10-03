@@ -1,4 +1,3 @@
-/* eslint-disable */
 import AddressBook from '../AddressBook/container/AddressBook.container';
 import AccountOverview from '../AccountOverview/container/AccountOverview.container';
 import AddEditAddress from '../AddEditAddress/container/AddEditAddress.container';
@@ -37,7 +36,7 @@ const AccountComponentMapping = {
   'birthday-savings': BirthdaySavingsPage,
   'edit-mailing-address': MailingInformationContainer,
   'edit-aboutyou-info': AboutYouInformationContainer,
-  'my-preference': FavoritesContainer,
+  'my-preference': MyPrefrenceContainer,
   'points-history': PointHistoryPage,
   'extra-points': EarnPoints,
   'points-claim': PointsClaimPage,
