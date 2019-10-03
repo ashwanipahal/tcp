@@ -28,27 +28,6 @@ export default {
             placement: '',
           },
         },
-        {
-          textItems: [
-            {
-              text:
-                'Build her head-to-toe party outfit sprinkled with all the extra-sweet details!',
-              style: 'small_text_normal',
-            },
-          ],
-          link: {
-            url: '/p/',
-            text: '',
-            title: '',
-            target: '',
-            external: 0,
-            action: '',
-          },
-          icon: {
-            icon: '',
-            placement: '',
-          },
-        },
       ],
 
       divTabs: [
