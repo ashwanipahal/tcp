@@ -2,6 +2,7 @@ import React from 'react';
 import { SafeAreaView } from 'react-native';
 import Modal from '@tcp/core/src/components/common/molecules/Modal';
 import ModalViewWrapper from '@tcp/core/src/components/features/account/MyProfile/organism/ChangePasswordInfo/styles/ChangePasswordInfo.style.native';
+import { getLabelValue } from '@tcp/core/src/utils/utils';
 import AboutYouSurveyContainer from '../../AboutYouSurvey';
 
 /**
@@ -28,7 +29,7 @@ class AboutYouSurveyModal extends React.PureComponent<Props> {
       <Modal
         isOpen={openState}
         onRequestClose={() => toggleModalState('mountSurveyModal')}
-        heading={labels.lbl_profile_about_you_modal_heading}
+        heading={getLabelValue(labels, 'lbl_profile_about_you_modal_heading')}
       >
         <SafeAreaView>
           <ModalViewWrapper>

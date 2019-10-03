@@ -5,6 +5,7 @@ import { reduxForm, Field } from 'redux-form';
 import InputCheckbox from '@tcp/core/src/components/common/atoms/InputCheckbox';
 import Button from '@tcp/core/src/components/common/atoms/Button';
 import TextBox from '@tcp/core/src/components/common/atoms/TextBox';
+import { getLabelValue } from '@tcp/core/src/utils/utils';
 import createValidateMethod from '../../../../../../../utils/formValidation/createValidateMethod';
 import getStandardConfig from '../../../../../../../utils/formValidation/validatorStandardConfig';
 import Constants from '../../../container/CurrentPassword.utils';
@@ -44,7 +45,11 @@ export class ChangePasswordForm extends React.Component {
           component={InputCheckbox}
           dataLocator="hide-show-pwd"
           disabled={false}
-          rightText={isShowText ? labels.lbl_changePassword_show : labels.lbl_changePassword_hide}
+          rightText={
+            isShowText
+              ? getLabelValue(labels, 'lbl_changePassword_show')
+              : getLabelValue(labels, 'lbl_changePassword_hide')
+          }
           hideCheckboxIcon
           fontSize="fs13"
           onClick={() => this.onShowHidePassword(type)}
@@ -61,7 +66,7 @@ export class ChangePasswordForm extends React.Component {
         <CurrentPasswordWrapper>
           <Field
             id="currentPassword"
-            label={labels.lbl_changePassword_current_password}
+            label={getLabelValue(labels, 'lbl_changePassword_current_password')}
             name="currentPassword"
             component={TextBox}
             dataLocator="currentPasswordtxtfield"
@@ -73,12 +78,12 @@ export class ChangePasswordForm extends React.Component {
         <NewPasswordWrapper>
           <Field
             id="password"
-            label={labels.lbl_changePassword_new_password}
+            label={getLabelValue(labels, 'lbl_changePassword_new_password')}
             name="password"
             component={TextBox}
             dataLocator="newPasswordtxtfield"
             showSuccessCheck
-            successText={labels.lbl_changePassword_input_success}
+            successText={getLabelValue(labels, 'lbl_changePassword_input_success')}
             enableSuccessCheck={false}
             secureTextEntry={Password.New}
           />
@@ -88,12 +93,12 @@ export class ChangePasswordForm extends React.Component {
         <ConfirmPasswordWrapper>
           <Field
             id="confirmPassword"
-            label={labels.lbl_changePassword_confirm_password}
+            label={getLabelValue(labels, 'lbl_changePassword_confirm_password')}
             name="confirmPassword"
             component={TextBox}
             dataLocator="confirmPasswordtxtfield"
             showSuccessCheck
-            successText={labels.lbl_changePassword_input_success}
+            successText={getLabelValue(labels, 'lbl_changePassword_input_success')}
             enableSuccessCheck={false}
             secureTextEntry={Password.Confirm}
           />
@@ -103,7 +108,7 @@ export class ChangePasswordForm extends React.Component {
           fill="BLUE"
           color="white"
           buttonVariation="variable-width"
-          text={labels.lbl_changePassword_saveCta}
+          text={getLabelValue(labels, 'lbl_changePassword_saveCta')}
           disabled={pristine}
           onPress={handleSubmit}
         />
@@ -111,7 +116,7 @@ export class ChangePasswordForm extends React.Component {
           <Button
             fill="WHITE"
             buttonVariation="variable-width"
-            text={labels.lbl_changePassword_cancelCta}
+            text={getLabelValue(labels, 'lbl_changePassword_cancelCta')}
             onPress={onClose}
           />
         </CancelWrapper>

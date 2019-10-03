@@ -11,7 +11,7 @@ function getTimer(time) {
 }
 
 describe('StyliticsProductTabList', () => {
-  it('Should NOT call dispatch function if product list category data is  available ', () => {
+  it('Should NOT call dispatch function if product list category data is available ', () => {
     const getStyliticsProductTabListData = jest.fn();
     shallow(
       <StyliticsProductTabList
@@ -32,10 +32,7 @@ describe('StyliticsProductTabList', () => {
       />
     );
 
-    // 4002 because currently 4000 delay is being added componentDidMount to fetch data
-    return getTimer(4002).then(() => {
-      expect(getStyliticsProductTabListData).toBeCalledTimes(0);
-    });
+    expect(getStyliticsProductTabListData).toBeCalledTimes(0);
   });
 
   it('Should NOT call dispatch function if category data is not available ', () => {

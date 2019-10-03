@@ -29,14 +29,22 @@ const PointsHistory = ({ labels, accountlabels, pointHistory, navigation }) => {
     <React.Fragment>
       <PointHistoryView>
         <PointView>
-          <BodyCopy text={labels.lbl_common_order_date} fontFamily="secondary" fontSize="fs12" />
+          <BodyCopy
+            text={getLabelValue(labels, 'lbl_common_order_date')}
+            fontFamily="secondary"
+            fontSize="fs12"
+          />
         </PointView>
         <PointTransView>
-          <BodyCopy text={labels.lbl_common_transaction} fontFamily="secondary" fontSize="fs12" />
+          <BodyCopy
+            text={getLabelValue(labels, 'lbl_common_transaction')}
+            fontFamily="secondary"
+            fontSize="fs12"
+          />
         </PointTransView>
         <PointView>
           <BodyCopy
-            text={labels.lbl_common_points_earned}
+            text={getLabelValue(labels, 'lbl_common_points_earned')}
             component="p"
             fontFamily="secondary"
             fontSize="fs12"
@@ -77,7 +85,7 @@ const PointsHistory = ({ labels, accountlabels, pointHistory, navigation }) => {
         ))}
       <PointHistorsWrapper>
         <Anchor
-          text={labels.lbl_common_points_history}
+          text={getLabelValue(labels, 'lbl_common_points_history')}
           fontSizeVariation="medium"
           noLink
           underline

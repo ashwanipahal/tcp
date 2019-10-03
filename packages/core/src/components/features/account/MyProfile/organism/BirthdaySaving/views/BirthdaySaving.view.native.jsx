@@ -15,7 +15,7 @@ const BirthdaySaving = ({ labels, handleComponentChange, childrenBirthdays }) =>
 
   return (
     <MyProfileTile
-      title={labels.lbl_profile_birthday_savings}
+      title={getLabelValue(labels, 'lbl_profile_birthday_savings')}
       ctaTitle={ctaTitle}
       dataLocator="pi-addbirthdayinfo"
       handleComponentChange={handleComponentChange}

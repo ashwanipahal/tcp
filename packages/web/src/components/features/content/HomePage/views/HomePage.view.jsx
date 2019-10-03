@@ -4,8 +4,6 @@ import { PropTypes } from 'prop-types';
 import errorBoundary from '@tcp/core/src/components/common/hoc/withErrorBoundary';
 import HomePageSlots from '@tcp/core/src/components/common/molecules/HomePageSlots';
 import GetCandid from '@tcp/core/src/components/common/molecules/GetCandid';
-import ModuleQ from '@tcp/core/src/components/common/molecules/ModuleQ';
-import moduleQMock from '@tcp/core/src/services/abstractors/common/moduleQ/mock';
 import Recommendations from '../../../../common/molecules/Recommendations';
 
 const returnModule = mod => mod.default;
@@ -25,7 +23,6 @@ const HomePageView = dynamic({
   }),
   render: ({ slots }, modules) => {
     return [
-      <ModuleQ {...moduleQMock.moduleQ.composites} />,
       <HomePageSlots slots={slots} modules={modules} />,
       <GetCandid />,
       <Recommendations variations="moduleO,moduleP" />,
@@ -42,3 +39,4 @@ HomePageView.propTypes = {
 };
 
 export default errorBoundary(HomePageView);
+export { HomePageView as HomePageViewVanilla };

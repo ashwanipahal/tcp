@@ -86,6 +86,10 @@ export const PRODUCT_PICKUP_ACTION_PATTERN = '@BOPIS-';
 export const QUICK_VIEW_REDUCER_KEY = 'QuickView';
 export const QUICK_VIEW_ACTION_PATTERN = '@@QV-';
 
+// Favorites Reducer
+export const FAVORITES_REDUCER_KEY = 'Favorites';
+export const FAVORITES_ACTION_PATTERN = '@@Favorites-';
+
 // Email signup reducer
 export const EMAIL_SIGNUP_REDUCER_KEY = 'EmailSignUp';
 export const SMS_SIGNUP_REDUCER_KEY = 'SmsSignUp';
@@ -166,8 +170,14 @@ export const ADDRESS_VERIFICATION_REDUCER_KEY = 'addressVerification';
 export const GIFT_SERVICES_REDUCER_KEY = 'GiftServices';
 export const GIFT_SERVICES_ACTION_PATTERN = '@@GiftServices-';
 
+// Store Locator Reducer
+export const STORE_LOCATOR_REDUCER_KEY = 'StoreLocatorReducer';
+export const STORE_LOCATOR_ACTION_PATTERN = '@@StoreLocator-';
 export const MY_FAVORITE_STORE_REDUCER_KEY = 'MyFavoriteStore';
 
+// Store Detail Reducer
+export const STORE_DETAIL_REDUCER_KEY = 'StoreDetailReducer';
+export const STORE_DETAIL_ACTION_PATTERN = '@@StoreDetail-';
 export const POINTS_CLAIM_REDUCER_KEY = 'PointsClaim';
 export const POINTS_CLAIM_ACTION_PATTERN = '@@PointsClaim-';
 
@@ -208,6 +218,9 @@ export const REDUCER_ACTION_MAPPING = {
   [APPLY_NOW_MODAL_REDUCER_KEY]: APPLY_NOW_MODAL_REDUCER_PATTERN,
   [PICKUP_MODAL_REDUCER_KEY]: PICKUP_MODAL_REDUCER_PATTERN,
   [RECOMMENDATIONS_REDUCER_KEY]: RECOMMENDATIONS_ACTION_PATTERN,
+  [STORE_LOCATOR_REDUCER_KEY]: STORE_LOCATOR_ACTION_PATTERN,
+  [SEARCH_REDUCER_KEY]: SEARCH_REDUCER_ACTION_PATTERN,
   [SLP_PAGE_REDUCER_KEY]: SEARCH_REDUCER_ACTION_PATTERN,
+  [STORE_DETAIL_REDUCER_KEY]: STORE_DETAIL_ACTION_PATTERN,
   [CONFIRMATION_REDUCER_KEY]: CONFIRMATION_ACTION_PATTERN,
 };

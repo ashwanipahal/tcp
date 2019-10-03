@@ -2,6 +2,7 @@ import React from 'react';
 import PropTypes, { func } from 'prop-types';
 import ModalNative from '@tcp/core/src/components/common/molecules/Modal';
 import AddEditCreditCard from '@tcp/core/src/components/features/account/AddEditCreditCard/container/AddEditCreditCard.container.native';
+import { getLabelValue } from '@tcp/core/src/utils/utils';
 import { ModalViewWrapper } from '../AddEditPaymentModal.style.native';
 
 export class AddEditPaymentModal extends React.PureComponent<Props> {
@@ -35,8 +36,8 @@ export class AddEditPaymentModal extends React.PureComponent<Props> {
         onRequestClose={toggleModal}
         heading={
           isEdit
-            ? labels.paymentGC.lbl_payment_editCCHeading
-            : labels.paymentGC.lbl_payment_addCCHeading
+            ? getLabelValue(labels, 'lbl_payment_editCCHeading', 'paymentGC')
+            : getLabelValue(labels, 'lbl_payment_addCCHeading', 'paymentGC')
         }
       >
         <ModalViewWrapper>
