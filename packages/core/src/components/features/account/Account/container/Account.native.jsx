@@ -84,7 +84,7 @@ export class Account extends React.PureComponent<Props, State> {
     const componentName = this.getComponent(component);
     this.setState({
       component: componentName,
-      activeComponent: otherProps,
+      componentProps: otherProps,
     });
   };
 
@@ -99,7 +99,7 @@ export class Account extends React.PureComponent<Props, State> {
    * @return   {[Object]} JSX of the component
    */
   render() {
-    const { component, activeComponent } = this.state;
+    const { component, componentProps } = this.state;
     const { labels, isUserLoggedIn, navigation } = this.props;
     return (
       <StyledKeyboardAvoidingView behavior="padding" enabled keyboardVerticalOffset={82}>
@@ -107,7 +107,7 @@ export class Account extends React.PureComponent<Props, State> {
           <MyAccountLayout
             navData={navDataMobile}
             component={this.getComponent(component)}
-            activeComponent={activeComponent}
+            componentProps={componentProps}
             mainContent={AccountComponentNativeMapping[component]}
             handleComponentChange={this.handleComponentChange}
             labels={labels}

@@ -4,12 +4,12 @@ import PropTypes from 'prop-types';
 import withStyles from '../../../../common/hoc/withStyles.native';
 import MyPreferencesSection from '../organism/MyPreferencesSection.view';
 
-const MyPrefrence = ({ labels, handleComponentChange, activeComponent }) => {
+const MyPrefrence = ({ labels, handleComponentChange, componentProps }) => {
   return (
     <MyPreferencesSection
       labels={labels}
       handleComponentChange={handleComponentChange}
-      activeComponent={activeComponent}
+      componentProps={componentProps}
     />
   );
 };
@@ -17,13 +17,13 @@ const MyPrefrence = ({ labels, handleComponentChange, activeComponent }) => {
 MyPrefrence.propTypes = {
   labels: PropTypes.shape({}),
   handleComponentChange: PropTypes.func,
-  activeComponent: PropTypes.string,
+  componentProps: PropTypes.shape({}),
 };
 
 MyPrefrence.defaultProps = {
   labels: {},
   handleComponentChange: () => {},
-  activeComponent: '',
+  componentProps: {},
 };
 
 export default withStyles(MyPrefrence);

@@ -5,7 +5,7 @@ import { StyledHeading } from '@tcp/core/src/components/common/atoms/styledWrapp
 import LineComp from '@tcp/core/src/components/common/atoms/Line';
 import ProfileInformation from '../organism/ProfileInformation';
 
-export const MyProfile = ({ labels, handleComponentChange, activeComponent, ...otherProps }) => {
+export const MyProfile = ({ labels, handleComponentChange, componentProps, ...otherProps }) => {
   return (
     <View>
       <StyledHeading>{labels.lbl_profile_heading}</StyledHeading>
@@ -13,7 +13,7 @@ export const MyProfile = ({ labels, handleComponentChange, activeComponent, ...o
       <ProfileInformation
         labels={labels}
         handleComponentChange={handleComponentChange}
-        activeComponent={activeComponent}
+        componentProps={componentProps}
         {...otherProps}
       />
     </View>
@@ -23,7 +23,7 @@ export const MyProfile = ({ labels, handleComponentChange, activeComponent, ...o
 MyProfile.propTypes = {
   labels: PropTypes.shape({}),
   handleComponentChange: PropTypes.func,
-  activeComponent: PropTypes.string,
+  componentProps: PropTypes.shape({}),
 };
 
 MyProfile.defaultProps = {
@@ -31,7 +31,7 @@ MyProfile.defaultProps = {
     lbl_profile_heading: '',
   },
   handleComponentChange: () => {},
-  activeComponent: '',
+  componentProps: {},
 };
 
 export default MyProfile;

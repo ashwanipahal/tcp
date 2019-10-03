@@ -46,18 +46,16 @@ class ExtraPointsDetailModal extends React.PureComponent {
       case 'userMailing':
       case 'birthdaySavings':
       case 'userBirthday':
-        return handleComponentChange(
-          'profileInformationMobile',
-          activityDetails.activityModalAction
-        );
+        return handleComponentChange('profileInformationMobile', {
+          activeComponent: activityDetails.activityModalAction,
+        });
       case 'userFavoriteStore':
         return handleComponentChange('profileInformationMobile');
 
       case 'myPreference':
-        return handleComponentChange(
-          'myPreferencePageMobile',
-          activityDetails.activityModalSocialAccount
-        );
+        return handleComponentChange('myPreferencePageMobile', {
+          activeComponent: activityDetails.activityModalAction,
+        });
 
       case 'orders':
         return handleComponentChange('accountOverviewMobile');

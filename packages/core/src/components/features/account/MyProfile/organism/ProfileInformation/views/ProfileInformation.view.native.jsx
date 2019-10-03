@@ -25,12 +25,12 @@ const map = {
 export class ProfileInformation extends React.PureComponent {
   constructor(props) {
     super(props);
-    const { activeComponent } = this.props;
+    const { componentProps } = this.props;
 
     this.state = {
-      mountSurveyModal: map[activeComponent] === map.userAboutYourselfSurvey,
-      mountMailingAddressModal: map[activeComponent] === map.userMailing,
-      mountAddChildModal: map[activeComponent] === map.birthdaySavings,
+      mountSurveyModal: map[componentProps.activeComponent] === map.userAboutYourselfSurvey,
+      mountMailingAddressModal: map[componentProps.activeComponent] === map.userMailing,
+      mountAddChildModal: map[componentProps.activeComponent] === map.birthdaySavings,
     };
   }
 
@@ -68,7 +68,7 @@ export class ProfileInformation extends React.PureComponent {
       userSurvey,
       percentageIncrement,
       childrenBirthdays,
-      activeComponent,
+      componentProps,
     } = this.props;
     const { mountSurveyModal, mountMailingAddressModal, mountAddChildModal } = this.state;
     return (
@@ -96,7 +96,7 @@ export class ProfileInformation extends React.PureComponent {
           airMiles={airMiles}
           myPlaceNumber={myPlaceNumber}
           toggleModalState={this.toggleModalState}
-          activeComponent={activeComponent}
+          componentProps={componentProps}
         />
         {userSurvey !== null && userSurvey.getIn(['0', '0']) !== '' && (
           <AboutYouInfo labels={labels} userSurvey={userSurvey} />
@@ -174,7 +174,7 @@ ProfileInformation.propTypes = {
   percentageIncrement: PropTypes.shape({}),
   defaultStore: PropTypes.string,
   childrenBirthdays: PropTypes.shape({}),
-  activeComponent: PropTypes.string,
+  componentProps: PropTypes.shape({}),
 };
 
 ProfileInformation.defaultProps = {
@@ -194,7 +194,7 @@ ProfileInformation.defaultProps = {
   percentageIncrement: {},
   defaultStore: '',
   childrenBirthdays: fromJS([]),
-  activeComponent: '',
+  componentProps: {},
 };
 
 export default ProfileInformation;

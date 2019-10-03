@@ -9,13 +9,13 @@ const getMyPrefrenceLabels = labels => {
 
 export class MyPrefrenceContainer extends PureComponent {
   render() {
-    const { labels, handleComponentChange, activeComponent } = this.props;
+    const { labels, handleComponentChange, componentProps } = this.props;
     const myPrefrenceLabels = getMyPrefrenceLabels(labels);
     return (
       <MyPrefrence
         labels={myPrefrenceLabels}
         handleComponentChange={handleComponentChange}
-        activeComponent={activeComponent}
+        componentProps={componentProps}
       />
     );
   }
@@ -24,13 +24,13 @@ export class MyPrefrenceContainer extends PureComponent {
 MyPrefrenceContainer.propTypes = {
   labels: PropTypes.shape({}),
   handleComponentChange: PropTypes.func,
-  activeComponent: PropTypes.string,
+  componentProps: PropTypes.shape({}),
 };
 
 MyPrefrenceContainer.defaultProps = {
   labels: {},
   handleComponentChange: () => {},
-  activeComponent: '',
+  componentProps: {},
 };
 
 export default connect()(MyPrefrenceContainer);
