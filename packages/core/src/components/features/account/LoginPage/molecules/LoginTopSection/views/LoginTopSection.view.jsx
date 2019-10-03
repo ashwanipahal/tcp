@@ -24,11 +24,11 @@ const LoginTopSection = ({ labels, className, isCanada, variation, showForgotPas
         {variation === 'checkout' && (
           <>
             <BodyCopy fontSize="fs36" fontWeight="black" fontFamily="secondary" textAlign="center">
-              {labels.login.lbl_login_checkout_modal_heading}
+              {getLabelValue(labels, 'lbl_login_checkout_modal_heading', 'login')}
             </BodyCopy>
 
             <BodyCopy component="span" fontSize="fs18" fontFamily="secondary" textAlign="center">
-              {labels.login.lbl_login_checkout_modal_heading_1}
+              {getLabelValue(labels, 'lbl_login_checkout_modal_heading_1', 'login')}
             </BodyCopy>
             <BodyCopy
               component="span"
@@ -37,7 +37,7 @@ const LoginTopSection = ({ labels, className, isCanada, variation, showForgotPas
               fontFamily="secondary"
               textAlign="center"
             >
-              {labels.login.lbl_login_checkout_modal_heading_2}
+              {getLabelValue(labels, 'lbl_login_checkout_modal_heading_2', 'login')}
             </BodyCopy>
           </>
         )}
@@ -65,7 +65,7 @@ const LoginTopSection = ({ labels, className, isCanada, variation, showForgotPas
             </BodyCopy>
 
             <BodyCopy component="span" fontSize="fs12" fontFamily="secondary" textAlign="center">
-              {labels.login.lbl_login_favorites_modal_heading_1}
+              {getLabelValue(labels, 'lbl_login_favorites_modal_heading_1', 'login')}
             </BodyCopy>
           </>
         )}
@@ -87,7 +87,7 @@ const LoginTopSection = ({ labels, className, isCanada, variation, showForgotPas
         <>
           <BodyCopy component="div" className="bordered elem-pt-MED elem-pb-LRG">
             <BodyCopy fontSize="fs14" fontWeight="black" fontFamily="secondary" textAlign="center">
-              {labels.login.lbl_login_heading}
+              {getLabelValue(labels, 'lbl_login_heading', 'login')}
             </BodyCopy>
 
             {!isCanada && (
@@ -97,20 +97,20 @@ const LoginTopSection = ({ labels, className, isCanada, variation, showForgotPas
                 textAlign="center"
                 className="signuptext"
               >
-                {labels.login.lbl_login_subHeading}
+                {getLabelValue(labels, 'lbl_login_subHeading', 'login')}
               </BodyCopy>
             )}
             {isCanada && (
               <BodyCopy fontSize="fs12" fontFamily="secondary" textAlign="center">
-                {labels.login.lbl_login_heading_2}
+                {getLabelValue(labels, 'lbl_login_heading_2', 'login')}
               </BodyCopy>
             )}
             <BodyCopy fontFamily="secondary" fontSize="fs12" textAlign="center">
-              {labels.login.lbl_login_Description_heading_1}
+              {getLabelValue(labels, 'lbl_login_Description_heading_1', 'login')}
             </BodyCopy>
 
             <BodyCopy fontFamily="secondary" fontSize="fs12" textAlign="center">
-              {labels.login.lbl_login_Description_heading_2}
+              {getLabelValue(labels, 'lbl_login_Description_heading_2', 'login')}
             </BodyCopy>
             <BodyCopy component="div" textAlign="center">
               <Anchor
@@ -125,10 +125,10 @@ const LoginTopSection = ({ labels, className, isCanada, variation, showForgotPas
                   showForgotPassword(showForgotPasswordForm);
                 }}
               >
-                {labels.login.lbl_login_Description_clickhere}
+                {getLabelValue(labels, 'lbl_login_Description_clickhere', 'login')}
               </Anchor>
               <BodyCopy fontFamily="secondary" component="span" textAlign="center" fontSize="fs12">
-                {labels.login.lbl_login_Description_heading_3}
+                {getLabelValue(labels, 'lbl_login_Description_heading_3', 'login')}
               </BodyCopy>
             </BodyCopy>
           </BodyCopy>

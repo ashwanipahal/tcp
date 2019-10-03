@@ -47,6 +47,15 @@ const CVVInfo = styled.View`
   top: 25px;
 `;
 
+const StyledImageWrapper = styled.TouchableOpacity`
+  position: absolute;
+  right: 0px;
+  top: 0px;
+  padding-left: ${props => props.theme.spacing.ELEM_SPACING.XS};
+  padding-top: 6px;
+  padding-bottom: ${props => props.theme.spacing.ELEM_SPACING.XS};
+`;
+
 export {
   PaymentContainer,
   CardContainer,
@@ -58,4 +67,5 @@ export {
   CvvTextboxStyle,
   HiddenExpiryWrapper,
   CVVInfo,
+  StyledImageWrapper,
 };

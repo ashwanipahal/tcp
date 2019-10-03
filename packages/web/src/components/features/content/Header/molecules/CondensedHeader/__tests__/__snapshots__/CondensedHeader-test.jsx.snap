@@ -94,10 +94,6 @@ exports[`<CondensedHeaderVanilla /> Should match snapshot correctly 1`] = `
       </div>
     </div>
   </Styled(Row)>
-  <Connect(MiniBagContainer)
-    isOpen={false}
-    toggleMiniBagModal={[Function]}
-  />
   <Styled(Row)
     className="undefined condensed-border"
   />

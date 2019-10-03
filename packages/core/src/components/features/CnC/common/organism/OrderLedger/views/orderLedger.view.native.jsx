@@ -1,5 +1,5 @@
 import React from 'react';
-import { Text } from 'react-native';
+import { Text, View } from 'react-native';
 import PropTypes from 'prop-types';
 import BodyCopy from '../../../../../../common/atoms/BodyCopy';
 import LineComp from '../../../../../../common/atoms/Line';
@@ -10,8 +10,11 @@ import {
   StyledRowDataContainer,
   LabelContainer,
   IconContainer,
+  StyledHeader,
+  OrderSummaryWrapper,
 } from '../styles/orderLedger.style.native';
 import ReactTooltip from '../../../../../../common/atoms/ReactToolTip';
+import CollapsibleContainer from '../../../../../../common/molecules/CollapsibleContainer';
 
 const popover = message => {
   return (
@@ -25,7 +28,7 @@ const popover = message => {
   );
 };
 
-const OrderLedger = ({ ledgerSummaryData, labels }) => {
+const getBody = (ledgerSummaryData, labels) => {
   const {
     itemsCount,
     currencySymbol,
@@ -131,7 +134,7 @@ const OrderLedger = ({ ledgerSummaryData, labels }) => {
               text={
                 // eslint-disable-next-line no-nested-ternary
                 shippingTotal !== undefined
-                  ? { shippingTotal } > 0
+                  ? shippingTotal > 0
                     ? `${currencySymbol}${shippingTotal.toFixed(2)}`
                     : labels.free
                   : '-'
@@ -266,6 +269,45 @@ const OrderLedger = ({ ledgerSummaryData, labels }) => {
   );
 };
 
+const getHeader = (labels, ledgerSummaryData) => {
+  const { currencySymbol, orderBalanceTotal } = ledgerSummaryData;
+  const headerText = `${labels.orderLedgerTitle} (${currencySymbol}${orderBalanceTotal.toFixed(
+    2
+  )})`;
+  return (
+    <StyledHeader>
+      <BodyCopy
+        mobileFontFamily="secondary"
+        fontSize="fs16"
+        fontWeight="semibold"
+        component="span"
+        text={headerText}
+      />
+    </StyledHeader>
+  );
+};
+
+const OrderLedger = ({ ledgerSummaryData, labels, showAccordian }) => {
+  const header = getHeader(labels, ledgerSummaryData);
+  const body = getBody(ledgerSummaryData, labels);
+  return (
+    <View>
+      {showAccordian ? (
+        <OrderSummaryWrapper>
+          <CollapsibleContainer
+            header={header}
+            body={body}
+            defaultOpen={false}
+            iconLocator="arrowicon"
+          />
+        </OrderSummaryWrapper>
+      ) : (
+        body
+      )}
+    </View>
+  );
+};
+
 OrderLedger.propTypes = {
   ledgerSummaryData: PropTypes.shape({
     itemsCount: PropTypes.number.isRequired,
@@ -313,6 +355,7 @@ OrderLedger.propTypes = {
     totalOrderSavings: PropTypes.number,
   }),
   labels: PropTypes.shape({}),
+  showAccordian: PropTypes.bool.isRequired,
   /** Flag indicates whether cart savings section will display */
   // isDisplayCartSavings: PropTypes.bool,
 };

@@ -1,5 +1,6 @@
 import React from 'react';
 import PropTypes from 'prop-types';
+import { getLabelValue } from '@tcp/core/src/utils/utils';
 import BodyCopy from '../../../../../../../common/atoms/BodyCopy';
 import withStyles from '../../../../../../../common/hoc/withStyles';
 import styles from '../../styles/RewardsPoints.style';
@@ -25,11 +26,11 @@ const RewardsPointsTable = ({
             fontFamily="secondary"
             textAlign="center"
           >
-            {labels.lbl_rewardPoints_currency}
+            {getLabelValue(labels, 'lbl_rewardPoints_currency')}
             {totalRewards && Math.trunc(totalRewards)}
           </BodyCopy>
           <BodyCopy fontSize="fs14" textAlign="center">
-            {labels.lbl_rewardPoints_heading}
+            {getLabelValue(labels, 'lbl_rewardPoints_heading')}
           </BodyCopy>
         </BodyCopy>
         <BodyCopy component="div" className="table-item">
@@ -42,7 +43,7 @@ const RewardsPointsTable = ({
             {currentPoints}
           </BodyCopy>
           <BodyCopy fontSize="fs14" textAlign="center">
-            {labels.lbl_rewardPoints_currentPoints}
+            {getLabelValue(labels, 'lbl_rewardPoints_currentPoints')}
           </BodyCopy>
         </BodyCopy>
         <BodyCopy component="div" className="table-item">
@@ -55,7 +56,7 @@ const RewardsPointsTable = ({
             {pointsToNextReward}
           </BodyCopy>
           <BodyCopy fontSize="fs14" textAlign="center">
-            {labels.lbl_rewardPoints_nextReward}
+            {getLabelValue(labels, 'lbl_rewardPoints_nextReward')}
           </BodyCopy>
         </BodyCopy>
       </BodyCopy>

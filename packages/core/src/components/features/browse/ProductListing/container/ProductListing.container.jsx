@@ -5,6 +5,7 @@ import { getFormValues } from 'redux-form';
 import { PropTypes } from 'prop-types';
 import ProductListing from '../views';
 import { getPlpProducts, getMorePlpProducts } from './ProductListing.actions';
+import { addItemsToWishlist } from '../../Favorites/container/Favorites.actions';
 import { openQuickViewWithValues } from '../../../../common/organisms/QuickViewModal/container/QuickViewModal.actions';
 import { processBreadCrumbs, getProductsAndTitleBlocks } from './ProductListing.util';
 import {
@@ -25,9 +26,12 @@ import {
   getLabels,
 } from './ProductListing.selectors';
 import submitProductListingFiltersForm from './productListingOnSubmitHandler';
-import { isPlccUser } from '../../../account/User/container/User.selectors';
+import {
+  isPlccUser,
+  getUserLoggedInState,
+  isRememberedUser,
+} from '../../../account/User/container/User.selectors';
 import getSortLabels from '../molecules/SortSelector/views/Sort.selectors';
-import { getIsPickupModalOpen } from '../../../../common/organisms/PickupStoreModal/container/PickUpStoreModal.selectors';
 
 class ProductListingContainer extends React.PureComponent {
   componentDidMount() {
@@ -79,6 +83,7 @@ class ProductListingContainer extends React.PureComponent {
       formValues,
       sortLabels,
       slpLabels,
+      isLoggedIn,
       ...otherProps
     } = this.props;
     return (
@@ -104,6 +109,7 @@ class ProductListingContainer extends React.PureComponent {
         formValues={formValues}
         sortLabels={sortLabels}
         slpLabels={slpLabels}
+        isLoggedIn={isLoggedIn}
         {...otherProps}
       />
     );
@@ -125,7 +131,6 @@ function mapStateToProps(state) {
   }
 
   return {
-    isPickupModalOpen: getIsPickupModalOpen(state),
     productsBlock: getProductsAndTitleBlocks(state, productBlocks),
     products: getProductsSelect(state),
     filters: getProductsFilters(state),
@@ -155,6 +160,8 @@ function mapStateToProps(state) {
     isPlcc: isPlccUser(state),
     sortLabels: getSortLabels(state),
     slpLabels: getLabels(state),
+    isGuest: getUserLoggedInState(state),
+    isLoggedIn: getUserLoggedInState(state) && !isRememberedUser(state),
   };
 }
 
@@ -168,6 +175,9 @@ function mapDispatchToProps(dispatch) {
     },
     getMoreProducts: payload => {
       dispatch(getMorePlpProducts(payload));
+    },
+    onAddItemToFavorites: payload => {
+      dispatch(addItemsToWishlist(payload));
     },
     addToCartEcom: () => {},
     addItemToCartBopis: () => {},
@@ -201,6 +211,7 @@ ProductListingContainer.propTypes = {
   }).isRequired,
   sortLabels: PropTypes.arrayOf(PropTypes.shape({})),
   slpLabels: PropTypes.objectOf(PropTypes.oneOfType([PropTypes.string])),
+  isLoggedIn: PropTypes.bool,
 };
 
 ProductListingContainer.defaultProps = {
@@ -220,6 +231,7 @@ ProductListingContainer.defaultProps = {
   lastLoadedPageNumber: 0,
   sortLabels: [],
   slpLabels: {},
+  isLoggedIn: false,
 };
 
 export default withRouter(

@@ -36,6 +36,7 @@ class GuestBillingForm extends React.Component {
     billingData: PropTypes.shape({}),
     creditFieldLabels: PropTypes.shape({}),
     showAccordian: PropTypes.bool,
+    isVenmoEnabled: PropTypes.bool, // Venmo Kill Switch, if Venmo enabled then true, else false.
   };
 
   static defaultProps = {
@@ -54,6 +55,7 @@ class GuestBillingForm extends React.Component {
     backLinkPickup: '',
     creditFieldLabels: {},
     showAccordian: true,
+    isVenmoEnabled: false,
   };
 
   componentDidUpdate(prevProp) {
@@ -90,6 +92,7 @@ class GuestBillingForm extends React.Component {
       billingData,
       creditFieldLabels,
       showAccordian,
+      isVenmoEnabled,
     } = this.props;
     let cvvError;
     if (syncErrorsObj) {
@@ -107,7 +110,7 @@ class GuestBillingForm extends React.Component {
         >
           {labels.paymentMethod}
         </BodyCopy>
-        <PaymentMethods labels={labels} />
+        <PaymentMethods labels={labels} isVenmoEnabled={isVenmoEnabled} />
         <div className="elem-mt-LRG elem-pb-XL">
           {paymentMethodId === CONSTANTS.PAYMENT_METHOD_CREDIT_CARD ? (
             <>
@@ -134,10 +137,11 @@ class GuestBillingForm extends React.Component {
               />
             </>
           ) : null}
-          {paymentMethodId === CONSTANTS.PAYMENT_METHOD_VENMO && (
+          {paymentMethodId === CONSTANTS.PAYMENT_METHOD_VENMO && isVenmoEnabled && (
             <VenmoPaymentButton
               className="venmo-container"
               continueWithText={labels.continueWith}
+              onSuccess={handleSubmit}
             />
           )}
         </div>
@@ -149,6 +153,7 @@ class GuestBillingForm extends React.Component {
           backLinkText={orderHasShipping ? backLinkShipping : backLinkPickup}
           showVenmoSubmit={paymentMethodId === CONSTANTS.PAYMENT_METHOD_VENMO}
           continueWithText={labels.continueWith}
+          onVenmoSubmit={handleSubmit}
         />
       </form>
     );

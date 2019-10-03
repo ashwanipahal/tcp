@@ -29,7 +29,7 @@ exports[`MyRewards should render correctly 1`] = `
         link={null}
         textAlign="left"
       >
-        undefined (undefined)
+        lbl_my_rewards_heading (undefined)
       </Styled(BodyCopy)>
     </Styled(Col)>
     <Styled(Col)

@@ -1,4 +1,5 @@
 import React from 'react';
+import { getLabelValue } from '@tcp/core/src/utils/utils';
 import Address from '../../../../common/molecules/Address';
 import Button from '../../../../common/atoms/Button';
 import withStyles from '../../../../common/hoc/withStyles';
@@ -6,18 +7,6 @@ import styles from '../styles/DeleteAddressModal.style';
 import BodyCopy from '../../../../common/atoms/BodyCopy';
 import Modal from '../../../../common/molecules/Modal';
 import Notification from '../../../../common/molecules/Notification';
-
-// @flow
-
-type Props = {
-  data: Object,
-  className: string,
-  onDeleteAddress: Function,
-  setDeleteModalMountState: Function,
-  openState: boolean,
-  showUpdatedNotificationOnModal: boolean,
-  labels: Object,
-};
 
 /**
  * @function DeleteAddressModal The DeleteAddressModal component shows the address to delete.
@@ -142,7 +131,7 @@ class DeleteAddressModal extends React.Component<Props> {
           <Notification
             status={showUpdatedNotificationOnModal}
             colSize={{ large: 11, medium: 7, small: 6 }}
-            message={labels.common.lbl_common_errorMessage}
+            message={getLabelValue(labels, 'lbl_common_errorMessage', 'common')}
           />
         )}
 

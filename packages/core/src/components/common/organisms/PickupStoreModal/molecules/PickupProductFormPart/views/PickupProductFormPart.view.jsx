@@ -9,11 +9,12 @@ import {
   EDIT,
   PICKUP_LABELS,
 } from '../../../PickUpStoreModal.constants';
-import Button from '../../../../../atoms/Button';
+import Anchor from '../../../../../atoms/Anchor';
 import BodyCopy from '../../../../../atoms/BodyCopy';
 import { Row, Col } from '../../../../../atoms';
 import PickupProductFormPartStyling from '../styles/PickupProductFormPart.style';
 import withStyles from '../../../../../hoc/withStyles';
+import ProductPrice from '../../../../../../features/browse/ProductDetail/molecules/ProductPrice/ProductPrice';
 
 /**
  * @method ProductPricesBopisSection this method component to display
@@ -31,7 +32,8 @@ export function ProductPricesBopisSection(props) {
       {offerPrice && offerPrice !== listPrice && (
         <BodyCopy
           className={listPriceClass}
-          fontWeight="extrabold"
+          fontFamily="secondary"
+          fontWeight="black"
           fontSize={['fs16']}
           component="span"
         >
@@ -39,7 +41,13 @@ export function ProductPricesBopisSection(props) {
         </BodyCopy>
       )}
       {offerPrice && (
-        <BodyCopy className={offerPriceClass} component="span" fontSize={['fs12']}>
+        <BodyCopy
+          className={offerPriceClass}
+          component="span"
+          fontSize={['fs12']}
+          fontFamily="secondary"
+          color="text.secondary"
+        >
           {currencySymbol + listPrice.toFixed(2)}
         </BodyCopy>
       )}
@@ -59,12 +67,14 @@ ProductPricesBopisSection.propTypes = {
 export function DisplayProductSpecification(props) {
   const { productKey, productValue } = props;
   return (
-    <BodyCopy className="product-key" fontSize={['fs12']}>
-      <BodyCopy fontWeight="semibold" component="span">
+    <BodyCopy className="product-key" fontSize="fs12" fontFamily="secondary" color="text.secondary">
+      <BodyCopy fontSize="fs12" fontFamily="secondary" fontWeight="semibold" component="span">
         {productKey}
         {':'}
       </BodyCopy>
-      {productValue}
+      <BodyCopy fontSize="fs12" fontFamily="secondary" color="text.secondary" component="span">
+        {productValue}
+      </BodyCopy>
     </BodyCopy>
   );
 }
@@ -74,17 +84,6 @@ DisplayProductSpecification.propTypes = {
   productKey: PropTypes.string.isRequired,
 
   productValue: PropTypes.string.isRequired,
-};
-
-const getColorFitsSizesMap = props => {
-  return (
-    props.colorFitsSizesMap &&
-    props.colorFitsSizesMap.filter(
-      colorEntry =>
-        colorEntry.miscInfo &&
-        (colorEntry.miscInfo.isBopisEligible || colorEntry.miscInfo.isBossEligible)
-    )
-  );
 };
 
 class PickupProductFormPart extends React.Component {
@@ -100,26 +99,11 @@ class PickupProductFormPart extends React.Component {
     isPickUpWarningModal: false,
   };
 
-  constructor(props) {
-    super(props);
-
-    this.colorFitsSizesMap = getColorFitsSizesMap(props);
-  }
-
-  componentWillReceiveProps(nextProps) {
-    const { colorFitsSizesMap } = this.props;
-    if (colorFitsSizesMap !== nextProps.colorFitsSizesMap) {
-      this.colorFitsSizesMap = getColorFitsSizesMap(nextProps);
-    }
-  }
-
   renderProductValues = (initialValues, size) => {
-    const fitSize = `${initialValues.Size} ${initialValues.Fit}`;
+    const fitSize = `${initialValues.Size} ${initialValues.Fit || ''}`;
     return (
       <React.Fragment>
-        {initialValues.Fit && (
-          <DisplayProductSpecification productKey={size} productValue={fitSize} />
-        )}
+        <DisplayProductSpecification productKey={size} productValue={fitSize} />
         <DisplayProductSpecification
           productKey={PRODUCT_VALUES.quantity}
           productValue={initialValues.Quantity}
@@ -179,26 +163,36 @@ class PickupProductFormPart extends React.Component {
                 {this.renderProductValues(initialValues, colorFitSizeDisplayNames.size_alt)}
               </BodyCopy>
               <BodyCopy className="product-Price">
-                <BodyCopy fontWeight="semibold" fontSize={['fs12']} component="span">
+                <BodyCopy
+                  fontWeight="semibold"
+                  fontSize={['fs12']}
+                  component="span"
+                  fontFamily="secondary"
+                >
                   {`${PICKUP_LABELS.PRICE_LABEL}:`}
                 </BodyCopy>
-                <ProductPricesBopisSection
-                  currencySymbol={currencySymbol}
-                  listPrice={listPrice}
-                  offerPrice={offerPrice}
-                />
+                <div className="ProductPrice">
+                  <ProductPrice
+                    currencySymbol={currencySymbol}
+                    listPrice={listPrice}
+                    offerPrice={offerPrice}
+                  />
+                </div>
               </BodyCopy>
             </div>
             {!isPickUpWarningModal && (
-              <Button
-                className="edit-link"
-                tabIndex="0"
-                onClick={onEditSku}
-                onKeyDown={this.handleEditSkuOnKeyPress}
-              >
-                {' '}
-                {EDIT}
-              </Button>
+              <div className="edit-link">
+                <Anchor
+                  noLink
+                  underline
+                  fontSizeVariation="medium"
+                  handleLinkClick={onEditSku}
+                  onKeyDown={this.handleEditSkuOnKeyPress}
+                  to=""
+                >
+                  {EDIT}
+                </Anchor>
+              </div>
             )}
           </Col>
         </Row>
