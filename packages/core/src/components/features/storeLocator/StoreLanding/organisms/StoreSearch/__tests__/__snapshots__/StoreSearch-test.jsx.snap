@@ -22,11 +22,7 @@ exports[`StoreSearch component StoreSearch component renders correctly 1`] = `
       <div
         className="currentLocationWrapper"
       >
-        <Styled(Anchor)
-          asPath="/"
-          className=""
-          to="/"
-        >
+        <Styled(Button)>
           <Styled(Image)
             alt="location"
             className="location-image icon-small"
@@ -36,7 +32,7 @@ exports[`StoreSearch component StoreSearch component renders correctly 1`] = `
           <span
             className="currentLocation"
           />
-        </Styled(Anchor)>
+        </Styled(Button)>
       </div>
       <form
         className="searchForm"
