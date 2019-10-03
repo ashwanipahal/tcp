@@ -2,7 +2,8 @@ import React, { Fragment } from 'react';
 import { View } from 'react-native';
 import { reduxForm, Field } from 'redux-form';
 import { PropTypes } from 'prop-types';
-import { noop } from 'lodash';
+import RecaptchaModal from '@tcp/core/src/components/common/molecules/recaptcha/recaptchaModal.native';
+import { noop, get } from 'lodash';
 import { getLabelValue } from '@tcp/core/src/utils/utils';
 import createThemeColorPalette from '@tcp/core/styles/themes/createThemeColorPalette';
 import withStyles from '../../../../../../common/hoc/withStyles.native';
@@ -46,6 +47,7 @@ class LoginForm extends React.PureComponent<Props> {
     super(props);
     this.state = {
       type: 'password',
+      setRecaptchaModalMountedState: false,
     };
   }
 
@@ -55,6 +57,49 @@ class LoginForm extends React.PureComponent<Props> {
       change('emailAddress', setEmailid);
     }
   }
+
+  setRecaptchaModalMountState = () => {
+    const { setRecaptchaModalMountedState } = this.state;
+    this.setState({
+      setRecaptchaModalMountedState: !setRecaptchaModalMountedState,
+    });
+  };
+
+  onMessage = event => {
+    const { handleSubmit, onSubmit, change } = this.props;
+    if (event && event.nativeEvent.data) {
+      const value = get(event, 'nativeEvent.data', '');
+      change('recaptchaToken', value);
+      handleSubmit(data => {
+        const { emailAddress, password, rememberMe, savePlcc, userTouchId } = data;
+        const LoginData = {
+          emailAddress,
+          password,
+          rememberMe,
+          savePlcc,
+          userTouchId,
+          recaptchaToken: value,
+        };
+        onSubmit(LoginData);
+      })();
+
+      this.setRecaptchaModalMountState();
+    }
+  };
+
+  onClose = () => {
+    this.setRecaptchaModalMountState();
+  };
+
+  handleLoginClick = e => {
+    const { handleSubmit, invalid, showRecaptcha } = this.props;
+    e.preventDefault();
+    if (!invalid && showRecaptcha) {
+      this.setRecaptchaModalMountState();
+    } else {
+      handleSubmit();
+    }
+  };
 
   showForgotPassword = () => {
     const { showForgotPasswordForm, resetForm } = this.props;
@@ -76,8 +121,8 @@ class LoginForm extends React.PureComponent<Props> {
   };
 
   render() {
-    const { labels, handleSubmit, onSubmit, variation, getTouchStatus } = this.props;
-    const { type } = this.state;
+    const { labels, variation, getTouchStatus, showRecaptcha } = this.props;
+    const { type, setRecaptchaModalMountedState } = this.state;
     return (
       <Fragment>
         <View {...this.props}>
@@ -131,7 +176,7 @@ class LoginForm extends React.PureComponent<Props> {
             text={getLabelValue(labels, 'lbl_login_loginCTA', 'login')}
             buttonVariation="variable-width"
             customStyle={styles.loginButtonStyle}
-            onPress={handleSubmit(onSubmit)}
+            onPress={this.handleLoginClick}
           />
 
           {variation === 'checkout' && (
@@ -156,6 +201,17 @@ class LoginForm extends React.PureComponent<Props> {
             onPress={this.showForgotPassword}
           />
           <LineComp marginTop={28} />
+
+          <React.Fragment>
+            {setRecaptchaModalMountedState && showRecaptcha && (
+              <RecaptchaModal
+                onMessage={this.onMessage}
+                setRecaptchaModalMountedState={setRecaptchaModalMountedState}
+                toggleRecaptchaModal={this.setRecaptchaModalMountState}
+                onClose={this.onClose}
+              />
+            )}
+          </React.Fragment>
         </View>
       </Fragment>
     );
