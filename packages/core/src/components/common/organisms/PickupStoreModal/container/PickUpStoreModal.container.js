@@ -1,5 +1,4 @@
 import { connect } from 'react-redux';
-import ExecutionEnvironment from 'exenv';
 import {
   PRODUCT_ADD_TO_BAG,
   PRODUCT_SKU_SELECTION_FORM,
@@ -65,10 +64,6 @@ const mapStateToProps = (state, ownProps) => {
   const storeSearchError = PickupSelectors.getStoreSearchError(state);
   const pickupSkuFormId = `${PRODUCT_SKU_SELECTION_FORM}-${generalProductId}`;
   const PickupSkuFormValues = { ...PickupSelectors.getInitialValues(state, pickupSkuFormId) };
-  let webModal = false;
-  if (ExecutionEnvironment.canUseDOM) {
-    webModal = true;
-  }
 
   return {
     onAddItemToCartSuccess: isShowAddItemSuccessNotification,
@@ -105,7 +100,6 @@ const mapStateToProps = (state, ownProps) => {
     PickupSkuFormValues,
     currency: getCurrentCurrency(state),
     navigation,
-    webModal,
   };
 };
 

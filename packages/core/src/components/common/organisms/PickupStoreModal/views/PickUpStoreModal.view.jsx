@@ -133,7 +133,6 @@ class PickUpStoreModalView extends React.Component {
 
     /** Global switches for boss and bopis */
     isBossEnabled: PropTypes.bool,
-    webModal: PropTypes.bool,
     isBopisEnabled: PropTypes.bool,
     isBossCtaEnabled: PropTypes.bool,
     isBopisCtaEnabled: PropTypes.bool,
@@ -180,7 +179,6 @@ class PickUpStoreModalView extends React.Component {
     isPreferredStoreError: false,
     isShoppingBag: false,
     navigation: null,
-    webModal: false,
     cartItemsCount: 0,
     defaultStore: {},
     storeSearchError: '',
@@ -511,31 +509,20 @@ class PickUpStoreModalView extends React.Component {
   }
 
   render() {
-    const { pickupModalHeading, className, webModal } = this.props;
-    if (webModal) {
-      return (
-        <Modal
-          isOpen
-          onRequestClose={this.onCloseClick}
-          overlayClassName="TCPModal__Overlay"
-          className={`${className} TCPModal__Content`}
-          heading={pickupModalHeading}
-          fixedWidth
-          stickyHeader
-          inheritedStyles={modalstyles}
-          widthConfig={{ small: '375px', medium: '600px', large: '704px' }}
-          heightConfig={{ minHeight: '534px', height: '620', maxHeight: '650' }}
-        >
-          {this.renderModal()}
-        </Modal>
-      );
-    }
+    const { pickupModalHeading, className } = this.props;
     return (
       <Modal
         isOpen
         onRequestClose={this.onCloseClick}
-        headingAlign="center"
+        overlayClassName="TCPModal__Overlay"
+        className={`${className} TCPModal__Content`}
         heading={pickupModalHeading}
+        fixedWidth
+        stickyHeader
+        inheritedStyles={modalstyles}
+        widthConfig={{ small: '375px', medium: '600px', large: '704px' }}
+        heightConfig={{ minHeight: '534px', height: '620', maxHeight: '650' }}
+        headingAlign="center"
         horizontalBar={false}
       >
         {this.renderModal()}
