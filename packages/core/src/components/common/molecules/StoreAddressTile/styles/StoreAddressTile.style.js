@@ -7,6 +7,7 @@ export const TileHeader = styled.div`
   .title-one {
     span {
       margin-right: ${props => props.theme.spacing.ELEM_SPACING.SM};
+      text-transform: capitalize;
     }
   }
   .title-two {
@@ -16,10 +17,14 @@ export const TileHeader = styled.div`
     }
   }
   .store-name {
+    &--listing {
+      text-transform: capitalize;
+    }
     &--details {
       margin-top: 0;
       margin-bottom: ${props => props.theme.spacing.ELEM_SPACING.SM};
       color: ${props => props.theme.colors.TEXT.DARK};
+      text-transform: capitalize;
       &-btn {
         font-family: ${props => props.theme.fonts.secondaryFontBlackFamily};
         font-weight: ${props => props.theme.fonts.fontWeight.black};

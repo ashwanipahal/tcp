@@ -7,6 +7,7 @@ exports[`StoreLocatorLink component renders correctly when a fav store is passed
     className="test"
     dataLocator=""
     fontSizeVariation="small"
+    to="/store-locator"
   >
     <div
       className="storelocatorlink__container"
@@ -51,7 +52,7 @@ exports[`StoreLocatorLink component renders correctly when a fav store is passed
           link={null}
           textAlign="left"
         >
-          undefined 8 pm
+          lbl_storelocator_openUntilTxt 8 pm
         </Styled(BodyCopy)>
       </div>
     </div>
@@ -66,6 +67,7 @@ exports[`StoreLocatorLink component renders correctly with no store is passed 1`
     className="test"
     dataLocator=""
     fontSizeVariation="small"
+    to="/store-locator"
   >
     <div
       className="storelocatorlink__container--fav"
@@ -91,7 +93,9 @@ exports[`StoreLocatorLink component renders correctly with no store is passed 1`
         lineHeight="normal"
         link={null}
         textAlign="left"
-      />
+      >
+        lbl_storelocator_findAStoreLink
+      </Styled(BodyCopy)>
     </div>
   </Styled(Anchor)>
 </Fragment>

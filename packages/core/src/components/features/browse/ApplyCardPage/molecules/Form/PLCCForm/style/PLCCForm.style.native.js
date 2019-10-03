@@ -104,6 +104,7 @@ export const ButtonWrapper = styled.View`
   align-items: center;
   justify-content: center;
   margin-top: ${props => props.theme.spacing.LAYOUT_SPACING.XXS};
+  padding-bottom: ${props => props.theme.spacing.ELEM_SPACING.XL};
 `;
 
 export const RichTextContainer = styled.View`

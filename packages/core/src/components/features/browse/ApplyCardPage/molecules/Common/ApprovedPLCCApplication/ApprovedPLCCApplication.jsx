@@ -2,7 +2,7 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import { Anchor, BodyCopy, RichText, Button, Col, Row } from '../../../../../../common/atoms';
 import ApprovedPLCCApplicationViewStyled from './style/ApprovedPLCCApplication.style';
-import { getLabelValue } from '../../../../../../../utils';
+import { getLabelValue, scrollPage } from '../../../../../../../utils';
 import { redirectToBag, redirectToHome, getModalSizeForApprovedPLCC } from '../../../utils/utility';
 
 const CopyToClipboard = e => {
@@ -28,6 +28,7 @@ const CopyToClipboard = e => {
  * @param {moduleX content} plccData
  */
 const getCouponCodeBody = (approvedPLCCData, labels = {}, plccData = {}, isPLCCModalFlow) => {
+  scrollPage();
   return approvedPLCCData && approvedPLCCData.couponCode ? (
     <React.Fragment>
       <Row fullBleed className="centered">

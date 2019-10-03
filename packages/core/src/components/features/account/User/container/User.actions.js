@@ -70,7 +70,7 @@ export function setUserGeoCoordinates(payload) {
   };
 }
 
-export const setDefaultStore = (payload) => ({
+export const setDefaultStore = payload => ({
   payload,
   type: CONSTANTS.SET_DEFAULT_STORE,
-})
+});

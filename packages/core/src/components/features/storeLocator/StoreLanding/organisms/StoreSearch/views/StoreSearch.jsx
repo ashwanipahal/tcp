@@ -14,7 +14,7 @@ import { AutoCompleteComponent } from '@tcp/core/src/components/common/atoms/Goo
 import withStyles from '@tcp/core/src/components/common/hoc/withStyles';
 import ErrorMessage from '@tcp/core/src/components/common/hoc/ErrorMessage';
 import { getAddressLocationInfo } from '@tcp/core/src/utils/addressLocation';
-import { isGymboree } from '@tcp/core/src/utils';
+import { getLabelValue, isGymboree } from '@tcp/core/src/utils';
 import constants from '../../../container/StoreLanding.constants';
 import styles from '../styles/StoreSearch.style';
 
@@ -108,23 +108,25 @@ export class StoreSearch extends PureComponent {
       getLocationStores,
     } = this.props;
     const { errorNotFound, gymSelected, outletSelected } = this.state;
-    const errorMessage = errorNotFound ? labels.lbl_storelocators_detail_errorLabel : error;
+    const errorMessage = errorNotFound
+      ? getLabelValue(labels, 'lbl_storelanding_errorLabel')
+      : error;
 
     const viewMapListLabel = mapView
-      ? labels.lbl_storelocators_detail_viewList
-      : labels.lbl_storelocators_detail_viewMap;
+      ? getLabelValue(labels, 'lbl_storelanding_viewList')
+      : getLabelValue(labels, 'lbl_storelanding_viewMap');
 
     const storeOptionsConfig = [
       {
         name: 'gymboreeStoreOption',
         dataLocator: 'gymboree-store-option',
-        storeLabel: labels.lbl_storelocators_detail_gymboreeStores,
+        storeLabel: getLabelValue(labels, 'lbl_storelanding_gymboreeStores'),
         checked: gymSelected,
       },
       {
         name: 'outletOption',
         dataLocator: 'only-outlet-option',
-        storeLabel: labels.lbl_storelocators_detail_outletStores,
+        storeLabel: getLabelValue(labels, 'lbl_storelanding_outletStores'),
         checked: outletSelected,
       },
     ];
@@ -133,18 +135,20 @@ export class StoreSearch extends PureComponent {
       {
         asPath: '',
         to: '',
-        label: labels.lbl_storelocators_detail_allUSCAStores,
+        label: getLabelValue(labels, 'lbl_storelanding_allUSCAStores'),
       },
       {
         asPath: '',
         to: '',
-        label: labels.lbl_storelocators_detail_internationalStores,
+        label: getLabelValue(labels, 'lbl_storelanding_internationalStores'),
       },
     ];
 
     return (
       <div className={className}>
-        <h3 className="storeLocatorHeading">{labels.lbl_storelocators_detail_findStoreHeading}</h3>
+        <h3 className="storeLocatorHeading">
+          {getLabelValue(labels, 'lbl_storelanding_findStoreHeading')}
+        </h3>
         <Row fullBleed>
           <Col colSize={{ large: 6.5, medium: 4, small: 6 }}>
             <div className="currentLocationWrapper">
@@ -157,7 +161,7 @@ export class StoreSearch extends PureComponent {
                   height="16px"
                 />
                 <span className="currentLocation">
-                  {labels.lbl_storelocators_detail_currentLocation}
+                  {getLabelValue(labels, 'lbl_storelanding_currentLocation')}
                 </span>
               </Button>
             </div>
@@ -165,8 +169,8 @@ export class StoreSearch extends PureComponent {
               <div className="searchBar">
                 <Field
                   id="storeAddressLocator"
-                  title={labels.lbl_storelocators_detail_storeSearchPlaceholder}
-                  placeholder={labels.lbl_storelocators_detail_storeSearchPlaceholder}
+                  title={getLabelValue(labels, 'lbl_storelanding_storeSearchPlaceholder')}
+                  placeholder={getLabelValue(labels, 'lbl_storelanding_storeSearchPlaceholder')}
                   component={AutoCompleteComponent}
                   name="storeAddressLocator"
                   onPlaceSelected={this.handleLocationSelection}

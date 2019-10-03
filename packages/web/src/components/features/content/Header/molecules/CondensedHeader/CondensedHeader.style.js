@@ -147,7 +147,8 @@ export default css`
     display: inline-block;
     font-size: 13px;
     overflow: hidden;
-    padding-left: ${props => props.theme.spacing.ELEM_SPACING.LRG};
+    padding: 0 ${props => props.theme.spacing.ELEM_SPACING.SM};
+    line-height: 28px;
     text-overflow: ellipsis;
     width: 70px;
     white-space: nowrap;
