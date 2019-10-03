@@ -57,8 +57,9 @@ class LoginForm extends React.PureComponent<Props> {
   }
 
   showForgotPassword = () => {
-    const { showForgotPasswordForm } = this.props;
+    const { showForgotPasswordForm, resetForm } = this.props;
     showForgotPasswordForm();
+    resetForm();
   };
 
   handleContinueAsGuest = () => {
