@@ -268,7 +268,11 @@ const getBody = (ledgerSummaryData, labels) => {
   );
 };
 
-const getHeader = labels => {
+const getHeader = (labels, ledgerSummaryData) => {
+  const { currencySymbol, orderBalanceTotal } = ledgerSummaryData;
+  const headerText = `${labels.orderLedgerTitle} (${currencySymbol}${orderBalanceTotal.toFixed(
+    2
+  )})`;
   return (
     <StyledHeader>
       <BodyCopy
@@ -276,19 +280,24 @@ const getHeader = labels => {
         fontSize="fs16"
         fontWeight="semibold"
         component="span"
-        text={labels.orderLedgerTitle}
+        text={headerText}
       />
     </StyledHeader>
   );
 };
 
 const OrderLedger = ({ ledgerSummaryData, labels, showAccordian }) => {
-  const header = getHeader(labels);
+  const header = getHeader(labels, ledgerSummaryData);
   const body = getBody(ledgerSummaryData, labels);
   return (
     <View>
       {showAccordian ? (
-        <CollapsibleContainer header={header} body={body} defaultOpen iconLocator="arrowicon" />
+        <CollapsibleContainer
+          header={header}
+          body={body}
+          defaultOpen={false}
+          iconLocator="arrowicon"
+        />
       ) : (
         body
       )}

@@ -1,5 +1,5 @@
 import React from 'react';
-import { View, TouchableOpacity } from 'react-native';
+import { TouchableOpacity } from 'react-native';
 import PropTypes from 'prop-types';
 import BodyCopy from '@tcp/core/src/components/common/atoms/BodyCopy';
 import OrderLedgerContainer from '../../OrderLedger';
@@ -13,6 +13,7 @@ import {
   BackLinkWrapperWrapper,
   BonusPointsWrapper,
   CouponAndPromosWrapper,
+  OrderSummaryWrapper,
 } from '../styles/CnCTemplate.style.native';
 
 const CnCCommonTemplate = ({
@@ -29,9 +30,9 @@ const CnCCommonTemplate = ({
       <CouponAndPromosWrapper>
         <CouponAndPromos isCheckout />
       </CouponAndPromosWrapper>
-      <View>
+      <OrderSummaryWrapper>
         <OrderLedgerContainer showAccordian={showAccordian} />
-      </View>
+      </OrderSummaryWrapper>
       {!isGuest && (
         <BonusPointsWrapper>
           <BonusPointsDays />
