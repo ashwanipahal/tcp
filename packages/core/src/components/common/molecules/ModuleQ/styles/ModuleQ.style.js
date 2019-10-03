@@ -15,22 +15,11 @@ export default css`
 
     .slick-slide > div {
       margin: 0 auto;
-
-      @media ${props => props.theme.mediaQuery.medium} {
-        width: 262px;
-      }
+      transform: scale(0.85);
     }
 
     .slick-center > div {
-      width: 225px;
-
-      @media ${props => props.theme.mediaQuery.medium} {
-        width: 354px;
-      }
-
-      @media ${props => props.theme.mediaQuery.large} {
-        width: 358px;
-      }
+      transform: scale(1.2);
     }
 
     .slick-dots {
@@ -49,13 +38,16 @@ export default css`
     display: flex;
     direction: row;
     align-items: center;
+    justify-content: space-between;
   }
 
   .looks-image {
     box-shadow: 1px 3px 3px 1px rgba(26, 26, 26, 0.1);
-    width: 112px;
-    height: 138px;
-    margin-right: 9px;
+    display: flex;
+    align-items: center;
+    width: 82px;
+    min-height: 101px;
+    text-align: center;
   }
 
   .looks-image-last {
@@ -66,5 +58,10 @@ export default css`
     color: ${props => props.theme.colorPalette.gray['900']};
     background-color: ${props => props.theme.colorPalette.white};
     margin-right: 0;
+
+    p {
+      text-align: center;
+      margin: 0 auto;
+    }
   }
 `;

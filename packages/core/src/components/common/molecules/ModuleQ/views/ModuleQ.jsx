@@ -58,12 +58,7 @@ class ModuleQ extends React.PureComponent {
             );
           })}
           <div className="looks-image looks-image-last">
-            <BodyCopy
-              component="span"
-              fontFamily="secondary"
-              fontSize="fs22"
-              fontWeight="extrabold"
-            >
+            <BodyCopy fontFamily="secondary" fontSize="fs22" fontWeight="extrabold">
               {`+${hiddenImagesCount}`}
             </BodyCopy>
           </div>
