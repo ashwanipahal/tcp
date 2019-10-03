@@ -71,7 +71,7 @@ function getCarouselSlide(productItem, navigation, moduleQMainTile) {
           <OutfitMainTileWrapper>
             <OutfitMainImageWrapper>
               <StyledImage
-                alt="Product Image"
+                alt="Outfit Image"
                 host={LAZYLOAD_HOST_NAME.HOME}
                 url={getUrlWithHttp(imageUrl)}
                 height={PRODUCT_IMAGE_HEIGHT}
