@@ -1,7 +1,9 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
 exports[`Toast render should render correctly 1`] = `
-<ContextConsumer>
-  <Component />
-</ContextConsumer>
+<ToastView
+  errorMessage="errormessage"
+  positionValue={1}
+  toastMessageReset={[MockFunction]}
+/>
 `;

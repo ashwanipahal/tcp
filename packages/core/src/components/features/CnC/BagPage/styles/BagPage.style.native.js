@@ -5,7 +5,7 @@ export const WrapperStyle = styled.View`
 `;
 
 export const ScrollViewWrapper = styled.ScrollView`
-  height: ${props => (props.showAddTobag ? '60%' : '75%')};
+  height: ${props => props.viewHeight};
 `;
 
 export const HeadingViewStyle = styled.TouchableOpacity`
@@ -70,6 +70,9 @@ export const BagHeaderRow = styled.View`
   align-items: center;
   justify-content: center;
   margin: 0 ${props => props.theme.spacing.APP_LAYOUT_SPACING.XXS};
+`;
+export const BagHeaderMain = styled.View`
+  display: flex;
 `;
 
 export const SuccessTickImage = styled.Image`
@@ -149,4 +152,5 @@ export default {
   ActiveBagHeaderTextNew,
   InActiveBagHeaderTextView,
   InActiveEstimateTextStyle,
+  BagHeaderMain,
 };

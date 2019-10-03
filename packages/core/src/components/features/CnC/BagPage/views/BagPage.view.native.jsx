@@ -1,7 +1,6 @@
 import React from 'react';
-import { View } from 'react-native';
+import { View, Animated } from 'react-native';
 import PropTypes from 'prop-types';
-import throttle from 'lodash/throttle';
 import OrderLedgerContainer from '@tcp/core/src/components/features/CnC/common/organism/OrderLedger';
 import { isCanada } from '@tcp/core/src/utils';
 import ProductTileWrapper from '../../CartItemTile/organisms/ProductTileWrapper/container/ProductTileWrapper.container';
@@ -23,26 +22,23 @@ import {
   ActiveBagHeaderTextNew,
   InActiveBagHeaderTextView,
   InActiveEstimateTextStyle,
+  BagHeaderMain,
 } from '../styles/BagPage.style.native';
 import BonusPointsDays from '../../../../common/organisms/BonusPointsDays';
 import InitialPropsHOC from '../../../../common/hoc/InitialPropsHOC/InitialPropsHOC.native';
 import BAGPAGE_CONSTANTS from '../BagPage.constants';
-import BagPageUtils from './Bagpage.utils';
-import { isClient } from '../../../../../utils';
 
-class BagPage extends React.Component {
-  bagPageHeader = React.createRef();
+const AnimatedBagHeaderMain = Animated.createAnimatedComponent(BagHeaderMain);
 
-  itemStyle = {
-    position: 'relative',
-  };
-
+export class BagPage extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
       activeSection: null,
       showCondensedHeader: false,
+      height: new Animated.Value(70),
     };
+    this.timer = null;
   }
 
   componentDidMount() {
@@ -59,7 +55,6 @@ class BagPage extends React.Component {
 
   componentDidUpdate() {
     const {
-      toastMessage,
       isCartItemSFL,
       labels,
       isSflItemRemoved,
@@ -67,21 +62,19 @@ class BagPage extends React.Component {
     } = this.props;
     const { sflSuccess, sflDeleteSuccess, itemDeleted } = labels;
     if (isCartItemSFL) {
-      toastMessage(sflSuccess);
+      this.showToastMessage(sflSuccess);
     } else if (isSflItemRemoved) {
-      toastMessage(sflDeleteSuccess);
+      this.showToastMessage(sflDeleteSuccess);
     } else if (isDeleting) {
-      toastMessage(itemDeleted);
-    }
-    const header = this.bagPageHeader;
-    if (header) {
-      this.addScrollListener();
+      this.showToastMessage(itemDeleted);
     }
   }
 
-  componentWillUnmount() {
-    this.removeScrollListener();
-  }
+  showToastMessage = message => {
+    const { toastMessage, toastMessagePositionInfo } = this.props;
+    toastMessage(message);
+    toastMessagePositionInfo(122);
+  };
 
   handleChangeActiveSection = sectionName => {
     const { isShowSaveForLaterSwitch } = this.props;
@@ -92,30 +85,33 @@ class BagPage extends React.Component {
     }
   };
 
-  addScrollListener = () => {
-    const stickyPos = BagPageUtils.getElementStickyPosition(this.bagPageHeader);
-    BagPageUtils.bindScrollEvent(this.handleScroll.bind(this, stickyPos));
+  setAnimation = enable => {
+    const { height } = this.state;
+    Animated.timing(height, {
+      duration: 200,
+      toValue: enable ? 70 : 0,
+    }).start();
   };
 
-  removeScrollListener = () => {
-    const stickyPos = BagPageUtils.getElementStickyPosition(this.bagPageHeader);
-    window.removeEventListener('scroll', throttle(this.handleScroll.bind(this, stickyPos), 100));
-  };
-
-  handleScroll = sticky => {
+  handleScroll = event => {
     const { bagStickyHeaderInterval } = this.props;
-    const condensedBagHeader = this.bagPageHeader;
-    const condensedPageHeaderHeight = BagPageUtils.getPageLevelHeaderHeight();
-    if (isClient() && window.pageYOffset > sticky - condensedPageHeaderHeight) {
-      condensedBagHeader.style.top = `${condensedPageHeaderHeight.toString()}px`;
-      this.setState({ showCondensedHeader: true });
+    const contentOffset = event.nativeEvent.contentOffset.y;
+    if (contentOffset > 0) {
+      this.setAnimation(true);
+      this.setState({ showCondensedHeader: false });
+
       if (this.timer !== null) {
         clearTimeout(this.timer);
       }
       this.timer = setTimeout(() => {
-        this.setState({ showCondensedHeader: false });
+        this.setAnimation(false);
+        this.setState({ showCondensedHeader: true });
       }, bagStickyHeaderInterval);
     } else {
+      if (this.timer !== null) {
+        clearTimeout(this.timer);
+      }
+      this.setAnimation(true);
       this.setState({ showCondensedHeader: false });
     }
   };
@@ -216,16 +212,17 @@ class BagPage extends React.Component {
     const { labels, showAddTobag, navigation, orderItemsCount } = this.props;
     const { handleCartCheckout, isUserLoggedIn, sflItems } = this.props;
     const isNoNEmptyBag = orderItemsCount > 0;
-    const { activeSection, showCondensedHeader } = this.state;
+    const { activeSection, showCondensedHeader, height } = this.state;
     if (!labels.tagLine) {
       return <View />;
     }
     const isBagStage = activeSection === BAGPAGE_CONSTANTS.BAG_STATE;
     const isSFLStage = activeSection === BAGPAGE_CONSTANTS.SFL_STATE;
+    const viewHeight = showCondensedHeader ? '74%' : '65%';
     return (
       <>
-        <ScrollViewWrapper showAddTobag={showAddTobag}>
-          <BagHeaderRow ref={this.bagPageHeader} style={showCondensedHeader ? this.itemStyle : ''}>
+        <AnimatedBagHeaderMain style={{ height }}>
+          <BagHeaderRow>
             <HeadingViewStyle
               onPress={() => {
                 this.handleChangeActiveSection(BAGPAGE_CONSTANTS.BAG_STATE);
@@ -249,6 +246,11 @@ class BagPage extends React.Component {
               )}
             </SflHeadingViewStyle>
           </BagHeaderRow>
+        </AnimatedBagHeaderMain>
+        <ScrollViewWrapper
+          viewHeight={showAddTobag ? '60%' : viewHeight}
+          onScroll={this.handleScroll}
+        >
           <MainSection>
             {isBagStage && <ProductTileWrapper bagLabels={labels} />}
             {isSFLStage && (
@@ -292,6 +294,7 @@ BagPage.propTypes = {
   isShowSaveForLaterSwitch: PropTypes.bool.isRequired,
   orderBalanceTotal: PropTypes.number.isRequired,
   bagStickyHeaderInterval: PropTypes.number.isRequired,
+  toastMessagePositionInfo: PropTypes.func.isRequired,
 };
 
 export default InitialPropsHOC(BagPage);

@@ -17,7 +17,10 @@ import {
   setVenmoPickupMessageState,
   setVenmoShippingMessageState,
 } from '../../Checkout/container/Checkout.action';
-import { toastMessageInfo } from '../../../../common/atoms/Toast/container/Toast.actions.native';
+import {
+  toastMessageInfo,
+  toastMessagePosition,
+} from '../../../../common/atoms/Toast/container/Toast.actions.native';
 import utils, { isClient } from '../../../../../utils';
 import { getSaveForLaterSwitch } from '../../SaveForLater/container/SaveForLater.selectors';
 import {
@@ -74,6 +77,7 @@ export class BagPageContainer extends React.Component<Props> {
       isShowSaveForLaterSwitch,
       orderBalanceTotal,
       bagStickyHeaderInterval,
+      toastMessagePositionInfo,
     } = this.props;
 
     const showAddTobag = false;
@@ -100,6 +104,7 @@ export class BagPageContainer extends React.Component<Props> {
         isShowSaveForLaterSwitch={isShowSaveForLaterSwitch}
         orderBalanceTotal={orderBalanceTotal}
         bagStickyHeaderInterval={bagStickyHeaderInterval}
+        toastMessagePositionInfo={toastMessagePositionInfo}
       />
     );
   }
@@ -126,6 +131,9 @@ export const mapDispatchToProps = dispatch => {
     setVenmoShippingState: data => dispatch(setVenmoShippingMessageState(data)),
     toastMessage: palyoad => {
       dispatch(toastMessageInfo(palyoad));
+    },
+    toastMessagePositionInfo: palyoad => {
+      dispatch(toastMessagePosition(palyoad));
     },
   };
 };
