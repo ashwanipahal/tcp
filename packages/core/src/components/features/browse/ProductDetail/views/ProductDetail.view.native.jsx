@@ -6,12 +6,14 @@ import ImageCarousel from '../molecules/ImageCarousel';
 import PageContainer from '../styles/ProductDetail.style.native';
 import ProductAddToBagContainer from '../../../../common/molecules/ProductAddToBag';
 import ProductSummary from '../molecules/ProductSummary';
+import FulfillmentSection from '../../../../common/organisms/FulfillmentSection';
 import {
   getImagesToDisplay,
   getMapSliceForColorProductId,
   getMapSliceForColor,
 } from '../../ProductListing/molecules/ProductList/utils/productsCommonUtils';
 import { FullScreenImageCarousel } from '../../../../common/molecules/index.native';
+import PickupStoreModal from '../../../../common/organisms/PickupStoreModal';
 import AddedToBagContainer from '../../../CnC/AddedToBag';
 
 class ProductDetailView extends React.PureComponent {
@@ -51,6 +53,17 @@ class ProductDetailView extends React.PureComponent {
     return <FullScreenImageCarousel imageUrls={imageUrls} />;
   };
 
+  renderFulfilmentSection = () => {
+    const { currentProduct } = this.props;
+    return (
+      <FulfillmentSection
+        btnClassName="added-to-bag"
+        buttonLabel="Add To Bag"
+        currentProduct={currentProduct}
+      />
+    );
+  };
+
   render() {
     const {
       currentProduct,
@@ -60,6 +73,8 @@ class ProductDetailView extends React.PureComponent {
       handleFormSubmit,
       navigation,
       addToBagError,
+      isPickupModalOpen,
+      handleSubmit,
     } = this.props;
     const { currentColorEntry } = this.state;
     let imageUrls = [];
@@ -88,10 +103,13 @@ class ProductDetailView extends React.PureComponent {
             selectedColorProductId={selectedColorProductId}
             errorOnHandleSubmit={addToBagError}
             onChangeColor={this.onChangeColor}
+            handleSubmit={handleSubmit}
           />
 
           {this.renderCarousel(imageUrls)}
           <AddedToBagContainer navigation={navigation} />
+          {this.renderFulfilmentSection()}
+          {isPickupModalOpen ? <PickupStoreModal /> : null}
         </PageContainer>
       </ScrollView>
     );
@@ -104,6 +122,8 @@ ProductDetailView.propTypes = {
   selectedColorProductId: PropTypes.number.isRequired,
   clearAddToBagError: PropTypes.func.isRequired,
   plpLabels: PropTypes.shape({}),
+  handleSubmit: PropTypes.func,
+  isPickupModalOpen: PropTypes.bool,
   handleFormSubmit: PropTypes.func,
   addToBagError: PropTypes.string,
 };
@@ -112,6 +132,8 @@ ProductDetailView.defaultProps = {
   currentProduct: {},
   navigation: {},
   plpLabels: null,
+  handleSubmit: null,
+  isPickupModalOpen: false,
   handleFormSubmit: null,
   addToBagError: '',
 };
