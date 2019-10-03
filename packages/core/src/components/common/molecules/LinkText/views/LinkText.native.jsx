@@ -65,7 +65,7 @@ export const bodyCopyStyles = {
  * accepts all parameters for BodyCopy and Heading atom
  */
 
-const getTextItems = (textItems, renderComponentInNewLine, useStyle, otherProps) => {
+const getTextItems = (textItems, renderComponentInNewLine, useStyle, compProps) => {
   const textItemsSize = textItems.length;
   return (
     textItems &&
@@ -82,7 +82,7 @@ const getTextItems = (textItems, renderComponentInNewLine, useStyle, otherProps)
             accessibilityLabel={updatedText}
             text={updatedText}
             key={index.toString()}
-            {...otherProps}
+            {...compProps}
           />
         );
       }

@@ -1,8 +1,8 @@
 /* eslint-disable react-native/no-color-literals */
 import React from 'react';
 import PropTypes from 'prop-types';
-import { DamImage, Image, Button, Anchor } from '../../../atoms';
-import PromoBanner from '../../PromoBanner';
+import { Button, Anchor } from '../../../atoms';
+import Ribbon from '../../Ribbon';
 import LinkText from '../../LinkText';
 import {
   isGymboree,
@@ -11,21 +11,18 @@ import {
   getLocator,
 } from '../../../../../utils/index.native';
 import {
-  RibbonContainer,
-  PromoBannerContainer,
   ImageContainer,
   ButtonContainer,
   ModuleContainer,
   TCPOverlayTextContainer,
   GymboreeOverlayTextContainer,
+  StyledImage,
 } from '../ModuleS.style.native';
 import config, {
   BUTTON_WIDTH,
   RIBBON_COLOR,
   RIBBON_HEIGHT,
   RIBBON_WIDTH,
-  MODULE_TCP_HEIGHT,
-  MODULE_GYM_HEIGHT,
   MODULE_WITH_RIBBON_HEIGHT,
   TEXT_COLOR_WHITE,
 } from '../ModuleS.config';
@@ -59,7 +56,7 @@ const getImageHeight = hasRibbon => {
     return MODULE_WITH_RIBBON_HEIGHT;
   }
 
-  return isGymboree() ? MODULE_GYM_HEIGHT : MODULE_TCP_HEIGHT;
+  return '';
 };
 
 /**
@@ -74,7 +71,7 @@ const getLinkedImage = (props, hasRibbon) => {
   } = props;
   return link ? (
     <Anchor url={link.url} navigation={navigation}>
-      <DamImage
+      <StyledImage
         width={getImageWidth(hasRibbon)}
         height={getImageHeight(hasRibbon)}
         url={image.url}
@@ -83,7 +80,7 @@ const getLinkedImage = (props, hasRibbon) => {
       />
     </Anchor>
   ) : (
-    <DamImage
+    <StyledImage
       width={getImageWidth(hasRibbon)}
       height={getImageHeight(hasRibbon)}
       url={image.url}
@@ -96,10 +93,10 @@ const getLinkedImage = (props, hasRibbon) => {
 const ButtonView = props => {
   const { singleCTAButton, navigation, hasRibbon } = props;
 
-  let transparent = false;
+  let fill = '';
 
   if (isGymboree() && !hasRibbon) {
-    transparent = true;
+    fill = 'transparent';
   }
 
   return (
@@ -112,7 +109,7 @@ const ButtonView = props => {
         testID={getLocator('moduleD_button')}
         url={singleCTAButton.url}
         navigation={navigation}
-        transparent={transparent}
+        fill={fill}
       />
     </ButtonContainer>
   );
@@ -141,48 +138,6 @@ const HeaderView = props => {
   );
 };
 
-const ribbonLeftImage = require('../../../../../assets/module-a-ribbon-left.png');
-const ribbonRightImage = require('../../../../../assets/module-a-ribbon-right.png');
-
-const RibbonView = ({ ribbonBanner, navigation }) => {
-  let ribbonConfig = {
-    width: RIBBON_WIDTH,
-    height: RIBBON_HEIGHT,
-    source: ribbonLeftImage,
-  };
-  if (ribbonBanner && ribbonBanner[0].ribbonPlacement === 'right') {
-    ribbonConfig = {
-      ...ribbonConfig,
-      source: ribbonRightImage,
-    };
-  }
-  return (
-    <RibbonContainer position={ribbonBanner && ribbonBanner[0].ribbonPlacement}>
-      {ribbonBanner && (
-        <React.Fragment>
-          <Image
-            {...ribbonConfig}
-            // eslint-disable-next-line react-native/no-inline-styles
-            style={{
-              tintColor: RIBBON_COLOR,
-            }}
-          />
-          <PromoBannerContainer position={ribbonBanner[0].ribbonPlacement}>
-            <PromoBanner
-              promoBanner={ribbonBanner}
-              navigation={navigation}
-              locator="moduleS_promoribbonbanner_text"
-              color="white"
-              fontFamily="secondary"
-              fontWeight="black"
-            />
-          </PromoBannerContainer>
-        </React.Fragment>
-      )}
-    </RibbonContainer>
-  );
-};
-
 const RibbonBannerVariation = props => {
   const hasRibbon = true;
 
@@ -190,7 +145,7 @@ const RibbonBannerVariation = props => {
     <ModuleContainer>
       <HeaderView {...props} />
       <ImageContainer>{getLinkedImage(props, hasRibbon)}</ImageContainer>
-      <RibbonView {...props} />
+      <Ribbon {...props} width={RIBBON_WIDTH} height={RIBBON_HEIGHT} color={RIBBON_COLOR} />
       <ButtonView {...props} hasRibbon />
     </ModuleContainer>
   );
@@ -225,10 +180,6 @@ const ModulePropTypes = {
   singleCTAButton: PropTypes.shape({}).isRequired,
 };
 
-RibbonView.propTypes = {
-  ...ModulePropTypes,
-  ribbonPlacement: PropTypes.string.isRequired,
-};
 RibbonBannerVariation.propTypes = ModulePropTypes;
 ModuleS.propTypes = ModulePropTypes;
 ButtonView.propTypes = {

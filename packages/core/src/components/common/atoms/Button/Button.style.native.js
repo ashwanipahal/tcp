@@ -180,6 +180,13 @@ const style = css`
         }; `
       : ''};
   ${props =>
+    props.fill === 'transparent'
+      ? `
+      background-color: transparent;
+    `
+      : ''};
+
+  ${props =>
     props.buttonVariation === 'cautionary'
       ? `border: 1px solid ${props.theme.colorPalette.secondary.dark};`
       : ''};
@@ -198,13 +205,6 @@ const style = css`
         background-color: transparent;
          `
       : ''}
-
-  ${props =>
-    props.transparent
-      ? `
-      background-color: transparent;
-    `
-      : ''};
 
   ${getMobileAppFilterButtonViewStyle};
   ${getMobileAppFilterIconButtonViewStyle};
