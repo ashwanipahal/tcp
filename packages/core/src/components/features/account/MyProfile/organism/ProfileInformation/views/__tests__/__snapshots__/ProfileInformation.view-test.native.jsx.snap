@@ -24,6 +24,7 @@ exports[`ProfileInformation should render correctly 1`] = `
     }
   />
   <PersonalInformation
+    activeComponent=""
     airMiles=""
     handleComponentChange={[Function]}
     labels={
