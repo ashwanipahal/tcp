@@ -9,6 +9,10 @@ export const getPersonalDataState = state => {
   return state[USER_REDUCER_KEY].get('personalData');
 };
 
+export const getUserGeoCoordinates = state => {
+  return state[USER_REDUCER_KEY].get('geoLatLong');
+};
+
 export const getFavoriteStore = state => {
   return state[USER_REDUCER_KEY].get('favoriteStore');
 };
