@@ -99,7 +99,7 @@ export class CreditCardForm extends React.PureComponent<Props, State> {
 
     addressOptions = addressOptions.push({
       id: '',
-      label: labels.paymentGC.lbl_payment_addNewAddCta,
+      label: getLabelValue(labels, 'lbl_payment_addNewAddCta', 'paymentGC'),
       content: '',
       primary: false,
     });
@@ -157,7 +157,7 @@ export class CreditCardForm extends React.PureComponent<Props, State> {
   };
 
   getSubHeading = (labels, pagesubHeading) => {
-    return pagesubHeading || labels.paymentGC.lbl_payment_billingAddress;
+    return pagesubHeading || getLabelValue(labels, 'lbl_payment_billingAddress', 'paymentGC');
   };
 
   getSubmitCTAText = (labels, mailingAddress, isEdit) => {
@@ -248,11 +248,11 @@ export class CreditCardForm extends React.PureComponent<Props, State> {
                     textAlign="left"
                     fontWeight="black"
                     marginTop="10"
-                    text={labels.paymentGC.lbl_payment_ccAdressSelect}
+                    text={getLabelValue(labels, 'lbl_payment_ccAdressSelect', 'paymentGC')}
                   />
                 </TextWrapper>
                 <Field
-                  selectListTitle={labels.paymentGC.lbl_payment_ccAdressSelect}
+                  selectListTitle={getLabelValue(labels, 'lbl_payment_ccAdressSelect', 'paymentGC')}
                   name="onFileAddressKey"
                   id="onFileAddressKey"
                   component={AddressDropdown}
@@ -315,7 +315,7 @@ export class CreditCardForm extends React.PureComponent<Props, State> {
               fill="WHITE"
               onPress={onClose}
               buttonVariation="variable-width"
-              text={labels.common.lbl_common_cancelCTA}
+              text={getLabelValue(labels, 'lbl_common_cancelCTA', 'common')}
               style={CancelButton}
             />
           </ActionsWrapper>
@@ -323,7 +323,7 @@ export class CreditCardForm extends React.PureComponent<Props, State> {
             <ModalNative
               isOpen={addAddressMount}
               onRequestClose={this.toggleModal}
-              heading={labels.addressBook.ACC_LBL_ADD_NEW_ADDRESS_CTA}
+              heading={getLabelValue(labels, 'ACC_LBL_ADD_NEW_ADDRESS_CTA', 'addressBook')}
             >
               <ModalViewWrapper>
                 <AddEditAddressContainer

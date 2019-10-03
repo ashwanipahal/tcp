@@ -1,5 +1,6 @@
 import React from 'react';
 import PropTypes from 'prop-types';
+import { getLabelValue } from '@tcp/core/src/utils/utils';
 import { Row, Col, BodyCopy } from '../../../../../../common/atoms';
 import Anchor from '../../../../../../common/atoms/Anchor';
 import withStyles from '../../../../../../common/hoc/withStyles';
@@ -27,8 +28,8 @@ export const AddressOverviewTile = ({ labels, addressList }) => {
 
   return (
     <AccountOverviewTile
-      title={labels.lbl_overview_addressBookHeading}
-      ctaTitle={labels.lbl_overview_addressBookCTA}
+      title={getLabelValue(labels, 'lbl_overview_addressBookHeading')}
+      ctaTitle={getLabelValue(labels, 'lbl_overview_addressBookCTA')}
       ctaLink="/account?id=address-book"
       ctaPath="/account/address-book"
     >
@@ -42,7 +43,7 @@ export const AddressOverviewTile = ({ labels, addressList }) => {
             }}
           >
             <BodyCopy component="div" fontSize="fs14" fontWeight="extrabold" fontFamily="secondary">
-              {labels.lbl_overview_defaultShipingAddress}
+              {getLabelValue(labels, 'lbl_overview_defaultShipingAddress')}
             </BodyCopy>
           </Col>
           <Col
@@ -63,7 +64,7 @@ export const AddressOverviewTile = ({ labels, addressList }) => {
                     defaultShippingAddress[0].addressId
                   }`}
                 >
-                  {labels.lbl_overview_addressBookEdit}
+                  {getLabelValue(labels, 'lbl_overview_addressBookEdit')}
                 </Anchor>
               ) : (
                 <Anchor
@@ -73,7 +74,7 @@ export const AddressOverviewTile = ({ labels, addressList }) => {
                   to="/account?id=address-book&subSection=add-new-address"
                   asPath="/account/address-book/add-new-address"
                 >
-                  {labels.lbl_overview_addressBookAdd}
+                  {getLabelValue(labels, 'lbl_overview_addressBookAdd')}
                 </Anchor>
               )}
             </BodyCopy>
@@ -91,7 +92,7 @@ export const AddressOverviewTile = ({ labels, addressList }) => {
               <Address address={defaultShippingAddress[0]} showCountry={false} />
             ) : (
               <BodyCopy fontSize="fs14" fontFamily="secondary">
-                {labels.lbl_overview_addressNotAdded}
+                {getLabelValue(labels, 'lbl_overview_addressNotAdded')}
               </BodyCopy>
             )}
           </Col>
@@ -108,7 +109,7 @@ export const AddressOverviewTile = ({ labels, addressList }) => {
             }}
           >
             <BodyCopy component="div" fontSize="fs14" fontWeight="extrabold" fontFamily="secondary">
-              {labels.lbl_overview_defaultBillingAddress}
+              {getLabelValue(labels, 'lbl_overview_defaultBillingAddress')}
             </BodyCopy>
           </Col>
           <Col
@@ -126,7 +127,7 @@ export const AddressOverviewTile = ({ labels, addressList }) => {
                 to="/account?id=payment"
                 asPath="/account/payment"
               >
-                {labels.lbl_overview_addressBookEdit}
+                {getLabelValue(labels, 'lbl_overview_addressBookEdit')}
               </Anchor>
             ) : (
               <Anchor
@@ -136,7 +137,7 @@ export const AddressOverviewTile = ({ labels, addressList }) => {
                 to="/account?id=add-credit-card"
                 asPath="/account/payment/add-credit-card"
               >
-                {labels.lbl_overview_addressBookAdd}
+                {getLabelValue(labels, 'lbl_overview_addressBookAdd')}
               </Anchor>
             )}
           </Col>
@@ -153,7 +154,7 @@ export const AddressOverviewTile = ({ labels, addressList }) => {
               <Address address={defaultBillingAddress[0]} showCountry={false} />
             ) : (
               <BodyCopy fontSize="fs14" fontFamily="secondary">
-                {labels.lbl_overview_addressNotAdded}
+                {getLabelValue(labels, 'lbl_overview_addressNotAdded')}
               </BodyCopy>
             )}
           </Col>

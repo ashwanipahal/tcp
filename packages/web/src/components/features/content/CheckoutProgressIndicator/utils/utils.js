@@ -1,4 +1,5 @@
-import Router from 'next/router';
+import { CHECKOUT_ROUTES } from '@tcp/core/src/components/features/CnC/Checkout/Checkout.constants';
+import CheckoutUtil from '@tcp/core/src/components/features/CnC/Checkout/util/utility';
 import CHECKOUT_STAGES, { CHECKOUT_SECTIONS } from '../../../../../pages/App.constants';
 
 export const isOrderHasShipping = cartItems => {
@@ -20,7 +21,7 @@ const getAvailableStages = cartItems => {
   return result;
 };
 
-const moveToStage = (stageName, isReplace) => {
+const moveToStage = stageName => {
   // To Do below action once states are availble.
   /* const state = this.store.getState();
   this.store.dispatch([
@@ -35,14 +36,7 @@ const moveToStage = (stageName, isReplace) => {
     this.store.dispatch(setVenmoInformationMessageDisplayed(true));
     this.store.dispatch(setReviewVisited(true));
   } */
-
-  const moveToUrl = CHECKOUT_SECTIONS[stageName].pathPattern;
-  if (isReplace) {
-    const as = moveToUrl;
-    Router.push(moveToUrl, as, { shallow: true });
-  } else {
-    Router.push(moveToUrl);
-  }
+  CheckoutUtil.routeToPage(CHECKOUT_ROUTES[`${stageName}Page`]);
 };
 
 const routeToStage = (requestedStage, cartItems, isAllowForward, currentStageName) => {
@@ -69,16 +63,16 @@ const routeToStage = (requestedStage, cartItems, isAllowForward, currentStageNam
     if (stage === requestedStage) {
       requestedFound = true;
       if (isAllowForward || !currentFound) {
-        moveToStage(requestedStage, true);
+        moveToStage(requestedStage);
       } else {
-        moveToStage(routeToUrl, true);
+        moveToStage(routeToUrl);
       }
       break;
     }
   }
   if (!requestedFound) {
     // requested stage is not available (or illegal)
-    moveToStage(routeToUrl, true);
+    moveToStage(routeToUrl);
   }
 };
 

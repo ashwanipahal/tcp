@@ -12,6 +12,7 @@ exports[`TrackOrderTopSection component should renders correctly 1`] = `
     margin={null}
     mobileFontFamily="secondary"
     numberOfLines={null}
+    text="trackOrder.lbl_trackOrder_header"
     textDecoration={null}
   />
   <Styled(BodyCopy)
@@ -21,6 +22,7 @@ exports[`TrackOrderTopSection component should renders correctly 1`] = `
     id="trackorder__modal__subheading"
     margin={null}
     numberOfLines={null}
+    text="trackOrder.lbl_trackOrder_subheader"
     textDecoration={null}
   />
 </Styled(View)>

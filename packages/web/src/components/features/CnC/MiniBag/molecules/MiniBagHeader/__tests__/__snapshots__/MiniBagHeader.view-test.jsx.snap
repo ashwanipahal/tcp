@@ -25,6 +25,7 @@ exports[`MiniBagHeader component renders correctly 1`] = `
         letterSpacing="normal"
         lineHeight="normal"
         link={null}
+        onClick={[Function]}
         textAlign="left"
       >
         undefined, User 
@@ -125,6 +126,7 @@ exports[`MiniBagHeader component renders correctly without username 1`] = `
           anchorVariation="primary"
           fontSizeVariation="large"
           noLink={true}
+          onClick={[Function]}
           to=""
         />
         <Styled(BodyCopy)
@@ -144,6 +146,7 @@ exports[`MiniBagHeader component renders correctly without username 1`] = `
           className="rightLink"
           fontSizeVariation="large"
           noLink={true}
+          onClick={[Function]}
         />
       </Styled(BodyCopy)>
     </Styled(Col)>

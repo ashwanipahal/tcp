@@ -331,6 +331,8 @@ const getBillingLabels = createSelector(
       'lbl_billing_venmo',
       'lbl_billing_selectCardTitle',
       'lbl_billing_select',
+      'lbl_billing_cardEditCancel',
+      'lbl_billing_cardEditSave',
       'lbl_billing_cvvCode',
       'lbl_billing_continueWith',
     ];
@@ -362,6 +364,8 @@ const getBillingLabels = createSelector(
       lbl_billing_selectCardTitle: selectCardTitle,
       lbl_billing_select: select,
       lbl_billing_cvvCode: cvvCode,
+      lbl_billing_cardEditCancel: cancelButtonText,
+      lbl_billing_cardEditSave: saveButtonText,
       lbl_billing_continueWith: continueWith,
     } = labels;
     return {
@@ -374,6 +378,8 @@ const getBillingLabels = createSelector(
       defaultCard,
       addNewAddress,
       paymentMethod,
+      saveButtonText,
+      cancelButtonText,
       saveToAccount,
       defaultPayment,
       creditCard,
