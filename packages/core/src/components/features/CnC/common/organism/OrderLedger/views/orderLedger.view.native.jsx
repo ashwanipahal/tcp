@@ -134,7 +134,7 @@ const getBody = (ledgerSummaryData, labels) => {
               text={
                 // eslint-disable-next-line no-nested-ternary
                 shippingTotal !== undefined
-                  ? { shippingTotal } > 0
+                  ? shippingTotal > 0
                     ? `${currencySymbol}${shippingTotal.toFixed(2)}`
                     : labels.free
                   : '-'

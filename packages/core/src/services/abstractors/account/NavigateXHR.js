@@ -1,10 +1,9 @@
 import endpoints from '../../endpoints';
 import { getAllCookies } from '../../../utils/cookie.util';
 import { getAPIConfig } from '../../../utils';
-import { executeExternalAPICall } from '../../handler';
+// import { executeExternalAPICall } from '../../handler';
 
 export const getPayloadCookieArray = () => {
-  // TODO - Fix this to remove hardcoded values
   return getAllCookies()
     .split(';')
     .map(str => {
@@ -22,16 +21,19 @@ export const NavigateXHR = () => {
   const webServiceEndPoints = Object.assign({}, endpoints.navigateXHR);
   webServiceEndPoints.URI = `${crossDomain}/api/${endpoints.navigateXHR.URI}`;
 
-  const payload = {
-    body: {
-      cookie: getPayloadCookieArray(),
+  return fetch(webServiceEndPoints.URI, {
+    method: 'post',
+    headers: {
+      'Content-Type': 'application/json',
+      Accept: 'application/json',
     },
-    webService: webServiceEndPoints,
-  };
-
-  return executeExternalAPICall(payload)
-    .then(res => {
-      return res;
+    credentials: 'include',
+    body: JSON.stringify({
+      cookie: getPayloadCookieArray(),
+    }),
+  })
+    .then(response => {
+      return response;
     })
     .catch(err => {
       throw err;
